@@ -1,0 +1,5700 @@
+<?xml version="1.0" ?>
+<!DOCTYPE book PUBLIC "-//KDE//DTD DocBook XML V4.5-Based Variant V1.1//EN"
+ "dtd/kdedbx45.dtd" [
+  <!ENTITY % addindex "IGNORE">
+  <!ENTITY % Dutch "INCLUDE">
+]>
+
+<book id="korganizer" lang="&language;">
+
+<bookinfo>
+
+<title
+>Handboek van &korganizer;</title>
+
+<authorgroup>
+
+<author
+><firstname
+>Carlos</firstname
+> <othername
+>Leonhard</othername
+> <surname
+>Woelz</surname
+> <affiliation
+><address
+><email
+>carloswoelz@imap-mail.com</email
+></address
+></affiliation>
+</author>
+
+<author
+>&Milos.Prudek; &Milos.Prudek.mail; </author>
+
+<author
+>&Paul.E.Ahlquist.Jr; &Paul.E.Ahlquist.Jr.mail; </author>
+
+<author
+><firstname
+>J&uuml;rgen</firstname
+> <surname
+>Nagel</surname
+> <affiliation
+><address
+><email
+>juergen.nagel@student.fh-reutlingen.de</email
+></address
+></affiliation>
+</author>
+
+<author
+>&Michel.Boyer; &Michel.Boyer.mail; </author>
+
+<othercredit role="developer"
+><firstname
+>Reinhold</firstname
+> <surname
+>Kainhofer</surname
+> <affiliation
+><address
+><email
+>reinhold@kainhofer.com</email
+></address
+></affiliation>
+<contrib
+>Ontwikkelaar</contrib>
+</othercredit>
+
+<othercredit role="developer"
+><firstname
+>Cornelius</firstname
+> <surname
+>Schumacher</surname
+> <affiliation
+><address
+>&Cornelius.Schumacher.mail;</address
+></affiliation>
+<contrib
+>Ontwikkelaar</contrib>
+</othercredit>
+
+<othercredit role="developer"
+><firstname
+>Preston</firstname
+> <surname
+>Brown</surname
+> <affiliation
+><address
+>&Preston.Brown.mail;</address
+></affiliation>
+<contrib
+>Ontwikkelaar</contrib>
+</othercredit>
+
+<othercredit role="reviewer"
+><firstname
+>Lauri</firstname
+> <surname
+>Watts</surname
+> <affiliation
+><address
+>&Lauri.Watts.mail;</address
+></affiliation>
+<contrib
+>Nalezer</contrib>
+</othercredit>
+
+&Niels.Reedijk;&Tom.Albers;&Sander.Koning;&Natalie.Koning;&Jaap.Woldringh; 
+</authorgroup>
+
+
+
+<copyright>
+<year
+>2000</year
+><holder
+>&Milos.Prudek;</holder>
+</copyright>
+
+<copyright>
+<year
+>2001</year>
+<holder
+>&Paul.E.Ahlquist.Jr;</holder>
+</copyright>
+
+<copyright>
+<year
+>2004</year>
+<holder
+>J&uuml;rgen Nagel</holder>
+</copyright>
+
+<copyright>
+<year
+>2005</year>
+<holder
+>Carlos Leonhard Woelz</holder>
+</copyright>
+
+<legalnotice
+>&FDLNotice;</legalnotice>
+
+<date
+>2016-12-08</date>
+<releaseinfo
+>5.4.40 (Toepassingen 16.12)</releaseinfo>
+
+<abstract
+><para
+>&korganizer; is een gemakkelijk te gebruiken persoonlijke agenda, ook wel (<acronym
+>PIM</acronym
+> genoemd, van het Engelse Personal Information Manager). U kunt hierin journaals en afspraken bijhouden, en een takenlijst maken. &korganizer; herinnert u aan openstaande taken en helpt u bij het nakomen van afspraken. </para
+></abstract>
+
+<keywordset>
+<keyword
+>KDE</keyword>
+<keyword
+>KOrganizer</keyword>
+<keyword
+>kdepim</keyword>
+<keyword
+>beheerder</keyword>
+<keyword
+>tijd</keyword>
+<keyword
+>tijdschema</keyword>
+<keyword
+>herinnering</keyword>
+<keyword
+>afspraak</keyword>
+<keyword
+>afspraak</keyword>
+<keyword
+>journaal</keyword>
+<keyword
+>taak</keyword>
+</keywordset>
+
+</bookinfo>
+
+<chapter id="introduction"
+><!--updated to 5.4.40-->
+<title
+>Inleiding</title>
+
+<para
+>&korganizer; is een intuïtief en eenvoudig te gebruiken persoonlijke agenda (in het Engels vaak afgekort tot <abbrev
+>PIM</abbrev
+>, Personal Information Manager). U kunt hierin afspraken bijhouden, een takenlijst maken en journalen bijhouden. &korganizer; herinnert u aan openstaande taken, helpt u voorvallen, ervaringen en gedachten te onthouden, en uw afspraken na te komen.</para>
+
+<para
+>&korganizer; is niet alleen uw persoonlijke agenda, maar kan u ook helpen in de contacten met uw collega's en vrienden. Met &korganizer; kunt u iedereen die een e-mailadres heeft uitnodigen voor een afspraak, en de antwoorden verwerken, een agenda delen (met behulp van een groupware server, of gewoon een bestand over het netwerk), en afspraken delen (&eg; het schema van een kampioenschap of een conferentie), gebruikmakend van het raamwerk voor "Vers van de pers". &korganizer; is gebaseerd op open standaarden, en werkt samen met veel verschillende "group scheduling" servers (groepsplanning). Hiermee krijgt u controle over uw informatie, en kunt u de beste oplossingen kiezen. </para>
+
+<para
+>&korganizer; is ook een onderdeel van &kontact; voor agenda, journaal en takenlijst. Hierdoor is het een geïntegreerde oplossing voor wat nodig is voor uw communicatie- en informatiebeheer: e-mail, notities, contactenbeheer, nieuwslezer, en "news feed reader". Zelfs als u het niet samen met &kontact; gebruikt, is &korganizer; geïntegreerd in de andere <acronym
+>PIM</acronym
+>-applicaties van &kde;. U kunt het bijvoorbeeld configureren zodat het in uw agenda de verjaardagen toont uit &kaddressbook;, u kunt hierin &kmail; gebruiken voor het sturen en ontvangen van uitnodigingen; &etc;.</para>
+
+<para
+>De belangrijkste mogelijkheden van &korganizer; zijn:</para>
+<para
+><itemizedlist>
+<listitem
+><para
+>Takenlijsten aanmaken, afspraken plannen, en journaals bijhouden</para
+></listitem>
+<listitem
+><para
+>Uw afspraken en taken organiseren door de bij elkaar horende zaken naar hun tags in te delen.</para
+></listitem>
+<listitem
+><para
+>Tags met kleuren markeren.</para
+></listitem>
+<listitem
+><para
+>Meerdere agenda's tegelijk openen, en die naadloos bekijken en bewerken.</para
+></listitem>
+<listitem
+><para
+>Uw afspraken opnieuw indelen met behulp van slepen en neerzetten.</para
+></listitem>
+<listitem
+><para
+>Eenvoudig herhaalde afspraken aanmaken.</para
+></listitem>
+<listitem
+><para
+>Afspraken organiseren of bijwonen met behulp van de mogelijkheden voor groepsplanning (group scheduling).</para
+></listitem>
+<listitem
+><para
+>Kiezen uit de vele ondersteunde groupware servers (servers voor groepsplanning).</para
+></listitem>
+<listitem
+><para
+>Ondersteuning voor vCalendar en iCalendar (open standaarden).</para
+></listitem>
+<listitem
+><para
+>Samenvoegen en importeren van agenda's.</para
+></listitem>
+<listitem
+><para
+>Slepen en neerzetten tussen twee geopende agenda's.</para
+></listitem>
+<listitem
+><para
+>Samenwerking met &konqueror; ingebouwd.</para
+></listitem>
+<listitem
+><para
+>Aanpasbare pictogrammen.</para
+></listitem>
+<listitem
+><para
+>Slepen en loslaten van hulpmiddelen in panelen.</para
+></listitem>
+<listitem
+><para
+>En nog veel meer...</para
+></listitem>
+</itemizedlist
+></para>
+
+
+<para
+>Volg nu de <link linkend="five-minute-course"
+>Snelcursus</link
+> van &korganizer;, of baan u een weg inde <link linkend="managing-data"
+>de documentatie</link
+>!</para>
+
+</chapter>
+
+<chapter id="five-minute-course"
+><!--updated to 5.4.40-->
+<title
+>Snelcursus voor &korganizer;</title>
+<subtitle
+>(voor de gevorderden, en de ongeduldigen onder ons)</subtitle>
+
+<para
+>Weinig tijd? Hier is een snelcursus; &korganizer; in vogelvlucht!</para>
+
+<para
+>Als u al eerder met een dergelijk programma werkte, voelt u zich direct thuis in &korganizer;. U kunt nieuwe afspraken inplannen, bestaande afspraken verzetten, de afspraken naar hun tags in te indelen, nieuwe categorieën aanmaken, lijsten aanmaken en lijsten wijzigen van personen die aanwezig zullen zijn en wat hun rol is, automatisch per e-mail uitnodigingen versturen en gegevens uitwisselen met andere &korganizer;-agenda's, taken aanmaken en journaals bijhouden.</para>
+
+<para
+>Uitgangspunt voor deze cursus is dat u met &kde; kunt werken, en dat u er de voorkeur aan geeft om zo snel mogelijk zelf &korganizer; te gaan verkennen. We zullen hier alleen de basiseigenschappen van &korganizer;  toelichten.</para>
+
+<sect1 id="course-entering-events">
+<title
+>Afspraken invoeren</title>
+
+<procedure>
+<step
+><para
+>Klik op de knop in de werkbalk <guiicon
+><inlinemediaobject
+><imageobject
+> <imagedata fileref="view-calendar-agenda.png" format="PNG"/></imageobject
+> </inlinemediaobject
+></guiicon
+><guibutton
+>Agenda</guibutton
+>  of  kies in het menu <menuchoice
+><guimenu
+>Weergave</guimenu
+> <guimenuitem
+>Agenda</guimenuitem
+></menuchoice
+>. Hierdoor krijgt u de <link linkend="agenda-view"
+><guilabel
+>Agendaweergave</guilabel
+> </link
+>.</para
+></step>
+
+<step
+><para
+>Klik op de gewenste datum in de <link linkend="glossary" endterm="gloss-date-navigator"
+>datumnavigator</link
+>. </para
+></step>
+
+<step
+><para
+>Selecteer in het hoofdpaneel het tekstgebied naast het gewenste uur, dat het tijdstip van de afspraak weergeeft. Dubbelklik op dit gebied, of begin met het intypen van de naam van de afspraak. Hiermee opent u het dialoogvenster voor een <guilabel
+>Nieuwe afspraak</guilabel
+>.</para
+></step>
+
+<step
+><para
+><link linkend="entering-data-events"
+>Details van de afspraak invoeren</link
+>. Gebruik de zes tabbladen  onder in het venster voor de toegang tot alle bijzonderheden van de afspraak.</para
+></step>
+
+<step
+><para
+>Door op <guibutton
+>OK</guibutton
+> te klikken wordt de afspraak opgeslagen.</para
+></step>
+</procedure>
+</sect1>
+
+<sect1 id="course-entering-todos">
+<title
+>Taken invoeren</title>
+
+<procedure>
+<step
+><para
+>Selecteer menu-item <xref linkend="menu-actions-new-todo"/> om de dialoog voor <guilabel
+>Nieuwe taak</guilabel
+> te openen.</para
+></step>
+
+<step
+><para
+><link linkend="entering-data-events"
+>Details van de taak invoeren</link
+>. Gebruik de vijf tabbladen  onder in het venster voor de toegang tot alle bijzonderheden van de taak.</para
+></step>
+
+<step
+><para
+>Door op <guibutton
+>OK</guibutton
+> te klikken wordt de taak opgeslagen.</para
+></step>
+</procedure>
+
+</sect1>
+
+<sect1 id="course-entering-journals">
+<title
+>Bijhouden van een journaal</title>
+
+<procedure>
+
+<step
+><para
+>Selecteer in het menu <guiicon
+><inlinemediaobject
+><imageobject
+> <imagedata fileref="view-calendar-journal.png" format="PNG"/></imageobject
+> </inlinemediaobject
+></guiicon
+><menuchoice
+><guimenu
+>Weergave</guimenu
+> <guimenuitem
+>Journaal</guimenuitem
+></menuchoice
+> om de <link linkend="journal-view"
+><guilabel
+>Journaal</guilabel
+>hoofdweergave te openen</link
+>.</para
+></step>
+
+<step
+><para
+>Selecteer in het menu <menuchoice
+><guimenu
+>Acties</guimenu
+> <guimenuitem
+>Nieuw journaal</guimenuitem
+></menuchoice
+>.</para
+></step>
+
+<step
+><para
+>Voer de samenvatting en tekst in van de journaalinvoer.</para
+></step>
+
+</procedure>
+
+</sect1>
+
+<sect1 id="course-rescheduling-events">
+<title
+>Afspraken verzetten</title>
+
+<para
+>Het verplaatsen van een afspraak naar een andere datum of tijd gaat eenvoudig met behulp van slepen en neerzetten:</para>
+
+<procedure>
+<step
+><para
+>Ga met behulp van de <link linkend="glossary" endterm="gloss-date-navigator"
+>datumnavigator</link
+> naar de datum van de afspraak die verzet moet worden.</para
+></step>
+
+<step
+><para
+>U kunt het beste beginnen met te bedenken welke <link linkend="reference-menus-view"
+>weergave</link
+> het handigst is. Alleen de  <link linkend="agenda-view"
+><guilabel
+>agenda</guilabel
+> </link
+> (dag-, werkweek- en week) toont een onderverdeling in afzonderlijke uren en is daarom geschikt om afspraken met exacte tijdstippen te verzetten. In de maandweergave daarentegen worden alleen de dagen getoond. Die is daarom vooral geschikt voor langdurige gebeurtenissen zoals vakanties.</para
+></step>
+
+<step
+><para
+>Voor de weekweergave selecteert u de agendaweergave, klikt u op de knop  <guiicon
+><inlinemediaobject
+><imageobject
+> <imagedata fileref="view-calendar-week.png" format="PNG"/></imageobject
+> </inlinemediaobject
+></guiicon
+><guibutton
+>Week</guibutton
+> in de werkbalk, of kiest u in het menu <menuchoice
+><guimenu
+>Ga</guimenu
+> <guimenuitem
+>Week</guimenuitem
+></menuchoice
+>. </para
+></step>
+
+<step
+><para
+>Sleep de afspraak naar de nieuwe tijd en/of datum en zet die daar neer.</para
+></step>
+
+</procedure>
+
+<para
+>Als u de tijdstippen nauwkeuriger wilt aangeven, dubbelklikt u op de afspraak en verandert u de start- en eindtijd, met behulp van de neerklapmenu's waarin de dag wordt verdeeld in kwartieren. Als dat nog niet nauwkeurig genoeg is kunt u de  gewenste tijdstippen direct invullen.</para>
+
+</sect1>
+
+<sect1 id="course-rescheduling-todos">
+<title
+>Taken verzetten of bewerken</title>
+
+<para
+>U moet een juiste <link linkend="reference-menus-view"
+>weergave</link
+> kiezen, voordat u hiermee begint. Alleen in de <link linkend="todo-view"
+><guiicon
+><inlinemediaobject
+><imageobject
+> <imagedata fileref="view-calendar-tasks.png" format="PNG"/></imageobject
+> </inlinemediaobject
+></guiicon
+><guilabel
+>Takenlijst</guilabel
+>weergave</link
+> en <link linkend="description-view"
+>in de taken in de zijbalk </link
+> staan taken zonder een einddatum.</para>
+
+<para
+>Om de takenlijst te tonen, klikt u op de knop in de werkbalk<guiicon
+><inlinemediaobject
+><imageobject
+> <imagedata fileref="view-calendar-tasks.png" format="PNG"/></imageobject
+> </inlinemediaobject
+></guiicon
+><guibutton
+>Takenlijst</guibutton
+>, of kiest u <menuchoice
+><guimenu
+>Weergave</guimenu
+> <guimenuitem
+>Takenlijst</guimenuitem
+></menuchoice
+> in het menu. </para>
+
+<para
+>U kunt een taak verzetten door op de taak te rechtsklikken. U krijgt dan een contextmenu te zien. Kies nu <guimenuitem
+>Kopiëren naar</guimenuitem
+> of <guimenuitem
+>Verplaatsen naar</guimenuitem
+> en selecteer de nieuwe datum in de kalender die verschijnt. De taak wordt dan gekopieerd of verplaatst naar de geselecteerde datum. U kunt ook, als er in het hoofdpaneel een <guilabel
+>takenlijst</guilabel
+>weergave aanwezig is, klikken op de kolom <guilabel
+>Einddatum</guilabel
+>. Er verschijnt dan een kalender, waarin u de nieuwe einddatum kunt invullen.</para>
+
+<para
+>Om een <link linkend="entering-data-to-do"
+>taak te bewerken</link
+>, rechtsklikt u er op en kiest u <guimenuitem
+>Bewerken...</guimenuitem
+> in het contextmenu.</para>
+
+</sect1>
+
+<sect1 id="course-conclusion">
+<title
+>Afsluiting</title>
+
+<para
+>In deze snelcursus zijn slechts de basisbewerkingen in &korganizer; besproken. U kunt nu de rest van deze handleiding lezen waarin u alle mogelijkheden van &korganizer; leert kennen en gebruiken. Mocht u daar op dit moment niets voor voelen, dan adviseren wij u om toch nog even het hoofdstuk <link linkend="faq"
+>&FAQ;</link
+> door te lezen.</para>
+
+</sect1>
+
+</chapter>
+
+<chapter id="managing-data"
+><!--updated to 5.4.40-->
+<title
+>Agenda's importeren, exporteren en beheren</title>
+
+<para
+>In &korganizer; kunnen afspraken, journaalinvoeren en taken op diverse manieren worden opgeslagen (en teruggehaald), en naar diverse locaties. Elk van deze locaties noemen we een <firstterm
+>agendahulpbron</firstterm
+>. </para>
+
+<para
+>&korganizer; kan van nature werken met agendabestanden gebaseerd op standaarden zoals iCalendar en vCalendar (voegt ze toe als nieuwe gegevensbronnen), maar u kunt de gegevens ook importeren (samenvoegen) in een bestaande gegevensbron, en het bestand in een nieuw venster openen. Bestanden importeren in het formaat van de oude toepassing <application
+>ical</application
+> is ook mogelijk.</para>
+
+<para
+>U kunt uw gegevens exporteren als een iCalendar- of vCalendar-bestand. Deze bestanden worden ondersteund door de meeste agendaprogramma's. </para>
+
+<para
+>In dit hoofdstuk leggen we uit hoe u uw agenda kunt beheren, gebruik makend van de gegevensbronnen, afspraken importeren en exporteren, en het schema "Vers van de pers".</para>
+
+<sect1 id="managing-resources">
+<title
+>Agendagegevensbronnen</title>
+
+<para
+>In &korganizer; wordt een lokaal bestand gebruikt als standaard gegevensbron. Maar er zijn meer bronnen die u hier aan kunt toevoegen: groupware servers, journaalingangen zoals blogs, netwerkbestanden, &etc; Als u meerdere gegevensbronnen gebruikt, kan  &korganizer;<link linkend="config-main-general-personal"
+> worden geconfigureerd om de standaard gegevensbron te gebruiken of te vragen welke gegevensbron moet worden gebruikt</link
+> bij het opslaan van nieuwe afspraken, taken of journaalingangen. &korganizer; voegt alles uit twee of meer gegevensbronnen naadloos samen bij het <link linkend="description-view"
+>tonen</link
+>. </para>
+
+<para
+>De standaard gegevensbron is voor veel gevallen heel geschikt, maar het kan zijn dat er een andere nodig is, vooral bij gebruik van een ondersteunde groupware server. U kunt de beheerder van de server vragen hoe de gegevensbron van de groupware moet worden geconfigureerd, inclusief het publiceren of verkrijgen van vrij/bezetinformatie. Toegang hebben tot vrij/bezetinformatie maakt het de organisator van een afspraak mogelijk rekening te houden met de agenda van deelnemers, wanneer [h,z]ij die aan de lijst van deelnemers toevoegt.</para>
+
+<note
+><para
+>Naast de opslag van agenda's, geven groupware servers de mogelijkheid voor het bewaren van informatie over contacten, mail en <link linkend="glossary" endterm="gloss-freebusy"
+>vrij/bezetinformatie</link
+>. Daarom zullen sommige van de hier besproken gegevensbronnen verband houden met die van &kmail; en &kaddressbook; (de mail- en contactencomponenten van &kontact;, of met de <link linkend="config-main-free-busy"
+>vrij/bezet-instellingen in de hoofdconfiguratie</link
+>.</para>
+<para
+>Let op dat de communicatie van de <link linkend="group-scheduling"
+>groepsplanning</link
+> van &korganizer; gebaseerd is op een peer to peer e-mailstandaard. Dit betekent dat hiervoor geen groupware server nodig is! (Vert.: Peer-to-peer wil zeggen: tussen twee computers zonder tussenkomst van een server. Een server is een computer die bepaalde diensten verleent, en die is hier dus niet nodig).</para
+></note>
+
+<screenshot id="screenshot-resources">
+<screeninfo
+>Een schermafdruk van de dialoog Agenda's toevoegen in &korganizer;</screeninfo>
+<mediaobject>
+<imageobject
+><imagedata fileref="korganizer-resource.png" format="PNG"/></imageobject>
+<textobject
+><phrase
+>Een schermafdruk van de dialoog Agenda's toevoegen in &korganizer;</phrase
+></textobject>
+<caption
+><para
+>Een schermafdruk van de dialoog Agenda's toevoegen in &korganizer;</para
+></caption>
+</mediaobject>
+</screenshot>
+
+<procedure id="procedure-add-resource">
+<title
+>Een gegevensbron toevoegen aan &korganizer;</title>
+
+<step
+><para
+>Open in &korganizer; de instellingendialoog met <menuchoice
+><guimenu
+>Instellingen</guimenu
+> <guimenuitem
+>&korganizer; instellen...</guimenuitem
+></menuchoice
+>, en selecteer het tabblad <guilabel
+>Agenda's</guilabel
+> in de pagina <guilabel
+>Algemeen</guilabel
+>. </para>
+<para
+>U kunt ook door met de &RMB; te klikken in de zijbalk van <guilabel
+>Agendabeheer</guilabel
+> het contextmenu openen, en hierin <guilabel
+>Nieuwe agenda...</guilabel
+> selecteren</para
+></step>
+<step
+><para
+>Indien het <guilabel
+>Agendabeheer</guilabel
+> niet aanwezig is in de zijbalk, kies dan in het menu <menuchoice
+><guimenu
+>Instellingen</guimenu
+><guisubmenu
+>Zijbalk</guisubmenu
+> <guimenuitem
+>Agendabeheer tonen</guimenuitem
+></menuchoice
+>.</para
+></step>
+
+<step
+><para
+>Door op de knop <guilabel
+>Toevoegen...</guilabel
+> te klikken wordt de nieuwe gegevensbron aan de reeds aanwezige bronnen toegevoegd.</para
+></step>
+
+<step
+><para
+>Selecteer de aan te zetten gegevensbron.</para
+></step>
+
+<step
+><para
+>Later, als u een gegevensbron wilt bewerken of verwijderen, selecteert u die in de zijbalk van <guilabel
+>Agendabeheer</guilabel
+>, en klikt u op <guilabel
+>Agenda verwijderen</guilabel
+> als u die wilt verwijderen, of op <guilabel
+>Eigenschappen agenda...</guilabel
+> als u die wilt wijzigen.</para
+></step>
+
+</procedure>
+<para
+>Onder de bestaande gegevensbronnen die u in &korganizer; kunt vinden:</para>
+
+<variablelist>
+
+<varlistentry>
+<term
+><guilabel
+>Verjaardagen &amp; gedenkdagen </guilabel
+></term>
+<listitem
+><para
+>Geeft toegang tot data van verjaardagen en gedenkdagen van contacten in uw adresboek.</para
+></listitem>
+</varlistentry>
+
+<varlistentry>
+<term
+><guilabel
+>Hulpbron voor DAV-groupware</guilabel
+></term>
+<listitem
+><para
+>Hulpbron voor het beheer van DAV-agenda's en adresboeken (CalDAV, GroupDAV).</para
+></listitem>
+</varlistentry>
+
+<varlistentry>
+<term
+><guilabel
+>Google agenda's en taken</guilabel
+></term>
+<listitem
+><para
+>Toegang verkrijgen tot uw Google-agenda's en taken.</para
+></listitem>
+</varlistentry>
+
+<varlistentry>
+<term
+><guilabel
+>iCal-agendabestand</guilabel
+></term>
+<listitem
+><para
+>Leest gegevens in uit een iCal-bestand.</para
+></listitem>
+</varlistentry>
+
+<varlistentry>
+<term
+><guilabel
+>iCal-agendamap</guilabel
+></term>
+<listitem
+><para
+>Geeft toegang tot agendagegevens die elk zijn opgeslagen in een enkel bestand, in een gegeven map.</para
+></listitem>
+</varlistentry>
+
+<varlistentry>
+<term
+><guilabel
+>KAlarm-agendabestand</guilabel
+></term>
+<listitem
+><para
+>Leest gegevens uit een KAlarm agenda-bestand.</para
+></listitem>
+</varlistentry>
+
+<varlistentry>
+<term
+><guilabel
+>Map KAlarm-agenda</guilabel
+></term>
+<listitem
+><para
+>Leest gegevens uit een KAlarm-map.</para
+></listitem>
+</varlistentry>
+
+<varlistentry>
+<term
+><guilabel
+>Kolab groupware-server</guilabel
+></term>
+<listitem
+><para
+>Levert toegang tot Kolab groupwaremappen en e-mail op een Kolab IMAP-server.</para
+></listitem>
+</varlistentry>
+
+<varlistentry>
+<term
+><guilabel
+>Open-Xchange-groupware-server</guilabel
+></term>
+<listitem
+><para
+>Geeft toegang tot de afspraken, taken, en contacten op een groupware server van Open-Xchange.</para
+></listitem>
+</varlistentry>
+
+</variablelist>
+
+</sect1>
+
+<sect1 id="managing-import-export">
+<title
+>Importeren, exporteren en bijhouden van agenda's</title>
+
+<para
+>Hoewel lokale bestanden maar een van de vele andere gegevensbronnen zijn die door &korganizer; kunnen worden gebruikt, zijn ze wel de gemakkelijkste manier voor het delen van agenda's, het bewaren van kopieën, of het importeren van items vanuit uw vorige agendaprogramma.</para>
+
+<sect2 id="managing-import">
+<title
+>Agenda's importeren</title>
+
+<para
+>Als u een iCalendar- of vCalendarbestand heeft dat u wilt importeren, kiest u in het menu <menuchoice
+><guimenu
+>Bestand</guimenu
+> <guisubmenu
+>Importeren</guisubmenu
+><guimenuitem
+>Agenda importeren...</guimenuitem
+> </menuchoice
+>. &korganizer; vraagt u dan of u die wilt <guilabel
+>Toevoegen als nieuwe agenda</guilabel
+> , waardoor het agendabestand wordt toegevoegd als een nieuw lokaal gegevensbestand, of dat u die wilt <guilabel
+>Invoegen in bestaande agenda</guilabel
+>, waardoor de agendagegevens worden ingevoegd in een bestaande gegevensbron.</para>
+
+<para
+>Een goed moment om dit te doen is bijvoorbeeld als u een vCalendar met wat ingangen ontvangt via e-mail, of als u uw agenda vanuit een ander programma wilt importeren. In het laatste geval moet u eerst in dat programma de agendagegevens exporteren naar een van de bovenstaande formaten, of een hulpmiddel gebruiken om die vanuit het formaat van dat programma te converteren.</para>
+
+<!--Get Hot New Stuff
+store.kde.org KOrganizer Calendars-->
+</sect2>
+
+<sect2 id="managing-export">
+<title
+>Agenda's exporteren</title>
+
+<para
+>U kunt uw gegevens exporteren als iCalendar-bestand, dat door de meeste agendaprogramma's wordt ondersteund. &korganizer; zal de agendagegevens publiceren in de aangevinkte gegevensbronnen, die <link linkend="filters-view"
+>er niet uitgefilterd worden</link
+> (laat ons dit <quote
+>actieve</quote
+> gegevens noemen). Met andere woorden: is een agendagegeven niet zichtbaar, dan komt het ook niet in het geëxporteerde bestand terecht. Om vóór het exporteren de ongewenste items eruit te filteren, kunt u <link linkend="filters-view"
+>filters</link
+> aanmaken. Filters kunnen nog effectiever zijn, wanneer u uw afspraken en taken indeelt in <link linkend="categories-view"
+>tags</link
+>. Om gegevensbronnen in- of uit te schakelen moet u die  (de)selecteren in het <link linkend="managing-resources"
+><guilabel
+>Agendabeheer</guilabel
+></link
+> in de zijbalk.</para>
+
+<para
+>U kunt al uw <quote
+>actieve</quote
+> afspraken, taken en journaalingangen (onafhankelijk van de bron waar ze toe behoren) exporteren als een nieuw iCalendar-bestand, door in het menu <menuchoice
+><guimenu
+>Bestand</guimenu
+><guisubmenu
+>Exporteren</guisubmenu
+> <guimenuitem
+>Exporteren als iCalendar...</guimenuitem
+></menuchoice
+> te kiezen. De dialoog <guilabel
+>Opslaan als</guilabel
+> verschijnt. Voer nu de naam in en de locatie voor het nieuwe bestand. </para>
+
+</sect2>
+
+<sect2 id="managing-purge-archive">
+<title
+>Onderhouden van uw agenda's</title>
+
+
+<para
+>De huidige computers hebben ruim voldoende opslagcapaciteit. Maar als u uw &korganizer;-agenda synchroniseert met een apparaat met beperkte opslagcapaciteit, zoals een Palm, dan is archiveren toch nuttig. Ook neemt de snelheid van &korganizer; af naarmate er meer afspraken in de agenda zijn. U kunt oude items als volgt archiveren:</para>
+
+<procedure>
+<step
+><para
+>Kies het menu <menuchoice
+> <guimenu
+>Bestand</guimenu
+> <guimenuitem
+>Oude invoer archiveren...</guimenuitem
+> </menuchoice
+></para
+></step>
+<step
+><para
+>Vul de datum in in het veld <guilabel
+>Items nu archiveren die ouder zijn dan:</guilabel
+> of gebruik de kalender-widget om een datum te selecteren. U kunt ook automatisch alle items archiveren die ouder zijn dan een bepaalde tijdsperiode.</para
+></step>
+<step
+><para
+>Als u archiveren koos, moet u ook een bestandsnaam voor het archief opgeven in het veld <guilabel
+>Archiefbestand</guilabel
+>. Als u een bestaand   archiefbestand opnieuw wilt gebruiken, kunt u dat bestand selecteren met de knop <guilabel
+>Bestandsdialoog openen</guilabel
+> en naar een bestaand archief zoeken. De gegevens  worden dan hieraan toegevoegd, dus worden eventuele daar reeds in aanwezige gegevens niet gewijzigd.</para
+></step>
+</procedure>
+
+<para
+>Door te archiveren behoudt u alle items in een bestand, inclusief de voltooide taken. Maar als u die voltooide taken helemaal niet wilt bewaren, kiest u <menuchoice
+><guimenu
+>Bestand</guimenu
+><guimenuitem
+>Voltooide taken verwijderen</guimenuitem
+> </menuchoice
+>, waarmee u alle voltooide taken verwijdert uit uw actieve gegevensbronnen. Wilt u uw voltooide taken echter wel  behouden, maar niet zien in uw takenlijsten, dan kunt u overwegen <link linkend="filters-view"
+>die eruit te filteren</link
+>, in plaats van ze te verwijderen. </para>
+
+</sect2>
+
+</sect1>
+<!-- only import ??-->
+<sect1 id="managing-get-hot-new-stuff">
+<title
+>Downloaden met "Vers van de pers"</title>
+
+<!--para
+>If you have a calendar containing events of public interest, such as
+a conference or championship schedule, you can upload it (or check if there
+is something worth downloading) using the
+<ulink url="http://ghns.berlios.de/"
+>get hot new stuff framework</ulink
+>.
+</para-->
+
+<para
+>U krijgt de dialoog <guilabel
+>Vers van de pers</guilabel
+>, waarin een lijst van agenda's voor download wordt aangeboden, door te klikken in het menu op <menuchoice
+><guimenu
+>Bestand</guimenu
+><guisubmenu
+>Importeren</guisubmenu
+> <guimenuitem
+>Vers van de pers...</guimenuitem
+></menuchoice
+>. Als u een van de agenda's selecteert, krijgt u een dialoog te zien van de afspraken die daarin staan. Die kunt u in uw standaard agenda invoegen door te klikken op <guilabel
+>Invoegen</guilabel
+>.</para>
+
+<!--para>
+To open the <guilabel
+>Upload Hot New Stuff</guilabel
+> dialog, which allow you
+to export calendars containing events which may be useful to other people, such
+as a conference program, a list of holidays, special events, &etc;,
+choose the <menuchoice
+><guimenu
+>File</guimenu
+><guisubmenu
+>Export</guisubmenu>
+<guimenuitem
+>Upload Hot New Stuff...</guimenuitem
+></menuchoice
+>.</para>
+
+<para
+>Before uploading the events, make sure you have
+<link linkend="filters-view"
+>filtered out</link
+> all unrelated data.</para-->
+
+</sect1>
+
+</chapter>
+
+<chapter id="chapter-views-and-filters"
+><!-- updated to 5.4.40-->
+
+<title
+>Weergaven en filters</title>
+
+<para
+>Hoewel agenda's (gegevensbronnen) afspraken, taken en/of journaalingangen kunnen bevatten, zijn deze zeer verschillend van aard. Aan taken zijn mogelijk geen tijden gekoppeld, dus is het tonen ervan in een tijdschema daarvoor niet geschikt. Journaalingangen zijn een verzameling van uw bespiegelingen, voorvallen of ervaringen. Die moeten op hun eigen manier worden getoond, omdat ze niet altijd verband hebben met een lijst van aankomende afspraken of een lijst van taken, &etc;.</para>
+
+<para
+>Om de uitdaging van het op een bruikbare en intuïtieve manier tonen van uw informatie in goede banen te leiden, heeft &korganizer; diverse weergaven, filters, en zoekmogelijkheden. U kunt ook met elkaar verband houdende afspraken en taken naar hun tags indelen, waardoor u die later makkelijker kunt bekijken, gebruik makend van filters en kleuren.</para>
+
+<sect1 id="description-view">
+<title
+>Weergaven in &korganizer;</title>
+
+<para
+>In deze sectie beschrijven we de diverse manieren waarop gegevens kunnen worden getoond (weergaven), en geven we een overzicht van hoe u met &korganizer; door uw persoonlijke gegevens kunt bladeren. </para>
+
+<para
+>Het venster van &korganizer; kan worden ingedeeld in twee hoofdgebieden: het hoofdvenster en de zijbalk. In het hoofdvenster zijn de voornaamste overzichten (weergaven) te zien, en in de zijbalk vinden we de datumnavigator, het overzicht van de taken, het overzicht van de items, en dat van het agendabeheer. U kunt de componenten in de zijbalk tonen of verbergen in het submenu van  <menuchoice
+><guimenu
+>Instellingen</guimenu
+> <guisubmenu
+>Zijbalk</guisubmenu
+></menuchoice
+>.</para>
+
+<para
+>De datumnavigator dient voor het bladeren naar en selecteren van data. De dag van vandaag wordt gemarkeerd door een klein rechthoekje, dagen waarop afspraken zijn gepland worden vet afgebeeld (dagelijks of wekelijks terugkerende afspraken mogelijk niet, <link linkend="config-main-views"
+>afhankelijk van de instellingen van de weergaven)</link
+>), en vakantiedagen worden met rood weergegeven. Als u naar een bepaalde datum wilt gaan kunt u daar gewoon op klikken. Met de muisknop ingedrukt kunt u een aantal aaneengesloten data in een keer selecteren. In de weergaven <guilabel
+>Wat nu</guilabel
+>, <guilabel
+>Lijst</guilabel
+>, <guilabel
+>Agenda</guilabel
+> en <guilabel
+>Journaal</guilabel
+> worden alleen afspraken, taken en journaalingangen getoond voor de geselecteerde data. In de weergave <guilabel
+>Maand</guilabel
+> zijn de afspraken en taken te zien voor de eerste maand in de datumnavigator (de maandweergave wordt niet gewijzigd door de geselecteerde data, alleen de maand wordt daardoor veranderd).</para>
+
+<para
+>In de takenlijst in de zijbalk worden uw taken opgesomd, net zoals in het <link linkend="todo-view"
+>Takenweergave</link
+>. Dit is handig als u uw taken wilt bekijken in andere overzichten.</para>
+
+<para
+>Het overzicht van de items in de zijbalk toont de details van de huidig geselecteerde afspraken, taken en journaalingangen.</para>
+
+<para
+>Tenslotte kunt u in het agendabeheer in de zijbalk gegevensbronnen in de lijst in- of uitschakelen door het vakje ervoor aan- of uit te vinken, en er uw gegevensbronnen beheren. Meer informatie is te vinden in <xref linkend="managing-resources"/>.</para>
+
+<para
+>U kunt ook in uw agendaweergave bladeren met <menuchoice
+><guimenu
+>Ga</guimenu
+> <guimenuitem
+>Terug</guimenuitem
+></menuchoice
+>  (of door te klikken op de knop <inlinemediaobject
+><imageobject
+><imagedata fileref="go-previous.png" format="PNG"/></imageobject
+></inlinemediaobject
+> in de werkbalk), waardoor u terug gaat naar de vorige dag,  week, maand of jaar, of door het kiezen van menuitem <menuchoice
+><guimenu
+> Ga</guimenu
+><guimenuitem
+>Vooruit</guimenuitem
+></menuchoice
+> (of door te klikken op de knop <inlinemediaobject
+><imageobject
+> <imagedata fileref="go-next.png" format="PNG"/></imageobject
+> </inlinemediaobject
+> in de werkbalk),  waardoor u vooruit gaat naar de volgende dag, week, maand of jaar (afhankelijk van de weergave), of door het kiezen van  <menuchoice
+><guimenu
+>Ga</guimenu
+><guimenuitem
+>Naar vandaag</guimenuitem
+> </menuchoice
+> (of door te klikken op de knop <inlinemediaobject
+><imageobject
+> <imagedata fileref="go-jump-today.png" format="PNG"/></imageobject
+> </inlinemediaobject
+> in de werkbalk), waardoor de huidige dag in de weergave komt.</para>
+
+<sect2 id="whatsnext-view">
+<title
+>Wat nu-weergave</title>
+
+<para
+>Deze weergave toont afspraken en taken op een overzichtelijke manier. Alle nog openstaande taken worden getoond, maar alleen de afspraken voor de dagen die in de <guilabel
+>Datumnavigator</guilabel
+> (in de zijbalk) zijn geselecteerd. Afspraken en taken worden elk op een regel weergegeven.</para>
+
+<para
+>U kunt naar de weergave voor "Wat nu" schakelen door in het menu <menuchoice
+><guimenu
+>Beeld</guimenu
+> <guimenuitem
+>Wat nu</guimenuitem
+></menuchoice
+> te klikken.</para>
+
+</sect2>
+
+<sect2 id="list-view">
+<title
+>Weergave voor de afsprakenlijst</title>
+<para
+>In de lijstweergave worden al uw taken, afspraken en journaalingangen in een lijst getoond, voor de dagen die in de datumnavigator zijn geselecteerd. Openstaande taken die niet op de geselecteerde dagen worden beëindigd, worden niet getoond. Deze weergave is handig om vele verschillende items op een compacte manier te tonen, en is ook handig als uw afspraken verdeeld zijn over een lange periode, die niet helemaal op het scherm passen in de andere weergaven.</para>
+
+<para
+>De onderdelen worden elk op een regel getoond. In kolommen wordt getoond of er een herinnering is ingesteld (door middel van een pictogram van een bel), of het onderdeel meerdere keren wordt herhaald (pictogram met een rondlopende pijl), en informatie over begin- en eindtijden. Door de muisaanwijzer er boven te houden, krijgt u in een tekstballon gedetailleerde informatie over het item.</para>
+
+<para
+>U kunt de afsprakenlijst vinden in het menu  <menuchoice
+><guimenu
+>Weergave</guimenu
+> <guimenuitem
+>Afsprakenlijst</guimenuitem
+></menuchoice
+>.</para>
+
+
+</sect2>
+
+<sect2 id="agenda-view">
+<title
+>Agendaweergave</title>
+
+<!--TODO: add agenda view options, color of resources and tags-->
+
+<para
+>In de agendaweergave ziet u de afspraken en taken voor een of meer dagen, in chronologische volgorde. U ziet hier ook de duur van elke afspraak in de tijdtabel.De agendaweergave krijgt u door  <menuchoice
+><guimenu
+>Weergave</guimenu
+> <guimenuitem
+>Agenda</guimenuitem
+></menuchoice
+> te selecteren, of door op de knop  the <inlinemediaobject
+><imageobject
+><imagedata fileref="view-calendar-agenda.png" format="PNG"/></imageobject
+></inlinemediaobject
+> in de taakbalk  te drukken.</para>
+<para
+>De <guilabel
+>Dag-</guilabel
+>, <guilabel
+>Werkweek-</guilabel
+> en  <guilabel
+>Week-</guilabel
+>weergaven zijn variaties op de agendaweergave. In feite  kunt u zelfs altijd de in de agenda getoonde dagen instellen in de datumnavigator.</para>
+<!--check bell + chasing-arrows icon here-->
+<para
+>Links in de weergave wordt de tijd aangegeven met een tijdbalk. Rechts is een schuifbalk aanwezig als de dag niet geheel op het scherm past (wat gewoonlijk het geval is). Elke rechthoek in het overzicht representeert een afzonderlijke afspraak of taak, gepland voor dat tijdstip, en toont de begin- en eindtijd en een samenvatting. Het pictogram van een <guiicon
+>bel</guiicon
+> geeft aan dat er een herinnering is ingesteld, en een pictogram van een <guiicon
+>rondlopende pijl</guiicon
+> betekent dat dit wordt herhaald. Door de muisaanwijzer er boven te houden verschijnt er een tekstballon met gedetailleerde informatie. U kunt &korganizer; een rode tijdlijn (Marcus Bains-lijn) laten tonen door het vakje <guilabel
+>Actuele tijd tonen (Marcus Bains-lijn)</guilabel
+> te selecteren in de <link linkend="config-main-views"
+>Instellingen-dialoog van &korganizer;</link
+>.</para>
+
+<para
+>De tijdsduur van elke afspraak kan met de muis worden aangepast. Plaats de muisaanwijzer op de boven- of onderkant van de afspraak en sleep die naar boven of naar beneden. Op deze manier kunt u de start- of eindtijd van uw afspraak aanpassen. Dit werkt ook in de Week- en Werkweekweergave. Met andere woorden, het is mogelijk om de start- en eindtijd van een afspraak aan te passen door met de muis de boven- of onderrand van de afspraak te verplaatsen naar het nieuwe tijdstip.</para>
+
+<para
+>Elke afspraak kan met de muis worden verplaatst naar een andere datum of tijdstip. Plaats de muisaanwijzer op de afspraak en sleep die naar de nieuwe datum of tijd. Dit werkt ook in de Week- en Werkweekweergave. Afspraken kunnen naar andere, in de agendaweergave niet zichtbare data worden verplaatst. Plaats de muisaanwijzer boven de afspraak, en sleep die naar de datumnavigator.</para>
+
+<para
+>Aangezien in de agenda in de meeste gevallen niet de gehele dag in een keer kan worden weergegeven, is de schuifbalk aan de zijkant nodig om de gehele dag te kunnen bekijken. Als er echter afspraken zijn die op dit moment niet zichtbaar zijn, dan ziet u een klein pijltje aan de bovenkant of onderkant.</para>
+
+<tip
+><para
+>Er zijn twee handige sneltoetsen voor het toevoegen van afspraken: <itemizedlist>
+<listitem
+><para
+>Als u dubbelklikt op een tijdstip waarop nog niets is gepland zal &korganizer; automatisch een afspraak aanmaken met een standaard tijdsduur (zoals ingesteld in de instellingen). U kunt meteen de samenvatting van de afspraak geven. De duur van de gebeurtenis wordt <quote
+>automatisch</quote
+> per half uur ingesteld, afgerond naar het dichtstbijzijnde halve uur vanaf waar u klikte.</para
+></listitem>
+<listitem
+><para
+>Selecteer een tijdstip waarop nog niets is gepland, en dubbelklik er op, of begin met het invoeren van de samenvatting van de nieuwe afspraak. &korganizer; stelt dan automatisch de tijdsduur in, en de starttijd zoals die is gedefinieerd door het geselecteerde gebiedje in de agenda.</para
+></listitem>
+</itemizedlist>
+</para
+></tip>
+
+<para
+>Om u bij het organiseren van uw agenda bij te staan, wordt de categorie van de afspraken aangegeven door een kleur, en afhankelijk van <link linkend="config-main-views"
+>de instellingen van &korganizer;</link
+>, kan die de kleur ook van de <link linkend="managing-resources"
+>gegevensbron</link
+> aangeven. Dus als u <link linkend="categories-view"
+>tags aan afspraken</link
+> en <link linkend="config-main-colors"
+>verschillende kleuren aan tags</link
+> toekent, kunt u aan de kleur, de soort afspraak heel gemakkelijk herkennen. </para>
+
+<para
+>In de agendaweergave kunt u alle afspraken in uw agenda's in één overzicht samengevoegd weergeven, of in een overzicht voor elke agenda apart. Het is ook mogelijk om om beide soorten overzichten te hebben in tabbladen, dit kan worden ingesteld in <link linkend="config-main-views"
+>de dialoog voor het instellen van voorkeuren</link
+>. </para>
+
+<sect3 id="day-view">
+<title
+>Dagweergave</title>
+
+<para
+>Hierin wordt de <link linkend="agenda-view"
+>agendaweergave</link
+> weergegeven voor een enkele dag.</para>
+
+<para
+>U kunt de dagweergave instellen in het menu <menuchoice
+><guimenu
+>Ga</guimenu
+> <guimenuitem
+>Dag</guimenuitem
+></menuchoice
+>, of door op de knop <inlinemediaobject
+><imageobject
+><imagedata fileref="view-calendar-day.png" format="PNG"/></imageobject
+></inlinemediaobject
+><guilabel
+>Dag</guilabel
+> in de taakbalk te drukken.</para>
+
+</sect3>
+
+<sect3 id="next-x-days-view">
+<title
+>Weergave voor de volgende X dagen</title>
+
+<para
+>Hierin wordt de <link linkend="agenda-view"
+>agendaweergave</link
+> weergegeven voor de volgende dagen, te beginnen met vandaag. Het aantal te tonen dagen kan worden ingesteld in de <link linkend="config-main-views"
+>dialoog voor het instellen van &korganizer;</link
+>. De standaard waarde is 3.</para>
+
+<para
+>U kunt de weergave voor de volgende dagen verkrijgen met <menuchoice
+><guimenu
+>Ga</guimenu
+> <guimenuitem
+>Volgende X dagen</guimenuitem
+></menuchoice
+>, (X is hier het aantal dagen, gewoonlijk 3).</para>
+
+</sect3>
+
+
+<sect3 id="week-view">
+<title
+>Weekweergave</title>
+
+<para
+>De weekweergave is soortgelijk aan de dagweergave. De afspraken voor zeven dagen worden naast elkaar weergegeven.</para>
+
+<para
+>Ga naar de weekweergave met <menuchoice
+><guimenu
+>Ga</guimenu
+> <guimenuitem
+>Week</guimenuitem
+></menuchoice
+>, of druk op de knop  the <inlinemediaobject
+><imageobject
+><imagedata fileref="view-calendar-week.png" format="PNG"/></imageobject
+></inlinemediaobject
+><guilabel
+>Week</guilabel
+> in de taakbalk.</para>
+
+</sect3>
+
+<sect3 id="workweek-view">
+<title
+>Weergave voor werkweek</title>
+
+<para
+>Die is identiek aan de Weekweergave, behalve dat alleen de werkdagen van de week worden getoond.</para>
+
+<para
+>U kunt de weergave voor de werkweek vinden in het menu <menuchoice
+><guimenu
+>Ga</guimenu
+> <guimenuitem
+>Werkweek</guimenuitem
+></menuchoice
+>.</para>
+
+</sect3>
+
+</sect2>
+
+
+<sect2 id="month-view">
+<title
+>Maandweergave</title>
+
+<!--TODO: add month view options-->
+
+<para
+>De maandweergave toont alle afspraken en taken voor de huidige maand in de  bekende maandkalenderindeling. Elke cel in de weergave bevat een dag, en alle afspraken voor die dag, die getoond kunnen worden in de beschikbare ruimte (door het venster te maximaliseren kunt u dus meer afspraken zien). Informatie over herhaalde afspraken en herinneringen worden getoond met de pictogrammen <guiicon
+>Bel</guiicon
+> en <guiicon
+>Rondlopende pijl</guiicon
+>, net als in andere weergaven.</para>
+
+<para
+>U kunt in de maandweergave navigeren met behulp van de pijlen in de datumnavigator, of in het menu <guilabel
+>Ga</guilabel
+>. Omdat in het zichtbare deel van een dagcel mogelijk niet alles kan worden weergegeven, kunt u met het toetsenbord erdoor bladeren, of  alle afspraken of taken op een dag bekijken met behulp van de schuifbalken.</para>
+
+<para
+>Als u de muisaanwijzer even boven een agendaitem houdt, ziet u een tekstballon met de details van dat item. Door op een lege plek te dubbelklikken kunt u een afspraak aanmaken, door te dubbelklikken op een agendaitem kunt u die bewerken.</para>
+
+<para
+>Om u bij het organiseren van uw agenda bij te staan, kan  de tag van de afspraken aangegeven met een kleur, en afhankelijk van <link linkend="config-main-views"
+>de instellingen van &korganizer;</link
+>, ook van de <link linkend="managing-resources"
+>gegevensbron</link
+>. Dus als u <link linkend="categories-view"
+>categorieën aan afspraken</link
+> en <link linkend="config-main-colors"
+>verschillende kleuren aan tags</link
+> toekent, kunt u aan de kleur de soort afspraak heel gemakkelijk herkennen. </para>
+
+<para
+>U kunt de maandweergave verkrijgen met <menuchoice
+><guimenu
+>Weergave</guimenu
+> <guimenuitem
+>Maand</guimenuitem
+></menuchoice
+> of door te klikken op de knop <inlinemediaobject
+><imageobject
+><imagedata fileref="view-calendar-month.png" format="PNG"/></imageobject
+></inlinemediaobject
+><guilabel
+>Maand</guilabel
+>  in de werkbalk.</para>
+
+</sect2>
+
+<!-- Timeline View-->
+
+<sect2 id="timeline-view">
+<title
+>Tijdlijnweergave</title>
+
+<para
+>In de tijdlijnweergave krijgt u een Gantt-overzicht van alle afspraken binnen een geselecteerde tijdsspanne. Iedere agenda wordt weergegeven op een aparte regel. </para>
+
+<para
+>Als u de muisaanwijzer even boven een agendaitem houdt, ziet u een tekstballon met de details van dat item. Door op een lege plek te dubbelklikken kunt u een afspraak aanmaken, door te dubbelklikken op een agendaitem kunt u die bewerken.</para>
+
+</sect2>
+
+<sect2 id="todo-view">
+<title
+>Takenlijst</title>
+
+<para
+>In de takenlijst is genoeg ruimte om snel notities te maken van wat u (nu ofop langere termijn) moet doen. De takenlijst is in de zijbalk direct onder de datumnavigator te vinden. U kunt de takenlijst ook in het hoofdpaneel tonen door te klikken op de knop <inlinemediaobject
+><imageobject
+> <imagedata fileref="view-calendar-tasks.png" format="PNG"/></imageobject
+> </inlinemediaobject
+><guilabel
+>Takenlijst</guilabel
+> in de werkbalk, of door in het menu <menuchoice
+><guimenu
+>Weergave</guimenu
+><guimenuitem
+>Takenlijst</guimenuitem
+></menuchoice
+> te selecteren</para>
+
+<para
+>U kunt uw taak een <quote
+>(verwachte) einddatum</quote
+> toekennen, met andere woorden een datum wanneer een taak afgerond moet zijn.</para>
+
+<para
+>U kunt ook prioriteiten toekennen aan taken. De taken zullen gesorteerd op prioriteit worden getoond. Hoe lager het getal, hoe hoger de prioriteit, met als uitzondering dat nul (0) aangeeft dat er <quote
+>geen prioriteit</quote
+> is ingesteld.</para>
+
+<para
+>U kunt een nieuwe taak aanmaken door te rechtsklikken in de takenlijst in de zijbalk, of in de weergave van de takenlijst, en door in het menu op <guimenuitem
+>Nieuwe taak</guimenuitem
+> te klikken. Als u op een bestaande taak klikt, krijgt u meer keuzes te zien: u kunt een samenvatting <guimenuitem
+>Tonen</guimenuitem
+>, de details van de taak <guimenuitem
+>Bewerken...</guimenuitem
+>, de taak helemaal <guimenuitem
+>Wissen</guimenuitem
+>, of u kunt een <guimenuitem
+>Nieuwe subtaak...</guimenuitem
+> aanmaken. U kunt bijvoorbeeld een grote taak aanmaken, zoals het bouwen van een huis, en subtaken zoals het uitzoeken van een goede bouwplaats, een architect inschakelen, arbeiders in dienst nemen, en uiteindelijk een feestje regelen voor uw vrienden.</para>
+
+<para
+>Wanneer u <guilabel
+>Nieuwe taak</guilabel
+> kiest, wordt een nieuwe taak aangemaakt en krijgt u een schermpje te zien waarin u alle benodigde <link linkend="entering-data-to-do"
+>informatie</link
+> in kunt vullen.</para>
+
+<para
+>Klik op een taak in de lijst om deze te selecteren. Als u op het vierkantje links naast de taakbeschrijving klikt, geeft u aan dat deze taak <quote
+>voltooid</quote
+> is. Als u op de taakbeschrijving dubbelklikt, kunt u de details van de taak bewerken.</para>
+
+<para
+>U kunt ook <guilabel
+>Voltooid verwijderen</guilabel
+> in het menu kiezen, dat verschijnt wanneer u met de <mousebutton
+>rechter</mousebutton
+> muisknop klikt, om alle als voltooid gemerkte taken te verwijderen.</para>
+
+<para
+>Taken kunnen ook gesleept worden naar een andere plek,  om de volgorde van de taken te veranderen of om taken uit te wisselen met agenda's in andere vensters. Er is  <link linkend="other-features-drag-and-drop"
+>hier</link
+> een overzicht van alle acties met slepen en neerzetten.</para>
+</sect2>
+
+<sect2 id="journal-view">
+<title
+>Journaalweergave</title>
+<para
+>In de journaalweergave kunt u uw gedachten,  voorvallen of ervaringen opslaan. u kunt de journaalweergave in het hoofdpaneel weergeven door op de knop <inlinemediaobject
+><imageobject
+> <imagedata fileref="journal-new.png" format="PNG"/></imageobject
+> </inlinemediaobject
+><guilabel
+>Journaalweergave</guilabel
+> in de werkbalk te drukken, of in he menu <menuchoice
+><guimenu
+>Beeld</guimenu
+><guimenuitem
+>Journaal</guimenuitem
+> </menuchoice
+> te kiezen.</para>
+
+<para
+>Als u op de koppeling  <guilabel
+>Niew journaal ...</guilabel
+> klikt (of op de knop <guibutton
+>Nieuw Journaal ...</guibutton
+>), wordt een nieuwe journaalingang aangemaakt. Indien u een journaalingang wilt bewerken klikt u op het tekstvak en kunt u dit hierin doen! Een journaalingang kunt u verwijderen, door op de <inlinemediaobject
+> <imageobject
+><imagedata fileref="edit-delete.png" format="PNG"/> </imageobject
+></inlinemediaobject
+>verwijderknop te drukken  in het journaalbeeld.</para>
+
+</sect2>
+
+</sect1>
+
+<sect1 id="categories-view">
+<title
+>Tags</title>
+
+<!--TODO: Add screenshot?-->
+
+<para
+>Om u te helpen bij het in groepen indelen van uw ingangen, kunt u tags toewijzen aan afspraken, taken en journaalingangen. Als u dit doet, kunt u die later gebruiken bij het zoeken, filteren en tonen van de afspraken en taken.</para>
+
+<para
+>U kunt categorieën toewijzen bij het bewerken of aanmaken van nieuwe <link linkend="entering-data-events-general"
+>afspraken</link
+>, of <link linkend="entering-data-to-do-general"
+>taken</link
+>, door een categorie te selecteren in het keuzemenu  <guilabel
+>Tags</guilabel
+> in het tabblad <guilabel
+>Algemeen</guilabel
+>. U kunt hierbij steeds meerdere tags toekennen.</para>
+
+<para
+>U kunt categorieën aanmaken, wissen en bewerken door in het menu <menuchoice
+> <guimenu
+>Instellingen</guimenu
+><guimenuitem
+>Tags beheren...</guimenuitem
+> </menuchoice
+> de dialoog <guilabel
+>Categorieën bewerken</guilabel
+> te openen. Als u <link linkend="config-main-colors"
+> aan  tags verschillende kleuren</link
+> toekent, zult u later het type van een afspraak snel herkennen aan de kleur, in de agendaweergave, of in de maandweergave, afhankelijk van de <link linkend="config-main-views"
+>instellingen voor de weergaven in &korganizer;</link
+>). </para>
+
+</sect1>
+
+<sect1 id="filters-view">
+<title
+>Filters</title>
+
+<para
+>Om u bij het bekijken, zoeken en exporteren van uw gegevens te helpen, kunt u voor uw agenda's filters aanmaken en gebruiken. Als u bijvoorbeeld geen voltooide taken wilt zien, kunt u die eruit filteren, in plaats van die te <link linkend="managing-purge-archive"
+>verwijderen</link
+>. Als u tags toekent, kunt u die gebruiken bij het aanmaken van filters.</para>
+
+<para
+>Voor het aanmaken, wissen en bewerken van filters, kunt u door op <menuchoice
+> <guimenu
+>Instellingen</guimenu
+><guimenuitem
+>Weergavefilters beheren...</guimenuitem
+> </menuchoice
+> te klikken de dialoog <guilabel
+>Agendafilters bewerken</guilabel
+> openen. In deze dialoog kunt u filters aanmaken, verwijderen en bewerken,  die van invloed zijn op welke items er in &korganizer; zullen worden getoond.</para>
+
+<!--TODO: Add detailed description of the dialog. Is it stable yet?-->
+
+<para
+>Het submenu <menuchoice
+><guimenu
+>Weergave</guimenu
+> <guisubmenu
+>Filter</guisubmenu
+></menuchoice
+> en het neerklapmenu in de werkbalk voor filters geven toegang tot alle beschikbare filters die zijn aangemaakt in de dialoog <link linkend="menu-settings-edit-filters"
+><guilabel
+>Agendafilters bewerken</guilabel
+></link
+>. Om het tonen van de werkbalk voor filters aan en uit te zetten, klikt u op <menuchoice
+><guimenu
+>Instellingen</guimenu
+> <guisubmenu
+>Getoonde werkbalken</guisubmenu
+><guimenuitem
+>Filters-werkbalk</guimenuitem
+></menuchoice
+>. Wilt u geen filters gebruiken, dan kiest u <guilabel
+>Geen filter</guilabel
+>.</para>
+
+<para
+>Filters zijn nuttig bij het <link linkend="managing-export"
+>exporteren van uw agenda</link
+>. Als u een filter gebruikt, worden alleen de gefilterde (zichtbare) items geëxporteerd. Ook zijn filters meer effectief als de items al in <link linkend="categories-view"
+>tags</link
+> zijn ingedeeld en georganiseerd, omdat het heel eenvoudig is om filters aan te maken op basis van tags.</para>
+
+</sect1>
+
+<sect1 id="search-view">
+<title
+>Zoeken</title>
+
+<para
+>U kunt zoeken naar items (afspraken, taken of journaalingangen) volgens samenvatting, beschrijving, en/of tags, met behulp van het menu  <menuchoice
+><guimenu
+>Bewerken</guimenu
+> <guimenuitem
+>Zoeken</guimenuitem
+></menuchoice
+>, of door te klikken op de knop <keycombo action="simul"
+>&Ctrl;<keycap
+>F</keycap
+> </keycombo
+>. Er wordt alleen op de opgegeven velden gezocht.</para>
+
+<tip
+><para
+>U kunt jokertekens gebruiken als u de exacte samenvatting niet meer weet. Als u één teken niet meer weet, kunt u een <userinput
+>?</userinput
+> gebruiken in plaats van het onbekende teken. Als u meerdere lettertekens niet meer weet, vervangt u die door een <userinput
+>*</userinput
+>. Als u bijvoorbeeld nog weet dat de samenvatting het woord  <emphasis
+>werk</emphasis
+> bevat en ergens daarna <emphasis
+>geving</emphasis
+>, gebruik dan <userinput
+>werk*geving</userinput
+> in het zoekvenster. &korganizer; zal dan de samenvattingen vinden die teksten bevatten zoals <quote
+>Moet naar werk in de omgeving van</quote
+>, <quote
+>Ik zoek werkzaamheden als zingeving</quote
+> en dergelijke. Bij het zoeken wordt niet op hoofdletters gelet.</para
+></tip>
+
+<para
+> Het resultaat van de zoekopdracht is een lijst van afspraken, journaalingangen en/of taken die de opgegeven zoekterm bevatten. De getoonde karakteristieken zijn dezelfde als in de <link linkend="list-view"
+>Lijstweergave</link
+>.</para>
+
+<para
+>U kunt op de resultaten klikken. Door op een resultaat te dubbelklikken worden de details van de afspraak getoond, en kunnen die worden bewerkt. Voor meer informatie over deze details zie  <link linkend="entering-data-events"
+>afspraken invoeren</link
+> en <link linkend="entering-data-to-do"
+>Taken invoeren</link
+>.</para>
+
+</sect1>
+
+</chapter>
+
+<chapter id="entering-data"
+>  <!--updated to 5.4.40-->
+
+<title
+>Gegevens invoeren</title>
+
+<sect1 id="entering-data-events">
+<title
+>Afspraken</title>
+
+<para
+>Afspraken zijn afspraken in de toekomst of in het verleden, zoals zakelijke bijeenkomsten, verjaardagen en bioscoopbezoeken. Afspraken kunnen ook meerdere dagen duren, zoals bijvoorbeeld de schoolvakanties.</para>
+
+<para
+>Nieuwe afspraken invoeren is erg eenvoudig. Klik in het menu op <menuchoice
+><guimenu
+>Acties</guimenu
+><guimenuitem
+>Nieuwe afspraak...</guimenuitem
+></menuchoice
+>. U krijgt dan een venster te zien met onderin  zes tabbladen.</para>
+
+<para
+>Een nieuwe afspraak kan ook op een andere manier worden ingevoerd:</para>
+
+<procedure>
+<step
+><para
+>Ga in de datumnavigator  naar de juiste datum.</para
+></step>
+
+<step
+><para
+>Kies de <guilabel
+>Agenda</guilabel
+>weergave en klik op het pictogram van de gewenste weergave in de <guimenu
+>weergavewerkbalk</guimenu
+>, of selecteer de gewenste weergave in het menu <guimenu
+>Ga</guimenu
+>. Omdat uw afspraak op een bepaald tijdstip begint,  moet u een <link linkend="reference-menus-view"
+>weergave</link
+> kiezen die  de uren van de dag toont. U kunt de weergaven voor <guimenuitem
+>Dag</guimenuitem
+>, <guimenuitem
+>Werkweek</guimenuitem
+> of <guimenuitem
+>Week</guimenuitem
+> kiezen. De <guimenuitem
+>Maand</guimenuitem
+>weergave is meer geschikt voor taken, zoals hierna wordt beschreven.</para
+></step>
+
+<step
+><para
+>In het hoofdpaneel kunt u dubbelklikken op tijdstip en dag waarop de afspraak begint. </para
+></step>
+
+<step
+><para
+>Een dialoog met zes tabbladen onderin verschijnt. Voer uw gegevens in zoals hieronder wordt beschreven.</para
+></step>
+</procedure>
+
+<screenshot id="screenshot-event-general">
+<screeninfo
+>Een schermafdruk van de dialoog Afspraak bewerken in &korganizer; - Tabblad Algemeen</screeninfo>
+<mediaobject>
+<imageobject
+><imagedata fileref="event-general.png" format="PNG"/></imageobject>
+<textobject
+><phrase
+>Een schermafdruk van de dialoog Afspraak bewerken in &korganizer; - Tabblad Algemeen</phrase
+></textobject>
+<caption
+><para
+>Een schermafdruk van de dialoog Afspraak bewerken in &korganizer; - Tabblad Algemeen</para
+></caption>
+</mediaobject>
+</screenshot>
+
+<para
+>Dit is een uitgebreide beschrijving van de velden en beeldelementen (widgets) in het venster. Niet alle velden hoeven ingevuld te worden, sommige kunnen leeg blijven. Meer informatie vindt u in hetdeel <link linkend="entering-data-required-fields"
+>Verplichte velden</link
+>. En als u voorbeelden wilt, dan vindt u die in het deel <link linkend="examples-entering-event"
+>afspraak invoeren</link
+>. </para>
+
+<variablelist>
+<varlistentry>
+<term
+><guilabel
+>Samenvatting:</guilabel
+></term>
+<listitem
+><para
+>Geef een korte beschrijving van de afspraak in het veld <guilabel
+>Sanebvatting</guilabel
+>. Deze tekst wordt getoond in het hoofdvenster van &korganizer;.</para
+></listitem>
+</varlistentry>
+
+<varlistentry>
+<term
+><guilabel
+>Locatie:</guilabel
+></term>
+<listitem
+><para
+>Geef in het veld <guilabel
+>Locatie</guilabel
+> een korte beschrijving van de  plaats van de afspraak.</para
+></listitem>
+</varlistentry>
+
+<varlistentry>
+<term
+><guilabel
+>Begin</guilabel
+> en <guilabel
+>Einde</guilabel
+></term>
+<listitem
+><para
+>&korganizer; stelt een begin- en eindtijd van de afspraak voor. Er wordt vanuit gegaan dat afspraken op dezelfde dag beginnen en eindigen. Verander dit als dit nodig is. Vul de tijdstippen direct in of gebruik de <link linkend="glossary" endterm="gloss-calendar-widget"
+>kalender-widget</link
+>. Kies de tijd met intervallen van een kwartier, of vul de tijden direct in, in de hiervoor bestemde velden. Deze velden zijn alleen beschikbaar als het vakje voor <guilabel
+>Duurt de gehele dag</guilabel
+> niet is aangevinkt.</para
+></listitem>
+</varlistentry>
+
+</variablelist>
+
+<sect2 id="entering-data-events-general">
+<title
+>Tabblad Algemeen</title>
+
+<variablelist>
+<varlistentry>
+<term
+>Details:</term>
+<listitem
+><para
+>In het grote rechthoekige naamloze vak kunt u een uitgebreide beschrijving van de afspraak invullen. U kunt de beschrijving zo gedetailleerd maken als u zelf wilt. Als uw auto naar de garage moet, kunt u bijvoorbeeld een lijst maken van alles dat aan uw auto gerepareerd moet worden. Op een later tijdstip kunt u deze lijst afdrukken en aan de monteur geven. Ook kunt u op deze manier boodschappenlijstjes maken. Die kunt u afdrukken en meenemen naar de winkel.</para
+></listitem>
+</varlistentry>
+
+<varlistentry>
+<term
+><guilabel
+>Tags</guilabel
+></term>
+<listitem
+><para
+>U kunt een aan een invoer in de agenda meerdere <link linkend="categories-view"
+>tags</link
+> toekennen . Klik op het keuzemenu waarna alle beschikbare tags zichtbaar worden. Selecteer hierin de juiste categorieën voor de gebeurtenis.</para>
+<para
+>U kunt ook een nieuwe tag toevoegen, een tag wijzigen of wissen in de dialoog <guilabel
+>Tags bewerken</guilabel
+>. Open deze dialoog met  <menuchoice
+> <guimenu
+>Instellingen</guimenu
+> <guimenuitem
+>Tags beheren</guimenuitem
+></menuchoice
+>.</para>
+
+<tip
+><para
+>Voorbeelden: uw taalles op uw werk behoort mogelijk bij de tags Bedrijf en Educatie; uw trouwdag behoort tot de tag Persoonlijk of Speciale gelegenheid - u mag kiezen.</para
+></tip>
+</listitem>
+</varlistentry>
+
+<varlistentry>
+<term
+><guilabel
+>Toegang:</guilabel
+></term>
+<listitem
+><para
+>Kies <guilabel
+>Publiek</guilabel
+>, <guilabel
+>Privé</guilabel
+> of  <guilabel
+>Vertrouwelijk</guilabel
+> voor een privé of vertrouwelijke afspraak.Tegenwoordig stelt deze keus het attribuut <quote
+>CLASS</quote
+> van afspraken juist in  naar <quote
+>PUBLIek</quote
+>, <quote
+>PRIVÉ</quote
+> of  <quote
+>Vertrouwelijk</quote
+>. Echter, of deze instellingen ook werkelijk worden gebruikt, hangt af van de client (het programma) en/of de implementatie van de groupware server.</para>
+<warning
+><para
+>Op dit moment toont <emphasis
+>&korganizer; nog de items van andere personen, die als vertrouwelijk zijn aangemerkt</emphasis
+>. Andere clients zullen dit misschien anders doen, maar wees voorzichtig met het publiceren van privé of vertrouwelijke afspraken: iCalendar is een tekstbestand, dat met elke tekstverwerker kan worden gelezen (door iemand met leestoegang). Dus als u de items werkelijk vertrouwelijk wilt houden, moet u er zeker van zijn een alleen voor u toegankelijke bron te gebruiken.</para
+></warning
+></listitem>
+</varlistentry>
+
+</variablelist>
+
+</sect2>
+
+<sect2 id="entering-data-events-attendees">
+<title
+>Tabblad Deelnemers</title>
+
+<para
+>Kies in dit tabblad wie u voor uw afspraak wilt uitnodigen.</para>
+
+<screenshot id="screenshot-event-attendees">
+<screeninfo
+>Een schermafdruk van de dialoog Afspraak bewerken in &korganizer; - Tabblad Deelnemers</screeninfo>
+<mediaobject>
+<imageobject
+><imagedata fileref="event-attendees.png" format="PNG"/></imageobject>
+<textobject
+><phrase
+>Een schermafdruk van de dialoog Afspraak bewerken in &korganizer; - Tabblad Deelnemers</phrase
+></textobject>
+<caption
+><para
+>Een schermafdruk van de dialoog Afspraak bewerken in &korganizer; - Tabblad Deelnemers</para
+></caption>
+</mediaobject>
+</screenshot>
+
+<variablelist>
+<varlistentry>
+<term
+><guilabel
+>Organisator van de bijeenkomst:</guilabel
+></term>
+<listitem
+><para
+>Stelt de identiteit in van de organisator van deze taak of afspraak. Als &korganizer; is ingesteld op het sturen van e-mails voor uitnodigingen, wordt de geselecteerde identiteit gebruikt bij het versturen van e-mails. De standaard identiteit kan worden ingesteld in de sectie  <guilabel
+>Persoonlijk</guilabel
+> in de instellingen van &korganizer;. Daarnaast worden identiteiten verzameld uit de instellingen van &kmail; en vanuit uw adresboek.</para
+></listitem>
+</varlistentry>
+
+<varlistentry>
+<term
+>Deelnemerslijst</term>
+<listitem
+><para
+>De lijst midden in dit tabblad toont de deelnemers die voor deze afspraak zijn geselecteerd. Hierin kunt u deelnemers toevoegen door hun naam en e-mailadres in te voeren, of deelnemers te bewerken of te verwijderen.</para>
+<para
+>Van deelnemers in uw adresboek hoeft u het e-mailadres niet te kennen en in te typen. Klik op <guibutton
+>Geadresseerde selecteren...</guibutton
+> en kies de deelnemers in de getoonde lijst. De lijst bevat de adressen die in het standaard &kde;-adresboek voorkomen, dat ook gebruikt wordt door bijvoorbeeld &kmail;. Eventueel kan het adresboek ook als afzonderlijke toepassing gestart worden (&kaddressbook;).</para>
+</listitem>
+</varlistentry>
+
+<varlistentry>
+<term
+>Deelnemers</term>
+<listitem
+><para
+>Geef de rol op van de deelnemer (Deelnemer, Optionele deelnemer, Toeschouwer, Voorzitter), door die te kiezen in het keuzemenu. De rol is een korte beschrijving van hoe de deelnemer aan de afspraak zal deelnemen. </para
+></listitem>
+</varlistentry>
+
+<varlistentry>
+<term
+>Status</term>
+<listitem
+><para
+>Kies de status van de deelnemer (Vereist handeling, Geaccepteerd, Geweigerd, Voorlopig, Gedelegeerd),  door die te kiezen in het keuzemenu rechts van de invoer. Als u planning gebruikt met behulp van groupware (groepsplanning), en antwoord van uw deelnemers verzoekt, zal de status van de deelnemers bij het ontvangen van een antwoord automatisch worden aangepast. Verzoekt u geen antwoord, dan zal u dit zelf moeten doen.</para
+></listitem>
+</varlistentry>
+
+<varlistentry>
+<term
+>Antwoord verzoeken</term>
+<listitem
+><para
+>Vink <guilabel
+>Antwoord verzoeken</guilabel
+> aan in het keuzemenu als u van deze deelnemer een antwoord wil krijgen op de uitnodiging. Na antwoord ontvangt de deelnemer verdere informatie over de afspraak. In de lijst met details wordt dit door een envelopje aangegeven. Dit is vooral nuttig bij planning met groupware (groepsplanning), omdat de status van de deelnemers automatisch wordt bijgehouden.</para
+></listitem>
+</varlistentry>
+
+ <!-- Participiants: no conflicts Reschedule button
+ What is that? How does it work?-->
+
+</variablelist>
+
+</sect2>
+
+<!--Fixme Resources tab missing -->
+
+<sect2 id="entering-data-events-reminder">
+<title
+>Tabblad Herinnering</title>
+<variablelist>
+<varlistentry>
+<term
+>Herinnering</term>
+<listitem
+><para
+>Selecteer een standaard herinnering in het keuzemenu en druk op de knop <guibutton
+>Toevoegen</guibutton
+> als &korganizer; u aan een afspraak moet herinneren.</para>
+<para
+>Met de knop <guibutton
+>Instellingen</guibutton
+> opent u de dialoog <guilabel
+>Bestaande  herinnering bewerken</guilabel
+>. In deze dialoog kunt u het aantal minuten, uren of dagen kiezen dat u wilt worden herinnerd voor of na de afspraken, kunt u de herhalingsintervallen kiezen voor de herinneringen, en speciale herinneringen aanmaken met tekstberichten en afspelen van geluiden.</para>
+</listitem>
+</varlistentry>
+
+</variablelist>
+
+</sect2>
+
+<sect2 id="entering-data-events-recurrence">
+<title
+>Tabblad Herhalingen</title>
+
+<para
+>Sommige afspraken worden regelmatig herhaald. Dit kan op dit tabblad precies  worden  geregeld.</para>
+
+<screenshot id="screenshot-event-recurrence">
+<screeninfo
+>Een schermafdruk van de dialoog Afspraak bewerken in &korganizer; - Tabblad Herhalingen</screeninfo>
+<mediaobject>
+<imageobject
+><imagedata fileref="event-recurrence.png" format="PNG"/></imageobject>
+<textobject
+><phrase
+>Een schermafdruk van de dialoog Afspraak bewerken in &korganizer; - Tabblad Herhalingen</phrase
+></textobject>
+<caption
+><para
+>Een schermafdruk van de dialoog Afspraak bewerken in &korganizer; - Tabblad Herhalingen</para
+></caption>
+</mediaobject>
+</screenshot>
+
+<note
+><para
+>Deze instellingen kunt u activeren door de herhalingsregel te selecteren rechts van  <guilabel
+>Herhalingen</guilabel
+> in het keuzemenu. Als <guilabel
+>Nooit</guilabel
+> wordt geselecteerd, kunt u in dit tabblad niets wijzigen.</para
+></note>
+
+<sect3 id="recurrence-recurrence-rule">
+<title
+>Herhalingsregel</title>
+
+<para
+>Kies hier of de afspraak dagelijks, wekelijks, maandelijks of jaarlijks wordt herhaald. Hierna volgen meer gedetailleerde opties:</para>
+
+<variablelist>
+<varlistentry>
+<term
+><guilabel
+>Dagelijks</guilabel
+></term>
+<listitem
+><para
+>Geef op of de afspraak elke dag (1), om de dag (2) enzovoorts zal worden herhaald.</para
+></listitem>
+</varlistentry>
+
+<varlistentry>
+<term
+><guilabel
+>Wekelijks</guilabel
+></term>
+<listitem
+><para
+>Geef op of de afspraak elke week (1), om de week (2), enzovoorts zal  worden herhaald. Geef ook aan op welke dagen (zondag ... maandag) de afspraak plaatsvindt. </para
+></listitem>
+</varlistentry>
+
+<varlistentry>
+<term
+><guilabel
+>Maandelijks</guilabel
+></term>
+<listitem
+><para
+>U kunt de afspraak op dezelfde dag van de maand laten plaats hebben, of in een bepaalde week op een bepaalde dag van de week. U moet tussen beide mogelijkheden kiezen. Standaard wordt door &korganizer; aangenomen dat u de afspraak wilt herhalen op dezelfde dag van de maand (bij voorbeeld de 15e). U kunt ook de periode aanpassen, dus maandelijks, drie-maandelijks, en zo voorts.</para
+></listitem>
+</varlistentry>
+
+<varlistentry>
+<term
+><guilabel
+>Jaarlijks</guilabel
+></term>
+<listitem>
+<para
+>Dit komt overeen met Maandelijks. U moet opgeven of u een bepaalde dag in het jaar opgeeft (&eg;, de 250e dag in het jaar), een dag in een bepaalde week van de maand op een bepaalde weekdag (&eg;, de 2e dinsdag van maart),of  een dag in een bepaalde maand in het jaar. Standaard neemt &korganizer; aan dat u de dag in de maand bedoelt. U kunt de periode instellen voor afspraken die bijvoorbeeld elke twee of vier jaar plaats vinden.</para>
+</listitem>
+</varlistentry>
+</variablelist>
+</sect3>
+
+<sect3 id="recurrence-recurrence-range">
+<title
+>Herhalingsbereik</title>
+
+<para
+>Standaard wordt een herhaalde afspraak oneindig vaak herhaald; er komt dan geen <quote
+>einde</quote
+> aan de herhalingen. Als u dit niet wilt, kunt u het  herhalen op twee manieren beëindigen: door een einddatum op te geven of door het aantal herhalingen op te geven.</para>
+
+</sect3>
+
+<sect3 id="recurrence-exceptions">
+<title
+>Uitzonderingen</title>
+
+<para
+>U kunt wellicht een herhaling leuk hebben ingesteld, maar u realiseren  dat er enkele uitzonderingen zijn. Bij het maken van een rooster voor uw college, wilt u waarschijnlijk een uitzondering maken voor de schoolvakanties en dergelijke. In dit gedeelte kunt u uitzonderingen toevoegen of gemaakte uitzonderingen wijzigen of verwijderen. Wanneer de herhaling  plaatsvindt op een datum die bij de uitzonderingen vermeld staat, zal de afspraak <emphasis
+>niet</emphasis
+> worden getoond. Selecteer een datum in de datumkiezer en klik op de knop <guibutton
+>Toevoegen</guibutton
+> om deze datum als uitzondering in te stellen. U kunt een datum verwijderen als u die selecteert in het vak aan de rechterkant en dan klikt op de knop <guibutton
+>Verwijderen</guibutton
+>.</para>
+
+</sect3>
+</sect2>
+
+<sect2 id="entering-data-events-attachments">
+<title
+>Bijlagen</title>
+
+<para
+>Afspraken en taken kunnen bijlagen hebben. Bijlagen kunnen als koppelingen worden opgeslagen, of in het bericht zelf zijn opgenomen (inline genoemd). U kunt bijlagen toevoegen door op de <guibutton
+>Toevoegen</guibutton
+> te klikken.</para>
+
+<screenshot id="screenshot-event-attachments">
+<screeninfo
+>Een schermafdruk van de dialoog Afspraak bewerken in &korganizer; - Tabblad Bijlagen</screeninfo>
+<mediaobject>
+<imageobject
+><imagedata fileref="event-attachments.png" format="PNG"/></imageobject>
+<textobject
+><phrase
+>Een schermafdruk van de dialoog Afspraak bewerken in &korganizer; - Tabblad Bijlagen</phrase
+></textobject>
+<caption
+><para
+>Een schermafdruk van de dialoog Afspraak bewerken in &korganizer; - Tabblad Bijlagen</para
+></caption>
+</mediaobject>
+</screenshot>
+
+<para
+>Door <guilabel
+>Bijlage in agenda opslaan</guilabel
+> te selecteren, wordt de bijlage in uw agenda opgeslagen, wat, afhankelijk van de grootte van de bijlage, veel ruimte kan kosten. Wordt dit niet aangevinkt, dan wordt alleen een koppeling er naar toe in de agenda opgeslagen. Gebruik geen koppeling als de bijlage vaak wordt veranderd, of niet blijvend op de opgegeven locatie aanwezig is.</para>
+
+<para
+>In het contextmenu vindt u de volgende acties voor het werken met bijlagen:</para>
+
+<variablelist>
+
+<varlistentry>
+<term
+><guimenuitem
+>Openen</guimenuitem
+></term>
+<listitem
+><para
+>De geselecteerde bijlage tonen met de hiervoor bestemde toepassing.</para
+></listitem>
+</varlistentry>
+
+<varlistentry>
+<term
+><guimenuitem
+>Opslaan als...</guimenuitem
+></term>
+<listitem
+><para
+>Voor het opslaan van een bestaande bijlage onder een andere naam.</para
+></listitem>
+</varlistentry>
+
+<varlistentry>
+<term
+><guimenuitem
+>Kopiëren</guimenuitem
+>, <guimenuitem
+>Knippen</guimenuitem
+> en <guimenuitem
+>Plakken</guimenuitem
+></term>
+<listitem
+><para
+>Hiermee kunt u via het klembord kopiëren, knippen en plakken.</para
+></listitem>
+</varlistentry>
+
+<varlistentry>
+<term
+><guimenuitem
+>Verwijderen</guimenuitem
+></term>
+<listitem
+><para
+>Een geselecteerde bijlage verwijderen.</para
+></listitem>
+</varlistentry>
+
+<varlistentry>
+<term
+><guimenuitem
+>Eigenschappen...</guimenuitem
+></term>
+<listitem
+><para
+>Voor het bewerken van een bestaande bijlage.</para
+></listitem>
+</varlistentry>
+
+</variablelist>
+
+</sect2>
+
+<!--FIXME works with certain type of calendars e.g. google calendar ?-->
+<sect2 id="entering-data-events-freebusy">
+<title
+>Vrij/bezet</title>
+
+<para
+>Bij het toevoegen van deelnemers aan uw afspraak, moet u weten of zij op een bepaalde tijd vrij zijn of bezet. Als deelnemers hun vrij/bezetinformatie bekend maken, kunt u dat hier zien, en daar rekening mee houden bij het sturen van de uitnodigingen. </para>
+
+<para
+>In dit tabblad ziet u rechts het schema met vrij/bezetinformatie, met op elke regel informatie over een van de deelnemers, die in de lijst links worden genoemd. De gemerkte gebieden in het schema geven de tijden aan die reeds voor andere afspraken zijn bestemd, de niet gemerkte tijden zijn dus nog vrij. U kunt de afspraak met de muis slepen naar een ander tijdstip, of de tijdsduur aanpassen door de randen van de aangegeven tijdsduur met de muis te verslepen.</para>
+
+<para
+>De vrij/bezetinformatie is alleen beschikbaar als die door de deelnemer(s) beschikbaar wordt gesteld, en als &korganizer; voor het ontvangen ervan goed is ingesteld. Meer informatie over het configureren van &korganizer; voor het ontvangen en publiceren van vrij/bezet-gegevens vindt u hier: <xref linkend="config"/>. Na dubbelklikken op een deelnemer in de lijst kunt u de locatie van de vrij/bezet-gegevens invoeren. (Vert.: dus van de server waar die op zijn te vinden). </para>
+
+<variablelist>
+
+<varlistentry>
+<term
+><guilabel
+>Schalen</guilabel
+></term>
+<listitem
+><para
+>Stelt het zoomniveau in van het planningsschema. <guilabel
+>Uur</guilabel
+> toont een bereik van een aantal uren, <guilabel
+>Dag</guilabel
+> van een aantal   dagen, <guilabel
+>Week</guilabel
+> van een aantal weken, en <guilabel
+>Maand</guilabel
+> van een aantal maanden, terwijl <guilabel
+>Automatisch</guilabel
+> het meest geschikte tijdbereik kiest voor de onderhavige afspraak of taak.</para
+></listitem>
+</varlistentry>
+
+<varlistentry>
+<term
+><guibutton
+>Centreren bij start</guibutton
+></term>
+<listitem
+><para
+>Klik op deze knop als u het vrij/bezet-schema wilt centreren op de starttijd en dag van deze afspraak.</para
+></listitem>
+</varlistentry>
+
+<varlistentry>
+<term
+><guibutton
+>Datum kiezen</guibutton
+></term>
+<listitem
+><para
+>Klik op deze knop als u de afspraak automatisch wilt verplaatsen naar een datum en tijd waarop alle deelnemers vrij zijn.</para
+></listitem>
+</varlistentry>
+
+<varlistentry>
+<term
+><guibutton
+>Herladen</guibutton
+></term>
+<listitem
+><para
+>Klik op deze knop als u de vrij/bezetinformatie van alle deelnemers opnieuw wilt inlezen vanaf de betrokken servers.</para
+></listitem>
+</varlistentry>
+
+</variablelist>
+
+<para
+>Wanneer u de ingevoerde data wilt bevestigen, oproepen of erop terugkomen, kiest u één van de volgende actieknoppen: <guibutton
+>OK</guibutton
+>, <guibutton
+>Toepassen</guibutton
+> of <guibutton
+>Annuleren</guibutton
+>.</para>
+
+</sect2>
+
+<sect2 id="entering-data-events-template-buttons">
+<title
+>Sjablonen beheren</title>
+
+<para
+>Door op de knop <guilabel
+>Sjablonen beheren</guilabel
+> te klikken wordt een dialoog geopend, waarin u de huidige afspraak kunt opslaan als een sjabloon, dat u in volgende afspraken weer kunt gebruiken. U kunt bijvoorbeeld een sjabloon opslaan voor een bijeenkomst die plaats vindt op de zelfde locatie, en met de zelfde mensen.</para>
+<para
+>Met <guilabel
+>Toepassen</guilabel
+> kunt u een bestaand sjabloon weer gebruiken. Om met het voorgaande voorbeeld verder te gaan, u hoeft dan alleen nog maar de agenda voor de bijeenkomst op te geven.</para>
+
+</sect2>
+
+</sect1>
+
+<sect1 id="entering-data-to-do">
+<title
+>Taken</title>
+
+<para
+>In de takenlijst kunt u korte notities maken voor u zelf, over wat u nog moet doen.Taken zijn niet noodzakelijk aan tijden gebonden. Er zijn taken die op korte termijn moeten worden uitgevoerd, en taken voor de lange termijn. Bijvoorbeeld dat u binnen een week naar de kapper moet, of dat u uw oude auto binnen een jaar moet verkopen. Bij taken hoeft u dus niet op een bepaalde datum eraan worden herinnerd, maar wilt u alleen een overzicht van wat vóór een bepaalde datum moet gebeuren.</para>
+
+<para
+>Om een nieuwe taak in te voeren, kiest u <menuchoice
+><guimenu
+>Acties</guimenu
+><guimenuitem
+>Nieuwe taak...</guimenuitem
+></menuchoice
+>. U krijgt dan een venster met onderin de vijf tabbladen te zien.</para>
+
+<sect2 id="entering-data-to-do-general">
+<title
+>Tabblad Algemeen</title>
+
+<screenshot id="screenshot-todo-general">
+<screeninfo
+>Een schermafdruk van de dialoog Nieuwe taak bewerken in &korganizer;</screeninfo>
+<mediaobject>
+<imageobject
+><imagedata fileref="todo-general.png" format="PNG"/></imageobject>
+<textobject
+><phrase
+>Een schermafdruk van de dialoog Nieuwe taak bewerken in &korganizer;</phrase
+></textobject>
+<caption
+><para
+>Een schermafdruk van de dialoog Nieuwe taak bewerken in &korganizer;</para
+></caption>
+</mediaobject>
+</screenshot>
+
+<para
+>In dit tabblad vindt u een groot aantal van de opties die ook aanwezig zijn in de dialoog voor <guilabel
+>Afspraken bewerken</guilabel
+>, maar er zijn ook een aantal opties voor taken:</para>
+
+<variablelist>
+<varlistentry>
+<term
+><guilabel
+>Voltooiing</guilabel
+></term>
+<listitem
+><para
+>In dit neerklapmenu is het percentage voltooid aanvankelijk 0%, maar als de taak vordert, kunt u de voortgang van de taak aanpassen door het percentage te verhogen, in stappen van 10%.</para
+></listitem>
+</varlistentry>
+
+<varlistentry>
+<term
+><guilabel
+>Prioriteit</guilabel
+></term>
+<listitem
+><para
+>Ken een prioriteit toe aan de taak. In dit neerklapmenu kunt u kiezen uit prioriteit 1 tot en met 9, waarbij 1 de hoogste prioriteit betekent. Aanvankelijk wordt de prioriteit van een nieuwe taak op 5 (gemiddeld) ingesteld.</para
+></listitem>
+</varlistentry>
+</variablelist>
+
+</sect2>
+
+</sect1>
+
+<sect1 id="entering-data-required-fields">
+
+<title
+>Verplichte velden</title>
+
+<para
+>Hier volgt een overzicht van de verplichte velden, en welke velden leeg gelaten kunnen worden bij het invoeren van afspraken en taken:</para>
+
+<itemizedlist>
+<listitem
+><para
+><guilabel
+>Samenvatting</guilabel
+>-veld</para
+></listitem>
+<listitem
+><para
+>Het tabblad <guilabel
+>Algemeen</guilabel
+> kan helemaal leeg worden gelaten.</para
+></listitem>
+<listitem
+><para
+>Indien u een  <guilabel
+>Herinnering</guilabel
+> aanmaakt, moet u ook de tijd opgeven, en of het te spelen geluid, of het te activeren programma.</para
+></listitem>
+<listitem
+><para
+>Het tabblad <guilabel
+>Deelnemers</guilabel
+> kan helemaal leeg worden gelaten.</para
+></listitem>
+<listitem
+><para
+>Het tabblad <guilabel
+>Herhaling</guilabel
+> moet alleen volledig worden ingevuld als een dagelijkse, wekelijkse of jaarlijkse herhaling is geselecteerd. </para
+></listitem>
+<listitem
+><para
+>De dialoog <guilabel
+>Bijlagen</guilabel
+> kan helemaal leeg gelaten worden.</para
+></listitem>
+</itemizedlist>
+</sect1>
+</chapter>
+
+<chapter id="group-scheduling"
+>   <!--updated to 5.4.40-->
+<title
+>Groepsplanning</title>
+
+<para
+>Door de mogelijkheid in &korganizer; voor groepsplanning (group scheduling) kunt u afspraken, bijeenkomsten en gedeelde taken organiseren, een antwoord verzoeken van de deelnemers, en items publiceren. Als u voor een afspraak of taak wordt uitgenodigd, kunt u een antwoord sturen, dat u eraan wilt deelnemen, of een ander voorstel sturen, met andere gegevens, zoals een ander tijdstip of andere locatie. U kunt ook uw vrij/bezet-gegevens sturen, zodat men weet wanneer u beschikbaar bent, en dezelfde informatie van anderen opvragen.</para>
+
+<para
+>Op dit moment worden door &korganizer; afspraken en taken gepland, met gebruik van e-mail, voor het versturen van de gegevens, volgens een op standaarden gebaseerd schema, het IMIP-protocol voor groepsplanning. Omdat het een standaard is, wordt IMIP door vele andere clients gebruikt. Bijvoorbeeld door <application
+>Outlook</application
+> van &Microsoft;, Lotus <application
+>Notes</application
+> en <application
+>Evolution</application
+> van Novell. Dit betekent dat u afspraken kunt delen met anderen, die een van deze programma's gebruiken. &korganizer; is geïntegreerd met &kmail;, voor het ontvangen, verwerken en versturen van afspraken, daarmee verband hebbende antwoorden, updates, afzeggingen, &etc;. Bijvoorbeeld, als u via &kmail; een uitnodiging krijgt, en besluit die te accepteren, dan kunt u in het e-mailbericht klikken op de koppeling <guilabel
+>Accepteren</guilabel
+>, waardoor de afspraak in uw agenda wordt opgenomen, en automatisch een antwoord wordt gestuurd naar de organisator van de afspraak.</para>
+
+
+<!--TODO: check if to-dos work or not.-->
+<!--TODO: check what happens if you counter without this option on.-->
+
+<para
+>Als u het vakje voor <guilabel
+>Groupware-communicatie gebruiken</guilabel
+> aanvinkt in het deel  <link linkend="config-main-groupscheduling"
+>&korganizer; groepsplanning</link
+>,  zal &korganizer; alle communicatie voor de groepsplanning voor u doen. Met andere woorden, u zult dan slechts zelden nog het  menu <guimenu
+>Plannen</guimenu
+> nodig hebben. Bijvoorbeeld, als u een <link linkend="entering-data-events"
+>afspraak of taak aanmaakt</link
+> met deelnemers, zal  &korganizer; u vragen of er uitnodigingen naar de deelnemers moeten worden gestuurd, dus dit hoeft u dan niet meer te regelen in het menu <menuchoice
+> <guimenu
+>Plannen</guimenu
+><guimenuitem
+>Uitnodiging versturen aan deelnemers</guimenuitem
+> </menuchoice
+>. Ook, als u uw status als deelnemer aan een afspraak waar u voor bent uitgenodigd, wilt wijzigen, zal het u vragen of uw bijgewerkte status naar de organisator van de afspraak moet worden gestuurd, zodat u dat dan niet meer in het menu <menuchoice
+> <guimenu
+>Plannen</guimenu
+><guimenuitem
+>Statusupdate versturen</guimenuitem
+> </menuchoice
+> hoeft te regelen.</para>
+
+
+
+<sect1 id="publish">
+<title
+>Een afspraak, taak of journaalingang publiceren</title>
+
+<para
+>Als u iemand een afspraak, taak of journaalingang wilt versturen, klikt u, na het selecteren van het item, in het menu op <menuchoice
+><guimenu
+>Plannen</guimenu
+><guimenuitem
+>Iteminformatie publiceren...</guimenuitem
+></menuchoice
+>. U krijgt dan een dialoog, waarin het e-mailadres wordt gevraagd, waar  de afspraak of taak naar moet worden gestuurd. Het item wordt verstuurd per e-mail, in het iCalendar-formaat.</para>
+
+<para
+>Merk op dat u met deze actie elk item naar iedereen kunt versturen, niet alleen aan deelnemers. U kunt zelfs een item zonder enige deelnemer publiceren, omdat er bij publiceren geen antwoord wordt gevraagd.</para>
+
+<para
+>Bijvoorbeeld, u speelt in een band, en u speelt zo nu en dan ergens. Om uw fans over uw optredens te informeren, onderhoudt u een  discussiegroep (mailing list). Als u uw optredens met &korganizer; plant, hoeft u voor een  optreden alleen maar in het menu op  <menuchoice
+><guimenu
+>Plannen</guimenu
+> <guimenuitem
+>Iteminformatie publiceren...</guimenuitem
+></menuchoice
+> te klikken, het adres in te vullen van de discussiegroep, waarna de gegevens over de afspraak worden verstuurd. Bij abonnees van de discussiegroep, die &korganizer; gebruiken, worden de gegevens over het optreden daardoor automatisch in hun agenda bijgewerkt. </para>
+
+<para
+>Door op de hierboven beschreven manier een afspraak te publiceren, zal de ontvanger alleen maar over deze afspraak worden geïnformeerd, zonder hem/haar de gelegenheid te geven, te vragen die bij te mogen wonen. Wilt u die optie wel toevoegen, dan moet u in het menu de gegevens versturen met <menuchoice
+><guimenu
+>Plannen</guimenu
+><guimenuitem
+>Als iCalendar versturen...</guimenuitem
+></menuchoice
+>. </para>
+
+</sect1>
+
+
+<sect1 id="as-organizer">
+<title
+>Optreden als organisator bij groepsplanning</title>
+
+<para
+>Wanneer u een <link linkend="entering-data-events"
+>afspraak</link
+> of  <link linkend="entering-data-to-do"
+>taak</link
+> aanmaakt, en <link linkend="entering-data-events-attendees"
+>er deelnemers aan toevoegt</link
+>, bent u de organisator van deze afspraak. U kunt deelnemers toevoegen in het tabblad <link linkend="entering-data-events-attendees"
+>Deelnemers</link
+>, in de  dialogen  <guilabel
+>Afspraak bewerken</guilabel
+>, of <guilabel
+>Taak bewerken</guilabel
+>. In de <link linkend="agenda-view"
+>agendaweergave wordt een </link
+> klein  <inlinemediaobject
+> <imageobject
+> <imagedata fileref="organizer.png" format="PNG"/> </imageobject
+> <textobject
+> <phrase
+>Organisatorpictogram</phrase
+> </textobject
+> </inlinemediaobject
+> geplaatst, als u de organisator bent van een afspraak met groepsplanning.</para>
+
+<para
+>De organisator zorgt voor het versturen van de uitnodigingen, het verzamelen van de antwoorden van de deelnemers, en voor het bijhouden van de gegevens van de afspraak of taak, voor alle betrokkenen.</para>
+
+<sect2 id="request">
+<title
+>Uitnodigingen versturen en antwoorden verwerken</title>
+
+<para
+>Als u een afspraak of taak organiseert, moet u die in &korganizer; <link linkend="entering-data-events"
+>aanmaken</link
+> en allen die eraan zullen gaan deelnemen toevoegen in het tabblad voor de deelnemers. &korganizer; kan de uitnodigingen sturen, automatisch (afhankelijk van de <link linkend="config-main-groupscheduling"
+>instellingen voor groepsplanning (group scheduling) in &korganizer;</link
+>), of door de afspraak of taak te selecteren, en in het menu op <menuchoice
+><guimenu
+>Plannen</guimenu
+><guimenuitem
+>Uitnodiging versturen aan deelnemers</guimenuitem
+></menuchoice
+> te klikken. De deelnemers krijgen dan een e-mail met alle informatie die ze nodig hebben. Zij kunnen op het voorstel antwoorden door de uitnodiging te accepteren, of niet, of door met een ander voorstel te komen. Ze kunnen ook de uitnodiging delegeren of doorsturen. U krijgt al deze informatie weer per e-mail, en als &kmail; goed is geconfigureerd, komen de antwoorden van de deelnemers automatisch terecht in uw agenda. Als er meer personen zijn die willen deelnemen (door bijvoorbeeld een doorgestuurde uitnodiging te aanvaarden), wordt u gevraagd of u dit goed vindt. </para>
+
+</sect2>
+
+<sect2 id="cancel">
+<title
+>Afspraak of taak annuleren</title>
+
+<para
+>Een afspraak of taak kan alleen door de organisator worden geannuleerd. Als het vakje voor <guilabel
+>Groupware-communicatie</guilabel
+> in de <link linkend="config-main-groupscheduling"
+>instellingen voor groepsplanning in &korganizer;</link
+> is aangevinkt, kunt u het item gewoon wissen. &korganizer; vraagt u dan of de annulering moet worden verzonden (naar de deelnemers). Als dit niet het geval is, kunt u het item selecteren en in het menu op <menuchoice
+><guimenu
+>Plannen</guimenu
+> <guimenuitem
+>Annulering verzenden naar deelnemers</guimenuitem
+></menuchoice
+> klikken.</para>
+
+<para
+>Hierdoor wordt een annuleringsbericht gestuurd naar alle deelnemers, zodat zij het item ook in hun agenda kunnen wissen.</para>
+</sect2>
+</sect1>
+
+
+<sect1 id="as-attendee">
+<title
+>Als deelnemer optreden</title>
+
+<para
+>Wanneer u per email wordt uitgenodigd en u accepteert, wordt de afspraak of taak aan uw agenda toegevoegd. Als het een afspraak betreft, wordt een klein <inlinemediaobject
+> <imageobject
+> <imagedata fileref="meeting-attending.png" format="PNG"/> </imageobject
+> <textobject
+> <phrase
+>Deelnemerspictogram</phrase
+> </textobject
+> </inlinemediaobject
+> geplaatst in de <link linkend="agenda-view"
+>Agenda-weergave</link
+>.</para>
+
+<sect2 id="reply">
+<title
+>Een uitnodiging beantwoorden</title>
+
+<para
+>Als u in &kmail; een e-mail krijgt met een uitnodiging, kunt u de uitnodiging afwijzen met <guibutton
+>Afwijzen</guibutton
+>, of accepteren met <guibutton
+>Accepteren</guibutton
+>, of onder voorwaarden accepteren met <guibutton
+>Voorw. accepteren</guibutton
+>. Met de laatste twee acties wordt het item aan uw agenda toegevoegd. In alle gevallen stuurt &kmail; uw antwoord automatisch naar de afzender.</para>
+
+<para
+>U kunt de uitnodiging ook <guibutton
+>Delegeren</guibutton
+> of <guibutton
+>Doorsturen</guibutton
+>. Als u delegeert kunt u een andere deelnemer in uw plaats suggereren. Met <guibutton
+>Doorsturen</guibutton
+> stuurt u de uitnodiging door aan anderen, die nog niet zijn uitgenodigd. Wanneer zo iemand de uitnodiging aanvaardt, wordt de organisator gevraagd of hij daarmee akkoord gaat.</para>
+
+<para
+>Wanneer, om wat voor redenen dan ook, u van gedachten verandert, kunt u uw status wijzigen in het tabblad voor <link linkend="entering-data-events-attendees"
+>Deelnemers</link
+> van het item. Als <guilabel
+>Groupware-communicatie gebruiken</guilabel
+> in de <link linkend="config-main-groupscheduling"
+>instellingen voor groepsplanning in &korganizer;</link
+> is aangevinkt, zal &korganizer; u vragen een e-mail te sturen, voor het bijwerken van uw status als deelnemer. Anders kiest u <menuchoice
+> <guimenu
+>Plannen</guimenu
+><guimenuitem
+>Status-update versturen</guimenuitem
+> </menuchoice
+> voor het versturen van uw nieuwe status. </para>
+</sect2>
+
+<sect2 id="counter">
+<title
+>Een ander voorstel versturen</title>
+
+
+<para
+>Als er iets in de uitnodiging staat waar u niet helemaal tevreden over bent, en u een ander voorstel wilt sturen naar de organisator (bijvoorbeeld een andere locatie of tijd), hoeft u dit item alleen maar te bewerken, en het als uw voorstel terugsturen, door het item te selecteren, en in het menu op <menuchoice
+> <guimenu
+>Plannen</guimenu
+><guimenuitem
+>Verandering verzoeken</guimenuitem
+> </menuchoice
+> te klikken.</para>
+
+<para
+>De organisator van de afspraak ontvangt uw voorstel per e-mail, en zal uw voorstel kunnen accepteren of afwijzen.</para>
+</sect2>
+
+<sect2 id="refresh">
+
+<title
+>De laatste versie van een afspraak of taak opvragen</title>
+
+<para
+>U kunt de laatste versie van een afspraak of taak opvragen, door die te selecteren, enin het menu op <menuchoice
+><guimenu
+>Plannen</guimenu
+><guimenuitem
+>Update verzoeken</guimenuitem
+> </menuchoice
+> te klikken. De organisator zal u daarna de laatste versie moeten toesturen.</para>
+
+</sect2>
+</sect1>
+
+<sect1 id="free-busy">
+<title
+>Vrij/bezetinformatie</title>
+
+<para
+>In de vrij/bezetinformatie staat wanneer u beschikbaar bent. Door de tijden bekend te maken waarop u al bezet bent, kunnen anderen deze tijden vermijden bij het maken van afspraken. Merk op dat alleen de tijden bekend worden gemaakt, en niet afspraken, redenen of deelnemers.</para>
+
+<para
+>In &korganizer; kunt u vrij/bezetinformatie ophalen en versturen, zowel met de hand als automatisch.</para>
+
+<para
+>Voor het versturen van uw vrij/bezetinformatie, kiest u in het menu <guimenu
+>Plannen</guimenu
+> <guimenuitem
+>E-mail met vrij/bezetinformatie sturen...</guimenuitem
+>. Voer de gewenste e-mailadressen in de dialoog in, en klik op <guilabel
+>OK</guilabel
+>.</para>
+
+<para
+>Groupware servers hebben gewoonlijk een standaard locatie voor het uploaden (opsturen) van uw vrij/bezetinformatie, zodat uw gegevens toegankelijk zijn voor anderen, en hun vrij/bezetgegevens voor u toegankelijk zijn. U kunt &korganizer; configureren voor het automatisch opsturen en ophalen van vrij/bezetinformatie, in de dialoog <link linkend="config-main-views"
+>Vrij/bezet</link
+>, in het menu <guilabel
+>Instellingen</guilabel
+> van &korganizer;.</para>
+
+<para
+>Als u uw vrij/bezetinformatie wilt opsturen naar de server, die in de instellingen van &korganizer; is ingesteld, kiest u in het menu  <menuchoice
+><guimenu
+>Plannen</guimenu
+> <guimenuitem
+>Vrij/bezetinformatie uploaden</guimenuitem
+></menuchoice
+>.</para>
+
+</sect1>
+
+<sect1 id="examples">
+<title
+>Voorbeelden</title>
+
+<sect2 id="examples-entering-event">
+<title
+>Een nieuwe groepsafspraak invoeren</title>
+
+<para
+>In dit voorbeeld voeren we een afspraak in. U moet een bijeenkomst organiseren op <emphasis
+>de volgende maandag</emphasis
+>, met als onderwerp het lanceren van uw nieuwe product. Uw baas,  <emphasis
+>Erica de Vries</emphasis
+> zal de bijeenkomst <emphasis
+>voorzitten</emphasis
+>, en u, Jaap Smid, zal de <emphasis
+>organisator</emphasis
+> zijn van de afspraak. Er zullen nog twee mensen <emphasis
+>aanwezig zijn</emphasis
+> (deelnemers): <emphasis
+>Peter Wattimena</emphasis
+> en  <emphasis
+>Katrien Eendvogel</emphasis
+>. Erica gaf u het programma van de bijeenkomst, die om <emphasis
+>12 uur</emphasis
+> begint en om  <emphasis
+>13 uur</emphasis
+> eindigt. Dezelfde bijeenkomst moet elke maandag worden <emphasis
+>herhaald</emphasis
+>. </para>
+
+<procedure>
+<step
+><para
+>Ga met behulp van de datumnavigator naar de volgende maandag.</para
+></step>
+
+<step
+><para
+>Kies <menuchoice
+><guimenu
+>Acties</guimenu
+><guimenuitem
+>Nieuwe afspraak...</guimenuitem
+></menuchoice
+>, of kies het gebied tussen <emphasis
+>12 uur</emphasis
+> en <emphasis
+>13 uur</emphasis
+>, en voer de samenvatting in van de afspraak.</para
+></step>
+
+<step
+><para
+>Voer een geschikte samenvatting in. Het is belangrijk een goede beschrijving te kiezen, aangezien dit het enige veld is waarop straks gezocht kan worden. In dit geval zou het <userinput
+>Lancering nieuw product</userinput
+> kunnen zijn.</para
+></step>
+
+<step
+><para
+>In het grote tekstvak kan nu een uitgebreide omschrijving gegeven worden. In dit geval kan er <userinput
+>Inleiding, Plan, Conclusie</userinput
+> op drie aparte regels ingevuld worden.</para
+></step>
+
+<step
+><para
+>Vink het vakje voor <guilabel
+>Herinnering</guilabel
+> aan en geef aan dat u een kwartier voor de vergadering eraan wilt worden herinnerd. Dan is er nog voldoende tijd een kop koffie te halen voordat de vergadering begint.</para
+></step>
+
+<step
+><para
+>Selecteer <guilabel
+>Afspraak</guilabel
+> in het keuzemenu <guilabel
+>Tags</guilabel
+>.</para
+></step>
+
+<step
+><para
+>Ga naar het tabblad <guilabel
+>Herhaling</guilabel
+> en selecteer de <guilabel
+>Wekelijkse</guilabel
+> herhalingen.</para>
+<note
+><para
+>Het meeste werk werd automatisch voor ons gedaan. &korganizer; is standaard zo ingesteld dat een afspraak wekelijks wordt herhaald. Ook is de optie <guilabel
+>Eindigt:</guilabel
+> <guilabel
+>nooit</guilabel
+> geselecteerd. Dit betekent dat deze afspraak voor goed iedere maandag wordt herhaald  (natuurlijk vanaf maandag 30 augustus 2010), of, natuurlijk, tot het moment waarop u de afspraak verwijdert.</para
+></note
+></step>
+
+<step
+><para
+>Omdat alle instellingen tot dusver in orde zijn, klikt u op het tabblad <guilabel
+>Deelnemers</guilabel
+>.</para
+></step>
+
+<step
+><para
+>In het tabblad <guilabel
+>Deelnemers</guilabel
+> doet u het volgende:</para>
+<substeps>
+
+<step
+><para
+>U zult zien dat u de organisator van de afspraak bent.</para
+></step>
+
+<step
+><para
+>In het eerste invoerveld vult u het e-mailadres in als <userinput
+>Naam &#060;e-mail&#062;</userinput
+>. In ons voorbeeld, voert u zoiets in als <userinput
+>Erica de Vries &#060; erica.de.vries@providernaam.nl&#062;</userinput
+>. <tip
+><para
+>Als de deelnemers al in uw adresboek van &kde; staan, kunt u hen toevoegen door op de knop <guibutton
+>Geadresseerde selecteren...</guibutton
+> te klikken, in plaats van dit in te typen.</para
+></tip
+></para
+></step>
+
+<step
+><para
+>Kies <emphasis
+>Voorzitter</emphasis
+> als rol.</para
+></step>
+
+<step
+><para
+>In het volgende veld vult u zoiets in als <userinput
+>Peter Wattimena &#060;pwattimena@providernaam.nl&#062;</userinput
+>.</para
+></step>
+
+<step
+><para
+>In het volgende veld vult u zoiets in als <userinput
+>Katrien Eendvogel &#060;katrien.eendvogel@providernaam.nl&#062;</userinput
+>. </para
+></step>
+
+</substeps>
+</step>
+
+<step
+><para
+>Als &korganizer; is geconfigureerd voor communicatie met groupware,  wordt u gevraagd of u een e-mail wilt sturen naar de deelnemers, met de bijzonderheden van de afspraak, en een antwoord te verzoeken, als <guilabel
+>Antwoord verzoeken</guilabel
+> is aangevinkt in het tabblad <guilabel
+>Deelnemers</guilabel
+>. Anders kunt u de uitnodigingen versturen door in het menu op <menuchoice
+><guimenu
+>Plannen</guimenu
+> <guimenuitem
+>Uitnodiging versturen aan deelnemers</guimenuitem
+></menuchoice
+> te klikken.</para
+></step>
+
+<step
+><para
+>Controleer nog even de instellingen voor de afspraak, in de tabbladen. Bent u tevreden, dan klikt u op <guibutton
+>OK</guibutton
+>.</para
+></step>
+</procedure>
+
+<para
+>Gefeliciteerd, dit was uw eerste afspraak!</para>
+</sect2>
+
+</sect1>
+
+</chapter>
+
+<chapter id="config"
+>  <!--updated to 5.4.40, missing General System Tray + Calendars-->
+<title
+>Instellingen van &korganizer;</title>
+
+<para
+>U kunt het uiterlijk en het gedrag van &korganizer; aanpassen in het menu  <menuchoice
+><guimenu
+>Instellingen</guimenu
+><guimenuitem
+>&korganizer; instellen...</guimenuitem
+></menuchoice
+>. Meer informatie over alle instellingsmogelijkheden vindt u in <xref linkend="config-main"/>.</para>
+
+<para
+>U kunt ook de beschikbare hulpmiddelen in de werkbalk aanpassen, in het menu  <menuchoice
+><guimenu
+>Instellingen</guimenu
+><guimenuitem
+>Werkbalken instellen... </guimenuitem
+></menuchoice
+>, Lees ook de sectie <ulink url="help:/fundamentals/config.html#toolbars"
+>Werkbalken instellen</ulink
+> in de &kde; Fundamentals.</para>
+
+<para
+>Landafhankelijke informatie zoals het formaat van datum en tijd kunnen ingesteld worden in &systemsettings; in de modules voor <guilabel
+>Taal</guilabel
+> en <guilabel
+>Formats</guilabel
+>. U kunt die in &korganizer; vinden door in het menu te klikken op <menuchoice
+><guimenu
+> Instellingen</guimenu
+><guimenuitem
+>Datum &amp; tijd instellen...</guimenuitem
+></menuchoice
+>. Deze wijzigingen worden pas actief wanneer &korganizer;, na de wijzigingen in &systemsettings;, opnieuw wordt gestart.</para>
+
+<para
+>Hoe in te stellen waar &korganizer; agenda-afspraken, journaalingangen en taken, opslaat en weer inleest (in lokale bestanden, op groupware servers &etc;), kunt u lezen in <xref linkend="managing-resources"/>.</para>
+
+<sect1 id="config-main">
+<title
+>De belangrijkste instellingen van &korganizer;</title>
+
+<para
+>In het dialoogvenster voor Instellen kunt u een aantal verschillende eigenschappen van &korganizer; aanpassen.</para>
+
+<sect2 id="config-main-general">
+<title
+>Algemene pagina</title>
+
+<sect3 id="config-main-general-personal">
+<title
+>Tabblad Persoonlijk</title>
+
+<para
+>In het gedeelte persoonlijk kunt u persoonlijke instellingen invullen. Hier staan ook enkele andere instellingen die onder geen van de andere categorieën vallen.</para>
+
+<variablelist>
+
+<varlistentry>
+<term
+><guilabel
+>Volledige naam</guilabel
+></term>
+<listitem
+><para
+><guilabel
+>Volledige naam</guilabel
+> is standaard ingesteld op <quote
+>Anoniem</quote
+> met als e-mailadres <quote
+>nobody@nowhere</quote
+> (niemand@nergens). U kunt dit veranderen door hier uw naam en e-mailadres in te vullen. Deze naam wordt standaard gebruikt als die van de  <guilabel
+>Organisator</guilabel
+> in afspraken en taken.</para
+></listitem>
+</varlistentry>
+
+<varlistentry>
+<term
+><guilabel
+>E-mailadres</guilabel
+></term>
+<listitem
+><para
+><guilabel
+>E-mailadres</guilabel
+> wordt gebruikt om de identiteit van de eigenaar van de agenda te definiëren. Iemand anders die uw agenda of afspraken inziet, zal die niet kunnen wijzigen omdat die alleen-lezen zijn.</para
+></listitem>
+</varlistentry>
+
+<varlistentry>
+<term
+><guilabel
+>Standaard methode voor email-bijlagen</guilabel
+></term>
+<listitem
+><para
+>Hiermee kunt u de manier kiezen waarop een e-mail gekoppeld is aan een afspraak.U kunt hierbij kiezen tussen het koppelen van het volledige e-mailbericht inclusief de bijlagen, het e-mailbericht zonder bijlagen, of alleen maar een koppeling naar de e-mail.</para>
+<para
+>Merk op dat de ondertekening ongeldig kan zijn als u een e-mailbericht zonder de bijlagen aan een afspraak koppelt. </para
+></listitem>
+</varlistentry>
+</variablelist>
+
+</sect3>
+
+<sect3 id="config-main-general-save">
+<title
+>Tabblad Opslaan</title>
+
+<variablelist>
+
+<varlistentry>
+<term
+><guilabel
+>Verwijderingen bevestigen</guilabel
+></term>
+<listitem
+><para
+>Alleen als u het vakje voor <guilabel
+>Verwijderingen bevestigen</guilabel
+> aanvinkt, zal &korganizer; een bevestiging vragen bij iedere verwijdering.</para
+></listitem>
+</varlistentry>
+
+<varlistentry>
+<term
+><guilabel
+>Nieuwe afspraken,taken en journaalinvoeren moeten</guilabel
+></term>
+<listitem
+><para
+>Hier kunt u kiezen of nieuwe gegevens toegevoegd moeten worden aan de standaard agenda, of dat &korganizer; u moet vragen in welke agenda elk nieuw gegeven moet worden opgeslagen.</para>
+<para
+>Speciaal voor Kolab2: u wordt aangeraden <guilabel
+>Vragen naar te gebruiken agenda</guilabel
+> te kiezen, als u de gedeelde mapfunctionaliteit van een <guilabel
+>Kolab</guilabel
+>-server wilt gebruiken. Hiermee behoudt u de controle over welke informatie alleen voor u toegankelijk is, en welke wordt gepubliceerd in de gedeelde mappen.</para>
+</listitem>
+</varlistentry>
+
+</variablelist>
+
+</sect3>
+
+<!-- System Tray tab missing-->
+
+<!-- Calendars tab missing-->
+
+</sect2>
+
+<sect2 id="config-main-time-and-date">
+<title
+>Tijd en datum</title>
+
+<sect3 id="config-main-time-and-date-regional">
+<title
+>Tabblad Regionaal</title>
+
+<variablelist>
+
+<varlistentry>
+<term
+><guilabel
+>Dag begint om</guilabel
+></term>
+<listitem
+><para
+>Selecteer in het neerklapmenu op welk tijdstip voor u de dag begint. Dat kan de tijd zijn dat u gewoonlijk opstaat, of het tijdstip waarop uw werk begint. Deze instelling maakt het niet onmogelijk om items eerder dan dit tijdstip te bekijken of in te stellen. Alleen wordt hier de tijd ingesteld, die standaard bovenaan staat in uw agendaweergave. Met de schuifbalk kunt u alle tijden in beeld krijgen.</para
+></listitem>
+</varlistentry>
+
+<varlistentry>
+<term
+><guilabel
+>Feestdagen</guilabel
+></term>
+<listitem
+><para
+>Selecteer uw land in het neerklapmenu (voor ons meestal Nederland of België Nederlands), of, als het land hierin niet voorkomt, selecteert u <guilabel
+>(Geen)</guilabel
+>. Als uw land is geselecteerd, zal &korganizer; in de agendaweergave alle in uw land belangrijke data en vakanties tonen.</para
+></listitem>
+</varlistentry>
+
+<varlistentry>
+<term
+><guilabel
+>Werkuren</guilabel
+></term>
+<listitem
+><para
+>Met de opties <guilabel
+>Dagelijkse begintijd</guilabel
+> en <guilabel
+>Dagelijkse eindtijd</guilabel
+> kunt u aangeven wanneer uw werkdag begint en eindigt. &korganizer; markeert de werkuren met een andere achtergrondkleur dan de andere uren, en op feest- en vrije dagen.</para>
+<para
+>Bovendien moet u de de werkdagen elk apart aanvinken. Merk de weekdagen die voor u werkdagen zijn, zodat de werkuren voor deze dagen gelden.Vink ook <guilabel
+>Feestdagen uitsluiten</guilabel
+> aan, zodat &korganizer; geen werkuren markeert op de feestdagen die voor uw land, zoals ingesteld in het neerklapmenu van <guilabel
+>Feestdag-regio</guilabel
+>, gelden.</para>
+</listitem>
+</varlistentry>
+
+<varlistentry>
+<term
+><guilabel
+>Eerste dag van de week</guilabel
+></term>
+<listitem
+><para
+>Selecteer de eerste dag van de week. Gewoonlijk kunt u dit overslaan, want is het al ingesteld voor uw taal.</para
+></listitem>
+</varlistentry>
+
+</variablelist>
+</sect3>
+
+<sect3 id="config-main-time-and-date-default">
+<title
+>Tabblad Standaard waarden</title>
+
+<variablelist>
+<varlistentry>
+<term
+><guilabel
+>Standaardtijd voor afspraken</guilabel
+></term>
+<listitem
+><para
+>Selecteer de standaard aanvangstijd voor afspraken in het neerklapmenu. Wanneer u <link linkend="menu-actions-new-event"
+>Nieuwe afspraak</link
+> kiest in het menu <link linkend="entering-data-events"
+>Acties</link
+>, of  op een andere manier een afspraak aanmaakt, zonder dat &korganizer; weet wat de door u gewenste aanvangstijd is, vult &korganizer; standaard deze tijd in.</para
+></listitem>
+</varlistentry>
+
+<varlistentry>
+<term
+><guilabel
+>Standaard tijdsduur voor nieuwe afspraken (UU:MM):</guilabel
+></term>
+<listitem
+><para
+>Selecteer de standaard tijdsduur voor afspraken in het spinveld. Wanneer u <link linkend="menu-actions-new-event"
+>Nieuwe afspraak</link
+> kiest in het menu <link linkend="entering-data-events"
+>Acties</link
+>,  of  op een andere manier een afspraak aanmaakt, zonder dat &korganizer; weet wat de door u gewenste tijdsduur is, vult &korganizer; standaard deze tijdsduur in. </para
+></listitem>
+</varlistentry>
+
+<varlistentry>
+<term
+><guilabel
+>Herinneringen</guilabel
+></term>
+<listitem
+><para
+>Selecteer een <guilabel
+>Standaard herinneringstijd</guilabel
+> voor het activeren van een herinnering vóór de begintijd van een afspraak. </para>
+<para
+>Stel een geluidsbestand in voor het standaard geluid bij nieuwe herinneringen. U kunt hierna altijd nog hiervoor een ander bestand instellen, in de geävanceerde herinneringsinstellingen, bij het bewerken van afspraken en taken.</para>
+<para
+>Plaats een vinkje in de volgende twee vakjes, als u herinneringen wilt aanzetten voor alle nieuw aangemaakte afspraken of taken. U kunt deze herinneringen altijd nog uitzetten in de bewerkingsdialogen.</para>
+</listitem>
+</varlistentry>
+
+</variablelist>
+</sect3>
+</sect2>
+
+<sect2 id="config-main-views">
+<title
+>Weergaven</title>
+
+<para
+>Hiermee kunt u de verschillende weergaven van &korganizer; aanpassen:</para>
+
+<sect3 id="config-main-views-general">
+<title
+>Tabblad Algemeen</title>
+<variablelist>
+<varlistentry>
+<term
+><guilabel
+>Volgende x dagen:</guilabel
+></term>
+<listitem
+><para
+>Hiermee kunt u het aantal dagen instellen zoals dat geldt in het menu <guimenu
+>Volgende x Dagen</guimenu
+>, dat u vindt in het menu <guimenu
+>Weergave</guimenu
+>.</para
+></listitem>
+</varlistentry>
+
+<varlistentry>
+<term
+><guilabel
+>Samenvattingen in tekstballonnen activeren</guilabel
+></term>
+<listitem
+><para
+>Als de samenvatting van een afspraak niet in de weergave past, dan wordt die niet helemaal getoond. Door <guilabel
+>Tekstballon met samenvattingen activeren</guilabel
+> aan te vinken, kunt u de volledige samenvatting zien door de muisaanwijzer een paar seconden boven de afspraak te houden.</para
+></listitem>
+</varlistentry>
+
+<varlistentry>
+<term
+><guilabel
+>Tags van taken worden met kleuren gekenmerkt</guilabel
+></term>
+<listitem
+><para
+>Plaats hier een vinkje, zodat in taken kleuren worden gebruikt voor  tags, en niet voor of ze moeten worden gedaan, vandaag nog moeten worden gedaan, of dat ze al hadden moeten zijn gedaan..</para
+></listitem>
+</varlistentry>
+
+</variablelist>
+
+<para
+>Opties <link linkend="description-view"
+>Datumnavigator</link
+>:</para>
+
+<variablelist>
+
+<varlistentry>
+<term
+><guilabel
+>Dagelijkse afspraken tonen</guilabel
+></term>
+<listitem
+><para
+>Als <guilabel
+>Dagelijkse afspraken tonen</guilabel
+> is aangevinkt in de datumnavigator, zullen de dagen met afspraken die dagelijks worden herhaald, in de datumnavigator vet worden weergegeven.</para
+></listitem>
+</varlistentry>
+
+<varlistentry>
+<term
+><guilabel
+>Wekelijkse afspraken tonen</guilabel
+></term>
+<listitem
+><para
+>Als <guilabel
+>Wekelijkse afspraken tonen</guilabel
+> is aangevinkt in de datumnavigator, zullen de dagen met afspraken die wekelijks worden herhaald, in de datumnavigator vet worden weergegeven.</para
+></listitem>
+</varlistentry>
+
+<varlistentry>
+<term
+><guilabel
+>Tonen van taken in het Takenoverzicht, in plaats van afspraken</guilabel
+></term>
+<listitem
+><para
+>Plaats hier een vinkje voor het tonen van de dagen waarop in de Datumnavigator taken zijn gepland in een vet lettertype, in het takenoverzicht.</para
+></listitem>
+</varlistentry>
+
+<varlistentry>
+<term
+><guilabel
+>In het Journalenoverzicht journalen tonen in plaats van afspraken</guilabel
+></term>
+<listitem
+><para
+>Plaats hier een vinkje voor het tonen van de dagen waarop in de Datumnavigator journalen zijn gepland in een vet lettertype, in het journalenoverzicht.</para
+></listitem>
+</varlistentry>
+
+<varlistentry>
+<term
+><guilabel
+>Met een weeknummer selecteert u een werkweek, in de werkweekweergave</guilabel
+></term>
+<listitem
+><para
+>Indien het keuzevakje <guilabel
+>Met een weeknummer selecteert u een werkweek, in de werkweekweergave</guilabel
+> is geselecteerd, wordt door te klikken op een weeknummer, naast de datumnavigator, een werkweek geselecteerd, in plaats van een gewone week van 7 dagen.</para
+></listitem>
+</varlistentry>
+
+</variablelist>
+</sect3>
+
+<sect3 id="config-main-views-agenda">
+<title
+>Tabblad Agendaweergave</title>
+
+<para
+>Opties voor <link linkend="agenda-view"
+>Agendaweergave</link
+>:</para>
+
+<variablelist>
+
+<varlistentry>
+<term
+><guilabel
+>Hoogte uurrijen:</guilabel
+></term>
+<listitem
+><para
+>Hiermee kunt u de hoogte instellen van de rijen in de agendaweergave.</para
+></listitem>
+</varlistentry>
+
+<varlistentry>
+<term
+><guilabel
+>Pictogrammen tonen in de agendaweergave</guilabel
+></term>
+<listitem
+><para
+>Plaats hier een vinkje voor het tonen van pictogrammen (herinneringen, herhalingen &etc;) in de agendaweergave </para
+></listitem>
+</varlistentry>
+
+<varlistentry>
+<term
+><guilabel
+>Taken tonen</guilabel
+></term>
+<listitem
+><para
+>Met dit vinkje wordt het tonen van dag-, week- en maandweergaven in de agendaweergaven aan en uit gezet. Als er veel taken zijn waarvan de eindtijd binnen de periode valt, kunt u dit, voor de overzichtelijkheid, misschien beter uitzetten .</para
+></listitem>
+</varlistentry>
+
+<varlistentry>
+<term
+><guilabel
+>Actuele tijd tonen (Marcus Bains-lijn)</guilabel
+></term>
+<listitem
+><para
+>Als u dit aanvinkt, wordt de actuele tijd in de agendaweergaven getoond  door middel van een rode lijn (Marcus Bains-lijn). Deze lijn is nuttig om te zien hoeveel tijd er nog is, &eg; voor het begin van een volgende bijeenkomst.</para
+></listitem>
+</varlistentry>
+
+<varlistentry>
+<term
+><guilabel
+>Actuele tijd met seconden tonen in de agenda (Marcus Bains-lijn)</guilabel
+></term>
+<listitem
+><para
+>Als u dit aanvinkt, worden seconden getoond op de actuele tijdlijn (Marcus Bains lijn)</para
+></listitem>
+</varlistentry>
+
+<varlistentry>
+<term
+><guilabel
+>Selecteren van een tijdbereik in de agendaweergave  start de afspraakbewerker</guilabel
+></term>
+<listitem
+><para
+>Vink dit aan als u wilt dat de afspraakbewerker automatisch wordt gestart, wanneer u een tijdbereik selecteert in een dagelijkse of wekelijkse weergave. U kunt een tijdbereik selecteren door, in de weergave, met de muis de begin- en/of eindtijd van de te plannen afspraak te slepen.</para
+></listitem>
+</varlistentry>
+<!--FIXME Icons to use dropdown box missing-->
+<varlistentry>
+<term
+><guilabel
+>Kleurgebruik</guilabel
+></term>
+<listitem>
+<para
+>Selecteer de optie <guilabel
+>Tag binnen, agenda buiten</guilabel
+>, als u de agenda-ingangen met hun tagkleur wilt weergeven, omgeven door een rand in de kleur van de agenda waarin ze staan.</para>
+
+<para
+>Selecteer de optie <guilabel
+>Agenda binnen, tag  buiten</guilabel
+>, als u de agenda-ingangen met hun agendakleur wilt weergeven, omgeven door een rand in de kleur van hun categorie.</para>
+
+<para
+>Selecteer de optie <guilabel
+>Alleen tag</guilabel
+>, als u de agenda-ingangen, en de rand, in de kleur wilt weergeven behorend bij hun tag.</para>
+
+<para
+>Selecteer de optie <guilabel
+>Alleen agenda</guilabel
+>, als u de agenda-ingangen, en de rand, in de kleur wilt weergeven van hun agenda.</para>
+
+<para
+>Gebruik de instellingenpagina <link linkend="config-main-colors"
+>Kleuren en lettertypen</link
+> voor het instellen van deze kleuren.</para>
+</listitem>
+</varlistentry>
+
+<varlistentry>
+<term
+><guilabel
+>Kleur bezette dagen met een andere achtergrondkleur</guilabel
+></term>
+<listitem
+><para
+>Kies dit als u wilt dat dagen met minstens een afspraak voor de gehele dag, in uw agenda's met een andere achtergrondkleur als bezet worden gemarkeerd.</para>
+<para
+>Kies in de instellingen voor de kleuren naar de "Achtergrondkleur bezette dagen in agenda".</para
+></listitem>
+</varlistentry>
+
+<varlistentry>
+<term
+><guilabel
+>Het tonen van meerdere agenda's</guilabel
+></term>
+<listitem
+><para
+>Selecteer of alle agenda's in één agendaweergave moeten worden samengevoegd, elke agenda apart moet worden getoond in een eigen weergave, of dat elke agenda in een apart tabblad beschikbaar moet zijn. De weergave naast elkaar kan worden ingesteld met behulp van <guimenuitem
+>Weergave instellen</guimenuitem
+> in het contextmenu. </para
+></listitem>
+</varlistentry>
+
+</variablelist>
+</sect3>
+
+<sect3 id="config-main-views-month">
+<title
+>Tabblad Maandweergave</title>
+
+<para
+>Opties <link linkend="month-view"
+>Maandweergave</link
+>:</para>
+
+<variablelist>
+
+<varlistentry>
+<term
+><guilabel
+>Weergaveopties</guilabel
+></term>
+<listitem
+><para
+>Met de eerste vier keuzevakjes kunt u het tonen van tijd, pictogrammen (herinneringen, herhalingen &etc; ), taken en journalen in de maandweergave instellen.</para
+></listitem>
+</varlistentry>
+<!--FIXME Icons to use dropdown box missing-->
+
+<varlistentry>
+<term
+><guilabel
+>Kleur bezette dagen met een andere achtergrondkleur</guilabel
+></term>
+<listitem
+><para
+>Kies dit als u wilt dat dagen met minstens één afspraak voor de gehele dag, in een maandweergave met een andere achtergrondkleur als bezet worden gemarkeerd.</para>
+<para
+>Kies in de instellingen voor de kleuren een kleur voor de achtergrond  voor bezette dagen in de maandweergave van de agenda.</para
+></listitem>
+</varlistentry>
+
+<varlistentry>
+<term
+><guilabel
+>Kleurgebruik</guilabel
+></term>
+<listitem>
+<para
+>Stel de kleuren voor de maandweergave in in de <link linkend="config-main-views-agenda"
+>Agendaweergave</link
+>.</para
+></listitem>
+</varlistentry>
+
+</variablelist>
+</sect3>
+
+<sect3 id="config-main-views-todo">
+<title
+>Tabblad Takenlijst</title>
+
+<para
+>Opties <link linkend="todo-view"
+>Takenoverzicht</link
+>:</para>
+
+<variablelist>
+
+<varlistentry>
+<term
+><guilabel
+>Altijd de voltooide taken onderin de lijst tonen</guilabel
+></term>
+<listitem
+><para
+>Met deze optie aangezet, worden alle voltooide taken altijd bij elkaar onderin de takenlijst getoond.</para
+></listitem>
+</varlistentry>
+
+<varlistentry>
+<term
+><guilabel
+>Voltooide taken opnemen in journaalinvoeren </guilabel
+></term>
+<listitem
+><para
+>Hiermee zal &korganizer; elke voltooide taak automatisch aan het journaal toevoegen.</para
+></listitem>
+</varlistentry>
+
+</variablelist>
+</sect3>
+</sect2>
+
+<sect2 id="config-main-colors-fonts">
+<title
+>Kleuren en lettertypen</title>
+
+<sect3 id="config-main-colors">
+<title
+>Kleuren</title>
+
+<para
+>Kies hier de kleuren voor feestdagen, voor markeren, en voor bepaalde tags van afspraken. Voor elke tag kunt u een andere kleur kiezen. Gebruik kleuren wel met mate, omdat te veel kleuren gebruiken verwarrend kan zijn. Het kleurengebruik hangt ook af van de <link linkend="config-main-views"
+>instellingen voor de weergaven.</link
+></para>
+
+<variablelist>
+
+<varlistentry>
+<term
+><guilabel
+>Feestdagkleur</guilabel
+></term>
+<listitem
+><para
+>Hiermee wordt de dialoog geopend voor het <guilabel
+>kiezen van een kleur</guilabel
+>, waarin u een kleur kunt kiezen voor feestdagen. Met deze kleur wordt de naam van de feestdag in de maandweergave weergegeven, en het nummer in de datumnavigator.</para
+></listitem>
+</varlistentry>
+
+<varlistentry>
+<term
+><guilabel
+>Achtergrondkleur voor agendaweergave</guilabel
+></term>
+<listitem
+><para
+>Hiermee wordt de dialoog geopend voor het <guilabel
+>kiezen van een kleur</guilabel
+>, waarin u een kleur kunt kiezen voor de achtergrond in de agendaweergave.</para
+></listitem>
+</varlistentry>
+
+<varlistentry>
+<term
+><guilabel
+>Achtergrondkleur voor dagen die bezet zijn</guilabel
+></term>
+<listitem
+><para
+>Hiermee wordt de dialoog geopend voor het <guilabel
+>kiezen van een kleur</guilabel
+>, waarin u een kleur kunt kiezen voor de achtergrond van bezette dagen in de agenda/maandweergave. Deze kleur wordt alleen ingesteld als de optie is geselecteerd dat bezette dagen met een andere kleur worden gemarkeerd.</para
+></listitem>
+</varlistentry>
+
+<varlistentry>
+<term
+><guilabel
+>Kleur voor de tijdlijn in de agendaweergave</guilabel
+></term>
+<listitem
+><para
+>Hiermee wordt de dialoog geopend voor het <guilabel
+>Kiezen van een kleur</guilabel
+>, waarin u een kleur kunt kiezen voor de huidige tijdlijn (Marcus Bains).</para
+></listitem>
+</varlistentry>
+
+<varlistentry>
+<term
+><guilabel
+>Kleur voor werkuren</guilabel
+></term>
+<listitem
+><para
+>Hiermee wordt de dialoog geopend voor het <guilabel
+>kiezen van een kleur</guilabel
+>, waarin u een kleur kunt kiezen voor de werkuren in uw agendaweergave.</para
+></listitem>
+</varlistentry>
+
+<varlistentry>
+<term
+><guilabel
+>Kleur voor vandaag te voltooien taken</guilabel
+></term>
+<listitem
+><para
+>Hiermee wordt de dialoog geopend voor het <guilabel
+>kiezen van een kleur</guilabel
+>, waarin u een kleur kunt kiezen voor vandaag te voltooien taken.</para
+></listitem>
+</varlistentry>
+
+<varlistentry>
+<term
+><guilabel
+>Kleur voor taken die voltooid hadden moeten zijn</guilabel
+></term>
+<listitem
+><para
+>Hiermee wordt de dialoog geopend voor het <guilabel
+>kiezen van een kleur</guilabel
+>, waarin u een kleur kunt kiezen voor taken die al voltooid hadden moeten zijn.</para
+></listitem>
+</varlistentry>
+
+<varlistentry>
+<term
+><guilabel
+>Tags</guilabel
+></term>
+<listitem
+><para
+>In deze groep kunt u aan elke tag een eigen kleur toekennen. Selecteer een tag in het neerklapmenu, en klik op de knop waarmee de dialoog wordt geopend voor het <guilabel
+>kiezen van een kleur</guilabel
+>. Hierin kunt u een kleur kiezen voor de tag. <link linkend="config-main-views"
+>Afhankelijk van de instellingen voor weergaven</link
+>, wordt deze kleur gebruikt voor het in uw agenda- en maandweergave markeren van afspraken en taken die aan deze tag voldoen.</para
+></listitem>
+</varlistentry>
+
+<varlistentry>
+<term
+><guilabel
+>Hulpbronnen</guilabel
+></term>
+<listitem
+><para
+>In dit gedeelte kunt u aan elke gegevensbron een eigen kleur toekennen. Selecteer een gegevensbron in het neerklapmenu, en klik op de knop waarmee de dialoog wordt geopend voor het <guilabel
+>kiezen van een kleur</guilabel
+>. Hierin kunt u een kleur kiezen voor de gegevensbron. <link linkend="config-main-views"
+>Afhankelijk van de instellingen voor weergaven</link
+>, wordt deze kleur gebruikt voor het in uw agenda- en maandweergave markeren van afspraken en taken die in deze gegevensbron zijn opgeslagen.</para
+></listitem>
+</varlistentry>
+
+</variablelist>
+
+</sect3>
+
+<sect3 id="config-main-fonts">
+<title
+>Tabblad Lettertypen</title>
+
+<variablelist>
+
+<varlistentry>
+<term
+><guilabel
+>Tijdbalk</guilabel
+></term>
+<listitem
+><para
+>Door hierop te klikken kunt u het lettertype, de tekenstijl en lettergrootte kiezen voor de tijdbalk.</para
+></listitem>
+</varlistentry>
+
+<varlistentry>
+<term
+><guilabel
+>Maandweergave</guilabel
+></term>
+<listitem
+><para
+>Door hierop te klikken kunt u het lettertype, de tekenstijl en lettergrootte kiezen voor de maandweergave.</para
+></listitem>
+</varlistentry>
+
+<varlistentry>
+<term
+><guilabel
+>Agendaweergave</guilabel
+></term>
+<listitem
+><para
+>Door hierop te klikken kunt u het lettertype, de tekenstijl en lettergrootte kiezen voor de agendaweergave.</para
+></listitem>
+</varlistentry>
+
+<varlistentry>
+<term
+><guilabel
+>Lijn voor actuele tijd</guilabel
+></term>
+<listitem
+><para
+>Door hierop te klikken kunt u het lettertype, de tekenstijl en lettergrootte kiezen voor de Marcus Bains-lijn (een gekleurde lijn in de agendaweergave, die de actuele tijd aangeeft).</para
+></listitem>
+</varlistentry>
+
+</variablelist>
+
+</sect3>
+
+</sect2>
+
+<sect2 id="config-main-groupscheduling">
+<title
+>Groepsplanning</title>
+
+<variablelist>
+
+<varlistentry>
+<term
+><guilabel
+>Groupware-communicatie gebruiken</guilabel
+></term>
+<listitem
+><para
+>Als u dit vakje aanvinkt, worden automatisch e-mailberichten gestuurd bij het aanmaken, bijwerken of wissen van afspraken en taken, waarbij anderen zijn betrokken. Zo'n e-mailbericht kan een uitnodiging zijn aan deelnemers, of het annuleren van een door u begonnen afspraak, een antwoord, of een nieuwe status van uw uitnodiging, een verzoek tot het wijzigen van een afspraak, &etc;. Als u deze groupware-functionaliteit (&eg; instellen van  &kontact; als een &kde;-client voor <guilabel
+>Kolab</guilabel
+>) wenst, moet u dit aanvinken .</para
+></listitem>
+</varlistentry>
+
+<varlistentry>
+<term
+><guilabel
+>Kopie sturen naar eigenaar bij e-mail sturen over afspraken</guilabel
+></term>
+<listitem
+><para
+>Wanneer <guilabel
+>Kopie sturen naar eigenaar bij e-mail sturen over afspraken</guilabel
+> geactiveerd is, zal u een kopie ontvangen van alle e-mailberichten die op uw verzoek door &korganizer; worden verstuurd naar de andere deelnemers aan de afspraak.</para
+></listitem>
+</varlistentry>
+
+<varlistentry>
+<term
+><guilabel
+>Overdracht Mail</guilabel
+></term>
+<listitem
+><para
+>Hier kunt u aangeven welk type e-mailprogramma u wilt gebruiken. U kunt kiezen voor &kmail; of de &Sendmail;-opdracht (die dan uiteraard wel geïnstalleerd moeten zijn).</para
+></listitem>
+</varlistentry>
+
+</variablelist>
+
+</sect2>
+
+<sect2 id="config-main-free-busy">
+<title
+>Vrij/bezet</title>
+
+<para
+>In de vrij/bezetinformatie staat wanneer u beschikbaar bent. Door de tijden bekend te maken waarop u al bezet bent, kunnen anderen deze tijden vermijden bij het maken van afspraken. Merk op dat alleen de tijden bekend worden gemaakt, en niet afspraken, redenen of deelnemers.</para>
+
+<para
+>In &korganizer; kunt u vrij/bezetinformatie ophalen en versturen, zowel met de hand als automatisch.</para>
+
+<sect3 id="config-main-free-busy-publish">
+<title
+>Publiceren</title>
+<para
+>Door uw vrij/bezetinformatie bekend te maken maakt u het anderen mogelijk met uw tijdschema rekening te houden wanneer men u voor een afspraak uitnodigt.</para>
+
+<variablelist>
+
+<varlistentry>
+<term
+><guilabel
+>Vrij/bezetinformatie automatisch publiceren</guilabel
+></term>
+<listitem
+><para
+>Door deze optie aan te vinken worden uw vrij/bezetgegevens automatisch gepubliceerd.Merk op dat u deze optie kunt overslaan en ervoor kunt kiezen uw vrij/bezetinformatie per e-mail te versturen of op te sturen via het menu <guilabel
+>Plannen</guilabel
+> in &korganizer;.</para>
+
+<para
+>Als uw toepassing is ingesteld als <guilabel
+>&kde;-Kolabcliënt</guilabel
+>, is dit niet nodig. De <guilabel
+>Kolab2</guilabel
+>-server zorgt voor het publiceren van uw vrij/bezetinformatie en maakt die toegankelijk voor andere gebruikers.</para>
+</listitem>
+</varlistentry>
+
+<varlistentry>
+<term
+><guilabel
+>Minimale tijdsduur tussen uploads (in minuten)</guilabel
+></term>
+<listitem
+><para
+>Als u uw informatie automatisch wilt laten publiceren, kunt u het tijdsinterval in minuten tussen twee uploads instellen.</para>
+</listitem>
+</varlistentry>
+
+<varlistentry>
+<term
+><guilabel
+>Publiceren (standaard 60) dagen van vrij/bezetinformatie</guilabel
+></term>
+<listitem
+><para
+>Stel het aantal dagen vrij/bezetinformatie in die u wilt publiceren, zodat die voor anderen beschikbaar is</para
+></listitem>
+</varlistentry>
+
+<varlistentry>
+<term
+><guilabel
+>Server-&URL;</guilabel
+></term>
+<listitem
+><para
+>Voer de &URL; in van de server waarop u uw vrij/bezetinformatie bekend maakt. Vraag die informatie aan de beheerder van de server.</para>
+<para
+>Voorbeeld voor Kolab2-serever: <userinput
+>webdavs://kolab2.com/freebusy/joe@kolab2.com.ifb</userinput
+> </para
+></listitem>
+</varlistentry>
+
+<varlistentry>
+<term
+><guilabel
+>Gebruikersnaam</guilabel
+></term>
+<listitem
+><para
+>Voer de inloggegevens in voor uw account op de server.</para>
+<para
+>Specifiek voor de Kolab2-server: uw op de Kolab2-server geregistreerde UID (unieke identificatie) is standaard gelijk aan uw email-adres, maar dat hoeft niet altijd het geval te zijn.In dat laatste geval moet u zelf uw UID invoeren. Als u die niet kent moet u de beheerder van de server daar naar vragen.</para
+></listitem>
+</varlistentry>
+
+<varlistentry>
+<term
+><guilabel
+>Wachtwoord</guilabel
+></term>
+<listitem
+><para
+>Voer hier uw wachtwoord in (wachtwoord voor inloggen op de server)</para
+></listitem>
+</varlistentry>
+
+<varlistentry>
+<term
+><guilabel
+>Wachtwoord onthouden</guilabel
+></term>
+<listitem
+><para
+>Vink dit aan als u wilt dat &korganizer; uw wachtwoord onthoudt en u daar niet steeds om vraagt bij het opsturen van uw vrij/bezetinformatie.</para>
+<warning
+><para
+>Het wordt om veiligheidsredenen niet aanbevolen uw wachtwoord in het instellingenbestand op te slaan.</para
+></warning
+></listitem>
+</varlistentry>
+
+</variablelist>
+
+</sect3>
+
+<sect3 id="config-main-free-busy-retrieve">
+<title
+>Ophalen</title>
+
+<para
+>Door de vrij/bezetinformatie van anderen op te halen, kunt u met hun tijdschema's rekening houden wanneer u hen uitnodigt voor een afspraak.</para>
+
+<variablelist>
+
+<varlistentry>
+<term
+><guilabel
+>Vrij/bezetinformatie van anderen automatisch ophalen</guilabel
+></term>
+<listitem
+><para
+>Automatiseer het proces van het ophalen van de vrij/bezetinformatie van anderen. Vul de serverinformatie hieronder in voor deze optie.</para
+></listitem>
+</varlistentry>
+
+<varlistentry>
+<term
+><guilabel
+>Volledig e-mailadres gebruiken bij ophalen</guilabel
+></term>
+<listitem
+><para
+>Met deze instelling kunt u de naam van het bestand dat van de server wordt opgehaald, wijzigen. Als u deze optie instelt, wordt een bestand <userinput
+>gebruiker@domein.ifb</userinput
+> opgehaald, anders wordt <userinput
+>gebruiker.ifb</userinput
+> opgehaald. Vraag het de beheerder van de server, als u niet precies weet hoe u deze optie moet instellen.</para>
+<para
+><guilabel
+>Specifiek voor de Kolab2-server:</guilabel
+> als u &korganizer; als een component van een <guilabel
+> Kolab-client in &kde; (&kontact;/Kolab)</guilabel
+> instelt, moet u deze optie inschakelen.</para
+></listitem>
+</varlistentry>
+
+<varlistentry>
+<term
+><guilabel
+>Server-&URL;</guilabel
+></term>
+<listitem
+><para
+>Voer de &URL; van de server in waar de vrij/bezetinformatie van moet worden opgehaald. Vraag de beheerder van de server naar deze informatie.</para>
+<para
+><guilabel
+>Voorbeeld Kolab2 server: </guilabel
+><userinput
+>webdavs://kolab2.com/freebusy/</userinput
+> </para
+></listitem>
+</varlistentry>
+
+<varlistentry>
+<term
+><guilabel
+>Gebruikersnaam</guilabel
+></term>
+<listitem
+><para
+>Voer de inloggegevens in voor uw account op de server.</para>
+</listitem>
+</varlistentry>
+
+<varlistentry>
+<term
+><guilabel
+>Wachtwoord</guilabel
+></term>
+<listitem
+><para
+>Voer hier uw wachtwoord in (wachtwoord voor inloggen op de server) </para
+></listitem>
+</varlistentry>
+
+<varlistentry>
+<term
+><guilabel
+>Wachtwoord onthouden</guilabel
+></term>
+<listitem
+><para
+>Vink dit aan als u wilt dat &korganizer; uw wachtwoord onthoudt en u daar niet steeds naar vraagt als het de vrij/bezet-bestanden ophaalt.</para>
+<warning
+><para
+>Het wordt om veiligheidsredenen niet aanbevolen uw wachtwoord in het instellingenbestand op te slaan.</para
+></warning>
+</listitem>
+</varlistentry>
+
+</variablelist>
+</sect3>
+</sect2>
+
+<sect2 id="config-main-plugins">
+<title
+>Plug-ins</title>
+
+<para
+>Meer informatie over het instellen van plugins vindt u in <xref linkend="plugins-chapter"/></para>
+
+</sect2>
+
+<sect2 id="config-custom-pages">
+<title
+>Eigen pagina's</title>
+
+<para
+>In deze pagina kunt u uw eigen &GUI;-elementen aanmaken, waarin u uw eigen waarden kunt opslaan in &korganizer;.</para>
+<para
+>Maak uw eigen elementen aan zoals is beschreven in <guilabel
+>Hoe werkt dit?</guilabel
+></para>
+
+</sect2>
+</sect1>
+
+</chapter>
+
+<chapter id="plugins-chapter"
+><!--updated to 5.4.40-->
+
+<title
+>Plug-ins</title>
+
+<para
+>&korganizer; biedt u de mogelijkheid de applicatie uit te breiden met plug-ins. </para>
+
+<para
+>De plug-ins kunnen in het idialoogscherm voor de instellingen van &korganizer; worden ingesteld. Kies <menuchoice
+><guimenu
+>Instellingen</guimenu
+><guimenuitem
+> &korganizer; instellen</guimenuitem
+></menuchoice
+> en klik op het pictogram  <guilabel
+>Plug-ins</guilabel
+> in de zijbalk. </para>
+
+<sect1 id="plugins-chapter-availableplugins">
+<title
+>Beschikbare plug-ins</title>
+
+<sect2 id="date-numbers-plugin">
+<title
+>Datumgetallenplug-in voor agenda's</title>
+<para
+>Deze plug-in voegt het dagnummer toe in de agendaweergave. 1 Februari, bijvoorbeeld, is dag nummer 32. </para>
+</sect2>
+
+<sect2 id="wikipedia-thisday-plugin">
+<title
+>Plug-in Wikipedia 'This Day in History' (deze dag in het verleden)</title>
+<para
+>Deze plug-in koppelt naar de pagina's <quote
+>This Day in History</quote
+> van Wikipedia. </para>
+</sect2>
+
+<sect2 id="wikipedia-pictureoftheday-plugin">
+<title
+>Plug-in voor Picture of the Day (plaatje van de dag), voor agenda's, van Wikipedia</title>
+<para
+>Deze plug-in geeft de <quote
+>Picture of the Day</quote
+>-pagina van Wikipedia weer. </para>
+</sect2>
+
+<sect2 id="jewish-calendar-plugin">
+<title
+>Joodse kalenderplug-in</title>
+<para
+>Deze plug-in levert de Joodse kalenderdagen naast de gebruikelijke Gregoriaanse. In de instellingendialoog van deze plug-in kunt u kiezen voor het tonen van de Israëlische feestdagen, en/of enkele Joodse feestdagen. </para>
+</sect2>
+
+</sect1>
+
+</chapter>
+
+<chapter id="reference">
+<title
+>Naslag</title>
+
+<sect1 id="reference-menus"
+><!--updated to 5.4.40, Send as iCalendar-->
+<title
+>Menu's</title>
+
+<para
+>Wanneer &korganizer; gestart wordt, verschijnt het hoofdvenster van &korganizer;. Het venster bestaat uit een aantal componenten: een menubalk, een werkbalk, een maandkalender, een hoofdvak met de huidige <quote
+>weergave</quote
+> van afspraken en een takenlijst.</para>
+
+<para
+>De menu's geven direct toegang tot de veel gebruikte functies van de agenda, zoals opslaan, openen, toevoegen en verwijderen van afspraken, taken en journaalingangen, afdrukken en andere.</para>
+
+<para
+>Merk op dat wanneer &korganizer; wordt gebruikt als agendacomponent van &kontact;, de menu's anders zijn.</para>
+
+<sect2 id="reference-menus-file">
+<title
+>Bestand</title>
+
+<para
+>Het menu <guimenu
+>Bestand</guimenu
+> geeft toegang tot functies voor de gehele agenda.</para>
+
+<variablelist>
+
+<varlistentry id="menu-file-open">
+<term
+><inlinemediaobject
+><imageobject
+><imagedata fileref="document-open.png"
+ format="PNG"/></imageobject
+></inlinemediaobject
+><menuchoice
+><shortcut
+> <keycombo action="simul"
+>&Ctrl;<keycap
+>O</keycap
+></keycombo
+> </shortcut
+> <guimenu
+>Bestand</guimenu
+> <guimenuitem
+>Openen</guimenuitem
+></menuchoice>
+</term>
+<listitem
+><para
+><action
+>Opent een dialoogvenster waarin u kunt kiezen welk vCalender- of iCalendar-bestand u wilt openen</action
+>. Als de huidige agenda is gewijzigd en nog niet is opgeslagen, wordt u voor het openen van de nieuwe agenda gevraagd of de huidige agenda moet worden opgeslagen.</para>
+<para
+>Meer informatie hierover vindt u in <xref linkend="managing-import-export"/>.</para>
+</listitem>
+</varlistentry>
+
+<varlistentry id="menu-file-print">
+<term
+><inlinemediaobject
+><imageobject
+><imagedata fileref="document-print.png"
+ format="PNG"/></imageobject
+></inlinemediaobject
+><menuchoice
+><shortcut
+> <keycombo action="simul"
+>&Ctrl;<keycap
+>P</keycap
+></keycombo
+> </shortcut
+> <guimenu
+>Bestand</guimenu
+> <guimenuitem
+>Afdrukken</guimenuitem
+></menuchoice>
+</term>
+<listitem
+><para
+>Kies in het menu <guimenuitem
+>Afdrukken</guimenuitem
+> of klik op het pictogram <guilabel
+>Afdrukken</guilabel
+> om <action
+>de huidige agenda af te drukken</action
+>. U kunt vervolgens de af te drukken periode aangeven (handmatig of met behulp van de kalender-widget) en de weergave (Dag, Week, Maand of Takenlijst en Journaal).</para
+></listitem>
+</varlistentry>
+
+<varlistentry id="menu-file-print-preview">
+<term
+><inlinemediaobject
+><imageobject>
+<imagedata fileref="document-print-preview.png"
+format="PNG"/></imageobject
+></inlinemediaobject
+><menuchoice
+><guimenu
+>Bestand</guimenu
+><guimenuitem
+>Afdrukvoorbeeld</guimenuitem
+></menuchoice>
+</term>
+<listitem
+><para
+>Indien u in het menu <guimenuitem
+>Afdrukvoorbeeld</guimenuitem
+> kiest, of op het pictogram <guiicon
+>Afdrukvoorbeeld</guiicon
+> klikt, <action
+>wordt de huidige agenda op het scherm afgebeeld, in plaats van door uw printer te worden afgedrukt</action
+>. Gebruik dit om eerst te controleren of wat u wilt afdrukken, voldoet aan uw verwachtingen.</para>
+<para
+>U kunt het datumbereik kiezen dat moet worden afgedrukt (met de hand, of met de kalender-widget), en het weergavetype (dag, week, maand of taak).</para>
+</listitem>
+</varlistentry>
+
+<varlistentry id="menu-file-import-calendar">
+<term
+><menuchoice
+><guimenu
+>Bestand</guimenu
+> <guisubmenu
+>Importeren</guisubmenu
+> <guimenuitem
+>Agenda importeren</guimenuitem
+> </menuchoice
+></term>
+<listitem
+><para
+>Als u een ander iCalendar- of vCalender-bestand <action
+>met de huidige agenda wilt  samenvoegen, een nieuwe gegevensbron wilt openen, of in een eigen venster wilt openen</action
+>, kiest u dan deze menuoptie. Dit kan bijvoorbeeld handig zijn na ontvangst per e-mail van een vCalendar met daarin enkele ingangen.</para>
+<para
+>Meer informatie hierover vindt u in <xref linkend="managing-import"/>.</para>
+</listitem>
+</varlistentry>
+
+<varlistentry id="menu-file-import-ghns">
+<term
+><menuchoice
+><guimenu
+>Bestand</guimenu
+> <guisubmenu
+>Importeren</guisubmenu
+> <guimenuitem
+>Vers van de pers......</guimenuitem
+> </menuchoice
+></term>
+<listitem
+><para
+>Hiermee opent u de dialoog voor het <guilabel
+>Vers van de pers</guilabel
+>, waarin u een lijst van agenda's krijgt die u kunt ophalen. De afspraken daarin kunnen aan uw agenda worden toegevoegd.</para>
+<para
+>Meer informatie hierover vindt u in <xref linkend="managing-get-hot-new-stuff"/>.</para>
+</listitem>
+</varlistentry>
+
+<varlistentry id="menu-file-export-icalendar">
+<term
+><menuchoice
+><guimenu
+>Bestand</guimenu
+> <guisubmenu
+>Exporteren</guisubmenu
+> <guimenuitem
+>iCalendar</guimenuitem
+> </menuchoice
+></term>
+<listitem
+><para
+>Hiermee kunt u al uw actieve afspraken, taken en journaalingangen (onafhankelijk van hun gegevensbron) exporteren in een nieuw iCalendar-bestand.</para>
+<para
+>Meer informatie hierover vindt u in <xref linkend="managing-export"/>.</para>
+</listitem>
+</varlistentry>
+
+<!--not in 4.6.0
+varlistentry id="menu-file-export-ghns">
+<term
+><menuchoice>
+<guimenu
+>File</guimenu>
+<guisubmenu
+>Export</guisubmenu>
+<guimenuitem
+>Upload Hot New Stuff...</guimenuitem>
+</menuchoice
+></term>
+<listitem
+><para
+>This action will open the <guilabel
+>Upload Hot New Stuff</guilabel>
+dialog, which allow you to export calendars containing events which may be
+useful to other people, such as a conference program, a list of holidays,
+special events, &etc;</para>
+<para
+>For more information about this action, please refer to
+<xref linkend="managing-get-hot-new-stuff"/>.</para>
+</listitem>
+</varlistentry-->
+
+<varlistentry id="menu-file-archive-old">
+<term
+><menuchoice
+><guimenu
+>Bestand</guimenu
+> <guimenuitem
+>Oude invoer archiveren...</guimenuitem
+> </menuchoice
+></term>
+<listitem
+><para
+><action
+>Het is raadzaam van tijd tot tijd oude afgedane afspraken te verwijderen (of ergens anders op te slaan).</action
+></para>
+<para
+>Meer informatie hierover vindt u in <xref linkend="managing-purge-archive"/>.</para>
+</listitem>
+</varlistentry>
+
+<varlistentry id="menu-file-purge">
+<term
+><menuchoice
+><guimenu
+>Bestand</guimenu
+> <guimenuitem
+>Voltooide taken verwijderen</guimenuitem
+> </menuchoice
+></term>
+<listitem
+><para
+>Hiermee worden alle voltooide taken verwijderd uit uw actieve agenda.</para>
+<para
+>Meer informatie hierover vindt u in <xref linkend="managing-purge-archive"/>.</para>
+</listitem
+></varlistentry>
+
+<varlistentry id="menu-file-quit">
+<term
+><inlinemediaobject
+><imageobject
+><imagedata
+ fileref="application-exit.png"/></imageobject
+></inlinemediaobject
+><menuchoice
+><shortcut
+> <keycombo action="simul"
+>&Ctrl;<keycap
+>Q</keycap
+></keycombo
+> </shortcut
+> <guimenu
+>Bestand</guimenu
+> <guimenuitem
+>Afsluiten</guimenuitem
+> </menuchoice>
+</term>
+<listitem
+><para
+>Kies in het menu <guimenuitem
+>Afsluiten</guimenuitem
+> of klik op het pictogram <guiicon
+>Afsluiten</guiicon
+> om <action
+>het huidige agendavenster te sluiten;. &korganizer; zal vragen of de agenda moet worden opgeslagen, als er nog niet opgeslagen wijzigingen zijn</action
+>.</para>
+<para
+>Dit heeft geen effect op andere agendavensters die open staan. Iedere agenda moet afzonderlijk afgesloten worden.</para
+> </listitem>
+</varlistentry>
+</variablelist>
+
+</sect2>
+
+<sect2 id="reference-menus-edit">
+<title
+>Bewerken</title>
+
+<para
+>In het menu <guilabel
+>Bewerken</guilabel
+> kunt u afspraken en taken bewerken en zoeken.</para>
+
+<para
+><guimenuitem
+>Knippen</guimenuitem
+>, <guimenuitem
+>Kopiëren</guimenuitem
+> en <guimenuitem
+>Plakken</guimenuitem
+> werken zoals u van deze functies gewend bent in &kde;-toepassingen. Met <guimenuitem
+>Zoeken</guimenuitem
+> kunt u afspraken en taken in de huidige agenda zoeken.</para>
+
+<variablelist>
+
+<varlistentry id="menu-edit-undo">
+<term
+><inlinemediaobject
+><imageobject
+><imagedata fileref="edit-undo.png"
+ format="PNG"/></imageobject
+></inlinemediaobject
+><menuchoice
+><shortcut
+> <keycombo action="simul"
+>&Ctrl;<keycap
+>Z</keycap
+></keycombo
+> </shortcut
+> <guimenu
+>Bewerken</guimenu
+> <guimenuitem
+>Ongedaan maken</guimenuitem
+> </menuchoice>
+</term>
+<listitem
+><para
+><action
+>De laatste actie ongedaan maken</action
+>, of, in andere woorden, de agenda terugbrengen in dezelfde toestand als onmiddellijk voor de laatste actie.</para
+></listitem>
+</varlistentry>
+
+<varlistentry id="menu-edit-redo">
+<term
+><inlinemediaobject
+><imageobject
+><imagedata fileref="edit-redo.png"
+ format="PNG"/></imageobject
+></inlinemediaobject
+><menuchoice
+><shortcut
+> <keycombo action="simul"
+>&Ctrl;&Shift;<keycap
+>Z</keycap
+></keycombo
+> </shortcut
+> <guimenu
+>Bewerken</guimenu
+> <guimenuitem
+>Opnieuw</guimenuitem
+> </menuchoice>
+</term>
+<listitem
+><para
+><action
+>De laatste actie opnieuw doen</action
+>, of, in andere woorden, de agenda terugbrengen in dezelfde toestand als onmiddellijk voor het laatste ongedaan maken.</para
+></listitem>
+</varlistentry>
+
+<varlistentry id="menu-edit-cut">
+<term
+><inlinemediaobject
+><imageobject
+><imagedata fileref="edit-cut.png"
+ format="PNG"/></imageobject
+></inlinemediaobject
+><menuchoice
+><shortcut
+> <keycombo action="simul"
+>&Ctrl;<keycap
+>X</keycap
+></keycombo
+> </shortcut
+> <guimenu
+>Bewerken</guimenu
+> <guimenuitem
+>Knippen</guimenuitem
+> </menuchoice>
+</term>
+<listitem
+><para
+><action
+>Knipt de geselecteerde afspraak(en) en plaatst die op het klembord, waarna de selectie  uit de agenda wordt verwijderd.</action
+></para
+></listitem>
+</varlistentry>
+
+<varlistentry id="menu-edit-copy">
+<term
+><inlinemediaobject
+><imageobject
+><imagedata fileref="edit-copy.png"
+ format="PNG"/></imageobject
+></inlinemediaobject
+><menuchoice
+><shortcut
+> <keycombo action="simul"
+>&Ctrl;<keycap
+>C</keycap
+></keycombo
+> </shortcut
+> <guimenu
+>Bewerken</guimenu
+> <guimenuitem
+>Kopiëren</guimenuitem
+></menuchoice>
+</term>
+<listitem
+><para
+><action
+>Kopieert de geselecteerde afspraak(en) naar het klembord. De selectie blijft ongewijzigd in de agenda.</action
+></para
+></listitem>
+</varlistentry>
+
+<varlistentry id="menu-edit-paste">
+<term
+><inlinemediaobject
+><imageobject
+><imagedata fileref="edit-paste.png"
+ format="PNG"/></imageobject
+></inlinemediaobject
+><menuchoice
+><shortcut
+> <keycombo action="simul"
+>&Ctrl;<keycap
+>V</keycap
+></keycombo
+> </shortcut
+> <guimenu
+>Bewerken</guimenu
+> <guimenuitem
+>Plakken</guimenuitem
+></menuchoice>
+</term>
+<listitem
+><para
+><guimenuitem
+>Plakken</guimenuitem
+> <action
+> voegt de inhoud van het klembord in de agenda</action
+> in (op de plaats van de muisaanwijzer). Het klembord moet een geldige vCalendar-of iCalendar-inhoud bevatten, bijvoorbeeld na  knippen of kopiëren, of door een selectie, buiten &korganizer; gemaakt. Er volgt een waarschuwing wanneer het formaat onjuist is.</para>
+<tip
+><para
+>Maar, u kunt veilig met de sneltoetsen <keycombo action="simul"
+>&Ctrl; <keycap
+>C</keycap
+></keycombo
+> en <keycombo action="simul"
+>&Ctrl; <keycap
+>V</keycap
+></keycombo
+> tekstgegevens van elke andere applicatie naar een venster in &korganizer;  kopiëren, en vice versa. </para
+></tip
+></listitem>
+</varlistentry>
+
+<varlistentry id="menu-edit-delete">
+<term
+><inlinemediaobject
+><imageobject
+><imagedata fileref="edit-delete.png"
+ format="PNG"/></imageobject
+></inlinemediaobject
+><menuchoice
+><guimenu
+>Bewerken</guimenu
+> <guimenuitem
+>Verwijderen</guimenuitem
+> </menuchoice>
+</term>
+<listitem
+><para
+><action
+>Verwijdert de geselecteerde item(s) uit uw agenda.</action
+></para
+></listitem>
+</varlistentry>
+
+<varlistentry id="menu-edit-find">
+<term
+><inlinemediaobject
+><imageobject
+><imagedata fileref="edit-find.png"
+ format="PNG"/></imageobject
+></inlinemediaobject
+><menuchoice
+><shortcut
+> <keycombo action="simul"
+>&Ctrl;<keycap
+>F</keycap
+></keycombo
+> </shortcut
+> <guimenu
+>Bewerken</guimenu
+> <guimenuitem
+>Zoeken</guimenuitem
+> </menuchoice>
+</term>
+<listitem
+><para
+>Kies <guimenuitem
+>Zoeken</guimenuitem
+> in het menu <guimenu
+>Bewerken</guimenu
+>, of klik op het pictogram <guiicon
+>Zoeken</guiicon
+><action
+> voor het zoeken naar afspraken, taken en journaalingangen, aan de hand van samenvatting, beschrijving en/of tags.</action
+>.</para>
+<para
+>Meer informatie hierover vindt u in <xref linkend="search-view"/>.</para>
+</listitem>
+</varlistentry>
+</variablelist>
+
+</sect2>
+
+<sect2 id="reference-menus-view">
+<title
+>Weergave</title>
+
+<para
+>Er zijn verschillende <quote
+>weergaven</quote
+> beschikbaar voor het tonen van uw afspraken, taken en journaalingangen. &korganizer; is slim genoeg om tussen sessies door te onthouden wat de laatst gebruikte weergave was. De volgende keer start het in diezelfde weergave op.</para>
+
+<para
+>In het algemeen zal in elke weergave op een bepaalde manier uw afspraken, taken en journaalingangen worden getoond, beperkt tot een bepaalde periode, of manier van weergeven. Klik ergens op voor verdere handelingen. Ergens op  <mousebutton
+>rechts</mousebutton
+>klikken opent een contextmenu waarin opties zoals <guimenuitem
+>Bewerken</guimenuitem
+>, <guimenuitem
+>Verwijderen</guimenuitem
+>, en dergelijke, te vinden zijn. Dezelfde soort bewerkingen kunnen ook in het menu <guimenu
+>Acties</guimenu
+> worden gedaan.</para>
+
+<variablelist>
+
+<varlistentry id="menu-view-agenda">
+<term
+><inlinemediaobject
+><imageobject
+><imagedata fileref="view-calendar-agenda.png"
+ format="PNG"/></imageobject
+></inlinemediaobject
+><menuchoice
+><guimenu
+>Weergave</guimenu
+> <guimenuitem
+>Agenda</guimenuitem
+> </menuchoice
+></term>
+<listitem
+><para
+><action
+>Geeft de agendaweergave.</action>
+</para>
+<para
+>Meer informatie hierover vindt u in <xref linkend="agenda-view"/>.</para>
+</listitem>
+</varlistentry>
+
+<varlistentry id="menu-view-month">
+<term
+><inlinemediaobject
+><imageobject
+><imagedata fileref="view-calendar-month.png"
+ format="PNG"/></imageobject
+></inlinemediaobject
+><menuchoice
+><guimenu
+>Weergave</guimenu
+> <guimenuitem
+>Maandweergave</guimenuitem
+> </menuchoice
+></term>
+<listitem
+><para
+><action
+>Geeft de maandweergave</action>
+</para>
+<para
+>Meer informatie herover vindt u in <xref linkend="month-view"/>.</para>
+</listitem>
+</varlistentry>
+
+<varlistentry id="menu-view-timeline">
+<term
+><inlinemediaobject
+><imageobject
+><imagedata fileref="view-calendar-timeline.png"
+ format="PNG"/></imageobject
+></inlinemediaobject
+><menuchoice
+><guimenu
+>Weergave</guimenu
+> <guimenuitem
+>Tijdlijn</guimenuitem
+> </menuchoice
+></term>
+<listitem
+><para
+><action
+>Geeft de tijdlijn weer.</action>
+</para>
+<para
+>Meer informatie herover vindt u in <xref linkend="timeline-view"/>.</para>
+</listitem>
+</varlistentry>
+
+<varlistentry id="menu-view-todo">
+<term
+> <inlinemediaobject
+><imageobject
+><imagedata
+ fileref="view-calendar-tasks.png"
+format="PNG"/></imageobject
+></inlinemediaobject
+><menuchoice
+><guimenu
+>Weergave</guimenu
+> <guimenuitem
+>Takenlijst</guimenuitem
+></menuchoice>
+ </term>
+<listitem
+><para
+><action
+>Geeft de takenlijstweergave.</action
+></para>
+<para
+>Meer informatie hierover vindt u in <xref linkend="todo-view"/>.</para>
+</listitem>
+</varlistentry>
+
+<varlistentry id="menu-view-list">
+<term
+><inlinemediaobject
+><imageobject
+><imagedata fileref="view-calendar-list.png"
+ format="PNG"/></imageobject
+></inlinemediaobject
+><menuchoice
+><guimenu
+>Weergave</guimenu
+> <guimenuitem
+>Afsprakenlijst</guimenuitem
+></menuchoice>
+</term>
+<listitem
+><para
+><action
+>Geeft de lijstweergave</action
+></para>
+<para
+>Meer informatie herover vindt u in <xref linkend="list-view"/>.</para>
+</listitem>
+</varlistentry>
+
+<varlistentry id="menu-view-whatsnext">
+<term
+><inlinemediaobject
+><imageobject
+><imagedata fileref="view-calendar-upcoming-events.png"
+ format="PNG"/></imageobject
+></inlinemediaobject
+><menuchoice
+><guimenu
+>Weergave</guimenu
+> <guimenuitem
+>Wat nu</guimenuitem
+></menuchoice>
+</term>
+<listitem
+><para
+><action
+>Geeft de weergave van wat er nu aan de orde is.</action
+></para>
+<para
+>In deze weergave ziet u de volgende afspraken en taken, elk op een regel.</para>
+<para
+>Meer informatie hierover vindt u in <xref linkend="whatsnext-view"/>.</para>
+</listitem>
+</varlistentry>
+
+<varlistentry id="menu-view-journal">
+<term
+><inlinemediaobject
+><imageobject
+><imagedata
+ fileref="journal-new.png"
+format="PNG"/></imageobject
+></inlinemediaobject
+><menuchoice
+><guimenu
+>Weergave</guimenu
+> <guimenuitem
+>Journaal</guimenuitem
+> </menuchoice>
+</term>
+<listitem
+><para
+><action
+>Geeft de journaalweergave</action
+></para>
+<para
+>Meer informatie hierover vindt u in <xref linkend="journal-view"/>.</para
+></listitem>
+</varlistentry>
+
+<varlistentry id="menu-view-update">
+<term
+><menuchoice
+><guimenu
+>Weergave</guimenu
+> <guimenuitem
+>Verversen</guimenuitem
+> </menuchoice
+></term>
+<listitem
+><para>
+<action
+>Ververst en werkt de huidige weergave bij.</action>
+</para
+></listitem>
+</varlistentry>
+
+<varlistentry id="menu-view-zoom">
+<term
+><menuchoice
+><guimenu
+>Weergave</guimenu
+><guisubmenu
+>Zoomen</guisubmenu
+></menuchoice
+></term>
+<listitem
+><para
+><action
+>In dit submenu kunt u de grootte van de weergave aanpassen, zodat u meer of minder gegevens ziet.</action
+></para>
+<para
+>In de agendaweergave (dag(en) of week), kunt u door te zoomen meer of minder dagen overzien (<menuchoice
+><guisubmenu
+>Inzoomen</guisubmenu
+> <guimenuitem
+>Horizontaal</guimenuitem
+></menuchoice
+> en <menuchoice
+> <guisubmenu
+>Uitzoomen</guisubmenu
+><guimenuitem
+>Horizontaal</guimenuitem
+></menuchoice
+>), of meer of minder uren op een dag  (<menuchoice
+><guisubmenu
+>Inzoomen</guisubmenu
+> <guimenuitem
+>Verticaal</guimenuitem
+></menuchoice
+> en <menuchoice
+><guisubmenu
+>Uitzoomen</guisubmenu
+><guimenuitem
+>Verticaal</guimenuitem
+> </menuchoice
+>).</para
+></listitem>
+</varlistentry>
+
+<varlistentry id="menu-view-filter">
+<term
+><menuchoice
+><guimenu
+>Weergave</guimenu
+> <guimenuitem
+>Filter</guimenuitem
+> </menuchoice
+></term>
+<listitem
+><para
+>In dit submenu vindt u de reeds eerder, in de dialoog <link linkend="menu-settings-edit-filters"
+><guilabel
+>Filters bewerken</guilabel
+></link
+>,  aangemaakte filters. <action
+>Selecteer in dit submenu het filter voor de weergave in &korganizer;</action
+>. Wilt u geen filter gebruiken, kies dan <guilabel
+>Geen filter</guilabel
+>.</para
+></listitem>
+</varlistentry>
+
+</variablelist>
+
+</sect2>
+
+<sect2 id="reference-menus-go">
+<title
+>Ga naar</title>
+
+<para
+>Meer informatie over het bladeren in de weergaven van &korganizer; vindt u in <xref linkend="description-view"/>.</para>
+
+<variablelist>
+<varlistentry id="menu-go-previous-day">
+<term
+><inlinemediaobject
+><imageobject
+><imagedata fileref="go-previous.png"
+format="PNG"/></imageobject
+></inlinemediaobject
+><menuchoice
+><guimenu
+>Ga</guimenu
+> <guimenuitem
+>Terug</guimenuitem
+></menuchoice>
+</term>
+<listitem
+><para
+><action
+>Ga, afhankelijk van de weergave, naar de vorige dag, week of maand.</action
+></para
+></listitem>
+</varlistentry>
+
+<varlistentry id="menu-go-next-day">
+<term
+><inlinemediaobject
+><imageobject
+><imagedata fileref="go-next.png"
+ format="PNG"/></imageobject
+></inlinemediaobject
+><menuchoice
+><guimenu
+>Ga</guimenu
+> <guimenuitem
+>Vooruit</guimenuitem
+></menuchoice>
+</term>
+<listitem
+><para
+><action
+>Ga, afhankelijk van de weergave, naar de volgende dag, week of maand.</action
+></para
+></listitem>
+</varlistentry>
+
+<varlistentry id="menu-go-goto-today">
+<term
+><inlinemediaobject
+><imageobject
+><imagedata fileref="go-jump-today.png"
+format="PNG"/></imageobject
+></inlinemediaobject
+><menuchoice
+><guimenu
+>Ga</guimenu
+> <guimenuitem
+>Naar vandaag</guimenuitem
+></menuchoice>
+</term>
+<listitem
+><para
+><action
+>Ga naar de tijdsperiode die de dag van vandaag omvat.</action
+></para
+></listitem>
+</varlistentry>
+
+<varlistentry id="menu-view-day">
+<term
+><inlinemediaobject
+><imageobject
+><imagedata fileref="go-jump-today.png"
+ format="PNG"/></imageobject
+></inlinemediaobject
+><menuchoice
+><guimenu
+>Ga</guimenu
+> <guimenuitem
+>Dag</guimenuitem
+></menuchoice>
+</term>
+<listitem
+><para
+><action
+>Geeft de dagweergave.</action
+></para>
+<para
+>Meer informatie hierover vindt u in <xref linkend="agenda-view"/>.</para>
+</listitem>
+</varlistentry>
+
+<varlistentry id="menu-view-xdays">
+<term
+><inlinemediaobject
+><imageobject
+><imagedata fileref="view-calendar-upcoming-days.png"
+ format="PNG"/></imageobject
+></inlinemediaobject
+><menuchoice
+><guimenu
+>Ga</guimenu
+> <guimenuitem
+>Volgende x dagen</guimenuitem
+></menuchoice>
+</term>
+<listitem
+><para
+><action
+>Geeft u de weergave voor de volgende x dagen, waarbij het aantal dagen, x, in de instellingen van &korganizer; is ingesteld.</action
+></para>
+<para
+>Meer informatie hierover vindt u in <xref linkend="agenda-view"/>.</para>
+</listitem>
+</varlistentry>
+
+<varlistentry id="menu-view-workweek">
+<term
+><inlinemediaobject
+><imageobject
+><imagedata
+ fileref="view-calendar-workweek.png"
+format="PNG"/></imageobject
+></inlinemediaobject
+><menuchoice
+><guimenu
+>Ga</guimenu
+> <guimenuitem
+>Werkweek</guimenuitem
+></menuchoice>
+</term>
+<listitem
+><para
+><action
+>Geeft de Werkweekweergave</action
+></para>
+<para
+>Is gelijk aan de Weekweergave, behalve dat hier alleen de werkdagen van de week worden getoond.</para>
+<para
+>Meer informatie hierover vindt u in <xref linkend="agenda-view"/>.</para>
+</listitem>
+</varlistentry>
+
+<varlistentry id="menu-view-week">
+<term
+><inlinemediaobject
+><imageobject
+><imagedata fileref="view-calendar-week.png"
+ format="PNG"/></imageobject
+></inlinemediaobject
+><menuchoice
+><guimenu
+>Ga</guimenu
+> <guimenuitem
+>Week</guimenuitem
+></menuchoice>
+</term>
+<listitem
+><para
+><action
+>Geeft de weekweergave</action
+></para>
+<para
+>De weekweergave is als de dagweergave. De afspraken van  een periode van zeven dagen worden naast elkaar getoond. Alle beschikbare functies in de dagweergave zijn ook beschikbaar in de weekweergave. </para>
+<para
+>Meer informatie hierover vindt u in <xref linkend="agenda-view"/>.</para
+></listitem>
+</varlistentry>
+
+</variablelist>
+
+</sect2>
+
+<sect2 id="reference-menus-actions">
+<title
+>Acties</title>
+
+<variablelist>
+<varlistentry id="menu-actions-new-event">
+<term
+><inlinemediaobject
+><imageobject
+><imagedata fileref="appointment-new.png"
+format="PNG"/></imageobject
+></inlinemediaobject
+><menuchoice
+><guimenu
+>Acties</guimenu
+> <guimenuitem
+>Nieuwe afspraak...</guimenuitem
+> </menuchoice>
+</term>
+<listitem
+><para
+>Met <guilabel
+>Nieuwe afspraak...</guilabel
+> <action
+>maakt u een nieuwe afspraak aan</action
+>.</para>
+<para
+>Een gedetailleerde beschrijving van het afsprakenvenster vindt u in het gedeelte <link linkend="entering-data-events"
+>Nieuwe afspraken invoeren</link
+>.</para
+></listitem>
+</varlistentry>
+
+<varlistentry id="menu-actions-new-todo">
+<term
+><inlinemediaobject
+><imageobject
+><imagedata fileref="view-task.png"
+format="PNG"/></imageobject
+></inlinemediaobject
+><menuchoice
+><guimenu
+>Acties</guimenu
+> <guimenuitem
+>Nieuwe taak...</guimenuitem
+> </menuchoice>
+</term>
+<listitem
+><para
+>Met <guilabel
+>Nieuwe taak...</guilabel
+> <action
+>maakt u een nieuwe taak aan</action
+>. Taken hebben aanvankelijk geen verwachte eindtijd, maar u kunt die wel opgeven.</para>
+<para
+>Een gedetailleerde beschrijving van het takenvenster vindt u in het gedeelte <link linkend="entering-data-events"
+>Nieuwe taken invoeren</link
+>.</para
+></listitem>
+</varlistentry>
+
+<varlistentry id="menu-actions-new-subtodo">
+<term
+><menuchoice
+><guimenu
+>Acties</guimenu
+> <guimenuitem
+>Nieuwe subtaak...</guimenuitem
+> </menuchoice
+></term>
+<listitem
+><para
+>Met <guilabel
+>Nieuwe subtaak...</guilabel
+> <action
+>maakt u een nieuwe taak aan</action
+>. De subtaak behoort tot de huidig geselecteerde taak. Subtaken hebben aanvankelijk geen verwachte eindtijd, maar u kunt die wel opgeven.</para>
+<para
+>Een gedetailleerde beschrijving van het takenvenster vindt u in het gedeelte <link linkend="entering-data-events"
+>Nieuwe taken invoeren</link
+>.</para
+></listitem>
+</varlistentry>
+
+<varlistentry id="menu-actions-new-journal">
+<term
+><inlinemediaobject
+><imageobject
+><imagedata fileref="journal-new.png"
+format="PNG"/></imageobject
+></inlinemediaobject
+><menuchoice
+><guimenu
+>Acties</guimenu
+> <guimenuitem
+>Nieuw journaal...</guimenuitem
+> </menuchoice
+></term>
+<listitem
+><para
+>Met <guilabel
+>Nieuw journaal...</guilabel
+> <action
+>maakt u een nieuw journaal aan</action
+>.</para
+></listitem>
+</varlistentry>
+
+<varlistentry id="menu-actions-show-event">
+<term
+><menuchoice
+><guimenu
+>Acties</guimenu
+> <guimenuitem
+>Tonen</guimenuitem
+> </menuchoice
+></term>
+<listitem
+><para
+>Met <guilabel
+>Tonen</guilabel
+> <action
+>wordt een dialoog geopend waarin de details staan van de geselecteerde journaalingang, afspraak of taak</action
+>.</para
+></listitem>
+</varlistentry>
+
+<varlistentry id="menu-actions-edit-event">
+<term
+><menuchoice
+><guimenu
+>Acties</guimenu
+> <guimenuitem
+>Bewerken...</guimenuitem
+> </menuchoice
+></term>
+<listitem
+><para
+>Met <guilabel
+>Bewerken...</guilabel
+> <action
+>kunt u de geselecteerde journaalingang, afspraak of taak bewerken</action
+>.</para
+></listitem>
+</varlistentry>
+
+<varlistentry id="menu-actions-delete-event">
+<term
+><menuchoice
+><shortcut
+> <keysym
+>&Del;</keysym
+> </shortcut
+> <guimenu
+>Acties</guimenu
+> <guimenuitem
+>Verwijderen</guimenuitem
+> </menuchoice
+></term>
+<listitem
+><para
+>Met <guilabel
+>Verwijderen</guilabel
+> <action
+>kunt u de geselecteerde journaalingang, actie of taak verwijderen</action
+>.</para
+></listitem>
+</varlistentry>
+
+<varlistentry id="menu-actions-make-subtodo-independent">
+<term
+><menuchoice
+><guimenu
+>Acties</guimenu
+> <guimenuitem
+>Subtaak zelfstandig maken</guimenuitem
+> </menuchoice
+></term>
+<listitem
+><para
+>Met <guilabel
+>Subtaak zelfstandig maken</guilabel
+> kunt u de geselecteerde subtaak loskoppelen van de taak waar die toe behoort.</para
+></listitem>
+</varlistentry>
+
+</variablelist>
+
+</sect2>
+
+<sect2 id="reference-menus-schedule">
+<title
+>Plannen</title>
+
+<variablelist>
+
+<varlistentry id="menu-schedule-publish">
+<term
+><menuchoice
+><guimenu
+>Plannen</guimenu
+> <guimenuitem
+>Iteminformatie publiceren</guimenuitem
+> </menuchoice
+></term>
+<listitem
+><para
+>De geselecteerde afspraak, taak of journaalingang per e-mail versturen in het formaat van iCalendar.</para>
+<para
+>Meer informatie hierover vindt u in <xref linkend="publish"/>.</para
+></listitem>
+</varlistentry>
+
+<varlistentry id="menu-schedule-request">
+<term
+><menuchoice
+><guimenu
+>Plannen</guimenu
+> <guimenuitem
+>Uitnodiging versturen aan deelnemers</guimenuitem
+> </menuchoice
+></term>
+<listitem
+><para
+>Stuur de geselecteerde afspraak of taak naar de deelnemers, en verzoek, als dit nodig is, een antwoord.</para>
+<para
+>Meer informatie hierover vindt u in <xref linkend="request"/>.</para
+></listitem>
+</varlistentry>
+
+<varlistentry id="menu-schedule-reply">
+<term
+><menuchoice
+><guimenu
+>Plannen</guimenu
+> <guimenuitem
+>Statusupdate verzoeken</guimenuitem
+> </menuchoice
+></term>
+<listitem
+><para
+>Als u uw status als deelnemer wijzigt, klik dan hierop, zodat u de organisator uw gewijzigde status kunt versturen (geaccepteerd, voorlopig, &etc;)</para>
+<para
+>Meer informatie hierover vindt u in <xref linkend="reply"/>.</para
+></listitem>
+</varlistentry>
+
+<varlistentry id="menu-schedule-cancel">
+<term
+><menuchoice
+><guimenu
+>Plannen</guimenu
+> <guimenuitem
+>Annulering verzenden naar deelnemers</guimenuitem
+> </menuchoice
+></term>
+<listitem
+><para
+>Als u een afspraak of taak wilt annuleren, kunt u die selecteren, en hierop klikken om de deelnemers hiervan op de hoogte te brengen.</para>
+<para
+>Meer informatie hierover vindt u in <xref linkend="cancel"/>.</para
+></listitem>
+</varlistentry>
+
+<varlistentry id="menu-schedule-refresh">
+<term
+><menuchoice
+><guimenu
+>Plannen</guimenu
+> <guimenuitem
+>Update verzoeken</guimenuitem
+> </menuchoice
+></term>
+<listitem
+><para
+>De organisator verzoeken de laatste versie te sturen van de geselecteerde afspraak of taak.</para>
+<para
+>Meer informatie hierover vindt u in <xref linkend="refresh"/>.</para
+></listitem>
+</varlistentry>
+
+<varlistentry id="menu-schedule-counter">
+<term
+><menuchoice
+><guimenu
+>Plannen</guimenu
+> <guimenuitem
+>Wijziging verzoeken</guimenuitem
+> </menuchoice
+></term>
+<listitem
+><para
+>Stuur de organisator van een geselecteerde afspraak of taak een alternatief voorstel  </para>
+<para
+>Meer informatie hierover vindt u in <xref linkend="counter"/>.</para
+></listitem>
+</varlistentry>
+
+<!--varlistentry id="menu-schedule-mail-icalendar">
+<term
+><menuchoice>
+<guimenu
+>Schedule</guimenu>
+<guimenuitem
+>Send as iCalendar...</guimenuitem>
+</menuchoice
+></term>
+<listitem
+><para
+>.</para>
+<para
+>For more information about this action, please refer to
+<xref linkend="????"/>.</para
+></listitem>
+</varlistentry-->
+
+<varlistentry id="menu-schedule-mail-freebusy">
+<term
+><menuchoice
+><guimenu
+>Plannen</guimenu
+> <guimenuitem
+>E-mail met vrij/bezetinformatie sturen...</guimenuitem
+> </menuchoice
+></term>
+<listitem
+><para
+>Stuur uw vrij/bezetinformatie per e-mail naar een of meer geadresseerden met een e-mailadres.</para>
+<para
+>Meer informatie hierover vindt u in <xref linkend="free-busy"/>.</para
+></listitem>
+</varlistentry>
+
+<varlistentry id="menu-schedule-upload-freebusy">
+<term
+><menuchoice
+><guimenu
+>Plannen</guimenu
+> <guimenuitem
+>Vrij/bezetinformatie uploaden</guimenuitem
+> </menuchoice
+></term>
+<listitem
+><para
+>Upload uw vrij/bezetinformatie naar een groupware server. Deze informatie is dan beschikbaar voor andere gebruikers.</para>
+<para
+>Meer informatie hierover vindt u in <xref linkend="free-busy"/>.</para
+></listitem>
+</varlistentry>
+
+</variablelist>
+
+</sect2>
+
+<sect2 id="reference-menus-settings-help">
+<title
+>Instellingen en Help</title>
+
+<para
+>Naast de gewone &kde;-menu's zoals beschreven in het <ulink url="help:/fundamentals/ui.html#menus"
+>Menu</ulink
+>-hoofdstuk van de &kde; Basisdocumentatie, heeft &korganizer; nog de volgende eigen menu-ingangen voor Instellingen en Help: </para>
+
+<variablelist>
+
+<varlistentry id="menu-settings-sidebar">
+<term
+><menuchoice
+><guimenu
+>Instellingen</guimenu
+> <guimenuitem
+>Zijbalk</guimenuitem
+> </menuchoice
+></term>
+<listitem
+><para
+><action
+>Klik op de menuonderdelen van dit submenu om de componenten van de zijbalk van &korganizer; te tonen of te verbergen</action
+>. Merk op dat de zijbalk alleen aanwezig is als de <link linkend="config-main-views"
+>huidige weergave niet in het volledige venster wordt getoond</link
+>.</para
+></listitem>
+</varlistentry>
+
+<varlistentry id="menu-settings-configure-date-time">
+<term
+><menuchoice
+><guimenu
+>Instellingen</guimenu
+> <guimenuitem
+>Datum &amp; tijd instellen...</guimenuitem
+> </menuchoice
+></term>
+<listitem
+><para
+><action
+>Klik hierop voor het instellen hoe datum en tijd op het bureaublad worden weergegeven</action
+>. Merk op dat deze instellingen ook gelden voor de andere toepassingen van het bureaublad.</para
+></listitem>
+</varlistentry>
+
+<varlistentry id="menu-settings-edit-filters">
+<term
+><menuchoice
+><guimenu
+>Instellingen</guimenu
+> <guisubmenu
+>Weergavefilters beheren...</guisubmenu
+> </menuchoice
+></term>
+<listitem
+><para
+><action
+>Kies dit om de dialoog <guilabel
+>Filters bewerken</guilabel
+> te openen</action
+>. In deze dialoog kunt u filters aanmaken, verwijderen en bewerken, die invloed hebben op wat in &korganizer; zal worden getoond.</para
+></listitem>
+</varlistentry>
+
+<varlistentry id="menu-settings-edit-categories">
+<term
+><menuchoice
+><guimenu
+>Instellingen</guimenu
+> <guimenuitem
+>Tags beheren...</guimenuitem
+> </menuchoice
+></term>
+<listitem
+><para
+><action
+>Kies dit om de dialoog <guilabel
+>Tags bewerken</guilabel
+> te openen</action
+>. In deze dialoog kunt u  tags in de agenda aanmaken, verwijderen en bewerken. Met behulp van tags kunt u uw afspraken en taken indelen in verwante groepen.</para
+></listitem>
+</varlistentry>
+
+</variablelist>
+
+</sect2>
+
+</sect1>
+
+</chapter>
+
+<chapter id="other-features"
+>  <!--updated to 5.4.40-->
+<title
+>Andere eigenschappen</title>
+
+<para
+>In dit hoofdstuk leert u andere nuttige eigenschappen van &korganizer; kennen: handigheidjes met behulp van een muisklik.</para>
+
+<sect1 id="other-features-commandline-options">
+<title
+>Opdrachtregel</title>
+
+<para
+>Een goed programma om toegang tot een &kde;-agenda te krijgen vanaf de opdrachtregel, is KonsoleKalendar</para>
+
+</sect1>
+
+<sect1 id="other-features-drag-and-drop">
+<title
+>Bewerkingen met slepen en loslaten</title>
+
+<para
+>&korganizer; kan eenvoudig worden bediend met de muis. Hieronder volgt een opsomming van mogelijke sleep-en neerzetbewerkingen.</para>
+
+<itemizedlist>
+<listitem
+><para
+>Elke afspraak kan met de muis groter of kleiner worden gemaakt. Plaats de muisaanwijzer nabij de boven- of onderkant van de afspraak en sleep die  omhoog of omlaag. Op deze manier kunt u de start- en eindtijden van de  afspraak visueel aanpassen. Dit werkt in de Dag-, Week- en Werkweekweergaven.</para
+></listitem>
+<listitem
+><para
+>Elk afspraak kan met de muis verplaatst worden naar een andere datum en tijd. Plaats de muisaanwijzer op de afspraak en sleep die naar de nieuwe datum en tijd. Dit werkt in de Dag-, Week- en Werkweekweergaven.</para
+></listitem>
+<listitem
+><para
+>Afspraken kunnen gekopieerd worden naar een, op dit moment, niet zichtbare datum. Plaats de muisaanwijzer op de afspraak en sleep die naar de datumnavigator aan de linkerkant van de huidige agenda of naar de datumnavigator van een andere agenda.</para>
+<tip
+><para
+>Maar: u kunt een afspraak niet rechtstreeks vanuit een weergave van een  agenda naar een weergave van een andere agenda slepen.</para
+></tip
+></listitem>
+<listitem
+><para
+>Werkbalken kunnen in het venster worden versleept. Plaats de muisaanwijzer op het handvat van de werkbalk en sleep het naar een nieuwe locatie in het venster.</para
+></listitem>
+</itemizedlist>
+
+</sect1>
+
+</chapter>
+
+<chapter id="faq">
+<title
+>Vragen en antwoorden</title
+> <!-- link to userbase faq? -->
+
+<qandaset id="faq-questions">
+<qandaentry>
+<question>
+<para
+>Kan ik Vrij/Bezet-tijden in &korganizer; gebruiken?</para>
+</question>
+<answer
+><para
+>Ja, volg de instructies op in <link linkend="config-main-free-busy"
+>Vrij/bezet</link
+>.</para>
+</answer>
+</qandaentry>
+</qandaset>
+
+</chapter>
+
+<chapter id="credits">
+<title
+>Dankbetuigingen en licentie</title>
+
+<para
+>&korganizer;</para>
+
+<para
+>Programma copyright 2000-2010, de &kde;-ontwikkelaars</para>
+
+<para
+>Met dank aan:</para>
+
+<itemizedlist>
+  <listitem
+><para
+>Allen Winter <email
+>winter@kde.org</email
+></para>
+</listitem>
+<listitem
+><para
+>Reinhold Kainhofer <email
+>reinhold@kainhofer.com</email
+></para>
+</listitem>
+<listitem
+><para
+>&Cornelius.Schumacher; &Cornelius.Schumacher.mail;</para>
+</listitem>
+<listitem
+><para
+>&Preston.Brown; &Preston.Brown.mail;</para>
+</listitem>
+</itemizedlist>
+
+<para
+>Documentatie copyright 2000 &Milos.Prudek;</para>
+<para
+>Documentatie copyright 2001 Paul E. Ahlquist, Jr <email
+>&Paul.E.Ahlquist.Jr.mail;</email
+></para>
+<para
+>Documentatie copyright 2004 J&uuml;rgen Nagel <email
+>juergen.nagel@student.fh-reutlingen.de</email
+></para>
+<para
+>Documentatie copyright 2005 Carlos Leonhard Woelz <email
+>carloswoelz@imap-mail.com</email
+></para>
+
+&meld.fouten;&vertaling.jaap; &underFDL; &underGPL; </chapter>
+
+<glossary id="glossary">
+<title
+>Woordenlijst</title>
+
+<glossentry id="gloss-calendar-widget">
+<glossterm
+>Kalender-widget</glossterm>
+<glossdef>
+
+<para
+>Een hulpmiddel voor het kiezen van een datum in sommige invoervensters, zoals het venster "afspraak bewerken". Het is een kleine knop rechts naast het datumveld. Wanneer u er met de muis op klikt, verschijnt een maandkalender. Gebruik de pijltoetsen om naar de gewenste datum te gaan of klik op de naam van de maand of het jaartal om rechtstreeks naar die maand of dat jaartal te gaan.</para>
+
+</glossdef>
+</glossentry>
+
+<glossentry id="gloss-date-navigator">
+<glossterm
+>Datumnavigator</glossterm>
+<glossdef>
+
+<para
+>De datumnavigator vindt u linksboven in het venster van &korganizer;, in de vorm van een maandkalender. Het gebruik hiervan  is de makkelijkste manier om naar een bepaalde datum te navigeren en die te selecteren. Klik op de enkele pijlen bovenaan dit vak om een maand vooruit of achteruit te gaan. Klik op de dubbele pijlen om een jaar vooruit of achteruit te gaan. De dag van vandaag wordt aangegeven door een rechthoekje. Data waarop afspraken gepland zijn, worden vet weergegeven. U selecteert een datum als u daarop klikt. Meerdere naast elkaar liggende data selecteert u als u de &Ctrl;-toets ingedrukt houdt terwijl u op die data klikt. De geselecteerde data worden dan in het hoofdvak getoond.</para>
+
+<para
+>Herhaalde afspraken worden niet altijd weergegeven. U kunt het  weergeven van herhaalde afspraken in de datumnavigator uitzetten. Meer informatie hierover is te vinden in het  <link linkend="config-main-views"
+>hoofdstuk over weergaven</link
+>.</para>
+
+</glossdef>
+</glossentry>
+
+<glossentry id="gloss-due-date">
+<glossterm
+>(Verwachte) einddatum</glossterm>
+<glossdef>
+
+<para
+>Een (verwachte) einddatum is de datum dat een taak afgerond moet zijn. Als u bijvoorbeeld als taak opgeeft de boeken voor 16 november terug te brengen naar de bibliotheek, dan wordt die datum de <quote
+>einddatum voor de taak</quote
+> genoemd</para>
+
+</glossdef>
+</glossentry>
+
+<!--<glossentry id="gloss-group-scheduling">
+<glossterm
+>Group scheduling features</glossterm>
+<glossdef>
+
+<para
+>These features are planned for the future versions of &korganizer;. Group
+scheduling will facilitate member roles (attendee, owner, organizer), time
+conflict resolution, event reminder distribution, response collection and
+evaluation. In other words, you will be able to appoint attendees, invite them
+automatically, and see who accepted or refused attending the appointment.</para>
+
+<para
+>Currently, group scheduling features are not working. However, hooks exist
+in the calendar data structures for these features. <guilabel
+>Private</guilabel>
+check box, <guilabel
+>Require response</guilabel
+> check box and
+<guilabel
+>E-mail</guilabel
+> field will then be fully employed. These controls
+are described in more detail in <link linkend="entering-data"
+>Entering
+Data</link
+> chapter, in the <link
+linkend="entering-data-events-attendees"
+>Attendees section</link
+> of Windows
+reference, and in the <link linkend="config-main-personal"
+>Personal
+Preferences</link
+> section.</para>
+
+</glossdef>
+</glossentry>
+-->
+<glossentry id="gloss-main-panel">
+<glossterm
+>Hoofdvak</glossterm>
+<glossdef>
+<para
+>Gewoonlijk is dit het grootste deel van het venster, rechts van de datumnavigator. Hierin staat de de weergave van de dag, werkweek, week of maand, de lijstweergave of de takenlijst.</para>
+<para
+>Rechtsklikken heeft alleen effect in de lijstweergave en de taakweergave. Er verschijnt dan een contextmenu. U kunt in elke weergave linksklikken.</para>
+</glossdef>
+</glossentry>
+
+<glossentry id="gloss-freebusy">
+<glossterm
+>Vrij/bezet</glossterm>
+<glossdef>
+<para
+>De vrij/bezetinformatie is een verzameling van tijdintervallen waarop u al bezet bent. Door het bekend maken van de tijden die reeds bezet zijn voor andere verplichtingen, kunnen anderen deze vermijden bij het regelen van afspraken (waar u bij betrokken bent). Merk op dat alleen de tijden worden bekend gemaakt, en niet de namen van de afspraken, de beschrijvingen en de deelnemers. U kunt het ook zo zien: de vrij/bezetinformatie is te beschouwen als een overzicht van de tijden waarop u nog beschikbaar bent.</para>
+<para
+>Wanneer u deelnemers toevoegt aan uw afspraak, moet u weten of zij op een bepaalde tijd nog vrij zijn of bezet, voordat u de uitnodigingen verstuurt. Als de deelnemers hun vrij/bezetinformatie beschikbaar stellen, kan &korganizer; deze informatie ophalen en tonen in het tabblad <guilabel
+>Vrij/bezet</guilabel
+> in de dialoog <guilabel
+>Afspraak bewerken</guilabel
+>.</para>
+</glossdef>
+</glossentry>
+
+<!--FIXME: remove this or transform in glossary items
+
+<sect1 id="course-event-types">
+<title
+>Calendar Item Types</title>
+
+<para
+>There are three types of items:</para>
+
+<itemizedlist>
+<listitem
+><para
+>Events start and finish at distinct date. You can also specify
+distinct start and finish times, but you do not have to. While business
+meetings, personal anniversaries and cinema visits are examples of carefully
+planned events with exact time scheduling, a holiday is an event that takes
+several days and thus there is no need to specify exact start and finish
+times.</para
+></listitem>
+
+<listitem
+><para
+>To-do's must take place no later than a
+certain date, but they can also take place sooner.</para
+></listitem>
+</itemizedlist>
+
+<para
+>Naturally, what began as a To-do may later require exact timing.
+Say it is July 1 and you need to go to a hairdresser within a week.
+On July 3 you talk to your hairdresser and agree on an exact time. Thus the
+original To-do becomes similar to an appointment. </para>
+
+<para
+>&korganizer; makes adding exact time to a To-do very easy. If you
+check the <guilabel
+>Due</guilabel
+> check box and/or the <guilabel
+>Start</guilabel>
+check box you can specify the appropriate dates, when you check the
+<guilabel
+>Time associated</guilabel
+> check box and fill in the associated times, your
+To-do becomes very similar to an event.</para>
+
+</sect1>
+
+-->
+
+</glossary>
+
+&documentation.index;
+
+</book>
+<!--
+Local Variables:
+mode: sgml
+sgml-minimize-attributes:nil
+sgml-general-insert-case:lower
+sgml-indent-step:0
+sgml-indent-data:nil
+End:
+
+// vim:ts=2:sw=2:tw=78:noet
+-->

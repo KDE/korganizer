@@ -1,0 +1,5758 @@
+<?xml version="1.0" ?>
+<!DOCTYPE book PUBLIC "-//KDE//DTD DocBook XML V4.5-Based Variant V1.1//EN"
+ "dtd/kdedbx45.dtd" [
+  <!ENTITY % addindex "IGNORE">
+  <!ENTITY % Russian "INCLUDE">
+]>
+
+<book id="korganizer" lang="&language;">
+
+<bookinfo>
+
+<title
+>Руководство пользователя &korganizer;</title>
+
+<authorgroup>
+
+<author
+><firstname
+>Carlos</firstname
+> <othername
+>Leonhard</othername
+> <surname
+>Woelz</surname
+> <affiliation
+><address
+><email
+>carloswoelz@imap-mail.com</email
+></address
+></affiliation>
+</author>
+
+<author
+>&Milos.Prudek; &Milos.Prudek.mail; </author>
+
+<author
+>&Paul.E.Ahlquist.Jr; &Paul.E.Ahlquist.Jr.mail; </author>
+
+<author
+><firstname
+>J&uuml;rgen</firstname
+> <surname
+>Nagel</surname
+> <affiliation
+><address
+><email
+>juergen.nagel@student.fh-reutlingen.de</email
+></address
+></affiliation>
+</author>
+
+<author
+>&Michel.Boyer; &Michel.Boyer.mail; </author>
+
+<othercredit role="developer"
+><firstname
+>Reinhold</firstname
+> <surname
+>Kainhofer</surname
+> <affiliation
+><address
+><email
+>reinhold@kainhofer.com</email
+></address
+></affiliation>
+<contrib
+>Разработчик</contrib>
+</othercredit>
+
+<othercredit role="developer"
+><firstname
+>Cornelius</firstname
+> <surname
+>Schumacher</surname
+> <affiliation
+><address
+>&Cornelius.Schumacher.mail;</address
+></affiliation>
+<contrib
+>Разработчик</contrib>
+</othercredit>
+
+<othercredit role="developer"
+><firstname
+>Preston</firstname
+> <surname
+>Brown</surname
+> <affiliation
+><address
+>&Preston.Brown.mail;</address
+></affiliation>
+<contrib
+>Разработчик</contrib>
+</othercredit>
+
+<othercredit role="reviewer"
+><firstname
+>Lauri</firstname
+> <surname
+>Watts</surname
+> <affiliation
+><address
+>&Lauri.Watts.mail;</address
+></affiliation>
+<contrib
+>Редакция</contrib>
+</othercredit>
+
+<othercredit role="translator"
+><firstname
+>Олег</firstname
+><surname
+>Баталов</surname
+><affiliation
+><address
+><email
+>olegbatalov@mail.ru</email
+></address
+></affiliation
+><contrib
+>Перевод на русский язык</contrib
+></othercredit
+> <othercredit role="translator"
+><firstname
+>Алексей</firstname
+><surname
+>Опарин</surname
+><affiliation
+><address
+><email
+>opaleksej@yandex.ru</email
+></address
+></affiliation
+><contrib
+>Перевод на русский язык</contrib
+></othercredit
+> <othercredit role="translator"
+><firstname
+>Андрей</firstname
+><surname
+>Сербовец</surname
+><affiliation
+><address
+><email
+>vityazdron@gmail.com</email
+></address
+></affiliation
+><contrib
+>Перевод на русский язык</contrib
+></othercredit
+> <othercredit role="translator"
+><firstname
+>Олеся</firstname
+><surname
+>Герасименко</surname
+><affiliation
+><address
+><email
+>translation-team@basealt.ru</email
+></address
+></affiliation
+><contrib
+>Перевод на русский язык</contrib
+></othercredit
+> 
+</authorgroup>
+
+
+
+<copyright>
+<year
+>2000</year
+><holder
+>&Milos.Prudek;</holder>
+</copyright>
+
+<copyright>
+<year
+>2001</year>
+<holder
+>&Paul.E.Ahlquist.Jr;</holder>
+</copyright>
+
+<copyright>
+<year
+>2004</year>
+<holder
+>J&uuml;rgen Nagel</holder>
+</copyright>
+
+<copyright>
+<year
+>2005</year>
+<holder
+>Carlos Leonhard Woelz</holder>
+</copyright>
+
+<legalnotice
+>&FDLNotice;</legalnotice>
+
+<date
+>2016-12-08</date>
+<releaseinfo
+>5.4.40 (Приложения KDE 16.12)</releaseinfo>
+
+<abstract
+><para
+>&korganizer; &mdash; простая в использовании утилита для управления личной информацией (Personal Information Manager — <acronym
+>PIM</acronym
+>). С помощью программы можно планировать встречи, события, вести список задач и делать записи в дневнике. &korganizer; напомнит о текущих задачах и поможет упорядочить ваше расписание. </para
+></abstract>
+
+<keywordset>
+<keyword
+>KDE</keyword>
+<keyword
+>KOrganizer</keyword>
+<keyword
+>kdepim</keyword>
+<keyword
+>управление</keyword>
+<keyword
+>время</keyword>
+<keyword
+>расписание</keyword>
+<keyword
+>напоминание</keyword>
+<keyword
+>встреча</keyword>
+<keyword
+>событие</keyword>
+<keyword
+>дневник</keyword>
+<keyword
+>задачи</keyword>
+</keywordset>
+
+</bookinfo>
+
+<chapter id="introduction"
+><!--updated to 5.4.40-->
+<title
+>Введение</title>
+
+<para
+>&korganizer; &mdash; простая в использовании утилита для управления личной информацией (Personal Information Manager — <acronym
+>PIM</acronym
+>). С помощью программы можно планировать встречи, события, вести список задач и делать записи в дневнике. &korganizer; напомнит о текущих задачах и поможет упорядочить ваше расписание.</para>
+
+<para
+>Однако &korganizer; — это не просто календарь, программа также может помочь в общении с друзьями и коллегами. С помощью &korganizer; возможно приглашать людей по электронной почте на встречи, с автоматической обработкой ответов на приглашение, вести совместную работу над календарём (с помощью сервера совместной работы или просто файла в сети), создавать совместные события (например, планировать чемпионат или конференцию), используя механизм загрузки материалов из Интернета. &korganizer; основана на открытых стандартах и работает со многими серверами совместного планирования, предоставляя пользователю свободу управления своей информацией и выбора наиболее приемлемых решений в работе. </para>
+
+<para
+>&korganizer; доступна из интегрированного решения &kontact; через компоненты «Календарь», «Дневник» и «Задачи»: возможно работать с электронной почтой, заметками, контактами, читать новостные ленты и синхронизировать личную информацию с портативными устройствами. Даже если программа не используется как часть &kontact;, &korganizer; остаётся интегрированным с другими программами управления личной информацией (<acronym
+>PІM</acronym
+>) в &kde;. Например, возможно настроить показ в календаре всех дней рождения из &kaddressbook;, использовать &kmail; для рассылки и получения приглашений и так далее.</para>
+
+<para
+>Основные возможности &korganizer;:</para>
+<para
+><itemizedlist>
+<listitem
+><para
+>Создание записей о задачах, планирование событий, ведение дневника.</para
+></listitem>
+<listitem
+><para
+>Упорядочивание событий и задач путём сортировки по меткам.</para
+></listitem>
+<listitem
+><para
+>Маркировка меток цветом.</para
+></listitem>
+<listitem
+><para
+>Просмотр и редактирование нескольких календарей одновременно.</para
+></listitem>
+<listitem
+><para
+>Перестановка событий в расписании перетаскиванием мышью.</para
+></listitem>
+<listitem
+><para
+>Простая работа с повторяющимися событиями.</para
+></listitem>
+<listitem
+><para
+>Организация и принятие участия во встречах с учётом расписания всех участников.</para
+></listitem>
+<listitem
+><para
+>Поддержка нескольких серверов совместной работы (groupware-серверов).</para
+></listitem>
+<listitem
+><para
+>Поддержка открытого стандарта vCalendar и iCalendar.</para
+></listitem>
+<listitem
+><para
+>Объединение и импорт календарей.</para
+></listitem>
+<listitem
+><para
+>Перенос элементов между открытыми календарями.</para
+></listitem>
+<listitem
+><para
+>Совместная работа посредством браузера &konqueror;.</para
+></listitem>
+<listitem
+><para
+>Настраиваемые наборы значков.</para
+></listitem>
+<listitem
+><para
+>Перетаскивание панелей инструментов.</para
+></listitem>
+<listitem
+><para
+>И многое другое...</para
+></listitem>
+</itemizedlist
+></para>
+
+
+<para
+>Теперь прочтите <link linkend="five-minute-course"
+>пятиминутный курс по использованию</link
+> &korganizer; или погрузитесь в изучение полной <link linkend="managing-data"
+>справочной документации</link
+>.</para>
+
+</chapter>
+
+<chapter id="five-minute-course"
+><!--updated to 5.4.40-->
+<title
+>Пятиминутный курс по использованию &korganizer;</title>
+<subtitle
+>(для опытных и нетерпеливых)</subtitle>
+
+<para
+>Мало времени? Давайте начнём с краткого практического обзора &korganizer;!</para>
+
+<para
+>Если пользователю уже доводилось работать с ПО для управления личной информацией, освоить &korganizer; будет очень легко. Программа позволяет создавать новые и перепланировать существующие события, назначать им метки, создавать новые метки, создавать и изменять списки приглашённых и их роли, автоматически посылать по электронной почте приглашения, обмениваться данными с другими календарями &korganizer;, вести список задач и делать записи в дневнике.</para>
+
+<para
+>Этот курс предполагает, что пользователь умеет работать в &kde; и предпочитает всё исследовать самостоятельно. Здесь приводится описание только основных функций &korganizer;.</para>
+
+<sect1 id="course-entering-events">
+<title
+>Создание событий</title>
+
+<procedure>
+<step
+><para
+>Нажмите на панели инструментов кнопку <inlinemediaobject
+><imageobject
+> <imagedata fileref="view-calendar-agenda.png" format="PNG"/></imageobject
+> </inlinemediaobject
+><guibutton
+>Расписание</guibutton
+> или выберите пункт меню <menuchoice
+><guimenu
+>Вид</guimenu
+> <guimenuitem
+>Расписание</guimenuitem
+></menuchoice
+>. В окне программы будет показано <link linkend="agenda-view"
+><guilabel
+>Расписание</guilabel
+> </link
+>.</para
+></step>
+
+<step
+><para
+>Щёлкните по нужной дате в <link linkend="glossary" endterm="gloss-date-navigator"
+>навигаторе по датам</link
+>. </para
+></step>
+
+<step
+><para
+>Выберите текстовое поле, находящееся рядом с нужным временем на основной панели; таким образом будет назначено время для события. Начните набирать текст или щёлкните дважды по этому полю, чтобы открыть диалоговое окно <guilabel
+>Новое событие</guilabel
+>.</para
+></step>
+
+<step
+><para
+><link linkend="entering-data-events"
+>Введите сведения о событии</link
+>. Характеристики события доступны на шести вкладках, расположенных в нижней части окна.</para
+></step>
+
+<step
+><para
+>Для сохранения события нажмите кнопку <guibutton
+>OK</guibutton
+>.</para
+></step>
+</procedure>
+</sect1>
+
+<sect1 id="course-entering-todos">
+<title
+>Создание задач</title>
+
+<procedure>
+<step
+><para
+>Выберите пункт меню <xref linkend="menu-actions-new-todo"/>: откроется диалоговое окно <guilabel
+>создания новой задачи</guilabel
+>.</para
+></step>
+
+<step
+><para
+><link linkend="entering-data-events"
+>Введите сведения о задаче</link
+>. Характеристики задачи доступны на шести вкладках, расположенных в нижней части окна.</para
+></step>
+
+<step
+><para
+>Для сохранения задачи нажмите кнопку <guibutton
+>OK</guibutton
+>.</para
+></step>
+</procedure>
+
+</sect1>
+
+<sect1 id="course-entering-journals">
+<title
+>Добавление записей в дневник</title>
+
+<procedure>
+
+<step
+><para
+>Выберите пункт меню <inlinemediaobject
+><imageobject
+> <imagedata fileref="journal-new.png" format="PNG"/></imageobject
+> </inlinemediaobject
+><menuchoice
+><guimenu
+>Вид</guimenu
+> <guimenuitem
+>Дневник</guimenuitem
+></menuchoice
+> для перехода к просмотру <link linkend="journal-view"
+><guilabel
+>Дневника</guilabel
+></link
+>.</para
+></step>
+
+<step
+><para
+>Выберите пункт меню <menuchoice
+><guimenu
+>Действия</guimenu
+> <guimenuitem
+>Создать запись в дневнике</guimenuitem
+></menuchoice
+>.</para
+></step>
+
+<step
+><para
+>Введите название записи и, собственно, её текст.</para
+></step>
+
+</procedure>
+
+</sect1>
+
+<sect1 id="course-rescheduling-events">
+<title
+>Перепланирование событий</title>
+
+<para
+>Перепланирование событий выполняется путём их перетаскивания:</para>
+
+<procedure>
+<step
+><para
+>Используя <link linkend="glossary" endterm="gloss-date-navigator"
+>навигатор по датам</link
+>, перейдите к дате события, которое следует перепланировать.</para
+></step>
+
+<step
+><para
+>Сначала следует выбрать подходящий <link linkend="reference-menus-view"
+>режим просмотра</link
+>. Детализация по часам имеется только в <link linkend="agenda-view"
+>режиме <guilabel
+>расписания</guilabel
+> </link
+> (день, рабочая неделя и неделя), что позволяет перепланировать события, назначенные на конкретное время. В режиме «Месяц» отображаются только дни, поэтому он лучше всего подходит подходит для перепланирования долговременных событий (например, отпуска).</para
+></step>
+
+<step
+><para
+>Для просмотра недели нажмите на панели инструментов кнопку <inlinemediaobject
+><imageobject
+> <imagedata fileref="view-calendar-week.png" format="PNG"/></imageobject
+> </inlinemediaobject
+><guibutton
+>Неделя</guibutton
+> или выберите пункт меню <menuchoice
+><guimenu
+>Переход</guimenu
+> <guimenuitem
+>Неделя</guimenuitem
+></menuchoice
+>. </para
+></step>
+
+<step
+><para
+>Перетащите событие на другую дату и время.</para
+></step>
+
+</procedure>
+
+<para
+>Если требуется перепланировать более точно, сделайте двойной щелчок по событию и выберите время его начала и завершения в раскрывающихся списках с четвертьчасовыми интервалами. Если необходимо указать время ещё точнее, его возможно ввести непосредственно в поле.</para>
+
+</sect1>
+
+<sect1 id="course-rescheduling-todos">
+<title
+>Перепланирование или изменение задач</title>
+
+<para
+>Сначала следует выбрать подходящий <link linkend="reference-menus-view"
+>режим просмотра</link
+>. Задачи, которые не имеют срока выполнения, показываются только в режиме <link linkend="todo-view"
+><inlinemediaobject
+><imageobject
+> <imagedata fileref="view-calendar-tasks.png" format="PNG"/></imageobject
+> </inlinemediaobject
+><guilabel
+>Задачи</guilabel
+></link
+> и в <link linkend="description-view"
+>списке задач на боковой панели</link
+>.</para>
+
+<para
+>Для перехода в режим просмотра списка задач нажмите на панели инструментов кнопку <inlinemediaobject
+><imageobject
+> <imagedata fileref="view-calendar-tasks.png" format="PNG"/></imageobject
+> </inlinemediaobject
+><guibutton
+>Задачи</guibutton
+> или выберите пункт меню <menuchoice
+><guimenu
+>Вид</guimenu
+> <guimenuitem
+>Задачи</guimenuitem
+></menuchoice
+>. </para>
+
+<para
+>Чтобы перепланировать задачу, щёлкните по ней правой кнопкой мыши.Выберите в контекстном меню пункт <guimenuitem
+>Копировать</guimenuitem
+> или <guimenuitem
+>Переместить</guimenuitem
+> и укажите новую дату на появившемся календаре. В результате задача будет скопирована или перемещена на указанную дату. Если на главной панели показан <guilabel
+>Список задач</guilabel
+>, также можно щёлкнуть правой кнопкой мыши по столбцу <guilabel
+>Дата завершения</guilabel
+> и выбрать в появившемся календаре нужную дату.</para>
+
+<para
+>Чтобы <link linkend="entering-data-to-do"
+>изменить задачу</link
+>, щёлкните по ней правой кнопкой мыши и выберите в контекстном меню пункт <guimenuitem
+>Изменить...</guimenuitem
+>.</para>
+
+</sect1>
+
+<sect1 id="course-conclusion">
+<title
+>Заключение</title>
+
+<para
+>Этот пятиминутный курс охватывает только основные операции в &korganizer;. Чтобы узнать больше о возможностях &korganizer;, читайте дальше. Если нет желания читать всё руководство — просмотрите хотя бы <link linkend="faq"
+>&FAQ;</link
+>.</para>
+
+</sect1>
+
+</chapter>
+
+<chapter id="managing-data"
+><!--updated to 5.4.40-->
+<title
+>Импорт, экспорт и управление календарями</title>
+
+<para
+>&korganizer; может хранить (и запрашивать) события, записи дневника и задачи в различных источниках различными способами. Такие источники называются <firstterm
+>источниками календаря</firstterm
+>. </para>
+
+<para
+>&korganizer; имеет встроенную поддержку календарей iCalendar и vCalendar (возможно добавлять их как новые источники данных), Но также возможно импортировать данные в существующий календарь и открывать файл календаря в новом окне. Поддерживается импорт календарей в старом формате <application
+>ical</application
+>.</para>
+
+<para
+>Возможно экспортировать данные как файл iCalendar или vCalendar. Файлы этих типов поддерживаются большинством программ-планировщиков. </para>
+
+<para
+>В этой главе рассказывается о том, как управлять календарной информацией с помощью источников календарей, функций импорта и экспорта, а также механизма загрузки материалов из Интернета.</para>
+
+<sect1 id="managing-resources">
+<title
+>Источники календарей</title>
+
+<para
+>&korganizer; использует локальный файл в качестве источника данных по умолчанию. Однако возможно добавить и другие источники: серверы совместной работы, записи дневника (блоги), файлы в сети и так далее. Если используется несколько источников данных, &korganizer; <link linkend="config-main-general-personal"
+>возможно настроить на использование источника данных по умолчанию или вывод запроса на выбор источника</link
+> при добавлении событий, задач или записей дневника. &korganizer; объединяет содержимое всех источников при <link linkend="description-view"
+>просмотре</link
+>. </para>
+
+<para
+>В большинстве случаев можно ограничиться источником данных по умолчанию, иногда может потребоваться использовать другой источник (например, если доступен сервер совместной работы). Узнайте у администратора всю необходимую информацию для настройки совместно используемого источника, в том числе для размещения и получения сведений о свободном и занятом времени. Благодаря доступу к этим сведениям организатору мероприятия будет проще формировать список его участников.</para>
+
+<note
+><para
+>Кроме календарей на серверах совместной работы хранятся контакты, почта и <link linkend="glossary" endterm="gloss-freebusy"
+>информация о занятости</link
+>. Таким образом, некоторые источники данных, рассматриваемые здесь, могут иметь отношение и к другим, из &kmail; и &kaddressbook; (компоненты почтового клиента и адресной книги &kontact;), или к <link linkend="config-main-free-busy"
+>основным установкам занятости</link
+>.</para>
+<para
+>Обратите внимание, что взаимодействие по <link linkend="group-scheduling"
+>совместному планированию</link
+> в &korganizer; выполняется посредством прямой пересылки электронной почты. Это означает, что для этой функции наличие сервера совместной работы не обязательно.</para
+></note>
+
+<screenshot id="screenshot-resources">
+<screeninfo
+>Диалог добавления календаря &korganizer;</screeninfo>
+<mediaobject>
+<imageobject
+><imagedata fileref="korganizer-resource.png" format="PNG"/></imageobject>
+<textobject
+><phrase
+>Диалог добавления календаря &korganizer;</phrase
+></textobject>
+<caption
+><para
+>Диалог добавления календаря &korganizer;</para
+></caption>
+</mediaobject>
+</screenshot>
+
+<procedure id="procedure-add-resource">
+<title
+>Добавление нового источника данных &korganizer;</title>
+
+<step
+><para
+>Чтобы открыть диалог настройки параметров &korganizer;, выберите пункт меню <menuchoice
+><guimenu
+>Настройка</guimenu
+> <guimenuitem
+>Настроить &korganizer;...</guimenuitem
+></menuchoice
+> и откройте на странице <guilabel
+>Главное</guilabel
+> вкладку <guilabel
+>Календари</guilabel
+>. </para>
+<para
+>Также возможно использовать контекстное меню: щёлкните правой кнопкой мыши по <guilabel
+>списку календарей</guilabel
+> на боковой панели и выберите пункт <guilabel
+>Добавить календарь...</guilabel
+></para
+></step>
+<step
+><para
+>Если на боковой панели не показан <guilabel
+>список календарей</guilabel
+>, выберите пункт меню <menuchoice
+><guimenu
+>Настройка</guimenu
+><guisubmenu
+>Боковая панель</guisubmenu
+> <guimenuitem
+>Список календарей</guimenuitem
+></menuchoice
+>.</para
+></step>
+
+<step
+><para
+>Для добавления источника в существующий список нажмите кнопку <guibutton
+>Добавить...</guibutton
+>.</para
+></step>
+
+<step
+><para
+>Выберите нужный источник.</para
+></step>
+
+<step
+><para
+>Если в дальнейшем потребуется удалить или изменить источник, выберите его в <guilabel
+>списке календарей</guilabel
+> на боковой панели и нажмите кнопку <guilabel
+>Удалить календарь</guilabel
+> или <guilabel
+>Свойства календаря...</guilabel
+> соответственно.</para
+></step>
+
+</procedure>
+<para
+>Существующие источники данных &korganizer; включают:</para>
+
+<variablelist>
+
+<varlistentry>
+<term
+><guilabel
+>Дни рождения и годовщины</guilabel
+></term>
+<listitem
+><para
+>Даты дней рождения и годовщин контактов из адресной книги, представленные в виде событий календаря.</para
+></listitem>
+</varlistentry>
+
+<varlistentry>
+<term
+><guilabel
+>Источник данных совместной работы DAV</guilabel
+></term>
+<listitem
+><para
+>Источник для управления календарями и адресными книгами DAV (CalDAV, GroupDAV).</para
+></listitem>
+</varlistentry>
+
+<varlistentry>
+<term
+><guilabel
+>Задачи и календари Google</guilabel
+></term>
+<listitem
+><para
+>Доступ к задачам и календарям Google.</para
+></listitem>
+</varlistentry>
+
+<varlistentry>
+<term
+><guilabel
+>Файл календаря iCal</guilabel
+></term>
+<listitem
+><para
+>Загрузка данных из файла календаря iCal.</para
+></listitem>
+</varlistentry>
+
+<varlistentry>
+<term
+><guilabel
+>Папка календарей iCal</guilabel
+></term>
+<listitem
+><para
+>Доступ к календарям, каждый из которых хранится в отдельном файле в указанной папке.</para
+></listitem>
+</varlistentry>
+
+<varlistentry>
+<term
+><guilabel
+>Файл календаря KAlarm</guilabel
+></term>
+<listitem
+><para
+>Загрузка данных из файла календаря KAlarm.</para
+></listitem>
+</varlistentry>
+
+<varlistentry>
+<term
+><guilabel
+>Папка календарей KAlarm</guilabel
+></term>
+<listitem
+><para
+>Загрузка данных из локальной папки KAlarm.</para
+></listitem>
+</varlistentry>
+
+<varlistentry>
+<term
+><guilabel
+>Сервер совместной работы Kolab</guilabel
+></term>
+<listitem
+><para
+>Доступ к папкам совместной работы Kolab и почте на IMAP-сервере Kolab.</para
+></listitem>
+</varlistentry>
+
+<varlistentry>
+<term
+><guilabel
+>Сервер совместной работы Open-Xchange</guilabel
+></term>
+<listitem
+><para
+>Доступ к событиям, задачам и контактам сервера совместной работы Open-Xchange.</para
+></listitem>
+</varlistentry>
+
+</variablelist>
+
+</sect1>
+
+<sect1 id="managing-import-export">
+<title
+>Импорт, экспорт и управление календарями</title>
+
+<para
+>Локальные файлы — лишь один из многих видов источников данных, которые может использовать &korganizer;, тем не менее они незаменимы при обмене данными с другими аналогичными программами.</para>
+
+<sect2 id="managing-import">
+<title
+>Импорт календарей</title>
+
+<para
+>Если требуется импортировать файл iCalendar или vCalendar, выберите пункт меню <menuchoice
+><guimenu
+>Файл</guimenu
+> <guisubmenu
+>Импорт</guisubmenu
+><guimenuitem
+>Импорт календаря...</guimenuitem
+> </menuchoice
+>. В появившемся диалоговом окне &korganizer; будет предложено выбрать один из вариантов: <guilabel
+>Добавить календарь</guilabel
+> (файл календаря будет добавлен в качестве нового локального источника данных) или <guilabel
+>Объединить с существующим календарём</guilabel
+> (элементы календаря будут включены в существующий источник данных).</para>
+
+<para
+>Это может понадобиться, если, к примеру, по электронной почте был получен файл vCalendar с несколькими записями или требуется импортировать календарь из другого приложения. В последнем случае прежде всего следует экспортировать календарь в том приложении в один из вышеуказанных форматов (или преобразовать файл календаря из исходного формата приложения с помощью подходящей утилиты).</para>
+
+<!--Get Hot New Stuff
+store.kde.org KOrganizer Calendars-->
+</sect2>
+
+<sect2 id="managing-export">
+<title
+>Экспорт календарей</title>
+
+<para
+>Возможно экспортировать данные в файл формата iCalendar или vCalendar — эти форматы поддерживаются большинством программ-планировщиков. &korganizer; экспортирует из выбранных (отмеченных флажками) источников те записи, которые пропускает <link linkend="filters-view"
+>фильтр</link
+> (назовём такие записи <quote
+>активными</quote
+>). Иными словами, если запись не отображается в календаре — её не будет и в полученном файле. <link linkend="filters-view"
+>Фильтры</link
+> позволяют убрать ненужные записи перед экспортом. Фильтрацию возможно упростить, упорядочив записи в календаре с помощью <link linkend="categories-view"
+>меток</link
+>. Чтобы выбрать или отключить источник данных, установите или снимите соответствующий флажок в <link linkend="managing-resources"
+><guilabel
+>списке календарей</guilabel
+></link
+> на боковой панели.</para>
+
+<para
+>Чтобы экспортировать все <quote
+>активные</quote
+> события, задачи и записи дневника (независимо от того, к каким источникам они относятся) как новый файл в формате iCalendar, выберите пункт меню <menuchoice
+><guimenu
+>Файл</guimenu
+><guisubmenu
+>Экспорт</guisubmenu
+> <guimenuitem
+>Экспорт в iCalendar...</guimenuitem
+></menuchoice
+>. Для завершения экспорта укажите в появившемся диалоговом окне <guilabel
+>Сохранение файла</guilabel
+> имя и расположение файла.</para>
+
+</sect2>
+
+<sect2 id="managing-purge-archive">
+<title
+>Управление календарями</title>
+
+
+<para
+>Современные компьютеры имеют достаточно места на жёстком диске. Однако если календарь &korganizer; синхронизируется с компьютером с небольшим объёмом памяти, например устройством Palm (КПК), будет полезно использовать архивирование. Производительность &korganizer; может понизиться при большом количестве событий. Для архивирования старых событий выполните следующие действия:</para>
+
+<procedure>
+<step
+><para
+>Выберите пункт меню <menuchoice
+><guimenu
+>Файл</guimenu
+><guimenuitem
+>Архивировать старые события...</guimenuitem
+></menuchoice
+>.</para
+></step>
+<step
+><para
+>Введите дату в поле <guilabel
+>Поместить в архив записи старше чем</guilabel
+> или выберите дату с помощью виджета календаря. Также возможно выбрать автоматическую архивацию записей, возраст которых превышает указанный.</para
+></step>
+<step
+><para
+>Для архивации записей необходимо также указать имя файла архива в поле <guilabel
+>Файл архива</guilabel
+>. Если архивацию следует выполнить в существующий файл архива, нажмите кнопку <guilabel
+>обзора</guilabel
+> и выберите нужный архив. Записи будут добавлены в выбранный файл (уже имеющиеся в файле записи не будут изменены).</para
+></step>
+</procedure>
+
+<para
+>При архивации в файле будут сохранены все старые записи, включая завершённые задачи. Если завершённые задачи не требуется сохранять, выберите пункт меню <menuchoice
+><guimenu
+>Файл</guimenu
+><guimenuitem
+>Удалить выполненные задачи</guimenuitem
+> </menuchoice
+> для удаления всех выполненных задач из активных источников. Если завершённые задачи следует сохранить, но не показывать в списке задач, воспользуйтесь <link linkend="filters-view"
+>фильтром</link
+>. </para>
+
+</sect2>
+
+</sect1>
+<!-- only import ??-->
+<sect1 id="managing-get-hot-new-stuff">
+<title
+>Загрузка материалов из Интернета</title>
+
+<!--para
+>If you have a calendar containing events of public interest, such as
+a conference or championship schedule, you can upload it (or check if there
+is something worth downloading) using the
+<ulink url="http://ghns.berlios.de/"
+>get hot new stuff framework</ulink
+>.
+</para-->
+
+<para
+>Чтобы открыть диалог <guilabel
+>получения материалов</guilabel
+>, выберите пункт меню <menuchoice
+><guimenu
+>Файл</guimenu
+><guisubmenu
+>Импорт</guisubmenu
+> <guimenuitem
+>Получить свежие материалы...</guimenuitem
+></menuchoice
+>. После загрузки календаря появится диалог со списком его событий — нажмите кнопку <guilabel
+>Продолжить</guilabel
+> для объединения отображаемых событий с источником данных по умолчанию.</para>
+
+<!--para>
+To open the <guilabel
+>Upload Hot New Stuff</guilabel
+> dialog, which allow you
+to export calendars containing events which may be useful to other people, such
+as a conference program, a list of holidays, special events, &etc;,
+choose the <menuchoice
+><guimenu
+>File</guimenu
+><guisubmenu
+>Export</guisubmenu>
+<guimenuitem
+>Upload Hot New Stuff...</guimenuitem
+></menuchoice
+>.</para>
+
+<para
+>Before uploading the events, make sure you have
+<link linkend="filters-view"
+>filtered out</link
+> all unrelated data.</para-->
+
+</sect1>
+
+</chapter>
+
+<chapter id="chapter-views-and-filters"
+><!-- updated to 5.4.40-->
+
+<title
+>Режимы просмотра и фильтры</title>
+
+<para
+>Календари (источники данных) могут содержать списки мероприятий и задач, а также записи дневника, но эти записи различны по своей природе. Задачи могут не иметь привязки по дате, поэтому режим расписания для их просмотра не подойдёт. Записи дневника обычно содержат размышления и рассказы о произошедших событиях. Для их просмотра требуется особый режим, так как они никак не соотносятся со списком текущих задач или предстоящих мероприятий и так далее.</para>
+
+<para
+>Для удобства просмотра информации в &korganizer; предусмотрены различные режимы просмотра и возможности фильтрации и поиска. Кроме того, возможно назначать событиям и задачам метки, что в дальнейшем упрощает их просмотр благодаря фильтрам или выделению цветом.</para>
+
+<sect1 id="description-view">
+<title
+>Режимы просмотра &korganizer;</title>
+
+<para
+>В этом разделе руководства приводится описание различных режимов просмотра, а также сведения о том, как просматривать свою личную информацию с помощью &korganizer;.</para>
+
+<para
+>Окно &korganizer; состоит из двух областей: главного окна и боковой панели. В главном окне выполняется просмотр содержимого, в то время как на боковой панели представлены календарь, задачи, записи и список календарей. Для показа или скрытия компонентов боковой панели следует установить или снять соответствующие флажки в подменю <menuchoice
+><guimenu
+>Настройка</guimenu
+> <guisubmenu
+>Боковая панель</guisubmenu
+></menuchoice
+>.</para>
+
+<para
+>Календарь позволяет просматривать и выбирать даты. Текущая дата очерчена рамкой, даты с запланированными событиями выделены полужирным шрифтом (события, которые повторяются ежедневно или еженедельно, могут не быть выделены полужирным шрифтом — это <link linkend="config-main-views"
+>зависит от настройки режима просмотра</link
+>), а выходные дни выделены красным цветом. Чтобы перейти к какой-либо дате, просто щёлкните по ней. Удерживайте кнопку мыши для выбора сразу нескольких последовательных дат. В режимах просмотра <guilabel
+>Что дальше</guilabel
+>, <guilabel
+>События</guilabel
+>, <guilabel
+>Расписание</guilabel
+> и <guilabel
+>Дневник</guilabel
+> будут показаны события, задачи или записи дневника только для тех дат, которые выбраны в календаре. В режиме просмотра <guilabel
+>Месяц</guilabel
+> будут показаны события или задачи первого месяца, который отображается в календаре (выбор дней в календаре не влияет на отображаемое в этом режиме содержимое; для его изменения следует выбрать другой месяц).</para>
+
+<para
+>Для просмотра задач можно использовать не только соответствующий пункт меню (<link linkend="todo-view"
+>Задачи</link
+>), но и компонент «Задачи» на боковой панели. Он полезен, когда во время использования других режимов просмотра возникает необходимость перейти к просмотру задач.</para>
+
+<para
+>Компонент «Записи» на боковой панели позволяет просмотреть сведения о текущих выбранных событиях, задачах или записях дневника.</para>
+
+<para
+>Компонент «Список календарей» на боковой панели позволяет включать или отключать источники в списке путём установки или снятия соответствующих флажков, а также настраивать их. Дополнительные сведения доступны в разделе <xref linkend="managing-resources"/>.</para>
+
+<para
+>Обзор календаря выполняется следующим образом: для перехода к предыдущему дню, неделе, месяцу или году выберите пункт меню <menuchoice
+><guimenu
+>Переход</guimenu
+> <guimenuitem
+>Назад</guimenuitem
+></menuchoice
+> или нажмите на панели инструментов кнопку<inlinemediaobject
+><imageobject
+><imagedata fileref="go-previous.png" format="PNG"/></imageobject
+></inlinemediaobject
+>; для перехода к следующему дню, неделе, месяцу или году выберите пункт меню <menuchoice
+><guimenu
+>Переход</guimenu
+><guimenuitem
+>Вперёд</guimenuitem
+></menuchoice
+> или нажмите на панели инструментов кнопку <inlinemediaobject
+><imageobject
+> <imagedata fileref="go-next.png" format="PNG"/></imageobject
+> </inlinemediaobject
+> (в зависимости от режима просмотра); для просмотра текущего дня выберите пункт меню <menuchoice
+><guimenu
+>Переход</guimenu
+><guimenuitem
+>Сегодня</guimenuitem
+> </menuchoice
+> или нажмите на панели инструментов кнопку <inlinemediaobject
+><imageobject
+> <imagedata fileref="go-jump-today.png" format="PNG"/></imageobject
+> </inlinemediaobject
+>.</para>
+
+<sect2 id="whatsnext-view">
+<title
+>Режим просмотра «Что дальше»</title>
+
+<para
+>В этом режиме события и задачи представлены в простом и удобном для быстрого просмотра формате. Будут показаны все незавершённые задачи, но только те события, которые соответствуют дням, выбранным в <guilabel
+>календаре</guilabel
+> на боковой панели. Все события и задачи отображаются в отдельных строках.</para>
+
+<para
+>Для перехода в режим «Что дальше» выберите пункт меню <menuchoice
+><guimenu
+>Вид</guimenu
+> <guimenuitem
+>Что дальше</guimenuitem
+></menuchoice
+>.</para>
+
+</sect2>
+
+<sect2 id="list-view">
+<title
+>Режим просмотра «События»</title>
+<para
+>В этом режиме просмотра в виде списка показаны все задачи, события и записи дневника для выбранных в календаре дат. Незавершённые задачи, завершение которых не запланировано на эти даты, показаны не будут. В этом режиме удобно просматривать сразу много различных элементов. Он также полезен при просмотре событий, распределённых на длинном временном промежутке, который бы не уместился на экране при использовании другого режима просмотра.</para>
+
+<para
+>В каждой строке показана одна запись. В столбцах указано, установлено ли напоминание (значок колокольчика означает, что напоминание установлено), повторяется ли событие (значок закольцованной стрелки означает, что событие повторяется), время начала и окончания события. При наведении курсора мыши на запись появится всплывающая подсказка с подробными сведениями о ней.</para>
+
+<para
+>Для перехода в режим списка событий выберите пункт меню <menuchoice
+><guimenu
+>Вид</guimenu
+> <guimenuitem
+>События</guimenuitem
+></menuchoice
+>.</para>
+
+
+</sect2>
+
+<sect2 id="agenda-view">
+<title
+>Режим просмотра «Расписание»</title>
+
+<!--TODO: add agenda view options, color of resources and tags-->
+
+<para
+>В режиме просмотра «Расписание» события и задачи показаны в хронологическом порядке. В расписании дня также показана длительность каждого события. Для перехода в режим просмотра «Расписание» выберите пункт меню <menuchoice
+><guimenu
+>Вид</guimenu
+> <guimenuitem
+>Расписание</guimenuitem
+></menuchoice
+> или нажмите на панели инструментов кнопку <inlinemediaobject
+><imageobject
+><imagedata fileref="view-calendar-agenda.png" format="PNG"/></imageobject
+></inlinemediaobject
+>.</para>
+<para
+>Имеется несколько вариантов режима «Расписание»: <guilabel
+>День</guilabel
+>, <guilabel
+>Рабочая неделя</guilabel
+> и <guilabel
+>Неделя</guilabel
+>. Дни для просмотра также возможно выбрать в календаре.</para>
+<!--check bell + chasing-arrows icon here-->
+<para
+>В левой части области просмотра расположена временная шкала. Полоса прокрутки с правой стороны используется, если расписание на день не помещается на один экран (в большинстве случаев). Прямоугольники представляют события и задачи, завершение которых запланировано на этот день, и содержат время начала и окончания, а также заголовки этих событий и задач. Значок <guiicon
+>колокольчика</guiicon
+> означает, что напоминание установлено, а значок <guiicon
+>закольцованной стрелки</guiicon
+> — что событие или задача повторяется. При наведении курсора мыши на запись появится всплывающая подсказка с подробными сведениями о ней. Для показа линии текущего времени (Marcus Bains) откройте диалог <link linkend="config-main-views"
+>настройки вида &korganizer;</link
+> и установите флажок <guilabel
+>Показать текущее время</guilabel
+>.</para>
+
+<para
+>Время начала и окончания события возможно изменить с помощью мыши: переместите курсор мыши на верхнюю или нижнюю границу события и перетащите её вверх или вниз. Этот способ также работает в режимах просмотра недели и рабочей недели.</para>
+
+<para
+>С помощью мыши возможно перепланировать любое событие. Наведите указатель мыши на событие и перетащите его на другое время. Это работает и в режимах просмотра «Неделя» и «Рабочая неделя». События также возможно переносить на те даты, которые не показаны на экране. Для этого наведите указатель мыши на событие и перетащите его на нужную дату в календаре.</para>
+
+<para
+>Так как день, отображаемый в режиме просмотра «Расписание», не умещается целиком на большинстве экранов, для его просмотра придётся использовать прокрутку. Наличие не показанных в области просмотра событий обозначается указывающей вниз или вверх стрелкой (которая находится, соответственно, в нижней или верхней части представления дня).</para>
+
+<tip
+><para
+>Добавление событий возможно двумя способами: <itemizedlist>
+<listitem
+><para
+>Дважды щёлкните левой кнопкой мыши по свободной области времени, и &korganizer; автоматически создаст событие с продолжительностью по умолчанию (настраивается в диалоге параметров). Возможно сразу же добавить название. События <quote
+>фиксируются</quote
+> по получасовым интервалам, округляясь к ближайшему получасовому значению.</para
+></listitem>
+<listitem
+><para
+>Выделите любую свободную область времени и дважды щёлкните по ней или начните вводить название события. &korganizer; автоматически установит продолжительность и время начала события в соответствии с выделенной областью «Расписания».</para
+></listitem>
+</itemizedlist>
+</para
+></tip>
+
+<para
+>Для удобства просмотра расписания события маркируются цветами, соответствующими их меткам. Цвета событий также могут обозначать их <link linkend="managing-resources"
+>источники</link
+> (в зависимости от <link linkend="config-main-views"
+>настройки вида &korganizer;</link
+>). Следовательно, если назначить <link linkend="categories-view"
+>метки событиям</link
+> и <link linkend="config-main-colors"
+>различные цвета меткам</link
+>, будет возможно быстро идентифицировать тип события по его цвету. </para>
+
+<para
+>В режиме просмотра «Расписание» события из всех календарей могут быть объединены в одном представлении или показаны для каждого календаря по отдельности. Кроме того, для получения доступа к обоим вариантам просмотра возможно использовать вкладки — это задаётся <link linkend="config-main-views"
+>в диалоге параметров настройки</link
+>. </para>
+
+<sect3 id="day-view">
+<title
+>Режим просмотра «День»</title>
+
+<para
+>В этом режиме просмотра представлено <link linkend="agenda-view"
+>расписание</link
+> для отдельного дня.</para>
+
+<para
+>Чтобы установить представление дня, выберите пункт меню <menuchoice
+><guimenu
+>Переход</guimenu
+> <guimenuitem
+>День</guimenuitem
+></menuchoice
+> или нажмите на панели инструментов кнопку <inlinemediaobject
+><imageobject
+><imagedata fileref="go-jump-today.png" format="PNG"/></imageobject
+></inlinemediaobject
+><guilabel
+>День</guilabel
+>.</para>
+
+</sect3>
+
+<sect3 id="next-x-days-view">
+<title
+>Режим просмотра «Следующие х дней»</title>
+
+<para
+>В этом режиме просмотра представлено <link linkend="agenda-view"
+>расписание</link
+> на следующие несколько дней, начиная с сегодняшнего. Количество показанных дней возможно изменить в диалоге <link linkend="config-main-views"
+>настройки вида &korganizer;</link
+>. Значение по умолчанию: 3.</para>
+
+<para
+>Чтобы переключить представление на следующие несколько дней, выберите пункт меню<menuchoice
+><guimenu
+>Переход</guimenu
+> <guimenuitem
+>Следующие x дней</guimenuitem
+></menuchoice
+> («х» представляет количество дней, значение по умолчанию — 3).</para>
+
+</sect3>
+
+
+<sect3 id="week-view">
+<title
+>Режим просмотра «Неделя»</title>
+
+<para
+>Представление недели очень похоже на представление дня. События семи дней отображаются рядом друг с другом.</para>
+
+<para
+>Чтобы установить представление недели, выберите пункт меню <menuchoice
+><guimenu
+>Переход</guimenu
+> <guimenuitem
+>Неделя</guimenuitem
+></menuchoice
+> или нажмите на панели инструментов кнопку <inlinemediaobject
+><imageobject
+><imagedata fileref="view-calendar-week.png" format="PNG"/></imageobject
+></inlinemediaobject
+><guilabel
+>Неделя</guilabel
+>.</para>
+
+</sect3>
+
+<sect3 id="workweek-view">
+<title
+>Режим просмотра «Рабочая неделя»</title>
+
+<para
+>Этот режим аналогичен режиму просмотра недели, но содержит только рабочие дни.</para>
+
+<para
+>Чтобы установить представление рабочей недели, выберите пункт меню <menuchoice
+><guimenu
+>Переход</guimenu
+> <guimenuitem
+>Рабочая неделя</guimenuitem
+></menuchoice
+>.</para>
+
+</sect3>
+
+</sect2>
+
+
+<sect2 id="month-view">
+<title
+>Режим просмотра «Месяц»</title>
+
+<!--TODO: add month view options-->
+
+<para
+>Это представление отображает все события и незавершённые задачи текущего месяца в знакомом формате календаря на месяц. Каждая ячейка представляет один день. В области просмотра дня размещены назначенные на этот день события (чтобы увидеть больше событий, разверните окно). Как и в других представлениях, значок<guiicon
+>колокольчика</guiicon
+> обозначает наличие напоминания, а значок <guiicon
+>закольцованной стрелки</guiicon
+> — повторяющееся событие.</para>
+
+<para
+>Для перемещения по представлению месяца используются стрелки календаря или кнопки панели инструментов и пункты меню <guilabel
+>Переход</guilabel
+>. Так как видимая область дня может содержать не все события и задачи, для перемещения между элементами возможно использовать клавиатуру, а для просмотра всех событий и задач — полосы прокрутки.</para>
+
+<para
+>Наведите указатель мыши на элемент календаря: будет показана всплывающая подсказка с его описанием. Двойной щелчок по пустой области позволяет создать событие, а двойной щелчок по элементу календаря — изменить этот элемент.</para>
+
+<para
+>Для удобства просмотра данных события выделяются цветами, соответствующими их меткам и <link linkend="managing-resources"
+>источникам</link
+> (в зависимости от <link linkend="config-main-views"
+>настройки вида &korganizer;</link
+>). Следовательно, если назначить <link linkend="categories-view"
+>метки событиям</link
+> и <link linkend="config-main-colors"
+>различные цвета меткам</link
+>, будет возможно быстро идентифицировать тип события по его цвету. </para>
+
+<para
+>Чтобы установить представление месяца, выберите пункт меню <menuchoice
+><guimenu
+>Вид</guimenu
+> <guimenuitem
+>Месяц</guimenuitem
+></menuchoice
+> или нажмите на панели инструментов кнопку<inlinemediaobject
+><imageobject
+><imagedata fileref="view-calendar-month.png" format="PNG"/></imageobject
+></inlinemediaobject
+><guilabel
+>Месяц</guilabel
+>.</para>
+
+</sect2>
+
+<!-- Timeline View-->
+
+<sect2 id="timeline-view">
+<title
+>Режим просмотра «Шкала времени»</title>
+
+<para
+>В режиме просмотра «Шкала времени» все события на выбранном промежутке времени представлены в виде диаграммы Ганта. Каждому календарю соответствует отдельная строка. </para>
+
+<para
+>Наведите указатель мыши на элемент календаря: будет показана всплывающая подсказка с его описанием. Двойной щелчок по пустой области позволяет создать событие, а двойной щелчок по элементу календаря — изменить этот элемент.</para>
+
+</sect2>
+
+<sect2 id="todo-view">
+<title
+>Задачи</title>
+
+<para
+>В список задач можно внести заметки о планируемых делах. На боковой панели компонент задач находится прямо под календарём. Он также доступен с помощью главной панели инструментов (по нажатию кнопки <guilabel
+><inlinemediaobject
+><imageobject
+> <imagedata fileref="i_view_todo_list.png" format="PNG"/></imageobject
+> </inlinemediaobject
+>Задачи</guilabel
+>) или путём выбора пункта меню <menuchoice
+><guimenu
+>Вид</guimenu
+><guimenuitem
+>Задачи</guimenuitem
+></menuchoice
+>.</para>
+
+<para
+>Возможно назначить задаче <quote
+>дату завершения</quote
+>, иными словами — день, когда задача должна быть выполнена.</para>
+
+<para
+>Также возможно назначить задачам приоритеты, и они будут отображаться в порядке, определяемом приоритетом. Чем ниже число, тем выше приоритет, исключая ноль (0), определённый как <quote
+>нет приоритета.</quote
+></para>
+
+<para
+>Чтобы создать новую задачу, щёлкните правой кнопкой мыши по компоненту «Задачи» на боковой панели или по представлению задач и выберите в появившемся меню пункт <guimenuitem
+>Создать задачу...</guimenuitem
+>. При щелчке по уже существующей задаче будут доступны и другие варианты: возможно <guimenuitem
+>Показать</guimenuitem
+> сведения о задаче, <guimenuitem
+>Изменить...</guimenuitem
+> их, <guimenuitem
+>Удалить</guimenuitem
+> задачу полностью или <guimenuitem
+>Создать подзадачу...</guimenuitem
+>. Например, можно создать большую задачу по постройке дома и добавить к ней такие подзадачи, как выбор подходящего места для стройки, найм архитектора, найм строителей и, наконец, празднование новоселья.</para>
+
+<para
+>При выборе пункта меню <guimenuitem
+>Создать задачу...</guimenuitem
+> появится диалоговое окно, которое позволяет ввести все необходимые <link linkend="entering-data-to-do"
+>сведения</link
+>.</para>
+
+<para
+>Чтобы выделить задачу в списке, щёлкните по ней. Если щёлкнуть по квадрату слева от заголовка задачи, ей будет присвоено состояние <quote
+>завершённой</quote
+>. Чтобы изменить параметры задачи, дважды щёлкните по её заголовку.</para>
+
+<para
+>Также возможно выбрать в контекстном меню (открывается по щелчку <mousebutton
+>правой</mousebutton
+> кнопкой мыши) пункт <link linkend="managing-purge-archive"
+>Удалить выполненные задачи</link
+>, чтобы удалить все записи задач, которые отмечены как выполненные.</para>
+
+<para
+>Перетаскивание с помощью мыши позволяет переупорядочить задачи или переместить их в другие окна календарей. Подробные сведения об операциях перетаскивания доступны в соответствующем <link linkend="other-features-drag-and-drop"
+>обзоре</link
+>.</para>
+</sect2>
+
+<sect2 id="journal-view">
+<title
+>Режим просмотра «Дневник»</title>
+<para
+>В режиме дневника возможно записывать свои размышления или случаи из жизни. Для включения этого режима нажмите на панели инструментов кнопку <inlinemediaobject
+><imageobject
+> <imagedata fileref="journal-new.png" format="PNG"/></imageobject
+> </inlinemediaobject
+><guilabel
+>Дневник</guilabel
+> или выберите пункт меню <menuchoice
+><guimenu
+>Вид</guimenu
+><guimenuitem
+>Дневник</guimenuitem
+> </menuchoice
+>.</para>
+
+<para
+>При нажатии ссылки <guilabel
+>Создать запись в дневнике...</guilabel
+> (или кнопки <guibutton
+>Создать запись в дневнике...</guibutton
+>) будет создана новая запись дневника. Чтобы изменить запись дневника, щёлкните по текстовому полю и отредактируйте её. Чтобы удалить запись дневника, нажмите <inlinemediaobject
+> <imageobject
+><imagedata fileref="edit-delete.png" format="PNG"/> </imageobject
+></inlinemediaobject
+>кнопку удаления, расположенную рядом с <guilabel
+>заголовком</guilabel
+> записи дневника.</para>
+
+</sect2>
+
+</sect1>
+
+<sect1 id="categories-view">
+<title
+>Метки</title>
+
+<!--TODO: Add screenshot?-->
+
+<para
+>Чтобы упорядочить события, задачи и записи дневника, им возможно назначить метки. Назначение меток позволяет упростить последующий поиск, фильтрацию и показ событий и задач.</para>
+
+<para
+>Для назначения меток при создании или редактировании <link linkend="entering-data-events-general"
+>событий</link
+> или <link linkend="entering-data-to-do-general"
+>задач</link
+> перейдите на вкладку <guilabel
+>Основное</guilabel
+> и нажмите кнопку <guibutton
+>...</guibutton
+>. Каждому элементу возможно назначить несколько меток.</para>
+
+<para
+>Для создания или удаления меток выберите пункт меню <menuchoice
+> <guimenu
+>Настройка</guimenu
+><guimenuitem
+>Метки событий...</guimenuitem
+> </menuchoice
+>: появится диалоговое окно <guilabel
+>Редактор меток</guilabel
+>. Возможно назначить <link linkend="config-main-colors"
+>меткам разные цвета</link
+> для быстрого определения типа события по его цвету при использовании режима «Расписание» или «Месяц» (в зависимости от <link linkend="config-main-views"
+>настройки вида &korganizer;</link
+>). </para>
+
+</sect1>
+
+<sect1 id="filters-view">
+<title
+>Фильтры</title>
+
+<para
+>Фильтры позволяют упростить просмотр, поиск и экспорт данных календарей. Например, если не следует показывать завершённые задачи, их возможно отфильтровать, а не <link linkend="managing-purge-archive"
+>удалять</link
+>. Фильтры возможно создать на основе назначенных меток.</para>
+
+<para
+>Для создания, удаления или изменения фильтров выберите пункт меню <menuchoice
+> <guimenu
+>Настройка</guimenu
+><guimenuitem
+>Фильтры...</guimenuitem
+> </menuchoice
+>: появится диалоговое окно <guilabel
+>Редактирование фильтров календаря</guilabel
+>. Этот диалог позволяет создавать, удалять и изменять фильтры для управления отображением элементов в &korganizer;.</para>
+
+<!--TODO: Add detailed description of the dialog. Is it stable yet?-->
+
+<para
+>Подменю <menuchoice
+><guimenu
+>Вид</guimenu
+> <guisubmenu
+>Применить фильтр</guisubmenu
+></menuchoice
+> и соответствующая кнопка на панели инструментов предоставляют доступ ко всем доступным фильтрам, которые были созданы с помощью диалога <link linkend="menu-settings-edit-filters"
+><guilabel
+>Редактирование фильтров календаря</guilabel
+></link
+>. Чтобы показать или скрыть панель фильтров, выберите пункт меню <menuchoice
+><guimenu
+>Настройка</guimenu
+> <guisubmenu
+>Видимые панели инструментов</guisubmenu
+><guimenuitem
+>Фильтры</guimenuitem
+></menuchoice
+>. Если фильтры не требуются, выберите <guilabel
+>Показать все</guilabel
+>.</para>
+
+<para
+>Фильтры полезны при <link linkend="managing-export"
+>экспорте данных календаря</link
+>. Если используется фильтр, будут экспортированы только прошедшие этот фильтр (видимые) элементы. Чтобы фильтрация была более эффективной, следует сначала упорядочить элементы и организовать их с помощью <link linkend="categories-view"
+>меток</link
+>, а затем создать фильтры на основе этих меток.</para>
+
+</sect1>
+
+<sect1 id="search-view">
+<title
+>Поиск</title>
+
+<para
+>Чтобы найти события, задачи или записи дневника по их названиям, описаниям и/или меткам, выберите пункт меню <menuchoice
+><guimenu
+>Правка</guimenu
+> <guimenuitem
+>Найти...</guimenuitem
+></menuchoice
+> или нажмите комбинацию клавиш <keycombo action="simul"
+>&Ctrl;<keycap
+>F</keycap
+> </keycombo
+>. Поиск выполняется только по указанным полям.</para>
+
+<tip
+><para
+>Если точный заголовок неизвестен, возможно использовать символы подстановки. Вместо единичного отсутствующего символа возможно ввести <userinput
+>?</userinput
+>). Если неизвестны несколько символов, используйте <userinput
+>*</userinput
+>. Например, если известно, что заголовок события или задачи содержит где-то в начале слово <emphasis
+>встреча</emphasis
+>, за которым следует слово <emphasis
+>продукт</emphasis
+>, в диалоге поиска возможно указать <userinput
+>встреча*продукт</userinput
+>. &korganizer; найдёт список заголовков наподобие <quote
+>Задача: организовать встречу по новому продукту</quote
+>, <quote
+>Встреча для обсуждения старой продуктовой линейки</quote
+> и так далее. Поиск нечувствителен к регистру.</para
+></tip>
+
+<para
+>В результате выполнения операции поиска будет показан список событий, записей дневника и/или задач, содержащих указанное ключевое слово. Этот список содержит те же колонки, что и <link linkend="list-view"
+>представление списка событий</link
+>.</para>
+
+<para
+>Список результатов является активным: двойной щелчок по строке позволяет просмотреть или изменить подробное описание события или задачи. Подробные сведения доступны в разделах <xref linkend="entering-data-events"/> и <xref linkend="entering-data-to-do"/>.</para>
+
+</sect1>
+
+</chapter>
+
+<chapter id="entering-data"
+>  <!--updated to 5.4.40-->
+
+<title
+>Ввод данных</title>
+
+<sect1 id="entering-data-events">
+<title
+>События</title>
+
+<para
+>События &mdash; будущие (или прошлые) встречи (например, деловые встречи, годовщины и походы в кино). События также могут продолжаться несколько дней (например, отпуск).</para>
+
+<para
+>Создать новое событие очень просто: выберите пункт меню <menuchoice
+><guimenu
+>Действия</guimenu
+><guimenuitem
+>Создать событие...</guimenuitem
+></menuchoice
+>. Появится окно, в нижней части которого расположены шесть вкладок.</para>
+
+<para
+>Событие также возможно создать другим способом:</para>
+
+<procedure>
+<step
+><para
+>Перейдите к дате события с помощью навигатора по датам.</para
+></step>
+
+<step
+><para
+>Перейдите в режим просмотра <guilabel
+>Расписание</guilabel
+> и нажмите кнопку необходимого представления на <guimenu
+>панели вида</guimenu
+> или выберите необходимое представление в меню <guimenu
+>Переход</guimenu
+>. Так как событие начинается в определённое время, требуется выбрать <link linkend="reference-menus-view"
+>режим просмотра</link
+>, отображающий часы одного дня. Возможные варианты: <guimenuitem
+>День</guimenuitem
+>, <guimenuitem
+>Рабочая неделя</guimenuitem
+> или <guimenuitem
+>Неделя</guimenuitem
+>. Режим просмотра <guimenuitem
+>Месяц</guimenuitem
+> больше подходит для задач, описание которых приводится далее.</para
+></step>
+
+<step
+><para
+>На главной панели дважды щёлкните по времени и дате начала события. </para
+></step>
+
+<step
+><para
+>Появится диалог с шестью вкладками, расположенными в нижней части окна. Укажите данные, как описано далее.</para
+></step>
+</procedure>
+
+<screenshot id="screenshot-event-general">
+<screeninfo
+>Диалог изменения события &korganizer;</screeninfo>
+<mediaobject>
+<imageobject
+><imagedata fileref="event-general.png" format="PNG"/></imageobject>
+<textobject
+><phrase
+>Диалог изменения события &korganizer;</phrase
+></textobject>
+<caption
+><para
+>Диалог изменения события &korganizer;</para
+></caption>
+</mediaobject>
+</screenshot>
+
+<para
+>Это подробное описание полей и виджетов окна отдельного события. Не все поля должны заполняться; некоторые из них возможно оставить пустыми. Дополнительные сведения доступны в разделе <link linkend="entering-data-required-fields"
+>Обязательные поля</link
+>. Пример доступен в разделе <link linkend="examples-entering-event"
+>Создание событий</link
+>. </para>
+
+<variablelist>
+<varlistentry>
+<term
+><guilabel
+>Название:</guilabel
+></term>
+<listitem
+><para
+>Введите краткое описание события в поле <guilabel
+>Название</guilabel
+>. Оно будет отображаться на главной панели &korganizer;.</para
+></listitem>
+</varlistentry>
+
+<varlistentry>
+<term
+><guilabel
+>Расположение:</guilabel
+></term>
+<listitem
+><para
+>Введите в поле <guilabel
+>Расположение</guilabel
+> краткое описание места, в котором должно произойти событие.</para
+></listitem>
+</varlistentry>
+
+<varlistentry>
+<term
+><guilabel
+>Начало</guilabel
+> и <guilabel
+>Конец</guilabel
+></term>
+<listitem
+><para
+>Предложенное &korganizer; время начала и завершения события. Предполагается, что события начинаются и завершаются в один и тот же день. Даты возможно изменить. Введите дату непосредственно в поле или воспользуйтесь <link linkend="glossary" endterm="gloss-calendar-widget"
+>виджетом календаря</link
+>. Выберите время в списке четвертьчасовых интервалов или введите нужное время непосредственно в поле времени. Эти поля доступны только в том случае, если флажок <guilabel
+>Весь день</guilabel
+> не установлен.</para
+></listitem>
+</varlistentry>
+
+</variablelist>
+
+<sect2 id="entering-data-events-general">
+<title
+>Вкладка «Основное»</title>
+
+<variablelist>
+<varlistentry>
+<term
+>Подробности:</term>
+<listitem
+><para
+>Введите подробное описание события в большом прямоугольнике без заголовка. Здесь возможно указать любое количество сведений. Если, например, запланирован капитальный ремонт автомобиля, перечислите все необходимые процедуры. В дальнейшем этот список будет возможно распечатать и отдать механику. Если запланирован поход в магазин, перечислите товары для покупки — затем будет возможно распечатать этот список и взять его с собой в магазин.</para
+></listitem>
+</varlistentry>
+
+<varlistentry>
+<term
+><guilabel
+>Метки</guilabel
+></term>
+<listitem
+><para
+>Элементу календаря возможно назначить несколько <link linkend="categories-view"
+>меток</link
+>. Щёлкните по полю с раскрывающимся списком для просмотра всех доступных меток. Воспользуйтесь флажками, чтобы назначить событию подходящие метки.</para>
+<para
+>В диалоговом окне <guilabel
+>Редактор меток</guilabel
+> также возможно добавить новую метку, а также изменить или удалить существующую метку. Чтобы открыть это диалоговое окно, выберите пункт меню <menuchoice
+> <guimenu
+>Настройка</guimenu
+> <guimenuitem
+>Метки событий...</guimenuitem
+></menuchoice
+>.</para>
+
+<tip
+><para
+>Например, уроку языка на работе возможно назначить метки «Дела» и «Учёба», в то время как для годовщины брака подойдут метки «Личное» или «Особое событие» (на усмотрение пользователя).</para
+></tip>
+</listitem>
+</varlistentry>
+
+<varlistentry>
+<term
+><guilabel
+>Доступ:</guilabel
+></term>
+<listitem
+><para
+>Чтобы установить уровень доступа, выберите один из вариантов: <guilabel
+>Общий</guilabel
+>, <guilabel
+>Закрытый</guilabel
+> или <guilabel
+>Конфиденциально</guilabel
+>. В текущей версии программы выбранный уровень доступа также устанавливает верное значение атрибута <quote
+>CLASS</quote
+> (<quote
+>PUBLIC</quote
+>, <quote
+>PRIVATE</quote
+> или <quote
+>CONFIDENTIAL</quote
+>). Однако реальное применение этих параметров для ограничения доступа к информации зависит от реализации клиентского сервера и / или сервера совместной работы.</para>
+<warning
+><para
+>В настоящее время &korganizer; <emphasis
+>показывает</emphasis
+> конфиденциальные события, владельцами которых являются другие пользователи. В других клиентах такие события могут обрабатываться иначе, но будьте внимательны при публикации личных или конфиденциальных событий: iCalendar — это формат текстовых файлов, которые могут быть прочитаны с помощью любого текстового редактора (при наличии доступа для чтения). В случае реальной необходимости сохранить конфиденциальность событий используйте источник, доступ к которому имеется только у вас.</para
+></warning
+></listitem>
+</varlistentry>
+
+</variablelist>
+
+</sect2>
+
+<sect2 id="entering-data-events-attendees">
+<title
+>Вкладка «Участники»</title>
+
+<para
+>На этой вкладке возможно выбрать людей, которых следует пригласить на событие.</para>
+
+<screenshot id="screenshot-event-attendees">
+<screeninfo
+>Диалог изменения события &korganizer; — вкладка «Участники»</screeninfo>
+<mediaobject>
+<imageobject
+><imagedata fileref="event-attendees.png" format="PNG"/></imageobject>
+<textobject
+><phrase
+>Диалог изменения события &korganizer; — вкладка «Участники»</phrase
+></textobject>
+<caption
+><para
+>Диалог изменения события &korganizer; — вкладка «Участники»</para
+></caption>
+</mediaobject>
+</screenshot>
+
+<variablelist>
+<varlistentry>
+<term
+><guilabel
+>Организатор собрания:</guilabel
+></term>
+<listitem
+><para
+>Это поле позволяет указать организатора задачи или события. Если программа &korganizer; настроена на отправку приглашений по электронной почте, для этого будут использоваться указанные в поле данные. Сведения об организаторе для использования по умолчанию возможно задать в разделе <guilabel
+>Личные данные</guilabel
+> диалога настройки &korganizer;. Кроме того, выполняется сбор данных из параметров &kmail; и из адресной книги.</para
+></listitem>
+</varlistentry>
+
+<varlistentry>
+<term
+>Список приглашённых</term>
+<listitem
+><para
+>В списке в центре вкладки показаны участники события. Участников возможно добавлять путём ввода их имён и адресов электронной почты, а также изменять или удалять их.</para>
+<para
+>Если участник(и) есть в адресной книге, для его добавления в список не придётся вспоминать или набирать адрес его электронной почты — просто нажмите кнопку <guibutton
+>Выбрать участников...</guibutton
+> и выберите участника(ов) из списка. Обратите внимание, что это стандартная адресная книга &kde;, которая также используется &kmail;. Эту адресную книгу возможно вызвать и в качестве самостоятельного приложения (&kaddressbook;).</para>
+</listitem>
+</varlistentry>
+
+<varlistentry>
+<term
+>Роль</term>
+<listitem
+><para
+>Выберите роль посетителя («Участник», «Необязательный участник», «Наблюдатель», «Председательствующий») в раскрывающем списке, расположенном слева от записи. Это просто пояснение того, какую роль играет посетитель в событии. </para
+></listitem>
+</varlistentry>
+
+<varlistentry>
+<term
+>Состояние</term>
+<listitem
+><para
+>Выберите состояние приглашения («Требует действия», «Принято», «Отклонено», «Принято предварительно», «Делегировано») в раскрывающемся списке, расположенном справа от записи. Если используется совместное планирование, состояние участия будет обновляться по мере получения ответов от участников. Если не запрашивать ответы, состояние потребуется обновлять вручную.</para
+></listitem>
+</varlistentry>
+
+<varlistentry>
+<term
+>Запросить ответ</term>
+<listitem
+><para
+>Если приглашённый должен ответить на план события, выберите в раскрывающемся списке параметр <guilabel
+>Запросить ответ</guilabel
+>. В результате приглашённый получит по электронной почте информацию о планируемом событии (и в списке сведений появится маленький конверт). Эта возможность особенно полезна при включённом совместном планировании, так как состояние участия обновляется автоматически.</para
+></listitem>
+</varlistentry>
+
+ <!-- Participiants: no conflicts Reschedule button
+ What is that? How does it work?-->
+
+</variablelist>
+
+</sect2>
+
+<!--Fixme Resources tab missing -->
+
+<sect2 id="entering-data-events-reminder">
+<title
+>Вкладка «Напоминания»</title>
+<variablelist>
+<varlistentry>
+<term
+>Напоминание</term>
+<listitem
+><para
+>Выберите стандартное напоминание в раскрывающемся списке и нажмите кнопку <guibutton
+>Добавить</guibutton
+>, если программе &korganizer; следует вывести напоминание о событии.</para>
+<para
+>Чтобы открыть диалоговое окно <guilabel
+>Изменение напоминания</guilabel
+>, нажмите кнопку <guibutton
+>Настроить</guibutton
+>. В этом окне возможно установить для напоминания количество минут, часов или дней до или после начала или завершения события, настроить повторы напоминания через определённые интервалы времени, а также создать особые напоминания (с показом текста или воспроизведением звуков).</para>
+</listitem>
+</varlistentry>
+
+</variablelist>
+
+</sect2>
+
+<sect2 id="entering-data-events-recurrence">
+<title
+>Вкладка «Повторение»</title>
+
+<para
+>Некоторые события происходят регулярно. Здесь возможно указать их точное расписание.</para>
+
+<screenshot id="screenshot-event-recurrence">
+<screeninfo
+>Диалог изменения события &korganizer; — вкладка «Повторение»</screeninfo>
+<mediaobject>
+<imageobject
+><imagedata fileref="event-recurrence.png" format="PNG"/></imageobject>
+<textobject
+><phrase
+>Диалог изменения события &korganizer; — вкладка «Повторение»</phrase
+></textobject>
+<caption
+><para
+>Диалог изменения события &korganizer; — вкладка «Повторение»</para
+></caption>
+</mediaobject>
+</screenshot>
+
+<note
+><para
+>Чтобы активировать параметры, выберите значение пункта <guilabel
+>Повторяется</guilabel
+> в соответствующем раскрывающемся списке. Если выбрано значение <guilabel
+>никогда</guilabel
+>, на этой вкладке будет невозможно внести изменения.</para
+></note>
+
+<sect3 id="recurrence-recurrence-rule">
+<title
+>Повторения</title>
+
+<para
+>Выберите, как событие будет повторяться: по дням, по неделям, по месяцам или по годам. Более подробное описание:</para>
+
+<variablelist>
+<varlistentry>
+<term
+><guilabel
+>По дням</guilabel
+></term>
+<listitem
+><para
+>Укажите, происходит ли событие каждый день (1), через день (2) и так далее.</para
+></listitem>
+</varlistentry>
+
+<varlistentry>
+<term
+><guilabel
+>По неделям</guilabel
+></term>
+<listitem
+><para
+>Укажите, происходит ли событие каждую неделю (1), через неделю (2) и так далее. Также выберите дни (понедельник ... воскресенье), в которые происходит событие. </para
+></listitem>
+</varlistentry>
+
+<varlistentry>
+<term
+><guilabel
+>По месяцам</guilabel
+></term>
+<listitem
+><para
+>Событие может происходить либо в определённый день месяца, либо в определённую неделю и день недели. Необходимо выбрать один из этих двух вариантов. По умолчанию &korganizer; предполагает, что событие следует повторять в один и тот же день месяца (например, 15-го числа). Также возможно скорректировать период: повторять ежемесячно, поквартально и так далее.</para
+></listitem>
+</varlistentry>
+
+<varlistentry>
+<term
+><guilabel
+>По годам</guilabel
+></term>
+<listitem>
+<para
+>Этот режим повторения похож на режим «По месяцам». Необходимо выбрать подходящий вариант: в день года (например, 250-й день), в определённый день определённой недели месяца (например, второй вторник марта) или в день определённого месяца. По умолчанию в &korganizer; используется день месяца. Возможно скорректировать период повторения события: два раза в год, каждые четыре года и так далее.</para>
+</listitem>
+</varlistentry>
+</variablelist>
+</sect3>
+
+<sect3 id="recurrence-recurrence-range">
+<title
+>Период повторения</title>
+
+<para
+>По умолчанию события повторяются <quote
+>бесконечно</quote
+>. Если это нежелательно, возможно использовать один из двух способов окончить повторение: указать дату окончания или количество повторений.</para>
+
+</sect3>
+
+<sect3 id="recurrence-exceptions">
+<title
+>Исключения</title>
+
+<para
+>Из правила повторений возможны исключения. Например, при планировании расписания занятий в школе может понадобиться добавить исключения для праздников и прочего. В этой области возможно добавлять, изменять и удалять даты из списка исключений (исключения — те даты, на которые событие <emphasis
+> не будет планироваться</emphasis
+> даже при соответствии правилу повторений). Чтобы добавить дату в список исключений, выберите её в календаре и нажмите кнопку <guibutton
+>Добавить</guibutton
+>. Чтобы удалить даты из списка исключений, выделите соответствующие элементы списка дат и нажмите кнопку <guibutton
+>Удалить</guibutton
+>.</para>
+
+</sect3>
+</sect2>
+
+<sect2 id="entering-data-events-attachments">
+<title
+>Вложения</title>
+
+<para
+>События и задачи могут содержать вложения. Вложения можно сохранять либо как ссылки, либо внутри календаря. Чтобы добавить вложение, нажмите кнопку <guibutton
+>Добавить</guibutton
+>.</para>
+
+<screenshot id="screenshot-event-attachments">
+<screeninfo
+>Диалог изменения события &korganizer; — вкладка «Вложения»</screeninfo>
+<mediaobject>
+<imageobject
+><imagedata fileref="event-attachments.png" format="PNG"/></imageobject>
+<textobject
+><phrase
+>Диалог изменения события &korganizer; — вкладка «Вложения»</phrase
+></textobject>
+<caption
+><para
+>Диалог изменения события &korganizer; — вкладка «Вложения»</para
+></caption>
+</mediaobject>
+</screenshot>
+
+<para
+>Если флажок <guilabel
+>Сохранить вложение в календаре</guilabel
+> установлен, вложение будет сохранено внутри календаря, что может занять много дискового пространства (в зависимости от размера вложения). Если этот флажок не установлен, будет сохранена только ссылка, которая указывает на вложение. Не рекомендуется использовать ссылку для вложений, которые часто изменяются или могут быть перемещены (или удалены) из текущего расположения.</para>
+
+<para
+>Для работы с вложениями предназначены следующие действия, доступные в контекстном меню:</para>
+
+<variablelist>
+
+<varlistentry>
+<term
+><guimenuitem
+>Открыть</guimenuitem
+></term>
+<listitem
+><para
+>Показать выбранное вложение в связанном с ним приложении.</para
+></listitem>
+</varlistentry>
+
+<varlistentry>
+<term
+><guimenuitem
+>Сохранить как...</guimenuitem
+></term>
+<listitem
+><para
+>Сохранить существующее вложение под другим именем.</para
+></listitem>
+</varlistentry>
+
+<varlistentry>
+<term
+><guimenuitem
+>Копировать</guimenuitem
+>, <guimenuitem
+>Вырезать</guimenuitem
+> и <guimenuitem
+>Вставить</guimenuitem
+></term>
+<listitem
+><para
+>Копировать, вырезать или вставить вложение из буфера обмена.</para
+></listitem>
+</varlistentry>
+
+<varlistentry>
+<term
+><guimenuitem
+>Удалить</guimenuitem
+></term>
+<listitem
+><para
+>Удалить выбранное вложение.</para
+></listitem>
+</varlistentry>
+
+<varlistentry>
+<term
+><guimenuitem
+>Свойства...</guimenuitem
+></term>
+<listitem
+><para
+>Изменить существующее вложение.</para
+></listitem>
+</varlistentry>
+
+</variablelist>
+
+</sect2>
+
+<!--FIXME works with certain type of calendars e.g. google calendar ?-->
+<sect2 id="entering-data-events-freebusy">
+<title
+>Занятость</title>
+
+<para
+>Перед отправкой приглашений необходимо узнать, смогут ли участники события посетить его в указанное время. Если участники публикуют сведения о своей доступности, их возможно просмотреть здесь перед отправкой приглашений.</para>
+
+<para
+>С правой стороны показан график занятости, каждая строка которого представляет одного из перечисленных с левой стороны участников. Закрашенные области представляют уже занятое другими событиями время, а незакрашенные — свободное время. Событие возможно переместить на другое время, перетащив его с помощью мыши, или изменить его длительность, переместив края выделенной области с помощью мыши.</para>
+
+<para
+>Сведения о занятости доступны только в том случае, если участник публикует их и программа &korganizer; правильно настроена для их получения. Дополнительные сведения о настройке &korganizer; для публикации и получения сведений о занятости доступны в разделе <xref linkend="config"/>. Двойной щелчок по записи участника в списке позволяет ввести расположение сведений о его занятости. </para>
+
+<variablelist>
+
+<varlistentry>
+<term
+><guilabel
+>Масштаб</guilabel
+></term>
+<listitem
+><para
+>Установить масштаб графика занятости: <guilabel
+>Час</guilabel
+> показывает интервал из нескольких часов, <guilabel
+>День</guilabel
+> — интервал из нескольких дней, <guilabel
+>Неделя</guilabel
+> — интервал из нескольких недель, <guilabel
+>Месяц</guilabel
+> — интервал из нескольких месяцев. Чтобы установить наиболее подходящий для текущего события или задачи интервал, выберите пункт <guilabel
+>Автоматически</guilabel
+>.</para
+></listitem>
+</varlistentry>
+
+<varlistentry>
+<term
+><guibutton
+>Центрировать на начало</guibutton
+></term>
+<listitem
+><para
+>Нажмите эту кнопку, чтобы центрировать график занятости на времени начала и дне события.</para
+></listitem>
+</varlistentry>
+
+<varlistentry>
+<term
+><guibutton
+>Выбрать дату</guibutton
+></term>
+<listitem
+><para
+>Нажмите эту кнопку, чтобы автоматически переместить событие на дату и время, когда все участники свободны.</para
+></listitem>
+</varlistentry>
+
+<varlistentry>
+<term
+><guibutton
+>Перезагрузить</guibutton
+></term>
+<listitem
+><para
+>Нажмите эту кнопку, чтобы повторно получить сведения о занятости всех участников с соответствующих серверов.</para
+></listitem>
+</varlistentry>
+
+</variablelist>
+
+<para
+>Когда требуется подтвердить, отозвать или отменить введённые данные, выберите подходящее действие с помощью управляющих кнопок: <guibutton
+>OK</guibutton
+>, <guibutton
+>Применить</guibutton
+> и <guibutton
+>Отменить</guibutton
+>.</para>
+
+</sect2>
+
+<sect2 id="entering-data-events-template-buttons">
+<title
+>Управление шаблонами</title>
+
+<para
+>Нажмите кнопку <guibutton
+>Шаблоны...</guibutton
+> для открытия диалога, который позволяет сохранить текущее событие как шаблон для повторного использования введённых данных в будущем. Например, возможно сохранить шаблон встречи, которая проходит в одном и том же месте и составе участников.</para>
+<para
+>Кнопка <guibutton
+>Применить</guibutton
+> позволяет использовать для события существующий шаблон. В продолжение примера из предыдущего абзаца: возможно указать расписание встречи.</para>
+
+</sect2>
+
+</sect1>
+
+<sect1 id="entering-data-to-do">
+<title
+>Задачи</title>
+
+<para
+>Список задач &mdash; это место для заметок о планируемых делах. Задачи — это дела, которые могут быть выполняться по расписанию или нет. Существуют краткосрочные и долгосрочные задачи: например, визит к парикмахеру на неделе и продажа старого автомобиля в течение года. При этом, скорее всего, нет необходимости в срабатывании напоминания в определённое время: нужен только список дел и крайний срок их завершения (дата окончания).</para>
+
+<para
+>Для создания новой задачи выберите пункт меню <menuchoice
+><guimenu
+>Действия</guimenu
+><guimenuitem
+>Создать задачу...</guimenuitem
+></menuchoice
+>. Появится окно, в нижней части которого расположены шесть вкладок.</para>
+
+<sect2 id="entering-data-to-do-general">
+<title
+>Вкладка «Основное»</title>
+
+<screenshot id="screenshot-todo-general">
+<screeninfo
+>Диалог изменения задачи &korganizer;</screeninfo>
+<mediaobject>
+<imageobject
+><imagedata fileref="todo-general.png" format="PNG"/></imageobject>
+<textobject
+><phrase
+>Диалог изменения задачи &korganizer;</phrase
+></textobject>
+<caption
+><para
+>Диалог изменения задачи &korganizer;</para
+></caption>
+</mediaobject>
+</screenshot>
+
+<para
+>Многие параметры на этой вкладке совпадают с параметрами диалога <guilabel
+>изменения события</guilabel
+>, но имеются и дополнительные параметры специально для задач:</para>
+
+<variablelist>
+<varlistentry>
+<term
+><guilabel
+>Завершено</guilabel
+></term>
+<listitem
+><para
+>Этот ползунок хода выполнения первоначально установлен в 0%. С его помощью возможно указывать ход выполнения задачи, выбирая процент выполнения с шагом 10%.</para
+></listitem>
+</varlistentry>
+
+<varlistentry>
+<term
+><guilabel
+>Приоритет</guilabel
+></term>
+<listitem
+><para
+>Задаче возможно назначить приоритет. В этом раскрывающемся меню доступны значения приоритета от единицы до девяти, единица означает наиболее высокий приоритет. Первоначально задачи получают приоритет пять (средний).</para
+></listitem>
+</varlistentry>
+</variablelist>
+
+</sect2>
+
+</sect1>
+
+<sect1 id="entering-data-required-fields">
+
+<title
+>Обязательные поля</title>
+
+<para
+>Это краткий обзор полей, которые необходимо заполнить, и полей, которые могут быть оставлены пустыми при вводе событий и задач:</para>
+
+<itemizedlist>
+<listitem
+><para
+>Необходимо заполнить поле <guilabel
+>Название</guilabel
+>.</para
+></listitem>
+<listitem
+><para
+>Вкладку <guilabel
+>Основное</guilabel
+> возможно оставить полностью пустой.</para
+></listitem>
+<listitem
+><para
+>Если включить напоминания (вкладка <guilabel
+>Напоминания</guilabel
+>), потребуется также указать время и выбрать звук, который будет воспроизведён, или программу, которая будет запущена.</para
+></listitem>
+<listitem
+><para
+>Вкладку <guilabel
+>Участники</guilabel
+> возможно оставить полностью пустой.</para
+></listitem>
+<listitem
+><para
+>Вкладку <guilabel
+>Повторение</guilabel
+> необходимо заполнить только в том случае, если событие должно повторяться каждый день, неделю, месяц или год. </para
+></listitem>
+<listitem
+><para
+>Вкладку <guilabel
+>Вложения</guilabel
+> возможно оставить полностью пустой.</para
+></listitem>
+</itemizedlist>
+</sect1>
+</chapter>
+
+<chapter id="group-scheduling"
+>   <!--updated to 5.4.40-->
+<title
+>Групповое планирование</title>
+
+<para
+>Функция группового планирования &korganizer; позволяет организовать события, встречи и общие для группы задачи, запрашивать подтверждения у приглашённых и публиковать сведения. Если пользователь получил приглашение на встречу или мероприятие, он может ответить на него согласием или отказом, а также выдвинуть встречное предложение, предложив изменить условия (например, время или место). Кроме того, пользователь может опубликовать график своей занятости, чтобы другие люди знали, когда он освободится, и имеет возможность запрашивать аналогичную информацию о других.</para>
+
+<para
+>В настоящее время для передачи данных &korganizer; применяет электронную почту, с использованием протокола IMIP для группового планирования. IMIP — стандартный протокол, который используют многие другие почтовые клиенты, такие как &Microsoft; <application
+>Outlook</application
+>, Lotus <application
+>Notes</application
+> и <application
+>Evolution</application
+> от Novell. Это означает, что пользователь может обмениваться сведениями с другими пользователями, у которых установлена одна из этих программ. Для получения, обработки и отправки сведений о событиях, ответов, обновлений, уведомлений об отмене и так далее &korganizer; работает в связке с &kmail;. Например, если решено принять полученное с помощью &kmail; приглашение, при щелчке по пункту <guilabel
+>принять</guilabel
+> в теле письма событие будет добавлено в календарь пользователя, а организатору события будет автоматически отправлено сообщение о согласии.</para>
+
+
+<!--TODO: check if to-dos work or not.-->
+<!--TODO: check what happens if you counter without this option on.-->
+
+<para
+>Если в <link linkend="config-main-groupscheduling"
+>параметрах группового планирования &korganizer;</link
+> установлен флажок <guilabel
+>Использовать сервер совместной работы</guilabel
+>, &korganizer; будет управлять групповым планированием. Иными словами, не будет необходимости обращаться к меню <guimenu
+>Расписание</guimenu
+> для ручного управления планированием. Например, при <link linkend="entering-data-events"
+>создании события или задачи</link
+>, требующей участия других людей, &korganizer; автоматически запросит подтверждение рассылки приглашений, и искать пункт меню <menuchoice
+> <guimenu
+>Расписание</guimenu
+><guimenuitem
+>Направить уведомления</guimenuitem
+> </menuchoice
+> не понадобится. Аналогичным образом, если пользователь изменил своё состояние участия, &korganizer; выведет приглашение на отправку обновления состояния организатору события, и искать пункт меню <menuchoice
+> <guimenu
+>Расписание</guimenu
+><guimenuitem
+>Направить обновление статуса</guimenuitem
+> </menuchoice
+> станет ни к чему.</para>
+
+
+
+<sect1 id="publish">
+<title
+>Публикация событий, задач и записей дневника</title>
+
+<para
+>Если требуется поделиться информацией о событии, выделите его и выберите пункт меню <menuchoice
+><guimenu
+>Расписание</guimenu
+><guimenuitem
+>Опубликовать сведения...</guimenuitem
+></menuchoice
+>. Появится диалог с предложением ввести адреса электронной почты получателей. Затем сведения об этом событии в формате iCalendar будут разосланы по указанным адресам.</para>
+
+<para
+>Таким способом возможно отправлять сведения кому угодно, не только участникам события. Фактически, можно опубликовать событие или задачу, которые вообще не содержат участников, так как ответа на запрос от участников не требуется.</para>
+
+<para
+>Пример: пользователь играет в музыкальной группе и время от времени даёт живые концерты. Чтобы поклонники группы вовремя узнавали о предстоящих выступлениях, пользователь ведёт список рассылки. Если пользователь заносит даты своих концертов в &korganizer;, то он может просто выбрать пункт меню <menuchoice
+><guimenu
+>Расписание</guimenu
+> <guimenuitem
+>Опубликовать сведения...</guimenuitem
+></menuchoice
+>, ввести адрес списка рассылки — и дата концерта автоматически появится в календарях подписчиков (если, конечно, они тоже пользуются &korganizer;). </para>
+
+<para
+>При публикации события приведённым выше способом адресат получит сообщение о событии, но не возможность запросить участие в нём. Чтобы предоставить такую возможность, выберите пункт меню <menuchoice
+><guimenu
+>Расписание</guimenu
+><guimenuitem
+>Отправить в формате iCalendar...</guimenuitem
+></menuchoice
+>. </para>
+
+</sect1>
+
+
+<sect1 id="as-organizer">
+<title
+>Действия организатора при групповом планировании</title>
+
+<para
+>При создании <link linkend="entering-data-events"
+>события</link
+> или <link linkend="entering-data-to-do"
+>задачи</link
+> и <link linkend="entering-data-events-attendees"
+>приглашении участников</link
+> пользователь выступает в качестве организатора события. Чтобы указать участников, откройте диалог <guilabel
+>изменения события</guilabel
+> или <guilabel
+>изменения задачи</guilabel
+> и перейдите на вкладку <link linkend="entering-data-events-attendees"
+>Участники</link
+>. Когда пользователь является организатором события, в представлении <link linkend="agenda-view"
+>расписания</link
+> в строке события появляется соответствующий маленький значок <inlinemediaobject
+> <imageobject
+> <imagedata fileref="organizer.png" format="PNG"/> </imageobject
+> <textobject
+> <phrase
+>Значок организатора</phrase
+> </textobject
+> </inlinemediaobject
+>.</para>
+
+<para
+>Организатор отвечает за отправку приглашений, сбор ответов от участников и постоянное обновление сведений о событии или мероприятии для всех вовлечённых людей.</para>
+
+<sect2 id="request">
+<title
+>Отправка приглашений и обработка ответов</title>
+
+<para
+>Чтобы организовать задачу или событие, <link linkend="entering-data-events"
+>создайте его</link
+> в &korganizer; и выберите приглашённых с помощью вкладки участников. &korganizer; поддерживает направление уведомлений как автоматически (в зависимости от <link linkend="config-main-groupscheduling"
+>параметров групповой работы &korganizer;</link
+>), так и с помощью пункта меню <menuchoice
+><guimenu
+>Расписание</guimenu
+><guimenuitem
+>Направить уведомления</guimenuitem
+></menuchoice
+>. Участники получат электронные сообщения, содержащие всю необходимую информацию о предстоящем событии или задаче. Они смогут ответить на предложение о встрече согласием, отказом или встречным предложением. Все эти сведения будут получены организатором по электронной почте и (при условии правильной настройки &kmail;) автоматически добавлены в его календарь. Если появятся дополнительные участники (то есть те, кто принял пересланное приглашение), организатору будет предложено одобрить их участие. </para>
+
+</sect2>
+
+<sect2 id="cancel">
+<title
+>Отмена события или задачи</title>
+
+<para
+>Отменить событие или задачу может только его организатор. Если в <link linkend="config-main-groupscheduling"
+>параметрах группового планирования &korganizer;</link
+> установлен флажок <guilabel
+>Использовать сервер совместной работы</guilabel
+> — просто удалите соответствующее событие или задачу, и &korganizer; выведет запрос на отправку сведений об отмене. Если этот флажок не установлен — выделите событие или задачу и выберите пункт меню <menuchoice
+><guimenu
+>Расписание</guimenu
+> <guimenuitem
+>Направить уведомления об отмене</guimenuitem
+></menuchoice
+>.</para>
+
+<para
+>Это приведёт к рассылке сообщений об отмене всем участникам, чтобы они тоже могли удалить событие из своих календарей.</para>
+</sect2>
+</sect1>
+
+
+<sect1 id="as-attendee">
+<title
+>Действия в качестве участника</title>
+
+<para
+>Если пользователь получил приглашение и согласился участвовать, то в его календарь будет добавлено соответствующее событие или мероприятие. Если это событие, то в <link linkend="agenda-view"
+>представлении расписания</link
+> возле события появится маленький значок<inlinemediaobject
+> <imageobject
+> <imagedata fileref="meeting-attending.png" format="PNG"/> </imageobject
+> <textobject
+> <phrase
+>Значок участника</phrase
+> </textobject
+> </inlinemediaobject
+>.</para>
+
+<sect2 id="reply">
+<title
+>Ответ на приглашение</title>
+
+<para
+>На приглашение, поступившее в папку «Входящие» &kmail;, возможно ответить следующим образом: <guibutton
+>Отклонить</guibutton
+>, <guibutton
+>Принять</guibutton
+> или <guibutton
+>Принять с условием</guibutton
+>. При выборе двух последних действий пункт будет внесён в ваш календарь. Независимо от выбранного варианта ответа, &kmail; автоматически направит его организатору.</para>
+
+<para
+>Приглашение также возможно <guibutton
+>Делегировать</guibutton
+> или <guibutton
+>Переслать</guibutton
+>. Делегирование позволяет предложить другому человеку стать вашим представителем. Нажатие кнопки <guibutton
+>Переслать</guibutton
+> позволяет переслать приглашение одному или нескольким людям, которые ещё не были приглашены. Если получатель запроса на делегирование или пересланного приглашения примет его, организатору будет предложено утвердить нового участника.</para>
+
+<para
+>Если обстоятельства изменились, отредактируйте своё состояние участия на <link linkend="entering-data-events-attendees"
+>вкладке «Участники»</link
+>. Если в <link linkend="config-main-groupscheduling"
+>параметрах группового планирования &korganizer;</link
+> установлен флажок <guilabel
+>Использовать сервер совместной работы</guilabel
+>, &korganizer; выведет запрос на отправку сообщения с обновлением состояния участия. Если этого не произошло, выберите пункт меню <menuchoice
+> <guimenu
+>Расписание</guimenu
+><guimenuitem
+>Направить обновление статуса</guimenuitem
+> </menuchoice
+>. </para>
+</sect2>
+
+<sect2 id="counter">
+<title
+>Отправка встречного предложения</title>
+
+
+<para
+>Если пользователя не устраивают некоторые характеристики события, на которое он приглашён (чаще всего речь идёт о времени и месте), он можете изменить соответствующие параметры события и отправить организатору письмо со встречным предложением. Для этого следует выделить событие и выбрать пункт меню <menuchoice
+> <guimenu
+>Расписание</guimenu
+><guimenuitem
+>Требуются изменения</guimenuitem
+> </menuchoice
+>.</para>
+
+<para
+>Организатор события, получив предложение пользователя по электронной почте, сможет принять или отклонить его.</para>
+</sect2>
+
+<sect2 id="refresh">
+
+<title
+>Запрос новейшей версии события или задачи</title>
+
+<para
+>Для запроса новейшей версии события выделите его и выберите пункт меню <menuchoice
+><guimenu
+>Расписание</guimenu
+> <guimenuitem
+>Запросить обновление</guimenuitem
+></menuchoice
+>. Организатор направит в ответ обновлённые сведения о событии.</para>
+
+</sect2>
+</sect1>
+
+<sect1 id="free-busy">
+<title
+>Информация о занятости</title>
+
+<para
+>Информация о занятости — это график пользователя. Зная о его предварительных договорённостях, другие люди смогут принять эту информацию во внимание при планировании событий. Обратите внимание, что публикуются только интервалы занятого времени, а не соответствующие события, причины или участники.</para>
+
+<para
+>&korganizer; может публиковать и запрашивать сведения о занятости как в ручном, так и в автоматическом режиме.</para>
+
+<para
+>Чтобы разослать сведения о своей занятости почтой, выберите пункт меню <guimenu
+>Расписание</guimenu
+> <guimenuitem
+>Отправить сведения о занятом времени по почте...</guimenuitem
+>. Введите в появившемся диалоге те адреса, по которым нужно разослать сведения, и нажмите кнопку <guilabel
+>OK</guilabel
+>.</para>
+
+<para
+>Серверы совместной работы обычно хранят сведения о занятости в одном и том же месте, поэтому пользователь может получать сведения о расписании других пользователей, а они — о его графике. Возможно настроить &korganizer; на автоматическую отправку и загрузку этих сведений с помощью настройки <link linkend="config-main-views"
+>параметров занятости</link
+> в диалоге <guilabel
+>Настройка</guilabel
+> &korganizer;.</para>
+
+<para
+>Для загрузки сведений о занятости на сервер, указанный в диалоге настройки параметров занятости &korganizer;, выберите пункт меню <menuchoice
+><guimenu
+>Расписание</guimenu
+> <guimenuitem
+>Опубликовать информацию о занятом времени</guimenuitem
+></menuchoice
+>.</para>
+
+</sect1>
+
+<sect1 id="examples">
+<title
+>Примеры</title>
+
+<sect2 id="examples-entering-event">
+<title
+>Создание группового события</title>
+
+<para
+>В этом примере рассматривается создание события. На <emphasis
+>следующий понедельник</emphasis
+> необходимо назначить встречу, посвящённую выпуску нового продукта. Ваш начальник <emphasis
+>Джоан Холден</emphasis
+> будет <emphasis
+>председателем</emphasis
+>, а вы, Джек Смит, будете <emphasis
+>организатором</emphasis
+>. Во встрече должны принимать участие ещё два <emphasis
+>участника</emphasis
+>: <emphasis
+>Питер Кржински</emphasis
+> и <emphasis
+>Кирстин Фриз</emphasis
+>. Джоан вручила вам программу встречи. Событие начнётся в <emphasis
+>12 часов дня</emphasis
+> и закончится в <emphasis
+>13</emphasis
+>. Встреча будет <emphasis
+>повторяться</emphasis
+> каждый понедельник. </para>
+
+<procedure>
+<step
+><para
+>С помощью навигатора по датам перейдите к следующему понедельнику.</para
+></step>
+
+<step
+><para
+>Выберите пункт меню <menuchoice
+><guimenu
+>Действия</guimenu
+><guimenuitem
+>Создать событие...</guimenuitem
+></menuchoice
+> или выделите промежуток времени между <emphasis
+>12 дня</emphasis
+> и концом <emphasis
+>первого часа дня</emphasis
+>, а затем введите название события.</para
+></step>
+
+<step
+><para
+>Введите подходящее название. Необходимо выбрать наиболее краткое и ёмкое описание, поскольку этот текст будет отображаться в различных местах программы. Рекомендуется ввести <userinput
+>Выпуск продукта</userinput
+>.</para
+></step>
+
+<step
+><para
+>Введите более подробную программу события в большом поле. В этом простом примере введите отдельными строками <userinput
+>Введение, План, Заключение</userinput
+>.</para
+></step>
+
+<step
+><para
+>Перейдите на вкладку <guilabel
+>Напоминания</guilabel
+>. Установите время напоминания на «за 15 минут до начала» (достаточно, чтобы приготовить чашку чая перед началом встречи).</para
+></step>
+
+<step
+><para
+>Перейдите на вкладку <guilabel
+>Основное</guilabel
+>. Выберите в диалоге <guilabel
+>Редактор меток</guilabel
+> пункт <guilabel
+>Встреча</guilabel
+>.</para
+></step>
+
+<step
+><para
+>Перейдите на вкладку <guilabel
+>Повторение</guilabel
+> и выберите повторение <guilabel
+>по неделям</guilabel
+>.</para>
+<note
+><para
+>Большая часть работы была сделана автоматически. По умолчанию в &korganizer; установлено еженедельное повторение. Обратите внимание — параметр <guilabel
+>Закончить</guilabel
+> установлен в значение <guilabel
+>никогда</guilabel
+>. Это значит, что событие будет повторяться каждый понедельник до бесконечности (то есть до момента удаления пользователем).</para
+></note
+></step>
+
+<step
+><para
+>Здесь всё готово, перейдите на вкладку <guilabel
+>Участники</guilabel
+>.</para
+></step>
+
+<step
+><para
+>На вкладке <guilabel
+>Участники</guilabel
+> следует выполнить следующие действия:</para>
+<substeps>
+
+<step
+><para
+>Вы увидите, что являетесь организатором события.</para
+></step>
+
+<step
+><para
+>В первом поле ввода введите адрес электронной почты в формате <userinput
+>Имя &#060;email&#062;</userinput
+>. Для этого примера следует ввести: <userinput
+>Джоан Холден &#060;jholden@thiscompany.com&#062;</userinput
+>. <tip
+><para
+>Если имена приглашаемых участников уже внесены в вашу адресную книгу &kde;, то вместо ввода имён и адресов возможно просто нажать кнопку <guibutton
+>Выбрать участников...</guibutton
+>.</para
+></tip
+></para
+></step>
+
+<step
+><para
+>Выберите роль <emphasis
+>Председательствующий</emphasis
+>. </para
+></step>
+
+<step
+><para
+>В следующем поле ввода укажите: <userinput
+>Питер Кржински &#060;pkrzinski@thiscompany.com&#062;</userinput
+>.</para
+></step>
+
+<step
+><para
+>В следующем поле ввода укажите: <userinput
+>Кристин Фриз &#060;kfriese@thiscompany.com&#062;</userinput
+>. </para
+></step>
+
+</substeps>
+</step>
+
+<step
+><para
+>Если программа &korganizer; настроена для совместной работы, будет предложено разослать приглашаемым участникам сообщения с описанием события и запросом ответа (при условии, что на вкладке <guilabel
+>Участники</guilabel
+> включён параметр <guilabel
+>Запросить ответ</guilabel
+> ). Приглашения также возможно направить с помощью пункта меню <menuchoice
+><guimenu
+>Расписание</guimenu
+> <guimenuitem
+>Направить уведомления</guimenuitem
+></menuchoice
+>.</para
+></step>
+
+<step
+><para
+>Ещё раз просмотрите настройку события, пройдя по вкладкам <guilabel
+>Основное</guilabel
+>, <guilabel
+>Участники</guilabel
+> и <guilabel
+>Повторение</guilabel
+>. Если всё в порядке, нажмите кнопку <guibutton
+>OK</guibutton
+>.</para
+></step>
+</procedure>
+
+<para
+>Отлично, вы запланировали ваше первое событие!</para>
+</sect2>
+
+</sect1>
+
+</chapter>
+
+<chapter id="config"
+>  <!--updated to 5.4.40, missing General System Tray + Calendars-->
+<title
+>Настройка &korganizer;</title>
+
+<para
+>Чтобы изменить вид и поведение &korganizer;, выберите пункт меню <menuchoice
+><guimenu
+>Настройка</guimenu
+><guimenuitem
+>Настроить &korganizer;...</guimenuitem
+></menuchoice
+>. Подробные сведения обо всех доступных параметрах настройки доступны в разделе <xref linkend="config-main"/>.</para>
+
+<para
+>Для настройки инструментов, доступных на панели инструментов, выберите пункт меню <menuchoice
+><guimenu
+>Настройка</guimenu
+><guimenuitem
+>Панели инструментов...</guimenuitem
+></menuchoice
+> и прочтите в разделе справки «Основы &kde;» <ulink url="help:/fundamentals/config.html#toolbars"
+>подробное описание настройки панелей инструментов</ulink
+>.</para>
+
+<para
+>Локальные сведения, такие как форматы даты и времени, возможно настроить в параметрах системы, в модулях <guilabel
+>Язык</guilabel
+> и <guilabel
+>Форматы</guilabel
+>. Эти модули доступны и из &korganizer;: выберите пункт меню <menuchoice
+><guimenu
+>Настройка</guimenu
+><guimenuitem
+>Параметры времени и дат...</guimenuitem
+></menuchoice
+>. Чтобы изменения параметров системы вступили в силу, &korganizer; следует перезапустить.</para>
+
+<para
+>Сведения о том, как указать &korganizer; места для хранения календарных событий, записей дневника и задач (в локальных файлах, на серверах совместной работы и так далее), доступны в разделе <xref linkend="managing-resources"/>.</para>
+
+<sect1 id="config-main">
+<title
+>Общая настройка &korganizer;</title>
+
+<para
+>Диалог конфигурации параметров позволяет настроить различные элементы &korganizer;.</para>
+
+<sect2 id="config-main-general">
+<title
+>Главное</title>
+
+<sect3 id="config-main-general-personal">
+<title
+>Вкладка «Личные данные»</title>
+
+<para
+>Личные параметры касаются вашей идентификации и других вещей, не подпадающих под общую классификацию.</para>
+
+<variablelist>
+
+<varlistentry>
+<term
+><guilabel
+>Полное имя</guilabel
+></term>
+<listitem
+><para
+><guilabel
+>Полное имя</guilabel
+> по умолчанию — <quote
+>Анонимный</quote
+>, а адрес электронной почты — <quote
+>неизвестный@адрес</quote
+>. Чтобы изменить имя, введите его прямо в этом поле. Введённое имя будет отображаться по умолчанию во всех событиях и задачах в поле <guilabel
+>Организатор</guilabel
+>.</para
+></listitem>
+</varlistentry>
+
+<varlistentry>
+<term
+><guilabel
+>Адрес электронной почты</guilabel
+></term>
+<listitem
+><para
+><guilabel
+>Адрес электронной почты</guilabel
+> будет использоваться для идентификации владельца календаря. Если другой человек откроет ваш календарь, он не сможет изменить его, поскольку доступ возможен только для чтения.</para
+></listitem>
+</varlistentry>
+
+<varlistentry>
+<term
+><guilabel
+>Метод присоединения писем по умолчанию</guilabel
+></term>
+<listitem
+><para
+>Этот параметр позволяет выбрать способ прикрепления письма к событию. Письмо возможно прикрепить полностью (с вложениями), без вложений или как ссылку.</para>
+<para
+>Обратите внимание, что присоединение письма без вложений может сделать его подпись недействительной. </para
+></listitem>
+</varlistentry>
+</variablelist>
+
+</sect3>
+
+<sect3 id="config-main-general-save">
+<title
+>Вкладка «Сохранение»</title>
+
+<variablelist>
+
+<varlistentry>
+<term
+><guilabel
+>Подтверждение удаления</guilabel
+></term>
+<listitem
+><para
+>Если параметр <guilabel
+>Подтверждение удаления</guilabel
+> установлен, &korganizer; будет запрашивать подтверждение при каждом удалении. Если этот параметр не установлен, &korganizer; не будет запрашивать подтверждение перед удалением событий.</para
+></listitem>
+</varlistentry>
+
+<varlistentry>
+<term
+><guilabel
+>Новые события, задачи и записи дневника</guilabel
+></term>
+<listitem
+><para
+>Этот параметр позволяет задать, следует ли всегда сохранять новые элементы в календаре по умолчанию или получать от &korganizer; запрос на выбор места сохранения.</para>
+<para
+>Особенность сервера Kolab2: если предполагается использование функций общих папок этого сервера, рекомендуется установить флажок <guilabel
+>Спрашивать, какой календарь использовать</guilabel
+>. Это позволит разделять сведения на конфиденциальные и общедоступные.</para>
+</listitem>
+</varlistentry>
+
+</variablelist>
+
+</sect3>
+
+<!-- System Tray tab missing-->
+
+<!-- Calendars tab missing-->
+
+</sect2>
+
+<sect2 id="config-main-time-and-date">
+<title
+>Дата и время</title>
+
+<sect3 id="config-main-time-and-date-regional">
+<title
+>Вкладка «Региональные параметры»</title>
+
+<variablelist>
+
+<varlistentry>
+<term
+><guilabel
+>Начало дня</guilabel
+></term>
+<listitem
+><para
+>Выберите время начала дня в раскрывающемся списке. В качестве начала дня возможно установить, например, время пробуждения или начала работы. Этот параметр не помешает просматривать и настраивать более ранние события, просто это время по умолчанию отображается вверху окна календаря. Для просмотра более ранних или поздних событий воспользуйтесь полосой прокрутки.</para
+></listitem>
+</varlistentry>
+
+<varlistentry>
+<term
+><guilabel
+>Праздничные дни</guilabel
+></term>
+<listitem
+><para
+>Выберите свою страну в раскрывающемся списке. Если она отсутствует в списке, выберите <guilabel
+>Нет</guilabel
+>. &korganizer; автоматически отобразит в календаре праздники и выходные, специфичные для выбранной страны.</para
+></listitem>
+</varlistentry>
+
+<varlistentry>
+<term
+><guilabel
+>Рабочее время</guilabel
+></term>
+<listitem
+><para
+>Параметры <guilabel
+>Начало рабочего дня</guilabel
+> и <guilabel
+>Конец рабочего дня</guilabel
+> указывают, когда начинается и заканчивается рабочий день. В &korganizer; рабочие часы выделены цветом, отличным от цвета нерабочих часов, выходных и нерабочих дней.</para>
+<para
+>Кроме того, возможно установить флажки напротив дней недели, чтобы указать рабочие часы для них. Установите флажок <guilabel
+>Исключить праздники</guilabel
+>, чтобы программа &korganizer; не отмечала рабочие часы в днях из расположенного выше раскрывающегося списка праздников.</para>
+</listitem>
+</varlistentry>
+
+<varlistentry>
+<term
+><guilabel
+>Первый день недели</guilabel
+></term>
+<listitem
+><para
+>Выберите первый день недели. Обычно установка этого параметра не требуется, так как он уже задан локалью.</para
+></listitem>
+</varlistentry>
+
+</variablelist>
+</sect3>
+
+<sect3 id="config-main-time-and-date-default">
+<title
+>Вкладка «Значения по умолчанию»</title>
+
+<variablelist>
+<varlistentry>
+<term
+><guilabel
+>Время встречи по умолчанию</guilabel
+></term>
+<listitem
+><para
+>Выберите время начала событий по умолчанию в раскрывающемся списке. При выборе пункта меню <link linkend="entering-data-events"
+>Действия</link
+> <link linkend="menu-actions-new-event"
+>Создать событие...</link
+> или создании события таким способом, что &korganizer; не удаётся определить время его начала, это значение устанавливается в редакторе как время начала по умолчанию.</para
+></listitem>
+</varlistentry>
+
+<varlistentry>
+<term
+><guilabel
+>Продолжительность по умолчанию (чч:мм)</guilabel
+></term>
+<listitem
+><para
+>Установите продолжительность события по умолчанию в поле со счётчиком. При выборе пункта меню <link linkend="entering-data-events"
+>Действия</link
+> <link linkend="menu-actions-new-event"
+>Создать событие...</link
+> или создании события таким способом, что &korganizer; не удаётся определить его продолжительность, это значение будет использовано в качестве значения по умолчанию. </para
+></listitem>
+</varlistentry>
+
+<varlistentry>
+<term
+><guilabel
+>Напоминания</guilabel
+></term>
+<listitem
+><para
+>Чтобы определить, за сколько минут до запланированного времени события будет показано напоминание, задайте значение параметра <guilabel
+>Показ напоминания за</guilabel
+>.</para>
+<para
+>Укажите файл, который будет использоваться в качестве источника звука для звуковых напоминаний. Другой файл возможно выбрать в любой момент в соответствующем разделе редактора события или задачи.</para>
+<para
+>Отметьте следующие два флажка, если следует включить напоминания для всех новых событий и задач. В дальнейшем их будет возможно отключить с помощью диалоговых окон редактора.</para>
+</listitem>
+</varlistentry>
+
+</variablelist>
+</sect3>
+</sect2>
+
+<sect2 id="config-main-views">
+<title
+>Представления</title>
+
+<para
+>Эти параметры позволяют настроить представления &korganizer;:</para>
+
+<sect3 id="config-main-views-general">
+<title
+>Вкладка «Общие»</title>
+<variablelist>
+<varlistentry>
+<term
+><guilabel
+>Следующие x дней</guilabel
+></term>
+<listitem
+><para
+>Этот параметр позволяет изменить количество дней, показанных в пункте меню <guimenu
+>Переход</guimenu
+> <guimenu
+>Следующие x дней</guimenu
+>.</para
+></listitem>
+</varlistentry>
+
+<varlistentry>
+<term
+><guilabel
+>Показывать подсказки с описаниями</guilabel
+></term>
+<listitem
+><para
+>Если описание события не помещается в пространстве текущего представления, лишние символы не будут отображаться. Если флажок <guilabel
+>Показывать подсказки с описаниями</guilabel
+> установлен, при наведении указателя мыши на название события в течение нескольких секунд отображается его полное описание.</para
+></listitem>
+</varlistentry>
+
+<varlistentry>
+<term
+><guilabel
+>Использовать цвета меток для задач</guilabel
+></term>
+<listitem
+><para
+>Если этот флажок установлен, задачи будут маркироваться цветами меток вместо цветов, указанных для их состояний (со сроком, с крайним сроком сегодня или просроченные).</para
+></listitem>
+</varlistentry>
+
+</variablelist>
+
+<para
+>Параметры <link linkend="description-view"
+>календаря (навигатора по датам)</link
+>:</para>
+
+<variablelist>
+
+<varlistentry>
+<term
+><guilabel
+>Показывать ежедневные события</guilabel
+></term>
+<listitem
+><para
+>Если флажок <guilabel
+>Показывать ежедневные события</guilabel
+> установлен, дни, содержащие ежедневно повторяющиеся события, будут отображаться в навигаторе полужирным шрифтом.</para
+></listitem>
+</varlistentry>
+
+<varlistentry>
+<term
+><guilabel
+>Показывать еженедельные события</guilabel
+></term>
+<listitem
+><para
+>Если флажок <guilabel
+>Показывать еженедельные события</guilabel
+> установлен, дни, содержащие еженедельно повторяющиеся события, будут отображаться в навигаторе полужирным шрифтом.</para
+></listitem>
+</varlistentry>
+
+<varlistentry>
+<term
+><guilabel
+>Показывать задачи вместо событий при просмотре задач</guilabel
+></term>
+<listitem
+><para
+>Если этот флажок установлен, в режиме просмотра задач дни, содержащие задачи, будут отображаться в навигаторе полужирным шрифтом.</para
+></listitem>
+</varlistentry>
+
+<varlistentry>
+<term
+><guilabel
+>Показывать записи дневника вместо событий при просмотре дневника</guilabel
+></term>
+<listitem
+><para
+>Если этот флажок установлен, в режиме просмотра дневника дни, содержащие записи дневника, будут отображаться в навигаторе полужирным шрифтом.</para
+></listitem>
+</varlistentry>
+
+<varlistentry>
+<term
+><guilabel
+>Номера недель выбирают рабочую неделю в режиме рабочей недели</guilabel
+></term>
+<listitem
+><para
+>Если флажок <guilabel
+>Номера недель выбирают рабочую неделю в режиме рабочей недели</guilabel
+> установлен, при щелчках по номерам недель, расположенным вдоль навигатора, будут выполняться переходы между рабочими неделями, а не обычными 7-дневными неделями.</para
+></listitem>
+</varlistentry>
+
+</variablelist>
+</sect3>
+
+<sect3 id="config-main-views-agenda">
+<title
+>Вкладка «Расписание»</title>
+
+<para
+>Параметры <link linkend="agenda-view"
+>представления расписания</link
+>:</para>
+
+<variablelist>
+
+<varlistentry>
+<term
+><guilabel
+>Высота строки часов</guilabel
+></term>
+<listitem
+><para
+>С помощью этого элемента управления возможно изменять высоту строк в расписании.</para
+></listitem>
+</varlistentry>
+
+<varlistentry>
+<term
+><guilabel
+>Показывать значки при просмотре элементов расписания</guilabel
+></term>
+<listitem
+><para
+>Если этот флажок установлен, при просмотре элементов расписания будут показаны значки (напоминание, повторение).</para
+></listitem>
+</varlistentry>
+
+<varlistentry>
+<term
+><guilabel
+>Показывать задачи</guilabel
+></term>
+<listitem
+><para
+>Этот флажок позволяет включить или отключить показ задач в дневном, недельном и месячном представлении расписания. Если задач, связанных с какой-либо датой, слишком много, то, во избежание путаницы, лучше будет убрать их из представления.</para
+></listitem>
+</varlistentry>
+
+<varlistentry>
+<term
+><guilabel
+>Показать текущее время</guilabel
+></term>
+<listitem
+><para
+>Этот флажок позволяет включить или отключить показ красной линии времени, оставшегося до события, в дневном или недельном представлениях.</para
+></listitem>
+</varlistentry>
+
+<varlistentry>
+<term
+><guilabel
+>Показывать секунды на линии текущего времени (Marcus Bains)</guilabel
+></term>
+<listitem
+><para
+>Этот флажок позволяет включить или отключить показ секунд на линии текущего времени.</para
+></listitem>
+</varlistentry>
+
+<varlistentry>
+<term
+><guilabel
+>Выбор периода в календаре открывает редактор нового события</guilabel
+></term>
+<listitem
+><para
+>Если этот флажок установлен, при выделении периода в календаре будет автоматически запускаться редактор события. Для выделения периода перетащите указатель мыши от начального до конечного времени планируемого события.</para
+></listitem>
+</varlistentry>
+<!--FIXME Icons to use dropdown box missing-->
+<varlistentry>
+<term
+><guilabel
+>Цвета</guilabel
+></term>
+<listitem>
+<para
+>Выберите вариант <guilabel
+>Метки внутри, календарь снаружи</guilabel
+>, если элементы календаря следует показывать в цвете связанных с ними меток, а рамку элемента — в цвете календаря.</para>
+
+<para
+>Выберите вариант <guilabel
+>Календарь внутри, метки снаружи</guilabel
+>, если элементы календаря следует показывать в цвете связанного с ними календаря, а рамку элемента — в цвете метки.</para>
+
+<para
+>Выберите вариант <guilabel
+>Только метки</guilabel
+>, если элементы календаря (как сами элементы, так и рамку) следует показывать в цвете связанных с ними меток.</para>
+
+<para
+>Выберите вариант <guilabel
+>Только календарь</guilabel
+>, если элементы календаря (как сами элементы, так и рамку) следует показывать в цвете связанного с ними календаря.</para>
+
+<para
+>Для установки этих цветов следует использовать страницу диалога настройки <link linkend="config-main-colors"
+>Цвета и шрифты</link
+>.</para>
+</listitem>
+</varlistentry>
+
+<varlistentry>
+<term
+><guilabel
+>Раскрашивать фон занятых дней</guilabel
+></term>
+<listitem
+><para
+>Установите этот флажок, если требуется заполнять фон расписания другим цветом в днях, которые содержат хотя бы одно событие, занимающее весь день и помеченное как важное.</para>
+<para
+>Чтобы выбрать цвет занятости для фона расписания, перейдите в область настройки «Цвета» и выберите подходящий цвет.</para
+></listitem>
+</varlistentry>
+
+<varlistentry>
+<term
+><guilabel
+>Показ нескольких календарей</guilabel
+></term>
+<listitem
+><para
+>Доступны три варианта: при просмотре расписания объединять все календари в один, показывать календари на одной линии или разместить все календари во вкладках. Показ календарей на одной линии возможно настроить, выбрав в контекстном меню команду <guimenuitem
+>Настроить вид</guimenuitem
+>. </para
+></listitem>
+</varlistentry>
+
+</variablelist>
+</sect3>
+
+<sect3 id="config-main-views-month">
+<title
+>Вкладка «Месяц»</title>
+
+<para
+>Параметры <link linkend="month-view"
+>представления месяца</link
+>:</para>
+
+<variablelist>
+
+<varlistentry>
+<term
+><guilabel
+>Параметры просмотра</guilabel
+></term>
+<listitem
+><para
+>Первые четыре флажка позволяют включить показ времени, значков (напоминание, повторение и так далее), задач и записей дневника в представлении месяца.</para
+></listitem>
+</varlistentry>
+<!--FIXME Icons to use dropdown box missing-->
+
+<varlistentry>
+<term
+><guilabel
+>Раскрашивать фон занятых дней</guilabel
+></term>
+<listitem
+><para
+>Установите этот флажок, если фон представления месяца следует заполнять другим цветом в днях, которые содержат хотя бы одно событие, занимающее весь день и помеченное как важное.</para>
+<para
+>Чтобы выбрать цвет занятости, перейдите в область настройки «Цвета» и выберите подходящий цвет занятости для представления расписания/месяца.</para
+></listitem>
+</varlistentry>
+
+<varlistentry>
+<term
+><guilabel
+>Цвета</guilabel
+></term>
+<listitem>
+<para
+>Настройте цвета для представления месяца таким же образом, как и для <link linkend="config-main-views-agenda"
+>представления расписания</link
+>.</para
+></listitem>
+</varlistentry>
+
+</variablelist>
+</sect3>
+
+<sect3 id="config-main-views-todo">
+<title
+>Вкладка «Задачи»</title>
+
+<para
+>Параметры <link linkend="todo-view"
+>представления списка задач</link
+>:</para>
+
+<variablelist>
+
+<varlistentry>
+<term
+><guilabel
+>Всегда показывать выполненные задачи внизу списка</guilabel
+></term>
+<listitem
+><para
+>Если этот флажок установлен, все завершённые задачи будут сгруппированы в нижней части списка задач.</para
+></listitem>
+</varlistentry>
+
+<varlistentry>
+<term
+><guilabel
+>Сохранять выполненные задачи в записях дневника</guilabel
+></term>
+<listitem
+><para
+>Если этот флажок установлен, &korganizer; будет автоматически добавлять в дневник записи обо всех завершённых задачах.</para
+></listitem>
+</varlistentry>
+
+</variablelist>
+</sect3>
+</sect2>
+
+<sect2 id="config-main-colors-fonts">
+<title
+>Цвета и шрифты</title>
+
+<sect3 id="config-main-colors">
+<title
+>Цвета</title>
+
+<para
+>Выберите цвет для отображения праздников, для подсветки и для выделения определённых меток событий. Для каждой метки возможно выбрать свой цвет. Учтите, что слишком большое количество цветов может привести к путанице. Набор цветов также зависит от <link linkend="config-main-views"
+>параметров настройки представлений</link
+>.</para>
+
+<variablelist>
+
+<varlistentry>
+<term
+><guilabel
+>Праздничные дни</guilabel
+></term>
+<listitem
+><para
+>По нажатию этой кнопки откроется диалоговое окно <guilabel
+>Выбор цвета</guilabel
+>, которое позволяет выбрать цвет выходных дней. Этот цвет будет использоваться для выделения названий выходных дней в представлении месяца и для выделения чисел в навигаторе по датам.</para
+></listitem>
+</varlistentry>
+
+<varlistentry>
+<term
+><guilabel
+>Фон расписания</guilabel
+></term>
+<listitem
+><para
+>По нажатию этой кнопки откроется диалоговое окно <guilabel
+>Выбор цвета</guilabel
+>, которое позволяет выбрать цвет фона представления расписания.</para
+></listitem>
+</varlistentry>
+
+<varlistentry>
+<term
+><guilabel
+>Фон занятых дней</guilabel
+></term>
+<listitem
+><para
+>По нажатию этой кнопки откроется диалоговое окно <guilabel
+>Выбор цвета</guilabel
+>, которое позволяет выбрать цвет фона занятых дней представления расписания или представления месяца. Этот цвет используется только в том случае, если в одном из этих представлений включён параметр показа занятых дней другим цветом.</para
+></listitem>
+</varlistentry>
+
+<varlistentry>
+<term
+><guilabel
+>Отметка текущего времени в дневном расписании</guilabel
+></term>
+<listitem
+><para
+>По нажатию этой кнопки откроется диалоговое окно <guilabel
+>Выбор цвета</guilabel
+>, которое позволяет выбрать цвет линии текущего времени.</para
+></listitem>
+</varlistentry>
+
+<varlistentry>
+<term
+><guilabel
+>Рабочее время</guilabel
+></term>
+<listitem
+><para
+>По нажатию этой кнопки откроется диалоговое окно <guilabel
+>Выбор цвета</guilabel
+>, которое позволяет выбрать цвет рабочих часов в представлении расписания.</para
+></listitem>
+</varlistentry>
+
+<varlistentry>
+<term
+><guilabel
+>Цвет задач с крайним сроком сегодня</guilabel
+></term>
+<listitem
+><para
+>По нажатию этой кнопки откроется диалоговое окно <guilabel
+>Выбор цвета</guilabel
+>, с помощью которого возможно выбрать цвет задач, которые предстоит решить сегодня.</para
+></listitem>
+</varlistentry>
+
+<varlistentry>
+<term
+><guilabel
+>Просроченные задачи</guilabel
+></term>
+<listitem
+><para
+>По нажатию этой кнопки откроется диалоговое окно <guilabel
+>Выбор цвета</guilabel
+>, которое позволяет выбрать цвет просроченных задач.</para
+></listitem>
+</varlistentry>
+
+<varlistentry>
+<term
+><guilabel
+>Метки</guilabel
+></term>
+<listitem
+><para
+>С помощью этой группы параметров возможно назначить каждой метке свой цвет. Чтобы задать цвет для метки, выберите её в раскрывающемся списке и нажмите кнопку для открытия диалогового окна <guilabel
+>Выбор цвета</guilabel
+>. <link linkend="config-main-views"
+>В зависимости от настройки представлений</link
+>, выбранный цвет будет использован для выделения событий и задач, обозначенных этой меткой, в представлении расписания и представлении месяца.</para
+></listitem>
+</varlistentry>
+
+<varlistentry>
+<term
+><guilabel
+>Источники</guilabel
+></term>
+<listitem
+><para
+>С помощью этой группы параметров возможно назначить каждому источнику свой цвет. Чтобы задать цвет для источника, выберите его в раскрывающемся списке и нажмите кнопку для открытия диалогового окна <guilabel
+>Выбор цвета</guilabel
+>. <link linkend="config-main-views"
+>В зависимости от настройки представлений</link
+>, выбранный цвет будет использован для выделения событий и задач, хранящихся в этом источнике, в представлении расписания и представлении месяца.</para
+></listitem>
+</varlistentry>
+
+</variablelist>
+
+</sect3>
+
+<sect3 id="config-main-fonts">
+<title
+>Шрифты</title>
+
+<variablelist>
+
+<varlistentry>
+<term
+><guilabel
+>Панель времени</guilabel
+></term>
+<listitem
+><para
+>Нажмите эту кнопку, чтобы выбрать гарнитуру, стиль и размер шрифта для панели времени.</para
+></listitem>
+</varlistentry>
+
+<varlistentry>
+<term
+><guilabel
+>Просмотр месяца</guilabel
+></term>
+<listitem
+><para
+>Нажмите эту кнопку, чтобы выбрать гарнитуру, стиль и размер шрифта для представления месяца.</para
+></listitem>
+</varlistentry>
+
+<varlistentry>
+<term
+><guilabel
+>Расписание</guilabel
+></term>
+<listitem
+><para
+>Нажмите эту кнопку, чтобы выбрать гарнитуру, стиль и размер шрифта для представления расписания (просмотр дня, недели и рабочей недели).</para
+></listitem>
+</varlistentry>
+
+<varlistentry>
+<term
+><guilabel
+>Текущее время</guilabel
+></term>
+<listitem
+><para
+>Нажмите эту кнопку, чтобы выбрать гарнитуру, стиль и размер шрифта для отображения линии времени (цветной линии текущего времени в представлении расписания).</para
+></listitem>
+</varlistentry>
+
+</variablelist>
+
+</sect3>
+
+</sect2>
+
+<sect2 id="config-main-groupscheduling">
+<title
+>Групповое планирование</title>
+
+<variablelist>
+
+<varlistentry>
+<term
+><guilabel
+>Использовать сервер совместной работы</guilabel
+></term>
+<listitem
+><para
+>Установите этот флажок для автоматической отправки сообщений при создании, обновлении и удалении событий или задач, затрагивающих других людей. Эти сообщения могут быть приглашениями на организуемое мероприятие, уведомлениями об отмене мероприятий, ответами на запросы, встречными предложениями и так далее. Если необходимо включить возможности групповой работы (например, настроить &kontact; в качестве <guilabel
+>Kolab</guilabel
+>-клиента &kde;), следует установить этот флажок.</para
+></listitem>
+</varlistentry>
+
+<varlistentry>
+<term
+><guilabel
+>При рассылке сообщений отправлять копию владельцу</guilabel
+></term>
+<listitem
+><para
+>Если флажок <guilabel
+>При рассылке сообщений отправлять копию владельцу</guilabel
+> установлен, пользователь будет получать копии всех писем, которые &korganizer; рассылает, когда он приглашает участников на событие.</para
+></listitem>
+</varlistentry>
+
+<varlistentry>
+<term
+><guilabel
+>Почтовый транспорт</guilabel
+></term>
+<listitem
+><para
+>С помощью этого параметра возможно выбрать тип почтового транспорта. Это может быть клиент &kmail; или команда &Sendmail; (для её работы необходимо установить соответствующий пакет).</para
+></listitem>
+</varlistentry>
+
+</variablelist>
+
+</sect2>
+
+<sect2 id="config-main-free-busy">
+<title
+>Занятость</title>
+
+<para
+>Информация о занятости — это график пользователя. Зная о его предварительных договорённостях, другие люди смогут принять эту информацию во внимание при планировании событий. Обратите внимание, что публикуются только интервалы занятого времени, а не соответствующие события, причины или участники.</para>
+
+<para
+>&korganizer; может публиковать и запрашивать сведения о занятости как в ручном, так и в автоматическом режиме.</para>
+
+<sect3 id="config-main-free-busy-publish">
+<title
+>Публикация</title>
+<para
+>Опубликовав сведения о своей занятости, пользователь предоставит другим людям возможность обращаться к нему только тогда, когда он свободен.</para>
+
+<variablelist>
+
+<varlistentry>
+<term
+><guilabel
+>Опубликовывать информацию о занятом времени автоматически</guilabel
+></term>
+<listitem
+><para
+>Включите этот параметр, если сведения о занятости должны публиковаться автоматически. Обратите внимание, что этого можно не делать и публиковать сведения «вручную» с помощью меню <guilabel
+>Расписание</guilabel
+> &korganizer;.</para>
+
+<para
+>Если приложение настроено в качестве <guilabel
+>Клиента Kolab для &kde;</guilabel
+>, в этом нет необходимости. Сервер <guilabel
+>Kolab2</guilabel
+> публикует информацию о занятости и управляет доступом к ней других пользователей.</para>
+</listitem>
+</varlistentry>
+
+<varlistentry>
+<term
+><guilabel
+>Минимальное время между обновлениями (минут)</guilabel
+></term>
+<listitem
+><para
+>Если выбрана автоматическая публикация информации, возможно указать интервал в минутах между повторной отправкой.</para>
+</listitem>
+</varlistentry>
+
+<varlistentry>
+<term
+><guilabel
+>Опубликовать (по умолчанию 60) период в днях хранения информации о занятом времени</guilabel
+></term>
+<listitem
+><para
+>Количество календарных дней, на протяжении которого показывается информация о занятости.</para
+></listitem>
+</varlistentry>
+
+<varlistentry>
+<term
+><guilabel
+>Адрес сервера</guilabel
+></term>
+<listitem
+><para
+>Введите адрес сервера, на котором следует публиковать информацию о занятости. Чтобы узнать этот адрес, обратитесь к администратору сервера.</para>
+<para
+>Пример для сервера Kolab2: <userinput
+>webdavs://kolab2.com/freebusy/joe@kolab2.com.ifb</userinput
+> </para
+></listitem>
+</varlistentry>
+
+<varlistentry>
+<term
+><guilabel
+>Имя пользователя</guilabel
+></term>
+<listitem
+><para
+>Укажите имя пользователя для учётной записи на сервере.</para>
+<para
+>Особенность сервера Kolab2: зарегистрированный UID (уникальный идентификатор) пользователя по умолчанию соответствует зарегистрированному на сервере Kolab2 адресу электронной почты, но может и отличаться. Если UID не известен, обратитесь к администратору сервера.</para
+></listitem>
+</varlistentry>
+
+<varlistentry>
+<term
+><guilabel
+>Пароль</guilabel
+></term>
+<listitem
+><para
+>Введите пароль (для входа на сервер).</para
+></listitem>
+</varlistentry>
+
+<varlistentry>
+<term
+><guilabel
+>Сохранить пароль</guilabel
+></term>
+<listitem
+><para
+>Установка этого флажка позволяет сохранить пароль в программе &korganizer; и не вводить его каждый раз при публикации информации о занятости.</para>
+<warning
+><para
+>По соображениям безопасности не рекомендуется хранить пароль в файле настройки программы.</para
+></warning
+></listitem>
+</varlistentry>
+
+</variablelist>
+
+</sect3>
+
+<sect3 id="config-main-free-busy-retrieve">
+<title
+>Получение</title>
+
+<para
+>Получение сведений о занятости других людей позволяет планировать события с учётом этой занятости.</para>
+
+<variablelist>
+
+<varlistentry>
+<term
+><guilabel
+>Получать информацию о занятом времени других людей автоматически</guilabel
+></term>
+<listitem
+><para
+>Этот параметр позволяет автоматизировать процесс получения информации о занятости других пользователей. Чтобы включить этот параметр, заполните поля в расположенном ниже разделе сведений о сервере.</para
+></listitem>
+</varlistentry>
+
+<varlistentry>
+<term
+><guilabel
+>Использовать полный адрес электронной почты для получения данных</guilabel
+></term>
+<listitem
+><para
+>Этот параметр позволяет изменить имя файла, который должен загружаться с сервера. Если флажок установлен, будет загружен файл занятости с именем <userinput
+>user@domain.ifb</userinput
+>. Если флажок не установлен — файл <userinput
+>user.ifb</userinput
+>. Если настройка этого параметра вызывает затруднения, обратитесь к администратору сервера.</para>
+<para
+><guilabel
+>Особенность сервера Kolab2:</guilabel
+> если программа &korganizer; настроена в качестве <guilabel
+>клиента Kolab для &kde; (&kontact;/Kolab)</guilabel
+>, следует включить этот параметр.</para
+></listitem>
+</varlistentry>
+
+<varlistentry>
+<term
+><guilabel
+>Адрес сервера</guilabel
+></term>
+<listitem
+><para
+>Введите адрес сервера, с которого следует получить информацию о занятости. Чтобы узнать этот адрес, обратитесь к администратору сервера.</para>
+<para
+><guilabel
+>Пример для сервера Kolab2:</guilabel
+><userinput
+> webdavs://kolab2.com/freebusy/</userinput
+> </para
+></listitem>
+</varlistentry>
+
+<varlistentry>
+<term
+><guilabel
+>Имя пользователя</guilabel
+></term>
+<listitem
+><para
+>Укажите имя вашей учётной записи на сервере.</para>
+</listitem>
+</varlistentry>
+
+<varlistentry>
+<term
+><guilabel
+>Пароль</guilabel
+></term>
+<listitem
+><para
+>Введите пароль (для входа на сервер). </para
+></listitem>
+</varlistentry>
+
+<varlistentry>
+<term
+><guilabel
+>Сохранить пароль</guilabel
+></term>
+<listitem
+><para
+>Установка этого флажка позволяет сохранить пароль в программе &korganizer; и не вводить его каждый раз при получении информации о занятости.</para>
+<warning
+><para
+>По соображениям безопасности не рекомендуется хранить пароль в файле настройки программы.</para
+></warning>
+</listitem>
+</varlistentry>
+
+</variablelist>
+</sect3>
+</sect2>
+
+<sect2 id="config-main-plugins">
+<title
+>Модули</title>
+
+<para
+>Дополнительные сведения о настройке модулей доступны в разделе <xref linkend="plugins-chapter"/></para>
+
+</sect2>
+
+<sect2 id="config-custom-pages">
+<title
+>Дополнительные поля</title>
+
+<para
+>В этом разделе можно добавить собственные элементы графического интерфейса, чтобы сохранить свои значения в &korganizer;.</para>
+<para
+>Описание процесса создания элементов приведено в разделе <guilabel
+>Как это работает?</guilabel
+></para>
+
+</sect2>
+</sect1>
+
+</chapter>
+
+<chapter id="plugins-chapter"
+><!--updated to 5.4.40-->
+
+<title
+>Модули</title>
+
+<para
+>Функции программы &korganizer; возможно расширить с помощью модулей. </para>
+
+<para
+>Настройку модулей возможно выполнить с помощью основного диалога настройки &korganizer;: выберите пункт меню <menuchoice
+><guimenu
+>Настройка</guimenu
+><guimenuitem
+> Настроить &korganizer;...</guimenuitem
+></menuchoice
+> и нажмите значок <guilabel
+>Модули</guilabel
+> на боковой панели появившегося диалогового окна. </para>
+
+<sect1 id="plugins-chapter-availableplugins">
+<title
+>Доступные модули</title>
+
+<sect2 id="date-numbers-plugin">
+<title
+>День в году</title>
+<para
+>Этот модуль добавляет порядковый номер даты в году в представление расписания. Например, 1 февраля — это день под номером 32. </para>
+</sect2>
+
+<sect2 id="wikipedia-thisday-plugin">
+<title
+>Показ блока «В этот день» с Wikipedia</title>
+<para
+>Этот модуль предоставляет ссылки на страницы <quote
+>В этот день</quote
+> в Википедии. </para>
+</sect2>
+
+<sect2 id="wikipedia-pictureoftheday-plugin">
+<title
+>Изображение дня c Wikipedia для календаря</title>
+<para
+>Этот модуль предоставляет <quote
+>изображение дня</quote
+> в Википедии. </para>
+</sect2>
+
+<sect2 id="jewish-calendar-plugin">
+<title
+>Еврейский календарь</title>
+<para
+>Этот модуль предоставляет даты еврейского календаря в дополнение к датам григорианского календаря. В диалоге настройки модуля возможно выбрать, следует ли показывать еврейские праздники, еженедельные дни чтения глав Торы, день Омера и/или Чхоль Хамоед. </para>
+</sect2>
+
+</sect1>
+
+</chapter>
+
+<chapter id="reference">
+<title
+>Справочник</title>
+
+<sect1 id="reference-menus"
+><!--updated to 5.4.40, Send as iCalendar-->
+<title
+>Меню</title>
+
+<para
+>При запуске &korganizer; появляется его главное меню. В нём содержатся несколько элементов: строка меню, панель инструментов, календарь месяца, главная панель с текущим <quote
+>представлением</quote
+> событий и списком задач.</para>
+
+<para
+>Меню предоставляет доступ ко всем основным операциям, которые могут быть выполнены над календарём, включая сохранение, загрузку, добавление и удаление событий, задач и записей дневника, печать и другие операции.</para>
+
+<para
+>Обратите внимание, что при использовании &korganizer; в качестве компонента календаря &kontact; меню будет отличаться от меню в самостоятельном приложении.</para>
+
+<sect2 id="reference-menus-file">
+<title
+>Файл</title>
+
+<para
+>Меню <guimenu
+>Файл</guimenu
+> обеспечивает доступ к функциям, влияющим на весь календарь.</para>
+
+<variablelist>
+
+<varlistentry id="menu-file-open">
+<term
+><inlinemediaobject
+><imageobject
+><imagedata fileref="document-open.png"
+ format="PNG"/></imageobject
+></inlinemediaobject
+><menuchoice
+><shortcut
+> <keycombo action="simul"
+>&Ctrl;<keycap
+>O</keycap
+></keycombo
+> </shortcut
+> <guimenu
+> Файл</guimenu
+> <guimenuitem
+>Открыть...</guimenuitem
+></menuchoice>
+</term>
+<listitem
+><para
+><action
+>Открывает файловый диалог, который позволяет выбрать файл формата vCalendar или iCalendar для загрузки.</action
+>. Если в текущем календаре выполнены изменения, их будет предложено сохранить перед открытием нового календаря.</para>
+<para
+>Дополнительные сведения доступны в разделе <xref linkend="managing-import-export"/>.</para>
+</listitem>
+</varlistentry>
+
+<varlistentry id="menu-file-print">
+<term
+><inlinemediaobject
+><imageobject
+><imagedata fileref="document-print.png"
+ format="PNG"/></imageobject
+></inlinemediaobject
+><menuchoice
+><shortcut
+> <keycombo action="simul"
+>&Ctrl;<keycap
+>P</keycap
+></keycombo
+> </shortcut
+> <guimenu
+> Файл</guimenu
+> <guimenuitem
+>Печать...</guimenuitem
+></menuchoice>
+</term>
+<listitem
+><para
+>Чтобы <action
+>распечатать текущий календарь</action
+>, выберите в меню пункт <guimenuitem
+>Печать</guimenuitem
+> или нажмите значок <guilabel
+>Печать</guilabel
+>. Возможно указать диапазон дат, которые необходимо распечатать (вручную или с помощью виджета календаря), и шаблон печати (печать дня, недели, месяца, задач или записей дневника).</para
+></listitem>
+</varlistentry>
+
+<varlistentry id="menu-file-print-preview">
+<term
+><inlinemediaobject
+><imageobject>
+<imagedata fileref="document-print-preview.png"
+format="PNG"/></imageobject
+></inlinemediaobject
+><menuchoice
+><guimenu
+> Файл</guimenu
+><guimenuitem
+>Предварительный просмотр</guimenuitem
+></menuchoice>
+</term>
+<listitem
+><para
+>Если выбрать в меню пункт <guimenuitem
+>Предварительный просмотр</guimenuitem
+> или нажать значок<guiicon
+>Предварительный просмотр</guiicon
+>, <action
+>текущий календарь будет выведен на экран, а не отправлен на печать</action
+>. Используйте эту возможность для проверки корректности распечатки перед выполнением печати.</para>
+<para
+>Возможно указать диапазон дат, которые необходимо распечатать (вручную или с помощью виджета календаря), и шаблон печати (печать дня, недели, месяца или задач).</para>
+</listitem>
+</varlistentry>
+
+<varlistentry id="menu-file-import-calendar">
+<term
+><menuchoice
+><guimenu
+>Файл</guimenu
+> <guisubmenu
+>Импорт</guisubmenu
+> <guimenuitem
+>Импорт календаря...</guimenuitem
+> </menuchoice
+></term>
+<listitem
+><para
+>Выберите этот пункт меню, если имеются другие файлы в формате iCalendar или vCalendar и требуется <action
+>объединить их содержимое с существующим календарём, добавить их в качестве нового источника или открыть их в новом окне</action
+>. Эта возможность полезна, например, когда по почте получен содержащий несколько записей файл vCalendar.</para>
+<para
+>Дополнительные сведения доступны в разделе <xref linkend="managing-import"/>.</para>
+</listitem>
+</varlistentry>
+
+<varlistentry id="menu-file-import-ghns">
+<term
+><menuchoice
+><guimenu
+>Файл</guimenu
+> <guisubmenu
+>Импорт</guisubmenu
+> <guimenuitem
+>Получить свежие материалы...</guimenuitem
+> </menuchoice
+></term>
+<listitem
+><para
+>При выборе этого пункта меню будет открыто диалоговое окно <guilabel
+>Загрузка материалов из Интернета</guilabel
+> с доступными для загрузки календарями. Содержащиеся в них события возможно добавить в существующий календарь.</para>
+<para
+>Дополнительные сведения доступны в разделе <xref linkend="managing-get-hot-new-stuff"/>.</para>
+</listitem>
+</varlistentry>
+
+<varlistentry id="menu-file-export-icalendar">
+<term
+><menuchoice
+><guimenu
+>Файл</guimenu
+> <guisubmenu
+>Экспорт</guisubmenu
+> <guimenuitem
+>Экспорт в iCalendar...</guimenuitem
+> </menuchoice
+></term>
+<listitem
+><para
+>При выборе этого действия все активные события, задачи и записи дневника (независимо от того, с каким источником они связаны) будут экспортированы в новый файл iCalendar.</para>
+<para
+>Дополнительные сведения доступны в разделе <xref linkend="managing-export"/>.</para>
+</listitem>
+</varlistentry>
+
+<!--not in 4.6.0
+varlistentry id="menu-file-export-ghns">
+<term
+><menuchoice>
+<guimenu
+>File</guimenu>
+<guisubmenu
+>Export</guisubmenu>
+<guimenuitem
+>Upload Hot New Stuff...</guimenuitem>
+</menuchoice
+></term>
+<listitem
+><para
+>This action will open the <guilabel
+>Upload Hot New Stuff</guilabel>
+dialog, which allow you to export calendars containing events which may be
+useful to other people, such as a conference program, a list of holidays,
+special events, &etc;</para>
+<para
+>For more information about this action, please refer to
+<xref linkend="managing-get-hot-new-stuff"/>.</para>
+</listitem>
+</varlistentry-->
+
+<varlistentry id="menu-file-archive-old">
+<term
+><menuchoice
+><guimenu
+>Файл</guimenu
+> <guimenuitem
+>Архивировать старые события...</guimenuitem
+> </menuchoice
+></term>
+<listitem
+><para
+><action
+>Время от времени необходимо удалять старые события.</action
+></para>
+<para
+>Дополнительные сведения доступны в разделе <xref linkend="managing-purge-archive"/>.</para>
+</listitem>
+</varlistentry>
+
+<varlistentry id="menu-file-purge">
+<term
+><menuchoice
+><guimenu
+>Файл</guimenu
+> <guimenuitem
+>Удалить выполненные задачи</guimenuitem
+> </menuchoice
+></term>
+<listitem
+><para
+>При выборе этого действия из активного календаря будут удалены все выполненные задачи.</para>
+<para
+>Дополнительные сведения доступны в разделе <xref linkend="managing-purge-archive"/>.</para>
+</listitem
+></varlistentry>
+
+<varlistentry id="menu-file-quit">
+<term
+><inlinemediaobject
+><imageobject
+><imagedata
+ fileref="application-exit.png"/></imageobject
+></inlinemediaobject
+><menuchoice
+><shortcut
+> <keycombo action="simul"
+>&Ctrl;<keycap
+>Q</keycap
+></keycombo
+> </shortcut
+> <guimenu
+>Файл</guimenu
+> <guimenuitem
+>Выход</guimenuitem
+> </menuchoice>
+</term>
+<listitem
+><para
+>При выборе пункта меню <guimenuitem
+>Выход</guimenuitem
+> или нажатии значка <guiicon
+>Выход</guiicon
+> <action
+>будет выполнен выход из текущего окна календаря, с запросом на сохранение, если в календаре имеются несохранённые изменения.</action
+></para>
+<para
+>Это не приведёт к закрытию других открытых окон календарей. Закрытие каждого окна календаря выполняется по отдельности.</para
+> </listitem>
+</varlistentry>
+</variablelist>
+
+</sect2>
+
+<sect2 id="reference-menus-edit">
+<title
+>Правка</title>
+
+<para
+>С помощью меню <guilabel
+>Правка</guilabel
+> возможно изменять и искать события и задачи.</para>
+
+<para
+>Пункты меню <guimenuitem
+>Вырезать</guimenuitem
+>, <guimenuitem
+>Копировать</guimenuitem
+> и <guimenuitem
+>Вставить</guimenuitem
+> работают так же, как и в других приложениях &kde;. Пункт <guimenuitem
+>Найти...</guimenuitem
+> позволяет выполнять поиск событий и задач в текущем календаре.</para>
+
+<variablelist>
+
+<varlistentry id="menu-edit-undo">
+<term
+><inlinemediaobject
+><imageobject
+><imagedata fileref="edit-undo.png"
+ format="PNG"/></imageobject
+></inlinemediaobject
+><menuchoice
+><shortcut
+> <keycombo action="simul"
+>&Ctrl;<keycap
+>Z</keycap
+></keycombo
+> </shortcut
+> <guimenu
+> Правка</guimenu
+> <guimenuitem
+>Отменить действие</guimenuitem
+> </menuchoice>
+</term>
+<listitem
+><para
+><action
+>Отменить последнее действие</action
+> — иными словами, вернуть календарь в то состояние, в котором он находился непосредственно перед выполнением последнего действия.</para
+></listitem>
+</varlistentry>
+
+<varlistentry id="menu-edit-redo">
+<term
+><inlinemediaobject
+><imageobject
+><imagedata fileref="edit-redo.png"
+ format="PNG"/></imageobject
+></inlinemediaobject
+><menuchoice
+><shortcut
+> <keycombo action="simul"
+>&Ctrl;&Shift;<keycap
+>Z</keycap
+></keycombo
+> </shortcut
+> <guimenu
+> Правка</guimenu
+> <guimenuitem
+>Повторить действие</guimenuitem
+> </menuchoice>
+</term>
+<listitem
+><para
+><action
+>Повторить последнее действие</action
+> — иными словами, вернуть календарь в то состояние, в котором он находился непосредственно перед отменой последнего действия.</para
+></listitem>
+</varlistentry>
+
+<varlistentry id="menu-edit-cut">
+<term
+><inlinemediaobject
+><imageobject
+><imagedata fileref="edit-cut.png"
+ format="PNG"/></imageobject
+></inlinemediaobject
+><menuchoice
+><shortcut
+> <keycombo action="simul"
+>&Ctrl;<keycap
+>X</keycap
+></keycombo
+> </shortcut
+> <guimenu
+> Правка</guimenu
+> <guimenuitem
+>Вырезать</guimenuitem
+> </menuchoice>
+</term>
+<listitem
+><para
+><action
+>Вырезать текущее выбранное событие в буфер обмена, удалив его из календаря.</action
+></para
+></listitem>
+</varlistentry>
+
+<varlistentry id="menu-edit-copy">
+<term
+><inlinemediaobject
+><imageobject
+><imagedata fileref="edit-copy.png"
+ format="PNG"/></imageobject
+></inlinemediaobject
+><menuchoice
+><shortcut
+> <keycombo action="simul"
+>&Ctrl;<keycap
+>C</keycap
+></keycombo
+> </shortcut
+> <guimenu
+> Правка</guimenu
+> <guimenuitem
+>Копировать</guimenuitem
+></menuchoice>
+</term>
+<listitem
+><para
+><action
+>Скопировать текущий выбранный элемент в буфер обмена, оставив его в календаре.</action
+></para
+></listitem>
+</varlistentry>
+
+<varlistentry id="menu-edit-paste">
+<term
+><inlinemediaobject
+><imageobject
+><imagedata fileref="edit-paste.png"
+ format="PNG"/></imageobject
+></inlinemediaobject
+><menuchoice
+><shortcut
+> <keycombo action="simul"
+>&Ctrl;<keycap
+>V</keycap
+></keycombo
+> </shortcut
+> <guimenu
+> Правка</guimenu
+> <guimenuitem
+>Вставить</guimenuitem
+></menuchoice>
+</term>
+<listitem
+><para
+>При выборе пункта <guimenuitem
+>Вставить</guimenuitem
+> <action
+>содержимое буфера обмена будет вставлено в календарь</action
+>. Буфер обмена должен содержать корректные данные формата vCalendar или iCalendar, предоставленные предыдущими операциями копирования/вырезания или выделением вне &korganizer;. Если содержимое буфера обмена не удаётся распознать, будет показано соответствующее предупреждение.</para>
+<tip
+><para
+>Тем не менее, для копирования текста из любого приложения в окно редактирования события &korganizer; и наоборот возможно использовать комбинации клавиш <keycombo action="simul"
+>&Ctrl; <keycap
+>C</keycap
+></keycombo
+> и <keycombo action="simul"
+>&Ctrl; <keycap
+>V</keycap
+></keycombo
+>. </para
+></tip
+></listitem>
+</varlistentry>
+
+<varlistentry id="menu-edit-delete">
+<term
+><inlinemediaobject
+><imageobject
+><imagedata fileref="edit-delete.png"
+ format="PNG"/></imageobject
+></inlinemediaobject
+><menuchoice
+><guimenu
+> Правка</guimenu
+> <guimenuitem
+>Удалить</guimenuitem
+> </menuchoice>
+</term>
+<listitem
+><para
+><action
+>Удалить текущий выбранный элемент, убрав его из календаря.</action
+></para
+></listitem>
+</varlistentry>
+
+<varlistentry id="menu-edit-find">
+<term
+><inlinemediaobject
+><imageobject
+><imagedata fileref="edit-find.png"
+ format="PNG"/></imageobject
+></inlinemediaobject
+><menuchoice
+><shortcut
+> <keycombo action="simul"
+>&Ctrl;<keycap
+>F</keycap
+></keycombo
+> </shortcut
+> <guimenu
+> Правка</guimenu
+> <guimenuitem
+>Найти...</guimenuitem
+> </menuchoice>
+</term>
+<listitem
+><para
+>Выбор пункта <guimenuitem
+>Найти...</guimenuitem
+> в меню <guimenu
+>Правка</guimenu
+> или щелчок по значку <guiicon
+>Поиск</guiicon
+> позволяет выполнить <action
+>поиск событий, задач или записей дневника по их названиям, описаниям и/или меткам</action
+>.</para>
+<para
+>Дополнительные сведения доступны в разделе <xref linkend="search-view"/>.</para>
+</listitem>
+</varlistentry>
+</variablelist>
+
+</sect2>
+
+<sect2 id="reference-menus-view">
+<title
+>Вид</title>
+
+<para
+>Для отображения событий, задач и записей дневника существует несколько <quote
+>представлений</quote
+>. &korganizer; сохраняет между сеансами сведения о том, какое представление было активным, и при следующим запуске отображает его же.</para>
+
+<para
+>В целом, каждое представление позволяет просматривать записи дневника, задачи и события в рамках определённого периода времени или стиля отображения. Щёлкните по элементу, чтобы выполнить над ним действие. Если щёлкнуть по элементу <mousebutton
+>правой</mousebutton
+> кнопкой мыши, появится контекстное меню с такими вариантами действий, как <guimenuitem
+>Изменить...</guimenuitem
+>, <guimenuitem
+>Удалить</guimenuitem
+> и так далее. Аналогичные операции возможно выполнить и с помощью меню <guimenu
+>Действия</guimenu
+>.</para>
+
+<variablelist>
+
+<varlistentry id="menu-view-agenda">
+<term
+><inlinemediaobject
+><imageobject
+><imagedata fileref="view-calendar-agenda.png"
+ format="PNG"/></imageobject
+></inlinemediaobject
+><menuchoice
+><guimenu
+>Вид</guimenu
+> <guimenuitem
+>Расписание</guimenuitem
+> </menuchoice
+></term>
+<listitem
+><para
+><action
+>Переключить экран в представление расписания.</action>
+</para>
+<para
+>Дополнительные сведения доступны в разделе <xref linkend="agenda-view"/>.</para>
+</listitem>
+</varlistentry>
+
+<varlistentry id="menu-view-month">
+<term
+><inlinemediaobject
+><imageobject
+><imagedata fileref="view-calendar-month.png"
+ format="PNG"/></imageobject
+></inlinemediaobject
+><menuchoice
+><guimenu
+>Вид</guimenu
+> <guimenuitem
+>Месяц</guimenuitem
+> </menuchoice
+></term>
+<listitem
+><para
+><action
+>Переключить экран в представление месяца.</action>
+</para>
+<para
+>Дополнительные сведения доступны в разделе <xref linkend="month-view"/>.</para>
+</listitem>
+</varlistentry>
+
+<varlistentry id="menu-view-timeline">
+<term
+><inlinemediaobject
+><imageobject
+><imagedata fileref="view-calendar-timeline.png"
+ format="PNG"/></imageobject
+></inlinemediaobject
+><menuchoice
+><guimenu
+>Вид</guimenu
+> <guimenuitem
+>Шкала времени</guimenuitem
+> </menuchoice
+></term>
+<listitem
+><para
+><action
+>Переключить экран в представление шкалы времени.</action>
+</para>
+<para
+>Дополнительные сведения доступны в разделе <xref linkend="timeline-view"/>.</para>
+</listitem>
+</varlistentry>
+
+<varlistentry id="menu-view-todo">
+<term
+> <inlinemediaobject
+><imageobject
+><imagedata
+ fileref="view-calendar-tasks.png"
+format="PNG"/></imageobject
+></inlinemediaobject
+><menuchoice
+><guimenu
+>Вид</guimenu
+> <guimenuitem
+>Задачи</guimenuitem
+></menuchoice>
+ </term>
+<listitem
+><para
+><action
+>Переключить экран в представление списка задач.</action
+></para>
+<para
+>Дополнительные сведения доступны в разделе <xref linkend="todo-view"/>.</para>
+</listitem>
+</varlistentry>
+
+<varlistentry id="menu-view-list">
+<term
+><inlinemediaobject
+><imageobject
+><imagedata fileref="view-calendar-list.png"
+ format="PNG"/></imageobject
+></inlinemediaobject
+><menuchoice
+><guimenu
+> Вид</guimenu
+><guimenuitem
+>События</guimenuitem
+></menuchoice>
+</term>
+<listitem
+><para
+><action
+>Переключить экран в представление списка событий.</action
+></para>
+<para
+>Дополнительные сведения доступны в разделе <xref linkend="list-view"/>.</para>
+</listitem>
+</varlistentry>
+
+<varlistentry id="menu-view-whatsnext">
+<term
+><inlinemediaobject
+><imageobject
+><imagedata fileref="view-calendar-upcoming-events.png"
+ format="PNG"/></imageobject
+></inlinemediaobject
+><menuchoice
+><guimenu
+> Вид</guimenu
+><guimenuitem
+>Что дальше</guimenuitem
+></menuchoice>
+</term>
+<listitem
+><para
+><action
+>Переключить экран в представление списка дальнейших событий и задач.</action
+></para>
+<para
+>В этом режиме показаны предстоящие события и задачи. Все события и задачи отображаются в отдельных строках.</para>
+<para
+>Дополнительные сведения доступны в разделе <xref linkend="whatsnext-view"/>.</para>
+</listitem>
+</varlistentry>
+
+<varlistentry id="menu-view-journal">
+<term
+><inlinemediaobject
+><imageobject
+><imagedata
+ fileref="journal-new.png"
+format="PNG"/></imageobject
+></inlinemediaobject
+><menuchoice
+><guimenu
+>Вид</guimenu
+> <guimenuitem
+>Дневник</guimenuitem
+> </menuchoice>
+</term>
+<listitem
+><para
+><action
+>Переключить экран в представление дневника.</action
+></para>
+<para
+>Дополнительные сведения доступны в разделе <xref linkend="journal-view"/>.</para
+></listitem>
+</varlistentry>
+
+<varlistentry id="menu-view-update">
+<term
+><menuchoice
+><guimenu
+>Вид</guimenu
+> <guimenuitem
+>Обновить</guimenuitem
+> </menuchoice
+></term>
+<listitem
+><para>
+<action
+>Обновить или перезагрузить текущее представление.</action>
+</para
+></listitem>
+</varlistentry>
+
+<varlistentry id="menu-view-zoom">
+<term
+><menuchoice
+><guimenu
+>Вид</guimenu
+><guisubmenu
+>Масштаб</guisubmenu
+></menuchoice
+></term>
+<listitem
+><para
+><action
+>Это подменю позволяет настроить текущее представление на отображение большего или меньшего количества данных.</action
+></para>
+<para
+>Представление расписания (то есть представление одного или нескольких дней или недели) возможно масштабировать для отображения большего или меньшего количества дней (<menuchoice
+><guisubmenu
+>Масштаб</guisubmenu
+> <guimenuitem
+>Увеличить по ширине</guimenuitem
+></menuchoice
+> и <menuchoice
+><guisubmenu
+>Масштаб</guisubmenu
+> <guimenuitem
+>Уменьшить по ширине</guimenuitem
+></menuchoice
+>) или большего или меньшего количества часов в дне (<menuchoice
+><guisubmenu
+>Масштаб</guisubmenu
+> <guimenuitem
+>Увеличить по высоте</guimenuitem
+></menuchoice
+> и <menuchoice
+><guisubmenu
+>Масштаб</guisubmenu
+> <guimenuitem
+>Уменьшить по высоте</guimenuitem
+></menuchoice
+>).</para
+></listitem>
+</varlistentry>
+
+<varlistentry id="menu-view-filter">
+<term
+><menuchoice
+><guimenu
+>Вид</guimenu
+> <guisubmenu
+>Применить фильтр</guisubmenu
+> </menuchoice
+></term>
+<listitem
+><para
+>Это подменю предоставляет доступ к существующим фильтрам путём открытия диалога <link linkend="menu-settings-edit-filters"
+><guilabel
+>Редактирование фильтров календаря</guilabel
+></link
+>. <action
+>Выберите фильтр, который будет использован для представления &korganizer;</action
+>. Если фильтр не требуется, выберите <guilabel
+>Показать все</guilabel
+>.</para
+></listitem>
+</varlistentry>
+
+</variablelist>
+
+</sect2>
+
+<sect2 id="reference-menus-go">
+<title
+>Переход</title>
+
+<para
+>Дополнительные сведения о просмотре представлений &korganizer; доступны в разделе <xref linkend="description-view"/>.</para>
+
+<variablelist>
+<varlistentry id="menu-go-previous-day">
+<term
+><inlinemediaobject
+><imageobject
+><imagedata fileref="go-previous.png"
+format="PNG"/></imageobject
+></inlinemediaobject
+><menuchoice
+><guimenu
+> Переход</guimenu
+><guimenuitem
+>Назад</guimenuitem
+></menuchoice>
+</term>
+<listitem
+><para
+><action
+>Перейти к предыдущему дню, неделе или месяцу, в зависимости от текущего представления.</action
+></para
+></listitem>
+</varlistentry>
+
+<varlistentry id="menu-go-next-day">
+<term
+><inlinemediaobject
+><imageobject
+><imagedata fileref="go-next.png"
+ format="PNG"/></imageobject
+></inlinemediaobject
+><menuchoice
+><guimenu
+> Переход</guimenu
+><guimenuitem
+>Вперёд</guimenuitem
+></menuchoice>
+</term>
+<listitem
+><para
+><action
+>Перейти к следующему дню, неделе или месяцу, в зависимости от текущего представления.</action
+></para
+></listitem>
+</varlistentry>
+
+<varlistentry id="menu-go-goto-today">
+<term
+><inlinemediaobject
+><imageobject
+><imagedata fileref="go-jump-today.png"
+format="PNG"/></imageobject
+></inlinemediaobject
+><menuchoice
+><guimenu
+> Переход</guimenu
+><guimenuitem
+>Сегодня</guimenuitem
+></menuchoice>
+</term>
+<listitem
+><para
+><action
+>Перейти к периоду времени, который включает текущую дату.</action
+></para
+></listitem>
+</varlistentry>
+
+<varlistentry id="menu-view-day">
+<term
+><inlinemediaobject
+><imageobject
+><imagedata fileref="go-jump-today.png"
+ format="PNG"/></imageobject
+></inlinemediaobject
+><menuchoice
+><guimenu
+> Переход</guimenu
+><guimenuitem
+>День</guimenuitem
+></menuchoice>
+</term>
+<listitem
+><para
+><action
+>Переключить экран в представление дня.</action
+></para>
+<para
+>Дополнительные сведения доступны в разделе <xref linkend="agenda-view"/>.</para>
+</listitem>
+</varlistentry>
+
+<varlistentry id="menu-view-xdays">
+<term
+><inlinemediaobject
+><imageobject
+><imagedata fileref="view-calendar-upcoming-days.png"
+ format="PNG"/></imageobject
+></inlinemediaobject
+><menuchoice
+><guimenu
+> Переход</guimenu
+><guimenuitem
+>Следующие x дней</guimenuitem
+></menuchoice>
+</term>
+<listitem
+><para
+><action
+>Переключить экран в представление следующих «х» дней («х» определяется основными установками &korganizer;).</action
+></para>
+<para
+>Дополнительные сведения доступны в разделе <xref linkend="agenda-view"/>.</para>
+</listitem>
+</varlistentry>
+
+<varlistentry id="menu-view-workweek">
+<term
+><inlinemediaobject
+><imageobject
+><imagedata
+ fileref="view-calendar-workweek.png"
+format="PNG"/></imageobject
+></inlinemediaobject
+><menuchoice
+><guimenu
+>Переход</guimenu
+><guimenuitem
+>Рабочая неделя</guimenuitem
+></menuchoice>
+</term>
+<listitem
+><para
+><action
+>Переключить экран в представление рабочей недели.</action
+></para>
+<para
+>Аналогично представлению недели, но содержит только рабочие дни.</para>
+<para
+>Дополнительные сведения доступны в разделе <xref linkend="agenda-view"/>.</para>
+</listitem>
+</varlistentry>
+
+<varlistentry id="menu-view-week">
+<term
+><inlinemediaobject
+><imageobject
+><imagedata fileref="view-calendar-week.png"
+ format="PNG"/></imageobject
+></inlinemediaobject
+><menuchoice
+><guimenu
+> Переход</guimenu
+> <guimenuitem
+>Неделя</guimenuitem
+></menuchoice>
+</term>
+<listitem
+><para
+><action
+>Переключить экран в представление недели.</action
+></para>
+<para
+>Представление недели очень похоже на представление дня. События семи дней отображаются рядом друг с другом. Все функции, доступные в представлении дня, также работают и в представлении недели.</para>
+<para
+>Дополнительные сведения доступны в разделе <xref linkend="agenda-view"/>.</para
+></listitem>
+</varlistentry>
+
+</variablelist>
+
+</sect2>
+
+<sect2 id="reference-menus-actions">
+<title
+>Действия</title>
+
+<variablelist>
+<varlistentry id="menu-actions-new-event">
+<term
+><inlinemediaobject
+><imageobject
+><imagedata fileref="appointment-new.png"
+format="PNG"/></imageobject
+></inlinemediaobject
+><menuchoice
+><guimenu
+>Действия</guimenu
+> <guimenuitem
+>Создать событие...</guimenuitem
+> </menuchoice>
+</term>
+<listitem
+><para
+>Чтобы <action
+>создать новое событие</action
+>, выберите пункт меню <guilabel
+>Создать событие...</guilabel
+>.</para>
+<para
+>Подробное описание окна события доступно в разделе <link linkend="entering-data-events"
+>Создание событий</link
+>.</para
+></listitem>
+</varlistentry>
+
+<varlistentry id="menu-actions-new-todo">
+<term
+><inlinemediaobject
+><imageobject
+><imagedata fileref="view-task.png"
+format="PNG"/></imageobject
+></inlinemediaobject
+><menuchoice
+><guimenu
+>Действия</guimenu
+> <guimenuitem
+>Создать задачу...</guimenuitem
+> </menuchoice>
+</term>
+<listitem
+><para
+>Чтобы <action
+>создать новую задачу</action
+>, выберите пункт меню <guilabel
+>Создать задачу...</guilabel
+>. При необходимости для задачи возможно указать дату завершения.</para>
+<para
+>Подробное описание окна задач доступно в разделе <link linkend="entering-data-to-do"
+>Создание задач</link
+>.</para
+></listitem>
+</varlistentry>
+
+<varlistentry id="menu-actions-new-subtodo">
+<term
+><menuchoice
+><guimenu
+>Действия</guimenu
+> <guimenuitem
+>Создать подзадачу...</guimenuitem
+> </menuchoice
+></term>
+<listitem
+><para
+>Пункт меню <guilabel
+>Создать подзадачу...</guilabel
+> позволяет <action
+>начать создание новой подзадачи. Текущая выбранная задача используется в качестве родительской</action
+>. При необходимости для задачи возможно указать дату завершения.</para>
+<para
+>Подробное описание окна задач доступно в разделе <link linkend="entering-data-to-do"
+>Создание задач</link
+>.</para
+></listitem>
+</varlistentry>
+
+<varlistentry id="menu-actions-new-journal">
+<term
+><inlinemediaobject
+><imageobject
+><imagedata fileref="journal-new.png"
+format="PNG"/></imageobject
+></inlinemediaobject
+><menuchoice
+><guimenu
+>Действия</guimenu
+> <guimenuitem
+>Создать запись в дневнике...</guimenuitem
+> </menuchoice
+></term>
+<listitem
+><para
+>Пункт меню <guilabel
+>Создать запись в дневнике...</guilabel
+> позволяет <action
+>начать создание новой записи дневника</action
+>.</para
+></listitem>
+</varlistentry>
+
+<varlistentry id="menu-actions-show-event">
+<term
+><menuchoice
+><guimenu
+>Действия</guimenu
+> <guimenuitem
+>Просмотреть событие...</guimenuitem
+> </menuchoice
+></term>
+<listitem
+><para
+>Пункт меню <guilabel
+>Просмотреть событие...</guilabel
+> позволяет <action
+>открыть диалоговое окно со сведениями о текущей выбранной записи дневника, событии или задаче.</action
+></para
+></listitem>
+</varlistentry>
+
+<varlistentry id="menu-actions-edit-event">
+<term
+><menuchoice
+><guimenu
+>Действия</guimenu
+> <guimenuitem
+>Изменить событие...</guimenuitem
+> </menuchoice
+></term>
+<listitem
+><para
+>Пункт меню <guilabel
+>Изменить событие...</guilabel
+> позволяет <action
+>изменить текущую выбранную запись дневника, событие или задачу.</action
+></para
+></listitem>
+</varlistentry>
+
+<varlistentry id="menu-actions-delete-event">
+<term
+><menuchoice
+><shortcut
+> &Del; </shortcut
+> <guimenu
+>Действия</guimenu
+> <guimenuitem
+>Удалить событие</guimenuitem
+> </menuchoice
+></term>
+<listitem
+><para
+>Пункт меню <guilabel
+>Удалить событие</guilabel
+> позволяет <action
+>удалить текущую выбранную запись дневника, событие или задачу.</action
+></para
+></listitem>
+</varlistentry>
+
+<varlistentry id="menu-actions-make-subtodo-independent">
+<term
+><menuchoice
+><guimenu
+>Действия</guimenu
+> <guimenuitem
+>Сделать подзадачу самостоятельной</guimenuitem
+> </menuchoice
+></term>
+<listitem
+><para
+>Пункт меню <guilabel
+>Сделать подзадачу самостоятельной</guilabel
+> позволяет отделить текущую выбранную подзадачу от родительской задачи и сделать её независимым элементом списка задач.</para
+></listitem>
+</varlistentry>
+
+</variablelist>
+
+</sect2>
+
+<sect2 id="reference-menus-schedule">
+<title
+>Расписание</title>
+
+<variablelist>
+
+<varlistentry id="menu-schedule-publish">
+<term
+><menuchoice
+><guimenu
+>Расписание</guimenu
+> <guimenuitem
+>Опубликовать сведения...</guimenuitem
+> </menuchoice
+></term>
+<listitem
+><para
+>Направить выбранное событие, задачу или запись дневника по электронной почте в формате iCalendar.</para>
+<para
+>Дополнительные сведения доступны в разделе <xref linkend="publish"/>.</para
+></listitem>
+</varlistentry>
+
+<varlistentry id="menu-schedule-request">
+<term
+><menuchoice
+><guimenu
+>Расписание</guimenu
+> <guimenuitem
+>Направить уведомления</guimenuitem
+> </menuchoice
+></term>
+<listitem
+><para
+>Направить сведения о выбранной задаче или событии участникам и (если требуется) запросить ответ.</para>
+<para
+>Дополнительные сведения доступны в разделе <xref linkend="request"/>.</para
+></listitem>
+</varlistentry>
+
+<varlistentry id="menu-schedule-reply">
+<term
+><menuchoice
+><guimenu
+>Расписание</guimenu
+> <guimenuitem
+>Направить обновление статуса</guimenuitem
+> </menuchoice
+></term>
+<listitem
+><para
+>Если произошли изменения в состоянии участия («принято», «принято предварительно» и так далее), с помощью этого пункта о них возможно сообщить организатору события.</para>
+<para
+>Дополнительные сведения доступны в разделе <xref linkend="reply"/>.</para
+></listitem>
+</varlistentry>
+
+<varlistentry id="menu-schedule-cancel">
+<term
+><menuchoice
+><guimenu
+>Расписание</guimenu
+> <guimenuitem
+>Направить уведомления об отмене</guimenuitem
+> </menuchoice
+></term>
+<listitem
+><para
+>Если требуется отменить событие или задачу, выделите её и затем выберите этот пункт меню, чтобы сообщить участникам об отмене.</para>
+<para
+>Дополнительные сведения доступны в разделе <xref linkend="cancel"/>.</para
+></listitem>
+</varlistentry>
+
+<varlistentry id="menu-schedule-refresh">
+<term
+><menuchoice
+><guimenu
+>Расписание</guimenu
+> <guimenuitem
+>Запросить обновление</guimenuitem
+> </menuchoice
+></term>
+<listitem
+><para
+>Запросить последнюю версию сведений о выбранном событии или задаче у организатора.</para>
+<para
+>Дополнительные сведения доступны в разделе <xref linkend="refresh"/>.</para
+></listitem>
+</varlistentry>
+
+<varlistentry id="menu-schedule-counter">
+<term
+><menuchoice
+><guimenu
+>Расписание</guimenu
+> <guimenuitem
+>Требуются изменения</guimenuitem
+> </menuchoice
+></term>
+<listitem
+><para
+>Направить альтернативное предложение организатору выбранного события или задачи. </para>
+<para
+>Дополнительные сведения доступны в разделе <xref linkend="counter"/>.</para
+></listitem>
+</varlistentry>
+
+<!--varlistentry id="menu-schedule-mail-icalendar">
+<term
+><menuchoice>
+<guimenu
+>Schedule</guimenu>
+<guimenuitem
+>Send as iCalendar...</guimenuitem>
+</menuchoice
+></term>
+<listitem
+><para
+>.</para>
+<para
+>For more information about this action, please refer to
+<xref linkend="????"/>.</para
+></listitem>
+</varlistentry-->
+
+<varlistentry id="menu-schedule-mail-freebusy">
+<term
+><menuchoice
+><guimenu
+>Расписание</guimenu
+> <guimenuitem
+>Отправить сведения о занятом времени по почте...</guimenuitem
+> </menuchoice
+></term>
+<listitem
+><para
+>Направить сведения о занятом времени по одному или нескольким адресам электронной почты.</para>
+<para
+>Дополнительные сведения доступны в разделе <xref linkend="free-busy"/>.</para
+></listitem>
+</varlistentry>
+
+<varlistentry id="menu-schedule-upload-freebusy">
+<term
+><menuchoice
+><guimenu
+>Расписание</guimenu
+> <guimenuitem
+>Опубликовать информацию о занятом времени</guimenuitem
+> </menuchoice
+></term>
+<listitem
+><para
+>Отправить сведения о занятом времени на сервер совместной работы, чтобы их могли получить другие пользователи.</para>
+<para
+>Дополнительные сведения доступны в разделе <xref linkend="free-busy"/>.</para
+></listitem>
+</varlistentry>
+
+</variablelist>
+
+</sect2>
+
+<sect2 id="reference-menus-settings-help">
+<title
+>Настройка и справка</title>
+
+<para
+>Помимо стандартных меню &kde;, описание которых приведено в главе <ulink url="help:/fundamentals/menus.html"
+>Меню</ulink
+> раздела справки «Основы &kde;», в &korganizer; имеются следующие специфичные для этого приложения пункты меню «Настройка» и «Справка»: </para>
+
+<variablelist>
+
+<varlistentry id="menu-settings-sidebar">
+<term
+><menuchoice
+><guimenu
+>Настройка</guimenu
+> <guisubmenu
+>Боковая панель</guisubmenu
+> </menuchoice
+></term>
+<listitem
+><para
+><action
+>Чтобы показать или скрыть компоненты боковой панели &korganizer; следует установить или снять соответствующие флажки пунктов этого подменю</action
+>. Обратите внимание, что боковая панель видна только в том случае, если <link linkend="config-main-views"
+>под текущее представление не выделено всё пространство.</link
+></para
+></listitem>
+</varlistentry>
+
+<varlistentry id="menu-settings-configure-date-time">
+<term
+><menuchoice
+><guimenu
+>Настройка</guimenu
+> <guimenuitem
+>Параметры времени и дат...</guimenuitem
+> </menuchoice
+></term>
+<listitem
+><para
+><action
+>Этот пункт меню позволяет настроить формат даты и времени</action
+>. Обратите внимание, что этот параметр совместно используется классическими приложениями.</para
+></listitem>
+</varlistentry>
+
+<varlistentry id="menu-settings-edit-filters">
+<term
+><menuchoice
+><guimenu
+>Настройка</guimenu
+> <guisubmenu
+>Фильтры...</guisubmenu
+> </menuchoice
+></term>
+<listitem
+><para
+><action
+>Этот пункт меню позволяет открыть диалоговое окно <guilabel
+>Редактирование фильтров календаря</guilabel
+></action
+>, с помощью которого возможно создавать, удалять и изменять фильтры для управления отображением элементов в &korganizer;.</para
+></listitem>
+</varlistentry>
+
+<varlistentry id="menu-settings-edit-categories">
+<term
+><menuchoice
+><guimenu
+>Настройка</guimenu
+> <guimenuitem
+>Метки событий...</guimenuitem
+> </menuchoice
+></term>
+<listitem
+><para
+><action
+>Этот пункт меню позволяет открыть диалоговое окно <guilabel
+>Редактор меток</guilabel
+></action
+>, с помощью которого возможно создавать, удалять и изменять метки элементов календаря. Метки используются для организации событий и задач по группам.</para
+></listitem>
+</varlistentry>
+
+</variablelist>
+
+</sect2>
+
+</sect1>
+
+</chapter>
+
+<chapter id="other-features"
+>  <!--updated to 5.4.40-->
+<title
+>Другие возможности</title>
+
+<para
+>В этой главе приводится описание других полезных возможностей &korganizer;, которые можно задействовать одним щелчком мыши.</para>
+
+<sect1 id="other-features-commandline-options">
+<title
+>Командная строка</title>
+
+<para
+>Для работы с календарём из командной строки воспользуйтесь утилитой konsolekalendar.</para>
+
+</sect1>
+
+<sect1 id="other-features-drag-and-drop">
+<title
+>Операции перетаскивания</title>
+
+<para
+>Программой &korganizer; легко управлять с помощью мыши. Описание поддерживаемых операций перетаскивания приведено далее.</para>
+
+<itemizedlist>
+<listitem
+><para
+>С помощью мыши возможно изменить продолжительность любого события. Просто наведите указатель мыши на верхнюю или нижнюю границу события и перетащите её вверх или вниз. Этот способ наглядного изменения времени начала и окончания события работает в представлениях дня, недели и рабочей недели.</para
+></listitem>
+<listitem
+><para
+>С помощью мыши возможно перепланировать любое событие. Наведите указатель мыши на событие и перетащите его на новое время. Это работает в представлениях дня, недели и рабочей недели.</para
+></listitem>
+<listitem
+><para
+>События возможно скопировать на те даты, которые не показаны на экране.Для этого наведите указатель мыши на событие и перетащите его на нужную дату в навигаторе дат, расположенном слева от текущего календаря, или на дату в навигаторе дат другого календаря.</para>
+<tip
+><para
+>Тем не менее, события не получится перетащить из представления расписания одного календаря в представление расписания другого календаря.</para
+></tip
+></listitem>
+<listitem
+><para
+>Панели инструментов возможно перетаскивать по экрану. Наведите указатель мыши на заголовок панели и перетащите её на новое место.</para
+></listitem>
+</itemizedlist>
+
+</sect1>
+
+</chapter>
+
+<chapter id="faq">
+<title
+>Вопросы и ответы</title
+> <!-- link to userbase faq? -->
+
+<qandaset id="faq-questions">
+<qandaentry>
+<question>
+<para
+>Возможно ли планировать в &korganizer; свободное и занятое время?</para>
+</question>
+<answer
+><para
+>Да, следуйте инструкциям в разделе о <link linkend="config-main-free-busy"
+>занятом времени</link
+>.</para>
+</answer>
+</qandaentry>
+</qandaset>
+
+</chapter>
+
+<chapter id="credits">
+<title
+>Авторские права и лицензия</title>
+
+<para
+>&korganizer;</para>
+
+<para
+>Авторские права на программу © Разработчики &kde;, 2000—2010</para>
+
+<para
+>Участники:</para>
+
+<itemizedlist>
+  <listitem
+><para
+>Allen Winter <email
+>winter@kde.org</email
+></para>
+</listitem>
+<listitem
+><para
+>Reinhold Kainhofer <email
+>reinhold@kainhofer.com</email
+></para>
+</listitem>
+<listitem
+><para
+>&Cornelius.Schumacher; &Cornelius.Schumacher.mail;</para>
+</listitem>
+<listitem
+><para
+>&Preston.Brown; &Preston.Brown.mail;</para>
+</listitem>
+</itemizedlist>
+
+<para
+>Документация © &Milos.Prudek;, 2000</para>
+<para
+>Документация © Paul E. Ahlquist, Jr <email
+>&Paul.E.Ahlquist.Jr.mail;</email
+>, 2001</para>
+<para
+>Документация © J&uuml;rgen Nagel <email
+>juergen.nagel@student.fh-reutlingen.de</email
+>, 2004</para>
+<para
+>Документация © Carlos Leonhard Woelz <email
+>carloswoelz@imap-mail.com</email
+>, 2005</para>
+
+<para
+>Перевод на русский язык &mdash; Олег Баталов <email
+>olegbatalov@mail.ru</email
+></para
+> <para
+>Редакция перевода &mdash; Николай Шафоростов <email
+>shaforostoff@users.sourceforge.net</email
+></para
+> <para
+>Обновление перевода на русский язык &mdash; Олеся Герасименко <email
+>translation-team@basealt.ru</email
+></para
+> &underFDL; &underGPL; </chapter>
+
+<glossary id="glossary">
+<title
+>Глоссарий</title>
+
+<glossentry id="gloss-calendar-widget">
+<glossterm
+>Элемент календарь</glossterm>
+<glossdef>
+
+<para
+>Инструмент для выбора даты в окнах некоторых записей (например, окна изменения события). Он отображается как небольшая кнопка справа от поля даты. При нажатии этой кнопки будет показан календарь месяца. С помощью кнопок со стрелками возможно перейти к необходимой дате, а при щелчке по названию месяца или номеру года — непосредственно к необходимому месяцу или году.</para>
+
+</glossdef>
+</glossentry>
+
+<glossentry id="gloss-date-navigator">
+<glossterm
+>Навигатор по датам</glossterm>
+<glossdef>
+
+<para
+>Календарь, расположенный в верхнем левом углу окна &korganizer;, позволяет перемещаться по датам и выбирать их. Значки с одинарными стрелками позволяют перемещаться назад и вперёд на месяц, а значки с двойными стрелками — на год. Текущая дата выделена рамкой. Даты, на которые запланированы события, выделяются полужирным шрифтом. Чтобы выбрать дату, просто щёлкните по ней. Чтобы выбрать для отображения на главной панели несколько последовательных дат, удерживайте клавишу &Ctrl; при щелчках по ним.</para>
+
+<para
+>Повторяющиеся события отображаются не всегда. Возможно отключить показ повторяющихся событий в навигаторе по датам. Подробные сведения доступны в <link linkend="config-main-views"
+>главе «Представления»</link
+>.</para>
+
+</glossdef>
+</glossentry>
+
+<glossentry id="gloss-due-date">
+<glossterm
+>Дата завершения</glossterm>
+<glossdef>
+
+<para
+>Дата завершения &mdash; это просто дата, к которой задача должна быть выполнена. Например, если задача — вернуть книги в библиотеку до 16 ноября, эта дата будет <quote
+>датой завершения задачи</quote
+>.</para>
+
+</glossdef>
+</glossentry>
+
+<!--<glossentry id="gloss-group-scheduling">
+<glossterm
+>Group scheduling features</glossterm>
+<glossdef>
+
+<para
+>These features are planned for the future versions of &korganizer;. Group
+scheduling will facilitate member roles (attendee, owner, organizer), time
+conflict resolution, event reminder distribution, response collection and
+evaluation. In other words, you will be able to appoint attendees, invite them
+automatically, and see who accepted or refused attending the appointment.</para>
+
+<para
+>Currently, group scheduling features are not working. However, hooks exist
+in the calendar data structures for these features. <guilabel
+>Private</guilabel>
+check box, <guilabel
+>Require response</guilabel
+> check box and
+<guilabel
+>E-mail</guilabel
+> field will then be fully employed. These controls
+are described in more detail in <link linkend="entering-data"
+>Entering
+Data</link
+> chapter, in the <link
+linkend="entering-data-events-attendees"
+>Attendees section</link
+> of Windows
+reference, and in the <link linkend="config-main-personal"
+>Personal
+Preferences</link
+> section.</para>
+
+</glossdef>
+</glossentry>
+-->
+<glossentry id="gloss-main-panel">
+<glossterm
+>Главная панель</glossterm>
+<glossdef>
+<para
+>Обычно это наибольшая часть окна, расположенная справа от навигатора по датам. Она содержит представление дня, рабочих дней, недели или месяца, событий или задач.</para>
+<para
+>Правую кнопку мыши возможно использовать только в представлении событий и представлении задач. Она вызывает контекстное меню. Левую кнопку мыши возможно использовать в любом представлении.</para>
+</glossdef>
+</glossentry>
+
+<glossentry id="gloss-freebusy">
+<glossterm
+>Занятое время</glossterm>
+<glossdef>
+<para
+>Сведения о занятом времени представляют собой набор интервалов занятого времени. Получив эти сведения, другие люди смогут принять их во внимание при составлении планов. Обратите внимание, что публикуются только временные интервалы, а не названия событий, их описание или список участников. Иными словами, сведения о занятом времени — это график пользователя.</para>
+<para
+>Перед отправкой приглашений необходимо узнать, свободны ли участники события в указанное время. Если участники публикуют сведения о своей занятости, эту информацию возможно получить с помощью &korganizer;; она будет отображена в диалоговом окне <guilabel
+>изменения события</guilabel
+>, на вкладке <guilabel
+>доступности</guilabel
+>.</para>
+</glossdef>
+</glossentry>
+
+<!--FIXME: remove this or transform in glossary items
+
+<sect1 id="course-event-types">
+<title
+>Calendar Item Types</title>
+
+<para
+>There are three types of items:</para>
+
+<itemizedlist>
+<listitem
+><para
+>Events start and finish at distinct date. You can also specify
+distinct start and finish times, but you do not have to. While business
+meetings, personal anniversaries and cinema visits are examples of carefully
+planned events with exact time scheduling, a holiday is an event that takes
+several days and thus there is no need to specify exact start and finish
+times.</para
+></listitem>
+
+<listitem
+><para
+>To-do's must take place no later than a
+certain date, but they can also take place sooner.</para
+></listitem>
+</itemizedlist>
+
+<para
+>Naturally, what began as a To-do may later require exact timing.
+Say it is July 1 and you need to go to a hairdresser within a week.
+On July 3 you talk to your hairdresser and agree on an exact time. Thus the
+original To-do becomes similar to an appointment. </para>
+
+<para
+>&korganizer; makes adding exact time to a To-do very easy. If you
+check the <guilabel
+>Due</guilabel
+> check box and/or the <guilabel
+>Start</guilabel>
+check box you can specify the appropriate dates, when you check the
+<guilabel
+>Time associated</guilabel
+> check box and fill in the associated times, your
+To-do becomes very similar to an event.</para>
+
+</sect1>
+
+-->
+
+</glossary>
+
+&documentation.index;
+
+</book>
+<!--
+Local Variables:
+mode: sgml
+sgml-minimize-attributes:nil
+sgml-general-insert-case:lower
+sgml-indent-step:0
+sgml-indent-data:nil
+End:
+
+// vim:ts=2:sw=2:tw=78:noet
+-->

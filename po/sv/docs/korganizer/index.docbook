@@ -1,0 +1,5702 @@
+<?xml version="1.0" ?>
+<!DOCTYPE book PUBLIC "-//KDE//DTD DocBook XML V4.5-Based Variant V1.1//EN"
+ "dtd/kdedbx45.dtd" [
+  <!ENTITY % addindex "IGNORE">
+  <!ENTITY % Swedish "INCLUDE">
+]>
+
+<book id="korganizer" lang="&language;">
+
+<bookinfo>
+
+<title
+>Handbok Filofax</title>
+
+<authorgroup>
+
+<author
+><firstname
+>Carlos</firstname
+> <othername
+>Leonhard</othername
+> <surname
+>Woelz</surname
+> <affiliation
+><address
+><email
+>carloswoelz@imap-mail.com</email
+></address
+></affiliation>
+</author>
+
+<author
+>&Milos.Prudek; &Milos.Prudek.mail; </author>
+
+<author
+>&Paul.E.Ahlquist.Jr; &Paul.E.Ahlquist.Jr.mail; </author>
+
+<author
+><firstname
+>J&uuml;rgen</firstname
+> <surname
+>Nagel</surname
+> <affiliation
+><address
+><email
+>juergen.nagel@student.fh-reutlingen.de</email
+></address
+></affiliation>
+</author>
+
+<author
+>&Michel.Boyer; &Michel.Boyer.mail; </author>
+
+<othercredit role="developer"
+><firstname
+>Reinhold</firstname
+> <surname
+>Kainhofer</surname
+> <affiliation
+><address
+><email
+>reinhold@kainhofer.com</email
+></address
+></affiliation>
+<contrib
+>Utvecklare</contrib>
+</othercredit>
+
+<othercredit role="developer"
+><firstname
+>Cornelius</firstname
+> <surname
+>Schumacher</surname
+> <affiliation
+><address
+>&Cornelius.Schumacher.mail;</address
+></affiliation>
+<contrib
+>Utvecklare</contrib>
+</othercredit>
+
+<othercredit role="developer"
+><firstname
+>Preston</firstname
+> <surname
+>Brown</surname
+> <affiliation
+><address
+>&Preston.Brown.mail;</address
+></affiliation>
+<contrib
+>Utvecklare</contrib>
+</othercredit>
+
+<othercredit role="reviewer"
+><firstname
+>Lauri</firstname
+> <surname
+>Watts</surname
+> <affiliation
+><address
+>&Lauri.Watts.mail;</address
+></affiliation>
+<contrib
+>Granskare</contrib>
+</othercredit>
+
+<othercredit role="translator"
+> <firstname
+>Stefan</firstname
+> <surname
+>Asserhäll</surname
+> <affiliation
+><address
+><email
+>stefan.asserhall@bredband.net</email
+></address
+></affiliation
+> <contrib
+>Översättare</contrib
+></othercredit
+> 
+</authorgroup>
+
+
+
+<copyright>
+<year
+>2000</year
+><holder
+>&Milos.Prudek;</holder>
+</copyright>
+
+<copyright>
+<year
+>2001</year>
+<holder
+>&Paul.E.Ahlquist.Jr;</holder>
+</copyright>
+
+<copyright>
+<year
+>2004</year>
+<holder
+>J&uuml;rgen Nagel</holder>
+</copyright>
+
+<copyright>
+<year
+>2005</year>
+<holder
+>Carlos Leonhard Woelz</holder>
+</copyright>
+
+<legalnotice
+>&FDLNotice;</legalnotice>
+
+<date
+>2016-12-08</date>
+<releaseinfo
+>5.4.40 (Program 16.12)</releaseinfo>
+
+<abstract
+><para
+>&korganizer; är en lättanvänd filofax. Du kan skriva journalanteckningar, schemalägga möten, händelser och uppgifter. &korganizer; påminner dig om förestående aktiviteter och hjälper dig hålla ditt schema. </para
+></abstract>
+
+<keywordset>
+<keyword
+>KDE</keyword>
+<keyword
+>KOrganizer</keyword>
+<keyword
+>kdepim</keyword>
+<keyword
+>hanterare</keyword>
+<keyword
+>tid</keyword>
+<keyword
+>schema</keyword>
+<keyword
+>påminnelse</keyword>
+<keyword
+>möte</keyword>
+<keyword
+>händelse</keyword>
+<keyword
+>journal</keyword>
+<keyword
+>uppgift</keyword>
+</keywordset>
+
+</bookinfo>
+
+<chapter id="introduction"
+><!--updated to 5.4.40-->
+<title
+>Inledning</title>
+
+<para
+>&korganizer; är en intuitiv och lättanvänd filofax. Du kan schemalägga möten, händelser, skapa uppgifter och skriva journalanteckningar. &korganizer; påminner dig om förestående aktiviteter, registrerar tilldragelser, erfarenheter och funderingar, och hjälper dig hålla ditt schema.</para>
+
+<para
+>Men &korganizer; handlar inte bara om din egen personliga kalender, den kan också hjälpa dig att samarbeta med dina kolleger och vänner. Med &korganizer; kan du bjuda in vem som helst med en e-postadress till en händelse och hantera svar, dela en kalender (med en grupprogramserver eller helt enkelt en fil över nätverket), och dela händelser (t.ex. schemat för ett mästerskap eller en konferens), genom att använda funktionen för att hämta heta nyheter. &korganizer; är baserat på öppna standarder, och fungerar med många olika servrar för gruppschemaläggning, vilket ger dig kontroll över din information och frihet att välja de bästa lösningarna. </para>
+
+<para
+>&korganizer; är också kalender-, journal- och uppgiftskomponenten i &kontact;, som erbjuder dig en integrerad lösning för dina behov av kommunikation och informationshantering: e-post, anteckningar, kontakthantering, diskussionsgruppsläsare och läsning av nyhetskanaler. Även om du inte använder den inne i &kontact;, är &korganizer; integrerad med andra program för personlig informationshantering i &kde;. Du kan till exempel ställa in den att visa födelsedagar från adressboken i din agenda, använda &kmail; för att skicka och ta emot inbjudningar, etc.</para>
+
+<para
+>Huvudsakliga funktioner i &korganizer;:</para>
+<para
+><itemizedlist>
+<listitem
+><para
+>Skapa uppgifter, schemalägg händelser och skriv journalanteckningar.</para
+></listitem>
+<listitem
+><para
+>Organisera händelser och uppgifter genom att gruppera samhörande objekt med etiketter.</para
+></listitem>
+<listitem
+><para
+>Markera etiketter med färger.</para
+></listitem>
+<listitem
+><para
+>Öppna flera kalendrar, visa och redigera dem på ett smidigt sätt.</para
+></listitem>
+<listitem
+><para
+>Ombokning med drag och släpp.</para
+></listitem>
+<listitem
+><para
+>Skapa enkelt återkommande händelser.</para
+></listitem>
+<listitem
+><para
+>Organisera eller delta i händelser med funktionerna för gruppschemaläggning.</para
+></listitem>
+<listitem
+><para
+>Välj bland ett flertal grupprogramservrar som stöds.</para
+></listitem>
+<listitem
+><para
+>Inbyggt stöd för vCalendar och iCalendar (öppna standarder).</para
+></listitem>
+<listitem
+><para
+>Sammanslagning och import av kalendrar.</para
+></listitem>
+<listitem
+><para
+>Drag och släpp mellan öppna kalendrar.</para
+></listitem>
+<listitem
+><para
+>Samarbeta med &konqueror; som insticksprogram.</para
+></listitem>
+<listitem
+><para
+>Anpassningsbara ikonuppsättningar.</para
+></listitem>
+<listitem
+><para
+>Drag och släpp verktygsrutor.</para
+></listitem>
+<listitem
+><para
+>Mycket mer...</para
+></listitem>
+</itemizedlist
+></para>
+
+
+<para
+>Ta nu en <link linkend="five-minute-course"
+>femminuters översiktskurs</link
+> om &korganizer;, eller gå på djupet i <link linkend="managing-data"
+> dokumentationen</link
+>.</para>
+
+</chapter>
+
+<chapter id="five-minute-course"
+><!--updated to 5.4.40-->
+<title
+>En femminuters översiktskurs om &korganizer;</title>
+<subtitle
+>(för de erfarna och för de otåliga)</subtitle>
+
+<para
+>Ont om tid? Låt oss snabbstarta dig med en snabb, praktisk översikt över &korganizer;!</para>
+
+<para
+>Om du någonsin har arbetat med ett filofaxprogram tidigare, känner du dig säkert som hemma med &korganizer;. Du kan skriva in nya händelser. boka om befintliga händelser, tilldela etiketter till dina händelser, tänka ut nya etiketter, skriva in och ändra listor på deltagare och deras roller, automatiskt e-posta inbjudan till möten och utbyta data med andra &korganizer;-kalendrar, skapa uppgifter och skriva journalanteckningar.</para>
+
+<para
+>Den här kursen förutsätter att du känner till hur man arbetar med &kde;, och att du föredrar att utforska programmet själv. Bara de grundläggande funktionerna i &korganizer; behandlas här.</para>
+
+<sect1 id="course-entering-events">
+<title
+>Skriva in händelser</title>
+
+<procedure>
+<step
+><para
+>Klicka på verktygsknappen <inlinemediaobject
+><imageobject
+> <imagedata fileref="view-calendar-agenda.png" format="PNG"/></imageobject
+> </inlinemediaobject
+><guibutton
+>Agenda</guibutton
+> eller välj menyalternativet <menuchoice
+><guimenu
+>Visa</guimenu
+> <guimenuitem
+>Agenda</guimenuitem
+></menuchoice
+>. Det visar <link linkend="agenda-view"
+><guilabel
+>agendavyn</guilabel
+> </link
+>.</para
+></step>
+
+<step
+><para
+>Klicka på önskat datum i <link linkend="glossary" endterm="gloss-date-navigator"
+>datumnavigatören</link
+>. </para
+></step>
+
+<step
+><para
+>Markera textområdet intill önskad timme i huvudrutan som motsvarar händelsens tid. Dubbelklicka på området, eller börja bara skriva in händelsens sammanfattning för att visa dialogrutan <guilabel
+>Ny händelse</guilabel
+>.</para
+></step>
+
+<step
+><para
+><link linkend="entering-data-events"
+>Skriv in information om händelsen</link
+>. Använd de sex flikarna längst ner i fönstret för att förflytta dig i dialogrutan och komma åt händelsens hela karaktäristik.</para
+></step>
+
+<step
+><para
+>Klicka på <guibutton
+>Ok</guibutton
+> för att spara händelsen.</para
+></step>
+</procedure>
+</sect1>
+
+<sect1 id="course-entering-todos">
+<title
+>Skriva in uppgifter</title>
+
+<procedure>
+<step
+><para
+>Välj menyalternativet <xref linkend="menu-actions-new-todo"/> för att visa dialogrutan <guilabel
+>Ny uppgift</guilabel
+>.</para
+></step>
+
+<step
+><para
+><link linkend="entering-data-events"
+>Skriv in information om uppgiften</link
+>. Använd de fem flikarna längst ner i fönstret för att förflytta dig i dialogrutan och komma åt uppgiftens hela karaktäristik.</para
+></step>
+
+<step
+><para
+>Klicka på <guibutton
+>Ok</guibutton
+> för att spara uppgiften.</para
+></step>
+</procedure>
+
+</sect1>
+
+<sect1 id="course-entering-journals">
+<title
+>Lägga till journalanteckningar</title>
+
+<procedure>
+
+<step
+><para
+>Välj menyalternativet <inlinemediaobject
+><imageobject
+> <imagedata fileref="journal-new.png" format="PNG"/></imageobject
+> </inlinemediaobject
+><menuchoice
+><guimenu
+>Visa</guimenu
+> <guimenuitem
+>Journal</guimenuitem
+></menuchoice
+> för att visa <link linkend="journal-view"
+>huvudvyn för <guilabel
+>journalen</guilabel
+></link
+>.</para
+></step>
+
+<step
+><para
+>Välj menyalternativet <menuchoice
+> <guimenu
+>Händelser</guimenu
+> <guimenuitem
+>Ny journalanteckning</guimenuitem
+> </menuchoice
+>.</para
+></step>
+
+<step
+><para
+>Skriv in journalanteckningens sammanfattning och text.</para
+></step>
+
+</procedure>
+
+</sect1>
+
+<sect1 id="course-rescheduling-events">
+<title
+>Boka om händelser</title>
+
+<para
+>Att boka om händelser är en enkel drag och släpp åtgärd:</para>
+
+<procedure>
+<step
+><para
+>Gå till datumet för händelsen som du vill boka om genom att använda <link linkend="glossary" endterm="gloss-date-navigator"
+>Datumnavigatören</link
+>.</para
+></step>
+
+<step
+><para
+>Du bör välja en lämplig <link linkend="reference-menus-view"
+>vy</link
+> innan du påbörjar den här åtgärden. Bara <link linkend="agenda-view"
+><guilabel
+>agendavyn</guilabel
+></link
+> (dag, arbetsvecka och vecka) visar enskilda timmar och passar för att boka om händelser med exakt tid (möten), medan månadsvyn bara visar dagar. Därför är månadsvyn bäst lämpad för långtidshändelser som semestrar.</para
+></step>
+
+<step
+><para
+>För att visa veckovyn, välj agendavyn, klicka på knappen <inlinemediaobject
+><imageobject
+> <imagedata fileref="view-calendar-week.png" format="PNG"/></imageobject
+> </inlinemediaobject
+><guibutton
+>Vecka</guibutton
+> i verktygsraden, eller välj menyalternativet <menuchoice
+><guimenu
+>Gå</guimenu
+> <guimenuitem
+>Vecka</guimenuitem
+></menuchoice
+>. </para
+></step>
+
+<step
+><para
+>Drag och släpp händelsen på platsen för det nya datumet och tiden.</para
+></step>
+
+</procedure>
+
+<para
+>Om du vill boka om med större precision, dubbelklicka på händelsen och ändra start- och sluttiden med menyerna som delar upp dagen i kvartar. Om detta inte är tillräcklig noggrannhet, kan du skriva in önskad tid direkt.</para>
+
+</sect1>
+
+<sect1 id="course-rescheduling-todos">
+<title
+>Boka om eller redigera uppgifter</title>
+
+<para
+>Du bör välja en lämplig <link linkend="reference-menus-view"
+>vy</link
+> innan du påbörjar åtgärden. Bara vyn med <link linkend="todo-view"
+><inlinemediaobject
+><imageobject
+> <imagedata fileref="view-calendar-tasks.png" format="PNG"/></imageobject
+> </inlinemediaobject
+><guilabel
+>uppgiftslistan</guilabel
+> </link
+> och <link linkend="description-view"
+>sidoradens uppgiftskomponent </link
+> visar uppgifter som inte har ett färdigdatum.</para>
+
+<para
+>För att visa uppgiftslistan, klicka på knappen <inlinemediaobject
+><imageobject
+> <imagedata fileref="view-calendar-tasks.png" format="PNG"/></imageobject
+> </inlinemediaobject
+><guibutton
+>uppgiftslista</guibutton
+> i verktygsraden, eller välj menyalternativet <menuchoice
+><guimenu
+>Visa</guimenu
+> <guimenuitem
+>Uppgiftslista</guimenuitem
+></menuchoice
+>. </para>
+
+<para
+>För att boka om en uppgift, högerklicka på den. Då visas en sammanhangsberoende meny. Välj menyalternativet <guimenuitem
+>Kopiera till</guimenuitem
+> eller <guimenuitem
+>Flytta till</guimenuitem
+> och välj nytt datum i kalendern som nu visas. Uppgiften kopieras eller flyttas nu till valt datum. Som ett alternativ, om huvudrutan innehåller en <guilabel
+>uppgiftslista</guilabel
+>, högerklicka bara på kolumnen <guilabel
+>Färdigdatum</guilabel
+>. En kalender visas omedelbart, och gör det möjligt att ange det nya färdigdatumet.</para>
+
+<para
+>För att <link linkend="entering-data-to-do"
+>redigera en uppgift</link
+>, högerklicka på den och välj menyalternativet <guimenuitem
+>Redigera...</guimenuitem
+>.</para>
+
+</sect1>
+
+<sect1 id="course-conclusion">
+<title
+>Avslutning</title>
+
+<para
+>Den här femminuterskursen har bara täckt den grundläggande användningen av &korganizer;. Nu kan du fortsätta och läsa resten av den här handboken för att kunna utnyttja den fulla kraften i &korganizer;s möjligheter. Om du inte har lust att göra det, bör du åtminstone titta igenom <link linkend="faq"
+>Frågor och svar</link
+>.</para>
+
+</sect1>
+
+</chapter>
+
+<chapter id="managing-data"
+><!--updated to 5.4.40-->
+<title
+>Importera, exportera och hantera kalendrar</title>
+
+<para
+>&korganizer; kan lagra (och hämta) händelser, journalanteckningar och uppgifter med olika metoder, och för olika platser. Var och en av dessa platser kallas en <firstterm
+>kalenderresurs</firstterm
+>. </para>
+
+<para
+>&korganizer; har inbyggt stöd för kalenderfiler baserade på standarder som iCalendar och vCalendar (genom att lägga till dem som nya resurser), men du kan också importera data till (sammanfoga med) en befintlig resurs eller öppna filen i ett nytt fönster. Att importera filer med formatet som användes av det gamla programmet <application
+>ical</application
+> stöds också.</para>
+
+<para
+>Du kan exportera data som en iCalendar- eller vCalendar-fil. Filerna stöds av de flesta schemaläggningsprogram. </para>
+
+<para
+>I det här kapitlet förklarar vi hur du hanterar kalendern genom att använda resurserna, import och exportåtgärderna och sättet att hämta heta nyheter.</para>
+
+<sect1 id="managing-resources">
+<title
+>Kalenderresursen</title>
+
+<para
+>&korganizer; använder en lokal fil som standardresurs. Men det är inte ditt enda alternativ. Det finns flera andra resurser du kan lägga till: grupprogramservrar, journalanteckningar som bloggar, nätverksfiler, etc. Om du använder mer än en resurs, kan &korganizer; ställas in att <link linkend="config-main-general-personal"
+>använda standardresursen eller fråga vilken resurs som ska användas</link
+> när nya händelser, uppgifter eller journalanteckningar sparas. &korganizer; sammanfogar objekten från två eller flera resurser smidigt i <link linkend="description-view"
+>vyerna</link
+>. </para>
+
+<para
+>Standardresursen är ett bra val för många sorters användning, men du kan också vilja använda en annan resurs, särskilt om du använder en grupprogramserver som stöds. Fråga serverns administratör om informationen som krävs för att ställa in grupprogramresursen, inklusive publicering och hämtning av information om ledig-upptagen. Åtkomst av information om ledig-upptagen gör det möjligt för organisatören av en händelse att ta hänsyn till deltagarnas kalendrar när han läggs till i händelsens deltagarlista.</para>
+
+<note
+><para
+>Förutom lagring av kalendrar, erbjuder grupprogramservrar typiskt lagring av information om kontakter, e-post och <link linkend="glossary" endterm="gloss-freebusy"
+>ledig-upptagen</link
+>. Därför kan vissa av resurserna som beskrivs här höra ihop med andra resurser från &kmail; och adressboken (e-post och kontaktkomponenterna i &kontact;), eller med <link linkend="config-main-free-busy"
+>alternativ för ledig-upptagen i huvudinställningen</link
+>.</para>
+<para
+>Observera att &korganizer;s kommunikation för <link linkend="group-scheduling"
+>gruppschemaläggning</link
+> är baserad på en icke-hierarkisk e-poststandard. Det betyder att du inte behöver en grupprogramserver för att använda den.</para
+></note>
+
+<screenshot id="screenshot-resources">
+<screeninfo
+>En skärmbild av &korganizer;s dialogruta för att lägga till kalendrar</screeninfo>
+<mediaobject>
+<imageobject
+><imagedata fileref="korganizer-resource.png" format="PNG"/></imageobject>
+<textobject
+><phrase
+>En skärmbild av &korganizer;s dialogruta för att lägga till kalendrar</phrase
+></textobject>
+<caption
+><para
+>En skärmbild av &korganizer;s dialogruta för att lägga till kalendrar</para
+></caption>
+</mediaobject>
+</screenshot>
+
+<procedure id="procedure-add-resource">
+<title
+>Lägga till en ny resurs i &korganizer;</title>
+
+<step
+><para
+>Öppna &korganizer;s inställningsdialogruta med <menuchoice
+><guimenu
+>Inställningar</guimenu
+> <guimenuitem
+>Anpassa &korganizer;...</guimenuitem
+></menuchoice
+> och välj fliken <guilabel
+>Kalendrar</guilabel
+> på sidan <guilabel
+>Allmänt</guilabel
+>. </para>
+<para
+>Som ett alternativ, öppna den sammanhangsberoende menyn i sidoraden <guilabel
+>Kalenderhantering</guilabel
+> med ett klick på musens högerknapp och välj <guilabel
+>Lägg till kalender...</guilabel
+></para
+></step>
+<step
+><para
+>Om <guilabel
+>Kalenderhantering</guilabel
+> inte visas i sidoraden, välj menyalternativet <menuchoice
+><guimenu
+>Inställningar</guimenu
+> <guisubmenu
+>Sidorad</guisubmenu
+> <guimenuitem
+>Visa kalenderhantering</guimenuitem
+></menuchoice
+> för att visa den.</para
+></step>
+
+<step
+><para
+>Klicka på knappen <guibutton
+>Lägg till...</guibutton
+> för att lägga till nya resurser i listan med tillgängliga resurser.</para
+></step>
+
+<step
+><para
+>Markera resursen för att aktivera den.</para
+></step>
+
+<step
+><para
+>Om du senare vill redigera eller ta bort en resurs, markera den i <guibutton
+>Kalenderhantering</guibutton
+> i sidoraden och klicka på <guilabel
+>Ta bort kalender</guilabel
+> för att ta bort den eller <guilabel
+>Kalenderegenskaper...</guilabel
+> för att ändra den.</para
+></step>
+
+</procedure>
+<para
+>Bland befintliga resurser i &korganizer; hittar du:</para>
+
+<variablelist>
+
+<varlistentry>
+<term
+><guilabel
+>Födelsedagar och årsdagar</guilabel
+></term>
+<listitem
+><para
+>Ger tillgång till datum för födelsedagar och årsdagar för kontakter i adressboken som kalenderhändelser.</para
+></listitem>
+</varlistentry>
+
+<varlistentry>
+<term
+><guilabel
+>DAV-grupprogramresurs</guilabel
+></term>
+<listitem
+><para
+>Resurs för att hantera DAV-kalendrar och adressböcker (CalDAV, GroupDAV).</para
+></listitem>
+</varlistentry>
+
+<varlistentry>
+<term
+><guilabel
+>Google kalendrar och uppgifter</guilabel
+></term>
+<listitem
+><para
+>Åtkomst av Google kalendrar och uppgifter.</para
+></listitem>
+</varlistentry>
+
+<varlistentry>
+<term
+><guilabel
+>iCal-kalenderfil</guilabel
+></term>
+<listitem
+><para
+>Laddar data från en iCal-fil.</para
+></listitem>
+</varlistentry>
+
+<varlistentry>
+<term
+><guilabel
+>iCal-kalenderkatalog</guilabel
+></term>
+<listitem
+><para
+>Ger tillgång till kalenderobjekt, vart och ett lagrat i en enda fil i en angiven katalog.</para
+></listitem>
+</varlistentry>
+
+<varlistentry>
+<term
+><guilabel
+>Kalarm-kalenderfil</guilabel
+></term>
+<listitem
+><para
+>Laddar data från en Kalarm-kalenderfil.</para
+></listitem>
+</varlistentry>
+
+<varlistentry>
+<term
+><guilabel
+>Kalarm-kalenderkatalog</guilabel
+></term>
+<listitem
+><para
+>Laddar data från en lokal Kalarm-katalog.</para
+></listitem>
+</varlistentry>
+
+<varlistentry>
+<term
+><guilabel
+>Kolab grupprogramserver</guilabel
+></term>
+<listitem
+><para
+>Ger tillgång till Kolab grupprogramkorgar och e-post på en Kolab IMAP-server.</para
+></listitem>
+</varlistentry>
+
+<varlistentry>
+<term
+><guilabel
+>Open-xchange grupprogramserver</guilabel
+></term>
+<listitem
+><para
+>Ger tillgång till möten, uppgifter och kontakter lagrade på en Open-Xchange grupprogramserver</para
+></listitem>
+</varlistentry>
+
+</variablelist>
+
+</sect1>
+
+<sect1 id="managing-import-export">
+<title
+>Importera, exportera och hantera kalendrar</title>
+
+<para
+>Även om lokala filer bara är en bland många andra resurser som kan användas av &korganizer; är de det bekvämaste sättet att dela kalendrar, spara kopior eller importera objekt från gamla kalenderprogram.</para>
+
+<sect2 id="managing-import">
+<title
+>Importera kalendrar</title>
+
+<para
+>Om du har en iCalendar- eller vCalendar-fil, och vill importera den, välj <menuchoice
+><guimenu
+>Arkiv</guimenu
+> <guisubmenu
+>Importera</guisubmenu
+> <guimenuitem
+>Importera kalender...</guimenuitem
+></menuchoice
+>. &korganizer; frågar om du vill <guilabel
+>Lägga till som ny kalender</guilabel
+>, vilket lägger till kalenderfilen som en ny lokal filresurs eller <guilabel
+>Sammanfoga med befintlig kalender</guilabel
+>, vilket sammanfogar kalenderobjekten med en befintlig resurs.</para>
+
+<para
+>Ett bra tillfälle att göra detta är om du till exempel har tagit emot en vCalendar med några händelser via e-post, eller om du planerar att importera din kalender från ett annat program. I det senare fallet är det första du måste göra att använda det programmet för att exportera kalenderdata med ett av formaten ovan, eller använda ett verktyg för att konvertera från programmets eget format.</para>
+
+<!--Get Hot New Stuff
+store.kde.org KOrganizer Calendars-->
+</sect2>
+
+<sect2 id="managing-export">
+<title
+>Exportera kalendrar</title>
+
+<para
+>Du kan exportera din information som en iCalendar-fil, vilken stöds av de flesta schemaläggningsprogram. &korganizer; exporterar alla kalenderobjekt från de aktiverade (markerade) resurserna som inte <link linkend="filters-view"
+>filtrerats bort</link
+> (låt oss kalla dessa objekt <quote
+>aktiva</quote
+> objekt). Med andra ord, om du inte kan se ett kalenderobjekt, finns det inte i den exporterade filen. För att filtrera bort oönskade objekt innan de exporteras, kan du skapa <link linkend="filters-view"
+>filter</link
+>. Filter är ännu effektivare om du klassificerar dina händelser och uppgifter i <link linkend="categories-view"
+>etiketter</link
+>. För att aktivera eller inaktivera resurser, markera eller avmarkera resursrutan i sidoradens <link linkend="managing-resources"
+><guilabel
+>kalenderhantering</guilabel
+></link
+>.</para>
+
+<para
+>För att exportera alla dina <quote
+>aktiva</quote
+> händelser, uppgifter och journalanteckningar (oberoende av vilken resurs de tillhör) som en ny iCalendar-fil, välj menyalternativet <menuchoice
+><guimenu
+>Arkiv</guimenu
+> <guisubmenu
+>Exportera</guisubmenu
+> <guimenuitem
+>Exportera som iCalendar...</guimenuitem
+></menuchoice
+>. Dialogrutan <guilabel
+>Spara som</guilabel
+> dyker upp. Skriv in den nya filens filnamn och plats för att slutföra exportåtgärden.</para>
+
+</sect2>
+
+<sect2 id="managing-purge-archive">
+<title
+>Hantera dina kalendrar</title>
+
+
+<para
+>Moderna datorer har gott om lagringsutrymme. Om du dock synkroniserar din &korganizer;-kalender med en enhet som har begränsat minne, som en Palm-enhet, kan arkivering vara användbart. &korganizer;s prestanda kan också bli sämre om det finns många händelser. För att arkivera gamla objekt, följ proceduren nedan:</para>
+
+<procedure>
+<step
+><para
+>Välj menyalternativet <menuchoice
+><guimenu
+>Arkiv</guimenu
+><guimenuitem
+>Arkivera gamla förekomster...</guimenuitem
+></menuchoice
+>.</para
+></step>
+<step
+><para
+>Fyll i datum i fältet <guilabel
+>Arkivera nu objekt äldre än</guilabel
+> eller använd kalenderkomponenten för att välja datum. Som ett alternativ kan du automatiskt arkivera alla objekt äldre än en viss tidsrymd.</para
+></step>
+<step
+><para
+>Om du har valt att arkivera, måste du också ange ett filnamn för arkivet i fältet <guilabel
+>Arkivfil</guilabel
+>. Om du vill återanvända en äldre arkivfil, klicka på knappen <guilabel
+>Öppna fildialogruta</guilabel
+> och leta rätt på ett befintligt arkiv. Posterna läggs till i filen, så alla objekt som redan finns i filen kommer inte att ändras.</para
+></step>
+</procedure>
+
+<para
+>Att arkivera behåller alla gamla objekt i en fil, inklusive färdiga uppgifter. Men om du inte alls vill behålla färdiga uppgifter, välj menyalternativet <menuchoice
+><guimenu
+>Arkiv</guimenu
+> <guimenuitem
+>Rensa färdiga uppgifter</guimenuitem
+></menuchoice
+> för att ta bort alla färdiga uppgifter från dina aktiva resurser. Om du vill behålla dina färdiga uppgifter, men inte vill visa dem i uppgiftslistan, fundera på att <link linkend="filters-view"
+>filtrera bort</link
+> dem istället för att rensa dem. </para>
+
+</sect2>
+
+</sect1>
+<!-- only import ??-->
+<sect1 id="managing-get-hot-new-stuff">
+<title
+>Nerladdning med Hämta heta nyheter</title>
+
+<!--para
+>If you have a calendar containing events of public interest, such as
+a conference or championship schedule, you can upload it (or check if there
+is something worth downloading) using the
+<ulink url="http://ghns.berlios.de/"
+>get hot new stuff framework</ulink
+>.
+</para-->
+
+<para
+>För att visa dialogrutan <guilabel
+>Hämta heta nyheter</guilabel
+>, som erbjuder en lista med kalendrar att ladda ner, välj menyalternativet <menuchoice
+><guimenu
+>Arkiv</guimenu
+> <guisubmenu
+>Importera</guisubmenu
+> <guimenuitem
+>Hämta heta nyheter...</guimenuitem
+></menuchoice
+>. Om du markerar en av kalendrarna, visas en dialogruta med händelselistan från kalendern. För att sammanfoga de visade händelserna med din standardresurs, klicka på <guilabel
+>Installera</guilabel
+>.</para>
+
+<!--para>
+To open the <guilabel
+>Upload Hot New Stuff</guilabel
+> dialog, which allow you
+to export calendars containing events which may be useful to other people, such
+as a conference program, a list of holidays, special events, &etc;,
+choose the <menuchoice
+><guimenu
+>File</guimenu
+><guisubmenu
+>Export</guisubmenu>
+<guimenuitem
+>Upload Hot New Stuff...</guimenuitem
+></menuchoice
+>.</para>
+
+<para
+>Before uploading the events, make sure you have
+<link linkend="filters-view"
+>filtered out</link
+> all unrelated data.</para-->
+
+</sect1>
+
+</chapter>
+
+<chapter id="chapter-views-and-filters"
+><!-- updated to 5.4.40-->
+
+<title
+>Vyer och filter</title>
+
+<para
+>Även om kalendrar (resurser) kan innehålla händelser, uppgifter och/eller journalanteckningar, är objekten mycket olika till sin natur. Uppgifter kanske inte har något tillhörande datum så en schemavy är inte lämplig för dem. Journalanteckningar är en samling av dina funderingar, tilldragelser eller erfarenheter. De kräver sitt eget vyläge, eftersom de inte hör ihop med listan med kommande händelser eller listan med uppgifter, etc.</para>
+
+<para
+>För att lösa utmaningen att visa din information på ett användbart och intuitivt sätt, erbjuder &korganizer; olika vyer, filter och sökmöjligheter. Du kan också tilldela etiketter till händelser och uppgifter som hör ihop, som hjälper dig att senare visa dem, med användning av filter eller färger.</para>
+
+<sect1 id="description-view">
+<title
+>Vyer i &korganizer;</title>
+
+<para
+>I det här avsnittet beskriver vi olika vylägen, och presenterar en översikt av hur du bläddrar i personlig data med &korganizer;.</para>
+
+<para
+>&korganizer;s fönster kan delas upp i två huvudområden, huvudfönstret och sidoraden. Huvudfönstret visar huvudvyerna, och sidoraden visar datumnavigatören, uppgiftsvyn, objektvyn och kalenderhanteringsvyn. För att visa eller dölja sidoradens komponenter, markera eller avmarkera menyalternativen i undermenyn <menuchoice
+><guimenu
+>Inställningar</guimenu
+> <guisubmenu
+>Sidorad</guisubmenu
+></menuchoice
+>.</para>
+
+<para
+>Datumnavigatören tillhandahålls för att bläddra bland och välja datum. Dagens datum omges av en liten ruta, datum med schemalagda händelser visas med fetstil (dagligen eller veckovis återkommande händelser kanske inte markeras med fetstil, <link linkend="config-main-views"
+>beroende på vyinställningen</link
+>), och helgdagar färgas röda. Om du vill gå till ett datum, klicka helt enkelt på det. Håll nere musen för att välja flera sammanhängande datum på en gång. Vyerna <guilabel
+>Vad står på tur</guilabel
+>, <guilabel
+>Lista</guilabel
+>, <guilabel
+>Agenda</guilabel
+> och <guilabel
+>Journal</guilabel
+> visar bara händelser, uppgifter eller journalanteckningar från de datum som väljes i datumnavigatören. Vyn <guilabel
+>Månad</guilabel
+> visar händelser eller uppgifter från den första månad som visas i datumnavigatören (de valda dagarna under månaden ändrar inte månadsvyn, bara månadsändringar.</para>
+
+<para
+>Sidoradens uppgiftskomponent listar dina uppgifter, precis som <link linkend="todo-view"
+>uppgiftsvyn</link
+>. Den är användbar om du vill se dina uppgifter medan du använder övriga vyer.</para>
+
+<para
+>Sidoradens objektvykomponent visar information om händelser, uppgifter eller journalanteckningar som för närvarande är markerade.</para>
+
+<para
+>Till sist låter sidoradens komponent för kalenderhantering dig aktivera eller inaktivera resurserna i listan genom att markera eller avmarkera resursrutan, och hantera dina resurser. För mer information, kontrollera <xref linkend="managing-resources"/>.</para>
+
+<para
+>Du kan också bläddra i kalendervyn genom att välja menyalternativet <menuchoice
+><guimenu
+>Gå</guimenu
+> <guimenuitem
+>Bakåt</guimenuitem
+></menuchoice
+> (eller klicka på knappen <inlinemediaobject
+><imageobject
+><imagedata fileref="go-previous.png" format="PNG"/></imageobject
+></inlinemediaobject
+>) i verktygsraden, som går till föregående dag, vecka, månad eller år, genom att använda menyalternativet <menuchoice
+><guimenu
+> Gå</guimenu
+><guimenuitem
+>Framåt</guimenuitem
+></menuchoice
+> (eller klicka på knappen <inlinemediaobject
+><imageobject
+><imagedata fileref="go-next.png" format="PNG"/></imageobject
+></inlinemediaobject
+>), som går till nästa dag, vecka, månad eller år (beroende på vyn). och genom att välja menyalternativet <menuchoice
+><guimenu
+>Gå</guimenu
+><guimenuitem
+>Till i dag</guimenuitem
+> </menuchoice
+> (eller klicka på knappen <inlinemediaobject
+><imageobject
+><imagedata fileref="go-jump-today.png" format="PNG"/></imageobject
+></inlinemediaobject
+> i verktygsraden), som inkluderar dagens datum i nuvarande vy.</para>
+
+<sect2 id="whatsnext-view">
+<title
+>Vyn Vad står på tur</title>
+
+<para
+>Den här vyn visar händelser och uppgifter med ett enkelt format som du snabbt kan läsa. Alla pågående uppgifter visas, men bara händelser från dagarna som markerats i sidoradens <guilabel
+>Datumnavigatör</guilabel
+> visas. Händelser och uppgifter visas en per rad.</para>
+
+<para
+>Byt till visning av vad som står på tur genom att välja menyalternativet <menuchoice
+><guimenu
+>Visa</guimenu
+> <guimenuitem
+>Vad står på tur</guimenuitem
+></menuchoice
+>.</para>
+
+</sect2>
+
+<sect2 id="list-view">
+<title
+>Händelselistan</title>
+<para
+>Vyn visar alla dina uppgifter, händelser och journalanteckningar för de datum som markerats i datumnavigeringen som en lista. Pågående uppgifter som inte ska vara klara på markerade datum visas inte. Vyn är bra för att visa många olika objekt på ett kortfattat sätt. Den är också användbar om dina händelser är utspridda över en lång tidsperiod, som inte skulle visas helt och hållet på skärmen om någon av de övriga vyerna användes.</para>
+
+<para
+>Objekten visas ett per rad. Kolumner visar om en påminnelse är inställd (om en ikon av en klocka visas i den betyder att påminnelsen är inställt), om det upprepas flera gånger (en ikon med jaktpilar betyder en upprepad händelse), och information om start- och sluttider. Att hålla musen över ett objekt visar ett verktygstips med detaljerad information om objektet.</para>
+
+<para
+>Byt till visning av listvyn genom att välja menyalternativet <menuchoice
+><guimenu
+>Visa</guimenu
+> <guimenuitem
+>Händelselista</guimenuitem
+></menuchoice
+>.</para>
+
+
+</sect2>
+
+<sect2 id="agenda-view">
+<title
+>Agendavyn</title>
+
+<!--TODO: add agenda view options, color of resources and tags-->
+
+<para
+>Agendavyn presenterar dina händelser eller uppgifter som ska vara färdiga under en eller flera dagar, sorterade i tidsordning. Du kan alltså se varje händelses längd i dagens tidtabell. Välj menyalternativet <menuchoice
+><guimenu
+>Visa</guimenu
+><guimenuitem
+>Agenda</guimenuitem
+></menuchoice
+> eller tryck på knappen <inlinemediaobject
+><imageobject
+><imagedata fileref="view-calendar-agenda.png" format="PNG"/></imageobject
+></inlinemediaobject
+> i verktygsraden.</para>
+<para
+>Vyerna <guilabel
+>Dag</guilabel
+>, <guilabel
+>Arbetsvecka</guilabel
+> och <guilabel
+>Vecka</guilabel
+> är agendavyns varianter. I själva verket kan du ange dagarna som visas i agendavyn när som helst genom att markera dem i datumnavigatören.</para>
+<!--check bell + chasing-arrows icon here-->
+<para
+>Tid anges med en tidrad till vänster i vyn. Det finns en rullningslist till höger när hela dagen inte kan visas på en enda skärm (vilket oftast är fallet). Varje rektangel i vyn representerar en individuell händelse eller uppgift, och visar start- och sluttid samt en sammanfattning. En ikon av en <guiicon
+>klocka</guiicon
+> visas om en påminnelse är aktiv, och en ikon med <guiicon
+>jaktpilar</guiicon
+> visas om den återkommer flera gånger. Genom att hålla musen över kalenderobjektet visas ett verktygstips med mer detaljerad information. För att få &korganizer; att visa en röd linje som markerar aktuell tid under dagen (Marcus Bains linje), markera rutan <guilabel
+>Visa aktuell tid (Marcus Bains linje)</guilabel
+> i <link linkend="config-main-views"
+>&korganizer;s vyinställning</link
+>.</para>
+
+<para
+>Storleken på vilken händelse som helst kan ändras med musen. Flytta helt enkelt muspekaren nära överkanten eller nederkanten på händelsen och dra kanten upp eller ner. På det här sättet kan du visuellt ändra start- och sluttid för händelsen. Det fungerar också i vyerna vecka och arbetsvecka. Med andra ord, är det möjligt att ändra start- och sluttider med musen, genom att bara flytta över- eller underkanten på händelsen till en ny tid.</para>
+
+<para
+>Vilken händelse som helst kan bokas om med musen. Flytta muspekaren till händelsen, och dra den till en ny tidsplacering. Det fungerar också i vyerna vecka och arbetsvecka. Händelser kan flyttas till andra datum som för närvarande inte är synliga. Flytta muspekaren över händelsen och dra den till datumnavigatören.</para>
+
+<para
+>Eftersom agendavyn inte kan visa hela dagen på de flesta skärmar, kan du rulla uppåt eller neråt för att se hela dagen. Det finns också ett användbart tips som talar om för dig om det finns händelser som inte syns ovanför eller under den nuvarande vyn. Det är en liten neråtpekande pil längst ner på varje dagsvy eller uppåtpekande pil längst upp.</para>
+
+<tip
+><para
+>Det finns två användbara snabbtangenter för att lägga till händelser: <itemizedlist>
+<listitem
+><para
+>Dubbelklicka på vilket ledigt tidsintervall som helst, och &korganizer; skapar automatiskt en händelse med förvald längd (som kan anpassas i inställningsdialogrutan). Du kan lägga till sammanfattningen omedelbart. Händelserna <quote
+>låser</quote
+> till halvtimmesintervall, och avrundas till den närmaste halvtimmen där du klickade.</para
+></listitem>
+<listitem
+><para
+>Markera vilket ledigt tidsintervall som helst, och dubbelklicka på det eller börja skriva händelsens sammanfattning. &korganizer; ställer automatiskt in längden och starttiden som definieras av markerat område i agendavyn.</para
+></listitem>
+</itemizedlist>
+</para
+></tip>
+
+<para
+>För att hjälpa dig organisera din agenda, motsvarar händelsernas färg deras etiketter, och beroende på <link linkend="config-main-views"
+>&korganizer;s vyinställning</link
+>, kan den också motsvara deras <link linkend="managing-resources"
+>resurser</link
+>. Om du därför tilldelar <link linkend="categories-view"
+>etiketter till händelser</link
+> och <link linkend="config-main-colors"
+>olika färger till etiketter</link
+>, kan du snabbt identifiera typ av händelse från dess färg. </para>
+
+<para
+>Agendavyn kan visa händelser från alla kalendrar sammanfogade i en vy, eller visa en vy per kalender. Att ha båda vyerna tillgängliga via flikar är också möjligt och kan <link linkend="config-main-views"
+>anpassas i inställningsdialogrutan</link
+>. </para>
+
+<sect3 id="day-view">
+<title
+>Dagsvy</title>
+
+<para
+>Den här vyn presenterar <link linkend="agenda-view"
+>agendan</link
+> för en enstaka dag.</para>
+
+<para
+>Byt till visning av dagsvyn genom att välja menyalternativet <menuchoice
+><guimenu
+>Visa</guimenu
+> <guimenuitem
+>Dag</guimenuitem
+></menuchoice
+> eller klicka på knappen <inlinemediaobject
+><imageobject
+><imagedata fileref="go-jump-today.png" format="PNG"/></imageobject
+></inlinemediaobject
+><guilabel
+>Dag</guilabel
+> i verktygsraden.</para>
+
+</sect3>
+
+<sect3 id="next-x-days-view">
+<title
+>Vyn nästa X dagar</title>
+
+<para
+>Den här vyn visar <link linkend="agenda-view"
+>agendan</link
+> för följande dagar, med början från idag. Du kan ändra antal dagar som ska visas i <link linkend="config-main-views"
+>&korganizer;s vyinställning</link
+>. Standardvärdet är 3.</para>
+
+<para
+>Byt till visning av följande dagar genom att välja menyalternativet <menuchoice
+><guimenu
+>Gå</guimenu
+> <guimenuitem
+>Nästa X dagar</guimenuitem
+></menuchoice
+> (X representerar antal dagar, oftast 3).</para>
+
+</sect3>
+
+
+<sect3 id="week-view">
+<title
+>Veckovy</title>
+
+<para
+>Veckovyn tillhandahåller en vy som liknar dagsvyn. Händelser under sju dagar visas intill varandra.</para>
+
+<para
+>Byt till visning av veckovyn genom att välja menyalternativet <menuchoice
+><guimenu
+>Gå</guimenu
+> <guimenuitem
+>Vecka</guimenuitem
+></menuchoice
+> eller klicka på knappen <inlinemediaobject
+><imageobject
+><imagedata fileref="view-calendar-week.png" format="PNG"/></imageobject
+></inlinemediaobject
+><guilabel
+>Vecka</guilabel
+> i verktygsraden.</para>
+
+</sect3>
+
+<sect3 id="workweek-view">
+<title
+>Arbetsveckovy</title>
+
+<para
+>Det här är samma som veckovyn, utom att bara veckans arbetsdagar visas.</para>
+
+<para
+>Byt till visning av arbetsvecka genom att välja menyalternativet <menuchoice
+><guimenu
+>Gå</guimenu
+> <guimenuitem
+>Arbetsvecka</guimenuitem
+></menuchoice
+>.</para>
+
+</sect3>
+
+</sect2>
+
+
+<sect2 id="month-view">
+<title
+>Månadsvy</title>
+
+<!--TODO: add month view options-->
+
+<para
+>Månadsvyn visar alla händelser och uppgifter för den nuvarande månaden med ett bekant kalenderformat. Varje cell i vyn representerar en dag, och en dag innehåller alla händelser som får plats på området som tillhandahålls (om fönstret maximeras kan du se fler händelser). Information om återkommande händelser och påminnelsestatus visas med en <guiicon
+>klocka</guiicon
+> och <guiicon
+>jaktpilar</guiicon
+>, precis som i andra vyer.</para>
+
+<para
+>Navigera i månadsvyn med datumnavigatörens pilar, eller alternativen och knapparna i verktygsraden från menyn <guilabel
+>Gå</guilabel
+>. Eftersom det synliga området för en dag kanske inte innehåller alla händelser och uppgifter, kan du använda tangentbordet för att bläddra mellan objekten, eller använda rullningslisterna för att se alla den dagens händelser och uppgifter.</para>
+
+<para
+>Håll musen över vilket objekt i kalendern som helst för att visa ett verktygstips med detaljinformation om objektet. Dubbelklicka på ett tomt område för att skapa en händelse, och dubbelklicka på vilket objekt i kalendern som helst för att redigera det.</para>
+
+<para
+>För att hjälpa dig organisera din information, kan händelsernas färg motsvara deras etiketter och <link linkend="managing-resources"
+>resurs</link
+>, beroende på <link linkend="config-main-views"
+>&korganizer;s vyinställning</link
+>. Om du därför tilldelar <link linkend="categories-view"
+>etiketter till händelser</link
+> och <link linkend="config-main-colors"
+>olika färger till etiketter</link
+>, kan du snabbt identifiera typ av händelse (eller resurs) från dess färg. </para>
+
+<para
+>Byt till visning av månadsvyn genom att välja menyalternativet <menuchoice
+><guimenu
+>Visa</guimenu
+> <guimenuitem
+>Månadsvy</guimenuitem
+></menuchoice
+> eller klicka på knappen <inlinemediaobject
+><imageobject
+><imagedata fileref="view-calendar-month.png" format="PNG"/></imageobject
+></inlinemediaobject
+><guilabel
+>Månad</guilabel
+> i verktygsraden.</para>
+
+</sect2>
+
+<!-- Timeline View-->
+
+<sect2 id="timeline-view">
+<title
+>Tidslinje</title>
+
+<para
+>Tidslinjen visar alla händelser för det valda tidsintervallet i en Gantt-vy. Varje kalender visas med en separat linje. </para>
+
+<para
+>Håll musen över vilket objekt i kalendern som helst för att visa ett verktygstips med detaljinformation om objektet. Dubbelklicka på ett tomt område för att skapa en händelse, och dubbelklicka på vilket objekt i kalendern som helst för att redigera det.</para>
+
+</sect2>
+
+<sect2 id="todo-view">
+<title
+>Uppgiftslista</title>
+
+<para
+>Uppgiftslistan tillhandahåller en plats där du kan skriva in snabba (eller långsiktiga) anteckningar till dig själv om saker som du måste göra. Uppgiftsvyn visas precis under datumnavigatören i sidoraden. Du kan också visa den i huvudrutan om du klickar på knappen <inlinemediaobject
+><imageobject
+><imagedata fileref="view-calendar-tasks.png" format="PNG"/></imageobject
+></inlinemediaobject
+><guilabel
+>Uppgiftslista</guilabel
+> i verktygsraden, eller om du väljer menyalternativet <menuchoice
+><guimenu
+>Visa</guimenu
+><guimenuitem
+>Uppgiftslista</guimenuitem
+></menuchoice
+>.</para>
+
+<para
+>Du kan också ge din uppgift ett <quote
+>färdigdatum</quote
+>, med andra ord ett datum när uppgiften ska vara klar.</para>
+
+<para
+>Du kan också ange prioritet för uppgifter, och de visas sorterade i prioritetsordning. Ju lägre tal, desto högre prioritet, utom att noll (0) definieras som <quote
+>ingen prioritet</quote
+>.</para>
+
+<para
+>För att skapa en ny uppgift, högerklicka i sidoradens uppgiftskomponent, eller i uppgiftsvyn, och välj menyalternativet <guimenuitem
+>Ny uppgift</guimenuitem
+>. Om du högerklickar på en befintlig uppgift, får du flera val: Du kan <guimenuitem
+>Visa</guimenuitem
+> sammanfattningen, <guimenuitem
+>Redigera...</guimenuitem
+> uppgiftens information, <guimenuitem
+>Ta bort</guimenuitem
+> uppgiften helt och hållet eller skapa en <guimenuitem
+>Ny delaktivitet...</guimenuitem
+>. Du skulle till exempel kunna skapa en stor aktivitet, som att bygga ett hus, och göra delaktiviteter som att välja rätt tomt, anställa en arkitekt, anställa arbetskraft och till slut ordna en fest för dina vänner.</para>
+
+<para
+>När du väljer <guilabel
+>Ny uppgift...</guilabel
+>, dyker en dialogruta upp, och du får möjlighet att skriva in all nödvändig <link linkend="entering-data-to-do"
+>information</link
+>.</para>
+
+<para
+>Klicka på någon uppgift i listan för att markera den. Om du klickar på den tjocka linjerade rutan till vänster om beskrivningen, kommer du att ändra uppgiftens status till <quote
+>färdig</quote
+>. Om du dubbelklickar på beskrivningen, kan du redigera all information om uppgiften.</para>
+
+<para
+>Du kan också välja <link linkend="managing-purge-archive"
+>Rensa färdiga</link
+> från menyn som visas med <mousebutton
+>höger</mousebutton
+> musknapp för att ta bort alla uppgiftsposter som du har markerat som färdiga.</para>
+
+<para
+>Uppgifter kan också dras omkring med musen för att arrangera om en hierarki eller utbyta uppgifter med andra kalenderfönster. Du kan också läsa en <link linkend="other-features-drag-and-drop"
+>översikt</link
+> om alla tillgängliga drag och släpp åtgärder.</para>
+</sect2>
+
+<sect2 id="journal-view">
+<title
+>Journalvy</title>
+<para
+>Journalvyn tillhandahåller en plats där du kan skriva in funderingar, tilldragelser eller erfarenheter. Du kan visa journalvyn i huvudrutan om du klickar på knappen <inlinemediaobject
+><imageobject
+><imagedata fileref="journal-new.png" format="PNG"/></imageobject
+></inlinemediaobject
+><guilabel
+>Journalvy</guilabel
+> i verktygsraden, eller om du väljer menyalternativet <menuchoice
+><guimenu
+>Visa</guimenu
+> <guimenuitem
+>Journal</guimenuitem
+></menuchoice
+>.</para>
+
+<para
+>När du klickar på länken <guilabel
+>Ny journalanteckning...</guilabel
+> (eller knappen <guibutton
+>Ny journalanteckning...</guibutton
+>), skapas en ny journalanteckning. Om du vill redigera en journalanteckning, klicka bara på textrutan och redigera den. För att ta bort en journalanteckning, klicka på <inlinemediaobject
+><imageobject
+><imagedata fileref="edit-delete.png" format="PNG"/></imageobject
+></inlinemediaobject
+>borttagningsknappen i journalanteckningen.</para>
+
+</sect2>
+
+</sect1>
+
+<sect1 id="categories-view">
+<title
+>Etiketter</title>
+
+<!--TODO: Add screenshot?-->
+
+<para
+>För att hjälpa dig att organisera dina poster i relaterade grupper, kan du tilldela etiketter till händelser, uppgifter och journalanteckningar. Om du tilldelar etiketter, kan du använda dem senare när du söker, filtrerar och visar händelser och uppgifter.</para>
+
+<para
+>För att tilldela etiketter när du redigerar eller skapar nya <link linkend="entering-data-events-general"
+>händelser</link
+> eller <link linkend="entering-data-to-do-general"
+>uppgifter</link
+>, välj en etikett i kombinationsrutan som har beteckningen <guilabel
+>Etiketter</guilabel
+> under fliken <guilabel
+>Allmänt</guilabel
+>. Du kan tilldela mer än en etikett till varje objekt.</para>
+
+<para
+>För att skapa och ta bort etiketter, välj menyalternativet <menuchoice
+><guimenu
+>Inställningar</guimenu
+> <guimenuitem
+> Hantera etiketter...</guimenuitem
+></menuchoice
+> för att visa dialogrutan <guilabel
+>Hantera etiketter</guilabel
+>. Om du tilldelar <link linkend="config-main-colors"
+>olika färger till etiketter</link
+>, kommer du snabbt att kunna identifiera händelsetypen enligt färg, antingen i agendavyn eller i månadsvyn (beroende på <link linkend="config-main-views"
+>&korganizer;s vyinställning</link
+>). </para>
+
+</sect1>
+
+<sect1 id="filters-view">
+<title
+>Filter</title>
+
+<para
+>För att hjälpa till att visa, hitta och exportera information, kan du skapa och använda filter för dina kalendrar. Om du till exempel inte vill visa färdiga uppgifter, kan du filtrera bort dem, istället för att <link linkend="managing-purge-archive"
+>rensa bort</link
+> dem. Om du har tilldelat etiketter, kan du använda dem för att skapa filter.</para>
+
+<para
+>För att skapa, ta bort och redigera filter, välj menyalternativet <menuchoice
+><guimenu
+>Inställningar</guimenu
+> <guimenuitem
+>Hantera vyfilter...</guimenuitem
+></menuchoice
+> för att visa dialogrutan <guilabel
+>Redigera kalenderfilter</guilabel
+>. Genom att använda dialogrutan kan du skapa, ta bort och redigera filter som påverkar vilka objekt som visas av &korganizer;.</para>
+
+<!--TODO: Add detailed description of the dialog. Is it stable yet?-->
+
+<para
+>Undermenyn <menuchoice
+><guimenu
+>Visa</guimenu
+> <guisubmenu
+>Filter</guisubmenu
+></menuchoice
+> och filterverktygsradens kombinationsruta ger möjlighet att komma åt alla tillgängliga filter skapade med dialogrutan <link linkend="menu-settings-edit-filters"
+><guilabel
+>Redigera kalenderfilter</guilabel
+></link
+>. För att visa eller dölja filterverktygsraden, välj <menuchoice
+><guimenu
+>Inställningar</guimenu
+> <guisubmenu
+>Visade verktygsrader</guisubmenu
+> <guimenuitem
+>Filterverktygsrad</guimenuitem
+></menuchoice
+>. Om du inte vill använda något filter, välj <guilabel
+>Inget filter</guilabel
+>.</para>
+
+<para
+>Filter är användbara när du <link linkend="managing-export"
+>exporterar en kalender</link
+>. Om du använder ett filter exporteras bara de filtrerade (synliga) objekten. Filter är också effektivare när objekten redan är klassificerade och organiserade i <link linkend="categories-view"
+>etiketter</link
+>, eftersom du enkelt kan skapa filter baserade på etiketter.</para>
+
+</sect1>
+
+<sect1 id="search-view">
+<title
+>Sökning</title>
+
+<para
+>Välj menyalternativet <menuchoice
+><guimenu
+>Redigera</guimenu
+> <guimenuitem
+>Sök</guimenuitem
+></menuchoice
+> eller tryck på snabbtangenten <keycombo action="simul"
+>&Ctrl;<keycap
+>F</keycap
+></keycombo
+> för att söka efter händelser, uppgifter eller journalanteckningar enligt deras sammanfattningar, beskrivningar, och/eller etiketter. Sökåtgärden letar bara efter de angivna fälten.</para>
+
+<tip
+><para
+>Du kan använda jokertecken om du inte kommer ihåg sammanfattningen exakt. Om du inte känner till enstaka tecken i sammanfattningen, skriv <userinput
+>?</userinput
+> istället för det saknade tecknet. Om du inte känner till flera tecken, använd <userinput
+>*</userinput
+>. Om du till exempel vet att händelsen eller uppgiften har <emphasis
+>möte</emphasis
+> i början och <emphasis
+>produkt</emphasis
+> därefter, skulle du skriva <userinput
+>möte*produkt</userinput
+> i sökdialogrutan. &korganizer; hittar värden som <quote
+>Uppgift: Arrangera möte för att diskutera den nya produkten</quote
+>, <quote
+>Möte för att diskutera den gamla produktportföljen</quote
+> och liknande. Små och stora bokstäver spelar ingen roll.</para
+></tip>
+
+<para
+>Resultatet av sökåtgärden är en lista på händelser, journalanteckningar och/eller uppgifter med det angivna nyckelordet. Söklistans information är samma som i <link linkend="list-view"
+>listvyn</link
+>.</para>
+
+<para
+>Den här resultatlistan är aktiv. Du kan dubbelklicka på en rad för att visa eller redigera värden i händelser eller uppgifter. Hämta mer information om dessa värden i <xref linkend="entering-data-events"/> och <xref linkend="entering-data-to-do"/>.</para>
+
+</sect1>
+
+</chapter>
+
+<chapter id="entering-data"
+>  <!--updated to 5.4.40-->
+
+<title
+>Skriva in data</title>
+
+<sect1 id="entering-data-events">
+<title
+>Händelser</title>
+
+<para
+>Händelser är framtida eller tidigare avtal, som affärsmöten, personliga högtider och biobesök. Händelser kan också ta flera dagar, som semestrar.</para>
+
+<para
+>Att skriva in en ny händelse är mycket enkelt. Välj bara menyalternativet <menuchoice
+><guimenu
+>Händelser</guimenu
+><guimenuitem
+>Ny händelse...</guimenuitem
+></menuchoice
+>. Ett fönster med sex flikar längst ner visas.</para>
+
+<para
+>Om du vill kan du använda ett annat sätt att skapa en ny händelse:</para>
+
+<procedure>
+<step
+><para
+>Använd datumnavigatören för att gå till datumet för händelsen.</para
+></step>
+
+<step
+><para
+>Byt till <guilabel
+>Agendavyn</guilabel
+> och klicka på ikonen för önskad vy i <guimenu
+>Vyverktygsraden</guimenu
+> eller välj önskad vy i menyn <guimenu
+>Gå</guimenu
+>. Eftersom din händelse börjar vid en viss tid, ska du välja en <link linkend="reference-menus-view"
+>vy</link
+> som visar dagens timmar. Du kan välja vyerna <guimenuitem
+>Dag</guimenuitem
+>, <guimenuitem
+>Arbetsvecka</guimenuitem
+> eller <guimenuitem
+>Vecka</guimenuitem
+>. Vyn <guimenuitem
+>Månad</guimenuitem
+> är mer lämpad för uppgifter, som beskrivs nedan.</para
+></step>
+
+<step
+><para
+>Dubbelklicka på tiden och datumet då din händelse börjar i huvudrutan. </para
+></step>
+
+<step
+><para
+>En dialogruta med sex flikar längst ner visas. Skriv in data enligt beskrivningen nedan.</para
+></step>
+</procedure>
+
+<screenshot id="screenshot-event-general">
+<screeninfo
+>En skärmbild av &korganizer;s dialogruta för att redigera händelser</screeninfo>
+<mediaobject>
+<imageobject
+><imagedata fileref="event-general.png" format="PNG"/></imageobject>
+<textobject
+><phrase
+>En skärmbild av &korganizer;s dialogruta för att redigera händelser</phrase
+></textobject>
+<caption
+><para
+>En skärmbild av &korganizer;s dialogruta för att redigera händelser</para
+></caption>
+</mediaobject>
+</screenshot>
+
+<para
+>Det här är en utförlig beskrivning av de olika fälten och grafiska komponenterna i händelsefönstret. Alla fält behöver inte fyllas i, en del kan lämnas tomma. Läs <link linkend="entering-data-required-fields"
+>avsnittet om fält som krävs</link
+> för detaljerad information. Om du föredrar att lära dig från ett exempel, finns ett i avsnittet om att <link linkend="examples-entering-event"
+>skriva in händelser</link
+>. </para>
+
+<variablelist>
+<varlistentry>
+<term
+><guilabel
+>Sammanfattning:</guilabel
+></term>
+<listitem
+><para
+>Skriv in en kort beskrivning av händelsen i fältet <guilabel
+>Sammanfattning</guilabel
+>. Den här beskrivningen är texten som visas i &korganizer;s huvudruta.</para
+></listitem>
+</varlistentry>
+
+<varlistentry>
+<term
+><guilabel
+>Plats:</guilabel
+></term>
+<listitem
+><para
+>Skriv in en kort beskrivning av den <guilabel
+>Plats</guilabel
+> där händelsen kommer att äga rum.</para
+></listitem>
+</varlistentry>
+
+<varlistentry>
+<term
+><guilabel
+>Start</guilabel
+> och <guilabel
+>Slut</guilabel
+></term>
+<listitem
+><para
+>&korganizer; föreslår start- och slutdatum för din händelse. Händelser förväntas starta och sluta på samma datum. Ändra datumen som du önskar. Skriv in datumen direkt eller använd <link linkend="glossary" endterm="gloss-calendar-widget"
+>Kalenderkomponenten</link
+>. Välj tid från kvartsintervall, eller skriv in den önskade tiden direkt i tidfälten. Dessa fält är bara tillgängliga när rutan <guilabel
+>Hela dagen</guilabel
+> inte är markerad.</para
+></listitem>
+</varlistentry>
+
+</variablelist>
+
+<sect2 id="entering-data-events-general">
+<title
+>Fliken Allmänt</title>
+
+<variablelist>
+<varlistentry>
+<term
+>Detaljer:</term>
+<listitem
+><para
+>Skriv in en lång beskrivning av händelsen i den stora rektangeln utan titel. Här kan du skriva så många detaljer som du vill. Om händelsen till exempel är planerade allmänna reparationer av din bil, kan du räkna upp alla olika reparationer som behövs. Senare kan du skriva ut listan och ge den till mekanikern. Om händelsen är inköp, kan du räkna upp sakerna som du måste köpa. Skriv ut händelsen och ta med listan till affären.</para
+></listitem>
+</varlistentry>
+
+<varlistentry>
+<term
+><guilabel
+>Etiketter</guilabel
+></term>
+<listitem
+><para
+>Du kan tilldela flera <link linkend="categories-view"
+>etiketter</link
+> till en kalenderpost. Klicka på kombinationsrutan för att visa alla tillgängliga etiketter. Markera etikettrutorna för att tilldela lämpliga etiketter till händelsen.</para>
+<para
+>Du kan också lägga till en ny etiketter, ändra en etiketter eller ta bort en etiketten i dialogrutan <guilabel
+>Hantera etiketter</guilabel
+>. Visa den med <menuchoice
+><guimenu
+>Inställningar</guimenu
+> <guimenuitem
+>Hantera etiketter</guimenuitem
+></menuchoice
+>.</para>
+
+<tip
+><para
+>Din språklektion på jobbet både hör till etiketterna affärer och utbildning, medan din bröllopsdag antingen hör till personligt eller speciellt tillfälle, vilket bestämmer du.</para
+></tip>
+</listitem>
+</varlistentry>
+
+<varlistentry>
+<term
+><guilabel
+>Tillgång:</guilabel
+></term>
+<listitem
+><para
+>Välj <guilabel
+>Öppen</guilabel
+>, <guilabel
+>Privat</guilabel
+> eller <guilabel
+>Konfidentiell</guilabel
+> för att behålla händelsen privat eller konfidentiell. För närvarande ställer valet in händelsens egenskap <quote
+>CLASS</quote
+> till <quote
+>PUBLIC</quote
+>, <quote
+>PRIVATE</quote
+> eller <quote
+>CONFIDENTIAL</quote
+> på ett riktigt sätt. Om denna inställning verkligen används för att begränsa åtkomst till informationen beror dock på klientens och/eller grupprogramserverns implementering.</para>
+<warning
+><para
+>För närvarande <emphasis
+>visar</emphasis
+> &korganizer; objekt som ägs av andra och är markerade som konfidentiella. Andra klienter kan behandla dem annorlunda, men var försiktig vid publicering av privata och konfidentiella händelser. iCalendar är en textfil, och kan läsas med vilken texteditor som helst (om någon har läsåtkomst till dem). Om du alltså verkligen vill hålla objekt konfidentiella, försäkra dig om att du använder en resurs som bara du kan komma åt.</para
+></warning
+></listitem>
+</varlistentry>
+
+</variablelist>
+
+</sect2>
+
+<sect2 id="entering-data-events-attendees">
+<title
+>Deltagarfliken</title>
+
+<para
+>Välj personerna som du vill bjuda in till händelsen under den här fliken.</para>
+
+<screenshot id="screenshot-event-attendees">
+<screeninfo
+>En skärmbild av &korganizer;s dialogruta för att redigera händelser: Fliken Deltagare</screeninfo>
+<mediaobject>
+<imageobject
+><imagedata fileref="event-attendees.png" format="PNG"/></imageobject>
+<textobject
+><phrase
+>En skärmbild av &korganizer;s dialogruta för att redigera händelser: Fliken Deltagare</phrase
+></textobject>
+<caption
+><para
+>En skärmbild av &korganizer;s dialogruta för att redigera händelser: Fliken Deltagare</para
+></caption>
+</mediaobject>
+</screenshot>
+
+<variablelist>
+<varlistentry>
+<term
+><guilabel
+>Mötesorganisatör:</guilabel
+></term>
+<listitem
+><para
+>Ställer in identiteten som motsvarar organisatören av den här uppgiften eller händelsen. Om &korganizer; är inställd att skicka inbjudningar med e-post, används identiteten som väljes i kombinationsrutan när e-posten skickas. Standardidentitet kan ställas in under avdelningen <guilabel
+>Personligt</guilabel
+> i &korganizer;s inställningar. Dessutom samlas identiteter in från inställningarna i &kmail; och från adressboken.</para
+></listitem>
+</varlistentry>
+
+<varlistentry>
+<term
+>Deltagarlista</term>
+<listitem
+><para
+>Listan mitt på fliken visar valda deltagare i händelsen, och låter dig lägga till deltagare genom att skriva in namnet och e-postadressen, redigera dem eller ta bort dem.</para>
+<para
+>Om kontakterna finns i din adressbok, behöver du inte komma ihåg e-postadresser. Klicka bara på knappen  <guibutton
+>Välj adressat...</guibutton
+> och välj kontakten i listan. Observera att det här är &kde;:s standardadressbok, som också används av &kmail; och kan anropas som ett enskilt program (&kaddressbook;).</para>
+</listitem>
+</varlistentry>
+
+<varlistentry>
+<term
+>Deltagare</term>
+<listitem
+><para
+>Välj deltagarens roll (deltagare, suppleant, observatör, ordförande) i kombinationsrutan till vänster om en post. Rollen är en enkel påminnelse om vilken funktion deltagaren innehar för den här händelsen. </para
+></listitem>
+</varlistentry>
+
+<varlistentry>
+<term
+>Status</term>
+<listitem
+><para
+>Välj deltagarens status (Behöver åtgärd, Accepterad, Nekad, Möjlig, Delegerad) i kombinationsrutan till höger om en post. Om du använder grupprogramschemaläggning och begär svar från deltagarna, uppdateras deltagarnas status när du tar emot svar. Om du inte begär svar, måste du uppdatera status för hand.</para
+></listitem>
+</varlistentry>
+
+<varlistentry>
+<term
+>Begär gensvar</term>
+<listitem
+><para
+>Välj <guilabel
+>Begär svar</guilabel
+> i kombinationsrutan om kontakten ska svara på ditt planerade schema. Följden blir att deltagaren får e-post med information om händelsens schema. Ett litet kuvert visas i listan för att ange detta. Funktionen är särskilt användbar när gruppschemaläggning är aktiverad, eftersom deltagarnas status då uppdateras automatiskt.</para
+></listitem>
+</varlistentry>
+
+ <!-- Participiants: no conflicts Reschedule button
+ What is that? How does it work?-->
+
+</variablelist>
+
+</sect2>
+
+<!--Fixme Resources tab missing -->
+
+<sect2 id="entering-data-events-reminder">
+<title
+>Påminnelseflik</title>
+<variablelist>
+<varlistentry>
+<term
+>Påminnelse</term>
+<listitem
+><para
+>Välj en standardpåminnelse i kombinationsrutan och klicka på <guibutton
+>Lägg till</guibutton
+> om &korganizer; ska påminna dig om en händelse.</para>
+<para
+>Använd knappen <guibutton
+>Anpassa</guibutton
+> för att visa dialogrutan <guilabel
+>Redigera befintlig påminnelse</guilabel
+>. Med den här dialogrutan kan du välja hur många minuter, timmar eller dagar före eller efter händelsens start eller slut du vill få en påminnelse, och skapa särskilda påminnelser som visar text eller spelar ljud.</para>
+</listitem>
+</varlistentry>
+
+</variablelist>
+
+</sect2>
+
+<sect2 id="entering-data-events-recurrence">
+<title
+>Upprepningsflik</title>
+
+<para
+>Vissa händelser sker regelbundet. Du kan ange deras exakta schemaläggning här.</para>
+
+<screenshot id="screenshot-event-recurrence">
+<screeninfo
+>En skärmbild av &korganizer;s dialogruta för att redigera händelser: Upprepningsfliken</screeninfo>
+<mediaobject>
+<imageobject
+><imagedata fileref="event-recurrence.png" format="PNG"/></imageobject>
+<textobject
+><phrase
+>En skärmbild av &korganizer;s dialogruta för att redigera händelser: Upprepningsfliken</phrase
+></textobject>
+<caption
+><para
+>En skärmbild av &korganizer;s dialogruta för att redigera händelser: Upprepningsfliken</para
+></caption>
+</mediaobject>
+</screenshot>
+
+<note
+><para
+>Börja med att markera en upprepningsregel till höger om <guilabel
+>Upprepningar</guilabel
+> i kombinationsrutan. Om <guilabel
+>Aldrig</guilabel
+> markeras, kan du inte göra några ändringar under den här fliken.</para
+></note>
+
+<sect3 id="recurrence-recurrence-rule">
+<title
+>Regel för återkommande</title>
+
+<para
+>Välj om du vill repetera den här händelsen dagligen, veckovis, månadsvis eller årligen. De mer detaljerade alternativen är följande:</para>
+
+<variablelist>
+<varlistentry>
+<term
+><guilabel
+>Dagligen</guilabel
+></term>
+<listitem
+><para
+>Ange om händelsen inträffar varje dag (1), varannan dag (2) och så vidare.</para
+></listitem>
+</varlistentry>
+
+<varlistentry>
+<term
+><guilabel
+>Veckovis</guilabel
+></term>
+<listitem
+><para
+>Ange om händelsen inträffar varje vecka (1), varannan vecka (2) och så vidare. Ange också dagarna (söndag ... måndag) då händelsen inträffar. </para
+></listitem>
+</varlistentry>
+
+<varlistentry>
+<term
+><guilabel
+>Månadsvis</guilabel
+></term>
+<listitem
+><para
+>Du kan antingen låta händelsen ske på samma dag under månaden, eller på en särskild vecka och särskild dag under veckan. Du måste välja mellan de här två möjligheterna. Normalt antar &korganizer; att du vill upprepa på samma kalenderdag under månaden (till exempel den femtonde). Du kan också justera perioden, så att du kan upprepa månadsvis, var tredje månad och så vidare.</para
+></listitem>
+</varlistentry>
+
+<varlistentry>
+<term
+><guilabel
+>Årligen</guilabel
+></term>
+<listitem>
+<para
+>Det här liknar månadsvis. Du måste välja om du anger en kalenderdag under året (t.ex. 250:e dagen under året), under en specifik vecka eller veckodag i månaden (t.ex. andra tisdagen i mars), eller dagen i månaden för en viss månad under året. Normalt antar &korganizer; att du menar den här dagen under månaden. Du kan justera perioden så att den anger händelser som sker vartannat år, vart fjärde år och så vidare.</para>
+</listitem>
+</varlistentry>
+</variablelist>
+</sect3>
+
+<sect3 id="recurrence-recurrence-range">
+<title
+>Omfång för återkommande</title>
+
+<para
+>Normalt upprepas händelserna för alltid. Det finns inget <quote
+>slut</quote
+> på upprepningen. Det kan vara önskvärt eller inte, så du har möjlighet att avsluta upprepningen genom att ange ett slutdatum eller ett antal upprepningar.</para>
+
+</sect3>
+
+<sect3 id="recurrence-exceptions">
+<title
+>Undantag</title>
+
+<para
+>Du kan ha ställt in en mycket trevlig upprepningsregel, men inser att det finns några få undantag. Om du till exempel ställer in ditt schema för en universitetslektion, kanske du vill göra undantag för helgdagar eller liknande. I det här området kan du lägga till, ändra och ta bort datum från listan med undantag (dvs. tider då händelsen <emphasis
+>inte schemaläggs</emphasis
+> även om upprepningsregeln passar in). Välj ett datum med datumväljaren och tryck på <guibutton
+>Lägg till</guibutton
+> för att infoga det. För att ta bort datum, markera dem i rutan till höger, och klicka sedan på <guibutton
+>Ta bort</guibutton
+>.</para>
+
+</sect3>
+</sect2>
+
+<sect2 id="entering-data-events-attachments">
+<title
+>Bilagor</title>
+
+<para
+>Händelser och uppgifter kan innehålla bilagor. Bilagor kan antingen lagras som länkar eller på plats. Klicka på knappen <guibutton
+>Lägg till</guibutton
+> för att lägga till en bilaga.</para>
+
+<screenshot id="screenshot-event-attachments">
+<screeninfo
+>En skärmbild av &korganizer;s dialogruta för att redigera händelser: Fliken för bilagor</screeninfo>
+<mediaobject>
+<imageobject
+><imagedata fileref="event-attachments.png" format="PNG"/></imageobject>
+<textobject
+><phrase
+>En skärmbild av &korganizer;s dialogruta för att redigera händelser: Fliken för bilagor</phrase
+></textobject>
+<caption
+><para
+>En skärmbild av &korganizer;s dialogruta för att redigera händelser: Fliken för bilagor</para
+></caption>
+</mediaobject>
+</screenshot>
+
+<para
+>Genom att markera <guilabel
+>Lagra bilaga på plats</guilabel
+> lagras bilagan inne i kalendern, vilket kan ta mycket utrymme beroende på bilagans storlek. Om alternativet inte markeras, lagras bara en länk som pekar på bilagan. Använd inte en länk för en bilaga som ofta ändras eller kan flyttas (eller tas bort) från sin nuvarande plats.</para>
+
+<para
+>Följande åtgärder i den sammanhangsberoende menyn är tillgängliga för att arbeta med bilagor:</para>
+
+<variablelist>
+
+<varlistentry>
+<term
+><guimenuitem
+>Öppna</guimenuitem
+></term>
+<listitem
+><para
+>Visa den markerade bilagan med tillhörande program.</para
+></listitem>
+</varlistentry>
+
+<varlistentry>
+<term
+><guimenuitem
+>Spara som...</guimenuitem
+></term>
+<listitem
+><para
+>Gör det möjligt att spara en befintlig bilaga med ett annat namn.</para
+></listitem>
+</varlistentry>
+
+<varlistentry>
+<term
+><guimenuitem
+>Kopiera</guimenuitem
+>, <guimenuitem
+>Klipp ut</guimenuitem
+> och <guimenuitem
+>Klistra in</guimenuitem
+></term>
+<listitem
+><para
+>Gör det möjligt att kopiera, klippa ut och klistra in till och från klippbordet.</para
+></listitem>
+</varlistentry>
+
+<varlistentry>
+<term
+><guimenuitem
+>Ta bort</guimenuitem
+></term>
+<listitem
+><para
+>Tar bort den markerade bilagan.</para
+></listitem>
+</varlistentry>
+
+<varlistentry>
+<term
+><guimenuitem
+>Egenskaper...</guimenuitem
+></term>
+<listitem
+><para
+>Gör det möjligt att ändra en befintlig bilaga.</para
+></listitem>
+</varlistentry>
+
+</variablelist>
+
+</sect2>
+
+<!--FIXME works with certain type of calendars e.g. google calendar ?-->
+<sect2 id="entering-data-events-freebusy">
+<title
+>Ledig/upptagen</title>
+
+<para
+>När du lägger till deltagare i din händelse, måste du veta om de är upptagna eller lediga just den tiden. Om deltagarna gör information om ledig-upptagen tillgänglig, kan du titta på deras schema innan du skickar inbjudningar.</para>
+
+<para
+>Det visar diagrammet med ledig-upptagen schemat till höger, där varje rad representerar en av deltagarna listade till vänster. De markerade områdena i diagrammet representerar tid som redan upptas av andra händelser, omarkerade områden anger tid fri från andra händelser. Du kan flytta händelsen till en annan tidpunkt genom att dra den med musen, eller ändra dess storlek genom att flytta det markerade områdets kanter med musen.</para>
+
+<para
+>Informationen om ledig-upptagen är bara tillgänglig om deltagaren publicerar sitt ledig-upptagen schema, och om &korganizer; är riktigt inställd för att hämta det. För mer information om att ställa in &korganizer; att publicera och hämta information om ledig-upptagen, kontrollera <xref linkend="config"/>. Genom att dubbelklicka på en deltagare i listan kan du skriva in platsen för deras information om ledig-upptagen. </para>
+
+<variablelist>
+
+<varlistentry>
+<term
+><guilabel
+>Skala</guilabel
+></term>
+<listitem
+><para
+>Ställer in zoomnivån på schemadiagrammet. <guilabel
+>Timme</guilabel
+> visar ett intervall på flera timmar, <guilabel
+>Dag</guilabel
+> visar ett intervall på några dagar, <guilabel
+>Vecka</guilabel
+> visar ett intervall på några månader och <guilabel
+>Månad</guilabel
+> visar ett intervall på några år, medan <guilabel
+>Automatisk</guilabel
+> väljer det intervall som är lämpligast för den aktuella händelsen eller uppgiften.</para
+></listitem>
+</varlistentry>
+
+<varlistentry>
+<term
+><guibutton
+>Centrera vid start</guibutton
+></term>
+<listitem
+><para
+>Klicka på knappen för att centrera ledig-upptagen schemadiagrammet på händelsens starttid och dag.</para
+></listitem>
+</varlistentry>
+
+<varlistentry>
+<term
+><guibutton
+>Välj datum</guibutton
+></term>
+<listitem
+><para
+>Klicka på knappen för att automatiskt flytta händelsen till ett datum och en tid då alla deltagare är lediga.</para
+></listitem>
+</varlistentry>
+
+<varlistentry>
+<term
+><guibutton
+>Uppdatera</guibutton
+></term>
+<listitem
+><para
+>Klicka på knappen för att ladda om information om ledig-upptagen för alla deltagare från motsvarande servrar.</para
+></listitem>
+</varlistentry>
+
+</variablelist>
+
+<para
+>När du vill bekräfta, avbryta eller återställa inskriven data, välj bland åtgärdsknapparna <guibutton
+>Ok</guibutton
+>, <guibutton
+>Verkställ</guibutton
+> och <guibutton
+>Avbryt</guibutton
+>.</para>
+
+</sect2>
+
+<sect2 id="entering-data-events-template-buttons">
+<title
+>Hantering av mallar</title>
+
+<para
+>Knappen <guibutton
+>Hantera mallar</guibutton
+> öppnar en dialogruta som gör det möjligt att spara aktuell händelse som en mall, så att du kan återanvända informationen du  skrivit in i framtida händelser. Som ett exempel kan du spara en mall för ett möte som äger rum på samma plats och med samma personer.</para>
+<para
+>Med knappen <guibutton
+>Verkställ</guibutton
+> kan du använda en befintlig mall för din händelse. Om vi fortsätter exemplet i föregående stycke, kan du ange mötets agenda.</para>
+
+</sect2>
+
+</sect1>
+
+<sect1 id="entering-data-to-do">
+<title
+>Uppgifter</title>
+
+<para
+>Uppgiftslistan är en plats där du kan skriva in anteckningar till dig själv om saker som du måste göra. Uppgifter är aktiviteter som inte behöver schemaläggas. Det finns kortsiktiga och långsiktiga uppgifter. Du ska till exempel gå till frisören inom en vecka, och du ska sälja din gamla bil inom ett år. Du vill inte att en påminnelse ska aktiveras vid någon särskild tid, utan du vill bara ha en lista på saker som du måste göra, och datum då de senast måste vara klara (färdigdatum).</para>
+
+<para
+>För att skriva in en ny uppgift, välj <menuchoice
+><guimenu
+>Åtgärder</guimenu
+><guimenuitem
+>Ny uppgift...</guimenuitem
+></menuchoice
+>. Ett fönster med fem flikar längst ner visas.</para>
+
+<sect2 id="entering-data-to-do-general">
+<title
+>Fliken Allmänt</title>
+
+<screenshot id="screenshot-todo-general">
+<screeninfo
+>En skärmbild av &korganizer;s dialogruta för att redigera uppgifter</screeninfo>
+<mediaobject>
+<imageobject
+><imagedata fileref="todo-general.png" format="PNG"/></imageobject>
+<textobject
+><phrase
+>En skärmbild av &korganizer;s dialogruta för att redigera uppgifter</phrase
+></textobject>
+<caption
+><para
+>En skärmbild av &korganizer;s dialogruta för att redigera uppgifter</para
+></caption>
+</mediaobject>
+</screenshot>
+
+<para
+>Fliken delar många alternativ med dialogrutan <guilabel
+>Redigera händelser</guilabel
+>, men har några ytterligare objekt för uppgifter:</para>
+
+<variablelist>
+<varlistentry>
+<term
+><guilabel
+>Färdiggörande</guilabel
+></term>
+<listitem
+><para
+>Det här är ett meny med färdigprocent som är satt till 0% från början. Senare kan du ange framsteg genom att justera färdigprocenten i steg om 10%.</para
+></listitem>
+</varlistentry>
+
+<varlistentry>
+<term
+><guilabel
+>Prioritet</guilabel
+></term>
+<listitem
+><para
+>Ge en prioritet till din uppgift. Den här menyn erbjuder prioriteter från ett till nio, där ett är den högsta. Från början får uppgifter prioriteten fem (mittvärdet).</para
+></listitem>
+</varlistentry>
+</variablelist>
+
+</sect2>
+
+</sect1>
+
+<sect1 id="entering-data-required-fields">
+
+<title
+>Fält som krävs</title>
+
+<para
+>Det här är en översikt över vilka fält som krävs och vilka som kan vara tomma när händelser och uppgifter skrivs in:</para>
+
+<itemizedlist>
+<listitem
+><para
+>Du måste fylla i fältet <guilabel
+>Sammanfattning</guilabel
+>.</para
+></listitem>
+<listitem
+><para
+>Fliken <guilabel
+>Allmänt</guilabel
+> kan lämnas helt tom.</para
+></listitem>
+<listitem
+><para
+>Om du ställer in <guilabel
+>Påminnelse</guilabel
+>, måste du också ange tiden, och antingen ljudet som ska spelas eller programmet som ska köras.</para
+></listitem>
+<listitem
+><para
+>Fliken <guilabel
+>Deltagare</guilabel
+> kan lämnas helt tom.</para
+></listitem>
+<listitem
+><para
+>Fliken <guilabel
+>Upprepning</guilabel
+> måste bara fyllas i om du väljer att upprepa dagligen, veckovis, månadsvis eller årsvis. </para
+></listitem>
+<listitem
+><para
+>Dialogrutan <guilabel
+>Bilagor</guilabel
+> kan lämnas helt tom.</para
+></listitem>
+</itemizedlist>
+</sect1>
+</chapter>
+
+<chapter id="group-scheduling"
+>   <!--updated to 5.4.40-->
+<title
+>Gruppschema</title>
+
+<para
+>Funktionen för gruppschema i &korganizer; låter dig organisera möten och delade uppgifter, begära svar från deltagare och publicera objekt. Om du inbjuds till en händelse eller uppgift, kan du svara på den, och ange om du kan delta, eller skicka ett motförslag med ett annat arrangemang, som en annan tid eller plats. Du kan också publicera ditt ledig-upptagen schema, för att låta andra veta när du är tillgänglig, och begära samma information från andra.</para>
+
+<para
+>För närvarande schemalägger &korganizer; händelser och uppgifter genom att använda e-post för att överföra information, med en metod baserad på standardprotokollet IMIP för gruppschemaläggning. Eftersom det är en standard, används IMIP-protokollet också av många andra klienter, till exempel &Microsoft; <application
+>Outlook</application
+>, Lotus <application
+>Notes</application
+> och Novell <application
+>Evolution</application
+>. Det betyder att du kan dela händelser med andra som använder någon av dessa klienter. &korganizer; är integrerad med &kmail; för att ta emot, behandla och skicka händelser, svar på händelser, uppdateringar,återbud, etc. När du till exempel får en inbjudan i &kmail; och bestämmer dig för att acceptera den genom att klicka på länken <guilabel
+>acceptera</guilabel
+> i brevtexten, läggs händelsen till i din kalender, och ett svar skickas automatiskt till händelsens organisatör.</para>
+
+
+<!--TODO: check if to-dos work or not.-->
+<!--TODO: check what happens if you counter without this option on.-->
+
+<para
+>Om du markerar rutan <guilabel
+>Använd gruppkommunikation</guilabel
+> i <link linkend="config-main-groupscheduling"
+>&korganizer;s inställning av gruppschemaläggning</link
+>, hanterar &korganizer; gruppkommunikationen åt dig. Med andra ord behöver du sällan använda menyn <guimenu
+>Schema</guimenu
+> direkt för att utföra schemaläggningsåtgärder. Om du till exempel <link linkend="entering-data-events"
+>skapar en händelse eller uppgift</link
+> med deltagare, frågar &korganizer; dig om du vill skicka en inbjudan till deltagarna, så att du inte behöver använda menyalternativet <menuchoice
+><guimenu
+>Schema</guimenu
+> <guimenuitem
+>Skicka inbjudan till deltagare</guimenuitem
+></menuchoice
+> senare. Dessutom, om du ändrar status som deltagare i en händelse, blir du tillfrågad om du vill skicka din uppdaterade status till händelsens organisatör, så att du inte behöver använda menyalternativet <menuchoice
+><guimenu
+>Schema</guimenu
+> <guimenuitem
+>Skicka statusuppdatering</guimenuitem
+></menuchoice
+> senare.</para>
+
+
+
+<sect1 id="publish">
+<title
+>Publicera en händelse, uppgift eller journalanteckning</title>
+
+<para
+>Om du helt enkelt vill skicka en händelse, uppgift eller journalanteckning, välj menyalternativet <menuchoice
+><guimenu
+>Schema</guimenu
+> <guimenuitem
+>Publicera objektinformation...</guimenuitem
+></menuchoice
+>, när händelsen är markerad. Då visas en dialogruta, som frågar dig efter e-postadresser som ska ta emot händelsen eller uppgiften. Objektet skickas med e-post, på formatet iCalendar.</para>
+
+<para
+>Observera att du kan använda åtgärden för att e-posta vilket objekt som helst till någon, inte bara till objektets deltagare. I själva verket kan du publicera ett objekt utan några deltagare alls, eftersom publicering inte kräver ett svar från deltagarna.</para>
+
+<para
+>Ett exempel: Du spelar i ett band, och ibland ger ni live-konserter. För att underrätta era beundrare om konserterna, håller du en e-postlista. Om du använder &korganizer; för att organisera konsertdatum, kan du bara välja menyalternativet <menuchoice
+><guimenu
+>Schema</guimenu
+> <guimenuitem
+>Publicera information om objekt...</guimenuitem
+></menuchoice
+>, skriva in e-postlistans adress så skickas händelsen. Prenumeranter på e-postlistan som använder &korganizer; får automatiskt konsertdatum infogat i sina kalendrar. </para>
+
+<para
+>Att publicera en händelse enligt beskrivningen ovan informerar bara mottagaren om händelsen, men ger inte möjlighet att be om att få delta. Använd <menuchoice
+><guimenu
+>Schema</guimenu
+><guimenuitem
+>Skicka som iCalendar...</guimenuitem
+></menuchoice
+> om du istället vill tillhandahålla den möjligheten. </para>
+
+</sect1>
+
+
+<sect1 id="as-organizer">
+<title
+>Hantera ett gruppschema som organisatör</title>
+
+<para
+>När du skapar <link linkend="entering-data-events"
+>en händelse</link
+> eller <link linkend="entering-data-to-do"
+>en uppgift</link
+>, och <link linkend="entering-data-events-attendees"
+>lägger till deltagare till den</link
+>, agerar du som organisatör av händelsen. För att lägga till deltagare, använd <link linkend="entering-data-events-attendees"
+>fliken Deltagare</link
+> i dialogrutan <guilabel
+>Redigera händelse</guilabel
+> eller <guilabel
+>Redigera uppgift</guilabel
+>. I <link linkend="agenda-view"
+>agendavyn</link
+> placeras en liten <inlinemediaobject
+><imageobject
+><imagedata fileref="organizer.png" format="PNG"/></imageobject
+> <textobject
+> <phrase
+>organisatörsikon</phrase
+> </textobject
+></inlinemediaobject
+> i händelsen om du är organisatör av en händelse med gruppschemaläggning.</para>
+
+<para
+>Organisatören är ansvarig för att skicka inbjudningar, samla in deltagarnas svar, och hålla händelsens eller uppgiftens data uppdaterad för alla inblandade personer.</para>
+
+<sect2 id="request">
+<title
+>Skicka inbjudningar och behandla svar</title>
+
+<para
+>För att organisera en händelse eller uppgift, <link linkend="entering-data-events"
+>skapa den</link
+> i &korganizer; och lägg till alla som ska delta under fliken Deltagare. &korganizer; kan skicka inbjudningar till deltagarna, antingen automatiskt (beroende på <link linkend="config-main-groupscheduling"
+>inställning av &korganizer;s gruppschemaläggning</link
+>), eller genom att markera händelsen eller uppgiften och välja menyalternativet <menuchoice
+><guimenu
+>Schema</guimenu
+> <guimenuitem
+>Skicka inbjudan till deltagare</guimenuitem
+></menuchoice
+>. Deltagarna får e-post som innehåller all relevant information om händelsen eller uppgiften. De kan svara på mötesförslag genom att acceptera eller förkasta det, eller genom att ge ett motförslag. De kan också delegera eller vidarebefordra inbjudan. All denna information skickas till dig med e-post igen, och om du har ställt in &kmail; lämpligt, infogas deltagarnas svar automatiskt i din kalender. Om det finns ytterligare deltagare som är villiga att delta (t.ex. genom att acceptera en vidarebefordrad inbjudan), blir du tillfrågad om att acceptera de nya deltagarna. </para>
+
+</sect2>
+
+<sect2 id="cancel">
+<title
+>Avbryta en händelse eller uppgift</title>
+
+<para
+>För att ställa in en händelse eller uppgift måste du vara organisatören. Om du markerade rutan <guilabel
+>Använd gruppkommunikation</guilabel
+> i <link linkend="config-main-groupscheduling"
+>&korganizer;s inställning av gruppschemaläggning</link
+>, ta bara bort objektet så frågar &korganizer; dig om du vill skicka återbudet. Om inte, markera helt enkelt objektet och välj menyalternativet <menuchoice
+><guimenu
+>Schema</guimenu
+> <guimenuitem
+>Skicka återbud till deltagare</guimenuitem
+></menuchoice
+>.</para>
+
+<para
+>Den här åtgärden skickar ett meddelande om att händelsen är inställd till alla deltagare, så att de också kan ta bort objektet från sina kalendrar.</para>
+</sect2>
+</sect1>
+
+
+<sect1 id="as-attendee">
+<title
+>Uppträda som deltagare</title>
+
+<para
+>När du får e-post med en inbjudan och accepterar den, läggs händelsen eller uppgiften till i din kalender. Om det är en händelse, läggs en liten ikon <inlinemediaobject
+> <imageobject
+> <imagedata fileref="meeting-attending.png" format="PNG"/> </imageobject
+> <textobject
+> <phrase
+>Deltagarikon</phrase
+></textobject
+></inlinemediaobject
+> till vid händelsen i <link linkend="agenda-view"
+>agendavyn</link
+>.</para>
+
+<sect2 id="reply">
+<title
+>Svara på en inbjudan</title>
+
+<para
+>Om du har en inbjudan i &kmail;s inkorg kan du antingen klicka på <guibutton
+>Neka</guibutton
+> för att ignorera begäran, eller klicka på <guibutton
+>Acceptera</guibutton
+> eller <guibutton
+>Acceptera villkorligt</guibutton
+>. De sista två åtgärderna infogar objektet i din kalender. Hur som helst skickar &kmail; automatiskt ditt svar till organisatören.</para>
+
+<para
+>Du kan också <guibutton
+>Delegera</guibutton
+> eller <guibutton
+>Vidarebefordra</guibutton
+> inbjudan. När du delegerar kan du föreslå en annan person som din ersättare. Genom att använda <guibutton
+>Vidarebefordra</guibutton
+> kan du vidarebefordra inbjudan till en eller flera personer som inte ännu har bjudits in. När mottagaren av en delegering eller vidarebefordran accepterar inbjudan, blir organisatören ombedd att godkänna de nya deltagarna.</para>
+
+<para
+>Om du av någon anledning ändrar dig, redigera din status i objektets <link linkend="entering-data-events-attendees"
+>deltagarflik</link
+>. Om du markerade rutan <guilabel
+>Använd grupprogramkommunikation</guilabel
+> i <link linkend="config-main-groupscheduling"
+>&korganizer;s inställning av gruppschemaläggning</link
+>, ber &korganizer; dig att skicka e-post för att uppdatera din deltagarstatus. Om inte, välj menyalternativet <menuchoice
+><guimenu
+>Schema</guimenu
+> <guimenuitem
+>Skicka statusuppdatering</guimenuitem
+></menuchoice
+> för att skicka din statusuppdatering. </para>
+</sect2>
+
+<sect2 id="counter">
+<title
+>Skicka ett alternativt förslag</title>
+
+
+<para
+>Om du inte är nöjd med något av karaktäristiken hos händelsen eller uppgiften du bjöds in till, och vill skicka ett motförslag till organisatören (till exempel en alternativ plats eller tid), redigera bara objektet och skicka tillbaka det som ditt förslag genom att markera objektet och välja menyalternativet <menuchoice
+><guimenu
+>Schema</guimenu
+> <guimenuitem
+>Begär ändring</guimenuitem
+></menuchoice
+>.</para>
+
+<para
+>Organisatören av händelsen får ditt förslag via e-post, och kan acceptera eller förkasta det.</para>
+</sect2>
+
+<sect2 id="refresh">
+
+<title
+>Hämta senaste versionen av en händelse eller uppgift</title>
+
+<para
+>För att hämta den senaste versionen av en händelse eller uppgift, markera objektet och välj menyalternativet <menuchoice
+><guimenu
+>Schema</guimenu
+><guimenuitem
+>Begär uppdatering</guimenuitem
+></menuchoice
+>. Organisatören ska då skicka tillbaka den senaste versionen av objektet åt dig.</para>
+
+</sect2>
+</sect1>
+
+<sect1 id="free-busy">
+<title
+>Information om ledig-upptagen</title>
+
+<para
+>Informationen om ledig-upptagen representerar ett tillgänglighetsschema. Genom att ange intervallen där man redan har tidigare utfästelser, kan andra undvika att arrangera möten under dessa perioder. Observera att bara tiderna publiceras, inte händelserna, orsakerna eller deltagare.</para>
+
+<para
+>&korganizer; stöder att publicera och hämta information om ledig-upptagen, antingen manuellt eller automatiskt.</para>
+
+<para
+>För att e-posta din information om ledig-upptagen, välj menyalternativet <menuchoice
+><guimenu
+>Schema</guimenu
+> <guimenuitem
+>E-posta information om ledig-upptagen...</guimenuitem
+></menuchoice
+>. Skriv in e-postadressen du vill skicka informationen till i dialogrutan och klicka på <guilabel
+>Ok</guilabel
+>.</para>
+
+<para
+>Grupprogramservrar har oftast en standardplats dit din information om ledig-upptagen ska laddas upp, så att andra användare kan komma åt din data, och du kan komma åt andras ledig-upptagen schema. Du kan ställa in &korganizer; att ladda upp och ladda ner information om ledig-upptagen automatiskt, genom att använda dialogrutan <link linkend="config-main-views"
+>Inställning av ledig-upptagen</link
+> i &korganizer;s <guilabel
+>inställningsdialogruta</guilabel
+>.</para>
+
+<para
+>För att ladda upp din information om ledig-upptagen till servern vald i &korganizer;s inställningar, välj menyalternativet <menuchoice
+><guimenu
+>Schema</guimenu
+> <guimenuitem
+>Ladda upp information om ledig-upptagen</guimenuitem
+></menuchoice
+>.</para>
+
+</sect1>
+
+<sect1 id="examples">
+<title
+>Exempel</title>
+
+<sect2 id="examples-entering-event">
+<title
+>Skriva in en ny grupphändelse</title>
+
+<para
+>I det här exemplet ska du skriva in en händelse. Du behöver arrangera ett möte <emphasis
+>nästa måndag</emphasis
+> angående lanseringen av din nya produkt. Din chef <emphasis
+>Joan Holden</emphasis
+> kommer att vara ordförande vid mötet, <emphasis
+>ägare</emphasis
+>, och du, Jack Smith, kommer att organisera mötet, <emphasis
+>organisatör</emphasis
+>. Det blir ytterligare två <emphasis
+>deltagare</emphasis
+> (medverkande): <emphasis
+>Peter Krzinski</emphasis
+> och <emphasis
+>Kirsten Friese</emphasis
+>. Joan gav dig mötets program. Mötet börjar <emphasis
+>klockan 12</emphasis
+> och slutar <emphasis
+>13:00</emphasis
+>. Samma möte ska schemaläggas <emphasis
+>(återkommande)</emphasis
+> varje måndag. </para>
+
+<procedure>
+<step
+><para
+>Använd datumnavigatören för att gå till nästa måndag.</para
+></step>
+
+<step
+><para
+>Välj <menuchoice
+><guimenu
+>Händelser</guimenu
+> <guimenuitem
+>Ny händelse...</guimenuitem
+></menuchoice
+>, eller markera intervallet mellan <emphasis
+>12:00</emphasis
+> och <emphasis
+>13:00</emphasis
+>, och börja skriva in händelsens sammanfattning.</para
+></step>
+
+<step
+><para
+>Skriv in en passande sammanfattning. Det är viktigt att välja en riktig kort beskrivning, eftersom den visas på många ställen. Vi föreslår att du skriver in <userinput
+>Lansering av ny produkt</userinput
+>.</para
+></step>
+
+<step
+><para
+>Skriv in det detaljerade programmet för händelsen i det största rektangulära området. För det här exemplet, skriv in <userinput
+>Inledning, Planen, Avslutning</userinput
+> på tre skilda rader.</para
+></step>
+
+<step
+><para
+>Gå till fliken <guilabel
+>Påminnelser</guilabel
+>. Ställ in påminnelsetiden till 15 minuter, precis länge nog för att brygga en kopp te innan mötet börjar.</para
+></step>
+
+<step
+><para
+>Gå till fliken <guilabel
+>Allmänt</guilabel
+>. Välj <guilabel
+>Möte</guilabel
+> i dialogrutan <guilabel
+>Hantera etiketter</guilabel
+>.</para
+></step>
+
+<step
+><para
+>Gå till fliken <guilabel
+>Upprepning</guilabel
+> och välj upprepningen <guilabel
+>Veckovis</guilabel
+>.</para>
+<note
+><para
+>Det mesta arbetet har gjorts automatiskt åt dig. &korganizer;s standardvärden är veckovis återkommande. Observera också att <guilabel
+>Slutar:</guilabel
+> <guilabel
+>aldrig</guilabel
+> är valt. Det betyder att den här händelsen upprepas varje måndag (förstås med start på måndagen den 30:e augusti, 2010) till tidens ände (alltså till du tar bort den).</para
+></note
+></step>
+
+<step
+><para
+>Eftersom allt är riktigt här, klicka på fliken <guilabel
+>Deltagare</guilabel
+>.</para
+></step>
+
+<step
+><para
+>Under fliken <guilabel
+>Deltagare</guilabel
+> ska du göra följande:</para>
+<substeps>
+
+<step
+><para
+>Du märker att du är händelsens organisatör.</para
+></step>
+
+<step
+><para
+>Skriv in e-postadressen på formatet <userinput
+>Namn &#060;e-postadress&#062;</userinput
+> i det första inmatningsfältet. I vårt exempel, skriv in <userinput
+>Joan Holden &#060;jholden@dettaforetag.com&#062;</userinput
+>. <tip
+><para
+>Om deltagarna redan finns i &kde;:s adressbok, kan du trycka på knappen <guibutton
+>Välj deltagare...</guibutton
+> för att lägga till dem, istället för att skriva in namn och e-postadresser.</para
+></tip
+></para
+></step>
+
+<step
+><para
+>Välj rollen <emphasis
+>Ordförande</emphasis
+>.</para
+></step>
+
+<step
+><para
+>Skriv in <userinput
+>Peter Krzinski &#060;pkrzinski@dettaforetag.com&#062;</userinput
+> i nästa inmatningsfält.</para
+></step>
+
+<step
+><para
+>Skriv in <userinput
+>Kirsten Friese &#060;kfriese@dettaforetag.com&#062;</userinput
+> i nästa inmatningsfält. </para
+></step>
+
+</substeps>
+</step>
+
+<step
+><para
+>Om du har ställt in &korganizer; att använda grupprogramkommunikation, blir du tillfrågad om du vill skicka e-post till deltagarna, men information om händelsen och begäran om svar om rutan <guilabel
+>Begär svar</guilabel
+> under fliken <guilabel
+>Deltagare</guilabel
+> är markerad. Annars kan du skicka inbjudningarna med menyalternativet <menuchoice
+><guimenu
+>Schema</guimenu
+> <guimenuitem
+>Skicka inbjudan till deltagare</guimenuitem
+></menuchoice
+>.</para
+></step>
+
+<step
+><para
+>Granska händelseinställningen genom att klicka på flikarna. Om du är nöjd, klicka på <guibutton
+>Ok</guibutton
+>.</para
+></step>
+</procedure>
+
+<para
+>Gratulerar, du har schemalagt din första händelse!</para>
+</sect2>
+
+</sect1>
+
+</chapter>
+
+<chapter id="config"
+>  <!--updated to 5.4.40, missing General System Tray + Calendars-->
+<title
+>Inställning av &korganizer;</title>
+
+<para
+>För att ändra utseende och beteende hos &korganizer;, välj menyalternativet <menuchoice
+><guimenu
+>Inställningar</guimenu
+> <guimenuitem
+>Anpassa &korganizer;...</guimenuitem
+></menuchoice
+>. Du kan få mer information om alla inställningsalternativ och möjligheter i <xref linkend="config-main"/>.</para>
+
+<para
+>För att anpassa uppsättningen verktyg som är tillgängliga i verktygsraden, välj menyalternativet <menuchoice
+><guimenu
+>Inställningar</guimenu
+> <guimenuitem
+>Anpassa verktygsrader...</guimenuitem
+></menuchoice
+> och läs avsnittet <ulink url="help:/fundamentals/config.html#toolbars"
+>Anpassa verktygsrader</ulink
+> i &kde;:s grunder.</para>
+
+<para
+>Lokal information som datum- och tidsformat kan anpassas från systeminställningarna i modulerna <guilabel
+>Språk</guilabel
+> och <guilabel
+>Format</guilabel
+>. Modulerna kan kommas åt inne i &korganizer;, välj bara menyalternativet <menuchoice
+><guimenu
+>Inställningar</guimenu
+><guimenuitem
+>Anpassa datum och tid...</guimenuitem
+></menuchoice
+>. &korganizer; måste startas om för att ändringar som har gjorts i systeminställningarna ska få någon effekt.</para>
+
+<para
+>För att ställa in var &korganizer; lagrar och hämtar kalenderhändelser, journalanteckningar och uppgifter (i lokala filer, på grupprogramservrar, journalanteckningar etc.), kontrollera <xref linkend="managing-resources"/>.</para>
+
+<sect1 id="config-main">
+<title
+>&korganizer;s huvudinställning</title>
+
+<para
+>Inställningsdialogrutan gör att du kan anpassa ett antal olika områden i &korganizer;.</para>
+
+<sect2 id="config-main-general">
+<title
+>Sidan allmänt</title>
+
+<sect3 id="config-main-general-personal">
+<title
+>Fliken Personligt</title>
+
+<para
+>De personliga alternativen hör ihop med din personliga identitet, och diverse andra saker som inte passar in i någon av de övriga allmänna kategorierna.</para>
+
+<variablelist>
+
+<varlistentry>
+<term
+><guilabel
+>Fullständigt namn</guilabel
+></term>
+<listitem
+><para
+><guilabel
+>Fullständigt namn</guilabel
+> är från början inställt till <quote
+>Anonym</quote
+> med e-postadressen <quote
+>ingen@ingenstans</quote
+>. Du kan ändra ditt namn genom att skriva in det här direkt. Namnet visas normalt som <guilabel
+>Organisatör</guilabel
+> för uppgifter och händelser.</para
+></listitem>
+</varlistentry>
+
+<varlistentry>
+<term
+><guilabel
+>E-postadress</guilabel
+></term>
+<listitem
+><para
+><guilabel
+>E-postadress</guilabel
+> kommer att användas för att identifiera kalenderns ägare. När en annan person öppnar din kalender eller en av dina händelser, kommer han/hon inte kunna ändra den eftersom den är skrivskyddat.</para
+></listitem>
+</varlistentry>
+
+<varlistentry>
+<term
+><guilabel
+>Standardmetod för att bilägga e-post</guilabel
+></term>
+<listitem
+><para
+>Alternativet låter dig välja sätt som e-post biläggs till en händelse. Du kan bilägga det fullständiga brevet inklusive bilagor, brevet utan bilagor eller bara en länk till brevet.</para>
+<para
+>Observera att bilägga e-post utan bilagor kan invalidera dess signatur. </para
+></listitem>
+</varlistentry>
+</variablelist>
+
+</sect3>
+
+<sect3 id="config-main-general-save">
+<title
+>Spara flik</title>
+
+<variablelist>
+
+<varlistentry>
+<term
+><guilabel
+>Bekräfta borttagning</guilabel
+></term>
+<listitem
+><para
+>När du markerar rutan <guilabel
+>Bekräfta borttagning</guilabel
+>, ber &korganizer; dig bekräfta varje borttagning. Om den inte är markerad, frågar &korganizer; inte innan händelser tas bort.</para
+></listitem>
+</varlistentry>
+
+<varlistentry>
+<term
+><guilabel
+>Nya händelser, uppgifter och journalanteckningar ska</guilabel
+></term>
+<listitem
+><para
+>Det här alternativet låter dig välja att antingen lägga till en nya objekt i standardkalendern, eller låta &korganizer; fråga dig om vilken kalender som ska användas för att spara varje nytt objekt.</para>
+<para
+>Särskilt för Kolab2-server: Det rekommenderas att välja <guilabel
+>Ge en fråga om kalender att använda</guilabel
+>, om du avser att använda funktionen med delade korgar i <guilabel
+>Kolab</guilabel
+>-servern. Det låter dig hålla ordning på vilken information som bara är tillgänglig för dig, och vilken information som publiceras i delade korgar.</para>
+</listitem>
+</varlistentry>
+
+</variablelist>
+
+</sect3>
+
+<!-- System Tray tab missing-->
+
+<!-- Calendars tab missing-->
+
+</sect2>
+
+<sect2 id="config-main-time-and-date">
+<title
+>Tid och datum</title>
+
+<sect3 id="config-main-time-and-date-regional">
+<title
+>Lokal flik</title>
+
+<variablelist>
+
+<varlistentry>
+<term
+><guilabel
+>Dagen börjar vid</guilabel
+></term>
+<listitem
+><para
+>Välj tiden du startar dagen från listan i kombinationsrutan. Det kan vara tiden du oftast går upp, eller tiden du börjar arbeta. Inställningen förhindrar inte att du ställer in eller visar objekt tidigare, det ställer bara in tiden som normalt visas överst i kalendervyn. Använd rullningslisten för att visa tidigare eller senare händelser i agendavyn.</para
+></listitem>
+</varlistentry>
+
+<varlistentry>
+<term
+><guilabel
+>Helger</guilabel
+></term>
+<listitem
+><para
+>Välj ditt land i kombinationsrutans lista, eller om det inte finns med, välj <guilabel
+>(Inget)</guilabel
+>. Om ditt land är valt, känner &korganizer; igen och visar viktiga datum och helgdagar i kalendervyn.</para
+></listitem>
+</varlistentry>
+
+<varlistentry>
+<term
+><guilabel
+>Arbetsperiod</guilabel
+></term>
+<listitem
+><para
+>Alternativen <guilabel
+>Tid då arbetsdagen börjar</guilabel
+> och <guilabel
+>Tid då arbetsdagen slutar</guilabel
+> låter dig ange när arbetsdagen börjar och när den slutar. &korganizer; särskiljer arbetstimmar genom att markera dem med en annan färg än andra timmar, helgdagar och andra lediga dagar.</para>
+<para
+>Dessutom har du kryssrutor namngivna efter veckodagarna. Markera veckodagarna som är arbetsdagar för dig, för att markera arbetstiderna för dessa dagar. Att markera <guilabel
+>Undanta helgdagar</guilabel
+> förhindrar att &korganizer; markerar arbetstider för helgområdet definierat i kombinationsrutan <guilabel
+>Använd helgområde</guilabel
+> ovan.</para>
+</listitem>
+</varlistentry>
+
+<varlistentry>
+<term
+><guilabel
+>Veckans första dag</guilabel
+></term>
+<listitem
+><para
+>Välj första dagen i veckan. Normalt kan det ignoreras eftersom det ställs in av landsinställningarna.</para
+></listitem>
+</varlistentry>
+
+</variablelist>
+</sect3>
+
+<sect3 id="config-main-time-and-date-default">
+<title
+>Fliken Standardvärden</title>
+
+<variablelist>
+<varlistentry>
+<term
+><guilabel
+>Standardtid för möten</guilabel
+></term>
+<listitem
+><para
+>Välj standardstarttid för händelser i kombinationsrutans lista. När du väljer <link linkend="menu-actions-new-event"
+>Ny händelse</link
+> i menyn <link linkend="entering-data-events"
+>Händelser</link
+>, eller skapar en ny händelse på något annat sätt så att &korganizer; inte kan gissa när du vill att händelsen ska börja, anger &korganizer; den här tiden i fältet starttid som förvalt värde.</para
+></listitem>
+</varlistentry>
+
+<varlistentry>
+<term
+><guilabel
+>Standardvaraktighet för nytt möte (TT:MM)</guilabel
+></term>
+<listitem
+><para
+>Välj standardvaraktighet för händelser med nummerrutan. När du väljer <link linkend="entering-data-events"
+>Ny händelse</link
+> i menyn <link linkend="menu-actions-new-event"
+>Händelser</link
+>, eller skapar en ny händelse på något annat sätt så att &korganizer; inte kan gissa hur lång händelsen ska vara, använder &korganizer; det här som förvalt värde. </para
+></listitem>
+</varlistentry>
+
+<varlistentry>
+<term
+><guilabel
+>Påminnelser</guilabel
+></term>
+<listitem
+><para
+>Välj <guilabel
+>Standardtid för påminnelse</guilabel
+> för att bestämma hur långt innan själva händelsens schemalagda tid som påminnelsen aktiveras.</para>
+<para
+>Ange en fil att används som standardljudfil för nya påminnelser. Du kan alltid ange en annan fil under Avancerad påminnelse som kan kommas åt från händelseditorn eller uppgiftseditorn.</para>
+<para
+>Markera följande två rutor om du vill aktivera påminnelser för alla nyskapade händelser eller uppgifter. Du kan alltid stänga av påminnelserna i editorns dialogrutor.</para>
+</listitem>
+</varlistentry>
+
+</variablelist>
+</sect3>
+</sect2>
+
+<sect2 id="config-main-views">
+<title
+>Vyer</title>
+
+<para
+>De här alternativen låter dig anpassa &korganizer;s vyer:</para>
+
+<sect3 id="config-main-views-general">
+<title
+>Fliken Allmänt</title>
+<variablelist>
+<varlistentry>
+<term
+><guilabel
+>Följande dagar</guilabel
+></term>
+<listitem
+><para
+>Det här alternativet låter dig ändra antal dagar som visas av menyalternativet <guimenu
+>Nästa X dagar</guimenu
+> i menyn <guimenu
+>Gå</guimenu
+>.</para
+></listitem>
+</varlistentry>
+
+<varlistentry>
+<term
+><guilabel
+>Aktivera verktygstips som visar sammanfattningar</guilabel
+></term>
+<listitem
+><para
+>Om sammanfattningen för en händelse är längre än som får plats i den nuvarande vyn, visas inte de återstående tecknen. Markera <guilabel
+>Aktivera verktygstips som visar sammanfattningar</guilabel
+> om du vill att hela sammanfattningen ska visas när muspekaren hålls över händelsen några sekunder.</para
+></listitem>
+</varlistentry>
+
+<varlistentry>
+<term
+><guilabel
+>Uppgifter använder etikettfärger</guilabel
+></term>
+<listitem
+><para
+>Markera rutan så att uppgifter använder etikettfärger och inte färger specifika för deras tidsfrist, färdiga idag eller försenade.</para
+></listitem>
+</varlistentry>
+
+</variablelist>
+
+<para
+>Alternativ för <link linkend="description-view"
+>datumnavigering</link
+>:</para>
+
+<variablelist>
+
+<varlistentry>
+<term
+><guilabel
+>Visa objekt som upprepas dagligen</guilabel
+></term>
+<listitem
+><para
+>Om kryssrutan <guilabel
+>Visa objekt som upprepas dagligen</guilabel
+> är markerad, visas dagar som har dagligen återkommande händelser med fetstil i datumnavigatören.</para
+></listitem>
+</varlistentry>
+
+<varlistentry>
+<term
+><guilabel
+>Visa objekt som upprepas veckovis</guilabel
+></term>
+<listitem
+><para
+>Om kryssrutan <guilabel
+>Visa objekt som upprepas veckovis</guilabel
+> är markerad, visas dagar som har veckovis återkommande händelser med fetstil i datumnavigatören.</para
+></listitem>
+</varlistentry>
+
+<varlistentry>
+<term
+><guilabel
+>Visa uppgifter istället för händelser i uppgiftsvyn</guilabel
+></term>
+<listitem
+><para
+>Markera rutan för att visa dagar som innehåller uppgifter med fetstil i datumnavigeringen, när den är i uppgiftsvyn.</para
+></listitem>
+</varlistentry>
+
+<varlistentry>
+<term
+><guilabel
+>Visa journalanteckningar istället för händelser i journalvyn</guilabel
+></term>
+<listitem
+><para
+>Markera rutan för att visa dagar som innehåller journalanteckningar med fetstil i datumnavigeringen, när den är i journalvyn.</para
+></listitem>
+</varlistentry>
+
+<varlistentry>
+<term
+><guilabel
+>Veckonummer väljer en arbetsvecka i arbetsveckoläge</guilabel
+></term>
+<listitem
+><para
+>Om rutan <guilabel
+>Veckonummer väljer en arbetsvecka i arbetsveckoläge</guilabel
+> är markerad, gör ett klick på veckonumren längs kanten på datumnavigatören att man går igenom arbetsveckor istället för normala sjudagars veckor.</para
+></listitem>
+</varlistentry>
+
+</variablelist>
+</sect3>
+
+<sect3 id="config-main-views-agenda">
+<title
+>Fliken Agendavy</title>
+
+<para
+>Alternativ för <link linkend="agenda-view"
+>Agendavy</link
+>:</para>
+
+<variablelist>
+
+<varlistentry>
+<term
+><guilabel
+>Timstorlek</guilabel
+></term>
+<listitem
+><para
+>Genom att använda detta kan du bestämma höjden på raderna i agendavyn.</para
+></listitem>
+</varlistentry>
+
+<varlistentry>
+<term
+><guilabel
+>Visa ikoner i agendavyns objekt</guilabel
+></term>
+<listitem
+><para
+>Markera rutan för att visa ikoner (påminnelse, upprepning, etc.) i agendavyns objekt.</para
+></listitem>
+</varlistentry>
+
+<varlistentry>
+<term
+><guilabel
+>Visa uppgifter</guilabel
+></term>
+<listitem
+><para
+>Den här kryssrutan ändrar visning av uppgifter i dags-, vecko- och månadsvyerna i agendavyerna. Om du har för många uppgifter som har tillhörande färdigdatum, kan du behöva stänga av dem för att undvika röran.</para
+></listitem>
+</varlistentry>
+
+<varlistentry>
+<term
+><guilabel
+>Visa aktuell tid (Marcus Bains linje)</guilabel
+></term>
+<listitem
+><para
+>Den här kryssrutan visar eller döljer en röd linje i dags- eller veckovyn som anger aktuell tid (Marcus Bains linje). Linjen ger dig en indikation om hur mycket tid som är kvar till exempelvis ett möte äger rum.</para
+></listitem>
+</varlistentry>
+
+<varlistentry>
+<term
+><guilabel
+>Visa sekunder i aktuell tid (Marcus Bains linje)</guilabel
+></term>
+<listitem
+><para
+>Den här kryssrutan visar eller döljer sekunder i aktuell tid (Marcus Bains linje).</para
+></listitem>
+</varlistentry>
+
+<varlistentry>
+<term
+><guilabel
+>Val av tidsintervall i agendavyn startar händelseeditorn</guilabel
+></term>
+<listitem
+><para
+>Markera rutan för att automatiskt starta händelseeditorn när du markerar ett tidsintervall i dags- och veckovyerna. Dra musen från starttiden till sluttiden för händelsen du planerar, för att markera ett tidsintervall.</para
+></listitem>
+</varlistentry>
+<!--FIXME Icons to use dropdown box missing-->
+<varlistentry>
+<term
+><guilabel
+>Färganvändning</guilabel
+></term>
+<listitem>
+<para
+>Välj alternativet <guilabel
+>Etikett innanför, kalender utanför</guilabel
+> om du vill rita kalenderobjekt med sina tillhörande etikettfärger, med objektets kant ritad med färgen på dess kalender.</para>
+
+<para
+>Välj alternativet <guilabel
+>Kalender innanför, etikett utanför</guilabel
+> om du vill rita kalenderobjekt med sina tillhörande kalenderfärger, med objektets kant ritad med färgen på dess etikett.</para>
+
+<para
+>Välj alternativet <guilabel
+>Bara etikett</guilabel
+> om du vill rita kalenderobjekt (både inuti och kanten) med färgen på deras tillhörande etikett.</para>
+
+<para
+>Välj alternativet <guilabel
+>Bara kalender</guilabel
+> om du vill rita kalenderobjekt (både inuti och kanten) med färgen på deras kalender. </para>
+
+<para
+>Använd inställningssidan <link linkend="config-main-colors"
+>Färger och teckensnitt</link
+> för att ställa in färgerna.</para>
+</listitem>
+</varlistentry>
+
+<varlistentry>
+<term
+><guilabel
+>Färglägg upptagna dagar med en annan bakgrundsfärg</guilabel
+></term>
+<listitem
+><para
+>Markera rutan om du vill att agendans bakgrund ska fyllas med en annan färg för dagar som har minst en heldagshändelse markerad som upptagen.</para>
+<para
+>Titta i inställningsområdet för färger för att välja upptagetfärg för agendavyns bakgrund som du vill ha.</para
+></listitem>
+</varlistentry>
+
+<varlistentry>
+<term
+><guilabel
+>Visning av flera kalendrar</guilabel
+></term>
+<listitem
+><para
+>Välj om alla kalendrar ska sammanfogas till en agendavy, om varje kalender ska visas i sin egen agendavy eller om båda vyerna ska vara tillgängliga via flikar. Vyn sida vid sida kan anpassas med <guimenuitem
+>Anpassa vy</guimenuitem
+> i den sammanhangsberoende menyn. </para
+></listitem>
+</varlistentry>
+
+</variablelist>
+</sect3>
+
+<sect3 id="config-main-views-month">
+<title
+>Fliken Månadsvy</title>
+
+<para
+>Alternativ för <link linkend="month-view"
+>Månadsvy</link
+>:</para>
+
+<variablelist>
+
+<varlistentry>
+<term
+><guilabel
+>Visningsalternativ</guilabel
+></term>
+<listitem
+><para
+>Använd de första fyra kryssrutorna för att visa tiden, ikoner (påminnelse, upprepning, etc.), uppgifter eller journalanteckningar i månadsvyn.</para
+></listitem>
+</varlistentry>
+<!--FIXME Icons to use dropdown box missing-->
+
+<varlistentry>
+<term
+><guilabel
+>Färglägg upptagna dagar med en annan bakgrundsfärg</guilabel
+></term>
+<listitem
+><para
+>Markera rutan om du vill att månadsvyns bakgrund ska fyllas med en annan färg för dagar som har minst en heldagshändelse markerad som upptagen.</para>
+<para
+>Titta i inställningsområdet för färger för att välja upptagetfärg för agendavyns eller månadsvyns bakgrund som du vill ha.</para
+></listitem>
+</varlistentry>
+
+<varlistentry>
+<term
+><guilabel
+>Färganvändning</guilabel
+></term>
+<listitem>
+<para
+>Anpassa färgerna för månadsvyn som i <link linkend="config-main-views-agenda"
+>agendavyn</link
+>.</para
+></listitem>
+</varlistentry>
+
+</variablelist>
+</sect3>
+
+<sect3 id="config-main-views-todo">
+<title
+>Fliken Uppgiftsvy</title>
+
+<para
+>Alternativ för <link linkend="todo-view"
+>Uppgiftsvy</link
+>:</para>
+
+<variablelist>
+
+<varlistentry>
+<term
+><guilabel
+>Visa alltid färdiga uppgifter längst ner i listan</guilabel
+></term>
+<listitem
+><para
+>Om alternativet aktiveras, grupperas alla färdiga uppgifter alltid längst ner i uppgiftslistan.</para
+></listitem>
+</varlistentry>
+
+<varlistentry>
+<term
+><guilabel
+>Lagra färdiga uppgifter i journalanteckningar</guilabel
+></term>
+<listitem
+><para
+>Om du markerar den här kryssrutan, lägger &korganizer; automatiskt till en journalanteckning för varje färdig uppgift.</para
+></listitem>
+</varlistentry>
+
+</variablelist>
+</sect3>
+</sect2>
+
+<sect2 id="config-main-colors-fonts">
+<title
+>Färger och teckensnitt</title>
+
+<sect3 id="config-main-colors">
+<title
+>Färger</title>
+
+<para
+>Välj färg som används för helgdagar, för markering och för särskilda händelseetiketter. Du kan välja olika färger för varje etikett. För många färger kan förstås vara förvillande, så använd ditt sunda förnuft. Användning av färg beror också på <link linkend="config-main-views"
+>vyinställningarna</link
+>.</para>
+
+<variablelist>
+
+<varlistentry>
+<term
+><guilabel
+>Färg för helgdagar</guilabel
+></term>
+<listitem
+><para
+>Den här knappen visar dialogrutan <guilabel
+>Välj färg</guilabel
+>, som låter dig välja helgfärg. Helgfärgen används för helgnamn i månadsvyn och helgdatum i datumnavigatören.</para
+></listitem>
+</varlistentry>
+
+<varlistentry>
+<term
+><guilabel
+>Bakgrundsfärg för agendavy</guilabel
+></term>
+<listitem
+><para
+>Den här knappen visar dialogrutan <guilabel
+>Välj färg</guilabel
+>, som låter dig välja agendavyns bakgrundsfärg.</para
+></listitem>
+</varlistentry>
+
+<varlistentry>
+<term
+><guilabel
+>Bakgrundsfärg för upptagna dagar</guilabel
+></term>
+<listitem
+><para
+>Den här knappen visar dialogrutan <guilabel
+>Välj färg</guilabel
+>, som låter dig välja upptagetfärg för agendavyns eller månadsvyns bakgrund. Färgen används bara när alternativet för att visa upptagna dagar med en annan färg är aktiverat i någon av vyerna.</para
+></listitem>
+</varlistentry>
+
+<varlistentry>
+<term
+><guilabel
+>Färg på indikering av aktuell tid i agendavyn</guilabel
+></term>
+<listitem
+><para
+>Den här knappen visar dialogrutan <guilabel
+>Välj färg</guilabel
+>, som låter dig välja färg på linjen som visar aktuell tid (Marcus Bains linje).</para
+></listitem>
+</varlistentry>
+
+<varlistentry>
+<term
+><guilabel
+>Färg för arbetstimmar</guilabel
+></term>
+<listitem
+><para
+>Den här knappen visar dialogrutan <guilabel
+>Välj färg</guilabel
+>, som låter dig välja färg på arbetstimmarnas bakgrund i agendavyn.</para
+></listitem>
+</varlistentry>
+
+<varlistentry>
+<term
+><guilabel
+>Färg för uppgifter som ska vara klara idag</guilabel
+></term>
+<listitem
+><para
+>Den här knappen visar dialogrutan <guilabel
+>Välj färg</guilabel
+>, som låter dig välja färg för uppgifter som ska vara klara idag.</para
+></listitem>
+</varlistentry>
+
+<varlistentry>
+<term
+><guilabel
+>Färg för uppgifter som är försenade</guilabel
+></term>
+<listitem
+><para
+>Den här knappen visar dialogrutan <guilabel
+>Välj färg</guilabel
+>, som låter dig välja färg för uppgifter som är försenade.</para
+></listitem>
+</varlistentry>
+
+<varlistentry>
+<term
+><guilabel
+>Etiketter</guilabel
+></term>
+<listitem
+><para
+>Den här gruppen låter dig tilldela en färg till varje etikett. Välj en etikett i kombinationsrutan, och klicka på knappen för att visa dialogrutan <guilabel
+>Välj färg</guilabel
+>, som låter dig välja färg på etiketten. <link linkend="config-main-views"
+>Beroende på vyinställningarna</link
+> används färgen för att markera händelser och uppgifter som hör till kategorin i agenda- och i månadsvyn.</para
+></listitem>
+</varlistentry>
+
+<varlistentry>
+<term
+><guilabel
+>Resurser</guilabel
+></term>
+<listitem
+><para
+>Den här gruppen låter dig tilldela en färg till varje resurs. Välj en resurs i kombinationsrutan, och klicka på knappen för att visa dialogrutan <guilabel
+>Välj färg</guilabel
+>, som låter dig välja färg för resursen. <link linkend="config-main-views"
+>Beroende på vyinställningarna</link
+> används färgen för att markera händelser och uppgifter som lagras med resursen i agenda- och i månadsvyn.</para
+></listitem>
+</varlistentry>
+
+</variablelist>
+
+</sect3>
+
+<sect3 id="config-main-fonts">
+<title
+>Teckensnittsfliken</title>
+
+<variablelist>
+
+<varlistentry>
+<term
+><guilabel
+>Tidrad</guilabel
+></term>
+<listitem
+><para
+>Klicka på knappen för att välja teckensnitt, stil och storlek för tidraden.</para
+></listitem>
+</varlistentry>
+
+<varlistentry>
+<term
+><guilabel
+>Månadsvy</guilabel
+></term>
+<listitem
+><para
+>Klicka på knappen för att välja teckensnitt, stil och storlek för månadsvyn.</para
+></listitem>
+</varlistentry>
+
+<varlistentry>
+<term
+><guilabel
+>Agendavy</guilabel
+></term>
+<listitem
+><para
+>Klicka på knappen för att välja teckensnitt, stil och storlek för agendavyn (dag, vecka och arbetsvecka).</para
+></listitem>
+</varlistentry>
+
+<varlistentry>
+<term
+><guilabel
+>Aktuell tid</guilabel
+></term>
+<listitem
+><para
+>Klicka på knappen för att välja teckensnitt, stil och storlek för Marcus Bains linje (en färgad linje i agendavyn som anger aktuell tid).</para
+></listitem>
+</varlistentry>
+
+</variablelist>
+
+</sect3>
+
+</sect2>
+
+<sect2 id="config-main-groupscheduling">
+<title
+>Gruppschema</title>
+
+<variablelist>
+
+<varlistentry>
+<term
+><guilabel
+>Använd gruppkommunikation</guilabel
+></term>
+<listitem
+><para
+>Markera rutan för att automatiskt skicka e-post när händelser eller uppgifter som rör andra skapas, uppdateras eller tas bort. Brevet kan vara en inbjudan till deltagare i en händelse du skapat, återbud för en händelse du skapat, ett svar eller en uppdatering av din inbjudningsstatus, begäran om att en händelse ska ändras, etc. Markera alternativet om du vill använda grupprogramfunktioner (t.ex. om &kontact; ställs in som en <guilabel
+>Kolab</guilabel
+>-klient i &kde;).</para
+></listitem>
+</varlistentry>
+
+<varlistentry>
+<term
+><guilabel
+>Skicka kopia till ägaren vid sändning av händelser</guilabel
+></term>
+<listitem
+><para
+>När du markerar <guilabel
+>Skicka kopia till ägaren vid sändning av händelser</guilabel
+>, får du en kopia av alla e-postmeddelanden som &korganizer; skickar till mötesdeltagare åt dig.</para
+></listitem>
+</varlistentry>
+
+<varlistentry>
+<term
+><guilabel
+>Brevöverföring</guilabel
+></term>
+<listitem
+><para
+>Här kan du välja vilken typ av e-postöverföring du vill använda. Du kan antingen använda &kmail; eller kommandot sendmail (som måste vara installerat på systemet för att fungera).</para
+></listitem>
+</varlistentry>
+
+</variablelist>
+
+</sect2>
+
+<sect2 id="config-main-free-busy">
+<title
+>Ledig/upptagen</title>
+
+<para
+>Informationen om ledig-upptagen representerar ett tillgänglighetsschema. Genom att ange intervallen där man redan har tidigare utfästelser, kan andra undvika att arrangera möten under dessa perioder. Observera att bara tiderna publiceras, inte händelserna, orsakerna eller deltagare.</para>
+
+<para
+>&korganizer; stöder att publicera och hämta information om ledig-upptagen, antingen manuellt eller automatiskt.</para>
+
+<sect3 id="config-main-free-busy-publish">
+<title
+>Publicera</title>
+<para
+>Genom att publicera din information om ledig-upptagen, låter du andra ta hänsyn till din kalenders upptagetschema när du bjuds in till ett möte.</para>
+
+<variablelist>
+
+<varlistentry>
+<term
+><guilabel
+>Publicera automatiskt information om ledig-upptagen</guilabel
+></term>
+<listitem
+><para
+>Aktivera alternativet om du vill att din information om ledig-upptagen ska laddas upp automatiskt. Observera att du kan hoppa över det här alternativet och välja att e-posta eller ladda upp din ledig-upptagen information via menyn <guilabel
+>Schema</guilabel
+> i &korganizer;.</para>
+
+<para
+>Om ditt program är inställt för att fungera som <guilabel
+>&kde; Kolab-klient</guilabel
+>, krävs detta inte. <guilabel
+>Kolab2</guilabel
+>-servern tar hand om att publicera din ledig-upptagen information och hanterar åtkomst av den från andra användare.</para>
+</listitem>
+</varlistentry>
+
+<varlistentry>
+<term
+><guilabel
+>Minimal tid mellan uppladdningar (i minuter)</guilabel
+></term>
+<listitem
+><para
+>Om du väljer att automatiskt publicera din information, kan du ställa in tidsintervallet i minuter mellan varje uppladdning.</para>
+</listitem>
+</varlistentry>
+
+<varlistentry>
+<term
+><guilabel
+>Publicera (normalt 60) dagar med ledig-upptagen information</guilabel
+></term>
+<listitem
+><para
+>Ställ in antal kalenderdagar du vill ska publiceras och vara tillgängliga för andra.</para
+></listitem>
+</varlistentry>
+
+<varlistentry>
+<term
+><guilabel
+>Serverwebbadress</guilabel
+></term>
+<listitem
+><para
+>Skriv in webbadressen till servern där ledig-upptagen information ska publiceras. Fråga serverns administratör efter informationen.</para>
+<para
+>Exempel för en Kolab2-server: <userinput
+>webdavs://kolab2.com/freebusy/joe@kolab2.com.ifb</userinput
+> </para
+></listitem>
+</varlistentry>
+
+<varlistentry>
+<term
+><guilabel
+>Användarnamn</guilabel
+></term>
+<listitem
+><para
+>Skriv in inloggningsinformationen som gäller ditt konto på servern.</para>
+<para
+>Särskilt för Kolab2-servrar: Registrera din unika identifierare (UID), normalt liknar din UID din e-postadress på Kolab2-servern, men den kan också vara annorlunda. I det senare fallet, skriv in din UID. Fråga serveradministratören om din UID om du inte känner till den.</para
+></listitem>
+</varlistentry>
+
+<varlistentry>
+<term
+><guilabel
+>Lösenord</guilabel
+></term>
+<listitem
+><para
+>Skriv in ditt lösenord här (inloggningslösenord på servern).</para
+></listitem>
+</varlistentry>
+
+<varlistentry>
+<term
+><guilabel
+>Kom ihåg lösenord</guilabel
+></term>
+<listitem
+><para
+>Markera det här alternativet om du vill att &korganizer; ska komma ihåg ditt lösenord och inte fråga dig varje gång du laddar upp din ledig-upptagen information.</para>
+<warning
+><para
+>Det rekommenderas inte att lagra lösenordet i inställningsfilen av säkerhetsskäl.</para
+></warning
+></listitem>
+</varlistentry>
+
+</variablelist>
+
+</sect3>
+
+<sect3 id="config-main-free-busy-retrieve">
+<title
+>Hämta</title>
+
+<para
+>Genom att hämta andra personers information om ledig-upptagen, kan du ta hänsyn till deras upptagettider i schemat när du bjuder in dem till en händelse.</para>
+
+<variablelist>
+
+<varlistentry>
+<term
+><guilabel
+>Hämta andras ledig-upptagen information automatiskt</guilabel
+></term>
+<listitem
+><para
+>Automatisera processen att hämta andra användares ledig-upptagen information. Fyll i rutan med serverinformationen nedan för att aktivera alternativet.</para
+></listitem>
+</varlistentry>
+
+<varlistentry>
+<term
+><guilabel
+>Använd hela e-postadressen vid hämtning</guilabel
+></term>
+<listitem
+><para
+>Den här inställningen låter dig ändra namnet på filen som hämtas från servern. Om du markerar alternativet, laddas en ledig-upptagen fil som heter <userinput
+>användare@domän.ifb</userinput
+> ner, annars hämtas <userinput
+>användare.ifb</userinput
+>. Fråga administratören om du inte är säker på hur alternativet ska ställas in.</para>
+<para
+><guilabel
+>Särskilt för Kolab2-server:</guilabel
+> Om du ställer in &korganizer; som en komponent för en <guilabel
+>&kde; Kolab-klient (&kontact;/Kolab)</guilabel
+> måste du markera alternativet.</para
+></listitem>
+</varlistentry>
+
+<varlistentry>
+<term
+><guilabel
+>Serverwebbadress</guilabel
+></term>
+<listitem
+><para
+>Skriv in webbadressen till servern där ledig-upptagen information ska hämtas. Fråga serveradministratören efter informationen.</para>
+<para
+><guilabel
+>Exempel för Kolab2-server:</guilabel
+> <userinput
+>webdavs://kolab2.com/freebusy/</userinput
+> </para
+></listitem>
+</varlistentry>
+
+<varlistentry>
+<term
+><guilabel
+>Användarnamn</guilabel
+></term>
+<listitem
+><para
+>Skriv in inloggningsinformationen som gäller ditt konto på servern.</para>
+</listitem>
+</varlistentry>
+
+<varlistentry>
+<term
+><guilabel
+>Lösenord</guilabel
+></term>
+<listitem
+><para
+>Skriv in ditt lösenord här (inloggningslösenord på servern). </para
+></listitem>
+</varlistentry>
+
+<varlistentry>
+<term
+><guilabel
+>Kom ihåg lösenord</guilabel
+></term>
+<listitem
+><para
+>Markera det här alternativet om du vill att &korganizer; ska komma ihåg ditt lösenord och inte fråga dig varje gång ledig-upptagen filerna hämtas.</para>
+<warning
+><para
+>Det rekommenderas inte att lagra lösenordet i inställningsfilen av säkerhetsskäl.</para
+></warning>
+</listitem>
+</varlistentry>
+
+</variablelist>
+</sect3>
+</sect2>
+
+<sect2 id="config-main-plugins">
+<title
+>Insticksprogram</title>
+
+<para
+>För mer information om att anpassa insticksprogram, se <xref linkend="plugins-chapter"/></para>
+
+</sect2>
+
+<sect2 id="config-custom-pages">
+<title
+>Egna sidor</title>
+
+<para
+>Sidan gör det möjligt att lägga till egna element i det grafiska användargränssnittet för att lagra egna värden i &korganizer;.</para>
+<para
+>Skapa egna element som beskrivs i <guilabel
+>Hur fungerar detta?</guilabel
+></para>
+
+</sect2>
+</sect1>
+
+</chapter>
+
+<chapter id="plugins-chapter"
+><!--updated to 5.4.40-->
+
+<title
+>Insticksprogram</title>
+
+<para
+>&korganizer; tillhandahåller möjlighet att utöka programmet med insticksprogram. </para>
+
+<para
+>Insticksprogrammen kan anpassas i &korganizer;s huvudinställningsdialogruta. Välj menyalternativet <menuchoice
+> <guimenu
+>Inställningar</guimenu
+> <guimenuitem
+>Anpassa &korganizer;</guimenuitem
+> </menuchoice
+> och klicka på ikonen <guilabel
+>Insticksprogram</guilabel
+> i dialogrutans sidorad med ikonlistan. </para>
+
+<sect1 id="plugins-chapter-availableplugins">
+<title
+>Tillgängliga insticksprogram</title>
+
+<sect2 id="date-numbers-plugin">
+<title
+>Insticksprogrammet för datumnummer i kalendrar</title>
+<para
+>Insticksprogrammet lägger till dagens nummer under året i agendavyn. Första februari är till exempel dag nummer 32. </para>
+</sect2>
+
+<sect2 id="wikipedia-thisday-plugin">
+<title
+>Insticksprogram med 'Den här dagen i historien' från Wikipedia</title>
+<para
+>Insticksprogrammet tillhandahåller länkar till Wikipedias sida <quote
+>Dagen i historien</quote
+> </para>
+</sect2>
+
+<sect2 id="wikipedia-pictureoftheday-plugin">
+<title
+>Insticksprogram för kalendrar med Dagens bild från Wikipedia</title>
+<para
+>Insticksprogrammet tillhandahåller länkar till Wikipedias sida <quote
+>Dagens bild</quote
+>. </para>
+</sect2>
+
+<sect2 id="jewish-calendar-plugin">
+<title
+>Insticksprogram för judisk kalender</title>
+<para
+>Insticksprogrammet tillhandahåller judiska kalenderdatum förutom de Gregorianska kalenderdatumen. Du kan välja om du vill visa israeliska helgdagar, veckans Parsha, Omers dag och/eller Chol HaMoed, i insticksprogrammets inställningsdialogruta. </para>
+</sect2>
+
+</sect1>
+
+</chapter>
+
+<chapter id="reference">
+<title
+>Referens</title>
+
+<sect1 id="reference-menus"
+><!--updated to 5.4.40, Send as iCalendar-->
+<title
+>Menyer</title>
+
+<para
+>När &korganizer; startar, visas &korganizer;s huvudfönster. Fönstret har flera olika delar: en menyrad, en verktygsrad, en månadskalender, en huvudruta med den nuvarande <quote
+>vyn</quote
+> av händelser och en uppgiftslista.</para>
+
+<para
+>Menyerna ger tillgång till alla vanliga åtgärder som kan utföras med kalendern, inklusive spara, ladda, lägga till och ta bort händelser, uppgifter och journalanteckningar, utskrift med mera.</para>
+
+<para
+>Observera att när &korganizer; används som kalenderkomponenten i &kontact; skiljer sig menyerna från det fristående programmet.</para>
+
+<sect2 id="reference-menus-file">
+<title
+>Arkiv</title>
+
+<para
+>Menyn <guimenu
+>Arkiv</guimenu
+> ger tillgång till funktioner som rör hela kalendern.</para>
+
+<variablelist>
+
+<varlistentry id="menu-file-open">
+<term
+><inlinemediaobject
+><imageobject
+><imagedata fileref="document-open.png"
+ format="PNG"/></imageobject
+></inlinemediaobject
+><menuchoice
+><shortcut
+> <keycombo action="simul"
+>&Ctrl;<keycap
+>O</keycap
+></keycombo
+> </shortcut
+> <guimenu
+>Arkiv</guimenu
+> <guimenuitem
+>Öppna</guimenuitem
+></menuchoice>
+</term>
+<listitem
+><para
+><action
+>Öppnar en fildialogruta som låter dig välja en ny vCalendar eller iCalendar att ladda.</action
+> Om du har gjort ändringar i den nuvarande kalendern, får du tillfälle att spara dem innan en ny laddas.</para>
+<para
+>För mer information om åtgärden, se <xref linkend="managing-import-export"/>.</para>
+</listitem>
+</varlistentry>
+
+<varlistentry id="menu-file-print">
+<term
+><inlinemediaobject
+><imageobject
+><imagedata fileref="document-print.png"
+ format="PNG"/></imageobject
+></inlinemediaobject
+><menuchoice
+><shortcut
+> <keycombo action="simul"
+>&Ctrl;<keycap
+>P</keycap
+></keycombo
+> </shortcut
+> <guimenu
+>Arkiv</guimenu
+> <guimenuitem
+>Skriv ut</guimenuitem
+></menuchoice>
+</term>
+<listitem
+><para
+>Välj <guimenuitem
+>Skriv ut</guimenuitem
+> eller klicka på ikonen <guilabel
+>Skriv ut</guilabel
+> för att <action
+>skriva ut den nuvarande kalendern</action
+>. Du kan ange ett datumintervall som ska skrivas ut (antingen för hand eller med kalenderkomponenten) och utskriftsstilen (dag, vecka, månad, uppgift och journal).</para
+></listitem>
+</varlistentry>
+
+<varlistentry id="menu-file-print-preview">
+<term
+><inlinemediaobject
+><imageobject>
+<imagedata fileref="document-print-preview.png"
+format="PNG"/></imageobject
+></inlinemediaobject
+><menuchoice
+><guimenu
+>Arkiv</guimenu
+><guimenuitem
+>Förhandsgranska utskrift</guimenuitem
+></menuchoice>
+</term>
+<listitem
+><para
+>Om du väljer <guimenuitem
+>Förhandsgranska utskrift</guimenuitem
+> eller klickar på ikonen <guiicon
+>Förhandsgranska utskrift</guiicon
+>, <action
+>skrivs den aktuella kalendern ut på bildskärmen, istället på skrivaren</action
+>. Använd funktionen för att kontrollera om utskriften är riktig innan den skrivs ut.</para>
+<para
+>Du kan ange ett datumintervall som ska skrivas ut (antingen för hand eller med kalenderkomponenten) och utskriftsstilen (dag, vecka, månad eller uppgift).</para>
+</listitem>
+</varlistentry>
+
+<varlistentry id="menu-file-import-calendar">
+<term
+><menuchoice
+><guimenu
+>Arkiv</guimenu
+> <guisubmenu
+>Importera</guisubmenu
+> <guimenuitem
+>Importera kalender</guimenuitem
+> </menuchoice
+></term>
+<listitem
+><para
+>Om du har en annan iCalendar- eller vCalendar-fil någonstans, och du skulle vilja <action
+>infoga dess innehåll i din egen kalender, lägga till som en ny resurs eller öppna den i ett nytt fönster</action
+>, välj det här menyalternativet. Ett bra tillfälle att göra detta är om du till exempel har tagit emot en vCalendar med några händelser via e-post.</para>
+<para
+>För mer information om åtgärden, se <xref linkend="managing-import"/>.</para>
+</listitem>
+</varlistentry>
+
+<varlistentry id="menu-file-import-ghns">
+<term
+><menuchoice
+><guimenu
+>Arkiv</guimenu
+> <guimenu
+>Importera</guimenu
+> <guimenuitem
+>Hämta heta nyheter...</guimenuitem
+> </menuchoice
+></term>
+<listitem
+><para
+>Den här åtgärden visar dialogrutan <guilabel
+>Hämta heta nyheter</guilabel
+>, som erbjuder en lista med kalendrar att ladda ner. Händelserna kan läggas till i din kalender.</para>
+<para
+>För mer information om åtgärden, se <xref linkend="managing-get-hot-new-stuff"/>.</para>
+</listitem>
+</varlistentry>
+
+<varlistentry id="menu-file-export-icalendar">
+<term
+><menuchoice
+><guimenu
+>Arkiv</guimenu
+> <guimenu
+>Exportera</guimenu
+> <guimenuitem
+>Exportera som iCalendar</guimenuitem
+> </menuchoice
+></term>
+<listitem
+><para
+>Den här åtgärden exporterar alla dina aktiva händelser, uppgifter och journalanteckningar (oberoende av vilken resurs de tillhör) som en ny iCalendar-fil.</para>
+<para
+>För mer information om åtgärden, se <xref linkend="managing-export"/>.</para>
+</listitem>
+</varlistentry>
+
+<!--not in 4.6.0
+varlistentry id="menu-file-export-ghns">
+<term
+><menuchoice>
+<guimenu
+>File</guimenu>
+<guisubmenu
+>Export</guisubmenu>
+<guimenuitem
+>Upload Hot New Stuff...</guimenuitem>
+</menuchoice
+></term>
+<listitem
+><para
+>This action will open the <guilabel
+>Upload Hot New Stuff</guilabel>
+dialog, which allow you to export calendars containing events which may be
+useful to other people, such as a conference program, a list of holidays,
+special events, &etc;</para>
+<para
+>For more information about this action, please refer to
+<xref linkend="managing-get-hot-new-stuff"/>.</para>
+</listitem>
+</varlistentry-->
+
+<varlistentry id="menu-file-archive-old">
+<term
+><menuchoice
+><guimenu
+>Arkiv</guimenu
+> <guimenuitem
+>Arkivera gamla förekomster...</guimenuitem
+> </menuchoice
+></term>
+<listitem
+><para
+><action
+>Då och då bör du ta bort gamla händelser.</action
+></para>
+<para
+>För mer information om åtgärden, se <xref linkend="managing-purge-archive"/>.</para>
+</listitem>
+</varlistentry>
+
+<varlistentry id="menu-file-purge">
+<term
+><menuchoice
+><guimenu
+>Arkiv</guimenu
+> <guimenuitem
+>Rensa färdiga uppgifter</guimenuitem
+> </menuchoice
+></term>
+<listitem
+><para
+>Den här åtgärden tar bort alla färdiga uppgifter från din aktiva kalender.</para>
+<para
+>För mer information om åtgärden, se <xref linkend="managing-purge-archive"/>.</para>
+</listitem
+></varlistentry>
+
+<varlistentry id="menu-file-quit">
+<term
+><inlinemediaobject
+><imageobject
+><imagedata
+ fileref="application-exit.png"/></imageobject
+></inlinemediaobject
+><menuchoice
+><shortcut
+> <keycombo action="simul"
+>&Ctrl;<keycap
+>Q</keycap
+></keycombo
+> </shortcut
+> <guimenu
+>Arkiv</guimenu
+> <guimenuitem
+>Avsluta</guimenuitem
+> </menuchoice>
+</term>
+<listitem
+><para
+>När du väljer <guimenuitem
+>Avsluta</guimenuitem
+> eller klickar på ikonen <guiicon
+>Avsluta</guiicon
+>, <action
+>avslutas det nuvarande kalenderfönstret, och frågar dig om du vill spara den nuvarande kalendern om den har ändrats men ännu inte sparats.</action
+></para>
+<para
+>Det här har ingen effekt på andra kalenderfönster som kan vara öppna. Du måste avsluta varje kalenderfönster vart och ett för sig.</para
+> </listitem>
+</varlistentry>
+</variablelist>
+
+</sect2>
+
+<sect2 id="reference-menus-edit">
+<title
+>Redigera</title>
+
+<para
+>Med menyn <guilabel
+>Redigera</guilabel
+> kan du redigera och söka efter händelser och uppgifter.</para>
+
+<para
+>Menyalternativen <guimenuitem
+>Klipp ut</guimenuitem
+>, <guimenuitem
+>Kopiera</guimenuitem
+>, och <guimenuitem
+>Klistra in</guimenuitem
+> beter sig på samma sätt som i andra &kde;-program. Med menyalternativet <guimenuitem
+>Sök</guimenuitem
+> kan du hitta händelser och uppgifter i hela den nuvarande kalendern.</para>
+
+<variablelist>
+
+<varlistentry id="menu-edit-undo">
+<term
+><inlinemediaobject
+><imageobject
+><imagedata fileref="edit-undo.png"
+ format="PNG"/></imageobject
+></inlinemediaobject
+><menuchoice
+><shortcut
+> <keycombo action="simul"
+>&Ctrl;<keycap
+>Z</keycap
+></keycombo
+> </shortcut
+> <guimenu
+> Redigera</guimenu
+> <guimenuitem
+>Ångra</guimenuitem
+> </menuchoice>
+</term>
+<listitem
+><para
+><action
+>Ångra senaste åtgärd</action
+>, eller med andra ord, återställ kalendern till tillståndet den hade innan den senaste åtgärden.</para
+></listitem>
+</varlistentry>
+
+<varlistentry id="menu-edit-redo">
+<term
+><inlinemediaobject
+><imageobject
+><imagedata fileref="edit-redo.png"
+ format="PNG"/></imageobject
+></inlinemediaobject
+><menuchoice
+><shortcut
+> <keycombo action="simul"
+>&Ctrl;&Shift;<keycap
+>Z</keycap
+></keycombo
+> </shortcut
+> <guimenu
+>Redigera</guimenu
+> <guimenuitem
+>Gör om</guimenuitem
+> </menuchoice>
+</term>
+<listitem
+><para
+><action
+>Gör om senaste åtgärd</action
+>, eller med andra ord, återställ kalendern till tillståndet den hade omedelbart innan den senast ångrade åtgärden.</para
+></listitem>
+</varlistentry>
+
+<varlistentry id="menu-edit-cut">
+<term
+><inlinemediaobject
+><imageobject
+><imagedata fileref="edit-cut.png"
+ format="PNG"/></imageobject
+></inlinemediaobject
+><menuchoice
+><shortcut
+> <keycombo action="simul"
+>&Ctrl;<keycap
+>X</keycap
+></keycombo
+> </shortcut
+> <guimenu
+>Redigera</guimenu
+> <guimenuitem
+>Klipp ut</guimenuitem
+> </menuchoice>
+</term>
+<listitem
+><para
+><action
+>Klipper ut händelserna som för närvarande är markerade till klippbordet, och tar bort dem från kalendern.</action
+></para
+></listitem>
+</varlistentry>
+
+<varlistentry id="menu-edit-copy">
+<term
+><inlinemediaobject
+><imageobject
+><imagedata fileref="edit-copy.png"
+ format="PNG"/></imageobject
+></inlinemediaobject
+><menuchoice
+><shortcut
+> <keycombo action="simul"
+>&Ctrl;<keycap
+>C</keycap
+></keycombo
+> </shortcut
+> <guimenu
+>Redigera</guimenu
+> <guimenuitem
+>Kopiera</guimenuitem
+></menuchoice>
+</term>
+<listitem
+><para
+><action
+>Kopierar händelserna som för närvarande är markerade till klippbordet, men lämnar dem orörda.</action
+></para
+></listitem>
+</varlistentry>
+
+<varlistentry id="menu-edit-paste">
+<term
+><inlinemediaobject
+><imageobject
+><imagedata fileref="edit-paste.png"
+ format="PNG"/></imageobject
+></inlinemediaobject
+><menuchoice
+><shortcut
+> <keycombo action="simul"
+>&Ctrl;<keycap
+>V</keycap
+></keycombo
+> </shortcut
+> <guimenu
+>Redigera</guimenu
+> <guimenuitem
+>Klistra in</guimenuitem
+></menuchoice>
+</term>
+<listitem
+><para
+><guimenuitem
+>Klistra in</guimenuitem
+> <action
+>infogar klippbordets innehåll i din kalender</action
+>. Klippbordet måste innehålla ett giltigt vCalendar- eller iCalendar-objekt, som antingen tillhandahållet av en tidigare klipp- eller kopieringsåtgärd eller från en markering som gjorts utanför &korganizer;. Du får en varning om klippbordets innehåll inte kan förstås.</para>
+<tip
+><para
+>Du kan alltid använda snabbtangenterna <keycombo action="simul"
+>&Ctrl; <keycap
+>C</keycap
+></keycombo
+> och <keycombo action="simul"
+>&Ctrl; <keycap
+>V</keycap
+></keycombo
+> för att på ett säkert sätt kopiera textdata från vilket annat program som helst till &korganizer;s fönster för att redigera händelser och vice versa. </para
+></tip
+></listitem>
+</varlistentry>
+
+<varlistentry id="menu-edit-delete">
+<term
+><inlinemediaobject
+><imageobject
+><imagedata fileref="edit-delete.png"
+ format="PNG"/></imageobject
+></inlinemediaobject
+><menuchoice
+><guimenu
+>Redigera</guimenu
+> <guimenuitem
+>Ta bort</guimenuitem
+> </menuchoice>
+</term>
+<listitem
+><para
+><action
+>Ta bort händelserna som för närvarande är markerade, och stryk dem från kalendern.</action
+></para
+></listitem>
+</varlistentry>
+
+<varlistentry id="menu-edit-find">
+<term
+><inlinemediaobject
+><imageobject
+><imagedata fileref="edit-find.png"
+ format="PNG"/></imageobject
+></inlinemediaobject
+><menuchoice
+><shortcut
+> <keycombo action="simul"
+>&Ctrl;<keycap
+>F</keycap
+></keycombo
+> </shortcut
+> <guimenu
+>Redigera</guimenu
+> <guimenuitem
+>Sök</guimenuitem
+> </menuchoice>
+</term>
+<listitem
+><para
+>Välj <guimenuitem
+>Sök</guimenuitem
+> från menyn <guimenu
+>Redigera</guimenu
+> eller klicka på ikonen <guiicon
+>Sök</guiicon
+> för att <action
+>hitta händelser, uppgifter och journalanteckningar enligt deras sammanfattning, beskrivning och/eller etiketter</action
+>.</para>
+<para
+>För mer information om åtgärden, se <xref linkend="search-view"/>.</para>
+</listitem>
+</varlistentry>
+</variablelist>
+
+</sect2>
+
+<sect2 id="reference-menus-view">
+<title
+>Visa</title>
+
+<para
+>Det finns flera olika <quote
+>vyer</quote
+> tillgängliga för att visa händelser, uppgifter och journalanteckningar. &korganizer; är smart nog att komma ihåg vilken den senaste vyn är mellan sessioner, och nästa gång den startas, visas den senaste vyn.</para>
+
+<para
+>I allmänhet ger varje vy en möjlighet att visa journalanteckningar, händelser och uppgifter som är begränsade till en viss tidsperiod eller visningsstil. Klicka på vilket objekt som helst för att välja det för ytterligare behandling. <mousebutton
+>Höger</mousebutton
+>klicka på ett objekt för att visa en meny med alternativ som <guimenuitem
+>Redigera</guimenuitem
+>, <guimenuitem
+>Ta bort</guimenuitem
+> och så vidare. Du kan också använda menyn <guimenu
+>Händelser</guimenu
+> för att utföra liknande åtgärder.</para>
+
+<variablelist>
+
+<varlistentry id="menu-view-agenda">
+<term
+><inlinemediaobject
+><imageobject
+><imagedata fileref="view-calendar-agenda.png"
+ format="PNG"/></imageobject
+></inlinemediaobject
+><menuchoice
+><guimenu
+>Visa</guimenu
+> <guimenuitem
+>Agenda</guimenuitem
+> </menuchoice
+></term>
+<listitem
+><para
+><action
+>Byt visning till agendavyn.</action>
+</para>
+<para
+>För mer information om åtgärden, se <xref linkend="agenda-view"/>.</para>
+</listitem>
+</varlistentry>
+
+<varlistentry id="menu-view-month">
+<term
+><inlinemediaobject
+><imageobject
+><imagedata fileref="view-calendar-month.png"
+ format="PNG"/></imageobject
+></inlinemediaobject
+><menuchoice
+><guimenu
+>Visa</guimenu
+> <guimenuitem
+>Månadsvy</guimenuitem
+> </menuchoice
+></term>
+<listitem
+><para
+><action
+>Byt visning till månad.</action>
+</para>
+<para
+>För mer information om åtgärden, se <xref linkend="month-view"/>.</para>
+</listitem>
+</varlistentry>
+
+<varlistentry id="menu-view-timeline">
+<term
+><inlinemediaobject
+><imageobject
+><imagedata fileref="view-calendar-timeline.png"
+ format="PNG"/></imageobject
+></inlinemediaobject
+><menuchoice
+><guimenu
+>Visa</guimenu
+> <guimenuitem
+>Tidslinje</guimenuitem
+> </menuchoice
+></term>
+<listitem
+><para
+><action
+>Byt visning till tidslinjevyn.</action>
+</para>
+<para
+>För mer information om åtgärden, se <xref linkend="timeline-view"/>.</para>
+</listitem>
+</varlistentry>
+
+<varlistentry id="menu-view-todo">
+<term
+> <inlinemediaobject
+><imageobject
+><imagedata
+ fileref="view-calendar-tasks.png"
+format="PNG"/></imageobject
+></inlinemediaobject
+><menuchoice
+><guimenu
+>Visa</guimenu
+> <guimenuitem
+>Uppgiftslista</guimenuitem
+></menuchoice>
+ </term>
+<listitem
+><para
+><action
+>Byt visning till uppgiftslistan.</action
+></para>
+<para
+>För mer information om åtgärden, se <xref linkend="todo-view"/>.</para>
+</listitem>
+</varlistentry>
+
+<varlistentry id="menu-view-list">
+<term
+><inlinemediaobject
+><imageobject
+><imagedata fileref="view-calendar-list.png"
+ format="PNG"/></imageobject
+></inlinemediaobject
+><menuchoice
+><guimenu
+>Visa</guimenu
+> <guimenuitem
+>Händelselista</guimenuitem
+></menuchoice>
+</term>
+<listitem
+><para
+><action
+>Byt visning till listvyn.</action
+></para>
+<para
+>För mer information om åtgärden, se <xref linkend="list-view"/>.</para>
+</listitem>
+</varlistentry>
+
+<varlistentry id="menu-view-whatsnext">
+<term
+><inlinemediaobject
+><imageobject
+><imagedata fileref="view-calendar-upcoming-events.png"
+ format="PNG"/></imageobject
+></inlinemediaobject
+><menuchoice
+><guimenu
+>Visa</guimenu
+> <guimenuitem
+>Vad står på tur</guimenuitem
+></menuchoice>
+</term>
+<listitem
+><para
+><action
+>Byt visning till vyn Vad står på tur.</action
+></para>
+<para
+>Den här vyn visar kommande händelser och uppgifter. Händelser och uppgifter visas en per rad.</para>
+<para
+>För mer information om åtgärden, se <xref linkend="whatsnext-view"/>.</para>
+</listitem>
+</varlistentry>
+
+<varlistentry id="menu-view-journal">
+<term
+><inlinemediaobject
+><imageobject
+><imagedata
+ fileref="journal-new.png"
+format="PNG"/></imageobject
+></inlinemediaobject
+><menuchoice
+><guimenu
+>Visa</guimenu
+> <guimenuitem
+>Journal</guimenuitem
+> </menuchoice>
+</term>
+<listitem
+><para
+><action
+>Byt visning till journalvyn.</action
+></para>
+<para
+>För mer information om åtgärden, se <xref linkend="journal-view"/>.</para
+></listitem>
+</varlistentry>
+
+<varlistentry id="menu-view-update">
+<term
+><menuchoice
+><guimenu
+>Visa</guimenu
+> <guimenuitem
+>Uppdatera</guimenuitem
+> </menuchoice
+></term>
+<listitem
+><para>
+<action
+>Uppdatera eller uppfriskar den vy som visas för närvarande.</action>
+</para
+></listitem>
+</varlistentry>
+
+<varlistentry id="menu-view-zoom">
+<term
+><menuchoice
+><guimenu
+>Visa</guimenu
+> <guimenuitem
+>Zooma</guimenuitem
+></menuchoice
+></term>
+<listitem
+><para
+><action
+>Använd den här undermenyn för att justera nuvarande vy att visa mer eller mindre data.</action
+></para>
+<para
+>Du kan använda zoomåtgärderna i agendavyn (dags- och veckovyn) för att visa fler eller färre dagar (<menuchoice
+><guisubmenu
+>Zooma</guisubmenu
+> <guimenuitem
+>In horisontellt</guimenuitem
+></menuchoice
+> och <menuchoice
+><guisubmenu
+>Zooma</guisubmenu
+> <guimenuitem
+>Ut horisontellt</guimenuitem
+></menuchoice
+>), eller fler eller färre timmar under dagen (<menuchoice
+><guisubmenu
+>Zooma</guisubmenu
+> <guimenuitem
+>In vertikalt</guimenuitem
+></menuchoice
+> och <menuchoice
+><guisubmenu
+>Zooma</guisubmenu
+> <guimenuitem
+>Ut vertikalt</guimenuitem
+></menuchoice
+>).</para
+></listitem>
+</varlistentry>
+
+<varlistentry id="menu-view-filter">
+<term
+><menuchoice
+><guimenu
+>Visa</guimenu
+> <guimenuitem
+>Filter</guimenuitem
+> </menuchoice
+></term>
+<listitem
+><para
+>Den här undermenyn ger möjlighet att komma åt filtren som redan skapats genom att använda dialogrutan <link linkend="menu-settings-edit-filters"
+><guilabel
+>Redigera kalenderfilter</guilabel
+></link
+>. <action
+>Välj filtret som ska användas i &korganizer;s vy i undermenyn</action
+>. Om du inte vill använda ett filter, välj <guilabel
+>Inget filter</guilabel
+>.</para
+></listitem>
+</varlistentry>
+
+</variablelist>
+
+</sect2>
+
+<sect2 id="reference-menus-go">
+<title
+>Gå</title>
+
+<para
+>För mer information om att bläddra i &korganizer;s vyer, se <xref linkend="description-view"/>.</para>
+
+<variablelist>
+<varlistentry id="menu-go-previous-day">
+<term
+><inlinemediaobject
+><imageobject
+><imagedata fileref="go-previous.png"
+format="PNG"/></imageobject
+></inlinemediaobject
+><menuchoice
+><guimenu
+>Gå</guimenu
+><guimenuitem
+>Bakåt</guimenuitem
+></menuchoice>
+</term>
+<listitem
+><para
+><action
+>Gå till föregående dag, vecka eller månad, beroende på vyn.</action
+></para
+></listitem>
+</varlistentry>
+
+<varlistentry id="menu-go-next-day">
+<term
+><inlinemediaobject
+><imageobject
+><imagedata fileref="go-next.png"
+ format="PNG"/></imageobject
+></inlinemediaobject
+><menuchoice
+><guimenu
+>Gå</guimenu
+><guimenuitem
+>Framåt</guimenuitem
+></menuchoice>
+</term>
+<listitem
+><para
+><action
+>Gå till nästa dag, vecka eller månad, beroende på vyn.</action
+></para
+></listitem>
+</varlistentry>
+
+<varlistentry id="menu-go-goto-today">
+<term
+><inlinemediaobject
+><imageobject
+><imagedata fileref="go-jump-today.png"
+format="PNG"/></imageobject
+></inlinemediaobject
+><menuchoice
+><guimenu
+>Gå</guimenu
+> <guimenuitem
+>Till i dag</guimenuitem
+></menuchoice>
+</term>
+<listitem
+><para
+><action
+>Gå till tidsperioden som inkluderar dagens datum.</action
+></para
+></listitem>
+</varlistentry>
+
+<varlistentry id="menu-view-day">
+<term
+><inlinemediaobject
+><imageobject
+><imagedata fileref="go-jump-today.png"
+ format="PNG"/></imageobject
+></inlinemediaobject
+><menuchoice
+><guimenu
+>Gå</guimenu
+> <guimenuitem
+>Dag</guimenuitem
+></menuchoice>
+</term>
+<listitem
+><para
+><action
+>Byt visning till dagsvyn.</action
+></para>
+<para
+>För mer information om åtgärden, se <xref linkend="agenda-view"/>.</para>
+</listitem>
+</varlistentry>
+
+<varlistentry id="menu-view-xdays">
+<term
+><inlinemediaobject
+><imageobject
+><imagedata fileref="view-calendar-upcoming-days.png"
+ format="PNG"/></imageobject
+></inlinemediaobject
+><menuchoice
+><guimenu
+>Gå</guimenu
+> <guimenuitem
+>Nästa X dagar</guimenuitem
+></menuchoice>
+</term>
+<listitem
+><para
+><action
+>Byt visning till vyn Nästa X dagar, där X definieras i &korganizer;s huvudinställningar.</action
+></para>
+<para
+>För mer information om åtgärden, se <xref linkend="agenda-view"/>.</para>
+</listitem>
+</varlistentry>
+
+<varlistentry id="menu-view-workweek">
+<term
+><inlinemediaobject
+><imageobject
+><imagedata
+ fileref="view-calendar-workweek.png"
+format="PNG"/></imageobject
+></inlinemediaobject
+><menuchoice
+><guimenu
+>Gå</guimenu
+> <guimenuitem
+>Arbetsvecka</guimenuitem
+></menuchoice>
+</term>
+<listitem
+><para
+><action
+>Byt visning till arbetsveckovyn.</action
+></para>
+<para
+>Det här är samma som veckovyn, utom att bara veckans arbetsdagar visas.</para>
+<para
+>För mer information om åtgärden, se <xref linkend="agenda-view"/>.</para>
+</listitem>
+</varlistentry>
+
+<varlistentry id="menu-view-week">
+<term
+><inlinemediaobject
+><imageobject
+><imagedata fileref="view-calendar-week.png"
+ format="PNG"/></imageobject
+></inlinemediaobject
+><menuchoice
+><guimenu
+>Gå</guimenu
+> <guimenuitem
+>Vecka</guimenuitem
+></menuchoice>
+</term>
+<listitem
+><para
+><action
+>Byt visning till veckovyn.</action
+></para>
+<para
+>Veckovyn tillhandahåller en vy som liknar dagsvyn. Händelser för sju dagar visas intill varandra. Alla funktioner som är tillgängliga i dagsvyn är också tillgängliga i veckovyn.</para>
+<para
+>För mer information om åtgärden, se <xref linkend="agenda-view"/>.</para
+></listitem>
+</varlistentry>
+
+</variablelist>
+
+</sect2>
+
+<sect2 id="reference-menus-actions">
+<title
+>Händelser</title>
+
+<variablelist>
+<varlistentry id="menu-actions-new-event">
+<term
+><inlinemediaobject
+><imageobject
+><imagedata fileref="appointment-new.png"
+format="PNG"/></imageobject
+></inlinemediaobject
+><menuchoice
+><guimenu
+>Händelser</guimenu
+> <guimenuitem
+>Ny händelse...</guimenuitem
+> </menuchoice>
+</term>
+<listitem
+><para
+>Välj <guilabel
+>Ny händelse...</guilabel
+> för att <action
+>skapa en ny händelse</action
+></para>
+<para
+>Du kan få en detaljerad beskrivning av händelsefönstret i avsnittet <link linkend="entering-data-events"
+>Skriva in händelser</link
+>.</para
+></listitem>
+</varlistentry>
+
+<varlistentry id="menu-actions-new-todo">
+<term
+><inlinemediaobject
+><imageobject
+><imagedata fileref="view-task.png"
+format="PNG"/></imageobject
+></inlinemediaobject
+><menuchoice
+><guimenu
+>Händelser</guimenu
+> <guimenuitem
+>Ny uppgift...</guimenuitem
+> </menuchoice>
+</term>
+<listitem
+><para
+>Välj <guilabel
+>Ny uppgift...</guilabel
+> för att <action
+>skapa en ny uppgift</action
+>. Från början har uppgiften inget färdigdatum, men du kan ange ett.</para>
+<para
+>Läs en detaljerad beskrivning av uppgiftsfönstret i avsnittet <link linkend="entering-data-to-do"
+>Skriva in uppgifter</link
+>.</para
+></listitem>
+</varlistentry>
+
+<varlistentry id="menu-actions-new-subtodo">
+<term
+><menuchoice
+><guimenu
+>Händelser</guimenu
+> <guimenuitem
+>Ny deluppgift...</guimenuitem
+> </menuchoice
+></term>
+<listitem
+><para
+>Välj <guilabel
+>Ny deluppgift...</guilabel
+> för att <action
+>börja skriva in en ny deluppgift. Deluppgiften kommer att ingå i uppgiften som för närvarande är markerad.</action
+>. Från början har uppgiften inget färdigdatum, men du kan ange ett.</para>
+<para
+>Läs en detaljerad beskrivning av uppgiftsfönstret i avsnittet <link linkend="entering-data-to-do"
+>Skriva in uppgifter</link
+>.</para
+></listitem>
+</varlistentry>
+
+<varlistentry id="menu-actions-new-journal">
+<term
+><inlinemediaobject
+><imageobject
+><imagedata fileref="journal-new.png"
+format="PNG"/></imageobject
+></inlinemediaobject
+><menuchoice
+><guimenu
+>Händelser</guimenu
+> <guimenuitem
+>Ny journal...</guimenuitem
+> </menuchoice
+></term>
+<listitem
+><para
+>Välj <guilabel
+>Ny journal...</guilabel
+> för att <action
+>börja skriva en ny journalanteckning</action
+>.</para
+></listitem>
+</varlistentry>
+
+<varlistentry id="menu-actions-show-event">
+<term
+><menuchoice
+><guimenu
+>Händelser</guimenu
+> <guimenuitem
+>Visa</guimenuitem
+> </menuchoice
+></term>
+<listitem
+><para
+>Välj <guilabel
+>Visa</guilabel
+> för att <action
+>öppna en dialogruta som visar information om journalanteckningen, händelsen eller uppgiften som för närvarande är markerad.</action
+></para
+></listitem>
+</varlistentry>
+
+<varlistentry id="menu-actions-edit-event">
+<term
+><menuchoice
+><guimenu
+>Händelser</guimenu
+> <guimenuitem
+>Redigera...</guimenuitem
+> </menuchoice
+></term>
+<listitem
+><para
+>Välj <guilabel
+>Redigera...</guilabel
+> för att <action
+>redigera journalanteckningen, händelsen eller uppgiften som för närvarande är markerad.</action
+></para
+></listitem>
+</varlistentry>
+
+<varlistentry id="menu-actions-delete-event">
+<term
+><menuchoice
+><shortcut
+> <keysym
+>Del</keysym
+> </shortcut
+> <guimenu
+>Händelser</guimenu
+> <guimenuitem
+>Ta bort</guimenuitem
+> </menuchoice
+></term>
+<listitem
+><para
+>Välj <guilabel
+>Ta bort</guilabel
+> för att <action
+>ta bort journalanteckningen, händelsen eller uppgiften som för närvarande är markerad.</action
+></para
+></listitem>
+</varlistentry>
+
+<varlistentry id="menu-actions-make-subtodo-independent">
+<term
+><menuchoice
+><guimenu
+>Händelser</guimenu
+> <guimenuitem
+>Gör deluppgift oberoende</guimenuitem
+> </menuchoice
+></term>
+<listitem
+><para
+>Välj <guilabel
+>Gör deluppgift oberoende</guilabel
+> för att koppla loss deluppgiftobjektet som för närvarande är markerat från dess överliggande uppgift och gör det till ett oberoende uppgiftsobjekt.</para
+></listitem>
+</varlistentry>
+
+</variablelist>
+
+</sect2>
+
+<sect2 id="reference-menus-schedule">
+<title
+>Schema</title>
+
+<variablelist>
+
+<varlistentry id="menu-schedule-publish">
+<term
+><menuchoice
+><guimenu
+>Schema</guimenu
+> <guimenuitem
+>Publicera information om objekt...</guimenuitem
+> </menuchoice
+></term>
+<listitem
+><para
+>E-posta markerad händelse, uppgift eller journalanteckning på iCalendar-format.</para>
+<para
+>För mer information om åtgärden, se <xref linkend="publish"/>.</para
+></listitem>
+</varlistentry>
+
+<varlistentry id="menu-schedule-request">
+<term
+><menuchoice
+><guimenu
+>Schema</guimenu
+> <guimenuitem
+>Skicka inbjudan till deltagare</guimenuitem
+> </menuchoice
+></term>
+<listitem
+><para
+>Skicka markerad uppgift eller händelse till deltagarna, och om nödvändigt, begär ett svar från dem.</para>
+<para
+>För mer information om åtgärden, se <xref linkend="request"/>.</para
+></listitem>
+</varlistentry>
+
+<varlistentry id="menu-schedule-reply">
+<term
+><menuchoice
+><guimenu
+>Schema</guimenu
+> <guimenuitem
+>Skicka statusuppdatering</guimenuitem
+> </menuchoice
+></term>
+<listitem
+><para
+>Om du ändrade din status som deltagare, välj det här menyalternativet för att skicka din uppdaterade status (accepterar, möjlig, etc.) till objektets organisatör.</para>
+<para
+>För mer information om åtgärden, se <xref linkend="reply"/>.</para
+></listitem>
+</varlistentry>
+
+<varlistentry id="menu-schedule-cancel">
+<term
+><menuchoice
+><guimenu
+>Schema</guimenu
+> <guimenuitem
+>Skicka återbud till deltagare</guimenuitem
+> </menuchoice
+></term>
+<listitem
+><para
+>Om du planerar att ställa in en händelse eller uppgift, markera den och välj det här menyalternativet för att ge deltagarna ett återbud.</para>
+<para
+>För mer information om åtgärden, se <xref linkend="cancel"/>.</para
+></listitem>
+</varlistentry>
+
+<varlistentry id="menu-schedule-refresh">
+<term
+><menuchoice
+><guimenu
+>Schema</guimenu
+> <guimenuitem
+>Begär uppdatering</guimenuitem
+> </menuchoice
+></term>
+<listitem
+><para
+>Hämta den senaste versionen av den markerade händelsen eller uppgiften från organisatören.</para>
+<para
+>För mer information om åtgärden, se <xref linkend="refresh"/>.</para
+></listitem>
+</varlistentry>
+
+<varlistentry id="menu-schedule-counter">
+<term
+><menuchoice
+><guimenu
+>Schema</guimenu
+> <guimenuitem
+>Begär ändring</guimenuitem
+> </menuchoice
+></term>
+<listitem
+><para
+>Skicka ett alternativt förslag till organisatören av markerad händelse eller uppgift. </para>
+<para
+>För mer information om åtgärden, se <xref linkend="counter"/>.</para
+></listitem>
+</varlistentry>
+
+<!--varlistentry id="menu-schedule-mail-icalendar">
+<term
+><menuchoice>
+<guimenu
+>Schedule</guimenu>
+<guimenuitem
+>Send as iCalendar...</guimenuitem>
+</menuchoice
+></term>
+<listitem
+><para
+>.</para>
+<para
+>For more information about this action, please refer to
+<xref linkend="????"/>.</para
+></listitem>
+</varlistentry-->
+
+<varlistentry id="menu-schedule-mail-freebusy">
+<term
+><menuchoice
+><guimenu
+>Schema</guimenu
+> <guimenuitem
+>E-posta information om ledig-upptagen...</guimenuitem
+> </menuchoice
+></term>
+<listitem
+><para
+>E-posta din information om ledig-upptagen till en eller flera e-postadresser.</para>
+<para
+>För mer information om åtgärden, se <xref linkend="free-busy"/>.</para
+></listitem>
+</varlistentry>
+
+<varlistentry id="menu-schedule-upload-freebusy">
+<term
+><menuchoice
+><guimenu
+>Schema</guimenu
+> <guimenuitem
+>Ladda upp information om ledig-upptagen</guimenuitem
+> </menuchoice
+></term>
+<listitem
+><para
+>Ladda upp din ledig-upptagen information till grupprogramservern. Andra användare kan därefter hämta informationen.</para>
+<para
+>För mer information om åtgärden, se <xref linkend="free-busy"/>.</para
+></listitem>
+</varlistentry>
+
+</variablelist>
+
+</sect2>
+
+<sect2 id="reference-menus-settings-help">
+<title
+>Inställningar och Hjälp</title>
+
+<para
+>Förutom de vanliga menyerna i &kde; som beskrivs i kapitlet <ulink url="help:/fundamentals/menus.html"
+>Meny</ulink
+> i dokumentet &kde;:s grunder, har &korganizer; följande programspecifika menyalternativ i Inställningar och Hjälp: </para>
+
+<variablelist>
+
+<varlistentry id="menu-settings-sidebar">
+<term
+><menuchoice
+><guimenu
+>Inställningar</guimenu
+> <guisubmenu
+>Sidorad</guisubmenu
+> </menuchoice
+></term>
+<listitem
+><para
+><action
+>Klicka på menyalternativen i undermenyn för att visa eller dölja komponenter i &korganizer;s sidorad</action
+>. Observera att sidoraden bara är synlig när <link linkend="config-main-views"
+>nuvarande vy inte använder hela fönstret.</link
+></para
+></listitem>
+</varlistentry>
+
+<varlistentry id="menu-settings-configure-date-time">
+<term
+><menuchoice
+><guimenu
+>Inställningar</guimenu
+> <guimenuitem
+>Anpassa datum och tid...</guimenuitem
+> </menuchoice
+></term>
+<listitem
+><para
+><action
+>Klicka på det här menyalternativet för att ställa in skrivbordets datum- och tidsformat</action
+>. Observera att inställningen delas med andra skrivbordsprogram.</para
+></listitem>
+</varlistentry>
+
+<varlistentry id="menu-settings-edit-filters">
+<term
+><menuchoice
+><guimenu
+>Inställningar</guimenu
+> <guimenuitem
+>Hantera vyfilter...</guimenuitem
+> </menuchoice
+></term>
+<listitem
+><para
+><action
+>Välj menyalternativet för att visa dialogrutan <guilabel
+>Redigera filter</guilabel
+></action
+>. Genom att använda dialogrutan kan du skapa, ta bort och redigera filter som påverkar vilka objekt som visas av &korganizer;.</para
+></listitem>
+</varlistentry>
+
+<varlistentry id="menu-settings-edit-categories">
+<term
+><menuchoice
+><guimenu
+>Inställningar</guimenu
+> <guimenuitem
+>Hantera etiketter...</guimenuitem
+> </menuchoice
+></term>
+<listitem
+><para
+><action
+>Välj menyalternativet för att visa dialogrutan <guilabel
+>Hantera etiketter</guilabel
+></action
+>. Med dialogrutan kan du skapa, ta bort och redigera etiketter för kalenderobjekt. Etiketter används för att organisera dina händelser och uppgifter i relaterade grupper.</para
+></listitem>
+</varlistentry>
+
+</variablelist>
+
+</sect2>
+
+</sect1>
+
+</chapter>
+
+<chapter id="other-features"
+>  <!--updated to 5.4.40-->
+<title
+>Övriga funktioner</title>
+
+<para
+>I det här kapitlet får du reda på andra användbara funktioner i &korganizer;: Vilka trick du kan göra genom att klicka med musen.</para>
+
+<sect1 id="other-features-commandline-options">
+<title
+>Kommandorad</title>
+
+<para
+>Ett bra program för att komma åt en &kde;-kalender från kommandoraden är KonsoleKalendar.</para>
+
+</sect1>
+
+<sect1 id="other-features-drag-and-drop">
+<title
+>Drag och släpp åtgärder</title>
+
+<para
+>&korganizer; är lätt att styra med musen. De drag och släpp åtgärderna som stöds beskrivs i detalj nedan.</para>
+
+<itemizedlist>
+<listitem
+><para
+>Storleken på vilken händelse som helst kan ändras med musen. Flytta helt enkelt muspekaren nära överkanten eller nederkanten på händelsen och dra kanten upp eller ner. På det här sättet kan du visuellt ändra start- och sluttid för händelsen. Det fungerar i vyerna dag, vecka och arbetsvecka.</para
+></listitem>
+<listitem
+><para
+>Vilken händelse som helst kan bokas om med musen. Flytta muspekaren till händelsen, och dra den till en ny tidsposition. Det här fungerar i vyerna dag, vecka och arbetsvecka.</para
+></listitem>
+<listitem
+><para
+>Händelser kan kopieras till andra datum som inte är synliga för tillfället. Flytta muspekaren till händelsen, och dra den till datumnavigatören till vänster om den nuvarande kalendern, eller till datumnavigatören i en annan kalender.</para>
+<tip
+><para
+>Du kan dock inte dra från agendavyn i en kalender till agendavyn i en annan kalender.</para
+></tip
+></listitem>
+<listitem
+><para
+>Verktygsrader kan dras på skärmen. Flytta muspekaren över verktygsradens grepp, och dra den till en ny placering på skärmen.</para
+></listitem>
+</itemizedlist>
+
+</sect1>
+
+</chapter>
+
+<chapter id="faq">
+<title
+>Frågor och svar</title
+> <!-- link to userbase faq? -->
+
+<qandaset id="faq-questions">
+<qandaentry>
+<question>
+<para
+>Kan jag använda ledig och upptagen tid med &korganizer;?</para>
+</question>
+<answer
+><para
+>Ja, följ instruktionerna under <link linkend="config-main-free-busy"
+>Ledig-upptagen</link
+>.</para>
+</answer>
+</qandaentry>
+</qandaset>
+
+</chapter>
+
+<chapter id="credits">
+<title
+>Tack till och licens</title>
+
+<para
+>&korganizer;</para>
+
+<para
+>Program copyright 2000-2010, &kde;-utvecklarna</para>
+
+<para
+>Bidragsgivare:</para>
+
+<itemizedlist>
+  <listitem
+><para
+>Allen Winter <email
+>winter@kde.org</email
+></para>
+</listitem>
+<listitem
+><para
+>Reinhold Kainhofer <email
+>reinhold@kainhofer.com</email
+></para>
+</listitem>
+<listitem
+><para
+>&Cornelius.Schumacher; &Cornelius.Schumacher.mail;</para>
+</listitem>
+<listitem
+><para
+>&Preston.Brown; &Preston.Brown.mail;</para>
+</listitem>
+</itemizedlist>
+
+<para
+>Dokumentation copyright 2000 &Milos.Prudek;</para>
+<para
+>Dokumentation copyright 2001 Paul E. Ahlquist, Jr <email
+>&Paul.E.Ahlquist.Jr.mail;</email
+></para>
+<para
+>Dokumentation copyright 2004 J&uuml;rgen Nagel <email
+>juergen.nagel@student.fh-reutlingen.de</email
+></para>
+<para
+>Dokumentation copyright 2005 Carlos Leonhard Woelz <email
+>carloswoelz@imap-mail.com</email
+></para>
+
+<para
+>Översättning Stefan Asserhäll <email
+>stefan.asserhall@bredband.net</email
+></para
+> &underFDL; &underGPL; </chapter>
+
+<glossary id="glossary">
+<title
+>Ordlista</title>
+
+<glossentry id="gloss-calendar-widget">
+<glossterm
+>Kalenderkomponenten</glossterm>
+<glossdef>
+
+<para
+>Ett verktyg för att välja datum inne i vissa inmatningsfönster, som händelseredigeringsfönstret. Det visas som en liten knapp till höger om datumfältet. När du klickar på knappen, ser du en kalendermånad. Använd pilarna för att gå till det önskade datumet, eller klicka på månadens namn eller årets nummer för att direkt gå till den önskade månaden eller det önskade året.</para>
+
+</glossdef>
+</glossentry>
+
+<glossentry id="gloss-date-navigator">
+<glossterm
+>Datumnavigatören</glossterm>
+<glossdef>
+
+<para
+>Kalendern som är i övre vänstra hörnet i &korganizer;s fönster. Det är det huvudsakliga sättet att navigera bland datum, och välja bland dem. De enkla pilikonerna flyttar framåt och bakåt i tiden en månad i taget, medan de dubbla pilarna tillåter förflyttning ett år i taget. Dagens datum visas med en liten ruta. Datum som har schemalagda händelser visas i fetstil. Om du vill välja ett datum, klicka helt enkelt på det. Håll nere tangenten &Ctrl; och klicka på datumen om du vill välja flera intilliggande datum på en gång. Datumen visas i huvudrutan.</para>
+
+<para
+>Återkommande händelser visas inte alltid. Du kan förhindra visning av återkommande händelser i datumnavigatören. Hämta mer information i kapitlet <link linkend="config-main-views"
+>Vyer</link
+>.</para>
+
+</glossdef>
+</glossentry>
+
+<glossentry id="gloss-due-date">
+<glossterm
+>Färdigdatum</glossterm>
+<glossdef>
+
+<para
+>Ett färdigdatum är helt enkelt datumet uppgiften måste vara avslutad. Om uppgiften till exempel är att du måste lämna tillbaka dina böcker till biblioteket innan 16:de november, så kallas det datumet <quote
+>uppgiftens färdigdatum</quote
+></para>
+
+</glossdef>
+</glossentry>
+
+<!--<glossentry id="gloss-group-scheduling">
+<glossterm
+>Group scheduling features</glossterm>
+<glossdef>
+
+<para
+>These features are planned for the future versions of &korganizer;. Group
+scheduling will facilitate member roles (attendee, owner, organizer), time
+conflict resolution, event reminder distribution, response collection and
+evaluation. In other words, you will be able to appoint attendees, invite them
+automatically, and see who accepted or refused attending the appointment.</para>
+
+<para
+>Currently, group scheduling features are not working. However, hooks exist
+in the calendar data structures for these features. <guilabel
+>Private</guilabel>
+check box, <guilabel
+>Require response</guilabel
+> check box and
+<guilabel
+>E-mail</guilabel
+> field will then be fully employed. These controls
+are described in more detail in <link linkend="entering-data"
+>Entering
+Data</link
+> chapter, in the <link
+linkend="entering-data-events-attendees"
+>Attendees section</link
+> of Windows
+reference, and in the <link linkend="config-main-personal"
+>Personal
+Preferences</link
+> section.</para>
+
+</glossdef>
+</glossentry>
+-->
+<glossentry id="gloss-main-panel">
+<glossterm
+>Huvudrutan</glossterm>
+<glossdef>
+<para
+>Normalt den största delen av skärmen, till höger om datumnavigatören. Den visar en vy av dagen, arbetsveckan, veckan eller månaden, listvyn eller uppgiftslistan.</para>
+<para
+>Höger musknapp kan bara användas i listvyn och uppgiftslistan. Den visar en lokal meny. Vänster musknapp kan användas i alla vyer.</para>
+</glossdef>
+</glossentry>
+
+<glossentry id="gloss-freebusy">
+<glossterm
+>Ledig/upptagen</glossterm>
+<glossdef>
+<para
+>Informationen om ledig-upptagen är en uppsättning upptagna tidsintervall. Genom att ange intervallen där man redan har tidigare utfästelser, kan andra undvika att arrangera möten under dessa perioder. Observera att bara tiderna publiceras, inte händelsernas titlar, beskrivningar eller deltagare. Med andra ord är informationen om ledig-upptagen tillgänglighetsschemat.</para>
+<para
+>När du lägger till deltagare i händelsen, behöver du veta om de är upptagna eller lediga just den tiden innan du skickar ut inbjudningarna. Om deltagarna gör sin information om ledig-upptagen tillgänglig, kan &korganizer; hämta informationen och visa den under fliken <guilabel
+>Ledig-upptagen</guilabel
+> i dialogrutan <guilabel
+>Redigera händelse</guilabel
+>.</para>
+</glossdef>
+</glossentry>
+
+<!--FIXME: remove this or transform in glossary items
+
+<sect1 id="course-event-types">
+<title
+>Calendar Item Types</title>
+
+<para
+>There are three types of items:</para>
+
+<itemizedlist>
+<listitem
+><para
+>Events start and finish at distinct date. You can also specify
+distinct start and finish times, but you do not have to. While business
+meetings, personal anniversaries and cinema visits are examples of carefully
+planned events with exact time scheduling, a holiday is an event that takes
+several days and thus there is no need to specify exact start and finish
+times.</para
+></listitem>
+
+<listitem
+><para
+>To-do's must take place no later than a
+certain date, but they can also take place sooner.</para
+></listitem>
+</itemizedlist>
+
+<para
+>Naturally, what began as a To-do may later require exact timing.
+Say it is July 1 and you need to go to a hairdresser within a week.
+On July 3 you talk to your hairdresser and agree on an exact time. Thus the
+original To-do becomes similar to an appointment. </para>
+
+<para
+>&korganizer; makes adding exact time to a To-do very easy. If you
+check the <guilabel
+>Due</guilabel
+> check box and/or the <guilabel
+>Start</guilabel>
+check box you can specify the appropriate dates, when you check the
+<guilabel
+>Time associated</guilabel
+> check box and fill in the associated times, your
+To-do becomes very similar to an event.</para>
+
+</sect1>
+
+-->
+
+</glossary>
+
+&documentation.index;
+
+</book>
+<!--
+Local Variables:
+mode: sgml
+sgml-minimize-attributes:nil
+sgml-general-insert-case:lower
+sgml-indent-step:0
+sgml-indent-data:nil
+End:
+
+// vim:ts=2:sw=2:tw=78:noet
+-->

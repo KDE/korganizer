@@ -1,0 +1,6251 @@
+# Translation of korganizer into Japanese.
+# This file is distributed under the same license as the kdepim package.
+# Taiki Komoda <kom@kde.gr.jp>, 2002,2003, 2004.
+# Noboru Sinohara <shinobo@leo.bekkoame.ne.jp>, 2004.
+# Toyohiro Asukai <toyohiro@ksmplus.com>, 2004.
+# Shinichi Tsunoda <tsuno@ngy.1st.ne.jp>, 2005.
+# Yukiko Bando <ybando@k6.dion.ne.jp>, 2006, 2007, 2008, 2009, 2010.
+# Fumiaki Okushi <okushi@kde.gr.jp>, 2006, 2007, 2011, 2012.
+msgid ""
+msgstr ""
+"Project-Id-Version: korganizer\n"
+"Report-Msgid-Bugs-To: https://bugs.kde.org\n"
+"POT-Creation-Date: 2022-09-26 00:46+0000\n"
+"PO-Revision-Date: 2012-01-28 16:07-0800\n"
+"Last-Translator: Fumiaki Okushi <okushi@kde.gr.jp>\n"
+"Language-Team: Japanese <kde-jp@kde.org>\n"
+"Language: ja\n"
+"MIME-Version: 1.0\n"
+"Content-Type: text/plain; charset=UTF-8\n"
+"Content-Transfer-Encoding: 8bit\n"
+"Plural-Forms: nplurals=2; plural=n != 1;\n"
+"X-Accelerator-Marker: &\n"
+"X-Text-Markup: kde4\n"
+
+#, kde-format
+msgctxt "NAME OF TRANSLATORS"
+msgid "Your names"
+msgstr "Noboru Sinohara,Shinichi Tsunoda,Yukiko Bando"
+
+#, kde-format
+msgctxt "EMAIL OF TRANSLATORS"
+msgid "Your emails"
+msgstr "shinobo@leo.bekkoame.ne.jp,tsuno@ngy.1st.ne.jp,ybando@k6.dion.ne.jp"
+
+#: aboutdata.cpp:18 kontactplugin/korganizer/journalplugin.cpp:26
+#: kontactplugin/korganizer/korganizerplugin.cpp:42
+#: kontactplugin/korganizer/todoplugin.cpp:39
+#: kontactplugin/specialdates/specialdates_plugin.cpp:23 korganizer_part.cpp:63
+#, kde-format
+msgid "KOrganizer"
+msgstr "KOrganizer"
+
+#: aboutdata.cpp:20
+#, kde-format
+msgid "A Personal Organizer"
+msgstr "個人向けスケジュール管理ソフト"
+
+#: aboutdata.cpp:22
+#, fuzzy, kde-format
+#| msgid ""
+#| "Copyright © 1997–1999 Preston Brown\n"
+#| "Copyright © 2000–2004, 2007 Cornelius Schumacher\n"
+#| "Copyright © 2004–2005 Reinhold Kainhofer\n"
+#| "Copyright © 2006–2010 Allen Winter"
+msgid ""
+"Copyright © 1997–1999 Preston Brown\n"
+"Copyright © 2000–2004, 2007 Cornelius Schumacher\n"
+"Copyright © 2004–2005 Reinhold Kainhofer\n"
+"Copyright © 2006–2012 Allen Winter\n"
+"Copyright © 2012–2022 KOrganizer authors"
+msgstr ""
+"Copyright © 1997–1999 Preston Brown\n"
+"Copyright © 2000–2004, 2007 Cornelius Schumacher\n"
+"Copyright © 2004–2005 Reinhold Kainhofer\n"
+"Copyright © 2006–2010 Allen Winter"
+
+#: aboutdata.cpp:30 kontactplugin/specialdates/specialdates_plugin.cpp:42
+#, kde-format
+msgid "Allen Winter"
+msgstr "Allen Winter"
+
+#: aboutdata.cpp:30
+#, kde-format
+msgid "Maintainer"
+msgstr "メンテナ"
+
+#: aboutdata.cpp:31
+#, kde-format
+msgid "Reinhold Kainhofer"
+msgstr "Reinhold Kainhofer"
+
+#: aboutdata.cpp:31 aboutdata.cpp:32
+#, kde-format
+msgid "Former Maintainer"
+msgstr "以前のメンテナ"
+
+#: aboutdata.cpp:32 kcmdesignerfields.cpp:133
+#, kde-format
+msgid "Cornelius Schumacher"
+msgstr "Cornelius Schumacher"
+
+#: aboutdata.cpp:33
+#, kde-format
+msgid "Preston Brown"
+msgstr "Preston Brown"
+
+#: aboutdata.cpp:33
+#, kde-format
+msgid "Original Author"
+msgstr "オリジナルの作者"
+
+#: aboutdata.cpp:34 prefs/koprefsuserfeedback.cpp:34
+#, kde-format
+msgid "Laurent Montel"
+msgstr ""
+
+#: aboutdata.cpp:34
+#, kde-format
+msgid "Developer"
+msgstr ""
+
+#: aboutdata.cpp:35
+#, kde-format
+msgid "Richard Apodaca"
+msgstr "Richard Apodaca"
+
+#: aboutdata.cpp:36
+#, kde-format
+msgid "Björn Balazs"
+msgstr ""
+
+#: aboutdata.cpp:37
+#, kde-format
+msgid "Jan-Pascal van Best"
+msgstr "Jan-Pascal van Best"
+
+#: aboutdata.cpp:38
+#, kde-format
+msgid "Bertjan Broeksema"
+msgstr ""
+
+#: aboutdata.cpp:39
+#, kde-format
+msgid "Laszlo Boloni"
+msgstr "Laszlo Boloni"
+
+#: aboutdata.cpp:40
+#, kde-format
+msgid "Barry Benowitz"
+msgstr "Barry Benowitz"
+
+#: aboutdata.cpp:41
+#, kde-format
+msgid "Christopher Beard"
+msgstr "Christopher Beard"
+
+#: aboutdata.cpp:42
+#, kde-format
+msgid "Kalle Dalheimer"
+msgstr "Kalle Dalheimer"
+
+#: aboutdata.cpp:43
+#, kde-format
+msgid "Ian Dawes"
+msgstr "Ian Dawes"
+
+#: aboutdata.cpp:44
+#, kde-format
+msgid "Thomas Eitzenberger"
+msgstr "Thomas Eitzenberger"
+
+#: aboutdata.cpp:45
+#, kde-format
+msgid "Neil Hart"
+msgstr "Neil Hart"
+
+#: aboutdata.cpp:46
+#, kde-format
+msgid "Declan Houlihan"
+msgstr "Declan Houlihan"
+
+#: aboutdata.cpp:47
+#, kde-format
+msgid "Hans-Jürgen Husel"
+msgstr "Hans-Jürgen Husel"
+
+#: aboutdata.cpp:48
+#, kde-format
+msgid "Tim Jansen"
+msgstr "Tim Jansen"
+
+#: aboutdata.cpp:49
+#, kde-format
+msgid "Christian Kirsch"
+msgstr "Christian Kirsch"
+
+#: aboutdata.cpp:50
+#, kde-format
+msgid "Tobias König"
+msgstr "Tobias König"
+
+#: aboutdata.cpp:51
+#, kde-format
+msgid "Martin Koller"
+msgstr "Martin Koller"
+
+#: aboutdata.cpp:52
+#, kde-format
+msgid "Uwe Koloska"
+msgstr "Uwe Koloska"
+
+#: aboutdata.cpp:53
+#, kde-format
+msgid "Sergio Luis Martins"
+msgstr ""
+
+#: aboutdata.cpp:54
+#, kde-format
+msgid "Mike McQuaid"
+msgstr ""
+
+#: aboutdata.cpp:55
+#, kde-format
+msgid "Glen Parker"
+msgstr "Glen Parker"
+
+#: aboutdata.cpp:56
+#, kde-format
+msgid "Dan Pilone"
+msgstr "Dan Pilone"
+
+#: aboutdata.cpp:57
+#, kde-format
+msgid "Roman Rohr"
+msgstr "Roman Rohr"
+
+#: aboutdata.cpp:58
+#, kde-format
+msgid "Rafał Rzepecki"
+msgstr "Rafał Rzepecki"
+
+#: aboutdata.cpp:58
+#, kde-format
+msgid "Part of work sponsored by Google with Summer of Code 2005"
+msgstr "Google Summer of Code 2005 による作業の一部"
+
+#: aboutdata.cpp:59
+#, kde-format
+msgid "Don Sanders"
+msgstr "Don Sanders"
+
+#: aboutdata.cpp:60
+#, kde-format
+msgid "Bram Schoenmakers"
+msgstr "Bram Schoenmakers"
+
+#: aboutdata.cpp:61
+#, kde-format
+msgid "Günter Schwann"
+msgstr "Günter Schwann"
+
+#: aboutdata.cpp:62
+#, kde-format
+msgid "Herwin Jan Steehouwer"
+msgstr "Herwin Jan Steehouwer"
+
+#: aboutdata.cpp:63
+#, kde-format
+msgid "Mario Teijeiro"
+msgstr "Mario Teijeiro"
+
+#: aboutdata.cpp:64
+#, kde-format
+msgid "Nick Thompson"
+msgstr "Nick Thompson"
+
+#: aboutdata.cpp:65
+#, kde-format
+msgid "Bo Thorsen"
+msgstr "Bo Thorsen"
+
+#: aboutdata.cpp:66
+#, kde-format
+msgid "Larry Wright"
+msgstr "Larry Wright"
+
+#: aboutdata.cpp:67
+#, kde-format
+msgid "Thomas Zander"
+msgstr "Thomas Zander"
+
+#: aboutdata.cpp:68
+#, kde-format
+msgid "Fester Zigterman"
+msgstr "Fester Zigterman"
+
+#: actionmanager.cpp:129
+#, kde-format
+msgid ""
+"<qt>This will hide the menu bar completely. You can show it again by typing "
+"%1.</qt>"
+msgstr ""
+
+#: actionmanager.cpp:132
+#, fuzzy, kde-format
+#| msgid "Time bar"
+msgid "Hide menu bar"
+msgstr "時間バー"
+
+#: actionmanager.cpp:242
+#, kde-format
+msgid "Import &Calendar..."
+msgstr "カレンダーをインポート(&C)..."
+
+#: actionmanager.cpp:243
+#, fuzzy, kde-format
+#| msgid "Import Calendar"
+msgctxt "@info:status"
+msgid "Import a calendar"
+msgstr "カレンダーをインポート"
+
+#: actionmanager.cpp:244
+#, kde-format
+msgctxt "@info:tooltip"
+msgid "Import an iCalendar or vCalendar file"
+msgstr ""
+
+#: actionmanager.cpp:246
+#, fuzzy, kde-format
+#| msgid ""
+#| "Select this menu entry if you would like to merge the contents of another "
+#| "iCalendar into your current calendar."
+msgctxt "@info:whatsthis"
+msgid ""
+"Select this menu entry if you would like to import the contents of an "
+"iCalendar or vCalendar file into your current calendar collection."
+msgstr ""
+"このメニュー項目は、他の iCalendar の内容を現在のカレンダーとマージしたいとき"
+"に選択します。"
+
+#: actionmanager.cpp:252
+#, fuzzy, kde-format
+#| msgid "New Calendar"
+msgid "Get New Calendars..."
+msgstr "新しいカレンダー"
+
+#: actionmanager.cpp:253
+#, kde-format
+msgctxt "@info:status"
+msgid "Load a calendar from \"Get Hot New Stuff\""
+msgstr ""
+
+#: actionmanager.cpp:254
+#, kde-format
+msgctxt "@info:tooltip"
+msgid "Search \"Get Hot New Stuff\" for calendars to import"
+msgstr ""
+
+#: actionmanager.cpp:256
+#, kde-format
+msgctxt "@info:whatsthis"
+msgid ""
+"This menu entry opens the \"Get Hot New Stuff\" dialog that allows you to "
+"search and import fun and useful calendars donated to the community."
+msgstr ""
+
+#: actionmanager.cpp:277
+#, kde-format
+msgid "Could not load calendar %1."
+msgstr "カレンダー “%1” を読み込めませんでした。"
+
+#: actionmanager.cpp:287
+#, kde-format
+msgid "The downloaded events will be merged into your current calendar."
+msgstr "ダウンロードされたイベントは現在のカレンダーにマージされます。"
+
+#: actionmanager.cpp:304
+#, kde-format
+msgid "Export as &iCalendar..."
+msgstr "iCalendar としてエクスポート(&I)..."
+
+#: actionmanager.cpp:305
+#, fuzzy, kde-format
+#| msgctxt "@title::window"
+#| msgid "Edit Calendar Filters"
+msgctxt "@info:status"
+msgid "Export calendar to file"
+msgstr "カレンダーフィルタの編集"
+
+#: actionmanager.cpp:306
+#, kde-format
+msgctxt "@info:tooltip"
+msgid "Export your calendar to an iCalendar file"
+msgstr ""
+
+#: actionmanager.cpp:307
+#, kde-format
+msgctxt "@info:whatsthis"
+msgid ""
+"Allows you to export your entire calendar collection to one iCalendar file."
+msgstr ""
+
+#: actionmanager.cpp:313
+#, fuzzy, kde-format
+#| msgid "Archive O&ld Entries..."
+msgid "Archive O&ld Incidences..."
+msgstr "古いアイテムをアーカイブ(&L)..."
+
+#: actionmanager.cpp:314
+#, fuzzy, kde-format
+#| msgid "Hide &recurring events and to-dos"
+msgctxt "@info:status"
+msgid "Archive events and to-dos to a file"
+msgstr "繰り返しイベントと To-Do を隠す(&R)"
+
+#: actionmanager.cpp:315
+#, kde-format
+msgctxt "@info:tooltip"
+msgid "Archive old events and to-dos to an iCalendar file"
+msgstr ""
+
+#: actionmanager.cpp:317
+#, kde-format
+msgctxt "@info:whatsthis"
+msgid ""
+"This menu entry opens a dialog that allows you to select old events and to-"
+"dos that you can archive into an iCalendar file.  They will be removed from "
+"your existing calendar collection."
+msgstr ""
+
+#: actionmanager.cpp:325
+#, kde-format
+msgid "Pur&ge Completed To-dos"
+msgstr "完了済み To-Do を一括削除(&G)"
+
+#: actionmanager.cpp:326
+#, fuzzy, kde-format
+#| msgid "Pur&ge Completed To-dos"
+msgctxt "@info:status"
+msgid "Purge completed to-dos"
+msgstr "完了済み To-Do を一括削除(&G)"
+
+#: actionmanager.cpp:327
+#, fuzzy, kde-format
+#| msgid "Delete all completed to-dos?"
+msgctxt "@info:tooltip"
+msgid "Remove completed to-dos from your calendar"
+msgstr "完了済みのすべての To-Do を削除しますか？"
+
+#: actionmanager.cpp:329
+#, kde-format
+msgctxt "@info:whatsthis"
+msgid ""
+"Allows you to remove all completed to-dos from your calendar collection. "
+"This action cannot be undone!"
+msgstr ""
+
+#. i18n: ectx: property (text), widget (QPushButton, mDeleteButton)
+#: actionmanager.cpp:366 actionmanager.cpp:621 actionmanager.cpp:1302
+#: actionmanager.cpp:1334 ui/filteredit_base.ui:56
+#, kde-format
+msgid "&Delete"
+msgstr "削除(&D)"
+
+#: actionmanager.cpp:383
+#, kde-format
+msgid "What's &Next"
+msgstr "次は何？(&N)"
+
+#: actionmanager.cpp:384
+#, fuzzy, kde-format
+#| msgid "What's &Next"
+msgctxt "@info:status"
+msgid "What's Next View"
+msgstr "次は何？(&N)"
+
+#: actionmanager.cpp:385
+#, kde-format
+msgctxt "@info:tooltip"
+msgid "Switch to the What's Next View"
+msgstr ""
+
+#: actionmanager.cpp:387
+#, kde-format
+msgctxt "@info:whatsthis"
+msgid ""
+"Switches to the \"What's Next\" View, which shows your events and to-dos "
+"that are \"coming soon\" in a short list for quick reading.  All open to-dos "
+"will be displayed, but only the events from the days selected in the Date "
+"Navigator sidebar will be shown."
+msgstr ""
+
+#: actionmanager.cpp:395
+#, kde-format
+msgid "&Month"
+msgstr "月(&M)"
+
+#: actionmanager.cpp:396
+#, fuzzy, kde-format
+#| msgctxt "@title:tab"
+#| msgid "Month View"
+msgctxt "@info:status"
+msgid "Month View"
+msgstr "月ビュー"
+
+#: actionmanager.cpp:397
+#, fuzzy, kde-format
+#| msgid "Display to-dos in the month view"
+msgctxt "@info:tooltip"
+msgid "Switch to the Month View"
+msgstr "月ビューに To-Do を表示します"
+
+#: actionmanager.cpp:399
+#, kde-format
+msgctxt "@info:whatsthis"
+msgid ""
+"Switches to the Month View, which shows all the events and due to-dos in a "
+"familiar monthly calendar layout."
+msgstr ""
+
+#: actionmanager.cpp:405
+#, kde-format
+msgid "&Agenda"
+msgstr "予定表"
+
+#: actionmanager.cpp:406
+#, fuzzy, kde-format
+#| msgctxt "@title:tab"
+#| msgid "Agenda View"
+msgctxt "@info:status"
+msgid "Agenda View"
+msgstr "予定表ビュー"
+
+#: actionmanager.cpp:407
+#, fuzzy, kde-format
+#| msgctxt "@option:check"
+#| msgid "Show at the top of the agenda views"
+msgctxt "@info:tooltip"
+msgid "Switch to the Agenda View"
+msgstr "予定表ビューの上に表示"
+
+#: actionmanager.cpp:409
+#, kde-format
+msgctxt "@info:whatsthis"
+msgid ""
+"Switches to the Agenda View, which presents your events or due to-dos for "
+"one or more days, sorted chronologically.  You can also see the length of "
+"each event in the day timetable."
+msgstr ""
+
+#: actionmanager.cpp:416
+#, kde-format
+msgid "&Event List"
+msgstr "イベントリスト(&E)"
+
+#: actionmanager.cpp:417
+#, fuzzy, kde-format
+#| msgctxt "@title:tab"
+#| msgid "Month View"
+msgctxt "@info:status"
+msgid "List View"
+msgstr "月ビュー"
+
+#: actionmanager.cpp:418
+#, kde-format
+msgctxt "@info:tooltip"
+msgid "Switch to the List View"
+msgstr ""
+
+#: actionmanager.cpp:420
+#, kde-format
+msgctxt "@info:whatsthis"
+msgid ""
+"Switches to the List View, which displays all your to-dos, events and "
+"journal entries for the dates selected in the Date Navigator as a list."
+msgstr ""
+
+#: actionmanager.cpp:426
+#, kde-format
+msgid "&To-do List"
+msgstr "To-Do リスト(&T)"
+
+#: actionmanager.cpp:427
+#, fuzzy, kde-format
+#| msgid "&To-do List"
+msgctxt "@info:status"
+msgid "To-do List View"
+msgstr "To-Do リスト(&T)"
+
+#: actionmanager.cpp:428
+#, fuzzy, kde-format
+#| msgid "Show To-do View"
+msgctxt "@info:tooltip"
+msgid "Switch to the To-do List View"
+msgstr "To-Do ビューを表示"
+
+#: actionmanager.cpp:430
+#, kde-format
+msgctxt "@info:whatsthis"
+msgid ""
+"Switches to the To-do List view, which provides a place for you to track "
+"tasks that need to be done."
+msgstr ""
+
+#: actionmanager.cpp:436
+#, kde-format
+msgid "&Journal"
+msgstr "日記(&J)"
+
+#: actionmanager.cpp:437
+#, fuzzy, kde-format
+#| msgid "Journal"
+msgctxt "@info:status"
+msgid "Journal View"
+msgstr "日記"
+
+#: actionmanager.cpp:438
+#, kde-format
+msgctxt "@info:tooltip"
+msgid "Switch to the Journal View"
+msgstr ""
+
+#: actionmanager.cpp:440
+#, kde-format
+msgctxt "@info:whatsthis"
+msgid ""
+"Switches to the Journal View, which provides a place for you to record your "
+"reflections, occurrences or experiences."
+msgstr ""
+
+#: actionmanager.cpp:446
+#, kde-format
+msgid "Time&line"
+msgstr "時系列(&L)"
+
+#: actionmanager.cpp:447
+#, fuzzy, kde-format
+#| msgid "Time&line"
+msgctxt "@info:status"
+msgid "Timeline View"
+msgstr "時系列(&L)"
+
+#: actionmanager.cpp:448
+#, kde-format
+msgctxt "@info:tooltip"
+msgid "Switch to the Timeline View"
+msgstr ""
+
+#: actionmanager.cpp:450
+#, kde-format
+msgctxt "@info:whatsthis"
+msgid ""
+"Switches to the Timeline View, which shows all events for the selected "
+"timespan in a Gantt view. Each calendar is displayed in a separate line."
+msgstr ""
+
+#: actionmanager.cpp:459
+#, kde-format
+msgid "&Refresh"
+msgstr "更新(&R)"
+
+#: actionmanager.cpp:460
+#, fuzzy, kde-format
+#| msgid "&Refresh"
+msgctxt "@info:status"
+msgid "Refresh"
+msgstr "更新(&R)"
+
+#: actionmanager.cpp:461
+#, kde-format
+msgctxt "@info:tooltip"
+msgid "Refresh the display"
+msgstr ""
+
+#: actionmanager.cpp:463
+#, kde-format
+msgctxt "@info:whatsthis"
+msgid ""
+"This action will refresh and redraw the current calendar view. It does not "
+"sync or update any calendar folders."
+msgstr ""
+
+#: actionmanager.cpp:472
+#, kde-format
+msgid "F&ilter"
+msgstr "フィルタ(&I)"
+
+#: actionmanager.cpp:473
+#, kde-format
+msgctxt "@info:status"
+msgid "Filter incidences"
+msgstr ""
+
+#: actionmanager.cpp:474
+#, kde-format
+msgctxt "@info:tooltip"
+msgid "Filter incidences from the calendar"
+msgstr ""
+
+#: actionmanager.cpp:476
+#, kde-format
+msgctxt "@info:whatsthis"
+msgid ""
+"Runs user-defined view filters on the calendar collection. Filters must be "
+"created first. See \"Manage View Filters\" option in the Settings menu."
+msgstr ""
+
+#: actionmanager.cpp:488
+#, kde-format
+msgid "In Horizontally"
+msgstr "水平方向にズームイン"
+
+#: actionmanager.cpp:493
+#, kde-format
+msgid "Out Horizontally"
+msgstr "水平方向にズームアウト"
+
+#: actionmanager.cpp:498
+#, kde-format
+msgid "In Vertically"
+msgstr "垂直方向にズームイン"
+
+#: actionmanager.cpp:503
+#, kde-format
+msgid "Out Vertically"
+msgstr "垂直方向にズームアウト"
+
+#: actionmanager.cpp:512
+#, kde-format
+msgctxt "@action Jump to today"
+msgid "To &Today"
+msgstr "今日へ(&T)"
+
+#. i18n: ectx: property (text), widget (QPushButton, mTodayBtn)
+#: actionmanager.cpp:513 views/collectionview/quickview.ui:94
+#, kde-format
+msgid "Today"
+msgstr "今日"
+
+#: actionmanager.cpp:514
+#, fuzzy, kde-format
+#| msgid "Scroll to Today"
+msgctxt "@info:status"
+msgid "Scroll to Today"
+msgstr "今日へスクロール"
+
+#: actionmanager.cpp:515
+#, fuzzy, kde-format
+#| msgid "Scroll to Today"
+msgctxt "@info:tooltip"
+msgid "Scroll the view to today"
+msgstr "今日へスクロール"
+
+#: actionmanager.cpp:516
+#, kde-format
+msgctxt "@info:whatsthis"
+msgid "Scrolls the current view to the today's date."
+msgstr ""
+
+#: actionmanager.cpp:521
+#, kde-format
+msgctxt "scroll backward"
+msgid "&Backward"
+msgstr "戻る(&B)"
+
+#: actionmanager.cpp:522
+#, kde-format
+msgctxt "scroll backward"
+msgid "Back"
+msgstr "戻る"
+
+#: actionmanager.cpp:523
+#, fuzzy, kde-format
+#| msgid "Scroll Backward"
+msgctxt "@info:status"
+msgid "Scroll Backward"
+msgstr "前へ戻る"
+
+#: actionmanager.cpp:524
+#, fuzzy, kde-format
+#| msgid "Scroll Backward"
+msgctxt "@info:tooltip"
+msgid "Scroll the view backward"
+msgstr "前へ戻る"
+
+#: actionmanager.cpp:526
+#, kde-format
+msgctxt "@info:whatsthis"
+msgid ""
+"Scrolls backward by a day, week, month or year, depending on the current "
+"calendar view."
+msgstr ""
+
+#: actionmanager.cpp:532
+#, kde-format
+msgctxt "scroll forward"
+msgid "&Forward"
+msgstr "進む(&F)"
+
+#: actionmanager.cpp:533
+#, fuzzy, kde-format
+#| msgctxt "scoll forward"
+#| msgid "Forward"
+msgctxt "scroll forward"
+msgid "Forward"
+msgstr "進む"
+
+#: actionmanager.cpp:534
+#, fuzzy, kde-format
+#| msgid "Scroll Forward"
+msgctxt "@info:status"
+msgid "Scroll Forward"
+msgstr "先へ進む"
+
+#: actionmanager.cpp:535
+#, fuzzy, kde-format
+#| msgid "Scroll Forward"
+msgctxt "@info:tooltip"
+msgid "Scroll the view forward"
+msgstr "先へ進む"
+
+#: actionmanager.cpp:537
+#, kde-format
+msgctxt "@info:whatsthis"
+msgid ""
+"Scrolls forward by a day, week, month or year, depending on the current "
+"calendar view."
+msgstr ""
+
+#: actionmanager.cpp:542
+#, kde-format
+msgid "&Day"
+msgstr "日(&D)"
+
+# ACCELERATOR changed by translator
+#: actionmanager.cpp:551 actionmanager.cpp:1061
+#, kde-format
+msgid "&Next Day"
+msgid_plural "&Next %1 Days"
+msgstr[0] "明日(&X)"
+msgstr[1] "次の %1 日(&X)"
+
+#: actionmanager.cpp:553
+#, kde-format
+msgid "W&ork Week"
+msgstr "平日(&O)"
+
+#: actionmanager.cpp:558
+#, kde-format
+msgid "&Week"
+msgstr "週(&W)"
+
+#: actionmanager.cpp:565 kodaymatrix.cpp:483
+#, kde-format
+msgid "New E&vent..."
+msgstr "新しいイベント(&V)..."
+
+#: actionmanager.cpp:566
+#, fuzzy, kde-format
+#| msgid "Create a new Event"
+msgctxt "@info:status"
+msgid "Create a new Event"
+msgstr "新しいイベントを作成"
+
+#: actionmanager.cpp:567
+#, fuzzy, kde-format
+#| msgid "Create a new Event"
+msgctxt "@info:tooltip"
+msgid "Create a new Event"
+msgstr "新しいイベントを作成"
+
+#: actionmanager.cpp:569
+#, kde-format
+msgctxt "@info:whatsthis"
+msgid ""
+"Starts a dialog that allows you to create a new Event with reminders, "
+"attendees, recurrences and much more."
+msgstr ""
+
+#: actionmanager.cpp:575 kodaymatrix.cpp:484
+#, kde-format
+msgid "New &To-do..."
+msgstr "新しい To-Do(&T)..."
+
+#: actionmanager.cpp:576
+#, fuzzy, kde-format
+#| msgid "Create a new To-do"
+msgctxt "@info:status"
+msgid "Create a new To-do"
+msgstr "新しい To-Do を作成"
+
+#: actionmanager.cpp:577
+#, fuzzy, kde-format
+#| msgid "Create a new To-do"
+msgctxt "@info:tooltip"
+msgid "Create a new To-do"
+msgstr "新しい To-Do を作成"
+
+#: actionmanager.cpp:579
+#, kde-format
+msgctxt "@info:whatsthis"
+msgid ""
+"Starts a dialog that allows you to create a new To-do with reminders, "
+"attendees, recurrences and much more."
+msgstr ""
+
+#: actionmanager.cpp:586
+#, kde-format
+msgid "New Su&b-to-do..."
+msgstr "新しいサブ To-Do(&B)..."
+
+#: actionmanager.cpp:594 kodaymatrix.cpp:485
+#, kde-format
+msgid "New &Journal..."
+msgstr "新しい日記(&J)..."
+
+#: actionmanager.cpp:595
+#, fuzzy, kde-format
+#| msgid "Create a new Journal"
+msgctxt "@info:status"
+msgid "Create a new Journal"
+msgstr "日記に新しいエントリを作成"
+
+#: actionmanager.cpp:596
+#, fuzzy, kde-format
+#| msgid "Create a new Journal"
+msgctxt "@info:tooltip"
+msgid "Create a new Journal"
+msgstr "日記に新しいエントリを作成"
+
+#: actionmanager.cpp:597
+#, kde-format
+msgctxt "@info:whatsthis"
+msgid "Starts a dialog that allows you to create a new Journal entry."
+msgstr ""
+
+#: actionmanager.cpp:602
+#, kde-format
+msgid "Configure View..."
+msgstr "ビューを設定..."
+
+#: actionmanager.cpp:603
+#, kde-format
+msgid "Configure"
+msgstr "設定"
+
+#: actionmanager.cpp:604
+#, fuzzy, kde-format
+#| msgid "Configure the view"
+msgctxt "@info:status"
+msgid "Configure the view"
+msgstr "ビューの設定"
+
+#: actionmanager.cpp:605
+#, fuzzy, kde-format
+#| msgid "Configure the view"
+msgctxt "@info:tooltip"
+msgid "Configure the current view"
+msgstr "ビューの設定"
+
+#: actionmanager.cpp:607
+#, kde-format
+msgctxt "@info:whatsthis"
+msgid ""
+"Starts a configuration dialog that allows you to change the settings for the "
+"current calendar view."
+msgstr ""
+
+#: actionmanager.cpp:613 actionmanager.cpp:1296 actionmanager.cpp:1332
+#, kde-format
+msgid "&Show"
+msgstr "表示(&S)"
+
+#: actionmanager.cpp:617 actionmanager.cpp:1299 actionmanager.cpp:1333
+#, kde-format
+msgid "&Edit..."
+msgstr "編集(&E)..."
+
+#: actionmanager.cpp:626
+#, kde-format
+msgid "&Make Sub-to-do Independent"
+msgstr "サブ To-Do を独立させる(&M)"
+
+#. i18n( "&Activate Reminder" ), 0,
+#. mCalendarView, SLOT(toggleAlarm()),
+#. mACollection, "activate_alarm" );
+#. ************************* SCHEDULE MENU *******************************
+#: actionmanager.cpp:638
+#, kde-format
+msgid "&Publish Item Information..."
+msgstr "イベント情報を公開(&P)..."
+
+#: actionmanager.cpp:645
+#, kde-format
+msgid "Send &Invitation to Attendees"
+msgstr "参加者に出席依頼を送信(&I)"
+
+#: actionmanager.cpp:653
+#, kde-format
+msgid "Re&quest Update"
+msgstr "主催者に更新情報を要求(&Q)"
+
+#: actionmanager.cpp:661
+#, kde-format
+msgid "Send &Cancellation to Attendees"
+msgstr "参加者にキャンセル通知を送信(&C)"
+
+#: actionmanager.cpp:669
+#, kde-format
+msgid "Send Status &Update"
+msgstr "主催者に状態の更新を送信(&U)"
+
+#: actionmanager.cpp:677
+#, kde-format
+msgctxt "counter proposal"
+msgid "Request Chan&ge"
+msgstr "主催者に変更を提案(&G)"
+
+#: actionmanager.cpp:685
+#, kde-format
+msgid "&Mail Free Busy Information..."
+msgstr "フリー/ビジー情報をメールで送信(&M)..."
+
+#: actionmanager.cpp:690
+#, kde-format
+msgid "&Send as iCalendar..."
+msgstr "iCalendar として送信(&S)..."
+
+#: actionmanager.cpp:697
+#, kde-format
+msgid "&Upload Free Busy Information"
+msgstr "フリー/ビジー情報をアップロード(&U)"
+
+#: actionmanager.cpp:703
+#, kde-format
+msgid "&Address Book"
+msgstr "アドレス帳(&A)"
+
+#: actionmanager.cpp:711
+#, kde-format
+msgid "Show Date Navigator"
+msgstr "日付ナビゲータを表示"
+
+#: actionmanager.cpp:715
+#, kde-format
+msgid "Show To-do View"
+msgstr "To-Do ビューを表示"
+
+#: actionmanager.cpp:719
+#, kde-format
+msgid "Show Item Viewer"
+msgstr "イベントビューアを表示"
+
+#: actionmanager.cpp:735
+#, kde-format
+msgid "Show Calendar Manager"
+msgstr "カレンダーマネージャを表示"
+
+#: actionmanager.cpp:748
+#, kde-format
+msgid "Configure &Date && Time..."
+msgstr "日付と時間の書式を設定(&D)..."
+
+#: actionmanager.cpp:752
+#, kde-format
+msgid "Manage View &Filters..."
+msgstr "ビューフィルタの管理(&F)..."
+
+#: actionmanager.cpp:756
+#, fuzzy, kde-format
+#| msgid "Manage C&ategories..."
+msgid "Manage T&ags..."
+msgstr "カテゴリを編集(&A)..."
+
+#: actionmanager.cpp:764
+#, fuzzy, kde-format
+#| msgid "&Configure Calendar..."
+msgid "&Configure KOrganizer..."
+msgstr "カレンダーを設定(&C)..."
+
+#: actionmanager.cpp:841
+#, kde-format
+msgid "1 incidence was imported successfully."
+msgid_plural "%1 incidences were imported successfully."
+msgstr[0] ""
+msgstr[1] ""
+
+#: actionmanager.cpp:844
+#, kde-format
+msgid "There was an error while merging the calendar: %1"
+msgstr ""
+
+#: actionmanager.cpp:855
+#, kde-format
+msgid "New calendar added successfully"
+msgstr ""
+
+#: actionmanager.cpp:857
+#, fuzzy, kde-format
+#| msgid "Could not load calendar %1."
+msgid "Could not add a calendar. Error: %1"
+msgstr "カレンダー <resource>%1</resource> を読み込めませんでした。"
+
+#: actionmanager.cpp:914
+#, fuzzy, kde-format
+#| msgctxt "@title::window"
+#| msgid "Edit Calendar Filters"
+msgctxt "@title:window"
+msgid "Select Calendar File to Open"
+msgstr "カレンダーフィルタの編集"
+
+#: actionmanager.cpp:942
+#, fuzzy, kde-format
+#| msgctxt "@title::window"
+#| msgid "Edit Calendar Filters"
+msgctxt "@title:window"
+msgid "Select Calendar File to Import"
+msgstr "カレンダーフィルタの編集"
+
+#: actionmanager.cpp:973
+#, kde-format
+msgid "An error occurred: %1"
+msgstr ""
+
+#: actionmanager.cpp:991
+#, kde-format
+msgid "Cannot upload calendar to '%1'"
+msgstr "‘%1’ にカレンダーをアップロードできません"
+
+#: actionmanager.cpp:997
+#, kde-format
+msgid "Saved calendar '%1'."
+msgstr "カレンダー “%1” を保存しました。"
+
+#: actionmanager.cpp:1035
+#, kde-format
+msgid "Unable to save calendar to the file %1."
+msgstr "カレンダーをファイル ‘%1’ に保存できません。"
+
+#: actionmanager.cpp:1035
+#, kde-format
+msgid "Error"
+msgstr "エラー"
+
+#: actionmanager.cpp:1078
+#, kde-format
+msgid "Could not start control module for date and time format."
+msgstr "日付と時間の書式を設定するための設定モジュールを起動できませんでした。"
+
+#: actionmanager.cpp:1257
+#, kde-format
+msgid "&Show Event"
+msgstr "イベントを表示(&S)"
+
+#: actionmanager.cpp:1260
+#, kde-format
+msgid "&Edit Event..."
+msgstr "イベントを編集(&E)..."
+
+#: actionmanager.cpp:1263
+#, kde-format
+msgid "&Delete Event"
+msgstr "イベントを削除(&D)"
+
+#: actionmanager.cpp:1271
+#, kde-format
+msgid "&Show To-do"
+msgstr "To-Do を表示(&S)"
+
+#: actionmanager.cpp:1274 kontactplugin/korganizer/todosummarywidget.cpp:321
+#, kde-format
+msgid "&Edit To-do..."
+msgstr "To-Do を編集(&E)..."
+
+#: actionmanager.cpp:1277 kontactplugin/korganizer/todosummarywidget.cpp:323
+#, kde-format
+msgid "&Delete To-do"
+msgstr "To-Do を削除(&D)"
+
+#: actionmanager.cpp:1410 actionmanager.cpp:1516
+#, kde-format
+msgid "Attach as &link"
+msgstr "リンクとして添付(&L)"
+
+#: actionmanager.cpp:1411 actionmanager.cpp:1517
+#, kde-format
+msgid "Attach &inline"
+msgstr "インライン添付(&I)"
+
+#: actionmanager.cpp:1412
+#, kde-format
+msgid "Attach inline &without attachments"
+msgstr "添付ファイルなしでインライン添付(&W)"
+
+#: actionmanager.cpp:1414 actionmanager.cpp:1519
+#, kde-format
+msgid "C&ancel"
+msgstr "キャンセル(&A)"
+
+#: actionmanager.cpp:1452
+#, kde-format
+msgid "Removing attachments from an email might invalidate its signature."
+msgstr "添付ファイルを削除するとメールの署名が無効になる可能性があります。"
+
+#: actionmanager.cpp:1453
+#, kde-format
+msgid "Remove Attachments"
+msgstr "添付ファイルの削除"
+
+#: actionmanager.cpp:1599
+#, kde-format
+msgid "Undo: %1"
+msgstr "元に戻す: %1"
+
+#: actionmanager.cpp:1602 actionmanager.cpp:1613
+#, kde-format
+msgid "Undo"
+msgstr "元に戻す"
+
+#: actionmanager.cpp:1607
+#, fuzzy, kde-format
+#| msgid "Redo (%1)"
+msgid "Redo: %1"
+msgstr "やり直す (%1)"
+
+#: actionmanager.cpp:1610
+#, kde-format
+msgid "Redo"
+msgstr "やり直す"
+
+#: actionmanager.cpp:1624
+#, kde-format
+msgid "URL '%1' is invalid."
+msgstr "URL ‘%1’ は無効です。"
+
+#: actionmanager.cpp:1629
+#, kde-format
+msgctxt "@info"
+msgid ""
+"<p>Would you like to merge this calendar item into an existing calendar or "
+"use it to create a brand new calendar?</p><p>If you select merge, then you "
+"will be given the opportunity to select the destination calendar.</p><p>If "
+"you select add, then a new calendar will be created for you automatically.</"
+"p>"
+msgstr ""
+
+#: actionmanager.cpp:1637
+#, fuzzy, kde-format
+#| msgid "Import Calendar"
+msgctxt "@title:window"
+msgid "Import Calendar"
+msgstr "カレンダーをインポート"
+
+# @option:radio
+#: actionmanager.cpp:1638
+#, kde-format
+msgid "Merge into existing calendar"
+msgstr "既存のカレンダーにマージ"
+
+# @option:radio
+#: actionmanager.cpp:1639
+#, kde-format
+msgid "Add as new calendar"
+msgstr "新しいカレンダーとして追加"
+
+#: akonadicollectionview.cpp:284
+#, kde-format
+msgctxt "@item this is the default calendar"
+msgid "%1 (Offline)"
+msgstr ""
+
+#: akonadicollectionview.cpp:287
+#, fuzzy, kde-format
+#| msgid "Use as &Default Calendar"
+msgctxt "@item this is the default calendar"
+msgid "%1 (Default)"
+msgstr "標準のカレンダーとして使う(&D)"
+
+#: akonadicollectionview.cpp:402
+#, fuzzy, kde-format
+#| msgid "Search For"
+msgctxt "@info:tooltip"
+msgid "Set search keyword"
+msgstr "検索対象"
+
+#: akonadicollectionview.cpp:403
+#, kde-format
+msgctxt "@info:whatsthis"
+msgid "Lets you search for a keyword in your calendars"
+msgstr ""
+
+#: akonadicollectionview.cpp:408
+#, fuzzy, kde-format
+#| msgctxt ""
+#| "@info/plain Displayed grayed-out inside the textbox, verb to search"
+#| msgid "Search"
+msgctxt "@info/plain Displayed grayed-out inside the textbox, verb to search"
+msgid "Search..."
+msgstr "検索"
+
+#: akonadicollectionview.cpp:508 manageshowcollectionproperties.cpp:76
+#, kde-format
+msgctxt "@title:window"
+msgid "Properties of Calendar Folder %1"
+msgstr "カレンダーフォルダ %1 のプロパティ"
+
+#: akonadicollectionview.cpp:520
+#, kde-format
+msgctxt "@action:inmenu"
+msgid "&Set Folder Color..."
+msgstr ""
+
+#: akonadicollectionview.cpp:526
+#, fuzzy, kde-format
+#| msgid "Use as &Default Calendar"
+msgctxt "@action:inmenu"
+msgid "Set as &Default Folder"
+msgstr "標準のカレンダーとして使う(&D)"
+
+#: akonadicollectionview.cpp:532
+#, kde-format
+msgctxt "@action:inmenu"
+msgid "Serverside Subscription..."
+msgstr ""
+
+#: akonadicollectionview.cpp:586
+#, fuzzy, kde-format
+#| msgid "Do you really want to delete calendar %1?"
+msgctxt "@info"
+msgid "Do you really want replace your current default calendar with \"%1\"?"
+msgstr "本当にカレンダー “%1” を削除しますか？"
+
+#: akonadicollectionview.cpp:587
+#, fuzzy, kde-format
+#| msgid "Use as &Default Calendar"
+msgctxt "@title:window"
+msgid "Replace Default Calendar?"
+msgstr "標準のカレンダーとして使う(&D)"
+
+#: akonadicollectionview.cpp:687
+#, fuzzy, kde-format
+#| msgid "Add Calendar"
+msgctxt "@title:window"
+msgid "Add Calendar"
+msgstr "カレンダーを追加"
+
+#: akonadicollectionview.cpp:729
+#, fuzzy, kde-format
+#| msgid "Do you really want to delete calendar %1?"
+msgctxt "@info"
+msgid "Do you really want to delete calendar %1?"
+msgstr "本当にカレンダー “%1” を削除しますか？"
+
+#: akonadicollectionview.cpp:730
+#, fuzzy, kde-format
+#| msgid "Delete Calendar"
+msgctxt "@title:window"
+msgid "Delete Calendar"
+msgstr "カレンダーを削除"
+
+#: calendarview.cpp:237
+#, kde-format
+msgid ""
+"<p><em>No Item Selected</em></p><p>Select an event, to-do or journal entry "
+"to view its details here.</p>"
+msgstr ""
+"<p>アイテムが選択されていません。</p><p>KOrganizer のメインビューでイベント、"
+"To-Do、日記のエントリを選択すると、ここに詳細が表示されます。</p>"
+
+#: calendarview.cpp:243
+#, kde-format
+msgid ""
+"View the details of events, journal entries or to-dos selected in "
+"KOrganizer's main view here."
+msgstr ""
+"KOrganizer のメインビューで選択されたイベント、日記のエントリ、To-Do の詳細を"
+"表示します。"
+
+#: calendarview.cpp:598
+#, kde-format
+msgid "Todo completed: %1 (%2)"
+msgstr "To-Do 完了: %1 (%2)"
+
+#: calendarview.cpp:607
+#, kde-format
+msgid "Journal of %1"
+msgstr "%1 の日記"
+
+#: calendarview.cpp:656
+#, kde-format
+msgid ""
+"The item \"%1\" is filtered by your current filter rules, so it will be "
+"hidden and not appear in the view."
+msgstr ""
+"アイテム “%1” は現在のフィルタルールにより除外されるため、ビューには表示され"
+"ません。"
+
+#: calendarview.cpp:725
+#, kde-format
+msgctxt "@info"
+msgid "Do you really want to permanently remove the item \"%1\"?"
+msgstr "本当にアイテム “%1” を完全に削除しますか？"
+
+#: calendarview.cpp:726
+#, kde-format
+msgctxt "@title:window"
+msgid "Delete Item?"
+msgstr "アイテムを削除しますか？"
+
+#: calendarview.cpp:802
+#, fuzzy, kde-format
+#| msgid "Please specify a valid start date."
+msgid "Paste failed: unable to determine a valid target date."
+msgstr "有効な開始日を指定してください。"
+
+#: calendarview.cpp:1238
+#, kde-format
+msgid "Make sub-to-dos independent"
+msgstr "サブ To-Do を独立させる"
+
+#: calendarview.cpp:1295
+#, fuzzy, kde-format
+#| msgid "&Toggle Reminder"
+msgid "Toggle Reminder"
+msgstr "リマインダをオン/オフ(&T)"
+
+#: calendarview.cpp:1327
+#, fuzzy, kde-format
+#| msgid "Togg&le To-do Completed"
+msgid "Toggle To-do Completed"
+msgstr "完了済み To-Do をオン/オフ(&L)"
+
+#: calendarview.cpp:1379
+#, kde-format
+msgctxt "@info"
+msgid "\"%1\" was successfully copied to %2."
+msgstr "“%1” を %2 にコピーしました。"
+
+#: calendarview.cpp:1380
+#, kde-format
+msgctxt "@title:window"
+msgid "Copying Succeeded"
+msgstr "コピー成功"
+
+#: calendarview.cpp:1384
+#, kde-format
+msgctxt "@info"
+msgid "Unable to copy the item \"%1\" to %2."
+msgstr "アイテム “%1” を %2 にコピーできませんでした。"
+
+#: calendarview.cpp:1385
+#, kde-format
+msgctxt "@title:window"
+msgid "Copying Failed"
+msgstr "コピー失敗"
+
+#: calendarview.cpp:1444
+#, kde-format
+msgctxt "@info"
+msgid ""
+"Unable to remove the item \"%1\" from %2. However, a copy of this item has "
+"been put into %3."
+msgstr ""
+
+#: calendarview.cpp:1449 calendarview.cpp:1465
+#, kde-format
+msgctxt "@title:window"
+msgid "Moving Failed"
+msgstr "移動失敗"
+
+#: calendarview.cpp:1454
+#, kde-format
+msgctxt "@info"
+msgid "\"%1\" was successfully moved from %2 to %3."
+msgstr "“%1” を %2 から %3 へ移動しました。"
+
+#: calendarview.cpp:1455
+#, kde-format
+msgctxt "@title:window"
+msgid "Moving Succeeded"
+msgstr "移動成功"
+
+#: calendarview.cpp:1461
+#, kde-format
+msgctxt "@info"
+msgid "Unable to add the item \"%1\" into %2. This item has not been moved."
+msgstr ""
+
+#: calendarview.cpp:1492
+#, kde-format
+msgid "Do you want to dissociate the occurrence on %1 from the recurrence?"
+msgstr "%1 のイベントを繰り返しから分離しますか？"
+
+#: calendarview.cpp:1496 calendarview.cpp:1508 calendarview.cpp:2166
+#: calendarview.cpp:2226 calendarview.cpp:2256
+#, kde-format
+msgid "KOrganizer Confirmation"
+msgstr "KOrganizer 確認"
+
+#: calendarview.cpp:1497
+#, kde-format
+msgid "&Dissociate"
+msgstr "分離する(&D)"
+
+#: calendarview.cpp:1503
+#, kde-format
+msgid ""
+"Do you want to dissociate the occurrence on %1 from the recurrence or also "
+"dissociate future ones?"
+msgstr ""
+"%1 のイベントのみを繰り返しから分離しますか？それとも将来のものも分離します"
+"か？"
+
+#: calendarview.cpp:1509
+#, kde-format
+msgid "&Only Dissociate This One"
+msgstr "これのみを分離(&O)"
+
+#: calendarview.cpp:1510
+#, kde-format
+msgid "&Also Dissociate Future Ones"
+msgstr "将来のものも分離(&A)"
+
+#: calendarview.cpp:1528
+#, kde-format
+msgid "Dissociate future occurrences"
+msgstr "将来の繰り返しを分離"
+
+#: calendarview.cpp:1530
+#, kde-format
+msgid "Dissociate occurrence"
+msgstr "繰り返しから分離"
+
+#: calendarview.cpp:1540
+#, kde-format
+msgid "Dissociating the future occurrences failed."
+msgstr "将来の繰り返しを分離できませんでした。"
+
+#: calendarview.cpp:1540 calendarview.cpp:1542
+#, kde-format
+msgid "Dissociating Failed"
+msgstr "分離失敗"
+
+#: calendarview.cpp:1542
+#, kde-format
+msgid "Dissociating the occurrence failed."
+msgstr "アイテムを繰り返しから分離できませんでした。"
+
+#: calendarview.cpp:1704
+#, fuzzy, kde-format
+#| msgctxt "@title:tab calendar account settings"
+#| msgid "Calendars"
+msgid "iCalendars (*.ics)"
+msgstr "カレンダー"
+
+#: calendarview.cpp:1713
+#, kde-format
+msgid "Do you want to overwrite %1?"
+msgstr "‘%1’ を上書きしますか？"
+
+#: calendarview.cpp:1714
+#, fuzzy, kde-format
+#| msgid "Import Calendar"
+msgctxt "@title:window"
+msgid "Export Calendar"
+msgstr "カレンダーをインポート"
+
+#: calendarview.cpp:1728
+#, kde-format
+msgctxt "save failure cause unknown"
+msgid "Reason unknown"
+msgstr "原因不明"
+
+# %2=error message
+#: calendarview.cpp:1730
+#, kde-format
+msgctxt "@info"
+msgid "Cannot write iCalendar file %1. %2"
+msgstr "iCalendar ファイル ‘%1’ に書き込めません。%2"
+
+#: calendarview.cpp:1826 calendarview.cpp:1865
+#, kde-format
+msgid "No filter"
+msgstr "フィルタなし"
+
+#: calendarview.cpp:2161
+#, kde-format
+msgid ""
+"The item \"%1\" has sub-to-dos. Do you want to delete just this item and "
+"make all its sub-to-dos independent, or delete the to-do with all its sub-to-"
+"dos?"
+msgstr ""
+"“%1” にはサブ To-Do があります。この To-Do のみを削除し、すべてのサブ To-Do "
+"を独立させますか？それとも、すべてのサブ To-Do も同時に削除しますか？"
+
+#: calendarview.cpp:2167
+#, kde-format
+msgid "Delete Only This"
+msgstr "これのみ削除"
+
+#: calendarview.cpp:2168 calendarview.cpp:2227
+#, kde-format
+msgid "Delete All"
+msgstr "すべて削除"
+
+#: calendarview.cpp:2200
+#, kde-format
+msgid ""
+"The item \"%1\" is marked read-only and cannot be deleted; it probably "
+"belongs to a read-only calendar."
+msgstr ""
+"アイテム “%1” は読み取り専用になっているため、削除できません。おそらく読み取"
+"り専用のカレンダーのものです。"
+
+#: calendarview.cpp:2204
+#, kde-format
+msgid "Removing not possible"
+msgstr "削除できません"
+
+#: calendarview.cpp:2222
+#, kde-format
+msgid ""
+"The calendar item \"%1\" recurs over multiple dates; are you sure you want "
+"to delete it and all its recurrences?"
+msgstr ""
+"“%1” は定期的に繰り返されるアイテムです。本当にこのアイテムとすべての繰り返し"
+"を削除しますか？"
+
+#: calendarview.cpp:2234
+#, kde-format
+msgid "Also Delete &Future"
+msgstr "将来のものも削除(&F)"
+
+#: calendarview.cpp:2238
+#, kde-format
+msgid ""
+"The calendar item \"%1\" recurs over multiple dates. Do you want to delete "
+"only the current one on %2, also future occurrences, or all its occurrences?"
+msgstr ""
+"“%1” は定期的に繰り返されるアイテムです。%2 のこのアイテムのみを削除します"
+"か？将来の繰り返しも削除しますか？あるいはすべての繰り返しを削除しますか？"
+
+#: calendarview.cpp:2245
+#, kde-format
+msgid ""
+"The calendar item \"%1\" recurs over multiple dates. Do you want to delete "
+"only the current one on %2 or all its occurrences?"
+msgstr ""
+"“%1” は定期的に繰り返されるアイテムです。%2 のこのアイテムのみを削除します"
+"か？あるいはすべての繰り返しを削除しますか？"
+
+#: calendarview.cpp:2257
+#, kde-format
+msgid "Delete C&urrent"
+msgstr "これのみ削除(&U)"
+
+#: calendarview.cpp:2259
+#, kde-format
+msgid "Delete &All"
+msgstr "すべて削除(&A)"
+
+#: calendarview.cpp:2290 calendarview.cpp:2297
+#, fuzzy, kde-format
+#| msgid "Delete All"
+msgid "Delete \"%1\""
+msgstr "すべて削除"
+
+#: calendarview.cpp:2325
+#, kde-format
+msgid ""
+"All calendars are unchecked in the Calendar Manager. No to-do was purged."
+msgstr ""
+
+# ACCELERATOR changed by translator
+#: calendarview.cpp:2330 calendarview.cpp:2579
+#, fuzzy, kde-format
+#| msgid "Strike &out completed to-do summaries"
+msgid "There are no completed to-dos to purge."
+msgstr "完了済み To-Do の要約に取り消し線を引く(&K)"
+
+#: calendarview.cpp:2335
+#, fuzzy, kde-format
+#| msgid "Delete all completed to-dos?"
+msgid "Delete all completed to-dos from checked calendars?"
+msgstr "完了済みのすべての To-Do を削除しますか？"
+
+#: calendarview.cpp:2336
+#, kde-format
+msgid "Purge To-dos"
+msgstr "完了済み To-Do を一括削除"
+
+#: calendarview.cpp:2337
+#, kde-format
+msgid "Purge"
+msgstr "削除"
+
+#: calendarview.cpp:2348
+#, kde-format
+msgctxt "@info"
+msgid "Unable to edit \"%1\" because it is locked by another process."
+msgstr "他のプロセスによってロックされているため “%1” は編集できません。"
+
+#: calendarview.cpp:2360
+#, kde-format
+msgid "Unable to copy the item to %1."
+msgstr "アイテムを %1 にコピーできません。"
+
+#: calendarview.cpp:2360
+#, kde-format
+msgid "Copying Failed"
+msgstr "コピー失敗"
+
+#: calendarview.cpp:2395
+#, kde-format
+msgid "Unable to move the item to  %1."
+msgstr "アイテムを %1 に移動できません。"
+
+#: calendarview.cpp:2395
+#, kde-format
+msgid "Moving Failed"
+msgstr "移動失敗"
+
+#: calendarview.cpp:2572
+#, fuzzy, kde-format
+#| msgid "Hide co&mpleted to-dos"
+msgid "0 completed to-dos were purged."
+msgstr "完了した To-Do を隠す(&M)"
+
+#: calendarview.cpp:2573 calendarview.cpp:2583
+#, kde-format
+msgid "%1 to-do was ignored because it has uncompleted or read-only children."
+msgid_plural ""
+"%1 to-dos were ignored because they have uncompleted or read-only children."
+msgstr[0] ""
+msgstr[1] ""
+
+#: calendarview.cpp:2577 calendarview.cpp:2582
+#, fuzzy, kde-format
+#| msgid "Hide co&mpleted to-dos"
+msgid "%1 completed to-do was purged."
+msgid_plural "%1 completed to-dos were purged."
+msgstr[0] "完了した To-Do を隠す(&M)"
+msgstr[1] "完了した To-Do を隠す(&M)"
+
+#: calendarview.cpp:2588
+#, fuzzy, kde-format
+#| msgid "Purging completed to-dos"
+msgid "An error occurred while purging completed to-dos: %1"
+msgstr "完了済み To-Do を一括削除"
+
+#: calendarview.cpp:2642
+#, kde-format
+msgid ""
+"You created an incidence in a calendar that is currently filtered out.\n"
+"On the left sidebar, enable it in the calendar manager to see the incidence."
+msgstr ""
+
+#: calendarview.cpp:2646
+#, kde-format
+msgid ""
+"You created an incidence in a calendar that is currently filtered out.\n"
+"You can enable it through the calendar manager (Settings->Sidebar->Show "
+"Calendar Manager)"
+msgstr ""
+
+#: collectiongeneralpage.cpp:37
+#, kde-format
+msgctxt "@title:tab General settings for a folder."
+msgid "General"
+msgstr "全般"
+
+#: collectiongeneralpage.cpp:45
+#, kde-format
+msgctxt "@info:tooltip"
+msgid "Set the folder name"
+msgstr ""
+
+#: collectiongeneralpage.cpp:46
+#, kde-format
+msgctxt "@info:whatsthis"
+msgid "Enter a name here to set the name of this folder."
+msgstr ""
+
+#: collectiongeneralpage.cpp:47
+#, kde-format
+msgctxt "@label:textbox Name of the folder."
+msgid "&Name:"
+msgstr "名前(&N):"
+
+#: collectiongeneralpage.cpp:50
+#, kde-format
+msgctxt "@option:check"
+msgid "Block reminders locally"
+msgstr ""
+
+#: collectiongeneralpage.cpp:51
+#, kde-format
+msgctxt "@info:tooltip"
+msgid "Ignore reminders from this calendar"
+msgstr ""
+
+#: collectiongeneralpage.cpp:53
+#, fuzzy, kde-format
+#| msgid "Check this box if you want to show seconds on the current-time line."
+msgctxt "@info:whatsthis"
+msgid ""
+"Check this box if you do not want to receive reminders from items associated "
+"with this calendar."
+msgstr "現在時刻線に秒を表示させる場合、このボックスをチェックします。"
+
+#: collectiongeneralpage.cpp:58
+#, fuzzy, kde-format
+#| msgctxt "@title:group"
+#| msgid "Calendar Decorations"
+msgctxt "@option:check"
+msgid "&Use custom icon:"
+msgstr "カレンダーの装飾"
+
+#: collectiongeneralpage.cpp:59
+#, fuzzy, kde-format
+#| msgctxt "@title:group"
+#| msgid "Calendar Decorations"
+msgctxt "@info:tooltip"
+msgid "Set a custom icon"
+msgstr "カレンダーの装飾"
+
+#: collectiongeneralpage.cpp:60
+#, fuzzy, kde-format
+#| msgid "Check this box if you want to show seconds on the current-time line."
+msgctxt "@info:whatsthis"
+msgid "Check this box if you want to set a custom icon for this folder."
+msgstr "現在時刻線に秒を表示させる場合、このボックスをチェックします。"
+
+#. i18n: ectx: Menu (file)
+#: data/korganizer_part.rc:4 data/korganizerui.rc:4
+#, kde-format
+msgid "&File"
+msgstr "ファイル(&F)"
+
+#. i18n: ectx: Menu (import)
+#: data/korganizer_part.rc:11 data/korganizerui.rc:5
+#, kde-format
+msgid "&Import"
+msgstr "インポート(&I)"
+
+#. i18n: ectx: Menu (export)
+#: data/korganizer_part.rc:18 data/korganizerui.rc:12
+#, kde-format
+msgid "&Export"
+msgstr "エクスポート(&E)"
+
+#. i18n: ectx: Menu (edit)
+#: data/korganizer_part.rc:30 data/korganizerui.rc:23
+#, kde-format
+msgid "&Edit"
+msgstr "編集(&E)"
+
+#. i18n: ectx: Menu (view)
+#: data/korganizer_part.rc:42 data/korganizerui.rc:28
+#, kde-format
+msgid "&View"
+msgstr "表示(&V)"
+
+#. i18n: ectx: Menu (zoom)
+#: data/korganizer_part.rc:58 data/korganizerui.rc:44
+#, kde-format
+msgid "&Zoom"
+msgstr "ズーム(&Z)"
+
+#. i18n: ectx: Menu (go)
+#: data/korganizer_part.rc:66 data/korganizerui.rc:52
+#, kde-format
+msgid "&Go"
+msgstr "移動(&G)"
+
+#. i18n: ectx: Menu (actions)
+#: data/korganizer_part.rc:78 data/korganizerui.rc:65
+#, kde-format
+msgid "&Actions"
+msgstr "アクション(&A)"
+
+#. i18n: ectx: Menu (schedule)
+#: data/korganizer_part.rc:93 data/korganizerui.rc:81
+#, kde-format
+msgid "S&chedule"
+msgstr "スケジュール(&C)"
+
+#. i18n: ectx: Menu (settings)
+#: data/korganizer_part.rc:105 data/korganizerui.rc:93
+#, kde-format
+msgid "&Settings"
+msgstr "設定(&S)"
+
+#. i18n: ectx: Menu (sidebar)
+#: data/korganizer_part.rc:106 data/korganizerui.rc:95
+#, kde-format
+msgid "&Sidebar"
+msgstr "サイドバー(&S)"
+
+#. i18n: ectx: Menu (help)
+#: data/korganizer_part.rc:124 data/korganizerui.rc:109
+#, kde-format
+msgid "&Help"
+msgstr "ヘルプ(&H)"
+
+#. i18n: ectx: ToolBar (mainToolBar)
+#: data/korganizer_part.rc:129 data/korganizerui.rc:114
+#, kde-format
+msgctxt "main toolbar"
+msgid "Main"
+msgstr "メインツールバー"
+
+#. i18n: ectx: ToolBar (korganizer_toolbar)
+#: data/korganizer_part.rc:144 data/korganizerui.rc:129
+#, kde-format
+msgid "Views"
+msgstr "表示"
+
+#. i18n: ectx: ToolBar (schedule_toolbar)
+#: data/korganizer_part.rc:154 data/korganizerui.rc:139
+#, kde-format
+msgid "Schedule"
+msgstr "スケジュール"
+
+#. i18n: ectx: ToolBar (filter_toolbar)
+#: data/korganizer_part.rc:160 data/korganizerui.rc:146
+#, kde-format
+msgid "Filters Toolbar"
+msgstr "フィルタツールバー"
+
+#: datenavigatorcontainer.cpp:28
+#, kde-format
+msgid ""
+"<qt><p>Select the dates you want to display in KOrganizer's main view here. "
+"Hold the mouse button to select more than one day.</p><p>Press the top "
+"buttons to browse to the next / previous months or years.</p><p>Each line "
+"shows a week. The number in the left column is the number of the week in the "
+"year. Press it to select the whole week.</p></qt>"
+msgstr ""
+"<qt><p>ここで KOrganizer のメインビューに表示する日を選択します。マウスボタン"
+"を押したままドラッグすると複数の日を選択できます。</p><p>上の矢印のボタンを"
+"使って前後の月または年に移動することができます。</p><p>各行が 1 週間です。行"
+"の左の数字はその週が 1 年の何番目の週であるかを表しています。その数字を押すと"
+"週全体を選択できます。</p></qt>"
+
+#: dialog/filtereditdialog.cpp:31
+#, kde-format
+msgctxt "@title::window"
+msgid "Edit Calendar Filters"
+msgstr "カレンダーフィルタの編集"
+
+#: dialog/filtereditdialog.cpp:87
+#, kde-format
+msgctxt "@info:whatsthis"
+msgid "Press this button to define a new filter."
+msgstr "このボタンを押して新しいフィルタを定義します。"
+
+#: dialog/filtereditdialog.cpp:88
+#, kde-format
+msgctxt "@info:whatsthis"
+msgid "Press this button to remove the currently active filter."
+msgstr "このボタンを押して選択したフィルタを削除します。"
+
+#: dialog/filtereditdialog.cpp:219
+#, kde-format
+msgctxt "@label default filter name"
+msgid "New Filter %1"
+msgstr "新しいフィルタ %1"
+
+#: dialog/filtereditdialog.cpp:242
+#, kde-format
+msgctxt "@info"
+msgid "Do you really want to permanently remove the filter \"%1\"?"
+msgstr "本当にフィルタ “%1” を完全に削除しますか？"
+
+#: dialog/filtereditdialog.cpp:243
+#, kde-format
+msgctxt "@title:window"
+msgid "Delete Filter?"
+msgstr "フィルタを削除しますか？"
+
+#: dialog/koeventviewerdialog.cpp:32
+#, fuzzy, kde-format
+#| msgid "Event Viewer"
+msgctxt "@title:window"
+msgid "Event Viewer"
+msgstr "イベントビューア"
+
+#: dialog/koeventviewerdialog.cpp:40
+#, kde-format
+msgid "Edit..."
+msgstr "編集..."
+
+# @action:button (何がどこに表示されるかは謎)
+#: dialog/koeventviewerdialog.cpp:41
+#, kde-format
+msgid "Show in Context"
+msgstr "コンテキストに表示"
+
+#: dialog/searchdialog.cpp:32
+#, fuzzy, kde-format
+#| msgctxt "@title:tab calendar account settings"
+#| msgid "Calendars"
+msgctxt "@title:window"
+msgid "Find in Calendars"
+msgstr "カレンダー"
+
+#: dialog/searchdialog.cpp:62
+#, fuzzy, kde-format
+#| msgctxt "search in calendar"
+#| msgid "&Search"
+msgctxt "@action:button search in calendar"
+msgid "&Search"
+msgstr "検索(&S)"
+
+#: dialog/searchdialog.cpp:64
+#, fuzzy, kde-format
+#| msgid "Start searching"
+msgctxt "@info:tooltip"
+msgid "Start the search"
+msgstr "検索を開始"
+
+#: dialog/searchdialog.cpp:65
+#, fuzzy, kde-format
+#| msgctxt "@info:whatsthis"
+#| msgid "Press this button to define a new filter."
+msgctxt "@info:whatsthis"
+msgid "Press this button to start the search."
+msgstr "このボタンを押して新しいフィルタを定義します。"
+
+#: dialog/searchdialog.cpp:117
+#, fuzzy, kde-format
+#| msgid ""
+#| "Invalid search expression, cannot perform the search. Please enter a "
+#| "search expression using the wildcard characters '*' and '?' where needed."
+msgctxt "@info"
+msgid ""
+"Invalid search expression, cannot perform the search. Please enter a search "
+"expression using the wildcard characters '*' and '?' where needed."
+msgstr ""
+"不正な検索式です。検索を実行できません。必要ならば、ワイルドカード文字の “*” "
+"と “?” を使って検索式を入力してください。"
+
+#: dialog/searchdialog.cpp:129
+#, fuzzy, kde-format
+#| msgid "No events were found matching your search expression."
+msgctxt "@info"
+msgid "No items were found that match your search pattern."
+msgstr "検索式にマッチするものは見つかりませんでした。"
+
+#: dialog/searchdialog.cpp:130
+#, fuzzy, kde-format
+#| msgid "Search In"
+msgctxt "@title:window"
+msgid "Search Results"
+msgstr "検索範囲"
+
+#: dialog/searchdialog.cpp:145
+#, kde-format
+msgctxt "@label"
+msgid "%1 match"
+msgid_plural "%1 matches"
+msgstr[0] ""
+msgstr[1] ""
+
+#: helper/searchcollectionhelper.cpp:106
+#, fuzzy, kde-format
+#| msgid "Send &Invitation to Attendees"
+msgctxt "A collection of all declined invidations."
+msgid "Declined Invitations"
+msgstr "参加者に出席依頼を送信(&I)"
+
+#: helper/searchcollectionhelper.cpp:114
+#, fuzzy, kde-format
+#| msgid "Send &Invitation to Attendees"
+msgctxt "A collection of all open invidations."
+msgid "Open Invitations"
+msgstr "参加者に出席依頼を送信(&I)"
+
+#: kcmdesignerfields.cpp:61 kcmdesignerfields.cpp:62 kcmdesignerfields.cpp:67
+#: kcmdesignerfields.cpp:68
+#, kde-format
+msgid "Text"
+msgstr "テキスト"
+
+#: kcmdesignerfields.cpp:63
+#, kde-format
+msgid "Numeric Value"
+msgstr ""
+
+#: kcmdesignerfields.cpp:64
+#, kde-format
+msgid "Boolean"
+msgstr ""
+
+#: kcmdesignerfields.cpp:65
+#, kde-format
+msgid "Selection"
+msgstr "選択"
+
+#: kcmdesignerfields.cpp:66 kcmdesignerfields.cpp:69
+#, kde-format
+msgid "Date & Time"
+msgstr "日付と時間"
+
+#: kcmdesignerfields.cpp:70
+#, kde-format
+msgid "Date"
+msgstr "日付"
+
+#: kcmdesignerfields.cpp:127
+#, kde-format
+msgid "KCMDesignerfields"
+msgstr ""
+
+#: kcmdesignerfields.cpp:129
+#, kde-format
+msgid "Qt Designer Fields Dialog"
+msgstr ""
+
+#: kcmdesignerfields.cpp:131
+#, fuzzy, kde-format
+#| msgid "(c), 2004 Tobias Koenig"
+msgid "(c) 2004 Tobias Koenig"
+msgstr "(c), 2004 Tobias Koenig"
+
+#: kcmdesignerfields.cpp:132
+#: kontactplugin/specialdates/specialdates_plugin.cpp:43
+#, kde-format
+msgid "Tobias Koenig"
+msgstr "Tobias Koenig"
+
+#: kcmdesignerfields.cpp:167
+#, kde-format
+msgid "<qt>Do you really want to delete '<b>%1</b>'?</qt>"
+msgstr "本当に “%1” を削除しますか？"
+
+#: kcmdesignerfields.cpp:180
+#, kde-format
+msgid "Import Page"
+msgstr "ページをインポート"
+
+#: kcmdesignerfields.cpp:180
+#, fuzzy, kde-format
+#| msgid "*.ui|Designer Files"
+msgid "Designer Files"
+msgstr "*.ui|Designer ファイル"
+
+#: kcmdesignerfields.cpp:274
+#, kde-format
+msgid ""
+"<qt><b>Warning:</b> Qt Designer could not be found. It is probably not "
+"installed. You will only be able to import existing designer files.</qt>"
+msgstr ""
+
+#: kcmdesignerfields.cpp:284
+#, kde-format
+msgid "Available Pages"
+msgstr ""
+
+#: kcmdesignerfields.cpp:290
+#, kde-format
+msgid "Preview of Selected Page"
+msgstr ""
+
+#: kcmdesignerfields.cpp:309
+#, kde-format
+msgid ""
+"<qt><p>This section allows you to add your own GUI Elements ('<i>Widgets</"
+"i>') to store your own values into %1. Proceed as described below:</"
+"p><ol><li>Click on '<i>Edit with Qt Designer</i>'</li><li>In the dialog, "
+"select '<i>Widget</i>', then click <i>OK</i></li><li>Add your widgets to the "
+"form</li><li>Save the file in the directory proposed by Qt Designer</"
+"li><li>Close Qt Designer</li></ol><p>In case you already have a designer "
+"file (*.ui) located somewhere on your hard disk, simply choose '<i>Import "
+"Page</i>'</p><p><b>Important:</b> The name of each input widget you place "
+"within the form must start with '<i>X_</i>'; so if you want the widget to "
+"correspond to your custom entry '<i>X-Foo</i>', set the widget's <i>name</i> "
+"property to '<i>X_Foo</i>'.</p><p><b>Important:</b> The widget will edit "
+"custom fields with an application name of %2.  To change the application "
+"name to be edited, set the widget name in Qt Designer.</p></qt>"
+msgstr ""
+
+#: kcmdesignerfields.cpp:331
+#, kde-format
+msgid "<a href=\"whatsthis:%1\">How does this work?</a>"
+msgstr ""
+
+#: kcmdesignerfields.cpp:342
+#, kde-format
+msgid "Delete Page"
+msgstr "ページを削除"
+
+#: kcmdesignerfields.cpp:345
+#, kde-format
+msgid "Import Page..."
+msgstr "ページをインポート..."
+
+#: kcmdesignerfields.cpp:347
+#, kde-format
+msgid "Edit with Qt Designer..."
+msgstr ""
+
+#: kcmdesignerfields.cpp:372
+#, kde-format
+msgid "Key:"
+msgstr ""
+
+#: kcmdesignerfields.cpp:374
+#, kde-format
+msgid "Type:"
+msgstr "タイプ:"
+
+#: kcmdesignerfields.cpp:376
+#, kde-format
+msgid "Classname:"
+msgstr "クラス名:"
+
+#: kcmdesignerfields.cpp:378
+#, kde-format
+msgid "Description:"
+msgstr "説明:"
+
+#: koapp.cpp:63
+#, kde-format
+msgid "Failed to retrieve incidence from Akonadi"
+msgstr ""
+
+#: koapp.cpp:68
+#, kde-format
+msgid ""
+"Failed to retrieve incidence from Akonadi: requested incidence doesn't exist."
+msgstr ""
+
+#: kocorehelper.cpp:30
+#, kde-format
+msgctxt "@item:intext delimiter for joining holiday names"
+msgid ","
+msgstr "、"
+
+#: kodaymatrix.cpp:223
+#, kde-format
+msgctxt "delimiter for joining holiday names"
+msgid ","
+msgstr "、"
+
+#: kodaymatrix.cpp:636
+#, kde-format
+msgid "&Move"
+msgstr "移動(&M)"
+
+#: kodaymatrix.cpp:638
+#, kde-format
+msgid "&Copy"
+msgstr "コピー(&C)"
+
+#: kodaymatrix.cpp:641
+#, kde-format
+msgid "&Add"
+msgstr "追加(&A)"
+
+#: kodaymatrix.cpp:645
+#, kde-format
+msgid "&Cancel"
+msgstr "キャンセル(&C)"
+
+#: koeventpopupmenu.cpp:45
+#, fuzzy, kde-format
+#| msgid "&Show"
+msgctxt "@action:inmenu"
+msgid "&Show"
+msgstr "表示(&S)"
+
+#: koeventpopupmenu.cpp:47
+#, fuzzy, kde-format
+#| msgid "&Edit..."
+msgctxt "@action:inmenu"
+msgid "&Edit..."
+msgstr "編集(&E)..."
+
+#: koeventpopupmenu.cpp:49
+#, fuzzy, kde-format
+#| msgid "&Delete"
+msgctxt "@action:inmenu delete this incidence"
+msgid "&Delete"
+msgstr "削除(&D)"
+
+#: koeventpopupmenu.cpp:53
+#, fuzzy, kde-format
+#| msgid "&Print..."
+msgctxt "@action:inmenu"
+msgid "&Print..."
+msgstr "印刷(&P)..."
+
+#: koeventpopupmenu.cpp:55
+#, fuzzy, kde-format
+#| msgid "Print Previe&w..."
+msgctxt "@action:inmenu"
+msgid "Print Previe&w..."
+msgstr "印刷プレビュー(&W)..."
+
+#: koeventpopupmenu.cpp:76
+#, fuzzy, kde-format
+#| msgctxt "cut this event"
+#| msgid "C&ut"
+msgctxt "@action:inmenu cut this incidence"
+msgid "C&ut"
+msgstr "切り取り(&U)"
+
+#: koeventpopupmenu.cpp:78
+#, fuzzy, kde-format
+#| msgid "&Copy"
+msgctxt "@action:inmenu copy this incidence"
+msgid "&Copy"
+msgstr "コピー(&C)"
+
+#: koeventpopupmenu.cpp:79
+#, fuzzy, kde-format
+#| msgid "&Paste"
+msgctxt "@action:inmenu"
+msgid "&Paste"
+msgstr "貼り付け(&P)"
+
+#: koeventpopupmenu.cpp:87
+#, fuzzy, kde-format
+#| msgid "Create a new To-do"
+msgctxt "@action:inmenu"
+msgid "Create To-do from Event"
+msgstr "新しい To-Do を作成"
+
+#: koeventpopupmenu.cpp:91
+#, fuzzy, kde-format
+#| msgid "Create a new Event"
+msgctxt "@action:inmenu"
+msgid "Create Note for Event"
+msgstr "新しいイベントを作成"
+
+#: koeventpopupmenu.cpp:102
+#, fuzzy, kde-format
+#| msgid "Togg&le To-do Completed"
+msgctxt "@action:inmenu"
+msgid "Togg&le To-do Completed"
+msgstr "完了済み To-Do をオン/オフ(&L)"
+
+#: koeventpopupmenu.cpp:107
+#, fuzzy, kde-format
+#| msgid "Create a new Event"
+msgctxt "@action:inmenu"
+msgid "Create Event from To-do"
+msgstr "新しいイベントを作成"
+
+#: koeventpopupmenu.cpp:113
+#, fuzzy, kde-format
+#| msgid "Create a new To-do"
+msgctxt "@action:inmenu"
+msgid "Create Note for To-do"
+msgstr "新しい To-Do を作成"
+
+#: koeventpopupmenu.cpp:124
+#, fuzzy, kde-format
+#| msgid "&Toggle Reminder"
+msgctxt "@action:inmenu"
+msgid "&Toggle Reminder"
+msgstr "リマインダをオン/オフ(&T)"
+
+#: koeventpopupmenu.cpp:131
+#, fuzzy, kde-format
+#| msgid "&Dissociate From Recurrence..."
+msgctxt "@action:inmenu"
+msgid "&Dissociate From Recurrence..."
+msgstr "繰り返しから分離(&D)..."
+
+#: koeventpopupmenu.cpp:139
+#, fuzzy, kde-format
+#| msgid "&Send as iCalendar..."
+msgctxt "@action:inmenu"
+msgid "Send as iCalendar..."
+msgstr "iCalendar として送信(&S)..."
+
+#: koeventpopupmenu.cpp:188
+#, fuzzy, kde-format
+#| msgid "&Toggle Reminder"
+msgctxt "@action:inmenu"
+msgid "&Toggle Reminder Off"
+msgstr "リマインダをオン/オフ(&T)"
+
+#: koeventpopupmenu.cpp:189
+#, fuzzy, kde-format
+#| msgid "&Toggle Reminder"
+msgctxt "@action:inmenu"
+msgid "&Toggle Reminder On"
+msgstr "リマインダをオン/オフ(&T)"
+
+#: kohelper.cpp:57
+#, kde-format
+msgid "Unable to save %1 \"%2\"."
+msgstr "%1 “%2” を保存できません。"
+
+#. i18n: ectx: property (windowTitle), widget (QWidget, ApptSummaryConfig_Base)
+#: kontactplugin/korganizer/apptsummaryconfig_base.ui:8
+#, kde-format
+msgid "Event Summary Configuration"
+msgstr ""
+
+#. i18n: ectx: property (title), widget (QGroupBox, mDaysButtonGroup)
+#: kontactplugin/korganizer/apptsummaryconfig_base.ui:14
+#, kde-format
+msgid "Show Upcoming Events Starting"
+msgstr ""
+
+#. i18n: ectx: property (toolTip), widget (QRadioButton, mDateTodayButton)
+#: kontactplugin/korganizer/apptsummaryconfig_base.ui:20
+#, kde-format
+msgid "Show events for today only"
+msgstr ""
+
+#. i18n: ectx: property (whatsThis), widget (QRadioButton, mDateTodayButton)
+#: kontactplugin/korganizer/apptsummaryconfig_base.ui:23
+#, fuzzy, kde-format
+#| msgid "Check this box if you want to show seconds on the current-time line."
+msgid "Check this box if you want to see events occurring on this date only."
+msgstr "現在時刻線に秒を表示させる場合、このボックスをチェックします。"
+
+#. i18n: ectx: property (text), widget (QRadioButton, mDateTodayButton)
+#: kontactplugin/korganizer/apptsummaryconfig_base.ui:26
+#: kontactplugin/korganizer/todosummaryconfig_base.ui:34
+#: kontactplugin/specialdates/sdsummaryconfig_base.ui:34
+#, fuzzy, kde-format
+#| msgid "Today"
+msgid "&Today only"
+msgstr "今日"
+
+#. i18n: ectx: property (toolTip), widget (QRadioButton, mDateMonthButton)
+#: kontactplugin/korganizer/apptsummaryconfig_base.ui:36
+#, kde-format
+msgid "Show events starting within the next month"
+msgstr ""
+
+#. i18n: ectx: property (whatsThis), widget (QRadioButton, mDateMonthButton)
+#: kontactplugin/korganizer/apptsummaryconfig_base.ui:39
+#, fuzzy, kde-format
+#| msgid "Check this box if you want to show seconds on the current-time line."
+msgid ""
+"Check this box if you want to see events that start sometime during the next "
+"31 days."
+msgstr "現在時刻線に秒を表示させる場合、このボックスをチェックします。"
+
+#. i18n: ectx: property (text), widget (QRadioButton, mDateMonthButton)
+#: kontactplugin/korganizer/apptsummaryconfig_base.ui:42
+#: kontactplugin/korganizer/todosummaryconfig_base.ui:50
+#: kontactplugin/specialdates/sdsummaryconfig_base.ui:50
+#, kde-format
+msgid "Within the next &month (31 days)"
+msgstr ""
+
+#. i18n: ectx: property (toolTip), widget (QRadioButton, mDateRangeButton)
+#: kontactplugin/korganizer/apptsummaryconfig_base.ui:57
+#, kde-format
+msgid "Select the days for showing upcoming events"
+msgstr ""
+
+#. i18n: ectx: property (whatsThis), widget (QRadioButton, mDateRangeButton)
+#: kontactplugin/korganizer/apptsummaryconfig_base.ui:60
+#, fuzzy, kde-format
+#| msgid "Check this box if you want to show seconds on the current-time line."
+msgid ""
+"Check this box if you want to specify the number of days in the future for "
+"upcoming events."
+msgstr "現在時刻線に秒を表示させる場合、このボックスをチェックします。"
+
+#. i18n: ectx: property (text), widget (QRadioButton, mDateRangeButton)
+#: kontactplugin/korganizer/apptsummaryconfig_base.ui:63
+#: kontactplugin/korganizer/todosummaryconfig_base.ui:74
+#: kontactplugin/specialdates/sdsummaryconfig_base.ui:71
+#, kde-format
+msgid "Within the &next:"
+msgstr ""
+
+#. i18n: ectx: property (toolTip), widget (QSpinBox, mCustomDays)
+#: kontactplugin/korganizer/apptsummaryconfig_base.ui:76
+#, kde-format
+msgid "Set the number of days to show upcoming events"
+msgstr ""
+
+#. i18n: ectx: property (whatsThis), widget (QSpinBox, mCustomDays)
+#: kontactplugin/korganizer/apptsummaryconfig_base.ui:79
+#, kde-format
+msgid ""
+"Use this spinbox to set the number of days to show upcoming events up to 1 "
+"year in the future."
+msgstr ""
+
+#. i18n: ectx: property (specialValueText), widget (QSpinBox, mCustomDays)
+#: kontactplugin/korganizer/apptsummaryconfig_base.ui:82
+#: kontactplugin/korganizer/todosummaryconfig_base.ui:93
+#: kontactplugin/specialdates/sdsummaryconfig_base.ui:90
+#, fuzzy, kde-format
+#| msgctxt "@label suffix in the N days spin box"
+#| msgid " days"
+msgid "1 day"
+msgstr " 日"
+
+#. i18n: ectx: property (suffix), widget (QSpinBox, mCustomDays)
+#: kontactplugin/korganizer/apptsummaryconfig_base.ui:85
+#: kontactplugin/korganizer/todosummaryconfig_base.ui:96
+#: kontactplugin/specialdates/sdsummaryconfig_base.ui:93
+#, fuzzy, kde-format
+#| msgctxt "@label suffix in the N days spin box"
+#| msgid " days"
+msgctxt "days to show in summary"
+msgid " days"
+msgstr " 日"
+
+#. i18n: ectx: property (title), widget (QGroupBox, mShowButtonGroup)
+#: kontactplugin/korganizer/apptsummaryconfig_base.ui:122
+#, kde-format
+msgid "Show These Upcoming Events From Your Calendar"
+msgstr ""
+
+#. i18n: ectx: property (toolTip), widget (QCheckBox, mShowBirthdaysFromCal)
+#: kontactplugin/korganizer/apptsummaryconfig_base.ui:128
+#, kde-format
+msgid "Show birthdays from your calendar when also using the Birthday resource"
+msgstr ""
+
+#. i18n: ectx: property (whatsThis), widget (QCheckBox, mShowBirthdaysFromCal)
+#: kontactplugin/korganizer/apptsummaryconfig_base.ui:131
+#, kde-format
+msgid ""
+"Enable this option to include birthdays from your calendar in the upcoming "
+"events summary. This option is only available if you are using the Birthdays "
+"resource in your calendar."
+msgstr ""
+
+#. i18n: ectx: property (text), widget (QCheckBox, mShowBirthdaysFromCal)
+#. i18n: ectx: property (text), widget (QCheckBox, mShowBirthdaysFromCalBox)
+#: kontactplugin/korganizer/apptsummaryconfig_base.ui:134
+#: kontactplugin/specialdates/sdsummaryconfig_base.ui:142
+#, fuzzy, kde-format
+#| msgid "Show both"
+msgid "Show &birthdays"
+msgstr "両方"
+
+#. i18n: ectx: property (toolTip), widget (QCheckBox, mShowAnniversariesFromCal)
+#: kontactplugin/korganizer/apptsummaryconfig_base.ui:141
+#, kde-format
+msgid ""
+"Shows anniversaries from your calendar when using the Birthdays resource"
+msgstr ""
+
+#. i18n: ectx: property (whatsThis), widget (QCheckBox, mShowAnniversariesFromCal)
+#: kontactplugin/korganizer/apptsummaryconfig_base.ui:144
+#, kde-format
+msgid ""
+"Enable this option to include anniversaries from your calendar in the "
+"upcoming events summary. This option is only available if you are using the "
+"Birthdays resource in your calendar."
+msgstr ""
+
+#. i18n: ectx: property (text), widget (QCheckBox, mShowAnniversariesFromCal)
+#. i18n: ectx: property (text), widget (QCheckBox, mShowAnniversariesFromCalBox)
+#: kontactplugin/korganizer/apptsummaryconfig_base.ui:147
+#: kontactplugin/specialdates/sdsummaryconfig_base.ui:158
+#, kde-format
+msgid "Show &anniversaries"
+msgstr ""
+
+#. i18n: ectx: property (title), widget (QGroupBox, groupBox)
+#. i18n: ectx: property (title), widget (QGroupBox, mGroupwareGroup)
+#: kontactplugin/korganizer/apptsummaryconfig_base.ui:157
+#: kontactplugin/korganizer/todosummaryconfig_base.ui:216
+#: kontactplugin/specialdates/sdsummaryconfig_base.ui:244
+#, fuzzy, kde-format
+#| msgctxt "@title:group email settings"
+#| msgid "Email Settings"
+msgid "Groupware Settings"
+msgstr "メールの設定"
+
+#. i18n: ectx: property (toolTip), widget (QCheckBox, mShowMineOnly)
+#: kontactplugin/korganizer/apptsummaryconfig_base.ui:163
+#: kontactplugin/specialdates/sdsummaryconfig_base.ui:250
+#, kde-format
+msgid "Show events belonging to my calendars only"
+msgstr ""
+
+#. i18n: ectx: property (whatsThis), widget (QCheckBox, mShowMineOnly)
+#: kontactplugin/korganizer/apptsummaryconfig_base.ui:166
+#: kontactplugin/specialdates/sdsummaryconfig_base.ui:253
+#, fuzzy, kde-format
+#| msgid "Check this box if you want to show seconds on the current-time line."
+msgid ""
+"Check this box if you want the summary to show events belonging to your "
+"calendars only."
+msgstr "現在時刻線に秒を表示させる場合、このボックスをチェックします。"
+
+#. i18n: ectx: property (text), widget (QCheckBox, mShowMineOnly)
+#: kontactplugin/korganizer/apptsummaryconfig_base.ui:169
+#: kontactplugin/specialdates/sdsummaryconfig_base.ui:256
+#, kde-format
+msgid "Show &my events only"
+msgstr ""
+
+#: kontactplugin/korganizer/apptsummarywidget.cpp:46
+#, kde-format
+msgid "Upcoming Events"
+msgstr ""
+
+#: kontactplugin/korganizer/apptsummarywidget.cpp:207
+#, kde-format
+msgid "No upcoming events starting within the next day"
+msgid_plural "No upcoming events starting within the next %1 days"
+msgstr[0] ""
+msgstr[1] ""
+
+#: kontactplugin/korganizer/apptsummarywidget.cpp:240
+#, fuzzy, kde-format
+#| msgid "&Edit Event..."
+msgid "&Edit Appointment..."
+msgstr "イベントを編集(&E)..."
+
+#: kontactplugin/korganizer/apptsummarywidget.cpp:242
+#, fuzzy, kde-format
+#| msgctxt "@title:group"
+#| msgid "Appointments"
+msgid "&Delete Appointment"
+msgstr "アポイントメント"
+
+#: kontactplugin/korganizer/apptsummarywidget.cpp:261
+#, fuzzy, kde-format
+#| msgid "&Edit Event..."
+msgid "Edit Event: \"%1\""
+msgstr "イベントを編集(&E)..."
+
+#: kontactplugin/korganizer/journalplugin.cpp:28
+#, fuzzy, kde-format
+#| msgid "New &Journal..."
+msgctxt "@action:inmenu"
+msgid "New Journal..."
+msgstr "新しい日記(&J)..."
+
+#: kontactplugin/korganizer/journalplugin.cpp:31
+#, fuzzy, kde-format
+#| msgid "Create a new Journal"
+msgctxt "@info:status"
+msgid "Create a new journal"
+msgstr "日記に新しいエントリを作成"
+
+#: kontactplugin/korganizer/journalplugin.cpp:36
+#, kde-format
+msgctxt "@info:whatsthis"
+msgid ""
+"You will be presented with a dialog where you can create a new journal entry."
+msgstr ""
+
+#: kontactplugin/korganizer/kcmapptsummary.cpp:71
+#: kontactplugin/korganizer/kcmtodosummary.cpp:56
+#: kontactplugin/specialdates/kcmsdsummary.cpp:61
+#, fuzzy, kde-format
+#| msgctxt "@label suffix in the N days spin box"
+#| msgid " days"
+msgid " day"
+msgid_plural " days"
+msgstr[0] " 日"
+msgstr[1] " 日"
+
+#: kontactplugin/korganizer/korganizerplugin.cpp:44
+#, fuzzy, kde-format
+#| msgid "New E&vent..."
+msgctxt "@action:inmenu"
+msgid "New Event..."
+msgstr "新しいイベント(&V)..."
+
+#: kontactplugin/korganizer/korganizerplugin.cpp:47
+#, fuzzy, kde-format
+#| msgid "Create a new Event"
+msgctxt "@info:status"
+msgid "Create a new event"
+msgstr "新しいイベントを作成"
+
+#: kontactplugin/korganizer/korganizerplugin.cpp:51
+#, kde-format
+msgctxt "@info:whatsthis"
+msgid ""
+"You will be presented with a dialog where you can create a new event item."
+msgstr ""
+
+#: kontactplugin/korganizer/korganizerplugin.cpp:146
+#: kontactplugin/korganizer/todoplugin.cpp:146
+#, fuzzy, kde-format
+#| msgid "&Settings"
+msgctxt "@item"
+msgid "Meeting"
+msgstr "設定(&S)"
+
+#: kontactplugin/korganizer/korganizerplugin.cpp:160
+#: kontactplugin/korganizer/todoplugin.cpp:160
+#, fuzzy, kde-format
+#| msgid "Undo: %1"
+msgctxt "@item"
+msgid "Note: %1"
+msgstr "元に戻す: %1"
+
+#: kontactplugin/korganizer/korganizerplugin.cpp:189
+#: kontactplugin/korganizer/todoplugin.cpp:189
+#, kde-format
+msgctxt "Event from email summary"
+msgid "Mail: %1"
+msgstr ""
+
+#: kontactplugin/korganizer/korganizerplugin.cpp:191
+#: kontactplugin/korganizer/todoplugin.cpp:191
+#, kde-format
+msgctxt "Event from email content"
+msgid "<b>From:</b> %1<br /><b>To:</b> %2<br /><b>Subject:</b> %3"
+msgstr ""
+
+#: kontactplugin/korganizer/summaryeventinfo.cpp:136
+#, fuzzy, kde-format
+#| msgid "Today"
+msgctxt "the appointment is today"
+msgid "Today"
+msgstr "今日"
+
+#: kontactplugin/korganizer/summaryeventinfo.cpp:139
+#, kde-format
+msgctxt "the appointment is tomorrow"
+msgid "Tomorrow"
+msgstr ""
+
+#: kontactplugin/korganizer/summaryeventinfo.cpp:171
+#: kontactplugin/korganizer/todosummarywidget.cpp:214
+#: kontactplugin/specialdates/sdsummarywidget.cpp:486
+#, fuzzy, kde-format
+#| msgctxt "@label suffix in the N days spin box"
+#| msgid " days"
+msgid "in 1 day"
+msgid_plural "in %1 days"
+msgstr[0] " 日"
+msgstr[1] " 日"
+
+#: kontactplugin/korganizer/summaryeventinfo.cpp:184
+#, kde-format
+msgctxt "eg. in 1 hour 2 minutes"
+msgid "in "
+msgstr ""
+
+#: kontactplugin/korganizer/summaryeventinfo.cpp:187
+#, kde-format
+msgctxt "use abbreviation for hour to keep the text short"
+msgid "1 hr"
+msgid_plural "%1 hrs"
+msgstr[0] ""
+msgstr[1] ""
+
+#: kontactplugin/korganizer/summaryeventinfo.cpp:193
+#, kde-format
+msgctxt "use abbreviation for minute to keep the text short"
+msgid "1 min"
+msgid_plural "%1 mins"
+msgstr[0] ""
+msgstr[1] ""
+
+#: kontactplugin/korganizer/summaryeventinfo.cpp:200
+#: kontactplugin/specialdates/sdsummarywidget.cpp:484
+#, kde-format
+msgid "now"
+msgstr ""
+
+#: kontactplugin/korganizer/summaryeventinfo.cpp:203
+#, fuzzy, kde-format
+#| msgctxt "@label suffix in the N days spin box"
+#| msgid " days"
+msgid "all day"
+msgstr " 日"
+
+#: kontactplugin/korganizer/summaryeventinfo.cpp:243
+#, kde-format
+msgctxt "Time from - to"
+msgid "%1 - %2"
+msgstr ""
+
+#: kontactplugin/korganizer/summaryeventinfo.cpp:258
+#, fuzzy, kde-format
+#| msgid "Redo (%1)"
+msgctxt "next occurrence"
+msgid "Next: %1"
+msgstr "やり直す (%1)"
+
+#: kontactplugin/korganizer/todoplugin.cpp:41
+#, fuzzy, kde-format
+#| msgid "New &To-do..."
+msgctxt "@action:inmenu"
+msgid "New To-do..."
+msgstr "新しい To-Do(&T)..."
+
+#: kontactplugin/korganizer/todoplugin.cpp:44
+#, fuzzy, kde-format
+#| msgid "Create a new To-do"
+msgctxt "@info:status"
+msgid "Create a new to-do"
+msgstr "新しい To-Do を作成"
+
+#: kontactplugin/korganizer/todoplugin.cpp:48
+#, kde-format
+msgctxt "@info:whatsthis"
+msgid ""
+"You will be presented with a dialog where you can create a new to-do item."
+msgstr ""
+
+#. i18n: ectx: property (windowTitle), widget (QWidget, TodoSummaryConfig_Base)
+#: kontactplugin/korganizer/todosummaryconfig_base.ui:16
+#, kde-format
+msgid "To-do Summary Configuration"
+msgstr ""
+
+#. i18n: ectx: property (title), widget (QGroupBox, mDaysGroup)
+#: kontactplugin/korganizer/todosummaryconfig_base.ui:22
+#, fuzzy, kde-format
+#| msgid "Show To-do View"
+msgid "Show To-dos Due"
+msgstr "To-Do ビューを表示"
+
+#. i18n: ectx: property (toolTip), widget (QRadioButton, mDateTodayButton)
+#: kontactplugin/korganizer/todosummaryconfig_base.ui:28
+#, fuzzy, kde-format
+#| msgid "To-do due today color"
+msgid "Show To-dos due today only"
+msgstr "今日が締切の To-Do の色"
+
+#. i18n: ectx: property (whatsThis), widget (QRadioButton, mDateTodayButton)
+#: kontactplugin/korganizer/todosummaryconfig_base.ui:31
+#, fuzzy, kde-format
+#| msgid "Check this box if you want to show seconds on the current-time line."
+msgid "Check this box if you want to see To-dos due on this date only."
+msgstr "現在時刻線に秒を表示させる場合、このボックスをチェックします。"
+
+#. i18n: ectx: property (toolTip), widget (QRadioButton, mDateMonthButton)
+#: kontactplugin/korganizer/todosummaryconfig_base.ui:44
+#, fuzzy, kde-format
+#| msgid "Scroll forward to the next month"
+msgid "Show To-dos due within the next month"
+msgstr "次の月にスクロール"
+
+#. i18n: ectx: property (whatsThis), widget (QRadioButton, mDateMonthButton)
+#: kontactplugin/korganizer/todosummaryconfig_base.ui:47
+#, fuzzy, kde-format
+#| msgid "Check this box if you want to show seconds on the current-time line."
+msgid ""
+"Check this box if you want to see To-dos that are due sometime during the "
+"next 31 days."
+msgstr "現在時刻線に秒を表示させる場合、このボックスをチェックします。"
+
+#. i18n: ectx: property (toolTip), widget (QRadioButton, mDateRangeButton)
+#: kontactplugin/korganizer/todosummaryconfig_base.ui:65
+#, kde-format
+msgid "Select the days for showing pending To-dos"
+msgstr ""
+
+#. i18n: ectx: property (whatsThis), widget (QRadioButton, mDateRangeButton)
+#: kontactplugin/korganizer/todosummaryconfig_base.ui:71
+#, fuzzy, kde-format
+#| msgid "Check this box if you want to show seconds on the current-time line."
+msgid ""
+"Check this box if you want specify the number of days in the future for "
+"pending To-dos."
+msgstr "現在時刻線に秒を表示させる場合、このボックスをチェックします。"
+
+#. i18n: ectx: property (toolTip), widget (QSpinBox, mCustomDays)
+#: kontactplugin/korganizer/todosummaryconfig_base.ui:87
+#, kde-format
+msgid "Set the number of days to show pending To-dos"
+msgstr ""
+
+#. i18n: ectx: property (whatsThis), widget (QSpinBox, mCustomDays)
+#: kontactplugin/korganizer/todosummaryconfig_base.ui:90
+#, kde-format
+msgid ""
+"Use this spinbox to set the number of days to show pending To-dos up to 1 "
+"year in the future."
+msgstr ""
+
+#. i18n: ectx: property (title), widget (QGroupBox, mHideGroup)
+#: kontactplugin/korganizer/todosummaryconfig_base.ui:133
+#, kde-format
+msgid "Hide Following To-do Types"
+msgstr ""
+
+#. i18n: ectx: property (toolTip), widget (QCheckBox, mHideCompletedBox)
+#: kontactplugin/korganizer/todosummaryconfig_base.ui:139
+#, fuzzy, kde-format
+#| msgid "Hide co&mpleted to-dos"
+msgid "Hide completed To-dos"
+msgstr "完了した To-Do を隠す(&M)"
+
+#. i18n: ectx: property (whatsThis), widget (QCheckBox, mHideCompletedBox)
+#: kontactplugin/korganizer/todosummaryconfig_base.ui:142
+#, fuzzy, kde-format
+#| msgid "Check this box if you want to show seconds on the current-time line."
+msgid ""
+"Check this box if you do not want to see To-dos that have already been "
+"completed."
+msgstr "現在時刻線に秒を表示させる場合、このボックスをチェックします。"
+
+#. i18n: ectx: property (text), widget (QCheckBox, mHideCompletedBox)
+#: kontactplugin/korganizer/todosummaryconfig_base.ui:145
+#, fuzzy, kde-format
+#| msgctxt "@title:column to-do percent completed"
+#| msgid "Completed"
+msgid "&Completed"
+msgstr "進捗率"
+
+#. i18n: ectx: property (toolTip), widget (QCheckBox, mHideOpenEndedBox)
+#: kontactplugin/korganizer/todosummaryconfig_base.ui:155
+#, fuzzy, kde-format
+#| msgid "Include To-dos &without a due date"
+msgid "Hide To-dos without a due date"
+msgstr "締切なしの To-Do を含める(&W)"
+
+#. i18n: ectx: property (whatsThis), widget (QCheckBox, mHideOpenEndedBox)
+#: kontactplugin/korganizer/todosummaryconfig_base.ui:158
+#, fuzzy, kde-format
+#| msgid "Check this box if you want to show seconds on the current-time line."
+msgid "Check this box if you do not want to see open-ended To-dos."
+msgstr "現在時刻線に秒を表示させる場合、このボックスをチェックします。"
+
+#. i18n: ectx: property (text), widget (QCheckBox, mHideOpenEndedBox)
+#: kontactplugin/korganizer/todosummaryconfig_base.ui:161
+#, kde-format
+msgid "&Open-ended (no due date)"
+msgstr ""
+
+#. i18n: ectx: property (toolTip), widget (QCheckBox, mHideUnstartedBox)
+#: kontactplugin/korganizer/todosummaryconfig_base.ui:171
+#, fuzzy, kde-format
+#| msgid "Hide &inactive to-dos"
+msgid "Hide unstarted To-dos"
+msgstr "開始前の To-Do を隠す(&I)"
+
+#. i18n: ectx: property (whatsThis), widget (QCheckBox, mHideUnstartedBox)
+#: kontactplugin/korganizer/todosummaryconfig_base.ui:174
+#, fuzzy, kde-format
+#| msgid "Check this box if you want to show seconds on the current-time line."
+msgid ""
+"Check this box if you do not want to see To-dos with a start date in the "
+"future."
+msgstr "現在時刻線に秒を表示させる場合、このボックスをチェックします。"
+
+#. i18n: ectx: property (text), widget (QCheckBox, mHideUnstartedBox)
+#: kontactplugin/korganizer/todosummaryconfig_base.ui:177
+#, kde-format
+msgid "&Unstarted (start date is in the future)"
+msgstr ""
+
+#. i18n: ectx: property (toolTip), widget (QCheckBox, mHideInProgressBox)
+#: kontactplugin/korganizer/todosummaryconfig_base.ui:184
+#, fuzzy, kde-format
+#| msgid "Hide &inactive to-dos"
+msgid "Hide in-progress To-dos"
+msgstr "開始前の To-Do を隠す(&I)"
+
+#. i18n: ectx: property (whatsThis), widget (QCheckBox, mHideInProgressBox)
+#: kontactplugin/korganizer/todosummaryconfig_base.ui:187
+#, fuzzy, kde-format
+#| msgid "Check this box if you want to show seconds on the current-time line."
+msgid ""
+"Check this box if you do not want to see To-dos that have been started but "
+"are not yet completed."
+msgstr "現在時刻線に秒を表示させる場合、このボックスをチェックします。"
+
+#. i18n: ectx: property (text), widget (QCheckBox, mHideInProgressBox)
+#: kontactplugin/korganizer/todosummaryconfig_base.ui:190
+#, kde-format
+msgid "&In-progress (started but not completed)"
+msgstr ""
+
+#. i18n: ectx: property (toolTip), widget (QCheckBox, mHideOverdueBox)
+#: kontactplugin/korganizer/todosummaryconfig_base.ui:197
+#, fuzzy, kde-format
+#| msgid "Hide co&mpleted to-dos"
+msgid "Hide overdue To-dos"
+msgstr "完了した To-Do を隠す(&M)"
+
+#. i18n: ectx: property (whatsThis), widget (QCheckBox, mHideOverdueBox)
+#: kontactplugin/korganizer/todosummaryconfig_base.ui:203
+#, fuzzy, kde-format
+#| msgid "Check this box if you want to show seconds on the current-time line."
+msgid ""
+"Check this box if you do not want to see To-dos that are past their due date "
+"but have not yet been completed."
+msgstr "現在時刻線に秒を表示させる場合、このボックスをチェックします。"
+
+#. i18n: ectx: property (text), widget (QCheckBox, mHideOverdueBox)
+#: kontactplugin/korganizer/todosummaryconfig_base.ui:206
+#, kde-format
+msgid "Over&due (not completed and beyond due-date)"
+msgstr ""
+
+#. i18n: ectx: property (toolTip), widget (QCheckBox, mShowMineOnly)
+#: kontactplugin/korganizer/todosummaryconfig_base.ui:222
+#, kde-format
+msgid "Show To-dos belonging to my calendars only"
+msgstr ""
+
+#. i18n: ectx: property (whatsThis), widget (QCheckBox, mShowMineOnly)
+#: kontactplugin/korganizer/todosummaryconfig_base.ui:225
+#, fuzzy, kde-format
+#| msgid "Check this box if you want to show seconds on the current-time line."
+msgid ""
+"Check this box if you want the summary to show To-dos belonging to your "
+"calendars only."
+msgstr "現在時刻線に秒を表示させる場合、このボックスをチェックします。"
+
+#. i18n: ectx: property (text), widget (QCheckBox, mShowMineOnly)
+#: kontactplugin/korganizer/todosummaryconfig_base.ui:228
+#, fuzzy, kde-format
+#| msgid "&Show To-do"
+msgid "Show &my To-dos only"
+msgstr "To-Do を表示(&S)"
+
+#: kontactplugin/korganizer/todosummarywidget.cpp:42
+#, fuzzy, kde-format
+#| msgid "Purge To-dos"
+msgid "Pending To-dos"
+msgstr "完了済み To-Do を一括削除"
+
+#: kontactplugin/korganizer/todosummarywidget.cpp:180
+#, fuzzy, kde-format
+#| msgid "Today"
+msgctxt "the to-do is due today"
+msgid "Today"
+msgstr "今日"
+
+#: kontactplugin/korganizer/todosummarywidget.cpp:182
+#, kde-format
+msgctxt "the to-do is due tomorrow"
+msgid "Tomorrow"
+msgstr ""
+
+#: kontactplugin/korganizer/todosummarywidget.cpp:188
+#, kde-format
+msgctxt "1. weekday, 2. time"
+msgid "%1 %2"
+msgstr ""
+
+#: kontactplugin/korganizer/todosummarywidget.cpp:216
+#, kde-format
+msgid "1 day ago"
+msgid_plural "%1 days ago"
+msgstr[0] ""
+msgstr[1] ""
+
+#: kontactplugin/korganizer/todosummarywidget.cpp:218
+#, kde-format
+msgctxt "the to-do is due"
+msgid "due"
+msgstr ""
+
+#: kontactplugin/korganizer/todosummarywidget.cpp:271
+#, kde-format
+msgid "No pending to-dos due within the next day"
+msgid_plural "No pending to-dos due within the next %1 days"
+msgstr[0] ""
+msgstr[1] ""
+
+#: kontactplugin/korganizer/todosummarywidget.cpp:329
+#, fuzzy, kde-format
+#| msgid "Togg&le To-do Completed"
+msgid "&Mark To-do Completed"
+msgstr "完了済み To-Do をオン/オフ(&L)"
+
+#: kontactplugin/korganizer/todosummarywidget.cpp:349
+#, fuzzy, kde-format
+#| msgid "&Edit To-do..."
+msgid "Edit To-do: \"%1\""
+msgstr "To-Do を編集(&E)..."
+
+#: kontactplugin/korganizer/todosummarywidget.cpp:369
+#, kde-format
+msgid "open-ended"
+msgstr ""
+
+#: kontactplugin/korganizer/todosummarywidget.cpp:371
+#, kde-format
+msgctxt "the to-do is overdue"
+msgid "overdue"
+msgstr ""
+
+#: kontactplugin/korganizer/todosummarywidget.cpp:373
+#, kde-format
+msgctxt "the to-do starts today"
+msgid "starts today"
+msgstr ""
+
+#: kontactplugin/korganizer/todosummarywidget.cpp:377
+#, kde-format
+msgctxt "the to-do has not been started yet"
+msgid "not-started"
+msgstr ""
+
+#: kontactplugin/korganizer/todosummarywidget.cpp:379
+#, fuzzy, kde-format
+#| msgctxt "@title:column to-do percent completed"
+#| msgid "Completed"
+msgctxt "the to-do is completed"
+msgid "completed"
+msgstr "進捗率"
+
+#: kontactplugin/korganizer/todosummarywidget.cpp:381
+#, kde-format
+msgctxt "the to-do is in-progress"
+msgid "in-progress "
+msgstr ""
+
+#: kontactplugin/korganizer/todosummarywidget.cpp:386
+#, fuzzy, kde-format
+#| msgctxt "@item:intext delimiter for joining holiday names"
+#| msgid ","
+msgctxt "Separator for status like this: overdue, completed"
+msgid ","
+msgstr "、"
+
+#. i18n: ectx: property (windowTitle), widget (QWidget, SDSummaryConfig_Base)
+#: kontactplugin/specialdates/sdsummaryconfig_base.ui:16
+#, kde-format
+msgid "Special Dates Summary Configuration"
+msgstr ""
+
+#. i18n: ectx: property (title), widget (QGroupBox, mDaysGroup)
+#: kontactplugin/specialdates/sdsummaryconfig_base.ui:22
+#, kde-format
+msgid "Show Special Dates Starting"
+msgstr ""
+
+#. i18n: ectx: property (toolTip), widget (QRadioButton, mDateTodayButton)
+#: kontactplugin/specialdates/sdsummaryconfig_base.ui:28
+#, kde-format
+msgid "Show special occasions for today only"
+msgstr ""
+
+#. i18n: ectx: property (whatsThis), widget (QRadioButton, mDateTodayButton)
+#: kontactplugin/specialdates/sdsummaryconfig_base.ui:31
+#, fuzzy, kde-format
+#| msgid "Check this box if you want to show seconds on the current-time line."
+msgid ""
+"Check this box if you want to see special occasions occurring on this date "
+"only."
+msgstr "現在時刻線に秒を表示させる場合、このボックスをチェックします。"
+
+#. i18n: ectx: property (toolTip), widget (QRadioButton, mDateMonthButton)
+#: kontactplugin/specialdates/sdsummaryconfig_base.ui:44
+#, kde-format
+msgid "Show special occasions starting within the next month"
+msgstr ""
+
+#. i18n: ectx: property (whatsThis), widget (QRadioButton, mDateMonthButton)
+#: kontactplugin/specialdates/sdsummaryconfig_base.ui:47
+#, fuzzy, kde-format
+#| msgid "Check this box if you want to show seconds on the current-time line."
+msgid ""
+"Check this box if you want to see special occasions that start sometime "
+"during the next 31 days."
+msgstr "現在時刻線に秒を表示させる場合、このボックスをチェックします。"
+
+#. i18n: ectx: property (toolTip), widget (QRadioButton, mDateRangeButton)
+#: kontactplugin/specialdates/sdsummaryconfig_base.ui:65
+#, kde-format
+msgid "Select the days for showing upcoming special occasions"
+msgstr ""
+
+#. i18n: ectx: property (whatsThis), widget (QRadioButton, mDateRangeButton)
+#: kontactplugin/specialdates/sdsummaryconfig_base.ui:68
+#, fuzzy, kde-format
+#| msgid ""
+#| "Check this box if you want all completed to-dos to be always grouped at "
+#| "the bottom of the to-do list."
+msgid ""
+"Check this box if you want to specify the number of days in the future for "
+"upcoming special occasions."
+msgstr ""
+"完了した To-Do を常にリストの最下部にまとめて表示するには、このボックスを"
+"チェックします。"
+
+#. i18n: ectx: property (toolTip), widget (QSpinBox, mCustomDays)
+#: kontactplugin/specialdates/sdsummaryconfig_base.ui:84
+#, kde-format
+msgid "Set the number of days to show upcoming special occasions"
+msgstr ""
+
+#. i18n: ectx: property (whatsThis), widget (QSpinBox, mCustomDays)
+#: kontactplugin/specialdates/sdsummaryconfig_base.ui:87
+#, kde-format
+msgid ""
+"Use this spinbox to set the number of days to show upcoming special "
+"occasions up to one year in the future."
+msgstr ""
+
+#. i18n: ectx: property (title), widget (QGroupBox, mShowFromCalGroup)
+#: kontactplugin/specialdates/sdsummaryconfig_base.ui:130
+#, kde-format
+msgid "Show These Special Dates From Your Calendar"
+msgstr ""
+
+#. i18n: ectx: property (toolTip), widget (QCheckBox, mShowBirthdaysFromCalBox)
+#: kontactplugin/specialdates/sdsummaryconfig_base.ui:136
+#, kde-format
+msgid "Show birthdays from your calendar"
+msgstr ""
+
+#. i18n: ectx: property (whatsThis), widget (QCheckBox, mShowBirthdaysFromCalBox)
+#: kontactplugin/specialdates/sdsummaryconfig_base.ui:139
+#, kde-format
+msgid ""
+"Enable this option to include birthdays from your calendar in the upcoming "
+"special occasions summary. Typically, these are events with the \"Birthday\" "
+"tag."
+msgstr ""
+
+#. i18n: ectx: property (toolTip), widget (QCheckBox, mShowAnniversariesFromCalBox)
+#: kontactplugin/specialdates/sdsummaryconfig_base.ui:152
+#, kde-format
+msgid "Show anniversaries from your calendar"
+msgstr ""
+
+#. i18n: ectx: property (whatsThis), widget (QCheckBox, mShowAnniversariesFromCalBox)
+#: kontactplugin/specialdates/sdsummaryconfig_base.ui:155
+#, kde-format
+msgid ""
+"Enable this option to include anniversaries from your calendar in the "
+"upcoming special occasions summary. Typically, these are events with the "
+"\"Anniversary\" tag."
+msgstr ""
+
+#. i18n: ectx: property (toolTip), widget (QCheckBox, mShowHolidaysFromCalBox)
+#: kontactplugin/specialdates/sdsummaryconfig_base.ui:168
+#, fuzzy, kde-format
+#| msgid "Show days to end of year"
+msgid "Show holidays from your calendar"
+msgstr "年末までの日数"
+
+#. i18n: ectx: property (whatsThis), widget (QCheckBox, mShowHolidaysFromCalBox)
+#: kontactplugin/specialdates/sdsummaryconfig_base.ui:171
+#, kde-format
+msgid ""
+"Enable this option to include holidays from your calendar in the upcoming "
+"special occasions summary. These are events from your configured holiday "
+"region, or events with the \"Holiday\" tag."
+msgstr ""
+
+#. i18n: ectx: property (text), widget (QCheckBox, mShowHolidaysFromCalBox)
+#: kontactplugin/specialdates/sdsummaryconfig_base.ui:174
+#, fuzzy, kde-format
+#| msgid "Show to-dos"
+msgid "Show &holidays"
+msgstr "To-Do を表示する"
+
+#. i18n: ectx: property (toolTip), widget (QCheckBox, mShowSpecialsFromCalBox)
+#: kontactplugin/specialdates/sdsummaryconfig_base.ui:184
+#, kde-format
+msgid "Show special occasions from your calendar"
+msgstr ""
+
+#. i18n: ectx: property (whatsThis), widget (QCheckBox, mShowSpecialsFromCalBox)
+#: kontactplugin/specialdates/sdsummaryconfig_base.ui:187
+#, kde-format
+msgid ""
+"Enable this option to include events from your calendar with the \"special "
+"occasion\" tag."
+msgstr ""
+
+#. i18n: ectx: property (text), widget (QCheckBox, mShowSpecialsFromCalBox)
+#: kontactplugin/specialdates/sdsummaryconfig_base.ui:190
+#, kde-format
+msgid "Show s&pecial occasions"
+msgstr ""
+
+#. i18n: ectx: property (title), widget (QGroupBox, mShowFromKABButtonGroup)
+#: kontactplugin/specialdates/sdsummaryconfig_base.ui:203
+#, kde-format
+msgid "Show These Special Dates From Your Contact List"
+msgstr ""
+
+#. i18n: ectx: property (toolTip), widget (QCheckBox, mShowBirthdaysFromKABBox)
+#: kontactplugin/specialdates/sdsummaryconfig_base.ui:209
+#, kde-format
+msgid "Show birthdays from your address book"
+msgstr ""
+
+#. i18n: ectx: property (whatsThis), widget (QCheckBox, mShowBirthdaysFromKABBox)
+#: kontactplugin/specialdates/sdsummaryconfig_base.ui:212
+#, kde-format
+msgid ""
+"Enable this option to include birthdays from your address book in the "
+"upcoming special occasions summary."
+msgstr ""
+
+#. i18n: ectx: property (text), widget (QCheckBox, mShowBirthdaysFromKABBox)
+#: kontactplugin/specialdates/sdsummaryconfig_base.ui:215
+#, fuzzy, kde-format
+#| msgid "Show both"
+msgid "Show birth&days"
+msgstr "両方"
+
+#. i18n: ectx: property (toolTip), widget (QCheckBox, mShowAnniversariesFromKABBox)
+#: kontactplugin/specialdates/sdsummaryconfig_base.ui:225
+#, kde-format
+msgid "Show anniversaries from your address book"
+msgstr ""
+
+#. i18n: ectx: property (whatsThis), widget (QCheckBox, mShowAnniversariesFromKABBox)
+#: kontactplugin/specialdates/sdsummaryconfig_base.ui:228
+#, kde-format
+msgid ""
+"Enable this option to include anniversaries from your address book in the "
+"upcoming special occasions summary."
+msgstr ""
+
+#. i18n: ectx: property (text), widget (QCheckBox, mShowAnniversariesFromKABBox)
+#: kontactplugin/specialdates/sdsummaryconfig_base.ui:231
+#, kde-format
+msgid "Show anni&versaries"
+msgstr ""
+
+#: kontactplugin/specialdates/sdsummarywidget.cpp:96
+#, kde-format
+msgid "Upcoming Special Dates"
+msgstr ""
+
+#: kontactplugin/specialdates/sdsummarywidget.cpp:449
+#, fuzzy, kde-format
+#| msgid "Today"
+msgctxt "the special day is today"
+msgid "Today"
+msgstr "今日"
+
+#: kontactplugin/specialdates/sdsummarywidget.cpp:451
+#, kde-format
+msgctxt "the special day is tomorrow"
+msgid "Tomorrow"
+msgstr ""
+
+#: kontactplugin/specialdates/sdsummarywidget.cpp:497
+#, kde-format
+msgid "Birthday"
+msgstr ""
+
+#: kontactplugin/specialdates/sdsummarywidget.cpp:500
+#, kde-format
+msgid "Anniversary"
+msgstr ""
+
+#: kontactplugin/specialdates/sdsummarywidget.cpp:503
+#, kde-format
+msgid "Holiday"
+msgstr "休日"
+
+#: kontactplugin/specialdates/sdsummarywidget.cpp:506
+#, kde-format
+msgid "Change of Seasons"
+msgstr ""
+
+#: kontactplugin/specialdates/sdsummarywidget.cpp:509
+#, kde-format
+msgid "Special Occasion"
+msgstr ""
+
+#: kontactplugin/specialdates/sdsummarywidget.cpp:551
+#, kde-format
+msgid "one year"
+msgid_plural "%1 years"
+msgstr[0] ""
+msgstr[1] ""
+
+#: kontactplugin/specialdates/sdsummarywidget.cpp:561
+#, kde-format
+msgid "No special dates within the next 1 day"
+msgid_plural "No special dates pending within the next %1 days"
+msgstr[0] ""
+msgstr[1] ""
+
+#: kontactplugin/specialdates/sdsummarywidget.cpp:655
+#, kde-format
+msgid "Send &Mail"
+msgstr ""
+
+#: kontactplugin/specialdates/sdsummarywidget.cpp:656
+#, kde-format
+msgid "View &Contact"
+msgstr ""
+
+#: kontactplugin/specialdates/sdsummarywidget.cpp:671
+#, kde-format
+msgid "Mail to:\"%1\""
+msgstr ""
+
+#: kontactplugin/specialdates/specialdates_plugin.cpp:36
+#, kde-format
+msgid "Special Dates Summary"
+msgstr ""
+
+#: kontactplugin/specialdates/specialdates_plugin.cpp:38
+#, kde-format
+msgid "Kontact Special Dates Summary"
+msgstr ""
+
+#: kontactplugin/specialdates/specialdates_plugin.cpp:40
+#, kde-format
+msgid ""
+"Copyright © 2003 Tobias Koenig\n"
+"Copyright © 2004–2010 Allen Winter"
+msgstr ""
+
+#: kontactplugin/specialdates/specialdates_plugin.cpp:42
+#, fuzzy, kde-format
+#| msgid "Former Maintainer"
+msgid "Current Maintainer"
+msgstr "以前のメンテナ"
+
+#: korganizer.cpp:273
+#, kde-format
+msgid "New Calendar"
+msgstr "新しいカレンダー"
+
+#: korganizer.cpp:277
+#, kde-format
+msgctxt "the calendar is read-only"
+msgid "read-only"
+msgstr "読み取り専用"
+
+#: korganizer.cpp:280
+#, kde-format
+msgid "Calendar"
+msgstr "カレンダー"
+
+#: korganizer_options.h:18
+#, kde-format
+msgid "Import the specified files as separate calendars"
+msgstr "指定したファイルを別カレンダーとしてインポート"
+
+#: korganizer_options.h:20
+#, fuzzy, kde-format
+#| msgid "Merge the specified files into the standard calendar "
+msgid "Merge the specified files into an existing calendar"
+msgstr "指定したファイルを標準カレンダーにマージ"
+
+#: korganizer_options.h:21
+#, kde-format
+msgid "Display the specified incidence (by URL)"
+msgstr ""
+
+#: korganizer_options.h:24
+#, fuzzy, kde-format
+#| msgid ""
+#| "Calendar files or urls. Unless -i, -o or -m is explicitly specified, the "
+#| "user will be asked whether to import, merge or open in a separate window."
+msgid ""
+"Calendar files or urls. Unless -i or -m is explicitly specified, the user "
+"will be asked whether to import or merge"
+msgstr ""
+"カレンダーファイルか URL。-i, -o, -m が指定されていない限り、ユーザにインポー"
+"トするのか、マージするのか、別のウィンドウで開くのかを尋ねます。"
+
+#: korganizer_options.h:28
+#, kde-format
+msgid "Lists the available options for user feedback"
+msgstr ""
+
+#: koviewmanager.cpp:417
+#, kde-format
+msgid "Merged calendar"
+msgstr "マージしたカレンダー"
+
+#: koviewmanager.cpp:432
+#, kde-format
+msgid "Calendars Side by Side"
+msgstr "並列表示のカレンダー"
+
+#: koviewmanager.cpp:465
+#, kde-format
+msgid ""
+"Unable to display the work week since there are no work days configured. "
+"Please properly configure at least 1 work day in the Time and Date "
+"preferences."
+msgstr ""
+
+#: prefs/koprefsdialogcolorsandfonts.cpp:41
+#, kde-format
+msgctxt "@title:tab"
+msgid "Colors"
+msgstr "色"
+
+#: prefs/koprefsdialogcolorsandfonts.cpp:91
+#, kde-format
+msgctxt "@title:group"
+msgid "Tags"
+msgstr ""
+
+#: prefs/koprefsdialogcolorsandfonts.cpp:105
+#, fuzzy, kde-format
+#| msgctxt "@info:whatsthis"
+#| msgid ""
+#| "Select here the event category you want to modify. You can change the "
+#| "selected category color using the button below."
+msgctxt "@info:whatsthis"
+msgid ""
+"Select the tag you want to modify. You can change the selected tag's color "
+"using the adjacent color button."
+msgstr ""
+"ここで色を変更するイベントのカテゴリを選択し、下のボタンを使って色を変更しま"
+"す。"
+
+#: prefs/koprefsdialogcolorsandfonts.cpp:113
+#, fuzzy, kde-format
+#| msgctxt "@info:whatsthis"
+#| msgid ""
+#| "Choose here the color of the calendar selected using the combo box above."
+msgctxt "@info:whatsthis"
+msgid "Choose the color of the tag selected in the adjacent combo box."
+msgstr "上のコンボボックスを使って選択したカレンダーの色を選択します。"
+
+#: prefs/koprefsdialogcolorsandfonts.cpp:121
+#, kde-format
+msgctxt "@title:group"
+msgid "Resources"
+msgstr "リソース"
+
+#: prefs/koprefsdialogcolorsandfonts.cpp:132
+#, fuzzy, kde-format
+#| msgctxt "@info:whatsthis"
+#| msgid ""
+#| "Select here the event category you want to modify. You can change the "
+#| "selected category color using the button below."
+msgctxt "@info:whatsthis"
+msgid ""
+"Select the calendar you want to modify. You can change the selected calendar "
+"color using the button below."
+msgstr ""
+"ここで色を変更するイベントのカテゴリを選択し、下のボタンを使って色を変更しま"
+"す。"
+
+#: prefs/koprefsdialogcolorsandfonts.cpp:140
+#, kde-format
+msgctxt "@info:whatsthis"
+msgid ""
+"Choose here the color of the calendar selected using the combo box above."
+msgstr "上のコンボボックスを使って選択したカレンダーの色を選択します。"
+
+#: prefs/koprefsdialogcolorsandfonts.cpp:148
+#, kde-format
+msgctxt "@title:tab"
+msgid "Fonts"
+msgstr "フォント"
+
+#: prefs/koprefsdialogcolorsandfonts.cpp:161
+#: prefs/koprefsdialogcolorsandfonts.cpp:167
+#, kde-format
+msgctxt "@label"
+msgid "Event text"
+msgstr "イベントのテキスト"
+
+#: prefs/koprefsdialoggroupscheduling.cpp:40
+#, kde-format
+msgctxt "@label"
+msgid "Mail transport:"
+msgstr ""
+
+#: prefs/koprefsdialogmain.cpp:39
+#, kde-format
+msgctxt "@title:tab personal settings"
+msgid "Personal"
+msgstr "個人設定"
+
+#: prefs/koprefsdialogmain.cpp:45
+#, kde-format
+msgctxt "@title:group email settings"
+msgid "Email Settings"
+msgstr "メールの設定"
+
+#: prefs/koprefsdialogmain.cpp:62
+#, kde-format
+msgctxt "@title:tab"
+msgid "Save"
+msgstr "保存"
+
+#: prefs/koprefsdialogmain.cpp:74
+#, kde-format
+msgctxt "@title:tab calendar account settings"
+msgid "Calendars"
+msgstr "カレンダー"
+
+#: prefs/koprefsdialogmain.cpp:78
+#, fuzzy, kde-format
+#| msgctxt "@title:group"
+#| msgid "Calendar Decorations"
+msgctxt "@title"
+msgid "Calendar Accounts"
+msgstr "カレンダーの装飾"
+
+#: prefs/koprefsdialogplugins.cpp:61
+#, kde-format
+msgctxt "@title:group"
+msgid "Position"
+msgstr "位置"
+
+#. i18nc( "@option:check", "Show in the month view" ), mPositioningGroupBox );
+#: prefs/koprefsdialogplugins.cpp:86
+#, kde-format
+msgctxt "@option:check"
+msgid "Show at the top of the agenda views"
+msgstr "予定表ビューの上に表示"
+
+#: prefs/koprefsdialogplugins.cpp:87
+#, kde-format
+msgctxt "@option:check"
+msgid "Show at the bottom of the agenda views"
+msgstr "予定表ビューの下に表示"
+
+#: prefs/koprefsdialogplugins.cpp:121
+#, kde-format
+msgctxt "@title:group"
+msgid "Calendar Decorations"
+msgstr "カレンダーの装飾"
+
+#: prefs/koprefsdialogplugins.cpp:141
+#, fuzzy, kde-format
+#| msgid "Configure"
+msgctxt "@action"
+msgid "Configure"
+msgstr "設定"
+
+#: prefs/koprefsdialogplugins.cpp:200
+#, kde-format
+msgctxt "@info"
+msgid "Unable to configure this plugin"
+msgstr "このプラグインを設定できません"
+
+#: prefs/koprefsdialogtime.cpp:40
+#, kde-format
+msgctxt "@title:tab"
+msgid "Regional"
+msgstr "地域"
+
+#: prefs/koprefsdialogtime.cpp:44
+#, kde-format
+msgctxt "@title:group"
+msgid "General Time and Date"
+msgstr "全般的な日付と時間"
+
+#: prefs/koprefsdialogtime.cpp:53
+#, kde-format
+msgctxt "@title:group"
+msgid "Holidays"
+msgstr "休日"
+
+#: prefs/koprefsdialogtime.cpp:64
+#, kde-format
+msgctxt "@label"
+msgid "Use holiday region:"
+msgstr "次の地域の休日を使う:"
+
+#: prefs/koprefsdialogtime.cpp:87
+#, fuzzy, kde-format
+#| msgctxt "Holday region, region language"
+#| msgid "%1 (%2)"
+msgctxt "@item:inlistbox Holiday region, region language"
+msgid "%1 (%2)"
+msgstr "%1 (%2)"
+
+#: prefs/koprefsdialogtime.cpp:96
+#, fuzzy, kde-format
+#| msgid "Use holiday region:"
+msgctxt "@item:inlistbox"
+msgid "Select Holiday Regions"
+msgstr "次の地域の休日を使う:"
+
+#: prefs/koprefsdialogtime.cpp:108
+#, kde-format
+msgctxt "@title:group"
+msgid "Working Period"
+msgstr "勤務時間"
+
+#: prefs/koprefsdialogtime.cpp:123
+#, kde-format
+msgctxt "@info:whatsthis"
+msgid ""
+"Check this box to make KOrganizer mark the working hours for this day of the "
+"week. If this is a work day for you, check this box, or the working hours "
+"will not be marked with color."
+msgstr ""
+"勤務時間帯を色付きで表示させる曜日にチェックを入れてください。チェックされて"
+"いない曜日には、それがあなたにとって仕事をする曜日であっても、勤務時間帯が表"
+"示されません。"
+
+#: prefs/koprefsdialogtime.cpp:138
+#, kde-format
+msgctxt "@item:inlistbox"
+msgid "Monday"
+msgstr ""
+
+#: prefs/koprefsdialogtime.cpp:138
+#, kde-format
+msgctxt "@item:inlistbox"
+msgid "Tuesday"
+msgstr ""
+
+#: prefs/koprefsdialogtime.cpp:138
+#, kde-format
+msgctxt "@item:inlistbox"
+msgid "Wednesday"
+msgstr ""
+
+#: prefs/koprefsdialogtime.cpp:139
+#, kde-format
+msgctxt "@item:inlistbox"
+msgid "Thursday"
+msgstr ""
+
+#: prefs/koprefsdialogtime.cpp:139
+#, fuzzy, kde-format
+#| msgid "Holiday"
+msgctxt "@item:inlistbox"
+msgid "Friday"
+msgstr "休日"
+
+#: prefs/koprefsdialogtime.cpp:139
+#, kde-format
+msgctxt "@item:inlistbox"
+msgid "Saturday"
+msgstr ""
+
+#: prefs/koprefsdialogtime.cpp:140
+#, kde-format
+msgctxt "@item:inlistbox"
+msgid "Sunday"
+msgstr ""
+
+#: prefs/koprefsdialogtime.cpp:169
+#, kde-format
+msgctxt "@title:tab"
+msgid "Default Values"
+msgstr "デフォルトの値"
+
+#: prefs/koprefsdialogtime.cpp:172
+#, kde-format
+msgctxt "@title:group"
+msgid "Appointments"
+msgstr "アポイントメント"
+
+#: prefs/koprefsdialogtime.cpp:187
+#, kde-format
+msgctxt "@title:group"
+msgid "Reminders"
+msgstr "リマインダ"
+
+#: prefs/koprefsdialogtime.cpp:192
+#, kde-format
+msgctxt "@label"
+msgid "Default reminder time:"
+msgstr "デフォルトのリマインダ時間:"
+
+#: prefs/koprefsdialogtime.cpp:205
+#, kde-format
+msgctxt "@item:inlistbox reminder units in minutes"
+msgid "minute(s)"
+msgstr "分"
+
+#: prefs/koprefsdialogtime.cpp:206
+#, kde-format
+msgctxt "@item:inlistbox reminder time units in hours"
+msgid "hour(s)"
+msgstr "時間"
+
+#: prefs/koprefsdialogtime.cpp:207
+#, kde-format
+msgctxt "@item:inlistbox reminder time units in days"
+msgid "day(s)"
+msgstr "日"
+
+#: prefs/koprefsdialogtime.cpp:218
+#, kde-format
+msgid ""
+"*.ogg *.wav *.mp3 *.wma *.flac *.aiff *.raw *.au *.ra|Audio Files (*.ogg *."
+"wav *.mp3 *.wma *.flac *.aiff *.raw *.au *.ra)"
+msgstr ""
+
+#: prefs/koprefsdialogviews.cpp:42
+#, kde-format
+msgctxt "@title:tab general settings"
+msgid "General"
+msgstr "全般"
+
+#: prefs/koprefsdialogviews.cpp:48 prefs/koprefsdialogviews.cpp:85
+#: prefs/koprefsdialogviews.cpp:129 prefs/koprefsdialogviews.cpp:156
+#, kde-format
+msgctxt "@title:group"
+msgid "Display Options"
+msgstr "表示オプション"
+
+#: prefs/koprefsdialogviews.cpp:54
+#, kde-format
+msgctxt "@label suffix in the N days spin box"
+msgid " days"
+msgstr " 日"
+
+#: prefs/koprefsdialogviews.cpp:67
+#, kde-format
+msgctxt "@title:group"
+msgid "Date Navigator"
+msgstr "日付ナビゲータ"
+
+#: prefs/koprefsdialogviews.cpp:79
+#, kde-format
+msgctxt "@title:tab"
+msgid "Agenda View"
+msgstr "予定表ビュー"
+
+#: prefs/koprefsdialogviews.cpp:91
+#, kde-format
+msgctxt "@label suffix in the hour size spin box"
+msgid " pixels"
+msgstr " ピクセル"
+
+#: prefs/koprefsdialogviews.cpp:123
+#, kde-format
+msgctxt "@title:tab"
+msgid "Month View"
+msgstr "月ビュー"
+
+#: prefs/koprefsdialogviews.cpp:150
+#, kde-format
+msgctxt "@title:tab"
+msgid "Todo View"
+msgstr "To-Do ビュー"
+
+#: prefs/koprefsdialogviews.cpp:163
+#, kde-format
+msgctxt "@title:group"
+msgid "Other Options"
+msgstr "その他のオプション"
+
+#: prefs/koprefsuserfeedback.cpp:29
+#, kde-format
+msgid "KCMUserFeedBack"
+msgstr ""
+
+#: prefs/koprefsuserfeedback.cpp:31
+#, fuzzy, kde-format
+#| msgid "KOrganizer Confirmation"
+msgid "KOrganizer Configure User FeedBack"
+msgstr "KOrganizer 確認"
+
+#: prefs/koprefsuserfeedback.cpp:33
+#, kde-format
+msgid "(c) 2020-2021 Laurent Montel"
+msgstr ""
+
+#: prefs/kprefsdialog.cpp:222
+#, fuzzy, kde-format
+#| msgid "Change..."
+msgid "Choose..."
+msgstr "変更..."
+
+#: prefs/kprefsdialog.cpp:746
+#, kde-format
+msgctxt "@title:window"
+msgid "Preferences"
+msgstr ""
+
+#: prefs/kprefsdialog.cpp:848
+#, kde-format
+msgid ""
+"You are about to set all preferences to default values. All custom "
+"modifications will be lost."
+msgstr ""
+"すべての項目を標準設定の値に戻そうとしています。あなたが行った変更はすべて失"
+"われます。"
+
+#: prefs/kprefsdialog.cpp:850
+#, kde-format
+msgid "Setting Default Preferences"
+msgstr "標準設定に戻す"
+
+#: prefs/kprefsdialog.cpp:851
+#, kde-format
+msgid "Reset to Defaults"
+msgstr "標準設定に戻す"
+
+#. i18n: ectx: label, entry (Confirm), group (Save Settings)
+#: settings/korganizer.kcfg:15
+#, kde-format
+msgid "Confirm deletes"
+msgstr "削除する前に確認する"
+
+#. i18n: ectx: tooltip, entry (Confirm), group (Save Settings)
+#: settings/korganizer.kcfg:16
+#, fuzzy, kde-format
+#| msgid "Check this box to display a confirmation dialog when deleting items."
+msgid "Always confirm when deleting items"
+msgstr ""
+"アイテムを削除するときに確認ダイアログを表示させる場合、このボックスをチェッ"
+"クします。"
+
+#. i18n: ectx: whatsthis, entry (Confirm), group (Save Settings)
+#: settings/korganizer.kcfg:17
+#, kde-format
+msgid "Check this box to display a confirmation dialog when deleting items."
+msgstr ""
+"アイテムを削除するときに確認ダイアログを表示させる場合、このボックスをチェッ"
+"クします。"
+
+#. i18n: ectx: label, entry (Destination), group (Save Settings)
+#: settings/korganizer.kcfg:22
+#, kde-format
+msgid "New Events, To-dos and Journal Entries Should"
+msgstr "新しいイベント、To-Do、日記のエントリの扱い"
+
+#. i18n: ectx: label, entry (Destination), group (Save Settings)
+#: settings/korganizer.kcfg:25
+#, fuzzy, kde-format
+#| msgid "Be added to the standard calendar"
+msgid "Be added to the default calendar"
+msgstr "標準カレンダーに追加する"
+
+#. i18n: ectx: whatsthis, entry (Destination), group (Save Settings)
+#: settings/korganizer.kcfg:26
+#, fuzzy, kde-format
+#| msgid ""
+#| "Select this option to always record new events, to-dos and journal "
+#| "entries using the standard calendar."
+msgid ""
+"Select this option to always record new events, to-dos and journal entries "
+"using the current default calendar."
+msgstr ""
+"新しいイベント、To-Do、日記のエントリを常に標準カレンダーを使って記録する場"
+"合、このオプションを選択します。"
+
+#. i18n: ectx: label, entry (Destination), group (Save Settings)
+#: settings/korganizer.kcfg:29
+#, kde-format
+msgid "Be asked which calendar to use"
+msgstr "どのカレンダーを使用するか確認する"
+
+#. i18n: ectx: whatsthis, entry (Destination), group (Save Settings)
+#: settings/korganizer.kcfg:30
+#, kde-format
+msgid ""
+"Select this option to choose the calendar to be used to record the item each "
+"time you create a new event, to-do or journal entry. This choice is "
+"recommended if you intend to use the shared folders functionality of the "
+"Kolab server or have to manage multiple accounts using Kontact as a KDE "
+"Kolab client. "
+msgstr ""
+"新しいイベント、To-Do、日記のエントリを作成するたびにそれを記録するために使用"
+"するカレンダーを選択する場合、このオプションを選択します。Kolab サーバの共有"
+"フォルダ機能を使う予定がある、または Kontact を KDE Kolab クライアントとして"
+"使って複数のアカウントを管理する必要がある場合は、このオプションをお勧めしま"
+"す。"
+
+#. i18n: ectx: whatsthis, entry (TimeZoneId), group (Time &amp; Date)
+#: settings/korganizer.kcfg:40
+#, kde-format
+msgid ""
+"Select your timezone from the list of locations on this drop down box. If "
+"your city is not listed, select one which shares the same timezone. "
+"KOrganizer will automatically adjust for daylight savings."
+msgstr ""
+"このドロップダウンリストからタイムゾーンを選択します。お住いの都市がリストに"
+"ない場合は、同じタイムゾーンにある他の都市を選択してください。KOrganizer は夏"
+"時間調整を自動的に行います。"
+
+#. i18n: ectx: label, entry (DayBegins), group (Time &amp; Date)
+#: settings/korganizer.kcfg:44
+#, kde-format
+msgid "Day begins at"
+msgstr "一日の始まり"
+
+#. i18n: ectx: whatsthis, entry (DayBegins), group (Time &amp; Date)
+#: settings/korganizer.kcfg:45
+#, kde-format
+msgid ""
+"Enter the start time for events here. This time should be the earliest time "
+"that you use for events, as it will be displayed at the top."
+msgstr ""
+"一日の活動を開始する時間を設定します。予定表はここで指定した時間を先頭に表示"
+"されるので、イベントを開始する可能性のある最も早い時間に設定してください。"
+
+#. i18n: ectx: label, entry (Holidays), group (Time &amp; Date)
+#: settings/korganizer.kcfg:50
+#, fuzzy, kde-format
+#| msgid "Use holiday region:"
+msgid "Use holiday regions:"
+msgstr "次の地域の休日を使う:"
+
+#. i18n: ectx: whatsthis, entry (Holidays), group (Time &amp; Date)
+#: settings/korganizer.kcfg:51
+#, fuzzy, kde-format
+#| msgid ""
+#| "Select from which region you want to use the holidays here. Defined "
+#| "holidays are shown as non-working days in the date navigator, the agenda "
+#| "view, etc."
+msgid ""
+"Select which regions you want to use the holidays here. Defined holidays are "
+"shown as non-working days in the date navigator, the agenda view, etc."
+msgstr ""
+"どの地域の休日を使用するかを選択します。それぞれに定義されている休日は日付ナ"
+"ビゲータや予定表などに非労働日として表示されます。"
+
+#. i18n: ectx: label, entry (WeekStartDay), group (Time &amp; Date)
+#: settings/korganizer.kcfg:55
+#, kde-format
+msgid "Weekly start day:"
+msgstr ""
+
+#. i18n: ectx: tooltip, entry (WeekStartDay), group (Time &amp; Date)
+#: settings/korganizer.kcfg:56
+#, fuzzy, kde-format
+#| msgid "Select the to-do due today color here."
+msgid "Select the first day of each week"
+msgstr "今日が締切の To-Do の色を選択します。"
+
+#. i18n: ectx: whatsthis, entry (WeekStartDay), group (Time &amp; Date)
+#: settings/korganizer.kcfg:57
+#, kde-format
+msgid ""
+"Select the first day of each week. Normally, you can ignore this since it is "
+"set in your locale."
+msgstr ""
+
+#. i18n: ectx: label, entry (WorkingHoursStart), group (Time &amp; Date)
+#: settings/korganizer.kcfg:62
+#, kde-format
+msgid "Daily starting hour"
+msgstr "毎日の始業時間"
+
+#. i18n: ectx: whatsthis, entry (WorkingHoursStart), group (Time &amp; Date)
+#: settings/korganizer.kcfg:63
+#, kde-format
+msgid ""
+"Enter the start time for the working hours here. The working hours will be "
+"marked with color by KOrganizer."
+msgstr ""
+"勤務時間の開始時間を指定します。勤務時間帯は KOrganizer に色付きで表示されま"
+"す。"
+
+#. i18n: ectx: label, entry (WorkingHoursEnd), group (Time &amp; Date)
+#: settings/korganizer.kcfg:68
+#, kde-format
+msgid "Daily ending hour"
+msgstr "毎日の終業時間"
+
+#. i18n: ectx: whatsthis, entry (WorkingHoursEnd), group (Time &amp; Date)
+#: settings/korganizer.kcfg:69
+#, kde-format
+msgid ""
+"Enter the ending time for the working hours here. The working hours will be "
+"marked with color by KOrganizer."
+msgstr ""
+"勤務時間の終了時間を指定します。勤務時間帯は KOrganizer に色付きで表示されま"
+"す。"
+
+#. i18n: ectx: label, entry, group (Time &amp; Date)
+#: settings/korganizer.kcfg:74
+#, kde-format
+msgid "Exclude holidays"
+msgstr "休日を除く"
+
+#. i18n: ectx: whatsthis, entry, group (Time &amp; Date)
+#: settings/korganizer.kcfg:75
+#, kde-format
+msgid ""
+"Check this box to prevent KOrganizer from marking the working hours on "
+"holidays."
+msgstr ""
+"このボックスをチェックすると、休日には色付きの勤務時間帯は表示されません。"
+
+#. i18n: ectx: label, entry (ColorMonthBusyDaysEnabled), group (Time &amp; Date)
+#. i18n: ectx: label, entry (ColorBusyDaysEnabled), group (Agenda View)
+#: settings/korganizer.kcfg:80 settings/korganizer.kcfg:212
+#, kde-format
+msgid "Color busy days with a different background color"
+msgstr "忙しい日の背景色を変える"
+
+#. i18n: ectx: whatsthis, entry (ColorMonthBusyDaysEnabled), group (Time &amp; Date)
+#: settings/korganizer.kcfg:81
+#, kde-format
+msgid ""
+"Check this box if you want month view's background to be filled with a "
+"different color on days which have at least one all day event marked as "
+"busy. Also, you can change the background color used for this option on the "
+"Colors configuration page. Look for the \"Busy days background color\" "
+"setting."
+msgstr ""
+
+#. i18n: ectx: label, entry, group (General View)
+#: settings/korganizer.kcfg:90
+#, kde-format
+msgid "Enable tooltips for displaying summaries"
+msgstr "要約を表示するツールチップを有効にする"
+
+#. i18n: ectx: whatsthis, entry, group (General View)
+#: settings/korganizer.kcfg:91
+#, kde-format
+msgid ""
+"Check this box to display summary tooltips when hovering the mouse over an "
+"event or a to-do."
+msgstr ""
+"このオプションを有効にすると、イベントや To-Do の上にマウスを移動したときに、"
+"その要約がツールチップに表示されます。"
+
+#. i18n: ectx: label, entry, group (General View)
+#: settings/korganizer.kcfg:96
+#, fuzzy, kde-format
+#| msgid "To-dos use category colors"
+msgid "To-dos use tag colors"
+msgstr "To-Do にカテゴリ色を使う"
+
+#. i18n: ectx: whatsthis, entry, group (General View)
+#: settings/korganizer.kcfg:97
+#, fuzzy, kde-format
+#| msgid ""
+#| "Check this box so that to-dos will use category colors and not colors "
+#| "specific to their due, due today or overdue state"
+msgid ""
+"Check this box so that to-dos will use tag colors and not colors specific to "
+"their due, due today or overdue state"
+msgstr ""
+"このオプションを有効にすると、締切の状態 (今日が締切/締切超過) を表す色ではな"
+"く、カテゴリを表す色で To-Do が表示されます。"
+
+#. i18n: ectx: label, entry, group (General View)
+#: settings/korganizer.kcfg:102
+#, kde-format
+msgid "Next x days"
+msgstr "次の X 日"
+
+#. i18n: ectx: whatsthis, entry, group (General View)
+#: settings/korganizer.kcfg:103
+#, fuzzy, kde-format
+#| msgid ""
+#| "Select the number of \"x\" days to be displayed in the next days view. To "
+#| "access the  the next \"x\" days view, choose the \"Next X Days\" menu "
+#| "item from the \"View\" menu."
+msgid ""
+"Select the number of \"x\" days to be displayed in the next days view. To "
+"access the next \"x\" days view, choose the \"Next X Days\" menu item from "
+"the \"View\" menu."
+msgstr ""
+"<interface>表示</interface>メニューの<interface>次の X 日</interface>を選択し"
+"たときに表示させる日数を選択します。"
+
+#. i18n: ectx: tooltip, entry, group (General View)
+#: settings/korganizer.kcfg:104
+#, kde-format
+msgid "Show this many days at a time in the Next \"x\" days view"
+msgstr "この日数分を「次の X 日」に表示します"
+
+#. i18n: ectx: label, entry (DailyRecur), group (General View)
+#: settings/korganizer.kcfg:109
+#, kde-format
+msgid "Show items that recur daily"
+msgstr "日単位で繰り返されるアイテムを表示する"
+
+#. i18n: ectx: whatsthis, entry (DailyRecur), group (General View)
+#: settings/korganizer.kcfg:110
+#, kde-format
+msgid ""
+"Check this box to show the days containing daily recurring events in bold "
+"typeface in the Date Navigator, or uncheck it to give more prominence to "
+"other (non daily recurring) events."
+msgstr ""
+"日単位で繰り返されるイベントを含む日を日付ナビゲータにボールド体で表示するに"
+"は、このボックスをチェックしてください。他の (日単位で繰り返されない) イベン"
+"トを目立つようにするには、チェックを外してください。"
+
+#. i18n: ectx: label, entry (WeeklyRecur), group (General View)
+#: settings/korganizer.kcfg:115
+#, kde-format
+msgid "Show items that recur weekly"
+msgstr "週単位で繰り返されるアイテムを表示する"
+
+#. i18n: ectx: whatsthis, entry (WeeklyRecur), group (General View)
+#: settings/korganizer.kcfg:116
+#, kde-format
+msgid ""
+"Check this box to show the days containing weekly recurring events in bold "
+"typeface in the Date Navigator, or uncheck it to give more prominence to "
+"other (non weekly recurring) events."
+msgstr ""
+"週単位で繰り返されるイベントを含む日を日付ナビゲータにボールド体で表示するに"
+"は、このボックスをチェックしてください。他の (週単位で繰り返されない) イベン"
+"トを目立つようにするには、チェックを外してください。"
+
+#. i18n: ectx: label, entry (HighlightTodos), group (General View)
+#: settings/korganizer.kcfg:121
+#, kde-format
+msgid "Show to-dos instead of events when in Todo View"
+msgstr "To-Do ビューではイベントではなく To-Do を含む日を強調する"
+
+#. i18n: ectx: whatsthis, entry (HighlightTodos), group (General View)
+#: settings/korganizer.kcfg:122
+#, kde-format
+msgid ""
+"Check this box to show the days containing to-dos in bold typeface in the "
+"Date Navigator when in to-do view."
+msgstr ""
+"To-Do ビューでは To-Do を含む日を日付ナビゲータにボールド体で表示する場合、こ"
+"のボックスをチェックします。"
+
+#. i18n: ectx: label, entry (HighlightJournals), group (General View)
+#: settings/korganizer.kcfg:127
+#, kde-format
+msgid "Show journals instead of events when in Journal View"
+msgstr "日記ビューではイベントではなく日記を含む日を強調する"
+
+#. i18n: ectx: whatsthis, entry (HighlightJournals), group (General View)
+#: settings/korganizer.kcfg:128
+#, kde-format
+msgid ""
+"Check this box to show the days containing journals in bold typeface in the "
+"Date Navigator when in journal view."
+msgstr ""
+"日記ビューでは日記を含む日を日付ナビゲータにボールド体で表示する場合、この"
+"ボックスをチェックします。"
+
+#. i18n: ectx: label, entry (WeekNumbersShowWork), group (General View)
+#: settings/korganizer.kcfg:133
+#, kde-format
+msgid "Week numbers select a work week when in work week mode"
+msgstr ""
+
+#. i18n: ectx: whatsthis, entry (WeekNumbersShowWork), group (General View)
+#: settings/korganizer.kcfg:134
+#, kde-format
+msgid ""
+"Check this box to select a working week when clicking on the Date "
+"Navigator's week numbers, or uncheck it to choose the whole week."
+msgstr ""
+
+#. i18n: ectx: label, entry, group (Agenda View)
+#: settings/korganizer.kcfg:142
+#, kde-format
+msgid "Hour size"
+msgstr "時間行のサイズ"
+
+#. i18n: ectx: whatsthis, entry, group (Agenda View)
+#: settings/korganizer.kcfg:143
+#, kde-format
+msgid ""
+"Select the height of the hour rows in the agenda grid, in pixels. Increasing "
+"this value will make each row in the agenda grid taller."
+msgstr ""
+"予定表で 1 時間を表すグリッドの高さをピクセル数で選択します。この値を大きくす"
+"るほど各行が高くなります。"
+
+#. i18n: ectx: tooltip, entry, group (Agenda View)
+#: settings/korganizer.kcfg:144
+#, kde-format
+msgid "Set the height (in pixels) for an hour in the agenda grid"
+msgstr "予定表で 1 時間を表すグリッドの高さをピクセル数で設定します"
+
+#. i18n: ectx: label, entry (EnableAgendaItemIcons), group (Agenda View)
+#: settings/korganizer.kcfg:151
+#, kde-format
+msgid "Show icons in agenda view items"
+msgstr "予定表ビューのアイテムにアイコンを表示する"
+
+#. i18n: ectx: whatsthis, entry (EnableAgendaItemIcons), group (Agenda View)
+#: settings/korganizer.kcfg:152
+#, kde-format
+msgid ""
+"Check this box to display icons (alarm, recursion, etc.) in agenda view "
+"items."
+msgstr ""
+"このオプションを有効にすると、予定表ビューのアイテムにアラームや繰り返しなど"
+"を表すアイコンが表示されます。"
+
+#. i18n: ectx: tooltip, entry (EnableAgendaItemIcons), group (Agenda View)
+#: settings/korganizer.kcfg:153
+#, kde-format
+msgid "Display icons in agenda view items"
+msgstr "予定表ビューのアイテムにアイコンを表示します"
+
+#. i18n: ectx: label, entry (ShowTodosAgendaView), group (Agenda View)
+#. i18n: ectx: label, entry (ShowTodosMonthView), group (Month View)
+#: settings/korganizer.kcfg:158 settings/korganizer.kcfg:256
+#, kde-format
+msgid "Show to-dos"
+msgstr "To-Do を表示する"
+
+#. i18n: ectx: whatsthis, entry (ShowTodosAgendaView), group (Agenda View)
+#: settings/korganizer.kcfg:159
+#, kde-format
+msgid "Check this box to display to-dos in the agenda view."
+msgstr "予定表ビューに To-Do を表示するには、このボックスをチェックします。"
+
+#. i18n: ectx: tooltip, entry (ShowTodosAgendaView), group (Agenda View)
+#: settings/korganizer.kcfg:160
+#, kde-format
+msgid "Display to-dos in the agenda view"
+msgstr "予定表ビューに To-Do を表示します"
+
+#. i18n: ectx: label, entry (MarcusBainsEnabled), group (Agenda View)
+#: settings/korganizer.kcfg:165
+#, kde-format
+msgid "Show current-time (Marcus Bains) line"
+msgstr "現在時刻線を表示する"
+
+#. i18n: ectx: whatsthis, entry (MarcusBainsEnabled), group (Agenda View)
+#: settings/korganizer.kcfg:166
+#, kde-format
+msgid ""
+"Check this box to display a line in the day or week view indicating the "
+"current-time line (Marcus Bains line)."
+msgstr ""
+"このオプションを有効にすると、現在時刻を示す線が日ビューと週ビューに表示され"
+"ます。"
+
+#. i18n: ectx: tooltip, entry (MarcusBainsEnabled), group (Agenda View)
+#: settings/korganizer.kcfg:167
+#, kde-format
+msgid "Display the current-time indicator"
+msgstr "現在時刻を示す線を表示します"
+
+#. i18n: ectx: label, entry (MarcusBainsShowSeconds), group (Agenda View)
+#: settings/korganizer.kcfg:172
+#, kde-format
+msgid "Show seconds on the current-time (Marcus Bains) line"
+msgstr "現在時刻線に秒を表示する"
+
+#. i18n: ectx: whatsthis, entry (MarcusBainsShowSeconds), group (Agenda View)
+#: settings/korganizer.kcfg:173
+#, kde-format
+msgid "Check this box if you want to show seconds on the current-time line."
+msgstr "現在時刻線に秒を表示させる場合、このボックスをチェックします。"
+
+#. i18n: ectx: tooltip, entry (MarcusBainsShowSeconds), group (Agenda View)
+#: settings/korganizer.kcfg:174
+#, kde-format
+msgid "Display seconds with the current-time indicator"
+msgstr "現在時刻線に秒を表示します"
+
+#. i18n: ectx: label, entry (SelectionStartsEditor), group (Agenda View)
+#: settings/korganizer.kcfg:179
+#, kde-format
+msgid "Time range selection in agenda view starts event editor"
+msgstr "予定表ビューで時間範囲を選択したらイベントエディタを開く"
+
+#. i18n: ectx: whatsthis, entry (SelectionStartsEditor), group (Agenda View)
+#: settings/korganizer.kcfg:180
+#, kde-format
+msgid ""
+"Check this box to start the event editor automatically when you select a "
+"time range in the daily and weekly view. To select a time range, drag the "
+"mouse from the start time to the end time of the event you are about to plan."
+msgstr ""
+"日ビューおよび週ビューで時間範囲を選択したときに自動的にイベントエディタが開"
+"くようにするには、このボックスをチェックします。時間範囲を選択するには、計画"
+"しようとしているイベントの開始時間をクリックして終了時間までドラッグします。"
+
+#. i18n: ectx: tooltip, entry (SelectionStartsEditor), group (Agenda View)
+#: settings/korganizer.kcfg:181
+#, kde-format
+msgid "Enable automatic event editor with time range selection"
+msgstr "時間範囲を選択したときに自動的にイベントエディタを開きます"
+
+#. i18n: ectx: label, entry, group (Agenda View)
+#. i18n: ectx: label, entry, group (Month View)
+#: settings/korganizer.kcfg:186 settings/korganizer.kcfg:276
+#, kde-format
+msgid "Color Usage"
+msgstr "色の使用"
+
+#. i18n: ectx: label, entry, group (Agenda View)
+#. i18n: ectx: label, entry, group (Month View)
+#: settings/korganizer.kcfg:189 settings/korganizer.kcfg:279
+#, fuzzy, kde-format
+#| msgid "Category inside, calendar outside"
+msgid "Tag inside, calendar outside"
+msgstr "内にカテゴリ色、外にリソース色"
+
+#. i18n: ectx: whatsthis, entry, group (Agenda View)
+#. i18n: ectx: whatsthis, entry, group (Month View)
+#: settings/korganizer.kcfg:190 settings/korganizer.kcfg:280
+#, fuzzy, kde-format
+#| msgid ""
+#| "Select the \"Category inside, calendar outside\" option if you would like "
+#| "to draw calendar items in their associated category color, with the "
+#| "item's border drawn in the color of its calendar.  Please use the Colors "
+#| "and Fonts configuration page for setting these colors."
+msgid ""
+"Select the \"Tag inside, calendar outside\" option if you would like to draw "
+"calendar items using their associated tag color, with the item's border "
+"drawn in the color of its calendar.  Please use the Colors and Fonts "
+"configuration page for setting these colors."
+msgstr ""
+"カレンダーアイテムの内部を関連付けられているカテゴリの色で、枠をカレンダーの"
+"色で表示させたい場合は「内にカテゴリ色、外にリソース色」を選択します。これら"
+"の色は「色とフォント」のページで設定します。"
+
+#. i18n: ectx: tooltip, entry, group (Agenda View)
+#: settings/korganizer.kcfg:191
+#, fuzzy, kde-format
+#| msgid ""
+#| "Draw agenda items in their category color inside and calendar color for "
+#| "their border"
+msgid ""
+"Draw agenda items with their tag color inside and calendar color for their "
+"border"
+msgstr "予定表のアイテムの内部をカテゴリ色で、枠をカレンダー色で描画します"
+
+#. i18n: ectx: label, entry, group (Agenda View)
+#. i18n: ectx: label, entry, group (Month View)
+#: settings/korganizer.kcfg:194 settings/korganizer.kcfg:284
+#, fuzzy, kde-format
+#| msgid "Calendar inside, category outside"
+msgid "Calendar inside, tag outside"
+msgstr "内にカレンダー色、外にカテゴリ色"
+
+#. i18n: ectx: whatsthis, entry, group (Agenda View)
+#. i18n: ectx: whatsthis, entry, group (Month View)
+#: settings/korganizer.kcfg:195 settings/korganizer.kcfg:285
+#, fuzzy, kde-format
+#| msgid ""
+#| "Select the \"Calendar inside, category outside\" option if you would like "
+#| "to draw calendar items in their associated calendar color, with the "
+#| "item's border drawn in the color of its category.  Please use the Colors "
+#| "and Fonts configuration page for setting these colors."
+msgid ""
+"Select the \"Calendar inside, tag outside\" option if you would like to draw "
+"calendar items using their associated calendar color, with the item's border "
+"drawn in the color of its tag.  Please use the Colors and Fonts "
+"configuration page for setting these colors."
+msgstr ""
+"カレンダーアイテムの枠を関連付けられているカテゴリの色で、内部をカレンダーの"
+"色で表示させたい場合は「内にリソース色、外にカテゴリ色」を選択します。これら"
+"の色は「色とフォント」のページで設定します。"
+
+#. i18n: ectx: tooltip, entry, group (Agenda View)
+#: settings/korganizer.kcfg:196
+#, fuzzy, kde-format
+#| msgid ""
+#| "Draw agenda items in their calendar color inside and category color for "
+#| "their border"
+msgid ""
+"Draw agenda items with their calendar color inside and tag color for their "
+"border"
+msgstr "予定表のアイテムの内部をカレンダー色で、枠をカテゴリ色で描画します"
+
+#. i18n: ectx: label, entry, group (Agenda View)
+#. i18n: ectx: label, entry, group (Month View)
+#: settings/korganizer.kcfg:199 settings/korganizer.kcfg:289
+#, fuzzy, kde-format
+#| msgid "Only category"
+msgid "Only tag"
+msgstr "カテゴリ色のみ"
+
+#. i18n: ectx: whatsthis, entry, group (Agenda View)
+#: settings/korganizer.kcfg:200
+#, fuzzy, kde-format
+#| msgid ""
+#| "Select the \"Only category\" option if you would like to draw calendar "
+#| "items (both inside and border) in the color of their associated "
+#| "category.  Please use the Colors and Fonts configuration page for setting "
+#| "these colors."
+msgid ""
+"Select the \"Only tag\" option if you would like to draw calendar items "
+"(both inside and border) using the color of their associated tag.  Please "
+"use the Colors and Fonts configuration page for setting these colors."
+msgstr ""
+"カレンダーアイテムの内部と枠の両方を関連付けられているカテゴリの色で表示させ"
+"たい場合は「カテゴリ色のみ」を選択します。カテゴリの色は「色とフォント」の"
+"ページで設定します。"
+
+#. i18n: ectx: tooltip, entry, group (Agenda View)
+#: settings/korganizer.kcfg:201
+#, fuzzy, kde-format
+#| msgid ""
+#| "Draw agenda items using their category color for the inside and border"
+msgid "Draw agenda items using their tag color for the inside and border"
+msgstr "予定表のアイテムの内部と枠の両方をカテゴリ色で描画します"
+
+#. i18n: ectx: label, entry, group (Agenda View)
+#. i18n: ectx: label, entry, group (Month View)
+#: settings/korganizer.kcfg:204 settings/korganizer.kcfg:294
+#, kde-format
+msgid "Only calendar"
+msgstr "リソース色のみ"
+
+#. i18n: ectx: whatsthis, entry, group (Agenda View)
+#: settings/korganizer.kcfg:205
+#, fuzzy, kde-format
+#| msgid ""
+#| "Select the \"Only calendar\" option if you would like to draw calendar "
+#| "items (both inside and border) in the color of their calendar.  Please "
+#| "use the Colors and Fonts configuration page for setting these colors."
+msgid ""
+"Select the \"Only calendar\" option if you would like to draw calendar items "
+"(both inside and border) using the color of their calendar. Please use the "
+"Colors and Fonts configuration page for setting these colors."
+msgstr ""
+"カレンダーアイテムの内部と枠の両方をカレンダーの色で表示させたい場合は"
+"<interface>リソース色のみ</interface>を選択します。リソースの色は<interface>"
+"色とフォント</interface>のページで設定します。"
+
+#. i18n: ectx: tooltip, entry, group (Agenda View)
+#: settings/korganizer.kcfg:206
+#, kde-format
+msgid "Draw agenda items using their calendar color for the inside and border"
+msgstr "予定表のアイテムの内部と枠の両方をカレンダー色で描画します"
+
+#. i18n: ectx: whatsthis, entry (ColorBusyDaysEnabled), group (Agenda View)
+#: settings/korganizer.kcfg:213
+#, kde-format
+msgid ""
+"Check this box if you want agenda's background to be filled with a different "
+"color on days which have at least one all day event marked as busy. Also, "
+"you can change the background color used for this option on the Colors "
+"configuration page. Look for the \"Busy days background color\" setting."
+msgstr ""
+
+#. i18n: ectx: label, entry (AgendaViewCalendarDisplay), group (Agenda View)
+#: settings/korganizer.kcfg:217
+#, kde-format
+msgid "Multiple Calendar Display"
+msgstr "複数のカレンダーの表示"
+
+#. i18n: ectx: label, entry (AgendaViewCalendarDisplay), group (Agenda View)
+#: settings/korganizer.kcfg:220
+#, kde-format
+msgid "Merge all calendars into one view"
+msgstr "すべてのカレンダーを 1 つのビューにマージする"
+
+#. i18n: ectx: whatsthis, entry (AgendaViewCalendarDisplay), group (Agenda View)
+#: settings/korganizer.kcfg:221
+#, kde-format
+msgid ""
+"Select the \"Merge all calendars into one view\" option if you would like "
+"all your calendars to be shown together in one agenda view."
+msgstr ""
+"1 つの予定表ビューにすべてのカレンダーをいっしょに表示させたい場合は「すべて"
+"のカレンダーを 1 つのビューにマージする」を選択します。"
+
+#. i18n: ectx: tooltip, entry (AgendaViewCalendarDisplay), group (Agenda View)
+#: settings/korganizer.kcfg:222
+#, kde-format
+msgid "Show all calendars merged together"
+msgstr "すべてのカレンダーをいっしょに表示します"
+
+#. i18n: ectx: label, entry (AgendaViewCalendarDisplay), group (Agenda View)
+#: settings/korganizer.kcfg:225
+#, kde-format
+msgid "Show calendars side by side"
+msgstr "カレンダーを並べて表示する"
+
+#. i18n: ectx: whatsthis, entry (AgendaViewCalendarDisplay), group (Agenda View)
+#: settings/korganizer.kcfg:226
+#, kde-format
+msgid ""
+"Select the \"Show calendars side by side\" option if you would like to see "
+"two calendars at once, in a side-by-side view."
+msgstr ""
+"2 つのカレンダーを同時に並べて見たい場合は「カレンダーを並べて表示する」を選"
+"択します"
+
+#. i18n: ectx: tooltip, entry (AgendaViewCalendarDisplay), group (Agenda View)
+#: settings/korganizer.kcfg:227
+#, kde-format
+msgid "Show two calendars side-by-side"
+msgstr "2 つのカレンダーを並べて表示します"
+
+#. i18n: ectx: label, entry (AgendaViewCalendarDisplay), group (Agenda View)
+#: settings/korganizer.kcfg:230
+#, kde-format
+msgid "Switch between views with tabs"
+msgstr "Tab キーでビューを切り替える"
+
+#. i18n: ectx: whatsthis, entry (AgendaViewCalendarDisplay), group (Agenda View)
+#: settings/korganizer.kcfg:231
+#, kde-format
+msgid ""
+"Select \"Switch between views with tabs\" if you would like to alternate "
+"between calendars using the tab key."
+msgstr ""
+"複数のカレンダーを Tab キーを使って切り替えたい場合は「Tab キーでビューを切り"
+"替える」を選択します。"
+
+#. i18n: ectx: tooltip, entry (AgendaViewCalendarDisplay), group (Agenda View)
+#: settings/korganizer.kcfg:232
+#, kde-format
+msgid "Tab through calendars"
+msgstr "Tab キーでカレンダーを切り替えます"
+
+#. i18n: ectx: label, entry (EnableMonthItemIcons), group (Month View)
+#: settings/korganizer.kcfg:242
+#, kde-format
+msgid "Show icons in month view items"
+msgstr "月ビューのアイテムにアイコンを表示する"
+
+#. i18n: ectx: whatsthis, entry (EnableMonthItemIcons), group (Month View)
+#: settings/korganizer.kcfg:243
+#, kde-format
+msgid ""
+"Check this box to display icons (alarm, recursion, etc.) in month view items."
+msgstr ""
+"このオプションを有効にすると、月ビューのアイテムにアラームや繰り返しなどを表"
+"すアイコンが表示されます。"
+
+#. i18n: ectx: tooltip, entry (EnableMonthItemIcons), group (Month View)
+#: settings/korganizer.kcfg:244
+#, kde-format
+msgid "Display icons in month view items"
+msgstr "月ビューのアイテムにアイコンを表示します"
+
+#. i18n: ectx: label, entry (ShowTimeInMonthView), group (Month View)
+#: settings/korganizer.kcfg:249
+#, kde-format
+msgid "Show time in month view items"
+msgstr "月ビューのアイテムに時間を表示する"
+
+#. i18n: ectx: whatsthis, entry (ShowTimeInMonthView), group (Month View)
+#: settings/korganizer.kcfg:250
+#, kde-format
+msgid "Check this box to display the time in month view items."
+msgstr "月ビューに時間を表示するには、このボックスをチェックします。"
+
+#. i18n: ectx: tooltip, entry (ShowTimeInMonthView), group (Month View)
+#: settings/korganizer.kcfg:251
+#, kde-format
+msgid "Display time in month view items"
+msgstr "月ビューのアイテムに時間を表示します"
+
+#. i18n: ectx: whatsthis, entry (ShowTodosMonthView), group (Month View)
+#: settings/korganizer.kcfg:257
+#, kde-format
+msgid "Check this box to display to-dos in the month view."
+msgstr "月ビューに To-Do を表示するには、このボックスをチェックします。"
+
+#. i18n: ectx: tooltip, entry (ShowTodosMonthView), group (Month View)
+#: settings/korganizer.kcfg:258
+#, kde-format
+msgid "Display to-dos in the month view"
+msgstr "月ビューに To-Do を表示します"
+
+#. i18n: ectx: label, entry (ShowJournalsMonthView), group (Month View)
+#: settings/korganizer.kcfg:263
+#, kde-format
+msgid "Show journals"
+msgstr "日記を表示する"
+
+#. i18n: ectx: whatsthis, entry (ShowJournalsMonthView), group (Month View)
+#: settings/korganizer.kcfg:264
+#, kde-format
+msgid "Check this box to display journals in the month view."
+msgstr "月ビューに日記を表示するには、このボックスをチェックします。"
+
+#. i18n: ectx: tooltip, entry (ShowJournalsMonthView), group (Month View)
+#: settings/korganizer.kcfg:265
+#, kde-format
+msgid "Display journals in the month view"
+msgstr "月ビューに日記を表示します"
+
+#. i18n: ectx: label, entry, group (Month View)
+#: settings/korganizer.kcfg:270
+#, kde-format
+msgid "Month view uses full window"
+msgstr "月ビューをウィンドウいっぱいに表示する"
+
+#. i18n: ectx: whatsthis, entry, group (Month View)
+#: settings/korganizer.kcfg:271
+#, kde-format
+msgid ""
+"Check this box to use the full KOrganizer window when displaying the month "
+"view. If this box is checked, you will gain some space for the monthly view, "
+"but other widgets, such as the date navigator, the item details and the "
+"calendars list, will not be displayed."
+msgstr ""
+"月ビューを KOrganizer のウィンドウ全体を使って表示する場合、このボックスを"
+"チェックします。このオプションを有効にすると、月ビューはより大きく表示されま"
+"すが、日付ナビゲータ、アイテムの詳細、カレンダーリストなどのウィジェットは表"
+"示されません。"
+
+#. i18n: ectx: tooltip, entry, group (Month View)
+#: settings/korganizer.kcfg:281
+#, fuzzy, kde-format
+#| msgid ""
+#| "Draw agenda items in their category color inside and calendar resource "
+#| "color for their border"
+msgid ""
+"Draw month items with their tag color inside and calendar color for their "
+"border"
+msgstr "予定表のアイテムの内部をカテゴリ色で、枠をリソース色で描画します"
+
+#. i18n: ectx: tooltip, entry, group (Month View)
+#: settings/korganizer.kcfg:286
+#, fuzzy, kde-format
+#| msgid ""
+#| "Draw agenda items in their calendar resource color inside and category "
+#| "color for their border"
+msgid ""
+"Draw month items with their calendar color inside and tag color for their "
+"border"
+msgstr "予定表のアイテムの内部をリソース色で、枠をカテゴリ色で描画します"
+
+#. i18n: ectx: whatsthis, entry, group (Month View)
+#: settings/korganizer.kcfg:290
+#, fuzzy, kde-format
+#| msgid ""
+#| "Select the \"Only category\" option if you would like to draw calendar "
+#| "items (both inside and border) in the color of their associated "
+#| "category.  Please use the Colors and Fonts configuration page for setting "
+#| "these colors."
+msgid ""
+"Select the \"Only tag\" option if you would like to draw calendar items "
+"(both inside and border) in the color of their associated tag.  Please use "
+"the Colors and Fonts configuration page for setting these colors."
+msgstr ""
+"カレンダーアイテムの内部と枠の両方を関連付けられているカテゴリの色で表示させ"
+"たい場合は「カテゴリ色のみ」を選択します。カテゴリの色は「色とフォント」の"
+"ページで設定します。"
+
+#. i18n: ectx: tooltip, entry, group (Month View)
+#: settings/korganizer.kcfg:291
+#, fuzzy, kde-format
+#| msgid ""
+#| "Draw agenda items using their category color for the inside and border"
+msgid "Draw month items using their tag color for the inside and border"
+msgstr "予定表のアイテムの内部と枠の両方をカテゴリ色で描画します"
+
+#. i18n: ectx: whatsthis, entry, group (Month View)
+#: settings/korganizer.kcfg:295
+#, kde-format
+msgid ""
+"Select the \"Only calendar\" option if you would like to draw calendar items "
+"(both inside and border) in the color of their calendar.  Please use the "
+"Colors and Fonts configuration page for setting these colors."
+msgstr ""
+"カレンダーアイテムの内部と枠の両方をカレンダーの色で表示させたい場合は「リ"
+"ソース色のみ」を選択します。リソースの色は「色とフォント」のページで設定しま"
+"す。"
+
+#. i18n: ectx: tooltip, entry, group (Month View)
+#: settings/korganizer.kcfg:296
+#, fuzzy, kde-format
+#| msgid ""
+#| "Draw agenda items using their category color for the inside and border"
+msgid "Draw month items using their calendar color for the inside and border"
+msgstr "予定表のアイテムの内部と枠の両方をカテゴリ色で描画します"
+
+#. i18n: ectx: label, entry, group (Todo View)
+#: settings/korganizer.kcfg:306
+#, kde-format
+msgid "Always display completed to-dos at the bottom of the list"
+msgstr "完了した To-Do はリストの最下部に表示する"
+
+#. i18n: ectx: tooltip, entry, group (Todo View)
+#: settings/korganizer.kcfg:307
+#, kde-format
+msgid ""
+"Completed to-dos are displayed at the bottom of the list, regardless of "
+"priority"
+msgstr ""
+
+#. i18n: ectx: whatsthis, entry, group (Todo View)
+#: settings/korganizer.kcfg:308
+#, kde-format
+msgid ""
+"Check this box if you want all completed to-dos to be always grouped at the "
+"bottom of the to-do list."
+msgstr ""
+"完了した To-Do を常にリストの最下部にまとめて表示するには、このボックスを"
+"チェックします。"
+
+#. i18n: ectx: label, entry, group (Todo View)
+#: settings/korganizer.kcfg:313
+#, kde-format
+msgid "To-do list view uses full window"
+msgstr "To-Do リストをウィンドウいっぱいに表示する"
+
+#. i18n: ectx: tooltip, entry, group (Todo View)
+#: settings/korganizer.kcfg:314
+#, fuzzy, kde-format
+#| msgid "To-do list view uses full window"
+msgid "Display to-do list in a full KOrganizer window"
+msgstr "To-Do リストをウィンドウいっぱいに表示する"
+
+#. i18n: ectx: whatsthis, entry, group (Todo View)
+#: settings/korganizer.kcfg:315
+#, kde-format
+msgid ""
+"Check this box to use the full KOrganizer window when displaying the to-do "
+"list view. If this box is checked, you will gain some space for the to-do "
+"list view, but other widgets, such as the date navigator, the to-do details "
+"and the calendars list, will not be displayed."
+msgstr ""
+"To-Do リストを KOrganizer のウィンドウ全体を使って表示する場合、このボックス"
+"をチェックします。このオプションを有効にすると、To-Do リストはより大きく表示"
+"されますが、日付ナビゲータ、アイテムの詳細、カレンダーリストなどのウィジェッ"
+"トは表示されません。"
+
+#. i18n: ectx: label, entry, group (Todo View)
+#: settings/korganizer.kcfg:320
+#, fuzzy, kde-format
+#| msgctxt "@info:tooltip"
+#| msgid "Display to-dos in flat list instead of a tree"
+msgid "Display to-dos in a flat list"
+msgstr "To-Do をツリー表示せずにフラットに表示します"
+
+#. i18n: ectx: tooltip, entry, group (Todo View)
+#: settings/korganizer.kcfg:321
+#, fuzzy, kde-format
+#| msgctxt "@info:tooltip"
+#| msgid "Display to-dos in flat list instead of a tree"
+msgid "Display to-dos as a flat list instead of a hierarchical tree"
+msgstr "To-Do をツリー表示せずにフラットに表示します"
+
+#. i18n: ectx: whatsthis, entry, group (Todo View)
+#: settings/korganizer.kcfg:322
+#, fuzzy, kde-format
+#| msgid "Check this box if you want to show seconds on the current-time line."
+msgid ""
+"Check this box if you want to see all your to-dos in a flat list instead of "
+"being arranged in a hierarchical tree."
+msgstr "現在時刻線に秒を表示させる場合、このボックスをチェックします。"
+
+#. i18n: ectx: label, entry, group (Todo View)
+#: settings/korganizer.kcfg:327
+#, kde-format
+msgid "Record completed to-dos in journal entries"
+msgstr "To-Do の完了を日記に記録する"
+
+#. i18n: ectx: whatsthis, entry, group (Todo View)
+#: settings/korganizer.kcfg:328
+#, kde-format
+msgid ""
+"Check this box to record the completion of a to-do in a new entry of your "
+"journal automatically."
+msgstr ""
+"To-Do を完了としてマークしたときに自動的に日記の新しいエントリとして記録する"
+"には、このボックスをチェックしてください。"
+
+#. i18n: ectx: label, entry, group (Colors)
+#. i18n: ectx: label, entry, group (Theming)
+#. i18n: ectx: label, entry, group (Theme/Month view)
+#: settings/korganizer.kcfg:336 settings/korganizer.kcfg:553
+#: settings/korganizer.kcfg:662
+#, kde-format
+msgid "Holiday color"
+msgstr "休日の色"
+
+#. i18n: ectx: whatsthis, entry, group (Colors)
+#. i18n: ectx: whatsthis, entry, group (Theming)
+#. i18n: ectx: whatsthis, entry, group (Theme/Month view)
+#: settings/korganizer.kcfg:337 settings/korganizer.kcfg:554
+#: settings/korganizer.kcfg:663
+#, kde-format
+msgid ""
+"Select the holiday color here. The holiday color will be used for the "
+"holiday name in the month view and the holiday number in the date navigator."
+msgstr ""
+"休日の色を選択します。休日の色は月ビューでは休日の名前に、日付ナビゲータでは"
+"休日の数字に使われます。"
+
+#. i18n: ectx: label, entry (AgendaBgColor), group (Colors)
+#. i18n: ectx: label, entry, group (Theming)
+#: settings/korganizer.kcfg:342 settings/korganizer.kcfg:482
+#, kde-format
+msgid "Agenda view background color"
+msgstr "予定表ビューの背景色"
+
+#. i18n: ectx: whatsthis, entry (AgendaBgColor), group (Colors)
+#. i18n: ectx: whatsthis, entry, group (Theming)
+#: settings/korganizer.kcfg:343 settings/korganizer.kcfg:483
+#, kde-format
+msgid "Select the agenda view background color here."
+msgstr "予定表ビューの背景色を選択します。"
+
+#. i18n: ectx: label, entry, group (Colors)
+#: settings/korganizer.kcfg:348
+#, kde-format
+msgid "Agenda view current-time line color"
+msgstr "予定表ビューの現在時刻線の色"
+
+#. i18n: ectx: whatsthis, entry, group (Colors)
+#: settings/korganizer.kcfg:349
+#, kde-format
+msgid "Select a color to use for the current-time (Marcus Bains) line."
+msgstr "現在時刻線に使う色を選択します。"
+
+#. i18n: ectx: tooltip, entry, group (Colors)
+#: settings/korganizer.kcfg:350
+#, kde-format
+msgid "Use this color for the Agenda View current-time (Marcus Bains) line"
+msgstr "予定表ビューの現在時刻線にこの色を使います"
+
+#. i18n: ectx: label, entry (ViewBgBusyColor), group (Colors)
+#: settings/korganizer.kcfg:355
+#, kde-format
+msgid "Busy days background color"
+msgstr "忙しい日の背景色"
+
+#. i18n: ectx: whatsthis, entry (ViewBgBusyColor), group (Colors)
+#: settings/korganizer.kcfg:356
+#, kde-format
+msgid ""
+"When you have an all day event marked as busy, you can have a different "
+"agenda or month view background color for that day. Select the color here."
+msgstr ""
+
+#. i18n: ectx: label, entry, group (Colors)
+#. i18n: ectx: label, entry, group (Theme/Month view)
+#: settings/korganizer.kcfg:361 settings/korganizer.kcfg:582
+#, kde-format
+msgid "Working hours color"
+msgstr "勤務時間帯の色"
+
+#. i18n: ectx: whatsthis, entry, group (Colors)
+#: settings/korganizer.kcfg:362
+#, kde-format
+msgid "Select the working hours color for the agenda view here."
+msgstr "予定表ビューで勤務時間帯を示す色を選択します。"
+
+#. i18n: ectx: label, entry (TodoDueTodayColor), group (Colors)
+#. i18n: ectx: label, entry, group (Theme/Month view)
+#: settings/korganizer.kcfg:367 settings/korganizer.kcfg:633
+#, kde-format
+msgid "To-do due today color"
+msgstr "今日が締切の To-Do の色"
+
+#. i18n: ectx: whatsthis, entry (TodoDueTodayColor), group (Colors)
+#. i18n: ectx: whatsthis, entry, group (Theme/Month view)
+#: settings/korganizer.kcfg:368 settings/korganizer.kcfg:634
+#, kde-format
+msgid "Select the to-do due today color here."
+msgstr "今日が締切の To-Do の色を選択します。"
+
+#. i18n: ectx: label, entry (TodoOverdueColor), group (Colors)
+#. i18n: ectx: label, entry, group (Theme/Month view)
+#: settings/korganizer.kcfg:373 settings/korganizer.kcfg:647
+#, kde-format
+msgid "To-do overdue color"
+msgstr "締切を過ぎた To-Do の色"
+
+#. i18n: ectx: whatsthis, entry (TodoOverdueColor), group (Colors)
+#. i18n: ectx: whatsthis, entry, group (Theme/Month view)
+#: settings/korganizer.kcfg:374 settings/korganizer.kcfg:648
+#, kde-format
+msgid "Select the to-do overdue color here."
+msgstr "締切を過ぎた To-Do の色を選択します。"
+
+#. i18n: ectx: label, entry, group (Fonts)
+#: settings/korganizer.kcfg:382
+#, kde-format
+msgid "Time bar"
+msgstr "時間バー"
+
+#. i18n: ectx: whatsthis, entry, group (Fonts)
+#: settings/korganizer.kcfg:383
+#, kde-format
+msgid ""
+"Press this button to configure the time bar font. The time bar is the widget "
+"that shows the hours in the agenda view. This button will open the \"Select "
+"Font\" dialog, allowing you to choose the hour font for the time bar."
+msgstr ""
+"時間バーのフォントを設定するには「選択」ボタンを押してください。時間バーは予"
+"定表ビューで時間を表示するウィジェットです。ボタンを押すとフォント選択ダイア"
+"ログが開き、そこでフォントを選択できます。"
+
+#. i18n: ectx: label, entry, group (Fonts)
+#: settings/korganizer.kcfg:387
+#, kde-format
+msgid "Month view"
+msgstr "月ビュー"
+
+#. i18n: ectx: whatsthis, entry, group (Fonts)
+#: settings/korganizer.kcfg:388
+#, kde-format
+msgid ""
+"Press this button to configure the month view font. This button will open "
+"the \"Select Font\" dialog, allowing you to choose the font for the items in "
+"the month view."
+msgstr ""
+"月ビューのアイテムに使用するフォントを設定するには「選択」ボタンを押してくだ"
+"さい。ボタンを押すとフォントの選択ダイアログが開き、そこでフォントを選択でき"
+"ます。"
+
+#. i18n: ectx: label, entry, group (Fonts)
+#: settings/korganizer.kcfg:392
+#, kde-format
+msgid "Agenda view"
+msgstr "予定表ビュー"
+
+#. i18n: ectx: whatsthis, entry, group (Fonts)
+#: settings/korganizer.kcfg:393
+#, kde-format
+msgid ""
+"Press this button to configure the agenda view font. This button will open "
+"the \"Select Font\" dialog, allowing you to choose the font for the events "
+"in the agenda view."
+msgstr ""
+"予定表ビューのフォントを設定するには「選択」ボタンを押してください。ボタンを"
+"押すとフォント選択ダイアログが開き、そこでフォントを選択できます。"
+
+#. i18n: ectx: label, entry, group (Fonts)
+#: settings/korganizer.kcfg:397
+#, kde-format
+msgid "Current-time line"
+msgstr "現在時刻線"
+
+#. i18n: ectx: whatsthis, entry, group (Fonts)
+#: settings/korganizer.kcfg:398
+#, kde-format
+msgid ""
+"Press this button to configure the current-time line font. This button will "
+"open the \"Select Font\" dialog, allowing you to choose the font for the "
+"current-time line in the agenda view."
+msgstr ""
+"現在時刻線のフォントを設定するには「選択」ボタンを押してください。ボタンを押"
+"すとフォント選択ダイアログが開き、そこでフォントを選択できます。"
+
+#. i18n: ectx: label, entry (DefaultTodoAttachMethod), group (Hidden Options)
+#: settings/korganizer.kcfg:422
+#, kde-format
+msgid "Default todo attachment method"
+msgstr "デフォルトの To-Do 添付方法"
+
+#. i18n: ectx: whatsthis, entry (DefaultTodoAttachMethod), group (Hidden Options)
+#: settings/korganizer.kcfg:423
+#, kde-format
+msgid "The default way of attaching dropped emails to a task"
+msgstr "ドロップしたメールをタスクに追加するデフォルトの方法"
+
+#. i18n: ectx: label, entry (DefaultTodoAttachMethod), group (Hidden Options)
+#: settings/korganizer.kcfg:426
+#, kde-format
+msgid "Always ask"
+msgstr "常に尋ねる"
+
+#. i18n: ectx: label, entry (DefaultTodoAttachMethod), group (Hidden Options)
+#: settings/korganizer.kcfg:429
+#, kde-format
+msgid "Only attach link to message"
+msgstr "メッセージへのリンクのみを添付"
+
+#. i18n: ectx: label, entry (DefaultTodoAttachMethod), group (Hidden Options)
+#: settings/korganizer.kcfg:432
+#, kde-format
+msgid "Attach complete message"
+msgstr "完全なメッセージを添付"
+
+#. i18n: ectx: label, entry, group (Theming)
+#. i18n: ectx: label, entry, group (Theme/Month view)
+#: settings/korganizer.kcfg:489 settings/korganizer.kcfg:577
+#, kde-format
+msgid "Highlight color"
+msgstr "強調表示の色"
+
+#. i18n: ectx: whatsthis, entry, group (Theming)
+#: settings/korganizer.kcfg:490
+#, kde-format
+msgid ""
+"Select the highlight color here. The highlight color will be used for "
+"marking the currently selected area in your agenda and in the date navigator."
+msgstr ""
+"強調表示の色を選択します。強調表示の色は予定表や日付ナビゲータで選択されてい"
+"る領域を示すために使われます。"
+
+#. i18n: ectx: label, entry, group (Theming)
+#: settings/korganizer.kcfg:558
+#, fuzzy, kde-format
+#| msgctxt "@title:group"
+#| msgid "Calendar Decorations"
+msgid "Use system color"
+msgstr "カレンダーの装飾"
+
+#. i18n: ectx: whatsthis, entry, group (Theming)
+#: settings/korganizer.kcfg:559
+#, kde-format
+msgid ""
+"Use system color instead of user defined color. If enabled will ignore all "
+"other color settings"
+msgstr ""
+
+#. i18n: ectx: label, entry, group (Theme/Month view)
+#: settings/korganizer.kcfg:570
+#, kde-format
+msgid "Month view background color"
+msgstr "月ビューの背景色"
+
+#. i18n: ectx: whatsthis, entry, group (Theme/Month view)
+#: settings/korganizer.kcfg:571
+#, kde-format
+msgid "Select the Month view background color here."
+msgstr "月ビューの背景色を選択します。"
+
+#. i18n: ectx: whatsthis, entry, group (Theme/Month view)
+#: settings/korganizer.kcfg:578
+#, kde-format
+msgid ""
+"Select the highlight color here. The highlight color will be used for "
+"marking the currently selected area in your Month and in the date navigator."
+msgstr ""
+"強調表示の色を選択します。強調表示の色は月ビューと日付ナビゲータで選択されて"
+"いる領域を示すために使われます。"
+
+#. i18n: ectx: whatsthis, entry, group (Theme/Month view)
+#: settings/korganizer.kcfg:583
+#, kde-format
+msgid "Select the working hours background color for the Month view here."
+msgstr "月ビューで勤務時間帯を示す背景色を選択します。"
+
+#. i18n: ectx: label, entry, group (Theme/Month view)
+#: settings/korganizer.kcfg:605
+#, kde-format
+msgid "Default event color"
+msgstr "イベントのデフォルト色"
+
+#. i18n: ectx: whatsthis, entry, group (Theme/Month view)
+#: settings/korganizer.kcfg:606
+#, fuzzy, kde-format
+#| msgid ""
+#| "Select the default event color here. The default event color will be used "
+#| "for events categories in your Month. Note that you can specify a separate "
+#| "color for each event category below."
+msgid ""
+"Select the default event color here. The default event color will be used "
+"for events in your Month. Note that you can specify a separate color for "
+"each event tag below."
+msgstr ""
+"イベントのデフォルト色を選択します。これは月ビューでイベントのカテゴリを示す"
+"ために使われます。下でカテゴリごとに色を指定できます。"
+
+#. i18n: ectx: property (placeholderText), widget (KListWidgetSearchLine, searchline)
+#: ui/filteredit_base.ui:35
+#, fuzzy, kde-format
+#| msgid "Search"
+msgctxt "Displayed grayed-out inside the textbox, verb to search"
+msgid "Search"
+msgstr "検索"
+
+#. i18n: ectx: property (text), widget (QPushButton, mNewButton)
+#: ui/filteredit_base.ui:49
+#, kde-format
+msgid "&New"
+msgstr "新規(&N)"
+
+#. i18n: ectx: property (title), widget (QGroupBox, mDetailsFrame)
+#: ui/filteredit_base.ui:67
+#, kde-format
+msgid "Filter Details"
+msgstr "フィルタの詳細"
+
+#. i18n: ectx: property (text), widget (QLabel, textLabel1)
+#: ui/filteredit_base.ui:105
+#, kde-format
+msgctxt "filter name"
+msgid "Name:"
+msgstr "名前:"
+
+#. i18n: ectx: property (whatsThis), widget (QCheckBox, mRecurringCheck)
+#: ui/filteredit_base.ui:121
+#, kde-format
+msgid ""
+"Select this option if you do not want to show recurring events and to-dos in "
+"your views. Daily and weekly recurring items may take a lot of space, so it "
+"might be handy to hide them."
+msgstr ""
+"定期的に繰り返されるイベントや To-Do を表示したくない場合、このオプションを指"
+"定してください。日単位や週単位で繰り返されるイベントは多くのスペースを取る場"
+"合があるので、フィルタで隠せるようにしておくと便利かもしれません。"
+
+#. i18n: ectx: property (text), widget (QCheckBox, mRecurringCheck)
+#: ui/filteredit_base.ui:124
+#, kde-format
+msgid "Hide &recurring events and to-dos"
+msgstr "繰り返しイベントと To-Do を隠す(&R)"
+
+#. i18n: ectx: property (whatsThis), widget (QCheckBox, mCompletedCheck)
+#: ui/filteredit_base.ui:131
+#, kde-format
+msgid ""
+"If this box is checked, the filter will hide all to-do items from the list, "
+"that have been completed. Optionally, only items that have been completed a "
+"given number of days are hidden."
+msgstr ""
+"このオプションは完了済みの To-Do をリストから隠します。完了してからの日数を指"
+"定して隠すこともできます。"
+
+#. i18n: ectx: property (text), widget (QCheckBox, mCompletedCheck)
+#: ui/filteredit_base.ui:134
+#, kde-format
+msgid "Hide co&mpleted to-dos"
+msgstr "完了した To-Do を隠す(&M)"
+
+#. i18n: ectx: property (whatsThis), widget (QLabel, mCompletedTimeSpanLabel)
+#: ui/filteredit_base.ui:177
+#, kde-format
+msgid ""
+"This option will allow you to select which completed to-dos should be "
+"hidden. When you choose <i>Immediately</i>, it will hide the to-do as soon "
+"as you check it. You can increase or decrease the number of days in the "
+"spinbox."
+msgstr ""
+"このオプションを使うと、完了後の日数によって隠す To-Do を選択できます。「すぐ"
+"に」を指定すると、完了とマークするとすぐにその To-Do は隠されます。スピンボッ"
+"クスで日数を増減できます。"
+
+#. i18n: ectx: property (text), widget (QLabel, mCompletedTimeSpanLabel)
+#: ui/filteredit_base.ui:180
+#, fuzzy, kde-format
+#| msgid "Days after completion:"
+msgid "Da&ys after completion:"
+msgstr "完了後の日数:"
+
+#. i18n: ectx: property (whatsThis), widget (QSpinBox, mCompletedTimeSpan)
+#: ui/filteredit_base.ui:193
+#, kde-format
+msgid ""
+"Here you can give the number of days a to-do item has to be completed to be "
+"hidden from the to-do list. If you select \"Immediately\", all completed to-"
+"dos will be hidden. If you, for example, choose a value of 1, all to-do "
+"items will be hidden, that have been marked finished longer than 24 hours "
+"ago."
+msgstr ""
+"完了してから何日経過したら To-Do リストから隠すかを設定します。「すぐに」を選"
+"択すると、すべての完了済み To-Do が隠されます。日数を例えば 1 に指定した場合"
+"は、24時間前以前に完了とマークされたすべての To-Do が隠されます。"
+
+#. i18n: ectx: property (whatsThis), widget (QCheckBox, mHideInactiveTodosCheck)
+#: ui/filteredit_base.ui:218
+#, kde-format
+msgid ""
+"This option hides all to-dos from your list, where the start date has not "
+"been reached. (Note that the start date is not the due date of the to-do "
+"item.)"
+msgstr ""
+"このオプションは開始日が到来していないすべての To-Do をリストから隠します。"
+"(開始日は To-Do の締切日ではないことに注意してください。)"
+
+#. i18n: ectx: property (text), widget (QCheckBox, mHideInactiveTodosCheck)
+#: ui/filteredit_base.ui:221
+#, kde-format
+msgid "Hide &inactive to-dos"
+msgstr "開始前の To-Do を隠す(&I)"
+
+#. i18n: ectx: property (title), widget (QGroupBox, mCategoriesButtonGroup)
+#: ui/filteredit_base.ui:228
+#, kde-format
+msgid "Tags"
+msgstr ""
+
+#. i18n: ectx: property (whatsThis), widget (QRadioButton, mCatHideCheck)
+#: ui/filteredit_base.ui:272
+#, fuzzy, kde-format
+#| msgid ""
+#| "When this option is enabled, this filter will show all items which do "
+#| "<i>not</i> contain the selected categories."
+msgid ""
+"When this option is chosen, this filter will show all items which do <i>not</"
+"i> contain any of the selected tags."
+msgstr ""
+"このオプションは、指定されたカテゴリを含んで「いない」すべてのアイテムを表示"
+"します。"
+
+#. i18n: ectx: property (text), widget (QRadioButton, mCatHideCheck)
+#: ui/filteredit_base.ui:275
+#, kde-format
+msgid "Show all except selected"
+msgstr "以下を含まないものを表示"
+
+#. i18n: ectx: property (whatsThis), widget (QRadioButton, mCatShowCheck)
+#: ui/filteredit_base.ui:288
+#, fuzzy, kde-format
+#| msgid ""
+#| "When this option is enabled, this filter will show all items containing "
+#| "at least the selected items."
+msgid ""
+"When this option is chosen, this filter will show all items containing any "
+"of the selected tags."
+msgstr ""
+"このオプションは、指定されたカテゴリを少なくともひとつ含むすべてのアイテムを"
+"表示します。"
+
+#. i18n: ectx: property (text), widget (QRadioButton, mCatShowCheck)
+#: ui/filteredit_base.ui:291
+#, kde-format
+msgid "Show only selected"
+msgstr "以下を含むものを表示"
+
+#. i18n: ectx: property (text), widget (QPushButton, mCatEditButton)
+#: ui/filteredit_base.ui:301
+#, kde-format
+msgid "Change..."
+msgstr "変更..."
+
+#. i18n: ectx: property (whatsThis), widget (QCheckBox, mHideTodosNotAssignedToMeCheck)
+#: ui/filteredit_base.ui:315
+#, kde-format
+msgid ""
+"This option hides all to-dos from your list which are assigned to someone "
+"else.<br>\n"
+"Only to-dos which have least one attendee will be checked.  If you are not "
+"in the list of attendees the to-do will be hidden."
+msgstr ""
+"<qt>このオプションは誰か他の人に割り当てられているすべての To-Do をリストから"
+"隠します。<br/>\n"
+"少なくとも 1 人の参加者がいる To-Do のみをチェックします。あなたが参加者リス"
+"トに含まれていない To-Do は隠されます。</qt>"
+
+#. i18n: ectx: property (text), widget (QCheckBox, mHideTodosNotAssignedToMeCheck)
+#: ui/filteredit_base.ui:318
+#, kde-format
+msgid "Hide to-dos not assigned to me"
+msgstr "自分に割り当てられていない To-Do を隠す"
+
+# ACCELERATOR removed by translator
+#. i18n: ectx: attribute (title), widget (QWidget, tabPublish)
+#: ui/kogroupwareprefspage.ui:36
+#, kde-format
+msgid "P&ublish"
+msgstr "公開"
+
+#. i18n: ectx: property (text), widget (QLabel, TextLabel1)
+#: ui/kogroupwareprefspage.ui:57
+#, kde-format
+msgid ""
+"By publishing Free/Busy information, you allow others to take your calendar "
+"into account when inviting you for a meeting. Only the times you have "
+"already busy are published, not why they are busy."
+msgstr ""
+"フリー/ビジー情報 (予定の有無情報) を公開することで、他の人が会議を招集する際"
+"にあなたの予定を考慮に入れることができるようになります。公開されるのは予定が"
+"あるということだけで、その内容は公開されません。"
+
+#. i18n: ectx: property (whatsThis), widget (QCheckBox, publishEnable)
+#: ui/kogroupwareprefspage.ui:69
+#, kde-format
+msgid ""
+"Check this box to upload your Free/Busy information automatically.\n"
+"It is possible to skip this option and mail or upload your Free/Busy "
+"information using the Schedule menu of KOrganizer.\n"
+"Note: If KOrganizer is acting as a KDE Kolab client, this is not required, "
+"as the Kolab2 server taking care of publishing your Free/Busy information "
+"and manages the access to it from other users."
+msgstr ""
+"フリー/ビジー情報を自動でアップロードする場合、このボックスをチェックしま"
+"す。\n"
+"このオプションを使わずに、KOrganizer の「スケジュール」メニューを用いてフ"
+"リー/ビジー情報をメールまたはアップロードすることも可能です。\n"
+"【注意】 KOrganizer が KDE Kolab クライアントとして働いている場合、この設定は"
+"必要ありません。Kolab2 サーバがフリー/ビジー情報を公開し、他のユーザからのア"
+"クセスを管理します。"
+
+#. i18n: ectx: property (text), widget (QCheckBox, publishEnable)
+#: ui/kogroupwareprefspage.ui:72
+#, kde-format
+msgid "Publish your free/&busy information automatically"
+msgstr "フリー/ビジー情報を自動的に公開する(&B)"
+
+#. i18n: ectx: property (whatsThis), widget (QLabel, publishDelayLabel)
+#. i18n: ectx: property (whatsThis), widget (QSpinBox, publishDelay)
+#: ui/kogroupwareprefspage.ui:96 ui/kogroupwareprefspage.ui:109
+#, kde-format
+msgid ""
+"Configure minimum the interval of time in minutes between each upload here. "
+"This configuration is only effective in case you choose to publish your "
+"information automatically."
+msgstr ""
+"アップロードする最小の間隔を分単位で設定します。この設定はフリー/ビジー情報を"
+"自動的に公開するオプションが選択されている場合にのみ有効です。"
+
+#. i18n: ectx: property (text), widget (QLabel, publishDelayLabel)
+#: ui/kogroupwareprefspage.ui:99
+#, kde-format
+msgid "Minimum time between uploads (in minutes):"
+msgstr "アップロードの最小間隔 (分):"
+
+#. i18n: ectx: property (whatsThis), widget (QLabel, TextLabel3)
+#. i18n: ectx: property (whatsThis), widget (QSpinBox, publishDays)
+#. i18n: ectx: property (whatsThis), widget (QLabel, TextLabel4)
+#: ui/kogroupwareprefspage.ui:138 ui/kogroupwareprefspage.ui:151
+#: ui/kogroupwareprefspage.ui:167
+#, kde-format
+msgid ""
+"Configure the number of calendar days you wish to be published and available "
+"to others here."
+msgstr "他の人に公開するカレンダーの日数を設定します。"
+
+# skip-rule: colon1
+#. i18n: ectx: property (text), widget (QLabel, TextLabel3)
+#: ui/kogroupwareprefspage.ui:141
+#, kde-format
+msgid "Publish"
+msgstr "公開するフリー/ビジー情報:"
+
+#. i18n: ectx: property (text), widget (QLabel, TextLabel4)
+#: ui/kogroupwareprefspage.ui:170
+#, kde-format
+msgid "days of free/busy information"
+msgstr "日分"
+
+#. i18n: ectx: property (title), widget (QGroupBox, ButtonGroup2)
+#. i18n: ectx: property (title), widget (QGroupBox, ButtonGroup2_2)
+#: ui/kogroupwareprefspage.ui:195 ui/kogroupwareprefspage.ui:392
+#, kde-format
+msgid "Server Information"
+msgstr "サーバ情報"
+
+#. i18n: ectx: property (whatsThis), widget (QLineEdit, publishUrl)
+#. i18n: ectx: property (whatsThis), widget (QLabel, TextLabel7)
+#: ui/kogroupwareprefspage.ui:223 ui/kogroupwareprefspage.ui:295
+#, kde-format
+msgid ""
+"Enter the URL for the server on which your Free/Busy information shall be "
+"published here.\n"
+"Ask the server administrator for this information."
+msgstr ""
+"フリー/ビジー情報を公開するサーバの URL を入力します。\n"
+"この情報はサーバ管理者に問い合わせてください。"
+
+#. i18n: ectx: property (whatsThis), widget (QLineEdit, publishPassword)
+#. i18n: ectx: property (whatsThis), widget (QLabel, textLabel2)
+#. i18n: ectx: property (whatsThis), widget (QLineEdit, retrievePassword)
+#. i18n: ectx: property (whatsThis), widget (QLabel, textLabel4)
+#: ui/kogroupwareprefspage.ui:230 ui/kogroupwareprefspage.ui:240
+#: ui/kogroupwareprefspage.ui:413 ui/kogroupwareprefspage.ui:486
+#, kde-format
+msgid "Enter your groupware server login password here."
+msgstr "グループウェアサーバのログインパスワードを入力します。"
+
+#. i18n: ectx: property (text), widget (QLabel, textLabel2)
+#: ui/kogroupwareprefspage.ui:243
+#, kde-format
+msgid "Password:"
+msgstr "パスワード:"
+
+#. i18n: ectx: property (whatsThis), widget (QLabel, TextLabel6)
+#. i18n: ectx: property (whatsThis), widget (QLineEdit, publishUser)
+#. i18n: ectx: property (whatsThis), widget (QLineEdit, retrieveUser)
+#. i18n: ectx: property (whatsThis), widget (QLabel, textLabel3)
+#: ui/kogroupwareprefspage.ui:255 ui/kogroupwareprefspage.ui:276
+#: ui/kogroupwareprefspage.ui:425 ui/kogroupwareprefspage.ui:473
+#, kde-format
+msgid ""
+"Enter the login information relative to your account on the server here.\n"
+"\n"
+"A Kolab2 server specificity: Registered your UID (Unique IDentifier). By "
+"default your UID would be your email address on the Kolab2 server but it may "
+"also be different. In the last case enter your UID."
+msgstr ""
+"サーバのアカウントのログイン情報を入力します。\n"
+"\n"
+"Kolab2 サーバに特有な点: 登録した UID (Unique IDentifier)。標準では UID は "
+"Kolab2 でのメールアドレスになりますが、異なることもあります。その場合は、あな"
+"たの UID を入力してください。"
+
+#. i18n: ectx: property (text), widget (QLabel, TextLabel6)
+#: ui/kogroupwareprefspage.ui:258
+#, kde-format
+msgctxt "login name on the Kolab server"
+msgid "Username:"
+msgstr "ユーザ名:"
+
+#. i18n: ectx: property (whatsThis), widget (QCheckBox, publishSavePassword)
+#. i18n: ectx: property (whatsThis), widget (QCheckBox, retrieveSavePassword)
+#: ui/kogroupwareprefspage.ui:284 ui/kogroupwareprefspage.ui:506
+#, kde-format
+msgid ""
+"Check this box to make KOrganizer remember your password and skip asking you "
+"each time it uploads your Free/Busy information, by storing it in the "
+"configuration file.\n"
+"For security reasons, it is not recommended to store your password in the "
+"configuration file."
+msgstr ""
+"パスワードを設定ファイルに保存することによって、フリー/ビジー情報をアップロー"
+"ドするたびにパスワードを要求されないようにするには、このボックスをチェックし"
+"ます。\n"
+"【注意】 セキュリティ上の理由から、パスワードを設定ファイルに保存するのはお勧"
+"めできません。"
+
+# ACCELERATOR changed by translator
+#. i18n: ectx: property (text), widget (QCheckBox, publishSavePassword)
+#: ui/kogroupwareprefspage.ui:287
+#, kde-format
+msgid "Remember p&assword"
+msgstr "パスワードを保存する(&M)"
+
+#. i18n: ectx: property (text), widget (QLabel, TextLabel7)
+#. i18n: ectx: property (text), widget (QLabel, TextLabel7_2)
+#: ui/kogroupwareprefspage.ui:298 ui/kogroupwareprefspage.ui:461
+#, kde-format
+msgid "Server URL:"
+msgstr "サーバの URL:"
+
+#. i18n: ectx: property (text), widget (QLabel, label)
+#: ui/kogroupwareprefspage.ui:308
+#, kde-format
+msgid "(No need if using Kolab server version 2)"
+msgstr ""
+
+# ACCELERATOR removed by translator
+#. i18n: ectx: attribute (title), widget (QWidget, tabRetrieve)
+#: ui/kogroupwareprefspage.ui:335
+#, kde-format
+msgid "&Retrieve"
+msgstr "取得"
+
+#. i18n: ectx: property (text), widget (QLabel, TextLabel2)
+#: ui/kogroupwareprefspage.ui:356
+#, kde-format
+msgid ""
+"By retrieving Free/Busy information that others have published, you can take "
+"their calendar into account when inviting them to a meeting."
+msgstr ""
+"他の人のフリー/ビジー情報 (予定の有無情報) を取得することで、会議を招集する際"
+"に参加者の予定を考慮に入れることができるようになります。"
+
+#. i18n: ectx: property (whatsThis), widget (QCheckBox, retrieveEnable)
+#: ui/kogroupwareprefspage.ui:366
+#, fuzzy, kde-format
+#| msgid ""
+#| "Check this box to retrieve other peoples' Free/Busy information "
+#| "automatically. Note that you have to fill the correct server information "
+#| "to make this possible."
+msgid ""
+"Check this box to retrieve other people's Free/Busy information "
+"automatically. Note that you have to fill the correct server information to "
+"make this possible."
+msgstr ""
+"他の人のフリー/ビジー情報を自動的に取得するには、このボックスをチェックしま"
+"す。この機能を有効にするためには、正しいサーバ情報を入力する必要があります。"
+
+#. i18n: ectx: property (text), widget (QCheckBox, retrieveEnable)
+#: ui/kogroupwareprefspage.ui:369
+#, fuzzy, kde-format
+#| msgid "Retrieve other peoples' free/&busy information automatically"
+msgid "Retrieve other people's free/&busy information automatically"
+msgstr "他の人のフリー/ビジー情報を自動的に取得する(&B)"
+
+#. i18n: ectx: property (toolTip), widget (QCheckBox, fullDomainRetrieval)
+#: ui/kogroupwareprefspage.ui:379
+#, kde-format
+msgid ""
+"Set this to retrieve user@domain.ifb instead of user.ifb from the server"
+msgstr "user.ifb ではなく user@domain.ifb をサーバから取得します。"
+
+#. i18n: ectx: property (whatsThis), widget (QCheckBox, fullDomainRetrieval)
+#: ui/kogroupwareprefspage.ui:382
+#, kde-format
+msgid ""
+"Check this box to download a free/busy file in the format \"user@domain.ifb"
+"\" (for example joe@company.com.ifb). Otherwise, it will download a free/"
+"busy file in the format user.ifb (for example joe.ifb). Ask the server "
+"Administrator if you are not sure about how to configure this option."
+msgstr ""
+"フリー/ビジー情報を “user@domain.ifb” フォーマット (例 joe@company.com.ifb) "
+"でダウンロードするには、このボックスをチェックしてください。チェックされてい"
+"ない場合は、user.ifb (例 joe.ifb) フォーマットでダウンロードします。このオプ"
+"ションの設定方法について疑問がある場合は、サーバ管理者に問い合わせてくださ"
+"い。"
+
+# ACCELERATOR changed by translator
+#. i18n: ectx: property (text), widget (QCheckBox, fullDomainRetrieval)
+#: ui/kogroupwareprefspage.ui:385
+#, kde-format
+msgid "Use full email &address for retrieval"
+msgstr "取得に完全なメールアドレスを使う(&F)"
+
+#. i18n: ectx: property (whatsThis), widget (QLineEdit, retrieveUrl)
+#. i18n: ectx: property (whatsThis), widget (QLabel, TextLabel7_2)
+#: ui/kogroupwareprefspage.ui:443 ui/kogroupwareprefspage.ui:458
+#, fuzzy, kde-format
+#| msgid ""
+#| "Enter the URL for the server on which the Free/Busy information is "
+#| "published here.\n"
+#| "Ask the server administrator for this information.\n"
+#| "Here is a Kolab2 Server URL example: \"https://kolab2.example.com/"
+#| "freebusy/\""
+msgctxt "@info:whatsthis"
+msgid ""
+"Enter the URL for the server on which the Free/Busy information is published "
+"here.\n"
+"Ask the server administrator for this information.\n"
+"Here is a Kolab2 Server URL example:\n"
+"\n"
+"https://kolab2.example.com/freebusy/\n"
+"\n"
+"Alternatively, you can specify a full path to the Free/Busy. For example: \n"
+"\n"
+"https://kolab2.example.com/freebusy/user.xfb"
+msgstr ""
+"フリー/ビジー情報を公開するサーバの URL を入力します。\n"
+"この情報はサーバ管理者に問い合わせてください。\n"
+"Kolab2 サーバ の URL の例: https://kolab2.example.com/freebusy/"
+
+# ACCELERATOR removed by translator
+#. i18n: ectx: property (text), widget (QLabel, textLabel3)
+#: ui/kogroupwareprefspage.ui:476
+#, kde-format
+msgid "User&name:"
+msgstr "ユーザ名:"
+
+# ACCELERATOR removed by translator
+#. i18n: ectx: property (text), widget (QLabel, textLabel4)
+#: ui/kogroupwareprefspage.ui:489
+#, kde-format
+msgid "Passwor&d:"
+msgstr "パスワード:"
+
+#. i18n: ectx: property (text), widget (QCheckBox, retrieveSavePassword)
+#: ui/kogroupwareprefspage.ui:509
+#, kde-format
+msgid "Re&member password"
+msgstr "パスワードを保存する(&M)"
+
+#. i18n: ectx: property (text), widget (QLabel, searchLabel)
+#: ui/searchdialog_base.ui:36
+#, kde-format
+msgid "&Search for:"
+msgstr "検索語(&S):"
+
+#. i18n: ectx: property (toolTip), widget (QLineEdit, searchEdit)
+#: ui/searchdialog_base.ui:49
+#, kde-format
+msgid "Search pattern. Use wildcards “*” and “?” as desired."
+msgstr ""
+
+#. i18n: ectx: property (whatsThis), widget (QLineEdit, searchEdit)
+#: ui/searchdialog_base.ui:52
+#, kde-format
+msgid ""
+"Examine various fields to see if they contain the search pattern: The "
+"pattern “meet” would match “kick-off meeting”. Wildcards “*” (matches any "
+"number of characters) and “?” (matches any single character) are supported.  "
+"For example, the search pattern “meet*boss” matches “Meeting with boss”. The "
+"pattern “c?t” would match “cat”, “cot”, and so on."
+msgstr ""
+
+#. i18n: ectx: property (text), widget (QLineEdit, searchEdit)
+#: ui/searchdialog_base.ui:55
+#, kde-format
+msgid "*"
+msgstr "*"
+
+#. i18n: ectx: property (title), widget (QGroupBox, searchTypeGroup)
+#: ui/searchdialog_base.ui:67
+#, kde-format
+msgid "Search For"
+msgstr "検索対象"
+
+#. i18n: ectx: property (toolTip), widget (QCheckBox, eventsCheck)
+#: ui/searchdialog_base.ui:73
+#, kde-format
+msgid "Search for events with matching criteria."
+msgstr ""
+
+#. i18n: ectx: property (whatsThis), widget (QCheckBox, eventsCheck)
+#: ui/searchdialog_base.ui:76
+#, fuzzy, kde-format
+#| msgid "Check this box if you want to show seconds on the current-time line."
+msgid ""
+"Check this box if you want to search for events that match the search "
+"pattern and have start dates or end dates in the given date range."
+msgstr "現在時刻線に秒を表示させる場合、このボックスをチェックします。"
+
+#. i18n: ectx: property (text), widget (QCheckBox, eventsCheck)
+#: ui/searchdialog_base.ui:79
+#, kde-format
+msgid "&Events"
+msgstr "イベント(&E)"
+
+#. i18n: ectx: property (toolTip), widget (QCheckBox, journalsCheck)
+#: ui/searchdialog_base.ui:89
+#, kde-format
+msgid "Search for journal entries with matching criteria."
+msgstr ""
+
+#. i18n: ectx: property (whatsThis), widget (QCheckBox, journalsCheck)
+#: ui/searchdialog_base.ui:92
+#, fuzzy, kde-format
+#| msgid "Check this box if you want to show seconds on the current-time line."
+msgid ""
+"Check this box if you want to search for journal entries that match the "
+"search pattern and have start dates in the given date range."
+msgstr "現在時刻線に秒を表示させる場合、このボックスをチェックします。"
+
+#. i18n: ectx: property (text), widget (QCheckBox, journalsCheck)
+#: ui/searchdialog_base.ui:95
+#, kde-format
+msgid "&Journals"
+msgstr "日記(&J)"
+
+#. i18n: ectx: property (toolTip), widget (QCheckBox, todosCheck)
+#: ui/searchdialog_base.ui:102
+#, kde-format
+msgid "Search for to-dos with matching criteria."
+msgstr ""
+
+#. i18n: ectx: property (whatsThis), widget (QCheckBox, todosCheck)
+#: ui/searchdialog_base.ui:105
+#, fuzzy, kde-format
+#| msgid "Check this box if you want to show seconds on the current-time line."
+msgid ""
+"Check this box if you want to search for to-dos that match the search "
+"pattern and have due dates in the given date range."
+msgstr "現在時刻線に秒を表示させる場合、このボックスをチェックします。"
+
+#. i18n: ectx: property (text), widget (QCheckBox, todosCheck)
+#: ui/searchdialog_base.ui:108
+#, kde-format
+msgid "To-&dos"
+msgstr "To-Do(&D)"
+
+#. i18n: ectx: property (title), widget (QGroupBox, searchGroup)
+#: ui/searchdialog_base.ui:121
+#, kde-format
+msgid "Search In"
+msgstr "検索範囲"
+
+#. i18n: ectx: property (toolTip), widget (QCheckBox, categoryCheck)
+#: ui/searchdialog_base.ui:127
+#, fuzzy, kde-format
+#| msgid "Include &Descriptions"
+msgid "Include tags in your search."
+msgstr "説明を含める(&D)"
+
+#. i18n: ectx: property (whatsThis), widget (QCheckBox, categoryCheck)
+#: ui/searchdialog_base.ui:130
+#, fuzzy, kde-format
+#| msgid "Check this box if you want to show seconds on the current-time line."
+msgid "Check this box if you want to match tags against your search pattern."
+msgstr "現在時刻線に秒を表示させる場合、このボックスをチェックします。"
+
+#. i18n: ectx: property (text), widget (QCheckBox, categoryCheck)
+#: ui/searchdialog_base.ui:133
+#, kde-format
+msgid "Ta&gs"
+msgstr ""
+
+#. i18n: ectx: property (toolTip), widget (QCheckBox, locationCheck)
+#: ui/searchdialog_base.ui:140
+#, fuzzy, kde-format
+#| msgid "Include &Descriptions"
+msgid "Include locations in your search."
+msgstr "説明を含める(&D)"
+
+#. i18n: ectx: property (whatsThis), widget (QCheckBox, locationCheck)
+#: ui/searchdialog_base.ui:143
+#, fuzzy, kde-format
+#| msgid "Check this box if you want to show seconds on the current-time line."
+msgid ""
+"Check this box if you want to match locations against your search pattern."
+msgstr "現在時刻線に秒を表示させる場合、このボックスをチェックします。"
+
+#. i18n: ectx: property (text), widget (QCheckBox, locationCheck)
+#: ui/searchdialog_base.ui:146
+#, kde-format
+msgid "Locations"
+msgstr "場所"
+
+#. i18n: ectx: property (toolTip), widget (QCheckBox, descriptionCheck)
+#: ui/searchdialog_base.ui:153
+#, fuzzy, kde-format
+#| msgid "Include &Descriptions"
+msgid "Include descriptions in your search."
+msgstr "説明を含める(&D)"
+
+#. i18n: ectx: property (whatsThis), widget (QCheckBox, descriptionCheck)
+#: ui/searchdialog_base.ui:156
+#, fuzzy, kde-format
+#| msgid "Check this box if you want to show seconds on the current-time line."
+msgid ""
+"Check this box if you want to match descriptions against your search pattern."
+msgstr "現在時刻線に秒を表示させる場合、このボックスをチェックします。"
+
+#. i18n: ectx: property (text), widget (QCheckBox, descriptionCheck)
+#: ui/searchdialog_base.ui:159
+#, kde-format
+msgid "Desc&riptions"
+msgstr "説明(&R)"
+
+#. i18n: ectx: property (toolTip), widget (QCheckBox, summaryCheck)
+#: ui/searchdialog_base.ui:166
+#, fuzzy, kde-format
+#| msgid "Include &Descriptions"
+msgid "Include summaries in your search."
+msgstr "説明を含める(&D)"
+
+#. i18n: ectx: property (whatsThis), widget (QCheckBox, summaryCheck)
+#: ui/searchdialog_base.ui:169
+#, fuzzy, kde-format
+#| msgid "Check this box if you want to show seconds on the current-time line."
+msgid ""
+"Check this box if you want to match summaries against your search pattern."
+msgstr "現在時刻線に秒を表示させる場合、このボックスをチェックします。"
+
+#. i18n: ectx: property (text), widget (QCheckBox, summaryCheck)
+#: ui/searchdialog_base.ui:172
+#, kde-format
+msgid "Su&mmaries"
+msgstr "要約(&M)"
+
+#. i18n: ectx: property (toolTip), widget (QCheckBox, attendeeCheck)
+#: ui/searchdialog_base.ui:182
+#, fuzzy, kde-format
+#| msgid "Include &Descriptions"
+msgid "Include attendees in your search."
+msgstr "説明を含める(&D)"
+
+#. i18n: ectx: property (whatsThis), widget (QCheckBox, attendeeCheck)
+#: ui/searchdialog_base.ui:185
+#, fuzzy, kde-format
+#| msgid "Check this box if you want to show seconds on the current-time line."
+msgid ""
+"Check this box if you want to match attendees against your search pattern."
+msgstr "現在時刻線に秒を表示させる場合、このボックスをチェックします。"
+
+#. i18n: ectx: property (text), widget (QCheckBox, attendeeCheck)
+#: ui/searchdialog_base.ui:188
+#, fuzzy, kde-format
+#| msgctxt "@title:column event attendees"
+#| msgid "Attendees"
+msgid "Attendees"
+msgstr "出席者"
+
+#. i18n: ectx: property (title), widget (QGroupBox, dateRangeGroup)
+#: ui/searchdialog_base.ui:198
+#, kde-format
+msgid "Date Range"
+msgstr "日付範囲"
+
+#. i18n: ectx: property (text), widget (QLabel, startDateLabel)
+#: ui/searchdialog_base.ui:206
+#, kde-format
+msgid "Fr&om:"
+msgstr "始め(&O):"
+
+#. i18n: ectx: property (toolTip), widget (KDateComboBox, startDate)
+#: ui/searchdialog_base.ui:225
+#, kde-format
+msgid "The starting date of the period to search."
+msgstr ""
+
+#. i18n: ectx: property (whatsThis), widget (KDateComboBox, startDate)
+#: ui/searchdialog_base.ui:228
+#, kde-format
+msgid "Search for items in the time period starting at the date given here."
+msgstr ""
+
+#. i18n: ectx: property (text), item, widget (KDateComboBox, startDate)
+#. i18n: ectx: property (text), item, widget (KDateComboBox, endDate)
+#: ui/searchdialog_base.ui:232 ui/searchdialog_base.ui:270
+#, kde-format
+msgid "2008-08-18"
+msgstr "2008-08-18"
+
+#. i18n: ectx: property (text), widget (QLabel, endDateLabel)
+#: ui/searchdialog_base.ui:244
+#, fuzzy, kde-format
+msgid "&To:"
+msgstr "終わり(&T):"
+
+#. i18n: ectx: property (toolTip), widget (KDateComboBox, endDate)
+#: ui/searchdialog_base.ui:263
+#, kde-format
+msgid "The ending date of the period to search."
+msgstr ""
+
+#. i18n: ectx: property (whatsThis), widget (KDateComboBox, endDate)
+#: ui/searchdialog_base.ui:266
+#, kde-format
+msgid "Search for items in the time period ending at the date given here."
+msgstr ""
+
+#. i18n: ectx: property (toolTip), widget (QCheckBox, inclusiveCheck)
+#: ui/searchdialog_base.ui:280
+#, kde-format
+msgid ""
+"Display events only if their start date and end date are both in the date "
+"range specified."
+msgstr ""
+
+#. i18n: ectx: property (whatsThis), widget (QCheckBox, inclusiveCheck)
+#: ui/searchdialog_base.ui:283
+#, kde-format
+msgid ""
+"Check this box if you only want to find events that occur entirely within "
+"the date range specified.  Events that start during the date range but end "
+"after it, or end during the date range but start before it, will be excluded "
+"from the search results."
+msgstr ""
+
+#. i18n: ectx: property (text), widget (QCheckBox, inclusiveCheck)
+#: ui/searchdialog_base.ui:286
+#, kde-format
+msgid "Exclude e&vents that extend outside the specified date range"
+msgstr ""
+
+#. i18n: ectx: property (toolTip), widget (QCheckBox, includeUndatedTodos)
+#: ui/searchdialog_base.ui:293
+#, kde-format
+msgid ""
+"Include to-dos that have a start date, due date,  or completion date in the "
+"date range specified, or have neither a start date nor an end date."
+msgstr ""
+
+#. i18n: ectx: property (whatsThis), widget (QCheckBox, includeUndatedTodos)
+#: ui/searchdialog_base.ui:296
+#, kde-format
+msgid ""
+"Check this box to search for to-dos that have a start date, due date, or "
+"completion date in the date range specified, or have neither a start date "
+"nor an end date.  If the box is unchecked, only to-dos that have a due date "
+"in the date range will be displayed."
+msgstr ""
+
+#. i18n: ectx: property (text), widget (QCheckBox, includeUndatedTodos)
+#: ui/searchdialog_base.ui:299
+#, fuzzy, kde-format
+#| msgid "Include To-dos &without a due date"
+msgid "Include all to-dos &within the specified date range"
+msgstr "締切なしの To-Do を含める(&W)"
+
+# longDayName
+#: views/collectionview/quickview.cpp:72 views/collectionview/quickview.cpp:76
+#, fuzzy, kde-format
+#| msgid "%1"
+msgctxt "@title:window"
+msgid "%1"
+msgstr "%1"
+
+#. i18n: ectx: property (text), widget (QPushButton, mDayBtn)
+#: views/collectionview/quickview.ui:34
+#, fuzzy, kde-format
+#| msgid "&Day"
+msgid "Day"
+msgstr "日(&D)"
+
+#. i18n: ectx: property (text), widget (QPushButton, mWeekBtn)
+#: views/collectionview/quickview.ui:41
+#, fuzzy, kde-format
+#| msgid "&Week"
+msgid "Week"
+msgstr "週(&W)"
+
+#. i18n: ectx: property (text), widget (QPushButton, mMothBtn)
+#: views/collectionview/quickview.ui:51
+#, fuzzy, kde-format
+#| msgid "&Month"
+msgid "Month"
+msgstr "月(&M)"
+
+#. i18n: ectx: property (text), widget (QPushButton, mAgendaBtn)
+#: views/collectionview/quickview.ui:61
+#, fuzzy, kde-format
+#| msgid "&Agenda"
+msgid "Agenda"
+msgstr "予定表"
+
+#. i18n: ectx: property (text), widget (QPushButton, mPreviousBtn)
+#: views/collectionview/quickview.ui:84
+#, kde-format
+msgid "<"
+msgstr ""
+
+#. i18n: ectx: property (text), widget (QPushButton, mNextBtn)
+#: views/collectionview/quickview.ui:104
+#, kde-format
+msgid ">"
+msgstr ""
+
+#: views/multiagendaview/multiagendaview.cpp:36
+#, kde-format
+msgid "Agenda %1"
+msgstr "予定表 %1"
+
+#: views/multiagendaview/multiagendaview.cpp:295
+#, fuzzy, kde-format
+#| msgid "Configure the view"
+msgctxt "@title:window"
+msgid "Configure Side-By-Side View"
+msgstr "ビューの設定"
+
+#. i18n: ectx: property (text), widget (QRadioButton, useDefaultRB)
+#: views/multiagendaview/multiagendaviewconfigwidget.ui:17
+#, fuzzy, kde-format
+#| msgid "Show all calendar resources together"
+msgid "Show one calendar per agenda column"
+msgstr "すべてのカレンダーリソースをいっしょに表示します"
+
+#. i18n: ectx: property (text), widget (QRadioButton, useCustomRB)
+#: views/multiagendaview/multiagendaviewconfigwidget.ui:27
+#, kde-format
+msgid "Use custom calendar setup"
+msgstr ""
+
+# ACCELERATOR changed by translator
+#. i18n: ectx: property (text), widget (QLabel, columnNumberLabel)
+#: views/multiagendaview/multiagendaviewconfigwidget.ui:36
+#, kde-format
+msgid "Number of columns"
+msgstr "カラムの数"
+
+#. i18n: ectx: property (text), widget (QLabel, titleLabel)
+#: views/multiagendaview/multiagendaviewconfigwidget.ui:84
+#, fuzzy, kde-format
+#| msgid "Title"
+msgctxt "Agenda title"
+msgid "Title"
+msgstr "タイトル"
+
+#. i18n: ectx: property (text), widget (QLabel, selectedCalendarsLabel)
+#: views/multiagendaview/multiagendaviewconfigwidget.ui:102
+#, kde-format
+msgid "Selected Calendars"
+msgstr "選択したカレンダー"
+
+#: widgets/kdatenavigator.cpp:174
+#, kde-format
+msgctxt "start/end week number of line in date picker"
+msgid "%1/%2"
+msgstr "%1/%2"
+
+#: widgets/kdatenavigator.cpp:179
+#, kde-format
+msgid "Scroll to week number %1"
+msgstr "第 %1 週にスクロール"
+
+#: widgets/kdatenavigator.cpp:181
+#, kde-format
+msgid ""
+"Click here to scroll the display to week number %1 of the currently "
+"displayed year."
+msgstr "ここをクリックして現在表示されている年の第 %1 週を表示させます。"
+
+# longDayName
+#: widgets/kdatenavigator.cpp:227
+#, kde-format
+msgid "%1"
+msgstr "%1"
+
+# @info:whatsthis
+#: widgets/kdatenavigator.cpp:228
+#, kde-format
+msgid "A column header of the %1 dates in the month."
+msgstr "%1のカラムのヘッダ"
+
+#: widgets/kitemiconcheckcombo.cpp:18
+#, fuzzy, kde-format
+#| msgctxt "@title:group"
+#| msgid "Calendar Decorations"
+msgid "Calendar's custom icon"
+msgstr "カレンダーの装飾"
+
+#: widgets/kitemiconcheckcombo.cpp:19
+#, kde-format
+msgid "To-do"
+msgstr "To-Do"
+
+#: widgets/kitemiconcheckcombo.cpp:20
+#, kde-format
+msgid "Journal"
+msgstr "日記"
+
+#: widgets/kitemiconcheckcombo.cpp:21
+#, kde-format
+msgid "Recurring"
+msgstr "繰り返し"
+
+#: widgets/kitemiconcheckcombo.cpp:22
+#, kde-format
+msgid "Alarm"
+msgstr "アラーム"
+
+#: widgets/kitemiconcheckcombo.cpp:23
+#, fuzzy, kde-format
+#| msgctxt "the calendar is read-only"
+#| msgid "read-only"
+msgid "Read Only"
+msgstr "読み取り専用"
+
+#: widgets/kitemiconcheckcombo.cpp:24
+#, kde-format
+msgid "Needs Reply"
+msgstr ""
+
+#: widgets/kitemiconcheckcombo.cpp:25
+#, kde-format
+msgid "Attending"
+msgstr "出席"
+
+#: widgets/kitemiconcheckcombo.cpp:26
+#, kde-format
+msgid "Maybe Attending"
+msgstr ""
+
+#: widgets/kitemiconcheckcombo.cpp:27
+#, kde-format
+msgid "Organizer"
+msgstr "主催者"
+
+#: widgets/kitemiconcheckcombo.cpp:36
+#, kde-format
+msgctxt "@item:inlistbox"
+msgid "Icons to use"
+msgstr "使用するアイコン"
+
+#: widgets/navigatorbar.cpp:31
+#, kde-format
+msgid "Scroll backward to the previous year"
+msgstr "前の年にスクロール"
+
+#: widgets/navigatorbar.cpp:32
+#, kde-format
+msgid ""
+"Click this button to scroll the display to the same approximate day of the "
+"previous year"
+msgstr "このボタンをクリックして前の年のほぼ同じ日を表示させます"
+
+#: widgets/navigatorbar.cpp:36
+#, kde-format
+msgid "Scroll backward to the previous month"
+msgstr "前の月にスクロール"
+
+#: widgets/navigatorbar.cpp:37
+#, kde-format
+msgid ""
+"Click this button to scroll the display to the same approximate date of the "
+"previous month"
+msgstr "このボタンをクリックして前の月のほぼ同じ日を表示させます"
+
+#: widgets/navigatorbar.cpp:41
+#, kde-format
+msgid "Scroll forward to the next month"
+msgstr "次の月にスクロール"
+
+#: widgets/navigatorbar.cpp:42
+#, kde-format
+msgid ""
+"Click this button to scroll the display to the same approximate date of the "
+"next month"
+msgstr "このボタンをクリックして次の月のほぼ同じ日を表示させます"
+
+#: widgets/navigatorbar.cpp:46
+#, kde-format
+msgid "Scroll forward to the next year"
+msgstr "次の年にスクロール"
+
+#: widgets/navigatorbar.cpp:47
+#, kde-format
+msgid ""
+"Click this button to scroll the display to the same approximate day of the "
+"next year"
+msgstr "このボタンをクリックして次の年のほぼ同じ日を表示させます"
+
+#: widgets/navigatorbar.cpp:54
+#, kde-format
+msgid "Select a month"
+msgstr "月を選択"
+
+#: widgets/navigatorbar.cpp:60
+#, kde-format
+msgid "Select a year"
+msgstr "年を選択"
+
+#: widgets/navigatorbar.cpp:109
+#, kde-format
+msgctxt "monthname"
+msgid "%1"
+msgstr "%1"
+
+#: widgets/navigatorbar.cpp:110
+#, kde-format
+msgctxt "4 digit year"
+msgid "%1"
+msgstr "%1年"
+
+#~ msgid "Get &Hot New Stuff..."
+#~ msgstr "ホットな新しい情報を取得(&H)..."
+
+#~ msgctxt "@title:tab systray settings"
+#~ msgid "System Tray"
+#~ msgstr "システムトレイ"
+
+#~ msgctxt "@title:group"
+#~ msgid "Show/Hide Options"
+#~ msgstr "表示/非表示のオプション"
+
+#~ msgctxt "@info:tooltip"
+#~ msgid ""
+#~ "Enable this setting to show the KOrganizer reminder daemon in your system "
+#~ "tray (recommended)."
+#~ msgstr ""
+#~ "KOrganizer のリマインダデーモンをシステムトレイに表示する場合、これを有効"
+#~ "にします (推奨)。"
+
+#~ msgctxt "@info"
+#~ msgid ""
+#~ "<note>The daemon will continue running even if it is not shown in the "
+#~ "system tray.</note>"
+#~ msgstr ""
+#~ "<note label='注'>リマインダデーモンはシステムトレイに表示されていなくても"
+#~ "実行し続けます。</note>"
+
+#~ msgid "Show Reminder Daemon in the System Tray"
+#~ msgstr "リマインダデーモンをシステムトレイに表示する"
+
+#~ msgid ""
+#~ "Check this box to show the KOrganizer reminder daemon in the system tray."
+#~ msgstr ""
+#~ "システムトレイに KOrganizer のリマインダデーモンを表示するには、このボック"
+#~ "スをチェックします。"
+
+#~ msgctxt "@title:column plugin name"
+#~ msgid "Name"
+#~ msgstr "名前"
+
+#~ msgctxt "@action:button"
+#~ msgid "Configure &Plugin..."
+#~ msgstr "プラグインを設定(&P)..."
+
+#~ msgctxt "@info:whatsthis"
+#~ msgid ""
+#~ "This button allows you to configure the plugin that you have selected in "
+#~ "the list above"
+#~ msgstr "このボタンを押すと、上のリストで選択したプラグインを設定できます。"
+
+#, fuzzy
+#~| msgid "Search Calendar"
+#~ msgctxt "@title:window"
+#~ msgid "Search Calendar"
+#~ msgstr "カレンダーを検索"
+
+#, fuzzy
+#~| msgctxt "@info:whatsthis"
+#~| msgid "Select the starting date for this event."
+#~ msgid "Include items with a starting date on or after this date"
+#~ msgstr "このイベントの開始日を設定します。"
+
+#, fuzzy
+#~| msgctxt "@info:whatsthis"
+#~| msgid "Select the ending date for this event."
+#~ msgid "Include items with ending date on or before this date"
+#~ msgstr "このイベントの終了日を設定します。"
+
+#, fuzzy
+#~| msgid "Include to-dos &without due date"
+#~ msgid "Include To-dos in the search that do not have a due date"
+#~ msgstr "締切なしの To-Do を含める(&W)"
+
+#, fuzzy
+#~| msgid ""
+#~| "Check this box to display icons (alarm, recursion, etc.) in month view "
+#~| "items."
+#~ msgid ""
+#~ "Check this box to include To-dos without a due date in the search results."
+#~ msgstr ""
+#~ "このオプションを有効にすると、月ビューのアイテムにアラームや繰り返しなどを"
+#~ "表すアイコンが表示されます。"
+
+#~ msgctxt "@title:group"
+#~ msgid "Other Plugins"
+#~ msgstr "その他のプラグイン"

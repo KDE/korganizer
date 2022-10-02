@@ -1,0 +1,5720 @@
+<?xml version="1.0" ?>
+<!DOCTYPE book PUBLIC "-//KDE//DTD DocBook XML V4.5-Based Variant V1.1//EN"
+ "dtd/kdedbx45.dtd" [
+  <!ENTITY % addindex "IGNORE">
+  <!ENTITY % Spanish "INCLUDE">
+]>
+
+<book id="korganizer" lang="&language;">
+
+<bookinfo>
+
+<title
+>El manual de &korganizer;</title>
+
+<authorgroup>
+
+<author
+><firstname
+>Carlos</firstname
+> <othername
+>Leonhard</othername
+> <surname
+>Woelz</surname
+> <affiliation
+><address
+><email
+>carloswoelz@imap-mail.com</email
+></address
+></affiliation>
+</author>
+
+<author
+>&Milos.Prudek; &Milos.Prudek.mail; </author>
+
+<author
+>&Paul.E.Ahlquist.Jr; &Paul.E.Ahlquist.Jr.mail; </author>
+
+<author
+><firstname
+>J&uuml;rgen</firstname
+> <surname
+>Nagel</surname
+> <affiliation
+><address
+><email
+>juergen.nagel@student.fh-reutlingen.de</email
+></address
+></affiliation>
+</author>
+
+<author
+>&Michel.Boyer; &Michel.Boyer.mail; </author>
+
+<othercredit role="developer"
+><firstname
+>Reinhold</firstname
+> <surname
+>Kainhofer</surname
+> <affiliation
+><address
+><email
+>reinhold@kainhofer.com</email
+></address
+></affiliation>
+<contrib
+>Desarrollador</contrib>
+</othercredit>
+
+<othercredit role="developer"
+><firstname
+>Cornelius</firstname
+> <surname
+>Schumacher</surname
+> <affiliation
+><address
+>&Cornelius.Schumacher.mail;</address
+></affiliation>
+<contrib
+>Desarrollador</contrib>
+</othercredit>
+
+<othercredit role="developer"
+><firstname
+>Preston</firstname
+> <surname
+>Brown</surname
+> <affiliation
+><address
+>&Preston.Brown.mail;</address
+></affiliation>
+<contrib
+>Desarrollador</contrib>
+</othercredit>
+
+<othercredit role="reviewer"
+><firstname
+>Lauri</firstname
+> <surname
+>Watts</surname
+> <affiliation
+><address
+>&Lauri.Watts.mail;</address
+></affiliation>
+<contrib
+>Revisor</contrib>
+</othercredit>
+
+<othercredit role="translator"
+> <firstname
+>Juan Manuel</firstname
+> <surname
+>García Molina</surname
+> <affiliation
+><address
+><email
+>juanma@superiodico.net</email
+></address
+></affiliation
+> <contrib
+>Traductor</contrib
+> </othercredit
+> <othercredit role="translator"
+> <firstname
+>Javier</firstname
+> <surname
+>Viñal Gutiérrez</surname
+> <affiliation
+><address
+><email
+>fjvinal@gmail.com</email
+></address
+></affiliation
+> <contrib
+>Traductor</contrib
+> </othercredit
+> 
+</authorgroup>
+
+
+
+<copyright>
+<year
+>2000</year
+><holder
+>&Milos.Prudek;</holder>
+</copyright>
+
+<copyright>
+<year
+>2001</year>
+<holder
+>&Paul.E.Ahlquist.Jr;</holder>
+</copyright>
+
+<copyright>
+<year
+>2004</year>
+<holder
+>J&uuml;rgen Nagel</holder>
+</copyright>
+
+<copyright>
+<year
+>2005</year>
+<holder
+>Carlos Leonhard Woelz</holder>
+</copyright>
+
+<legalnotice
+>&FDLNotice;</legalnotice>
+
+<date
+>2016-12-08</date>
+<releaseinfo
+>5.4.40 (Aplicaciones 16.12)</releaseinfo>
+
+<abstract
+><para
+>&korganizer; es un gestor de información personal (<acronym
+>PIM</acronym
+>) fácil de usar. Puede escribir entradas de diario, planificar citas, eventos y tareas. &korganizer; le recordará las tareas pendientes y le ayudará a mantener su calendario. </para
+></abstract>
+
+<keywordset>
+<keyword
+>KDE</keyword>
+<keyword
+>KOrganizer</keyword>
+<keyword
+>kdepim</keyword>
+<keyword
+>gestor</keyword>
+<keyword
+>hora</keyword>
+<keyword
+>planificar</keyword>
+<keyword
+>recordatorio</keyword>
+<keyword
+>cita</keyword>
+<keyword
+>evento</keyword>
+<keyword
+>diario</keyword>
+<keyword
+>tarea pendiente</keyword>
+</keywordset>
+
+</bookinfo>
+
+<chapter id="introduction"
+><!--updated to 5.4.40-->
+<title
+>Introducción</title>
+
+<para
+>&korganizer; es un gestor de información personal (<abbrev
+>PIM</abbrev
+>)intuitivo y fácil de usar. Puede planificar citas, eventos, crear tareas pendientes y escribir entradas del diario. &korganizer; recordará sus tareas pendientes, anotará sus ideas, experiencias y reflexiones y le ayudará a mantener su planificación.</para>
+
+<para
+>Pero &korganizer; no solo se ocupa de su calendario personal. También puede ayudarle a interactuar con sus colegas y con sus amigos. Con &korganizer; puede invitar a un evento a cualquiera que disponga de una dirección de correo y procesar las respuestas, compartir un calendario (empleando un servidor de trabajo en grupo o, simplemente, un archivo compartido en la red) y compartir eventos (&eg; la planificación de un campeonato o de un congreso), usando la infraestructura para conseguir las novedades. &korganizer; se basa en estándares abiertos y funciona con muchos servidores de planificación de grupos diferentes, dándole el control de su información y la libertad para elegir las mejores soluciones. </para>
+
+<para
+>&korganizer; también es el componente de calendario, de diario y de tareas pendientes de &kontact;, ofreciéndole una solución integrada para sus necesidades de comunicación y de gestión de información: correo, notas, gestión de contactos, lector de noticias y lector de fuentes de noticias. Incluso si no lo usa desde &kontact;, &korganizer; está integrado con las otras aplicaciones de &kde; <acronym
+>PIM</acronym
+>. De hecho, puede configurarlo para que muestre sus cumpleaños desde &kaddressbook; en la agenda. En su agenda, use &kmail; para enviar y recibir invitaciones, &etc;</para>
+
+<para
+>Principales características de &korganizer;:</para>
+<para
+><itemizedlist>
+<listitem
+><para
+>Cree tareas, planifique eventos y escriba entradas del diario.</para
+></listitem>
+<listitem
+><para
+>Organice sus eventos y tareas pendientes, agrupando los elementos relacionados mediante etiquetas.</para
+></listitem>
+<listitem
+><para
+>Resalte las etiquetas con colores.</para
+></listitem>
+<listitem
+><para
+>Abra varios calendarios y, de forma fluida, acceda a ellos y edítelos.</para
+></listitem>
+<listitem
+><para
+>Vuelve a planificar sus eventos mediante arrastrar y soltar.</para
+></listitem>
+<listitem
+><para
+>Genere fácilmente eventos que se repitan.</para
+></listitem>
+<listitem
+><para
+>Organice o asista a eventos usando las características de planificación de grupos.</para
+></listitem>
+<listitem
+><para
+>Elija entre los múltiples servidores de trabajo en grupo admitidos.</para
+></listitem>
+<listitem
+><para
+>Implementación nativa de vCalendar e iCalendar (estándares abiertos).</para
+></listitem>
+<listitem
+><para
+>Combinación e importación de calendarios.</para
+></listitem>
+<listitem
+><para
+>Arrastre y suelte entre calendarios abiertos.</para
+></listitem>
+<listitem
+><para
+>Colaboración incrustada con &konqueror;.</para
+></listitem>
+<listitem
+><para
+>Juegos de iconos personalizables.</para
+></listitem>
+<listitem
+><para
+>Paneles de herramientas de arrastrar y soltar.</para
+></listitem>
+<listitem
+><para
+>Mucho más...</para
+></listitem>
+</itemizedlist
+></para>
+
+
+<para
+>Ahora puede hacer un <link linkend="five-minute-course"
+>curso-paseo de cinco minutos</link
+> por &korganizer; o profundizar en <link linkend="managing-data"
+>la documentación</link
+></para>
+
+</chapter>
+
+<chapter id="five-minute-course"
+><!--updated to 5.4.40-->
+<title
+>Curso al vuelo de cinco minutos de &korganizer;</title>
+<subtitle
+>(para los que tienen experiencia y para los impacientes)</subtitle>
+
+<para
+>¿Oprimido por el tiempo? Entonces comencemos con una visión general rápida de &korganizer;</para>
+
+<para
+>Si ha trabajado antes con un programa de información personal, estará como en casa con &korganizer;. Puede introducir nuevos eventos, volver a planificar los eventos existentes, asignar etiquetas a sus eventos, crear nuevas etiquetas, introducir y modificar listas de asistentes y sus papeles, enviar por correo electrónico automáticamente las invitaciones al evento e intercambiar datos con otros calendarios de &korganizer;, crear tareas pendientes y escribir entradas del diario.</para>
+
+<para
+>Este curso supone que sabe cómo trabajar con el &kde; y que prefiere explorar por sí mismo. Solo se cubren aquí las funciones básicas de &korganizer;.</para>
+
+<sect1 id="course-entering-events">
+<title
+>Introducir eventos</title>
+
+<procedure>
+<step
+><para
+>Pulse sobre el botón <inlinemediaobject
+><imageobject
+> <imagedata fileref="view-calendar-agenda.png" format="PNG"/></imageobject
+> </inlinemediaobject
+><guibutton
+>Agenda</guibutton
+> de la barra de herramientas o seleccione la opción de menú <menuchoice
+><guimenu
+>Ver</guimenu
+> <guimenuitem
+>Día</guimenuitem
+></menuchoice
+>. Debe aparecer la <link linkend="agenda-view"
+><guilabel
+>Vista de agenda</guilabel
+> </link
+>.</para
+></step>
+
+<step
+><para
+>Pulse sobre la fecha deseada en el <link linkend="glossary" endterm="gloss-date-navigator"
+>navegador de fechas</link
+>. </para
+></step>
+
+<step
+><para
+>Seleccione el área de texto que hay junto con la hora que desee en el panel principal que refleje la hora del evento. Haga doble clic sobre esta área o simplemente comience a teclear el resumen del evento para abrir el diálogo <guilabel
+>Nuevo evento</guilabel
+>.</para
+></step>
+
+<step
+><para
+><link linkend="entering-data-events"
+>Introducir ldetalles del evento</link
+>. Use las seis pestañas de la parte inferior de la ventana para moverse alrededor del diálogo y acceder a las características del evento.</para
+></step>
+
+<step
+><para
+>Pulse <guibutton
+>Aceptar</guibutton
+> para guardar el evento.</para
+></step>
+</procedure>
+</sect1>
+
+<sect1 id="course-entering-todos">
+<title
+>Introducir tareas pendientes</title>
+
+<procedure>
+<step
+><para
+>Seleccione la opción de menú <xref linkend="menu-actions-new-todo"/> para abrir el diálogo <guilabel
+>Nueva tarea pendiente</guilabel
+>.</para
+></step>
+
+<step
+><para
+><link linkend="entering-data-events"
+>Introducir los detalles del evento</link
+>. Use las cinco pestañas de la parte inferior de la ventana para moverse alrededor del diálogo y acceder a las características de evento.</para
+></step>
+
+<step
+><para
+>Pulse <guibutton
+>Aceptar</guibutton
+> para guardar la tarea pendiente.</para
+></step>
+</procedure>
+
+</sect1>
+
+<sect1 id="course-entering-journals">
+<title
+>Añadir entradas del diario</title>
+
+<procedure>
+
+<step
+><para
+>Seleccione la opción de menú <inlinemediaobject
+><imageobject
+> <imagedata fileref="journal-new.png" format="PNG"/></imageobject
+> </inlinemediaobject
+> <menuchoice
+><guimenu
+>Ver</guimenu
+> <guimenuitem
+>Diario</guimenuitem
+></menuchoice
+> para abrir la <link linkend="journal-view"
+><guilabel
+>Diario</guilabel
+> vista principal</link
+>.</para
+></step>
+
+<step
+><para
+>Seleccione la opción de menú <menuchoice
+><guimenu
+>Acciones</guimenu
+> <guimenuitem
+>Nuevo diario</guimenuitem
+></menuchoice
+>.</para
+></step>
+
+<step
+><para
+>Introducir el resumen y el texto de la entrada del diario.</para
+></step>
+
+</procedure>
+
+</sect1>
+
+<sect1 id="course-rescheduling-events">
+<title
+>Volver a planificar eventos</title>
+
+<para
+>Volver a programar los eventos es una sencilla operación de arrastrar y soltar:</para>
+
+<procedure>
+<step
+><para
+>Usando el <link linkend="glossary" endterm="gloss-date-navigator"
+>Navegador de fechas</link
+>, vaya a la fecha del evento que quiere volver a planificar.</para
+></step>
+
+<step
+><para
+>Debería seleccionar una <link linkend="reference-menus-view"
+>vista</link
+> adecuada antes de comenzar esta operación. Solo la <link linkend="agenda-view"
+> vista de <guilabel
+>Agenda</guilabel
+></link
+> (día, semana laboral y vistas de semana) muestra las horas individuales y son adecuadas para volver a planificar los eventos a la hora exacta (citas), mientras que la vista de mes solo muestra los días. Por tanto, la vista de mes es más adecuada para eventos que duran mucho tiempo como las vacaciones.</para
+></step>
+
+<step
+><para
+>Para mostrar la vista de la semana seleccionada en la vista de agenda, pulse el botón <inlinemediaobject
+><imageobject
+> <imagedata fileref="view-calendar-week.png" format="PNG"/></imageobject
+> </inlinemediaobject
+><guibutton
+>Semana</guibutton
+> de la barra de herramientas, o seleccione la opción de menú <menuchoice
+><guimenu
+>Ir</guimenu
+> <guimenuitem
+>Semana</guimenuitem
+></menuchoice
+>. </para
+></step>
+
+<step
+><para
+>Arrastre y suelte el evento a la nueva ubicación de fecha y hora.</para
+></step>
+
+</procedure>
+
+<para
+>Si desea volver a planificar de forma más precisa, doble clic sobre el evento y cambie las horas de inicio y de fin usando los menús desplegables que dividen el día en cuartos de hora. Si esta precisión no es suficiente, puede introducir la hora deseada directamente.</para>
+
+</sect1>
+
+<sect1 id="course-rescheduling-todos">
+<title
+>Volver a planificar o editar las tareas pendientes</title>
+
+<para
+>Debería seleccionar una <link linkend="reference-menus-view"
+>vista</link
+> apropiada antes de comenzar esta operación. Solo la <link linkend="todo-view"
+><inlinemediaobject
+><imageobject
+> <imagedata fileref="view-calendar-tasks.png" format="PNG"/></imageobject
+> </inlinemediaobject
+>Ver <guilabel
+>Lista de tareas pendientes</guilabel
+> </link
+> y <link linkend="description-view"
+>el componente del panel lateral de tareas pendientes</link
+> muestra las tareas pendientes que no tienen una fecha de vencimiento.</para>
+
+<para
+>Para mostrar la vista de la lista de tareas pendientes, pulse el botón de la vista de barra de herramientas <inlinemediaobject
+><imageobject
+> <imagedata fileref="view-calendar-tasks.png" format="PNG"/></imageobject
+> </inlinemediaobject
+><guibutton
+>Lista de tareas pendientes</guibutton
+>, o seleccione la opción de menú <menuchoice
+><guimenu
+>Vista</guimenu
+> <guimenuitem
+>Lista de tareas pendientes</guimenuitem
+></menuchoice
+>. </para>
+
+<para
+>Para volver a planificar una tarea pendiente, pulse con el botón derecho sobre ella. Debe aparecer un menú contextual. Seleccione las opciones de menú <guimenuitem
+>Copiar a</guimenuitem
+> o <guimenuitem
+>Mover a</guimenuitem
+> y seleccione la fecha nueva del calendario que debe aparecer ahora. La tarea pendiente se copia ahora o se mueve a la fecha seleccionada. Además, si el panel principal alberga una vista <guilabel
+>Lista de tareas pendientes</guilabel
+>, simplemente pulse con el botón derecho en la columna <guilabel
+>Fecha/Hora de vencimiento</guilabel
+>. Debe aparecer instantáneamente un calendario que le permite definir la nueva fecha de vencimiento.</para>
+
+<para
+>Para <link linkend="entering-data-to-do"
+>editar una tarea pendiente</link
+>, pulse con el botón derecho y elija la opción de menú <guimenuitem
+>Editar...</guimenuitem
+>.</para>
+
+</sect1>
+
+<sect1 id="course-conclusion">
+<title
+>Conclusión</title>
+
+<para
+>Este curso de cinco minutos cubría solo la operación básica de &korganizer;. Ahora debería seguir adelante y leer el resto de este manual para liberar todo el poder de las capacidades de &korganizer;. Pero si no quiere hacerlo, debería al menos pasara al <link linkend="faq"
+>&FAQ;</link
+>.</para>
+
+</sect1>
+
+</chapter>
+
+<chapter id="managing-data"
+><!--updated to 5.4.40-->
+<title
+>Importar, exportar y gestionar calendarios</title>
+
+<para
+>&korganizer; puede almacenar (y recuperar) eventos, entradas de diarios y tareas pendientes usando varios métodos y desde diferentes sitios. Cada una de estas ubicaciones se llama <firstterm
+>recurso del calendario</firstterm
+>. </para>
+
+<para
+>&korganizer; admite nativamente archivos basados en estándares abiertos como iCalendar y vCalendar (añadiéndolos como recursos nuevos), pero puede importar los datos (combinarlos) en un recurso existente y también abrir el archivo en una ventana nueva. También se admiten los archivos con el formato de la antigua aplicación <application
+>ical</application
+>.</para>
+
+<para
+>Puede exportar sus datos como un archivo iCalendar o vCalendar. Estos archivos los admiten la mayor parte de las aplicaciones de planificación. </para>
+
+<para
+>En este capítulo explicaremos cómo gestionar su calendario, usar los recursos, acciones de importar y exportar y obtener el esquema con las novedades.</para>
+
+<sect1 id="managing-resources">
+<title
+>Recursos del calendario</title>
+
+<para
+>&korganizer; usa un archivo local como recurso predeterminado. Pero esta no es la única opción, ya que hay varios recursos más que puede añadir: servidores de colaboración, entradas del diario como blogs, archivos de red, &etc;. Si usa más de un recurso, &korganizer; <link linkend="config-main-general-personal"
+>se puede configurar para que use el recurso predeterminado o para que pregunte qué recurso usar</link
+> cuando se guarden eventos, tareas pendientes o entradas de diario. &korganizer; combina de forma transparente los elementos de dos o más recursos en las <link linkend="description-view"
+>vistas</link
+>. </para>
+
+<para
+>El recurso predeterminado es una buena opción para muchos casos, pero puede querer usar otro recurso, especialmente si usa un servidor de trabajo en grupo admitido. Puede pedir al administrador del servidor la información necesaria para configurar el recurso de trabajo en grupo, incluyendo la información para la publicación y la recuperación de disponibilidad. El acceso a la información de disponibilidad permite al organizador de un evento tener en cuenta el calendario de los asistentes cuando los vaya a añadir a la lista de asistentes.</para>
+
+<note
+><para
+>Además de alojar calendarios, los servidores de trabajo en grupo ofrecen alojamiento para contactos, correo e <link linkend="glossary" endterm="gloss-freebusy"
+>información sobre disponibilidad</link
+>. Además, algunos de los recursos que se tratan aquí se pueden relacionar con otros recursos de &kmail; y de &kaddressbook; (los componentes de correo y de contactos de &kontact;) o las <link linkend="config-main-free-busy"
+>opciones de libre/ocupado en la configuración principal</link
+>.</para>
+<para
+>Tenga en cuenta que la comunicación para la <link linkend="group-scheduling"
+>planificación de grupos</link
+> de &korganizer; se basa en el correo estándar entre los interlocutores. Esto significa que no necesita un servidor de trabajo en grupo para poder usarlo</para
+></note>
+
+<screenshot id="screenshot-resources">
+<screeninfo
+>Una captura de pantalla del diálogo «Añadir calendarios» de &korganizer;</screeninfo>
+<mediaobject>
+<imageobject
+><imagedata fileref="korganizer-resource.png" format="PNG"/></imageobject>
+<textobject
+><phrase
+>Una captura de pantalla del diálogo «Añadir calendarios» de &korganizer;</phrase
+></textobject>
+<caption
+><para
+>Una captura de pantalla del diálogo «Añadir calendarios», de &korganizer;</para
+></caption>
+</mediaobject>
+</screenshot>
+
+<procedure id="procedure-add-resource">
+<title
+>Añadir un recurso nuevo de &korganizer;</title>
+
+<step
+><para
+>Abra el diálogo de preferencias de &korganizer; con <menuchoice
+><guimenu
+>Preferencias</guimenu
+> <guimenuitem
+>Configurar &korganizer;...</guimenuitem
+></menuchoice
+> y seleccione la pestaña <guilabel
+>Calendarios</guilabel
+> de la página <guilabel
+>General</guilabel
+>. </para>
+<para
+>Alternativamente, abra el menú de contexto en el panel lateral <guilabel
+>Gestor de calendarios</guilabel
+> con un &RMB; pulse y seleccione <guilabel
+>Añadir calendario...</guilabel
+></para
+></step>
+<step
+><para
+>Si el <guilabel
+>Gestor de calendarios</guilabel
+> no se muestra en el panel lateral, seleccione la opción de menú <menuchoice
+><guimenu
+>Preferencias</guimenu
+><guisubmenu
+>Barra lateral</guisubmenu
+> <guimenuitem
+>Mostrar gestor de calendarios</guimenuitem
+></menuchoice
+> mostrarlos.</para
+></step>
+
+<step
+><para
+>Pulse el botón <guibutton
+>Añadir...</guibutton
+> para añadir recursos nuevos a la lista de los recursos disponibles.</para
+></step>
+
+<step
+><para
+>Seleccione el recurso para activarlo.</para
+></step>
+
+<step
+><para
+>Más tarde, si desea editar o borrar un recurso, selecciónelo en el panel lateral <guilabel
+>Gestor de calendario</guilabel
+> y pulse <guibutton
+>Borrar calendario</guibutton
+> para borrarlo o <guibutton
+> Propiedades del calendario...</guibutton
+> para modificarlo.</para
+></step>
+
+</procedure>
+<para
+>Entre los recursos existentes puede encontrar en &korganizer;:</para>
+
+<variablelist>
+
+<varlistentry>
+<term
+><guilabel
+>Cumpleaños y aniversarios</guilabel
+></term>
+<listitem
+><para
+>Proporciona acceso a las fechas de cumpleaños y aniversarios de los contactos en la libreta de direcciones como eventos de calendario.</para
+></listitem>
+</varlistentry>
+
+<varlistentry>
+<term
+><guilabel
+>Recurso de trabajo en grupo DAV</guilabel
+></term>
+<listitem
+><para
+>Recurso para gestionar calendarios DAV y libretas de direcciones (CalDAV, GroupDAV).</para
+></listitem>
+</varlistentry>
+
+<varlistentry>
+<term
+><guilabel
+>Calendarios de Google y tareas</guilabel
+></term>
+<listitem
+><para
+>Acceda a sus calendarios de Google y tareas.</para
+></listitem>
+</varlistentry>
+
+<varlistentry>
+<term
+><guilabel
+>Archivo de calendario iCal</guilabel
+></term>
+<listitem
+><para
+>Carga datos de un archivo iCal local.</para
+></listitem>
+</varlistentry>
+
+<varlistentry>
+<term
+><guilabel
+>Carpeta de calendario iCal</guilabel
+></term>
+<listitem
+><para
+>Proporciona acceso a elementos de calendario, cada uno almacenado en un solo archivo, en un directorio dado.</para
+></listitem>
+</varlistentry>
+
+<varlistentry>
+<term
+><guilabel
+>Archivo de calendario de KAlarm</guilabel
+></term>
+<listitem
+><para
+>Carga datos desde un archivo de calendario de KAlarm.</para
+></listitem>
+</varlistentry>
+
+<varlistentry>
+<term
+><guilabel
+>Directorio de calendario de KAlarm</guilabel
+></term>
+<listitem
+><para
+>Carga datos desde una carpeta local de KAlarm.</para
+></listitem>
+</varlistentry>
+
+<varlistentry>
+<term
+><guilabel
+>Servidor de trabajo en grupo Kolab</guilabel
+></term>
+<listitem
+><para
+>Proporciona acceso a carpetas de colaboración de Kolab y correo en un servidor IMAP Kolab.</para
+></listitem>
+</varlistentry>
+
+<varlistentry>
+<term
+><guilabel
+>Servidor de trabajo en grupo Open-Xchange</guilabel
+></term>
+<listitem
+><para
+>Proporciona acceso a las citas, tareas y contactos almacenados en un servidor de trabajo en grupo Open-Xchange.</para
+></listitem>
+</varlistentry>
+
+</variablelist>
+
+</sect1>
+
+<sect1 id="managing-import-export">
+<title
+>Importar, exportar y mantener calendarios</title>
+
+<para
+>Aunque los archivos locales son uno más entre los recursos que se pueden usar en &korganizer;, son la forma más oportuna de compartir calendarios, guardar copias o importar elementos de su anterior programa de calendario.</para>
+
+<sect2 id="managing-import">
+<title
+>Importar calendarios</title>
+
+<para
+>Si tiene un archivo iCalendar o vCalendar y le gustaría importarlo, elija la opción de menú <menuchoice
+><guimenu
+>Archivo</guimenu
+> <guisubmenu
+>Importar</guisubmenu
+><guimenuitem
+>Importar calendario...</guimenuitem
+> </menuchoice
+>. &korganizer; le preguntará si quiere <guilabel
+>Añadir como nuevo calendario</guilabel
+>, que añade el archivo de calendario como un nuevo recurso de archivo local, <guilabel
+>Combinar en el calendario existente</guilabel
+>, que combina los elementos del calendario en un recurso existente.</para>
+
+<para
+>Un buen momento para hacer esto sería cuando recibiese un vCalendar con unas cuantas entradas mediante correo, por ejemplo, o cuando planee importar su calendario desde otra aplicación. En el último caso, lo primero que debe hacer es usar esa aplicación para exportar los datos del calendario en uno de los formatos anteriores, o usar una herramienta para convertir desde el formato nativo de la aplicación.</para>
+
+<!--Get Hot New Stuff
+store.kde.org KOrganizer Calendars-->
+</sect2>
+
+<sect2 id="managing-export">
+<title
+>Exportar calendarios</title>
+
+<para
+>Puede exportar sus datos como un archivo iCalendar, que se admite por la mayor parte de las aplicaciones. &korganizer; exportará todos los elementos del calendario de los recursos activados (marcados) que <link linkend="filters-view"
+>no están filtrados</link
+> (llamados elementos «activos»). En otras palabras, si no puede ver un elemento del calendario, no podrá estar en el archivo exportado. Para quitar con un filtro los elementos no deseados antes de exportarlos, puede crear <link linkend="filters-view"
+>filtros</link
+>. Los filtros pueden ser más efectivos incluso aunque clasifique sus eventos y tareas pendientes por <link linkend="categories-view"
+>etiquetas</link
+>. Para activar y desactivar recursos, marque o desmarque la casilla del recurso en la <link linkend="managing-resources"
+><guilabel
+>Gestor de calendarios</guilabel
+></link
+> del panel lateral.</para>
+
+<para
+>Para exportar todos sus eventos, tareas pendientes y entradas del diario <quote
+>activas</quote
+> (independientemente de a qué recurso pertenecen) como un archivo iCalendar nuevo, elija la opción de menú <menuchoice
+><guimenu
+>Archivo</guimenu
+><guisubmenu
+>Exportar</guisubmenu
+> <guimenuitem
+>Exportar como iCalendar...</guimenuitem
+></menuchoice
+>. Se desplegará el diálogo <guilabel
+>Guardar como</guilabel
+>. Introduzca el nombre y la ubicación del archivo nuevo para completar la acción de exportación.</para>
+
+</sect2>
+
+<sect2 id="managing-purge-archive">
+<title
+>Mantener sus calendarios</title>
+
+
+<para
+>Los equipos informáticos actuales tienen un amplio espacio de almacenamiento. Sin embargo, si sincroniza su calendario de &korganizer; con una máquina de memoria limitada como el dispositivo Palm, encontrará útil el archivado. El rendimiento de &korganizer; también puede empeorar cuando hay muchos eventos. Para archivar los elementos anteriores, siga el procedimiento que se muestra a continuación:</para>
+
+<procedure>
+<step
+><para
+>Seleccione la opción del menú <menuchoice
+><guimenu
+>Archivo</guimenu
+><guimenuitem
+>Archivar incidencias antiguas...</guimenuitem
+></menuchoice
+>.</para
+></step>
+<step
+><para
+>Rellene la fecha en el campo <guilabel
+>Archivar ahora los elementos anteriores a</guilabel
+> o use el control de calendario para elegir la fecha. También puede archivar automáticamente todos los elementos anteriores a un período de tiempo determinado.</para
+></step>
+<step
+><para
+>Si ha seleccionado archivar, también debe proporcionar un nombre de archivo para el archivo en el campo <guilabel
+>Archivar en archivo</guilabel
+>. Si quiere reutilizar un archivo antiguo, pulse el botón <guilabel
+>Diálogo abrir archivo</guilabel
+> y busque un archivo existente. Las entradas se añadirán al archivo, para que no se modifiquen los elementos que ya existan en el archivo.</para
+></step>
+</procedure>
+
+<para
+>Al archivar, se mantienen en un archivo todos los elementos anteriores, incluyendo las tareas pendientes completadas. Pero si no quiere mantener las tareas pendientes completadas, seleccione la opción de menú <menuchoice
+><guimenu
+>Archivo</guimenu
+><guimenuitem
+>Purgar las tareas pendientes completadas</guimenuitem
+> </menuchoice
+> para eliminar todas las tareas pendientes completadas de sus recursos activos. Si quiere mantener sus tareas pendientes completadas, pero no quiere verlas en las listas de tareas pendientes, puede <link linkend="filters-view"
+>purgarlas</link
+> en su lugar. </para>
+
+</sect2>
+
+</sect1>
+<!-- only import ??-->
+<sect1 id="managing-get-hot-new-stuff">
+<title
+>Descarga usando la obtención de novedades</title>
+
+<!--para
+>If you have a calendar containing events of public interest, such as
+a conference or championship schedule, you can upload it (or check if there
+is something worth downloading) using the
+<ulink url="http://ghns.berlios.de/"
+>get hot new stuff framework</ulink
+>.
+</para-->
+
+<para
+>Para abrir el diálogo <guilabel
+>Obtener las novedades</guilabel
+>, que ofrece una lista de calendarios para descargar, elija la opción <menuchoice
+><guimenu
+>Archivo</guimenu
+><guisubmenu
+>Importar</guisubmenu
+> <guimenuitem
+>Obtener novedades...</guimenuitem
+></menuchoice
+> del menú. Al seleccionar uno de los calendarios, aparece un diálogo con la lista de los eventos de los calendarios. Para combinar los eventos que se muestran con los del recurso predeterminado, pulse <guilabel
+>Combinar</guilabel
+>.</para>
+
+<!--para>
+To open the <guilabel
+>Upload Hot New Stuff</guilabel
+> dialog, which allow you
+to export calendars containing events which may be useful to other people, such
+as a conference program, a list of holidays, special events, &etc;,
+choose the <menuchoice
+><guimenu
+>File</guimenu
+><guisubmenu
+>Export</guisubmenu>
+<guimenuitem
+>Upload Hot New Stuff...</guimenuitem
+></menuchoice
+>.</para>
+
+<para
+>Before uploading the events, make sure you have
+<link linkend="filters-view"
+>filtered out</link
+> all unrelated data.</para-->
+
+</sect1>
+
+</chapter>
+
+<chapter id="chapter-views-and-filters"
+><!-- updated to 5.4.40-->
+
+<title
+>Vistas y filtros</title>
+
+<para
+>Mientras que los calendarios (recursos) pueden albergar eventos, tareas pendientes o entradas del diario, estos elementos pueden ser de una naturaleza muy diversa. Las tareas pendientes pueden no tener fecha asociada, por lo que la vista del programa no es adecuada para ellos. Las entradas del diario son una recopilación de sus reflexiones, ideas o experiencias. Necesitan su propio modo de vista, porque no están relacionados con la lista de eventos próximos o la lista de tareas pendientes, &etc;</para>
+
+<para
+>Para resolver el desafío de mostrar su información de una forma útil e intuitiva, &korganizer; ofrece diversas vistas, filtros y capacidades de búsqueda. También puede asignar etiquetas a los eventos y a las tareas pendientes relacionadas, lo que puede resultar de utilidad para verlas posteriormente, usando filtros o colores.</para>
+
+<sect1 id="description-view">
+<title
+>Vistas de &korganizer;</title>
+
+<para
+>En esta sección, describiremos los diversos modos de vista y presentaremos un resumen de cómo navegar por sus datos personales usando &korganizer;.</para>
+
+<para
+>La ventana de &korganizer; se puede dividir en dos áreas principales: la ventana principal y el panel lateral. La ventana principal muestra las vistas principales y el panel lateral muestra el navegador de fechas, la vista de tareas pendientes, el visor de elementos y la vista del gestor de calendarios. Para mostrar u ocultar los componentes de la barra lateral, marque o desmarque las opciones del menú <menuchoice
+><guimenu
+>Preferencias</guimenu
+> <guisubmenu
+>Panel lateral</guisubmenu
+></menuchoice
+>.</para>
+
+<para
+>El navegador de fechas se proporciona para navegar y para seleccionar fechas. La fecha del día se resalta con una caja pequeña a modo de contorno, las fechas que tengan eventos programados están en negrita (los eventos que se repiten diaria o semanalmente pueden no marcarse en negrita, <link linkend="config-main-views"
+>según la configuración de la vista</link
+>) y las vacaciones se muestran en rojo. Si quiere ir directamente a una fecha, simplemente pulse sobre ella. Mantenga pulsado el botón del ratón para seleccionar varias fechas contiguas a la vez. Las vistas <guilabel
+>Qué es lo siguiente</guilabel
+>, <guilabel
+>Lista</guilabel
+>, <guilabel
+>Agenda</guilabel
+> y <guilabel
+>Diario</guilabel
+> solo muestran eventos, tareas pendientes o entradas del diario para las fechas seleccionadas en el navegador de fechas. La vista <guilabel
+>Mes</guilabel
+> mostrará los eventos o las tareas pendientes del primer mes que se muestre en el navegador de fechas (los días seleccionados en el mes no cambiarán la vista del mes, solo el mes).</para>
+
+<para
+>El componente del panel lateral muestra la lista de las tareas pendientes, como la <link linkend="todo-view"
+>Vista de tareas pendientes</link
+>. Es útil si quiere ver sus tareas pendientes mientras usa las otras vistas.</para>
+
+<para
+>El componente visor de elementos del panel lateral muestra detalles de los eventos, las tareas pendientes o las entradas del diario seleccionadas actualmente.</para>
+
+<para
+>Por último, el componente visor de calendarios del panel lateral le permite activar o desactivar los recursos de la lista, marcando o desmarcando la casilla del recurso y gestionar los recursos. Si quiere más información, puede dirigirse a <xref linkend="managing-resources"/>.</para>
+
+<para
+>También puede navegar por su vista de calendario eligiendo la opción de menú <menuchoice
+><guimenu
+>Ir</guimenu
+> <guimenuitem
+>Atrás</guimenuitem
+></menuchoice
+> (o pulsando el botón de la barra de herramientas <inlinemediaobject
+><imageobject
+><imagedata fileref="go-previous.png" format="PNG"/></imageobject
+></inlinemediaobject
+>), que vuelve al día, semana, mes o año anterior, eligiendo la opción de menú <menuchoice
+><guimenu
+> Ir</guimenu
+><guimenuitem
+>Adelante</guimenuitem
+> </menuchoice
+> (o pulsando el botón de la barra de herramientas <inlinemediaobject
+><imageobject
+> <imagedata fileref="go-next.png" format="PNG"/></imageobject
+> </inlinemediaobject
+>), que lleva al siguiente día, mes o año (en función de la vista) y, eligiendo la opción de menú <menuchoice
+><guimenu
+>Ir</guimenu
+><guimenuitem
+>A hoy</guimenuitem
+> </menuchoice
+> (o pulsando el botón de la barra de herramientas <inlinemediaobject
+><imageobject
+> <imagedata fileref="go-jump-today.png" format="PNG"/></imageobject
+> </inlinemediaobject
+>), que incluirá el día actual en la vista actual.</para>
+
+<sect2 id="whatsnext-view">
+<title
+>Vista «Qué es lo siguiente»</title>
+
+<para
+>Esta vista muestra eventos y tareas pendientes en un formato sencillo y muy legible. Todas las tareas pendientes abiertas se muestran, pero solo son visibles los eventos de los días seleccionados en el panel lateral <guilabel
+>Navegador de fechas</guilabel
+>. Los eventos y las tareas pendientes se muestran uno en cada línea.</para>
+
+<para
+>Cambie a la vista de los próximos días seleccionando la opción de menú <menuchoice
+><guimenu
+>Ver</guimenu
+> <guimenuitem
+>Próximos X días</guimenuitem
+></menuchoice
+>.</para>
+
+</sect2>
+
+<sect2 id="list-view">
+<title
+>Vista de lista de eventos</title>
+<para
+>Esta vista muestra todas las tareas pendientes, eventos y entradas del diario de las fechas seleccionadas en el navegador de fechas como una lista. Las tareas pendientes abiertas que no hayan cumplido en las fechas seleccionadas no se muestran. Esta vista es buena para mostrar muchos elementos diferentes de una forma compacta. También es útil si sus eventos se expanden por un largo período de tiempo, que no se mostraría completamente en pantalla usando ninguna de las otras vistas.</para>
+
+<para
+>Cada elemento se muestra en una línea. Las columnas muestran si un recordatorio está definido (se muestra un icono con una campana para indicar que el recordatorio está definido), si se repite varias veces (un icono con las flechas del reciclaje significa que un evento se repite), la información de la hora de comienzo y de finalización. Al pasar el cursor por encima de un elemento, aparece un consejo emergente con información detallada sobre el elemento.</para>
+
+<para
+>Cambie la visualización a la vista de lista seleccionando la opción de menú <menuchoice
+><guimenu
+>Ver</guimenu
+> <guimenuitem
+>Lista de eventos</guimenuitem
+></menuchoice
+>.</para>
+
+
+</sect2>
+
+<sect2 id="agenda-view">
+<title
+>Vista de agenda</title>
+
+<!--TODO: add agenda view options, color of resources and tags-->
+
+<para
+>La vista de agenda presenta sus eventos o tareas pendientes vencidas para uno o más días, ordenados cronológicamente. También puede ver la longitud de cada evento en el calendario diario. Para activar la vista de agenda elija la opción de menú <menuchoice
+><guimenu
+>Ver</guimenu
+> <guimenuitem
+>Agenda</guimenuitem
+></menuchoice
+> o pulse el botón <inlinemediaobject
+><imageobject
+><imagedata fileref="view-calendar-agenda.png" format="PNG"/></imageobject
+></inlinemediaobject
+> de la barra de herramientas.</para>
+<para
+>Las vistas <guilabel
+>Día</guilabel
+>, <guilabel
+>Semana laboral</guilabel
+> y <guilabel
+>Semana</guilabel
+> son variantes de la vista de agenda. De hecho, puede definir los días que se muestran en la vista de agenda en cualquier momento seleccionándolos en el navegador de fechas.</para>
+<!--check bell + chasing-arrows icon here-->
+<para
+>La hora se indica en una barra de tiempo que hay en el lado izquierdo de la vista. Se dispone de una barra de desplazamiento a la derecha cuando no se puede mostrar el día completo en una sola pantalla (que suele ser lo habitual). Cada rectángulo de la vista representa un evento individual o una tarea pendiente que cumple en ese momento y muestra las horas de comienzo y de finalización y un resumen. Se muestra un icono de <guiicon
+>campana</guiicon
+> cuando hay definida un recordatorio, y un icono de <guiicon
+>flechas de reciclaje</guiicon
+> cuando se repite varias veces. Al pasar el ratón sobre un elemento del calendario aparece un consejo emergente con la información detallada del elemento. Para hacer que &korganizer; muestre una línea roja para marcar la hora actual del día de hoy (la línea de Marcus Bains), marque la casilla <guilabel
+>Mostrar la hora actual (línea de Marcus Bains)</guilabel
+> en la <link linkend="config-main-views"
+>configuración de la vista de &korganizer;</link
+>.</para>
+
+<para
+>Se puede cambiar el tamaño de cualquier evento con el ratón. Simplemente, mueva el puntero del ratón cerca del límite superior o inferior del evento y arrastre el límite arriba o abajo. De esta forma, puede modificar visualmente la hora de inicio o de fin de su evento. Esto también funciona en las vistas de semana y semana laboral. En otras palabras, es posible cambiar las horas de comienzo y de fin con el ratón simplemente con mover los bordes superiores o inferiores del evento a la nueva hora.</para>
+
+<para
+>Cualquier evento puede volver a planificarse con su ratón. Mueva el puntero del ratón sobre el evento y arrástrelo a una nueva ubicación de hora. Esto también funciona en las vistas de semana y semana laboral. Los eventos se pueden mover a otras fechas aunque no estén visibles. Mueva el puntero del ratón sobre el evento y arrástrelo al navegador de fechas.</para>
+
+<para
+>Puesto que la vista de la agenda no puede albergar el día completo en la mayor parte de las pantallas, tendrá que desplazarse hacia arriba y hacia abajo para ver el día completo. Hay un consejo útil que le dice si hay algunos eventos no visibles por encima o por debajo de la zona que está viendo. Es una pequeña flecha que apunta hacia abajo en la zona inferior de la vista de cada día o apunta hacia arriba en la superior.</para>
+
+<tip
+><para
+>Hay dos accesos rápidos muy útiles para añadir eventos: <itemizedlist>
+<listitem
+><para
+>Haga doble clic sobre cualquier región de tiempo del evento y, &korganizer; creará automáticamente un evento con la duración predeterminada (que es personalizable en el diálogo de preferencias). Puede añadir inmediatamente el resumen. Los eventos se «ajustan» en incrementos de media hora, redondeando a la media hora más cercana de donde pulsó.</para
+></listitem>
+<listitem
+><para
+>Seleccione cualquier región de hora abierta y haga doble clic sobre ella para comenzar a escribir el resumen del evento. &korganizer; define automáticamente la duración y la hora de comienzo según el área seleccionada en la vista de agenda.</para
+></listitem>
+</itemizedlist>
+</para
+></tip>
+
+<para
+>Para ayudarle a organizar su agenda, el color de los eventos refleja su etiqueta y, según la <link linkend="config-main-views"
+>configuración de la vista de &korganizer;</link
+>, también puede reflejar su <link linkend="managing-resources"
+>recurso</link
+>. Por tanto, si asigna <link linkend="categories-view"
+>etiquetas a eventos</link
+> y <link linkend="config-main-colors"
+>colores diferentes a las etiquetas</link
+>, podrá identificar rápidamente el tipo del evento por su color. </para>
+
+<para
+>La vista de agenda puede visualizar eventos de todos sus calendarios mezclados en una vista y mostrar una vista por calendario. Disponiendo de ambas vistas vía pestañas es posible y puede ser <link linkend="config-main-views"
+>personalizado en el diálogo de preferencias</link
+>. </para>
+
+<sect3 id="day-view">
+<title
+>Vista de día</title>
+
+<para
+>Esta vista presenta la <link linkend="agenda-view"
+>vista de agenda</link
+> para un solo día.</para>
+
+<para
+>Cambie a mostrar la vista de día eligiendo la opción de menú <menuchoice
+><guimenu
+>Ir</guimenu
+> <guimenuitem
+>Día</guimenuitem
+></menuchoice
+> o pulsando el botón <inlinemediaobject
+><imageobject
+><imagedata fileref="go-jump-today.png" format="PNG"/></imageobject
+></inlinemediaobject
+><guilabel
+>Día</guilabel
+>  en la barra de herramientas.</para>
+
+</sect3>
+
+<sect3 id="next-x-days-view">
+<title
+>Vista de los próximos X días</title>
+
+<para
+>Esta vista presenta la <link linkend="agenda-view"
+>vista de agenda</link
+> para los próximos días, comenzando desde hoy. Puede cambiar el número de días que se deben mostrar en la <link linkend="config-main-views"
+>configuración de la vista de &korganizer;</link
+>. El valor por omisión es 3.</para>
+
+<para
+>Cambie la visualización a la vista de próximos días seleccionando la opción de menú<menuchoice
+><guimenu
+>Ir</guimenu
+> <guimenuitem
+>Próximos X días</guimenuitem
+></menuchoice
+> (X representa el número de días, normalmente 3).</para>
+
+</sect3>
+
+
+<sect3 id="week-view">
+<title
+>Vista de semana</title>
+
+<para
+>La vista de semana proporciona una vista similar a la del día. Los eventos para los próximos siete días se muestran uno a continuación del otro.</para>
+
+<para
+>Cambie a mostrar la vista de semana seleccionando la opción de menú <menuchoice
+><guimenu
+>Ir</guimenu
+> <guimenuitem
+>Semana</guimenuitem
+></menuchoice
+> o pulse el botón <guilabel
+><inlinemediaobject
+><imageobject
+><imagedata fileref="view-calendar-week.png" format="PNG"/></imageobject
+></inlinemediaobject
+>Semana</guilabel
+> de la barra de herramientas.</para>
+
+</sect3>
+
+<sect3 id="workweek-view">
+<title
+>Vista de semana laboral</title>
+
+<para
+>Esta es la misma vista que la de semana, salvo que solo se muestran los días laborables.</para>
+
+<para
+>Cambie la visualización a la vista de semana laboral seleccionando la opción de menú<menuchoice
+><guimenu
+>Ir</guimenu
+> <guimenuitem
+>Semana laboral</guimenuitem
+></menuchoice
+>.</para>
+
+</sect3>
+
+</sect2>
+
+
+<sect2 id="month-view">
+<title
+>Vista de mes</title>
+
+<!--TODO: add month view options-->
+
+<para
+>La vista de mes muestra todos los eventos y las tareas pendientes para el mes actual en una distribución del calendario familiar del mes. Cada celda de la vista representa un día y cada día contiene todos los eventos que puedan ajustarse en el área que se proporciona (maximizar la ventana, le permitirá ver más citas). La información sobre la repetición de un estado de recordatorio se indica a través de los iconos de la <guiicon
+>campana</guiicon
+> y las <guiicon
+>flechas que se apuntan</guiicon
+>, junto como las otras vistas.</para>
+
+<para
+>Navegue por la vista de mes usando las flechas del navegador de fechas, o los elementos de los botones de la barra de herramientas del menú <guilabel
+>Ir</guilabel
+>. Como es posible que el área visible de la celda del día no contenga todos los eventos y las tareas pendientes, puede usar el teclado para navegar por los elementos o usar las barras de desplazamiento para ver los eventos y tareas pendientes de ese día.</para>
+
+<para
+>Pase el ratón por cualquier elemento del calendario para mostrar un consejo emergente con los detalles del elemento. Haga doble clic sobre un área vacía para crear un evento, haga doble clic sobre un elemento del calendario para editarlo.</para>
+
+<para
+>Para ayudarle a organizar sus datos, el color de los eventos pueden reflejar sus etiquetas y sus <link linkend="managing-resources"
+>recursos</link
+>, según la <link linkend="config-main-views"
+>configuración de la vista de &korganizer;</link
+>. Por tanto, si asigna <link linkend="categories-view"
+>etiquetas a eventos</link
+> y <link linkend="config-main-colors"
+>colores diferentes a las etiquetas</link
+>, puede identificar el tipo del evento (o del recurso) o su color. </para>
+
+<para
+>Cambie a mostrar la vista de mes seleccionando la opción de menú<menuchoice
+><guimenu
+>Ver</guimenu
+> <guimenuitem
+>Vista de mes</guimenuitem
+></menuchoice
+> o pulsando el botón <guilabel
+><inlinemediaobject
+><imageobject
+><imagedata fileref="view-calendar-week.png" format="PNG"/></imageobject
+></inlinemediaobject
+>Mes</guilabel
+> de la barra de herramientas.</para>
+
+</sect2>
+
+<!-- Timeline View-->
+
+<sect2 id="timeline-view">
+<title
+>Vista de cronología</title>
+
+<para
+>La vista de cronología muestra todos los eventos para el intervalo de tiempo seleccionado en un diagrama de gantt. Cada calendario se visualiza en una línea separada. </para>
+
+<para
+>Pase el ratón por cualquier elemento del calendario para mostrar un consejo emergente con los detalles del elemento. Haga doble clic sobre un área vacía para crear un evento, haga doble clic sobre un elemento del calendario para editarlo.</para>
+
+</sect2>
+
+<sect2 id="todo-view">
+<title
+>Lista de tareas pendientes</title>
+
+<para
+>La lista de tareas pendientes proporciona un lugar para que anote cosas que necesita hacer pronto (o a largo plazo). El componente del panel lateral de la vista aparece justo debajo del navegador de fechas. También puede mostrarla en el panel principal si pulsa sobre el botón <inlinemediaobject
+><imageobject
+><imagedata fileref="view-calendar-week.png" format="PNG"/></imageobject
+> </inlinemediaobject
+><guilabel
+>Vista de lista de tareas pendientes</guilabel
+> de la barra de herramientas o si selecciona la opción <menuchoice
+><guimenu
+>Ver</guimenu
+><guimenuitem
+>Lista de tareas pendientes</guimenuitem
+></menuchoice
+> del menú.</para>
+
+<para
+>Puede dar a una tarea pendiente una <quote
+>fecha de vencimiento</quote
+>, en otras palabras, una fecha para la que debe estar terminada la tarea pendiente.</para>
+
+<para
+>También puede asignar prioridades a las tareas pendientes, y aparecerán ordenados según su prioridad. A menor número, mayor prioridad, salvo el cero (0), que se define como <quote
+>sin prioridad.</quote
+></para>
+
+<para
+>Para crear una nueva entrada de la tarea pendiente, pulse con el botón derecho sobre el componente del panel lateral de vista de tareas pendientes, o la vista de la lista de tareas pendientes, y seleccione la opción <guimenuitem
+>Nueva tarea pendiente</guimenuitem
+> del menú. Si pulsa con el botón derecho sobre una tarea pendiente existente, tendrá más opciones: puede <guimenuitem
+>Mostrar</guimenuitem
+> el resumen, <guimenuitem
+>Editar...</guimenuitem
+> los detalles de la tarea pendiente, <guimenuitem
+>Borrar</guimenuitem
+> la tarea pendiente o crear una <guimenuitem
+>Nueva subtarea pendiente</guimenuitem
+>. Por ejemplo, podría hacer una tarea enorme, como construir una casa y hacer subtareas, como elegir el sitio adecuado para construir, contratar un arquitecto, contratar a los trabajadores y, por último, celebrar una fiesta para sus amigos.</para>
+
+<para
+>Cuando elija <guimenuitem
+>Nueva tarea pendiente...</guimenuitem
+>, aparecerá un diálogo emergente que le permitirá introducir toda la <link linkend="entering-data-to-do"
+>información</link
+> necesaria.</para>
+
+<para
+>Pulse sobre cualquier tarea pendiente de la lista para resaltarla. Si pulsa sobre el cuadro de línea gruesa de la izquierda de la descripción de la tarea, cambiará el estado de <quote
+>completado</quote
+> de la tarea. Si hace doble clic sobre la descripción de la tarea, podrá editar todos sus detalles.</para>
+
+<para
+>También puede escoger <link linkend="managing-purge-archive"
+>Purgar completadas</link
+> desde el menú del botón <mousebutton
+>derecho</mousebutton
+> para borrar todas las entradas de tareas pendientes que haya marcado como completadas.</para>
+
+<para
+>Las tareas pendientes también se pueden arrastrar con el ratón para reordenar la jerarquía o para intercambiar las tareas pendientes con otras ventanas de calendarios. Puede también acceder a un <link linkend="other-features-drag-and-drop"
+>vistazo general</link
+> de todas las operaciones de arrastrar y soltar disponibles.</para>
+</sect2>
+
+<sect2 id="journal-view">
+<title
+>Vista del diario</title>
+<para
+>La vista de diario proporciona un lugar en el que puede registrar sus reflexiones, ideas o experiencias. Puede mostrar la vista del diario en el mismo panel pulsando el botón de la barra de herramientas <inlinemediaobject
+><imageobject
+> <imagedata fileref="view-calendar-journal.png" format="PNG"/></imageobject
+> </inlinemediaobject
+><guilabel
+>Vista de diario</guilabel
+> o eligiendo la opción de menú <menuchoice
+><guimenu
+>Ver</guimenu
+><guimenuitem
+>diario</guimenuitem
+> </menuchoice
+></para>
+
+<para
+>Cuando pulsa sobre el enlace <guilabel
+>Nuevo diario...</guilabel
+> (o el botón <guibutton
+>Nuevo diario...</guibutton
+>), se crea una nueva entrada en el diario. Si quiere editar una entrada del diario, pulse en el área del texto y edítelo. Para eliminar una entrada del diario, pulse el <inlinemediaobject
+> <imageobject
+><imagedata fileref="edit-delete.png" format="PNG"/> </imageobject
+></inlinemediaobject
+> botón borrar que hay junto a la vista del diario.</para>
+
+</sect2>
+
+</sect1>
+
+<sect1 id="categories-view">
+<title
+>Etiquetas</title>
+
+<!--TODO: Add screenshot?-->
+
+<para
+>Para ayudarle a organizar sus entradas en grupos relacionados, puede asignar etiquetas a los eventos, las tareas pendientes y entradas de diario. Si asigna etiquetas, puede usarlas posteriormente para buscar, filtrar y mostrar los eventos y las tareas pendientes.</para>
+
+<para
+>Para asignar etiquetas cuando se editan o crean nuevos <link linkend="entering-data-events-general"
+>eventos</link
+> o <link linkend="entering-data-to-do-general"
+>tareas pendientes</link
+>, pulse el botón <guilabel
+>...</guilabel
+> en la pestaña <guilabel
+>General</guilabel
+>. Puede asignar más de una etiqueta a cada elemento.</para>
+
+<para
+>Para crear y borrar etiquetas, seleccione la opción <menuchoice
+> <guimenu
+>Preferencias</guimenu
+><guimenuitem
+>Gestión de etiquetas...</guimenuitem
+> </menuchoice
+> del menú para abrir el diálogo <guilabel
+>Gestión de etiquetas</guilabel
+>. Si asigna <link linkend="config-main-colors"
+>colores diferentes a las etiquetas</link
+>, podrá identificar el tipo de evento por su color, bien en la vista de agenda o en la vista de mes (según la <link linkend="config-main-views"
+>configuración de la vista de &korganizer;</link
+>). </para>
+
+</sect1>
+
+<sect1 id="filters-view">
+<title
+>Filtros</title>
+
+<para
+>Para ayudarle a ver, buscar y exportar sus datos, puede crear y usar filtros para sus calendarios. Por tanto, si no quiere ver las tareas pendientes completadas, puede quitarlas con un filtro, en lugar de <link linkend="managing-purge-archive"
+>purgarlas</link
+>. Si asigna etiquetas, puede usarlas para crear los filtros.</para>
+
+<para
+>Para crear, borrar y editar filtros, seleccione la opción <menuchoice
+> <guimenu
+>Preferencias</guimenu
+><guimenuitem
+>Gestionar los filtros de vista...</guimenuitem
+> </menuchoice
+> del menú para abrir el diálogo <guilabel
+>Editar filtros del calendario</guilabel
+>. Usando este diálogo puede crear, eliminar y editar los filtros que afectarán a los elementos que debe mostrar &korganizer;.</para>
+
+<!--TODO: Add detailed description of the dialog. Is it stable yet?-->
+
+<para
+>El submenú <menuchoice
+><guimenu
+>Ver</guimenu
+> <guisubmenu
+>Filtro</guisubmenu
+></menuchoice
+> y la barra de herramientas desplegable de filtro ofrece acceso a todos los filtros disponibles creados usando el diálogo <link linkend="menu-settings-edit-filters"
+><guilabel
+>Editar filtros de calendario</guilabel
+></link
+>. Para conmutar la visualización de la barra de herramientas de filtros, elija <menuchoice
+><guimenu
+>Preferencias</guimenu
+> <guisubmenu
+>Mostrar barras de herramientas</guisubmenu
+><guimenuitem
+>Barra de herramientas de filtros</guimenuitem
+></menuchoice
+>. Si no quiere usar ningún filtro, elija <guilabel
+>No filtrar</guilabel
+>.</para>
+
+<para
+>Los filtros son útiles para <link linkend="managing-export"
+>exportar su calendario</link
+>. Si usa un filtro, solo se exportan los elementos filtrados (visibles). Los filtros también son más efectivos cuando los elementos ya están clasificados y organizados por <link linkend="categories-view"
+>etiquetas</link
+>, ya que se pueden crear fácilmente filtros basados en etiquetas.</para>
+
+</sect1>
+
+<sect1 id="search-view">
+<title
+>Buscar</title>
+
+<para
+>Elija la opción de menú <menuchoice
+><guimenu
+>Editar</guimenu
+> <guimenuitem
+>Buscar</guimenuitem
+></menuchoice
+>, o pulse el acceso rápido <keycombo action="simul"
+>&Ctrl;<keycap
+>f</keycap
+> </keycombo
+> para buscar eventos, tareas pendientes o entradas del diario por su resúmenes, sus descripciones o sus etiquetas. La acción de búsqueda solo trabajará con los campos especificados.</para>
+
+<tip
+><para
+>Puede usar caracteres especiales si no recuerda el resumen exacto. Si no conoce un carácter del resumen, ponga <userinput
+>?</userinput
+> en lugar del carácter no conocido. Si no conoce ningún carácter, use <userinput
+>*</userinput
+>. Por ejemplo, si sabe qué el evento o la tarea pendiente tiene una <emphasis
+>reunión</emphasis
+> al comienzo y un <emphasis
+>producto</emphasis
+> después, debería escribir <userinput
+>reunión*producto</userinput
+> en el diálogo de búsqueda. &korganizer; ubicará entradas como <quote
+>Tarea pendiente: convocar una reunión para el producto nuevo</quote
+>, <quote
+>Reunión para tratar la anterior línea de productos</quote
+> y similares. No se hace distinción entre las mayúsculas y las minúsculas.</para
+></tip>
+
+<para
+>El resultado de la operación de búsqueda es una lista de eventos, entradas del diario o tareas con las palabras clave especificadas. La lista con las características de la búsqueda son las mismas que en la <link linkend="list-view"
+>Vista de lista</link
+>.</para>
+
+<para
+>La lista resultante es activa. Puede hacer doble clic sobre una línea para mostrar o editar los detalles del evento o de la tarea pendiente. Obtenga más información acerca de estos detalles en las secciones <xref linkend="entering-data-events"/> y <xref linkend="entering-data-to-do"/>.</para>
+
+</sect1>
+
+</chapter>
+
+<chapter id="entering-data"
+>  <!--updated to 5.4.40-->
+
+<title
+>Introduciendo datos</title>
+
+<sect1 id="entering-data-events">
+<title
+>Eventos</title>
+
+<para
+>Los eventos son citas en el futuro o en el pasado, como reuniones de negocio, aniversarios personales y visitas al cine. Un evento también puede durar varios días, como las vacaciones.</para>
+
+<para
+>Introducir un evento nuevo es muy fácil. Simplemente, elija la opción de menú <menuchoice
+><guimenu
+>Acciones</guimenu
+><guimenuitem
+>Nuevo evento...</guimenuitem
+></menuchoice
+>. Debe aparecer una ventana con seis pestañas.</para>
+
+<para
+>Si desea usar una manera diferente de crear un nuevo evento:</para>
+
+<procedure>
+<step
+><para
+>Use el navegador de fechas para ir a la fecha del evento.</para
+></step>
+
+<step
+><para
+>Cambie a la vista <guilabel
+>Agenda</guilabel
+> y pulse sobre el icono de la vista deseada sobre la <guimenu
+>Barra de herramientas de vista</guimenu
+> o seleccione la vista deseada del menú <guimenu
+>Ir</guimenu
+>. Puesto que su evento comienza a una hora determinada, debería seleccionar una <link linkend="reference-menus-view"
+>vista</link
+> que muestre las horas del día. Puede seleccionar la vista de <guimenuitem
+>Día</guimenuitem
+>, <guimenuitem
+>Semana laboral</guimenuitem
+> o <guimenuitem
+>Semana</guimenuitem
+>. La vista de<guimenuitem
+>Mes</guimenuitem
+> es más adecuada para las tareas pendientes, descritas más abajo.</para
+></step>
+
+<step
+><para
+>En el panel principal, doble clic sobre la fecha y hora en la que comience su evento. </para
+></step>
+
+<step
+><para
+>Debe aparecer un diálogo con seis pestañas en la parte inferior de la ventana. Introduzca sus datos como se describe a continuación.</para
+></step>
+</procedure>
+
+<screenshot id="screenshot-event-general">
+<screeninfo
+>Una captura de pantalla con el diálogo «Editar evento», de &korganizer;</screeninfo>
+<mediaobject>
+<imageobject
+><imagedata fileref="event-general.png" format="PNG"/></imageobject>
+<textobject
+><phrase
+>Una captura de pantalla con el diálogo «Editar evento» de &korganizer;</phrase
+></textobject>
+<caption
+><para
+>Una captura de pantalla con el diálogo «Editar evento» de &korganizer;</para
+></caption>
+</mediaobject>
+</screenshot>
+
+<para
+>Esta es una descripción a fondo de los campos de eventos individuales de la ventana y elementos gráficos. No todos los campos tienen que rellenarse; algunos se pueden dejar vacíos. Lea la sección <link linkend="entering-data-required-fields"
+>Campos obligatorios</link
+> para una información más detallada. Y si prefiere aprender con un ejemplo, hay uno en la sección <link linkend="examples-entering-event"
+>Introduciendo un evento</link
+>. </para>
+
+<variablelist>
+<varlistentry>
+<term
+><guilabel
+>Resumen:</guilabel
+></term>
+<listitem
+><para
+>Introduzca una descripción corta del evento en el campo <guilabel
+>Resumen</guilabel
+>. Esta descripción es el texto que se muestra en el panel principal de &korganizer;.</para
+></listitem>
+</varlistentry>
+
+<varlistentry>
+<term
+><guilabel
+>Ubicación:</guilabel
+></term>
+<listitem
+><para
+>Introduzca la descripción corta de la <guilabel
+>Ubicación</guilabel
+> en la que ocurrirá el evento.</para
+></listitem>
+</varlistentry>
+
+<varlistentry>
+<term
+><guilabel
+>Inicio</guilabel
+> y <guilabel
+>Fin</guilabel
+></term>
+<listitem
+><para
+>&korganizer; sugiere fechas de inicio y fin de su evento. Se espera que los eventos comiencen y acaben en la misma fecha. Cambie estas fechas como desee. Introduzca las fechas directamente o use el <link linkend="glossary" endterm="gloss-calendar-widget"
+> Control de calendario</link
+>. Seleccione la hora en intervalos de cuarto de hora o introduzca la hora deseada directamente en los campos de hora. Estos campos solo están disponibles si no está marcada la casilla <guilabel
+>Todo el día</guilabel
+>.</para
+></listitem>
+</varlistentry>
+
+</variablelist>
+
+<sect2 id="entering-data-events-general">
+<title
+>Pestaña General</title>
+
+<variablelist>
+<varlistentry>
+<term
+>Detalles:</term>
+<listitem
+><para
+>Introduzca una descripción larga del evento en el rectángulo grande y sin título. Puede escribir tantos detalles como quiera. Por ejemplo, si es evento es un plan general de reparación de su coche, puede listar todos los elementos que necesiten ser reparados. Luego puede imprimir esta lista y llamar al mecánico. Si el evento es ir de compras, puede anotar las cosas que necesita comprar. Imprima el evento y llévelo consigo a la tienda.</para
+></listitem>
+</varlistentry>
+
+<varlistentry>
+<term
+><guilabel
+>Etiquetas</guilabel
+></term>
+<listitem
+><para
+>Se pueden asignar varias <link linkend="categories-view"
+>etiquetas</link
+> a un elemento del calendario. Pulse el botón <guibutton
+>...</guibutton
+> para mostrar todas las etiquetas disponibles. Marque las casillas de las etiquetas que quiera asignar al evento.</para>
+<para
+>También puede añadir una nueva etiqueta, modificarla o borrarla en el diálogo <guilabel
+>Gestión de etiquetas</guilabel
+>. Abra este diálogo con <menuchoice
+> <guimenu
+>Preferencias</guimenu
+> <guimenuitem
+>Gestión de etiquetas</guimenuitem
+></menuchoice
+>.</para>
+
+<tip
+><para
+>Su clase de idiomas en el trabajo puede pertenecer a las etiquetas de Negocios y Educación, mientras que el aniversario de su boda pertenece tanto a Personal como a Ocasión especial - es su elección.</para
+></tip>
+</listitem>
+</varlistentry>
+
+<varlistentry>
+<term
+><guilabel
+>Acceso:</guilabel
+></term>
+<listitem
+><para
+>Elija <guilabel
+>Público</guilabel
+> o <guilabel
+>Privado</guilabel
+> o <guilabel
+>Confidencial</guilabel
+>para mantener el evento como privado o como confidencial. Por ahora, esta opción define correctamente el atributo <quote
+>CLASS</quote
+> de los eventos como <quote
+>PUBLIC</quote
+>, <quote
+>PRIVATE</quote
+> o <quote
+>CONFIDENTIAL</quote
+>. Sin embargo, si estas preferencias se usan ciertamente para restringir el acceso a la información según el cliente o la implementación del servidor de trabajo en grupo.</para>
+<warning
+><para
+>Por ahora, &korganizer; <emphasis
+>muestra</emphasis
+> los elementos propiedad de otras personas y marcados como confidenciales. Otros clientes los pueden tratar de forma distinta, pero tenga cuidado cuando vaya a publicar eventos privados o confidenciales: iCalendar es un formato de archivo de texto y se puede leer con un editor de textos (si es que tiene acceso a ellos). Por tanto, si quiere mantener los elementos como verdaderamente confidenciales, asegúrese de que usa un recurso al que solo pueda acceder usted.</para
+></warning
+></listitem>
+</varlistentry>
+
+</variablelist>
+
+</sect2>
+
+<sect2 id="entering-data-events-attendees">
+<title
+>Pestaña Asistentes</title>
+
+<para
+>Seleccione en esta pestaña las personas que quiera invitar al evento.</para>
+
+<screenshot id="screenshot-event-attendees">
+<screeninfo
+>Una captura de pantalla del diálogo «Editar evento» de &korganizer;, pestaña «Asistentes»</screeninfo>
+<mediaobject>
+<imageobject
+><imagedata fileref="event-attendees.png" format="PNG"/></imageobject>
+<textobject
+><phrase
+>Una captura de pantalla del diálogo «Editar evento» de &korganizer;, pestaña «Asistentes»</phrase
+></textobject>
+<caption
+><para
+>Una captura de pantalla del diálogo «Editar evento» de &korganizer;, pestaña «Asistentes»</para
+></caption>
+</mediaobject>
+</screenshot>
+
+<variablelist>
+<varlistentry>
+<term
+><guilabel
+>Organizador de la reunión:</guilabel
+></term>
+<listitem
+><para
+>Define la identidad correspondiente al organizador de esta tarea pendiente o evento. Si &korganizer; está configurado para enviar correos de invitación, la identidad seleccionada en esta lista desplegable se usará para enviar estos correos. La identidad predeterminada se puede definir en la sección <guilabel
+>Personal</guilabel
+> de la configuración de &korganizer;.Además, las identidades se obtienen de sus opciones de &kmail; y de su libreta de direcciones.</para
+></listitem>
+</varlistentry>
+
+<varlistentry>
+<term
+>Lista de asistentes</term>
+<listitem
+><para
+>La lista del centro de la pestaña muestra los asistentes seleccionados para este evento, y le permite añadir asistentes introduciendo el nombre o dirección de correo, editarlos o eliminarlos.</para>
+<para
+>Si los asistentes están en su libreta de direcciones, no tiene que recordar ni teclear su dirección de correo. Simplemente pulse sobre el botón <guibutton
+>Seleccionar direcciones...</guibutton
+> y elija el asistente de la lista. Tenga en cuenta que este es el libro de direcciones estándar de &kde;, que también lo usa &kmail; y también se puede llamar desde una aplicación aparte (&kaddressbook;).</para>
+</listitem>
+</varlistentry>
+
+<varlistentry>
+<term
+>Participantes</term>
+<listitem
+><para
+>Seleccione el papel del asistente (participante, participante opcional, observador, presidente) del menú desplegable del lado izquierdo de cada entrada. El papel es un recordatorio sencillo de qué parte interpreta el asistente en este evento. </para
+></listitem>
+</varlistentry>
+
+<varlistentry>
+<term
+>Estado</term>
+<listitem
+><para
+>Seleccione el estado del asistente (necesita acción, aceptado, declinado, tentativa, delegado) del menú desplegable a la derecha de cada entrada. Si usa la planificación de trabajo en grupo y solicita respuestas de sus asistentes, cuando vaya recibiendo las respuestas se irá actualizando el asistente. Si no solicita confirmaciones, tendrá que actualizar el estado manualmente.</para
+></listitem>
+</varlistentry>
+
+<varlistentry>
+<term
+>Solicitar respuesta</term>
+<listitem
+><para
+>Seleccione <guilabel
+>Solicitar respuesta</guilabel
+> de la casilla desplegable si este asistente debe responder a su planificación. Seguidamente, se enviarán correos a los asistentes con la información de la planificación del evento. Aparecerá un pequeño sobre en la lista de detalles para indicar esto. Esta característica es especialmente útil cuando está activada la planificación de trabajo en grupo, porque el estado de los asistentes se actualiza automáticamente.</para
+></listitem>
+</varlistentry>
+
+ <!-- Participiants: no conflicts Reschedule button
+ What is that? How does it work?-->
+
+</variablelist>
+
+</sect2>
+
+<!--Fixme Resources tab missing -->
+
+<sect2 id="entering-data-events-reminder">
+<title
+>Pestaña recordatorio</title>
+<variablelist>
+<varlistentry>
+<term
+>Recordatorio</term>
+<listitem
+><para
+>Seleccione un recordatorio predeterminado en la casilla desplegable y pulse <guibutton
+>Añadir</guibutton
+> si &korganizer; tendría que recordarle el evento.</para>
+<para
+>Use el botón <guibutton
+>Configurar</guibutton
+> para abrir el diálogo <guilabel
+>Editar recordatorio existente</guilabel
+>. Usando este diálogo, puede elegir cuantos minutos, horas o días quiere ser notificado antes de que el evento se inicie o termine, puede establecer intervalos de repetición para sus recordatorios, y crear recordatorios especiales que muestren texto o reproduzcan sonidos.</para>
+</listitem>
+</varlistentry>
+
+</variablelist>
+
+</sect2>
+
+<sect2 id="entering-data-events-recurrence">
+<title
+>Pestaña repetición</title>
+
+<para
+>Algunos eventos suceden regularmente. Puede especificar aquí su planificación exacta.</para>
+
+<screenshot id="screenshot-event-recurrence">
+<screeninfo
+>Una captura de pantalla del diálogo «Editar evento - Pestaña repetición» de &korganizer;</screeninfo>
+<mediaobject>
+<imageobject
+><imagedata fileref="event-recurrence.png" format="PNG"/></imageobject>
+<textobject
+><phrase
+>Una captura de pantalla del diálogo «Editar evento - Pestaña repetición» de &korganizer;</phrase
+></textobject>
+<caption
+><para
+>Una captura de pantalla del diálogo «Editar evento - Pestaña repetición» de &korganizer;</para
+></caption>
+</mediaobject>
+</screenshot>
+
+<note
+><para
+>Para activar las preferencias, comience seleccionado un nivel de repetición a la derecha de <guilabel
+>Se repite</guilabel
+> de la casilla desplegable. Si está seleccionado <guilabel
+>Nunca</guilabel
+>, no podrá hacer cambios en esta casilla.</para
+></note>
+
+<sect3 id="recurrence-recurrence-rule">
+<title
+>Regla de repetición</title>
+
+<para
+>Seleccione si quiere repetir este evento diariamente, semanalmente o anualmente. Se detallan a continuación más opciones:</para>
+
+<variablelist>
+<varlistentry>
+<term
+><guilabel
+>Diario</guilabel
+></term>
+<listitem
+><para
+>Especifica si el evento sucede cada día (1), cada otro día (2) y así sucesivamente.</para
+></listitem>
+</varlistentry>
+
+<varlistentry>
+<term
+><guilabel
+>Semanalmente</guilabel
+></term>
+<listitem
+><para
+>Especifica si el evento aparece cada semana (1), en semanas alternas (2) y así sucesivamente. También especifica los días (lunes... domingo) en los que ocurre el suceso. </para
+></listitem>
+</varlistentry>
+
+<varlistentry>
+<term
+><guilabel
+>Mensualmente</guilabel
+></term>
+<listitem
+><para
+>Puede hacer que el evento aparezca, o bien el mismo día del mes o en una semana específica de un día específico de la semana. Tiene que seleccionar entre estas dos posibilidades. Por omisión, &korganizer; supone que quiere repetir el mismo día del calendario del mes (por ejemplo, el 15). También puede ajustar el periodo, que se puede repetir mensualmente, cada tres meses y así sucesivamente.</para
+></listitem>
+</varlistentry>
+
+<varlistentry>
+<term
+><guilabel
+>Anualmente</guilabel
+></term>
+<listitem>
+<para
+>Es similar al mensual. Necesita elegir si va a indicar un día del año en el calendario (por ejemplo, 250º día del año), en un día de la semana en concreto de una semana específica del mes (por ejemplo, el 2º martes de marzo), o el día del mes de un mes concreto del año. Por omisión, &korganizer; supone que es correcto el día del mes. Puede ajustar el período para que refleje eventos que sucedan cada dos años, cada cuatro años y así sucesivamente.</para>
+</listitem>
+</varlistentry>
+</variablelist>
+</sect3>
+
+<sect3 id="recurrence-recurrence-range">
+<title
+>Intervalo de repetición</title>
+
+<para
+>Por omisión, los eventos que se repitan lo harán para siempre; no hay <quote
+>fin</quote
+> a la repetición. Esto puede ser deseable o no, así que se le proporciona la posibilidad de terminar la repetición seleccionado una fecha final o un número de apariciones.</para>
+
+</sect3>
+
+<sect3 id="recurrence-exceptions">
+<title
+>Excepciones</title>
+
+<para
+>Puede tener configurada una regla de repetición muy buena, pero darse cuenta de que hay algunas excepciones. Si, por ejemplo, configura su horario de clases, puede querer hacer excepciones para las vacaciones y similares. En esta área, puede añadir, cambiar y borrar fechas de la lista de excepciones (&ie; horas para las que si coincide la regla de repetición, el evento <emphasis
+>no sea planificado</emphasis
+>). Seleccione una fecha con el selector de fechas y pulse <guibutton
+>Añadir</guibutton
+> para incluirlo. Para borrar fechas, resáltelas en el cuadro de la derecha y pulse sobre <guibutton
+>Borrar</guibutton
+>.</para>
+
+</sect3>
+</sect2>
+
+<sect2 id="entering-data-events-attachments">
+<title
+>Adjuntos</title>
+
+<para
+>Los eventos y tareas pendientes pueden contener adjuntos. Los adjuntos pueden almacenarse como enlaces o en línea. Para añadir un adjunto pulse el botón <guibutton
+>Añadir</guibutton
+>.</para>
+
+<screenshot id="screenshot-event-attachments">
+<screeninfo
+>Una captura de pantalla del diálogo «Editar evento - Pestaña adjuntos» de &korganizer;</screeninfo>
+<mediaobject>
+<imageobject
+><imagedata fileref="event-attachments.png" format="PNG"/></imageobject>
+<textobject
+><phrase
+>Una captura de pantalla del diálogo «Editar evento- Pestaña adjuntos» de &korganizer;</phrase
+></textobject>
+<caption
+><para
+>Una captura de pantalla del diálogo «Editar evento - Pestaña adjuntos» de &korganizer;</para
+></caption>
+</mediaobject>
+</screenshot>
+
+<para
+>Si marca <guilabel
+>Guardar adjunto en línea</guilabel
+> el adjunto se guardará dentro del calendario, lo que puede necesitar bastante espacio dependiendo del tamaño del adjunto. Si esta opción no está marcada, solo se guardará un enlace que apunta al adjunto. No use un enlace para adjuntos que cambian a menudo o que puedan moverse (o eliminarse) de su ubicación actual.</para>
+
+<para
+>Se proporcionan las siguientes opciones del menú de contexto para trabajar con adjuntos:</para>
+
+<variablelist>
+
+<varlistentry>
+<term
+><guimenuitem
+>Abrir</guimenuitem
+></term>
+<listitem
+><para
+>Mostrar el adjunto seleccionado con la aplicación seleccionada.</para
+></listitem>
+</varlistentry>
+
+<varlistentry>
+<term
+><guimenuitem
+>Guardar como...</guimenuitem
+></term>
+<listitem
+><para
+>Permite guardar un adjunto existente con un nombre distinto.</para
+></listitem>
+</varlistentry>
+
+<varlistentry>
+<term
+><guimenuitem
+>Copiar</guimenuitem
+>, <guimenuitem
+>Cortar</guimenuitem
+> y <guimenuitem
+>Pegar</guimenuitem
+></term>
+<listitem
+><para
+>Permite copiar, cortar y pegar desde y hasta el portapapeles.</para
+></listitem>
+</varlistentry>
+
+<varlistentry>
+<term
+><guimenuitem
+>Eliminar</guimenuitem
+></term>
+<listitem
+><para
+>Borra el adjunto seleccionado.</para
+></listitem>
+</varlistentry>
+
+<varlistentry>
+<term
+><guimenuitem
+>Propiedades...</guimenuitem
+></term>
+<listitem
+><para
+>Permite modificar un adjunto existente.</para
+></listitem>
+</varlistentry>
+
+</variablelist>
+
+</sect2>
+
+<!--FIXME works with certain type of calendars e.g. google calendar ?-->
+<sect2 id="entering-data-events-freebusy">
+<title
+>Disponibilidad</title>
+
+<para
+>Cuando añada asistentes al evento, tiene que saber si están ocupados o disponibles en esa hora en particular. Si los asistentes tienen disponible su información de disponibilidad, puede ver aquí su planificación antes de enviarles las invitaciones.</para>
+
+<para
+>Esto muestra el esquema de planificación de disponibilidad a la derecha, donde cada línea representa a uno de los asistentes listado a la izquierda. Las áreas marcadas en el diagrama representan el tiempo ya tomado por otros eventos, las áreas desmarcadas representan tiempo libre desde otros eventos. Puede mover el evento a un diferente punto en el tiempo arrastrándolo con el ratón o cambiarlo de tamaño moviendo los bordes del área resaltada con el ratón.</para>
+
+<para
+>La información de disponibilidad solo está disponible si el asistente publica su esquema de disponibilidad y si &korganizer; está configurado correctamente para recuperarla. Para más información sobre la configuración de &korganizer; para recuperar y publicar información de disponibilidad, por favor, compruebe xref linkend=«config»/>. Haciendo doble clic sobre la entrada de un asistente en la lista le permitirá introducir la ubicación de sus información de disponibilidad. </para>
+
+<variablelist>
+
+<varlistentry>
+<term
+><guilabel
+>Escala</guilabel
+></term>
+<listitem
+><para
+>Establece el nivel de aumento del diagrama de planificación. <guilabel
+>Hora</guilabel
+> muestra un intervalo de varias horas, <guilabel
+>Días</guilabel
+> muestra un intervalo de pocos días, <guilabel
+>Semana</guilabel
+> muestra un intervalo de unas pocas semanas, y <guilabel
+>Mes</guilabel
+> muestra un intervalo de unos meses, mientras que <guilabel
+>Automático</guilabel
+> selecciona el intervalo más apropiado para el evento o tarea pendiente actual.</para
+></listitem>
+</varlistentry>
+
+<varlistentry>
+<term
+><guibutton
+>Centrar en el inicio</guibutton
+></term>
+<listitem
+><para
+>Pulse este botón para centrar el esquema de planificación de disponibilidad en ela hora de inicio y día de este evento.</para
+></listitem>
+</varlistentry>
+
+<varlistentry>
+<term
+><guibutton
+>Escoger fecha</guibutton
+></term>
+<listitem
+><para
+>Pulse este botón para mover automáticamente el evento a una fecha y hora en la que los otros asistentes estén libres.</para
+></listitem>
+</varlistentry>
+
+<varlistentry>
+<term
+><guibutton
+>Volver a cargar</guibutton
+></term>
+<listitem
+><para
+>Pulse este botón para volver a cargar los datos de disponibilidad de los asistentes desde los correspondientes servidores.</para
+></listitem>
+</varlistentry>
+
+</variablelist>
+
+<para
+>Cuando quiera confirmar, llame o revierta los datos introducidos, elija entre los botones de acción <guibutton
+>Aceptar</guibutton
+>, <guibutton
+>Aplicar</guibutton
+> y <guibutton
+>Cancelar</guibutton
+>.</para>
+
+</sect2>
+
+<sect2 id="entering-data-events-template-buttons">
+<title
+>Gestionar plantillas</title>
+
+<para
+>El botón <guibutton
+>Gestionar plantillas</guibutton
+> abre un diálogo que le permite guardar el evento actual como una plantilla, para que pueda reutilizar los datos que introduzca en futuros eventos. Como ejemplo, puede guardar una plantilla para una reunión que se produzca en el mismo lugar y con la misma gente.</para>
+<para
+>Con el botón <guibutton
+>Aplicar</guibutton
+> puede usar cualquier plantilla existente para el evento. Siguiendo con el ejemplo del párrafo anterior, puede indicar el orden del día de la reunión.</para>
+
+</sect2>
+
+</sect1>
+
+<sect1 id="entering-data-to-do">
+<title
+>Tareas pendientes</title>
+
+<para
+>La lista de tareas pendientes es una lista donde escribe notas para usted mismo sobre cosas que tiene que hacer. Las tareas pendientes son tareas que se pueden planificar o no. Hay tareas a corto y a largo plazo. Por ejemplo, puede ir a una peluquería en una semana y puede vender su coche viejo en un año. Probablemente no quiera que salte el recordatorio en ninguna fecha en particular, sino simplemente tener una lista de cosas que debe hacer, y las fechas en las que deben estar terminadas (fecha de vencimiento).</para>
+
+<para
+>Para introducir una tarea pendiente nueva, elija <menuchoice
+><guimenu
+>Acciones</guimenu
+><guimenuitem
+>Nueva tarea pendiente...</guimenuitem
+></menuchoice
+>. Aparece una ventana con cinco pestañas.</para>
+
+<sect2 id="entering-data-to-do-general">
+<title
+>Pestaña General</title>
+
+<screenshot id="screenshot-todo-general">
+<screeninfo
+>Una captura de pantalla del diálogo «Editar tarea pendiente» de &korganizer;</screeninfo>
+<mediaobject>
+<imageobject
+><imagedata fileref="todo-general.png" format="PNG"/></imageobject>
+<textobject
+><phrase
+>Una captura de pantalla del diálogo «Editar tarea pendiente» de &korganizer;</phrase
+></textobject>
+<caption
+><para
+>Una captura de pantalla del diálogo «Editar tarea pendiente» de &korganizer;</para
+></caption>
+</mediaobject>
+</screenshot>
+
+<para
+>Esta pestaña comparte un montón de opciones con el diálogo <guilabel
+>Editar eventos</guilabel
+>, pero dispone de algunos elementos adicionales para tareas pendientes:</para>
+
+<variablelist>
+<varlistentry>
+<term
+><guilabel
+>Completado</guilabel
+></term>
+<listitem
+><para
+>Este es un menú del porcentaje completado, puesto inicialmente a 0 % completo. Después, puede indicar su progreso ajustando el porcentaje completado en pasos de 10 %.</para
+></listitem>
+</varlistentry>
+
+<varlistentry>
+<term
+><guilabel
+>Prioridad</guilabel
+></term>
+<listitem
+><para
+>Asigna una prioridad a su tarea pendiente. Este menú desplegable le ofrece prioridades desde uno a nueve, siendo uno la más alta. Inicialmente, las tareas pendientes se definen con prioridad cinco (media).</para
+></listitem>
+</varlistentry>
+</variablelist>
+
+</sect2>
+
+</sect1>
+
+<sect1 id="entering-data-required-fields">
+
+<title
+>Campos obligatorios</title>
+
+<para
+>Este es un vistazo general de qué campos se requieren y qué campos se pueden dejar vacíos sin introducir eventos y tareas pendientes:</para>
+
+<itemizedlist>
+<listitem
+><para
+>Debe rellenar el campo <guilabel
+>Resumen</guilabel
+>.</para
+></listitem>
+<listitem
+><para
+>La pestaña <guilabel
+>General</guilabel
+> se puede dejar completamente vacía.</para
+></listitem>
+<listitem
+><para
+>Si define un <guilabel
+>Recordatorio</guilabel
+>, también debe especificar la hora y el sonido a reproducir o el programa a ejecutar.</para
+></listitem>
+<listitem
+><para
+>La pestaña <guilabel
+>Asistentes</guilabel
+> se puede dejar completamente vacía.</para
+></listitem>
+<listitem
+><para
+>El diálogo <guilabel
+>Repetición</guilabel
+> solo se debe rellenar si seleccionó una repetición diaria, semanal, mensual o anual. </para
+></listitem>
+<listitem
+><para
+>El diálogo <guilabel
+>Adjuntos</guilabel
+> se puede dejar completamente vacía.</para
+></listitem>
+</itemizedlist>
+</sect1>
+</chapter>
+
+<chapter id="group-scheduling"
+>   <!--updated to 5.4.40-->
+<title
+>Planificación de grupo</title>
+
+<para
+>La funcionalidad de planificación de grupos de &korganizer; le permite organizar citas, reuniones y tareas pendientes compartidas, solicitudes de confirmación a los asistentes y publicar elementos. Si va a ser invitado a un evento o a una tarea pendiente, puede responder a ella, indicando si puede asistir, o enviar una contra propuesta, con una propuesta diferente, como una hora o una ubicación diferente. También puede publicar su planificación de disponibilidad para permitir que la gente sepa cuándo está disponible y también para que pueda solicitar la misma información a otras personas.</para>
+
+<para
+>Por ahora, &korganizer; planifica los eventos y las tareas pendientes usando el correo para transportar los datos, en un esquema basado en estándares, el protocolo IMIP para planificación de grupos. Al ser un estándar, IMIP se usa también en muchos otros clientes. Por ejemplo, &Microsoft; <application
+>Outlook</application
+>, Lotus <application
+>Notes</application
+> y Novell <application
+>Evolution</application
+>. Esto significa que puede compartir los eventos con otros usuarios que usen estos clientes. &korganizer; está integrado con &kmail; para recibir, procesar y enviar eventos y para responder a eventos, actualizaciones, cancelaciones, &etc;. De hecho, cuando envía una invitación desde &kmail; y decide aceptarla pulsando en el enlace <guilabel
+>aceptar</guilabel
+> del cuerpo del correo, el evento se añade a su calendario y se envía automáticamente una respuesta al organizador del evento.</para>
+
+
+<!--TODO: check if to-dos work or not.-->
+<!--TODO: check what happens if you counter without this option on.-->
+
+<para
+>Si marca la casilla <guilabel
+>Usar la comunicación de trabajo en grupo</guilabel
+> en la <link linkend="config-main-groupscheduling"
+>configuración de la planificación de grupos de &korganizer;</link
+>, &korganizer; gestionará la comunicación de la planificación por grupos. En otras palabras, puede necesitar usar directamente el menú <guimenu
+>Planificar</guimenu
+> directamente para realizar las acciones de la planificación. De hecho, si <link linkend="entering-data-events"
+>crea un evento o una tarea pendiente</link
+> con asistentes, &korganizer; le preguntará si quiere enviar la invitación a los asistentes, por lo que no tendrá que usar posteriormente la opción <menuchoice
+><guimenu
+>Planificar</guimenu
+><guimenuitem
+>Enviar invitación a los asistentes</guimenuitem
+></menuchoice
+> del menú. También, si cambia su estado como un asistente para un evento al que ha sido invitado, le preguntará si quiere enviar su estado actualizado al organizador del evento, por lo que tendrá que usar posteriormente la opción <menuchoice
+><guimenu
+>Planificar</guimenu
+><guimenuitem
+>Enviar actualización del estado</guimenuitem
+></menuchoice
+> del menú.</para>
+
+
+
+<sect1 id="publish">
+<title
+>Publicar un evento, una tarea pendiente o una entrada del diario</title>
+
+<para
+>Si lo único que quiere es enviar un evento, una tarea pendiente o una entrada del diario, elija la opción <menuchoice
+><guimenu
+>Planificar</guimenu
+><guimenuitem
+>Publicar la información del elemento...</guimenuitem
+></menuchoice
+> del menú, cuando el elemento está seleccionado. Tras esto, aparecerá un diálogo, le preguntará qué dirección de correo electrónico recibirá el evento o la tarea pendiente. El elemento se enviará por correo electrónico, en formato iCalendar.</para>
+
+<para
+>Tenga en cuenta que puede usar esta acción para enviar por correo cualquier elemento a cualquiera, no solo a los asistentes al evento. De hecho, puede publicar un elemento sin asistentes, ya que al publicarlo no solicitará confirmación a los asistentes.</para>
+
+<para
+>Un ejemplo: toca en un grupo y, de vez en cuando, hace conciertos en directo. Para notificar a sus admiradores sobre los conciertos, puede tener una lista de correo. Si usa &korganizer; para organizar las fechas de sus conciertos, puede simplemente seleccionar la opción de menú<menuchoice
+><guimenu
+>Planificar</guimenu
+><guimenuitem
+>Publicar información del elemento...</guimenuitem
+></menuchoice
+>, poner la dirección de la lista de correo y el evento se enviará. Los suscriptores de la lista de correo que usen &korganizer; tendrán insertada automáticamente la fecha del concierto en sus calendarios. </para>
+
+<para
+>Al publicar un evento como se describe más abajo solo informará al receptor sobre el evento, pero no le dará la opción de preguntar para atenderlo. Use <menuchoice
+><guimenu
+>Planificar</guimenu
+><guimenuitem
+>Enviar como iCalendar...</guimenuitem
+></menuchoice
+> si quiere proporcionar esta opción. </para>
+
+</sect1>
+
+
+<sect1 id="as-organizer">
+<title
+>Actuando como organizador en la planificación de grupos</title>
+
+<para
+>Cuando cree <link linkend="entering-data-events"
+>un evento</link
+> o <link linkend="entering-data-to-do"
+>una tarea pendiente</link
+> y <link linkend="entering-data-events-attendees"
+>le añada asistentes</link
+>, actúa como organizador del evento. Para añadir asistentes, use la <link linkend="entering-data-events-attendees"
+>pestaña «Asistente»</link
+>, en el diálogo <guilabel
+>Editar evento</guilabel
+> o <guilabel
+>Editar tarea pendiente</guilabel
+>. En la <link linkend="agenda-view"
+>vista de agenda</link
+>, un pequeño icono <inlinemediaobject
+><imageobject
+><imagedata fileref="organizer.png" format="PNG"/></imageobject
+><textobject
+> <phrase
+>Icono de organizador</phrase
+></textobject
+></inlinemediaobject
+> se pone en el evento, si es el organizador de un evento de planificación de grupo.</para>
+
+<para
+>El organizador es el responsable de enviar las invitaciones, recopilar las confirmaciones de los asistentes y mantener las fechas del evento o de la tarea pendiente actualizados para todas las personas implicadas.</para>
+
+<sect2 id="request">
+<title
+>Enviar invitaciones y procesar confirmaciones</title>
+
+<para
+>Para organizar un evento o una tarea pendiente, <link linkend="entering-data-events"
+>créela</link
+> en &korganizer; y añada todas las personas que deberían asistir usando la pestaña «Asistentes». &korganizer; puede enviar invitaciones a los asistentes, bien automáticamente (según la <link linkend="config-main-groupscheduling"
+>configuración de la planificación de grupos de &korganizer;</link
+>), o seleccionando el evento o la tarea pendiente y eligiendo la opción <menuchoice
+><guimenu
+>Planificar</guimenu
+><guimenuitem
+>Enviar invitación a los asistentes</guimenuitem
+></menuchoice
+> del menú. Los asistentes reciben un correo con toda la información pertinente del evento o de la tarea pendiente. Pueden responder a la propuesta de reunión aceptándola o rechazándola, o hacer una contra propuesta. También pueden delegar o reenviar la invitación. Toda esa información se vuelve a enviar por correo y, si ha configurado bien &kmail;, las respuestas de los asistentes se insertan automáticamente en su calendario. </para>
+
+</sect2>
+
+<sect2 id="cancel">
+<title
+>Cancelar un evento o una tarea pendiente</title>
+
+<para
+>Para cancelar un evento o una tarea pendiente, tiene que ser el organizador. Si marcó la casilla <guilabel
+>Usar comunicación de trabajo en grupo</guilabel
+> en <link linkend="config-main-groupscheduling"
+>la configuración de planificación de grupos de &korganizer;</link
+>, simplemente borre el elemento y &korganizer; le preguntará si quiere enviar la cancelación. Si no, simplemente seleccione el elemento y elija la opción <menuchoice
+><guimenu
+>Planificar</guimenu
+><guimenuitem
+>Enviar cancelación a los asistentes</guimenuitem
+></menuchoice
+> del menú.</para>
+
+<para
+>Esta acción envía un mensaje de cancelación a todos los asistentes, para que también puedan eliminar el elemento de sus calendarios.</para>
+</sect2>
+</sect1>
+
+
+<sect1 id="as-attendee">
+<title
+>Actuar como el asistente</title>
+
+<para
+>Cuando reciba un mensaje con una invitación y la acepte, el evento o la tarea pendiente se añade a su calendario. Si es un evento, se pone un pequeño icono <inlinemediaobject
+> <imageobject
+> <imagedata fileref="meeting-attending.png" format="PNG"/> </imageobject
+> <textobject
+> <phrase
+>Attendee Icon</phrase
+> </textobject
+> </inlinemediaobject
+>  en el evento en la <link linkend="agenda-view"
+>vista de agenda</link
+>.</para>
+
+<sect2 id="reply">
+<title
+>Responder a una invitación</title>
+
+<para
+>Si tiene una invitación en su bandeja de entrada de &kmail;, puede pulsar <guibutton
+>Rechazar</guibutton
+> para ignorar la petición o <guibutton
+>Aceptar</guibutton
+> o <guibutton
+>Aceptar cond.</guibutton
+>. Las dos últimas acciones insertan el elemento en su calendario. En cualquier caso, &kmail; envía automáticamente su respuesta al organizador.</para>
+
+<para
+>También puede <guibutton
+>Delegar</guibutton
+> o <guibutton
+>Redireccionar</guibutton
+> la invitación. Cuando la delegue, puede sugerir otra persona como su proxy. Usando <guibutton
+>Redireccionar</guibutton
+> puede redireccionar la invitación a una o más personas todavía no invitadas. Cuando el receptor de la delegación o redireccionamiento acepte la invitación, se le pedirá al organizador que apruebe el nuevo asistente.</para>
+
+<para
+>Si por cualquier motivo cambia de idea, edite su estado en la <link linkend="entering-data-events-attendees"
+>pestaña «Asistente»</link
+> del elemento. Si marcó la casilla <guilabel
+>Usar comunicación de trabajo en grupo</guilabel
+> en la <link linkend="config-main-groupscheduling"
+>configuración de la planificación de grupos de &korganizer;</link
+>, &korganizer; le preguntará si quiere enviar un correo actualizando su estado de asistencia. Si no, elija la opción de menú <menuchoice
+><guimenu
+>Planificar</guimenu
+><guimenuitem
+>Enviar actualización del estado</guimenuitem
+></menuchoice
+> para actualizar su estado. </para>
+</sect2>
+
+<sect2 id="counter">
+<title
+>Enviar una propuesta alternativa</title>
+
+
+<para
+>Si no está satisfecho con alguna de las características del evento o de la tarea pendiente a la que ha sido invitado y quiere enviar una contra propuesta al organizador (por ejemplo, una ubicación u horario alternativo), simplemente edite el elemento y envíelo de vuelta como propuesta, seleccionando el elemento y eligiendo la opción <menuchoice
+><guimenu
+>Planificar</guimenu
+><guimenuitem
+>Solicitar cambio</guimenuitem
+></menuchoice
+> del menú.</para>
+
+<para
+>El organizador del evento recibirá por correo su propuesta y podrá aceptarla o declinarla.</para>
+</sect2>
+
+<sect2 id="refresh">
+
+<title
+>Solicitar la última versión de un evento o de una tarea pendiente</title>
+
+<para
+>Para solicitar la última versión de un evento o de una tarea pendiente, seleccione el elemento y elija la opción <menuchoice
+><guimenu
+>Planificar</guimenu
+> <guimenuitem
+>Solicitar actualización</guimenuitem
+></menuchoice
+> del menú. El organizador debería devolverle la última versión del elemento.</para>
+
+</sect2>
+</sect1>
+
+<sect1 id="free-busy">
+<title
+>Información sobre disponibilidad</title>
+
+<para
+>La información sobre disponibilidad representa una planificación de la disponibilidad. Al presentar los intervalos cuando alguien haya realizado cambios, algunos otros pueden evitar planificar citas para estos períodos. Tenga en cuenta que solo se publican las horas, no los eventos, motivos ni asistentes.</para>
+
+<para
+>&korganizer; admite la publicación y la recuperación de información sobre disponibilidad, bien manual, o bien automáticamente.</para>
+
+<para
+>Para enviar por correo su información sobre disponibilidad, elija la opción de menú <menuchoice
+><guimenu
+>Planificar</guimenu
+> <guimenuitem
+>Información por correo sobre disponibilidad...</guimenuitem
+></menuchoice
+>. Introduzca las direcciones de correo a las que quiera enviar la información en el diálogo y pulse <guilabel
+>Aceptar</guilabel
+>.</para>
+
+<para
+>Los servidores de trabajo en grupo normalmente tienen una ubicación estándar para publicar su información de disponibilidad, por lo que los demás usuarios podrán acceder a sus datos y podrá acceder a la planificación de libre/ocupado del resto de usuarios. Puede configurar &korganizer; para que publique y descargue automáticamente la información de disponibilidad, usando las <link linkend="config-main-views"
+>preferencias de disponibilidad</link
+> en el diálogo <guilabel
+>Configurar</guilabel
+> de &korganizer;.</para>
+
+<para
+>Para enviar su información de disponibilidad al servidor, defínalo en las preferencias de &korganizer;, seleccionando la opción <menuchoice
+><guimenu
+>Planificar</guimenu
+> <guimenuitem
+>Publicar información de disponibilidad</guimenuitem
+></menuchoice
+> del menú.</para>
+
+</sect1>
+
+<sect1 id="examples">
+<title
+>Ejemplos</title>
+
+<sect2 id="examples-entering-event">
+<title
+>Introducir un evento de grupo nuevo</title>
+
+<para
+>En este ejemplo, introducirá un evento. Necesita convocar una reunión <emphasis
+>el próximo lunes</emphasis
+> para lanzar su nuevo producto. Su jefa, <emphasis
+>Joan Holden</emphasis
+>, será la presidenta y <emphasis
+>propietaria</emphasis
+> del evento y usted, Jack Smith, será el <emphasis
+>organizador</emphasis
+> del evento. Habrá dos <emphasis
+>asistentes</emphasis
+> (participantes) más: <emphasis
+>Peter Krzinski</emphasis
+> y <emphasis
+>Kirsten Friese</emphasis
+>. Joan le dio el programa para la reunión. La cita comenzará a las <emphasis
+>12 del mediodía</emphasis
+> y terminará a la <emphasis
+>1 de la tarde</emphasis
+>. Se debe planificar la misma reunión <emphasis
+>(repetición)</emphasis
+> cada lunes. </para>
+
+<procedure>
+<step
+><para
+>Usando el navegador de fechas, vaya al próximo lunes.</para
+></step>
+
+<step
+><para
+>Elija <menuchoice
+><guimenu
+>Acciones</guimenu
+><guimenuitem
+>Evento nuevo...</guimenuitem
+></menuchoice
+> o seleccione el área entre <emphasis
+>12 del mediodía</emphasis
+> y el final de <emphasis
+>1 de la tarde</emphasis
+> y comience a teclear el resumen del evento.</para
+></step>
+
+<step
+><para
+>Introduzca un resumen adecuado. Es importante seleccionar una descripción breve correcta, porque aparece en diversos lugares. Le sugerimos que introduzca <userinput
+>Evento de lanzamiento de producto</userinput
+>.</para
+></step>
+
+<step
+><para
+>Introduzca el programa detallado del evento en el área rectangular más grande. Para este ejemplo tan sencillo, introduzca <userinput
+>Introducción, El plan, Conclusión</userinput
+> en tres líneas separadas.</para
+></step>
+
+<step
+><para
+>Vaya a la pestaña <guilabel
+>Recordatorio</guilabel
+>. Fije la hora del recordatorio en 15 minutos, el tiempo justo para disfrutar de una taza de té antes de que comience la reunión.</para
+></step>
+
+<step
+><para
+>Vaya a la pestaña <guilabel
+>General</guilabel
+>. Seleccione <guilabel
+>Cita</guilabel
+> en el diálogo <guilabel
+>Gestión de etiquetas</guilabel
+>.</para
+></step>
+
+<step
+><para
+>Vaya a la pestaña <guilabel
+>Repetición</guilabel
+> y marque la repetición <guilabel
+>Semanal</guilabel
+>.</para>
+<note
+><para
+>La mayoría del trabajo se hace automáticamente. &korganizer; pone por omisión la repetición semanal. Tenga en cuenta también que está seleccionado <guilabel
+>Finaliza:</guilabel
+> <guilabel
+>nunca</guilabel
+>. Esto significa que este evento se repetirá cada lunes (comenzando, por supuesto el lunes 30 de agosto de 2010) hasta el fin de los tiempos (esto es, hasta que lo borre).</para
+></note
+></step>
+
+<step
+><para
+>Ya que todo está correcto, pulse sobre la pestaña <guilabel
+>Asistentes</guilabel
+>.</para
+></step>
+
+<step
+><para
+>En la pestaña <guilabel
+>Asistentes</guilabel
+> debe hacer lo siguiente:</para>
+<substeps>
+
+<step
+><para
+>Verá que usted es el organizador del evento.</para
+></step>
+
+<step
+><para
+>En el primer campo de entrada introduzca el correo con el formato <userinput
+>Nombre&#060;correo&#062;</userinput
+>. En nuestro ejemplo, introduzca <userinput
+>Joan Holen &#060;jholden@thiscompany.com&#062;</userinput
+>. <tip
+><para
+>Si los asistentes ya están en la libreta de direcciones de &kde; en lugar de teclear los nombres y las direcciones de correo, puede pulsar el botón <guibutton
+>Seleccionar asistentes...</guibutton
+> para añadirlos.</para
+></tip
+></para
+></step>
+
+<step
+><para
+>Seleccione <emphasis
+>Presidente</emphasis
+> como el papel.</para
+></step>
+
+<step
+><para
+>En el siguiente campo de entrada introduzca <userinput
+>Peter Krzinski &#060;pkrzinski@thiscompany.com&#062;</userinput
+>.</para
+></step>
+
+<step
+><para
+>En el siguiente campo de entrada introduzca <userinput
+>Kirsten Friese &#060;kfriese@thiscompany.com&#062;</userinput
+>. </para
+></step>
+
+</substeps>
+</step>
+
+<step
+><para
+>Si ya ha configurado &korganizer; para usar la comunicación de trabajo en grupo, le preguntará si quiere enviar un correo a los asistentes con los detalles del evento y pedir confirmación si la casilla <guilabel
+>Solicitar respuesta</guilabel
+> de la pestaña <guilabel
+>Asistentes</guilabel
+> está marcada. Por otro lado, puede enviar las invitaciones eligiendo la opción <menuchoice
+><guimenu
+>Planificar</guimenu
+> <guimenuitem
+>Enviar invitación a los asistentes</guimenuitem
+></menuchoice
+> del menú.</para
+></step>
+
+<step
+><para
+>Revise la configuración del evento pulsando sobre las pestañas. Si está satisfecho, pulse <guibutton
+>Aceptar</guibutton
+>.</para
+></step>
+</procedure>
+
+<para
+>¡Felicidades, ha planificado su primer evento!</para>
+</sect2>
+
+</sect1>
+
+</chapter>
+
+<chapter id="config"
+>  <!--updated to 5.4.40, missing General System Tray + Calendars-->
+<title
+>Configuración de &korganizer;</title>
+
+<para
+>Para cambiar la apariencia y el comportamiento de &korganizer;, elija la opción de menú <menuchoice
+><guimenu
+>Preferencias</guimenu
+><guimenuitem
+>Configurar &korganizer;...</guimenuitem
+></menuchoice
+>. Puede obtener más información sobre todas las opciones de configuración y posibilidades en <xref linkend="config-main"/>.</para>
+
+<para
+>Para personalizar el juego de herramientas disponible en la barra, elija la opción <menuchoice
+><guimenu
+>Preferencias</guimenu
+><guimenuitem
+>Configurar barras de herramientas...</guimenuitem
+></menuchoice
+> del menú y lea la sección<ulink url="help:/fundamentals/config.html#toolbars"
+>Personalización de las  barras de herramientas</ulink
+> en los fundamentos de &kde;.</para>
+
+<para
+>Se puede configurar la información de localización como formatos de fecha y hora desde &systemsettings; con los módulos <guilabel
+>Idioma</guilabel
+> y .<guilabel
+>Formatos</guilabel
+>.  A estos módulos de control se puede acceder desde &korganizer;: simplemente elija la opción <menuchoice
+><guimenu
+> Preferencias</guimenu
+><guimenuitem
+>Configurar fecha y hora...</guimenuitem
+></menuchoice
+> del menú. Se tiene que reiniciar &korganizer; para que los cambios hechos en &systemsettings; surtan efecto.</para>
+
+<para
+>Para configurar dónde debe almacenar y de dónde debe recuperar &korganizer; los eventos de los calendarios, las entradas del diario y las tareas pendientes (en archivos locales, servidores de trabajo en grupo, &etc;), marque <xref linkend="managing-resources"/>.</para>
+
+<sect1 id="config-main">
+<title
+>Configuración principal de &korganizer;</title>
+
+<para
+>El diálogo de opciones le permite configurar un gran número de áreas diferentes de &korganizer;.</para>
+
+<sect2 id="config-main-general">
+<title
+>Página General</title>
+
+<sect3 id="config-main-general-personal">
+<title
+>Pestaña personal</title>
+
+<para
+>Las opciones personales relativas a su identidad personal y otras cosas varias que no encajan en ninguna de las otras categorías generales.</para>
+
+<variablelist>
+
+<varlistentry>
+<term
+><guilabel
+>Nombre completo</guilabel
+></term>
+<listitem
+><para
+><guilabel
+>Nombre completo</guilabel
+> está fijado inicialmente a <quote
+>Anónimo</quote
+> con una dirección de correo de <quote
+>nadie@ningun-sitio</quote
+>. Puede cambiar su nombre introduciéndolo directamente aquí. Este nombre se mostrará de forma predeterminada como <guilabel
+>Organizador</guilabel
+> en las tareas pendientes y en los eventos.</para
+></listitem>
+</varlistentry>
+
+<varlistentry>
+<term
+><guilabel
+>Dirección de correo</guilabel
+></term>
+<listitem
+><para
+><guilabel
+>Dirección de correo</guilabel
+> se usará para identificar el propietario del calendario. Cuando otra persona abra su calendario o eventos, no podrá modificarlo porque será solo de lectura.</para
+></listitem>
+</varlistentry>
+
+<varlistentry>
+<term
+><guilabel
+>Método predeterminado para adjuntar correo</guilabel
+></term>
+<listitem
+><para
+>Esta opción le permite seleccionar el modo en el que el correo se asocia a un evento. Puede asociar un correo como el correo completo incluyendo adjuntos, el correo excluyendo adjuntos o solo un enlace al correo.</para>
+<para
+>Dese cuenta que adjuntar un correo sin adjuntos podría invalidar su firma. </para
+></listitem>
+</varlistentry>
+</variablelist>
+
+</sect3>
+
+<sect3 id="config-main-general-save">
+<title
+>Guardar pestaña</title>
+
+<variablelist>
+
+<varlistentry>
+<term
+><guilabel
+>Confirmar borrados</guilabel
+></term>
+<listitem
+><para
+>Cuando marque la casilla <guilabel
+>Confirmar borrados</guilabel
+>, &korganizer; le pedirá que confirme cada borrado. Si no está marcada, &korganizer; no le pedirá confirmación antes de borrar los eventos.</para
+></listitem>
+</varlistentry>
+
+<varlistentry>
+<term
+><guilabel
+>Los eventos, tareas pendientes y entradas del diario nuevas deberían</guilabel
+></term>
+<listitem
+><para
+>Esta opción le permite elegir entre añadir elementos nuevos para el calendario predeterminado o hacer que &korganizer; le pregunte qué calendario debería usar para guardar cada elemento nuevo.</para>
+<para
+>Específico del servidor Kolab2: Se recomienda que elija <guilabel
+>Preguntar qué calendario usar</guilabel
+>, si pretende usar la funcionalidad de carpeta compartida del servidor <guilabel
+>Kolab</guilabel
+>. Esto le permitirá mantener el control de qué información está disponible solo para usted y qué información se publica en las carpetas compartidas.</para>
+</listitem>
+</varlistentry>
+
+</variablelist>
+
+</sect3>
+
+<!-- System Tray tab missing-->
+
+<!-- Calendars tab missing-->
+
+</sect2>
+
+<sect2 id="config-main-time-and-date">
+<title
+>Fecha y hora</title>
+
+<sect3 id="config-main-time-and-date-regional">
+<title
+>Pestaña Regional</title>
+
+<variablelist>
+
+<varlistentry>
+<term
+><guilabel
+>El día comienza a las</guilabel
+></term>
+<listitem
+><para
+>Seleccione la hora a la que comienza el día de la lista desplegable. Podría ser la hora a la que normalmente se levanta, o la hora a la que comienza a trabajar. Esta opción no evita que se puedan definir o ver elementos antes de esta hora, solo define la hora que se debe mostrar por omisión en la zona superior de la vista del calendario. Use la barra de desplazamiento para mostrar los eventos anteriores o posteriores en la vista de la agenda.</para
+></listitem>
+</varlistentry>
+
+<varlistentry>
+<term
+><guilabel
+>Vacaciones</guilabel
+></term>
+<listitem
+><para
+>Seleccione su país en el menú desplegable o, si no está en la lista, seleccione <guilabel
+>(Ninguno)</guilabel
+>. Si su país está seleccionado, &korganizer; reconocerá y mostrará sus fechas y vacaciones importantes en la vista del calendario.</para
+></listitem>
+</varlistentry>
+
+<varlistentry>
+<term
+><guilabel
+>Periodo de trabajo</guilabel
+></term>
+<listitem
+><para
+>Las opciones <guilabel
+>Hora diaria de inicio</guilabel
+> y <guilabel
+>Hora diaria de finalización</guilabel
+> le permiten especificar cuándo comienza y cuándo termina su jornada laboral. &korganizer; define las horas de trabajo resaltándolas con un color diferente de las horas no laborales, de las vacaciones y de los días de fiesta.</para>
+<para
+>Además, tiene casillas de verificación para cada uno de los días de la semana. Marque los días de la semana que son laborales para usted, para marcar las horas laborales de esos días. Marcar <guilabel
+>Excluir vacaciones</guilabel
+> evita que &korganizer; marque las horas laborales para la región de las vacaciones definidas en el desplegable <guilabel
+>Usar región de vacaciones</guilabel
+> de arriba.</para>
+</listitem>
+</varlistentry>
+
+<varlistentry>
+<term
+><guilabel
+>Día de inicio de la semana</guilabel
+></term>
+<listitem
+><para
+>Seleccione el primer día de cada semana. Normalmente, puede ignorar esto, dado que se establece en su configuración regional.</para
+></listitem>
+</varlistentry>
+
+</variablelist>
+</sect3>
+
+<sect3 id="config-main-time-and-date-default">
+<title
+>Pestaña Valores predeterminados</title>
+
+<variablelist>
+<varlistentry>
+<term
+><guilabel
+>Hora predeterminada de la cita</guilabel
+></term>
+<listitem
+><para
+>Seleccione la hora predeterminada de comienzo para los eventos de la lista desplegable. Cuando seleccione <link linkend="menu-actions-new-event"
+>Evento nuevo</link
+> desde el <link linkend="entering-data-events"
+>Menú de acciones</link
+> o crear un evento de otra forma, de tal manera que &korganizer; no pueda adivinar cuándo le gustaría que comenzase el evento, &korganizer; pondrá a esta hora en el editor de tiempo de inicio como valor predeterminado.</para
+></listitem>
+</varlistentry>
+
+<varlistentry>
+<term
+><guilabel
+>Duración predeterminada de la nueva cita (HH:MM):</guilabel
+></term>
+<listitem
+><para
+>Seleccione la duración predeterminada para los eventos usando la casilla de selección. Cuando elija <link linkend="menu-actions-new-event"
+>Nuevo evento</link
+> desde el <link linkend="entering-data-events"
+>Menú de acción</link
+> o cree un evento de alguna otra manera que no permita a &korganizer; averiguar su duración, &korganizer; usará esta opción como valor predeterminado. </para
+></listitem>
+</varlistentry>
+
+<varlistentry>
+<term
+><guilabel
+>Recordatorios</guilabel
+></term>
+<listitem
+><para
+>Seleccione un <guilabel
+>Tiempo predeterminado de recordatorio</guilabel
+> para determinar cuánto tiempo antes de la hora planificada del evento se activará el recordatorio.</para>
+<para
+>Establece un archivo para emplear como archivo de sonido predeterminado para los nuevos recordatorios. Siempre puede especificar otro archivo en el recordatorio avanzado al que se accede desde los editores de eventos o tareas pendientes.</para>
+<para
+>Marque las dos siguientes cajas si quiere permitir que recordatorios para todos los eventos o tareas pendientes nuevos Siempre puede desactivar los recordatorios en el editor de diálogos.</para>
+</listitem>
+</varlistentry>
+
+</variablelist>
+</sect3>
+</sect2>
+
+<sect2 id="config-main-views">
+<title
+>Vistas</title>
+
+<para
+>Estas opciones le permiten configurar las vistas de &korganizer;:</para>
+
+<sect3 id="config-main-views-general">
+<title
+>Pestaña General</title>
+<variablelist>
+<varlistentry>
+<term
+><guilabel
+>Próximos x días:</guilabel
+></term>
+<listitem
+><para
+>Esta opción le permite cambiar el número de días mostrados en la opción de menú <guimenu
+>Próximos x días</guimenu
+> en el menú <guimenu
+>Ir</guimenu
+>.</para
+></listitem>
+</varlistentry>
+
+<varlistentry>
+<term
+><guilabel
+>Activar consejos emergentes al mostrar el resumen de eventos</guilabel
+></term>
+<listitem
+><para
+>Si el resumen para un evento es más largo de lo que cabe en la vista actual, los caracteres restantes no se muestran. Marque <guilabel
+>Activar consejos emergentes que muestren el resumen de los eventos</guilabel
+> si quiere que el resumen completo se muestre cuando el puntero del ratón permanezca sobre la cita durante unos segundos.</para
+></listitem>
+</varlistentry>
+
+<varlistentry>
+<term
+><guilabel
+>Colores para etiquetas de tareas pendientes</guilabel
+></term>
+<listitem
+><para
+>Marque esta casilla para que las tareas pendientes usen colores de etiquetas y no los colores específicos a su estado de aún no vencidas, vencen hoy o ya vencidas.</para
+></listitem>
+</varlistentry>
+
+</variablelist>
+
+<para
+>Opciones del <link linkend="description-view"
+>navegador de fechas</link
+>:</para>
+
+<variablelist>
+
+<varlistentry>
+<term
+><guilabel
+>Mostrar elementos repetidos diariamente</guilabel
+></term>
+<listitem
+><para
+>Si la casilla <guilabel
+>Mostrar los elementos que se repiten a diario </guilabel
+> está marcada, los días que contienen eventos que se repiten a diario se muestran en negrita en el navegador de fechas.</para
+></listitem>
+</varlistentry>
+
+<varlistentry>
+<term
+><guilabel
+>Mostrar elementos que se repiten semanalmente</guilabel
+></term>
+<listitem
+><para
+>Si la casilla <guilabel
+>Mostrar elementos que se repiten cada semana </guilabel
+> está marcada, los días que contienen eventos que se repiten cada semana se muestran en negrita en el navegador de fechas.</para
+></listitem>
+</varlistentry>
+
+<varlistentry>
+<term
+><guilabel
+>Mostrar tareas pendientes en lugar de eventos en la vista de tareas pendientes</guilabel
+></term>
+<listitem
+><para
+>Marque esta casilla para mostrar los días que contengan tareas pendientes con letra en negrita en el navegador de fechas cuando esté en la vista de tareas pendientes.</para
+></listitem>
+</varlistentry>
+
+<varlistentry>
+<term
+><guilabel
+>Mostrar entradas de diario en lugar de eventos en la vista del diario</guilabel
+></term>
+<listitem
+><para
+>Marque esta casilla para mostrar los días que contengan entradas de diario con letra en negrita en el navegador de fechas cuando esté en la vista de diario.</para
+></listitem>
+</varlistentry>
+
+<varlistentry>
+<term
+><guilabel
+>Los números de semana seleccionan una semana de trabajo en el modo de trabajo semanal</guilabel
+></term>
+<listitem
+><para
+>Si está marcada la casilla <guilabel
+>Los números de semana seleccionan una semana de trabajo en el modo de trabajo semanal</guilabel
+>, al pulsar sobre los números de semana al lado del navegador de fechas, navegará por semanas de trabajo en lugar de semanas normales de 7 días.</para
+></listitem>
+</varlistentry>
+
+</variablelist>
+</sect3>
+
+<sect3 id="config-main-views-agenda">
+<title
+>Pestaña Vista de agenda</title>
+
+<para
+>Opciones de la <link linkend="agenda-view"
+>Vista de agenda</link
+>:</para>
+
+<variablelist>
+
+<varlistentry>
+<term
+><guilabel
+>Tamaño de la hora:</guilabel
+></term>
+<listitem
+><para
+>Use esto para controlar la altura de las filas en la vista de agenda.</para
+></listitem>
+</varlistentry>
+
+<varlistentry>
+<term
+><guilabel
+>Mostrar iconos en los elementos de la vista de agenda</guilabel
+></term>
+<listitem
+><para
+>Marque esta casilla para mostrar iconos (recordatorios, repeticiones, &etc;) en los elementos de la vista de agenda</para
+></listitem>
+</varlistentry>
+
+<varlistentry>
+<term
+><guilabel
+>Mostrar tareas pendientes</guilabel
+></term>
+<listitem
+><para
+>Esta casilla de verificación conmuta la visualización de tareas pendientes en las vistas de agenda de día, semana y mes. Si tiene muchas tareas pendientes que tienen fecha de vencimiento asociada, es posible que quiera desactivarlas para evitar desorden.</para
+></listitem>
+</varlistentry>
+
+<varlistentry>
+<term
+><guilabel
+>Mostrar la hora actual (línea de Marcus Bains)</guilabel
+></term>
+<listitem
+><para
+>Esta casilla de verificación conmuta una línea roja en la vista de día o de semana que indica la hora actual (línea de Marcus Bains). Esta línea le da una visión de cuánto tiempo falta &eg; para que comience una reunión.</para
+></listitem>
+</varlistentry>
+
+<varlistentry>
+<term
+><guilabel
+>Mostrar segundos en la línea de tiempo actual (Marcus Bains)</guilabel
+></term>
+<listitem
+><para
+>Esta casilla de verificación conmuta los segundos en la línea de tiempo actual (línea de Marcus Bains).</para
+></listitem>
+</varlistentry>
+
+<varlistentry>
+<term
+><guilabel
+>La selección de intervalos de horas de la vista de la agenda inicia el editor de eventos</guilabel
+></term>
+<listitem
+><para
+>Marque esta casilla para lanzar automáticamente el editor del evento cuando seleccione un intervalo horario en la vista diaria o semanal. Para seleccionar un rango horario, arrastre el ratón desde la hora de comienzo hasta la de finalización del evento que vaya a planificar.</para
+></listitem>
+</varlistentry>
+<!--FIXME Icons to use dropdown box missing-->
+<varlistentry>
+<term
+><guilabel
+>Uso del color</guilabel
+></term>
+<listitem>
+<para
+>Seleccione la opción <guilabel
+>Etiqueta dentro, calendario fuera</guilabel
+> si le gustaría pintar elementos de calendario en el color de la etiqueta asociada, con el borde del elemento dibujado en el color de su calendario.</para>
+
+<para
+>Seleccione la opción <guilabel
+>Calendario dentro, etiqueta fuera</guilabel
+> si le gustaría pintar elementos de calendario en el color de su calendario asociado, con el borde del elemento dibujado en el color de la etiqueta.</para>
+
+<para
+>Seleccione la opción <guilabel
+>Solo etiqueta</guilabel
+> si le gustaría pintar elementos de calendario (tanto el interior como el borde) en el color de la etiqueta asociada.</para>
+
+<para
+>Seleccione la opción <guilabel
+>Solo calendario</guilabel
+> si le gustaría pintar elementos de calendario (tanto el interior como el borde) en el color de su calendario asociado.</para>
+
+<para
+>Por favor, use la página de configuración <link linkend="config-main-colors"
+>Colores y tipos de letra</link
+> para establecer esos colores.</para>
+</listitem>
+</varlistentry>
+
+<varlistentry>
+<term
+><guilabel
+>Colorear los días ocupados con un color de fondo diferente</guilabel
+></term>
+<listitem
+><para
+>Marque esta casilla si quiere que el fondo de la vista de agenda se rellene con un color diferente en los días que tienen al menos un evento marcado como ocupado.</para>
+<para
+>Por favor, mire en el área de configuración de colores para seleccionar el color de fondo para la vista de ocupado de la agenda de su elección.</para
+></listitem>
+</varlistentry>
+
+<varlistentry>
+<term
+><guilabel
+>Visualización de múltiples calendario</guilabel
+></term>
+<listitem
+><para
+>Seleccione si todos los calendarios deben mezclarse en una vista de agenda, cada calendario debe mostrarse en su propia vista de agenda o cada vista debería estar disponibles mediante pestañas. La vista lado a lado puede personalizarse mediante <guimenuitem
+>Configurar vista</guimenuitem
+> desde el menú de contexto. </para
+></listitem>
+</varlistentry>
+
+</variablelist>
+</sect3>
+
+<sect3 id="config-main-views-month">
+<title
+>Pestaña Vista de mes</title>
+
+<para
+>Opciones de la <link linkend="month-view"
+>vista de mes</link
+>:</para>
+
+<variablelist>
+
+<varlistentry>
+<term
+><guilabel
+>Opciones de visualización</guilabel
+></term>
+<listitem
+><para
+>Use las cuatro primeras casillas de verificación para mostrar la hora, iconos (recordatorio, repetición, &etc;), tareas pendientes o diarios en la vista de mes.</para
+></listitem>
+</varlistentry>
+<!--FIXME Icons to use dropdown box missing-->
+
+<varlistentry>
+<term
+><guilabel
+>Colorear los días ocupados con un color de fondo diferente</guilabel
+></term>
+<listitem
+><para
+>Marque esta casilla si quiere que el fondo de la vista de mes se rellene con un color diferente en los días que tengan al menos un evento de día completo marcado como ocupado.</para>
+<para
+>Por favor, mire en el área de configuración de colores para seleccionar el color de fondo para la vista de ocupado de la agenda/vista de mes de su elección.</para
+></listitem>
+</varlistentry>
+
+<varlistentry>
+<term
+><guilabel
+>Uso del color</guilabel
+></term>
+<listitem>
+<para
+>Configure los colores para la vista de mes como en la <link linkend="config-main-views-agenda"
+>Vista de agenda</link
+>.</para
+></listitem>
+</varlistentry>
+
+</variablelist>
+</sect3>
+
+<sect3 id="config-main-views-todo">
+<title
+>Pestaña Vista de tareas pendientes</title>
+
+<para
+>Opciones de <link linkend="todo-view"
+>Vista de tareas pendientes</link
+>:</para>
+
+<variablelist>
+
+<varlistentry>
+<term
+><guilabel
+>Siempre mostrar las tareas pendientes finalizadas al final de la lista</guilabel
+></term>
+<listitem
+><para
+>Si activa esta opción, todas las tareas pendientes completadas se agruparán siempre en la parte inferior de la lista de tareas pendientes.</para
+></listitem>
+</varlistentry>
+
+<varlistentry>
+<term
+><guilabel
+>Registrar las tareas pendientes completadas en entradas del diario</guilabel
+></term>
+<listitem
+><para
+>Si marca esta casilla, &korganizer; añadirá automáticamente una entrada del diario para cada tarea pendiente completada.</para
+></listitem>
+</varlistentry>
+
+</variablelist>
+</sect3>
+</sect2>
+
+<sect2 id="config-main-colors-fonts">
+<title
+>Colores y tipos de letra</title>
+
+<sect3 id="config-main-colors">
+<title
+>Colores</title>
+
+<para
+>Seleccione el color usado para las vacaciones, para el resaltado y las etiquetas de eventos particulares. Puede elegir un color diferente para cada etiqueta. Por supuesto, demasiados colores pueden resultar confusos, así que use el sentido común. El uso del color depende también de las <link linkend="config-main-views"
+>preferencias de vista</link
+></para>
+
+<variablelist>
+
+<varlistentry>
+<term
+><guilabel
+>Color de vacaciones</guilabel
+></term>
+<listitem
+><para
+>Este botón abre el diálogo <guilabel
+>Seleccionar color</guilabel
+> para permitirle seleccionar el color de las vacaciones. Este color se usará para el nombre de la festividad en la vista del mes y su fecha en el navegador de fechas.</para
+></listitem>
+</varlistentry>
+
+<varlistentry>
+<term
+><guilabel
+>Color de fondo de la vista de agenda</guilabel
+></term>
+<listitem
+><para
+>Este botón abre el diálogo <guilabel
+>Seleccionar color</guilabel
+> para permitirle seleccionar el color de fondo de la vista de agenda.</para
+></listitem>
+</varlistentry>
+
+<varlistentry>
+<term
+><guilabel
+>Color de fondo de días ocupados</guilabel
+></term>
+<listitem
+><para
+>Este botón abre el diálogo <guilabel
+>Seleccionar color</guilabel
+> para permitirle seleccionar el color de fondo para ocupado de la agenda o vista de mes. Este color solo se empleará cuando la opción de pintar días ocupados con distinto color esté activada.</para
+></listitem>
+</varlistentry>
+
+<varlistentry>
+<term
+><guilabel
+>Color de la línea de hora actual en la vista de agenda</guilabel
+></term>
+<listitem
+><para
+>Este botón abre el diálogo <guilabel
+>Seleccionar color</guilabel
+> para permitirle seleccionar el color de la línea de tiempo actual (Marcus Bains).</para
+></listitem>
+</varlistentry>
+
+<varlistentry>
+<term
+><guilabel
+>Color de horas laborales</guilabel
+></term>
+<listitem
+><para
+>Este botón abre el diálogo <guilabel
+>Seleccionar color</guilabel
+> permitiéndole seleccionar el color de fondo del horario de trabajo en la vista de agenda.</para
+></listitem>
+</varlistentry>
+
+<varlistentry>
+<term
+><guilabel
+>Color para las tareas pendientes que cumplen hoy</guilabel
+></term>
+<listitem
+><para
+>Este botón abre el diálogo <guilabel
+>Seleccionar color</guilabel
+> para permitirle seleccionar el color para las tareas pendientes que cumplen hoy.</para
+></listitem>
+</varlistentry>
+
+<varlistentry>
+<term
+><guilabel
+>Color de tareas pendientes cumplidas</guilabel
+></term>
+<listitem
+><para
+>Este botón abre el diálogo <guilabel
+>Seleccionar color</guilabel
+> para permitirle seleccionar el color de las tareas pendientes cumplidas.</para
+></listitem>
+</varlistentry>
+
+<varlistentry>
+<term
+><guilabel
+>Etiquetas</guilabel
+></term>
+<listitem
+><para
+>Este grupo le permite asignar un color a cada etiqueta. Seleccione una etiqueta en la lista desplegable y pulse el botón para abrir el diálogo <guilabel
+>Seleccionar color</guilabel
+>, donde podrá seleccionar el color para dicha etiqueta. <link linkend="config-main-views"
+>Según las preferencias de la vista</link
+>, este color se usará para marcar los eventos y las tareas pendientes que contengan dicha etiqueta en las vistas de agenda y de mes.</para
+></listitem>
+</varlistentry>
+
+<varlistentry>
+<term
+><guilabel
+>Recursos</guilabel
+></term>
+<listitem
+><para
+>Este grupo le permite asignar un color a cada recurso. Seleccione un recurso de la lista desplegable y pulse el botón para abrir el diálogo <guilabel
+>Seleccionar color</guilabel
+> para permitirle seleccionar el color para esa categoría. <link linkend="config-main-views"
+>Según las preferencias de la vista</link
+>, este color se usará para marcar los eventos y las tareas pendientes que están almacenados usando este recurso en las vistas de agenda y de mes.</para
+></listitem>
+</varlistentry>
+
+</variablelist>
+
+</sect3>
+
+<sect3 id="config-main-fonts">
+<title
+>Pestaña Tipos de letra</title>
+
+<variablelist>
+
+<varlistentry>
+<term
+><guilabel
+>Barra de tiempo</guilabel
+></term>
+<listitem
+><para
+>Pulse este botón para escoger el tipo de letra, el estilo y el tamaño para la barra de tiempo.</para
+></listitem>
+</varlistentry>
+
+<varlistentry>
+<term
+><guilabel
+>Vista de mes</guilabel
+></term>
+<listitem
+><para
+>Pulse este botón para escoger el tipo de letra, el estilo y el tamaño para la vista de mes.</para
+></listitem>
+</varlistentry>
+
+<varlistentry>
+<term
+><guilabel
+>Vista de agenda</guilabel
+></term>
+<listitem
+><para
+>Pulse este botón para escoger el tipo de letra, el estilo y el tamaño para la vista de agenda (vistas de día, semana y semana laboral).</para
+></listitem>
+</varlistentry>
+
+<varlistentry>
+<term
+><guilabel
+>Línea de hora actual</guilabel
+></term>
+<listitem
+><para
+>Pulse este botón para escoger el tipo de letra, el estilo y el tamaño para la línea de Marcus Bains (una línea coloreada en la vista de la agenda que indica la hora actual).</para
+></listitem>
+</varlistentry>
+
+</variablelist>
+
+</sect3>
+
+</sect2>
+
+<sect2 id="config-main-groupscheduling">
+<title
+>Planificación de grupo</title>
+
+<variablelist>
+
+<varlistentry>
+<term
+><guilabel
+>Usar la comunicación de trabajo en grupo</guilabel
+></term>
+<listitem
+><para
+>Marque esta casilla para enviar automáticamente correos cuando se creen, actualicen o eliminen eventos o tareas pendientes en los que haya más personas implicadas. Este correo puede ser una invitación para los asistentes de un evento que haya creado, una cancelación de un evento que haya creado, una respuesta o una actualización del estado de su invitación, una solicitud de cambio del evento, &etc; que esta opción si quiere usar la funcionalidad de trabajo en grupo (&eg;, configurar &kontact; como cliente <guilabel
+>Kolab</guilabel
+> de &kde;).</para
+></listitem>
+</varlistentry>
+
+<varlistentry>
+<term
+><guilabel
+>Mandar una copia al propietario al enviar correo de eventos</guilabel
+></term>
+<listitem
+><para
+>Al marcar la casilla <guilabel
+>Enviar copia al propietario al enviar eventos de correo</guilabel
+>, tendrá una copia de todos los mensajes de correo electrónico que envíe &korganizer; en sus peticiones a los asistentes al evento.</para
+></listitem>
+</varlistentry>
+
+<varlistentry>
+<term
+><guilabel
+>Transporte de correo</guilabel
+></term>
+<listitem
+><para
+>Aquí puede elegir qué tipo de transporte de correo le gustaría usar. Puede usar &kmail; o la orden &Sendmail; (que debe estar instalado en el sistema para que funcione).</para
+></listitem>
+</varlistentry>
+
+</variablelist>
+
+</sect2>
+
+<sect2 id="config-main-free-busy">
+<title
+>Disponibilidad</title>
+
+<para
+>La información sobre disponibilidad representa una planificación de la disponibilidad. Al presentar los intervalos cuando alguien haya realizado cambios, algunos otros pueden evitar planificar citas para estos períodos. Tenga en cuenta que solo se publican las horas, no los eventos, motivos ni asistentes.</para>
+
+<para
+>&korganizer; admite la publicación y la recuperación de información sobre disponibilidad, bien manual, o bien automáticamente.</para>
+
+<sect3 id="config-main-free-busy-publish">
+<title
+>Publicación</title>
+<para
+>Si publica su información de disponibilidad, permitirá que los demás puedan acceder a su planificación y la tengan en cuenta cuando vayan a invitarlo a un evento.</para>
+
+<variablelist>
+
+<varlistentry>
+<term
+><guilabel
+>Publicar automáticamente la información de disponibilidad</guilabel
+></term>
+<listitem
+><para
+>Active esta opción si quiere que se envíe automáticamente su información de disponibilidad. Tenga en cuenta que puede evitar esta opción y decidir enviar por correo o publicar la información de disponibilidad mediante el menú <guilabel
+>Planificar</guilabel
+> de &korganizer;.</para>
+
+<para
+>Si su aplicación está configurada para que funcione como un <guilabel
+>Cliente Kolab de &kde;</guilabel
+>, no es necesario. El servidor <guilabel
+>Kolab2</guilabel
+> se puede preocupar de publicar su información de disponibilidad y gestionará el acceso para los demás usuarios.</para>
+</listitem>
+</varlistentry>
+
+<varlistentry>
+<term
+><guilabel
+>Mínimo tiempo entre publicaciones (en minutos)</guilabel
+></term>
+<listitem
+><para
+>Si elige publicar automáticamente esa información, puede configurar el intervalo de tiempo en minutos entre cada envío.</para>
+</listitem>
+</varlistentry>
+
+<varlistentry>
+<term
+><guilabel
+>Publica (por omisión, 60) días de información de disponibilidad</guilabel
+></term>
+<listitem
+><para
+>Configura el número de días del calendario que quiere que se publiquen y que estarán disponibles para los demás</para
+></listitem>
+</varlistentry>
+
+<varlistentry>
+<term
+><guilabel
+>&URL; del servidor</guilabel
+></term>
+<listitem
+><para
+>Indique la &URL; del servidor en el que se publicará la información de disponibilidad. Pida esa información al administrador del servidor.</para>
+<para
+>Ejemplo de servidor Kolab2: <userinput
+>webdavs://kolab2.com/freebusy/joe@kolab2.com.ifb</userinput
+> </para
+></listitem>
+</varlistentry>
+
+<varlistentry>
+<term
+><guilabel
+>Nombre del usuario</guilabel
+></term>
+<listitem
+><para
+>Indique la información de ingreso relativa a su cuenta en el servidor</para>
+<para
+>Específico del servidor Kolab2: Registrado su UID (identificador único), por omisión su UID sería similar a su dirección de correo electrónico en el servidor Kolab2, pero puede ser distinta. En ese caso, introduzca aquí su UID. Pida su UID al administrador del servidor si no lo sabe.</para
+></listitem>
+</varlistentry>
+
+<varlistentry>
+<term
+><guilabel
+>Contraseña</guilabel
+></term>
+<listitem
+><para
+>Introduzca su contraseña (la contraseña de ingreso al servidor) aquí.</para
+></listitem>
+</varlistentry>
+
+<varlistentry>
+<term
+><guilabel
+>Recordar contraseña</guilabel
+></term>
+<listitem
+><para
+>Marque esta opción si quiere que recuerde &korganizer;su contraseña y evitar que se la pregunte cada vez que envía su información de disponibilidad.</para>
+<warning
+><para
+>Por razones de seguridad, no se recomienda que almacena la contraseña en el archivo de configuración.</para
+></warning
+></listitem>
+</varlistentry>
+
+</variablelist>
+
+</sect3>
+
+<sect3 id="config-main-free-busy-retrieve">
+<title
+>Recuperar</title>
+
+<para
+>Si recupera la información de disponibilidad de otras personas, puede tener en cuenta la planificación de sus ocupaciones cuando vaya a invitarlas a un evento.</para>
+
+<variablelist>
+
+<varlistentry>
+<term
+><guilabel
+>Recuperar automáticamente la información de disponibilidad de otras personas</guilabel
+></term>
+<listitem
+><para
+>Automatiza el proceso de recuperar la información de disponibilidad de otros usuarios. Rellene la sección de información del servidor que hay abajo para activar esta opción.</para
+></listitem>
+</varlistentry>
+
+<varlistentry>
+<term
+><guilabel
+>Usar direcciones de correo completas para la recuperación</guilabel
+></term>
+<listitem
+><para
+>Esta opción le permite cambiar el nombre del archivo que se entregará desde el servidor. Si marca esta opción, se descargará un archivo de disponibilidad llamado <userinput
+>usuario@dominio.ifb</userinput
+>, o bien <userinput
+>usuario.ifb</userinput
+>. Pregunte al administrador del servidor cómo configurar esta opción si no está seguro de cómo hacerlo.</para>
+<para
+><guilabel
+>Específico del servidor Kolab2:</guilabel
+> Si está configurando &korganizer; como un componente para un <guilabel
+>cliente Kolab de &kde; (&kontact;/Kolab)</guilabel
+>, tiene que marcar esta opción.</para
+></listitem>
+</varlistentry>
+
+<varlistentry>
+<term
+><guilabel
+>&URL; del servidor</guilabel
+></term>
+<listitem
+><para
+>Introduzca la &URL; del servidor del que se recogerá la información de disponibilidad. Pida esta información al administrador del servidor.</para>
+<para
+><guilabel
+>Ejemplo del servidor Kolab2:</guilabel
+><userinput
+> webdavs://kolab2.com/freebusy/</userinput
+> </para
+></listitem>
+</varlistentry>
+
+<varlistentry>
+<term
+><guilabel
+>Nombre del usuario</guilabel
+></term>
+<listitem
+><para
+>Indique la información de ingreso relativa a su cuenta en el servidor.</para>
+</listitem>
+</varlistentry>
+
+<varlistentry>
+<term
+><guilabel
+>Contraseña</guilabel
+></term>
+<listitem
+><para
+>Introduzca su contraseña (la contraseña de ingreso al servidor) aquí. </para
+></listitem>
+</varlistentry>
+
+<varlistentry>
+<term
+><guilabel
+>Recordar contraseña</guilabel
+></term>
+<listitem
+><para
+>Marque esta opción si quiere que recuerde &korganizer;su contraseña y no se la tenga que preguntar cada vez que vaya a obtener los archivos de disponibilidad.</para>
+<warning
+><para
+>Por razones de seguridad, no se recomienda que almacena la contraseña en el archivo de configuración.</para
+></warning>
+</listitem>
+</varlistentry>
+
+</variablelist>
+</sect3>
+</sect2>
+
+<sect2 id="config-main-plugins">
+<title
+>Complementos</title>
+
+<para
+>Si quiere más información sobre configuración de complementos, puede dirigirse a <xref linkend="plugins-chapter"/></para>
+
+</sect2>
+
+<sect2 id="config-custom-pages">
+<title
+>Páginas personalizadas</title>
+
+<para
+>Esta página le permite añadir sus propios elementos de &GUI; para almacenar sus propios valores en &korganizer;.</para>
+<para
+>Cree sus elementos como se describe en <guilabel
+>¿Cómo funciona esto?</guilabel
+></para>
+
+</sect2>
+</sect1>
+
+</chapter>
+
+<chapter id="plugins-chapter"
+><!--updated to 5.4.40-->
+
+<title
+>Complementos</title>
+
+<para
+>&korganizer; le proporciona la posibilidad de aumentar la funcionalidad de la aplicación mediante complementos. </para>
+
+<para
+>Los complementos pueden configurarse bajo el diálogo principal de configuración de &korganizer;. Elija <menuchoice
+><guimenu
+>Configuración</guimenu
+><guimenuitem
+> Configurar &korganizer;</guimenuitem
+></menuchoice
+> y pulse sobre el icono <guilabel
+>Complementos</guilabel
+> en la lista de iconos del panel lateral del diálogo. </para>
+
+<sect1 id="plugins-chapter-availableplugins">
+<title
+>Complementos disponibles</title>
+
+<sect2 id="date-numbers-plugin">
+<title
+>Complemento de números de fechas para calendarios</title>
+<para
+>Este complemento añade a la vista de la agenda el número del día en el año. Por ejemplo, el 1 de febrero es el día número 32. </para>
+</sect2>
+
+<sect2 id="wikipedia-thisday-plugin">
+<title
+>Complemento de «Este día en la historia» de la Wikipedia</title>
+<para
+>Este complemento provee un enlace a la página <quote
+>Este día en la historia</quote
+> de la Wikipedia. </para>
+</sect2>
+
+<sect2 id="wikipedia-pictureoftheday-plugin">
+<title
+>Complemento de imagen del día de la Wikipedia para calendarios</title>
+<para
+>Este complemento provee la <quote
+>Imagen del Día</quote
+> de la Wikipedia. </para>
+</sect2>
+
+<sect2 id="jewish-calendar-plugin">
+<title
+>Complemento para el calendario judío</title>
+<para
+>Este complemento le proporciona las fechas del calendario judío, además de las del gregoriano. En el cuadro de diálogo de la configuración del complemento, puede elegir si quiere mostrar las vacaciones israelíes, la Parashá de la semana, el día de Omer o Jol HaMoed. </para>
+</sect2>
+
+</sect1>
+
+</chapter>
+
+<chapter id="reference">
+<title
+>Referencia</title>
+
+<sect1 id="reference-menus"
+><!--updated to 5.4.40, Send as iCalendar-->
+<title
+>Menús</title>
+
+<para
+>Cuando se inicia &korganizer;, aparece la ventana principal de &korganizer;. La ventana tiene varios componentes: una barra de menú, una barra de herramientas, un calendario de mes, un panel principal con la <quote
+>vista</quote
+> actual de eventos y una lista de tareas pendientes.</para>
+
+<para
+>Los menús proporcionan acceso a todas las operaciones comunes que se pueden realizar con el calendario, incluyendo guardar, cargar, añadir o borrar eventos, tareas pendientes y entradas del diario, imprimir y más.</para>
+
+<para
+>Tenga en cuenta que al usar &korganizer; como componente de calendario de &kontact;, los menús difieren de los que tiene la aplicación cuando funciona en solitario.</para>
+
+<sect2 id="reference-menus-file">
+<title
+>Archivo</title>
+
+<para
+>El menú <guimenu
+>Archivo</guimenu
+> proporciona acceso a funciones que implican a todo el calendario.</para>
+
+<variablelist>
+
+<varlistentry id="menu-file-open">
+<term
+><inlinemediaobject
+><imageobject
+><imagedata fileref="document-open.png"
+ format="PNG"/></imageobject
+></inlinemediaobject
+><menuchoice
+><shortcut
+> <keycombo action="simul"
+>&Ctrl;<keycap
+>O</keycap
+></keycombo
+> </shortcut
+> <guimenu
+>Archivo</guimenu
+> <guimenuitem
+>Abrir</guimenuitem
+></menuchoice>
+</term>
+<listitem
+><para
+><action
+>Abre un diálogo de archivo que le permite seleccionar un archivo vCalendar o iCalendar nuevo para cargarlo</action
+>. Si ha hecho cambios al calendario actual, se le dará la opción de guardarlos antes de cargar uno nuevo.</para>
+<para
+>Si quiere más información sobre esto, puede dirigirse a <xref linkend="managing-import-export"/>.</para>
+</listitem>
+</varlistentry>
+
+<varlistentry id="menu-file-print">
+<term
+><inlinemediaobject
+><imageobject
+><imagedata fileref="document-print.png"
+ format="PNG"/></imageobject
+></inlinemediaobject
+><menuchoice
+><shortcut
+> <keycombo action="simul"
+>&Ctrl;<keycap
+>Q</keycap
+></keycombo
+> </shortcut
+> <guimenu
+> Archivo</guimenu
+> <guimenuitem
+>Salir</guimenuitem
+></menuchoice>
+</term>
+<listitem
+><para
+>Seleccione <guimenuitem
+>Imprimir</guimenuitem
+> o pulse sobre el icono <guilabel
+>Imprimir</guilabel
+> para <action
+>imprimir el calendario actual</action
+>. Puede especificar el intervalo de fechas a imprimir (bien manualmente o con el control de calendario) y el estilo de impresión (día, semana, mes o tarea pendiente y diario).</para
+></listitem>
+</varlistentry>
+
+<varlistentry id="menu-file-print-preview">
+<term
+><inlinemediaobject
+><imageobject>
+<imagedata fileref="document-print-preview.png"
+format="PNG"/></imageobject
+></inlinemediaobject
+><menuchoice
+><guimenu
+>Archivo</guimenu
+> <guimenuitem
+>Imprimir vista previa...</guimenuitem
+></menuchoice>
+</term>
+<listitem
+><para
+>Si elije <guimenuitem
+>Imprimir vista previa</guimenuitem
+> o pulsa sobre el icono <guiicon
+>Imprimir vista previa</guiicon
+>, <action
+>el calendario actual se imprimirá en su pantalla, en lugar de en su impresora</action
+>. Use esta característica para verificar si la impresión será correcta cuando la inicie.</para>
+<para
+>Se puede especificar el intervalo de fechas a imprimir (bien manualmente o con el control de calendario) y el tipo de vista (día, semana, mes o tarea pendiente).</para>
+</listitem>
+</varlistentry>
+
+<varlistentry id="menu-file-import-calendar">
+<term
+><menuchoice
+><guimenu
+>Archivo</guimenu
+> <guisubmenu
+>Importar</guisubmenu
+> <guimenuitem
+>Importar calendario</guimenuitem
+> </menuchoice
+></term>
+<listitem
+><para
+>Si tiene un archivo iCalendar o vCalendar en algún sitio y quiere <action
+>combinarlo con su propio calendario, añadir un recurso nuevo o abrirlo en una ventana nueva</action
+>, elija esta opción del menú. Un buen momento para hacer esto es cuando reciba un vCalendar con unas cuantas entradas mediante correo, por ejemplo.</para>
+<para
+>Si quiere más información sobre esta acción, puede dirigirse a <xref linkend="managing-import"/>.</para>
+</listitem>
+</varlistentry>
+
+<varlistentry id="menu-file-import-ghns">
+<term
+><menuchoice
+><guimenu
+>Archivo</guimenu
+> <guisubmenu
+>Importar</guisubmenu
+> <guimenuitem
+>Obtener novedades...</guimenuitem
+> </menuchoice
+></term>
+<listitem
+><para
+>Esta acción abre el diálogo<guilabel
+>Obtener novedades</guilabel
+>, que le ofrece una lista con los calendarios que puede descargar. Estos eventos se pueden añadir a su calendario.</para>
+<para
+>Si quiere más información sobre esta acción, puede dirigirse a <xref linkend="managing-get-hot-new-stuff"/>.</para>
+</listitem>
+</varlistentry>
+
+<varlistentry id="menu-file-export-icalendar">
+<term
+><menuchoice
+><guimenu
+>Archivo</guimenu
+> <guisubmenu
+>Exportar</guisubmenu
+> <guimenuitem
+>Exportar como iCalendar</guimenuitem
+> </menuchoice
+></term>
+<listitem
+><para
+>Esta acción exporta todos sus eventos, tareas pendientes y entradas del diario activas (independientemente del recurso al que pertenezcan) como un archivo iCalendar nuevo.</para>
+<para
+>Si quiere más información sobre esta acción, puede dirigirse a <xref linkend="managing-export"/>.</para>
+</listitem>
+</varlistentry>
+
+<!--not in 4.6.0
+varlistentry id="menu-file-export-ghns">
+<term
+><menuchoice>
+<guimenu
+>File</guimenu>
+<guisubmenu
+>Export</guisubmenu>
+<guimenuitem
+>Upload Hot New Stuff...</guimenuitem>
+</menuchoice
+></term>
+<listitem
+><para
+>This action will open the <guilabel
+>Upload Hot New Stuff</guilabel>
+dialog, which allow you to export calendars containing events which may be
+useful to other people, such as a conference program, a list of holidays,
+special events, &etc;</para>
+<para
+>For more information about this action, please refer to
+<xref linkend="managing-get-hot-new-stuff"/>.</para>
+</listitem>
+</varlistentry-->
+
+<varlistentry id="menu-file-archive-old">
+<term
+><menuchoice
+><guimenu
+>Archivo</guimenu
+> <guimenuitem
+>Archivar incidencias antiguas...</guimenuitem
+> </menuchoice
+></term>
+<listitem
+><para
+><action
+>De vez en cuando debería borrar sus eventos antiguos.</action
+></para>
+<para
+>Si quiere más información sobre esta acción, puede dirigirse a <xref linkend="managing-purge-archive"/>.</para>
+</listitem>
+</varlistentry>
+
+<varlistentry id="menu-file-purge">
+<term
+><menuchoice
+><guimenu
+>File</guimenu
+> <guimenuitem
+>Purgar tareas pendientes completadas</guimenuitem
+> </menuchoice
+></term>
+<listitem
+><para
+>Esta acción elimina todas las tareas pendientes completadas de su calendario activo.</para>
+<para
+>Si quiere más información sobre esta acción, puede dirigirse a <xref linkend="managing-purge-archive"/>.</para>
+</listitem
+></varlistentry>
+
+<varlistentry id="menu-file-quit">
+<term
+><inlinemediaobject
+><imageobject
+><imagedata
+ fileref="application-exit.png"/></imageobject
+></inlinemediaobject
+><menuchoice
+><shortcut
+> <keycombo action="simul"
+>&Ctrl;<keycap
+>Q</keycap
+></keycombo
+> </shortcut
+> <guimenu
+>Archivo</guimenu
+> <guimenuitem
+>Salir</guimenuitem
+> </menuchoice>
+</term>
+<listitem
+><para
+>Cuando seleccione <guimenuitem
+>Salir</guimenuitem
+> o pulse sobre el icono <guiicon
+>Salir</guiicon
+>, <action
+>la ventana del calendario actual saldrá, pidiéndole que guarde si el calendario actual se ha modificado, pero aún no se ha guardado.</action
+></para>
+<para
+>Esto no tiene efectos sobre otras ventanas de calendario que pudieran estar abiertas. Tiene que salir de cada ventana de calendario individualmente.</para
+> </listitem>
+</varlistentry>
+</variablelist>
+
+</sect2>
+
+<sect2 id="reference-menus-edit">
+<title
+>Editar</title>
+
+<para
+>Con el menú <guilabel
+>Editar</guilabel
+>, puede editar y buscar eventos y tareas pendientes.</para>
+
+<para
+>Las opciones de menú <guimenuitem
+>Cortar</guimenuitem
+>, <guimenuitem
+>Copiar</guimenuitem
+> y <guimenuitem
+>Pegar</guimenuitem
+> siguen la misma moda que en otras aplicaciones de &kde; en la opción de menú <guimenuitem
+>Buscar</guimenuitem
+>, puede buscar eventos y tareas pendientes a través del calendario actual.</para>
+
+<variablelist>
+
+<varlistentry id="menu-edit-undo">
+<term
+><inlinemediaobject
+><imageobject
+><imagedata fileref="edit-undo.png"
+ format="PNG"/></imageobject
+></inlinemediaobject
+><menuchoice
+><shortcut
+> <keycombo action="simul"
+>&Ctrl;<keycap
+>Z</keycap
+></keycombo
+> </shortcut
+> <guimenu
+>Editar</guimenu
+> <guimenuitem
+>Deshacer</guimenuitem
+> </menuchoice>
+</term>
+<listitem
+><para
+><action
+>Deshace la última acción</action
+> o, en otras palabras, devuelve el calendario al estado en el que estaba inmediatamente antes de la última acción.</para
+></listitem>
+</varlistentry>
+
+<varlistentry id="menu-edit-redo">
+<term
+><inlinemediaobject
+><imageobject
+><imagedata fileref="edit-redo.png"
+ format="PNG"/></imageobject
+></inlinemediaobject
+><menuchoice
+><shortcut
+> <keycombo action="simul"
+>&Ctrl;&Shift;<keycap
+>Z</keycap
+></keycombo
+> </shortcut
+> <guimenu
+>Editar</guimenu
+> <guimenuitem
+>Rehacer</guimenuitem
+> </menuchoice>
+</term>
+<listitem
+><para
+><action
+>Rehace la última acción</action
+> o, en otras palabras, devuelva el calendario al estado en el que estaba inmediatamente antes de la última acción de deshacer.</para
+></listitem>
+</varlistentry>
+
+<varlistentry id="menu-edit-cut">
+<term
+><inlinemediaobject
+><imageobject
+><imagedata fileref="edit-cut.png"
+ format="PNG"/></imageobject
+></inlinemediaobject
+><menuchoice
+><shortcut
+> <keycombo action="simul"
+>&Ctrl;<keycap
+>X</keycap
+></keycombo
+> </shortcut
+> <guimenu
+>Editar</guimenu
+> <guimenuitem
+>Cortar</guimenuitem
+> </menuchoice>
+</term>
+<listitem
+><para
+><action
+>Corta los eventos seleccionados al portapapeles, borrándolos de su calendario.</action
+></para
+></listitem>
+</varlistentry>
+
+<varlistentry id="menu-edit-copy">
+<term
+><inlinemediaobject
+><imageobject
+><imagedata fileref="edit-copy.png"
+ format="PNG"/></imageobject
+></inlinemediaobject
+><menuchoice
+><shortcut
+> <keycombo action="simul"
+>&Ctrl;<keycap
+>C</keycap
+></keycombo
+> </shortcut
+> <guimenu
+>Editar</guimenu
+> <guimenuitem
+>Copiar</guimenuitem
+></menuchoice>
+</term>
+<listitem
+><para
+><action
+>Copia los elementos seleccionados actualmente al portapapeles, pero dejándolos intactos.</action
+></para
+></listitem>
+</varlistentry>
+
+<varlistentry id="menu-edit-paste">
+<term
+><inlinemediaobject
+><imageobject
+><imagedata fileref="edit-paste.png"
+ format="PNG"/></imageobject
+></inlinemediaobject
+><menuchoice
+><shortcut
+> <keycombo action="simul"
+>&Ctrl;<keycap
+>V</keycap
+></keycombo
+> </shortcut
+> <guimenu
+>Editar</guimenu
+> <guimenuitem
+>Pegar</guimenuitem
+></menuchoice>
+</term>
+<listitem
+><para
+><guimenuitem
+>Pegar</guimenuitem
+> <action
+>inserta los contenidos del portapapeles en su calendario</action
+>. El portapapeles debe contener un elemento vCalendar o iCalendar válido, proporcionado bien por una operación de cortar o copiar previa o de una selección hecha fuera de &korganizer;. Se le avisará si los contenidos del portapapeles no se entendieran.</para>
+<tip
+><para
+>Sin embargo, puede usar de forma segura los atajos de teclado <keycombo action="simul"
+>&Ctrl; <keycap
+>C</keycap
+></keycombo
+> y <keycombo action="simul"
+>&Ctrl; <keycap
+>V</keycap
+></keycombo
+> para copiar datos de texto de una aplicación externa a la edición de eventos de &korganizer; y viceversa. </para
+></tip
+></listitem>
+</varlistentry>
+
+<varlistentry id="menu-edit-delete">
+<term
+><inlinemediaobject
+><imageobject
+><imagedata fileref="edit-delete.png"
+ format="PNG"/></imageobject
+></inlinemediaobject
+><menuchoice
+><guimenu
+>Editar</guimenu
+> <guimenuitem
+>Borrar</guimenuitem
+> </menuchoice>
+</term>
+<listitem
+><para
+><action
+>Borra los elementos seleccionados actualmente, quitándolos de su calendario.</action
+></para
+></listitem>
+</varlistentry>
+
+<varlistentry id="menu-edit-find">
+<term
+><inlinemediaobject
+><imageobject
+><imagedata fileref="edit-find.png"
+ format="PNG"/></imageobject
+></inlinemediaobject
+><menuchoice
+><shortcut
+> <keycombo action="simul"
+>&Ctrl;<keycap
+>Q</keycap
+></keycombo
+> </shortcut
+> <guimenu
+> Editar</guimenu
+> <guimenuitem
+>Buscar</guimenuitem
+> </menuchoice>
+</term>
+<listitem
+><para
+>Elija <guimenuitem
+>Buscar</guimenuitem
+> de <guimenu
+>Editar</guimenu
+> o pulse en el icono <guiicon
+>Buscar</guiicon
+> para <action
+>buscar eventos, tareas pendientes y entradas del diario según su resumen, su descripción y sus etiquetas</action
+>.</para>
+<para
+>Si quiere más información sobre esta acción, puede dirigirse a <xref linkend="search-view"/>.</para>
+</listitem>
+</varlistentry>
+</variablelist>
+
+</sect2>
+
+<sect2 id="reference-menus-view">
+<title
+>Vista</title>
+
+<para
+>Hay varias <quote
+>vistas</quote
+> diferentes disponibles para mostrar sus eventos, tareas pendientes y entradas del diario. &korganizer; es lo suficientemente inteligente como para recordar entre las sesiones cuál ha sido la última vista activa y la próxima vez que se inicie, se mostrará esa vista.</para>
+
+<para
+>En general, cada vista proporcionará una forma de mostrar sus entradas del diario y tareas pendientes y eventos restringidos a un periodo de tiempo o estilo particular de visualización. Pulse sobre cualquier elemento para seleccionarlo como acción más adelante. Pulse con el botón <mousebutton
+>Derecho</mousebutton
+> sobre un elemento para hacer surgir un menú con opciones como <guimenuitem
+>editar</guimenuitem
+>, <guimenuitem
+>borrar</guimenuitem
+> y así sucesivamente. También puede usar el menú <guimenu
+>Acción</guimenu
+> para realizar operaciones similares.</para>
+
+<variablelist>
+
+<varlistentry id="menu-view-agenda">
+<term
+><inlinemediaobject
+><imageobject
+><imagedata fileref="view-calendar-agenda.png"
+ format="PNG"/></imageobject
+></inlinemediaobject
+><menuchoice
+><guimenu
+>Ver</guimenu
+> <guimenuitem
+>Agenda</guimenuitem
+> </menuchoice
+></term>
+<listitem
+><para
+><action
+>Cambia la visualización a la vista de agenda.</action>
+</para>
+<para
+>Si quiere más información sobre esta acción, puede dirigirse a <xref linkend="agenda-view"/>.</para>
+</listitem>
+</varlistentry>
+
+<varlistentry id="menu-view-month">
+<term
+><inlinemediaobject
+><imageobject
+><imagedata fileref="view-calendar-month.png"
+ format="PNG"/></imageobject
+></inlinemediaobject
+><menuchoice
+><guimenu
+>Ver</guimenu
+> <guimenuitem
+>Vista de mes</guimenuitem
+> </menuchoice
+></term>
+<listitem
+><para
+><action
+>Cambia la pantalla a la vista del mes.</action>
+</para>
+<para
+>Si quiere más información sobre esta acción, puede dirigirse a <xref linkend="month-view"/>.</para>
+</listitem>
+</varlistentry>
+
+<varlistentry id="menu-view-timeline">
+<term
+><inlinemediaobject
+><imageobject
+><imagedata fileref="view-calendar-timeline.png"
+ format="PNG"/></imageobject
+></inlinemediaobject
+><menuchoice
+><guimenu
+>Ver</guimenu
+> <guimenuitem
+>cronología</guimenuitem
+> </menuchoice
+></term>
+<listitem
+><para
+><action
+>Cambia a mostrar la vista de cronología.</action>
+</para>
+<para
+>Para más información sobre esta acción, puede dirigirse a <xref linkend="timeline-view"/>.</para>
+</listitem>
+</varlistentry>
+
+<varlistentry id="menu-view-todo">
+<term
+> <inlinemediaobject
+><imageobject
+><imagedata
+ fileref="view-calendar-tasks.png"
+format="PNG"/></imageobject
+></inlinemediaobject
+><menuchoice
+><guimenu
+>Ver</guimenu
+> <guimenuitem
+>Lista de tareas pendientes</guimenuitem
+></menuchoice>
+ </term>
+<listitem
+><para
+><action
+>Cambia a mostrar la vista de lista de tareas pendientes.</action
+></para>
+<para
+>Si quiere más información sobre esta acción, puede dirigirse a <xref linkend="todo-view"/>.</para>
+</listitem>
+</varlistentry>
+
+<varlistentry id="menu-view-list">
+<term
+><inlinemediaobject
+><imageobject
+><imagedata fileref="view-calendar-list.png"
+ format="PNG"/></imageobject
+></inlinemediaobject
+><menuchoice
+><guimenu
+>Ver</guimenu
+> <guimenuitem
+>Lista de eventos</guimenuitem
+></menuchoice>
+</term>
+<listitem
+><para
+><action
+>Cambia a mostrar la vista de lista.</action
+></para>
+<para
+>Si quiere más información sobre esta acción, puede dirigirse a <xref linkend="list-view"/>.</para>
+</listitem>
+</varlistentry>
+
+<varlistentry id="menu-view-whatsnext">
+<term
+><inlinemediaobject
+><imageobject
+><imagedata fileref="view-calendar-upcoming-events.png"
+ format="PNG"/></imageobject
+></inlinemediaobject
+><menuchoice
+><guimenu
+>Ver</guimenu
+> <guimenuitem
+>Que es lo siguiente</guimenuitem
+></menuchoice>
+</term>
+<listitem
+><para
+><action
+>Cambia a mostrar la vista «Qué es lo siguiente».</action
+></para>
+<para
+>Esta vista muestra sus próximos eventos y tareas pendientes. Los eventos y las tareas pendientes se muestran cada uno en una línea.</para>
+<para
+>Si quiere más información sobre esta sección, puede dirigirse a <xref linkend="whatsnext-view"/>.</para>
+</listitem>
+</varlistentry>
+
+<varlistentry id="menu-view-journal">
+<term
+><inlinemediaobject
+><imageobject
+><imagedata
+ fileref="journal-new.png"
+format="PNG"/></imageobject
+></inlinemediaobject
+><menuchoice
+><guimenu
+>Ver</guimenu
+> <guimenuitem
+>Diario</guimenuitem
+> </menuchoice>
+</term>
+<listitem
+><para
+><action
+>Cambia a mostrar la vista de diario.</action
+></para>
+<para
+>Si quiere más información sobre esta acción, puede dirigirse a <xref linkend="journal-view"/>.</para
+></listitem>
+</varlistentry>
+
+<varlistentry id="menu-view-update">
+<term
+><menuchoice
+><guimenu
+>Ver</guimenu
+> <guimenuitem
+>Refrescar</guimenuitem
+> </menuchoice
+></term>
+<listitem
+><para>
+<action
+>Actualiza o refrescar la vista mostrada actualmente.</action>
+</para
+></listitem>
+</varlistentry>
+
+<varlistentry id="menu-view-zoom">
+<term
+><menuchoice
+><guimenu
+>Ver</guimenu
+><guisubmenu
+>Zoom</guisubmenu
+></menuchoice
+></term>
+<listitem
+><para
+><action
+>Use este submenú para ajustar la vista actual para que muestre más o menos datos.</action
+></para>
+<para
+>En la vista de agenda (vista de días o semana), puede usar las acciones de zoom para mostrar más o menos días (<menuchoice
+><guisubmenu
+>Zoom</guisubmenu
+> <guimenuitem
+>en horizontal</guimenuitem
+></menuchoice
+> y <menuchoice
+> <guisubmenu
+>Zoom</guisubmenu
+><guimenuitem
+>Fuera de horizontal</guimenuitem
+></menuchoice
+>), o más o menos horas en el día (<menuchoice
+><guisubmenu
+>Zoom</guisubmenu
+> <guimenuitem
+>En vertical</guimenuitem
+></menuchoice
+> y <menuchoice
+><guisubmenu
+>Zoom</guisubmenu
+><guimenuitem
+>Fuera de vertical</guimenuitem
+> </menuchoice
+>).</para
+></listitem>
+</varlistentry>
+
+<varlistentry id="menu-view-filter">
+<term
+><menuchoice
+><guimenu
+>Ver</guimenu
+> <guisubmenu
+>Filtro</guisubmenu
+> </menuchoice
+></term>
+<listitem
+><para
+>Este submenú ofrece acceso a los filtros que ya se han creado usando el diálogo <link linkend="menu-settings-edit-filters"
+><guilabel
+>Editar filtros de calendario</guilabel
+></link
+> <action
+>. Seleccione en este submenú el filtro que se va a usar en la vista de &korganizer;</action
+>. Si no quiere usar un filtro, elija <guilabel
+>Ningún filtro</guilabel
+>.</para
+></listitem>
+</varlistentry>
+
+</variablelist>
+
+</sect2>
+
+<sect2 id="reference-menus-go">
+<title
+>Ir</title>
+
+<para
+>Si quiere más información sobre cómo navegar por las vistas de &korganizer;, puede dirigirse a <xref linkend="description-view"/>.</para>
+
+<variablelist>
+<varlistentry id="menu-go-previous-day">
+<term
+><inlinemediaobject
+><imageobject
+><imagedata fileref="go-previous.png"
+format="PNG"/></imageobject
+></inlinemediaobject
+><menuchoice
+><guimenu
+>Ir</guimenu
+> <guimenuitem
+>Atrás</guimenuitem
+></menuchoice>
+</term>
+<listitem
+><para
+><action
+>Va al día, a la semana o al mes anterior, según la vista.</action
+></para
+></listitem>
+</varlistentry>
+
+<varlistentry id="menu-go-next-day">
+<term
+><inlinemediaobject
+><imageobject
+><imagedata fileref="go-next.png"
+ format="PNG"/></imageobject
+></inlinemediaobject
+><menuchoice
+><guimenu
+>Ir</guimenu
+> <guimenuitem
+>Adelante</guimenuitem
+></menuchoice>
+</term>
+<listitem
+><para
+><action
+>Va al día, a la semana o al mes anterior, según la vista.</action
+></para
+></listitem>
+</varlistentry>
+
+<varlistentry id="menu-go-goto-today">
+<term
+><inlinemediaobject
+><imageobject
+><imagedata fileref="go-jump-today.png"
+format="PNG"/></imageobject
+></inlinemediaobject
+><menuchoice
+><guimenu
+>Ir</guimenu
+> <guimenuitem
+>A hoy</guimenuitem
+></menuchoice>
+</term>
+<listitem
+><para
+><action
+>Va al período de tiempo que incluye el día actual.</action
+></para
+></listitem>
+</varlistentry>
+
+<varlistentry id="menu-view-day">
+<term
+><inlinemediaobject
+><imageobject
+><imagedata fileref="go-jump-today.png"
+ format="PNG"/></imageobject
+></inlinemediaobject
+><menuchoice
+><guimenu
+>Ir</guimenu
+> <guimenuitem
+>Día</guimenuitem
+></menuchoice>
+</term>
+<listitem
+><para
+><action
+>Cambia a mostrar la vista de día.</action
+></para>
+<para
+>Si quiere más información sobre esta acción, puede dirigirse a <xref linkend="agenda-view"/>.</para>
+</listitem>
+</varlistentry>
+
+<varlistentry id="menu-view-xdays">
+<term
+><inlinemediaobject
+><imageobject
+><imagedata fileref="view-calendar-upcoming-days.png"
+ format="PNG"/></imageobject
+></inlinemediaobject
+><menuchoice
+><guimenu
+>Ir</guimenu
+> <guimenuitem
+>Próximos x días</guimenuitem
+></menuchoice>
+</term>
+<listitem
+><para
+><action
+>Cambia a mostrar la vista de los próximos x días, donde x se define en la configuración principal de &korganizer;.</action
+></para>
+<para
+>Si quiere más información sobre esta acción, puede dirigirse a <xref linkend="agenda-view"/>.</para>
+</listitem>
+</varlistentry>
+
+<varlistentry id="menu-view-workweek">
+<term
+><inlinemediaobject
+><imageobject
+><imagedata
+ fileref="view-calendar-workweek.png"
+format="PNG"/></imageobject
+></inlinemediaobject
+><menuchoice
+><guimenu
+>Ir</guimenu
+> <guimenuitem
+>Semana laboral</guimenuitem
+></menuchoice>
+</term>
+<listitem
+><para
+><action
+>Cambia a mostrar la vista de semana laboral.</action
+></para>
+<para
+>Esta es la misma vista que la de la semana, salvo que solo se muestran los días laborables.</para>
+<para
+>Si quiere más información sobre esta acción, puede dirigirse a <xref linkend="agenda-view"/>.</para>
+</listitem>
+</varlistentry>
+
+<varlistentry id="menu-view-week">
+<term
+><inlinemediaobject
+><imageobject
+><imagedata fileref="view-calendar-week.png"
+ format="PNG"/></imageobject
+></inlinemediaobject
+><menuchoice
+><guimenu
+>Ir</guimenu
+> <guimenuitem
+>Semana</guimenuitem
+></menuchoice>
+</term>
+<listitem
+><para
+><action
+>Cambia a mostrar la vista de semana.</action
+></para>
+<para
+>La vista de la semana proporciona una vista similar a la del día. Los eventos para los siete días se muestran juntos. Todas las funciones disponibles para la vista del día están disponibles en la vista de semana también.</para>
+<para
+>Si quiere más información sobre esta acción, puede dirigirse a <xref linkend="agenda-view"/>.</para
+></listitem>
+</varlistentry>
+
+</variablelist>
+
+</sect2>
+
+<sect2 id="reference-menus-actions">
+<title
+>Acciones</title>
+
+<variablelist>
+<varlistentry id="menu-actions-new-event">
+<term
+><inlinemediaobject
+><imageobject
+><imagedata fileref="appointment-new.png"
+format="PNG"/></imageobject
+></inlinemediaobject
+><menuchoice
+><guimenu
+>Acciones</guimenu
+> <guimenuitem
+>Nuevo evento...</guimenuitem
+> </menuchoice>
+</term>
+<listitem
+><para
+>Elija <guilabel
+>Nuevo evento...</guilabel
+> para <action
+>crear un evento nuevo</action
+>.</para>
+<para
+>Tiene una descripción detallada de la ventana de eventos en la sección <link linkend="entering-data-events"
+>Introducir eventos</link
+>.</para
+></listitem>
+</varlistentry>
+
+<varlistentry id="menu-actions-new-todo">
+<term
+><inlinemediaobject
+><imageobject
+><imagedata fileref="view-task.png"
+format="PNG"/></imageobject
+></inlinemediaobject
+><menuchoice
+><guimenu
+>Acciones</guimenu
+> <guimenuitem
+>Nueva tarea pendiente...</guimenuitem
+> </menuchoice>
+</term>
+<listitem
+><para
+>Elija <guilabel
+>Nueva tarea pendiente...</guilabel
+> para <action
+>crear una tarea pendiente nueva</action
+>. Inicialmente, la tarea pendiente no tiene fecha de vencimiento, pero puede indicar una.</para>
+<para
+>Tiene una descripción detallada de la ventana de tareas pendientes en la sección <link linkend="entering-data-to-do"
+>Introducir tareas pendientes.</link
+>.</para
+></listitem>
+</varlistentry>
+
+<varlistentry id="menu-actions-new-subtodo">
+<term
+><menuchoice
+><guimenu
+>Acciones</guimenu
+> <guimenuitem
+>Nueva subtarea pendiente...</guimenuitem
+> </menuchoice
+></term>
+<listitem
+><para
+>Elija <guilabel
+>Nueva subtarea pendiente...</guilabel
+> para <action
+>comenzar a escribir una subtarea pendiente nueva. La tarea pendiente seleccionada actualmente será el padre de la subtarea.</action
+>. Inicialmente, la tarea pendiente no tiene fecha de vencimiento, pero puede indicar uno.</para>
+<para
+>Tiene una descripción detallada de la ventana de tareas pendiente en la sección <link linkend="entering-data-to-do"
+>Introducir tareas pendientes</link
+>.</para
+></listitem>
+</varlistentry>
+
+<varlistentry id="menu-actions-new-journal">
+<term
+><inlinemediaobject
+><imageobject
+><imagedata fileref="journal-new.png"
+format="PNG"/></imageobject
+></inlinemediaobject
+><menuchoice
+><guimenu
+>Acciones</guimenu
+> <guimenuitem
+>Nuevo diario...</guimenuitem
+> </menuchoice
+></term>
+<listitem
+><para
+>Elija <guilabel
+>Nuevo diario...</guilabel
+> para <action
+>comenzar a escribir una entrada del diario.</action
+>.</para
+></listitem>
+</varlistentry>
+
+<varlistentry id="menu-actions-show-event">
+<term
+><menuchoice
+><guimenu
+>Acciones</guimenu
+> <guimenuitem
+>Mostrar</guimenuitem
+> </menuchoice
+></term>
+<listitem
+><para
+>Elija <guilabel
+>Mostrar</guilabel
+> para <action
+>abrir un diálogo que muestra los detalles de la entrada del diario, el evento o la tarea pendiente seleccionada actualmente.</action
+></para
+></listitem>
+</varlistentry>
+
+<varlistentry id="menu-actions-edit-event">
+<term
+><menuchoice
+><guimenu
+>Acciones</guimenu
+> <guimenuitem
+>Editar...</guimenuitem
+> </menuchoice
+></term>
+<listitem
+><para
+>Elija <guilabel
+>Editar...</guilabel
+> para <action
+>editar la entrada del diario, el evento o la tarea pendiente seleccionada actualmente.</action
+></para
+></listitem>
+</varlistentry>
+
+<varlistentry id="menu-actions-delete-event">
+<term
+><menuchoice
+><shortcut
+> &Del; </shortcut
+> <guimenu
+>Acciones</guimenu
+> <guimenuitem
+>Borrar</guimenuitem
+> </menuchoice
+></term>
+<listitem
+><para
+>Elija <guilabel
+>Borrar</guilabel
+> para <action
+>eliminar la entrada del diario, el evento o la tarea pendiente seleccionada actualmente.</action
+></para
+></listitem>
+</varlistentry>
+
+<varlistentry id="menu-actions-make-subtodo-independent">
+<term
+><menuchoice
+><guimenu
+>Acciones</guimenu
+> <guimenuitem
+>Hacer la subtarea independiente</guimenuitem
+> </menuchoice
+></term>
+<listitem
+><para
+>Elija <guilabel
+>Hacer la subtarea independiente</guilabel
+> para desligar la subtarea pendiente seleccionada de su padre y hacerla independiente.</para
+></listitem>
+</varlistentry>
+
+</variablelist>
+
+</sect2>
+
+<sect2 id="reference-menus-schedule">
+<title
+>Planificar</title>
+
+<variablelist>
+
+<varlistentry id="menu-schedule-publish">
+<term
+><menuchoice
+><guimenu
+>Planificar</guimenu
+> <guimenuitem
+>Publicar información del elemento...</guimenuitem
+> </menuchoice
+></term>
+<listitem
+><para
+>Envía por correo el evento seleccionado, la tarea pendiente o la entrada del diario seleccionada en formato iCalendar.</para>
+<para
+>Si quiere más información sobre esta acción, puede dirigirse a <xref linkend="publish"/>.</para
+></listitem>
+</varlistentry>
+
+<varlistentry id="menu-schedule-request">
+<term
+><menuchoice
+><guimenu
+>Planificar</guimenu
+> <guimenuitem
+>Enviar invitación a los asistentes</guimenuitem
+> </menuchoice
+></term>
+<listitem
+><para
+>Envía la tarea pendiente o el evento seleccionado a los asistentes y, si es necesario, una solicitud de confirmación.</para>
+<para
+>Si quiere más información sobre esta acción, puede dirigirse a <xref linkend="request"/>.</para
+></listitem>
+</varlistentry>
+
+<varlistentry id="menu-schedule-reply">
+<term
+><menuchoice
+><guimenu
+>Planificar</guimenu
+> <guimenuitem
+>Enviar actualización del estado</guimenuitem
+> </menuchoice
+></term>
+<listitem
+><para
+>Si ha cambiado su estado como asistente, elija esta opción del menú para enviar su estado actualizado (aceptado, condicional, &etc;) para el organizador del elemento.</para>
+<para
+>Si quiere más información sobre esta acción, puede dirigirse a <xref linkend="reply"/>.</para
+></listitem>
+</varlistentry>
+
+<varlistentry id="menu-schedule-cancel">
+<term
+><menuchoice
+><guimenu
+>Planificar</guimenu
+> <guimenuitem
+>Enviar cancelación a los asistentes</guimenuitem
+> </menuchoice
+></term>
+<listitem
+><para
+>Si quiere cancelar un evento o una tarea pendiente, selecciónela y elija esta opción del menú para notificar la cancelación a los asistentes.</para>
+<para
+>Si quiere más información sobre esta acción, puede dirigirse a <xref linkend="cancel"/>.</para
+></listitem>
+</varlistentry>
+
+<varlistentry id="menu-schedule-refresh">
+<term
+><menuchoice
+><guimenu
+>Planificar</guimenu
+> <guimenuitem
+>Solicitar actualización</guimenuitem
+> </menuchoice
+></term>
+<listitem
+><para
+>Solicita al organizador la última versión del evento o de la tarea pendiente seleccionada.</para>
+<para
+>Si quiere más información sobre esta acción, puede dirigirse a <xref linkend="refresh"/>.</para
+></listitem>
+</varlistentry>
+
+<varlistentry id="menu-schedule-counter">
+<term
+><menuchoice
+><guimenu
+>Planificar</guimenu
+> <guimenuitem
+>Solicitar cambio</guimenuitem
+> </menuchoice
+></term>
+<listitem
+><para
+>Envía una propuesta al organizador del evento o de la tarea pendiente seleccionada. </para>
+<para
+>Si quiere más información sobre esta acción, puede dirigirse a <xref linkend="counter"/>.</para
+></listitem>
+</varlistentry>
+
+<!--varlistentry id="menu-schedule-mail-icalendar">
+<term
+><menuchoice>
+<guimenu
+>Schedule</guimenu>
+<guimenuitem
+>Send as iCalendar...</guimenuitem>
+</menuchoice
+></term>
+<listitem
+><para
+>.</para>
+<para
+>For more information about this action, please refer to
+<xref linkend="????"/>.</para
+></listitem>
+</varlistentry-->
+
+<varlistentry id="menu-schedule-mail-freebusy">
+<term
+><menuchoice
+><guimenu
+>Planificar</guimenu
+> <guimenuitem
+>Información por correo de libre/ocupado...</guimenuitem
+> </menuchoice
+></term>
+<listitem
+><para
+>Envía por correo su información de disponibilidad a una o más direcciones de correo.</para>
+<para
+>Si quiere más información sobre esta acción, puede dirigirse a <xref linkend="free-busy"/>.</para
+></listitem>
+</varlistentry>
+
+<varlistentry id="menu-schedule-upload-freebusy">
+<term
+><menuchoice
+><guimenu
+>Planificar</guimenu
+> <guimenuitem
+>Enviar información de libre y ocupado</guimenuitem
+> </menuchoice
+></term>
+<listitem
+><para
+>Envía su información de disponibilidad en el servidor de trabajo en grupo. Otros usuarios podrán recuperar la información.</para>
+<para
+>Si quiere más información sobre esta acción, puede dirigirse a <xref linkend="free-busy"/>.</para
+></listitem>
+</varlistentry>
+
+</variablelist>
+
+</sect2>
+
+<sect2 id="reference-menus-settings-help">
+<title
+>Preferencias y ayuda</title>
+
+<para
+>Aparte de los menús habituales de &kde; descritos en el capítulo <ulink url="help:/fundamentals/menus.html"
+>Menú</ulink
+> de la documentación de los fundamentos de &kde;, &korganizer; dispone de esas entradas de menú «Preferencias» y «Menú de ayuda» específicas: </para>
+
+<variablelist>
+
+<varlistentry id="menu-settings-sidebar">
+<term
+><menuchoice
+><guimenu
+>Preferencias</guimenu
+> <guisubmenu
+>Panel lateral</guisubmenu
+> </menuchoice
+></term>
+<listitem
+><para
+><action
+>Pulse en las opciones de este submenú para mostrar u ocultar los componentes del panel lateral de &korganizer;</action
+>. Tenga en cuenta que el panel lateral solo es visible cuando <link linkend="config-main-views"
+>la ventana actual no usa toda la pantalla.</link
+></para
+></listitem>
+</varlistentry>
+
+<varlistentry id="menu-settings-configure-date-time">
+<term
+><menuchoice
+><guimenu
+>Preferencias</guimenu
+> <guimenuitem
+>Configurar fecha y hora...</guimenuitem
+> </menuchoice
+></term>
+<listitem
+><para
+><action
+>Pulse esta opción del menú para definir los formatos de fecha y de hora del escritorio</action
+>. Tenga en cuenta que esta opción la comparten las demás aplicaciones del escritorio.</para
+></listitem>
+</varlistentry>
+
+<varlistentry id="menu-settings-edit-filters">
+<term
+><menuchoice
+><guimenu
+>Preferencias</guimenu
+> <guisubmenu
+>Gestionar filtros de vista...</guisubmenu
+> </menuchoice
+></term>
+<listitem
+><para
+><action
+>Elija esta opción del menú para abrir el diálogo <guilabel
+>Editar filtros</guilabel
+></action
+>. Usando este diálogo puede crear, borrar y editar filtros que afecten a los elementos que se muestran en &korganizer;.</para
+></listitem>
+</varlistentry>
+
+<varlistentry id="menu-settings-edit-categories">
+<term
+><menuchoice
+><guimenu
+>Preferencias</guimenu
+> <guimenuitem
+>Gestión de etiquetas...</guimenuitem
+> </menuchoice
+></term>
+<listitem
+><para
+><action
+>Elija esta opción del menú para abrir el diálogo <guilabel
+>Gestión de etiquetas</guilabel
+></action
+>. Usando este diálogo puede crear, borrar y editar las etiquetas de los elementos del calendario. Las etiquetas se usan para organizar sus eventos y tareas pendientes en grupos relacionados.</para
+></listitem>
+</varlistentry>
+
+</variablelist>
+
+</sect2>
+
+</sect1>
+
+</chapter>
+
+<chapter id="other-features"
+>  <!--updated to 5.4.40-->
+<title
+>Otras características</title>
+
+<para
+>En este capítulo, aprenderá otras características útiles de &korganizer;: que trucos puede hacer con un clic de su ratón.</para>
+
+<sect1 id="other-features-commandline-options">
+<title
+>Línea de órdenes</title>
+
+<para
+>Un buen programa para acceder a un calendario de &kde; desde la línea de órdenes es konsolekalendar.</para>
+
+</sect1>
+
+<sect1 id="other-features-drag-and-drop">
+<title
+>Operaciones de arrastrar y soltar</title>
+
+<para
+>&korganizer; se puede controlar fácilmente con su ratón. Las operaciones de arrastrar y soltar se detallan abajo.</para>
+
+<itemizedlist>
+<listitem
+><para
+>Cualquier evento se puede redimensionar con el ratón. Simplemente, mueva el puntero del ratón cerca de los limites superior o inferior del evento y arrastre el límite arriba o abajo. De esta forma puede modificar visualmente la hora de inicio y de fin de su cita. Esto funciona en las vistas de día, semana y semana laboral.</para
+></listitem>
+<listitem
+><para
+>Cualquier evento se puede volver a planificar con el ratón. Mueva el puntero del ratón sobre el evento y arrástrelo a la nueva ubicación temporal. Esto funciona para las vistas de día, semana y semana laboral.</para
+></listitem>
+<listitem
+><para
+>Los eventos se pueden copiar a otro, incluso a fechas no visibles. Mueva el puntero del ratón sobre el evento y arrástrelo al navegador de fechas del lado izquierdo del calendario actual, o el navegador de fechas de un calendario diferente.</para>
+<tip
+><para
+>Sin embargo, no puede arrastrar desde la vista de agenda de un calendario a la vista de agenda de otro calendario.</para
+></tip
+></listitem>
+<listitem
+><para
+>Las barras de herramientas se pueden arrastrar en la pantalla. Mueva el puntero del ratón sobre la cinta de la barra de herramientas y arrástrelo a la nueva posición en su pantalla.</para
+></listitem>
+</itemizedlist>
+
+</sect1>
+
+</chapter>
+
+<chapter id="faq">
+<title
+>Preguntas y respuestas</title
+> <!-- link to userbase faq? -->
+
+<qandaset id="faq-questions">
+<qandaentry>
+<question>
+<para
+>¿Puedo usar el tiempo de disponibilidad con &korganizer;?</para>
+</question>
+<answer
+><para
+>Sí. Siga las instrucciones en <link linkend="config-main-free-busy"
+>Disponibilidad</link
+>.</para>
+</answer>
+</qandaentry>
+</qandaset>
+
+</chapter>
+
+<chapter id="credits">
+<title
+>Créditos y licencia</title>
+
+<para
+>&korganizer;</para>
+
+<para
+>Copyright del programa 2000-2010, los desarrolladores de &kde;</para>
+
+<para
+>Colaboradores:</para>
+
+<itemizedlist>
+  <listitem
+><para
+>Allen Winter <email
+>winter@kde.org</email
+></para>
+</listitem>
+<listitem
+><para
+>Reinhold Kainhofer <email
+>reinhold@kainhofer.com</email
+></para>
+</listitem>
+<listitem
+><para
+>&Cornelius.Schumacher; &Cornelius.Schumacher.mail;</para>
+</listitem>
+<listitem
+><para
+>&Preston.Brown; &Preston.Brown.mail;</para>
+</listitem>
+</itemizedlist>
+
+<para
+>Copyright de la documentación 2000 &Milos.Prudek;</para>
+<para
+>Copyright de la documentación 2001 Paul E. Ahlquist, Jr <email
+>&Paul.E.Ahlquist.Jr.mail;</email
+></para>
+<para
+>Copyright de la documentación 2004 Jr&uuml;gen Nagel <email
+>juergen.nagel@student.fh-reutlingen.de</email
+></para>
+<para
+>Copyright de la documentación 2005 Carlos Leonhard Woelz <email
+>carloswoelz@imap-mail.com</email
+></para>
+
+<para
+>Traducido por: Juan Manuel García Molina <email
+>juanma@superiodico.net</email
+> y Javier Viñal <email
+>fjvinal@gmail.com</email
+>.</para
+> &underFDL; &underGPL; </chapter>
+
+<glossary id="glossary">
+<title
+>Glosario</title>
+
+<glossentry id="gloss-calendar-widget">
+<glossterm
+>Elemento de calendario</glossterm>
+<glossdef>
+
+<para
+>Una herramienta para seleccionar la fecha dentro de ciertas ventanas de entrada, como la ventana de edición de eventos. Se muestra como un botón pequeño a la derecha del campo de fecha. Cuando pulse con el botón, verá un calendario de mes. Use las flechas para ir a la fecha deseada, o pulse sobre el nombre del mes o el número de año para ir directamente al mes o año deseado.</para>
+
+</glossdef>
+</glossentry>
+
+<glossentry id="gloss-date-navigator">
+<glossterm
+>Navegador de fechas</glossterm>
+<glossdef>
+
+<para
+>El calendario que está en la esquina superior izquierda de la ventana de &korganizer;. Es la forma principal que se proporciona para navegar por entre las fechas y para seleccionar desde ellos. Los iconos de flecha simple van hacia adelante y hacia atrás en el tiempo con incrementos de un mes, mientras que las flechas dobles le permiten moverse un año cada vez. La fecha de hoy estará rodeada por un cuadro pequeño. Las fechas que tienen eventos planificados en ellos estarán en negrita. Si quiere seleccionar una fecha, simplemente pulse sobre él. Mantenga pulsada la tecla &Ctrl; y pulse en las fechas si desea seleccionar múltiples fechas vecinas de una sola vez. Las fechas se mostrarán en el panel principal.</para>
+
+<para
+>Los eventos recurrentes no siempre se muestran. Puede evitar la visualización de las citas recurrentes en el navegador de fechas. Obtenga más información en el <link linkend="config-main-views"
+>capítulo de vistas</link
+>.</para>
+
+</glossdef>
+</glossentry>
+
+<glossentry id="gloss-due-date">
+<glossterm
+>Fecha de vencimiento</glossterm>
+<glossdef>
+
+<para
+>Una fecha de vencimiento es simplemente la fecha en la que su tarea pendiente debe estar terminada. Por ejemplo, si su tarea pendiente es devolver los libros a la biblioteca el 16 de noviembre, esa fecha se llama <quote
+>la fecha de vencimiento de la tarea pendiente</quote
+></para>
+
+</glossdef>
+</glossentry>
+
+<!--<glossentry id="gloss-group-scheduling">
+<glossterm
+>Group scheduling features</glossterm>
+<glossdef>
+
+<para
+>These features are planned for the future versions of &korganizer;. Group
+scheduling will facilitate member roles (attendee, owner, organizer), time
+conflict resolution, event reminder distribution, response collection and
+evaluation. In other words, you will be able to appoint attendees, invite them
+automatically, and see who accepted or refused attending the appointment.</para>
+
+<para
+>Currently, group scheduling features are not working. However, hooks exist
+in the calendar data structures for these features. <guilabel
+>Private</guilabel>
+check box, <guilabel
+>Require response</guilabel
+> check box and
+<guilabel
+>E-mail</guilabel
+> field will then be fully employed. These controls
+are described in more detail in <link linkend="entering-data"
+>Entering
+Data</link
+> chapter, in the <link
+linkend="entering-data-events-attendees"
+>Attendees section</link
+> of Windows
+reference, and in the <link linkend="config-main-personal"
+>Personal
+Preferences</link
+> section.</para>
+
+</glossdef>
+</glossentry>
+-->
+<glossentry id="gloss-main-panel">
+<glossterm
+>Panel principal</glossterm>
+<glossdef>
+<para
+>Normalmente, la parte más grande de la pantalla, a la derecha del navegador de fechas. Muestra la vista del día, días laborales, semana o mes, la vista de lista o la vista de tareas pendientes.</para>
+<para
+>El botón derecho se puede usar en la vista de lista y en la vista de lista de tareas pendientes solo. Muestra un menú local. El botón izquierdo se puede usar en cualquier vista.</para>
+</glossdef>
+</glossentry>
+
+<glossentry id="gloss-freebusy">
+<glossterm
+>Disponibilidad</glossterm>
+<glossdef>
+<para
+>La información de disponibilidad es una serie de intervalos de tiempo en los que está ocupado. Al presentar los intervalos cuando ya se han hecho entregas previas, puede impedir que otras personas planifiquen citas para esos períodos. Tenga en cuenta que solo se publican las horas, no los títulos de los eventos ni las descripciones ni los asistentes. Dicho de otra manera, la información de disponibilidad es un horario de disponibilidad.</para>
+<para
+>Cuando añada asistentes al evento, tiene que saber si están ocupados o disponibles en esa hora en particular antes de enviarles las invitaciones. Si los asistentes tienen disponible su información de disponibilidad, &korganizer; puede recuperar esta información y mostrarla en la pestaña <guilabel
+>disponibilidad</guilabel
+> del diálogo <guilabel
+>Editar evento</guilabel
+>.</para>
+</glossdef>
+</glossentry>
+
+<!--FIXME: remove this or transform in glossary items
+
+<sect1 id="course-event-types">
+<title
+>Calendar Item Types</title>
+
+<para
+>There are three types of items:</para>
+
+<itemizedlist>
+<listitem
+><para
+>Events start and finish at distinct date. You can also specify
+distinct start and finish times, but you do not have to. While business
+meetings, personal anniversaries and cinema visits are examples of carefully
+planned events with exact time scheduling, a holiday is an event that takes
+several days and thus there is no need to specify exact start and finish
+times.</para
+></listitem>
+
+<listitem
+><para
+>To-do's must take place no later than a
+certain date, but they can also take place sooner.</para
+></listitem>
+</itemizedlist>
+
+<para
+>Naturally, what began as a To-do may later require exact timing.
+Say it is July 1 and you need to go to a hairdresser within a week.
+On July 3 you talk to your hairdresser and agree on an exact time. Thus the
+original To-do becomes similar to an appointment. </para>
+
+<para
+>&korganizer; makes adding exact time to a To-do very easy. If you
+check the <guilabel
+>Due</guilabel
+> check box and/or the <guilabel
+>Start</guilabel>
+check box you can specify the appropriate dates, when you check the
+<guilabel
+>Time associated</guilabel
+> check box and fill in the associated times, your
+To-do becomes very similar to an event.</para>
+
+</sect1>
+
+-->
+
+</glossary>
+
+&documentation.index;
+
+</book>
+<!--
+Local Variables:
+mode: sgml
+sgml-minimize-attributes:nil
+sgml-general-insert-case:lower
+sgml-indent-step:0
+sgml-indent-data:nil
+End:
+
+// vim:ts=2:sw=2:tw=78:noet
+-->

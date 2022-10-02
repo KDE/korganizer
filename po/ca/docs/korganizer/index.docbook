@@ -1,0 +1,5680 @@
+<?xml version="1.0" ?>
+<!DOCTYPE book PUBLIC "-//KDE//DTD DocBook XML V4.5-Based Variant V1.1//EN"
+ "dtd/kdedbx45.dtd" [
+  <!ENTITY % addindex "IGNORE">
+  <!ENTITY % Catalan  "INCLUDE">
+]>
+
+<book id="korganizer" lang="&language;">
+
+<bookinfo>
+
+<title
+>El manual del &korganizer;</title>
+
+<authorgroup>
+
+<author
+><firstname
+>Carlos</firstname
+> <othername
+>Leonhard</othername
+> <surname
+>Woelz</surname
+> <affiliation
+><address
+><email
+>carloswoelz@imap-mail.com</email
+></address
+></affiliation>
+</author>
+
+<author
+>&Milos.Prudek; &Milos.Prudek.mail; </author>
+
+<author
+>&Paul.E.Ahlquist.Jr; &Paul.E.Ahlquist.Jr.mail; </author>
+
+<author
+><firstname
+>J&uuml;rgen</firstname
+> <surname
+>Nagel</surname
+> <affiliation
+><address
+><email
+>juergen.nagel@student.fh-reutlingen.de</email
+></address
+></affiliation>
+</author>
+
+<author
+>&Michel.Boyer; &Michel.Boyer.mail; </author>
+
+<othercredit role="developer"
+><firstname
+>Reinhold</firstname
+> <surname
+>Kainhofer</surname
+> <affiliation
+><address
+><email
+>reinhold@kainhofer.com</email
+></address
+></affiliation>
+<contrib
+>Desenvolupador</contrib>
+</othercredit>
+
+<othercredit role="developer"
+><firstname
+>Cornelius</firstname
+> <surname
+>Schumacher</surname
+> <affiliation
+><address
+>&Cornelius.Schumacher.mail;</address
+></affiliation>
+<contrib
+>Desenvolupador</contrib>
+</othercredit>
+
+<othercredit role="developer"
+><firstname
+>Preston</firstname
+> <surname
+>Brown</surname
+> <affiliation
+><address
+>&Preston.Brown.mail;</address
+></affiliation>
+<contrib
+>Desenvolupador</contrib>
+</othercredit>
+
+<othercredit role="reviewer"
+><firstname
+>Lauri</firstname
+> <surname
+>Watts</surname
+> <affiliation
+><address
+>&Lauri.Watts.mail;</address
+></affiliation>
+<contrib
+>Revisor</contrib>
+</othercredit>
+
+&traductor.Antoni.Bella; 
+</authorgroup>
+
+
+
+<copyright>
+<year
+>2000</year
+><holder
+>&Milos.Prudek;</holder>
+</copyright>
+
+<copyright>
+<year
+>2001</year>
+<holder
+>&Paul.E.Ahlquist.Jr;</holder>
+</copyright>
+
+<copyright>
+<year
+>2004</year>
+<holder
+>J&uuml;rgen Nagel</holder>
+</copyright>
+
+<copyright>
+<year
+>2005</year>
+<holder
+>Carlos Leonhard Woelz</holder>
+</copyright>
+
+<legalnotice
+>&FDLNotice;</legalnotice>
+
+<date
+>8 de desembre de 2016</date>
+<releaseinfo
+>5.4.40 (Aplicacions 16.12)</releaseinfo>
+
+<abstract
+><para
+>El &korganizer; és un gestor de la informació personal (<acronym
+>PIM</acronym
+>) de fàcil ús. Podeu escriure entrades al diari, planificar cites, esdeveniments i tasques pendents. El &korganizer; us recordarà les tasques pendents, i us ajudarà a mantenir la vostra planificació. </para
+></abstract>
+
+<keywordset>
+<keyword
+>KDE</keyword>
+<keyword
+>KOrganizer</keyword>
+<keyword
+>kdepim</keyword>
+<keyword
+>gestor</keyword>
+<keyword
+>hora</keyword>
+<keyword
+>planificar</keyword>
+<keyword
+>recordatori</keyword>
+<keyword
+>cita</keyword>
+<keyword
+>esdeveniment</keyword>
+<keyword
+>entrada de diari</keyword>
+<keyword
+>tasca pendent</keyword>
+</keywordset>
+
+</bookinfo>
+
+<chapter id="introduction"
+><!--updated to 5.4.40-->
+<title
+>Introducció</title>
+
+<para
+>El &korganizer; és un gestor de la informació personal (<abbrev
+>PIM</abbrev
+>) intuïtiu i d'ús fàcil. Podeu planificar cites, esdeveniments, crear tasques pendents i escriure entrades al diari. El &korganizer; us recordarà les tasques pendents, registrarà les vostres ocurrències, experiències i reflexions, ajudant-vos a mantenir la vostra planificació.</para>
+
+<para
+>Però el &korganizer; no és tan sols el vostre calendari personal, també us pot ajudar a interactuar amb els vostres col·legues i amics. Amb el &korganizer; podreu invitar a qualsevol que disposi d'una adreça de correu electrònic a un esdeveniment i processar les respostes, compartir un calendari (utilitzant un servidor de treball en grup, o simplement, un fitxer compartit en la xarxa), i compartir esdeveniments (&pex; la planificació d'un campionat o un congrés), utilitzant el marc per a obtenir les novetats. El &korganizer; es basa en estàndards oberts i funciona amb molts servidors de planificació de grups diferents, oferint-vos el control de la vostra informació i la llibertat per a escollir les millors solucions. </para>
+
+<para
+>El &korganizer; també és el component de calendari, de diari i de tasques pendents del &kontact;, oferint-vos una solució integrada per a les vostres necessitats de comunicació i gestió d'informació: correu electrònic, notes, gestió de contactes, lector de notícies, sincronització amb dispositius portàtils i lector de fils de notícies. Fins i tot si no l'useu des del &kontact;, el &korganizer; està incrustat amb les altres aplicacions <acronym
+>PIM</acronym
+> del &kde;. De fet, el podeu configurar perquè mostri els aniversaris des de &kaddressbook; en la vostra agenda, useu el &kmail; per a enviar i rebre invitacions, &etc;</para>
+
+<para
+>Característiques principals del &korganizer;:</para>
+<para
+><itemizedlist>
+<listitem
+><para
+>Crear tasques pendents, planificar esdeveniments i escriure entrades de diari.</para
+></listitem>
+<listitem
+><para
+>Organitzar els vostres esdeveniments i tasques pendents agrupant els elements relacionats per etiquetes.</para
+></listitem>
+<listitem
+><para
+>Ressaltar les etiquetes amb colors.</para
+></listitem>
+<listitem
+><para
+>Obrir múltiples calendaris, es poden veure i editar amb fluïdesa.</para
+></listitem>
+<listitem
+><para
+>Tornar a planificar els esdeveniments mitjançant arrossegar i deixar anar.</para
+></listitem>
+<listitem
+><para
+>Generar amb facilitat esdeveniments repetitius.</para
+></listitem>
+<listitem
+><para
+>Organitzar o assistir a esdeveniments utilitzant les característiques de planificació de grups.</para
+></listitem>
+<listitem
+><para
+>Escollir entre els múltiples servidors de treball en grup acceptats.</para
+></listitem>
+<listitem
+><para
+>Implementació nativa de vCalendar i iCalendar (estàndards oberts).</para
+></listitem>
+<listitem
+><para
+>Fusionar i importar calendaris.</para
+></listitem>
+<listitem
+><para
+>Arrossegar i deixar entre calendaris oberts.</para
+></listitem>
+<listitem
+><para
+>Col·laboració incrustada amb el &konqueror;.</para
+></listitem>
+<listitem
+><para
+>Jocs d'icones personalitzables.</para
+></listitem>
+<listitem
+><para
+>Arrossegar i deixar en els plafons d'eines.</para
+></listitem>
+<listitem
+><para
+>Molt més...</para
+></listitem>
+</itemizedlist
+></para>
+
+
+<para
+>Ara podeu fer un <link linkend="five-minute-course"
+>curs ràpid de cinc minuts</link
+> del &korganizer;, o submergir-vos en <link linkend="managing-data"
+>la documentació</link
+>!</para>
+
+</chapter>
+
+<chapter id="five-minute-course"
+><!--updated to 5.4.40-->
+<title
+>Curs ràpid de cinc minuts del &korganizer;</title>
+<subtitle
+>(per als que tenen experiència i per als impacients)</subtitle>
+
+<para
+>Teniu pressa? Aleshores comencem amb una vista ràpida del &korganizer;!</para>
+
+<para
+>Si heu treballat abans amb un programa d'informació personal, estareu còmode amb el &korganizer;. Podeu introduir esdeveniments nous, tornar a planificar els existents, assignar-los etiquetes, inventar etiquetes noves, introduir i modificar llistes d'assistents i els seus papers, enviar automàticament per correu electrònic les invitacions a l'esdeveniment i intercanviar dades amb altres calendaris del &korganizer;, crear tasques pendents i escriure entrades de diari.</para>
+
+<para
+>Aquest curs assumeix que sabeu com treballar amb el &kde; i que preferiu explorar. Aquí tan sols es cobreixen les funcions bàsiques del &korganizer;.</para>
+
+<sect1 id="course-entering-events">
+<title
+>Introduir esdeveniments</title>
+
+<procedure>
+<step
+><para
+>Feu clic sobre el botó <inlinemediaobject
+><imageobject
+> <imagedata fileref="view-calendar-agenda.png" format="PNG"/></imageobject
+> </inlinemediaobject
+><guibutton
+>Agenda</guibutton
+> de la barra d'eines o escolliu l'element de menú <menuchoice
+><guimenu
+>Visualitza</guimenu
+> <guimenuitem
+>Agenda</guimenuitem
+></menuchoice
+>. Farà aparèixer la <link linkend="agenda-view"
+><guilabel
+>Vista d'agenda</guilabel
+></link
+>.</para
+></step>
+
+<step
+><para
+>Feu clic sobre la data desitjada en el <link linkend="glossary" endterm="gloss-date-navigator"
+>Navegador de dates</link
+>. </para
+></step>
+
+<step
+><para
+>Seleccioneu l'àrea de text junt amb l'hora desitjada en el plafó principal que reflecteix l'hora de l'esdeveniment. Feu doble clic sobre aquesta àrea o simplement comenceu a escriure un resum de l'esdeveniment per a obrir el diàleg <guilabel
+>Esdeveniment nou</guilabel
+>.</para
+></step>
+
+<step
+><para
+><link linkend="entering-data-events"
+>Introduir els detalls de l'esdeveniment</link
+>. Useu les sis pestanyes a la part inferior de la finestra per a moure's a través del diàleg i accedir a totes les característiques de l'esdeveniment.</para
+></step>
+
+<step
+><para
+>Premeu <guibutton
+>D'acord</guibutton
+> per a desar l'esdeveniment.</para
+></step>
+</procedure>
+</sect1>
+
+<sect1 id="course-entering-todos">
+<title
+>Introduir tasques pendents</title>
+
+<procedure>
+<step
+><para
+>Seleccioneu l'element de menú <xref linkend="menu-actions-new-todo"/> per a obrir el diàleg <guilabel
+>Tasca pendent nova</guilabel
+>.</para
+></step>
+
+<step
+><para
+><link linkend="entering-data-to-do"
+>Introduir els detalls de les tasques pendents</link
+>. Useu les cinc pestanyes a la part inferior de la finestra per a moure's a través del diàleg i accedir a totes les característiques de l'esdeveniment.</para
+></step>
+
+<step
+><para
+>Premeu <guibutton
+>D'acord</guibutton
+> per a desar la tasca pendent.</para
+></step>
+</procedure>
+
+</sect1>
+
+<sect1 id="course-entering-journals">
+<title
+>Afegir entrades al diari</title>
+
+<procedure>
+
+<step
+><para
+>Seleccioneu l'element de menú <inlinemediaobject
+><imageobject
+> <imagedata fileref="journal-new.png" format="PNG"/></imageobject
+> </inlinemediaobject
+><menuchoice
+><guimenu
+>Visualitza</guimenu
+> <guimenuitem
+>Diari</guimenuitem
+></menuchoice
+> per a obrir la vista principal del <link linkend="journal-view"
+><guilabel
+>Diari</guilabel
+></link
+>.</para
+></step>
+
+<step
+><para
+>Seleccioneu l'element de menú <menuchoice
+><guimenu
+>Accions</guimenu
+> <guimenuitem
+>Diari nou...</guimenuitem
+></menuchoice
+>.</para
+></step>
+
+<step
+><para
+>Introduïu el títol i el resum de l'entrada de diari.</para
+></step>
+
+</procedure>
+
+</sect1>
+
+<sect1 id="course-rescheduling-events">
+<title
+>Tornar a planificar esdeveniments</title>
+
+<para
+>Tornar a planificar els esdeveniments és una simple operació d'arrossegar i deixar:</para>
+
+<procedure>
+<step
+><para
+>Useu el <link linkend="glossary" endterm="gloss-date-navigator"
+>Navegador de dates</link
+> per a anar cap a la data de l'esdeveniment que es vol tornar a planificar.</para
+></step>
+
+<step
+><para
+>Haureu d'escollir una <link linkend="reference-menus-view"
+>vista</link
+> adequada abans de començar aquesta operació. Tan sols la <link linkend="agenda-view"
+>vista d'<guilabel
+>Agenda</guilabel
+></link
+> (vistes de dia, de setmana laboral i de setmana) mostra les hores individuals i són adequades per a tornar a planificar els esdeveniments a l'hora exacta (cites), mentre que la vista de mes tan sols mostra els dies. De manera que la vista de mes és més adequada per a esdeveniments que duren molt temps com les vacances.</para
+></step>
+
+<step
+><para
+>Per a mostrar la vista de setmana, premeu el botó <inlinemediaobject
+><imageobject
+> <imagedata fileref="view-calendar-week.png" format="PNG"/></imageobject
+> </inlinemediaobject
+><guibutton
+>Setmana</guibutton
+> de la barra d'eines de visualització, o seleccioneu l'element de menú <menuchoice
+><guimenu
+>Ves</guimenu
+> <guimenuitem
+>Setmana</guimenuitem
+></menuchoice
+>. </para
+></step>
+
+<step
+><para
+>Arrossegueu i deixeu anar l'esdeveniment a la nova localització de data i hora.</para
+></step>
+
+</procedure>
+
+<para
+>Si voleu tornar a planificar de forma més precisa, feu doble clic sobre l'esdeveniment i canvieu les hores d'inici i de fi utilitzant els menús desplegables que divideixen el dia en quarts d'hora. Si aquesta precisió no és suficient, podeu introduir l'hora desitjada directament.</para>
+
+</sect1>
+
+<sect1 id="course-rescheduling-todos">
+<title
+>Tornar a planificar o editar les tasques pendents</title>
+
+<para
+>Haureu d'escollir una <link linkend="reference-menus-view"
+>vista</link
+> adequada abans de començar aquesta operació. Tan sols la <link linkend="todo-view"
+><inlinemediaobject
+><imageobject
+> <imagedata fileref="view-calendar-tasks.png" format="PNG"/></imageobject
+> </inlinemediaobject
+> vista de la <guilabel
+>Llista de tasques pendents</guilabel
+></link
+> i <link linkend="description-view"
+>el component de la barra lateral de la vista de les tasques pendents</link
+> mostren les tasques pendents que no tenen una data de venciment.</para>
+
+<para
+>Per a mostrar la vista de la llista de tasques pendents, premeu el botó <inlinemediaobject
+><imageobject
+> <imagedata fileref="view-calendar-tasks.png" format="PNG"/></imageobject
+> </inlinemediaobject
+><guibutton
+>Llista de tasques pendents</guibutton
+> de la barra d'eines de visualització, o seleccioneu l'element de menú <menuchoice
+> <guimenu
+>Visualitza</guimenu
+> <guimenuitem
+>Llista de tasques pendents</guimenuitem
+></menuchoice
+>. </para>
+
+<para
+>Per a tornar a planificar una tasca pendent, feu clic dret sobre seu. Apareixerà un menú contextual. Escolliu els elements de menú <guimenuitem
+>Copia a</guimenuitem
+> o <guimenuitem
+>Mou a</guimenuitem
+> i seleccioneu la data nova des del calendari que apareixerà. La tasca pendent és copiada o moguda cap a la data seleccionada. A més, si el plafó principal disposa d'una vista de la <guilabel
+>Llista de tasques pendents</guilabel
+>, simplement feu clic dret en la columna <guilabel
+>Data i hora de venciment</guilabel
+>. Apareixerà instantàniament un calendari que us permetrà establir la data nova de venciment.</para>
+
+<para
+>Per a <link linkend="entering-data-to-do"
+>editar una tasca pendent</link
+>, feu clic dret i escolliu l'element de menú <guimenuitem
+>Edita...</guimenuitem
+>.</para>
+
+</sect1>
+
+<sect1 id="course-conclusion">
+<title
+>Conclusió</title>
+
+<para
+>Aquest curs de cinc minuts tan sols cobreix operacions bàsiques del &korganizer;. Ara hauríeu de seguir endavant i llegir la resta d'aquest manual per a alliberar tot el poder de les capacitats del &korganizer;. Però si no ho voleu fer, almenys hauríeu de passar per la <link linkend="faq"
+>&PMF;</link
+>.</para>
+
+</sect1>
+
+</chapter>
+
+<chapter id="managing-data"
+><!--updated to 5.4.40-->
+<title
+>Importar, exportar i gestionar calendaris</title>
+
+<para
+>El &korganizer; pot desar (i rebre) esdeveniments, entrades de diari i tasques pendents utilitzant diversos mètodes i des de localitzacions diferents. Cadascuna d'aquestes localitzacions s'anomena un <firstterm
+>recurs de calendari</firstterm
+>. </para>
+
+<para
+>El &korganizer; admet nativament fitxers basats en estàndards oberts com iCalendar i vCalendar (afegint-los com a recursos nous), però podeu importar les dades (fusionar-les) en un recurs existent i també obrir el fitxer en una finestra nova. També està implementada la importació de fitxers en el format de l'antiga aplicació <application
+>ical</application
+>.</para>
+
+<para
+>Podeu exportar les vostres dades com un fitxer iCalendar o vCalendar. Aquests fitxers estan acceptats per la majoria de les aplicacions de planificació. </para>
+
+<para
+>En aquest capítol, explicarem com gestionar el vostre calendari, utilitzar els recursos, les accions importa i exporta, i obtenir l'esquema amb les novetats.</para>
+
+<sect1 id="managing-resources">
+<title
+>Recursos de calendari</title>
+
+<para
+>El &korganizer; utilitza un fitxer local com al seu recurs predeterminat. Però aquesta no és l'única opció: Hi ha diversos recursos més que podeu afegir: Servidors de treball en grup, entrades de diari com blogs, fitxers de xarxa, &etc; Si utilitzeu més d'un recurs, el &korganizer; <link linkend="config-main-general-personal"
+>es pot configurar per a emprar el recurs predeterminat o per a demanar quin recurs emprar</link
+> quan es desin nous esdeveniments, tasques pendents o entrades de diari. El &korganizer; fusiona de forma transparent els elements de dos o més recursos en les <link linkend="description-view"
+>vistes</link
+>. </para>
+
+<para
+>El recurs predeterminat és una bona elecció per a molts casos d'ús, però potser voldreu utilitzar-ne un altre, especialment si useu un servidor de treball en grup implementat. Si us plau, demaneu a l'administrador del servidor la informació necessària per a configurar el recurs de treball en grup, incloent-hi la informació per a publicar i rebre l'estat de lliure/ocupat. L'accés a la informació de lliure/ocupat permet a l'organitzador d'un esdeveniment tenir en compte el calendari dels assistents quan els afegeix a la llista de l'esdeveniment.</para>
+
+<note
+><para
+>A més d'allotjar calendaris, els servidors de treball en grup ofereixen allotjament per a contactes, correu i <link linkend="glossary" endterm="gloss-freebusy"
+>informació sobre lliure/ocupat</link
+>. A més, alguns dels recursos que es tracten aquí es poden relacionar amb altres recursos del &kmail; i del &kaddressbook; (els components de correu i contactes del &kontact;) o les <link linkend="config-main-free-busy"
+>opcions de lliure/ocupat en la configuració principal</link
+>.</para>
+<para
+>Si us plau, cal tenir present que la comunicació per a la <link linkend="group-scheduling"
+>planificació de grups</link
+> del &korganizer; es basa en l'estàndard del correu electrònic entre els interlocutors. Això vol dir que no necessiteu un servidor de treball en grup per a poder-la utilitzar!</para
+></note>
+
+<screenshot id="screenshot-resources">
+<screeninfo
+>Una captura de pantalla del diàleg Afegeix calendaris del &korganizer;</screeninfo>
+<mediaobject>
+<imageobject
+><imagedata fileref="korganizer-resource.png" format="PNG"/></imageobject>
+<textobject
+><phrase
+>Una captura de pantalla del diàleg Afegeix calendaris del &korganizer;</phrase
+></textobject>
+<caption
+><para
+>Una captura de pantalla del diàleg Afegeix calendaris del &korganizer;</para
+></caption>
+</mediaobject>
+</screenshot>
+
+<procedure id="procedure-add-resource">
+<title
+>Afegir un recurs nou del &korganizer;</title>
+
+<step
+><para
+>Obriu el diàleg de configuració del &korganizer; amb <menuchoice
+><guimenu
+>Arranjament</guimenu
+> <guimenuitem
+>Configura el &korganizer;...</guimenuitem
+></menuchoice
+> i seleccioneu la pestanya <guilabel
+>Calendaris</guilabel
+> de la pàgina <guilabel
+>General</guilabel
+>. </para>
+<para
+>De manera alternativa obriu el menú contextual de la barra lateral <guilabel
+>Gestor de calendari</guilabel
+> amb un clic del &BDR; i seleccioneu <guilabel
+>Afegeix un calendari...</guilabel
+>.</para
+></step>
+<step
+><para
+>Si no es mostra el <guilabel
+>Gestor de calendari</guilabel
+> en la barra lateral, escolliu l'element de menú <menuchoice
+><guimenu
+>Arranjament</guimenu
+> <guisubmenu
+>Barra lateral</guisubmenu
+> <guimenuitem
+>Mostra el gestor de calendari</guimenuitem
+></menuchoice
+> per a mostrar-lo.</para
+></step>
+
+<step
+><para
+>Premeu el botó <guibutton
+>Afegeix...</guibutton
+> per a afegir recursos nous a la llista de recursos disponibles.</para
+></step>
+
+<step
+><para
+>Seleccioneu el recurs per a habilitar-lo.</para
+></step>
+
+<step
+><para
+>Després, si voleu editar o eliminar un recurs, seleccioneu-lo sobre el <guilabel
+>Gestor de calendari</guilabel
+> a la barra lateral i premeu <guibutton
+>Elimina el calendari</guibutton
+> per a esborrar-lo o <guibutton
+>Propietats del calendari...</guibutton
+> per a modificar-lo.</para
+></step>
+
+</procedure>
+<para
+>Entre els recursos existents, al &korganizer; trobareu:</para>
+
+<variablelist>
+
+<varlistentry>
+<term
+><guilabel
+>Dates de naixement i aniversaris</guilabel
+></term>
+<listitem
+><para
+>Proporciona accés a les dates de naixement i els aniversaris dels contactes en la vostra llibreta d'adreces com a esdeveniments de calendari.</para
+></listitem>
+</varlistentry>
+
+<varlistentry>
+<term
+><guilabel
+>Recurs de treball en grup DAV</guilabel
+></term>
+<listitem
+><para
+>Recurs per a gestionar calendaris i llibretes d'adreces DAV (CalDAV, GroupDAV).</para
+></listitem>
+</varlistentry>
+
+<varlistentry>
+<term
+><guilabel
+>Calendaris i tasques de Google</guilabel
+></term>
+<listitem
+><para
+>Accediu als calendaris i tasques de Google.</para
+></listitem>
+</varlistentry>
+
+<varlistentry>
+<term
+><guilabel
+>Fitxer de calendari iCal</guilabel
+></term>
+<listitem
+><para
+>Carrega les dades des d'un fitxer iCal.</para
+></listitem>
+</varlistentry>
+
+<varlistentry>
+<term
+><guilabel
+>Carpeta de calendari iCal</guilabel
+></term>
+<listitem
+><para
+>Proporciona accés als elements d'un calendari, cadascun emmagatzemat en un fitxer individual, en un directori proporcionat.</para
+></listitem>
+</varlistentry>
+
+<varlistentry>
+<term
+><guilabel
+>Fitxer de calendari del KAlarm</guilabel
+></term>
+<listitem
+><para
+>Carrega les dades des d'un fitxer de calendari del KAlarm.</para
+></listitem>
+</varlistentry>
+
+<varlistentry>
+<term
+><guilabel
+>Directori de calendari del KAlarm</guilabel
+></term>
+<listitem
+><para
+>Carrega les dades des d'una carpeta local del KAlarm.</para
+></listitem>
+</varlistentry>
+
+<varlistentry>
+<term
+><guilabel
+>Servidor de treball en grup Kolab</guilabel
+></term>
+<listitem
+><para
+>Proporciona accés a les carpetes i al correu electrònic del treball en grup Kolab en un servidor IMAP del Kolab.</para
+></listitem>
+</varlistentry>
+
+<varlistentry>
+<term
+><guilabel
+>Servidor de treball en grup Open-Xchange</guilabel
+></term>
+<listitem
+><para
+>Proporciona accés a les cites, tasques i contactes emmagatzemats en un servidor de treball en grup Open-Xchange.</para
+></listitem>
+</varlistentry>
+
+</variablelist>
+
+</sect1>
+
+<sect1 id="managing-import-export">
+<title
+>Importar, exportar i mantenir els calendaris</title>
+
+<para
+>Tot i que els fitxers locals són un més entre els recursos que es poden utilitzar en el &korganizer;, són la manera més còmoda de compartir calendaris, desar còpies o importar elements des del vostre programa de calendari antic.</para>
+
+<sect2 id="managing-import">
+<title
+>Importar calendaris</title>
+
+<para
+>Si teniu un fitxer iCalendar o vCalendar que us agradaria importar, escolliu l'element de menú <menuchoice
+><guimenu
+>Fitxer</guimenu
+> <guisubmenu
+>Importa</guisubmenu
+> <guimenuitem
+>Importa un calendari...</guimenuitem
+> </menuchoice
+>. El &korganizer; us demanarà si voleu <guilabel
+>Afegeix com a calendari nou</guilabel
+>, el qual afegirà el fitxer de calendari com a un recurs nou de fitxer local, <guilabel
+>Barreja amb el calendari existent</guilabel
+>, el qual combina els elements de calendari en un recurs existent.</para>
+
+<para
+>Un bon moment per a fer-ho fora en rebre un vCalendar amb unes quantes entrades mitjançant correu electrònic, per exemple, o quan penseu importar el vostre calendari des d'una altra aplicació. En l'últim cas, el primer a fer seria utilitzar aquesta aplicació per a exportar les dades de calendari en un dels anteriors formats, o utilitzar una eina per a convertir des del format natiu de l'aplicació.</para>
+
+<!--Get Hot New Stuff
+store.kde.org KOrganizer Calendars-->
+</sect2>
+
+<sect2 id="managing-export">
+<title
+>Exportar calendaris</title>
+
+<para
+>Podeu exportar les vostres dades com a un fitxer iCalendar, el qual està acceptat per la majoria de les aplicacions de planificació. El &korganizer; exportarà tots els elements de calendari dels recursos habilitats (marcats) que <link linkend="filters-view"
+>no estan filtrats</link
+> (anomenem-los elements <quote
+>actius</quote
+>). En altres paraules, si no podeu veure un element de calendari, no podran estar en el fitxer exportat. Per a treure d'un filtre els elements no desitjats abans d'exportar-los, podeu crear <link linkend="filters-view"
+>filtres</link
+>. Els filtres encara seran més efectius si classifiqueu els vostres esdeveniments i tasques pendents per <link linkend="categories-view"
+>etiquetes</link
+>. Per a in/habilitar recursos, marqueu o desmarqueu la casella del recurs en el <link linkend="managing-resources"
+><guilabel
+>Gestor de calendari</guilabel
+></link
+> de la barra lateral.</para>
+
+<para
+>Per a exportar tots els vostres esdeveniments, tasques pendents i entrades del diari <quote
+>actives</quote
+> (independentment de quin recurs pertanyin) com un fitxer iCalendar nou, escolliu l'element de menú <menuchoice
+><guimenu
+>Fitxer</guimenu
+><guisubmenu
+>Exporta</guisubmenu
+><guimenuitem
+>Exporta com a iCalendar...</guimenuitem
+></menuchoice
+>. Apareixerà el diàleg <guilabel
+>Desa com a</guilabel
+>. Introduïu el nom i la localització del fitxer nou per a completar l'acció d'exportació.</para>
+
+</sect2>
+
+<sect2 id="managing-purge-archive">
+<title
+>Mantenir els vostres calendaris</title>
+
+
+<para
+>Els ordinadors actuals tenen un ampli espai d'emmagatzemament. De tota manera, si sincronitzeu el vostre calendari del &korganizer; amb una màquina de memòria limitada com el dispositiu Palm, trobareu d'utilitat arxivar. El rendiment del &korganizer; també pot empitjorar quan hi ha molts esdeveniments. Per a arxivar els elements antics, seguiu el procediment que es mostra a continuació:</para>
+
+<procedure>
+<step
+><para
+>Escolliu l'element de menú <menuchoice
+><guimenu
+>Fitxer</guimenu
+><guimenuitem
+>Arxiva les incidències antigues...</guimenuitem
+></menuchoice
+>.</para
+></step>
+<step
+><para
+>Ompliu la data en el camp <guilabel
+>Arxiva ara els elements anteriors a</guilabel
+> o useu el giny de calendari per a escollir la data. Altrament, podeu arxivar automàticament tots els elements anteriors a un període de temps determinat.</para
+></step>
+<step
+><para
+>Si heu escollit arxivar, també haureu de proveir un nom de fitxer per al fitxer en el camp <guilabel
+>Fitxer d'arxiu</guilabel
+>. Si voleu tornar a utilitzar un fitxer antic, premeu el botó <guilabel
+>Diàleg per a obrir fitxers</guilabel
+> i cerqueu un fitxer existent. Les entrades s'afegiran al fitxer, de manera que no es modifiqui cap element existent.</para
+></step>
+</procedure>
+
+<para
+>En arxivar es mantenen en un fitxer tots els elements antics, inclouen les tasques pendents finalitzades. Però si no voleu mantenir les tasques pendents finalitzades, escolliu l'element de menú <menuchoice
+><guimenu
+>Fitxer</guimenu
+><guimenuitem
+>Neteja les tasques pendents finalitzades</guimenuitem
+> </menuchoice
+> per a eliminar totes les tasques pendents finalitzades dels vostres recursos actius. Si les voleu mantenir però no les voleu veure en les llistes de tasques pendents, les podeu <link linkend="filters-view"
+>filtrar</link
+>. </para>
+
+</sect2>
+
+</sect1>
+<!-- only import ??-->
+<sect1 id="managing-get-hot-new-stuff">
+<title
+>Publicar i descarregar utilitzant «Obtén les novetats»</title>
+
+<!--para
+>If you have a calendar containing events of public interest, such as
+a conference or championship schedule, you can upload it (or check if there
+is something worth downloading) using the
+<ulink url="http://ghns.berlios.de/"
+>get hot new stuff framework</ulink
+>.
+</para-->
+
+<para
+>Per a obrir el diàleg <guilabel
+>Obtén les novetats</guilabel
+>, el qual ofereix una llista de calendaris per a descarregar, escolliu l'element de menú <menuchoice
+><guimenu
+>Fitxer</guimenu
+><guisubmenu
+>Importa</guisubmenu
+><guimenuitem
+>Obtén les novetats...</guimenuitem
+></menuchoice
+>. En seleccionar un dels calendaris, apareixerà un diàleg amb la llista dels esdeveniments dels calendaris. Per a fusionar els esdeveniments que es mostren amb els del recurs predeterminat, premeu <guilabel
+>Fusiona</guilabel
+>.</para>
+
+<!--para>
+To open the <guilabel
+>Upload Hot New Stuff</guilabel
+> dialog, which allow you
+to export calendars containing events which may be useful to other people, such
+as a conference program, a list of holidays, special events, &etc;,
+choose the <menuchoice
+><guimenu
+>File</guimenu
+><guisubmenu
+>Export</guisubmenu>
+<guimenuitem
+>Upload Hot New Stuff...</guimenuitem
+></menuchoice
+>.</para>
+
+<para
+>Before uploading the events, make sure you have
+<link linkend="filters-view"
+>filtered out</link
+> all unrelated data.</para-->
+
+</sect1>
+
+</chapter>
+
+<chapter id="chapter-views-and-filters"
+><!-- updated to 5.4.40-->
+
+<title
+>Vistes i filtres</title>
+
+<para
+>Mentre que els calendaris (recursos) poden contenir esdeveniments, tasques pendents i/o entrades de diari, aquests elements poden ser d'una naturalesa molt diversa. Les tasques pendents poden no tenir data associada, així que la vista del programa no és adequada. Les entrades de diari són una recopilació de les vostres reflexions, ocurrències o experiències. Necessiten el seu propi mode de vista, perquè no estan relacionades amb la llista d'esdeveniments propers o la llista de tasques pendents, &etc;</para>
+
+<para
+>Per a resoldre el desafiament de mostrar la vostra informació d'una manera útil i intuïtiva, el &korganizer; ofereix vistes diferents, filtres i capacitats de cerca. També podeu assignar etiquetes als esdeveniments i tasques pendents relacionades, el qual pot ser-vos útil per a veure-les posteriorment, emprant filtres o colors.</para>
+
+<sect1 id="description-view">
+<title
+>Les vistes del &korganizer;</title>
+
+<para
+>En aquesta secció, descriurem els diversos modes de vista, i presentarem un resum de com navegar per les vostres dades personals utilitzant el &korganizer;.</para>
+
+<para
+>La finestra del &korganizer; es pot dividir en dues àrees principals: La finestra principal i la barra lateral. La finestra principal mostra les vistes principals i la barra lateral mostra el navegador de dates, la vista de les tasques pendents, el visualitzador d'elements i la vista del gestor de calendari. Per a mostrar o ocultar els components de la barra lateral, marqueu o desmarqueu els elements de menú en el submenú <menuchoice
+><guimenu
+>Arranjament</guimenu
+> <guisubmenu
+>Barra lateral</guisubmenu
+></menuchoice
+>.</para>
+
+<para
+>El navegador de dates es proveeix per a navegar i seleccionar dates. La data del dia està ressaltada amb un petit quadre, les dates que tinguin esdeveniments programats estan en negreta (els esdeveniments que es repeteixen diàriament o setmanalment poden no marcar-se en negreta, <link linkend="config-main-views"
+>depenent de la configuració de la vista</link
+>) i els festius es mostren en vermell. Si voleu anar directament a una data, simplement feu clic sobre seu. Manteniu premut el botó del ratolí per a seleccionar múltiples dates contigües a la vegada. Les vistes <guilabel
+>Què toca ara?</guilabel
+>, <guilabel
+>Llista</guilabel
+>, <guilabel
+>Agenda</guilabel
+> i <guilabel
+>Diari</guilabel
+> tan sols mostren esdeveniments, tasques pendents o entrades de diari per a les dates seleccionades en el navegador de dates. La vista <guilabel
+>Mes</guilabel
+> mostra els esdeveniments o les tasques pendents del primer mes que es mostra en el navegador de dates (els dies seleccionats en el mes no canviaran la vista de mes, tan sols el mes).</para>
+
+<para
+>El component de barra lateral que mostra les vostres tasques pendents, com a <link linkend="todo-view"
+>vista de les tasques pendents</link
+>. Aquesta és útil si voleu veure les vostres tasques pendents mentre s'usen les altres vistes.</para>
+
+<para
+>El component visualitzador d'elements de la barra lateral mostra detalls dels esdeveniments, tasques pendents o entrades de diari seleccionades.</para>
+
+<para
+>Per a acabar, el component visualitzador del gestor de calendari de la barra lateral us permet des/habilitar els recursos de la llista, marcant o desmarcant la casella del recurs i gestionar-los. Per a més informació, si us plau, mireu <xref linkend="managing-resources"/>.</para>
+
+<para
+>També podeu navegar per la vista de calendari seleccionant l'element de menú <menuchoice
+><guimenu
+>Ves</guimenu
+><guimenuitem
+>Enrere</guimenuitem
+></menuchoice
+> (o prement el botó <inlinemediaobject
+><imageobject
+><imagedata fileref="go-previous.png" format="PNG"/></imageobject
+></inlinemediaobject
+> de la barra d'eines), el qual va cap al dia, la setmana, al mes o a l'any anterior, escollint l'element de menú <menuchoice
+><guimenu
+>Ves</guimenu
+><guimenuitem
+>Endavant</guimenuitem
+> </menuchoice
+> (o prement el botó <inlinemediaobject
+><imageobject
+> <imagedata fileref="go-next.png" format="PNG"/></imageobject
+> </inlinemediaobject
+> de la barra d'eines), inclourà el dia, la setmana, el mes o l'any actual (depenent de la vista), i escollint l'element de menú <menuchoice
+><guimenu
+>Ves</guimenu
+><guimenuitem
+>A avui</guimenuitem
+> </menuchoice
+> (o prement el botó <inlinemediaobject
+><imageobject
+> <imagedata fileref="go-jump-today.png" format="PNG"/></imageobject
+> </inlinemediaobject
+> de la barra d'eines), s'inclourà el dia actual en la vista.</para>
+
+<sect2 id="whatsnext-view">
+<title
+>La vista «Què toca ara?»</title>
+
+<para
+>Aquesta vista mostra esdeveniments i tasques pendents en un format simple i molt llegible. Totes les tasques pendents obertes seran mostrades, però tan sols són visibles els esdeveniments dels dies seleccionats en el <guilabel
+>Navegador de dates</guilabel
+> de la barra lateral. Els esdeveniments i tasques pendents es mostren un per línia.</para>
+
+<para
+>Canvieu a la vista Què toca ara escollint l'element de menú <menuchoice
+><guimenu
+>Visualitza</guimenu
+><guimenuitem
+>Què toca ara</guimenuitem
+></menuchoice
+>.</para>
+
+</sect2>
+
+<sect2 id="list-view">
+<title
+>La vista Llista d'esdeveniments</title>
+<para
+>Aquesta vista mostra totes les tasques pendents, esdeveniments i entrades de diari de les dates seleccionades en el navegador de dates com una llista. Les tasques pendents obertes que no vencin durant les dates seleccionades no seran mostrades. Aquesta vista és bona per a mostrar molts elements diferents en una manera compacta. També és útil si els vostres esdeveniments esdevenen durant un llarg període de temps el que no apareguin completament en pantalla quan s'utilitza una de les altres vistes.</para>
+
+<para
+>Cada element es mostra un per línia. Les columnes mostren si un recordatori està establert (es mostrarà una icona de campana per a indicar quin recordatori està establert), si es repeteix múltiples vegades (una icona de fletxes de reciclatge vol dir que un esdeveniment es repeteix), la informació de l'hora d'inici i de fi. En passar el cursor per sobre d'un element apareix un consell amb informació detallada sobre l'element.</para>
+
+<para
+>Canvieu la pantalla a la vista de llista escollint l'element de menú <menuchoice
+><guimenu
+>Visualitza</guimenu
+><guimenuitem
+>Llista d'esdeveniments</guimenuitem
+></menuchoice
+>.</para>
+
+
+</sect2>
+
+<sect2 id="agenda-view">
+<title
+>La vista Agenda</title>
+
+<!--TODO: add agenda view options, color of resources and tags-->
+
+<para
+>La vista d'agenda presenta esdeveniments o tasques pendents vençudes fa un o més dies, ordenats cronològicament. També podeu veure la durada de cada esdeveniment en la taula horària del dia. Per a habilitar les vistes d'agenda escolliu l'element de menú <menuchoice
+><guimenu
+>Visualitza</guimenu
+><guimenuitem
+>Agenda</guimenuitem
+></menuchoice
+> o prement el botó <inlinemediaobject
+><imageobject
+><imagedata fileref="view-calendar-agenda.png" format="PNG"/></imageobject
+></inlinemediaobject
+> de la barra d'eines.</para>
+<para
+>Les vistes <guilabel
+>Dia</guilabel
+>, <guilabel
+>Setmana laboral</guilabel
+> i <guilabel
+>Setmana</guilabel
+> són variacions de la vista d'agenda. De fet, podeu establir els dies que s'han de mostrar a la vista d'agenda a qualsevol hora seleccionant-la en el navegador de dates.</para>
+<!--check bell + chasing-arrows icon here-->
+<para
+>L'hora s'indica en una barra de temps que hi ha al costat esquerre de la vista. Es disposa una barra de desplaçament a la dreta quan no es pot mostrar el dia sencer en una sola pantalla (el qual sol ser habitual). Cada rectangle de la vista representa un esdeveniment individual o una tasca pendent que venç en aquest moment, i mostra les hores d'inici i de fi a més d'un resum. Es mostra una icona de <guiicon
+>campana</guiicon
+> quan hi ha establert un recordatori, i una icona de <guiicon
+>fletxes de reciclatge</guiicon
+> quan es repeteix múltiples vegades. En passar el ratolí sobre un element de calendari apareix un consell amb la informació detallada de l'element. Per a fer que el &korganizer; mostri una línia vermella per a marcar l'hora actual del dia (la línia de Marcus Bains), marqueu la casella <guilabel
+>Mostra la línia de temps actual (Marcus Bains)</guilabel
+> en la <link linkend="config-main-views"
+>configuració de la vista del &korganizer;</link
+>.</para>
+
+<para
+>Es pot canviar la mida de qualsevol esdeveniment amb el ratolí. Simplement, moveu el punter del ratolí a prop del límit superior o inferior de l'esdeveniment i arrossegueu el límit amunt o avall. D'aquesta manera, podreu modificar visualment l'hora d'inici o de fi del vostre esdeveniment. Això també funciona en les vistes de setmana i setmana laboral. En altres paraules, és possible canviar les hores d'inici i de fi amb el ratolí simplement movent les vores superiors o inferiors de l'esdeveniment a l'hora nova.</para>
+
+<para
+>Qualsevol esdeveniment es pot tornar a planificar amb el ratolí. Moveu el punter del ratolí sobre l'esdeveniment i arrossegueu-lo cap a una localització nova d'hora. Això també funciona en les vistes de setmana i setmana laboral. Els esdeveniments es poden moure a altres dates encara que no estiguin visibles. Moveu el punter del ratolí sobre l'esdeveniment i arrossegueu-lo cap al navegador de dates.</para>
+
+<para
+>Atès que la vista d'agenda no pot contenir el dia sencer en la majoria de les pantalles, haureu de desplaçar-vos cap amunt i cap avall per a veure tot el dia. Hi ha un consell útil que us indica si hi ha algun esdeveniment no visible per sobre o per sota de la vista actual, es tracta d'una petita fletxa en la part inferior de la vista de cada dia apuntant cap amunt.</para>
+
+<tip
+><para
+>Hi ha dues dreceres molt útils per a afegir esdeveniments: <itemizedlist>
+<listitem
+><para
+>Feu doble clic sobre qualsevol regió de temps de l'esdeveniment, i el &korganizer; crearà automàticament un esdeveniment amb la durada predeterminada (el qual és personalitzable en el diàleg de preferències). Podeu afegir immediatament el resum. Els esdeveniments s'<quote
+>ajusten</quote
+> en increments de mitja hora, arrodonint a la mitja hora més propera d'on heu fet clic.</para
+></listitem>
+<listitem
+><para
+>Seleccioneu qualsevol regió d'hora oberta i feu doble clic sobre seu per a començar a escriure el resum de l'esdeveniment. El &korganizer; establirà automàticament la durada i l'hora d'inici segons l'àrea seleccionada a la vista d'agenda.</para
+></listitem>
+</itemizedlist>
+</para
+></tip>
+
+<para
+>Per a ajudar-vos a organitzar l'agenda, el color dels esdeveniments reflecteix les seves etiquetes, i segons la <link linkend="config-main-views"
+>configuració de la vista del &korganizer;</link
+>, també pot reflectir el seu <link linkend="managing-resources"
+>recurs</link
+>. De manera que, si assigneu <link linkend="categories-view"
+>etiquetes a esdeveniments</link
+> i <link linkend="config-main-colors"
+>colors diferents de les etiquetes</link
+>, podreu identificar ràpidament el tipus d'esdeveniment pel seu color. </para>
+
+<para
+>La vista d'agenda pot visualitzar esdeveniments de tots els vostres calendaris fusionats en una vista i mostrar una vista per calendari. També és possible disposar d'ambdues vistes en pestanya i es poden <link linkend="config-main-views"
+>personalitzar en el diàleg de preferències</link
+>. </para>
+
+<sect3 id="day-view">
+<title
+>La vista Dia</title>
+
+<para
+>Aquesta vista presenta la <link linkend="agenda-view"
+>vista d'agenda</link
+> per a un sol dia.</para>
+
+<para
+>Canvieu la pantalla a la vista de dia escollint l'element de menú <menuchoice
+><guimenu
+>Ves</guimenu
+><guimenuitem
+>Dia</guimenuitem
+></menuchoice
+> o prement el botó <inlinemediaobject
+><imageobject
+><imagedata fileref="go-jump-today.png" format="PNG"/></imageobject
+></inlinemediaobject
+><guilabel
+>Dia</guilabel
+> de la barra d'eines.</para>
+
+</sect3>
+
+<sect3 id="next-x-days-view">
+<title
+>La vista x dies següents</title>
+
+<para
+>Aquesta vista presenta la <link linkend="agenda-view"
+>vista d'agenda</link
+> per als propers dies, inici des d'avui. Podeu canviar el nombre de dies a mostrar en la <link linkend="config-main-views"
+>configuració de la vista del &korganizer;</link
+>. El valor predeterminat és 3.</para>
+
+<para
+>Canvieu la pantalla a la vista dels propers dies escollint l'element de menú <menuchoice
+><guimenu
+>Ves</guimenu
+><guimenuitem
+>x dies següents</guimenuitem
+></menuchoice
+>, (X representa el nombre de dies, normalment 3).</para>
+
+</sect3>
+
+
+<sect3 id="week-view">
+<title
+>La vista Setmana</title>
+
+<para
+>La vista de setmana proveeix una vista similar a la del dia. Els esdeveniments per als set dies es mostren com a una continuació de cada altra.</para>
+
+<para
+>Canvieu la pantalla a la vista de setmana escollint l'element de menú <menuchoice
+><guimenu
+>Ves</guimenu
+><guimenuitem
+>Setmana</guimenuitem
+></menuchoice
+> o premeu el botó <inlinemediaobject
+><imageobject
+><imagedata fileref="view-calendar-week.png" format="PNG"/></imageobject
+></inlinemediaobject
+><guilabel
+>Setmana</guilabel
+> de la barra d'eines.</para>
+
+</sect3>
+
+<sect3 id="workweek-view">
+<title
+>La vista Setmana laboral</title>
+
+<para
+>Aquesta és la mateixa vista que la de setmana, excepte que tan sols es mostren els dies laborables.</para>
+
+<para
+>Canvieu la pantalla a la vista de setmana laboral escollint l'element de menú <menuchoice
+><guimenu
+>Ves</guimenu
+><guimenuitem
+>Setmana laboral</guimenuitem
+></menuchoice
+>.</para>
+
+</sect3>
+
+</sect2>
+
+
+<sect2 id="month-view">
+<title
+>La vista Mes</title>
+
+<!--TODO: add month view options-->
+
+<para
+>La vista de mes mostra tots els esdeveniments i tasques pendents vençudes per al mes en curs en una familiar disposició de calendari de mes. Cada cel·la en la vista representa un dia, i cada dia conté tots els esdeveniments que puguin cabre en l'àrea que es proveeix (en maximitzar la finestra habilitareu veure més cites). La informació sobre la repetició i un estat del recordatori s'indica a través de les icones de <guiicon
+>campana</guiicon
+> i les <guiicon
+>fletxes de reciclatge</guiicon
+>, just com en les altres vistes.</para>
+
+<para
+>Navegueu per la vista de mes utilitzant les fletxes del navegador de dates, o els elements de botons des de la barra d'eines del menú <guilabel
+>Ves</guilabel
+>. Atès que l'àrea visible de la cel·la del dia pot no contenir tots els esdeveniments i tasques pendents, podeu utilitzar el teclat per a navegar pels elements, o podeu utilitzar les barres de desplaçament per a veure els esdeveniments i tasques pendents d'aquest dia.</para>
+
+<para
+>Passeu el ratolí sobre qualsevol element de calendari per a mostrar un consell amb els detalls de l'element. Feu doble clic sobre una àrea buida per a crear un esdeveniment, feu doble clic sobre qualsevol element de calendari per a editar-lo.</para>
+
+<para
+>Per a ajudar-vos a organitzar les vostres dades, el color dels esdeveniments poden reflectir les seves etiquetes i el seu <link linkend="managing-resources"
+>recurs</link
+>, segons la <link linkend="config-main-views"
+>configuració de la vista del &korganizer;</link
+>. De manera que, si assigneu <link linkend="categories-view"
+>etiquetes a esdeveniments</link
+> i <link linkend="config-main-colors"
+>colors diferents d'etiquetes</link
+>, podreu identificar el tipus d'esdeveniment (o de recurs) pel seu color. </para>
+
+<para
+>Canvieu la pantalla a la vista de mes escollint l'element de menú <menuchoice
+><guimenu
+>Visualitza</guimenu
+><guimenuitem
+>Vista de mes</guimenuitem
+></menuchoice
+> o prement el botó <inlinemediaobject
+><imageobject
+><imagedata fileref="view-calendar-month.png" format="PNG"/></imageobject
+></inlinemediaobject
+><guilabel
+>Mes</guilabel
+> de la barra d'eines.</para>
+
+</sect2>
+
+<!-- Timeline View-->
+
+<sect2 id="timeline-view">
+<title
+>La vista Línia de temps</title>
+
+<para
+>La vista de línia de temps mostra tots els esdeveniments per a l'interval de temps seleccionat en un diagrama de gantt. Cada calendari es visualitza en una línia separada. </para>
+
+<para
+>Passeu el ratolí sobre qualsevol element de calendari per a mostrar un consell amb els detalls de l'element. Feu doble clic sobre una àrea buida per a crear un esdeveniment, feu doble clic sobre qualsevol element de calendari per a editar-lo.</para>
+
+</sect2>
+
+<sect2 id="todo-view">
+<title
+>La Llista de tasques pendents</title>
+
+<para
+>La llista de tasques pendents proporciona un lloc perquè anoteu coses que necessiteu fer aviat (o a llarg termini). El component de barra lateral de la vista de les tasques pendents apareix sota el navegador de dates. També la podeu mostrar en el plafó principal si feu clic sobre el botó <inlinemediaobject
+><imageobject
+> <imagedata fileref="view-calendar-tasks.png" format="PNG"/></imageobject
+> </inlinemediaobject
+><guilabel
+>Llista de tasques pendents</guilabel
+> de la barra d'eines de visualització o si seleccioneu l'element de menú <menuchoice
+> <guimenu
+>Visualitza</guimenu
+><guimenuitem
+>Llista de tasques pendents</guimenuitem
+></menuchoice
+>.</para>
+
+<para
+>Podeu donar a una tasca pendent una <quote
+>data de venciment</quote
+>, en altres paraules, una data per a la qual haurà d'estar finalitzada.</para>
+
+<para
+>També podeu assignar prioritats a les tasques pendents, i apareixeran ordenades segons la seva prioritat. A un número més petit, una prioritat més gran, excepte el zero (0), que es defineix com a <quote
+>sense prioritat</quote
+>.</para>
+
+<para
+>Per a crear una entrada nova de tasca pendent, feu clic dret sobre el component de barra lateral de la vista de les tasques pendents, o la vista de la llista de tasques pendents, i escolliu l'element de menú <guimenuitem
+>Tasca pendent nova</guimenuitem
+> del menú. Si feu clic dret sobre una tasca pendent existent, obtindreu més opcions: podeu <guimenuitem
+>Mostra</guimenuitem
+> el resum, <guimenuitem
+>Edita...</guimenuitem
+> els detalls de la tasca pendent, <guimenuitem
+>Elimina</guimenuitem
+> la tasca pendent o crear una <guimenuitem
+>Subtasca pendent nova...</guimenuitem
+>. Per exemple, podríeu crear una tasca pendent molt gran com construir una casa, i crear subtasques pendents com escollir el lloc adequat per a construir, contractar un arquitecte, contractar als treballadors i, finalment celebrar una festa per als amics.</para>
+
+<para
+>Quan escolliu <guimenuitem
+>Tasca pendent nova...</guimenuitem
+>, apareixerà un diàleg que us permetrà introduir tota la <link linkend="entering-data-to-do"
+>informació</link
+> necessària.</para>
+
+<para
+>Feu clic sobre qualsevol tasca pendent de la llista per a ressaltar-la. Si feu clic sobre la casella de línia grossa a l'esquerra de la descripció de la tasca pendent, canviarà l'estat de <quote
+>finalitzada</quote
+>. Si feu doble clic sobre la descripció de la tasca pendent, podreu editar tots els seus detalls.</para>
+
+<para
+>També podeu triar <link linkend="managing-purge-archive"
+>Neteja les finalitzades</link
+> des del menú del &BDR; per a suprimir totes les entrades de tasca pendent que heu marcat com a finalitzades.</para>
+
+<para
+>Les tasques pendents també es poden arrossegar amb el ratolí per a tornar a ordenar la jerarquia o per a intercanviar les tasques pendents amb altres finestres de calendari. També podeu accedir a un <link linkend="other-features-drag-and-drop"
+>resum</link
+> de totes les operacions disponibles d'arrossegar i deixar.</para>
+</sect2>
+
+<sect2 id="journal-view">
+<title
+>La vista Diari</title>
+<para
+>La vista de diari proveeix un lloc en el qual registrar les vostres reflexions, ocurrències o experiències. Podeu mostrar la vista de diari en el mateix plafó si premeu el botó <inlinemediaobject
+><imageobject
+> <imagedata fileref="journal-new.png" format="PNG"/></imageobject
+> </inlinemediaobject
+><guilabel
+>Vista de diari</guilabel
+> de la barra d'eines o si escolliu l'element de menú <menuchoice
+><guimenu
+>Visualitza</guimenu
+><guimenuitem
+>Diari</guimenuitem
+> </menuchoice
+>.</para>
+
+<para
+>Quan feu clic sobre l'enllaç <guilabel
+>Diari nou...</guilabel
+> (o el botó <guibutton
+>New Journal...</guibutton
+>), es crea una entrada nova en el diari. Si voleu editar una entrada de diari, simplement feu clic sobre el quadre de text i editeu! Per a eliminar una entrada de diari, premeu el botó <inlinemediaobject
+> <imageobject
+><imagedata fileref="edit-delete.png" format="PNG"/> </imageobject
+></inlinemediaobject
+> suprimeix que hi ha al costat de la vista del diari.</para>
+
+</sect2>
+
+</sect1>
+
+<sect1 id="categories-view">
+<title
+>Etiquetes</title>
+
+<!--TODO: Add screenshot?-->
+
+<para
+>Per a ajudar-vos a organitzar les entrades en grups relacionats, podeu assignar etiquetes als esdeveniments, a les tasques pendents i a les entrades del diari. Si assigneu etiquetes, les podeu utilitzar posteriorment per a cercar, filtrar i mostrar esdeveniments, tasques pendents i entrades de diari.</para>
+
+<para
+>Per a assignar etiquetes quan es creen o editen nous <link linkend="entering-data-events-general"
+>esdeveniments</link
+> o <link linkend="entering-data-to-do-general"
+>tasques pendents</link
+>, feu clic sobre el botó <guibutton
+>...</guibutton
+> a la pestanya <guilabel
+>General</guilabel
+>. Podeu assignar més d'una etiqueta per a cada element.</para>
+
+<para
+>Per a crear, eliminar o editar etiquetes, escolliu l'element de menú <menuchoice
+> <guimenu
+>Arranjament</guimenu
+><guimenuitem
+>Gestiona les etiquetes...</guimenuitem
+> </menuchoice
+> per a obrir el diàleg <guilabel
+>Gestió de les etiquetes</guilabel
+>. Si assigneu <link linkend="config-main-colors"
+>colors diferents de les etiquetes</link
+>, podreu identificar el tipus d'esdeveniment pel seu color, bé a la vista d'agenda o a la vista de mes (segons la <link linkend="config-main-views"
+>configuració de la vista del &korganizer;</link
+>). </para>
+
+</sect1>
+
+<sect1 id="filters-view">
+<title
+>Filtres</title>
+
+<para
+>Per a ajudar-vos a visualitzar, trobar i exportar les vostres dades, podeu crear i utilitzar filtres per als vostres calendaris. De manera que, si no voleu veure les tasques pendents finalitzades, les podeu filtrar, en comptes de <link linkend="managing-purge-archive"
+>purgar-les</link
+>. Si assigneu etiquetes, les podreu utilitzar per a crear filtres.</para>
+
+<para
+>Per a crear, eliminar i editar filtres, escolliu l'element de menú <menuchoice
+> <guimenu
+>Arranjament</guimenu
+><guimenuitem
+>Gestiona els filtres de vista...</guimenuitem
+> </menuchoice
+> per a obrir el diàleg <guilabel
+>Edició dels filtres de calendari</guilabel
+>. Utilitzant aquest diàleg podreu crear, eliminar i editar els filtres que afectaran els elements que mostrarà el &korganizer;.</para>
+
+<!--TODO: Add detailed description of the dialog. Is it stable yet?-->
+
+<para
+>El submenú <menuchoice
+><guimenu
+>Visualitza</guimenu
+><guisubmenu
+>Filtre</guisubmenu
+></menuchoice
+> i el desplegable de la barra d'eines de filtres ofereix accés a tots els filtres disponibles creats utilitzant el diàleg <link linkend="menu-settings-edit-filters"
+><guilabel
+>Edició dels filtres de calendari</guilabel
+></link
+>. Per a activar i desactivar la visualització de la barra d'eines de filtres, escolliu <menuchoice
+><guimenu
+>Arranjament</guimenu
+> <guisubmenu
+>Barres d'eines mostrades</guisubmenu
+><guimenuitem
+>Barra d'eines de filtres</guimenuitem
+></menuchoice
+>. Si no voleu utilitzar cap filtre, escolliu <guilabel
+>Cap filtre</guilabel
+>.</para>
+
+<para
+>Els filtres són útils per <link linkend="managing-export"
+>exportar el vostre calendari</link
+>. Si useu un filtre, tan sols s'exportaran els elements filtrats (visibles). Els filtres també són més efectius quan els elements ja es troben classificats i organitzats per <link linkend="categories-view"
+>etiquetes</link
+>, atès que és fàcil crear filtres basats en etiquetes.</para>
+
+</sect1>
+
+<sect1 id="search-view">
+<title
+>Cercar</title>
+
+<para
+>Escolliu l'element de menú <menuchoice
+><guimenu
+>Edita</guimenu
+> <guimenuitem
+>Cerca</guimenuitem
+></menuchoice
+> o premeu la drecera <keycombo action="simul"
+>&Ctrl;<keycap
+>F</keycap
+></keycombo
+> per a trobar esdeveniments, tasques pendents o entrades de diari segons el seu títol, descripció i/o etiquetes. L'acció de cercar tan sols cercarà els camps especificats.</para>
+
+<tip
+><para
+>Podeu utilitzar caràcters especials si no recordeu el resum exacte. Si no coneixeu un caràcter del resum, poseu <userinput
+>?</userinput
+> en comptes del caràcter desconegut. Si no coneixeu més caràcters, useu <userinput
+>*</userinput
+>. Per exemple, si sabeu que l'esdeveniment o tasca pendent té una <emphasis
+>reunió</emphasis
+> al començament i un <emphasis
+>producte</emphasis
+> després, hauríeu d'escriure <userinput
+>reunió*producte</userinput
+> en el diàleg de cerca. El &korganizer; localitzarà entrades com <quote
+>Tasca pendent: Convocar una reunió per al producte nou</quote
+>, <quote
+>Reunió per a tractar l'antiga línia de productes</quote
+> i similars. No es fa distinció entre majúscules i minúscules.</para
+></tip>
+
+<para
+>El resultat de l'operació de trobar és una llista d'esdeveniments, entrades de diari i/o tasques pendents amb les paraules clau especificades. La llista amb les característiques de la cerca són les mateixes que en la <link linkend="list-view"
+>Vista de llista</link
+>.</para>
+
+<para
+>La llista resultant és activa. Podeu fer doble clic sobre una línia per a mostrar o editar els detalls de l'esdeveniment o de la tasca pendent. Obteniu més informació quant a aquests detalls en les seccions <xref linkend="entering-data-events"/> i <xref linkend="entering-data-to-do"/>.</para>
+
+</sect1>
+
+</chapter>
+
+<chapter id="entering-data"
+>  <!--updated to 5.4.40-->
+
+<title
+>Introduir dades</title>
+
+<sect1 id="entering-data-events">
+<title
+>Esdeveniments</title>
+
+<para
+>Els esdeveniments són cites en el futur o en el passat, com ara reunions de negocis, aniversaris personals i sortides al cinema. Un esdeveniment també pot durar diversos dies, com les vacances.</para>
+
+<para
+>Introduir un esdeveniment nou és molt fàcil. Senzillament, escolliu l'element de menú <menuchoice
+><guimenu
+>Accions</guimenu
+><guimenuitem
+>Esdeveniment nou...</guimenuitem
+></menuchoice
+>. A la part inferior apareixerà una finestra amb sis pestanyes.</para>
+
+<para
+>Si voleu utilitzar una manera diferent per a crear un esdeveniment nou:</para>
+
+<procedure>
+<step
+><para
+>Useu el navegador de dates per a anar a la data de l'esdeveniment.</para
+></step>
+
+<step
+><para
+>Canvieu a la vista <guilabel
+>Agenda</guilabel
+> i feu clic sobre la icona de la vista desitjada de la <guimenu
+>Barra d'eines de visualització</guimenu
+> o seleccioneu la vista desitjada des del menú <guimenu
+>Ves</guimenu
+>. Atès que el vostre esdeveniment comença a una hora concreta, haureu d'escollir una <link linkend="reference-menus-view"
+>vista</link
+> que mostri les hores del dia. Podeu escollir la vista de <guimenuitem
+>Dia</guimenuitem
+>, <guimenuitem
+>Setmana laboral</guimenuitem
+> o <guimenuitem
+>Setmana</guimenuitem
+>. La vista de <guimenuitem
+>Mes</guimenuitem
+> és més adequada per a les tasques pendents, descrites més endavant.</para
+></step>
+
+<step
+><para
+>En el plafó principal, feu doble clic en la data i hora en què comenci l'esdeveniment. </para
+></step>
+
+<step
+><para
+>A la part inferior apareixerà un diàleg amb sis pestanyes. Introduïu-hi les vostres dades tal com es descriu a continuació.</para
+></step>
+</procedure>
+
+<screenshot id="screenshot-event-general">
+<screeninfo
+>Una captura de pantalla del diàleg «Edita l'esdeveniment» del &korganizer;</screeninfo>
+<mediaobject>
+<imageobject
+><imagedata fileref="event-general.png" format="PNG"/></imageobject>
+<textobject
+><phrase
+>Una captura de pantalla del diàleg «Edita l'esdeveniment» del &korganizer;</phrase
+></textobject>
+<caption
+><para
+>Una captura de pantalla del diàleg «Edita l'esdeveniment» del &korganizer;</para
+></caption>
+</mediaobject>
+</screenshot>
+
+<para
+>Aquesta és una descripció dels camps i ginys de la finestra d'esdeveniments. No tots els camps s'han d'omplir; alguns es poden deixar buits. Llegiu la <link linkend="entering-data-required-fields"
+>secció de camps requerits</link
+> per a una informació més detallada. I si preferiu aprendre amb un exemple, n'hi ha un en la secció <link linkend="examples-entering-event"
+>Introduir esdeveniments</link
+>. </para>
+
+<variablelist>
+<varlistentry>
+<term
+><guilabel
+>Resum:</guilabel
+></term>
+<listitem
+><para
+>Introduïu una descripció curta de l'esdeveniment dintre del camp <guilabel
+>Resum</guilabel
+>. Aquesta descripció serà el text que es mostrarà sobre el plafó principal del &korganizer;.</para
+></listitem>
+</varlistentry>
+
+<varlistentry>
+<term
+><guilabel
+>Ubicació:</guilabel
+></term>
+<listitem
+><para
+>Introduïu la descripció curta de la <guilabel
+>Ubicació</guilabel
+> on tindrà lloc l'esdeveniment.</para
+></listitem>
+</varlistentry>
+
+<varlistentry>
+<term
+><guilabel
+>Comença</guilabel
+> i <guilabel
+>Acaba</guilabel
+></term>
+<listitem
+><para
+>El &korganizer; suggereix dates d'inici i fi del vostre esdeveniment. S'espera que els esdeveniments comencin i finalitzin en la mateixa data. Canvieu-les com desitgeu. Introduïu-les directament o useu el <link linkend="glossary" endterm="gloss-calendar-widget"
+>giny de calendari</link
+>. Seleccioneu l'hora en intervals de quart d'hora o introduïu l'hora desitjada directament en els camps d'hora. Aquests camps tan sols estan disponibles si no està marcada la casella <guilabel
+>Tot el dia</guilabel
+>.</para
+></listitem>
+</varlistentry>
+
+</variablelist>
+
+<sect2 id="entering-data-events-general">
+<title
+>La pestanya General</title>
+
+<variablelist>
+<varlistentry>
+<term
+>Detalls:</term>
+<listitem
+><para
+>Introduïu una descripció llarga de l'esdeveniment en el rectangle gran i sense títol. Hi podeu escriure tants detalls com vulgueu. Per exemple, si l'esdeveniment és un pla general de reparació del vostre cotxe, podeu anotar tots els elements a reparar. Després podreu imprimir aquesta llista i designar al mecànic. Si l'esdeveniment és anar de compres, podeu anotar les coses que us cal comprar. Imprimir l'esdeveniment i dur-lo a sobre durant la compra.</para
+></listitem>
+</varlistentry>
+
+<varlistentry>
+<term
+><guilabel
+>Etiquetes</guilabel
+></term>
+<listitem
+><para
+>Podeu assignar diverses <link linkend="categories-view"
+>etiquetes</link
+> a un element de calendari. Feu clic sobre el botó <guibutton
+>...</guibutton
+> per a mostrar totes les etiquetes disponibles. Marqueu les caselles d'etiqueta per a assignar-les a l'esdeveniment.</para>
+<para
+>Podeu afegir, modificar o eliminar una etiqueta en el diàleg <guilabel
+>Gestió de les etiquetes</guilabel
+>. Obriu aquest diàleg amb <menuchoice
+><guimenu
+>Arranjament</guimenu
+><guimenuitem
+>Gestiona les etiquetes...</guimenuitem
+></menuchoice
+> del menú.</para>
+
+<tip
+><para
+>La vostra classe d'idiomes en el treball pot pertànyer a les etiquetes Negocis i Educació, mentre que l'aniversari de la vostra boda pertany tant a Personal com a Ocasió especial -si aquesta és la vostra tria-.</para
+></tip>
+</listitem>
+</varlistentry>
+
+<varlistentry>
+<term
+><guilabel
+>Accés:</guilabel
+></term>
+<listitem
+><para
+>Escolliu <guilabel
+>Públic</guilabel
+>, <guilabel
+>Privat</guilabel
+> o <guilabel
+>Confidencial</guilabel
+> per a mantenir l'esdeveniment com a privat o confidencial. De moment, aquesta tria estableix correctament l'atribut <quote
+>CLASS</quote
+> dels esdeveniments com <quote
+>PUBLIC</quote
+>, <quote
+>PRIVATE</quote
+> o <quote
+>CONFIDENTIAL</quote
+>. De tota manera, si aquestes opcions s'usen realment per a restringir l'accés a informació segons el client i/o la implementació del servidor de treball en grup.</para>
+<warning
+><para
+>Actualment, el &korganizer; <emphasis
+>mostra</emphasis
+> els elements propietat d'altres persones i marcats com a confidencials. Altres clients els poden tractar de forma diferent, però cal tenir cura quan publiqueu esdeveniments privats o confidencials: iCalendar és un format de fitxer de text, i es pot llegir amb un editor de text (si hi teniu accés). De manera que si voleu mantenir els elements realment com a confidencials, assegureu-vos que useu un recurs al qual tan sols hi podeu accedir vós.</para
+></warning
+></listitem>
+</varlistentry>
+
+</variablelist>
+
+</sect2>
+
+<sect2 id="entering-data-events-attendees">
+<title
+>La pestanya Assistents</title>
+
+<para
+>Escolliu en aquesta pestanya la gent que voleu convidar a l'esdeveniment.</para>
+
+<screenshot id="screenshot-event-attendees">
+<screeninfo
+>Una captura de pantalla del diàleg «Edita l'esdeveniment» del &korganizer; -pestanya «Assistents»-</screeninfo>
+<mediaobject>
+<imageobject
+><imagedata fileref="event-attendees.png" format="PNG"/></imageobject>
+<textobject
+><phrase
+>Una captura de pantalla del diàleg «Edita l'esdeveniment» del &korganizer; -pestanya «Assistents»-</phrase
+></textobject>
+<caption
+><para
+>Una captura de pantalla del diàleg «Edita l'esdeveniment» del &korganizer; -pestanya «Assistents»-</para
+></caption>
+</mediaobject>
+</screenshot>
+
+<variablelist>
+<varlistentry>
+<term
+><guilabel
+>Organitzador de la reunió:</guilabel
+></term>
+<listitem
+><para
+>Estableix la identitat corresponent a l'organitzador d'aquesta tasca pendent o esdeveniment. Si el &korganizer; està configurat per a enviar correus d'invitació, la identitat seleccionada en aquest quadre combinat s'utilitzarà per a enviar aquests correus. La identitat predeterminada es pot establir en la secció <guilabel
+>Personal</guilabel
+> de la configuració del &korganizer;,. A més, les identitats s'obtenen de les vostres opcions del &kmail; i de la vostra llibreta d'adreces.</para
+></listitem>
+</varlistentry>
+
+<varlistentry>
+<term
+>Llista d'assistents</term>
+<listitem
+><para
+>La llista en el centre de la pestanya mostra els assistents seleccionats per a aquest esdeveniment, i us permet afegir assistents introduint el nom i l'adreça de correu electrònic, editar-los o eliminar-los.</para>
+<para
+>Si el/s assistent/s està/an en la vostra llibreta d'adreces, no haureu de recordar ni escriure la seva adreça de correu electrònic. Simplement feu clic sobre el botó <guibutton
+>Selecciona els assistents...</guibutton
+> i escolliu el/s assistents des de la llista. Si us plau, cal tenir present que aquesta és la llibreta d'adreces estàndard del &kde;, el qual també l'empra el &kmail; i també es pot cridar des d'una aplicació separada (&kaddressbook;).</para>
+</listitem>
+</varlistentry>
+
+<varlistentry>
+<term
+>Participants</term>
+<listitem
+><para
+>Escolliu el paper de l'assistent (Participant, Participant opcional, Observador, President) des del menú de llista desplegable al costat esquerre d'una entrada. El paper és un recordatori simple de quin paper juga l'assistent en aquest esdeveniment. </para
+></listitem>
+</varlistentry>
+
+<varlistentry>
+<term
+>Estat</term>
+<listitem
+><para
+>Escolliu l'estat de l'assistent (Es necessita una acció, Acceptada, Declinada, Provisional, Delegada) des del menú desplegable al costat esquerre d'una entrada. Si useu la planificació de treball en grup i demaneu respostes dels assistents, quan aneu rebent les confirmacions s'anirà actualitzant l'estat de l'assistent. Si no demaneu confirmacions, haureu d'actualitzar l'estat manualment.</para
+></listitem>
+</varlistentry>
+
+<varlistentry>
+<term
+>Demana resposta</term>
+<listitem
+><para
+>Seleccioneu <guilabel
+>Sol·licita resposta</guilabel
+> des de la llista desplegable si aquest assistent ha de respondre a la vostra planificació. En conseqüència, s'enviaran correus electrònics als assistents amb la informació de planificació de l'esdeveniment. Apareixerà un petit sobre en la llista d'assistents per a indicar-ho. Aquesta característica és especialment útil quan està habilitada la planificació de treball en grup, de manera que l'estat dels assistents serà actualitzat automàticament.</para
+></listitem>
+</varlistentry>
+
+ <!-- Participiants: no conflicts Reschedule button
+ What is that? How does it work?-->
+
+</variablelist>
+
+</sect2>
+
+<!--Fixme Resources tab missing -->
+
+<sect2 id="entering-data-events-reminder">
+<title
+>La pestanya Recordatori</title>
+<variablelist>
+<varlistentry>
+<term
+>Recordatori</term>
+<listitem
+><para
+>Seleccioneu un recordatori predeterminat a la llista desplegable i premeu <guibutton
+>Afegeix</guibutton
+> si el &korganizer; haurà de recordar-vos un esdeveniment.</para>
+<para
+>Useu el botó <guibutton
+>Configura</guibutton
+> per a obrir el diàleg <guilabel
+>Edició d'un recordatori existent</guilabel
+>. Utilitzant aquest diàleg, podreu escollir quants minuts, hores o dies abans o després comença o finalitza el recordatori, podreu establir intervals de repetició per als vostres recordatoris i crear recordatoris especials que mostrin text o reprodueixin sons.</para>
+</listitem>
+</varlistentry>
+
+</variablelist>
+
+</sect2>
+
+<sect2 id="entering-data-events-recurrence">
+<title
+>La pestanya Recurrència</title>
+
+<para
+>Alguns esdeveniments succeeixen amb regularitat. Podeu especificar aquí la seva planificació exacta.</para>
+
+<screenshot id="screenshot-event-recurrence">
+<screeninfo
+>Una captura de pantalla del diàleg «Edita l'esdeveniment» del &korganizer; -pestanya «Recurrència»-</screeninfo>
+<mediaobject>
+<imageobject
+><imagedata fileref="event-recurrence.png" format="PNG"/></imageobject>
+<textobject
+><phrase
+>Una captura de pantalla del diàleg «Edita l'esdeveniment» del &korganizer; -pestanya «Recurrència»-</phrase
+></textobject>
+<caption
+><para
+>Una captura de pantalla del diàleg «Edita l'esdeveniment» del &korganizer; -pestanya «Recurrència»-</para
+></caption>
+</mediaobject>
+</screenshot>
+
+<note
+><para
+>Per a activar les opcions, comenceu seleccionant una regla de recurrència a la dreta de <guilabel
+>Repeticions</guilabel
+> des de la llista desplegable. Si <guilabel
+>Mai</guilabel
+> està seleccionat, no podreu fer cap canvi sobre aquesta pestanya.</para
+></note>
+
+<sect3 id="recurrence-recurrence-rule">
+<title
+>Regla de recurrència</title>
+
+<para
+>Escolliu si voleu repetir aquest esdeveniment diàriament, setmanalment, mensualment o anualment. A continuació es detallen més opcions:</para>
+
+<variablelist>
+<varlistentry>
+<term
+><guilabel
+>Diàriament</guilabel
+></term>
+<listitem
+><para
+>Especifica si l'esdeveniment succeeix cada dia (1), cada dia (2) i així successivament.</para
+></listitem>
+</varlistentry>
+
+<varlistentry>
+<term
+><guilabel
+>Setmanalment</guilabel
+></term>
+<listitem
+><para
+>Especifica si l'esdeveniment succeeix cada setmana (1), cada setmana (2) i així successivament. També especifica els dies (de dilluns a diumenge) en els que succeeix l'esdeveniment. </para
+></listitem>
+</varlistentry>
+
+<varlistentry>
+<term
+><guilabel
+>Mensualment</guilabel
+></term>
+<listitem
+><para
+>Podeu fer que l'esdeveniment succeeixi el mateix dia del mes o en una setmana específica d'un dia específic de la setmana. Heu de seleccionar entre aquestes dues possibilitats. De manera predeterminada, el &korganizer; assumeix que voleu repetir el mateix dia de calendari del mes (per exemple, el 15è). També podeu ajustar el període, de manera que es pot repetir mensualment, cada tres mesos i així successivament.</para
+></listitem>
+</varlistentry>
+
+<varlistentry>
+<term
+><guilabel
+>Anualment</guilabel
+></term>
+<listitem>
+<para
+>És similar a mensual. Necessiteu escollir si indicareu un dia de l'any en el calendari (&pex;, el dia 250 de l'any), en una setmana específica d'un dia de la setmana del mes específic (&pex;, el 2n dimarts de març), o el dia del mes d'un mes específic de l'any. De manera predeterminada, el &korganizer; assumeix que el dia del mes és correcte. Podeu ajustar el període per a reflectir esdeveniments que succeeixin cada dos anys, cada quatre anys, i així successivament.</para>
+</listitem>
+</varlistentry>
+</variablelist>
+</sect3>
+
+<sect3 id="recurrence-recurrence-range">
+<title
+>Interval de repetició</title>
+
+<para
+>De manera predeterminada, els esdeveniments que es repeteixin ho faran per sempre; no hi ha <quote
+>fi</quote
+> a la repetició. Això pot ser o no desitjable, de manera que sereu capaç de finalitzar la repetició seleccionant una data final o un nombre de repeticions.</para>
+
+</sect3>
+
+<sect3 id="recurrence-exceptions">
+<title
+>Excepcions</title>
+
+<para
+>Podeu tenir establerta una regla de repetició molt bona, però adonar-vos que hi ha algunes excepcions. Si per exemple configureu el vostre horari de classes, potser voldreu fer excepcions per als festius i similars. En aquesta àrea, podeu afegir, canviar i suprimir dates des de la llista d'excepcions (&pex;, hores per en què si coincideix la regla de repetició, l'esdeveniment <emphasis
+>no serà planificat</emphasis
+>). Trieu una data amb el selector de dates i premeu <guibutton
+>Afegeix</guibutton
+> per a incloure-la. Per a suprimir dates, ressalteu-les en el quadre del costat dret i llavors feu clic sobre <guibutton
+>Suprimeix</guibutton
+>.</para>
+
+</sect3>
+</sect2>
+
+<sect2 id="entering-data-events-attachments">
+<title
+>Adjunts</title>
+
+<para
+>Els esdeveniments i tasques pendents poden contenir adjunts. Els adjunts es poden emmagatzemar com enllaços o inclosos. Per a afegir un adjunt, premeu el botó <guibutton
+>Afegeix</guibutton
+>.</para>
+
+<screenshot id="screenshot-event-attachments">
+<screeninfo
+>Una captura de pantalla del diàleg «Edita l'esdeveniment» del &korganizer; -pestanya «Adjunts»-</screeninfo>
+<mediaobject>
+<imageobject
+><imagedata fileref="event-attachments.png" format="PNG"/></imageobject>
+<textobject
+><phrase
+>Una captura de pantalla del diàleg «Edita l'esdeveniment» del &korganizer; -pestanya «Adjunts»-</phrase
+></textobject>
+<caption
+><para
+>Una captura de pantalla del diàleg «Edita l'esdeveniment» del &korganizer; -pestanya «Adjunts»-</para
+></caption>
+</mediaobject>
+</screenshot>
+
+<para
+>Si marqueu <guilabel
+>Emmagatzema l'adjunt inclòs</guilabel
+> fareu que l'adjunt s'emmagatzemi dins del calendari, el qual pot prendre força espai depenent de la grandària de l'adjunt. Si aquesta opció no està marcada, només es desarà un enllaç que apunta a l'adjunt. No useu un enllaç per a adjunts que canvien sovint o que es puguin moure (o eliminar) de la seva ubicació actual.</para>
+
+<para
+>Es proporcionen les següents opcions del menú contextual per a treballar amb adjunts:</para>
+
+<variablelist>
+
+<varlistentry>
+<term
+><guimenuitem
+>Obre</guimenuitem
+></term>
+<listitem
+><para
+>Mostra l'adjunt seleccionat amb l'aplicació associada.</para
+></listitem>
+</varlistentry>
+
+<varlistentry>
+<term
+><guimenuitem
+>Desa com a...</guimenuitem
+></term>
+<listitem
+><para
+>Permet desar un adjunt existent amb un nom diferent.</para
+></listitem>
+</varlistentry>
+
+<varlistentry>
+<term
+><guimenuitem
+>Copia</guimenuitem
+>, <guimenuitem
+>Retalla</guimenuitem
+> i <guimenuitem
+>Enganxa</guimenuitem
+></term>
+<listitem
+><para
+>Permet copiar, tallar i enganxar des del porta-retalls.</para
+></listitem>
+</varlistentry>
+
+<varlistentry>
+<term
+><guimenuitem
+>Elimina</guimenuitem
+></term>
+<listitem
+><para
+>Elimina l'adjunt seleccionat.</para
+></listitem>
+</varlistentry>
+
+<varlistentry>
+<term
+><guimenuitem
+>Propietats...</guimenuitem
+></term>
+<listitem
+><para
+>Permet canviar un adjunt existent.</para
+></listitem>
+</varlistentry>
+
+</variablelist>
+
+</sect2>
+
+<!--FIXME works with certain type of calendars e.g. google calendar ?-->
+<sect2 id="entering-data-events-freebusy">
+<title
+>La pàgina Lliure/ocupat</title>
+
+<para
+>Quan afegiu assistents a l'esdeveniment, necessitareu saber si estan ocupats o disponibles en aquesta hora en particular. Si els assistents tenen disponible la seva informació de lliure/ocupat, podreu visualitzar-la abans d'enviar-los les invitacions.</para>
+
+<para
+>Això mostra a la dreta el gràfic horari per a lliure/ocupat, on cada línia representa un dels assistents, llistat a l'esquerra. Les àrees marcades en el gràfic representen el temps ja pres pels altres esdeveniments, les àrees sense marcar representen el temps lliure dels altres esdeveniments. Podeu moure l'esdeveniment a un punt diferent en el temps arrossegant-lo amb el ratolí, o canviar la seva mida movent les vores de l'àrea ressaltada amb el ratolí.</para>
+
+<para
+>La informació de lliure/ocupat només estarà disponible si l'assistent publica la seva planificació de lliure/ocupat, i si el &korganizer; està correctament configurat per a recuperar-la. Per a més informació sobre com configurar el &korganizer; per a publicar i recuperar aquesta informació, si us plau, comproveu el <xref linkend="config"/>. Feu doble clic a una entrada a la llista d'assistents i podreu introduir la ubicació de la vostra informació de lliure/ocupat. </para>
+
+<variablelist>
+
+<varlistentry>
+<term
+><guilabel
+>Escala</guilabel
+></term>
+<listitem
+><para
+>Establiu el nivell d'ampliació del gràfic horari: <guilabel
+>Hora</guilabel
+> mostra un interval de diverses hores,<guilabel
+>Dia</guilabel
+> mostra un interval de diversos dies, <guilabel
+>Setmana</guilabel
+> mostra un interval d'uns pocs mesos, i <guilabel
+>Mes</guilabel
+> mostra un interval d'uns pocs mesos, mentre que <guilabel
+>Automàtic</guilabel
+> selecciona l'interval més adequat per a l'esdeveniment o tasca pendent actual.</para
+></listitem>
+</varlistentry>
+
+<varlistentry>
+<term
+><guibutton
+>Centra en iniciar</guibutton
+></term>
+<listitem
+><para
+>Premeu aquest botó per a centrar el diagrama que programa lliure/ocupat a l'hora d'inici i el dia de l'esdeveniment.</para
+></listitem>
+</varlistentry>
+
+<varlistentry>
+<term
+><guibutton
+>Selecciona una data</guibutton
+></term>
+<listitem
+><para
+>Premeu aquest botó per a moure automàticament l'esdeveniment a una data i hora en la qual tots els assistents tinguin temps disponible.</para
+></listitem>
+</varlistentry>
+
+<varlistentry>
+<term
+><guibutton
+>Torna a carregar</guibutton
+></term>
+<listitem
+><para
+>Premeu aquest botó per a tornar a carregar les dades de lliure/ocupat de tots els assistents des dels seus servidors corresponent.</para
+></listitem>
+</varlistentry>
+
+</variablelist>
+
+<para
+>Quan vulgueu confirmar, cancel·lar o revertir les dades introduïdes, escolliu entre els botons d'acció <guibutton
+>D'acord</guibutton
+>, <guibutton
+>Aplica</guibutton
+> i <guibutton
+>Cancel·la</guibutton
+>.</para>
+
+</sect2>
+
+<sect2 id="entering-data-events-template-buttons">
+<title
+>Gestionar les plantilles</title>
+
+<para
+>El botó <guilabel
+>Gestiona les plantilles</guilabel
+> obre un diàleg que us permet desar l'esdeveniment actual com a una plantilla, per a poder tornar a utilitzar les dades que introduïu en futurs esdeveniments. Com a exemple, podeu desar una plantilla per a una reunió que es produeixi en el mateix lloc i amb la mateixa gent.</para>
+<para
+>Amb el botó <guilabel
+>Aplica</guilabel
+> podeu utilitzar qualsevol plantilla existent per a l'esdeveniment. Continuant amb l'exemple en el paràgraf anterior, podeu especificar l'agenda de la reunió.</para>
+
+</sect2>
+
+</sect1>
+
+<sect1 id="entering-data-to-do">
+<title
+>Tasques pendents</title>
+
+<para
+>La llista de tasques pendents és una llista on escriure notes personals sobre coses que heu de fer. Les tasques pendents són tasques, que es poden o no planificar. Hi ha tasques pendents a curt i a llarg termini. Per exemple, podeu anar a una perruqueria en una setmana, i podeu vendre el vostre cotxe vell en un any. Probablement no voldreu que aparegui un recordatori en cap data en particular, simplement voleu tenir una llista de coses a fer, i les dates en les que han d'estar finalitzades (data de venciment).</para>
+
+<para
+>Per a introduir una tasca pendent nova, escolliu <menuchoice
+><guimenu
+>Accions</guimenu
+><guimenuitem
+>Tasca pendent nova...</guimenuitem
+></menuchoice
+>. A baix apareixerà una finestra amb quatre pestanyes.</para>
+
+<sect2 id="entering-data-to-do-general">
+<title
+>La pestanya General</title>
+
+<screenshot id="screenshot-todo-general">
+<screeninfo
+>Una captura de pantalla del diàleg «Edita la tasca pendent» del &korganizer;</screeninfo>
+<mediaobject>
+<imageobject
+><imagedata fileref="todo-general.png" format="PNG"/></imageobject>
+<textobject
+><phrase
+>Una captura de pantalla del diàleg «Edita la tasca pendent» del &korganizer;</phrase
+></textobject>
+<caption
+><para
+>Una captura de pantalla del diàleg «Edita la tasca pendent» del &korganizer;</para
+></caption>
+</mediaobject>
+</screenshot>
+
+<para
+>Aquesta pestanya comparteix un munt d'opcions amb el diàleg <guilabel
+>Edita l'esdeveniment</guilabel
+>, però disposa d'alguns elements addicionals per a les tasques pendents:</para>
+
+<variablelist>
+<varlistentry>
+<term
+><guilabel
+>Compleció</guilabel
+></term>
+<listitem
+><para
+>Aquest és un menú del percentatge completat, inicialment establert al 0% complet. Després, podreu anar indicant el seu progrés ajustant el percentatge completat en passos de 10%.</para
+></listitem>
+</varlistentry>
+
+<varlistentry>
+<term
+><guilabel
+>Prioritat</guilabel
+></term>
+<listitem
+><para
+>Assigna una prioritat a la tasca pendent. Aquest menú desplegable ofereix prioritats des d'u fins a nou, sent u la més alta. Inicialment les tasques pendents s'estableixen amb prioritat cinc (mitjana).</para
+></listitem>
+</varlistentry>
+</variablelist>
+
+</sect2>
+
+</sect1>
+
+<sect1 id="entering-data-required-fields">
+
+<title
+>Camps requerits</title>
+
+<para
+>Aquest és un resum de quins camps són requerits i quins camps es poden deixar buits quan s'introdueixen esdeveniments i tasques pendents:</para>
+
+<itemizedlist>
+<listitem
+><para
+>Heu d'emplenar el camp <guilabel
+>Resum</guilabel
+>.</para
+></listitem>
+<listitem
+><para
+>La pestanya <guilabel
+>General</guilabel
+> es pot deixar completament buida.</para
+></listitem>
+<listitem
+><para
+>Si marqueu la casella de selecció <guilabel
+>Recordatori</guilabel
+>, també haureu d'especificar l'hora i el so a reproduir, o el programa a executar.</para
+></listitem>
+<listitem
+><para
+>La pestanya <guilabel
+>Assistents</guilabel
+> es pot deixar completament buida.</para
+></listitem>
+<listitem
+><para
+>La pestanya <guilabel
+>Recurrència</guilabel
+> tan sols s'ha d'omplir si heu seleccionat repetició diària, setmanal, mensual o anual. </para
+></listitem>
+<listitem
+><para
+>El diàleg <guilabel
+>Adjunts</guilabel
+> es pot deixar completament buit.</para
+></listitem>
+</itemizedlist>
+</sect1>
+</chapter>
+
+<chapter id="group-scheduling"
+>   <!--updated to 5.4.40-->
+<title
+>La pàgina Planificació de grups</title>
+
+<para
+>La funcionalitat de planificació de grups del &korganizer; us permet organitzar cites, reunions i tasques pendents compartides, sol·licituds de confirmació als assistents i publicar elements. Si esteu invitat a un esdeveniment o a una tasca pendent, la podeu respondre, indicant si hi podeu assistir, o enviar una contraproposta, amb una proposta diferent, com una hora o una localització diferent. També podeu publicar la vostra planificació de lliure/ocupat per a permetre a la gent conèixer quan esteu disponible i també per a poder demanar aquesta mateixa informació a altres persones.</para>
+
+<para
+>Actualment, el &korganizer; planifica els esdeveniments i les tasques pendents utilitzant el correu electrònic per a transportar les dades, en un esquema basat en estàndards, el protocol IMIP per a planificació de grups. En ser un estàndard, IMIP també s'utilitza per a molts altres clients. Per exemple, &Microsoft; <application
+>Outlook</application
+>, Lotus <application
+>Notes</application
+> i Novell <application
+>Evolution</application
+>. Això vol dir que podreu compartir els esdeveniments amb altres usuaris que usin aquests clients. El &korganizer; està integrat amb el &kmail; per a rebre, processar i enviar esdeveniments així com per a respondre actualitzacions, cancel·lacions, &etc; De fet, quan envieu una invitació des del &kmail; i decidiu acceptar-la fent clic en l'enllaç <guilabel
+>accepta</guilabel
+> en el cos del correu, l'esdeveniment serà afegit al vostre calendari i s'enviarà automàticament una resposta a l'organitzador de l'esdeveniment.</para>
+
+
+<!--TODO: check if to-dos work or not.-->
+<!--TODO: check what happens if you counter without this option on.-->
+
+<para
+>Si marqueu la casella <guilabel
+>Usa la comunicació de treball en grup</guilabel
+> en la <link linkend="config-main-groupscheduling"
+>configuració de la planificació de grups del &korganizer;</link
+>. El &korganizer; gestionarà per vós la comunicació de la planificació per grups. En altres paraules, potser us caldrà utilitzar directament el menú <guimenu
+>Planifica</guimenu
+> per a realitzar les accions de planificació. De fet, si <link linkend="entering-data-events"
+>creeu un esdeveniment o una tasca pendent</link
+> amb assistents, el &korganizer; us demanarà si voleu enviar les invitacions als assistents, de manera que no haureu d'utilitzar posteriorment l'element de menú <menuchoice
+><guimenu
+>Planifica</guimenu
+><guimenuitem
+>Envia una invitació als assistents</guimenuitem
+></menuchoice
+>. També, si canvieu el vostre estat com assistent a un esdeveniment al qual se us ha invitat, us demanarà si voleu enviar una actualització a l'organitzador de l'esdeveniment, de manera que després haureu d'utilitzar l'element de menú <menuchoice
+><guimenu
+>Planifica</guimenu
+> <guimenuitem
+>Envia una actualització de l'estat</guimenuitem
+></menuchoice
+>.</para>
+
+
+
+<sect1 id="publish">
+<title
+>Publicar un esdeveniment, una tasca pendent o una entrada de diari</title>
+
+<para
+>Si l'únic que voleu és enviar un esdeveniment, una tasca pendent o una entrada de diari, escolliu l'element de menú <menuchoice
+><guimenu
+>Planifica</guimenu
+><guimenuitem
+>Publica la informació de l'element...</guimenuitem
+></menuchoice
+>, quan l'element està seleccionat. Després d'això, apareixerà un diàleg, us demanarà l'adreça de correu electrònic que rebrà l'esdeveniment o tasca pendent. L'element serà enviat per correu electrònic, en format iCalendar.</para>
+
+<para
+>Si us plau, cal tenir present que podeu utilitzar aquesta acció per a enviar per correu electrònic tot element a qualsevol persona, no tan sols als assistents a l'esdeveniment. De fet, el podeu publicar sense assistents, atès que en publicar-lo no es demanarà confirmació als assistents.</para>
+
+<para
+>Un exemple: toqueu en un grup i, de tant en tant, feu concerts en directe. Per a notificar als/les vostres fans els concerts, podeu tenir una llista de correu. Si useu el &korganizer; per a organitzar les dates, podeu simplement escollir l'element de menú <menuchoice
+><guimenu
+>Planifica</guimenu
+><guimenuitem
+>Publica la informació de l'element...</guimenuitem
+></menuchoice
+>, posar l'adreça de la llista de correu i l'esdeveniment serà enviat. Els subscriptors de la llista de correu que usin el &korganizer; tindran inserida automàticament la data del concert en els seus calendaris. </para>
+
+<para
+>En publicar un esdeveniment com es descriu anteriorment només informarà sobre l'esdeveniment al receptor, però no us donarà l'opció de preguntar l'assistència. Utilitzeu <menuchoice
+><guimenu
+>Planifica</guimenu
+><guimenuitem
+>Envia com a iCalendar...</guimenuitem
+></menuchoice
+> si voleu proporcionar aquesta opció. </para>
+
+</sect1>
+
+
+<sect1 id="as-organizer">
+<title
+>Actuar com a organitzador en la planificació de grups</title>
+
+<para
+>Quan creeu <link linkend="entering-data-events"
+>un esdeveniment</link
+> o <link linkend="entering-data-to-do"
+>una tasca pendent</link
+> i <link linkend="entering-data-events-attendees"
+>hi afegiu assistents</link
+>, estareu actuant com a organitzador de l'esdeveniment. Per a afegir assistents, useu la <link linkend="entering-data-events-attendees"
+>pestanya «Assistent»</link
+>, en el diàleg <guilabel
+>Edita l'esdeveniment</guilabel
+> o <guilabel
+>Edita la tasca pendent</guilabel
+>. En la <link linkend="agenda-view"
+>vista d'agenda</link
+>, una petita icona <inlinemediaobject
+><imageobject
+><imagedata fileref="organizer.png" format="PNG"/></imageobject
+><textobject
+> <phrase
+>d'organitzador</phrase
+></textobject
+></inlinemediaobject
+> serà situada en l'esdeveniment, si sou l'organitzador d'un esdeveniment de planificació de grup.</para>
+
+<para
+>L'organitzador és el responsable d'enviar les invitacions, recopilar les confirmacions dels assistents i mantenir actualitzades per a totes les persones implicades en l'esdeveniment o tasca pendent.</para>
+
+<sect2 id="request">
+<title
+>Enviar invitacions i processar les respostes</title>
+
+<para
+>Per a organitzar un esdeveniment o una tasca pendent, <link linkend="entering-data-events"
+>creeu-la</link
+> en el &korganizer; i afegiu totes les persones que haurien d'assistir utilitzant la pestanya assistents. El &korganizer; pot enviar invitacions als assistents, bé automàticament (segons la <link linkend="config-main-groupscheduling"
+>configuració de la planificació de grups del &korganizer;</link
+>), o seleccionant l'esdeveniment o tasca pendent i escollint l'element de menú <menuchoice
+><guimenu
+>Planifica</guimenu
+><guimenuitem
+>Envia una invitació als assistents</guimenuitem
+></menuchoice
+>. Els assistents rebran un correu electrònic amb tota la informació apropiada de l'esdeveniment o tasca pendent. Poden respondre a la proposta de reunió acceptant-la o rebutjant-la, o fer una contraproposta. Tota aquesta informació es torna a enviar per correu electrònic i, si heu configurat bé el &kmail;, les respostes dels assistents s'inseriran automàticament en el vostre calendari. Si hi ha assistents addicionals disposats a participar (per exemple, acceptant una invitació enviada), se us demanarà que accepteu els nous assistents. </para>
+
+</sect2>
+
+<sect2 id="cancel">
+<title
+>Cancel·lar un esdeveniment o una tasca pendent</title>
+
+<para
+>Per a cancel·lar un esdeveniment o una tasca pendent, haureu de ser-ne l'organitzador. Si marqueu la casella <guilabel
+>Usa la comunicació de treball en grup</guilabel
+> en <link linkend="config-main-groupscheduling"
+>la configuració de planificació de grups del &korganizer;</link
+>, simplement suprimiu l'element i el &korganizer; us demanarà si voleu enviar la cancel·lació. Si no, simplement seleccioneu l'element i escolliu l'element de menú <menuchoice
+><guimenu
+>Planifica</guimenu
+><guimenuitem
+>Envia la cancel·lació als assistents</guimenuitem
+></menuchoice
+>.</para>
+
+<para
+>Aquesta acció envia un missatge de cancel·lació a tots els assistents, de manera que també puguin eliminar l'element dels seus calendaris.</para>
+</sect2>
+</sect1>
+
+
+<sect1 id="as-attendee">
+<title
+>Actuar com assistent</title>
+
+<para
+>Quan rebeu un correu electrònic amb una invitació i l'accepteu, l'esdeveniment o tasca pendent serà afegida al vostre calendari. Si és un esdeveniment, se situa una petita icona <inlinemediaobject
+><imageobject
+><imagedata fileref="meeting-attending.png" format="PNG"/> </imageobject
+> <textobject
+> <phrase
+>d'assistent</phrase
+> </textobject
+> </inlinemediaobject
+> en l'esdeveniment en la <link linkend="agenda-view"
+>vista d'agenda</link
+>.</para>
+
+<sect2 id="reply">
+<title
+>Respondre a una invitació</title>
+
+<para
+>Si teniu una invitació en la vostra bústia del &kmail;, podeu prémer <guibutton
+>Rebutja</guibutton
+> per a ignorar la petició, o prémer <guibutton
+>Accepta</guibutton
+> o <guibutton
+>Accepta cond.</guibutton
+>. Les dues últimes accions inseriran l'element al vostre calendari. En qualsevol cas, &kmail; enviarà automàticament la vostra resposta a l'organitzador.</para>
+
+<para
+>També podeu establir <guibutton
+>Delega</guibutton
+> o <guibutton
+>Reenvia</guibutton
+> la invitació. Quan es delegui, podreu suggerir una altra persona com al vostre intermediari. Utilitzant <guibutton
+>Reenvia</guibutton
+> podreu tornar a enviar la invitació a una o més persones encara no invitades. Quan el receptor de la delegació o el reenviament accepti la invitació, se li demanarà a l'organitzador que aprovi al nou assistent.</para>
+
+<para
+>Si per qualsevol motiu canvieu d'idea, editeu el vostre estat en la <link linkend="entering-data-events-attendees"
+>pestanya «Assistent»</link
+> de l'element. Si marqueu la casella <guilabel
+>Usa la comunicació de treball en grup</guilabel
+> en la <link linkend="config-main-groupscheduling"
+>configuració de la planificació de grups del &korganizer;</link
+>, el &korganizer; us demanarà si voleu enviar un correu electrònic actualitzant el vostre estat d'assistència. Si no, escolliu l'element <menuchoice
+><guimenu
+>Planifica</guimenu
+><guimenuitem
+>Envia una actualització de l'estat</guimenuitem
+></menuchoice
+> del menú per a actualitzar el vostre estat. </para>
+</sect2>
+
+<sect2 id="counter">
+<title
+>Enviar una proposta alternativa</title>
+
+
+<para
+>Si no esteu satisfet amb alguna de les característiques de l'esdeveniment o de la tasca pendent a la que heu estat invitat, i voleu enviar una contraproposta a l'organitzador (per exemple, una localització o horari alternatiu), simplement editeu l'element i envieu-lo de volta com a proposta, seleccionant l'element i escollint l'element de menú <menuchoice
+><guimenu
+>Planifica</guimenu
+><guimenuitem
+>Petició de canvi</guimenuitem
+></menuchoice
+>.</para>
+
+<para
+>L'organitzador de l'esdeveniment rebrà per correu electrònic la vostra proposta, i la podrà acceptar o declinar.</para>
+</sect2>
+
+<sect2 id="refresh">
+
+<title
+>Demanar l'última versió d'un esdeveniment o d'una tasca pendent</title>
+
+<para
+>Per a demanar l'última versió d'un esdeveniment o d'una tasca pendent, seleccioneu l'element, i escolliu l'element de menú <menuchoice
+><guimenu
+>Planifica</guimenu
+> <guimenuitem
+>Petició d'actualització</guimenuitem
+></menuchoice
+>. L'organitzador hauria d'enviar-vos l'última versió de l'element.</para>
+
+</sect2>
+</sect1>
+
+<sect1 id="free-busy">
+<title
+>Informació sobre lliure/ocupat</title>
+
+<para
+>La informació sobre lliure/ocupat representa una planificació de la disponibilitat. Presentant els intervals quan algú ja té compromisos previs, els altres podran evitar planificar cites per a aquests períodes. Cal tenir present que tan sols es publiquen les hores, no els esdeveniments, motius ni assistents.</para>
+
+<para
+>El &korganizer; accepta la publicació i rebuda d'informació sobre lliure/ocupat, bé manualment o automàticament.</para>
+
+<para
+>Per a enviar per correu electrònic informació sobre lliure/ocupat, escolliu l'element de menú <menuchoice
+><guimenu
+>Planifica</guimenu
+><guimenuitem
+>Envia per correu la informació de lliure/ocupat...</guimenuitem
+></menuchoice
+>. Introduïu les adreces de correu electrònic a les quals voleu enviar la informació en el diàleg i premeu <guilabel
+>D'acord</guilabel
+>.</para>
+
+<para
+>Els servidors de treball en grup normalment tenen una localització estàndard per a publicar la informació de lliure/ocupat, pel qual els altres usuaris podran accedir a les vostres dades, i podreu accedir a la planificació de lliure/ocupat de la resta d'usuaris. Podeu configurar el &korganizer; perquè publiqui i descarregui automàticament la informació de lliure/ocupat, utilitzant les <link linkend="config-main-free-busy"
+>preferències de lliure/ocupat</link
+> en el diàleg <guilabel
+>Configura</guilabel
+> del &korganizer;.</para>
+
+<para
+>Per a publicar la informació de lliure/ocupat en el servidor establiu-ho en les preferències del &korganizer;, escollint l'element de menú <menuchoice
+><guimenu
+>Planifica</guimenu
+><guimenuitem
+>Puja la informació de lliure/ocupat</guimenuitem
+></menuchoice
+>.</para>
+
+</sect1>
+
+<sect1 id="examples">
+<title
+>Exemples</title>
+
+<sect2 id="examples-entering-event">
+<title
+>Introduir un esdeveniment nou de grup</title>
+
+<para
+>En aquest exemple, introduireu un esdeveniment. Necessiteu convocar una reunió <emphasis
+>el proper dilluns</emphasis
+> per a fer el llançament del vostre nou producte. La vostra cap, <emphasis
+>Joan Holden</emphasis
+>, serà la presidenta i <emphasis
+>propietària</emphasis
+> de l'esdeveniment, i vós, Jack Smith, en sereu l'<emphasis
+>organitzador</emphasis
+>. Hi haurà dos <emphasis
+>assistents</emphasis
+> (participants) més: <emphasis
+>Peter Krzinski</emphasis
+> i <emphasis
+>Kirsten Friese</emphasis
+>. Joan us va donar el programa per a la reunió. La cita començarà a les <emphasis
+>12 del migdia</emphasis
+> i finalitzarà a la <emphasis
+>1 de la tarda</emphasis
+>. S'ha de planificar la mateixa reunió <emphasis
+>(repetició)</emphasis
+> cada dilluns. </para>
+
+<procedure>
+<step
+><para
+>Utilitzant el navegador de dates, aneu cap al proper dilluns.</para
+></step>
+
+<step
+><para
+>Escolliu <menuchoice
+><guimenu
+>Accions</guimenu
+><guimenuitem
+>Esdeveniment nou...</guimenuitem
+></menuchoice
+>, o seleccioneu l'àrea entre les <emphasis
+>12 del migdia</emphasis
+> i el final de l'<emphasis
+>1 de la tarda</emphasis
+>, i comenceu a escriure el resum de l'esdeveniment.</para
+></step>
+
+<step
+><para
+>Introduïu un resum. És important escollir una descripció breu correcta, perquè apareixerà a molts llocs. Us suggerim que introduïu <userinput
+>Esdeveniment de llançament del producte</userinput
+>.</para
+></step>
+
+<step
+><para
+>Introduïu el programa detallat de l'esdeveniment en l'àrea rectangular més gran. Per a aquest exemple tan simple, introduïu <userinput
+>Introducció, El pla, Conclusió</userinput
+> en tres línies separades.</para
+></step>
+
+<step
+><para
+>Aneu a la pestanya <guilabel
+>Recordatori</guilabel
+>. Establiu l'hora del recordatori a 15 minuts, el temps just per a gaudir d'una tassa de te abans que comenci la reunió.</para
+></step>
+
+<step
+><para
+>Aneu a la pestanya <guilabel
+>General</guilabel
+>. Seleccioneu <guilabel
+>Cita</guilabel
+> des del diàleg <guilabel
+>Gestió de les etiquetes</guilabel
+>.</para
+></step>
+
+<step
+><para
+>Aneu a la pestanya <guilabel
+>Repetició</guilabel
+> i seleccioneu la repetició <guilabel
+>Setmanal</guilabel
+>.</para>
+<note
+><para
+>La majoria del treball es fa automàticament. De manera predeterminada, el &korganizer; estableix una repetició setmanal. Cal tenir present també que està seleccionat <guilabel
+>Acaba:</guilabel
+> <guilabel
+>mai</guilabel
+>. Això vol dir que aquest esdeveniment es repetirà cada dilluns (començant, per descomptat el dilluns 30 d'agost de 2010) fins al final dels temps (això és, fins que el suprimiu).</para
+></note
+></step>
+
+<step
+><para
+>Atès que tot està correcte, feu clic sobre la pestanya <guilabel
+>Assistents</guilabel
+>.</para
+></step>
+
+<step
+><para
+>En la pestanya <guilabel
+>Assistents</guilabel
+> heu de fer el següent:</para>
+<substeps>
+
+<step
+><para
+>Veureu que sou l'organitzador de l'esdeveniment.</para
+></step>
+
+<step
+><para
+>En el primer camp d'entrada introduïu el correu electrònic en el format <userinput
+>Nom &#060;correu.electrònic&#062;</userinput
+>. En el nostre exemple, introduïu <userinput
+>Joan Holen &#060;jholden@aquestaempresa.com&#062;</userinput
+>. <tip
+><para
+>Si els assistents ja estan en la vostra llibreta d'adreces de &kde;, en comptes d'escriure els noms i adreces de correu electrònic, podreu prémer el botó <guibutton
+>Selecciona els assistents...</guibutton
+> per a afegir-los.</para
+></tip
+></para
+></step>
+
+<step
+><para
+>Escolliu <emphasis
+>President</emphasis
+> com a paper.</para
+></step>
+
+<step
+><para
+>En el següent camp d'entrada introduïu <userinput
+>Peter Krzinski &#060;pkrzinski@aquestaempresa.com&#062;</userinput
+>.</para
+></step>
+
+<step
+><para
+>En el següent camp d'entrada introduïu <userinput
+>Kirsten Friese &#060;kfriese@aquestaempresa.com&#062;</userinput
+>. </para
+></step>
+
+</substeps>
+</step>
+
+<step
+><para
+>Si ja heu configurat el &korganizer; perquè usi la comunicació de treball en grup, us demanarà si voleu enviar un correu electrònic als assistents amb els detalls de l'esdeveniment i demanar confirmació si està marcada la casella <guilabel
+>Demana resposta</guilabel
+> de la pestanya <guilabel
+>Assistents</guilabel
+>. D'altra banda, podeu enviar les invitacions escollint l'element de menú <menuchoice
+><guimenu
+>Planifica</guimenu
+><guimenuitem
+>Envia una invitació als assistents</guimenuitem
+></menuchoice
+>.</para
+></step>
+
+<step
+><para
+>Reviseu la configuració de l'esdeveniment fent clic sobre les pestanyes. Si esteu satisfet, feu clic sobre <guibutton
+>D'acord</guibutton
+>.</para
+></step>
+</procedure>
+
+<para
+>Felicitats, heu planificat el vostre primer esdeveniment!</para>
+</sect2>
+
+</sect1>
+
+</chapter>
+
+<chapter id="config"
+>  <!--updated to 5.4.40, missing General System Tray + Calendars-->
+<title
+>Configurar el &korganizer;</title>
+
+<para
+>Per a canviar l'aspecte i el comportament del &korganizer;, escolliu l'element de menú <menuchoice
+><guimenu
+>Arranjament</guimenu
+><guimenuitem
+>Configura el &korganizer;...</guimenuitem
+></menuchoice
+>. Podeu accedir a totes les opcions de configuració i possibilitats en <xref linkend="config-main"/>.</para>
+
+<para
+>Per a personalitzar el joc d'eines disponible en la barra, escolliu l'element de menú <menuchoice
+><guimenu
+>Arranjament</guimenu
+><guimenuitem
+>Configura les barres d'eines...</guimenuitem
+></menuchoice
+> i llegiu la secció <ulink url="help:/fundamentals/config.html#toolbars"
+>configuració de les barres d'eines</ulink
+> en els Fonaments del &kde;.</para>
+
+<para
+>La informació de localització com els formats de data i hora es pot configurar des de l'&systemsettings; amb els mòduls <guilabel
+>Idioma</guilabel
+> i <guilabel
+>Formats</guilabel
+>. A aquest mòdul de control s'hi pot accedir des del &korganizer;, simplement escolliu l'element de menú <menuchoice
+><guimenu
+>Arranjament</guimenu
+><guimenuitem
+>Configura la data i l'hora...</guimenuitem
+></menuchoice
+>. S'haurà de reiniciar el &korganizer; perquè tinguin efecte els canvis fets a &systemsettings;.</para>
+
+<para
+>Per a configurar a on emmagatzemarà i rebrà els esdeveniments de calendari, entrades de diari i tasques pendents el &korganizer; (en fitxers locals, servidors de treball en grup, entrades de diari com blogs, fitxers en xarxa, &etc;), si us plau, marqueu <xref linkend="managing-resources"/>.</para>
+
+<sect1 id="config-main">
+<title
+>Configuració principal del &korganizer;</title>
+
+<para
+>El diàleg d'opcions us permet configurar un gran nombre d'àrees diferents del &korganizer;.</para>
+
+<sect2 id="config-main-general">
+<title
+>La pàgina General</title>
+
+<sect3 id="config-main-general-personal">
+<title
+>La pestanya Personal</title>
+
+<para
+>Les opcions personals relatives a la vostra identitat personal i altres coses diverses que no encaixen en cap de les altres etiquetes generals.</para>
+
+<variablelist>
+
+<varlistentry>
+<term
+><guilabel
+>Nom complet</guilabel
+></term>
+<listitem
+><para
+><guilabel
+>Nom complet</guilabel
+> està establert inicialment a <quote
+>Anònim</quote
+> amb una adreça de correu electrònic <quote
+>desconegut@peraquí</quote
+>. La podeu canviar introduint-hi el nom. Aquest nom serà mostrat de manera predeterminada com a <guilabel
+>Organitzador</guilabel
+> en les tasques pendents i els esdeveniments.</para
+></listitem>
+</varlistentry>
+
+<varlistentry>
+<term
+><guilabel
+>Adreça de correu</guilabel
+></term>
+<listitem
+><para
+><guilabel
+>Adreça de correu</guilabel
+> s'utilitzarà per a identificar el propietari del calendari. Quan una altra persona obri el vostre calendari o esdeveniments, no el podrà modificar perquè serà de tan sols lectura.</para
+></listitem>
+</varlistentry>
+
+<varlistentry>
+<term
+><guilabel
+>Mètode predeterminat d'adjunció del correu</guilabel
+></term>
+<listitem
+><para
+>Aquesta opció permet seleccionar el mode com un correu s'associa a un esdeveniment. Podeu associar un correu com el correu complet incloent els adjunts, el correu excloent els adjunts o només un enllaç al correu.</para>
+<para
+>Cal tenir en compte que adjuntar un correu sense adjunts podria invalidar la vostra signatura. </para
+></listitem>
+</varlistentry>
+</variablelist>
+
+</sect3>
+
+<sect3 id="config-main-general-save">
+<title
+>La pestanya Desa</title>
+
+<variablelist>
+
+<varlistentry>
+<term
+><guilabel
+>Confirma les supressions</guilabel
+></term>
+<listitem
+><para
+>Quan aquesta casella està marcada, el &korganizer; us demana que confirmeu cada supressió. Si no està marcada, el &korganizer; no us demanarà confirmació abans de suprimir els esdeveniments.</para
+></listitem>
+</varlistentry>
+
+<varlistentry>
+<term
+><guilabel
+>Els esdeveniments, tasques pendents i entrades de diari noves han de</guilabel
+></term>
+<listitem
+><para
+>Aquesta opció permet escollir entre afegir elements nous per al calendari predeterminat o fer que el &korganizer; demani quin calendari emprar per a desar cada element nou.</para>
+<para
+>Específic del servidor Kolab2: Es recomana que escolliu <guilabel
+>Pregunta quin calendari s'ha d'utilitzar</guilabel
+>, si intenteu utilitzar la funcionalitat de carpeta compartida del servidor <guilabel
+>Kolab</guilabel
+>. Això us permetrà mantenir el control de quina informació està disponible tan sols per a vós i quina serà publicada en les carpetes compartides.</para>
+</listitem>
+</varlistentry>
+
+</variablelist>
+
+</sect3>
+
+<!-- System Tray tab missing-->
+
+<!-- Calendars tab missing-->
+
+</sect2>
+
+<sect2 id="config-main-time-and-date">
+<title
+>La pàgina Hora i data</title>
+
+<sect3 id="config-main-time-and-date-regional">
+<title
+>La pestanya Regional</title>
+
+<variablelist>
+
+<varlistentry>
+<term
+><guilabel
+>El dia comença a les</guilabel
+></term>
+<listitem
+><para
+>Seleccioneu l'hora a la que comença el dia en la llista desplegable. Aquesta pot ser l'hora a la que normalment us aixequeu, o l'hora a la que comenceu a treballar. Aquesta opció no evita que es puguin afegir o veure elements abans d'aquesta hora, tan sols estableix l'hora a mostrar de manera predeterminada en la zona superior de la vista de calendari. Useu la barra de desplaçament per a mostrar els esdeveniments anteriors o posteriors a la vista d'agenda.</para
+></listitem>
+</varlistentry>
+
+<varlistentry>
+<term
+><guilabel
+>Dies festius</guilabel
+></term>
+<listitem
+><para
+>Seleccioneu el vostre país de la llista desplegable, o si no es troba en la llista, seleccioneu <guilabel
+>(Cap)</guilabel
+>. Si està seleccionat el vostre país, el &korganizer; reconeixerà i mostrarà les seves dates i festivitats importants en la vista de calendari.</para
+></listitem>
+</varlistentry>
+
+<varlistentry>
+<term
+><guilabel
+>Període laboral</guilabel
+></term>
+<listitem
+><para
+>Les opcions <guilabel
+>Hora de començar</guilabel
+> i <guilabel
+>Hora de plegar</guilabel
+> us permeten especificar quan comença i quan finalitza la vostra jornada laboral. El &korganizer; estableix les hores de treball ressaltant-les amb un color diferent de les hores no laborals, dies de vacances i dies festius.</para>
+<para
+>A més, teniu caselles de selecció per a cadascun dels dies de la setmana. Per a marcar les hores laborals marqueu els dies de la setmana que són laborals. Marqueu <guilabel
+>Exclou els festius</guilabel
+> per a preveure que el &korganizer; marqui les hores laborals per a la regió de festius definida en la llista desplegable <guilabel
+>Usa la regió per als dies festius</guilabel
+> de sobre.</para>
+</listitem>
+</varlistentry>
+
+<varlistentry>
+<term
+><guilabel
+>Dia d'inici de la setmana</guilabel
+></term>
+<listitem
+><para
+>Seleccioneu el primer dia de cada setmana. Normalment, podeu ignorar-ho perquè està configurat a la vostra configuració regional.</para
+></listitem>
+</varlistentry>
+
+</variablelist>
+</sect3>
+
+<sect3 id="config-main-time-and-date-default">
+<title
+>La pestanya Valors predeterminats</title>
+
+<variablelist>
+<varlistentry>
+<term
+><guilabel
+>Hora predeterminada de les cites</guilabel
+></term>
+<listitem
+><para
+>Seleccioneu l'hora predeterminada de començament per als esdeveniments en la llista desplegable. Quan escolliu <link linkend="menu-actions-new-event"
+>Esdeveniment nou</link
+> des del <link linkend="entering-data-events"
+>menú d'accions</link
+> o creeu un esdeveniment d'alguna altra manera que el &korganizer; no pugui endevinar quan us agradaria que comenci l'esdeveniment, el &korganizer; posarà aquesta hora en la de començament de l'editor com a valor predeterminat.</para
+></listitem>
+</varlistentry>
+
+<varlistentry>
+<term
+><guilabel
+>Durada predeterminada de les cites noves (HH:MM):</guilabel
+></term>
+<listitem
+><para
+>Seleccioneu la durada predeterminada per als esdeveniments utilitzant el botó de selecció de valors. Quan escolliu <link linkend="menu-actions-new-event"
+>Esdeveniment nou</link
+> des del <link linkend="entering-data-events"
+>menú d'accions</link
+> o creeu un esdeveniment d'alguna altra manera que no permeti al &korganizer; esbrinar la seva durada, el &korganizer; utilitzarà aquesta com a valor predeterminat. </para
+></listitem>
+</varlistentry>
+
+<varlistentry>
+<term
+><guilabel
+>Recordatoris</guilabel
+></term>
+<listitem
+><para
+>Seleccioneu un <guilabel
+>Temps predeterminat per als recordatoris</guilabel
+> per a determinar quant temps abans de l'hora planificada de l'esdeveniment s'ha d'activar el recordatori.</para>
+<para
+>Estableix un fitxer per a utilitzar com a fitxer de so predeterminat per als recordatoris nous. Sempre podreu especificar un altre fitxer al recordatori avançat, accessible des dels editors d'esdeveniments o tasques pendents.</para>
+<para
+>Comproveu les següents dues caselles si voleu habilitar recordatoris per a tots els esdeveniments o tasques pendents de nova creació. Sempre es poden inhabilitar en els diàlegs de l'editor.</para>
+</listitem>
+</varlistentry>
+
+</variablelist>
+</sect3>
+</sect2>
+
+<sect2 id="config-main-views">
+<title
+>La pàgina Vistes</title>
+
+<para
+>Aquestes opcions us permeten configurar les vistes del &korganizer;:</para>
+
+<sect3 id="config-main-views-general">
+<title
+>La pestanya General</title>
+<variablelist>
+<varlistentry>
+<term
+><guilabel
+>x dies següents:</guilabel
+></term>
+<listitem
+><para
+>Aquesta opció us permet canviar el nombre de dies de l'element de menú <guimenu
+>x dies següents</guimenu
+> en el menú <guimenu
+>Ves</guimenu
+>.</para
+></listitem>
+</varlistentry>
+
+<varlistentry>
+<term
+><guilabel
+>Habilita els consells que mostren els resums</guilabel
+></term>
+<listitem
+><para
+>Si el resum per a un esdeveniment és més llarg del que cap en la vista actual, els caràcters restants no seran mostrats. Marqueu <guilabel
+>Habilita els consells que mostren els resums</guilabel
+> si voleu que sigui mostrat tot el resum quan el punter del ratolí romangui sobre la cita durant uns pocs segons.</para
+></listitem>
+</varlistentry>
+
+<varlistentry>
+<term
+><guilabel
+>Les tasques pendents usen els colors de les etiquetes</guilabel
+></term>
+<listitem
+><para
+>Marqueu aquesta casella perquè les tasques pendents usin els colors de les etiquetes en lloc de colors específics al seu estat de venciment, venciment d'avui o endarreriment.</para
+></listitem>
+</varlistentry>
+
+</variablelist>
+
+<para
+>Opcions del <link linkend="description-view"
+>navegador de dates</link
+>:</para>
+
+<variablelist>
+
+<varlistentry>
+<term
+><guilabel
+>Mostra els elements de repetició diària</guilabel
+></term>
+<listitem
+><para
+>Si la casella <guilabel
+>Mostra els elements de repetició diària</guilabel
+> està marcada, els dies amb esdeveniments que es repeteixen cada dia es mostraran en negreta en el navegador de dates.</para
+></listitem>
+</varlistentry>
+
+<varlistentry>
+<term
+><guilabel
+>Mostra els elements de repetició setmanal</guilabel
+></term>
+<listitem
+><para
+>Si la casella <guilabel
+>Mostra els elements de repetició setmanal</guilabel
+> està marcada, els dies amb esdeveniments que es repeteixen setmanalment es mostraran en negreta en el navegador de dates.</para
+></listitem>
+</varlistentry>
+
+<varlistentry>
+<term
+><guilabel
+>Mostra les tasques pendents en lloc dels esdeveniments a la vista de les tasques pendents</guilabel
+></term>
+<listitem
+><para
+>Marqueu aquesta casella per a mostrar en negreta els dies que contenen tasques pendents al navegador de dates quan sigueu a la vista de les tasques pendents.</para
+></listitem>
+</varlistentry>
+
+<varlistentry>
+<term
+><guilabel
+>Mostra els diaris en lloc dels esdeveniments a la vista de diari</guilabel
+></term>
+<listitem
+><para
+>Marqueu aquesta casella per a mostrar en negreta els dies que contenen diaris al navegador de dates quan sigueu a la vista de diari.</para
+></listitem>
+</varlistentry>
+
+<varlistentry>
+<term
+><guilabel
+>Els números de setmana seleccionen una setmana feinera en el mode de setmana laboral</guilabel
+></term>
+<listitem
+><para
+>Si la casella <guilabel
+>Els números de setmana seleccionen una setmana feinera en el mode de setmana laboral</guilabel
+> està marcada, fent clic sobre els números de setmana al costat del navegador de dates, navegareu per les setmanes de treball en comptes de setmanes normals de 7 dies.</para
+></listitem>
+</varlistentry>
+
+</variablelist>
+</sect3>
+
+<sect3 id="config-main-views-agenda">
+<title
+>La pestanya Vista d'agenda</title>
+
+<para
+>Opcions de la <link linkend="agenda-view"
+>vista d'agenda</link
+>:</para>
+
+<variablelist>
+
+<varlistentry>
+<term
+><guilabel
+>Mida de l'hora:</guilabel
+></term>
+<listitem
+><para
+>Utilitzant això podreu controlar l'alçada de les files a la vista d'agenda.</para
+></listitem>
+</varlistentry>
+
+<varlistentry>
+<term
+><guilabel
+>Mostra les icones dels elements a la vista d'agenda</guilabel
+></term>
+<listitem
+><para
+>Marqueu aquesta casella per a mostrar les icones (recordatori, repetició, &etc;) en els elements a la vista d'agenda.</para
+></listitem>
+</varlistentry>
+
+<varlistentry>
+<term
+><guilabel
+>Mostra les tasques pendents</guilabel
+></term>
+<listitem
+><para
+>Aquesta casella de selecció canvia la vista de les tasques pendents en les vistes dia, setmana i mes en les vistes d'agenda. Si teniu massa tasques pendents que tenen data de venciment associades, és possible que vulgueu desactivar-la per a evitar el desordre.</para
+></listitem>
+</varlistentry>
+
+<varlistentry>
+<term
+><guilabel
+>Mostra la línia de temps actual (Marcus Bains)</guilabel
+></term>
+<listitem
+><para
+>Aquesta casella de selecció activa o desactiva una línia vermella en la vista de dia o de setmana que indica l'hora actual (línia de Marcus Bains). Aquesta línia us ofereix una visió de quant temps falta, &pex;, perquè comenci una reunió.</para
+></listitem>
+</varlistentry>
+
+<varlistentry>
+<term
+><guilabel
+>Mostra els segons a la línia de temps actual (Marcus Bains)</guilabel
+></term>
+<listitem
+><para
+>Aquesta casella de selecció activa o desactiva els segons a la línia de temps actual (línia de Marcus Bains).</para
+></listitem>
+</varlistentry>
+
+<varlistentry>
+<term
+><guilabel
+>La selecció d'un interval horari a la vista d'agenda inicia l'editor d'esdeveniments</guilabel
+></term>
+<listitem
+><para
+>Marqueu aquesta casella per a engegar l'editor d'esdeveniments automàticament quan seleccioneu un interval de temps a la vista diària o setmanal. Per a seleccionar un interval de temps, arrossegueu el ratolí des de l'hora inicial fins a la final de l'esdeveniment que planificareu.</para
+></listitem>
+</varlistentry>
+<!--FIXME Icons to use dropdown box missing-->
+<varlistentry>
+<term
+><guilabel
+>Ús del color</guilabel
+></term>
+<listitem>
+<para
+>Seleccioneu l'opció <guilabel
+>Etiqueta a dins, calendari a fora</guilabel
+> si voleu dibuixar els elements de calendari en el color associat a la seva etiqueta, amb la vora de l'element dibuixat en el color del seu calendari.</para>
+
+<para
+>Seleccioneu l'opció <guilabel
+>Calendari a dins, etiqueta a fora</guilabel
+> si voleu dibuixar els elements de calendari en el color associat al seu calendari, amb la vora de l'element dibuixat en el color de la seva etiqueta.</para>
+
+<para
+>Seleccioneu l'opció <guilabel
+>Només l'etiqueta</guilabel
+> si voleu dibuixar elements de calendari (tant a dins com les vores) en el color de la seva etiqueta associada.</para>
+
+<para
+>Seleccioneu l'opció <guilabel
+>Només el calendari</guilabel
+> si voleu dibuixar elements de l'agenda (tant a dins com les vores) en el color del seu calendari.</para>
+
+<para
+>Si us plau, useu la pàgina de configuració <link linkend="config-main-colors"
+>Colors i tipus de lletra</link
+> per a establir aquests colors.</para>
+</listitem>
+</varlistentry>
+
+<varlistentry>
+<term
+><guilabel
+>Acoloreix els dies feiners amb un color de fons diferent</guilabel
+></term>
+<listitem
+><para
+>Marqueu aquesta casella si voleu que el fons a la vista d'agenda s'ompli amb un color diferent en els dies que almenys tenen un esdeveniment marcat com a ocupat.</para>
+<para
+>Si us plau, mireu en l'àrea de configuració dels colors per a seleccionar el color de fons per a ocupat a la vista d'agenda.</para
+></listitem>
+</varlistentry>
+
+<varlistentry>
+<term
+><guilabel
+>Visualització de múltiples calendaris</guilabel
+></term>
+<listitem
+><para
+>Seleccioneu si tots els calendaris que es fusionaran en una vista d'agenda, cada calendari s'ha de mostrar en la seva pròpia vista d'agenda o si cada vista hauria d'estar disponible mitjançant pestanyes. Al costat de la vista lateral es pot personalitzar amb <guimenuitem
+>Configura la vista</guimenuitem
+> des del menú contextual. </para
+></listitem>
+</varlistentry>
+
+</variablelist>
+</sect3>
+
+<sect3 id="config-main-views-month">
+<title
+>La pestanya Vista mensual</title>
+
+<para
+>Opcions de la <link linkend="month-view"
+>vista mensual</link
+>:</para>
+
+<variablelist>
+
+<varlistentry>
+<term
+><guilabel
+>Opcions de visualització</guilabel
+></term>
+<listitem
+><para
+>Utilitza les quatre primeres caselles de selecció per a mostrar l'hora, les icones (recordatori, repetició, &etc;), les tasques pendents o diaris en la vista mensual.</para
+></listitem>
+</varlistentry>
+<!--FIXME Icons to use dropdown box missing-->
+
+<varlistentry>
+<term
+><guilabel
+>Acoloreix els dies feiners amb un color de fons diferent</guilabel
+></term>
+<listitem
+><para
+>Marqueu aquesta casella si voleu que el fons de la vista mensual s'ompli amb un color diferent en els dies que almenys tenen un esdeveniment marcat com a ocupat.</para>
+<para
+>Si us plau, mireu en l'àrea de configuració de colors per a seleccionar el color de fons per a ocupat en la vista mensual de l'agenda.</para
+></listitem>
+</varlistentry>
+
+<varlistentry>
+<term
+><guilabel
+>Ús del color</guilabel
+></term>
+<listitem>
+<para
+>Configureu els colors per a la vista mensual com en la <link linkend="config-main-views-agenda"
+>vista d'agenda</link
+>.</para
+></listitem>
+</varlistentry>
+
+</variablelist>
+</sect3>
+
+<sect3 id="config-main-views-todo">
+<title
+>La pestanya Vista de les tasques pendents</title>
+
+<para
+>Opcions de la <link linkend="todo-view"
+>vista de les tasques pendents</link
+>:</para>
+
+<variablelist>
+
+<varlistentry>
+<term
+><guilabel
+>Mostra sempre les tasques pendents finalitzades a la part inferior de la llista</guilabel
+></term>
+<listitem
+><para
+>Si habiliteu aquesta opció, totes les tasques pendents finalitzades s'agruparan sempre a la part inferior de la llista de tasques pendents.</para
+></listitem>
+</varlistentry>
+
+<varlistentry>
+<term
+><guilabel
+>Enregistra les tasques pendents finalitzades en entrades del diari</guilabel
+></term>
+<listitem
+><para
+>Si marqueu aquesta casella, el &korganizer; afegirà automàticament una entrada del diari per a cada tasca pendent finalitzada.</para
+></listitem>
+</varlistentry>
+
+</variablelist>
+</sect3>
+</sect2>
+
+<sect2 id="config-main-colors-fonts">
+<title
+>La pàgina Colors i tipus de lletra</title>
+
+<sect3 id="config-main-colors">
+<title
+>La pestanya Colors</title>
+
+<para
+>Escolliu el color utilitzat per als festius, per al ressaltat i les etiquetes d'esdeveniments específics. Podeu escollir un color diferent per a cada etiqueta. Per descomptat, massa colors poden resultar confusos, de manera que useu el sentit comú. L'ús del color també dependrà de les <link linkend="config-main-views"
+>preferències de vista</link
+>.</para>
+
+<variablelist>
+
+<varlistentry>
+<term
+><guilabel
+>Color dels dies festius</guilabel
+></term>
+<listitem
+><para
+>Aquest botó obre el diàleg <guilabel
+>Selecció de color</guilabel
+>, el qual us permetrà seleccionar el color per als dies festius. Aquest color s'utilitzarà per al nom de la festivitat en la vista de mes i la data festiva en el navegador de dates.</para
+></listitem>
+</varlistentry>
+
+<varlistentry>
+<term
+><guilabel
+>Color de fons de la vista d'agenda</guilabel
+></term>
+<listitem
+><para
+>Aquest botó obre el diàleg <guilabel
+>Selecció de color</guilabel
+>, el qual us permetrà seleccionar el color de fons per a la vista d'agenda.</para
+></listitem>
+</varlistentry>
+
+<varlistentry>
+<term
+><guilabel
+>Color de fons dels dies ocupats</guilabel
+></term>
+<listitem
+><para
+>Aquest botó obre el diàleg <guilabel
+>Selecció de color</guilabel
+>, el qual us permetrà seleccionar el color ocupat de fons per a la vista d'agenda o mensual. Aquest color només s'utilitza quan l'opció per a dibuixar dies ocupats amb un color diferent està establerta en qualsevol d'aquestes vistes.</para
+></listitem>
+</varlistentry>
+
+<varlistentry>
+<term
+><guilabel
+>Color de la línia de temps actual a la vista d'agenda</guilabel
+></term>
+<listitem
+><para
+>Aquest botó obre el diàleg <guilabel
+>Selecció de color</guilabel
+>, el qual us permetrà seleccionar un color per a la línia hora actual (Marcus Bains).</para
+></listitem>
+</varlistentry>
+
+<varlistentry>
+<term
+><guilabel
+>Color de les hores laborables</guilabel
+></term>
+<listitem
+><para
+>Aquest botó obre el diàleg <guilabel
+>Selecció de color</guilabel
+>, el qual us permetrà seleccionar un color per al fons de les hores de treball a la vista d'agenda.</para
+></listitem>
+</varlistentry>
+
+<varlistentry>
+<term
+><guilabel
+>Color per a les tasques pendents que vencen avui</guilabel
+></term>
+<listitem
+><para
+>Aquest botó obre el diàleg <guilabel
+>Selecció de color</guilabel
+>, el qual us permetrà seleccionar color de les tasques pendents que vencin avui.</para
+></listitem>
+</varlistentry>
+
+<varlistentry>
+<term
+><guilabel
+>Color per a les tasques pendents endarrerides</guilabel
+></term>
+<listitem
+><para
+>Aquest botó obre el diàleg <guilabel
+>Selecció de color</guilabel
+>, el qual us permetrà seleccionar un color per a les tasques pendents endarrerides.</para
+></listitem>
+</varlistentry>
+
+<varlistentry>
+<term
+><guilabel
+>Etiquetes</guilabel
+></term>
+<listitem
+><para
+>Aquest grup us permet assignar un color a cada etiqueta. Seleccioneu una etiqueta en la llista desplegable i premeu el botó per a obrir el diàleg <guilabel
+>Selecció de color</guilabel
+>, el qual us permetrà seleccionar el color per a aquesta etiqueta. <link linkend="config-main-views"
+>Depenent de les preferències de la vista</link
+>, aquest color s'utilitzarà per a marcar els esdeveniments i tasques pendents que pertanyin a aquesta categoria en les vistes d'agenda i de mes.</para
+></listitem>
+</varlistentry>
+
+<varlistentry>
+<term
+><guilabel
+>Recursos</guilabel
+></term>
+<listitem
+><para
+>Aquest grup us permet assignar un color a cada recurs. Seleccioneu un recurs en la llista desplegable i premeu el botó per a obrir el diàleg <guilabel
+>Selecció de color</guilabel
+>, el qual us permetrà seleccionar el color per a aquest recurs. <link linkend="config-main-views"
+>Depenent de les preferències de la vista</link
+>, aquest color s'utilitzarà per a marcar els esdeveniments i tasques pendents que s'han desat utilitzant aquest recurs en les vistes d'agenda i de mes.</para
+></listitem>
+</varlistentry>
+
+</variablelist>
+
+</sect3>
+
+<sect3 id="config-main-fonts">
+<title
+>La pestanya Tipus de lletra</title>
+
+<variablelist>
+
+<varlistentry>
+<term
+><guilabel
+>Barra de l'hora</guilabel
+></term>
+<listitem
+><para
+>Premeu aquest botó per a triar el tipus de lletra, estil i mida per a la barra de l'hora.</para
+></listitem>
+</varlistentry>
+
+<varlistentry>
+<term
+><guilabel
+>Vista mensual</guilabel
+></term>
+<listitem
+><para
+>Premeu aquest botó per a triar el tipus de lletra, estil i mida per a la vista de mes.</para
+></listitem>
+</varlistentry>
+
+<varlistentry>
+<term
+><guilabel
+>Vista d'agenda</guilabel
+></term>
+<listitem
+><para
+>Premeu aquest botó per a triar el tipus de lletra, estil i mida per a la vista d'agenda (vistes de dia, setmana i setmana laboral).</para
+></listitem>
+</varlistentry>
+
+<varlistentry>
+<term
+><guilabel
+>Línia de temps actual</guilabel
+></term>
+<listitem
+><para
+>Premeu aquest botó per a triar el tipus de lletra, estil i mida per a la línia de Marcus Bains (una línia de color a la vista d'agenda que indica l'hora actual).</para
+></listitem>
+</varlistentry>
+
+</variablelist>
+
+</sect3>
+
+</sect2>
+
+<sect2 id="config-main-groupscheduling">
+<title
+>La pàgina Planificació de grups</title>
+
+<variablelist>
+
+<varlistentry>
+<term
+><guilabel
+>Usa la comunicació de treball en grup</guilabel
+></term>
+<listitem
+><para
+>Marqueu aquesta casella per a enviar automàticament correus quan es creen, actualitzen o suprimeixen esdeveniments o tasques pendents en els que hi hagi més persones implicades. Aquest correu pot ser una invitació per als assistents a un esdeveniment que heu creat, una cancel·lació d'esdeveniment que heu creat, una resposta o una actualització de l'estat de la vostra invitació, una sol·licitud de canvi d'esdeveniment, &etc; Marqueu aquesta opció si voleu utilitzar la funcionalitat de treball en grup (&pex;, configurar &kontact; com a client <guilabel
+>Kolab</guilabel
+> de &kde;).</para
+></listitem>
+</varlistentry>
+
+<varlistentry>
+<term
+><guilabel
+>Envia una còpia al propietari quan s'enviïn esdeveniments per correu</guilabel
+></term>
+<listitem
+><para
+>En marcar aquesta casella, obtindreu una còpia de tots els missatges de correu electrònic que enviï el &korganizer; en les vostres sol·licituds als assistents a l'esdeveniment.</para
+></listitem>
+</varlistentry>
+
+<varlistentry>
+<term
+><guilabel
+>Transport de correu</guilabel
+></term>
+<listitem
+><para
+>Aquí podeu escollir quin tipus de transport de correu us agradaria utilitzar. Podeu utilitzar el &kmail; o l'ordre &Sendmail; (el qual haurà d'estar instal·lada en el sistema perquè funcioni).</para
+></listitem>
+</varlistentry>
+
+</variablelist>
+
+</sect2>
+
+<sect2 id="config-main-free-busy">
+<title
+>La pàgina Lliure/ocupat</title>
+
+<para
+>La informació sobre lliure/ocupat representa una planificació de la disponibilitat. Presentant els intervals quan algú ja té compromisos previs, els altres podran evitar planificar cites per a aquests períodes. Cal tenir present que tan sols es publiquen les hores, no els esdeveniments, motius ni assistents.</para>
+
+<para
+>El &korganizer; accepta la publicació i rebuda d'informació sobre lliure/ocupat, bé manualment o automàticament.</para>
+
+<sect3 id="config-main-free-busy-publish">
+<title
+>Publica</title>
+<para
+>Si publiqueu la vostra informació lliure/ocupat, permetreu que els altres puguin accedir a la vostra planificació, i la tinguin en compte quan pensin invitar-vos a un esdeveniment.</para>
+
+<variablelist>
+
+<varlistentry>
+<term
+><guilabel
+>Publica la informació de lliure/ocupat automàticament</guilabel
+></term>
+<listitem
+><para
+>Habiliteu aquesta opció si voleu publicar automàticament la vostra informació de lliure/ocupat. Cal tenir present que podeu ometre aquesta opció i decidir enviar per correu o publicar la informació de lliure/ocupat mitjançant el menú <guilabel
+>Planifica</guilabel
+> del &korganizer;.</para>
+
+<para
+>Si la vostra aplicació està configurada perquè funcioni com a un <guilabel
+>Client &kde; del Kolab</guilabel
+>, això no serà necessari. El servidor <guilabel
+>Kolab2</guilabel
+> es pot encarregar de publicar la vostra informació de lliure/ocupat i en gestionarà l'accés per part dels altres usuaris.</para>
+</listitem>
+</varlistentry>
+
+<varlistentry>
+<term
+><guilabel
+>Temps mínim entre pujades (en minuts)</guilabel
+></term>
+<listitem
+><para
+>Si escolliu publicar automàticament aquesta informació, podreu configurar l'interval de temps en minuts entre cada publicació.</para>
+</listitem>
+</varlistentry>
+
+<varlistentry>
+<term
+><guilabel
+>Publica (predeterminat 60) dies d'informació lliure/ocupat</guilabel
+></term>
+<listitem
+><para
+>Configura el nombre de dies de calendari que voleu que es publiquin i que estaran disponibles per als altres.</para
+></listitem>
+</varlistentry>
+
+<varlistentry>
+<term
+><guilabel
+>&URL; del servidor</guilabel
+></term>
+<listitem
+><para
+>Introduïu l'&URL; del servidor en què s'haurà de publicar la informació de lliure/ocupat. Pregunteu per aquesta informació a l'administrador del servidor.</para>
+<para
+>Exemple de servidor Kolab2: <userinput
+>webdavs://kolab2.com/freebusy/joe@kolab2.com.ifb</userinput
+> </para
+></listitem>
+</varlistentry>
+
+<varlistentry>
+<term
+><guilabel
+>Nom d'usuari</guilabel
+></term>
+<listitem
+><para
+>Introduïu la informació d'accés relativa al vostre compte en el servidor.</para>
+<para
+>Específic del servidor Kolab2: Registreu el vostre UID (identificador únic), el predeterminat serà similar a la vostra adreça de correu electrònic en el servidor Kolab2, però també pot ser diferent. En aquest últim cas, introduïu-lo aquí. Si no el coneixeu, pregunteu a l'administrador del servidor.</para
+></listitem>
+</varlistentry>
+
+<varlistentry>
+<term
+><guilabel
+>Contrasenya</guilabel
+></term>
+<listitem
+><para
+>Introduïu la vostra contrasenya (la contrasenya d'accés al servidor).</para
+></listitem>
+</varlistentry>
+
+<varlistentry>
+<term
+><guilabel
+>Recorda la contrasenya</guilabel
+></term>
+<listitem
+><para
+>Marqueu aquesta opció si voleu que el &korganizer; recordi la vostra contrasenya i prevenir que se us demani cada vegada que publiqueu la informació de lliure/ocupat.</para>
+<warning
+><para
+>Per motius de seguretat no es recomana desar la contrasenya en el fitxer de configuració.</para
+></warning
+></listitem>
+</varlistentry>
+
+</variablelist>
+
+</sect3>
+
+<sect3 id="config-main-free-busy-retrieve">
+<title
+>Recupera</title>
+
+<para
+>Si rebeu la informació de lliure/ocupat d'altra gent, podreu tenir en compte la planificació de les seves ocupacions quan les inviteu a un esdeveniment.</para>
+
+<variablelist>
+
+<varlistentry>
+<term
+><guilabel
+>Recupera automàticament la informació de lliure/ocupat d'altra gent</guilabel
+></term>
+<listitem
+><para
+>Automatitza el procés de rebre informació de lliure/ocupat d'altres usuaris. Ompliu la secció informació del servidor que hi ha a sota per a habilitar aquesta opció.</para
+></listitem>
+</varlistentry>
+
+<varlistentry>
+<term
+><guilabel
+>Usa l'adreça de correu completa per a la recuperació</guilabel
+></term>
+<listitem
+><para
+>Aquesta opció us permet canviar el nom de fitxer que s'obtindrà des del servidor. Si marqueu aquesta opció, es descarregarà un fitxer de lliure/ocupat anomenat <userinput
+>usuari@domini.ifb</userinput
+>, o bé <userinput
+>usuari.ifb</userinput
+>. Si no esteu segur de com configurar aquesta opció pregunteu a l'administrador del servidor.</para>
+<para
+><guilabel
+>Específic del servidor Kolab2:</guilabel
+> Si configureu el &korganizer; com a un component per a un <guilabel
+>client Kolab del &kde; (&kontact;/Kolab)</guilabel
+> haureu de marcar aquesta opció.</para
+></listitem>
+</varlistentry>
+
+<varlistentry>
+<term
+><guilabel
+>&URL; del servidor</guilabel
+></term>
+<listitem
+><para
+>Introduïu l'&URL; del servidor del qual s'ha de recollir la informació de lliure/ocupat. Demaneu aquesta informació a l'administrador del servidor.</para>
+<para
+><guilabel
+>Exemple del servidor Kolab2:</guilabel
+> <userinput
+>webdavs://kolab2.com/freebusy/</userinput
+> </para
+></listitem>
+</varlistentry>
+
+<varlistentry>
+<term
+><guilabel
+>Nom d'usuari</guilabel
+></term>
+<listitem
+><para
+>Introduïu la informació d'accés relativa al vostre compte en el servidor.</para>
+</listitem>
+</varlistentry>
+
+<varlistentry>
+<term
+><guilabel
+>Contrasenya</guilabel
+></term>
+<listitem
+><para
+>Introduïu la vostra contrasenya (la contrasenya d'accés al servidor). </para
+></listitem>
+</varlistentry>
+
+<varlistentry>
+<term
+><guilabel
+>Recorda la contrasenya</guilabel
+></term>
+<listitem
+><para
+>Marqueu aquesta opció si voleu que el &korganizer; recordi la vostra contrasenya i prevenir que se us demani cada vegada que obteniu els fitxers de lliure/ocupat.</para>
+<warning
+><para
+>Per motius de seguretat no es recomana desar la contrasenya en el fitxer de configuració.</para
+></warning>
+</listitem>
+</varlistentry>
+
+</variablelist>
+</sect3>
+</sect2>
+
+<sect2 id="config-main-plugins">
+<title
+>La pàgina Connectors</title>
+
+<para
+>Per a més informació sobre aquesta acció, si us plau, consulteu <xref linkend="plugins-chapter"/>.</para>
+
+</sect2>
+
+<sect2 id="config-custom-pages">
+<title
+>Pàgines a mida</title>
+
+<para
+>Aquesta pàgina permet afegir els seus propis elements de la &IGU; per a emmagatzemar els vostres propis valors al &korganizer;.</para>
+<para
+>Creeu els vostres elements com es descriu a <guilabel
+>Com funciona això?</guilabel
+></para>
+
+</sect2>
+</sect1>
+
+</chapter>
+
+<chapter id="plugins-chapter"
+><!--updated to 5.4.40-->
+
+<title
+>La pàgina Connectors</title>
+
+<para
+>El &korganizer; ofereix la possibilitat d'estendre la funcionalitat de l'aplicació amb connectors. </para>
+
+<para
+>Els connectors es poden configurar en el diàleg de configuració del &korganizer;. Escolliu <menuchoice
+><guimenu
+>Arranjament</guimenu
+><guimenuitem
+>Configura el &korganizer;...</guimenuitem
+> </menuchoice
+> i feu clic a la icona <guilabel
+>Connectors</guilabel
+> a la llista d'icones en la barra lateral del diàleg. </para>
+
+<sect1 id="plugins-chapter-availableplugins">
+<title
+>Connectors disponibles</title>
+
+<sect2 id="date-numbers-plugin">
+<title
+>Connector de números de data per als calendaris</title>
+<para
+>Aquest connector afegeix el número del dia al llarg de l'any a la vista d'agenda. Per exemple, l'1 de febrer és el dia número 32. </para>
+</sect2>
+
+<sect2 id="wikipedia-thisday-plugin">
+<title
+>Connector «Aquest dia en la història» de la Viquipèdia</title>
+<para
+>Aquest connector proporciona enllaços a les pàgines d'efemèrides de la Viquipèdia. </para>
+</sect2>
+
+<sect2 id="wikipedia-pictureoftheday-plugin">
+<title
+>Connector d'imatge del dia de la Viquipèdia per als calendaris</title>
+<para
+>Aquest connector proporciona la <quote
+>imatge del dia</quote
+> de la Viquipèdia. </para>
+</sect2>
+
+<sect2 id="jewish-calendar-plugin">
+<title
+>Connector de calendari jueu</title>
+<para
+>Aquest connector us proveeix les dates per al calendari jueu a més de les dates del calendari gregorià. En el diàleg de configuració del connector, podeu escollir si voleu mostrar els festius israelians, la «parsha» setmanal, el dia d'Omer i/o de Chol HaMoed. </para>
+</sect2>
+
+</sect1>
+
+</chapter>
+
+<chapter id="reference">
+<title
+>Referència</title>
+
+<sect1 id="reference-menus"
+><!--updated to 5.4.40, Send as iCalendar-->
+<title
+>Menús</title>
+
+<para
+>Quan s'inicia el &korganizer;, apareix la finestra principal del &korganizer;. La finestra conté diversos components: una barra de menús, una barra d'eines, un calendari de mes, un plafó principal amb la <quote
+>vista</quote
+> actual d'esdeveniments i una llista de tasques pendents.</para>
+
+<para
+>Els menús proveeixen accés a totes les operacions comunes que es poden realitzar amb el calendari, incloent-hi desa, carrega, afegeix o suprimeix esdeveniments, tasques pendents i entrades de diari, imprimeix i més.</para>
+
+<para
+>Cal tenir present que quan s'utilitza el &korganizer; com a component de calendari del &kontact;, els menús difereixen dels que té l'aplicació quan funciona en solitari.</para>
+
+<sect2 id="reference-menus-file">
+<title
+>Fitxer</title>
+
+<para
+>El menú <guimenu
+>Fitxer</guimenu
+> proveeix accés a funcions que impliquen a tot el calendari.</para>
+
+<variablelist>
+
+<varlistentry id="menu-file-open">
+<term
+><inlinemediaobject
+><imageobject
+><imagedata fileref="document-open.png"
+ format="PNG"/></imageobject
+></inlinemediaobject
+><menuchoice
+><shortcut
+> <keycombo action="simul"
+>&Ctrl;<keycap
+>O</keycap
+></keycombo
+> </shortcut
+> <guimenu
+>Fitxer</guimenu
+> <guimenuitem
+>Obre</guimenuitem
+></menuchoice>
+</term>
+<listitem
+><para
+><action
+>Obre un diàleg de fitxers que us permetrà seleccionar un fitxer nou vCalendar o iCalendar per a carregar.</action
+> Si heu fet canvis al calendari actual, se us indicarà l'opció de desar-los abans de carregar-ne un de nou.</para>
+<para
+>Per a més informació sobre això, si us plau, consulteu <xref linkend="managing-import-export"/>.</para>
+</listitem>
+</varlistentry>
+
+<varlistentry id="menu-file-print">
+<term
+><inlinemediaobject
+><imageobject
+><imagedata fileref="document-print.png"
+ format="PNG"/></imageobject
+></inlinemediaobject
+><menuchoice
+><shortcut
+> <keycombo action="simul"
+>&Ctrl;<keycap
+>P</keycap
+></keycombo
+> </shortcut
+> <guimenu
+> Fitxer</guimenu
+> <guimenuitem
+>Imprimeix</guimenuitem
+></menuchoice>
+</term>
+<listitem
+><para
+>Escolliu <guimenuitem
+>Imprimeix</guimenuitem
+> o feu clic sobre la seva icona per a <action
+>imprimir el calendari actual</action
+>. Podeu especificar l'interval de dates a imprimir (bé manualment o amb el giny de calendari) i l'estil d'impressió (dia, setmana, mes o tasca pendent i diari).</para
+></listitem>
+</varlistentry>
+
+<varlistentry id="menu-file-print-preview">
+<term
+><inlinemediaobject
+><imageobject>
+<imagedata fileref="document-print-preview.png"
+format="PNG"/></imageobject
+></inlinemediaobject
+><menuchoice
+><guimenu
+>Fitxer</guimenu
+><guimenuitem
+>Vista prèvia d'impressió</guimenuitem
+></menuchoice>
+</term>
+<listitem
+><para
+>Si escolliu <guimenuitem
+>Vista prèvia d'impressió</guimenuitem
+> o feu clic sobre la icona <guiicon
+>Vista prèvia d'impressió</guiicon
+>, <action
+>el calendari actual serà imprès a la pantalla, en comptes de la impressora</action
+>. Utilitzeu aquesta característica per a verificar si la impressió serà correcta quan la inicieu.</para>
+<para
+>Podeu especificar l'interval de dates a imprimir (bé manualment o amb el giny de calendari) i el tipus de vista (dia, setmana, mes o tasca pendent).</para>
+</listitem>
+</varlistentry>
+
+<varlistentry id="menu-file-import-calendar">
+<term
+><menuchoice
+><guimenu
+>Fitxer</guimenu
+> <guimenu
+>Importa</guimenu
+> <guimenuitem
+>Importa un calendari</guimenuitem
+> </menuchoice
+></term>
+<listitem
+><para
+>Si teniu un fitxer iCalendar o vCalendar en algun lloc i voleu <action
+>fusionar-lo amb el vostre propi calendari, afegir un recurs nou o obrir-lo en una finestra nova</action
+>, escolliu aquest element de menú. Un bon moment per a fer-ho és quan rebeu un vCalendar amb unes quantes entrades mitjançant correu electrònic, per exemple.</para>
+<para
+>Per a més informació sobre aquesta acció, si us plau, consulteu <xref linkend="managing-import"/>.</para>
+</listitem>
+</varlistentry>
+
+<varlistentry id="menu-file-import-ghns">
+<term
+><menuchoice
+><guimenu
+>Fitxer</guimenu
+> <guisubmenu
+>Importa</guisubmenu
+> <guimenuitem
+>Obtén les novetats...</guimenuitem
+> </menuchoice
+></term>
+<listitem
+><para
+>Aquesta acció obre el diàleg <guilabel
+>Obtén les novetats</guilabel
+>, el qual us oferirà una llista amb els calendaris que podeu descarregar. Aquests esdeveniments es poden afegir al vostre calendari.</para>
+<para
+>Per a més informació sobre aquesta acció, si us plau, consulteu <xref linkend="managing-get-hot-new-stuff"/>.</para>
+</listitem>
+</varlistentry>
+
+<varlistentry id="menu-file-export-icalendar">
+<term
+><menuchoice
+><guimenu
+>Fitxer</guimenu
+> <guisubmenu
+>Exporta</guisubmenu
+> <guimenuitem
+>Exporta com a iCalendar</guimenuitem
+> </menuchoice
+></term>
+<listitem
+><para
+>Aquesta acció exportarà tots els vostres esdeveniments, tasques pendents i entrades de diari actives (independentment del recurs al qual pertanyin) com a un fitxer nou iCalendar.</para>
+<para
+>Per a més informació sobre aquesta acció, si us plau, consulteu <xref linkend="managing-export"/>.</para>
+</listitem>
+</varlistentry>
+
+<!--not in 4.6.0
+varlistentry id="menu-file-export-ghns">
+<term
+><menuchoice>
+<guimenu
+>File</guimenu>
+<guisubmenu
+>Export</guisubmenu>
+<guimenuitem
+>Upload Hot New Stuff...</guimenuitem>
+</menuchoice
+></term>
+<listitem
+><para
+>This action will open the <guilabel
+>Upload Hot New Stuff</guilabel>
+dialog, which allow you to export calendars containing events which may be
+useful to other people, such as a conference program, a list of holidays,
+special events, &etc;</para>
+<para
+>For more information about this action, please refer to
+<xref linkend="managing-get-hot-new-stuff"/>.</para>
+</listitem>
+</varlistentry-->
+
+<varlistentry id="menu-file-archive-old">
+<term
+><menuchoice
+><guimenu
+>Fitxer</guimenu
+> <guimenuitem
+>Arxiva les incidències antigues...</guimenuitem
+> </menuchoice
+></term>
+<listitem
+><para
+><action
+>De tant en tant haureu de suprimir els vostres esdeveniments antics.</action
+></para>
+<para
+>Per a més informació sobre aquesta acció, si us plau, consulteu <xref linkend="managing-purge-archive"/>.</para>
+</listitem>
+</varlistentry>
+
+<varlistentry id="menu-file-purge">
+<term
+><menuchoice
+><guimenu
+>Fitxer</guimenu
+> <guimenuitem
+>Neteja les tasques pendents finalitzades</guimenuitem
+> </menuchoice
+></term>
+<listitem
+><para
+>Aquesta acció elimina totes les tasques pendents finalitzades del vostre calendari actiu.</para>
+<para
+>Per a més informació sobre aquesta acció, si us plau, consulteu <xref linkend="managing-purge-archive"/>.</para>
+</listitem
+></varlistentry>
+
+<varlistentry id="menu-file-quit">
+<term
+><inlinemediaobject
+><imageobject
+><imagedata
+ fileref="application-exit.png"/></imageobject
+></inlinemediaobject
+><menuchoice
+><shortcut
+><keycombo action="simul"
+>&Ctrl;<keycap
+>Q</keycap
+></keycombo
+> </shortcut
+> <guimenu
+>Fitxer</guimenu
+> <guimenuitem
+>Surt</guimenuitem
+> </menuchoice>
+</term>
+<listitem
+><para
+>Quan seleccioneu <guimenuitem
+>Surt</guimenuitem
+> o feu clic sobre la icona <guiicon
+>Surt</guiicon
+>, <action
+>la finestra de calendari actual marxarà, demanant-vos que deseu si el calendari actual ha estat modificat, però encara no ha estat desat.</action
+></para>
+<para
+>Això no té efectes sobre altres finestres de calendari que poguessin estar obertes. Heu de sortir de cada finestra de calendari individualment.</para
+> </listitem>
+</varlistentry>
+</variablelist>
+
+</sect2>
+
+<sect2 id="reference-menus-edit">
+<title
+>Edita</title>
+
+<para
+>Amb el menú <guilabel
+>Edita</guilabel
+> podeu editar i cercar esdeveniments i tasques pendents.</para>
+
+<para
+>Els elements de menú <guimenuitem
+>Retalla</guimenuitem
+>, <guimenuitem
+>Copia</guimenuitem
+> i <guimenuitem
+>Enganxa</guimenuitem
+> segueixen la mateixa moda que en altres aplicacions de &kde;. Amb l'element de menú <guimenuitem
+>Cerca</guimenuitem
+>, podreu trobar esdeveniments i tasques pendents a través del calendari actual.</para>
+
+<variablelist>
+
+<varlistentry id="menu-edit-undo">
+<term
+><inlinemediaobject
+><imageobject
+><imagedata fileref="edit-undo.png"
+ format="PNG"/></imageobject
+></inlinemediaobject
+><menuchoice
+><shortcut
+> <keycombo action="simul"
+>&Ctrl;<keycap
+>Z</keycap
+></keycombo
+> </shortcut
+> <guimenu
+>Edita</guimenu
+> <guimenuitem
+>Desfés</guimenuitem
+> </menuchoice>
+</term>
+<listitem
+><para
+><action
+>Desfà l'última acció</action
+> o, en altres paraules, retorna el calendari a l'estat en el qual estava immediatament abans de l'última acció.</para
+></listitem>
+</varlistentry>
+
+<varlistentry id="menu-edit-redo">
+<term
+><inlinemediaobject
+><imageobject
+><imagedata fileref="edit-redo.png"
+ format="PNG"/></imageobject
+></inlinemediaobject
+><menuchoice
+><shortcut
+> <keycombo action="simul"
+>&Ctrl; &Maj; <keycap
+>Z</keycap
+></keycombo
+> </shortcut
+> <guimenu
+>Edita</guimenu
+> <guimenuitem
+>Refés</guimenuitem
+> </menuchoice>
+</term>
+<listitem
+><para
+><action
+>Refà l'última acció</action
+> o, en altres paraules, retorna el calendari a l'estat en el qual estava immediatament abans de l'última acció de desfer.</para
+></listitem>
+</varlistentry>
+
+<varlistentry id="menu-edit-cut">
+<term
+><inlinemediaobject
+><imageobject
+><imagedata fileref="edit-cut.png"
+ format="PNG"/></imageobject
+></inlinemediaobject
+><menuchoice
+><shortcut
+> <keycombo action="simul"
+>&Ctrl;<keycap
+>X</keycap
+></keycombo
+> </shortcut
+> <guimenu
+>Edita</guimenu
+> <guimenuitem
+>Retalla</guimenuitem
+> </menuchoice>
+</term>
+<listitem
+><para
+><action
+>Talla els esdeveniments seleccionats al porta-retalls, suprimint-los del vostre calendari.</action
+></para
+></listitem>
+</varlistentry>
+
+<varlistentry id="menu-edit-copy">
+<term
+><inlinemediaobject
+><imageobject
+><imagedata fileref="edit-copy.png"
+ format="PNG"/></imageobject
+></inlinemediaobject
+><menuchoice
+><shortcut
+> <keycombo action="simul"
+>&Ctrl;<keycap
+>C</keycap
+></keycombo
+> </shortcut
+> <guimenu
+> Edita</guimenu
+> <guimenuitem
+>Copia</guimenuitem
+></menuchoice>
+</term>
+<listitem
+><para
+><action
+>Copia el/s element/s seleccionat/s al porta-retalls, però deixant-lo/s intacte/s.</action
+></para
+></listitem>
+</varlistentry>
+
+<varlistentry id="menu-edit-paste">
+<term
+><inlinemediaobject
+><imageobject
+><imagedata fileref="edit-paste.png"
+ format="PNG"/></imageobject
+></inlinemediaobject
+><menuchoice
+><shortcut
+> <keycombo action="simul"
+>&Ctrl;<keycap
+>V</keycap
+></keycombo
+> </shortcut
+> <guimenu
+>Edita</guimenu
+> <guimenuitem
+>Enganxa</guimenuitem
+></menuchoice>
+</term>
+<listitem
+><para
+><guimenuitem
+>Enganxa</guimenuitem
+> <action
+>insereix els continguts del porta-retalls en el vostre calendari.</action
+> El porta-retalls ha de contenir un element vCalendar o iCalendar vàlid, proveït o bé per una operació de Retalla/Copia prèvia o per una selecció feta fora del &korganizer;. Se us avisarà si els continguts del porta-retalls no s'entenen.</para>
+<tip
+><para
+>De tota manera, podeu utilitzar de forma segura les dreceres de teclat <keycombo action="simul"
+>&Ctrl;<keycap
+>C</keycap
+></keycombo
+> i <keycombo action="simul"
+>&Ctrl;<keycap
+>V</keycap
+></keycombo
+> per a copiar dades de text des d'una aplicació externa a l'edició d'esdeveniments del &korganizer; i viceversa. </para
+></tip
+></listitem>
+</varlistentry>
+
+<varlistentry id="menu-edit-delete">
+<term
+><inlinemediaobject
+><imageobject
+><imagedata fileref="edit-delete.png"
+ format="PNG"/></imageobject
+></inlinemediaobject
+><menuchoice
+><guimenu
+>Edita</guimenu
+> <guimenuitem
+>Suprimeix</guimenuitem
+> </menuchoice>
+</term>
+<listitem
+><para
+><action
+>Suprimeix els elements actualment seleccionats, esborrant-los de calendari.</action
+></para
+></listitem>
+</varlistentry>
+
+<varlistentry id="menu-edit-find">
+<term
+><inlinemediaobject
+><imageobject
+><imagedata fileref="edit-find.png"
+ format="PNG"/></imageobject
+></inlinemediaobject
+><menuchoice
+><shortcut
+><keycombo action="simul"
+>&Ctrl;<keycap
+>F</keycap
+></keycombo
+></shortcut
+> <guimenu
+>Edita</guimenu
+> <guimenuitem
+>Cerca</guimenuitem
+> </menuchoice>
+</term>
+<listitem
+><para
+>Escolliu <guimenuitem
+>Cerca</guimenuitem
+> des del menú <guimenu
+>Edita</guimenu
+> o feu clic en la icona <guiicon
+>Cerca</guiicon
+> per a <action
+>trobar esdeveniments, tasques pendents i entrades de diari pel seu resum, descripció i/o etiquetes</action
+>.</para>
+<para
+>Per a més informació sobre aquesta acció, si us plau, consulteu <xref linkend="search-view"/>.</para>
+</listitem>
+</varlistentry>
+</variablelist>
+
+</sect2>
+
+<sect2 id="reference-menus-view">
+<title
+>Visualitza</title>
+
+<para
+>Hi ha diverses <quote
+>vistes</quote
+> diferents disponibles per a mostrar els esdeveniments, tasques pendents i entrades de diari. El &korganizer; és prou intel·ligent per a recordar entre les sessions quina ha estat l'última vista activa, i la propera vegada que s'iniciï, es mostrarà aquesta vista.</para>
+
+<para
+>En general, cada vista proveeix una manera de mostrar les entrades del diari, tasques pendents i esdeveniments restringits a un període de temps o estil de visualització en particular. Feu clic sobre qualsevol element per a seleccionar-lo com a acció més endavant. Fer clic <mousebutton
+>dret</mousebutton
+> sobre un element per a fer aparèixer un menú amb opcions com <guimenuitem
+>Edita</guimenuitem
+>, <guimenuitem
+>Suprimeix</guimenuitem
+> i així successivament. També podeu utilitzar el menú <guimenu
+>Acció</guimenu
+> per a realitzar operacions similars.</para>
+
+<variablelist>
+
+<varlistentry id="menu-view-agenda">
+<term
+><inlinemediaobject
+><imageobject
+><imagedata fileref="view-calendar-agenda.png"
+ format="PNG"/></imageobject
+></inlinemediaobject
+><menuchoice
+><guimenu
+>Visualitza</guimenu
+> <guimenuitem
+>Agenda</guimenuitem
+> </menuchoice
+></term>
+<listitem
+><para
+><action
+>Canvia a mostrar la vista d'agenda.</action>
+</para>
+<para
+>Per a més informació sobre aquesta acció, si us plau, consulteu <xref linkend="agenda-view"/>.</para>
+</listitem>
+</varlistentry>
+
+<varlistentry id="menu-view-month">
+<term
+><inlinemediaobject
+><imageobject
+><imagedata fileref="view-calendar-month.png"
+ format="PNG"/></imageobject
+></inlinemediaobject
+><menuchoice
+><guimenu
+>Visualitza</guimenu
+> <guimenuitem
+>Vista mensual</guimenuitem
+> </menuchoice
+></term>
+<listitem
+><para
+><action
+>Canvia la pantalla a la vista de mes.</action>
+</para>
+<para
+>Per a més informació sobre aquesta acció, si us plau, consulteu <xref linkend="month-view"/>.</para>
+</listitem>
+</varlistentry>
+
+<varlistentry id="menu-view-timeline">
+<term
+><inlinemediaobject
+><imageobject
+><imagedata fileref="view-calendar-timeline.png"
+ format="PNG"/></imageobject
+></inlinemediaobject
+><menuchoice
+><guimenu
+>Visualitza</guimenu
+> <guimenuitem
+>Línia de temps</guimenuitem
+> </menuchoice
+></term>
+<listitem
+><para
+><action
+>Canvia a mostrar la vista de línia de temps.</action>
+</para>
+<para
+>Per a més informació sobre aquesta acció, si us plau, consulteu <xref linkend="timeline-view"/>.</para>
+</listitem>
+</varlistentry>
+
+<varlistentry id="menu-view-todo">
+<term
+> <inlinemediaobject
+><imageobject
+><imagedata
+ fileref="view-calendar-tasks.png"
+format="PNG"/></imageobject
+></inlinemediaobject
+><menuchoice
+><guimenu
+>Visualitza</guimenu
+> <guimenuitem
+>Llista de tasques pendents</guimenuitem
+></menuchoice>
+ </term>
+<listitem
+><para
+><action
+>Canvia a mostrar la vista de la llista de tasques pendents.</action
+></para>
+<para
+>Per a més informació sobre aquesta acció, si us plau, consulteu <xref linkend="todo-view"/>.</para>
+</listitem>
+</varlistentry>
+
+<varlistentry id="menu-view-list">
+<term
+><inlinemediaobject
+><imageobject
+><imagedata fileref="view-calendar-list.png"
+ format="PNG"/></imageobject
+></inlinemediaobject
+><menuchoice
+><guimenu
+>Visualitza</guimenu
+> <guimenuitem
+>Llista d'esdeveniments</guimenuitem
+></menuchoice>
+</term>
+<listitem
+><para
+><action
+>Canvia a mostrar la vista de llista.</action
+></para>
+<para
+>Per a més informació sobre aquesta acció, si us plau, consulteu <xref linkend="list-view"/>.</para>
+</listitem>
+</varlistentry>
+
+<varlistentry id="menu-view-whatsnext">
+<term
+><inlinemediaobject
+><imageobject
+><imagedata fileref="view-calendar-upcoming-events.png"
+ format="PNG"/></imageobject
+></inlinemediaobject
+><menuchoice
+><guimenu
+>Visualitza</guimenu
+> <guimenuitem
+>Què toca ara</guimenuitem
+></menuchoice>
+</term>
+<listitem
+><para
+><action
+>Canvia a mostrar la vista «Què toca ara».</action
+></para>
+<para
+>Aquesta vista mostra els vostres propers esdeveniments i tasques pendents. Els esdeveniments i tasques pendents es mostren un per línia.</para>
+<para
+>Per a més informació sobre aquesta acció, si us plau, consulteu <xref linkend="whatsnext-view"/>.</para>
+</listitem>
+</varlistentry>
+
+<varlistentry id="menu-view-journal">
+<term
+><inlinemediaobject
+><imageobject
+><imagedata
+ fileref="journal-new.png"
+format="PNG"/></imageobject
+></inlinemediaobject
+><menuchoice
+><guimenu
+>Visualitza</guimenu
+> <guimenuitem
+>Diari</guimenuitem
+> </menuchoice>
+</term>
+<listitem
+><para
+><action
+>Canvia a mostrar la vista de diari.</action
+></para>
+<para
+>Per a més informació sobre aquesta acció, si us plau, consulteu <xref linkend="journal-view"/>.</para
+></listitem>
+</varlistentry>
+
+<varlistentry id="menu-view-update">
+<term
+><menuchoice
+><guimenu
+>Visualitza</guimenu
+> <guimenuitem
+>Actualitza</guimenuitem
+> </menuchoice
+></term>
+<listitem
+><para>
+<action
+>Actualitza la vista mostrada actualment.</action>
+</para
+></listitem>
+</varlistentry>
+
+<varlistentry id="menu-view-zoom">
+<term
+><menuchoice
+><guimenu
+>Visualitza</guimenu
+><guisubmenu
+>Zoom</guisubmenu
+></menuchoice
+></term>
+<listitem
+><para
+><action
+>Useu aquest submenú per a ajustar la vista actual perquè mostri més o menys dades.</action
+></para>
+<para
+>A la vista d'agenda (vista de dia/es o setmana), podeu utilitzar les accions d'apropament per a mostrar més o menys dies (<menuchoice
+><guisubmenu
+>Zoom</guisubmenu
+><guimenuitem
+>Apropa horitzontalment</guimenuitem
+></menuchoice
+> i <menuchoice
+><guisubmenu
+>Zoom</guisubmenu
+><guimenuitem
+>Allunya horitzontalment</guimenuitem
+></menuchoice
+>), o més o menys hores del dia (<menuchoice
+><guisubmenu
+>Zoom</guisubmenu
+><guimenuitem
+>Apropa verticalment</guimenuitem
+></menuchoice
+> i <menuchoice
+><guisubmenu
+>Zoom</guisubmenu
+><guimenuitem
+>Allunya verticalment</guimenuitem
+></menuchoice
+>).</para
+></listitem>
+</varlistentry>
+
+<varlistentry id="menu-view-filter">
+<term
+><menuchoice
+><guimenu
+>Visualitza</guimenu
+> <guisubmenu
+>Filtre</guisubmenu
+> </menuchoice
+></term>
+<listitem
+><para
+>Aquest submenú ofereix accés als filtres que ja s'han creat utilitzant el diàleg <link linkend="menu-settings-edit-filters"
+><guilabel
+>Edició dels filtres de calendari</guilabel
+></link
+>. <action
+>Seleccioneu en aquest submenú el filtre a utilitzar en la vista del &korganizer;</action
+>. Si no voleu utilitzar un filtre, escolliu <guilabel
+>Cap filtre</guilabel
+>.</para
+></listitem>
+</varlistentry>
+
+</variablelist>
+
+</sect2>
+
+<sect2 id="reference-menus-go">
+<title
+>Ves</title>
+
+<para
+>Per a més informació sobre com navegar per les vistes del &korganizer;, si us plau, consulteu <xref linkend="description-view"/>.</para>
+
+<variablelist>
+<varlistentry id="menu-go-previous-day">
+<term
+><inlinemediaobject
+><imageobject
+><imagedata fileref="go-previous.png"
+format="PNG"/></imageobject
+></inlinemediaobject
+><menuchoice
+><guimenu
+>Ves</guimenu
+><guimenuitem
+>Enrere</guimenuitem
+></menuchoice>
+</term>
+<listitem
+><para
+><action
+>Va cap al dia, setmana o mes anterior, depenent de la vista.</action
+></para
+></listitem>
+</varlistentry>
+
+<varlistentry id="menu-go-next-day">
+<term
+><inlinemediaobject
+><imageobject
+><imagedata fileref="go-next.png"
+ format="PNG"/></imageobject
+></inlinemediaobject
+><menuchoice
+><guimenu
+>Ves</guimenu
+><guimenuitem
+>Endavant</guimenuitem
+></menuchoice>
+</term>
+<listitem
+><para
+><action
+>Va cap al dia, setmana o mes següent, depenent de la vista.</action
+></para
+></listitem>
+</varlistentry>
+
+<varlistentry id="menu-go-goto-today">
+<term
+><inlinemediaobject
+><imageobject
+><imagedata fileref="go-jump-today.png"
+format="PNG"/></imageobject
+></inlinemediaobject
+><menuchoice
+><guimenu
+>Ves</guimenu
+><guimenuitem
+>A avui</guimenuitem
+></menuchoice>
+</term>
+<listitem
+><para
+><action
+>Va cap al període de temps que inclou el dia actual.</action
+></para
+></listitem>
+</varlistentry>
+
+<varlistentry id="menu-view-day">
+<term
+><inlinemediaobject
+><imageobject
+><imagedata fileref="go-jump-today.png"
+ format="PNG"/></imageobject
+></inlinemediaobject
+><menuchoice
+><guimenu
+>Ves</guimenu
+><guimenuitem
+>Dia</guimenuitem
+></menuchoice>
+</term>
+<listitem
+><para
+><action
+>Canvia a mostrar la vista de dia.</action
+></para>
+<para
+>Per a més informació sobre aquesta acció, si us plau, consulteu <xref linkend="agenda-view"/>.</para>
+</listitem>
+</varlistentry>
+
+<varlistentry id="menu-view-xdays">
+<term
+><inlinemediaobject
+><imageobject
+><imagedata fileref="view-calendar-upcoming-days.png"
+ format="PNG"/></imageobject
+></inlinemediaobject
+><menuchoice
+><guimenu
+>Ves</guimenu
+><guimenuitem
+>x dies següents</guimenuitem
+></menuchoice>
+</term>
+<listitem
+><para
+><action
+>Canvia a mostrar la vista dels x dies següents, a on x s'estableix en la configuració principal del &korganizer;.</action
+></para>
+<para
+>Per a més informació sobre aquesta acció, si us plau, consulteu <xref linkend="agenda-view"/>.</para>
+</listitem>
+</varlistentry>
+
+<varlistentry id="menu-view-workweek">
+<term
+><inlinemediaobject
+><imageobject
+><imagedata
+ fileref="view-calendar-workweek.png"
+format="PNG"/></imageobject
+></inlinemediaobject
+><menuchoice
+><guimenu
+>Ves</guimenu
+><guimenuitem
+>Setmana laboral</guimenuitem
+></menuchoice>
+</term>
+<listitem
+><para
+><action
+>Canvia a mostrar la vista de setmana laboral.</action
+></para>
+<para
+>Aquesta és la mateixa vista que la de setmana, excepte en què tan sols es mostren els dies laborables.</para>
+<para
+>Per a més informació sobre aquesta acció, si us plau, consulteu <xref linkend="agenda-view"/>.</para>
+</listitem>
+</varlistentry>
+
+<varlistentry id="menu-view-week">
+<term
+><inlinemediaobject
+><imageobject
+><imagedata fileref="view-calendar-week.png"
+ format="PNG"/></imageobject
+></inlinemediaobject
+><menuchoice
+><guimenu
+>Ves</guimenu
+> <guimenuitem
+>Setmana</guimenuitem
+></menuchoice>
+</term>
+<listitem
+><para
+><action
+>Canvia a mostrar la vista de setmana.</action
+></para>
+<para
+>La vista de setmana proveeix una vista similar a la del dia. Els esdeveniments per als set dies es mostren junts. Totes les funcions disponibles per a la vista del dia també estan disponibles en la vista de setmana.</para>
+<para
+>Per a més informació sobre aquesta acció, si us plau, consulteu <xref linkend="agenda-view"/>.</para
+></listitem>
+</varlistentry>
+
+</variablelist>
+
+</sect2>
+
+<sect2 id="reference-menus-actions">
+<title
+>Accions</title>
+
+<variablelist>
+<varlistentry id="menu-actions-new-event">
+<term
+><inlinemediaobject
+><imageobject
+><imagedata fileref="appointment-new.png"
+format="PNG"/></imageobject
+></inlinemediaobject
+><menuchoice
+><guimenu
+>Accions</guimenu
+> <guimenuitem
+>Esdeveniment nou...</guimenuitem
+> </menuchoice>
+</term>
+<listitem
+><para
+>Escolliu <guilabel
+>Esdeveniment nou...</guilabel
+> per a <action
+>crear un esdeveniment nou</action
+>.</para>
+<para
+>Teniu una descripció detallada de la finestra d'esdeveniments en la secció <link linkend="entering-data-events"
+>Introduir esdeveniments</link
+>.</para
+></listitem>
+</varlistentry>
+
+<varlistentry id="menu-actions-new-todo">
+<term
+><inlinemediaobject
+><imageobject
+><imagedata fileref="view-task.png"
+format="PNG"/></imageobject
+></inlinemediaobject
+><menuchoice
+><guimenu
+>Accions</guimenu
+> <guimenuitem
+>Tasca pendent nova...</guimenuitem
+> </menuchoice>
+</term>
+<listitem
+><para
+>Escolliu <guilabel
+>Tasca pendent nova...</guilabel
+> per a <action
+>crear una tasca pendent nova</action
+>. Inicialment, la tasca pendent no tindrà data de venciment, però en podeu indicar una.</para>
+<para
+>Teniu una descripció detallada de la finestra de tasques pendents en la secció <link linkend="entering-data-to-do"
+>Introduir tasques pendents</link
+>.</para
+></listitem>
+</varlistentry>
+
+<varlistentry id="menu-actions-new-subtodo">
+<term
+><menuchoice
+><guimenu
+>Accions</guimenu
+> <guimenuitem
+>Subtasca pendent nova...</guimenuitem
+> </menuchoice
+></term>
+<listitem
+><para
+>Escolliu <guilabel
+>Subtasca pendent nova...</guilabel
+> per a <action
+>començar a escriure una subtasca pendent nova. La tasca pendent seleccionada serà el pare de la subtasca pendent</action
+>. Inicialment, la tasca pendent no tindrà data de venciment, però en podeu indicar una.</para>
+<para
+>Teniu una descripció detallada de la finestra de tasques pendents en la secció <link linkend="entering-data-to-do"
+>Introduir tasques pendents</link
+>.</para
+></listitem>
+</varlistentry>
+
+<varlistentry id="menu-actions-new-journal">
+<term
+><inlinemediaobject
+><imageobject
+><imagedata fileref="journal-new.png"
+format="PNG"/></imageobject
+></inlinemediaobject
+><menuchoice
+><guimenu
+>Accions</guimenu
+> <guimenuitem
+>Diari nou...</guimenuitem
+> </menuchoice
+></term>
+<listitem
+><para
+>Escolliu <guilabel
+>Diari nou...</guilabel
+> per a <action
+>començar a escriure una entrada del diari</action
+>.</para
+></listitem>
+</varlistentry>
+
+<varlistentry id="menu-actions-show-event">
+<term
+><menuchoice
+><guimenu
+>Accions</guimenu
+> <guimenuitem
+>Mostra</guimenuitem
+> </menuchoice
+></term>
+<listitem
+><para
+>Escolliu-la per a <action
+>obrir un diàleg que mostri els detalls de l'entrada de diari, esdeveniment o tasca pendent seleccionada actualment.</action
+></para
+></listitem>
+</varlistentry>
+
+<varlistentry id="menu-actions-edit-event">
+<term
+><menuchoice
+><guimenu
+>Accions</guimenu
+> <guimenuitem
+>Edita...</guimenuitem
+> </menuchoice
+></term>
+<listitem
+><para
+>Escolliu-la per a <action
+>editar l'entrada de diari, esdeveniment o tasca pendent seleccionada actualment.</action
+></para
+></listitem>
+</varlistentry>
+
+<varlistentry id="menu-actions-delete-event">
+<term
+><menuchoice
+><shortcut
+>&Del;</shortcut
+> <guimenu
+>Accions</guimenu
+> <guimenuitem
+>Elimina</guimenuitem
+> </menuchoice
+></term>
+<listitem
+><para
+>Escolliu-la per a <action
+>eliminar l'entrada de diari, esdeveniment o tasca pendent seleccionada actualment.</action
+></para
+></listitem>
+</varlistentry>
+
+<varlistentry id="menu-actions-make-subtodo-independent">
+<term
+><menuchoice
+><guimenu
+>Accions</guimenu
+> <guimenuitem
+>Fes independent la subtasca pendent</guimenuitem
+> </menuchoice
+></term>
+<listitem
+><para
+>Escolliu <guilabel
+>Fes independent la subtasca pendent</guilabel
+> per a deslligar la subtasca pendent seleccionada del seu pare i fer-la independent.</para
+></listitem>
+</varlistentry>
+
+</variablelist>
+
+</sect2>
+
+<sect2 id="reference-menus-schedule">
+<title
+>Planifica</title>
+
+<variablelist>
+
+<varlistentry id="menu-schedule-publish">
+<term
+><menuchoice
+><guimenu
+>Planifica</guimenu
+><guimenuitem
+>Publica la informació de l'element...</guimenuitem
+> </menuchoice
+></term>
+<listitem
+><para
+>Envia per correu electrònic l'element, tasca pendent o entrada de diari seleccionada en el format iCalendar.</para>
+<para
+>Per a més informació sobre aquesta acció, si us plau, consulteu <xref linkend="publish"/>.</para
+></listitem>
+</varlistentry>
+
+<varlistentry id="menu-schedule-request">
+<term
+><menuchoice
+><guimenu
+>Planifica</guimenu
+> <guimenuitem
+>Envia una invitació als assistents</guimenuitem
+> </menuchoice
+></term>
+<listitem
+><para
+>Envia la tasca pendent o esdeveniment seleccionat als assistents i, si és necessari, una sol·licitud de confirmació.</para>
+<para
+>Per a més informació sobre aquesta acció, si us plau, consulteu <xref linkend="request"/>.</para
+></listitem>
+</varlistentry>
+
+<varlistentry id="menu-schedule-reply">
+<term
+><menuchoice
+><guimenu
+>Planifica</guimenu
+> <guimenuitem
+>Envia una actualització de l'estat</guimenuitem
+> </menuchoice
+></term>
+<listitem
+><para
+>Si heu canviat el vostre estat com a assistent, escolliu aquest element de menú per a enviar el vostre estat actualitzat (acceptat, condicional, &etc;) a l'organitzador de l'element.</para>
+<para
+>Per a més informació sobre aquesta acció, si us plau, consulteu <xref linkend="reply"/>.</para
+></listitem>
+</varlistentry>
+
+<varlistentry id="menu-schedule-cancel">
+<term
+><menuchoice
+><guimenu
+>Planifica</guimenu
+> <guimenuitem
+>Envia la cancel·lació als assistents</guimenuitem
+> </menuchoice
+></term>
+<listitem
+><para
+>Si voleu cancel·lar un esdeveniment o una tasca pendent, seleccioneu-la i escolliu aquest element del menú per a notificar la cancel·lació als assistents.</para>
+<para
+>Per a més informació sobre aquesta acció, si us plau, consulteu <xref linkend="cancel"/>.</para
+></listitem>
+</varlistentry>
+
+<varlistentry id="menu-schedule-refresh">
+<term
+><menuchoice
+><guimenu
+>Planifica</guimenu
+> <guimenuitem
+>Petició d'actualització</guimenuitem
+> </menuchoice
+></term>
+<listitem
+><para
+>Demana a l'organitzador l'última versió de l'esdeveniment o de la tasca pendent seleccionada.</para>
+<para
+>Per a més informació sobre aquesta acció, si us plau, consulteu <xref linkend="refresh"/>.</para
+></listitem>
+</varlistentry>
+
+<varlistentry id="menu-schedule-counter">
+<term
+><menuchoice
+><guimenu
+>Planifica</guimenu
+> <guimenuitem
+>Petició de canvi</guimenuitem
+> </menuchoice
+></term>
+<listitem
+><para
+>Envia una proposta a l'organitzador de l'esdeveniment o tasca pendent seleccionada. </para>
+<para
+>Per a més informació sobre aquesta acció, si us plau, consulteu <xref linkend="counter"/>.</para
+></listitem>
+</varlistentry>
+
+<!--varlistentry id="menu-schedule-mail-icalendar">
+<term
+><menuchoice>
+<guimenu
+>Schedule</guimenu>
+<guimenuitem
+>Send as iCalendar...</guimenuitem>
+</menuchoice
+></term>
+<listitem
+><para
+>.</para>
+<para
+>For more information about this action, please refer to
+<xref linkend="????"/>.</para
+></listitem>
+</varlistentry-->
+
+<varlistentry id="menu-schedule-mail-freebusy">
+<term
+><menuchoice
+><guimenu
+>Planifica</guimenu
+> <guimenuitem
+>Envia per correu la informació de lliure/ocupat...</guimenuitem
+> </menuchoice
+></term>
+<listitem
+><para
+>Envia per correu electrònic la informació de lliure/ocupat a una o més adreces de correu electrònic.</para>
+<para
+>Per a més informació sobre aquesta acció, si us plau, consulteu <xref linkend="free-busy"/>.</para
+></listitem>
+</varlistentry>
+
+<varlistentry id="menu-schedule-upload-freebusy">
+<term
+><menuchoice
+><guimenu
+>Planifica</guimenu
+> <guimenuitem
+>Puja la informació de lliure/ocupat</guimenuitem
+> </menuchoice
+></term>
+<listitem
+><para
+>Publica la informació de lliure/ocupat en el servidor de treball en grup. Els altres usuaris podran rebre la informació.</para>
+<para
+>Per a més informació sobre aquesta acció, si us plau, consulteu <xref linkend="free-busy"/>.</para
+></listitem>
+</varlistentry>
+
+</variablelist>
+
+</sect2>
+
+<sect2 id="reference-menus-settings-help">
+<title
+>Arranjament i Ajuda</title>
+
+<para
+>A més dels menús comuns del &kde; descrits al capítol <ulink url="help:/fundamentals/menus.html"
+>Menú</ulink
+> en els Fonaments del &kde;, l'aplicació &korganizer; disposa d'aquestes entrades de menú específiques als menús <guimenu
+>Arranjament</guimenu
+> i <guimenu
+>Ajuda</guimenu
+>: </para>
+
+<variablelist>
+
+<varlistentry id="menu-settings-sidebar">
+<term
+><menuchoice
+><guimenu
+>Arranjament</guimenu
+> <guisubmenu
+>Barra lateral</guisubmenu
+> </menuchoice
+></term>
+<listitem
+><para
+><action
+>Feu clic en els elements de menú d'aquest submenú per a mostrar o ocultar els components de la barra lateral del &korganizer;</action
+>. Cal tenir present que la barra lateral tan sols és visible quan <link linkend="config-main-views"
+>la vista actual no utilitza tota la finestra.</link
+></para
+></listitem>
+</varlistentry>
+
+<varlistentry id="menu-settings-configure-date-time">
+<term
+><menuchoice
+><guimenu
+>Arranjament</guimenu
+> <guimenuitem
+>Configura la data i l'hora...</guimenuitem
+> </menuchoice
+></term>
+<listitem
+><para
+><action
+>Feu clic en aquest element de menú per a establir els formats de data i d'hora de l'escriptori</action
+>. Cal tenir present que aquesta opció la comparteixen les altres aplicacions de l'escriptori.</para
+></listitem>
+</varlistentry>
+
+<varlistentry id="menu-settings-edit-filters">
+<term
+><menuchoice
+><guimenu
+>Arranjament</guimenu
+> <guisubmenu
+>Gestiona els filtres de vista...</guisubmenu
+> </menuchoice
+></term>
+<listitem
+><para
+><action
+>Escolliu aquest element de menú per a obrir el diàleg <guilabel
+>Edició dels filtres</guilabel
+></action
+>. Utilitzant aquest diàleg podreu crear, eliminar i editar filtres que afecten els elements que són mostrats pel &korganizer;.</para
+></listitem>
+</varlistentry>
+
+<varlistentry id="menu-settings-edit-categories">
+<term
+><menuchoice
+><guimenu
+>Arranjament</guimenu
+> <guimenuitem
+>Gestiona les etiquetes...</guimenuitem
+> </menuchoice
+></term>
+<listitem
+><para
+><action
+>Escolliu aquest element de menú per a obrir el diàleg <guilabel
+>Gestió de les etiquetes</guilabel
+></action
+>. Utilitzant aquest diàleg podreu crear, eliminar i editar les etiquetes dels elements de calendari. Les etiquetes s'usen per a organitzar els vostres esdeveniments i tasques pendents en grups relacionats.</para
+></listitem>
+</varlistentry>
+
+</variablelist>
+
+</sect2>
+
+</sect1>
+
+</chapter>
+
+<chapter id="other-features"
+>  <!--updated to 5.4.40-->
+<title
+>Altres característiques</title>
+
+<para
+>En aquest capítol, aprendreu altres característiques útils del &korganizer;: quins trucs podeu fer amb un clic del ratolí.</para>
+
+<sect1 id="other-features-commandline-options">
+<title
+>Línia d'ordres</title>
+
+<para
+>Un bon programa per a accedir a un calendari del &kde; des de la línia d'ordres és el konsolekalendar.</para>
+
+</sect1>
+
+<sect1 id="other-features-drag-and-drop">
+<title
+>Operacions d'arrossegar i deixar anar</title>
+
+<para
+>El &korganizer; es pot controlar amb facilitat amb el ratolí. Les operacions d'arrossegar i deixar es detallen a sota.</para>
+
+<itemizedlist>
+<listitem
+><para
+>Qualsevol esdeveniment es pot redimensionar amb el ratolí. Simplement, moveu el punter del ratolí a prop dels límits superior o inferior de l'esdeveniment i arrossegueu el límit amunt o avall. D'aquesta manera podreu modificar visualment l'hora d'inici i de fi de la vostra cita. Això funciona en les vistes de dia, setmana i setmana laboral.</para
+></listitem>
+<listitem
+><para
+>Qualsevol esdeveniment es pot tornar a planificar amb el ratolí. Moveu el punter del ratolí sobre l'esdeveniment i arrossegueu-lo cap a la nova localització temporal. Això funciona per a les vistes de dia, setmana i setmana laboral.</para
+></listitem>
+<listitem
+><para
+>Els esdeveniments es poden copiar a una altra, fins i tot a dates no visibles. Moveu el punter del ratolí sobre l'esdeveniment i arrossegueu-lo cap al navegador de dates del costat esquerre de calendari actual, o el navegador de dates d'un calendari diferent.</para>
+<tip
+><para
+>De tota manera, no podeu arrossegar des de la vista d'agenda d'un calendari cap a la vista d'agenda d'un altre calendari.</para
+></tip
+></listitem>
+<listitem
+><para
+>Les barres d'eines es poden arrossegar sobre la pantalla. Moveu el punter del ratolí sobre la nansa de la barra d'eines i arrossegueu-la cap a la nova localització en la pantalla.</para
+></listitem>
+</itemizedlist>
+
+</sect1>
+
+</chapter>
+
+<chapter id="faq">
+<title
+>Preguntes i respostes</title
+> <!-- link to userbase faq? -->
+
+<qandaset id="faq-questions">
+<qandaentry>
+<question>
+<para
+>Puc utilitzar el temps de lliure/ocupat amb el &korganizer;?</para>
+</question>
+<answer
+><para
+>Sí. Seguiu les instruccions en <link linkend="config-main-free-busy"
+>Lliure/Ocupat</link
+>.</para>
+</answer>
+</qandaentry>
+</qandaset>
+
+</chapter>
+
+<chapter id="credits">
+<title
+>Crèdits i llicència</title>
+
+<para
+>&korganizer;</para>
+
+<para
+>Copyright del programa 2000-2010, Els desenvolupadors del &kde;</para>
+
+<para
+>Col·laboradors:</para>
+
+<itemizedlist>
+  <listitem
+><para
+>Allen Winter <email
+>winter@kde.org</email
+></para>
+</listitem>
+<listitem
+><para
+>Reinhold Kainhofer <email
+>reinhold@kainhofer.com</email
+></para>
+</listitem>
+<listitem
+><para
+>&Cornelius.Schumacher; &Cornelius.Schumacher.mail;</para>
+</listitem>
+<listitem
+><para
+>&Preston.Brown; &Preston.Brown.mail;</para>
+</listitem>
+</itemizedlist>
+
+<para
+>Copyright de la documentació 2000 &Milos.Prudek;</para>
+<para
+>Copyright de la documentació 2001 Paul E. Ahlquist, Jr <email
+>&Paul.E.Ahlquist.Jr.mail;</email
+></para>
+<para
+>Copyright de la documentació 2004 Jr&uuml;gen Nagel <email
+>juergen.nagel@student.fh-reutlingen.de</email
+></para>
+<para
+>Copyright de la documentació 2005 Carlos Leonhard Woelz <email
+>carloswoelz@imap-mail.com</email
+></para>
+
+<para
+>Traductor de la documentació: &credits.Antoni.Bella;</para
+> &underFDL; &underGPL; </chapter>
+
+<glossary id="glossary">
+<title
+>Glossari</title>
+
+<glossentry id="gloss-calendar-widget">
+<glossterm
+>Giny de calendari</glossterm>
+<glossdef>
+
+<para
+>Una eina per a seleccionar la data dintre de certes finestres, tam com la finestra d'edició d'esdeveniments. Es mostra com a un petit botó a la dreta del camp de data. Quan feu clic amb el botó, veureu un calendari de mes. Useu les fletxes per a anar cap a la data desitjada, o feu clic sobre el nom del mes o el número d'any per a anar directament cap al mes o any desitjat.</para>
+
+</glossdef>
+</glossentry>
+
+<glossentry id="gloss-date-navigator">
+<glossterm
+>Navegador de dates</glossterm>
+<glossdef>
+
+<para
+>El calendari que està en la cantonada superior esquerra de la finestra del &korganizer;. És la principal manera proveïda per a navegar entre les dates i per a seleccionar-les. Les icones de fletxa simple van cap endavant i cap enrere en el temps amb increments d'un mes, mentre que les fletxes dobles us permeten moure un any en el temps. La data d'avui estarà rodejada per un petit quadre. Les dates que tenen esdeveniments planificats estaran en negreta. Si voleu seleccionar una data, simplement feu clic sobre seu. Manteniu premuda la tecla &Ctrl; i feu clic en les dates si voleu seleccionar múltiples dates veïnes d'una sola vegada. Les dates es mostraran en el plafó principal.</para>
+
+<para
+>Els esdeveniments repetitius no sempre són mostrats. Podeu evitar la visualització de les cites repetitives en el navegador de dates. Obteniu més informació en el <link linkend="config-main-views"
+>capítol de vistes</link
+>.</para>
+
+</glossdef>
+</glossentry>
+
+<glossentry id="gloss-due-date">
+<glossterm
+>Data de venciment</glossterm>
+<glossdef>
+
+<para
+>Una data de venciment simplement és la data en la qual la tasca pendent haurà d'estar finalitzada. Per exemple, si la tasca pendent és tornar llibres a la biblioteca el 16 de novembre, aquesta data s'anomena <quote
+>la data de venciment de la tasca pendent</quote
+>.</para>
+
+</glossdef>
+</glossentry>
+
+<!--<glossentry id="gloss-group-scheduling">
+<glossterm
+>Group scheduling features</glossterm>
+<glossdef>
+
+<para
+>These features are planned for the future versions of &korganizer;. Group
+scheduling will facilitate member roles (attendee, owner, organizer), time
+conflict resolution, event reminder distribution, response collection and
+evaluation. In other words, you will be able to appoint attendees, invite them
+automatically, and see who accepted or refused attending the appointment.</para>
+
+<para
+>Currently, group scheduling features are not working. However, hooks exist
+in the calendar data structures for these features. <guilabel
+>Private</guilabel>
+check box, <guilabel
+>Require response</guilabel
+> check box and
+<guilabel
+>E-mail</guilabel
+> field will then be fully employed. These controls
+are described in more detail in <link linkend="entering-data"
+>Entering
+Data</link
+> chapter, in the <link
+linkend="entering-data-events-attendees"
+>Attendees section</link
+> of Windows
+reference, and in the <link linkend="config-main-personal"
+>Personal
+Preferences</link
+> section.</para>
+
+</glossdef>
+</glossentry>
+-->
+<glossentry id="gloss-main-panel">
+<glossterm
+>Plafó principal</glossterm>
+<glossdef>
+<para
+>Normalment, la part més gran de la pantalla, a la dreta del navegador de dates. Mostra la vista de dia, dies laborals, setmana o mes. la vista de llista o la vista de la llista de tasques pendents.</para>
+<para
+>El botó dret tan sols es pot utilitzar en la vista de llista i en la vista de la llista de tasques pendents. Mostra un menú local. El botó esquerre es pot utilitzar en qualsevol vista.</para>
+</glossdef>
+</glossentry>
+
+<glossentry id="gloss-freebusy">
+<glossterm
+>Lliure/Ocupat</glossterm>
+<glossdef>
+<para
+>La informació de lliure/ocupat és una sèrie d'intervals de temps en els que estareu ocupat. En presentar els intervals quan algú ja té compromisos previs, es pot impedir que altres persones planifiquin cites per a aquests períodes. Cal tenir present que tan sols es publicaran les hores, no els títols dels esdeveniments, les descripcions ni els assistents. Dit d'una altra manera, la informació de lliure/ocupat és un horari de disponibilitat.</para>
+<para
+>Quan afegiu assistents a l'esdeveniment, necessitareu saber si estan ocupats o disponibles en aquesta hora en particular abans d'enviar les invitacions. Si els assistents tenen disponible la seva informació de lliure/ocupat, el &korganizer; podrà rebre aquesta informació i mostrar-la en la pestanya <guilabel
+>Lliure/Ocupat</guilabel
+> del diàleg <guilabel
+>Edita l'esdeveniment</guilabel
+>.</para>
+</glossdef>
+</glossentry>
+
+<!--FIXME: remove this or transform in glossary items
+
+<sect1 id="course-event-types">
+<title
+>Calendar Item Types</title>
+
+<para
+>There are three types of items:</para>
+
+<itemizedlist>
+<listitem
+><para
+>Events start and finish at distinct date. You can also specify
+distinct start and finish times, but you do not have to. While business
+meetings, personal anniversaries and cinema visits are examples of carefully
+planned events with exact time scheduling, a holiday is an event that takes
+several days and thus there is no need to specify exact start and finish
+times.</para
+></listitem>
+
+<listitem
+><para
+>To-do's must take place no later than a
+certain date, but they can also take place sooner.</para
+></listitem>
+</itemizedlist>
+
+<para
+>Naturally, what began as a To-do may later require exact timing.
+Say it is July 1 and you need to go to a hairdresser within a week.
+On July 3 you talk to your hairdresser and agree on an exact time. Thus the
+original To-do becomes similar to an appointment. </para>
+
+<para
+>&korganizer; makes adding exact time to a To-do very easy. If you
+check the <guilabel
+>Due</guilabel
+> check box and/or the <guilabel
+>Start</guilabel>
+check box you can specify the appropriate dates, when you check the
+<guilabel
+>Time associated</guilabel
+> check box and fill in the associated times, your
+To-do becomes very similar to an event.</para>
+
+</sect1>
+
+-->
+
+</glossary>
+
+&documentation.index;
+
+</book>
+<!--
+Local Variables:
+mode: sgml
+sgml-minimize-attributes:nil
+sgml-general-insert-case:lower
+sgml-indent-step:0
+sgml-indent-data:nil
+End:
+
+// vim:ts=2:sw=2:tw=78:noet
+-->
