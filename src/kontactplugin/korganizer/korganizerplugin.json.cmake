@@ -63,7 +63,7 @@
         "Name[is]": "Dagatal",
         "Name[it]": "Calendario",
         "Name[ja]": "カレンダー",
-        "Name[ka]": "კალენდერი",
+        "Name[ka]": "კალენდარი",
         "Name[kk]": "Күнтізбе",
         "Name[km]": "ប្រតិទិន",
         "Name[ko]": "달력",
