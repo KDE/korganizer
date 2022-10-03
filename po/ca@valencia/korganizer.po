@@ -8,7 +8,7 @@
 # Albert Astals Cid <aacid@kde.org>, 2004, 2005, 2006.
 # Josep M. Ferrer <txemaq@gmail.com>, 2006, 2007, 2008, 2009, 2010, 2011, 2012, 2013, 2014, 2015, 2017, 2018, 2020, 2021, 2022.
 # Manuel Tortosa Moreno <manutortosa@gmail.com>, 2009, 2010, 2011.
-# Antoni Bella Pérez <antonibella5@yahoo.com>, 2011, 2013, 2014, 2015, 2016, 2017, 2018, 2019, 2020.
+# Antoni Bella Pérez <antonibella5@yahoo.com>, 2011, 2013, 2014, 2015, 2016, 2017, 2018, 2019, 2020, 2022.
 msgid ""
 msgstr ""
 "Project-Id-Version: korganizer\n"
@@ -236,7 +236,7 @@ msgstr "Rafał Rzepecki"
 #, kde-format
 msgid "Part of work sponsored by Google with Summer of Code 2005"
 msgstr ""
-"Part de la faena va ser patrocinada per Google a la Summer of Code 2005"
+"Part de la faena va ser patrocinada per Google amb la Summer of Code 2005"
 
 #: aboutdata.cpp:59
 #, kde-format
@@ -542,7 +542,7 @@ msgid ""
 msgstr ""
 "Canvia a la vista d'agenda, la qual presenta els esdeveniments o les tasques "
 "pendents vençudes d'un o més dies, ordenats cronològicament. També es pot "
-"veure la duració de cada esdeveniment a la taula horària del dia."
+"veure la duració de cada esdeveniment en la taula horària del dia."
 
 #: actionmanager.cpp:416
 #, kde-format
@@ -705,9 +705,9 @@ msgid ""
 "Runs user-defined view filters on the calendar collection. Filters must be "
 "created first. See \"Manage View Filters\" option in the Settings menu."
 msgstr ""
-"Executa filtres de vista definits per l'usuari a la col·lecció de calendari. "
-"Primer cal crear els filtres. Vegeu l'opció «Gestiona els filtres de vista» "
-"en el menú Configuració."
+"Executa filtres de vista definits per l'usuari en la col·lecció de "
+"calendari. Primer cal crear els filtres. Vegeu l'opció «Gestiona els filtres "
+"de vista» en el menú Configuració."
 
 #: actionmanager.cpp:488
 #, kde-format
@@ -2298,7 +2298,7 @@ msgstr "&Copia"
 #, kde-format
 msgctxt "@action:inmenu"
 msgid "&Paste"
-msgstr "&Apega"
+msgstr "A&pega"
 
 #: koeventpopupmenu.cpp:87
 #, kde-format
@@ -3563,13 +3563,13 @@ msgstr "Posició"
 #, kde-format
 msgctxt "@option:check"
 msgid "Show at the top of the agenda views"
-msgstr "Mostra a la part superior en la vista d'agenda"
+msgstr "Mostra a la part superior de la vista d'agenda"
 
 #: prefs/koprefsdialogplugins.cpp:87
 #, kde-format
 msgctxt "@option:check"
 msgid "Show at the bottom of the agenda views"
-msgstr "Mostra a la part inferior en la vista d'agenda"
+msgstr "Mostra a la part inferior de la vista d'agenda"
 
 #: prefs/koprefsdialogplugins.cpp:121
 #, kde-format
@@ -4202,16 +4202,16 @@ msgid ""
 "Select the height of the hour rows in the agenda grid, in pixels. Increasing "
 "this value will make each row in the agenda grid taller."
 msgstr ""
-"Seleccioneu l'alçària de les files de l'hora a la graella de l'agenda, en "
-"píxels. L'augment d'este valor farà que cada fila de la graella l'agenda "
-"siga més alta."
+"Seleccioneu l'alçària de les files de l'hora en la quadrícula de l'agenda, "
+"en píxels. L'augment d'este valor farà que cada fila en la quadrícula de "
+"l'agenda siga més alta."
 
 #. i18n: ectx: tooltip, entry, group (Agenda View)
 #: settings/korganizer.kcfg:144
 #, kde-format
 msgid "Set the height (in pixels) for an hour in the agenda grid"
 msgstr ""
-"Establix l'alçària (en píxels) per a una hora en la graella de l'agenda"
+"Establix l'alçària (en píxels) per a una hora en la quadrícula de l'agenda"
 
 #. i18n: ectx: label, entry (EnableAgendaItemIcons), group (Agenda View)
 #: settings/korganizer.kcfg:151
@@ -4281,7 +4281,7 @@ msgstr "Mostra l'indicador de l'hora actual"
 #: settings/korganizer.kcfg:172
 #, kde-format
 msgid "Show seconds on the current-time (Marcus Bains) line"
-msgstr "Mostra els segons a la línia de l'hora actual (Marcus Bains)"
+msgstr "Mostra els segons en la línia de l'hora actual (Marcus Bains)"
 
 #. i18n: ectx: whatsthis, entry (MarcusBainsShowSeconds), group (Agenda View)
 #: settings/korganizer.kcfg:173
@@ -5266,7 +5266,7 @@ msgstr ""
 "Esta opció oculta a la llista totes les tasques pendents que estan "
 "assignades a algú altre.<br>\n"
 "Només es comprovaran les tasques pendents que tenen un assistent com a "
-"mínim. Si no esteu a la llista d'assistents, s'ocultarà la tasca pendent."
+"mínim. Si no esteu en la llista d'assistents, s'ocultarà la tasca pendent."
 
 #. i18n: ectx: property (text), widget (QCheckBox, mHideTodosNotAssignedToMeCheck)
 #: ui/filteredit_base.ui:318
@@ -6005,7 +6005,7 @@ msgstr "%1/%2"
 #: widgets/kdatenavigator.cpp:179
 #, kde-format
 msgid "Scroll to week number %1"
-msgstr "Desplaça a la setmana número %1"
+msgstr "Desplaça fins a la setmana número %1"
 
 #: widgets/kdatenavigator.cpp:181
 #, kde-format
@@ -6013,7 +6013,7 @@ msgid ""
 "Click here to scroll the display to week number %1 of the currently "
 "displayed year."
 msgstr ""
-"Cliqueu ací per a desplaçar la vista a la setmana número %1 de l'any "
+"Cliqueu ací per a desplaçar la vista fins a la setmana número %1 de l'any "
 "actualment visualitzat."
 
 #: widgets/kdatenavigator.cpp:227
