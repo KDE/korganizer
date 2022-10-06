@@ -1005,7 +1005,7 @@ msgstr "Envia la &cancel·lació als assistents"
 #: actionmanager.cpp:669
 #, kde-format
 msgid "Send Status &Update"
-msgstr "Envia una act&ualisació de l'estat"
+msgstr "Envia una act&ualització de l'estat"
 
 #: actionmanager.cpp:677
 #, kde-format
@@ -1802,7 +1802,7 @@ msgstr ""
 #, kde-format
 msgctxt "@option:check"
 msgid "&Use custom icon:"
-msgstr "&Utilitza una icona personalitzada:"
+msgstr "Utilit&za una icona personalitzada:"
 
 #: collectiongeneralpage.cpp:59
 #, kde-format
@@ -1822,7 +1822,7 @@ msgstr ""
 #: data/korganizer_part.rc:4 data/korganizerui.rc:4
 #, kde-format
 msgid "&File"
-msgstr "&Fitxer"
+msgstr "Fi&txer"
 
 #. i18n: ectx: Menu (import)
 #: data/korganizer_part.rc:11 data/korganizerui.rc:5
@@ -2245,12 +2245,12 @@ msgstr "&Copia"
 #: kodaymatrix.cpp:641
 #, kde-format
 msgid "&Add"
-msgstr "&Afig"
+msgstr "Afi&g"
 
 #: kodaymatrix.cpp:645
 #, kde-format
 msgid "&Cancel"
-msgstr "&Cancel·la"
+msgstr "C&ancel·la"
 
 #: koeventpopupmenu.cpp:45
 #, kde-format
@@ -2334,7 +2334,7 @@ msgstr "Crea una nota a partir de la tasca pendent"
 #, kde-format
 msgctxt "@action:inmenu"
 msgid "&Toggle Reminder"
-msgstr "&Canvia el recordatori"
+msgstr "Can&via el recordatori"
 
 #: koeventpopupmenu.cpp:131
 #, kde-format
