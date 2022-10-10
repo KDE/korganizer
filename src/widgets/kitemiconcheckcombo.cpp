@@ -7,7 +7,6 @@
 */
 
 #include "kitemiconcheckcombo.h"
-#include "koglobals.h"
 
 #include <KLocalizedString>
 
