@@ -59,7 +59,7 @@ protected:
 private:
     void doSearch();
     void searchPatternChanged(const QString &pattern);
-    void search(const QRegExp &re);
+    void search(const QRegularExpression &regularExpression);
     void readConfig();
     void writeConfig();
     void updateMatchesText();

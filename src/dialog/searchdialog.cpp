@@ -107,9 +107,8 @@ void SearchDialog::searchPatternChanged(const QString &pattern)
 
 void SearchDialog::doSearch()
 {
-    QRegExp re;
-    re.setPatternSyntax(QRegExp::Wildcard); // most people understand these better.
-    re.setCaseSensitivity(Qt::CaseInsensitive);
+    QRegularExpression re;
+    re.setPatternOptions(QRegularExpression::CaseInsensitiveOption);
     re.setPattern(m_ui->searchEdit->text());
     if (!re.isValid()) {
         KMessageBox::error(this,
@@ -148,9 +147,8 @@ void SearchDialog::updateMatchesText()
 
 void SearchDialog::updateView()
 {
-    QRegExp re;
-    re.setPatternSyntax(QRegExp::Wildcard); // most people understand these better.
-    re.setCaseSensitivity(Qt::CaseInsensitive);
+    QRegularExpression re;
+    re.setPatternOptions(QRegularExpression::CaseInsensitiveOption);
     re.setPattern(m_ui->searchEdit->text());
     m_listView->clear();
     if (re.isValid()) {
@@ -162,7 +160,7 @@ void SearchDialog::updateView()
     updateMatchesText();
 }
 
-void SearchDialog::search(const QRegExp &re)
+void SearchDialog::search(const QRegularExpression &regularExpression)
 {
     const QDate startDt = m_ui->startDate->date();
     const QDate endDt = m_ui->endDate->date();
@@ -213,25 +211,25 @@ void SearchDialog::search(const QRegExp &re)
         Q_ASSERT(ev);
         Akonadi::Item item = m_calendarview->calendar()->item(ev->uid());
         if (m_ui->summaryCheck->isChecked()) {
-            if (re.indexIn(ev->summary()) != -1) {
+            if (regularExpression.match(ev->summary()).hasMatch()) {
                 m_matchedEvents.append(item);
                 continue;
             }
         }
         if (m_ui->descriptionCheck->isChecked()) {
-            if (re.indexIn(ev->description()) != -1) {
+            if (regularExpression.match(ev->description()).hasMatch()) {
                 m_matchedEvents.append(item);
                 continue;
             }
         }
         if (m_ui->categoryCheck->isChecked()) {
-            if (re.indexIn(ev->categoriesStr()) != -1) {
+            if (regularExpression.match(ev->categoriesStr()).hasMatch()) {
                 m_matchedEvents.append(item);
                 continue;
             }
         }
         if (m_ui->locationCheck->isChecked()) {
-            if (re.indexIn(ev->location()) != -1) {
+            if (regularExpression.match(ev->location()).hasMatch()) {
                 m_matchedEvents.append(item);
                 continue;
             }
@@ -239,7 +237,7 @@ void SearchDialog::search(const QRegExp &re)
         if (m_ui->attendeeCheck->isChecked()) {
             const KCalendarCore::Attendee::List lstAttendees = ev->attendees();
             for (const KCalendarCore::Attendee &attendee : lstAttendees) {
-                if (re.indexIn(attendee.fullName()) != -1) {
+                if (regularExpression.match(attendee.fullName()).hasMatch()) {
                     m_matchedEvents.append(item);
                     break;
                 }
