@@ -8,7 +8,7 @@ msgid ""
 msgstr ""
 "Project-Id-Version: korganizer\n"
 "Report-Msgid-Bugs-To: https://bugs.kde.org\n"
-"POT-Creation-Date: 2022-09-26 00:46+0000\n"
+"POT-Creation-Date: 2022-10-11 00:47+0000\n"
 "PO-Revision-Date: 2020-05-11 16:37+0300\n"
 "Last-Translator: Marek Laane <qiilaq69@gmail.com>\n"
 "Language-Team: Estonian <kde-et@lists.linux.ee>\n"
@@ -1999,7 +1999,7 @@ msgctxt "@info:whatsthis"
 msgid "Press this button to start the search."
 msgstr "Otsingu alustamiseks klõpsa sellele nupule."
 
-#: dialog/searchdialog.cpp:117
+#: dialog/searchdialog.cpp:116
 #, kde-format
 msgctxt "@info"
 msgid ""
@@ -2009,19 +2009,19 @@ msgstr ""
 "Vigane otsingulause - otsingut ei saa käivitada. Palun kasuta otsingulauset, "
 "kus vajalikes kohtades on kasutatud metamärke '*' ja '?'"
 
-#: dialog/searchdialog.cpp:129
+#: dialog/searchdialog.cpp:128
 #, kde-format
 msgctxt "@info"
 msgid "No items were found that match your search pattern."
 msgstr "Otsingumustrile vastavaid elemente ei leitud."
 
-#: dialog/searchdialog.cpp:130
+#: dialog/searchdialog.cpp:129
 #, kde-format
 msgctxt "@title:window"
 msgid "Search Results"
 msgstr "Otsingutulemused"
 
-#: dialog/searchdialog.cpp:145
+#: dialog/searchdialog.cpp:144
 #, kde-format
 msgctxt "@label"
 msgid "%1 match"
@@ -6001,57 +6001,57 @@ msgstr "%1"
 msgid "A column header of the %1 dates in the month."
 msgstr "Veerupäis %1 kuupäevaga kuus."
 
-#: widgets/kitemiconcheckcombo.cpp:18
+#: widgets/kitemiconcheckcombo.cpp:17
 #, kde-format
 msgid "Calendar's custom icon"
 msgstr "Kalendri kohandatud ikoon"
 
-#: widgets/kitemiconcheckcombo.cpp:19
+#: widgets/kitemiconcheckcombo.cpp:18
 #, kde-format
 msgid "To-do"
 msgstr "Ülesanne"
 
-#: widgets/kitemiconcheckcombo.cpp:20
+#: widgets/kitemiconcheckcombo.cpp:19
 #, kde-format
 msgid "Journal"
 msgstr "Päevik"
 
-#: widgets/kitemiconcheckcombo.cpp:21
+#: widgets/kitemiconcheckcombo.cpp:20
 #, kde-format
 msgid "Recurring"
 msgstr "Korduv"
 
-#: widgets/kitemiconcheckcombo.cpp:22
+#: widgets/kitemiconcheckcombo.cpp:21
 #, kde-format
 msgid "Alarm"
 msgstr "Häire"
 
-#: widgets/kitemiconcheckcombo.cpp:23
+#: widgets/kitemiconcheckcombo.cpp:22
 #, kde-format
 msgid "Read Only"
 msgstr "Kirjutuskaitstud"
 
-#: widgets/kitemiconcheckcombo.cpp:24
+#: widgets/kitemiconcheckcombo.cpp:23
 #, kde-format
 msgid "Needs Reply"
 msgstr "Vajab vastust"
 
-#: widgets/kitemiconcheckcombo.cpp:25
+#: widgets/kitemiconcheckcombo.cpp:24
 #, kde-format
 msgid "Attending"
 msgstr "Osaleb"
 
-#: widgets/kitemiconcheckcombo.cpp:26
+#: widgets/kitemiconcheckcombo.cpp:25
 #, kde-format
 msgid "Maybe Attending"
 msgstr "Võib-olla osaleb"
 
-#: widgets/kitemiconcheckcombo.cpp:27
+#: widgets/kitemiconcheckcombo.cpp:26
 #, kde-format
 msgid "Organizer"
 msgstr "Korraldaja"
 
-#: widgets/kitemiconcheckcombo.cpp:36
+#: widgets/kitemiconcheckcombo.cpp:35
 #, kde-format
 msgctxt "@item:inlistbox"
 msgid "Icons to use"

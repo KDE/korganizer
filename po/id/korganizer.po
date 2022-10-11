@@ -6,7 +6,7 @@ msgid ""
 msgstr ""
 "Project-Id-Version: korganizer\n"
 "Report-Msgid-Bugs-To: https://bugs.kde.org\n"
-"POT-Creation-Date: 2022-09-26 00:46+0000\n"
+"POT-Creation-Date: 2022-10-11 00:47+0000\n"
 "PO-Revision-Date: 2022-09-30 08:03+0700\n"
 "Last-Translator: Wantoyèk <wantoyek@gmail.com>\n"
 "Language-Team: Indonesian <kde-i18n-doc@kde.org>\n"
@@ -1990,7 +1990,7 @@ msgctxt "@info:whatsthis"
 msgid "Press this button to start the search."
 msgstr "Tekan tombol ini untuk mulai mencari."
 
-#: dialog/searchdialog.cpp:117
+#: dialog/searchdialog.cpp:116
 #, kde-format
 msgctxt "@info"
 msgid ""
@@ -2001,19 +2001,19 @@ msgstr ""
 "masukkan sebuah ekspresi pencarian menggunakan karakter tanda baca '*' dan "
 "'?' yang diperlukan."
 
-#: dialog/searchdialog.cpp:129
+#: dialog/searchdialog.cpp:128
 #, kde-format
 msgctxt "@info"
 msgid "No items were found that match your search pattern."
 msgstr "Tidak ada item yang ditemukan yang cocok dengan pola pencarianmu."
 
-#: dialog/searchdialog.cpp:130
+#: dialog/searchdialog.cpp:129
 #, kde-format
 msgctxt "@title:window"
 msgid "Search Results"
 msgstr "Hasil Pencarian"
 
-#: dialog/searchdialog.cpp:145
+#: dialog/searchdialog.cpp:144
 #, kde-format
 msgctxt "@label"
 msgid "%1 match"
@@ -5961,57 +5961,57 @@ msgstr "%1"
 msgid "A column header of the %1 dates in the month."
 msgstr "Sebuah tajuk kolom pada tanggal %1 di bulan."
 
-#: widgets/kitemiconcheckcombo.cpp:18
+#: widgets/kitemiconcheckcombo.cpp:17
 #, kde-format
 msgid "Calendar's custom icon"
 msgstr "Ikon kustom kalender"
 
-#: widgets/kitemiconcheckcombo.cpp:19
+#: widgets/kitemiconcheckcombo.cpp:18
 #, kde-format
 msgid "To-do"
 msgstr "Rencana"
 
-#: widgets/kitemiconcheckcombo.cpp:20
+#: widgets/kitemiconcheckcombo.cpp:19
 #, kde-format
 msgid "Journal"
 msgstr "Jurnal"
 
-#: widgets/kitemiconcheckcombo.cpp:21
+#: widgets/kitemiconcheckcombo.cpp:20
 #, kde-format
 msgid "Recurring"
 msgstr "Berutin"
 
-#: widgets/kitemiconcheckcombo.cpp:22
+#: widgets/kitemiconcheckcombo.cpp:21
 #, kde-format
 msgid "Alarm"
 msgstr "Alarm"
 
-#: widgets/kitemiconcheckcombo.cpp:23
+#: widgets/kitemiconcheckcombo.cpp:22
 #, kde-format
 msgid "Read Only"
 msgstr "Hanya Baca"
 
-#: widgets/kitemiconcheckcombo.cpp:24
+#: widgets/kitemiconcheckcombo.cpp:23
 #, kde-format
 msgid "Needs Reply"
 msgstr "Perlu Balas"
 
-#: widgets/kitemiconcheckcombo.cpp:25
+#: widgets/kitemiconcheckcombo.cpp:24
 #, kde-format
 msgid "Attending"
 msgstr "Menghadiri"
 
-#: widgets/kitemiconcheckcombo.cpp:26
+#: widgets/kitemiconcheckcombo.cpp:25
 #, kde-format
 msgid "Maybe Attending"
 msgstr "Mungkin Menghadiri"
 
-#: widgets/kitemiconcheckcombo.cpp:27
+#: widgets/kitemiconcheckcombo.cpp:26
 #, kde-format
 msgid "Organizer"
 msgstr "Penyelenggara"
 
-#: widgets/kitemiconcheckcombo.cpp:36
+#: widgets/kitemiconcheckcombo.cpp:35
 #, kde-format
 msgctxt "@item:inlistbox"
 msgid "Icons to use"

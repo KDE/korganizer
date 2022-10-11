@@ -15,7 +15,7 @@ msgid ""
 msgstr ""
 "Project-Id-Version: korganizer\n"
 "Report-Msgid-Bugs-To: https://bugs.kde.org\n"
-"POT-Creation-Date: 2022-09-26 00:46+0000\n"
+"POT-Creation-Date: 2022-10-11 00:47+0000\n"
 "PO-Revision-Date: 2002-11-09 12:52+0200\n"
 "Last-Translator: Thelma Lungcuzo <thelma@translate.org.za>\n"
 "Language-Team: Xhosa <xhosa@translate.org.za>\n"
@@ -1940,7 +1940,7 @@ msgctxt "@info:whatsthis"
 msgid "Press this button to start the search."
 msgstr ""
 
-#: dialog/searchdialog.cpp:117
+#: dialog/searchdialog.cpp:116
 #, fuzzy, kde-format
 #| msgid ""
 #| "Invalid search expression, cannot perform the search. Please enter a "
@@ -1954,21 +1954,21 @@ msgstr ""
 "uchazo lophendlo usebenzisa abasebenzi be wildcard '*' ne '?' apho "
 "kuyimfuneko."
 
-#: dialog/searchdialog.cpp:129
+#: dialog/searchdialog.cpp:128
 #, fuzzy, kde-format
 #| msgid "No events were found matching your search expression."
 msgctxt "@info"
 msgid "No items were found that match your search pattern."
 msgstr "Akukho ziganeko zifunyenweyo zithelekiseka nochazo lwakho lophendlo."
 
-#: dialog/searchdialog.cpp:130
+#: dialog/searchdialog.cpp:129
 #, fuzzy, kde-format
 #| msgid "Search In"
 msgctxt "@title:window"
 msgid "Search Results"
 msgstr "Phendla Kwi"
 
-#: dialog/searchdialog.cpp:145
+#: dialog/searchdialog.cpp:144
 #, kde-format
 msgctxt "@label"
 msgid "%1 match"
@@ -5600,60 +5600,60 @@ msgstr "%1 %"
 msgid "A column header of the %1 dates in the month."
 msgstr ""
 
-#: widgets/kitemiconcheckcombo.cpp:18
+#: widgets/kitemiconcheckcombo.cpp:17
 #, fuzzy, kde-format
 msgid "Calendar's custom icon"
 msgstr "i Khalenda"
 
-#: widgets/kitemiconcheckcombo.cpp:19
+#: widgets/kitemiconcheckcombo.cpp:18
 #, fuzzy, kde-format
 msgid "To-do"
 msgstr "Ukwe-Nza:"
 
-#: widgets/kitemiconcheckcombo.cpp:20
+#: widgets/kitemiconcheckcombo.cpp:19
 #, fuzzy, kde-format
 #| msgid "&Journal"
 msgid "Journal"
 msgstr "&Incwadi egcina ii akhawuti"
 
-#: widgets/kitemiconcheckcombo.cpp:21
+#: widgets/kitemiconcheckcombo.cpp:20
 #, fuzzy, kde-format
 msgid "Recurring"
 msgstr "Impinda"
 
-#: widgets/kitemiconcheckcombo.cpp:22
+#: widgets/kitemiconcheckcombo.cpp:21
 #, fuzzy, kde-format
 msgid "Alarm"
 msgstr "i Alamu"
 
-#: widgets/kitemiconcheckcombo.cpp:23
+#: widgets/kitemiconcheckcombo.cpp:22
 #, fuzzy, kde-format
 #| msgid "read-only"
 msgid "Read Only"
 msgstr "funda-kuphela"
 
-#: widgets/kitemiconcheckcombo.cpp:24
+#: widgets/kitemiconcheckcombo.cpp:23
 #, kde-format
 msgid "Needs Reply"
 msgstr ""
 
-#: widgets/kitemiconcheckcombo.cpp:25
+#: widgets/kitemiconcheckcombo.cpp:24
 #, fuzzy, kde-format
 msgid "Attending"
 msgstr "Idibana"
 
-#: widgets/kitemiconcheckcombo.cpp:26
+#: widgets/kitemiconcheckcombo.cpp:25
 #, kde-format
 msgid "Maybe Attending"
 msgstr ""
 
-#: widgets/kitemiconcheckcombo.cpp:27
+#: widgets/kitemiconcheckcombo.cpp:26
 #, fuzzy, kde-format
 #| msgid "KOrganizer"
 msgid "Organizer"
 msgstr "KOrganizer"
 
-#: widgets/kitemiconcheckcombo.cpp:36
+#: widgets/kitemiconcheckcombo.cpp:35
 #, kde-format
 msgctxt "@item:inlistbox"
 msgid "Icons to use"

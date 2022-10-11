@@ -7,7 +7,7 @@ msgid ""
 msgstr ""
 "Project-Id-Version: korganizer\n"
 "Report-Msgid-Bugs-To: https://bugs.kde.org\n"
-"POT-Creation-Date: 2022-09-26 00:46+0000\n"
+"POT-Creation-Date: 2022-10-11 00:47+0000\n"
 "PO-Revision-Date: 2011-01-04 07:42+0530\n"
 "Last-Translator: A S Alam <aalam@users.sf.net>\n"
 "Language-Team: Punjabi/Panjabi <punjabi-users@lists.sf.net>\n"
@@ -1992,7 +1992,7 @@ msgctxt "@info:whatsthis"
 msgid "Press this button to start the search."
 msgstr "ਨਵਾਂ ਫਿਲਟਰ ਜੋੜਨ ਲਈ ਇਹ ਬਟਨ ਦਬਾਓ।"
 
-#: dialog/searchdialog.cpp:117
+#: dialog/searchdialog.cpp:116
 #, kde-format
 msgctxt "@info"
 msgid ""
@@ -2000,20 +2000,20 @@ msgid ""
 "expression using the wildcard characters '*' and '?' where needed."
 msgstr ""
 
-#: dialog/searchdialog.cpp:129
+#: dialog/searchdialog.cpp:128
 #, kde-format
 msgctxt "@info"
 msgid "No items were found that match your search pattern."
 msgstr ""
 
-#: dialog/searchdialog.cpp:130
+#: dialog/searchdialog.cpp:129
 #, fuzzy, kde-format
 #| msgid "Search In"
 msgctxt "@title:window"
 msgid "Search Results"
 msgstr "ਇਸ ਵਿੱਚ ਖੋਜ"
 
-#: dialog/searchdialog.cpp:145
+#: dialog/searchdialog.cpp:144
 #, kde-format
 msgctxt "@label"
 msgid "%1 match"
@@ -5765,67 +5765,67 @@ msgstr "%1"
 msgid "A column header of the %1 dates in the month."
 msgstr ""
 
-#: widgets/kitemiconcheckcombo.cpp:18
+#: widgets/kitemiconcheckcombo.cpp:17
 #, fuzzy, kde-format
 #| msgid "Calendar"
 msgid "Calendar's custom icon"
 msgstr "ਕੈਲੰਡਰ"
 
-#: widgets/kitemiconcheckcombo.cpp:19
+#: widgets/kitemiconcheckcombo.cpp:18
 #, fuzzy, kde-format
 #| msgid "To-do:"
 msgid "To-do"
 msgstr "ਕੰਮ-ਕਾਰ:"
 
-#: widgets/kitemiconcheckcombo.cpp:20
+#: widgets/kitemiconcheckcombo.cpp:19
 #, fuzzy, kde-format
 #| msgid "&Journal"
 msgid "Journal"
 msgstr "ਰੋਜ਼ਨਾਮਚਾ(&J)"
 
-#: widgets/kitemiconcheckcombo.cpp:21
+#: widgets/kitemiconcheckcombo.cpp:20
 #, fuzzy, kde-format
 #| msgid "Rec&urrence"
 msgid "Recurring"
 msgstr "ਆਵਰਤੀ"
 
-#: widgets/kitemiconcheckcombo.cpp:22
+#: widgets/kitemiconcheckcombo.cpp:21
 #, fuzzy, kde-format
 #| msgid "Alarms"
 msgid "Alarm"
 msgstr "ਅਲਾਰਮ"
 
-#: widgets/kitemiconcheckcombo.cpp:23
+#: widgets/kitemiconcheckcombo.cpp:22
 #, fuzzy, kde-format
 #| msgctxt "the calendar is read-only"
 #| msgid "read-only"
 msgid "Read Only"
 msgstr "ਪੜ੍ਹਨ ਲਈ"
 
-#: widgets/kitemiconcheckcombo.cpp:24
+#: widgets/kitemiconcheckcombo.cpp:23
 #, kde-format
 msgid "Needs Reply"
 msgstr ""
 
-#: widgets/kitemiconcheckcombo.cpp:25
+#: widgets/kitemiconcheckcombo.cpp:24
 #, fuzzy, kde-format
 #| msgctxt "@option sort in increasing order"
 #| msgid "Ascending"
 msgid "Attending"
 msgstr "ਵੱਧਦਾ ਕ੍ਰਮ"
 
-#: widgets/kitemiconcheckcombo.cpp:26
+#: widgets/kitemiconcheckcombo.cpp:25
 #, kde-format
 msgid "Maybe Attending"
 msgstr ""
 
-#: widgets/kitemiconcheckcombo.cpp:27
+#: widgets/kitemiconcheckcombo.cpp:26
 #, fuzzy, kde-format
 #| msgid "KOrganizer"
 msgid "Organizer"
 msgstr "ਕੇ-ਪਰਬੰਧਕ"
 
-#: widgets/kitemiconcheckcombo.cpp:36
+#: widgets/kitemiconcheckcombo.cpp:35
 #, kde-format
 msgctxt "@item:inlistbox"
 msgid "Icons to use"

@@ -7,7 +7,7 @@ msgid ""
 msgstr ""
 "Project-Id-Version: korganizer\n"
 "Report-Msgid-Bugs-To: https://bugs.kde.org\n"
-"POT-Creation-Date: 2022-09-26 00:46+0000\n"
+"POT-Creation-Date: 2022-10-11 00:47+0000\n"
 "PO-Revision-Date: 2006-12-17 13:34+0000\n"
 "Last-Translator: Mashrab Kuvatov <kmashrab@uni-bremen.de>\n"
 "Language-Team: Uzbek <floss-uz-l10n@googlegroups.com>\n"
@@ -1976,7 +1976,7 @@ msgctxt "@info:whatsthis"
 msgid "Press this button to start the search."
 msgstr "Ushbu hodisa yoki vazifa sarlavhasini moslash."
 
-#: dialog/searchdialog.cpp:117
+#: dialog/searchdialog.cpp:116
 #, kde-format
 msgctxt "@info"
 msgid ""
@@ -1984,19 +1984,19 @@ msgid ""
 "expression using the wildcard characters '*' and '?' where needed."
 msgstr ""
 
-#: dialog/searchdialog.cpp:129
+#: dialog/searchdialog.cpp:128
 #, kde-format
 msgctxt "@info"
 msgid "No items were found that match your search pattern."
 msgstr ""
 
-#: dialog/searchdialog.cpp:130
+#: dialog/searchdialog.cpp:129
 #, fuzzy, kde-format
 msgctxt "@title:window"
 msgid "Search Results"
 msgstr "&Boshi:"
 
-#: dialog/searchdialog.cpp:145
+#: dialog/searchdialog.cpp:144
 #, kde-format
 msgctxt "@label"
 msgid "%1 match"
@@ -5694,64 +5694,64 @@ msgstr ""
 msgid "A column header of the %1 dates in the month."
 msgstr ""
 
-#: widgets/kitemiconcheckcombo.cpp:18
+#: widgets/kitemiconcheckcombo.cpp:17
 #, fuzzy, kde-format
 #| msgid "Calendar"
 msgid "Calendar's custom icon"
 msgstr "Kalendar"
 
-#: widgets/kitemiconcheckcombo.cpp:19
+#: widgets/kitemiconcheckcombo.cpp:18
 #, fuzzy, kde-format
 #| msgid "To-do:"
 msgid "To-do"
 msgstr "Vazifa:"
 
-#: widgets/kitemiconcheckcombo.cpp:20
+#: widgets/kitemiconcheckcombo.cpp:19
 #, fuzzy, kde-format
 #| msgid "New &Journal..."
 msgid "Journal"
 msgstr "Yangi &kundalik"
 
-#: widgets/kitemiconcheckcombo.cpp:21
+#: widgets/kitemiconcheckcombo.cpp:20
 #, fuzzy, kde-format
 #| msgid "Resources"
 msgid "Recurring"
 msgstr "Manbalar"
 
-#: widgets/kitemiconcheckcombo.cpp:22
+#: widgets/kitemiconcheckcombo.cpp:21
 #, kde-format
 msgid "Alarm"
 msgstr ""
 
-#: widgets/kitemiconcheckcombo.cpp:23
+#: widgets/kitemiconcheckcombo.cpp:22
 #, fuzzy, kde-format
 #| msgid "read-only"
 msgid "Read Only"
 msgstr "faqat oʻqishga"
 
-#: widgets/kitemiconcheckcombo.cpp:24
+#: widgets/kitemiconcheckcombo.cpp:23
 #, kde-format
 msgid "Needs Reply"
 msgstr ""
 
-#: widgets/kitemiconcheckcombo.cpp:25
+#: widgets/kitemiconcheckcombo.cpp:24
 #, fuzzy, kde-format
 #| msgid "Ascending"
 msgid "Attending"
 msgstr "Koʻpayish boʻyicha"
 
-#: widgets/kitemiconcheckcombo.cpp:26
+#: widgets/kitemiconcheckcombo.cpp:25
 #, kde-format
 msgid "Maybe Attending"
 msgstr ""
 
-#: widgets/kitemiconcheckcombo.cpp:27
+#: widgets/kitemiconcheckcombo.cpp:26
 #, fuzzy, kde-format
 #| msgid "KOrganizer"
 msgid "Organizer"
 msgstr "KOrganizer"
 
-#: widgets/kitemiconcheckcombo.cpp:36
+#: widgets/kitemiconcheckcombo.cpp:35
 #, kde-format
 msgctxt "@item:inlistbox"
 msgid "Icons to use"

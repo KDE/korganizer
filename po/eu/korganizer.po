@@ -11,7 +11,7 @@ msgid ""
 msgstr ""
 "Project-Id-Version: korganizer\n"
 "Report-Msgid-Bugs-To: https://bugs.kde.org\n"
-"POT-Creation-Date: 2022-09-26 00:46+0000\n"
+"POT-Creation-Date: 2022-10-11 00:47+0000\n"
 "PO-Revision-Date: 2010-08-12 00:42+0200\n"
 "Last-Translator: Ignigo Salvador Azurmendi <xalba@euskalnet.net>\n"
 "Language-Team: Basque <itzulpena@euskalgnu.org>\n"
@@ -2059,7 +2059,7 @@ msgctxt "@info:whatsthis"
 msgid "Press this button to start the search."
 msgstr "Sakatu botoia iragazki berri bat definitzeko."
 
-#: dialog/searchdialog.cpp:117
+#: dialog/searchdialog.cpp:116
 #, fuzzy, kde-format
 #| msgid ""
 #| "Invalid search expression, cannot perform the search. Please enter a "
@@ -2072,21 +2072,21 @@ msgstr ""
 "Bilaketa espresio baliogabea, ezin da bilakete burutu. Sartu bilaketa "
 "espresioa behar den lekuan'*' eta '?' komodinak erabiliz."
 
-#: dialog/searchdialog.cpp:129
+#: dialog/searchdialog.cpp:128
 #, fuzzy, kde-format
 #| msgid "No events were found matching your search expression."
 msgctxt "@info"
 msgid "No items were found that match your search pattern."
 msgstr "Ez da zure bilaketa espresioarekin bat datorren gertaerarik aurkitu."
 
-#: dialog/searchdialog.cpp:130
+#: dialog/searchdialog.cpp:129
 #, fuzzy, kde-format
 #| msgid "Search In"
 msgctxt "@title:window"
 msgid "Search Results"
 msgstr "Bilatu hemen"
 
-#: dialog/searchdialog.cpp:145
+#: dialog/searchdialog.cpp:144
 #, kde-format
 msgctxt "@label"
 msgid "%1 match"
@@ -6165,65 +6165,65 @@ msgstr "%1"
 msgid "A column header of the %1 dates in the month."
 msgstr ""
 
-#: widgets/kitemiconcheckcombo.cpp:18
+#: widgets/kitemiconcheckcombo.cpp:17
 #, fuzzy, kde-format
 #| msgid "Calendar"
 msgid "Calendar's custom icon"
 msgstr "Egutegia"
 
-#: widgets/kitemiconcheckcombo.cpp:19
+#: widgets/kitemiconcheckcombo.cpp:18
 #, fuzzy, kde-format
 #| msgid "To-do:"
 msgid "To-do"
 msgstr "Egitekea:"
 
-#: widgets/kitemiconcheckcombo.cpp:20
+#: widgets/kitemiconcheckcombo.cpp:19
 #, fuzzy, kde-format
 #| msgid "&Journal"
 msgid "Journal"
 msgstr "&Egunkaria"
 
-#: widgets/kitemiconcheckcombo.cpp:21
+#: widgets/kitemiconcheckcombo.cpp:20
 #, fuzzy, kde-format
 #| msgid "Rec&urrence"
 msgid "Recurring"
 msgstr "&Periodikotasuna"
 
-#: widgets/kitemiconcheckcombo.cpp:22
+#: widgets/kitemiconcheckcombo.cpp:21
 #, fuzzy, kde-format
 #| msgid "Alarms"
 msgid "Alarm"
 msgstr "Alarmak"
 
-#: widgets/kitemiconcheckcombo.cpp:23
+#: widgets/kitemiconcheckcombo.cpp:22
 #, fuzzy, kde-format
 #| msgid "read-only"
 msgid "Read Only"
 msgstr "irakurtzeko bakarrik"
 
-#: widgets/kitemiconcheckcombo.cpp:24
+#: widgets/kitemiconcheckcombo.cpp:23
 #, kde-format
 msgid "Needs Reply"
 msgstr ""
 
-#: widgets/kitemiconcheckcombo.cpp:25
+#: widgets/kitemiconcheckcombo.cpp:24
 #, fuzzy, kde-format
 #| msgid "Ascending"
 msgid "Attending"
 msgstr "Gorakorra"
 
-#: widgets/kitemiconcheckcombo.cpp:26
+#: widgets/kitemiconcheckcombo.cpp:25
 #, kde-format
 msgid "Maybe Attending"
 msgstr ""
 
-#: widgets/kitemiconcheckcombo.cpp:27
+#: widgets/kitemiconcheckcombo.cpp:26
 #, fuzzy, kde-format
 #| msgid "KOrganizer"
 msgid "Organizer"
 msgstr "KOrganizer"
 
-#: widgets/kitemiconcheckcombo.cpp:36
+#: widgets/kitemiconcheckcombo.cpp:35
 #, kde-format
 msgctxt "@item:inlistbox"
 msgid "Icons to use"

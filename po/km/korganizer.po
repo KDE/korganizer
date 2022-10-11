@@ -8,7 +8,7 @@ msgid ""
 msgstr ""
 "Project-Id-Version: korganizer\n"
 "Report-Msgid-Bugs-To: https://bugs.kde.org\n"
-"POT-Creation-Date: 2022-09-26 00:46+0000\n"
+"POT-Creation-Date: 2022-10-11 00:47+0000\n"
 "PO-Revision-Date: 2012-07-09 10:04+0700\n"
 "Last-Translator: Khoem Sokhem <khoemsokhem@khmeros.info>\n"
 "Language-Team: Khmer\n"
@@ -2019,7 +2019,7 @@ msgctxt "@info:whatsthis"
 msgid "Press this button to start the search."
 msgstr "ចុច​ប៊ូតុង​នេះ ដើម្បី​កំណត់​តម្រង​ថ្មី​មួយ ។​"
 
-#: dialog/searchdialog.cpp:117
+#: dialog/searchdialog.cpp:116
 #, fuzzy, kde-format
 #| msgid ""
 #| "Invalid search expression, cannot perform the search. Please enter a "
@@ -2032,21 +2032,21 @@ msgstr ""
 "កន្សោម​ស្វែងរកមិន​ត្រឹមត្រូវ​ឡើយ ដូច្នេះ​មិន​អាច​ធ្វើការ​ស្វែងរក​បាន​ឡើយ ។ សូម​បញ្ចូល​កន្សោម​ស្វែង​រក​មួយ ដោយ​"
 "ប្រើ​តួអក្សរ​ជំនួស '*' និង​ '?' ត្រង់​កន្លែង​ដែល​ត្រូវការ ។"
 
-#: dialog/searchdialog.cpp:129
+#: dialog/searchdialog.cpp:128
 #, fuzzy, kde-format
 #| msgid "No items were found that match your search pattern."
 msgctxt "@info"
 msgid "No items were found that match your search pattern."
 msgstr "រកមិន​ឃើញ​ធាតុ​ដែល​ផ្គូផ្គង​ការ​ស្វែងរក​លំនាំ​របស់​អ្នកឡើយ​​ ។"
 
-#: dialog/searchdialog.cpp:130
+#: dialog/searchdialog.cpp:129
 #, fuzzy, kde-format
 #| msgid "Search In"
 msgctxt "@title:window"
 msgid "Search Results"
 msgstr "ស្វែង​រក​ក្នុង"
 
-#: dialog/searchdialog.cpp:145
+#: dialog/searchdialog.cpp:144
 #, kde-format
 msgctxt "@label"
 msgid "%1 match"
@@ -6081,59 +6081,59 @@ msgstr "%1"
 msgid "A column header of the %1 dates in the month."
 msgstr "បឋមកថា​ជួរឈរ​របស់​កាលបរិច្ឆេទ %1 នៅ​ក្នុង​ខែ ។"
 
-#: widgets/kitemiconcheckcombo.cpp:18
+#: widgets/kitemiconcheckcombo.cpp:17
 #, fuzzy, kde-format
 #| msgctxt "@title:group"
 #| msgid "Calendar Decorations"
 msgid "Calendar's custom icon"
 msgstr "ការ​តុបតែង​ប្រតិទិន"
 
-#: widgets/kitemiconcheckcombo.cpp:19
+#: widgets/kitemiconcheckcombo.cpp:18
 #, kde-format
 msgid "To-do"
 msgstr "ការងារ​ត្រូវ​ធ្វើ​"
 
-#: widgets/kitemiconcheckcombo.cpp:20
+#: widgets/kitemiconcheckcombo.cpp:19
 #, kde-format
 msgid "Journal"
 msgstr "ទិនានុប្បវត្តិ"
 
-#: widgets/kitemiconcheckcombo.cpp:21
+#: widgets/kitemiconcheckcombo.cpp:20
 #, kde-format
 msgid "Recurring"
 msgstr "កើតឡើង​ដដែលៗ"
 
-#: widgets/kitemiconcheckcombo.cpp:22
+#: widgets/kitemiconcheckcombo.cpp:21
 #, kde-format
 msgid "Alarm"
 msgstr "ជូនដំណឹង"
 
-#: widgets/kitemiconcheckcombo.cpp:23
+#: widgets/kitemiconcheckcombo.cpp:22
 #, kde-format
 msgid "Read Only"
 msgstr "បាន​តែ​អាន"
 
-#: widgets/kitemiconcheckcombo.cpp:24
+#: widgets/kitemiconcheckcombo.cpp:23
 #, kde-format
 msgid "Needs Reply"
 msgstr "តម្រូវ​ឲ្យ​ឆ្លើយតប"
 
-#: widgets/kitemiconcheckcombo.cpp:25
+#: widgets/kitemiconcheckcombo.cpp:24
 #, kde-format
 msgid "Attending"
 msgstr "រង់ចាំ"
 
-#: widgets/kitemiconcheckcombo.cpp:26
+#: widgets/kitemiconcheckcombo.cpp:25
 #, kde-format
 msgid "Maybe Attending"
 msgstr "ប្រហែល​ជា​រង់ចាំ"
 
-#: widgets/kitemiconcheckcombo.cpp:27
+#: widgets/kitemiconcheckcombo.cpp:26
 #, kde-format
 msgid "Organizer"
 msgstr "អ្នក​រៀបចំ"
 
-#: widgets/kitemiconcheckcombo.cpp:36
+#: widgets/kitemiconcheckcombo.cpp:35
 #, kde-format
 msgctxt "@item:inlistbox"
 msgid "Icons to use"
