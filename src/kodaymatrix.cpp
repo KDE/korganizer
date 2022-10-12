@@ -621,9 +621,11 @@ void KODayMatrix::dropEvent(QDropEvent *e)
         }
         bool exist = items.at(0).isValid();
         int action = DRAG_CANCEL;
-
+#if QT_VERSION < QT_VERSION_CHECK(6, 0, 0)
         Qt::KeyboardModifiers keyboardModifiers = e->keyboardModifiers();
-
+#else
+        Qt::KeyboardModifiers keyboardModifiers = e->modifiers();
+#endif
         if (keyboardModifiers & Qt::ControlModifier) {
             action = DRAG_COPY;
         } else if (keyboardModifiers & Qt::ShiftModifier) {
