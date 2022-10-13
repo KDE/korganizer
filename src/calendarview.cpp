@@ -1471,6 +1471,13 @@ void CalendarView::moveIncidenceToResource(const Akonadi::Item &item, const Akon
 #endif
 }
 
+QDateTime CalendarView::recurrenceOnDate(KCalendarCore::Incidence::Ptr incidence, QDate displayDate)
+{
+    const auto start = incidence->dateTime(KCalendarCore::IncidenceBase::RoleDisplayStart);
+    const auto offset = start.toLocalTime().date().daysTo(displayDate);
+    return incidence->dateTime(KCalendarCore::IncidenceBase::RoleRecurrenceStart).addDays(offset);
+}
+
 void CalendarView::dissociateOccurrences(const Akonadi::Item &item, QDate date)
 {
     const KCalendarCore::Incidence::Ptr incidence = Akonadi::CalendarUtils::incidence(item);
@@ -1480,8 +1487,8 @@ void CalendarView::dissociateOccurrences(const Akonadi::Item &item, QDate date)
         return;
     }
 
-    QDateTime thisDateTime(date, {}, Qt::LocalTime);
-    bool isFirstOccurrence = !incidence->recurrence()->getPreviousDateTime(thisDateTime).isValid();
+    QDateTime recurrenceId = recurrenceOnDate(incidence, date);
+    bool isFirstOccurrence = !incidence->recurrence()->getPreviousDateTime(recurrenceId).isValid();
 
     int answer;
     bool doOnlyThis = false;
@@ -1514,13 +1521,13 @@ void CalendarView::dissociateOccurrences(const Akonadi::Item &item, QDate date)
     }
 
     if (doOnlyThis) {
-        dissociateOccurrence(item, date, false);
+        dissociateOccurrence(item, recurrenceId, false);
     } else if (doFuture) {
-        dissociateOccurrence(item, date, true);
+        dissociateOccurrence(item, recurrenceId, true);
     }
 }
 
-void CalendarView::dissociateOccurrence(const Akonadi::Item &item, const QDate &date, bool thisAndFuture)
+void CalendarView::dissociateOccurrence(const Akonadi::Item &item, const QDateTime &recurrenceId, bool thisAndFuture)
 {
     const KCalendarCore::Incidence::Ptr incidence = Akonadi::CalendarUtils::incidence(item);
 
@@ -1529,10 +1536,7 @@ void CalendarView::dissociateOccurrence(const Akonadi::Item &item, const QDate &
     } else {
         startMultiModify(i18n("Dissociate occurrence"));
     }
-    QDateTime occurrenceDate = incidence->dtStart();
-    occurrenceDate.setDate(date);
-    qCDebug(KORGANIZER_LOG) << "create exception: " << occurrenceDate;
-    KCalendarCore::Incidence::Ptr newInc(KCalendarCore::Calendar::createException(incidence, occurrenceDate, thisAndFuture));
+    KCalendarCore::Incidence::Ptr newInc(KCalendarCore::Calendar::createException(incidence, recurrenceId, thisAndFuture));
     if (newInc) {
         (void)mChanger->createIncidence(newInc, item.parentCollection(), this);
     } else {
