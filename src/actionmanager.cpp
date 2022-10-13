@@ -1596,7 +1596,12 @@ void ActionManager::updateUndoRedoActions()
 
     if (history->undoAvailable()) {
         mUndoAction->setEnabled(true);
-        mUndoAction->setText(i18n("Undo: %1", history->nextUndoDescription()));
+        QString nextUndoDescription = history->nextUndoDescription();
+        if (nextUndoDescription.length() > 30) {
+            nextUndoDescription.truncate(30);
+            nextUndoDescription += QStringLiteral("...");
+        }
+        mUndoAction->setText(i18n("Undo: %1", nextUndoDescription));
     } else {
         mUndoAction->setEnabled(false);
         mUndoAction->setText(i18n("Undo"));
@@ -1604,7 +1609,12 @@ void ActionManager::updateUndoRedoActions()
 
     if (history->redoAvailable()) {
         mRedoAction->setEnabled(true);
-        mRedoAction->setText(i18n("Redo: %1", history->nextRedoDescription()));
+        QString nextRedoDescription = history->nextRedoDescription();
+        if (nextRedoDescription.length() > 30) {
+            nextRedoDescription.truncate(30);
+            nextRedoDescription += QStringLiteral("...");
+        }
+        mRedoAction->setText(i18n("Redo: %1", nextRedoDescription));
     } else {
         mRedoAction->setEnabled(false);
         mRedoAction->setText(i18n("Redo"));
