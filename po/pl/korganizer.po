@@ -1,5 +1,5 @@
 # translation of korganizer.po to
-# Version: $Revision: 1635759 $
+# Version: $Revision: 1635911 $
 # translated by Krzysztof Jasiutowicz <kpjas@priv.onet.pl>
 # contains his updates from 26.01.1999
 # Krzysztof Lichota <lichota@mimuw.edu.pl>, 2002, 2005, 2006.
@@ -13,7 +13,7 @@ msgid ""
 msgstr ""
 "Project-Id-Version: korganizer\n"
 "Report-Msgid-Bugs-To: https://bugs.kde.org\n"
-"POT-Creation-Date: 2022-10-11 00:47+0000\n"
+"POT-Creation-Date: 2022-10-13 00:47+0000\n"
 "PO-Revision-Date: 2022-06-05 11:21+0200\n"
 "Last-Translator: Łukasz Wojniłowicz <lukasz.wojnilowicz@gmail.com>\n"
 "Language-Team: Polish <kde-i18n-doc@kde.org>\n"
@@ -2228,22 +2228,22 @@ msgctxt "delimiter for joining holiday names"
 msgid ","
 msgstr ", "
 
-#: kodaymatrix.cpp:636
+#: kodaymatrix.cpp:638
 #, kde-format
 msgid "&Move"
 msgstr "&Przenieś"
 
-#: kodaymatrix.cpp:638
+#: kodaymatrix.cpp:640
 #, kde-format
 msgid "&Copy"
 msgstr "S&kopiuj"
 
-#: kodaymatrix.cpp:641
+#: kodaymatrix.cpp:643
 #, kde-format
 msgid "&Add"
 msgstr "&Dodaj"
 
-#: kodaymatrix.cpp:645
+#: kodaymatrix.cpp:647
 #, kde-format
 msgid "&Cancel"
 msgstr "&Anuluj"

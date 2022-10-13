@@ -6,7 +6,7 @@ msgid ""
 msgstr ""
 "Project-Id-Version: korganizer\n"
 "Report-Msgid-Bugs-To: https://bugs.kde.org\n"
-"POT-Creation-Date: 2022-10-11 00:47+0000\n"
+"POT-Creation-Date: 2022-10-13 00:47+0000\n"
 "PO-Revision-Date: 2021-10-18 13:48+0200\n"
 "Last-Translator: Prof. Dr. Eduard Werner <e.werner@rz.uni-leipzig.de>\n"
 "Language-Team: Upper Sorbian\n"
@@ -2108,22 +2108,22 @@ msgctxt "delimiter for joining holiday names"
 msgid ","
 msgstr ""
 
-#: kodaymatrix.cpp:636
+#: kodaymatrix.cpp:638
 #, kde-format
 msgid "&Move"
 msgstr "Přes&unyć"
 
-#: kodaymatrix.cpp:638
+#: kodaymatrix.cpp:640
 #, kde-format
 msgid "&Copy"
 msgstr "&Kopěrować"
 
-#: kodaymatrix.cpp:641
+#: kodaymatrix.cpp:643
 #, kde-format
 msgid "&Add"
 msgstr "Dod&ać"
 
-#: kodaymatrix.cpp:645
+#: kodaymatrix.cpp:647
 #, kde-format
 msgid "&Cancel"
 msgstr "Přeto&rhnyć"

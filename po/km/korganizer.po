@@ -8,7 +8,7 @@ msgid ""
 msgstr ""
 "Project-Id-Version: korganizer\n"
 "Report-Msgid-Bugs-To: https://bugs.kde.org\n"
-"POT-Creation-Date: 2022-10-11 00:47+0000\n"
+"POT-Creation-Date: 2022-10-13 00:47+0000\n"
 "PO-Revision-Date: 2012-07-09 10:04+0700\n"
 "Last-Translator: Khoem Sokhem <khoemsokhem@khmeros.info>\n"
 "Language-Team: Khmer\n"
@@ -2250,22 +2250,22 @@ msgctxt "delimiter for joining holiday names"
 msgid ","
 msgstr ","
 
-#: kodaymatrix.cpp:636
+#: kodaymatrix.cpp:638
 #, kde-format
 msgid "&Move"
 msgstr "ផ្លាស់ទី"
 
-#: kodaymatrix.cpp:638
+#: kodaymatrix.cpp:640
 #, kde-format
 msgid "&Copy"
 msgstr "ចម្លង"
 
-#: kodaymatrix.cpp:641
+#: kodaymatrix.cpp:643
 #, kde-format
 msgid "&Add"
 msgstr "បន្ថែម"
 
-#: kodaymatrix.cpp:645
+#: kodaymatrix.cpp:647
 #, kde-format
 msgid "&Cancel"
 msgstr "បោះបង់"

@@ -10,7 +10,7 @@ msgid ""
 msgstr ""
 "Project-Id-Version: korganizer\n"
 "Report-Msgid-Bugs-To: https://bugs.kde.org\n"
-"POT-Creation-Date: 2022-10-11 00:47+0000\n"
+"POT-Creation-Date: 2022-10-13 00:47+0000\n"
 "PO-Revision-Date: 2019-09-27 23:59+0500\n"
 "Last-Translator: Victor Ibragimov <victor.ibragimov@gmail.com>\n"
 "Language-Team: English <kde-i18n-doc@kde.org>\n"
@@ -2181,22 +2181,22 @@ msgctxt "delimiter for joining holiday names"
 msgid ","
 msgstr ", "
 
-#: kodaymatrix.cpp:636
+#: kodaymatrix.cpp:638
 #, fuzzy, kde-format
 msgid "&Move"
 msgstr "Гузаронидан"
 
-#: kodaymatrix.cpp:638
+#: kodaymatrix.cpp:640
 #, fuzzy, kde-format
 msgid "&Copy"
 msgstr "Нусха бардоштан"
 
-#: kodaymatrix.cpp:641
+#: kodaymatrix.cpp:643
 #, kde-format
 msgid "&Add"
 msgstr "&Илова"
 
-#: kodaymatrix.cpp:645
+#: kodaymatrix.cpp:647
 #, fuzzy, kde-format
 msgid "&Cancel"
 msgstr "&Дигаргун кунед"

@@ -7,7 +7,7 @@ msgid ""
 msgstr ""
 "Project-Id-Version: korganizer\n"
 "Report-Msgid-Bugs-To: https://bugs.kde.org\n"
-"POT-Creation-Date: 2022-10-11 00:47+0000\n"
+"POT-Creation-Date: 2022-10-13 00:47+0000\n"
 "PO-Revision-Date: 2011-01-04 07:42+0530\n"
 "Last-Translator: A S Alam <aalam@users.sf.net>\n"
 "Language-Team: Punjabi/Panjabi <punjabi-users@lists.sf.net>\n"
@@ -2204,22 +2204,22 @@ msgctxt "delimiter for joining holiday names"
 msgid ","
 msgstr ","
 
-#: kodaymatrix.cpp:636
+#: kodaymatrix.cpp:638
 #, kde-format
 msgid "&Move"
 msgstr "ਭੇਜੋ(&M)"
 
-#: kodaymatrix.cpp:638
+#: kodaymatrix.cpp:640
 #, kde-format
 msgid "&Copy"
 msgstr "ਨਕਲ(&C)"
 
-#: kodaymatrix.cpp:641
+#: kodaymatrix.cpp:643
 #, kde-format
 msgid "&Add"
 msgstr "ਸ਼ਾਮਿਲ(&A)"
 
-#: kodaymatrix.cpp:645
+#: kodaymatrix.cpp:647
 #, kde-format
 msgid "&Cancel"
 msgstr "ਰੱਦ ਕਰੋ(&C)"

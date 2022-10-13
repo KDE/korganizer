@@ -19,7 +19,7 @@ msgid ""
 msgstr ""
 "Project-Id-Version: korganizer\n"
 "Report-Msgid-Bugs-To: https://bugs.kde.org\n"
-"POT-Creation-Date: 2022-10-11 00:47+0000\n"
+"POT-Creation-Date: 2022-10-13 00:47+0000\n"
 "PO-Revision-Date: 2007-03-28 20:53+0200\n"
 "Last-Translator: Rinse de Vries <rinsedevries@kde.nl>\n"
 "Language-Team: Frysk <kde-i18n-fry@kde.org>\n"
@@ -2327,24 +2327,24 @@ msgctxt "delimiter for joining holiday names"
 msgid ","
 msgstr ", "
 
-#: kodaymatrix.cpp:636
+#: kodaymatrix.cpp:638
 #, fuzzy, kde-format
 #| msgid "&Move To"
 msgid "&Move"
 msgstr "Ferpleat&se nei"
 
-#: kodaymatrix.cpp:638
+#: kodaymatrix.cpp:640
 #, fuzzy, kde-format
 #| msgid "&Copy To"
 msgid "&Copy"
 msgstr "Ko&piearje nei"
 
-#: kodaymatrix.cpp:641
+#: kodaymatrix.cpp:643
 #, kde-format
 msgid "&Add"
 msgstr "&Taheakje"
 
-#: kodaymatrix.cpp:645
+#: kodaymatrix.cpp:647
 #, fuzzy, kde-format
 #| msgid "&Change"
 msgid "&Cancel"
