@@ -10,11 +10,11 @@
 #include "../kodaymatrix.h"
 
 #include <QTest>
-QTEST_MAIN(KODayMatrixTest)
+QTEST_MAIN(KODayMatrixTestUS)
 
 using DateRange = QPair<QDate, QDate>;
 
-void KODayMatrixTest::testMatrixLimits()
+void KODayMatrixTestUS::testMatrixLimits()
 {
     QMap<QDate, DateRange> dates2;
     QLocale::setDefault(QLocale(QStringLiteral("en_US"))); // week start on Sunday

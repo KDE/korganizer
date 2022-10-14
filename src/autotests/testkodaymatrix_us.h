@@ -10,7 +10,7 @@
 
 #include <QObject>
 
-class KODayMatrixTest : public QObject
+class KODayMatrixTestUS : public QObject
 {
     Q_OBJECT
 private Q_SLOTS:
