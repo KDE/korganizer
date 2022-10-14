@@ -1441,10 +1441,9 @@ void CalendarView::moveIncidenceToResource(const Akonadi::Item &item, const Akon
         if (!oldCal || resources->deleteIncidence(incidence)) {
             KMessageBox::error(this,
                                i18nc("@info",
-                                     "Unable to remove the item \"%1\" from %2. "
-                                     "However, a copy of this item has been put into %3.",
+                                     "Unable to remove the item \"%1\" from the original calendar. "
+                                     "However, a copy of this item has been put into %2",
                                      incidence->summary(),
-                                     oldCal->resourceName(),
                                      newCal->resourceName()),
                                i18nc("@title:window", "Moving Failed"));
         } else {
