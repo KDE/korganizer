@@ -2,7 +2,7 @@ msgid ""
 msgstr ""
 "Project-Id-Version: kdeorg\n"
 "Report-Msgid-Bugs-To: https://bugs.kde.org\n"
-"POT-Creation-Date: 2022-10-13 00:47+0000\n"
+"POT-Creation-Date: 2022-10-14 00:47+0000\n"
 "PO-Revision-Date: 2022-10-02 15:49\n"
 "Last-Translator: \n"
 "Language-Team: Chinese Simplified\n"
@@ -1149,32 +1149,32 @@ msgstr "删除邮件中的附件可能会使签名失效。"
 msgid "Remove Attachments"
 msgstr "删除附件"
 
-#: actionmanager.cpp:1599
+#: actionmanager.cpp:1604
 #, kde-format
 msgid "Undo: %1"
 msgstr "撤销：%1"
 
-#: actionmanager.cpp:1602 actionmanager.cpp:1613
+#: actionmanager.cpp:1607 actionmanager.cpp:1623
 #, kde-format
 msgid "Undo"
 msgstr "撤销"
 
-#: actionmanager.cpp:1607
+#: actionmanager.cpp:1617
 #, kde-format
 msgid "Redo: %1"
 msgstr "重做：%1"
 
-#: actionmanager.cpp:1610
+#: actionmanager.cpp:1620
 #, kde-format
 msgid "Redo"
 msgstr "重做"
 
-#: actionmanager.cpp:1624
+#: actionmanager.cpp:1634
 #, kde-format
 msgid "URL '%1' is invalid."
 msgstr "URL“%1”无效。"
 
-#: actionmanager.cpp:1629
+#: actionmanager.cpp:1639
 #, kde-format
 msgctxt "@info"
 msgid ""
@@ -1188,18 +1188,18 @@ msgstr ""
 "了合并，您将有机会选择用于合并的日历。</p><p>如果您选择了新建，则将自动为您新"
 "建一个日历。</p>"
 
-#: actionmanager.cpp:1637
+#: actionmanager.cpp:1647
 #, kde-format
 msgctxt "@title:window"
 msgid "Import Calendar"
 msgstr "导入日历"
 
-#: actionmanager.cpp:1638
+#: actionmanager.cpp:1648
 #, kde-format
 msgid "Merge into existing calendar"
 msgstr "合并入已有日历"
 
-#: actionmanager.cpp:1639
+#: actionmanager.cpp:1649
 #, kde-format
 msgid "Add as new calendar"
 msgstr "添加为新日历"
@@ -1411,98 +1411,98 @@ msgctxt "@info"
 msgid "Unable to add the item \"%1\" into %2. This item has not been moved."
 msgstr "无法将项目“%1”添加到 %2，将不会移动它。"
 
-#: calendarview.cpp:1492
+#: calendarview.cpp:1499
 #, kde-format
 msgid "Do you want to dissociate the occurrence on %1 from the recurrence?"
 msgstr "您想要将发生于 %1 的事件从重现中拆分出来吗？"
 
-#: calendarview.cpp:1496 calendarview.cpp:1508 calendarview.cpp:2166
-#: calendarview.cpp:2226 calendarview.cpp:2256
+#: calendarview.cpp:1503 calendarview.cpp:1515 calendarview.cpp:2170
+#: calendarview.cpp:2230 calendarview.cpp:2260
 #, kde-format
 msgid "KOrganizer Confirmation"
 msgstr "KOrganizer 确认"
 
-#: calendarview.cpp:1497
+#: calendarview.cpp:1504
 #, kde-format
 msgid "&Dissociate"
 msgstr "拆分(&D)"
 
-#: calendarview.cpp:1503
+#: calendarview.cpp:1510
 #, kde-format
 msgid ""
 "Do you want to dissociate the occurrence on %1 from the recurrence or also "
 "dissociate future ones?"
 msgstr "您想要将发生于 %1 的事件从重现中拆分出来还是拆分未来的事件？"
 
-#: calendarview.cpp:1509
+#: calendarview.cpp:1516
 #, kde-format
 msgid "&Only Dissociate This One"
 msgstr "只拆分本次事件(&O)"
 
-#: calendarview.cpp:1510
+#: calendarview.cpp:1517
 #, kde-format
 msgid "&Also Dissociate Future Ones"
 msgstr "拆分未来的事件(&A)"
 
-#: calendarview.cpp:1528
+#: calendarview.cpp:1535
 #, kde-format
 msgid "Dissociate future occurrences"
 msgstr "拆分未来的事件"
 
-#: calendarview.cpp:1530
+#: calendarview.cpp:1537
 #, kde-format
 msgid "Dissociate occurrence"
 msgstr "拆分事件"
 
-#: calendarview.cpp:1540
+#: calendarview.cpp:1544
 #, kde-format
 msgid "Dissociating the future occurrences failed."
 msgstr "拆分未来的事件失败。"
 
-#: calendarview.cpp:1540 calendarview.cpp:1542
+#: calendarview.cpp:1544 calendarview.cpp:1546
 #, kde-format
 msgid "Dissociating Failed"
 msgstr "拆分失败"
 
-#: calendarview.cpp:1542
+#: calendarview.cpp:1546
 #, kde-format
 msgid "Dissociating the occurrence failed."
 msgstr "拆分事件失败。"
 
-#: calendarview.cpp:1704
+#: calendarview.cpp:1708
 #, kde-format
 msgid "iCalendars (*.ics)"
 msgstr "iCalendars (*.ics)"
 
-#: calendarview.cpp:1713
+#: calendarview.cpp:1717
 #, kde-format
 msgid "Do you want to overwrite %1?"
 msgstr "您想要覆盖 %1 吗？"
 
-#: calendarview.cpp:1714
+#: calendarview.cpp:1718
 #, kde-format
 msgctxt "@title:window"
 msgid "Export Calendar"
 msgstr "导出日历"
 
-#: calendarview.cpp:1728
+#: calendarview.cpp:1732
 #, kde-format
 msgctxt "save failure cause unknown"
 msgid "Reason unknown"
 msgstr "原因未知"
 
-#: calendarview.cpp:1730
+#: calendarview.cpp:1734
 #, kde-format
 msgctxt "@info"
 msgid "Cannot write iCalendar file %1. %2"
 msgstr "无法写入 iCalendar 文件 %1。%2"
 
-#: calendarview.cpp:1826 calendarview.cpp:1865
+#: calendarview.cpp:1830 calendarview.cpp:1869
 #, kde-format
 msgid "No filter"
 msgstr "无过滤器"
 
-#: calendarview.cpp:2161
+#: calendarview.cpp:2165
 #, kde-format
 msgid ""
 "The item \"%1\" has sub-to-dos. Do you want to delete just this item and "
@@ -1512,41 +1512,41 @@ msgstr ""
 "项目“%1”有子待办事项。您是想要只删除此项目并将其全部子待办独立，还是删除此项"
 "目及其全部子待办事项？"
 
-#: calendarview.cpp:2167
+#: calendarview.cpp:2171
 #, kde-format
 msgid "Delete Only This"
 msgstr "仅删除此项"
 
-#: calendarview.cpp:2168 calendarview.cpp:2227
+#: calendarview.cpp:2172 calendarview.cpp:2231
 #, kde-format
 msgid "Delete All"
 msgstr "全部删除"
 
-#: calendarview.cpp:2200
+#: calendarview.cpp:2204
 #, kde-format
 msgid ""
 "The item \"%1\" is marked read-only and cannot be deleted; it probably "
 "belongs to a read-only calendar."
 msgstr "项目“%1”被标记为只读，故无法删除，它可能属于一个只读的日历。"
 
-#: calendarview.cpp:2204
+#: calendarview.cpp:2208
 #, kde-format
 msgid "Removing not possible"
 msgstr "无法删除"
 
-#: calendarview.cpp:2222
+#: calendarview.cpp:2226
 #, kde-format
 msgid ""
 "The calendar item \"%1\" recurs over multiple dates; are you sure you want "
 "to delete it and all its recurrences?"
 msgstr "日历项“%1”会在好几个日期重复出现，您确实要删除它及其所有重现吗？"
 
-#: calendarview.cpp:2234
+#: calendarview.cpp:2238
 #, kde-format
 msgid "Also Delete &Future"
 msgstr "删除未来的重现(&F)"
 
-#: calendarview.cpp:2238
+#: calendarview.cpp:2242
 #, kde-format
 msgid ""
 "The calendar item \"%1\" recurs over multiple dates. Do you want to delete "
@@ -1555,7 +1555,7 @@ msgstr ""
 "日历项“%1”会在好几个日期重复出现。您想要只删除当前 %2 的重现、所有未来的重"
 "现，还是所有的重现？"
 
-#: calendarview.cpp:2245
+#: calendarview.cpp:2249
 #, kde-format
 msgid ""
 "The calendar item \"%1\" recurs over multiple dates. Do you want to delete "
@@ -1563,97 +1563,97 @@ msgid ""
 msgstr ""
 "日历项“%1”会在好几个日期重复出现。您想要只删除当前 %2 的重现还是所有的重现？"
 
-#: calendarview.cpp:2257
+#: calendarview.cpp:2261
 #, kde-format
 msgid "Delete C&urrent"
 msgstr "删除当前(&U)"
 
-#: calendarview.cpp:2259
+#: calendarview.cpp:2263
 #, kde-format
 msgid "Delete &All"
 msgstr "全部删除(&A)"
 
-#: calendarview.cpp:2290 calendarview.cpp:2297
+#: calendarview.cpp:2294 calendarview.cpp:2301
 #, kde-format
 msgid "Delete \"%1\""
 msgstr "删除“%1”"
 
-#: calendarview.cpp:2325
+#: calendarview.cpp:2329
 #, kde-format
 msgid ""
 "All calendars are unchecked in the Calendar Manager. No to-do was purged."
 msgstr "所有日历都未在日历管理器中选中。没有删除的待办事项。"
 
-#: calendarview.cpp:2330 calendarview.cpp:2579
+#: calendarview.cpp:2334 calendarview.cpp:2583
 #, kde-format
 msgid "There are no completed to-dos to purge."
 msgstr "没有可以删除的已完成的待办事项。"
 
-#: calendarview.cpp:2335
+#: calendarview.cpp:2339
 #, kde-format
 msgid "Delete all completed to-dos from checked calendars?"
 msgstr "从选中日历中删除所有已完成的待办事项吗？"
 
-#: calendarview.cpp:2336
+#: calendarview.cpp:2340
 #, kde-format
 msgid "Purge To-dos"
 msgstr "删除待办事项"
 
-#: calendarview.cpp:2337
+#: calendarview.cpp:2341
 #, kde-format
 msgid "Purge"
 msgstr "删除"
 
-#: calendarview.cpp:2348
+#: calendarview.cpp:2352
 #, kde-format
 msgctxt "@info"
 msgid "Unable to edit \"%1\" because it is locked by another process."
 msgstr "无法编辑“%1”，因其被其他进程锁定。"
 
-#: calendarview.cpp:2360
+#: calendarview.cpp:2364
 #, kde-format
 msgid "Unable to copy the item to %1."
 msgstr "无法将项目复制到 %1。"
 
-#: calendarview.cpp:2360
+#: calendarview.cpp:2364
 #, kde-format
 msgid "Copying Failed"
 msgstr "复制失败"
 
-#: calendarview.cpp:2395
+#: calendarview.cpp:2399
 #, kde-format
 msgid "Unable to move the item to  %1."
 msgstr "无法将项目移至 %1。"
 
-#: calendarview.cpp:2395
+#: calendarview.cpp:2399
 #, kde-format
 msgid "Moving Failed"
 msgstr "移动失败"
 
-#: calendarview.cpp:2572
+#: calendarview.cpp:2576
 #, kde-format
 msgid "0 completed to-dos were purged."
 msgstr "0 个已完成的待办事项已删除。"
 
-#: calendarview.cpp:2573 calendarview.cpp:2583
+#: calendarview.cpp:2577 calendarview.cpp:2587
 #, kde-format
 msgid "%1 to-do was ignored because it has uncompleted or read-only children."
 msgid_plural ""
 "%1 to-dos were ignored because they have uncompleted or read-only children."
 msgstr[0] "%1 个待办事项已忽略因为他们有唔完整的或者只读的子项目。"
 
-#: calendarview.cpp:2577 calendarview.cpp:2582
+#: calendarview.cpp:2581 calendarview.cpp:2586
 #, kde-format
 msgid "%1 completed to-do was purged."
 msgid_plural "%1 completed to-dos were purged."
 msgstr[0] "%1 个已完成的待办事项已删除。"
 
-#: calendarview.cpp:2588
+#: calendarview.cpp:2592
 #, kde-format
 msgid "An error occurred while purging completed to-dos: %1"
 msgstr "删除已完成的待办事项出错：%1"
 
-#: calendarview.cpp:2642
+#: calendarview.cpp:2646
 #, kde-format
 msgid ""
 "You created an incidence in a calendar that is currently filtered out.\n"
@@ -1662,7 +1662,7 @@ msgstr ""
 "您在日历中创建的事件当前被过滤了。\n"
 "在左侧侧边栏，在日历管理器中启用它来查看事件。"
 
-#: calendarview.cpp:2646
+#: calendarview.cpp:2650
 #, kde-format
 msgid ""
 "You created an incidence in a calendar that is currently filtered out.\n"

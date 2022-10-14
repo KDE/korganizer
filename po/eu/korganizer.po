@@ -11,7 +11,7 @@ msgid ""
 msgstr ""
 "Project-Id-Version: korganizer\n"
 "Report-Msgid-Bugs-To: https://bugs.kde.org\n"
-"POT-Creation-Date: 2022-10-13 00:47+0000\n"
+"POT-Creation-Date: 2022-10-14 00:47+0000\n"
 "PO-Revision-Date: 2010-08-12 00:42+0200\n"
 "Last-Translator: Ignigo Salvador Azurmendi <xalba@euskalnet.net>\n"
 "Language-Team: Basque <itzulpena@euskalgnu.org>\n"
@@ -1208,34 +1208,34 @@ msgstr ""
 msgid "Remove Attachments"
 msgstr "&Eranskinak"
 
-#: actionmanager.cpp:1599
+#: actionmanager.cpp:1604
 #, fuzzy, kde-format
 #| msgid "Undo (%1)"
 msgid "Undo: %1"
 msgstr "Desegin (%1)"
 
-#: actionmanager.cpp:1602 actionmanager.cpp:1613
+#: actionmanager.cpp:1607 actionmanager.cpp:1623
 #, fuzzy, kde-format
 msgid "Undo"
 msgstr "Desegin (%1)"
 
-#: actionmanager.cpp:1607
+#: actionmanager.cpp:1617
 #, fuzzy, kde-format
 #| msgid "Redo (%1)"
 msgid "Redo: %1"
 msgstr "Berregin(%1)"
 
-#: actionmanager.cpp:1610
+#: actionmanager.cpp:1620
 #, fuzzy, kde-format
 msgid "Redo"
 msgstr "Berregin(%1)"
 
-#: actionmanager.cpp:1624
+#: actionmanager.cpp:1634
 #, kde-format
 msgid "URL '%1' is invalid."
 msgstr "'%1' URL-a baliogabea da."
 
-#: actionmanager.cpp:1629
+#: actionmanager.cpp:1639
 #, kde-format
 msgctxt "@info"
 msgid ""
@@ -1246,19 +1246,19 @@ msgid ""
 "p>"
 msgstr ""
 
-#: actionmanager.cpp:1637
+#: actionmanager.cpp:1647
 #, fuzzy, kde-format
 #| msgid "Import Calendar"
 msgctxt "@title:window"
 msgid "Import Calendar"
 msgstr "Inportatu egutegia"
 
-#: actionmanager.cpp:1638
+#: actionmanager.cpp:1648
 #, kde-format
 msgid "Merge into existing calendar"
 msgstr "Baturatu dagoen egutegiarekin"
 
-#: actionmanager.cpp:1639
+#: actionmanager.cpp:1649
 #, kde-format
 msgid "Add as new calendar"
 msgstr "Gehitu egutegi berri bezala"
@@ -1493,25 +1493,25 @@ msgctxt "@info"
 msgid "Unable to add the item \"%1\" into %2. This item has not been moved."
 msgstr ""
 
-#: calendarview.cpp:1492
+#: calendarview.cpp:1499
 #, fuzzy, kde-format
 #| msgid "Dissociate event from recurrence"
 msgid "Do you want to dissociate the occurrence on %1 from the recurrence?"
 msgstr "Banandu gertaera bere periodikotasunetik"
 
-#: calendarview.cpp:1496 calendarview.cpp:1508 calendarview.cpp:2166
-#: calendarview.cpp:2226 calendarview.cpp:2256
+#: calendarview.cpp:1503 calendarview.cpp:1515 calendarview.cpp:2170
+#: calendarview.cpp:2230 calendarview.cpp:2260
 #, kde-format
 msgid "KOrganizer Confirmation"
 msgstr "KOrganizer-en berrespena"
 
-#: calendarview.cpp:1497
+#: calendarview.cpp:1504
 #, fuzzy, kde-format
 #| msgid "T&ime associated"
 msgid "&Dissociate"
 msgstr "Lotutako &ordua"
 
-#: calendarview.cpp:1503
+#: calendarview.cpp:1510
 #, fuzzy, kde-format
 #| msgid "Dissociate event from recurrence"
 msgid ""
@@ -1519,80 +1519,80 @@ msgid ""
 "dissociate future ones?"
 msgstr "Banandu gertaera bere periodikotasunetik"
 
-#: calendarview.cpp:1509
+#: calendarview.cpp:1516
 #, fuzzy, kde-format
 #| msgid "&Dissociate This Occurrence"
 msgid "&Only Dissociate This One"
 msgstr "&Bereizi gertaera hau"
 
-#: calendarview.cpp:1510
+#: calendarview.cpp:1517
 #, fuzzy, kde-format
 #| msgid "&Dissociate Future Occurrences"
 msgid "&Also Dissociate Future Ones"
 msgstr "&Bereizi etorkizuneko gertaerak"
 
-#: calendarview.cpp:1528
+#: calendarview.cpp:1535
 #, kde-format
 msgid "Dissociate future occurrences"
 msgstr "Bereizi etorkizuneko gertaerak"
 
-#: calendarview.cpp:1530
+#: calendarview.cpp:1537
 #, kde-format
 msgid "Dissociate occurrence"
 msgstr "Bereizi gertaera"
 
-#: calendarview.cpp:1540
+#: calendarview.cpp:1544
 #, kde-format
 msgid "Dissociating the future occurrences failed."
 msgstr "Etorkizuneko gertaeren bereizketak huts egin du."
 
-#: calendarview.cpp:1540 calendarview.cpp:1542
+#: calendarview.cpp:1544 calendarview.cpp:1546
 #, kde-format
 msgid "Dissociating Failed"
 msgstr "Bereiketak huts egin du"
 
-#: calendarview.cpp:1542
+#: calendarview.cpp:1546
 #, kde-format
 msgid "Dissociating the occurrence failed."
 msgstr "Gertaera honen bereizketak huts egin du."
 
-#: calendarview.cpp:1704
+#: calendarview.cpp:1708
 #, fuzzy, kde-format
 #| msgid "Calendar"
 msgid "iCalendars (*.ics)"
 msgstr "Egutegia"
 
-#: calendarview.cpp:1713
+#: calendarview.cpp:1717
 #, kde-format
 msgid "Do you want to overwrite %1?"
 msgstr ""
 
-#: calendarview.cpp:1714
+#: calendarview.cpp:1718
 #, fuzzy, kde-format
 #| msgid "Import Calendar"
 msgctxt "@title:window"
 msgid "Export Calendar"
 msgstr "Inportatu egutegia"
 
-#: calendarview.cpp:1728
+#: calendarview.cpp:1732
 #, kde-format
 msgctxt "save failure cause unknown"
 msgid "Reason unknown"
 msgstr ""
 
-#: calendarview.cpp:1730
+#: calendarview.cpp:1734
 #, fuzzy, kde-format
 #| msgid "Cannot write archive file %1."
 msgctxt "@info"
 msgid "Cannot write iCalendar file %1. %2"
 msgstr "Ezin da %1 fitxategian idatzi."
 
-#: calendarview.cpp:1826 calendarview.cpp:1865
+#: calendarview.cpp:1830 calendarview.cpp:1869
 #, kde-format
 msgid "No filter"
 msgstr "Iragazkirik ez"
 
-#: calendarview.cpp:2161
+#: calendarview.cpp:2165
 #, kde-format
 msgid ""
 "The item \"%1\" has sub-to-dos. Do you want to delete just this item and "
@@ -1603,17 +1603,17 @@ msgstr ""
 "azpi-egitekoak independente egin nahi dituzu, edo egitekoa bere azpi-"
 "egitekoekin ezabatu nahi dituzu?"
 
-#: calendarview.cpp:2167
+#: calendarview.cpp:2171
 #, kde-format
 msgid "Delete Only This"
 msgstr "Ezabatu hau bakarrik"
 
-#: calendarview.cpp:2168 calendarview.cpp:2227
+#: calendarview.cpp:2172 calendarview.cpp:2231
 #, fuzzy, kde-format
 msgid "Delete All"
 msgstr "Ezabatu &guztiak"
 
-#: calendarview.cpp:2200
+#: calendarview.cpp:2204
 #, fuzzy, kde-format
 #| msgid ""
 #| "The item \"%1\" is marked read-only and cannot be deleted; it probably "
@@ -1626,12 +1626,12 @@ msgstr ""
 "ezabatu, seguruenik irakurtzeko-bakarrik den egutegi baliabide baten "
 "menpekoa izango da."
 
-#: calendarview.cpp:2204
+#: calendarview.cpp:2208
 #, kde-format
 msgid "Removing not possible"
 msgstr "Ezin da kendu"
 
-#: calendarview.cpp:2222
+#: calendarview.cpp:2226
 #, kde-format
 msgid ""
 "The calendar item \"%1\" recurs over multiple dates; are you sure you want "
@@ -1640,13 +1640,13 @@ msgstr ""
 "Egunkariko \"%1\" sarrerak errepikapenak ditu data ezberdinetan; ziur zaude "
 "hau eta bere errepikapen guztiak ezabatu nahi dituzula?"
 
-#: calendarview.cpp:2234
+#: calendarview.cpp:2238
 #, fuzzy, kde-format
 #| msgid "Delete &Future"
 msgid "Also Delete &Future"
 msgstr "Ezabatu &etorkizunekoak"
 
-#: calendarview.cpp:2238
+#: calendarview.cpp:2242
 #, fuzzy, kde-format
 #| msgid ""
 #| "The calendar item \"%1\" recurs over multiple dates. Do you want to "
@@ -1660,7 +1660,7 @@ msgstr ""
 "(e)ko sarrera bakarrik, etorkizuneko errepikapenak bakarrik edo bere "
 "errepikapen guztiak ezabatu nahi dituzu?"
 
-#: calendarview.cpp:2245
+#: calendarview.cpp:2249
 #, fuzzy, kde-format
 #| msgid ""
 #| "The calendar item \"%1\" recurs over multiple dates. Do you want to "
@@ -1674,84 +1674,84 @@ msgstr ""
 "(e)ko sarrera bakarrik, etorkizuneko errepikapenak bakarrik edo bere "
 "errepikapen guztiak ezabatu nahi dituzu?"
 
-#: calendarview.cpp:2257
+#: calendarview.cpp:2261
 #, kde-format
 msgid "Delete C&urrent"
 msgstr "Ezabatu &unekoa"
 
-#: calendarview.cpp:2259
+#: calendarview.cpp:2263
 #, kde-format
 msgid "Delete &All"
 msgstr "Ezabatu &guztiak"
 
-#: calendarview.cpp:2290 calendarview.cpp:2297
+#: calendarview.cpp:2294 calendarview.cpp:2301
 #, fuzzy, kde-format
 #| msgid "Delete %1"
 msgid "Delete \"%1\""
 msgstr "Ezabatu %1"
 
-#: calendarview.cpp:2325
+#: calendarview.cpp:2329
 #, kde-format
 msgid ""
 "All calendars are unchecked in the Calendar Manager. No to-do was purged."
 msgstr ""
 
-#: calendarview.cpp:2330 calendarview.cpp:2579
+#: calendarview.cpp:2334 calendarview.cpp:2583
 #, fuzzy, kde-format
 #| msgid "Strike &out completed to-do summaries"
 msgid "There are no completed to-dos to purge."
 msgstr "&Marratu burututako egitekoen laburpenak"
 
-#: calendarview.cpp:2335
+#: calendarview.cpp:2339
 #, fuzzy, kde-format
 #| msgid "Delete all completed to-dos?"
 msgid "Delete all completed to-dos from checked calendars?"
 msgstr "Ezabatu burututako egiteko guztiak?"
 
-#: calendarview.cpp:2336
+#: calendarview.cpp:2340
 #, kde-format
 msgid "Purge To-dos"
 msgstr "Ezabatu egitekoak"
 
-#: calendarview.cpp:2337
+#: calendarview.cpp:2341
 #, kde-format
 msgid "Purge"
 msgstr "Ezabatu"
 
-#: calendarview.cpp:2348
+#: calendarview.cpp:2352
 #, fuzzy, kde-format
 #| msgid "Unable to edit item: it is locked by another process."
 msgctxt "@info"
 msgid "Unable to edit \"%1\" because it is locked by another process."
 msgstr "Ezin da elementua editatu: beste prozesu batek blokeatu du."
 
-#: calendarview.cpp:2360
+#: calendarview.cpp:2364
 #, kde-format
 msgid "Unable to copy the item to %1."
 msgstr "Ezin da sarrera %1-(e)ra kopiatu."
 
-#: calendarview.cpp:2360
+#: calendarview.cpp:2364
 #, kde-format
 msgid "Copying Failed"
 msgstr "Errorea kopiatzean"
 
-#: calendarview.cpp:2395
+#: calendarview.cpp:2399
 #, fuzzy, kde-format
 msgid "Unable to move the item to  %1."
 msgstr "Ezin izan da elementua %1-(e)ra mugitu."
 
-#: calendarview.cpp:2395
+#: calendarview.cpp:2399
 #, kde-format
 msgid "Moving Failed"
 msgstr "Errorea mugitzean"
 
-#: calendarview.cpp:2572
+#: calendarview.cpp:2576
 #, fuzzy, kde-format
 #| msgid "Hide co&mpleted to-dos"
 msgid "0 completed to-dos were purged."
 msgstr "Ezkutatu &burututako egitekoak"
 
-#: calendarview.cpp:2573 calendarview.cpp:2583
+#: calendarview.cpp:2577 calendarview.cpp:2587
 #, kde-format
 msgid "%1 to-do was ignored because it has uncompleted or read-only children."
 msgid_plural ""
@@ -1759,7 +1759,7 @@ msgid_plural ""
 msgstr[0] ""
 msgstr[1] ""
 
-#: calendarview.cpp:2577 calendarview.cpp:2582
+#: calendarview.cpp:2581 calendarview.cpp:2586
 #, fuzzy, kde-format
 #| msgid "Hide co&mpleted to-dos"
 msgid "%1 completed to-do was purged."
@@ -1767,20 +1767,20 @@ msgid_plural "%1 completed to-dos were purged."
 msgstr[0] "Ezkutatu &burututako egitekoak"
 msgstr[1] "Ezkutatu &burututako egitekoak"
 
-#: calendarview.cpp:2588
+#: calendarview.cpp:2592
 #, fuzzy, kde-format
 #| msgid "Purging completed to-dos"
 msgid "An error occurred while purging completed to-dos: %1"
 msgstr "Burututako egitekoak ezabatzen"
 
-#: calendarview.cpp:2642
+#: calendarview.cpp:2646
 #, kde-format
 msgid ""
 "You created an incidence in a calendar that is currently filtered out.\n"
 "On the left sidebar, enable it in the calendar manager to see the incidence."
 msgstr ""
 
-#: calendarview.cpp:2646
+#: calendarview.cpp:2650
 #, kde-format
 msgid ""
 "You created an incidence in a calendar that is currently filtered out.\n"
