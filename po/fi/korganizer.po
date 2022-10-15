@@ -16,7 +16,7 @@ msgid ""
 msgstr ""
 "Project-Id-Version: korganizer\n"
 "Report-Msgid-Bugs-To: https://bugs.kde.org\n"
-"POT-Creation-Date: 2022-10-14 00:47+0000\n"
+"POT-Creation-Date: 2022-10-15 00:48+0000\n"
 "PO-Revision-Date: 2022-07-18 22:09+0300\n"
 "Last-Translator: Tommi Nieminen <translator@legisign.org>\n"
 "Language-Team: Finnish <kde-i18n-doc@kde.org>\n"
@@ -845,7 +845,7 @@ msgstr "&Työviikkonäkymä"
 msgid "&Week"
 msgstr "&Viikko"
 
-#: actionmanager.cpp:565 kodaymatrix.cpp:483
+#: actionmanager.cpp:565 kodaymatrix.cpp:481
 #, kde-format
 msgid "New E&vent..."
 msgstr "Uusi &tapahtuma…"
@@ -872,7 +872,7 @@ msgstr ""
 "Avaa ikkunan, jossa voit luoda uuden tapahtuman muistutuksineen, "
 "osallistujineen, toistoineen ym."
 
-#: actionmanager.cpp:575 kodaymatrix.cpp:484
+#: actionmanager.cpp:575 kodaymatrix.cpp:482
 #, kde-format
 msgid "New &To-do..."
 msgstr "Uusi &tehtävä…"
@@ -904,7 +904,7 @@ msgstr ""
 msgid "New Su&b-to-do..."
 msgstr "Uusi ali&tehtävä…"
 
-#: actionmanager.cpp:594 kodaymatrix.cpp:485
+#: actionmanager.cpp:594 kodaymatrix.cpp:483
 #, kde-format
 msgid "New &Journal..."
 msgstr "&Uusi päiväkirjamerkintä…"
@@ -1428,56 +1428,60 @@ msgid "Copying Failed"
 msgstr "Kopiointi epäonnistui"
 
 #: calendarview.cpp:1444
-#, kde-format
+#, fuzzy, kde-format
+#| msgctxt "@info"
+#| msgid ""
+#| "Unable to remove the item \"%1\" from %2. However, a copy of this item "
+#| "has been put into %3."
 msgctxt "@info"
 msgid ""
-"Unable to remove the item \"%1\" from %2. However, a copy of this item has "
-"been put into %3."
+"Unable to remove the item \"%1\" from the original calendar. However, a copy "
+"of this item has been put into %2"
 msgstr ""
 "Merkintää ”%1” ei saatu poistetuksi kohteesta %2. Merkinnästä tehtiin "
 "kuitenkin kopio kohteeseen %3."
 
-#: calendarview.cpp:1449 calendarview.cpp:1465
+#: calendarview.cpp:1448 calendarview.cpp:1464
 #, kde-format
 msgctxt "@title:window"
 msgid "Moving Failed"
 msgstr "Siirto epäonnistui"
 
-#: calendarview.cpp:1454
+#: calendarview.cpp:1453
 #, kde-format
 msgctxt "@info"
 msgid "\"%1\" was successfully moved from %2 to %3."
 msgstr "”%1” siirrettiin onnistuneesti (%2–%3)."
 
-#: calendarview.cpp:1455
+#: calendarview.cpp:1454
 #, kde-format
 msgctxt "@title:window"
 msgid "Moving Succeeded"
 msgstr "Siirto onnistui"
 
-#: calendarview.cpp:1461
+#: calendarview.cpp:1460
 #, kde-format
 msgctxt "@info"
 msgid "Unable to add the item \"%1\" into %2. This item has not been moved."
 msgstr "Merkintää ”%1” ei voitu lisätä kohteeseen %2. Merkintää ei siirretty."
 
-#: calendarview.cpp:1499
+#: calendarview.cpp:1498
 #, kde-format
 msgid "Do you want to dissociate the occurrence on %1 from the recurrence?"
 msgstr "Haluatko irrottaa tapahtuman %1 toistoista?"
 
-#: calendarview.cpp:1503 calendarview.cpp:1515 calendarview.cpp:2170
-#: calendarview.cpp:2230 calendarview.cpp:2260
+#: calendarview.cpp:1502 calendarview.cpp:1514 calendarview.cpp:2169
+#: calendarview.cpp:2229 calendarview.cpp:2259
 #, kde-format
 msgid "KOrganizer Confirmation"
 msgstr "KOrganizer varmistus"
 
-#: calendarview.cpp:1504
+#: calendarview.cpp:1503
 #, kde-format
 msgid "&Dissociate"
 msgstr "&Irrota"
 
-#: calendarview.cpp:1510
+#: calendarview.cpp:1509
 #, kde-format
 msgid ""
 "Do you want to dissociate the occurrence on %1 from the recurrence or also "
@@ -1486,75 +1490,75 @@ msgstr ""
 "Haluatko irrottaa vain tapahtuman %1 toistoista vai irrottaa myös tulevat "
 "tapahtumat?"
 
-#: calendarview.cpp:1516
+#: calendarview.cpp:1515
 #, kde-format
 msgid "&Only Dissociate This One"
 msgstr "Irrota &vain tämä"
 
-#: calendarview.cpp:1517
+#: calendarview.cpp:1516
 #, kde-format
 msgid "&Also Dissociate Future Ones"
 msgstr "Irrota &tulevatkin tapahtumat"
 
-#: calendarview.cpp:1535
+#: calendarview.cpp:1534
 #, kde-format
 msgid "Dissociate future occurrences"
 msgstr "Irrota tapahtuma tulevista toistoista"
 
-#: calendarview.cpp:1537
+#: calendarview.cpp:1536
 #, kde-format
 msgid "Dissociate occurrence"
 msgstr "Irrota tapahtuma toistoista"
 
-#: calendarview.cpp:1544
+#: calendarview.cpp:1543
 #, kde-format
 msgid "Dissociating the future occurrences failed."
 msgstr "Tulevien tapahtumien irrotus epäonnistui."
 
-#: calendarview.cpp:1544 calendarview.cpp:1546
+#: calendarview.cpp:1543 calendarview.cpp:1545
 #, kde-format
 msgid "Dissociating Failed"
 msgstr "Irrotus epäonnistui."
 
-#: calendarview.cpp:1546
+#: calendarview.cpp:1545
 #, kde-format
 msgid "Dissociating the occurrence failed."
 msgstr "Tapahtuman irrotus toistosta epäonnistui."
 
-#: calendarview.cpp:1708
+#: calendarview.cpp:1707
 #, kde-format
 msgid "iCalendars (*.ics)"
 msgstr "iCal-kalenterit (*.ics)"
 
-#: calendarview.cpp:1717
+#: calendarview.cpp:1716
 #, kde-format
 msgid "Do you want to overwrite %1?"
 msgstr "Haluatko korvata kohteen %1?"
 
-#: calendarview.cpp:1718
+#: calendarview.cpp:1717
 #, kde-format
 msgctxt "@title:window"
 msgid "Export Calendar"
 msgstr "Vie kalenteri"
 
-#: calendarview.cpp:1732
+#: calendarview.cpp:1731
 #, kde-format
 msgctxt "save failure cause unknown"
 msgid "Reason unknown"
 msgstr "Tuntematon syy"
 
-#: calendarview.cpp:1734
+#: calendarview.cpp:1733
 #, kde-format
 msgctxt "@info"
 msgid "Cannot write iCalendar file %1. %2"
 msgstr "Ei voida kirjoittaa iCalendar-tiedostoa %1. %2"
 
-#: calendarview.cpp:1830 calendarview.cpp:1869
+#: calendarview.cpp:1829 calendarview.cpp:1868
 #, kde-format
 msgid "No filter"
 msgstr "Ei suodatinta"
 
-#: calendarview.cpp:2165
+#: calendarview.cpp:2164
 #, kde-format
 msgid ""
 "The item \"%1\" has sub-to-dos. Do you want to delete just this item and "
@@ -1564,17 +1568,17 @@ msgstr ""
 "Merkinnällä \"%1\" on alitehtäviä. Haluatko poistaa tämän merkinnän ja tehdä "
 "kaikki sen alitehtävät itsenäisiksi tai poistaa merkinnän alitehtävineen?"
 
-#: calendarview.cpp:2171
+#: calendarview.cpp:2170
 #, kde-format
 msgid "Delete Only This"
 msgstr "Poista vain tämä"
 
-#: calendarview.cpp:2172 calendarview.cpp:2231
+#: calendarview.cpp:2171 calendarview.cpp:2230
 #, kde-format
 msgid "Delete All"
 msgstr "Poista kaikki"
 
-#: calendarview.cpp:2204
+#: calendarview.cpp:2203
 #, kde-format
 msgid ""
 "The item \"%1\" is marked read-only and cannot be deleted; it probably "
@@ -1583,12 +1587,12 @@ msgstr ""
 "Merkintä ”%1” on vain luettavissa eikä sitä voi poistaa. Se kuuluu ehkä vain "
 "luettavissa olevaan kalenteriin."
 
-#: calendarview.cpp:2208
+#: calendarview.cpp:2207
 #, kde-format
 msgid "Removing not possible"
 msgstr "Poisto ei ole mahdollinen"
 
-#: calendarview.cpp:2226
+#: calendarview.cpp:2225
 #, kde-format
 msgid ""
 "The calendar item \"%1\" recurs over multiple dates; are you sure you want "
@@ -1597,12 +1601,12 @@ msgstr ""
 "Kalenterimerkintä ”%1” toistuu useampana päivänä. Haluatko varmasti poistaa "
 "tapahtuman kaikkine toistumiskertoineen?"
 
-#: calendarview.cpp:2238
+#: calendarview.cpp:2237
 #, kde-format
 msgid "Also Delete &Future"
 msgstr "Poista myös t&ulevat"
 
-#: calendarview.cpp:2242
+#: calendarview.cpp:2241
 #, kde-format
 msgid ""
 "The calendar item \"%1\" recurs over multiple dates. Do you want to delete "
@@ -1611,7 +1615,7 @@ msgstr ""
 "Kalenterimerkintä ”%1” toistuu useampana päivänä. Haluatko poistaa nykyisen "
 "tapahtuman ajalta %2, tulevatkin toistumiskerrat vai kaikki merkinnät?"
 
-#: calendarview.cpp:2249
+#: calendarview.cpp:2248
 #, kde-format
 msgid ""
 "The calendar item \"%1\" recurs over multiple dates. Do you want to delete "
@@ -1620,22 +1624,22 @@ msgstr ""
 "Kalenterimerkintä ”%1” toistuu useampana päivänä. Haluatko poistaa vain "
 "nykyisen tapahtuman ajalta %2 vai kaikki toistumiskerrat?"
 
-#: calendarview.cpp:2261
+#: calendarview.cpp:2260
 #, kde-format
 msgid "Delete C&urrent"
 msgstr "P&oista nykyinen"
 
-#: calendarview.cpp:2263
+#: calendarview.cpp:2262
 #, kde-format
 msgid "Delete &All"
 msgstr "Poista &kaikki"
 
-#: calendarview.cpp:2294 calendarview.cpp:2301
+#: calendarview.cpp:2293 calendarview.cpp:2300
 #, kde-format
 msgid "Delete \"%1\""
 msgstr "Poista ”%1”"
 
-#: calendarview.cpp:2329
+#: calendarview.cpp:2328
 #, kde-format
 msgid ""
 "All calendars are unchecked in the Calendar Manager. No to-do was purged."
@@ -1643,58 +1647,58 @@ msgstr ""
 "Mikään kalenteri ei ole valittuna kalenterien hallinnassa. Tehtäviä ei "
 "poistettu."
 
-#: calendarview.cpp:2334 calendarview.cpp:2583
+#: calendarview.cpp:2333 calendarview.cpp:2582
 #, kde-format
 msgid "There are no completed to-dos to purge."
 msgstr "Ei ole valmiita tehtäviä, joita poistaa."
 
-#: calendarview.cpp:2339
+#: calendarview.cpp:2338
 #, kde-format
 msgid "Delete all completed to-dos from checked calendars?"
 msgstr "Poistetaanko kaikki valmiit tehtävät valituista kalentereista?"
 
-#: calendarview.cpp:2340
+#: calendarview.cpp:2339
 #, kde-format
 msgid "Purge To-dos"
 msgstr "Poista tehtävät"
 
-#: calendarview.cpp:2341
+#: calendarview.cpp:2340
 #, kde-format
 msgid "Purge"
 msgstr "Poista"
 
-#: calendarview.cpp:2352
+#: calendarview.cpp:2351
 #, kde-format
 msgctxt "@info"
 msgid "Unable to edit \"%1\" because it is locked by another process."
 msgstr "Merkintää ”%1” ei voi muokata, koska se on toisen prosessin lukitsema."
 
-#: calendarview.cpp:2364
+#: calendarview.cpp:2363
 #, kde-format
 msgid "Unable to copy the item to %1."
 msgstr "Merkintää ei voitu kopioida kohteeseen %1."
 
-#: calendarview.cpp:2364
+#: calendarview.cpp:2363
 #, kde-format
 msgid "Copying Failed"
 msgstr "Kopiointi epäonnistui"
 
-#: calendarview.cpp:2399
+#: calendarview.cpp:2398
 #, kde-format
 msgid "Unable to move the item to  %1."
 msgstr "Merkintää ei voitu siirtää kohteeseen  %1."
 
-#: calendarview.cpp:2399
+#: calendarview.cpp:2398
 #, kde-format
 msgid "Moving Failed"
 msgstr "Siirto epäonnistui"
 
-#: calendarview.cpp:2576
+#: calendarview.cpp:2575
 #, kde-format
 msgid "0 completed to-dos were purged."
 msgstr "Yhtään valmista tehtävää ei poistettu."
 
-#: calendarview.cpp:2577 calendarview.cpp:2587
+#: calendarview.cpp:2576 calendarview.cpp:2586
 #, kde-format
 msgid "%1 to-do was ignored because it has uncompleted or read-only children."
 msgid_plural ""
@@ -1706,19 +1710,19 @@ msgstr[1] ""
 "%1 tehtävää sivuutettiin, koska niillä on tekemättömiä tai "
 "kirjoitussuojattuja alitehtäviä."
 
-#: calendarview.cpp:2581 calendarview.cpp:2586
+#: calendarview.cpp:2580 calendarview.cpp:2585
 #, kde-format
 msgid "%1 completed to-do was purged."
 msgid_plural "%1 completed to-dos were purged."
 msgstr[0] "Poistettiin %1 valmista tehtävä."
 msgstr[1] "Poistettiin %1 valmista tehtävää."
 
-#: calendarview.cpp:2592
+#: calendarview.cpp:2591
 #, kde-format
 msgid "An error occurred while purging completed to-dos: %1"
 msgstr "Sattui virhe poistettaessa valmiita tehtäviä: %1"
 
-#: calendarview.cpp:2646
+#: calendarview.cpp:2645
 #, kde-format
 msgid ""
 "You created an incidence in a calendar that is currently filtered out.\n"
@@ -1728,7 +1732,7 @@ msgstr ""
 "Jotta näet esiintymän, tuo kalenteri näkyviin vasemman sivupalkin "
 "kalenteriluettelosta."
 
-#: calendarview.cpp:2650
+#: calendarview.cpp:2649
 #, kde-format
 msgid ""
 "You created an incidence in a calendar that is currently filtered out.\n"
@@ -2210,28 +2214,28 @@ msgctxt "@item:intext delimiter for joining holiday names"
 msgid ","
 msgstr ","
 
-#: kodaymatrix.cpp:223
+#: kodaymatrix.cpp:222
 #, kde-format
 msgctxt "delimiter for joining holiday names"
 msgid ","
 msgstr ","
 
-#: kodaymatrix.cpp:638
+#: kodaymatrix.cpp:636
 #, kde-format
 msgid "&Move"
 msgstr "&Siirrä  "
 
-#: kodaymatrix.cpp:640
+#: kodaymatrix.cpp:638
 #, kde-format
 msgid "&Copy"
 msgstr "&Kopioi"
 
-#: kodaymatrix.cpp:643
+#: kodaymatrix.cpp:641
 #, kde-format
 msgid "&Add"
 msgstr "&Lisää"
 
-#: kodaymatrix.cpp:647
+#: kodaymatrix.cpp:645
 #, kde-format
 msgid "&Cancel"
 msgstr "&Peru"
