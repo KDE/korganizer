@@ -11,7 +11,7 @@ msgid ""
 msgstr ""
 "Project-Id-Version: korganizer\n"
 "Report-Msgid-Bugs-To: https://bugs.kde.org\n"
-"POT-Creation-Date: 2022-10-15 00:48+0000\n"
+"POT-Creation-Date: 2022-10-16 00:47+0000\n"
 "PO-Revision-Date: 2004-02-25 13:53+0000\n"
 "Last-Translator: KD at KGyfieithu <kyfieithu@dotmon.com>\n"
 "Language-Team: Cymraeg <cy@li.org>\n"
@@ -279,38 +279,38 @@ msgstr ""
 msgid "Fester Zigterman"
 msgstr ""
 
-#: actionmanager.cpp:129
+#: actionmanager.cpp:130
 #, kde-format
 msgid ""
 "<qt>This will hide the menu bar completely. You can show it again by typing "
 "%1.</qt>"
 msgstr ""
 
-#: actionmanager.cpp:132
+#: actionmanager.cpp:133
 #, fuzzy, kde-format
 #| msgid "Time bar"
 msgid "Hide menu bar"
 msgstr "Bar amser:"
 
-#: actionmanager.cpp:242
+#: actionmanager.cpp:243
 #, fuzzy, kde-format
 msgid "Import &Calendar..."
 msgstr "Mewnforio Calendr"
 
-#: actionmanager.cpp:243
+#: actionmanager.cpp:244
 #, fuzzy, kde-format
 #| msgid "Import Calendar"
 msgctxt "@info:status"
 msgid "Import a calendar"
 msgstr "Mewnforio Calendr"
 
-#: actionmanager.cpp:244
+#: actionmanager.cpp:245
 #, fuzzy, kde-format
 msgctxt "@info:tooltip"
 msgid "Import an iCalendar or vCalendar file"
 msgstr "Ydych eisiau ychwanegu calendr wrth '%1' i KTrefnydd"
 
-#: actionmanager.cpp:246
+#: actionmanager.cpp:247
 #, kde-format
 msgctxt "@info:whatsthis"
 msgid ""
@@ -318,25 +318,25 @@ msgid ""
 "iCalendar or vCalendar file into your current calendar collection."
 msgstr ""
 
-#: actionmanager.cpp:252
+#: actionmanager.cpp:253
 #, fuzzy, kde-format
 #| msgid "New Calendar"
 msgid "Get New Calendars..."
 msgstr "Calendr Newydd"
 
-#: actionmanager.cpp:253
+#: actionmanager.cpp:254
 #, kde-format
 msgctxt "@info:status"
 msgid "Load a calendar from \"Get Hot New Stuff\""
 msgstr ""
 
-#: actionmanager.cpp:254
+#: actionmanager.cpp:255
 #, kde-format
 msgctxt "@info:tooltip"
 msgid "Search \"Get Hot New Stuff\" for calendars to import"
 msgstr ""
 
-#: actionmanager.cpp:256
+#: actionmanager.cpp:257
 #, kde-format
 msgctxt "@info:whatsthis"
 msgid ""
@@ -344,64 +344,64 @@ msgid ""
 "search and import fun and useful calendars donated to the community."
 msgstr ""
 
-#: actionmanager.cpp:277
+#: actionmanager.cpp:278
 #, fuzzy, kde-format
 #| msgid "Could not load calendar '%1'."
 msgid "Could not load calendar %1."
 msgstr "Wedi methu llwytho calendr '%1'."
 
-#: actionmanager.cpp:287
+#: actionmanager.cpp:288
 #, kde-format
 msgid "The downloaded events will be merged into your current calendar."
 msgstr ""
 "Mi fydd y disgwyddiadau â lawrlwythwyd yn cael eu cyfuno i'ch calendr "
 "cyfredol."
 
-#: actionmanager.cpp:304
+#: actionmanager.cpp:305
 #, fuzzy, kde-format
 msgid "Export as &iCalendar..."
 msgstr "Mewnforio Calendr"
 
-#: actionmanager.cpp:305
+#: actionmanager.cpp:306
 #, fuzzy, kde-format
 #| msgid "Import Calendar"
 msgctxt "@info:status"
 msgid "Export calendar to file"
 msgstr "Mewnforio Calendr"
 
-#: actionmanager.cpp:306
+#: actionmanager.cpp:307
 #, kde-format
 msgctxt "@info:tooltip"
 msgid "Export your calendar to an iCalendar file"
 msgstr ""
 
-#: actionmanager.cpp:307
+#: actionmanager.cpp:308
 #, kde-format
 msgctxt "@info:whatsthis"
 msgid ""
 "Allows you to export your entire calendar collection to one iCalendar file."
 msgstr ""
 
-#: actionmanager.cpp:313
+#: actionmanager.cpp:314
 #, fuzzy, kde-format
 #| msgid "Archive O&ld Entries..."
 msgid "Archive O&ld Incidences..."
 msgstr "Archifio &Hen Gofnodion..."
 
-#: actionmanager.cpp:314
+#: actionmanager.cpp:315
 #, fuzzy, kde-format
 msgctxt "@info:status"
 msgid "Archive events and to-dos to a file"
 msgstr "Archifio/Dileu Hen Gyfarfodydd"
 
-#: actionmanager.cpp:315
+#: actionmanager.cpp:316
 #, fuzzy, kde-format
 #| msgid "The journal entries can not be exported to a vCalendar file."
 msgctxt "@info:tooltip"
 msgid "Archive old events and to-dos to an iCalendar file"
 msgstr "Ni ellir allforio cofnodion y dyddlyfr i ffeil vCalendr."
 
-#: actionmanager.cpp:317
+#: actionmanager.cpp:318
 #, kde-format
 msgctxt "@info:whatsthis"
 msgid ""
@@ -410,25 +410,25 @@ msgid ""
 "your existing calendar collection."
 msgstr ""
 
-#: actionmanager.cpp:325
+#: actionmanager.cpp:326
 #, fuzzy, kde-format
 msgid "Pur&ge Completed To-dos"
 msgstr "&Carthiad wedi'i Gwblhau"
 
-#: actionmanager.cpp:326
+#: actionmanager.cpp:327
 #, fuzzy, kde-format
 msgctxt "@info:status"
 msgid "Purge completed to-dos"
 msgstr "&Carthiad wedi'i Gwblhau"
 
-#: actionmanager.cpp:327
+#: actionmanager.cpp:328
 #, fuzzy, kde-format
 #| msgid "Delete all completed to-dos?"
 msgctxt "@info:tooltip"
 msgid "Remove completed to-dos from your calendar"
 msgstr "Dileu pob I'w-Wneud sydd wedi eu gorffen?"
 
-#: actionmanager.cpp:329
+#: actionmanager.cpp:330
 #, kde-format
 msgctxt "@info:whatsthis"
 msgid ""
@@ -437,31 +437,31 @@ msgid ""
 msgstr ""
 
 #. i18n: ectx: property (text), widget (QPushButton, mDeleteButton)
-#: actionmanager.cpp:366 actionmanager.cpp:621 actionmanager.cpp:1302
-#: actionmanager.cpp:1334 ui/filteredit_base.ui:56
+#: actionmanager.cpp:367 actionmanager.cpp:622 actionmanager.cpp:1303
+#: actionmanager.cpp:1335 ui/filteredit_base.ui:56
 #, fuzzy, kde-format
 msgid "&Delete"
 msgstr "Dileu %1"
 
-#: actionmanager.cpp:383
+#: actionmanager.cpp:384
 #, kde-format
 msgid "What's &Next"
 msgstr "Beth sy'n &Nesaf"
 
-#: actionmanager.cpp:384
+#: actionmanager.cpp:385
 #, fuzzy, kde-format
 #| msgid "What's Next?"
 msgctxt "@info:status"
 msgid "What's Next View"
 msgstr "Beth sydd nesaf?"
 
-#: actionmanager.cpp:385
+#: actionmanager.cpp:386
 #, kde-format
 msgctxt "@info:tooltip"
 msgid "Switch to the What's Next View"
 msgstr ""
 
-#: actionmanager.cpp:387
+#: actionmanager.cpp:388
 #, kde-format
 msgctxt "@info:whatsthis"
 msgid ""
@@ -471,26 +471,26 @@ msgid ""
 "Navigator sidebar will be shown."
 msgstr ""
 
-#: actionmanager.cpp:395
+#: actionmanager.cpp:396
 #, kde-format
 msgid "&Month"
 msgstr "&Mis"
 
-#: actionmanager.cpp:396
+#: actionmanager.cpp:397
 #, fuzzy, kde-format
 #| msgid "Month View"
 msgctxt "@info:status"
 msgid "Month View"
 msgstr "Golwg mis"
 
-#: actionmanager.cpp:397
+#: actionmanager.cpp:398
 #, fuzzy, kde-format
 #| msgid "Month View"
 msgctxt "@info:tooltip"
 msgid "Switch to the Month View"
 msgstr "Golwg mis"
 
-#: actionmanager.cpp:399
+#: actionmanager.cpp:400
 #, kde-format
 msgctxt "@info:whatsthis"
 msgid ""
@@ -498,26 +498,26 @@ msgid ""
 "familiar monthly calendar layout."
 msgstr ""
 
-#: actionmanager.cpp:405
+#: actionmanager.cpp:406
 #, fuzzy, kde-format
 #| msgid "Agenda view"
 msgid "&Agenda"
 msgstr "Golwg agenda:"
 
-#: actionmanager.cpp:406
+#: actionmanager.cpp:407
 #, fuzzy, kde-format
 #| msgid "Agenda View"
 msgctxt "@info:status"
 msgid "Agenda View"
 msgstr "Golwg agenda:"
 
-#: actionmanager.cpp:407
+#: actionmanager.cpp:408
 #, fuzzy, kde-format
 msgctxt "@info:tooltip"
 msgid "Switch to the Agenda View"
 msgstr "Dangos y dewisiad yn unig"
 
-#: actionmanager.cpp:409
+#: actionmanager.cpp:410
 #, kde-format
 msgctxt "@info:whatsthis"
 msgid ""
@@ -526,26 +526,26 @@ msgid ""
 "each event in the day timetable."
 msgstr ""
 
-#: actionmanager.cpp:416
+#: actionmanager.cpp:417
 #, fuzzy, kde-format
 #| msgid "&Events"
 msgid "&Event List"
 msgstr "&Digwyddiadau:"
 
-#: actionmanager.cpp:417
+#: actionmanager.cpp:418
 #, fuzzy, kde-format
 #| msgid "Center View"
 msgctxt "@info:status"
 msgid "List View"
 msgstr "Canoli'r Golwg"
 
-#: actionmanager.cpp:418
+#: actionmanager.cpp:419
 #, kde-format
 msgctxt "@info:tooltip"
 msgid "Switch to the List View"
 msgstr ""
 
-#: actionmanager.cpp:420
+#: actionmanager.cpp:421
 #, kde-format
 msgctxt "@info:whatsthis"
 msgid ""
@@ -553,25 +553,25 @@ msgid ""
 "journal entries for the dates selected in the Date Navigator as a list."
 msgstr ""
 
-#: actionmanager.cpp:426
+#: actionmanager.cpp:427
 #, kde-format
 msgid "&To-do List"
 msgstr "&Rhestr I'w-Wneud"
 
-#: actionmanager.cpp:427
+#: actionmanager.cpp:428
 #, fuzzy, kde-format
 #| msgid "To-do List"
 msgctxt "@info:status"
 msgid "To-do List View"
 msgstr "Rhestr I'w-Wneud"
 
-#: actionmanager.cpp:428
+#: actionmanager.cpp:429
 #, fuzzy, kde-format
 msgctxt "@info:tooltip"
 msgid "Switch to the To-do List View"
 msgstr "Canoli wrth Gychwyn"
 
-#: actionmanager.cpp:430
+#: actionmanager.cpp:431
 #, kde-format
 msgctxt "@info:whatsthis"
 msgid ""
@@ -579,25 +579,25 @@ msgid ""
 "tasks that need to be done."
 msgstr ""
 
-#: actionmanager.cpp:436
+#: actionmanager.cpp:437
 #, kde-format
 msgid "&Journal"
 msgstr "&Dyddlyfr"
 
-#: actionmanager.cpp:437
+#: actionmanager.cpp:438
 #, fuzzy, kde-format
 #| msgid "Journal entries"
 msgctxt "@info:status"
 msgid "Journal View"
 msgstr "Cofnodion dyddlyfr"
 
-#: actionmanager.cpp:438
+#: actionmanager.cpp:439
 #, fuzzy, kde-format
 msgctxt "@info:tooltip"
 msgid "Switch to the Journal View"
 msgstr "Dileu Hen Ddigwyddiadau"
 
-#: actionmanager.cpp:440
+#: actionmanager.cpp:441
 #, kde-format
 msgctxt "@info:whatsthis"
 msgid ""
@@ -605,26 +605,26 @@ msgid ""
 "reflections, occurrences or experiences."
 msgstr ""
 
-#: actionmanager.cpp:446
+#: actionmanager.cpp:447
 #, fuzzy, kde-format
 msgid "Time&line"
 msgstr "Cylchfa amser:"
 
-#: actionmanager.cpp:447
+#: actionmanager.cpp:448
 #, fuzzy, kde-format
 #| msgid "Center View"
 msgctxt "@info:status"
 msgid "Timeline View"
 msgstr "Canoli'r Golwg"
 
-#: actionmanager.cpp:448
+#: actionmanager.cpp:449
 #, fuzzy, kde-format
 #| msgid "Center View"
 msgctxt "@info:tooltip"
 msgid "Switch to the Timeline View"
 msgstr "Canoli'r Golwg"
 
-#: actionmanager.cpp:450
+#: actionmanager.cpp:451
 #, kde-format
 msgctxt "@info:whatsthis"
 msgid ""
@@ -632,25 +632,25 @@ msgid ""
 "timespan in a Gantt view. Each calendar is displayed in a separate line."
 msgstr ""
 
-#: actionmanager.cpp:459
+#: actionmanager.cpp:460
 #, kde-format
 msgid "&Refresh"
 msgstr "&Ailfywio"
 
-#: actionmanager.cpp:460
+#: actionmanager.cpp:461
 #, fuzzy, kde-format
 #| msgid "&Refresh"
 msgctxt "@info:status"
 msgid "Refresh"
 msgstr "&Ailfywio"
 
-#: actionmanager.cpp:461
+#: actionmanager.cpp:462
 #, fuzzy, kde-format
 msgctxt "@info:tooltip"
 msgid "Refresh the display"
 msgstr "Canoli wrth Gychwyn"
 
-#: actionmanager.cpp:463
+#: actionmanager.cpp:464
 #, kde-format
 msgctxt "@info:whatsthis"
 msgid ""
@@ -658,24 +658,24 @@ msgid ""
 "sync or update any calendar folders."
 msgstr ""
 
-#: actionmanager.cpp:472
+#: actionmanager.cpp:473
 #, kde-format
 msgid "F&ilter"
 msgstr "&Hidlo"
 
-#: actionmanager.cpp:473
+#: actionmanager.cpp:474
 #, fuzzy, kde-format
 msgctxt "@info:status"
 msgid "Filter incidences"
 msgstr "Golygu Amlder"
 
-#: actionmanager.cpp:474
+#: actionmanager.cpp:475
 #, fuzzy, kde-format
 msgctxt "@info:tooltip"
 msgid "Filter incidences from the calendar"
 msgstr "Dileu Hen Ddigwyddiadau"
 
-#: actionmanager.cpp:476
+#: actionmanager.cpp:477
 #, kde-format
 msgctxt "@info:whatsthis"
 msgid ""
@@ -683,27 +683,27 @@ msgid ""
 "created first. See \"Manage View Filters\" option in the Settings menu."
 msgstr ""
 
-#: actionmanager.cpp:488
+#: actionmanager.cpp:489
 #, kde-format
 msgid "In Horizontally"
 msgstr ""
 
-#: actionmanager.cpp:493
+#: actionmanager.cpp:494
 #, kde-format
 msgid "Out Horizontally"
 msgstr ""
 
-#: actionmanager.cpp:498
+#: actionmanager.cpp:499
 #, kde-format
 msgid "In Vertically"
 msgstr ""
 
-#: actionmanager.cpp:503
+#: actionmanager.cpp:504
 #, kde-format
 msgid "Out Vertically"
 msgstr ""
 
-#: actionmanager.cpp:512
+#: actionmanager.cpp:513
 #, fuzzy, kde-format
 #| msgid "day"
 msgctxt "@action Jump to today"
@@ -711,61 +711,61 @@ msgid "To &Today"
 msgstr "dydd"
 
 #. i18n: ectx: property (text), widget (QPushButton, mTodayBtn)
-#: actionmanager.cpp:513 views/collectionview/quickview.ui:94
+#: actionmanager.cpp:514 views/collectionview/quickview.ui:94
 #, fuzzy, kde-format
 #| msgid "day"
 msgid "Today"
 msgstr "dydd"
 
-#: actionmanager.cpp:514
+#: actionmanager.cpp:515
 #, fuzzy, kde-format
 #| msgid "Go to &Today"
 msgctxt "@info:status"
 msgid "Scroll to Today"
 msgstr "Mynd at &Heddiw"
 
-#: actionmanager.cpp:515
+#: actionmanager.cpp:516
 #, fuzzy, kde-format
 #| msgid "Go to &Today"
 msgctxt "@info:tooltip"
 msgid "Scroll the view to today"
 msgstr "Mynd at &Heddiw"
 
-#: actionmanager.cpp:516
+#: actionmanager.cpp:517
 #, kde-format
 msgctxt "@info:whatsthis"
 msgid "Scrolls the current view to the today's date."
 msgstr ""
 
-#: actionmanager.cpp:521
+#: actionmanager.cpp:522
 #, fuzzy, kde-format
 #| msgid "Go &Backward"
 msgctxt "scroll backward"
 msgid "&Backward"
 msgstr "Mynd &Yn Ôl"
 
-#: actionmanager.cpp:522
+#: actionmanager.cpp:523
 #, fuzzy, kde-format
 #| msgid "Balak"
 msgctxt "scroll backward"
 msgid "Back"
 msgstr "Balak"
 
-#: actionmanager.cpp:523
+#: actionmanager.cpp:524
 #, fuzzy, kde-format
 #| msgid "Go &Backward"
 msgctxt "@info:status"
 msgid "Scroll Backward"
 msgstr "Mynd &Yn Ôl"
 
-#: actionmanager.cpp:524
+#: actionmanager.cpp:525
 #, fuzzy, kde-format
 #| msgid "Go &Backward"
 msgctxt "@info:tooltip"
 msgid "Scroll the view backward"
 msgstr "Mynd &Yn Ôl"
 
-#: actionmanager.cpp:526
+#: actionmanager.cpp:527
 #, kde-format
 msgctxt "@info:whatsthis"
 msgid ""
@@ -773,35 +773,35 @@ msgid ""
 "calendar view."
 msgstr ""
 
-#: actionmanager.cpp:532
+#: actionmanager.cpp:533
 #, fuzzy, kde-format
 #| msgid "Go &Forward"
 msgctxt "scroll forward"
 msgid "&Forward"
 msgstr "Mynd &Ymlaen"
 
-#: actionmanager.cpp:533
+#: actionmanager.cpp:534
 #, fuzzy, kde-format
 #| msgid "Go &Forward"
 msgctxt "scroll forward"
 msgid "Forward"
 msgstr "Mynd &Ymlaen"
 
-#: actionmanager.cpp:534
+#: actionmanager.cpp:535
 #, fuzzy, kde-format
 #| msgid "Go &Forward"
 msgctxt "@info:status"
 msgid "Scroll Forward"
 msgstr "Mynd &Ymlaen"
 
-#: actionmanager.cpp:535
+#: actionmanager.cpp:536
 #, fuzzy, kde-format
 #| msgid "Go &Forward"
 msgctxt "@info:tooltip"
 msgid "Scroll the view forward"
 msgstr "Mynd &Ymlaen"
 
-#: actionmanager.cpp:537
+#: actionmanager.cpp:538
 #, kde-format
 msgctxt "@info:whatsthis"
 msgid ""
@@ -809,46 +809,46 @@ msgid ""
 "calendar view."
 msgstr ""
 
-#: actionmanager.cpp:542
+#: actionmanager.cpp:543
 #, kde-format
 msgid "&Day"
 msgstr "&Dydd"
 
-#: actionmanager.cpp:551 actionmanager.cpp:1061
+#: actionmanager.cpp:552 actionmanager.cpp:1062
 #, fuzzy, kde-format
 msgid "&Next Day"
 msgid_plural "&Next %1 Days"
 msgstr[0] "Diwrnod &Nesaf"
 msgstr[1] "%1 o Ddiwrnodau &Nesaf"
 
-#: actionmanager.cpp:553
+#: actionmanager.cpp:554
 #, kde-format
 msgid "W&ork Week"
 msgstr "W&ythnos Gwaith"
 
-#: actionmanager.cpp:558
+#: actionmanager.cpp:559
 #, kde-format
 msgid "&Week"
 msgstr "&Wythnos"
 
-#: actionmanager.cpp:565 kodaymatrix.cpp:481
+#: actionmanager.cpp:566 kodaymatrix.cpp:481
 #, kde-format
 msgid "New E&vent..."
 msgstr "D&igwyddiad Newydd..."
 
-#: actionmanager.cpp:566
+#: actionmanager.cpp:567
 #, fuzzy, kde-format
 msgctxt "@info:status"
 msgid "Create a new Event"
 msgstr "Cliciwch i ychwanegu I-Wneud newydd"
 
-#: actionmanager.cpp:567
+#: actionmanager.cpp:568
 #, fuzzy, kde-format
 msgctxt "@info:tooltip"
 msgid "Create a new Event"
 msgstr "Cliciwch i ychwanegu I-Wneud newydd"
 
-#: actionmanager.cpp:569
+#: actionmanager.cpp:570
 #, kde-format
 msgctxt "@info:whatsthis"
 msgid ""
@@ -856,24 +856,24 @@ msgid ""
 "attendees, recurrences and much more."
 msgstr ""
 
-#: actionmanager.cpp:575 kodaymatrix.cpp:482
+#: actionmanager.cpp:576 kodaymatrix.cpp:482
 #, kde-format
 msgid "New &To-do..."
 msgstr "&I'w-Gwneud Newydd..."
 
-#: actionmanager.cpp:576
+#: actionmanager.cpp:577
 #, fuzzy, kde-format
 msgctxt "@info:status"
 msgid "Create a new To-do"
 msgstr "Cliciwch i ychwanegu I-Wneud newydd"
 
-#: actionmanager.cpp:577
+#: actionmanager.cpp:578
 #, fuzzy, kde-format
 msgctxt "@info:tooltip"
 msgid "Create a new To-do"
 msgstr "Cliciwch i ychwanegu I-Wneud newydd"
 
-#: actionmanager.cpp:579
+#: actionmanager.cpp:580
 #, kde-format
 msgctxt "@info:whatsthis"
 msgid ""
@@ -881,61 +881,61 @@ msgid ""
 "attendees, recurrences and much more."
 msgstr ""
 
-#: actionmanager.cpp:586
+#: actionmanager.cpp:587
 #, kde-format
 msgid "New Su&b-to-do..."
 msgstr "Is-I'w-&Gwneud Newydd..."
 
-#: actionmanager.cpp:594 kodaymatrix.cpp:483
+#: actionmanager.cpp:595 kodaymatrix.cpp:483
 #, fuzzy, kde-format
 msgid "New &Journal..."
 msgstr "&Dyddlyfr"
 
-#: actionmanager.cpp:595
+#: actionmanager.cpp:596
 #, fuzzy, kde-format
 msgctxt "@info:status"
 msgid "Create a new Journal"
 msgstr "Cliciwch i ychwanegu I-Wneud newydd"
 
-#: actionmanager.cpp:596
+#: actionmanager.cpp:597
 #, fuzzy, kde-format
 msgctxt "@info:tooltip"
 msgid "Create a new Journal"
 msgstr "Cliciwch i ychwanegu I-Wneud newydd"
 
-#: actionmanager.cpp:597
+#: actionmanager.cpp:598
 #, kde-format
 msgctxt "@info:whatsthis"
 msgid "Starts a dialog that allows you to create a new Journal entry."
 msgstr ""
 
-#: actionmanager.cpp:602
+#: actionmanager.cpp:603
 #, fuzzy, kde-format
 #| msgid "&Configure..."
 msgid "Configure View..."
 msgstr "&Ffurfweddu..."
 
-#: actionmanager.cpp:603
+#: actionmanager.cpp:604
 #, fuzzy, kde-format
 #| msgid "&Configure..."
 msgid "Configure"
 msgstr "&Ffurfweddu..."
 
-#: actionmanager.cpp:604
+#: actionmanager.cpp:605
 #, fuzzy, kde-format
 #| msgid "Configure &Date && Time..."
 msgctxt "@info:status"
 msgid "Configure the view"
 msgstr "Ffurfweddu &Dyddiad && Amser..."
 
-#: actionmanager.cpp:605
+#: actionmanager.cpp:606
 #, fuzzy, kde-format
 #| msgid "Configure &Date && Time..."
 msgctxt "@info:tooltip"
 msgid "Configure the current view"
 msgstr "Ffurfweddu &Dyddiad && Amser..."
 
-#: actionmanager.cpp:607
+#: actionmanager.cpp:608
 #, kde-format
 msgctxt "@info:whatsthis"
 msgid ""
@@ -943,17 +943,17 @@ msgid ""
 "current calendar view."
 msgstr ""
 
-#: actionmanager.cpp:613 actionmanager.cpp:1296 actionmanager.cpp:1332
+#: actionmanager.cpp:614 actionmanager.cpp:1297 actionmanager.cpp:1333
 #, kde-format
 msgid "&Show"
 msgstr "&Dangos"
 
-#: actionmanager.cpp:617 actionmanager.cpp:1299 actionmanager.cpp:1333
+#: actionmanager.cpp:618 actionmanager.cpp:1300 actionmanager.cpp:1334
 #, kde-format
 msgid "&Edit..."
 msgstr "&Golygu..."
 
-#: actionmanager.cpp:626
+#: actionmanager.cpp:627
 #, kde-format
 msgid "&Make Sub-to-do Independent"
 msgstr "&Gwneud Is-I'w-Wneud yn Annibynnol"
@@ -962,256 +962,256 @@ msgstr "&Gwneud Is-I'w-Wneud yn Annibynnol"
 #. mCalendarView, SLOT(toggleAlarm()),
 #. mACollection, "activate_alarm" );
 #. ************************* SCHEDULE MENU *******************************
-#: actionmanager.cpp:638
+#: actionmanager.cpp:639
 #, kde-format
 msgid "&Publish Item Information..."
 msgstr ""
 
-#: actionmanager.cpp:645
+#: actionmanager.cpp:646
 #, kde-format
 msgid "Send &Invitation to Attendees"
 msgstr ""
 
-#: actionmanager.cpp:653
+#: actionmanager.cpp:654
 #, fuzzy, kde-format
 msgid "Re&quest Update"
 msgstr "Ca&is"
 
-#: actionmanager.cpp:661
+#: actionmanager.cpp:662
 #, kde-format
 msgid "Send &Cancellation to Attendees"
 msgstr ""
 
-#: actionmanager.cpp:669
+#: actionmanager.cpp:670
 #, fuzzy, kde-format
 msgid "Send Status &Update"
 msgstr "Dyddiad gorffen:"
 
-#: actionmanager.cpp:677
+#: actionmanager.cpp:678
 #, fuzzy, kde-format
 msgctxt "counter proposal"
 msgid "Request Chan&ge"
 msgstr "Gwr&thgynnig"
 
-#: actionmanager.cpp:685
+#: actionmanager.cpp:686
 #, fuzzy, kde-format
 msgid "&Mail Free Busy Information..."
 msgstr "Cyhoeddi Gwybodaeth Rhydd Brysur"
 
-#: actionmanager.cpp:690
+#: actionmanager.cpp:691
 #, fuzzy, kde-format
 #| msgid "&iCalendar..."
 msgid "&Send as iCalendar..."
 msgstr "&iCalendr..."
 
-#: actionmanager.cpp:697
+#: actionmanager.cpp:698
 #, fuzzy, kde-format
 msgid "&Upload Free Busy Information"
 msgstr "Cyhoeddi Gwybodaeth Rhydd Brysur"
 
-#: actionmanager.cpp:703
+#: actionmanager.cpp:704
 #, fuzzy, kde-format
 #| msgid "&Addressbook"
 msgid "&Address Book"
 msgstr "&Llyfr Cyfeiriadau"
 
-#: actionmanager.cpp:711
+#: actionmanager.cpp:712
 #, fuzzy, kde-format
 msgid "Show Date Navigator"
 msgstr "Dangos diwrnod Omer"
 
-#: actionmanager.cpp:715
+#: actionmanager.cpp:716
 #, fuzzy, kde-format
 msgid "Show To-do View"
 msgstr "Math Golwg"
 
-#: actionmanager.cpp:719
+#: actionmanager.cpp:720
 #, fuzzy, kde-format
 msgid "Show Item Viewer"
 msgstr "Gwelydd Digwyddiadau"
 
-#: actionmanager.cpp:735
+#: actionmanager.cpp:736
 #, fuzzy, kde-format
 #| msgid "Export Calendar as Web Page"
 msgid "Show Calendar Manager"
 msgstr "Allforio Calendr fel Tudalen Wê"
 
-#: actionmanager.cpp:748
+#: actionmanager.cpp:749
 #, kde-format
 msgid "Configure &Date && Time..."
 msgstr "Ffurfweddu &Dyddiad && Amser..."
 
-#: actionmanager.cpp:752
+#: actionmanager.cpp:753
 #, fuzzy, kde-format
 msgid "Manage View &Filters..."
 msgstr "Golygu'r &Hidlenni"
 
-#: actionmanager.cpp:756
+#: actionmanager.cpp:757
 #, fuzzy, kde-format
 msgid "Manage T&ags..."
 msgstr "Golygu'r C&ategorïau..."
 
-#: actionmanager.cpp:764
+#: actionmanager.cpp:765
 #, fuzzy, kde-format
 msgid "&Configure KOrganizer..."
 msgstr "Ffurfweddu'r &Ategion"
 
-#: actionmanager.cpp:841
+#: actionmanager.cpp:842
 #, kde-format
 msgid "1 incidence was imported successfully."
 msgid_plural "%1 incidences were imported successfully."
 msgstr[0] ""
 msgstr[1] ""
 
-#: actionmanager.cpp:844
+#: actionmanager.cpp:845
 #, kde-format
 msgid "There was an error while merging the calendar: %1"
 msgstr ""
 
-#: actionmanager.cpp:855
+#: actionmanager.cpp:856
 #, fuzzy, kde-format
 msgid "New calendar added successfully"
 msgstr "Cyhoeddi eich &gwybodaeth rydd/brysur yn ymysgogol"
 
-#: actionmanager.cpp:857
+#: actionmanager.cpp:858
 #, fuzzy, kde-format
 #| msgid "Could not load calendar '%1'."
 msgid "Could not add a calendar. Error: %1"
 msgstr "Wedi methu llwytho calendr '%1'."
 
-#: actionmanager.cpp:914
+#: actionmanager.cpp:915
 #, fuzzy, kde-format
 #| msgid "Edit Calendar Filters"
 msgctxt "@title:window"
 msgid "Select Calendar File to Open"
 msgstr "Golygu Hidlennau Calendr"
 
-#: actionmanager.cpp:942
+#: actionmanager.cpp:943
 #, fuzzy, kde-format
 #| msgid "Edit Calendar Filters"
 msgctxt "@title:window"
 msgid "Select Calendar File to Import"
 msgstr "Golygu Hidlennau Calendr"
 
-#: actionmanager.cpp:973
+#: actionmanager.cpp:974
 #, kde-format
 msgid "An error occurred: %1"
 msgstr ""
 
-#: actionmanager.cpp:991
+#: actionmanager.cpp:992
 #, kde-format
 msgid "Cannot upload calendar to '%1'"
 msgstr "Methu llwytho calendr i fyny i '%1'"
 
-#: actionmanager.cpp:997
+#: actionmanager.cpp:998
 #, kde-format
 msgid "Saved calendar '%1'."
 msgstr "Wedi cadw'r calendr '%1'."
 
-#: actionmanager.cpp:1035
+#: actionmanager.cpp:1036
 #, fuzzy, kde-format
 msgid "Unable to save calendar to the file %1."
 msgstr "Methu cadw'r eitem i-wneud"
 
-#: actionmanager.cpp:1035
+#: actionmanager.cpp:1036
 #, fuzzy, kde-format
 msgid "Error"
 msgstr "Dim Gwall"
 
-#: actionmanager.cpp:1078
+#: actionmanager.cpp:1079
 #, fuzzy, kde-format
 msgid "Could not start control module for date and time format."
 msgstr "Methu dechrau modwl reoli'r fformat dyddiad ac amser."
 
-#: actionmanager.cpp:1257
+#: actionmanager.cpp:1258
 #, kde-format
 msgid "&Show Event"
 msgstr "Dango&s Digwyddiad"
 
-#: actionmanager.cpp:1260
+#: actionmanager.cpp:1261
 #, kde-format
 msgid "&Edit Event..."
 msgstr "&Golygu Digwyddiad..."
 
-#: actionmanager.cpp:1263
+#: actionmanager.cpp:1264
 #, kde-format
 msgid "&Delete Event"
 msgstr "&Dileu Digwyddiad"
 
-#: actionmanager.cpp:1271
+#: actionmanager.cpp:1272
 #, kde-format
 msgid "&Show To-do"
 msgstr "Dango&s I'w-Wneud"
 
-#: actionmanager.cpp:1274 kontactplugin/korganizer/todosummarywidget.cpp:321
+#: actionmanager.cpp:1275 kontactplugin/korganizer/todosummarywidget.cpp:321
 #, kde-format
 msgid "&Edit To-do..."
 msgstr "&Golygu I'w-Wneud"
 
-#: actionmanager.cpp:1277 kontactplugin/korganizer/todosummarywidget.cpp:323
+#: actionmanager.cpp:1278 kontactplugin/korganizer/todosummarywidget.cpp:323
 #, kde-format
 msgid "&Delete To-do"
 msgstr "&Dileu I'w-Wneud"
 
-#: actionmanager.cpp:1410 actionmanager.cpp:1516
+#: actionmanager.cpp:1411 actionmanager.cpp:1517
 #, kde-format
 msgid "Attach as &link"
 msgstr ""
 
-#: actionmanager.cpp:1411 actionmanager.cpp:1517
+#: actionmanager.cpp:1412 actionmanager.cpp:1518
 #, fuzzy, kde-format
 msgid "Attach &inline"
 msgstr "Ychwanegu Atodiad"
 
-#: actionmanager.cpp:1412
+#: actionmanager.cpp:1413
 #, kde-format
 msgid "Attach inline &without attachments"
 msgstr ""
 
-#: actionmanager.cpp:1414 actionmanager.cpp:1519
+#: actionmanager.cpp:1415 actionmanager.cpp:1520
 #, kde-format
 msgid "C&ancel"
 msgstr ""
 
-#: actionmanager.cpp:1452
+#: actionmanager.cpp:1453
 #, kde-format
 msgid "Removing attachments from an email might invalidate its signature."
 msgstr ""
 
-#: actionmanager.cpp:1453
+#: actionmanager.cpp:1454
 #, fuzzy, kde-format
 #| msgid "Attach&ments"
 msgid "Remove Attachments"
 msgstr "Atodia&dau"
 
-#: actionmanager.cpp:1604
+#: actionmanager.cpp:1605
 #, fuzzy, kde-format
 #| msgid "Undo (%1)"
 msgid "Undo: %1"
 msgstr "Datwneud (%1)"
 
-#: actionmanager.cpp:1607 actionmanager.cpp:1623
+#: actionmanager.cpp:1608 actionmanager.cpp:1624
 #, fuzzy, kde-format
 msgid "Undo"
 msgstr "Datwneud (%1)"
 
-#: actionmanager.cpp:1617
+#: actionmanager.cpp:1618
 #, fuzzy, kde-format
 #| msgid "Redo (%1)"
 msgid "Redo: %1"
 msgstr "Ailwneud (%1)"
 
-#: actionmanager.cpp:1620
+#: actionmanager.cpp:1621
 #, fuzzy, kde-format
 msgid "Redo"
 msgstr "Ailwneud (%1)"
 
-#: actionmanager.cpp:1634
+#: actionmanager.cpp:1635
 #, kde-format
 msgid "URL '%1' is invalid."
 msgstr ""
 
-#: actionmanager.cpp:1639
+#: actionmanager.cpp:1640
 #, kde-format
 msgctxt "@info"
 msgid ""
@@ -1222,19 +1222,19 @@ msgid ""
 "p>"
 msgstr ""
 
-#: actionmanager.cpp:1647
+#: actionmanager.cpp:1652
 #, fuzzy, kde-format
 #| msgid "Import Calendar"
 msgctxt "@title:window"
 msgid "Import Calendar"
 msgstr "Mewnforio Calendr"
 
-#: actionmanager.cpp:1648
+#: actionmanager.cpp:1653
 #, kde-format
 msgid "Merge into existing calendar"
 msgstr ""
 
-#: actionmanager.cpp:1649
+#: actionmanager.cpp:1654
 #, fuzzy, kde-format
 msgid "Add as new calendar"
 msgstr "Calendr Newydd"
@@ -1325,97 +1325,97 @@ msgctxt "@title:window"
 msgid "Delete Calendar"
 msgstr "Fformat Calendr Rhagosodedig"
 
-#: calendarview.cpp:237
+#: calendarview.cpp:243
 #, kde-format
 msgid ""
 "<p><em>No Item Selected</em></p><p>Select an event, to-do or journal entry "
 "to view its details here.</p>"
 msgstr ""
 
-#: calendarview.cpp:243
+#: calendarview.cpp:249
 #, kde-format
 msgid ""
 "View the details of events, journal entries or to-dos selected in "
 "KOrganizer's main view here."
 msgstr ""
 
-#: calendarview.cpp:598
+#: calendarview.cpp:604
 #, fuzzy, kde-format
 msgid "Todo completed: %1 (%2)"
 msgstr "cyfla&wn ar %1"
 
-#: calendarview.cpp:607
+#: calendarview.cpp:613
 #, fuzzy, kde-format
 msgid "Journal of %1"
 msgstr "&Dyddlyfr"
 
-#: calendarview.cpp:656
+#: calendarview.cpp:662
 #, kde-format
 msgid ""
 "The item \"%1\" is filtered by your current filter rules, so it will be "
 "hidden and not appear in the view."
 msgstr ""
 
-#: calendarview.cpp:725
+#: calendarview.cpp:731
 #, fuzzy, kde-format
 msgctxt "@info"
 msgid "Do you really want to permanently remove the item \"%1\"?"
 msgstr "<qt>A ydych yn wir eisiau dileu'r adnodd? <b>%1</b>?</qt>"
 
-#: calendarview.cpp:726
+#: calendarview.cpp:732
 #, fuzzy, kde-format
 msgctxt "@title:window"
 msgid "Delete Item?"
 msgstr "Dileu Hen Ddigwyddiadau"
 
-#: calendarview.cpp:802
+#: calendarview.cpp:808
 #, fuzzy, kde-format
 #| msgid "Please specify a valid start date."
 msgid "Paste failed: unable to determine a valid target date."
 msgstr "Rhowch ddyddiad dechrau dilys os gwelwch yn dda."
 
-#: calendarview.cpp:1238
+#: calendarview.cpp:1244
 #, fuzzy, kde-format
 msgid "Make sub-to-dos independent"
 msgstr "Gwneud Is-I'w-Wneud yn Annibynnol"
 
-#: calendarview.cpp:1295
+#: calendarview.cpp:1301
 #, fuzzy, kde-format
 msgid "Toggle Reminder"
 msgstr "&Atgof:"
 
-#: calendarview.cpp:1327
+#: calendarview.cpp:1333
 #, fuzzy, kde-format
 #| msgctxt "delete completed to-dos"
 #| msgid "Pur&ge Completed"
 msgid "Toggle To-do Completed"
 msgstr "&Carthiad wedi'i Gwblhau"
 
-#: calendarview.cpp:1379
+#: calendarview.cpp:1385
 #, kde-format
 msgctxt "@info"
 msgid "\"%1\" was successfully copied to %2."
 msgstr ""
 
-#: calendarview.cpp:1380
+#: calendarview.cpp:1386
 #, fuzzy, kde-format
 msgctxt "@title:window"
 msgid "Copying Succeeded"
 msgstr "Methodd y gosod."
 
-#: calendarview.cpp:1384
+#: calendarview.cpp:1390
 #, fuzzy, kde-format
 msgctxt "@info"
 msgid "Unable to copy the item \"%1\" to %2."
 msgstr "Methu cadw'r eitem i-wneud"
 
-#: calendarview.cpp:1385
+#: calendarview.cpp:1391
 #, fuzzy, kde-format
 msgctxt "@title:window"
 msgid "Copying Failed"
 msgstr "Methodd y gosod."
 
-#: calendarview.cpp:1444
+#: calendarview.cpp:1450
 #, kde-format
 msgctxt "@info"
 msgid ""
@@ -1423,125 +1423,125 @@ msgid ""
 "of this item has been put into %2"
 msgstr ""
 
-#: calendarview.cpp:1448 calendarview.cpp:1464
+#: calendarview.cpp:1454 calendarview.cpp:1470
 #, fuzzy, kde-format
 msgctxt "@title:window"
 msgid "Moving Failed"
 msgstr "Methodd y gosod."
 
-#: calendarview.cpp:1453
+#: calendarview.cpp:1459
 #, kde-format
 msgctxt "@info"
 msgid "\"%1\" was successfully moved from %2 to %3."
 msgstr ""
 
-#: calendarview.cpp:1454
+#: calendarview.cpp:1460
 #, fuzzy, kde-format
 msgctxt "@title:window"
 msgid "Moving Succeeded"
 msgstr "Methodd y gosod."
 
-#: calendarview.cpp:1460
+#: calendarview.cpp:1466
 #, kde-format
 msgctxt "@info"
 msgid "Unable to add the item \"%1\" into %2. This item has not been moved."
 msgstr ""
 
-#: calendarview.cpp:1498
+#: calendarview.cpp:1508
 #, fuzzy, kde-format
 msgid "Do you want to dissociate the occurrence on %1 from the recurrence?"
 msgstr "Rhestri digwyddiadau'r diwrnod cyfredol"
 
-#: calendarview.cpp:1502 calendarview.cpp:1514 calendarview.cpp:2169
-#: calendarview.cpp:2229 calendarview.cpp:2259
+#: calendarview.cpp:1512 calendarview.cpp:1532 calendarview.cpp:2199
+#: calendarview.cpp:2263 calendarview.cpp:2293
 #, kde-format
 msgid "KOrganizer Confirmation"
 msgstr "Cadarnhâd KOrganizer"
 
-#: calendarview.cpp:1503
+#: calendarview.cpp:1513
 #, fuzzy, kde-format
 #| msgid "T&ime associated"
 msgid "&Dissociate"
 msgstr "A&mser cysylltiedig"
 
-#: calendarview.cpp:1509
+#: calendarview.cpp:1527
 #, fuzzy, kde-format
 msgid ""
 "Do you want to dissociate the occurrence on %1 from the recurrence or also "
 "dissociate future ones?"
 msgstr "Rhestri digwyddiadau'r diwrnod cyfredol"
 
-#: calendarview.cpp:1515
+#: calendarview.cpp:1533
 #, fuzzy, kde-format
 msgid "&Only Dissociate This One"
 msgstr "Rhestri digwyddiadau'r diwrnod cyfredol"
 
-#: calendarview.cpp:1516
+#: calendarview.cpp:1534
 #, fuzzy, kde-format
 msgid "&Also Dissociate Future Ones"
 msgstr "Rhestri digwyddiadau'r diwrnod cyfredol"
 
-#: calendarview.cpp:1534
+#: calendarview.cpp:1560
 #, fuzzy, kde-format
 msgid "Dissociate future occurrences"
 msgstr "Rhestri digwyddiadau'r diwrnod cyfredol"
 
-#: calendarview.cpp:1536
+#: calendarview.cpp:1562
 #, fuzzy, kde-format
 msgid "Dissociate occurrence"
 msgstr "Rhestri digwyddiadau'r diwrnod cyfredol"
 
-#: calendarview.cpp:1543
+#: calendarview.cpp:1569
 #, fuzzy, kde-format
 msgid "Dissociating the future occurrences failed."
 msgstr "Rhestri digwyddiadau'r diwrnod cyfredol"
 
-#: calendarview.cpp:1543 calendarview.cpp:1545
+#: calendarview.cpp:1569 calendarview.cpp:1571
 #, fuzzy, kde-format
 msgid "Dissociating Failed"
 msgstr "Methodd y gosod."
 
-#: calendarview.cpp:1545
+#: calendarview.cpp:1571
 #, fuzzy, kde-format
 msgid "Dissociating the occurrence failed."
 msgstr "Rhestri digwyddiadau'r diwrnod cyfredol"
 
-#: calendarview.cpp:1707
+#: calendarview.cpp:1733
 #, fuzzy, kde-format
 #| msgid "Calendar"
 msgid "iCalendars (*.ics)"
 msgstr "Calendr"
 
-#: calendarview.cpp:1716
+#: calendarview.cpp:1742
 #, kde-format
 msgid "Do you want to overwrite %1?"
 msgstr ""
 
-#: calendarview.cpp:1717
+#: calendarview.cpp:1743
 #, fuzzy, kde-format
 #| msgid "Import Calendar"
 msgctxt "@title:window"
 msgid "Export Calendar"
 msgstr "Mewnforio Calendr"
 
-#: calendarview.cpp:1731
+#: calendarview.cpp:1757
 #, kde-format
 msgctxt "save failure cause unknown"
 msgid "Reason unknown"
 msgstr ""
 
-#: calendarview.cpp:1733
+#: calendarview.cpp:1759
 #, fuzzy, kde-format
 msgctxt "@info"
 msgid "Cannot write iCalendar file %1. %2"
 msgstr "Methu ysgrifennu'r ffeil archif."
 
-#: calendarview.cpp:1829 calendarview.cpp:1868
+#: calendarview.cpp:1855 calendarview.cpp:1894
 #, fuzzy, kde-format
 msgid "No filter"
 msgstr "Dangos Hidlen"
 
-#: calendarview.cpp:2164
+#: calendarview.cpp:2194
 #, kde-format
 msgid ""
 "The item \"%1\" has sub-to-dos. Do you want to delete just this item and "
@@ -1549,29 +1549,29 @@ msgid ""
 "dos?"
 msgstr ""
 
-#: calendarview.cpp:2170
+#: calendarview.cpp:2200
 #, fuzzy, kde-format
 msgid "Delete Only This"
 msgstr "Dileu Hen Ddigwyddiadau"
 
-#: calendarview.cpp:2171 calendarview.cpp:2230
+#: calendarview.cpp:2201 calendarview.cpp:2264
 #, fuzzy, kde-format
 msgid "Delete All"
 msgstr "Dileu'r& cwbl"
 
-#: calendarview.cpp:2203
+#: calendarview.cpp:2237
 #, kde-format
 msgid ""
 "The item \"%1\" is marked read-only and cannot be deleted; it probably "
 "belongs to a read-only calendar."
 msgstr ""
 
-#: calendarview.cpp:2207
+#: calendarview.cpp:2241
 #, kde-format
 msgid "Removing not possible"
 msgstr ""
 
-#: calendarview.cpp:2225
+#: calendarview.cpp:2259
 #, fuzzy, kde-format
 msgid ""
 "The calendar item \"%1\" recurs over multiple dates; are you sure you want "
@@ -1580,12 +1580,12 @@ msgstr ""
 "Mae'r digwyddiad hyn yn ail-ddigwydd dros mwy nag un dyddiad. A ydych chi'n "
 "siŵr eich bod eisiau dileu y digwyddiad a phob un o'i ail-ddigwyddiadau?"
 
-#: calendarview.cpp:2237
+#: calendarview.cpp:2271
 #, fuzzy, kde-format
 msgid "Also Delete &Future"
 msgstr "Dileu'r Cyfredol"
 
-#: calendarview.cpp:2241
+#: calendarview.cpp:2275
 #, fuzzy, kde-format
 msgid ""
 "The calendar item \"%1\" recurs over multiple dates. Do you want to delete "
@@ -1595,7 +1595,7 @@ msgstr ""
 "siŵr eich bod eisiau dileu pob un o'i ail-ddigwyddiadau, neu dim ond y "
 "digwyddiad cyfredol sydd ar %1?"
 
-#: calendarview.cpp:2248
+#: calendarview.cpp:2282
 #, fuzzy, kde-format
 msgid ""
 "The calendar item \"%1\" recurs over multiple dates. Do you want to delete "
@@ -1605,82 +1605,82 @@ msgstr ""
 "siŵr eich bod eisiau dileu pob un o'i ail-ddigwyddiadau, neu dim ond y "
 "digwyddiad cyfredol sydd ar %1?"
 
-#: calendarview.cpp:2260
+#: calendarview.cpp:2294
 #, kde-format
 msgid "Delete C&urrent"
 msgstr "Dileu'r &Cyfredol"
 
-#: calendarview.cpp:2262
+#: calendarview.cpp:2296
 #, kde-format
 msgid "Delete &All"
 msgstr "Dileu'r &cwbl"
 
-#: calendarview.cpp:2293 calendarview.cpp:2300
+#: calendarview.cpp:2327 calendarview.cpp:2334
 #, fuzzy, kde-format
 #| msgid "Delete %1"
 msgid "Delete \"%1\""
 msgstr "Dileu %1"
 
-#: calendarview.cpp:2328
+#: calendarview.cpp:2362
 #, kde-format
 msgid ""
 "All calendars are unchecked in the Calendar Manager. No to-do was purged."
 msgstr ""
 
-#: calendarview.cpp:2333 calendarview.cpp:2582
+#: calendarview.cpp:2367 calendarview.cpp:2616
 #, fuzzy, kde-format
 msgid "There are no completed to-dos to purge."
 msgstr "Cuddio i'w-wneudau a gwblhawyd"
 
-#: calendarview.cpp:2338
+#: calendarview.cpp:2372
 #, fuzzy, kde-format
 #| msgid "Delete all completed to-dos?"
 msgid "Delete all completed to-dos from checked calendars?"
 msgstr "Dileu pob I'w-Wneud sydd wedi eu gorffen?"
 
-#: calendarview.cpp:2339
+#: calendarview.cpp:2373
 #, kde-format
 msgid "Purge To-dos"
 msgstr "Carthu I-Wneudau"
 
-#: calendarview.cpp:2340
+#: calendarview.cpp:2374
 #, kde-format
 msgid "Purge"
 msgstr "Carthu"
 
-#: calendarview.cpp:2351
+#: calendarview.cpp:2385
 #, fuzzy, kde-format
 msgctxt "@info"
 msgid "Unable to edit \"%1\" because it is locked by another process."
 msgstr "Methu golygu'r nifer.  Cloir gan broses arall."
 
-#: calendarview.cpp:2363
+#: calendarview.cpp:2397
 #, fuzzy, kde-format
 msgid "Unable to copy the item to %1."
 msgstr "Methu cadw'r eitem i-wneud"
 
-#: calendarview.cpp:2363
+#: calendarview.cpp:2397
 #, fuzzy, kde-format
 msgid "Copying Failed"
 msgstr "Methodd y gosod."
 
-#: calendarview.cpp:2398
+#: calendarview.cpp:2432
 #, fuzzy, kde-format
 msgid "Unable to move the item to  %1."
 msgstr "Methu cadw'r eitem i-wneud"
 
-#: calendarview.cpp:2398
+#: calendarview.cpp:2432
 #, fuzzy, kde-format
 msgid "Moving Failed"
 msgstr "Methodd y gosod."
 
-#: calendarview.cpp:2575
+#: calendarview.cpp:2609
 #, fuzzy, kde-format
 #| msgid "Hide co&mpleted to-dos"
 msgid "0 completed to-dos were purged."
 msgstr "Cuddio &i'w-wneudau a gwblhawyd"
 
-#: calendarview.cpp:2576 calendarview.cpp:2586
+#: calendarview.cpp:2610 calendarview.cpp:2620
 #, kde-format
 msgid "%1 to-do was ignored because it has uncompleted or read-only children."
 msgid_plural ""
@@ -1688,7 +1688,7 @@ msgid_plural ""
 msgstr[0] ""
 msgstr[1] ""
 
-#: calendarview.cpp:2580 calendarview.cpp:2585
+#: calendarview.cpp:2614 calendarview.cpp:2619
 #, fuzzy, kde-format
 #| msgid "Hide co&mpleted to-dos"
 msgid "%1 completed to-do was purged."
@@ -1696,19 +1696,19 @@ msgid_plural "%1 completed to-dos were purged."
 msgstr[0] "Cuddio &i'w-wneudau a gwblhawyd"
 msgstr[1] "Cuddio &i'w-wneudau a gwblhawyd"
 
-#: calendarview.cpp:2591
+#: calendarview.cpp:2625
 #, fuzzy, kde-format
 msgid "An error occurred while purging completed to-dos: %1"
 msgstr "Cuddio i'w-wneudau a gwblhawyd"
 
-#: calendarview.cpp:2645
+#: calendarview.cpp:2679
 #, kde-format
 msgid ""
 "You created an incidence in a calendar that is currently filtered out.\n"
 "On the left sidebar, enable it in the calendar manager to see the incidence."
 msgstr ""
 
-#: calendarview.cpp:2649
+#: calendarview.cpp:2683
 #, kde-format
 msgid ""
 "You created an incidence in a calendar that is currently filtered out.\n"
