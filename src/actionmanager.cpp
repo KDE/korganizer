@@ -925,7 +925,7 @@ void ActionManager::file_open(const QUrl &url)
     KOrg::MainWindow *korg = ActionManager::findInstance(url);
     if ((nullptr != korg) && (korg != mMainWindow)) {
 #if KDEPIM_HAVE_X11
-        KWindowSystem::activateWindow(korg->topLevelWidget()->winId());
+        KWindowSystem::activateWindow(korg->topLevelWidget()->windowHandle());
 #endif
         return;
     }
