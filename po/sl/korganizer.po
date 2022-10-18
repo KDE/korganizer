@@ -1,7 +1,7 @@
 # translation of korganizer.po to Slovenian
 # Translation of korganizer.po to Slovenian
 # Copyright (C) 2001,2002, 2003, 2004, 2005, 2006 Free Software Foundation, Inc.
-# $Id: korganizer.po 1636173 2022-10-16 01:42:20Z scripty $
+# $Id: korganizer.po 1636233 2022-10-17 02:42:01Z scripty $
 # $Source$
 #
 # Roman Maurer <roman.maurer@hermes.si>, 2001.
@@ -15,7 +15,7 @@ msgstr ""
 "Project-Id-Version: korganizer\n"
 "Report-Msgid-Bugs-To: https://bugs.kde.org\n"
 "POT-Creation-Date: 2022-10-16 00:47+0000\n"
-"PO-Revision-Date: 2022-05-02 20:34+0200\n"
+"PO-Revision-Date: 2022-10-16 06:48+0200\n"
 "Last-Translator: Matjaž Jeran <matjaz.jeran@amis.net>\n"
 "Language-Team: Slovenian <lugos-slo@lugos.si>\n"
 "Language: sl\n"
@@ -25,7 +25,7 @@ msgstr ""
 "Plural-Forms: nplurals=4; plural=(n%100==1 ? 1 : n%100==2 ? 2 : n%100==3 || n"
 "%100==4 ? 3 : 0);\n"
 "Translator: Andrej Mernik <andrejm@ubuntu.si>\n"
-"X-Generator: Poedit 3.0.1\n"
+"X-Generator: Poedit 3.1.1\n"
 
 #, kde-format
 msgctxt "NAME OF TRANSLATORS"
@@ -1432,18 +1432,14 @@ msgid "Copying Failed"
 msgstr "Kopiranje ni uspelo"
 
 #: calendarview.cpp:1450
-#, fuzzy, kde-format
-#| msgctxt "@info"
-#| msgid ""
-#| "Unable to remove the item \"%1\" from %2. However, a copy of this item "
-#| "has been put into %3."
+#, kde-format
 msgctxt "@info"
 msgid ""
 "Unable to remove the item \"%1\" from the original calendar. However, a copy "
 "of this item has been put into %2"
 msgstr ""
-"Predmeta »%1« ni mogoče odstraniti iz %2. Kljub temu je bila v %3 shranjena "
-"njegova kopija."
+"Predmeta \"%1\" ni mogoče odstraniti iz izvornega koledarja. Kljub temu je "
+"bila v dana njegova kopija v %2"
 
 #: calendarview.cpp:1454 calendarview.cpp:1470
 #, kde-format

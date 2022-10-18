@@ -14,7 +14,7 @@ msgstr ""
 "Project-Id-Version: korganizer\n"
 "Report-Msgid-Bugs-To: https://bugs.kde.org\n"
 "POT-Creation-Date: 2022-10-16 00:47+0000\n"
-"PO-Revision-Date: 2022-09-07 19:07+0200\n"
+"PO-Revision-Date: 2022-10-15 10:22+0200\n"
 "Last-Translator: Josep M. Ferrer <txemaq@gmail.com>\n"
 "Language-Team: Catalan <kde-i18n-ca@kde.org>\n"
 "Language: ca@valencia\n"
@@ -1099,13 +1099,13 @@ msgstr "No s'ha pogut carregar un calendari. Error: %1"
 #, kde-format
 msgctxt "@title:window"
 msgid "Select Calendar File to Open"
-msgstr "Seleccioneu el fitxer de calendari que s'obrirà"
+msgstr "Seleccioneu el fitxer de calendari que s'ha d'obrir"
 
 #: actionmanager.cpp:943
 #, kde-format
 msgctxt "@title:window"
 msgid "Select Calendar File to Import"
-msgstr "Seleccioneu el fitxer de calendari que s'importarà"
+msgstr "Seleccioneu el fitxer de calendari que s'ha d'importar"
 
 #: actionmanager.cpp:974
 #, kde-format
@@ -1434,18 +1434,14 @@ msgid "Copying Failed"
 msgstr "La còpia ha fallat"
 
 #: calendarview.cpp:1450
-#, fuzzy, kde-format
-#| msgctxt "@info"
-#| msgid ""
-#| "Unable to remove the item \"%1\" from %2. However, a copy of this item "
-#| "has been put into %3."
+#, kde-format
 msgctxt "@info"
 msgid ""
 "Unable to remove the item \"%1\" from the original calendar. However, a copy "
 "of this item has been put into %2"
 msgstr ""
-"No s'ha pogut eliminar l'element «%1» de %2. No obstant açò, s'ha posat una "
-"còpia d'este element en %3."
+"No s'ha pogut eliminar l'element «%1» del calendari original. No obstant "
+"açò, s'ha posat una còpia d'este element en %2."
 
 #: calendarview.cpp:1454 calendarview.cpp:1470
 #, kde-format
@@ -2654,7 +2650,7 @@ msgctxt "@info:whatsthis"
 msgid ""
 "You will be presented with a dialog where you can create a new event item."
 msgstr ""
-"Se vos presentarà un diàleg des d'on podreu crear un nou element "
+"Se vos presentarà un diàleg des d'on podreu crear un element nou "
 "d'esdeveniment."
 
 #: kontactplugin/korganizer/korganizerplugin.cpp:146
@@ -5813,7 +5809,7 @@ msgstr "&Des de:"
 #: ui/searchdialog_base.ui:225
 #, kde-format
 msgid "The starting date of the period to search."
-msgstr "La data d'inici del període a buscar."
+msgstr "La data d'inici del període que es buscarà."
 
 #. i18n: ectx: property (whatsThis), widget (KDateComboBox, startDate)
 #: ui/searchdialog_base.ui:228
@@ -5840,7 +5836,7 @@ msgstr "&A:"
 #: ui/searchdialog_base.ui:263
 #, kde-format
 msgid "The ending date of the period to search."
-msgstr "La data final del període a buscar."
+msgstr "La data final del període que es buscarà."
 
 #. i18n: ectx: property (whatsThis), widget (KDateComboBox, endDate)
 #: ui/searchdialog_base.ui:266
@@ -6084,7 +6080,7 @@ msgstr "Organitzador"
 #, kde-format
 msgctxt "@item:inlistbox"
 msgid "Icons to use"
-msgstr "Icones que s'utilitzaran"
+msgstr "Icones que s'han d'utilitzar"
 
 #: widgets/navigatorbar.cpp:31
 #, kde-format

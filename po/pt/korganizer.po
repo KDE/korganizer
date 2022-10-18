@@ -3,7 +3,7 @@ msgstr ""
 "Project-Id-Version: korganizer\n"
 "Report-Msgid-Bugs-To: https://bugs.kde.org\n"
 "POT-Creation-Date: 2022-10-16 00:47+0000\n"
-"PO-Revision-Date: 2022-05-04 18:53+0100\n"
+"PO-Revision-Date: 2022-10-16 11:38+0100\n"
 "Last-Translator: Pedro Morais <morais@kde.org>\n"
 "Language-Team: pt <kde-i18n-pt@kde.org>\n"
 "Language: pt\n"
@@ -1460,18 +1460,14 @@ msgid "Copying Failed"
 msgstr "Cópia sem Sucesso"
 
 #: calendarview.cpp:1450
-#, fuzzy, kde-format
-#| msgctxt "@info"
-#| msgid ""
-#| "Unable to remove the item \"%1\" from %2. However, a copy of this item "
-#| "has been put into %3."
+#, kde-format
 msgctxt "@info"
 msgid ""
 "Unable to remove the item \"%1\" from the original calendar. However, a copy "
 "of this item has been put into %2"
 msgstr ""
-"Não foi possível remover o item \"%1\" de %2. Contudo, foi colocada uma "
-"cópia deste item em %3."
+"Não foi possível remover o item \"%1\" do calendário original. Contudo, foi "
+"colocada uma cópia deste item em %2"
 
 #: calendarview.cpp:1454 calendarview.cpp:1470
 #, kde-format
@@ -6151,26 +6147,3 @@ msgstr "%1"
 msgctxt "4 digit year"
 msgid "%1"
 msgstr "%1"
-
-#~ msgid "Upcoming Events Configuration Dialog"
-#~ msgstr "Janela de Configuração dos Próximos Eventos"
-
-#~ msgid ""
-#~ "Copyright © 2003–2004 Tobias Koenig\n"
-#~ "Copyright © 2005–2010 Allen Winter"
-#~ msgstr ""
-#~ "Copyright © 2003–2004 Tobias Koenig\n"
-#~ "Copyright © 2005–2010 Allen Winter"
-
-#~ msgid "Pending To-dos Configuration Dialog"
-#~ msgstr "Janela de Configuração dos Itens Por-Fazer Pendentes"
-
-#~ msgid "Upcoming Special Dates Configuration Dialog"
-#~ msgstr "Janela de Configuração das Próximas Datas Especiais"
-
-#~ msgid ""
-#~ "Copyright © 2004 Tobias Koenig\n"
-#~ "Copyright © 2004–2010 Allen Winter"
-#~ msgstr ""
-#~ "Copyright © 2004 Tobias Koenig\n"
-#~ "Copyright © 2004–2010 Allen Winter"
