@@ -344,7 +344,7 @@ msgstr "Carrega un calendari des de «Obtín les novetats»"
 #, kde-format
 msgctxt "@info:tooltip"
 msgid "Search \"Get Hot New Stuff\" for calendars to import"
-msgstr "Busca calendaris a importar a «Obtín les novetats»"
+msgstr "Busca calendaris que s'hagen d'importar a «Obtín les novetats»"
 
 #: actionmanager.cpp:257
 #, kde-format
@@ -2154,8 +2154,8 @@ msgid ""
 msgstr ""
 "<qt><p>Esta secció permet afegir els vostres propis elements de la IGU "
 "(«<i>Ginys</i>») per a guardar els valors personals a %1. Procediu tal com "
-"es descriu tot seguit:</p><ol><li>Feu clic a «<i>Edició amb Qt Designer</"
-"i>»</li><li>En el diàleg, seleccioneu «<i>Giny</i>», després feu clic a "
+"es descriu tot seguit:</p><ol><li>Feu clic en «<i>Edició amb Qt Designer</"
+"i>»</li><li>En el diàleg, seleccioneu «<i>Giny</i>», després feu clic en "
 "<i>Bé</i></li><li>Afegiu els vostres ginys al formulari</li><li>Guardeu el "
 "fitxer en el directori proposat per Qt Designer</li><li>Tanqueu Qt Designer</"
 "li></ol><p>Si ja teniu un fitxer designer (*.ui) ubicat en algun lloc del "
@@ -4185,7 +4185,7 @@ msgid ""
 "Check this box to select a working week when clicking on the Date "
 "Navigator's week numbers, or uncheck it to choose the whole week."
 msgstr ""
-"Marqueu esta casella per a seleccionar una setmana laboral en clicar en els "
+"Marqueu esta casella per a seleccionar una setmana laboral clicant en els "
 "nombres de setmana del navegador de dates, o desactiveu-la per a seleccionar "
 "la setmana sencera."
 
