@@ -2164,8 +2164,8 @@ msgstr ""
 "«<i>X_</i>»; així que si voleu que el giny corresponga al vostre camp "
 "d'entrada personalitzat «<i>X-Foo</i>», establiu la propietat del <i>nom</i> "
 "del giny a «<i>X_Foo</i>».</p><p><b>Important:</b> el giny editarà els camps "
-"personalitzats amb el nom d'aplicació %2. Per a canviar el nom d'aplicació "
-"editora, establiu el nom del giny a Qt Designer.</p></qt>"
+"personalitzats amb el nom d'aplicació %2. Per a canviar el nom de "
+"l'aplicació editora, establiu el nom del giny a Qt Designer.</p></qt>"
 
 #: kcmdesignerfields.cpp:331
 #, kde-format
