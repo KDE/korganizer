@@ -33,7 +33,7 @@ set(kcmsdsummary_PART_SRCS kcmsdsummary.cpp kcmsdsummary.h)
 ki18n_wrap_ui(kcmsdsummary_PART_SRCS sdsummaryconfig_base.ui)
 
 add_library(kcmsdsummary MODULE ${kcmsdsummary_PART_SRCS})
-target_link_libraries(kcmsdsummary Qt::Widgets KF5::KCMUtils KF5::I18n)
+target_link_libraries(kcmsdsummary Qt::Widgets KF5::KCMUtils KF5::I18n KF5::CoreAddons)
 
 ########### install files ###############
 
