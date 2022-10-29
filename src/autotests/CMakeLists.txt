@@ -44,3 +44,12 @@ set(koeventpopupmenutest_LIBS Qt::Test
   korganizerprivate
 )
 add_akonadi_isolated_test_advanced(koeventpopupmenutest.cpp "${koeventpopupmenutest_SRCS}" "${koeventpopupmenutest_LIBS}")
+
+ecm_add_test(testtoggletodo.cpp
+  LINK_LIBRARIES
+    Qt${QT_MAJOR_VERSION}::Test
+    KF5::CalendarCore
+    KF5::IdentityManagement
+    korganizer_core
+    korganizerprivate
+)

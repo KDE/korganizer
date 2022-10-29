@@ -293,6 +293,13 @@ Q_SIGNALS:
     void toggleTodoCompletedSignal(const Akonadi::Item &);
 
     /**
+     * Toggle the completion state of the incidence contained in the item
+     * (which must be a Todo) on the given date.  If the todo recurs, the
+     * QDate identifies the occurrence to toggle.
+     */
+    void toggleOccurrenceCompletedSignal(const Akonadi::Item &, const QDate &);
+
+    /**
      * Copy the incidence to the specified resource.
      */
     void copyIncidenceToResourceSignal(const Akonadi::Item &, const Akonadi::Collection &);

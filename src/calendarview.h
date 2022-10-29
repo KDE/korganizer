@@ -394,6 +394,7 @@ public Q_SLOTS:
 
     void toggleAlarm(const Akonadi::Item &incidence);
     void toggleTodoCompleted(const Akonadi::Item &incidence);
+    void toggleOccurrenceCompleted(const Akonadi::Item &, const QDate &);
     void copyIncidenceToResource(const Akonadi::Item &incidence, const Akonadi::Collection &col);
     void moveIncidenceToResource(const Akonadi::Item &incidence, const Akonadi::Collection &col);
     void dissociateOccurrences(const Akonadi::Item &incidence, QDate date);
@@ -618,6 +619,8 @@ public:
       Journal view for example.
     */
     QDate activeDate(bool fallbackToToday = false);
+
+    static void toggleCompleted(KCalendarCore::Todo::Ptr, const QDate &);
 
 protected:
     int msgItemDelete(const Akonadi::Item &incidence);

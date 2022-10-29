@@ -52,7 +52,7 @@ KOEventPopupMenu *KOEventView::eventPopup()
     connect(eventPopup, &KOEventPopupMenu::copyIncidenceSignal, this, &KOEventView::copyIncidenceSignal);
     connect(eventPopup, &KOEventPopupMenu::pasteIncidenceSignal, this, &KOEventView::pasteIncidenceSignal);
     connect(eventPopup, &KOEventPopupMenu::toggleAlarmSignal, this, &KOEventView::toggleAlarmSignal);
-    connect(eventPopup, &KOEventPopupMenu::toggleTodoCompletedSignal, this, &KOEventView::toggleTodoCompletedSignal);
+    connect(eventPopup, &KOEventPopupMenu::toggleOccurrenceCompletedSignal, this, &KOEventView::toggleOccurrenceCompletedSignal);
     connect(eventPopup, &KOEventPopupMenu::copyIncidenceToResourceSignal, this, &KOEventView::copyIncidenceToResourceSignal);
     connect(eventPopup, &KOEventPopupMenu::moveIncidenceToResourceSignal, this, &KOEventView::moveIncidenceToResourceSignal);
     connect(eventPopup, &KOEventPopupMenu::dissociateOccurrencesSignal, this, &KOEventView::dissociateOccurrencesSignal);
