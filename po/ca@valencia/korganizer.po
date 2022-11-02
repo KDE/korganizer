@@ -5963,7 +5963,7 @@ msgstr "Agenda %1"
 #, kde-format
 msgctxt "@title:window"
 msgid "Configure Side-By-Side View"
-msgstr "Configuració de la vista costat al costat"
+msgstr "Configuració de la vista costat a costat"
 
 #. i18n: ectx: property (text), widget (QRadioButton, useDefaultRB)
 #: views/multiagendaview/multiagendaviewconfigwidget.ui:17
