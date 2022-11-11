@@ -44,7 +44,7 @@ KOCore::~KOCore()
 
 QVector<KPluginMetaData> KOCore::availableCalendarDecorations()
 {
-    return KPluginMetaData::findPlugins(QStringLiteral("korganizer"));
+    return KPluginMetaData::findPlugins(QStringLiteral("pim" QT_STRINGIFY(QT_VERSION_MAJOR)) + QStringLiteral("/korganizer"));
 }
 
 EventViews::CalendarDecoration::Decoration *KOCore::loadCalendarDecoration(const KPluginMetaData &service)
