@@ -20,7 +20,7 @@ msgstr ""
 "Project-Id-Version: kdepim-kde4\n"
 "Report-Msgid-Bugs-To: https://bugs.kde.org\n"
 "POT-Creation-Date: 2022-10-30 00:47+0000\n"
-"PO-Revision-Date: 2022-11-02 11:18+0300\n"
+"PO-Revision-Date: 2022-11-10 21:28+0300\n"
 "Last-Translator: Emir SARI <emir_sari@icloud.com>\n"
 "Language-Team: Turkish <kde-l10n-tr@kde.org>\n"
 "Language: tr\n"
@@ -28,7 +28,7 @@ msgstr ""
 "Content-Type: text/plain; charset=UTF-8\n"
 "Content-Transfer-Encoding: 8bit\n"
 "Plural-Forms: nplurals=2; plural=(n > 1);\n"
-"X-Generator: Lokalize 22.08.2\n"
+"X-Generator: Lokalize 22.08.3\n"
 "(http: //www.transifex.com/projects/p/kdepim-k-tr/language/tr/)\n"
 "X-POOTLE-MTIME: 1413104942.000000\n"
 
@@ -747,25 +747,25 @@ msgstr "Bugün"
 #, kde-format
 msgctxt "@info:status"
 msgid "Scroll to Today"
-msgstr "Bugüne Git"
+msgstr "Bugüne Sar"
 
 #: actionmanager.cpp:516
 #, kde-format
 msgctxt "@info:tooltip"
 msgid "Scroll the view to today"
-msgstr "Bugüne git"
+msgstr "Görünümü, bugüne sarar"
 
 #: actionmanager.cpp:517
 #, kde-format
 msgctxt "@info:whatsthis"
 msgid "Scrolls the current view to the today's date."
-msgstr "Geçerli görünümü, bugünün tarihine götürür."
+msgstr "Geçerli görünümü, bugüne sarar."
 
 #: actionmanager.cpp:522
 #, kde-format
 msgctxt "scroll backward"
 msgid "&Backward"
-msgstr "&Geri Git"
+msgstr "&Geri"
 
 #: actionmanager.cpp:523
 #, kde-format
@@ -777,13 +777,13 @@ msgstr "Geri"
 #, kde-format
 msgctxt "@info:status"
 msgid "Scroll Backward"
-msgstr "Geri Git"
+msgstr "Geri Sar"
 
 #: actionmanager.cpp:525
 #, kde-format
 msgctxt "@info:tooltip"
 msgid "Scroll the view backward"
-msgstr "Görünümü geri götür"
+msgstr "Görünümü geri sar"
 
 #: actionmanager.cpp:527
 #, kde-format
@@ -793,13 +793,13 @@ msgid ""
 "calendar view."
 msgstr ""
 "Geçerli takvim görünümüne bağlı olarak; bir gün, hafta, ay veya yıl geri "
-"gider."
+"sarar."
 
 #: actionmanager.cpp:533
 #, kde-format
 msgctxt "scroll forward"
 msgid "&Forward"
-msgstr "İ&leri Git"
+msgstr "İ&leri"
 
 #: actionmanager.cpp:534
 #, kde-format
@@ -811,13 +811,13 @@ msgstr "İleri"
 #, kde-format
 msgctxt "@info:status"
 msgid "Scroll Forward"
-msgstr "İleri Git"
+msgstr "İleri Sar"
 
 #: actionmanager.cpp:536
 #, kde-format
 msgctxt "@info:tooltip"
 msgid "Scroll the view forward"
-msgstr "Görünümü ileri götür"
+msgstr "Görünümü ileri sar"
 
 #: actionmanager.cpp:538
 #, kde-format
@@ -827,7 +827,7 @@ msgid ""
 "calendar view."
 msgstr ""
 "Geçerli takvim görünümüne bağlı olarak; bir gün, hafta, ay veya yıl ileri "
-"gider."
+"sarar."
 
 #: actionmanager.cpp:543
 #, kde-format
@@ -5927,7 +5927,7 @@ msgstr "%1/%2"
 #: widgets/kdatenavigator.cpp:179
 #, kde-format
 msgid "Scroll to week number %1"
-msgstr "%1. haftaya geç"
+msgstr "%1. haftaya sar"
 
 #: widgets/kdatenavigator.cpp:181
 #, kde-format
@@ -5935,8 +5935,7 @@ msgid ""
 "Click here to scroll the display to week number %1 of the currently "
 "displayed year."
 msgstr ""
-"Görünümü, şu anda gösterilen yılın %1. haftasına kaydırmak için buraya "
-"tıklayın."
+"Görünümü, şu anda gösterilen yılın %1. haftasına sarmak için buraya tıklayın."
 
 #: widgets/kdatenavigator.cpp:227
 #, kde-format
@@ -6007,46 +6006,43 @@ msgstr "Kullanılacak simgeler"
 #: widgets/navigatorbar.cpp:31
 #, kde-format
 msgid "Scroll backward to the previous year"
-msgstr "Bir önceki yıla geri dön"
+msgstr "Bir önceki yıla geri sar"
 
 #: widgets/navigatorbar.cpp:32
 #, kde-format
 msgid ""
 "Click this button to scroll the display to the same approximate day of the "
 "previous year"
-msgstr ""
-"Bu düğmeye tıklandığında bir önceki yılın yaklaşık aynı günü görüntülenir"
+msgstr "Görünümü, bugünün tarihinden bir yıl geri sarmak için buraya tıklayın."
 
 #: widgets/navigatorbar.cpp:36
 #, kde-format
 msgid "Scroll backward to the previous month"
-msgstr "Bir önceki aya geri dön"
+msgstr "Bir önceki aya geri sar"
 
 #: widgets/navigatorbar.cpp:37
 #, kde-format
 msgid ""
 "Click this button to scroll the display to the same approximate date of the "
 "previous month"
-msgstr ""
-"Bu düğmeye tıklandığında bir önceki ayın yaklaşık aynı günü görüntülenir"
+msgstr "Görünümü, bugünün tarihinden bir ay geri sarmak için buraya tıklayın."
 
 #: widgets/navigatorbar.cpp:41
 #, kde-format
 msgid "Scroll forward to the next month"
-msgstr "Bir sonraki aya git"
+msgstr "Bir sonraki aya ileri sar"
 
 #: widgets/navigatorbar.cpp:42
 #, kde-format
 msgid ""
 "Click this button to scroll the display to the same approximate date of the "
 "next month"
-msgstr ""
-"Bu düğmeye tıklandığında bir sonraki ayın yaklaşık aynı günü görüntülenir"
+msgstr "Görünümü, bugünün tarihinden bir ay ileri sarmak için buraya tıklayın."
 
 #: widgets/navigatorbar.cpp:46
 #, kde-format
 msgid "Scroll forward to the next year"
-msgstr "Bir sonraki yıla git"
+msgstr "Bir sonraki yıla ileri sar"
 
 #: widgets/navigatorbar.cpp:47
 #, kde-format
@@ -6054,7 +6050,7 @@ msgid ""
 "Click this button to scroll the display to the same approximate day of the "
 "next year"
 msgstr ""
-"Bu düğmeye tıklandığında bir sonraki yılın yaklaşık aynı günü görüntülenir"
+"Görünümü, bugünün tarihinden bir yıl ileri sarmak için buraya tıklayın."
 
 #: widgets/navigatorbar.cpp:54
 #, kde-format
