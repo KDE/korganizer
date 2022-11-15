@@ -79,19 +79,13 @@
 #include <QSplitter>
 #include <QStackedWidget>
 #include <QVBoxLayout>
-#include <kwidgetsaddons_version.h>
 
 // Meaningful aliases for dialog box return codes.
 enum ItemActions {
     Cancel = KMessageBox::Cancel, // Do nothing.
     Current = KMessageBox::Ok, // Selected recurrence only.
-#if KWIDGETSADDONS_VERSION >= QT_VERSION_CHECK(5, 100, 0)
     AlsoFuture = KMessageBox::ButtonCode::SecondaryAction, // Selected and future recurrences.
     Parent = KMessageBox::ButtonCode::PrimaryAction, // Instance, but not child instances.
-#else
-    AlsoFuture = KMessageBox::No, // Selected and future recurrences.
-    Parent = KMessageBox::Yes, // Instance, but not child instances.
-#endif
     All = KMessageBox::Continue, // Instance and child instances.
 };
 
@@ -1552,11 +1546,7 @@ void CalendarView::dissociateOccurrences(const Akonadi::Item &item, QDate date)
     bool doFuture = false;
 
     if (isFirstOccurrence) {
-#if KWIDGETSADDONS_VERSION >= QT_VERSION_CHECK(5, 100, 0)
         answer = KMessageBox::questionTwoActions(this,
-#else
-        answer = KMessageBox::questionYesNo(this,
-#endif
                                                  i18n("Do you want to dissociate "
                                                       "the occurrence on %1 "
                                                       "from the recurrence?",
@@ -1565,17 +1555,9 @@ void CalendarView::dissociateOccurrences(const Akonadi::Item &item, QDate date)
                                                  KGuiItem(i18n("&Dissociate")),
                                                  KStandardGuiItem::cancel());
 
-#if KWIDGETSADDONS_VERSION >= QT_VERSION_CHECK(5, 100, 0)
         doOnlyThis = (answer == KMessageBox::ButtonCode::PrimaryAction);
-#else
-        doOnlyThis = (answer == KMessageBox::Yes);
-#endif
     } else {
-#if KWIDGETSADDONS_VERSION >= QT_VERSION_CHECK(5, 100, 0)
         answer = KMessageBox::questionTwoActionsCancel(this,
-#else
-        answer = KMessageBox::questionYesNoCancel(this,
-#endif
                                                        i18n("Do you want to dissociate "
                                                             "the occurrence on %1 "
                                                             "from the recurrence or also "
@@ -1585,16 +1567,8 @@ void CalendarView::dissociateOccurrences(const Akonadi::Item &item, QDate date)
                                                        KGuiItem(i18n("&Only Dissociate This One")),
                                                        KGuiItem(i18n("&Also Dissociate Future Ones")));
 
-#if KWIDGETSADDONS_VERSION >= QT_VERSION_CHECK(5, 100, 0)
         doOnlyThis = (answer == KMessageBox::ButtonCode::PrimaryAction);
-#else
-        doOnlyThis = (answer == KMessageBox::Yes);
-#endif
-#if KWIDGETSADDONS_VERSION >= QT_VERSION_CHECK(5, 100, 0)
         doFuture = (answer == KMessageBox::ButtonCode::SecondaryAction);
-#else
-        doFuture = (answer == KMessageBox::No);
-#endif
     }
 
     if (doOnlyThis) {
@@ -2238,11 +2212,7 @@ int CalendarView::questionIndependentChildren(const Akonadi::Item &item)
     int km;
     auto incidence = Akonadi::CalendarUtils::incidence(item);
     if (!incidence->hasRecurrenceId() && !mCalendar->childItems(item.id()).isEmpty()) {
-#if KWIDGETSADDONS_VERSION >= QT_VERSION_CHECK(5, 100, 0)
         km = KMessageBox::questionTwoActionsCancel(this,
-#else
-        km = KMessageBox::questionYesNoCancel(this,
-#endif
                                                    i18n("The item \"%1\" has sub-to-dos. "
                                                         "Do you want to delete just this item and "
                                                         "make all its sub-to-dos independent, or "
@@ -2252,11 +2222,7 @@ int CalendarView::questionIndependentChildren(const Akonadi::Item &item)
                                                    KGuiItem(i18n("Delete Only This")),
                                                    KGuiItem(i18n("Delete All")));
 
-#if KWIDGETSADDONS_VERSION >= QT_VERSION_CHECK(5, 100, 0)
         if (km == KMessageBox::ButtonCode::SecondaryAction) {
-#else
-        if (km == KMessageBox::No) {
-#endif
             km = KMessageBox::Continue;
         }
     } else {

@@ -77,7 +77,6 @@
 #include <QTimer>
 #include <QToolBar>
 #include <QWindow>
-#include <kwidgetsaddons_version.h>
 
 KOWindowList *ActionManager::mWindowList = nullptr;
 
@@ -1643,29 +1642,17 @@ void ActionManager::importCalendar(const QUrl &url)
                                        "the destination calendar.</p>"
                                        "<p>If you select add, then a new calendar will be created for you automatically.</p>");
 
-#if KWIDGETSADDONS_VERSION >= QT_VERSION_CHECK(5, 100, 0)
     const int answer = KMessageBox::questionTwoActionsCancel(dialogParent(),
-#else
-    const int answer = KMessageBox::questionYesNoCancel(dialogParent(),
-#endif
                                                              questionText,
                                                              i18nc("@title:window", "Import Calendar"),
                                                              KGuiItem(i18n("Merge into existing calendar")),
                                                              KGuiItem(i18n("Add as new calendar")));
 
     switch (answer) {
-#if KWIDGETSADDONS_VERSION >= QT_VERSION_CHECK(5, 100, 0)
     case KMessageBox::ButtonCode::PrimaryAction: // merge
-#else
-    case KMessageBox::Yes: // merge
-#endif
         importURL(url, true);
         break;
-#if KWIDGETSADDONS_VERSION >= QT_VERSION_CHECK(5, 100, 0)
     case KMessageBox::ButtonCode::SecondaryAction: // import
-#else
-    case KMessageBox::No: // import
-#endif
         importURL(url, false);
         break;
     default:
