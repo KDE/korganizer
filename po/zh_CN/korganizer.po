@@ -2,7 +2,7 @@ msgid ""
 msgstr ""
 "Project-Id-Version: kdeorg\n"
 "Report-Msgid-Bugs-To: https://bugs.kde.org\n"
-"POT-Creation-Date: 2022-10-30 00:47+0000\n"
+"POT-Creation-Date: 2022-11-16 00:48+0000\n"
 "PO-Revision-Date: 2022-11-06 01:06\n"
 "Last-Translator: \n"
 "Language-Team: Chinese Simplified\n"
@@ -275,36 +275,36 @@ msgstr "Thomas Zander"
 msgid "Fester Zigterman"
 msgstr "Fester Zigterman"
 
-#: actionmanager.cpp:130
+#: actionmanager.cpp:129
 #, kde-format
 msgid ""
 "<qt>This will hide the menu bar completely. You can show it again by typing "
 "%1.</qt>"
 msgstr "<qt>这将完全隐藏菜单栏。您可以按下 %1 使其重新显示。</qt>"
 
-#: actionmanager.cpp:133
+#: actionmanager.cpp:132
 #, kde-format
 msgid "Hide menu bar"
 msgstr "隐藏菜单栏"
 
-#: actionmanager.cpp:243
+#: actionmanager.cpp:242
 #, kde-format
 msgid "Import &Calendar..."
 msgstr "导入日历(&C)..."
 
-#: actionmanager.cpp:244
+#: actionmanager.cpp:243
 #, kde-format
 msgctxt "@info:status"
 msgid "Import a calendar"
 msgstr "导入日历"
 
-#: actionmanager.cpp:245
+#: actionmanager.cpp:244
 #, kde-format
 msgctxt "@info:tooltip"
 msgid "Import an iCalendar or vCalendar file"
 msgstr "导入 iCalendar 或 vCalendar 文件"
 
-#: actionmanager.cpp:247
+#: actionmanager.cpp:246
 #, kde-format
 msgctxt "@info:whatsthis"
 msgid ""
@@ -312,24 +312,24 @@ msgid ""
 "iCalendar or vCalendar file into your current calendar collection."
 msgstr "若要将 iCalendar 或 vCalendar 文件导入至当前日历收藏，请选择此菜单项。"
 
-#: actionmanager.cpp:253
+#: actionmanager.cpp:252
 #, kde-format
 msgid "Get New Calendars..."
 msgstr "获取新日历..."
 
-#: actionmanager.cpp:254
+#: actionmanager.cpp:253
 #, kde-format
 msgctxt "@info:status"
 msgid "Load a calendar from \"Get Hot New Stuff\""
 msgstr "从“获取最新内容”中加载日历"
 
-#: actionmanager.cpp:255
+#: actionmanager.cpp:254
 #, kde-format
 msgctxt "@info:tooltip"
 msgid "Search \"Get Hot New Stuff\" for calendars to import"
 msgstr "在“获取最新内容”中搜索以导入日历"
 
-#: actionmanager.cpp:257
+#: actionmanager.cpp:256
 #, kde-format
 msgctxt "@info:whatsthis"
 msgid ""
@@ -339,58 +339,58 @@ msgstr ""
 "此菜单项会打开“获取最新内容”的对话框，它能让您搜索并导入捐给社区的、有趣且有"
 "用的日历。"
 
-#: actionmanager.cpp:278
+#: actionmanager.cpp:277
 #, kde-format
 msgid "Could not load calendar %1."
 msgstr "无法加载日历“%1”。"
 
-#: actionmanager.cpp:288
+#: actionmanager.cpp:287
 #, kde-format
 msgid "The downloaded events will be merged into your current calendar."
 msgstr "已下载的事件会合并到您当前的日历。"
 
-#: actionmanager.cpp:305
+#: actionmanager.cpp:304
 #, kde-format
 msgid "Export as &iCalendar..."
 msgstr "导出为 iCalendar(&I)..."
 
-#: actionmanager.cpp:306
+#: actionmanager.cpp:305
 #, kde-format
 msgctxt "@info:status"
 msgid "Export calendar to file"
 msgstr "将日历导出为文件"
 
-#: actionmanager.cpp:307
+#: actionmanager.cpp:306
 #, kde-format
 msgctxt "@info:tooltip"
 msgid "Export your calendar to an iCalendar file"
 msgstr "将您的日历导出为 iCalendar 文件"
 
-#: actionmanager.cpp:308
+#: actionmanager.cpp:307
 #, kde-format
 msgctxt "@info:whatsthis"
 msgid ""
 "Allows you to export your entire calendar collection to one iCalendar file."
 msgstr "可让您将整个日历收藏导出为一个 iCalendar 文件。"
 
-#: actionmanager.cpp:314
+#: actionmanager.cpp:313
 #, kde-format
 msgid "Archive O&ld Incidences..."
 msgstr "归档旧事件(&L)..."
 
-#: actionmanager.cpp:315
+#: actionmanager.cpp:314
 #, kde-format
 msgctxt "@info:status"
 msgid "Archive events and to-dos to a file"
 msgstr "将日程和待办事项归档到一个文件中"
 
-#: actionmanager.cpp:316
+#: actionmanager.cpp:315
 #, kde-format
 msgctxt "@info:tooltip"
 msgid "Archive old events and to-dos to an iCalendar file"
 msgstr "将旧日程和旧待办事项归档到一个 iCalendar 文件中"
 
-#: actionmanager.cpp:318
+#: actionmanager.cpp:317
 #, kde-format
 msgctxt "@info:whatsthis"
 msgid ""
@@ -401,24 +401,24 @@ msgstr ""
 "此菜单项会打开一个对话框，并让您选择可归档至 iCalendar 文件的旧日程和旧待办事"
 "项。归档后，所选项将从已有的日历收藏中删除。"
 
-#: actionmanager.cpp:326
+#: actionmanager.cpp:325
 #, kde-format
 msgid "Pur&ge Completed To-dos"
 msgstr "删除已完成的待办事项(&G)"
 
-#: actionmanager.cpp:327
+#: actionmanager.cpp:326
 #, kde-format
 msgctxt "@info:status"
 msgid "Purge completed to-dos"
 msgstr "清除已完成的待办事项"
 
-#: actionmanager.cpp:328
+#: actionmanager.cpp:327
 #, kde-format
 msgctxt "@info:tooltip"
 msgid "Remove completed to-dos from your calendar"
 msgstr "将已完成的待办事项从日历中删除"
 
-#: actionmanager.cpp:330
+#: actionmanager.cpp:329
 #, kde-format
 msgctxt "@info:whatsthis"
 msgid ""
@@ -427,30 +427,30 @@ msgid ""
 msgstr "此项能让您删除日历收藏中所有已完成的待办事项，此操作不可撤销！"
 
 #. i18n: ectx: property (text), widget (QPushButton, mDeleteButton)
-#: actionmanager.cpp:367 actionmanager.cpp:622 actionmanager.cpp:1303
-#: actionmanager.cpp:1335 ui/filteredit_base.ui:56
+#: actionmanager.cpp:366 actionmanager.cpp:621 actionmanager.cpp:1302
+#: actionmanager.cpp:1334 ui/filteredit_base.ui:56
 #, kde-format
 msgid "&Delete"
 msgstr "删除(&D)"
 
-#: actionmanager.cpp:384
+#: actionmanager.cpp:383
 #, kde-format
 msgid "What's &Next"
 msgstr "接下来...(&N)"
 
-#: actionmanager.cpp:385
+#: actionmanager.cpp:384
 #, kde-format
 msgctxt "@info:status"
 msgid "What's Next View"
 msgstr "“下一步”视图"
 
-#: actionmanager.cpp:386
+#: actionmanager.cpp:385
 #, kde-format
 msgctxt "@info:tooltip"
 msgid "Switch to the What's Next View"
 msgstr "切换到“下一步”视图"
 
-#: actionmanager.cpp:388
+#: actionmanager.cpp:387
 #, kde-format
 msgctxt "@info:whatsthis"
 msgid ""
@@ -462,24 +462,24 @@ msgstr ""
 "切换到“下一步”视图。它通过一份易于速读的简短列表，展示了临近的日程和待办事"
 "项。 此视图会显示所有进行中的待办事项，以及日期导航内所选日期中的日程。"
 
-#: actionmanager.cpp:396
+#: actionmanager.cpp:395
 #, kde-format
 msgid "&Month"
 msgstr "月视图(&M)"
 
-#: actionmanager.cpp:397
+#: actionmanager.cpp:396
 #, kde-format
 msgctxt "@info:status"
 msgid "Month View"
 msgstr "月视图"
 
-#: actionmanager.cpp:398
+#: actionmanager.cpp:397
 #, kde-format
 msgctxt "@info:tooltip"
 msgid "Switch to the Month View"
 msgstr "切换到月视图"
 
-#: actionmanager.cpp:400
+#: actionmanager.cpp:399
 #, kde-format
 msgctxt "@info:whatsthis"
 msgid ""
@@ -487,24 +487,24 @@ msgid ""
 "familiar monthly calendar layout."
 msgstr "切换到月视图，此视图会以您熟知的月历布局显示所有日程。"
 
-#: actionmanager.cpp:406
+#: actionmanager.cpp:405
 #, kde-format
 msgid "&Agenda"
 msgstr "日程(&A)"
 
-#: actionmanager.cpp:407
+#: actionmanager.cpp:406
 #, kde-format
 msgctxt "@info:status"
 msgid "Agenda View"
 msgstr "日程视图"
 
-#: actionmanager.cpp:408
+#: actionmanager.cpp:407
 #, kde-format
 msgctxt "@info:tooltip"
 msgid "Switch to the Agenda View"
 msgstr "切换到日程表视图"
 
-#: actionmanager.cpp:410
+#: actionmanager.cpp:409
 #, kde-format
 msgctxt "@info:whatsthis"
 msgid ""
@@ -515,24 +515,24 @@ msgstr ""
 "切换到日程表视图，此视图会以时间顺序排列，展示日程及一日或多日内截止的待办事"
 "项。您可在每日时间表中看到每个日程所占的时间长度。"
 
-#: actionmanager.cpp:417
+#: actionmanager.cpp:416
 #, kde-format
 msgid "&Event List"
 msgstr "事件列表(&E)"
 
-#: actionmanager.cpp:418
+#: actionmanager.cpp:417
 #, kde-format
 msgctxt "@info:status"
 msgid "List View"
 msgstr "列表视图"
 
-#: actionmanager.cpp:419
+#: actionmanager.cpp:418
 #, kde-format
 msgctxt "@info:tooltip"
 msgid "Switch to the List View"
 msgstr "切换到列表视图"
 
-#: actionmanager.cpp:421
+#: actionmanager.cpp:420
 #, kde-format
 msgctxt "@info:whatsthis"
 msgid ""
@@ -542,24 +542,24 @@ msgstr ""
 "切换到列表视图，此视图将列出日期导航内所选日期中的所有待办事项、日程和日记"
 "项。"
 
-#: actionmanager.cpp:427
+#: actionmanager.cpp:426
 #, kde-format
 msgid "&To-do List"
 msgstr "待办事项列表(&T)"
 
-#: actionmanager.cpp:428
+#: actionmanager.cpp:427
 #, kde-format
 msgctxt "@info:status"
 msgid "To-do List View"
 msgstr "待办事项列表视图"
 
-#: actionmanager.cpp:429
+#: actionmanager.cpp:428
 #, kde-format
 msgctxt "@info:tooltip"
 msgid "Switch to the To-do List View"
 msgstr "切换到待办事项列表视图"
 
-#: actionmanager.cpp:431
+#: actionmanager.cpp:430
 #, kde-format
 msgctxt "@info:whatsthis"
 msgid ""
@@ -567,24 +567,24 @@ msgid ""
 "tasks that need to be done."
 msgstr "切换到待办事项列表视图，此视图可给您提供一个追踪需完成任务的地方。"
 
-#: actionmanager.cpp:437
+#: actionmanager.cpp:436
 #, kde-format
 msgid "&Journal"
 msgstr "日记(&J)"
 
-#: actionmanager.cpp:438
+#: actionmanager.cpp:437
 #, kde-format
 msgctxt "@info:status"
 msgid "Journal View"
 msgstr "日记视图"
 
-#: actionmanager.cpp:439
+#: actionmanager.cpp:438
 #, kde-format
 msgctxt "@info:tooltip"
 msgid "Switch to the Journal View"
 msgstr "切换到日记视图"
 
-#: actionmanager.cpp:441
+#: actionmanager.cpp:440
 #, kde-format
 msgctxt "@info:whatsthis"
 msgid ""
@@ -593,24 +593,24 @@ msgid ""
 msgstr ""
 "切换到待办事项列表视图，此视图可给您提供一个记录思考、事情和经历的地方。"
 
-#: actionmanager.cpp:447
+#: actionmanager.cpp:446
 #, kde-format
 msgid "Time&line"
 msgstr "时间轴(&L)"
 
-#: actionmanager.cpp:448
+#: actionmanager.cpp:447
 #, kde-format
 msgctxt "@info:status"
 msgid "Timeline View"
 msgstr "时间线视图"
 
-#: actionmanager.cpp:449
+#: actionmanager.cpp:448
 #, kde-format
 msgctxt "@info:tooltip"
 msgid "Switch to the Timeline View"
 msgstr "切换到时间线视图"
 
-#: actionmanager.cpp:451
+#: actionmanager.cpp:450
 #, kde-format
 msgctxt "@info:whatsthis"
 msgid ""
@@ -620,24 +620,24 @@ msgstr ""
 "切换到时间线视图，此视图会以甘特视图显示所选时间段内的全部日程。每个日历占一"
 "行。"
 
-#: actionmanager.cpp:460
+#: actionmanager.cpp:459
 #, kde-format
 msgid "&Refresh"
 msgstr "刷新(&R)"
 
-#: actionmanager.cpp:461
+#: actionmanager.cpp:460
 #, kde-format
 msgctxt "@info:status"
 msgid "Refresh"
 msgstr "刷新"
 
-#: actionmanager.cpp:462
+#: actionmanager.cpp:461
 #, kde-format
 msgctxt "@info:tooltip"
 msgid "Refresh the display"
 msgstr "刷新显示"
 
-#: actionmanager.cpp:464
+#: actionmanager.cpp:463
 #, kde-format
 msgctxt "@info:whatsthis"
 msgid ""
@@ -645,24 +645,24 @@ msgid ""
 "sync or update any calendar folders."
 msgstr "此操作会刷新并重绘当前日历视图，它不会同步或更新日历文件夹。"
 
-#: actionmanager.cpp:473
+#: actionmanager.cpp:472
 #, kde-format
 msgid "F&ilter"
 msgstr "过滤器(&I)"
 
-#: actionmanager.cpp:474
+#: actionmanager.cpp:473
 #, kde-format
 msgctxt "@info:status"
 msgid "Filter incidences"
 msgstr "筛选事件"
 
-#: actionmanager.cpp:475
+#: actionmanager.cpp:474
 #, kde-format
 msgctxt "@info:tooltip"
 msgid "Filter incidences from the calendar"
 msgstr "筛选日历中的事件"
 
-#: actionmanager.cpp:477
+#: actionmanager.cpp:476
 #, kde-format
 msgctxt "@info:whatsthis"
 msgid ""
@@ -672,81 +672,81 @@ msgstr ""
 "筛选用户所选视图中的日历收藏，必须先在“管理视图筛选”设置菜单项中创建筛选条"
 "件。"
 
-#: actionmanager.cpp:489
+#: actionmanager.cpp:488
 #, kde-format
 msgid "In Horizontally"
 msgstr "水平放大"
 
-#: actionmanager.cpp:494
+#: actionmanager.cpp:493
 #, kde-format
 msgid "Out Horizontally"
 msgstr "水平缩小"
 
-#: actionmanager.cpp:499
+#: actionmanager.cpp:498
 #, kde-format
 msgid "In Vertically"
 msgstr "垂直放大"
 
-#: actionmanager.cpp:504
+#: actionmanager.cpp:503
 #, kde-format
 msgid "Out Vertically"
 msgstr "垂直缩小"
 
-#: actionmanager.cpp:513
+#: actionmanager.cpp:512
 #, kde-format
 msgctxt "@action Jump to today"
 msgid "To &Today"
 msgstr "到今天(&T)"
 
 #. i18n: ectx: property (text), widget (QPushButton, mTodayBtn)
-#: actionmanager.cpp:514 views/collectionview/quickview.ui:94
+#: actionmanager.cpp:513 views/collectionview/quickview.ui:94
 #, kde-format
 msgid "Today"
 msgstr "今天"
 
-#: actionmanager.cpp:515
+#: actionmanager.cpp:514
 #, kde-format
 msgctxt "@info:status"
 msgid "Scroll to Today"
 msgstr "转到今天"
 
-#: actionmanager.cpp:516
+#: actionmanager.cpp:515
 #, kde-format
 msgctxt "@info:tooltip"
 msgid "Scroll the view to today"
 msgstr "跳转到今天"
 
-#: actionmanager.cpp:517
+#: actionmanager.cpp:516
 #, kde-format
 msgctxt "@info:whatsthis"
 msgid "Scrolls the current view to the today's date."
 msgstr "将当前视图滚动到今天。"
 
-#: actionmanager.cpp:522
+#: actionmanager.cpp:521
 #, kde-format
 msgctxt "scroll backward"
 msgid "&Backward"
 msgstr "后退(&B)"
 
-#: actionmanager.cpp:523
+#: actionmanager.cpp:522
 #, kde-format
 msgctxt "scroll backward"
 msgid "Back"
 msgstr "后退"
 
-#: actionmanager.cpp:524
+#: actionmanager.cpp:523
 #, kde-format
 msgctxt "@info:status"
 msgid "Scroll Backward"
 msgstr "向后滚动"
 
-#: actionmanager.cpp:525
+#: actionmanager.cpp:524
 #, kde-format
 msgctxt "@info:tooltip"
 msgid "Scroll the view backward"
 msgstr "下一页"
 
-#: actionmanager.cpp:527
+#: actionmanager.cpp:526
 #, kde-format
 msgctxt "@info:whatsthis"
 msgid ""
@@ -754,31 +754,31 @@ msgid ""
 "calendar view."
 msgstr "根据所选日历视图，向后滚动一日、一周、一个月或一年。"
 
-#: actionmanager.cpp:533
+#: actionmanager.cpp:532
 #, kde-format
 msgctxt "scroll forward"
 msgid "&Forward"
 msgstr "前进(&F)"
 
-#: actionmanager.cpp:534
+#: actionmanager.cpp:533
 #, kde-format
 msgctxt "scroll forward"
 msgid "Forward"
 msgstr "前进"
 
-#: actionmanager.cpp:535
+#: actionmanager.cpp:534
 #, kde-format
 msgctxt "@info:status"
 msgid "Scroll Forward"
 msgstr "向前滚动"
 
-#: actionmanager.cpp:536
+#: actionmanager.cpp:535
 #, kde-format
 msgctxt "@info:tooltip"
 msgid "Scroll the view forward"
 msgstr "上一页"
 
-#: actionmanager.cpp:538
+#: actionmanager.cpp:537
 #, kde-format
 msgctxt "@info:whatsthis"
 msgid ""
@@ -786,45 +786,45 @@ msgid ""
 "calendar view."
 msgstr "根据所选日历视图，向前滚动一日、一周、一个月或一年。"
 
-#: actionmanager.cpp:543
+#: actionmanager.cpp:542
 #, kde-format
 msgid "&Day"
 msgstr "日视图(&D)"
 
-#: actionmanager.cpp:552 actionmanager.cpp:1062
+#: actionmanager.cpp:551 actionmanager.cpp:1061
 #, kde-format
 msgid "&Next Day"
 msgid_plural "&Next %1 Days"
 msgstr[0] "后 %1 天(&N)"
 
-#: actionmanager.cpp:554
+#: actionmanager.cpp:553
 #, kde-format
 msgid "W&ork Week"
 msgstr "工作周(&O)"
 
-#: actionmanager.cpp:559
+#: actionmanager.cpp:558
 #, kde-format
 msgid "&Week"
 msgstr "周视图(&W)"
 
-#: actionmanager.cpp:566 kodaymatrix.cpp:481
+#: actionmanager.cpp:565 kodaymatrix.cpp:481
 #, kde-format
 msgid "New E&vent..."
 msgstr "新建事件(&V)..."
 
-#: actionmanager.cpp:567
+#: actionmanager.cpp:566
 #, kde-format
 msgctxt "@info:status"
 msgid "Create a new Event"
 msgstr "新建事件"
 
-#: actionmanager.cpp:568
+#: actionmanager.cpp:567
 #, kde-format
 msgctxt "@info:tooltip"
 msgid "Create a new Event"
 msgstr "新建事件"
 
-#: actionmanager.cpp:570
+#: actionmanager.cpp:569
 #, kde-format
 msgctxt "@info:whatsthis"
 msgid ""
@@ -832,24 +832,24 @@ msgid ""
 "attendees, recurrences and much more."
 msgstr "打开对话框，并可让您创建一个带提醒、参与者、重复及更多选项的新日程。"
 
-#: actionmanager.cpp:576 kodaymatrix.cpp:482
+#: actionmanager.cpp:575 kodaymatrix.cpp:482
 #, kde-format
 msgid "New &To-do..."
 msgstr "新建待办事项(&T)..."
 
-#: actionmanager.cpp:577
+#: actionmanager.cpp:576
 #, kde-format
 msgctxt "@info:status"
 msgid "Create a new To-do"
 msgstr "新建待办事项"
 
-#: actionmanager.cpp:578
+#: actionmanager.cpp:577
 #, kde-format
 msgctxt "@info:tooltip"
 msgid "Create a new To-do"
 msgstr "新建待办事项"
 
-#: actionmanager.cpp:580
+#: actionmanager.cpp:579
 #, kde-format
 msgctxt "@info:whatsthis"
 msgid ""
@@ -858,57 +858,57 @@ msgid ""
 msgstr ""
 "打开对话框，并可让您创建一个带提醒、参与者、重复及更多选项的新待办事项。"
 
-#: actionmanager.cpp:587
+#: actionmanager.cpp:586
 #, kde-format
 msgid "New Su&b-to-do..."
 msgstr "新建子待办事项(&B)..."
 
-#: actionmanager.cpp:595 kodaymatrix.cpp:483
+#: actionmanager.cpp:594 kodaymatrix.cpp:483
 #, kde-format
 msgid "New &Journal..."
 msgstr "新建日记(&J)..."
 
-#: actionmanager.cpp:596
+#: actionmanager.cpp:595
 #, kde-format
 msgctxt "@info:status"
+msgid "Create a new Journal"
+msgstr "新建日记"
+
+#: actionmanager.cpp:596
+#, kde-format
+msgctxt "@info:tooltip"
 msgid "Create a new Journal"
 msgstr "新建日记"
 
 #: actionmanager.cpp:597
 #, kde-format
-msgctxt "@info:tooltip"
-msgid "Create a new Journal"
-msgstr "新建日记"
-
-#: actionmanager.cpp:598
-#, kde-format
 msgctxt "@info:whatsthis"
 msgid "Starts a dialog that allows you to create a new Journal entry."
 msgstr "打开对话框，并可让您创建一个新的日记项。"
 
-#: actionmanager.cpp:603
+#: actionmanager.cpp:602
 #, kde-format
 msgid "Configure View..."
 msgstr "配置视图..."
 
-#: actionmanager.cpp:604
+#: actionmanager.cpp:603
 #, kde-format
 msgid "Configure"
 msgstr "配置"
 
-#: actionmanager.cpp:605
+#: actionmanager.cpp:604
 #, kde-format
 msgctxt "@info:status"
 msgid "Configure the view"
 msgstr "配置视图"
 
-#: actionmanager.cpp:606
+#: actionmanager.cpp:605
 #, kde-format
 msgctxt "@info:tooltip"
 msgid "Configure the current view"
 msgstr "配置当前视图"
 
-#: actionmanager.cpp:608
+#: actionmanager.cpp:607
 #, kde-format
 msgctxt "@info:whatsthis"
 msgid ""
@@ -916,17 +916,17 @@ msgid ""
 "current calendar view."
 msgstr "打开配置对话框，并可让您更改当前日历视图的设置。"
 
-#: actionmanager.cpp:614 actionmanager.cpp:1297 actionmanager.cpp:1333
+#: actionmanager.cpp:613 actionmanager.cpp:1296 actionmanager.cpp:1332
 #, kde-format
 msgid "&Show"
 msgstr "显示(&S)"
 
-#: actionmanager.cpp:618 actionmanager.cpp:1300 actionmanager.cpp:1334
+#: actionmanager.cpp:617 actionmanager.cpp:1299 actionmanager.cpp:1333
 #, kde-format
 msgid "&Edit..."
 msgstr "编辑(&E)..."
 
-#: actionmanager.cpp:627
+#: actionmanager.cpp:626
 #, kde-format
 msgid "&Make Sub-to-do Independent"
 msgstr "将子待办事项独立(&M)"
@@ -935,246 +935,246 @@ msgstr "将子待办事项独立(&M)"
 #. mCalendarView, SLOT(toggleAlarm()),
 #. mACollection, "activate_alarm" );
 #. ************************* SCHEDULE MENU *******************************
-#: actionmanager.cpp:639
+#: actionmanager.cpp:638
 #, kde-format
 msgid "&Publish Item Information..."
 msgstr "发布项目信息(&P)..."
 
-#: actionmanager.cpp:646
+#: actionmanager.cpp:645
 #, kde-format
 msgid "Send &Invitation to Attendees"
 msgstr "给参与者发送邀请(&I)"
 
-#: actionmanager.cpp:654
+#: actionmanager.cpp:653
 #, kde-format
 msgid "Re&quest Update"
 msgstr "请求更新(&Q)"
 
-#: actionmanager.cpp:662
+#: actionmanager.cpp:661
 #, kde-format
 msgid "Send &Cancellation to Attendees"
 msgstr "给参与者发送取消通知(&C)"
 
-#: actionmanager.cpp:670
+#: actionmanager.cpp:669
 #, kde-format
 msgid "Send Status &Update"
 msgstr "发送状态更新(&U)"
 
-#: actionmanager.cpp:678
+#: actionmanager.cpp:677
 #, kde-format
 msgctxt "counter proposal"
 msgid "Request Chan&ge"
 msgstr "请求更新(&G)"
 
-#: actionmanager.cpp:686
+#: actionmanager.cpp:685
 #, kde-format
 msgid "&Mail Free Busy Information..."
 msgstr "用邮件发送空闲/忙碌信息(&M)..."
 
-#: actionmanager.cpp:691
+#: actionmanager.cpp:690
 #, kde-format
 msgid "&Send as iCalendar..."
 msgstr "以 iCalendar 发送(&S)..."
 
-#: actionmanager.cpp:698
+#: actionmanager.cpp:697
 #, kde-format
 msgid "&Upload Free Busy Information"
 msgstr "上传空闲/忙碌信息(&U)"
 
-#: actionmanager.cpp:704
+#: actionmanager.cpp:703
 #, kde-format
 msgid "&Address Book"
 msgstr "地址簿(&A)"
 
-#: actionmanager.cpp:712
+#: actionmanager.cpp:711
 #, kde-format
 msgid "Show Date Navigator"
 msgstr "显示日期导航器"
 
-#: actionmanager.cpp:716
+#: actionmanager.cpp:715
 #, kde-format
 msgid "Show To-do View"
 msgstr "显示待办视图"
 
-#: actionmanager.cpp:720
+#: actionmanager.cpp:719
 #, kde-format
 msgid "Show Item Viewer"
 msgstr "显示项目查看器"
 
-#: actionmanager.cpp:736
+#: actionmanager.cpp:735
 #, kde-format
 msgid "Show Calendar Manager"
 msgstr "显示日历管理器"
 
-#: actionmanager.cpp:749
+#: actionmanager.cpp:748
 #, kde-format
 msgid "Configure &Date && Time..."
 msgstr "配置日期和时间(&D)..."
 
-#: actionmanager.cpp:753
+#: actionmanager.cpp:752
 #, kde-format
 msgid "Manage View &Filters..."
 msgstr "管理视图过滤器(&F)..."
 
-#: actionmanager.cpp:757
+#: actionmanager.cpp:756
 #, kde-format
 msgid "Manage T&ags..."
 msgstr "管理标签(&T)..."
 
-#: actionmanager.cpp:765
+#: actionmanager.cpp:764
 #, kde-format
 msgid "&Configure KOrganizer..."
 msgstr "配置 KOrganizer(&C)..."
 
-#: actionmanager.cpp:842
+#: actionmanager.cpp:841
 #, kde-format
 msgid "1 incidence was imported successfully."
 msgid_plural "%1 incidences were imported successfully."
 msgstr[0] "成功导入 %1 个事件。"
 
-#: actionmanager.cpp:845
+#: actionmanager.cpp:844
 #, kde-format
 msgid "There was an error while merging the calendar: %1"
 msgstr "合并日历时发生错误: %1"
 
-#: actionmanager.cpp:856
+#: actionmanager.cpp:855
 #, kde-format
 msgid "New calendar added successfully"
 msgstr "新日历添加成功"
 
-#: actionmanager.cpp:858
+#: actionmanager.cpp:857
 #, kde-format
 msgid "Could not add a calendar. Error: %1"
 msgstr "无法添加日历。错误：“%1”"
 
-#: actionmanager.cpp:915
+#: actionmanager.cpp:914
 #, kde-format
 msgctxt "@title:window"
 msgid "Select Calendar File to Open"
 msgstr "选择要打开的日历文件"
 
-#: actionmanager.cpp:943
+#: actionmanager.cpp:942
 #, kde-format
 msgctxt "@title:window"
 msgid "Select Calendar File to Import"
 msgstr "选择要导入的日历文件"
 
-#: actionmanager.cpp:974
+#: actionmanager.cpp:973
 #, kde-format
 msgid "An error occurred: %1"
 msgstr "出错：%1"
 
-#: actionmanager.cpp:992
+#: actionmanager.cpp:991
 #, kde-format
 msgid "Cannot upload calendar to '%1'"
 msgstr "不能上传日历到“%1”"
 
-#: actionmanager.cpp:998
+#: actionmanager.cpp:997
 #, kde-format
 msgid "Saved calendar '%1'."
 msgstr "已保存日历“%1”。"
 
-#: actionmanager.cpp:1036
+#: actionmanager.cpp:1035
 #, kde-format
 msgid "Unable to save calendar to the file %1."
 msgstr "无法将日历保存到文件 %1。"
 
-#: actionmanager.cpp:1036
+#: actionmanager.cpp:1035
 #, kde-format
 msgid "Error"
 msgstr "错误"
 
-#: actionmanager.cpp:1079
+#: actionmanager.cpp:1078
 #, kde-format
 msgid "Could not start control module for date and time format."
 msgstr "无法启动日期和时间格式控制模块。"
 
-#: actionmanager.cpp:1258
+#: actionmanager.cpp:1257
 #, kde-format
 msgid "&Show Event"
 msgstr "显示事件(&S)"
 
-#: actionmanager.cpp:1261
+#: actionmanager.cpp:1260
 #, kde-format
 msgid "&Edit Event..."
 msgstr "编辑事件(&E)..."
 
-#: actionmanager.cpp:1264
+#: actionmanager.cpp:1263
 #, kde-format
 msgid "&Delete Event"
 msgstr "删除事件(&D)"
 
-#: actionmanager.cpp:1272
+#: actionmanager.cpp:1271
 #, kde-format
 msgid "&Show To-do"
 msgstr "显示待办事项(&S)"
 
-#: actionmanager.cpp:1275 kontactplugin/korganizer/todosummarywidget.cpp:321
+#: actionmanager.cpp:1274 kontactplugin/korganizer/todosummarywidget.cpp:321
 #, kde-format
 msgid "&Edit To-do..."
 msgstr "编辑待办事项(&E)..."
 
-#: actionmanager.cpp:1278 kontactplugin/korganizer/todosummarywidget.cpp:323
+#: actionmanager.cpp:1277 kontactplugin/korganizer/todosummarywidget.cpp:323
 #, kde-format
 msgid "&Delete To-do"
 msgstr "删除待办事项(&D)"
 
-#: actionmanager.cpp:1411 actionmanager.cpp:1517
+#: actionmanager.cpp:1410 actionmanager.cpp:1516
 #, kde-format
 msgid "Attach as &link"
 msgstr "链接附件(&L)"
 
-#: actionmanager.cpp:1412 actionmanager.cpp:1518
+#: actionmanager.cpp:1411 actionmanager.cpp:1517
 #, kde-format
 msgid "Attach &inline"
 msgstr "内嵌附件(&I)"
 
-#: actionmanager.cpp:1413
+#: actionmanager.cpp:1412
 #, kde-format
 msgid "Attach inline &without attachments"
 msgstr "内嵌数据而不是作为附件(&W)"
 
-#: actionmanager.cpp:1415 actionmanager.cpp:1520
+#: actionmanager.cpp:1414 actionmanager.cpp:1519
 #, kde-format
 msgid "C&ancel"
 msgstr "取消(&A)"
 
-#: actionmanager.cpp:1453
+#: actionmanager.cpp:1452
 #, kde-format
 msgid "Removing attachments from an email might invalidate its signature."
 msgstr "删除邮件中的附件可能会使签名失效。"
 
-#: actionmanager.cpp:1454
+#: actionmanager.cpp:1453
 #, kde-format
 msgid "Remove Attachments"
 msgstr "删除附件"
 
-#: actionmanager.cpp:1605
+#: actionmanager.cpp:1604
 #, kde-format
 msgid "Undo: %1"
 msgstr "撤销：%1"
 
-#: actionmanager.cpp:1608 actionmanager.cpp:1624
+#: actionmanager.cpp:1607 actionmanager.cpp:1623
 #, kde-format
 msgid "Undo"
 msgstr "撤销"
 
-#: actionmanager.cpp:1618
+#: actionmanager.cpp:1617
 #, kde-format
 msgid "Redo: %1"
 msgstr "重做：%1"
 
-#: actionmanager.cpp:1621
+#: actionmanager.cpp:1620
 #, kde-format
 msgid "Redo"
 msgstr "重做"
 
-#: actionmanager.cpp:1635
+#: actionmanager.cpp:1634
 #, kde-format
 msgid "URL '%1' is invalid."
 msgstr "URL“%1”无效。"
 
-#: actionmanager.cpp:1640
+#: actionmanager.cpp:1639
 #, kde-format
 msgctxt "@info"
 msgid ""
@@ -1188,18 +1188,18 @@ msgstr ""
 "了合并，您将有机会选择用于合并的日历。</p><p>如果您选择了新建，则将自动为您新"
 "建一个日历。</p>"
 
-#: actionmanager.cpp:1652
+#: actionmanager.cpp:1647
 #, kde-format
 msgctxt "@title:window"
 msgid "Import Calendar"
 msgstr "导入日历"
 
-#: actionmanager.cpp:1653
+#: actionmanager.cpp:1648
 #, kde-format
 msgid "Merge into existing calendar"
 msgstr "合并入已有日历"
 
-#: actionmanager.cpp:1654
+#: actionmanager.cpp:1649
 #, kde-format
 msgid "Add as new calendar"
 msgstr "添加为新日历"
@@ -1288,7 +1288,7 @@ msgctxt "@title:window"
 msgid "Delete Calendar"
 msgstr "删除日历"
 
-#: calendarview.cpp:243
+#: calendarview.cpp:237
 #, kde-format
 msgid ""
 "<p><em>No Item Selected</em></p><p>Select an event, to-do or journal entry "
@@ -1297,24 +1297,24 @@ msgstr ""
 "<p><em>没有选中的条目</em></p><p>请在此选择一个事件、待办事项或日记项查看其细"
 "节。</p>"
 
-#: calendarview.cpp:249
+#: calendarview.cpp:243
 #, kde-format
 msgid ""
 "View the details of events, journal entries or to-dos selected in "
 "KOrganizer's main view here."
 msgstr "查看在 KOrganizer 主视图上选中的事件、待办事项或日记的细节。"
 
-#: calendarview.cpp:604
+#: calendarview.cpp:598
 #, kde-format
 msgid "Todo completed: %1 (%2)"
 msgstr "已完成的待办：%1 (%2)"
 
-#: calendarview.cpp:613
+#: calendarview.cpp:607
 #, kde-format
 msgid "Journal of %1"
 msgstr "%1 的日记"
 
-#: calendarview.cpp:662
+#: calendarview.cpp:656
 #, kde-format
 msgid ""
 "The item \"%1\" is filtered by your current filter rules, so it will be "
@@ -1323,63 +1323,63 @@ msgstr ""
 "项目“%1”已经被您当前的过滤器规则所过滤，所以该项目将被隐藏，不会出现在视图"
 "中。"
 
-#: calendarview.cpp:731
+#: calendarview.cpp:725
 #, kde-format
 msgctxt "@info"
 msgid "Do you really want to permanently remove the item \"%1\"?"
 msgstr "您真的想要永久删除项目“%1”吗？"
 
-#: calendarview.cpp:732
+#: calendarview.cpp:726
 #, kde-format
 msgctxt "@title:window"
 msgid "Delete Item?"
 msgstr "删除项目吗？"
 
-#: calendarview.cpp:808
+#: calendarview.cpp:802
 #, kde-format
 msgid "Paste failed: unable to determine a valid target date."
 msgstr "粘贴失败：无法确定有效的目标日期。"
 
-#: calendarview.cpp:1244
+#: calendarview.cpp:1238
 #, kde-format
 msgid "Make sub-to-dos independent"
 msgstr "将子待办事项独立"
 
-#: calendarview.cpp:1301
+#: calendarview.cpp:1295
 #, kde-format
 msgid "Toggle Reminder"
 msgstr "切换提醒"
 
-#: calendarview.cpp:1333 calendarview.cpp:1385
+#: calendarview.cpp:1327 calendarview.cpp:1379
 #, kde-format
 msgid "Toggle To-do Completed"
 msgstr "切换待办事项完成度"
 
-#: calendarview.cpp:1437
+#: calendarview.cpp:1431
 #, kde-format
 msgctxt "@info"
 msgid "\"%1\" was successfully copied to %2."
 msgstr "“%1”已被成功复制到 %2。"
 
-#: calendarview.cpp:1438
+#: calendarview.cpp:1432
 #, kde-format
 msgctxt "@title:window"
 msgid "Copying Succeeded"
 msgstr "复制成功"
 
-#: calendarview.cpp:1442
+#: calendarview.cpp:1436
 #, kde-format
 msgctxt "@info"
 msgid "Unable to copy the item \"%1\" to %2."
 msgstr "无法将项目“%1”复制到 %2。"
 
-#: calendarview.cpp:1443
+#: calendarview.cpp:1437
 #, kde-format
 msgctxt "@title:window"
 msgid "Copying Failed"
 msgstr "复制失败"
 
-#: calendarview.cpp:1502
+#: calendarview.cpp:1496
 #, kde-format
 msgctxt "@info"
 msgid ""
@@ -1387,122 +1387,122 @@ msgid ""
 "of this item has been put into %2"
 msgstr ""
 
-#: calendarview.cpp:1506 calendarview.cpp:1522
+#: calendarview.cpp:1500 calendarview.cpp:1516
 #, kde-format
 msgctxt "@title:window"
 msgid "Moving Failed"
 msgstr "移动失败"
 
-#: calendarview.cpp:1511
+#: calendarview.cpp:1505
 #, kde-format
 msgctxt "@info"
 msgid "\"%1\" was successfully moved from %2 to %3."
 msgstr "已成功将“%1”从 %2 移动到 %3。"
 
-#: calendarview.cpp:1512
+#: calendarview.cpp:1506
 #, kde-format
 msgctxt "@title:window"
 msgid "Moving Succeeded"
 msgstr "移动成功"
 
-#: calendarview.cpp:1518
+#: calendarview.cpp:1512
 #, kde-format
 msgctxt "@info"
 msgid "Unable to add the item \"%1\" into %2. This item has not been moved."
 msgstr "无法将项目“%1”添加到 %2，将不会移动它。"
 
-#: calendarview.cpp:1560
+#: calendarview.cpp:1550
 #, kde-format
 msgid "Do you want to dissociate the occurrence on %1 from the recurrence?"
 msgstr "您想要将发生于 %1 的事件从重现中拆分出来吗？"
 
-#: calendarview.cpp:1564 calendarview.cpp:1584 calendarview.cpp:2251
-#: calendarview.cpp:2315 calendarview.cpp:2345
+#: calendarview.cpp:1554 calendarview.cpp:1566 calendarview.cpp:2221
+#: calendarview.cpp:2281 calendarview.cpp:2311
 #, kde-format
 msgid "KOrganizer Confirmation"
 msgstr "KOrganizer 确认"
 
-#: calendarview.cpp:1565
+#: calendarview.cpp:1555
 #, kde-format
 msgid "&Dissociate"
 msgstr "拆分(&D)"
 
-#: calendarview.cpp:1579
+#: calendarview.cpp:1561
 #, kde-format
 msgid ""
 "Do you want to dissociate the occurrence on %1 from the recurrence or also "
 "dissociate future ones?"
 msgstr "您想要将发生于 %1 的事件从重现中拆分出来还是拆分未来的事件？"
 
-#: calendarview.cpp:1585
+#: calendarview.cpp:1567
 #, kde-format
 msgid "&Only Dissociate This One"
 msgstr "只拆分本次事件(&O)"
 
-#: calendarview.cpp:1586
+#: calendarview.cpp:1568
 #, kde-format
 msgid "&Also Dissociate Future Ones"
 msgstr "拆分未来的事件(&A)"
 
-#: calendarview.cpp:1612
+#: calendarview.cpp:1586
 #, kde-format
 msgid "Dissociate future occurrences"
 msgstr "拆分未来的事件"
 
-#: calendarview.cpp:1614
+#: calendarview.cpp:1588
 #, kde-format
 msgid "Dissociate occurrence"
 msgstr "拆分事件"
 
-#: calendarview.cpp:1621
+#: calendarview.cpp:1595
 #, kde-format
 msgid "Dissociating the future occurrences failed."
 msgstr "拆分未来的事件失败。"
 
-#: calendarview.cpp:1621 calendarview.cpp:1623
+#: calendarview.cpp:1595 calendarview.cpp:1597
 #, kde-format
 msgid "Dissociating Failed"
 msgstr "拆分失败"
 
-#: calendarview.cpp:1623
+#: calendarview.cpp:1597
 #, kde-format
 msgid "Dissociating the occurrence failed."
 msgstr "拆分事件失败。"
 
-#: calendarview.cpp:1785
+#: calendarview.cpp:1759
 #, kde-format
 msgid "iCalendars (*.ics)"
 msgstr "iCalendars (*.ics)"
 
-#: calendarview.cpp:1794
+#: calendarview.cpp:1768
 #, kde-format
 msgid "Do you want to overwrite %1?"
 msgstr "您想要覆盖 %1 吗？"
 
-#: calendarview.cpp:1795
+#: calendarview.cpp:1769
 #, kde-format
 msgctxt "@title:window"
 msgid "Export Calendar"
 msgstr "导出日历"
 
-#: calendarview.cpp:1809
+#: calendarview.cpp:1783
 #, kde-format
 msgctxt "save failure cause unknown"
 msgid "Reason unknown"
 msgstr "原因未知"
 
-#: calendarview.cpp:1811
+#: calendarview.cpp:1785
 #, kde-format
 msgctxt "@info"
 msgid "Cannot write iCalendar file %1. %2"
 msgstr "无法写入 iCalendar 文件 %1。%2"
 
-#: calendarview.cpp:1907 calendarview.cpp:1946
+#: calendarview.cpp:1881 calendarview.cpp:1920
 #, kde-format
 msgid "No filter"
 msgstr "无过滤器"
 
-#: calendarview.cpp:2246
+#: calendarview.cpp:2216
 #, kde-format
 msgid ""
 "The item \"%1\" has sub-to-dos. Do you want to delete just this item and "
@@ -1512,41 +1512,41 @@ msgstr ""
 "项目“%1”有子待办事项。您是想要只删除此项目并将其全部子待办独立，还是删除此项"
 "目及其全部子待办事项？"
 
-#: calendarview.cpp:2252
+#: calendarview.cpp:2222
 #, kde-format
 msgid "Delete Only This"
 msgstr "仅删除此项"
 
-#: calendarview.cpp:2253 calendarview.cpp:2316
+#: calendarview.cpp:2223 calendarview.cpp:2282
 #, kde-format
 msgid "Delete All"
 msgstr "全部删除"
 
-#: calendarview.cpp:2289
+#: calendarview.cpp:2255
 #, kde-format
 msgid ""
 "The item \"%1\" is marked read-only and cannot be deleted; it probably "
 "belongs to a read-only calendar."
 msgstr "项目“%1”被标记为只读，故无法删除，它可能属于一个只读的日历。"
 
-#: calendarview.cpp:2293
+#: calendarview.cpp:2259
 #, kde-format
 msgid "Removing not possible"
 msgstr "无法删除"
 
-#: calendarview.cpp:2311
+#: calendarview.cpp:2277
 #, kde-format
 msgid ""
 "The calendar item \"%1\" recurs over multiple dates; are you sure you want "
 "to delete it and all its recurrences?"
 msgstr "日历项“%1”会在好几个日期重复出现，您确实要删除它及其所有重现吗？"
 
-#: calendarview.cpp:2323
+#: calendarview.cpp:2289
 #, kde-format
 msgid "Also Delete &Future"
 msgstr "删除未来的重现(&F)"
 
-#: calendarview.cpp:2327
+#: calendarview.cpp:2293
 #, kde-format
 msgid ""
 "The calendar item \"%1\" recurs over multiple dates. Do you want to delete "
@@ -1555,7 +1555,7 @@ msgstr ""
 "日历项“%1”会在好几个日期重复出现。您想要只删除当前 %2 的重现、所有未来的重"
 "现，还是所有的重现？"
 
-#: calendarview.cpp:2334
+#: calendarview.cpp:2300
 #, kde-format
 msgid ""
 "The calendar item \"%1\" recurs over multiple dates. Do you want to delete "
@@ -1563,97 +1563,97 @@ msgid ""
 msgstr ""
 "日历项“%1”会在好几个日期重复出现。您想要只删除当前 %2 的重现还是所有的重现？"
 
-#: calendarview.cpp:2346
+#: calendarview.cpp:2312
 #, kde-format
 msgid "Delete C&urrent"
 msgstr "删除当前(&U)"
 
-#: calendarview.cpp:2348
+#: calendarview.cpp:2314
 #, kde-format
 msgid "Delete &All"
 msgstr "全部删除(&A)"
 
-#: calendarview.cpp:2379 calendarview.cpp:2386
+#: calendarview.cpp:2345 calendarview.cpp:2352
 #, kde-format
 msgid "Delete \"%1\""
 msgstr "删除“%1”"
 
-#: calendarview.cpp:2414
+#: calendarview.cpp:2380
 #, kde-format
 msgid ""
 "All calendars are unchecked in the Calendar Manager. No to-do was purged."
 msgstr "所有日历都未在日历管理器中选中。没有删除的待办事项。"
 
-#: calendarview.cpp:2419 calendarview.cpp:2668
+#: calendarview.cpp:2385 calendarview.cpp:2634
 #, kde-format
 msgid "There are no completed to-dos to purge."
 msgstr "没有可以删除的已完成的待办事项。"
 
-#: calendarview.cpp:2424
+#: calendarview.cpp:2390
 #, kde-format
 msgid "Delete all completed to-dos from checked calendars?"
 msgstr "从选中日历中删除所有已完成的待办事项吗？"
 
-#: calendarview.cpp:2425
+#: calendarview.cpp:2391
 #, kde-format
 msgid "Purge To-dos"
 msgstr "删除待办事项"
 
-#: calendarview.cpp:2426
+#: calendarview.cpp:2392
 #, kde-format
 msgid "Purge"
 msgstr "删除"
 
-#: calendarview.cpp:2437
+#: calendarview.cpp:2403
 #, kde-format
 msgctxt "@info"
 msgid "Unable to edit \"%1\" because it is locked by another process."
 msgstr "无法编辑“%1”，因其被其他进程锁定。"
 
-#: calendarview.cpp:2449
+#: calendarview.cpp:2415
 #, kde-format
 msgid "Unable to copy the item to %1."
 msgstr "无法将项目复制到 %1。"
 
-#: calendarview.cpp:2449
+#: calendarview.cpp:2415
 #, kde-format
 msgid "Copying Failed"
 msgstr "复制失败"
 
-#: calendarview.cpp:2484
+#: calendarview.cpp:2450
 #, kde-format
 msgid "Unable to move the item to  %1."
 msgstr "无法将项目移至 %1。"
 
-#: calendarview.cpp:2484
+#: calendarview.cpp:2450
 #, kde-format
 msgid "Moving Failed"
 msgstr "移动失败"
 
-#: calendarview.cpp:2661
+#: calendarview.cpp:2627
 #, kde-format
 msgid "0 completed to-dos were purged."
 msgstr "0 个已完成的待办事项已删除。"
 
-#: calendarview.cpp:2662 calendarview.cpp:2672
+#: calendarview.cpp:2628 calendarview.cpp:2638
 #, kde-format
 msgid "%1 to-do was ignored because it has uncompleted or read-only children."
 msgid_plural ""
 "%1 to-dos were ignored because they have uncompleted or read-only children."
 msgstr[0] "%1 个待办事项已忽略因为他们有唔完整的或者只读的子项目。"
 
-#: calendarview.cpp:2666 calendarview.cpp:2671
+#: calendarview.cpp:2632 calendarview.cpp:2637
 #, kde-format
 msgid "%1 completed to-do was purged."
 msgid_plural "%1 completed to-dos were purged."
 msgstr[0] "%1 个已完成的待办事项已删除。"
 
-#: calendarview.cpp:2677
+#: calendarview.cpp:2643
 #, kde-format
 msgid "An error occurred while purging completed to-dos: %1"
 msgstr "删除已完成的待办事项出错：%1"
 
-#: calendarview.cpp:2731
+#: calendarview.cpp:2697
 #, kde-format
 msgid ""
 "You created an incidence in a calendar that is currently filtered out.\n"
@@ -1662,7 +1662,7 @@ msgstr ""
 "您在日历中创建的事件当前被过滤了。\n"
 "在左侧侧边栏，在日历管理器中启用它来查看事件。"
 
-#: calendarview.cpp:2735
+#: calendarview.cpp:2701
 #, kde-format
 msgid ""
 "You created an incidence in a calendar that is currently filtered out.\n"
