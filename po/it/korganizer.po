@@ -16,7 +16,7 @@ msgstr ""
 "Project-Id-Version: korganizer\n"
 "Report-Msgid-Bugs-To: https://bugs.kde.org\n"
 "POT-Creation-Date: 2022-10-30 00:47+0000\n"
-"PO-Revision-Date: 2022-05-01 14:24+0200\n"
+"PO-Revision-Date: 2022-11-13 00:11+0100\n"
 "Last-Translator: Luigi Toscano <luigi.toscano@tiscali.it>\n"
 "Language-Team: Italian <kde-i18n-it@kde.org>\n"
 "Language: it\n"
@@ -24,7 +24,7 @@ msgstr ""
 "Content-Type: text/plain; charset=UTF-8\n"
 "Content-Transfer-Encoding: 8bit\n"
 "Plural-Forms: nplurals=2; plural=(n != 1);\n"
-"X-Generator: Lokalize 21.12.3\n"
+"X-Generator: Lokalize 23.03.70\n"
 
 #, kde-format
 msgctxt "NAME OF TRANSLATORS"
@@ -1434,18 +1434,14 @@ msgid "Copying Failed"
 msgstr "Copia non riuscita"
 
 #: calendarview.cpp:1502
-#, fuzzy, kde-format
-#| msgctxt "@info"
-#| msgid ""
-#| "Unable to remove the item \"%1\" from %2. However, a copy of this item "
-#| "has been put into %3."
+#, kde-format
 msgctxt "@info"
 msgid ""
 "Unable to remove the item \"%1\" from the original calendar. However, a copy "
 "of this item has been put into %2"
 msgstr ""
-"Impossibile rimuovere la voce «%1» da %2. Tuttavia, una sua copia è stata "
-"inserita in %3."
+"Impossibile rimuovere la voce «%1» dal calendario originale. Tuttavia, una "
+"sua copia è stata inserita in %2"
 
 #: calendarview.cpp:1506 calendarview.cpp:1522
 #, kde-format
