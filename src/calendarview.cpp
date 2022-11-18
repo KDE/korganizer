@@ -1374,7 +1374,7 @@ void CalendarView::toggleOccurrenceCompleted(const Akonadi::Item &todoItem, cons
         return;
     }
 
-    KCalendarCore::Todo::Ptr oldtodo {todo->clone()};
+    KCalendarCore::Todo::Ptr oldtodo{todo->clone()};
     toggleCompleted(todo, occurrenceDate);
     mChanger->startAtomicOperation(i18n("Toggle To-do Completed"));
     (void)mChanger->modifyIncidence(todoItem, oldtodo, this);
