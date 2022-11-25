@@ -20,7 +20,7 @@ msgstr ""
 "Project-Id-Version: kdepim-kde4\n"
 "Report-Msgid-Bugs-To: https://bugs.kde.org\n"
 "POT-Creation-Date: 2022-11-16 00:48+0000\n"
-"PO-Revision-Date: 2022-11-22 16:47+0300\n"
+"PO-Revision-Date: 2022-11-24 17:10+0300\n"
 "Last-Translator: Emir SARI <emir_sari@icloud.com>\n"
 "Language-Team: Turkish <kde-l10n-tr@kde.org>\n"
 "Language: tr\n"
@@ -2240,7 +2240,7 @@ msgstr "&Taşı"
 #: kodaymatrix.cpp:638
 #, kde-format
 msgid "&Copy"
-msgstr "K&opyala"
+msgstr "Ko&pyala"
 
 #: kodaymatrix.cpp:641
 #, kde-format
@@ -2292,7 +2292,7 @@ msgstr "&Kes"
 #, kde-format
 msgctxt "@action:inmenu copy this incidence"
 msgid "&Copy"
-msgstr "K&opyala"
+msgstr "Ko&pyala"
 
 #: koeventpopupmenu.cpp:79
 #, kde-format
