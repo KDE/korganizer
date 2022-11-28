@@ -11,7 +11,7 @@ msgstr ""
 "Project-Id-Version: korganizer\n"
 "Report-Msgid-Bugs-To: https://bugs.kde.org\n"
 "POT-Creation-Date: 2022-10-30 00:47+0000\n"
-"PO-Revision-Date: 2022-04-30 11:37+0200\n"
+"PO-Revision-Date: 2022-11-27 11:37+0100\n"
 "Last-Translator: Stefan Asserhäll <stefan.asserhall@bredband.net>\n"
 "Language-Team: Swedish <kde-i18n-doc@kde.org>\n"
 "Language: sv\n"
@@ -1415,18 +1415,14 @@ msgid "Copying Failed"
 msgstr "Kopiering misslyckades"
 
 #: calendarview.cpp:1502
-#, fuzzy, kde-format
-#| msgctxt "@info"
-#| msgid ""
-#| "Unable to remove the item \"%1\" from %2. However, a copy of this item "
-#| "has been put into %3."
+#, kde-format
 msgctxt "@info"
 msgid ""
 "Unable to remove the item \"%1\" from the original calendar. However, a copy "
 "of this item has been put into %2"
 msgstr ""
-"Kunde inte ta bort objektet \"%1\" från %2. En kopia av objektet har dock "
-"placerats i %3."
+"Kunde inte ta bort objektet \"%1\" från originalkalendern. En kopia av "
+"objektet har dock placerats i %2."
 
 #: calendarview.cpp:1506 calendarview.cpp:1522
 #, kde-format
