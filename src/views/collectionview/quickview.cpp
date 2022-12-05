@@ -21,10 +21,17 @@
 #include <KConfigGroup>
 #include <KSharedConfig>
 
+#include <KWindowConfig>
 #include <QDialogButtonBox>
 #include <QPushButton>
 #include <QSplitter>
 #include <QVBoxLayout>
+#include <QWindow>
+
+namespace
+{
+static const char myQuickviewConfigGroupName[] = "Quickview";
+}
 
 Quickview::Quickview(const Akonadi::Collection &col)
     : QDialog()
@@ -111,12 +118,11 @@ void Quickview::onTodayClicked()
 
 void Quickview::readConfig()
 {
-    KConfigGroup group = KSharedConfig::openConfig()->group(QStringLiteral("Quickview"));
-
-    const QSize size = group.readEntry("Size", QSize(775, 600));
-    if (size.isValid()) {
-        resize(size);
-    }
+    create(); // ensure a window is created
+    windowHandle()->resize(QSize(775, 600));
+    KConfigGroup group(KSharedConfig::openStateConfig(), myQuickviewConfigGroupName);
+    KWindowConfig::restoreWindowSize(windowHandle(), group);
+    resize(windowHandle()->size()); // workaround for QTBUG-40584
 
     const QList<int> sizes = group.readEntry("Separator", QList<int>());
 
@@ -128,10 +134,8 @@ void Quickview::readConfig()
 
 void Quickview::writeConfig()
 {
-    KConfigGroup group = KSharedConfig::openConfig()->group(QStringLiteral("Quickview"));
-
-    group.writeEntry("Size", size());
-
+    KConfigGroup group(KSharedConfig::openStateConfig(), myQuickviewConfigGroupName);
+    KWindowConfig::saveWindowSize(windowHandle(), group);
     const QList<int> list = mAgendaView->splitter()->sizes();
     group.writeEntry("Separator", list);
 

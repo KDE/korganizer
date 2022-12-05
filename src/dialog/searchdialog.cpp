@@ -20,9 +20,16 @@
 #include <KConfigGroup>
 #include <KMessageBox>
 #include <KSharedConfig>
+#include <KWindowConfig>
+#include <QWindow>
 
 #include <QDialogButtonBox>
 #include <QPushButton>
+
+namespace
+{
+static const char mySearchDialogConfigGroupName[] = "SearchDialog";
+}
 
 SearchDialog::SearchDialog(CalendarView *calendarview)
     : QDialog(calendarview)
@@ -248,18 +255,19 @@ void SearchDialog::search(const QRegularExpression &regularExpression)
 
 void SearchDialog::readConfig()
 {
-    KConfigGroup group = KSharedConfig::openConfig()->group(QStringLiteral("SearchDialog"));
-    const QSize size = group.readEntry("Size", QSize(775, 600));
-    if (size.isValid()) {
-        resize(size);
-    }
+    create(); // ensure a window is created
+    windowHandle()->resize(QSize(775, 600));
+    KConfigGroup group(KSharedConfig::openStateConfig(), mySearchDialogConfigGroupName);
+    KWindowConfig::restoreWindowSize(windowHandle(), group);
+    resize(windowHandle()->size()); // workaround for QTBUG-40584
+
     m_listView->readSettings(group);
 }
 
 void SearchDialog::writeConfig()
 {
-    KConfigGroup group = KSharedConfig::openConfig()->group(QStringLiteral("SearchDialog"));
-    group.writeEntry("Size", size());
+    KConfigGroup group(KSharedConfig::openStateConfig(), mySearchDialogConfigGroupName);
+    KWindowConfig::saveWindowSize(windowHandle(), group);
     m_listView->writeSettings(group);
     group.sync();
 }
