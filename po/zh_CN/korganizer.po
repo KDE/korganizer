@@ -2,7 +2,7 @@ msgid ""
 msgstr ""
 "Project-Id-Version: kdeorg\n"
 "Report-Msgid-Bugs-To: https://bugs.kde.org\n"
-"POT-Creation-Date: 2022-11-16 00:48+0000\n"
+"POT-Creation-Date: 2022-12-06 00:46+0000\n"
 "PO-Revision-Date: 2022-12-01 06:52\n"
 "Last-Translator: \n"
 "Language-Team: Chinese Simplified\n"
@@ -1896,31 +1896,31 @@ msgstr "编辑..."
 msgid "Show in Context"
 msgstr "在上下文中显示"
 
-#: dialog/searchdialog.cpp:32
+#: dialog/searchdialog.cpp:39
 #, kde-format
 msgctxt "@title:window"
 msgid "Find in Calendars"
 msgstr "在日历中查看"
 
-#: dialog/searchdialog.cpp:62
+#: dialog/searchdialog.cpp:69
 #, kde-format
 msgctxt "@action:button search in calendar"
 msgid "&Search"
 msgstr "搜索(&S)"
 
-#: dialog/searchdialog.cpp:64
+#: dialog/searchdialog.cpp:71
 #, kde-format
 msgctxt "@info:tooltip"
 msgid "Start the search"
 msgstr "开始搜索"
 
-#: dialog/searchdialog.cpp:65
+#: dialog/searchdialog.cpp:72
 #, kde-format
 msgctxt "@info:whatsthis"
 msgid "Press this button to start the search."
 msgstr "按下按钮开始搜索。"
 
-#: dialog/searchdialog.cpp:116
+#: dialog/searchdialog.cpp:123
 #, kde-format
 msgctxt "@info"
 msgid ""
@@ -1929,19 +1929,19 @@ msgid ""
 msgstr ""
 "无效的查找表达式，无法执行搜索。如有必要，请在查找表达中使用通配符“*”和“?”。"
 
-#: dialog/searchdialog.cpp:128
+#: dialog/searchdialog.cpp:135
 #, kde-format
 msgctxt "@info"
 msgid "No items were found that match your search pattern."
 msgstr "没有匹配您的搜索表达式的项目。"
 
-#: dialog/searchdialog.cpp:129
+#: dialog/searchdialog.cpp:136
 #, kde-format
 msgctxt "@title:window"
 msgid "Search Results"
 msgstr "搜索结果"
 
-#: dialog/searchdialog.cpp:144
+#: dialog/searchdialog.cpp:151
 #, kde-format
 msgctxt "@label"
 msgid "%1 match"
@@ -5530,7 +5530,7 @@ msgstr ""
 msgid "Include all to-dos &within the specified date range"
 msgstr "包括指定日期范围内的事件(&V)"
 
-#: views/collectionview/quickview.cpp:72 views/collectionview/quickview.cpp:76
+#: views/collectionview/quickview.cpp:79 views/collectionview/quickview.cpp:83
 #, kde-format
 msgctxt "@title:window"
 msgid "%1"

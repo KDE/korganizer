@@ -17,7 +17,7 @@ msgid ""
 msgstr ""
 "Project-Id-Version: korganizer\n"
 "Report-Msgid-Bugs-To: https://bugs.kde.org\n"
-"POT-Creation-Date: 2022-11-16 00:48+0000\n"
+"POT-Creation-Date: 2022-12-06 00:46+0000\n"
 "PO-Revision-Date: 2022-04-21 21:36+0530\n"
 "Last-Translator: Kishore G <kishore96@gmail.com>\n"
 "Language-Team: Tamil <kde-i18n-doc@kde.org>\n"
@@ -1994,33 +1994,33 @@ msgstr "திருத்தி"
 msgid "Show in Context"
 msgstr "தேர்வு செய்ததை மட்டும் காட்டு"
 
-#: dialog/searchdialog.cpp:32
+#: dialog/searchdialog.cpp:39
 #, fuzzy, kde-format
 #| msgid "Print Calendar"
 msgctxt "@title:window"
 msgid "Find in Calendars"
 msgstr "நாள்காட்டியை அச்சிடு"
 
-#: dialog/searchdialog.cpp:62
+#: dialog/searchdialog.cpp:69
 #, fuzzy, kde-format
 msgctxt "@action:button search in calendar"
 msgid "&Search"
 msgstr "உள்ளே தேடு"
 
-#: dialog/searchdialog.cpp:64
+#: dialog/searchdialog.cpp:71
 #, fuzzy, kde-format
 msgctxt "@info:tooltip"
 msgid "Start the search"
 msgstr "துவக்க தேதி"
 
-#: dialog/searchdialog.cpp:65
+#: dialog/searchdialog.cpp:72
 #, fuzzy, kde-format
 #| msgid "Press this button to define a new filter."
 msgctxt "@info:whatsthis"
 msgid "Press this button to start the search."
 msgstr "ஒரு புதிய அல்ங்காரத்தை வரையறுக்க இந்த பட்டனை அழுத்தவும்."
 
-#: dialog/searchdialog.cpp:116
+#: dialog/searchdialog.cpp:123
 #, fuzzy, kde-format
 #| msgid ""
 #| "Invalid search expression, cannot perform the search. Please enter a "
@@ -2033,21 +2033,21 @@ msgstr ""
 "செல்லாத தேடுதல் தொடர், தேடுதலை செய்ய முடியாது. தயவு செய்து வொய்ல்ட் அட்டை '*' மற்றும் "
 "'?' யை தேவைப்படும் இடத்தில் பயன்படுத்தவும்."
 
-#: dialog/searchdialog.cpp:128
+#: dialog/searchdialog.cpp:135
 #, fuzzy, kde-format
 #| msgid "No events were found matching your search expression."
 msgctxt "@info"
 msgid "No items were found that match your search pattern."
 msgstr "உங்களது தேடல் உரையில் எந்த ஒரு நிகழும் பொருந்தவில்லை"
 
-#: dialog/searchdialog.cpp:129
+#: dialog/searchdialog.cpp:136
 #, fuzzy, kde-format
 #| msgid "Search In"
 msgctxt "@title:window"
 msgid "Search Results"
 msgstr "உள்ளே தேடு"
 
-#: dialog/searchdialog.cpp:144
+#: dialog/searchdialog.cpp:151
 #, kde-format
 msgctxt "@label"
 msgid "%1 match"
@@ -5657,7 +5657,7 @@ msgstr ""
 msgid "Include all to-dos &within the specified date range"
 msgstr "முடிவு தேதி இல்லாமல் செய்யவேண்டியவைகளைச் சேர்"
 
-#: views/collectionview/quickview.cpp:72 views/collectionview/quickview.cpp:76
+#: views/collectionview/quickview.cpp:79 views/collectionview/quickview.cpp:83
 #, fuzzy, kde-format
 #| msgid "%1"
 msgctxt "@title:window"

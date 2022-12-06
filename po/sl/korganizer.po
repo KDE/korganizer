@@ -1,7 +1,7 @@
 # translation of korganizer.po to Slovenian
 # Translation of korganizer.po to Slovenian
 # Copyright (C) 2001,2002, 2003, 2004, 2005, 2006 Free Software Foundation, Inc.
-# $Id: korganizer.po 1638275 2022-11-16 01:41:52Z scripty $
+# $Id: korganizer.po 1639516 2022-12-06 01:35:44Z scripty $
 # $Source$
 #
 # Roman Maurer <roman.maurer@hermes.si>, 2001.
@@ -14,7 +14,7 @@ msgid ""
 msgstr ""
 "Project-Id-Version: korganizer\n"
 "Report-Msgid-Bugs-To: https://bugs.kde.org\n"
-"POT-Creation-Date: 2022-11-16 00:48+0000\n"
+"POT-Creation-Date: 2022-12-06 00:46+0000\n"
 "PO-Revision-Date: 2022-10-16 06:48+0200\n"
 "Last-Translator: Matjaž Jeran <matjaz.jeran@amis.net>\n"
 "Language-Team: Slovenian <lugos-slo@lugos.si>\n"
@@ -1982,31 +1982,31 @@ msgstr "Uredi ..."
 msgid "Show in Context"
 msgstr "Prikaži v vsebini"
 
-#: dialog/searchdialog.cpp:32
+#: dialog/searchdialog.cpp:39
 #, kde-format
 msgctxt "@title:window"
 msgid "Find in Calendars"
 msgstr "Najdi v koledarjih"
 
-#: dialog/searchdialog.cpp:62
+#: dialog/searchdialog.cpp:69
 #, kde-format
 msgctxt "@action:button search in calendar"
 msgid "&Search"
 msgstr "Poišči"
 
-#: dialog/searchdialog.cpp:64
+#: dialog/searchdialog.cpp:71
 #, kde-format
 msgctxt "@info:tooltip"
 msgid "Start the search"
 msgstr "Začni iskanje"
 
-#: dialog/searchdialog.cpp:65
+#: dialog/searchdialog.cpp:72
 #, kde-format
 msgctxt "@info:whatsthis"
 msgid "Press this button to start the search."
 msgstr "Pritisnite ta gumb, da začnete iskanje."
 
-#: dialog/searchdialog.cpp:116
+#: dialog/searchdialog.cpp:123
 #, kde-format
 msgctxt "@info"
 msgid ""
@@ -2016,7 +2016,7 @@ msgstr ""
 "Neveljavni iskalni izraz, iskanja ni mogoče opraviti. Vstavite iskalni izraz "
 "z uporabo nadomestnih znakov '*' in '?', kjer je to potrebno."
 
-#: dialog/searchdialog.cpp:128
+#: dialog/searchdialog.cpp:135
 #, kde-format
 msgctxt "@info"
 msgid "No items were found that match your search pattern."
@@ -2024,13 +2024,13 @@ msgstr ""
 "Najdenega ni bilo nobenega predmeta, ki bi se ujemal z vašim iskalnim "
 "vzorcem."
 
-#: dialog/searchdialog.cpp:129
+#: dialog/searchdialog.cpp:136
 #, kde-format
 msgctxt "@title:window"
 msgid "Search Results"
 msgstr "Rezultati iskanja"
 
-#: dialog/searchdialog.cpp:144
+#: dialog/searchdialog.cpp:151
 #, kde-format
 msgctxt "@label"
 msgid "%1 match"
@@ -5849,7 +5849,7 @@ msgstr ""
 msgid "Include all to-dos &within the specified date range"
 msgstr "Vključi vse dogodke znotraj danega datumskega obdobja"
 
-#: views/collectionview/quickview.cpp:72 views/collectionview/quickview.cpp:76
+#: views/collectionview/quickview.cpp:79 views/collectionview/quickview.cpp:83
 #, kde-format
 msgctxt "@title:window"
 msgid "%1"

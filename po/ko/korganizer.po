@@ -8,7 +8,7 @@ msgid ""
 msgstr ""
 "Project-Id-Version: Korganizer\n"
 "Report-Msgid-Bugs-To: https://bugs.kde.org\n"
-"POT-Creation-Date: 2022-11-16 00:48+0000\n"
+"POT-Creation-Date: 2022-12-06 00:46+0000\n"
 "PO-Revision-Date: 2022-05-06 00:16+0200\n"
 "Last-Translator: Shinjo Park <kde@peremen.name>\n"
 "Language-Team: Korean <kde-kr@kde.org>\n"
@@ -1933,31 +1933,31 @@ msgstr "편집..."
 msgid "Show in Context"
 msgstr "콘텍스트에서 표시"
 
-#: dialog/searchdialog.cpp:32
+#: dialog/searchdialog.cpp:39
 #, kde-format
 msgctxt "@title:window"
 msgid "Find in Calendars"
 msgstr "캘린더에서 찾기"
 
-#: dialog/searchdialog.cpp:62
+#: dialog/searchdialog.cpp:69
 #, kde-format
 msgctxt "@action:button search in calendar"
 msgid "&Search"
 msgstr "검색(&S)"
 
-#: dialog/searchdialog.cpp:64
+#: dialog/searchdialog.cpp:71
 #, kde-format
 msgctxt "@info:tooltip"
 msgid "Start the search"
 msgstr "검색 시작"
 
-#: dialog/searchdialog.cpp:65
+#: dialog/searchdialog.cpp:72
 #, kde-format
 msgctxt "@info:whatsthis"
 msgid "Press this button to start the search."
 msgstr "이 단추를 클릭하면 검색을 시작합니다."
 
-#: dialog/searchdialog.cpp:116
+#: dialog/searchdialog.cpp:123
 #, kde-format
 msgctxt "@info"
 msgid ""
@@ -1967,19 +1967,19 @@ msgstr ""
 "검색 표현식이 잘못되었습니다. 검색할 수 없습니다. 필요한 경우에는 와일드카드 "
 "문자로 '*', '?'를 사용하십시오."
 
-#: dialog/searchdialog.cpp:128
+#: dialog/searchdialog.cpp:135
 #, kde-format
 msgctxt "@info"
 msgid "No items were found that match your search pattern."
 msgstr "검색 표현식과 일치하는 항목을 찾을 수 없습니다."
 
-#: dialog/searchdialog.cpp:129
+#: dialog/searchdialog.cpp:136
 #, kde-format
 msgctxt "@title:window"
 msgid "Search Results"
 msgstr "검색 결과"
 
-#: dialog/searchdialog.cpp:144
+#: dialog/searchdialog.cpp:151
 #, kde-format
 msgctxt "@label"
 msgid "%1 match"
@@ -5652,7 +5652,7 @@ msgstr ""
 msgid "Include all to-dos &within the specified date range"
 msgstr "지정한 날짜 범위에 있는 모든 할 일 포함(&V)"
 
-#: views/collectionview/quickview.cpp:72 views/collectionview/quickview.cpp:76
+#: views/collectionview/quickview.cpp:79 views/collectionview/quickview.cpp:83
 #, kde-format
 msgctxt "@title:window"
 msgid "%1"

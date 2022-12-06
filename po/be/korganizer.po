@@ -11,7 +11,7 @@ msgid ""
 msgstr ""
 "Project-Id-Version: korganizer\n"
 "Report-Msgid-Bugs-To: https://bugs.kde.org\n"
-"POT-Creation-Date: 2022-11-16 00:48+0000\n"
+"POT-Creation-Date: 2022-12-06 00:46+0000\n"
 "PO-Revision-Date: 2008-01-01 23:20+0200\n"
 "Last-Translator: Darafei Praliaskouski <komzpa@gmail.com>\n"
 "Language-Team: Belarusian (Official spelling) <i18n@mova.org>\n"
@@ -1972,35 +1972,35 @@ msgstr "Рэдагаваць..."
 msgid "Show in Context"
 msgstr "Паказаць толькі вылучаныя"
 
-#: dialog/searchdialog.cpp:32
+#: dialog/searchdialog.cpp:39
 #, fuzzy, kde-format
 #| msgid "Calendar"
 msgctxt "@title:window"
 msgid "Find in Calendars"
 msgstr "Каляндар"
 
-#: dialog/searchdialog.cpp:62
+#: dialog/searchdialog.cpp:69
 #, fuzzy, kde-format
 #| msgid "Search In"
 msgctxt "@action:button search in calendar"
 msgid "&Search"
 msgstr "Пошук"
 
-#: dialog/searchdialog.cpp:64
+#: dialog/searchdialog.cpp:71
 #, fuzzy, kde-format
 #| msgid "Start date:"
 msgctxt "@info:tooltip"
 msgid "Start the search"
 msgstr "Пачатак:"
 
-#: dialog/searchdialog.cpp:65
+#: dialog/searchdialog.cpp:72
 #, fuzzy, kde-format
 #| msgid "Press this button to define a new filter."
 msgctxt "@info:whatsthis"
 msgid "Press this button to start the search."
 msgstr "Націсніце на гэтую кнопку для стварэння новага фільтра."
 
-#: dialog/searchdialog.cpp:116
+#: dialog/searchdialog.cpp:123
 #, fuzzy, kde-format
 msgctxt "@info"
 msgid ""
@@ -2009,20 +2009,20 @@ msgid ""
 msgstr ""
 "Няслушны радок пошуку. Пакажыце ўмовы пошуку,выкарыстаючы знакі '*' і '?'."
 
-#: dialog/searchdialog.cpp:128
+#: dialog/searchdialog.cpp:135
 #, fuzzy, kde-format
 msgctxt "@info"
 msgid "No items were found that match your search pattern."
 msgstr "Падзеі не знойдзеныя."
 
-#: dialog/searchdialog.cpp:129
+#: dialog/searchdialog.cpp:136
 #, fuzzy, kde-format
 #| msgid "Search In"
 msgctxt "@title:window"
 msgid "Search Results"
 msgstr "Шукаць у"
 
-#: dialog/searchdialog.cpp:144
+#: dialog/searchdialog.cpp:151
 #, kde-format
 msgctxt "@label"
 msgid "%1 match"
@@ -5705,7 +5705,7 @@ msgstr ""
 msgid "Include all to-dos &within the specified date range"
 msgstr "Уключаць задачы без тэрміна"
 
-#: views/collectionview/quickview.cpp:72 views/collectionview/quickview.cpp:76
+#: views/collectionview/quickview.cpp:79 views/collectionview/quickview.cpp:83
 #, fuzzy, kde-format
 msgctxt "@title:window"
 msgid "%1"

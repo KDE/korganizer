@@ -11,7 +11,7 @@ msgid ""
 msgstr ""
 "Project-Id-Version: korganizer\n"
 "Report-Msgid-Bugs-To: https://bugs.kde.org\n"
-"POT-Creation-Date: 2022-11-16 00:48+0000\n"
+"POT-Creation-Date: 2022-12-06 00:46+0000\n"
 "PO-Revision-Date: 2004-02-25 13:53+0000\n"
 "Last-Translator: KD at KGyfieithu <kyfieithu@dotmon.com>\n"
 "Language-Team: Cymraeg <cy@li.org>\n"
@@ -1946,32 +1946,32 @@ msgstr "Golygu..."
 msgid "Show in Context"
 msgstr "Dangos y dewisiad yn unig"
 
-#: dialog/searchdialog.cpp:32
+#: dialog/searchdialog.cpp:39
 #, fuzzy, kde-format
 #| msgid "Print Calendar"
 msgctxt "@title:window"
 msgid "Find in Calendars"
 msgstr "Argraffu Calendr"
 
-#: dialog/searchdialog.cpp:62
+#: dialog/searchdialog.cpp:69
 #, fuzzy, kde-format
 msgctxt "@action:button search in calendar"
 msgid "&Search"
 msgstr "Chwilio Mewn"
 
-#: dialog/searchdialog.cpp:64
+#: dialog/searchdialog.cpp:71
 #, fuzzy, kde-format
 msgctxt "@info:tooltip"
 msgid "Start the search"
 msgstr "Dyddiad dechrau:"
 
-#: dialog/searchdialog.cpp:65
+#: dialog/searchdialog.cpp:72
 #, kde-format
 msgctxt "@info:whatsthis"
 msgid "Press this button to start the search."
 msgstr ""
 
-#: dialog/searchdialog.cpp:116
+#: dialog/searchdialog.cpp:123
 #, fuzzy, kde-format
 #| msgid ""
 #| "Invalid search expression, cannot perform the search. Please enter a "
@@ -1984,21 +1984,21 @@ msgstr ""
 "Mynegiad chilio annilys, methu gwneud y chwiliad.  Mewnosodwch fynegiad "
 "chwilio gan ddefnyddio'r nodau-chwilio '*' a '?' lle bo angen."
 
-#: dialog/searchdialog.cpp:128
+#: dialog/searchdialog.cpp:135
 #, fuzzy, kde-format
 #| msgid "No events were found matching your search expression."
 msgctxt "@info"
 msgid "No items were found that match your search pattern."
 msgstr "Ni chanfuwyd digwyddiadau sy'n cydweddu eich mynediad chwilio."
 
-#: dialog/searchdialog.cpp:129
+#: dialog/searchdialog.cpp:136
 #, fuzzy, kde-format
 #| msgid "Search In"
 msgctxt "@title:window"
 msgid "Search Results"
 msgstr "Chwilio Mewn"
 
-#: dialog/searchdialog.cpp:144
+#: dialog/searchdialog.cpp:151
 #, kde-format
 msgctxt "@label"
 msgid "%1 match"
@@ -5575,7 +5575,7 @@ msgstr ""
 msgid "Include all to-dos &within the specified date range"
 msgstr "Cynnwys i-wneudau &heb ddyddiad disgwyliedig"
 
-#: views/collectionview/quickview.cpp:72 views/collectionview/quickview.cpp:76
+#: views/collectionview/quickview.cpp:79 views/collectionview/quickview.cpp:83
 #, fuzzy, kde-format
 #| msgid "%1"
 msgctxt "@title:window"

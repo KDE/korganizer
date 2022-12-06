@@ -3,7 +3,7 @@ msgid ""
 msgstr ""
 "Project-Id-Version: korganizer\n"
 "Report-Msgid-Bugs-To: https://bugs.kde.org\n"
-"POT-Creation-Date: 2022-11-16 00:48+0000\n"
+"POT-Creation-Date: 2022-12-06 00:46+0000\n"
 "PO-Revision-Date: 2022-10-16 12:47+0200\n"
 "Last-Translator: Mincho Kondarev <mkondarev@yahoo.de>\n"
 "Language-Team: Bulgarian <kde-i18n-doc@kde.org>\n"
@@ -1962,31 +1962,31 @@ msgstr "Редактиране..."
 msgid "Show in Context"
 msgstr "Показване в контекст"
 
-#: dialog/searchdialog.cpp:32
+#: dialog/searchdialog.cpp:39
 #, kde-format
 msgctxt "@title:window"
 msgid "Find in Calendars"
 msgstr "Намиране в календари"
 
-#: dialog/searchdialog.cpp:62
+#: dialog/searchdialog.cpp:69
 #, kde-format
 msgctxt "@action:button search in calendar"
 msgid "&Search"
 msgstr "&Търсене"
 
-#: dialog/searchdialog.cpp:64
+#: dialog/searchdialog.cpp:71
 #, kde-format
 msgctxt "@info:tooltip"
 msgid "Start the search"
 msgstr "Започнете търсенето"
 
-#: dialog/searchdialog.cpp:65
+#: dialog/searchdialog.cpp:72
 #, kde-format
 msgctxt "@info:whatsthis"
 msgid "Press this button to start the search."
 msgstr "Натиснете този бутон, за да започнете търсенето."
 
-#: dialog/searchdialog.cpp:116
+#: dialog/searchdialog.cpp:123
 #, kde-format
 msgctxt "@info"
 msgid ""
@@ -1997,20 +1997,20 @@ msgstr ""
 "израз за търсене, използвайки заместващите символи '*' и '?' където е "
 "необходимо."
 
-#: dialog/searchdialog.cpp:128
+#: dialog/searchdialog.cpp:135
 #, kde-format
 msgctxt "@info"
 msgid "No items were found that match your search pattern."
 msgstr ""
 "Не бяха намерени елементи, които съответстват на вашия модел на търсене."
 
-#: dialog/searchdialog.cpp:129
+#: dialog/searchdialog.cpp:136
 #, kde-format
 msgctxt "@title:window"
 msgid "Search Results"
 msgstr "Резултати от търсенето"
 
-#: dialog/searchdialog.cpp:144
+#: dialog/searchdialog.cpp:151
 #, kde-format
 msgctxt "@label"
 msgid "%1 match"
@@ -5852,7 +5852,7 @@ msgstr ""
 msgid "Include all to-dos &within the specified date range"
 msgstr "Включване на всички задачи &за посочения период от време"
 
-#: views/collectionview/quickview.cpp:72 views/collectionview/quickview.cpp:76
+#: views/collectionview/quickview.cpp:79 views/collectionview/quickview.cpp:83
 #, kde-format
 msgctxt "@title:window"
 msgid "%1"

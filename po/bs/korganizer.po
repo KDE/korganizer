@@ -7,7 +7,7 @@ msgid ""
 msgstr ""
 "Project-Id-Version: __kde__kdepim__korganizer\n"
 "Report-Msgid-Bugs-To: https://bugs.kde.org\n"
-"POT-Creation-Date: 2022-11-16 00:48+0000\n"
+"POT-Creation-Date: 2022-12-06 00:46+0000\n"
 "PO-Revision-Date: 2014-01-31 19:03+0100\n"
 "Last-Translator: Samir Ribić <megaribi@epn.ba>\n"
 "Language-Team:  <bs@li.org>\n"
@@ -2018,7 +2018,7 @@ msgstr "Izmijeni..."
 msgid "Show in Context"
 msgstr "Prikaži u kontekstu"
 
-#: dialog/searchdialog.cpp:32
+#: dialog/searchdialog.cpp:39
 #, fuzzy, kde-format
 #| msgctxt "@title:tab calendar account settings"
 #| msgid "Calendars"
@@ -2026,7 +2026,7 @@ msgctxt "@title:window"
 msgid "Find in Calendars"
 msgstr "Kalendari"
 
-#: dialog/searchdialog.cpp:62
+#: dialog/searchdialog.cpp:69
 #, fuzzy, kde-format
 #| msgctxt "search in calendar"
 #| msgid "&Search"
@@ -2034,14 +2034,14 @@ msgctxt "@action:button search in calendar"
 msgid "&Search"
 msgstr "&Traži"
 
-#: dialog/searchdialog.cpp:64
+#: dialog/searchdialog.cpp:71
 #, fuzzy, kde-format
 #| msgid "Start searching"
 msgctxt "@info:tooltip"
 msgid "Start the search"
 msgstr "Započni traženje"
 
-#: dialog/searchdialog.cpp:65
+#: dialog/searchdialog.cpp:72
 #, fuzzy, kde-format
 #| msgctxt "@info:whatsthis"
 #| msgid "Press this button to define a new filter."
@@ -2049,7 +2049,7 @@ msgctxt "@info:whatsthis"
 msgid "Press this button to start the search."
 msgstr "Pritisnite ovo dugme da biste definisali novi filter."
 
-#: dialog/searchdialog.cpp:116
+#: dialog/searchdialog.cpp:123
 #, fuzzy, kde-format
 #| msgid ""
 #| "Invalid search expression, cannot perform the search. Please enter a "
@@ -2062,21 +2062,21 @@ msgstr ""
 "Neispravan izraz za pretraživanje, pretraga ne može da se obavi. Unesite "
 "izraz za pretraživanje koristeći džoker znake '*' i '?' gdje je potrebno."
 
-#: dialog/searchdialog.cpp:128
+#: dialog/searchdialog.cpp:135
 #, fuzzy, kde-format
 #| msgid "No items were found that match your search pattern."
 msgctxt "@info"
 msgid "No items were found that match your search pattern."
 msgstr "Nema stavki nađenih da odgovaraju vašem uzorku pretraživanja."
 
-#: dialog/searchdialog.cpp:129
+#: dialog/searchdialog.cpp:136
 #, fuzzy, kde-format
 #| msgid "Search Results"
 msgctxt "@title:window"
 msgid "Search Results"
 msgstr "Rezultati pretrage"
 
-#: dialog/searchdialog.cpp:144
+#: dialog/searchdialog.cpp:151
 #, kde-format
 msgctxt "@label"
 msgid "%1 match"
@@ -6103,7 +6103,7 @@ msgstr ""
 msgid "Include all to-dos &within the specified date range"
 msgstr "Uključiti događaje sa definisanim rasponom datuma"
 
-#: views/collectionview/quickview.cpp:72 views/collectionview/quickview.cpp:76
+#: views/collectionview/quickview.cpp:79 views/collectionview/quickview.cpp:83
 #, fuzzy, kde-format
 #| msgid "%1"
 msgctxt "@title:window"

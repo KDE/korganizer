@@ -10,7 +10,7 @@ msgid ""
 msgstr ""
 "Project-Id-Version: korganizer\n"
 "Report-Msgid-Bugs-To: https://bugs.kde.org\n"
-"POT-Creation-Date: 2022-11-16 00:48+0000\n"
+"POT-Creation-Date: 2022-12-06 00:46+0000\n"
 "PO-Revision-Date: 2022-04-30 11:37+0200\n"
 "Last-Translator: Stefan Asserhäll <stefan.asserhall@bredband.net>\n"
 "Language-Team: Swedish <kde-i18n-doc@kde.org>\n"
@@ -1959,31 +1959,31 @@ msgstr "Redigera..."
 msgid "Show in Context"
 msgstr "Visa i sammanhang"
 
-#: dialog/searchdialog.cpp:32
+#: dialog/searchdialog.cpp:39
 #, kde-format
 msgctxt "@title:window"
 msgid "Find in Calendars"
 msgstr "Sök i kalendrar"
 
-#: dialog/searchdialog.cpp:62
+#: dialog/searchdialog.cpp:69
 #, kde-format
 msgctxt "@action:button search in calendar"
 msgid "&Search"
 msgstr "&Sök"
 
-#: dialog/searchdialog.cpp:64
+#: dialog/searchdialog.cpp:71
 #, kde-format
 msgctxt "@info:tooltip"
 msgid "Start the search"
 msgstr "Börja söka"
 
-#: dialog/searchdialog.cpp:65
+#: dialog/searchdialog.cpp:72
 #, kde-format
 msgctxt "@info:whatsthis"
 msgid "Press this button to start the search."
 msgstr "Klicka på knappen för att starta sökningen."
 
-#: dialog/searchdialog.cpp:116
+#: dialog/searchdialog.cpp:123
 #, kde-format
 msgctxt "@info"
 msgid ""
@@ -1993,19 +1993,19 @@ msgstr ""
 "Ogiltigt sökuttryck, kan inte utföra sökningen. Ange ett sökuttryck med "
 "hjälp av jokertecknen \"*\" och \"?\" vid behov."
 
-#: dialog/searchdialog.cpp:128
+#: dialog/searchdialog.cpp:135
 #, kde-format
 msgctxt "@info"
 msgid "No items were found that match your search pattern."
 msgstr "Inga objekt som motsvarar sökuttrycket hittades."
 
-#: dialog/searchdialog.cpp:129
+#: dialog/searchdialog.cpp:136
 #, kde-format
 msgctxt "@title:window"
 msgid "Search Results"
 msgstr "Sökresultat"
 
-#: dialog/searchdialog.cpp:144
+#: dialog/searchdialog.cpp:151
 #, kde-format
 msgctxt "@label"
 msgid "%1 match"
@@ -5781,7 +5781,7 @@ msgstr ""
 msgid "Include all to-dos &within the specified date range"
 msgstr "Inkludera alla upp&gifter inom angivet datumintervall"
 
-#: views/collectionview/quickview.cpp:72 views/collectionview/quickview.cpp:76
+#: views/collectionview/quickview.cpp:79 views/collectionview/quickview.cpp:83
 #, kde-format
 msgctxt "@title:window"
 msgid "%1"

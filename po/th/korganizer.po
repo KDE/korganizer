@@ -6,7 +6,7 @@ msgid ""
 msgstr ""
 "Project-Id-Version: korganizer\n"
 "Report-Msgid-Bugs-To: https://bugs.kde.org\n"
-"POT-Creation-Date: 2022-11-16 00:48+0000\n"
+"POT-Creation-Date: 2022-12-06 00:46+0000\n"
 "PO-Revision-Date: 2008-07-21 16:18+0700\n"
 "Last-Translator: Thanomsub Noppaburana <donga.nb@gmail.com>\n"
 "Language-Team: Thai <thai-l10n@googlegroups.com>\n"
@@ -2025,14 +2025,14 @@ msgstr "แก้ไข..."
 msgid "Show in Context"
 msgstr "แสดงในคอนเท็กซ์"
 
-#: dialog/searchdialog.cpp:32
+#: dialog/searchdialog.cpp:39
 #, fuzzy, kde-format
 #| msgid "Calendars"
 msgctxt "@title:window"
 msgid "Find in Calendars"
 msgstr "ปฏิทิน"
 
-#: dialog/searchdialog.cpp:62
+#: dialog/searchdialog.cpp:69
 #, fuzzy, kde-format
 #| msgctxt "@label in QuickSearchLine"
 #| msgid "Search"
@@ -2040,21 +2040,21 @@ msgctxt "@action:button search in calendar"
 msgid "&Search"
 msgstr "ค้นหา"
 
-#: dialog/searchdialog.cpp:64
+#: dialog/searchdialog.cpp:71
 #, fuzzy, kde-format
 #| msgid "Start date: "
 msgctxt "@info:tooltip"
 msgid "Start the search"
 msgstr "วันที่เริ่ม: "
 
-#: dialog/searchdialog.cpp:65
+#: dialog/searchdialog.cpp:72
 #, fuzzy, kde-format
 #| msgid "Press this button to define a new filter."
 msgctxt "@info:whatsthis"
 msgid "Press this button to start the search."
 msgstr "กดที่ปุ่มนี้เพื่อนิยามตัวกรองใหม่"
 
-#: dialog/searchdialog.cpp:116
+#: dialog/searchdialog.cpp:123
 #, fuzzy, kde-format
 #| msgid ""
 #| "Invalid search expression, cannot perform the search. Please enter a "
@@ -2067,21 +2067,21 @@ msgstr ""
 "เงื่อนไขการค้นหาใช้งานไม่ได้ ทำให้ไม่สามารถทำการค้นหาได้ "
 "โปรดป้อนเงื่อนไขการค้นหาที่มีการใช้อักขระไวล์การ์ด '*' และ '?' ตามต้องการ"
 
-#: dialog/searchdialog.cpp:128
+#: dialog/searchdialog.cpp:135
 #, fuzzy, kde-format
 #| msgid "No events were found matching your search expression."
 msgctxt "@info"
 msgid "No items were found that match your search pattern."
 msgstr "ไม่พบเหตุการณ์ที่ตรงกับเงื่อนไขการค้นหาของคุณ"
 
-#: dialog/searchdialog.cpp:129
+#: dialog/searchdialog.cpp:136
 #, fuzzy, kde-format
 #| msgid "Search In"
 msgctxt "@title:window"
 msgid "Search Results"
 msgstr "ค้นหาใน"
 
-#: dialog/searchdialog.cpp:144
+#: dialog/searchdialog.cpp:151
 #, kde-format
 msgctxt "@label"
 msgid "%1 match"
@@ -5893,7 +5893,7 @@ msgstr ""
 msgid "Include all to-dos &within the specified date range"
 msgstr "รวมสิ่งที่จะทำที่ไม่มีวันครบกำหนด"
 
-#: views/collectionview/quickview.cpp:72 views/collectionview/quickview.cpp:76
+#: views/collectionview/quickview.cpp:79 views/collectionview/quickview.cpp:83
 #, fuzzy, kde-format
 #| msgid "%1%"
 msgctxt "@title:window"

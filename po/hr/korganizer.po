@@ -5,7 +5,7 @@ msgid ""
 msgstr ""
 "Project-Id-Version: korganizer 0\n"
 "Report-Msgid-Bugs-To: https://bugs.kde.org\n"
-"POT-Creation-Date: 2022-11-16 00:48+0000\n"
+"POT-Creation-Date: 2022-12-06 00:46+0000\n"
 "PO-Revision-Date: 2011-02-27 12:20+0100\n"
 "Last-Translator: Marko Dimjasevic <marko@dimjasevic.net>\n"
 "Language-Team: Croatian <kde-croatia-list@lists.sourceforge.net>\n"
@@ -1896,31 +1896,31 @@ msgstr "Uredi..."
 msgid "Show in Context"
 msgstr "Pokaži samo odabrane"
 
-#: dialog/searchdialog.cpp:32
+#: dialog/searchdialog.cpp:39
 #, fuzzy, kde-format
 msgctxt "@title:window"
 msgid "Find in Calendars"
 msgstr "Štampaj kalendar"
 
-#: dialog/searchdialog.cpp:62
+#: dialog/searchdialog.cpp:69
 #, fuzzy, kde-format
 msgctxt "@action:button search in calendar"
 msgid "&Search"
 msgstr "Traži u"
 
-#: dialog/searchdialog.cpp:64
+#: dialog/searchdialog.cpp:71
 #, fuzzy, kde-format
 msgctxt "@info:tooltip"
 msgid "Start the search"
 msgstr "Početni datum:"
 
-#: dialog/searchdialog.cpp:65
+#: dialog/searchdialog.cpp:72
 #, kde-format
 msgctxt "@info:whatsthis"
 msgid "Press this button to start the search."
 msgstr ""
 
-#: dialog/searchdialog.cpp:116
+#: dialog/searchdialog.cpp:123
 #, fuzzy, kde-format
 msgctxt "@info"
 msgid ""
@@ -1930,7 +1930,7 @@ msgstr ""
 "Neispravan izraz za pretraživanje, pretraga ne može da se obavi. Unesite "
 "izraz za pretraživanje koristeći džoker znake „*“ i „?“ gdje je potrebno."
 
-#: dialog/searchdialog.cpp:128
+#: dialog/searchdialog.cpp:135
 #, fuzzy, kde-format
 msgctxt "@info"
 msgid "No items were found that match your search pattern."
@@ -1938,13 +1938,13 @@ msgstr ""
 "Nije pronađen nijedan događaj koji se poklapa sa vašim izrazom za "
 "pretraživanje."
 
-#: dialog/searchdialog.cpp:129
+#: dialog/searchdialog.cpp:136
 #, fuzzy, kde-format
 msgctxt "@title:window"
 msgid "Search Results"
 msgstr "Traži u"
 
-#: dialog/searchdialog.cpp:144
+#: dialog/searchdialog.cpp:151
 #, kde-format
 msgctxt "@label"
 msgid "%1 match"
@@ -5466,7 +5466,7 @@ msgstr ""
 msgid "Include all to-dos &within the specified date range"
 msgstr "Uključi i zadatke bez &krajnjeg roka"
 
-#: views/collectionview/quickview.cpp:72 views/collectionview/quickview.cpp:76
+#: views/collectionview/quickview.cpp:79 views/collectionview/quickview.cpp:83
 #, fuzzy, kde-format
 msgctxt "@title:window"
 msgid "%1"

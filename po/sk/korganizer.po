@@ -10,7 +10,7 @@ msgid ""
 msgstr ""
 "Project-Id-Version: korganizer\n"
 "Report-Msgid-Bugs-To: https://bugs.kde.org\n"
-"POT-Creation-Date: 2022-11-16 00:48+0000\n"
+"POT-Creation-Date: 2022-12-06 00:46+0000\n"
 "PO-Revision-Date: 2019-11-05 20:02+0100\n"
 "Last-Translator: Matej Mrenica <matejm98mthw@gmail.com>\n"
 "Language-Team: Slovak <kde-i18n-doc@kde.org>\n"
@@ -1997,7 +1997,7 @@ msgstr "Upraviť..."
 msgid "Show in Context"
 msgstr "Zobraziť v kontexte"
 
-#: dialog/searchdialog.cpp:32
+#: dialog/searchdialog.cpp:39
 #, fuzzy, kde-format
 #| msgctxt "@title:tab calendar account settings"
 #| msgid "Calendars"
@@ -2005,7 +2005,7 @@ msgctxt "@title:window"
 msgid "Find in Calendars"
 msgstr "Kalendáre"
 
-#: dialog/searchdialog.cpp:62
+#: dialog/searchdialog.cpp:69
 #, fuzzy, kde-format
 #| msgctxt "search in calendar"
 #| msgid "&Search"
@@ -2013,20 +2013,20 @@ msgctxt "@action:button search in calendar"
 msgid "&Search"
 msgstr "&Hľadať"
 
-#: dialog/searchdialog.cpp:64
+#: dialog/searchdialog.cpp:71
 #, fuzzy, kde-format
 #| msgid "Start searching"
 msgctxt "@info:tooltip"
 msgid "Start the search"
 msgstr "Spustiť hľadanie"
 
-#: dialog/searchdialog.cpp:65
+#: dialog/searchdialog.cpp:72
 #, kde-format
 msgctxt "@info:whatsthis"
 msgid "Press this button to start the search."
 msgstr "Stlačte toto tlačidlo na spustenie hľadania."
 
-#: dialog/searchdialog.cpp:116
+#: dialog/searchdialog.cpp:123
 #, fuzzy, kde-format
 #| msgid ""
 #| "Invalid search expression, cannot perform the search. Please enter a "
@@ -2039,7 +2039,7 @@ msgstr ""
 "Nesprávny výraz na vyhľadávanie, Nemôžem vykonať toto vyhľadávanie Zadajte "
 "výraz s náhradnými znakmi '*' a '?' ak sú potrebné"
 
-#: dialog/searchdialog.cpp:128
+#: dialog/searchdialog.cpp:135
 #, fuzzy, kde-format
 #| msgid "No items were found that match your search pattern."
 msgctxt "@info"
@@ -2047,14 +2047,14 @@ msgid "No items were found that match your search pattern."
 msgstr ""
 "Neboli nájdené žiadne položky, ktoré zodpovedajú vášmu hľadanému výrazu."
 
-#: dialog/searchdialog.cpp:129
+#: dialog/searchdialog.cpp:136
 #, fuzzy, kde-format
 #| msgid "Search Results"
 msgctxt "@title:window"
 msgid "Search Results"
 msgstr "Výsledky hľadania"
 
-#: dialog/searchdialog.cpp:144
+#: dialog/searchdialog.cpp:151
 #, kde-format
 msgctxt "@label"
 msgid "%1 match"
@@ -6004,7 +6004,7 @@ msgstr ""
 msgid "Include all to-dos &within the specified date range"
 msgstr "Zahrnúť udalosti v danom rozsahu dátumov"
 
-#: views/collectionview/quickview.cpp:72 views/collectionview/quickview.cpp:76
+#: views/collectionview/quickview.cpp:79 views/collectionview/quickview.cpp:83
 #, kde-format
 msgctxt "@title:window"
 msgid "%1"

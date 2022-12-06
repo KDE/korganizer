@@ -6,7 +6,7 @@ msgid ""
 msgstr ""
 "Project-Id-Version: korganizer\n"
 "Report-Msgid-Bugs-To: https://bugs.kde.org\n"
-"POT-Creation-Date: 2022-11-16 00:48+0000\n"
+"POT-Creation-Date: 2022-12-06 00:46+0000\n"
 "PO-Revision-Date: 2013-09-30 02:22+0600\n"
 "Last-Translator: Sairan Kikkarin <sairan@computer.org>\n"
 "Language-Team: Kazakh <kde-i18n-doc@kde.org>\n"
@@ -2000,14 +2000,14 @@ msgstr "Өзгерту..."
 msgid "Show in Context"
 msgstr "Контексте көрсетілсін"
 
-#: dialog/searchdialog.cpp:32
+#: dialog/searchdialog.cpp:39
 #, fuzzy, kde-format
 #| msgid "Print Calendar"
 msgctxt "@title:window"
 msgid "Find in Calendars"
 msgstr "Күнтізбені басып шығару"
 
-#: dialog/searchdialog.cpp:62
+#: dialog/searchdialog.cpp:69
 #, fuzzy, kde-format
 #| msgctxt "search in calendar"
 #| msgid "&Search"
@@ -2015,14 +2015,14 @@ msgctxt "@action:button search in calendar"
 msgid "&Search"
 msgstr "&Іздеу"
 
-#: dialog/searchdialog.cpp:64
+#: dialog/searchdialog.cpp:71
 #, fuzzy, kde-format
 #| msgid "Start searching"
 msgctxt "@info:tooltip"
 msgid "Start the search"
 msgstr "Іздеуді бастау"
 
-#: dialog/searchdialog.cpp:65
+#: dialog/searchdialog.cpp:72
 #, fuzzy, kde-format
 #| msgctxt "@info:whatsthis"
 #| msgid "Press this button to define a new filter."
@@ -2030,7 +2030,7 @@ msgctxt "@info:whatsthis"
 msgid "Press this button to start the search."
 msgstr "Жаңа сүзгіні орнату үшін осы батырманы басыңыз."
 
-#: dialog/searchdialog.cpp:116
+#: dialog/searchdialog.cpp:123
 #, fuzzy, kde-format
 #| msgid ""
 #| "Invalid search expression, cannot perform the search. Please enter a "
@@ -2043,21 +2043,21 @@ msgstr ""
 "Іздейтін өрнегі дұрыс емес, іздеу орындалмайды. Керегі болса '*' мен '?' "
 "үлгі қалқа таңбаларын қолданып дұрыс іздейтін өрнегін келтіріңіз."
 
-#: dialog/searchdialog.cpp:128
+#: dialog/searchdialog.cpp:135
 #, fuzzy, kde-format
 #| msgid "No items were found that match your search pattern."
 msgctxt "@info"
 msgid "No items were found that match your search pattern."
 msgstr "Іздейтін өрнегіңізге сәйкестіктер табылмады."
 
-#: dialog/searchdialog.cpp:129
+#: dialog/searchdialog.cpp:136
 #, fuzzy, kde-format
 #| msgid "Search Results"
 msgctxt "@title:window"
 msgid "Search Results"
 msgstr "Іздеу нәтижесі"
 
-#: dialog/searchdialog.cpp:144
+#: dialog/searchdialog.cpp:151
 #, kde-format
 msgctxt "@label"
 msgid "%1 match"
@@ -6009,7 +6009,7 @@ msgstr ""
 msgid "Include all to-dos &within the specified date range"
 msgstr "Келтірілген күндер аралықтағы оқ&иғалар кірсін"
 
-#: views/collectionview/quickview.cpp:72 views/collectionview/quickview.cpp:76
+#: views/collectionview/quickview.cpp:79 views/collectionview/quickview.cpp:83
 #, fuzzy, kde-format
 #| msgid "%1"
 msgctxt "@title:window"

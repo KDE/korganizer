@@ -15,7 +15,7 @@ msgid ""
 msgstr ""
 "Project-Id-Version: korganizer\n"
 "Report-Msgid-Bugs-To: https://bugs.kde.org\n"
-"POT-Creation-Date: 2022-11-16 00:48+0000\n"
+"POT-Creation-Date: 2022-12-06 00:46+0000\n"
 "PO-Revision-Date: 2002-11-09 12:52+0200\n"
 "Last-Translator: Thelma Lungcuzo <thelma@translate.org.za>\n"
 "Language-Team: Xhosa <xhosa@translate.org.za>\n"
@@ -1916,31 +1916,31 @@ msgstr "Hlela..."
 msgid "Show in Context"
 msgstr "Bonisa okukhethiweyo kuphela"
 
-#: dialog/searchdialog.cpp:32
+#: dialog/searchdialog.cpp:39
 #, fuzzy, kde-format
 msgctxt "@title:window"
 msgid "Find in Calendars"
 msgstr "i Khalenda"
 
-#: dialog/searchdialog.cpp:62
+#: dialog/searchdialog.cpp:69
 #, fuzzy, kde-format
 msgctxt "@action:button search in calendar"
 msgid "&Search"
 msgstr "Phendla Kwi"
 
-#: dialog/searchdialog.cpp:64
+#: dialog/searchdialog.cpp:71
 #, fuzzy, kde-format
 msgctxt "@info:tooltip"
 msgid "Start the search"
 msgstr "Umhla wokuqala:"
 
-#: dialog/searchdialog.cpp:65
+#: dialog/searchdialog.cpp:72
 #, kde-format
 msgctxt "@info:whatsthis"
 msgid "Press this button to start the search."
 msgstr ""
 
-#: dialog/searchdialog.cpp:116
+#: dialog/searchdialog.cpp:123
 #, fuzzy, kde-format
 #| msgid ""
 #| "Invalid search expression, cannot perform the search. Please enter a "
@@ -1954,21 +1954,21 @@ msgstr ""
 "uchazo lophendlo usebenzisa abasebenzi be wildcard '*' ne '?' apho "
 "kuyimfuneko."
 
-#: dialog/searchdialog.cpp:128
+#: dialog/searchdialog.cpp:135
 #, fuzzy, kde-format
 #| msgid "No events were found matching your search expression."
 msgctxt "@info"
 msgid "No items were found that match your search pattern."
 msgstr "Akukho ziganeko zifunyenweyo zithelekiseka nochazo lwakho lophendlo."
 
-#: dialog/searchdialog.cpp:129
+#: dialog/searchdialog.cpp:136
 #, fuzzy, kde-format
 #| msgid "Search In"
 msgctxt "@title:window"
 msgid "Search Results"
 msgstr "Phendla Kwi"
 
-#: dialog/searchdialog.cpp:144
+#: dialog/searchdialog.cpp:151
 #, kde-format
 msgctxt "@label"
 msgid "%1 match"
@@ -5483,7 +5483,7 @@ msgstr ""
 msgid "Include all to-dos &within the specified date range"
 msgstr ""
 
-#: views/collectionview/quickview.cpp:72 views/collectionview/quickview.cpp:76
+#: views/collectionview/quickview.cpp:79 views/collectionview/quickview.cpp:83
 #, fuzzy, kde-format
 msgctxt "@title:window"
 msgid "%1"

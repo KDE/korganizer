@@ -8,7 +8,7 @@ msgid ""
 msgstr ""
 "Project-Id-Version: korganizer\n"
 "Report-Msgid-Bugs-To: https://bugs.kde.org\n"
-"POT-Creation-Date: 2022-11-16 00:48+0000\n"
+"POT-Creation-Date: 2022-12-06 00:46+0000\n"
 "PO-Revision-Date: 2021-07-10 10:57+0530\n"
 "Last-Translator: Raghavendra Kamath <raghu@raghukamath.com>\n"
 "Language-Team: kde-hindi\n"
@@ -1959,34 +1959,34 @@ msgstr "संपादन..."
 msgid "Show in Context"
 msgstr "संदर्भ में दिखाएँ"
 
-#: dialog/searchdialog.cpp:32
+#: dialog/searchdialog.cpp:39
 #, fuzzy, kde-format
 #| msgid "Print Calendar"
 msgctxt "@title:window"
 msgid "Find in Calendars"
 msgstr "कैलेन्डर छापें"
 
-#: dialog/searchdialog.cpp:62
+#: dialog/searchdialog.cpp:69
 #, fuzzy, kde-format
 msgctxt "@action:button search in calendar"
 msgid "&Search"
 msgstr "ढूंढें"
 
-#: dialog/searchdialog.cpp:64
+#: dialog/searchdialog.cpp:71
 #, fuzzy, kde-format
 #| msgid "Start date: "
 msgctxt "@info:tooltip"
 msgid "Start the search"
 msgstr "प्रारंभ तारीख़:"
 
-#: dialog/searchdialog.cpp:65
+#: dialog/searchdialog.cpp:72
 #, fuzzy, kde-format
 #| msgid "Press this button to define a new filter."
 msgctxt "@info:whatsthis"
 msgid "Press this button to start the search."
 msgstr "एक नया फ़िल्टर पारिभाषित करने के लिए इस बटन को दबाएँ."
 
-#: dialog/searchdialog.cpp:116
+#: dialog/searchdialog.cpp:123
 #, kde-format
 msgctxt "@info"
 msgid ""
@@ -1994,21 +1994,21 @@ msgid ""
 "expression using the wildcard characters '*' and '?' where needed."
 msgstr ""
 
-#: dialog/searchdialog.cpp:128
+#: dialog/searchdialog.cpp:135
 #, fuzzy, kde-format
 #| msgid "No events were found matching your search expression."
 msgctxt "@info"
 msgid "No items were found that match your search pattern."
 msgstr "आपके ढूंढने के एक्सप्रेशन्स से कोई मेल खाती घटनाएँ नहीं मिलीं."
 
-#: dialog/searchdialog.cpp:129
+#: dialog/searchdialog.cpp:136
 #, fuzzy, kde-format
 #| msgid "Search In"
 msgctxt "@title:window"
 msgid "Search Results"
 msgstr "में ढूंढें"
 
-#: dialog/searchdialog.cpp:144
+#: dialog/searchdialog.cpp:151
 #, kde-format
 msgctxt "@label"
 msgid "%1 match"
@@ -5628,7 +5628,7 @@ msgstr ""
 msgid "Include all to-dos &within the specified date range"
 msgstr "नियत तिथि के बगैर कार्यसूची शामिल करें (&w)"
 
-#: views/collectionview/quickview.cpp:72 views/collectionview/quickview.cpp:76
+#: views/collectionview/quickview.cpp:79 views/collectionview/quickview.cpp:83
 #, fuzzy, kde-format
 #| msgid "%1%"
 msgctxt "@title:window"

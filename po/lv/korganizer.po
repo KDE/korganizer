@@ -9,7 +9,7 @@ msgid ""
 msgstr ""
 "Project-Id-Version: korganizer\n"
 "Report-Msgid-Bugs-To: https://bugs.kde.org\n"
-"POT-Creation-Date: 2022-11-16 00:48+0000\n"
+"POT-Creation-Date: 2022-12-06 00:46+0000\n"
 "PO-Revision-Date: 2010-01-22 22:15+0200\n"
 "Last-Translator: Viesturs Zarins <viesturs.zarins@mii.lu.lv>\n"
 "Language-Team: Latvian <locale@laka.lv>\n"
@@ -2034,14 +2034,14 @@ msgstr "Rediģēt..."
 msgid "Show in Context"
 msgstr "Rādīt kontekstā"
 
-#: dialog/searchdialog.cpp:32
+#: dialog/searchdialog.cpp:39
 #, fuzzy, kde-format
 #| msgid "Calendars"
 msgctxt "@title:window"
 msgid "Find in Calendars"
 msgstr "Kalendāri"
 
-#: dialog/searchdialog.cpp:62
+#: dialog/searchdialog.cpp:69
 #, fuzzy, kde-format
 #| msgctxt "search in calendar"
 #| msgid "&Search"
@@ -2049,14 +2049,14 @@ msgctxt "@action:button search in calendar"
 msgid "&Search"
 msgstr "&Meklēt"
 
-#: dialog/searchdialog.cpp:64
+#: dialog/searchdialog.cpp:71
 #, fuzzy, kde-format
 #| msgid "Start searching"
 msgctxt "@info:tooltip"
 msgid "Start the search"
 msgstr "Sākt meklēšanu"
 
-#: dialog/searchdialog.cpp:65
+#: dialog/searchdialog.cpp:72
 #, fuzzy, kde-format
 #| msgctxt "@info:whatsthis"
 #| msgid "Press this button to define a new filter."
@@ -2064,7 +2064,7 @@ msgctxt "@info:whatsthis"
 msgid "Press this button to start the search."
 msgstr "Nospiediet šo pogu, lai izveidotu jaunu filtru."
 
-#: dialog/searchdialog.cpp:116
+#: dialog/searchdialog.cpp:123
 #, fuzzy, kde-format
 #| msgid ""
 #| "Invalid search expression, cannot perform the search. Please enter a "
@@ -2077,7 +2077,7 @@ msgstr ""
 "Nederīga meklēšanas izteiksme, nevar meklēt. Lūdzu ievadiet meklēšanas "
 "izteiksmi, kur nepieciešams izmantojot aizvietošanas zīmes '*' un '?'."
 
-#: dialog/searchdialog.cpp:128
+#: dialog/searchdialog.cpp:135
 #, fuzzy, kde-format
 #| msgid "No items were found that match your search pattern."
 msgctxt "@info"
@@ -2085,14 +2085,14 @@ msgid "No items were found that match your search pattern."
 msgstr ""
 "Netika atrasts neviens ieraksts, kas atbilstu jūsu meklēšanas izteiksmei."
 
-#: dialog/searchdialog.cpp:129
+#: dialog/searchdialog.cpp:136
 #, fuzzy, kde-format
 #| msgid "Search In"
 msgctxt "@title:window"
 msgid "Search Results"
 msgstr "Meklēt"
 
-#: dialog/searchdialog.cpp:144
+#: dialog/searchdialog.cpp:151
 #, kde-format
 msgctxt "@label"
 msgid "%1 match"
@@ -6127,7 +6127,7 @@ msgstr ""
 msgid "Include all to-dos &within the specified date range"
 msgstr "Iekļaut darbus &bez termiņa"
 
-#: views/collectionview/quickview.cpp:72 views/collectionview/quickview.cpp:76
+#: views/collectionview/quickview.cpp:79 views/collectionview/quickview.cpp:83
 #, fuzzy, kde-format
 #| msgid "%1"
 msgctxt "@title:window"
