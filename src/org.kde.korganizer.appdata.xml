@@ -15,6 +15,7 @@
   <developer_name xml:lang="en-GB">The KDE Community</developer_name>
   <developer_name xml:lang="es">La comunidad de KDE</developer_name>
   <developer_name xml:lang="et">KDE kogukond</developer_name>
+  <developer_name xml:lang="eu">KDE komunitatea</developer_name>
   <developer_name xml:lang="fi">KDE-yhteisö</developer_name>
   <developer_name xml:lang="fr">La communauté KDE</developer_name>
   <developer_name xml:lang="gl">A comunidade de KDE</developer_name>
@@ -49,6 +50,7 @@
   <name xml:lang="en-GB">KOrganizer</name>
   <name xml:lang="es">KOrganizer</name>
   <name xml:lang="et">KOrganizer</name>
+  <name xml:lang="eu">KOrganizer</name>
   <name xml:lang="fi">KOrganizer</name>
   <name xml:lang="fr">KOrganizer</name>
   <name xml:lang="gl">KOrganizer</name>
@@ -87,6 +89,7 @@
   <summary xml:lang="en-GB">KOrganizer is a calendar and scheduling application</summary>
   <summary xml:lang="es">KOrganizer es una aplicación de calendario y planificación</summary>
   <summary xml:lang="et">KOrganizer on kalendri- ja ajastamisrakendus</summary>
+  <summary xml:lang="eu">KOrganizer egutegi eta antolaketa aplikazio bat da</summary>
   <summary xml:lang="fi">KOrganizer on kalenteri- ja ajanhallintasovellus</summary>
   <summary xml:lang="fr">KOrganizer est une application de calendrier et agenda personnel</summary>
   <summary xml:lang="gl">KOrganizer é un calendario e unha aplicación de planificación</summary>
@@ -121,6 +124,7 @@
     <p xml:lang="en-GB">KOrganizer is the calendar and scheduling component of Kontact. It provides management of events and tasks, alarm notification, web export, network transparent handling of data, group scheduling, import and export of calendar files and more. It is able to work together with a wide variety of calendaring services, including NextCloud, Kolab, Google Calendar and others. KOrganizer is fully customisable to your needs and is an integral part of the Kontact suite, which aims to be a complete solution for organising your personal data. KOrganizer supports the two dominant standards for storing and exchanging calendar data, vCalendar and iCalendar.</p>
     <p xml:lang="es">KOrganizer es el componente de calendario y planificación de KDE. Proporciona gestión de eventos y tareas, notificación de alarmas, exportación de web, manejo transparente de datos, planificación de grupos, importación y exportación de archivos de calendario y más cosas. Es capaz de funcionar junto a una amplia variedad de servicios de calendario, incluyendo NextCloud, Kolab, Google Calendar y otros. KOrganizer es completamente personalizable para sus necesidades y es una parte integral de la suite Kontact, con el deseo de ser una solución completa para organizar sus datos personales. KOrganizer implementa los dos estándares dominantes para almacenar e intercambiar datos de calendario,  vCalendar e iCalendar.</p>
     <p xml:lang="et">KOrganizer on Kontacti kalendri- ja ajastamise komponent. Selle pakutavate võimaluste hulka kuuluvad sündmuste ja ülesannete haldamine, häirega märguanded, veebieksport, võrguläbipaistvusega andmete käitlemine, grupitöö ajakavad, kalendrifailide import ja eksport ja veel palju muud. See suudab teha koostööd paljude kalendriteenustega, näiteks NextCloud, Kolab, Google Calendar ja nii edasi. KOrganizer on igati seadistatav just sinu vajadusi arvesse võttes ja kuulub lahutamatu osana Kontacti komplekti, mis püüab välja pakkuda kõikehõlmavat lahendust oma personaalsete andmete korraldamiseks. KOrganizer toetab kaht levinumat kalendriandmete salvestamise ja vahetamise standardit: vCalendar ja iCalendar.</p>
+    <p xml:lang="eu">KOrganizer Kontact-en egutegi eta antolaketa osagaia da. Ekitaldien eta atazen kudeaketa hornitzen du, alarma jakinarazpenak, webera esportatzea, sarearekiko gardena den datuen maneiua, talde antolaketa, egutegi fitxategiak inportatzea eta esportatzea eta gehiago. Egutegi zerbitzu anitzekin elkarlanean aritzeko gai da, tartean NextCloud, Kolab, Google Calendar eta beste batzuk. KOrganizer, zure beharren arabera, neurrira erabat egokitu dezakezu eta Kontact suitearen zati integral bat da, zein zure datu pertsonalak antolatzeko soluzio oso bat izan nahi duen. KOrganizer-rek egutegi-datuak gordetzeko eta trukatzeko bi estandar nagusiak, vCalendar eta iCalendar onartzen ditu.</p>
     <p xml:lang="fi">KOrganizer on Kontactin kalenteri- ja ajanhallintaosa. Se tarjoaa tapahtumien ja tehtävien hallinnan, hälytykset, viennin verkkoon, tietojen käsittelyn verkossa läpinäkyvästi, ryhmäaikataulutuksen, kalenteritietojen tuonnin ja viennin ja paljon muuta. Ohjelma osaa toimia yhdessä eri kalenteripalvelujen kuten NextCloudin, Kolabin, Googlen kalenterin ja muiden kanssa. KOrganizer on täysin tarpeisiisi mukautettavissa ja on kiinteä osa Kontactia, joka pyrkii tarjoamaan täyden ratkaisun henkilökohtaisiin tiedonhallintaasi. KOrganizer tukee kumpaakin hallitsevaa kalenteritiedon tallennus- ja tiedonvaihtostandardia, vCalendaria ja iCalendaria.</p>
     <p xml:lang="fr">KOrganizer est le composant de calendrier et d'agenda de Kontact. Il vous permet notamment de gérer des évènements, tâches, notifications d'alarme, exportations web, accès transparent aux données via le réseau, réunions de groupe, importation et exportation de fichiers de calendriers. Il est en mesure d'interagir avec de nombreux services de calendriers (NextCloud, Kolab, Google Calendar, etc.). KOrganizer est entièrement paramétrable en fonction de vos besoins et fait partie intégrante de la suite Kontact, une solution complète d'organisation de vos données personnelles. KOrganizer prend en charge les deux principaux standard de stockage et d'échange de données de calendrier : vCalendar et iCalendar.</p>
     <p xml:lang="gl">KOrganizer é a compoñente de calendario e planificación de Kontact. Fornece xestión de eventos e tarefas, notificacións de alarma, exportación web, xestión de datos sen importar a rede, planificación de grupo, importación e exportación de ficheiros de calendario e máis. Pode funcionar xunto cunha grande variedade de servizos de calendario, entre eles NextCloud, Kolab e Google Calendar. KOrganizer pode axustarse completamente ás súas necesidades e trátase dunha parte integral da colección de software Kontact, que pretende ser unha solución completa de organización de datos persoais. KOrganizer é compatíbel cos dous estándares principais de almacenamento e intercambio de datos de calendario, vCalendar e iCalendar.</p>
@@ -154,6 +158,7 @@
     <p xml:lang="en-GB">Features:</p>
     <p xml:lang="es">Características:</p>
     <p xml:lang="et">Omadused:</p>
+    <p xml:lang="eu">Eginbideak:</p>
     <p xml:lang="fi">Ominaisuudet:</p>
     <p xml:lang="fr">Fonctionnalités :</p>
     <p xml:lang="gl">Funcionalidades:</p>
@@ -193,6 +198,7 @@
       <li xml:lang="en-GB">Support for multiple calendars and to-do lists</li>
       <li xml:lang="es">Admite varios calendarios y listas de tareas pendientes</li>
       <li xml:lang="et">Mitme kalendri ja ülesannete nimekirja toetus</li>
+      <li xml:lang="eu">Egutegi eta zeregin zerrenda anizkoitzak onartzen ditu</li>
       <li xml:lang="fi">Useiden kalenterien ja tehtävälistojen tuki</li>
       <li xml:lang="fr">Prise en charge de plusieurs calendriers et listes de choses à faire</li>
       <li xml:lang="gl">Compatíbel con varios formatos de calendario e de lista de tarefas.</li>
@@ -225,6 +231,7 @@
       <li xml:lang="en-GB">Storage model</li>
       <li xml:lang="es">Modelo de almacenamiento</li>
       <li xml:lang="et">Salvestimudel</li>
+      <li xml:lang="eu">Biltegiratze eredua</li>
       <li xml:lang="fi">Tietovarastomalli</li>
       <li xml:lang="fr">Modèle de stockage</li>
       <li xml:lang="gl">Modelo de almacenamento.</li>
@@ -257,6 +264,7 @@
       <li xml:lang="en-GB">Undo and Redo</li>
       <li xml:lang="es">Deshacer y rehacer</li>
       <li xml:lang="et">Tagasivõtmine ja uuestitegemine</li>
+      <li xml:lang="eu">Desegin eta berregin</li>
       <li xml:lang="fi">Kumoaminen ja uudelleen tekeminen</li>
       <li xml:lang="fr">Annuler et Refaire</li>
       <li xml:lang="gl">Funcionalidade de desfacer e refacer.</li>
@@ -289,6 +297,7 @@
       <li xml:lang="en-GB">To-do integration with agenda view</li>
       <li xml:lang="es">Integración de tareas pendientes con la vista de agenda</li>
       <li xml:lang="et">Ülesannete lõimimine päevakavavaatega</li>
+      <li xml:lang="eu">Zereginen integrazioa agenda ikuspegiarekin</li>
       <li xml:lang="fi">Tehtävien integrointi päivyrinäkymään</li>
       <li xml:lang="fr">Intégration de listes de choses à faire avec la vue agenda</li>
       <li xml:lang="gl">Integración da lista de tarefas coa vista da axenda.</li>
@@ -321,6 +330,7 @@
       <li xml:lang="en-GB">Attachments for events and to-dos</li>
       <li xml:lang="es">Adjuntos para eventos y tareas pendientes</li>
       <li xml:lang="et">Sündmuste ja ülesannete manused</li>
+      <li xml:lang="eu">Ekitaldietarako eta zereginetarako eranskinak</li>
       <li xml:lang="fi">Liitteet tapahtumille ja tehtäville</li>
       <li xml:lang="fr">Pièces jointes pour les évènements et les choses à faire</li>
       <li xml:lang="gl">Anexos para eventos e tarefas.</li>
@@ -352,6 +362,7 @@
       <li xml:lang="en-GB">Quick to-do and event entries</li>
       <li xml:lang="es">Entradas rápidas para tareas pendientes y eventos</li>
       <li xml:lang="et">Kiire ülesannete ja sündmuste sisestamine</li>
+      <li xml:lang="eu">Zeregin eta ekitaldi sarrera azkarrak</li>
       <li xml:lang="fi">Nopeat tehtävä- ja tapahtumamerkinnät</li>
       <li xml:lang="fr">Saisie rapide d'évènements et choses à faire</li>
       <li xml:lang="gl">Entradas rápidas de tarefas e eventos.</li>
@@ -384,6 +395,7 @@
       <li xml:lang="en-GB">Print support</li>
       <li xml:lang="es">Apoyo de impresión</li>
       <li xml:lang="et">Trükkimise toetus</li>
+      <li xml:lang="eu">Inprimatzeko euskarria</li>
       <li xml:lang="fi">Tulostustuki</li>
       <li xml:lang="fr">Prise en charge d'impression</li>
       <li xml:lang="gl">Permite imprimir.</li>
