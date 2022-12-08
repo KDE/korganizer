@@ -327,7 +327,7 @@ msgid ""
 "iCalendar or vCalendar file into your current calendar collection."
 msgstr ""
 "Seleccioneu esta entrada del menú si voleu importar el contingut d'un fitxer "
-"iCalendar o vCalendar a la col·lecció actual de calendari."
+"iCalendar o vCalendar a dins de la col·lecció actual de calendari."
 
 #: actionmanager.cpp:253
 #, kde-format
@@ -4088,7 +4088,7 @@ msgid ""
 "the \"View\" menu."
 msgstr ""
 "Seleccioneu el nombre «x» de dies que es mostraran en la vista de dies "
-"propers. Per accedir a la vista dels «x» dies propers, trieu l'element del "
+"propers. Per a accedir a la vista dels «x» dies propers, trieu l'element del "
 "menú «Propers x dies» des del menú «Visualitza»."
 
 #. i18n: ectx: tooltip, entry, group (General View)
@@ -5597,7 +5597,7 @@ msgid ""
 "For example, the search pattern “meet*boss” matches “Meeting with boss”. The "
 "pattern “c?t” would match “cat”, “cot”, and so on."
 msgstr ""
-"Examina diversos camps per veure si contenen el patró de busca: el patró "
+"Examina diversos camps per a veure si contenen el patró de busca: el patró "
 "«reunió» coincidirà amb «reunió de llançament». S'admeten els comodins "
 "«*» (coincidix amb qualsevol nombre de caràcters) i «?» (coincidix amb "
 "qualsevol caràcter únic). Per exemple, el patró de busca «reunió*direcció» "
