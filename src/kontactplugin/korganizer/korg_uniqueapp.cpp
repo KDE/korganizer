@@ -13,12 +13,6 @@
 
 #include <KStartupInfo>
 #include <KWindowSystem>
-#include <config-korganizer.h>
-
-#include "kwindowsystem_version.h"
-#if KWINDOWSYSTEM_VERSION >= QT_VERSION_CHECK(5, 101, 0)
-#include <KX11Extras>
-#endif
 
 #include <QDBusConnection>
 #include <QDBusMessage>
@@ -47,13 +41,7 @@ int KOrganizerUniqueAppHandler::activate(const QStringList &args, const QString 
     QWidget *mWidget = mainWidget();
     if (mWidget) {
         mWidget->show();
-#if KWINDOWSYSTEM_VERSION < QT_VERSION_CHECK(5, 101, 0)
-        KWindowSystem::forceActiveWindow(mWidget->winId());
-#else
-#if KDEPIM_HAVE_X11
-        KX11Extras::forceActiveWindow(mWidget->winId());
-#endif
-#endif
+        KWindowSystem::activateWindow(mWidget->windowHandle());
         KStartupInfo::appStarted();
     }
 
