@@ -3886,7 +3886,10 @@ msgid "Preferences"
 msgstr ""
 
 #: prefs/kprefsdialog.cpp:848
-#, kde-format
+#, fuzzy, kde-format
+#| msgid ""
+#| "You are about to set all preferences to default values. All custom "
+#| "modifications will be lost."
 msgid ""
 "You are about to set all preferences to default values. All custom "
 "modifications will be lost."
@@ -3895,12 +3898,14 @@ msgstr ""
 "Perderanse todas as modificacións personalizadas."
 
 #: prefs/kprefsdialog.cpp:850
-#, kde-format
+#, fuzzy, kde-format
+#| msgid "Setting Default Preferences"
 msgid "Setting Default Preferences"
 msgstr "Poñendo as preferencias por omisión"
 
 #: prefs/kprefsdialog.cpp:851
-#, kde-format
+#, fuzzy, kde-format
+#| msgid "Reset to Defaults"
 msgid "Reset to Defaults"
 msgstr "Reiniciar ás predeterminadas"
 
