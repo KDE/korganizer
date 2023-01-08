@@ -8,7 +8,7 @@ msgstr ""
 "Project-Id-Version: korganizer\n"
 "Report-Msgid-Bugs-To: https://bugs.kde.org\n"
 "POT-Creation-Date: 2022-12-06 00:46+0000\n"
-"PO-Revision-Date: 2023-01-06 06:39+0100\n"
+"PO-Revision-Date: 2023-01-07 07:44+0100\n"
 "Last-Translator: Temuri Doghonadze <temuri.doghonadze@gmail.com>\n"
 "Language-Team: Georgian <kde-i18n-doc@kde.org>\n"
 "Language: ka\n"
@@ -49,7 +49,12 @@ msgid ""
 "Copyright © 2004–2005 Reinhold Kainhofer\n"
 "Copyright © 2006–2012 Allen Winter\n"
 "Copyright © 2012–2022 KOrganizer authors"
-msgstr "s"
+msgstr ""
+"Copyright © 1997–1999 Preston Brown\n"
+"Copyright © 2000–2004, 2007 Cornelius Schumacher\n"
+"Copyright © 2004–2005 Reinhold Kainhofer\n"
+"Copyright © 2006–2012 Allen Winter\n"
+"Copyright © 2012–2022 KOrganizer -ის ავტორები"
 
 #: aboutdata.cpp:30 kontactplugin/specialdates/specialdates_plugin.cpp:42
 #, kde-format
@@ -778,13 +783,13 @@ msgstr "&დღე"
 #, kde-format
 msgid "&Next Day"
 msgid_plural "&Next %1 Days"
-msgstr[0] ""
-msgstr[1] ""
+msgstr[0] "&შემდეგი დღე"
+msgstr[1] "&შემდეგი %1 დღე"
 
 #: actionmanager.cpp:553
 #, kde-format
 msgid "W&ork Week"
-msgstr ""
+msgstr "&სამუშაო კვირა"
 
 #: actionmanager.cpp:558
 #, kde-format
@@ -800,13 +805,13 @@ msgstr "ახალი &მოვლენა..."
 #, kde-format
 msgctxt "@info:status"
 msgid "Create a new Event"
-msgstr ""
+msgstr "ახალი მოვლენის შექმნა"
 
 #: actionmanager.cpp:567
 #, kde-format
 msgctxt "@info:tooltip"
 msgid "Create a new Event"
-msgstr ""
+msgstr "ახალი მოვლენის შექმნა"
 
 #: actionmanager.cpp:569
 #, kde-format
@@ -883,13 +888,13 @@ msgstr "მორგება"
 #, kde-format
 msgctxt "@info:status"
 msgid "Configure the view"
-msgstr ""
+msgstr "ხედის მორგება"
 
 #: actionmanager.cpp:605
 #, kde-format
 msgctxt "@info:tooltip"
 msgid "Configure the current view"
-msgstr ""
+msgstr "მიმდინარე ხედის მორგება"
 
 #: actionmanager.cpp:607
 #, kde-format
@@ -1076,42 +1081,42 @@ msgstr ""
 #: actionmanager.cpp:1257
 #, kde-format
 msgid "&Show Event"
-msgstr ""
+msgstr "&მოვლენის ჩვენება"
 
 #: actionmanager.cpp:1260
 #, kde-format
 msgid "&Edit Event..."
-msgstr ""
+msgstr "&მოვლენის ჩასწორება"
 
 #: actionmanager.cpp:1263
 #, kde-format
 msgid "&Delete Event"
-msgstr ""
+msgstr "მოვლენის &წაშლა"
 
 #: actionmanager.cpp:1271
 #, kde-format
 msgid "&Show To-do"
-msgstr ""
+msgstr "&გეგმის ჩვენება"
 
 #: actionmanager.cpp:1274 kontactplugin/korganizer/todosummarywidget.cpp:321
 #, kde-format
 msgid "&Edit To-do..."
-msgstr ""
+msgstr "&გეგმის ჩასწორება"
 
 #: actionmanager.cpp:1277 kontactplugin/korganizer/todosummarywidget.cpp:323
 #, kde-format
 msgid "&Delete To-do"
-msgstr ""
+msgstr "&გეგმის წაშლა"
 
 #: actionmanager.cpp:1410 actionmanager.cpp:1516
 #, kde-format
 msgid "Attach as &link"
-msgstr ""
+msgstr "&ბმულად მიბმა"
 
 #: actionmanager.cpp:1411 actionmanager.cpp:1517
 #, kde-format
 msgid "Attach &inline"
-msgstr ""
+msgstr "&ხაზშივე მიბმა"
 
 #: actionmanager.cpp:1412
 #, kde-format
@@ -1131,7 +1136,7 @@ msgstr ""
 #: actionmanager.cpp:1453
 #, kde-format
 msgid "Remove Attachments"
-msgstr ""
+msgstr "მიმაგრებული ფაილების კოპირება"
 
 #: actionmanager.cpp:1604
 #, kde-format
@@ -1538,17 +1543,17 @@ msgstr ""
 #: calendarview.cpp:2312
 #, kde-format
 msgid "Delete C&urrent"
-msgstr ""
+msgstr "&მიმდინარს წაშლა"
 
 #: calendarview.cpp:2314
 #, kde-format
 msgid "Delete &All"
-msgstr ""
+msgstr "&ყველას წაშლა"
 
 #: calendarview.cpp:2345 calendarview.cpp:2352
 #, kde-format
 msgid "Delete \"%1\""
-msgstr ""
+msgstr "\"%1\"-ის წაშლა"
 
 #: calendarview.cpp:2380
 #, kde-format
@@ -3539,7 +3544,7 @@ msgstr ""
 #, kde-format
 msgctxt "@title:tab"
 msgid "Agenda View"
-msgstr ""
+msgstr "დღის წესრიგის ხედი"
 
 #: prefs/koprefsdialogviews.cpp:91
 #, kde-format
