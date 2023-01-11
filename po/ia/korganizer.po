@@ -2,13 +2,13 @@
 # This file is distributed under the same license as the PACKAGE package.
 #
 # g.sora <g.sora@tiscali.it>, 2011, 2012.
-# Giovanni Sora <g.sora@tiscali.it>, 2012, 2013, 2016, 2020, 2021, 2022.
+# Giovanni Sora <g.sora@tiscali.it>, 2012, 2013, 2016, 2020, 2021, 2022, 2023.
 msgid ""
 msgstr ""
 "Project-Id-Version: \n"
 "Report-Msgid-Bugs-To: https://bugs.kde.org\n"
 "POT-Creation-Date: 2022-12-06 00:46+0000\n"
-"PO-Revision-Date: 2022-07-15 12:03+0200\n"
+"PO-Revision-Date: 2023-01-10 16:26+0100\n"
 "Last-Translator: giovanni <g.sora@tiscali.it>\n"
 "Language-Team: Interlingua <kde-i18n-doc@kde.org>\n"
 "Language: ia\n"
@@ -1419,18 +1419,14 @@ msgid "Copying Failed"
 msgstr "Il falleva a copiar"
 
 #: calendarview.cpp:1496
-#, fuzzy, kde-format
-#| msgctxt "@info"
-#| msgid ""
-#| "Unable to remove the item \"%1\" from %2. However, a copy of this item "
-#| "has been put into %3."
+#, kde-format
 msgctxt "@info"
 msgid ""
 "Unable to remove the item \"%1\" from the original calendar. However, a copy "
 "of this item has been put into %2"
 msgstr ""
-"Incapace de remover elemento \"%1\" ex %2. Totevia un copia de iste "
-"elementos ha essite ponite in %3."
+"Incapace a remover elemento \"%1\" ex le calendario original. Totevia un "
+"copia de iste elemento ha essite ponite in %2."
 
 #: calendarview.cpp:1500 calendarview.cpp:1516
 #, kde-format
