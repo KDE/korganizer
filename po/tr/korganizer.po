@@ -14,13 +14,13 @@
 # Volkan Gezer <volkangezer@gmail.com>, 2013-2014, 2015, 2017.
 # Yaşar Şentürk <yasar@kde.org.tr>, 2005.
 # Kaan Ozdincer <kaanozdincer@gmail.com>, 2014.
-# Emir SARI <emir_sari@icloud.com>, 2022.
+# Emir SARI <emir_sari@icloud.com>, 2022, 2023.
 msgid ""
 msgstr ""
 "Project-Id-Version: kdepim-kde4\n"
 "Report-Msgid-Bugs-To: https://bugs.kde.org\n"
 "POT-Creation-Date: 2022-10-30 00:47+0000\n"
-"PO-Revision-Date: 2022-11-24 17:10+0300\n"
+"PO-Revision-Date: 2023-01-10 21:05+0300\n"
 "Last-Translator: Emir SARI <emir_sari@icloud.com>\n"
 "Language-Team: Turkish <kde-l10n-tr@kde.org>\n"
 "Language: tr\n"
@@ -28,7 +28,7 @@ msgstr ""
 "Content-Type: text/plain; charset=UTF-8\n"
 "Content-Transfer-Encoding: 8bit\n"
 "Plural-Forms: nplurals=2; plural=(n > 1);\n"
-"X-Generator: Lokalize 22.08.3\n"
+"X-Generator: Lokalize 22.12.0\n"
 "(http: //www.transifex.com/projects/p/kdepim-k-tr/language/tr/)\n"
 "X-POOTLE-MTIME: 1413104942.000000\n"
 
@@ -50,7 +50,7 @@ msgstr ""
 #: kontactplugin/specialdates/specialdates_plugin.cpp:23 korganizer_part.cpp:63
 #, kde-format
 msgid "KOrganizer"
-msgstr "KOrganizer"
+msgstr "K Organizatör"
 
 #: aboutdata.cpp:20
 #, kde-format
@@ -70,7 +70,7 @@ msgstr ""
 "Telif hakkı © 2000–2004, 2007 Cornelius Schumacher\n"
 "Telif hakkı © 2004–2005 Reinhold Kainhofer\n"
 "Telif hakkı © 2006–2012 Allen Winter\n"
-"Telif hakkı © 2012–2022 KOrganizer yazarları"
+"Telif hakkı © 2012–2022 K Organizatör yazarları"
 
 #: aboutdata.cpp:30 kontactplugin/specialdates/specialdates_plugin.cpp:42
 #, kde-format
@@ -1075,7 +1075,7 @@ msgstr "Et&iketleri Yönet..."
 #: actionmanager.cpp:765
 #, kde-format
 msgid "&Configure KOrganizer..."
-msgstr "&KOrganizer'ı Yapılandır..."
+msgstr "&K Organizatör'ü Yapılandır..."
 
 #: actionmanager.cpp:842
 #, kde-format
@@ -1358,7 +1358,7 @@ msgid ""
 "View the details of events, journal entries or to-dos selected in "
 "KOrganizer's main view here."
 msgstr ""
-"KOrganizer'in ana görünümünde seçilmiş etkinlikler, günlük girdileri veya "
+"K Organizatör'ün ana görünümünde seçilmiş etkinlikler, günlük girdileri veya "
 "yapılacak işler ile ilgili ayrıntıları burada görüntüle."
 
 #: calendarview.cpp:604
@@ -1481,7 +1481,7 @@ msgstr ""
 #: calendarview.cpp:2315 calendarview.cpp:2345
 #, kde-format
 msgid "KOrganizer Confirmation"
-msgstr "KOrganizer Onayı"
+msgstr "K Organizatör Onayı"
 
 #: calendarview.cpp:1565
 #, kde-format
@@ -1926,7 +1926,7 @@ msgid ""
 "shows a week. The number in the left column is the number of the week in the "
 "year. Press it to select the whole week.</p></qt>"
 msgstr ""
-"<qt><p>KOrganizer'in ana görünümünde görüntülemek istediğiniz tarihleri "
+"<qt><p>K Organizatör'ün ana görünümünde görüntülemek istediğiniz tarihleri "
 "buradan seçin. Birden fazla günü seçmek için fare düğmesini basılı tutun.</"
 "p><p>En üstteki düğmelere tıklayarak önceki/sonraki ayları veya yılları "
 "görüntüleyin.</p><p>Her satır bir haftayı gösterir. Sol sütundaki sayı, "
@@ -3633,7 +3633,7 @@ msgid ""
 "week. If this is a work day for you, check this box, or the working hours "
 "will not be marked with color."
 msgstr ""
-"KOrganizer'ın haftanın bu günü için çalışma saatlerini imlemesi için bu "
+"K Organizatör'ün haftanın bu günü için çalışma saatlerini imlemesi için bu "
 "kutuyu işaretleyin. Eğer bu sizin bir çalışma gününüzse kutuyu imleyin; aksi "
 "takdirde çalışma saatleri renkle imlenmeyecektir."
 
@@ -3793,7 +3793,7 @@ msgstr "KCM Kullanıcı Geri Bildirimi"
 #: prefs/koprefsuserfeedback.cpp:31
 #, kde-format
 msgid "KOrganizer Configure User FeedBack"
-msgstr "KOrganizer Kullanıcı Geri Bildirimini Yapılandır"
+msgstr "K Organizatör Kullanıcı Geri Bildirimini Yapılandır"
 
 #: prefs/koprefsuserfeedback.cpp:33
 #, kde-format
@@ -3902,7 +3902,7 @@ msgid ""
 msgstr ""
 "Bu açılır kutudan yerleşim listesini seçerek saat bölgesini seçin. "
 "Bulunduğunuz şehir listelenmemişse aynı zaman bölgesini paylaşan bir "
-"başkasını seçin. KOrganizer gün ışığından yararlanma ayarlarını otomatik "
+"başkasını seçin. K Organizatör gün ışığından yararlanma ayarlarını otomatik "
 "olarak yapacaktır."
 
 #. i18n: ectx: label, entry (DayBegins), group (Time &amp; Date)
@@ -3973,8 +3973,8 @@ msgid ""
 "Enter the start time for the working hours here. The working hours will be "
 "marked with color by KOrganizer."
 msgstr ""
-"Çalışma saati için başlangıç zamanını buraya girin. Çalışma saatleri "
-"KOrganizer tarafından renkli olarak işaretlenecektir."
+"Çalışma saati için başlangıç zamanını buraya girin. Çalışma saatleri K "
+"Organizatör tarafından renkli olarak işaretlenecektir."
 
 #. i18n: ectx: label, entry (WorkingHoursEnd), group (Time &amp; Date)
 #: settings/korganizer.kcfg:68
@@ -3989,8 +3989,8 @@ msgid ""
 "Enter the ending time for the working hours here. The working hours will be "
 "marked with color by KOrganizer."
 msgstr ""
-"Çalışma saatleri için bitiş zamanını buraya girin. Çalışma saatleri, "
-"KOrganizer tarafından renkli olarak işaretlenecektir."
+"Çalışma saatleri için bitiş zamanını buraya girin. Çalışma saatleri, K "
+"Organizatör tarafından renkli olarak işaretlenecektir."
 
 #. i18n: ectx: label, entry, group (Time &amp; Date)
 #: settings/korganizer.kcfg:74
@@ -4005,7 +4005,7 @@ msgid ""
 "Check this box to prevent KOrganizer from marking the working hours on "
 "holidays."
 msgstr ""
-"KOrganizer'ın tatillerde çalışma saatlerini imlemesini engellemek için bu "
+"K Organizatör'ün tatillerde çalışma saatlerini imlemesini engellemek için bu "
 "kutuyu işaretleyin."
 
 #. i18n: ectx: label, entry (ColorMonthBusyDaysEnabled), group (Time &amp; Date)
@@ -4596,7 +4596,7 @@ msgid ""
 "but other widgets, such as the date navigator, the item details and the "
 "calendars list, will not be displayed."
 msgstr ""
-"Ay görünümünde iken tam KOrganizer penceresini kullanmak için bu kutuyu "
+"Ay görünümünde iken tam K Organizatör penceresini kullanmak için bu kutuyu "
 "işaretleyin. Bu kutu işaretliyse aylık görünümde bir miktar yer "
 "kazanırsınız; ancak tarih gezgini, ögeye ait ayrıntılar ve takvim listesi "
 "gibi diğer özellikler görüntülenmez."
@@ -4693,7 +4693,7 @@ msgstr "Yapılacaklar listesi görünümü tam ekran kullanır"
 #: settings/korganizer.kcfg:314
 #, kde-format
 msgid "Display to-do list in a full KOrganizer window"
-msgstr "Yapılacaklar listesini tam bir KOrganizer penceresinde görüntüle"
+msgstr "Yapılacaklar listesini tam bir K Organizatör penceresinde görüntüle"
 
 #. i18n: ectx: whatsthis, entry, group (Todo View)
 #: settings/korganizer.kcfg:315
@@ -4704,10 +4704,11 @@ msgid ""
 "list view, but other widgets, such as the date navigator, the to-do details "
 "and the calendars list, will not be displayed."
 msgstr ""
-"Yapılacaklar listesi görünümünde iken tam KOrganizer penceresini kullanmak "
-"için bu kutuyu işaretleyin. Bu kutu işaretliyse yapılacaklar listesi "
-"görünümünde bir miktar yer kazanırsınız; ancak tarih gezgini, yapılacak işe "
-"ait ayrıntılar ve takvim listesi gibi diğer özellikler görüntülenmez."
+"Yapılacaklar listesi görünümünde iken tam K Organizatör penceresini "
+"kullanmak için bu kutuyu işaretleyin. Bu kutu işaretliyse yapılacaklar "
+"listesi görünümünde bir miktar yer kazanırsınız; ancak tarih gezgini, "
+"yapılacak işe ait ayrıntılar ve takvim listesi gibi diğer özellikler "
+"görüntülenmez."
 
 #. i18n: ectx: label, entry, group (Todo View)
 #: settings/korganizer.kcfg:320
@@ -5252,10 +5253,10 @@ msgid ""
 "and manages the access to it from other users."
 msgstr ""
 "Uygun/Meşgul bilgisini otomatik olarak yüklemek için bu kutuyu işaretleyin.\n"
-"Bu seçeneği atlamak ve KOrganizer'in Zamanlama menüsünü kullanarak Uygun/"
+"Bu seçeneği atlamak ve K Organizatör'ün Zamanlama menüsünü kullanarak Uygun/"
 "Meşgul bilgisini yüklemek veya postalamak mümkündür.\n"
-"Not: KOrganizer, KDE Kolab istemcisi olarak çalışıyorsa buna gerek yoktur; "
-"çünkü Kolab2 sunucusu Uygun/Meşgul bilginizin yayımlanması ve başka "
+"Not: K Organizatör, KDE Kolab istemcisi olarak çalışıyorsa buna gerek "
+"yoktur; çünkü Kolab2 sunucusu Uygun/Meşgul bilginizin yayımlanması ve başka "
 "kullanıcıların bu bilgiye erişmesi ile ilgili işlemleri yapmaktadır."
 
 #. i18n: ectx: property (text), widget (QCheckBox, publishEnable)
@@ -5382,7 +5383,7 @@ msgid ""
 "For security reasons, it is not recommended to store your password in the "
 "configuration file."
 msgstr ""
-"KOrganizer'ın parolanızı anımsaması ve onu yapılandırma dosyasında "
+"K Organizatör'ün parolanızı anımsaması ve onu yapılandırma dosyasında "
 "saklayarak her Uygun/Meşgul bilginizi gönderdiğinde sormasını engellemek "
 "için bu kutuyu işaretleyin.\n"
 "Güvenlik nedenlerinden dolayı, parolanızı yapılandırma dosyasında saklamak "
