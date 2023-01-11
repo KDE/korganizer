@@ -23,7 +23,7 @@
         "Description[ru]": "Календарь",
         "Description[sl]": "Vstavek Kontact za KOrganizer",
         "Description[sv]": "Kontact-insticksprogram för Korganizer",
-        "Description[tr]": "Kontact KOrganizer Eklentisi",
+        "Description[tr]": "Kontact K Organizatör Eklentisi",
         "Description[uk]": "Додаток календаря KOrganizer для Kontact",
         "Description[x-test]": "xxKontact KOrganizer Pluginxx",
         "Description[zh_CN]": "Kontact KOrganizer 插件",
