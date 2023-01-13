@@ -5489,7 +5489,7 @@ msgid ""
 "make this possible."
 msgstr ""
 "Marqueu esta casella per a recuperar automàticament la informació de lliure/"
-"ocupat d'altri. Cal tindre present que heu d'omplir correctament la "
+"ocupat d'altri. Cal tindre present que heu d'emplenar correctament la "
 "informació del servidor per tal de fer-ho possible."
 
 #. i18n: ectx: property (text), widget (QCheckBox, retrieveEnable)
