@@ -311,7 +311,7 @@ msgstr "Importa un &calendari..."
 #, kde-format
 msgctxt "@info:status"
 msgid "Import a calendar"
-msgstr "Importació d'un calendari"
+msgstr "Importeu un calendari"
 
 #: actionmanager.cpp:244
 #, kde-format
@@ -1242,7 +1242,7 @@ msgstr ""
 #, kde-format
 msgctxt "@title:window"
 msgid "Import Calendar"
-msgstr "Importació d'un calendari"
+msgstr "Importeu un calendari"
 
 #: actionmanager.cpp:1648
 #, kde-format
@@ -1541,7 +1541,7 @@ msgstr "Voleu sobreescriure %1?"
 #, kde-format
 msgctxt "@title:window"
 msgid "Export Calendar"
-msgstr "Exportació d'un calendari"
+msgstr "Exporteu un calendari"
 
 #: calendarview.cpp:1783
 #, kde-format
@@ -1935,7 +1935,7 @@ msgstr ""
 #, kde-format
 msgctxt "@title::window"
 msgid "Edit Calendar Filters"
-msgstr "Edició dels filtres de calendari"
+msgstr "Editeu els filtres de calendari"
 
 #: dialog/filtereditdialog.cpp:87
 #, kde-format
@@ -2153,19 +2153,20 @@ msgid ""
 "name to be edited, set the widget name in Qt Designer.</p></qt>"
 msgstr ""
 "<qt><p>Esta secció permet afegir els vostres propis elements de la IGU "
-"(«<i>Ginys</i>») per a guardar els valors personals a %1. Procediu tal com "
-"es descriu tot seguit:</p><ol><li>Feu clic en «<i>Edició amb Qt Designer</"
-"i>»</li><li>En el diàleg, seleccioneu «<i>Giny</i>», després feu clic en "
-"<i>Bé</i></li><li>Afegiu els vostres ginys al formulari</li><li>Guardeu el "
-"fitxer en el directori proposat per Qt Designer</li><li>Tanqueu Qt Designer</"
-"li></ol><p>Si ja teniu un fitxer designer (*.ui) ubicat en algun lloc del "
-"disc dur, senzillament escolliu «<i>Importa pàgina</i>»</p><p><b>Important:</"
-"b> el nom de cada giny d'entrada que situeu al formulari ha de començar amb "
-"«<i>X_</i>»; així que si voleu que el giny corresponga al vostre camp "
-"d'entrada personalitzat «<i>X-Foo</i>», establiu la propietat del <i>nom</i> "
-"del giny a «<i>X_Foo</i>».</p><p><b>Important:</b> el giny editarà els camps "
-"personalitzats amb el nom d'aplicació %2. Per a canviar el nom de "
-"l'aplicació editora, establiu el nom del giny a Qt Designer.</p></qt>"
+"(«<i>Ginys</i>») per que es guardarà els valors personals a %1. Procediu tal "
+"com es descriu tot seguit:</p><ol><li>Feu clic en «<i>Edició amb Qt "
+"Designer</i>»</li><li>En el diàleg, seleccioneu «<i>Giny</i>», després feu "
+"clic en <i>Bé</i></li><li>Afegiu els vostres ginys al formulari</"
+"li><li>Guardeu el fitxer en el directori proposat per Qt Designer</"
+"li><li>Tanqueu Qt Designer</li></ol><p>Si ja teniu un fitxer designer (*.ui) "
+"ubicat en algun lloc del disc dur, senzillament escolliu «<i>Importa pàgina</"
+"i>»</p><p><b>Important:</b> el nom de cada giny d'entrada que situeu al "
+"formulari ha de començar amb «<i>X_</i>»; així que si voleu que el giny "
+"corresponga al vostre camp d'entrada personalitzat «<i>X-Foo</i>», establiu "
+"la propietat del <i>nom</i> del giny a «<i>X_Foo</i>».</p><p><b>Important:</"
+"b> el giny editarà els camps personalitzats amb el nom d'aplicació %2. Per a "
+"canviar el nom de l'aplicació editora, establiu el nom del giny a Qt "
+"Designer.</p></qt>"
 
 #: kcmdesignerfields.cpp:331
 #, kde-format
@@ -2369,7 +2370,7 @@ msgstr "No s'ha pogut guardar %1 «%2»."
 #: kontactplugin/korganizer/apptsummaryconfig_base.ui:8
 #, kde-format
 msgid "Event Summary Configuration"
-msgstr "Configuració del resum dels esdeveniments"
+msgstr "Configureu el resum dels esdeveniments"
 
 #. i18n: ectx: property (title), widget (QGroupBox, mDaysButtonGroup)
 #: kontactplugin/korganizer/apptsummaryconfig_base.ui:14
@@ -2772,7 +2773,7 @@ msgstr ""
 #: kontactplugin/korganizer/todosummaryconfig_base.ui:16
 #, kde-format
 msgid "To-do Summary Configuration"
-msgstr "Configuració del resum de les tasques pendents"
+msgstr "Configureu el resum de les tasques pendents"
 
 #. i18n: ectx: property (title), widget (QGroupBox, mDaysGroup)
 #: kontactplugin/korganizer/todosummaryconfig_base.ui:22
@@ -3077,7 +3078,7 @@ msgstr ","
 #: kontactplugin/specialdates/sdsummaryconfig_base.ui:16
 #, kde-format
 msgid "Special Dates Summary Configuration"
-msgstr "Configuració del resum de dates especials"
+msgstr "Configureu el resum de dates especials"
 
 #. i18n: ectx: property (title), widget (QGroupBox, mDaysGroup)
 #: kontactplugin/specialdates/sdsummaryconfig_base.ui:22
@@ -3532,7 +3533,7 @@ msgstr "Personal"
 #, kde-format
 msgctxt "@title:group email settings"
 msgid "Email Settings"
-msgstr "Configuració del correu electrònic"
+msgstr "Configureu el correu electrònic"
 
 #: prefs/koprefsdialogmain.cpp:62
 #, kde-format
@@ -5963,7 +5964,7 @@ msgstr "Agenda %1"
 #, kde-format
 msgctxt "@title:window"
 msgid "Configure Side-By-Side View"
-msgstr "Configuració de la vista costat a costat"
+msgstr "Configureu la vista costat a costat"
 
 #. i18n: ectx: property (text), widget (QRadioButton, useDefaultRB)
 #: views/multiagendaview/multiagendaviewconfigwidget.ui:17
