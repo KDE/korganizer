@@ -16,9 +16,9 @@ set(KDEPIM_VERSION "${PIM_VERSION}${KDEPIM_DEV_VERSION} (${RELEASE_SERVICE_VERSI
 
 project(korganizer VERSION ${PIM_VERSION})
 
-set(KF5_MIN_VERSION "5.102.0")
+set(KF_MIN_VERSION "5.102.0")
 
-find_package(ECM ${KF5_MIN_VERSION} CONFIG REQUIRED)
+find_package(ECM ${KF_MIN_VERSION} CONFIG REQUIRED)
 
 set(CMAKE_MODULE_PATH ${ECM_MODULE_PATH})
 
@@ -79,24 +79,24 @@ set(CALENDARSUPPORT_LIB_VERSION "5.22.40")
 set(EVENTVIEW_LIB_VERSION "5.22.40")
 
 # Find KF5 package
-find_package(KF5I18n ${KF5_MIN_VERSION} CONFIG REQUIRED)
-find_package(KF5Config ${KF5_MIN_VERSION} CONFIG REQUIRED)
-find_package(KF5ConfigWidgets ${KF5_MIN_VERSION} CONFIG REQUIRED)
-find_package(KF5CoreAddons ${KF5_MIN_VERSION} CONFIG REQUIRED)
-find_package(KF5Crash ${KF5_MIN_VERSION} REQUIRED)
-find_package(KF5IconThemes ${KF5_MIN_VERSION} REQUIRED)
-find_package(KF5ItemViews ${KF5_MIN_VERSION} REQUIRED)
-find_package(KF5JobWidgets ${KF5_MIN_VERSION} REQUIRED)
-find_package(KF5KCMUtils ${KF5_MIN_VERSION} CONFIG REQUIRED)
-find_package(KF5NewStuff ${KF5_MIN_VERSION} CONFIG REQUIRED)
-find_package(KF5Parts ${KF5_MIN_VERSION} CONFIG REQUIRED)
-find_package(KF5WidgetsAddons ${KF5_MIN_VERSION} CONFIG REQUIRED)
-find_package(KF5WindowSystem ${KF5_MIN_VERSION} CONFIG REQUIRED)
-find_package(KF5XmlGui ${KF5_MIN_VERSION} CONFIG REQUIRED)
-find_package(KF5Notifications ${KF5_MIN_VERSION} CONFIG REQUIRED)
-find_package(KF5Holidays ${KF5_MIN_VERSION} CONFIG REQUIRED)
+find_package(KF5I18n ${KF_MIN_VERSION} CONFIG REQUIRED)
+find_package(KF5Config ${KF_MIN_VERSION} CONFIG REQUIRED)
+find_package(KF5ConfigWidgets ${KF_MIN_VERSION} CONFIG REQUIRED)
+find_package(KF5CoreAddons ${KF_MIN_VERSION} CONFIG REQUIRED)
+find_package(KF5Crash ${KF_MIN_VERSION} REQUIRED)
+find_package(KF5IconThemes ${KF_MIN_VERSION} REQUIRED)
+find_package(KF5ItemViews ${KF_MIN_VERSION} REQUIRED)
+find_package(KF5JobWidgets ${KF_MIN_VERSION} REQUIRED)
+find_package(KF5KCMUtils ${KF_MIN_VERSION} CONFIG REQUIRED)
+find_package(KF5NewStuff ${KF_MIN_VERSION} CONFIG REQUIRED)
+find_package(KF5Parts ${KF_MIN_VERSION} CONFIG REQUIRED)
+find_package(KF5WidgetsAddons ${KF_MIN_VERSION} CONFIG REQUIRED)
+find_package(KF5WindowSystem ${KF_MIN_VERSION} CONFIG REQUIRED)
+find_package(KF5XmlGui ${KF_MIN_VERSION} CONFIG REQUIRED)
+find_package(KF5Notifications ${KF_MIN_VERSION} CONFIG REQUIRED)
+find_package(KF5Holidays ${KF_MIN_VERSION} CONFIG REQUIRED)
 
-find_package(KF5DocTools ${KF5_MIN_VERSION})
+find_package(KF5DocTools ${KF_MIN_VERSION})
 set_package_properties(KF5DocTools PROPERTIES DESCRIPTION
     "Tools to generate documentation"
     TYPE OPTIONAL
@@ -106,8 +106,8 @@ set_package_properties(KF5DocTools PROPERTIES DESCRIPTION
 # Find KdepimLibs Package
 find_package(KF5PimTextEdit ${KPIMTEXTEDIT_LIB_VERSION} CONFIG REQUIRED)
 find_package(KF5Akonadi ${AKONADI_VERSION} CONFIG REQUIRED)
-find_package(KF5Contacts ${KF5_MIN_VERSION} CONFIG REQUIRED)
-find_package(KF5CalendarCore ${KF5_MIN_VERSION} CONFIG REQUIRED)
+find_package(KF5Contacts ${KF_MIN_VERSION} CONFIG REQUIRED)
+find_package(KF5CalendarCore ${KF_MIN_VERSION} CONFIG REQUIRED)
 find_package(KF5AkonadiContact ${AKONADI_CONTACT_VERSION} CONFIG REQUIRED)
 find_package(KF5IdentityManagement ${IDENTITYMANAGEMENT_LIB_VERSION} CONFIG REQUIRED)
 find_package(KF5MailTransportAkonadi ${KMAILTRANSPORT_LIB_VERSION} CONFIG REQUIRED)
