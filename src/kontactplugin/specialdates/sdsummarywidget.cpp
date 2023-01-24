@@ -30,6 +30,7 @@
 #include <KUrlLabel>
 #include <QDesktopServices>
 #include <QMenu>
+#include <QPointer>
 
 #include <QDate>
 #include <QEvent>

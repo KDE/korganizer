@@ -15,7 +15,7 @@ target_link_libraries(korganizer_interfaces
   KF5::EventViews
   KF5::AkonadiCore
   Qt::PrintSupport
-  KF5::Parts
+  KF${KF_MAJOR_VERSION}::Parts
 )
 
 set_target_properties(korganizer_interfaces PROPERTIES

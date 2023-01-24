@@ -48,13 +48,13 @@ if (COMPILE_WITH_UNITY_CMAKE_SUPPORT)
 endif()
 target_link_libraries(korganizer
     KF5::KontactInterface
-    KF5::CalendarCore
+    KF${KF_MAJOR_VERSION}::CalendarCore
     korganizerprivate
     korganizer_interfaces
     korganizer_core
     KF5::PimCommonAkonadi
-    KF5::Crash
-    KF5::WindowSystem
+    KF${KF_MAJOR_VERSION}::Crash
+    KF${KF_MAJOR_VERSION}::WindowSystem
     ${korganizer_userfeedback_LIB}
     )
 
@@ -73,12 +73,13 @@ target_link_libraries(korganizer_kcm_static
     korganizer_core
     korganizerprivate
     Qt::UiTools
-    KF5::CalendarCore
-    KF5::Holidays
+    KF${KF_MAJOR_VERSION}::CalendarCore
+    KF${KF_MAJOR_VERSION}::Holidays
     KF5::MailTransport
     KF5::PimCommon
     KF5::AkonadiWidgets
-    KF5::WindowSystem
+    KF${KF_MAJOR_VERSION}::WindowSystem
+    KF${KF_MAJOR_VERSION}::KIOWidgets
     )
 
 add_library(korganizer_configcolorsandfonts MODULE prefs/koprefsdialogcolorsandfonts.cpp prefs/koprefsdialogcolorsandfonts.h)
@@ -132,8 +133,9 @@ target_link_libraries(korganizerpart
     korganizer_interfaces
     korganizerprivate
     KF5::AkonadiCore
-    KF5::CalendarCore
+    KF${KF_MAJOR_VERSION}::CalendarCore
     KF5::CalendarUtils
+    KF${KF_MAJOR_VERSION}::KIOWidgets
     )
 
 install(TARGETS
@@ -332,20 +334,22 @@ target_link_libraries(korganizerprivate
     KF5::AkonadiCore
     KF5::AkonadiCalendar
     KF5::AkonadiNotes
-    KF5::Contacts
-    KF5::CalendarCore
+    KF${KF_MAJOR_VERSION}::Contacts
+    KF${KF_MAJOR_VERSION}::CalendarCore
     KF5::CalendarUtils
-    KF5::Holidays
+    KF${KF_MAJOR_VERSION}::Holidays
     KF5::Mime
     KF5::IdentityManagement
-    KF5::KCMUtils
-    KF5::NewStuffWidgets
+    KF${KF_MAJOR_VERSION}::KCMUtils
+    KF${KF_MAJOR_VERSION}::NewStuffWidgets
     KF5::Ldap
     KF5::AkonadiWidgets
-    KF5::IconThemes
-    KF5::WindowSystem
-    KF5::Notifications
-    KF5::ItemViews
+    KF${KF_MAJOR_VERSION}::IconThemes
+    KF${KF_MAJOR_VERSION}::WindowSystem
+    KF${KF_MAJOR_VERSION}::Notifications
+    KF${KF_MAJOR_VERSION}::ItemViews
+    KF${KF_MAJOR_VERSION}::JobWidgets
+    KF${KF_MAJOR_VERSION}::KIOGui
     ${korganizer_userfeedback_LIB}
     )
 

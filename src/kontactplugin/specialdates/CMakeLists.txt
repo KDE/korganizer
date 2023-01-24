@@ -17,9 +17,9 @@ add_library(kontact_specialdatesplugin MODULE ${kontact_specialdatesplugin_PART_
 set(_korganizerprivate_lib "korganizerprivate")
 
 target_link_libraries(kontact_specialdatesplugin
-  KF5::Contacts
-  KF5::CalendarCore
-  KF5::Holidays
+  KF${KF_MAJOR_VERSION}::Contacts
+  KF${KF_MAJOR_VERSION}::CalendarCore
+  KF${KF_MAJOR_VERSION}::Holidays
   KF5::KontactInterface
   KF5::AkonadiCore
   KF5::AkonadiContact
@@ -33,7 +33,7 @@ set(kcmsdsummary_PART_SRCS kcmsdsummary.cpp kcmsdsummary.h)
 ki18n_wrap_ui(kcmsdsummary_PART_SRCS sdsummaryconfig_base.ui)
 
 add_library(kcmsdsummary MODULE ${kcmsdsummary_PART_SRCS})
-target_link_libraries(kcmsdsummary Qt::Widgets KF5::KCMUtils KF5::I18n KF5::CoreAddons)
+target_link_libraries(kcmsdsummary Qt::Widgets KF${KF_MAJOR_VERSION}::KCMUtils KF${KF_MAJOR_VERSION}::I18n KF${KF_MAJOR_VERSION}::CoreAddons)
 
 ########### install files ###############
 

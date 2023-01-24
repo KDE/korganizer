@@ -9,7 +9,7 @@ add_test(NAME testkodaymatrix COMMAND testkodaymatrix)
 ecm_mark_as_test(testkodaymatrix)
 target_link_libraries(testkodaymatrix
   KF5::AkonadiCore
-  KF5::CalendarCore
+  KF${KF_MAJOR_VERSION}::CalendarCore
   KF5::CalendarSupport
   korganizer_core
   korganizerprivate
@@ -21,7 +21,7 @@ add_test(NAME testkodaymatrix_us COMMAND testkodaymatrix_us)
 ecm_mark_as_test(testkodaymatrix_us)
 target_link_libraries(testkodaymatrix_us
   KF5::AkonadiCore
-  KF5::CalendarCore
+  KF${KF_MAJOR_VERSION}::CalendarCore
   KF5::CalendarSupport
   korganizer_core
   korganizerprivate
@@ -37,7 +37,7 @@ set(koeventpopupmenutest_LIBS Qt::Test
   KF5::AkonadiCore
   KF5::AkonadiCalendar
   KF5::AkonadiNotes
-  KF5::CalendarCore
+  KF${KF_MAJOR_VERSION}::CalendarCore
   KF5::IncidenceEditor
   KF5::CalendarSupport
   korganizer_core
@@ -48,7 +48,7 @@ add_akonadi_isolated_test_advanced(koeventpopupmenutest.cpp "${koeventpopupmenut
 ecm_add_test(testtoggletodo.cpp
   LINK_LIBRARIES
     Qt${QT_MAJOR_VERSION}::Test
-    KF5::CalendarCore
+    KF${KF_MAJOR_VERSION}::CalendarCore
     KF5::IdentityManagement
     korganizer_core
     korganizerprivate
