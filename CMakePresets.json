@@ -10,6 +10,14 @@
             "hidden": true
         },
         {
+            "name": "base-qt6",
+            "displayName": "base preset",
+            "generator": "Ninja",
+            "binaryDir": "${sourceDir}/build-${presetName}",
+            "installDir": "$env{KF6}",
+            "hidden": true
+        },
+        {
             "name": "dev-mold",
             "displayName": "Build as debug + using mold linker",
             "cacheVariables": {
@@ -22,6 +30,19 @@
             ]
         },
         {
+            "name": "dev-textaddons-mold",
+            "displayName": "Build as debug + using mold linker",
+            "cacheVariables": {
+                "CMAKE_BUILD_TYPE": "Debug",
+                "CMAKE_EXPORT_COMPILE_COMMANDS": "ON",
+                "USE_KTEXTADDONS_LIB": "ON",
+                "CMAKE_SHARED_LINKER_FLAGS": "-fuse-ld=mold"
+            },
+            "inherits": [
+                "base"
+            ]
+        },
+	{
             "name": "dev",
             "displayName": "Build as debug",
             "cacheVariables": {
@@ -55,7 +76,7 @@
                 "CMAKE_EXPORT_COMPILE_COMMANDS": "ON"
             },
             "inherits": [
-                "base"
+                "base-qt6"
             ]
         },
         {
@@ -162,6 +183,10 @@
         {
             "name": "dev",
             "configurePreset": "dev"
+        },
+        {
+            "name": "dev-textaddons-mold",
+            "configurePreset": "dev-textaddons-mold"
         },
         {
             "name": "dev-mold",
