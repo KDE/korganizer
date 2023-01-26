@@ -8,7 +8,7 @@ msgstr ""
 "Project-Id-Version: korganizer\n"
 "Report-Msgid-Bugs-To: https://bugs.kde.org\n"
 "POT-Creation-Date: 2023-01-25 00:58+0000\n"
-"PO-Revision-Date: 2023-01-24 09:03+0100\n"
+"PO-Revision-Date: 2023-01-25 06:19+0100\n"
 "Last-Translator: Temuri Doghonadze <temuri.doghonadze@gmail.com>\n"
 "Language-Team: Georgian <kde-i18n-doc@kde.org>\n"
 "Language: ka\n"
@@ -1595,7 +1595,7 @@ msgstr ""
 #: calendarview.cpp:2415
 #, kde-format
 msgid "Copying Failed"
-msgstr ""
+msgstr "კოპირების შეცდომა"
 
 #: calendarview.cpp:2450
 #, kde-format
@@ -1605,7 +1605,7 @@ msgstr ""
 #: calendarview.cpp:2450
 #, kde-format
 msgid "Moving Failed"
-msgstr ""
+msgstr "გადატანის შეცდომა"
 
 #: calendarview.cpp:2627
 #, kde-format
@@ -1657,7 +1657,7 @@ msgstr "ძირითადი"
 #, kde-format
 msgctxt "@info:tooltip"
 msgid "Set the folder name"
-msgstr ""
+msgstr "საქაღალდის სახელის დაყენება"
 
 #: collectiongeneralpage.cpp:46
 #, kde-format
@@ -1866,7 +1866,7 @@ msgstr "ჩასწორება..."
 #: dialog/koeventviewerdialog.cpp:41
 #, kde-format
 msgid "Show in Context"
-msgstr ""
+msgstr "კონტექსტში ჩვენება"
 
 #: dialog/searchdialog.cpp:39
 #, kde-format
@@ -1884,7 +1884,7 @@ msgstr "&ძებნა"
 #, kde-format
 msgctxt "@info:tooltip"
 msgid "Start the search"
-msgstr ""
+msgstr "ძებნის დაწყება"
 
 #: dialog/searchdialog.cpp:72
 #, kde-format
@@ -2009,7 +2009,7 @@ msgstr ""
 #: kcmdesignerfields.cpp:284
 #, kde-format
 msgid "Available Pages"
-msgstr ""
+msgstr "ხელმისაწვდომი გვერდები"
 
 #: kcmdesignerfields.cpp:290
 #, kde-format
@@ -2260,7 +2260,7 @@ msgstr ""
 #: kontactplugin/specialdates/sdsummaryconfig_base.ui:34
 #, kde-format
 msgid "&Today only"
-msgstr ""
+msgstr "&მხოლოდ დღეს"
 
 #. i18n: ectx: property (toolTip), widget (QRadioButton, mDateMonthButton)
 #: kontactplugin/korganizer/apptsummaryconfig_base.ui:36
@@ -2364,7 +2364,7 @@ msgstr ""
 #: kontactplugin/specialdates/sdsummaryconfig_base.ui:142
 #, kde-format
 msgid "Show &birthdays"
-msgstr ""
+msgstr "&დაბადების დღეების ჩვენება"
 
 #. i18n: ectx: property (toolTip), widget (QCheckBox, mShowAnniversariesFromCal)
 #: kontactplugin/korganizer/apptsummaryconfig_base.ui:141
