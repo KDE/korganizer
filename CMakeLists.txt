@@ -140,7 +140,7 @@ include_directories(${korganizer_SOURCE_DIR} ${korganizer_BINARY_DIR})
 configure_file(korganizer-version.h.cmake ${CMAKE_CURRENT_BINARY_DIR}/korganizer-version.h @ONLY)
 
 
-ecm_set_disabled_deprecation_versions(QT 5.15.2
+ecm_set_disabled_deprecation_versions(QT 6.4
      KF 5.102.0
 )
 

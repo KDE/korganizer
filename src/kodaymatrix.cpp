@@ -463,7 +463,11 @@ bool KODayMatrix::event(QEvent *event)
 
 void KODayMatrix::mousePressEvent(QMouseEvent *e)
 {
+#if QT_VERSION < QT_VERSION_CHECK(6, 0, 0)
     mSelStart = getDayIndexFrom(e->x(), e->y());
+#else
+    mSelStart = getDayIndexFrom(e->position().toPoint().x(), e->position().toPoint().y());
+#endif
     if (e->button() == Qt::RightButton) {
         popupMenu(mDays[mSelStart]);
     } else if (e->button() == Qt::LeftButton) {
@@ -496,8 +500,11 @@ void KODayMatrix::mouseReleaseEvent(QMouseEvent *e)
     if (e->button() != Qt::LeftButton) {
         return;
     }
-
+#if QT_VERSION < QT_VERSION_CHECK(6, 0, 0)
     int tmp = getDayIndexFrom(e->x(), e->y());
+#else
+    int tmp = getDayIndexFrom(e->position().toPoint().x(), e->position().toPoint().y());
+#endif
     if (tmp > NUMDAYS - 1) {
         tmp = NUMDAYS - 1;
     }
@@ -531,7 +538,11 @@ void KODayMatrix::mouseReleaseEvent(QMouseEvent *e)
 
 void KODayMatrix::mouseMoveEvent(QMouseEvent *e)
 {
+#if QT_VERSION < QT_VERSION_CHECK(6, 0, 0)
     int tmp = getDayIndexFrom(e->x(), e->y());
+#else
+    int tmp = getDayIndexFrom(e->position().toPoint().x(), e->position().toPoint().y());
+#endif
     if (tmp > NUMDAYS - 1) {
         tmp = NUMDAYS - 1;
     }
@@ -654,7 +665,11 @@ void KODayMatrix::dropEvent(QDropEvent *e)
 
         if (action == DRAG_COPY || action == DRAG_MOVE) {
             e->accept();
+#if QT_VERSION < QT_VERSION_CHECK(6, 0, 0)
             int idx = getDayIndexFrom(e->pos().x(), e->pos().y());
+#else
+            int idx = getDayIndexFrom(e->position().toPoint().x(), e->position().toPoint().y());
+#endif
 
             if (action == DRAG_COPY) {
                 Q_EMIT incidenceDropped(items.at(0), mDays[idx]);
