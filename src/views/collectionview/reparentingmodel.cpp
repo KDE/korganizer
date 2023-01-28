@@ -223,7 +223,7 @@ void ReparentingModel::addNode(const ReparentingModel::Node::Ptr &node)
     }
     mNodesToAdd << node;
     qRegisterMetaType<Node::Ptr>("Node::Ptr");
-    QMetaObject::invokeMethod(this, "doAddNode", Qt::QueuedConnection, QGenericReturnArgument(), Q_ARG(Node::Ptr, node));
+    QMetaObject::invokeMethod(this, "doAddNode", Qt::QueuedConnection, Q_ARG(Node::Ptr, node));
 }
 
 void ReparentingModel::doAddNode(const Node::Ptr &node)
