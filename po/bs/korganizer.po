@@ -7,7 +7,7 @@ msgid ""
 msgstr ""
 "Project-Id-Version: __kde__kdepim__korganizer\n"
 "Report-Msgid-Bugs-To: https://bugs.kde.org\n"
-"POT-Creation-Date: 2023-01-25 00:58+0000\n"
+"POT-Creation-Date: 2023-01-28 00:59+0000\n"
 "PO-Revision-Date: 2014-01-31 19:03+0100\n"
 "Last-Translator: Samir Ribić <megaribi@epn.ba>\n"
 "Language-Team:  <bs@li.org>\n"
@@ -852,7 +852,7 @@ msgstr "R&adna sedmica"
 msgid "&Week"
 msgstr "&Sedmica"
 
-#: actionmanager.cpp:565 kodaymatrix.cpp:481
+#: actionmanager.cpp:565 kodaymatrix.cpp:485
 #, kde-format
 msgid "New E&vent..."
 msgstr "No&vi događaj..."
@@ -879,7 +879,7 @@ msgid ""
 "attendees, recurrences and much more."
 msgstr ""
 
-#: actionmanager.cpp:575 kodaymatrix.cpp:482
+#: actionmanager.cpp:575 kodaymatrix.cpp:486
 #, kde-format
 msgid "New &To-do..."
 msgstr "Novi &zadatak..."
@@ -911,7 +911,7 @@ msgstr ""
 msgid "New Su&b-to-do..."
 msgstr "Novi &podzadatak..."
 
-#: actionmanager.cpp:594 kodaymatrix.cpp:483
+#: actionmanager.cpp:594 kodaymatrix.cpp:487
 #, kde-format
 msgid "New &Journal..."
 msgstr "&Dnevnik"
@@ -2284,22 +2284,22 @@ msgctxt "delimiter for joining holiday names"
 msgid ","
 msgstr ","
 
-#: kodaymatrix.cpp:636
+#: kodaymatrix.cpp:647
 #, kde-format
 msgid "&Move"
 msgstr "&Pomjeri"
 
-#: kodaymatrix.cpp:638
+#: kodaymatrix.cpp:649
 #, kde-format
 msgid "&Copy"
 msgstr "&Kopiraj"
 
-#: kodaymatrix.cpp:641
+#: kodaymatrix.cpp:652
 #, kde-format
 msgid "&Add"
 msgstr "&Dodaj"
 
-#: kodaymatrix.cpp:645
+#: kodaymatrix.cpp:656
 #, kde-format
 msgid "&Cancel"
 msgstr "&Odustani"

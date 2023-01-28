@@ -19,7 +19,7 @@ msgid ""
 msgstr ""
 "Project-Id-Version: kdepim-kde4\n"
 "Report-Msgid-Bugs-To: https://bugs.kde.org\n"
-"POT-Creation-Date: 2023-01-25 00:58+0000\n"
+"POT-Creation-Date: 2023-01-28 00:59+0000\n"
 "PO-Revision-Date: 2023-01-18 22:16+0300\n"
 "Last-Translator: Emir SARI <emir_sari@icloud.com>\n"
 "Language-Team: Turkish <kde-l10n-tr@kde.org>\n"
@@ -851,7 +851,7 @@ msgstr "Ç&alışma Haftası"
 msgid "&Week"
 msgstr "&Hafta"
 
-#: actionmanager.cpp:565 kodaymatrix.cpp:481
+#: actionmanager.cpp:565 kodaymatrix.cpp:485
 #, kde-format
 msgid "New E&vent..."
 msgstr "Y&eni Etkinlik..."
@@ -879,7 +879,7 @@ msgstr ""
 "anımsatıcılar, katılımcılar, yinelemeler ve çok daha fazlasını "
 "ekleyebilirsiniz."
 
-#: actionmanager.cpp:575 kodaymatrix.cpp:482
+#: actionmanager.cpp:575 kodaymatrix.cpp:486
 #, kde-format
 msgid "New &To-do..."
 msgstr "Ye&ni Yapılacak..."
@@ -912,7 +912,7 @@ msgstr ""
 msgid "New Su&b-to-do..."
 msgstr "Y&eni Alt Yapılacak..."
 
-#: actionmanager.cpp:594 kodaymatrix.cpp:483
+#: actionmanager.cpp:594 kodaymatrix.cpp:487
 #, kde-format
 msgid "New &Journal..."
 msgstr "Yeni &Günlük..."
@@ -2232,22 +2232,22 @@ msgctxt "delimiter for joining holiday names"
 msgid ","
 msgstr ","
 
-#: kodaymatrix.cpp:636
+#: kodaymatrix.cpp:647
 #, kde-format
 msgid "&Move"
 msgstr "&Taşı"
 
-#: kodaymatrix.cpp:638
+#: kodaymatrix.cpp:649
 #, kde-format
 msgid "&Copy"
 msgstr "Ko&pyala"
 
-#: kodaymatrix.cpp:641
+#: kodaymatrix.cpp:652
 #, kde-format
 msgid "&Add"
 msgstr "&Ekle"
 
-#: kodaymatrix.cpp:645
+#: kodaymatrix.cpp:656
 #, kde-format
 msgid "&Cancel"
 msgstr "İ&ptal"

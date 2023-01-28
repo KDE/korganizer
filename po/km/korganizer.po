@@ -8,7 +8,7 @@ msgid ""
 msgstr ""
 "Project-Id-Version: korganizer\n"
 "Report-Msgid-Bugs-To: https://bugs.kde.org\n"
-"POT-Creation-Date: 2023-01-25 00:58+0000\n"
+"POT-Creation-Date: 2023-01-28 00:59+0000\n"
 "PO-Revision-Date: 2012-07-09 10:04+0700\n"
 "Last-Translator: Khoem Sokhem <khoemsokhem@khmeros.info>\n"
 "Language-Team: Khmer\n"
@@ -842,7 +842,7 @@ msgstr "សប្ដាហ៍​ធ្វើ​ការ"
 msgid "&Week"
 msgstr "សប្ដាហ៍"
 
-#: actionmanager.cpp:565 kodaymatrix.cpp:481
+#: actionmanager.cpp:565 kodaymatrix.cpp:485
 #, kde-format
 msgid "New E&vent..."
 msgstr "ព្រឹត្តិការណ៍​ថ្មី..."
@@ -869,7 +869,7 @@ msgid ""
 "attendees, recurrences and much more."
 msgstr ""
 
-#: actionmanager.cpp:575 kodaymatrix.cpp:482
+#: actionmanager.cpp:575 kodaymatrix.cpp:486
 #, kde-format
 msgid "New &To-do..."
 msgstr "ការងារ​ត្រូវ​ធ្វើថ្មី..."
@@ -901,7 +901,7 @@ msgstr ""
 msgid "New Su&b-to-do..."
 msgstr "ការងារ​រង​ត្រូវ​ធ្វើ​ថ្មី..."
 
-#: actionmanager.cpp:594 kodaymatrix.cpp:483
+#: actionmanager.cpp:594 kodaymatrix.cpp:487
 #, kde-format
 msgid "New &Journal..."
 msgstr "ទិនានុប្បវត្តិ​ថ្មី..."
@@ -2254,22 +2254,22 @@ msgctxt "delimiter for joining holiday names"
 msgid ","
 msgstr ","
 
-#: kodaymatrix.cpp:636
+#: kodaymatrix.cpp:647
 #, kde-format
 msgid "&Move"
 msgstr "ផ្លាស់ទី"
 
-#: kodaymatrix.cpp:638
+#: kodaymatrix.cpp:649
 #, kde-format
 msgid "&Copy"
 msgstr "ចម្លង"
 
-#: kodaymatrix.cpp:641
+#: kodaymatrix.cpp:652
 #, kde-format
 msgid "&Add"
 msgstr "បន្ថែម"
 
-#: kodaymatrix.cpp:645
+#: kodaymatrix.cpp:656
 #, kde-format
 msgid "&Cancel"
 msgstr "បោះបង់"

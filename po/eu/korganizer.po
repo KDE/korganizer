@@ -11,7 +11,7 @@ msgid ""
 msgstr ""
 "Project-Id-Version: korganizer\n"
 "Report-Msgid-Bugs-To: https://bugs.kde.org\n"
-"POT-Creation-Date: 2023-01-25 00:58+0000\n"
+"POT-Creation-Date: 2023-01-28 00:59+0000\n"
 "PO-Revision-Date: 2010-08-12 00:42+0200\n"
 "Last-Translator: Ignigo Salvador Azurmendi <xalba@euskalnet.net>\n"
 "Language-Team: Basque <itzulpena@euskalgnu.org>\n"
@@ -845,7 +845,7 @@ msgstr "&Lan-astea"
 msgid "&Week"
 msgstr "&Astea"
 
-#: actionmanager.cpp:565 kodaymatrix.cpp:481
+#: actionmanager.cpp:565 kodaymatrix.cpp:485
 #, kde-format
 msgid "New E&vent..."
 msgstr "&Gertaera berria..."
@@ -872,7 +872,7 @@ msgid ""
 "attendees, recurrences and much more."
 msgstr ""
 
-#: actionmanager.cpp:575 kodaymatrix.cpp:482
+#: actionmanager.cpp:575 kodaymatrix.cpp:486
 #, kde-format
 msgid "New &To-do..."
 msgstr "&Egiteko berria..."
@@ -904,7 +904,7 @@ msgstr ""
 msgid "New Su&b-to-do..."
 msgstr "&Azpi-egiteko berria..."
 
-#: actionmanager.cpp:594 kodaymatrix.cpp:483
+#: actionmanager.cpp:594 kodaymatrix.cpp:487
 #, kde-format
 msgid "New &Journal..."
 msgstr "E&gunkari berria..."
@@ -2282,22 +2282,22 @@ msgctxt "delimiter for joining holiday names"
 msgid ","
 msgstr ", "
 
-#: kodaymatrix.cpp:636
+#: kodaymatrix.cpp:647
 #, fuzzy, kde-format
 msgid "&Move"
 msgstr "&Mugitu hona"
 
-#: kodaymatrix.cpp:638
+#: kodaymatrix.cpp:649
 #, fuzzy, kde-format
 msgid "&Copy"
 msgstr "&Kopiatu hona"
 
-#: kodaymatrix.cpp:641
+#: kodaymatrix.cpp:652
 #, kde-format
 msgid "&Add"
 msgstr "&Gehitu"
 
-#: kodaymatrix.cpp:645
+#: kodaymatrix.cpp:656
 #, fuzzy, kde-format
 msgid "&Cancel"
 msgstr "&Aldatu"

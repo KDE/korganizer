@@ -16,7 +16,7 @@ msgid ""
 msgstr ""
 "Project-Id-Version: korganizer\n"
 "Report-Msgid-Bugs-To: https://bugs.kde.org\n"
-"POT-Creation-Date: 2023-01-25 00:58+0000\n"
+"POT-Creation-Date: 2023-01-28 00:59+0000\n"
 "PO-Revision-Date: 2017-05-16 06:41-0400\n"
 "Last-Translator: Copied by Zanata <copied-by-zanata@zanata.org>\n"
 "Language-Team: <kde-l10n-he@kde.org>\n"
@@ -805,7 +805,7 @@ msgstr "שבוע &עבודה"
 msgid "&Week"
 msgstr "&שבוע"
 
-#: actionmanager.cpp:565 kodaymatrix.cpp:481
+#: actionmanager.cpp:565 kodaymatrix.cpp:485
 #, kde-format
 msgid "New E&vent..."
 msgstr "&אירוע חדש..."
@@ -830,7 +830,7 @@ msgid ""
 "attendees, recurrences and much more."
 msgstr ""
 
-#: actionmanager.cpp:575 kodaymatrix.cpp:482
+#: actionmanager.cpp:575 kodaymatrix.cpp:486
 #, kde-format
 msgid "New &To-do..."
 msgstr "מטלה &חדשה..."
@@ -860,7 +860,7 @@ msgstr ""
 msgid "New Su&b-to-do..."
 msgstr "מ&טלת משנה חדשה..."
 
-#: actionmanager.cpp:594 kodaymatrix.cpp:483
+#: actionmanager.cpp:594 kodaymatrix.cpp:487
 #, kde-format
 msgid "New &Journal..."
 msgstr "&יומן חדש..."
@@ -2136,22 +2136,22 @@ msgctxt "delimiter for joining holiday names"
 msgid ","
 msgstr ", "
 
-#: kodaymatrix.cpp:636
+#: kodaymatrix.cpp:647
 #, fuzzy, kde-format
 msgid "&Move"
 msgstr "הע&בר אל"
 
-#: kodaymatrix.cpp:638
+#: kodaymatrix.cpp:649
 #, fuzzy, kde-format
 msgid "&Copy"
 msgstr "הע&תק אל"
 
-#: kodaymatrix.cpp:641
+#: kodaymatrix.cpp:652
 #, kde-format
 msgid "&Add"
 msgstr "&הוסף"
 
-#: kodaymatrix.cpp:645
+#: kodaymatrix.cpp:656
 #, fuzzy, kde-format
 msgid "&Cancel"
 msgstr "&שנוי"

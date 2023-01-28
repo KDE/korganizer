@@ -8,7 +8,7 @@ msgid ""
 msgstr ""
 "Project-Id-Version: Korganizer\n"
 "Report-Msgid-Bugs-To: https://bugs.kde.org\n"
-"POT-Creation-Date: 2023-01-25 00:58+0000\n"
+"POT-Creation-Date: 2023-01-28 00:59+0000\n"
 "PO-Revision-Date: 2022-05-06 00:16+0200\n"
 "Last-Translator: Shinjo Park <kde@peremen.name>\n"
 "Language-Team: Korean <kde-kr@kde.org>\n"
@@ -818,7 +818,7 @@ msgstr "평일(&O)"
 msgid "&Week"
 msgstr "주(&W)"
 
-#: actionmanager.cpp:565 kodaymatrix.cpp:481
+#: actionmanager.cpp:565 kodaymatrix.cpp:485
 #, kde-format
 msgid "New E&vent..."
 msgstr "새 이벤트(&V)..."
@@ -845,7 +845,7 @@ msgstr ""
 "새 이벤트를 만들 수 있는 대화 상자를 엽니다. 알림, 참석자, 반복 등을 입력할 "
 "수 있습니다."
 
-#: actionmanager.cpp:575 kodaymatrix.cpp:482
+#: actionmanager.cpp:575 kodaymatrix.cpp:486
 #, kde-format
 msgid "New &To-do..."
 msgstr "새 할 일(&T)..."
@@ -877,7 +877,7 @@ msgstr ""
 msgid "New Su&b-to-do..."
 msgstr "하위 할 일 만들기(&B)..."
 
-#: actionmanager.cpp:594 kodaymatrix.cpp:483
+#: actionmanager.cpp:594 kodaymatrix.cpp:487
 #, kde-format
 msgid "New &Journal..."
 msgstr "새 저널(&J)..."
@@ -2177,22 +2177,22 @@ msgctxt "delimiter for joining holiday names"
 msgid ","
 msgstr ","
 
-#: kodaymatrix.cpp:636
+#: kodaymatrix.cpp:647
 #, kde-format
 msgid "&Move"
 msgstr "이동(&M)"
 
-#: kodaymatrix.cpp:638
+#: kodaymatrix.cpp:649
 #, kde-format
 msgid "&Copy"
 msgstr "복사(&C)"
 
-#: kodaymatrix.cpp:641
+#: kodaymatrix.cpp:652
 #, kde-format
 msgid "&Add"
 msgstr "추가(&A)"
 
-#: kodaymatrix.cpp:645
+#: kodaymatrix.cpp:656
 #, kde-format
 msgid "&Cancel"
 msgstr "취소(&C)"

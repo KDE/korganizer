@@ -7,8 +7,8 @@ msgid ""
 msgstr ""
 "Project-Id-Version: korganizer\n"
 "Report-Msgid-Bugs-To: https://bugs.kde.org\n"
-"POT-Creation-Date: 2023-01-25 00:58+0000\n"
-"PO-Revision-Date: 2023-01-25 06:19+0100\n"
+"POT-Creation-Date: 2023-01-28 00:59+0000\n"
+"PO-Revision-Date: 2023-01-27 09:13+0100\n"
 "Last-Translator: Temuri Doghonadze <temuri.doghonadze@gmail.com>\n"
 "Language-Team: Georgian <kde-i18n-doc@kde.org>\n"
 "Language: ka\n"
@@ -663,22 +663,22 @@ msgstr ""
 #: actionmanager.cpp:488
 #, kde-format
 msgid "In Horizontally"
-msgstr ""
+msgstr "ჰორიზონტალურში"
 
 #: actionmanager.cpp:493
 #, kde-format
 msgid "Out Horizontally"
-msgstr ""
+msgstr "ჰორიზონტალურიდან"
 
 #: actionmanager.cpp:498
 #, kde-format
 msgid "In Vertically"
-msgstr ""
+msgstr "ვერტიკალურში"
 
 #: actionmanager.cpp:503
 #, kde-format
 msgid "Out Vertically"
-msgstr ""
+msgstr "ვერტიკალურიდან"
 
 #: actionmanager.cpp:512
 #, kde-format
@@ -796,7 +796,7 @@ msgstr "&სამუშაო კვირა"
 msgid "&Week"
 msgstr "&კვირა"
 
-#: actionmanager.cpp:565 kodaymatrix.cpp:481
+#: actionmanager.cpp:565 kodaymatrix.cpp:485
 #, kde-format
 msgid "New E&vent..."
 msgstr "ახალი &მოვლენა..."
@@ -821,7 +821,7 @@ msgid ""
 "attendees, recurrences and much more."
 msgstr ""
 
-#: actionmanager.cpp:575 kodaymatrix.cpp:482
+#: actionmanager.cpp:575 kodaymatrix.cpp:486
 #, kde-format
 msgid "New &To-do..."
 msgstr "&ახალი განრიგი..."
@@ -851,7 +851,7 @@ msgstr ""
 msgid "New Su&b-to-do..."
 msgstr "ახალი &ქვეგანრიგი..."
 
-#: actionmanager.cpp:594 kodaymatrix.cpp:483
+#: actionmanager.cpp:594 kodaymatrix.cpp:487
 #, kde-format
 msgid "New &Journal..."
 msgstr "&ახალი ჟურნალი..."
@@ -1007,12 +1007,12 @@ msgstr ""
 #: actionmanager.cpp:756
 #, kde-format
 msgid "Manage T&ags..."
-msgstr ""
+msgstr "&ჭდეების მართვა..."
 
 #: actionmanager.cpp:764
 #, kde-format
 msgid "&Configure KOrganizer..."
-msgstr ""
+msgstr "KOrganizer-ის &მორგება..."
 
 #: actionmanager.cpp:841
 #, kde-format
@@ -1356,10 +1356,10 @@ msgid "Unable to copy the item \"%1\" to %2."
 msgstr ""
 
 #: calendarview.cpp:1437
-#, kde-format
+#, fuzzy, kde-format
 msgctxt "@title:window"
 msgid "Copying Failed"
-msgstr ""
+msgstr "კოპირების შეცდომა"
 
 #: calendarview.cpp:1496
 #, kde-format
@@ -1370,10 +1370,10 @@ msgid ""
 msgstr ""
 
 #: calendarview.cpp:1500 calendarview.cpp:1516
-#, kde-format
+#, fuzzy, kde-format
 msgctxt "@title:window"
 msgid "Moving Failed"
-msgstr ""
+msgstr "გადატანის შეცდომა"
 
 #: calendarview.cpp:1505
 #, kde-format
@@ -1856,7 +1856,7 @@ msgstr "წავშალო ფილტრი?"
 #, kde-format
 msgctxt "@title:window"
 msgid "Event Viewer"
-msgstr ""
+msgstr "მოვლენების ნახავ"
 
 #: dialog/koeventviewerdialog.cpp:40
 #, kde-format
@@ -1872,7 +1872,7 @@ msgstr "კონტექსტში ჩვენება"
 #, kde-format
 msgctxt "@title:window"
 msgid "Find in Calendars"
-msgstr ""
+msgstr "კალენდარებში მოძებნა"
 
 #: dialog/searchdialog.cpp:69
 #, kde-format
@@ -2097,22 +2097,22 @@ msgctxt "delimiter for joining holiday names"
 msgid ","
 msgstr ","
 
-#: kodaymatrix.cpp:636
+#: kodaymatrix.cpp:647
 #, kde-format
 msgid "&Move"
 msgstr "&გადატანა"
 
-#: kodaymatrix.cpp:638
+#: kodaymatrix.cpp:649
 #, kde-format
 msgid "&Copy"
 msgstr "&კოპირება"
 
-#: kodaymatrix.cpp:641
+#: kodaymatrix.cpp:652
 #, kde-format
 msgid "&Add"
 msgstr "&დამატება"
 
-#: kodaymatrix.cpp:645
+#: kodaymatrix.cpp:656
 #, kde-format
 msgid "&Cancel"
 msgstr "&გაუქმება"
@@ -2397,7 +2397,7 @@ msgstr ""
 #: kontactplugin/specialdates/sdsummaryconfig_base.ui:244
 #, kde-format
 msgid "Groupware Settings"
-msgstr ""
+msgstr "Groupware-ის მორგება"
 
 #. i18n: ectx: property (toolTip), widget (QCheckBox, mShowMineOnly)
 #: kontactplugin/korganizer/apptsummaryconfig_base.ui:163
@@ -2447,19 +2447,19 @@ msgstr ""
 #: kontactplugin/korganizer/apptsummarywidget.cpp:261
 #, kde-format
 msgid "Edit Event: \"%1\""
-msgstr ""
+msgstr "მოვლენის ჩასწორება \"%1\""
 
 #: kontactplugin/korganizer/journalplugin.cpp:28
 #, kde-format
 msgctxt "@action:inmenu"
 msgid "New Journal..."
-msgstr ""
+msgstr "ახალი ჟურნალი..."
 
 #: kontactplugin/korganizer/journalplugin.cpp:31
 #, kde-format
 msgctxt "@info:status"
 msgid "Create a new journal"
-msgstr ""
+msgstr "ახალი ჟურნალის შექმნა"
 
 #: kontactplugin/korganizer/journalplugin.cpp:36
 #, kde-format
@@ -2481,7 +2481,7 @@ msgstr[1] " დღე"
 #, kde-format
 msgctxt "@action:inmenu"
 msgid "New Event..."
-msgstr ""
+msgstr "ახალი მოვლენა..."
 
 #: kontactplugin/korganizer/korganizerplugin.cpp:47
 #, kde-format
@@ -2594,13 +2594,13 @@ msgstr "შემდეგი: %1"
 #, kde-format
 msgctxt "@action:inmenu"
 msgid "New To-do..."
-msgstr ""
+msgstr "ახალი განრიგი..."
 
 #: kontactplugin/korganizer/todoplugin.cpp:44
 #, kde-format
 msgctxt "@info:status"
 msgid "Create a new to-do"
-msgstr ""
+msgstr "განრიგის შექმნა"
 
 #: kontactplugin/korganizer/todoplugin.cpp:48
 #, kde-format
@@ -2699,7 +2699,7 @@ msgstr ""
 #: kontactplugin/korganizer/todosummaryconfig_base.ui:145
 #, kde-format
 msgid "&Completed"
-msgstr ""
+msgstr "&დასრულებულია"
 
 #. i18n: ectx: property (toolTip), widget (QCheckBox, mHideOpenEndedBox)
 #: kontactplugin/korganizer/todosummaryconfig_base.ui:155
@@ -2891,7 +2891,7 @@ msgstr ""
 #, kde-format
 msgctxt "Separator for status like this: overdue, completed"
 msgid ","
-msgstr ""
+msgstr ","
 
 #. i18n: ectx: property (windowTitle), widget (QWidget, SDSummaryConfig_Base)
 #: kontactplugin/specialdates/sdsummaryconfig_base.ui:16
@@ -4272,9 +4272,9 @@ msgstr ""
 
 #. i18n: ectx: label, entry, group (Month View)
 #: settings/korganizer.kcfg:270
-#, kde-format
+#, fuzzy, kde-format
 msgid "Month view uses full window"
-msgstr ""
+msgstr "თვის ხედი სრულ ფანჯარას იყენებს"
 
 #. i18n: ectx: whatsthis, entry, group (Month View)
 #: settings/korganizer.kcfg:271
