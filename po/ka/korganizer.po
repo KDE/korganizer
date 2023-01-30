@@ -8,7 +8,7 @@ msgstr ""
 "Project-Id-Version: korganizer\n"
 "Report-Msgid-Bugs-To: https://bugs.kde.org\n"
 "POT-Creation-Date: 2022-10-30 00:47+0000\n"
-"PO-Revision-Date: 2023-01-28 11:33+0100\n"
+"PO-Revision-Date: 2023-01-29 10:16+0100\n"
 "Last-Translator: Temuri Doghonadze <temuri.doghonadze@gmail.com>\n"
 "Language-Team: Georgian <kde-i18n-doc@kde.org>\n"
 "Language: ka\n"
@@ -2891,7 +2891,7 @@ msgstr ""
 #, kde-format
 msgctxt "Separator for status like this: overdue, completed"
 msgid ","
-msgstr ""
+msgstr ","
 
 #. i18n: ectx: property (windowTitle), widget (QWidget, SDSummaryConfig_Base)
 #: kontactplugin/specialdates/sdsummaryconfig_base.ui:16
@@ -3016,7 +3016,7 @@ msgstr ""
 #: kontactplugin/specialdates/sdsummaryconfig_base.ui:174
 #, kde-format
 msgid "Show &holidays"
-msgstr ""
+msgstr "&დასვენებების ჩვენება"
 
 #. i18n: ectx: property (toolTip), widget (QCheckBox, mShowSpecialsFromCalBox)
 #: kontactplugin/specialdates/sdsummaryconfig_base.ui:184
@@ -3119,7 +3119,7 @@ msgstr "დასვენება"
 #: kontactplugin/specialdates/sdsummarywidget.cpp:506
 #, kde-format
 msgid "Change of Seasons"
-msgstr ""
+msgstr "სეზონების ცვლილება"
 
 #: kontactplugin/specialdates/sdsummarywidget.cpp:509
 #, kde-format
@@ -3411,7 +3411,7 @@ msgstr ""
 #, kde-format
 msgctxt "@title:group"
 msgid "Working Period"
-msgstr ""
+msgstr "სამუშაო პერიოდი"
 
 #: prefs/koprefsdialogtime.cpp:123
 #, kde-format
@@ -3474,7 +3474,7 @@ msgstr "ნაგულისხმები მნიშვნელობე�
 #, kde-format
 msgctxt "@title:group"
 msgid "Appointments"
-msgstr ""
+msgstr "ჩაწერილები"
 
 #: prefs/koprefsdialogtime.cpp:187
 #, kde-format
@@ -3486,7 +3486,7 @@ msgstr "შეხსენებები"
 #, kde-format
 msgctxt "@label"
 msgid "Default reminder time:"
-msgstr ""
+msgstr "შეხსენებლის ნაგულისხმები დრო:"
 
 #: prefs/koprefsdialogtime.cpp:205
 #, kde-format
@@ -3538,7 +3538,7 @@ msgstr " დღე"
 #, kde-format
 msgctxt "@title:group"
 msgid "Date Navigator"
-msgstr ""
+msgstr "თარიღის ნავიგატორი"
 
 #: prefs/koprefsdialogviews.cpp:79
 #, kde-format
@@ -4466,7 +4466,7 @@ msgstr ""
 #: settings/korganizer.kcfg:355
 #, kde-format
 msgid "Busy days background color"
-msgstr ""
+msgstr "დაკავებული დღეების ფონის ფერი"
 
 #. i18n: ectx: whatsthis, entry (ViewBgBusyColor), group (Colors)
 #: settings/korganizer.kcfg:356
@@ -5081,7 +5081,7 @@ msgstr "&პაროლის დამახსოვრება"
 #: ui/searchdialog_base.ui:36
 #, kde-format
 msgid "&Search for:"
-msgstr ""
+msgstr "&ძებნა:"
 
 #. i18n: ectx: property (toolTip), widget (QLineEdit, searchEdit)
 #: ui/searchdialog_base.ui:49
@@ -5251,7 +5251,7 @@ msgstr ""
 #: ui/searchdialog_base.ui:172
 #, kde-format
 msgid "Su&mmaries"
-msgstr ""
+msgstr "&შეჯამებები"
 
 #. i18n: ectx: property (toolTip), widget (QCheckBox, attendeeCheck)
 #: ui/searchdialog_base.ui:182
@@ -5307,7 +5307,7 @@ msgstr "2008-08-18"
 #: ui/searchdialog_base.ui:244
 #, kde-format
 msgid "&To:"
-msgstr ""
+msgstr "&ვის:"
 
 #. i18n: ectx: property (toolTip), widget (KDateComboBox, endDate)
 #: ui/searchdialog_base.ui:263
@@ -5451,7 +5451,7 @@ msgstr "სათაური"
 #: views/multiagendaview/multiagendaviewconfigwidget.ui:102
 #, kde-format
 msgid "Selected Calendars"
-msgstr ""
+msgstr "მონიშნული კალენდარები"
 
 #: widgets/kdatenavigator.cpp:174
 #, kde-format
@@ -5484,7 +5484,7 @@ msgstr ""
 #: widgets/kitemiconcheckcombo.cpp:17
 #, kde-format
 msgid "Calendar's custom icon"
-msgstr ""
+msgstr "კალენდარის მითითებული ხატულა"
 
 #: widgets/kitemiconcheckcombo.cpp:18
 #, kde-format
@@ -5514,7 +5514,7 @@ msgstr "მხოლოდ კითხვისთვის"
 #: widgets/kitemiconcheckcombo.cpp:23
 #, kde-format
 msgid "Needs Reply"
-msgstr ""
+msgstr "საჭიროებს პასუხს"
 
 #: widgets/kitemiconcheckcombo.cpp:24
 #, kde-format
@@ -5535,7 +5535,7 @@ msgstr "ორგანიზატორი"
 #, kde-format
 msgctxt "@item:inlistbox"
 msgid "Icons to use"
-msgstr ""
+msgstr "გამოსაყენებელი ხატულები"
 
 #: widgets/navigatorbar.cpp:31
 #, kde-format
