@@ -653,10 +653,10 @@ KPrefsWidColor *KPrefsWidManager::addWidColor(KConfigSkeleton::ItemColor *item, 
 KPrefsWidRadios *KPrefsWidManager::addWidRadios(KConfigSkeleton::ItemEnum *item, QWidget *parent)
 {
     auto w = new KPrefsWidRadios(item, parent);
-    QList<KConfigSkeleton::ItemEnum::Choice2> choices;
-    choices = item->choices2();
-    QList<KConfigSkeleton::ItemEnum::Choice2>::ConstIterator it;
-    QList<KConfigSkeleton::ItemEnum::Choice2>::ConstIterator end(choices.constEnd());
+    QList<KConfigSkeleton::ItemEnum::Choice> choices;
+    choices = item->choices();
+    QList<KConfigSkeleton::ItemEnum::Choice>::ConstIterator it;
+    QList<KConfigSkeleton::ItemEnum::Choice>::ConstIterator end(choices.constEnd());
     int value = 0;
     for (it = choices.constBegin(); it != end; ++it) {
         w->addRadio(value++, (*it).label, (*it).toolTip, (*it).whatsThis);
