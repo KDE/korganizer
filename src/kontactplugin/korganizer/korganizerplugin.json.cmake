@@ -6,6 +6,7 @@
         "Description[bg]": "Приставка Kontact за KOrganizer",
         "Description[ca@valencia]": "Connector de KOrganizer de Kontact",
         "Description[ca]": "Connector del KOrganizer del Kontact",
+        "Description[cs]": "Modul KOrganizeru pro aplikaci Kontact",
         "Description[de]": "KOrganizer-Modul für Kontact",
         "Description[en_GB]": "Kontact KOrganizer Plugin",
         "Description[es]": "Complemento de KOrganizer para Kontact",
