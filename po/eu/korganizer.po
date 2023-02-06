@@ -1,36 +1,38 @@
-# translation of korganizer.po to
-# translation of korganizer.po to Basque
-# Copyright (C) 2003, 2005 Free Software Foundation, Inc.
+# Translation for korganizer.po to Euskara/Basque (eu).
+# Copyright (C) 2003-2023 This file is copyright:
+# This file is distributed under the same license as the korganizer package.
+# KDE euskaratzeko proiektuko arduraduna <xalba@ni.eus>.
 #
+# Translators:
 # Marcos  <marcos@euskalgnu.org>, 2003, 2005.
 # Ion Gaztañaga <ion_g_m@hotmail.com>, 2005.
 # Ion Gaztañaga <igaztanaga@gmail.com>, 2005.
 # Marcos <marcos@euskalgnu.org>, 2005.
-# Ignigo Salvador Azurmendi <xalba@euskalnet.net>, 2010.
+# Iñigo Salvador Azurmendi <xalba@ni.eus>, 2010, 2023.
 msgid ""
 msgstr ""
 "Project-Id-Version: korganizer\n"
 "Report-Msgid-Bugs-To: https://bugs.kde.org\n"
 "POT-Creation-Date: 2022-10-30 00:47+0000\n"
-"PO-Revision-Date: 2010-08-12 00:42+0200\n"
-"Last-Translator: Ignigo Salvador Azurmendi <xalba@euskalnet.net>\n"
-"Language-Team: Basque <itzulpena@euskalgnu.org>\n"
+"PO-Revision-Date: 2023-02-05 23:30+0100\n"
+"Last-Translator: Iñigo Salvador Azurmendi <xalba@ni.eus>\n"
+"Language-Team: Basque <kde-i18n-eu@kde.org>\n"
 "Language: eu\n"
 "MIME-Version: 1.0\n"
 "Content-Type: text/plain; charset=UTF-8\n"
 "Content-Transfer-Encoding: 8bit\n"
-"X-Generator: Lokalize 1.0\n"
+"X-Generator: Lokalize 22.12.2\n"
 "Plural-Forms: nplurals=2; plural=(n != 1);\n"
 
 #, kde-format
 msgctxt "NAME OF TRANSLATORS"
 msgid "Your names"
-msgstr "Ion Gaztañaga"
+msgstr "Iñigo Salvador Azurmendi,Ion Gaztañaga"
 
 #, kde-format
 msgctxt "EMAIL OF TRANSLATORS"
 msgid "Your emails"
-msgstr "igaztanaga@gmail.com"
+msgstr "xalba@ni.eus,igaztanaga@gmail.com"
 
 #: aboutdata.cpp:18 kontactplugin/korganizer/journalplugin.cpp:26
 #: kontactplugin/korganizer/korganizerplugin.cpp:42
@@ -41,10 +43,9 @@ msgid "KOrganizer"
 msgstr "KOrganizer"
 
 #: aboutdata.cpp:20
-#, fuzzy, kde-format
-#| msgid "A Personal Organizer for KDE"
+#, kde-format
 msgid "A Personal Organizer"
-msgstr "KDE-ren antolatzaile pertsonalizatua"
+msgstr "Antolatzaile pertsonala"
 
 #: aboutdata.cpp:22
 #, kde-format
@@ -55,38 +56,41 @@ msgid ""
 "Copyright © 2006–2012 Allen Winter\n"
 "Copyright © 2012–2022 KOrganizer authors"
 msgstr ""
+"Copyright © 1997–1999 Preston Brown\n"
+"Copyright © 2000–2004, 2007 Cornelius Schumacher\n"
+"Copyright © 2004–2005 Reinhold Kainhofer\n"
+"Copyright © 2006–2012 Allen Winter\n"
+"Copyright © 2012–2022 «KOrganizer»ren egileak"
 
 #: aboutdata.cpp:30 kontactplugin/specialdates/specialdates_plugin.cpp:42
 #, kde-format
 msgid "Allen Winter"
-msgstr ""
+msgstr "Allen Winter"
 
 #: aboutdata.cpp:30
-#, fuzzy, kde-format
-#| msgid "Current Maintainer"
+#, kde-format
 msgid "Maintainer"
-msgstr "Uneko mantentzailea"
+msgstr "Arduraduna"
 
 #: aboutdata.cpp:31
 #, kde-format
 msgid "Reinhold Kainhofer"
-msgstr ""
+msgstr "Reinhold Kainhofer"
 
 #: aboutdata.cpp:31 aboutdata.cpp:32
-#, fuzzy, kde-format
-#| msgid "Current Maintainer"
+#, kde-format
 msgid "Former Maintainer"
-msgstr "Uneko mantentzailea"
+msgstr "Aurreko mantentzailea"
 
 #: aboutdata.cpp:32 kcmdesignerfields.cpp:133
 #, kde-format
 msgid "Cornelius Schumacher"
-msgstr ""
+msgstr "Cornelius Schumacher"
 
 #: aboutdata.cpp:33
 #, kde-format
 msgid "Preston Brown"
-msgstr ""
+msgstr "Preston Brown"
 
 #: aboutdata.cpp:33
 #, kde-format
@@ -96,190 +100,189 @@ msgstr "Jatorrizko egilea"
 #: aboutdata.cpp:34 prefs/koprefsuserfeedback.cpp:34
 #, kde-format
 msgid "Laurent Montel"
-msgstr ""
+msgstr "Laurent Montel"
 
 #: aboutdata.cpp:34
 #, kde-format
 msgid "Developer"
-msgstr ""
+msgstr "Garatzailea"
 
 #: aboutdata.cpp:35
 #, kde-format
 msgid "Richard Apodaca"
-msgstr ""
+msgstr "Richard Apodaca"
 
 #: aboutdata.cpp:36
 #, kde-format
 msgid "Björn Balazs"
-msgstr ""
+msgstr "Björn Balazs"
 
 #: aboutdata.cpp:37
 #, kde-format
 msgid "Jan-Pascal van Best"
-msgstr ""
+msgstr "Jan-Pascal van Best"
 
 #: aboutdata.cpp:38
 #, kde-format
 msgid "Bertjan Broeksema"
-msgstr ""
+msgstr "Bertjan Broeksema"
 
 #: aboutdata.cpp:39
 #, kde-format
 msgid "Laszlo Boloni"
-msgstr ""
+msgstr "Laszlo Boloni"
 
 #: aboutdata.cpp:40
 #, kde-format
 msgid "Barry Benowitz"
-msgstr ""
+msgstr "Barry Benowitz"
 
 #: aboutdata.cpp:41
 #, kde-format
 msgid "Christopher Beard"
-msgstr ""
+msgstr "Christopher Beard"
 
 #: aboutdata.cpp:42
 #, kde-format
 msgid "Kalle Dalheimer"
-msgstr ""
+msgstr "Kalle Dalheimer"
 
 #: aboutdata.cpp:43
-#, fuzzy, kde-format
-#| msgid "In weeks"
+#, kde-format
 msgid "Ian Dawes"
-msgstr "Asteetan"
+msgstr "Ian Dawes"
 
 #: aboutdata.cpp:44
 #, kde-format
 msgid "Thomas Eitzenberger"
-msgstr ""
+msgstr "Thomas Eitzenberger"
 
 #: aboutdata.cpp:45
 #, kde-format
 msgid "Neil Hart"
-msgstr ""
+msgstr "Neil Hart"
 
 #: aboutdata.cpp:46
 #, kde-format
 msgid "Declan Houlihan"
-msgstr ""
+msgstr "Declan Houlihan"
 
 #: aboutdata.cpp:47
 #, kde-format
 msgid "Hans-Jürgen Husel"
-msgstr ""
+msgstr "Hans-Jürgen Husel"
 
 #: aboutdata.cpp:48
-#, fuzzy, kde-format
+#, kde-format
 msgid "Tim Jansen"
-msgstr "Ordu-zona:"
+msgstr "Tim Jansen"
 
 #: aboutdata.cpp:49
 #, kde-format
 msgid "Christian Kirsch"
-msgstr ""
+msgstr "Christian Kirsch"
 
 #: aboutdata.cpp:50
 #, kde-format
 msgid "Tobias König"
-msgstr ""
+msgstr "Tobias König"
 
 #: aboutdata.cpp:51
-#, fuzzy, kde-format
-#| msgid "Maintainer"
+#, kde-format
 msgid "Martin Koller"
-msgstr "Mantentzailea"
+msgstr "Martin Koller"
 
 #: aboutdata.cpp:52
-#, fuzzy, kde-format
-#| msgid "&Use colors"
+#, kde-format
 msgid "Uwe Koloska"
-msgstr "&Erabili koloreak"
+msgstr "Uwe Koloska"
 
 #: aboutdata.cpp:53
 #, kde-format
 msgid "Sergio Luis Martins"
-msgstr ""
+msgstr "Sergio Luis Martins"
 
 #: aboutdata.cpp:54
 #, kde-format
 msgid "Mike McQuaid"
-msgstr ""
+msgstr "Mike McQuaid"
 
 #: aboutdata.cpp:55
 #, kde-format
 msgid "Glen Parker"
-msgstr ""
+msgstr "Glen Parker"
 
 #: aboutdata.cpp:56
 #, kde-format
 msgid "Dan Pilone"
-msgstr ""
+msgstr "Dan Pilone"
 
 #: aboutdata.cpp:57
 #, kde-format
 msgid "Roman Rohr"
-msgstr ""
+msgstr "Roman Rohr"
 
 #: aboutdata.cpp:58
 #, kde-format
 msgid "Rafał Rzepecki"
-msgstr ""
+msgstr "Rafał Rzepecki"
 
 #: aboutdata.cpp:58
 #, kde-format
 msgid "Part of work sponsored by Google with Summer of Code 2005"
 msgstr ""
+"Lanaren zati bat «Google»k babestu zuen «Google with Summer of Code 2005» "
+"bidez"
 
 #: aboutdata.cpp:59
-#, fuzzy, kde-format
+#, kde-format
 msgid "Don Sanders"
-msgstr "Oroigarria"
+msgstr "Don Sanders"
 
 #: aboutdata.cpp:60
 #, kde-format
 msgid "Bram Schoenmakers"
-msgstr ""
+msgstr "Bram Schoenmakers"
 
 #: aboutdata.cpp:61
 #, kde-format
 msgid "Günter Schwann"
-msgstr ""
+msgstr "Günter Schwann"
 
 #: aboutdata.cpp:62
 #, kde-format
 msgid "Herwin Jan Steehouwer"
-msgstr ""
+msgstr "Herwin Jan Steehouwer"
 
 #: aboutdata.cpp:63
 #, kde-format
 msgid "Mario Teijeiro"
-msgstr ""
+msgstr "Mario Teijeiro"
 
 #: aboutdata.cpp:64
 #, kde-format
 msgid "Nick Thompson"
-msgstr ""
+msgstr "Nick Thompson"
 
 #: aboutdata.cpp:65
 #, kde-format
 msgid "Bo Thorsen"
-msgstr ""
+msgstr "Bo Thorsen"
 
 #: aboutdata.cpp:66
 #, kde-format
 msgid "Larry Wright"
-msgstr ""
+msgstr "Larry Wright"
 
 #: aboutdata.cpp:67
 #, kde-format
 msgid "Thomas Zander"
-msgstr ""
+msgstr "Thomas Zander"
 
 #: aboutdata.cpp:68
 #, kde-format
 msgid "Fester Zigterman"
-msgstr ""
+msgstr "Fester Zigterman"
 
 #: actionmanager.cpp:130
 #, kde-format
@@ -287,12 +290,13 @@ msgid ""
 "<qt>This will hide the menu bar completely. You can show it again by typing "
 "%1.</qt>"
 msgstr ""
+"<qt>Horrek menu-barra erabat ezkutatuko du. %1 tekleatuz berriz erakuts "
+"dezekezu.</qt>"
 
 #: actionmanager.cpp:133
-#, fuzzy, kde-format
-#| msgid "Time bar"
+#, kde-format
 msgid "Hide menu bar"
-msgstr "Denbora-barra"
+msgstr "Ezkutatu menu-barra"
 
 #: actionmanager.cpp:243
 #, kde-format
@@ -300,18 +304,16 @@ msgid "Import &Calendar..."
 msgstr "Inportatu &egutegia..."
 
 #: actionmanager.cpp:244
-#, fuzzy, kde-format
-#| msgid "Import Calendar"
+#, kde-format
 msgctxt "@info:status"
 msgid "Import a calendar"
-msgstr "Inportatu egutegia"
+msgstr "Inportatu egutegi bat"
 
 #: actionmanager.cpp:245
-#, fuzzy, kde-format
-#| msgid "Import calendar at '%1' into KOrganizer."
+#, kde-format
 msgctxt "@info:tooltip"
 msgid "Import an iCalendar or vCalendar file"
-msgstr "Inportatu \"%1\" egutegia KOrganizer-era."
+msgstr "Inportatu «iCalendar» edo «vCalendar» fitxategi bat"
 
 #: actionmanager.cpp:247
 #, kde-format
@@ -320,24 +322,25 @@ msgid ""
 "Select this menu entry if you would like to import the contents of an "
 "iCalendar or vCalendar file into your current calendar collection."
 msgstr ""
+"Hautatu menu-sarrera hau «iCanlendar» edo «vCalendar» fitxategi baten edukia "
+"egungo zure egutegi bildumara inportatu nahi bazenu."
 
 #: actionmanager.cpp:253
-#, fuzzy, kde-format
-#| msgid "New Calendar"
+#, kde-format
 msgid "Get New Calendars..."
-msgstr "Egutegi berria"
+msgstr "Lortu egutegi berriak..."
 
 #: actionmanager.cpp:254
 #, kde-format
 msgctxt "@info:status"
 msgid "Load a calendar from \"Get Hot New Stuff\""
-msgstr ""
+msgstr "Zamatu egutegi bat «Berrikuntzak eskuratu»tik"
 
 #: actionmanager.cpp:255
 #, kde-format
 msgctxt "@info:tooltip"
 msgid "Search \"Get Hot New Stuff\" for calendars to import"
-msgstr ""
+msgstr "Bilatu «Berrikuntzak eskuratu»n inportatzeko egutegi bila"
 
 #: actionmanager.cpp:257
 #, kde-format
@@ -346,36 +349,36 @@ msgid ""
 "This menu entry opens the \"Get Hot New Stuff\" dialog that allows you to "
 "search and import fun and useful calendars donated to the community."
 msgstr ""
+"Menu-sarrera honek, komunitateak dohaintzan jasotako egutegi atsegin eta "
+"baliagarriak bilatu eta inportatzeko aukera ematen dizun «Berrikuntzak "
+"eskuratu» elkarrizketa-koadroa irekitzen du."
 
 #: actionmanager.cpp:278
-#, fuzzy, kde-format
-#| msgid "Could not load calendar '%1'."
+#, kde-format
 msgid "Could not load calendar %1."
-msgstr "Ezin izan da '%1' egutegia kargatu."
+msgstr "Ezin izan du %1 egutegia zamatu."
 
 #: actionmanager.cpp:288
 #, kde-format
 msgid "The downloaded events will be merged into your current calendar."
-msgstr "Deskargatutako gertaerak zure uneko egutegian bateratuko dira."
+msgstr "Zama-jaitsitako ekitaldiak zure uneko egutegian bateratuko dira."
 
 #: actionmanager.cpp:305
-#, fuzzy, kde-format
-#| msgid "Import &Calendar..."
+#, kde-format
 msgid "Export as &iCalendar..."
-msgstr "Inportatu &egutegia..."
+msgstr "Inportatu «&iCalendar» bezala..."
 
 #: actionmanager.cpp:306
-#, fuzzy, kde-format
-#| msgid "Import Calendar"
+#, kde-format
 msgctxt "@info:status"
 msgid "Export calendar to file"
-msgstr "Inportatu egutegia"
+msgstr "Esportatu egutegia fitxategira"
 
 #: actionmanager.cpp:307
 #, kde-format
 msgctxt "@info:tooltip"
 msgid "Export your calendar to an iCalendar file"
-msgstr ""
+msgstr "Esportatu zure egutegia «iCalendar» fitxategi batera"
 
 #: actionmanager.cpp:308
 #, kde-format
@@ -383,26 +386,25 @@ msgctxt "@info:whatsthis"
 msgid ""
 "Allows you to export your entire calendar collection to one iCalendar file."
 msgstr ""
+"Zure egutegi-bilduma osoa «iCalendar» fitxategi batera esportatzeko aukera "
+"ematen dizu."
 
 #: actionmanager.cpp:314
-#, fuzzy, kde-format
-#| msgid "Archive O&ld Entries..."
+#, kde-format
 msgid "Archive O&ld Incidences..."
-msgstr "Artxibatu sarrea &zaharrak..."
+msgstr "Artxibatu intzidentzia &zaharrak..."
 
 #: actionmanager.cpp:315
-#, fuzzy, kde-format
-#| msgid "Archive/Delete Past Events and To-dos"
+#, kde-format
 msgctxt "@info:status"
 msgid "Archive events and to-dos to a file"
-msgstr "Artxibatu/ezabatu gertaera eta egiteko zaharrak"
+msgstr "Artxibatu ekitaldiak eta zereginak fitxategi batean"
 
 #: actionmanager.cpp:316
-#, fuzzy, kde-format
-#| msgid "Archive old events to a separate file"
+#, kde-format
 msgctxt "@info:tooltip"
 msgid "Archive old events and to-dos to an iCalendar file"
-msgstr "Artxibatu gertaera zaharrak beste fitxategi batean"
+msgstr "Artxibatu ekitaldi zaharrak eta zereginak «iCalendar» fitxategi batean"
 
 #: actionmanager.cpp:318
 #, kde-format
@@ -429,11 +431,10 @@ msgid "Purge completed to-dos"
 msgstr "E&zabatu burututako egitekoak"
 
 #: actionmanager.cpp:328
-#, fuzzy, kde-format
-#| msgid "Delete all completed to-dos?"
+#, kde-format
 msgctxt "@info:tooltip"
 msgid "Remove completed to-dos from your calendar"
-msgstr "Ezabatu burututako egiteko guztiak?"
+msgstr "Kendu burututako zereginak zure egutegitik"
 
 #: actionmanager.cpp:330
 #, kde-format
@@ -446,9 +447,9 @@ msgstr ""
 #. i18n: ectx: property (text), widget (QPushButton, mDeleteButton)
 #: actionmanager.cpp:367 actionmanager.cpp:622 actionmanager.cpp:1303
 #: actionmanager.cpp:1335 ui/filteredit_base.ui:56
-#, fuzzy, kde-format
+#, kde-format
 msgid "&Delete"
-msgstr "Ezabatu %1"
+msgstr "Eza&batu"
 
 #: actionmanager.cpp:384
 #, kde-format
@@ -456,17 +457,16 @@ msgid "What's &Next"
 msgstr "Zer da &hurrengoa?"
 
 #: actionmanager.cpp:385
-#, fuzzy, kde-format
-#| msgid "What's Next?"
+#, kde-format
 msgctxt "@info:status"
 msgid "What's Next View"
-msgstr "Zer da hurrengoa?"
+msgstr "«Zer da hurrengoa» ikuspegia"
 
 #: actionmanager.cpp:386
 #, kde-format
 msgctxt "@info:tooltip"
 msgid "Switch to the What's Next View"
-msgstr ""
+msgstr "Aldatu «Zer da hurrengoa» ikuspegira"
 
 #: actionmanager.cpp:388
 #, kde-format
@@ -484,18 +484,16 @@ msgid "&Month"
 msgstr "&Hilabetea"
 
 #: actionmanager.cpp:397
-#, fuzzy, kde-format
-#| msgid "Month View"
+#, kde-format
 msgctxt "@info:status"
 msgid "Month View"
-msgstr "Hilabete ikuspegia"
+msgstr "Hilabeteko ikuspegia"
 
 #: actionmanager.cpp:398
-#, fuzzy, kde-format
-#| msgid "Enable scrollbars in month view cells"
+#, kde-format
 msgctxt "@info:tooltip"
 msgid "Switch to the Month View"
-msgstr "Gaitu korritze-barrak hilabete ikuspegiaren gelaxketan"
+msgstr "Aldatu Hilabeteko ikuspegira"
 
 #: actionmanager.cpp:400
 #, kde-format
@@ -506,23 +504,21 @@ msgid ""
 msgstr ""
 
 #: actionmanager.cpp:406
-#, fuzzy, kde-format
-#| msgid "Agenda view"
+#, kde-format
 msgid "&Agenda"
-msgstr "Agenda ikuspegia"
+msgstr "&Agenda"
 
 #: actionmanager.cpp:407
-#, fuzzy, kde-format
-#| msgid "Agenda View"
+#, kde-format
 msgctxt "@info:status"
 msgid "Agenda View"
 msgstr "Agenda ikuspegia"
 
 #: actionmanager.cpp:408
-#, fuzzy, kde-format
+#, kde-format
 msgctxt "@info:tooltip"
 msgid "Switch to the Agenda View"
-msgstr "Erakutsi hautatutakoak bakarrik"
+msgstr "Aldatu Agenda ikuspegira"
 
 #: actionmanager.cpp:410
 #, kde-format
@@ -534,23 +530,21 @@ msgid ""
 msgstr ""
 
 #: actionmanager.cpp:417
-#, fuzzy, kde-format
-#| msgid "&Events"
+#, kde-format
 msgid "&Event List"
-msgstr "&Gertaerak"
+msgstr "&Ekitaldien zerrenda"
 
 #: actionmanager.cpp:418
-#, fuzzy, kde-format
-#| msgid "Month View"
+#, kde-format
 msgctxt "@info:status"
 msgid "List View"
-msgstr "Hilabete ikuspegia"
+msgstr "Zerrenda ikuspegia"
 
 #: actionmanager.cpp:419
 #, kde-format
 msgctxt "@info:tooltip"
 msgid "Switch to the List View"
-msgstr ""
+msgstr "Aldatu Zerrenda ikuspegira"
 
 #: actionmanager.cpp:421
 #, kde-format
@@ -566,19 +560,16 @@ msgid "&To-do List"
 msgstr "&Egitekoen zerrenda"
 
 #: actionmanager.cpp:428
-#, fuzzy, kde-format
-#| msgid "To-do List"
+#, kde-format
 msgctxt "@info:status"
 msgid "To-do List View"
-msgstr "Egitekoen zerrenda"
+msgstr "Zereginen zerrenda ikuspegia"
 
 #: actionmanager.cpp:429
-#, fuzzy, kde-format
-#| msgctxt "N days/hours/minutes before/after the start/end"
-#| msgid "%1 after the start"
+#, kde-format
 msgctxt "@info:tooltip"
 msgid "Switch to the To-do List View"
-msgstr "%1 hasieraren ondoren"
+msgstr "Aldatu Zereginen-zerrenda ikuspegira"
 
 #: actionmanager.cpp:431
 #, kde-format
@@ -594,11 +585,10 @@ msgid "&Journal"
 msgstr "&Egunkaria"
 
 #: actionmanager.cpp:438
-#, fuzzy, kde-format
-#| msgid "Journal entries"
+#, kde-format
 msgctxt "@info:status"
 msgid "Journal View"
-msgstr "Egunkari sarrerak"
+msgstr "Egunkari ikuspegia"
 
 #: actionmanager.cpp:439
 #, fuzzy, kde-format
@@ -728,7 +718,7 @@ msgstr "eguna"
 #, fuzzy, kde-format
 #| msgid "day"
 msgid "Today"
-msgstr "eguna"
+msgstr "Gaur"
 
 #: actionmanager.cpp:515
 #, fuzzy, kde-format
@@ -799,7 +789,7 @@ msgstr "Joan &aurrera"
 #| msgid "Go &Forward"
 msgctxt "scroll forward"
 msgid "Forward"
-msgstr "Joan &aurrera"
+msgstr "Aurrera"
 
 #: actionmanager.cpp:535
 #, fuzzy, kde-format
@@ -933,13 +923,13 @@ msgstr ""
 #, fuzzy, kde-format
 #| msgid "Configure &Plugin..."
 msgid "Configure View..."
-msgstr "Konfiguratu &plugin-a..."
+msgstr "Konfiguratu ikuspegia..."
 
 #: actionmanager.cpp:604
 #, fuzzy, kde-format
 #| msgid "Configure Holidays"
 msgid "Configure"
-msgstr "Konfiguratu oporrak"
+msgstr "Konfiguratu"
 
 #: actionmanager.cpp:605
 #, fuzzy, kde-format
@@ -1070,7 +1060,7 @@ msgstr "Kudeatu ikuspegiaren &iragazkiak..."
 #, fuzzy, kde-format
 #| msgid "Manage C&ategories..."
 msgid "Manage T&ags..."
-msgstr "Kudeatu k&ategoriak..."
+msgstr "Kudeatu etiketak"
 
 #: actionmanager.cpp:765
 #, fuzzy, kde-format
@@ -1083,7 +1073,7 @@ msgstr "&Konfiguratu egutegia..."
 msgid "1 incidence was imported successfully."
 msgid_plural "%1 incidences were imported successfully."
 msgstr[0] ""
-msgstr[1] ""
+msgstr[1] "%1 intzidentzia ondo inportatu dira."
 
 #: actionmanager.cpp:845
 #, kde-format
@@ -1120,7 +1110,7 @@ msgstr "Editatu egutegiaren iragazkiak"
 #, fuzzy, kde-format
 #| msgid "Error Occurred"
 msgid "An error occurred: %1"
-msgstr "Errorea gertatu da"
+msgstr "Errore bat gertatu da: %1"
 
 #: actionmanager.cpp:992
 #, kde-format
@@ -1140,7 +1130,7 @@ msgstr "Ezin izan da egutegia %1 fitxategira gorde."
 #: actionmanager.cpp:1036
 #, fuzzy, kde-format
 msgid "Error"
-msgstr "Errorerik ez"
+msgstr "Errorea"
 
 #: actionmanager.cpp:1079
 #, kde-format
@@ -1193,9 +1183,9 @@ msgid "Attach inline &without attachments"
 msgstr ""
 
 #: actionmanager.cpp:1415 actionmanager.cpp:1520
-#, kde-format
+#, fuzzy, kde-format
 msgid "C&ancel"
-msgstr ""
+msgstr "&Utzi"
 
 #: actionmanager.cpp:1453
 #, kde-format
@@ -1212,23 +1202,23 @@ msgstr "&Eranskinak"
 #, fuzzy, kde-format
 #| msgid "Undo (%1)"
 msgid "Undo: %1"
-msgstr "Desegin (%1)"
+msgstr "Desegin: %1"
 
 #: actionmanager.cpp:1608 actionmanager.cpp:1624
 #, fuzzy, kde-format
 msgid "Undo"
-msgstr "Desegin (%1)"
+msgstr "Desegin"
 
 #: actionmanager.cpp:1618
 #, fuzzy, kde-format
 #| msgid "Redo (%1)"
 msgid "Redo: %1"
-msgstr "Berregin(%1)"
+msgstr "Berregin: %1"
 
 #: actionmanager.cpp:1621
 #, fuzzy, kde-format
 msgid "Redo"
-msgstr "Berregin(%1)"
+msgstr "Berregin"
 
 #: actionmanager.cpp:1635
 #, kde-format
@@ -1268,14 +1258,14 @@ msgstr "Gehitu egutegi berri bezala"
 #| msgid "9 (lowest)"
 msgctxt "@item this is the default calendar"
 msgid "%1 (Offline)"
-msgstr "9 (baxuena)"
+msgstr "%1 (lerroz kanpo)"
 
 #: akonadicollectionview.cpp:287
 #, fuzzy, kde-format
 #| msgid "Use as &Default Calendar"
 msgctxt "@item this is the default calendar"
 msgid "%1 (Default)"
-msgstr "Erabili egutegi &lehenetsi bezala"
+msgstr "%1 (Lehenetsia)"
 
 #: akonadicollectionview.cpp:402
 #, fuzzy, kde-format
@@ -1301,7 +1291,7 @@ msgstr "Bilatu hemen"
 #| msgid "Edit Calendar Filters"
 msgctxt "@title:window"
 msgid "Properties of Calendar Folder %1"
-msgstr "Editatu egutegiaren iragazkiak"
+msgstr "%1 egutegi-karpetaren propietateak"
 
 #: akonadicollectionview.cpp:520
 #, kde-format
@@ -1317,10 +1307,10 @@ msgid "Set as &Default Folder"
 msgstr "Erabili egutegi &lehenetsi bezala"
 
 #: akonadicollectionview.cpp:532
-#, kde-format
+#, fuzzy, kde-format
 msgctxt "@action:inmenu"
 msgid "Serverside Subscription..."
-msgstr ""
+msgstr "Zerbitzari-aldeko harpidetza..."
 
 #: akonadicollectionview.cpp:586
 #, fuzzy, kde-format
@@ -1341,7 +1331,7 @@ msgstr "Erabili egutegi &lehenetsi bezala"
 #| msgid "Add as new calendar"
 msgctxt "@title:window"
 msgid "Add Calendar"
-msgstr "Gehitu egutegi berri bezala"
+msgstr "Gehitu egutegia"
 
 #: akonadicollectionview.cpp:729
 #, fuzzy, kde-format
@@ -1406,7 +1396,7 @@ msgstr "<qt>Ziur zaude <b>%1</b> baliabidea ezabatu nahi duzula?</qt>"
 #| msgid "Delete Old Items"
 msgctxt "@title:window"
 msgid "Delete Item?"
-msgstr "Ezabatu elementu zaharrak"
+msgstr "Elementua ezabatu?"
 
 #: calendarview.cpp:808
 #, fuzzy, kde-format
@@ -1563,9 +1553,9 @@ msgid "iCalendars (*.ics)"
 msgstr "Egutegia"
 
 #: calendarview.cpp:1794
-#, kde-format
+#, fuzzy, kde-format
 msgid "Do you want to overwrite %1?"
-msgstr ""
+msgstr "%1 gainidatzi nahi duzu?"
 
 #: calendarview.cpp:1795
 #, fuzzy, kde-format
@@ -1575,10 +1565,10 @@ msgid "Export Calendar"
 msgstr "Inportatu egutegia"
 
 #: calendarview.cpp:1809
-#, kde-format
+#, fuzzy, kde-format
 msgctxt "save failure cause unknown"
 msgid "Reason unknown"
-msgstr ""
+msgstr "Arrazoi ezezaguna"
 
 #: calendarview.cpp:1811
 #, fuzzy, kde-format
@@ -1611,7 +1601,7 @@ msgstr "Ezabatu hau bakarrik"
 #: calendarview.cpp:2253 calendarview.cpp:2316
 #, fuzzy, kde-format
 msgid "Delete All"
-msgstr "Ezabatu &guztiak"
+msgstr "Ezabatuta dena"
 
 #: calendarview.cpp:2289
 #, fuzzy, kde-format
@@ -1688,7 +1678,7 @@ msgstr "Ezabatu &guztiak"
 #, fuzzy, kde-format
 #| msgid "Delete %1"
 msgid "Delete \"%1\""
-msgstr "Ezabatu %1"
+msgstr "Ezabatu"
 
 #: calendarview.cpp:2414
 #, kde-format
@@ -1864,7 +1854,7 @@ msgstr ""
 #: data/korganizer_part.rc:4 data/korganizerui.rc:4
 #, fuzzy, kde-format
 msgid "&File"
-msgstr "&Izenburua:"
+msgstr "&Fitxategia"
 
 #. i18n: ectx: Menu (import)
 #: data/korganizer_part.rc:11 data/korganizerui.rc:5
@@ -1882,19 +1872,19 @@ msgstr "&Esportatu"
 #: data/korganizer_part.rc:30 data/korganizerui.rc:23
 #, fuzzy, kde-format
 msgid "&Edit"
-msgstr "&Editatu..."
+msgstr "&Editatu"
 
 #. i18n: ectx: Menu (view)
 #: data/korganizer_part.rc:42 data/korganizerui.rc:28
 #, fuzzy, kde-format
 msgid "&View"
-msgstr "Ikuspegiak"
+msgstr "&Ikusi"
 
 #. i18n: ectx: Menu (zoom)
 #: data/korganizer_part.rc:58 data/korganizerui.rc:44
 #, fuzzy, kde-format
 msgid "&Zoom"
-msgstr "Zooma handiagotu"
+msgstr "&Zooma"
 
 #. i18n: ectx: Menu (go)
 #: data/korganizer_part.rc:66 data/korganizerui.rc:52
@@ -1918,7 +1908,7 @@ msgstr "&Antolaketa"
 #: data/korganizer_part.rc:105 data/korganizerui.rc:93
 #, fuzzy, kde-format
 msgid "&Settings"
-msgstr "Bilera"
+msgstr "E&zarpenak"
 
 #. i18n: ectx: Menu (sidebar)
 #: data/korganizer_part.rc:106 data/korganizerui.rc:95
@@ -1928,9 +1918,9 @@ msgstr "&Alboko barra"
 
 #. i18n: ectx: Menu (help)
 #: data/korganizer_part.rc:124 data/korganizerui.rc:109
-#, kde-format
+#, fuzzy, kde-format
 msgid "&Help"
-msgstr ""
+msgstr "&Laguntza"
 
 #. i18n: ectx: ToolBar (mainToolBar)
 #: data/korganizer_part.rc:129 data/korganizerui.rc:114
@@ -2087,12 +2077,12 @@ msgid "Search Results"
 msgstr "Bilatu hemen"
 
 #: dialog/searchdialog.cpp:144
-#, kde-format
+#, fuzzy, kde-format
 msgctxt "@label"
 msgid "%1 match"
 msgid_plural "%1 matches"
-msgstr[0] ""
-msgstr[1] ""
+msgstr[0] "Parekide %1"
+msgstr[1] "%1 parekide"
 
 #: helper/searchcollectionhelper.cpp:106
 #, fuzzy, kde-format
@@ -2110,25 +2100,25 @@ msgstr "Ezabaketaren berrespena"
 
 #: kcmdesignerfields.cpp:61 kcmdesignerfields.cpp:62 kcmdesignerfields.cpp:67
 #: kcmdesignerfields.cpp:68
-#, kde-format
+#, fuzzy, kde-format
 msgid "Text"
-msgstr ""
+msgstr "Testua"
 
 #: kcmdesignerfields.cpp:63
-#, kde-format
+#, fuzzy, kde-format
 msgid "Numeric Value"
-msgstr ""
+msgstr "Balio numerikoa"
 
 #: kcmdesignerfields.cpp:64
-#, kde-format
+#, fuzzy, kde-format
 msgid "Boolean"
-msgstr ""
+msgstr "Boolearra"
 
 #: kcmdesignerfields.cpp:65
 #, fuzzy, kde-format
 #| msgid "Select a month"
 msgid "Selection"
-msgstr "Hautatu hilabete bat"
+msgstr "Hautapena"
 
 #: kcmdesignerfields.cpp:66 kcmdesignerfields.cpp:69
 #, fuzzy, kde-format
@@ -2140,7 +2130,7 @@ msgstr "Data eta ordua"
 #, fuzzy, kde-format
 #| msgid "&Date:"
 msgid "Date"
-msgstr "&Data:"
+msgstr "Data"
 
 #: kcmdesignerfields.cpp:127
 #, kde-format
@@ -2153,15 +2143,15 @@ msgid "Qt Designer Fields Dialog"
 msgstr ""
 
 #: kcmdesignerfields.cpp:131
-#, kde-format
+#, fuzzy, kde-format
 msgid "(c) 2004 Tobias Koenig"
-msgstr ""
+msgstr "(c) 2009 Tobias Koenig"
 
 #: kcmdesignerfields.cpp:132
 #: kontactplugin/specialdates/specialdates_plugin.cpp:43
-#, kde-format
+#, fuzzy, kde-format
 msgid "Tobias Koenig"
-msgstr ""
+msgstr "Tobias Koenig"
 
 #: kcmdesignerfields.cpp:167
 #, fuzzy, kde-format
@@ -2173,7 +2163,7 @@ msgstr "<qt>Ziur zaude <b>%1</b> baliabidea ezabatu nahi duzula?</qt>"
 #, fuzzy, kde-format
 #| msgid "Import Calendar"
 msgid "Import Page"
-msgstr "Inportatu egutegia"
+msgstr "Inportatu orria"
 
 #: kcmdesignerfields.cpp:180
 #, fuzzy, kde-format
@@ -2217,14 +2207,14 @@ msgid ""
 msgstr ""
 
 #: kcmdesignerfields.cpp:331
-#, kde-format
+#, fuzzy, kde-format
 msgid "<a href=\"whatsthis:%1\">How does this work?</a>"
-msgstr ""
+msgstr "<a href=\"whatsthis\">Hori nola dabil?</a>"
 
 #: kcmdesignerfields.cpp:342
 #, fuzzy, kde-format
 msgid "Delete Page"
-msgstr "Ezabatu %1"
+msgstr "Ezabatu orria"
 
 #: kcmdesignerfields.cpp:345
 #, fuzzy, kde-format
@@ -2238,14 +2228,14 @@ msgid "Edit with Qt Designer..."
 msgstr ""
 
 #: kcmdesignerfields.cpp:372
-#, kde-format
+#, fuzzy, kde-format
 msgid "Key:"
-msgstr ""
+msgstr "Gakoa:"
 
 #: kcmdesignerfields.cpp:374
 #, fuzzy, kde-format
 msgid "Type:"
-msgstr "Mota"
+msgstr "Mota:"
 
 #: kcmdesignerfields.cpp:376
 #, fuzzy, kde-format
@@ -2256,7 +2246,7 @@ msgstr "Erabiltzaile-izena:"
 #: kcmdesignerfields.cpp:378
 #, fuzzy, kde-format
 msgid "Description:"
-msgstr "&Deskribapena"
+msgstr "Azalpena:"
 
 #: koapp.cpp:63
 #, fuzzy, kde-format
@@ -2285,12 +2275,12 @@ msgstr ", "
 #: kodaymatrix.cpp:636
 #, fuzzy, kde-format
 msgid "&Move"
-msgstr "&Mugitu hona"
+msgstr "&Mugitu"
 
 #: kodaymatrix.cpp:638
 #, fuzzy, kde-format
 msgid "&Copy"
-msgstr "&Kopiatu hona"
+msgstr "&Kopiatu"
 
 #: kodaymatrix.cpp:641
 #, kde-format
@@ -2300,7 +2290,7 @@ msgstr "&Gehitu"
 #: kodaymatrix.cpp:645
 #, fuzzy, kde-format
 msgid "&Cancel"
-msgstr "&Aldatu"
+msgstr "&Utzi"
 
 #: koeventpopupmenu.cpp:45
 #, fuzzy, kde-format
@@ -2351,7 +2341,7 @@ msgstr "&Kopiatu hona"
 #| msgid "&Date:"
 msgctxt "@action:inmenu"
 msgid "&Paste"
-msgstr "&Data:"
+msgstr "&Itsatsi"
 
 #: koeventpopupmenu.cpp:87
 #, fuzzy, kde-format
@@ -2380,14 +2370,14 @@ msgstr "Eza&batu burututakoak"
 #| msgid "Click to add a new to-do"
 msgctxt "@action:inmenu"
 msgid "Create Event from To-do"
-msgstr "Klikatu egiteko berria gehitzeko"
+msgstr "Sortu ekitaldia zereginetik"
 
 #: koeventpopupmenu.cpp:113
 #, fuzzy, kde-format
 #| msgid "Click to add a new to-do"
 msgctxt "@action:inmenu"
 msgid "Create Note for To-do"
-msgstr "Klikatu egiteko berria gehitzeko"
+msgstr "Sortu zereginaren oharra"
 
 #: koeventpopupmenu.cpp:124
 #, fuzzy, kde-format
@@ -2535,7 +2525,7 @@ msgstr ""
 #: kontactplugin/specialdates/sdsummaryconfig_base.ui:90
 #, fuzzy, kde-format
 msgid "1 day"
-msgstr "egun bat"
+msgstr "Egun 1"
 
 #. i18n: ectx: property (suffix), widget (QSpinBox, mCustomDays)
 #: kontactplugin/korganizer/apptsummaryconfig_base.ui:85
@@ -2638,9 +2628,9 @@ msgid "Show &my events only"
 msgstr ""
 
 #: kontactplugin/korganizer/apptsummarywidget.cpp:46
-#, kde-format
+#, fuzzy, kde-format
 msgid "Upcoming Events"
-msgstr ""
+msgstr "Hurrengo gertaerak"
 
 #: kontactplugin/korganizer/apptsummarywidget.cpp:207
 #, kde-format
@@ -2694,8 +2684,8 @@ msgstr ""
 #, fuzzy, kde-format
 msgid " day"
 msgid_plural " days"
-msgstr[0] "egun bat"
-msgstr[1] "%1 egun"
+msgstr[0] " egun"
+msgstr[1] " egun"
 
 #: kontactplugin/korganizer/korganizerplugin.cpp:44
 #, fuzzy, kde-format
@@ -2732,7 +2722,7 @@ msgstr "Bilera"
 #| msgid "Undo (%1)"
 msgctxt "@item"
 msgid "Note: %1"
-msgstr "Desegin (%1)"
+msgstr "Oharra: %1"
 
 #: kontactplugin/korganizer/korganizerplugin.cpp:189
 #: kontactplugin/korganizer/todoplugin.cpp:189
@@ -2757,10 +2747,10 @@ msgid "Today"
 msgstr "eguna"
 
 #: kontactplugin/korganizer/summaryeventinfo.cpp:139
-#, kde-format
+#, fuzzy, kde-format
 msgctxt "the appointment is tomorrow"
 msgid "Tomorrow"
-msgstr ""
+msgstr "Bihar"
 
 #: kontactplugin/korganizer/summaryeventinfo.cpp:171
 #: kontactplugin/korganizer/todosummarywidget.cpp:214
@@ -2772,32 +2762,32 @@ msgstr[0] "egun bat"
 msgstr[1] "%1 egun"
 
 #: kontactplugin/korganizer/summaryeventinfo.cpp:184
-#, kde-format
+#, fuzzy, kde-format
 msgctxt "eg. in 1 hour 2 minutes"
 msgid "in "
-msgstr ""
+msgstr "in"
 
 #: kontactplugin/korganizer/summaryeventinfo.cpp:187
-#, kde-format
+#, fuzzy, kde-format
 msgctxt "use abbreviation for hour to keep the text short"
 msgid "1 hr"
 msgid_plural "%1 hrs"
-msgstr[0] ""
-msgstr[1] ""
+msgstr[0] "(1999 HR11)"
+msgstr[1] "ordu"
 
 #: kontactplugin/korganizer/summaryeventinfo.cpp:193
 #, fuzzy, kde-format
 msgctxt "use abbreviation for minute to keep the text short"
 msgid "1 min"
 msgid_plural "%1 mins"
-msgstr[0] "minutu 1"
+msgstr[0] "min 1"
 msgstr[1] "%1 minutu"
 
 #: kontactplugin/korganizer/summaryeventinfo.cpp:200
 #: kontactplugin/specialdates/sdsummarywidget.cpp:484
-#, kde-format
+#, fuzzy, kde-format
 msgid "now"
-msgstr ""
+msgstr "Orain"
 
 #: kontactplugin/korganizer/summaryeventinfo.cpp:203
 #, fuzzy, kde-format
@@ -3063,7 +3053,7 @@ msgstr "&Erakutsi egitekoa"
 #, fuzzy, kde-format
 #| msgid "Purge To-dos"
 msgid "Pending To-dos"
-msgstr "Ezabatu egitekoak"
+msgstr "Egiteke dauden zereginak"
 
 #: kontactplugin/korganizer/todosummarywidget.cpp:180
 #, fuzzy, kde-format
@@ -3073,10 +3063,10 @@ msgid "Today"
 msgstr "eguna"
 
 #: kontactplugin/korganizer/todosummarywidget.cpp:182
-#, kde-format
+#, fuzzy, kde-format
 msgctxt "the to-do is due tomorrow"
 msgid "Tomorrow"
-msgstr ""
+msgstr "Bihar"
 
 #: kontactplugin/korganizer/todosummarywidget.cpp:188
 #, fuzzy, kde-format
@@ -3090,8 +3080,8 @@ msgstr "%1 %2"
 #, fuzzy, kde-format
 msgid "1 day ago"
 msgid_plural "%1 days ago"
-msgstr[0] "egun bat"
-msgstr[1] "%1 egun"
+msgstr[0] "Atzo"
+msgstr[1] "Duela %1 egun"
 
 #: kontactplugin/korganizer/todosummarywidget.cpp:218
 #, fuzzy, kde-format
@@ -3127,10 +3117,10 @@ msgid "open-ended"
 msgstr ""
 
 #: kontactplugin/korganizer/todosummarywidget.cpp:371
-#, kde-format
+#, fuzzy, kde-format
 msgctxt "the to-do is overdue"
 msgid "overdue"
-msgstr ""
+msgstr "Atzeratua"
 
 #: kontactplugin/korganizer/todosummarywidget.cpp:373
 #, fuzzy, kde-format
@@ -3139,10 +3129,10 @@ msgid "starts today"
 msgstr "Hasierako data:"
 
 #: kontactplugin/korganizer/todosummarywidget.cpp:377
-#, kde-format
+#, fuzzy, kde-format
 msgctxt "the to-do has not been started yet"
 msgid "not-started"
-msgstr ""
+msgstr "Hasi gabe"
 
 #: kontactplugin/korganizer/todosummarywidget.cpp:379
 #, fuzzy, kde-format
@@ -3152,10 +3142,10 @@ msgid "completed"
 msgstr "&osatuta"
 
 #: kontactplugin/korganizer/todosummarywidget.cpp:381
-#, kde-format
+#, fuzzy, kde-format
 msgctxt "the to-do is in-progress"
 msgid "in-progress "
-msgstr ""
+msgstr "Lantzen..."
 
 #: kontactplugin/korganizer/todosummarywidget.cpp:386
 #, fuzzy, kde-format
@@ -3369,9 +3359,9 @@ msgid "Show anni&versaries"
 msgstr ""
 
 #: kontactplugin/specialdates/sdsummarywidget.cpp:96
-#, kde-format
+#, fuzzy, kde-format
 msgid "Upcoming Special Dates"
-msgstr ""
+msgstr "Hurrengo data bereziak"
 
 #: kontactplugin/specialdates/sdsummarywidget.cpp:449
 #, fuzzy, kde-format
@@ -3381,10 +3371,10 @@ msgid "Today"
 msgstr "eguna"
 
 #: kontactplugin/specialdates/sdsummarywidget.cpp:451
-#, kde-format
+#, fuzzy, kde-format
 msgctxt "the special day is tomorrow"
 msgid "Tomorrow"
-msgstr ""
+msgstr "Bihar"
 
 #: kontactplugin/specialdates/sdsummarywidget.cpp:497
 #, fuzzy, kde-format
@@ -3393,9 +3383,9 @@ msgid "Birthday"
 msgstr "Urtebetetzea"
 
 #: kontactplugin/specialdates/sdsummarywidget.cpp:500
-#, kde-format
+#, fuzzy, kde-format
 msgid "Anniversary"
-msgstr ""
+msgstr "Urteurrena"
 
 #: kontactplugin/specialdates/sdsummarywidget.cpp:503
 #, kde-format
@@ -3419,8 +3409,8 @@ msgstr "Gertaera berezia"
 #| msgid " of the year"
 msgid "one year"
 msgid_plural "%1 years"
-msgstr[0] "egunean"
-msgstr[1] "egunean"
+msgstr[0] "urtebete"
+msgstr[1] "%1 urte"
 
 #: kontactplugin/specialdates/sdsummarywidget.cpp:561
 #, kde-format
@@ -3446,9 +3436,9 @@ msgid "Mail to:\"%1\""
 msgstr ""
 
 #: kontactplugin/specialdates/specialdates_plugin.cpp:36
-#, kde-format
+#, fuzzy, kde-format
 msgid "Special Dates Summary"
-msgstr ""
+msgstr "Data berezien laburpena"
 
 #: kontactplugin/specialdates/specialdates_plugin.cpp:38
 #, kde-format
@@ -3466,7 +3456,7 @@ msgstr ""
 #, fuzzy, kde-format
 #| msgid "Current Maintainer"
 msgid "Current Maintainer"
-msgstr "Uneko mantentzailea"
+msgstr "Uneko arduraduna"
 
 #: korganizer.cpp:273
 #, kde-format
@@ -3508,9 +3498,10 @@ msgid ""
 msgstr ""
 
 #: korganizer_options.h:28
-#, kde-format
+#, fuzzy, kde-format
 msgid "Lists the available options for user feedback"
 msgstr ""
+"Erabiltzaileen erreakzioak bidaltzeko aukera erabilgarriak zerrendatzen ditu"
 
 #: koviewmanager.cpp:418
 #, fuzzy, kde-format
@@ -3532,16 +3523,16 @@ msgid ""
 msgstr ""
 
 #: prefs/koprefsdialogcolorsandfonts.cpp:41
-#, kde-format
+#, fuzzy, kde-format
 msgctxt "@title:tab"
 msgid "Colors"
-msgstr ""
+msgstr "Koloreak"
 
 #: prefs/koprefsdialogcolorsandfonts.cpp:91
-#, kde-format
+#, fuzzy, kde-format
 msgctxt "@title:group"
 msgid "Tags"
-msgstr ""
+msgstr "Etiketak"
 
 #: prefs/koprefsdialogcolorsandfonts.cpp:105
 #, fuzzy, kde-format
@@ -3598,142 +3589,126 @@ msgstr ""
 "erabiliz."
 
 #: prefs/koprefsdialogcolorsandfonts.cpp:148
-#, fuzzy, kde-format
-#| msgid "month(s)"
+#, kde-format
 msgctxt "@title:tab"
 msgid "Fonts"
-msgstr "hilabete"
+msgstr "Letra-tipoak"
 
 #: prefs/koprefsdialogcolorsandfonts.cpp:161
 #: prefs/koprefsdialogcolorsandfonts.cpp:167
-#, fuzzy, kde-format
-#| msgid "Event text"
+#, kde-format
 msgctxt "@label"
 msgid "Event text"
-msgstr "Gertaeraren testua"
+msgstr "Ekitaldiaren testua"
 
 #: prefs/koprefsdialoggroupscheduling.cpp:40
 #, kde-format
 msgctxt "@label"
 msgid "Mail transport:"
-msgstr ""
+msgstr "Posta garraioa:"
 
 #: prefs/koprefsdialogmain.cpp:39
-#, fuzzy, kde-format
-#| msgid "Personal"
+#, kde-format
 msgctxt "@title:tab personal settings"
 msgid "Personal"
 msgstr "Pertsonala"
 
 #: prefs/koprefsdialogmain.cpp:45
-#, fuzzy, kde-format
+#, kde-format
 msgctxt "@title:group email settings"
 msgid "Email Settings"
-msgstr "Bilera"
+msgstr "E-postaren ezarpenak"
 
 #: prefs/koprefsdialogmain.cpp:62
-#, fuzzy, kde-format
-#| msgid "Travel"
+#, kde-format
 msgctxt "@title:tab"
 msgid "Save"
-msgstr "Bidaia"
+msgstr "Gorde"
 
 #: prefs/koprefsdialogmain.cpp:74
-#, fuzzy, kde-format
-#| msgid "Calendar"
+#, kde-format
 msgctxt "@title:tab calendar account settings"
 msgid "Calendars"
-msgstr "Egutegia"
+msgstr "Egutegiak"
 
 #: prefs/koprefsdialogmain.cpp:78
-#, fuzzy, kde-format
-#| msgid "Calendar"
+#, kde-format
 msgctxt "@title"
 msgid "Calendar Accounts"
-msgstr "Egutegia"
+msgstr "Egutegi kontuak"
 
 #: prefs/koprefsdialogplugins.cpp:61
-#, fuzzy, kde-format
-#| msgid "Destination"
+#, kde-format
 msgctxt "@title:group"
 msgid "Position"
-msgstr "Helburua"
+msgstr "Kokapena"
 
 #. i18nc( "@option:check", "Show in the month view" ), mPositioningGroupBox );
 #: prefs/koprefsdialogplugins.cpp:86
-#, fuzzy, kde-format
+#, kde-format
 msgctxt "@option:check"
 msgid "Show at the top of the agenda views"
-msgstr "Erakutsi hautatutakoak bakarrik"
+msgstr "Erakutsi agenda ikuspegien goiko aldean"
 
 #: prefs/koprefsdialogplugins.cpp:87
-#, fuzzy, kde-format
+#, kde-format
 msgctxt "@option:check"
 msgid "Show at the bottom of the agenda views"
-msgstr "Erakutsi hautatutakoak bakarrik"
+msgstr "Erakutsi agenda ikuspegien beheko aldean"
 
 #: prefs/koprefsdialogplugins.cpp:121
-#, fuzzy, kde-format
-#| msgid "Calendar"
+#, kde-format
 msgctxt "@title:group"
 msgid "Calendar Decorations"
-msgstr "Egutegia"
+msgstr "Egutegien apaindurak"
 
 #: prefs/koprefsdialogplugins.cpp:141
-#, fuzzy, kde-format
-#| msgid "Configure Holidays"
+#, kde-format
 msgctxt "@action"
 msgid "Configure"
-msgstr "Konfiguratu oporrak"
+msgstr "Konfiguratu"
 
 #: prefs/koprefsdialogplugins.cpp:200
-#, fuzzy, kde-format
-#| msgid "Unable to configure this plugin"
+#, kde-format
 msgctxt "@info"
 msgid "Unable to configure this plugin"
-msgstr "Ezin izan da plugin hau konfiguratu"
+msgstr "Ez da plugin hau konfiguratzeko gai"
 
 #: prefs/koprefsdialogtime.cpp:40
-#, fuzzy, kde-format
-#| msgid "Personal"
+#, kde-format
 msgctxt "@title:tab"
 msgid "Regional"
-msgstr "Pertsonala"
+msgstr "Eskualdekoa"
 
 #: prefs/koprefsdialogtime.cpp:44
 #, kde-format
 msgctxt "@title:group"
 msgid "General Time and Date"
-msgstr ""
+msgstr "Ordu eta data orokorra"
 
 #: prefs/koprefsdialogtime.cpp:53
-#, fuzzy, kde-format
-#| msgid "Holiday"
+#, kde-format
 msgctxt "@title:group"
 msgid "Holidays"
-msgstr "Jaieguna"
+msgstr "Jaiegunak"
 
 #: prefs/koprefsdialogtime.cpp:64
-#, fuzzy, kde-format
-#| msgid "Use holiday region:"
+#, kde-format
 msgctxt "@label"
 msgid "Use holiday region:"
-msgstr "Erabili leku honetako oporrak:"
+msgstr "Erabili jaiegun-eskualdea:"
 
 #: prefs/koprefsdialogtime.cpp:87
-#, fuzzy, kde-format
-#| msgctxt "short_weekday date (e.g. Mon 13)"
-#| msgid "%1 %2"
+#, kde-format
 msgctxt "@item:inlistbox Holiday region, region language"
 msgid "%1 (%2)"
-msgstr "%1 %2"
+msgstr "%1 (%2)"
 
 #: prefs/koprefsdialogtime.cpp:96
-#, fuzzy, kde-format
-#| msgid "Use holiday region:"
+#, kde-format
 msgctxt "@item:inlistbox"
 msgid "Select Holiday Regions"
-msgstr "Erabili leku honetako oporrak:"
+msgstr "Aukeratu Jaiegun-eskualdeak"
 
 #: prefs/koprefsdialogtime.cpp:108
 #, fuzzy, kde-format
@@ -3762,65 +3737,61 @@ msgstr ""
 #, kde-format
 msgctxt "@item:inlistbox"
 msgid "Monday"
-msgstr ""
+msgstr "Astelehena"
 
 #: prefs/koprefsdialogtime.cpp:138
 #, kde-format
 msgctxt "@item:inlistbox"
 msgid "Tuesday"
-msgstr ""
+msgstr "Asteartea"
 
 #: prefs/koprefsdialogtime.cpp:138
 #, kde-format
 msgctxt "@item:inlistbox"
 msgid "Wednesday"
-msgstr ""
+msgstr "Asteazkena"
 
 #: prefs/koprefsdialogtime.cpp:139
 #, kde-format
 msgctxt "@item:inlistbox"
 msgid "Thursday"
-msgstr ""
+msgstr "Osteguna"
 
 #: prefs/koprefsdialogtime.cpp:139
-#, fuzzy, kde-format
-#| msgid "Holiday"
+#, kde-format
 msgctxt "@item:inlistbox"
 msgid "Friday"
-msgstr "Jaieguna"
+msgstr "Ostirala"
 
 #: prefs/koprefsdialogtime.cpp:139
 #, kde-format
 msgctxt "@item:inlistbox"
 msgid "Saturday"
-msgstr ""
+msgstr "Larunbata"
 
 #: prefs/koprefsdialogtime.cpp:140
 #, kde-format
 msgctxt "@item:inlistbox"
 msgid "Sunday"
-msgstr ""
+msgstr "Igandea"
 
 #: prefs/koprefsdialogtime.cpp:169
-#, fuzzy, kde-format
-#| msgid "Default Calendar"
+#, kde-format
 msgctxt "@title:tab"
 msgid "Default Values"
-msgstr "Egutegi lehenetsia"
+msgstr "Balio lehenetsiak"
 
 #: prefs/koprefsdialogtime.cpp:172
-#, fuzzy, kde-format
-#| msgid "Appointment"
+#, kde-format
 msgctxt "@title:group"
 msgid "Appointments"
-msgstr "Hitzordua"
+msgstr "Hitzorduak"
 
 #: prefs/koprefsdialogtime.cpp:187
-#, fuzzy, kde-format
-#| msgid "Reminder"
+#, kde-format
 msgctxt "@title:group"
 msgid "Reminders"
-msgstr "Oroigarria"
+msgstr "Oroigarriak"
 
 #: prefs/koprefsdialogtime.cpp:192
 #, fuzzy, kde-format
@@ -3830,22 +3801,19 @@ msgid "Default reminder time:"
 msgstr "Oroigarriaren ordu lehenetsia:"
 
 #: prefs/koprefsdialogtime.cpp:205
-#, fuzzy, kde-format
-#| msgid "minute(s)"
+#, kde-format
 msgctxt "@item:inlistbox reminder units in minutes"
 msgid "minute(s)"
 msgstr "minutu"
 
 #: prefs/koprefsdialogtime.cpp:206
-#, fuzzy, kde-format
-#| msgid "hour(s)"
+#, kde-format
 msgctxt "@item:inlistbox reminder time units in hours"
 msgid "hour(s)"
 msgstr "ordu"
 
 #: prefs/koprefsdialogtime.cpp:207
-#, fuzzy, kde-format
-#| msgid "day(s)"
+#, kde-format
 msgctxt "@item:inlistbox reminder time units in days"
 msgid "day(s)"
 msgstr "egun"
@@ -3856,99 +3824,89 @@ msgid ""
 "*.ogg *.wav *.mp3 *.wma *.flac *.aiff *.raw *.au *.ra|Audio Files (*.ogg *."
 "wav *.mp3 *.wma *.flac *.aiff *.raw *.au *.ra)"
 msgstr ""
+"*.ogg *.wav *.mp3 *.wma *.flac *.aiff *.raw *.au *.ra|Audio fitxategiak  (*."
+"ogg *.wav *.mp3 *.wma *.flac *.aiff *.raw *.au *.ra)"
 
 #: prefs/koprefsdialogviews.cpp:42
-#, fuzzy, kde-format
-#| msgid "General"
+#, kde-format
 msgctxt "@title:tab general settings"
 msgid "General"
 msgstr "Orokorra"
 
 #: prefs/koprefsdialogviews.cpp:48 prefs/koprefsdialogviews.cpp:85
 #: prefs/koprefsdialogviews.cpp:129 prefs/koprefsdialogviews.cpp:156
-#, fuzzy, kde-format
+#, kde-format
 msgctxt "@title:group"
 msgid "Display Options"
-msgstr "&Bistaratu oroigarria"
+msgstr "Azaltzeko aukerak"
 
 #: prefs/koprefsdialogviews.cpp:54
-#, fuzzy, kde-format
-#| msgctxt "suffix in the N days spin box"
-#| msgid " days"
+#, kde-format
 msgctxt "@label suffix in the N days spin box"
 msgid " days"
 msgstr " egun"
 
 #: prefs/koprefsdialogviews.cpp:67
-#, fuzzy, kde-format
-#| msgid "Date Navigator"
+#, kde-format
 msgctxt "@title:group"
 msgid "Date Navigator"
-msgstr "Data arakatzailea"
+msgstr "Data nabigatzailea"
 
 #: prefs/koprefsdialogviews.cpp:79
-#, fuzzy, kde-format
-#| msgid "Agenda View"
+#, kde-format
 msgctxt "@title:tab"
 msgid "Agenda View"
 msgstr "Agenda ikuspegia"
 
 #: prefs/koprefsdialogviews.cpp:91
-#, fuzzy, kde-format
-#| msgctxt "suffix in the hour size spin box"
-#| msgid " pixel"
+#, kde-format
 msgctxt "@label suffix in the hour size spin box"
 msgid " pixels"
 msgstr " pixel"
 
 #: prefs/koprefsdialogviews.cpp:123
-#, fuzzy, kde-format
-#| msgid "Month View"
+#, kde-format
 msgctxt "@title:tab"
 msgid "Month View"
-msgstr "Hilabete ikuspegia"
+msgstr "Hilabeteko ikuspegia"
 
 #: prefs/koprefsdialogviews.cpp:150
-#, fuzzy, kde-format
-#| msgid "To-do View"
+#, kde-format
 msgctxt "@title:tab"
 msgid "Todo View"
-msgstr "Egiteke ikuspegia"
+msgstr "Zereginen ikuspegia"
 
 #: prefs/koprefsdialogviews.cpp:163
-#, fuzzy, kde-format
-#| msgid "Other Options"
+#, kde-format
 msgctxt "@title:group"
 msgid "Other Options"
-msgstr "Beste aukerak"
+msgstr "Beste aukera batzuk"
 
 #: prefs/koprefsuserfeedback.cpp:29
 #, kde-format
 msgid "KCMUserFeedBack"
-msgstr ""
+msgstr "KCMUserFeedBack"
 
 #: prefs/koprefsuserfeedback.cpp:31
-#, fuzzy, kde-format
-#| msgid "KOrganizer Confirmation"
+#, kde-format
 msgid "KOrganizer Configure User FeedBack"
-msgstr "KOrganizer-en berrespena"
+msgstr "KOrganizer Konfiguratu erabiltzaileen erreakzioa"
 
 #: prefs/koprefsuserfeedback.cpp:33
 #, kde-format
 msgid "(c) 2020-2021 Laurent Montel"
-msgstr ""
+msgstr "(c) 2020-2021 Laurent Montel"
 
 #: prefs/kprefsdialog.cpp:222
-#, fuzzy, kde-format
-#| msgid "Change..."
+#, kde-format
 msgid "Choose..."
-msgstr "Aldatu..."
+msgstr "Hautatu..."
 
 #: prefs/kprefsdialog.cpp:746
 #, kde-format
 msgctxt "@title:window"
 msgid "Preferences"
-msgstr ""
+msgstr "Hobespenak"
 
 #: prefs/kprefsdialog.cpp:848
 #, kde-format
@@ -3956,8 +3914,8 @@ msgid ""
 "You are about to set all preferences to default values. All custom "
 "modifications will be lost."
 msgstr ""
-"Zure hobespen guztiak balio lehenetsitara ezartzeko zorian zaude. Aldaketa "
-"pertsonalizatu guztiak galduko dira."
+"Zure hobespen denak balio lehenetsitara ezartzeko zorian zaude. Neurrira "
+"eginiko aldaketa guztiak galdu egingo dira."
 
 #: prefs/kprefsdialog.cpp:850
 #, kde-format
@@ -3977,12 +3935,9 @@ msgstr "Berretsi ezabatzea"
 
 #. i18n: ectx: tooltip, entry (Confirm), group (Save Settings)
 #: settings/korganizer.kcfg:16
-#, fuzzy, kde-format
-#| msgid "Check this box to display a confirmation dialog when deleting items."
+#, kde-format
 msgid "Always confirm when deleting items"
-msgstr ""
-"Hautatu hau elementuak ezabatzean berrespenerako elkarrizketa bat "
-"bistaratzeko."
+msgstr "Beti berretsi elementuak ezabatzean"
 
 #. i18n: ectx: whatsthis, entry (Confirm), group (Save Settings)
 #: settings/korganizer.kcfg:17
@@ -4023,7 +3978,7 @@ msgstr ""
 #, fuzzy, kde-format
 #| msgid "Be asked which resource to use"
 msgid "Be asked which calendar to use"
-msgstr "Zein baliabide erabili behar diren galdetu behar da"
+msgstr "Zein egunkari erabili galdetu beharko litzateke"
 
 #. i18n: ectx: whatsthis, entry (Destination), group (Save Settings)
 #: settings/korganizer.kcfg:30
@@ -4041,11 +3996,11 @@ msgid ""
 "Kolab server or have to manage multiple accounts using Kontact as a KDE "
 "Kolab client. "
 msgstr ""
-"Hautatu aukera hau gertaera, egiteko edo egunkari-sarera berri bat sortzen "
-"duzun bakoitzean elementua gordetzeko erabiliko den baliabidea hautatzeko. "
-"Aukera hau gomendagarria da Kolab zerbitzariaren karpeta partekatuen "
-"funtzionaltasuna erabili edo Kontact KDE-ren Kolab bezero bezala erabiliz "
-"kontu anitz kudeatu nahi badituzu. "
+"Hautatu aukera hau, ekitaldi, zeregin edo eguneroko-sarrera berri bat "
+"sortzen duzun bakoitzean, elementua gordetzeko erabiliko den baliabidea "
+"hautatzeko. Aukera hau gomendatzen da Kolab zerbitzariaren karpeta "
+"partekatuen funtzionaltasuna erabiltzeko asmoa baduzu edo, Kontact, KDE-ren "
+"Kolab bezero gisa erabiliz kontu anizkoitzak kudeatu nahi badituzu. "
 
 #. i18n: ectx: whatsthis, entry (TimeZoneId), group (Time &amp; Date)
 #: settings/korganizer.kcfg:40
@@ -4079,10 +4034,9 @@ msgstr ""
 
 #. i18n: ectx: label, entry (Holidays), group (Time &amp; Date)
 #: settings/korganizer.kcfg:50
-#, fuzzy, kde-format
-#| msgid "Use holiday region:"
+#, kde-format
 msgid "Use holiday regions:"
-msgstr "Erabili leku honetako oporrak:"
+msgstr "Erabili jaiegun-eskualdeak:"
 
 #. i18n: ectx: whatsthis, entry (Holidays), group (Time &amp; Date)
 #: settings/korganizer.kcfg:51
@@ -4103,22 +4057,24 @@ msgstr ""
 #: settings/korganizer.kcfg:55
 #, fuzzy, kde-format
 msgid "Weekly start day:"
-msgstr "Hasierako data:"
+msgstr "Asteko hasierako eguna:"
 
 #. i18n: ectx: tooltip, entry (WeekStartDay), group (Time &amp; Date)
 #: settings/korganizer.kcfg:56
 #, fuzzy, kde-format
 #| msgid "Select the to-do due today color here."
 msgid "Select the first day of each week"
-msgstr "Hautatu gaur burutuko diren egitekoen kolorea."
+msgstr "Hautatu asteko aurreneko eguna."
 
 #. i18n: ectx: whatsthis, entry (WeekStartDay), group (Time &amp; Date)
 #: settings/korganizer.kcfg:57
-#, kde-format
+#, fuzzy, kde-format
 msgid ""
 "Select the first day of each week. Normally, you can ignore this since it is "
 "set in your locale."
 msgstr ""
+"Sartu asteko aurreneko eguna. Normalean, ez diozu honi jaramon egin beharko, "
+"zure tokiko ezarpenetan ezarrita dagoelako."
 
 #. i18n: ectx: label, entry (WorkingHoursStart), group (Time &amp; Date)
 #: settings/korganizer.kcfg:62
@@ -4173,11 +4129,11 @@ msgstr ""
 #, fuzzy, kde-format
 #| msgid "Agenda view background color"
 msgid "Color busy days with a different background color"
-msgstr "Agenda ikuspegiaren atzeko planoaren kolorea"
+msgstr "Margotu «lanpetutako egunak» atzeko planoko kolore ezberdin batekin"
 
 #. i18n: ectx: whatsthis, entry (ColorMonthBusyDaysEnabled), group (Time &amp; Date)
 #: settings/korganizer.kcfg:81
-#, kde-format
+#, fuzzy, kde-format
 msgid ""
 "Check this box if you want month view's background to be filled with a "
 "different color on days which have at least one all day event marked as "
@@ -4185,13 +4141,18 @@ msgid ""
 "Colors configuration page. Look for the \"Busy days background color\" "
 "setting."
 msgstr ""
+"Markatu lauki hau, gutxienez egun osoko ekitaldi bat lanpetu gisa markatuta "
+"duen egunetan hilabeteko ikuspegiaren atzeko planoa kolore ezberdin batekin "
+"betetzea nahi baduzu. Gainera, aukera honetarako erabilitako hondoko kolorea "
+"alda dezakezu Koloreak konfiguratzeko orrian. Bilatu \"Lanpetutako egunen "
+"atzeko planoko kolorea\" ezarpena."
 
 #. i18n: ectx: label, entry, group (General View)
 #: settings/korganizer.kcfg:90
 #, fuzzy, kde-format
 #| msgid "Enable tooltips displaying summary of events"
 msgid "Enable tooltips for displaying summaries"
-msgstr "Gaitu gertaeren laburpenak erakusten dituen argibideak"
+msgstr "Gaitu bistaratutako laburpenen gaineko argibideak"
 
 #. i18n: ectx: whatsthis, entry, group (General View)
 #: settings/korganizer.kcfg:91
@@ -4203,8 +4164,8 @@ msgid ""
 "Check this box to display summary tooltips when hovering the mouse over an "
 "event or a to-do."
 msgstr ""
-"Hautatu hau sagua gertaeraren gainean jartzean argibide bat agertzea nahi "
-"baduzu."
+"Markatu lauki hau, sagua, ekitaldi baten edo zeregin baten gainean jartzean, "
+"laburpen argibideak azaltzeko."
 
 #. i18n: ectx: label, entry, group (General View)
 #: settings/korganizer.kcfg:96
@@ -4235,22 +4196,22 @@ msgid ""
 "access the next \"x\" days view, choose the \"Next X Days\" menu item from "
 "the \"View\" menu."
 msgstr ""
-"Hautatu biratze-laukian hurrengo egunen ikuspegian bistaratzeko &quot;"
-"x&quot; egun kopurua. Hurrengo &quot;x&quot; egunen ikuspegira joateko "
-"hautatu &quot;Ikusi&quot; menuko &quot;Hurrengo X egunak&quot; menuko aukera."
+"Hautatu hurrengo egunak ikuspegian azaldu beharreko \"x\" egunen kopurua. "
+"Hurrengo \"x\" egunak ikuspegira iristeko, hautatu \"Ikuspegi\" menuko "
+"\"Hurrengo X egunak\" elementua."
 
 #. i18n: ectx: tooltip, entry, group (General View)
 #: settings/korganizer.kcfg:104
-#, kde-format
+#, fuzzy, kde-format
 msgid "Show this many days at a time in the Next \"x\" days view"
-msgstr ""
+msgstr "Erakutsi honenbeste egun batera Hurrengo \"x\" egunen ikuspegian"
 
 #. i18n: ectx: label, entry (DailyRecur), group (General View)
 #: settings/korganizer.kcfg:109
 #, fuzzy, kde-format
 #| msgid "Show events that recur daily in date navigator"
 msgid "Show items that recur daily"
-msgstr "Erakutsi egun bateko periodoa duten gertaerak data nabigatzailean"
+msgstr "Erakutsi egunero errepikatzen diren elementuak"
 
 #. i18n: ectx: whatsthis, entry (DailyRecur), group (General View)
 #: settings/korganizer.kcfg:110
@@ -4269,7 +4230,7 @@ msgstr ""
 #, fuzzy, kde-format
 #| msgid "Show events that recur weekly in date navigator"
 msgid "Show items that recur weekly"
-msgstr "Erakutsi aste bateko periodoa duten gertaerak data nabigatzailean"
+msgstr "Erakutsi asteko errepikatzen diren elementuak"
 
 #. i18n: ectx: whatsthis, entry (WeeklyRecur), group (General View)
 #: settings/korganizer.kcfg:116
@@ -4285,9 +4246,9 @@ msgstr ""
 
 #. i18n: ectx: label, entry (HighlightTodos), group (General View)
 #: settings/korganizer.kcfg:121
-#, kde-format
+#, fuzzy, kde-format
 msgid "Show to-dos instead of events when in Todo View"
-msgstr ""
+msgstr "Erakutsi zereginak ekitaldien ordez Zereginen ikuspegian"
 
 #. i18n: ectx: whatsthis, entry (HighlightTodos), group (General View)
 #: settings/korganizer.kcfg:122
@@ -4300,15 +4261,14 @@ msgid ""
 "Check this box to show the days containing to-dos in bold typeface in the "
 "Date Navigator when in to-do view."
 msgstr ""
-"Hautatu hau eguneroko gertaera errepikakorrak dituzten egunak Data "
-"arakatzailean letra-tipo lodia erabiliz erakusteko, edo desautatu beste "
-"gertaerei (eguneroko errepikakorrak ez direnei) garrantzi gehiago emateko."
+"Markatu lauki hau, zereginak dituzten egunak, Data nabigatzailean, zereginen "
+"ikuspegian egonda, letra-molde lodiarekin erakusteko."
 
 #. i18n: ectx: label, entry (HighlightJournals), group (General View)
 #: settings/korganizer.kcfg:127
-#, kde-format
+#, fuzzy, kde-format
 msgid "Show journals instead of events when in Journal View"
-msgstr ""
+msgstr "Erakutsi egunerokoak ekitaldien ordez Egunerokoen ikuspegian"
 
 #. i18n: ectx: whatsthis, entry (HighlightJournals), group (General View)
 #: settings/korganizer.kcfg:128
@@ -4321,23 +4281,24 @@ msgid ""
 "Check this box to show the days containing journals in bold typeface in the "
 "Date Navigator when in journal view."
 msgstr ""
-"Hautatu hau eguneroko gertaera errepikakorrak dituzten egunak Data "
-"arakatzailean letra-tipo lodia erabiliz erakusteko, edo desautatu beste "
-"gertaerei (eguneroko errepikakorrak ez direnei) garrantzi gehiago emateko."
+"Markatu lauki hau, egunerokoak dituzten egunak, Data nabigatzailean, "
+"egunerokoaren ikuspegian egonda, letra-molde lodiarekin erakusteko."
 
 #. i18n: ectx: label, entry (WeekNumbersShowWork), group (General View)
 #: settings/korganizer.kcfg:133
-#, kde-format
+#, fuzzy, kde-format
 msgid "Week numbers select a work week when in work week mode"
-msgstr ""
+msgstr "Aste-zenbakiek, lan-astea moduan, lan-aste bat hautatzen dute"
 
 #. i18n: ectx: whatsthis, entry (WeekNumbersShowWork), group (General View)
 #: settings/korganizer.kcfg:134
-#, kde-format
+#, fuzzy, kde-format
 msgid ""
 "Check this box to select a working week when clicking on the Date "
 "Navigator's week numbers, or uncheck it to choose the whole week."
 msgstr ""
+"Markatu lauki hau, Data nabigatzailearen aste-zenbakietan klik egitean lan-"
+"astea hautatzeko, edo desmarkatu aste osoa hautatzeko."
 
 #. i18n: ectx: label, entry, group (Agenda View)
 #: settings/korganizer.kcfg:142
@@ -4347,23 +4308,25 @@ msgstr "Orduaren tamaina"
 
 #. i18n: ectx: whatsthis, entry, group (Agenda View)
 #: settings/korganizer.kcfg:143
-#, kde-format
+#, fuzzy, kde-format
 msgid ""
 "Select the height of the hour rows in the agenda grid, in pixels. Increasing "
 "this value will make each row in the agenda grid taller."
 msgstr ""
+"Hautatu agenda-saretako ordu-errenkaden altuera pixeletan. Balio hau "
+"handitzean agenda-saretako errenkada bakoitza altuagoa egingo du."
 
 #. i18n: ectx: tooltip, entry, group (Agenda View)
 #: settings/korganizer.kcfg:144
-#, kde-format
+#, fuzzy, kde-format
 msgid "Set the height (in pixels) for an hour in the agenda grid"
-msgstr ""
+msgstr "Ezarri agenda-saretako ordu baterako altuera (pixeletan)"
 
 #. i18n: ectx: label, entry (EnableAgendaItemIcons), group (Agenda View)
 #: settings/korganizer.kcfg:151
 #, fuzzy, kde-format
 msgid "Show icons in agenda view items"
-msgstr "Erakutsi hautatutakoak bakarrik"
+msgstr "Erakutsi ikonoak agenda ikuspegiko elementuetan"
 
 #. i18n: ectx: whatsthis, entry (EnableAgendaItemIcons), group (Agenda View)
 #: settings/korganizer.kcfg:152
@@ -4373,14 +4336,14 @@ msgid ""
 "Check this box to display icons (alarm, recursion, etc.) in agenda view "
 "items."
 msgstr ""
-"Hautatu hau elementuak ezabatzean berrespenerako elkarrizketa bat "
-"bistaratzeko."
+"Markatu lauki hau, agenda ikuspegiko elementuetan ikonoak (alarma, "
+"errekurtsioa, etab.) bistaratzeko."
 
 #. i18n: ectx: tooltip, entry (EnableAgendaItemIcons), group (Agenda View)
 #: settings/korganizer.kcfg:153
 #, fuzzy, kde-format
 msgid "Display icons in agenda view items"
-msgstr "Erakutsi hautatutakoak bakarrik"
+msgstr "Erakutsi ikonoak agenda ikuspegiko elementuetan"
 
 #. i18n: ectx: label, entry (ShowTodosAgendaView), group (Agenda View)
 #. i18n: ectx: label, entry (ShowTodosMonthView), group (Month View)
@@ -4388,22 +4351,20 @@ msgstr "Erakutsi hautatutakoak bakarrik"
 #, fuzzy, kde-format
 #| msgid "&Show To-do"
 msgid "Show to-dos"
-msgstr "&Erakutsi egitekoa"
+msgstr "Erakutsi zereginak"
 
 #. i18n: ectx: whatsthis, entry (ShowTodosAgendaView), group (Agenda View)
 #: settings/korganizer.kcfg:159
 #, fuzzy, kde-format
 #| msgid "Check this box to display a confirmation dialog when deleting items."
 msgid "Check this box to display to-dos in the agenda view."
-msgstr ""
-"Hautatu hau elementuak ezabatzean berrespenerako elkarrizketa bat "
-"bistaratzeko."
+msgstr "Markatu lauki hau agenda ikuspegian zereginak azaltzeko."
 
 #. i18n: ectx: tooltip, entry (ShowTodosAgendaView), group (Agenda View)
 #: settings/korganizer.kcfg:160
 #, fuzzy, kde-format
 msgid "Display to-dos in the agenda view"
-msgstr "Erakutsi hautatutakoak bakarrik"
+msgstr "Erakutsi zereginak agenda ikuspegian"
 
 #. i18n: ectx: label, entry (MarcusBainsEnabled), group (Agenda View)
 #: settings/korganizer.kcfg:165
@@ -4421,22 +4382,22 @@ msgid ""
 "Check this box to display a line in the day or week view indicating the "
 "current-time line (Marcus Bains line)."
 msgstr ""
-"Hautatu hau, eguneko edo asteko ikuspegian uneko denbora adieraziko duen "
-"lerro gorri bat bistaratzeko (Marcus Bains lerroa)."
+"Markatu lauki hau, eguneko edo asteko ikuspegian uneko denbora-lerroa "
+"(Marcus Bains lerroa) adierazten duen lerro bat azaltzeko."
 
 #. i18n: ectx: tooltip, entry (MarcusBainsEnabled), group (Agenda View)
 #: settings/korganizer.kcfg:167
 #, fuzzy, kde-format
 #| msgid "Displays appointment time information."
 msgid "Display the current-time indicator"
-msgstr "Hitzorduaren orduaren informazioa bistaratzen du."
+msgstr "Azaldu uneko orduaren adierazlea"
 
 #. i18n: ectx: label, entry (MarcusBainsShowSeconds), group (Agenda View)
 #: settings/korganizer.kcfg:172
 #, fuzzy, kde-format
 #| msgid "Show current-time (Marcus Bains) line"
 msgid "Show seconds on the current-time (Marcus Bains) line"
-msgstr "Erakutsi uneko orduaren (Marcus Bains) lerroa"
+msgstr "Erakutsi segundoak uneko ordu (Marcus Bains) lerroan"
 
 #. i18n: ectx: whatsthis, entry (MarcusBainsShowSeconds), group (Agenda View)
 #: settings/korganizer.kcfg:173
@@ -4450,7 +4411,7 @@ msgstr ""
 #, fuzzy, kde-format
 #| msgid "Show seconds on current-time line"
 msgid "Display seconds with the current-time indicator"
-msgstr "Erakutsi segunduak uneko-denboraren lerroan"
+msgstr "Azaldu segundoak uneko-ordu adierazlearekin"
 
 #. i18n: ectx: label, entry (SelectionStartsEditor), group (Agenda View)
 #: settings/korganizer.kcfg:179
@@ -4474,16 +4435,16 @@ msgstr ""
 
 #. i18n: ectx: tooltip, entry (SelectionStartsEditor), group (Agenda View)
 #: settings/korganizer.kcfg:181
-#, kde-format
+#, fuzzy, kde-format
 msgid "Enable automatic event editor with time range selection"
-msgstr ""
+msgstr "Gaitu ekitaldi-editore automatikoa denbora-barruti hautapenarekin"
 
 #. i18n: ectx: label, entry, group (Agenda View)
 #. i18n: ectx: label, entry, group (Month View)
 #: settings/korganizer.kcfg:186 settings/korganizer.kcfg:276
-#, kde-format
+#, fuzzy, kde-format
 msgid "Color Usage"
-msgstr ""
+msgstr "Kolorearen erabilera"
 
 #. i18n: ectx: label, entry, group (Agenda View)
 #. i18n: ectx: label, entry, group (Month View)
@@ -4567,7 +4528,7 @@ msgstr ""
 #, fuzzy, kde-format
 #| msgid "Calendar"
 msgid "Only calendar"
-msgstr "Egutegia"
+msgstr "Egutegia bakarrik"
 
 #. i18n: ectx: whatsthis, entry, group (Agenda View)
 #: settings/korganizer.kcfg:205
@@ -4580,93 +4541,106 @@ msgstr ""
 
 #. i18n: ectx: tooltip, entry, group (Agenda View)
 #: settings/korganizer.kcfg:206
-#, kde-format
+#, fuzzy, kde-format
 msgid "Draw agenda items using their calendar color for the inside and border"
 msgstr ""
+"Marraztu agendako elementua haien egutegiaren kolorearekin barrutik eta "
+"ertzetan"
 
 #. i18n: ectx: whatsthis, entry (ColorBusyDaysEnabled), group (Agenda View)
 #: settings/korganizer.kcfg:213
-#, kde-format
+#, fuzzy, kde-format
 msgid ""
 "Check this box if you want agenda's background to be filled with a different "
 "color on days which have at least one all day event marked as busy. Also, "
 "you can change the background color used for this option on the Colors "
 "configuration page. Look for the \"Busy days background color\" setting."
 msgstr ""
+"Markatu lauki hau, gutxienez egun osoko ekitaldi bat lanpetu gisa markatuta "
+"duen egunetan agendaren atzeko planoa kolore ezberdin batekin betetzea nahi "
+"baduzu. Gainera, aukera honetarako erabilitako hondoko kolorea alda dezakezu "
+"Koloreak konfiguratzeko orrian. Bilatu \"Lanpetutako egunen atzeko planoko "
+"kolorea\" ezarpena."
 
 #. i18n: ectx: label, entry (AgendaViewCalendarDisplay), group (Agenda View)
 #: settings/korganizer.kcfg:217
 #, fuzzy, kde-format
 #| msgid "Active Calendar"
 msgid "Multiple Calendar Display"
-msgstr "Egutegi aktiboa"
+msgstr "Egutegi anizkoitzak azaltzea"
 
 #. i18n: ectx: label, entry (AgendaViewCalendarDisplay), group (Agenda View)
 #: settings/korganizer.kcfg:220
 #, fuzzy, kde-format
 msgid "Merge all calendars into one view"
-msgstr "Ireki beste lehio batean"
+msgstr "Bateratu egutegi denak ikuspegi bakarrean"
 
 #. i18n: ectx: whatsthis, entry (AgendaViewCalendarDisplay), group (Agenda View)
 #: settings/korganizer.kcfg:221
-#, kde-format
+#, fuzzy, kde-format
 msgid ""
 "Select the \"Merge all calendars into one view\" option if you would like "
 "all your calendars to be shown together in one agenda view."
 msgstr ""
+"Aukeratu \"Bateratu egutegi denak ikuspegi bakarrean\" aukera zure egutegi "
+"denak batera agenda ikuspegi bakarrean erakustea nahi bazenu."
 
 #. i18n: ectx: tooltip, entry (AgendaViewCalendarDisplay), group (Agenda View)
 #: settings/korganizer.kcfg:222
 #, kde-format
 msgid "Show all calendars merged together"
-msgstr ""
+msgstr "Erakutsi egutegi denak elkarrekin bateratuta"
 
 #. i18n: ectx: label, entry (AgendaViewCalendarDisplay), group (Agenda View)
 #: settings/korganizer.kcfg:225
 #, kde-format
 msgid "Show calendars side by side"
-msgstr ""
+msgstr "Erakutsi egutegiak alboz-albo"
 
 #. i18n: ectx: whatsthis, entry (AgendaViewCalendarDisplay), group (Agenda View)
 #: settings/korganizer.kcfg:226
-#, kde-format
+#, fuzzy, kde-format
 msgid ""
 "Select the \"Show calendars side by side\" option if you would like to see "
 "two calendars at once, in a side-by-side view."
 msgstr ""
+"Aukeratu \"Erakutsi egutegiak alboz-albo\" aukera bi egutegi batera alboz-"
+"alboko ikuspegi batean ikusteko."
 
 #. i18n: ectx: tooltip, entry (AgendaViewCalendarDisplay), group (Agenda View)
 #: settings/korganizer.kcfg:227
-#, kde-format
+#, fuzzy, kde-format
 msgid "Show two calendars side-by-side"
-msgstr ""
+msgstr "Erakutsi bi egutegi alboz-albo"
 
 #. i18n: ectx: label, entry (AgendaViewCalendarDisplay), group (Agenda View)
 #: settings/korganizer.kcfg:230
-#, kde-format
+#, fuzzy, kde-format
 msgid "Switch between views with tabs"
-msgstr ""
+msgstr "Aldatu ikuspegien artean tab erabiliz"
 
 #. i18n: ectx: whatsthis, entry (AgendaViewCalendarDisplay), group (Agenda View)
 #: settings/korganizer.kcfg:231
-#, kde-format
+#, fuzzy, kde-format
 msgid ""
 "Select \"Switch between views with tabs\" if you would like to alternate "
 "between calendars using the tab key."
 msgstr ""
+"Aukeratu \"Aldatu ikuspegien artean tab erabiliz\" egutegien artean tab "
+"tekla erabiliz txandakatu nahi baduzu."
 
 #. i18n: ectx: tooltip, entry (AgendaViewCalendarDisplay), group (Agenda View)
 #: settings/korganizer.kcfg:232
 #, fuzzy, kde-format
 #| msgid "Merged calendar '%1'."
 msgid "Tab through calendars"
-msgstr "'%1' egutegia bateratuta."
+msgstr "Tab egutegien artean"
 
 #. i18n: ectx: label, entry (EnableMonthItemIcons), group (Month View)
 #: settings/korganizer.kcfg:242
 #, fuzzy, kde-format
 msgid "Show icons in month view items"
-msgstr "Erakutsi hautatutakoak bakarrik"
+msgstr "Erakutsi ikonoak hilabeteko ikuspegiko elementuetan"
 
 #. i18n: ectx: whatsthis, entry (EnableMonthItemIcons), group (Month View)
 #: settings/korganizer.kcfg:243
@@ -4675,76 +4649,70 @@ msgstr "Erakutsi hautatutakoak bakarrik"
 msgid ""
 "Check this box to display icons (alarm, recursion, etc.) in month view items."
 msgstr ""
-"Hautatu hau elementuak ezabatzean berrespenerako elkarrizketa bat "
-"bistaratzeko."
+"Markatu lauki hau, hilabeteko ikuspegiko elementuetan ikonoak (alarma, "
+"errekurtsioa, etab.) azaltzeko."
 
 #. i18n: ectx: tooltip, entry (EnableMonthItemIcons), group (Month View)
 #: settings/korganizer.kcfg:244
 #, fuzzy, kde-format
 #| msgid "Enable scrollbars in month view cells"
 msgid "Display icons in month view items"
-msgstr "Gaitu korritze-barrak hilabete ikuspegiaren gelaxketan"
+msgstr "Azaldu ikonoak hilabete ikuspegiko elementuetan"
 
 #. i18n: ectx: label, entry (ShowTimeInMonthView), group (Month View)
 #: settings/korganizer.kcfg:249
 #, fuzzy, kde-format
 msgid "Show time in month view items"
-msgstr "Erakutsi hautatutakoak bakarrik"
+msgstr "Erakutsi ordua hilabete ikuspegiko elementuetan"
 
 #. i18n: ectx: whatsthis, entry (ShowTimeInMonthView), group (Month View)
 #: settings/korganizer.kcfg:250
 #, fuzzy, kde-format
 #| msgid "Check this box to display a confirmation dialog when deleting items."
 msgid "Check this box to display the time in month view items."
-msgstr ""
-"Hautatu hau elementuak ezabatzean berrespenerako elkarrizketa bat "
-"bistaratzeko."
+msgstr "Markatu lauki hau, hilabeteko ikuspegiko elementuetan ordua azaltzeko."
 
 #. i18n: ectx: tooltip, entry (ShowTimeInMonthView), group (Month View)
 #: settings/korganizer.kcfg:251
 #, fuzzy, kde-format
 #| msgid "Enable scrollbars in month view cells"
 msgid "Display time in month view items"
-msgstr "Gaitu korritze-barrak hilabete ikuspegiaren gelaxketan"
+msgstr "Azaldu ordua hilabeteko ikuspegiko elementuetan"
 
 #. i18n: ectx: whatsthis, entry (ShowTodosMonthView), group (Month View)
 #: settings/korganizer.kcfg:257
 #, fuzzy, kde-format
 #| msgid "Check this box to display a confirmation dialog when deleting items."
 msgid "Check this box to display to-dos in the month view."
-msgstr ""
-"Hautatu hau elementuak ezabatzean berrespenerako elkarrizketa bat "
-"bistaratzeko."
+msgstr "Markatu lauki hau, hilabeteko ikuspegian zereginak azaltzeko."
 
 #. i18n: ectx: tooltip, entry (ShowTodosMonthView), group (Month View)
 #: settings/korganizer.kcfg:258
 #, fuzzy, kde-format
 #| msgid "Enable scrollbars in month view cells"
 msgid "Display to-dos in the month view"
-msgstr "Gaitu korritze-barrak hilabete ikuspegiaren gelaxketan"
+msgstr "Azaldu zereginak hilabeteko ikuspegian"
 
 #. i18n: ectx: label, entry (ShowJournalsMonthView), group (Month View)
 #: settings/korganizer.kcfg:263
 #, fuzzy, kde-format
 #| msgid "New &Journal..."
 msgid "Show journals"
-msgstr "E&gunkari berria..."
+msgstr "Erakutsi egunerokoak"
 
 #. i18n: ectx: whatsthis, entry (ShowJournalsMonthView), group (Month View)
 #: settings/korganizer.kcfg:264
 #, fuzzy, kde-format
 #| msgid "Check this box to display a confirmation dialog when deleting items."
 msgid "Check this box to display journals in the month view."
-msgstr ""
-"Hautatu hau elementuak ezabatzean berrespenerako elkarrizketa bat "
-"bistaratzeko."
+msgstr "Markatu lauki hau, hilabeteko ikuspegian egunerokoak azaltzeko."
 
 #. i18n: ectx: tooltip, entry (ShowJournalsMonthView), group (Month View)
 #: settings/korganizer.kcfg:265
 #, fuzzy, kde-format
 #| msgid "Enable scrollbars in month view cells"
 msgid "Display journals in the month view"
-msgstr "Gaitu korritze-barrak hilabete ikuspegiaren gelaxketan"
+msgstr "Erakutsi egunerokoak hilabeteko ikuspegian"
 
 #. i18n: ectx: label, entry, group (Month View)
 #: settings/korganizer.kcfg:270
@@ -4766,10 +4734,10 @@ msgid ""
 "but other widgets, such as the date navigator, the item details and the "
 "calendars list, will not be displayed."
 msgstr ""
-"Hautatu hau hilabeteko ikuspegian KOrganizer-en lehio osoa erabiltzeko. Hau "
-"hautatzen bada, lekua irabaziko duzun hilabeteko ikuspegian, baina beste "
-"trepeta batzuk (arakatzailea, elementuaren xehetasunak eta baliabideen "
-"zerrenda) ez dira bistaratuko."
+"Markatu lauki hau, hilabeteko ikuspegia azaltzeko KOrganizer-en leiho osoa "
+"erabiltzeko. Lauki hau markatuta badago, hilabeteko ikuspegirako leku pixka "
+"bat gehiago irabaziko duzu, baina beste trepeta batzuk, data-nabigatzailea, "
+"elementuen xehetasunak eta egutegien zerrenda esaterako, ez dira azalduko."
 
 #. i18n: ectx: tooltip, entry, group (Month View)
 #: settings/korganizer.kcfg:281
@@ -4804,24 +4772,30 @@ msgstr ""
 
 #. i18n: ectx: whatsthis, entry, group (Month View)
 #: settings/korganizer.kcfg:295
-#, kde-format
+#, fuzzy, kde-format
 msgid ""
 "Select the \"Only calendar\" option if you would like to draw calendar items "
 "(both inside and border) in the color of their calendar.  Please use the "
 "Colors and Fonts configuration page for setting these colors."
 msgstr ""
+"Hautatu \"Egutegia bakarrik\" aukera egutegiko elementuak (biak, barrua eta "
+"ertzak) dauden egutegiaren kolorearekin marraztea nahi baduzu. Mesedez, "
+"erabili \"Koloreak eta Letra-tipoak\" konfiguratzeko orria kolore horiek "
+"ezartzeko."
 
 #. i18n: ectx: tooltip, entry, group (Month View)
 #: settings/korganizer.kcfg:296
-#, kde-format
+#, fuzzy, kde-format
 msgid "Draw month items using their calendar color for the inside and border"
 msgstr ""
+"Marraztu hilabeteko elementua haien egutegiaren kolorearekin barrutik eta "
+"ertzetan"
 
 #. i18n: ectx: label, entry, group (Todo View)
 #: settings/korganizer.kcfg:306
-#, kde-format
+#, fuzzy, kde-format
 msgid "Always display completed to-dos at the bottom of the list"
-msgstr ""
+msgstr "Erakutsi osatutako zereginak beti zerrenda behean"
 
 #. i18n: ectx: tooltip, entry, group (Todo View)
 #: settings/korganizer.kcfg:307
@@ -4833,11 +4807,13 @@ msgstr ""
 
 #. i18n: ectx: whatsthis, entry, group (Todo View)
 #: settings/korganizer.kcfg:308
-#, kde-format
+#, fuzzy, kde-format
 msgid ""
 "Check this box if you want all completed to-dos to be always grouped at the "
 "bottom of the to-do list."
 msgstr ""
+"Markatu lauki hau, osatutako zeregin denak beti zereginen zerrenda behean "
+"taldekatuta egon daitezen."
 
 #. i18n: ectx: label, entry, group (Todo View)
 #: settings/korganizer.kcfg:313
@@ -4866,23 +4842,25 @@ msgid ""
 "list view, but other widgets, such as the date navigator, the to-do details "
 "and the calendars list, will not be displayed."
 msgstr ""
-"Hautatu hau egitekoen zerrendaren ikuspegia bistaratzean KOrganizer-en lehio "
-"osoa erabiltzeko. Hau hautatzen bada, lekua irabaziko duzu egitekoen "
-"zerrendaren ikuspegiarentzat, baina beste trepeta batzuk (arakatzailea, "
-"elementuaren xehetasunak eta baliabideen zerrenda) ez dira bistaratuko."
+"Markatu lauki hau, zereginen zerrenda ikuspegia azaltzean KOrganizer-ren "
+"leiho osoa erabiltzeko. Lauki hau markatzen bada, zereginen zerrenda "
+"ikuspegirako leku pixka bat irabaziko duzu, baina beste trepeta batzuk, data-"
+"nabigatzailea, zereginen xehetasunak eta egutegien zerrenda esaterako ez "
+"dira azalduko."
 
 #. i18n: ectx: label, entry, group (Todo View)
 #: settings/korganizer.kcfg:320
 #, fuzzy, kde-format
 #| msgid "Enable scrollbars in month view cells"
 msgid "Display to-dos in a flat list"
-msgstr "Gaitu korritze-barrak hilabete ikuspegiaren gelaxketan"
+msgstr "Azaldu zereginak zerrenda lau batean"
 
 #. i18n: ectx: tooltip, entry, group (Todo View)
 #: settings/korganizer.kcfg:321
-#, kde-format
+#, fuzzy, kde-format
 msgid "Display to-dos as a flat list instead of a hierarchical tree"
 msgstr ""
+"Azaldu zereginak zerrenda lau gisa hierarkia zuhaitz gisa erakutsi ordez"
 
 #. i18n: ectx: whatsthis, entry, group (Todo View)
 #: settings/korganizer.kcfg:322
@@ -4892,7 +4870,8 @@ msgid ""
 "Check this box if you want to see all your to-dos in a flat list instead of "
 "being arranged in a hierarchical tree."
 msgstr ""
-"Hautatu aukera hau uneko-denboraren lerroan segunduak ikusi nahi badituzu."
+"Markatu lauki hau, zure zeregin denak zuhaitz hierarkia batean antolatu "
+"ordez zerrenda lau batean ikusi nahi badituzu."
 
 #. i18n: ectx: label, entry, group (Todo View)
 #: settings/korganizer.kcfg:327
@@ -4951,21 +4930,22 @@ msgstr "Hautatu agenda ikuspegiaren atzeko planoaren kolorea."
 #, fuzzy, kde-format
 #| msgid "Displays appointment time information."
 msgid "Agenda view current-time line color"
-msgstr "Hitzorduaren orduaren informazioa bistaratzen du."
+msgstr "Agenda ikuspegiko uneko ordua lerroaren kolorea"
 
 #. i18n: ectx: whatsthis, entry, group (Colors)
 #: settings/korganizer.kcfg:349
 #, fuzzy, kde-format
 #| msgid "Show current-time (Marcus Bains) line"
 msgid "Select a color to use for the current-time (Marcus Bains) line."
-msgstr "Erakutsi uneko orduaren (Marcus Bains) lerroa"
+msgstr "Aukeratu uneko ordu-lerroarekin (Marcus Bains) erabiltzeko kolore bat."
 
 #. i18n: ectx: tooltip, entry, group (Colors)
 #: settings/korganizer.kcfg:350
 #, fuzzy, kde-format
 #| msgid "Show current-time (Marcus Bains) line"
 msgid "Use this color for the Agenda View current-time (Marcus Bains) line"
-msgstr "Erakutsi uneko orduaren (Marcus Bains) lerroa"
+msgstr ""
+"Erabili kolore hau Agenda ikuspegian uneko ordu-lerrorako (Marcus Bains)"
 
 #. i18n: ectx: label, entry (ViewBgBusyColor), group (Colors)
 #: settings/korganizer.kcfg:355
@@ -4976,11 +4956,14 @@ msgstr "Agenda ikuspegiaren atzeko planoaren kolorea"
 
 #. i18n: ectx: whatsthis, entry (ViewBgBusyColor), group (Colors)
 #: settings/korganizer.kcfg:356
-#, kde-format
+#, fuzzy, kde-format
 msgid ""
 "When you have an all day event marked as busy, you can have a different "
 "agenda or month view background color for that day. Select the color here."
 msgstr ""
+"Egun osoko ekitaldi bat lanpetu gisa markatuta duzunean, egun horretarako "
+"agenda- edo hilabeteko ikuspegiaren atzeko planoko kolore ezberdina izan "
+"dezakezu. Hautatu kolorea hemen."
 
 #. i18n: ectx: label, entry, group (Colors)
 #. i18n: ectx: label, entry, group (Theme/Month view)
@@ -4994,7 +4977,7 @@ msgstr "Lan-orduen kolorea"
 #, fuzzy, kde-format
 #| msgid "Select the working hours color for the agenda view here."
 msgid "Select the working hours color for the agenda view here."
-msgstr "Hautatu agenda ikuspegiaren laneko orduen kolorea."
+msgstr "Hautatu hemen agenda ikuspegirako lanorduen kolorea."
 
 #. i18n: ectx: label, entry (TodoDueTodayColor), group (Colors)
 #. i18n: ectx: label, entry, group (Theme/Month view)
@@ -5043,10 +5026,10 @@ msgid ""
 "that shows the hours in the agenda view. This button will open the \"Select "
 "Font\" dialog, allowing you to choose the hour font for the time bar."
 msgstr ""
-"Sakatu botoi hau denbora-barraren letra-tipoa aldatzeko. Denbora-barra "
-"agendaren ikuspegian orduak erakusten dituen trepeta da. Botoi honek &quot;"
-"Hautatu trepeta&quot; elkarrizketa irekkiko du eta denbora-barrako orduen "
-"letra-tipo hautatzeko aukera emango dizu."
+"Sakatu botoi hau denbora-barrako letra-tipoa konfiguratzeko. Denbora-barra, "
+"agenda-ikuspegian orduak erakusten dituen trepeta da. Botoi honek \"Hautatu "
+"letra-tipoa\" elkarrizketa-koadroa irekiko du, denbora-barrako orduaren "
+"letra-tipoa hautatzeko aukera emanez."
 
 #. i18n: ectx: label, entry, group (Fonts)
 #: settings/korganizer.kcfg:387
@@ -5066,9 +5049,9 @@ msgid ""
 "the \"Select Font\" dialog, allowing you to choose the font for the items in "
 "the month view."
 msgstr ""
-"Sakatu botoi hau hilabeteko ikuspegiaren letra-tipoa konfiguratzeko. Botoi "
-"honek &quot;Hautatu letra-tipoa&quot; elkarrizketa irekiko du, eta "
-"hilabeteko ikuspegiko elementuen letra-tipoa hautatzeko aukera emango dizu."
+"Sakatu botoi hau hilabeteko ikuspegiko letra-tipoa konfiguratzeko. Botoi "
+"honek \"Hautatu letra-tipoa\" elkarrizketa-koadroa irekiko du, denbora-"
+"barrako orduaren letra-tipoa hautatzeko aukera emanez."
 
 #. i18n: ectx: label, entry, group (Fonts)
 #: settings/korganizer.kcfg:392
@@ -5088,9 +5071,9 @@ msgid ""
 "the \"Select Font\" dialog, allowing you to choose the font for the events "
 "in the agenda view."
 msgstr ""
-"Hautatu botoi hau agendaren ikuspegiaren letra-tipoa konfiguratzeko. Botoi "
-"honek &quot;Hautatu letra-tipoa&quot; elkarrizketa irekiko du, eta agenda "
-"ikuspegian gertaeren letra-tipoa hautatzeko aukera emango dizu."
+"Hautatu botoi hau agenda-ikuspegiko letra-tipoa konfiguratzeko. Botoi honek "
+"\"Hautatu letra-tipoa\" elkarrizketa-koadroa irekiko du, denbora-barrako "
+"orduaren letra-tipoa hautatzeko aukera emanez."
 
 #. i18n: ectx: label, entry, group (Fonts)
 #: settings/korganizer.kcfg:397
@@ -5110,49 +5093,47 @@ msgid ""
 "open the \"Select Font\" dialog, allowing you to choose the font for the "
 "current-time line in the agenda view."
 msgstr ""
-"Sakatu botoi hau uneko-denborako lerroaren letra-tipoa konfiguratzeko. Botoi "
-"honek &quot;Hautatu letra-tipoa&quot; elkarrizketa irekiko du, eta agendaren "
-"ikuspegiko uneko-denboraren lerroaren letra-tipoa hautatzeko aukera emango "
-"dizu."
+"Sakatu botoi hau uneko-orduko lerroaren letra-tipoa konfiguratzeko. Botoi "
+"honek \"Hautatu letra-tipoa\" elkarrizketa-koadroa irekiko du, denbora-"
+"barrako orduaren letra-tipoa hautatzeko aukera emanez."
 
 #. i18n: ectx: label, entry (DefaultTodoAttachMethod), group (Hidden Options)
 #: settings/korganizer.kcfg:422
 #, fuzzy, kde-format
 #| msgid "Default appointment time"
 msgid "Default todo attachment method"
-msgstr "Hitzorduaren ordu lehenetsia"
+msgstr "Zereginen eranskin metodo lehenetsia"
 
 #. i18n: ectx: whatsthis, entry (DefaultTodoAttachMethod), group (Hidden Options)
 #: settings/korganizer.kcfg:423
-#, kde-format
+#, fuzzy, kde-format
 msgid "The default way of attaching dropped emails to a task"
-msgstr ""
+msgstr "Jaregindako e-postak ataza bati eransteko era lehenetsias"
 
 #. i18n: ectx: label, entry (DefaultTodoAttachMethod), group (Hidden Options)
 #: settings/korganizer.kcfg:426
 #, kde-format
 msgid "Always ask"
-msgstr ""
+msgstr "Galdetu beti"
 
 #. i18n: ectx: label, entry (DefaultTodoAttachMethod), group (Hidden Options)
 #: settings/korganizer.kcfg:429
 #, kde-format
 msgid "Only attach link to message"
-msgstr ""
+msgstr "Erantsi soilik mezuaren esteka"
 
 #. i18n: ectx: label, entry (DefaultTodoAttachMethod), group (Hidden Options)
 #: settings/korganizer.kcfg:432
-#, fuzzy, kde-format
-#| msgid "Attach&ments"
+#, kde-format
 msgid "Attach complete message"
-msgstr "&Eranskinak"
+msgstr "Erantsi mezu osoa"
 
 #. i18n: ectx: label, entry, group (Theming)
 #. i18n: ectx: label, entry, group (Theme/Month view)
 #: settings/korganizer.kcfg:489 settings/korganizer.kcfg:577
 #, kde-format
 msgid "Highlight color"
-msgstr "Nabarmentzearen kolorea"
+msgstr "Nabarmentzeko kolorea"
 
 #. i18n: ectx: whatsthis, entry, group (Theming)
 #: settings/korganizer.kcfg:490
@@ -5161,15 +5142,14 @@ msgid ""
 "Select the highlight color here. The highlight color will be used for "
 "marking the currently selected area in your agenda and in the date navigator."
 msgstr ""
-"Hautatu nabarmentze kolorea hemen. Nabarmentze kolorea zure agendan eta data "
-"arakatzailean uneko hautatutako area markatzeko erabiliko da."
+"Hautatu nabarmentzeko kolorea hemen. Nabarmentzeko kolorea zure agendan eta "
+"data nabigatzailean hautatutako azalera markatzeko erabiliko da."
 
 #. i18n: ectx: label, entry, group (Theming)
 #: settings/korganizer.kcfg:558
-#, fuzzy, kde-format
-#| msgid "&Use colors"
+#, kde-format
 msgid "Use system color"
-msgstr "&Erabili koloreak"
+msgstr "Erabili sistemaren kolorea"
 
 #. i18n: ectx: whatsthis, entry, group (Theming)
 #: settings/korganizer.kcfg:559
@@ -5178,20 +5158,20 @@ msgid ""
 "Use system color instead of user defined color. If enabled will ignore all "
 "other color settings"
 msgstr ""
+"Erabili sistemaren kolorea erabiltzaileak definitutakoa erabili ordez. "
+"Gaituz gero, beste kolore ezarpen guztiei ez die jaramon egingo"
 
 #. i18n: ectx: label, entry, group (Theme/Month view)
 #: settings/korganizer.kcfg:570
-#, fuzzy, kde-format
-#| msgid "Agenda view background color"
+#, kde-format
 msgid "Month view background color"
-msgstr "Agenda ikuspegiaren atzeko planoaren kolorea"
+msgstr "Hilabeteko ikuspegiaren atzeko planoaren kolorea"
 
 #. i18n: ectx: whatsthis, entry, group (Theme/Month view)
 #: settings/korganizer.kcfg:571
-#, fuzzy, kde-format
-#| msgid "Select the agenda view background color here."
+#, kde-format
 msgid "Select the Month view background color here."
-msgstr "Hautatu agenda ikuspegiaren atzeko planoaren kolorea."
+msgstr "Hautatu hemen Hilabeteko ikuspegiaren atzeko planoaren kolorea."
 
 #. i18n: ectx: whatsthis, entry, group (Theme/Month view)
 #: settings/korganizer.kcfg:578
@@ -5204,15 +5184,16 @@ msgid ""
 "Select the highlight color here. The highlight color will be used for "
 "marking the currently selected area in your Month and in the date navigator."
 msgstr ""
-"Hautatu nabarmentze kolorea hemen. Nabarmentze kolorea zure agendan eta data "
-"arakatzailean uneko hautatutako area markatzeko erabiliko da."
+"Hautatu hemen nabarmentzeko kolorea. Nabarmentzeko kolorea zure hilabetean "
+"eta data-arakatzailean unean hautatutako eskualdea markatzeko erabiliko da."
 
 #. i18n: ectx: whatsthis, entry, group (Theme/Month view)
 #: settings/korganizer.kcfg:583
 #, fuzzy, kde-format
 #| msgid "Select the working hours color for the agenda view here."
 msgid "Select the working hours background color for the Month view here."
-msgstr "Hautatu agenda ikuspegiaren laneko orduen kolorea."
+msgstr ""
+"Hautatu hemen Hilabeteko ikuspegirako laneko orduen atzeko planoko kolorea."
 
 #. i18n: ectx: label, entry, group (Theme/Month view)
 #: settings/korganizer.kcfg:605
@@ -5355,9 +5336,9 @@ msgstr "Ezkutatu egiteko &inaktiboak"
 
 #. i18n: ectx: property (title), widget (QGroupBox, mCategoriesButtonGroup)
 #: ui/filteredit_base.ui:228
-#, kde-format
+#, fuzzy, kde-format
 msgid "Tags"
-msgstr ""
+msgstr "Etiketak"
 
 #. i18n: ectx: property (whatsThis), widget (QRadioButton, mCatHideCheck)
 #: ui/filteredit_base.ui:272
@@ -5789,7 +5770,7 @@ msgstr "&Gertaerak"
 #: ui/searchdialog_base.ui:89
 #, kde-format
 msgid "Search for journal entries with matching criteria."
-msgstr ""
+msgstr "Bilatu irizpidearekin bat datozen egunkari-sarrerak."
 
 #. i18n: ectx: property (whatsThis), widget (QCheckBox, journalsCheck)
 #: ui/searchdialog_base.ui:92
@@ -5805,7 +5786,7 @@ msgstr ""
 #: ui/searchdialog_base.ui:95
 #, kde-format
 msgid "&Journals"
-msgstr "&Egunkariak"
+msgstr "E&gunkariak"
 
 #. i18n: ectx: property (toolTip), widget (QCheckBox, todosCheck)
 #: ui/searchdialog_base.ui:102
@@ -5852,9 +5833,9 @@ msgstr ""
 
 #. i18n: ectx: property (text), widget (QCheckBox, categoryCheck)
 #: ui/searchdialog_base.ui:133
-#, kde-format
+#, fuzzy, kde-format
 msgid "Ta&gs"
-msgstr ""
+msgstr "E&tiketak"
 
 #. i18n: ectx: property (toolTip), widget (QCheckBox, locationCheck)
 #: ui/searchdialog_base.ui:140
@@ -5876,7 +5857,7 @@ msgstr ""
 #: ui/searchdialog_base.ui:146
 #, fuzzy, kde-format
 msgid "Locations"
-msgstr "&Kokalekua"
+msgstr "Kokalekuak"
 
 #. i18n: ectx: property (toolTip), widget (QCheckBox, descriptionCheck)
 #: ui/searchdialog_base.ui:153
@@ -5942,7 +5923,7 @@ msgstr ""
 #: ui/searchdialog_base.ui:188
 #, fuzzy, kde-format
 msgid "Attendees"
-msgstr "&Partaideak"
+msgstr "Partaideak"
 
 #. i18n: ectx: property (title), widget (QGroupBox, dateRangeGroup)
 #: ui/searchdialog_base.ui:198
@@ -6076,7 +6057,7 @@ msgstr "Hilabetea"
 #, fuzzy, kde-format
 #| msgid "Agenda view"
 msgid "Agenda"
-msgstr "Agenda ikuspegia"
+msgstr "Agenda"
 
 #. i18n: ectx: property (text), widget (QPushButton, mPreviousBtn)
 #: views/collectionview/quickview.ui:84
@@ -6094,7 +6075,7 @@ msgstr ""
 #, fuzzy, kde-format
 #| msgid "Agenda view"
 msgid "Agenda %1"
-msgstr "Agenda ikuspegia"
+msgstr "%1 agenda"
 
 #: views/multiagendaview/multiagendaview.cpp:295
 #, fuzzy, kde-format
@@ -6117,9 +6098,9 @@ msgstr ""
 
 #. i18n: ectx: property (text), widget (QLabel, columnNumberLabel)
 #: views/multiagendaview/multiagendaviewconfigwidget.ui:36
-#, kde-format
+#, fuzzy, kde-format
 msgid "Number of columns"
-msgstr ""
+msgstr "Zutabe kopurua:"
 
 #. i18n: ectx: property (text), widget (QLabel, titleLabel)
 #: views/multiagendaview/multiagendaviewconfigwidget.ui:84
@@ -6175,13 +6156,12 @@ msgstr "Egutegia"
 #, fuzzy, kde-format
 #| msgid "To-do:"
 msgid "To-do"
-msgstr "Egitekea:"
+msgstr "Zeregina"
 
 #: widgets/kitemiconcheckcombo.cpp:19
-#, fuzzy, kde-format
-#| msgid "&Journal"
+#, kde-format
 msgid "Journal"
-msgstr "&Egunkaria"
+msgstr "Egunkaria"
 
 #: widgets/kitemiconcheckcombo.cpp:20
 #, fuzzy, kde-format
@@ -6193,13 +6173,13 @@ msgstr "&Periodikotasuna"
 #, fuzzy, kde-format
 #| msgid "Alarms"
 msgid "Alarm"
-msgstr "Alarmak"
+msgstr "Alarma"
 
 #: widgets/kitemiconcheckcombo.cpp:22
 #, fuzzy, kde-format
 #| msgid "read-only"
 msgid "Read Only"
-msgstr "irakurtzeko bakarrik"
+msgstr "Irakurtzeko soilik"
 
 #: widgets/kitemiconcheckcombo.cpp:23
 #, kde-format
@@ -6221,7 +6201,7 @@ msgstr ""
 #, fuzzy, kde-format
 #| msgid "KOrganizer"
 msgid "Organizer"
-msgstr "KOrganizer"
+msgstr "Antolatzailea"
 
 #: widgets/kitemiconcheckcombo.cpp:35
 #, kde-format
@@ -6286,7 +6266,7 @@ msgstr "Hautatu hilabete bat"
 #, fuzzy, kde-format
 #| msgid "Select a month"
 msgid "Select a year"
-msgstr "Hautatu hilabete bat"
+msgstr "Hautatu urte bat"
 
 #: widgets/navigatorbar.cpp:109
 #, fuzzy, kde-format
