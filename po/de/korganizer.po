@@ -9,7 +9,7 @@
 # Panagiotis Papadopoulos <pano_90@gmx.net>, 2010.
 # Bjoern Ricks <bjoern.ricks@intevation.de>, 2011.
 # Torbjörn Klatt <torbjoern@torbjoern-klatt.de>, 2011.
-# Frank Steinmetzger <dev-kde@felsenfleischer.de>, 2022.
+# Frank Steinmetzger <dev-kde@felsenfleischer.de>, 2022, 2023.
 # Alois Spitzbart <spitz234@hotmail.com>, 2022.
 # Intevation GmbH, 2010.
 msgid ""
@@ -17,7 +17,7 @@ msgstr ""
 "Project-Id-Version: korganizer\n"
 "Report-Msgid-Bugs-To: https://bugs.kde.org\n"
 "POT-Creation-Date: 2023-01-28 00:59+0000\n"
-"PO-Revision-Date: 2022-11-10 20:52+0100\n"
+"PO-Revision-Date: 2023-01-30 15:28+0100\n"
 "Last-Translator: Frank Steinmetzger <dev-kde@felsenfleischer.de>\n"
 "Language-Team: German <kde-i18n-de@kde.org>\n"
 "Language: de\n"
@@ -25,7 +25,7 @@ msgstr ""
 "Content-Type: text/plain; charset=UTF-8\n"
 "Content-Transfer-Encoding: 8bit\n"
 "Plural-Forms: nplurals=2; plural=n != 1;\n"
-"X-Generator: Lokalize 22.08.3\n"
+"X-Generator: Lokalize 22.12.1\n"
 
 #, kde-format
 msgctxt "NAME OF TRANSLATORS"
@@ -835,7 +835,7 @@ msgstr "&Tag"
 msgid "&Next Day"
 msgid_plural "&Next %1 Days"
 msgstr[0] "&Nächster Tag"
-msgstr[1] "&Nächsten %1 Tage"
+msgstr[1] "&Nächste %1 Tage"
 
 #: actionmanager.cpp:553
 #, kde-format
