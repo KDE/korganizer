@@ -11,6 +11,7 @@
         "Description[en_GB]": "Kontact KOrganizer Plugin",
         "Description[eo]": "Kontact-KOrganizilo-kromaĵo",
         "Description[es]": "Complemento de KOrganizer para Kontact",
+        "Description[eu]": "«Kontact»erako «KOrganizer»ren plugina",
         "Description[fi]": "Kontactin KOrganizer-liitännäinen",
         "Description[fr]": "Module externe « KOrganizer » pour Kontact",
         "Description[ia]": "Plug-in Kontact KOrganizer",
