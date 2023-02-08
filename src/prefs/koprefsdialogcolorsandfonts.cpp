@@ -132,7 +132,7 @@ KOPrefsDialogColorsAndFonts::KOPrefsDialogColorsAndFonts(QWidget *parent, const 
                                        "Select the calendar you want to modify. "
                                        "You can change the selected calendar color using "
                                        "the button below."));
-    connect(mResourceCombo, qOverload<int>(&Akonadi::CollectionComboBox::activated), this, &KOPrefsDialogColorsAndFonts::updateResourceColor);
+    connect(mResourceCombo, &Akonadi::CollectionComboBox::activated, this, &KOPrefsDialogColorsAndFonts::updateResourceColor);
     resourceLayout->addWidget(mResourceCombo);
 
     mResourceButton = new KColorButton(resourceGroup);
