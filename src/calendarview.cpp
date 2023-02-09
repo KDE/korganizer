@@ -190,7 +190,10 @@ CalendarView::CalendarView(QWidget *parent)
     // Signals emitted by mDateNavigator
     connect(mDateNavigator, &DateNavigator::datesSelected, this, &CalendarView::showDates);
 
-    connect(mDateNavigatorContainer, &DateNavigatorContainer::newEventSignal, this, qOverload<const QDate &>(&CalendarView::newEvent));
+    connect(mDateNavigatorContainer, &DateNavigatorContainer::newEventSignal, this, [=](const QDate &s, const QDate &t) {
+        newEvent(QDateTime(s, QTime::currentTime()), QDateTime(t, QTime::currentTime()));
+    });
+
     connect(mDateNavigatorContainer, &DateNavigatorContainer::newTodoSignal, this, qOverload<const QDate &>(&CalendarView::newTodo));
     connect(mDateNavigatorContainer, &DateNavigatorContainer::newJournalSignal, this, qOverload<const QDate &>(&CalendarView::newJournal));
 
