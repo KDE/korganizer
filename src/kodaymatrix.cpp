@@ -469,7 +469,7 @@ void KODayMatrix::mousePressEvent(QMouseEvent *e)
     mSelStart = getDayIndexFrom(e->position().toPoint().x(), e->position().toPoint().y());
 #endif
     if (e->button() == Qt::RightButton) {
-        popupMenu(mDays[mSelStart]);
+        popupMenu(mDays[mSelStart], mDays[mSelEnd]);
     } else if (e->button() == Qt::LeftButton) {
         if (mSelStart > NUMDAYS - 1) {
             mSelStart = NUMDAYS - 1;
@@ -477,8 +477,7 @@ void KODayMatrix::mousePressEvent(QMouseEvent *e)
         mSelInit = mSelStart;
     }
 }
-
-void KODayMatrix::popupMenu(const QDate &date)
+void KODayMatrix::popupMenu(const QDate &date, const QDate &date2)
 {
     QMenu popup(this);
     popup.setTitle(date.toString());
@@ -487,7 +486,7 @@ void KODayMatrix::popupMenu(const QDate &date)
     QAction *newJournalAction = popup.addAction(QIcon::fromTheme(QStringLiteral("journal-new")), i18n("New &Journal..."));
     QAction *ret = popup.exec(QCursor::pos());
     if (ret == newEventAction) {
-        Q_EMIT newEventSignal(date);
+        Q_EMIT newEventSignal(date, date2);
     } else if (ret == newTodoAction) {
         Q_EMIT newTodoSignal(date);
     } else if (ret == newJournalAction) {

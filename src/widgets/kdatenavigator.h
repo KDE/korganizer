@@ -75,7 +75,7 @@ Q_SIGNALS:
     void datesSelected(const KCalendarCore::DateList &);
     void incidenceDropped(const Akonadi::Item &, const QDate &);
     void incidenceDroppedMove(const Akonadi::Item &, const QDate &);
-    void newEventSignal(const QDate &);
+    void newEventSignal(const QDate &, const QDate &);
     void newTodoSignal(const QDate &);
     void newJournalSignal(const QDate &);
     void weekClicked(const QDate &week, const QDate &month);

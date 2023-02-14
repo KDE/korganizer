@@ -187,7 +187,7 @@ Q_SIGNALS:
      */
     void selected(const KCalendarCore::DateList &daylist);
 
-    void newEventSignal(const QDate &date);
+    void newEventSignal(const QDate &date, const QDate &Date);
     void newTodoSignal(const QDate &date);
     void newJournalSignal(const QDate &date);
 
@@ -234,7 +234,7 @@ private:
     /**
      * Pop-up a context menu for creating a new Event, To-do, or Journal.
      */
-    void popupMenu(const QDate &date);
+    void popupMenu(const QDate &date, const QDate &date2);
 
     /** returns the index of the day located at the matrix's widget (x,y) position.
      *
