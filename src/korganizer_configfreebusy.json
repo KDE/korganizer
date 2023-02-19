@@ -99,12 +99,8 @@
         "Name[wa]": "Libe/Ocupé",
         "Name[x-test]": "xxFree/Busyxx",
         "Name[zh_CN]": "空闲/忙碌",
-        "Name[zh_TW]": "行程資訊",
-        "ServiceTypes": [
-            "KCModule"
-        ]
+        "Name[zh_TW]": "行程資訊"
     },
     "X-DocPath": "korganizer/config.html#config-main-free-busy",
-    "X-KDE-FactoryName": "korganizerconfigfreebusy",
     "X-KDE-Weight": 600
 }

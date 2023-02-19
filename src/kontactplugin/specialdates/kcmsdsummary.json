@@ -88,11 +88,7 @@
         "Name[wa]": "Sipeciålès dates a vni",
         "Name[x-test]": "xxUpcoming Special Datesxx",
         "Name[zh_CN]": "即将到来的特殊日期",
-        "Name[zh_TW]": "將來臨的特殊日期",
-        "ServiceTypes": [
-            "KCModule"
-        ]
+        "Name[zh_TW]": "將來臨的特殊日期"
     },
-    "X-KDE-FactoryName": "sdsummary",
     "X-KDE-Weight": 500
 }

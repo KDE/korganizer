@@ -88,11 +88,7 @@
         "Name[wa]": "Afés co a fé",
         "Name[x-test]": "xxPending To-dosxx",
         "Name[zh_CN]": "未决的待办事宜",
-        "Name[zh_TW]": "未決定的待辦事項",
-        "ServiceTypes": [
-            "KCModule"
-        ]
+        "Name[zh_TW]": "未決定的待辦事項"
     },
-    "X-KDE-FactoryName": "todosummary",
     "X-KDE-Weight": 450
 }

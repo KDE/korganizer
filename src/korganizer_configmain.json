@@ -104,12 +104,8 @@
         "Name[wa]": "Djenerå",
         "Name[x-test]": "xxGeneralxx",
         "Name[zh_CN]": "通用",
-        "Name[zh_TW]": "General",
-        "ServiceTypes": [
-            "KCModule"
-        ]
+        "Name[zh_TW]": "General"
     },
     "X-DocPath": "korganizer/config.html#config-main",
-    "X-KDE-FactoryName": "korganizerconfigmain",
     "X-KDE-Weight": 100
 }

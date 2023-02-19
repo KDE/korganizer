@@ -61,11 +61,7 @@
         "Name[tr]": "Kullanıcı Geri Bildirimi",
         "Name[uk]": "Відгуки користувача",
         "Name[x-test]": "xxUser Feedbackxx",
-        "Name[zh_CN]": "用户反馈",
-        "ServiceTypes": [
-            "KCModule"
-        ]
+        "Name[zh_CN]": "用户反馈"
     },
-    "X-KDE-FactoryName": "korguserfeeback",
     "X-KDE-Weight": 600
 }

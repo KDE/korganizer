@@ -87,12 +87,8 @@
         "Name[wa]": "Eure et date",
         "Name[x-test]": "xxTime and Datexx",
         "Name[zh_CN]": "时间和日期",
-        "Name[zh_TW]": "時間與日期",
-        "ServiceTypes": [
-            "KCModule"
-        ]
+        "Name[zh_TW]": "時間與日期"
     },
     "X-DocPath": "korganizer/config.html#config-main-time-and-date",
-    "X-KDE-FactoryName": "korganizerconfigtime",
     "X-KDE-Weight": 200
 }

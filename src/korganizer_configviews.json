@@ -103,12 +103,8 @@
         "Name[wa]": "Vuwes",
         "Name[x-test]": "xxViewsxx",
         "Name[zh_CN]": "查看",
-        "Name[zh_TW]": "檢視",
-        "ServiceTypes": [
-            "KCModule"
-        ]
+        "Name[zh_TW]": "檢視"
     },
     "X-DocPath": "korganizer/config.html#config-main-views",
-    "X-KDE-FactoryName": "korganizerconfigviews",
     "X-KDE-Weight": 300
 }

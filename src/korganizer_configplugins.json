@@ -101,12 +101,8 @@
         "Name[wa]": "Tchôkes-divins",
         "Name[x-test]": "xxPluginsxx",
         "Name[zh_CN]": "插件",
-        "Name[zh_TW]": "外掛程式",
-        "ServiceTypes": [
-            "KCModule"
-        ]
+        "Name[zh_TW]": "外掛程式"
     },
     "X-DocPath": "korganizer/plugins-chapter.html",
-    "X-KDE-FactoryName": "korganizerconfigplugins",
     "X-KDE-Weight": 700
 }

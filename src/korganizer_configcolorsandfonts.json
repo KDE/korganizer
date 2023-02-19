@@ -86,12 +86,8 @@
         "Name[wa]": "Coleurs et fontes",
         "Name[x-test]": "xxColors and Fontsxx",
         "Name[zh_CN]": "颜色和字体",
-        "Name[zh_TW]": "顏色與字型",
-        "ServiceTypes": [
-            "KCModule"
-        ]
+        "Name[zh_TW]": "顏色與字型"
     },
     "X-DocPath": "korganizer/config.html#config-main-fonts",
-    "X-KDE-FactoryName": "korganizerconfigcolorsandfonts",
     "X-KDE-Weight": 400
 }

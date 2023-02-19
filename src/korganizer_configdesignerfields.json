@@ -98,12 +98,8 @@
         "Name[wa]": "Pådjes da vosse",
         "Name[x-test]": "xxCustom Pagesxx",
         "Name[zh_CN]": "定制页",
-        "Name[zh_TW]": "Custom Pages",
-        "ServiceTypes": [
-            "KCModule"
-        ]
+        "Name[zh_TW]": "Custom Pages"
     },
     "X-DocPath": "korganizer/preferences.html",
-    "X-KDE-FactoryName": "korgdesignerfields",
     "X-KDE-Weight": 800
 }

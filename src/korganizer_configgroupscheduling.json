@@ -97,12 +97,8 @@
         "Name[wa]": "Programaedje e groupe",
         "Name[x-test]": "xxGroup Schedulingxx",
         "Name[zh_CN]": "组日程安排",
-        "Name[zh_TW]": "群組排程",
-        "ServiceTypes": [
-            "KCModule"
-        ]
+        "Name[zh_TW]": "群組排程"
     },
     "X-DocPath": "korganizer/config.html#config-main-groupscheduling",
-    "X-KDE-FactoryName": "korganizerconfiggroupscheduling",
     "X-KDE-Weight": 500
 }
