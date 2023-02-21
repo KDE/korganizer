@@ -32,7 +32,7 @@ set(koeventpopupmenutest_SRCS ../koeventpopupmenu.cpp ../kocorehelper.cpp ../kor
 set(koeventpopupmenutest_LIBS Qt::Test
   Qt::Gui
   Qt::Core
-  KF5::Mime
+  KPim${KF_MAJOR_VERSION}::Mime
   KF5::AkonadiWidgets
   KF5::AkonadiCore
   KF5::AkonadiCalendar

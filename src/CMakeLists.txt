@@ -338,7 +338,7 @@ target_link_libraries(korganizerprivate
     KF${KF_MAJOR_VERSION}::CalendarCore
     KF5::CalendarUtils
     KF${KF_MAJOR_VERSION}::Holidays
-    KF5::Mime
+    KPim${KF_MAJOR_VERSION}::Mime
     KF5::IdentityManagement
     KF${KF_MAJOR_VERSION}::KCMUtils
     KF${KF_MAJOR_VERSION}::NewStuffWidgets
