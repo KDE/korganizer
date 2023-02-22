@@ -16,7 +16,7 @@ qt_add_dbus_interfaces(kontact_korganizerplugin_PART_SRCS ${korganizer_SOURCE_DI
 
 add_library(kontact_korganizerplugin MODULE ${kontact_korganizerplugin_PART_SRCS})
 
-target_link_libraries(kontact_korganizerplugin KF5::AkonadiCalendar KPim${KF_MAJOR_VERSION}::CalendarUtils KF${KF_MAJOR_VERSION}::Contacts KF${KF_MAJOR_VERSION}::CalendarCore KPim${KF_MAJOR_VERSION}::KontactInterface korganizerprivate KF5::CalendarSupport KF5::AkonadiCalendar KF${KF_MAJOR_VERSION}::WindowSystem KF${KF_MAJOR_VERSION}::I18n)
+target_link_libraries(kontact_korganizerplugin KPim${KF_MAJOR_VERSION}::AkonadiCalendar KPim${KF_MAJOR_VERSION}::CalendarUtils KF${KF_MAJOR_VERSION}::Contacts KF${KF_MAJOR_VERSION}::CalendarCore KPim${KF_MAJOR_VERSION}::KontactInterface korganizerprivate KPim${KF_MAJOR_VERSION}::CalendarSupport KPim${KF_MAJOR_VERSION}::AkonadiCalendar KF${KF_MAJOR_VERSION}::WindowSystem KF${KF_MAJOR_VERSION}::I18n)
 
 ########### next target ###############
 
@@ -26,7 +26,7 @@ qt_add_dbus_interfaces(kontact_todoplugin_PART_SRCS ${korganizer_SOURCE_DIR}/src
 
 add_library(kontact_todoplugin MODULE ${kontact_todoplugin_PART_SRCS})
 
-target_link_libraries(kontact_todoplugin KF5::AkonadiCalendar  KF${KF_MAJOR_VERSION}::Contacts KPim${KF_MAJOR_VERSION}::KontactInterface KF${KF_MAJOR_VERSION}::CalendarCore KPim${KF_MAJOR_VERSION}::CalendarUtils KF5::CalendarSupport KF5::AkonadiCalendar KF${KF_MAJOR_VERSION}::WindowSystem)
+target_link_libraries(kontact_todoplugin KPim${KF_MAJOR_VERSION}::AkonadiCalendar  KF${KF_MAJOR_VERSION}::Contacts KPim${KF_MAJOR_VERSION}::KontactInterface KF${KF_MAJOR_VERSION}::CalendarCore KPim${KF_MAJOR_VERSION}::CalendarUtils KPim${KF_MAJOR_VERSION}::CalendarSupport KPim${KF_MAJOR_VERSION}::AkonadiCalendar KF${KF_MAJOR_VERSION}::WindowSystem)
 
 ########### next target ###############
 

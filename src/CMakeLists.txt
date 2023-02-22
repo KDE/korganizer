@@ -66,16 +66,16 @@ install(TARGETS
 add_library(korganizer_kcm_static STATIC widgets/kitemiconcheckcombo.cpp prefs/kprefsdialog.cpp widgets/kitemiconcheckcombo.h prefs/kprefsdialog.h ${korganizer_common_SRCS})
 set_property(TARGET korganizer_kcm_static PROPERTY POSITION_INDEPENDENT_CODE ON)
 target_link_libraries(korganizer_kcm_static
-    KF5::AkonadiCalendar
-    KF5::CalendarSupport
-    KF5::EventViews
-    KF5::IncidenceEditor
+    KPim${KF_MAJOR_VERSION}::AkonadiCalendar
+    KPim${KF_MAJOR_VERSION}::CalendarSupport
+    KPim${KF_MAJOR_VERSION}::EventViews
+    KPim${KF_MAJOR_VERSION}::IncidenceEditor
     korganizer_core
     korganizerprivate
     Qt::UiTools
     KF${KF_MAJOR_VERSION}::CalendarCore
     KF${KF_MAJOR_VERSION}::Holidays
-    KF5::MailTransport
+    KPim${KF_MAJOR_VERSION}::MailTransport
     KF5::PimCommon
     KF5::AkonadiWidgets
     KF${KF_MAJOR_VERSION}::WindowSystem
@@ -128,7 +128,7 @@ if (COMPILE_WITH_UNITY_CMAKE_SUPPORT)
 endif()
 
 target_link_libraries(korganizerpart
-    KF5::CalendarSupport
+    KPim${KF_MAJOR_VERSION}::CalendarSupport
     korganizer_core
     korganizer_interfaces
     korganizerprivate
@@ -164,8 +164,8 @@ target_link_libraries(korganizer_core
     PUBLIC
     korganizer_interfaces
     PRIVATE
-    KF5::CalendarSupport
-    KF5::EventViews
+    KPim${KF_MAJOR_VERSION}::CalendarSupport
+    KPim${KF_MAJOR_VERSION}::EventViews
     KPim${KF_MAJOR_VERSION}::IdentityManagement
     )
 
@@ -326,14 +326,14 @@ target_link_libraries(korganizerprivate
     PUBLIC
     KF5::PimCommonAkonadi
     PRIVATE
-    KF5::CalendarSupport
-    KF5::EventViews
-    KF5::IncidenceEditor
+    KPim${KF_MAJOR_VERSION}::CalendarSupport
+    KPim${KF_MAJOR_VERSION}::EventViews
+    KPim${KF_MAJOR_VERSION}::IncidenceEditor
     korganizer_core
     korganizer_interfaces
     KF5::AkonadiCore
-    KF5::AkonadiCalendar
-    KF5::AkonadiNotes
+    KPim${KF_MAJOR_VERSION}::AkonadiCalendar
+    KPim${KF_MAJOR_VERSION}::AkonadiNotes
     KF${KF_MAJOR_VERSION}::Contacts
     KF${KF_MAJOR_VERSION}::CalendarCore
     KPim${KF_MAJOR_VERSION}::CalendarUtils
@@ -342,7 +342,7 @@ target_link_libraries(korganizerprivate
     KPim${KF_MAJOR_VERSION}::IdentityManagement
     KF${KF_MAJOR_VERSION}::KCMUtils
     KF${KF_MAJOR_VERSION}::NewStuffWidgets
-    KF5::Ldap
+    KPim${KF_MAJOR_VERSION}::Ldap
     KF5::AkonadiWidgets
     KF${KF_MAJOR_VERSION}::IconThemes
     KF${KF_MAJOR_VERSION}::WindowSystem

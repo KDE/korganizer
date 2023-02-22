@@ -11,8 +11,8 @@ target_sources(korganizer_interfaces PRIVATE
     )
 generate_export_header(korganizer_interfaces BASE_NAME korganizer_interfaces)
 target_link_libraries(korganizer_interfaces
-  KF5::CalendarSupport
-  KF5::EventViews
+  KPim${KF_MAJOR_VERSION}::CalendarSupport
+  KPim${KF_MAJOR_VERSION}::EventViews
   KF5::AkonadiCore
   Qt::PrintSupport
   KF${KF_MAJOR_VERSION}::Parts

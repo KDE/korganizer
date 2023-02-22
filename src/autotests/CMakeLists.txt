@@ -10,7 +10,7 @@ ecm_mark_as_test(testkodaymatrix)
 target_link_libraries(testkodaymatrix
   KF5::AkonadiCore
   KF${KF_MAJOR_VERSION}::CalendarCore
-  KF5::CalendarSupport
+  KPim${KF_MAJOR_VERSION}::CalendarSupport
   korganizer_core
   korganizerprivate
   Qt::Test
@@ -22,7 +22,7 @@ ecm_mark_as_test(testkodaymatrix_us)
 target_link_libraries(testkodaymatrix_us
   KF5::AkonadiCore
   KF${KF_MAJOR_VERSION}::CalendarCore
-  KF5::CalendarSupport
+  KPim${KF_MAJOR_VERSION}::CalendarSupport
   korganizer_core
   korganizerprivate
   Qt::Test
@@ -35,11 +35,11 @@ set(koeventpopupmenutest_LIBS Qt::Test
   KPim${KF_MAJOR_VERSION}::Mime
   KF5::AkonadiWidgets
   KF5::AkonadiCore
-  KF5::AkonadiCalendar
-  KF5::AkonadiNotes
+  KPim${KF_MAJOR_VERSION}::AkonadiCalendar
+  KPim${KF_MAJOR_VERSION}::AkonadiNotes
   KF${KF_MAJOR_VERSION}::CalendarCore
-  KF5::IncidenceEditor
-  KF5::CalendarSupport
+  KPim${KF_MAJOR_VERSION}::IncidenceEditor
+  KPim${KF_MAJOR_VERSION}::CalendarSupport
   korganizer_core
   korganizerprivate
 )
