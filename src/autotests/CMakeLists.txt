@@ -49,7 +49,7 @@ ecm_add_test(testtoggletodo.cpp
   LINK_LIBRARIES
     Qt${QT_MAJOR_VERSION}::Test
     KF${KF_MAJOR_VERSION}::CalendarCore
-    KF5::IdentityManagement
+    KPim${KF_MAJOR_VERSION}::IdentityManagement
     korganizer_core
     korganizerprivate
 )

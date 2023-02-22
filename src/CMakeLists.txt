@@ -47,7 +47,7 @@ if (COMPILE_WITH_UNITY_CMAKE_SUPPORT)
     set_target_properties(korganizer PROPERTIES UNITY_BUILD ON)
 endif()
 target_link_libraries(korganizer
-    KF5::KontactInterface
+    KPim${KF_MAJOR_VERSION}::KontactInterface
     KF${KF_MAJOR_VERSION}::CalendarCore
     korganizerprivate
     korganizer_interfaces
@@ -134,7 +134,7 @@ target_link_libraries(korganizerpart
     korganizerprivate
     KF5::AkonadiCore
     KF${KF_MAJOR_VERSION}::CalendarCore
-    KF5::CalendarUtils
+    KPim${KF_MAJOR_VERSION}::CalendarUtils
     KF${KF_MAJOR_VERSION}::KIOWidgets
     )
 
@@ -166,7 +166,7 @@ target_link_libraries(korganizer_core
     PRIVATE
     KF5::CalendarSupport
     KF5::EventViews
-    KF5::IdentityManagement
+    KPim${KF_MAJOR_VERSION}::IdentityManagement
     )
 
 target_include_directories(korganizer_core PUBLIC
@@ -336,10 +336,10 @@ target_link_libraries(korganizerprivate
     KF5::AkonadiNotes
     KF${KF_MAJOR_VERSION}::Contacts
     KF${KF_MAJOR_VERSION}::CalendarCore
-    KF5::CalendarUtils
+    KPim${KF_MAJOR_VERSION}::CalendarUtils
     KF${KF_MAJOR_VERSION}::Holidays
     KPim${KF_MAJOR_VERSION}::Mime
-    KF5::IdentityManagement
+    KPim${KF_MAJOR_VERSION}::IdentityManagement
     KF${KF_MAJOR_VERSION}::KCMUtils
     KF${KF_MAJOR_VERSION}::NewStuffWidgets
     KF5::Ldap
