@@ -22,7 +22,7 @@ target_link_libraries(kontact_specialdatesplugin
   KF${KF_MAJOR_VERSION}::Holidays
   KPim${KF_MAJOR_VERSION}::KontactInterface
   KF5::AkonadiCore
-  KF5::AkonadiContact
+  KPim${KF_MAJOR_VERSION}::AkonadiContact
   KPim${KF_MAJOR_VERSION}::CalendarSupport
 )
 
