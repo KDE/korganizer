@@ -1,8 +1,6 @@
 <?xml version="1.0" ?>
 <!DOCTYPE book PUBLIC "-//KDE//DTD DocBook XML V4.5-Based Variant V1.1//EN"
  "dtd/kdedbx45.dtd" [
-  <!ENTITY kappname "&korganizer;">
-  <!ENTITY package "kdepim">
   <!ENTITY % addindex "IGNORE">
   <!ENTITY % Brazilian-Portuguese "INCLUDE">
 ]>
@@ -32,26 +30,10 @@
 </author>
 
 <author
-><firstname
->Milos</firstname
-> <surname
->Prudek</surname
-> </author>
+>&Milos.Prudek; &Milos.Prudek.mail; </author>
 
 <author
-><firstname
->Paul</firstname
-> <othername
->E.</othername
-> <surname
->Ahlquist</surname
-> <lineage
->Jr.</lineage
-> <affiliation
-><address
->&Paul.E.Ahlquist.Jr.mail;</address
-></affiliation>
-</author>
+>&Paul.E.Ahlquist.Jr; &Paul.E.Ahlquist.Jr.mail; </author>
 
 <author
 ><firstname
@@ -67,17 +49,7 @@
 </author>
 
 <author
-><firstname
->Michel</firstname
-> <surname
->Boyer de la Giroday</surname
-> <affiliation
-><address
-><email
->michel@klaralvdalens-datakonsult.se</email
-></address
-></affiliation>
-</author>
+>&Michel.Boyer; &Michel.Boyer.mail; </author>
 
 <othercredit role="developer"
 ><firstname
@@ -198,9 +170,9 @@
 >&FDLNotice;</legalnotice>
 
 <date
->24/06/2011</date>
+>08/12/2016</date>
 <releaseinfo
->&kde; 4.7</releaseinfo>
+>5.4.40 (Applications 16.12)</releaseinfo>
 
 <abstract
 ><para
@@ -237,7 +209,7 @@
 </bookinfo>
 
 <chapter id="introduction"
-> <!-- updated to 4.6/7-->
+><!--updated to 5.4.40-->
 <title
 >Introdução</title>
 
@@ -247,7 +219,7 @@
 >) intuitivo fácil de usar. Você poderá agendar compromissos, eventos, criar tarefas e escrever entradas em um diário. O &korganizer; irá lembrá-lo das tarefas pendentes, manter um registro dos principais acontecimento e experiências vividos por você e ajudá-lo a gerenciar a sua agenda.</para>
 
 <para
->Mas o &korganizer; não é apenas a sua agenda pessoal. Ele poderá ajudá-lo a interagir com os seus colegas e amigos também. Com o &korganizer;, você poderá publicar um calendário como uma página Web, convidar qualquer pessoa com um endereço de e-mail para um evento e processar as repostas, compartilhar um calendário (usando um servidor de 'groupware' ou simplesmente um arquivo na rede) e compartilhar os eventos (&eg;, o calendário de um campeonato ou uma conferência), usando a plataforma para Obter Coisas Novas. O &korganizer; baseia-se em padrões abertos e funciona com vários servidores de agendamento em grupo, fornecendo-lhe um controle sobre a suas informações e a liberdade para escolher as melhores soluções. </para>
+>Mas o &korganizer; não é apenas a sua agenda pessoal. Ele poderá ajudá-lo a interagir com os seus colegas e amigos também. Com o &korganizer;, você poderá convidar qualquer pessoa com um endereço de e-mail para um evento e processar as repostas, compartilhar um calendário (usando um servidor de 'groupware' ou simplesmente um arquivo na rede) e compartilhar os eventos (&eg;, o calendário de um campeonato ou uma conferência), usando a plataforma para Baixar novidades. O &korganizer; baseia-se em padrões abertos e funciona com vários servidores de agendamento em grupo, fornecendo-lhe um controle sobre a suas informações e a liberdade para escolher as melhores soluções. </para>
 
 <para
 >O &korganizer; também é o componente de calendário, diário e tarefas do &kontact;, oferecendo-lhe uma solução integrada para as suas necessidades de gerenciamento de informação e comunicação: e-mail, notas, gerenciamento de contatos, leitor de notícias e leituras de fontes de notícias. Mesmo que você não o use dentro do &kontact;, o &korganizer; está integrado com os outros aplicativos de <acronym
@@ -264,11 +236,11 @@
 ></listitem>
 <listitem
 ><para
->Organizar os seus eventos e tarefas, agrupando os itens relacionados em categorias.</para
+>Organizar os seus eventos e tarefas, agrupando os itens relacionados em etiquetas.</para
 ></listitem>
 <listitem
 ><para
->Realçar as categorias com cores.</para
+>Realçar as etiquetas com cores.</para
 ></listitem>
 <listitem
 ><para
@@ -332,7 +304,7 @@
 </chapter>
 
 <chapter id="five-minute-course"
-> <!-- updated to 4.6/7-->
+><!--updated to 5.4.40-->
 <title
 >Viagem de Cinco Minutos sobre o &korganizer;</title>
 <subtitle
@@ -342,7 +314,7 @@
 >Você tem pressa? Vamos levá-lo rapidamente para uma introdução geral e prática ao &korganizer;!</para>
 
 <para
->Se alguma vez já trabalhou com um programa de gerenciamento de informações pessoais, você se sentirá em casa com o &korganizer;. Você poderá inserir novos eventos, reagendar os existentes, atribuir categorias aos eventos, definir novas categorias, inserir e modificar listas de convidados e os seus papéis, enviar os convites para os eventos automaticamente, trocar dados com outros calendários do &korganizer;, criar tarefas e inserir entradas de um diário.</para>
+>Se alguma vez já trabalhou com um programa de gerenciamento de informações pessoais, você se sentirá em casa com o &korganizer;. Você poderá inserir novos eventos, reagendar os existentes, atribuir etiquetas aos eventos, definir novas etiquetas, inserir e modificar listas de convidados e os seus papéis, enviar os convites para os eventos automaticamente, trocar dados com outros calendários do &korganizer;, criar tarefas e inserir entradas de um diário.</para>
 
 <para
 >Este curso assume que você sabe como trabalhar com o &kde; e que prefere explorar por si próprio. Só são cobertas aqui as funções básicas do &korganizer;.</para>
@@ -382,7 +354,7 @@
 
 <step
 ><para
->Selecione a área de texto abaixo da hora desejada, no painel principal, que reflete a hora do evento. Faça um duplo-clique nesta área ou simplesmente comece a escrever o título do evento a abrir na janela <guilabel
+>Selecione a área de texto abaixo da hora desejada, no painel principal, que reflete a hora do evento. Faça um duplo-clique nesta área ou simplesmente comece a escrever um resumo do evento a abrir na janela <guilabel
 >Novo Evento</guilabel
 >.</para
 ></step>
@@ -391,7 +363,7 @@
 ><para
 ><link linkend="entering-data-events"
 >Insira os detalhes do evento</link
->. Use as cinco páginas no fundo da janela para circular entre as opções e acesse todas as características do evento.</para
+>. Use as seis páginas no fundo da janela para circular entre as opções e acesse todas as características do evento.</para
 ></step>
 
 <step
@@ -442,7 +414,7 @@
 ><para
 >Selecione o item do menu <inlinemediaobject
 ><imageobject
-> <imagedata fileref="view-calendar-journal.png" format="PNG"/></imageobject
+> <imagedata fileref="journal-new.png" format="PNG"/></imageobject
 > </inlinemediaobject
 ><menuchoice
 ><guimenu
@@ -470,7 +442,7 @@
 
 <step
 ><para
->Insira o título e o texto do item de diário.</para
+>Insira o resumo e o texto do item de diário.</para
 ></step>
 
 </procedure>
@@ -531,6 +503,7 @@
 >Se você desejar reajustar com mais precisão, faça duplo-clique no evento e ajuste a hora de início e de fim com as listas que dividem o dia em quartos-de-hora. Se não tiver precisão suficiente, você poderá inserir a hora desejada diretamente.</para>
 
 </sect1>
+
 <sect1 id="course-rescheduling-todos">
 <title
 >Reagendar ou editar as tarefas</title>
@@ -599,7 +572,7 @@
 </chapter>
 
 <chapter id="managing-data"
-> <!-- updated to 4.6/7 except managing-resources-->
+><!--updated to 5.4.40-->
 <title
 >Importar, Exportar e Gerenciar Calendários</title>
 
@@ -614,28 +587,17 @@
 > também é suportada.</para>
 
 <para
->Você poderá exportar os seus dados como uma página Web, um arquivo iCalendar ou um vCalendar. Estes arquivos são suportados pela maioria dos aplicativos de calendários. A página Web pode ser usada para publicar o seu calendário e a lista de tarefas na Web ou na rede local.</para>
-
-<!-- not in 4.5 para
->If you have a calendar containing events of public interest, such as
-a conference or championship schedule, you can upload it using the
-<link linkend="managing-get-hot-new-stuff"
->get hot new stuff</link
-> framework.
-You can use the same framework to check if there are events worth downloading.
-</para-->
+>Você poderá exportar os seus dados como um arquivo iCalendar ou um vCalendar. Estes arquivos são suportados pela maioria dos aplicativos de calendários. </para>
 
 <para
->Neste capítulo, iremos explicar como gerenciar o seu calendário, usar os recursos, importar e exportar ações e a maneira para obter coisas novas.</para>
+>Neste capítulo, iremos explicar como gerenciar o seu calendário, usar os recursos, importar e exportar ações e a maneira para baixar novidades</para>
 
 <sect1 id="managing-resources">
 <title
 >Recursos de Calendário</title>
 
 <para
->O &korganizer; usa um arquivo local, normalmente o <filename
->$KDEHOME/share/apps/korganizer/std.ics</filename
->, como recurso padrão. Mas essa não é a sua única opção: existem muitos outros recursos que você poderá adicionar: servidores de recursos, itens de diário como blogs, arquivos na rede, &etc; Se você usar mais de um recurso, o &korganizer; <link linkend="config-main-general-personal"
+>O &korganizer; usa um arquivo local como recurso padrão. Mas essa não é a sua única opção: existem muitos outros recursos que você poderá adicionar: servidores de recursos, itens de diário como blogs, arquivos na rede, &etc; Se você usar mais de um recurso, o &korganizer; <link linkend="config-main-general-personal"
 >poderá ser configurado para usar o recurso padrão ou perguntar qual recurso usar</link
 > ao salvar novos itens de evento, tarefa ou diário. O &korganizer; irá mesclar de forma transparente os itens de dois ou mais recursos nas <link linkend="description-view"
 >exibições</link
@@ -722,7 +684,7 @@ You can use the same framework to check if there are events worth downloading.
 
 <step
 ><para
->Clique aqui para ativar ou desativar a área de recursos.</para
+>Selecione o recurso para ativar ou desativar.</para
 ></step>
 
 <step
@@ -741,8 +703,6 @@ You can use the same framework to check if there are events worth downloading.
 >Entre os recursos existentes, você poderá encontrar no &korganizer;:</para>
 
 <variablelist>
-<!--this is in korganizer 4.6, relation to KDE Resources and Akonadi Resources in systemsettings?
-  KDE Resources in 4.7.0 no longer kcmodul/in systemsettings?-->
 
 <varlistentry>
 <term
@@ -769,7 +729,18 @@ You can use the same framework to check if there are events worth downloading.
 <varlistentry>
 <term
 ><guilabel
->Arquivo de calendário ICal</guilabel
+>Calendários e tarefas do Google</guilabel
+></term>
+<listitem
+><para
+>Acesse seus calendários e tarefas do Google.</para
+></listitem>
+</varlistentry>
+
+<varlistentry>
+<term
+><guilabel
+>Arquivo de calendário iCal</guilabel
 ></term>
 <listitem
 ><para
@@ -780,14 +751,36 @@ You can use the same framework to check if there are events worth downloading.
 <varlistentry>
 <term
 ><guilabel
->Livro de endereços do KDE (tradicional)</guilabel
+>Pasta de calendário iCal</guilabel
 ></term>
 <listitem
 ><para
->Carrega os dados do tradicional recurso do livro de endereços do KDE.</para
+>Oferece o acesso aos itens de calendário, armazenados em um único arquivo, em um determinada pasta.</para
 ></listitem>
 </varlistentry>
-<!-- Knut An agent for debugging purpose -->
+
+<varlistentry>
+<term
+><guilabel
+>Arquivo de calendário KAlarm</guilabel
+></term>
+<listitem
+><para
+>Carrega os dados de um arquivo de calendário do KAlarm.</para
+></listitem>
+</varlistentry>
+
+<varlistentry>
+<term
+><guilabel
+>Pasta de calendário do KAlarm</guilabel
+></term>
+<listitem
+><para
+>Carrega dados de uma pasta local do KAlarm.</para
+></listitem>
+</varlistentry>
+
 <varlistentry>
 <term
 ><guilabel
@@ -795,7 +788,7 @@ You can use the same framework to check if there are events worth downloading.
 ></term>
 <listitem
 ><para
->Fornece acesso as pastas groupware Kolab em um servidor IMAP (as contas IMAP precisam ser definidas separadamente).</para
+>Fornece acesso às pastas e grupos de e-mail do Kolab em um servidor IMAP do Kolab.</para
 ></listitem>
 </varlistentry>
 
@@ -812,412 +805,9 @@ You can use the same framework to check if there are events worth downloading.
 
 </variablelist>
 
-<!-- KDE Resources no longer in 4.7 ???-->
-<para
->Alternativamente, você poderá configurar os recursos do &korganizer; (mais todos os outros recursos do &kde;) no &systemsettings;, usando o módulo de configuração de <guilabel
->Recursos do &kde;</guilabel
->.</para>
-
-<variablelist>
-<!--
-Akonadi Ressources Configuration 4.6
-AkoNotes
-Birthdays &amp; Anniversaries 
-Calendar Search Agent (disabled)
-DAV groupware resource
-Dummy MailTransport Resource
-ICal Calendar File
-IMAP E-Mail Server
-Invitations Dispatcher Agent
-KDE Accounts
-KDE Address Book (traditional)
-KDE Calendar (traditional)
-KMail Maildir
-Knut
-Kolab Groupware Server
-Local Bookmarks
-Mail Dispatcher Agent (disabled)
-Maildir
-Mbox
-Microblog (Twitter and Identi.ca)
-Nepomuk Calendar Feeder
-Nepomuk Contact Feeder
-Nepomuk EMail Feeder
-Nepomuk Tags (Virtual Folders)
-Notes
-Open-Xchange Groupware Server
-POP3
-Personal Contacs
-Usenet Usegroups (NNTP)
-VCard Directory
-VCard File
-
-KDE Resources 4.7
-Calendar:
-Akonadi, Journal in a blog, Bugzilla To-do List, Calendar in Local File, Novell GroupWise Server, 
-Calendar in Local Directory, Calendar in remote File
-Notes: Notes in Local Files
-Contacts:
-Akonadi Address Book, Folder, File, Novell GroupWise Server, LDAP, Network
-Alarms:
-Alarms in Local File, Alarms in Local Directory, Alarms in Remote File
--->
-
-<!--the following is outdated and has to be updated to 4.6/7-->
-
-<varlistentry>
-<term
-><guilabel
->Akonadi</guilabel
-></term>
-<listitem
-><para
->Oferece o acesso aos calendários guardados nas pastas de calendários Akonadi.</para
-></listitem>
-</varlistentry>
-<!-- not in 4.7?
-<varlistentry>
-<term
-><guilabel
->Birthdays from &kaddressbook;</guilabel
-></term>
-<listitem
-><para
->Add this resource to view birthdays from contacts in &kaddressbook;
-in your calendar. The birthday appears in your calendar as a read only event and
-without associated time.</para
-></listitem>
-</varlistentry>
--->
-<varlistentry>
-<term
-><guilabel
->Diário num 'blog'</guilabel
-></term>
-<listitem
-><para
->Adicione este recurso para ser capaz de ler os seus 'blogs' como itens do diário, diretamente a partir dos servidores de 'blogs', como o 'blogger' e o 'drupal'.</para
-></listitem>
-</varlistentry>
-
-<varlistentry>
-<term
-><guilabel
->Lista de Tarefas do Bugzilla</guilabel
-></term>
-<listitem
-><para
->Adicione este item para carregar os erros em aberto do Bugzilla como tarefas. Este recurso baseia-se no aplicativo &kbugbuster; e usa a sua informação de 'cache' de erros. O Bugzilla é um sistema de registro de erros de 'código aberto'.</para>
-
-<para
->Se você for um programador que está trabalhando em um projeto que usa o Bugzilla, você poderá usar este recurso para ver os erros em aberto dos aplicativos ou bibliotecas em que está interessado como tarefas (chamam-se <quote
->produtos</quote
-> e/ou <quote
->componentes</quote
-> no Bugzilla). Este recurso está disponível como parte do Kit de Desenvolvimento de Software (SDK) do &kde;. </para
-></listitem>
-</varlistentry>
-<!-- not in 4.7?
-<varlistentry>
-<term
-><guilabel
->&XML; Feature Plan</guilabel
-></term>
-<listitem
-><para
->Add this resource to load a &XML; Feature Plan as to-dos.
-The &XML; Feature Plan is a scheme designed to document the new features of
-future software releases. It was designed to fit the &kde; release schedule
-needs, but can be helpful for any software project. The information from the
-&XML; file can be used to control feature freezes, to report the new
-features of new release or the status of the new features of a future release.
-</para
-></listitem>
-</varlistentry>
--->
-<varlistentry>
-<term
-><guilabel
->Calendário em arquivo local</guilabel
-></term>
-<listitem
-><para
->Adicione este recurso para ser capaz de salvar (e carregar) os seus eventos, tarefas e do diário em um arquivo local. O arquivo poderá estar no formato normalizado iCalendar ou vCalendar. O &korganizer; usa este recurso por padrão, gravando as informações do seu calendário em <filename
->$KDEHOME/share/apps/korganizer/std.ics</filename
->.</para
-></listitem>
-</varlistentry>
-
-<varlistentry>
-<term
-><guilabel
->Servidor de GroupDav (p.ex. Open Groupware)</guilabel
-></term>
-<listitem
-><para
->Se você tiver acesso a um servidor que suporte o protocolo <ulink url="http://www.groupdav.org"
->GroupDav</ulink
->, adicione este recurso para ser capaz de salvar (e carregar) os eventos e tarefas no servidor. Para adicionar o recurso, você deverá saber o &URL; do servidor, o seu usuário e a senha. O protocolo GroupDav suporta o armazenamento de contatos, assim você poderá querer adicionar e configurar o recurso do &kaddressbook; também.</para>
-<para
->Desde junho de 2005, os servidores de 'groupware' que implementam este protocolo são o <ulink url="http://www.opengroupware.org"
->servidor OpenGroupware</ulink
-> e o <ulink url="http://www.citadel.org"
->servidor Citadel</ulink
->. Uma lista atualizada poderá ser obtida na <ulink url="http://www.groupdav.org"
->página Web do GroupDav</ulink
->. </para
-></listitem>
-</varlistentry>
-<!-- no Groupware tab in kmail anymore, is this outdated? -->
-<varlistentry>
-<term
-><guilabel
->Calendário em servidor IMAP via &kmail;</guilabel
-></term>
-<listitem
-><para
->Se você tiver acesso a um servidor que compartilhe os calendários através de IMAP, adicione este recurso para ser capaz de salvar (e carregar) os eventos, informações de livre/ocupado, tarefas e do diário no servidor de IMAP. Para ativar o acesso de IMAP, você terá que configurar primeiro o &kmail; e depois adicionar o recurso do &korganizer;. O &korganizer; irá tentar abrir o &kmail; automaticamente e usá-lo para acessar os seus dados. O esquema de <quote
->Servidor IMAP via &kmail;</quote
-> tem suporte ao armazenamento de contatos, assim você poderá querer adicionar e configurar o recurso do &kaddressbook; também.</para>
-
-<para
->A maioria dos servidores de IMAP pode ser usada para manter os recursos de calendário e de agenda, o que lhe permite acessar os seus dados de qualquer maneira! Se você for um usuário que está à procura de uma forma simples de acessar e gerenciar as suas informações de 'groupware', esta é uma forma simples e muito eficiente.</para>
-
-<para
->Para usar este recurso, é necessário configurar primeiro o &kmail;. Escolha a opção <menuchoice
-><guimenu
->Configurações</guimenu
-> <guimenuitem
->Configurar o &kmail;...</guimenuitem
-></menuchoice
->. Clique no ícone <guilabel
->Contas</guilabel
-> na janela de configuração e adicione o servidor IMAP como uma conta de recepção de IMAP desligado. Agora, clique no ícone <guilabel
->Diversos</guilabel
-> da barra lateral e clique na página <guilabel
->Groupware</guilabel
-> para ativar e configurar as opções da pasta de recursos de IMAP. Só então você poderá adicionar os recursos do &korganizer; (e do &kaddressbook;). Para mais informações sobre a configuração do &kmail;, consulte o manual do &kmail;.</para>
-
-<para
->Uma implementação mais completa deste esquema é o <ulink url="http://www.kolab.org"
->Servidor de Kolab</ulink
->. Esta implementação de 'groupware' oferece funcionalidades adicionais para os administradores de sistemas, como o suporte de ambientes de clientes mistos (&Microsoft; Outlook&reg;, &kde; <acronym
->PIM</acronym
-> e e-mail na Web), uma interface de administração na Web, um livro de endereços compartilhado, um servidor de e-mail, &etc; Desde Junho de 2005, os servidores de 'groupware' que implementam os protocolos do <quote
->Kolab 1</quote
-> e do <quote
->Kolab 2</quote
-> são o servidor Kolab, versões 1 e 2 e o <ulink url="http://www.citadel.org"
->servidor do Citadel</ulink
-> (apenas Kolab 1). Uma lista atualizada poderá ser obtida na <ulink url="http://www.kolab.org"
->página Web do Kolab</ulink
->.</para>
-
-<para
->A forma mais prática de configurar o acesso a um servidor de Kolab é usar o assistente <application
->kolabwizard</application
->. Você poderá iniciá-lo a partir da linha de comando: <screen
-><prompt
->$</prompt
-><command
->kolabwizard</command
-></screen>
-
-</para>
-</listitem>
-</varlistentry>
-
-<varlistentry>
-<term
-><guilabel
->Calendário em uma Pasta Local</guilabel
-></term>
-<listitem
-><para
->Adicione este recurso para poder salvar e carregar os seus eventos, tarefas e itens de diário a partir de uma pasta local. Cada item do calendário será salvo em um arquivo separado, dentro da pasta. </para>
-<para
->Uma vez que só existe um arquivo por evento, tarefa ou do diário, o &korganizer; não precisa processar um arquivo de calendário grande, muitas vezes com milhares de itens, ao salvar e carregar, mas sim apenas um único item de calendário. Do mesmo modo, no caso de danos em um arquivo, somente se perde um item de calendário, não o calendário inteiro.</para>
-</listitem>
-</varlistentry>
-<!-- obsolete? no program exchangewizard in debian! 
-<varlistentry>
-<term
-><guilabel
->Calendar on Exchange Server (Experimental)</guilabel
-></term>
-<listitem
-><para>
-If you have access to a
-<ulink url="http://www.microsoft.com/exchange"
->Exchange 2000 Server</ulink
->,
-add this resource in order to be able to save (and load)
-events FIXME:,journals, free/busy information and to-dos? to the server. To add the resource, you will
-need to know the server &URL;, FIXME:port? your user name and your password. There
-is support for (read only) contacts, so you may want to configure &kaddressbook;
-resource.</para>
-<para
->The most practical way to configure the access to a Exchange server is
-to use the <application
->exchangewizard</application
-> wizard. You can start it
-from the command line prompt:
-
-<screen
-><prompt>$</prompt><command>exchangewizard</command></screen>
-
-The wizard will configure not only &korganizer; to use the
-Exchange resources, but &kmail;, &kaddressbook; too.</para>
-</listitem>
-</varlistentry>
--->
-
-<varlistentry>
-<term
-><guilabel
->Calendário em arquivo remoto</guilabel
-></term>
-<listitem
-><para
->Adicione este recurso para poder salvar e copiar os seus eventos, itens por-fazer e do diário a partir de um arquivo remoto. Existem duas grandes vantagens de manter os seus dados de calendário num servidor remoto: você poderá acessar os seus dados, mesmo que esteja ausente do seu computador e poderá deixar que outras pessoas (por exemplo, uma secretária) os vejam. O &korganizer; mantém uma 'cache' local dos dados. </para>
-
-<screenshot id="screenshot-remotefile-resource">
-<screeninfo
->Uma imagem da Configuração dos Recursos de Arquivos Remotos do &korganizer;</screeninfo>
-<mediaobject>
-<imageobject
-><imagedata fileref="remotefile-resource.png" format="PNG"/></imageobject>
-<textobject
-><phrase
->Uma imagem da Configuração dos Recursos de Arquivos Remotos do &korganizer;</phrase
-></textobject>
-<caption
-><para
->Uma imagem da Configuração dos Recursos de Arquivos Remotos do &korganizer;</para
-></caption>
-</mediaobject>
-</screenshot>
-
-<para
->Você poderá configurar o recurso para ser apenas para leitura, mantendo o arquivo remoto. Nesse caso, você não precisará inserir uma localização <guilabel
->Enviar para</guilabel
->, apenas uma <guilabel
->Obter de</guilabel
->, para o arquivo remoto. Se planejar usar um recurso remoto também para escrita, terá que inserir ambos os locais. A razão para ter locais separados é que alguns servidores poderão ter uma fila de envio, um local onde terá de colocar o arquivo a enviar, diferente do local onde ficará. Na maioria dos casos, se você tiver acesso de escrita para o arquivo remoto, as localizações do arquivo <guilabel
->Enviar para</guilabel
-> e <guilabel
->Obter de</guilabel
-> serão as mesmas. </para>
-
-<para
->É importante compreender que o recurso dos arquivos remotos não adiciona ou remove itens individuais do arquivo, ele simplesmente salva o arquivo remoto numa 'cache' local ao recebê-lo e salva a 'cache' local no arquivo remoto ao enviar. Assim, se o recurso for apenas para leitura, fará sentido que a opção <guilabel
->Carregamento Automático</guilabel
-> tenha um <guilabel
->Intervalo regular</guilabel
->, mas se não for (se o recurso puder ser escrito), recomenda-se que se recarregue o arquivo apenas antes de começar a editá-lo, configurando a opção <guilabel
->Carregamento Automático</guilabel
-> como <guilabel
->Na inicialização</guilabel
-> e salvá-lo antes de sair, configurando a opção <guilabel
->Salvamento Automático</guilabel
-> pelo menos como <guilabel
->Ao sair</guilabel
-> ou, melhor ainda, se tiver uma conexão rápida e estável ao arquivo remoto, configure-a como <guilabel
->Em todas as alterações</guilabel
-> para evitar a perda de dados.</para>
-
-<warning
-><para
->Se você adicionar, modificar ou remover eventos, itens de diário ou tarefas e recarregar o arquivo remoto, todas as suas modificações locais serão perdidas e o arquivo irá voltar ao seu estado anterior. Isto poderá acontecer em vários cenários (por exemplo, se o sistema estourar, o &korganizer; irá recarregar o arquivo remoto na próxima inicialização, se configurar o <guilabel
->Salvamento Automático</guilabel
-> para <guilabel
->Nunca</guilabel
-> ou se tiver configurado o <guilabel
->Carregamento Automático</guilabel
-> para um intervalo regular). Se você planeja usar um recurso de calendário num modo de escrita, certifique-se de que a sua conexão é estável, configure o recurso para salvar o arquivo a cada alteração (ou em intervalos frequentes) e não recarregue o arquivo em intervalos regulares.</para>
-
-<para
->Um problema relacionado, mas oposto, é o de dois usuários não poderem editar em segurança o mesmo arquivo remoto ao mesmo tempo, uma vez que o recurso de arquivos remotos não oferece um mecanismo de resolução de conflitos. Por exemplo, se alguém alterar (e salvar) o arquivo remoto após tê-lo carregado e depois salvar o arquivo, as alterações da outra pessoa serão perdidas. </para
-></warning>
-
-</listitem>
-</varlistentry>
-<!-- obsolete? no <application
->sloxwizard</application
->in kdepim 
-> 4.4 
-<varlistentry>
-<term
-><guilabel
->SUSE &Linux; OpenExchange Server</guilabel
-></term>
-<listitem
-><para>
-If you have access to a
-<ulink url="http://www.novell.com/coolsolutions/openexchange/"
->SUSE &Linux; OpenExchange
-Server</ulink
->, version 4.1, add this resource in order to be able to save
-(and load) events, free/busy information and to-dos to the server. To add the
-resource, you will need to know the server &URL;, your user name and your
-password. There is support for storage of contacts, so you may want to configure
-&kaddressbook; resource.</para>
-<para
->The most practical way to configure the access to an OpenExchange server is
-to use the <application
->sloxwizard</application
-> wizard. You can start it
-from the command line prompt:
-
-<screen
-><prompt>$</prompt><command>sloxwizard</command></screen>
-
-The wizard will configure not only &korganizer; to use the
-OpenExchange resources, but &kmail;, &kaddressbook; too.</para>
-</listitem>
-</varlistentry>
--->
-  <!-- obsolete? no <application
->egroupwarewizard</application
->in kdepim 
->4.4
-<varlistentry>
-<term
-><guilabel
->eGroupware Server (via &XML;-RPC)</guilabel
-></term>
-<listitem
-><para>
-If you have access to a
-<ulink url="http://www.egroupware.org"
->eGroupware
-Server</ulink
->, version 1.0, add this resource in order to be able to save
-(and load) events, free/busy information and to-dos to the server. To add the
-resource, you will need to know the server &URL;, your user name and your
-password. There is support for storage of contacts, so you may want to configure
-&kaddressbook; resource.</para>
-<para
->The most practical way to configure the access to a eGroupware server is
-to use the <application
->egroupwarewizard</application
-> wizard. You can start it
-from the command line prompt:
-
-<screen
-><prompt>$</prompt><command>egroupwarewizard</command></screen>
-
-The wizard will configure not only &korganizer; to use the
-eGroupware resources, but &kmail;, &kaddressbook; too.</para>
-</listitem>
-</varlistentry>
--->
-</variablelist>
-
 </sect1>
 
-<sect1 id="managing-import-export"
->  <!-- updated to 4.7-->
+<sect1 id="managing-import-export">
 <title
 >Importar, Exportar e Manter os Calendários</title>
 
@@ -1239,34 +829,15 @@ eGroupware resources, but &kmail;, &kaddressbook; too.</para>
 > </menuchoice
 >. O &korganizer; perguntará se deseja <guilabel
 >Adicionar como um calendário novo</guilabel
->, o que irá adicionar o arquivo do calendário como um novo recurso de arquivo local, <guilabel
+>, o que irá adicionar o arquivo do calendário como um novo recurso de arquivo local ou <guilabel
 >Mesclar ao calendário existente</guilabel
->, que irá reunir os itens do calendário num recurso existente ou <guilabel
->Abrir numa janela separada</guilabel
->, que lhe permitirá ver e editar o calendário, mas não o adicionará à sua vista principal.</para>
+>, que irá reunir os itens do calendário num recurso existente.</para>
 
 <para
 >Um bom momento para isto será quando receber um arquivo vCalendar com alguns itens através de e-mail, por exemplo, ou se estiver planejando importar o seu calendário a partir de outro aplicativo. No último caso, a primeira coisa a fazer é usar esse aplicativo para exportar os dados do calendário num dos formatos acima ou usar uma ferramenta de conversão do formato nativo do aplicativo.</para>
 
-<para
->Se você tiver usado o <application
->ical</application
->, um programa conhecido mas antigo de calendários para o &UNIX;, poderá desejar <action
->importar os seus eventos e tarefas</action
-> diretamente para o &korganizer;. Para fazer isto, selecione o item <menuchoice
-><guimenu
->Arquivo</guimenu
-><guisubmenu
->Importar</guisubmenu
-><guimenuitem
->Importar da ferramenta Ical do &UNIX;</guimenuitem
-></menuchoice
->. Esta ação irá ler o arquivo <filename class="extension"
->.calendar</filename
-> da sua pasta pessoal e mesclar os itens que existem no seu calendário atual. Se ocorrerem erros ou fenômenos suspeitos durante o processo, o usuário será notificado através de mensagens.</para>
-
 <!--Get Hot New Stuff
-KDE-Files.org KOrganizer Calendars-->
+store.kde.org KOrganizer Calendars-->
 </sect2>
 
 <sect2 id="managing-export">
@@ -1274,15 +845,15 @@ KDE-Files.org KOrganizer Calendars-->
 >Exportar Calendários</title>
 
 <para
->Você poderá exportar os seus dados como uma página Web ou como um arquivo iCalendar ou vCalendar, que são suportados pela maioria dos aplicativos de agenda. A página Web poderá ser usada para publicar o seu calendário e a lista de tarefas na Web ou na rede local. Em qualquer um dos casos, o &korganizer; irá exportar todos os itens dos recursos ativos (assinalados) que <link linkend="filters-view"
+>Você poderá exportar os seus dados como um arquivo iCalendar, que é suportado pela maioria dos aplicativos de agenda. O &korganizer; irá exportar todos os itens dos recursos ativos (assinalados) que <link linkend="filters-view"
 >não estão filtrados</link
 > (chamemos a esses itens os itens <quote
 >ativos</quote
 >). Em outras palavras, se você não conseguir ver um item do calendário, ele não irá aparecer no arquivo exportado. Para filtrar os itens indesejados antes de exportá-los, você poderá criar <link linkend="filters-view"
 >filtros</link
 >. Os filtros são ainda mais efetivos se classificar os seus eventos e tarefas em <link linkend="categories-view"
->categorias</link
->. Para ativar e desativar recursos, assinale ou desligue a opção de recurso na barra lateral da <link linkend="managing-resources"
+>etiquetas</link
+>.. Para ativar e desativar recursos, assinale ou desligue a opção de recurso na barra lateral da <link linkend="managing-resources"
 ><guilabel
 >Gerenciador de calendários</guilabel
 ></link
@@ -1299,101 +870,9 @@ KDE-Files.org KOrganizer Calendars-->
 > <guimenuitem
 >Exportar como iCalendar...</guimenuitem
 ></menuchoice
->. Para exportar os mesmos dados como um novo arquivo vCalendar, escolha a opção <menuchoice
-><guimenu
->Arquivo</guimenu
-> <guisubmenu
->Exportar</guisubmenu
-> <guimenuitem
->Exportar como vCalendar...</guimenuitem
-> </menuchoice
 >. A janela <guilabel
 >Salvar como</guilabel
 >. irá então aparecer. Insira o nome do arquivo e a localização do novo arquivo para completar a ação de exportação.</para>
-
-<para
->Você poderá exportar o seu calendário ou uma parte dele como um arquivo em &HTML;, adequado para publicar na Web. Todos o que tiverem acesso a este arquivo, usando um navegador web, poderão visualizá-lo. Esta é uma forma simples de compartilhar as informações dos calendários com os seus colegas e amigos.</para>
-
-<!--TODO: use case: export your friends birthdays?-->
-
-<procedure id="procedure-export-html">
-<step
-><para
->Desative todos os recursos que não deseja exportar, e filtre os itens que também não deseja exportar.</para
-></step>
-<step
-><para
->Selecione opção <menuchoice
-><guimenu
->Arquivo</guimenu
-><guisubmenu
->Exportar</guisubmenu
-><guimenuitem
->Exportar a Página Web...</guimenuitem
-></menuchoice
->. Você obterá uma janela com três páginas: a <guilabel
->Geral</guilabel
->, a <guilabel
->Eventos</guilabel
-> e a <guilabel
->Tarefas</guilabel
->.</para
-></step>
-<step
-><para
->Página <guilabel
->Geral</guilabel
->:</para>
-<substeps>
-<step
-><para
->Indique o intervalo de datas que deseja publicar. Insira as datas manualmente ou utilize o calendário.</para
-></step>
-<step
-><para
->Se você quiser exportar as tarefas, assinale a opção <guilabel
->Exportar a lista de tarefas</guilabel
->.</para
-></step>
-<step
-><para
->Se você quiser exportar os itens apresentados na vista de Mês, assinale a opção <guilabel
->Exportar a vista mensal</guilabel
->.</para
-></step>
-<step
-><para
->Se você quiser exportar os eventos formatados como uma lista de eventos, assinale a opção <guilabel
->Exportar os eventos como uma lista</guilabel
->.</para
-></step>
-<step
-><para
->Indique o arquivo de resultado Web no campo <guilabel
->Arquivo de saída</guilabel
->. Se quiser definir outra localização, pressione o botão <inlinemediaobject
-> <imageobject
-><imagedata fileref="document-open.png" format="PNG"/></imageobject
-> </inlinemediaobject
-><guibutton
->Janela para abrir arquivo</guibutton
-> para encontrá-la.</para
-></step>
-</substeps
-></step>
-<step
-><para
->Página de <guilabel
->Eventos</guilabel
->: especifique se deseja incluir as categorias e os participantes na página Web exportada.</para
-></step>
-<step
-><para
->Página <guilabel
->Tarefas</guilabel
->: especifique se deseja listar as Datas-Limite, as Categorias e os Participantes.</para
-></step>
-</procedure>
 
 </sect2>
 
@@ -1412,7 +891,7 @@ KDE-Files.org KOrganizer Calendars-->
 ><guimenu
 >Arquivo</guimenu
 ><guimenuitem
->Arquivar os itens antigos...</guimenuitem
+>Arquivar incidências antigas...</guimenuitem
 ></menuchoice
 >.</para
 ></step>
@@ -1433,13 +912,13 @@ KDE-Files.org KOrganizer Calendars-->
 </procedure>
 
 <para
->O arquivo irá manter todos os itens em um arquivo, incluindo os itens por-fazer completados. Mas se você não quiser armazenar todas as tarefas completas, a opção <menuchoice
+>O arquivo irá manter todos os itens em um arquivo, incluindo os itens por-fazer concluídos. Mas se você não quiser armazenar todas as tarefas completas, a opção <menuchoice
 ><guimenu
 >Arquivo</guimenu
 ><guimenuitem
->Limpar as tarefas completadas</guimenuitem
+>Limpar as tarefas concluídas</guimenuitem
 > </menuchoice
-> no menu, para remover todas as tarefas dos seus recursos ativos. Se quiser manter as suas tarefas completadas, mas não os desejar ver nas listas de tarefas, considere <link linkend="filters-view"
+> no menu, para remover todas as tarefas dos seus recursos ativos. Se quiser manter as suas tarefas concluídas, mas não os desejar ver nas listas de tarefas, considere <link linkend="filters-view"
 >filtrá-los</link
 > em vez de eliminá-los. </para>
 
@@ -1447,10 +926,9 @@ KDE-Files.org KOrganizer Calendars-->
 
 </sect1>
 <!-- only import ??-->
-<sect1 id="managing-get-hot-new-stuff"
->  <!-- updated to 4.7-->
+<sect1 id="managing-get-hot-new-stuff">
 <title
->Transferir com o Sistema para Obter Coisas Novas</title>
+>Baixar usando o Baixar novidades</title>
 
 <!--para
 >If you have a calendar containing events of public interest, such as
@@ -1463,14 +941,14 @@ is something worth downloading) using the
 
 <para
 >Para abrir a janela para <guilabel
->Obter Coisas Novas</guilabel
+>Baixar novidades</guilabel
 >, que oferece uma lista dos calendários a transferir, escolha a opção do menu <menuchoice
 ><guimenu
 >Arquivo</guimenu
 ><guisubmenu
 >Importar</guisubmenu
 > <guimenuitem
->Obter Coisas Novas...</guimenuitem
+>Baixar novidades...</guimenuitem
 ></menuchoice
 >. Selecionando um dos calendários, irá aparecer uma janela com a lista de eventos dos calendários. Para mesclar os eventos apresentados com o seu recurso padrão, pressione <guilabel
 >Mesclar</guilabel
@@ -1503,7 +981,7 @@ choose the <menuchoice
 </chapter>
 
 <chapter id="chapter-views-and-filters"
-><!-- updated to 4.6/7-->
+><!-- updated to 5.4.40-->
 
 <title
 >Vistas e Filtros</title>
@@ -1512,7 +990,7 @@ choose the <menuchoice
 >Embora os calendários (recursos) possam conter eventos, tarefas e/ou itens de diários, estes itens são bastante diferentes na sua natureza. As tarefas poderão não ter qualquer data associada a eles, assim, uma vista em agenda não é adequada para eles. Os itens de diário são uma coleção das suas reflexões, acontecimentos ou experiências. Eles necessitam do seu próprio modo de visualização, uma vez que não estão relacionados com a lista de eventos a ocorrer ou com a lista de tarefas, &etc;</para>
 
 <para
->Para resolver o desafio de mostrar a informação da vista de forma intuitiva e útil, o &korganizer; oferece várias vistas, filtros e capacidades de pesquisa. Você poderá também atribuir eventos relacionados e tarefas a categorias, as quais o irão ajudar a vê-las mais tarde, com filtros ou cores.</para>
+>Para resolver o desafio de mostrar a informação da vista de forma intuitiva e útil, o &korganizer; oferece várias vistas, filtros e capacidades de pesquisa. Você poderá também atribuir etiquetas aos eventos relacionados e tarefas, as quais o irão ajudar a vê-las mais tarde, com filtros ou cores.</para>
 
 <sect1 id="description-view">
 <title
@@ -1634,7 +1112,7 @@ choose the <menuchoice
 <title
 >Visão da agenda</title>
 
-<!--TODO: add agenda view options, color of resources and categories-->
+<!--TODO: add agenda view options, color of resources and tags-->
 
 <para
 >A vista da Agenda apresenta seus eventos ou tarefas para um ou mais dias, ordenados cronologicamente. Você pode também ver a extensão de cada evento na linha do tempo. Para ativar a vista da Agenda, selecione o menu <menuchoice
@@ -1682,27 +1160,27 @@ choose the <menuchoice
 >Existem dois atalhos úteis para adição de eventos: <itemizedlist>
 <listitem
 ><para
->Faça duplo-clique em qualquer região do horário livre, para que o &korganizer; crie automaticamente um evento com a duração padrão(configurável na janela de preferências). Você poderá editar imediatamente a descrição. Os eventos <quote
+>Faça duplo-clique em qualquer região do horário livre, para que o &korganizer; crie automaticamente um evento com a duração padrão(configurável na janela de preferências). Você poderá editar imediatamente o resumo. Os eventos <quote
 >ajustam-se</quote
 > em incrementos de meia-hora, arredondando-se à meia-hora mais próxima do local onde você clicou.</para
 ></listitem>
 <listitem
 ><para
->Selecione qualquer região aberta de tempo e faça duplo-clique nela ou comece a escrever o título do evento. O &korganizer; irá definir automaticamente a duração e a hora de início, tal como foi definido na área de seleção da vista da Agenda.</para
+>Selecione qualquer região aberta de tempo e faça duplo-clique nela ou comece a escrever o resumo do evento. O &korganizer; irá definir automaticamente a duração e a hora de início, tal como foi definido na área de seleção da vista da Agenda.</para
 ></listitem>
 </itemizedlist>
 </para
 ></tip>
 
 <para
->Para ajudá-lo a organizar a sua agenda, a cor dos eventos refletem a sua categoria e dependem da <link linkend="config-main-views"
+>Para ajudá-lo a organizar a sua agenda, a cor dos eventos refletem a sua etiqueta e dependem da <link linkend="config-main-views"
 >configuração da aparência do &korganizer;</link
 >. Eles poderão também refletir o seu <link linkend="managing-resources"
 >recurso</link
 >. Assim, se você atribuir <link linkend="categories-view"
->categorias aos eventos</link
+>etiquetas aos eventos</link
 > e <link linkend="config-main-colors"
->cores diferentes às categorias</link
+>cores diferentes às etiquetas</link
 >, será capaz de identificar rapidamente o tipo de evento pela sua cor. </para>
 
 <para
@@ -1728,7 +1206,7 @@ choose the <menuchoice
 ></menuchoice
 > ou pressionando o botão <inlinemediaobject
 ><imageobject
-><imagedata fileref="view-calendar-day.png" format="PNG"/></imageobject
+><imagedata fileref="go-jump-today.png" format="PNG"/></imageobject
 ></inlinemediaobject
 ><guilabel
 >Dia</guilabel
@@ -1826,14 +1304,14 @@ choose the <menuchoice
 >Passe o seu cursor do mouse por cima de qualquer item do calendário para mostrar uma dica com os detalhes do item. Faça duplo-clique numa área em branco para criar um evento e duplo-clique em qualquer item do calendário para editá-lo.</para>
 
 <para
->Para auxiliá-lo a organizar os seus dados, a cor dos eventos poderá refletir a sua categoria e o seu <link linkend="managing-resources"
->recurso</link
+>Para auxiliá-lo a organizar os seus dados, a cor dos eventos poderá refletir suas etiquetas e seus <link linkend="managing-resources"
+>recursos</link
 >, dependendo da <link linkend="config-main-views"
 >configuração da aparência do &korganizer;</link
 >. Assim, se você atribuir <link linkend="categories-view"
->categorias aos eventos</link
+>etiquetas aos eventos</link
 > e <link linkend="config-main-colors"
->cores diferentes às categorias</link
+>cores diferentes às etiquetas</link
 >, poderá identificar o tipo de evento (ou recurso) pela sua cor. </para>
 
 <para
@@ -1853,7 +1331,7 @@ choose the <menuchoice
 
 </sect2>
 
-<!-- Timespent View-->
+<!-- Timeline View-->
 
 <sect2 id="timeline-view">
 <title
@@ -1907,8 +1385,7 @@ choose the <menuchoice
 >Remover</guimenuitem
 > a tarefa de uma vez ou poderá <guimenuitem
 >Criar uma subtarefa</guimenuitem
->. Você poderá criar, por exemplo, uma grande tarefa como a construção de uma casa, e criar subtarefas como a escolha do local de construção, a contratação de um arquiteto, a contratação dos trabalhadores e finalmente preparar uma festa para os seus amigos.</para
-> 
+>. Você poderá criar, por exemplo, uma grande tarefa como a construção de uma casa, e criar subtarefas como a escolha do local de construção, a contratação de um arquiteto, a contratação dos trabalhadores e finalmente preparar uma festa para os seus amigos.</para>
 
 <para
 >Quando você selecionar a opção <guimenuitem
@@ -1924,11 +1401,10 @@ choose the <menuchoice
 
 <para
 >Você poderá também optar por <link linkend="managing-purge-archive"
->Limpar os Completados</link
+>Limpar os concluídos</link
 > no menu do botão <mousebutton
 >direito</mousebutton
-> para remover todas as tarefas que já tenha marcado como completada.</para
-> 
+> para remover todas as tarefas que já tenha marcado como concluída.</para>
 
 <para
 >As tarefas também podem ser arrastadas com o mouse para reorganizar a hierarquia ou para trocar tarefas com outras janelas do calendário. Você poderá ler também uma <link linkend="other-features-drag-and-drop"
@@ -1942,28 +1418,28 @@ choose the <menuchoice
 <para
 >A vista do Diário oferece um local onde você poderá registrar as suas reflexões, acontecimentos ou experiências. Você poderá mostrar a vista do Diário no painel principal, clicando no botão da barra de ferramentas <inlinemediaobject
 ><imageobject
-> <imagedata fileref="view-calendar-journal.png" format="PNG"/></imageobject
+> <imagedata fileref="journal-new.png" format="PNG"/></imageobject
 > </inlinemediaobject
 ><guilabel
 >Vista do Diário</guilabel
 > ou selecionando a opção do menu <menuchoice
 ><guimenu
->Exibir</guimenu
+> Exibir</guimenu
 ><guimenuitem
 >Agenda</guimenuitem
 > </menuchoice
 >.</para>
 
 <para
->Quando você clica no atalho para <guilabel
->adicionar um item do diário</guilabel
->, será criado um novo item do diário. Se você quiser editar um item do diário, basta clicar no campo de texto e editá-lo! Para remover um item do diário, clique no botão de remoção <inlinemediaobject
+>Quando você clica no link para <guilabel
+>Novo diário...</guilabel
+>(ou no botão <guibutton
+>Novo diário ...</guibutton
+>), será criado um novo item do diário. Se você quiser editar um item do diário, basta clicar no campo de texto e editá-lo! Para remover um item do diário, clique no botão de remoção <inlinemediaobject
 > <imageobject
 ><imagedata fileref="edit-delete.png" format="PNG"/> </imageobject
 ></inlinemediaobject
-> ao lado do <guilabel
->Título</guilabel
-> do item do diário.</para>
+> na visão do diário.</para>
 
 </sect2>
 
@@ -1971,35 +1447,35 @@ choose the <menuchoice
 
 <sect1 id="categories-view">
 <title
->Categorias</title>
+>Etiquetas</title>
 
 <!--TODO: Add screenshot?-->
 
 <para
->Para auxiliá-lo a organizar os seus itens em grupos relacionados, você poderá atribuir categorias aos eventos, às tarefas e às entradas do diário. Se atribuir as categorias, poderá usá-las mais tarde ao procurar, filtrar e apresentar os eventos e tarefas.</para>
+>Para auxiliá-lo a organizar os seus itens em grupos relacionados, você poderá atribuir etiquetas aos eventos, às tarefas e às entradas do diário. Se atribuir as etiquetas, poderá usá-las mais tarde ao procurar, filtrar e apresentar os eventos e tarefas.</para>
 
 <para
->Para atribuir categorias ao editar ou criar novos <link linkend="entering-data-events-general"
+>Para atribuir etiquetas ao editar ou criar novos <link linkend="entering-data-events-general"
 >eventos</link
 > ou <link linkend="entering-data-to-do-general"
 >tarefas</link
->, selecione uma categoria na lista <guilabel
->Categorias</guilabel
+>, clique no botão <guibutton
+>...</guibutton
 > da página <guilabel
 >Geral</guilabel
->. Você poderá atribuir mais de uma categoria para cada item.</para>
+>. Você poderá atribuir mais de uma etiqueta para cada item.</para>
 
 <para
->Para criar, remover e editar categorias, selecione a opção <menuchoice
+>Para criar e remover etiquetas, selecione a opção <menuchoice
 > <guimenu
 >Configurações</guimenu
 ><guimenuitem
->Gerenciar Categorias...</guimenuitem
+>Gerenciar etiquetas...</guimenuitem
 > </menuchoice
 > para abrir a janela <guilabel
->Editar as Categorias</guilabel
+>Gerenciar etiquetas</guilabel
 >. Se você atribuir <link linkend="config-main-colors"
->cores diferentes às categorias</link
+>cores diferentes às etiquetas</link
 >, poderá então identificar rapidamente o tipo de evento pela sua cor, quer na vista da Agenda quer na vista do Mês (dependendo da <link linkend="config-main-views"
 >configuração da aparência do &korganizer;</link
 >). </para>
@@ -2011,9 +1487,9 @@ choose the <menuchoice
 >Filtros</title>
 
 <para
->Para auxiliá-lo a ver, procurar e exportar os seus dados, você poderá criar e usar filtros para os seus calendários. Por exemplo, se você não quiser ver as tarefas completadas, poderá filtrá-los, em vez de <link linkend="managing-purge-archive"
+>Para auxiliá-lo a ver, procurar e exportar os seus dados, você poderá criar e usar filtros para os seus calendários. Por exemplo, se você não quiser ver as tarefas concluídas, poderá filtrá-los, em vez de <link linkend="managing-purge-archive"
 >eliminá-los</link
->. Se você atribuir categorias, poderá usá-las para criar os filtros.</para>
+>. Se você atribuir etiquetas, poderá usá-las para criar os filtros.</para>
 
 <para
 >Para criar, remover e editar os filtros, selecione a opção <menuchoice
@@ -2055,8 +1531,8 @@ choose the <menuchoice
 >Os filtros são úteis ao <link linkend="managing-export"
 >exportar o seu calendário</link
 >. Se você usar um filtro, somente os itens filtrados (visíveis) serão exportados. Do mesmo modo, os filtros são mais efetivos quando os itens já estiverem classificados e organizados em <link linkend="categories-view"
->categorias</link
->, uma vez que você poderá facilmente criar filtros com base nas categorias.</para>
+>etiquetas</link
+>, uma vez que você poderá facilmente criar filtros com base nas etiquetas.</para>
 
 </sect1>
 
@@ -2075,7 +1551,7 @@ choose the <menuchoice
 >&Ctrl;<keycap
 >F</keycap
 > </keycombo
-> para procurar itens (eventos, tarefas ou itens do diário), de acordo com o título, descrição e/ou categorias. A ação de procura só irá procurar pelos campos indicados.</para>
+> para procurar eventos, tarefas ou itens do diário pelo seu resumo, descrição e/ou etiquetas. A ação de procura só irá procurar pelos campos indicados.</para>
 
 <tip
 ><para
@@ -2109,7 +1585,7 @@ choose the <menuchoice
 </chapter>
 
 <chapter id="entering-data"
->  <!--updated to 4.7-->
+>  <!--updated to 5.4.40-->
 
 <title
 >Inserindo Dados</title>
@@ -2128,7 +1604,7 @@ choose the <menuchoice
 ><guimenuitem
 >Novo Evento...</guimenuitem
 ></menuchoice
->. Irá aparecer uma janela contendo cinco abas no fundo.</para>
+>. Irá aparecer uma janela contendo seis abas no fundo.</para>
 
 <para
 >Se desejar, você pode utilizar uma maneira diferente para criar um novo evento:</para>
@@ -2167,7 +1643,7 @@ choose the <menuchoice
 
 <step
 ><para
->Irá aparecer uma janela contendo cinco abas. Insira os seus dados, tal como descrito abaixo.</para
+>Irá aparecer uma janela contendo seis abas. Insira os seus dados, tal como descrito abaixo.</para
 ></step>
 </procedure>
 
@@ -2199,12 +1675,12 @@ choose the <menuchoice
 <varlistentry>
 <term
 ><guilabel
->Título:</guilabel
+>Resumo:</guilabel
 ></term>
 <listitem
 ><para
 >Insira uma breve descrição do evento no campo de <guilabel
->Título</guilabel
+>Resumo</guilabel
 >. Esta descrição é o texto mostrado no painel principal do &korganizer;.</para
 ></listitem>
 </varlistentry>
@@ -2258,54 +1734,32 @@ choose the <menuchoice
 <varlistentry>
 <term
 ><guilabel
->Categorias</guilabel
+>Etiquetas</guilabel
 ></term>
 <listitem
 ><para
 >Você poderá atribuir várias <link linkend="categories-view"
->categorias</link
-> a um item do calendário. Clique na lista para exibir todas as categorias disponíveis. Assinale as opções adequadas para o evento.</para
-> 
+>etiquetas</link
+> a um item do calendário. Clique no botão <guibutton
+>...</guibutton
+> para exibir todas as etiquetas disponíveis. Assinale as opções adequadas para atribuir etiquetas adequadas o evento.</para>
 <para
->Você pode também adicionar uma nova categoria, modificar ou apagar um categoria na janela <guilabel
->Editar categorias</guilabel
+>Você pode também adicionar uma nova etiqueta, modificar ou apagar uma etiquetas na janela <guilabel
+>Gerenciar etiquetas</guilabel
 >. Abra esta janela em <menuchoice
 > <guimenu
 >Configurações</guimenu
 > <guimenuitem
->Gerenciar categorias</guimenuitem
+>Gerenciar etiquetas</guimenuitem
 ></menuchoice
 >.</para>
 
 <tip
 ><para
->A sua aula de idioma no trabalho pode pertencer tanto a categoria de Negócios como a de Educação, enquanto que o aniversário do seu casamento pode pertencer à categoria Pessoal e à Ocasião Especial - a escolha é sua.</para
+>A sua aula de idioma no trabalho pode pertencer tanto a etiqueta de Negócios como a de Educação, enquanto que o aniversário do seu casamento pode pertencer a etiqueta Pessoal e a Ocasião Especial - a escolha é sua.</para
 ></tip>
 </listitem>
 </varlistentry>
-
-<!--varlistentry not in 4.6.0 lueck>
-<term
-><guilabel
->Time associated</guilabel
-></term>
-<listitem
-><para
->Uncheck the <guilabel
->Time associated</guilabel
-> box if your
-event is not scheduled on an exact time.</para>
-
-<tip
-><para
->Most events are scheduled to an exact time. If your event does not
-need specific time, perhaps it should be created as a <link
-linkend="entering-data-to-do"
->to-do</link
-></para
-></tip
-></listitem>
-</varlistentry-->
 
 <varlistentry>
 <term
@@ -2333,25 +1787,12 @@ linkend="entering-data-to-do"
 ><para
 >Atualmente, o &korganizer; <emphasis
 >irá</emphasis
-> mostrar os itens que pertençam a outras pessoas e estejam marcados como confidenciais. Os outros clientes poderão tratá-los de outra forma, mas tenha cuidado ao publicar eventos privados ou confidenciais: o vCalendar e o iCalendar são arquivos de texto e poderão ser lidos com qualquer editor de texto (se alguém tiver acesso de leitura a eles). Assim, se você quiser manter os itens realmente confidenciais, certifique-se de usar um recurso que só você possa acessar.</para
+> mostrar os itens que pertençam a outras pessoas e estejam marcados como confidenciais. Os outros clientes poderão tratá-los de outra forma, mas tenha cuidado ao publicar eventos privados ou confidenciais: o iCalendar é um arquivo de texto e poderá ser lido com qualquer editor de texto (se alguém tiver acesso de leitura a eles). Assim, se você quiser manter os itens realmente confidenciais, certifique-se de usar um recurso que só você possa acessar.</para
 ></warning
 ></listitem>
 </varlistentry>
 
 </variablelist>
-<!-- not in 4.6.0 lueck varlistentry>
-<term
-><guilabel
->Show Time As:</guilabel
-></term>
-<listitem
-><para
->The duration of the event may be shown as Busy or Free in your
-schedule. Choose it from the <guilabel
->Show Time As</guilabel>
-drop down box.</para
-></listitem>
-</varlistentry-->
 
 </sect2>
 
@@ -2389,15 +1830,7 @@ drop down box.</para
 ><para
 >Configura a identidade que corresponde ao organizador desta tarefa ou evento. Se o &korganizer; estiver configurado para enviar e-mails de convites, a identidade selecionada nesta lista será usada ao enviar estes e-mails. A identidade padrão poderá ser definida na seção <guilabel
 >Pessoal</guilabel
-> da configuração do &korganizer;, ou então configurada no módulo <guilabel
->Detalhes da conta</guilabel
->-&gt;<guilabel
->Senha &amp; Conta do Usuário</guilabel
-> do &systemsettings;;. Além disso, as identidades são obtidas da sua configuração do &kmail; e do seu livro de endereços. Se você optar por definir isso a nível global do &kde; no &systemsettings;, certifique-se de assinalar a opção <guilabel
->Usar a configuração de e-mail das Configurações do Sistema</guilabel
-> da seção <guilabel
->Pessoal</guilabel
-> da configuração do &korganizer;.</para
+> da configuração do &korganizer;. Além disso, as identidades são obtidas da sua configuração do &kmail; e do seu livro de endereços.</para
 ></listitem>
 </varlistentry>
 
@@ -2450,6 +1883,8 @@ drop down box.</para
 
 </sect2>
 
+<!--Fixme Resources tab missing -->
+
 <sect2 id="entering-data-events-reminder">
 <title
 >Página Lembrete</title>
@@ -2467,11 +1902,7 @@ drop down box.</para
 >Configurar</guibutton
 > para abrir a janela <guilabel
 >Editar lembrete existente</guilabel
->. Se usar esta janela, você poderá definir quantos minutos, horas ou dias antes ou após o início ou fim do evento você deseja ser lembrado. Você pode definir intervalos de repetição para os seus lembretes e criar lembretes especiais que exibem texto, enviam mensagens, tocam sons ou executam programas.</para>
-<tip
-><para
->Se você optar por executar um programa ou script específico no momento do lembrete, certifique-se, no entanto, de que você possui permissões suficientes para rodar este programa. Caso contrário, o programa não será executado.</para
-></tip>
+>. Se usar esta janela, você poderá definir quantos minutos, horas ou dias antes ou após o início ou fim do evento você deseja ser lembrado. Você pode definir intervalos de repetição para os seus lembretes e criar lembretes especiais que exibem texto, enviam mensagens ou tocam sons.</para>
 </listitem>
 </varlistentry>
 
@@ -2692,117 +2123,88 @@ drop down box.</para
 
 </sect2>
 
-<!-- not in 4.6.0 lueck
-Does this work via Reschedule button on Attendees tab???
--->
-<!--sect2 id="entering-data-events-freebusy"
-> 
+<!--FIXME works with certain type of calendars e.g. google calendar ?-->
+<sect2 id="entering-data-events-freebusy">
 <title
->Free/Busy</title>
+>Livre/ocupado</title>
 
 <para
->When adding attendees to your event, you need to know if they are
-busy or free in that particular time. If the attendees make their free /
-busy information available, you can view here their schedule before
-sending the invitations.</para>
+>Ao adicionar participantes para o seu evento, você deverá saber se eles estão livres ou ocupados naquela hora em específico. Se os participantes tornarem pública a sua informação de livre / ocupado, você poderá ver aqui a programação deles antes de enviar os convites.</para>
 
 <para
->This shows the free/busy schedule chart on the right, where each line
-represents one of the attendees, listed on the left. The marked areas on the
-chart represent the time already taken by other events, unmarked areas represent
-time free from other events. You can move the event to a different point in time
-by dragging it with the mouse, or resize it by moving the edges of the highlighted
-area with the mouse.</para>
+>Isso mostra o gráfico de agendamento de disponibilidade à direita, onde cada linha representa um participante, listado à esquerda. As áreas marcadas no gráfico representam o tempo já ocupado por outros eventos, enquanto as áreas desmarcadas representam tempos livres para outros eventos. Você pode mover o evento para um ponto diferente arrastando-o com o mouse ou redimensione-o movendo as bordas da área destacada com o mouse.</para>
 
 <para
->The free/busy information is only available if the
-attendee publishes his free/busy schedule, and if &korganizer; is correctly
-configured to retrieve it. For more information about configuring &korganizer;
-to publish and retrieve free/busy information, please check the
-<xref linkend="config"/>. Double-clicking on an attendee entry in the list
-will allow you to enter the location of their free/busy information.
-</para>
+>As informações de disponibilidade estão disponíveis apenas se o participante publicar sua programação de disponibilidade e se o &korganizer; está corretamente configurado para recuperar esta informação. Para mais informações sobre como configurar o &korganizer; para publicar e recuperar as informações de disponibilidade, por favor, verique <xref linkend="config"/>. Clicar duas vezes em uma entrada de participante na lista permitirá que você insira o local das informações de disponibilidade deles. </para>
 
 <variablelist>
 
 <varlistentry>
 <term
 ><guilabel
->Scale</guilabel
+>Escala</guilabel
 ></term>
 <listitem
 ><para
->Sets the zoom level on the schedule chart. <guilabel
->Hour</guilabel>
-shows a range of several hours, <guilabel
->Day</guilabel
-> shows a range of a few
-days, <guilabel
->Week</guilabel
-> shows a range of a few months, and
-<guilabel
->Month</guilabel
-> shows a range of a few months, while
-<guilabel
->Automatic</guilabel
-> selects the range most appropriate for the
-current event or to-do.</para
+>Define o nível de zoom no gráfico de agendamento. A <guilabel
+>Hora</guilabel
+> mostra um intervalo de várias horas, <guilabel
+>Dia</guilabel
+> mostra um intervalo de alguns dias, <guilabel
+>Semana</guilabel
+> e <guilabel
+>Mês</guilabel
+> mostram intervalos de alguns meses, enquanto <guilabel
+>Automático</guilabel
+> seleciona o intervalo mais apropriado para o evento atual ou afazer.</para
 ></listitem>
 </varlistentry>
 
 <varlistentry>
 <term
 ><guibutton
->Center on Start</guibutton
+>Centralizar no início</guibutton
 ></term>
 <listitem
 ><para
->Press this button to center the free/busy schedule chart on the
-start time and day of this event.</para
+>Pressione este botão para centralizar o gráfico de agendamento de disponibilidade na hora e dia de início deste evento.</para
 ></listitem>
 </varlistentry>
 
 <varlistentry>
 <term
 ><guibutton
->Pick Date</guibutton
+>Escolher data</guibutton
 ></term>
 <listitem
 ><para
->Press this button to automatically move the event to a date and
-time when all the attendees are free.</para
+>Pressione este botão para mover automaticamente o evento para uma data e hora em que todos os participantes estejam disponíveis.</para
 ></listitem>
 </varlistentry>
 
 <varlistentry>
 <term
 ><guibutton
->Reload</guibutton
+>Recarregar</guibutton
 ></term>
 <listitem
 ><para
->Press this button to reload Free/Busy data for all attendees
-from the corresponding servers.</para
+>Aperte este botão para recarregar os dados de disponibilidade de todos os participantes do servidores correspondentes.</para
 ></listitem>
 </varlistentry>
 
 </variablelist>
 
 <para
->When you want to confirm, call off or revert the entered data, choose
-among the <link linkend="reference-action-buttons"
->Action Buttons</link
->,
-<guibutton
+>Quando quiser confirmar, cancelar ou reverter os dados inseridos, escolha entre os botões de ação <guibutton
 >OK</guibutton
 >, <guibutton
->Apply</guibutton
-> and
-<guibutton
->Cancel</guibutton
+>Aplicar</guibutton
+> e <guibutton
+>Cancelar</guibutton
 >.</para>
 
-</sect2-->
+</sect2>
 
 <sect2 id="entering-data-events-template-buttons">
 <title
@@ -2902,11 +2304,19 @@ among the <link linkend="reference-action-buttons"
 <itemizedlist>
 <listitem
 ><para
->Na página <guilabel
+>Você deve preencher o campo <guilabel
+>Resumo</guilabel
+>.</para
+></listitem>
+<listitem
+><para
+>A página <guilabel
 >Geral</guilabel
->, você deverá ao menos preencher o campo do <guilabel
->Título</guilabel
-> e a descrição (o retângulo grande), mesmo que nenhum deles seja obrigatório. Se você definir um <guilabel
+> poderá ser deixada completamente em branco.</para
+></listitem>
+<listitem
+><para
+>Se você definir um <guilabel
 >Lembrete</guilabel
 >, deverá pelo menos indicar a hora e o som que deverá ser tocado ou o programa que deverá ser executado.</para
 ></listitem>
@@ -2933,7 +2343,7 @@ among the <link linkend="reference-action-buttons"
 </chapter>
 
 <chapter id="group-scheduling"
->   <!--updated to 4.7-->
+>   <!--updated to 5.4.40-->
 <title
 >Agendamento de Grupo</title>
 
@@ -3070,8 +2480,7 @@ among the <link linkend="reference-action-buttons"
 
 <sect2 id="cancel">
 <title
->Cancelar um Evento ou Tarefa</title
-> 
+>Cancelar um Evento ou Tarefa</title>
 
 <para
 >Para cancelar um evento ou tarefa, você terá que ser o organizador. Se tiver assinalado a opção <guilabel
@@ -3099,7 +2508,7 @@ among the <link linkend="reference-action-buttons"
 <para
 >Quando você receber um e-mail com um convite e aceitá-lo, o evento ou tarefa será adicionado ao seu calendário. Se for um evento, irá aparecer um pequeno ícone <inlinemediaobject
 > <imageobject
-> <imagedata fileref="groupevent.png" format="PNG"/> </imageobject
+> <imagedata fileref="meeting-attending.png" format="PNG"/> </imageobject
 > <textobject
 > <phrase
 >Ícone de Participante</phrase
@@ -3270,12 +2679,12 @@ among the <link linkend="reference-action-buttons"
 >meio-dia</emphasis
 > e as <emphasis
 >13:00</emphasis
-> e comece a digitar o título do evento.</para
+> e comece a digitar o resumo do evento.</para
 ></step>
 
 <step
 ><para
->Insira um título adequado. É importante escolher uma descrição breve correta, uma vez que este é o único campo que poderá ser pesquisado. Sugerimos que insira aqui <userinput
+>Insira um resumo adequado. É importante escolher uma descrição breve correta, já que ele aparece em vários lugares. Sugerimos que insira  <userinput
 >Evento de lançamento do produto</userinput
 >.</para
 ></step>
@@ -3296,10 +2705,12 @@ among the <link linkend="reference-action-buttons"
 
 <step
 ><para
->Selecione <guilabel
+>Vá para a página <guilabel
+>Geral</guilabel
+>. Selecione <guilabel
 >Compromisso</guilabel
-> na lista de <guilabel
->Categorias</guilabel
+> da janela <guilabel
+>Gerenciar etiquetas</guilabel
 >.</para
 ></step>
 
@@ -3410,11 +2821,7 @@ among the <link linkend="reference-action-buttons"
 </chapter>
 
 <chapter id="config"
->  <!--updated to 4.7, a few items missing
-System Tray tab
-Calendars tab
-
--->
+>  <!--updated to 5.4.40, missing General System Tray + Calendars-->
 <title
 >Configurações do &korganizer;</title>
 
@@ -3432,28 +2839,27 @@ Calendars tab
 ><guimenu
 > Configurações</guimenu
 ><guimenuitem
->Configurar as Barras de Ferramentas...</guimenuitem
+>Configurar as Barras de Ferramentas... </guimenuitem
 ></menuchoice
-> e leia a <link linkend="config-toolbars"
->descrição detalhada</link
->.</para>
+> e leia a seção <ulink url="help:/fundamentals/config.html#toolbars"
+>Customizando as barras de ferramentas</ulink
+> em &kde; Fundamentals.</para>
 
 <para
->Para mover as barras de ferramentas pela tela, coloque o cursor do mouse em cima da pega da barra de ferramentas e arraste-a para uma nova posição na janela do &korganizer;.</para>
-
-<para
->As informações de localização, como os formatos das datas e horas, poderá ser configurada no &systemsettings;; com o módulo <guilabel
->País/região &amp; idioma</guilabel
->. Este módulo de controle pode ser acessado a partir do &korganizer;; selecione o item do menu <menuchoice
-> <guimenu
->Configurações</guimenu
+>As informações de localização, como os formatos das datas e horas, poderá ser configurada no &systemsettings;; com os módulos <guilabel
+>Idioma</guilabel
+> e <guilabel
+>Formatos</guilabel
+>. Estes módulos de controle podem ser acessado a partir do &korganizer;: basta selecionar o item do menu <menuchoice
+><guimenu
+> Configurações</guimenu
 ><guimenuitem
->Configurar a data &amp; hora...</guimenuitem
-> </menuchoice
->. O &korganizer; terá que ser reiniciado, para que as alterações feitas no &systemsettings; tenham efeito.</para>
+>Configurar data &amp; hora...</guimenuitem
+></menuchoice
+>. O &korganizer; terá que ser reiniciado para que as alterações feitas no &systemsettings; tenham efeito.</para>
 
 <para
->Para configurar o local onde o &korganizer; guarda e obtém os eventos, itens de diário e tarefas dos calendários (em arquivos locais, servidores de 'groupware', itens de diário como 'blogs', arquivos da rede, &etc;), verifique por favor a seção <xref linkend="managing-resources"/>.</para>
+>Para configurar o local onde o &korganizer; guarda e obtém os eventos, itens de diário e tarefas dos calendários (em arquivos locais, servidores de 'groupware', itens de diário como 'blogs', arquivos da rede &etc;), por favor,verifique a seção <xref linkend="managing-resources"/>.</para>
 
 <sect1 id="config-main">
 <title
@@ -3478,23 +2884,6 @@ Calendars tab
 <varlistentry>
 <term
 ><guilabel
->Usar a configuração de e-mail da Configuração do Sistema</guilabel
-></term>
-<listitem
-><para
->Assinale esta opção para usar o seu nome e endereço de e-mail, tal como estão definidos no &systemsettings; (<menuchoice
-><guimenuitem
->Detalhes da Conta</guimenuitem
-> <guimenuitem
->Senha &amp; Conta do Usuário</guimenuitem
-></menuchoice
->).</para>
-</listitem>
-</varlistentry>
-
-<varlistentry>
-<term
-><guilabel
 >Nome completo</guilabel
 ></term>
 <listitem
@@ -3505,11 +2894,10 @@ Calendars tab
 >Anônimo</quote
 > com um endereço de e-mail igual a <quote
 >ninguem@nenhumlugar</quote
->. Você poderá alterar o seu nome, inserindo-o diretamente aqui ou poderá usar a sua Configuração de E-mail do &systemsettings; (ver acima). Este nome será mostrado como <guilabel
+>. Você poderá alterar o seu nome, inserindo-o diretamente aqui. Este nome será mostrado como <guilabel
 >Organizador</guilabel
 > nas tarefas e nos Eventos.</para
-></listitem
-> 
+></listitem>
 </varlistentry>
 
 <varlistentry>
@@ -3550,41 +2938,6 @@ Calendars tab
 <varlistentry>
 <term
 ><guilabel
->Exportar para &HTML; periodicamente</guilabel
-></term>
-<listitem
-><para
->Ao assinalar esta opção, você indica ao &korganizer; para fazer uma exportação do seu calendário e da sua lista de tarefas para um arquivo &HTML; na sua pasta pessoal, com um intervalo padrão de 10 minutos.</para
-></listitem>
-</varlistentry>
-
-<!--not in 4.7 varlistentry>
-<term
-><guilabel
->Enable automatic saving of manually opened calendar files</guilabel
-></term>
-<listitem
-><para
->When this box is checked,
-manually opened calendar files are saved automatically when you exit
-&korganizer;, without asking. Furthermore, the calendar file is saved
-periodically as you work to prevent the loss of valuable data. You can also
-specify the save interval in  minutes.
-
-<important
-><para
->This option does not affect your
-resource settings. To change the resource saving options, you have to configure
-each resource individually. For more information about resources, please check
-<xref linkend="managing-resources"/>.</para
-></important>
-</para
-></listitem>
-</varlistentry-->
-
-<varlistentry>
-<term
-><guilabel
 >Confirmar as remoções</guilabel
 ></term>
 <listitem
@@ -3608,8 +2961,7 @@ each resource individually. For more information about resources, please check
 >Ser perguntado sobre o calendário a usar</guilabel
 >, se você pretende usar a funcionalidade das pastas compartilhadas do servidor de <guilabel
 >Kolab</guilabel
->. Isto permitirá manter o controle das informações disponíveis para você e quais são publicadas nas pastas compartilhadas.</para
-> 
+>. Isto permitirá manter o controle das informações disponíveis para você e quais são publicadas nas pastas compartilhadas.</para>
 </listitem>
 </varlistentry>
 
@@ -3632,19 +2984,6 @@ each resource individually. For more information about resources, please check
 >Página Regional</title>
 
 <variablelist>
-<!--varlistentry>
-<term
-><guilabel
->Timezone</guilabel
-></term>
-<listitem
-><para
->Select your location from the list on the drop
-down. If your city is not listed, select one that shares the same time zone.
-&korganizer; will automatically adjust for daylight savings.</para
-></listitem
-> 
-</varlistentry-->
 
 <varlistentry>
 <term
@@ -3660,15 +2999,14 @@ down. If your city is not listed, select one that shares the same time zone.
 <varlistentry>
 <term
 ><guilabel
->Usar os feriados da região</guilabel
+>Feriados</guilabel
 ></term>
 <listitem
 ><para
 >Selecione o seu país na lista ou, se não estiver listado, selecione <guilabel
 >(Nenhum)</guilabel
 >. Se o seu país estiver selecionado, o &korganizer; irá reconhecer e mostrar as suas datas importantes e feriados na área do calendário.</para
-></listitem
-> 
+></listitem>
 </varlistentry>
 
 <varlistentry>
@@ -3691,6 +3029,18 @@ down. If your city is not listed, select one that shares the same time zone.
 > acima.</para>
 </listitem>
 </varlistentry>
+
+<varlistentry>
+<term
+><guilabel
+>Dia que a semana inicia</guilabel
+></term>
+<listitem
+><para
+>Selecione o primeiro dia de cada semana. Normalmente, você pode ignorar isso pois é definido de acordo com sua localidade.</para
+></listitem>
+</varlistentry>
+
 </variablelist>
 </sect3>
 
@@ -3776,8 +3126,7 @@ down. If your city is not listed, select one that shares the same time zone.
 ></listitem>
 </varlistentry>
 
-<varlistentry
->	
+<varlistentry>
 <term
 ><guilabel
 >Ativar as dicas para mostrar os resumos</guilabel
@@ -3790,31 +3139,17 @@ down. If your city is not listed, select one that shares the same time zone.
 ></listitem>
 </varlistentry>
 
-<varlistentry
->	
+<varlistentry>
 <term
 ><guilabel
->As tarefas usam as cores da categoria</guilabel
+>As tarefas usam as cores da etiqueta</guilabel
 ></term>
 <listitem
 ><para
->Marque esta opção para que as tarefas usem as cores da categoria e não as cores específicas do seu estado de vencido, a tempo ou vencido hoje.</para
+>Marque esta opção para que as tarefas usem as cores da etiqueta e não as cores específicas do seu estado de vencido, a tempo ou vencido hoje.</para
 ></listitem>
 </varlistentry>
 
-<!--varlistentry>
-<term
-><guilabel
->Show to-dos in day, week and month views</guilabel
-></term>
-<listitem
-><para
->This check box toggles the display of to-dos in the day, week
-and month views in the agenda (day and week) and month views. If you have
-too many to-dos which have due date associated, you may want to turn them
-off to avoid clutter.</para
-></listitem>
-</varlistentry-->
 </variablelist>
 
 <para
@@ -3964,7 +3299,7 @@ off to avoid clutter.</para
 >Marque esta opção para iniciar o editor de eventos automaticamente, quando você selecionar um intervalo de horas na visão diária e semanal. Para selecionar um intervalo de horas, arraste o mouse da hora de início até a hora de fim do evento que você está planejando.</para
 ></listitem>
 </varlistentry>
-
+<!--FIXME Icons to use dropdown box missing-->
 <varlistentry>
 <term
 ><guilabel
@@ -3973,24 +3308,23 @@ off to avoid clutter.</para
 <listitem>
 <para
 >Selecione a opção <guilabel
->Categoria dentro, calendário na borda</guilabel
-> se você gostaria de desenhar itens de calendário na sua cor de categoria associada, com as bordas do item desenhadas na cor do calendário.</para>
+>Etiqueta dentro, calendário na borda</guilabel
+> se você gostaria de desenhar itens de calendário na sua cor de etiqueta associada, com as bordas do item desenhadas na cor do calendário.</para>
 
 <para
 >Selecione a opção <guilabel
->Calendário dentro, categoria na borda</guilabel
-> se você gostaria de desenhar itens de calendário na sua cor do calendário associado, com as bordas do item desenhadas na cor da categoria.</para>
+>Calendário dentro, etiqueta na borda</guilabel
+> se você gostaria de desenhar itens de calendário na sua cor do calendário associado, com as bordas do item desenhadas na cor da etiqueta.</para>
 
 <para
 >Selecione a opção <guilabel
->Somente categoria</guilabel
-> se você gostaria de desenhar os itens de calendário (interior e bordas) na cor da sua categoria associada.</para>
+>Somente etiqueta</guilabel
+> se você gostaria de desenhar os itens de calendário (interior e bordas) na cor da sua etiqueta associada.</para>
 
 <para
 >Selecione a opção <guilabel
 >Somente calendário</guilabel
-> se você gostaria de desenhar os itens de calendário (interior e bordas) na cor do seu calendário.</para
->  
+> se você gostaria de desenhar os itens de calendário (interior e bordas) na cor do seu calendário.</para>
 
 <para
 >Por favor, use a página de configuração de <link linkend="config-main-colors"
@@ -4038,19 +3372,7 @@ off to avoid clutter.</para
 >:</para>
 
 <variablelist>
-<!--varlistentry>
-<term
-><guilabel
->Enable scrollbars in month view items</guilabel
-></term>
-<listitem
-><para
->This check box toggles the cell scrollbars in the
-month view on and off. Even if you check this box, the scrollbars will
-only appear when needed.</para
-></listitem>
-</varlistentry>
-not in 4.6.0 -->
+
 <varlistentry>
 <term
 ><guilabel
@@ -4061,17 +3383,7 @@ not in 4.6.0 -->
 >Use as primeiras quatro opções para exibir a hora, ícones (lembrete, recorrência, &etc;), tarefas ou diários na vista de Mês.</para
 ></listitem>
 </varlistentry>
-
-<varlistentry>
-<term
-><guilabel
->A visão mensal usa toda a janela</guilabel
-></term>
-<listitem
-><para
->Se ativar esta opção, a vista de Mês será mostrada em toda a janela do &korganizer; em vez de compartilhar a janela com a barra lateral (o Navegador de datas, as tarefas e os recursos de calendários).</para
-></listitem>
-</varlistentry>
+<!--FIXME Icons to use dropdown box missing-->
 
 <varlistentry>
 <term
@@ -4099,45 +3411,6 @@ not in 4.6.0 -->
 ></listitem>
 </varlistentry>
 
-<!--not in 4.6.0-->
-<!--varlistentry>
-<term
-><guilabel
->Month view uses category colors</guilabel
-></term>
-<listitem
-><para
->With &korganizer;, you can
-<link linkend="config-main-colors"
->assign a different color to each
-category</link
->. If you check this box, the event or to-do color in the month
-view will reflect the category color, instead of using no color, or only the
-resource color. Note that if you do not assign different category colors,
-there is little sense in using this feature, as &korganizer; default
-configuration is to use the same color for all categories.</para
-></listitem>
-</varlistentry-->
-<!--not in 4.6.0-->
-<!--varlistentry>
-<term
-><guilabel
->Month view uses resource colors</guilabel
-></term>
-<listitem
-><para
->With &korganizer;, you can
-<link linkend="config-main-colors"
->assign a different color to each
-resource</link
->. If you check this box, the event or to-do color in the month
-view will reflect the resource color, instead of using no color, or only the
-category color. Note that if you do not assign different resource colors, there
-is little sense in using this feature, as &korganizer; default configuration
-is to use the same color for all resources.</para
-></listitem>
-</varlistentry-->
-
 </variablelist>
 </sect3>
 
@@ -4159,18 +3432,7 @@ is to use the same color for all resources.</para
 ></term>
 <listitem
 ><para
->Se você ativar esta opção, todas as tarefas completadas serão agrupadas no fundo da Lista de tarefas.</para
-></listitem>
-</varlistentry>
-
-<varlistentry>
-<term
-><guilabel
->A visão da lista de tarefas usa toda a janela</guilabel
-></term>
-<listitem
-><para
->Ative esta opção para usar o &korganizer; em tela inteira ao exibir a vista da Lista de tarefas. Você ganhará algum espaço para a vista da Lista de tarefas, mas outros elementos, como o Navegador de datas, os detalhes das tarefas e a lista dos calendários, não serão exibidos. </para
+>Se você ativar esta opção, todas as tarefas concluídas serão agrupadas no fundo da Lista de tarefas.</para
 ></listitem>
 </varlistentry>
 
@@ -4181,7 +3443,7 @@ is to use the same color for all resources.</para
 ></term>
 <listitem
 ><para
->Se assinalar esta opção, o &korganizer; irá adicionar automaticamente um item de diário para todas tarefas completadas.</para
+>Se assinalar esta opção, o &korganizer; irá adicionar automaticamente um item de diário para todas tarefas concluídas.</para
 ></listitem>
 </varlistentry>
 
@@ -4198,7 +3460,7 @@ is to use the same color for all resources.</para
 >Cores</title>
 
 <para
->Selecione a cor usada para as férias, para o realce e para as categorias de eventos específicas. Você poderá escolher uma cor diferente para cada categoria. Claro que o uso de muitas cores poderá tornar a exibição confusa por isso use o bom-senso. A utilização de cores depende também das <link linkend="config-main-views"
+>Selecione a cor usada para as férias, para o realce e para as etiqueta de eventos específicas. Você poderá escolher uma cor diferente para cada etiqueta. Claro que o uso de muitas cores poderá tornar a exibição confusa por isso use o bom-senso. A utilização de cores depende também das <link linkend="config-main-views"
 >preferências de visualização.</link
 ></para>
 
@@ -4216,39 +3478,6 @@ is to use the same color for all resources.</para
 >, o que lhe permite selecionar a cor do feriado. Essa cor será usada para o nome do feriado, na vista de Mês, e na data do feriado no Navegador de datas.</para
 ></listitem>
 </varlistentry>
-<!--not in 4.6.0-->
-<!--varlistentry>
-<term
-><guilabel
->Highlight color</guilabel
-></term>
-<listitem
-><para
->This button opens the <guilabel
->Select Color</guilabel
-> dialog,
-allowing you to select the highlight color. The highlight color will be used for
-marking the currently selected area in your agenda and in the date
-navigator.</para
-></listitem>
-</varlistentry-->
-<!--not in 4.6.0-->
-<!--varlistentry>
-<term
-><guilabel
->Default event color</guilabel
-></term>
-<listitem
-><para
->This button opens the <guilabel
->Select Color</guilabel
-> dialog,
-allowing you to select the default event color. The default event color will
-be used for events categories in your agenda and (depending on the settings) in
-the month view. Note that you can specify a separate color for each event
-category below.</para
-></listitem>
-</varlistentry-->
 
 <varlistentry>
 <term
@@ -4331,15 +3560,15 @@ category below.</para
 <varlistentry>
 <term
 ><guilabel
->Categorias</guilabel
+>Etiquetas</guilabel
 ></term>
 <listitem
 ><para
->Este grupo permite-lhe atribuir uma cor a cada categoria. Selecione uma categoria na lista e pressione o botão para abrir a janela para <guilabel
->Selecionar uma Cor</guilabel
->, que lhe permite selecionar a cor dessa categoria. <link linkend="config-main-views"
+>Este grupo permite-lhe atribuir uma cor a cada etiqueta. Selecione uma etiqueta na lista e pressione o botão para abrir a janela para <guilabel
+>Selecionar uma cor</guilabel
+>, que lhe permite selecionar a cor dessa etiqueta. <link linkend="config-main-views"
 >Dependendo da configuração da visualização</link
->, esta cor será usada para marcar os eventos e as tarefas que pertencem a esta categoria nas suas vistas de Agenda e de Mês.</para
+>, esta cor será usada para marcar os eventos e as tarefas que levam esta etiqueta nas suas vistas de Agenda e de Mês.</para
 ></listitem>
 </varlistentry>
 
@@ -4461,94 +3690,9 @@ category below.</para
 ></listitem>
 </varlistentry>
 
-<varlistentry>
-<term
-><guilabel
->Endereços de email adicionais</guilabel
-></term>
-<listitem
-><para
->Isto diz ao &korganizer; quais os outros endereços de e-mail que você possui. Você poderá adicionar, editar e remover os endereços de e-mail adicionais. Estes endereços de e-mail são os que você possui além do que está definido nas <link linkend="config-main-general-personal"
->preferências pessoais</link
->. Se receber um convite para um evento através de outro endereço de e-mail, você precisa indicar aqui este endereço para que o &korganizer; possa reconhecê-lo como seu e adicionar o item ao seu calendário. </para
-></listitem>
-</varlistentry>
-
 </variablelist>
 
 </sect2>
-
-<!-- 
-<sect2 id="config-main-groupautomation">
-<title
->Group Automation</title>
-
-<variablelist>
-
-<varlistentry>
-<term
-><guilabel
->Auto Send Refresh</guilabel
-></term>
-<listitem
-><para
->to be written...
-</para
-></listitem>
-</varlistentry>
-
-<varlistentry>
-<term
-><guilabel
->Auto Insert IMIP Replies</guilabel
-></term>
-<listitem
-><para
->to be written...
-</para
-></listitem>
-</varlistentry>
-
-<varlistentry>
-<term
-><guilabel
->Auto Insert IMIP Requests</guilabel
-></term>
-<listitem
-><para
->to be written...
-</para
-></listitem>
-</varlistentry>
-
-<varlistentry>
-<term
-><guilabel
->Auto Send FreeBusy information</guilabel
-></term>
-<listitem
-><para
->to be written...
-</para
-></listitem>
-</varlistentry>
-
-<varlistentry>
-<term
-><guilabel
->AutoSave FreeBusy Replies</guilabel
-></term>
-<listitem
-><para
->to be written...
-</para
-></listitem>
-</varlistentry>
-
-</variablelist>
-
-</sect2>
--->
 
 <sect2 id="config-main-free-busy">
 <title
@@ -4775,231 +3919,25 @@ category below.</para
 >Para mais informações sobre como configurar plugins, por favor consulte <xref linkend="plugins-chapter"/></para>
 
 </sect2>
-<!--
+
 <sect2 id="config-custom-pages">
 <title
->Custom Pages</title>
+>Páginas de personalização</title>
 
 <para
->This page allows you to add your own &GUI; Elements to store your own 
-values into &korganizer;.</para>
+>Esta página te permite adicionar seus próprios elementos da &GUI; para armazenar seus próprios valores no  &korganizer;.</para>
 <para
->Create your elements as described in <guilabel
->How does this work?</guilabel
+>Criar seus elementos como descito em <guilabel
+>Como isto funciona?</guilabel
 ></para>
 
 </sect2>
--->
 </sect1>
-
-<sect1 id="config-toolbars"
-><!--updated to 4.7-->
-<title
->Configuração das Barras de Ferramentas</title>
-
-<para
->O &korganizer; tem quatro barras de ferramentas: uma barra principal (com os botões <guiicon
->Novo evento</guiicon
->, <guiicon
->Nova tarefa</guiicon
->, <guiicon
->Novo diário</guiicon
->, <guiicon
->Voltar</guiicon
->, <guiicon
->Avançar</guiicon
->, <guiicon
->Hoje</guiicon
->, <guiicon
->Dia</guiicon
-> e <guiicon
->Semana</guiicon
->), uma barra de <guiicon
->Vistas</guiicon
-> (para optar entre a <guiicon
->Agenda</guiicon
->, <guiicon
->Vista Mensal</guiicon
->, <guiicon
->Linha Temporal</guiicon
->, <guiicon
->Lista de tarefas</guiicon
-> e <guiicon
->Diário</guiicon
->), uma barra de Escalonamento (com as opções <guiicon
->Publicar a Informação do Item</guiicon
->, <guiicon
->Enviar os Convites aos Participantes</guiicon
->, <guiicon
->Enviar a Atualização do Estado</guiicon
-> e o <guiicon
->Livro de Endereços</guiicon
->) e uma barra de Filtros, que lhe permite selecionar e gerenciar um filtro para as áreas do &korganizer;. Você poderá personalizar estas barras de ferramentas de várias formas: poderá adicionar ícones novos, mudar o tamanho dos ícones, mudar a posição das barras de ferramentas e adicionar uma descrição de texto aos ícones.</para>
-
-<para
->Há duas maneiras de modificar a posição das barras de ferramentas: <itemizedlist>
-<listitem
-><para
->Você poderá clicar com o botão direito do mouse na barra de ferramentas para mostrar o <guimenu
->Menu da Barra de Ferramentas</guimenu
->. O tamanho dos ícones e a posição de texto poderá também ser ajustado neste menu. </para
-></listitem>
-<listitem
-><para
->Se a barra de ferramentas estiver destravada, você poderá simplesmente arrastar a barra de ferramentas pela pega do lado esquerdo de cada barra de ferramentas e soltá-la onde desejar. Veja também outras <link linkend="other-features-drag-and-drop"
->operações de arrastar e soltar</link
-> simples. </para
-></listitem
-></itemizedlist>
-</para>
-
-<para
->As barras de ferramentas são configuradas em dois lugares: <itemizedlist>
-<listitem
-><para
->O conjunto de ferramentas é configurado na opção de menu <menuchoice
-><guimenu
-> Configurações</guimenu
-><guimenuitem
->Configurar as Barras de Ferramentas...</guimenuitem
-></menuchoice
->. </para
-></listitem>
-<listitem
-><para
->O estilo gráfico (tamanho dos ícones, posição do texto, &etc;) é ajustado através do <guimenu
->Menu de Contexto da Barra de Ferramentas</guimenu
->. Clique com o botão direito do mouse para acessar a este menu. </para
-></listitem>
-</itemizedlist>
-</para>
-
-<sect2 id="config-toolbars-settings-config">
-<title
->Janela para Configurar as Barras de Ferramentas</title>
-
-<para
->Esta janela permite que você personalize o conjunto de ferramentas de uma barra de ferramentas. Ela pode ser acessada selecionando o item de menu <menuchoice
-><guimenu
->Configurações</guimenu
-><guimenuitem
->Configurar as Barras de Ferramentas...</guimenuitem
-></menuchoice
->.</para>
-
-<sect3 id="config-toolbars-choose-toolbar">
-<title
->Escolhendo a barra de ferramentas</title>
-
-<para
->Primeiro, você precisa escolher a barra de ferramentas que deseja modificar. Todas as ações aplicam-se à barra de ferramentas que está selecionada na lista que se encontra no topo da janela.</para>
-</sect3>
-
-<sect3 id="config-toolbars-available-actions">
-<title
->Ações Disponíveis</title>
-
-<para
->Existem dois retângulos abaixo do título da barra de ferramentas: as <guilabel
->Ações disponíveis</guilabel
-> e as <guilabel
->Ações atuais</guilabel
->. Usando as setas para a esquerda e para a direita (localizadas entre os retângulos), o usuário poderá adicionar ícones do grupo de <guilabel
->Ações disponíveis</guilabel
-> para o grupo de <guilabel
->Ações atuais</guilabel
-> e vice-versa. A barra de ferramentas irá possuir todos os ícones que se encontrem no retângulo <guilabel
->Ações atuais</guilabel
->. As setas para cima e para baixo permitem-lhe mudar a posição de um ícone.</para>
-
-<para
->Os botões abaixo da lista <guilabel
->Ações atuais</guilabel
-> permitem que você mude o ícone e o texto de um botão. Na janela <guilabel
->Mudar texto</guilabel
-> você pode selecionar <guilabel
->Ocultar texto quando a barra de ferramentas mostra o texto ao lado dos ícones</guilabel
-> para economizar espaço neste modo de modo que todos os botões fiquem visíveis.</para>
-
-<tip
-><para
->Lembre-se de que menos ícones poderá ser melhor, uma vez que a tela fica menos confusa e, por isso, irá parecer mais limpa. Por exemplo, se você cortar e colar sempre com os atalhos de teclado, não precisa dos ícones para <guiicon
->Recortar</guiicon
->, <guiicon
->Copiar</guiicon
-> e <guiicon
->Colar</guiicon
->.</para
-></tip>
-
-</sect3>
-</sect2>
-
-<sect2 id="config-toolbars-context-menu">
-<title
->Menu de Contexto da Barra de Ferramentas</title>
-
-<para
->Este menu permite-lhe alterar a aparência das barras de ferramentas. Clique com o botão <mousebutton
->direito</mousebutton
-> na barra de ferramentas para acessar a este menu.</para>
-
-<sect3 id="config-toolbars-text-display">
-<title
->Mostrar texto</title>
-
-<para
->Se o texto é mostrado ao lado dos ícones, selecione se o texto do botão é exibido.</para>
-</sect3>
-
-<sect3 id="config-toolbars-text-position">
-<title
->Posição do Texto</title>
-
-<para
->Inicialmente, os ícones possuem um texto associado ao lado. Você poderá preferir ter o texto abaixo de cada ícone ou. Poderá também optar por ter texto simples sem quaisquer ícones.</para>
-</sect3>
-
-<sect3 id="config-toolbars-icon-size">
-<title
->Tamanho do Ícone</title>
-
-<para
->O usuário poderá alterar o tamanho dos ícones. Faça a sua escolha entre ícones pequenos, médios, grandes e gigantes.</para>
-</sect3>
-
-<sect3 id="config-toolbars-lock-toolbar-position">
-<title
->Posição do bloqueio da barra de ferramentas</title>
-
-<para
->Se desbloquear uma barra de ferramentas, você poderá movê-la para o topo, para a base, esquerda ou direita ou mesmo para fora da janela principal do &korganizer;.</para>
-</sect3>
-
-</sect2>
-</sect1>
-
-<!--
-<sect1 id="reference-windows-outgoing">
-<title
->Outgoing Messages</title>
-<para
->to be written</para>
-</sect1>
-
-<sect1 id="reference-windows-incoming">
-<title
->Incoming Messages</title>
-<para
->to be written</para>
-</sect1>
--->
-
 
 </chapter>
 
 <chapter id="plugins-chapter"
-><!--updated to 4.7-->
+><!--updated to 5.4.40-->
 
 <title
 >Plugins</title>
@@ -5051,21 +3989,7 @@ values into &korganizer;.</para>
 <title
 >Plugin de calendário judaico</title>
 <para
->Este plugin fornece as datas do calendário Judeu, além das datas do calendário Gregoriano. Na janela de configuração do plugin, você poderá escolher se deseja mostrar os feriados de Israel, o 'prasha' semanal, o dia de Omer e/ou Chol HaMoed. </para>
-</sect2>
-
-<sect2 id="journal-print-plugin">
-<title
->Estilo de Impressão de Diário</title>
-<para
->Este plugin permite-lhe imprimir o seu diário. </para>
-</sect2>
-
-<sect2 id="yearly-print-plugin">
-<title
->Estilo de impressão Anual</title>
-<para
->Este plugin permite-lhe imprimir um calendário anual. </para>
+>Este plugin fornece as datas do calendário Judeu, além das datas do calendário Gregoriano. Na janela de configuração do plugin, você poderá escolher se deseja mostrar os feriados de Israel, o Prasha semanal, o dia de Omer e/ou Chol HaMoed. </para>
 </sect2>
 
 </sect1>
@@ -5077,7 +4001,7 @@ values into &korganizer;.</para>
 >Referência</title>
 
 <sect1 id="reference-menus"
-><!--updated to 4.6/7, missing Timespent, Send as iCalendar, Show Menubar-->
+><!--updated to 5.4.40, Send as iCalendar-->
 <title
 >Menus</title>
 
@@ -5102,78 +4026,6 @@ values into &korganizer;.</para>
 > fornece o acesso às funções que envolvem o todo o calendário.</para>
 
 <variablelist>
-
-<!-- not in 4.6 lueck 
-<varlistentry id="menu-file-new">
-<term
-><menuchoice>
-<shortcut
-><keycombo action="simul"
->&Ctrl;<keycap
->N</keycap
-></keycombo>
-</shortcut
-><guimenu
->File</guimenu
-> <guimenuitem
->New</guimenuitem
-></menuchoice>
-<inlinemediaobject
-><imageobject
-><imagedata fileref="i_file_new.png"
- format="PNG"/></imageobject
-></inlinemediaobject
-></term>
-<listitem>
-
-<para
-><action
->Opens another main window.</action
-> This window initially
-contains unnamed calendar. You can use the new window to:</para>
-
-<itemizedlist>
-<listitem
-><para
->open the same calendar twice (select the
-<menuchoice
-><guimenu
->File</guimenu
-><guimenuitem
->Open</guimenuitem
-></menuchoice>
-menu item and choose the same calendar as in the original window)</para
-></listitem>
-<listitem
-><para
->have two different calendars open at the same time (select the
-<menuchoice
-><guimenu
->File</guimenu
-><guimenuitem
->Open</guimenuitem
-></menuchoice>
-menu item and choose a different calendar). </para
-></listitem>
-<listitem
-><para
->create a new calendar (select the
-<menuchoice
-><guimenu
->File</guimenu
-><guimenuitem
->Save</guimenuitem
-></menuchoice>
-menu item to give your new calendar a filename and to save it).</para
-></listitem>
-</itemizedlist>
-
-<para
->For more information about this action, please refer to
-<xref linkend="managing-import-export"/>.</para>
-
-</listitem>
-</varlistentry-->
 
 <varlistentry id="menu-file-open">
 <term
@@ -5202,143 +4054,8 @@ menu item to give your new calendar a filename and to save it).</para
 > Se você tiver feito alterações ao calendário atual, será dada a opção de as salvar antes de carregar um calendário novo.</para>
 <para
 >Para mais informações sobre isto, veja por favor em <xref linkend="managing-import-export"/>.</para>
-</listitem
-> 
-</varlistentry>
-
-<!-- not in 4.6 lueck 
-<varlistentry id="menu-file-open-recent">
-<term
-><menuchoice>
-<guimenu
->File</guimenu>
-<guimenuitem
->Open Recent</guimenuitem>
-</menuchoice
-><inlinemediaobject
-><imageobject
-><imagedata fileref="i_file_open.png"
- format="PNG"/></imageobject
-></inlinemediaobject
-></term>
-<listitem
-><para
-><guimenuitem
->Open Recent</guimenuitem
-> <action
->provides
-a list of recently opened calendar files for quick access, allowing you to
-bypass the file dialog entirely.</action
-></para>
-<para
->For more information about this action, please refer to
-<xref linkend="managing-import-export"/>.</para>
 </listitem>
 </varlistentry>
-
-<varlistentry id="menu-file-save">
-<term
-><menuchoice>
-<shortcut>
-<keycombo action="simul"
->&Ctrl;<keycap
->S</keycap
-></keycombo>
-</shortcut>
-<guimenu>
-File</guimenu
-> <guimenuitem
->Save</guimenuitem
-></menuchoice>
-<inlinemediaobject
-><imageobject
-><imagedata fileref="i_file_save.png"
- format="PNG"/></imageobject
-></inlinemediaobject
-></term>
-<listitem
-><para
->When you choose <guimenuitem
->Save</guimenuitem
-> or click the
-<guiicon
->Save</guiicon
-> icon, &korganizer; <action
->saves the calendar to
-disk, and makes sure all changes that you made will be
-remembered</action
->.  If the calendar has no name, Save will behave like
-<guilabel
->Save As</guilabel
->.</para>
-<para
->For more information about this action, please refer to
-<xref linkend="managing-import-export"/>.</para>
-</listitem
-> 
-</varlistentry>
-
-<varlistentry id="menu-file-save-as">
-<term
-><menuchoice>
-<guimenu
->File</guimenu
-><guimenuitem
->Save As...</guimenuitem>
-</menuchoice>
-<inlinemediaobject
-><imageobject
-><imagedata fileref="i_file_saveas.png"
- format="PNG"/></imageobject
-></inlinemediaobject
-></term>
-<listitem
-><para
-><guilabel
->Save As</guilabel
-> <action
->displays a file dialog in
-which you may choose a different name for your calendar than the one currently
-assigned to it</action
->. This is useful if you have made changes to a calendar
-that you want to save, but also want to keep separate from your
-<quote
->regular</quote
-> calendar.</para>
-<para
->For more information about this action, please refer to
-<xref linkend="managing-import-export"/>.</para>
-</listitem>
-</varlistentry>
-
-<varlistentry id="menu-file-revert">
-<term
-><menuchoice>
-<guimenu>
-File</guimenu
-> <guimenuitem
->Revert</guimenuitem
-></menuchoice>
-<inlinemediaobject
-><imageobject
-><imagedata fileref="i_file_revert.png"
- format="PNG"/></imageobject
-></inlinemediaobject
-></term>
-<listitem
-><para
->When you choose <guimenuitem
->Revert</guimenuitem
->, &korganizer;
-<action
->loads the last saved version of the calendar, discarding all the
-changes made after the last save</action
->.</para>
-<para
->For more information about this action, please refer to
-<xref linkend="managing-import-export"/>.</para>
-</listitem>
-</varlistentry-->
 
 <varlistentry id="menu-file-print">
 <term
@@ -5376,7 +4093,7 @@ changes made after the last save</action
 <term
 ><inlinemediaobject
 ><imageobject>
-<imagedata fileref="document-print-preview.png" 
+<imagedata fileref="document-print-preview.png"
 format="PNG"/></imageobject
 ></inlinemediaobject
 ><menuchoice
@@ -5394,8 +4111,7 @@ format="PNG"/></imageobject
 >Antevisão da Impressão</guiicon
 >, <action
 >a janela do calendário atual será impressa na sua tela, em vez de na sua impressora</action
->. Use esta funcionalidade para verificar se a impressão ficará correta antes de começar a imprimir.</para
-> 
+>. Use esta funcionalidade para verificar se a impressão ficará correta antes de começar a imprimir.</para>
 <para
 >Você poderá indicar o intervalo de datas a ser impresso (quer manualmente quer com o widget de Calendário) e o tipo de vista (Dia, Semana, Mês ou Por-Fazer).</para>
 </listitem>
@@ -5422,32 +4138,6 @@ format="PNG"/></imageobject
 </listitem>
 </varlistentry>
 
-<varlistentry id="menu-file-import-ical">
-<term
-><menuchoice
-><guimenu
->Arquivo</guimenu
-> <guisubmenu
->Importar</guisubmenu
-> <guimenuitem
->Importar da ferramenta ICal do UNIX</guimenuitem
-> </menuchoice
-></term>
-<listitem
-><para
->Se você tiver usado o <application
->ical</application
->, um programa conhecido mas antigo de calendários para o &UNIX;, você poderá desejar <action
->importar os seus eventos e tarefas</action
-> diretamente para o &korganizer;. Esta ação irá ler o arquivo <filename
->.calendar</filename
-> da sua pasta pessoal e mesclar os itens que contém no seu calendário atual. Se ocorrerem alguns erros ou fenômenos suspeitos durante o processo, o usuário será notificado através de mensagens.</para>
-<para
->Para mais informações sobre esta ação, veja por favor em <xref linkend="managing-import"/>.</para>
-</listitem
-> 
-</varlistentry>
-
 <varlistentry id="menu-file-import-ghns">
 <term
 ><menuchoice
@@ -5456,38 +4146,17 @@ format="PNG"/></imageobject
 > <guisubmenu
 >Importar</guisubmenu
 > <guimenuitem
->Obter novidades...</guimenuitem
+>Baixar novidades...</guimenuitem
 > </menuchoice
 ></term>
 <listitem
 ><para
 >Esta ação irá abrir a janela para <guilabel
->Obter Coisas Novas</guilabel
+>Baixar novidades</guilabel
 >, que oferece uma lista de calendários para baixar. Estes eventos poderão ser adicionados ao seu calendário.</para>
 <para
 >Para mais informações sobre esta ação, por favor veja em <xref linkend="managing-get-hot-new-stuff"/>.</para>
 </listitem>
-</varlistentry>
-
-<varlistentry id="menu-file-export-as-web">
-<term
-><menuchoice
-><guimenu
->Arquivo</guimenu
-> <guimenuitem
->Exportar</guimenuitem
-> <guimenuitem
->Exportar Página Web...</guimenuitem
-> </menuchoice
-></term>
-<listitem
-><para
-><action
->Você poderá exportar o seu calendário ou uma parte dele como um arquivo &HTML;, o que é adequado para o publicar na World Wide Web.</action
-></para>
-<para
->Para mais informações sobre esta ação, veja por favor em <xref linkend="managing-export"/>.</para
-></listitem>
 </varlistentry>
 
 <varlistentry id="menu-file-export-icalendar">
@@ -5504,25 +4173,6 @@ format="PNG"/></imageobject
 <listitem
 ><para
 >Esta ação irá exportar todos os seus eventos, tarefas e de diários ativos (independentemente do recurso a que pertencem) como um arquivo iCalendar novo.</para>
-<para
->Para mais informações sobre esta ação, veja por favor em <xref linkend="managing-export"/>.</para>
-</listitem>
-</varlistentry>
-
-<varlistentry id="menu-file-export-vcalendar">
-<term
-><menuchoice
-><guimenu
->Arquivo</guimenu
-> <guisubmenu
->Exportar</guisubmenu
-> <guimenuitem
->como vCalendar</guimenuitem
-> </menuchoice
-></term>
-<listitem
-><para
->Esta ação irá exportar todos os seus eventos, tarefas e de diários ativos (independentemente do recurso a que pertencem) como um arquivo vCalendar novo.</para>
 <para
 >Para mais informações sobre esta ação, veja por favor em <xref linkend="managing-export"/>.</para>
 </listitem>
@@ -5559,7 +4209,7 @@ special events, &etc;</para>
 ><guimenu
 >Arquivo</guimenu
 > <guimenuitem
->Arquivar os Itens Antigos...</guimenuitem
+>Arquivar incidência antigas...</guimenuitem
 > </menuchoice
 ></term>
 <listitem
@@ -5572,103 +4222,22 @@ special events, &etc;</para>
 </listitem>
 </varlistentry>
 
-<!--not in 4.6.0
-<varlistentry id="menu-file-make-active">
-<term
-><menuchoice>
-<guimenu
->File</guimenu>
-<guimenuitem
->Make active</guimenuitem>
-</menuchoice
-></term>
-<listitem
-><para
->If you opened more than one calendar, only one calendar can
-display reminders; only one calendar can be active. Click the <guilabel
->Make
-active</guilabel
-> menu item to <action
->activate the current calendar
-window.</action
-></para>
-<para
->The active calendar is loaded as default calendar when starting
-&korganizer;. In other words, if you work with more than one calendar, you
-should make your main calendar active.</para
-></listitem>
-</varlistentry>
-
-<varlistentry id="menu-file-addressbook">
-<term
-><menuchoice>
-<guimenu
-><inlinemediaobject
-><imageobject
-><imagedata fileref="i_file_addressbook.png"
- format="PNG"/></imageobject
-></inlinemediaobject
->File</guimenu>
-<guimenuitem
->Addressbook</guimenuitem>
-</menuchoice
-></term>
-<listitem
-><para
->This action will open the address book browser in a new
-window.</para
-></listitem>
-</varlistentry>
--->
-
 <varlistentry id="menu-file-purge">
 <term
 ><menuchoice
 ><guimenu
 >Arquivos</guimenu
 > <guimenuitem
->Limpar as tarefas completadas</guimenuitem
+>Limpar as tarefas concluídas</guimenuitem
 > </menuchoice
 ></term>
 <listitem
 ><para
->Esta ação irá remover todos os tarefas completados do seu calendário ativo.</para>
+>Esta ação irá remover todos os tarefas concluídos do seu calendário ativo.</para>
 <para
 >Para mais informações sobre esta ação, veja por favor em <xref linkend="managing-purge-archive"/>.</para>
 </listitem
 ></varlistentry>
-
-<!--not in 4.6.0
-<varlistentry id="menu-file-close">
-<term
-><menuchoice>
-<shortcut>
-<keycombo action="simul"
->&Ctrl;<keycap
->W</keycap
-></keycombo>
-</shortcut>
-<guimenu
-><inlinemediaobject
-><imageobject
-><imagedata fileref="i_file_close.png"
- format="PNG"/></imageobject
-></inlinemediaobject>
-File</guimenu
-> <guimenuitem
->Close</guimenuitem
-></menuchoice
-></term>
-<listitem
-><para
-><action
->Closes the current calendar. The window itself will
-remain open, and may be reused to open another
-calendar.</action
-></para
-></listitem>
-</varlistentry>
--->
 
 <varlistentry id="menu-file-quit">
 <term
@@ -5934,7 +4503,7 @@ calendar.</action
 > ou clique no ícone <guiicon
 >Procurar</guiicon
 > para <action
->encontrar eventos, tarefas e de diário de acordo com o seu título, descrição e/ou categorias</action
+>encontrar eventos, tarefas e de diário de acordo com o seu resumo, descrição e/ou etiquetas</action
 >.</para>
 <para
 >Para mais informações sobre esta ação, por favor veja em <xref linkend="search-view"/>.</para>
@@ -6113,14 +4682,12 @@ format="PNG"/></imageobject
 </listitem>
 </varlistentry>
 
-<!-- missing Timespent-->
-
 <varlistentry id="menu-view-journal">
 <term
 ><inlinemediaobject
 ><imageobject
 ><imagedata
- fileref="view-calendar-journal.png"
+ fileref="journal-new.png"
 format="PNG"/></imageobject
 ></inlinemediaobject
 ><menuchoice
@@ -6305,7 +4872,7 @@ format="PNG"/></imageobject
 <term
 ><inlinemediaobject
 ><imageobject
-><imagedata fileref="view-calendar-day.png"
+><imagedata fileref="go-jump-today.png"
  format="PNG"/></imageobject
 ></inlinemediaobject
 ><menuchoice
@@ -6349,8 +4916,7 @@ format="PNG"/></imageobject
 </listitem>
 </varlistentry>
 
-<varlistentry id="menu-view-workweek"
->	
+<varlistentry id="menu-view-workweek">
 <term
 ><inlinemediaobject
 ><imageobject
@@ -6444,7 +5010,7 @@ format="PNG"/></imageobject
 <term
 ><inlinemediaobject
 ><imageobject
-><imagedata fileref="view-task-add.png"
+><imagedata fileref="view-task.png"
 format="PNG"/></imageobject
 ></inlinemediaobject
 ><menuchoice
@@ -6493,6 +5059,11 @@ format="PNG"/></imageobject
 
 <varlistentry id="menu-actions-new-journal">
 <term
+><inlinemediaobject
+><imageobject
+><imagedata fileref="journal-new.png"
+format="PNG"/></imageobject
+></inlinemediaobject
 ><menuchoice
 ><guimenu
 >Ações</guimenu
@@ -6552,9 +5123,7 @@ format="PNG"/></imageobject
 <term
 ><menuchoice
 ><shortcut
-> <keysym
->Del</keysym
-> </shortcut
+> &Del; </shortcut
 > <guimenu
 >Ações</guimenu
 > <guimenuitem
@@ -6756,67 +5325,16 @@ format="PNG"/></imageobject
 
 </sect2>
 
-<sect2 id="reference-menus-settings">
+<sect2 id="reference-menus-settings-help">
 <title
->Configurações</title>
+>Configurações e Ajuda</title>
+
+<para
+>Além dos menus comuns do &kde;, descritos no capítulo <ulink url="help:/fundamentals/menus.html#menus"
+>Menu</ulink
+>, presente na documentação dos Fundamentos do &kde;, este aplicativo possui os menus Configurações e Ajuda específicos: </para>
 
 <variablelist>
-<!--varlistentry id="menu-settings-show-menubar">
-<term
-><menuchoice>
-<shortcut>
-<keycombo action="simul"
->&Ctrl;<keycap
->V</keycap
-></keycombo>
-</shortcut>
-<guimenu
->Settings</guimenu>
-<guisubmenu
->Show Menubar</guisubmenu>
-</menuchoice
-></term>
-<listitem
-><para
-><action
->.</action
-></para
-></listitem>
-</varlistentry-->
-
-<varlistentry id="menu-settings-show-toolbar">
-<term
-><menuchoice
-><guimenu
->Configurações</guimenu
-> <guisubmenu
->Barras de ferramentas visíveis</guisubmenu
-> </menuchoice
-></term>
-<listitem
-><para
-><action
->Clique nos itens deste submenu para mostrar ou ocultar as barras de ferramentas do &korganizer;.</action
-></para
-></listitem>
-</varlistentry>
-
-<varlistentry id="menu-settings-show-statusbar">
-<term
-><menuchoice
-><guimenu
->Configurações</guimenu
-> <guimenuitem
->Mostrar barra de estado</guimenuitem
-> </menuchoice
-></term>
-<listitem
-><para
-><action
->Selecione este item do menu para ativar ou desativar a visualização da barra de estado</action
->.</para
-></listitem>
-</varlistentry>
 
 <varlistentry id="menu-settings-sidebar">
 <term
@@ -6836,30 +5354,7 @@ format="PNG"/></imageobject
 ></para
 ></listitem>
 </varlistentry>
-<!-- not in 4.6.0
-<varlistentry id="menu-settings-show-resource-buttons">
-<term
-><menuchoice>
-<guimenu
->Settings</guimenu>
-<guisubmenu
->Sidebar</guisubmenu>
-<guimenuitem
->Show Resource Buttons</guimenuitem>
-</menuchoice
-></term>
-<listitem
-><para
-><action
->Click this menu item toggle the display of the
-<link linkend="managing-resources"
->resource view sidebar</link
-> buttons on and
-off</action
->.</para
-></listitem>
-</varlistentry>
--->
+
 <varlistentry id="menu-settings-configure-date-time">
 <term
 ><menuchoice
@@ -6902,671 +5397,41 @@ off</action
 ><guimenu
 >Configurações</guimenu
 > <guimenuitem
->Gerenciar as Categorias...</guimenuitem
+>Gerenciar etiquetas...</guimenuitem
 > </menuchoice
 ></term>
 <listitem
 ><para
 ><action
 >Selecione este item do menu para abrir a janela para <guilabel
->Editar as Categorias</guilabel
+>Gerenciar etiquetas</guilabel
 ></action
->. Usando esta janela, você poderá criar, remover e editar categorias para os itens do calendário. As categorias são usadas para organizar os seus eventos e itens em grupos relacionados.</para
-></listitem>
-</varlistentry>
-
-<varlistentry id="menu-settings-configure-shortcuts">
-<term
-><menuchoice
-><guimenu
->Configurações</guimenu
-> <guimenuitem
->Configurar atalhos...</guimenuitem
-> </menuchoice
-></term>
-<listitem
-><para
-><action
->Selecione este item do menu para abrir a janela para <guilabel
->Configurar os Atalhos</guilabel
-></action
->. Esta janela permite-lhe atribuir atalhos às ações do &korganizer;, assim como configurar os atalhos já atribuídos.</para
-></listitem>
-</varlistentry>
-
-<varlistentry id="menu-settings-configure-toolbars">
-<term
-><menuchoice
-><guimenu
->Configurações</guimenu
-> <guimenuitem
->Configurar barras de ferramentas...</guimenuitem
-> </menuchoice
-></term>
-<listitem
-><para
-><action
->Selecione este item do menu para abrir a janela para <link linkend="config-toolbars"
-><guilabel
->Configurar as Barras de Ferramentas</guilabel
-></link
-></action
->. Esta janela permite-lhe adicionar, remover e modificar a ordem das ações nas barras de ferramentas do &korganizer;.</para
-></listitem>
-</varlistentry>
-
-<varlistentry id="menu-settings-configure-korganizer">
-<term
-><menuchoice
-><guimenu
->Configurações</guimenu
-> <guimenuitem
->Configurar o &korganizer;...</guimenuitem
-></menuchoice>
-</term>
-<listitem
-><para
->Selecione <menuchoice
-> <guimenu
->Configurações</guimenu
-> <guimenuitem
->Configurar o &korganizer;</guimenuitem
-> </menuchoice
-> para mostrar a <link linkend="config-main"
->janela de Configuração</link
->.</para>
-<para
->Para mais informações sobre esta ação, veja por favor em <xref linkend="config-main"/>.</para
+>. Usando esta janela, você poderá criar, remover e editar etiquetas para os itens do calendário. As etiquetas são usadas para organizar os seus eventos e itens em grupos relacionados.</para
 ></listitem>
 </varlistentry>
 
 </variablelist>
 
 </sect2>
-
-<sect2 id="reference-menus-help">
-<title
->Ajuda</title>
-&help.menu.documentation; </sect2>
-
-</sect1>
-
-<sect1 id="reference-hotkey"
-> <!--updated to 4.6, five shortcuts missing-->
-<title
->Atalhos de Teclado</title>
-
-<para
->Esta é uma referência de todos os atalhos de teclado e sua descrição correspondente no manual.</para>
-
-<!--Ctrl+M, Del, Shift+F1, Ctrl+Z, Ctrl+Shift+Z missing -->
-<sect2 id="reference-hotkey-sortalpha">
-<title
->Atalhos Ordenados Alfabeticamente</title
-> 
-
-<informaltable>
-<tgroup cols="2">
-<colspec colname="hotkey"/>
-<colspec colname="desc"/>
-<thead>
-<row>
-  <entry
->Tecla</entry>
-  <entry
->Descrição</entry>
-</row>
-</thead>
-<tbody>
-<row>
-  <entry
-><keycombo action="simul"
->&Ctrl; <keycap
->C</keycap
-> </keycombo
-></entry>
-  <entry
->Equivalente ao <link linkend="menu-edit-copy"
-><menuchoice
-><guimenu
->Editar</guimenu
-> <guimenuitem
->Copiar</guimenuitem
-></menuchoice
-></link
->; copia os dados selecionados para a área de transferência.</entry>
-</row>
-<row>
-  <entry
-><keycombo action="simul"
->&Ctrl; <keycap
->F</keycap
-></keycombo
-></entry>
-  <entry
->Equivalente ao <link linkend="menu-edit-find"
-><menuchoice
-><guimenu
->Editar</guimenu
-> <guimenuitem
->Procurar</guimenuitem
-></menuchoice
-></link
->; procura pelos dados no calendário atual.</entry>
-</row>
-<row>
-  <entry
-><keycap
->F1</keycap
-></entry>
-  <entry
->Equivalente ao <menuchoice
-><guimenu
->Ajuda</guimenu
-> <guimenuitem
->Conteúdo</guimenuitem
-></menuchoice
->; invoca a ajuda do &korganizer;.</entry>
-</row>
-<!--row>
-  <entry
-><keycombo action="simul"
->&Ctrl; <keycap
->N</keycap
-></keycombo
-></entry>
-  <entry
-><link linkend="menu-file-new"
-><menuchoice
-><guimenu
->File</guimenu>
-  <guimenuitem
->New</guimenuitem
-></menuchoice
-></link
-> equivalent; create and open
-  new calendar.</entry>
-</row-->
-<row>
-  <entry
-><keycombo action="simul"
->&Ctrl; <keycap
->O</keycap
-></keycombo
-></entry>
-  <entry
->Equivalente ao <link linkend="menu-file-open"
-><menuchoice
-><guimenu
->Arquivo</guimenu
-> <guimenuitem
->Abrir</guimenuitem
-></menuchoice
-></link
->; abre um arquivo de calendário na janela atual.</entry>
-</row>
-<row>
-  <entry
-><keycombo action="simul"
->&Ctrl; <keycap
->P</keycap
-></keycombo
-></entry>
-  <entry
->Equivalente ao <link linkend="menu-file-print"
-><menuchoice
-><guimenu
->Arquivo</guimenu
-> <guimenuitem
->Imprimir</guimenuitem
-></menuchoice
-></link
->; imprime o calendário atual.</entry>
-</row>
-<row>
-  <entry
-><keycombo action="simul"
->&Ctrl; <keycap
->Q</keycap
-></keycombo
-></entry>
-  <entry
->Equivalente ao <link linkend="menu-file-quit"
-><menuchoice
-><guimenu
->Arquivo</guimenu
-> <guimenuitem
->Sair</guimenuitem
-></menuchoice
-></link
->; sai do calendário atual. </entry>
-</row>
-<!--row>
-  <entry
-><keycombo action="simul"
->&Ctrl; <keycap
->S</keycap
-></keycombo
-></entry>
-  <entry
-><link linkend="menu-file-save"
-><menuchoice
-><guimenu
->File</guimenu>
-  <guimenuitem
->Save</guimenuitem
-></menuchoice
-></link
-> equivalent; save current
-  calendar.</entry>
-</row-->
-<row>
-  <entry
-><keycombo action="simul"
->&Ctrl; <keycap
->V</keycap
-></keycombo
-></entry>
-  <entry
->Equivalente ao <link linkend="menu-edit-paste"
-><menuchoice
-><guimenu
->Editar</guimenu
-> <guimenuitem
->Colar</guimenuitem
-></menuchoice
-></link
->; cola os dados a partir da área de transferência.</entry>
-</row>
-<!--<row>
-  <entry
-><keycombo action="simul"
->&Ctrl; <keycap
->W</keycap
-></keycombo
-></entry>
-  <entry
-><link linkend="menu-file-close"
-><menuchoice
-><guimenu
->File</guimenu>
-  <guimenuitem
->Close</guimenuitem
-></menuchoice
-></link
-> equivalent; close current
-  calendar.</entry>
-</row
->-->
-<row>
-  <entry
-><keycombo action="simul"
->&Ctrl; <keycap
->X</keycap
-></keycombo
-></entry>
-  <entry
->Equivalente ao <link linkend="menu-edit-cut"
-><menuchoice
-><guimenu
->Editar</guimenu
-> <guimenuitem
->Recortar</guimenuitem
-></menuchoice
-></link
->; recorta os dados selecionados para a área de transferência.</entry>
-</row>
-</tbody>
-</tgroup>
-</informaltable>
-
-</sect2>
-
-<sect2 id="reference-hotkey-sortbyfunc">
-<title
->Atalhos Ordenados por Função</title
-> 
-
-<informaltable>
-<tgroup cols="2">
-<colspec colname="desc"/>
-<colspec colname="hotkey"/>
-<thead>
-<row>
-  <entry
->Descrição</entry>
-  <entry
->Tecla</entry>
-</row>
-</thead>
-<tbody>
-<!--<row>
-  <entry
-><emphasis
->Close:</emphasis
-> <link linkend="menu-file-close"
-> <menuchoice>
-  <guimenu
->File</guimenu
-> <guimenuitem
->Close</guimenuitem
-></menuchoice
-></link>
-  equivalent; close current calendar.</entry>
-  <entry
-><keycombo action="simul"
->&Ctrl; <keycap
->W</keycap
-></keycombo
-></entry>
-</row
->-->
-<row>
-  <entry
-><emphasis
->Copiar:</emphasis
-> Equivalente ao <link linkend="menu-edit-copy"
-> <menuchoice
-> <guimenu
->Editar</guimenu
-> <guimenuitem
->Copiar</guimenuitem
-></menuchoice
-> </link
->; copia os dados selecionados para a área de transferência.</entry>
-  <entry
-><keycombo action="simul"
->&Ctrl; <keycap
->C</keycap
-></keycombo
-></entry>
-</row>
-<row>
-  <entry
-><emphasis
->Recortar:</emphasis
-> Equivalente ao <link linkend="menu-edit-cut"
-> <menuchoice
-> <guimenu
->Editar</guimenu
-> <guimenuitem
->Recortar</guimenuitem
-></menuchoice
-> </link
->; recorta a seleção para a área de transferência.</entry>
-  <entry
-><keycombo action="simul"
->&Ctrl;<keycap
->X</keycap
-></keycombo
-></entry>
-</row>
-<row>
-  <entry
-><emphasis
->Procurar:</emphasis
-> Equivalente ao <link linkend="menu-edit-find"
-> <menuchoice
-> <guimenu
->Editar</guimenu
-> <guimenuitem
->Procurar</guimenuitem
-></menuchoice
-></link
->; procura os dados no calendário atual.</entry>
-  <entry
-><keycombo action="simul"
->&Ctrl;<keycap
->F</keycap
-></keycombo
-></entry>
-</row>
-<row>
-  <entry
-><emphasis
->Ajuda:</emphasis
-> Equivalente ao <menuchoice
-> <guimenu
->Ajuda</guimenu
-> <guimenuitem
->Conteúdo</guimenuitem
-></menuchoice
->; invoca o manual do &korganizer;.</entry>
-  <entry
-><keycap
->F1</keycap
-></entry>
-</row>
-<!--row>
-  <entry
-><emphasis
->New:</emphasis
-> <link linkend="menu-file-new"
-> <menuchoice>
-  <guimenu
->File</guimenu
-> <guimenuitem
->New</guimenuitem
-></menuchoice
-></link>
-  equivalent; create and open new calendar.</entry>
-  <entry
-><keycombo action="simul"
->&Ctrl;<keycap
->N</keycap
-></keycombo
-></entry>
-</row-->
-<row>
-  <entry
-><emphasis
->Abrir:</emphasis
-> Equivalente ao <link linkend="menu-file-open"
-> <menuchoice
-> <guimenu
->Arquivo</guimenu
-> <guimenuitem
->Abrir</guimenuitem
-></menuchoice
-></link
->; abre um arquivo de calendário na janela atual.</entry>
-  <entry
-><keycombo action="simul"
->&Ctrl;<keycap
->O</keycap
-></keycombo
-></entry>
-</row>
-<row>
-  <entry
-><emphasis
->Colar:</emphasis
-> Equivalente ao <link linkend="menu-edit-paste"
-> <menuchoice
-> <guimenu
->Editar</guimenu
-> <guimenuitem
->Colar</guimenuitem
-></menuchoice
-></link
->; cola os dados que se encontram na área de transferência.</entry>
-  <entry
-><keycombo action="simul"
->&Ctrl;<keycap
->V</keycap
-></keycombo
-></entry>
-</row>
-<row>
-  <entry
-><emphasis
->Imprimir:</emphasis
-> Equivalente ao <link linkend="menu-file-print"
-> <menuchoice
-> <guimenu
->Arquivo</guimenu
-> <guimenuitem
->Imprimir</guimenuitem
-> </menuchoice
-> </link
->; imprime o calendário atual.</entry>
-  <entry
-><keycombo action="simul"
->&Ctrl;<keycap
->P</keycap
-></keycombo
-></entry>
-</row>
-<row>
-  <entry
-><emphasis
->Sair:</emphasis
-> Equivalente ao <link linkend="menu-file-quit"
-> <menuchoice
-> <guimenu
->Arquivo</guimenu
-> <guimenuitem
->Sair</guimenuitem
-></menuchoice
-></link
->; sai do calendário atual. </entry>
-  <entry
-><keycombo action="simul"
->&Ctrl;<keycap
->Q</keycap
-></keycombo
-></entry>
-</row>
-<!--row>
-  <entry
-><emphasis
->Save:</emphasis
-> <link linkend="menu-file-save"
-> <menuchoice>
-  <guimenu
->File</guimenu
-> <guimenuitem
->Save</guimenuitem
-></menuchoice
-></link>
-  equivalent; save current calendar.</entry>
-  <entry
-><keycombo action="simul"
->&Ctrl;<keycap
->S</keycap
-></keycombo
-></entry>
-</row-->
-</tbody>
-</tgroup>
-</informaltable>
-
-</sect2
-> 
-
-</sect1>
-
-<sect1 id="reference-action-buttons"
-> <!--has to be updated to 4.5-->
-<title
->Botões de ação</title>
-
-<para
->Muitas janela contém os botões <guibutton
->Padrão</guibutton
->, <guibutton
->Remover</guibutton
->, <guibutton
->OK</guibutton
->, <guibutton
->Aplicar</guibutton
-> e <guibutton
->Cancelar</guibutton
->. Com estes botões, você pode decidir se os dados que inseriu na janela serão gravados ou descartados.</para
->  
-
-<variablelist>
-<varlistentry>
-<term
-><guibutton
->Padrão</guibutton
-></term>
-<listitem
-><para
->Se clicar no botão <guibutton
->Padrão</guibutton
->, as alterações que tiver feito serão descartadas, voltando todas as opções ao seu valor padrão.</para
-></listitem>
-</varlistentry>
-<varlistentry>
-<term
-><guibutton
->Excluir</guibutton
-></term>
-<listitem
-><para
->Clique no botão <guibutton
->Excluir</guibutton
-> para remover por completo o evento ou tarefa que esteja editando no calendário.</para
-></listitem>
-</varlistentry>
-<varlistentry>
-<term
-><guibutton
->OK</guibutton
-></term>
-<listitem
-><para
->Quando clicar no botão <guibutton
->OK</guibutton
->, as suas alterações serão salvas e o &korganizer; fechará a janela.</para
-></listitem>
-</varlistentry>
-<varlistentry>
-<term
-><guibutton
->Aplicar</guibutton
-></term>
-<listitem
-><para
->Quando você clicar no botão <guibutton
->Aplicar</guibutton
->, as suas alterações serão recordadas e a janela continuará aberta para que você continue a edição.</para
-></listitem>
-</varlistentry>
-<varlistentry>
-<term
-><guibutton
->Cancelar</guibutton
-></term>
-<listitem
-><para
->Se você clicar no botão <guibutton
->Cancelar</guibutton
->, a sua edição será descartada e o &korganizer; fechará a janela.</para
-></listitem
-> 
-</varlistentry>
-</variablelist>
 
 </sect1>
 
 </chapter>
 
 <chapter id="other-features"
->  <!--updated to 4.7-->
+>  <!--updated to 5.4.40-->
 <title
 >Outros Recursos</title>
 
 <para
->Neste capítulo, você irá aprender outros recursos úteis do &korganizer;: os parâmetros que poderá passar na linha de comando (ao invocar o &korganizer; num console), que truques poderá fazer com o seu mouse e qual a interação entre o &korganizer; e o &konqueror;.</para>
+>Neste capítulo, você irá aprender outros recursos úteis do &korganizer;: quais truques poderá fazer com o seu mouse.</para>
 
 <sect1 id="other-features-commandline-options">
 <title
 >Linha de comando</title>
 
 <para
->Um programa bom para acessar um calendário do &kde; a partir da linha de comandos é o konsolekalendar, o qual vem incluído no pacote 'kdepim' em conjunto com o &korganizer;.</para>
+>Um programa bom para acessar um calendário do &kde; a partir da linha de comandos é o konsolekalendar.</para>
 
 </sect1>
 
@@ -7581,8 +5446,7 @@ off</action
 <listitem
 ><para
 >Qualquer evento poderá ser redimensionado com o seu mouse. Basta mover o cursor do mouse para perto da borda superior ou inferior do evento e arrastar essa borda para cima ou para baixo. Desta forma, você poderá modificar visualmente a hora de início e de fim do seu evento. Isto funciona nas visões do Dia, da Semana e da Semana de trabalho.</para
-></listitem
-> 
+></listitem>
 <listitem
 ><para
 >Você poderá mudar a hora de qualquer evento com o seu mouse. Mova o cursor do mouse para cima do evento e arraste-o para a nova hora. Isto também funciona para as visões da Semana e da Semana de trabalho.</para
@@ -7603,19 +5467,6 @@ off</action
 
 </sect1>
 
-<sect1 id="other-features-konqueror-interaction">
-<title
->Interação com o &konqueror;</title>
-
-<para
->O &konqueror; reconhece o formato vCalendar usado pelo &korganizer;. Se você usar o &konqueror; para navegar pelo seu calendário, ele será apresentado <emphasis
->dentro</emphasis
-> do próprio &konqueror; como um objeto ativo. Você poderá então efetuar a maioria das ações com o seu calendário dentro do próprio &konqueror;; não terá que iniciar o &korganizer;. Em termos técnicos, isto é descrito como <quote
->embutir o vCalendar como uma KPart dentro do &konqueror;</quote
->.</para>
-
-</sect1>
-
 </chapter>
 
 <chapter id="faq">
@@ -7624,20 +5475,6 @@ off</action
 > <!-- link to userbase faq? -->
 
 <qandaset id="faq-questions">
-<qandaentry>
-<question>
-<para
->Posso importar os meus dados antigos do <application
->Ical</application
->?</para>
-</question>
-<answer
-><para
->Claro! Siga as instruções na seção sobre <link linkend="menu-file-import-ical"
->Importar do Ical do &UNIX;</link
->.</para>
-</answer>
-</qandaentry>
 <qandaentry>
 <question>
 <para
@@ -7711,31 +5548,7 @@ off</action
 > e André Marcelo Alvarenga <email
 >alvarenga@kde.org</email
 ></para
-> 
-&underFDL; &underGPL; </chapter>
-
-<appendix id="installation">
-<title
->Instalação</title>
-
-<sect1 id="getting-korg">
-<title
->Como Obter o &korganizer;</title>
-&install.intro.documentation; <para
->Clique no menu <guisubmenu
->Aplicativos</guisubmenu
-> do menu <guimenu
->principal</guimenu
-> para ver se o &korganizer; já está instalado no seu sistema. Se o &korganizer; não estiver lá, ou não está instalado ou o administrador do seu sistema mudou-o para outro local qualquer.</para>
-
-</sect1>
-
-<sect1 id="Compilation">
-<title
->Compilação e instalação</title>
-&install.compile.documentation; </sect1>
-
-</appendix>
+> &underFDL; &underGPL; </chapter>
 
 <glossary id="glossary">
 <title
