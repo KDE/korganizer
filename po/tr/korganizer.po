@@ -20,7 +20,7 @@ msgstr ""
 "Project-Id-Version: kdepim-kde4\n"
 "Report-Msgid-Bugs-To: https://bugs.kde.org\n"
 "POT-Creation-Date: 2023-02-15 02:49+0000\n"
-"PO-Revision-Date: 2023-02-08 19:57+0300\n"
+"PO-Revision-Date: 2023-02-26 14:28+0300\n"
 "Last-Translator: Emir SARI <emir_sari@icloud.com>\n"
 "Language-Team: Turkish <kde-l10n-tr@kde.org>\n"
 "Language: tr\n"
@@ -2111,7 +2111,7 @@ msgstr "<qt>'<b>%1</b> ögesini gerçekten silmek istiyor musunuz?</qt>"
 #: kcmdesignerfields.cpp:180
 #, kde-format
 msgid "Import Page"
-msgstr "Sayfayı İçe Aktar"
+msgstr "Sayfa İçe Aktar"
 
 #: kcmdesignerfields.cpp:180
 #, kde-format
@@ -2161,9 +2161,9 @@ msgstr ""
 "li><li>Forma araç takımlarınızı ekleyin</li><li>Dosyayı, Qt Designer'ın "
 "önerdiği dizine kaydedin</li><li>Qt Designer'ı kapatın</li></ol><p>Sabit "
 "diskinizin herhangi bir yerinde mevcut olabilecek bir Designer dosyanız (*."
-"ui) varsa basitçe '<i>Sayfayı İçe Aktar</i>'ı seçin</p><p><b>Önemli:</b> "
-"Forma eklediğiniz her girdi araç takımı '<i>X_</i>' ile başlamalı; yani eğer "
-"'<i>X-Foo</i>' adındaki özel girdinize ait bir araç takımı istiyorsanız araç "
+"ui) varsa basitçe '<i>Sayfa İçe Aktar</i>'ı seçin</p><p><b>Önemli:</b> Forma "
+"eklediğiniz her girdi araç takımı '<i>X_</i>' ile başlamalı; yani eğer '<i>X-"
+"Foo</i>' adındaki özel girdinize ait bir araç takımı istiyorsanız araç "
 "takımının <i>name</i> özelliğini '<i>X_Foo</i>' olarak ayarlayın.</"
 "p><p><b>Önemli:</b> Araç takımı, özel alanları %2 adındaki bir uygulama ile "
 "düzenleyecek. Uygulama adının düzenlenebilirliğini değiştirmek için, araç "
@@ -2182,7 +2182,7 @@ msgstr "Sayfayı Sil"
 #: kcmdesignerfields.cpp:345
 #, kde-format
 msgid "Import Page..."
-msgstr "Sayfayı İçe Aktar..."
+msgstr "Sayfa İçe Aktar..."
 
 #: kcmdesignerfields.cpp:347
 #, kde-format
