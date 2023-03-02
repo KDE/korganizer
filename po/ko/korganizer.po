@@ -2,14 +2,14 @@
 # Copyright (C) 2008 This_file_is_part_of_KDE
 # This file is distributed under the same license as the kdepim package.
 # Myong-sung Kim <xfuncrushx@gmail.com>, 2008.
-# Shinjo Park <kde@peremen.name>, 2009, 2015, 2019, 2020, 2021, 2022.
+# Shinjo Park <kde@peremen.name>, 2009, 2015, 2019, 2020, 2021, 2022, 2023.
 #
 msgid ""
 msgstr ""
 "Project-Id-Version: Korganizer\n"
 "Report-Msgid-Bugs-To: https://bugs.kde.org\n"
 "POT-Creation-Date: 2023-02-15 02:49+0000\n"
-"PO-Revision-Date: 2022-05-06 00:16+0200\n"
+"PO-Revision-Date: 2023-03-01 01:54+0100\n"
 "Last-Translator: Shinjo Park <kde@peremen.name>\n"
 "Language-Team: Korean <kde-kr@kde.org>\n"
 "Language: ko\n"
@@ -1396,18 +1396,14 @@ msgid "Copying Failed"
 msgstr "복사 실패"
 
 #: calendarview.cpp:1505
-#, fuzzy, kde-format
-#| msgctxt "@info"
-#| msgid ""
-#| "Unable to remove the item \"%1\" from %2. However, a copy of this item "
-#| "has been put into %3."
+#, kde-format
 msgctxt "@info"
 msgid ""
 "Unable to remove the item \"%1\" from the original calendar. However, a copy "
 "of this item has been put into %2"
 msgstr ""
-"%2에서 \"%1\" 항목을 삭제할 수 없습니다. 그 대신 항목의 복사본을 %3에 저장했"
-"습니다."
+"원래 캘린더에서 \"%1\" 항목을 삭제할 수 없습니다. 그 대신 항목의 복사본을 %2"
+"에 저장했습니다"
 
 #: calendarview.cpp:1509 calendarview.cpp:1525
 #, kde-format
