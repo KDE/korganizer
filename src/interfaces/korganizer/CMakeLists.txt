@@ -13,7 +13,7 @@ generate_export_header(korganizer_interfaces BASE_NAME korganizer_interfaces)
 target_link_libraries(korganizer_interfaces
   KPim${KF_MAJOR_VERSION}::CalendarSupport
   KPim${KF_MAJOR_VERSION}::EventViews
-  KF5::AkonadiCore
+  KPim${KF_MAJOR_VERSION}::AkonadiCore
   Qt::PrintSupport
   KF${KF_MAJOR_VERSION}::Parts
 )

@@ -8,7 +8,7 @@ add_executable(testkodaymatrix testkodaymatrix.cpp testkodaymatrix.h ../kodaymat
 add_test(NAME testkodaymatrix COMMAND testkodaymatrix)
 ecm_mark_as_test(testkodaymatrix)
 target_link_libraries(testkodaymatrix
-  KF5::AkonadiCore
+  KPim${KF_MAJOR_VERSION}::AkonadiCore
   KF${KF_MAJOR_VERSION}::CalendarCore
   KPim${KF_MAJOR_VERSION}::CalendarSupport
   korganizer_core
@@ -20,7 +20,7 @@ add_executable(testkodaymatrix_us testkodaymatrix_us.cpp testkodaymatrix_us.h ..
 add_test(NAME testkodaymatrix_us COMMAND testkodaymatrix_us)
 ecm_mark_as_test(testkodaymatrix_us)
 target_link_libraries(testkodaymatrix_us
-  KF5::AkonadiCore
+  KPim${KF_MAJOR_VERSION}::AkonadiCore
   KF${KF_MAJOR_VERSION}::CalendarCore
   KPim${KF_MAJOR_VERSION}::CalendarSupport
   korganizer_core
@@ -33,8 +33,8 @@ set(koeventpopupmenutest_LIBS Qt::Test
   Qt::Gui
   Qt::Core
   KPim${KF_MAJOR_VERSION}::Mime
-  KF5::AkonadiWidgets
-  KF5::AkonadiCore
+  KPim${KF_MAJOR_VERSION}::AkonadiWidgets
+  KPim${KF_MAJOR_VERSION}::AkonadiCore
   KPim${KF_MAJOR_VERSION}::AkonadiCalendar
   KPim${KF_MAJOR_VERSION}::AkonadiNotes
   KF${KF_MAJOR_VERSION}::CalendarCore

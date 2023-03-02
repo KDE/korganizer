@@ -77,7 +77,7 @@ target_link_libraries(korganizer_kcm_static
     KF${KF_MAJOR_VERSION}::Holidays
     KPim${KF_MAJOR_VERSION}::MailTransport
     KF5::PimCommon
-    KF5::AkonadiWidgets
+    KPim${KF_MAJOR_VERSION}::AkonadiWidgets
     KF${KF_MAJOR_VERSION}::WindowSystem
     KF${KF_MAJOR_VERSION}::KIOWidgets
     )
@@ -132,7 +132,7 @@ target_link_libraries(korganizerpart
     korganizer_core
     korganizer_interfaces
     korganizerprivate
-    KF5::AkonadiCore
+    KPim${KF_MAJOR_VERSION}::AkonadiCore
     KF${KF_MAJOR_VERSION}::CalendarCore
     KPim${KF_MAJOR_VERSION}::CalendarUtils
     KF${KF_MAJOR_VERSION}::KIOWidgets
@@ -331,7 +331,7 @@ target_link_libraries(korganizerprivate
     KPim${KF_MAJOR_VERSION}::IncidenceEditor
     korganizer_core
     korganizer_interfaces
-    KF5::AkonadiCore
+    KPim${KF_MAJOR_VERSION}::AkonadiCore
     KPim${KF_MAJOR_VERSION}::AkonadiCalendar
     KPim${KF_MAJOR_VERSION}::AkonadiNotes
     KF${KF_MAJOR_VERSION}::Contacts
@@ -343,7 +343,7 @@ target_link_libraries(korganizerprivate
     KF${KF_MAJOR_VERSION}::KCMUtils
     KF${KF_MAJOR_VERSION}::NewStuffWidgets
     KPim${KF_MAJOR_VERSION}::Ldap
-    KF5::AkonadiWidgets
+    KPim${KF_MAJOR_VERSION}::AkonadiWidgets
     KF${KF_MAJOR_VERSION}::IconThemes
     KF${KF_MAJOR_VERSION}::WindowSystem
     KF${KF_MAJOR_VERSION}::Notifications
