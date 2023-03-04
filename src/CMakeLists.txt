@@ -17,8 +17,8 @@ add_subdirectory(views/collectionview)
 ########### next target ###############
 
 set(korganizer_userfeedback_LIB)
-if(TARGET KUserFeedbackWidgets)
-    set(korganizer_userfeedback_LIB KUserFeedbackWidgets)
+if(TARGET KUserFeedbackWidgets${KUSERFEEDBACK_SUFFIX})
+    set(korganizer_userfeedback_LIB KUserFeedbackWidgets${KUSERFEEDBACK_SUFFIX})
 endif()
 
 set(korganizer_common_SRCS)
@@ -184,7 +184,7 @@ install(TARGETS
 
 ########### next target ###############
 set(korganizerprivate_userfeedback_SRCS)
-if(TARGET KUserFeedbackWidgets)
+if(TARGET KUserFeedbackWidgets${KUSERFEEDBACK_SUFFIX})
     set(korganizerprivate_userfeedback_SRCS ${korganizerprivate_userfeedback_SRCS}
         userfeedback/userfeedbackmanager.cpp
         userfeedback/korganizeruserfeedbackprovider.cpp
