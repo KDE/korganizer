@@ -8,10 +8,14 @@
 
 #include "korg_uniqueapp.h"
 #include "../../../src/korganizer_options.h"
+#include "config-korganizer.h"
 
 #include <KontactInterface/Core>
 
+#if KDEPIM_HAVE_X11
 #include <KStartupInfo>
+#endif
+
 #include <KWindowSystem>
 
 #include <QDBusConnection>
@@ -42,7 +46,9 @@ int KOrganizerUniqueAppHandler::activate(const QStringList &args, const QString 
     if (mWidget) {
         mWidget->show();
         KWindowSystem::activateWindow(mWidget->windowHandle());
+#if KDEPIM_HAVE_X11
         KStartupInfo::appStarted();
+#endif
     }
 
     // Then ensure the part appears in kontact.
