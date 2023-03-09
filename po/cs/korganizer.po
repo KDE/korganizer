@@ -9,7 +9,7 @@ msgid ""
 msgstr ""
 "Project-Id-Version: korganizer\n"
 "Report-Msgid-Bugs-To: https://bugs.kde.org\n"
-"POT-Creation-Date: 2023-02-15 01:00+0000\n"
+"POT-Creation-Date: 2023-03-09 00:47+0000\n"
 "PO-Revision-Date: 2023-02-22 14:27+0100\n"
 "Last-Translator: Vit Pelcak <vit@pelcak.org>\n"
 "Language-Team: Czech <kde-i18n-doc@kde.org>\n"
@@ -95,7 +95,7 @@ msgstr "Preston Brown"
 msgid "Original Author"
 msgstr "Původní autor"
 
-#: aboutdata.cpp:34 prefs/koprefsuserfeedback.cpp:34
+#: aboutdata.cpp:34 prefs/koprefsuserfeedback.cpp:36
 #, kde-format
 msgid "Laurent Montel"
 msgstr "Laurent Montel"
@@ -3240,18 +3240,18 @@ msgstr ""
 msgid "Current Maintainer"
 msgstr "Současný správce"
 
-#: korganizer.cpp:273
+#: korganizer.cpp:279
 #, kde-format
 msgid "New Calendar"
 msgstr "Nový kalendář"
 
-#: korganizer.cpp:277
+#: korganizer.cpp:283
 #, kde-format
 msgctxt "the calendar is read-only"
 msgid "read-only"
 msgstr "pouze ke čtení"
 
-#: korganizer.cpp:280
+#: korganizer.cpp:286
 #, kde-format
 msgid "Calendar"
 msgstr "Kalendář"
@@ -3640,17 +3640,17 @@ msgctxt "@title:group"
 msgid "Other Options"
 msgstr "Ostatní volby"
 
-#: prefs/koprefsuserfeedback.cpp:29
+#: prefs/koprefsuserfeedback.cpp:31
 #, kde-format
 msgid "KCMUserFeedBack"
 msgstr ""
 
-#: prefs/koprefsuserfeedback.cpp:31
+#: prefs/koprefsuserfeedback.cpp:33
 #, kde-format
 msgid "KOrganizer Configure User FeedBack"
 msgstr ""
 
-#: prefs/koprefsuserfeedback.cpp:33
+#: prefs/koprefsuserfeedback.cpp:35
 #, kde-format
 msgid "(c) 2020-2021 Laurent Montel"
 msgstr "(c) 2020-2021 Laurent Montel"

@@ -6,7 +6,7 @@ msgid ""
 msgstr ""
 "Project-Id-Version: korganizer\n"
 "Report-Msgid-Bugs-To: https://bugs.kde.org\n"
-"POT-Creation-Date: 2023-02-15 01:00+0000\n"
+"POT-Creation-Date: 2023-03-09 00:47+0000\n"
 "PO-Revision-Date: 2007-09-17 14:45+0545\n"
 "Last-Translator: Nabin Gautam <nabin@mpp.org.np>\n"
 "Language-Team: Nepali <info@mpp.org.np>\n"
@@ -95,7 +95,7 @@ msgstr "प्रेस्टोन ब्राउन"
 msgid "Original Author"
 msgstr "मौलिक लेखक"
 
-#: aboutdata.cpp:34 prefs/koprefsuserfeedback.cpp:34
+#: aboutdata.cpp:34 prefs/koprefsuserfeedback.cpp:36
 #, kde-format
 msgid "Laurent Montel"
 msgstr ""
@@ -3487,19 +3487,19 @@ msgstr ""
 msgid "Current Maintainer"
 msgstr "हालको मर्मतकर्ता"
 
-#: korganizer.cpp:273
+#: korganizer.cpp:279
 #, kde-format
 msgid "New Calendar"
 msgstr "नयाँ क्यालेन्डर"
 
-#: korganizer.cpp:277
+#: korganizer.cpp:283
 #, fuzzy, kde-format
 #| msgid "read-only"
 msgctxt "the calendar is read-only"
 msgid "read-only"
 msgstr "पढ्ने मात्र"
 
-#: korganizer.cpp:280
+#: korganizer.cpp:286
 #, kde-format
 msgid "Calendar"
 msgstr "क्यालेन्डर"
@@ -3951,18 +3951,18 @@ msgctxt "@title:group"
 msgid "Other Options"
 msgstr "अन्य विकल्प"
 
-#: prefs/koprefsuserfeedback.cpp:29
+#: prefs/koprefsuserfeedback.cpp:31
 #, kde-format
 msgid "KCMUserFeedBack"
 msgstr ""
 
-#: prefs/koprefsuserfeedback.cpp:31
+#: prefs/koprefsuserfeedback.cpp:33
 #, fuzzy, kde-format
 #| msgid "KOrganizer Confirmation"
 msgid "KOrganizer Configure User FeedBack"
 msgstr "केडीई आयोजक यकीन"
 
-#: prefs/koprefsuserfeedback.cpp:33
+#: prefs/koprefsuserfeedback.cpp:35
 #, kde-format
 msgid "(c) 2020-2021 Laurent Montel"
 msgstr ""

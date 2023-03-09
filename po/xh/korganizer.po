@@ -15,7 +15,7 @@ msgid ""
 msgstr ""
 "Project-Id-Version: korganizer\n"
 "Report-Msgid-Bugs-To: https://bugs.kde.org\n"
-"POT-Creation-Date: 2023-02-15 01:00+0000\n"
+"POT-Creation-Date: 2023-03-09 00:47+0000\n"
 "PO-Revision-Date: 2002-11-09 12:52+0200\n"
 "Last-Translator: Thelma Lungcuzo <thelma@translate.org.za>\n"
 "Language-Team: Xhosa <xhosa@translate.org.za>\n"
@@ -96,7 +96,7 @@ msgstr ""
 msgid "Original Author"
 msgstr "Ubhali Woqobo"
 
-#: aboutdata.cpp:34 prefs/koprefsuserfeedback.cpp:34
+#: aboutdata.cpp:34 prefs/koprefsuserfeedback.cpp:36
 #, kde-format
 msgid "Laurent Montel"
 msgstr ""
@@ -3259,19 +3259,19 @@ msgstr ""
 msgid "Current Maintainer"
 msgstr "Umlondolozi Wangoku"
 
-#: korganizer.cpp:273
+#: korganizer.cpp:279
 #, kde-format
 msgid "New Calendar"
 msgstr "Icalendar Entsha"
 
-#: korganizer.cpp:277
+#: korganizer.cpp:283
 #, fuzzy, kde-format
 #| msgid "read-only"
 msgctxt "the calendar is read-only"
 msgid "read-only"
 msgstr "funda-kuphela"
 
-#: korganizer.cpp:280
+#: korganizer.cpp:286
 #, fuzzy, kde-format
 msgid "Calendar"
 msgstr "i Khalenda"
@@ -3669,18 +3669,18 @@ msgctxt "@title:group"
 msgid "Other Options"
 msgstr "Iinkcazelo"
 
-#: prefs/koprefsuserfeedback.cpp:29
+#: prefs/koprefsuserfeedback.cpp:31
 #, kde-format
 msgid "KCMUserFeedBack"
 msgstr ""
 
-#: prefs/koprefsuserfeedback.cpp:31
+#: prefs/koprefsuserfeedback.cpp:33
 #, fuzzy, kde-format
 #| msgid "KOrganizer Confirmation"
 msgid "KOrganizer Configure User FeedBack"
 msgstr "Uqinisekiso lwe KOrganizer"
 
-#: prefs/koprefsuserfeedback.cpp:33
+#: prefs/koprefsuserfeedback.cpp:35
 #, kde-format
 msgid "(c) 2020-2021 Laurent Montel"
 msgstr ""
