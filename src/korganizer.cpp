@@ -23,7 +23,7 @@
 #include <Libkdepim/ProgressStatusBarWidget>
 #include <Libkdepim/StatusbarProgressWidget>
 
-#include "korganizer_debug.h"
+// #include "korganizer_debug.h"
 #include <KActionCollection>
 #include <KSharedConfig>
 #include <KShortcutsDialog>
