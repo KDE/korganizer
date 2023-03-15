@@ -52,7 +52,7 @@ target_link_libraries(korganizer
     korganizerprivate
     korganizer_interfaces
     korganizer_core
-    KF5::PimCommonAkonadi
+    KPim${KF_MAJOR_VERSION}::PimCommonAkonadi
     KF${KF_MAJOR_VERSION}::Crash
     KF${KF_MAJOR_VERSION}::WindowSystem
     ${korganizer_userfeedback_LIB}
@@ -76,7 +76,7 @@ target_link_libraries(korganizer_kcm_static
     KF${KF_MAJOR_VERSION}::CalendarCore
     KF${KF_MAJOR_VERSION}::Holidays
     KPim${KF_MAJOR_VERSION}::MailTransport
-    KF5::PimCommon
+    KPim${KF_MAJOR_VERSION}::PimCommon
     KPim${KF_MAJOR_VERSION}::AkonadiWidgets
     KF${KF_MAJOR_VERSION}::WindowSystem
     KF${KF_MAJOR_VERSION}::KIOWidgets
@@ -324,7 +324,7 @@ generate_export_header(korganizerprivate BASE_NAME korganizerprivate)
 
 target_link_libraries(korganizerprivate
     PUBLIC
-    KF5::PimCommonAkonadi
+    KPim${KF_MAJOR_VERSION}::PimCommonAkonadi
     PRIVATE
     KPim${KF_MAJOR_VERSION}::CalendarSupport
     KPim${KF_MAJOR_VERSION}::EventViews
