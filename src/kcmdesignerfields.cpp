@@ -123,15 +123,6 @@ private:
 KCMDesignerFields::KCMDesignerFields(QWidget *parent, const QVariantList &args)
     : KCModule(parent, args)
 {
-    auto about = new KAboutData(QStringLiteral("KCMDesignerfields"),
-                                i18n("KCMDesignerfields"),
-                                QString(),
-                                i18n("Qt Designer Fields Dialog"),
-                                KAboutLicense::LGPL,
-                                i18n("(c) 2004 Tobias Koenig"));
-    about->addAuthor(ki18n("Tobias Koenig").toString(), QString(), QStringLiteral("tokoe@kde.org"));
-    about->addAuthor(ki18n("Cornelius Schumacher").toString(), QString(), QStringLiteral("schumacher@kde.org"));
-    setAboutData(about);
 }
 
 void KCMDesignerFields::delayedInit()
