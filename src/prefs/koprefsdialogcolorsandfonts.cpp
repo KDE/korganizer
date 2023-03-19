@@ -28,8 +28,13 @@
 
 K_PLUGIN_CLASS_WITH_JSON(KOPrefsDialogColorsAndFonts, "korganizer_configcolorsandfonts.json")
 
+#if KCMUTILS_VERSION < QT_VERSION_CHECK(5, 240, 0)
 KOPrefsDialogColorsAndFonts::KOPrefsDialogColorsAndFonts(QWidget *parent, const QVariantList &args)
     : Korganizer::KPrefsModule(KOPrefs::instance(), parent, args)
+#else
+KOPrefsDialogColorsAndFonts::KOPrefsDialogColorsAndFonts(QObject *parent, const KPluginMetaData &data, const QVariantList &args)
+    : Korganizer::KPrefsModule(KOPrefs::instance(), parent, data, args)
+#endif
 {
     auto topTopLayout = new QVBoxLayout(this);
     auto tabWidget = new QTabWidget(this);

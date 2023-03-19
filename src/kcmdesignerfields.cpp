@@ -120,8 +120,13 @@ private:
     bool mIsActive = false;
 };
 
+#if KCMUTILS_VERSION < QT_VERSION_CHECK(5, 240, 0)
 KCMDesignerFields::KCMDesignerFields(QWidget *parent, const QVariantList &args)
     : KCModule(parent, args)
+#else
+KCMDesignerFields::KCMDesignerFields(QObject *parent, const KPluginMetaData &data, const QVariantList &args)
+    : KCModule(parent, data, args)
+#endif
 {
 }
 
@@ -154,7 +159,11 @@ void KCMDesignerFields::deleteFile()
     const auto selectedItems = mPageView->selectedItems();
     for (QTreeWidgetItem *item : selectedItems) {
         auto pageItem = static_cast<PageItem *>(item->parent() ? item->parent() : item);
+#if KCMUTILS_VERSION < QT_VERSION_CHECK(5, 240, 0)
         if (KMessageBox::warningContinueCancel(this,
+#else
+        if (KMessageBox::warningContinueCancel(widget(),
+#endif
                                                i18n("<qt>Do you really want to delete '<b>%1</b>'?</qt>", pageItem->text(0)),
                                                QString(),
                                                KStandardGuiItem::del())
@@ -167,14 +176,25 @@ void KCMDesignerFields::deleteFile()
 
 void KCMDesignerFields::importFile()
 {
+#if KCMUTILS_VERSION < QT_VERSION_CHECK(5, 240, 0)
     const QUrl src =
         QFileDialog::getOpenFileUrl(this, i18n("Import Page"), QUrl::fromLocalFile(QDir::homePath()), QStringLiteral("%1 (*.ui)").arg(i18n("Designer Files")));
+#else
+    const QUrl src = QFileDialog::getOpenFileUrl(widget(),
+                                                 i18n("Import Page"),
+                                                 QUrl::fromLocalFile(QDir::homePath()),
+                                                 QStringLiteral("%1 (*.ui)").arg(i18n("Designer Files")));
+#endif
     QUrl dest = QUrl::fromLocalFile(localUiDir());
     QDir().mkpath(localUiDir());
     dest = dest.adjusted(QUrl::RemoveFilename);
     dest.setPath(src.fileName());
     KIO::Job *job = KIO::file_copy(src, dest, -1, KIO::Overwrite);
+#if KCMUTILS_VERSION < QT_VERSION_CHECK(5, 240, 0)
     KJobWidgets::setWindow(job, this);
+#else
+    KJobWidgets::setWindow(job, widget());
+#endif
     job->exec();
     // The actual view refresh will be done automagically by the slots connected to kdirwatch
 }
@@ -255,7 +275,11 @@ void KCMDesignerFields::defaults()
 
 void KCMDesignerFields::initGUI()
 {
+#if KCMUTILS_VERSION < QT_VERSION_CHECK(5, 240, 0)
     auto layout = new QVBoxLayout(this);
+#else
+    auto layout = new QVBoxLayout(widget());
+#endif
     layout->setContentsMargins({});
 
     const bool noDesigner = QStandardPaths::findExecutable(QStringLiteral("designer")).isEmpty();
@@ -264,21 +288,33 @@ void KCMDesignerFields::initGUI()
         const QString txt = i18n(
             "<qt><b>Warning:</b> Qt Designer could not be found. It is probably not "
             "installed. You will only be able to import existing designer files.</qt>");
+#if KCMUTILS_VERSION < QT_VERSION_CHECK(5, 240, 0)
         auto lbl = new QLabel(txt, this);
+#else
+        auto lbl = new QLabel(txt, widget());
+#endif
         layout->addWidget(lbl);
     }
 
     auto hbox = new QHBoxLayout();
     layout->addLayout(hbox);
 
+#if KCMUTILS_VERSION < QT_VERSION_CHECK(5, 240, 0)
     mPageView = new QTreeWidget(this);
+#else
+    mPageView = new QTreeWidget(widget());
+#endif
     mPageView->setHeaderLabel(i18n("Available Pages"));
     mPageView->setRootIsDecorated(true);
     mPageView->setAllColumnsShowFocus(true);
     mPageView->header()->setSectionResizeMode(QHeaderView::Stretch);
     hbox->addWidget(mPageView);
 
+#if KCMUTILS_VERSION < QT_VERSION_CHECK(5, 240, 0)
     auto box = new QGroupBox(i18n("Preview of Selected Page"), this);
+#else
+    auto box = new QGroupBox(i18n("Preview of Selected Page"), widget());
+#endif
     auto boxLayout = new QVBoxLayout(box);
 
     mPagePreview = new QLabel(box);
@@ -319,7 +355,11 @@ void KCMDesignerFields::initGUI()
         applicationName(),
         applicationName());
 
+#if KCMUTILS_VERSION < QT_VERSION_CHECK(5, 240, 0)
     auto activeLabel = new QLabel(i18n("<a href=\"whatsthis:%1\">How does this work?</a>", cwHowto), this);
+#else
+    auto activeLabel = new QLabel(i18n("<a href=\"whatsthis:%1\">How does this work?</a>", cwHowto), widget());
+#endif
     activeLabel->setTextInteractionFlags(Qt::LinksAccessibleByMouse | Qt::LinksAccessibleByKeyboard);
     connect(activeLabel, &QLabel::linkActivated, this, &KCMDesignerFields::showWhatsThis);
     activeLabel->setContextMenuPolicy(Qt::NoContextMenu);
@@ -330,12 +370,24 @@ void KCMDesignerFields::initGUI()
 
     hbox->addStretch(1);
 
+#if KCMUTILS_VERSION < QT_VERSION_CHECK(5, 240, 0)
     mDeleteButton = new QPushButton(i18n("Delete Page"), this);
+#else
+    mDeleteButton = new QPushButton(i18n("Delete Page"), widget());
+#endif
     mDeleteButton->setEnabled(false);
     hbox->addWidget(mDeleteButton);
+#if KCMUTILS_VERSION < QT_VERSION_CHECK(5, 240, 0)
     mImportButton = new QPushButton(i18n("Import Page..."), this);
+#else
+    mImportButton = new QPushButton(i18n("Import Page..."), widget());
+#endif
     hbox->addWidget(mImportButton);
+#if KCMUTILS_VERSION < QT_VERSION_CHECK(5, 240, 0)
     mDesignerButton = new QPushButton(i18n("Edit with Qt Designer..."), this);
+#else
+    mDesignerButton = new QPushButton(i18n("Edit with Qt Designer..."), widget());
+#endif
     hbox->addWidget(mDesignerButton);
 
     if (noDesigner) {
@@ -401,7 +453,11 @@ void KCMDesignerFields::itemClicked(QTreeWidgetItem *item)
     auto pageItem = static_cast<PageItem *>(item);
 
     if (pageItem->isOn() != pageItem->isActive()) {
+#if KCMUTILS_VERSION < QT_VERSION_CHECK(5, 240, 0)
         Q_EMIT changed(true);
+#else
+        markAsChanged();
+#endif
         pageItem->setIsActive(pageItem->isOn());
     }
 }
@@ -428,7 +484,11 @@ void KCMDesignerFields::startDesigner()
     }
 
     auto job = new KIO::CommandLauncherJob(QStringLiteral("designer"), args, this);
+#if KCMUTILS_VERSION < QT_VERSION_CHECK(5, 240, 0)
     job->setUiDelegate(new KDialogJobUiDelegate(KJobUiDelegate::AutoHandlingEnabled, this));
+#else
+    job->setUiDelegate(new KDialogJobUiDelegate(KJobUiDelegate::AutoHandlingEnabled, widget()));
+#endif
     job->start();
 }
 
@@ -436,6 +496,10 @@ void KCMDesignerFields::showWhatsThis(const QString &href)
 {
     if (href.startsWith(QLatin1String("whatsthis:"))) {
         const QPoint pos = QCursor::pos();
+#if KCMUTILS_VERSION < QT_VERSION_CHECK(5, 240, 0)
         QWhatsThis::showText(pos, href.mid(10), this);
+#else
+        QWhatsThis::showText(pos, href.mid(10), widget());
+#endif
     }
 }

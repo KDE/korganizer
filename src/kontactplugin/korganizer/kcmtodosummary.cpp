@@ -17,10 +17,19 @@
 
 K_PLUGIN_CLASS_WITH_JSON(KCMTodoSummary, "kcmtodosummary.json")
 
+#if KCMUTILS_VERSION < QT_VERSION_CHECK(5, 240, 0)
 KCMTodoSummary::KCMTodoSummary(QWidget *parent, const QVariantList &args)
     : KCModule(parent, args)
+#else
+KCMTodoSummary::KCMTodoSummary(QObject *parent, const KPluginMetaData &data, const QVariantList &args)
+    : KCModule(parent, data, args)
+#endif
 {
+#if KCMUTILS_VERSION < QT_VERSION_CHECK(5, 240, 0)
     setupUi(this);
+#else
+    setupUi(widget());
+#endif
 
     customDaysChanged(7);
 
@@ -39,7 +48,11 @@ KCMTodoSummary::KCMTodoSummary(QWidget *parent, const QVariantList &args)
 
     connect(mShowMineOnly, &QCheckBox::stateChanged, this, &KCMTodoSummary::modified);
 
+#if KCMUTILS_VERSION < QT_VERSION_CHECK(5, 240, 0)
     KAcceleratorManager::manage(this);
+#else
+    KAcceleratorManager::manage(widget());
+#endif
 
     load();
 }
@@ -48,7 +61,11 @@ KCMTodoSummary::~KCMTodoSummary() = default;
 
 void KCMTodoSummary::modified()
 {
+#if KCMUTILS_VERSION < QT_VERSION_CHECK(5, 240, 0)
     Q_EMIT changed(true);
+#else
+    markAsChanged();
+#endif
 }
 
 void KCMTodoSummary::customDaysChanged(int value)
@@ -84,7 +101,11 @@ void KCMTodoSummary::load()
     group = config.group("Groupware");
     mShowMineOnly->setChecked(group.readEntry("ShowMineOnly", false));
 
+#if KCMUTILS_VERSION < QT_VERSION_CHECK(5, 240, 0)
     Q_EMIT changed(false);
+#else
+    setNeedsSave(false);
+#endif
 }
 
 void KCMTodoSummary::save()
@@ -113,7 +134,11 @@ void KCMTodoSummary::save()
     group.writeEntry("ShowMineOnly", mShowMineOnly->isChecked());
 
     config.sync();
+#if KCMUTILS_VERSION < QT_VERSION_CHECK(5, 240, 0)
     Q_EMIT changed(false);
+#else
+    setNeedsSave(false);
+#endif
 }
 
 void KCMTodoSummary::defaults()
@@ -130,7 +155,11 @@ void KCMTodoSummary::defaults()
 
     mShowMineOnly->setChecked(false);
 
+#if KCMUTILS_VERSION < QT_VERSION_CHECK(5, 240, 0)
     Q_EMIT changed(true);
+#else
+    markAsChanged();
+#endif
 }
 
 #include "kcmtodosummary.moc"

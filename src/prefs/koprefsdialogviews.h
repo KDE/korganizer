@@ -8,7 +8,7 @@
 */
 
 #pragma once
-
+#include "kcmutils_version.h"
 #include "kprefsdialog.h"
 
 class KItemIconCheckCombo;
@@ -16,7 +16,11 @@ class KItemIconCheckCombo;
 class KOPrefsDialogViews : public Korganizer::KPrefsModule
 {
 public:
+#if KCMUTILS_VERSION < QT_VERSION_CHECK(5, 240, 0)
     explicit KOPrefsDialogViews(QWidget *parent, const QVariantList &args = {});
+#else
+    explicit KOPrefsDialogViews(QObject *parent, const KPluginMetaData &data, const QVariantList &args = {});
+#endif
 
 protected:
     void usrReadConfig() override;

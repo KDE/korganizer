@@ -25,8 +25,13 @@
 
 K_PLUGIN_CLASS_WITH_JSON(KOPrefsDialogViews, "korganizer_configviews.json")
 
+#if KCMUTILS_VERSION < QT_VERSION_CHECK(5, 240, 0)
 KOPrefsDialogViews::KOPrefsDialogViews(QWidget *parent, const QVariantList &args)
     : Korganizer::KPrefsModule(KOPrefs::instance(), parent, args)
+#else
+KOPrefsDialogViews::KOPrefsDialogViews(QObject *parent, const KPluginMetaData &data, const QVariantList &args)
+    : Korganizer::KPrefsModule(KOPrefs::instance(), parent, data, args)
+#endif
     , mMonthIconComboBox(new KItemIconCheckCombo(KItemIconCheckCombo::MonthType, this))
     , mAgendaIconComboBox(new KItemIconCheckCombo(KItemIconCheckCombo::AgendaType, this))
 {

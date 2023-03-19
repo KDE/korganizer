@@ -66,6 +66,8 @@ install(TARGETS
 add_library(korganizer_kcm_static STATIC widgets/kitemiconcheckcombo.cpp prefs/kprefsdialog.cpp widgets/kitemiconcheckcombo.h prefs/kprefsdialog.h ${korganizer_common_SRCS})
 set_property(TARGET korganizer_kcm_static PROPERTY POSITION_INDEPENDENT_CODE ON)
 target_link_libraries(korganizer_kcm_static
+    KF${KF_MAJOR_VERSION}::KCMUtils
+
     KPim${KF_MAJOR_VERSION}::AkonadiCalendar
     KPim${KF_MAJOR_VERSION}::CalendarSupport
     KPim${KF_MAJOR_VERSION}::EventViews

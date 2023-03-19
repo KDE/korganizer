@@ -29,8 +29,13 @@
 
 K_PLUGIN_CLASS_WITH_JSON(KOPrefsDialogTime, "korganizer_configtime.json")
 
+#if KCMUTILS_VERSION < QT_VERSION_CHECK(5, 240, 0)
 KOPrefsDialogTime::KOPrefsDialogTime(QWidget *parent, const QVariantList &args)
     : Korganizer::KPrefsModule(KOPrefs::instance(), parent, args)
+#else
+KOPrefsDialogTime::KOPrefsDialogTime(QObject *parent, const KPluginMetaData &data, const QVariantList &args)
+    : Korganizer::KPrefsModule(KOPrefs::instance(), parent, data, args)
+#endif
 {
     auto layout = new QVBoxLayout(this);
     auto tabWidget = new QTabWidget(this);

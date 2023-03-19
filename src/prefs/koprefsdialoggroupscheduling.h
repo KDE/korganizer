@@ -8,13 +8,17 @@
 */
 
 #pragma once
-
+#include "kcmutils_version.h"
 #include "kprefsdialog.h"
 class KOPrefsDialogGroupScheduling : public Korganizer::KPrefsModule
 {
     Q_OBJECT
 public:
+#if KCMUTILS_VERSION < QT_VERSION_CHECK(5, 240, 0)
     explicit KOPrefsDialogGroupScheduling(QWidget *parent, const QVariantList &args = {});
+#else
+    explicit KOPrefsDialogGroupScheduling(QObject *parent, const KPluginMetaData &data, const QVariantList &args = {});
+#endif
 
 protected:
     void usrWriteConfig() override;

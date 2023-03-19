@@ -854,11 +854,20 @@ void KPrefsDialog::slotDefault()
     }
 }
 
+#if KCMUTILS_VERSION < QT_VERSION_CHECK(5, 240, 0)
 KPrefsModule::KPrefsModule(KConfigSkeleton *prefs, QWidget *parent, const QVariantList &args)
     : KCModule(parent, args)
+#else
+KPrefsModule::KPrefsModule(KConfigSkeleton *prefs, QObject *parent, const KPluginMetaData &data, const QVariantList &args)
+    : KCModule(parent, data, args)
+#endif
     , KPrefsWidManager(prefs)
 {
+#if KCMUTILS_VERSION < QT_VERSION_CHECK(5, 240, 0)
     Q_EMIT changed(false);
+#else
+    setNeedsSave(false);
+#endif
 }
 
 void KPrefsModule::addWid(KPrefsWid *wid)
@@ -869,15 +878,22 @@ void KPrefsModule::addWid(KPrefsWid *wid)
 
 void KPrefsModule::slotWidChanged()
 {
+#if KCMUTILS_VERSION < QT_VERSION_CHECK(5, 240, 0)
     Q_EMIT changed(true);
+#else
+    setNeedsSave(true);
+#endif
 }
 
 void KPrefsModule::load()
 {
     readWidConfig();
     usrReadConfig();
-
+#if KCMUTILS_VERSION < QT_VERSION_CHECK(5, 240, 0)
     Q_EMIT changed(false);
+#else
+    setNeedsSave(false);
+#endif
 }
 
 void KPrefsModule::save()
@@ -889,6 +905,9 @@ void KPrefsModule::save()
 void KPrefsModule::defaults()
 {
     setWidDefaults();
-
+#if KCMUTILS_VERSION < QT_VERSION_CHECK(5, 240, 0)
     Q_EMIT changed(true);
+#else
+    setNeedsSave(true);
+#endif
 }

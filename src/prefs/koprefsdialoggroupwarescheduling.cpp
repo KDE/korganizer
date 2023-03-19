@@ -18,11 +18,20 @@
 
 K_PLUGIN_CLASS_WITH_JSON(KOPrefsDialogGroupwareScheduling, "korganizer_configfreebusy.json")
 
+#if KCMUTILS_VERSION < QT_VERSION_CHECK(5, 240, 0)
 KOPrefsDialogGroupwareScheduling::KOPrefsDialogGroupwareScheduling(QWidget *parent, const QVariantList &args)
-    : KPrefsModule(CalendarSupport::KCalPrefs::instance(), parent, args)
+    : Korganizer::KPrefsModule(CalendarSupport::KCalPrefs::instance(), parent, args)
+#else
+KOPrefsDialogGroupwareScheduling::KOPrefsDialogGroupwareScheduling(QObject *parent, const KPluginMetaData &data, const QVariantList &args)
+    : Korganizer::KPrefsModule(CalendarSupport::KCalPrefs::instance(), parent, data, args)
+#endif
     , mGroupwarePage(new Ui::KOGroupwarePrefsPage())
 {
+#if KCMUTILS_VERSION < QT_VERSION_CHECK(5, 240, 0)
     auto widget = new QWidget(this);
+#else
+    auto widget = new QWidget(widget());
+#endif
     widget->setObjectName(QStringLiteral("KOGrouparePrefsPage"));
 
     mGroupwarePage->setupUi(widget);
@@ -44,7 +53,11 @@ KOPrefsDialogGroupwareScheduling::KOPrefsDialogGroupwareScheduling(QWidget *pare
     connect(mGroupwarePage->fullDomainRetrieval, &QCheckBox::toggled, this, &KOPrefsDialogGroupwareScheduling::slotWidChanged);
     connect(mGroupwarePage->publishEnable, &QCheckBox::toggled, this, &KOPrefsDialogGroupwareScheduling::slotWidChanged);
 
+#if KCMUTILS_VERSION < QT_VERSION_CHECK(5, 240, 0)
     (new QVBoxLayout(this))->addWidget(widget);
+#else
+    (new QVBoxLayout(widget()))->addWidget(widget);
+#endif
 
     load();
 }

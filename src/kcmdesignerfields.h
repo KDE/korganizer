@@ -8,9 +8,11 @@
 */
 
 #pragma once
-
+#include "kcmutils_version.h"
 #include <KCModule>
-
+#if KCMUTILS_VERSION >= QT_VERSION_CHECK(5, 240, 0)
+#include <KPluginMetaData>
+#endif
 class QLabel;
 class QPushButton;
 class QTreeWidget;
@@ -20,7 +22,11 @@ class KCMDesignerFields : public KCModule
 {
     Q_OBJECT
 public:
+#if KCMUTILS_VERSION < QT_VERSION_CHECK(5, 240, 0)
     explicit KCMDesignerFields(QWidget *parent = nullptr, const QVariantList &args = QVariantList());
+#else
+    explicit KCMDesignerFields(QObject *parent, const KPluginMetaData &data, const QVariantList &args = QVariantList());
+#endif
 
     void load() override;
     void save() override;

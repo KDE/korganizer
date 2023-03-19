@@ -8,7 +8,7 @@
 */
 
 #pragma once
-
+#include "kcmutils_version.h"
 #include "kprefsdialog.h"
 class QSpinBox;
 class KComboBox;
@@ -21,7 +21,11 @@ class KCheckComboBox;
 class KOPrefsDialogTime : public Korganizer::KPrefsModule
 {
 public:
+#if KCMUTILS_VERSION < QT_VERSION_CHECK(5, 240, 0)
     explicit KOPrefsDialogTime(QWidget *parent, const QVariantList &args = {});
+#else
+    explicit KOPrefsDialogTime(QObject *parent, const KPluginMetaData &data, const QVariantList &args = {});
+#endif
 
 protected:
     void usrReadConfig() override;
