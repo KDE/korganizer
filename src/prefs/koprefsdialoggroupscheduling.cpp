@@ -28,9 +28,13 @@ KOPrefsDialogGroupScheduling::KOPrefsDialogGroupScheduling(QObject *parent, cons
     : Korganizer::KPrefsModule(KOPrefs::instance(), parent, data, args)
 #endif
 {
+#if KCMUTILS_VERSION < QT_VERSION_CHECK(5, 240, 0)
     auto topTopLayout = new QVBoxLayout(this);
-
     auto topFrame = new QWidget(this);
+#else
+    auto topTopLayout = new QVBoxLayout(widget());
+    auto topFrame = new QWidget(widget());
+#endif
     topTopLayout->addWidget(topFrame);
 
     auto topLayout = new QGridLayout(topFrame);

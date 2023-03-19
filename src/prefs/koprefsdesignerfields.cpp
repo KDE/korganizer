@@ -14,8 +14,13 @@
 
 K_PLUGIN_CLASS_WITH_JSON(KOPrefsDesignerFields, "korganizer_configdesignerfields.json")
 
+#if KCMUTILS_VERSION < QT_VERSION_CHECK(5, 240, 0)
 KOPrefsDesignerFields::KOPrefsDesignerFields(QWidget *parent, const QVariantList &args)
     : KCMDesignerFields(parent, args)
+#else
+KOPrefsDesignerFields::KOPrefsDesignerFields(QObject *parent, const KPluginMetaData &data, const QVariantList &args)
+    : KCMDesignerFields(parent, data, args)
+#endif
 {
 }
 

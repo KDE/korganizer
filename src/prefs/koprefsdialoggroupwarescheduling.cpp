@@ -30,7 +30,7 @@ KOPrefsDialogGroupwareScheduling::KOPrefsDialogGroupwareScheduling(QObject *pare
 #if KCMUTILS_VERSION < QT_VERSION_CHECK(5, 240, 0)
     auto widget = new QWidget(this);
 #else
-    auto widget = new QWidget(widget());
+    auto widget = new QWidget(this->widget());
 #endif
     widget->setObjectName(QStringLiteral("KOGrouparePrefsPage"));
 
@@ -56,7 +56,7 @@ KOPrefsDialogGroupwareScheduling::KOPrefsDialogGroupwareScheduling(QObject *pare
 #if KCMUTILS_VERSION < QT_VERSION_CHECK(5, 240, 0)
     (new QVBoxLayout(this))->addWidget(widget);
 #else
-    (new QVBoxLayout(widget()))->addWidget(widget);
+    (new QVBoxLayout(this->widget()))->addWidget(widget);
 #endif
 
     load();

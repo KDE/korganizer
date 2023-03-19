@@ -54,13 +54,25 @@ K_PLUGIN_CLASS_WITH_JSON(KOPrefsDialogPlugins, "korganizer_configplugins.json")
 /**
   Dialog for selecting and configuring KOrganizer plugins
 */
+#if KCMUTILS_VERSION < QT_VERSION_CHECK(5, 240, 0)
 KOPrefsDialogPlugins::KOPrefsDialogPlugins(QWidget *parent, const QVariantList &args)
     : KPrefsModule(KOPrefs::instance(), parent, args)
     , mTreeWidget(new QTreeWidget(this))
     , mDescription(new QLabel(this))
     , mPositioningGroupBox(new QGroupBox(i18nc("@title:group", "Position"), this))
+#else
+KOPrefsDialogPlugins::KOPrefsDialogPlugins(QObject *parent, const KPluginMetaData &data, const QVariantList &args)
+    : KPrefsModule(KOPrefs::instance(), parent, data, args)
+    , mTreeWidget(new QTreeWidget(widget()))
+    , mDescription(new QLabel(widget()))
+    , mPositioningGroupBox(new QGroupBox(i18nc("@title:group", "Position"), widget()))
+#endif
 {
+#if KCMUTILS_VERSION < QT_VERSION_CHECK(5, 240, 0)
     auto topTopLayout = new QVBoxLayout(this);
+#else
+    auto topTopLayout = new QVBoxLayout(widget());
+#endif
     mTreeWidget->setColumnCount(2);
     mTreeWidget->setHeaderHidden(true);
     mTreeWidget->setSelectionMode(QAbstractItemView::SingleSelection);
@@ -192,12 +204,20 @@ void KOPrefsDialogPlugins::configureClicked(QAction *action)
     EventViews::CalendarDecoration::Decoration *plugin = KOCore::self()->loadCalendarDecoration(item->service());
 
     if (plugin) {
+#if KCMUTILS_VERSION < QT_VERSION_CHECK(5, 240, 0)
         plugin->configure(this);
+#else
+        plugin->configure(widget());
+#endif
         delete plugin;
 
         slotWidChanged();
     } else {
+#if KCMUTILS_VERSION < QT_VERSION_CHECK(5, 240, 0)
         KMessageBox::error(this, i18nc("@info", "Unable to configure this plugin"), QStringLiteral("PluginConfigUnable"));
+#else
+        KMessageBox::error(widget(), i18nc("@info", "Unable to configure this plugin"), QStringLiteral("PluginConfigUnable"));
+#endif
     }
 }
 

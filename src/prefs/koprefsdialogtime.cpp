@@ -37,11 +37,20 @@ KOPrefsDialogTime::KOPrefsDialogTime(QObject *parent, const KPluginMetaData &dat
     : Korganizer::KPrefsModule(KOPrefs::instance(), parent, data, args)
 #endif
 {
+#if KCMUTILS_VERSION < QT_VERSION_CHECK(5, 240, 0)
     auto layout = new QVBoxLayout(this);
     auto tabWidget = new QTabWidget(this);
+#else
+    auto layout = new QVBoxLayout(widget());
+    auto tabWidget = new QTabWidget(widget());
+#endif
     layout->addWidget(tabWidget);
 
+#if KCMUTILS_VERSION < QT_VERSION_CHECK(5, 240, 0)
     auto regionalPage = new QFrame(parent);
+#else
+    auto regionalPage = new QFrame(widget());
+#endif
     tabWidget->addTab(regionalPage, QIcon::fromTheme(QStringLiteral("flag")), i18nc("@title:tab", "Regional"));
 
     auto regionalLayout = new QGridLayout(regionalPage);
@@ -170,7 +179,11 @@ KOPrefsDialogTime::KOPrefsDialogTime(QObject *parent, const KPluginMetaData &dat
 
     regionalLayout->setRowStretch(4, 1);
 
+#if KCMUTILS_VERSION < QT_VERSION_CHECK(5, 240, 0)
     auto defaultPage = new QFrame(parent);
+#else
+    auto defaultPage = new QFrame(widget());
+#endif
     tabWidget->addTab(defaultPage, QIcon::fromTheme(QStringLiteral("draw-eraser")), i18nc("@title:tab", "Default Values"));
     auto defaultLayout = new QGridLayout(defaultPage);
 

@@ -8,13 +8,17 @@
 */
 
 #pragma once
-
 #include "kcmdesignerfields.h"
+#include "kcmutils_version.h"
 
 class KOPrefsDesignerFields : public KCMDesignerFields
 {
 public:
-    explicit KOPrefsDesignerFields(QWidget *parent = nullptr, const QVariantList &args = {});
+#if KCMUTILS_VERSION < QT_VERSION_CHECK(5, 240, 0)
+    explicit KOPrefsDesignerFields(QWidget *parent = nullptr, const QVariantList &args = QVariantList());
+#else
+    explicit KOPrefsDesignerFields(QObject *parent, const KPluginMetaData &data, const QVariantList &args = QVariantList());
+#endif
 
 protected:
     Q_REQUIRED_RESULT QString localUiDir() override;

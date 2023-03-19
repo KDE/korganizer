@@ -28,22 +28,33 @@ K_PLUGIN_CLASS_WITH_JSON(KOPrefsDialogViews, "korganizer_configviews.json")
 #if KCMUTILS_VERSION < QT_VERSION_CHECK(5, 240, 0)
 KOPrefsDialogViews::KOPrefsDialogViews(QWidget *parent, const QVariantList &args)
     : Korganizer::KPrefsModule(KOPrefs::instance(), parent, args)
+    , mMonthIconComboBox(new KItemIconCheckCombo(KItemIconCheckCombo::MonthType, this))
+    , mAgendaIconComboBox(new KItemIconCheckCombo(KItemIconCheckCombo::AgendaType, this))
 #else
 KOPrefsDialogViews::KOPrefsDialogViews(QObject *parent, const KPluginMetaData &data, const QVariantList &args)
     : Korganizer::KPrefsModule(KOPrefs::instance(), parent, data, args)
+    , mMonthIconComboBox(new KItemIconCheckCombo(KItemIconCheckCombo::MonthType, widget()))
+    , mAgendaIconComboBox(new KItemIconCheckCombo(KItemIconCheckCombo::AgendaType, widget()))
 #endif
-    , mMonthIconComboBox(new KItemIconCheckCombo(KItemIconCheckCombo::MonthType, this))
-    , mAgendaIconComboBox(new KItemIconCheckCombo(KItemIconCheckCombo::AgendaType, this))
 {
+#if KCMUTILS_VERSION < QT_VERSION_CHECK(5, 240, 0)
     auto topTopLayout = new QVBoxLayout(this);
     auto tabWidget = new QTabWidget(this);
+#else
+    auto topTopLayout = new QVBoxLayout(widget());
+    auto tabWidget = new QTabWidget(widget());
+#endif
     topTopLayout->addWidget(tabWidget);
 
     connect(mMonthIconComboBox, &KPIM::KCheckComboBox::checkedItemsChanged, this, &Korganizer::KPrefsModule::slotWidChanged);
     connect(mAgendaIconComboBox, &KPIM::KCheckComboBox::checkedItemsChanged, this, &Korganizer::KPrefsModule::slotWidChanged);
 
     // Tab: Views->General
+#if KCMUTILS_VERSION < QT_VERSION_CHECK(5, 240, 0)
     auto generalFrame = new QFrame(this);
+#else
+    auto generalFrame = new QFrame(widget());
+#endif
     tabWidget->addTab(generalFrame, QIcon::fromTheme(QStringLiteral("view-choose")), i18nc("@title:tab general settings", "General"));
 
     QBoxLayout *generalLayout = new QVBoxLayout(generalFrame);
@@ -80,7 +91,11 @@ KOPrefsDialogViews::KOPrefsDialogViews(QObject *parent, const KPluginMetaData &d
     generalLayout->addStretch(1);
 
     // Tab: Views->Agenda View
+#if KCMUTILS_VERSION < QT_VERSION_CHECK(5, 240, 0)
     auto agendaFrame = new QFrame(this);
+#else
+    auto agendaFrame = new QFrame(widget());
+#endif
     tabWidget->addTab(agendaFrame, QIcon::fromTheme(QStringLiteral("view-calendar-workweek")), i18nc("@title:tab", "Agenda View"));
 
     QBoxLayout *agendaLayout = new QVBoxLayout(agendaFrame);
@@ -124,7 +139,11 @@ KOPrefsDialogViews::KOPrefsDialogViews(QObject *parent, const KPluginMetaData &d
     agendaLayout->addStretch(1);
 
     // Tab: Views->Month View
+#if KCMUTILS_VERSION < QT_VERSION_CHECK(5, 240, 0)
     auto monthFrame = new QFrame(this);
+#else
+    auto monthFrame = new QFrame(widget());
+#endif
     tabWidget->addTab(monthFrame, QIcon::fromTheme(QStringLiteral("view-calendar-month")), i18nc("@title:tab", "Month View"));
 
     QBoxLayout *monthLayout = new QVBoxLayout(monthFrame);
@@ -151,7 +170,11 @@ KOPrefsDialogViews::KOPrefsDialogViews(QObject *parent, const KPluginMetaData &d
     monthLayout->addStretch(1);
 
     // Tab: Views->Todo View
+#if KCMUTILS_VERSION < QT_VERSION_CHECK(5, 240, 0)
     auto todoFrame = new QFrame(this);
+#else
+    auto todoFrame = new QFrame(widget());
+#endif
     tabWidget->addTab(todoFrame, QIcon::fromTheme(QStringLiteral("view-calendar-tasks")), i18nc("@title:tab", "Todo View"));
 
     QBoxLayout *todoLayout = new QVBoxLayout(todoFrame);
