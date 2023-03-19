@@ -1,7 +1,7 @@
 # translation of korganizer.po to Slovenian
 # Translation of korganizer.po to Slovenian
 # Copyright (C) 2001,2002, 2003, 2004, 2005, 2006 Free Software Foundation, Inc.
-# $Id: korganizer.po 1646363 2023-03-09 01:30:43Z scripty $
+# $Id: korganizer.po 1647306 2023-03-19 01:30:43Z scripty $
 # $Source$
 #
 # Roman Maurer <roman.maurer@hermes.si>, 2001.
@@ -14,7 +14,7 @@ msgid ""
 msgstr ""
 "Project-Id-Version: korganizer\n"
 "Report-Msgid-Bugs-To: https://bugs.kde.org\n"
-"POT-Creation-Date: 2023-03-09 00:47+0000\n"
+"POT-Creation-Date: 2023-03-19 00:49+0000\n"
 "PO-Revision-Date: 2022-10-16 06:48+0200\n"
 "Last-Translator: Matjaž Jeran <matjaz.jeran@amis.net>\n"
 "Language-Team: Slovenian <lugos-slo@lugos.si>\n"
@@ -89,7 +89,7 @@ msgstr "Reinhold Kainhofer"
 msgid "Former Maintainer"
 msgstr "Prejšnji vzdrževalec"
 
-#: aboutdata.cpp:32 kcmdesignerfields.cpp:133
+#: aboutdata.cpp:32
 #, kde-format
 msgid "Cornelius Schumacher"
 msgstr "Cornelius Schumacher"
@@ -2083,43 +2083,22 @@ msgstr "Datum in čas"
 msgid "Date"
 msgstr "Datum"
 
-#: kcmdesignerfields.cpp:127
-#, kde-format
-msgid "KCMDesignerfields"
-msgstr "KCMDesignerfields"
-
-#: kcmdesignerfields.cpp:129
-#, kde-format
-msgid "Qt Designer Fields Dialog"
-msgstr "Pogovorno okno Qt Designerja za polja"
-
-#: kcmdesignerfields.cpp:131
-#, kde-format
-msgid "(c) 2004 Tobias Koenig"
-msgstr "© 2004 Tobias Koenig"
-
-#: kcmdesignerfields.cpp:132
-#: kontactplugin/specialdates/specialdates_plugin.cpp:43
-#, kde-format
-msgid "Tobias Koenig"
-msgstr "Tobias Koenig"
-
-#: kcmdesignerfields.cpp:167
+#: kcmdesignerfields.cpp:158
 #, kde-format
 msgid "<qt>Do you really want to delete '<b>%1</b>'?</qt>"
 msgstr "<qt>Ali resnično želite izbrisati »<b>%1</b>«?</qt>"
 
-#: kcmdesignerfields.cpp:180
+#: kcmdesignerfields.cpp:171
 #, kde-format
 msgid "Import Page"
 msgstr "Uvozi stran"
 
-#: kcmdesignerfields.cpp:180
+#: kcmdesignerfields.cpp:171
 #, kde-format
 msgid "Designer Files"
 msgstr "Datoteke Designer"
 
-#: kcmdesignerfields.cpp:274
+#: kcmdesignerfields.cpp:265
 #, kde-format
 msgid ""
 "<qt><b>Warning:</b> Qt Designer could not be found. It is probably not "
@@ -2128,17 +2107,17 @@ msgstr ""
 "<qt><b>Opozorilo:</b> Qt Designerja ni bilo mogoče najti. Verjetno ni "
 "nameščen. Lahko boste le uvozili obstoječe datoteke snovalnika.</qt>"
 
-#: kcmdesignerfields.cpp:284
+#: kcmdesignerfields.cpp:275
 #, kde-format
 msgid "Available Pages"
 msgstr "Razpoložljive strani"
 
-#: kcmdesignerfields.cpp:290
+#: kcmdesignerfields.cpp:281
 #, kde-format
 msgid "Preview of Selected Page"
 msgstr "Predogled izbrane strani"
 
-#: kcmdesignerfields.cpp:309
+#: kcmdesignerfields.cpp:300
 #, kde-format
 msgid ""
 "<qt><p>This section allows you to add your own GUI Elements ('<i>Widgets</"
@@ -2170,42 +2149,42 @@ msgstr ""
 "%2. Če želite spremeniti ime programa, ki bo urejan, nastavite ime gradnika "
 "v Qt Designerju.</p></qt>"
 
-#: kcmdesignerfields.cpp:331
+#: kcmdesignerfields.cpp:322
 #, kde-format
 msgid "<a href=\"whatsthis:%1\">How does this work?</a>"
 msgstr "<a href=\"whatsthis:%1\">Kako to deluje?</a>"
 
-#: kcmdesignerfields.cpp:342
+#: kcmdesignerfields.cpp:333
 #, kde-format
 msgid "Delete Page"
 msgstr "Izbriši stran"
 
-#: kcmdesignerfields.cpp:345
+#: kcmdesignerfields.cpp:336
 #, kde-format
 msgid "Import Page..."
 msgstr "Uvozi stran ..."
 
-#: kcmdesignerfields.cpp:347
+#: kcmdesignerfields.cpp:338
 #, kde-format
 msgid "Edit with Qt Designer..."
 msgstr "Uredi z Qt Designerjem ..."
 
-#: kcmdesignerfields.cpp:372
+#: kcmdesignerfields.cpp:363
 #, kde-format
 msgid "Key:"
 msgstr "Ključ:"
 
-#: kcmdesignerfields.cpp:374
+#: kcmdesignerfields.cpp:365
 #, kde-format
 msgid "Type:"
 msgstr "Vrsta:"
 
-#: kcmdesignerfields.cpp:376
+#: kcmdesignerfields.cpp:367
 #, kde-format
 msgid "Classname:"
 msgstr "Ime razreda:"
 
-#: kcmdesignerfields.cpp:378
+#: kcmdesignerfields.cpp:369
 #, kde-format
 msgid "Description:"
 msgstr "Opis:"
@@ -3393,6 +3372,11 @@ msgstr ""
 #, kde-format
 msgid "Current Maintainer"
 msgstr "Trenutni vzdrževalec"
+
+#: kontactplugin/specialdates/specialdates_plugin.cpp:43
+#, kde-format
+msgid "Tobias Koenig"
+msgstr "Tobias Koenig"
 
 #: korganizer.cpp:279
 #, kde-format
@@ -6091,6 +6075,15 @@ msgstr "%1"
 msgctxt "4 digit year"
 msgid "%1"
 msgstr "%1"
+
+#~ msgid "KCMDesignerfields"
+#~ msgstr "KCMDesignerfields"
+
+#~ msgid "Qt Designer Fields Dialog"
+#~ msgstr "Pogovorno okno Qt Designerja za polja"
+
+#~ msgid "(c) 2004 Tobias Koenig"
+#~ msgstr "© 2004 Tobias Koenig"
 
 #~ msgid "Upcoming Events Configuration Dialog"
 #~ msgstr "Nastavitveno okno za prihajajoče dogodke"

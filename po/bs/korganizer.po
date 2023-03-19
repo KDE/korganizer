@@ -7,7 +7,7 @@ msgid ""
 msgstr ""
 "Project-Id-Version: __kde__kdepim__korganizer\n"
 "Report-Msgid-Bugs-To: https://bugs.kde.org\n"
-"POT-Creation-Date: 2023-03-09 00:47+0000\n"
+"POT-Creation-Date: 2023-03-19 00:49+0000\n"
 "PO-Revision-Date: 2014-01-31 19:03+0100\n"
 "Last-Translator: Samir Ribić <megaribi@epn.ba>\n"
 "Language-Team:  <bs@li.org>\n"
@@ -87,7 +87,7 @@ msgstr "Reinhold Kainhofer"
 msgid "Former Maintainer"
 msgstr "Prethodni održavalac"
 
-#: aboutdata.cpp:32 kcmdesignerfields.cpp:133
+#: aboutdata.cpp:32
 #, kde-format
 msgid "Cornelius Schumacher"
 msgstr "Cornelius Schumacher"
@@ -2130,45 +2130,23 @@ msgstr "Datum i vrijeme"
 msgid "Date"
 msgstr "Datum"
 
-#: kcmdesignerfields.cpp:127
-#, kde-format
-msgid "KCMDesignerfields"
-msgstr "KCMDesignerPolja"
-
-#: kcmdesignerfields.cpp:129
-#, kde-format
-msgid "Qt Designer Fields Dialog"
-msgstr "Dijalog za polja Qt Designer-a"
-
-#: kcmdesignerfields.cpp:131
-#, fuzzy, kde-format
-#| msgid "(c), 2004 Tobias Koenig"
-msgid "(c) 2004 Tobias Koenig"
-msgstr "(c), 2004 Tobias Koenig"
-
-#: kcmdesignerfields.cpp:132
-#: kontactplugin/specialdates/specialdates_plugin.cpp:43
-#, kde-format
-msgid "Tobias Koenig"
-msgstr "Tobias Koenig"
-
-#: kcmdesignerfields.cpp:167
+#: kcmdesignerfields.cpp:158
 #, kde-format
 msgid "<qt>Do you really want to delete '<b>%1</b>'?</qt>"
 msgstr "<qt>Želite li zaista da obrišete '<b>%1</b>'?</qt>"
 
-#: kcmdesignerfields.cpp:180
+#: kcmdesignerfields.cpp:171
 #, kde-format
 msgid "Import Page"
 msgstr "Uvezi stranu"
 
-#: kcmdesignerfields.cpp:180
+#: kcmdesignerfields.cpp:171
 #, fuzzy, kde-format
 #| msgid "*.ui|Designer Files"
 msgid "Designer Files"
 msgstr "*.ui|Dizajnerske datoteke"
 
-#: kcmdesignerfields.cpp:274
+#: kcmdesignerfields.cpp:265
 #, kde-format
 msgid ""
 "<qt><b>Warning:</b> Qt Designer could not be found. It is probably not "
@@ -2177,17 +2155,17 @@ msgstr ""
 "<qt><b>Upozorenje:</b> Ne mogu da nađem Qt Designer. Verovatno nije "
 "instaliran. Moćićete da uvozite jedino postojeće dizajnerske datoteke.</qt>"
 
-#: kcmdesignerfields.cpp:284
+#: kcmdesignerfields.cpp:275
 #, kde-format
 msgid "Available Pages"
 msgstr "Dostupne strane"
 
-#: kcmdesignerfields.cpp:290
+#: kcmdesignerfields.cpp:281
 #, kde-format
 msgid "Preview of Selected Page"
 msgstr "Pregled izabrane strane"
 
-#: kcmdesignerfields.cpp:309
+#: kcmdesignerfields.cpp:300
 #, kde-format
 msgid ""
 "<qt><p>This section allows you to add your own GUI Elements ('<i>Widgets</"
@@ -2219,42 +2197,42 @@ msgstr ""
 "polja s imenom aplikacije %2.  Da promijenite ime aplikacije koja se "
 "mijenja, postavite ime grafičke kontrole u Qt Designer.</p></qt>"
 
-#: kcmdesignerfields.cpp:331
+#: kcmdesignerfields.cpp:322
 #, kde-format
 msgid "<a href=\"whatsthis:%1\">How does this work?</a>"
 msgstr "<a href=\"whatsthis:%1\">Kako ovo radi?</a>"
 
-#: kcmdesignerfields.cpp:342
+#: kcmdesignerfields.cpp:333
 #, kde-format
 msgid "Delete Page"
 msgstr "Obriši stranicu"
 
-#: kcmdesignerfields.cpp:345
+#: kcmdesignerfields.cpp:336
 #, kde-format
 msgid "Import Page..."
 msgstr "Uvezi stranu..."
 
-#: kcmdesignerfields.cpp:347
+#: kcmdesignerfields.cpp:338
 #, kde-format
 msgid "Edit with Qt Designer..."
 msgstr "Uredi pomoću Qt Designer-a..."
 
-#: kcmdesignerfields.cpp:372
+#: kcmdesignerfields.cpp:363
 #, kde-format
 msgid "Key:"
 msgstr "Ključ:"
 
-#: kcmdesignerfields.cpp:374
+#: kcmdesignerfields.cpp:365
 #, kde-format
 msgid "Type:"
 msgstr "Vrsta:"
 
-#: kcmdesignerfields.cpp:376
+#: kcmdesignerfields.cpp:367
 #, kde-format
 msgid "Classname:"
 msgstr "Ime klase:"
 
-#: kcmdesignerfields.cpp:378
+#: kcmdesignerfields.cpp:369
 #, kde-format
 msgid "Description:"
 msgstr "Opis:"
@@ -3518,6 +3496,11 @@ msgstr ""
 #| msgid "Former Maintainer"
 msgid "Current Maintainer"
 msgstr "Prethodni održavalac"
+
+#: kontactplugin/specialdates/specialdates_plugin.cpp:43
+#, kde-format
+msgid "Tobias Koenig"
+msgstr "Tobias Koenig"
 
 #: korganizer.cpp:279
 #, kde-format
@@ -6353,6 +6336,17 @@ msgstr "%1"
 msgctxt "4 digit year"
 msgid "%1"
 msgstr "%1"
+
+#~ msgid "KCMDesignerfields"
+#~ msgstr "KCMDesignerPolja"
+
+#~ msgid "Qt Designer Fields Dialog"
+#~ msgstr "Dijalog za polja Qt Designer-a"
+
+#, fuzzy
+#~| msgid "(c), 2004 Tobias Koenig"
+#~ msgid "(c) 2004 Tobias Koenig"
+#~ msgstr "(c), 2004 Tobias Koenig"
 
 #~ msgid "Get &Hot New Stuff..."
 #~ msgstr "Dobavi najbolje nove stvari..."

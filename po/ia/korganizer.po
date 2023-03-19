@@ -7,7 +7,7 @@ msgid ""
 msgstr ""
 "Project-Id-Version: \n"
 "Report-Msgid-Bugs-To: https://bugs.kde.org\n"
-"POT-Creation-Date: 2023-03-09 00:47+0000\n"
+"POT-Creation-Date: 2023-03-19 00:49+0000\n"
 "PO-Revision-Date: 2023-01-10 16:26+0100\n"
 "Last-Translator: giovanni <g.sora@tiscali.it>\n"
 "Language-Team: Interlingua <kde-i18n-doc@kde.org>\n"
@@ -76,7 +76,7 @@ msgstr "Reinhold Kainhofer"
 msgid "Former Maintainer"
 msgstr "Mantenitor Precedente"
 
-#: aboutdata.cpp:32 kcmdesignerfields.cpp:133
+#: aboutdata.cpp:32
 #, kde-format
 msgid "Cornelius Schumacher"
 msgstr " Cornelius Schumacher"
@@ -2063,43 +2063,22 @@ msgstr "Date & Tempore"
 msgid "Date"
 msgstr "Data"
 
-#: kcmdesignerfields.cpp:127
-#, kde-format
-msgid "KCMDesignerfields"
-msgstr "KCMDesignerfields"
-
-#: kcmdesignerfields.cpp:129
-#, kde-format
-msgid "Qt Designer Fields Dialog"
-msgstr "Dialogo de campos de Qt Designer"
-
-#: kcmdesignerfields.cpp:131
-#, kde-format
-msgid "(c) 2004 Tobias Koenig"
-msgstr "(c) 2004 Tobias Koenig"
-
-#: kcmdesignerfields.cpp:132
-#: kontactplugin/specialdates/specialdates_plugin.cpp:43
-#, kde-format
-msgid "Tobias Koenig"
-msgstr "Tobias Koenig"
-
-#: kcmdesignerfields.cpp:167
+#: kcmdesignerfields.cpp:158
 #, kde-format
 msgid "<qt>Do you really want to delete '<b>%1</b>'?</qt>"
 msgstr "<qt>Tu realmente tu vole deler<b>%1</b>'?</qt>"
 
-#: kcmdesignerfields.cpp:180
+#: kcmdesignerfields.cpp:171
 #, kde-format
 msgid "Import Page"
 msgstr "Importa pagina"
 
-#: kcmdesignerfields.cpp:180
+#: kcmdesignerfields.cpp:171
 #, kde-format
 msgid "Designer Files"
 msgstr "Files de Designer"
 
-#: kcmdesignerfields.cpp:274
+#: kcmdesignerfields.cpp:265
 #, kde-format
 msgid ""
 "<qt><b>Warning:</b> Qt Designer could not be found. It is probably not "
@@ -2108,17 +2087,17 @@ msgstr ""
 "<qt><b>Aviso</b>Qt Designer non pote esser trovate. Probabilemente il non es "
 "installate. Tu solmente potera importar files de designer existente. </qt>"
 
-#: kcmdesignerfields.cpp:284
+#: kcmdesignerfields.cpp:275
 #, kde-format
 msgid "Available Pages"
 msgstr "Paginas disponibile"
 
-#: kcmdesignerfields.cpp:290
+#: kcmdesignerfields.cpp:281
 #, kde-format
 msgid "Preview of Selected Page"
 msgstr "Vista preliminari de pagina selectionate"
 
-#: kcmdesignerfields.cpp:309
+#: kcmdesignerfields.cpp:300
 #, kde-format
 msgid ""
 "<qt><p>This section allows you to add your own GUI Elements ('<i>Widgets</"
@@ -2151,42 +2130,42 @@ msgstr ""
 "Pro cambiar le nomine de application que debe esser modificate, fixa le "
 "nomine de widget in Qt Designer.</p></qt>"
 
-#: kcmdesignerfields.cpp:331
+#: kcmdesignerfields.cpp:322
 #, kde-format
 msgid "<a href=\"whatsthis:%1\">How does this work?</a>"
 msgstr "<a href=\"whatsthis:%1\">Como il functiona?</a>"
 
-#: kcmdesignerfields.cpp:342
+#: kcmdesignerfields.cpp:333
 #, kde-format
 msgid "Delete Page"
 msgstr "Dele pagina"
 
-#: kcmdesignerfields.cpp:345
+#: kcmdesignerfields.cpp:336
 #, kde-format
 msgid "Import Page..."
 msgstr "Importa pagina..."
 
-#: kcmdesignerfields.cpp:347
+#: kcmdesignerfields.cpp:338
 #, kde-format
 msgid "Edit with Qt Designer..."
 msgstr "Edita con Qt Designer"
 
-#: kcmdesignerfields.cpp:372
+#: kcmdesignerfields.cpp:363
 #, kde-format
 msgid "Key:"
 msgstr "Clave:"
 
-#: kcmdesignerfields.cpp:374
+#: kcmdesignerfields.cpp:365
 #, kde-format
 msgid "Type:"
 msgstr "Typo:"
 
-#: kcmdesignerfields.cpp:376
+#: kcmdesignerfields.cpp:367
 #, kde-format
 msgid "Classname:"
 msgstr "Nomine de classe:"
 
-#: kcmdesignerfields.cpp:378
+#: kcmdesignerfields.cpp:369
 #, kde-format
 msgid "Description:"
 msgstr "Description:"
@@ -3367,6 +3346,11 @@ msgstr ""
 #, kde-format
 msgid "Current Maintainer"
 msgstr "Mantenitor Currente"
+
+#: kontactplugin/specialdates/specialdates_plugin.cpp:43
+#, kde-format
+msgid "Tobias Koenig"
+msgstr "Tobias Koenig"
 
 #: korganizer.cpp:279
 #, kde-format
@@ -6120,6 +6104,15 @@ msgstr "%1"
 msgctxt "4 digit year"
 msgid "%1"
 msgstr "%1"
+
+#~ msgid "KCMDesignerfields"
+#~ msgstr "KCMDesignerfields"
+
+#~ msgid "Qt Designer Fields Dialog"
+#~ msgstr "Dialogo de campos de Qt Designer"
+
+#~ msgid "(c) 2004 Tobias Koenig"
+#~ msgstr "(c) 2004 Tobias Koenig"
 
 #~ msgid "Upcoming Events Configuration Dialog"
 #~ msgstr "Dialogo de configuration de eventos imminente"

@@ -19,7 +19,7 @@ msgid ""
 msgstr ""
 "Project-Id-Version: kdepim-kde4\n"
 "Report-Msgid-Bugs-To: https://bugs.kde.org\n"
-"POT-Creation-Date: 2023-03-09 00:47+0000\n"
+"POT-Creation-Date: 2023-03-19 00:49+0000\n"
 "PO-Revision-Date: 2023-02-26 14:28+0300\n"
 "Last-Translator: Emir SARI <emir_sari@icloud.com>\n"
 "Language-Team: Turkish <kde-l10n-tr@kde.org>\n"
@@ -92,7 +92,7 @@ msgstr "Reinhold Kainhofer"
 msgid "Former Maintainer"
 msgstr "Önceki Geliştirici"
 
-#: aboutdata.cpp:32 kcmdesignerfields.cpp:133
+#: aboutdata.cpp:32
 #, kde-format
 msgid "Cornelius Schumacher"
 msgstr "Cornelius Schumacher"
@@ -2082,43 +2082,22 @@ msgstr "Tarih ve Saat"
 msgid "Date"
 msgstr "Tarih"
 
-#: kcmdesignerfields.cpp:127
-#, kde-format
-msgid "KCMDesignerfields"
-msgstr "KCMDesignerfields"
-
-#: kcmdesignerfields.cpp:129
-#, kde-format
-msgid "Qt Designer Fields Dialog"
-msgstr "Qt Designer Alanları Penceresi"
-
-#: kcmdesignerfields.cpp:131
-#, kde-format
-msgid "(c) 2004 Tobias Koenig"
-msgstr "(c) 2004 Tobias Koenig"
-
-#: kcmdesignerfields.cpp:132
-#: kontactplugin/specialdates/specialdates_plugin.cpp:43
-#, kde-format
-msgid "Tobias Koenig"
-msgstr "Tobias Koenig"
-
-#: kcmdesignerfields.cpp:167
+#: kcmdesignerfields.cpp:158
 #, kde-format
 msgid "<qt>Do you really want to delete '<b>%1</b>'?</qt>"
 msgstr "<qt>'<b>%1</b> ögesini gerçekten silmek istiyor musunuz?</qt>"
 
-#: kcmdesignerfields.cpp:180
+#: kcmdesignerfields.cpp:171
 #, kde-format
 msgid "Import Page"
 msgstr "Sayfa İçe Aktar"
 
-#: kcmdesignerfields.cpp:180
+#: kcmdesignerfields.cpp:171
 #, kde-format
 msgid "Designer Files"
 msgstr "Designer Dosyaları"
 
-#: kcmdesignerfields.cpp:274
+#: kcmdesignerfields.cpp:265
 #, kde-format
 msgid ""
 "<qt><b>Warning:</b> Qt Designer could not be found. It is probably not "
@@ -2127,17 +2106,17 @@ msgstr ""
 "<qt><b>Uyarı:</b> Qt Designer bulunamadı. Büyük olasılıkla kurulu değil. "
 "Yalnızca var olan Designer dosyalarını içe aktarabileceksiniz.</qt>"
 
-#: kcmdesignerfields.cpp:284
+#: kcmdesignerfields.cpp:275
 #, kde-format
 msgid "Available Pages"
 msgstr "Kullanılabilir Sayfalar"
 
-#: kcmdesignerfields.cpp:290
+#: kcmdesignerfields.cpp:281
 #, kde-format
 msgid "Preview of Selected Page"
 msgstr "Seçili Sayfanın Önizlemesi"
 
-#: kcmdesignerfields.cpp:309
+#: kcmdesignerfields.cpp:300
 #, kde-format
 msgid ""
 "<qt><p>This section allows you to add your own GUI Elements ('<i>Widgets</"
@@ -2169,42 +2148,42 @@ msgstr ""
 "düzenleyecek. Uygulama adının düzenlenebilirliğini değiştirmek için, araç "
 "takımı adını Qt Designer içinden ayarlayın.</p></qt>"
 
-#: kcmdesignerfields.cpp:331
+#: kcmdesignerfields.cpp:322
 #, kde-format
 msgid "<a href=\"whatsthis:%1\">How does this work?</a>"
 msgstr "<a href=\"whatsthis:%1\">Bu nasıl çalışır?</a>"
 
-#: kcmdesignerfields.cpp:342
+#: kcmdesignerfields.cpp:333
 #, kde-format
 msgid "Delete Page"
 msgstr "Sayfayı Sil"
 
-#: kcmdesignerfields.cpp:345
+#: kcmdesignerfields.cpp:336
 #, kde-format
 msgid "Import Page..."
 msgstr "Sayfa İçe Aktar..."
 
-#: kcmdesignerfields.cpp:347
+#: kcmdesignerfields.cpp:338
 #, kde-format
 msgid "Edit with Qt Designer..."
 msgstr "Qt Designer ile Düzenle..."
 
-#: kcmdesignerfields.cpp:372
+#: kcmdesignerfields.cpp:363
 #, kde-format
 msgid "Key:"
 msgstr "Düğme:"
 
-#: kcmdesignerfields.cpp:374
+#: kcmdesignerfields.cpp:365
 #, kde-format
 msgid "Type:"
 msgstr "Tür:"
 
-#: kcmdesignerfields.cpp:376
+#: kcmdesignerfields.cpp:367
 #, kde-format
 msgid "Classname:"
 msgstr "Sınıf Adı:"
 
-#: kcmdesignerfields.cpp:378
+#: kcmdesignerfields.cpp:369
 #, kde-format
 msgid "Description:"
 msgstr "Açıklama:"
@@ -3374,6 +3353,11 @@ msgstr ""
 #, kde-format
 msgid "Current Maintainer"
 msgstr "Şu Anki Geliştirici"
+
+#: kontactplugin/specialdates/specialdates_plugin.cpp:43
+#, kde-format
+msgid "Tobias Koenig"
+msgstr "Tobias Koenig"
 
 #: korganizer.cpp:279
 #, kde-format
@@ -6074,3 +6058,12 @@ msgstr "%1"
 msgctxt "4 digit year"
 msgid "%1"
 msgstr "%1"
+
+#~ msgid "KCMDesignerfields"
+#~ msgstr "KCMDesignerfields"
+
+#~ msgid "Qt Designer Fields Dialog"
+#~ msgstr "Qt Designer Alanları Penceresi"
+
+#~ msgid "(c) 2004 Tobias Koenig"
+#~ msgstr "(c) 2004 Tobias Koenig"

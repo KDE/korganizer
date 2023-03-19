@@ -15,7 +15,7 @@ msgid ""
 msgstr ""
 "Project-Id-Version: korganizer\n"
 "Report-Msgid-Bugs-To: https://bugs.kde.org\n"
-"POT-Creation-Date: 2023-03-09 00:47+0000\n"
+"POT-Creation-Date: 2023-03-19 00:49+0000\n"
 "PO-Revision-Date: 2021-11-06 10:56+0200\n"
 "Last-Translator: Stelios <sstavra@gmail.com>\n"
 "Language-Team: Greek <kde-i18n-el@kde.org>\n"
@@ -90,7 +90,7 @@ msgstr "Reinhold Kainhofer"
 msgid "Former Maintainer"
 msgstr "Πρώην συντηρητής"
 
-#: aboutdata.cpp:32 kcmdesignerfields.cpp:133
+#: aboutdata.cpp:32
 #, kde-format
 msgid "Cornelius Schumacher"
 msgstr "Cornelius Schumacher"
@@ -2109,43 +2109,22 @@ msgstr "Ημερομηνία & Ώρα"
 msgid "Date"
 msgstr "Ημερομηνία"
 
-#: kcmdesignerfields.cpp:127
-#, kde-format
-msgid "KCMDesignerfields"
-msgstr "KCMDesignerfields"
-
-#: kcmdesignerfields.cpp:129
-#, kde-format
-msgid "Qt Designer Fields Dialog"
-msgstr "Πεδία του διαλόγου Qt Designer"
-
-#: kcmdesignerfields.cpp:131
-#, kde-format
-msgid "(c) 2004 Tobias Koenig"
-msgstr "(c) 2004 Tobias Koenig"
-
-#: kcmdesignerfields.cpp:132
-#: kontactplugin/specialdates/specialdates_plugin.cpp:43
-#, kde-format
-msgid "Tobias Koenig"
-msgstr "Tobias Koenig"
-
-#: kcmdesignerfields.cpp:167
+#: kcmdesignerfields.cpp:158
 #, kde-format
 msgid "<qt>Do you really want to delete '<b>%1</b>'?</qt>"
 msgstr "<qt>Θέλετε πράγματι να διαγράψετε το '<b>%1</b>';</qt>"
 
-#: kcmdesignerfields.cpp:180
+#: kcmdesignerfields.cpp:171
 #, kde-format
 msgid "Import Page"
 msgstr "Εισαγωγή σελίδας"
 
-#: kcmdesignerfields.cpp:180
+#: kcmdesignerfields.cpp:171
 #, kde-format
 msgid "Designer Files"
 msgstr "Αρχεία Designer"
 
-#: kcmdesignerfields.cpp:274
+#: kcmdesignerfields.cpp:265
 #, kde-format
 msgid ""
 "<qt><b>Warning:</b> Qt Designer could not be found. It is probably not "
@@ -2155,17 +2134,17 @@ msgstr ""
 "εγκατεστημένο. Θα μπορείτε μόνο να εισάγετε τα υπάρχοντα αρχεία designer.</"
 "qt>"
 
-#: kcmdesignerfields.cpp:284
+#: kcmdesignerfields.cpp:275
 #, kde-format
 msgid "Available Pages"
 msgstr "Διαθέσιμες σελίδες"
 
-#: kcmdesignerfields.cpp:290
+#: kcmdesignerfields.cpp:281
 #, kde-format
 msgid "Preview of Selected Page"
 msgstr "Προεπισκόπηση της επιλεγμένης σελίδας"
 
-#: kcmdesignerfields.cpp:309
+#: kcmdesignerfields.cpp:300
 #, kde-format
 msgid ""
 "<qt><p>This section allows you to add your own GUI Elements ('<i>Widgets</"
@@ -2200,42 +2179,42 @@ msgstr ""
 "αλλάξετε το όνομα της εφαρμογής, θα πρέπει να αλλάξετε το όνομα του γραφικού "
 "συστατικού στον Qt Designer.</p></qt>"
 
-#: kcmdesignerfields.cpp:331
+#: kcmdesignerfields.cpp:322
 #, kde-format
 msgid "<a href=\"whatsthis:%1\">How does this work?</a>"
 msgstr "<a href=\"whatsthis:%1\">Πώς δουλεύει αυτό;</a>"
 
-#: kcmdesignerfields.cpp:342
+#: kcmdesignerfields.cpp:333
 #, kde-format
 msgid "Delete Page"
 msgstr "Διαγραφή σελίδας"
 
-#: kcmdesignerfields.cpp:345
+#: kcmdesignerfields.cpp:336
 #, kde-format
 msgid "Import Page..."
 msgstr "Εισαγωγή σελίδας..."
 
-#: kcmdesignerfields.cpp:347
+#: kcmdesignerfields.cpp:338
 #, kde-format
 msgid "Edit with Qt Designer..."
 msgstr "Επεξεργασία με τον Qt Designer"
 
-#: kcmdesignerfields.cpp:372
+#: kcmdesignerfields.cpp:363
 #, kde-format
 msgid "Key:"
 msgstr "Κλειδί:"
 
-#: kcmdesignerfields.cpp:374
+#: kcmdesignerfields.cpp:365
 #, kde-format
 msgid "Type:"
 msgstr "Τύπος:"
 
-#: kcmdesignerfields.cpp:376
+#: kcmdesignerfields.cpp:367
 #, kde-format
 msgid "Classname:"
 msgstr "Όνομα κλάσης:"
 
-#: kcmdesignerfields.cpp:378
+#: kcmdesignerfields.cpp:369
 #, kde-format
 msgid "Description:"
 msgstr "Περιγραφή:"
@@ -3421,6 +3400,11 @@ msgstr ""
 #, kde-format
 msgid "Current Maintainer"
 msgstr "Τρέχων συντηρητής"
+
+#: kontactplugin/specialdates/specialdates_plugin.cpp:43
+#, kde-format
+msgid "Tobias Koenig"
+msgstr "Tobias Koenig"
 
 #: korganizer.cpp:279
 #, kde-format
@@ -6204,6 +6188,15 @@ msgstr "%1"
 msgctxt "4 digit year"
 msgid "%1"
 msgstr "%1"
+
+#~ msgid "KCMDesignerfields"
+#~ msgstr "KCMDesignerfields"
+
+#~ msgid "Qt Designer Fields Dialog"
+#~ msgstr "Πεδία του διαλόγου Qt Designer"
+
+#~ msgid "(c) 2004 Tobias Koenig"
+#~ msgstr "(c) 2004 Tobias Koenig"
 
 #~ msgid "Upcoming Events Configuration Dialog"
 #~ msgstr "Διάλογος διαμόρφωσης επερχόμενων γεγονότων"

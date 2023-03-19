@@ -6,7 +6,7 @@ msgid ""
 msgstr ""
 "Project-Id-Version: \n"
 "Report-Msgid-Bugs-To: https://bugs.kde.org\n"
-"POT-Creation-Date: 2023-03-09 00:47+0000\n"
+"POT-Creation-Date: 2023-03-19 00:49+0000\n"
 "PO-Revision-Date: 2013-04-15 10:39+0530\n"
 "Last-Translator: Chetan Khona <chetan@kompkin.com>\n"
 "Language-Team: Marathi <kde-i18n-doc@kde.org>\n"
@@ -79,7 +79,7 @@ msgstr "रेनहोल्ड केईनहोफार"
 msgid "Former Maintainer"
 msgstr "पूर्वीचा पालक"
 
-#: aboutdata.cpp:32 kcmdesignerfields.cpp:133
+#: aboutdata.cpp:32
 #, kde-format
 msgid "Cornelius Schumacher"
 msgstr "कॉर्नेलियस शूमेकर"
@@ -2119,45 +2119,23 @@ msgstr "दिनांक व वेळ"
 msgid "Date"
 msgstr "दिनांक"
 
-#: kcmdesignerfields.cpp:127
-#, kde-format
-msgid "KCMDesignerfields"
-msgstr " KCMDesignerfields."
-
-#: kcmdesignerfields.cpp:129
-#, kde-format
-msgid "Qt Designer Fields Dialog"
-msgstr "Qt आरेखन प्रक्षेत्र संवाद"
-
-#: kcmdesignerfields.cpp:131
-#, fuzzy, kde-format
-#| msgid "(c), 2004 Tobias Koenig"
-msgid "(c) 2004 Tobias Koenig"
-msgstr "©, २००४ टोबिआस कोएनिग"
-
-#: kcmdesignerfields.cpp:132
-#: kontactplugin/specialdates/specialdates_plugin.cpp:43
-#, kde-format
-msgid "Tobias Koenig"
-msgstr "टोबीआस कोएनींग"
-
-#: kcmdesignerfields.cpp:167
+#: kcmdesignerfields.cpp:158
 #, kde-format
 msgid "<qt>Do you really want to delete '<b>%1</b>'?</qt>"
 msgstr "<qt>तुम्हाला नक्की '<b>%1</b>' नष्ट करायचे आहे का?</qt>"
 
-#: kcmdesignerfields.cpp:180
+#: kcmdesignerfields.cpp:171
 #, kde-format
 msgid "Import Page"
 msgstr "आयात पान/पान आयात करा"
 
-#: kcmdesignerfields.cpp:180
+#: kcmdesignerfields.cpp:171
 #, fuzzy, kde-format
 #| msgid "*.ui|Designer Files"
 msgid "Designer Files"
 msgstr "*.ui| आरेखन प्रक्षेत्र"
 
-#: kcmdesignerfields.cpp:274
+#: kcmdesignerfields.cpp:265
 #, kde-format
 msgid ""
 "<qt><b>Warning:</b> Qt Designer could not be found. It is probably not "
@@ -2166,17 +2144,17 @@ msgstr ""
 "<qt><b>इशारा:</b> Qt आरेखक/रचनाकार मिळाला नाही. तो स्थापित केला नसल्याची शक्यता "
 "आहे.तुम्हाला फक्त  सध्याच्या आरेखन फाईल्स आयात करणे शक्य आहे.</qt>"
 
-#: kcmdesignerfields.cpp:284
+#: kcmdesignerfields.cpp:275
 #, kde-format
 msgid "Available Pages"
 msgstr "उपलब्ध पाने"
 
-#: kcmdesignerfields.cpp:290
+#: kcmdesignerfields.cpp:281
 #, kde-format
 msgid "Preview of Selected Page"
 msgstr "निवडलेल्या पानाचे पूर्ववलोकन"
 
-#: kcmdesignerfields.cpp:309
+#: kcmdesignerfields.cpp:300
 #, kde-format
 msgid ""
 "<qt><p>This section allows you to add your own GUI Elements ('<i>Widgets</"
@@ -2207,42 +2185,42 @@ msgstr ""
 "संपादन करेल. संपादन करावयाच्या अनुप्रयोगाचे नाव बदलायचे असेल तर विजेटचे नाव  Qt आरेखकात "
 "टाका,</p></qt>"
 
-#: kcmdesignerfields.cpp:331
+#: kcmdesignerfields.cpp:322
 #, kde-format
 msgid "<a href=\"whatsthis:%1\">How does this work?</a>"
 msgstr "<a href=\"whatsthis:%1\">हे काम कसे करते?</a>"
 
-#: kcmdesignerfields.cpp:342
+#: kcmdesignerfields.cpp:333
 #, kde-format
 msgid "Delete Page"
 msgstr "पान काढून टाका"
 
-#: kcmdesignerfields.cpp:345
+#: kcmdesignerfields.cpp:336
 #, kde-format
 msgid "Import Page..."
 msgstr "पान आयात करा..."
 
-#: kcmdesignerfields.cpp:347
+#: kcmdesignerfields.cpp:338
 #, kde-format
 msgid "Edit with Qt Designer..."
 msgstr "Qt आरेखकसह/बरोबर संपादन करा"
 
-#: kcmdesignerfields.cpp:372
+#: kcmdesignerfields.cpp:363
 #, kde-format
 msgid "Key:"
 msgstr "कळ :"
 
-#: kcmdesignerfields.cpp:374
+#: kcmdesignerfields.cpp:365
 #, kde-format
 msgid "Type:"
 msgstr "प्रकार :"
 
-#: kcmdesignerfields.cpp:376
+#: kcmdesignerfields.cpp:367
 #, kde-format
 msgid "Classname:"
 msgstr "प्रवर्गाचे नाव"
 
-#: kcmdesignerfields.cpp:378
+#: kcmdesignerfields.cpp:369
 #, kde-format
 msgid "Description:"
 msgstr "वर्णन :"
@@ -3487,6 +3465,11 @@ msgstr ""
 #| msgid "Former Maintainer"
 msgid "Current Maintainer"
 msgstr "पूर्वीचा पालक"
+
+#: kontactplugin/specialdates/specialdates_plugin.cpp:43
+#, kde-format
+msgid "Tobias Koenig"
+msgstr "टोबीआस कोएनींग"
 
 #: korganizer.cpp:279
 #, kde-format
@@ -6301,6 +6284,17 @@ msgstr "%1"
 msgctxt "4 digit year"
 msgid "%1"
 msgstr "%1"
+
+#~ msgid "KCMDesignerfields"
+#~ msgstr " KCMDesignerfields."
+
+#~ msgid "Qt Designer Fields Dialog"
+#~ msgstr "Qt आरेखन प्रक्षेत्र संवाद"
+
+#, fuzzy
+#~| msgid "(c), 2004 Tobias Koenig"
+#~ msgid "(c) 2004 Tobias Koenig"
+#~ msgstr "©, २००४ टोबिआस कोएनिग"
 
 #~ msgid "Get &Hot New Stuff..."
 #~ msgstr "नवीन वस्तु प्राप्त करा (&H)..."

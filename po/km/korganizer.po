@@ -8,7 +8,7 @@ msgid ""
 msgstr ""
 "Project-Id-Version: korganizer\n"
 "Report-Msgid-Bugs-To: https://bugs.kde.org\n"
-"POT-Creation-Date: 2023-03-09 00:47+0000\n"
+"POT-Creation-Date: 2023-03-19 00:49+0000\n"
 "PO-Revision-Date: 2012-07-09 10:04+0700\n"
 "Last-Translator: Khoem Sokhem <khoemsokhem@khmeros.info>\n"
 "Language-Team: Khmer\n"
@@ -82,7 +82,7 @@ msgstr "Reinhold Kainhofer"
 msgid "Former Maintainer"
 msgstr "អតីត​អ្នក​ថែទាំ​"
 
-#: aboutdata.cpp:32 kcmdesignerfields.cpp:133
+#: aboutdata.cpp:32
 #, kde-format
 msgid "Cornelius Schumacher"
 msgstr "Cornelius Schumacher"
@@ -2102,45 +2102,23 @@ msgstr "ពេលវេលា និង​កាលបរិច្ឆេទ​"
 msgid "Date"
 msgstr "កាលបរិច្ឆេទ "
 
-#: kcmdesignerfields.cpp:127
-#, kde-format
-msgid "KCMDesignerfields"
-msgstr "KCMDesignerfields"
-
-#: kcmdesignerfields.cpp:129
-#, kde-format
-msgid "Qt Designer Fields Dialog"
-msgstr "ប្រអប់​វាល​នៃ​កម្មវិធី​រចនា​ Qt"
-
-#: kcmdesignerfields.cpp:131
-#, fuzzy, kde-format
-#| msgid "(c), 2004 Tobias Koenig"
-msgid "(c) 2004 Tobias Koenig"
-msgstr "រក្សាសិទ្ធិឆ្នាំ​ ២០០៤ ដោយ​​ Tobias Koenig​"
-
-#: kcmdesignerfields.cpp:132
-#: kontactplugin/specialdates/specialdates_plugin.cpp:43
-#, kde-format
-msgid "Tobias Koenig"
-msgstr "Tobias Koenig"
-
-#: kcmdesignerfields.cpp:167
+#: kcmdesignerfields.cpp:158
 #, kde-format
 msgid "<qt>Do you really want to delete '<b>%1</b>'?</qt>"
 msgstr "<qt>តើ​អ្នក​ពិតជាចង់​លុប​ '<b>%1</b>' ឬ ​?</qt>​"
 
-#: kcmdesignerfields.cpp:180
+#: kcmdesignerfields.cpp:171
 #, kde-format
 msgid "Import Page"
 msgstr "នាំចូល​ទំព័រ​"
 
-#: kcmdesignerfields.cpp:180
+#: kcmdesignerfields.cpp:171
 #, fuzzy, kde-format
 #| msgid "*.ui|Designer Files"
 msgid "Designer Files"
 msgstr "ឯកសារ​ *.ui|Designer ​​"
 
-#: kcmdesignerfields.cpp:274
+#: kcmdesignerfields.cpp:265
 #, kde-format
 msgid ""
 "<qt><b>Warning:</b> Qt Designer could not be found. It is probably not "
@@ -2149,17 +2127,17 @@ msgstr ""
 "<qt><b>ការព្រមាន​ ៖​</b> កម្មវិធី​​រចនា​ Qt មិន​អាច​ត្រូវបាន​រកឃើញ​ ។ វាប្រហែលជា​មិន​បានដំឡើង​ ។​ "
 "អ្នក​នឹង​​អាច​នាំចូលឯកសារកម្មវិធីរចនាដែលមាន​ស្រាប់​តែប៉ុណ្ណោះ​ ។​</qt>"
 
-#: kcmdesignerfields.cpp:284
+#: kcmdesignerfields.cpp:275
 #, kde-format
 msgid "Available Pages"
 msgstr "ទំព័រ​ដែល​អាច​រកបាន​"
 
-#: kcmdesignerfields.cpp:290
+#: kcmdesignerfields.cpp:281
 #, kde-format
 msgid "Preview of Selected Page"
 msgstr "មើល​ជាមុន​នៃទំព័រ​ដែល​បានជ្រើស​"
 
-#: kcmdesignerfields.cpp:309
+#: kcmdesignerfields.cpp:300
 #, kde-format
 msgid ""
 "<qt><p>This section allows you to add your own GUI Elements ('<i>Widgets</"
@@ -2189,42 +2167,42 @@ msgstr ""
 "កម្មវិធីរបស់​​ %2 ។  ផ្លាស់ប្តូរ​ឈ្មោះកម្មវិធីត្រូវបាន​កែសម្រួល​​ កំណត់ឈ្មោះ​ធាតុ​ក្រាហ្វិក​ក្នុង​កម្មវិធី​រចនា​​ Qt ។"
 "</p></qt>"
 
-#: kcmdesignerfields.cpp:331
+#: kcmdesignerfields.cpp:322
 #, kde-format
 msgid "<a href=\"whatsthis:%1\">How does this work?</a>"
 msgstr "<a href=\"whatsthis:%1\">តើ​វា​ដំណើរការ​យ៉ាង​ដូចម្ដេច ?</a>"
 
-#: kcmdesignerfields.cpp:342
+#: kcmdesignerfields.cpp:333
 #, kde-format
 msgid "Delete Page"
 msgstr "លុប​ទំព័រ​​"
 
-#: kcmdesignerfields.cpp:345
+#: kcmdesignerfields.cpp:336
 #, kde-format
 msgid "Import Page..."
 msgstr "នាំចូល​ទំព័រ​..."
 
-#: kcmdesignerfields.cpp:347
+#: kcmdesignerfields.cpp:338
 #, kde-format
 msgid "Edit with Qt Designer..."
 msgstr "កែសម្រួលជាមួយ​កម្មវិធី​រចនា​ Qt ​...​"
 
-#: kcmdesignerfields.cpp:372
+#: kcmdesignerfields.cpp:363
 #, kde-format
 msgid "Key:"
 msgstr "សោ ៖"
 
-#: kcmdesignerfields.cpp:374
+#: kcmdesignerfields.cpp:365
 #, kde-format
 msgid "Type:"
 msgstr "ប្រភេទ ៖​"
 
-#: kcmdesignerfields.cpp:376
+#: kcmdesignerfields.cpp:367
 #, kde-format
 msgid "Classname:"
 msgstr "Classname ៖"
 
-#: kcmdesignerfields.cpp:378
+#: kcmdesignerfields.cpp:369
 #, kde-format
 msgid "Description:"
 msgstr "សេចក្តី​ពិពណ៌នា ៖"
@@ -3452,6 +3430,11 @@ msgstr ""
 #| msgid "Former Maintainer"
 msgid "Current Maintainer"
 msgstr "អតីត​អ្នក​ថែទាំ​"
+
+#: kontactplugin/specialdates/specialdates_plugin.cpp:43
+#, kde-format
+msgid "Tobias Koenig"
+msgstr "Tobias Koenig"
 
 #: korganizer.cpp:279
 #, kde-format
@@ -6212,6 +6195,17 @@ msgstr "%1"
 msgctxt "4 digit year"
 msgid "%1"
 msgstr "%1"
+
+#~ msgid "KCMDesignerfields"
+#~ msgstr "KCMDesignerfields"
+
+#~ msgid "Qt Designer Fields Dialog"
+#~ msgstr "ប្រអប់​វាល​នៃ​កម្មវិធី​រចនា​ Qt"
+
+#, fuzzy
+#~| msgid "(c), 2004 Tobias Koenig"
+#~ msgid "(c) 2004 Tobias Koenig"
+#~ msgstr "រក្សាសិទ្ធិឆ្នាំ​ ២០០៤ ដោយ​​ Tobias Koenig​"
 
 #~ msgid "Get &Hot New Stuff..."
 #~ msgstr "យក​របស់​ថ្មី​ៗ​បំផុត..."

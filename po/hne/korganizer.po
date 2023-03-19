@@ -8,7 +8,7 @@ msgid ""
 msgstr ""
 "Project-Id-Version: korganizer\n"
 "Report-Msgid-Bugs-To: https://bugs.kde.org\n"
-"POT-Creation-Date: 2023-03-09 00:47+0000\n"
+"POT-Creation-Date: 2023-03-19 00:49+0000\n"
 "PO-Revision-Date: 2009-02-28 20:07+0530\n"
 "Last-Translator: Ravishankar Shrivastava <raviratlami@aol.in>\n"
 "Language-Team: Hindi <kde-i18n-doc@lists.kde.org>\n"
@@ -79,7 +79,7 @@ msgstr "रेइनहोल्ड केइनहोफर"
 msgid "Former Maintainer"
 msgstr "पहिली के मेंटेनर"
 
-#: aboutdata.cpp:32 kcmdesignerfields.cpp:133
+#: aboutdata.cpp:32
 #, kde-format
 msgid "Cornelius Schumacher"
 msgstr "कार्नेलियस सूमेकर"
@@ -2084,66 +2084,43 @@ msgstr "तारीक अउ समय"
 msgid "Date"
 msgstr "तारीक: (&D)"
 
-#: kcmdesignerfields.cpp:127
-#, kde-format
-msgid "KCMDesignerfields"
-msgstr ""
-
-#: kcmdesignerfields.cpp:129
-#, kde-format
-msgid "Qt Designer Fields Dialog"
-msgstr ""
-
-#: kcmdesignerfields.cpp:131
-#, fuzzy, kde-format
-#| msgid "Tobias König"
-msgid "(c) 2004 Tobias Koenig"
-msgstr "टाबियस कोएनिग"
-
-#: kcmdesignerfields.cpp:132
-#: kontactplugin/specialdates/specialdates_plugin.cpp:43
-#, fuzzy, kde-format
-#| msgid "Tobias König"
-msgid "Tobias Koenig"
-msgstr "टाबियस कोएनिग"
-
-#: kcmdesignerfields.cpp:167
+#: kcmdesignerfields.cpp:158
 #, fuzzy, kde-format
 #| msgid "<qt>Do you really want to remove the resource <b>%1</b>?</qt>"
 msgid "<qt>Do you really want to delete '<b>%1</b>'?</qt>"
 msgstr "<qt>का आप मन सचमुच संसाधन <b>%1</b> ल मिटाना चाहथो?</qt>"
 
-#: kcmdesignerfields.cpp:180
+#: kcmdesignerfields.cpp:171
 #, fuzzy, kde-format
 #| msgid "Import Calendar"
 msgid "Import Page"
 msgstr "कलेन्डर आयात करव"
 
-#: kcmdesignerfields.cpp:180
+#: kcmdesignerfields.cpp:171
 #, fuzzy, kde-format
 #| msgctxt "@label filter for KUrlRequester"
 #| msgid "*.ics|iCalendar Files"
 msgid "Designer Files"
 msgstr "*.ics|आईकलेन्डर फाइल"
 
-#: kcmdesignerfields.cpp:274
+#: kcmdesignerfields.cpp:265
 #, kde-format
 msgid ""
 "<qt><b>Warning:</b> Qt Designer could not be found. It is probably not "
 "installed. You will only be able to import existing designer files.</qt>"
 msgstr ""
 
-#: kcmdesignerfields.cpp:284
+#: kcmdesignerfields.cpp:275
 #, kde-format
 msgid "Available Pages"
 msgstr ""
 
-#: kcmdesignerfields.cpp:290
+#: kcmdesignerfields.cpp:281
 #, kde-format
 msgid "Preview of Selected Page"
 msgstr ""
 
-#: kcmdesignerfields.cpp:309
+#: kcmdesignerfields.cpp:300
 #, kde-format
 msgid ""
 "<qt><p>This section allows you to add your own GUI Elements ('<i>Widgets</"
@@ -2161,48 +2138,48 @@ msgid ""
 "name to be edited, set the widget name in Qt Designer.</p></qt>"
 msgstr ""
 
-#: kcmdesignerfields.cpp:331
+#: kcmdesignerfields.cpp:322
 #, kde-format
 msgid "<a href=\"whatsthis:%1\">How does this work?</a>"
 msgstr ""
 
-#: kcmdesignerfields.cpp:342
+#: kcmdesignerfields.cpp:333
 #, fuzzy, kde-format
 #| msgid "Delete"
 msgid "Delete Page"
 msgstr "मेटाव"
 
-#: kcmdesignerfields.cpp:345
+#: kcmdesignerfields.cpp:336
 #, fuzzy, kde-format
 #| msgid "Import &Calendar..."
 msgid "Import Page..."
 msgstr "कलेन्डर आयात करव... (&C)"
 
-#: kcmdesignerfields.cpp:347
+#: kcmdesignerfields.cpp:338
 #, kde-format
 msgid "Edit with Qt Designer..."
 msgstr ""
 
-#: kcmdesignerfields.cpp:372
+#: kcmdesignerfields.cpp:363
 #, kde-format
 msgid "Key:"
 msgstr ""
 
-#: kcmdesignerfields.cpp:374
+#: kcmdesignerfields.cpp:365
 #, fuzzy, kde-format
 #| msgctxt "@label"
 #| msgid "Type:"
 msgid "Type:"
 msgstr "किसिमः"
 
-#: kcmdesignerfields.cpp:376
+#: kcmdesignerfields.cpp:367
 #, fuzzy, kde-format
 #| msgctxt "login name on the Kolab server"
 #| msgid "Username:"
 msgid "Classname:"
 msgstr "कमइया नाम:"
 
-#: kcmdesignerfields.cpp:378
+#: kcmdesignerfields.cpp:369
 #, kde-format
 msgid "Description:"
 msgstr "वर्ननः"
@@ -3406,6 +3383,12 @@ msgstr ""
 #| msgid "Former Maintainer"
 msgid "Current Maintainer"
 msgstr "पहिली के मेंटेनर"
+
+#: kontactplugin/specialdates/specialdates_plugin.cpp:43
+#, fuzzy, kde-format
+#| msgid "Tobias König"
+msgid "Tobias Koenig"
+msgstr "टाबियस कोएनिग"
 
 #: korganizer.cpp:279
 #, kde-format
@@ -5889,6 +5872,11 @@ msgstr "%1"
 msgctxt "4 digit year"
 msgid "%1"
 msgstr "%1"
+
+#, fuzzy
+#~| msgid "Tobias König"
+#~ msgid "(c) 2004 Tobias Koenig"
+#~ msgstr "टाबियस कोएनिग"
 
 #~ msgid "Get &Hot New Stuff..."
 #~ msgstr "नवा चीज प्राप्त करव... (&H)"
