@@ -10,7 +10,7 @@ msgid ""
 msgstr ""
 "Project-Id-Version: korganizer\n"
 "Report-Msgid-Bugs-To: https://bugs.kde.org\n"
-"POT-Creation-Date: 2023-03-19 00:49+0000\n"
+"POT-Creation-Date: 2023-03-20 00:51+0000\n"
 "PO-Revision-Date: 2019-11-05 20:02+0100\n"
 "Last-Translator: Matej Mrenica <matejm98mthw@gmail.com>\n"
 "Language-Team: Slovak <kde-i18n-doc@kde.org>\n"
@@ -100,7 +100,7 @@ msgstr "Preston Brown"
 msgid "Original Author"
 msgstr "Originálny Autor"
 
-#: aboutdata.cpp:34 prefs/koprefsuserfeedback.cpp:36
+#: aboutdata.cpp:34
 #, kde-format
 msgid "Laurent Montel"
 msgstr "Laurent Montel"
@@ -2106,22 +2106,22 @@ msgstr "Dátum a čas"
 msgid "Date"
 msgstr "Dátum"
 
-#: kcmdesignerfields.cpp:158
+#: kcmdesignerfields.cpp:167
 #, kde-format
 msgid "<qt>Do you really want to delete '<b>%1</b>'?</qt>"
 msgstr "<qt>Naozaj chcete vymazať '<b>%1</b>'?</qt>"
 
-#: kcmdesignerfields.cpp:171
+#: kcmdesignerfields.cpp:181 kcmdesignerfields.cpp:184
 #, kde-format
 msgid "Import Page"
 msgstr "Importovať stranu"
 
-#: kcmdesignerfields.cpp:171
+#: kcmdesignerfields.cpp:181 kcmdesignerfields.cpp:186
 #, kde-format
 msgid "Designer Files"
 msgstr "Súbory Designer"
 
-#: kcmdesignerfields.cpp:265
+#: kcmdesignerfields.cpp:289
 #, kde-format
 msgid ""
 "<qt><b>Warning:</b> Qt Designer could not be found. It is probably not "
@@ -2130,17 +2130,17 @@ msgstr ""
 "<qt><b>Varovanie:</b> Qt Designer nemožno nájsť. Pravdepodobne nie je "
 "nainštalovaný. Budete môcť importovať iba existujúce súbory designer.</qt>"
 
-#: kcmdesignerfields.cpp:275
+#: kcmdesignerfields.cpp:307
 #, kde-format
 msgid "Available Pages"
 msgstr "Dostupné strany"
 
-#: kcmdesignerfields.cpp:281
+#: kcmdesignerfields.cpp:314 kcmdesignerfields.cpp:316
 #, kde-format
 msgid "Preview of Selected Page"
 msgstr "Náhľad vybranej strany"
 
-#: kcmdesignerfields.cpp:300
+#: kcmdesignerfields.cpp:336
 #, kde-format
 msgid ""
 "<qt><p>This section allows you to add your own GUI Elements ('<i>Widgets</"
@@ -2173,42 +2173,42 @@ msgstr ""
 "chcete zmeniť názov aplikácie pre upravovanie, nastavte názov grafického "
 "prvku v Qt Designer.</p></qt>"
 
-#: kcmdesignerfields.cpp:322
+#: kcmdesignerfields.cpp:359 kcmdesignerfields.cpp:361
 #, kde-format
 msgid "<a href=\"whatsthis:%1\">How does this work?</a>"
 msgstr "<a href=\"whatsthis:%1\">Ako toto funguje?</a>"
 
-#: kcmdesignerfields.cpp:333
+#: kcmdesignerfields.cpp:374 kcmdesignerfields.cpp:376
 #, kde-format
 msgid "Delete Page"
 msgstr "Odstrániť stranu"
 
-#: kcmdesignerfields.cpp:336
+#: kcmdesignerfields.cpp:381 kcmdesignerfields.cpp:383
 #, kde-format
 msgid "Import Page..."
 msgstr "Importovať stranu..."
 
-#: kcmdesignerfields.cpp:338
+#: kcmdesignerfields.cpp:387 kcmdesignerfields.cpp:389
 #, kde-format
 msgid "Edit with Qt Designer..."
 msgstr "Upraviť s Qt Designer..."
 
-#: kcmdesignerfields.cpp:363
+#: kcmdesignerfields.cpp:415
 #, kde-format
 msgid "Key:"
 msgstr "Kľúč:"
 
-#: kcmdesignerfields.cpp:365
+#: kcmdesignerfields.cpp:417
 #, kde-format
 msgid "Type:"
 msgstr "Typ:"
 
-#: kcmdesignerfields.cpp:367
+#: kcmdesignerfields.cpp:419
 #, kde-format
 msgid "Classname:"
 msgstr "Názov triedy:"
 
-#: kcmdesignerfields.cpp:369
+#: kcmdesignerfields.cpp:421
 #, kde-format
 msgid "Description:"
 msgstr "Popis:"
@@ -2645,9 +2645,9 @@ msgid ""
 "You will be presented with a dialog where you can create a new journal entry."
 msgstr "Zobrazí sa vám dialóg, kde môžete vytvoriť nový zápis v denníku."
 
-#: kontactplugin/korganizer/kcmapptsummary.cpp:71
-#: kontactplugin/korganizer/kcmtodosummary.cpp:56
-#: kontactplugin/specialdates/kcmsdsummary.cpp:61
+#: kontactplugin/korganizer/kcmapptsummary.cpp:91
+#: kontactplugin/korganizer/kcmtodosummary.cpp:73
+#: kontactplugin/specialdates/kcmsdsummary.cpp:78
 #, kde-format
 msgid " day"
 msgid_plural " days"
@@ -3489,19 +3489,19 @@ msgstr ""
 "pracovné dni. Prosím, správne nakonfigurovať aspoň 1 pracovný deň v "
 "predvoľbách času a dátumu."
 
-#: prefs/koprefsdialogcolorsandfonts.cpp:41
+#: prefs/koprefsdialogcolorsandfonts.cpp:55
 #, kde-format
 msgctxt "@title:tab"
 msgid "Colors"
 msgstr "Farby"
 
-#: prefs/koprefsdialogcolorsandfonts.cpp:91
+#: prefs/koprefsdialogcolorsandfonts.cpp:105
 #, kde-format
 msgctxt "@title:group"
 msgid "Tags"
 msgstr ""
 
-#: prefs/koprefsdialogcolorsandfonts.cpp:105
+#: prefs/koprefsdialogcolorsandfonts.cpp:119
 #, fuzzy, kde-format
 #| msgctxt "@info:whatsthis"
 #| msgid ""
@@ -3515,7 +3515,7 @@ msgstr ""
 "Vyberte kalendár, ktorý chcete upraviť. Môžete zmeniť farbu pre vybraný "
 "kalendár nižšie pomocou tlačidla."
 
-#: prefs/koprefsdialogcolorsandfonts.cpp:113
+#: prefs/koprefsdialogcolorsandfonts.cpp:127
 #, fuzzy, kde-format
 #| msgctxt "@info:whatsthis"
 #| msgid ""
@@ -3526,13 +3526,13 @@ msgstr ""
 "Tu vybrať farbu pre zvolený kalendár pomocou vyššie uvedeného rozbaľovacieho "
 "zoznamu."
 
-#: prefs/koprefsdialogcolorsandfonts.cpp:121
+#: prefs/koprefsdialogcolorsandfonts.cpp:135
 #, kde-format
 msgctxt "@title:group"
 msgid "Resources"
 msgstr "Zdroje"
 
-#: prefs/koprefsdialogcolorsandfonts.cpp:132
+#: prefs/koprefsdialogcolorsandfonts.cpp:146
 #, kde-format
 msgctxt "@info:whatsthis"
 msgid ""
@@ -3542,7 +3542,7 @@ msgstr ""
 "Vyberte kalendár, ktorý chcete upraviť. Môžete zmeniť farbu pre vybraný "
 "kalendár nižšie pomocou tlačidla."
 
-#: prefs/koprefsdialogcolorsandfonts.cpp:140
+#: prefs/koprefsdialogcolorsandfonts.cpp:154
 #, kde-format
 msgctxt "@info:whatsthis"
 msgid ""
@@ -3551,136 +3551,136 @@ msgstr ""
 "Tu vybrať farbu pre zvolený kalendár pomocou vyššie uvedeného rozbaľovacieho "
 "zoznamu."
 
-#: prefs/koprefsdialogcolorsandfonts.cpp:148
+#: prefs/koprefsdialogcolorsandfonts.cpp:166
 #, kde-format
 msgctxt "@title:tab"
 msgid "Fonts"
 msgstr "Písma"
 
-#: prefs/koprefsdialogcolorsandfonts.cpp:161
-#: prefs/koprefsdialogcolorsandfonts.cpp:167
+#: prefs/koprefsdialogcolorsandfonts.cpp:179
+#: prefs/koprefsdialogcolorsandfonts.cpp:185
 #, kde-format
 msgctxt "@label"
 msgid "Event text"
 msgstr "Text udalosti"
 
-#: prefs/koprefsdialoggroupscheduling.cpp:40
+#: prefs/koprefsdialoggroupscheduling.cpp:49
 #, kde-format
 msgctxt "@label"
 msgid "Mail transport:"
 msgstr "Prenos pošty:"
 
-#: prefs/koprefsdialogmain.cpp:39
+#: prefs/koprefsdialogmain.cpp:53
 #, kde-format
 msgctxt "@title:tab personal settings"
 msgid "Personal"
 msgstr "Osobné"
 
-#: prefs/koprefsdialogmain.cpp:45
+#: prefs/koprefsdialogmain.cpp:59
 #, kde-format
 msgctxt "@title:group email settings"
 msgid "Email Settings"
 msgstr "Nastavenia emailu"
 
-#: prefs/koprefsdialogmain.cpp:62
+#: prefs/koprefsdialogmain.cpp:80
 #, kde-format
 msgctxt "@title:tab"
 msgid "Save"
 msgstr "Uložiť"
 
-#: prefs/koprefsdialogmain.cpp:74
+#: prefs/koprefsdialogmain.cpp:96
 #, kde-format
 msgctxt "@title:tab calendar account settings"
 msgid "Calendars"
 msgstr "Kalendáre"
 
-#: prefs/koprefsdialogmain.cpp:78
+#: prefs/koprefsdialogmain.cpp:104
 #, kde-format
 msgctxt "@title"
 msgid "Calendar Accounts"
 msgstr "Účty kalendára"
 
-#: prefs/koprefsdialogplugins.cpp:61
+#: prefs/koprefsdialogplugins.cpp:62 prefs/koprefsdialogplugins.cpp:68
 #, kde-format
 msgctxt "@title:group"
 msgid "Position"
 msgstr "Poloha"
 
 #. i18nc( "@option:check", "Show in the month view" ), mPositioningGroupBox );
-#: prefs/koprefsdialogplugins.cpp:86
+#: prefs/koprefsdialogplugins.cpp:98
 #, kde-format
 msgctxt "@option:check"
 msgid "Show at the top of the agenda views"
 msgstr "Zobraziť navrchu pohľadov programu"
 
-#: prefs/koprefsdialogplugins.cpp:87
+#: prefs/koprefsdialogplugins.cpp:99
 #, kde-format
 msgctxt "@option:check"
 msgid "Show at the bottom of the agenda views"
 msgstr "Zobraziť na spodku pohľadov programu"
 
-#: prefs/koprefsdialogplugins.cpp:121
+#: prefs/koprefsdialogplugins.cpp:133
 #, kde-format
 msgctxt "@title:group"
 msgid "Calendar Decorations"
 msgstr "Dekorácie kalendára"
 
-#: prefs/koprefsdialogplugins.cpp:141
+#: prefs/koprefsdialogplugins.cpp:153
 #, fuzzy, kde-format
 #| msgid "Configure"
 msgctxt "@action"
 msgid "Configure"
 msgstr "Konfigurovať"
 
-#: prefs/koprefsdialogplugins.cpp:200
+#: prefs/koprefsdialogplugins.cpp:217 prefs/koprefsdialogplugins.cpp:219
 #, kde-format
 msgctxt "@info"
 msgid "Unable to configure this plugin"
 msgstr "Nemôžem nastaviť tento plugin"
 
-#: prefs/koprefsdialogtime.cpp:40
+#: prefs/koprefsdialogtime.cpp:54
 #, kde-format
 msgctxt "@title:tab"
 msgid "Regional"
 msgstr "Miestne"
 
-#: prefs/koprefsdialogtime.cpp:44
+#: prefs/koprefsdialogtime.cpp:58
 #, kde-format
 msgctxt "@title:group"
 msgid "General Time and Date"
 msgstr "Všeobecný čas a dátum"
 
-#: prefs/koprefsdialogtime.cpp:53
+#: prefs/koprefsdialogtime.cpp:67
 #, kde-format
 msgctxt "@title:group"
 msgid "Holidays"
 msgstr "Prázdniny"
 
-#: prefs/koprefsdialogtime.cpp:64
+#: prefs/koprefsdialogtime.cpp:78
 #, kde-format
 msgctxt "@label"
 msgid "Use holiday region:"
 msgstr "Použiť sviatky z regiónu:"
 
-#: prefs/koprefsdialogtime.cpp:87
+#: prefs/koprefsdialogtime.cpp:101
 #, kde-format
 msgctxt "@item:inlistbox Holiday region, region language"
 msgid "%1 (%2)"
 msgstr "%1 (%2)"
 
-#: prefs/koprefsdialogtime.cpp:96
+#: prefs/koprefsdialogtime.cpp:110
 #, kde-format
 msgctxt "@item:inlistbox"
 msgid "Select Holiday Regions"
 msgstr "Vybrať regionálne sviatky"
 
-#: prefs/koprefsdialogtime.cpp:108
+#: prefs/koprefsdialogtime.cpp:122
 #, kde-format
 msgctxt "@title:group"
 msgid "Working Period"
 msgstr "Pracovná doba"
 
-#: prefs/koprefsdialogtime.cpp:123
+#: prefs/koprefsdialogtime.cpp:137
 #, kde-format
 msgctxt "@info:whatsthis"
 msgid ""
@@ -3692,91 +3692,91 @@ msgstr ""
 "týždni. Ak je to pre vás pracovný deň, zaškrtnite toto pole, inak sa "
 "pracovné hodiny neoznačia farbou."
 
-#: prefs/koprefsdialogtime.cpp:138
+#: prefs/koprefsdialogtime.cpp:152
 #, kde-format
 msgctxt "@item:inlistbox"
 msgid "Monday"
 msgstr "Pondelok"
 
-#: prefs/koprefsdialogtime.cpp:138
+#: prefs/koprefsdialogtime.cpp:152
 #, kde-format
 msgctxt "@item:inlistbox"
 msgid "Tuesday"
 msgstr "Utorok"
 
-#: prefs/koprefsdialogtime.cpp:138
+#: prefs/koprefsdialogtime.cpp:152
 #, kde-format
 msgctxt "@item:inlistbox"
 msgid "Wednesday"
 msgstr "Streda"
 
-#: prefs/koprefsdialogtime.cpp:139
+#: prefs/koprefsdialogtime.cpp:153
 #, kde-format
 msgctxt "@item:inlistbox"
 msgid "Thursday"
 msgstr "Štvrtok"
 
-#: prefs/koprefsdialogtime.cpp:139
+#: prefs/koprefsdialogtime.cpp:153
 #, kde-format
 msgctxt "@item:inlistbox"
 msgid "Friday"
 msgstr "Piatok"
 
-#: prefs/koprefsdialogtime.cpp:139
+#: prefs/koprefsdialogtime.cpp:153
 #, kde-format
 msgctxt "@item:inlistbox"
 msgid "Saturday"
 msgstr "Sobota"
 
-#: prefs/koprefsdialogtime.cpp:140
+#: prefs/koprefsdialogtime.cpp:154
 #, kde-format
 msgctxt "@item:inlistbox"
 msgid "Sunday"
 msgstr "Nedeľa"
 
-#: prefs/koprefsdialogtime.cpp:169
+#: prefs/koprefsdialogtime.cpp:187
 #, kde-format
 msgctxt "@title:tab"
 msgid "Default Values"
 msgstr "Predvolené hodnoty"
 
-#: prefs/koprefsdialogtime.cpp:172
+#: prefs/koprefsdialogtime.cpp:190
 #, kde-format
 msgctxt "@title:group"
 msgid "Appointments"
 msgstr "Schôdzky"
 
-#: prefs/koprefsdialogtime.cpp:187
+#: prefs/koprefsdialogtime.cpp:205
 #, kde-format
 msgctxt "@title:group"
 msgid "Reminders"
 msgstr "Pripomienky"
 
-#: prefs/koprefsdialogtime.cpp:192
+#: prefs/koprefsdialogtime.cpp:210
 #, kde-format
 msgctxt "@label"
 msgid "Default reminder time:"
 msgstr "Predvolený čas pripomienky:"
 
-#: prefs/koprefsdialogtime.cpp:205
+#: prefs/koprefsdialogtime.cpp:223
 #, kde-format
 msgctxt "@item:inlistbox reminder units in minutes"
 msgid "minute(s)"
 msgstr "minúta(y)"
 
-#: prefs/koprefsdialogtime.cpp:206
+#: prefs/koprefsdialogtime.cpp:224
 #, kde-format
 msgctxt "@item:inlistbox reminder time units in hours"
 msgid "hour(s)"
 msgstr "hodina(y)"
 
-#: prefs/koprefsdialogtime.cpp:207
+#: prefs/koprefsdialogtime.cpp:225
 #, kde-format
 msgctxt "@item:inlistbox reminder time units in days"
 msgid "day(s)"
 msgstr "dní"
 
-#: prefs/koprefsdialogtime.cpp:218
+#: prefs/koprefsdialogtime.cpp:236
 #, kde-format
 msgid ""
 "*.ogg *.wav *.mp3 *.wma *.flac *.aiff *.raw *.au *.ra|Audio Files (*.ogg *."
@@ -3785,77 +3785,60 @@ msgstr ""
 "*.ogg *.wav *.mp3 *.wma *.flac *.aiff *.raw *.au *.ra|Audio súbory (*.ogg *."
 "wav *.mp3 *.wma *.flac *.aiff *.raw *.au *.ra)"
 
-#: prefs/koprefsdialogviews.cpp:42
+#: prefs/koprefsdialogviews.cpp:58
 #, kde-format
 msgctxt "@title:tab general settings"
 msgid "General"
 msgstr "Všeobecné"
 
-#: prefs/koprefsdialogviews.cpp:48 prefs/koprefsdialogviews.cpp:85
-#: prefs/koprefsdialogviews.cpp:129 prefs/koprefsdialogviews.cpp:156
+#: prefs/koprefsdialogviews.cpp:64 prefs/koprefsdialogviews.cpp:105
+#: prefs/koprefsdialogviews.cpp:153 prefs/koprefsdialogviews.cpp:184
 #, kde-format
 msgctxt "@title:group"
 msgid "Display Options"
 msgstr "Možnosti zobrazenia"
 
-#: prefs/koprefsdialogviews.cpp:54
+#: prefs/koprefsdialogviews.cpp:70
 #, kde-format
 msgctxt "@label suffix in the N days spin box"
 msgid " days"
 msgstr " dní"
 
-#: prefs/koprefsdialogviews.cpp:67
+#: prefs/koprefsdialogviews.cpp:83
 #, kde-format
 msgctxt "@title:group"
 msgid "Date Navigator"
 msgstr "Navigátor pre dátum"
 
-#: prefs/koprefsdialogviews.cpp:79
+#: prefs/koprefsdialogviews.cpp:99
 #, kde-format
 msgctxt "@title:tab"
 msgid "Agenda View"
 msgstr "Pohľad agendy"
 
-#: prefs/koprefsdialogviews.cpp:91
+#: prefs/koprefsdialogviews.cpp:111
 #, kde-format
 msgctxt "@label suffix in the hour size spin box"
 msgid " pixels"
 msgstr " pixely"
 
-#: prefs/koprefsdialogviews.cpp:123
+#: prefs/koprefsdialogviews.cpp:147
 #, kde-format
 msgctxt "@title:tab"
 msgid "Month View"
 msgstr "Mesačný pohľad"
 
-#: prefs/koprefsdialogviews.cpp:150
+#: prefs/koprefsdialogviews.cpp:178
 #, kde-format
 msgctxt "@title:tab"
 msgid "Todo View"
 msgstr "Zobrazenie úlohy"
 
-#: prefs/koprefsdialogviews.cpp:163
+#: prefs/koprefsdialogviews.cpp:191
 #, kde-format
 msgctxt "@title:group"
 msgid "Other Options"
 msgstr "&Popisy"
-
-#: prefs/koprefsuserfeedback.cpp:31
-#, kde-format
-msgid "KCMUserFeedBack"
-msgstr ""
-
-#: prefs/koprefsuserfeedback.cpp:33
-#, fuzzy, kde-format
-#| msgid "KOrganizer Confirmation"
-msgid "KOrganizer Configure User FeedBack"
-msgstr "KOrganizer Potvrdenie"
-
-#: prefs/koprefsuserfeedback.cpp:35
-#, fuzzy, kde-format
-#| msgid "Laurent Montel"
-msgid "(c) 2020-2021 Laurent Montel"
-msgstr "Laurent Montel"
 
 #: prefs/kprefsdialog.cpp:222
 #, fuzzy, kde-format
@@ -6235,6 +6218,16 @@ msgstr "%1"
 msgctxt "4 digit year"
 msgid "%1"
 msgstr "%1"
+
+#, fuzzy
+#~| msgid "KOrganizer Confirmation"
+#~ msgid "KOrganizer Configure User FeedBack"
+#~ msgstr "KOrganizer Potvrdenie"
+
+#, fuzzy
+#~| msgid "Laurent Montel"
+#~ msgid "(c) 2020-2021 Laurent Montel"
+#~ msgstr "Laurent Montel"
 
 #~ msgid "KCMDesignerfields"
 #~ msgstr "KCMDesignerfields"

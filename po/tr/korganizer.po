@@ -19,7 +19,7 @@ msgid ""
 msgstr ""
 "Project-Id-Version: kdepim-kde4\n"
 "Report-Msgid-Bugs-To: https://bugs.kde.org\n"
-"POT-Creation-Date: 2023-03-19 00:49+0000\n"
+"POT-Creation-Date: 2023-03-20 00:51+0000\n"
 "PO-Revision-Date: 2023-02-26 14:28+0300\n"
 "Last-Translator: Emir SARI <emir_sari@icloud.com>\n"
 "Language-Team: Turkish <kde-l10n-tr@kde.org>\n"
@@ -107,7 +107,7 @@ msgstr "Preston Brown"
 msgid "Original Author"
 msgstr "Özgün Yazar"
 
-#: aboutdata.cpp:34 prefs/koprefsuserfeedback.cpp:36
+#: aboutdata.cpp:34
 #, kde-format
 msgid "Laurent Montel"
 msgstr "Laurent Montel"
@@ -2082,22 +2082,22 @@ msgstr "Tarih ve Saat"
 msgid "Date"
 msgstr "Tarih"
 
-#: kcmdesignerfields.cpp:158
+#: kcmdesignerfields.cpp:167
 #, kde-format
 msgid "<qt>Do you really want to delete '<b>%1</b>'?</qt>"
 msgstr "<qt>'<b>%1</b> ögesini gerçekten silmek istiyor musunuz?</qt>"
 
-#: kcmdesignerfields.cpp:171
+#: kcmdesignerfields.cpp:181 kcmdesignerfields.cpp:184
 #, kde-format
 msgid "Import Page"
 msgstr "Sayfa İçe Aktar"
 
-#: kcmdesignerfields.cpp:171
+#: kcmdesignerfields.cpp:181 kcmdesignerfields.cpp:186
 #, kde-format
 msgid "Designer Files"
 msgstr "Designer Dosyaları"
 
-#: kcmdesignerfields.cpp:265
+#: kcmdesignerfields.cpp:289
 #, kde-format
 msgid ""
 "<qt><b>Warning:</b> Qt Designer could not be found. It is probably not "
@@ -2106,17 +2106,17 @@ msgstr ""
 "<qt><b>Uyarı:</b> Qt Designer bulunamadı. Büyük olasılıkla kurulu değil. "
 "Yalnızca var olan Designer dosyalarını içe aktarabileceksiniz.</qt>"
 
-#: kcmdesignerfields.cpp:275
+#: kcmdesignerfields.cpp:307
 #, kde-format
 msgid "Available Pages"
 msgstr "Kullanılabilir Sayfalar"
 
-#: kcmdesignerfields.cpp:281
+#: kcmdesignerfields.cpp:314 kcmdesignerfields.cpp:316
 #, kde-format
 msgid "Preview of Selected Page"
 msgstr "Seçili Sayfanın Önizlemesi"
 
-#: kcmdesignerfields.cpp:300
+#: kcmdesignerfields.cpp:336
 #, kde-format
 msgid ""
 "<qt><p>This section allows you to add your own GUI Elements ('<i>Widgets</"
@@ -2148,42 +2148,42 @@ msgstr ""
 "düzenleyecek. Uygulama adının düzenlenebilirliğini değiştirmek için, araç "
 "takımı adını Qt Designer içinden ayarlayın.</p></qt>"
 
-#: kcmdesignerfields.cpp:322
+#: kcmdesignerfields.cpp:359 kcmdesignerfields.cpp:361
 #, kde-format
 msgid "<a href=\"whatsthis:%1\">How does this work?</a>"
 msgstr "<a href=\"whatsthis:%1\">Bu nasıl çalışır?</a>"
 
-#: kcmdesignerfields.cpp:333
+#: kcmdesignerfields.cpp:374 kcmdesignerfields.cpp:376
 #, kde-format
 msgid "Delete Page"
 msgstr "Sayfayı Sil"
 
-#: kcmdesignerfields.cpp:336
+#: kcmdesignerfields.cpp:381 kcmdesignerfields.cpp:383
 #, kde-format
 msgid "Import Page..."
 msgstr "Sayfa İçe Aktar..."
 
-#: kcmdesignerfields.cpp:338
+#: kcmdesignerfields.cpp:387 kcmdesignerfields.cpp:389
 #, kde-format
 msgid "Edit with Qt Designer..."
 msgstr "Qt Designer ile Düzenle..."
 
-#: kcmdesignerfields.cpp:363
+#: kcmdesignerfields.cpp:415
 #, kde-format
 msgid "Key:"
 msgstr "Düğme:"
 
-#: kcmdesignerfields.cpp:365
+#: kcmdesignerfields.cpp:417
 #, kde-format
 msgid "Type:"
 msgstr "Tür:"
 
-#: kcmdesignerfields.cpp:367
+#: kcmdesignerfields.cpp:419
 #, kde-format
 msgid "Classname:"
 msgstr "Sınıf Adı:"
 
-#: kcmdesignerfields.cpp:369
+#: kcmdesignerfields.cpp:421
 #, kde-format
 msgid "Description:"
 msgstr "Açıklama:"
@@ -2600,9 +2600,9 @@ msgid ""
 msgstr ""
 "Yeni bir günlük girdisi ekleyebileceğiniz bir iletişim kutusu sunulacak."
 
-#: kontactplugin/korganizer/kcmapptsummary.cpp:71
-#: kontactplugin/korganizer/kcmtodosummary.cpp:56
-#: kontactplugin/specialdates/kcmsdsummary.cpp:61
+#: kontactplugin/korganizer/kcmapptsummary.cpp:91
+#: kontactplugin/korganizer/kcmtodosummary.cpp:73
+#: kontactplugin/specialdates/kcmsdsummary.cpp:78
 #, kde-format
 msgid " day"
 msgid_plural " days"
@@ -3426,19 +3426,19 @@ msgstr ""
 "görüntülenemiyor. Zaman ve Tarih tercihlerinde lütfen en az 1 çalışma gününü "
 "düzgün olarak ayarlayın."
 
-#: prefs/koprefsdialogcolorsandfonts.cpp:41
+#: prefs/koprefsdialogcolorsandfonts.cpp:55
 #, kde-format
 msgctxt "@title:tab"
 msgid "Colors"
 msgstr "Renkler"
 
-#: prefs/koprefsdialogcolorsandfonts.cpp:91
+#: prefs/koprefsdialogcolorsandfonts.cpp:105
 #, kde-format
 msgctxt "@title:group"
 msgid "Tags"
 msgstr "Etiketler"
 
-#: prefs/koprefsdialogcolorsandfonts.cpp:105
+#: prefs/koprefsdialogcolorsandfonts.cpp:119
 #, kde-format
 msgctxt "@info:whatsthis"
 msgid ""
@@ -3448,7 +3448,7 @@ msgstr ""
 "Düzenlemek istediğiniz takvimi seçin. Seçili takvim rengini aşağıdaki "
 "düğmeyi kullanarak değiştirebilirisiniz."
 
-#: prefs/koprefsdialogcolorsandfonts.cpp:113
+#: prefs/koprefsdialogcolorsandfonts.cpp:127
 #, kde-format
 msgctxt "@info:whatsthis"
 msgid "Choose the color of the tag selected in the adjacent combo box."
@@ -3456,13 +3456,13 @@ msgstr ""
 "Yukarıdaki çoklu seçim kutusundan, seçili takvim için hangi rengin "
 "kullanılacağını belirleyin."
 
-#: prefs/koprefsdialogcolorsandfonts.cpp:121
+#: prefs/koprefsdialogcolorsandfonts.cpp:135
 #, kde-format
 msgctxt "@title:group"
 msgid "Resources"
 msgstr "Kaynaklar"
 
-#: prefs/koprefsdialogcolorsandfonts.cpp:132
+#: prefs/koprefsdialogcolorsandfonts.cpp:146
 #, kde-format
 msgctxt "@info:whatsthis"
 msgid ""
@@ -3472,7 +3472,7 @@ msgstr ""
 "Düzenlemek istediğiniz takvimi seçin. Seçili takvim rengini aşağıdaki "
 "düğmeyi kullanarak değiştirebilirisiniz."
 
-#: prefs/koprefsdialogcolorsandfonts.cpp:140
+#: prefs/koprefsdialogcolorsandfonts.cpp:154
 #, kde-format
 msgctxt "@info:whatsthis"
 msgid ""
@@ -3481,135 +3481,135 @@ msgstr ""
 "Yukarıdaki çoklu seçim kutusundan, seçili takvim için hangi rengin "
 "kullanılacağını belirleyin."
 
-#: prefs/koprefsdialogcolorsandfonts.cpp:148
+#: prefs/koprefsdialogcolorsandfonts.cpp:166
 #, kde-format
 msgctxt "@title:tab"
 msgid "Fonts"
 msgstr "Yazıtipleri"
 
-#: prefs/koprefsdialogcolorsandfonts.cpp:161
-#: prefs/koprefsdialogcolorsandfonts.cpp:167
+#: prefs/koprefsdialogcolorsandfonts.cpp:179
+#: prefs/koprefsdialogcolorsandfonts.cpp:185
 #, kde-format
 msgctxt "@label"
 msgid "Event text"
 msgstr "Etkinlik metni"
 
-#: prefs/koprefsdialoggroupscheduling.cpp:40
+#: prefs/koprefsdialoggroupscheduling.cpp:49
 #, kde-format
 msgctxt "@label"
 msgid "Mail transport:"
 msgstr "Posta aktarımı:"
 
-#: prefs/koprefsdialogmain.cpp:39
+#: prefs/koprefsdialogmain.cpp:53
 #, kde-format
 msgctxt "@title:tab personal settings"
 msgid "Personal"
 msgstr "Kişisel"
 
-#: prefs/koprefsdialogmain.cpp:45
+#: prefs/koprefsdialogmain.cpp:59
 #, kde-format
 msgctxt "@title:group email settings"
 msgid "Email Settings"
 msgstr "E-posta Ayarları"
 
-#: prefs/koprefsdialogmain.cpp:62
+#: prefs/koprefsdialogmain.cpp:80
 #, kde-format
 msgctxt "@title:tab"
 msgid "Save"
 msgstr "Kaydet"
 
-#: prefs/koprefsdialogmain.cpp:74
+#: prefs/koprefsdialogmain.cpp:96
 #, kde-format
 msgctxt "@title:tab calendar account settings"
 msgid "Calendars"
 msgstr "Takvimler"
 
-#: prefs/koprefsdialogmain.cpp:78
+#: prefs/koprefsdialogmain.cpp:104
 #, kde-format
 msgctxt "@title"
 msgid "Calendar Accounts"
 msgstr "Takvim Hesapları"
 
-#: prefs/koprefsdialogplugins.cpp:61
+#: prefs/koprefsdialogplugins.cpp:62 prefs/koprefsdialogplugins.cpp:68
 #, kde-format
 msgctxt "@title:group"
 msgid "Position"
 msgstr "Konum"
 
 #. i18nc( "@option:check", "Show in the month view" ), mPositioningGroupBox );
-#: prefs/koprefsdialogplugins.cpp:86
+#: prefs/koprefsdialogplugins.cpp:98
 #, kde-format
 msgctxt "@option:check"
 msgid "Show at the top of the agenda views"
 msgstr "Ajanda görünümlerinin en üstünde göster"
 
-#: prefs/koprefsdialogplugins.cpp:87
+#: prefs/koprefsdialogplugins.cpp:99
 #, kde-format
 msgctxt "@option:check"
 msgid "Show at the bottom of the agenda views"
 msgstr "Ajanda görünümlerinin en altında göster"
 
-#: prefs/koprefsdialogplugins.cpp:121
+#: prefs/koprefsdialogplugins.cpp:133
 #, kde-format
 msgctxt "@title:group"
 msgid "Calendar Decorations"
 msgstr "Takvim Dekorasyonları"
 
-#: prefs/koprefsdialogplugins.cpp:141
+#: prefs/koprefsdialogplugins.cpp:153
 #, kde-format
 msgctxt "@action"
 msgid "Configure"
 msgstr "Yapılandır"
 
-#: prefs/koprefsdialogplugins.cpp:200
+#: prefs/koprefsdialogplugins.cpp:217 prefs/koprefsdialogplugins.cpp:219
 #, kde-format
 msgctxt "@info"
 msgid "Unable to configure this plugin"
 msgstr "Bu eklenti yapılandırılamadı"
 
-#: prefs/koprefsdialogtime.cpp:40
+#: prefs/koprefsdialogtime.cpp:54
 #, kde-format
 msgctxt "@title:tab"
 msgid "Regional"
 msgstr "Bölgesel"
 
-#: prefs/koprefsdialogtime.cpp:44
+#: prefs/koprefsdialogtime.cpp:58
 #, kde-format
 msgctxt "@title:group"
 msgid "General Time and Date"
 msgstr "Genel Zaman ve Tarih"
 
-#: prefs/koprefsdialogtime.cpp:53
+#: prefs/koprefsdialogtime.cpp:67
 #, kde-format
 msgctxt "@title:group"
 msgid "Holidays"
 msgstr "Tatiller"
 
-#: prefs/koprefsdialogtime.cpp:64
+#: prefs/koprefsdialogtime.cpp:78
 #, kde-format
 msgctxt "@label"
 msgid "Use holiday region:"
 msgstr "Tatiller için bölge kullan:"
 
-#: prefs/koprefsdialogtime.cpp:87
+#: prefs/koprefsdialogtime.cpp:101
 #, kde-format
 msgctxt "@item:inlistbox Holiday region, region language"
 msgid "%1 (%2)"
 msgstr "%1 (%2)"
 
-#: prefs/koprefsdialogtime.cpp:96
+#: prefs/koprefsdialogtime.cpp:110
 #, kde-format
 msgctxt "@item:inlistbox"
 msgid "Select Holiday Regions"
 msgstr "Tatil Bölgelerini Seç"
 
-#: prefs/koprefsdialogtime.cpp:108
+#: prefs/koprefsdialogtime.cpp:122
 #, kde-format
 msgctxt "@title:group"
 msgid "Working Period"
 msgstr "Çalışma Aralığı"
 
-#: prefs/koprefsdialogtime.cpp:123
+#: prefs/koprefsdialogtime.cpp:137
 #, kde-format
 msgctxt "@info:whatsthis"
 msgid ""
@@ -3621,91 +3621,91 @@ msgstr ""
 "kutuyu işaretleyin. Eğer bu sizin bir çalışma gününüzse kutuyu imleyin; aksi "
 "takdirde çalışma saatleri renkle imlenmeyecektir."
 
-#: prefs/koprefsdialogtime.cpp:138
+#: prefs/koprefsdialogtime.cpp:152
 #, kde-format
 msgctxt "@item:inlistbox"
 msgid "Monday"
 msgstr "Pazartesi"
 
-#: prefs/koprefsdialogtime.cpp:138
+#: prefs/koprefsdialogtime.cpp:152
 #, kde-format
 msgctxt "@item:inlistbox"
 msgid "Tuesday"
 msgstr "Salı"
 
-#: prefs/koprefsdialogtime.cpp:138
+#: prefs/koprefsdialogtime.cpp:152
 #, kde-format
 msgctxt "@item:inlistbox"
 msgid "Wednesday"
 msgstr "Çarşamba"
 
-#: prefs/koprefsdialogtime.cpp:139
+#: prefs/koprefsdialogtime.cpp:153
 #, kde-format
 msgctxt "@item:inlistbox"
 msgid "Thursday"
 msgstr "Perşembe"
 
-#: prefs/koprefsdialogtime.cpp:139
+#: prefs/koprefsdialogtime.cpp:153
 #, kde-format
 msgctxt "@item:inlistbox"
 msgid "Friday"
 msgstr "Cuma"
 
-#: prefs/koprefsdialogtime.cpp:139
+#: prefs/koprefsdialogtime.cpp:153
 #, kde-format
 msgctxt "@item:inlistbox"
 msgid "Saturday"
 msgstr "Cumartesi"
 
-#: prefs/koprefsdialogtime.cpp:140
+#: prefs/koprefsdialogtime.cpp:154
 #, kde-format
 msgctxt "@item:inlistbox"
 msgid "Sunday"
 msgstr "Pazar"
 
-#: prefs/koprefsdialogtime.cpp:169
+#: prefs/koprefsdialogtime.cpp:187
 #, kde-format
 msgctxt "@title:tab"
 msgid "Default Values"
 msgstr "Öntanımlı Değerler"
 
-#: prefs/koprefsdialogtime.cpp:172
+#: prefs/koprefsdialogtime.cpp:190
 #, kde-format
 msgctxt "@title:group"
 msgid "Appointments"
 msgstr "Randevular"
 
-#: prefs/koprefsdialogtime.cpp:187
+#: prefs/koprefsdialogtime.cpp:205
 #, kde-format
 msgctxt "@title:group"
 msgid "Reminders"
 msgstr "Anımsatıcılar"
 
-#: prefs/koprefsdialogtime.cpp:192
+#: prefs/koprefsdialogtime.cpp:210
 #, kde-format
 msgctxt "@label"
 msgid "Default reminder time:"
 msgstr "Öntanımlı anımsatma zamanı:"
 
-#: prefs/koprefsdialogtime.cpp:205
+#: prefs/koprefsdialogtime.cpp:223
 #, kde-format
 msgctxt "@item:inlistbox reminder units in minutes"
 msgid "minute(s)"
 msgstr "dakika"
 
-#: prefs/koprefsdialogtime.cpp:206
+#: prefs/koprefsdialogtime.cpp:224
 #, kde-format
 msgctxt "@item:inlistbox reminder time units in hours"
 msgid "hour(s)"
 msgstr "saat"
 
-#: prefs/koprefsdialogtime.cpp:207
+#: prefs/koprefsdialogtime.cpp:225
 #, kde-format
 msgctxt "@item:inlistbox reminder time units in days"
 msgid "day(s)"
 msgstr "gün"
 
-#: prefs/koprefsdialogtime.cpp:218
+#: prefs/koprefsdialogtime.cpp:236
 #, kde-format
 msgid ""
 "*.ogg *.wav *.mp3 *.wma *.flac *.aiff *.raw *.au *.ra|Audio Files (*.ogg *."
@@ -3714,75 +3714,60 @@ msgstr ""
 "*.ogg *.wav *.mp3 *.wma *.flac *.aiff *.raw *.au *.ra|Ses Dosyaları (*.ogg *."
 "wav *.mp3 *.wma *.flac *.aiff *.raw *.au *.ra)"
 
-#: prefs/koprefsdialogviews.cpp:42
+#: prefs/koprefsdialogviews.cpp:58
 #, kde-format
 msgctxt "@title:tab general settings"
 msgid "General"
 msgstr "Genel"
 
-#: prefs/koprefsdialogviews.cpp:48 prefs/koprefsdialogviews.cpp:85
-#: prefs/koprefsdialogviews.cpp:129 prefs/koprefsdialogviews.cpp:156
+#: prefs/koprefsdialogviews.cpp:64 prefs/koprefsdialogviews.cpp:105
+#: prefs/koprefsdialogviews.cpp:153 prefs/koprefsdialogviews.cpp:184
 #, kde-format
 msgctxt "@title:group"
 msgid "Display Options"
 msgstr "Görüntüleme Seçenekleri"
 
-#: prefs/koprefsdialogviews.cpp:54
+#: prefs/koprefsdialogviews.cpp:70
 #, kde-format
 msgctxt "@label suffix in the N days spin box"
 msgid " days"
 msgstr " gün"
 
-#: prefs/koprefsdialogviews.cpp:67
+#: prefs/koprefsdialogviews.cpp:83
 #, kde-format
 msgctxt "@title:group"
 msgid "Date Navigator"
 msgstr "Tarih Gezgini"
 
-#: prefs/koprefsdialogviews.cpp:79
+#: prefs/koprefsdialogviews.cpp:99
 #, kde-format
 msgctxt "@title:tab"
 msgid "Agenda View"
 msgstr "Ajanda Görünümü"
 
-#: prefs/koprefsdialogviews.cpp:91
+#: prefs/koprefsdialogviews.cpp:111
 #, kde-format
 msgctxt "@label suffix in the hour size spin box"
 msgid " pixels"
 msgstr " piksel"
 
-#: prefs/koprefsdialogviews.cpp:123
+#: prefs/koprefsdialogviews.cpp:147
 #, kde-format
 msgctxt "@title:tab"
 msgid "Month View"
 msgstr "Ay Görünümü"
 
-#: prefs/koprefsdialogviews.cpp:150
+#: prefs/koprefsdialogviews.cpp:178
 #, kde-format
 msgctxt "@title:tab"
 msgid "Todo View"
 msgstr "Yapılacaklar Görünümü"
 
-#: prefs/koprefsdialogviews.cpp:163
+#: prefs/koprefsdialogviews.cpp:191
 #, kde-format
 msgctxt "@title:group"
 msgid "Other Options"
 msgstr "Diğer Seçenekler"
-
-#: prefs/koprefsuserfeedback.cpp:31
-#, kde-format
-msgid "KCMUserFeedBack"
-msgstr "KCM Kullanıcı Geri Bildirimi"
-
-#: prefs/koprefsuserfeedback.cpp:33
-#, kde-format
-msgid "KOrganizer Configure User FeedBack"
-msgstr "K Organizatör Kullanıcı Geri Bildirimini Yapılandır"
-
-#: prefs/koprefsuserfeedback.cpp:35
-#, kde-format
-msgid "(c) 2020-2021 Laurent Montel"
-msgstr "(c) 2020-2021 Laurent Montel"
 
 #: prefs/kprefsdialog.cpp:222
 #, kde-format
@@ -6058,6 +6043,15 @@ msgstr "%1"
 msgctxt "4 digit year"
 msgid "%1"
 msgstr "%1"
+
+#~ msgid "KCMUserFeedBack"
+#~ msgstr "KCM Kullanıcı Geri Bildirimi"
+
+#~ msgid "KOrganizer Configure User FeedBack"
+#~ msgstr "K Organizatör Kullanıcı Geri Bildirimini Yapılandır"
+
+#~ msgid "(c) 2020-2021 Laurent Montel"
+#~ msgstr "(c) 2020-2021 Laurent Montel"
 
 #~ msgid "KCMDesignerfields"
 #~ msgstr "KCMDesignerfields"

@@ -15,7 +15,7 @@ msgid ""
 msgstr ""
 "Project-Id-Version: korganizer\n"
 "Report-Msgid-Bugs-To: https://bugs.kde.org\n"
-"POT-Creation-Date: 2023-03-19 00:49+0000\n"
+"POT-Creation-Date: 2023-03-20 00:51+0000\n"
 "PO-Revision-Date: 2021-11-06 10:56+0200\n"
 "Last-Translator: Stelios <sstavra@gmail.com>\n"
 "Language-Team: Greek <kde-i18n-el@kde.org>\n"
@@ -105,7 +105,7 @@ msgstr "Preston Brown"
 msgid "Original Author"
 msgstr "Αρχικός συγγραφέας"
 
-#: aboutdata.cpp:34 prefs/koprefsuserfeedback.cpp:36
+#: aboutdata.cpp:34
 #, kde-format
 msgid "Laurent Montel"
 msgstr "Laurent Montel"
@@ -2109,22 +2109,22 @@ msgstr "Ημερομηνία & Ώρα"
 msgid "Date"
 msgstr "Ημερομηνία"
 
-#: kcmdesignerfields.cpp:158
+#: kcmdesignerfields.cpp:167
 #, kde-format
 msgid "<qt>Do you really want to delete '<b>%1</b>'?</qt>"
 msgstr "<qt>Θέλετε πράγματι να διαγράψετε το '<b>%1</b>';</qt>"
 
-#: kcmdesignerfields.cpp:171
+#: kcmdesignerfields.cpp:181 kcmdesignerfields.cpp:184
 #, kde-format
 msgid "Import Page"
 msgstr "Εισαγωγή σελίδας"
 
-#: kcmdesignerfields.cpp:171
+#: kcmdesignerfields.cpp:181 kcmdesignerfields.cpp:186
 #, kde-format
 msgid "Designer Files"
 msgstr "Αρχεία Designer"
 
-#: kcmdesignerfields.cpp:265
+#: kcmdesignerfields.cpp:289
 #, kde-format
 msgid ""
 "<qt><b>Warning:</b> Qt Designer could not be found. It is probably not "
@@ -2134,17 +2134,17 @@ msgstr ""
 "εγκατεστημένο. Θα μπορείτε μόνο να εισάγετε τα υπάρχοντα αρχεία designer.</"
 "qt>"
 
-#: kcmdesignerfields.cpp:275
+#: kcmdesignerfields.cpp:307
 #, kde-format
 msgid "Available Pages"
 msgstr "Διαθέσιμες σελίδες"
 
-#: kcmdesignerfields.cpp:281
+#: kcmdesignerfields.cpp:314 kcmdesignerfields.cpp:316
 #, kde-format
 msgid "Preview of Selected Page"
 msgstr "Προεπισκόπηση της επιλεγμένης σελίδας"
 
-#: kcmdesignerfields.cpp:300
+#: kcmdesignerfields.cpp:336
 #, kde-format
 msgid ""
 "<qt><p>This section allows you to add your own GUI Elements ('<i>Widgets</"
@@ -2179,42 +2179,42 @@ msgstr ""
 "αλλάξετε το όνομα της εφαρμογής, θα πρέπει να αλλάξετε το όνομα του γραφικού "
 "συστατικού στον Qt Designer.</p></qt>"
 
-#: kcmdesignerfields.cpp:322
+#: kcmdesignerfields.cpp:359 kcmdesignerfields.cpp:361
 #, kde-format
 msgid "<a href=\"whatsthis:%1\">How does this work?</a>"
 msgstr "<a href=\"whatsthis:%1\">Πώς δουλεύει αυτό;</a>"
 
-#: kcmdesignerfields.cpp:333
+#: kcmdesignerfields.cpp:374 kcmdesignerfields.cpp:376
 #, kde-format
 msgid "Delete Page"
 msgstr "Διαγραφή σελίδας"
 
-#: kcmdesignerfields.cpp:336
+#: kcmdesignerfields.cpp:381 kcmdesignerfields.cpp:383
 #, kde-format
 msgid "Import Page..."
 msgstr "Εισαγωγή σελίδας..."
 
-#: kcmdesignerfields.cpp:338
+#: kcmdesignerfields.cpp:387 kcmdesignerfields.cpp:389
 #, kde-format
 msgid "Edit with Qt Designer..."
 msgstr "Επεξεργασία με τον Qt Designer"
 
-#: kcmdesignerfields.cpp:363
+#: kcmdesignerfields.cpp:415
 #, kde-format
 msgid "Key:"
 msgstr "Κλειδί:"
 
-#: kcmdesignerfields.cpp:365
+#: kcmdesignerfields.cpp:417
 #, kde-format
 msgid "Type:"
 msgstr "Τύπος:"
 
-#: kcmdesignerfields.cpp:367
+#: kcmdesignerfields.cpp:419
 #, kde-format
 msgid "Classname:"
 msgstr "Όνομα κλάσης:"
 
-#: kcmdesignerfields.cpp:369
+#: kcmdesignerfields.cpp:421
 #, kde-format
 msgid "Description:"
 msgstr "Περιγραφή:"
@@ -2638,9 +2638,9 @@ msgstr ""
 "Θα εμφανιστεί ένας διάλογος όπου μπορείτε να δημιουργήσετε μια νέα εγγραφή "
 "χρονικού."
 
-#: kontactplugin/korganizer/kcmapptsummary.cpp:71
-#: kontactplugin/korganizer/kcmtodosummary.cpp:56
-#: kontactplugin/specialdates/kcmsdsummary.cpp:61
+#: kontactplugin/korganizer/kcmapptsummary.cpp:91
+#: kontactplugin/korganizer/kcmtodosummary.cpp:73
+#: kontactplugin/specialdates/kcmsdsummary.cpp:78
 #, kde-format
 msgid " day"
 msgid_plural " days"
@@ -3473,19 +3473,19 @@ msgstr ""
 "εργάσιμες μέρες. Παρακαλώ ορίστε τουλάχιστον 1 εργάσιμη μέρα στις "
 "προτιμήσεις Ώρας και Ημερομηνίας."
 
-#: prefs/koprefsdialogcolorsandfonts.cpp:41
+#: prefs/koprefsdialogcolorsandfonts.cpp:55
 #, kde-format
 msgctxt "@title:tab"
 msgid "Colors"
 msgstr "Χρώματα"
 
-#: prefs/koprefsdialogcolorsandfonts.cpp:91
+#: prefs/koprefsdialogcolorsandfonts.cpp:105
 #, kde-format
 msgctxt "@title:group"
 msgid "Tags"
 msgstr "Ετικέτες"
 
-#: prefs/koprefsdialogcolorsandfonts.cpp:105
+#: prefs/koprefsdialogcolorsandfonts.cpp:119
 #, kde-format
 msgctxt "@info:whatsthis"
 msgid ""
@@ -3495,20 +3495,20 @@ msgstr ""
 "Επιλέξτε την ετικέτα που επιθυμείτε να τροποποιήσετε. Μπορείτε να αλλάξετε "
 "το χρώμα της επιλεγμένης ετικέτας χρησιμοποιώντας το διπλανό κουμπί χρώματος."
 
-#: prefs/koprefsdialogcolorsandfonts.cpp:113
+#: prefs/koprefsdialogcolorsandfonts.cpp:127
 #, kde-format
 msgctxt "@info:whatsthis"
 msgid "Choose the color of the tag selected in the adjacent combo box."
 msgstr ""
 "Επιλέξτε το χρώμα της επιλεγμένης ετικέτας στο διπλανό σύνθετο πλαίσιο."
 
-#: prefs/koprefsdialogcolorsandfonts.cpp:121
+#: prefs/koprefsdialogcolorsandfonts.cpp:135
 #, kde-format
 msgctxt "@title:group"
 msgid "Resources"
 msgstr "Πόροι"
 
-#: prefs/koprefsdialogcolorsandfonts.cpp:132
+#: prefs/koprefsdialogcolorsandfonts.cpp:146
 #, kde-format
 msgctxt "@info:whatsthis"
 msgid ""
@@ -3518,7 +3518,7 @@ msgstr ""
 "Επιλέξτε εδώ το ημερολόγιο που επιθυμείτε να τροποποιήσετε. Μπορείτε να "
 "αλλάξετε το χρώμα του ημερολογίου χρησιμοποιώντας το παρακάτω κουμπί."
 
-#: prefs/koprefsdialogcolorsandfonts.cpp:140
+#: prefs/koprefsdialogcolorsandfonts.cpp:154
 #, kde-format
 msgctxt "@info:whatsthis"
 msgid ""
@@ -3527,136 +3527,136 @@ msgstr ""
 "Επιλέξτε εδώ το χρώμα του επιλεγμένου ημερολογίου χρησιμοποιώντας την "
 "παραπάνω λίστα."
 
-#: prefs/koprefsdialogcolorsandfonts.cpp:148
+#: prefs/koprefsdialogcolorsandfonts.cpp:166
 #, kde-format
 msgctxt "@title:tab"
 msgid "Fonts"
 msgstr "Γραμματοσειρές"
 
-#: prefs/koprefsdialogcolorsandfonts.cpp:161
-#: prefs/koprefsdialogcolorsandfonts.cpp:167
+#: prefs/koprefsdialogcolorsandfonts.cpp:179
+#: prefs/koprefsdialogcolorsandfonts.cpp:185
 #, kde-format
 msgctxt "@label"
 msgid "Event text"
 msgstr "Κείμενο γεγονότος"
 
-#: prefs/koprefsdialoggroupscheduling.cpp:40
+#: prefs/koprefsdialoggroupscheduling.cpp:49
 #, kde-format
 msgctxt "@label"
 msgid "Mail transport:"
 msgstr "Μεταφορά αλληλογραφίας:"
 
-#: prefs/koprefsdialogmain.cpp:39
+#: prefs/koprefsdialogmain.cpp:53
 #, kde-format
 msgctxt "@title:tab personal settings"
 msgid "Personal"
 msgstr "Προσωπικό"
 
-#: prefs/koprefsdialogmain.cpp:45
+#: prefs/koprefsdialogmain.cpp:59
 #, kde-format
 msgctxt "@title:group email settings"
 msgid "Email Settings"
 msgstr "Ρυθμίσεις αλληλογραφίας"
 
-#: prefs/koprefsdialogmain.cpp:62
+#: prefs/koprefsdialogmain.cpp:80
 #, kde-format
 msgctxt "@title:tab"
 msgid "Save"
 msgstr "Αποθήκευση"
 
-#: prefs/koprefsdialogmain.cpp:74
+#: prefs/koprefsdialogmain.cpp:96
 #, kde-format
 msgctxt "@title:tab calendar account settings"
 msgid "Calendars"
 msgstr "Ημερολόγια"
 
-#: prefs/koprefsdialogmain.cpp:78
+#: prefs/koprefsdialogmain.cpp:104
 #, kde-format
 msgctxt "@title"
 msgid "Calendar Accounts"
 msgstr "Λογαριασμοί ημερολογίου"
 
-#: prefs/koprefsdialogplugins.cpp:61
+#: prefs/koprefsdialogplugins.cpp:62 prefs/koprefsdialogplugins.cpp:68
 #, kde-format
 msgctxt "@title:group"
 msgid "Position"
 msgstr "Θέση"
 
 #. i18nc( "@option:check", "Show in the month view" ), mPositioningGroupBox );
-#: prefs/koprefsdialogplugins.cpp:86
+#: prefs/koprefsdialogplugins.cpp:98
 #, kde-format
 msgctxt "@option:check"
 msgid "Show at the top of the agenda views"
 msgstr "Εμφάνιση πάνω από τις προβολές ατζέντας"
 
-#: prefs/koprefsdialogplugins.cpp:87
+#: prefs/koprefsdialogplugins.cpp:99
 #, kde-format
 msgctxt "@option:check"
 msgid "Show at the bottom of the agenda views"
 msgstr "Εμφάνιση κάτω από τις προβολές ατζέντας"
 
-#: prefs/koprefsdialogplugins.cpp:121
+#: prefs/koprefsdialogplugins.cpp:133
 #, kde-format
 msgctxt "@title:group"
 msgid "Calendar Decorations"
 msgstr "Διακοσμήσεις ημερολογίου"
 
-#: prefs/koprefsdialogplugins.cpp:141
+#: prefs/koprefsdialogplugins.cpp:153
 #, fuzzy, kde-format
 #| msgid "Configure"
 msgctxt "@action"
 msgid "Configure"
 msgstr "Διαμόρφωση"
 
-#: prefs/koprefsdialogplugins.cpp:200
+#: prefs/koprefsdialogplugins.cpp:217 prefs/koprefsdialogplugins.cpp:219
 #, kde-format
 msgctxt "@info"
 msgid "Unable to configure this plugin"
 msgstr "Αδυναμία διαμόρφωσης αυτού του πρόσθετου"
 
-#: prefs/koprefsdialogtime.cpp:40
+#: prefs/koprefsdialogtime.cpp:54
 #, kde-format
 msgctxt "@title:tab"
 msgid "Regional"
 msgstr "Τοπική"
 
-#: prefs/koprefsdialogtime.cpp:44
+#: prefs/koprefsdialogtime.cpp:58
 #, kde-format
 msgctxt "@title:group"
 msgid "General Time and Date"
 msgstr "Γενική ώρα και ημερομηνία"
 
-#: prefs/koprefsdialogtime.cpp:53
+#: prefs/koprefsdialogtime.cpp:67
 #, kde-format
 msgctxt "@title:group"
 msgid "Holidays"
 msgstr "Αργίες"
 
-#: prefs/koprefsdialogtime.cpp:64
+#: prefs/koprefsdialogtime.cpp:78
 #, kde-format
 msgctxt "@label"
 msgid "Use holiday region:"
 msgstr "Τοπικές αργίες:"
 
-#: prefs/koprefsdialogtime.cpp:87
+#: prefs/koprefsdialogtime.cpp:101
 #, kde-format
 msgctxt "@item:inlistbox Holiday region, region language"
 msgid "%1 (%2)"
 msgstr "%1 (%2)"
 
-#: prefs/koprefsdialogtime.cpp:96
+#: prefs/koprefsdialogtime.cpp:110
 #, kde-format
 msgctxt "@item:inlistbox"
 msgid "Select Holiday Regions"
 msgstr "Επιλογή τοπικών αργιών"
 
-#: prefs/koprefsdialogtime.cpp:108
+#: prefs/koprefsdialogtime.cpp:122
 #, kde-format
 msgctxt "@title:group"
 msgid "Working Period"
 msgstr "Περίοδος εργασίας"
 
-#: prefs/koprefsdialogtime.cpp:123
+#: prefs/koprefsdialogtime.cpp:137
 #, kde-format
 msgctxt "@info:whatsthis"
 msgid ""
@@ -3669,91 +3669,91 @@ msgstr ""
 "σας, ενεργοποιήστε αυτή την επιλογή, γιατί σε άλλη περίπτωση δε θα "
 "σημειωθούν οι ώρες εργασίας με χρώμα."
 
-#: prefs/koprefsdialogtime.cpp:138
+#: prefs/koprefsdialogtime.cpp:152
 #, kde-format
 msgctxt "@item:inlistbox"
 msgid "Monday"
 msgstr "Δευτέρα"
 
-#: prefs/koprefsdialogtime.cpp:138
+#: prefs/koprefsdialogtime.cpp:152
 #, kde-format
 msgctxt "@item:inlistbox"
 msgid "Tuesday"
 msgstr "Τρίτη"
 
-#: prefs/koprefsdialogtime.cpp:138
+#: prefs/koprefsdialogtime.cpp:152
 #, kde-format
 msgctxt "@item:inlistbox"
 msgid "Wednesday"
 msgstr "Τετάρτη"
 
-#: prefs/koprefsdialogtime.cpp:139
+#: prefs/koprefsdialogtime.cpp:153
 #, kde-format
 msgctxt "@item:inlistbox"
 msgid "Thursday"
 msgstr "Πέμπτη"
 
-#: prefs/koprefsdialogtime.cpp:139
+#: prefs/koprefsdialogtime.cpp:153
 #, kde-format
 msgctxt "@item:inlistbox"
 msgid "Friday"
 msgstr "Παρασκευή"
 
-#: prefs/koprefsdialogtime.cpp:139
+#: prefs/koprefsdialogtime.cpp:153
 #, kde-format
 msgctxt "@item:inlistbox"
 msgid "Saturday"
 msgstr "Σάββατο"
 
-#: prefs/koprefsdialogtime.cpp:140
+#: prefs/koprefsdialogtime.cpp:154
 #, kde-format
 msgctxt "@item:inlistbox"
 msgid "Sunday"
 msgstr "Κυριακή"
 
-#: prefs/koprefsdialogtime.cpp:169
+#: prefs/koprefsdialogtime.cpp:187
 #, kde-format
 msgctxt "@title:tab"
 msgid "Default Values"
 msgstr "Προκαθορισμένες τιμές"
 
-#: prefs/koprefsdialogtime.cpp:172
+#: prefs/koprefsdialogtime.cpp:190
 #, kde-format
 msgctxt "@title:group"
 msgid "Appointments"
 msgstr "Συναντήσεις"
 
-#: prefs/koprefsdialogtime.cpp:187
+#: prefs/koprefsdialogtime.cpp:205
 #, kde-format
 msgctxt "@title:group"
 msgid "Reminders"
 msgstr "Υπενθυμίσεις"
 
-#: prefs/koprefsdialogtime.cpp:192
+#: prefs/koprefsdialogtime.cpp:210
 #, kde-format
 msgctxt "@label"
 msgid "Default reminder time:"
 msgstr "Προκαθορισμένος χρόνος υπενθύμισης:"
 
-#: prefs/koprefsdialogtime.cpp:205
+#: prefs/koprefsdialogtime.cpp:223
 #, kde-format
 msgctxt "@item:inlistbox reminder units in minutes"
 msgid "minute(s)"
 msgstr "λεπτό(ά)"
 
-#: prefs/koprefsdialogtime.cpp:206
+#: prefs/koprefsdialogtime.cpp:224
 #, kde-format
 msgctxt "@item:inlistbox reminder time units in hours"
 msgid "hour(s)"
 msgstr "ώρα(ες)"
 
-#: prefs/koprefsdialogtime.cpp:207
+#: prefs/koprefsdialogtime.cpp:225
 #, kde-format
 msgctxt "@item:inlistbox reminder time units in days"
 msgid "day(s)"
 msgstr "ημέρα(ες)"
 
-#: prefs/koprefsdialogtime.cpp:218
+#: prefs/koprefsdialogtime.cpp:236
 #, kde-format
 msgid ""
 "*.ogg *.wav *.mp3 *.wma *.flac *.aiff *.raw *.au *.ra|Audio Files (*.ogg *."
@@ -3762,75 +3762,60 @@ msgstr ""
 "*.ogg *.wav *.mp3 *.wma *.flac *.aiff *.raw *.au *.ra|Αρχεία ήχου (*.ogg *."
 "wav *.mp3 *.wma *.flac *.aiff *.raw *.au *.ra)"
 
-#: prefs/koprefsdialogviews.cpp:42
+#: prefs/koprefsdialogviews.cpp:58
 #, kde-format
 msgctxt "@title:tab general settings"
 msgid "General"
 msgstr "Γενικά"
 
-#: prefs/koprefsdialogviews.cpp:48 prefs/koprefsdialogviews.cpp:85
-#: prefs/koprefsdialogviews.cpp:129 prefs/koprefsdialogviews.cpp:156
+#: prefs/koprefsdialogviews.cpp:64 prefs/koprefsdialogviews.cpp:105
+#: prefs/koprefsdialogviews.cpp:153 prefs/koprefsdialogviews.cpp:184
 #, kde-format
 msgctxt "@title:group"
 msgid "Display Options"
 msgstr "Επιλογές εμφάνισης"
 
-#: prefs/koprefsdialogviews.cpp:54
+#: prefs/koprefsdialogviews.cpp:70
 #, kde-format
 msgctxt "@label suffix in the N days spin box"
 msgid " days"
 msgstr " ημέρες"
 
-#: prefs/koprefsdialogviews.cpp:67
+#: prefs/koprefsdialogviews.cpp:83
 #, kde-format
 msgctxt "@title:group"
 msgid "Date Navigator"
 msgstr "Πλοήγηση ημερομηνίας"
 
-#: prefs/koprefsdialogviews.cpp:79
+#: prefs/koprefsdialogviews.cpp:99
 #, kde-format
 msgctxt "@title:tab"
 msgid "Agenda View"
 msgstr "Προβολή ατζέντας"
 
-#: prefs/koprefsdialogviews.cpp:91
+#: prefs/koprefsdialogviews.cpp:111
 #, kde-format
 msgctxt "@label suffix in the hour size spin box"
 msgid " pixels"
 msgstr " εικονοστοιχεία"
 
-#: prefs/koprefsdialogviews.cpp:123
+#: prefs/koprefsdialogviews.cpp:147
 #, kde-format
 msgctxt "@title:tab"
 msgid "Month View"
 msgstr "Προβολή μήνα"
 
-#: prefs/koprefsdialogviews.cpp:150
+#: prefs/koprefsdialogviews.cpp:178
 #, kde-format
 msgctxt "@title:tab"
 msgid "Todo View"
 msgstr "Προβολή προς υλοποίηση εργασιών"
 
-#: prefs/koprefsdialogviews.cpp:163
+#: prefs/koprefsdialogviews.cpp:191
 #, kde-format
 msgctxt "@title:group"
 msgid "Other Options"
 msgstr "Άλλες επιλογές"
-
-#: prefs/koprefsuserfeedback.cpp:31
-#, kde-format
-msgid "KCMUserFeedBack"
-msgstr "KCMUserFeedBack"
-
-#: prefs/koprefsuserfeedback.cpp:33
-#, kde-format
-msgid "KOrganizer Configure User FeedBack"
-msgstr "KOrganizer διαμόρφωση απόκρισης χρήστη"
-
-#: prefs/koprefsuserfeedback.cpp:35
-#, kde-format
-msgid "(c) 2020-2021 Laurent Montel"
-msgstr "(c) 2020-2021 Laurent Montel"
 
 #: prefs/kprefsdialog.cpp:222
 #, kde-format
@@ -6188,6 +6173,15 @@ msgstr "%1"
 msgctxt "4 digit year"
 msgid "%1"
 msgstr "%1"
+
+#~ msgid "KCMUserFeedBack"
+#~ msgstr "KCMUserFeedBack"
+
+#~ msgid "KOrganizer Configure User FeedBack"
+#~ msgstr "KOrganizer διαμόρφωση απόκρισης χρήστη"
+
+#~ msgid "(c) 2020-2021 Laurent Montel"
+#~ msgstr "(c) 2020-2021 Laurent Montel"
 
 #~ msgid "KCMDesignerfields"
 #~ msgstr "KCMDesignerfields"

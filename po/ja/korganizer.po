@@ -10,7 +10,7 @@ msgid ""
 msgstr ""
 "Project-Id-Version: korganizer\n"
 "Report-Msgid-Bugs-To: https://bugs.kde.org\n"
-"POT-Creation-Date: 2023-03-19 00:49+0000\n"
+"POT-Creation-Date: 2023-03-20 00:51+0000\n"
 "PO-Revision-Date: 2012-01-28 16:07-0800\n"
 "Last-Translator: Fumiaki Okushi <okushi@kde.gr.jp>\n"
 "Language-Team: Japanese <kde-jp@kde.org>\n"
@@ -99,7 +99,7 @@ msgstr "Preston Brown"
 msgid "Original Author"
 msgstr "オリジナルの作者"
 
-#: aboutdata.cpp:34 prefs/koprefsuserfeedback.cpp:36
+#: aboutdata.cpp:34
 #, kde-format
 msgid "Laurent Montel"
 msgstr ""
@@ -2098,40 +2098,40 @@ msgstr "日付と時間"
 msgid "Date"
 msgstr "日付"
 
-#: kcmdesignerfields.cpp:158
+#: kcmdesignerfields.cpp:167
 #, kde-format
 msgid "<qt>Do you really want to delete '<b>%1</b>'?</qt>"
 msgstr "本当に “%1” を削除しますか？"
 
-#: kcmdesignerfields.cpp:171
+#: kcmdesignerfields.cpp:181 kcmdesignerfields.cpp:184
 #, kde-format
 msgid "Import Page"
 msgstr "ページをインポート"
 
-#: kcmdesignerfields.cpp:171
+#: kcmdesignerfields.cpp:181 kcmdesignerfields.cpp:186
 #, fuzzy, kde-format
 #| msgid "*.ui|Designer Files"
 msgid "Designer Files"
 msgstr "*.ui|Designer ファイル"
 
-#: kcmdesignerfields.cpp:265
+#: kcmdesignerfields.cpp:289
 #, kde-format
 msgid ""
 "<qt><b>Warning:</b> Qt Designer could not be found. It is probably not "
 "installed. You will only be able to import existing designer files.</qt>"
 msgstr ""
 
-#: kcmdesignerfields.cpp:275
+#: kcmdesignerfields.cpp:307
 #, kde-format
 msgid "Available Pages"
 msgstr ""
 
-#: kcmdesignerfields.cpp:281
+#: kcmdesignerfields.cpp:314 kcmdesignerfields.cpp:316
 #, kde-format
 msgid "Preview of Selected Page"
 msgstr ""
 
-#: kcmdesignerfields.cpp:300
+#: kcmdesignerfields.cpp:336
 #, kde-format
 msgid ""
 "<qt><p>This section allows you to add your own GUI Elements ('<i>Widgets</"
@@ -2149,42 +2149,42 @@ msgid ""
 "name to be edited, set the widget name in Qt Designer.</p></qt>"
 msgstr ""
 
-#: kcmdesignerfields.cpp:322
+#: kcmdesignerfields.cpp:359 kcmdesignerfields.cpp:361
 #, kde-format
 msgid "<a href=\"whatsthis:%1\">How does this work?</a>"
 msgstr ""
 
-#: kcmdesignerfields.cpp:333
+#: kcmdesignerfields.cpp:374 kcmdesignerfields.cpp:376
 #, kde-format
 msgid "Delete Page"
 msgstr "ページを削除"
 
-#: kcmdesignerfields.cpp:336
+#: kcmdesignerfields.cpp:381 kcmdesignerfields.cpp:383
 #, kde-format
 msgid "Import Page..."
 msgstr "ページをインポート..."
 
-#: kcmdesignerfields.cpp:338
+#: kcmdesignerfields.cpp:387 kcmdesignerfields.cpp:389
 #, kde-format
 msgid "Edit with Qt Designer..."
 msgstr ""
 
-#: kcmdesignerfields.cpp:363
+#: kcmdesignerfields.cpp:415
 #, kde-format
 msgid "Key:"
 msgstr ""
 
-#: kcmdesignerfields.cpp:365
+#: kcmdesignerfields.cpp:417
 #, kde-format
 msgid "Type:"
 msgstr "タイプ:"
 
-#: kcmdesignerfields.cpp:367
+#: kcmdesignerfields.cpp:419
 #, kde-format
 msgid "Classname:"
 msgstr "クラス名:"
 
-#: kcmdesignerfields.cpp:369
+#: kcmdesignerfields.cpp:421
 #, kde-format
 msgid "Description:"
 msgstr "説明:"
@@ -2620,9 +2620,9 @@ msgid ""
 "You will be presented with a dialog where you can create a new journal entry."
 msgstr ""
 
-#: kontactplugin/korganizer/kcmapptsummary.cpp:71
-#: kontactplugin/korganizer/kcmtodosummary.cpp:56
-#: kontactplugin/specialdates/kcmsdsummary.cpp:61
+#: kontactplugin/korganizer/kcmapptsummary.cpp:91
+#: kontactplugin/korganizer/kcmtodosummary.cpp:73
+#: kontactplugin/specialdates/kcmsdsummary.cpp:78
 #, fuzzy, kde-format
 #| msgctxt "@label suffix in the N days spin box"
 #| msgid " days"
@@ -3455,19 +3455,19 @@ msgid ""
 "preferences."
 msgstr ""
 
-#: prefs/koprefsdialogcolorsandfonts.cpp:41
+#: prefs/koprefsdialogcolorsandfonts.cpp:55
 #, kde-format
 msgctxt "@title:tab"
 msgid "Colors"
 msgstr "色"
 
-#: prefs/koprefsdialogcolorsandfonts.cpp:91
+#: prefs/koprefsdialogcolorsandfonts.cpp:105
 #, kde-format
 msgctxt "@title:group"
 msgid "Tags"
 msgstr ""
 
-#: prefs/koprefsdialogcolorsandfonts.cpp:105
+#: prefs/koprefsdialogcolorsandfonts.cpp:119
 #, fuzzy, kde-format
 #| msgctxt "@info:whatsthis"
 #| msgid ""
@@ -3481,7 +3481,7 @@ msgstr ""
 "ここで色を変更するイベントのカテゴリを選択し、下のボタンを使って色を変更しま"
 "す。"
 
-#: prefs/koprefsdialogcolorsandfonts.cpp:113
+#: prefs/koprefsdialogcolorsandfonts.cpp:127
 #, fuzzy, kde-format
 #| msgctxt "@info:whatsthis"
 #| msgid ""
@@ -3490,13 +3490,13 @@ msgctxt "@info:whatsthis"
 msgid "Choose the color of the tag selected in the adjacent combo box."
 msgstr "上のコンボボックスを使って選択したカレンダーの色を選択します。"
 
-#: prefs/koprefsdialogcolorsandfonts.cpp:121
+#: prefs/koprefsdialogcolorsandfonts.cpp:135
 #, kde-format
 msgctxt "@title:group"
 msgid "Resources"
 msgstr "リソース"
 
-#: prefs/koprefsdialogcolorsandfonts.cpp:132
+#: prefs/koprefsdialogcolorsandfonts.cpp:146
 #, fuzzy, kde-format
 #| msgctxt "@info:whatsthis"
 #| msgid ""
@@ -3510,57 +3510,57 @@ msgstr ""
 "ここで色を変更するイベントのカテゴリを選択し、下のボタンを使って色を変更しま"
 "す。"
 
-#: prefs/koprefsdialogcolorsandfonts.cpp:140
+#: prefs/koprefsdialogcolorsandfonts.cpp:154
 #, kde-format
 msgctxt "@info:whatsthis"
 msgid ""
 "Choose here the color of the calendar selected using the combo box above."
 msgstr "上のコンボボックスを使って選択したカレンダーの色を選択します。"
 
-#: prefs/koprefsdialogcolorsandfonts.cpp:148
+#: prefs/koprefsdialogcolorsandfonts.cpp:166
 #, kde-format
 msgctxt "@title:tab"
 msgid "Fonts"
 msgstr "フォント"
 
-#: prefs/koprefsdialogcolorsandfonts.cpp:161
-#: prefs/koprefsdialogcolorsandfonts.cpp:167
+#: prefs/koprefsdialogcolorsandfonts.cpp:179
+#: prefs/koprefsdialogcolorsandfonts.cpp:185
 #, kde-format
 msgctxt "@label"
 msgid "Event text"
 msgstr "イベントのテキスト"
 
-#: prefs/koprefsdialoggroupscheduling.cpp:40
+#: prefs/koprefsdialoggroupscheduling.cpp:49
 #, kde-format
 msgctxt "@label"
 msgid "Mail transport:"
 msgstr ""
 
-#: prefs/koprefsdialogmain.cpp:39
+#: prefs/koprefsdialogmain.cpp:53
 #, kde-format
 msgctxt "@title:tab personal settings"
 msgid "Personal"
 msgstr "個人設定"
 
-#: prefs/koprefsdialogmain.cpp:45
+#: prefs/koprefsdialogmain.cpp:59
 #, kde-format
 msgctxt "@title:group email settings"
 msgid "Email Settings"
 msgstr "メールの設定"
 
-#: prefs/koprefsdialogmain.cpp:62
+#: prefs/koprefsdialogmain.cpp:80
 #, kde-format
 msgctxt "@title:tab"
 msgid "Save"
 msgstr "保存"
 
-#: prefs/koprefsdialogmain.cpp:74
+#: prefs/koprefsdialogmain.cpp:96
 #, kde-format
 msgctxt "@title:tab calendar account settings"
 msgid "Calendars"
 msgstr "カレンダー"
 
-#: prefs/koprefsdialogmain.cpp:78
+#: prefs/koprefsdialogmain.cpp:104
 #, fuzzy, kde-format
 #| msgctxt "@title:group"
 #| msgid "Calendar Decorations"
@@ -3568,69 +3568,69 @@ msgctxt "@title"
 msgid "Calendar Accounts"
 msgstr "カレンダーの装飾"
 
-#: prefs/koprefsdialogplugins.cpp:61
+#: prefs/koprefsdialogplugins.cpp:62 prefs/koprefsdialogplugins.cpp:68
 #, kde-format
 msgctxt "@title:group"
 msgid "Position"
 msgstr "位置"
 
 #. i18nc( "@option:check", "Show in the month view" ), mPositioningGroupBox );
-#: prefs/koprefsdialogplugins.cpp:86
+#: prefs/koprefsdialogplugins.cpp:98
 #, kde-format
 msgctxt "@option:check"
 msgid "Show at the top of the agenda views"
 msgstr "予定表ビューの上に表示"
 
-#: prefs/koprefsdialogplugins.cpp:87
+#: prefs/koprefsdialogplugins.cpp:99
 #, kde-format
 msgctxt "@option:check"
 msgid "Show at the bottom of the agenda views"
 msgstr "予定表ビューの下に表示"
 
-#: prefs/koprefsdialogplugins.cpp:121
+#: prefs/koprefsdialogplugins.cpp:133
 #, kde-format
 msgctxt "@title:group"
 msgid "Calendar Decorations"
 msgstr "カレンダーの装飾"
 
-#: prefs/koprefsdialogplugins.cpp:141
+#: prefs/koprefsdialogplugins.cpp:153
 #, fuzzy, kde-format
 #| msgid "Configure"
 msgctxt "@action"
 msgid "Configure"
 msgstr "設定"
 
-#: prefs/koprefsdialogplugins.cpp:200
+#: prefs/koprefsdialogplugins.cpp:217 prefs/koprefsdialogplugins.cpp:219
 #, kde-format
 msgctxt "@info"
 msgid "Unable to configure this plugin"
 msgstr "このプラグインを設定できません"
 
-#: prefs/koprefsdialogtime.cpp:40
+#: prefs/koprefsdialogtime.cpp:54
 #, kde-format
 msgctxt "@title:tab"
 msgid "Regional"
 msgstr "地域"
 
-#: prefs/koprefsdialogtime.cpp:44
+#: prefs/koprefsdialogtime.cpp:58
 #, kde-format
 msgctxt "@title:group"
 msgid "General Time and Date"
 msgstr "全般的な日付と時間"
 
-#: prefs/koprefsdialogtime.cpp:53
+#: prefs/koprefsdialogtime.cpp:67
 #, kde-format
 msgctxt "@title:group"
 msgid "Holidays"
 msgstr "休日"
 
-#: prefs/koprefsdialogtime.cpp:64
+#: prefs/koprefsdialogtime.cpp:78
 #, kde-format
 msgctxt "@label"
 msgid "Use holiday region:"
 msgstr "次の地域の休日を使う:"
 
-#: prefs/koprefsdialogtime.cpp:87
+#: prefs/koprefsdialogtime.cpp:101
 #, fuzzy, kde-format
 #| msgctxt "Holday region, region language"
 #| msgid "%1 (%2)"
@@ -3638,20 +3638,20 @@ msgctxt "@item:inlistbox Holiday region, region language"
 msgid "%1 (%2)"
 msgstr "%1 (%2)"
 
-#: prefs/koprefsdialogtime.cpp:96
+#: prefs/koprefsdialogtime.cpp:110
 #, fuzzy, kde-format
 #| msgid "Use holiday region:"
 msgctxt "@item:inlistbox"
 msgid "Select Holiday Regions"
 msgstr "次の地域の休日を使う:"
 
-#: prefs/koprefsdialogtime.cpp:108
+#: prefs/koprefsdialogtime.cpp:122
 #, kde-format
 msgctxt "@title:group"
 msgid "Working Period"
 msgstr "勤務時間"
 
-#: prefs/koprefsdialogtime.cpp:123
+#: prefs/koprefsdialogtime.cpp:137
 #, kde-format
 msgctxt "@info:whatsthis"
 msgid ""
@@ -3663,168 +3663,152 @@ msgstr ""
 "いない曜日には、それがあなたにとって仕事をする曜日であっても、勤務時間帯が表"
 "示されません。"
 
-#: prefs/koprefsdialogtime.cpp:138
+#: prefs/koprefsdialogtime.cpp:152
 #, kde-format
 msgctxt "@item:inlistbox"
 msgid "Monday"
 msgstr ""
 
-#: prefs/koprefsdialogtime.cpp:138
+#: prefs/koprefsdialogtime.cpp:152
 #, kde-format
 msgctxt "@item:inlistbox"
 msgid "Tuesday"
 msgstr ""
 
-#: prefs/koprefsdialogtime.cpp:138
+#: prefs/koprefsdialogtime.cpp:152
 #, kde-format
 msgctxt "@item:inlistbox"
 msgid "Wednesday"
 msgstr ""
 
-#: prefs/koprefsdialogtime.cpp:139
+#: prefs/koprefsdialogtime.cpp:153
 #, kde-format
 msgctxt "@item:inlistbox"
 msgid "Thursday"
 msgstr ""
 
-#: prefs/koprefsdialogtime.cpp:139
+#: prefs/koprefsdialogtime.cpp:153
 #, fuzzy, kde-format
 #| msgid "Holiday"
 msgctxt "@item:inlistbox"
 msgid "Friday"
 msgstr "休日"
 
-#: prefs/koprefsdialogtime.cpp:139
+#: prefs/koprefsdialogtime.cpp:153
 #, kde-format
 msgctxt "@item:inlistbox"
 msgid "Saturday"
 msgstr ""
 
-#: prefs/koprefsdialogtime.cpp:140
+#: prefs/koprefsdialogtime.cpp:154
 #, kde-format
 msgctxt "@item:inlistbox"
 msgid "Sunday"
 msgstr ""
 
-#: prefs/koprefsdialogtime.cpp:169
+#: prefs/koprefsdialogtime.cpp:187
 #, kde-format
 msgctxt "@title:tab"
 msgid "Default Values"
 msgstr "デフォルトの値"
 
-#: prefs/koprefsdialogtime.cpp:172
+#: prefs/koprefsdialogtime.cpp:190
 #, kde-format
 msgctxt "@title:group"
 msgid "Appointments"
 msgstr "アポイントメント"
 
-#: prefs/koprefsdialogtime.cpp:187
+#: prefs/koprefsdialogtime.cpp:205
 #, kde-format
 msgctxt "@title:group"
 msgid "Reminders"
 msgstr "リマインダ"
 
-#: prefs/koprefsdialogtime.cpp:192
+#: prefs/koprefsdialogtime.cpp:210
 #, kde-format
 msgctxt "@label"
 msgid "Default reminder time:"
 msgstr "デフォルトのリマインダ時間:"
 
-#: prefs/koprefsdialogtime.cpp:205
+#: prefs/koprefsdialogtime.cpp:223
 #, kde-format
 msgctxt "@item:inlistbox reminder units in minutes"
 msgid "minute(s)"
 msgstr "分"
 
-#: prefs/koprefsdialogtime.cpp:206
+#: prefs/koprefsdialogtime.cpp:224
 #, kde-format
 msgctxt "@item:inlistbox reminder time units in hours"
 msgid "hour(s)"
 msgstr "時間"
 
-#: prefs/koprefsdialogtime.cpp:207
+#: prefs/koprefsdialogtime.cpp:225
 #, kde-format
 msgctxt "@item:inlistbox reminder time units in days"
 msgid "day(s)"
 msgstr "日"
 
-#: prefs/koprefsdialogtime.cpp:218
+#: prefs/koprefsdialogtime.cpp:236
 #, kde-format
 msgid ""
 "*.ogg *.wav *.mp3 *.wma *.flac *.aiff *.raw *.au *.ra|Audio Files (*.ogg *."
 "wav *.mp3 *.wma *.flac *.aiff *.raw *.au *.ra)"
 msgstr ""
 
-#: prefs/koprefsdialogviews.cpp:42
+#: prefs/koprefsdialogviews.cpp:58
 #, kde-format
 msgctxt "@title:tab general settings"
 msgid "General"
 msgstr "全般"
 
-#: prefs/koprefsdialogviews.cpp:48 prefs/koprefsdialogviews.cpp:85
-#: prefs/koprefsdialogviews.cpp:129 prefs/koprefsdialogviews.cpp:156
+#: prefs/koprefsdialogviews.cpp:64 prefs/koprefsdialogviews.cpp:105
+#: prefs/koprefsdialogviews.cpp:153 prefs/koprefsdialogviews.cpp:184
 #, kde-format
 msgctxt "@title:group"
 msgid "Display Options"
 msgstr "表示オプション"
 
-#: prefs/koprefsdialogviews.cpp:54
+#: prefs/koprefsdialogviews.cpp:70
 #, kde-format
 msgctxt "@label suffix in the N days spin box"
 msgid " days"
 msgstr " 日"
 
-#: prefs/koprefsdialogviews.cpp:67
+#: prefs/koprefsdialogviews.cpp:83
 #, kde-format
 msgctxt "@title:group"
 msgid "Date Navigator"
 msgstr "日付ナビゲータ"
 
-#: prefs/koprefsdialogviews.cpp:79
+#: prefs/koprefsdialogviews.cpp:99
 #, kde-format
 msgctxt "@title:tab"
 msgid "Agenda View"
 msgstr "予定表ビュー"
 
-#: prefs/koprefsdialogviews.cpp:91
+#: prefs/koprefsdialogviews.cpp:111
 #, kde-format
 msgctxt "@label suffix in the hour size spin box"
 msgid " pixels"
 msgstr " ピクセル"
 
-#: prefs/koprefsdialogviews.cpp:123
+#: prefs/koprefsdialogviews.cpp:147
 #, kde-format
 msgctxt "@title:tab"
 msgid "Month View"
 msgstr "月ビュー"
 
-#: prefs/koprefsdialogviews.cpp:150
+#: prefs/koprefsdialogviews.cpp:178
 #, kde-format
 msgctxt "@title:tab"
 msgid "Todo View"
 msgstr "To-Do ビュー"
 
-#: prefs/koprefsdialogviews.cpp:163
+#: prefs/koprefsdialogviews.cpp:191
 #, kde-format
 msgctxt "@title:group"
 msgid "Other Options"
 msgstr "その他のオプション"
-
-#: prefs/koprefsuserfeedback.cpp:31
-#, kde-format
-msgid "KCMUserFeedBack"
-msgstr ""
-
-#: prefs/koprefsuserfeedback.cpp:33
-#, fuzzy, kde-format
-#| msgid "KOrganizer Confirmation"
-msgid "KOrganizer Configure User FeedBack"
-msgstr "KOrganizer 確認"
-
-#: prefs/koprefsuserfeedback.cpp:35
-#, kde-format
-msgid "(c) 2020-2021 Laurent Montel"
-msgstr ""
 
 #: prefs/kprefsdialog.cpp:222
 #, fuzzy, kde-format
@@ -6145,6 +6129,11 @@ msgstr "%1"
 msgctxt "4 digit year"
 msgid "%1"
 msgstr "%1年"
+
+#, fuzzy
+#~| msgid "KOrganizer Confirmation"
+#~ msgid "KOrganizer Configure User FeedBack"
+#~ msgstr "KOrganizer 確認"
 
 #, fuzzy
 #~| msgid "(c), 2004 Tobias Koenig"
