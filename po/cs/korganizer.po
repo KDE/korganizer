@@ -5747,15 +5747,3 @@ msgstr "%1"
 msgctxt "4 digit year"
 msgid "%1"
 msgstr "%1"
-
-#~ msgid "(c) 2020-2021 Laurent Montel"
-#~ msgstr "(c) 2020-2021 Laurent Montel"
-
-#~ msgid "KCMDesignerfields"
-#~ msgstr "KCMDesignerfields"
-
-#~ msgid "Qt Designer Fields Dialog"
-#~ msgstr "Dialog polí Qt Designeru"
-
-#~ msgid "(c) 2004 Tobias Koenig"
-#~ msgstr "(c) 2004 Tobias Koenig"
