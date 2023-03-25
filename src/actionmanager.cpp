@@ -1072,7 +1072,12 @@ void ActionManager::updateConfig()
 void ActionManager::configureDateTime()
 {
     KProcess proc;
-    proc << QStringLiteral("kcmshell5") << QStringLiteral("formats") << QStringLiteral("translations") << QStringLiteral("clock");
+#if QT_VERSION < QT_VERSION_CHECK(6, 0, 0)
+    proc << QStringLiteral("kcmshell5")
+#else
+    proc << QStringLiteral("kcmshell6")
+#endif
+         << QStringLiteral("formats") << QStringLiteral("translations") << QStringLiteral("clock");
 
     if (!proc.startDetached()) {
         KMessageBox::error(dialogParent(), i18n("Could not start control module for date and time format."));
