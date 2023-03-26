@@ -6,7 +6,7 @@ msgid ""
 msgstr ""
 "Project-Id-Version: KDE 4.3\n"
 "Report-Msgid-Bugs-To: https://bugs.kde.org\n"
-"POT-Creation-Date: 2023-03-20 00:51+0000\n"
+"POT-Creation-Date: 2023-03-26 00:49+0000\n"
 "PO-Revision-Date: 2014-10-05 13:09+0200\n"
 "Last-Translator: Kristóf Kiszel <ulysses@kubuntu.org>\n"
 "Language-Team: Hungarian <kde-l10n-hu@kde.org>\n"
@@ -452,8 +452,8 @@ msgid ""
 msgstr ""
 
 #. i18n: ectx: property (text), widget (QPushButton, mDeleteButton)
-#: actionmanager.cpp:366 actionmanager.cpp:621 actionmanager.cpp:1302
-#: actionmanager.cpp:1334 ui/filteredit_base.ui:56
+#: actionmanager.cpp:366 actionmanager.cpp:621 actionmanager.cpp:1307
+#: actionmanager.cpp:1339 ui/filteredit_base.ui:56
 #, kde-format
 msgid "&Delete"
 msgstr "&Törlés"
@@ -968,12 +968,12 @@ msgid ""
 "current calendar view."
 msgstr ""
 
-#: actionmanager.cpp:613 actionmanager.cpp:1296 actionmanager.cpp:1332
+#: actionmanager.cpp:613 actionmanager.cpp:1301 actionmanager.cpp:1337
 #, kde-format
 msgid "&Show"
 msgstr "&Megjelenítés"
 
-#: actionmanager.cpp:617 actionmanager.cpp:1299 actionmanager.cpp:1333
+#: actionmanager.cpp:617 actionmanager.cpp:1304 actionmanager.cpp:1338
 #, kde-format
 msgid "&Edit..."
 msgstr "Sz&erkesztés..."
@@ -1142,99 +1142,99 @@ msgstr "Nem sikerült elmenteni a naptárt ebbe a fájlba: %1."
 msgid "Error"
 msgstr "Hiba"
 
-#: actionmanager.cpp:1078
+#: actionmanager.cpp:1083
 #, kde-format
 msgid "Could not start control module for date and time format."
 msgstr "A dátum- és időbeállító modult nem sikerült elindítani."
 
-#: actionmanager.cpp:1257
+#: actionmanager.cpp:1262
 #, kde-format
 msgid "&Show Event"
 msgstr "Az e&semény megjelenítése"
 
-#: actionmanager.cpp:1260
+#: actionmanager.cpp:1265
 #, kde-format
 msgid "&Edit Event..."
 msgstr "Az esemény szer&kesztése..."
 
-#: actionmanager.cpp:1263
+#: actionmanager.cpp:1268
 #, kde-format
 msgid "&Delete Event"
 msgstr "Az esemény tör&lése..."
 
-#: actionmanager.cpp:1271
+#: actionmanager.cpp:1276
 #, kde-format
 msgid "&Show To-do"
 msgstr "A feladat meg&jelenítése"
 
-#: actionmanager.cpp:1274 kontactplugin/korganizer/todosummarywidget.cpp:321
+#: actionmanager.cpp:1279 kontactplugin/korganizer/todosummarywidget.cpp:321
 #, kde-format
 msgid "&Edit To-do..."
 msgstr "A feladat sz&erkesztése..."
 
-#: actionmanager.cpp:1277 kontactplugin/korganizer/todosummarywidget.cpp:323
+#: actionmanager.cpp:1282 kontactplugin/korganizer/todosummarywidget.cpp:323
 #, kde-format
 msgid "&Delete To-do"
 msgstr "A feladat &törlése"
 
-#: actionmanager.cpp:1410 actionmanager.cpp:1516
+#: actionmanager.cpp:1415 actionmanager.cpp:1521
 #, kde-format
 msgid "Attach as &link"
 msgstr "Csatolás &linkként"
 
-#: actionmanager.cpp:1411 actionmanager.cpp:1517
+#: actionmanager.cpp:1416 actionmanager.cpp:1522
 #, kde-format
 msgid "Attach &inline"
 msgstr "Csatolás be&szúrva"
 
-#: actionmanager.cpp:1412
+#: actionmanager.cpp:1417
 #, kde-format
 msgid "Attach inline &without attachments"
 msgstr "Csat&olás beszúrva mellékletek nélkül"
 
-#: actionmanager.cpp:1414 actionmanager.cpp:1519
+#: actionmanager.cpp:1419 actionmanager.cpp:1524
 #, kde-format
 msgid "C&ancel"
 msgstr "&Mégsem"
 
-#: actionmanager.cpp:1452
+#: actionmanager.cpp:1457
 #, kde-format
 msgid "Removing attachments from an email might invalidate its signature."
 msgstr ""
 "Ha eltávolít egy mellékletet valamelyik e-mailből, annak digitális aláírása "
 "érvénytelenné válhat."
 
-#: actionmanager.cpp:1453
+#: actionmanager.cpp:1458
 #, kde-format
 msgid "Remove Attachments"
 msgstr "Mellékletek eltávolítása"
 
-#: actionmanager.cpp:1604
+#: actionmanager.cpp:1609
 #, kde-format
 msgid "Undo: %1"
 msgstr "Visszavonás: %1"
 
-#: actionmanager.cpp:1607 actionmanager.cpp:1623
+#: actionmanager.cpp:1612 actionmanager.cpp:1628
 #, kde-format
 msgid "Undo"
 msgstr "Visszavonás"
 
-#: actionmanager.cpp:1617
+#: actionmanager.cpp:1622
 #, kde-format
 msgid "Redo: %1"
 msgstr "Újra végrehajtás: %1"
 
-#: actionmanager.cpp:1620
+#: actionmanager.cpp:1625
 #, kde-format
 msgid "Redo"
 msgstr "Újra végrehajtás"
 
-#: actionmanager.cpp:1634
+#: actionmanager.cpp:1639
 #, kde-format
 msgid "URL '%1' is invalid."
 msgstr "A(z) „%1” URL érvénytelen."
 
-#: actionmanager.cpp:1639
+#: actionmanager.cpp:1644
 #, kde-format
 msgctxt "@info"
 msgid ""
@@ -1250,18 +1250,18 @@ msgstr ""
 "p><p>Ha a hozzáadást választja, akkor automatikusan egy új naptár lesz "
 "létrehozva önnek.</p>"
 
-#: actionmanager.cpp:1647
+#: actionmanager.cpp:1652
 #, kde-format
 msgctxt "@title:window"
 msgid "Import Calendar"
 msgstr "Naptár importálása"
 
-#: actionmanager.cpp:1648
+#: actionmanager.cpp:1653
 #, kde-format
 msgid "Merge into existing calendar"
 msgstr "Összeolvasztás a mostani naptár adataival"
 
-#: actionmanager.cpp:1649
+#: actionmanager.cpp:1654
 #, kde-format
 msgid "Add as new calendar"
 msgstr "Hozzáadás új naptárként"

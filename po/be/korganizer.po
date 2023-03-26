@@ -11,7 +11,7 @@ msgid ""
 msgstr ""
 "Project-Id-Version: korganizer\n"
 "Report-Msgid-Bugs-To: https://bugs.kde.org\n"
-"POT-Creation-Date: 2023-03-20 00:51+0000\n"
+"POT-Creation-Date: 2023-03-26 00:49+0000\n"
 "PO-Revision-Date: 2008-01-01 23:20+0200\n"
 "Last-Translator: Darafei Praliaskouski <komzpa@gmail.com>\n"
 "Language-Team: Belarusian (Official spelling) <i18n@mova.org>\n"
@@ -438,8 +438,8 @@ msgid ""
 msgstr ""
 
 #. i18n: ectx: property (text), widget (QPushButton, mDeleteButton)
-#: actionmanager.cpp:366 actionmanager.cpp:621 actionmanager.cpp:1302
-#: actionmanager.cpp:1334 ui/filteredit_base.ui:56
+#: actionmanager.cpp:366 actionmanager.cpp:621 actionmanager.cpp:1307
+#: actionmanager.cpp:1339 ui/filteredit_base.ui:56
 #, kde-format
 msgid "&Delete"
 msgstr "В&ыдаліць"
@@ -936,12 +936,12 @@ msgid ""
 "current calendar view."
 msgstr ""
 
-#: actionmanager.cpp:613 actionmanager.cpp:1296 actionmanager.cpp:1332
+#: actionmanager.cpp:613 actionmanager.cpp:1301 actionmanager.cpp:1337
 #, kde-format
 msgid "&Show"
 msgstr "&Паказаць"
 
-#: actionmanager.cpp:617 actionmanager.cpp:1299 actionmanager.cpp:1333
+#: actionmanager.cpp:617 actionmanager.cpp:1304 actionmanager.cpp:1338
 #, kde-format
 msgid "&Edit..."
 msgstr "&Змяніць..."
@@ -1112,103 +1112,103 @@ msgstr "Немагчыма захаваць каляндар у файл %1."
 msgid "Error"
 msgstr "Памылка"
 
-#: actionmanager.cpp:1078
+#: actionmanager.cpp:1083
 #, fuzzy, kde-format
 msgid "Could not start control module for date and time format."
 msgstr "Не атрымліваецца запусціць модуль змены налад фармату часу і даты."
 
-#: actionmanager.cpp:1257
+#: actionmanager.cpp:1262
 #, kde-format
 msgid "&Show Event"
 msgstr "&Паказаць падзею"
 
-#: actionmanager.cpp:1260
+#: actionmanager.cpp:1265
 #, kde-format
 msgid "&Edit Event..."
 msgstr "&Рэдагаваць падзею..."
 
-#: actionmanager.cpp:1263
+#: actionmanager.cpp:1268
 #, kde-format
 msgid "&Delete Event"
 msgstr "&Выдаліць падзею"
 
-#: actionmanager.cpp:1271
+#: actionmanager.cpp:1276
 #, kde-format
 msgid "&Show To-do"
 msgstr "&Паказаць заданьне"
 
-#: actionmanager.cpp:1274 kontactplugin/korganizer/todosummarywidget.cpp:321
+#: actionmanager.cpp:1279 kontactplugin/korganizer/todosummarywidget.cpp:321
 #, kde-format
 msgid "&Edit To-do..."
 msgstr "&Рэдагаваць заданьне..."
 
-#: actionmanager.cpp:1277 kontactplugin/korganizer/todosummarywidget.cpp:323
+#: actionmanager.cpp:1282 kontactplugin/korganizer/todosummarywidget.cpp:323
 #, kde-format
 msgid "&Delete To-do"
 msgstr "&Выдаліць заданьне"
 
-#: actionmanager.cpp:1410 actionmanager.cpp:1516
+#: actionmanager.cpp:1415 actionmanager.cpp:1521
 #, kde-format
 msgid "Attach as &link"
 msgstr ""
 
-#: actionmanager.cpp:1411 actionmanager.cpp:1517
+#: actionmanager.cpp:1416 actionmanager.cpp:1522
 #, fuzzy, kde-format
 #| msgid "Add Attachment"
 msgid "Attach &inline"
 msgstr "Дадаць далучэньне"
 
-#: actionmanager.cpp:1412
+#: actionmanager.cpp:1417
 #, kde-format
 msgid "Attach inline &without attachments"
 msgstr ""
 
-#: actionmanager.cpp:1414 actionmanager.cpp:1519
+#: actionmanager.cpp:1419 actionmanager.cpp:1524
 #, fuzzy, kde-format
 msgid "C&ancel"
 msgstr "&Скасаваць"
 
-#: actionmanager.cpp:1452
+#: actionmanager.cpp:1457
 #, kde-format
 msgid "Removing attachments from an email might invalidate its signature."
 msgstr ""
 
-#: actionmanager.cpp:1453
+#: actionmanager.cpp:1458
 #, fuzzy, kde-format
 #| msgid "Attach&ments"
 msgid "Remove Attachments"
 msgstr "Далучэ&ньні"
 
-#: actionmanager.cpp:1604
+#: actionmanager.cpp:1609
 #, fuzzy, kde-format
 #| msgid "Undo (%1)"
 msgid "Undo: %1"
 msgstr "Вярнуць: %1"
 
-#: actionmanager.cpp:1607 actionmanager.cpp:1623
+#: actionmanager.cpp:1612 actionmanager.cpp:1628
 #, fuzzy, kde-format
 #| msgid "Undo (%1)"
 msgid "Undo"
 msgstr "Вярнуць"
 
-#: actionmanager.cpp:1617
+#: actionmanager.cpp:1622
 #, fuzzy, kde-format
 #| msgid "Redo (%1)"
 msgid "Redo: %1"
 msgstr "Паўтор (%1)"
 
-#: actionmanager.cpp:1620
+#: actionmanager.cpp:1625
 #, fuzzy, kde-format
 #| msgid "Redo (%1)"
 msgid "Redo"
 msgstr "Паўтарыць"
 
-#: actionmanager.cpp:1634
+#: actionmanager.cpp:1639
 #, kde-format
 msgid "URL '%1' is invalid."
 msgstr "Некарэктны URL '%1'."
 
-#: actionmanager.cpp:1639
+#: actionmanager.cpp:1644
 #, kde-format
 msgctxt "@info"
 msgid ""
@@ -1219,19 +1219,19 @@ msgid ""
 "p>"
 msgstr ""
 
-#: actionmanager.cpp:1647
+#: actionmanager.cpp:1652
 #, fuzzy, kde-format
 #| msgid "Import Calendar"
 msgctxt "@title:window"
 msgid "Import Calendar"
 msgstr "Імпартаваць каляндар"
 
-#: actionmanager.cpp:1648
+#: actionmanager.cpp:1653
 #, kde-format
 msgid "Merge into existing calendar"
 msgstr "Аб'яднаць з існуючым календаром"
 
-#: actionmanager.cpp:1649
+#: actionmanager.cpp:1654
 #, kde-format
 msgid "Add as new calendar"
 msgstr "Дадаць як новы каляндар"
