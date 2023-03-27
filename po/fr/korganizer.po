@@ -6022,7 +6022,7 @@ msgid ""
 msgstr ""
 "Cochez cette option pour rechercher les tâches à faire ayant une date de "
 "début, une date d'échéance ou une date d'achèvement dans la plage de dates "
-"spécifiées ou n'ayant ni date de début, ni date de fin.  Si l'option n'est "
+"spécifiées ou n'ayant ni date de début, ni date de fin. Si l'option n'est "
 "pas cochée, seules les tâches à faire dont la date d'échéance est comprise "
 "dans la plage de dates seront affichées."
 
