@@ -52,7 +52,6 @@
 #include <KActionCollection>
 #include <KActionMenu>
 #include <KMessageBox>
-#include <KProcess>
 #include <KSelectAction>
 #include <KShortcutsDialog>
 #include <KStandardAction>
@@ -60,6 +59,7 @@
 #include <QFileDialog>
 #include <QMenu>
 #include <QMenuBar>
+#include <QProcess>
 
 #include "korganizer_debug.h"
 #include "korganizer_options.h"
@@ -1071,15 +1071,16 @@ void ActionManager::updateConfig()
 
 void ActionManager::configureDateTime()
 {
-    KProcess proc;
+    QProcess proc;
 #if QT_VERSION < QT_VERSION_CHECK(6, 0, 0)
-    proc << QStringLiteral("kcmshell5")
+    const QString program = QStringLiteral("kcmshell5");
 #else
-    proc << QStringLiteral("kcmshell6")
+    const QString program = QStringLiteral("kcmshell6")
 #endif
-         << QStringLiteral("formats") << QStringLiteral("translations") << QStringLiteral("clock");
+    QStringList arguments;
+    arguments << QStringLiteral("formats") << QStringLiteral("translations") << QStringLiteral("clock");
 
-    if (!proc.startDetached()) {
+    if (!proc.startDetached(program, arguments)) {
         KMessageBox::error(dialogParent(), i18n("Could not start control module for date and time format."));
     }
 }
