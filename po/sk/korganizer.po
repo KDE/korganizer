@@ -10,7 +10,7 @@ msgid ""
 msgstr ""
 "Project-Id-Version: korganizer\n"
 "Report-Msgid-Bugs-To: https://bugs.kde.org\n"
-"POT-Creation-Date: 2023-03-26 00:49+0000\n"
+"POT-Creation-Date: 2023-03-30 00:49+0000\n"
 "PO-Revision-Date: 2019-11-05 20:02+0100\n"
 "Last-Translator: Matej Mrenica <matejm98mthw@gmail.com>\n"
 "Language-Team: Slovak <kde-i18n-doc@kde.org>\n"
@@ -451,8 +451,8 @@ msgid ""
 msgstr ""
 
 #. i18n: ectx: property (text), widget (QPushButton, mDeleteButton)
-#: actionmanager.cpp:366 actionmanager.cpp:621 actionmanager.cpp:1307
-#: actionmanager.cpp:1339 ui/filteredit_base.ui:56
+#: actionmanager.cpp:366 actionmanager.cpp:621 actionmanager.cpp:1308
+#: actionmanager.cpp:1340 ui/filteredit_base.ui:56
 #, kde-format
 msgid "&Delete"
 msgstr "O&dstrániť"
@@ -968,12 +968,12 @@ msgid ""
 "current calendar view."
 msgstr ""
 
-#: actionmanager.cpp:613 actionmanager.cpp:1301 actionmanager.cpp:1337
+#: actionmanager.cpp:613 actionmanager.cpp:1302 actionmanager.cpp:1338
 #, kde-format
 msgid "&Show"
 msgstr "&Zobraziť"
 
-#: actionmanager.cpp:617 actionmanager.cpp:1304 actionmanager.cpp:1338
+#: actionmanager.cpp:617 actionmanager.cpp:1305 actionmanager.cpp:1339
 #, kde-format
 msgid "&Edit..."
 msgstr "&Upraviť..."
@@ -1139,97 +1139,97 @@ msgstr "Nepodarilo sa uložiť kalendár do súboru %1."
 msgid "Error"
 msgstr "Chyba"
 
-#: actionmanager.cpp:1083
+#: actionmanager.cpp:1084
 #, kde-format
 msgid "Could not start control module for date and time format."
 msgstr "Nepodarilo sa spustiť ovládací modul pre formát dátumu a času."
 
-#: actionmanager.cpp:1262
+#: actionmanager.cpp:1263
 #, kde-format
 msgid "&Show Event"
 msgstr "Zobraziť &udalosť"
 
-#: actionmanager.cpp:1265
+#: actionmanager.cpp:1266
 #, kde-format
 msgid "&Edit Event..."
 msgstr "&Upraviť udalosť..."
 
-#: actionmanager.cpp:1268
+#: actionmanager.cpp:1269
 #, kde-format
 msgid "&Delete Event"
 msgstr "&Odstrániť udalosť"
 
-#: actionmanager.cpp:1276
+#: actionmanager.cpp:1277
 #, kde-format
 msgid "&Show To-do"
 msgstr "&Zobraziť Úlohu"
 
-#: actionmanager.cpp:1279 kontactplugin/korganizer/todosummarywidget.cpp:321
+#: actionmanager.cpp:1280 kontactplugin/korganizer/todosummarywidget.cpp:321
 #, kde-format
 msgid "&Edit To-do..."
 msgstr "&Upraviť úlohu..."
 
-#: actionmanager.cpp:1282 kontactplugin/korganizer/todosummarywidget.cpp:323
+#: actionmanager.cpp:1283 kontactplugin/korganizer/todosummarywidget.cpp:323
 #, kde-format
 msgid "&Delete To-do"
 msgstr "&Odstrániť úlohu"
 
-#: actionmanager.cpp:1415 actionmanager.cpp:1521
+#: actionmanager.cpp:1416 actionmanager.cpp:1522
 #, kde-format
 msgid "Attach as &link"
 msgstr "Priložiť odkaz"
 
-#: actionmanager.cpp:1416 actionmanager.cpp:1522
+#: actionmanager.cpp:1417 actionmanager.cpp:1523
 #, kde-format
 msgid "Attach &inline"
 msgstr "Pripoj&iť ako vložené"
 
-#: actionmanager.cpp:1417
+#: actionmanager.cpp:1418
 #, kde-format
 msgid "Attach inline &without attachments"
 msgstr "Pripojiť ako vložené bez príloh"
 
-#: actionmanager.cpp:1419 actionmanager.cpp:1524
+#: actionmanager.cpp:1420 actionmanager.cpp:1525
 #, kde-format
 msgid "C&ancel"
 msgstr "Z&rušiť"
 
-#: actionmanager.cpp:1457
+#: actionmanager.cpp:1458
 #, kde-format
 msgid "Removing attachments from an email might invalidate its signature."
 msgstr "Odstránenie prílohy z e-mailu môže zneplatniť jeho ​​podpis."
 
-#: actionmanager.cpp:1458
+#: actionmanager.cpp:1459
 #, kde-format
 msgid "Remove Attachments"
 msgstr "Odstrániť prílohy"
 
-#: actionmanager.cpp:1609
+#: actionmanager.cpp:1610
 #, kde-format
 msgid "Undo: %1"
 msgstr "Späť: %1"
 
-#: actionmanager.cpp:1612 actionmanager.cpp:1628
+#: actionmanager.cpp:1613 actionmanager.cpp:1629
 #, kde-format
 msgid "Undo"
 msgstr "Späť"
 
-#: actionmanager.cpp:1622
+#: actionmanager.cpp:1623
 #, kde-format
 msgid "Redo: %1"
 msgstr "Znovu: %1"
 
-#: actionmanager.cpp:1625
+#: actionmanager.cpp:1626
 #, kde-format
 msgid "Redo"
 msgstr "Znovu"
 
-#: actionmanager.cpp:1639
+#: actionmanager.cpp:1640
 #, kde-format
 msgid "URL '%1' is invalid."
 msgstr "URL '%1' nie je platné."
 
-#: actionmanager.cpp:1644
+#: actionmanager.cpp:1645
 #, kde-format
 msgctxt "@info"
 msgid ""
@@ -1244,18 +1244,18 @@ msgstr ""
 "zlúčiť, potom budete mať možnosť vybrať si cieľovú kalendár.</p><p>Ak "
 "vyberiete pridať, potom sa pre vás automaticky vytvorí nový kalendár.</p>"
 
-#: actionmanager.cpp:1652
+#: actionmanager.cpp:1653
 #, kde-format
 msgctxt "@title:window"
 msgid "Import Calendar"
 msgstr "Importovať kalendár"
 
-#: actionmanager.cpp:1653
+#: actionmanager.cpp:1654
 #, kde-format
 msgid "Merge into existing calendar"
 msgstr "Vložiť do existujúceho kalendára"
 
-#: actionmanager.cpp:1654
+#: actionmanager.cpp:1655
 #, kde-format
 msgid "Add as new calendar"
 msgstr "Pridať ako nový kalendár"

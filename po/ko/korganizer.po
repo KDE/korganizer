@@ -8,7 +8,7 @@ msgid ""
 msgstr ""
 "Project-Id-Version: Korganizer\n"
 "Report-Msgid-Bugs-To: https://bugs.kde.org\n"
-"POT-Creation-Date: 2023-03-26 00:49+0000\n"
+"POT-Creation-Date: 2023-03-30 00:49+0000\n"
 "PO-Revision-Date: 2023-03-01 01:54+0100\n"
 "Last-Translator: Shinjo Park <kde@peremen.name>\n"
 "Language-Team: Korean <kde-kr@kde.org>\n"
@@ -434,8 +434,8 @@ msgstr ""
 "습니다!"
 
 #. i18n: ectx: property (text), widget (QPushButton, mDeleteButton)
-#: actionmanager.cpp:366 actionmanager.cpp:621 actionmanager.cpp:1307
-#: actionmanager.cpp:1339 ui/filteredit_base.ui:56
+#: actionmanager.cpp:366 actionmanager.cpp:621 actionmanager.cpp:1308
+#: actionmanager.cpp:1340 ui/filteredit_base.ui:56
 #, kde-format
 msgid "&Delete"
 msgstr "삭제(&D)"
@@ -930,12 +930,12 @@ msgid ""
 "current calendar view."
 msgstr "현재 캘린더 보기 설정을 변경할 수 있는 대화 상자를 엽니다."
 
-#: actionmanager.cpp:613 actionmanager.cpp:1301 actionmanager.cpp:1337
+#: actionmanager.cpp:613 actionmanager.cpp:1302 actionmanager.cpp:1338
 #, kde-format
 msgid "&Show"
 msgstr "표시(&S)"
 
-#: actionmanager.cpp:617 actionmanager.cpp:1304 actionmanager.cpp:1338
+#: actionmanager.cpp:617 actionmanager.cpp:1305 actionmanager.cpp:1339
 #, kde-format
 msgid "&Edit..."
 msgstr "편집(&E)..."
@@ -1098,97 +1098,97 @@ msgstr "%1 파일로 캘린더를 저장할 수 없습니다."
 msgid "Error"
 msgstr "오류"
 
-#: actionmanager.cpp:1083
+#: actionmanager.cpp:1084
 #, kde-format
 msgid "Could not start control module for date and time format."
 msgstr "날짜와 시간 제어 모듈을 시작할 수 없습니다."
 
-#: actionmanager.cpp:1262
+#: actionmanager.cpp:1263
 #, kde-format
 msgid "&Show Event"
 msgstr "이벤트 표시(&S)"
 
-#: actionmanager.cpp:1265
+#: actionmanager.cpp:1266
 #, kde-format
 msgid "&Edit Event..."
 msgstr "이벤트 편집(&E)..."
 
-#: actionmanager.cpp:1268
+#: actionmanager.cpp:1269
 #, kde-format
 msgid "&Delete Event"
 msgstr "이벤트 삭제(&D)"
 
-#: actionmanager.cpp:1276
+#: actionmanager.cpp:1277
 #, kde-format
 msgid "&Show To-do"
 msgstr "할 일 표시(&S)"
 
-#: actionmanager.cpp:1279 kontactplugin/korganizer/todosummarywidget.cpp:321
+#: actionmanager.cpp:1280 kontactplugin/korganizer/todosummarywidget.cpp:321
 #, kde-format
 msgid "&Edit To-do..."
 msgstr "할 일 편집(&E)..."
 
-#: actionmanager.cpp:1282 kontactplugin/korganizer/todosummarywidget.cpp:323
+#: actionmanager.cpp:1283 kontactplugin/korganizer/todosummarywidget.cpp:323
 #, kde-format
 msgid "&Delete To-do"
 msgstr "할 일 삭제(&D)"
 
-#: actionmanager.cpp:1415 actionmanager.cpp:1521
+#: actionmanager.cpp:1416 actionmanager.cpp:1522
 #, kde-format
 msgid "Attach as &link"
 msgstr "링크로 첨부(&L)"
 
-#: actionmanager.cpp:1416 actionmanager.cpp:1522
+#: actionmanager.cpp:1417 actionmanager.cpp:1523
 #, kde-format
 msgid "Attach &inline"
 msgstr "인라인으로 첨부(&I)"
 
-#: actionmanager.cpp:1417
+#: actionmanager.cpp:1418
 #, kde-format
 msgid "Attach inline &without attachments"
 msgstr "첨부 없이 인라인으로 첨부(&W)"
 
-#: actionmanager.cpp:1419 actionmanager.cpp:1524
+#: actionmanager.cpp:1420 actionmanager.cpp:1525
 #, kde-format
 msgid "C&ancel"
 msgstr "취소(&A)"
 
-#: actionmanager.cpp:1457
+#: actionmanager.cpp:1458
 #, kde-format
 msgid "Removing attachments from an email might invalidate its signature."
 msgstr "이메일에서 첨부를 삭제하면 디지털 서명을 무효화할 수도 있습니다."
 
-#: actionmanager.cpp:1458
+#: actionmanager.cpp:1459
 #, kde-format
 msgid "Remove Attachments"
 msgstr "첨부 삭제"
 
-#: actionmanager.cpp:1609
+#: actionmanager.cpp:1610
 #, kde-format
 msgid "Undo: %1"
 msgstr "실행 취소: %1"
 
-#: actionmanager.cpp:1612 actionmanager.cpp:1628
+#: actionmanager.cpp:1613 actionmanager.cpp:1629
 #, kde-format
 msgid "Undo"
 msgstr "실행 취소"
 
-#: actionmanager.cpp:1622
+#: actionmanager.cpp:1623
 #, kde-format
 msgid "Redo: %1"
 msgstr "다시 실행: %1"
 
-#: actionmanager.cpp:1625
+#: actionmanager.cpp:1626
 #, kde-format
 msgid "Redo"
 msgstr "다시 실행"
 
-#: actionmanager.cpp:1639
+#: actionmanager.cpp:1640
 #, kde-format
 msgid "URL '%1' is invalid."
 msgstr "URL %1이(가) 잘못되었습니다."
 
-#: actionmanager.cpp:1644
+#: actionmanager.cpp:1645
 #, kde-format
 msgctxt "@info"
 msgid ""
@@ -1202,18 +1202,18 @@ msgstr ""
 "겠습니까?</p><p>캘린더에 합치기를 선택했다면 대상 캘린더를 선택할 수 있습니"
 "다.</p><p>새 캘린더로 추가를 선택했다면 자동으로 새 캘린더를 만듭니다.</p>"
 
-#: actionmanager.cpp:1652
+#: actionmanager.cpp:1653
 #, kde-format
 msgctxt "@title:window"
 msgid "Import Calendar"
 msgstr "캘린더 가져오기"
 
-#: actionmanager.cpp:1653
+#: actionmanager.cpp:1654
 #, kde-format
 msgid "Merge into existing calendar"
 msgstr "기존 캘린더에 합치기"
 
-#: actionmanager.cpp:1654
+#: actionmanager.cpp:1655
 #, kde-format
 msgid "Add as new calendar"
 msgstr "새 캘린더로 추가"
