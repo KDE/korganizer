@@ -116,7 +116,7 @@ void SearchDialog::doSearch()
 {
     QRegularExpression re;
     re.setPatternOptions(QRegularExpression::CaseInsensitiveOption);
-    re.setPattern(m_ui->searchEdit->text());
+    re.setPattern(QRegularExpression::wildcardToRegularExpression(m_ui->searchEdit->text()));
     if (!re.isValid()) {
         KMessageBox::error(this,
                            i18nc("@info",
