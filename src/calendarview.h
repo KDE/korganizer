@@ -10,7 +10,6 @@
 
 #pragma once
 
-#include "helper/searchcollectionhelper.h"
 #include "korganizerprivate_export.h"
 
 #include "interfaces/korganizer/calendarviewbase.h"
@@ -20,6 +19,7 @@
 #include <KCalendarCore/Visitor>
 
 #include <Akonadi/ITIPHandler>
+#include <Akonadi/SearchCollectionHelper>
 
 #include <CalendarSupport/MessageWidget>
 
@@ -742,5 +742,5 @@ private:
     Akonadi::CalendarClipboard *mCalendarClipboard = nullptr;
     AkonadiCollectionView *mETMCollectionView = nullptr;
 
-    SearchCollectionHelper mSearchCollectionHelper;
+    Akonadi::SearchCollectionHelper mSearchCollectionHelper;
 };

@@ -226,7 +226,6 @@ set(korganizerprivate_LIB_SRCS
     kowindowlist.cpp
     widgets/navigatorbar.cpp
     dialog/searchdialog.cpp
-    helper/searchcollectionhelper.cpp
     views/agendaview/koagendaview.cpp
     views/journalview/kojournalview.cpp
     views/listview/kolistview.cpp
@@ -266,7 +265,6 @@ set(korganizerprivate_LIB_SRCS
     kowindowlist.h
     widgets/navigatorbar.h
     dialog/searchdialog.h
-    helper/searchcollectionhelper.h
     views/agendaview/koagendaview.h
     views/journalview/kojournalview.h
     views/listview/kolistview.h
