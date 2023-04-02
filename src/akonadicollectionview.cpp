@@ -420,19 +420,6 @@ AkonadiCollectionView::AkonadiCollectionView(CalendarView *view, bool hasContext
     auto collectionFilter = new CollectionFilter(this);
     collectionFilter->setSourceModel(calendarDelegateModel);
 
-    mCollectionView = new Akonadi::EntityTreeView(this);
-    mCollectionView->header()->hide();
-    mCollectionView->setRootIsDecorated(true);
-    // mCollectionView->setSorting( true );
-    {
-        auto delegate = new StyledCalendarDelegate(mCollectionView);
-        connect(delegate, &StyledCalendarDelegate::action, this, &AkonadiCollectionView::onAction);
-        mCollectionView->setItemDelegate(delegate);
-    }
-    mCollectionView->setModel(collectionFilter);
-    connect(mCollectionView->selectionModel(), &QItemSelectionModel::selectionChanged, this, &AkonadiCollectionView::updateMenu);
-    mNewNodeExpander = new NewNodeExpander(mCollectionView, false, QStringLiteral("CollectionTreeView"));
-
     // Filter tree view.
     auto searchProxy = new ReparentingModel(this);
     searchProxy->setSourceModel(collectionFilter);
@@ -445,23 +432,20 @@ AkonadiCollectionView::AkonadiCollectionView(CalendarView *view, bool hasContext
     filterTreeViewModel->setSourceModel(searchProxy);
     connect(searchCol, &QLineEdit::textChanged, filterTreeViewModel, &QSortFilterProxyModel::setFilterWildcard);
 
-    auto mSearchView = new Akonadi::EntityTreeView(this);
-    mSearchView->header()->hide();
-    mSearchView->setRootIsDecorated(true);
+    mCollectionView = new Akonadi::EntityTreeView(this);
+    mCollectionView->header()->hide();
+    mCollectionView->setRootIsDecorated(true);
+    // mCollectionView->setSorting( true );
     {
         auto delegate = new StyledCalendarDelegate(mCollectionView);
         connect(delegate, &StyledCalendarDelegate::action, this, &AkonadiCollectionView::onAction);
-        mSearchView->setItemDelegate(delegate);
+        mCollectionView->setItemDelegate(delegate);
     }
-    mSearchView->setModel(filterTreeViewModel);
-    new NewNodeExpander(mSearchView, true, QString());
+    mCollectionView->setModel(filterTreeViewModel);
+    connect(mCollectionView->selectionModel(), &QItemSelectionModel::selectionChanged, this, &AkonadiCollectionView::updateMenu);
+    mNewNodeExpander = new NewNodeExpander(mCollectionView, false, QStringLiteral("CollectionTreeView"));
 
-    mStackedWidget = new QStackedWidget(this);
-    mStackedWidget->addWidget(mCollectionView);
-    mStackedWidget->addWidget(mSearchView);
-    mStackedWidget->setCurrentWidget(mCollectionView);
-
-    topLayout->addWidget(mStackedWidget);
+    topLayout->addWidget(mCollectionView);
 
     connect(mBaseModel, &QAbstractProxyModel::rowsInserted, this, &AkonadiCollectionView::rowsInserted);
 
@@ -540,15 +524,6 @@ AkonadiCollectionView::~AkonadiCollectionView()
     // Need this because it seems impossible to detect in the NodeExpander when to save the state
     // before the view is deleted.
     mNewNodeExpander->saveState();
-}
-
-void AkonadiCollectionView::onSearchIsActive(bool active)
-{
-    if (!active) {
-        mStackedWidget->setCurrentIndex(0);
-    } else {
-        mStackedWidget->setCurrentIndex(1);
-    }
 }
 
 void AkonadiCollectionView::slotServerSideSubscription()

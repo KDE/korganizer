@@ -87,7 +87,6 @@ private Q_SLOTS:
     void rowsInserted(const QModelIndex &, int, int);
     void assignColor();
     void setDefaultCalendar();
-    void onSearchIsActive(bool);
     void onAction(const QModelIndex &index, int action);
     void slotServerSideSubscription();
 
@@ -96,7 +95,6 @@ private:
 
     Akonadi::StandardCalendarActionManager *mActionManager = nullptr;
     Akonadi::EntityTreeView *mCollectionView = nullptr;
-    QStackedWidget *mStackedWidget = nullptr;
     QAbstractProxyModel *mBaseModel = nullptr;
     KCheckableProxyModel *mSelectionProxyModel = nullptr;
     QAction *mAssignColor = nullptr;
