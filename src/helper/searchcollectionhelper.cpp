@@ -32,6 +32,9 @@ SearchCollectionHelper::SearchCollectionHelper(QObject *parent)
     setupSearchCollections();
     connect(mIdentityManager, qOverload<>(&KIdentityManagement::IdentityManager::changed), this, &SearchCollectionHelper::updateOpenInvitation);
     connect(mIdentityManager, qOverload<>(&KIdentityManagement::IdentityManager::changed), this, &SearchCollectionHelper::updateDeclinedInvitation);
+
+    updateOpenInvitation();
+    updateDeclinedInvitation();
 }
 
 void SearchCollectionHelper::setupSearchCollections()
@@ -80,8 +83,11 @@ void SearchCollectionHelper::updateSearchCollection(Akonadi::Collection col,
     if (!col.isValid()) {
         auto job = new Akonadi::SearchCreateJob(name, query);
         job->setRemoteSearchEnabled(false);
-        job->setSearchMimeTypes(QStringList() << KCalendarCore::Event::eventMimeType() << KCalendarCore::Todo::todoMimeType()
-                                              << KCalendarCore::Journal::journalMimeType());
+        job->setSearchMimeTypes({
+            KCalendarCore::Event::eventMimeType(),
+            KCalendarCore::Todo::todoMimeType(),
+            KCalendarCore::Journal::journalMimeType(),
+        });
         connect(job, &Akonadi::SearchCreateJob::result, this, &SearchCollectionHelper::createSearchJobFinished);
         qCDebug(KORGANIZER_LOG) << "We have to create a " << name << " virtual Collection";
     } else {
@@ -89,6 +95,7 @@ void SearchCollectionHelper::updateSearchCollection(Akonadi::Collection col,
         auto displayname = col.attribute<Akonadi::EntityDisplayAttribute>(Akonadi::Collection::AddIfMissing);
         attribute->setQueryString(QString::fromLatin1(query.toJSON()));
         attribute->setRemoteSearchEnabled(false);
+        attribute->setRecursive(true);
         displayname->setDisplayName(displayName);
         col.setEnabled(true);
         auto job = new Akonadi::CollectionModifyJob(col, this);
