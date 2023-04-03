@@ -23,6 +23,7 @@ target_link_libraries(kontact_specialdatesplugin
   KPim${KF_MAJOR_VERSION}::KontactInterface
   KPim${KF_MAJOR_VERSION}::AkonadiCore
   KPim${KF_MAJOR_VERSION}::AkonadiContact
+  KPim${KF_MAJOR_VERSION}::ContactEditor
   KPim${KF_MAJOR_VERSION}::CalendarSupport
 )
 

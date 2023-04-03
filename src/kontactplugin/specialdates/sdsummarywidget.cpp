@@ -644,7 +644,7 @@ void SDSummaryWidget::viewContact(const QString &url)
         return;
     }
 
-    QPointer<Akonadi::ContactViewerDialog> dlg = new Akonadi::ContactViewerDialog(this);
+    QPointer<ContactEditor::ContactViewerDialog> dlg = new ContactEditor::ContactViewerDialog(this);
     dlg->setContact(item);
     dlg->exec();
     delete dlg;
