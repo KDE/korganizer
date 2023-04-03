@@ -1,5 +1,5 @@
 # translation of korganizer.po to
-# Version: $Revision: 1646363 $
+# Version: $Revision: 1648665 $
 # translated by Krzysztof Jasiutowicz <kpjas@priv.onet.pl>
 # contains his updates from 26.01.1999
 # Krzysztof Lichota <lichota@mimuw.edu.pl>, 2002, 2005, 2006.
@@ -13,7 +13,7 @@ msgid ""
 msgstr ""
 "Project-Id-Version: korganizer\n"
 "Report-Msgid-Bugs-To: https://bugs.kde.org\n"
-"POT-Creation-Date: 2023-03-09 00:47+0000\n"
+"POT-Creation-Date: 2023-04-03 02:42+0000\n"
 "PO-Revision-Date: 2022-10-18 17:58+0200\n"
 "Last-Translator: Łukasz Wojniłowicz <lukasz.wojnilowicz@gmail.com>\n"
 "Language-Team: Polish <kde-i18n-doc@kde.org>\n"
@@ -1284,56 +1284,56 @@ msgctxt "@info/plain Displayed grayed-out inside the textbox, verb to search"
 msgid "Search..."
 msgstr "Szukaj..."
 
-#: akonadicollectionview.cpp:508 manageshowcollectionproperties.cpp:76
+#: akonadicollectionview.cpp:492 manageshowcollectionproperties.cpp:76
 #, kde-format
 msgctxt "@title:window"
 msgid "Properties of Calendar Folder %1"
 msgstr "Właściwości katalogu kalendarza %1"
 
-#: akonadicollectionview.cpp:520
+#: akonadicollectionview.cpp:504
 #, kde-format
 msgctxt "@action:inmenu"
 msgid "&Set Folder Color..."
 msgstr "U&staw kolor katalogu..."
 
-#: akonadicollectionview.cpp:526
+#: akonadicollectionview.cpp:510
 #, kde-format
 msgctxt "@action:inmenu"
 msgid "Set as &Default Folder"
 msgstr "Ustaw jako &domyślny katalog"
 
-#: akonadicollectionview.cpp:532
+#: akonadicollectionview.cpp:516
 #, kde-format
 msgctxt "@action:inmenu"
 msgid "Serverside Subscription..."
 msgstr "Subskrybowanie na serwerze..."
 
-#: akonadicollectionview.cpp:586
+#: akonadicollectionview.cpp:561
 #, kde-format
 msgctxt "@info"
 msgid "Do you really want replace your current default calendar with \"%1\"?"
 msgstr ""
 "Czy na pewno zastąpić twój obecny domyślny kalendarz, kalendarzem \"%1\"?"
 
-#: akonadicollectionview.cpp:587
+#: akonadicollectionview.cpp:562
 #, kde-format
 msgctxt "@title:window"
 msgid "Replace Default Calendar?"
 msgstr "Czy zastąpić domyślny kalendarz?"
 
-#: akonadicollectionview.cpp:687
+#: akonadicollectionview.cpp:662
 #, kde-format
 msgctxt "@title:window"
 msgid "Add Calendar"
 msgstr "Dodaj kalendarz"
 
-#: akonadicollectionview.cpp:729
+#: akonadicollectionview.cpp:704
 #, kde-format
 msgctxt "@info"
 msgid "Do you really want to delete calendar %1?"
 msgstr "Czy na pewno chcesz usunąć kalendarz %1?"
 
-#: akonadicollectionview.cpp:730
+#: akonadicollectionview.cpp:705
 #, kde-format
 msgctxt "@title:window"
 msgid "Delete Calendar"
@@ -2035,13 +2035,13 @@ msgstr[0] "%1 pasujące"
 msgstr[1] "%1 pasujące"
 msgstr[2] "%1 pasujących"
 
-#: helper/searchcollectionhelper.cpp:106
+#: helper/searchcollectionhelper.cpp:113
 #, kde-format
 msgctxt "A collection of all declined invidations."
 msgid "Declined Invitations"
 msgstr "Odrzucone zaproszenia"
 
-#: helper/searchcollectionhelper.cpp:114
+#: helper/searchcollectionhelper.cpp:121
 #, kde-format
 msgctxt "A collection of all open invidations."
 msgid "Open Invitations"

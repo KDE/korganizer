@@ -6,7 +6,7 @@ msgid ""
 msgstr ""
 "Project-Id-Version: kdepim/korganizer.po\n"
 "Report-Msgid-Bugs-To: https://bugs.kde.org\n"
-"POT-Creation-Date: 2023-03-09 00:47+0000\n"
+"POT-Creation-Date: 2023-04-03 02:42+0000\n"
 "PO-Revision-Date: 2004-12-03 14:52-0500\n"
 "Last-Translator: Kevin Scannell <kscanne@gmail.com>\n"
 "Language-Team: Irish <gaeilge-gnulinux@lists.sourceforge.net>\n"
@@ -1283,60 +1283,60 @@ msgctxt "@info/plain Displayed grayed-out inside the textbox, verb to search"
 msgid "Search..."
 msgstr "Cuardaigh"
 
-#: akonadicollectionview.cpp:508 manageshowcollectionproperties.cpp:76
+#: akonadicollectionview.cpp:492 manageshowcollectionproperties.cpp:76
 #, kde-format
 msgctxt "@title:window"
 msgid "Properties of Calendar Folder %1"
 msgstr "Airíonna d'Fillteán Féilirí %1"
 
-#: akonadicollectionview.cpp:520
+#: akonadicollectionview.cpp:504
 #, kde-format
 msgctxt "@action:inmenu"
 msgid "&Set Folder Color..."
 msgstr ""
 
-#: akonadicollectionview.cpp:526
+#: akonadicollectionview.cpp:510
 #, fuzzy, kde-format
 #| msgid "Use as &Default Calendar"
 msgctxt "@action:inmenu"
 msgid "Set as &Default Folder"
 msgstr "Úsáid mar Fhéilire &Réamhshocraithe"
 
-#: akonadicollectionview.cpp:532
+#: akonadicollectionview.cpp:516
 #, kde-format
 msgctxt "@action:inmenu"
 msgid "Serverside Subscription..."
 msgstr ""
 
-#: akonadicollectionview.cpp:586
+#: akonadicollectionview.cpp:561
 #, fuzzy, kde-format
 #| msgid "Do you really want to delete calendar %1?"
 msgctxt "@info"
 msgid "Do you really want replace your current default calendar with \"%1\"?"
 msgstr "An bhfuil tú cinnte gur mian leat féilire %1 a scriosadh?"
 
-#: akonadicollectionview.cpp:587
+#: akonadicollectionview.cpp:562
 #, fuzzy, kde-format
 #| msgid "Use as &Default Calendar"
 msgctxt "@title:window"
 msgid "Replace Default Calendar?"
 msgstr "Úsáid mar Fhéilire &Réamhshocraithe"
 
-#: akonadicollectionview.cpp:687
+#: akonadicollectionview.cpp:662
 #, fuzzy, kde-format
 #| msgid "Add Calendar"
 msgctxt "@title:window"
 msgid "Add Calendar"
 msgstr "Cuir Féilire Leis"
 
-#: akonadicollectionview.cpp:729
+#: akonadicollectionview.cpp:704
 #, fuzzy, kde-format
 #| msgid "Do you really want to delete calendar %1?"
 msgctxt "@info"
 msgid "Do you really want to delete calendar %1?"
 msgstr "An bhfuil tú cinnte gur mian leat féilire %1 a scriosadh?"
 
-#: akonadicollectionview.cpp:730
+#: akonadicollectionview.cpp:705
 #, fuzzy, kde-format
 #| msgid "Delete Calendar"
 msgctxt "@title:window"
@@ -2028,13 +2028,13 @@ msgstr[2] ""
 msgstr[3] ""
 msgstr[4] ""
 
-#: helper/searchcollectionhelper.cpp:106
+#: helper/searchcollectionhelper.cpp:113
 #, kde-format
 msgctxt "A collection of all declined invidations."
 msgid "Declined Invitations"
 msgstr ""
 
-#: helper/searchcollectionhelper.cpp:114
+#: helper/searchcollectionhelper.cpp:121
 #, fuzzy, kde-format
 #| msgid "Abbreviations:"
 msgctxt "A collection of all open invidations."

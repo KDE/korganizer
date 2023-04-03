@@ -6,7 +6,7 @@ msgid ""
 msgstr ""
 "Project-Id-Version: korganizer\n"
 "Report-Msgid-Bugs-To: https://bugs.kde.org\n"
-"POT-Creation-Date: 2023-03-09 00:47+0000\n"
+"POT-Creation-Date: 2023-04-03 02:42+0000\n"
 "PO-Revision-Date: 2007-09-17 14:45+0545\n"
 "Last-Translator: Nabin Gautam <nabin@mpp.org.np>\n"
 "Language-Team: Nepali <info@mpp.org.np>\n"
@@ -1302,61 +1302,61 @@ msgctxt "@info/plain Displayed grayed-out inside the textbox, verb to search"
 msgid "Search..."
 msgstr "खोजी"
 
-#: akonadicollectionview.cpp:508 manageshowcollectionproperties.cpp:76
+#: akonadicollectionview.cpp:492 manageshowcollectionproperties.cpp:76
 #, fuzzy, kde-format
 #| msgid "Properties for %1"
 msgctxt "@title:window"
 msgid "Properties of Calendar Folder %1"
 msgstr "%1 का लागि गुण"
 
-#: akonadicollectionview.cpp:520
+#: akonadicollectionview.cpp:504
 #, kde-format
 msgctxt "@action:inmenu"
 msgid "&Set Folder Color..."
 msgstr ""
 
-#: akonadicollectionview.cpp:526
+#: akonadicollectionview.cpp:510
 #, fuzzy, kde-format
 #| msgid "Use as &Default Calendar"
 msgctxt "@action:inmenu"
 msgid "Set as &Default Folder"
 msgstr "पूर्वनिर्धारित क्यालेन्डरका रूपमा प्रयोग गर्नुहोस्"
 
-#: akonadicollectionview.cpp:532
+#: akonadicollectionview.cpp:516
 #, kde-format
 msgctxt "@action:inmenu"
 msgid "Serverside Subscription..."
 msgstr ""
 
-#: akonadicollectionview.cpp:586
+#: akonadicollectionview.cpp:561
 #, fuzzy, kde-format
 #| msgid "<qt>Do you really want to delete the resource <b>%1</b>?</qt>"
 msgctxt "@info"
 msgid "Do you really want replace your current default calendar with \"%1\"?"
 msgstr "<qt>तपाईँ वास्तवमै स्रोत <b>%1</b> मेट्न चाहनुहुन्छ ?</qt>"
 
-#: akonadicollectionview.cpp:587
+#: akonadicollectionview.cpp:562
 #, fuzzy, kde-format
 #| msgid "Use as &Default Calendar"
 msgctxt "@title:window"
 msgid "Replace Default Calendar?"
 msgstr "पूर्वनिर्धारित क्यालेन्डरका रूपमा प्रयोग गर्नुहोस्"
 
-#: akonadicollectionview.cpp:687
+#: akonadicollectionview.cpp:662
 #, fuzzy, kde-format
 #| msgid "Add as new calendar"
 msgctxt "@title:window"
 msgid "Add Calendar"
 msgstr "नयाँ क्यालेन्डरका रूपमा थप्नुहोस्"
 
-#: akonadicollectionview.cpp:729
+#: akonadicollectionview.cpp:704
 #, fuzzy, kde-format
 #| msgid "<qt>Do you really want to delete the resource <b>%1</b>?</qt>"
 msgctxt "@info"
 msgid "Do you really want to delete calendar %1?"
 msgstr "<qt>तपाईँ वास्तवमै स्रोत <b>%1</b> मेट्न चाहनुहुन्छ ?</qt>"
 
-#: akonadicollectionview.cpp:730
+#: akonadicollectionview.cpp:705
 #, fuzzy, kde-format
 #| msgid "Default Calendar"
 msgctxt "@title:window"
@@ -2099,14 +2099,14 @@ msgid_plural "%1 matches"
 msgstr[0] ""
 msgstr[1] ""
 
-#: helper/searchcollectionhelper.cpp:106
+#: helper/searchcollectionhelper.cpp:113
 #, fuzzy, kde-format
 #| msgid "Delete Confirmation"
 msgctxt "A collection of all declined invidations."
 msgid "Declined Invitations"
 msgstr "मेटाइ यकीन गर्नुहोस्"
 
-#: helper/searchcollectionhelper.cpp:114
+#: helper/searchcollectionhelper.cpp:121
 #, fuzzy, kde-format
 #| msgid "Delete Confirmation"
 msgctxt "A collection of all open invidations."
