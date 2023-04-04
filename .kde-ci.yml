@@ -2,47 +2,6 @@
 # SPDX-License-Identifier: CC0-1.0
 
 Dependencies:
-- 'on': ['Linux/Qt5', 'FreeBSD/Qt5', 'Windows/Qt5', 'macOS/Qt5']
-  'require':
-    'frameworks/extra-cmake-modules': '@latest'
-    'graphics/kdiagram' : '@latest'
-    'pim/akonadi' : '@same'
-    'pim/akonadi-calendar' : '@same'
-    'pim/akonadi-contacts' : '@same'
-    'pim/akonadi-mime' : '@same'
-    'pim/akonadi-notes' : '@same'
-    'pim/calendarsupport' : '@same'
-    'pim/eventviews' : '@same'
-    'pim/incidenceeditor' : '@same'
-    'pim/kcalutils' : '@same'
-    'pim/kidentitymanagement' : '@same'
-    'pim/kldap' : '@same'
-    'pim/kmailtransport' : '@same'
-    'pim/kmime' : '@same'
-    'pim/kontactinterface' : '@same'
-    'pim/kpimtextedit' : '@same'
-    'pim/libkdepim' : '@same'
-    'pim/pimcommon' : '@same'
-    'frameworks/ki18n': '@latest'
-    'frameworks/kconfig': '@latest'
-    'frameworks/kconfigwidgets': '@latest'
-    'frameworks/kcoreaddons': '@latest'
-    'frameworks/kcrash': '@latest'
-    'frameworks/kiconthemes': '@latest'
-    'frameworks/kitemviews': '@latest'
-    'frameworks/kjobwidgets': '@latest'
-    'frameworks/kcmutils': '@latest'
-    'frameworks/knewstuff': '@latest'
-    'frameworks/kparts': '@latest'
-    'frameworks/kwidgetsaddons': '@latest'
-    'frameworks/kwindowsystem': '@latest'
-    'frameworks/kxmlgui': '@latest'
-    'frameworks/knotifications': '@latest'
-    'frameworks/kholidays': '@latest'
-    'frameworks/kdoctools': '@latest'
-    'frameworks/kcontacts': '@latest'
-    'frameworks/kcalendarcore': '@latest'
-
 - 'on': ['Linux/Qt6', 'FreeBSD/Qt6', 'Windows/Qt6', 'macOS/Qt6']
   'require':
     'frameworks/extra-cmake-modules': '@latest-kf6'

@@ -47,14 +47,14 @@ if (COMPILE_WITH_UNITY_CMAKE_SUPPORT)
     set_target_properties(korganizer PROPERTIES UNITY_BUILD ON)
 endif()
 target_link_libraries(korganizer
-    KPim${KF_MAJOR_VERSION}::KontactInterface
-    KF${KF_MAJOR_VERSION}::CalendarCore
+    KPim6::KontactInterface
+    KF6::CalendarCore
     korganizerprivate
     korganizer_interfaces
     korganizer_core
-    KPim${KF_MAJOR_VERSION}::PimCommonAkonadi
-    KF${KF_MAJOR_VERSION}::Crash
-    KF${KF_MAJOR_VERSION}::WindowSystem
+    KPim6::PimCommonAkonadi
+    KF6::Crash
+    KF6::WindowSystem
     ${korganizer_userfeedback_LIB}
     )
 
@@ -66,22 +66,22 @@ install(TARGETS
 add_library(korganizer_kcm_static STATIC widgets/kitemiconcheckcombo.cpp prefs/kprefsdialog.cpp widgets/kitemiconcheckcombo.h prefs/kprefsdialog.h ${korganizer_common_SRCS})
 set_property(TARGET korganizer_kcm_static PROPERTY POSITION_INDEPENDENT_CODE ON)
 target_link_libraries(korganizer_kcm_static
-    KF${KF_MAJOR_VERSION}::KCMUtils
+    KF6::KCMUtils
 
-    KPim${KF_MAJOR_VERSION}::AkonadiCalendar
-    KPim${KF_MAJOR_VERSION}::CalendarSupport
-    KPim${KF_MAJOR_VERSION}::EventViews
-    KPim${KF_MAJOR_VERSION}::IncidenceEditor
+    KPim6::AkonadiCalendar
+    KPim6::CalendarSupport
+    KPim6::EventViews
+    KPim6::IncidenceEditor
     korganizer_core
     korganizerprivate
     Qt::UiTools
-    KF${KF_MAJOR_VERSION}::CalendarCore
-    KF${KF_MAJOR_VERSION}::Holidays
-    KPim${KF_MAJOR_VERSION}::MailTransport
-    KPim${KF_MAJOR_VERSION}::PimCommon
-    KPim${KF_MAJOR_VERSION}::AkonadiWidgets
-    KF${KF_MAJOR_VERSION}::WindowSystem
-    KF${KF_MAJOR_VERSION}::KIOWidgets
+    KF6::CalendarCore
+    KF6::Holidays
+    KPim6::MailTransport
+    KPim6::PimCommon
+    KPim6::AkonadiWidgets
+    KF6::WindowSystem
+    KF6::KIOWidgets
     )
 
 add_library(korganizer_configcolorsandfonts MODULE prefs/koprefsdialogcolorsandfonts.cpp prefs/koprefsdialogcolorsandfonts.h)
@@ -130,14 +130,14 @@ if (COMPILE_WITH_UNITY_CMAKE_SUPPORT)
 endif()
 
 target_link_libraries(korganizerpart
-    KPim${KF_MAJOR_VERSION}::CalendarSupport
+    KPim6::CalendarSupport
     korganizer_core
     korganizer_interfaces
     korganizerprivate
-    KPim${KF_MAJOR_VERSION}::AkonadiCore
-    KF${KF_MAJOR_VERSION}::CalendarCore
-    KPim${KF_MAJOR_VERSION}::CalendarUtils
-    KF${KF_MAJOR_VERSION}::KIOWidgets
+    KPim6::AkonadiCore
+    KF6::CalendarCore
+    KPim6::CalendarUtils
+    KF6::KIOWidgets
     )
 
 install(TARGETS
@@ -166,9 +166,9 @@ target_link_libraries(korganizer_core
     PUBLIC
     korganizer_interfaces
     PRIVATE
-    KPim${KF_MAJOR_VERSION}::CalendarSupport
-    KPim${KF_MAJOR_VERSION}::EventViews
-    KPim${KF_MAJOR_VERSION}::IdentityManagement
+    KPim6::CalendarSupport
+    KPim6::EventViews
+    KPim6::IdentityManagement
     )
 
 target_include_directories(korganizer_core PUBLIC
@@ -326,32 +326,32 @@ generate_export_header(korganizerprivate BASE_NAME korganizerprivate)
 
 target_link_libraries(korganizerprivate
     PUBLIC
-    KPim${KF_MAJOR_VERSION}::PimCommonAkonadi
+    KPim6::PimCommonAkonadi
     PRIVATE
-    KPim${KF_MAJOR_VERSION}::CalendarSupport
-    KPim${KF_MAJOR_VERSION}::EventViews
-    KPim${KF_MAJOR_VERSION}::IncidenceEditor
+    KPim6::CalendarSupport
+    KPim6::EventViews
+    KPim6::IncidenceEditor
     korganizer_core
     korganizer_interfaces
-    KPim${KF_MAJOR_VERSION}::AkonadiCore
-    KPim${KF_MAJOR_VERSION}::AkonadiCalendar
-    KPim${KF_MAJOR_VERSION}::AkonadiNotes
-    KF${KF_MAJOR_VERSION}::Contacts
-    KF${KF_MAJOR_VERSION}::CalendarCore
-    KPim${KF_MAJOR_VERSION}::CalendarUtils
-    KF${KF_MAJOR_VERSION}::Holidays
-    KPim${KF_MAJOR_VERSION}::Mime
-    KPim${KF_MAJOR_VERSION}::IdentityManagement
-    KF${KF_MAJOR_VERSION}::KCMUtils
-    KF${KF_MAJOR_VERSION}::NewStuffWidgets
-    KPim${KF_MAJOR_VERSION}::Ldap
-    KPim${KF_MAJOR_VERSION}::AkonadiWidgets
-    KF${KF_MAJOR_VERSION}::IconThemes
-    KF${KF_MAJOR_VERSION}::WindowSystem
-    KF${KF_MAJOR_VERSION}::Notifications
-    KF${KF_MAJOR_VERSION}::ItemViews
-    KF${KF_MAJOR_VERSION}::JobWidgets
-    KF${KF_MAJOR_VERSION}::KIOGui
+    KPim6::AkonadiCore
+    KPim6::AkonadiCalendar
+    KPim6::AkonadiNotes
+    KF6::Contacts
+    KF6::CalendarCore
+    KPim6::CalendarUtils
+    KF6::Holidays
+    KPim6::Mime
+    KPim6::IdentityManagement
+    KF6::KCMUtils
+    KF6::NewStuffWidgets
+    KPim6::Ldap
+    KPim6::AkonadiWidgets
+    KF6::IconThemes
+    KF6::WindowSystem
+    KF6::Notifications
+    KF6::ItemViews
+    KF6::JobWidgets
+    KF6::KIOGui
     ${korganizer_userfeedback_LIB}
     )
 

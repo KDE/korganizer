@@ -11,11 +11,11 @@ target_sources(korganizer_interfaces PRIVATE
     )
 generate_export_header(korganizer_interfaces BASE_NAME korganizer_interfaces)
 target_link_libraries(korganizer_interfaces
-  KPim${KF_MAJOR_VERSION}::CalendarSupport
-  KPim${KF_MAJOR_VERSION}::EventViews
-  KPim${KF_MAJOR_VERSION}::AkonadiCore
+  KPim6::CalendarSupport
+  KPim6::EventViews
+  KPim6::AkonadiCore
   Qt::PrintSupport
-  KF${KF_MAJOR_VERSION}::Parts
+  KF6::Parts
 )
 
 set_target_properties(korganizer_interfaces PROPERTIES

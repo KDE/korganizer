@@ -17,14 +17,14 @@ add_library(kontact_specialdatesplugin MODULE ${kontact_specialdatesplugin_PART_
 set(_korganizerprivate_lib "korganizerprivate")
 
 target_link_libraries(kontact_specialdatesplugin
-  KF${KF_MAJOR_VERSION}::Contacts
-  KF${KF_MAJOR_VERSION}::CalendarCore
-  KF${KF_MAJOR_VERSION}::Holidays
-  KPim${KF_MAJOR_VERSION}::KontactInterface
-  KPim${KF_MAJOR_VERSION}::AkonadiCore
-  KPim${KF_MAJOR_VERSION}::AkonadiContact
-  KPim${KF_MAJOR_VERSION}::ContactEditor
-  KPim${KF_MAJOR_VERSION}::CalendarSupport
+  KF6::Contacts
+  KF6::CalendarCore
+  KF6::Holidays
+  KPim6::KontactInterface
+  KPim6::AkonadiCore
+  KPim6::AkonadiContact
+  KPim6::ContactEditor
+  KPim6::CalendarSupport
 )
 
 ########### next target ###############
@@ -34,7 +34,7 @@ set(kcmsdsummary_PART_SRCS kcmsdsummary.cpp kcmsdsummary.h)
 ki18n_wrap_ui(kcmsdsummary_PART_SRCS sdsummaryconfig_base.ui)
 
 add_library(kcmsdsummary MODULE ${kcmsdsummary_PART_SRCS})
-target_link_libraries(kcmsdsummary Qt::Widgets KF${KF_MAJOR_VERSION}::KCMUtils KF${KF_MAJOR_VERSION}::I18n KF${KF_MAJOR_VERSION}::CoreAddons)
+target_link_libraries(kcmsdsummary Qt::Widgets KF6::KCMUtils KF6::I18n KF6::CoreAddons)
 
 ########### install files ###############
 

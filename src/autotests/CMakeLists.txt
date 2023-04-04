@@ -8,9 +8,9 @@ add_executable(testkodaymatrix testkodaymatrix.cpp testkodaymatrix.h ../kodaymat
 add_test(NAME testkodaymatrix COMMAND testkodaymatrix)
 ecm_mark_as_test(testkodaymatrix)
 target_link_libraries(testkodaymatrix
-  KPim${KF_MAJOR_VERSION}::AkonadiCore
-  KF${KF_MAJOR_VERSION}::CalendarCore
-  KPim${KF_MAJOR_VERSION}::CalendarSupport
+  KPim6::AkonadiCore
+  KF6::CalendarCore
+  KPim6::CalendarSupport
   korganizer_core
   korganizerprivate
   Qt::Test
@@ -20,9 +20,9 @@ add_executable(testkodaymatrix_us testkodaymatrix_us.cpp testkodaymatrix_us.h ..
 add_test(NAME testkodaymatrix_us COMMAND testkodaymatrix_us)
 ecm_mark_as_test(testkodaymatrix_us)
 target_link_libraries(testkodaymatrix_us
-  KPim${KF_MAJOR_VERSION}::AkonadiCore
-  KF${KF_MAJOR_VERSION}::CalendarCore
-  KPim${KF_MAJOR_VERSION}::CalendarSupport
+  KPim6::AkonadiCore
+  KF6::CalendarCore
+  KPim6::CalendarSupport
   korganizer_core
   korganizerprivate
   Qt::Test
@@ -32,14 +32,14 @@ set(koeventpopupmenutest_SRCS ../koeventpopupmenu.cpp ../kocorehelper.cpp ../kor
 set(koeventpopupmenutest_LIBS Qt::Test
   Qt::Gui
   Qt::Core
-  KPim${KF_MAJOR_VERSION}::Mime
-  KPim${KF_MAJOR_VERSION}::AkonadiWidgets
-  KPim${KF_MAJOR_VERSION}::AkonadiCore
-  KPim${KF_MAJOR_VERSION}::AkonadiCalendar
-  KPim${KF_MAJOR_VERSION}::AkonadiNotes
-  KF${KF_MAJOR_VERSION}::CalendarCore
-  KPim${KF_MAJOR_VERSION}::IncidenceEditor
-  KPim${KF_MAJOR_VERSION}::CalendarSupport
+  KPim6::Mime
+  KPim6::AkonadiWidgets
+  KPim6::AkonadiCore
+  KPim6::AkonadiCalendar
+  KPim6::AkonadiNotes
+  KF6::CalendarCore
+  KPim6::IncidenceEditor
+  KPim6::CalendarSupport
   korganizer_core
   korganizerprivate
 )
@@ -47,9 +47,9 @@ add_akonadi_isolated_test_advanced(koeventpopupmenutest.cpp "${koeventpopupmenut
 
 ecm_add_test(testtoggletodo.cpp
   LINK_LIBRARIES
-    Qt${QT_MAJOR_VERSION}::Test
-    KF${KF_MAJOR_VERSION}::CalendarCore
-    KPim${KF_MAJOR_VERSION}::IdentityManagement
+    Qt6::Test
+    KF6::CalendarCore
+    KPim6::IdentityManagement
     korganizer_core
     korganizerprivate
 )

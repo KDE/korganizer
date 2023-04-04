@@ -16,7 +16,7 @@ qt_add_dbus_interfaces(kontact_korganizerplugin_PART_SRCS ${korganizer_SOURCE_DI
 
 add_library(kontact_korganizerplugin MODULE ${kontact_korganizerplugin_PART_SRCS})
 
-target_link_libraries(kontact_korganizerplugin KPim${KF_MAJOR_VERSION}::AkonadiCalendar KPim${KF_MAJOR_VERSION}::CalendarUtils KF${KF_MAJOR_VERSION}::Contacts KF${KF_MAJOR_VERSION}::CalendarCore KPim${KF_MAJOR_VERSION}::KontactInterface korganizerprivate KPim${KF_MAJOR_VERSION}::CalendarSupport KPim${KF_MAJOR_VERSION}::AkonadiCalendar KF${KF_MAJOR_VERSION}::WindowSystem KF${KF_MAJOR_VERSION}::I18n)
+target_link_libraries(kontact_korganizerplugin KPim6::AkonadiCalendar KPim6::CalendarUtils KF6::Contacts KF6::CalendarCore KPim6::KontactInterface korganizerprivate KPim6::CalendarSupport KPim6::AkonadiCalendar KF6::WindowSystem KF6::I18n)
 
 ########### next target ###############
 
@@ -26,7 +26,7 @@ qt_add_dbus_interfaces(kontact_todoplugin_PART_SRCS ${korganizer_SOURCE_DIR}/src
 
 add_library(kontact_todoplugin MODULE ${kontact_todoplugin_PART_SRCS})
 
-target_link_libraries(kontact_todoplugin KPim${KF_MAJOR_VERSION}::AkonadiCalendar  KF${KF_MAJOR_VERSION}::Contacts KPim${KF_MAJOR_VERSION}::KontactInterface KF${KF_MAJOR_VERSION}::CalendarCore KPim${KF_MAJOR_VERSION}::CalendarUtils KPim${KF_MAJOR_VERSION}::CalendarSupport KPim${KF_MAJOR_VERSION}::AkonadiCalendar KF${KF_MAJOR_VERSION}::WindowSystem)
+target_link_libraries(kontact_todoplugin KPim6::AkonadiCalendar  KF6::Contacts KPim6::KontactInterface KF6::CalendarCore KPim6::CalendarUtils KPim6::CalendarSupport KPim6::AkonadiCalendar KF6::WindowSystem)
 
 ########### next target ###############
 
@@ -36,7 +36,7 @@ qt_add_dbus_interfaces(kontact_journalplugin_PART_SRCS ${korganizer_SOURCE_DIR}/
 
 add_library(kontact_journalplugin MODULE ${kontact_journalplugin_PART_SRCS})
 
-target_link_libraries(kontact_journalplugin KF${KF_MAJOR_VERSION}::I18n KPim${KF_MAJOR_VERSION}::KontactInterface KF${KF_MAJOR_VERSION}::WindowSystem)
+target_link_libraries(kontact_journalplugin KF6::I18n KPim6::KontactInterface KF6::WindowSystem)
 
 ########### next target ###############
 
@@ -45,7 +45,7 @@ set(kcmapptsummary_PART_SRCS kcmapptsummary.cpp kcmapptsummary.h)
 ki18n_wrap_ui(kcmapptsummary_PART_SRCS apptsummaryconfig_base.ui)
 
 add_library(kcmapptsummary MODULE ${kcmapptsummary_PART_SRCS})
-target_link_libraries(kcmapptsummary  KF${KF_MAJOR_VERSION}::KCMUtils KF${KF_MAJOR_VERSION}::I18n KF${KF_MAJOR_VERSION}::CoreAddons)
+target_link_libraries(kcmapptsummary  KF6::KCMUtils KF6::I18n KF6::CoreAddons)
 
 ########### next target ###############
 
@@ -54,7 +54,7 @@ set(kcmtodosummary_PART_SRCS kcmtodosummary.cpp kcmtodosummary.h)
 ki18n_wrap_ui(kcmtodosummary_PART_SRCS todosummaryconfig_base.ui)
 
 add_library(kcmtodosummary MODULE ${kcmtodosummary_PART_SRCS})
-target_link_libraries(kcmtodosummary Qt::Widgets KF${KF_MAJOR_VERSION}::KCMUtils KF${KF_MAJOR_VERSION}::I18n KF${KF_MAJOR_VERSION}::CoreAddons)
+target_link_libraries(kcmtodosummary Qt::Widgets KF6::KCMUtils KF6::I18n KF6::CoreAddons)
 
 ########## Unit Test ###########
 if (BUILD_TESTING)

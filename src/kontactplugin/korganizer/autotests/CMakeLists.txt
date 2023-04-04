@@ -9,8 +9,8 @@ ecm_mark_as_test(summaryeventtest)
 
 target_link_libraries(
   summaryeventtest
-  KF${KF_MAJOR_VERSION}::CalendarCore
-  KPim${KF_MAJOR_VERSION}::CalendarUtils
+  KF6::CalendarCore
+  KPim6::CalendarUtils
   Qt::Test
-  KF${KF_MAJOR_VERSION}::I18n
+  KF6::I18n
 )

@@ -14,8 +14,8 @@ add_executable(korgplugins korgplugins.cpp)
 target_link_libraries(korgplugins
   korganizerprivate
   korganizer_core
-  KF${KF_MAJOR_VERSION}::Holidays
-  KF${KF_MAJOR_VERSION}::KIOCore
+  KF6::Holidays
+  KF6::KIOCore
 )
 
 ########### next target ###############
@@ -23,10 +23,10 @@ if (QT_MAJOR_VERSION STREQUAL "5")
 add_executable(testkcmdesignerfields testkcmdesignerfields.cpp ../kcmdesignerfields.cpp ../korganizer_debug.cpp)
 set_target_properties(testkcmdesignerfields PROPERTIES COMPILE_FLAGS -DTESTKCMDESIGNERCURRENTDIR="\\"${CMAKE_CURRENT_SOURCE_DIR}/\\"")
 target_link_libraries(testkcmdesignerfields
-  KF${KF_MAJOR_VERSION}::KIOCore
-  KF${KF_MAJOR_VERSION}::I18n
+  KF6::KIOCore
+  KF6::I18n
   Qt::UiTools
-  KF${KF_MAJOR_VERSION}::KCMUtils
-  KF${KF_MAJOR_VERSION}::KIOWidgets
+  KF6::KCMUtils
+  KF6::KIOWidgets
 )
 endif()
