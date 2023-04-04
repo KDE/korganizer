@@ -62,8 +62,8 @@ if (BUILD_TESTING)
 endif()
 ########### install files ###############
 
-install(TARGETS kcmapptsummary DESTINATION ${KDE_INSTALL_PLUGINDIR}/pim${QT_MAJOR_VERSION}/kcms/summary)
-install(TARGETS kcmtodosummary DESTINATION ${KDE_INSTALL_PLUGINDIR}/pim${QT_MAJOR_VERSION}/kcms/summary)
-install(TARGETS kontact_korganizerplugin DESTINATION ${KDE_INSTALL_PLUGINDIR}/pim${QT_MAJOR_VERSION}/kontact)
-install(TARGETS kontact_todoplugin DESTINATION ${KDE_INSTALL_PLUGINDIR}/pim${QT_MAJOR_VERSION}/kontact)
-install(TARGETS kontact_journalplugin DESTINATION ${KDE_INSTALL_PLUGINDIR}/pim${QT_MAJOR_VERSION}/kontact)
+install(TARGETS kcmapptsummary DESTINATION ${KDE_INSTALL_PLUGINDIR}/pim6/kcms/summary)
+install(TARGETS kcmtodosummary DESTINATION ${KDE_INSTALL_PLUGINDIR}/pim6/kcms/summary)
+install(TARGETS kontact_korganizerplugin DESTINATION ${KDE_INSTALL_PLUGINDIR}/pim6/kontact)
+install(TARGETS kontact_todoplugin DESTINATION ${KDE_INSTALL_PLUGINDIR}/pim6/kontact)
+install(TARGETS kontact_journalplugin DESTINATION ${KDE_INSTALL_PLUGINDIR}/pim6/kontact)

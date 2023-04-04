@@ -38,5 +38,5 @@ target_link_libraries(kcmsdsummary Qt::Widgets KF6::KCMUtils KF6::I18n KF6::Core
 
 ########### install files ###############
 
-install(TARGETS kontact_specialdatesplugin DESTINATION ${KDE_INSTALL_PLUGINDIR}/pim${QT_MAJOR_VERSION}/kontact)
-install(TARGETS kcmsdsummary DESTINATION ${KDE_INSTALL_PLUGINDIR}/pim${QT_MAJOR_VERSION}/kcms/summary)
+install(TARGETS kontact_specialdatesplugin DESTINATION ${KDE_INSTALL_PLUGINDIR}/pim6/kontact)
+install(TARGETS kcmsdsummary DESTINATION ${KDE_INSTALL_PLUGINDIR}/pim6/kcms/summary)
