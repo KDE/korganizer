@@ -630,7 +630,7 @@ void CalendarView::slotModifyFinished(int changeId, const Akonadi::Item &item, A
 }
 
 void CalendarView::slotDeleteFinished(int changeId,
-                                      const QVector<Akonadi::Item::Id> &itemIdList,
+                                      const QList<Akonadi::Item::Id> &itemIdList,
                                       Akonadi::IncidenceChanger::ResultCode resultCode,
                                       const QString &errorString)
 {

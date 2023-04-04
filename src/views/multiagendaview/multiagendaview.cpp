@@ -222,7 +222,7 @@ void MultiAgendaView::showConfigurationDialog(QWidget *parent)
     dlg->setUseCustomColumns(d->mMultiAgendaView->customColumnSetupUsed());
     dlg->setNumberOfColumns(d->mMultiAgendaView->customNumberOfColumns());
 
-    QVector<KCheckableProxyModel *> models = d->mMultiAgendaView->collectionSelectionModels();
+    QList<KCheckableProxyModel *> models = d->mMultiAgendaView->collectionSelectionModels();
     for (int i = 0; i < models.size(); ++i) {
         dlg->setSelectionModel(i, models[i]);
     }
@@ -269,9 +269,9 @@ public:
     void setUpColumns(int n);
     AkonadiCollectionView *createView(KCheckableProxyModel *model);
     Q_REQUIRED_RESULT AkonadiCollectionView *view(int index) const;
-    QVector<KCheckableProxyModel *> newlyCreated;
-    QVector<KCheckableProxyModel *> selections;
-    QVector<QString> titles;
+    QList<KCheckableProxyModel *> newlyCreated;
+    QList<KCheckableProxyModel *> selections;
+    QList<QString> titles;
     Ui::MultiAgendaViewConfigWidget ui;
     QStandardItemModel listModel;
     QAbstractItemModel *baseModel = nullptr;
@@ -392,7 +392,7 @@ void MultiAgendaViewConfigDialogPrivate::setUpColumns(int n)
             sortProxy->setSourceModel(baseModel);
 
             auto columnFilterProxy = new KRearrangeColumnsProxyModel(sortProxy);
-            columnFilterProxy->setSourceColumns(QVector<int>() << Akonadi::ETMCalendar::CollectionTitle);
+            columnFilterProxy->setSourceColumns(QList<int>() << Akonadi::ETMCalendar::CollectionTitle);
             columnFilterProxy->setSourceModel(sortProxy);
 
             auto qsm = new QItemSelectionModel(columnFilterProxy, columnFilterProxy);

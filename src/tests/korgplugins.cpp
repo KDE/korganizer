@@ -21,7 +21,7 @@ int main(int argc, char **argv)
     parser.addHelpOption();
     parser.process(app);
 
-    const QVector<KPluginMetaData> plugins = KOCore::self()->availableCalendarDecorations();
+    const QList<KPluginMetaData> plugins = KOCore::self()->availableCalendarDecorations();
     for (const auto &plugin : plugins) {
         qDebug() << "CalendarDecoration:" << plugin.pluginId() << "(" << plugin.name() << ")";
         EventViews::CalendarDecoration::Decoration *p = KOCore::self()->loadCalendarDecoration(plugin);

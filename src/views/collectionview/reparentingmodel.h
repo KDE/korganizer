@@ -7,8 +7,8 @@
 #pragma once
 
 #include <QAbstractProxyModel>
+#include <QList>
 #include <QSharedPointer>
-#include <QVector>
 
 /**
  * A model that can hold an extra set of nodes which can "adopt" (reparent),
@@ -43,7 +43,7 @@ public:
         void clearHierarchy();
 
         QPersistentModelIndex sourceIndex;
-        QVector<Ptr> children;
+        QList<Ptr> children;
         Node *parent = nullptr;
         ReparentingModel &personModel;
         const bool mIsSourceNode = false;
@@ -138,7 +138,7 @@ private:
 
     Node mRootNode;
     QList<Node *> mSourceNodes;
-    QVector<Node::Ptr> mProxyNodes;
-    QVector<Node::Ptr> mNodesToAdd;
+    QList<Node::Ptr> mProxyNodes;
+    QList<Node::Ptr> mNodesToAdd;
     NodeManager::Ptr mNodeManager;
 };

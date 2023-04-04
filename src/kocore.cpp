@@ -42,7 +42,7 @@ KOCore::~KOCore()
     mSelf = nullptr;
 }
 
-QVector<KPluginMetaData> KOCore::availableCalendarDecorations()
+QList<KPluginMetaData> KOCore::availableCalendarDecorations()
 {
     return KPluginMetaData::findPlugins(QStringLiteral("pim6/korganizer"));
 }
@@ -83,7 +83,7 @@ EventViews::CalendarDecoration::Decoration::List KOCore::loadCalendarDecorations
         const QStringList selectedPlugins = KOPrefs::instance()->mSelectedPlugins;
 
         mCalendarDecorations.clear();
-        const QVector<KPluginMetaData> plugins = availableCalendarDecorations();
+        const QList<KPluginMetaData> plugins = availableCalendarDecorations();
         for (const auto &plugin : plugins) {
             QString name = plugin.pluginId();
             if (selectedPlugins.contains(name)) {

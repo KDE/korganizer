@@ -68,7 +68,7 @@ void KODialogManager::showOptionsDialog()
     if (!mOptionsDialog) {
         mOptionsDialog = new KCMultiDialog(mMainView);
         connect(mOptionsDialog, qOverload<>(&KCMultiDialog::configCommitted), mMainView, &CalendarView::updateConfig);
-        const QVector<KPluginMetaData> availablePlugins = KPluginMetaData::findPlugins(QStringLiteral("pim6/kcms/korganizer"));
+        const QList<KPluginMetaData> availablePlugins = KPluginMetaData::findPlugins(QStringLiteral("pim6/kcms/korganizer"));
         for (const KPluginMetaData &metaData : availablePlugins) {
             mOptionsDialog->addModule(metaData);
         }

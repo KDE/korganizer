@@ -430,10 +430,8 @@ public Q_SLOTS:
 
     void slotModifyFinished(int changeId, const Akonadi::Item &item, Akonadi::IncidenceChanger::ResultCode resultCode, const QString &errorString);
 
-    void slotDeleteFinished(int changeId,
-                            const QVector<Akonadi::Item::Id> &itemIdList,
-                            Akonadi::IncidenceChanger::ResultCode resultCode,
-                            const QString &errorString);
+    void
+    slotDeleteFinished(int changeId, const QList<Akonadi::Item::Id> &itemIdList, Akonadi::IncidenceChanger::ResultCode resultCode, const QString &errorString);
 
     void startMultiModify(const QString &text);
     void endMultiModify();

@@ -49,7 +49,7 @@ ReparentingModel::Node::Ptr ReparentingModel::Node::searchNode(ReparentingModel:
     Node::Ptr nodePtr;
     if (node->parent) {
         // Reparent node
-        QVector<Node::Ptr>::iterator it = node->parent->children.begin();
+        QList<Node::Ptr>::iterator it = node->parent->children.begin();
         for (; it != node->parent->children.end(); ++it) {
             if (it->data() == node) {
                 // Reuse smart pointer
