@@ -1072,11 +1072,7 @@ void ActionManager::updateConfig()
 void ActionManager::configureDateTime()
 {
     QProcess proc;
-#if QT_VERSION < QT_VERSION_CHECK(6, 0, 0)
-    const QString program = QStringLiteral("kcmshell5");
-#else
     const QString program = QStringLiteral("kcmshell6");
-#endif
     QStringList arguments;
     arguments << QStringLiteral("formats") << QStringLiteral("translations") << QStringLiteral("clock");
 

@@ -29,11 +29,7 @@ class KOrganizerPart : public KParts::ReadOnlyPart, public KOrg::MainWindow
 {
     Q_OBJECT
 public:
-#if QT_VERSION < QT_VERSION_CHECK(6, 0, 0)
-    explicit KOrganizerPart(QWidget *parentWidget, QObject *parent, const QVariantList &);
-#else
     explicit KOrganizerPart(QWidget *parentWidget, QObject *parent, const KPluginMetaData &data, const QVariantList &);
-#endif
     ~KOrganizerPart() override;
 
     KOrg::CalendarViewBase *view() const override;

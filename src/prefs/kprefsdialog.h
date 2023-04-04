@@ -772,11 +772,7 @@ class KPrefsModule : public KCModule, public KPrefsWidManager
 {
     Q_OBJECT
 public:
-#if KCMUTILS_VERSION < QT_VERSION_CHECK(5, 240, 0)
-    explicit KPrefsModule(KConfigSkeleton *, QWidget *parent = nullptr, const QVariantList &args = QVariantList());
-#else
     explicit KPrefsModule(KConfigSkeleton *, QObject *parent, const KPluginMetaData &data, const QVariantList &args = QVariantList());
-#endif
 
     void addWid(KPrefsWid *) override;
 

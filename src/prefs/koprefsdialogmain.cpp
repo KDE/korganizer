@@ -26,29 +26,15 @@
 
 K_PLUGIN_CLASS_WITH_JSON(KOPrefsDialogMain, "korganizer_configmain.json")
 
-#if KCMUTILS_VERSION < QT_VERSION_CHECK(5, 240, 0)
-KOPrefsDialogMain::KOPrefsDialogMain(QWidget *parent, const QVariantList &args)
-    : Korganizer::KPrefsModule(KOPrefs::instance(), parent, args)
-#else
 KOPrefsDialogMain::KOPrefsDialogMain(QObject *parent, const KPluginMetaData &data, const QVariantList &args)
     : Korganizer::KPrefsModule(KOPrefs::instance(), parent, data, args)
-#endif
 {
-#if KCMUTILS_VERSION < QT_VERSION_CHECK(5, 240, 0)
-    auto topTopLayout = new QVBoxLayout(this);
-    auto tabWidget = new QTabWidget(this);
-#else
     auto topTopLayout = new QVBoxLayout(widget());
     auto tabWidget = new QTabWidget(widget());
-#endif
     topTopLayout->addWidget(tabWidget);
 
     // Personal Settings
-#if KCMUTILS_VERSION < QT_VERSION_CHECK(5, 240, 0)
-    auto personalFrame = new QWidget(this);
-#else
     auto personalFrame = new QWidget(widget());
-#endif
     auto personalLayout = new QVBoxLayout(personalFrame);
     tabWidget->addTab(personalFrame, QIcon::fromTheme(QStringLiteral("preferences-desktop-personal")), i18nc("@title:tab personal settings", "Personal"));
 
@@ -72,11 +58,7 @@ KOPrefsDialogMain::KOPrefsDialogMain(QObject *parent, const KPluginMetaData &dat
     personalLayout->addStretch(1);
 
     // Save Settings
-#if KCMUTILS_VERSION < QT_VERSION_CHECK(5, 240, 0)
-    auto saveFrame = new QFrame(this);
-#else
     auto saveFrame = new QFrame(widget());
-#endif
     tabWidget->addTab(saveFrame, QIcon::fromTheme(QStringLiteral("document-save")), i18nc("@title:tab", "Save"));
     auto saveLayout = new QVBoxLayout(saveFrame);
 
@@ -88,19 +70,11 @@ KOPrefsDialogMain::KOPrefsDialogMain(QObject *parent, const KPluginMetaData &dat
     saveLayout->addStretch(1);
 
     // Calendar Account
-#if KCMUTILS_VERSION < QT_VERSION_CHECK(5, 240, 0)
-    auto calendarFrame = new QFrame(this);
-#else
     auto calendarFrame = new QFrame(widget());
-#endif
     tabWidget->addTab(calendarFrame, QIcon::fromTheme(QStringLiteral("office-calendar")), i18nc("@title:tab calendar account settings", "Calendars"));
     auto calendarFrameLayout = new QHBoxLayout;
     calendarFrame->setLayout(calendarFrameLayout);
-#if KCMUTILS_VERSION < QT_VERSION_CHECK(5, 240, 0)
-    auto manageAccountWidget = new Akonadi::ManageAccountWidget(this);
-#else
     auto manageAccountWidget = new Akonadi::ManageAccountWidget(widget());
-#endif
     manageAccountWidget->setDescriptionLabelText(i18nc("@title", "Calendar Accounts"));
     calendarFrameLayout->addWidget(manageAccountWidget);
 

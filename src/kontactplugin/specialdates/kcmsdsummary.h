@@ -17,11 +17,7 @@ class KCMSDSummary : public KCModule, public Ui::SDSummaryConfig_Base
     Q_OBJECT
 
 public:
-#if KCMUTILS_VERSION < QT_VERSION_CHECK(5, 240, 0)
-    explicit KCMSDSummary(QWidget *parent = nullptr, const QVariantList &args = QVariantList());
-#else
     explicit KCMSDSummary(QObject *parent, const KPluginMetaData &data, const QVariantList &args = QVariantList());
-#endif
 
     void load() override;
     void save() override;

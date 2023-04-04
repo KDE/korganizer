@@ -23,11 +23,7 @@ class KOPrefsDialogColorsAndFonts : public Korganizer::KPrefsModule
 {
     Q_OBJECT
 public:
-#if KCMUTILS_VERSION < QT_VERSION_CHECK(5, 240, 0)
-    explicit KOPrefsDialogColorsAndFonts(QWidget *parent, const QVariantList &args = {});
-#else
     explicit KOPrefsDialogColorsAndFonts(QObject *parent, const KPluginMetaData &data, const QVariantList &args = {});
-#endif
 
 protected:
     void usrWriteConfig() override;

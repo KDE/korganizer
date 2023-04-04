@@ -17,19 +17,10 @@
 
 K_PLUGIN_CLASS_WITH_JSON(KCMSDSummary, "kcmsdsummary.json")
 
-#if KCMUTILS_VERSION < QT_VERSION_CHECK(5, 240, 0)
-KCMSDSummary::KCMSDSummary(QWidget *parent, const QVariantList &args)
-    : KCModule(parent, args)
-#else
 KCMSDSummary::KCMSDSummary(QObject *parent, const KPluginMetaData &data, const QVariantList &args)
     : KCModule(parent, data, args)
-#endif
 {
-#if KCMUTILS_VERSION < QT_VERSION_CHECK(5, 240, 0)
-    setupUi(this);
-#else
     setupUi(widget());
-#endif
 
     customDaysChanged(7);
 
@@ -50,22 +41,14 @@ KCMSDSummary::KCMSDSummary(QObject *parent, const KPluginMetaData &data, const Q
 
     connect(mShowMineOnly, &QCheckBox::stateChanged, this, &KCMSDSummary::modified);
 
-#if KCMUTILS_VERSION < QT_VERSION_CHECK(5, 240, 0)
-    KAcceleratorManager::manage(this);
-#else
     KAcceleratorManager::manage(widget());
-#endif
 
     load();
 }
 
 void KCMSDSummary::modified()
 {
-#if KCMUTILS_VERSION < QT_VERSION_CHECK(5, 240, 0)
-    Q_EMIT changed(true);
-#else
     markAsChanged();
-#endif
 }
 
 void KCMSDSummary::buttonClicked(int id)
@@ -109,11 +92,7 @@ void KCMSDSummary::load()
     group = config.group("Groupware");
     mShowMineOnly->setChecked(group.readEntry("ShowMineOnly", false));
 
-#if KCMUTILS_VERSION < QT_VERSION_CHECK(5, 240, 0)
-    Q_EMIT changed(false);
-#else
     setNeedsSave(false);
-#endif
 }
 
 void KCMSDSummary::save()
@@ -148,11 +127,7 @@ void KCMSDSummary::save()
     group.writeEntry("ShowMineOnly", mShowMineOnly->isChecked());
 
     group.sync();
-#if KCMUTILS_VERSION < QT_VERSION_CHECK(5, 240, 0)
-    Q_EMIT changed(false);
-#else
     setNeedsSave(false);
-#endif
 }
 
 void KCMSDSummary::defaults()
@@ -169,11 +144,7 @@ void KCMSDSummary::defaults()
     mShowSpecialsFromCalBox->setChecked(true);
 
     mShowMineOnly->setChecked(false);
-#if KCMUTILS_VERSION < QT_VERSION_CHECK(5, 240, 0)
-    Q_EMIT changed(true);
-#else
     markAsChanged();
-#endif
 }
 
 #include "kcmsdsummary.moc"

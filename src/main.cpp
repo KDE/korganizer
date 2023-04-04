@@ -12,9 +12,6 @@
 #include "korganizer.h"
 #include "korganizer_debug.h"
 #include "korganizer_options.h"
-#if QT_VERSION < QT_VERSION_CHECK(6, 0, 0)
-#include "korgmigrateapplication.h"
-#endif
 #include <KConfig>
 #include <KConfigGroup>
 #include <KCrash>
@@ -25,17 +22,9 @@
 #endif
 int main(int argc, char **argv)
 {
-#if QT_VERSION < QT_VERSION_CHECK(6, 0, 0)
-    QCoreApplication::setAttribute(Qt::AA_EnableHighDpiScaling, true);
-    QCoreApplication::setAttribute(Qt::AA_UseHighDpiPixmaps, true);
-#endif
     KOrganizerApp app(argc, &argv);
     KCrash::initialize();
     KLocalizedString::setApplicationDomain("korganizer");
-#if QT_VERSION < QT_VERSION_CHECK(6, 0, 0)
-    KOrgMigrateApplication migrate;
-    migrate.migrate();
-#endif
 
     KOrg::AboutData aboutData;
     app.setAboutData(aboutData);

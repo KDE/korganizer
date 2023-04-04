@@ -28,28 +28,14 @@
 
 K_PLUGIN_CLASS_WITH_JSON(KOPrefsDialogColorsAndFonts, "korganizer_configcolorsandfonts.json")
 
-#if KCMUTILS_VERSION < QT_VERSION_CHECK(5, 240, 0)
-KOPrefsDialogColorsAndFonts::KOPrefsDialogColorsAndFonts(QWidget *parent, const QVariantList &args)
-    : Korganizer::KPrefsModule(KOPrefs::instance(), parent, args)
-#else
 KOPrefsDialogColorsAndFonts::KOPrefsDialogColorsAndFonts(QObject *parent, const KPluginMetaData &data, const QVariantList &args)
     : Korganizer::KPrefsModule(KOPrefs::instance(), parent, data, args)
-#endif
 {
-#if KCMUTILS_VERSION < QT_VERSION_CHECK(5, 240, 0)
-    auto topTopLayout = new QVBoxLayout(this);
-    auto tabWidget = new QTabWidget(this);
-#else
     auto topTopLayout = new QVBoxLayout(widget());
     auto tabWidget = new QTabWidget(widget());
-#endif
     topTopLayout->addWidget(tabWidget);
 
-#if KCMUTILS_VERSION < QT_VERSION_CHECK(5, 240, 0)
-    auto colorFrame = new QWidget(this);
-#else
     auto colorFrame = new QWidget(widget());
-#endif
     topTopLayout->addWidget(colorFrame);
     auto colorLayout = new QGridLayout(colorFrame);
     tabWidget->addTab(colorFrame, QIcon::fromTheme(QStringLiteral("preferences-desktop-color")), i18nc("@title:tab", "Colors"));
@@ -158,11 +144,7 @@ KOPrefsDialogColorsAndFonts::KOPrefsDialogColorsAndFonts(QObject *parent, const 
 
     colorLayout->setRowStretch(11, 1);
 
-#if KCMUTILS_VERSION < QT_VERSION_CHECK(5, 240, 0)
-    auto fontFrame = new QWidget(this);
-#else
     auto fontFrame = new QWidget(widget());
-#endif
     tabWidget->addTab(fontFrame, QIcon::fromTheme(QStringLiteral("preferences-desktop-font")), i18nc("@title:tab", "Fonts"));
 
     auto fontLayout = new QGridLayout(fontFrame);

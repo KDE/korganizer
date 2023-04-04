@@ -18,25 +18,13 @@
 
 K_PLUGIN_CLASS_WITH_JSON(KCMApptSummary, "kcmapptsummary.json")
 
-#if KCMUTILS_VERSION < QT_VERSION_CHECK(5, 240, 0)
-KCMApptSummary::KCMApptSummary(QWidget *parent, const QVariantList &args)
-    : KCModule(parent, args)
-    , mDaysButtonGroup(new QButtonGroup(this)) // krazy:exclude=tipsandthis
-    , mShowButtonGroup(new QButtonGroup(this)) // krazy:exclude=tipsandthis
-    , mGroupwareButtonGroup(new QButtonGroup(this)) // krazy:exclude=tipsandthis
-#else
 KCMApptSummary::KCMApptSummary(QObject *parent, const KPluginMetaData &data, const QVariantList &args)
     : KCModule(parent, data, args)
     , mDaysButtonGroup(new QButtonGroup(widget())) // krazy:exclude=tipsandthis
     , mShowButtonGroup(new QButtonGroup(widget())) // krazy:exclude=tipsandthis
     , mGroupwareButtonGroup(new QButtonGroup(widget())) // krazy:exclude=tipsandthis
-#endif
 {
-#if KCMUTILS_VERSION < QT_VERSION_CHECK(5, 240, 0)
-    setupUi(this);
-#else
     setupUi(widget());
-#endif
 
     mDaysButtonGroup->addButton(mDateTodayButton, 0);
     mDaysButtonGroup->addButton(mDateMonthButton, 1);
@@ -61,22 +49,14 @@ KCMApptSummary::KCMApptSummary(QObject *parent, const KPluginMetaData &data, con
     connect(mCustomDays, &QSpinBox::valueChanged, this, &KCMApptSummary::modified);
     connect(mCustomDays, &QSpinBox::valueChanged, this, &KCMApptSummary::customDaysChanged);
 
-#if KCMUTILS_VERSION < QT_VERSION_CHECK(5, 240, 0)
-    KAcceleratorManager::manage(this);
-#else
     KAcceleratorManager::manage(widget());
-#endif
 
     load();
 }
 
 void KCMApptSummary::modified()
 {
-#if KCMUTILS_VERSION < QT_VERSION_CHECK(5, 240, 0)
-    Q_EMIT changed(true);
-#else
     markAsChanged();
-#endif
 }
 
 void KCMApptSummary::buttonClicked(QAbstractButton *button)
@@ -115,11 +95,7 @@ void KCMApptSummary::load()
     group = config.group("Groupware");
     mShowMineOnly->setChecked(group.readEntry("ShowMineOnly", false));
 
-#if KCMUTILS_VERSION < QT_VERSION_CHECK(5, 240, 0)
-    Q_EMIT changed(false);
-#else
     setNeedsSave(false);
-#endif
 }
 
 void KCMApptSummary::save()
@@ -151,11 +127,7 @@ void KCMApptSummary::save()
     group.writeEntry("ShowMineOnly", mShowMineOnly->isChecked());
 
     config.sync();
-#if KCMUTILS_VERSION < QT_VERSION_CHECK(5, 240, 0)
-    Q_EMIT changed(false);
-#else
     setNeedsSave(false);
-#endif
 }
 
 void KCMApptSummary::defaults()
@@ -169,11 +141,7 @@ void KCMApptSummary::defaults()
 
     mShowMineOnly->setChecked(false);
 
-#if KCMUTILS_VERSION < QT_VERSION_CHECK(5, 240, 0)
-    Q_EMIT changed(true);
-#else
     markAsChanged();
-#endif
 }
 
 #include "kcmapptsummary.moc"

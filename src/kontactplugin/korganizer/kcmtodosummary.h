@@ -17,11 +17,7 @@ class KCMTodoSummary : public KCModule, public Ui::TodoSummaryConfig_Base
     Q_OBJECT
 
 public:
-#if KCMUTILS_VERSION < QT_VERSION_CHECK(5, 240, 0)
-    explicit KCMTodoSummary(QWidget *parent = nullptr, const QVariantList &args = QVariantList());
-#else
     explicit KCMTodoSummary(QObject *parent, const KPluginMetaData &data, const QVariantList &args = QVariantList());
-#endif
     ~KCMTodoSummary() override;
 
     void load() override;

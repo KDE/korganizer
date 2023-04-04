@@ -20,21 +20,11 @@
 
 K_PLUGIN_CLASS_WITH_JSON(KOPrefsDialogGroupScheduling, "korganizer_configgroupscheduling.json")
 
-#if KCMUTILS_VERSION < QT_VERSION_CHECK(5, 240, 0)
-KOPrefsDialogGroupScheduling::KOPrefsDialogGroupScheduling(QWidget *parent, const QVariantList &args)
-    : Korganizer::KPrefsModule(KOPrefs::instance(), parent, args)
-#else
 KOPrefsDialogGroupScheduling::KOPrefsDialogGroupScheduling(QObject *parent, const KPluginMetaData &data, const QVariantList &args)
     : Korganizer::KPrefsModule(KOPrefs::instance(), parent, data, args)
-#endif
 {
-#if KCMUTILS_VERSION < QT_VERSION_CHECK(5, 240, 0)
-    auto topTopLayout = new QVBoxLayout(this);
-    auto topFrame = new QWidget(this);
-#else
     auto topTopLayout = new QVBoxLayout(widget());
     auto topFrame = new QWidget(widget());
-#endif
     topTopLayout->addWidget(topFrame);
 
     auto topLayout = new QGridLayout(topFrame);

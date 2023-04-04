@@ -19,11 +19,7 @@ class KOPrefsDialogGroupwareScheduling : public Korganizer::KPrefsModule
 {
     Q_OBJECT
 public:
-#if KCMUTILS_VERSION < QT_VERSION_CHECK(5, 240, 0)
-    explicit KOPrefsDialogGroupwareScheduling(QWidget *parent, const QVariantList &args = {});
-#else
     explicit KOPrefsDialogGroupwareScheduling(QObject *parent, const KPluginMetaData &data, const QVariantList &args = {});
-#endif
     ~KOPrefsDialogGroupwareScheduling() override;
 
 protected:

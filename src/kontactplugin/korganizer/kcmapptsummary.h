@@ -16,11 +16,7 @@ class KCMApptSummary : public KCModule, public Ui::ApptSummaryConfig_Base
     Q_OBJECT
 
 public:
-#if KCMUTILS_VERSION < QT_VERSION_CHECK(5, 240, 0)
-    explicit KCMApptSummary(QWidget *parent = nullptr, const QVariantList &args = QVariantList());
-#else
     explicit KCMApptSummary(QObject *parent, const KPluginMetaData &data, const QVariantList &args = QVariantList());
-#endif
 
     void load() override;
     void save() override;
