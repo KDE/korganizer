@@ -2,7 +2,7 @@ msgid ""
 msgstr ""
 "Project-Id-Version: korganizer\n"
 "Report-Msgid-Bugs-To: https://bugs.kde.org\n"
-"POT-Creation-Date: 2023-03-31 00:48+0000\n"
+"POT-Creation-Date: 2023-04-04 00:48+0000\n"
 "PO-Revision-Date: 2022-10-16 11:38+0100\n"
 "Last-Translator: Pedro Morais <morais@kde.org>\n"
 "Language-Team: pt <kde-i18n-pt@kde.org>\n"
@@ -1312,55 +1312,55 @@ msgctxt "@info/plain Displayed grayed-out inside the textbox, verb to search"
 msgid "Search..."
 msgstr "Procurar..."
 
-#: akonadicollectionview.cpp:508 manageshowcollectionproperties.cpp:76
+#: akonadicollectionview.cpp:492 manageshowcollectionproperties.cpp:76
 #, kde-format
 msgctxt "@title:window"
 msgid "Properties of Calendar Folder %1"
 msgstr "Propriedades da Pasta de Calendários %1"
 
-#: akonadicollectionview.cpp:520
+#: akonadicollectionview.cpp:504
 #, kde-format
 msgctxt "@action:inmenu"
 msgid "&Set Folder Color..."
 msgstr "&Modificar a Cor da Pasta..."
 
-#: akonadicollectionview.cpp:526
+#: akonadicollectionview.cpp:510
 #, kde-format
 msgctxt "@action:inmenu"
 msgid "Set as &Default Folder"
 msgstr "&Definir como Pasta Predefinida"
 
-#: akonadicollectionview.cpp:532
+#: akonadicollectionview.cpp:516
 #, kde-format
 msgctxt "@action:inmenu"
 msgid "Serverside Subscription..."
 msgstr "Subscrição no Servidor..."
 
-#: akonadicollectionview.cpp:586
+#: akonadicollectionview.cpp:561
 #, kde-format
 msgctxt "@info"
 msgid "Do you really want replace your current default calendar with \"%1\"?"
 msgstr "Deseja mesmo substituir o seu calendário predefinido pelo \"%1\"?"
 
-#: akonadicollectionview.cpp:587
+#: akonadicollectionview.cpp:562
 #, kde-format
 msgctxt "@title:window"
 msgid "Replace Default Calendar?"
 msgstr "Substituir o Calendário Predefinido?"
 
-#: akonadicollectionview.cpp:687
+#: akonadicollectionview.cpp:662
 #, kde-format
 msgctxt "@title:window"
 msgid "Add Calendar"
 msgstr "Adicionar um Calendário"
 
-#: akonadicollectionview.cpp:729
+#: akonadicollectionview.cpp:704
 #, kde-format
 msgctxt "@info"
 msgid "Do you really want to delete calendar %1?"
 msgstr "Deseja mesmo apagar o calendário %1?"
 
-#: akonadicollectionview.cpp:730
+#: akonadicollectionview.cpp:705
 #, kde-format
 msgctxt "@title:window"
 msgid "Delete Calendar"

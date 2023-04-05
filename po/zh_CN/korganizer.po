@@ -2,7 +2,7 @@ msgid ""
 msgstr ""
 "Project-Id-Version: kdeorg\n"
 "Report-Msgid-Bugs-To: https://bugs.kde.org\n"
-"POT-Creation-Date: 2023-03-31 00:48+0000\n"
+"POT-Creation-Date: 2023-04-04 00:48+0000\n"
 "PO-Revision-Date: 2023-03-27 11:59\n"
 "Last-Translator: \n"
 "Language-Team: Chinese Simplified\n"
@@ -1234,55 +1234,55 @@ msgctxt "@info/plain Displayed grayed-out inside the textbox, verb to search"
 msgid "Search..."
 msgstr "搜索..."
 
-#: akonadicollectionview.cpp:508 manageshowcollectionproperties.cpp:76
+#: akonadicollectionview.cpp:492 manageshowcollectionproperties.cpp:76
 #, kde-format
 msgctxt "@title:window"
 msgid "Properties of Calendar Folder %1"
 msgstr "日历目录 %1 属性"
 
-#: akonadicollectionview.cpp:520
+#: akonadicollectionview.cpp:504
 #, kde-format
 msgctxt "@action:inmenu"
 msgid "&Set Folder Color..."
 msgstr "设置文件夹颜色..."
 
-#: akonadicollectionview.cpp:526
+#: akonadicollectionview.cpp:510
 #, kde-format
 msgctxt "@action:inmenu"
 msgid "Set as &Default Folder"
 msgstr "设置为默认文件夹(&D)"
 
-#: akonadicollectionview.cpp:532
+#: akonadicollectionview.cpp:516
 #, kde-format
 msgctxt "@action:inmenu"
 msgid "Serverside Subscription..."
 msgstr "服务器端订阅..."
 
-#: akonadicollectionview.cpp:586
+#: akonadicollectionview.cpp:561
 #, kde-format
 msgctxt "@info"
 msgid "Do you really want replace your current default calendar with \"%1\"?"
 msgstr "您确定要将当前的默认日历替换为“%1”吗？"
 
-#: akonadicollectionview.cpp:587
+#: akonadicollectionview.cpp:562
 #, kde-format
 msgctxt "@title:window"
 msgid "Replace Default Calendar?"
 msgstr "替换默认日历？"
 
-#: akonadicollectionview.cpp:687
+#: akonadicollectionview.cpp:662
 #, kde-format
 msgctxt "@title:window"
 msgid "Add Calendar"
 msgstr "添加日历"
 
-#: akonadicollectionview.cpp:729
+#: akonadicollectionview.cpp:704
 #, kde-format
 msgctxt "@info"
 msgid "Do you really want to delete calendar %1?"
 msgstr "您真的想要删除日历 %1 吗？"
 
-#: akonadicollectionview.cpp:730
+#: akonadicollectionview.cpp:705
 #, kde-format
 msgctxt "@title:window"
 msgid "Delete Calendar"
