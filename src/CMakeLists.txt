@@ -199,7 +199,6 @@ set(korganizerprivate_LIB_SRCS
     ${korganizer_common_SRCS}
     ${korganizerprivate_userfeedback_SRCS}
     manageshowcollectionproperties.cpp
-    korgmigrateapplication.cpp
     collectiongeneralpage.cpp
     aboutdata.cpp
     actionmanager.cpp
@@ -240,7 +239,6 @@ set(korganizerprivate_LIB_SRCS
     agendaitem_pixmaps/agendaitemtheme.qrc
 
     manageshowcollectionproperties.h
-    korgmigrateapplication.h
     collectiongeneralpage.h
     aboutdata.h
     actionmanager.h
