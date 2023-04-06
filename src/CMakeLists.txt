@@ -342,7 +342,7 @@ target_link_libraries(korganizerprivate
     KPim6::IdentityManagement
     KF6::KCMUtils
     KF6::NewStuffWidgets
-    KPim6::Ldap
+    KPim6::LdapWidgets
     KPim6::AkonadiWidgets
     KF6::IconThemes
     KF6::WindowSystem
