@@ -348,7 +348,6 @@ target_link_libraries(korganizerprivate
     KPim${KF_MAJOR_VERSION}::AkonadiWidgets
     KF${KF_MAJOR_VERSION}::IconThemes
     KF${KF_MAJOR_VERSION}::WindowSystem
-    KF${KF_MAJOR_VERSION}::Notifications
     KF${KF_MAJOR_VERSION}::ItemViews
     KF${KF_MAJOR_VERSION}::JobWidgets
     KF${KF_MAJOR_VERSION}::KIOGui

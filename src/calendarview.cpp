@@ -71,7 +71,6 @@
 #include <KDialogJobUiDelegate>
 #include <KIO/CommandLauncherJob>
 #include <KMessageBox>
-#include <KNotification>
 
 #include <QApplication>
 #include <QClipboard>
@@ -747,7 +746,6 @@ void CalendarView::edit_copy()
     const Akonadi::Item item = selectedIncidence();
 
     if (!item.isValid()) {
-        KNotification::beep();
         qCCritical(KORGANIZER_LOG) << "Invalid item";
         return;
     }
@@ -1179,8 +1177,6 @@ void CalendarView::appointment_show()
     const Akonadi::Item item = selectedIncidence();
     if (CalendarSupport::hasIncidence(item)) {
         showIncidence(item);
-    } else {
-        KNotification::beep();
     }
 }
 
@@ -1189,8 +1185,6 @@ void CalendarView::appointment_edit()
     const Akonadi::Item item = selectedIncidence();
     if (CalendarSupport::hasIncidence(item)) {
         editIncidence(item);
-    } else {
-        KNotification::beep();
     }
 }
 
@@ -1199,8 +1193,6 @@ void CalendarView::appointment_delete()
     const Akonadi::Item item = selectedIncidence();
     if (CalendarSupport::hasIncidence(item)) {
         deleteIncidence(item);
-    } else {
-        KNotification::beep();
     }
 }
 
@@ -2152,7 +2144,6 @@ bool CalendarView::editIncidence(const Akonadi::Item &item, bool isCounter)
     KCalendarCore::Incidence::Ptr incidence = Akonadi::CalendarUtils::incidence(item);
     if (!incidence) {
         qCCritical(KORGANIZER_LOG) << "Null incidence";
-        KNotification::beep();
         return false;
     }
 
@@ -2240,7 +2231,6 @@ bool CalendarView::deleteIncidence(const Akonadi::Item &item, bool force)
     if (!incidence) {
         if (!force) {
             qCCritical(KORGANIZER_LOG) << "Null incidence";
-            KNotification::beep();
         }
         qCCritical(KORGANIZER_LOG) << "CalendarView::deleteIncidence(): Unable to delete, incidence is null.";
         return false;
