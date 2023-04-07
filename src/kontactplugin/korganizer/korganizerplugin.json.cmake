@@ -32,7 +32,6 @@
         "Description[zh_CN]": "Kontact KOrganizer 插件",
         "EnabledByDefault": true,
         "Icon": "view-pim-calendar",
-        "Id": "kontact_korganizerplugin",
         "License": "GPL",
         "Name": "Calendar",
         "Name[af]": "Kalender",

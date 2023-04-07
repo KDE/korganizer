@@ -32,7 +32,6 @@
         "Description[zh_CN]": "Kontact KOrganizer 待办清单插件",
         "EnabledByDefault": true,
         "Icon": "view-pim-tasks",
-        "Id": "kontact_todoplugin",
         "License": "GPL",
         "Name": "To-do List",
         "Name[af]": "Te-doen lys",

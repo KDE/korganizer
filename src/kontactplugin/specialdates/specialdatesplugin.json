@@ -32,7 +32,6 @@
         "Description[zh_CN]": "特殊日期插件",
         "EnabledByDefault": true,
         "Icon": "view-calendar-special-occasion",
-        "Id": "kontact_specialdatesplugin",
         "License": "GPL",
         "Name": "Special Dates",
         "Name[af]": "Spesiale datums",

@@ -32,7 +32,6 @@
         "Description[zh_CN]": "Kontact KOrganizer 日记插件",
         "EnabledByDefault": true,
         "Icon": "view-pim-journal",
-        "Id": "kontact_journalplugin",
         "License": "GPL",
         "Name": "Journal",
         "Name[af]": "Joernaal",
