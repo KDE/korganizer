@@ -8,8 +8,6 @@ ecm_qt_declare_logging_category(libcommon_SRCS HEADER korganizerplugin_debug.h I
         EXPORT KORGANIZER
     )
 
-configure_file(korganizerplugin.json.cmake ${CMAKE_CURRENT_BINARY_DIR}/korganizerplugin.json)
-
 set(kontact_korganizerplugin_PART_SRCS korganizerplugin.cpp apptsummarywidget.cpp summaryeventinfo.cpp korganizerplugin.h apptsummarywidget.h summaryeventinfo.h ${libcommon_SRCS})
 
 qt_add_dbus_interfaces(kontact_korganizerplugin_PART_SRCS ${korganizer_SOURCE_DIR}/src/data/org.kde.Korganizer.Calendar.xml  ${korganizer_SOURCE_DIR}/src/data/org.kde.korganizer.Korganizer.xml)
