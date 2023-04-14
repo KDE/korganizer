@@ -135,7 +135,7 @@ configure_file(korganizer-version.h.cmake ${CMAKE_CURRENT_BINARY_DIR}/korganizer
 
 
 ecm_set_disabled_deprecation_versions(QT 6.4
-     KF 5.105.0
+     KF 5.240.0
 )
 
 option(USE_UNITY_CMAKE_SUPPORT "Use UNITY cmake support (speedup compile time)" OFF)
