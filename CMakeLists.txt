@@ -90,7 +90,6 @@ find_package(KF6Parts ${KF_MIN_VERSION} CONFIG REQUIRED)
 find_package(KF6WidgetsAddons ${KF_MIN_VERSION} CONFIG REQUIRED)
 find_package(KF6WindowSystem ${KF_MIN_VERSION} CONFIG REQUIRED)
 find_package(KF6XmlGui ${KF_MIN_VERSION} CONFIG REQUIRED)
-find_package(KF6Notifications ${KF_MIN_VERSION} CONFIG REQUIRED)
 find_package(KF6Holidays ${KF_MIN_VERSION} CONFIG REQUIRED)
 
 find_package(KF6DocTools ${KF_MIN_VERSION})

@@ -37,7 +37,6 @@ Dependencies:
     'frameworks/kwidgetsaddons': '@latest-kf6'
     'frameworks/kwindowsystem': '@latest-kf6'
     'frameworks/kxmlgui': '@latest-kf6'
-    'frameworks/knotifications': '@latest-kf6'
     'frameworks/kholidays': '@latest-kf6'
     'frameworks/kdoctools': '@latest-kf6'
     'frameworks/kcontacts': '@latest-kf6'

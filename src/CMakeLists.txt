@@ -346,7 +346,6 @@ target_link_libraries(korganizerprivate
     KPim6::AkonadiWidgets
     KF6::IconThemes
     KF6::WindowSystem
-    KF6::Notifications
     KF6::ItemViews
     KF6::JobWidgets
     KF6::KIOGui
