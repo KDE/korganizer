@@ -2095,7 +2095,7 @@ msgstr "Paginas disponibile"
 #: kcmdesignerfields.cpp:314 kcmdesignerfields.cpp:316
 #, kde-format
 msgid "Preview of Selected Page"
-msgstr "Vista preliminari de pagina selectionate"
+msgstr "Vista preliminar de pagina selectionate"
 
 #: kcmdesignerfields.cpp:336
 #, kde-format
@@ -2243,7 +2243,7 @@ msgstr "Im&prime..."
 #, kde-format
 msgctxt "@action:inmenu"
 msgid "Print Previe&w..."
-msgstr "Imprime &vista preliminari..."
+msgstr "Imprime &vista preliminar..."
 
 #: koeventpopupmenu.cpp:76
 #, kde-format
@@ -9452,7 +9452,7 @@ msgstr "%1"
 
 #~ msgctxt "@action:inmenu print preview the to-do"
 #~ msgid "Print Previe&w..."
-#~ msgstr "Imprime &vista preliminari..."
+#~ msgstr "Imprime &vista preliminar..."
 
 #~ msgctxt "@action:inmenu delete the to-do"
 #~ msgid "&Delete"
