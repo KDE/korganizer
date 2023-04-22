@@ -25,6 +25,15 @@
 
 #include <QCoreApplication>
 
+namespace
+{
+
+enum class ActionType { Copy, Cut, Paste };
+
+} // namespace
+
+Q_DECLARE_METATYPE(ActionType)
+
 KOEventPopupMenu::KOEventPopupMenu(const Akonadi::ETMCalendar::Ptr &calendar, QWidget *parent)
     : QMenu(parent)
 {
@@ -70,13 +79,29 @@ void KOEventPopupMenu::init(const Akonadi::ETMCalendar::Ptr &calendar, MenuStyle
 
 void KOEventPopupMenu::appendEditOnlyItems()
 {
+    const auto addEditAction = [this](const QIcon &icon, const QString &title, ActionType actionType, auto *sender, auto &&receiver) {
+        QAction *action = addAction(icon, title, sender, receiver);
+        action->setData(QVariant::fromValue(actionType));
+        return action;
+    };
+
     mEditOnlyItems.append(addSeparator());
 
-    mEditOnlyItems.append(
-        addAction(QIcon::fromTheme(QStringLiteral("edit-cut")), i18nc("@action:inmenu cut this incidence", "C&ut"), this, &KOEventPopupMenu::popupCut));
-    mEditOnlyItems.append(
-        addAction(QIcon::fromTheme(QStringLiteral("edit-copy")), i18nc("@action:inmenu copy this incidence", "&Copy"), this, &KOEventPopupMenu::popupCopy));
-    mEditOnlyItems.append(addAction(QIcon::fromTheme(QStringLiteral("edit-paste")), i18nc("@action:inmenu", "&Paste"), this, &KOEventPopupMenu::popupPaste));
+    mEditOnlyItems.append(addEditAction(QIcon::fromTheme(QStringLiteral("edit-cut")),
+                                        i18nc("@action:inmenu cut this incidence", "C&ut"),
+                                        ActionType::Cut,
+                                        this,
+                                        &KOEventPopupMenu::popupCut));
+    mEditOnlyItems.append(addEditAction(QIcon::fromTheme(QStringLiteral("edit-copy")),
+                                        i18nc("@action:inmenu copy this incidence", "&Copy"),
+                                        ActionType::Copy,
+                                        this,
+                                        &KOEventPopupMenu::popupCopy));
+    mEditOnlyItems.append(addEditAction(QIcon::fromTheme(QStringLiteral("edit-paste")),
+                                        i18nc("@action:inmenu", "&Paste"),
+                                        ActionType::Paste,
+                                        this,
+                                        &KOEventPopupMenu::popupPaste));
 }
 
 void KOEventPopupMenu::appendEventOnlyItems()
@@ -168,7 +193,10 @@ void KOEventPopupMenu::showIncidencePopup(const Akonadi::Item &item, const QDate
     // Enable/Disabled menu edit items
     end = mEditOnlyItems.end();
     for (it = mEditOnlyItems.begin(); it != end; ++it) {
-        (*it)->setEnabled(hasChangeRights);
+        // It's always possible to copy from a calendar regardless of whether it's RW or RO
+        if ((*it)->data().value<ActionType>() != ActionType::Copy) {
+            (*it)->setEnabled(hasChangeRights);
+        }
     }
 
     // Enable/Disable menu items valid for Events only
