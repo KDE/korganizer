@@ -4973,7 +4973,7 @@ msgid ""
 "When this option is chosen, this filter will show all items which do <i>not</"
 "i> contain any of the selected tags."
 msgstr ""
-"이 옵션을 사용하면 필터에서 선택한 태그를 아무 것도 포함하지 <i>않은</i> 항목"
+"이 옵션을 사용하면 필터에서 선택한 태그를 아무것도 포함하지 <i>않은</i> 항목"
 "만 표시합니다."
 
 #. i18n: ectx: property (text), widget (QRadioButton, mCatHideCheck)
