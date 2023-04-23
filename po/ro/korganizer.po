@@ -5,7 +5,7 @@ msgid ""
 msgstr ""
 "Project-Id-Version: korganizer-1.1.1\n"
 "Report-Msgid-Bugs-To: https://bugs.kde.org\n"
-"POT-Creation-Date: 2023-04-03 02:42+0000\n"
+"POT-Creation-Date: 2023-04-23 04:12+0000\n"
 "PO-Revision-Date: 2022-02-06 19:07+0000\n"
 "Last-Translator: Sergiu Bivol <sergiu@cip.md>\n"
 "Language-Team: Romanian\n"
@@ -2203,42 +2203,42 @@ msgstr "&Adaugă"
 msgid "&Cancel"
 msgstr "&Renunță"
 
-#: koeventpopupmenu.cpp:45
+#: koeventpopupmenu.cpp:54
 #, fuzzy, kde-format
 #| msgid "&Show"
 msgctxt "@action:inmenu"
 msgid "&Show"
 msgstr "&Arată"
 
-#: koeventpopupmenu.cpp:47
+#: koeventpopupmenu.cpp:56
 #, fuzzy, kde-format
 #| msgid "&Edit..."
 msgctxt "@action:inmenu"
 msgid "&Edit..."
 msgstr "&Editare..."
 
-#: koeventpopupmenu.cpp:49
+#: koeventpopupmenu.cpp:58
 #, fuzzy, kde-format
 #| msgid "&Delete"
 msgctxt "@action:inmenu delete this incidence"
 msgid "&Delete"
 msgstr "Ș&terge"
 
-#: koeventpopupmenu.cpp:53
+#: koeventpopupmenu.cpp:62
 #, fuzzy, kde-format
 #| msgid "&Print..."
 msgctxt "@action:inmenu"
 msgid "&Print..."
 msgstr "Im&primare..."
 
-#: koeventpopupmenu.cpp:55
+#: koeventpopupmenu.cpp:64
 #, fuzzy, kde-format
 #| msgid "&Print..."
 msgctxt "@action:inmenu"
 msgid "Print Previe&w..."
 msgstr "Im&primare..."
 
-#: koeventpopupmenu.cpp:76
+#: koeventpopupmenu.cpp:91
 #, fuzzy, kde-format
 #| msgctxt "cut this event"
 #| msgid "C&ut"
@@ -2246,77 +2246,77 @@ msgctxt "@action:inmenu cut this incidence"
 msgid "C&ut"
 msgstr "&Taie"
 
-#: koeventpopupmenu.cpp:78
+#: koeventpopupmenu.cpp:96
 #, fuzzy, kde-format
 #| msgid "&Copy"
 msgctxt "@action:inmenu copy this incidence"
 msgid "&Copy"
 msgstr "&Copiază"
 
-#: koeventpopupmenu.cpp:79
+#: koeventpopupmenu.cpp:101
 #, fuzzy, kde-format
 #| msgid "&Paste"
 msgctxt "@action:inmenu"
 msgid "&Paste"
 msgstr "&Lipește"
 
-#: koeventpopupmenu.cpp:87
+#: koeventpopupmenu.cpp:112
 #, fuzzy, kde-format
 msgctxt "@action:inmenu"
 msgid "Create To-do from Event"
 msgstr "Șterge lucrare"
 
-#: koeventpopupmenu.cpp:91
+#: koeventpopupmenu.cpp:116
 #, fuzzy, kde-format
 #| msgid "Create a new Event"
 msgctxt "@action:inmenu"
 msgid "Create Note for Event"
 msgstr "Creează eveniment nou"
 
-#: koeventpopupmenu.cpp:102
+#: koeventpopupmenu.cpp:127
 #, fuzzy, kde-format
 msgctxt "@action:inmenu"
 msgid "Togg&le To-do Completed"
 msgstr "Ștergere terminată"
 
-#: koeventpopupmenu.cpp:107
+#: koeventpopupmenu.cpp:132
 #, fuzzy, kde-format
 #| msgid "Create a new Event"
 msgctxt "@action:inmenu"
 msgid "Create Event from To-do"
 msgstr "Creează eveniment nou"
 
-#: koeventpopupmenu.cpp:113
+#: koeventpopupmenu.cpp:138
 #, fuzzy, kde-format
 msgctxt "@action:inmenu"
 msgid "Create Note for To-do"
 msgstr "Șterge lucrare"
 
-#: koeventpopupmenu.cpp:124
+#: koeventpopupmenu.cpp:149
 #, fuzzy, kde-format
 msgctxt "@action:inmenu"
 msgid "&Toggle Reminder"
 msgstr "Amintire:"
 
-#: koeventpopupmenu.cpp:131
+#: koeventpopupmenu.cpp:156
 #, fuzzy, kde-format
 msgctxt "@action:inmenu"
 msgid "&Dissociate From Recurrence..."
 msgstr "Listează evenimentele pentru ziua curentă"
 
-#: koeventpopupmenu.cpp:139
+#: koeventpopupmenu.cpp:164
 #, fuzzy, kde-format
 msgctxt "@action:inmenu"
 msgid "Send as iCalendar..."
 msgstr "Trimite ca iCalendar..."
 
-#: koeventpopupmenu.cpp:188
+#: koeventpopupmenu.cpp:216
 #, fuzzy, kde-format
 msgctxt "@action:inmenu"
 msgid "&Toggle Reminder Off"
 msgstr "Amintire:"
 
-#: koeventpopupmenu.cpp:189
+#: koeventpopupmenu.cpp:217
 #, fuzzy, kde-format
 msgctxt "@action:inmenu"
 msgid "&Toggle Reminder On"

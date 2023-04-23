@@ -5,7 +5,7 @@ msgid ""
 msgstr ""
 "Project-Id-Version: Mimos\n"
 "Report-Msgid-Bugs-To: https://bugs.kde.org\n"
-"POT-Creation-Date: 2023-04-03 02:42+0000\n"
+"POT-Creation-Date: 2023-04-23 04:12+0000\n"
 "PO-Revision-Date: 2005-11-26 19:59+0800\n"
 "Last-Translator: MIMOS <opensource@mimos.my>\n"
 "Language-Team: Malay <kedidiemas@yahoogroups.com>\n"
@@ -2255,118 +2255,118 @@ msgstr "&Tambah"
 msgid "&Cancel"
 msgstr "&Ubah"
 
-#: koeventpopupmenu.cpp:45
+#: koeventpopupmenu.cpp:54
 #, fuzzy, kde-format
 #| msgid "&Show"
 msgctxt "@action:inmenu"
 msgid "&Show"
 msgstr "&Paparkan"
 
-#: koeventpopupmenu.cpp:47
+#: koeventpopupmenu.cpp:56
 #, fuzzy, kde-format
 #| msgid "&Edit..."
 msgctxt "@action:inmenu"
 msgid "&Edit..."
 msgstr "&Edit..."
 
-#: koeventpopupmenu.cpp:49
+#: koeventpopupmenu.cpp:58
 #, fuzzy, kde-format
 msgctxt "@action:inmenu delete this incidence"
 msgid "&Delete"
 msgstr "Hapuskan%1"
 
-#: koeventpopupmenu.cpp:53
+#: koeventpopupmenu.cpp:62
 #, fuzzy, kde-format
 msgctxt "@action:inmenu"
 msgid "&Print..."
 msgstr "&Edit..."
 
-#: koeventpopupmenu.cpp:55
+#: koeventpopupmenu.cpp:64
 #, fuzzy, kde-format
 msgctxt "@action:inmenu"
 msgid "Print Previe&w..."
 msgstr "&Edit..."
 
-#: koeventpopupmenu.cpp:76
+#: koeventpopupmenu.cpp:91
 #, fuzzy, kde-format
 msgctxt "@action:inmenu cut this incidence"
 msgid "C&ut"
 msgstr "Chukat"
 
-#: koeventpopupmenu.cpp:78
+#: koeventpopupmenu.cpp:96
 #, fuzzy, kde-format
 msgctxt "@action:inmenu copy this incidence"
 msgid "&Copy"
 msgstr "Salin Ke"
 
-#: koeventpopupmenu.cpp:79
+#: koeventpopupmenu.cpp:101
 #, fuzzy, kde-format
 #| msgid "&Date:"
 msgctxt "@action:inmenu"
 msgid "&Paste"
 msgstr "&Tarikh:"
 
-#: koeventpopupmenu.cpp:87
+#: koeventpopupmenu.cpp:112
 #, fuzzy, kde-format
 #| msgid "Click to add a new to-do"
 msgctxt "@action:inmenu"
 msgid "Create To-do from Event"
 msgstr "Klik untuk tambah tugasan baru"
 
-#: koeventpopupmenu.cpp:91
+#: koeventpopupmenu.cpp:116
 #, fuzzy, kde-format
 #| msgid "Click to add a new to-do"
 msgctxt "@action:inmenu"
 msgid "Create Note for Event"
 msgstr "Klik untuk tambah tugasan baru"
 
-#: koeventpopupmenu.cpp:102
+#: koeventpopupmenu.cpp:127
 #, fuzzy, kde-format
 msgctxt "@action:inmenu"
 msgid "Togg&le To-do Completed"
 msgstr "Penyingkiran Selesai"
 
-#: koeventpopupmenu.cpp:107
+#: koeventpopupmenu.cpp:132
 #, fuzzy, kde-format
 #| msgid "Click to add a new to-do"
 msgctxt "@action:inmenu"
 msgid "Create Event from To-do"
 msgstr "Klik untuk tambah tugasan baru"
 
-#: koeventpopupmenu.cpp:113
+#: koeventpopupmenu.cpp:138
 #, fuzzy, kde-format
 #| msgid "Click to add a new to-do"
 msgctxt "@action:inmenu"
 msgid "Create Note for To-do"
 msgstr "Klik untuk tambah tugasan baru"
 
-#: koeventpopupmenu.cpp:124
+#: koeventpopupmenu.cpp:149
 #, fuzzy, kde-format
 msgctxt "@action:inmenu"
 msgid "&Toggle Reminder"
 msgstr "Pe&ringatan:"
 
-#: koeventpopupmenu.cpp:131
+#: koeventpopupmenu.cpp:156
 #, fuzzy, kde-format
 #| msgid "Dissociate occurrence"
 msgctxt "@action:inmenu"
 msgid "&Dissociate From Recurrence..."
 msgstr "Asingkan kemunculan"
 
-#: koeventpopupmenu.cpp:139
+#: koeventpopupmenu.cpp:164
 #, fuzzy, kde-format
 #| msgid "&iCalendar..."
 msgctxt "@action:inmenu"
 msgid "Send as iCalendar..."
 msgstr "&iCalendar..."
 
-#: koeventpopupmenu.cpp:188
+#: koeventpopupmenu.cpp:216
 #, fuzzy, kde-format
 msgctxt "@action:inmenu"
 msgid "&Toggle Reminder Off"
 msgstr "Pe&ringatan:"
 
-#: koeventpopupmenu.cpp:189
+#: koeventpopupmenu.cpp:217
 #, fuzzy, kde-format
 msgctxt "@action:inmenu"
 msgid "&Toggle Reminder On"

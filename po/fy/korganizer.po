@@ -19,7 +19,7 @@ msgid ""
 msgstr ""
 "Project-Id-Version: korganizer\n"
 "Report-Msgid-Bugs-To: https://bugs.kde.org\n"
-"POT-Creation-Date: 2023-04-03 02:42+0000\n"
+"POT-Creation-Date: 2023-04-23 04:12+0000\n"
 "PO-Revision-Date: 2007-03-28 20:53+0200\n"
 "Last-Translator: Rinse de Vries <rinsedevries@kde.nl>\n"
 "Language-Team: Frysk <kde-i18n-fry@kde.org>\n"
@@ -2351,77 +2351,77 @@ msgid "&Cancel"
 msgstr "&Bewurkje"
 
 # Show kin hjir in tiidwurd wêze: to show, dan soe it Toane wêze moatte. At it in kommando is dan is de oersetting Toan better...
-#: koeventpopupmenu.cpp:45
+#: koeventpopupmenu.cpp:54
 #, fuzzy, kde-format
 #| msgid "&Show"
 msgctxt "@action:inmenu"
 msgid "&Show"
 msgstr "&Sjen litte"
 
-#: koeventpopupmenu.cpp:47
+#: koeventpopupmenu.cpp:56
 #, fuzzy, kde-format
 #| msgid "&Edit..."
 msgctxt "@action:inmenu"
 msgid "&Edit..."
 msgstr "Be&wurkje..."
 
-#: koeventpopupmenu.cpp:49
+#: koeventpopupmenu.cpp:58
 #, fuzzy, kde-format
 #| msgid "Delete %1"
 msgctxt "@action:inmenu delete this incidence"
 msgid "&Delete"
 msgstr "%1 wiskje"
 
-#: koeventpopupmenu.cpp:53
+#: koeventpopupmenu.cpp:62
 #, fuzzy, kde-format
 #| msgid "&Edit..."
 msgctxt "@action:inmenu"
 msgid "&Print..."
 msgstr "Be&wurkje..."
 
-#: koeventpopupmenu.cpp:55
+#: koeventpopupmenu.cpp:64
 #, fuzzy, kde-format
 #| msgid "&Edit..."
 msgctxt "@action:inmenu"
 msgid "Print Previe&w..."
 msgstr "Be&wurkje..."
 
-#: koeventpopupmenu.cpp:76
+#: koeventpopupmenu.cpp:91
 #, fuzzy, kde-format
 #| msgid "Chukat"
 msgctxt "@action:inmenu cut this incidence"
 msgid "C&ut"
 msgstr "Chukat"
 
-#: koeventpopupmenu.cpp:78
+#: koeventpopupmenu.cpp:96
 #, fuzzy, kde-format
 #| msgid "&Copy To"
 msgctxt "@action:inmenu copy this incidence"
 msgid "&Copy"
 msgstr "Ko&piearje nei"
 
-#: koeventpopupmenu.cpp:79
+#: koeventpopupmenu.cpp:101
 #, fuzzy, kde-format
 #| msgid "&Date:"
 msgctxt "@action:inmenu"
 msgid "&Paste"
 msgstr "&Datum:"
 
-#: koeventpopupmenu.cpp:87
+#: koeventpopupmenu.cpp:112
 #, fuzzy, kde-format
 #| msgid "Click to add a new to-do"
 msgctxt "@action:inmenu"
 msgid "Create To-do from Event"
 msgstr "Klik om in nije taak ta te heakjen"
 
-#: koeventpopupmenu.cpp:91
+#: koeventpopupmenu.cpp:116
 #, fuzzy, kde-format
 #| msgid "Click to add a new to-do"
 msgctxt "@action:inmenu"
 msgid "Create Note for Event"
 msgstr "Klik om in nije taak ta te heakjen"
 
-#: koeventpopupmenu.cpp:102
+#: koeventpopupmenu.cpp:127
 #, fuzzy, kde-format
 #| msgctxt "delete completed to-dos"
 #| msgid "Pur&ge Completed"
@@ -2429,49 +2429,49 @@ msgctxt "@action:inmenu"
 msgid "Togg&le To-do Completed"
 msgstr "Foltôge taken wis&kje"
 
-#: koeventpopupmenu.cpp:107
+#: koeventpopupmenu.cpp:132
 #, fuzzy, kde-format
 #| msgid "Click to add a new to-do"
 msgctxt "@action:inmenu"
 msgid "Create Event from To-do"
 msgstr "Klik om in nije taak ta te heakjen"
 
-#: koeventpopupmenu.cpp:113
+#: koeventpopupmenu.cpp:138
 #, fuzzy, kde-format
 #| msgid "Click to add a new to-do"
 msgctxt "@action:inmenu"
 msgid "Create Note for To-do"
 msgstr "Klik om in nije taak ta te heakjen"
 
-#: koeventpopupmenu.cpp:124
+#: koeventpopupmenu.cpp:149
 #, fuzzy, kde-format
 #| msgid "&Toggle Reminder"
 msgctxt "@action:inmenu"
 msgid "&Toggle Reminder"
 msgstr "Tebektinken oan- of útse&tte"
 
-#: koeventpopupmenu.cpp:131
+#: koeventpopupmenu.cpp:156
 #, fuzzy, kde-format
 #| msgid "Dissociate occurrence"
 msgctxt "@action:inmenu"
 msgid "&Dissociate From Recurrence..."
 msgstr "Item loskeppelje"
 
-#: koeventpopupmenu.cpp:139
+#: koeventpopupmenu.cpp:164
 #, fuzzy, kde-format
 #| msgid "&iCalendar..."
 msgctxt "@action:inmenu"
 msgid "Send as iCalendar..."
 msgstr "&iCalendar..."
 
-#: koeventpopupmenu.cpp:188
+#: koeventpopupmenu.cpp:216
 #, fuzzy, kde-format
 #| msgid "&Toggle Reminder"
 msgctxt "@action:inmenu"
 msgid "&Toggle Reminder Off"
 msgstr "Tebektinken oan- of útse&tte"
 
-#: koeventpopupmenu.cpp:189
+#: koeventpopupmenu.cpp:217
 #, fuzzy, kde-format
 #| msgid "&Toggle Reminder"
 msgctxt "@action:inmenu"
