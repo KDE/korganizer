@@ -9,7 +9,6 @@
 
 #pragma once
 #include "kcmdesignerfields.h"
-#include "kcmutils_version.h"
 
 class KOPrefsDesignerFields : public KCMDesignerFields
 {

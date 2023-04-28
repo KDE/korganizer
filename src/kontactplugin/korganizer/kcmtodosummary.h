@@ -8,7 +8,6 @@
 */
 
 #pragma once
-#include "kcmutils_version.h"
 #include "ui_todosummaryconfig_base.h"
 #include <KCModule>
 

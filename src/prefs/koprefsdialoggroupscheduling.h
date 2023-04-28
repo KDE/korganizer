@@ -8,7 +8,6 @@
 */
 
 #pragma once
-#include "kcmutils_version.h"
 #include "kprefsdialog.h"
 class KOPrefsDialogGroupScheduling : public Korganizer::KPrefsModule
 {

@@ -8,7 +8,6 @@
 */
 
 #pragma once
-#include "kcmutils_version.h"
 #include "kprefsdialog.h"
 #include <QSet>
 class QTreeWidget;
