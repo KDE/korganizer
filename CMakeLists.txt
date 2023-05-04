@@ -157,12 +157,8 @@ kde_configure_git_pre_commit_hook(CHECKS CLANG_FORMAT)
 ki18n_install(po)
 
 if(KF6DocTools_FOUND)
-    if (QT_MAJOR_VERSION STREQUAL "5")
         kdoctools_install(po)
         add_subdirectory(doc)
-    else()
-        MESSAGE(STATUS "DOC and PO not generated until deprecated element was removed in documentation")
-    endif()
 endif()
 
 feature_summary(WHAT ALL FATAL_ON_MISSING_REQUIRED_PACKAGES)
