@@ -14,7 +14,7 @@
 
 #include <KCalendarCore/CalFilter>
 
-#include <Libkdepim/LineEditCatchReturnKey>
+#include <KLineEditEventHandler>
 
 #include <Akonadi/TagSelectionDialog>
 
@@ -81,7 +81,7 @@ FilterEdit::FilterEdit(QList<KCalendarCore::CalFilter *> *filters, QWidget *pare
 {
     setupUi(this);
     searchline->setListWidget(mRulesList);
-    new KPIM::LineEditCatchReturnKey(mNameLineEdit, this);
+    KLineEditEventHandler::catchReturnKey(mNameLineEdit);
     mDetailsFrame->setEnabled(false);
     mFilters = filters;
     mNewButton->setWhatsThis(i18nc("@info:whatsthis", "Press this button to define a new filter."));
