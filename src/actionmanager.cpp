@@ -51,6 +51,7 @@
 
 #include <KActionCollection>
 #include <KActionMenu>
+#include <KColorSchemeMenu>
 #include <KMessageBox>
 #include <KSelectAction>
 #include <KShortcutsDialog>
@@ -758,7 +759,7 @@ void ActionManager::initActions()
     connect(action, &QAction::triggered, mCalendarView->dialogManager(), &KODialogManager::showCategoryEditDialog);
 
     auto manager = new KColorSchemeManager(this);
-    mACollection->addAction(QStringLiteral("colorscheme_menu"), manager->createSchemeSelectionMenu(this));
+    mACollection->addAction(QStringLiteral("colorscheme_menu"), KColorSchemeMenu::createMenu(manager, this));
 
     if (mIsPart) {
         action = new QAction(QIcon::fromTheme(QStringLiteral("configure")), i18n("&Configure KOrganizer..."), this);
