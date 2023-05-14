@@ -56,11 +56,11 @@ msgid ""
 "Copyright © 2006–2012 Allen Winter\n"
 "Copyright © 2012–2022 KOrganizer authors"
 msgstr ""
-"الحقوق محفوظة © ١٩٩٧-١٩٩٩ لِ‍ Preston Brown\n"
-"الحقوق محفوظة © ٢٠٠٠-٢٠٠٤، ٢٠٠٧ لِ‍ Cornelius Schumacher\n"
-"الحقوق محفوظة © ٢٠٠٤-٢٠٠٥ لِ‍ Reinhold Kainhofer\n"
-"الحقوق محفوظة © ٢٠٠٦-٢٠١٢ لِ‍ Allen Winter\n"
-"الحقوق محفوظة © ٢٠١٢-٢٠٢٢ لمؤلّفي «منظّمك»"
+"الحقوق محفوظة © 1997-1999 لِ‍ Preston Brown\n"
+"الحقوق محفوظة © 2000-2004، 2007 لِ‍ Cornelius Schumacher\n"
+"الحقوق محفوظة © 2004-2005 لِ‍ Reinhold Kainhofer\n"
+"الحقوق محفوظة © 2006-2012 لِ‍ Allen Winter\n"
+"الحقوق محفوظة © 2012-2022 لمؤلّفي «منظّمك»"
 
 #: aboutdata.cpp:30 kontactplugin/specialdates/specialdates_plugin.cpp:42
 #, kde-format
@@ -230,7 +230,7 @@ msgstr "Rafał Rzepecki"
 #: aboutdata.cpp:58
 #, kde-format
 msgid "Part of work sponsored by Google with Summer of Code 2005"
-msgstr "رعا برنامج ”صيف البرمجة ٢٠٠٥“ من غوغل بعضًا من هذا العمل"
+msgstr "رعا برنامج ”صيف البرمجة 2005“ من غوغل بعضًا من هذا العمل"
 
 #: aboutdata.cpp:59
 #, kde-format
@@ -2065,7 +2065,7 @@ msgstr "حواري «كيوت المصمّم» للحقول"
 #: kcmdesignerfields.cpp:131
 #, kde-format
 msgid "(c) 2004 Tobias Koenig"
-msgstr "‏© ٢٠٠٤ لِ‍ Tobias Koenig"
+msgstr "‏© 2004 لِ‍ Tobias Koenig"
 
 #: kcmdesignerfields.cpp:132
 #: kontactplugin/specialdates/specialdates_plugin.cpp:43
@@ -2382,7 +2382,7 @@ msgid ""
 "Check this box if you want to see events that start sometime during the next "
 "31 days."
 msgstr ""
-"أشّر على هذا المربّع إن أردت عرض الأحداث التي ستبدأ في وقت ما من الأيام ٣١ "
+"أشّر على هذا المربّع إن أردت عرض الأحداث التي ستبدأ في وقت ما من الأيام 31 "
 "القادمة."
 
 #. i18n: ectx: property (text), widget (QRadioButton, mDateMonthButton)
@@ -2391,7 +2391,7 @@ msgstr ""
 #: kontactplugin/specialdates/sdsummaryconfig_base.ui:50
 #, kde-format
 msgid "Within the next &month (31 days)"
-msgstr "خلال ال&شهر القادم (٣١ يومًا)"
+msgstr "خلال ال&شهر القادم (31 يومًا)"
 
 #. i18n: ectx: property (toolTip), widget (QRadioButton, mDateRangeButton)
 #: kontactplugin/korganizer/apptsummaryconfig_base.ui:57
@@ -2435,7 +2435,7 @@ msgstr ""
 #: kontactplugin/specialdates/sdsummaryconfig_base.ui:90
 #, kde-format
 msgid "1 day"
-msgstr "١"
+msgstr "1"
 
 # تغيرت الصيغة العربية من
 # Within the next (%1 days)
@@ -3082,7 +3082,7 @@ msgid ""
 "during the next 31 days."
 msgstr ""
 "أشّر على هذا المربّع إن أردت عرض المناسبات الخاصّة التي ستبدأ في وقت ما من "
-"الأيام ٣١ القادمة."
+"الأيام 31 القادمة."
 
 #. i18n: ectx: property (toolTip), widget (QRadioButton, mDateRangeButton)
 #: kontactplugin/specialdates/sdsummaryconfig_base.ui:65
@@ -3338,8 +3338,8 @@ msgid ""
 "Copyright © 2003 Tobias Koenig\n"
 "Copyright © 2004–2010 Allen Winter"
 msgstr ""
-"الحقوق محفوظة © ٢٠٠٣ لِ‍ Tobias Koenig\n"
-"الحقوق محفوظة © ٢٠٠٤-٢٠١٩ لِ‍ Allen Winter"
+"الحقوق محفوظة © 2003 لِ‍ Tobias Koenig\n"
+"الحقوق محفوظة © 2004-2019 لِ‍ Allen Winter"
 
 #: kontactplugin/specialdates/specialdates_plugin.cpp:42
 #, kde-format
@@ -5242,7 +5242,7 @@ msgstr "مسار الخادوم:"
 #: ui/kogroupwareprefspage.ui:308
 #, fuzzy, kde-format
 msgid "(No need if using Kolab server version 2)"
-msgstr "(لا حاجة لها إن كنت تستخدم الإصدارة ٢ من خادوم Kolab)"
+msgstr "(لا حاجة لها إن كنت تستخدم الإصدارة 2 من خادوم Kolab)"
 
 #. i18n: ectx: attribute (title), widget (QWidget, tabRetrieve)
 #: ui/kogroupwareprefspage.ui:335
@@ -5890,8 +5890,8 @@ msgstr "%1"
 #~ "Copyright © 2003–2004 Tobias Koenig\n"
 #~ "Copyright © 2005–2010 Allen Winter"
 #~ msgstr ""
-#~ "الحقوق محفوظة © ٢٠٠٣-٢٠٠٤ لِ‍ Tobias Koenig\n"
-#~ "الحقوق محفوظة © ٢٠٠٥-٢٠١٠ لِ‍ Allen Winter"
+#~ "الحقوق محفوظة © 2003-2004 لِ‍ Tobias Koenig\n"
+#~ "الحقوق محفوظة © 2005-2010 لِ‍ Allen Winter"
 
 #~ msgid "Pending To-dos Configuration Dialog"
 #~ msgstr "حواريّ ضبط المهام المرجأة"
@@ -5903,8 +5903,8 @@ msgstr "%1"
 #~ "Copyright © 2004 Tobias Koenig\n"
 #~ "Copyright © 2004–2010 Allen Winter"
 #~ msgstr ""
-#~ "الحقوق محفوظة © ٢٠٠٤ لِ‍ Tobias Koenig\n"
-#~ "الحقوق محفوظة © ٢٠٠٤-٢٠١٩ لِ‍ Allen Winter"
+#~ "الحقوق محفوظة © 2004 لِ‍ Tobias Koenig\n"
+#~ "الحقوق محفوظة © 2004-2019 لِ‍ Allen Winter"
 
 #~ msgid "Get &Hot New Stuff..."
 #~ msgstr "اجلب أشياء &جديدة…"
