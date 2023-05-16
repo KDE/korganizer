@@ -128,7 +128,7 @@ void KOPrefsDialogPlugins::usrReadConfig()
         } else {
             item->setCheckState(0, Qt::Unchecked);
         }
-        const QVariant variant = plugin.value(QStringLiteral("X-KDE-KOrganizer-HasSettings"));
+        const QVariant variant = plugin.value(QStringLiteral("X-KDE-KOrganizer-HasSettings"), false);
         const bool hasSettings = (variant.isValid() && variant.toBool());
         if (hasSettings) {
             auto but = new QToolButton(mTreeWidget);
