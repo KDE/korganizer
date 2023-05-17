@@ -23,7 +23,7 @@
 #include <QFormLayout>
 #include <QHBoxLayout>
 
-#include <PimCommonAkonadi/CollectionAnnotationsAttribute>
+#include <Akonadi/CollectionAnnotationsAttribute>
 #include <PimCommonAkonadi/CollectionTypeUtil>
 #include <PimCommonAkonadi/IncidencesForWidget>
 
@@ -66,7 +66,7 @@ void CollectionGeneralPage::init(const Akonadi::Collection &collection)
     topLayout->addRow(QString(), hbox);
 
     if ((collection.parentCollection() != Akonadi::Collection::root()) && PimCommon::Util::isImapResource(collection.resource())) {
-        const auto annotationAttribute = collection.attribute<PimCommon::CollectionAnnotationsAttribute>();
+        const auto annotationAttribute = collection.attribute<Akonadi::CollectionAnnotationsAttribute>();
 
         const QMap<QByteArray, QByteArray> annotations = (annotationAttribute ? annotationAttribute->annotations() : QMap<QByteArray, QByteArray>());
 
@@ -132,7 +132,7 @@ void CollectionGeneralPage::save(Collection &collection)
     } else if (collection.hasAttribute<EntityDisplayAttribute>()) {
         collection.attribute<EntityDisplayAttribute>()->setIconName(QString());
     }
-    auto annotationsAttribute = collection.attribute<PimCommon::CollectionAnnotationsAttribute>(Collection::AddIfMissing);
+    auto annotationsAttribute = collection.attribute<Akonadi::CollectionAnnotationsAttribute>(Collection::AddIfMissing);
 
     QMap<QByteArray, QByteArray> annotations = annotationsAttribute->annotations();
 
@@ -143,7 +143,7 @@ void CollectionGeneralPage::save(Collection &collection)
     }
 
     if (annotations.isEmpty()) {
-        collection.removeAttribute<PimCommon::CollectionAnnotationsAttribute>();
+        collection.removeAttribute<Akonadi::CollectionAnnotationsAttribute>();
     } else {
         annotationsAttribute->setAnnotations(annotations);
     }
