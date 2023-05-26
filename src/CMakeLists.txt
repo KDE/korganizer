@@ -168,7 +168,7 @@ target_link_libraries(korganizer_core
     PRIVATE
     KPim6::CalendarSupport
     KPim6::EventViews
-    KPim6::IdentityManagement
+    KPim6::IdentityManagementCore
     )
 
 target_include_directories(korganizer_core PUBLIC
@@ -339,7 +339,7 @@ target_link_libraries(korganizerprivate
     KPim6::CalendarUtils
     KF6::Holidays
     KPim6::Mime
-    KPim6::IdentityManagement
+    KPim6::IdentityManagementCore
     KF6::KCMUtils
     KF6::NewStuffWidgets
     KPim6::LdapWidgets

@@ -112,7 +112,7 @@ void KOCore::reloadPlugins()
     loadCalendarDecorations();
 }
 
-KIdentityManagement::IdentityManager *KOCore::identityManager()
+KIdentityManagementCore::IdentityManager *KOCore::identityManager()
 {
     return CalendarSupport::IdentityManager::self();
 }

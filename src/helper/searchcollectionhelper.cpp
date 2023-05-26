@@ -27,11 +27,11 @@ using namespace KOrg;
 
 SearchCollectionHelper::SearchCollectionHelper(QObject *parent)
     : QObject(parent)
-    , mIdentityManager(KIdentityManagement::IdentityManager::self())
+    , mIdentityManager(KIdentityManagementCore::IdentityManager::self())
 {
     setupSearchCollections();
-    connect(mIdentityManager, qOverload<>(&KIdentityManagement::IdentityManager::changed), this, &SearchCollectionHelper::updateOpenInvitation);
-    connect(mIdentityManager, qOverload<>(&KIdentityManagement::IdentityManager::changed), this, &SearchCollectionHelper::updateDeclinedInvitation);
+    connect(mIdentityManager, qOverload<>(&KIdentityManagementCore::IdentityManager::changed), this, &SearchCollectionHelper::updateOpenInvitation);
+    connect(mIdentityManager, qOverload<>(&KIdentityManagementCore::IdentityManager::changed), this, &SearchCollectionHelper::updateDeclinedInvitation);
 }
 
 void SearchCollectionHelper::setupSearchCollections()

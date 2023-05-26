@@ -16,7 +16,7 @@
 
 #include <EventViews/CalendarDecoration>
 
-namespace KIdentityManagement
+namespace KIdentityManagementCore
 {
 class IdentityManager;
 }
@@ -41,7 +41,7 @@ public:
 
     void reloadPlugins();
 
-    KIdentityManagement::IdentityManager *identityManager();
+    KIdentityManagementCore::IdentityManager *identityManager();
 
 protected:
     KOCore();

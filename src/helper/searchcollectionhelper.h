@@ -13,7 +13,7 @@
 
 #include <Akonadi/Collection>
 #include <KCalendarCore/Attendee>
-#include <KIdentityManagement/IdentityManager>
+#include <KIdentityManagementCore/IdentityManager>
 
 class KJob;
 
@@ -37,7 +37,7 @@ private:
     void updateSearchCollection(Akonadi::Collection col, KCalendarCore::Attendee::PartStat status, const QString &name, const QString &displayName);
 
 private:
-    KIdentityManagement::IdentityManager *const mIdentityManager;
+    KIdentityManagementCore::IdentityManager *const mIdentityManager;
     Akonadi::Collection mOpenInvitationCollection;
     Akonadi::Collection mDeclineCollection;
 };
