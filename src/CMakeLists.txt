@@ -345,6 +345,7 @@ target_link_libraries(korganizerprivate
     KPim6::LdapWidgets
     KPim6::AkonadiWidgets
     KF6::IconThemes
+    KF6::IconWidgets
     KF6::WindowSystem
     KF6::ItemViews
     KF6::JobWidgets
