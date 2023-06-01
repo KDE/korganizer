@@ -447,7 +447,7 @@ msgid ""
 "This action cannot be undone!"
 msgstr ""
 "Permet eliminar totes les tasques pendents finalitzades del calendari de la "
-"col·lecció de calendari. Esta acció no es pot desfer!"
+"col·lecció de calendari. Esta acció no es podrà desfer!"
 
 #. i18n: ectx: property (text), widget (QPushButton, mDeleteButton)
 #: actionmanager.cpp:366 actionmanager.cpp:621 actionmanager.cpp:1302
