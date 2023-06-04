@@ -18,7 +18,7 @@ msgstr ""
 "MIME-Version: 1.0\n"
 "Content-Type: text/plain; charset=UTF-8\n"
 "Content-Transfer-Encoding: 8bit\n"
-"Plural-Forms: nplurals=2; plural=n != 1;\n"
+"Plural-Forms: nplurals=1; plural=0;\n"
 "X-Accelerator-Marker: &\n"
 "X-Text-Markup: kde4\n"
 
@@ -827,8 +827,7 @@ msgstr "日(&D)"
 #, kde-format
 msgid "&Next Day"
 msgid_plural "&Next %1 Days"
-msgstr[0] "明日(&X)"
-msgstr[1] "次の %1 日(&X)"
+msgstr[0] "次の %1 日(&X)"
 
 #: actionmanager.cpp:553
 #, kde-format
@@ -1073,7 +1072,6 @@ msgstr "カレンダーを設定(&C)..."
 msgid "1 incidence was imported successfully."
 msgid_plural "%1 incidences were imported successfully."
 msgstr[0] ""
-msgstr[1] ""
 
 #: actionmanager.cpp:844
 #, kde-format
@@ -1722,7 +1720,6 @@ msgid "%1 to-do was ignored because it has uncompleted or read-only children."
 msgid_plural ""
 "%1 to-dos were ignored because they have uncompleted or read-only children."
 msgstr[0] ""
-msgstr[1] ""
 
 #: calendarview.cpp:2625 calendarview.cpp:2630
 #, fuzzy, kde-format
@@ -1730,7 +1727,6 @@ msgstr[1] ""
 msgid "%1 completed to-do was purged."
 msgid_plural "%1 completed to-dos were purged."
 msgstr[0] "完了した To-Do を隠す(&M)"
-msgstr[1] "完了した To-Do を隠す(&M)"
 
 #: calendarview.cpp:2636
 #, fuzzy, kde-format
@@ -2051,7 +2047,6 @@ msgctxt "@label"
 msgid "%1 match"
 msgid_plural "%1 matches"
 msgstr[0] ""
-msgstr[1] ""
 
 #: helper/searchcollectionhelper.cpp:106
 #, fuzzy, kde-format
@@ -2578,7 +2573,6 @@ msgstr ""
 msgid "No upcoming events starting within the next day"
 msgid_plural "No upcoming events starting within the next %1 days"
 msgstr[0] ""
-msgstr[1] ""
 
 #: kontactplugin/korganizer/apptsummarywidget.cpp:240
 #, fuzzy, kde-format
@@ -2629,7 +2623,6 @@ msgstr ""
 msgid " day"
 msgid_plural " days"
 msgstr[0] " 日"
-msgstr[1] " 日"
 
 #: kontactplugin/korganizer/korganizerplugin.cpp:44
 #, fuzzy, kde-format
@@ -2704,7 +2697,6 @@ msgstr ""
 msgid "in 1 day"
 msgid_plural "in %1 days"
 msgstr[0] " 日"
-msgstr[1] " 日"
 
 #: kontactplugin/korganizer/summaryeventinfo.cpp:184
 #, kde-format
@@ -2718,7 +2710,6 @@ msgctxt "use abbreviation for hour to keep the text short"
 msgid "1 hr"
 msgid_plural "%1 hrs"
 msgstr[0] ""
-msgstr[1] ""
 
 #: kontactplugin/korganizer/summaryeventinfo.cpp:193
 #, kde-format
@@ -2726,7 +2717,6 @@ msgctxt "use abbreviation for minute to keep the text short"
 msgid "1 min"
 msgid_plural "%1 mins"
 msgstr[0] ""
-msgstr[1] ""
 
 #: kontactplugin/korganizer/summaryeventinfo.cpp:200
 #: kontactplugin/specialdates/sdsummarywidget.cpp:485
@@ -3015,7 +3005,6 @@ msgstr ""
 msgid "1 day ago"
 msgid_plural "%1 days ago"
 msgstr[0] ""
-msgstr[1] ""
 
 #: kontactplugin/korganizer/todosummarywidget.cpp:218
 #, kde-format
@@ -3028,7 +3017,6 @@ msgstr ""
 msgid "No pending to-dos due within the next day"
 msgid_plural "No pending to-dos due within the next %1 days"
 msgstr[0] ""
-msgstr[1] ""
 
 #: kontactplugin/korganizer/todosummarywidget.cpp:329
 #, fuzzy, kde-format
@@ -3336,14 +3324,12 @@ msgstr ""
 msgid "one year"
 msgid_plural "%1 years"
 msgstr[0] ""
-msgstr[1] ""
 
 #: kontactplugin/specialdates/sdsummarywidget.cpp:562
 #, kde-format
 msgid "No special dates within the next 1 day"
 msgid_plural "No special dates pending within the next %1 days"
 msgstr[0] ""
-msgstr[1] ""
 
 #: kontactplugin/specialdates/sdsummarywidget.cpp:656
 #, kde-format
