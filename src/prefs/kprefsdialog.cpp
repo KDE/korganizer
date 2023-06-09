@@ -33,6 +33,7 @@
 #include <QRadioButton>
 #include <QSpinBox>
 #include <QTimeEdit>
+#include <qwidget.h>
 
 using namespace Korganizer;
 
@@ -85,6 +86,17 @@ QList<QWidget *> KPrefsWid::widgets() const
 KPrefsWidBool::KPrefsWidBool(KConfigSkeleton::ItemBool *item, QWidget *parent)
     : mItem(item)
 {
+    init(parent);
+}
+
+KPrefsWidBool::KPrefsWidBool(KConfigCompilerSignallingItem *item, QWidget *parent)
+    : mItem(item)
+{
+    init(parent);
+}
+
+void KPrefsWidBool::init(QWidget *parent)
+{
     mCheck = new QCheckBox(mItem->label(), parent);
     connect(mCheck, &QCheckBox::clicked, this, &KPrefsWidBool::changed);
     QString toolTip = mItem->toolTip();
@@ -99,12 +111,12 @@ KPrefsWidBool::KPrefsWidBool(KConfigSkeleton::ItemBool *item, QWidget *parent)
 
 void KPrefsWidBool::readConfig()
 {
-    mCheck->setChecked(mItem->value());
+    mCheck->setChecked(mItem->property().toBool());
 }
 
 void KPrefsWidBool::writeConfig()
 {
-    mItem->setValue(mCheck->isChecked());
+    mItem->setProperty(QVariant::fromValue(mCheck->isChecked()));
 }
 
 QCheckBox *KPrefsWidBool::checkBox()
@@ -613,6 +625,13 @@ KPrefsWidManager::~KPrefsWidManager()
 void KPrefsWidManager::addWid(KPrefsWid *wid)
 {
     mPrefsWids.append(wid);
+}
+
+KPrefsWidBool *KPrefsWidManager::addWidBool(KConfigCompilerSignallingItem *item, QWidget *parent)
+{
+    auto w = new KPrefsWidBool(item, parent);
+    addWid(w);
+    return w;
 }
 
 KPrefsWidBool *KPrefsWidManager::addWidBool(KConfigSkeleton::ItemBool *item, QWidget *parent)
