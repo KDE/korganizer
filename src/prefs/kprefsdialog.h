@@ -88,6 +88,14 @@ public:
     explicit KPrefsWidBool(KConfigSkeleton::ItemBool *item, QWidget *parent = nullptr);
 
     /**
+      Create a bool value control element consisting of a QCheckbox.
+
+      @param item    The KConfigCompilerSignallingItem representing the preferences entry.
+      @param parent  Parent widget.
+    */
+    explicit KPrefsWidBool(KConfigCompilerSignallingItem *item, QWidget *parent = nullptr);
+
+    /**
       Return the QCheckbox used by this control element.
     */
     QCheckBox *checkBox();
@@ -98,7 +106,8 @@ public:
     QList<QWidget *> widgets() const override;
 
 private:
-    KConfigSkeleton::ItemBool *mItem = nullptr;
+    void init(QWidget *parent);
+    KConfigSkeletonItem *mItem = nullptr;
 
     QCheckBox *mCheck = nullptr;
 };
@@ -580,6 +589,14 @@ public:
       Register a custom KPrefsWid object.
     */
     virtual void addWid(KPrefsWid *);
+
+    /**
+      Register a @ref KPrefsWidBool object.
+
+      @param item    The KConfigCompilerSignallingItem representing the preferences entry.
+      @param parent  Parent widget.
+    */
+    KPrefsWidBool *addWidBool(KConfigCompilerSignallingItem *item, QWidget *parent = nullptr);
 
     /**
       Register a @ref KPrefsWidBool object.
