@@ -20,7 +20,7 @@ class KOPrefsDialogPlugins : public Korganizer::KPrefsModule
 {
     Q_OBJECT
 public:
-    explicit KOPrefsDialogPlugins(QObject *parent, const KPluginMetaData &data, const QVariantList &args = {});
+    explicit KOPrefsDialogPlugins(QObject *parent, const KPluginMetaData &data);
     ~KOPrefsDialogPlugins() override;
 
 protected Q_SLOTS:

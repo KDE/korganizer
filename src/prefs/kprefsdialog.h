@@ -771,7 +771,7 @@ class KPrefsModule : public KCModule, public KPrefsWidManager
 {
     Q_OBJECT
 public:
-    explicit KPrefsModule(KConfigSkeleton *, QObject *parent, const KPluginMetaData &data, const QVariantList &args = QVariantList());
+    explicit KPrefsModule(KConfigSkeleton *, QObject *parent, const KPluginMetaData &data);
 
     void addWid(KPrefsWid *) override;
 

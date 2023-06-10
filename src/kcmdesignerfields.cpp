@@ -120,8 +120,8 @@ private:
     bool mIsActive = false;
 };
 
-KCMDesignerFields::KCMDesignerFields(QObject *parent, const KPluginMetaData &data, const QVariantList &args)
-    : KCModule(parent, data, args)
+KCMDesignerFields::KCMDesignerFields(QObject *parent, const KPluginMetaData &data)
+    : KCModule(parent, data)
 {
 }
 

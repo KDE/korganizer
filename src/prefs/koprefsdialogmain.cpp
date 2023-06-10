@@ -26,8 +26,8 @@
 
 K_PLUGIN_CLASS_WITH_JSON(KOPrefsDialogMain, "korganizer_configmain.json")
 
-KOPrefsDialogMain::KOPrefsDialogMain(QObject *parent, const KPluginMetaData &data, const QVariantList &args)
-    : Korganizer::KPrefsModule(KOPrefs::instance(), parent, data, args)
+KOPrefsDialogMain::KOPrefsDialogMain(QObject *parent, const KPluginMetaData &data)
+    : Korganizer::KPrefsModule(KOPrefs::instance(), parent, data)
 {
     auto topTopLayout = new QVBoxLayout(widget());
     auto tabWidget = new QTabWidget(widget());

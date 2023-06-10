@@ -13,7 +13,7 @@ class KOPrefsDialogGroupScheduling : public Korganizer::KPrefsModule
 {
     Q_OBJECT
 public:
-    explicit KOPrefsDialogGroupScheduling(QObject *parent, const KPluginMetaData &data, const QVariantList &args = {});
+    explicit KOPrefsDialogGroupScheduling(QObject *parent, const KPluginMetaData &data);
 
 protected:
     void usrWriteConfig() override;

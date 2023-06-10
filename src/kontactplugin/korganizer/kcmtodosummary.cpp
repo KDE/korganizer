@@ -17,8 +17,8 @@
 
 K_PLUGIN_CLASS_WITH_JSON(KCMTodoSummary, "kcmtodosummary.json")
 
-KCMTodoSummary::KCMTodoSummary(QObject *parent, const KPluginMetaData &data, const QVariantList &args)
-    : KCModule(parent, data, args)
+KCMTodoSummary::KCMTodoSummary(QObject *parent, const KPluginMetaData &data)
+    : KCModule(parent, data)
 {
     setupUi(widget());
 

@@ -18,7 +18,7 @@ class FeedbackConfigWidget;
 class KOPrefsUserFeedBack : public KCModule
 {
 public:
-    explicit KOPrefsUserFeedBack(QObject *parent, const KPluginMetaData &data, const QVariantList &args = {});
+    explicit KOPrefsUserFeedBack(QObject *parent, const KPluginMetaData &data);
 
 protected:
     void load() override;

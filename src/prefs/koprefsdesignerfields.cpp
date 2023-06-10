@@ -14,8 +14,8 @@
 
 K_PLUGIN_CLASS_WITH_JSON(KOPrefsDesignerFields, "korganizer_configdesignerfields.json")
 
-KOPrefsDesignerFields::KOPrefsDesignerFields(QObject *parent, const KPluginMetaData &data, const QVariantList &args)
-    : KCMDesignerFields(parent, data, args)
+KOPrefsDesignerFields::KOPrefsDesignerFields(QObject *parent, const KPluginMetaData &data)
+    : KCMDesignerFields(parent, data)
 {
 }
 

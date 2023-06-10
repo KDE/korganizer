@@ -20,8 +20,8 @@
 
 K_PLUGIN_CLASS_WITH_JSON(KOPrefsDialogGroupScheduling, "korganizer_configgroupscheduling.json")
 
-KOPrefsDialogGroupScheduling::KOPrefsDialogGroupScheduling(QObject *parent, const KPluginMetaData &data, const QVariantList &args)
-    : Korganizer::KPrefsModule(KOPrefs::instance(), parent, data, args)
+KOPrefsDialogGroupScheduling::KOPrefsDialogGroupScheduling(QObject *parent, const KPluginMetaData &data)
+    : Korganizer::KPrefsModule(KOPrefs::instance(), parent, data)
 {
     auto topTopLayout = new QVBoxLayout(widget());
     auto topFrame = new QWidget(widget());

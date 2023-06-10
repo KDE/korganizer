@@ -16,7 +16,7 @@ class KCMTodoSummary : public KCModule, public Ui::TodoSummaryConfig_Base
     Q_OBJECT
 
 public:
-    explicit KCMTodoSummary(QObject *parent, const KPluginMetaData &data, const QVariantList &args = QVariantList());
+    explicit KCMTodoSummary(QObject *parent, const KPluginMetaData &data);
     ~KCMTodoSummary() override;
 
     void load() override;

@@ -54,8 +54,8 @@ K_PLUGIN_CLASS_WITH_JSON(KOPrefsDialogPlugins, "korganizer_configplugins.json")
 /**
   Dialog for selecting and configuring KOrganizer plugins
 */
-KOPrefsDialogPlugins::KOPrefsDialogPlugins(QObject *parent, const KPluginMetaData &data, const QVariantList &args)
-    : KPrefsModule(KOPrefs::instance(), parent, data, args)
+KOPrefsDialogPlugins::KOPrefsDialogPlugins(QObject *parent, const KPluginMetaData &data)
+    : KPrefsModule(KOPrefs::instance(), parent, data)
     , mTreeWidget(new QTreeWidget(widget()))
     , mDescription(new QLabel(widget()))
     , mPositioningGroupBox(new QGroupBox(i18nc("@title:group", "Position"), widget()))

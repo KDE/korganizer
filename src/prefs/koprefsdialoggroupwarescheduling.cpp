@@ -18,8 +18,8 @@
 
 K_PLUGIN_CLASS_WITH_JSON(KOPrefsDialogGroupwareScheduling, "korganizer_configfreebusy.json")
 
-KOPrefsDialogGroupwareScheduling::KOPrefsDialogGroupwareScheduling(QObject *parent, const KPluginMetaData &data, const QVariantList &args)
-    : Korganizer::KPrefsModule(CalendarSupport::KCalPrefs::instance(), parent, data, args)
+KOPrefsDialogGroupwareScheduling::KOPrefsDialogGroupwareScheduling(QObject *parent, const KPluginMetaData &data)
+    : Korganizer::KPrefsModule(CalendarSupport::KCalPrefs::instance(), parent, data)
     , mGroupwarePage(new Ui::KOGroupwarePrefsPage())
 {
     auto widget = new QWidget(this->widget());

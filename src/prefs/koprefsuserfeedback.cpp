@@ -19,8 +19,8 @@
 
 K_PLUGIN_CLASS_WITH_JSON(KOPrefsUserFeedBack, "korganizer_userfeedback.json")
 
-KOPrefsUserFeedBack::KOPrefsUserFeedBack(QObject *parent, const KPluginMetaData &data, const QVariantList &args)
-    : KCModule(parent, data, args)
+KOPrefsUserFeedBack::KOPrefsUserFeedBack(QObject *parent, const KPluginMetaData &data)
+    : KCModule(parent, data)
     , mUserFeedbackWidget(new KUserFeedback::FeedbackConfigWidget(widget()))
 {
     auto layout = new QVBoxLayout(widget());

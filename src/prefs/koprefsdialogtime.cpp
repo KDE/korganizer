@@ -29,8 +29,8 @@
 
 K_PLUGIN_CLASS_WITH_JSON(KOPrefsDialogTime, "korganizer_configtime.json")
 
-KOPrefsDialogTime::KOPrefsDialogTime(QObject *parent, const KPluginMetaData &data, const QVariantList &args)
-    : Korganizer::KPrefsModule(KOPrefs::instance(), parent, data, args)
+KOPrefsDialogTime::KOPrefsDialogTime(QObject *parent, const KPluginMetaData &data)
+    : Korganizer::KPrefsModule(KOPrefs::instance(), parent, data)
 {
     auto layout = new QVBoxLayout(widget());
     auto tabWidget = new QTabWidget(widget());

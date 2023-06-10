@@ -13,7 +13,7 @@
 class KOPrefsDesignerFields : public KCMDesignerFields
 {
 public:
-    explicit KOPrefsDesignerFields(QObject *parent, const KPluginMetaData &data, const QVariantList &args = QVariantList());
+    explicit KOPrefsDesignerFields(QObject *parent, const KPluginMetaData &data);
 
 protected:
     Q_REQUIRED_RESULT QString localUiDir() override;

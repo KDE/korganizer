@@ -22,7 +22,7 @@ class KOPrefsDialogColorsAndFonts : public Korganizer::KPrefsModule
 {
     Q_OBJECT
 public:
-    explicit KOPrefsDialogColorsAndFonts(QObject *parent, const KPluginMetaData &data, const QVariantList &args = {});
+    explicit KOPrefsDialogColorsAndFonts(QObject *parent, const KPluginMetaData &data);
 
 protected:
     void usrWriteConfig() override;

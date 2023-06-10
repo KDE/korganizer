@@ -15,7 +15,7 @@ class KCMApptSummary : public KCModule, public Ui::ApptSummaryConfig_Base
     Q_OBJECT
 
 public:
-    explicit KCMApptSummary(QObject *parent, const KPluginMetaData &data, const QVariantList &args = QVariantList());
+    explicit KCMApptSummary(QObject *parent, const KPluginMetaData &data);
 
     void load() override;
     void save() override;

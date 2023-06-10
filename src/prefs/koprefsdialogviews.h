@@ -15,7 +15,7 @@ class KItemIconCheckCombo;
 class KOPrefsDialogViews : public Korganizer::KPrefsModule
 {
 public:
-    explicit KOPrefsDialogViews(QObject *parent, const KPluginMetaData &data, const QVariantList &args = {});
+    explicit KOPrefsDialogViews(QObject *parent, const KPluginMetaData &data);
 
 protected:
     void usrReadConfig() override;

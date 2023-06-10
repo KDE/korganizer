@@ -854,8 +854,8 @@ void KPrefsDialog::slotDefault()
     }
 }
 
-KPrefsModule::KPrefsModule(KConfigSkeleton *prefs, QObject *parent, const KPluginMetaData &data, const QVariantList &args)
-    : KCModule(parent, data, args)
+KPrefsModule::KPrefsModule(KConfigSkeleton *prefs, QObject *parent, const KPluginMetaData &data)
+    : KCModule(parent, data)
     , KPrefsWidManager(prefs)
 {
     setNeedsSave(false);
