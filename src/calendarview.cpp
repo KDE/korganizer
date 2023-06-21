@@ -149,12 +149,14 @@ CalendarView::CalendarView(QWidget *parent)
 
     mTodoList = new KOTodoView(true /*sidebar*/, mLeftSplitter);
     mTodoList->setObjectName(QStringLiteral("todolist"));
+    connect(this, &CalendarView::calendarAdded, mTodoList, &KOTodoView::calendarAdded);
+    connect(this, &CalendarView::calendarRemoved, mTodoList, &KOTodoView::calendarRemoved);
 
     mEventViewerBox = new QWidget(mLeftSplitter);
     auto mEventViewerBoxVBoxLayout = new QVBoxLayout(mEventViewerBox);
     mEventViewerBoxVBoxLayout->setContentsMargins({});
     mEventViewerBoxVBoxLayout->setContentsMargins({});
-    mEventViewer = new CalendarSupport::IncidenceViewer(mCalendar.data(), mEventViewerBox);
+    mEventViewer = new CalendarSupport::IncidenceViewer(mCalendar->entityTreeModel(), mEventViewerBox);
     mEventViewer->setObjectName(QStringLiteral("EventViewer"));
     mEventViewerBoxVBoxLayout->addWidget(mEventViewer);
 
@@ -270,9 +272,6 @@ CalendarView::CalendarView(QWidget *parent)
     Akonadi::FreeBusyManager::self()->setCalendar(mCalendar);
 
     mCalendar->registerObserver(this);
-    mDateNavigatorContainer->setCalendar(mCalendar);
-    mTodoList->setCalendar(mCalendar);
-    mEventViewer->setCalendar(mCalendar.data());
 }
 
 CalendarView::~CalendarView()
@@ -2519,6 +2518,36 @@ void CalendarView::changeFullView(bool fullView)
             fullView ? mNavigatorBar->show() : mNavigatorBar->hide();
         }
     }
+}
+
+static auto forCollection(const Akonadi::Collection &collection)
+{
+    return [collection](const Akonadi::CollectionCalendar::Ptr &calendar) {
+        return calendar->collection() == collection;
+    };
+}
+
+void CalendarView::collectionSelected(const Akonadi::Collection &collection)
+{
+    auto calendar = std::find_if(mCalendars.cbegin(), mCalendars.cend(), forCollection(collection));
+    if (calendar != mCalendars.cend()) {
+        return;
+    }
+
+    auto newCalendar = Akonadi::CollectionCalendar::Ptr::create(mCalendar->entityTreeModel(), collection);
+    mCalendars.push_back(newCalendar);
+    Q_EMIT calendarAdded(newCalendar);
+}
+
+void CalendarView::collectionDeselected(const Akonadi::Collection &collection)
+{
+    auto calendar = std::find_if(mCalendars.begin(), mCalendars.end(), forCollection(collection));
+    if (calendar == mCalendars.end()) {
+        return;
+    }
+
+    Q_EMIT calendarRemoved(*calendar);
+    mCalendars.erase(calendar);
 }
 
 Akonadi::Collection CalendarView::defaultCollection(const QLatin1String &mimeType) const

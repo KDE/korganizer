@@ -70,6 +70,9 @@ public:
     Q_REQUIRED_RESULT Akonadi::Collection currentCalendar() const;
 
 Q_SIGNALS:
+    void collectionEnabled(const Akonadi::Collection &);
+    void collectionDisabled(const Akonadi::Collection &);
+
     void resourcesChanged(bool enabled);
     void resourcesAddedRemoved();
     void defaultResourceChanged(const Akonadi::Collection &);
@@ -89,6 +92,8 @@ private Q_SLOTS:
     void setDefaultCalendar();
     void onAction(const QModelIndex &index, int action);
     void slotServerSideSubscription();
+
+    void selectionChanged(const QItemSelection &selected, const QItemSelection &deselected);
 
 private:
     Akonadi::EntityTreeModel *entityTreeModel() const;

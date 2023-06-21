@@ -178,7 +178,7 @@ void MonthView::setCalendar(const Akonadi::ETMCalendar::Ptr &cal)
 {
     KOEventView::setCalendar(cal);
     mPopup->setCalendar(cal);
-    mMonthView->setCalendar(cal);
+    mMonthView->setModel(cal->entityTreeModel());
 }
 
 void MonthView::setIncidenceChanger(Akonadi::IncidenceChanger *changer)
@@ -191,4 +191,14 @@ void MonthView::showDates(const QDate &start, const QDate &end, const QDate &pre
     Q_UNUSED(start)
     Q_UNUSED(end)
     Q_UNUSED(preferredMonth)
+}
+
+void MonthView::calendarAdded(const Akonadi::CollectionCalendar::Ptr &calendar)
+{
+    mMonthView->addCalendar(calendar);
+}
+
+void MonthView::calendarRemoved(const Akonadi::CollectionCalendar::Ptr &calendar)
+{
+    mMonthView->removeCalendar(calendar);
 }

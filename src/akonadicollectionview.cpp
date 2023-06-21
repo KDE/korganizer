@@ -374,8 +374,9 @@ protected:
 CalendarViewExtension *AkonadiCollectionViewFactory::create(QWidget *parent)
 {
     mAkonadiCollectionView = new AkonadiCollectionView(view(), true, parent);
+    QObject::connect(mAkonadiCollectionView, &AkonadiCollectionView::collectionEnabled, mView, &CalendarView::collectionSelected);
+    QObject::connect(mAkonadiCollectionView, &AkonadiCollectionView::collectionDisabled, mView, &CalendarView::collectionDeselected);
     QObject::connect(mAkonadiCollectionView, &AkonadiCollectionView::resourcesChanged, mView, &CalendarView::resourcesChanged);
-    QObject::connect(mAkonadiCollectionView, &AkonadiCollectionView::resourcesAddedRemoved, mView, &CalendarView::resourcesChanged);
     return mAkonadiCollectionView;
 }
 
@@ -596,6 +597,8 @@ void AkonadiCollectionView::setCollectionSelectionProxyModel(KCheckableProxyMode
         return;
     }
 
+    m->selectionModel()->disconnect(this);
+
     mSelectionProxyModel = m;
     if (!mSelectionProxyModel) {
         return;
@@ -603,11 +606,46 @@ void AkonadiCollectionView::setCollectionSelectionProxyModel(KCheckableProxyMode
 
     new NewCalendarChecker(m);
     mBaseModel->setSourceModel(mSelectionProxyModel);
+
+    connect(m->selectionModel(), &QItemSelectionModel::selectionChanged, this, &AkonadiCollectionView::selectionChanged);
 }
 
 KCheckableProxyModel *AkonadiCollectionView::collectionSelectionProxyModel() const
 {
     return mSelectionProxyModel;
+}
+
+void AkonadiCollectionView::selectionChanged(const QItemSelection &selected, const QItemSelection &deselected)
+{
+    bool changed = false;
+
+    for (const auto &index : selected.indexes()) {
+        if (!index.isValid()) {
+            continue;
+        }
+
+        const auto col = index.data(Akonadi::EntityTreeModel::CollectionRole).value<Akonadi::Collection>();
+        if (col.isValid()) {
+            Q_EMIT collectionEnabled(col);
+            changed |= true;
+        }
+    }
+
+    for (const auto &index : deselected.indexes()) {
+        if (!index.isValid()) {
+            continue;
+        }
+
+        const auto col = index.data(Akonadi::EntityTreeModel::CollectionRole).value<Akonadi::Collection>();
+        if (col.isValid()) {
+            Q_EMIT collectionDisabled(col);
+            changed |= true;
+        }
+    }
+
+    if (changed) {
+        Q_EMIT resourcesChanged(true);
+    }
 }
 
 Akonadi::EntityTreeView *AkonadiCollectionView::view() const

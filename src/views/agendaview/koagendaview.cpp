@@ -111,7 +111,7 @@ void KOAgendaView::setCalendar(const Akonadi::ETMCalendar::Ptr &cal)
 {
     KOEventView::setCalendar(cal);
     d->mPopup->setCalendar(cal);
-    d->mAgendaView->setCalendar(cal);
+    d->mAgendaView->setModel(cal->entityTreeModel());
 }
 
 void KOAgendaView::zoomInVertically()
@@ -289,4 +289,14 @@ void KOAgendaView::setChanges(EventViews::EventView::Changes changes)
 void KOAgendaView::setDateRange(const QDateTime &start, const QDateTime &end, const QDate &)
 {
     d->mAgendaView->setDateRange(start, end);
+}
+
+void KOAgendaView::calendarAdded(const Akonadi::CollectionCalendar::Ptr &calendar)
+{
+    d->mAgendaView->addCalendar(calendar);
+}
+
+void KOAgendaView::calendarRemoved(const Akonadi::CollectionCalendar::Ptr &calendar)
+{
+    d->mAgendaView->removeCalendar(calendar);
 }

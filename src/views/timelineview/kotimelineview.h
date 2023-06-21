@@ -52,6 +52,10 @@ public:
 
     Q_REQUIRED_RESULT CalendarSupport::CalPrinterBase::PrintType printType() const override;
 
+public Q_SLOTS:
+    void calendarAdded(const Akonadi::CollectionCalendar::Ptr &calendar) override;
+    void calendarRemoved(const Akonadi::CollectionCalendar::Ptr &calendar) override;
+
 private:
     KOEventPopupMenu *mEventPopup = nullptr;
     EventViews::TimelineView *mTimeLineView = nullptr;

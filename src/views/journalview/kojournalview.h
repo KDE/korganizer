@@ -55,6 +55,9 @@ public Q_SLOTS:
     void setIncidenceChanger(Akonadi::IncidenceChanger *changer) override;
     void printJournal(const KCalendarCore::Journal::Ptr &journal, bool preview);
 
+    void calendarAdded(const Akonadi::CollectionCalendar::Ptr &calendar) override;
+    void calendarRemoved(const Akonadi::CollectionCalendar::Ptr &calendar) override;
+
 private:
     EventViews::JournalView *const mJournalView;
 };

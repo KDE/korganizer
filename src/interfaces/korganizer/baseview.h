@@ -244,6 +244,9 @@ public Q_SLOTS:
     */
     virtual bool eventDurationHint(QDateTime &startDt, QDateTime &endDt, bool &allDay);
 
+    virtual void calendarAdded(const Akonadi::CollectionCalendar::Ptr &calendar);
+    virtual void calendarRemoved(const Akonadi::CollectionCalendar::Ptr &calendar);
+
 Q_SIGNALS:
     void incidenceSelected(const Akonadi::Item &, const QDate);
 

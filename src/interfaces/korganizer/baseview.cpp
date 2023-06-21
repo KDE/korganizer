@@ -179,6 +179,16 @@ bool BaseView::eventDurationHint(QDateTime &startDt, QDateTime &endDt, bool &all
     return false;
 }
 
+void BaseView::calendarAdded(const Akonadi::CollectionCalendar::Ptr &calendar)
+{
+    Q_UNUSED(calendar);
+}
+
+void BaseView::calendarRemoved(const Akonadi::CollectionCalendar::Ptr &calendar)
+{
+    Q_UNUSED(calendar);
+}
+
 void BaseView::getHighlightMode(bool &highlightEvents, bool &highlightTodos, bool &highlightJournals)
 {
     highlightEvents = true;

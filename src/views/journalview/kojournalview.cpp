@@ -156,3 +156,13 @@ void KOJournalView::printJournal(const KCalendarCore::Journal::Ptr &journal, boo
         setStyleSheet(css);
     }
 }
+
+void KOJournalView::calendarAdded(const Akonadi::CollectionCalendar::Ptr &calendar)
+{
+    mJournalView->addCalendar(calendar);
+}
+
+void KOJournalView::calendarRemoved(const Akonadi::CollectionCalendar::Ptr &calendar)
+{
+    mJournalView->removeCalendar(calendar);
+}

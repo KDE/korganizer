@@ -244,6 +244,9 @@ Q_SIGNALS:
     void filtersUpdated(const QStringList &, int);
     void filterChanged();
 
+    void calendarAdded(const Akonadi::CollectionCalendar::Ptr &calendar);
+    void calendarRemoved(const Akonadi::CollectionCalendar::Ptr &calendar);
+
 public Q_SLOTS:
     /** options dialog made a changed to the configuration. we catch this
      *  and notify all widgets which need to update their configuration. */
@@ -591,6 +594,9 @@ public Q_SLOTS:
      */
     void changeFullView(bool fullView);
 
+    void collectionSelected(const Akonadi::Collection &collection);
+    void collectionDeselected(const Akonadi::Collection &collection);
+
 protected Q_SLOTS:
     /**
      * Select a view or adapt the current view to display the specified dates.
@@ -698,6 +704,7 @@ private:
     QList<CalendarViewExtension *> mExtensions;
 
     Akonadi::ETMCalendar::Ptr mCalendar;
+    QVector<Akonadi::CollectionCalendar::Ptr> mCalendars;
 
     DateNavigator *mDateNavigator = nullptr;
     DateChecker *mDateChecker = nullptr;

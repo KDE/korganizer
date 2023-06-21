@@ -93,6 +93,9 @@ public Q_SLOTS:
 
     void zoomView(const int delta, const QPoint &pos, const Qt::Orientation orient = Qt::Horizontal);
 
+    void calendarAdded(const Akonadi::CollectionCalendar::Ptr &calendar) override;
+    void calendarRemoved(const Akonadi::CollectionCalendar::Ptr &calendar) override;
+
 Q_SIGNALS:
     void zoomViewHorizontally(const QDate &, int count);
     void timeSpanSelectionChanged();

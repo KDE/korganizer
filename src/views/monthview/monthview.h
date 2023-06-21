@@ -67,6 +67,9 @@ public Q_SLOTS:
 
     void updateConfig() override;
 
+    void calendarAdded(const Akonadi::CollectionCalendar::Ptr &calendar) override;
+    void calendarRemoved(const Akonadi::CollectionCalendar::Ptr &calendar) override;
+
 Q_SIGNALS:
     void fullViewChanged(bool enabled);
 

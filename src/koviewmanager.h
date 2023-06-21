@@ -15,6 +15,7 @@
 
 #include <QDate>
 #include <QObject>
+#include <QVector>
 
 class CalendarView;
 class KOAgendaView;
@@ -129,6 +130,9 @@ Q_SIGNALS:
     void configChanged();
     void datesSelected(const KCalendarCore::DateList &);
 
+    void calendarAdded(const Akonadi::CollectionCalendar::Ptr &calendar);
+    void calendarRemoved(const Akonadi::CollectionCalendar::Ptr &calendar);
+
 public Q_SLOTS:
     void showWhatsNextView();
     void showListView();
@@ -165,6 +169,7 @@ private:
     QWidget *widgetForView(KOrg::BaseView *) const;
     QList<KOrg::BaseView *> mViews;
     CalendarView *const mMainView;
+    QVector<Akonadi::CollectionCalendar::Ptr> mCalendars;
 
     KOAgendaView *mAgendaView = nullptr;
     KOrg::MultiAgendaView *mAgendaSideBySideView = nullptr;

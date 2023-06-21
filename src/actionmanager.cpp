@@ -213,7 +213,7 @@ void ActionManager::createCalendarAkonadi()
 
     mCalendarView->readSettings();
 
-    connect(calendar().data(), &Akonadi::ETMCalendar::calendarChanged, mCalendarView, &CalendarView::resourcesChanged);
+    // connect(calendar().data(), &Akonadi::ETMCalendar::calendarChanged, mCalendarView, &CalendarView::resourcesChanged);
     connect(mCalendarView, &CalendarView::configChanged, this, &ActionManager::updateConfig);
 
     calendar()->setOwner(KCalendarCore::Person(CalendarSupport::KCalPrefs::instance()->fullName(), CalendarSupport::KCalPrefs::instance()->email()));

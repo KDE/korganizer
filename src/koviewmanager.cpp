@@ -9,6 +9,7 @@
 
 #include "koviewmanager.h"
 #include "actionmanager.h"
+#include "akonadicollectionview.h"
 #include "calendarview.h"
 #include "datenavigator.h"
 #include "koglobals.h"
@@ -289,6 +290,9 @@ void KOViewManager::connectView(KOrg::BaseView *view)
 
     connect(mMainView, &CalendarView::newIncidenceChanger, view, &BaseView::setIncidenceChanger);
 
+    connect(mMainView, &CalendarView::calendarAdded, view, &BaseView::calendarAdded);
+    connect(mMainView, &CalendarView::calendarRemoved, view, &BaseView::calendarRemoved);
+
     view->setIncidenceChanger(mMainView->incidenceChanger());
 }
 
@@ -342,6 +346,9 @@ void KOViewManager::addView(KOrg::BaseView *view, bool isTab)
     view->restoreConfig(group);
     if (!isTab) {
         mMainView->viewStack()->addWidget(view);
+    }
+    for (const auto &calendar : mCalendars) {
+        view->calendarAdded(calendar);
     }
 }
 
@@ -514,7 +521,6 @@ void KOViewManager::showTimeLineView()
 {
     if (!mTimelineView) {
         mTimelineView = new KOTimelineView(mMainView->viewStack());
-        mTimelineView->setCalendar(mMainView->calendar());
         mTimelineView->setIdentifier("DefaultTimelineView");
         addView(mTimelineView);
     }
