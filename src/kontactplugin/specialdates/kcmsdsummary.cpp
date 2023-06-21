@@ -148,3 +148,5 @@ void KCMSDSummary::defaults()
 }
 
 #include "kcmsdsummary.moc"
+
+#include "moc_kcmsdsummary.cpp"

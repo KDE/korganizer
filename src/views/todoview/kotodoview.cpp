@@ -217,3 +217,5 @@ CalendarSupport::CalPrinterBase::PrintType KOTodoView::printType() const
 {
     return CalendarSupport::CalPrinterBase::Todolist;
 }
+
+#include "moc_kotodoview.cpp"

@@ -2700,3 +2700,5 @@ void CalendarView::handleIncidenceCreated(const Akonadi::Item &item)
         mMessageWidget->show();
     }
 }
+
+#include "moc_calendarview.cpp"

@@ -192,3 +192,5 @@ void MonthView::showDates(const QDate &start, const QDate &end, const QDate &pre
     Q_UNUSED(end)
     Q_UNUSED(preferredMonth)
 }
+
+#include "moc_monthview.cpp"

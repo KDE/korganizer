@@ -101,3 +101,5 @@ bool KOrganizerIfaceImpl::handleCommandLine(const QStringList &args)
 {
     return mActionManager->handleCommandLine(args);
 }
+
+#include "moc_korganizerifaceimpl.cpp"

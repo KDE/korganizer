@@ -113,3 +113,5 @@ void KOEventViewerDialog::showIncidenceContext()
         }
     }
 }
+
+#include "moc_koeventviewerdialog.cpp"

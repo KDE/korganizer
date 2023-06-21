@@ -156,3 +156,5 @@ void KOJournalView::printJournal(const KCalendarCore::Journal::Ptr &journal, boo
         setStyleSheet(css);
     }
 }
+
+#include "moc_kojournalview.cpp"

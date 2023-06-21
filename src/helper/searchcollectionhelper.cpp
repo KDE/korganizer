@@ -142,3 +142,5 @@ void SearchCollectionHelper::modifyResult(KJob *job)
         qCDebug(KORGANIZER_LOG) << "modify was successful";
     }
 }
+
+#include "moc_searchcollectionhelper.cpp"

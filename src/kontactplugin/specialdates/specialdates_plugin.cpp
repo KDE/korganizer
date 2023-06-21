@@ -46,3 +46,5 @@ const KAboutData SpecialdatesPlugin::aboutData()
 }
 
 #include "specialdates_plugin.moc"
+
+#include "moc_specialdates_plugin.cpp"

@@ -442,3 +442,5 @@ void KCMDesignerFields::showWhatsThis(const QString &href)
         QWhatsThis::showText(pos, href.mid(10), widget());
     }
 }
+
+#include "moc_kcmdesignerfields.cpp"

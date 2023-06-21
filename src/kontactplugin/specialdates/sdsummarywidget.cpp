@@ -707,3 +707,5 @@ void SDSummaryWidget::dateDiff(const QDate &date, int &days, int &years) const
 }
 
 #include "sdsummarywidget.moc"
+
+#include "moc_sdsummarywidget.cpp"

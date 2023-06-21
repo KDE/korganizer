@@ -134,3 +134,5 @@ void KCMTodoSummary::defaults()
 }
 
 #include "kcmtodosummary.moc"
+
+#include "moc_kcmtodosummary.cpp"

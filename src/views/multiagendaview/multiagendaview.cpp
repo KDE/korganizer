@@ -508,3 +508,5 @@ void MultiAgendaViewConfigDialog::accept()
 }
 
 MultiAgendaViewConfigDialog::~MultiAgendaViewConfigDialog() = default;
+
+#include "moc_multiagendaview.cpp"

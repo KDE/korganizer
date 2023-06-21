@@ -188,3 +188,5 @@ bool KOEventView::usesCompletedTodoPixmap(const Akonadi::Item &aitem, const QDat
         return false;
     }
 }
+
+#include "moc_koeventview.cpp"

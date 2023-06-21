@@ -103,3 +103,5 @@ void KOWhatsNextView::setCalendar(const Akonadi::ETMCalendar::Ptr &cal)
     KOrg::BaseView::setCalendar(cal);
     mView->setCalendar(cal);
 }
+
+#include "moc_kowhatsnextview.cpp"

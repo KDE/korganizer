@@ -148,3 +148,5 @@ void KOTimelineView::setIncidenceChanger(Akonadi::IncidenceChanger *changer)
 {
     mTimeLineView->setIncidenceChanger(changer);
 }
+
+#include "moc_kotimelineview.cpp"

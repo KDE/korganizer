@@ -847,3 +847,5 @@ QPair<QDate, QDate> KODayMatrix::matrixLimits(QDate month)
 
     return qMakePair(d, d.addDays(NUMDAYS - 1));
 }
+
+#include "moc_kodaymatrix.cpp"

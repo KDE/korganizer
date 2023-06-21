@@ -890,3 +890,5 @@ void KPrefsModule::defaults()
     setWidDefaults();
     setNeedsSave(true);
 }
+
+#include "moc_kprefsdialog.cpp"

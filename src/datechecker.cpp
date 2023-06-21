@@ -72,3 +72,5 @@ void DateChecker::possiblyPastMidnight()
         mUpdateTimer->start(msecsWait);
     }
 }
+
+#include "moc_datechecker.cpp"

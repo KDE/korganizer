@@ -105,3 +105,5 @@ void KOPrefsDialogMain::toggleEmailSettings(bool on)
 }
 
 #include "koprefsdialogmain.moc"
+
+#include "moc_koprefsdialogmain.cpp"

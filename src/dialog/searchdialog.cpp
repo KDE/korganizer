@@ -276,3 +276,5 @@ void SearchDialog::slotHelpRequested()
 {
     PimCommon::Util::invokeHelp(QStringLiteral("korganizer/search-view.html"));
 }
+
+#include "moc_searchdialog.cpp"

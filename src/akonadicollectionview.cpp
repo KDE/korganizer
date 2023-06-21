@@ -838,3 +838,5 @@ void AkonadiCollectionView::onAction(const QModelIndex &index, int a)
 }
 
 #include "akonadicollectionview.moc"
+
+#include "moc_akonadicollectionview.cpp"

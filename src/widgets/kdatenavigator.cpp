@@ -309,3 +309,5 @@ bool KDateNavigator::eventFilter(QObject *o, QEvent *e)
         return false;
     }
 }
+
+#include "moc_kdatenavigator.cpp"

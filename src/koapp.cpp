@@ -131,3 +131,5 @@ void KOrganizerApp::processCalendar(const QUrl &url, bool show)
         korg->topLevelWidget()->show();
     }
 }
+
+#include "moc_koapp.cpp"

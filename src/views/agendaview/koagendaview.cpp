@@ -290,3 +290,5 @@ void KOAgendaView::setDateRange(const QDateTime &start, const QDateTime &end, co
 {
     d->mAgendaView->setDateRange(start, end);
 }
+
+#include "moc_koagendaview.cpp"

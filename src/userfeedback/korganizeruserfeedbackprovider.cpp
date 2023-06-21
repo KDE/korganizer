@@ -35,3 +35,5 @@ KOrganizerUserFeedbackProvider::KOrganizerUserFeedbackProvider(QObject *parent)
 }
 
 KOrganizerUserFeedbackProvider::~KOrganizerUserFeedbackProvider() = default;
+
+#include "moc_korganizeruserfeedbackprovider.cpp"

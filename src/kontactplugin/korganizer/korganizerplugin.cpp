@@ -216,3 +216,5 @@ void KOrganizerPlugin::processDropEvent(QDropEvent *event)
 }
 
 #include "korganizerplugin.moc"
+
+#include "moc_korganizerplugin.cpp"

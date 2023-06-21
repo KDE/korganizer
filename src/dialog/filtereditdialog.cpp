@@ -351,3 +351,5 @@ void FilterEdit::updateCategorySelection()
     mCatList->addItems(categories);
     mCurrent->setCategoryList(categories);
 }
+
+#include "moc_filtereditdialog.cpp"

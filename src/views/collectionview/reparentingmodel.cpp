@@ -849,3 +849,5 @@ int ReparentingModel::columnCount(const QModelIndex & /* parent */) const
 {
     return 1;
 }
+
+#include "moc_reparentingmodel.cpp"

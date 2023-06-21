@@ -110,3 +110,5 @@ EventViews::PrefsPtr KOPrefs::eventViewsPreferences() const
 {
     return mEventViewsPrefs;
 }
+
+#include "moc_koprefs.cpp"

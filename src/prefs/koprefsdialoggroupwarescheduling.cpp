@@ -98,3 +98,5 @@ void KOPrefsDialogGroupwareScheduling::usrWriteConfig()
 }
 
 #include "koprefsdialoggroupwarescheduling.moc"
+
+#include "moc_koprefsdialoggroupwarescheduling.cpp"

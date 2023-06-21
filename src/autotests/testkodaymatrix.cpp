@@ -32,3 +32,5 @@ void KODayMatrixTest::testMatrixLimits()
         QVERIFY(range == iterator.value());
     }
 }
+
+#include "moc_testkodaymatrix.cpp"

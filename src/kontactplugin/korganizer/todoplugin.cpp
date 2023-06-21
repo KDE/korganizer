@@ -215,3 +215,5 @@ void TodoPlugin::processDropEvent(QDropEvent *event)
 }
 
 #include "todoplugin.moc"
+
+#include "moc_todoplugin.cpp"

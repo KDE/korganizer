@@ -145,3 +145,5 @@ void KCMApptSummary::defaults()
 }
 
 #include "kcmapptsummary.moc"
+
+#include "moc_kcmapptsummary.cpp"

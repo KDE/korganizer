@@ -286,3 +286,5 @@ void KOrganizer::setTitle()
 
     setCaption(title, false);
 }
+
+#include "moc_korganizer.cpp"

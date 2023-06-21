@@ -175,3 +175,5 @@ void KODialogManager::slotHelp()
 {
     PimCommon::Util::invokeHelp(QStringLiteral("korganizer/categories-view.html"));
 }
+
+#include "moc_kodialogmanager.cpp"

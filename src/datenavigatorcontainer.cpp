@@ -386,3 +386,5 @@ KDateNavigator *DateNavigatorContainer::firstNavigatorForDate(const QDate &date)
 
     return navigator;
 }
+
+#include "moc_datenavigatorcontainer.cpp"

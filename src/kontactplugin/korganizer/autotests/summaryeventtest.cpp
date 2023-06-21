@@ -179,3 +179,5 @@ void SummaryEventTester::test_eventsForRange()
 
     qDeleteAll(events);
 }
+
+#include "moc_summaryeventtest.cpp"

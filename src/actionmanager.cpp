@@ -1723,3 +1723,5 @@ void ActionManager::openEventEditor(const QString &summary,
     Q_UNUSED(attachmentIsInline)
     qCWarning(KORGANIZER_LOG) << "Not implemented in korg-desktop";
 }
+
+#include "moc_actionmanager.cpp"

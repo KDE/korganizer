@@ -148,3 +148,5 @@ void CollectionGeneralPage::save(Collection &collection)
         annotationsAttribute->setAnnotations(annotations);
     }
 }
+
+#include "moc_collectiongeneralpage.cpp"

@@ -289,3 +289,5 @@ void KOPrefsDialogPlugins::selectionChanged()
 }
 
 #include "koprefsdialogplugins.moc"
+
+#include "moc_koprefsdialogplugins.cpp"

@@ -60,3 +60,5 @@ int KOrganizerUniqueAppHandler::activate(const QStringList &args, const QString 
     plugin()->core()->selectPlugin(QStringLiteral("kontact_korganizerplugin"));
     return 0;
 }
+
+#include "moc_korg_uniqueapp.cpp"

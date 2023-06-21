@@ -20,3 +20,5 @@ KOrganizerPluginInterface *KOrganizerPluginInterface::self()
     static KOrganizerPluginInterface s_self;
     return &s_self;
 }
+
+#include "moc_korganizerplugininterface.cpp"

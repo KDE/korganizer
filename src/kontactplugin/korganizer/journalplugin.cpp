@@ -102,3 +102,5 @@ bool JournalPlugin::isRunningStandalone() const
 }
 
 #include "journalplugin.moc"
+
+#include "moc_journalplugin.cpp"

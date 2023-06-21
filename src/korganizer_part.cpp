@@ -171,3 +171,5 @@ void KOrganizerPart::setTitle()
 }
 
 #include "korganizer_part.moc"
+
+#include "moc_korganizer_part.cpp"

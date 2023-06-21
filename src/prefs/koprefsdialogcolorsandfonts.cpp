@@ -272,3 +272,5 @@ void KOPrefsDialogColorsAndFonts::updateResourceColor()
 }
 
 #include "koprefsdialogcolorsandfonts.moc"
+
+#include "moc_koprefsdialogcolorsandfonts.cpp"

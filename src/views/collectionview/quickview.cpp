@@ -141,3 +141,5 @@ void Quickview::writeConfig()
 
     group.sync();
 }
+
+#include "moc_quickview.cpp"

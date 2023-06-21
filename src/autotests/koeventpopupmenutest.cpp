@@ -255,3 +255,5 @@ void KoEventPopupMenuTest::defaultMenuTodoVisible()
 }
 
 QTEST_MAIN(KoEventPopupMenuTest)
+
+#include "moc_koeventpopupmenutest.cpp"

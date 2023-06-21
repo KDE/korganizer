@@ -190,3 +190,5 @@ QSize StyledCalendarDelegate::sizeHint(const QStyleOptionViewItem &option, const
     size.setHeight(qApp->style()->pixelMetric(QStyle::PM_SmallIconSize) + 4);
     return size;
 }
+
+#include "moc_calendardelegate.cpp"

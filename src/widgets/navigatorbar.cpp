@@ -205,3 +205,5 @@ QToolButton *NavigatorBar::createNavigationButton(const QString &icon, const QSt
 
     return button;
 }
+
+#include "moc_navigatorbar.cpp"

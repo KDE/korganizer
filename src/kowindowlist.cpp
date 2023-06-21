@@ -64,3 +64,5 @@ KOrg::MainWindow *KOWindowList::defaultInstance()
 {
     return mDefaultWindow;
 }
+
+#include "moc_kowindowlist.cpp"
