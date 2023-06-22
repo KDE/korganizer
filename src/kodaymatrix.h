@@ -10,7 +10,7 @@
 
 #pragma once
 
-#include <Akonadi/ETMCalendar>
+#include <Akonadi/CollectionCalendar>
 
 #include <KCalendarCore/IncidenceBase> //for KCalendarCore::DateList typedef
 
@@ -50,7 +50,7 @@
  *
  *  @author Eitzenberger Thomas
  */
-class KODayMatrix : public QFrame, public Akonadi::ETMCalendar::CalendarObserver
+class KODayMatrix : public QFrame, public KCalendarCore::Calendar::CalendarObserver
 {
     Q_OBJECT
 public:
@@ -74,7 +74,8 @@ public:
       Associate a calendar with this day matrix. If there is a calendar, the
       day matrix will accept drops and days with events will be highlighted.
     */
-    void setCalendar(const Akonadi::ETMCalendar::Ptr &);
+    void addCalendar(const Akonadi::CollectionCalendar::Ptr &calendar);
+    void removeCalendar(const Akonadi::CollectionCalendar::Ptr &calendar);
 
     /** updates the day matrix to start with the given date. Does all the
      *  necessary checks for holidays or events on a day and stores them
@@ -264,7 +265,7 @@ private:
     static const int NUMDAYS;
 
     /** calendar instance to be queried for holidays, events, ... */
-    Akonadi::ETMCalendar::Ptr mCalendar;
+    QVector<Akonadi::CollectionCalendar::Ptr> mCalendars;
 
     /** starting date of the matrix */
     QDate mStartDate;

@@ -2536,6 +2536,7 @@ void CalendarView::collectionSelected(const Akonadi::Collection &collection)
 
     auto newCalendar = Akonadi::CollectionCalendar::Ptr::create(mCalendar->entityTreeModel(), collection);
     mCalendars.push_back(newCalendar);
+    mDateNavigatorContainer->addCalendar(newCalendar);
     Q_EMIT calendarAdded(newCalendar);
 }
 
@@ -2546,6 +2547,7 @@ void CalendarView::collectionDeselected(const Akonadi::Collection &collection)
         return;
     }
 
+    mDateNavigatorContainer->removeCalendar(*calendar);
     Q_EMIT calendarRemoved(*calendar);
     mCalendars.erase(calendar);
 }
