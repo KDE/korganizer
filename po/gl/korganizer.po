@@ -296,7 +296,7 @@ msgid ""
 "<qt>This will hide the menu bar completely. You can show it again by typing "
 "%1.</qt>"
 msgstr ""
-"<qt>Isto agocha completamente a barra do menú. Pódese mostrar de novo "
+"<qt>Isto agocha completamente a barra do menú. Pódese amosar de novo "
 "escribindo %1.</qt>"
 
 #: actionmanager.cpp:132
@@ -977,7 +977,7 @@ msgstr ""
 #: actionmanager.cpp:613 actionmanager.cpp:1302 actionmanager.cpp:1338
 #, kde-format
 msgid "&Show"
-msgstr "&Mostrar"
+msgstr "&Amosar"
 
 #: actionmanager.cpp:617 actionmanager.cpp:1305 actionmanager.cpp:1339
 #, kde-format
@@ -1047,22 +1047,22 @@ msgstr "C&aderno de enderezos"
 #: actionmanager.cpp:711
 #, kde-format
 msgid "Show Date Navigator"
-msgstr "Mostrar o navegador de datas"
+msgstr "Amosar o navegador de datas"
 
 #: actionmanager.cpp:715
 #, kde-format
 msgid "Show To-do View"
-msgstr "Mostrar o visor de tarefas"
+msgstr "Amosar o visor de tarefas"
 
 #: actionmanager.cpp:719
 #, kde-format
 msgid "Show Item Viewer"
-msgstr "Mostrar o visor de elementos"
+msgstr "Amosar o visor de elementos"
 
 #: actionmanager.cpp:735
 #, kde-format
 msgid "Show Calendar Manager"
-msgstr "Mostrar o xestor de calendarios"
+msgstr "Amosar o xestor de calendarios"
 
 #: actionmanager.cpp:748
 #, kde-format
@@ -1152,7 +1152,7 @@ msgstr "Non se puido iniciar o módulo de control do formato de data e hora."
 #: actionmanager.cpp:1263
 #, kde-format
 msgid "&Show Event"
-msgstr "&Mostrar o evento"
+msgstr "&Amosar o evento"
 
 #: actionmanager.cpp:1266
 #, kde-format
@@ -1167,7 +1167,7 @@ msgstr "&Eliminar o evento…"
 #: actionmanager.cpp:1277
 #, kde-format
 msgid "&Show To-do"
-msgstr "&Mostrar a tarefa"
+msgstr "&Amosar a tarefa"
 
 #: actionmanager.cpp:1280 kontactplugin/korganizer/todosummarywidget.cpp:321
 #, kde-format
@@ -1246,7 +1246,7 @@ msgid ""
 "p>"
 msgstr ""
 "<p>Gustaríalle mesturar o elemento de calendario cun calendario existente, "
-"ou empregalo para crear un novo calendario?</p> <p>Se opta por mesturar, "
+"ou usalo para crear un novo calendario?</p> <p>Se opta por mesturar, "
 "daráselle a oportunidade de escoller o calendario de destino.</p> <p>Se "
 "escolle engadir, crearase automaticamente un novo calendario.</p>"
 
@@ -1771,7 +1771,7 @@ msgid ""
 msgstr ""
 "Creou unha incidencia nun calendario que actualmente está filtrado.\n"
 "Pódeo activar mediante o xestor de calendarios (Configuración->Barra lateral-"
-">Mostrar o xestor de calendarios)"
+">Amosar o xestor de calendarios)"
 
 #: collectiongeneralpage.cpp:37
 #, kde-format
@@ -1835,8 +1835,7 @@ msgstr "Usar unha icona personalizada"
 #, kde-format
 msgctxt "@info:whatsthis"
 msgid "Check this box if you want to set a custom icon for this folder."
-msgstr ""
-"Marque isto se quere empregar unha icona personalizada para este cartafol."
+msgstr "Marque isto se quere usar unha icona personalizada para este cartafol."
 
 #. i18n: ectx: Menu (file)
 #: data/korganizer_part.rc:4 data/korganizerui.rc:4
@@ -1944,7 +1943,7 @@ msgid ""
 "shows a week. The number in the left column is the number of the week in the "
 "year. Press it to select the whole week.</p></qt>"
 msgstr ""
-"<qt><p>Escolla as datas que quere mostrar na vista principal de KOrganizer. "
+"<qt><p>Escolla as datas que quere amosar na vista principal de KOrganizer. "
 "Manteña premido o botón do rato para seleccionar máis dun día.</p><p>Prema "
 "os botóns de enriba para navegar aos vindeiros e previos meses ou anos.</"
 "p><p>Cada liña mostra unha semana. O número na columna da esquerda é o "
@@ -2001,7 +2000,7 @@ msgstr "Editar…"
 #: dialog/koeventviewerdialog.cpp:41
 #, kde-format
 msgid "Show in Context"
-msgstr "Mostrar en contexto"
+msgstr "Amosar en contexto"
 
 #: dialog/searchdialog.cpp:39
 #, fuzzy, kde-format
@@ -2175,8 +2174,8 @@ msgstr ""
 "i>»; así que se quere que o trebello aluda a certa entrada de nome «<i>X-"
 "Entrada</i>», poña o <i>nome</i> do trebello como «<i>X_Entrada</i>».</p> "
 "<p><b>Importante:</b> O trebello edita os campos personalizados co nome de "
-"aplicación %2. Para cambiar o nome da aplicación que estea a editar, "
-"estabeleza o nome do trebello en Qt Designer.</p></qt>"
+"aplicación %2. Para cambiar o nome da aplicación que estea a editar, defina "
+"o nome do trebello en Qt Designer.</p></qt>"
 
 #: kcmdesignerfields.cpp:359 kcmdesignerfields.cpp:361
 #, kde-format
@@ -2405,13 +2404,13 @@ msgstr "Configuración do resumo dos eventos"
 #: kontactplugin/korganizer/apptsummaryconfig_base.ui:14
 #, kde-format
 msgid "Show Upcoming Events Starting"
-msgstr "Mostrar os eventos que comecen"
+msgstr "Amosar os eventos que comecen"
 
 #. i18n: ectx: property (toolTip), widget (QRadioButton, mDateTodayButton)
 #: kontactplugin/korganizer/apptsummaryconfig_base.ui:20
 #, kde-format
 msgid "Show events for today only"
-msgstr "Mostrar só os eventos de hoxe"
+msgstr "Amosar só os eventos de hoxe"
 
 #. i18n: ectx: property (whatsThis), widget (QRadioButton, mDateTodayButton)
 #: kontactplugin/korganizer/apptsummaryconfig_base.ui:23
@@ -2432,7 +2431,7 @@ msgstr "Só &hoxe"
 #: kontactplugin/korganizer/apptsummaryconfig_base.ui:36
 #, kde-format
 msgid "Show events starting within the next month"
-msgstr "Mostrar os eventos que se inicien no vindeiro mes"
+msgstr "Amosar os eventos que se inicien no vindeiro mes"
 
 #. i18n: ectx: property (whatsThis), widget (QRadioButton, mDateMonthButton)
 #: kontactplugin/korganizer/apptsummaryconfig_base.ui:39
@@ -2456,7 +2455,7 @@ msgstr "O próxi&mo mes (31 días)"
 #: kontactplugin/korganizer/apptsummaryconfig_base.ui:57
 #, kde-format
 msgid "Select the days for showing upcoming events"
-msgstr "Escoller os días para os que se mostren os eventos vindeiros"
+msgstr "Escoller os días para os que se amosen os eventos vindeiros"
 
 #. i18n: ectx: property (whatsThis), widget (QRadioButton, mDateRangeButton)
 #: kontactplugin/korganizer/apptsummaryconfig_base.ui:60
@@ -2480,7 +2479,7 @@ msgstr "Nos pró&ximos:"
 #: kontactplugin/korganizer/apptsummaryconfig_base.ui:76
 #, kde-format
 msgid "Set the number of days to show upcoming events"
-msgstr "Indicar o número de días para mostrar os vindeiros eventos"
+msgstr "Indicar o número de días para amosar os vindeiros eventos"
 
 #. i18n: ectx: property (whatsThis), widget (QSpinBox, mCustomDays)
 #: kontactplugin/korganizer/apptsummaryconfig_base.ui:79
@@ -2489,7 +2488,7 @@ msgid ""
 "Use this spinbox to set the number of days to show upcoming events up to 1 "
 "year in the future."
 msgstr ""
-"Empregue este selector para indicar o número de días para mostrar os eventos "
+"Use este selector para indicar o número de días para amosar os eventos "
 "vindeiros ata un ano no futuro."
 
 #. i18n: ectx: property (specialValueText), widget (QSpinBox, mCustomDays)
@@ -2513,15 +2512,14 @@ msgstr " días"
 #: kontactplugin/korganizer/apptsummaryconfig_base.ui:122
 #, kde-format
 msgid "Show These Upcoming Events From Your Calendar"
-msgstr "Mostrar estes vindeiros eventos do calendario"
+msgstr "Amosar estes vindeiros eventos do calendario"
 
 #. i18n: ectx: property (toolTip), widget (QCheckBox, mShowBirthdaysFromCal)
 #: kontactplugin/korganizer/apptsummaryconfig_base.ui:128
 #, kde-format
 msgid "Show birthdays from your calendar when also using the Birthday resource"
 msgstr ""
-"Mostrar os aniversarios do calendario só cando se empregue o recurso de "
-"Aniversario"
+"Amosar os aniversarios do calendario só cando se use o recurso de Aniversario"
 
 #. i18n: ectx: property (whatsThis), widget (QCheckBox, mShowBirthdaysFromCal)
 #: kontactplugin/korganizer/apptsummaryconfig_base.ui:131
@@ -2532,8 +2530,8 @@ msgid ""
 "resource in your calendar."
 msgstr ""
 "Active esta opción para incluír aniversarios do calendario nos resumos de "
-"vindeiros eventos. Esta opción só está dispoñíbel se está a empregar o "
-"recurso Aniversarios no seu calendario."
+"vindeiros eventos. Esta opción só está dispoñíbel se está a usar o recurso "
+"Aniversarios no seu calendario."
 
 #. i18n: ectx: property (text), widget (QCheckBox, mShowBirthdaysFromCal)
 #. i18n: ectx: property (text), widget (QCheckBox, mShowBirthdaysFromCalBox)
@@ -2541,7 +2539,7 @@ msgstr ""
 #: kontactplugin/specialdates/sdsummaryconfig_base.ui:142
 #, kde-format
 msgid "Show &birthdays"
-msgstr "Mostrar os ani&versarios"
+msgstr "Amosar os ani&versarios"
 
 #. i18n: ectx: property (toolTip), widget (QCheckBox, mShowAnniversariesFromCal)
 #: kontactplugin/korganizer/apptsummaryconfig_base.ui:141
@@ -2549,7 +2547,7 @@ msgstr "Mostrar os ani&versarios"
 msgid ""
 "Shows anniversaries from your calendar when using the Birthdays resource"
 msgstr ""
-"Mostra os aniversarios do calendario cando emprega o recurso de Aniversarios"
+"Amosa os aniversarios do calendario cando usa o recurso de Aniversarios"
 
 #. i18n: ectx: property (whatsThis), widget (QCheckBox, mShowAnniversariesFromCal)
 #: kontactplugin/korganizer/apptsummaryconfig_base.ui:144
@@ -2560,7 +2558,7 @@ msgid ""
 "Birthdays resource in your calendar."
 msgstr ""
 "Active esta opción para incluír os aniversarios do seu calendario no resumo "
-"de vindeiros eventos. Esta opción só está dispoñíbel cando emprega o recurso "
+"de vindeiros eventos. Esta opción só está dispoñíbel cando usa o recurso "
 "Aniversario no seu calendario."
 
 #. i18n: ectx: property (text), widget (QCheckBox, mShowAnniversariesFromCal)
@@ -2585,7 +2583,7 @@ msgstr "Configuración do traballo en grupo"
 #: kontactplugin/specialdates/sdsummaryconfig_base.ui:250
 #, kde-format
 msgid "Show events belonging to my calendars only"
-msgstr "Mostrar só os eventos que pertenzan aos meus calendarios"
+msgstr "Amosar só os eventos que pertenzan aos meus calendarios"
 
 #. i18n: ectx: property (whatsThis), widget (QCheckBox, mShowMineOnly)
 #: kontactplugin/korganizer/apptsummaryconfig_base.ui:166
@@ -2595,7 +2593,7 @@ msgid ""
 "Check this box if you want the summary to show events belonging to your "
 "calendars only."
 msgstr ""
-"Marque esta opción se quere que o resumo mostre só os eventos que pertenzan "
+"Marque esta opción se quere que o resumo amose só os eventos que pertenzan "
 "aos seus calendarios."
 
 #. i18n: ectx: property (text), widget (QCheckBox, mShowMineOnly)
@@ -2603,7 +2601,7 @@ msgstr ""
 #: kontactplugin/specialdates/sdsummaryconfig_base.ui:256
 #, kde-format
 msgid "Show &my events only"
-msgstr "Mostrar só os &meus eventos"
+msgstr "Amosar só os &meus eventos"
 
 #: kontactplugin/korganizer/apptsummarywidget.cpp:46
 #, kde-format
@@ -2803,13 +2801,13 @@ msgstr "Configuración do resumo das tarefas"
 #: kontactplugin/korganizer/todosummaryconfig_base.ui:22
 #, kde-format
 msgid "Show To-dos Due"
-msgstr "Mostrar as tarefas vencidas"
+msgstr "Amosar as tarefas vencidas"
 
 #. i18n: ectx: property (toolTip), widget (QRadioButton, mDateTodayButton)
 #: kontactplugin/korganizer/todosummaryconfig_base.ui:28
 #, kde-format
 msgid "Show To-dos due today only"
-msgstr "Mostrar só as tarefas vencidas hoxe"
+msgstr "Amosar só as tarefas vencidas hoxe"
 
 #. i18n: ectx: property (whatsThis), widget (QRadioButton, mDateTodayButton)
 #: kontactplugin/korganizer/todosummaryconfig_base.ui:31
@@ -2821,7 +2819,7 @@ msgstr "Marque esta opción se quere ver só as tarefas que caduquen hoxe."
 #: kontactplugin/korganizer/todosummaryconfig_base.ui:44
 #, kde-format
 msgid "Show To-dos due within the next month"
-msgstr "Mostrar as tarefas que venzan no vindeiro mes"
+msgstr "Amosar as tarefas que venzan no vindeiro mes"
 
 #. i18n: ectx: property (whatsThis), widget (QRadioButton, mDateMonthButton)
 #: kontactplugin/korganizer/todosummaryconfig_base.ui:47
@@ -2837,7 +2835,7 @@ msgstr ""
 #: kontactplugin/korganizer/todosummaryconfig_base.ui:65
 #, kde-format
 msgid "Select the days for showing pending To-dos"
-msgstr "Seleccionar os días para os que se mostren as tarefas pendentes"
+msgstr "Seleccionar os días para os que se amosen as tarefas pendentes"
 
 #. i18n: ectx: property (whatsThis), widget (QRadioButton, mDateRangeButton)
 #: kontactplugin/korganizer/todosummaryconfig_base.ui:71
@@ -2853,7 +2851,7 @@ msgstr ""
 #: kontactplugin/korganizer/todosummaryconfig_base.ui:87
 #, kde-format
 msgid "Set the number of days to show pending To-dos"
-msgstr "Indicar o número de días para mostrar as tarefas pendentes"
+msgstr "Indicar o número de días para amosar as tarefas pendentes"
 
 #. i18n: ectx: property (whatsThis), widget (QSpinBox, mCustomDays)
 #: kontactplugin/korganizer/todosummaryconfig_base.ui:90
@@ -2862,7 +2860,7 @@ msgid ""
 "Use this spinbox to set the number of days to show pending To-dos up to 1 "
 "year in the future."
 msgstr ""
-"Empregue este selector para indicar o número de días para mostrar as tarefas "
+"Use este selector para indicar o número de días para amosar as tarefas "
 "pendentes ata un ano no futuro."
 
 #. i18n: ectx: property (title), widget (QGroupBox, mHideGroup)
@@ -2979,7 +2977,7 @@ msgstr "&Vencidas (non rematadas e xa pasou a data límite)"
 #: kontactplugin/korganizer/todosummaryconfig_base.ui:222
 #, kde-format
 msgid "Show To-dos belonging to my calendars only"
-msgstr "Mostrar só as tarefas que pertenzan aos meus calendarios"
+msgstr "Amosar só as tarefas que pertenzan aos meus calendarios"
 
 #. i18n: ectx: property (whatsThis), widget (QCheckBox, mShowMineOnly)
 #: kontactplugin/korganizer/todosummaryconfig_base.ui:225
@@ -2988,14 +2986,14 @@ msgid ""
 "Check this box if you want the summary to show To-dos belonging to your "
 "calendars only."
 msgstr ""
-"Marque esta opción se quere que o resumo mostre só as tarefas que pertenzan "
+"Marque esta opción se quere que o resumo amose só as tarefas que pertenzan "
 "aos seus calendarios."
 
 #. i18n: ectx: property (text), widget (QCheckBox, mShowMineOnly)
 #: kontactplugin/korganizer/todosummaryconfig_base.ui:228
 #, kde-format
 msgid "Show &my To-dos only"
-msgstr "Mostrar só as &miñas tarefas"
+msgstr "Amosar só as &miñas tarefas"
 
 #: kontactplugin/korganizer/todosummarywidget.cpp:42
 #, kde-format
@@ -3101,13 +3099,13 @@ msgstr "Configuración do resumo de datas especiais"
 #: kontactplugin/specialdates/sdsummaryconfig_base.ui:22
 #, kde-format
 msgid "Show Special Dates Starting"
-msgstr "Mostrar as datas especiais a partir de"
+msgstr "Amosar as datas especiais a partir de"
 
 #. i18n: ectx: property (toolTip), widget (QRadioButton, mDateTodayButton)
 #: kontactplugin/specialdates/sdsummaryconfig_base.ui:28
 #, kde-format
 msgid "Show special occasions for today only"
-msgstr "Mostrar as datas especiais do calendario só para hoxe"
+msgstr "Amosar as datas especiais do calendario só para hoxe"
 
 #. i18n: ectx: property (whatsThis), widget (QRadioButton, mDateTodayButton)
 #: kontactplugin/specialdates/sdsummaryconfig_base.ui:31
@@ -3123,7 +3121,7 @@ msgstr ""
 #: kontactplugin/specialdates/sdsummaryconfig_base.ui:44
 #, kde-format
 msgid "Show special occasions starting within the next month"
-msgstr "Mostrar as ocasións especiais que se inicien no vindeiro mes"
+msgstr "Amosar as ocasións especiais que se inicien no vindeiro mes"
 
 #. i18n: ectx: property (whatsThis), widget (QRadioButton, mDateMonthButton)
 #: kontactplugin/specialdates/sdsummaryconfig_base.ui:47
@@ -3140,7 +3138,7 @@ msgstr ""
 #, kde-format
 msgid "Select the days for showing upcoming special occasions"
 msgstr ""
-"Seleccione os días para os que se mostren as vindeiras ocasións especiais"
+"Seleccione os días para os que se amosen as vindeiras ocasións especiais"
 
 #. i18n: ectx: property (whatsThis), widget (QRadioButton, mDateRangeButton)
 #: kontactplugin/specialdates/sdsummaryconfig_base.ui:68
@@ -3156,7 +3154,7 @@ msgstr ""
 #: kontactplugin/specialdates/sdsummaryconfig_base.ui:84
 #, kde-format
 msgid "Set the number of days to show upcoming special occasions"
-msgstr "Indique o número de días para mostrar as vindeiras ocasións especiais"
+msgstr "Indique o número de días para amosar as vindeiras ocasións especiais"
 
 #. i18n: ectx: property (whatsThis), widget (QSpinBox, mCustomDays)
 #: kontactplugin/specialdates/sdsummaryconfig_base.ui:87
@@ -3165,20 +3163,20 @@ msgid ""
 "Use this spinbox to set the number of days to show upcoming special "
 "occasions up to one year in the future."
 msgstr ""
-"Empregue este selector para indicar o número de días para mostrar as "
-"vindeiras ocasións especiais ata un ano no futuro."
+"Use este selector para indicar o número de días para amosar as vindeiras "
+"ocasións especiais ata un ano no futuro."
 
 #. i18n: ectx: property (title), widget (QGroupBox, mShowFromCalGroup)
 #: kontactplugin/specialdates/sdsummaryconfig_base.ui:130
 #, kde-format
 msgid "Show These Special Dates From Your Calendar"
-msgstr "Mostrar estas datas especiais do calendario"
+msgstr "Amosar estas datas especiais do calendario"
 
 #. i18n: ectx: property (toolTip), widget (QCheckBox, mShowBirthdaysFromCalBox)
 #: kontactplugin/specialdates/sdsummaryconfig_base.ui:136
 #, kde-format
 msgid "Show birthdays from your calendar"
-msgstr "Mostrar os aniversario do calendario"
+msgstr "Amosar os aniversario do calendario"
 
 #. i18n: ectx: property (whatsThis), widget (QCheckBox, mShowBirthdaysFromCalBox)
 #: kontactplugin/specialdates/sdsummaryconfig_base.ui:139
@@ -3200,7 +3198,7 @@ msgstr ""
 #: kontactplugin/specialdates/sdsummaryconfig_base.ui:152
 #, kde-format
 msgid "Show anniversaries from your calendar"
-msgstr "Mostrar os aniversarios do calendario"
+msgstr "Amosar os aniversarios do calendario"
 
 #. i18n: ectx: property (whatsThis), widget (QCheckBox, mShowAnniversariesFromCalBox)
 #: kontactplugin/specialdates/sdsummaryconfig_base.ui:155
@@ -3222,7 +3220,7 @@ msgstr ""
 #: kontactplugin/specialdates/sdsummaryconfig_base.ui:168
 #, kde-format
 msgid "Show holidays from your calendar"
-msgstr "Mostrar os festivos do calendario"
+msgstr "Amosar os festivos do calendario"
 
 #. i18n: ectx: property (whatsThis), widget (QCheckBox, mShowHolidaysFromCalBox)
 #: kontactplugin/specialdates/sdsummaryconfig_base.ui:171
@@ -3244,13 +3242,13 @@ msgstr ""
 #: kontactplugin/specialdates/sdsummaryconfig_base.ui:174
 #, kde-format
 msgid "Show &holidays"
-msgstr "Mostrar as &vacacións"
+msgstr "Amosar as &vacacións"
 
 #. i18n: ectx: property (toolTip), widget (QCheckBox, mShowSpecialsFromCalBox)
 #: kontactplugin/specialdates/sdsummaryconfig_base.ui:184
 #, kde-format
 msgid "Show special occasions from your calendar"
-msgstr "Mostrar as ocasións especiais do calendario"
+msgstr "Amosar as ocasións especiais do calendario"
 
 #. i18n: ectx: property (whatsThis), widget (QCheckBox, mShowSpecialsFromCalBox)
 #: kontactplugin/specialdates/sdsummaryconfig_base.ui:187
@@ -3269,19 +3267,19 @@ msgstr ""
 #: kontactplugin/specialdates/sdsummaryconfig_base.ui:190
 #, kde-format
 msgid "Show s&pecial occasions"
-msgstr "Mostrar as ocasións es&peciais"
+msgstr "Amosar as ocasións es&peciais"
 
 #. i18n: ectx: property (title), widget (QGroupBox, mShowFromKABButtonGroup)
 #: kontactplugin/specialdates/sdsummaryconfig_base.ui:203
 #, kde-format
 msgid "Show These Special Dates From Your Contact List"
-msgstr "Mostrar estas datas especiais da lista de contactos"
+msgstr "Amosar estas datas especiais da lista de contactos"
 
 #. i18n: ectx: property (toolTip), widget (QCheckBox, mShowBirthdaysFromKABBox)
 #: kontactplugin/specialdates/sdsummaryconfig_base.ui:209
 #, kde-format
 msgid "Show birthdays from your address book"
-msgstr "Mostrar os aniversario do caderno de enderezos"
+msgstr "Amosar os aniversario do caderno de enderezos"
 
 #. i18n: ectx: property (whatsThis), widget (QCheckBox, mShowBirthdaysFromKABBox)
 #: kontactplugin/specialdates/sdsummaryconfig_base.ui:212
@@ -3303,7 +3301,7 @@ msgstr "M&ostrar os aniversario"
 #: kontactplugin/specialdates/sdsummaryconfig_base.ui:225
 #, kde-format
 msgid "Show anniversaries from your address book"
-msgstr "Mostrar os aniversarios do caderno de enderezos"
+msgstr "Amosar os aniversarios do caderno de enderezos"
 
 #. i18n: ectx: property (whatsThis), widget (QCheckBox, mShowAnniversariesFromKABBox)
 #: kontactplugin/specialdates/sdsummaryconfig_base.ui:228
@@ -3319,7 +3317,7 @@ msgstr ""
 #: kontactplugin/specialdates/sdsummaryconfig_base.ui:231
 #, kde-format
 msgid "Show anni&versaries"
-msgstr "Mostrar os ani&versarios"
+msgstr "Amosar os ani&versarios"
 
 #: kontactplugin/specialdates/sdsummarywidget.cpp:97
 #, kde-format
@@ -3485,7 +3483,7 @@ msgid ""
 "Please properly configure at least 1 work day in the Time and Date "
 "preferences."
 msgstr ""
-"Non se pode mostrar a semana laboral dado que non se configuraron os días en "
+"Non se pode amosar a semana laboral dado que non se configuraron os días en "
 "que se traballa. Configure axeitadamente cando menos un día laboral nas "
 "preferencias de hora e data."
 
@@ -3548,8 +3546,8 @@ msgctxt "@info:whatsthis"
 msgid ""
 "Choose here the color of the calendar selected using the combo box above."
 msgstr ""
-"Escolla aquí a cor do calendario seleccionado empregando a caixa de "
-"selección de enriba."
+"Escolla aquí a cor do calendario seleccionado usando a caixa de selección de "
+"enriba."
 
 #: prefs/koprefsdialogcolorsandfonts.cpp:166
 #, kde-format
@@ -3611,13 +3609,13 @@ msgstr "Posición"
 #, kde-format
 msgctxt "@option:check"
 msgid "Show at the top of the agenda views"
-msgstr "Mostrar na parte superior das vistas de axenda"
+msgstr "Amosar na parte superior das vistas de axenda"
 
 #: prefs/koprefsdialogplugins.cpp:99
 #, kde-format
 msgctxt "@option:check"
 msgid "Show at the bottom of the agenda views"
-msgstr "Mostrar no fondo das vistas de axenda"
+msgstr "Amosar no fondo das vistas de axenda"
 
 #: prefs/koprefsdialogplugins.cpp:133
 #, kde-format
@@ -3925,7 +3923,7 @@ msgstr ""
 #: settings/korganizer.kcfg:29
 #, kde-format
 msgid "Be asked which calendar to use"
-msgstr "Preguntar que calendario empregar"
+msgstr "Preguntar que calendario usar"
 
 #. i18n: ectx: whatsthis, entry (Destination), group (Save Settings)
 #: settings/korganizer.kcfg:30
@@ -3937,7 +3935,7 @@ msgid ""
 "Kolab server or have to manage multiple accounts using Kontact as a KDE "
 "Kolab client. "
 msgstr ""
-"Escolla esta opción para seleccionar o calendario a empregar para gravar o "
+"Escolla esta opción para seleccionar o calendario a usar para gravar o "
 "elemento cada vez que cree un novo evento, tarefa ou entrada no diario. Esta "
 "escolla recoméndase se pretende usar a funcionalidade dos cartafoles "
 "compartidos do servidor Kolab ou ten que xestionar varias contas usando "
@@ -3969,7 +3967,7 @@ msgid ""
 "that you use for events, as it will be displayed at the top."
 msgstr ""
 "Insira a hora de comezo para os eventos aquí. Esta hora debería ser a máis "
-"cedo que use para os eventos, xa que se mostrará na parte superior."
+"cedo que use para os eventos, xa que se amosará na parte superior."
 
 #. i18n: ectx: label, entry (Holidays), group (Time &amp; Date)
 #: settings/korganizer.kcfg:50
@@ -3984,8 +3982,8 @@ msgid ""
 "Select which regions you want to use the holidays here. Defined holidays are "
 "shown as non-working days in the date navigator, the agenda view, etc."
 msgstr ""
-"Seleccione as rexións que queira empregar para determinar os días festivos. "
-"Os días festivos definidos móstranse como días nos que non se traballa no "
+"Seleccione as rexións que queira usar para determinar os días festivos. Os "
+"días festivos definidos amósanse como días nos que non se traballa no "
 "navegador de datas, na vista da axenda, etc."
 
 #. i18n: ectx: label, entry (WeekStartDay), group (Time &amp; Date)
@@ -4084,7 +4082,7 @@ msgstr ""
 #: settings/korganizer.kcfg:90
 #, kde-format
 msgid "Enable tooltips for displaying summaries"
-msgstr "Activar mensaxes de aviso que mostren os resumos."
+msgstr "Activar mensaxes de aviso que amosen os resumos."
 
 #. i18n: ectx: whatsthis, entry, group (General View)
 #: settings/korganizer.kcfg:91
@@ -4093,7 +4091,7 @@ msgid ""
 "Check this box to display summary tooltips when hovering the mouse over an "
 "event or a to-do."
 msgstr ""
-"Marque isto cando queira que se mostre unha descrición cun resumo cando se "
+"Marque isto cando queira que se amose unha descrición cun resumo cando se "
 "poña o rato enriba dun evento."
 
 #. i18n: ectx: label, entry, group (General View)
@@ -4130,7 +4128,7 @@ msgid ""
 "access the next \"x\" days view, choose the \"Next X Days\" menu item from "
 "the \"View\" menu."
 msgstr ""
-"Seleccione o número de «x» días que quere que se mostren na vista de "
+"Seleccione o número de «x» días que quere que se amosen na vista de "
 "vindeiros días, Para acceder á vista dos vindeiros «x»días, escolla o "
 "elemento do menú «Vindeiros X días» no menú «Vista»."
 
@@ -4138,13 +4136,13 @@ msgstr ""
 #: settings/korganizer.kcfg:104
 #, kde-format
 msgid "Show this many days at a time in the Next \"x\" days view"
-msgstr "Mostrar estes días xuntos na vista dos Seguintes «x» días"
+msgstr "Amosar estes días xuntos na vista dos Seguintes «x» días"
 
 #. i18n: ectx: label, entry (DailyRecur), group (General View)
 #: settings/korganizer.kcfg:109
 #, kde-format
 msgid "Show items that recur daily"
-msgstr "Mostrar os elementos que se repitan diariamente"
+msgstr "Amosar os elementos que se repitan diariamente"
 
 #. i18n: ectx: whatsthis, entry (DailyRecur), group (General View)
 #: settings/korganizer.kcfg:110
@@ -4154,7 +4152,7 @@ msgid ""
 "typeface in the Date Navigator, or uncheck it to give more prominence to "
 "other (non daily recurring) events."
 msgstr ""
-"Marque isto para mostrar os días contendo as repeticións diarias de eventos "
+"Marque isto para amosar os días contendo as repeticións diarias de eventos "
 "en formato recalcado no navegador de datas, ou desactive isto para darlle "
 "máis relevancia a outros eventos (de repetición non diaria)."
 
@@ -4162,7 +4160,7 @@ msgstr ""
 #: settings/korganizer.kcfg:115
 #, kde-format
 msgid "Show items that recur weekly"
-msgstr "Mostrar os elementos que se repitan semanalmente"
+msgstr "Amosar os elementos que se repitan semanalmente"
 
 #. i18n: ectx: whatsthis, entry (WeeklyRecur), group (General View)
 #: settings/korganizer.kcfg:116
@@ -4172,7 +4170,7 @@ msgid ""
 "typeface in the Date Navigator, or uncheck it to give more prominence to "
 "other (non weekly recurring) events."
 msgstr ""
-"Marque isto para mostrar os días contendo as repeticións semanais de eventos "
+"Marque isto para amosar os días contendo as repeticións semanais de eventos "
 "en formato recalcado no navegador de datas, ou desactive isto para darlle "
 "máis relevancia a outros eventos (de repetición non semanal)."
 
@@ -4181,7 +4179,7 @@ msgstr ""
 #, kde-format
 msgid "Show to-dos instead of events when in Todo View"
 msgstr ""
-"Mostrar as tarefas no canto dos eventos cando se estea na Vista de tarefas"
+"Amosar as tarefas no canto dos eventos cando se estea na Vista de tarefas"
 
 #. i18n: ectx: whatsthis, entry (HighlightTodos), group (General View)
 #: settings/korganizer.kcfg:122
@@ -4190,14 +4188,14 @@ msgid ""
 "Check this box to show the days containing to-dos in bold typeface in the "
 "Date Navigator when in to-do view."
 msgstr ""
-"Marque isto para mostrar os días que inclúen tarefas en negra no Navegador "
-"de Datas cando estea na vista de tarefas."
+"Marque isto para amosar os días que inclúen tarefas en negra no Navegador de "
+"Datas cando estea na vista de tarefas."
 
 #. i18n: ectx: label, entry (HighlightJournals), group (General View)
 #: settings/korganizer.kcfg:127
 #, kde-format
 msgid "Show journals instead of events when in Journal View"
-msgstr "Mostrar os diarios no canto dos eventos cando estea na Vista do Diario"
+msgstr "Amosar os diarios no canto dos eventos cando estea na Vista do Diario"
 
 #. i18n: ectx: whatsthis, entry (HighlightJournals), group (General View)
 #: settings/korganizer.kcfg:128
@@ -4206,8 +4204,8 @@ msgid ""
 "Check this box to show the days containing journals in bold typeface in the "
 "Date Navigator when in journal view."
 msgstr ""
-"Marque isto para mostrar os días que inclúen diarios en negra no Navegador "
-"de Datas cando estea na vista do diario."
+"Marque isto para amosar os días que inclúen diarios en negra no Navegador de "
+"Datas cando estea na vista do diario."
 
 #. i18n: ectx: label, entry (WeekNumbersShowWork), group (General View)
 #: settings/korganizer.kcfg:133
@@ -4248,13 +4246,13 @@ msgstr ""
 #: settings/korganizer.kcfg:144
 #, kde-format
 msgid "Set the height (in pixels) for an hour in the agenda grid"
-msgstr "Estabeleza a altura (en píxeles) dunha hora da grade da axenda"
+msgstr "Defina a altura (en píxeles) dunha hora da grade da axenda"
 
 #. i18n: ectx: label, entry (EnableAgendaItemIcons), group (Agenda View)
 #: settings/korganizer.kcfg:151
 #, kde-format
 msgid "Show icons in agenda view items"
-msgstr "Mostrar as iconas dos elementos da vista de axenda."
+msgstr "Amosar as iconas dos elementos da vista de axenda."
 
 #. i18n: ectx: whatsthis, entry (EnableAgendaItemIcons), group (Agenda View)
 #: settings/korganizer.kcfg:152
@@ -4263,39 +4261,39 @@ msgid ""
 "Check this box to display icons (alarm, recursion, etc.) in agenda view "
 "items."
 msgstr ""
-"Marque esta opción para mostrar as iconas (alarma, repetición, etc.) dos "
+"Marque esta opción para amosar as iconas (alarma, repetición, etc.) dos "
 "elementos da vista mensual."
 
 #. i18n: ectx: tooltip, entry (EnableAgendaItemIcons), group (Agenda View)
 #: settings/korganizer.kcfg:153
 #, kde-format
 msgid "Display icons in agenda view items"
-msgstr "Mostrar as iconas dos elementos da vista de axenda"
+msgstr "Amosar as iconas dos elementos da vista de axenda"
 
 #. i18n: ectx: label, entry (ShowTodosAgendaView), group (Agenda View)
 #. i18n: ectx: label, entry (ShowTodosMonthView), group (Month View)
 #: settings/korganizer.kcfg:158 settings/korganizer.kcfg:256
 #, kde-format
 msgid "Show to-dos"
-msgstr "Mostrar as tarefas"
+msgstr "Amosar as tarefas"
 
 #. i18n: ectx: whatsthis, entry (ShowTodosAgendaView), group (Agenda View)
 #: settings/korganizer.kcfg:159
 #, kde-format
 msgid "Check this box to display to-dos in the agenda view."
-msgstr "Marque isto para mostrar as tarefas na vista da axenda."
+msgstr "Marque isto para amosar as tarefas na vista da axenda."
 
 #. i18n: ectx: tooltip, entry (ShowTodosAgendaView), group (Agenda View)
 #: settings/korganizer.kcfg:160
 #, kde-format
 msgid "Display to-dos in the agenda view"
-msgstr "Mostrar as tarefas na vista da axenda"
+msgstr "Amosar as tarefas na vista da axenda"
 
 #. i18n: ectx: label, entry (MarcusBainsEnabled), group (Agenda View)
 #: settings/korganizer.kcfg:165
 #, kde-format
 msgid "Show current-time (Marcus Bains) line"
-msgstr "Mostrar a liña da hora actual (Marcus Bains)"
+msgstr "Amosar a liña da hora actual (Marcus Bains)"
 
 #. i18n: ectx: whatsthis, entry (MarcusBainsEnabled), group (Agenda View)
 #: settings/korganizer.kcfg:166
@@ -4304,32 +4302,32 @@ msgid ""
 "Check this box to display a line in the day or week view indicating the "
 "current-time line (Marcus Bains line)."
 msgstr ""
-"Marque isto para mostrar unha liña na vista do día da semana indicando a "
-"liña da hora actual (liña de Marcus Bains)."
+"Marque isto para amosar unha liña na vista do día da semana indicando a liña "
+"da hora actual (liña de Marcus Bains)."
 
 #. i18n: ectx: tooltip, entry (MarcusBainsEnabled), group (Agenda View)
 #: settings/korganizer.kcfg:167
 #, kde-format
 msgid "Display the current-time indicator"
-msgstr "Mostrar o indicador da hora actual"
+msgstr "Amosar o indicador da hora actual"
 
 #. i18n: ectx: label, entry (MarcusBainsShowSeconds), group (Agenda View)
 #: settings/korganizer.kcfg:172
 #, kde-format
 msgid "Show seconds on the current-time (Marcus Bains) line"
-msgstr "Mostrar os segundos na liña da hora actual (Marcus Bains)"
+msgstr "Amosar os segundos na liña da hora actual (Marcus Bains)"
 
 #. i18n: ectx: whatsthis, entry (MarcusBainsShowSeconds), group (Agenda View)
 #: settings/korganizer.kcfg:173
 #, kde-format
 msgid "Check this box if you want to show seconds on the current-time line."
-msgstr "Marque isto se quere mostrar os segundos na liña da hora actual."
+msgstr "Marque isto se quere amosar os segundos na liña da hora actual."
 
 #. i18n: ectx: tooltip, entry (MarcusBainsShowSeconds), group (Agenda View)
 #: settings/korganizer.kcfg:174
 #, kde-format
 msgid "Display seconds with the current-time indicator"
-msgstr "Mostrar os segundos co indicador da hora actual"
+msgstr "Amosar os segundos co indicador da hora actual"
 
 #. i18n: ectx: label, entry (SelectionStartsEditor), group (Agenda View)
 #: settings/korganizer.kcfg:179
@@ -4510,7 +4508,7 @@ msgstr ""
 #, kde-format
 msgid "Draw agenda items using their calendar color for the inside and border"
 msgstr ""
-"Mostrar os elementos da axenda na cor do seu calendario dentro e no bordo"
+"Amosar os elementos da axenda na cor do seu calendario dentro e no bordo"
 
 #. i18n: ectx: whatsthis, entry (ColorBusyDaysEnabled), group (Agenda View)
 #: settings/korganizer.kcfg:213
@@ -4546,19 +4544,19 @@ msgid ""
 "all your calendars to be shown together in one agenda view."
 msgstr ""
 "Seleccione a opción \"Fusionar todos os calendarios nunha única vista\" se "
-"quere que se mostren todos os calendarios xuntos na vista de axenda."
+"quere que se amosen todos os calendarios xuntos na vista de axenda."
 
 #. i18n: ectx: tooltip, entry (AgendaViewCalendarDisplay), group (Agenda View)
 #: settings/korganizer.kcfg:222
 #, kde-format
 msgid "Show all calendars merged together"
-msgstr "Mostrar todos os calendarios xuntos"
+msgstr "Amosar todos os calendarios xuntos"
 
 #. i18n: ectx: label, entry (AgendaViewCalendarDisplay), group (Agenda View)
 #: settings/korganizer.kcfg:225
 #, kde-format
 msgid "Show calendars side by side"
-msgstr "Mostrar os calendarios un a par do outro"
+msgstr "Amosar os calendarios un a par do outro"
 
 #. i18n: ectx: whatsthis, entry (AgendaViewCalendarDisplay), group (Agenda View)
 #: settings/korganizer.kcfg:226
@@ -4567,14 +4565,14 @@ msgid ""
 "Select the \"Show calendars side by side\" option if you would like to see "
 "two calendars at once, in a side-by-side view."
 msgstr ""
-"Seleccione a opción \"Mostrar os calendarios un a par do outro\" se quere "
-"ver dous calendarios ao mesmo tempo, un a par do outro."
+"Seleccione a opción \"Amosar os calendarios un a par do outro\" se quere ver "
+"dous calendarios ao mesmo tempo, un a par do outro."
 
 #. i18n: ectx: tooltip, entry (AgendaViewCalendarDisplay), group (Agenda View)
 #: settings/korganizer.kcfg:227
 #, kde-format
 msgid "Show two calendars side-by-side"
-msgstr "Mostrar os calendarios un a par do outro"
+msgstr "Amosar os calendarios un a par do outro"
 
 #. i18n: ectx: label, entry (AgendaViewCalendarDisplay), group (Agenda View)
 #: settings/korganizer.kcfg:230
@@ -4602,7 +4600,7 @@ msgstr "Alternar entre calendarios co tabulador"
 #: settings/korganizer.kcfg:242
 #, kde-format
 msgid "Show icons in month view items"
-msgstr "Mostrar as iconas dos elementos da vista mensual"
+msgstr "Amosar as iconas dos elementos da vista mensual"
 
 #. i18n: ectx: whatsthis, entry (EnableMonthItemIcons), group (Month View)
 #: settings/korganizer.kcfg:243
@@ -4610,7 +4608,7 @@ msgstr "Mostrar as iconas dos elementos da vista mensual"
 msgid ""
 "Check this box to display icons (alarm, recursion, etc.) in month view items."
 msgstr ""
-"Marque esta opción para mostrar as iconas (alarma, repetición, etc.) dos "
+"Marque esta opción para amosar as iconas (alarma, repetición, etc.) dos "
 "elementos da vista mensual."
 
 #. i18n: ectx: tooltip, entry (EnableMonthItemIcons), group (Month View)
@@ -4623,49 +4621,49 @@ msgstr "Activar as iconas dos elementos da vista mensual"
 #: settings/korganizer.kcfg:249
 #, kde-format
 msgid "Show time in month view items"
-msgstr "Mostrar a hora nos elementos da vista mensual"
+msgstr "Amosar a hora nos elementos da vista mensual"
 
 #. i18n: ectx: whatsthis, entry (ShowTimeInMonthView), group (Month View)
 #: settings/korganizer.kcfg:250
 #, kde-format
 msgid "Check this box to display the time in month view items."
-msgstr "Marque esta opción para mostrar a hora nos elementos da vista mensual."
+msgstr "Marque esta opción para amosar a hora nos elementos da vista mensual."
 
 #. i18n: ectx: tooltip, entry (ShowTimeInMonthView), group (Month View)
 #: settings/korganizer.kcfg:251
 #, kde-format
 msgid "Display time in month view items"
-msgstr "Mostrar a hora nos elementos da vista mensual"
+msgstr "Amosar a hora nos elementos da vista mensual"
 
 #. i18n: ectx: whatsthis, entry (ShowTodosMonthView), group (Month View)
 #: settings/korganizer.kcfg:257
 #, kde-format
 msgid "Check this box to display to-dos in the month view."
-msgstr "Marque esta opción para mostrar as tarefas na vista mensual."
+msgstr "Marque esta opción para amosar as tarefas na vista mensual."
 
 #. i18n: ectx: tooltip, entry (ShowTodosMonthView), group (Month View)
 #: settings/korganizer.kcfg:258
 #, kde-format
 msgid "Display to-dos in the month view"
-msgstr "Mostrar as tarefas na vista mensual"
+msgstr "Amosar as tarefas na vista mensual"
 
 #. i18n: ectx: label, entry (ShowJournalsMonthView), group (Month View)
 #: settings/korganizer.kcfg:263
 #, kde-format
 msgid "Show journals"
-msgstr "Mostrar os diarios"
+msgstr "Amosar os diarios"
 
 #. i18n: ectx: whatsthis, entry (ShowJournalsMonthView), group (Month View)
 #: settings/korganizer.kcfg:264
 #, kde-format
 msgid "Check this box to display journals in the month view."
-msgstr "Marque esta opción para mostrar os diarios na vista mensual."
+msgstr "Marque esta opción para amosar os diarios na vista mensual."
 
 #. i18n: ectx: tooltip, entry (ShowJournalsMonthView), group (Month View)
 #: settings/korganizer.kcfg:265
 #, kde-format
 msgid "Display journals in the month view"
-msgstr "Mostrar os diarios na vista mensual"
+msgstr "Amosar os diarios na vista mensual"
 
 #. i18n: ectx: label, entry, group (Month View)
 #: settings/korganizer.kcfg:270
@@ -4682,10 +4680,10 @@ msgid ""
 "but other widgets, such as the date navigator, the item details and the "
 "calendars list, will not be displayed."
 msgstr ""
-"Marque esta opción para usar a xanela completa de KOrganizer cando se mostre "
+"Marque esta opción para usar a xanela completa de KOrganizer cando se amose "
 "a vista mensual. Se se activa isto, gañará un pouco de espazo na vista "
 "mensual, pero outros trebellos, como no navegador de datas, os detalles dos "
-"elementos e a lista de calendarios, non se mostrarán."
+"elementos e a lista de calendarios, non se amosarán."
 
 #. i18n: ectx: tooltip, entry, group (Month View)
 #: settings/korganizer.kcfg:281
@@ -4747,21 +4745,20 @@ msgid ""
 "Colors and Fonts configuration page for setting these colors."
 msgstr ""
 "Seleccione a opción «Só o calendario» se quere que os elementos do "
-"calendario aparezan (tanto dentro como o bordo) na cor do calendario. "
-"Empregue a páxina de configuración das cores e da fonte para axustar estas "
-"cores."
+"calendario aparezan (tanto dentro como o bordo) na cor do calendario. Use a "
+"páxina de configuración das cores e da fonte para axustar estas cores."
 
 #. i18n: ectx: tooltip, entry, group (Month View)
 #: settings/korganizer.kcfg:296
 #, kde-format
 msgid "Draw month items using their calendar color for the inside and border"
-msgstr "Mostrar os elementos mensuais na cor do calendario dentro e no bordo"
+msgstr "Amosar os elementos mensuais na cor do calendario dentro e no bordo"
 
 #. i18n: ectx: label, entry, group (Todo View)
 #: settings/korganizer.kcfg:306
 #, kde-format
 msgid "Always display completed to-dos at the bottom of the list"
-msgstr "Mostrar sempre as tarefas completadas no final da lista"
+msgstr "Amosar sempre as tarefas completadas no final da lista"
 
 #. i18n: ectx: tooltip, entry, group (Todo View)
 #: settings/korganizer.kcfg:307
@@ -4770,7 +4767,7 @@ msgid ""
 "Completed to-dos are displayed at the bottom of the list, regardless of "
 "priority"
 msgstr ""
-"Mostrar as tarefas completadas ao final da lista, independentemente da súa "
+"Amosar as tarefas completadas ao final da lista, independentemente da súa "
 "prioridade."
 
 #. i18n: ectx: whatsthis, entry, group (Todo View)
@@ -4793,7 +4790,7 @@ msgstr "A vista da lista de tarefas ocupa toda a xanela"
 #: settings/korganizer.kcfg:314
 #, kde-format
 msgid "Display to-do list in a full KOrganizer window"
-msgstr "Mostrar a lista de tarefas nunha xanela completa de KOrganizer."
+msgstr "Amosar a lista de tarefas nunha xanela completa de KOrganizer."
 
 #. i18n: ectx: whatsthis, entry, group (Todo View)
 #: settings/korganizer.kcfg:315
@@ -4804,22 +4801,22 @@ msgid ""
 "list view, but other widgets, such as the date navigator, the to-do details "
 "and the calendars list, will not be displayed."
 msgstr ""
-"Marque esta opción para usar a xanela completa de KOrganizer cando se mostre "
+"Marque esta opción para usar a xanela completa de KOrganizer cando se amose "
 "a lista de tarefas. Se se activa isto, gañará algo de espazo na vista da "
 "lista de tarefas, pero outros trebellos, como o navegador de datas, os "
-"detalles das tarefas e a lista de calendarios, non se mostrarán."
+"detalles das tarefas e a lista de calendarios, non se amosarán."
 
 #. i18n: ectx: label, entry, group (Todo View)
 #: settings/korganizer.kcfg:320
 #, kde-format
 msgid "Display to-dos in a flat list"
-msgstr "Mostrar as tarefas nunha lista simple."
+msgstr "Amosar as tarefas nunha lista simple."
 
 #. i18n: ectx: tooltip, entry, group (Todo View)
 #: settings/korganizer.kcfg:321
 #, kde-format
 msgid "Display to-dos as a flat list instead of a hierarchical tree"
-msgstr "Mostrar as tarefas nunha lista en vez de nunha árbore xerárquica."
+msgstr "Amosar as tarefas nunha lista en vez de nunha árbore xerárquica."
 
 #. i18n: ectx: whatsthis, entry, group (Todo View)
 #: settings/korganizer.kcfg:322
@@ -4866,7 +4863,7 @@ msgid ""
 "Select the holiday color here. The holiday color will be used for the "
 "holiday name in the month view and the holiday number in the date navigator."
 msgstr ""
-"Escolla aquí a cor dos festivos. A cor dos festivos emprégase para o nome do "
+"Escolla aquí a cor dos festivos. A cor dos festivos úsase para o nome do "
 "festivo na vista mensual e o número do festivo no navegador de datas."
 
 #. i18n: ectx: label, entry (AgendaBgColor), group (Colors)
@@ -4894,16 +4891,14 @@ msgstr "Cor da liña da hora actual na vista da axenda"
 #, kde-format
 msgid "Select a color to use for the current-time (Marcus Bains) line."
 msgstr ""
-"Seleccione a cor que quere empregar para a liña da hora actual (Marcus "
-"Bains)."
+"Seleccione a cor que quere usar para a liña da hora actual (Marcus Bains)."
 
 #. i18n: ectx: tooltip, entry, group (Colors)
 #: settings/korganizer.kcfg:350
 #, kde-format
 msgid "Use this color for the Agenda View current-time (Marcus Bains) line"
 msgstr ""
-"Empregar esta cor para a liña da hora actual (Marcus Bains) na Vista da "
-"Axenda"
+"Usar esta cor para a liña da hora actual (Marcus Bains) na Vista da Axenda"
 
 #. i18n: ectx: label, entry (ViewBgBusyColor), group (Colors)
 #: settings/korganizer.kcfg:355
@@ -5081,8 +5076,8 @@ msgid ""
 "Select the highlight color here. The highlight color will be used for "
 "marking the currently selected area in your agenda and in the date navigator."
 msgstr ""
-"Escolla aquí a cor de realzado. A cor de realzado emprégase para marcar a "
-"area actualmente seleccionada na axenda a no navegador de datas."
+"Escolla aquí a cor de realzado. A cor de realzado úsase para marcar a area "
+"actualmente seleccionada na axenda a no navegador de datas."
 
 #. i18n: ectx: label, entry, group (Theming)
 #: settings/korganizer.kcfg:558
@@ -5119,8 +5114,8 @@ msgid ""
 "Select the highlight color here. The highlight color will be used for "
 "marking the currently selected area in your Month and in the date navigator."
 msgstr ""
-"Escolla aquí a cor de realzado. A cor de realzado emprégase para marcar a "
-"área actualmente seleccionada na axenda a no navegador de datas."
+"Escolla aquí a cor de realzado. A cor de realzado úsase para marcar a área "
+"actualmente seleccionada na axenda a no navegador de datas."
 
 #. i18n: ectx: whatsthis, entry, group (Theme/Month view)
 #: settings/korganizer.kcfg:583
@@ -5185,7 +5180,7 @@ msgid ""
 "your views. Daily and weekly recurring items may take a lot of space, so it "
 "might be handy to hide them."
 msgstr ""
-"Escolla esta opción se non quere que se mostren os eventos e tarefas con "
+"Escolla esta opción se non quere que se amosen os eventos e tarefas con "
 "repetición nas vistas. Os elementos diarios e semanais poden ocupar moito "
 "espazo, así que é máis manexábel agochalas."
 
@@ -5289,7 +5284,7 @@ msgstr ""
 #: ui/filteredit_base.ui:275
 #, kde-format
 msgid "Show all except selected"
-msgstr "Mostrar todos excepto os escollidos"
+msgstr "Amosar todos excepto os escollidos"
 
 #. i18n: ectx: property (whatsThis), widget (QRadioButton, mCatShowCheck)
 #: ui/filteredit_base.ui:288
@@ -5308,7 +5303,7 @@ msgstr ""
 #: ui/filteredit_base.ui:291
 #, kde-format
 msgid "Show only selected"
-msgstr "Mostrar só os seleccionados"
+msgstr "Amosar só os seleccionados"
 
 #. i18n: ectx: property (text), widget (QPushButton, mCatEditButton)
 #: ui/filteredit_base.ui:301
@@ -5369,7 +5364,7 @@ msgstr ""
 "Marque esta opción para subir automaticamente a súa información de Ocupación/"
 "Dispoñibilidade.\n"
 "É posíbel omitir esta opción e enviar por correo ou subir dita información "
-"empregando o menú de Planificación de KOrganizer.\n"
+"usando o menú de Planificación de KOrganizer.\n"
 "Nota: Se KOrganizer está a actuar como cliente Kolab de KDE, isto non se "
 "require, xa que o servidor Kolab2 se ocupa de publicar a súa información de "
 "Ocupación/Dispoñibilidade e xestiona o acceso a el por parte doutros "
@@ -5504,7 +5499,7 @@ msgstr ""
 "Marque isto para que KOrganizer lembre o seu contrasinal e omita "
 "preguntarlle cada vez que envíe a súa información de Ocupación/"
 "Dispoñibilidade, gardándoo no ficheiro de configuración.\n"
-"Por razóns de seguranza, non se recomenda gardar o contrasinal no ficheiro "
+"Por razóns de seguridade, non se recomenda gardar o contrasinal no ficheiro "
 "de configuración."
 
 #. i18n: ectx: property (text), widget (QCheckBox, publishSavePassword)
@@ -5588,7 +5583,7 @@ msgstr ""
 #: ui/kogroupwareprefspage.ui:385
 #, kde-format
 msgid "Use full email &address for retrieval"
-msgstr "Empregar o enderezo de correo completo para obter"
+msgstr "Usar o enderezo de correo completo para obter"
 
 #. i18n: ectx: property (whatsThis), widget (QLineEdit, retrieveUrl)
 #. i18n: ectx: property (whatsThis), widget (QLabel, TextLabel7_2)
@@ -6061,13 +6056,13 @@ msgstr "Configurar a vista un a par da outra"
 #: views/multiagendaview/multiagendaviewconfigwidget.ui:17
 #, kde-format
 msgid "Show one calendar per agenda column"
-msgstr "Mostrar un calendario por columna da axenda"
+msgstr "Amosar un calendario por columna da axenda"
 
 #. i18n: ectx: property (text), widget (QRadioButton, useCustomRB)
 #: views/multiagendaview/multiagendaviewconfigwidget.ui:27
 #, kde-format
 msgid "Use custom calendar setup"
-msgstr "Empregar una configuración personalizada do calendario"
+msgstr "Usar una configuración personalizada do calendario"
 
 #. i18n: ectx: property (text), widget (QLabel, columnNumberLabel)
 #: views/multiagendaview/multiagendaviewconfigwidget.ui:36
