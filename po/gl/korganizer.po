@@ -2547,7 +2547,7 @@ msgstr "Amosar os ani&versarios"
 msgid ""
 "Shows anniversaries from your calendar when using the Birthdays resource"
 msgstr ""
-"Mostra os aniversarios do calendario cando usa o recurso de Aniversarios"
+"Amosa os aniversarios do calendario cando usa o recurso de Aniversarios"
 
 #. i18n: ectx: property (whatsThis), widget (QCheckBox, mShowAnniversariesFromCal)
 #: kontactplugin/korganizer/apptsummaryconfig_base.ui:144
