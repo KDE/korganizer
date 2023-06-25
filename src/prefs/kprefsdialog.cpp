@@ -557,7 +557,7 @@ KPrefsWidPath::KPrefsWidPath(KConfigSkeleton::ItemPath *item, QWidget *parent, c
     mURLRequester = new KUrlRequester(parent);
     mLabel->setBuddy(mURLRequester);
     mURLRequester->setMode(mode);
-    mURLRequester->setFilter(filter);
+    mURLRequester->setNameFilter(filter);
     connect(mURLRequester, &KUrlRequester::textChanged, this, &KPrefsWidPath::changed);
     QString toolTip = mItem->toolTip();
     if (!toolTip.isEmpty()) {
