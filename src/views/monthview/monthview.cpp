@@ -177,7 +177,6 @@ void MonthView::setDateRange(const QDateTime &start, const QDateTime &end, const
 void MonthView::setCalendar(const Akonadi::ETMCalendar::Ptr &cal)
 {
     KOEventView::setCalendar(cal);
-    mPopup->setCalendar(cal);
     mMonthView->setModel(cal->entityTreeModel());
 }
 

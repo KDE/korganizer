@@ -110,7 +110,6 @@ KOAgendaView::~KOAgendaView() = default;
 void KOAgendaView::setCalendar(const Akonadi::ETMCalendar::Ptr &cal)
 {
     KOEventView::setCalendar(cal);
-    d->mPopup->setCalendar(cal);
     d->mAgendaView->setModel(cal->entityTreeModel());
 }
 

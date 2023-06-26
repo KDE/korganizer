@@ -117,12 +117,6 @@ MultiAgendaView::MultiAgendaView(QWidget *parent)
     connect(d->mMultiAgendaView, &EventViews::EventView::newJournalSignal, this, &BaseView::newJournalSignal);
 }
 
-void MultiAgendaView::setCalendar(const Akonadi::ETMCalendar::Ptr &cal)
-{
-    d->mMultiAgendaView->setCalendar(cal);
-    d->mPopup->setCalendar(cal);
-}
-
 MultiAgendaView::~MultiAgendaView() = default;
 
 Akonadi::Item::List MultiAgendaView::selectedIncidences()
@@ -286,6 +280,16 @@ void MultiAgendaView::restoreConfig(const KConfigGroup &configGroup)
 void MultiAgendaView::saveConfig(KConfigGroup &configGroup)
 {
     d->mMultiAgendaView->saveConfig(configGroup);
+}
+
+void MultiAgendaView::calendarAdded(const Akonadi::CollectionCalendar::Ptr &calendar)
+{
+    d->mMultiAgendaView->addCalendar(calendar);
+}
+
+void MultiAgendaView::calendarRemoved(const Akonadi::CollectionCalendar::Ptr &calendar)
+{
+    d->mMultiAgendaView->removeCalendar(calendar);
 }
 
 MultiAgendaViewConfigDialog::MultiAgendaViewConfigDialog(QAbstractItemModel *baseModel, QWidget *parent)

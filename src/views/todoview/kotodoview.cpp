@@ -23,7 +23,7 @@
 KOTodoView::KOTodoView(bool sidebarView, QWidget *parent)
     : BaseView(parent)
 {
-    auto eventPopup = new KOEventPopupMenu(calendar(), this);
+    auto eventPopup = new KOEventPopupMenu(this);
     mView = new EventViews::TodoView(KOPrefs::instance()->eventViewsPreferences(), sidebarView, parent);
     auto layout = new QVBoxLayout(this);
     layout->addWidget(mView);
