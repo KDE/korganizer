@@ -291,6 +291,11 @@ Akonadi::ETMCalendar::Ptr CalendarView::calendar() const
     return mCalendar;
 }
 
+QVector<Akonadi::CollectionCalendar::Ptr> CalendarView::calendars() const
+{
+    return mCalendars;
+}
+
 QDate CalendarView::activeDate(bool fallbackToToday)
 {
     KOrg::BaseView *curView = mViewManager->currentView();

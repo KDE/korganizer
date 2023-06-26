@@ -30,7 +30,7 @@ class KOListView : public KOEventView
 {
     Q_OBJECT
 public:
-    explicit KOListView(const Akonadi::ETMCalendar::Ptr &calendar, QWidget *parent = nullptr, bool nonInteractive = false);
+    explicit KOListView(QWidget *parent = nullptr, bool nonInteractive = false);
     ~KOListView() override;
 
     Q_REQUIRED_RESULT int maxDatesHint() const override;
@@ -47,7 +47,6 @@ public:
     void clear();
     QSize sizeHint() const override;
 
-    void setCalendar(const Akonadi::ETMCalendar::Ptr &cal) override;
     void setIncidenceChanger(Akonadi::IncidenceChanger *changer) override;
 
     Q_REQUIRED_RESULT CalendarSupport::CalPrinterBase::PrintType printType() const override;
@@ -65,6 +64,9 @@ public Q_SLOTS:
     void defaultItemAction(const Akonadi::Item::Id id);
 
     void popupMenu(const QPoint &);
+
+    void calendarAdded(const Akonadi::CollectionCalendar::Ptr &calendar) override;
+    void calendarRemoved(const Akonadi::CollectionCalendar::Ptr &calendar) override;
 
 private:
     KOEventPopupMenu *mPopupMenu = nullptr;

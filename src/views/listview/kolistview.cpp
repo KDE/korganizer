@@ -20,13 +20,12 @@
 
 using namespace KOrg;
 
-KOListView::KOListView(const Akonadi::ETMCalendar::Ptr &calendar, QWidget *parent, bool nonInteractive)
+KOListView::KOListView(QWidget *parent, bool nonInteractive)
     : KOEventView(parent)
 {
     auto layout = new QVBoxLayout(this);
-    mListView = new EventViews::ListView(calendar, this, nonInteractive);
+    mListView = new EventViews::ListView(this, nonInteractive);
     mPopupMenu = eventPopup();
-    setCalendar(calendar);
 
     layout->addWidget(mListView);
 
@@ -177,14 +176,17 @@ QSize KOListView::sizeHint() const
     return mListView->sizeHint();
 }
 
-void KOListView::setCalendar(const Akonadi::ETMCalendar::Ptr &cal)
-{
-    KOEventView::setCalendar(cal);
-    mPopupMenu->setCalendar(cal);
-    mListView->setCalendar(cal);
-}
-
 void KOListView::setIncidenceChanger(Akonadi::IncidenceChanger *changer)
 {
     mListView->setIncidenceChanger(changer);
+}
+
+void KOListView::calendarAdded(const Akonadi::CollectionCalendar::Ptr &calendar)
+{
+    mListView->addCalendar(calendar);
+}
+
+void KOListView::calendarRemoved(const Akonadi::CollectionCalendar::Ptr &calendar)
+{
+    mListView->removeCalendar(calendar);
 }

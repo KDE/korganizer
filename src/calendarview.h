@@ -83,7 +83,7 @@ public:
   @short main calendar view widget
   @author Cornelius Schumacher
 */
-class KORGANIZERPRIVATE_EXPORT CalendarView : public KOrg::CalendarViewBase, public Akonadi::ETMCalendar::CalendarObserver
+class KORGANIZERPRIVATE_EXPORT CalendarView : public KOrg::CalendarViewBase, public KCalendarCore::Calendar::CalendarObserver
 {
     Q_OBJECT
 public:
@@ -111,6 +111,8 @@ public:
 
     void setCalendar(const Akonadi::ETMCalendar::Ptr &);
     Akonadi::ETMCalendar::Ptr calendar() const override;
+
+    QVector<Akonadi::CollectionCalendar::Ptr> calendars() const;
 
     void showMessage(const QString &message, KMessageWidget::MessageType);
 
