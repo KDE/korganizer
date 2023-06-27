@@ -846,17 +846,11 @@ bool AkonadiCollectionView::isChecked(const Akonadi::Collection &collection) con
 
 Akonadi::EntityTreeModel *AkonadiCollectionView::entityTreeModel() const
 {
-    auto proxy = qobject_cast<QAbstractProxyModel *>(mCollectionView->model());
-    while (proxy) {
-        auto etm = qobject_cast<Akonadi::EntityTreeModel *>(proxy->sourceModel());
-        if (etm) {
-            return etm;
-        }
-        proxy = qobject_cast<QAbstractProxyModel *>(proxy->sourceModel());
+    auto *etm = findEtm(mCollectionView->model());
+    if (!etm) {
+        qCWarning(KORGANIZER_LOG) << "Couldn't find EntityTreeModel";
     }
-
-    qCWarning(KORGANIZER_LOG) << "Couldn't find EntityTreeModel";
-    return nullptr;
+    return etm;
 }
 
 void AkonadiCollectionView::onAction(const QModelIndex &index, int a)
@@ -864,7 +858,7 @@ void AkonadiCollectionView::onAction(const QModelIndex &index, int a)
     const auto action = static_cast<StyledCalendarDelegate::Action>(a);
     switch (action) {
     case StyledCalendarDelegate::Quickview: {
-        auto quickview = new Quickview(Akonadi::CollectionUtils::fromIndex(index));
+        auto quickview = new Quickview(entityTreeModel(), Akonadi::CollectionUtils::fromIndex(index));
         quickview->setAttribute(Qt::WA_DeleteOnClose, true);
         quickview->show();
         break;

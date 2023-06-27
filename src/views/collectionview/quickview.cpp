@@ -33,7 +33,7 @@ namespace
 static const char myQuickviewConfigGroupName[] = "Quickview";
 }
 
-Quickview::Quickview(const Akonadi::Collection &col)
+Quickview::Quickview(Akonadi::EntityTreeModel *etm, const Akonadi::Collection &col)
     : QDialog()
     , mUi(new Ui_quickview)
     , mCollection(col)
@@ -72,15 +72,14 @@ Quickview::Quickview(const Akonadi::Collection &col)
         monitor->setMimeTypeMonitored(mimetype, true);
     }
 
-    Akonadi::ETMCalendar::Ptr calendar = Akonadi::ETMCalendar::Ptr(new Akonadi::ETMCalendar(monitor));
+    auto calendar = Akonadi::CollectionCalendar::Ptr::create(etm, mCollection);
 
-    calendar->setCollectionFilteringEnabled(false);
-    mAgendaView->setCalendar(calendar);
-    setWindowTitle(i18nc("@title:window", "%1", Akonadi::CalendarUtils::displayName(calendar.data(), mCollection)));
+    mAgendaView->addCalendar(calendar);
+    setWindowTitle(i18nc("@title:window", "%1", Akonadi::CalendarUtils::displayName(etm, mCollection)));
 
     mUi->calendar->addWidget(mAgendaView);
 
-    setWindowTitle(i18nc("@title:window", "%1", Akonadi::CalendarUtils::displayName(calendar.data(), mCollection)));
+    setWindowTitle(i18nc("@title:window", "%1", Akonadi::CalendarUtils::displayName(etm, mCollection)));
 
     connect(mUi->mTodayBtn, &QPushButton::clicked, this, &Quickview::onTodayClicked);
     connect(mUi->mNextBtn, &QPushButton::clicked, this, &Quickview::onNextClicked);
