@@ -98,8 +98,12 @@ CalendarSupport::CalPrinterBase::PrintType KOWhatsNextView::printType() const
     }
 }
 
-void KOWhatsNextView::setCalendar(const Akonadi::ETMCalendar::Ptr &cal)
+void KOWhatsNextView::calendarAdded(const Akonadi::CollectionCalendar::Ptr &calendar)
 {
-    KOrg::BaseView::setCalendar(cal);
-    mView->setCalendar(cal);
+    mView->addCalendar(calendar);
+}
+
+void KOWhatsNextView::calendarRemoved(const Akonadi::CollectionCalendar::Ptr &calendar)
+{
+    mView->removeCalendar(calendar);
 }
