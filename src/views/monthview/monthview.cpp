@@ -174,10 +174,10 @@ void MonthView::setDateRange(const QDateTime &start, const QDateTime &end, const
     mMonthView->setDateRange(start, end, preferredMonth);
 }
 
-void MonthView::setCalendar(const Akonadi::ETMCalendar::Ptr &cal)
+void MonthView::setModel(QAbstractItemModel *model)
 {
-    KOEventView::setCalendar(cal);
-    mMonthView->setModel(cal->entityTreeModel());
+    KOEventView::setModel(model);
+    mMonthView->setModel(model);
 }
 
 void MonthView::setIncidenceChanger(Akonadi::IncidenceChanger *changer)

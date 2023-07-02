@@ -151,7 +151,11 @@ void MultiAgendaView::updateView()
 
 Akonadi::Collection::Id MultiAgendaView::collectionId() const
 {
+#pragma warn "Port me!"
+#if 0
     return d->mMultiAgendaView->collectionId();
+#endif
+    return -1;
 }
 
 void MultiAgendaView::changeIncidenceDisplay(const Akonadi::Item &, Akonadi::IncidenceChanger::ChangeType)
@@ -211,7 +215,7 @@ bool MultiAgendaView::hasConfigurationDialog() const
 
 void MultiAgendaView::showConfigurationDialog(QWidget *parent)
 {
-    QPointer<MultiAgendaViewConfigDialog> dlg(new MultiAgendaViewConfigDialog(d->mMultiAgendaView->calendar()->entityTreeModel(), parent));
+    QPointer<MultiAgendaViewConfigDialog> dlg(new MultiAgendaViewConfigDialog(model(), parent));
 
     dlg->setUseCustomColumns(d->mMultiAgendaView->customColumnSetupUsed());
     dlg->setNumberOfColumns(d->mMultiAgendaView->customNumberOfColumns());

@@ -59,7 +59,7 @@ public:
     Q_REQUIRED_RESULT bool selectedIsSingleCell();
 
     /* reimp from BaseView */
-    void setCalendar(const Akonadi::ETMCalendar::Ptr &cal) override;
+    void setModel(QAbstractItemModel *model) override;
 
     void setTypeAheadReceiver(QObject *o) override;
 

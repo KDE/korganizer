@@ -133,16 +133,17 @@ CalendarSupport::CalPrinterBase::PrintType KOJournalView::printType() const
     return CalendarSupport::CalPrinterBase::Journallist;
 }
 
-void KOJournalView::setCalendar(const Akonadi::ETMCalendar::Ptr &calendar)
+void KOJournalView::setModel(QAbstractItemModel *model)
 {
-    BaseView::setCalendar(calendar);
-    mJournalView->setCalendar(calendar);
+    BaseView::setModel(model);
+    mJournalView->setModel(model);
 }
 
 void KOJournalView::printJournal(const KCalendarCore::Journal::Ptr &journal, bool preview)
 {
     if (journal) {
-        CalendarSupport::CalPrinter printer(this, calendar(), true);
+        const auto calendar = calendarForIncidence(journal);
+        CalendarSupport::CalPrinter printer(this, calendar, true);
         KCalendarCore::Incidence::List selectedIncidences;
         selectedIncidences.append(journal);
 

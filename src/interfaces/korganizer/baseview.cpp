@@ -21,7 +21,6 @@ public:
     explicit BaseViewPrivate(BaseView *qq)
         : q(qq)
         , mChanges(EventViews::EventView::IncidencesAdded | EventViews::EventView::DatesChanged)
-        , calendar(nullptr)
     {
         QByteArray cname = q->metaObject()->className();
         cname.replace(':', '_');
@@ -31,7 +30,9 @@ public:
     ~BaseViewPrivate() = default;
 
     EventViews::EventView::Changes mChanges;
-    Akonadi::ETMCalendar::Ptr calendar;
+    QAbstractItemModel *model = nullptr;
+    Akonadi::EntityTreeModel *etm = nullptr;
+    QVector<Akonadi::CollectionCalendar::Ptr> calendars;
     QByteArray identifier;
     QDateTime startDateTime;
     QDateTime endDateTime;
@@ -47,21 +48,20 @@ BaseView::BaseView(QWidget *parent)
 
 BaseView::~BaseView() = default;
 
-void BaseView::setCalendar(const Akonadi::ETMCalendar::Ptr &calendar)
+void BaseView::setModel(QAbstractItemModel *model)
 {
-    d->calendar = calendar;
+    d->model = model;
+}
+
+QAbstractItemModel *BaseView::model() const
+{
+    return d->model;
 }
 
 CalendarSupport::CalPrinterBase::PrintType BaseView::printType() const
 {
     return CalendarSupport::CalPrinterBase::Month;
 }
-
-Akonadi::ETMCalendar::Ptr BaseView::calendar()
-{
-    return d->calendar;
-}
-
 QDateTime BaseView::selectionStart()
 {
     return {};
@@ -181,12 +181,12 @@ bool BaseView::eventDurationHint(QDateTime &startDt, QDateTime &endDt, bool &all
 
 void BaseView::calendarAdded(const Akonadi::CollectionCalendar::Ptr &calendar)
 {
-    Q_UNUSED(calendar);
+    d->calendars.push_back(calendar);
 }
 
 void BaseView::calendarRemoved(const Akonadi::CollectionCalendar::Ptr &calendar)
 {
-    Q_UNUSED(calendar);
+    d->calendars.removeOne(calendar);
 }
 
 void BaseView::getHighlightMode(bool &highlightEvents, bool &highlightTodos, bool &highlightJournals)
@@ -229,4 +229,23 @@ void BaseView::setChanges(EventViews::EventView::Changes changes)
 EventViews::EventView::Changes BaseView::changes() const
 {
     return d->mChanges;
+}
+
+Akonadi::CollectionCalendar::Ptr BaseView::calendarForCollection(Akonadi::Collection::Id collectionId) const
+{
+    const auto cal = std::find_if(d->calendars.cbegin(), d->calendars.cend(), [collectionId](const auto &cal) {
+        return cal->collection().id() == collectionId;
+    });
+    return cal == d->calendars.cend() ? Akonadi::CollectionCalendar::Ptr{} : *cal;
+}
+
+Akonadi::CollectionCalendar::Ptr BaseView::calendarForIncidence(const KCalendarCore::Incidence::Ptr &incidence) const
+{
+    bool ok = false;
+    const auto collectionId = incidence->customProperty("VOLATILE", "COLLECTION-ID").toLongLong(&ok);
+    if (!ok || collectionId < 0) {
+        return {};
+    }
+
+    return calendarForCollection(collectionId);
 }

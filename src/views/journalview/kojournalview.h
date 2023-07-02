@@ -38,7 +38,7 @@ public:
         return {};
     }
 
-    void setCalendar(const Akonadi::ETMCalendar::Ptr &) override;
+    void setModel(QAbstractItemModel *model) override;
 
     void getHighlightMode(bool &highlightEvents, bool &highlightTodos, bool &highlightJournals) override;
 

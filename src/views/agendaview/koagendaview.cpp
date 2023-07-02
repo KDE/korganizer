@@ -107,10 +107,10 @@ KOAgendaView::KOAgendaView(QWidget *parent, bool isSideBySide)
 
 KOAgendaView::~KOAgendaView() = default;
 
-void KOAgendaView::setCalendar(const Akonadi::ETMCalendar::Ptr &cal)
+void KOAgendaView::setModel(QAbstractItemModel *model)
 {
-    KOEventView::setCalendar(cal);
-    d->mAgendaView->setModel(cal->entityTreeModel());
+    KOEventView::setModel(model);
+    d->mAgendaView->setModel(model);
 }
 
 void KOAgendaView::zoomInVertically()

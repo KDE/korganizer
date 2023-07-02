@@ -340,6 +340,7 @@ void KOViewManager::zoomOutVertically()
 
 void KOViewManager::addView(KOrg::BaseView *view, bool isTab)
 {
+    view->setModel(mMainView->calendar()->model());
     connectView(view);
     mViews.append(view);
     const KConfigGroup group = KSharedConfig::openConfig()->group(view->identifier());
@@ -356,7 +357,6 @@ void KOViewManager::showMonthView()
 {
     if (!mMonthView) {
         mMonthView = new KOrg::MonthView(mMainView->viewStack());
-        mMonthView->setCalendar(mMainView->calendar());
         mMonthView->setIdentifier("DefaultMonthView");
         addView(mMonthView);
         connect(mMonthView, &MonthView::fullViewChanged, mMainView, &CalendarView::changeFullView);
@@ -369,7 +369,6 @@ void KOViewManager::showWhatsNextView()
 {
     if (!mWhatsNextView) {
         mWhatsNextView = new KOWhatsNextView(mMainView->viewStack());
-        mWhatsNextView->setCalendar(mMainView->calendar());
         mWhatsNextView->setIdentifier("DefaultWhatsNextView");
         addView(mWhatsNextView);
     }
@@ -410,7 +409,6 @@ void KOViewManager::showAgendaView()
     if (showMerged) {
         if (!mAgendaView) {
             mAgendaView = new KOAgendaView(parent);
-            mAgendaView->setCalendar(mMainView->calendar());
             mAgendaView->setIdentifier("DefaultAgendaView");
 
             addView(mAgendaView, showBoth);
@@ -433,7 +431,6 @@ void KOViewManager::showAgendaView()
         if (!mAgendaSideBySideView) {
             mAgendaSideBySideView = new MultiAgendaView(parent);
             mAgendaSideBySideView->setIdentifier("DefaultAgendaSideBySideView");
-            mAgendaSideBySideView->setCalendar(mMainView->calendar());
             addView(mAgendaSideBySideView, showBoth);
         }
         if (showBoth && mAgendaViewTabs->indexOf(mAgendaSideBySideView) < 0) {
@@ -492,9 +489,7 @@ void KOViewManager::showTodoView()
 {
     if (!mTodoView) {
         mTodoView = new KOTodoView(false /*not sidebar*/, mMainView->viewStack());
-        mTodoView->setCalendar(mMainView->calendar());
         mTodoView->setIdentifier("DefaultTodoView");
-        mTodoView->setCalendar(mMainView->calendar());
         addView(mTodoView);
         connectTodoView(mTodoView);
 
@@ -509,7 +504,6 @@ void KOViewManager::showJournalView()
 {
     if (!mJournalView) {
         mJournalView = new KOJournalView(mMainView->viewStack());
-        mJournalView->setCalendar(mMainView->calendar());
         mJournalView->setIdentifier("DefaultJournalView");
         addView(mJournalView);
     }

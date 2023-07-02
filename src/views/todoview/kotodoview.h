@@ -25,7 +25,7 @@ public:
     KOTodoView(bool sidebarView, QWidget *parent);
     ~KOTodoView() override;
 
-    void setCalendar(const Akonadi::ETMCalendar::Ptr &) override;
+    void setModel(QAbstractItemModel *model) override;
 
     Q_REQUIRED_RESULT Akonadi::Item::List selectedIncidences() override;
     Q_REQUIRED_RESULT KCalendarCore::DateList selectedIncidenceDates() override;
