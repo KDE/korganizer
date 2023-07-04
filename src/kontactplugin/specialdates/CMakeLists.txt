@@ -22,8 +22,7 @@ target_link_libraries(kontact_specialdatesplugin
   KF6::Holidays
   KPim6::KontactInterface
   KPim6::AkonadiCore
-  KPim6::AkonadiContact
-  KPim6::ContactEditor
+  KPim6::AkonadiContactWidgets
   KPim6::CalendarSupport
 )
 
