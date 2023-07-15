@@ -10,6 +10,7 @@
 
 #include <QApplication>
 #include <QCommandLineParser>
+#include <QHBoxLayout>
 
 class MyDesignerFields : public KCMDesignerFields
 {
@@ -56,7 +57,11 @@ int main(int argc, char **argv)
     aboutData.processCommandLine(&parser);
 
     auto kcm = new MyDesignerFields();
-    kcm->show();
+    kcm->load();
+    auto widget = new QWidget();
+    auto w = new QHBoxLayout(widget);
+    w->addWidget(kcm->widget());
+    widget->show();
 
     app.exec();
     delete kcm;

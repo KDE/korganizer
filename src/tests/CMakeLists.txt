@@ -19,7 +19,6 @@ target_link_libraries(korgplugins
 )
 
 ########### next target ###############
-if (QT_MAJOR_VERSION STREQUAL "5")
 add_executable(testkcmdesignerfields testkcmdesignerfields.cpp ../kcmdesignerfields.cpp ../korganizer_debug.cpp)
 set_target_properties(testkcmdesignerfields PROPERTIES COMPILE_FLAGS -DTESTKCMDESIGNERCURRENTDIR="\\"${CMAKE_CURRENT_SOURCE_DIR}/\\"")
 target_link_libraries(testkcmdesignerfields
@@ -29,4 +28,3 @@ target_link_libraries(testkcmdesignerfields
   KF6::KCMUtils
   KF6::KIOWidgets
 )
-endif()

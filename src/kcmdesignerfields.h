@@ -19,7 +19,7 @@ class KCMDesignerFields : public KCModule
 {
     Q_OBJECT
 public:
-    explicit KCMDesignerFields(QObject *parent, const KPluginMetaData &data);
+    explicit KCMDesignerFields(QObject *parent, const KPluginMetaData &data = {});
 
     void load() override;
     void save() override;
