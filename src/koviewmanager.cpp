@@ -37,6 +37,8 @@ KOViewManager::KOViewManager(CalendarView *mainView)
     : QObject()
     , mMainView(mainView)
 {
+    connect(mainView, &CalendarView::calendarAdded, this, &KOViewManager::addCalendar);
+    connect(mainView, &CalendarView::calendarRemoved, this, &KOViewManager::removeCalendar);
 }
 
 KOViewManager::~KOViewManager() = default;
@@ -609,4 +611,14 @@ void KOViewManager::updateMultiCalendarDisplay()
 bool KOViewManager::agendaIsSelected() const
 {
     return mCurrentView == mAgendaView || mCurrentView == mAgendaSideBySideView || (mAgendaViewTabs && mCurrentView == mAgendaViewTabs->currentWidget());
+}
+
+void KOViewManager::addCalendar(const Akonadi::CollectionCalendar::Ptr &calendar)
+{
+    mCalendars.push_back(calendar);
+}
+
+void KOViewManager::removeCalendar(const Akonadi::CollectionCalendar::Ptr &calendar)
+{
+    mCalendars.removeAll(calendar);
 }

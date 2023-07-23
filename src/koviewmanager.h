@@ -130,9 +130,6 @@ Q_SIGNALS:
     void configChanged();
     void datesSelected(const KCalendarCore::DateList &);
 
-    void calendarAdded(const Akonadi::CollectionCalendar::Ptr &calendar);
-    void calendarRemoved(const Akonadi::CollectionCalendar::Ptr &calendar);
-
 public Q_SLOTS:
     void showWhatsNextView();
     void showListView();
@@ -164,6 +161,8 @@ public Q_SLOTS:
 
 private Q_SLOTS:
     void currentAgendaViewTabChanged(int index);
+    void addCalendar(const Akonadi::CollectionCalendar::Ptr &calendar);
+    void removeCalendar(const Akonadi::CollectionCalendar::Ptr &calendar);
 
 private:
     QWidget *widgetForView(KOrg::BaseView *) const;
