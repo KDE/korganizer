@@ -17,7 +17,7 @@ msgid ""
 msgstr ""
 "Project-Id-Version: korganizer\n"
 "Report-Msgid-Bugs-To: https://bugs.kde.org\n"
-"POT-Creation-Date: 2023-04-10 00:47+0000\n"
+"POT-Creation-Date: 2023-07-24 10:10+0000\n"
 "PO-Revision-Date: 2022-04-21 21:36+0530\n"
 "Last-Translator: Kishore G <kishore96@gmail.com>\n"
 "Language-Team: Tamil <kde-i18n-doc@kde.org>\n"
@@ -3798,31 +3798,31 @@ msgctxt "@title:group"
 msgid "Other Options"
 msgstr "மற்ற விருப்பத்தேர்வுகள்"
 
-#: prefs/kprefsdialog.cpp:222
+#: prefs/kprefsdialog.cpp:234
 #, fuzzy, kde-format
 msgid "Choose..."
 msgstr "மாற்றம்"
 
-#: prefs/kprefsdialog.cpp:746
+#: prefs/kprefsdialog.cpp:765
 #, fuzzy, kde-format
 #| msgid "&occurrence(s)"
 msgctxt "@title:window"
 msgid "Preferences"
 msgstr "&நிகழ்வு(கள்)"
 
-#: prefs/kprefsdialog.cpp:848
+#: prefs/kprefsdialog.cpp:867
 #, kde-format
 msgid ""
 "You are about to set all preferences to default values. All custom "
 "modifications will be lost."
 msgstr ""
 
-#: prefs/kprefsdialog.cpp:850
+#: prefs/kprefsdialog.cpp:869
 #, kde-format
 msgid "Setting Default Preferences"
 msgstr "அமைப்பு முன்னிருப்பு முன்னுரிமைகள்"
 
-#: prefs/kprefsdialog.cpp:851
+#: prefs/kprefsdialog.cpp:870
 #, kde-format
 msgid "Reset to Defaults"
 msgstr "முன்னிருப்புகளுக்கு திரும்ப அமை"

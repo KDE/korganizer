@@ -11,7 +11,7 @@ msgid ""
 msgstr ""
 "Project-Id-Version: korganizer\n"
 "Report-Msgid-Bugs-To: https://bugs.kde.org\n"
-"POT-Creation-Date: 2023-04-10 00:47+0000\n"
+"POT-Creation-Date: 2023-07-24 10:10+0000\n"
 "PO-Revision-Date: 2008-01-01 23:20+0200\n"
 "Last-Translator: Darafei Praliaskouski <komzpa@gmail.com>\n"
 "Language-Team: Belarusian (Official spelling) <i18n@mova.org>\n"
@@ -3763,30 +3763,30 @@ msgctxt "@title:group"
 msgid "Other Options"
 msgstr "Апіс&аньні"
 
-#: prefs/kprefsdialog.cpp:222
+#: prefs/kprefsdialog.cpp:234
 #, fuzzy, kde-format
 msgid "Choose..."
 msgstr "Змяніць..."
 
-#: prefs/kprefsdialog.cpp:746
+#: prefs/kprefsdialog.cpp:765
 #, fuzzy, kde-format
 msgctxt "@title:window"
 msgid "Preferences"
 msgstr "паўтораў"
 
-#: prefs/kprefsdialog.cpp:848
+#: prefs/kprefsdialog.cpp:867
 #, fuzzy, kde-format
 msgid ""
 "You are about to set all preferences to default values. All custom "
 "modifications will be lost."
 msgstr "Усталяваныя ўсе параметры па змаўчанні. Усё змены будуць згубленыя."
 
-#: prefs/kprefsdialog.cpp:850
+#: prefs/kprefsdialog.cpp:869
 #, fuzzy, kde-format
 msgid "Setting Default Preferences"
 msgstr "Параметры па змаўчанні"
 
-#: prefs/kprefsdialog.cpp:851
+#: prefs/kprefsdialog.cpp:870
 #, fuzzy, kde-format
 msgid "Reset to Defaults"
 msgstr "Скінуць на змаўчанні"

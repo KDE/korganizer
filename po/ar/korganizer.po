@@ -11,7 +11,7 @@ msgid ""
 msgstr ""
 "Project-Id-Version: korganizer\n"
 "Report-Msgid-Bugs-To: https://bugs.kde.org\n"
-"POT-Creation-Date: 2023-04-10 00:47+0000\n"
+"POT-Creation-Date: 2023-07-24 10:10+0000\n"
 "PO-Revision-Date: 2022-09-25 18:08+0400\n"
 "Last-Translator: Zayed Al-Saidi <zayed.alsaidi@gmail.com>\n"
 "Language-Team: ar\n"
@@ -3734,18 +3734,18 @@ msgctxt "@title:group"
 msgid "Other Options"
 msgstr "خيارات أخرى"
 
-#: prefs/kprefsdialog.cpp:222
+#: prefs/kprefsdialog.cpp:234
 #, kde-format
 msgid "Choose..."
 msgstr "اختر..."
 
-#: prefs/kprefsdialog.cpp:746
+#: prefs/kprefsdialog.cpp:765
 #, kde-format
 msgctxt "@title:window"
 msgid "Preferences"
 msgstr "تفضيلات"
 
-#: prefs/kprefsdialog.cpp:848
+#: prefs/kprefsdialog.cpp:867
 #, fuzzy, kde-format
 msgid ""
 "You are about to set all preferences to default values. All custom "
@@ -3754,12 +3754,12 @@ msgstr ""
 "أنت على وشك تعيين كلّ التَّفضيلات للقِيَم الإفتراضيَّة. و سيسبب ذلك خسارة كلّ "
 "التَّغييرات."
 
-#: prefs/kprefsdialog.cpp:850
+#: prefs/kprefsdialog.cpp:869
 #, fuzzy, kde-format
 msgid "Setting Default Preferences"
 msgstr "جاري تعيين التَّفضيلات الافتراضيَّة"
 
-#: prefs/kprefsdialog.cpp:851
+#: prefs/kprefsdialog.cpp:870
 #, kde-format
 msgid "Reset to Defaults"
 msgstr "صفّر إلى الافتراضيّات"

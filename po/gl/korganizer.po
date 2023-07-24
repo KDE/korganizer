@@ -15,7 +15,7 @@ msgid ""
 msgstr ""
 "Project-Id-Version: korganizer\n"
 "Report-Msgid-Bugs-To: https://bugs.kde.org\n"
-"POT-Creation-Date: 2023-04-10 00:47+0000\n"
+"POT-Creation-Date: 2023-07-24 10:10+0000\n"
 "PO-Revision-Date: 2020-01-05 19:14+0100\n"
 "Last-Translator: Adrián Chaves (Gallaecio) <adrian@chaves.io>\n"
 "Language-Team: Galician <proxecto@trasno.gal>\n"
@@ -3838,19 +3838,19 @@ msgctxt "@title:group"
 msgid "Other Options"
 msgstr "Outras opcións"
 
-#: prefs/kprefsdialog.cpp:222
+#: prefs/kprefsdialog.cpp:234
 #, fuzzy, kde-format
 #| msgid "Change..."
 msgid "Choose..."
 msgstr "Cambiar…"
 
-#: prefs/kprefsdialog.cpp:746
+#: prefs/kprefsdialog.cpp:765
 #, kde-format
 msgctxt "@title:window"
 msgid "Preferences"
 msgstr ""
 
-#: prefs/kprefsdialog.cpp:848
+#: prefs/kprefsdialog.cpp:867
 #, fuzzy, kde-format
 #| msgid ""
 #| "You are about to set all preferences to default values. All custom "
@@ -3862,13 +3862,13 @@ msgstr ""
 "Está a piques de pór todos os valores predeterminados nas preferencias. "
 "Perderanse todas as modificacións personalizadas."
 
-#: prefs/kprefsdialog.cpp:850
+#: prefs/kprefsdialog.cpp:869
 #, fuzzy, kde-format
 #| msgid "Setting Default Preferences"
 msgid "Setting Default Preferences"
 msgstr "Poñendo as preferencias por omisión"
 
-#: prefs/kprefsdialog.cpp:851
+#: prefs/kprefsdialog.cpp:870
 #, fuzzy, kde-format
 #| msgid "Reset to Defaults"
 msgid "Reset to Defaults"

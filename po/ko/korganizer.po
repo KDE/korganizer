@@ -8,7 +8,7 @@ msgid ""
 msgstr ""
 "Project-Id-Version: Korganizer\n"
 "Report-Msgid-Bugs-To: https://bugs.kde.org\n"
-"POT-Creation-Date: 2023-04-10 00:47+0000\n"
+"POT-Creation-Date: 2023-07-24 10:10+0000\n"
 "PO-Revision-Date: 2023-03-01 01:54+0100\n"
 "Last-Translator: Shinjo Park <kde@peremen.name>\n"
 "Language-Team: Korean <kde-kr@kde.org>\n"
@@ -2085,9 +2085,9 @@ msgstr ""
 "선택하십시오</p><p><b>중요:</b> 폼에 추가하는 입력 위젯의 이름은 '<i>X_</"
 "i>'로 시작해야 합니다. 예를 들어서 사용자 정의 항목 '<i>X-Foo</i>'에 해당하"
 "는 위젯을 만들려면 위젯의 <i>name</i> 속성을 '<i>X_Foo</i>'로 설정하십시오.</"
-"p><p><b>중요:</b> 이 위젯은 사용자 정의 필드를 편집할 때 프로그램 이름으로 %2"
-"을(를) 사용합니다. 편집할 프로그램 이름을 변경하려면 Qt Designer에서 위젯 이"
-"름을 설정하십시오.</p></qt>"
+"p><p><b>중요:</b> 이 위젯은 사용자 정의 필드를 편집할 때 앱 이름으로 %2을"
+"(를) 사용합니다. 편집할 앱 이름을 변경하려면 Qt Designer에서 위젯 이름을 설정"
+"하십시오.</p></qt>"
 
 #: kcmdesignerfields.cpp:359 kcmdesignerfields.cpp:361
 #, kde-format
@@ -3661,30 +3661,30 @@ msgctxt "@title:group"
 msgid "Other Options"
 msgstr "기타 옵션"
 
-#: prefs/kprefsdialog.cpp:222
+#: prefs/kprefsdialog.cpp:234
 #, kde-format
 msgid "Choose..."
 msgstr "선택..."
 
-#: prefs/kprefsdialog.cpp:746
+#: prefs/kprefsdialog.cpp:765
 #, kde-format
 msgctxt "@title:window"
 msgid "Preferences"
 msgstr "설정"
 
-#: prefs/kprefsdialog.cpp:848
+#: prefs/kprefsdialog.cpp:867
 #, kde-format
 msgid ""
 "You are about to set all preferences to default values. All custom "
 "modifications will be lost."
 msgstr "모든 설정을 기본값으로 초기화합니다. 모든 변경 사항이 초기화됩니다."
 
-#: prefs/kprefsdialog.cpp:850
+#: prefs/kprefsdialog.cpp:869
 #, kde-format
 msgid "Setting Default Preferences"
 msgstr "기본 설정 변경"
 
-#: prefs/kprefsdialog.cpp:851
+#: prefs/kprefsdialog.cpp:870
 #, kde-format
 msgid "Reset to Defaults"
 msgstr "기본값 복원"
