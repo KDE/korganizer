@@ -5,7 +5,7 @@ msgid ""
 msgstr ""
 "Project-Id-Version: korganizer-1.1.1\n"
 "Report-Msgid-Bugs-To: https://bugs.kde.org\n"
-"POT-Creation-Date: 2023-04-10 00:47+0000\n"
+"POT-Creation-Date: 2023-07-24 07:36+0000\n"
 "PO-Revision-Date: 2022-02-06 19:07+0000\n"
 "Last-Translator: Sergiu Bivol <sergiu@cip.md>\n"
 "Language-Team: Romanian\n"
@@ -3745,19 +3745,19 @@ msgctxt "@title:group"
 msgid "Other Options"
 msgstr "Alte opțiuni"
 
-#: prefs/kprefsdialog.cpp:222
+#: prefs/kprefsdialog.cpp:234
 #, fuzzy, kde-format
 #| msgid "Change..."
 msgid "Choose..."
 msgstr "Modifică..."
 
-#: prefs/kprefsdialog.cpp:746
+#: prefs/kprefsdialog.cpp:765
 #, fuzzy, kde-format
 msgctxt "@title:window"
 msgid "Preferences"
 msgstr "ori"
 
-#: prefs/kprefsdialog.cpp:848
+#: prefs/kprefsdialog.cpp:867
 #, fuzzy, kde-format
 msgid ""
 "You are about to set all preferences to default values. All custom "
@@ -3766,12 +3766,12 @@ msgstr ""
 "Sunteți pe cale de a seta toate preferințele la valorile implicite. Toate "
 "modificările personale vor fi pierdute."
 
-#: prefs/kprefsdialog.cpp:850
+#: prefs/kprefsdialog.cpp:869
 #, fuzzy, kde-format
 msgid "Setting Default Preferences"
 msgstr "Setare preferințe implicite"
 
-#: prefs/kprefsdialog.cpp:851
+#: prefs/kprefsdialog.cpp:870
 #, fuzzy, kde-format
 msgid "Reset to Defaults"
 msgstr "Restabilire implicite"
