@@ -19,7 +19,7 @@ msgid ""
 msgstr ""
 "Project-Id-Version: kdepim-kde4\n"
 "Report-Msgid-Bugs-To: https://bugs.kde.org\n"
-"POT-Creation-Date: 2023-04-10 00:47+0000\n"
+"POT-Creation-Date: 2023-07-24 10:10+0000\n"
 "PO-Revision-Date: 2023-07-14 00:29+0300\n"
 "Last-Translator: Emir SARI <emir_sari@icloud.com>\n"
 "Language-Team: Turkish <kde-l10n-tr@kde.org>\n"
@@ -3769,18 +3769,18 @@ msgctxt "@title:group"
 msgid "Other Options"
 msgstr "Diğer Seçenekler"
 
-#: prefs/kprefsdialog.cpp:222
+#: prefs/kprefsdialog.cpp:234
 #, kde-format
 msgid "Choose..."
 msgstr "Seç..."
 
-#: prefs/kprefsdialog.cpp:746
+#: prefs/kprefsdialog.cpp:765
 #, kde-format
 msgctxt "@title:window"
 msgid "Preferences"
 msgstr "Tercihler"
 
-#: prefs/kprefsdialog.cpp:848
+#: prefs/kprefsdialog.cpp:867
 #, kde-format
 msgid ""
 "You are about to set all preferences to default values. All custom "
@@ -3789,12 +3789,12 @@ msgstr ""
 "Bütün tercihleri öntanımlı değerlerine döndürmek üzeresiniz. Bütün özel "
 "değişiklikler kaybolacaktır."
 
-#: prefs/kprefsdialog.cpp:850
+#: prefs/kprefsdialog.cpp:869
 #, kde-format
 msgid "Setting Default Preferences"
 msgstr "Öntanımlı Tercihler Ayarlanıyor"
 
-#: prefs/kprefsdialog.cpp:851
+#: prefs/kprefsdialog.cpp:870
 #, kde-format
 msgid "Reset to Defaults"
 msgstr "Öntanımlı Ayarlara Dön"
