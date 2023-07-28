@@ -1,5 +1,5 @@
 # translation of korganizer.po to
-# Version: $Revision: 1649135 $
+# Version: $Revision: 1656450 $
 # translated by Krzysztof Jasiutowicz <kpjas@priv.onet.pl>
 # contains his updates from 26.01.1999
 # Krzysztof Lichota <lichota@mimuw.edu.pl>, 2002, 2005, 2006.
@@ -13,7 +13,7 @@ msgid ""
 msgstr ""
 "Project-Id-Version: korganizer\n"
 "Report-Msgid-Bugs-To: https://bugs.kde.org\n"
-"POT-Creation-Date: 2023-04-10 00:47+0000\n"
+"POT-Creation-Date: 2023-07-24 07:36+0000\n"
 "PO-Revision-Date: 2022-10-18 17:58+0200\n"
 "Last-Translator: Łukasz Wojniłowicz <lukasz.wojnilowicz@gmail.com>\n"
 "Language-Team: Polish <kde-i18n-doc@kde.org>\n"
@@ -3766,18 +3766,18 @@ msgctxt "@title:group"
 msgid "Other Options"
 msgstr "Inne ustawienia"
 
-#: prefs/kprefsdialog.cpp:222
+#: prefs/kprefsdialog.cpp:234
 #, kde-format
 msgid "Choose..."
 msgstr "Wybierz..."
 
-#: prefs/kprefsdialog.cpp:746
+#: prefs/kprefsdialog.cpp:765
 #, kde-format
 msgctxt "@title:window"
 msgid "Preferences"
 msgstr "Ustawienia"
 
-#: prefs/kprefsdialog.cpp:848
+#: prefs/kprefsdialog.cpp:867
 #, kde-format
 msgid ""
 "You are about to set all preferences to default values. All custom "
@@ -3785,12 +3785,12 @@ msgid ""
 msgstr ""
 "Zamierzasz przywrócić domyślne ustawienia. Wszystkie zmiany zostaną utracone."
 
-#: prefs/kprefsdialog.cpp:850
+#: prefs/kprefsdialog.cpp:869
 #, kde-format
 msgid "Setting Default Preferences"
 msgstr "Przywracanie ustawień domyślnych"
 
-#: prefs/kprefsdialog.cpp:851
+#: prefs/kprefsdialog.cpp:870
 #, kde-format
 msgid "Reset to Defaults"
 msgstr "Przywróć domyślne"

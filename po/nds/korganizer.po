@@ -7,7 +7,7 @@ msgid ""
 msgstr ""
 "Project-Id-Version: korganizer\n"
 "Report-Msgid-Bugs-To: https://bugs.kde.org\n"
-"POT-Creation-Date: 2023-04-10 00:47+0000\n"
+"POT-Creation-Date: 2023-07-24 07:36+0000\n"
 "PO-Revision-Date: 2014-09-18 17:03+0200\n"
 "Last-Translator: Sönke Dibbern <s_dibbern@web.de>\n"
 "Language-Team: Low Saxon <kde-i18n-nds@kde.org>\n"
@@ -3989,14 +3989,14 @@ msgctxt "@title:group"
 msgid "Other Options"
 msgstr "Anner Optschonen"
 
-#: prefs/kprefsdialog.cpp:222
+#: prefs/kprefsdialog.cpp:234
 #, fuzzy, kde-format
 #| msgid "Change..."
 msgid "Choose..."
 msgstr "Ännern..."
 
 # unreviewed-context
-#: prefs/kprefsdialog.cpp:746
+#: prefs/kprefsdialog.cpp:765
 #, fuzzy, kde-format
 #| msgid "occurrences"
 #| msgid_plural "occurrences"
@@ -4004,7 +4004,7 @@ msgctxt "@title:window"
 msgid "Preferences"
 msgstr "Wedderhalen"
 
-#: prefs/kprefsdialog.cpp:848
+#: prefs/kprefsdialog.cpp:867
 #, kde-format
 msgid ""
 "You are about to set all preferences to default values. All custom "
@@ -4013,12 +4013,12 @@ msgstr ""
 "Du wullt allens op de Standardweerten torüchsetten. All Dien egen Instellen "
 "gaht denn verloren."
 
-#: prefs/kprefsdialog.cpp:850
+#: prefs/kprefsdialog.cpp:869
 #, kde-format
 msgid "Setting Default Preferences"
 msgstr "Standardweerten warrt instellt"
 
-#: prefs/kprefsdialog.cpp:851
+#: prefs/kprefsdialog.cpp:870
 #, kde-format
 msgid "Reset to Defaults"
 msgstr "Op Standardweerten torüchsetten "

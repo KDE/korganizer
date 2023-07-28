@@ -24,7 +24,7 @@ msgid ""
 msgstr ""
 "Project-Id-Version: korganizer\n"
 "Report-Msgid-Bugs-To: https://bugs.kde.org\n"
-"POT-Creation-Date: 2023-04-10 00:47+0000\n"
+"POT-Creation-Date: 2023-07-24 07:36+0000\n"
 "PO-Revision-Date: 2023-02-26 17:12+0100\n"
 "Last-Translator: Xavier BESNARD <xavier.besnard]neuf.fr>\n"
 "Language-Team: fr\n"
@@ -3887,18 +3887,18 @@ msgctxt "@title:group"
 msgid "Other Options"
 msgstr "Autres options"
 
-#: prefs/kprefsdialog.cpp:222
+#: prefs/kprefsdialog.cpp:234
 #, kde-format
 msgid "Choose..."
 msgstr "Sélectionner…"
 
-#: prefs/kprefsdialog.cpp:746
+#: prefs/kprefsdialog.cpp:765
 #, kde-format
 msgctxt "@title:window"
 msgid "Preferences"
 msgstr "Préférences"
 
-#: prefs/kprefsdialog.cpp:848
+#: prefs/kprefsdialog.cpp:867
 #, kde-format
 msgid ""
 "You are about to set all preferences to default values. All custom "
@@ -3907,12 +3907,12 @@ msgstr ""
 "Vous êtes sur le point réinitialiser toutes les préférences. Toutes les "
 "modifications de celles-ci vont être supprimées."
 
-#: prefs/kprefsdialog.cpp:850
+#: prefs/kprefsdialog.cpp:869
 #, kde-format
 msgid "Setting Default Preferences"
 msgstr "Configurer les préférences par défaut"
 
-#: prefs/kprefsdialog.cpp:851
+#: prefs/kprefsdialog.cpp:870
 #, kde-format
 msgid "Reset to Defaults"
 msgstr "Réinitialiser aux valeurs par défaut"
