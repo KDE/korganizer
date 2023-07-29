@@ -1816,6 +1816,10 @@ void CalendarView::processIncidenceSelection(const Akonadi::Item &item, const QD
         Q_EMIT incidenceSelected(item, date);
     }
 
+    if (!item.isValid()) {
+        return;
+    }
+
     KCalendarCore::Incidence::Ptr incidence = Akonadi::CalendarUtils::incidence(item);
     if (!incidence) {
         mSelectedIncidence = item;

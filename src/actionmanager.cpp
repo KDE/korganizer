@@ -1320,6 +1320,11 @@ void ActionManager::processIncidenceSelection(const Akonadi::Item &item, QDate d
     // qCDebug(KORGANIZER_LOG) << "ActionManager::processIncidenceSelection()";
     Q_UNUSED(date)
 
+    if (!item.isValid()) {
+        enableIncidenceActions(false);
+        return;
+    }
+
     const KCalendarCore::Incidence::Ptr incidence = Akonadi::CalendarUtils::incidence(item);
     if (!incidence) {
         enableIncidenceActions(false);
