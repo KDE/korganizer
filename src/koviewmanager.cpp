@@ -25,6 +25,8 @@
 #include "views/whatsnextview/kowhatsnextview.h"
 #include "widgets/navigatorbar.h"
 
+#include <Akonadi/EntityTreeModel>
+
 #include <KActionCollection>
 #include <KMessageBox>
 #include <QTabWidget>
@@ -342,7 +344,7 @@ void KOViewManager::zoomOutVertically()
 
 void KOViewManager::addView(KOrg::BaseView *view, bool isTab)
 {
-    view->setModel(mMainView->calendar()->model());
+    view->setModel(mMainView->calendar()->entityTreeModel());
     connectView(view);
     mViews.append(view);
     const KConfigGroup group = KSharedConfig::openConfig()->group(view->identifier());
@@ -433,6 +435,7 @@ void KOViewManager::showAgendaView()
         if (!mAgendaSideBySideView) {
             mAgendaSideBySideView = new MultiAgendaView(parent);
             mAgendaSideBySideView->setIdentifier("DefaultAgendaSideBySideView");
+            mAgendaSideBySideView->setCollectionSelectionProxyModel(mMainView->calendar()->checkableProxyModel());
             addView(mAgendaSideBySideView, showBoth);
         }
         if (showBoth && mAgendaViewTabs->indexOf(mAgendaSideBySideView) < 0) {

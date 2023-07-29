@@ -52,6 +52,7 @@ public:
 
     EventViews::MultiAgendaView *mMultiAgendaView = nullptr;
     KOEventPopupMenu *mPopup = nullptr;
+    KCheckableProxyModel *mCollectionSelectionModel = nullptr;
 
 private:
     MultiAgendaView *const q;
@@ -118,6 +119,12 @@ MultiAgendaView::MultiAgendaView(QWidget *parent)
 }
 
 MultiAgendaView::~MultiAgendaView() = default;
+
+void MultiAgendaView::setModel(QAbstractItemModel *model)
+{
+    KOEventView::setModel(model);
+    d->mMultiAgendaView->setModel(model);
+}
 
 Akonadi::Item::List MultiAgendaView::selectedIncidences()
 {
@@ -215,7 +222,7 @@ bool MultiAgendaView::hasConfigurationDialog() const
 
 void MultiAgendaView::showConfigurationDialog(QWidget *parent)
 {
-    QPointer<MultiAgendaViewConfigDialog> dlg(new MultiAgendaViewConfigDialog(model(), parent));
+    QPointer<MultiAgendaViewConfigDialog> dlg(new MultiAgendaViewConfigDialog(d->mCollectionSelectionModel, parent));
 
     dlg->setUseCustomColumns(d->mMultiAgendaView->customColumnSetupUsed());
     dlg->setNumberOfColumns(d->mMultiAgendaView->customNumberOfColumns());
@@ -246,6 +253,11 @@ KCheckableProxyModel *MultiAgendaView::takeCustomCollectionSelectionProxyModel()
 void MultiAgendaView::setCustomCollectionSelectionProxyModel(KCheckableProxyModel *model)
 {
     d->mMultiAgendaView->setCustomCollectionSelectionProxyModel(model);
+}
+
+void MultiAgendaView::setCollectionSelectionProxyModel(KCheckableProxyModel *model)
+{
+    d->mCollectionSelectionModel = model;
 }
 
 class KOrg::MultiAgendaViewConfigDialogPrivate
@@ -398,6 +410,7 @@ void MultiAgendaViewConfigDialogPrivate::setUpColumns(int n)
             auto sortProxy = new QSortFilterProxyModel;
             sortProxy->setDynamicSortFilter(true);
             sortProxy->setSourceModel(baseModel);
+            sortProxy->setObjectName(QStringLiteral("MultiAgendaColumnSetupProxyModel-%1").arg(i));
 
             auto columnFilterProxy = new KRearrangeColumnsProxyModel(sortProxy);
             columnFilterProxy->setSourceColumns(QVector<int>() << Akonadi::ETMCalendar::CollectionTitle);
@@ -406,6 +419,7 @@ void MultiAgendaViewConfigDialogPrivate::setUpColumns(int n)
             auto qsm = new QItemSelectionModel(columnFilterProxy, columnFilterProxy);
 
             auto selection = new KCheckableProxyModel;
+            selection->setObjectName(QStringLiteral("MultiAgendaColumnCheckableProxy-%1").arg(i));
             selection->setSourceModel(columnFilterProxy);
             selection->setSelectionModel(qsm);
 

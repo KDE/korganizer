@@ -32,12 +32,16 @@ public:
     explicit MultiAgendaView(QWidget *parent = nullptr);
     ~MultiAgendaView() override;
 
+    void setModel(QAbstractItemModel *model) override;
+
     Q_REQUIRED_RESULT Akonadi::Item::List selectedIncidences() override;
     Q_REQUIRED_RESULT KCalendarCore::DateList selectedIncidenceDates() override;
     Q_REQUIRED_RESULT int currentDateCount() const override;
     Q_REQUIRED_RESULT int maxDatesHint() const override;
 
     Q_REQUIRED_RESULT bool eventDurationHint(QDateTime &startDt, QDateTime &endDt, bool &allDay) override;
+
+    void setCollectionSelectionProxyModel(KCheckableProxyModel *model);
 
     /**
      * reimplemented from KOrg::BaseView
