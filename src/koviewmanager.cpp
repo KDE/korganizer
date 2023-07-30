@@ -433,7 +433,7 @@ void KOViewManager::showAgendaView()
 
     if (showSideBySide) {
         if (!mAgendaSideBySideView) {
-            mAgendaSideBySideView = new MultiAgendaView(parent);
+            mAgendaSideBySideView = new MultiAgendaView(mMainView, parent);
             mAgendaSideBySideView->setIdentifier("DefaultAgendaSideBySideView");
             mAgendaSideBySideView->setCollectionSelectionProxyModel(mMainView->calendar()->checkableProxyModel());
             addView(mAgendaSideBySideView, showBoth);

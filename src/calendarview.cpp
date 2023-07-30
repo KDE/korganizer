@@ -291,9 +291,31 @@ Akonadi::ETMCalendar::Ptr CalendarView::calendar() const
     return mCalendar;
 }
 
-QVector<Akonadi::CollectionCalendar::Ptr> CalendarView::calendars() const
+QVector<Akonadi::CollectionCalendar::Ptr> CalendarView::enabledCalendars() const
 {
-    return mCalendars;
+    return mEnabledCalendars;
+}
+
+Akonadi::CollectionCalendar::Ptr CalendarView::calendarForCollection(const Akonadi::Collection &collection)
+{
+    auto it = mCalendars.begin();
+    while (it != mCalendars.end()) {
+        if (it->isNull()) {
+            it = mCalendars.erase(it);
+            continue;
+        }
+
+        const auto calendar = it->toStrongRef();
+        if (calendar->collection() == collection) {
+            return calendar;
+        }
+
+        ++it;
+    }
+
+    const auto calendar = Akonadi::CollectionCalendar::Ptr::create(mCalendar->entityTreeModel(), collection);
+    mCalendars.emplace_back(calendar);
+    return calendar;
 }
 
 QDate CalendarView::activeDate(bool fallbackToToday)
@@ -2538,27 +2560,28 @@ static auto forCollection(const Akonadi::Collection &collection)
 
 void CalendarView::collectionSelected(const Akonadi::Collection &collection)
 {
-    auto calendar = std::find_if(mCalendars.cbegin(), mCalendars.cend(), forCollection(collection));
-    if (calendar != mCalendars.cend()) {
+    auto calendar = std::find_if(mEnabledCalendars.cbegin(), mEnabledCalendars.cend(), forCollection(collection));
+    if (calendar != mEnabledCalendars.cend()) {
         return;
     }
 
-    auto newCalendar = Akonadi::CollectionCalendar::Ptr::create(mCalendar->entityTreeModel(), collection);
-    mCalendars.push_back(newCalendar);
+    const auto newCalendar = calendarForCollection(collection);
+    mEnabledCalendars.push_back(newCalendar);
     mDateNavigatorContainer->addCalendar(newCalendar);
     Q_EMIT calendarAdded(newCalendar);
 }
 
 void CalendarView::collectionDeselected(const Akonadi::Collection &collection)
 {
-    auto calendar = std::find_if(mCalendars.begin(), mCalendars.end(), forCollection(collection));
-    if (calendar == mCalendars.end()) {
+    auto calendarIt = std::find_if(mEnabledCalendars.begin(), mEnabledCalendars.end(), forCollection(collection));
+    if (calendarIt == mEnabledCalendars.end()) {
         return;
     }
 
-    mDateNavigatorContainer->removeCalendar(*calendar);
-    Q_EMIT calendarRemoved(*calendar);
-    mCalendars.erase(calendar);
+    const auto calendar = *calendarIt;
+    mEnabledCalendars.removeOne(calendar);
+    mDateNavigatorContainer->removeCalendar(calendar);
+    Q_EMIT calendarRemoved(calendar);
 }
 
 Akonadi::Collection CalendarView::defaultCollection(const QLatin1String &mimeType) const

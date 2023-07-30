@@ -23,6 +23,8 @@
 
 #include <CalendarSupport/MessageWidget>
 
+#include <list>
+
 class DateChecker;
 class DateNavigator;
 class DateNavigatorContainer;
@@ -112,7 +114,9 @@ public:
     void setCalendar(const Akonadi::ETMCalendar::Ptr &);
     Akonadi::ETMCalendar::Ptr calendar() const override;
 
-    QVector<Akonadi::CollectionCalendar::Ptr> calendars() const;
+    QVector<Akonadi::CollectionCalendar::Ptr> enabledCalendars() const;
+
+    Akonadi::CollectionCalendar::Ptr calendarForCollection(const Akonadi::Collection &collection) override;
 
     void showMessage(const QString &message, KMessageWidget::MessageType);
 
@@ -706,7 +710,12 @@ private:
     QList<CalendarViewExtension *> mExtensions;
 
     Akonadi::ETMCalendar::Ptr mCalendar;
-    QVector<Akonadi::CollectionCalendar::Ptr> mCalendars;
+    QVector<Akonadi::CollectionCalendar::Ptr> mEnabledCalendars;
+    // Actual linked-list implementation - we don't expect to ever have that many calendars
+    // enabled that e.g. QMap/QHash would be substantially faster over looping over the list.
+    // The advantage of the list is that on each iteration we can quickly remove and stale
+    // weak pointers.
+    std::list<QWeakPointer<Akonadi::CollectionCalendar>> mCalendars;
 
     DateNavigator *mDateNavigator = nullptr;
     DateChecker *mDateChecker = nullptr;

@@ -91,7 +91,7 @@ SearchDialog::SearchDialog(CalendarView *calendarview)
     //   connect(m_popupMenu, &KOEventPopupMenu::toggleTodoCompletedSignal, this,
     //           &SearchDialog::toggleTodoCompletedSignal);
 
-    for (const auto &calendar : m_calendarview->calendars()) {
+    for (const auto &calendar : m_calendarview->enabledCalendars()) {
         m_listView->addCalendar(calendar);
     }
 
@@ -179,7 +179,7 @@ void SearchDialog::search(const QRegularExpression &regularExpression)
 
     KCalendarCore::Event::List events;
     if (m_ui->eventsCheck->isChecked()) {
-        for (const auto &calendar : m_calendarview->calendars()) {
+        for (const auto &calendar : m_calendarview->enabledCalendars()) {
             events += calendar->events(startDt, endDt, QTimeZone::systemTimeZone(), m_ui->inclusiveCheck->isChecked());
         }
     }
@@ -188,7 +188,7 @@ void SearchDialog::search(const QRegularExpression &regularExpression)
 
     if (m_ui->todosCheck->isChecked()) {
         if (m_ui->includeUndatedTodos->isChecked()) {
-            for (const auto &calendar : m_calendarview->calendars()) {
+            for (const auto &calendar : m_calendarview->enabledCalendars()) {
                 for (const KCalendarCore::Todo::Ptr &todo : calendar->todos()) {
                     Q_ASSERT(todo);
                     if ((!todo->hasStartDate() && !todo->hasDueDate()) // undated
@@ -205,7 +205,7 @@ void SearchDialog::search(const QRegularExpression &regularExpression)
         } else {
             QDate dt = startDt;
             while (dt <= endDt) {
-                for (const auto &calendar : m_calendarview->calendars()) {
+                for (const auto &calendar : m_calendarview->enabledCalendars()) {
                     todos += calendar->todos(dt);
                 }
                 dt = dt.addDays(1);
@@ -217,7 +217,7 @@ void SearchDialog::search(const QRegularExpression &regularExpression)
     if (m_ui->journalsCheck->isChecked()) {
         QDate dt = startDt;
         while (dt <= endDt) {
-            for (const auto &calendar : m_calendarview->calendars()) {
+            for (const auto &calendar : m_calendarview->enabledCalendars()) {
                 journals += calendar->journals(dt);
             }
             dt = dt.addDays(1);
@@ -230,7 +230,7 @@ void SearchDialog::search(const QRegularExpression &regularExpression)
         Q_ASSERT(ev);
         auto collectionId = ev->customProperty("VOLATILE", "COLLECTION-ID").toLongLong();
         Akonadi::Item item;
-        for (const auto &calendar : m_calendarview->calendars()) {
+        for (const auto &calendar : m_calendarview->enabledCalendars()) {
             if (calendar->collection().id() == collectionId) {
                 item = calendar->item(ev);
             }

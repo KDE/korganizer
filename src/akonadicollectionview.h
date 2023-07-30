@@ -98,6 +98,7 @@ private Q_SLOTS:
 private:
     Akonadi::EntityTreeModel *entityTreeModel() const;
 
+    CalendarView *mCalendarView = nullptr;
     Akonadi::StandardCalendarActionManager *mActionManager = nullptr;
     Akonadi::EntityTreeView *mCollectionView = nullptr;
     QAbstractProxyModel *mBaseModel = nullptr;

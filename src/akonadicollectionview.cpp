@@ -26,6 +26,7 @@
 #include <Akonadi/AgentInstanceCreateJob>
 #include <Akonadi/AgentManager>
 #include <Akonadi/AgentTypeDialog>
+#include <Akonadi/CalendarUtils>
 #include <Akonadi/CollectionDeleteJob>
 #include <Akonadi/CollectionFilterProxyModel>
 #include <Akonadi/CollectionIdentificationAttribute>
@@ -392,6 +393,7 @@ AkonadiCollectionView *AkonadiCollectionViewFactory::collectionView() const
 
 AkonadiCollectionView::AkonadiCollectionView(CalendarView *view, bool hasContextMenu, QWidget *parent)
     : CalendarViewExtension(parent)
+    , mCalendarView(view)
     , mHasContextMenu(hasContextMenu)
 {
     mManagerShowCollectionProperties = new ManageShowCollectionProperties(this, this);
@@ -858,7 +860,9 @@ void AkonadiCollectionView::onAction(const QModelIndex &index, int a)
     const auto action = static_cast<StyledCalendarDelegate::Action>(a);
     switch (action) {
     case StyledCalendarDelegate::Quickview: {
-        auto quickview = new Quickview(entityTreeModel(), Akonadi::CollectionUtils::fromIndex(index));
+        const auto collection = Akonadi::CollectionUtils::fromIndex(index);
+        const auto title = Akonadi::CalendarUtils::displayName(entityTreeModel(), collection);
+        auto quickview = new Quickview(mCalendarView->calendarForCollection(collection), title);
         quickview->setAttribute(Qt::WA_DeleteOnClose, true);
         quickview->show();
         break;

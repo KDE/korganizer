@@ -20,6 +20,7 @@
 
 namespace KOrg
 {
+class CalendarViewBase;
 class MultiAgendaViewPrivate;
 
 /**
@@ -29,7 +30,7 @@ class MultiAgendaView : public KOEventView
 {
     Q_OBJECT
 public:
-    explicit MultiAgendaView(QWidget *parent = nullptr);
+    explicit MultiAgendaView(CalendarViewBase *calendarView, QWidget *parent = nullptr);
     ~MultiAgendaView() override;
 
     void setModel(QAbstractItemModel *model) override;

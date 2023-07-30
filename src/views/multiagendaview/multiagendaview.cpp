@@ -8,6 +8,7 @@
 
 #include "multiagendaview.h"
 #include "akonadicollectionview.h"
+#include "calendarview.h"
 #include "koeventpopupmenu.h"
 #include "prefs/koprefs.h"
 #include "ui_multiagendaviewconfigwidget.h"
@@ -36,14 +37,33 @@ static QString generateColumnLabel(int c)
     return i18n("Agenda %1", c + 1);
 }
 
+class CalendarViewCalendarFactory : public EventViews::MultiAgendaView::CalendarFactory
+{
+public:
+    using Ptr = QSharedPointer<CalendarViewCalendarFactory>;
+
+    CalendarViewCalendarFactory(CalendarViewBase *calendarView)
+        : mView(calendarView)
+    {
+    }
+
+    Akonadi::CollectionCalendar::Ptr calendarForCollection(const Akonadi::Collection &collection) override
+    {
+        return mView->calendarForCollection(collection);
+    }
+
+private:
+    CalendarViewBase *const mView;
+};
+
 class KOrg::MultiAgendaViewPrivate
 {
 public:
-    MultiAgendaViewPrivate(MultiAgendaView *qq)
+    MultiAgendaViewPrivate(CalendarViewBase *calendarView, MultiAgendaView *qq)
         : q(qq)
     {
         auto layout = new QHBoxLayout(q);
-        mMultiAgendaView = new EventViews::MultiAgendaView(q);
+        mMultiAgendaView = new EventViews::MultiAgendaView(CalendarViewCalendarFactory::Ptr::create(calendarView), q);
         mMultiAgendaView->setPreferences(KOPrefs::instance()->eventViewsPreferences());
         layout->addWidget(mMultiAgendaView);
 
@@ -58,9 +78,9 @@ private:
     MultiAgendaView *const q;
 };
 
-MultiAgendaView::MultiAgendaView(QWidget *parent)
+MultiAgendaView::MultiAgendaView(CalendarViewBase *calendarView, QWidget *parent)
     : KOEventView(parent)
-    , d(new MultiAgendaViewPrivate(this))
+    , d(new MultiAgendaViewPrivate(calendarView, this))
 {
     connect(d->mMultiAgendaView, &EventViews::EventView::datesSelected, this, &KOEventView::datesSelected);
 
