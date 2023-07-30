@@ -73,6 +73,7 @@ public:
     EventViews::MultiAgendaView *mMultiAgendaView = nullptr;
     KOEventPopupMenu *mPopup = nullptr;
     KCheckableProxyModel *mCollectionSelectionModel = nullptr;
+    Akonadi::Collection::Id mCollectionId = -1;
 
 private:
     MultiAgendaView *const q;
@@ -136,6 +137,14 @@ MultiAgendaView::MultiAgendaView(CalendarViewBase *calendarView, QWidget *parent
     connect(d->mMultiAgendaView, &EventViews::EventView::newSubTodoSignal, this, &BaseView::newSubTodoSignal);
 
     connect(d->mMultiAgendaView, &EventViews::EventView::newJournalSignal, this, &BaseView::newJournalSignal);
+
+    connect(d->mMultiAgendaView, &EventViews::MultiAgendaView::activeCalendarChanged, this, [this](const Akonadi::CollectionCalendar::Ptr &calendar) {
+        if (calendar) {
+            d->mCollectionId = calendar->collection().id();
+        } else {
+            d->mCollectionId = -1;
+        }
+    });
 }
 
 MultiAgendaView::~MultiAgendaView() = default;
@@ -178,11 +187,7 @@ void MultiAgendaView::updateView()
 
 Akonadi::Collection::Id MultiAgendaView::collectionId() const
 {
-#pragma warn "Port me!"
-#if 0
-    return d->mMultiAgendaView->collectionId();
-#endif
-    return -1;
+    return d->mCollectionId;
 }
 
 void MultiAgendaView::changeIncidenceDisplay(const Akonadi::Item &, Akonadi::IncidenceChanger::ChangeType)
