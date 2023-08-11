@@ -9,14 +9,14 @@
 # Xosé <xosecalvo@gmail.com>, 2009, 2012, 2013.
 # Marce Villarino <mvillarino@kde-espana.es>, 2012, 2013, 2014.
 # Adrian Chaves Fernandez <adriyetichaves@gmail.com>, 2013, 2015, 2016, 2017.
-# Adrián Chaves (Gallaecio) <adrian@chaves.io>, 2017, 2018, 2019, 2020.
+# Adrián Chaves (Gallaecio) <adrian@chaves.io>, 2017, 2018, 2019, 2020, 2023.
 #
 msgid ""
 msgstr ""
 "Project-Id-Version: korganizer\n"
 "Report-Msgid-Bugs-To: https://bugs.kde.org\n"
 "POT-Creation-Date: 2023-07-24 07:36+0000\n"
-"PO-Revision-Date: 2020-01-05 19:14+0100\n"
+"PO-Revision-Date: 2023-08-05 11:52+0200\n"
 "Last-Translator: Adrián Chaves (Gallaecio) <adrian@chaves.io>\n"
 "Language-Team: Galician <proxecto@trasno.gal>\n"
 "Language: gl\n"
@@ -24,7 +24,7 @@ msgstr ""
 "Content-Type: text/plain; charset=UTF-8\n"
 "Content-Transfer-Encoding: 8bit\n"
 "Plural-Forms: nplurals=2; plural=n != 1;\n"
-"X-Generator: Lokalize 19.08.3\n"
+"X-Generator: Lokalize 23.04.3\n"
 
 #, kde-format
 msgctxt "NAME OF TRANSLATORS"
@@ -1042,7 +1042,7 @@ msgstr "Enviar a información de Oc&upación/Dispoñibilidade"
 #: actionmanager.cpp:703
 #, kde-format
 msgid "&Address Book"
-msgstr "C&aderno de enderezos"
+msgstr "&Axenda de enderezos"
 
 #: actionmanager.cpp:711
 #, kde-format
@@ -3279,7 +3279,7 @@ msgstr "Amosar estas datas especiais da lista de contactos"
 #: kontactplugin/specialdates/sdsummaryconfig_base.ui:209
 #, kde-format
 msgid "Show birthdays from your address book"
-msgstr "Amosar os aniversario do caderno de enderezos"
+msgstr "Amosar os aniversario da axenda de enderezos"
 
 #. i18n: ectx: property (whatsThis), widget (QCheckBox, mShowBirthdaysFromKABBox)
 #: kontactplugin/specialdates/sdsummaryconfig_base.ui:212
@@ -3288,7 +3288,7 @@ msgid ""
 "Enable this option to include birthdays from your address book in the "
 "upcoming special occasions summary."
 msgstr ""
-"Active esta opción para incluír os aniversarios do caderno de enderezos nos "
+"Active esta opción para incluír os aniversarios da axenda de enderezos nos "
 "resumos de vindeiras ocasións especiais."
 
 #. i18n: ectx: property (text), widget (QCheckBox, mShowBirthdaysFromKABBox)
@@ -3301,7 +3301,7 @@ msgstr "M&ostrar os aniversario"
 #: kontactplugin/specialdates/sdsummaryconfig_base.ui:225
 #, kde-format
 msgid "Show anniversaries from your address book"
-msgstr "Amosar os aniversarios do caderno de enderezos"
+msgstr "Amosar os aniversarios da axenda de enderezos"
 
 #. i18n: ectx: property (whatsThis), widget (QCheckBox, mShowAnniversariesFromKABBox)
 #: kontactplugin/specialdates/sdsummaryconfig_base.ui:228
@@ -3310,7 +3310,7 @@ msgid ""
 "Enable this option to include anniversaries from your address book in the "
 "upcoming special occasions summary."
 msgstr ""
-"Active esta opción para incluír os aniversarios do caderno de enderezos no "
+"Active esta opción para incluír os aniversarios da axenda de enderezos no "
 "resumo de vindeiras ocasións especiais."
 
 #. i18n: ectx: property (text), widget (QCheckBox, mShowAnniversariesFromKABBox)
