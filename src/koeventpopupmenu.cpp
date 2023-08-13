@@ -25,22 +25,20 @@
 
 #include <QCoreApplication>
 
-KOEventPopupMenu::KOEventPopupMenu(const Akonadi::ETMCalendar::Ptr &calendar, QWidget *parent)
+KOEventPopupMenu::KOEventPopupMenu(QWidget *parent)
     : QMenu(parent)
 {
-    init(calendar, MenuStyle::NormalView);
+    init(MenuStyle::NormalView);
 }
 
-KOEventPopupMenu::KOEventPopupMenu(const Akonadi::ETMCalendar::Ptr &calendar, MenuStyle menuStyle, QWidget *parent)
+KOEventPopupMenu::KOEventPopupMenu(MenuStyle menuStyle, QWidget *parent)
     : QMenu(parent)
 {
-    init(calendar, menuStyle);
+    init(menuStyle);
 }
 
-void KOEventPopupMenu::init(const Akonadi::ETMCalendar::Ptr &calendar, MenuStyle menuStyle)
+void KOEventPopupMenu::init(MenuStyle menuStyle)
 {
-    mCalendar = calendar;
-
     // These actions are always shown, no matter what
     addAction(QIcon::fromTheme(QStringLiteral("document-preview")), i18nc("@action:inmenu", "&Show"), this, &KOEventPopupMenu::popupShow);
 
@@ -139,8 +137,9 @@ void KOEventPopupMenu::appendShareOnlyItems()
         addAction(QIcon::fromTheme(QStringLiteral("mail-forward")), i18nc("@action:inmenu", "Send as iCalendar..."), this, &KOEventPopupMenu::forward));
 }
 
-void KOEventPopupMenu::showIncidencePopup(const Akonadi::Item &item, const QDate &qd)
+void KOEventPopupMenu::showIncidencePopup(const Akonadi::CollectionCalendar::Ptr &calendar, const Akonadi::Item &item, const QDate &qd)
 {
+    mCurrentCalendar = calendar;
     mCurrentIncidence = item;
     mCurrentDate = qd;
 
@@ -149,7 +148,7 @@ void KOEventPopupMenu::showIncidencePopup(const Akonadi::Item &item, const QDate
         return;
     }
 
-    if (!mCalendar) {
+    if (!mCurrentCalendar) {
         // TODO fix it
         qCDebug(KORGANIZER_LOG) << "Calendar is unset";
         return;
@@ -160,7 +159,7 @@ void KOEventPopupMenu::showIncidencePopup(const Akonadi::Item &item, const QDate
 
     // Determine if this Incidence's calendar is writeable.
     // Else all actions that might modify the Incidence are disabled.
-    const bool hasChangeRights = mCalendar->hasRight(mCurrentIncidence, Akonadi::Collection::CanChangeItem);
+    const bool hasChangeRights = mCurrentCalendar->hasRight(Akonadi::Collection::CanChangeItem);
 
     QList<QAction *>::Iterator it;
     QList<QAction *>::Iterator end;
@@ -243,7 +242,7 @@ void KOEventPopupMenu::slotPrint()
 
 void KOEventPopupMenu::print(bool preview)
 {
-    CalendarSupport::CalPrinter printer(this, mCalendar, true);
+    CalendarSupport::CalPrinter printer(this, mCurrentCalendar, true);
     connect(this, &KOEventPopupMenu::configChanged, &printer, &CalendarSupport::CalPrinter::updateConfig);
 
     KCalendarCore::Incidence::List selectedIncidences;
@@ -304,7 +303,7 @@ void KOEventPopupMenu::forward()
         KCalendarCore::Incidence::Ptr incidence = Akonadi::CalendarUtils::incidence(mCurrentIncidence);
         if (incidence) {
             Akonadi::ITIPHandler handler(this);
-            handler.setCalendar(mCalendar);
+            handler.setCalendar(mCurrentCalendar);
             handler.sendAsICalendar(incidence, this);
         }
     }
@@ -424,11 +423,6 @@ void KOEventPopupMenu::toggleTodoCompleted()
     if (CalendarSupport::hasTodo(mCurrentIncidence)) {
         Q_EMIT toggleOccurrenceCompletedSignal(mCurrentIncidence, mCurrentDate);
     }
-}
-
-void KOEventPopupMenu::setCalendar(const Akonadi::ETMCalendar::Ptr &calendar)
-{
-    mCalendar = calendar;
 }
 
 #include "moc_koeventpopupmenu.cpp"

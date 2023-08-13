@@ -12,7 +12,7 @@
 #include "koeventpopupmenu.h"
 
 #include <Akonadi/CalendarUtils>
-#include <Akonadi/ETMCalendar>
+#include <Akonadi/EntityTreeModel>
 #include <CalendarSupport/KCalPrefs>
 
 #include "korganizer_debug.h"
@@ -43,7 +43,7 @@ KOEventView::~KOEventView() = default;
 
 KOEventPopupMenu *KOEventView::eventPopup()
 {
-    auto eventPopup = new KOEventPopupMenu(calendar(), this);
+    auto eventPopup = new KOEventPopupMenu(this);
 
     connect(eventPopup, &KOEventPopupMenu::editIncidenceSignal, this, &KOEventView::editIncidenceSignal);
     connect(eventPopup, &KOEventPopupMenu::showIncidenceSignal, this, &KOEventView::showIncidenceSignal);
@@ -133,10 +133,11 @@ void KOEventView::defaultAction(const Akonadi::Item &aitem)
         return;
     }
 
-    if (!calendar()->hasRight(aitem, Akonadi::Collection::CanChangeItem)) {
-        Q_EMIT showIncidenceSignal(aitem);
-    } else {
+    const auto collection = Akonadi::EntityTreeModel::updatedCollection(model(), aitem.storageCollectionId());
+    if (collection.rights() & Akonadi::Collection::CanChangeItem) {
         Q_EMIT editIncidenceSignal(aitem);
+    } else {
+        Q_EMIT showIncidenceSignal(aitem);
     }
 }
 

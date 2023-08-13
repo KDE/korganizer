@@ -79,19 +79,14 @@ KDateNavigator::KDateNavigator(QWidget *parent)
 
 KDateNavigator::~KDateNavigator() = default;
 
-void KDateNavigator::setCalendar(const Akonadi::ETMCalendar::Ptr &calendar)
+void KDateNavigator::addCalendar(const Akonadi::CollectionCalendar::Ptr &calendar)
 {
-    if (mCalendar) {
-        disconnect(mCalendar.data(), nullptr, this, nullptr);
-    }
+    mDayMatrix->addCalendar(calendar);
+}
 
-    mCalendar = calendar;
-
-    if (mCalendar) {
-        connect(mCalendar.data(), &Akonadi::ETMCalendar::calendarChanged, this, &KDateNavigator::setUpdateNeeded);
-    }
-
-    mDayMatrix->setCalendar(calendar);
+void KDateNavigator::removeCalendar(const Akonadi::CollectionCalendar::Ptr &calendar)
+{
+    mDayMatrix->removeCalendar(calendar);
 }
 
 void KDateNavigator::setBaseDate(const QDate &date)

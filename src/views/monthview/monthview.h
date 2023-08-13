@@ -54,7 +54,7 @@ public:
 
     void setDateRange(const QDateTime &start, const QDateTime &end, const QDate &preferredMonth = QDate()) override;
 
-    void setCalendar(const Akonadi::ETMCalendar::Ptr &cal) override;
+    void setModel(QAbstractItemModel *model) override;
 
     void setIncidenceChanger(Akonadi::IncidenceChanger *changer) override;
 
@@ -66,6 +66,9 @@ public Q_SLOTS:
     void changeIncidenceDisplay(const Akonadi::Item &, Akonadi::IncidenceChanger::ChangeType) override;
 
     void updateConfig() override;
+
+    void calendarAdded(const Akonadi::CollectionCalendar::Ptr &calendar) override;
+    void calendarRemoved(const Akonadi::CollectionCalendar::Ptr &calendar) override;
 
 Q_SIGNALS:
     void fullViewChanged(bool enabled);

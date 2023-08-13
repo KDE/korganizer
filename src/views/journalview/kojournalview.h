@@ -38,7 +38,7 @@ public:
         return {};
     }
 
-    void setCalendar(const Akonadi::ETMCalendar::Ptr &) override;
+    void setModel(QAbstractItemModel *model) override;
 
     void getHighlightMode(bool &highlightEvents, bool &highlightTodos, bool &highlightJournals) override;
 
@@ -54,6 +54,9 @@ public Q_SLOTS:
     void changeIncidenceDisplay(const Akonadi::Item &incidence, Akonadi::IncidenceChanger::ChangeType) override;
     void setIncidenceChanger(Akonadi::IncidenceChanger *changer) override;
     void printJournal(const KCalendarCore::Journal::Ptr &journal, bool preview);
+
+    void calendarAdded(const Akonadi::CollectionCalendar::Ptr &calendar) override;
+    void calendarRemoved(const Akonadi::CollectionCalendar::Ptr &calendar) override;
 
 private:
     EventViews::JournalView *const mJournalView;

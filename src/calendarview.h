@@ -23,6 +23,8 @@
 
 #include <CalendarSupport/MessageWidget>
 
+#include <list>
+
 class DateChecker;
 class DateNavigator;
 class DateNavigatorContainer;
@@ -83,7 +85,7 @@ public:
   @short main calendar view widget
   @author Cornelius Schumacher
 */
-class KORGANIZERPRIVATE_EXPORT CalendarView : public KOrg::CalendarViewBase, public Akonadi::ETMCalendar::CalendarObserver
+class KORGANIZERPRIVATE_EXPORT CalendarView : public KOrg::CalendarViewBase, public KCalendarCore::Calendar::CalendarObserver
 {
     Q_OBJECT
 public:
@@ -111,6 +113,10 @@ public:
 
     void setCalendar(const Akonadi::ETMCalendar::Ptr &);
     Akonadi::ETMCalendar::Ptr calendar() const override;
+
+    QVector<Akonadi::CollectionCalendar::Ptr> enabledCalendars() const;
+
+    Akonadi::CollectionCalendar::Ptr calendarForCollection(const Akonadi::Collection &collection) override;
 
     void showMessage(const QString &message, KMessageWidget::MessageType);
 
@@ -243,6 +249,9 @@ Q_SIGNALS:
 
     void filtersUpdated(const QStringList &, int);
     void filterChanged();
+
+    void calendarAdded(const Akonadi::CollectionCalendar::Ptr &calendar);
+    void calendarRemoved(const Akonadi::CollectionCalendar::Ptr &calendar);
 
 public Q_SLOTS:
     /** options dialog made a changed to the configuration. we catch this
@@ -589,6 +598,9 @@ public Q_SLOTS:
      */
     void changeFullView(bool fullView);
 
+    void collectionSelected(const Akonadi::Collection &collection);
+    void collectionDeselected(const Akonadi::Collection &collection);
+
 protected Q_SLOTS:
     /**
      * Select a view or adapt the current view to display the specified dates.
@@ -696,6 +708,12 @@ private:
     QList<CalendarViewExtension *> mExtensions;
 
     Akonadi::ETMCalendar::Ptr mCalendar;
+    QVector<Akonadi::CollectionCalendar::Ptr> mEnabledCalendars;
+    // Actual linked-list implementation - we don't expect to ever have that many calendars
+    // enabled that e.g. QMap/QHash would be substantially faster over looping over the list.
+    // The advantage of the list is that on each iteration we can quickly remove and stale
+    // weak pointers.
+    std::list<QWeakPointer<Akonadi::CollectionCalendar>> mCalendars;
 
     DateNavigator *mDateNavigator = nullptr;
     DateChecker *mDateChecker = nullptr;

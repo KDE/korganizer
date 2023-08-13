@@ -214,7 +214,7 @@ void ActionManager::createCalendarAkonadi()
 
     mCalendarView->readSettings();
 
-    connect(calendar().data(), &Akonadi::ETMCalendar::calendarChanged, mCalendarView, &CalendarView::resourcesChanged);
+    // connect(calendar().data(), &Akonadi::ETMCalendar::calendarChanged, mCalendarView, &CalendarView::resourcesChanged);
     connect(mCalendarView, &CalendarView::configChanged, this, &ActionManager::updateConfig);
 
     calendar()->setOwner(KCalendarCore::Person(CalendarSupport::KCalPrefs::instance()->fullName(), CalendarSupport::KCalPrefs::instance()->email()));
@@ -1316,6 +1316,11 @@ void ActionManager::processIncidenceSelection(const Akonadi::Item &item, QDate d
 {
     // qCDebug(KORGANIZER_LOG) << "ActionManager::processIncidenceSelection()";
     Q_UNUSED(date)
+
+    if (!item.isValid()) {
+        enableIncidenceActions(false);
+        return;
+    }
 
     const KCalendarCore::Incidence::Ptr incidence = Akonadi::CalendarUtils::incidence(item);
     if (!incidence) {

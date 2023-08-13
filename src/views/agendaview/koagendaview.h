@@ -59,7 +59,7 @@ public:
     Q_REQUIRED_RESULT bool selectedIsSingleCell();
 
     /* reimp from BaseView */
-    void setCalendar(const Akonadi::ETMCalendar::Ptr &cal) override;
+    void setModel(QAbstractItemModel *model) override;
 
     void setTypeAheadReceiver(QObject *o) override;
 
@@ -92,6 +92,9 @@ public Q_SLOTS:
     void zoomOutVertically();
 
     void zoomView(const int delta, const QPoint &pos, const Qt::Orientation orient = Qt::Horizontal);
+
+    void calendarAdded(const Akonadi::CollectionCalendar::Ptr &calendar) override;
+    void calendarRemoved(const Akonadi::CollectionCalendar::Ptr &calendar) override;
 
 Q_SIGNALS:
     void zoomViewHorizontally(const QDate &, int count);

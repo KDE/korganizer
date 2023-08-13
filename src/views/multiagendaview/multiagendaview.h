@@ -20,6 +20,7 @@
 
 namespace KOrg
 {
+class CalendarViewBase;
 class MultiAgendaViewPrivate;
 
 /**
@@ -29,8 +30,10 @@ class MultiAgendaView : public KOEventView
 {
     Q_OBJECT
 public:
-    explicit MultiAgendaView(QWidget *parent = nullptr);
+    explicit MultiAgendaView(CalendarViewBase *calendarView, QWidget *parent = nullptr);
     ~MultiAgendaView() override;
+
+    void setModel(QAbstractItemModel *model) override;
 
     Q_REQUIRED_RESULT Akonadi::Item::List selectedIncidences() override;
     Q_REQUIRED_RESULT KCalendarCore::DateList selectedIncidenceDates() override;
@@ -38,7 +41,8 @@ public:
     Q_REQUIRED_RESULT int maxDatesHint() const override;
 
     Q_REQUIRED_RESULT bool eventDurationHint(QDateTime &startDt, QDateTime &endDt, bool &allDay) override;
-    void setCalendar(const Akonadi::ETMCalendar::Ptr &cal) override;
+
+    void setCollectionSelectionProxyModel(KCheckableProxyModel *model);
 
     /**
      * reimplemented from KOrg::BaseView
@@ -70,6 +74,9 @@ public Q_SLOTS:
     void updateConfig() override;
 
     void setIncidenceChanger(Akonadi::IncidenceChanger *changer) override;
+
+    void calendarAdded(const Akonadi::CollectionCalendar::Ptr &calendar) override;
+    void calendarRemoved(const Akonadi::CollectionCalendar::Ptr &calendar) override;
 
 private:
     std::unique_ptr<MultiAgendaViewPrivate> const d;

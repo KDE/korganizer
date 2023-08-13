@@ -12,10 +12,12 @@
 
 #pragma once
 
-#include <Akonadi/ETMCalendar>
+#include <Akonadi/CollectionCalendar>
 
 #include <QDate>
 #include <QFrame>
+#include <QVector>
+
 class KDateNavigator;
 
 class DateNavigatorContainer : public QFrame
@@ -28,7 +30,8 @@ public:
     /**
       Associate date navigator with a calendar. It is used by KODayMatrix.
     */
-    void setCalendar(const Akonadi::ETMCalendar::Ptr &);
+    void addCalendar(const Akonadi::CollectionCalendar::Ptr &calendar);
+    void removeCalendar(const Akonadi::CollectionCalendar::Ptr &calendar);
 
     QSize minimumSizeHint() const override;
     QSize sizeHint() const override;
@@ -133,7 +136,7 @@ private:
 
     KDateNavigator *const mNavigatorView;
 
-    Akonadi::ETMCalendar::Ptr mCalendar;
+    QVector<Akonadi::CollectionCalendar::Ptr> mCalendars;
 
     QList<KDateNavigator *> mExtraViews;
 

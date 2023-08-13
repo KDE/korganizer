@@ -23,7 +23,7 @@
 KOTodoView::KOTodoView(bool sidebarView, QWidget *parent)
     : BaseView(parent)
 {
-    auto eventPopup = new KOEventPopupMenu(calendar(), this);
+    auto eventPopup = new KOEventPopupMenu(this);
     mView = new EventViews::TodoView(KOPrefs::instance()->eventViewsPreferences(), sidebarView, parent);
     auto layout = new QVBoxLayout(this);
     layout->addWidget(mView);
@@ -89,10 +89,10 @@ KOTodoView::KOTodoView(bool sidebarView, QWidget *parent)
 
 KOTodoView::~KOTodoView() = default;
 
-void KOTodoView::setCalendar(const Akonadi::ETMCalendar::Ptr &calendar)
+void KOTodoView::setModel(QAbstractItemModel *model)
 {
-    BaseView::setCalendar(calendar);
-    mView->setCalendar(calendar);
+    BaseView::setModel(model);
+    mView->setModel(model);
 }
 
 Akonadi::Item::List KOTodoView::selectedIncidences()
@@ -165,7 +165,9 @@ void KOTodoView::printTodo(bool preview)
     KCalendarCore::Todo::Ptr todo = Akonadi::CalendarUtils::todo(todoItem);
     Q_ASSERT(todo);
 
-    CalendarSupport::CalPrinter printer(this, calendar(), true);
+    const auto calendar = calendarForCollection(todoItem.storageCollectionId());
+
+    CalendarSupport::CalPrinter printer(this, calendar, true);
     connect(this, &KOTodoView::configChanged, &printer, &CalendarSupport::CalPrinter::updateConfig);
 
     KCalendarCore::Incidence::List selectedIncidences;

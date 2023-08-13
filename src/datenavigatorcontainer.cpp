@@ -69,15 +69,26 @@ void DateNavigatorContainer::connectNavigatorView(KDateNavigator *v)
     connect(v, &KDateNavigator::yearSelected, this, &DateNavigatorContainer::yearSelected);
 }
 
-void DateNavigatorContainer::setCalendar(const Akonadi::ETMCalendar::Ptr &calendar)
+void DateNavigatorContainer::addCalendar(const Akonadi::CollectionCalendar::Ptr &calendar)
 {
-    mCalendar = calendar;
-    mNavigatorView->setCalendar(calendar);
+    mNavigatorView->addCalendar(calendar);
     for (KDateNavigator *n : std::as_const(mExtraViews)) {
         if (n) {
-            n->setCalendar(calendar);
+            n->addCalendar(calendar);
         }
     }
+    mCalendars.push_back(calendar);
+}
+
+void DateNavigatorContainer::removeCalendar(const Akonadi::CollectionCalendar::Ptr &calendar)
+{
+    mNavigatorView->removeCalendar(calendar);
+    for (KDateNavigator *n : std::as_const(mExtraViews)) {
+        if (n) {
+            n->removeCalendar(calendar);
+        }
+    }
+    mCalendars.removeOne(calendar);
 }
 
 // TODO_Recurrence: let the navigators update just once, and tell them that
@@ -219,7 +230,9 @@ void DateNavigatorContainer::resizeAllContents()
         while (count > (mExtraViews.count() + 1)) {
             auto n = new KDateNavigator(this);
             mExtraViews.append(n);
-            n->setCalendar(mCalendar);
+            for (const auto &calendar : mCalendars) {
+                n->addCalendar(calendar);
+            }
             connectNavigatorView(n);
         }
 

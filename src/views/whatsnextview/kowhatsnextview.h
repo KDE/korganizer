@@ -37,7 +37,6 @@ public:
     }
 
     Q_REQUIRED_RESULT CalendarSupport::CalPrinterBase::PrintType printType() const override;
-    void setCalendar(const Akonadi::ETMCalendar::Ptr &) override;
 
 public Q_SLOTS:
     void updateView() override;
@@ -45,6 +44,9 @@ public Q_SLOTS:
     void showIncidences(const Akonadi::Item::List &incidenceList, const QDate &date) override;
 
     void changeIncidenceDisplay(const Akonadi::Item &, Akonadi::IncidenceChanger::ChangeType) override;
+
+    void calendarAdded(const Akonadi::CollectionCalendar::Ptr &calendar) override;
+    void calendarRemoved(const Akonadi::CollectionCalendar::Ptr &calendar) override;
 
 private:
     EventViews::WhatsNextView *const mView;

@@ -12,6 +12,11 @@
 
 class Ui_quickview;
 
+namespace Akonadi
+{
+class EntityTreeModel;
+}
+
 namespace EventViews
 {
 class AgendaView;
@@ -21,7 +26,7 @@ class Quickview : public QDialog
 {
     Q_OBJECT
 public:
-    Quickview(const Akonadi::Collection &col);
+    Quickview(const Akonadi::CollectionCalendar::Ptr &calendar, const QString &title);
     ~Quickview() override;
 
 private:
@@ -33,6 +38,5 @@ private:
 
     Ui_quickview *const mUi;
     EventViews::AgendaView *mAgendaView = nullptr;
-    const Akonadi::Collection mCollection;
     int mDayRange = 7;
 };

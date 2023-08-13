@@ -26,6 +26,7 @@
 #include <Akonadi/AgentInstanceCreateJob>
 #include <Akonadi/AgentManager>
 #include <Akonadi/AgentTypeDialog>
+#include <Akonadi/CalendarUtils>
 #include <Akonadi/CollectionDeleteJob>
 #include <Akonadi/CollectionFilterProxyModel>
 #include <Akonadi/CollectionIdentificationAttribute>
@@ -374,8 +375,9 @@ protected:
 CalendarViewExtension *AkonadiCollectionViewFactory::create(QWidget *parent)
 {
     mAkonadiCollectionView = new AkonadiCollectionView(view(), true, parent);
+    QObject::connect(mAkonadiCollectionView, &AkonadiCollectionView::collectionEnabled, mView, &CalendarView::collectionSelected);
+    QObject::connect(mAkonadiCollectionView, &AkonadiCollectionView::collectionDisabled, mView, &CalendarView::collectionDeselected);
     QObject::connect(mAkonadiCollectionView, &AkonadiCollectionView::resourcesChanged, mView, &CalendarView::resourcesChanged);
-    QObject::connect(mAkonadiCollectionView, &AkonadiCollectionView::resourcesAddedRemoved, mView, &CalendarView::resourcesChanged);
     return mAkonadiCollectionView;
 }
 
@@ -391,6 +393,7 @@ AkonadiCollectionView *AkonadiCollectionViewFactory::collectionView() const
 
 AkonadiCollectionView::AkonadiCollectionView(CalendarView *view, bool hasContextMenu, QWidget *parent)
     : CalendarViewExtension(parent)
+    , mCalendarView(view)
     , mHasContextMenu(hasContextMenu)
 {
     mManagerShowCollectionProperties = new ManageShowCollectionProperties(this, this);
@@ -596,6 +599,8 @@ void AkonadiCollectionView::setCollectionSelectionProxyModel(KCheckableProxyMode
         return;
     }
 
+    m->selectionModel()->disconnect(this);
+
     mSelectionProxyModel = m;
     if (!mSelectionProxyModel) {
         return;
@@ -603,11 +608,46 @@ void AkonadiCollectionView::setCollectionSelectionProxyModel(KCheckableProxyMode
 
     new NewCalendarChecker(m);
     mBaseModel->setSourceModel(mSelectionProxyModel);
+
+    connect(m->selectionModel(), &QItemSelectionModel::selectionChanged, this, &AkonadiCollectionView::selectionChanged);
 }
 
 KCheckableProxyModel *AkonadiCollectionView::collectionSelectionProxyModel() const
 {
     return mSelectionProxyModel;
+}
+
+void AkonadiCollectionView::selectionChanged(const QItemSelection &selected, const QItemSelection &deselected)
+{
+    bool changed = false;
+
+    for (const auto &index : selected.indexes()) {
+        if (!index.isValid()) {
+            continue;
+        }
+
+        const auto col = index.data(Akonadi::EntityTreeModel::CollectionRole).value<Akonadi::Collection>();
+        if (col.isValid()) {
+            Q_EMIT collectionEnabled(col);
+            changed |= true;
+        }
+    }
+
+    for (const auto &index : deselected.indexes()) {
+        if (!index.isValid()) {
+            continue;
+        }
+
+        const auto col = index.data(Akonadi::EntityTreeModel::CollectionRole).value<Akonadi::Collection>();
+        if (col.isValid()) {
+            Q_EMIT collectionDisabled(col);
+            changed |= true;
+        }
+    }
+
+    if (changed) {
+        Q_EMIT resourcesChanged(true);
+    }
 }
 
 Akonadi::EntityTreeView *AkonadiCollectionView::view() const
@@ -808,17 +848,11 @@ bool AkonadiCollectionView::isChecked(const Akonadi::Collection &collection) con
 
 Akonadi::EntityTreeModel *AkonadiCollectionView::entityTreeModel() const
 {
-    auto proxy = qobject_cast<QAbstractProxyModel *>(mCollectionView->model());
-    while (proxy) {
-        auto etm = qobject_cast<Akonadi::EntityTreeModel *>(proxy->sourceModel());
-        if (etm) {
-            return etm;
-        }
-        proxy = qobject_cast<QAbstractProxyModel *>(proxy->sourceModel());
+    auto *etm = findEtm(mCollectionView->model());
+    if (!etm) {
+        qCWarning(KORGANIZER_LOG) << "Couldn't find EntityTreeModel";
     }
-
-    qCWarning(KORGANIZER_LOG) << "Couldn't find EntityTreeModel";
-    return nullptr;
+    return etm;
 }
 
 void AkonadiCollectionView::onAction(const QModelIndex &index, int a)
@@ -826,7 +860,9 @@ void AkonadiCollectionView::onAction(const QModelIndex &index, int a)
     const auto action = static_cast<StyledCalendarDelegate::Action>(a);
     switch (action) {
     case StyledCalendarDelegate::Quickview: {
-        auto quickview = new Quickview(Akonadi::CollectionUtils::fromIndex(index));
+        const auto collection = Akonadi::CollectionUtils::fromIndex(index);
+        const auto title = Akonadi::CalendarUtils::displayName(entityTreeModel(), collection);
+        auto quickview = new Quickview(mCalendarView->calendarForCollection(collection), title);
         quickview->setAttribute(Qt::WA_DeleteOnClose, true);
         quickview->show();
         break;

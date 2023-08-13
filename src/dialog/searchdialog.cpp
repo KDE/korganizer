@@ -12,6 +12,7 @@
 
 #include "calendarview.h"
 #include "koeventpopupmenu.h"
+#include "korganizer_debug.h"
 #include "ui_searchdialog_base.h"
 
 #include <EventViews/ListView>
@@ -54,7 +55,7 @@ SearchDialog::SearchDialog(CalendarView *calendarview)
     // Results list view
     auto layout = new QVBoxLayout;
     layout->setContentsMargins({});
-    m_listView = new EventViews::ListView(m_calendarview->calendar(), this);
+    m_listView = new EventViews::ListView(this);
     layout->addWidget(m_listView);
     m_ui->listViewFrame->setLayout(layout);
 
@@ -78,7 +79,7 @@ SearchDialog::SearchDialog(CalendarView *calendarview)
     connect(m_listView, &EventViews::ListView::editIncidenceSignal, this, &SearchDialog::editIncidenceSignal);
     connect(m_listView, &EventViews::ListView::deleteIncidenceSignal, this, &SearchDialog::deleteIncidenceSignal);
 
-    m_popupMenu = new KOEventPopupMenu(m_calendarview->calendar(), KOEventPopupMenu::MiniList, this);
+    m_popupMenu = new KOEventPopupMenu(KOEventPopupMenu::MiniList, this);
     connect(m_listView, &EventViews::ListView::showIncidencePopupSignal, m_popupMenu, &KOEventPopupMenu::showIncidencePopup);
 
     connect(m_popupMenu, &KOEventPopupMenu::showIncidenceSignal, this, &SearchDialog::showIncidenceSignal);
@@ -89,6 +90,10 @@ SearchDialog::SearchDialog(CalendarView *calendarview)
     //           &SearchDialog::toggleAlarmSignal);
     //   connect(m_popupMenu, &KOEventPopupMenu::toggleTodoCompletedSignal, this,
     //           &SearchDialog::toggleTodoCompletedSignal);
+
+    for (const auto &calendar : m_calendarview->enabledCalendars()) {
+        m_listView->addCalendar(calendar);
+    }
 
     readConfig();
 }
@@ -174,30 +179,35 @@ void SearchDialog::search(const QRegularExpression &regularExpression)
 
     KCalendarCore::Event::List events;
     if (m_ui->eventsCheck->isChecked()) {
-        events = m_calendarview->calendar()->events(startDt, endDt, QTimeZone::systemTimeZone(), m_ui->inclusiveCheck->isChecked());
+        for (const auto &calendar : m_calendarview->enabledCalendars()) {
+            events += calendar->events(startDt, endDt, QTimeZone::systemTimeZone(), m_ui->inclusiveCheck->isChecked());
+        }
     }
 
     KCalendarCore::Todo::List todos;
 
     if (m_ui->todosCheck->isChecked()) {
         if (m_ui->includeUndatedTodos->isChecked()) {
-            const KCalendarCore::Todo::List alltodos = m_calendarview->calendar()->todos();
-            for (const KCalendarCore::Todo::Ptr &todo : alltodos) {
-                Q_ASSERT(todo);
-                if ((!todo->hasStartDate() && !todo->hasDueDate()) // undated
-                    || (todo->hasStartDate() && (todo->dtStart().toLocalTime().date() >= startDt)
-                        && (todo->dtStart().toLocalTime().date() <= endDt)) // start dt in range
-                    || (todo->hasDueDate() && (todo->dtDue().toLocalTime().date() >= startDt)
-                        && (todo->dtDue().toLocalTime().date() <= endDt)) // due dt in range
-                    || (todo->hasCompletedDate() && (todo->completed().toLocalTime().date() >= startDt)
-                        && (todo->completed().toLocalTime().date() <= endDt))) { // completed dt in range
-                    todos.append(todo);
+            for (const auto &calendar : m_calendarview->enabledCalendars()) {
+                for (const KCalendarCore::Todo::Ptr &todo : calendar->todos()) {
+                    Q_ASSERT(todo);
+                    if ((!todo->hasStartDate() && !todo->hasDueDate()) // undated
+                        || (todo->hasStartDate() && (todo->dtStart().toLocalTime().date() >= startDt)
+                            && (todo->dtStart().toLocalTime().date() <= endDt)) // start dt in range
+                        || (todo->hasDueDate() && (todo->dtDue().toLocalTime().date() >= startDt)
+                            && (todo->dtDue().toLocalTime().date() <= endDt)) // due dt in range
+                        || (todo->hasCompletedDate() && (todo->completed().toLocalTime().date() >= startDt)
+                            && (todo->completed().toLocalTime().date() <= endDt))) { // completed dt in range
+                        todos.append(todo);
+                    }
                 }
             }
         } else {
             QDate dt = startDt;
             while (dt <= endDt) {
-                todos += m_calendarview->calendar()->todos(dt);
+                for (const auto &calendar : m_calendarview->enabledCalendars()) {
+                    todos += calendar->todos(dt);
+                }
                 dt = dt.addDays(1);
             }
         }
@@ -207,7 +217,9 @@ void SearchDialog::search(const QRegularExpression &regularExpression)
     if (m_ui->journalsCheck->isChecked()) {
         QDate dt = startDt;
         while (dt <= endDt) {
-            journals += m_calendarview->calendar()->journals(dt);
+            for (const auto &calendar : m_calendarview->enabledCalendars()) {
+                journals += calendar->journals(dt);
+            }
             dt = dt.addDays(1);
         }
     }
@@ -216,7 +228,18 @@ void SearchDialog::search(const QRegularExpression &regularExpression)
     const KCalendarCore::Incidence::List incidences = Akonadi::ETMCalendar::mergeIncidenceList(events, todos, journals);
     for (const KCalendarCore::Incidence::Ptr &ev : incidences) {
         Q_ASSERT(ev);
-        Akonadi::Item item = m_calendarview->calendar()->item(ev->uid());
+        auto collectionId = ev->customProperty("VOLATILE", "COLLECTION-ID").toLongLong();
+        Akonadi::Item item;
+        for (const auto &calendar : m_calendarview->enabledCalendars()) {
+            if (calendar->collection().id() == collectionId) {
+                item = calendar->item(ev);
+            }
+        }
+        if (!item.isValid()) {
+            qCWarning(KORGANIZER_LOG) << "Failed to translate incidence " << ev->uid() << " to Akonadi Item";
+            continue;
+        }
+
         if (m_ui->summaryCheck->isChecked()) {
             if (regularExpression.match(ev->summary()).hasMatch()) {
                 m_matchedEvents.append(item);

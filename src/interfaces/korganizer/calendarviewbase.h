@@ -10,6 +10,8 @@
 #pragma once
 
 #include "baseview.h"
+
+#include <Akonadi/CollectionCalendar>
 #include <Akonadi/ETMCalendar>
 
 namespace KOrg
@@ -30,6 +32,8 @@ public:
 
     virtual Akonadi::ETMCalendar::Ptr calendar() const = 0;
     virtual Akonadi::IncidenceChanger *incidenceChanger() const = 0;
+
+    virtual Akonadi::CollectionCalendar::Ptr calendarForCollection(const Akonadi::Collection &collection) = 0;
 
     virtual QDate startDate() = 0;
     virtual QDate endDate() = 0;

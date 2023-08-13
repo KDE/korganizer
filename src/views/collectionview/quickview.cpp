@@ -9,9 +9,6 @@
 #include "ui_quickview.h"
 
 #include <Akonadi/CalendarUtils>
-#include <Akonadi/ChangeRecorder>
-#include <Akonadi/EntityDisplayAttribute>
-#include <Akonadi/ItemFetchScope>
 
 #include <KCalendarCore/Event>
 
@@ -33,10 +30,9 @@ namespace
 static const char myQuickviewConfigGroupName[] = "Quickview";
 }
 
-Quickview::Quickview(const Akonadi::Collection &col)
+Quickview::Quickview(const Akonadi::CollectionCalendar::Ptr &calendar, const QString &title)
     : QDialog()
     , mUi(new Ui_quickview)
-    , mCollection(col)
 {
     auto buttonBox = new QDialogButtonBox(QDialogButtonBox::Close, this);
     auto mainWidget = new QWidget(this);
@@ -55,32 +51,11 @@ Quickview::Quickview(const Akonadi::Collection &col)
     mUi->mWeekBtn->hide();
     mUi->mDayBtn->hide();
 
-    // create etm for mCollection
-    auto monitor = new Akonadi::ChangeRecorder(this);
-    Akonadi::ItemFetchScope scope;
-    const QStringList allMimeTypes = {KCalendarCore::Event::eventMimeType(), KCalendarCore::Todo::todoMimeType(), KCalendarCore::Journal::journalMimeType()};
-
-    scope.fetchFullPayload(true);
-    scope.fetchAttribute<Akonadi::EntityDisplayAttribute>();
-
-    monitor->setCollectionMonitored(mCollection);
-    monitor->fetchCollection(true);
-    monitor->setItemFetchScope(scope);
-    monitor->setAllMonitored(true);
-
-    for (const QString &mimetype : allMimeTypes) {
-        monitor->setMimeTypeMonitored(mimetype, true);
-    }
-
-    Akonadi::ETMCalendar::Ptr calendar = Akonadi::ETMCalendar::Ptr(new Akonadi::ETMCalendar(monitor));
-
-    calendar->setCollectionFilteringEnabled(false);
-    mAgendaView->setCalendar(calendar);
-    setWindowTitle(i18nc("@title:window", "%1", Akonadi::CalendarUtils::displayName(calendar.data(), mCollection)));
+    mAgendaView->addCalendar(calendar);
 
     mUi->calendar->addWidget(mAgendaView);
 
-    setWindowTitle(i18nc("@title:window", "%1", Akonadi::CalendarUtils::displayName(calendar.data(), mCollection)));
+    setWindowTitle(title);
 
     connect(mUi->mTodayBtn, &QPushButton::clicked, this, &Quickview::onTodayClicked);
     connect(mUi->mNextBtn, &QPushButton::clicked, this, &Quickview::onNextClicked);

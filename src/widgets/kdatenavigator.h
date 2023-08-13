@@ -9,7 +9,7 @@
 
 #pragma once
 
-#include <Akonadi/ETMCalendar>
+#include <Akonadi/CollectionCalendar>
 #include <KCalendarCore/IncidenceBase> //for DateList typedef
 #include <QDate>
 #include <QFrame>
@@ -31,10 +31,8 @@ public:
     explicit KDateNavigator(QWidget *parent = nullptr);
     ~KDateNavigator() override;
 
-    /**
-      Associate date navigator with a calendar. It is used by KODayMatrix.
-    */
-    void setCalendar(const Akonadi::ETMCalendar::Ptr &);
+    void addCalendar(const Akonadi::CollectionCalendar::Ptr &calendar);
+    void removeCalendar(const Akonadi::CollectionCalendar::Ptr &calendar);
 
     void setBaseDate(const QDate &);
 
@@ -110,7 +108,6 @@ private:
 
     KCalendarCore::DateList mSelectedDates;
     QDate mBaseDate;
-    Akonadi::ETMCalendar::Ptr mCalendar;
 
     // Disabling copy constructor and assignment operator
     KDateNavigator(const KDateNavigator &);

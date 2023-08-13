@@ -57,11 +57,12 @@ public:
     */
     ~BaseView() override;
 
-    virtual void setCalendar(const Akonadi::ETMCalendar::Ptr &cal);
     /**
-      Return calendar object of this view.
-    */
-    virtual Akonadi::ETMCalendar::Ptr calendar();
+     * Sets the model used to display events.
+     */
+    virtual void setModel(QAbstractItemModel *model);
+
+    QAbstractItemModel *model() const;
 
     /**
       @return a list of selected events.  Most views can probably only
@@ -244,6 +245,9 @@ public Q_SLOTS:
     */
     virtual bool eventDurationHint(QDateTime &startDt, QDateTime &endDt, bool &allDay);
 
+    virtual void calendarAdded(const Akonadi::CollectionCalendar::Ptr &calendar);
+    virtual void calendarRemoved(const Akonadi::CollectionCalendar::Ptr &calendar);
+
 Q_SIGNALS:
     void incidenceSelected(const Akonadi::Item &, const QDate);
 
@@ -384,6 +388,9 @@ protected:
      * The default implementation returns the range unmodified
      */
     virtual QPair<QDateTime, QDateTime> actualDateRange(const QDateTime &start, const QDateTime &end, const QDate &preferredMonth = QDate()) const;
+
+    Akonadi::CollectionCalendar::Ptr calendarForCollection(Akonadi::Collection::Id collectionId) const;
+    Akonadi::CollectionCalendar::Ptr calendarForIncidence(const KCalendarCore::Incidence::Ptr &incidence) const;
 
 protected Q_SLOTS:
     virtual void calendarReset();

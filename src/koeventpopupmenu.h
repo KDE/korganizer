@@ -12,7 +12,7 @@
 #include <QDate>
 #include <QMenu>
 
-#include <Akonadi/ETMCalendar>
+#include <Akonadi/CollectionCalendar>
 #include <Akonadi/Item>
 
 /**
@@ -34,24 +34,19 @@ public:
     /**
      * Create an Incidence menu instance with the NormalView style.
      */
-    explicit KOEventPopupMenu(const Akonadi::ETMCalendar::Ptr &calendar, QWidget *parent = nullptr);
+    explicit KOEventPopupMenu(QWidget *parent = nullptr);
 
     /**
      * Create an Incidence menu instance with a specified style.
      */
-    KOEventPopupMenu(const Akonadi::ETMCalendar::Ptr &calendar, MenuStyle menuStyle, QWidget *parent = nullptr);
-
-    /**
-     * Change the @p calendar used by the Incidence menu.
-     */
-    void setCalendar(const Akonadi::ETMCalendar::Ptr &calendar);
+    KOEventPopupMenu(MenuStyle menuStyle, QWidget *parent = nullptr);
 
 public Q_SLOTS:
     /**
      * Display a pop-up menu that operates on the incidence contained in the
      * given item, and its occurrence displayed on the given date.
      */
-    void showIncidencePopup(const Akonadi::Item &, const QDate &);
+    void showIncidencePopup(const Akonadi::CollectionCalendar::Ptr &calendar, const Akonadi::Item &, const QDate &);
 
     void createEvent(const Akonadi::Item &item);
     void createNote(const Akonadi::Item &item);
@@ -91,7 +86,7 @@ Q_SIGNALS:
     void dissociateOccurrencesSignal(const Akonadi::Item &, const QDate &);
 
 private:
-    void init(const Akonadi::ETMCalendar::Ptr &calendar, MenuStyle menuStyle);
+    void init(MenuStyle menuStyle);
     void appendEditOnlyItems();
     void appendEventOnlyItems();
     void appendTodoOnlyItems();
@@ -101,7 +96,7 @@ private:
 
     void print(bool previous);
 
-    Akonadi::ETMCalendar::Ptr mCalendar;
+    Akonadi::CollectionCalendar::Ptr mCurrentCalendar;
     Akonadi::Item mCurrentIncidence;
     QDate mCurrentDate;
 

@@ -9,6 +9,7 @@
 
 #include "koviewmanager.h"
 #include "actionmanager.h"
+#include "akonadicollectionview.h"
 #include "calendarview.h"
 #include "datenavigator.h"
 #include "koglobals.h"
@@ -24,6 +25,8 @@
 #include "views/whatsnextview/kowhatsnextview.h"
 #include "widgets/navigatorbar.h"
 
+#include <Akonadi/EntityTreeModel>
+
 #include <KActionCollection>
 #include <KMessageBox>
 #include <QTabWidget>
@@ -36,6 +39,8 @@ KOViewManager::KOViewManager(CalendarView *mainView)
     : QObject()
     , mMainView(mainView)
 {
+    connect(mainView, &CalendarView::calendarAdded, this, &KOViewManager::addCalendar);
+    connect(mainView, &CalendarView::calendarRemoved, this, &KOViewManager::removeCalendar);
 }
 
 KOViewManager::~KOViewManager() = default;
@@ -289,6 +294,9 @@ void KOViewManager::connectView(KOrg::BaseView *view)
 
     connect(mMainView, &CalendarView::newIncidenceChanger, view, &BaseView::setIncidenceChanger);
 
+    connect(mMainView, &CalendarView::calendarAdded, view, &BaseView::calendarAdded);
+    connect(mMainView, &CalendarView::calendarRemoved, view, &BaseView::calendarRemoved);
+
     view->setIncidenceChanger(mMainView->incidenceChanger());
 }
 
@@ -336,6 +344,7 @@ void KOViewManager::zoomOutVertically()
 
 void KOViewManager::addView(KOrg::BaseView *view, bool isTab)
 {
+    view->setModel(mMainView->calendar()->entityTreeModel());
     connectView(view);
     mViews.append(view);
     const KConfigGroup group = KSharedConfig::openConfig()->group(view->identifier());
@@ -343,13 +352,15 @@ void KOViewManager::addView(KOrg::BaseView *view, bool isTab)
     if (!isTab) {
         mMainView->viewStack()->addWidget(view);
     }
+    for (const auto &calendar : mCalendars) {
+        view->calendarAdded(calendar);
+    }
 }
 
 void KOViewManager::showMonthView()
 {
     if (!mMonthView) {
         mMonthView = new KOrg::MonthView(mMainView->viewStack());
-        mMonthView->setCalendar(mMainView->calendar());
         mMonthView->setIdentifier("DefaultMonthView");
         addView(mMonthView);
         connect(mMonthView, &MonthView::fullViewChanged, mMainView, &CalendarView::changeFullView);
@@ -362,7 +373,6 @@ void KOViewManager::showWhatsNextView()
 {
     if (!mWhatsNextView) {
         mWhatsNextView = new KOWhatsNextView(mMainView->viewStack());
-        mWhatsNextView->setCalendar(mMainView->calendar());
         mWhatsNextView->setIdentifier("DefaultWhatsNextView");
         addView(mWhatsNextView);
     }
@@ -373,7 +383,7 @@ void KOViewManager::showWhatsNextView()
 void KOViewManager::showListView()
 {
     if (!mListView) {
-        mListView = new KOListView(mMainView->calendar(), mMainView->viewStack());
+        mListView = new KOListView(mMainView->viewStack());
         mListView->setIdentifier("DefaultListView");
         addView(mListView);
     }
@@ -403,7 +413,6 @@ void KOViewManager::showAgendaView()
     if (showMerged) {
         if (!mAgendaView) {
             mAgendaView = new KOAgendaView(parent);
-            mAgendaView->setCalendar(mMainView->calendar());
             mAgendaView->setIdentifier("DefaultAgendaView");
 
             addView(mAgendaView, showBoth);
@@ -424,9 +433,9 @@ void KOViewManager::showAgendaView()
 
     if (showSideBySide) {
         if (!mAgendaSideBySideView) {
-            mAgendaSideBySideView = new MultiAgendaView(parent);
+            mAgendaSideBySideView = new MultiAgendaView(mMainView, parent);
             mAgendaSideBySideView->setIdentifier("DefaultAgendaSideBySideView");
-            mAgendaSideBySideView->setCalendar(mMainView->calendar());
+            mAgendaSideBySideView->setCollectionSelectionProxyModel(mMainView->calendar()->checkableProxyModel());
             addView(mAgendaSideBySideView, showBoth);
         }
         if (showBoth && mAgendaViewTabs->indexOf(mAgendaSideBySideView) < 0) {
@@ -485,9 +494,7 @@ void KOViewManager::showTodoView()
 {
     if (!mTodoView) {
         mTodoView = new KOTodoView(false /*not sidebar*/, mMainView->viewStack());
-        mTodoView->setCalendar(mMainView->calendar());
         mTodoView->setIdentifier("DefaultTodoView");
-        mTodoView->setCalendar(mMainView->calendar());
         addView(mTodoView);
         connectTodoView(mTodoView);
 
@@ -502,7 +509,6 @@ void KOViewManager::showJournalView()
 {
     if (!mJournalView) {
         mJournalView = new KOJournalView(mMainView->viewStack());
-        mJournalView->setCalendar(mMainView->calendar());
         mJournalView->setIdentifier("DefaultJournalView");
         addView(mJournalView);
     }
@@ -514,7 +520,6 @@ void KOViewManager::showTimeLineView()
 {
     if (!mTimelineView) {
         mTimelineView = new KOTimelineView(mMainView->viewStack());
-        mTimelineView->setCalendar(mMainView->calendar());
         mTimelineView->setIdentifier("DefaultTimelineView");
         addView(mTimelineView);
     }
@@ -609,6 +614,16 @@ void KOViewManager::updateMultiCalendarDisplay()
 bool KOViewManager::agendaIsSelected() const
 {
     return mCurrentView == mAgendaView || mCurrentView == mAgendaSideBySideView || (mAgendaViewTabs && mCurrentView == mAgendaViewTabs->currentWidget());
+}
+
+void KOViewManager::addCalendar(const Akonadi::CollectionCalendar::Ptr &calendar)
+{
+    mCalendars.push_back(calendar);
+}
+
+void KOViewManager::removeCalendar(const Akonadi::CollectionCalendar::Ptr &calendar)
+{
+    mCalendars.removeAll(calendar);
 }
 
 #include "moc_koviewmanager.cpp"

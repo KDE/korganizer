@@ -54,17 +54,21 @@ KODayMatrix::KODayMatrix(QWidget *parent)
     mHighlightJournals = false;
 }
 
-void KODayMatrix::setCalendar(const Akonadi::ETMCalendar::Ptr &calendar)
+void KODayMatrix::addCalendar(const Akonadi::CollectionCalendar::Ptr &calendar)
 {
-    if (mCalendar) {
-        mCalendar->unregisterObserver(this);
-        mCalendar->disconnect(this);
-    }
+    calendar->registerObserver(this);
+    mCalendars.push_back(calendar);
 
-    mCalendar = calendar;
-    mCalendar->registerObserver(this);
+    setAcceptDrops(true);
+    updateIncidences();
+}
 
-    setAcceptDrops(mCalendar != nullptr);
+void KODayMatrix::removeCalendar(const Akonadi::CollectionCalendar::Ptr &calendar)
+{
+    calendar->unregisterObserver(this);
+    mCalendars.removeOne(calendar);
+
+    setAcceptDrops(!mCalendars.empty());
     updateIncidences();
 }
 
@@ -84,8 +88,8 @@ QColor KODayMatrix::getShadedColor(const QColor &color) const
 
 KODayMatrix::~KODayMatrix()
 {
-    if (mCalendar) {
-        mCalendar->unregisterObserver(this);
+    for (const auto &calendar : mCalendars) {
+        calendar->unregisterObserver(this);
     }
 
     delete[] mDays;
@@ -230,10 +234,6 @@ void KODayMatrix::updateView(QDate actdate)
 
 void KODayMatrix::updateIncidences()
 {
-    if (!mCalendar) {
-        return;
-    }
-
     mEvents.clear();
 
     if (mHighlightEvents) {
@@ -253,17 +253,17 @@ void KODayMatrix::updateIncidences()
 
 void KODayMatrix::updateJournals()
 {
-    const KCalendarCore::Incidence::List incidences = mCalendar->incidences();
-
-    for (const KCalendarCore::Incidence::Ptr &inc : incidences) {
-        Q_ASSERT(inc);
-        QDate d = inc->dtStart().toLocalTime().date();
-        if (inc->type() == KCalendarCore::Incidence::TypeJournal && d >= mDays[0] && d <= mDays[NUMDAYS - 1] && !mEvents.contains(d)) {
-            mEvents.append(d);
-        }
-        if (mEvents.count() == NUMDAYS) {
-            // No point in wasting cpu, all days are bold already
-            break;
+    for (const auto &calendar : mCalendars) {
+        for (const KCalendarCore::Incidence::Ptr &inc : calendar->incidences()) {
+            Q_ASSERT(inc);
+            QDate d = inc->dtStart().toLocalTime().date();
+            if (inc->type() == KCalendarCore::Incidence::TypeJournal && d >= mDays[0] && d <= mDays[NUMDAYS - 1] && !mEvents.contains(d)) {
+                mEvents.append(d);
+            }
+            if (mEvents.count() == NUMDAYS) {
+                // No point in wasting cpu, all days are bold already
+                break;
+            }
         }
     }
 }
@@ -279,33 +279,34 @@ void KODayMatrix::updateJournals()
  */
 void KODayMatrix::updateTodos()
 {
-    const KCalendarCore::Todo::List incidences = mCalendar->todos();
     QDate d;
-    for (const KCalendarCore::Todo::Ptr &t : incidences) {
-        if (mEvents.count() == NUMDAYS) {
-            // No point in wasting cpu, all days are bold already
-            break;
-        }
-        Q_ASSERT(t);
-        if (t->hasDueDate()) {
-            ushort recurType = t->recurrenceType();
+    for (const auto &calendar : mCalendars) {
+        for (const KCalendarCore::Todo::Ptr &t : calendar->todos()) {
+            if (mEvents.count() == NUMDAYS) {
+                // No point in wasting cpu, all days are bold already
+                break;
+            }
+            Q_ASSERT(t);
+            if (t->hasDueDate()) {
+                ushort recurType = t->recurrenceType();
 
-            if (t->recurs() && !(recurType == KCalendarCore::Recurrence::rDaily && !KOPrefs::instance()->mDailyRecur)
-                && !(recurType == KCalendarCore::Recurrence::rWeekly && !KOPrefs::instance()->mWeeklyRecur)) {
-                // It's a recurring todo, find out in which days it occurs
-                const auto timeDateList =
-                    t->recurrence()->timesInInterval(QDateTime(mDays[0], {}, Qt::LocalTime), QDateTime(mDays[NUMDAYS - 1], {}, Qt::LocalTime));
+                if (t->recurs() && !(recurType == KCalendarCore::Recurrence::rDaily && !KOPrefs::instance()->mDailyRecur)
+                    && !(recurType == KCalendarCore::Recurrence::rWeekly && !KOPrefs::instance()->mWeeklyRecur)) {
+                    // It's a recurring todo, find out in which days it occurs
+                    const auto timeDateList =
+                        t->recurrence()->timesInInterval(QDateTime(mDays[0], {}, Qt::LocalTime), QDateTime(mDays[NUMDAYS - 1], {}, Qt::LocalTime));
 
-                for (const QDateTime &dt : timeDateList) {
-                    d = dt.toLocalTime().date();
-                    if (!mEvents.contains(d)) {
+                    for (const QDateTime &dt : timeDateList) {
+                        d = dt.toLocalTime().date();
+                        if (!mEvents.contains(d)) {
+                            mEvents.append(d);
+                        }
+                    }
+                } else {
+                    d = t->dtDue().toLocalTime().date();
+                    if (d >= mDays[0] && d <= mDays[NUMDAYS - 1] && !mEvents.contains(d)) {
                         mEvents.append(d);
                     }
-                }
-            } else {
-                d = t->dtDue().toLocalTime().date();
-                if (d >= mDays[0] && d <= mDays[NUMDAYS - 1] && !mEvents.contains(d)) {
-                    mEvents.append(d);
                 }
             }
         }
@@ -319,63 +320,66 @@ void KODayMatrix::updateEvents()
         // No point in wasting cpu, all days are bold already
         return;
     }
-    const KCalendarCore::Event::List eventlist = mCalendar->events(mDays[0], mDays[NUMDAYS - 1], mCalendar->timeZone());
 
-    for (const KCalendarCore::Event::Ptr &event : eventlist) {
-        if (mEvents.count() == NUMDAYS) {
-            // No point in wasting cpu, all days are bold already
-            break;
-        }
-
-        Q_ASSERT(event);
-        const ushort recurType = event->recurrenceType();
-        const QDateTime dtStart = event->dtStart().toLocalTime();
-
-        // timed incidences occur in
-        //   [dtStart(), dtEnd()[. All-day incidences occur in [dtStart(), dtEnd()]
-        // so we subtract 1 second in the timed case
-        const int secsToAdd = event->allDay() ? 0 : -1;
-        const QDateTime dtEnd = event->dtEnd().toLocalTime().addSecs(secsToAdd);
-
-        if (!(recurType == KCalendarCore::Recurrence::rDaily && !KOPrefs::instance()->mDailyRecur)
-            && !(recurType == KCalendarCore::Recurrence::rWeekly && !KOPrefs::instance()->mWeeklyRecur)) {
-            KCalendarCore::DateTimeList timeDateList;
-            const bool isRecurrent = event->recurs();
-            const int eventDuration = dtStart.daysTo(dtEnd);
-
-            if (isRecurrent) {
-                // Its a recurring event, find out in which days it occurs
-                timeDateList = event->recurrence()->timesInInterval(QDateTime(mDays[0], {}, Qt::LocalTime), QDateTime(mDays[NUMDAYS - 1], {}, Qt::LocalTime));
-            } else {
-                if (dtStart.date() >= mDays[0]) {
-                    timeDateList.append(dtStart);
-                } else {
-                    // The event starts in another month (not visible))
-                    timeDateList.append(QDateTime(mDays[0], {}, Qt::LocalTime));
-                }
+    for (const auto &calendar : mCalendars) {
+        const auto eventlist = calendar->events(mDays[0], mDays[NUMDAYS - 1], calendar->timeZone());
+        for (const KCalendarCore::Event::Ptr &event : eventlist) {
+            if (mEvents.count() == NUMDAYS) {
+                // No point in wasting cpu, all days are bold already
+                break;
             }
 
-            for (auto t = timeDateList.begin(); t != timeDateList.end(); ++t) {
-                // This could be a multiday event, so iterate from dtStart() to dtEnd()
-                QDate d = t->toLocalTime().date();
-                int j = 0;
+            Q_ASSERT(event);
+            const ushort recurType = event->recurrenceType();
+            const QDateTime dtStart = event->dtStart().toLocalTime();
 
-                QDate occurrenceEnd;
+            // timed incidences occur in
+            //   [dtStart(), dtEnd()[. All-day incidences occur in [dtStart(), dtEnd()]
+            // so we subtract 1 second in the timed case
+            const int secsToAdd = event->allDay() ? 0 : -1;
+            const QDateTime dtEnd = event->dtEnd().toLocalTime().addSecs(secsToAdd);
+
+            if (!(recurType == KCalendarCore::Recurrence::rDaily && !KOPrefs::instance()->mDailyRecur)
+                && !(recurType == KCalendarCore::Recurrence::rWeekly && !KOPrefs::instance()->mWeeklyRecur)) {
+                KCalendarCore::DateTimeList timeDateList;
+                const bool isRecurrent = event->recurs();
+                const int eventDuration = dtStart.daysTo(dtEnd);
+
                 if (isRecurrent) {
-                    occurrenceEnd = d.addDays(eventDuration);
+                    // Its a recurring event, find out in which days it occurs
+                    timeDateList =
+                        event->recurrence()->timesInInterval(QDateTime(mDays[0], {}, Qt::LocalTime), QDateTime(mDays[NUMDAYS - 1], {}, Qt::LocalTime));
                 } else {
-                    occurrenceEnd = dtEnd.date();
+                    if (dtStart.date() >= mDays[0]) {
+                        timeDateList.append(dtStart);
+                    } else {
+                        // The event starts in another month (not visible))
+                        timeDateList.append(QDateTime(mDays[0], {}, Qt::LocalTime));
+                    }
                 }
 
-                do {
-                    mEvents.append(d);
-                    ++j;
-                    d = d.addDays(1);
-                } while (d <= occurrenceEnd && j < NUMDAYS);
+                for (auto t = timeDateList.begin(); t != timeDateList.end(); ++t) {
+                    // This could be a multiday event, so iterate from dtStart() to dtEnd()
+                    QDate d = t->toLocalTime().date();
+                    int j = 0;
+
+                    QDate occurrenceEnd;
+                    if (isRecurrent) {
+                        occurrenceEnd = d.addDays(eventDuration);
+                    } else {
+                        occurrenceEnd = dtEnd.date();
+                    }
+
+                    do {
+                        mEvents.append(d);
+                        ++j;
+                        d = d.addDays(1);
+                    } while (d <= occurrenceEnd && j < NUMDAYS);
+                }
             }
         }
+        mPendingChanges = false;
     }
-    mPendingChanges = false;
 }
 
 const QDate &KODayMatrix::getDate(int offset) const
@@ -594,10 +598,6 @@ void KODayMatrix::dragLeaveEvent(QDragLeaveEvent *dl)
 
 void KODayMatrix::dropEvent(QDropEvent *e)
 {
-    if (!mCalendar) {
-        e->ignore();
-        return;
-    }
     QList<QUrl> urls = (e->mimeData()->urls());
     // qCDebug(KORGANIZER_LOG)<<" urls :"<<urls;
     if (urls.isEmpty()) {

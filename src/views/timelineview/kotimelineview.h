@@ -47,10 +47,13 @@ public:
     }
 
     Q_REQUIRED_RESULT bool eventDurationHint(QDateTime &startDt, QDateTime &endDt, bool &allDay) override;
-    void setCalendar(const Akonadi::ETMCalendar::Ptr &cal) override;
     void setIncidenceChanger(Akonadi::IncidenceChanger *changer) override;
 
     Q_REQUIRED_RESULT CalendarSupport::CalPrinterBase::PrintType printType() const override;
+
+public Q_SLOTS:
+    void calendarAdded(const Akonadi::CollectionCalendar::Ptr &calendar) override;
+    void calendarRemoved(const Akonadi::CollectionCalendar::Ptr &calendar) override;
 
 private:
     KOEventPopupMenu *mEventPopup = nullptr;

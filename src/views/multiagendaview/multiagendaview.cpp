@@ -8,6 +8,7 @@
 
 #include "multiagendaview.h"
 #include "akonadicollectionview.h"
+#include "calendarview.h"
 #include "koeventpopupmenu.h"
 #include "prefs/koprefs.h"
 #include "ui_multiagendaviewconfigwidget.h"
@@ -36,14 +37,33 @@ static QString generateColumnLabel(int c)
     return i18n("Agenda %1", c + 1);
 }
 
+class CalendarViewCalendarFactory : public EventViews::MultiAgendaView::CalendarFactory
+{
+public:
+    using Ptr = QSharedPointer<CalendarViewCalendarFactory>;
+
+    CalendarViewCalendarFactory(CalendarViewBase *calendarView)
+        : mView(calendarView)
+    {
+    }
+
+    Akonadi::CollectionCalendar::Ptr calendarForCollection(const Akonadi::Collection &collection) override
+    {
+        return mView->calendarForCollection(collection);
+    }
+
+private:
+    CalendarViewBase *const mView;
+};
+
 class KOrg::MultiAgendaViewPrivate
 {
 public:
-    MultiAgendaViewPrivate(MultiAgendaView *qq)
+    MultiAgendaViewPrivate(CalendarViewBase *calendarView, MultiAgendaView *qq)
         : q(qq)
     {
         auto layout = new QHBoxLayout(q);
-        mMultiAgendaView = new EventViews::MultiAgendaView(q);
+        mMultiAgendaView = new EventViews::MultiAgendaView(CalendarViewCalendarFactory::Ptr::create(calendarView), q);
         mMultiAgendaView->setPreferences(KOPrefs::instance()->eventViewsPreferences());
         layout->addWidget(mMultiAgendaView);
 
@@ -52,14 +72,16 @@ public:
 
     EventViews::MultiAgendaView *mMultiAgendaView = nullptr;
     KOEventPopupMenu *mPopup = nullptr;
+    KCheckableProxyModel *mCollectionSelectionModel = nullptr;
+    Akonadi::Collection::Id mCollectionId = -1;
 
 private:
     MultiAgendaView *const q;
 };
 
-MultiAgendaView::MultiAgendaView(QWidget *parent)
+MultiAgendaView::MultiAgendaView(CalendarViewBase *calendarView, QWidget *parent)
     : KOEventView(parent)
-    , d(new MultiAgendaViewPrivate(this))
+    , d(new MultiAgendaViewPrivate(calendarView, this))
 {
     connect(d->mMultiAgendaView, &EventViews::EventView::datesSelected, this, &KOEventView::datesSelected);
 
@@ -115,15 +137,23 @@ MultiAgendaView::MultiAgendaView(QWidget *parent)
     connect(d->mMultiAgendaView, &EventViews::EventView::newSubTodoSignal, this, &BaseView::newSubTodoSignal);
 
     connect(d->mMultiAgendaView, &EventViews::EventView::newJournalSignal, this, &BaseView::newJournalSignal);
-}
 
-void MultiAgendaView::setCalendar(const Akonadi::ETMCalendar::Ptr &cal)
-{
-    d->mMultiAgendaView->setCalendar(cal);
-    d->mPopup->setCalendar(cal);
+    connect(d->mMultiAgendaView, &EventViews::MultiAgendaView::activeCalendarChanged, this, [this](const Akonadi::CollectionCalendar::Ptr &calendar) {
+        if (calendar) {
+            d->mCollectionId = calendar->collection().id();
+        } else {
+            d->mCollectionId = -1;
+        }
+    });
 }
 
 MultiAgendaView::~MultiAgendaView() = default;
+
+void MultiAgendaView::setModel(QAbstractItemModel *model)
+{
+    KOEventView::setModel(model);
+    d->mMultiAgendaView->setModel(model);
+}
 
 Akonadi::Item::List MultiAgendaView::selectedIncidences()
 {
@@ -157,7 +187,7 @@ void MultiAgendaView::updateView()
 
 Akonadi::Collection::Id MultiAgendaView::collectionId() const
 {
-    return d->mMultiAgendaView->collectionId();
+    return d->mCollectionId;
 }
 
 void MultiAgendaView::changeIncidenceDisplay(const Akonadi::Item &, Akonadi::IncidenceChanger::ChangeType)
@@ -217,7 +247,7 @@ bool MultiAgendaView::hasConfigurationDialog() const
 
 void MultiAgendaView::showConfigurationDialog(QWidget *parent)
 {
-    QPointer<MultiAgendaViewConfigDialog> dlg(new MultiAgendaViewConfigDialog(d->mMultiAgendaView->calendar()->entityTreeModel(), parent));
+    QPointer<MultiAgendaViewConfigDialog> dlg(new MultiAgendaViewConfigDialog(d->mCollectionSelectionModel, parent));
 
     dlg->setUseCustomColumns(d->mMultiAgendaView->customColumnSetupUsed());
     dlg->setNumberOfColumns(d->mMultiAgendaView->customNumberOfColumns());
@@ -248,6 +278,11 @@ KCheckableProxyModel *MultiAgendaView::takeCustomCollectionSelectionProxyModel()
 void MultiAgendaView::setCustomCollectionSelectionProxyModel(KCheckableProxyModel *model)
 {
     d->mMultiAgendaView->setCustomCollectionSelectionProxyModel(model);
+}
+
+void MultiAgendaView::setCollectionSelectionProxyModel(KCheckableProxyModel *model)
+{
+    d->mCollectionSelectionModel = model;
 }
 
 class KOrg::MultiAgendaViewConfigDialogPrivate
@@ -286,6 +321,16 @@ void MultiAgendaView::restoreConfig(const KConfigGroup &configGroup)
 void MultiAgendaView::saveConfig(KConfigGroup &configGroup)
 {
     d->mMultiAgendaView->saveConfig(configGroup);
+}
+
+void MultiAgendaView::calendarAdded(const Akonadi::CollectionCalendar::Ptr &calendar)
+{
+    d->mMultiAgendaView->addCalendar(calendar);
+}
+
+void MultiAgendaView::calendarRemoved(const Akonadi::CollectionCalendar::Ptr &calendar)
+{
+    d->mMultiAgendaView->removeCalendar(calendar);
 }
 
 MultiAgendaViewConfigDialog::MultiAgendaViewConfigDialog(QAbstractItemModel *baseModel, QWidget *parent)
@@ -390,6 +435,7 @@ void MultiAgendaViewConfigDialogPrivate::setUpColumns(int n)
             auto sortProxy = new QSortFilterProxyModel;
             sortProxy->setDynamicSortFilter(true);
             sortProxy->setSourceModel(baseModel);
+            sortProxy->setObjectName(QStringLiteral("MultiAgendaColumnSetupProxyModel-%1").arg(i));
 
             auto columnFilterProxy = new KRearrangeColumnsProxyModel(sortProxy);
             columnFilterProxy->setSourceColumns(QList<int>() << Akonadi::ETMCalendar::CollectionTitle);
@@ -398,6 +444,7 @@ void MultiAgendaViewConfigDialogPrivate::setUpColumns(int n)
             auto qsm = new QItemSelectionModel(columnFilterProxy, columnFilterProxy);
 
             auto selection = new KCheckableProxyModel;
+            selection->setObjectName(QStringLiteral("MultiAgendaColumnCheckableProxy-%1").arg(i));
             selection->setSourceModel(columnFilterProxy);
             selection->setSelectionModel(qsm);
 

@@ -7,6 +7,7 @@
 #include "koeventpopupmenutest.h"
 #include "koeventpopupmenu.h"
 
+#include <Akonadi/CollectionCalendar>
 #include <Akonadi/NoteUtils>
 
 #include <CalendarSupport/NoteEditDialog>
@@ -25,16 +26,15 @@ KoEventPopupMenuTest::KoEventPopupMenuTest(QObject *parent)
 
 void KoEventPopupMenuTest::createEventFromEvent()
 {
-    Akonadi::ETMCalendar::Ptr calendar(new Akonadi::ETMCalendar());
-    KOEventPopupMenu menu(nullptr);
+    auto calendar = Akonadi::CollectionCalendar::Ptr::create(Akonadi::Collection{});
+    KOEventPopupMenu menu;
 
     KCalendarCore::Event::Ptr event(new KCalendarCore::Event());
     Akonadi::Item item;
     item.setMimeType(KCalendarCore::Event::eventMimeType());
     item.setPayload<KCalendarCore::Event::Ptr>(event);
 
-    menu.setCalendar(calendar);
-    menu.showIncidencePopup(item, QDate());
+    menu.showIncidencePopup(calendar, item, QDate());
     auto createevent = menu.findChild<QAction *>(QStringLiteral("createevent"));
     createevent->trigger();
 
@@ -44,16 +44,15 @@ void KoEventPopupMenuTest::createEventFromEvent()
 
 void KoEventPopupMenuTest::createTodoFromTodo()
 {
-    Akonadi::ETMCalendar::Ptr calendar(new Akonadi::ETMCalendar());
-    KOEventPopupMenu menu(nullptr);
+    auto calendar = Akonadi::CollectionCalendar::Ptr::create(Akonadi::Collection());
+    KOEventPopupMenu menu;
 
     KCalendarCore::Todo::Ptr todo(new KCalendarCore::Todo());
     Akonadi::Item item;
     item.setMimeType(KCalendarCore::Todo::todoMimeType());
     item.setPayload<KCalendarCore::Todo::Ptr>(todo);
 
-    menu.setCalendar(calendar);
-    menu.showIncidencePopup(item, QDate());
+    menu.showIncidencePopup(calendar, item, QDate());
     auto createtodo = menu.findChild<QAction *>(QStringLiteral("createtodo"));
     createtodo->trigger();
 
@@ -63,8 +62,8 @@ void KoEventPopupMenuTest::createTodoFromTodo()
 
 void KoEventPopupMenuTest::createEventFromTodo()
 {
-    Akonadi::ETMCalendar::Ptr calendar(new Akonadi::ETMCalendar());
-    KOEventPopupMenu menu(nullptr);
+    auto calendar = Akonadi::CollectionCalendar::Ptr::create(Akonadi::Collection());
+    KOEventPopupMenu menu;
 
     KCalendarCore::Todo::Ptr todo(new KCalendarCore::Todo());
     Akonadi::Item item;
@@ -80,8 +79,7 @@ void KoEventPopupMenuTest::createEventFromTodo()
     todo->setDtDue(end);
     todo->setSummary(summary);
 
-    menu.setCalendar(calendar);
-    menu.showIncidencePopup(item, QDate());
+    menu.showIncidencePopup(calendar, item, QDate());
     auto createevent = menu.findChild<QAction *>(QStringLiteral("createevent"));
     createevent->trigger();
     auto dlg = menu.findChild<IncidenceEditorNG::IncidenceDialog *>();
@@ -98,8 +96,8 @@ void KoEventPopupMenuTest::createEventFromTodo()
 
 void KoEventPopupMenuTest::createTodoFromEvent()
 {
-    Akonadi::ETMCalendar::Ptr calendar(new Akonadi::ETMCalendar());
-    KOEventPopupMenu menu(nullptr);
+    auto calendar = Akonadi::CollectionCalendar::Ptr::create(Akonadi::Collection());
+    KOEventPopupMenu menu;
 
     KCalendarCore::Event::Ptr event(new KCalendarCore::Event());
     Akonadi::Item item;
@@ -115,8 +113,7 @@ void KoEventPopupMenuTest::createTodoFromEvent()
     event->setDtEnd(end);
     event->setSummary(summary);
 
-    menu.setCalendar(calendar);
-    menu.showIncidencePopup(item, QDate());
+    menu.showIncidencePopup(calendar, item, QDate());
     auto createtodo = menu.findChild<QAction *>(QStringLiteral("createtodo"));
     createtodo->trigger();
     auto dlg = menu.findChild<IncidenceEditorNG::IncidenceDialog *>();
@@ -133,8 +130,8 @@ void KoEventPopupMenuTest::createTodoFromEvent()
 
 void KoEventPopupMenuTest::createNoteFromEvent()
 {
-    Akonadi::ETMCalendar::Ptr calendar(new Akonadi::ETMCalendar());
-    KOEventPopupMenu menu(nullptr);
+    auto calendar = Akonadi::CollectionCalendar::Ptr::create(Akonadi::Collection());
+    KOEventPopupMenu menu;
 
     KCalendarCore::Event::Ptr event(new KCalendarCore::Event());
     Akonadi::Item item;
@@ -152,8 +149,7 @@ void KoEventPopupMenuTest::createNoteFromEvent()
     event->setSummary(summary);
     event->setDescription(description, true);
 
-    menu.setCalendar(calendar);
-    menu.showIncidencePopup(item, QDate());
+    menu.showIncidencePopup(calendar, item, QDate());
     auto createnoteforevent = menu.findChild<QAction *>(QStringLiteral("createnoteforevent"));
     auto noteedit = menu.findChild<CalendarSupport::NoteEditDialog *>();
     QVERIFY(!noteedit);
@@ -172,8 +168,8 @@ void KoEventPopupMenuTest::createNoteFromEvent()
 
 void KoEventPopupMenuTest::createNoteFromTodo()
 {
-    Akonadi::ETMCalendar::Ptr calendar(new Akonadi::ETMCalendar());
-    KOEventPopupMenu menu(nullptr);
+    auto calendar = Akonadi::CollectionCalendar::Ptr::create(Akonadi::Collection());
+    KOEventPopupMenu menu;
 
     KCalendarCore::Todo::Ptr todo(new KCalendarCore::Todo());
     Akonadi::Item item;
@@ -191,8 +187,7 @@ void KoEventPopupMenuTest::createNoteFromTodo()
     todo->setSummary(summary);
     todo->setDescription(description);
 
-    menu.setCalendar(calendar);
-    menu.showIncidencePopup(item, QDate());
+    menu.showIncidencePopup(calendar, item, QDate());
     auto createnotefortodo = menu.findChild<QAction *>(QStringLiteral("createnotefortodo"));
 
     auto noteedit = menu.findChild<CalendarSupport::NoteEditDialog *>();
@@ -211,16 +206,15 @@ void KoEventPopupMenuTest::createNoteFromTodo()
 
 void KoEventPopupMenuTest::defaultMenuEventVisible()
 {
-    Akonadi::ETMCalendar::Ptr calendar(new Akonadi::ETMCalendar());
-    KOEventPopupMenu menu(nullptr);
+    auto calendar = Akonadi::CollectionCalendar::Ptr::create(Akonadi::Collection());
+    KOEventPopupMenu menu;
 
     KCalendarCore::Event::Ptr event(new KCalendarCore::Event());
     Akonadi::Item item;
     item.setMimeType(KCalendarCore::Event::eventMimeType());
     item.setPayload<KCalendarCore::Event::Ptr>(event);
 
-    menu.setCalendar(calendar);
-    menu.showIncidencePopup(item, QDate());
+    menu.showIncidencePopup(calendar, item, QDate());
     auto createevent = menu.findChild<QAction *>(QStringLiteral("createevent"));
     auto createnoteforevent = menu.findChild<QAction *>(QStringLiteral("createnoteforevent"));
     auto createtodo = menu.findChild<QAction *>(QStringLiteral("createtodo"));
@@ -233,8 +227,8 @@ void KoEventPopupMenuTest::defaultMenuEventVisible()
 
 void KoEventPopupMenuTest::defaultMenuTodoVisible()
 {
-    Akonadi::ETMCalendar::Ptr calendar(new Akonadi::ETMCalendar());
-    KOEventPopupMenu menu(nullptr);
+    auto calendar = Akonadi::CollectionCalendar::Ptr::create(Akonadi::Collection());
+    KOEventPopupMenu menu;
 
     KCalendarCore::Todo::Ptr todo(new KCalendarCore::Todo());
 
@@ -242,8 +236,7 @@ void KoEventPopupMenuTest::defaultMenuTodoVisible()
     item.setMimeType(KCalendarCore::Todo::todoMimeType());
     item.setPayload<KCalendarCore::Todo::Ptr>(todo);
 
-    menu.setCalendar(calendar);
-    menu.showIncidencePopup(item, QDate());
+    menu.showIncidencePopup(calendar, item, QDate());
     auto createevent = menu.findChild<QAction *>(QStringLiteral("createevent"));
     auto createnoteforevent = menu.findChild<QAction *>(QStringLiteral("createnoteforevent"));
     auto createtodo = menu.findChild<QAction *>(QStringLiteral("createtodo"));
