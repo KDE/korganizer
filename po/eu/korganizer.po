@@ -14,7 +14,7 @@ msgstr ""
 "Project-Id-Version: korganizer\n"
 "Report-Msgid-Bugs-To: https://bugs.kde.org\n"
 "POT-Creation-Date: 2023-08-14 00:47+0000\n"
-"PO-Revision-Date: 2023-08-12 22:43+0200\n"
+"PO-Revision-Date: 2023-08-15 00:40+0200\n"
 "Last-Translator: Iñigo Salvador Azurmendi <xalba@ni.eus>\n"
 "Language-Team: Basque <kde-i18n-eu@kde.org>\n"
 "Language: eu\n"
@@ -2398,7 +2398,7 @@ msgstr "Hurrengo &hilabetean (31 egun)"
 #: kontactplugin/korganizer/apptsummaryconfig_base.ui:57
 #, kde-format
 msgid "Select the days for showing upcoming events"
-msgstr "Hautatu hurrengo ekitaldiak erakusteko egunak"
+msgstr "Hautatu zein egunetako hurrengo ekitaldiak erakutsi"
 
 #. i18n: ectx: property (whatsThis), widget (QRadioButton, mDateRangeButton)
 #: kontactplugin/korganizer/apptsummaryconfig_base.ui:60
@@ -2756,50 +2756,49 @@ msgstr "Erakutsi epemuga gaur duten zereginak bakarrik"
 
 #. i18n: ectx: property (whatsThis), widget (QRadioButton, mDateTodayButton)
 #: kontactplugin/korganizer/todosummaryconfig_base.ui:31
-#, fuzzy, kde-format
-#| msgid "Check this box if you want to show seconds on the current-time line."
+#, kde-format
 msgid "Check this box if you want to see To-dos due on this date only."
 msgstr ""
-"Hautatu aukera hau uneko-denboraren lerroan segunduak ikusi nahi badituzu."
+"Markatu lauki hori epemuga data horretan duten zereginak bakarrik ikusi nahi "
+"badituzu."
 
 #. i18n: ectx: property (toolTip), widget (QRadioButton, mDateMonthButton)
 #: kontactplugin/korganizer/todosummaryconfig_base.ui:44
-#, fuzzy, kde-format
-#| msgid "Print only to-dos due in the &range:"
+#, kde-format
 msgid "Show To-dos due within the next month"
-msgstr "Inprimatu &barruti honetan iraungiko diren egitekoak bakarrik:"
+msgstr "Erakutsi epemuga datorren hilabetean duten zereginak"
 
 #. i18n: ectx: property (whatsThis), widget (QRadioButton, mDateMonthButton)
 #: kontactplugin/korganizer/todosummaryconfig_base.ui:47
-#, fuzzy, kde-format
-#| msgid "Check this box if you want to show seconds on the current-time line."
+#, kde-format
 msgid ""
 "Check this box if you want to see To-dos that are due sometime during the "
 "next 31 days."
 msgstr ""
-"Hautatu aukera hau uneko-denboraren lerroan segunduak ikusi nahi badituzu."
+"Markatu lauki hori, datozen 31 egunetan, noizbait, epemuga duten zereginak "
+"ikusteko."
 
 #. i18n: ectx: property (toolTip), widget (QRadioButton, mDateRangeButton)
 #: kontactplugin/korganizer/todosummaryconfig_base.ui:65
 #, kde-format
 msgid "Select the days for showing pending To-dos"
-msgstr ""
+msgstr "Hautatu zein egunetako osatu gabeko zereginak erakutsi"
 
 #. i18n: ectx: property (whatsThis), widget (QRadioButton, mDateRangeButton)
 #: kontactplugin/korganizer/todosummaryconfig_base.ui:71
-#, fuzzy, kde-format
-#| msgid "Check this box if you want to show seconds on the current-time line."
+#, kde-format
 msgid ""
 "Check this box if you want specify the number of days in the future for "
 "pending To-dos."
 msgstr ""
-"Hautatu aukera hau uneko-denboraren lerroan segunduak ikusi nahi badituzu."
+"Markatu lauki hori osatu gabeko zereginen etorkizuneko egun kopurua zehaztu "
+"nahi baduzu."
 
 #. i18n: ectx: property (toolTip), widget (QSpinBox, mCustomDays)
 #: kontactplugin/korganizer/todosummaryconfig_base.ui:87
 #, kde-format
 msgid "Set the number of days to show pending To-dos"
-msgstr ""
+msgstr "Ezarri osatu gabeko zereginak erakusteko egun kopurua"
 
 #. i18n: ectx: property (whatsThis), widget (QSpinBox, mCustomDays)
 #: kontactplugin/korganizer/todosummaryconfig_base.ui:90
@@ -2808,324 +2807,301 @@ msgid ""
 "Use this spinbox to set the number of days to show pending To-dos up to 1 "
 "year in the future."
 msgstr ""
+"Erabili biraketa-lauki hori, etorkizunean, hurrengo urtera arteko osatu "
+"gabeko zereginak erakusteko egun kopurua ezartzeko."
 
 #. i18n: ectx: property (title), widget (QGroupBox, mHideGroup)
 #: kontactplugin/korganizer/todosummaryconfig_base.ui:133
 #, kde-format
 msgid "Hide Following To-do Types"
-msgstr ""
+msgstr "Ezkutatu ondoko zeregin motak"
 
 #. i18n: ectx: property (toolTip), widget (QCheckBox, mHideCompletedBox)
 #: kontactplugin/korganizer/todosummaryconfig_base.ui:139
-#, fuzzy, kde-format
-#| msgid "Hide co&mpleted to-dos"
+#, kde-format
 msgid "Hide completed To-dos"
-msgstr "Ezkutatu &burututako egitekoak"
+msgstr "Ezkutatu osatutako zereginak"
 
 #. i18n: ectx: property (whatsThis), widget (QCheckBox, mHideCompletedBox)
 #: kontactplugin/korganizer/todosummaryconfig_base.ui:142
-#, fuzzy, kde-format
-#| msgid "Check this box if you want to show seconds on the current-time line."
+#, kde-format
 msgid ""
 "Check this box if you do not want to see To-dos that have already been "
 "completed."
 msgstr ""
-"Hautatu aukera hau uneko-denboraren lerroan segunduak ikusi nahi badituzu."
+"Markatu lauki hori dagoeneko osatu diren zereginak ikusi nahi badituzu."
 
 #. i18n: ectx: property (text), widget (QCheckBox, mHideCompletedBox)
 #: kontactplugin/korganizer/todosummaryconfig_base.ui:145
-#, fuzzy, kde-format
-#| msgid "Complete"
+#, kde-format
 msgid "&Completed"
-msgstr "Osatuta"
+msgstr "&Osatuta"
 
 #. i18n: ectx: property (toolTip), widget (QCheckBox, mHideOpenEndedBox)
 #: kontactplugin/korganizer/todosummaryconfig_base.ui:155
-#, fuzzy, kde-format
-#| msgid "Include to-dos &without due date"
+#, kde-format
 msgid "Hide To-dos without a due date"
-msgstr "Sartu egitekoak iraungipen-datarik &gabe"
+msgstr "Ezkutatu epemugarik gabeko zereginak"
 
 #. i18n: ectx: property (whatsThis), widget (QCheckBox, mHideOpenEndedBox)
 #: kontactplugin/korganizer/todosummaryconfig_base.ui:158
-#, fuzzy, kde-format
-#| msgid "Check this box if you want to show seconds on the current-time line."
+#, kde-format
 msgid "Check this box if you do not want to see open-ended To-dos."
-msgstr ""
-"Hautatu aukera hau uneko-denboraren lerroan segunduak ikusi nahi badituzu."
+msgstr "Markatu lauki hori amaiera irekiko zereginik ikusi nahi ez baduzu."
 
 #. i18n: ectx: property (text), widget (QCheckBox, mHideOpenEndedBox)
 #: kontactplugin/korganizer/todosummaryconfig_base.ui:161
 #, kde-format
 msgid "&Open-ended (no due date)"
-msgstr ""
+msgstr "&Amaiera irekia (epemugarik gabe)"
 
 #. i18n: ectx: property (toolTip), widget (QCheckBox, mHideUnstartedBox)
 #: kontactplugin/korganizer/todosummaryconfig_base.ui:171
-#, fuzzy, kde-format
-#| msgid "Hide &inactive to-dos"
+#, kde-format
 msgid "Hide unstarted To-dos"
-msgstr "Ezkutatu egiteko &inaktiboak"
+msgstr "Ezkutatu hasi gabeko zereginak"
 
 #. i18n: ectx: property (whatsThis), widget (QCheckBox, mHideUnstartedBox)
 #: kontactplugin/korganizer/todosummaryconfig_base.ui:174
-#, fuzzy, kde-format
-#| msgid "Check this box if you want to show seconds on the current-time line."
+#, kde-format
 msgid ""
 "Check this box if you do not want to see To-dos with a start date in the "
 "future."
 msgstr ""
-"Hautatu aukera hau uneko-denboraren lerroan segunduak ikusi nahi badituzu."
+"Markatu lauki hori hasiera data etorkizunean duen zereginik ikusi nahi ez "
+"baduzu."
 
 #. i18n: ectx: property (text), widget (QCheckBox, mHideUnstartedBox)
 #: kontactplugin/korganizer/todosummaryconfig_base.ui:177
 #, kde-format
 msgid "&Unstarted (start date is in the future)"
-msgstr ""
+msgstr "&Hasteke (hasteko data etorkizun)"
 
 #. i18n: ectx: property (toolTip), widget (QCheckBox, mHideInProgressBox)
 #: kontactplugin/korganizer/todosummaryconfig_base.ui:184
-#, fuzzy, kde-format
-#| msgid "Hide &inactive to-dos"
+#, kde-format
 msgid "Hide in-progress To-dos"
-msgstr "Ezkutatu egiteko &inaktiboak"
+msgstr "Ezkutatu garatzen ari diren zereginak"
 
 #. i18n: ectx: property (whatsThis), widget (QCheckBox, mHideInProgressBox)
 #: kontactplugin/korganizer/todosummaryconfig_base.ui:187
-#, fuzzy, kde-format
-#| msgid "Check this box if you want to show seconds on the current-time line."
+#, kde-format
 msgid ""
 "Check this box if you do not want to see To-dos that have been started but "
 "are not yet completed."
 msgstr ""
-"Hautatu aukera hau uneko-denboraren lerroan segunduak ikusi nahi badituzu."
+"Markatu lauki hori hasita baina osatu gabe dagoen zereginik ikusi nahi ez "
+"baduzu."
 
 #. i18n: ectx: property (text), widget (QCheckBox, mHideInProgressBox)
 #: kontactplugin/korganizer/todosummaryconfig_base.ui:190
 #, kde-format
 msgid "&In-progress (started but not completed)"
-msgstr ""
+msgstr "&Garatzen ari da (hasita baina osatu gabe)"
 
 #. i18n: ectx: property (toolTip), widget (QCheckBox, mHideOverdueBox)
 #: kontactplugin/korganizer/todosummaryconfig_base.ui:197
-#, fuzzy, kde-format
-#| msgid "Hide co&mpleted to-dos"
+#, kde-format
 msgid "Hide overdue To-dos"
-msgstr "Ezkutatu &burututako egitekoak"
+msgstr "Ezkutatu atzeratutako zereginak"
 
 #. i18n: ectx: property (whatsThis), widget (QCheckBox, mHideOverdueBox)
 #: kontactplugin/korganizer/todosummaryconfig_base.ui:203
-#, fuzzy, kde-format
-#| msgid "Check this box if you want to show seconds on the current-time line."
+#, kde-format
 msgid ""
 "Check this box if you do not want to see To-dos that are past their due date "
 "but have not yet been completed."
 msgstr ""
-"Hautatu aukera hau uneko-denboraren lerroan segunduak ikusi nahi badituzu."
+"Markatu lauki hori epemuga gaindituta egon arren osatu gabe dagoen zereginik "
+"ikusi nahi ez baduzu."
 
 #. i18n: ectx: property (text), widget (QCheckBox, mHideOverdueBox)
 #: kontactplugin/korganizer/todosummaryconfig_base.ui:206
 #, kde-format
 msgid "Over&due (not completed and beyond due-date)"
-msgstr ""
+msgstr "At&zeratuta (osatu gabe eta epemuga gaindituta)"
 
 #. i18n: ectx: property (toolTip), widget (QCheckBox, mShowMineOnly)
 #: kontactplugin/korganizer/todosummaryconfig_base.ui:222
-#, fuzzy, kde-format
-#| msgid "Import Calendar"
+#, kde-format
 msgid "Show To-dos belonging to my calendars only"
-msgstr "Inportatu egutegia"
+msgstr "Erakutsi nire egutegietako zereginak bakarrik"
 
 #. i18n: ectx: property (whatsThis), widget (QCheckBox, mShowMineOnly)
 #: kontactplugin/korganizer/todosummaryconfig_base.ui:225
-#, fuzzy, kde-format
-#| msgid "Check this box if you want to show seconds on the current-time line."
+#, kde-format
 msgid ""
 "Check this box if you want the summary to show To-dos belonging to your "
 "calendars only."
 msgstr ""
-"Hautatu aukera hau uneko-denboraren lerroan segunduak ikusi nahi badituzu."
+"Markatu lauki hori laburpenean zure egutegietako zereginak bakarrik erakuts "
+"daitezen."
 
 #. i18n: ectx: property (text), widget (QCheckBox, mShowMineOnly)
 #: kontactplugin/korganizer/todosummaryconfig_base.ui:228
-#, fuzzy, kde-format
-#| msgid "&Show To-do"
+#, kde-format
 msgid "Show &my To-dos only"
-msgstr "&Erakutsi egitekoa"
+msgstr "Erakutsi &nire zereginak bakarrik"
 
 #: kontactplugin/korganizer/todosummarywidget.cpp:42
-#, fuzzy, kde-format
-#| msgid "Purge To-dos"
+#, kde-format
 msgid "Pending To-dos"
-msgstr "Egiteke dauden zereginak"
+msgstr "Atzeratutako zereginak"
 
 #: kontactplugin/korganizer/todosummarywidget.cpp:180
-#, fuzzy, kde-format
-#| msgid "day"
+#, kde-format
 msgctxt "the to-do is due today"
 msgid "Today"
-msgstr "eguna"
+msgstr "Gaur"
 
 #: kontactplugin/korganizer/todosummarywidget.cpp:182
-#, fuzzy, kde-format
+#, kde-format
 msgctxt "the to-do is due tomorrow"
 msgid "Tomorrow"
 msgstr "Bihar"
 
 #: kontactplugin/korganizer/todosummarywidget.cpp:188
-#, fuzzy, kde-format
-#| msgctxt "monthname year"
-#| msgid "%1 %2"
+#, kde-format
 msgctxt "1. weekday, 2. time"
 msgid "%1 %2"
 msgstr "%1 %2"
 
 #: kontactplugin/korganizer/todosummarywidget.cpp:216
-#, fuzzy, kde-format
+#, kde-format
 msgid "1 day ago"
 msgid_plural "%1 days ago"
-msgstr[0] "Atzo"
+msgstr[0] "Duela egun 1"
 msgstr[1] "Duela %1 egun"
 
 #: kontactplugin/korganizer/todosummarywidget.cpp:218
-#, fuzzy, kde-format
-#| msgid "Due"
+#, kde-format
 msgctxt "the to-do is due"
 msgid "due"
-msgstr "Iraungipena"
+msgstr "epemuga"
 
 #: kontactplugin/korganizer/todosummarywidget.cpp:271
-#, fuzzy, kde-format
-#| msgid "Print only to-dos due in the &range:"
+#, kde-format
 msgid "No pending to-dos due within the next day"
 msgid_plural "No pending to-dos due within the next %1 days"
-msgstr[0] "Inprimatu &barruti honetan iraungiko diren egitekoak bakarrik:"
-msgstr[1] "Inprimatu &barruti honetan iraungiko diren egitekoak bakarrik:"
+msgstr[0] "Ez dago hurrengo egunean epemuga duen osatu gabeko zereginik"
+msgstr[1] "Ez dago hurrengo %1 egunean epemuga duen osatu gabeko zereginik"
 
 #: kontactplugin/korganizer/todosummarywidget.cpp:329
-#, fuzzy, kde-format
-#| msgctxt "delete completed to-dos"
-#| msgid "Pur&ge Completed"
+#, kde-format
 msgid "&Mark To-do Completed"
-msgstr "Eza&batu burututakoak"
+msgstr "&Markatu zeregina osatuta"
 
 #: kontactplugin/korganizer/todosummarywidget.cpp:349
-#, fuzzy, kde-format
-#| msgid "Edit To-do"
+#, kde-format
 msgid "Edit To-do: \"%1\""
-msgstr "Editatu egitekoa"
+msgstr "Editatu zeregina: \"%1\""
 
 #: kontactplugin/korganizer/todosummarywidget.cpp:369
 #, kde-format
 msgid "open-ended"
-msgstr ""
+msgstr "amaiera irekia"
 
 #: kontactplugin/korganizer/todosummarywidget.cpp:371
-#, fuzzy, kde-format
+#, kde-format
 msgctxt "the to-do is overdue"
 msgid "overdue"
-msgstr "Atzeratua"
+msgstr "atzeratua"
 
 #: kontactplugin/korganizer/todosummarywidget.cpp:373
-#, fuzzy, kde-format
+#, kde-format
 msgctxt "the to-do starts today"
 msgid "starts today"
-msgstr "Hasierako data:"
+msgstr "gaur hastekoa da"
 
 #: kontactplugin/korganizer/todosummarywidget.cpp:377
-#, fuzzy, kde-format
+#, kde-format
 msgctxt "the to-do has not been started yet"
 msgid "not-started"
-msgstr "Hasi gabe"
+msgstr "hasi gabe"
 
 #: kontactplugin/korganizer/todosummarywidget.cpp:379
-#, fuzzy, kde-format
-#| msgid "co&mpleted"
+#, kde-format
 msgctxt "the to-do is completed"
 msgid "completed"
-msgstr "&osatuta"
+msgstr "osatuta"
 
 #: kontactplugin/korganizer/todosummarywidget.cpp:381
-#, fuzzy, kde-format
+#, kde-format
 msgctxt "the to-do is in-progress"
 msgid "in-progress "
-msgstr "Lantzen..."
+msgstr "garatzen ari da"
 
 #: kontactplugin/korganizer/todosummarywidget.cpp:386
-#, fuzzy, kde-format
+#, kde-format
 msgctxt "Separator for status like this: overdue, completed"
 msgid ","
-msgstr ", "
+msgstr ","
 
 #. i18n: ectx: property (windowTitle), widget (QWidget, SDSummaryConfig_Base)
 #: kontactplugin/specialdates/sdsummaryconfig_base.ui:16
-#, fuzzy, kde-format
-#| msgid "Calendar"
+#, kde-format
 msgid "Special Dates Summary Configuration"
-msgstr "Egutegia"
+msgstr "Data berezien laburpenaren konfigurazioa"
 
 #. i18n: ectx: property (title), widget (QGroupBox, mDaysGroup)
 #: kontactplugin/specialdates/sdsummaryconfig_base.ui:22
 #, kde-format
 msgid "Show Special Dates Starting"
-msgstr ""
+msgstr "Erakutsi hasiera ... duten data bereziak"
 
 #. i18n: ectx: property (toolTip), widget (QRadioButton, mDateTodayButton)
 #: kontactplugin/specialdates/sdsummaryconfig_base.ui:28
 #, kde-format
 msgid "Show special occasions for today only"
-msgstr ""
+msgstr "Erakutsi bakarrik gaurko gertaera bereziak"
 
 #. i18n: ectx: property (whatsThis), widget (QRadioButton, mDateTodayButton)
 #: kontactplugin/specialdates/sdsummaryconfig_base.ui:31
-#, fuzzy, kde-format
-#| msgid "Check this box if you want to show seconds on the current-time line."
+#, kde-format
 msgid ""
 "Check this box if you want to see special occasions occurring on this date "
 "only."
 msgstr ""
-"Hautatu aukera hau uneko-denboraren lerroan segunduak ikusi nahi badituzu."
+"Markatu lauki hori bakarrik data honetan gertatzen diren gertaera bereziak "
+"ikusteko."
 
 #. i18n: ectx: property (toolTip), widget (QRadioButton, mDateMonthButton)
 #: kontactplugin/specialdates/sdsummaryconfig_base.ui:44
 #, kde-format
 msgid "Show special occasions starting within the next month"
-msgstr ""
+msgstr "Erakutsi datorren hilabetean hasten diren gertaera bereziak"
 
 #. i18n: ectx: property (whatsThis), widget (QRadioButton, mDateMonthButton)
 #: kontactplugin/specialdates/sdsummaryconfig_base.ui:47
-#, fuzzy, kde-format
-#| msgid "Check this box if you want to show seconds on the current-time line."
+#, kde-format
 msgid ""
 "Check this box if you want to see special occasions that start sometime "
 "during the next 31 days."
 msgstr ""
-"Hautatu aukera hau uneko-denboraren lerroan segunduak ikusi nahi badituzu."
+"Markatu lauki hori, datozen 31 egunetan, noizbait, hasten diren gertaera "
+"bereziak ikusteko."
 
 #. i18n: ectx: property (toolTip), widget (QRadioButton, mDateRangeButton)
 #: kontactplugin/specialdates/sdsummaryconfig_base.ui:65
 #, kde-format
 msgid "Select the days for showing upcoming special occasions"
-msgstr ""
+msgstr "Hautatu zein egunetako hurrengo gertaera bereziak erakutsi"
 
 #. i18n: ectx: property (whatsThis), widget (QRadioButton, mDateRangeButton)
 #: kontactplugin/specialdates/sdsummaryconfig_base.ui:68
-#, fuzzy, kde-format
-#| msgid ""
-#| "Check this option if you want to have to-dos on the print, placed by "
-#| "their due date."
+#, kde-format
 msgid ""
 "Check this box if you want to specify the number of days in the future for "
 "upcoming special occasions."
 msgstr ""
-"Hautatu aukera hau egitekoak ikusi nahi badituzu, bere iraungipen dataren "
-"arabera kokatuta."
+"Markatu lauki hori hurrengo gertaera berezien etorkizuneko egun kopurua "
+"zehaztu nahi baduzu."
 
 #. i18n: ectx: property (toolTip), widget (QSpinBox, mCustomDays)
 #: kontactplugin/specialdates/sdsummaryconfig_base.ui:84
 #, kde-format
 msgid "Set the number of days to show upcoming special occasions"
-msgstr ""
+msgstr "Ezarri hurrengo gertaera bereziak erakusteko egun kopurua"
 
 #. i18n: ectx: property (whatsThis), widget (QSpinBox, mCustomDays)
 #: kontactplugin/specialdates/sdsummaryconfig_base.ui:87
@@ -3134,19 +3110,20 @@ msgid ""
 "Use this spinbox to set the number of days to show upcoming special "
 "occasions up to one year in the future."
 msgstr ""
+"Erabili biraketa-lauki hori, etorkizunean, hurrengo urtera arteko hurrengo "
+"gertaera bereziak erakusteko egun kopurua ezartzeko."
 
 #. i18n: ectx: property (title), widget (QGroupBox, mShowFromCalGroup)
 #: kontactplugin/specialdates/sdsummaryconfig_base.ui:130
 #, kde-format
 msgid "Show These Special Dates From Your Calendar"
-msgstr ""
+msgstr "Erakutsi zure egutegiko data berezi horiek"
 
 #. i18n: ectx: property (toolTip), widget (QCheckBox, mShowBirthdaysFromCalBox)
 #: kontactplugin/specialdates/sdsummaryconfig_base.ui:136
-#, fuzzy, kde-format
-#| msgid "Import Calendar"
+#, kde-format
 msgid "Show birthdays from your calendar"
-msgstr "Inportatu egutegia"
+msgstr "Erakutsi zure egutegiko urtebetetzeak"
 
 #. i18n: ectx: property (whatsThis), widget (QCheckBox, mShowBirthdaysFromCalBox)
 #: kontactplugin/specialdates/sdsummaryconfig_base.ui:139
@@ -3156,12 +3133,14 @@ msgid ""
 "special occasions summary. Typically, these are events with the \"Birthday\" "
 "tag."
 msgstr ""
+"Gaitu aukera hori zure egutegiko urtebetetzeak hurrengo gertaera berezien "
+"laburpenean sartzeko. \"Urtebetetze\" etiketa duten ekitaldiak izan ohi dira."
 
 #. i18n: ectx: property (toolTip), widget (QCheckBox, mShowAnniversariesFromCalBox)
 #: kontactplugin/specialdates/sdsummaryconfig_base.ui:152
 #, kde-format
 msgid "Show anniversaries from your calendar"
-msgstr ""
+msgstr "Erakutsi zure egutegiko urtemugak"
 
 #. i18n: ectx: property (whatsThis), widget (QCheckBox, mShowAnniversariesFromCalBox)
 #: kontactplugin/specialdates/sdsummaryconfig_base.ui:155
@@ -3171,13 +3150,14 @@ msgid ""
 "upcoming special occasions summary. Typically, these are events with the "
 "\"Anniversary\" tag."
 msgstr ""
+"Gaitu aukera hori zure egutegiko urtemugak hurrengo gertaera berezien "
+"laburpenean sartzeko. \"Urtemuga\" etiketa duten ekitaldiak izan ohi dira."
 
 #. i18n: ectx: property (toolTip), widget (QCheckBox, mShowHolidaysFromCalBox)
 #: kontactplugin/specialdates/sdsummaryconfig_base.ui:168
-#, fuzzy, kde-format
-#| msgid "Import Calendar"
+#, kde-format
 msgid "Show holidays from your calendar"
-msgstr "Inportatu egutegia"
+msgstr "Erakutsi zure egutegiko jaiegunak"
 
 #. i18n: ectx: property (whatsThis), widget (QCheckBox, mShowHolidaysFromCalBox)
 #: kontactplugin/specialdates/sdsummaryconfig_base.ui:171
@@ -3187,18 +3167,20 @@ msgid ""
 "special occasions summary. These are events from your configured holiday "
 "region, or events with the \"Holiday\" tag."
 msgstr ""
+"Gaitu aukera hori zure egutegiko jaiegunak hurrengo gertaera berezien "
+"laburpenean sartzeko. \"Jaieguna\" etiketa duten ekitaldiak izan ohi dira."
 
 #. i18n: ectx: property (text), widget (QCheckBox, mShowHolidaysFromCalBox)
 #: kontactplugin/specialdates/sdsummaryconfig_base.ui:174
-#, fuzzy, kde-format
+#, kde-format
 msgid "Show &holidays"
-msgstr "&Erakutsi ordua honela:"
+msgstr "Erakutsi &jaiegunak"
 
 #. i18n: ectx: property (toolTip), widget (QCheckBox, mShowSpecialsFromCalBox)
 #: kontactplugin/specialdates/sdsummaryconfig_base.ui:184
 #, kde-format
 msgid "Show special occasions from your calendar"
-msgstr ""
+msgstr "Erakutsi zure egutegiko gertaera bereziak"
 
 #. i18n: ectx: property (whatsThis), widget (QCheckBox, mShowSpecialsFromCalBox)
 #: kontactplugin/specialdates/sdsummaryconfig_base.ui:187
@@ -3207,25 +3189,25 @@ msgid ""
 "Enable this option to include events from your calendar with the \"special "
 "occasion\" tag."
 msgstr ""
+"Gaitu aukera hori \"gertaera berezia\" etiketa dute ekitaldiak sartzeko."
 
 #. i18n: ectx: property (text), widget (QCheckBox, mShowSpecialsFromCalBox)
 #: kontactplugin/specialdates/sdsummaryconfig_base.ui:190
-#, fuzzy, kde-format
-#| msgid "Special Occasion"
+#, kde-format
 msgid "Show s&pecial occasions"
-msgstr "Gertaera berezia"
+msgstr "Erakutsi gertaera &bereziak"
 
 #. i18n: ectx: property (title), widget (QGroupBox, mShowFromKABButtonGroup)
 #: kontactplugin/specialdates/sdsummaryconfig_base.ui:203
 #, kde-format
 msgid "Show These Special Dates From Your Contact List"
-msgstr ""
+msgstr "Erakutsi zure kontatu-zerrendako data berezi hauek"
 
 #. i18n: ectx: property (toolTip), widget (QCheckBox, mShowBirthdaysFromKABBox)
 #: kontactplugin/specialdates/sdsummaryconfig_base.ui:209
 #, kde-format
 msgid "Show birthdays from your address book"
-msgstr ""
+msgstr "Erakutsi zure helbide-liburuko urtebetetzeak"
 
 #. i18n: ectx: property (whatsThis), widget (QCheckBox, mShowBirthdaysFromKABBox)
 #: kontactplugin/specialdates/sdsummaryconfig_base.ui:212
@@ -3234,19 +3216,20 @@ msgid ""
 "Enable this option to include birthdays from your address book in the "
 "upcoming special occasions summary."
 msgstr ""
+"Gaitu aukera hori zure helbide-liburuko urtebetetzeak hurrengo gertaera "
+"berezien laburpenean sartzeko."
 
 #. i18n: ectx: property (text), widget (QCheckBox, mShowBirthdaysFromKABBox)
 #: kontactplugin/specialdates/sdsummaryconfig_base.ui:215
-#, fuzzy, kde-format
-#| msgid "Show both"
+#, kde-format
 msgid "Show birth&days"
-msgstr "Erakutsi biak"
+msgstr "Erakutsi urte&betetzeak"
 
 #. i18n: ectx: property (toolTip), widget (QCheckBox, mShowAnniversariesFromKABBox)
 #: kontactplugin/specialdates/sdsummaryconfig_base.ui:225
 #, kde-format
 msgid "Show anniversaries from your address book"
-msgstr ""
+msgstr "Erakutsi zure helbide-liburuko urtemugak"
 
 #. i18n: ectx: property (whatsThis), widget (QCheckBox, mShowAnniversariesFromKABBox)
 #: kontactplugin/specialdates/sdsummaryconfig_base.ui:228
@@ -3255,41 +3238,41 @@ msgid ""
 "Enable this option to include anniversaries from your address book in the "
 "upcoming special occasions summary."
 msgstr ""
+"Gaitu aukera hori zure helbide-liburuko urtemugak hurrengo gertaera berezien "
+"laburpenean sartzeko."
 
 #. i18n: ectx: property (text), widget (QCheckBox, mShowAnniversariesFromKABBox)
 #: kontactplugin/specialdates/sdsummaryconfig_base.ui:231
 #, kde-format
 msgid "Show anni&versaries"
-msgstr ""
+msgstr "Erakutsi urte&mugak"
 
 #: kontactplugin/specialdates/sdsummarywidget.cpp:97
-#, fuzzy, kde-format
+#, kde-format
 msgid "Upcoming Special Dates"
 msgstr "Hurrengo data bereziak"
 
 #: kontactplugin/specialdates/sdsummarywidget.cpp:450
-#, fuzzy, kde-format
-#| msgid "day"
+#, kde-format
 msgctxt "the special day is today"
 msgid "Today"
-msgstr "eguna"
+msgstr "Gaur"
 
 #: kontactplugin/specialdates/sdsummarywidget.cpp:452
-#, fuzzy, kde-format
+#, kde-format
 msgctxt "the special day is tomorrow"
 msgid "Tomorrow"
 msgstr "Bihar"
 
 #: kontactplugin/specialdates/sdsummarywidget.cpp:498
-#, fuzzy, kde-format
-#| msgid "Birthday"
+#, kde-format
 msgid "Birthday"
 msgstr "Urtebetetzea"
 
 #: kontactplugin/specialdates/sdsummarywidget.cpp:501
-#, fuzzy, kde-format
+#, kde-format
 msgid "Anniversary"
-msgstr "Urteurrena"
+msgstr "Urtemuga"
 
 #: kontactplugin/specialdates/sdsummarywidget.cpp:504
 #, kde-format
@@ -3299,18 +3282,15 @@ msgstr "Jaieguna"
 #: kontactplugin/specialdates/sdsummarywidget.cpp:507
 #, kde-format
 msgid "Change of Seasons"
-msgstr ""
+msgstr "Urtaro aldaketak"
 
 #: kontactplugin/specialdates/sdsummarywidget.cpp:510
-#, fuzzy, kde-format
-#| msgid "Special Occasion"
+#, kde-format
 msgid "Special Occasion"
 msgstr "Gertaera berezia"
 
 #: kontactplugin/specialdates/sdsummarywidget.cpp:552
-#, fuzzy, kde-format
-#| msgctxt "part after NNN of 'Recur on day #NNN of the year', short version"
-#| msgid " of the year"
+#, kde-format
 msgid "one year"
 msgid_plural "%1 years"
 msgstr[0] "urtebete"
@@ -3320,34 +3300,33 @@ msgstr[1] "%1 urte"
 #, kde-format
 msgid "No special dates within the next 1 day"
 msgid_plural "No special dates pending within the next %1 days"
-msgstr[0] ""
-msgstr[1] ""
+msgstr[0] "Data berezirik ez hurrengo egunean"
+msgstr[1] "Data berezirik ez hurrengo %1 egunetan"
 
 #: kontactplugin/specialdates/sdsummarywidget.cpp:656
-#, fuzzy, kde-format
-#| msgid "Send Email"
+#, kde-format
 msgid "Send &Mail"
-msgstr "Bidali e-posta"
+msgstr "Bidali e-&posta"
 
 #: kontactplugin/specialdates/sdsummarywidget.cpp:657
-#, fuzzy, kde-format
+#, kde-format
 msgid "View &Contact"
-msgstr "Bilatu hemen"
+msgstr "Ikusi &kontaktua"
 
 #: kontactplugin/specialdates/sdsummarywidget.cpp:672
 #, kde-format
 msgid "Mail to:\"%1\""
-msgstr ""
+msgstr "Posta nori: \"%1\""
 
 #: kontactplugin/specialdates/specialdates_plugin.cpp:36
-#, fuzzy, kde-format
+#, kde-format
 msgid "Special Dates Summary"
 msgstr "Data berezien laburpena"
 
 #: kontactplugin/specialdates/specialdates_plugin.cpp:38
 #, kde-format
 msgid "Kontact Special Dates Summary"
-msgstr ""
+msgstr "«Kontact»eko data berezien laburpena"
 
 #: kontactplugin/specialdates/specialdates_plugin.cpp:40
 #, kde-format
@@ -3355,15 +3334,16 @@ msgid ""
 "Copyright © 2003 Tobias Koenig\n"
 "Copyright © 2004–2010 Allen Winter"
 msgstr ""
+"Copyright © 2003 Tobias Koenig\n"
+"Copyright © 2004–2010 Allen Winter"
 
 #: kontactplugin/specialdates/specialdates_plugin.cpp:42
-#, fuzzy, kde-format
-#| msgid "Current Maintainer"
+#, kde-format
 msgid "Current Maintainer"
 msgstr "Uneko arduraduna"
 
 #: kontactplugin/specialdates/specialdates_plugin.cpp:43
-#, fuzzy, kde-format
+#, kde-format
 msgid "Tobias Koenig"
 msgstr "Tobias Koenig"
 
@@ -3373,11 +3353,10 @@ msgid "New Calendar"
 msgstr "Egutegi berria"
 
 #: korganizer.cpp:283
-#, fuzzy, kde-format
-#| msgid "read-only"
+#, kde-format
 msgctxt "the calendar is read-only"
 msgid "read-only"
-msgstr "irakurtzeko bakarrik"
+msgstr "soilik irakurtzea"
 
 #: korganizer.cpp:286
 #, kde-format
@@ -3385,19 +3364,19 @@ msgid "Calendar"
 msgstr "Egutegia"
 
 #: korganizer_options.h:18
-#, fuzzy, kde-format
+#, kde-format
 msgid "Import the specified files as separate calendars"
-msgstr "Gehitu eranskina"
+msgstr "Inportatu zehaztutako fitxategiak egutegi bereizi gisa"
 
 #: korganizer_options.h:20
-#, fuzzy, kde-format
+#, kde-format
 msgid "Merge the specified files into an existing calendar"
-msgstr "Gehitu eranskina"
+msgstr "Bateratu zehaztutako fitxategiak aurrez dagoen egutegi batean"
 
 #: korganizer_options.h:21
 #, kde-format
 msgid "Display the specified incidence (by URL)"
-msgstr ""
+msgstr "Azaldu zehaztutako intzidentzia (URLaren arabera)"
 
 #: korganizer_options.h:24
 #, kde-format
@@ -3405,23 +3384,24 @@ msgid ""
 "Calendar files or urls. Unless -i or -m is explicitly specified, the user "
 "will be asked whether to import or merge"
 msgstr ""
+"Egutegi fitxategiak edo URLak. Esplizituki «-i» edo «-m» zehazten ez badira, "
+"erabiltzaileari galdetuko zaio inportatu edo bateratu behar diren"
 
 #: korganizer_options.h:28
-#, fuzzy, kde-format
+#, kde-format
 msgid "Lists the available options for user feedback"
 msgstr ""
 "Erabiltzaileen erreakzioak bidaltzeko aukera erabilgarriak zerrendatzen ditu"
 
 #: koviewmanager.cpp:427
-#, fuzzy, kde-format
-#| msgid "Merged calendar '%1'."
+#, kde-format
 msgid "Merged calendar"
-msgstr "'%1' egutegia bateratuta."
+msgstr "Bateratutako egutegia"
 
 #: koviewmanager.cpp:442
 #, kde-format
 msgid "Calendars Side by Side"
-msgstr ""
+msgstr "Egutegiak aurrez-aurre"
 
 #: koviewmanager.cpp:475
 #, kde-format
@@ -3435,13 +3415,13 @@ msgstr ""
 "gutxienez ."
 
 #: prefs/koprefsdialogcolorsandfonts.cpp:55
-#, fuzzy, kde-format
+#, kde-format
 msgctxt "@title:tab"
 msgid "Colors"
 msgstr "Koloreak"
 
 #: prefs/koprefsdialogcolorsandfonts.cpp:105
-#, fuzzy, kde-format
+#, kde-format
 msgctxt "@title:group"
 msgid "Tags"
 msgstr "Etiketak"
@@ -3470,8 +3450,7 @@ msgstr ""
 "erabiliz."
 
 #: prefs/koprefsdialogcolorsandfonts.cpp:135
-#, fuzzy, kde-format
-#| msgid "Resources"
+#, kde-format
 msgctxt "@title:group"
 msgid "Resources"
 msgstr "Baliabideak"
@@ -3517,7 +3496,7 @@ msgstr "Ekitaldiaren testua"
 #, kde-format
 msgctxt "@label"
 msgid "Mail transport:"
-msgstr "Posta garraioa:"
+msgstr "Postaren garraioa:"
 
 #: prefs/koprefsdialogmain.cpp:53
 #, kde-format
@@ -3852,10 +3831,9 @@ msgstr "Gertaera, egiteko eta egunkari sarrera berriak daudenean"
 
 #. i18n: ectx: label, entry (Destination), group (Save Settings)
 #: settings/korganizer.kcfg:25
-#, fuzzy, kde-format
-#| msgid "Be added to the standard resource"
+#, kde-format
 msgid "Be added to the default calendar"
-msgstr "Baliabide estandarrera gehitu behar dira"
+msgstr "Egutegi lehenetsira gehitu"
 
 #. i18n: ectx: whatsthis, entry (Destination), group (Save Settings)
 #: settings/korganizer.kcfg:26
@@ -5966,9 +5944,9 @@ msgstr "Erakutsi egutegi bat agendako zutabeko"
 
 #. i18n: ectx: property (text), widget (QRadioButton, useCustomRB)
 #: views/multiagendaview/multiagendaviewconfigwidget.ui:27
-#, fuzzy, kde-format
+#, kde-format
 msgid "Use custom calendar setup"
-msgstr "Erabili egutegiaren ezarpen"
+msgstr "Erabili neurrira ipinitako egutegiaren ezarpen"
 
 #. i18n: ectx: property (text), widget (QLabel, columnNumberLabel)
 #: views/multiagendaview/multiagendaviewconfigwidget.ui:36
@@ -5996,10 +5974,9 @@ msgid "%1/%2"
 msgstr "%1/%2"
 
 #: widgets/kdatenavigator.cpp:174
-#, fuzzy, kde-format
-#| msgid "Print week &numbers"
+#, kde-format
 msgid "Scroll to week number %1"
-msgstr "Inprimatu asteen &zenbakiak"
+msgstr "Kiribildu %1 aste zenbakira"
 
 #: widgets/kdatenavigator.cpp:176
 #, kde-format
