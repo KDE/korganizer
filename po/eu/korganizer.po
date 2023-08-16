@@ -14,7 +14,7 @@ msgstr ""
 "Project-Id-Version: korganizer\n"
 "Report-Msgid-Bugs-To: https://bugs.kde.org\n"
 "POT-Creation-Date: 2023-07-24 10:10+0000\n"
-"PO-Revision-Date: 2023-08-15 00:40+0200\n"
+"PO-Revision-Date: 2023-08-15 22:32+0200\n"
 "Last-Translator: Iñigo Salvador Azurmendi <xalba@ni.eus>\n"
 "Language-Team: Basque <kde-i18n-eu@kde.org>\n"
 "Language: eu\n"
@@ -3427,27 +3427,21 @@ msgid "Tags"
 msgstr "Etiketak"
 
 #: prefs/koprefsdialogcolorsandfonts.cpp:119
-#, fuzzy, kde-format
-#| msgid ""
-#| "Select here the event category you want to modify. You can change the "
-#| "selected category color using the button below."
+#, kde-format
 msgctxt "@info:whatsthis"
 msgid ""
 "Select the tag you want to modify. You can change the selected tag's color "
 "using the adjacent color button."
 msgstr ""
-"Hautatu hemen aldatu nahi duzun kategoria. Hautatutako kategoriaren kolorea "
-"beheko botoia erabiliz alda dezakezu."
+"Hautatu aldatu nahi duzun etiketa. Hautatutako etiketaren kolorea alda "
+"dezakezu, alboko kolore-botoia erabiliz."
 
 #: prefs/koprefsdialogcolorsandfonts.cpp:127
-#, fuzzy, kde-format
-#| msgid ""
-#| "Choose here the color of the resource selected using the combo box above."
+#, kde-format
 msgctxt "@info:whatsthis"
 msgid "Choose the color of the tag selected in the adjacent combo box."
 msgstr ""
-"Hautatu hemen hautatutako baliabidearen kolorea goiko konbinazio-laukia "
-"erabiliz."
+"Hautatu hautatutako etiketaren kolorea, alboko lauki-konbinatua erabiliz."
 
 #: prefs/koprefsdialogcolorsandfonts.cpp:135
 #, kde-format
@@ -3456,27 +3450,22 @@ msgid "Resources"
 msgstr "Baliabideak"
 
 #: prefs/koprefsdialogcolorsandfonts.cpp:146
-#, fuzzy, kde-format
-#| msgid ""
-#| "Select here the event category you want to modify. You can change the "
-#| "selected category color using the button below."
+#, kde-format
 msgctxt "@info:whatsthis"
 msgid ""
 "Select the calendar you want to modify. You can change the selected calendar "
 "color using the button below."
 msgstr ""
-"Hautatu hemen aldatu nahi duzun kategoria. Hautatutako kategoriaren kolorea "
-"beheko botoia erabiliz alda dezakezu."
+"Hautatu aldatu nahi duzun egutegia. Hautatutako egutegiaren kolorea alda "
+"dezakezu, beheko botoia erabiliz."
 
 #: prefs/koprefsdialogcolorsandfonts.cpp:154
-#, fuzzy, kde-format
-#| msgid ""
-#| "Choose here the color of the resource selected using the combo box above."
+#, kde-format
 msgctxt "@info:whatsthis"
 msgid ""
 "Choose here the color of the calendar selected using the combo box above."
 msgstr ""
-"Hautatu hemen hautatutako baliabidearen kolorea goiko konbinazio-laukia "
+"Hautatu hemen, aukeratutako egutegiaren kolorea, goiko lauki-konbinatua "
 "erabiliz."
 
 #: prefs/koprefsdialogcolorsandfonts.cpp:166
@@ -3602,27 +3591,22 @@ msgid "Select Holiday Regions"
 msgstr "Aukeratu Jaiegun-eskualdeak"
 
 #: prefs/koprefsdialogtime.cpp:122
-#, fuzzy, kde-format
-#| msgid "Working Hours"
+#, kde-format
 msgctxt "@title:group"
 msgid "Working Period"
-msgstr "Lan-orduak"
+msgstr "Lanaldia"
 
 #: prefs/koprefsdialogtime.cpp:137
-#, fuzzy, kde-format
-#| msgid ""
-#| "Check this box to make KOrganizer mark the working hours for this day of "
-#| "the week. If this is a work day for you, check this box, or the working "
-#| "hours will not be marked with color."
+#, kde-format
 msgctxt "@info:whatsthis"
 msgid ""
 "Check this box to make KOrganizer mark the working hours for this day of the "
 "week. If this is a work day for you, check this box, or the working hours "
 "will not be marked with color."
 msgstr ""
-"Hautatu hau KOrganizer-ek asteko egun honetako laneko orduak marka ditzan. "
-"Hau zuretzat laneguna bada, hautatu laukia edo laneko orduak ez dira "
-"kolorearekin markatuko."
+"Markatu lauki hori, «KOrganizer»ek asteko egun honetako lanorduak marka "
+"ditzan. Hori zuretzako lanegun bat bada, markatu lauki hori, bestela "
+"lanorduak ez dira kolorearekin markatuko."
 
 #: prefs/koprefsdialogtime.cpp:152
 #, kde-format
@@ -3685,11 +3669,10 @@ msgid "Reminders"
 msgstr "Oroigarriak"
 
 #: prefs/koprefsdialogtime.cpp:210
-#, fuzzy, kde-format
-#| msgid "Default reminder time:"
+#, kde-format
 msgctxt "@label"
 msgid "Default reminder time:"
-msgstr "Oroigarriaren ordu lehenetsia:"
+msgstr "Oroigarriaren denbora lehenetsia:"
 
 #: prefs/koprefsdialogtime.cpp:223
 #, kde-format
@@ -3837,33 +3820,23 @@ msgstr "Egutegi lehenetsira gehitu"
 
 #. i18n: ectx: whatsthis, entry (Destination), group (Save Settings)
 #: settings/korganizer.kcfg:26
-#, fuzzy, kde-format
-#| msgid ""
-#| "Select this option to always record new events, to-dos and journal "
-#| "entries using the standard resource."
+#, kde-format
 msgid ""
 "Select this option to always record new events, to-dos and journal entries "
 "using the current default calendar."
 msgstr ""
-"Hautatu aukera hau gertaera, egiteko eta egunkari-sarrera berriak baliabide "
-"estandarra erabiliz beti gordetzeko."
+"Hautatu aukera hori, ekitaldi, zeregin eta egunkari-sarrera berriak, beti, "
+"uneko egutegi lehenetsia erabiliz erregistratzeko."
 
 #. i18n: ectx: label, entry (Destination), group (Save Settings)
 #: settings/korganizer.kcfg:29
-#, fuzzy, kde-format
-#| msgid "Be asked which resource to use"
+#, kde-format
 msgid "Be asked which calendar to use"
-msgstr "Zein egunkari erabili galdetu beharko litzateke"
+msgstr "Galdetu zein egunkari erabili"
 
 #. i18n: ectx: whatsthis, entry (Destination), group (Save Settings)
 #: settings/korganizer.kcfg:30
-#, fuzzy, kde-format
-#| msgid ""
-#| "Select this option to choose the resource to be used to record the item "
-#| "each time you create a new event, to-do or journal entry. This choice is "
-#| "recommended if you intend to use the shared folders functionality of the "
-#| "Kolab server or have to manage multiple accounts using Kontact as a KDE "
-#| "Kolab client. "
+#, kde-format
 msgid ""
 "Select this option to choose the calendar to be used to record the item each "
 "time you create a new event, to-do or journal entry. This choice is "
@@ -3871,11 +3844,11 @@ msgid ""
 "Kolab server or have to manage multiple accounts using Kontact as a KDE "
 "Kolab client. "
 msgstr ""
-"Hautatu aukera hau, ekitaldi, zeregin edo eguneroko-sarrera berri bat "
-"sortzen duzun bakoitzean, elementua gordetzeko erabiliko den baliabidea "
-"hautatzeko. Aukera hau gomendatzen da Kolab zerbitzariaren karpeta "
-"partekatuen funtzionaltasuna erabiltzeko asmoa baduzu edo, Kontact, KDE-ren "
-"Kolab bezero gisa erabiliz kontu anizkoitzak kudeatu nahi badituzu. "
+"Hautatu aukera hori, ekitaldi, zeregin edo egunkariko-sarrera berri bat "
+"sortzen duzun bakoitzean, elementua gordetzeko erabiliko den egutegia "
+"hautatzeko. Aukera hori gomendatzen da «Kolab» zerbitzariaren karpeta "
+"partekatuen funtzionaltasuna erabiltzeko asmoa baduzu, edo «Kontact» KDEren "
+"«Kolab» bezero gisa erabiliz kontu anizkoitzak kudeatu beharra baduzu."
 
 #. i18n: ectx: whatsthis, entry (TimeZoneId), group (Time &amp; Date)
 #: settings/korganizer.kcfg:40
@@ -3885,10 +3858,9 @@ msgid ""
 "your city is not listed, select one which shares the same timezone. "
 "KOrganizer will automatically adjust for daylight savings."
 msgstr ""
-"Hautatu zure ordu-zena goitibeherako lauki honetako kokalekuen zerrendatik. "
-"Zure hiria hor ez badago, hautatu zure ordu-zona berdina duen hiri bat. "
-"KOrganizer-ek automatikoki uda/neguko ordutegien aldaketak automatikoki "
-"doituko ditu."
+"Hautatu zure ordu-eremua goitibeherako lauki honetako kokalekuen "
+"zerrendatik. Zure hiria hor ez badago, hautatu ordu-zona bera duen bat. "
+"«KOrganizer»ek uda/neguko ordutegien aldaketak automatikoki doituko ditu."
 
 #. i18n: ectx: label, entry (DayBegins), group (Time &amp; Date)
 #: settings/korganizer.kcfg:44
@@ -3915,47 +3887,42 @@ msgstr "Erabili jaiegun-eskualdeak:"
 
 #. i18n: ectx: whatsthis, entry (Holidays), group (Time &amp; Date)
 #: settings/korganizer.kcfg:51
-#, fuzzy, kde-format
-#| msgid ""
-#| "Select from which region you want to use the holidays here. Defined "
-#| "holidays are shown as non-working days in the date navigator, the agenda "
-#| "view, etc."
+#, kde-format
 msgid ""
 "Select which regions you want to use the holidays here. Defined holidays are "
 "shown as non-working days in the date navigator, the agenda view, etc."
 msgstr ""
-"Hemen zein lekuko oporrak erabiliko dituzun hauta dezakezu. Definitutako "
-"oporrak lanik-gabeko egun bezala agertuko dira data arakatzailean, agendaren "
-"ikuspegian, etb."
+"Hautatu hemen, zein eskualdeetako jaiegunak erabili nahi dituzun. "
+"Definitutako jaiegunak lanik-gabeko egun gisa agertuko dira data-"
+"arakatzailean, agenda ikuspegian, etab."
 
 #. i18n: ectx: label, entry (WeekStartDay), group (Time &amp; Date)
 #: settings/korganizer.kcfg:55
-#, fuzzy, kde-format
+#, kde-format
 msgid "Weekly start day:"
-msgstr "Asteko hasierako eguna:"
+msgstr "Astea hasteko eguna:"
 
 #. i18n: ectx: tooltip, entry (WeekStartDay), group (Time &amp; Date)
 #: settings/korganizer.kcfg:56
-#, fuzzy, kde-format
-#| msgid "Select the to-do due today color here."
+#, kde-format
 msgid "Select the first day of each week"
 msgstr "Hautatu asteko aurreneko eguna."
 
 #. i18n: ectx: whatsthis, entry (WeekStartDay), group (Time &amp; Date)
 #: settings/korganizer.kcfg:57
-#, fuzzy, kde-format
+#, kde-format
 msgid ""
 "Select the first day of each week. Normally, you can ignore this since it is "
 "set in your locale."
 msgstr ""
-"Sartu asteko aurreneko eguna. Normalean, ez diozu honi jaramon egin beharko, "
-"zure tokiko ezarpenetan ezarrita dagoelako."
+"Hautatu aste bakoitzeko aurreneko eguna. Normalean ez diozu horri jaramon "
+"egin behar, tokiko ezarpenetan ezarrita dagoelako."
 
 #. i18n: ectx: label, entry (WorkingHoursStart), group (Time &amp; Date)
 #: settings/korganizer.kcfg:62
 #, kde-format
 msgid "Daily starting hour"
-msgstr "Egunaren hasierako ordua"
+msgstr "Eguneko hasteko ordua"
 
 #. i18n: ectx: whatsthis, entry (WorkingHoursStart), group (Time &amp; Date)
 #: settings/korganizer.kcfg:63
@@ -3964,8 +3931,8 @@ msgid ""
 "Enter the start time for the working hours here. The working hours will be "
 "marked with color by KOrganizer."
 msgstr ""
-"Sartu laneko orduen hasierako ordua hemen. Laneko orduak kolorez markatuko "
-"ditu KOrganizer-ek."
+"Sartu hemen lanorduen hasierako ordua. «KOrganizer»rek lanorduak kolore "
+"bidez markatuko ditu."
 
 #. i18n: ectx: label, entry (WorkingHoursEnd), group (Time &amp; Date)
 #: settings/korganizer.kcfg:68
@@ -4001,14 +3968,13 @@ msgstr ""
 #. i18n: ectx: label, entry (ColorMonthBusyDaysEnabled), group (Time &amp; Date)
 #. i18n: ectx: label, entry (ColorBusyDaysEnabled), group (Agenda View)
 #: settings/korganizer.kcfg:80 settings/korganizer.kcfg:212
-#, fuzzy, kde-format
-#| msgid "Agenda view background color"
+#, kde-format
 msgid "Color busy days with a different background color"
-msgstr "Margotu «lanpetutako egunak» atzeko planoko kolore ezberdin batekin"
+msgstr "Margotu «lanpetutako» egunak hondoko kolore ezberdin batekin"
 
 #. i18n: ectx: whatsthis, entry (ColorMonthBusyDaysEnabled), group (Time &amp; Date)
 #: settings/korganizer.kcfg:81
-#, fuzzy, kde-format
+#, kde-format
 msgid ""
 "Check this box if you want month view's background to be filled with a "
 "different color on days which have at least one all day event marked as "
@@ -4017,37 +3983,32 @@ msgid ""
 "setting."
 msgstr ""
 "Markatu lauki hau, gutxienez egun osoko ekitaldi bat lanpetu gisa markatuta "
-"duen egunetan hilabeteko ikuspegiaren atzeko planoa kolore ezberdin batekin "
+"duen egunetan hilabeteko ikuspegiaren hondoko kolore ezberdin batekin "
 "betetzea nahi baduzu. Gainera, aukera honetarako erabilitako hondoko kolorea "
-"alda dezakezu Koloreak konfiguratzeko orrian. Bilatu \"Lanpetutako egunen "
-"atzeko planoko kolorea\" ezarpena."
+"alda dezakezu Koloreak konfiguratzeko orrian. Bilatu \"Lanpetutako egunetako "
+"hondoko kolorea\" ezarpena."
 
 #. i18n: ectx: label, entry, group (General View)
 #: settings/korganizer.kcfg:90
-#, fuzzy, kde-format
-#| msgid "Enable tooltips displaying summary of events"
+#, kde-format
 msgid "Enable tooltips for displaying summaries"
-msgstr "Gaitu bistaratutako laburpenen gaineko argibideak"
+msgstr "Gaitu argibideek laburpenak azaltzea"
 
 #. i18n: ectx: whatsthis, entry, group (General View)
 #: settings/korganizer.kcfg:91
-#, fuzzy, kde-format
-#| msgid ""
-#| "Check this box to display an event summary tooltip when hovering the "
-#| "mouse over an event."
+#, kde-format
 msgid ""
 "Check this box to display summary tooltips when hovering the mouse over an "
 "event or a to-do."
 msgstr ""
-"Markatu lauki hau, sagua, ekitaldi baten edo zeregin baten gainean jartzean, "
+"Markatu lauki hau, sagua, ekitaldi edo zeregin baten gainean igarotzean, "
 "laburpen argibideak azaltzeko."
 
 #. i18n: ectx: label, entry, group (General View)
 #: settings/korganizer.kcfg:96
-#, fuzzy, kde-format
-#| msgid "To-do due today color"
+#, kde-format
 msgid "To-dos use tag colors"
-msgstr "Gaur burutuko diren egitekoen kolorea"
+msgstr "Zereginek etiketen koloreak erabiltzen dituzte"
 
 #. i18n: ectx: whatsthis, entry, group (General View)
 #: settings/korganizer.kcfg:97
@@ -4056,16 +4017,19 @@ msgid ""
 "Check this box so that to-dos will use tag colors and not colors specific to "
 "their due, due today or overdue state"
 msgstr ""
+"Markatu lauki hori, zereginek etiketen koloreak erabil ditzaten, eta ez "
+"haien epemuga, gaur epemuga edo atzeratutako egoerei dagozkien berariazko "
+"koloreak"
 
 #. i18n: ectx: label, entry, group (General View)
 #: settings/korganizer.kcfg:102
 #, kde-format
 msgid "Next x days"
-msgstr "Hurrengo x egunak"
+msgstr "Hurrengo x egun"
 
 #. i18n: ectx: whatsthis, entry, group (General View)
 #: settings/korganizer.kcfg:103
-#, fuzzy, kde-format
+#, kde-format
 msgid ""
 "Select the number of \"x\" days to be displayed in the next days view. To "
 "access the next \"x\" days view, choose the \"Next X Days\" menu item from "
@@ -4077,16 +4041,15 @@ msgstr ""
 
 #. i18n: ectx: tooltip, entry, group (General View)
 #: settings/korganizer.kcfg:104
-#, fuzzy, kde-format
+#, kde-format
 msgid "Show this many days at a time in the Next \"x\" days view"
 msgstr "Erakutsi honenbeste egun batera Hurrengo \"x\" egunen ikuspegian"
 
 #. i18n: ectx: label, entry (DailyRecur), group (General View)
 #: settings/korganizer.kcfg:109
-#, fuzzy, kde-format
-#| msgid "Show events that recur daily in date navigator"
+#, kde-format
 msgid "Show items that recur daily"
-msgstr "Erakutsi egunero errepikatzen diren elementuak"
+msgstr "Erakutsi egunero errepika duten elementuak"
 
 #. i18n: ectx: whatsthis, entry (DailyRecur), group (General View)
 #: settings/korganizer.kcfg:110
@@ -4096,16 +4059,15 @@ msgid ""
 "typeface in the Date Navigator, or uncheck it to give more prominence to "
 "other (non daily recurring) events."
 msgstr ""
-"Hautatu hau eguneroko gertaera errepikakorrak dituzten egunak Data "
-"arakatzailean letra-tipo lodia erabiliz erakusteko, edo desautatu beste "
-"gertaerei (eguneroko errepikakorrak ez direnei) garrantzi gehiago emateko."
+"Markatu lauki hori, Data Nabigatzailean, egunero errepika duten ekitaldiak "
+"dituzten egunak letra-molde lodiz erakusteko, edo marka kendu beste "
+"ekitaldiei (egunero errepika ez dutenak) nabaritasun handiagoa emateko."
 
 #. i18n: ectx: label, entry (WeeklyRecur), group (General View)
 #: settings/korganizer.kcfg:115
-#, fuzzy, kde-format
-#| msgid "Show events that recur weekly in date navigator"
+#, kde-format
 msgid "Show items that recur weekly"
-msgstr "Erakutsi asteko errepikatzen diren elementuak"
+msgstr "Erakutsi asteko errepika duten elementuak"
 
 #. i18n: ectx: whatsthis, entry (WeeklyRecur), group (General View)
 #: settings/korganizer.kcfg:116
@@ -4121,59 +4083,51 @@ msgstr ""
 
 #. i18n: ectx: label, entry (HighlightTodos), group (General View)
 #: settings/korganizer.kcfg:121
-#, fuzzy, kde-format
+#, kde-format
 msgid "Show to-dos instead of events when in Todo View"
-msgstr "Erakutsi zereginak ekitaldien ordez Zereginen ikuspegian"
+msgstr "Erakutsi zereginak ekitaldien ordez Zeregin ikuspegian"
 
 #. i18n: ectx: whatsthis, entry (HighlightTodos), group (General View)
 #: settings/korganizer.kcfg:122
-#, fuzzy, kde-format
-#| msgid ""
-#| "Check this box to show the days containing daily recurring events in bold "
-#| "typeface in the Date Navigator, or uncheck it to give more prominence to "
-#| "other (non daily recurring) events."
+#, kde-format
 msgid ""
 "Check this box to show the days containing to-dos in bold typeface in the "
 "Date Navigator when in to-do view."
 msgstr ""
-"Markatu lauki hau, zereginak dituzten egunak, Data nabigatzailean, zereginen "
-"ikuspegian egonda, letra-molde lodiarekin erakusteko."
+"Markatu lauki hori, Zeregin ikuspegian egon bitartean, Data nabigatzailean, "
+"zereginak dituzten egunak letra-molde lodian erakusteko."
 
 #. i18n: ectx: label, entry (HighlightJournals), group (General View)
 #: settings/korganizer.kcfg:127
-#, fuzzy, kde-format
+#, kde-format
 msgid "Show journals instead of events when in Journal View"
-msgstr "Erakutsi egunerokoak ekitaldien ordez Egunerokoen ikuspegian"
+msgstr "Erakutsi egunkariak ekitaldien ordez Egunerokoen ikuspegian"
 
 #. i18n: ectx: whatsthis, entry (HighlightJournals), group (General View)
 #: settings/korganizer.kcfg:128
-#, fuzzy, kde-format
-#| msgid ""
-#| "Check this box to show the days containing daily recurring events in bold "
-#| "typeface in the Date Navigator, or uncheck it to give more prominence to "
-#| "other (non daily recurring) events."
+#, kde-format
 msgid ""
 "Check this box to show the days containing journals in bold typeface in the "
 "Date Navigator when in journal view."
 msgstr ""
-"Markatu lauki hau, egunerokoak dituzten egunak, Data nabigatzailean, "
-"egunerokoaren ikuspegian egonda, letra-molde lodiarekin erakusteko."
+"Markatu lauki hori, Egunkari ikuspegian egon bitartean, Data nabigatzailean, "
+"egunkariak dituzten egunak letra-molde lodian erakusteko."
 
 #. i18n: ectx: label, entry (WeekNumbersShowWork), group (General View)
 #: settings/korganizer.kcfg:133
-#, fuzzy, kde-format
+#, kde-format
 msgid "Week numbers select a work week when in work week mode"
-msgstr "Aste-zenbakiek, lan-astea moduan, lan-aste bat hautatzen dute"
+msgstr "Asteko zenbakiek, lan-astea moduan, lan-aste bat hautatzen dute"
 
 #. i18n: ectx: whatsthis, entry (WeekNumbersShowWork), group (General View)
 #: settings/korganizer.kcfg:134
-#, fuzzy, kde-format
+#, kde-format
 msgid ""
 "Check this box to select a working week when clicking on the Date "
 "Navigator's week numbers, or uncheck it to choose the whole week."
 msgstr ""
-"Markatu lauki hau, Data nabigatzailearen aste-zenbakietan klik egitean lan-"
-"astea hautatzeko, edo desmarkatu aste osoa hautatzeko."
+"Markatu lauki hori, Data nabigatzaileko asteko zenbakietan klik egitean, "
+"laneko aste bat hautatzeko, edo marka kendu aste osoa hautatzeko."
 
 #. i18n: ectx: label, entry, group (Agenda View)
 #: settings/korganizer.kcfg:142
@@ -4183,108 +4137,99 @@ msgstr "Orduaren tamaina"
 
 #. i18n: ectx: whatsthis, entry, group (Agenda View)
 #: settings/korganizer.kcfg:143
-#, fuzzy, kde-format
+#, kde-format
 msgid ""
 "Select the height of the hour rows in the agenda grid, in pixels. Increasing "
 "this value will make each row in the agenda grid taller."
 msgstr ""
-"Hautatu agenda-saretako ordu-errenkaden altuera pixeletan. Balio hau "
-"handitzean agenda-saretako errenkada bakoitza altuagoa egingo du."
+"Hautatu agenda-saretako ordu-errenkaden altuera pixeletan. Balio hori "
+"handitzea agenda-saretako errenkada bakoitza altuagoa egingo du."
 
 #. i18n: ectx: tooltip, entry, group (Agenda View)
 #: settings/korganizer.kcfg:144
-#, fuzzy, kde-format
+#, kde-format
 msgid "Set the height (in pixels) for an hour in the agenda grid"
-msgstr "Ezarri agenda-saretako ordu baterako altuera (pixeletan)"
+msgstr "Ezarri, agenda-saretan, orduaren altuera (pixeletan)"
 
 #. i18n: ectx: label, entry (EnableAgendaItemIcons), group (Agenda View)
 #: settings/korganizer.kcfg:151
-#, fuzzy, kde-format
+#, kde-format
 msgid "Show icons in agenda view items"
 msgstr "Erakutsi ikonoak agenda ikuspegiko elementuetan"
 
 #. i18n: ectx: whatsthis, entry (EnableAgendaItemIcons), group (Agenda View)
 #: settings/korganizer.kcfg:152
-#, fuzzy, kde-format
-#| msgid "Check this box to display a confirmation dialog when deleting items."
+#, kde-format
 msgid ""
 "Check this box to display icons (alarm, recursion, etc.) in agenda view "
 "items."
 msgstr ""
-"Markatu lauki hau, agenda ikuspegiko elementuetan ikonoak (alarma, "
-"errekurtsioa, etab.) bistaratzeko."
+"Markatu lauki hori, agenda ikuspegiko elementuetan ikonoak (alarma, "
+"errepikak, etab.) azaltzeko."
 
 #. i18n: ectx: tooltip, entry (EnableAgendaItemIcons), group (Agenda View)
 #: settings/korganizer.kcfg:153
-#, fuzzy, kde-format
+#, kde-format
 msgid "Display icons in agenda view items"
-msgstr "Erakutsi ikonoak agenda ikuspegiko elementuetan"
+msgstr "Azaldu ikonoak agenda ikuspegiko elementuetan"
 
 #. i18n: ectx: label, entry (ShowTodosAgendaView), group (Agenda View)
 #. i18n: ectx: label, entry (ShowTodosMonthView), group (Month View)
 #: settings/korganizer.kcfg:158 settings/korganizer.kcfg:256
-#, fuzzy, kde-format
-#| msgid "&Show To-do"
+#, kde-format
 msgid "Show to-dos"
 msgstr "Erakutsi zereginak"
 
 #. i18n: ectx: whatsthis, entry (ShowTodosAgendaView), group (Agenda View)
 #: settings/korganizer.kcfg:159
-#, fuzzy, kde-format
-#| msgid "Check this box to display a confirmation dialog when deleting items."
+#, kde-format
 msgid "Check this box to display to-dos in the agenda view."
-msgstr "Markatu lauki hau agenda ikuspegian zereginak azaltzeko."
+msgstr "Markatu lauki hori agenda ikuspegian zereginak azaltzeko."
 
 #. i18n: ectx: tooltip, entry (ShowTodosAgendaView), group (Agenda View)
 #: settings/korganizer.kcfg:160
-#, fuzzy, kde-format
+#, kde-format
 msgid "Display to-dos in the agenda view"
-msgstr "Erakutsi zereginak agenda ikuspegian"
+msgstr "Azaldu zereginak agenda ikuspegian"
 
 #. i18n: ectx: label, entry (MarcusBainsEnabled), group (Agenda View)
 #: settings/korganizer.kcfg:165
 #, kde-format
 msgid "Show current-time (Marcus Bains) line"
-msgstr "Erakutsi uneko orduaren (Marcus Bains) lerroa"
+msgstr "Erakutsi uneko orduaren («Marcus Bains») lerroa"
 
 #. i18n: ectx: whatsthis, entry (MarcusBainsEnabled), group (Agenda View)
 #: settings/korganizer.kcfg:166
-#, fuzzy, kde-format
-#| msgid ""
-#| "Check this box to display a red line in the day or week view indicating "
-#| "the current-time line (Marcus Bains line)."
+#, kde-format
 msgid ""
 "Check this box to display a line in the day or week view indicating the "
 "current-time line (Marcus Bains line)."
 msgstr ""
-"Markatu lauki hau, eguneko edo asteko ikuspegian uneko denbora-lerroa "
-"(Marcus Bains lerroa) adierazten duen lerro bat azaltzeko."
+"Markatu lauki hori, eguneko edo asteko ikuspegian uneko denbora-lerroa "
+"(«Marcus Bains» lerroa) adierazten duen lerro bat azaltzeko."
 
 #. i18n: ectx: tooltip, entry (MarcusBainsEnabled), group (Agenda View)
 #: settings/korganizer.kcfg:167
-#, fuzzy, kde-format
-#| msgid "Displays appointment time information."
+#, kde-format
 msgid "Display the current-time indicator"
 msgstr "Azaldu uneko orduaren adierazlea"
 
 #. i18n: ectx: label, entry (MarcusBainsShowSeconds), group (Agenda View)
 #: settings/korganizer.kcfg:172
-#, fuzzy, kde-format
-#| msgid "Show current-time (Marcus Bains) line"
+#, kde-format
 msgid "Show seconds on the current-time (Marcus Bains) line"
-msgstr "Erakutsi segundoak uneko ordu (Marcus Bains) lerroan"
+msgstr "Erakutsi segundoak uneko ordu («Marcus Bains») lerroan"
 
 #. i18n: ectx: whatsthis, entry (MarcusBainsShowSeconds), group (Agenda View)
 #: settings/korganizer.kcfg:173
 #, kde-format
 msgid "Check this box if you want to show seconds on the current-time line."
 msgstr ""
-"Hautatu aukera hau uneko-denboraren lerroan segunduak ikusi nahi badituzu."
+"Hautatu aukera hori uneko-ordu lerroan segundoak erakustea nahi baduzu."
 
 #. i18n: ectx: tooltip, entry (MarcusBainsShowSeconds), group (Agenda View)
 #: settings/korganizer.kcfg:174
-#, fuzzy, kde-format
-#| msgid "Show seconds on current-time line"
+#, kde-format
 msgid "Display seconds with the current-time indicator"
 msgstr "Azaldu segundoak uneko-ordu adierazlearekin"
 
@@ -4293,8 +4238,8 @@ msgstr "Azaldu segundoak uneko-ordu adierazlearekin"
 #, kde-format
 msgid "Time range selection in agenda view starts event editor"
 msgstr ""
-"Agendako ikuspegiko denbora barrutiaren hautapenak gertaera editorea "
-"abiatzen du"
+"Agenda ikuspegian denbora barrutiaren hautapenak ekitaldi editorea abiatzen "
+"du"
 
 #. i18n: ectx: whatsthis, entry (SelectionStartsEditor), group (Agenda View)
 #: settings/korganizer.kcfg:180
@@ -4304,30 +4249,30 @@ msgid ""
 "time range in the daily and weekly view. To select a time range, drag the "
 "mouse from the start time to the end time of the event you are about to plan."
 msgstr ""
-"Hautatu hau eguneko eta asteko ikuspegian gertaera editorean denbora-barruti "
-"bat hautatzean automatikoki gertaera-editorea abiatzeko. Denbora-barruti bat "
-"hautatzeko, arrastatu sagua hasierako denboratik amaierako denborara."
+"Markatu lauki hori, eguneko eta asteko ikuspegietan denbora barruti bat "
+"aukeratzen duzuenean, ekitaldi editorea, automatikoki, abiatzeko. Denbora "
+"barruti bat hautatzeko, arrastatu sagua, planifikatzera zoazen ekitaldiaren "
+"hasierako denboratik amaierako denborara."
 
 #. i18n: ectx: tooltip, entry (SelectionStartsEditor), group (Agenda View)
 #: settings/korganizer.kcfg:181
-#, fuzzy, kde-format
+#, kde-format
 msgid "Enable automatic event editor with time range selection"
-msgstr "Gaitu ekitaldi-editore automatikoa denbora-barruti hautapenarekin"
+msgstr "Gaitu ekitaldi editore automatikoa denbora barruti hautapenarekin"
 
 #. i18n: ectx: label, entry, group (Agenda View)
 #. i18n: ectx: label, entry, group (Month View)
 #: settings/korganizer.kcfg:186 settings/korganizer.kcfg:276
-#, fuzzy, kde-format
+#, kde-format
 msgid "Color Usage"
 msgstr "Kolorearen erabilera"
 
 #. i18n: ectx: label, entry, group (Agenda View)
 #. i18n: ectx: label, entry, group (Month View)
 #: settings/korganizer.kcfg:189 settings/korganizer.kcfg:279
-#, fuzzy, kde-format
-#| msgid "Calendar"
+#, kde-format
 msgid "Tag inside, calendar outside"
-msgstr "Egutegia"
+msgstr "Barnealdean etiketa, kanpoaldea egutegia"
 
 #. i18n: ectx: whatsthis, entry, group (Agenda View)
 #. i18n: ectx: whatsthis, entry, group (Month View)
@@ -4339,6 +4284,10 @@ msgid ""
 "drawn in the color of its calendar.  Please use the Colors and Fonts "
 "configuration page for setting these colors."
 msgstr ""
+"Hautatu \"Barnealdean etiketa, kanpoaldea egutegia\" aukera, egutegiko "
+"elementuak haiei dagozkien etiketaren kolorea erabiliz marrazteko, "
+"etaelementuaren ertza egutegiaren kolorearekin marrazteko. Mesedez, kolore "
+"horiek ezartzeko, erabili Koloreak eta letra-tipoak konfiguratzeko orria."
 
 #. i18n: ectx: tooltip, entry, group (Agenda View)
 #: settings/korganizer.kcfg:191
@@ -4347,14 +4296,15 @@ msgid ""
 "Draw agenda items with their tag color inside and calendar color for their "
 "border"
 msgstr ""
+"Marraztu agendako elementuak, barnean, haien etiketen kolorearekin, eta "
+"ertzetan egutegiaren kolorearekin"
 
 #. i18n: ectx: label, entry, group (Agenda View)
 #. i18n: ectx: label, entry, group (Month View)
 #: settings/korganizer.kcfg:194 settings/korganizer.kcfg:284
-#, fuzzy, kde-format
-#| msgid "Calendar"
+#, kde-format
 msgid "Calendar inside, tag outside"
-msgstr "Egutegia"
+msgstr "Barnealdean egutegia, kanpoaldean etiketa"
 
 #. i18n: ectx: whatsthis, entry, group (Agenda View)
 #. i18n: ectx: whatsthis, entry, group (Month View)
@@ -4366,6 +4316,11 @@ msgid ""
 "drawn in the color of its tag.  Please use the Colors and Fonts "
 "configuration page for setting these colors."
 msgstr ""
+"Hautatu \"Barnealdean egutegia, kanpoaldean etiketa\" aukera, egutegiko "
+"elementuak haiei dagozkien egutegiko kolorea erabiliz marrazteko, "
+"etaelementuaren ertza dagokien etiketaren kolorearekin marrazteko. Mesedez, "
+"kolore horiek ezartzeko, erabili Koloreak eta letra-tipoak konfiguratzeko "
+"orria."
 
 #. i18n: ectx: tooltip, entry, group (Agenda View)
 #: settings/korganizer.kcfg:196
@@ -4374,13 +4329,15 @@ msgid ""
 "Draw agenda items with their calendar color inside and tag color for their "
 "border"
 msgstr ""
+"Marraztu agendako elementuak, barnean, haien egutegiaren kolorearekin, eta "
+"ertzetan etiketen kolorearekin"
 
 #. i18n: ectx: label, entry, group (Agenda View)
 #. i18n: ectx: label, entry, group (Month View)
 #: settings/korganizer.kcfg:199 settings/korganizer.kcfg:289
-#, fuzzy, kde-format
+#, kde-format
 msgid "Only tag"
-msgstr "Kategoriak"
+msgstr "Etiketa bakarrik"
 
 #. i18n: ectx: whatsthis, entry, group (Agenda View)
 #: settings/korganizer.kcfg:200
@@ -4390,18 +4347,23 @@ msgid ""
 "(both inside and border) using the color of their associated tag.  Please "
 "use the Colors and Fonts configuration page for setting these colors."
 msgstr ""
+"Hautatu \"Etiketa bakarrik\" aukera, egutegiko elementuak (barrutik eta "
+"kanpotik) haiei dagozkien etiketen kolorea erabiliz marrazteko. Mesedez, "
+"kolore horiek ezartzeko, erabili Koloreak eta letra-tipoak konfiguratzeko "
+"orria."
 
 #. i18n: ectx: tooltip, entry, group (Agenda View)
 #: settings/korganizer.kcfg:201
 #, kde-format
 msgid "Draw agenda items using their tag color for the inside and border"
 msgstr ""
+"Marraztu agendako elementua, barrutik eta ertzetan, haien etiketaren "
+"kolorearekin"
 
 #. i18n: ectx: label, entry, group (Agenda View)
 #. i18n: ectx: label, entry, group (Month View)
 #: settings/korganizer.kcfg:204 settings/korganizer.kcfg:294
-#, fuzzy, kde-format
-#| msgid "Calendar"
+#, kde-format
 msgid "Only calendar"
 msgstr "Egutegia bakarrik"
 
@@ -4413,18 +4375,22 @@ msgid ""
 "(both inside and border) using the color of their calendar. Please use the "
 "Colors and Fonts configuration page for setting these colors."
 msgstr ""
+"Hautatu \"Egutegia bakarrik\" aukera egutegiko elementuak (biak, barrua eta "
+"ertzak) dauden egutegiaren kolorea erabiliz marraztea nahi baduzu. Mesedez, "
+"erabili \"Koloreak eta Letra-tipoak\" konfiguratzeko orria kolore horiek "
+"ezartzeko."
 
 #. i18n: ectx: tooltip, entry, group (Agenda View)
 #: settings/korganizer.kcfg:206
-#, fuzzy, kde-format
+#, kde-format
 msgid "Draw agenda items using their calendar color for the inside and border"
 msgstr ""
-"Marraztu agendako elementua haien egutegiaren kolorearekin barrutik eta "
-"ertzetan"
+"Marraztu agendako elementua, barrutik eta ertzetan, haien egutegiaren "
+"kolorearekin"
 
 #. i18n: ectx: whatsthis, entry (ColorBusyDaysEnabled), group (Agenda View)
 #: settings/korganizer.kcfg:213
-#, fuzzy, kde-format
+#, kde-format
 msgid ""
 "Check this box if you want agenda's background to be filled with a different "
 "color on days which have at least one all day event marked as busy. Also, "
@@ -4432,27 +4398,26 @@ msgid ""
 "configuration page. Look for the \"Busy days background color\" setting."
 msgstr ""
 "Markatu lauki hau, gutxienez egun osoko ekitaldi bat lanpetu gisa markatuta "
-"duen egunetan agendaren atzeko planoa kolore ezberdin batekin betetzea nahi "
+"duen egunetan agendaren hondoko kolore ezberdin batekin betetzea nahi "
 "baduzu. Gainera, aukera honetarako erabilitako hondoko kolorea alda dezakezu "
-"Koloreak konfiguratzeko orrian. Bilatu \"Lanpetutako egunen atzeko planoko "
+"Koloreak konfiguratzeko orrian. Bilatu \"Lanpetutako egunetako hondoko "
 "kolorea\" ezarpena."
 
 #. i18n: ectx: label, entry (AgendaViewCalendarDisplay), group (Agenda View)
 #: settings/korganizer.kcfg:217
-#, fuzzy, kde-format
-#| msgid "Active Calendar"
+#, kde-format
 msgid "Multiple Calendar Display"
 msgstr "Egutegi anizkoitzak azaltzea"
 
 #. i18n: ectx: label, entry (AgendaViewCalendarDisplay), group (Agenda View)
 #: settings/korganizer.kcfg:220
-#, fuzzy, kde-format
+#, kde-format
 msgid "Merge all calendars into one view"
 msgstr "Bateratu egutegi denak ikuspegi bakarrean"
 
 #. i18n: ectx: whatsthis, entry (AgendaViewCalendarDisplay), group (Agenda View)
 #: settings/korganizer.kcfg:221
-#, fuzzy, kde-format
+#, kde-format
 msgid ""
 "Select the \"Merge all calendars into one view\" option if you would like "
 "all your calendars to be shown together in one agenda view."
@@ -4474,29 +4439,29 @@ msgstr "Erakutsi egutegiak alboz-albo"
 
 #. i18n: ectx: whatsthis, entry (AgendaViewCalendarDisplay), group (Agenda View)
 #: settings/korganizer.kcfg:226
-#, fuzzy, kde-format
+#, kde-format
 msgid ""
 "Select the \"Show calendars side by side\" option if you would like to see "
 "two calendars at once, in a side-by-side view."
 msgstr ""
-"Aukeratu \"Erakutsi egutegiak alboz-albo\" aukera bi egutegi batera alboz-"
+"Hautatu \"Erakutsi egutegiak alboz-albo\" aukera bi egutegi batera alboz-"
 "alboko ikuspegi batean ikusteko."
 
 #. i18n: ectx: tooltip, entry (AgendaViewCalendarDisplay), group (Agenda View)
 #: settings/korganizer.kcfg:227
-#, fuzzy, kde-format
+#, kde-format
 msgid "Show two calendars side-by-side"
 msgstr "Erakutsi bi egutegi alboz-albo"
 
 #. i18n: ectx: label, entry (AgendaViewCalendarDisplay), group (Agenda View)
 #: settings/korganizer.kcfg:230
-#, fuzzy, kde-format
+#, kde-format
 msgid "Switch between views with tabs"
 msgstr "Aldatu ikuspegien artean tab erabiliz"
 
 #. i18n: ectx: whatsthis, entry (AgendaViewCalendarDisplay), group (Agenda View)
 #: settings/korganizer.kcfg:231
-#, fuzzy, kde-format
+#, kde-format
 msgid ""
 "Select \"Switch between views with tabs\" if you would like to alternate "
 "between calendars using the tab key."
@@ -4506,44 +4471,40 @@ msgstr ""
 
 #. i18n: ectx: tooltip, entry (AgendaViewCalendarDisplay), group (Agenda View)
 #: settings/korganizer.kcfg:232
-#, fuzzy, kde-format
-#| msgid "Merged calendar '%1'."
+#, kde-format
 msgid "Tab through calendars"
 msgstr "Tab egutegien artean"
 
 #. i18n: ectx: label, entry (EnableMonthItemIcons), group (Month View)
 #: settings/korganizer.kcfg:242
-#, fuzzy, kde-format
+#, kde-format
 msgid "Show icons in month view items"
 msgstr "Erakutsi ikonoak hilabeteko ikuspegiko elementuetan"
 
 #. i18n: ectx: whatsthis, entry (EnableMonthItemIcons), group (Month View)
 #: settings/korganizer.kcfg:243
-#, fuzzy, kde-format
-#| msgid "Check this box to display a confirmation dialog when deleting items."
+#, kde-format
 msgid ""
 "Check this box to display icons (alarm, recursion, etc.) in month view items."
 msgstr ""
 "Markatu lauki hau, hilabeteko ikuspegiko elementuetan ikonoak (alarma, "
-"errekurtsioa, etab.) azaltzeko."
+"errepikak, etab.) azaltzeko."
 
 #. i18n: ectx: tooltip, entry (EnableMonthItemIcons), group (Month View)
 #: settings/korganizer.kcfg:244
-#, fuzzy, kde-format
-#| msgid "Enable scrollbars in month view cells"
+#, kde-format
 msgid "Display icons in month view items"
-msgstr "Azaldu ikonoak hilabete ikuspegiko elementuetan"
+msgstr "Azaldu ikonoak hilabeteko ikuspegiko elementuetan"
 
 #. i18n: ectx: label, entry (ShowTimeInMonthView), group (Month View)
 #: settings/korganizer.kcfg:249
-#, fuzzy, kde-format
+#, kde-format
 msgid "Show time in month view items"
-msgstr "Erakutsi ordua hilabete ikuspegiko elementuetan"
+msgstr "Erakutsi ordua hilabeteko ikuspegiko elementuetan"
 
 #. i18n: ectx: whatsthis, entry (ShowTimeInMonthView), group (Month View)
 #: settings/korganizer.kcfg:250
-#, fuzzy, kde-format
-#| msgid "Check this box to display a confirmation dialog when deleting items."
+#, kde-format
 msgid "Check this box to display the time in month view items."
 msgstr "Markatu lauki hau, hilabeteko ikuspegiko elementuetan ordua azaltzeko."
 
@@ -4573,42 +4534,35 @@ msgstr "Erakutsi egunerokoak"
 
 #. i18n: ectx: whatsthis, entry (ShowJournalsMonthView), group (Month View)
 #: settings/korganizer.kcfg:264
-#, fuzzy, kde-format
-#| msgid "Check this box to display a confirmation dialog when deleting items."
+#, kde-format
 msgid "Check this box to display journals in the month view."
-msgstr "Markatu lauki hau, hilabeteko ikuspegian egunerokoak azaltzeko."
+msgstr "Markatu lauki hau, hilabeteko ikuspegian egunkariak azaltzeko."
 
 #. i18n: ectx: tooltip, entry (ShowJournalsMonthView), group (Month View)
 #: settings/korganizer.kcfg:265
-#, fuzzy, kde-format
-#| msgid "Enable scrollbars in month view cells"
+#, kde-format
 msgid "Display journals in the month view"
-msgstr "Erakutsi egunerokoak hilabeteko ikuspegian"
+msgstr "Erakutsi egunkariak hilabeteko ikuspegian"
 
 #. i18n: ectx: label, entry, group (Month View)
 #: settings/korganizer.kcfg:270
 #, kde-format
 msgid "Month view uses full window"
-msgstr "Hilabete ikuspegiak lehio osoa darabil"
+msgstr "Hilabeteko ikuspegiak leiho osoa erabiltzen du"
 
 #. i18n: ectx: whatsthis, entry, group (Month View)
 #: settings/korganizer.kcfg:271
-#, fuzzy, kde-format
-#| msgid ""
-#| "Check this box to use the full KOrganizer window when displaying the "
-#| "month view. If this box is checked, you will gain some space for the "
-#| "monthly view, but other widgets, such as the date navigator, the item "
-#| "details and the resources list, will not be displayed."
+#, kde-format
 msgid ""
 "Check this box to use the full KOrganizer window when displaying the month "
 "view. If this box is checked, you will gain some space for the monthly view, "
 "but other widgets, such as the date navigator, the item details and the "
 "calendars list, will not be displayed."
 msgstr ""
-"Markatu lauki hau, hilabeteko ikuspegia azaltzeko KOrganizer-en leiho osoa "
-"erabiltzeko. Lauki hau markatuta badago, hilabeteko ikuspegirako leku pixka "
+"Markatu lauki hori, hilabeteko ikuspegia azaltzeko «KOrganizer»en leiho osoa "
+"erabiltzeko. Lauki hori markatuta badago, hilabeteko ikuspegirako leku pixka "
 "bat gehiago irabaziko duzu, baina beste trepeta batzuk, data-nabigatzailea, "
-"elementuen xehetasunak eta egutegien zerrenda esaterako, ez dira azalduko."
+"elementuen xehetasunak eta egutegien zerrenda, esaterako, ez dira azalduko."
 
 #. i18n: ectx: tooltip, entry, group (Month View)
 #: settings/korganizer.kcfg:281
@@ -4617,6 +4571,8 @@ msgid ""
 "Draw month items with their tag color inside and calendar color for their "
 "border"
 msgstr ""
+"Marraztu hilabeteko elementuak, barnean, haien etiketen kolorearekin, eta "
+"ertzetan egutegiaren kolorearekin"
 
 #. i18n: ectx: tooltip, entry, group (Month View)
 #: settings/korganizer.kcfg:286
@@ -4625,6 +4581,8 @@ msgid ""
 "Draw month items with their calendar color inside and tag color for their "
 "border"
 msgstr ""
+"Marraztu hilabeteko elementuak, barnean, haien egutegiaren kolorearekin, eta "
+"ertzetan etiketen kolorearekin"
 
 #. i18n: ectx: whatsthis, entry, group (Month View)
 #: settings/korganizer.kcfg:290
@@ -4634,37 +4592,42 @@ msgid ""
 "(both inside and border) in the color of their associated tag.  Please use "
 "the Colors and Fonts configuration page for setting these colors."
 msgstr ""
+"Hautatu \"Etiketa bakarrik\" aukera, egutegiko elementuak (barrutik eta "
+"kanpotik) haiei dagozkien etiketen kolorearekin marrazteko. Mesedez, kolore "
+"horiek ezartzeko, erabili Koloreak eta letra-tipoak konfiguratzeko orria."
 
 #. i18n: ectx: tooltip, entry, group (Month View)
 #: settings/korganizer.kcfg:291
 #, kde-format
 msgid "Draw month items using their tag color for the inside and border"
 msgstr ""
+"Marraztu hilabeteko elementuak haien kategoriaren kolorearekin barrutik eta "
+"ertzetan"
 
 #. i18n: ectx: whatsthis, entry, group (Month View)
 #: settings/korganizer.kcfg:295
-#, fuzzy, kde-format
+#, kde-format
 msgid ""
 "Select the \"Only calendar\" option if you would like to draw calendar items "
 "(both inside and border) in the color of their calendar.  Please use the "
 "Colors and Fonts configuration page for setting these colors."
 msgstr ""
-"Hautatu \"Egutegia bakarrik\" aukera egutegiko elementuak (biak, barrua eta "
+"Hautatu \"Egutegia bakarrik\" aukera, egutegiko elementuak (barrua eta "
 "ertzak) dauden egutegiaren kolorearekin marraztea nahi baduzu. Mesedez, "
 "erabili \"Koloreak eta Letra-tipoak\" konfiguratzeko orria kolore horiek "
 "ezartzeko."
 
 #. i18n: ectx: tooltip, entry, group (Month View)
 #: settings/korganizer.kcfg:296
-#, fuzzy, kde-format
+#, kde-format
 msgid "Draw month items using their calendar color for the inside and border"
 msgstr ""
-"Marraztu hilabeteko elementua haien egutegiaren kolorearekin barrutik eta "
+"Marraztu hilabeteko elementuak haien egutegiaren kolorearekin barrutik eta "
 "ertzetan"
 
 #. i18n: ectx: label, entry, group (Todo View)
 #: settings/korganizer.kcfg:306
-#, fuzzy, kde-format
+#, kde-format
 msgid "Always display completed to-dos at the bottom of the list"
 msgstr "Erakutsi osatutako zereginak beti zerrenda behean"
 
@@ -4675,22 +4638,23 @@ msgid ""
 "Completed to-dos are displayed at the bottom of the list, regardless of "
 "priority"
 msgstr ""
+"Osatutako zereginak zerrenda behean azaltzen dira, lehentasuna edozein dela"
 
 #. i18n: ectx: whatsthis, entry, group (Todo View)
 #: settings/korganizer.kcfg:308
-#, fuzzy, kde-format
+#, kde-format
 msgid ""
 "Check this box if you want all completed to-dos to be always grouped at the "
 "bottom of the to-do list."
 msgstr ""
-"Markatu lauki hau, osatutako zeregin denak beti zereginen zerrenda behean "
+"Markatu lauki hori, osatutako zeregin denak beti zereginen zerrenda behean "
 "taldekatuta egon daitezen."
 
 #. i18n: ectx: label, entry, group (Todo View)
 #: settings/korganizer.kcfg:313
 #, kde-format
 msgid "To-do list view uses full window"
-msgstr "Egitekoen zerrendak lehio osoa darabil"
+msgstr "Egitekoen zerrendak leiho osoa erabiltzen du"
 
 #. i18n: ectx: tooltip, entry, group (Todo View)
 #: settings/korganizer.kcfg:314
@@ -4700,22 +4664,17 @@ msgstr "Azaldu zeregin-zerrenda «KOrganizer»ren leiho oso batean"
 
 #. i18n: ectx: whatsthis, entry, group (Todo View)
 #: settings/korganizer.kcfg:315
-#, fuzzy, kde-format
-#| msgid ""
-#| "Check this box to use the full KOrganizer window when displaying the to-"
-#| "do list view. If this box is checked, you will gain some space for the to-"
-#| "do list view, but other widgets, such as the date navigator, the to-do "
-#| "details and the resources list, will not be displayed."
+#, kde-format
 msgid ""
 "Check this box to use the full KOrganizer window when displaying the to-do "
 "list view. If this box is checked, you will gain some space for the to-do "
 "list view, but other widgets, such as the date navigator, the to-do details "
 "and the calendars list, will not be displayed."
 msgstr ""
-"Markatu lauki hau, zereginen zerrenda ikuspegia azaltzean KOrganizer-ren "
-"leiho osoa erabiltzeko. Lauki hau markatzen bada, zereginen zerrenda "
+"Markatu lauki hori, zereginen zerrenda ikuspegia azaltzean «KOrganizer»ren "
+"leiho osoa erabiltzeko. Lauki hau markatuta badago, zereginen zerrenda "
 "ikuspegirako leku pixka bat irabaziko duzu, baina beste trepeta batzuk, data-"
-"nabigatzailea, zereginen xehetasunak eta egutegien zerrenda esaterako ez "
+"nabigatzailea, zereginen xehetasunak eta egutegien zerrenda, esaterako, ez "
 "dira azalduko."
 
 #. i18n: ectx: label, entry, group (Todo View)
@@ -4726,27 +4685,26 @@ msgstr "Azaldu zereginak zerrenda lau batean"
 
 #. i18n: ectx: tooltip, entry, group (Todo View)
 #: settings/korganizer.kcfg:321
-#, fuzzy, kde-format
+#, kde-format
 msgid "Display to-dos as a flat list instead of a hierarchical tree"
 msgstr ""
 "Azaldu zereginak zerrenda lau gisa hierarkia zuhaitz gisa erakutsi ordez"
 
 #. i18n: ectx: whatsthis, entry, group (Todo View)
 #: settings/korganizer.kcfg:322
-#, fuzzy, kde-format
-#| msgid "Check this box if you want to show seconds on the current-time line."
+#, kde-format
 msgid ""
 "Check this box if you want to see all your to-dos in a flat list instead of "
 "being arranged in a hierarchical tree."
 msgstr ""
-"Markatu lauki hau, zure zeregin denak zuhaitz hierarkia batean antolatu "
+"Markatu lauki hori, zure zeregin denak zuhaitz hierarkia batean antolatu "
 "ordez zerrenda lau batean ikusi nahi badituzu."
 
 #. i18n: ectx: label, entry, group (Todo View)
 #: settings/korganizer.kcfg:327
 #, kde-format
 msgid "Record completed to-dos in journal entries"
-msgstr "Gorde burututako egitekoak egunkari-sarreretan"
+msgstr "Erregistratu osatutako zereginak egunkari-sarreretan"
 
 #. i18n: ectx: whatsthis, entry, group (Todo View)
 #: settings/korganizer.kcfg:328
@@ -4755,8 +4713,8 @@ msgid ""
 "Check this box to record the completion of a to-do in a new entry of your "
 "journal automatically."
 msgstr ""
-"Hautatu hau egiteko baten burutzea zure egunkariko sarrera berri batean "
-"automatikoki gordetzeko."
+"Markatu lauki hori, zeregin bat osatzea zure egunkariko sarrera berri batean "
+"automatikoki erregistratzeko."
 
 #. i18n: ectx: label, entry, group (Colors)
 #. i18n: ectx: label, entry, group (Theming)
@@ -4765,7 +4723,7 @@ msgstr ""
 #: settings/korganizer.kcfg:662
 #, kde-format
 msgid "Holiday color"
-msgstr "Oporren kolorea"
+msgstr "Jaiegunaren kolorea"
 
 #. i18n: ectx: whatsthis, entry, group (Colors)
 #. i18n: ectx: whatsthis, entry, group (Theming)
@@ -4777,73 +4735,71 @@ msgid ""
 "Select the holiday color here. The holiday color will be used for the "
 "holiday name in the month view and the holiday number in the date navigator."
 msgstr ""
-"Hautatu oporren kolorea hemen. Oporren kolorea oporren izenean erabiliko da "
-"hilabeteko ikuspegian eta data arakatzailearen oporren zenbakietan."
+"Hautatu jaiegunaren kolorea hemen. Jaiegunaren kolorea jaiegunaren izenean "
+"erabiliko da hilabeteko ikuspegian eta jaiegunaren zenbakia data "
+"nabigatzailean."
 
 #. i18n: ectx: label, entry (AgendaBgColor), group (Colors)
 #. i18n: ectx: label, entry, group (Theming)
 #: settings/korganizer.kcfg:342 settings/korganizer.kcfg:482
 #, kde-format
 msgid "Agenda view background color"
-msgstr "Agenda ikuspegiaren atzeko planoaren kolorea"
+msgstr "Agenda ikuspegiaren hondoko kolorea"
 
 #. i18n: ectx: whatsthis, entry (AgendaBgColor), group (Colors)
 #. i18n: ectx: whatsthis, entry, group (Theming)
 #: settings/korganizer.kcfg:343 settings/korganizer.kcfg:483
 #, kde-format
 msgid "Select the agenda view background color here."
-msgstr "Hautatu agenda ikuspegiaren atzeko planoaren kolorea."
+msgstr "Hautatu hemen agenda ikuspegiaren atzeko planoaren kolorea."
 
 #. i18n: ectx: label, entry, group (Colors)
 #: settings/korganizer.kcfg:348
-#, fuzzy, kde-format
-#| msgid "Displays appointment time information."
+#, kde-format
 msgid "Agenda view current-time line color"
-msgstr "Agenda ikuspegiko uneko ordua lerroaren kolorea"
+msgstr "Agenda ikuspegiko uneko ordu lerroaren kolorea"
 
 #. i18n: ectx: whatsthis, entry, group (Colors)
 #: settings/korganizer.kcfg:349
-#, fuzzy, kde-format
-#| msgid "Show current-time (Marcus Bains) line"
+#, kde-format
 msgid "Select a color to use for the current-time (Marcus Bains) line."
-msgstr "Aukeratu uneko ordu-lerroarekin (Marcus Bains) erabiltzeko kolore bat."
+msgstr ""
+"Aukeratu uneko ordu («Marcus Bains») lerroarekin erabili beharreko kolorea."
 
 #. i18n: ectx: tooltip, entry, group (Colors)
 #: settings/korganizer.kcfg:350
-#, fuzzy, kde-format
-#| msgid "Show current-time (Marcus Bains) line"
+#, kde-format
 msgid "Use this color for the Agenda View current-time (Marcus Bains) line"
 msgstr ""
-"Erabili kolore hau Agenda ikuspegian uneko ordu-lerrorako (Marcus Bains)"
+"Erabili kolore hori Agenda ikuspegian uneko ordu («Marcus Bains») lerrorako"
 
 #. i18n: ectx: label, entry (ViewBgBusyColor), group (Colors)
 #: settings/korganizer.kcfg:355
 #, kde-format
 msgid "Busy days background color"
-msgstr "Lanpetutako egunen atzeko planoaren kolorea"
+msgstr "Lanpetutako egunetako hondoko kolorea"
 
 #. i18n: ectx: whatsthis, entry (ViewBgBusyColor), group (Colors)
 #: settings/korganizer.kcfg:356
-#, fuzzy, kde-format
+#, kde-format
 msgid ""
 "When you have an all day event marked as busy, you can have a different "
 "agenda or month view background color for that day. Select the color here."
 msgstr ""
 "Egun osoko ekitaldi bat lanpetu gisa markatuta duzunean, egun horretarako "
-"agenda- edo hilabeteko ikuspegiaren atzeko planoko kolore ezberdina izan "
-"dezakezu. Hautatu kolorea hemen."
+"agenda- edo hilabeteko ikuspegiaren hondoko kolore ezberdina izan dezakezu. "
+"Hautatu kolorea hemen."
 
 #. i18n: ectx: label, entry, group (Colors)
 #. i18n: ectx: label, entry, group (Theme/Month view)
 #: settings/korganizer.kcfg:361 settings/korganizer.kcfg:582
 #, kde-format
 msgid "Working hours color"
-msgstr "Lan-orduen kolorea"
+msgstr "Lanorduen kolorea"
 
 #. i18n: ectx: whatsthis, entry, group (Colors)
 #: settings/korganizer.kcfg:362
-#, fuzzy, kde-format
-#| msgid "Select the working hours color for the agenda view here."
+#, kde-format
 msgid "Select the working hours color for the agenda view here."
 msgstr "Hautatu hemen agenda ikuspegirako lanorduen kolorea."
 
@@ -4852,14 +4808,14 @@ msgstr "Hautatu hemen agenda ikuspegirako lanorduen kolorea."
 #: settings/korganizer.kcfg:367 settings/korganizer.kcfg:633
 #, kde-format
 msgid "To-do due today color"
-msgstr "Gaur burutuko diren egitekoen kolorea"
+msgstr "Epemuga gaur duten zereginen kolorea"
 
 #. i18n: ectx: whatsthis, entry (TodoDueTodayColor), group (Colors)
 #. i18n: ectx: whatsthis, entry, group (Theme/Month view)
 #: settings/korganizer.kcfg:368 settings/korganizer.kcfg:634
 #, kde-format
 msgid "Select the to-do due today color here."
-msgstr "Hautatu gaur burutuko diren egitekoen kolorea."
+msgstr "Hautatu hemen epemuga gaur duten zereginen kolorea."
 
 #. i18n: ectx: label, entry (TodoOverdueColor), group (Colors)
 #. i18n: ectx: label, entry, group (Theme/Month view)
@@ -4883,18 +4839,13 @@ msgstr "Denbora-barra"
 
 #. i18n: ectx: whatsthis, entry, group (Fonts)
 #: settings/korganizer.kcfg:383
-#, fuzzy, kde-format
-#| msgid ""
-#| "Press this button to configure the time bar font. The time bar is the "
-#| "widget that shows the hours in the agenda view. This button will open the "
-#| "&quot;Select Font&quot; dialog, allowing you to choose the hour font for "
-#| "the time bar."
+#, kde-format
 msgid ""
 "Press this button to configure the time bar font. The time bar is the widget "
 "that shows the hours in the agenda view. This button will open the \"Select "
 "Font\" dialog, allowing you to choose the hour font for the time bar."
 msgstr ""
-"Sakatu botoi hau denbora-barrako letra-tipoa konfiguratzeko. Denbora-barra, "
+"Sakatu botoi hori denbora-barrako letra-tipoa konfiguratzeko. Denbora-barra, "
 "agenda-ikuspegian orduak erakusten dituen trepeta da. Botoi honek \"Hautatu "
 "letra-tipoa\" elkarrizketa-koadroa irekiko du, denbora-barrako orduaren "
 "letra-tipoa hautatzeko aukera emanez."
@@ -4903,22 +4854,18 @@ msgstr ""
 #: settings/korganizer.kcfg:387
 #, kde-format
 msgid "Month view"
-msgstr "Hilabete ikuspegia"
+msgstr "Hilabeteko ikuspegia"
 
 #. i18n: ectx: whatsthis, entry, group (Fonts)
 #: settings/korganizer.kcfg:388
-#, fuzzy, kde-format
-#| msgid ""
-#| "Press this button to configure the month view font. This button will open "
-#| "the &quot;Select Font&quot; dialog, allowing you to choose the font for "
-#| "the items in the month view."
+#, kde-format
 msgid ""
 "Press this button to configure the month view font. This button will open "
 "the \"Select Font\" dialog, allowing you to choose the font for the items in "
 "the month view."
 msgstr ""
-"Sakatu botoi hau hilabeteko ikuspegiko letra-tipoa konfiguratzeko. Botoi "
-"honek \"Hautatu letra-tipoa\" elkarrizketa-koadroa irekiko du, denbora-"
+"Sakatu botoi hori hilabeteko ikuspegiko letra-tipoa konfiguratzeko. Botoi "
+"horrek \"Hautatu letra-tipoa\" elkarrizketa-koadroa irekiko du, denbora-"
 "barrako orduaren letra-tipoa hautatzeko aukera emanez."
 
 #. i18n: ectx: label, entry, group (Fonts)
@@ -4929,54 +4876,45 @@ msgstr "Agenda ikuspegia"
 
 #. i18n: ectx: whatsthis, entry, group (Fonts)
 #: settings/korganizer.kcfg:393
-#, fuzzy, kde-format
-#| msgid ""
-#| "Press this button to configure the agenda view font. This button will "
-#| "open the &quot;Select Font&quot; dialog, allowing you to choose the font "
-#| "for the events in the agenda view."
+#, kde-format
 msgid ""
 "Press this button to configure the agenda view font. This button will open "
 "the \"Select Font\" dialog, allowing you to choose the font for the events "
 "in the agenda view."
 msgstr ""
-"Hautatu botoi hau agenda-ikuspegiko letra-tipoa konfiguratzeko. Botoi honek "
-"\"Hautatu letra-tipoa\" elkarrizketa-koadroa irekiko du, denbora-barrako "
-"orduaren letra-tipoa hautatzeko aukera emanez."
+"Hautatu botoi hori agenda-ikuspegiko letra-tipoa konfiguratzeko. Botoi "
+"horrek \"Hautatu letra-tipoa\" elkarrizketa-koadroa irekiko du, denbora-"
+"barrako orduaren letra-tipoa hautatzeko aukera emanez."
 
 #. i18n: ectx: label, entry, group (Fonts)
 #: settings/korganizer.kcfg:397
 #, kde-format
 msgid "Current-time line"
-msgstr "Uneko-denboraren marka"
+msgstr "Uneko-denbora lerroa"
 
 #. i18n: ectx: whatsthis, entry, group (Fonts)
 #: settings/korganizer.kcfg:398
-#, fuzzy, kde-format
-#| msgid ""
-#| "Press this button to configure the current-time line font. This button "
-#| "will open the &quot;Select Font&quot; dialog, allowing you to choose the "
-#| "font for the current-time line in the agenda view."
+#, kde-format
 msgid ""
 "Press this button to configure the current-time line font. This button will "
 "open the \"Select Font\" dialog, allowing you to choose the font for the "
 "current-time line in the agenda view."
 msgstr ""
-"Sakatu botoi hau uneko-orduko lerroaren letra-tipoa konfiguratzeko. Botoi "
-"honek \"Hautatu letra-tipoa\" elkarrizketa-koadroa irekiko du, denbora-"
+"Sakatu botoi hori uneko-denbora lerroaren letra-tipoa konfiguratzeko. Botoi "
+"horrek \"Hautatu letra-tipoa\" elkarrizketa-koadroa irekiko du, denbora-"
 "barrako orduaren letra-tipoa hautatzeko aukera emanez."
 
 #. i18n: ectx: label, entry (DefaultTodoAttachMethod), group (Hidden Options)
 #: settings/korganizer.kcfg:422
-#, fuzzy, kde-format
-#| msgid "Default appointment time"
+#, kde-format
 msgid "Default todo attachment method"
 msgstr "Zereginen eranskin metodo lehenetsia"
 
 #. i18n: ectx: whatsthis, entry (DefaultTodoAttachMethod), group (Hidden Options)
 #: settings/korganizer.kcfg:423
-#, fuzzy, kde-format
+#, kde-format
 msgid "The default way of attaching dropped emails to a task"
-msgstr "Jaregindako e-postak ataza bati eransteko era lehenetsias"
+msgstr "Jaregindako e-postak ataza batean eransteko era lehenetsia"
 
 #. i18n: ectx: label, entry (DefaultTodoAttachMethod), group (Hidden Options)
 #: settings/korganizer.kcfg:426
@@ -5010,7 +4948,7 @@ msgid ""
 "Select the highlight color here. The highlight color will be used for "
 "marking the currently selected area in your agenda and in the date navigator."
 msgstr ""
-"Hautatu nabarmentzeko kolorea hemen. Nabarmentzeko kolorea zure agendan eta "
+"Hautatu hemen nabarmentzeko kolorea. Nabarmentzeko kolorea zure agendan eta "
 "data nabigatzailean hautatutako azalera markatzeko erabiliko da."
 
 #. i18n: ectx: label, entry, group (Theming)
@@ -5033,7 +4971,7 @@ msgstr ""
 #: settings/korganizer.kcfg:570
 #, kde-format
 msgid "Month view background color"
-msgstr "Hilabeteko ikuspegiaren atzeko planoaren kolorea"
+msgstr "Hilabeteko ikuspegiaren hondoko kolorea"
 
 #. i18n: ectx: whatsthis, entry, group (Theme/Month view)
 #: settings/korganizer.kcfg:571
@@ -5043,47 +4981,38 @@ msgstr "Hautatu hemen Hilabeteko ikuspegiaren atzeko planoaren kolorea."
 
 #. i18n: ectx: whatsthis, entry, group (Theme/Month view)
 #: settings/korganizer.kcfg:578
-#, fuzzy, kde-format
-#| msgid ""
-#| "Select the highlight color here. The highlight color will be used for "
-#| "marking the currently selected area in your agenda and in the date "
-#| "navigator."
+#, kde-format
 msgid ""
 "Select the highlight color here. The highlight color will be used for "
 "marking the currently selected area in your Month and in the date navigator."
 msgstr ""
-"Hautatu hemen nabarmentzeko kolorea. Nabarmentzeko kolorea zure hilabetean "
-"eta data-arakatzailean unean hautatutako eskualdea markatzeko erabiliko da."
+"Hautatu hemen nabarmentzeko kolorea. Nabarmentzeko kolorea zure hilabeteko "
+"ikuspegian eta data-arakatzailean unean hautatutako eskualdea markatzeko "
+"erabiliko da."
 
 #. i18n: ectx: whatsthis, entry, group (Theme/Month view)
 #: settings/korganizer.kcfg:583
-#, fuzzy, kde-format
-#| msgid "Select the working hours color for the agenda view here."
+#, kde-format
 msgid "Select the working hours background color for the Month view here."
-msgstr ""
-"Hautatu hemen Hilabeteko ikuspegirako laneko orduen atzeko planoko kolorea."
+msgstr "Hautatu hemen Hilabeteko ikuspegirako lanorduen hondoko kolorea."
 
 #. i18n: ectx: label, entry, group (Theme/Month view)
 #: settings/korganizer.kcfg:605
 #, kde-format
 msgid "Default event color"
-msgstr "Gertaeren kolore lehenetsia"
+msgstr "Ekitaldien kolore lehenetsia"
 
 #. i18n: ectx: whatsthis, entry, group (Theme/Month view)
 #: settings/korganizer.kcfg:606
-#, fuzzy, kde-format
-#| msgid ""
-#| "Select the default event color here. The default event color will be used "
-#| "for events categories in your agenda. Note that you can specify a "
-#| "separate color for each event category below."
+#, kde-format
 msgid ""
 "Select the default event color here. The default event color will be used "
 "for events in your Month. Note that you can specify a separate color for "
 "each event tag below."
 msgstr ""
-"Hautatu hau gertaeren kolore lehenetsia. Gertaeren kolore lehenetsia zure "
-"agendaren gertaeren kategorientzat erabiliko da. Kontuan izan beste kolore "
-"bat zehaz dezakezula beheko gertaeren kategoria bakoitzarentzat."
+"Hautatu hemen ekitaldiaren kolore lehenetsia. Ekitaldiaren kolore lehenetsia "
+"zure hilabeteko ikuspegiko ekitaldietarako erabiliko da. Kontuan izan, "
+"behean, kolore bereizi bat zehaztu dezakezula ekitaldi-etiketa bakoitzerako."
 
 #. i18n: ectx: property (placeholderText), widget (KListWidgetSearchLine, searchline)
 #: ui/filteredit_base.ui:35
@@ -5102,7 +5031,7 @@ msgstr "&Berria"
 #: ui/filteredit_base.ui:67
 #, kde-format
 msgid "Filter Details"
-msgstr "Iragazki xehetasunak"
+msgstr "Iragazkiaren xehetasunak"
 
 #. i18n: ectx: property (text), widget (QLabel, textLabel1)
 #: ui/filteredit_base.ui:105
@@ -5119,15 +5048,15 @@ msgid ""
 "your views. Daily and weekly recurring items may take a lot of space, so it "
 "might be handy to hide them."
 msgstr ""
-"Hautatu aukera hau zure ikuspegietan gertaera eta egiteko periodikoak "
-"erakutsi nahi ez badituzu. Eguneroko eta asteroko elementu periodikoak leku "
-"asko har dezakete, beraz, ongi dator hauek ezkutatzea."
+"Hautatu aukera hori, zure ikuspegietan ekitaldi eta zeregin errepikak "
+"erakusterik nahi ez baduzu. Egunero eta astero errepika duten elementuak "
+"leku asko har dezakete, beraz, ongi etor liteke horiek ezkutatzea."
 
 #. i18n: ectx: property (text), widget (QCheckBox, mRecurringCheck)
 #: ui/filteredit_base.ui:124
 #, kde-format
 msgid "Hide &recurring events and to-dos"
-msgstr "Ezkutatu gertaera &periodikoak eta egitekoak"
+msgstr "Ezkutatu ekitaldi eta zeregin e&rrepikariak"
 
 #. i18n: ectx: property (whatsThis), widget (QCheckBox, mCompletedCheck)
 #: ui/filteredit_base.ui:131
@@ -5137,15 +5066,15 @@ msgid ""
 "that have been completed. Optionally, only items that have been completed a "
 "given number of days are hidden."
 msgstr ""
-"Kaxa hau hautatuta badago, iragazkiak burutu diren gertaera guztiak "
-"ezkutatuko ditu zerrendatik. Aukeran, orain dela egun jakin batzuk "
-"burututako elementuak bakarrik ezkuta daitezke."
+"Lauki hori markatuta badago, iragazkiak zerrendatik, osatu diren zeregin "
+"guztiak ezkutatuko ditu. Aukeran, orain dela egun jakin batzuk osatu diren "
+"elementuak bakarrik ezkuta daitezke."
 
 #. i18n: ectx: property (text), widget (QCheckBox, mCompletedCheck)
 #: ui/filteredit_base.ui:134
 #, kde-format
 msgid "Hide co&mpleted to-dos"
-msgstr "Ezkutatu &burututako egitekoak"
+msgstr "Ezkutatu osa&tutako zereginak"
 
 #. i18n: ectx: property (whatsThis), widget (QLabel, mCompletedTimeSpanLabel)
 #: ui/filteredit_base.ui:177
@@ -5156,17 +5085,16 @@ msgid ""
 "as you check it. You can increase or decrease the number of days in the "
 "spinbox."
 msgstr ""
-"Aukera honek burututako zein egiteko ezkutatuko diren hautatzeko aukera "
-"ematen dizu. <i>Oraintxe bertan</i> hautatzen baduzu, egitekoa hautatu "
-"bezain laster ezkutatuko da. Egun kopurua biratze-kaxarekin handitu edo "
-"txikiagotu dezakezu."
+"Aukera horrek osatutako zein zeregin ezkutatuko diren hautatzeko aukera "
+"ematen dizu. <i>Berehala</i> hautatzen duzunean, egitekoa, markatu bezain "
+"laster ezkutatuko da. Egun kopurua biratze-laukian handitu edo txikiagotu "
+"dezakezu."
 
 #. i18n: ectx: property (text), widget (QLabel, mCompletedTimeSpanLabel)
 #: ui/filteredit_base.ui:180
-#, fuzzy, kde-format
-#| msgid "Days after completion:"
+#, kde-format
 msgid "Da&ys after completion:"
-msgstr "Amaierako ondorengo egunak:"
+msgstr "Osatu ondorengo egunak:"
 
 #. i18n: ectx: property (whatsThis), widget (QSpinBox, mCompletedTimeSpan)
 #: ui/filteredit_base.ui:193
@@ -5178,10 +5106,10 @@ msgid ""
 "items will be hidden, that have been marked finished longer than 24 hours "
 "ago."
 msgstr ""
-"Hemen egitekoak ezkutatzeko, egiteko hau burutu zeneko egun kopurua hauta "
-"dezakezu. \"Oraintxe bertan\" hautatzen baduzu, osatutako egiteko guztiak "
-"ezkutatuko dira. 1 balioa sartzen baduzu, orain dela 24 ordu baina gehiago "
-"burututa bezala markatu diren egiteko guztiak ezkutatuko dira."
+"Hemen, zeregin zerrendan ezkutatzeko, zereginak osatuta eraman behar duen "
+"egun kopurua eman dezakezu. \"Berehala\" hautatzen baduzu, osatutako zeregin "
+"guztiak ezkutatuko dira. Adibidez, 1 balioa sartzen baduzu, orain dela 24 "
+"ordu baina gehiago osatu gisa markatu diren zeregin guztiak ezkutatuko dira."
 
 #. i18n: ectx: property (whatsThis), widget (QCheckBox, mHideInactiveTodosCheck)
 #: ui/filteredit_base.ui:218
@@ -5191,15 +5119,15 @@ msgid ""
 "been reached. (Note that the start date is not the due date of the to-do "
 "item.)"
 msgstr ""
-"Aukera honek hasierako datara ailegatu ez diren egiteko guztiak ezkutatzen "
-"ditu zure zerrendatik. (Kontuan hartu hasierako data ez dela egitekoaren "
-"iraungipen-data)"
+"Aukera horrek, hasierako datara heldu ez diren zeregin guztiak zure "
+"zerrendatik ezkutatuko ditu (Kontuan izan hasierako data ez dela zeregin "
+"elementuaren epemuga)."
 
 #. i18n: ectx: property (text), widget (QCheckBox, mHideInactiveTodosCheck)
 #: ui/filteredit_base.ui:221
 #, kde-format
 msgid "Hide &inactive to-dos"
-msgstr "Ezkutatu egiteko &inaktiboak"
+msgstr "Ezkutatu zeregin e&z-aktiboak"
 
 #. i18n: ectx: property (title), widget (QGroupBox, mCategoriesButtonGroup)
 #: ui/filteredit_base.ui:228
@@ -5209,15 +5137,12 @@ msgstr "Etiketak"
 
 #. i18n: ectx: property (whatsThis), widget (QRadioButton, mCatHideCheck)
 #: ui/filteredit_base.ui:272
-#, fuzzy, kde-format
-#| msgid ""
-#| "When this option is enabled, this filter will show all items which do "
-#| "<i>not</i> contain the selected categories."
+#, kde-format
 msgid ""
 "When this option is chosen, this filter will show all items which do <i>not</"
 "i> contain any of the selected tags."
 msgstr ""
-"Aukera hau gaituta dagoenean, iragazki honek hautatutako kategoriak <i>ez</"
+"Aukera hori hautatzen denean, iragazki horrek, hautatutako etiketak <i>ez</"
 "i> dituzten elementu guztiak erakutsiko ditu."
 
 #. i18n: ectx: property (text), widget (QRadioButton, mCatHideCheck)
@@ -5228,16 +5153,13 @@ msgstr "Erakutsi guztiak hautatutakoak izan ezik"
 
 #. i18n: ectx: property (whatsThis), widget (QRadioButton, mCatShowCheck)
 #: ui/filteredit_base.ui:288
-#, fuzzy, kde-format
-#| msgid ""
-#| "When this option is enabled, this filter will show all items containing "
-#| "at least the selected items."
+#, kde-format
 msgid ""
 "When this option is chosen, this filter will show all items containing any "
 "of the selected tags."
 msgstr ""
-"Aukera hau gaituta badago, iragazki honek gutxienez hautatutako elementuak "
-"dituzten elementu guztiak erakutsiko ditu."
+"Aukera hori hautatuta dagoenean, iragazki horrek, hautatutako edozein "
+"etiketa duten elementu guztiak erakutsiko ditu."
 
 #. i18n: ectx: property (text), widget (QRadioButton, mCatShowCheck)
 #: ui/filteredit_base.ui:291
@@ -5260,16 +5182,16 @@ msgid ""
 "Only to-dos which have least one attendee will be checked.  If you are not "
 "in the list of attendees the to-do will be hidden."
 msgstr ""
-"Aukera honek beste norbaiti esleitutako egiteko guztiak zure zerrendatik "
+"Aukera honek beste norbaiti esleitutako zeregin guztiak zure zerrendatik "
 "ezkutatzen ditu. <br>\n"
-"Gutxienez partaide bat duten egitekoak hautatu behar dira. Partaideen "
-"zerrendan ez bazaude egitekoa ezkutatuko da."
+"Gutxienez partaide bat duten egitekoak egiaztatuko dira. Partaideen "
+"zerrendan ez bazaude zeregina ezkutatuko da."
 
 #. i18n: ectx: property (text), widget (QCheckBox, mHideTodosNotAssignedToMeCheck)
 #: ui/filteredit_base.ui:318
 #, kde-format
 msgid "Hide to-dos not assigned to me"
-msgstr "Ezkutatu niri esleitutako egitekoak"
+msgstr "Ezkutatu niri esleitu gabeko zereginak"
 
 #. i18n: ectx: attribute (title), widget (QWidget, tabPublish)
 #: ui/kogroupwareprefspage.ui:36
@@ -5285,7 +5207,7 @@ msgid ""
 "into account when inviting you for a meeting. Only the times you have "
 "already busy are published, not why they are busy."
 msgstr ""
-"Libre/lanpetuta informazioa argitaratuz, besteei beren bileren "
+"Libre/lanpetua informazioa argitaratuz, besteei beren bileren "
 "gonbidapenetarako zure egutegia kontuan hartzeko aukera ematen diezu. "
 "Lanpetuta zauden orduak bakarrik argitaratuko dira, eta ez zergatia."
 
@@ -5300,18 +5222,19 @@ msgid ""
 "as the Kolab2 server taking care of publishing your Free/Busy information "
 "and manages the access to it from other users."
 msgstr ""
-"Hautatu lauki hau zure libre/lanpetuta informazioa automatikoki kargatzeko.\n"
-"Aukera hau KOrganizer-en planifikatu menua erabiliz saihestu daiteke eta "
-"zure libre/lanpetuta informazioa postaz bidali edo kargatu daiteke.\n"
-"Oharra: KOrganizer KDE Kolab bezero bezala badabil, hau ez da beharrezkoa, "
-"Kolab2 zerbitzariak zure libre/lanpetuta informazioa argitaratu eta beste "
-"erabiltzaileei erakusten dielako."
+"Hautatu lauki hori zure libre/lanpetua informazioa automatikoki zama-"
+"igotzeko.\n"
+"Aukera hori saihestu daiteke «KOrganizer»reko Antolaketa menua erabiliz.\n"
+"Oharra: «KOrganizer» KDEren «Kolab» bezero bezala badabil, hau ez da "
+"beharrezkoa, «Kolab2» zerbitzariak zure libre/lanpetua informazioa "
+"argitaratzeaz arduratu eta beste erabiltzaileen hartarako sarrera kudeatzen "
+"duelako."
 
 #. i18n: ectx: property (text), widget (QCheckBox, publishEnable)
 #: ui/kogroupwareprefspage.ui:72
 #, kde-format
 msgid "Publish your free/&busy information automatically"
-msgstr "Argitaratu zure libre/&lanpetuta informazioa automatikoki"
+msgstr "Argitaratu zure libre/&lanpetua informazioa automatikoki"
 
 #. i18n: ectx: property (whatsThis), widget (QLabel, publishDelayLabel)
 #. i18n: ectx: property (whatsThis), widget (QSpinBox, publishDelay)
@@ -5322,15 +5245,15 @@ msgid ""
 "This configuration is only effective in case you choose to publish your "
 "information automatically."
 msgstr ""
-"Konfiguratu karga bakoitzaren arteko minutu kopuru minimoa hemen. "
-"Konfigurazio hau zure informazioa automatikoki argitaratzea hautatu baduzu "
-"bakarrik da eraginkorra."
+"Konfiguratu hemen, zama-igoera arteko gutxieneko bitartea minututan. "
+"Konfigurazio honek eragina du bakarrik zure informazioa automatikoki "
+"argitaratzea erabakitzen baduzu."
 
 #. i18n: ectx: property (text), widget (QLabel, publishDelayLabel)
 #: ui/kogroupwareprefspage.ui:99
 #, kde-format
 msgid "Minimum time between uploads (in minutes):"
-msgstr "Kargen arteko denbora minimoa (minututan):"
+msgstr "Zama-igoera arteko gutxieneko denbora (minututan):"
 
 #. i18n: ectx: property (whatsThis), widget (QLabel, TextLabel3)
 #. i18n: ectx: property (whatsThis), widget (QSpinBox, publishDays)
@@ -5342,7 +5265,7 @@ msgid ""
 "Configure the number of calendar days you wish to be published and available "
 "to others here."
 msgstr ""
-"Konfiguratu argitaratu eta besteentzat eskuragarri jarri nahi dituzun "
+"Konfiguratu hemen, argitaratuta eta besteen eskura egotea nahi duzun "
 "egutegiko egun kopurua."
 
 #. i18n: ectx: property (text), widget (QLabel, TextLabel3)
@@ -5355,7 +5278,7 @@ msgstr "Argitaratu"
 #: ui/kogroupwareprefspage.ui:170
 #, kde-format
 msgid "days of free/busy information"
-msgstr "libre/lanpetuta informazio egunak"
+msgstr "libre/lanpetua informazio egunak"
 
 #. i18n: ectx: property (title), widget (QGroupBox, ButtonGroup2)
 #. i18n: ectx: property (title), widget (QGroupBox, ButtonGroup2_2)
@@ -5367,23 +5290,15 @@ msgstr "Zerbitzariaren informazioa"
 #. i18n: ectx: property (whatsThis), widget (QLineEdit, publishUrl)
 #. i18n: ectx: property (whatsThis), widget (QLabel, TextLabel7)
 #: ui/kogroupwareprefspage.ui:223 ui/kogroupwareprefspage.ui:295
-#, fuzzy, kde-format
-#| msgid ""
-#| "Enter the URL for the server on which your Free/Busy information shall be "
-#| "published here.\n"
-#| "Ask the server administrator for this information.\n"
-#| "Here is a Kolab2 server URL example: \"webdavs://kolab2.com/freebusy/"
-#| "joe@kolab2.com.ifb\""
+#, kde-format
 msgid ""
 "Enter the URL for the server on which your Free/Busy information shall be "
 "published here.\n"
 "Ask the server administrator for this information."
 msgstr ""
-"Sartu zure libre/lanpetuta informazioa argitaratuko duen zerbitzariaren URL-"
-"a.\n"
-"Galdetu zerbitzariaren administratzaileari honi buruz.\n"
-"Hemen Kolab2 zerbitzari baten adibidez daukazu:\n"
-"\"webdavs://kolab2.com/freebusy/joe@kolab2.com.ifb\""
+"Sartu hemen, zure Libre/lanpetuta informazioa argitaratzeko zerbitzariaren "
+"URL.\n"
+"Galdetu informazio hori zerbitzariaren administratzaileari."
 
 #. i18n: ectx: property (whatsThis), widget (QLineEdit, publishPassword)
 #. i18n: ectx: property (whatsThis), widget (QLabel, textLabel2)
@@ -5393,7 +5308,7 @@ msgstr ""
 #: ui/kogroupwareprefspage.ui:413 ui/kogroupwareprefspage.ui:486
 #, kde-format
 msgid "Enter your groupware server login password here."
-msgstr "Sartu hemen zure groupware zerbitzarian saioa hasteko pasahitza."
+msgstr "Sartu hemen zure talde-lanerako zerbitzarian saioa hasteko pasahitza."
 
 #. i18n: ectx: property (text), widget (QLabel, textLabel2)
 #: ui/kogroupwareprefspage.ui:243
@@ -5415,11 +5330,12 @@ msgid ""
 "default your UID would be your email address on the Kolab2 server but it may "
 "also be different. In the last case enter your UID."
 msgstr ""
-"Sartu zure zerbitzariko kontuari dagokion saioaren hasierako informazio.\n"
+"Sartu hemen, zure zerbitzariko kontuari dagokion saioa hasteko informazioa.\n"
 "\n"
-"Kolab2 zerbitzariaren berezitasuna:Erregistratu zure UID-a (identifikatzaile "
-"bakarra). Lehenespenez zure UID-a Kolab2 zerbitzariko zure e-posta helbidea "
-"da baina hau ez da beti horrela. Kasu honetan sartu zure UID-a."
+"«Kolab2» zerbitzariaren espezifikotasun bat: Erregistratu zure UID "
+"(identifikatzaile bakarra). Era lehenetsian zure UID «Kolab2» zerbitzariko "
+"zure e-posta helbidea izango litzateke, baina baliteke ere ezberdina izatea. "
+"Azken kasu horretan, sartu zure UID."
 
 #. i18n: ectx: property (text), widget (QLabel, TextLabel6)
 #: ui/kogroupwareprefspage.ui:258
@@ -5439,10 +5355,10 @@ msgid ""
 "For security reasons, it is not recommended to store your password in the "
 "configuration file."
 msgstr ""
-"Hautatu hau KOrganizer-ek zure pasahitza konfigurazio fitxategian gordez "
-"gogora dezan eta zure libre/lanpetuta informazioa kargatzen duen bakoitzean "
-"galdetu ez dezan.\n"
-"Segurtasun arrazoiengatik, ez da gomendagarria zure pasahitza konfigurazio-"
+"Markatu lauki hori, «KOrganizer»ek zure pasahitza konfigurazio fitxategian "
+"gordez gogora dezan eta zure Libre/lanpetua informazioa zama-igotzen duen "
+"bakoitzean galde ez diezazun.\n"
+"Segurtasun arrazoiengatik, ez da gomendatzen zure pasahitza konfigurazio-"
 "fitxategian gordetzea."
 
 #. i18n: ectx: property (text), widget (QCheckBox, publishSavePassword)
@@ -5456,19 +5372,19 @@ msgstr "Gogoratu p&asahitza"
 #: ui/kogroupwareprefspage.ui:298 ui/kogroupwareprefspage.ui:461
 #, kde-format
 msgid "Server URL:"
-msgstr "Zerbitzariaren URL-a:"
+msgstr "Zerbitzariaren URL:"
 
 #. i18n: ectx: property (text), widget (QLabel, label)
 #: ui/kogroupwareprefspage.ui:308
 #, kde-format
 msgid "(No need if using Kolab server version 2)"
-msgstr "(Beharrik ez Kolab zerbitzariaren 2 bertsio erabiliz gero)"
+msgstr "(Beharrik ez «Kolab» zerbitzariaren 2 bertsio erabiliz gero)"
 
 #. i18n: ectx: attribute (title), widget (QWidget, tabRetrieve)
 #: ui/kogroupwareprefspage.ui:335
 #, kde-format
 msgid "&Retrieve"
-msgstr "&Eskuratu"
+msgstr "Be&rreskuratu"
 
 #. i18n: ectx: property (text), widget (QLabel, TextLabel2)
 #: ui/kogroupwareprefspage.ui:356
@@ -5477,38 +5393,35 @@ msgid ""
 "By retrieving Free/Busy information that others have published, you can take "
 "their calendar into account when inviting them to a meeting."
 msgstr ""
-"Besteek argitaratu duten libre/lanpetuta informazioa eskuratuz, beren "
-"egutegiak kontuan hartu ditzakezu bilera batera gonbidatzerakoan."
+"Besteek argitaratu duten Libre/lanpetua informazioa berreskuratuz, beren "
+"egutegiak kontuan har ditzakezu haiek bilera batera gonbidatzerakoan."
 
 #. i18n: ectx: property (whatsThis), widget (QCheckBox, retrieveEnable)
 #: ui/kogroupwareprefspage.ui:366
-#, fuzzy, kde-format
-#| msgid ""
-#| "Check this box to retrieve other peoples' Free/Busy information "
-#| "automatically. Note that you have to fill the correct server information "
-#| "to make this possible."
+#, kde-format
 msgid ""
 "Check this box to retrieve other people's Free/Busy information "
 "automatically. Note that you have to fill the correct server information to "
 "make this possible."
 msgstr ""
-"Hautatu hau beste jendearen libre/lanpetuta informazioa automatikoki "
-"eskuratzeko. Kontuan izan zerbitzariaren informazio zuzena bete behar duzula "
-"hau egiteko."
+"Markatu lauki hori, beste jendearen Libre/lanpetua informazioa automatikoki "
+"berreskuratzeko. Kontuan izan hori egiteko, zerbitzariaren informazio zuzena "
+"bete behar duzula."
 
 #. i18n: ectx: property (text), widget (QCheckBox, retrieveEnable)
 #: ui/kogroupwareprefspage.ui:369
-#, fuzzy, kde-format
-#| msgid "Retrieve other peoples' free/&busy information automatically"
+#, kde-format
 msgid "Retrieve other people's free/&busy information automatically"
-msgstr "Eskuratu besteen libre/&lanpetuta informazioa automatikoki"
+msgstr "Berreskuratu beste jendearen Libre/lan&petua informazioa automatikoki"
 
 #. i18n: ectx: property (toolTip), widget (QCheckBox, fullDomainRetrieval)
 #: ui/kogroupwareprefspage.ui:379
 #, kde-format
 msgid ""
 "Set this to retrieve user@domain.ifb instead of user.ifb from the server"
-msgstr "Hautatu hau user.ifb-ren ordez user@domain.ifb eskuratzeko "
+msgstr ""
+"Ezarri hori, zerbitzaritik erabiltzailea.ifb ordez erabiltzailea@domeinua."
+"ifb berreskuratzeko"
 
 #. i18n: ectx: property (whatsThis), widget (QCheckBox, fullDomainRetrieval)
 #: ui/kogroupwareprefspage.ui:382
@@ -5532,12 +5445,7 @@ msgstr "Erabili e-posta &helbide osoa eskuratzeko"
 #. i18n: ectx: property (whatsThis), widget (QLineEdit, retrieveUrl)
 #. i18n: ectx: property (whatsThis), widget (QLabel, TextLabel7_2)
 #: ui/kogroupwareprefspage.ui:443 ui/kogroupwareprefspage.ui:458
-#, fuzzy, kde-format
-#| msgid ""
-#| "Enter the URL for the server on which the Free/Busy information is "
-#| "published here.\n"
-#| "Ask the server administrator for this information.\n"
-#| "Here is a Kolab2 server URL example: \"webdavs://kolab2.com/freebusy/\""
+#, kde-format
 msgctxt "@info:whatsthis"
 msgid ""
 "Enter the URL for the server on which the Free/Busy information is published "
@@ -5551,11 +5459,16 @@ msgid ""
 "\n"
 "https://kolab2.example.com/freebusy/user.xfb"
 msgstr ""
-"Sartu hemen libre/lanpetuta informazioa argitaratuko duen zerbitzariaren URL-"
-"a.\n"
-"Galdetu zerbitzariaren administratzaileari informazio honi buruz.\n"
-"Hemen Kolab2 zerbitzariaren URL-aren adibidea daukazu: \"webdavs://kolab2."
-"com/freebusy/\""
+"Sartu hemen Libre/lanpetua informazioa argitaratzen duen zerbitzariaren "
+"URL.\n"
+"Galdetu informazio hori zerbitzariaren administratzaileari.\n"
+"Jarraian «Kolab2» zerbitzari baten URLaren adibide bat:\n"
+"\n"
+"https://kolab2.adibidea.com/librelanpetua/\n"
+"\n"
+"«Libre/lanpentu»rako bide-izen osoa ere zehaztu dezakezu. Adibidez:\n"
+"\n"
+"https://kolab2.example.com/freebusy/user.xfb"
 
 #. i18n: ectx: property (text), widget (QLabel, textLabel3)
 #: ui/kogroupwareprefspage.ui:476
@@ -5567,7 +5480,7 @@ msgstr "Erabiltzaile-ize&na:"
 #: ui/kogroupwareprefspage.ui:489
 #, kde-format
 msgid "Passwor&d:"
-msgstr "Pasahi&tza:"
+msgstr "Pasahit&za:"
 
 #. i18n: ectx: property (text), widget (QCheckBox, retrieveSavePassword)
 #: ui/kogroupwareprefspage.ui:509
@@ -5579,13 +5492,15 @@ msgstr "&Gogoratu pasahitza"
 #: ui/searchdialog_base.ui:36
 #, kde-format
 msgid "&Search for:"
-msgstr "&Bilatu hau:"
+msgstr "&Bilatu hori:"
 
 #. i18n: ectx: property (toolTip), widget (QLineEdit, searchEdit)
 #: ui/searchdialog_base.ui:49
 #, kde-format
 msgid "Search pattern. Use wildcards “*” and “?” as desired."
 msgstr ""
+"Bilaketa eredua. Erabili nahi bezala zernahitarako \"*\" eta \"?\" "
+"karaktereak."
 
 #. i18n: ectx: property (whatsThis), widget (QLineEdit, searchEdit)
 #: ui/searchdialog_base.ui:52
@@ -5608,13 +5523,13 @@ msgstr "*"
 #: ui/searchdialog_base.ui:67
 #, kde-format
 msgid "Search For"
-msgstr "Bilatu hau"
+msgstr "Bilatu"
 
 #. i18n: ectx: property (toolTip), widget (QCheckBox, eventsCheck)
 #: ui/searchdialog_base.ui:73
 #, kde-format
 msgid "Search for events with matching criteria."
-msgstr ""
+msgstr "Bilatu irizpideekin bat datozen ekitaldiak."
 
 #. i18n: ectx: property (whatsThis), widget (QCheckBox, eventsCheck)
 #: ui/searchdialog_base.ui:76
@@ -5630,7 +5545,7 @@ msgstr ""
 #: ui/searchdialog_base.ui:79
 #, kde-format
 msgid "&Events"
-msgstr "&Gertaerak"
+msgstr "&Ekitaldiak"
 
 #. i18n: ectx: property (toolTip), widget (QCheckBox, journalsCheck)
 #: ui/searchdialog_base.ui:89
