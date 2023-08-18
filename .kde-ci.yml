@@ -9,7 +9,6 @@ Dependencies:
     'pim/akonadi' : '@latest-kf6'
     'pim/akonadi-calendar' : '@latest-kf6'
     'pim/akonadi-contacts' : '@latest-kf6'
-    'pim/akonadi-mime' : '@latest-kf6'
     'pim/akonadi-notes' : '@latest-kf6'
     'pim/calendarsupport' : '@latest-kf6'
     'pim/eventviews' : '@latest-kf6'
