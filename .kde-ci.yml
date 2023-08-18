@@ -39,3 +39,4 @@ Dependencies:
     'frameworks/kdoctools': '@latest-kf6'
     'frameworks/kcontacts': '@latest-kf6'
     'frameworks/kcalendarcore': '@latest-kf6'
+    'libraries/kuserfeedback': '@latest-kf6'
