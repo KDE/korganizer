@@ -20,7 +20,6 @@ Dependencies:
     'pim/kmailtransport' : '@latest-kf6'
     'pim/kmime' : '@latest-kf6'
     'pim/kontactinterface' : '@latest-kf6'
-    'pim/kpimtextedit' : '@latest-kf6'
     'pim/libkdepim' : '@latest-kf6'
     'pim/pimcommon' : '@latest-kf6'
     'frameworks/ki18n': '@latest-kf6'
