@@ -11,7 +11,7 @@ msgid ""
 msgstr ""
 "Project-Id-Version: korganizer\n"
 "Report-Msgid-Bugs-To: https://bugs.kde.org\n"
-"POT-Creation-Date: 2023-07-24 07:36+0000\n"
+"POT-Creation-Date: 2023-08-14 00:47+0000\n"
 "PO-Revision-Date: 2022-09-25 18:08+0400\n"
 "Last-Translator: Zayed Al-Saidi <zayed.alsaidi@gmail.com>\n"
 "Language-Team: ar\n"
@@ -439,7 +439,7 @@ msgstr ""
 
 #. i18n: ectx: property (text), widget (QPushButton, mDeleteButton)
 #: actionmanager.cpp:366 actionmanager.cpp:621 actionmanager.cpp:1308
-#: actionmanager.cpp:1340 ui/filteredit_base.ui:56
+#: actionmanager.cpp:1345 ui/filteredit_base.ui:56
 #, kde-format
 msgid "&Delete"
 msgstr "ا&حذف"
@@ -817,7 +817,7 @@ msgstr "أسبوع ال&عمل"
 msgid "&Week"
 msgstr "الأ&سبوع"
 
-#: actionmanager.cpp:565 kodaymatrix.cpp:484
+#: actionmanager.cpp:565 kodaymatrix.cpp:488
 #, kde-format
 msgid "New E&vent..."
 msgstr "&حدث جديد…"
@@ -842,7 +842,7 @@ msgid ""
 "attendees, recurrences and much more."
 msgstr ""
 
-#: actionmanager.cpp:575 kodaymatrix.cpp:485
+#: actionmanager.cpp:575 kodaymatrix.cpp:489
 #, kde-format
 msgid "New &To-do..."
 msgstr "م&همّة جديدة…"
@@ -872,7 +872,7 @@ msgstr ""
 msgid "New Su&b-to-do..."
 msgstr "مهمّة &فرعيّة جديدة…"
 
-#: actionmanager.cpp:594 kodaymatrix.cpp:486
+#: actionmanager.cpp:594 kodaymatrix.cpp:490
 #, kde-format
 msgid "New &Journal..."
 msgstr "يو&ميّة جديدة…"
@@ -929,12 +929,12 @@ msgid ""
 "current calendar view."
 msgstr ""
 
-#: actionmanager.cpp:613 actionmanager.cpp:1302 actionmanager.cpp:1338
+#: actionmanager.cpp:613 actionmanager.cpp:1302 actionmanager.cpp:1343
 #, kde-format
 msgid "&Show"
 msgstr "ا&عرض"
 
-#: actionmanager.cpp:617 actionmanager.cpp:1305 actionmanager.cpp:1339
+#: actionmanager.cpp:617 actionmanager.cpp:1305 actionmanager.cpp:1344
 #, kde-format
 msgid "&Edit..."
 msgstr "&حرّر…"
@@ -1137,62 +1137,62 @@ msgstr "&حرّر المهمّة…"
 msgid "&Delete To-do"
 msgstr "ا&حذف المهمّة"
 
-#: actionmanager.cpp:1416 actionmanager.cpp:1522
+#: actionmanager.cpp:1421 actionmanager.cpp:1527
 #, kde-format
 msgid "Attach as &link"
 msgstr "أرفِق كراب&ط"
 
-#: actionmanager.cpp:1417 actionmanager.cpp:1523
+#: actionmanager.cpp:1422 actionmanager.cpp:1528
 #, kde-format
 msgid "Attach &inline"
 msgstr "أرفِق &ضمن السياق"
 
-#: actionmanager.cpp:1418
+#: actionmanager.cpp:1423
 #, kde-format
 msgid "Attach inline &without attachments"
 msgstr "أرفِق ضمن السياق &دون مرفقات"
 
-#: actionmanager.cpp:1420 actionmanager.cpp:1525
+#: actionmanager.cpp:1425 actionmanager.cpp:1530
 #, kde-format
 msgid "C&ancel"
 msgstr "أ&لغِ"
 
-#: actionmanager.cpp:1458
+#: actionmanager.cpp:1463
 #, kde-format
 msgid "Removing attachments from an email might invalidate its signature."
 msgstr "يمكن أن تؤدي إزالة المرفقات من أحد رسائل البريد إلى إبطال التوقيع."
 
-#: actionmanager.cpp:1459
+#: actionmanager.cpp:1464
 #, kde-format
 msgid "Remove Attachments"
 msgstr "إزالة المرفقات"
 
-#: actionmanager.cpp:1610
+#: actionmanager.cpp:1615
 #, kde-format
 msgid "Undo: %1"
 msgstr "تراجَع عن: %1"
 
-#: actionmanager.cpp:1613 actionmanager.cpp:1629
+#: actionmanager.cpp:1618 actionmanager.cpp:1634
 #, kde-format
 msgid "Undo"
 msgstr "تراجَع"
 
-#: actionmanager.cpp:1623
+#: actionmanager.cpp:1628
 #, kde-format
 msgid "Redo: %1"
 msgstr "أعِد: %1"
 
-#: actionmanager.cpp:1626
+#: actionmanager.cpp:1631
 #, kde-format
 msgid "Redo"
 msgstr "أعِد"
 
-#: actionmanager.cpp:1640
+#: actionmanager.cpp:1645
 #, kde-format
 msgid "URL '%1' is invalid."
 msgstr "المسار ”%1“ غير صالح."
 
-#: actionmanager.cpp:1645
+#: actionmanager.cpp:1650
 #, kde-format
 msgctxt "@info"
 msgid ""
@@ -1206,110 +1206,110 @@ msgstr ""
 "</p><p>إن اخترت الدمج فسيُطلب منك اختيار التقويم المقصد.</p><p>إن اخترت "
 "الإضافة فسيُنشأ تقويم لك آليًا.</p>"
 
-#: actionmanager.cpp:1653
+#: actionmanager.cpp:1658
 #, kde-format
 msgctxt "@title:window"
 msgid "Import Calendar"
 msgstr "استيراد التقويم"
 
-#: actionmanager.cpp:1654
+#: actionmanager.cpp:1659
 #, kde-format
 msgid "Merge into existing calendar"
 msgstr "ادمج بالتقويم الموجود"
 
-#: actionmanager.cpp:1655
+#: actionmanager.cpp:1660
 #, kde-format
 msgid "Add as new calendar"
 msgstr "أضِف كتقويم جديد"
 
-#: akonadicollectionview.cpp:284
+#: akonadicollectionview.cpp:285
 #, kde-format
 msgctxt "@item this is the default calendar"
 msgid "%1 (Offline)"
 msgstr "‏%1 (غير متّصل)"
 
-#: akonadicollectionview.cpp:287
+#: akonadicollectionview.cpp:288
 #, kde-format
 msgctxt "@item this is the default calendar"
 msgid "%1 (Default)"
 msgstr "%1 (المبدئيّ)"
 
-#: akonadicollectionview.cpp:402
+#: akonadicollectionview.cpp:405
 #, kde-format
 msgctxt "@info:tooltip"
 msgid "Set search keyword"
 msgstr "عين كلمة البحث"
 
-#: akonadicollectionview.cpp:403
+#: akonadicollectionview.cpp:406
 #, kde-format
 msgctxt "@info:whatsthis"
 msgid "Lets you search for a keyword in your calendars"
 msgstr ""
 
-#: akonadicollectionview.cpp:408
+#: akonadicollectionview.cpp:411
 #, kde-format
 msgctxt "@info/plain Displayed grayed-out inside the textbox, verb to search"
 msgid "Search..."
 msgstr "ابحث..."
 
-#: akonadicollectionview.cpp:492 manageshowcollectionproperties.cpp:76
+#: akonadicollectionview.cpp:495 manageshowcollectionproperties.cpp:76
 #, kde-format
 msgctxt "@title:window"
 msgid "Properties of Calendar Folder %1"
 msgstr "خصائص مجلد التقاويم %1"
 
-#: akonadicollectionview.cpp:504
+#: akonadicollectionview.cpp:507
 #, kde-format
 msgctxt "@action:inmenu"
 msgid "&Set Folder Color..."
 msgstr "ا&ضبط لون المجلد…"
 
-#: akonadicollectionview.cpp:510
+#: akonadicollectionview.cpp:513
 #, fuzzy, kde-format
 #| msgid "Use as &Default Calendar"
 msgctxt "@action:inmenu"
 msgid "Set as &Default Folder"
 msgstr "است&خدمه كالتقويم المبدئي"
 
-#: akonadicollectionview.cpp:516
+#: akonadicollectionview.cpp:519
 #, kde-format
 msgctxt "@action:inmenu"
 msgid "Serverside Subscription..."
 msgstr "الاشتراك من جانب الخادوم..."
 
-#: akonadicollectionview.cpp:561
+#: akonadicollectionview.cpp:564
 #, fuzzy, kde-format
 #| msgid "Do you really want to delete calendar %1?"
 msgctxt "@info"
 msgid "Do you really want replace your current default calendar with \"%1\"?"
 msgstr "أمتأكّد من حذف التقويم %1؟"
 
-#: akonadicollectionview.cpp:562
+#: akonadicollectionview.cpp:565
 #, fuzzy, kde-format
 #| msgid "Use as &Default Calendar"
 msgctxt "@title:window"
 msgid "Replace Default Calendar?"
 msgstr "است&خدمه كالتقويم المبدئي"
 
-#: akonadicollectionview.cpp:662
+#: akonadicollectionview.cpp:702
 #, kde-format
 msgctxt "@title:window"
 msgid "Add Calendar"
 msgstr "إضافة التّقويم"
 
-#: akonadicollectionview.cpp:704
+#: akonadicollectionview.cpp:744
 #, kde-format
 msgctxt "@info"
 msgid "Do you really want to delete calendar %1?"
 msgstr "أمتأكّد من حذف التقويم %1؟"
 
-#: akonadicollectionview.cpp:705
+#: akonadicollectionview.cpp:745
 #, kde-format
 msgctxt "@title:window"
 msgid "Delete Calendar"
 msgstr "أأحذف التّقويم؟"
 
-#: calendarview.cpp:239
+#: calendarview.cpp:241
 #, kde-format
 msgid ""
 "<p><em>No Item Selected</em></p><p>Select an event, to-do or journal entry "
@@ -1318,7 +1318,7 @@ msgstr ""
 "<p>لا عناصر محدّدة</p><p>اختر حدثًا أو مهمّة أو مدخلة يوميّة لعرض تفاصيلها هنا.</"
 "p>"
 
-#: calendarview.cpp:245
+#: calendarview.cpp:247
 #, kde-format
 msgid ""
 "View the details of events, journal entries or to-dos selected in "
@@ -1327,17 +1327,17 @@ msgstr ""
 "يعرض تفاصيل الأحداث أو مدخلات اليوميّة أو المهام المحدّدة في منظور «منظّمك» "
 "الأساسي هنا."
 
-#: calendarview.cpp:600
+#: calendarview.cpp:626
 #, kde-format
 msgid "Todo completed: %1 (%2)"
 msgstr "اكتملت المهمّة: %1 ‏(%2)"
 
-#: calendarview.cpp:609
+#: calendarview.cpp:635
 #, kde-format
 msgid "Journal of %1"
 msgstr "يوميّة %1"
 
-#: calendarview.cpp:658
+#: calendarview.cpp:684
 #, kde-format
 msgid ""
 "The item \"%1\" is filtered by your current filter rules, so it will be "
@@ -1346,63 +1346,63 @@ msgstr ""
 "رُشّح العنصر ”%1“ حسب قواعد الترشيح الحالية، لذلك سيكون مخفيًا ولن يظهر في "
 "المنظور."
 
-#: calendarview.cpp:727
+#: calendarview.cpp:753
 #, kde-format
 msgctxt "@info"
 msgid "Do you really want to permanently remove the item \"%1\"?"
 msgstr "أمتأكّد من إزالة العنصر ”%1“ للأبد؟"
 
-#: calendarview.cpp:728
+#: calendarview.cpp:754
 #, kde-format
 msgctxt "@title:window"
 msgid "Delete Item?"
 msgstr "أأحذف العنصر؟"
 
-#: calendarview.cpp:803
+#: calendarview.cpp:829
 #, kde-format
 msgid "Paste failed: unable to determine a valid target date."
 msgstr "فشل اللصق: تعذّر تحديد تاريخ هدف صالح."
 
-#: calendarview.cpp:1233
+#: calendarview.cpp:1259
 #, kde-format
 msgid "Make sub-to-dos independent"
 msgstr "اجعل المهام الفرعيّة مستقلة"
 
-#: calendarview.cpp:1290
+#: calendarview.cpp:1316
 #, kde-format
 msgid "Toggle Reminder"
 msgstr "مبدل التذكير"
 
-#: calendarview.cpp:1322 calendarview.cpp:1374
+#: calendarview.cpp:1348 calendarview.cpp:1400
 #, kde-format
 msgid "Toggle To-do Completed"
 msgstr "بدّل بين حالتي اكتملت المَهمة"
 
-#: calendarview.cpp:1426
+#: calendarview.cpp:1452
 #, kde-format
 msgctxt "@info"
 msgid "\"%1\" was successfully copied to %2."
 msgstr "نجح نسخ ”%1“ إلى %2."
 
-#: calendarview.cpp:1427
+#: calendarview.cpp:1453
 #, kde-format
 msgctxt "@title:window"
 msgid "Copying Succeeded"
 msgstr "نجح النسخ"
 
-#: calendarview.cpp:1431
+#: calendarview.cpp:1457
 #, kde-format
 msgctxt "@info"
 msgid "Unable to copy the item \"%1\" to %2."
 msgstr "تعذّر نسخ العنصر ”%1“ إلى %2."
 
-#: calendarview.cpp:1432
+#: calendarview.cpp:1458
 #, kde-format
 msgctxt "@title:window"
 msgid "Copying Failed"
 msgstr "فشل النسخ"
 
-#: calendarview.cpp:1491
+#: calendarview.cpp:1517
 #, fuzzy, kde-format
 #| msgctxt "@info"
 #| msgid ""
@@ -1414,47 +1414,47 @@ msgid ""
 "of this item has been put into %2"
 msgstr "تعذّرت إزالة العنصر ”%1“ من %2. بأي حال فقد وُضعت نسخة عنه في %3."
 
-#: calendarview.cpp:1495 calendarview.cpp:1511
+#: calendarview.cpp:1521 calendarview.cpp:1537
 #, kde-format
 msgctxt "@title:window"
 msgid "Moving Failed"
 msgstr "فشل النقل"
 
-#: calendarview.cpp:1500
+#: calendarview.cpp:1526
 #, kde-format
 msgctxt "@info"
 msgid "\"%1\" was successfully moved from %2 to %3."
 msgstr "نجح نقل ”%1“ من %2 إلى %3."
 
-#: calendarview.cpp:1501
+#: calendarview.cpp:1527
 #, kde-format
 msgctxt "@title:window"
 msgid "Moving Succeeded"
 msgstr "نجح النقل"
 
-#: calendarview.cpp:1507
+#: calendarview.cpp:1533
 #, kde-format
 msgctxt "@info"
 msgid "Unable to add the item \"%1\" into %2. This item has not been moved."
 msgstr "تعذّرت إضافة العنصر ”%1“ في %2. لم يُنقل هذا العنصر."
 
-#: calendarview.cpp:1545
+#: calendarview.cpp:1571
 #, kde-format
 msgid "Do you want to dissociate the occurrence on %1 from the recurrence?"
 msgstr "أتريد إلغاء ربط الحدوث في تاريخ %1 من التكرار؟"
 
-#: calendarview.cpp:1549 calendarview.cpp:1561 calendarview.cpp:2215
-#: calendarview.cpp:2274 calendarview.cpp:2304
+#: calendarview.cpp:1575 calendarview.cpp:1587 calendarview.cpp:2245
+#: calendarview.cpp:2304 calendarview.cpp:2334
 #, kde-format
 msgid "KOrganizer Confirmation"
 msgstr "تأكيد «منظّمك»"
 
-#: calendarview.cpp:1550
+#: calendarview.cpp:1576
 #, kde-format
 msgid "&Dissociate"
 msgstr "ا&فصل"
 
-#: calendarview.cpp:1556
+#: calendarview.cpp:1582
 #, kde-format
 msgid ""
 "Do you want to dissociate the occurrence on %1 from the recurrence or also "
@@ -1463,75 +1463,75 @@ msgstr ""
 "أتريد إلغاء ربط الحدوث في تاريخ %1 من التكرار أو تريد فصل الحدوثات "
 "المستقبلية؟"
 
-#: calendarview.cpp:1562
+#: calendarview.cpp:1588
 #, kde-format
 msgid "&Only Dissociate This One"
 msgstr "افصل هذا فح&سب"
 
-#: calendarview.cpp:1563
+#: calendarview.cpp:1589
 #, kde-format
 msgid "&Also Dissociate Future Ones"
 msgstr "افصل الحدوثات المستقبلية أي&ضًا"
 
-#: calendarview.cpp:1581
+#: calendarview.cpp:1607
 #, kde-format
 msgid "Dissociate future occurrences"
 msgstr "افصل الحدوثات المستقبليّة"
 
-#: calendarview.cpp:1583
+#: calendarview.cpp:1609
 #, kde-format
 msgid "Dissociate occurrence"
 msgstr "افصل الحدوث"
 
-#: calendarview.cpp:1590
+#: calendarview.cpp:1616
 #, kde-format
 msgid "Dissociating the future occurrences failed."
 msgstr "فشل فصل الحدوثات المستقبلية."
 
-#: calendarview.cpp:1590 calendarview.cpp:1592
+#: calendarview.cpp:1616 calendarview.cpp:1618
 #, kde-format
 msgid "Dissociating Failed"
 msgstr "فشل الفصل"
 
-#: calendarview.cpp:1592
+#: calendarview.cpp:1618
 #, kde-format
 msgid "Dissociating the occurrence failed."
 msgstr "فشل فصل الحدوثات."
 
-#: calendarview.cpp:1754
+#: calendarview.cpp:1780
 #, kde-format
 msgid "iCalendars (*.ics)"
 msgstr "تقاويم iCalendars (*.ics)"
 
-#: calendarview.cpp:1763
+#: calendarview.cpp:1789
 #, kde-format
 msgid "Do you want to overwrite %1?"
 msgstr "أتريد الكتابة فوق %1؟"
 
-#: calendarview.cpp:1764
+#: calendarview.cpp:1790
 #, kde-format
 msgctxt "@title:window"
 msgid "Export Calendar"
 msgstr "تصدير التقويم"
 
-#: calendarview.cpp:1778
+#: calendarview.cpp:1804
 #, kde-format
 msgctxt "save failure cause unknown"
 msgid "Reason unknown"
 msgstr "السبب مجهول"
 
-#: calendarview.cpp:1780
+#: calendarview.cpp:1806
 #, kde-format
 msgctxt "@info"
 msgid "Cannot write iCalendar file %1. %2"
 msgstr "تعذّرت كتابة ملف iCalendar بالاسم %1. ‏%2"
 
-#: calendarview.cpp:1876 calendarview.cpp:1915
+#: calendarview.cpp:1906 calendarview.cpp:1945
 #, kde-format
 msgid "No filter"
 msgstr "لا مرشّح"
 
-#: calendarview.cpp:2210
+#: calendarview.cpp:2240
 #, kde-format
 msgid ""
 "The item \"%1\" has sub-to-dos. Do you want to delete just this item and "
@@ -1541,17 +1541,17 @@ msgstr ""
 "للعنصر ”%1“ مهام فرعيّة. أتريد حذف هذا العنصر فحسب وجعل مهامه الفرعيّة مستقلة، "
 "أم حذف المهمّة مع كل مهامها الفرعيّة؟"
 
-#: calendarview.cpp:2216
+#: calendarview.cpp:2246
 #, kde-format
 msgid "Delete Only This"
 msgstr "احذف هذه فقط"
 
-#: calendarview.cpp:2217 calendarview.cpp:2275
+#: calendarview.cpp:2247 calendarview.cpp:2305
 #, kde-format
 msgid "Delete All"
 msgstr "احذف الكل"
 
-#: calendarview.cpp:2248
+#: calendarview.cpp:2278
 #, kde-format
 msgid ""
 "The item \"%1\" is marked read-only and cannot be deleted; it probably "
@@ -1560,12 +1560,12 @@ msgstr ""
 "عُلّم العنصر ”%1“ على أنه للقراءة فقط ولا يمكن حذفه، أغلب الظن بأنه لتقويم "
 "للقراءة فقط."
 
-#: calendarview.cpp:2252
+#: calendarview.cpp:2282
 #, kde-format
 msgid "Removing not possible"
 msgstr "الحذف غير ممكن"
 
-#: calendarview.cpp:2270
+#: calendarview.cpp:2300
 #, kde-format
 msgid ""
 "The calendar item \"%1\" recurs over multiple dates; are you sure you want "
@@ -1573,12 +1573,12 @@ msgid ""
 msgstr ""
 "يتكرّر عنصر التقاويم ”%1“ في عدد من التواريخ، أمتأكّد من حذفه مع كل تكراراته؟"
 
-#: calendarview.cpp:2282
+#: calendarview.cpp:2312
 #, kde-format
 msgid "Also Delete &Future"
 msgstr "احذف الحدوثات المس&تقبلية أيضًا"
 
-#: calendarview.cpp:2286
+#: calendarview.cpp:2316
 #, fuzzy, kde-format
 msgid ""
 "The calendar item \"%1\" recurs over multiple dates. Do you want to delete "
@@ -1587,7 +1587,7 @@ msgstr ""
 "يتكرّر عنصر التقاويم ”%1“ في عدد من التواريخ. أتريد حذف الحالي في %2 فقط، أو "
 "حذفه مع حدوثاته المستقبلية، أو حذف كل الحدوثات؟"
 
-#: calendarview.cpp:2293
+#: calendarview.cpp:2323
 #, kde-format
 msgid ""
 "The calendar item \"%1\" recurs over multiple dates. Do you want to delete "
@@ -1596,79 +1596,79 @@ msgstr ""
 "يتكرّر عنصر التقاويم ”%1“ في عدد من التواريخ. أتريد حذف الحالي في %2 فقط، أو "
 "حذف كل الحدوثات؟"
 
-#: calendarview.cpp:2305
+#: calendarview.cpp:2335
 #, kde-format
 msgid "Delete C&urrent"
 msgstr "احذف ال&حالي"
 
-#: calendarview.cpp:2307
+#: calendarview.cpp:2337
 #, kde-format
 msgid "Delete &All"
 msgstr "احذف ال&كل"
 
-#: calendarview.cpp:2338 calendarview.cpp:2345
+#: calendarview.cpp:2368 calendarview.cpp:2375
 #, kde-format
 msgid "Delete \"%1\""
 msgstr "احذف \"%1\""
 
-#: calendarview.cpp:2373
+#: calendarview.cpp:2403
 #, kde-format
 msgid ""
 "All calendars are unchecked in the Calendar Manager. No to-do was purged."
 msgstr "كل التقاويم غير مؤشّر عليها في مدير التقاويم. لم تُنظّف أية مهام."
 
-#: calendarview.cpp:2378 calendarview.cpp:2627
+#: calendarview.cpp:2408 calendarview.cpp:2690
 #, kde-format
 msgid "There are no completed to-dos to purge."
 msgstr "لا مهام غير مكتملة لتنظيفها."
 
-#: calendarview.cpp:2383
+#: calendarview.cpp:2413
 #, kde-format
 msgid "Delete all completed to-dos from checked calendars?"
 msgstr "أأحذف المهام المكتملة من التقاويم المؤشّر عليها؟"
 
-#: calendarview.cpp:2384
+#: calendarview.cpp:2414
 #, kde-format
 msgid "Purge To-dos"
 msgstr "تنظيف المهام"
 
-#: calendarview.cpp:2385
+#: calendarview.cpp:2415
 #, kde-format
 msgid "Purge"
 msgstr "نظّف"
 
-#: calendarview.cpp:2396
+#: calendarview.cpp:2426
 #, kde-format
 msgctxt "@info"
 msgid "Unable to edit \"%1\" because it is locked by another process."
 msgstr "تعذّر تحرير ”%1“ لأن عمليّة أخرى قفلته."
 
-#: calendarview.cpp:2408
+#: calendarview.cpp:2438
 #, kde-format
 msgid "Unable to copy the item to %1."
 msgstr "تعذّر نسخ العنصر إلى %1."
 
-#: calendarview.cpp:2408
+#: calendarview.cpp:2438
 #, kde-format
 msgid "Copying Failed"
 msgstr "فشل النسخ"
 
-#: calendarview.cpp:2443
+#: calendarview.cpp:2473
 #, kde-format
 msgid "Unable to move the item to  %1."
 msgstr "تعذّر نقل العنصر إلى %1."
 
-#: calendarview.cpp:2443
+#: calendarview.cpp:2473
 #, kde-format
 msgid "Moving Failed"
 msgstr "فشل النقل"
 
-#: calendarview.cpp:2620
+#: calendarview.cpp:2683
 #, kde-format
 msgid "0 completed to-dos were purged."
 msgstr "لم تُنظّف أية مهام"
 
-#: calendarview.cpp:2621 calendarview.cpp:2631
+#: calendarview.cpp:2684 calendarview.cpp:2694
 #, kde-format
 msgid "%1 to-do was ignored because it has uncompleted or read-only children."
 msgid_plural ""
@@ -1685,7 +1685,7 @@ msgstr[4] ""
 msgstr[5] ""
 "تجاهلتُ %1 مهمّة لأن فيها أبناء إما أنهم لم يكتملوا أو أنهم للقراءة فقط."
 
-#: calendarview.cpp:2625 calendarview.cpp:2630
+#: calendarview.cpp:2688 calendarview.cpp:2693
 #, kde-format
 msgid "%1 completed to-do was purged."
 msgid_plural "%1 completed to-dos were purged."
@@ -1696,12 +1696,12 @@ msgstr[3] "نُظّفت %1 مهام مكتملة."
 msgstr[4] "نُظّفت %1 مهمّةً مكتملة."
 msgstr[5] "نُظّفت %1 مهمّة مكتملة."
 
-#: calendarview.cpp:2636
+#: calendarview.cpp:2699
 #, kde-format
 msgid "An error occurred while purging completed to-dos: %1"
 msgstr "حدث خطأ أثناء تنظيف المهام المكتملة: %1"
 
-#: calendarview.cpp:2690
+#: calendarview.cpp:2753
 #, kde-format
 msgid ""
 "You created an incidence in a calendar that is currently filtered out.\n"
@@ -1710,7 +1710,7 @@ msgstr ""
 "أنشأت حدوثًا في تقويم مرشّح مخفيّ حاليًا.\n"
 "فعّله من الشريط الجانبي اليمني في مدير التقاويم لرؤية الحدوث."
 
-#: calendarview.cpp:2694
+#: calendarview.cpp:2757
 #, kde-format
 msgid ""
 "You created an incidence in a calendar that is currently filtered out.\n"
@@ -1947,31 +1947,31 @@ msgstr "حرّر…"
 msgid "Show in Context"
 msgstr "اعرض في السياق"
 
-#: dialog/searchdialog.cpp:39
+#: dialog/searchdialog.cpp:40
 #, kde-format
 msgctxt "@title:window"
 msgid "Find in Calendars"
 msgstr "ابحث في التقاويم"
 
-#: dialog/searchdialog.cpp:69
+#: dialog/searchdialog.cpp:70
 #, kde-format
 msgctxt "@action:button search in calendar"
 msgid "&Search"
 msgstr "ا&بحث"
 
-#: dialog/searchdialog.cpp:71
+#: dialog/searchdialog.cpp:72
 #, kde-format
 msgctxt "@info:tooltip"
 msgid "Start the search"
 msgstr "ابدأ البحث"
 
-#: dialog/searchdialog.cpp:72
+#: dialog/searchdialog.cpp:73
 #, kde-format
 msgctxt "@info:whatsthis"
 msgid "Press this button to start the search."
 msgstr "انقر هذا الزر لبدء البحث."
 
-#: dialog/searchdialog.cpp:123
+#: dialog/searchdialog.cpp:128
 #, fuzzy, kde-format
 #| msgid ""
 #| "Invalid search expression, cannot perform the search. Please enter a "
@@ -1984,20 +1984,20 @@ msgstr ""
 "تعبير البحث غير صالح، تعذّر البحث. رجاءً أدخِل تعبير بحث مستخدمًا محارف البدء "
 "”*“ و”?“ عند الحاجة."
 
-#: dialog/searchdialog.cpp:135
+#: dialog/searchdialog.cpp:140
 #, fuzzy, kde-format
 #| msgid "No items were found that match your search pattern."
 msgctxt "@info"
 msgid "No items were found that match your search pattern."
 msgstr "لم يُعثر على عناصر تطابق نمط البحث."
 
-#: dialog/searchdialog.cpp:136
+#: dialog/searchdialog.cpp:141
 #, kde-format
 msgctxt "@title:window"
 msgid "Search Results"
 msgstr "نتائج البحث"
 
-#: dialog/searchdialog.cpp:151
+#: dialog/searchdialog.cpp:156
 #, kde-format
 msgctxt "@label"
 msgid "%1 match"
@@ -2174,7 +2174,7 @@ msgctxt "@item:intext delimiter for joining holiday names"
 msgid ","
 msgstr "، و"
 
-#: kodaymatrix.cpp:222
+#: kodaymatrix.cpp:226
 #, kde-format
 msgctxt "delimiter for joining holiday names"
 msgid ","
@@ -2200,112 +2200,112 @@ msgstr "أ&ضِف"
 msgid "&Cancel"
 msgstr "أل&غِ"
 
-#: koeventpopupmenu.cpp:45
+#: koeventpopupmenu.cpp:43
 #, kde-format
 msgctxt "@action:inmenu"
 msgid "&Show"
 msgstr "ا&عرض"
 
-#: koeventpopupmenu.cpp:47
+#: koeventpopupmenu.cpp:45
 #, kde-format
 msgctxt "@action:inmenu"
 msgid "&Edit..."
 msgstr "&حرّر…"
 
-#: koeventpopupmenu.cpp:49
+#: koeventpopupmenu.cpp:47
 #, kde-format
 msgctxt "@action:inmenu delete this incidence"
 msgid "&Delete"
 msgstr "ا&حذف"
 
-#: koeventpopupmenu.cpp:53
+#: koeventpopupmenu.cpp:51
 #, kde-format
 msgctxt "@action:inmenu"
 msgid "&Print..."
 msgstr "ا&طبع..."
 
-#: koeventpopupmenu.cpp:55
+#: koeventpopupmenu.cpp:53
 #, kde-format
 msgctxt "@action:inmenu"
 msgid "Print Previe&w..."
 msgstr "&عاين الطباعة…"
 
-#: koeventpopupmenu.cpp:76
+#: koeventpopupmenu.cpp:74
 #, kde-format
 msgctxt "@action:inmenu cut this incidence"
 msgid "C&ut"
 msgstr "&قص"
 
-#: koeventpopupmenu.cpp:78
+#: koeventpopupmenu.cpp:76
 #, kde-format
 msgctxt "@action:inmenu copy this incidence"
 msgid "&Copy"
 msgstr "ا&نسخ"
 
-#: koeventpopupmenu.cpp:79
+#: koeventpopupmenu.cpp:77
 #, kde-format
 msgctxt "@action:inmenu"
 msgid "&Paste"
 msgstr "أ&لصق"
 
-#: koeventpopupmenu.cpp:87
+#: koeventpopupmenu.cpp:85
 #, kde-format
 msgctxt "@action:inmenu"
 msgid "Create To-do from Event"
 msgstr "أنشِئ مَهمّة من الحدث"
 
-#: koeventpopupmenu.cpp:91
+#: koeventpopupmenu.cpp:89
 #, kde-format
 msgctxt "@action:inmenu"
 msgid "Create Note for Event"
 msgstr "أنشِئ ملاحظة لحدث"
 
-#: koeventpopupmenu.cpp:102
+#: koeventpopupmenu.cpp:100
 #, kde-format
 msgctxt "@action:inmenu"
 msgid "Togg&le To-do Completed"
 msgstr "&علّم المَهمّة على أنها اكتملت"
 
-#: koeventpopupmenu.cpp:107
+#: koeventpopupmenu.cpp:105
 #, fuzzy, kde-format
 #| msgid "Create Event"
 msgctxt "@action:inmenu"
 msgid "Create Event from To-do"
 msgstr "أنشِئ حدثًا"
 
-#: koeventpopupmenu.cpp:113
+#: koeventpopupmenu.cpp:111
 #, kde-format
 msgctxt "@action:inmenu"
 msgid "Create Note for To-do"
 msgstr "أنشِئ ملاحظة لمَهمّة"
 
-#: koeventpopupmenu.cpp:124
+#: koeventpopupmenu.cpp:122
 #, fuzzy, kde-format
 #| msgid "&Reminder:"
 msgctxt "@action:inmenu"
 msgid "&Toggle Reminder"
 msgstr "ال&منبه:"
 
-#: koeventpopupmenu.cpp:131
+#: koeventpopupmenu.cpp:129
 #, fuzzy, kde-format
 #| msgid "&Dissociate From Recurrence..."
 msgctxt "@action:inmenu"
 msgid "&Dissociate From Recurrence..."
 msgstr "ا&فصل من التكرار…"
 
-#: koeventpopupmenu.cpp:139
+#: koeventpopupmenu.cpp:137
 #, kde-format
 msgctxt "@action:inmenu"
 msgid "Send as iCalendar..."
 msgstr "أر&سِل بنسق iCalendar…"
 
-#: koeventpopupmenu.cpp:188
+#: koeventpopupmenu.cpp:187
 #, fuzzy, kde-format
 msgctxt "@action:inmenu"
 msgid "&Toggle Reminder Off"
 msgstr "حرر المنبهات"
 
-#: koeventpopupmenu.cpp:189
+#: koeventpopupmenu.cpp:188
 #, fuzzy, kde-format
 msgctxt "@action:inmenu"
 msgid "&Toggle Reminder On"
@@ -3373,17 +3373,17 @@ msgstr ""
 msgid "Lists the available options for user feedback"
 msgstr "يسرد الخيارات المتاحة لمشاركة بياناتك"
 
-#: koviewmanager.cpp:418
+#: koviewmanager.cpp:427
 #, kde-format
 msgid "Merged calendar"
 msgstr "تقويم مدمج"
 
-#: koviewmanager.cpp:433
+#: koviewmanager.cpp:442
 #, kde-format
 msgid "Calendars Side by Side"
 msgstr "التقاويم جنبًا إلى جنب"
 
-#: koviewmanager.cpp:466
+#: koviewmanager.cpp:475
 #, kde-format
 msgid ""
 "Unable to display the work week since there are no work days configured. "
@@ -5614,12 +5614,6 @@ msgstr ""
 msgid "Include all to-dos &within the specified date range"
 msgstr "ضمّن الأحدا&ث التي لها مجال تاريخ محدّد"
 
-#: views/collectionview/quickview.cpp:79 views/collectionview/quickview.cpp:83
-#, kde-format
-msgctxt "@title:window"
-msgid "%1"
-msgstr "%1"
-
 #. i18n: ectx: property (text), widget (QPushButton, mDayBtn)
 #: views/collectionview/quickview.ui:34
 #, kde-format
@@ -5656,12 +5650,12 @@ msgstr "‏<"
 msgid ">"
 msgstr "‏>"
 
-#: views/multiagendaview/multiagendaview.cpp:36
+#: views/multiagendaview/multiagendaview.cpp:37
 #, kde-format
 msgid "Agenda %1"
 msgstr "جدول أعمال %1"
 
-#: views/multiagendaview/multiagendaview.cpp:295
+#: views/multiagendaview/multiagendaview.cpp:340
 #, kde-format
 msgctxt "@title:window"
 msgid "Configure Side-By-Side View"
@@ -5698,30 +5692,30 @@ msgstr "العنوان"
 msgid "Selected Calendars"
 msgstr "التقاويم المحدّدة"
 
-#: widgets/kdatenavigator.cpp:174
+#: widgets/kdatenavigator.cpp:169
 #, kde-format
 msgctxt "start/end week number of line in date picker"
 msgid "%1/%2"
 msgstr "‏%1/‏%2"
 
-#: widgets/kdatenavigator.cpp:179
+#: widgets/kdatenavigator.cpp:174
 #, kde-format
 msgid "Scroll to week number %1"
 msgstr "انتقل إلى الأسبوع رقم %1"
 
-#: widgets/kdatenavigator.cpp:181
+#: widgets/kdatenavigator.cpp:176
 #, kde-format
 msgid ""
 "Click here to scroll the display to week number %1 of the currently "
 "displayed year."
 msgstr "انقر هنا للانتقال وعرض الأسبوع رقم %1 من السنة المعروضة حاليًا."
 
-#: widgets/kdatenavigator.cpp:227
+#: widgets/kdatenavigator.cpp:222
 #, kde-format
 msgid "%1"
 msgstr "%1"
 
-#: widgets/kdatenavigator.cpp:228
+#: widgets/kdatenavigator.cpp:223
 #, kde-format
 msgid "A column header of the %1 dates in the month."
 msgstr "ترويسة أعمدة لأيام %1 من الشهر."
@@ -5851,6 +5845,10 @@ msgstr "%1"
 msgctxt "4 digit year"
 msgid "%1"
 msgstr "%1"
+
+#~ msgctxt "@title:window"
+#~ msgid "%1"
+#~ msgstr "%1"
 
 #~ msgid "KCMUserFeedBack"
 #~ msgstr "وحدة مشاركة البيانات"
