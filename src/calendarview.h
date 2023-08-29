@@ -114,7 +114,7 @@ public:
     void setCalendar(const Akonadi::ETMCalendar::Ptr &);
     Akonadi::ETMCalendar::Ptr calendar() const override;
 
-    QVector<Akonadi::CollectionCalendar::Ptr> enabledCalendars() const;
+    QList<Akonadi::CollectionCalendar::Ptr> enabledCalendars() const;
 
     Akonadi::CollectionCalendar::Ptr calendarForCollection(const Akonadi::Collection &collection) override;
 
@@ -708,7 +708,7 @@ private:
     QList<CalendarViewExtension *> mExtensions;
 
     Akonadi::ETMCalendar::Ptr mCalendar;
-    QVector<Akonadi::CollectionCalendar::Ptr> mEnabledCalendars;
+    QList<Akonadi::CollectionCalendar::Ptr> mEnabledCalendars;
     // Actual linked-list implementation - we don't expect to ever have that many calendars
     // enabled that e.g. QMap/QHash would be substantially faster over looping over the list.
     // The advantage of the list is that on each iteration we can quickly remove and stale

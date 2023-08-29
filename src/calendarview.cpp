@@ -291,7 +291,7 @@ Akonadi::ETMCalendar::Ptr CalendarView::calendar() const
     return mCalendar;
 }
 
-QVector<Akonadi::CollectionCalendar::Ptr> CalendarView::enabledCalendars() const
+QList<Akonadi::CollectionCalendar::Ptr> CalendarView::enabledCalendars() const
 {
     return mEnabledCalendars;
 }

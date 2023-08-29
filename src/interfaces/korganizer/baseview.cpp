@@ -32,7 +32,7 @@ public:
     EventViews::EventView::Changes mChanges;
     QAbstractItemModel *model = nullptr;
     Akonadi::EntityTreeModel *etm = nullptr;
-    QVector<Akonadi::CollectionCalendar::Ptr> calendars;
+    QList<Akonadi::CollectionCalendar::Ptr> calendars;
     QByteArray identifier;
     QDateTime startDateTime;
     QDateTime endDateTime;

@@ -14,8 +14,8 @@
 #include <KCalendarCore/IncidenceBase> //for KCalendarCore::DateList typedef
 
 #include <QDate>
+#include <QList>
 #include <QObject>
-#include <QVector>
 
 class CalendarView;
 class KOAgendaView;
@@ -168,7 +168,7 @@ private:
     QWidget *widgetForView(KOrg::BaseView *) const;
     QList<KOrg::BaseView *> mViews;
     CalendarView *const mMainView;
-    QVector<Akonadi::CollectionCalendar::Ptr> mCalendars;
+    QList<Akonadi::CollectionCalendar::Ptr> mCalendars;
 
     KOAgendaView *mAgendaView = nullptr;
     KOrg::MultiAgendaView *mAgendaSideBySideView = nullptr;

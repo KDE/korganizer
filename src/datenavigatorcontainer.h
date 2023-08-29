@@ -16,7 +16,7 @@
 
 #include <QDate>
 #include <QFrame>
-#include <QVector>
+#include <QList>
 
 class KDateNavigator;
 
@@ -136,7 +136,7 @@ private:
 
     KDateNavigator *const mNavigatorView;
 
-    QVector<Akonadi::CollectionCalendar::Ptr> mCalendars;
+    QList<Akonadi::CollectionCalendar::Ptr> mCalendars;
 
     QList<KDateNavigator *> mExtraViews;
 

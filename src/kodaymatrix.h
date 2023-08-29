@@ -265,7 +265,7 @@ private:
     static const int NUMDAYS;
 
     /** calendar instance to be queried for holidays, events, ... */
-    QVector<Akonadi::CollectionCalendar::Ptr> mCalendars;
+    QList<Akonadi::CollectionCalendar::Ptr> mCalendars;
 
     /** starting date of the matrix */
     QDate mStartDate;
