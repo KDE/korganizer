@@ -1839,6 +1839,7 @@ void CalendarView::processIncidenceSelection(const Akonadi::Item &item, const QD
     }
 
     if (!item.isValid()) {
+        mSelectedIncidence = item;
         return;
     }
 
