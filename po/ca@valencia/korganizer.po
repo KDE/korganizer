@@ -6124,7 +6124,3 @@ msgstr "%1"
 msgctxt "4 digit year"
 msgid "%1"
 msgstr "%1"
-
-#~ msgctxt "@title:window"
-#~ msgid "%1"
-#~ msgstr "%1"
