@@ -182,6 +182,7 @@ set_target_properties(korganizer_core PROPERTIES
 
 install(TARGETS
     korganizer_core ${KDE_INSTALL_TARGETS_DEFAULT_ARGS}
+    LIBRARY NAMELINK_SKIP
     )
 
 ########### next target ###############
