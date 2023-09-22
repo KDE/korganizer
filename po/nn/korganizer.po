@@ -9,7 +9,7 @@ msgid ""
 msgstr ""
 "Project-Id-Version: korganizer\n"
 "Report-Msgid-Bugs-To: https://bugs.kde.org\n"
-"POT-Creation-Date: 2023-08-24 00:47+0000\n"
+"POT-Creation-Date: 2023-09-21 00:45+0000\n"
 "PO-Revision-Date: 2021-10-18 20:25+0200\n"
 "Last-Translator: Karl Ove Hufthammer <karl@huftis.org>\n"
 "Language-Team: Norwegian Nynorsk <l10n-no@lister.huftis.org>\n"
@@ -36,7 +36,7 @@ msgstr "eirbir@gmail.com,karl@huftis.org"
 #: aboutdata.cpp:18 kontactplugin/korganizer/journalplugin.cpp:26
 #: kontactplugin/korganizer/korganizerplugin.cpp:42
 #: kontactplugin/korganizer/todoplugin.cpp:39
-#: kontactplugin/specialdates/specialdates_plugin.cpp:23 korganizer_part.cpp:68
+#: kontactplugin/specialdates/specialdates_plugin.cpp:23 korganizer_part.cpp:56
 #, kde-format
 msgid "KOrganizer"
 msgstr "Kalender"
@@ -279,7 +279,7 @@ msgid "Fester Zigterman"
 msgstr "Fester Zigterman"
 
 # %1 er for eksempel «Ctrl + M».
-#: actionmanager.cpp:129
+#: actionmanager.cpp:130
 #, kde-format
 msgid ""
 "<qt>This will hide the menu bar completely. You can show it again by typing "
@@ -288,29 +288,29 @@ msgstr ""
 "<qt>Dette vil gøyma menylinja heilt. Du kan visa ho att ved å trykkja %1.</"
 "qt>"
 
-#: actionmanager.cpp:132
+#: actionmanager.cpp:133
 #, kde-format
 msgid "Hide menu bar"
 msgstr ""
 
-#: actionmanager.cpp:242
+#: actionmanager.cpp:243
 #, kde-format
 msgid "Import &Calendar..."
 msgstr "Importer &kalender …"
 
-#: actionmanager.cpp:243
+#: actionmanager.cpp:244
 #, kde-format
 msgctxt "@info:status"
 msgid "Import a calendar"
 msgstr ""
 
-#: actionmanager.cpp:244
+#: actionmanager.cpp:245
 #, kde-format
 msgctxt "@info:tooltip"
 msgid "Import an iCalendar or vCalendar file"
 msgstr ""
 
-#: actionmanager.cpp:246
+#: actionmanager.cpp:247
 #, kde-format
 msgctxt "@info:whatsthis"
 msgid ""
@@ -318,24 +318,24 @@ msgid ""
 "iCalendar or vCalendar file into your current calendar collection."
 msgstr ""
 
-#: actionmanager.cpp:252
+#: actionmanager.cpp:253
 #, kde-format
 msgid "Get New Calendars..."
 msgstr ""
 
-#: actionmanager.cpp:253
+#: actionmanager.cpp:254
 #, kde-format
 msgctxt "@info:status"
 msgid "Load a calendar from \"Get Hot New Stuff\""
 msgstr ""
 
-#: actionmanager.cpp:254
+#: actionmanager.cpp:255
 #, kde-format
 msgctxt "@info:tooltip"
 msgid "Search \"Get Hot New Stuff\" for calendars to import"
 msgstr ""
 
-#: actionmanager.cpp:256
+#: actionmanager.cpp:257
 #, kde-format
 msgctxt "@info:whatsthis"
 msgid ""
@@ -343,58 +343,58 @@ msgid ""
 "search and import fun and useful calendars donated to the community."
 msgstr ""
 
-#: actionmanager.cpp:277
+#: actionmanager.cpp:278
 #, kde-format
 msgid "Could not load calendar %1."
 msgstr "Klarte ikkje opna kalenderen «%1»."
 
-#: actionmanager.cpp:287
+#: actionmanager.cpp:288
 #, kde-format
 msgid "The downloaded events will be merged into your current calendar."
 msgstr "Dei nedlasta hendingane vert fletta inn i kalenderen din."
 
-#: actionmanager.cpp:304
+#: actionmanager.cpp:305
 #, kde-format
 msgid "Export as &iCalendar..."
 msgstr "Eksporter som &iCalendar …"
 
-#: actionmanager.cpp:305
+#: actionmanager.cpp:306
 #, kde-format
 msgctxt "@info:status"
 msgid "Export calendar to file"
 msgstr ""
 
-#: actionmanager.cpp:306
+#: actionmanager.cpp:307
 #, kde-format
 msgctxt "@info:tooltip"
 msgid "Export your calendar to an iCalendar file"
 msgstr ""
 
-#: actionmanager.cpp:307
+#: actionmanager.cpp:308
 #, kde-format
 msgctxt "@info:whatsthis"
 msgid ""
 "Allows you to export your entire calendar collection to one iCalendar file."
 msgstr ""
 
-#: actionmanager.cpp:313
+#: actionmanager.cpp:314
 #, kde-format
 msgid "Archive O&ld Incidences..."
 msgstr ""
 
-#: actionmanager.cpp:314
+#: actionmanager.cpp:315
 #, kde-format
 msgctxt "@info:status"
 msgid "Archive events and to-dos to a file"
 msgstr ""
 
-#: actionmanager.cpp:315
+#: actionmanager.cpp:316
 #, kde-format
 msgctxt "@info:tooltip"
 msgid "Archive old events and to-dos to an iCalendar file"
 msgstr ""
 
-#: actionmanager.cpp:317
+#: actionmanager.cpp:318
 #, kde-format
 msgctxt "@info:whatsthis"
 msgid ""
@@ -403,24 +403,24 @@ msgid ""
 "your existing calendar collection."
 msgstr ""
 
-#: actionmanager.cpp:325
+#: actionmanager.cpp:326
 #, kde-format
 msgid "Pur&ge Completed To-dos"
 msgstr "&Slett fullførte oppgåver"
 
-#: actionmanager.cpp:326
+#: actionmanager.cpp:327
 #, kde-format
 msgctxt "@info:status"
 msgid "Purge completed to-dos"
 msgstr ""
 
-#: actionmanager.cpp:327
+#: actionmanager.cpp:328
 #, kde-format
 msgctxt "@info:tooltip"
 msgid "Remove completed to-dos from your calendar"
 msgstr ""
 
-#: actionmanager.cpp:329
+#: actionmanager.cpp:330
 #, kde-format
 msgctxt "@info:whatsthis"
 msgid ""
@@ -429,30 +429,30 @@ msgid ""
 msgstr ""
 
 #. i18n: ectx: property (text), widget (QPushButton, mDeleteButton)
-#: actionmanager.cpp:366 actionmanager.cpp:621 actionmanager.cpp:1308
-#: actionmanager.cpp:1345 ui/filteredit_base.ui:56
+#: actionmanager.cpp:367 actionmanager.cpp:622 actionmanager.cpp:1305
+#: actionmanager.cpp:1342 ui/filteredit_base.ui:56
 #, kde-format
 msgid "&Delete"
 msgstr "&Slett"
 
-#: actionmanager.cpp:383
+#: actionmanager.cpp:384
 #, kde-format
 msgid "What's &Next"
 msgstr "&Kva no"
 
-#: actionmanager.cpp:384
+#: actionmanager.cpp:385
 #, kde-format
 msgctxt "@info:status"
 msgid "What's Next View"
 msgstr ""
 
-#: actionmanager.cpp:385
+#: actionmanager.cpp:386
 #, kde-format
 msgctxt "@info:tooltip"
 msgid "Switch to the What's Next View"
 msgstr ""
 
-#: actionmanager.cpp:387
+#: actionmanager.cpp:388
 #, kde-format
 msgctxt "@info:whatsthis"
 msgid ""
@@ -462,24 +462,24 @@ msgid ""
 "Navigator sidebar will be shown."
 msgstr ""
 
-#: actionmanager.cpp:395
+#: actionmanager.cpp:396
 #, kde-format
 msgid "&Month"
 msgstr "&Månad"
 
-#: actionmanager.cpp:396
+#: actionmanager.cpp:397
 #, kde-format
 msgctxt "@info:status"
 msgid "Month View"
 msgstr ""
 
-#: actionmanager.cpp:397
+#: actionmanager.cpp:398
 #, kde-format
 msgctxt "@info:tooltip"
 msgid "Switch to the Month View"
 msgstr ""
 
-#: actionmanager.cpp:399
+#: actionmanager.cpp:400
 #, kde-format
 msgctxt "@info:whatsthis"
 msgid ""
@@ -487,24 +487,24 @@ msgid ""
 "familiar monthly calendar layout."
 msgstr ""
 
-#: actionmanager.cpp:405
+#: actionmanager.cpp:406
 #, kde-format
 msgid "&Agenda"
 msgstr "&Timeplan"
 
-#: actionmanager.cpp:406
+#: actionmanager.cpp:407
 #, kde-format
 msgctxt "@info:status"
 msgid "Agenda View"
 msgstr ""
 
-#: actionmanager.cpp:407
+#: actionmanager.cpp:408
 #, kde-format
 msgctxt "@info:tooltip"
 msgid "Switch to the Agenda View"
 msgstr ""
 
-#: actionmanager.cpp:409
+#: actionmanager.cpp:410
 #, kde-format
 msgctxt "@info:whatsthis"
 msgid ""
@@ -513,24 +513,24 @@ msgid ""
 "each event in the day timetable."
 msgstr ""
 
-#: actionmanager.cpp:416
+#: actionmanager.cpp:417
 #, kde-format
 msgid "&Event List"
 msgstr "&Hendingsliste"
 
-#: actionmanager.cpp:417
+#: actionmanager.cpp:418
 #, kde-format
 msgctxt "@info:status"
 msgid "List View"
 msgstr ""
 
-#: actionmanager.cpp:418
+#: actionmanager.cpp:419
 #, kde-format
 msgctxt "@info:tooltip"
 msgid "Switch to the List View"
 msgstr ""
 
-#: actionmanager.cpp:420
+#: actionmanager.cpp:421
 #, kde-format
 msgctxt "@info:whatsthis"
 msgid ""
@@ -538,24 +538,24 @@ msgid ""
 "journal entries for the dates selected in the Date Navigator as a list."
 msgstr ""
 
-#: actionmanager.cpp:426
+#: actionmanager.cpp:427
 #, kde-format
 msgid "&To-do List"
 msgstr "&Hugseliste"
 
-#: actionmanager.cpp:427
+#: actionmanager.cpp:428
 #, kde-format
 msgctxt "@info:status"
 msgid "To-do List View"
 msgstr ""
 
-#: actionmanager.cpp:428
+#: actionmanager.cpp:429
 #, kde-format
 msgctxt "@info:tooltip"
 msgid "Switch to the To-do List View"
 msgstr ""
 
-#: actionmanager.cpp:430
+#: actionmanager.cpp:431
 #, kde-format
 msgctxt "@info:whatsthis"
 msgid ""
@@ -563,24 +563,24 @@ msgid ""
 "tasks that need to be done."
 msgstr ""
 
-#: actionmanager.cpp:436
+#: actionmanager.cpp:437
 #, kde-format
 msgid "&Journal"
 msgstr "D&agbok"
 
-#: actionmanager.cpp:437
+#: actionmanager.cpp:438
 #, kde-format
 msgctxt "@info:status"
 msgid "Journal View"
 msgstr ""
 
-#: actionmanager.cpp:438
+#: actionmanager.cpp:439
 #, kde-format
 msgctxt "@info:tooltip"
 msgid "Switch to the Journal View"
 msgstr ""
 
-#: actionmanager.cpp:440
+#: actionmanager.cpp:441
 #, kde-format
 msgctxt "@info:whatsthis"
 msgid ""
@@ -588,24 +588,24 @@ msgid ""
 "reflections, occurrences or experiences."
 msgstr ""
 
-#: actionmanager.cpp:446
+#: actionmanager.cpp:447
 #, kde-format
 msgid "Time&line"
 msgstr "Tids&linje"
 
-#: actionmanager.cpp:447
+#: actionmanager.cpp:448
 #, kde-format
 msgctxt "@info:status"
 msgid "Timeline View"
 msgstr ""
 
-#: actionmanager.cpp:448
+#: actionmanager.cpp:449
 #, kde-format
 msgctxt "@info:tooltip"
 msgid "Switch to the Timeline View"
 msgstr ""
 
-#: actionmanager.cpp:450
+#: actionmanager.cpp:451
 #, kde-format
 msgctxt "@info:whatsthis"
 msgid ""
@@ -613,24 +613,24 @@ msgid ""
 "timespan in a Gantt view. Each calendar is displayed in a separate line."
 msgstr ""
 
-#: actionmanager.cpp:459
+#: actionmanager.cpp:460
 #, kde-format
 msgid "&Refresh"
 msgstr "O&ppdater"
 
-#: actionmanager.cpp:460
+#: actionmanager.cpp:461
 #, kde-format
 msgctxt "@info:status"
 msgid "Refresh"
 msgstr ""
 
-#: actionmanager.cpp:461
+#: actionmanager.cpp:462
 #, kde-format
 msgctxt "@info:tooltip"
 msgid "Refresh the display"
 msgstr ""
 
-#: actionmanager.cpp:463
+#: actionmanager.cpp:464
 #, kde-format
 msgctxt "@info:whatsthis"
 msgid ""
@@ -638,24 +638,24 @@ msgid ""
 "sync or update any calendar folders."
 msgstr ""
 
-#: actionmanager.cpp:472
+#: actionmanager.cpp:473
 #, kde-format
 msgid "F&ilter"
 msgstr "F&ilter"
 
-#: actionmanager.cpp:473
+#: actionmanager.cpp:474
 #, kde-format
 msgctxt "@info:status"
 msgid "Filter incidences"
 msgstr ""
 
-#: actionmanager.cpp:474
+#: actionmanager.cpp:475
 #, kde-format
 msgctxt "@info:tooltip"
 msgid "Filter incidences from the calendar"
 msgstr ""
 
-#: actionmanager.cpp:476
+#: actionmanager.cpp:477
 #, kde-format
 msgctxt "@info:whatsthis"
 msgid ""
@@ -663,81 +663,81 @@ msgid ""
 "created first. See \"Manage View Filters\" option in the Settings menu."
 msgstr ""
 
-#: actionmanager.cpp:488
+#: actionmanager.cpp:489
 #, kde-format
 msgid "In Horizontally"
 msgstr "Forstørr vassrett"
 
-#: actionmanager.cpp:493
+#: actionmanager.cpp:494
 #, kde-format
 msgid "Out Horizontally"
 msgstr "Forminsk vassrett"
 
-#: actionmanager.cpp:498
+#: actionmanager.cpp:499
 #, kde-format
 msgid "In Vertically"
 msgstr "Forstørr loddrett"
 
-#: actionmanager.cpp:503
+#: actionmanager.cpp:504
 #, kde-format
 msgid "Out Vertically"
 msgstr "Forminsk loddrett"
 
-#: actionmanager.cpp:512
+#: actionmanager.cpp:513
 #, kde-format
 msgctxt "@action Jump to today"
 msgid "To &Today"
 msgstr "Gå til i &dag"
 
 #. i18n: ectx: property (text), widget (QPushButton, mTodayBtn)
-#: actionmanager.cpp:513 views/collectionview/quickview.ui:94
+#: actionmanager.cpp:514 views/collectionview/quickview.ui:94
 #, kde-format
 msgid "Today"
 msgstr "I dag"
 
-#: actionmanager.cpp:514
+#: actionmanager.cpp:515
 #, kde-format
 msgctxt "@info:status"
 msgid "Scroll to Today"
 msgstr ""
 
-#: actionmanager.cpp:515
+#: actionmanager.cpp:516
 #, kde-format
 msgctxt "@info:tooltip"
 msgid "Scroll the view to today"
 msgstr ""
 
-#: actionmanager.cpp:516
+#: actionmanager.cpp:517
 #, kde-format
 msgctxt "@info:whatsthis"
 msgid "Scrolls the current view to the today's date."
 msgstr ""
 
-#: actionmanager.cpp:521
+#: actionmanager.cpp:522
 #, kde-format
 msgctxt "scroll backward"
 msgid "&Backward"
 msgstr "&Bakover"
 
-#: actionmanager.cpp:522
+#: actionmanager.cpp:523
 #, kde-format
 msgctxt "scroll backward"
 msgid "Back"
 msgstr "Bakover"
 
-#: actionmanager.cpp:523
+#: actionmanager.cpp:524
 #, kde-format
 msgctxt "@info:status"
 msgid "Scroll Backward"
 msgstr ""
 
-#: actionmanager.cpp:524
+#: actionmanager.cpp:525
 #, kde-format
 msgctxt "@info:tooltip"
 msgid "Scroll the view backward"
 msgstr ""
 
-#: actionmanager.cpp:526
+#: actionmanager.cpp:527
 #, kde-format
 msgctxt "@info:whatsthis"
 msgid ""
@@ -745,31 +745,31 @@ msgid ""
 "calendar view."
 msgstr ""
 
-#: actionmanager.cpp:532
+#: actionmanager.cpp:533
 #, kde-format
 msgctxt "scroll forward"
 msgid "&Forward"
 msgstr "&Framover"
 
-#: actionmanager.cpp:533
+#: actionmanager.cpp:534
 #, kde-format
 msgctxt "scroll forward"
 msgid "Forward"
 msgstr ""
 
-#: actionmanager.cpp:534
+#: actionmanager.cpp:535
 #, kde-format
 msgctxt "@info:status"
 msgid "Scroll Forward"
 msgstr ""
 
-#: actionmanager.cpp:535
+#: actionmanager.cpp:536
 #, kde-format
 msgctxt "@info:tooltip"
 msgid "Scroll the view forward"
 msgstr ""
 
-#: actionmanager.cpp:537
+#: actionmanager.cpp:538
 #, kde-format
 msgctxt "@info:whatsthis"
 msgid ""
@@ -777,46 +777,46 @@ msgid ""
 "calendar view."
 msgstr ""
 
-#: actionmanager.cpp:542
+#: actionmanager.cpp:543
 #, kde-format
 msgid "&Day"
 msgstr "&Dag"
 
-#: actionmanager.cpp:551 actionmanager.cpp:1061
+#: actionmanager.cpp:552 actionmanager.cpp:1062
 #, kde-format
 msgid "&Next Day"
 msgid_plural "&Next %1 Days"
 msgstr[0] "&Neste dag"
 msgstr[1] "&Neste %1 dagar"
 
-#: actionmanager.cpp:553
+#: actionmanager.cpp:554
 #, kde-format
 msgid "W&ork Week"
 msgstr "A&rbeidsveke"
 
-#: actionmanager.cpp:558
+#: actionmanager.cpp:559
 #, kde-format
 msgid "&Week"
 msgstr "&Veke"
 
-#: actionmanager.cpp:565 kodaymatrix.cpp:488
+#: actionmanager.cpp:566 kodaymatrix.cpp:484
 #, kde-format
 msgid "New E&vent..."
 msgstr "Ny &hending …"
 
-#: actionmanager.cpp:566
+#: actionmanager.cpp:567
 #, kde-format
 msgctxt "@info:status"
 msgid "Create a new Event"
 msgstr ""
 
-#: actionmanager.cpp:567
+#: actionmanager.cpp:568
 #, kde-format
 msgctxt "@info:tooltip"
 msgid "Create a new Event"
 msgstr ""
 
-#: actionmanager.cpp:569
+#: actionmanager.cpp:570
 #, kde-format
 msgctxt "@info:whatsthis"
 msgid ""
@@ -824,24 +824,24 @@ msgid ""
 "attendees, recurrences and much more."
 msgstr ""
 
-#: actionmanager.cpp:575 kodaymatrix.cpp:489
+#: actionmanager.cpp:576 kodaymatrix.cpp:485
 #, kde-format
 msgid "New &To-do..."
 msgstr "Ny &oppgåve …"
 
-#: actionmanager.cpp:576
+#: actionmanager.cpp:577
 #, kde-format
 msgctxt "@info:status"
 msgid "Create a new To-do"
 msgstr ""
 
-#: actionmanager.cpp:577
+#: actionmanager.cpp:578
 #, kde-format
 msgctxt "@info:tooltip"
 msgid "Create a new To-do"
 msgstr ""
 
-#: actionmanager.cpp:579
+#: actionmanager.cpp:580
 #, kde-format
 msgctxt "@info:whatsthis"
 msgid ""
@@ -849,57 +849,57 @@ msgid ""
 "attendees, recurrences and much more."
 msgstr ""
 
-#: actionmanager.cpp:586
+#: actionmanager.cpp:587
 #, kde-format
 msgid "New Su&b-to-do..."
 msgstr "Ny &underoppgåve …"
 
-#: actionmanager.cpp:594 kodaymatrix.cpp:490
+#: actionmanager.cpp:595 kodaymatrix.cpp:486
 #, kde-format
 msgid "New &Journal..."
 msgstr "Ny &dagboktekst …"
 
-#: actionmanager.cpp:595
-#, kde-format
-msgctxt "@info:status"
-msgid "Create a new Journal"
-msgstr ""
-
 #: actionmanager.cpp:596
 #, kde-format
-msgctxt "@info:tooltip"
+msgctxt "@info:status"
 msgid "Create a new Journal"
 msgstr ""
 
 #: actionmanager.cpp:597
 #, kde-format
+msgctxt "@info:tooltip"
+msgid "Create a new Journal"
+msgstr ""
+
+#: actionmanager.cpp:598
+#, kde-format
 msgctxt "@info:whatsthis"
 msgid "Starts a dialog that allows you to create a new Journal entry."
 msgstr ""
 
-#: actionmanager.cpp:602
+#: actionmanager.cpp:603
 #, kde-format
 msgid "Configure View..."
 msgstr "Set opp visar …"
 
-#: actionmanager.cpp:603
+#: actionmanager.cpp:604
 #, kde-format
 msgid "Configure"
 msgstr "Set opp"
 
-#: actionmanager.cpp:604
+#: actionmanager.cpp:605
 #, kde-format
 msgctxt "@info:status"
 msgid "Configure the view"
 msgstr ""
 
-#: actionmanager.cpp:605
+#: actionmanager.cpp:606
 #, kde-format
 msgctxt "@info:tooltip"
 msgid "Configure the current view"
 msgstr ""
 
-#: actionmanager.cpp:607
+#: actionmanager.cpp:608
 #, kde-format
 msgctxt "@info:whatsthis"
 msgid ""
@@ -907,17 +907,17 @@ msgid ""
 "current calendar view."
 msgstr ""
 
-#: actionmanager.cpp:613 actionmanager.cpp:1302 actionmanager.cpp:1343
+#: actionmanager.cpp:614 actionmanager.cpp:1299 actionmanager.cpp:1340
 #, kde-format
 msgid "&Show"
 msgstr "&Vis"
 
-#: actionmanager.cpp:617 actionmanager.cpp:1305 actionmanager.cpp:1344
+#: actionmanager.cpp:618 actionmanager.cpp:1302 actionmanager.cpp:1341
 #, kde-format
 msgid "&Edit..."
 msgstr "&Rediger …"
 
-#: actionmanager.cpp:626
+#: actionmanager.cpp:627
 #, kde-format
 msgid "&Make Sub-to-do Independent"
 msgstr "&Gjer underoppgåve uavhengig"
@@ -926,247 +926,247 @@ msgstr "&Gjer underoppgåve uavhengig"
 #. mCalendarView, SLOT(toggleAlarm()),
 #. mACollection, "activate_alarm" );
 #. ************************* SCHEDULE MENU *******************************
-#: actionmanager.cpp:638
+#: actionmanager.cpp:639
 #, kde-format
 msgid "&Publish Item Information..."
 msgstr "&Kunngjer elementinformasjon …"
 
-#: actionmanager.cpp:645
+#: actionmanager.cpp:646
 #, kde-format
 msgid "Send &Invitation to Attendees"
 msgstr "Send &invitasjon til deltakarar"
 
-#: actionmanager.cpp:653
+#: actionmanager.cpp:654
 #, kde-format
 msgid "Re&quest Update"
 msgstr "&Be om oppdatering"
 
-#: actionmanager.cpp:661
+#: actionmanager.cpp:662
 #, kde-format
 msgid "Send &Cancellation to Attendees"
 msgstr "Send &avlysing til deltakarar"
 
-#: actionmanager.cpp:669
+#: actionmanager.cpp:670
 #, kde-format
 msgid "Send Status &Update"
 msgstr "Send status&oppdatering"
 
-#: actionmanager.cpp:677
+#: actionmanager.cpp:678
 #, kde-format
 msgctxt "counter proposal"
 msgid "Request Chan&ge"
 msgstr "&Be om endring"
 
-#: actionmanager.cpp:685
+#: actionmanager.cpp:686
 #, kde-format
 msgid "&Mail Free Busy Information..."
 msgstr "&Send ledig/oppteken-e-post …"
 
-#: actionmanager.cpp:690
+#: actionmanager.cpp:691
 #, kde-format
 msgid "&Send as iCalendar..."
 msgstr "&Send som iCalendar …"
 
-#: actionmanager.cpp:697
+#: actionmanager.cpp:698
 #, kde-format
 msgid "&Upload Free Busy Information"
 msgstr "&Last opp ledig/oppteken-informasjon"
 
-#: actionmanager.cpp:703
+#: actionmanager.cpp:704
 #, kde-format
 msgid "&Address Book"
 msgstr "&Adressebok"
 
-#: actionmanager.cpp:711
+#: actionmanager.cpp:712
 #, kde-format
 msgid "Show Date Navigator"
 msgstr "Vis datoveljar"
 
-#: actionmanager.cpp:715
+#: actionmanager.cpp:716
 #, kde-format
 msgid "Show To-do View"
 msgstr "Vis oppgåvevising"
 
-#: actionmanager.cpp:719
+#: actionmanager.cpp:720
 #, kde-format
 msgid "Show Item Viewer"
 msgstr "Vis elementvising"
 
-#: actionmanager.cpp:735
+#: actionmanager.cpp:736
 #, kde-format
 msgid "Show Calendar Manager"
 msgstr "Vis kalenderhandsamar"
 
-#: actionmanager.cpp:748
+#: actionmanager.cpp:749
 #, kde-format
 msgid "Configure &Date && Time..."
 msgstr "Set opp &dato og klokkeslett …"
 
-#: actionmanager.cpp:752
+#: actionmanager.cpp:753
 #, kde-format
 msgid "Manage View &Filters..."
 msgstr "Handter visings&filter …"
 
-#: actionmanager.cpp:756
+#: actionmanager.cpp:757
 #, kde-format
 msgid "Manage T&ags..."
 msgstr ""
 
-#: actionmanager.cpp:764
+#: actionmanager.cpp:765
 #, kde-format
 msgid "&Configure KOrganizer..."
 msgstr ""
 
-#: actionmanager.cpp:841
+#: actionmanager.cpp:842
 #, kde-format
 msgid "1 incidence was imported successfully."
 msgid_plural "%1 incidences were imported successfully."
 msgstr[0] ""
 msgstr[1] ""
 
-#: actionmanager.cpp:844
+#: actionmanager.cpp:845
 #, kde-format
 msgid "There was an error while merging the calendar: %1"
 msgstr ""
 
-#: actionmanager.cpp:855
+#: actionmanager.cpp:856
 #, kde-format
 msgid "New calendar added successfully"
 msgstr ""
 
-#: actionmanager.cpp:857
+#: actionmanager.cpp:858
 #, kde-format
 msgid "Could not add a calendar. Error: %1"
 msgstr ""
 
-#: actionmanager.cpp:914
+#: actionmanager.cpp:915
 #, kde-format
 msgctxt "@title:window"
 msgid "Select Calendar File to Open"
 msgstr ""
 
-#: actionmanager.cpp:942
+#: actionmanager.cpp:943
 #, kde-format
 msgctxt "@title:window"
 msgid "Select Calendar File to Import"
 msgstr ""
 
-#: actionmanager.cpp:973
+#: actionmanager.cpp:974
 #, kde-format
 msgid "An error occurred: %1"
 msgstr "Det oppstod ein feil: %1"
 
-#: actionmanager.cpp:991
+#: actionmanager.cpp:992
 #, kde-format
 msgid "Cannot upload calendar to '%1'"
 msgstr "Klarte ikkje lasta opp kalenderen til «%1»"
 
-#: actionmanager.cpp:997
+#: actionmanager.cpp:998
 #, kde-format
 msgid "Saved calendar '%1'."
 msgstr "Lagra kalenderen «%1»."
 
-#: actionmanager.cpp:1035
+#: actionmanager.cpp:1036
 #, kde-format
 msgid "Unable to save calendar to the file %1."
 msgstr "Klarte ikkje lagra kalenderen til fila «%1»."
 
-#: actionmanager.cpp:1035
+#: actionmanager.cpp:1036
 #, kde-format
 msgid "Error"
 msgstr "Feil"
 
-#: actionmanager.cpp:1084
+#: actionmanager.cpp:1081
 #, kde-format
 msgid "Could not start control module for date and time format."
 msgstr "Klarte ikkje starta kontrollmodulen for dato- og klokkeslettformat."
 
-#: actionmanager.cpp:1263
+#: actionmanager.cpp:1260
 #, kde-format
 msgid "&Show Event"
 msgstr "&Vis hending"
 
-#: actionmanager.cpp:1266
+#: actionmanager.cpp:1263
 #, kde-format
 msgid "&Edit Event..."
 msgstr "&Rediger hending …"
 
-#: actionmanager.cpp:1269
+#: actionmanager.cpp:1266
 #, kde-format
 msgid "&Delete Event"
 msgstr "&Slett hending"
 
-#: actionmanager.cpp:1277
+#: actionmanager.cpp:1274
 #, kde-format
 msgid "&Show To-do"
 msgstr "&Vis oppgåve"
 
-#: actionmanager.cpp:1280 kontactplugin/korganizer/todosummarywidget.cpp:321
+#: actionmanager.cpp:1277 kontactplugin/korganizer/todosummarywidget.cpp:321
 #, kde-format
 msgid "&Edit To-do..."
 msgstr "&Rediger oppgåve …"
 
-#: actionmanager.cpp:1283 kontactplugin/korganizer/todosummarywidget.cpp:323
+#: actionmanager.cpp:1280 kontactplugin/korganizer/todosummarywidget.cpp:323
 #, kde-format
 msgid "&Delete To-do"
 msgstr "&Slett oppgåve"
 
-#: actionmanager.cpp:1421 actionmanager.cpp:1527
+#: actionmanager.cpp:1418 actionmanager.cpp:1524
 #, kde-format
 msgid "Attach as &link"
 msgstr "Legg ved som &lenkje"
 
-#: actionmanager.cpp:1422 actionmanager.cpp:1528
+#: actionmanager.cpp:1419 actionmanager.cpp:1525
 #, kde-format
 msgid "Attach &inline"
 msgstr "Legg ved i &meldingsteksten"
 
-#: actionmanager.cpp:1423
+#: actionmanager.cpp:1420
 #, kde-format
 msgid "Attach inline &without attachments"
 msgstr "Legg ved i meldingsteksten &utan vedlegg"
 
-#: actionmanager.cpp:1425 actionmanager.cpp:1530
+#: actionmanager.cpp:1422 actionmanager.cpp:1527
 #, kde-format
 msgid "C&ancel"
 msgstr "&Avbryt"
 
-#: actionmanager.cpp:1463
+#: actionmanager.cpp:1460
 #, kde-format
 msgid "Removing attachments from an email might invalidate its signature."
 msgstr "Å fjerna vedlegg frå ein e-post kan gjera signaturen ugyldig."
 
-#: actionmanager.cpp:1464
+#: actionmanager.cpp:1461
 #, kde-format
 msgid "Remove Attachments"
 msgstr "Fjern vedlegg"
 
-#: actionmanager.cpp:1615
+#: actionmanager.cpp:1612
 #, kde-format
 msgid "Undo: %1"
 msgstr "Angra: %1"
 
-#: actionmanager.cpp:1618 actionmanager.cpp:1634
+#: actionmanager.cpp:1615 actionmanager.cpp:1631
 #, kde-format
 msgid "Undo"
 msgstr "Angra"
 
-#: actionmanager.cpp:1628
+#: actionmanager.cpp:1625
 #, kde-format
 msgid "Redo: %1"
 msgstr "Gjer om: %1"
 
-#: actionmanager.cpp:1631
+#: actionmanager.cpp:1628
 #, kde-format
 msgid "Redo"
 msgstr "Gjer om"
 
-#: actionmanager.cpp:1645
+#: actionmanager.cpp:1642
 #, kde-format
 msgid "URL '%1' is invalid."
 msgstr "Nettadressa «%1» er ugyldig."
 
-#: actionmanager.cpp:1650
+#: actionmanager.cpp:1647
 #, kde-format
 msgctxt "@info"
 msgid ""
@@ -1177,18 +1177,18 @@ msgid ""
 "p>"
 msgstr ""
 
-#: actionmanager.cpp:1658
+#: actionmanager.cpp:1655
 #, kde-format
 msgctxt "@title:window"
 msgid "Import Calendar"
 msgstr ""
 
-#: actionmanager.cpp:1659
+#: actionmanager.cpp:1656
 #, kde-format
 msgid "Merge into existing calendar"
 msgstr "Flett inn i eksisterande kalender"
 
-#: actionmanager.cpp:1660
+#: actionmanager.cpp:1657
 #, kde-format
 msgid "Add as new calendar"
 msgstr "Legg til som ny kalender"
@@ -1985,22 +1985,22 @@ msgstr "Dato og klokkeslett"
 msgid "Date"
 msgstr "Dato"
 
-#: kcmdesignerfields.cpp:167
+#: kcmdesignerfields.cpp:158
 #, kde-format
 msgid "<qt>Do you really want to delete '<b>%1</b>'?</qt>"
 msgstr "<qt>Er du sikker på at du vil sletta <b>%1</b>?</qt>"
 
-#: kcmdesignerfields.cpp:181 kcmdesignerfields.cpp:184
+#: kcmdesignerfields.cpp:171
 #, kde-format
 msgid "Import Page"
 msgstr "Importer side"
 
-#: kcmdesignerfields.cpp:181 kcmdesignerfields.cpp:186
+#: kcmdesignerfields.cpp:173
 #, kde-format
 msgid "Designer Files"
 msgstr ""
 
-#: kcmdesignerfields.cpp:289
+#: kcmdesignerfields.cpp:268
 #, kde-format
 msgid ""
 "<qt><b>Warning:</b> Qt Designer could not be found. It is probably not "
@@ -2009,17 +2009,17 @@ msgstr ""
 "<qt><b>Åtvaring:</b> Fann ikkje Qt Designer. Programmet er truleg ikkje "
 "installert. Du vil berre kunna importera ferdige Designer-filer.</qt>"
 
-#: kcmdesignerfields.cpp:307
+#: kcmdesignerfields.cpp:278
 #, kde-format
 msgid "Available Pages"
 msgstr "Tilgjengelege sider"
 
-#: kcmdesignerfields.cpp:314 kcmdesignerfields.cpp:316
+#: kcmdesignerfields.cpp:284
 #, kde-format
 msgid "Preview of Selected Page"
 msgstr "Førehandsvising av vald side"
 
-#: kcmdesignerfields.cpp:336
+#: kcmdesignerfields.cpp:303
 #, kde-format
 msgid ""
 "<qt><p>This section allows you to add your own GUI Elements ('<i>Widgets</"
@@ -2037,42 +2037,42 @@ msgid ""
 "name to be edited, set the widget name in Qt Designer.</p></qt>"
 msgstr ""
 
-#: kcmdesignerfields.cpp:359 kcmdesignerfields.cpp:361
+#: kcmdesignerfields.cpp:325
 #, kde-format
 msgid "<a href=\"whatsthis:%1\">How does this work?</a>"
 msgstr "<a href=\"whatsthis:%1\">Korleis fungerer dette?</a>"
 
-#: kcmdesignerfields.cpp:374 kcmdesignerfields.cpp:376
+#: kcmdesignerfields.cpp:336
 #, kde-format
 msgid "Delete Page"
 msgstr "Slett side"
 
-#: kcmdesignerfields.cpp:381 kcmdesignerfields.cpp:383
+#: kcmdesignerfields.cpp:339
 #, kde-format
 msgid "Import Page..."
 msgstr "Importer side …"
 
-#: kcmdesignerfields.cpp:387 kcmdesignerfields.cpp:389
+#: kcmdesignerfields.cpp:341
 #, kde-format
 msgid "Edit with Qt Designer..."
 msgstr "Rediger med Qt Designer …"
 
-#: kcmdesignerfields.cpp:415
+#: kcmdesignerfields.cpp:366
 #, kde-format
 msgid "Key:"
 msgstr "Nøkkel:"
 
-#: kcmdesignerfields.cpp:417
+#: kcmdesignerfields.cpp:368
 #, kde-format
 msgid "Type:"
 msgstr "Type:"
 
-#: kcmdesignerfields.cpp:419
+#: kcmdesignerfields.cpp:370
 #, kde-format
 msgid "Classname:"
 msgstr "Klassenamn:"
 
-#: kcmdesignerfields.cpp:421
+#: kcmdesignerfields.cpp:372
 #, kde-format
 msgid "Description:"
 msgstr "Skildring:"
@@ -2100,22 +2100,22 @@ msgctxt "delimiter for joining holiday names"
 msgid ","
 msgstr ","
 
-#: kodaymatrix.cpp:646
+#: kodaymatrix.cpp:630
 #, kde-format
 msgid "&Move"
 msgstr "&Flytt"
 
-#: kodaymatrix.cpp:648
+#: kodaymatrix.cpp:632
 #, kde-format
 msgid "&Copy"
 msgstr "&Kopier"
 
-#: kodaymatrix.cpp:651
+#: kodaymatrix.cpp:635
 #, kde-format
 msgid "&Add"
 msgstr "&Legg til"
 
-#: kodaymatrix.cpp:655
+#: kodaymatrix.cpp:639
 #, kde-format
 msgid "&Cancel"
 msgstr "&Avbryt"
@@ -2486,9 +2486,9 @@ msgid ""
 msgstr ""
 "Du vil få opp eit dialogvindauge der du kan leggja til ein ny dagboktekst."
 
-#: kontactplugin/korganizer/kcmapptsummary.cpp:91
-#: kontactplugin/korganizer/kcmtodosummary.cpp:73
-#: kontactplugin/specialdates/kcmsdsummary.cpp:78
+#: kontactplugin/korganizer/kcmapptsummary.cpp:71
+#: kontactplugin/korganizer/kcmtodosummary.cpp:56
+#: kontactplugin/specialdates/kcmsdsummary.cpp:61
 #, kde-format
 msgid " day"
 msgid_plural " days"
@@ -3222,19 +3222,19 @@ msgstr ""
 msgid "Tobias Koenig"
 msgstr "Tobias König"
 
-#: korganizer.cpp:279
+#: korganizer.cpp:274
 #, kde-format
 msgid "New Calendar"
 msgstr "Ny kalender"
 
 # unreviewed-context
-#: korganizer.cpp:283
+#: korganizer.cpp:278
 #, kde-format
 msgctxt "the calendar is read-only"
 msgid "read-only"
 msgstr "skriveverna"
 
-#: korganizer.cpp:286
+#: korganizer.cpp:281
 #, kde-format
 msgid "Calendar"
 msgstr "Kalender"
@@ -3286,19 +3286,19 @@ msgstr ""
 "Kan ikkje visa arbeidsveka, då det ikkje er sett opp nokon arbeidsdagar. Du "
 "må velja minst éin arbeidsdag i «Dato og klokkeslett»-innstillingane."
 
-#: prefs/koprefsdialogcolorsandfonts.cpp:55
+#: prefs/koprefsdialogcolorsandfonts.cpp:41
 #, kde-format
 msgctxt "@title:tab"
 msgid "Colors"
 msgstr "Fargar"
 
-#: prefs/koprefsdialogcolorsandfonts.cpp:105
+#: prefs/koprefsdialogcolorsandfonts.cpp:91
 #, kde-format
 msgctxt "@title:group"
 msgid "Tags"
 msgstr ""
 
-#: prefs/koprefsdialogcolorsandfonts.cpp:119
+#: prefs/koprefsdialogcolorsandfonts.cpp:105
 #, kde-format
 msgctxt "@info:whatsthis"
 msgid ""
@@ -3306,20 +3306,20 @@ msgid ""
 "using the adjacent color button."
 msgstr ""
 
-#: prefs/koprefsdialogcolorsandfonts.cpp:127
+#: prefs/koprefsdialogcolorsandfonts.cpp:113
 #, kde-format
 msgctxt "@info:whatsthis"
 msgid "Choose the color of the tag selected in the adjacent combo box."
 msgstr ""
 
 # unreviewed-context
-#: prefs/koprefsdialogcolorsandfonts.cpp:135
+#: prefs/koprefsdialogcolorsandfonts.cpp:121
 #, kde-format
 msgctxt "@title:group"
 msgid "Resources"
 msgstr "Ressursar"
 
-#: prefs/koprefsdialogcolorsandfonts.cpp:146
+#: prefs/koprefsdialogcolorsandfonts.cpp:132
 #, kde-format
 msgctxt "@info:whatsthis"
 msgid ""
@@ -3329,147 +3329,147 @@ msgstr ""
 "Vel kalenderen du vil endra. Du kan så byta kalenderfarge ved å trykkja på "
 "knappen nedanfor."
 
-#: prefs/koprefsdialogcolorsandfonts.cpp:154
+#: prefs/koprefsdialogcolorsandfonts.cpp:140
 #, kde-format
 msgctxt "@info:whatsthis"
 msgid ""
 "Choose here the color of the calendar selected using the combo box above."
 msgstr "Vel kva farge den valde kalenderen skal ha."
 
-#: prefs/koprefsdialogcolorsandfonts.cpp:166
+#: prefs/koprefsdialogcolorsandfonts.cpp:148
 #, kde-format
 msgctxt "@title:tab"
 msgid "Fonts"
 msgstr "Skrifter"
 
 # unreviewed-context
-#: prefs/koprefsdialogcolorsandfonts.cpp:179
-#: prefs/koprefsdialogcolorsandfonts.cpp:185
+#: prefs/koprefsdialogcolorsandfonts.cpp:161
+#: prefs/koprefsdialogcolorsandfonts.cpp:167
 #, kde-format
 msgctxt "@label"
 msgid "Event text"
 msgstr "Hendingstekst"
 
-#: prefs/koprefsdialoggroupscheduling.cpp:49
+#: prefs/koprefsdialoggroupscheduling.cpp:39
 #, kde-format
 msgctxt "@label"
 msgid "Mail transport:"
 msgstr "E-post-transport:"
 
 # unreviewed-context
-#: prefs/koprefsdialogmain.cpp:53
+#: prefs/koprefsdialogmain.cpp:39
 #, kde-format
 msgctxt "@title:tab personal settings"
 msgid "Personal"
 msgstr "Personleg"
 
-#: prefs/koprefsdialogmain.cpp:59
+#: prefs/koprefsdialogmain.cpp:45
 #, kde-format
 msgctxt "@title:group email settings"
 msgid "Email Settings"
 msgstr "E-postinnstillingar"
 
-#: prefs/koprefsdialogmain.cpp:80
+#: prefs/koprefsdialogmain.cpp:62
 #, kde-format
 msgctxt "@title:tab"
 msgid "Save"
 msgstr "Lagra"
 
-#: prefs/koprefsdialogmain.cpp:96
+#: prefs/koprefsdialogmain.cpp:74
 #, kde-format
 msgctxt "@title:tab calendar account settings"
 msgid "Calendars"
 msgstr ""
 
-#: prefs/koprefsdialogmain.cpp:104
+#: prefs/koprefsdialogmain.cpp:78
 #, kde-format
 msgctxt "@title"
 msgid "Calendar Accounts"
 msgstr ""
 
-#: prefs/koprefsdialogplugins.cpp:62 prefs/koprefsdialogplugins.cpp:68
+#: prefs/koprefsdialogplugins.cpp:61
 #, kde-format
 msgctxt "@title:group"
 msgid "Position"
 msgstr "Plassering"
 
 #. i18nc( "@option:check", "Show in the month view" ), mPositioningGroupBox );
-#: prefs/koprefsdialogplugins.cpp:98
+#: prefs/koprefsdialogplugins.cpp:86
 #, kde-format
 msgctxt "@option:check"
 msgid "Show at the top of the agenda views"
 msgstr "Vis øvst i timeplanvisinga"
 
-#: prefs/koprefsdialogplugins.cpp:99
+#: prefs/koprefsdialogplugins.cpp:87
 #, kde-format
 msgctxt "@option:check"
 msgid "Show at the bottom of the agenda views"
 msgstr "Vis nedst i timeplanvisinga"
 
-#: prefs/koprefsdialogplugins.cpp:133
+#: prefs/koprefsdialogplugins.cpp:121
 #, kde-format
 msgctxt "@title:group"
 msgid "Calendar Decorations"
 msgstr "Kalenderpynt"
 
-#: prefs/koprefsdialogplugins.cpp:153
+#: prefs/koprefsdialogplugins.cpp:141
 #, kde-format
 msgctxt "@action"
 msgid "Configure"
 msgstr ""
 
 # unreviewed-context
-#: prefs/koprefsdialogplugins.cpp:217 prefs/koprefsdialogplugins.cpp:219
+#: prefs/koprefsdialogplugins.cpp:200
 #, kde-format
 msgctxt "@info"
 msgid "Unable to configure this plugin"
 msgstr "Klarte ikkje setja opp dette programtillegget"
 
-#: prefs/koprefsdialogtime.cpp:54
+#: prefs/koprefsdialogtime.cpp:40
 #, kde-format
 msgctxt "@title:tab"
 msgid "Regional"
 msgstr "Region"
 
-#: prefs/koprefsdialogtime.cpp:58
+#: prefs/koprefsdialogtime.cpp:44
 #, kde-format
 msgctxt "@title:group"
 msgid "General Time and Date"
 msgstr "Generelt om dato og klokkeslett"
 
-#: prefs/koprefsdialogtime.cpp:67
+#: prefs/koprefsdialogtime.cpp:53
 #, kde-format
 msgctxt "@title:group"
 msgid "Holidays"
 msgstr "Fridagar"
 
 # unreviewed-context
-#: prefs/koprefsdialogtime.cpp:78
+#: prefs/koprefsdialogtime.cpp:64
 #, kde-format
 msgctxt "@label"
 msgid "Use holiday region:"
 msgstr "Bruk fridagområde:"
 
-#: prefs/koprefsdialogtime.cpp:101
+#: prefs/koprefsdialogtime.cpp:87
 #, kde-format
 msgctxt "@item:inlistbox Holiday region, region language"
 msgid "%1 (%2)"
 msgstr ""
 
-#: prefs/koprefsdialogtime.cpp:110
+#: prefs/koprefsdialogtime.cpp:96
 #, kde-format
 msgctxt "@item:inlistbox"
 msgid "Select Holiday Regions"
 msgstr ""
 
-#: prefs/koprefsdialogtime.cpp:122
+#: prefs/koprefsdialogtime.cpp:108
 #, kde-format
 msgctxt "@title:group"
 msgid "Working Period"
 msgstr "Arbeidsperiode"
 
 # unreviewed-context
-#: prefs/koprefsdialogtime.cpp:137
+#: prefs/koprefsdialogtime.cpp:123
 #, kde-format
 msgctxt "@info:whatsthis"
 msgid ""
@@ -3480,153 +3480,151 @@ msgstr ""
 "Kryss av her for å merkja denne dagen som ein arbeidsdag. Arbeidstimane "
 "denne dagen vert då viste i ein annan farge."
 
-#: prefs/koprefsdialogtime.cpp:152
+#: prefs/koprefsdialogtime.cpp:138
 #, kde-format
 msgctxt "@item:inlistbox"
 msgid "Monday"
 msgstr ""
 
-#: prefs/koprefsdialogtime.cpp:152
+#: prefs/koprefsdialogtime.cpp:138
 #, kde-format
 msgctxt "@item:inlistbox"
 msgid "Tuesday"
 msgstr ""
 
-#: prefs/koprefsdialogtime.cpp:152
+#: prefs/koprefsdialogtime.cpp:138
 #, kde-format
 msgctxt "@item:inlistbox"
 msgid "Wednesday"
 msgstr ""
 
-#: prefs/koprefsdialogtime.cpp:153
+#: prefs/koprefsdialogtime.cpp:139
 #, kde-format
 msgctxt "@item:inlistbox"
 msgid "Thursday"
 msgstr ""
 
-#: prefs/koprefsdialogtime.cpp:153
+#: prefs/koprefsdialogtime.cpp:139
 #, kde-format
 msgctxt "@item:inlistbox"
 msgid "Friday"
 msgstr ""
 
-#: prefs/koprefsdialogtime.cpp:153
+#: prefs/koprefsdialogtime.cpp:139
 #, kde-format
 msgctxt "@item:inlistbox"
 msgid "Saturday"
 msgstr ""
 
-#: prefs/koprefsdialogtime.cpp:154
+#: prefs/koprefsdialogtime.cpp:140
 #, kde-format
 msgctxt "@item:inlistbox"
 msgid "Sunday"
 msgstr ""
 
-#: prefs/koprefsdialogtime.cpp:187
+#: prefs/koprefsdialogtime.cpp:169
 #, kde-format
 msgctxt "@title:tab"
 msgid "Default Values"
 msgstr "Standardverdiar"
 
 # unreviewed-context
-#: prefs/koprefsdialogtime.cpp:190
+#: prefs/koprefsdialogtime.cpp:172
 #, kde-format
 msgctxt "@title:group"
 msgid "Appointments"
 msgstr "Avtalar"
 
-#: prefs/koprefsdialogtime.cpp:205
+#: prefs/koprefsdialogtime.cpp:187
 #, kde-format
 msgctxt "@title:group"
 msgid "Reminders"
 msgstr "Påminningar"
 
 # unreviewed-context
-#: prefs/koprefsdialogtime.cpp:210
+#: prefs/koprefsdialogtime.cpp:192
 #, kde-format
 msgctxt "@label"
 msgid "Default reminder time:"
 msgstr "Standard påminningstid:"
 
-#: prefs/koprefsdialogtime.cpp:223
+#: prefs/koprefsdialogtime.cpp:205
 #, kde-format
 msgctxt "@item:inlistbox reminder units in minutes"
 msgid "minute(s)"
 msgstr "minutt"
 
-#: prefs/koprefsdialogtime.cpp:224
+#: prefs/koprefsdialogtime.cpp:206
 #, kde-format
 msgctxt "@item:inlistbox reminder time units in hours"
 msgid "hour(s)"
 msgstr "time/timar"
 
-#: prefs/koprefsdialogtime.cpp:225
+#: prefs/koprefsdialogtime.cpp:207
 #, kde-format
 msgctxt "@item:inlistbox reminder time units in days"
 msgid "day(s)"
 msgstr "dag(ar)"
 
-#: prefs/koprefsdialogtime.cpp:236
+#: prefs/koprefsdialogtime.cpp:217
 #, kde-format
-msgid ""
-"*.ogg *.wav *.mp3 *.wma *.flac *.aiff *.raw *.au *.ra|Audio Files (*.ogg *."
-"wav *.mp3 *.wma *.flac *.aiff *.raw *.au *.ra)"
+msgid "Audio Files (*.ogg *.wav *.mp3 *.wma *.flac *.aiff *.raw *.au *.ra)"
 msgstr ""
 
 # unreviewed-context
-#: prefs/koprefsdialogviews.cpp:58
+#: prefs/koprefsdialogviews.cpp:42
 #, kde-format
 msgctxt "@title:tab general settings"
 msgid "General"
 msgstr "Generelt"
 
-#: prefs/koprefsdialogviews.cpp:64 prefs/koprefsdialogviews.cpp:105
-#: prefs/koprefsdialogviews.cpp:153 prefs/koprefsdialogviews.cpp:184
+#: prefs/koprefsdialogviews.cpp:48 prefs/koprefsdialogviews.cpp:85
+#: prefs/koprefsdialogviews.cpp:129 prefs/koprefsdialogviews.cpp:156
 #, kde-format
 msgctxt "@title:group"
 msgid "Display Options"
 msgstr "Innstillingar for vising"
 
-#: prefs/koprefsdialogviews.cpp:70
+#: prefs/koprefsdialogviews.cpp:54
 #, kde-format
 msgctxt "@label suffix in the N days spin box"
 msgid " days"
 msgstr " dagar"
 
 # unreviewed-context
-#: prefs/koprefsdialogviews.cpp:83
+#: prefs/koprefsdialogviews.cpp:67
 #, kde-format
 msgctxt "@title:group"
 msgid "Date Navigator"
 msgstr "Datoveljar"
 
 # unreviewed-context
-#: prefs/koprefsdialogviews.cpp:99
+#: prefs/koprefsdialogviews.cpp:79
 #, kde-format
 msgctxt "@title:tab"
 msgid "Agenda View"
 msgstr "Timeplanvising"
 
-#: prefs/koprefsdialogviews.cpp:111
+#: prefs/koprefsdialogviews.cpp:91
 #, kde-format
 msgctxt "@label suffix in the hour size spin box"
 msgid " pixels"
 msgstr " biletpunkt"
 
 # unreviewed-context
-#: prefs/koprefsdialogviews.cpp:147
+#: prefs/koprefsdialogviews.cpp:123
 #, kde-format
 msgctxt "@title:tab"
 msgid "Month View"
 msgstr "Månadsvising"
 
-#: prefs/koprefsdialogviews.cpp:178
+#: prefs/koprefsdialogviews.cpp:150
 #, kde-format
 msgctxt "@title:tab"
 msgid "Todo View"
 msgstr "Oppgåvevising"
 
-#: prefs/koprefsdialogviews.cpp:191
+#: prefs/koprefsdialogviews.cpp:163
 #, kde-format
 msgctxt "@title:group"
 msgid "Other Options"
@@ -5192,8 +5190,8 @@ msgstr ""
 #: ui/kogroupwareprefspage.ui:382
 #, kde-format
 msgid ""
-"Check this box to download a free/busy file in the format \"user@domain."
-"ifb\" (for example joe@company.com.ifb). Otherwise, it will download a free/"
+"Check this box to download a free/busy file in the format \"user@domain.ifb"
+"\" (for example joe@company.com.ifb). Otherwise, it will download a free/"
 "busy file in the format user.ifb (for example joe.ifb). Ask the server "
 "Administrator if you are not sure about how to configure this option."
 msgstr ""

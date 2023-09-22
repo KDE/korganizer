@@ -8,7 +8,7 @@
 # Juan Manuel Garcia Molina <juanma@superiodico.net>, 2001, 2002, 2003, 2004, 2005, 2006, 2007.
 # Juan Manuel García Molina <juanma@superiodico.net>, 2006.
 # Pablo de Vicente <pablo.devicente@gmail.com>, 2006.
-# Eloy Cuadra <ecuadra@eloihr.net>, 2007, 2008, 2009, 2010, 2019, 2020, 2021, 2022.
+# SPDX-FileCopyrightText: 2007, 2008, 2009, 2010, 2019, 2020, 2021, 2022, 2023 Eloy Cuadra <ecuadra@eloihr.net>
 # Enrique Matias Sanchez (aka Quique) <cronopios@gmail.com>, 2007.
 # Franco Mariluis <fmariluis@gmail.com>, 2008.
 # Dario Andres Rodriguez <andresbajotierra@gmail.com>, 2009.
@@ -21,7 +21,7 @@ msgstr ""
 "Project-Id-Version: korganizer\n"
 "Report-Msgid-Bugs-To: https://bugs.kde.org\n"
 "POT-Creation-Date: 2023-09-21 00:45+0000\n"
-"PO-Revision-Date: 2022-10-15 12:34+0200\n"
+"PO-Revision-Date: 2023-09-21 16:48+0200\n"
 "Last-Translator: Eloy Cuadra <ecuadra@eloihr.net>\n"
 "Language-Team: Spanish <kde-l10n-es@kde.org>\n"
 "Language: es\n"
@@ -30,7 +30,7 @@ msgstr ""
 "Content-Transfer-Encoding: 8bit\n"
 "First-Translator: Boris Wesslowski <Boris@Wesslowski.com>\n"
 "Second-Translator: Pablo de Vicente <pvicentea@nexo.es>\n"
-"X-Generator: Lokalize 22.08.2\n"
+"X-Generator: Lokalize 23.08.1\n"
 "Plural-Forms: nplurals=2; plural=n != 1;\n"
 
 #, kde-format
@@ -3716,14 +3716,10 @@ msgid "day(s)"
 msgstr "día(s)"
 
 #: prefs/koprefsdialogtime.cpp:217
-#, fuzzy, kde-format
-#| msgid ""
-#| "*.ogg *.wav *.mp3 *.wma *.flac *.aiff *.raw *.au *.ra|Audio Files (*.ogg "
-#| "*.wav *.mp3 *.wma *.flac *.aiff *.raw *.au *.ra)"
+#, kde-format
 msgid "Audio Files (*.ogg *.wav *.mp3 *.wma *.flac *.aiff *.raw *.au *.ra)"
 msgstr ""
-"*.ogg *.wav *.mp3 *.wma *.flac *.aiff *.raw *.au *.ra|Audio Files (*.ogg *."
-"wav *.mp3 *.wma *.flac *.aiff *.raw *.au *.ra)"
+"Archivos de sonido (*.ogg *.wav *.mp3 *.wma *.flac *.aiff *.raw *.au *.ra)"
 
 #: prefs/koprefsdialogviews.cpp:42
 #, kde-format

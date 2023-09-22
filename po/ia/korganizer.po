@@ -8,7 +8,7 @@ msgstr ""
 "Project-Id-Version: \n"
 "Report-Msgid-Bugs-To: https://bugs.kde.org\n"
 "POT-Creation-Date: 2023-09-21 00:45+0000\n"
-"PO-Revision-Date: 2023-01-10 16:26+0100\n"
+"PO-Revision-Date: 2023-09-21 10:52+0200\n"
 "Last-Translator: giovanni <g.sora@tiscali.it>\n"
 "Language-Team: Interlingua <kde-i18n-doc@kde.org>\n"
 "Language: ia\n"
@@ -16,7 +16,7 @@ msgstr ""
 "Content-Type: text/plain; charset=UTF-8\n"
 "Content-Transfer-Encoding: 8bit\n"
 "Plural-Forms: nplurals=2; plural=n != 1;\n"
-"X-Generator: Lokalize 21.12.3\n"
+"X-Generator: Lokalize 22.12.3\n"
 
 #, kde-format
 msgctxt "NAME OF TRANSLATORS"
@@ -3698,14 +3698,9 @@ msgid "day(s)"
 msgstr "die(s)"
 
 #: prefs/koprefsdialogtime.cpp:217
-#, fuzzy, kde-format
-#| msgid ""
-#| "*.ogg *.wav *.mp3 *.wma *.flac *.aiff *.raw *.au *.ra|Audio Files (*.ogg "
-#| "*.wav *.mp3 *.wma *.flac *.aiff *.raw *.au *.ra)"
+#, kde-format
 msgid "Audio Files (*.ogg *.wav *.mp3 *.wma *.flac *.aiff *.raw *.au *.ra)"
-msgstr ""
-"*.ogg *.wav *.mp3 *.wma *.flac *.aiff *.raw *.au *ra|Files Audio (*.ogg *."
-"wav *.mp3 *.wma *.flac *.aiff *.raw *.au *.ra)"
+msgstr "Files Audio (*.ogg *.wav *.mp3 *.wma *.flac *.aiff *.raw *.au *.ra)"
 
 #: prefs/koprefsdialogviews.cpp:42
 #, kde-format
