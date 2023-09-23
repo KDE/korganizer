@@ -3706,14 +3706,9 @@ msgid "day(s)"
 msgstr "gün"
 
 #: prefs/koprefsdialogtime.cpp:217
-#, fuzzy, kde-format
-#| msgid ""
-#| "*.ogg *.wav *.mp3 *.wma *.flac *.aiff *.raw *.au *.ra|Audio Files (*.ogg "
-#| "*.wav *.mp3 *.wma *.flac *.aiff *.raw *.au *.ra)"
+#, kde-format
 msgid "Audio Files (*.ogg *.wav *.mp3 *.wma *.flac *.aiff *.raw *.au *.ra)"
-msgstr ""
-"*.ogg *.wav *.mp3 *.wma *.flac *.aiff *.raw *.au *.ra|Ses Dosyaları (*.ogg *."
-"wav *.mp3 *.wma *.flac *.aiff *.raw *.au *.ra)"
+msgstr "Ses Dosyaları (*.ogg *.wav *.mp3 *.wma *.flac *.aiff *.raw *.au *.ra)"
 
 #: prefs/koprefsdialogviews.cpp:42
 #, kde-format
@@ -6038,25 +6033,3 @@ msgstr "%1"
 msgctxt "4 digit year"
 msgid "%1"
 msgstr "%1"
-
-#~ msgctxt "@title:window"
-#~ msgid "%1"
-#~ msgstr "%1"
-
-#~ msgid "KCMUserFeedBack"
-#~ msgstr "KCM Kullanıcı Geri Bildirimi"
-
-#~ msgid "KOrganizer Configure User FeedBack"
-#~ msgstr "K Organizatör Kullanıcı Geri Bildirimini Yapılandır"
-
-#~ msgid "(c) 2020-2021 Laurent Montel"
-#~ msgstr "(c) 2020-2021 Laurent Montel"
-
-#~ msgid "KCMDesignerfields"
-#~ msgstr "KCMDesignerfields"
-
-#~ msgid "Qt Designer Fields Dialog"
-#~ msgstr "Qt Designer Alanları Penceresi"
-
-#~ msgid "(c) 2004 Tobias Koenig"
-#~ msgstr "(c) 2004 Tobias Koenig"

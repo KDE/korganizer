@@ -3296,7 +3296,7 @@ choose the <menuchoice
 
 <para
 >Si us plau, useu la pàgina de configuració <link linkend="config-main-colors"
->Colors i tipus de lletra</link
+>Colors i lletres</link
 > per a establir aquests colors.</para>
 </listitem>
 </varlistentry>
@@ -3421,7 +3421,7 @@ choose the <menuchoice
 
 <sect2 id="config-main-colors-fonts">
 <title
->La pàgina Colors i tipus de lletra</title>
+>La pàgina Colors i lletres</title>
 
 <sect3 id="config-main-colors">
 <title
@@ -3561,7 +3561,7 @@ choose the <menuchoice
 
 <sect3 id="config-main-fonts">
 <title
->La pestanya Tipus de lletra</title>
+>La pestanya Lletres</title>
 
 <variablelist>
 
@@ -3572,7 +3572,7 @@ choose the <menuchoice
 ></term>
 <listitem
 ><para
->Premeu aquest botó per a triar el tipus de lletra, estil i mida per a la barra de l'hora.</para
+>Premeu aquest botó per a triar la lletra, estil i mida per a la barra de l'hora.</para
 ></listitem>
 </varlistentry>
 
@@ -3583,7 +3583,7 @@ choose the <menuchoice
 ></term>
 <listitem
 ><para
->Premeu aquest botó per a triar el tipus de lletra, estil i mida per a la vista de mes.</para
+>Premeu aquest botó per a triar la lletra, estil i mida per a la vista de mes.</para
 ></listitem>
 </varlistentry>
 
@@ -3594,7 +3594,7 @@ choose the <menuchoice
 ></term>
 <listitem
 ><para
->Premeu aquest botó per a triar el tipus de lletra, estil i mida per a la vista d'agenda (vistes de dia, setmana i setmana laboral).</para
+>Premeu aquest botó per a triar la lletra, estil i mida per a la vista d'agenda (vistes de dia, setmana i setmana laboral).</para
 ></listitem>
 </varlistentry>
 
@@ -3605,7 +3605,7 @@ choose the <menuchoice
 ></term>
 <listitem
 ><para
->Premeu aquest botó per a triar el tipus de lletra, estil i mida per a la línia de Marcus Bains (una línia de color a la vista d'agenda que indica l'hora actual).</para
+>Premeu aquest botó per a triar la lletra, estil i mida per a la línia de Marcus Bains (una línia de color a la vista d'agenda que indica l'hora actual).</para
 ></listitem>
 </varlistentry>
 
