@@ -11,7 +11,7 @@ msgid ""
 msgstr ""
 "Project-Id-Version: korganizer\n"
 "Report-Msgid-Bugs-To: https://bugs.kde.org\n"
-"POT-Creation-Date: 2023-09-21 00:45+0000\n"
+"POT-Creation-Date: 2023-09-24 01:44+0000\n"
 "PO-Revision-Date: 2023-09-21 13:30+0300\n"
 "Last-Translator: Yuri Chornoivan <yurchor@ukr.net>\n"
 "Language-Team: Ukrainian <kde-i18n-uk@kde.org>\n"
@@ -2041,18 +2041,6 @@ msgstr[0] "%1 відповідник"
 msgstr[1] "%1 відповідники"
 msgstr[2] "%1 відповідників"
 msgstr[3] "%1 відповідник"
-
-#: helper/searchcollectionhelper.cpp:106
-#, kde-format
-msgctxt "A collection of all declined invidations."
-msgid "Declined Invitations"
-msgstr "Відхилені запрошення"
-
-#: helper/searchcollectionhelper.cpp:114
-#, kde-format
-msgctxt "A collection of all open invidations."
-msgid "Open Invitations"
-msgstr "Відкриті запрошення"
 
 #: kcmdesignerfields.cpp:61 kcmdesignerfields.cpp:62 kcmdesignerfields.cpp:67
 #: kcmdesignerfields.cpp:68
@@ -6088,6 +6076,14 @@ msgstr "%1"
 msgctxt "4 digit year"
 msgid "%1"
 msgstr "%1"
+
+#~ msgctxt "A collection of all declined invidations."
+#~ msgid "Declined Invitations"
+#~ msgstr "Відхилені запрошення"
+
+#~ msgctxt "A collection of all open invidations."
+#~ msgid "Open Invitations"
+#~ msgstr "Відкриті запрошення"
 
 #~ msgctxt "@title:window"
 #~ msgid "%1"

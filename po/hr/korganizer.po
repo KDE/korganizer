@@ -5,7 +5,7 @@ msgid ""
 msgstr ""
 "Project-Id-Version: korganizer 0\n"
 "Report-Msgid-Bugs-To: https://bugs.kde.org\n"
-"POT-Creation-Date: 2023-09-21 00:45+0000\n"
+"POT-Creation-Date: 2023-09-24 01:44+0000\n"
 "PO-Revision-Date: 2011-02-27 12:20+0100\n"
 "Last-Translator: Marko Dimjasevic <marko@dimjasevic.net>\n"
 "Language-Team: Croatian <kde-croatia-list@lists.sourceforge.net>\n"
@@ -1952,20 +1952,6 @@ msgid_plural "%1 matches"
 msgstr[0] ""
 msgstr[1] ""
 msgstr[2] ""
-
-#: helper/searchcollectionhelper.cpp:106
-#, fuzzy, kde-format
-#| msgid "Destination"
-msgctxt "A collection of all declined invidations."
-msgid "Declined Invitations"
-msgstr "Odredište"
-
-#: helper/searchcollectionhelper.cpp:114
-#, fuzzy, kde-format
-#| msgid "Destination"
-msgctxt "A collection of all open invidations."
-msgid "Open Invitations"
-msgstr "Odredište"
 
 #: kcmdesignerfields.cpp:61 kcmdesignerfields.cpp:62 kcmdesignerfields.cpp:67
 #: kcmdesignerfields.cpp:68
@@ -5673,6 +5659,18 @@ msgstr "- %1"
 msgctxt "4 digit year"
 msgid "%1"
 msgstr "- %1"
+
+#, fuzzy
+#~| msgid "Destination"
+#~ msgctxt "A collection of all declined invidations."
+#~ msgid "Declined Invitations"
+#~ msgstr "Odredište"
+
+#, fuzzy
+#~| msgid "Destination"
+#~ msgctxt "A collection of all open invidations."
+#~ msgid "Open Invitations"
+#~ msgstr "Odredište"
 
 #, fuzzy
 #~ msgctxt "@title:window"

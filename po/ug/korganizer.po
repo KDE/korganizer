@@ -7,7 +7,7 @@ msgid ""
 msgstr ""
 "Project-Id-Version: korganizer\n"
 "Report-Msgid-Bugs-To: https://bugs.kde.org\n"
-"POT-Creation-Date: 2023-09-21 00:45+0000\n"
+"POT-Creation-Date: 2023-09-24 01:44+0000\n"
 "PO-Revision-Date: 2013-09-08 07:05+0900\n"
 "Last-Translator: Gheyret Kenji <gheyret@gmail.com>\n"
 "Language-Team: Uyghur Computer Science Association <UKIJ@yahoogroups.com>\n"
@@ -1971,18 +1971,6 @@ msgctxt "@label"
 msgid "%1 match"
 msgid_plural "%1 matches"
 msgstr[0] ""
-
-#: helper/searchcollectionhelper.cpp:106
-#, kde-format
-msgctxt "A collection of all declined invidations."
-msgid "Declined Invitations"
-msgstr ""
-
-#: helper/searchcollectionhelper.cpp:114
-#, kde-format
-msgctxt "A collection of all open invidations."
-msgid "Open Invitations"
-msgstr ""
 
 #: kcmdesignerfields.cpp:61 kcmdesignerfields.cpp:62 kcmdesignerfields.cpp:67
 #: kcmdesignerfields.cpp:68

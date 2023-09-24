@@ -11,7 +11,7 @@ msgid ""
 msgstr ""
 "Project-Id-Version: korganizer\n"
 "Report-Msgid-Bugs-To: https://bugs.kde.org\n"
-"POT-Creation-Date: 2023-09-21 00:45+0000\n"
+"POT-Creation-Date: 2023-09-24 01:44+0000\n"
 "PO-Revision-Date: 2004-02-25 13:53+0000\n"
 "Last-Translator: KD at KGyfieithu <kyfieithu@dotmon.com>\n"
 "Language-Team: Cymraeg <cy@li.org>\n"
@@ -2005,18 +2005,6 @@ msgid "%1 match"
 msgid_plural "%1 matches"
 msgstr[0] ""
 msgstr[1] ""
-
-#: helper/searchcollectionhelper.cpp:106
-#, fuzzy, kde-format
-msgctxt "A collection of all declined invidations."
-msgid "Declined Invitations"
-msgstr "Ffurfweddu Adnoddau"
-
-#: helper/searchcollectionhelper.cpp:114
-#, fuzzy, kde-format
-msgctxt "A collection of all open invidations."
-msgid "Open Invitations"
-msgstr "Ffurfweddu Adnoddau"
 
 #: kcmdesignerfields.cpp:61 kcmdesignerfields.cpp:62 kcmdesignerfields.cpp:67
 #: kcmdesignerfields.cpp:68
@@ -5792,6 +5780,16 @@ msgstr "%1"
 msgctxt "4 digit year"
 msgid "%1"
 msgstr "%1"
+
+#, fuzzy
+#~ msgctxt "A collection of all declined invidations."
+#~ msgid "Declined Invitations"
+#~ msgstr "Ffurfweddu Adnoddau"
+
+#, fuzzy
+#~ msgctxt "A collection of all open invidations."
+#~ msgid "Open Invitations"
+#~ msgstr "Ffurfweddu Adnoddau"
 
 #, fuzzy
 #~| msgid "%1"

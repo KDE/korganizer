@@ -15,7 +15,7 @@ msgid ""
 msgstr ""
 "Project-Id-Version: korganizer\n"
 "Report-Msgid-Bugs-To: https://bugs.kde.org\n"
-"POT-Creation-Date: 2023-09-21 00:45+0000\n"
+"POT-Creation-Date: 2023-09-24 01:44+0000\n"
 "PO-Revision-Date: 2021-11-06 10:56+0200\n"
 "Last-Translator: Stelios <sstavra@gmail.com>\n"
 "Language-Team: Greek <kde-i18n-el@kde.org>\n"
@@ -2065,18 +2065,6 @@ msgid "%1 match"
 msgid_plural "%1 matches"
 msgstr[0] "%1 ταίριασμα"
 msgstr[1] "%1 ταιριάσματα"
-
-#: helper/searchcollectionhelper.cpp:106
-#, kde-format
-msgctxt "A collection of all declined invidations."
-msgid "Declined Invitations"
-msgstr "Απορριφθείσες προσκλήσεις"
-
-#: helper/searchcollectionhelper.cpp:114
-#, kde-format
-msgctxt "A collection of all open invidations."
-msgid "Open Invitations"
-msgstr "Άνοιγμα προσκλήσεων"
 
 #: kcmdesignerfields.cpp:61 kcmdesignerfields.cpp:62 kcmdesignerfields.cpp:67
 #: kcmdesignerfields.cpp:68
@@ -6168,6 +6156,14 @@ msgstr "%1"
 msgctxt "4 digit year"
 msgid "%1"
 msgstr "%1"
+
+#~ msgctxt "A collection of all declined invidations."
+#~ msgid "Declined Invitations"
+#~ msgstr "Απορριφθείσες προσκλήσεις"
+
+#~ msgctxt "A collection of all open invidations."
+#~ msgid "Open Invitations"
+#~ msgstr "Άνοιγμα προσκλήσεων"
 
 #~ msgctxt "@title:window"
 #~ msgid "%1"

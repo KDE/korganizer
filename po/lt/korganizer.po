@@ -10,7 +10,7 @@ msgid ""
 msgstr ""
 "Project-Id-Version: korganizer\n"
 "Report-Msgid-Bugs-To: https://bugs.kde.org\n"
-"POT-Creation-Date: 2023-09-21 00:45+0000\n"
+"POT-Creation-Date: 2023-09-24 01:44+0000\n"
 "PO-Revision-Date: 2015-12-29 21:21+0200\n"
 "Last-Translator: Mindaugas Baranauskas <opensuse.lietuviu.kalba@gmail.com>\n"
 "Language-Team: lt <kde-i18n-lt@kde.org>\n"
@@ -2066,20 +2066,6 @@ msgstr[0] ""
 msgstr[1] ""
 msgstr[2] ""
 msgstr[3] ""
-
-#: helper/searchcollectionhelper.cpp:106
-#, fuzzy, kde-format
-#| msgid "Send &Invitation to Attendees"
-msgctxt "A collection of all declined invidations."
-msgid "Declined Invitations"
-msgstr "Siųsti kvietimą dalyviams"
-
-#: helper/searchcollectionhelper.cpp:114
-#, fuzzy, kde-format
-#| msgid "Send &Invitation to Attendees"
-msgctxt "A collection of all open invidations."
-msgid "Open Invitations"
-msgstr "Siųsti kvietimą dalyviams"
 
 #: kcmdesignerfields.cpp:61 kcmdesignerfields.cpp:62 kcmdesignerfields.cpp:67
 #: kcmdesignerfields.cpp:68
@@ -6183,6 +6169,18 @@ msgstr "%1"
 msgctxt "4 digit year"
 msgid "%1"
 msgstr "%1"
+
+#, fuzzy
+#~| msgid "Send &Invitation to Attendees"
+#~ msgctxt "A collection of all declined invidations."
+#~ msgid "Declined Invitations"
+#~ msgstr "Siųsti kvietimą dalyviams"
+
+#, fuzzy
+#~| msgid "Send &Invitation to Attendees"
+#~ msgctxt "A collection of all open invidations."
+#~ msgid "Open Invitations"
+#~ msgstr "Siųsti kvietimą dalyviams"
 
 #, fuzzy
 #~| msgid "%1"

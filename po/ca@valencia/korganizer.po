@@ -13,8 +13,8 @@ msgid ""
 msgstr ""
 "Project-Id-Version: korganizer\n"
 "Report-Msgid-Bugs-To: https://bugs.kde.org\n"
-"POT-Creation-Date: 2023-09-21 00:45+0000\n"
-"PO-Revision-Date: 2023-09-21 15:15+0200\n"
+"POT-Creation-Date: 2023-09-24 01:44+0000\n"
+"PO-Revision-Date: 2023-09-22 11:34+0200\n"
 "Last-Translator: Josep M. Ferrer <txemaq@gmail.com>\n"
 "Language-Team: Catalan <kde-i18n-ca@kde.org>\n"
 "Language: ca@valencia\n"
@@ -2038,18 +2038,6 @@ msgid_plural "%1 matches"
 msgstr[0] "%1 coincidència"
 msgstr[1] "%1 coincidències"
 
-#: helper/searchcollectionhelper.cpp:106
-#, kde-format
-msgctxt "A collection of all declined invidations."
-msgid "Declined Invitations"
-msgstr "Invitacions refusades"
-
-#: helper/searchcollectionhelper.cpp:114
-#, kde-format
-msgctxt "A collection of all open invidations."
-msgid "Open Invitations"
-msgstr "Invitacions obertes"
-
 #: kcmdesignerfields.cpp:61 kcmdesignerfields.cpp:62 kcmdesignerfields.cpp:67
 #: kcmdesignerfields.cpp:68
 #, kde-format
@@ -3492,7 +3480,7 @@ msgstr ""
 #, kde-format
 msgctxt "@title:tab"
 msgid "Fonts"
-msgstr "Tipus de lletra"
+msgstr "Lletres"
 
 #: prefs/koprefsdialogcolorsandfonts.cpp:161
 #: prefs/koprefsdialogcolorsandfonts.cpp:167
@@ -4319,8 +4307,8 @@ msgstr ""
 "Seleccioneu l'opció «Etiqueta a dins, calendari a fora» si voleu dibuixar "
 "els elements del calendari utilitzant el color de la seua etiqueta "
 "associada, amb la vora de l'element dibuixada en el color del seu calendari. "
-"Utilitzeu la pàgina de configuració de colors i tipus de lletra per a "
-"establir estos colors."
+"Utilitzeu la pàgina de configuració de colors i lletres per a establir estos "
+"colors."
 
 #. i18n: ectx: tooltip, entry, group (Agenda View)
 #: settings/korganizer.kcfg:191
@@ -4352,8 +4340,7 @@ msgstr ""
 "Seleccioneu l'opció «Calendari a dins, etiqueta a fora» si voleu dibuixar "
 "els elements del calendari utilitzant el color del calendari associat, amb "
 "la vora de l'element dibuixada en el color de la seua etiqueta. Utilitzeu la "
-"pàgina de configuració de colors i tipus de lletra per a establir estos "
-"colors."
+"pàgina de configuració de colors i lletres per a establir estos colors."
 
 #. i18n: ectx: tooltip, entry, group (Agenda View)
 #: settings/korganizer.kcfg:196
@@ -4382,8 +4369,8 @@ msgid ""
 msgstr ""
 "Seleccioneu l'opció «Només l'etiqueta» si voleu dibuixar els elements del "
 "calendari utilitzant el color de la seua etiqueta associada (a dins i a les "
-"vores). Utilitzeu la pàgina de configuració de colors i tipus de lletra per "
-"a establir estos colors."
+"vores). Utilitzeu la pàgina de configuració de colors i lletres per a "
+"establir estos colors."
 
 #. i18n: ectx: tooltip, entry, group (Agenda View)
 #: settings/korganizer.kcfg:201
@@ -4410,8 +4397,7 @@ msgid ""
 msgstr ""
 "Seleccioneu l'opció «Només el calendari» si voleu dibuixar els elements del "
 "calendari utilitzant el color del calendari (a dins i a les vores) Utilitzeu "
-"la pàgina de configuració de colors i tipus de lletra per a establir estos "
-"colors."
+"la pàgina de configuració de colors i lletres per a establir estos colors."
 
 #. i18n: ectx: tooltip, entry, group (Agenda View)
 #: settings/korganizer.kcfg:206
@@ -4630,8 +4616,8 @@ msgid ""
 msgstr ""
 "Seleccioneu l'opció «Només la categoria» si voleu dibuixar els elements del "
 "calendari utilitzant el color de la seua categoria associada (a dins i a les "
-"vores). Utilitzeu la pàgina de configuració de colors i tipus de lletra per "
-"a establir estos colors."
+"vores). Utilitzeu la pàgina de configuració de colors i lletres per a "
+"establir estos colors."
 
 #. i18n: ectx: tooltip, entry, group (Month View)
 #: settings/korganizer.kcfg:291
@@ -4651,8 +4637,7 @@ msgid ""
 msgstr ""
 "Seleccioneu l'opció «Només el calendari» si voleu dibuixar els elements del "
 "calendari en el color del calendari (a dins i a les vores). Utilitzeu la "
-"pàgina de configuració de colors i tipus de lletra per a establir estos "
-"colors."
+"pàgina de configuració de colors i lletres per a establir estos colors."
 
 #. i18n: ectx: tooltip, entry, group (Month View)
 #: settings/korganizer.kcfg:296
@@ -4889,10 +4874,10 @@ msgid ""
 "that shows the hours in the agenda view. This button will open the \"Select "
 "Font\" dialog, allowing you to choose the hour font for the time bar."
 msgstr ""
-"Premeu este botó per a configurar el tipus de lletra de la barra de l'hora. "
-"La barra de l'hora és el giny que mostra les hores en la vista d'agenda. "
-"Este botó obrirà el diàleg «Tria un tipus de lletra», permetent-vos triar el "
-"tipus de lletra de l'hora per a la barra de l'hora."
+"Premeu este botó per a configurar la lletra de la barra de l'hora. La barra "
+"de l'hora és el giny que mostra les hores en la vista d'agenda. Este botó "
+"obrirà el diàleg «Tria una lletra», permetent-vos triar la lletra de l'hora "
+"per a la barra de l'hora."
 
 #. i18n: ectx: label, entry, group (Fonts)
 #: settings/korganizer.kcfg:387
@@ -4908,9 +4893,9 @@ msgid ""
 "the \"Select Font\" dialog, allowing you to choose the font for the items in "
 "the month view."
 msgstr ""
-"Premeu este botó per a configurar el tipus de lletra de la vista mensual. "
-"Este botó obrirà el diàleg «Tria un tipus de lletra», permetent-vos triar el "
-"tipus de lletra per als elements en la vista mensual."
+"Premeu este botó per a configurar la lletra de la vista mensual. Este botó "
+"obrirà el diàleg «Tria una lletra», permetent-vos triar la lletra per als "
+"elements en la vista mensual."
 
 #. i18n: ectx: label, entry, group (Fonts)
 #: settings/korganizer.kcfg:392
@@ -4926,9 +4911,9 @@ msgid ""
 "the \"Select Font\" dialog, allowing you to choose the font for the events "
 "in the agenda view."
 msgstr ""
-"Premeu este botó per a configurar el tipus de lletra per a la vista "
-"d'agenda. Este botó obrirà el diàleg «Tria un tipus de lletra», permetent-"
-"vos triar el tipus de lletra per als esdeveniments en la vista d'agenda."
+"Premeu este botó per a configurar la lletra per a la vista d'agenda. Este "
+"botó obrirà el diàleg «Tria una lletra», permetent-vos triar la lletra per "
+"als esdeveniments en la vista d'agenda."
 
 #. i18n: ectx: label, entry, group (Fonts)
 #: settings/korganizer.kcfg:397
@@ -4944,9 +4929,9 @@ msgid ""
 "open the \"Select Font\" dialog, allowing you to choose the font for the "
 "current-time line in the agenda view."
 msgstr ""
-"Premeu este botó per a configurar el tipus de lletra per a la línia de temps "
-"actual. Este botó obrirà el diàleg «Tria un tipus de lletra», permetent-vos "
-"triar el tipus de lletra per a la línia de temps actual en la vista d'agenda."
+"Premeu este botó per a configurar la lletra per a la línia de temps actual. "
+"Este botó obrirà el diàleg «Tria una lletra», permetent-vos triar la lletra "
+"per a la línia de temps actual en la vista d'agenda."
 
 #. i18n: ectx: label, entry (DefaultTodoAttachMethod), group (Hidden Options)
 #: settings/korganizer.kcfg:422
@@ -6121,3 +6106,11 @@ msgstr "%1"
 msgctxt "4 digit year"
 msgid "%1"
 msgstr "%1"
+
+#~ msgctxt "A collection of all declined invidations."
+#~ msgid "Declined Invitations"
+#~ msgstr "Invitacions refusades"
+
+#~ msgctxt "A collection of all open invidations."
+#~ msgid "Open Invitations"
+#~ msgstr "Invitacions obertes"

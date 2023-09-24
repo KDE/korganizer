@@ -8,7 +8,7 @@ msgid ""
 msgstr ""
 "Project-Id-Version: korganizer\n"
 "Report-Msgid-Bugs-To: https://bugs.kde.org\n"
-"POT-Creation-Date: 2023-09-21 00:45+0000\n"
+"POT-Creation-Date: 2023-09-24 01:44+0000\n"
 "PO-Revision-Date: 2012-01-13 10:32+0330\n"
 "Last-Translator: Mohammad Reza Mirdamadi <mohi@ubuntu.ir>\n"
 "Language-Team: Farsi (Persian) <>\n"
@@ -2099,20 +2099,6 @@ msgid "%1 match"
 msgid_plural "%1 matches"
 msgstr[0] ""
 msgstr[1] ""
-
-#: helper/searchcollectionhelper.cpp:106
-#, fuzzy, kde-format
-#| msgid "Delete Confirmation"
-msgctxt "A collection of all declined invidations."
-msgid "Declined Invitations"
-msgstr "حذف تأیید"
-
-#: helper/searchcollectionhelper.cpp:114
-#, fuzzy, kde-format
-#| msgid "Delete Confirmation"
-msgctxt "A collection of all open invidations."
-msgid "Open Invitations"
-msgstr "حذف تأیید"
 
 #: kcmdesignerfields.cpp:61 kcmdesignerfields.cpp:62 kcmdesignerfields.cpp:67
 #: kcmdesignerfields.cpp:68
@@ -6274,6 +6260,18 @@ msgstr "%1٪"
 msgctxt "4 digit year"
 msgid "%1"
 msgstr "%1٪"
+
+#, fuzzy
+#~| msgid "Delete Confirmation"
+#~ msgctxt "A collection of all declined invidations."
+#~ msgid "Declined Invitations"
+#~ msgstr "حذف تأیید"
+
+#, fuzzy
+#~| msgid "Delete Confirmation"
+#~ msgctxt "A collection of all open invidations."
+#~ msgid "Open Invitations"
+#~ msgstr "حذف تأیید"
 
 #, fuzzy
 #~| msgid "%1%"

@@ -7,7 +7,7 @@ msgid ""
 msgstr ""
 "Project-Id-Version: korganizer\n"
 "Report-Msgid-Bugs-To: https://bugs.kde.org\n"
-"POT-Creation-Date: 2023-09-21 00:45+0000\n"
+"POT-Creation-Date: 2023-09-24 01:44+0000\n"
 "PO-Revision-Date: 2007-02-28 14:24+0100\n"
 "Last-Translator: Bozidar Proevski <bobibobi@freemail.com.mk>\n"
 "Language-Team: Macedonian <mkde-l10n@lists.sourceforge.net>\n"
@@ -2022,20 +2022,6 @@ msgid_plural "%1 matches"
 msgstr[0] ""
 msgstr[1] ""
 msgstr[2] ""
-
-#: helper/searchcollectionhelper.cpp:106
-#, fuzzy, kde-format
-#| msgid "Delete Confirmation"
-msgctxt "A collection of all declined invidations."
-msgid "Declined Invitations"
-msgstr "Потврда за бришење"
-
-#: helper/searchcollectionhelper.cpp:114
-#, fuzzy, kde-format
-#| msgid "Delete Confirmation"
-msgctxt "A collection of all open invidations."
-msgid "Open Invitations"
-msgstr "Потврда за бришење"
 
 #: kcmdesignerfields.cpp:61 kcmdesignerfields.cpp:62 kcmdesignerfields.cpp:67
 #: kcmdesignerfields.cpp:68
@@ -5864,6 +5850,18 @@ msgstr "%1"
 msgctxt "4 digit year"
 msgid "%1"
 msgstr "%1"
+
+#, fuzzy
+#~| msgid "Delete Confirmation"
+#~ msgctxt "A collection of all declined invidations."
+#~ msgid "Declined Invitations"
+#~ msgstr "Потврда за бришење"
+
+#, fuzzy
+#~| msgid "Delete Confirmation"
+#~ msgctxt "A collection of all open invidations."
+#~ msgid "Open Invitations"
+#~ msgstr "Потврда за бришење"
 
 #, fuzzy
 #~| msgid "%1"

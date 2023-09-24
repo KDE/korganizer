@@ -15,7 +15,7 @@ msgid ""
 msgstr ""
 "Project-Id-Version: korganizer\n"
 "Report-Msgid-Bugs-To: https://bugs.kde.org\n"
-"POT-Creation-Date: 2023-09-21 00:45+0000\n"
+"POT-Creation-Date: 2023-09-24 01:44+0000\n"
 "PO-Revision-Date: 2002-11-09 12:52+0200\n"
 "Last-Translator: Thelma Lungcuzo <thelma@translate.org.za>\n"
 "Language-Team: Xhosa <xhosa@translate.org.za>\n"
@@ -1975,18 +1975,6 @@ msgid "%1 match"
 msgid_plural "%1 matches"
 msgstr[0] ""
 msgstr[1] ""
-
-#: helper/searchcollectionhelper.cpp:106
-#, fuzzy, kde-format
-msgctxt "A collection of all declined invidations."
-msgid "Declined Invitations"
-msgstr "Uqinisekiso lwe KOrganizer"
-
-#: helper/searchcollectionhelper.cpp:114
-#, fuzzy, kde-format
-msgctxt "A collection of all open invidations."
-msgid "Open Invitations"
-msgstr "Uqinisekiso lwe KOrganizer"
 
 #: kcmdesignerfields.cpp:61 kcmdesignerfields.cpp:62 kcmdesignerfields.cpp:67
 #: kcmdesignerfields.cpp:68
@@ -5688,6 +5676,16 @@ msgstr "%1 %"
 msgctxt "4 digit year"
 msgid "%1"
 msgstr "%1 %"
+
+#, fuzzy
+#~ msgctxt "A collection of all declined invidations."
+#~ msgid "Declined Invitations"
+#~ msgstr "Uqinisekiso lwe KOrganizer"
+
+#, fuzzy
+#~ msgctxt "A collection of all open invidations."
+#~ msgid "Open Invitations"
+#~ msgstr "Uqinisekiso lwe KOrganizer"
 
 #, fuzzy
 #~ msgctxt "@title:window"

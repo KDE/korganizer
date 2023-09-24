@@ -10,7 +10,7 @@ msgid ""
 msgstr ""
 "Project-Id-Version: korganizer\n"
 "Report-Msgid-Bugs-To: https://bugs.kde.org\n"
-"POT-Creation-Date: 2023-09-21 00:45+0000\n"
+"POT-Creation-Date: 2023-09-24 01:44+0000\n"
 "PO-Revision-Date: 2012-01-28 16:07-0800\n"
 "Last-Translator: Fumiaki Okushi <okushi@kde.gr.jp>\n"
 "Language-Team: Japanese <kde-jp@kde.org>\n"
@@ -2047,20 +2047,6 @@ msgctxt "@label"
 msgid "%1 match"
 msgid_plural "%1 matches"
 msgstr[0] ""
-
-#: helper/searchcollectionhelper.cpp:106
-#, fuzzy, kde-format
-#| msgid "Send &Invitation to Attendees"
-msgctxt "A collection of all declined invidations."
-msgid "Declined Invitations"
-msgstr "参加者に出席依頼を送信(&I)"
-
-#: helper/searchcollectionhelper.cpp:114
-#, fuzzy, kde-format
-#| msgid "Send &Invitation to Attendees"
-msgctxt "A collection of all open invidations."
-msgid "Open Invitations"
-msgstr "参加者に出席依頼を送信(&I)"
 
 #: kcmdesignerfields.cpp:61 kcmdesignerfields.cpp:62 kcmdesignerfields.cpp:67
 #: kcmdesignerfields.cpp:68
@@ -6105,6 +6091,18 @@ msgstr "%1"
 msgctxt "4 digit year"
 msgid "%1"
 msgstr "%1年"
+
+#, fuzzy
+#~| msgid "Send &Invitation to Attendees"
+#~ msgctxt "A collection of all declined invidations."
+#~ msgid "Declined Invitations"
+#~ msgstr "参加者に出席依頼を送信(&I)"
+
+#, fuzzy
+#~| msgid "Send &Invitation to Attendees"
+#~ msgctxt "A collection of all open invidations."
+#~ msgid "Open Invitations"
+#~ msgstr "参加者に出席依頼を送信(&I)"
 
 # longDayName
 #, fuzzy

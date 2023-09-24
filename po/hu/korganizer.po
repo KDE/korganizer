@@ -6,7 +6,7 @@ msgid ""
 msgstr ""
 "Project-Id-Version: KDE 4.3\n"
 "Report-Msgid-Bugs-To: https://bugs.kde.org\n"
-"POT-Creation-Date: 2023-09-21 00:45+0000\n"
+"POT-Creation-Date: 2023-09-24 01:44+0000\n"
 "PO-Revision-Date: 2014-10-05 13:09+0200\n"
 "Last-Translator: Kristóf Kiszel <ulysses@kubuntu.org>\n"
 "Language-Team: Hungarian <kde-l10n-hu@kde.org>\n"
@@ -2094,22 +2094,6 @@ msgid "%1 match"
 msgid_plural "%1 matches"
 msgstr[0] ""
 msgstr[1] ""
-
-#: helper/searchcollectionhelper.cpp:106
-#, fuzzy, kde-format
-#| msgctxt "@info:tooltip"
-#| msgid "Decline the invitation"
-msgctxt "A collection of all declined invidations."
-msgid "Declined Invitations"
-msgstr "A meghívás elutasítása"
-
-#: helper/searchcollectionhelper.cpp:114
-#, fuzzy, kde-format
-#| msgctxt "@info:tooltip"
-#| msgid "Decline the invitation"
-msgctxt "A collection of all open invidations."
-msgid "Open Invitations"
-msgstr "A meghívás elutasítása"
 
 #: kcmdesignerfields.cpp:61 kcmdesignerfields.cpp:62 kcmdesignerfields.cpp:67
 #: kcmdesignerfields.cpp:68
@@ -6365,6 +6349,20 @@ msgstr "%1"
 msgctxt "4 digit year"
 msgid "%1"
 msgstr "%1"
+
+#, fuzzy
+#~| msgctxt "@info:tooltip"
+#~| msgid "Decline the invitation"
+#~ msgctxt "A collection of all declined invidations."
+#~ msgid "Declined Invitations"
+#~ msgstr "A meghívás elutasítása"
+
+#, fuzzy
+#~| msgctxt "@info:tooltip"
+#~| msgid "Decline the invitation"
+#~ msgctxt "A collection of all open invidations."
+#~ msgid "Open Invitations"
+#~ msgstr "A meghívás elutasítása"
 
 #, fuzzy
 #~| msgid "%1"
