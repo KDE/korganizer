@@ -6021,11 +6021,3 @@ msgstr "%1"
 msgctxt "4 digit year"
 msgid "%1"
 msgstr "%1"
-
-#~ msgctxt "A collection of all declined invidations."
-#~ msgid "Declined Invitations"
-#~ msgstr "Reddedilen Davetler"
-
-#~ msgctxt "A collection of all open invidations."
-#~ msgid "Open Invitations"
-#~ msgstr "Açık Davetler"
