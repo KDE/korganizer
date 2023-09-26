@@ -1572,7 +1572,7 @@ void CalendarView::dissociateOccurrences(const Akonadi::Item &item, QDate date)
                                                       "the occurrence on %1 "
                                                       "from the recurrence?",
                                                       QLocale::system().toString(date, QLocale::LongFormat)),
-                                                 i18n("KOrganizer Confirmation"),
+                                                 i18nc("@title:window", "KOrganizer Confirmation"),
                                                  KGuiItem(i18n("&Dissociate")),
                                                  KStandardGuiItem::cancel());
 
@@ -1584,7 +1584,7 @@ void CalendarView::dissociateOccurrences(const Akonadi::Item &item, QDate date)
                                                             "from the recurrence or also "
                                                             "dissociate future ones?",
                                                             QLocale::system().toString(date, QLocale::LongFormat)),
-                                                       i18n("KOrganizer Confirmation"),
+                                                       i18nc("@title:window", "KOrganizer Confirmation"),
                                                        KGuiItem(i18n("&Only Dissociate This One")),
                                                        KGuiItem(i18n("&Also Dissociate Future Ones")));
 
@@ -1613,9 +1613,9 @@ void CalendarView::dissociateOccurrence(const Akonadi::Item &item, const QDateTi
         (void)mChanger->createIncidence(newInc, item.parentCollection(), this);
     } else {
         if (thisAndFuture) {
-            KMessageBox::error(this, i18n("Dissociating the future occurrences failed."), i18n("Dissociating Failed"));
+            KMessageBox::error(this, i18n("Dissociating the future occurrences failed."), i18nc("@title:window", "Dissociating Failed"));
         } else {
-            KMessageBox::error(this, i18n("Dissociating the occurrence failed."), i18n("Dissociating Failed"));
+            KMessageBox::error(this, i18n("Dissociating the occurrence failed."), i18nc("@title:window", "Dissociating Failed"));
         }
     }
     endMultiModify();
@@ -2243,7 +2243,7 @@ int CalendarView::questionIndependentChildren(const Akonadi::Item &item)
                                                         "make all its sub-to-dos independent, or "
                                                         "delete the to-do with all its sub-to-dos?",
                                                         incidence->summary()),
-                                                   i18n("KOrganizer Confirmation"),
+                                                   i18nc("@title:window", "KOrganizer Confirmation"),
                                                    KGuiItem(i18n("Delete Only This")),
                                                    KGuiItem(i18n("Delete All")));
 
@@ -2412,7 +2412,7 @@ void CalendarView::purgeCompleted()
 
     int result = KMessageBox::warningContinueCancel(this,
                                                     i18n("Delete all completed to-dos from checked calendars?"),
-                                                    i18n("Purge To-dos"),
+                                                    i18nc("@title:window", "Purge To-dos"),
                                                     KGuiItem(i18n("Purge"), QIcon::fromTheme(QStringLiteral("entry-delete"))));
 
     if (result == KMessageBox::Continue) {
@@ -2436,7 +2436,7 @@ void CalendarView::showErrorMessage(const QString &msg)
 void CalendarView::addIncidenceOn(const Akonadi::Item &itemadd, const QDate &dt)
 {
     if (!CalendarSupport::hasIncidence(itemadd)) {
-        KMessageBox::error(this, i18n("Unable to copy the item to %1.", dt.toString()), i18n("Copying Failed"));
+        KMessageBox::error(this, i18n("Unable to copy the item to %1.", dt.toString()), i18nc("@title:window", "Copying Failed"));
         return;
     }
     Akonadi::Item item = mCalendar->item(itemadd.id());
@@ -2471,7 +2471,7 @@ void CalendarView::addIncidenceOn(const Akonadi::Item &itemadd, const QDate &dt)
 void CalendarView::moveIncidenceTo(const Akonadi::Item &itemmove, QDate dt)
 {
     if (!CalendarSupport::hasIncidence(itemmove)) {
-        KMessageBox::error(this, i18n("Unable to move the item to  %1.", dt.toString()), i18n("Moving Failed"));
+        KMessageBox::error(this, i18n("Unable to move the item to  %1.", dt.toString()), i18nc("@title:window", "Moving Failed"));
         return;
     }
     Akonadi::Item item = mCalendar->item(itemmove.id());

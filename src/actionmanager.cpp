@@ -1033,7 +1033,7 @@ bool ActionManager::saveAsURL(const QUrl &url)
         mTempFile = tempFile;
         setTitle();
     } else {
-        KMessageBox::error(dialogParent(), i18n("Unable to save calendar to the file %1.", mFile), i18n("Error"));
+        KMessageBox::error(dialogParent(), i18n("Unable to save calendar to the file %1.", mFile), i18nc("@title:window", "Error"));
         qCDebug(KORGANIZER_LOG) << "failed";
         mURL = URLOrig;
         mFile = fileOrig;
@@ -1458,7 +1458,7 @@ void ActionManager::openEventEditor(const QString &summary,
         } else {
             if (KMessageBox::warningContinueCancel(nullptr,
                                                    i18n("Removing attachments from an email might invalidate its signature."),
-                                                   i18n("Remove Attachments"),
+                                                   i18nc("@title:window", "Remove Attachments"),
                                                    KStandardGuiItem::cont(),
                                                    KStandardGuiItem::cancel(),
                                                    QStringLiteral("BodyOnlyInlineAttachment"))
