@@ -6,7 +6,7 @@ msgid ""
 msgstr ""
 "Project-Id-Version: kdepim/korganizer.po\n"
 "Report-Msgid-Bugs-To: https://bugs.kde.org\n"
-"POT-Creation-Date: 2023-09-24 01:44+0000\n"
+"POT-Creation-Date: 2023-09-27 01:41+0000\n"
 "PO-Revision-Date: 2004-12-03 14:52-0500\n"
 "Last-Translator: Kevin Scannell <kscanne@gmail.com>\n"
 "Language-Team: Irish <gaeilge-gnulinux@lists.sourceforge.net>\n"
@@ -1124,7 +1124,9 @@ msgid "Unable to save calendar to the file %1."
 msgstr ""
 
 #: actionmanager.cpp:1036
-#, kde-format
+#, fuzzy, kde-format
+#| msgid "Error"
+msgctxt "@title:window"
 msgid "Error"
 msgstr "Earráid"
 
@@ -1189,7 +1191,9 @@ msgid "Removing attachments from an email might invalidate its signature."
 msgstr ""
 
 #: actionmanager.cpp:1461
-#, kde-format
+#, fuzzy, kde-format
+#| msgid "Remove Attachments"
+msgctxt "@title:window"
 msgid "Remove Attachments"
 msgstr "Bain Iatáin"
 
@@ -1427,7 +1431,7 @@ msgctxt "@info"
 msgid "Unable to copy the item \"%1\" to %2."
 msgstr ""
 
-#: calendarview.cpp:1458
+#: calendarview.cpp:1458 calendarview.cpp:2439
 #, kde-format
 msgctxt "@title:window"
 msgid "Copying Failed"
@@ -1441,7 +1445,7 @@ msgid ""
 "of this item has been put into %2"
 msgstr ""
 
-#: calendarview.cpp:1521 calendarview.cpp:1537
+#: calendarview.cpp:1521 calendarview.cpp:1537 calendarview.cpp:2474
 #, kde-format
 msgctxt "@title:window"
 msgid "Moving Failed"
@@ -1471,8 +1475,9 @@ msgid "Do you want to dissociate the occurrence on %1 from the recurrence?"
 msgstr ""
 
 #: calendarview.cpp:1575 calendarview.cpp:1587 calendarview.cpp:2246
-#: calendarview.cpp:2305 calendarview.cpp:2335
-#, kde-format
+#, fuzzy, kde-format
+#| msgid "KOrganizer Confirmation"
+msgctxt "@title:window"
 msgid "KOrganizer Confirmation"
 msgstr "Deimhniú KOrganizer"
 
@@ -1514,9 +1519,11 @@ msgid "Dissociating the future occurrences failed."
 msgstr ""
 
 #: calendarview.cpp:1616 calendarview.cpp:1618
-#, kde-format
+#, fuzzy, kde-format
+#| msgid "Locking Failed"
+msgctxt "@title:window"
 msgid "Dissociating Failed"
-msgstr ""
+msgstr "Theip ar Chur Faoi Ghlas"
 
 #: calendarview.cpp:1618
 #, kde-format
@@ -1597,6 +1604,11 @@ msgid ""
 "to delete it and all its recurrences?"
 msgstr ""
 
+#: calendarview.cpp:2305 calendarview.cpp:2335
+#, kde-format
+msgid "KOrganizer Confirmation"
+msgstr "Deimhniú KOrganizer"
+
 #: calendarview.cpp:2313
 #, kde-format
 msgid "Also Delete &Future"
@@ -1651,7 +1663,9 @@ msgid "Delete all completed to-dos from checked calendars?"
 msgstr "Scrios gach tasc críochnaithe?"
 
 #: calendarview.cpp:2415
-#, kde-format
+#, fuzzy, kde-format
+#| msgid "Purge To-dos"
+msgctxt "@title:window"
 msgid "Purge To-dos"
 msgstr "Purgaigh Tascanna"
 
@@ -1671,20 +1685,10 @@ msgstr ""
 msgid "Unable to copy the item to %1."
 msgstr ""
 
-#: calendarview.cpp:2439
-#, kde-format
-msgid "Copying Failed"
-msgstr "Theip ar Chóipeáil"
-
 #: calendarview.cpp:2474
 #, kde-format
 msgid "Unable to move the item to  %1."
 msgstr ""
-
-#: calendarview.cpp:2474
-#, kde-format
-msgid "Moving Failed"
-msgstr "Theip ar Bhogadh"
 
 #: calendarview.cpp:2684
 #, fuzzy, kde-format
@@ -3813,7 +3817,9 @@ msgid ""
 msgstr ""
 
 #: prefs/kprefsdialog.cpp:869
-#, kde-format
+#, fuzzy, kde-format
+#| msgid "Setting Default Preferences"
+msgctxt "@title:window"
 msgid "Setting Default Preferences"
 msgstr "Sainroghanna Réamhshocraithe á Socrú"
 
@@ -5836,6 +5842,12 @@ msgstr "%1"
 msgctxt "4 digit year"
 msgid "%1"
 msgstr "%1"
+
+#~ msgid "Copying Failed"
+#~ msgstr "Theip ar Chóipeáil"
+
+#~ msgid "Moving Failed"
+#~ msgstr "Theip ar Bhogadh"
 
 #, fuzzy
 #~| msgid "Abbreviations:"
@@ -7961,9 +7973,6 @@ msgstr "%1"
 
 #~ msgid "WhatsThis text for Email setting"
 #~ msgstr "Téacs 'Cad É Seo' don socrú Seoladh Ríomhphoist"
-
-#~ msgid "Locking Failed"
-#~ msgstr "Theip ar Chur Faoi Ghlas"
 
 #~ msgctxt "@title:group"
 #~ msgid "Saving Calendar"

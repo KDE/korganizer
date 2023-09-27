@@ -7,7 +7,7 @@ msgid ""
 msgstr ""
 "Project-Id-Version: korganizer\n"
 "Report-Msgid-Bugs-To: https://bugs.kde.org\n"
-"POT-Creation-Date: 2023-09-24 01:44+0000\n"
+"POT-Creation-Date: 2023-09-27 01:41+0000\n"
 "PO-Revision-Date: 2007-02-28 14:24+0100\n"
 "Last-Translator: Bozidar Proevski <bobibobi@freemail.com.mk>\n"
 "Language-Team: Macedonian <mkde-l10n@lists.sourceforge.net>\n"
@@ -1121,6 +1121,7 @@ msgstr "Не можам да го зачувам календарот во да�
 
 #: actionmanager.cpp:1036
 #, fuzzy, kde-format
+msgctxt "@title:window"
 msgid "Error"
 msgstr "Нема грешка"
 
@@ -1187,6 +1188,7 @@ msgstr ""
 #: actionmanager.cpp:1461
 #, fuzzy, kde-format
 #| msgid "Attach&ments"
+msgctxt "@title:window"
 msgid "Remove Attachments"
 msgstr "П&рилози"
 
@@ -1425,7 +1427,7 @@ msgctxt "@info"
 msgid "Unable to copy the item \"%1\" to %2."
 msgstr "Не можам да ја објавам ставката „%1“"
 
-#: calendarview.cpp:1458
+#: calendarview.cpp:1458 calendarview.cpp:2439
 #, fuzzy, kde-format
 #| msgid "Copying Failed"
 msgctxt "@title:window"
@@ -1440,7 +1442,7 @@ msgid ""
 "of this item has been put into %2"
 msgstr ""
 
-#: calendarview.cpp:1521 calendarview.cpp:1537
+#: calendarview.cpp:1521 calendarview.cpp:1537 calendarview.cpp:2474
 #, fuzzy, kde-format
 #| msgid "Moving Failed"
 msgctxt "@title:window"
@@ -1472,8 +1474,9 @@ msgid "Do you want to dissociate the occurrence on %1 from the recurrence?"
 msgstr ""
 
 #: calendarview.cpp:1575 calendarview.cpp:1587 calendarview.cpp:2246
-#: calendarview.cpp:2305 calendarview.cpp:2335
-#, kde-format
+#, fuzzy, kde-format
+#| msgid "KOrganizer Confirmation"
+msgctxt "@title:window"
 msgid "KOrganizer Confirmation"
 msgstr "Потврда на КОрганизатор"
 
@@ -1516,9 +1519,11 @@ msgid "Dissociating the future occurrences failed."
 msgstr ""
 
 #: calendarview.cpp:1616 calendarview.cpp:1618
-#, kde-format
+#, fuzzy, kde-format
+#| msgid "Locking Failed"
+msgctxt "@title:window"
 msgid "Dissociating Failed"
-msgstr ""
+msgstr "Заклучувањето не успеа"
 
 #: calendarview.cpp:1618
 #, kde-format
@@ -1598,6 +1603,11 @@ msgid ""
 "to delete it and all its recurrences?"
 msgstr ""
 
+#: calendarview.cpp:2305 calendarview.cpp:2335
+#, kde-format
+msgid "KOrganizer Confirmation"
+msgstr "Потврда на КОрганизатор"
+
 #: calendarview.cpp:2313
 #, fuzzy, kde-format
 #| msgid "Delete &Future"
@@ -1653,7 +1663,9 @@ msgid "Delete all completed to-dos from checked calendars?"
 msgstr "Ги бришете сите довршени задачи?"
 
 #: calendarview.cpp:2415
-#, kde-format
+#, fuzzy, kde-format
+#| msgid "Purge To-dos"
+msgctxt "@title:window"
 msgid "Purge To-dos"
 msgstr "Избриши задачи"
 
@@ -1673,20 +1685,10 @@ msgstr "Не можам да напуштам. Зачувувањето е сѐ 
 msgid "Unable to copy the item to %1."
 msgstr "Не можам да ја објавам ставката „%1“"
 
-#: calendarview.cpp:2439
-#, kde-format
-msgid "Copying Failed"
-msgstr "Копирањето не успеа"
-
 #: calendarview.cpp:2474
 #, fuzzy, kde-format
 msgid "Unable to move the item to  %1."
 msgstr "Не можам да ја објавам ставката „%1“"
-
-#: calendarview.cpp:2474
-#, kde-format
-msgid "Moving Failed"
-msgstr "Преместувањето не успеа"
 
 #: calendarview.cpp:2684
 #, fuzzy, kde-format
@@ -3808,6 +3810,7 @@ msgstr ""
 
 #: prefs/kprefsdialog.cpp:869
 #, kde-format
+msgctxt "@title:window"
 msgid "Setting Default Preferences"
 msgstr ""
 
@@ -5850,6 +5853,12 @@ msgstr "%1"
 msgctxt "4 digit year"
 msgid "%1"
 msgstr "%1"
+
+#~ msgid "Copying Failed"
+#~ msgstr "Копирањето не успеа"
+
+#~ msgid "Moving Failed"
+#~ msgstr "Преместувањето не успеа"
 
 #, fuzzy
 #~| msgid "Delete Confirmation"
@@ -8593,9 +8602,6 @@ msgstr "%1"
 #~ msgid "End Time"
 #~ msgstr "Завршно време"
 
-#~ msgid "Locking Failed"
-#~ msgstr "Заклучувањето не успеа"
-
 #~ msgid "Open in separate window"
 #~ msgstr "Отвори во посебен прозорец"
 
@@ -8807,12 +8813,6 @@ msgstr "%1"
 #~ msgctxt "@title:window"
 #~ msgid "Edit %1: %2"
 #~ msgstr "Уреди %1"
-
-#, fuzzy
-#~| msgid "KOrganizer Confirmation"
-#~ msgctxt "@title:window"
-#~ msgid "KOrganizer Confirmation"
-#~ msgstr "Потврда на КОрганизатор"
 
 #, fuzzy
 #~| msgid "Atte&ndees"

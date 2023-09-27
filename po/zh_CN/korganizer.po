@@ -2,7 +2,7 @@ msgid ""
 msgstr ""
 "Project-Id-Version: kdeorg\n"
 "Report-Msgid-Bugs-To: https://bugs.kde.org\n"
-"POT-Creation-Date: 2023-09-24 01:44+0000\n"
+"POT-Creation-Date: 2023-09-27 01:41+0000\n"
 "PO-Revision-Date: 2023-09-16 10:08\n"
 "Last-Translator: \n"
 "Language-Team: Chinese Simplified\n"
@@ -1080,7 +1080,9 @@ msgid "Unable to save calendar to the file %1."
 msgstr "无法将日历保存到文件 %1。"
 
 #: actionmanager.cpp:1036
-#, kde-format
+#, fuzzy, kde-format
+#| msgid "Error"
+msgctxt "@title:window"
 msgid "Error"
 msgstr "错误"
 
@@ -1145,7 +1147,9 @@ msgid "Removing attachments from an email might invalidate its signature."
 msgstr "删除邮件中的附件可能会使签名失效。"
 
 #: actionmanager.cpp:1461
-#, kde-format
+#, fuzzy, kde-format
+#| msgid "Remove Attachments"
+msgctxt "@title:window"
 msgid "Remove Attachments"
 msgstr "删除附件"
 
@@ -1373,7 +1377,7 @@ msgctxt "@info"
 msgid "Unable to copy the item \"%1\" to %2."
 msgstr "无法将项目“%1”复制到 %2。"
 
-#: calendarview.cpp:1458
+#: calendarview.cpp:1458 calendarview.cpp:2439
 #, kde-format
 msgctxt "@title:window"
 msgid "Copying Failed"
@@ -1387,7 +1391,7 @@ msgid ""
 "of this item has been put into %2"
 msgstr ""
 
-#: calendarview.cpp:1521 calendarview.cpp:1537
+#: calendarview.cpp:1521 calendarview.cpp:1537 calendarview.cpp:2474
 #, kde-format
 msgctxt "@title:window"
 msgid "Moving Failed"
@@ -1417,8 +1421,9 @@ msgid "Do you want to dissociate the occurrence on %1 from the recurrence?"
 msgstr "您想要将发生于 %1 的事件从重现中拆分出来吗？"
 
 #: calendarview.cpp:1575 calendarview.cpp:1587 calendarview.cpp:2246
-#: calendarview.cpp:2305 calendarview.cpp:2335
-#, kde-format
+#, fuzzy, kde-format
+#| msgid "KOrganizer Confirmation"
+msgctxt "@title:window"
 msgid "KOrganizer Confirmation"
 msgstr "KOrganizer 确认"
 
@@ -1460,7 +1465,9 @@ msgid "Dissociating the future occurrences failed."
 msgstr "拆分未来的事件失败。"
 
 #: calendarview.cpp:1616 calendarview.cpp:1618
-#, kde-format
+#, fuzzy, kde-format
+#| msgid "Dissociating Failed"
+msgctxt "@title:window"
 msgid "Dissociating Failed"
 msgstr "拆分失败"
 
@@ -1541,6 +1548,11 @@ msgid ""
 "to delete it and all its recurrences?"
 msgstr "日历项“%1”会在好几个日期重复出现，您确实要删除它及其所有重现吗？"
 
+#: calendarview.cpp:2305 calendarview.cpp:2335
+#, kde-format
+msgid "KOrganizer Confirmation"
+msgstr "KOrganizer 确认"
+
 #: calendarview.cpp:2313
 #, kde-format
 msgid "Also Delete &Future"
@@ -1595,7 +1607,9 @@ msgid "Delete all completed to-dos from checked calendars?"
 msgstr "从选中日历中删除所有已完成的待办事项吗？"
 
 #: calendarview.cpp:2415
-#, kde-format
+#, fuzzy, kde-format
+#| msgid "Purge To-dos"
+msgctxt "@title:window"
 msgid "Purge To-dos"
 msgstr "删除待办事项"
 
@@ -1615,20 +1629,10 @@ msgstr "无法编辑“%1”，因其被其他进程锁定。"
 msgid "Unable to copy the item to %1."
 msgstr "无法将项目复制到 %1。"
 
-#: calendarview.cpp:2439
-#, kde-format
-msgid "Copying Failed"
-msgstr "复制失败"
-
 #: calendarview.cpp:2474
 #, kde-format
 msgid "Unable to move the item to  %1."
 msgstr "无法将项目移至 %1。"
-
-#: calendarview.cpp:2474
-#, kde-format
-msgid "Moving Failed"
-msgstr "移动失败"
 
 #: calendarview.cpp:2684
 #, kde-format
@@ -3608,7 +3612,9 @@ msgid ""
 msgstr "您将会把所有首选项设置为默认值，所有自定义的更改将会丢失。"
 
 #: prefs/kprefsdialog.cpp:869
-#, kde-format
+#, fuzzy, kde-format
+#| msgid "Setting Default Preferences"
+msgctxt "@title:window"
 msgid "Setting Default Preferences"
 msgstr "正在将首选项设为默认"
 
@@ -5719,6 +5725,12 @@ msgstr "%1"
 msgctxt "4 digit year"
 msgid "%1"
 msgstr "%1"
+
+#~ msgid "Copying Failed"
+#~ msgstr "复制失败"
+
+#~ msgid "Moving Failed"
+#~ msgstr "移动失败"
 
 #~ msgctxt "A collection of all declined invidations."
 #~ msgid "Declined Invitations"

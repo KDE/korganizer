@@ -13,7 +13,7 @@ msgid ""
 msgstr ""
 "Project-Id-Version: korganizer\n"
 "Report-Msgid-Bugs-To: https://bugs.kde.org\n"
-"POT-Creation-Date: 2023-09-24 01:44+0000\n"
+"POT-Creation-Date: 2023-09-27 01:41+0000\n"
 "PO-Revision-Date: 2023-09-22 11:34+0200\n"
 "Last-Translator: Josep M. Ferrer <txemaq@gmail.com>\n"
 "Language-Team: Catalan <kde-i18n-ca@kde.org>\n"
@@ -1128,7 +1128,9 @@ msgid "Unable to save calendar to the file %1."
 msgstr "No s'ha pogut desar el calendari al fitxer %1."
 
 #: actionmanager.cpp:1036
-#, kde-format
+#, fuzzy, kde-format
+#| msgid "Error"
+msgctxt "@title:window"
 msgid "Error"
 msgstr "Error"
 
@@ -1194,7 +1196,9 @@ msgid "Removing attachments from an email might invalidate its signature."
 msgstr "L'eliminació d'adjunts d'un correu pot invalidar la seva signatura."
 
 #: actionmanager.cpp:1461
-#, kde-format
+#, fuzzy, kde-format
+#| msgid "Remove Attachments"
+msgctxt "@title:window"
 msgid "Remove Attachments"
 msgstr "Elimina els adjunts"
 
@@ -1426,7 +1430,7 @@ msgctxt "@info"
 msgid "Unable to copy the item \"%1\" to %2."
 msgstr "No s'ha pogut copiar l'element «%1» a %2."
 
-#: calendarview.cpp:1458
+#: calendarview.cpp:1458 calendarview.cpp:2439
 #, kde-format
 msgctxt "@title:window"
 msgid "Copying Failed"
@@ -1443,7 +1447,7 @@ msgstr ""
 "No s'ha pogut eliminar l'element «%1» del calendari original. No obstant "
 "això, s'ha posat una còpia d'aquest element en %2."
 
-#: calendarview.cpp:1521 calendarview.cpp:1537
+#: calendarview.cpp:1521 calendarview.cpp:1537 calendarview.cpp:2474
 #, kde-format
 msgctxt "@title:window"
 msgid "Moving Failed"
@@ -1474,8 +1478,9 @@ msgid "Do you want to dissociate the occurrence on %1 from the recurrence?"
 msgstr "Voleu dissociar l'ocurrència en %1 de la repetició?"
 
 #: calendarview.cpp:1575 calendarview.cpp:1587 calendarview.cpp:2246
-#: calendarview.cpp:2305 calendarview.cpp:2335
-#, kde-format
+#, fuzzy, kde-format
+#| msgid "KOrganizer Confirmation"
+msgctxt "@title:window"
 msgid "KOrganizer Confirmation"
 msgstr "Confirmació del KOrganizer"
 
@@ -1519,7 +1524,9 @@ msgid "Dissociating the future occurrences failed."
 msgstr "Ha fallat la dissociació de les ocurrències futures."
 
 #: calendarview.cpp:1616 calendarview.cpp:1618
-#, kde-format
+#, fuzzy, kde-format
+#| msgid "Dissociating Failed"
+msgctxt "@title:window"
 msgid "Dissociating Failed"
 msgstr "La dissociació ha fallat"
 
@@ -1605,6 +1612,11 @@ msgstr ""
 "L'element de calendari «%1» es repeteix en múltiples dates. Realment voleu "
 "suprimir-lo amb totes les seves repeticions?"
 
+#: calendarview.cpp:2305 calendarview.cpp:2335
+#, kde-format
+msgid "KOrganizer Confirmation"
+msgstr "Confirmació del KOrganizer"
+
 #: calendarview.cpp:2313
 #, kde-format
 msgid "Also Delete &Future"
@@ -1664,7 +1676,9 @@ msgstr ""
 "Suprimeixo totes les tasques pendents finalitzades dels calendaris marcats?"
 
 #: calendarview.cpp:2415
-#, kde-format
+#, fuzzy, kde-format
+#| msgid "Purge To-dos"
+msgctxt "@title:window"
 msgid "Purge To-dos"
 msgstr "Purga les tasques pendents"
 
@@ -1686,20 +1700,10 @@ msgstr ""
 msgid "Unable to copy the item to %1."
 msgstr "No s'ha pogut copiar l'element a %1."
 
-#: calendarview.cpp:2439
-#, kde-format
-msgid "Copying Failed"
-msgstr "La còpia ha fallat"
-
 #: calendarview.cpp:2474
 #, kde-format
 msgid "Unable to move the item to  %1."
 msgstr "No s'ha pogut moure l'element a %1."
-
-#: calendarview.cpp:2474
-#, kde-format
-msgid "Moving Failed"
-msgstr "Ha fallat l'acció de moure"
 
 #: calendarview.cpp:2684
 #, kde-format
@@ -3784,7 +3788,9 @@ msgstr ""
 "perdran totes les modificacions personalitzades."
 
 #: prefs/kprefsdialog.cpp:869
-#, kde-format
+#, fuzzy, kde-format
+#| msgid "Setting Default Preferences"
+msgctxt "@title:window"
 msgid "Setting Default Preferences"
 msgstr "Estableix les preferències predeterminades"
 
@@ -6113,6 +6119,12 @@ msgstr "%1"
 msgctxt "4 digit year"
 msgid "%1"
 msgstr "%1"
+
+#~ msgid "Copying Failed"
+#~ msgstr "La còpia ha fallat"
+
+#~ msgid "Moving Failed"
+#~ msgstr "Ha fallat l'acció de moure"
 
 #~ msgctxt "A collection of all declined invidations."
 #~ msgid "Declined Invitations"

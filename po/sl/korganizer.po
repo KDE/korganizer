@@ -1,7 +1,7 @@
 # translation of korganizer.po to Slovenian
 # Translation of korganizer.po to Slovenian
 # Copyright (C) 2001,2002, 2003, 2004, 2005, 2006 Free Software Foundation, Inc.
-# $Id: korganizer.po 1660799 2023-09-24 02:03:11Z scripty $
+# $Id: korganizer.po 1661036 2023-09-27 02:03:03Z scripty $
 # $Source$
 #
 # Roman Maurer <roman.maurer@hermes.si>, 2001.
@@ -14,7 +14,7 @@ msgid ""
 msgstr ""
 "Project-Id-Version: korganizer\n"
 "Report-Msgid-Bugs-To: https://bugs.kde.org\n"
-"POT-Creation-Date: 2023-09-24 01:44+0000\n"
+"POT-Creation-Date: 2023-09-27 01:41+0000\n"
 "PO-Revision-Date: 2023-09-21 17:36+0200\n"
 "Last-Translator: Matjaž Jeran <matjaz.jeran@amis.net>\n"
 "Language-Team: Slovenian <lugos-slo@lugos.si>\n"
@@ -1129,7 +1129,9 @@ msgid "Unable to save calendar to the file %1."
 msgstr "Ni mogoče shraniti koledarja v datoteko %1."
 
 #: actionmanager.cpp:1036
-#, kde-format
+#, fuzzy, kde-format
+#| msgid "Error"
+msgctxt "@title:window"
 msgid "Error"
 msgstr "Napaka"
 
@@ -1194,7 +1196,9 @@ msgid "Removing attachments from an email might invalidate its signature."
 msgstr "Odstranitev prilog iz e-pošte lahko prekine veljavnost podpisa."
 
 #: actionmanager.cpp:1461
-#, kde-format
+#, fuzzy, kde-format
+#| msgid "Remove Attachments"
+msgctxt "@title:window"
 msgid "Remove Attachments"
 msgstr "Odstrani priloge"
 
@@ -1425,7 +1429,7 @@ msgctxt "@info"
 msgid "Unable to copy the item \"%1\" to %2."
 msgstr "Ni mogoče kopirati predmeta »%1« v %2."
 
-#: calendarview.cpp:1458
+#: calendarview.cpp:1458 calendarview.cpp:2439
 #, kde-format
 msgctxt "@title:window"
 msgid "Copying Failed"
@@ -1441,7 +1445,7 @@ msgstr ""
 "Predmeta \"%1\" ni mogoče odstraniti iz izvornega koledarja. Kljub temu je "
 "bila v dana njegova kopija v %2"
 
-#: calendarview.cpp:1521 calendarview.cpp:1537
+#: calendarview.cpp:1521 calendarview.cpp:1537 calendarview.cpp:2474
 #, kde-format
 msgctxt "@title:window"
 msgid "Moving Failed"
@@ -1471,8 +1475,9 @@ msgid "Do you want to dissociate the occurrence on %1 from the recurrence?"
 msgstr "Ali želite razvezati pojavitev na dan %1 od ponovitve?"
 
 #: calendarview.cpp:1575 calendarview.cpp:1587 calendarview.cpp:2246
-#: calendarview.cpp:2305 calendarview.cpp:2335
-#, kde-format
+#, fuzzy, kde-format
+#| msgid "KOrganizer Confirmation"
+msgctxt "@title:window"
 msgid "KOrganizer Confirmation"
 msgstr "Potrditev KOrganizerja"
 
@@ -1516,7 +1521,9 @@ msgid "Dissociating the future occurrences failed."
 msgstr "Razvezovanje prihodnjih pojavitev ni uspelo."
 
 #: calendarview.cpp:1616 calendarview.cpp:1618
-#, kde-format
+#, fuzzy, kde-format
+#| msgid "Dissociating Failed"
+msgctxt "@title:window"
 msgid "Dissociating Failed"
 msgstr "Razvezovanje ni uspelo"
 
@@ -1602,6 +1609,11 @@ msgstr ""
 "Predmet na koledarju »%1« se ponavlja ob več datumih. Ali ste prepričani, da "
 "želite izbrisati ta predmet in vse njegove ponovitve?"
 
+#: calendarview.cpp:2305 calendarview.cpp:2335
+#, kde-format
+msgid "KOrganizer Confirmation"
+msgstr "Potrditev KOrganizerja"
+
 #: calendarview.cpp:2313
 #, kde-format
 msgid "Also Delete &Future"
@@ -1660,7 +1672,9 @@ msgid "Delete all completed to-dos from checked calendars?"
 msgstr "Ali iz označenih koledarjev izbrišem vsa zaključena opravila?"
 
 #: calendarview.cpp:2415
-#, kde-format
+#, fuzzy, kde-format
+#| msgid "Purge To-dos"
+msgctxt "@title:window"
 msgid "Purge To-dos"
 msgstr "Počisti opravila"
 
@@ -1680,20 +1694,10 @@ msgstr "Ni mogoče urediti »%1«, ker ga je zaklenilo drugo opravilo."
 msgid "Unable to copy the item to %1."
 msgstr "Ni mogoče kopirati predmeta v %1."
 
-#: calendarview.cpp:2439
-#, kde-format
-msgid "Copying Failed"
-msgstr "Kopiranje ni uspelo"
-
 #: calendarview.cpp:2474
 #, kde-format
 msgid "Unable to move the item to  %1."
 msgstr "Ni mogoče premakniti predmeta v %1."
-
-#: calendarview.cpp:2474
-#, kde-format
-msgid "Moving Failed"
-msgstr "Premikanje ni uspelo"
 
 #: calendarview.cpp:2684
 #, kde-format
@@ -3789,7 +3793,9 @@ msgstr ""
 "bodo izgubljene."
 
 #: prefs/kprefsdialog.cpp:869
-#, kde-format
+#, fuzzy, kde-format
+#| msgid "Setting Default Preferences"
+msgctxt "@title:window"
 msgid "Setting Default Preferences"
 msgstr "Nastavljanje privzetih možnosti"
 
@@ -6039,6 +6045,12 @@ msgstr "%1"
 msgctxt "4 digit year"
 msgid "%1"
 msgstr "%1"
+
+#~ msgid "Copying Failed"
+#~ msgstr "Kopiranje ni uspelo"
+
+#~ msgid "Moving Failed"
+#~ msgstr "Premikanje ni uspelo"
 
 #~ msgctxt "A collection of all declined invidations."
 #~ msgid "Declined Invitations"

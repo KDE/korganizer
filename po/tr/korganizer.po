@@ -19,7 +19,7 @@ msgid ""
 msgstr ""
 "Project-Id-Version: kdepim-kde4\n"
 "Report-Msgid-Bugs-To: https://bugs.kde.org\n"
-"POT-Creation-Date: 2023-09-24 01:44+0000\n"
+"POT-Creation-Date: 2023-09-27 01:41+0000\n"
 "PO-Revision-Date: 2023-07-17 22:56+0300\n"
 "Last-Translator: Emir SARI <emir_sari@icloud.com>\n"
 "Language-Team: Turkish <kde-l10n-tr@kde.org>\n"
@@ -1132,7 +1132,9 @@ msgid "Unable to save calendar to the file %1."
 msgstr "Takvim %1 dosyasına kaydedilemedi."
 
 #: actionmanager.cpp:1036
-#, kde-format
+#, fuzzy, kde-format
+#| msgid "Error"
+msgctxt "@title:window"
 msgid "Error"
 msgstr "Hata"
 
@@ -1197,7 +1199,9 @@ msgid "Removing attachments from an email might invalidate its signature."
 msgstr "Bir e-postadan ekleri silmek imzasını geçersiz kılabilir."
 
 #: actionmanager.cpp:1461
-#, kde-format
+#, fuzzy, kde-format
+#| msgid "Remove Attachments"
+msgctxt "@title:window"
 msgid "Remove Attachments"
 msgstr "Ekleri Kaldır"
 
@@ -1431,7 +1435,7 @@ msgctxt "@info"
 msgid "Unable to copy the item \"%1\" to %2."
 msgstr "\"%1\" ögesi, %2 konumuna kopyalanamadı."
 
-#: calendarview.cpp:1458
+#: calendarview.cpp:1458 calendarview.cpp:2439
 #, kde-format
 msgctxt "@title:window"
 msgid "Copying Failed"
@@ -1447,7 +1451,7 @@ msgstr ""
 "\"%1\" ögesi özgün takvimden kaldırılamıyor. Yine de, bu ögenin bir kopyası "
 "%2 içine koyuldu."
 
-#: calendarview.cpp:1521 calendarview.cpp:1537
+#: calendarview.cpp:1521 calendarview.cpp:1537 calendarview.cpp:2474
 #, kde-format
 msgctxt "@title:window"
 msgid "Moving Failed"
@@ -1478,8 +1482,9 @@ msgstr ""
 "%1 anındaki yinelemeyi, yineleme listesinden ayrıştırmak ister misiniz?"
 
 #: calendarview.cpp:1575 calendarview.cpp:1587 calendarview.cpp:2246
-#: calendarview.cpp:2305 calendarview.cpp:2335
-#, kde-format
+#, fuzzy, kde-format
+#| msgid "KOrganizer Confirmation"
+msgctxt "@title:window"
 msgid "KOrganizer Confirmation"
 msgstr "K Organizatör Onayı"
 
@@ -1523,7 +1528,9 @@ msgid "Dissociating the future occurrences failed."
 msgstr "Gelecekteki yinelemeleri ayırma başarısız oldu."
 
 #: calendarview.cpp:1616 calendarview.cpp:1618
-#, kde-format
+#, fuzzy, kde-format
+#| msgid "Dissociating Failed"
+msgctxt "@title:window"
 msgid "Dissociating Failed"
 msgstr "Ayırma Başarısız"
 
@@ -1609,6 +1616,11 @@ msgstr ""
 "\"%1\" takvim ögesi birden fazla günde yineleniyor; bu ögeyi ve tüm "
 "yinelemelerini silmek istediğinize emin misiniz?"
 
+#: calendarview.cpp:2305 calendarview.cpp:2335
+#, kde-format
+msgid "KOrganizer Confirmation"
+msgstr "K Organizatör Onayı"
+
 #: calendarview.cpp:2313
 #, kde-format
 msgid "Also Delete &Future"
@@ -1668,7 +1680,9 @@ msgid "Delete all completed to-dos from checked calendars?"
 msgstr "İşaretlenmiş takvimlerdeki tamamlanmış tüm yapılacak silinsin mi?"
 
 #: calendarview.cpp:2415
-#, kde-format
+#, fuzzy, kde-format
+#| msgid "Purge To-dos"
+msgctxt "@title:window"
 msgid "Purge To-dos"
 msgstr "Yapılacakları Temizle"
 
@@ -1690,20 +1704,10 @@ msgstr ""
 msgid "Unable to copy the item to %1."
 msgstr "Öge, %1 konumuna kopyalanamıyor."
 
-#: calendarview.cpp:2439
-#, kde-format
-msgid "Copying Failed"
-msgstr "Kopyalama Başarısız"
-
 #: calendarview.cpp:2474
 #, kde-format
 msgid "Unable to move the item to  %1."
 msgstr "Öge, %1 konumuna taşınamıyor."
-
-#: calendarview.cpp:2474
-#, kde-format
-msgid "Moving Failed"
-msgstr "Taşıma Başarısız"
 
 #: calendarview.cpp:2684
 #, kde-format
@@ -3774,7 +3778,9 @@ msgstr ""
 "değişiklikler kaybolacaktır."
 
 #: prefs/kprefsdialog.cpp:869
-#, kde-format
+#, fuzzy, kde-format
+#| msgid "Setting Default Preferences"
+msgctxt "@title:window"
 msgid "Setting Default Preferences"
 msgstr "Öntanımlı Tercihler Ayarlanıyor"
 
@@ -6021,3 +6027,9 @@ msgstr "%1"
 msgctxt "4 digit year"
 msgid "%1"
 msgstr "%1"
+
+#~ msgid "Copying Failed"
+#~ msgstr "Kopyalama Başarısız"
+
+#~ msgid "Moving Failed"
+#~ msgstr "Taşıma Başarısız"

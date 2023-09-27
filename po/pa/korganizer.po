@@ -7,7 +7,7 @@ msgid ""
 msgstr ""
 "Project-Id-Version: korganizer\n"
 "Report-Msgid-Bugs-To: https://bugs.kde.org\n"
-"POT-Creation-Date: 2023-09-24 01:44+0000\n"
+"POT-Creation-Date: 2023-09-27 01:41+0000\n"
 "PO-Revision-Date: 2011-01-04 07:42+0530\n"
 "Last-Translator: A S Alam <aalam@users.sf.net>\n"
 "Language-Team: Punjabi/Panjabi <punjabi-users@lists.sf.net>\n"
@@ -1117,7 +1117,9 @@ msgid "Unable to save calendar to the file %1."
 msgstr ""
 
 #: actionmanager.cpp:1036
-#, kde-format
+#, fuzzy, kde-format
+#| msgid "Error"
+msgctxt "@title:window"
 msgid "Error"
 msgstr "ਗਲਤੀ"
 
@@ -1182,7 +1184,9 @@ msgid "Removing attachments from an email might invalidate its signature."
 msgstr ""
 
 #: actionmanager.cpp:1461
-#, kde-format
+#, fuzzy, kde-format
+#| msgid "Remove Attachments"
+msgctxt "@title:window"
 msgid "Remove Attachments"
 msgstr "ਅਟੈਚਮੈਂਟ ਹਟਾਓ"
 
@@ -1425,7 +1429,7 @@ msgctxt "@info"
 msgid "Unable to copy the item \"%1\" to %2."
 msgstr "'%1' ਲਈ ਇਕਾਈ ਨੂੰ ਨਕਲ ਕਰਨ ਵਿੱਚ ਅਸਫਲ ਹੈ।"
 
-#: calendarview.cpp:1458
+#: calendarview.cpp:1458 calendarview.cpp:2439
 #, kde-format
 msgctxt "@title:window"
 msgid "Copying Failed"
@@ -1439,7 +1443,7 @@ msgid ""
 "of this item has been put into %2"
 msgstr ""
 
-#: calendarview.cpp:1521 calendarview.cpp:1537
+#: calendarview.cpp:1521 calendarview.cpp:1537 calendarview.cpp:2474
 #, kde-format
 msgctxt "@title:window"
 msgid "Moving Failed"
@@ -1470,8 +1474,9 @@ msgid "Do you want to dissociate the occurrence on %1 from the recurrence?"
 msgstr ""
 
 #: calendarview.cpp:1575 calendarview.cpp:1587 calendarview.cpp:2246
-#: calendarview.cpp:2305 calendarview.cpp:2335
-#, kde-format
+#, fuzzy, kde-format
+#| msgid "KOrganizer Confirmation"
+msgctxt "@title:window"
 msgid "KOrganizer Confirmation"
 msgstr "ਕੇ-ਪਰਬੰਧਕ ਪੁਸ਼ਟੀ"
 
@@ -1515,9 +1520,11 @@ msgid "Dissociating the future occurrences failed."
 msgstr ""
 
 #: calendarview.cpp:1616 calendarview.cpp:1618
-#, kde-format
+#, fuzzy, kde-format
+#| msgid "Locking Failed"
+msgctxt "@title:window"
 msgid "Dissociating Failed"
-msgstr ""
+msgstr "ਤਾਲਾਬੰਦੀ ਅਸਫਲ"
 
 #: calendarview.cpp:1618
 #, kde-format
@@ -1598,6 +1605,11 @@ msgid ""
 "to delete it and all its recurrences?"
 msgstr ""
 
+#: calendarview.cpp:2305 calendarview.cpp:2335
+#, kde-format
+msgid "KOrganizer Confirmation"
+msgstr "ਕੇ-ਪਰਬੰਧਕ ਪੁਸ਼ਟੀ"
+
 #: calendarview.cpp:2313
 #, fuzzy, kde-format
 #| msgid "Delete &Future"
@@ -1651,9 +1663,11 @@ msgid "Delete all completed to-dos from checked calendars?"
 msgstr ""
 
 #: calendarview.cpp:2415
-#, kde-format
+#, fuzzy, kde-format
+#| msgid "New To-do"
+msgctxt "@title:window"
 msgid "Purge To-dos"
-msgstr ""
+msgstr "ਨਵਾਂ ਕੰਮ-ਕਾਰ"
 
 #: calendarview.cpp:2416
 #, kde-format
@@ -1671,20 +1685,10 @@ msgstr ""
 msgid "Unable to copy the item to %1."
 msgstr "'%1' ਲਈ ਇਕਾਈ ਨੂੰ ਨਕਲ ਕਰਨ ਵਿੱਚ ਅਸਫਲ ਹੈ।"
 
-#: calendarview.cpp:2439
-#, kde-format
-msgid "Copying Failed"
-msgstr "ਨਕਲ ਅਸਫਲ ਰਹੀ"
-
 #: calendarview.cpp:2474
 #, fuzzy, kde-format
 msgid "Unable to move the item to  %1."
 msgstr "'%1' ਵਿੱਚ ਇਕਾਈ ਭੇਜਣ ਵਿੱਚ ਅਸਫਲ ਹੈ।"
-
-#: calendarview.cpp:2474
-#, kde-format
-msgid "Moving Failed"
-msgstr "ਭੇਜਣਾ ਅਸਫਲ"
 
 #: calendarview.cpp:2684
 #, fuzzy, kde-format
@@ -3787,7 +3791,9 @@ msgid ""
 msgstr "ਤੁਸੀਂ ਸਭ ਪਸੰਦਾਂ ਨੂੰ ਮੂਲ ਬਣਾਉਣ ਜਾ ਰਹੇ ਹੋ। ਸਭ ਕੀਤੀਆਂ ਸੋਧਾਂ ਹਟਾ ਦਿੱਤੀਆਂ ਜਾਣਗੀਆਂ।"
 
 #: prefs/kprefsdialog.cpp:869
-#, kde-format
+#, fuzzy, kde-format
+#| msgid "Setting Default Preferences"
+msgctxt "@title:window"
 msgid "Setting Default Preferences"
 msgstr "ਡਿਫਾਲਟ ਪਸੰਦ ਸੈਟਿੰਗ"
 
@@ -5845,6 +5851,12 @@ msgstr "%1"
 msgctxt "4 digit year"
 msgid "%1"
 msgstr "%1"
+
+#~ msgid "Copying Failed"
+#~ msgstr "ਨਕਲ ਅਸਫਲ ਰਹੀ"
+
+#~ msgid "Moving Failed"
+#~ msgstr "ਭੇਜਣਾ ਅਸਫਲ"
 
 #, fuzzy
 #~| msgid "Delete Confirmation"
@@ -8548,9 +8560,6 @@ msgstr "%1"
 #~ msgid "End Time"
 #~ msgstr "ਅੰਤ ਸਮਾਂ"
 
-#~ msgid "Locking Failed"
-#~ msgstr "ਤਾਲਾਬੰਦੀ ਅਸਫਲ"
-
 #~ msgid "Open in separate window"
 #~ msgstr "ਵੱਖਰੇ ਝਰੋਖੇ ਵਿੱਚ ਖੋਲੋ"
 
@@ -8721,12 +8730,6 @@ msgstr "%1"
 #~ msgctxt "@title:window"
 #~ msgid "Edit %1: %2"
 #~ msgstr "   ਸੋਧ   %1"
-
-#, fuzzy
-#~| msgid "KOrganizer Confirmation"
-#~ msgctxt "@title:window"
-#~ msgid "KOrganizer Confirmation"
-#~ msgstr "ਕੇ-ਪਰਬੰਧਕ ਪੁਸ਼ਟੀ"
 
 #, fuzzy
 #~| msgid "Atte&ndees"

@@ -6,7 +6,7 @@ msgid ""
 msgstr ""
 "Project-Id-Version: korganizer\n"
 "Report-Msgid-Bugs-To: https://bugs.kde.org\n"
-"POT-Creation-Date: 2023-09-24 01:44+0000\n"
+"POT-Creation-Date: 2023-09-27 01:41+0000\n"
 "PO-Revision-Date: 2013-03-24 10:49+0100\n"
 "Last-Translator: Jean Cayron <jean.cayron@base.be>\n"
 "Language-Team: Walloon <linux-wa@walon.org>\n"
@@ -1131,7 +1131,9 @@ msgid "Unable to save calendar to the file %1."
 msgstr "Dji n' a savou schaper l' calindrî e fitchî %1."
 
 #: actionmanager.cpp:1036
-#, kde-format
+#, fuzzy, kde-format
+#| msgid "Error"
+msgctxt "@title:window"
 msgid "Error"
 msgstr "Aroke"
 
@@ -1198,7 +1200,9 @@ msgid "Removing attachments from an email might invalidate its signature."
 msgstr "Oister les ataetchmints d' èn emile pou rinde si sinateure nén valåbe."
 
 #: actionmanager.cpp:1461
-#, kde-format
+#, fuzzy, kde-format
+#| msgid "Remove Attachments"
+msgctxt "@title:window"
 msgid "Remove Attachments"
 msgstr "Oister ataetchmints"
 
@@ -1447,7 +1451,7 @@ msgctxt "@info"
 msgid "Unable to copy the item \"%1\" to %2."
 msgstr "Dji n' a sepou schaper %1 « %2 »."
 
-#: calendarview.cpp:1458
+#: calendarview.cpp:1458 calendarview.cpp:2439
 #, fuzzy, kde-format
 #| msgid "Locking Failed"
 msgctxt "@title:window"
@@ -1462,7 +1466,7 @@ msgid ""
 "of this item has been put into %2"
 msgstr ""
 
-#: calendarview.cpp:1521 calendarview.cpp:1537
+#: calendarview.cpp:1521 calendarview.cpp:1537 calendarview.cpp:2474
 #, fuzzy, kde-format
 #| msgid "Locking Failed"
 msgctxt "@title:window"
@@ -1493,8 +1497,8 @@ msgid "Do you want to dissociate the occurrence on %1 from the recurrence?"
 msgstr ""
 
 #: calendarview.cpp:1575 calendarview.cpp:1587 calendarview.cpp:2246
-#: calendarview.cpp:2305 calendarview.cpp:2335
 #, kde-format
+msgctxt "@title:window"
 msgid "KOrganizer Confirmation"
 msgstr "Acertinaedje di KOrganizer"
 
@@ -1539,9 +1543,11 @@ msgid "Dissociating the future occurrences failed."
 msgstr ""
 
 #: calendarview.cpp:1616 calendarview.cpp:1618
-#, kde-format
+#, fuzzy, kde-format
+#| msgid "Locking Failed"
+msgctxt "@title:window"
 msgid "Dissociating Failed"
-msgstr ""
+msgstr "L' aclawaedje a fwait berwete"
 
 #: calendarview.cpp:1618
 #, kde-format
@@ -1622,6 +1628,11 @@ msgid ""
 "to delete it and all its recurrences?"
 msgstr ""
 
+#: calendarview.cpp:2305 calendarview.cpp:2335
+#, kde-format
+msgid "KOrganizer Confirmation"
+msgstr "Acertinaedje di KOrganizer"
+
 #: calendarview.cpp:2313
 #, fuzzy, kde-format
 #| msgid "Dissociate &Future Occurrences"
@@ -1675,9 +1686,12 @@ msgid "Delete all completed to-dos from checked calendars?"
 msgstr ""
 
 #: calendarview.cpp:2415
-#, kde-format
+#, fuzzy, kde-format
+#| msgctxt "@title:window"
+#| msgid "New To-do"
+msgctxt "@title:window"
 msgid "Purge To-dos"
-msgstr ""
+msgstr "Novea afé"
 
 #: calendarview.cpp:2416
 #, kde-format
@@ -1696,19 +1710,9 @@ msgstr "Dji n' a sepou candjî cist afé a cåze k' i n' pout nén esse aclawé.
 msgid "Unable to copy the item to %1."
 msgstr ""
 
-#: calendarview.cpp:2439
-#, kde-format
-msgid "Copying Failed"
-msgstr ""
-
 #: calendarview.cpp:2474
 #, kde-format
 msgid "Unable to move the item to  %1."
-msgstr ""
-
-#: calendarview.cpp:2474
-#, kde-format
-msgid "Moving Failed"
 msgstr ""
 
 #: calendarview.cpp:2684
@@ -3869,6 +3873,7 @@ msgstr ""
 
 #: prefs/kprefsdialog.cpp:869
 #, kde-format
+msgctxt "@title:window"
 msgid "Setting Default Preferences"
 msgstr ""
 
@@ -8450,9 +8455,6 @@ msgstr ""
 #~ msgid "End Time"
 #~ msgstr "Eure di fén"
 
-#~ msgid "Locking Failed"
-#~ msgstr "L' aclawaedje a fwait berwete"
-
 #~ msgid "Open in separate window"
 #~ msgstr "Drovi dins on purnea a pårt"
 
@@ -8523,10 +8525,6 @@ msgstr ""
 #~ msgctxt "@info"
 #~ msgid "Do you really want to cancel?"
 #~ msgstr "Voloz vs rinoncî podbon ?"
-
-#~ msgctxt "@title:window"
-#~ msgid "KOrganizer Confirmation"
-#~ msgstr "Acertinaedje di KOrganizer"
 
 #, fuzzy
 #~| msgid "Atte&ndees"

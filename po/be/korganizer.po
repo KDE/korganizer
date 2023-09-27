@@ -11,7 +11,7 @@ msgid ""
 msgstr ""
 "Project-Id-Version: korganizer\n"
 "Report-Msgid-Bugs-To: https://bugs.kde.org\n"
-"POT-Creation-Date: 2023-09-24 01:44+0000\n"
+"POT-Creation-Date: 2023-09-27 01:41+0000\n"
 "PO-Revision-Date: 2008-01-01 23:20+0200\n"
 "Last-Translator: Darafei Praliaskouski <komzpa@gmail.com>\n"
 "Language-Team: Belarusian (Official spelling) <i18n@mova.org>\n"
@@ -1109,6 +1109,7 @@ msgstr "Немагчыма захаваць каляндар у файл %1."
 
 #: actionmanager.cpp:1036
 #, fuzzy, kde-format
+msgctxt "@title:window"
 msgid "Error"
 msgstr "Памылка"
 
@@ -1176,6 +1177,7 @@ msgstr ""
 #: actionmanager.cpp:1461
 #, fuzzy, kde-format
 #| msgid "Attach&ments"
+msgctxt "@title:window"
 msgid "Remove Attachments"
 msgstr "Далучэ&ньні"
 
@@ -1413,7 +1415,7 @@ msgctxt "@info"
 msgid "Unable to copy the item \"%1\" to %2."
 msgstr "Немагчыма знайсьці шаблён '%1'."
 
-#: calendarview.cpp:1458
+#: calendarview.cpp:1458 calendarview.cpp:2439
 #, fuzzy, kde-format
 msgctxt "@title:window"
 msgid "Copying Failed"
@@ -1427,7 +1429,7 @@ msgid ""
 "of this item has been put into %2"
 msgstr ""
 
-#: calendarview.cpp:1521 calendarview.cpp:1537
+#: calendarview.cpp:1521 calendarview.cpp:1537 calendarview.cpp:2474
 #, fuzzy, kde-format
 msgctxt "@title:window"
 msgid "Moving Failed"
@@ -1458,8 +1460,9 @@ msgid "Do you want to dissociate the occurrence on %1 from the recurrence?"
 msgstr "Вылучыць як не паўтаральная падзея"
 
 #: calendarview.cpp:1575 calendarview.cpp:1587 calendarview.cpp:2246
-#: calendarview.cpp:2305 calendarview.cpp:2335
-#, kde-format
+#, fuzzy, kde-format
+#| msgid "KOrganizer Confirmation"
+msgctxt "@title:window"
 msgid "KOrganizer Confirmation"
 msgstr "Пацверджанне KOrganizer"
 
@@ -1504,6 +1507,7 @@ msgstr "Памылка аддзялення будучых паўтораў."
 
 #: calendarview.cpp:1616 calendarview.cpp:1618
 #, fuzzy, kde-format
+msgctxt "@title:window"
 msgid "Dissociating Failed"
 msgstr "Памылка аддзялення паўтаральнай падзеі"
 
@@ -1593,6 +1597,11 @@ msgstr ""
 "\"%1\" паўтараецца некалькі раз. Вы ўпэўненыя, што жадаеце выдаліць гэтую "
 "падзею або задачу і ўсё яго паўтору?"
 
+#: calendarview.cpp:2305 calendarview.cpp:2335
+#, kde-format
+msgid "KOrganizer Confirmation"
+msgstr "Пацверджанне KOrganizer"
+
 #: calendarview.cpp:2313
 #, fuzzy, kde-format
 #| msgid "Delete &Future"
@@ -1651,7 +1660,9 @@ msgid "Delete all completed to-dos from checked calendars?"
 msgstr "Выдаліць усе выкананыя заданні?"
 
 #: calendarview.cpp:2415
-#, kde-format
+#, fuzzy, kde-format
+#| msgid "Purge To-dos"
+msgctxt "@title:window"
 msgid "Purge To-dos"
 msgstr "Ачысціць заданьні"
 
@@ -1673,20 +1684,10 @@ msgstr ""
 msgid "Unable to copy the item to %1."
 msgstr "Немагчыма знайсьці шаблён '%1'."
 
-#: calendarview.cpp:2439
-#, fuzzy, kde-format
-msgid "Copying Failed"
-msgstr "Памылка капіравання"
-
 #: calendarview.cpp:2474
 #, fuzzy, kde-format
 msgid "Unable to move the item to  %1."
 msgstr "Немагчыма знайсьці шаблён '%1'."
-
-#: calendarview.cpp:2474
-#, fuzzy, kde-format
-msgid "Moving Failed"
-msgstr "Памылка перамяшчэння"
 
 #: calendarview.cpp:2684
 #, fuzzy, kde-format
@@ -3767,6 +3768,7 @@ msgstr "Усталяваныя ўсе параметры па змаўчанні
 
 #: prefs/kprefsdialog.cpp:869
 #, fuzzy, kde-format
+msgctxt "@title:window"
 msgid "Setting Default Preferences"
 msgstr "Параметры па змаўчанні"
 
@@ -5899,6 +5901,14 @@ msgstr "%1%"
 msgctxt "4 digit year"
 msgid "%1"
 msgstr "%1%"
+
+#, fuzzy
+#~ msgid "Copying Failed"
+#~ msgstr "Памылка капіравання"
+
+#, fuzzy
+#~ msgid "Moving Failed"
+#~ msgstr "Памылка перамяшчэння"
 
 #, fuzzy
 #~| msgid "Delete Confirmation"
@@ -10045,12 +10055,6 @@ msgstr "%1%"
 #~ msgctxt "@title:window"
 #~ msgid "Edit %1: %2"
 #~ msgstr "Рэдагаваць %1"
-
-#, fuzzy
-#~| msgid "KOrganizer Confirmation"
-#~ msgctxt "@title:window"
-#~ msgid "KOrganizer Confirmation"
-#~ msgstr "Пацверджанне KOrganizer"
 
 #, fuzzy
 #~ msgctxt "@title:tab"

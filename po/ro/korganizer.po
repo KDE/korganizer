@@ -5,7 +5,7 @@ msgid ""
 msgstr ""
 "Project-Id-Version: korganizer-1.1.1\n"
 "Report-Msgid-Bugs-To: https://bugs.kde.org\n"
-"POT-Creation-Date: 2023-09-24 01:44+0000\n"
+"POT-Creation-Date: 2023-09-27 01:41+0000\n"
 "PO-Revision-Date: 2022-02-06 19:07+0000\n"
 "Last-Translator: Sergiu Bivol <sergiu@cip.md>\n"
 "Language-Team: Romanian\n"
@@ -1093,7 +1093,9 @@ msgid "Unable to save calendar to the file %1."
 msgstr "Nu pot deschide cartea de adrese."
 
 #: actionmanager.cpp:1036
-#, kde-format
+#, fuzzy, kde-format
+#| msgid "Error"
+msgctxt "@title:window"
 msgid "Error"
 msgstr "Eroare"
 
@@ -1159,6 +1161,7 @@ msgstr ""
 
 #: actionmanager.cpp:1461
 #, fuzzy, kde-format
+msgctxt "@title:window"
 msgid "Remove Attachments"
 msgstr "Însoțitori"
 
@@ -1389,7 +1392,7 @@ msgctxt "@info"
 msgid "Unable to copy the item \"%1\" to %2."
 msgstr "Un fișier calendar de încărcat"
 
-#: calendarview.cpp:1458
+#: calendarview.cpp:1458 calendarview.cpp:2439
 #, fuzzy, kde-format
 msgctxt "@title:window"
 msgid "Copying Failed"
@@ -1403,7 +1406,7 @@ msgid ""
 "of this item has been put into %2"
 msgstr ""
 
-#: calendarview.cpp:1521 calendarview.cpp:1537
+#: calendarview.cpp:1521 calendarview.cpp:1537 calendarview.cpp:2474
 #, fuzzy, kde-format
 msgctxt "@title:window"
 msgid "Moving Failed"
@@ -1433,8 +1436,8 @@ msgid "Do you want to dissociate the occurrence on %1 from the recurrence?"
 msgstr ""
 
 #: calendarview.cpp:1575 calendarview.cpp:1587 calendarview.cpp:2246
-#: calendarview.cpp:2305 calendarview.cpp:2335
 #, kde-format
+msgctxt "@title:window"
 msgid "KOrganizer Confirmation"
 msgstr "Confirmare KOrganizator"
 
@@ -1477,6 +1480,7 @@ msgstr "Listează evenimentele pentru ziua curentă"
 
 #: calendarview.cpp:1616 calendarview.cpp:1618
 #, fuzzy, kde-format
+msgctxt "@title:window"
 msgid "Dissociating Failed"
 msgstr "iCalendar..."
 
@@ -1560,6 +1564,11 @@ msgstr ""
 "Sunteți sigur că doriți să ștergeți acest eveniment\n"
 "și toate repetițiile lui?"
 
+#: calendarview.cpp:2305 calendarview.cpp:2335
+#, kde-format
+msgid "KOrganizer Confirmation"
+msgstr "Confirmare KOrganizator"
+
 #: calendarview.cpp:2313
 #, fuzzy, kde-format
 msgid "Also Delete &Future"
@@ -1619,6 +1628,7 @@ msgstr "Șterg toate lucrările completate?"
 
 #: calendarview.cpp:2415
 #, fuzzy, kde-format
+msgctxt "@title:window"
 msgid "Purge To-dos"
 msgstr "Șterge lucrări"
 
@@ -1638,20 +1648,10 @@ msgstr ""
 msgid "Unable to copy the item to %1."
 msgstr "Un fișier calendar de încărcat"
 
-#: calendarview.cpp:2439
-#, fuzzy, kde-format
-msgid "Copying Failed"
-msgstr "&Planificator"
-
 #: calendarview.cpp:2474
 #, fuzzy, kde-format
 msgid "Unable to move the item to  %1."
 msgstr "Activează salvarea automată a calendarului"
-
-#: calendarview.cpp:2474
-#, fuzzy, kde-format
-msgid "Moving Failed"
-msgstr "&Planificator"
 
 #: calendarview.cpp:2684
 #, fuzzy, kde-format
@@ -3752,6 +3752,7 @@ msgstr ""
 
 #: prefs/kprefsdialog.cpp:869
 #, fuzzy, kde-format
+msgctxt "@title:window"
 msgid "Setting Default Preferences"
 msgstr "Setare preferințe implicite"
 
@@ -5782,6 +5783,14 @@ msgstr "De făcut: %1"
 msgctxt "4 digit year"
 msgid "%1"
 msgstr "De făcut: %1"
+
+#, fuzzy
+#~ msgid "Copying Failed"
+#~ msgstr "&Planificator"
+
+#, fuzzy
+#~ msgid "Moving Failed"
+#~ msgstr "&Planificator"
 
 #, fuzzy
 #~| msgid "Delete Confirmation"
@@ -8485,10 +8494,6 @@ msgstr "De făcut: %1"
 #~ msgctxt "@info"
 #~ msgid "Do you really want to cancel?"
 #~ msgstr "Sigur renunțați?"
-
-#~ msgctxt "@title:window"
-#~ msgid "KOrganizer Confirmation"
-#~ msgstr "Confirmare KOrganizator"
 
 #, fuzzy
 #~| msgid "Atte&ndees"

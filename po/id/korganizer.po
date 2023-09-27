@@ -6,7 +6,7 @@ msgid ""
 msgstr ""
 "Project-Id-Version: korganizer\n"
 "Report-Msgid-Bugs-To: https://bugs.kde.org\n"
-"POT-Creation-Date: 2023-09-24 01:44+0000\n"
+"POT-Creation-Date: 2023-09-27 01:41+0000\n"
 "PO-Revision-Date: 2022-09-30 08:03+0700\n"
 "Last-Translator: Wantoyèk <wantoyek@gmail.com>\n"
 "Language-Team: Indonesian <kde-i18n-doc@kde.org>\n"
@@ -1117,7 +1117,9 @@ msgid "Unable to save calendar to the file %1."
 msgstr "Tak bisa menyimpan kalender ke file %1."
 
 #: actionmanager.cpp:1036
-#, kde-format
+#, fuzzy, kde-format
+#| msgid "Error"
+msgctxt "@title:window"
 msgid "Error"
 msgstr "Galat"
 
@@ -1184,7 +1186,9 @@ msgstr ""
 "tandatangannya."
 
 #: actionmanager.cpp:1461
-#, kde-format
+#, fuzzy, kde-format
+#| msgid "Remove Attachments"
+msgctxt "@title:window"
 msgid "Remove Attachments"
 msgstr "Hapus Lampiran"
 
@@ -1415,7 +1419,7 @@ msgctxt "@info"
 msgid "Unable to copy the item \"%1\" to %2."
 msgstr "Tak bisa menyalin item \"%1\" ke %2."
 
-#: calendarview.cpp:1458
+#: calendarview.cpp:1458 calendarview.cpp:2439
 #, kde-format
 msgctxt "@title:window"
 msgid "Copying Failed"
@@ -1435,7 +1439,7 @@ msgstr ""
 "Tak bisa menghapus item \"%1\" dari %2. Namun, penyalinan item ini telah "
 "dimasukkan ke dalam %3."
 
-#: calendarview.cpp:1521 calendarview.cpp:1537
+#: calendarview.cpp:1521 calendarview.cpp:1537 calendarview.cpp:2474
 #, kde-format
 msgctxt "@title:window"
 msgid "Moving Failed"
@@ -1466,8 +1470,9 @@ msgid "Do you want to dissociate the occurrence on %1 from the recurrence?"
 msgstr "Apakah kamu ingin memisahkan kejadian pada %1 dari perutinan?"
 
 #: calendarview.cpp:1575 calendarview.cpp:1587 calendarview.cpp:2246
-#: calendarview.cpp:2305 calendarview.cpp:2335
-#, kde-format
+#, fuzzy, kde-format
+#| msgid "KOrganizer Confirmation"
+msgctxt "@title:window"
 msgid "KOrganizer Confirmation"
 msgstr "Konfirmasi KOrganizer"
 
@@ -1511,7 +1516,9 @@ msgid "Dissociating the future occurrences failed."
 msgstr "Pemisahan kejadian masa depan gagal."
 
 #: calendarview.cpp:1616 calendarview.cpp:1618
-#, kde-format
+#, fuzzy, kde-format
+#| msgid "Dissociating Failed"
+msgctxt "@title:window"
 msgid "Dissociating Failed"
 msgstr "Gagal Memisahkan"
 
@@ -1597,6 +1604,11 @@ msgstr ""
 "Item kalender \"%1\" merutin pada beberapa tanggal; apakah kamu yakin ingin "
 "menghapusnya dan semua perutinannya?"
 
+#: calendarview.cpp:2305 calendarview.cpp:2335
+#, kde-format
+msgid "KOrganizer Confirmation"
+msgstr "Konfirmasi KOrganizer"
+
 #: calendarview.cpp:2313
 #, kde-format
 msgid "Also Delete &Future"
@@ -1656,7 +1668,9 @@ msgstr ""
 "Apakah hapus semua rencana yang sudah usai dari kalender yang dicentang?"
 
 #: calendarview.cpp:2415
-#, kde-format
+#, fuzzy, kde-format
+#| msgid "Purge To-dos"
+msgctxt "@title:window"
 msgid "Purge To-dos"
 msgstr "Musnahkan Rencana"
 
@@ -1676,20 +1690,10 @@ msgstr "Tak bisa mengedit \"%1\" karena ia dikunci oleh proses lainnya."
 msgid "Unable to copy the item to %1."
 msgstr "Tak bisa menyalin item ke %1."
 
-#: calendarview.cpp:2439
-#, kde-format
-msgid "Copying Failed"
-msgstr "Gagal Menyalin"
-
 #: calendarview.cpp:2474
 #, kde-format
 msgid "Unable to move the item to  %1."
 msgstr "Tak bisa memindahkan item ke %1."
-
-#: calendarview.cpp:2474
-#, kde-format
-msgid "Moving Failed"
-msgstr "Gagal Mindahkan"
 
 #: calendarview.cpp:2684
 #, kde-format
@@ -3767,7 +3771,9 @@ msgstr ""
 "modifikasi kustom akan hilang."
 
 #: prefs/kprefsdialog.cpp:869
-#, kde-format
+#, fuzzy, kde-format
+#| msgid "Setting Default Preferences"
+msgctxt "@title:window"
 msgid "Setting Default Preferences"
 msgstr "Pengeturan Preferensi Default"
 
@@ -6050,6 +6056,12 @@ msgstr "%1"
 msgctxt "4 digit year"
 msgid "%1"
 msgstr "%1"
+
+#~ msgid "Copying Failed"
+#~ msgstr "Gagal Menyalin"
+
+#~ msgid "Moving Failed"
+#~ msgstr "Gagal Mindahkan"
 
 #~ msgctxt "A collection of all declined invidations."
 #~ msgid "Declined Invitations"

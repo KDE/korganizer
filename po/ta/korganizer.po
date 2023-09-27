@@ -17,7 +17,7 @@ msgid ""
 msgstr ""
 "Project-Id-Version: korganizer\n"
 "Report-Msgid-Bugs-To: https://bugs.kde.org\n"
-"POT-Creation-Date: 2023-09-24 01:44+0000\n"
+"POT-Creation-Date: 2023-09-27 01:41+0000\n"
 "PO-Revision-Date: 2022-04-21 21:36+0530\n"
 "Last-Translator: Kishore G <kishore96@gmail.com>\n"
 "Language-Team: Tamil <kde-i18n-doc@kde.org>\n"
@@ -1142,6 +1142,7 @@ msgstr "செய்யவேண்டிய உருப்படியை ச�
 
 #: actionmanager.cpp:1036
 #, fuzzy, kde-format
+msgctxt "@title:window"
 msgid "Error"
 msgstr "பிழை ஏதுமில்லை"
 
@@ -1208,6 +1209,7 @@ msgstr ""
 #: actionmanager.cpp:1461
 #, fuzzy, kde-format
 #| msgid "Attach&ments"
+msgctxt "@title:window"
 msgid "Remove Attachments"
 msgstr "இணைப்புகள்"
 
@@ -1444,7 +1446,7 @@ msgctxt "@info"
 msgid "Unable to copy the item \"%1\" to %2."
 msgstr "செய்யவேண்டிய உருப்படியை சேமிக்க முடியவில்லை."
 
-#: calendarview.cpp:1458
+#: calendarview.cpp:1458 calendarview.cpp:2439
 #, fuzzy, kde-format
 #| msgid "Copying Failed"
 msgctxt "@title:window"
@@ -1459,7 +1461,7 @@ msgid ""
 "of this item has been put into %2"
 msgstr ""
 
-#: calendarview.cpp:1521 calendarview.cpp:1537
+#: calendarview.cpp:1521 calendarview.cpp:1537 calendarview.cpp:2474
 #, fuzzy, kde-format
 #| msgid "Moving Failed"
 msgctxt "@title:window"
@@ -1491,8 +1493,9 @@ msgid "Do you want to dissociate the occurrence on %1 from the recurrence?"
 msgstr ""
 
 #: calendarview.cpp:1575 calendarview.cpp:1587 calendarview.cpp:2246
-#: calendarview.cpp:2305 calendarview.cpp:2335
-#, kde-format
+#, fuzzy, kde-format
+#| msgid "KOrganizer Confirmation"
+msgctxt "@title:window"
 msgid "KOrganizer Confirmation"
 msgstr "Kநிறுவனர் உறுதி"
 
@@ -1537,7 +1540,9 @@ msgid "Dissociating the future occurrences failed."
 msgstr "பின் மறுநிகழ்வை பிரி"
 
 #: calendarview.cpp:1616 calendarview.cpp:1618
-#, kde-format
+#, fuzzy, kde-format
+#| msgid "Dissociating Failed"
+msgctxt "@title:window"
 msgid "Dissociating Failed"
 msgstr "நிறுவுதல் இயலவில்லை"
 
@@ -1621,6 +1626,11 @@ msgstr ""
 "இந்த வேலை பல தேதிகளுக்கு மேல் மறுபடியும் வரும். நீங்கள் இந்த செயலை மற்றும் அதன் அனைத்து "
 "திரும்ப வரும் இயக்கத்தை அழிக்க வேண்டுமா?"
 
+#: calendarview.cpp:2305 calendarview.cpp:2335
+#, kde-format
+msgid "KOrganizer Confirmation"
+msgstr "Kநிறுவனர் உறுதி"
+
 #: calendarview.cpp:2313
 #, fuzzy, kde-format
 #| msgid "Delete &Future"
@@ -1680,7 +1690,9 @@ msgid "Delete all completed to-dos from checked calendars?"
 msgstr "எல்லா முடிந்த செயலையும் அழி? "
 
 #: calendarview.cpp:2415
-#, kde-format
+#, fuzzy, kde-format
+#| msgid "Purge To-dos"
+msgctxt "@title:window"
 msgid "Purge To-dos"
 msgstr "செயல்படுத்துவதை அழி "
 
@@ -1700,20 +1712,10 @@ msgstr "நிகழ்வை திருத்த முடியவில்�
 msgid "Unable to copy the item to %1."
 msgstr "செய்யவேண்டிய உருப்படியை சேமிக்க முடியவில்லை."
 
-#: calendarview.cpp:2439
-#, kde-format
-msgid "Copying Failed"
-msgstr "நிறுவுதல் இயலவில்லை"
-
 #: calendarview.cpp:2474
 #, fuzzy, kde-format
 msgid "Unable to move the item to  %1."
 msgstr "செய்யவேண்டிய உருப்படியை சேமிக்க முடியவில்லை."
-
-#: calendarview.cpp:2474
-#, kde-format
-msgid "Moving Failed"
-msgstr "நிறுவுதல் இயலவில்லை"
 
 #: calendarview.cpp:2684
 #, fuzzy, kde-format
@@ -3802,7 +3804,9 @@ msgid ""
 msgstr ""
 
 #: prefs/kprefsdialog.cpp:869
-#, kde-format
+#, fuzzy, kde-format
+#| msgid "Setting Default Preferences"
+msgctxt "@title:window"
 msgid "Setting Default Preferences"
 msgstr "அமைப்பு முன்னிருப்பு முன்னுரிமைகள்"
 
@@ -5862,6 +5866,12 @@ msgstr "%1"
 msgctxt "4 digit year"
 msgid "%1"
 msgstr "%1"
+
+#~ msgid "Copying Failed"
+#~ msgstr "நிறுவுதல் இயலவில்லை"
+
+#~ msgid "Moving Failed"
+#~ msgstr "நிறுவுதல் இயலவில்லை"
 
 #, fuzzy
 #~| msgid "Delete Confirmation"
@@ -9426,12 +9436,6 @@ msgstr "%1"
 #~ msgctxt "@title:window"
 #~ msgid "Edit %1: %2"
 #~ msgstr "%1னை திருத்து"
-
-#, fuzzy
-#~| msgid "KOrganizer Confirmation"
-#~ msgctxt "@title:window"
-#~ msgid "KOrganizer Confirmation"
-#~ msgstr "Kநிறுவனர் உறுதி"
 
 #, fuzzy
 #~| msgid "Atte&ndees"

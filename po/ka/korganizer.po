@@ -7,8 +7,8 @@ msgid ""
 msgstr ""
 "Project-Id-Version: korganizer\n"
 "Report-Msgid-Bugs-To: https://bugs.kde.org\n"
-"POT-Creation-Date: 2023-09-24 01:44+0000\n"
-"PO-Revision-Date: 2023-09-24 17:30+0200\n"
+"POT-Creation-Date: 2023-09-27 01:41+0000\n"
+"PO-Revision-Date: 2023-09-26 14:42+0200\n"
 "Last-Translator: Temuri Doghonadze <temuri.doghonadze@gmail.com>\n"
 "Language-Team: Georgian <kde-i18n-doc@kde.org>\n"
 "Language: ka\n"
@@ -314,6 +314,8 @@ msgid ""
 "Select this menu entry if you would like to import the contents of an "
 "iCalendar or vCalendar file into your current calendar collection."
 msgstr ""
+"აირჩიეთ ეს მენიუს პუნქტი, თუ გნებავთ iCalendar ან vCalendar ფაილების "
+"შემცველობის მიმდინარე კალენრის კოლექციაში შემოტანა."
 
 #: actionmanager.cpp:253
 #, kde-format
@@ -330,7 +332,7 @@ msgstr "კალენდრის \"ახალი რამერუმე�
 #, kde-format
 msgctxt "@info:tooltip"
 msgid "Search \"Get Hot New Stuff\" for calendars to import"
-msgstr ""
+msgstr "მოძებნეთ \"სიახლეების მოძებნა\" კალენდრებში შემოსატნად"
 
 #: actionmanager.cpp:257
 #, kde-format
@@ -373,6 +375,8 @@ msgctxt "@info:whatsthis"
 msgid ""
 "Allows you to export your entire calendar collection to one iCalendar file."
 msgstr ""
+"საშუალებას გაძლევთ, თქვენი სრული კალენდრის კოლექცია ერთ iCalendar-ის ფაილში "
+"გაიტანოთ."
 
 #: actionmanager.cpp:314
 #, kde-format
@@ -1071,7 +1075,9 @@ msgid "Unable to save calendar to the file %1."
 msgstr "კალენდრის ფაილში %1 შენახვა შეუძლებელია."
 
 #: actionmanager.cpp:1036
-#, kde-format
+#, fuzzy, kde-format
+#| msgid "Error"
+msgctxt "@title:window"
 msgid "Error"
 msgstr "შეცდომა"
 
@@ -1138,7 +1144,9 @@ msgstr ""
 "გახადოს."
 
 #: actionmanager.cpp:1461
-#, kde-format
+#, fuzzy, kde-format
+#| msgid "Remove Attachments"
+msgctxt "@title:window"
 msgid "Remove Attachments"
 msgstr "მიმაგრებული ფაილების კოპირება"
 
@@ -1359,7 +1367,7 @@ msgctxt "@info"
 msgid "Unable to copy the item \"%1\" to %2."
 msgstr "\"%1\"-ის %2-ში კოპირება შეუძლებელია."
 
-#: calendarview.cpp:1458
+#: calendarview.cpp:1458 calendarview.cpp:2439
 #, kde-format
 msgctxt "@title:window"
 msgid "Copying Failed"
@@ -1372,8 +1380,10 @@ msgid ""
 "Unable to remove the item \"%1\" from the original calendar. However, a copy "
 "of this item has been put into %2"
 msgstr ""
+"ელემენტის \"%1\" საწყისი კალენდრიდან წაშლა შეუძლებელია. მაგრამ ამ ელემენტის "
+"ასლი %2-ში ჩავდეთ"
 
-#: calendarview.cpp:1521 calendarview.cpp:1537
+#: calendarview.cpp:1521 calendarview.cpp:1537 calendarview.cpp:2474
 #, kde-format
 msgctxt "@title:window"
 msgid "Moving Failed"
@@ -1396,6 +1406,7 @@ msgstr "გადატანა წარმატებულია"
 msgctxt "@info"
 msgid "Unable to add the item \"%1\" into %2. This item has not been moved."
 msgstr ""
+"ელემენტის %1 %2-ში ჩამატება შეუძლებელია. ელემენტის გადატანა არ მომხდარა."
 
 #: calendarview.cpp:1571
 #, kde-format
@@ -1403,8 +1414,9 @@ msgid "Do you want to dissociate the occurrence on %1 from the recurrence?"
 msgstr ""
 
 #: calendarview.cpp:1575 calendarview.cpp:1587 calendarview.cpp:2246
-#: calendarview.cpp:2305 calendarview.cpp:2335
-#, kde-format
+#, fuzzy, kde-format
+#| msgid "KOrganizer Confirmation"
+msgctxt "@title:window"
 msgid "KOrganizer Confirmation"
 msgstr "KOrganizer -ის დასტური"
 
@@ -1446,7 +1458,9 @@ msgid "Dissociating the future occurrences failed."
 msgstr "მომავალი გამეორების ასოციაციის მოხსნა ჩავარდა."
 
 #: calendarview.cpp:1616 calendarview.cpp:1618
-#, kde-format
+#, fuzzy, kde-format
+#| msgid "Dissociating Failed"
+msgctxt "@title:window"
 msgid "Dissociating Failed"
 msgstr "ასოციაციის მოხსნა ჩავარდა"
 
@@ -1525,6 +1539,11 @@ msgid ""
 "to delete it and all its recurrences?"
 msgstr ""
 
+#: calendarview.cpp:2305 calendarview.cpp:2335
+#, kde-format
+msgid "KOrganizer Confirmation"
+msgstr "KOrganizer -ის დასტური"
+
 #: calendarview.cpp:2313
 #, kde-format
 msgid "Also Delete &Future"
@@ -1576,7 +1595,9 @@ msgid "Delete all completed to-dos from checked calendars?"
 msgstr "წავშალო ყველა დასრულებული გასაკეთებელი მონიშნული კალენდრებიდან?"
 
 #: calendarview.cpp:2415
-#, kde-format
+#, fuzzy, kde-format
+#| msgid "Purge To-dos"
+msgctxt "@title:window"
 msgid "Purge To-dos"
 msgstr "გასაკეთებლების მოსუფთავება"
 
@@ -1596,20 +1617,10 @@ msgstr "\"%1\"-ის ჩასწორება შეუძლებელი
 msgid "Unable to copy the item to %1."
 msgstr "ელემენტის %1-ში კოპირება შეუძლებელია."
 
-#: calendarview.cpp:2439
-#, kde-format
-msgid "Copying Failed"
-msgstr "კოპირების შეცდომა"
-
 #: calendarview.cpp:2474
 #, kde-format
 msgid "Unable to move the item to  %1."
 msgstr "ელემენტის %1-ში გადატანა შეუძლებელია."
-
-#: calendarview.cpp:2474
-#, kde-format
-msgid "Moving Failed"
-msgstr "გადატანის შეცდომა"
 
 #: calendarview.cpp:2684
 #, kde-format
@@ -3564,7 +3575,9 @@ msgid ""
 msgstr ""
 
 #: prefs/kprefsdialog.cpp:869
-#, kde-format
+#, fuzzy, kde-format
+#| msgid "Setting Default Preferences"
+msgctxt "@title:window"
 msgid "Setting Default Preferences"
 msgstr "ნაგულისხმევ პარამეტრების დაყენება"
 
@@ -5564,6 +5577,12 @@ msgstr "%1"
 msgctxt "4 digit year"
 msgid "%1"
 msgstr "%1"
+
+#~ msgid "Copying Failed"
+#~ msgstr "კოპირების შეცდომა"
+
+#~ msgid "Moving Failed"
+#~ msgstr "გადატანის შეცდომა"
 
 #~ msgctxt "A collection of all declined invidations."
 #~ msgid "Declined Invitations"

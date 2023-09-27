@@ -4,7 +4,7 @@ msgid ""
 msgstr ""
 "Project-Id-Version: kdepim/korganizer.po\n"
 "Report-Msgid-Bugs-To: https://bugs.kde.org\n"
-"POT-Creation-Date: 2023-09-24 01:44+0000\n"
+"POT-Creation-Date: 2023-09-27 01:41+0000\n"
 "PO-Revision-Date: 2004-09-20 15:44+0200\n"
 "Last-Translator: Thierry Vignaud <tvignaud@mandriva.com>\n"
 "Language-Team: Breton <LL@li.org>\n"
@@ -1120,7 +1120,9 @@ msgid "Unable to save calendar to the file %1."
 msgstr "Ne m'eus ket gallet enrollañ an deiziadur er restr %1."
 
 #: actionmanager.cpp:1036
-#, kde-format
+#, fuzzy, kde-format
+#| msgid "Error"
+msgctxt "@title:window"
 msgid "Error"
 msgstr "Fazi"
 
@@ -1187,6 +1189,7 @@ msgstr ""
 #: actionmanager.cpp:1461
 #, fuzzy, kde-format
 #| msgid "Attach&ments"
+msgctxt "@title:window"
 msgid "Remove Attachments"
 msgstr "Stagad&ennoù"
 
@@ -1422,7 +1425,7 @@ msgctxt "@info"
 msgid "Unable to copy the item \"%1\" to %2."
 msgstr "Ne m'eus ket gallet kavout ar patrom '%1'."
 
-#: calendarview.cpp:1458
+#: calendarview.cpp:1458 calendarview.cpp:2439
 #, fuzzy, kde-format
 #| msgid "Copying Failed"
 msgctxt "@title:window"
@@ -1437,7 +1440,7 @@ msgid ""
 "of this item has been put into %2"
 msgstr ""
 
-#: calendarview.cpp:1521 calendarview.cpp:1537
+#: calendarview.cpp:1521 calendarview.cpp:1537 calendarview.cpp:2474
 #, fuzzy, kde-format
 #| msgid "Moving Failed"
 msgctxt "@title:window"
@@ -1469,10 +1472,11 @@ msgid "Do you want to dissociate the occurrence on %1 from the recurrence?"
 msgstr ""
 
 #: calendarview.cpp:1575 calendarview.cpp:1587 calendarview.cpp:2246
-#: calendarview.cpp:2305 calendarview.cpp:2335
-#, kde-format
+#, fuzzy, kde-format
+#| msgid "Delete Confirmation"
+msgctxt "@title:window"
 msgid "KOrganizer Confirmation"
-msgstr ""
+msgstr "Kadarnaat al lemel"
 
 #: calendarview.cpp:1576
 #, kde-format
@@ -1512,9 +1516,11 @@ msgid "Dissociating the future occurrences failed."
 msgstr ""
 
 #: calendarview.cpp:1616 calendarview.cpp:1618
-#, kde-format
+#, fuzzy, kde-format
+#| msgid "Moving Failed"
+msgctxt "@title:window"
 msgid "Dissociating Failed"
-msgstr ""
+msgstr "Fazi en ur fiñval"
 
 #: calendarview.cpp:1618
 #, kde-format
@@ -1594,6 +1600,11 @@ msgid ""
 "to delete it and all its recurrences?"
 msgstr ""
 
+#: calendarview.cpp:2305 calendarview.cpp:2335
+#, kde-format
+msgid "KOrganizer Confirmation"
+msgstr ""
+
 #: calendarview.cpp:2313
 #, fuzzy, kde-format
 #| msgid "Delete C&urrent"
@@ -1647,9 +1658,11 @@ msgid "Delete all completed to-dos from checked calendars?"
 msgstr ""
 
 #: calendarview.cpp:2415
-#, kde-format
+#, fuzzy, kde-format
+#| msgid "New To-do"
+msgctxt "@title:window"
 msgid "Purge To-dos"
-msgstr ""
+msgstr "Tra d'ober nevez"
 
 #: calendarview.cpp:2416
 #, kde-format
@@ -1667,20 +1680,10 @@ msgstr "N'hellan ket kuitaat. En ur enrollañ c'hoazh."
 msgid "Unable to copy the item to %1."
 msgstr "Ne m'eus ket gallet kavout ar patrom '%1'."
 
-#: calendarview.cpp:2439
-#, kde-format
-msgid "Copying Failed"
-msgstr "Sac'het eo an eil"
-
 #: calendarview.cpp:2474
 #, fuzzy, kde-format
 msgid "Unable to move the item to  %1."
 msgstr "Ne m'eus ket gallet kavout ar patrom '%1'."
-
-#: calendarview.cpp:2474
-#, kde-format
-msgid "Moving Failed"
-msgstr "Fazi en ur fiñval"
 
 #: calendarview.cpp:2684
 #, kde-format
@@ -3760,7 +3763,9 @@ msgid ""
 msgstr ""
 
 #: prefs/kprefsdialog.cpp:869
-#, kde-format
+#, fuzzy, kde-format
+#| msgid "Setting Default Preferences"
+msgctxt "@title:window"
 msgid "Setting Default Preferences"
 msgstr "O lakaat an dibarzhoù dre ziouer"
 
@@ -5804,6 +5809,12 @@ msgstr "%1"
 msgctxt "4 digit year"
 msgid "%1"
 msgstr "%1"
+
+#~ msgid "Copying Failed"
+#~ msgstr "Sac'het eo an eil"
+
+#~ msgid "Moving Failed"
+#~ msgstr "Fazi en ur fiñval"
 
 #, fuzzy
 #~| msgid "Delete Confirmation"
@@ -10189,9 +10200,6 @@ msgstr "%1"
 
 #~ msgid "&Find"
 #~ msgstr "&Klask"
-
-#~ msgid "Delete Confirmation"
-#~ msgstr "Kadarnaat al lemel"
 
 #, fuzzy
 #~| msgid "Delete"

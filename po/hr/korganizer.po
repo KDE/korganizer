@@ -5,7 +5,7 @@ msgid ""
 msgstr ""
 "Project-Id-Version: korganizer 0\n"
 "Report-Msgid-Bugs-To: https://bugs.kde.org\n"
-"POT-Creation-Date: 2023-09-24 01:44+0000\n"
+"POT-Creation-Date: 2023-09-27 01:41+0000\n"
 "PO-Revision-Date: 2011-02-27 12:20+0100\n"
 "Last-Translator: Marko Dimjasevic <marko@dimjasevic.net>\n"
 "Language-Team: Croatian <kde-croatia-list@lists.sourceforge.net>\n"
@@ -1080,6 +1080,7 @@ msgstr "Št&ampaj sve stavke zadataka"
 
 #: actionmanager.cpp:1036
 #, fuzzy, kde-format
+msgctxt "@title:window"
 msgid "Error"
 msgstr "Bez grešaka"
 
@@ -1145,6 +1146,7 @@ msgstr ""
 
 #: actionmanager.cpp:1461
 #, fuzzy, kde-format
+msgctxt "@title:window"
 msgid "Remove Attachments"
 msgstr "Privici"
 
@@ -1366,7 +1368,7 @@ msgctxt "@info"
 msgid "Unable to copy the item \"%1\" to %2."
 msgstr "Št&ampaj sve stavke zadataka"
 
-#: calendarview.cpp:1458
+#: calendarview.cpp:1458 calendarview.cpp:2439
 #, fuzzy, kde-format
 msgctxt "@title:window"
 msgid "Copying Failed"
@@ -1380,7 +1382,7 @@ msgid ""
 "of this item has been put into %2"
 msgstr ""
 
-#: calendarview.cpp:1521 calendarview.cpp:1537
+#: calendarview.cpp:1521 calendarview.cpp:1537 calendarview.cpp:2474
 #, fuzzy, kde-format
 msgctxt "@title:window"
 msgid "Moving Failed"
@@ -1410,8 +1412,9 @@ msgid "Do you want to dissociate the occurrence on %1 from the recurrence?"
 msgstr ""
 
 #: calendarview.cpp:1575 calendarview.cpp:1587 calendarview.cpp:2246
-#: calendarview.cpp:2305 calendarview.cpp:2335
-#, kde-format
+#, fuzzy, kde-format
+#| msgid "KOrganizer Confirmation"
+msgctxt "@title:window"
 msgid "KOrganizer Confirmation"
 msgstr "Korganizer: Potvrda"
 
@@ -1454,6 +1457,7 @@ msgstr "&Uključi ponavljanje"
 
 #: calendarview.cpp:1616 calendarview.cpp:1618
 #, fuzzy, kde-format
+msgctxt "@title:window"
 msgid "Dissociating Failed"
 msgstr "Instalacija nije uspjela."
 
@@ -1535,6 +1539,11 @@ msgstr ""
 "Ovaj događaj se ponavlja više datuma. Želite li zaista da obrišete ovaj "
 "događaj sa svim njegovim ponavljanjima?"
 
+#: calendarview.cpp:2305 calendarview.cpp:2335
+#, kde-format
+msgid "KOrganizer Confirmation"
+msgstr "Korganizer: Potvrda"
+
 #: calendarview.cpp:2313
 #, fuzzy, kde-format
 msgid "Also Delete &Future"
@@ -1592,6 +1601,7 @@ msgstr "Da li da obrišem sve završene zadatke?"
 
 #: calendarview.cpp:2415
 #, fuzzy, kde-format
+msgctxt "@title:window"
 msgid "Purge To-dos"
 msgstr "Pročisti zadatke"
 
@@ -1611,20 +1621,10 @@ msgstr "Ne mogu da uredim incidenciju. Drugi proces ju je zaključao."
 msgid "Unable to copy the item to %1."
 msgstr "Št&ampaj sve stavke zadataka"
 
-#: calendarview.cpp:2439
-#, fuzzy, kde-format
-msgid "Copying Failed"
-msgstr "Instalacija nije uspjela."
-
 #: calendarview.cpp:2474
 #, fuzzy, kde-format
 msgid "Unable to move the item to  %1."
 msgstr "Št&ampaj sve stavke zadataka"
-
-#: calendarview.cpp:2474
-#, fuzzy, kde-format
-msgid "Moving Failed"
-msgstr "Instalacija nije uspjela."
 
 #: calendarview.cpp:2684
 #, fuzzy, kde-format
@@ -3643,6 +3643,7 @@ msgstr ""
 
 #: prefs/kprefsdialog.cpp:869
 #, kde-format
+msgctxt "@title:window"
 msgid "Setting Default Preferences"
 msgstr ""
 
@@ -5659,6 +5660,14 @@ msgstr "- %1"
 msgctxt "4 digit year"
 msgid "%1"
 msgstr "- %1"
+
+#, fuzzy
+#~ msgid "Copying Failed"
+#~ msgstr "Instalacija nije uspjela."
+
+#, fuzzy
+#~ msgid "Moving Failed"
+#~ msgstr "Instalacija nije uspjela."
 
 #, fuzzy
 #~| msgid "Destination"
@@ -8507,12 +8516,6 @@ msgstr "- %1"
 #~ msgctxt "@title:window"
 #~ msgid "Edit %1: %2"
 #~ msgstr "Kraj:"
-
-#, fuzzy
-#~| msgid "KOrganizer Confirmation"
-#~ msgctxt "@title:window"
-#~ msgid "KOrganizer Confirmation"
-#~ msgstr "Korganizer: Potvrda"
 
 #, fuzzy
 #~| msgid "Atte&ndees"

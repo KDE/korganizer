@@ -7,7 +7,7 @@ msgid ""
 msgstr ""
 "Project-Id-Version: __kde__kdepim__korganizer\n"
 "Report-Msgid-Bugs-To: https://bugs.kde.org\n"
-"POT-Creation-Date: 2023-09-24 01:44+0000\n"
+"POT-Creation-Date: 2023-09-27 01:41+0000\n"
 "PO-Revision-Date: 2014-01-31 19:03+0100\n"
 "Last-Translator: Samir Ribić <megaribi@epn.ba>\n"
 "Language-Team:  <bs@li.org>\n"
@@ -1139,7 +1139,9 @@ msgid "Unable to save calendar to the file %1."
 msgstr "Ne mogu da snimim kalendar u datoteku %1."
 
 #: actionmanager.cpp:1036
-#, kde-format
+#, fuzzy, kde-format
+#| msgid "Error"
+msgctxt "@title:window"
 msgid "Error"
 msgstr "Greška"
 
@@ -1205,7 +1207,9 @@ msgid "Removing attachments from an email might invalidate its signature."
 msgstr "Uklanjanjem priloga može se pokvariti potpis e-poruke."
 
 #: actionmanager.cpp:1461
-#, kde-format
+#, fuzzy, kde-format
+#| msgid "Remove Attachments"
+msgctxt "@title:window"
 msgid "Remove Attachments"
 msgstr "Ukloni priloge"
 
@@ -1448,7 +1452,7 @@ msgctxt "@info"
 msgid "Unable to copy the item \"%1\" to %2."
 msgstr "Nemoguće kopirati stavku\"%1\" na %2"
 
-#: calendarview.cpp:1458
+#: calendarview.cpp:1458 calendarview.cpp:2439
 #, kde-format
 msgctxt "@title:window"
 msgid "Copying Failed"
@@ -1468,7 +1472,7 @@ msgstr ""
 "Nemoguće premjestiti predmet sa \"%1\" na %2. Kako god, kopija ovog predmeta "
 "je smještena na %3."
 
-#: calendarview.cpp:1521 calendarview.cpp:1537
+#: calendarview.cpp:1521 calendarview.cpp:1537 calendarview.cpp:2474
 #, kde-format
 msgctxt "@title:window"
 msgid "Moving Failed"
@@ -1498,8 +1502,9 @@ msgid "Do you want to dissociate the occurrence on %1 from the recurrence?"
 msgstr "Želite li razdvojiti pojavu %1 od ponavljanja?"
 
 #: calendarview.cpp:1575 calendarview.cpp:1587 calendarview.cpp:2246
-#: calendarview.cpp:2305 calendarview.cpp:2335
-#, kde-format
+#, fuzzy, kde-format
+#| msgid "KOrganizer Confirmation"
+msgctxt "@title:window"
 msgid "KOrganizer Confirmation"
 msgstr "Potvrda KOrganizer-u"
 
@@ -1541,7 +1546,9 @@ msgid "Dissociating the future occurrences failed."
 msgstr "Isključivanje budućih dešavanja nije uspjelo."
 
 #: calendarview.cpp:1616 calendarview.cpp:1618
-#, kde-format
+#, fuzzy, kde-format
+#| msgid "Dissociating Failed"
+msgctxt "@title:window"
 msgid "Dissociating Failed"
 msgstr "Isključivanje nije uspjelo"
 
@@ -1630,6 +1637,11 @@ msgstr ""
 "Stavka kalendara „%1“ ponavlja se u više datuma; želite li zaista da je "
 "obrišete sa svim njenim ponavljanjima?"
 
+#: calendarview.cpp:2305 calendarview.cpp:2335
+#, kde-format
+msgid "KOrganizer Confirmation"
+msgstr "Potvrda KOrganizer-u"
+
 #: calendarview.cpp:2313
 #, kde-format
 msgid "Also Delete &Future"
@@ -1686,7 +1698,9 @@ msgid "Delete all completed to-dos from checked calendars?"
 msgstr "Izbrisati sve završene buduće akcije iz provjerenih kalendara"
 
 #: calendarview.cpp:2415
-#, kde-format
+#, fuzzy, kde-format
+#| msgid "Purge To-dos"
+msgctxt "@title:window"
 msgid "Purge To-dos"
 msgstr "Ukloni obrisane zadatke"
 
@@ -1706,20 +1720,10 @@ msgstr "Nije moguće urediti \"%1\" zato što je zaključano od drugog procesa."
 msgid "Unable to copy the item to %1."
 msgstr "Ne mogu da kopiram stavku u %1."
 
-#: calendarview.cpp:2439
-#, kde-format
-msgid "Copying Failed"
-msgstr "Kopiranje neuspješno"
-
 #: calendarview.cpp:2474
 #, kde-format
 msgid "Unable to move the item to  %1."
 msgstr "Nije moguće pomjeriti stavke na %1."
-
-#: calendarview.cpp:2474
-#, kde-format
-msgid "Moving Failed"
-msgstr "Pomjeranje neuspješno"
 
 #: calendarview.cpp:2684
 #, kde-format
@@ -3933,7 +3937,9 @@ msgstr ""
 "posebne izmjene bit će izgubljene."
 
 #: prefs/kprefsdialog.cpp:869
-#, kde-format
+#, fuzzy, kde-format
+#| msgid "Setting Default Preferences"
+msgctxt "@title:window"
 msgid "Setting Default Preferences"
 msgstr "Postavljam Podrazumijevana Podešavanja"
 
@@ -6300,6 +6306,12 @@ msgstr "%1"
 msgctxt "4 digit year"
 msgid "%1"
 msgstr "%1"
+
+#~ msgid "Copying Failed"
+#~ msgstr "Kopiranje neuspješno"
+
+#~ msgid "Moving Failed"
+#~ msgstr "Pomjeranje neuspješno"
 
 #, fuzzy
 #~| msgid "Send &Invitation to Attendees"

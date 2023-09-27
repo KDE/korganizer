@@ -7,7 +7,7 @@ msgid ""
 msgstr ""
 "Project-Id-Version: korganizer\n"
 "Report-Msgid-Bugs-To: https://bugs.kde.org\n"
-"POT-Creation-Date: 2023-09-24 01:44+0000\n"
+"POT-Creation-Date: 2023-09-27 01:41+0000\n"
 "PO-Revision-Date: 2013-09-08 07:05+0900\n"
 "Last-Translator: Gheyret Kenji <gheyret@gmail.com>\n"
 "Language-Team: Uyghur Computer Science Association <UKIJ@yahoogroups.com>\n"
@@ -1097,7 +1097,9 @@ msgid "Unable to save calendar to the file %1."
 msgstr ""
 
 #: actionmanager.cpp:1036
-#, kde-format
+#, fuzzy, kde-format
+#| msgid "Error"
+msgctxt "@title:window"
 msgid "Error"
 msgstr "خاتالىق"
 
@@ -1162,7 +1164,9 @@ msgid "Removing attachments from an email might invalidate its signature."
 msgstr ""
 
 #: actionmanager.cpp:1461
-#, kde-format
+#, fuzzy, kde-format
+#| msgid "Remove Attachments"
+msgctxt "@title:window"
 msgid "Remove Attachments"
 msgstr "قوشۇلمىنى چىقىرىۋېتىش"
 
@@ -1393,7 +1397,7 @@ msgctxt "@info"
 msgid "Unable to copy the item \"%1\" to %2."
 msgstr ""
 
-#: calendarview.cpp:1458
+#: calendarview.cpp:1458 calendarview.cpp:2439
 #, kde-format
 msgctxt "@title:window"
 msgid "Copying Failed"
@@ -1407,7 +1411,7 @@ msgid ""
 "of this item has been put into %2"
 msgstr ""
 
-#: calendarview.cpp:1521 calendarview.cpp:1537
+#: calendarview.cpp:1521 calendarview.cpp:1537 calendarview.cpp:2474
 #, kde-format
 msgctxt "@title:window"
 msgid "Moving Failed"
@@ -1437,10 +1441,11 @@ msgid "Do you want to dissociate the occurrence on %1 from the recurrence?"
 msgstr ""
 
 #: calendarview.cpp:1575 calendarview.cpp:1587 calendarview.cpp:2246
-#: calendarview.cpp:2305 calendarview.cpp:2335
-#, kde-format
+#, fuzzy, kde-format
+#| msgid "Server Information"
+msgctxt "@title:window"
 msgid "KOrganizer Confirmation"
-msgstr ""
+msgstr "مۇلازىمېتىر ئۇچۇرى"
 
 #: calendarview.cpp:1576
 #, kde-format
@@ -1480,9 +1485,12 @@ msgid "Dissociating the future occurrences failed."
 msgstr ""
 
 #: calendarview.cpp:1616 calendarview.cpp:1618
-#, kde-format
+#, fuzzy, kde-format
+#| msgctxt "@title:window"
+#| msgid "Moving Failed"
+msgctxt "@title:window"
 msgid "Dissociating Failed"
-msgstr ""
+msgstr "يۆتكەش مەغلۇپ بولدى"
 
 #: calendarview.cpp:1618
 #, kde-format
@@ -1562,6 +1570,11 @@ msgid ""
 "to delete it and all its recurrences?"
 msgstr ""
 
+#: calendarview.cpp:2305 calendarview.cpp:2335
+#, kde-format
+msgid "KOrganizer Confirmation"
+msgstr ""
+
 #: calendarview.cpp:2313
 #, kde-format
 msgid "Also Delete &Future"
@@ -1616,9 +1629,11 @@ msgid "Delete all completed to-dos from checked calendars?"
 msgstr "تاماملانغان بارلىق ئىشلارنى ئۆچۈرەمسىز؟"
 
 #: calendarview.cpp:2415
-#, kde-format
+#, fuzzy, kde-format
+#| msgid "To-dos"
+msgctxt "@title:window"
 msgid "Purge To-dos"
-msgstr ""
+msgstr "قىلىدىغان ئىشلار"
 
 #: calendarview.cpp:2416
 #, kde-format
@@ -1636,20 +1651,10 @@ msgstr ""
 msgid "Unable to copy the item to %1."
 msgstr ""
 
-#: calendarview.cpp:2439
-#, kde-format
-msgid "Copying Failed"
-msgstr "كۆچۈرۈش مەغلۇپ بولدى"
-
 #: calendarview.cpp:2474
 #, kde-format
 msgid "Unable to move the item to  %1."
 msgstr ""
-
-#: calendarview.cpp:2474
-#, kde-format
-msgid "Moving Failed"
-msgstr "يۆتكەش مەغلۇپ بولدى"
 
 #: calendarview.cpp:2684
 #, kde-format
@@ -3684,7 +3689,9 @@ msgstr ""
 "ئۆزگەرتىشلەر يوق بولىدۇ."
 
 #: prefs/kprefsdialog.cpp:869
-#, kde-format
+#, fuzzy, kde-format
+#| msgid "Setting Default Preferences"
+msgctxt "@title:window"
 msgid "Setting Default Preferences"
 msgstr "كۆڭۈلدىكى مايىللىقنى بەلگىلەش"
 
@@ -5693,6 +5700,12 @@ msgstr "%1"
 msgctxt "4 digit year"
 msgid "%1"
 msgstr "%1"
+
+#~ msgid "Copying Failed"
+#~ msgstr "كۆچۈرۈش مەغلۇپ بولدى"
+
+#~ msgid "Moving Failed"
+#~ msgstr "يۆتكەش مەغلۇپ بولدى"
 
 #, fuzzy
 #~| msgid "%1"

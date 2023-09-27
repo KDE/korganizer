@@ -6,7 +6,7 @@ msgid ""
 msgstr ""
 "Project-Id-Version: korganizer VERSION\n"
 "Report-Msgid-Bugs-To: https://bugs.kde.org\n"
-"POT-Creation-Date: 2023-09-24 01:44+0000\n"
+"POT-Creation-Date: 2023-09-27 01:41+0000\n"
 "PO-Revision-Date: 2002-11-07 11:37+0200\n"
 "Last-Translator: WEB-Translator <http://kde.af.org.za>\n"
 "Language-Team: AFRIKAANS <AF@lia.org.za>\n"
@@ -1087,6 +1087,7 @@ msgstr "Nie moontlik na handvatsel afgeleë kalender.\n"
 
 #: actionmanager.cpp:1036
 #, kde-format
+msgctxt "@title:window"
 msgid "Error"
 msgstr ""
 
@@ -1152,6 +1153,7 @@ msgstr ""
 
 #: actionmanager.cpp:1461
 #, fuzzy, kde-format
+msgctxt "@title:window"
 msgid "Remove Attachments"
 msgstr "Bywoners"
 
@@ -1374,7 +1376,7 @@ msgctxt "@info"
 msgid "Unable to copy the item \"%1\" to %2."
 msgstr "Nie moontlik na handvatsel afgeleë kalender.\n"
 
-#: calendarview.cpp:1458
+#: calendarview.cpp:1458 calendarview.cpp:2439
 #, fuzzy, kde-format
 msgctxt "@title:window"
 msgid "Copying Failed"
@@ -1388,7 +1390,7 @@ msgid ""
 "of this item has been put into %2"
 msgstr ""
 
-#: calendarview.cpp:1521 calendarview.cpp:1537
+#: calendarview.cpp:1521 calendarview.cpp:1537 calendarview.cpp:2474
 #, fuzzy, kde-format
 msgctxt "@title:window"
 msgid "Moving Failed"
@@ -1418,8 +1420,9 @@ msgid "Do you want to dissociate the occurrence on %1 from the recurrence?"
 msgstr "Lys die aktiwiteite vir die huidige dag"
 
 #: calendarview.cpp:1575 calendarview.cpp:1587 calendarview.cpp:2246
-#: calendarview.cpp:2305 calendarview.cpp:2335
-#, kde-format
+#, fuzzy, kde-format
+#| msgid "KOrganizer Confirmation"
+msgctxt "@title:window"
 msgid "KOrganizer Confirmation"
 msgstr "Korganizer Bevestiging"
 
@@ -1462,6 +1465,7 @@ msgstr "Lys die aktiwiteite vir die huidige dag"
 
 #: calendarview.cpp:1616 calendarview.cpp:1618
 #, fuzzy, kde-format
+msgctxt "@title:window"
 msgid "Dissociating Failed"
 msgstr "Bestemming"
 
@@ -1542,6 +1546,11 @@ msgstr ""
 "Hierdie gebeurtenis herhaal bo veelvuldige datums. Word jy seker jy wil hê "
 "na uitvee Hierdie gebeurtenis en alle sy herhalings?"
 
+#: calendarview.cpp:2305 calendarview.cpp:2335
+#, kde-format
+msgid "KOrganizer Confirmation"
+msgstr "Korganizer Bevestiging"
+
 #: calendarview.cpp:2313
 #, fuzzy, kde-format
 msgid "Also Delete &Future"
@@ -1598,6 +1607,7 @@ msgstr "Uitvee alle klaar To-Dos?"
 
 #: calendarview.cpp:2415
 #, fuzzy, kde-format
+msgctxt "@title:window"
 msgid "Purge To-dos"
 msgstr "Maak skoon To-Dos"
 
@@ -1617,20 +1627,10 @@ msgstr ""
 msgid "Unable to copy the item to %1."
 msgstr "Nie moontlik na handvatsel afgeleë kalender.\n"
 
-#: calendarview.cpp:2439
-#, fuzzy, kde-format
-msgid "Copying Failed"
-msgstr "Bestemming"
-
 #: calendarview.cpp:2474
 #, fuzzy, kde-format
 msgid "Unable to move the item to  %1."
 msgstr "Nie moontlik na handvatsel afgeleë kalender.\n"
-
-#: calendarview.cpp:2474
-#, fuzzy, kde-format
-msgid "Moving Failed"
-msgstr "Bestemming"
 
 #: calendarview.cpp:2684
 #, fuzzy, kde-format
@@ -3651,6 +3651,7 @@ msgstr ""
 
 #: prefs/kprefsdialog.cpp:869
 #, kde-format
+msgctxt "@title:window"
 msgid "Setting Default Preferences"
 msgstr ""
 
@@ -5674,6 +5675,14 @@ msgstr "%1 %"
 msgctxt "4 digit year"
 msgid "%1"
 msgstr "%1 %"
+
+#, fuzzy
+#~ msgid "Copying Failed"
+#~ msgstr "Bestemming"
+
+#, fuzzy
+#~ msgid "Moving Failed"
+#~ msgstr "Bestemming"
 
 #, fuzzy
 #~ msgctxt "A collection of all declined invidations."
@@ -8208,12 +8217,6 @@ msgstr "%1 %"
 #~ msgctxt "@title:window"
 #~ msgid "Edit %1: %2"
 #~ msgstr "Einde Tyd: %1"
-
-#, fuzzy
-#~| msgid "KOrganizer Confirmation"
-#~ msgctxt "@title:window"
-#~ msgid "KOrganizer Confirmation"
-#~ msgstr "Korganizer Bevestiging"
 
 #, fuzzy
 #~ msgctxt "@title:tab"

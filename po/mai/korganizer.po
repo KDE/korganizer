@@ -7,7 +7,7 @@ msgid ""
 msgstr ""
 "Project-Id-Version: korganizer\n"
 "Report-Msgid-Bugs-To: https://bugs.kde.org\n"
-"POT-Creation-Date: 2023-09-24 01:44+0000\n"
+"POT-Creation-Date: 2023-09-27 01:41+0000\n"
 "PO-Revision-Date: 2010-09-24 16:28+0530\n"
 "Last-Translator: Rajesh Ranjan <rajesh672@gmail.com>\n"
 "Language-Team: Maithili <bhashaghar@googlegroups.com>\n"
@@ -1095,7 +1095,9 @@ msgid "Unable to save calendar to the file %1."
 msgstr ""
 
 #: actionmanager.cpp:1036
-#, kde-format
+#, fuzzy, kde-format
+#| msgid "Error"
+msgctxt "@title:window"
 msgid "Error"
 msgstr "त्रुटि"
 
@@ -1160,9 +1162,11 @@ msgid "Removing attachments from an email might invalidate its signature."
 msgstr ""
 
 #: actionmanager.cpp:1461
-#, kde-format
+#, fuzzy, kde-format
+#| msgid "No Attachments"
+msgctxt "@title:window"
 msgid "Remove Attachments"
-msgstr ""
+msgstr "संलग्नक राखैत अछि"
 
 #: actionmanager.cpp:1612
 #, kde-format
@@ -1394,7 +1398,7 @@ msgctxt "@info"
 msgid "Unable to copy the item \"%1\" to %2."
 msgstr ""
 
-#: calendarview.cpp:1458
+#: calendarview.cpp:1458 calendarview.cpp:2439
 #, kde-format
 msgctxt "@title:window"
 msgid "Copying Failed"
@@ -1408,7 +1412,7 @@ msgid ""
 "of this item has been put into %2"
 msgstr ""
 
-#: calendarview.cpp:1521 calendarview.cpp:1537
+#: calendarview.cpp:1521 calendarview.cpp:1537 calendarview.cpp:2474
 #, kde-format
 msgctxt "@title:window"
 msgid "Moving Failed"
@@ -1438,10 +1442,11 @@ msgid "Do you want to dissociate the occurrence on %1 from the recurrence?"
 msgstr ""
 
 #: calendarview.cpp:1575 calendarview.cpp:1587 calendarview.cpp:2246
-#: calendarview.cpp:2305 calendarview.cpp:2335
-#, kde-format
+#, fuzzy, kde-format
+#| msgid "Server Information"
+msgctxt "@title:window"
 msgid "KOrganizer Confirmation"
-msgstr ""
+msgstr "सर्वरक सूचना"
 
 #: calendarview.cpp:1576
 #, kde-format
@@ -1482,6 +1487,7 @@ msgstr ""
 
 #: calendarview.cpp:1616 calendarview.cpp:1618
 #, kde-format
+msgctxt "@title:window"
 msgid "Dissociating Failed"
 msgstr ""
 
@@ -1563,6 +1569,11 @@ msgid ""
 "to delete it and all its recurrences?"
 msgstr ""
 
+#: calendarview.cpp:2305 calendarview.cpp:2335
+#, kde-format
+msgid "KOrganizer Confirmation"
+msgstr ""
+
 #: calendarview.cpp:2313
 #, kde-format
 msgid "Also Delete &Future"
@@ -1616,6 +1627,7 @@ msgstr ""
 
 #: calendarview.cpp:2415
 #, kde-format
+msgctxt "@title:window"
 msgid "Purge To-dos"
 msgstr ""
 
@@ -1635,19 +1647,9 @@ msgstr ""
 msgid "Unable to copy the item to %1."
 msgstr ""
 
-#: calendarview.cpp:2439
-#, kde-format
-msgid "Copying Failed"
-msgstr ""
-
 #: calendarview.cpp:2474
 #, kde-format
 msgid "Unable to move the item to  %1."
-msgstr ""
-
-#: calendarview.cpp:2474
-#, kde-format
-msgid "Moving Failed"
 msgstr ""
 
 #: calendarview.cpp:2684
@@ -3676,6 +3678,7 @@ msgstr ""
 
 #: prefs/kprefsdialog.cpp:869
 #, kde-format
+msgctxt "@title:window"
 msgid "Setting Default Preferences"
 msgstr ""
 
@@ -5928,9 +5931,6 @@ msgstr "%1"
 #~ msgctxt "subitem counter"
 #~ msgid "%1: "
 #~ msgstr "%1: "
-
-#~ msgid "No Attachments"
-#~ msgstr "संलग्नक राखैत अछि"
 
 #~ msgctxt "Spacer for list of attachments"
 #~ msgid "  "

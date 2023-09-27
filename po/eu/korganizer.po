@@ -13,7 +13,7 @@ msgid ""
 msgstr ""
 "Project-Id-Version: korganizer\n"
 "Report-Msgid-Bugs-To: https://bugs.kde.org\n"
-"POT-Creation-Date: 2023-09-24 01:44+0000\n"
+"POT-Creation-Date: 2023-09-27 01:41+0000\n"
 "PO-Revision-Date: 2023-09-21 19:12+0200\n"
 "Last-Translator: Iñigo Salvador Azurmendi <xalba@ni.eus>\n"
 "Language-Team: Basque <kde-i18n-eu@kde.org>\n"
@@ -1124,7 +1124,9 @@ msgid "Unable to save calendar to the file %1."
 msgstr "Ez da egutegia %1 fitxategian gordetzeko gai."
 
 #: actionmanager.cpp:1036
-#, kde-format
+#, fuzzy, kde-format
+#| msgid "Error"
+msgctxt "@title:window"
 msgid "Error"
 msgstr "Errorea"
 
@@ -1189,7 +1191,9 @@ msgid "Removing attachments from an email might invalidate its signature."
 msgstr "E-posta batetik eranskinak kentzeak bere sinadura baliogabetu dezake."
 
 #: actionmanager.cpp:1461
-#, kde-format
+#, fuzzy, kde-format
+#| msgid "Remove Attachments"
+msgctxt "@title:window"
 msgid "Remove Attachments"
 msgstr "Kendu eranskinak"
 
@@ -1422,7 +1426,7 @@ msgctxt "@info"
 msgid "Unable to copy the item \"%1\" to %2."
 msgstr "Ez da \"%1\" elementua %2(e)ra kopiatzeko gai."
 
-#: calendarview.cpp:1458
+#: calendarview.cpp:1458 calendarview.cpp:2439
 #, kde-format
 msgctxt "@title:window"
 msgid "Copying Failed"
@@ -1438,7 +1442,7 @@ msgstr ""
 "Ez da \"%1\" elementua jatorrizko egutegitik kentzeko gai. Dena den, "
 "elementu horren kopia bat %2(e)an ipini da"
 
-#: calendarview.cpp:1521 calendarview.cpp:1537
+#: calendarview.cpp:1521 calendarview.cpp:1537 calendarview.cpp:2474
 #, kde-format
 msgctxt "@title:window"
 msgid "Moving Failed"
@@ -1469,10 +1473,11 @@ msgid "Do you want to dissociate the occurrence on %1 from the recurrence?"
 msgstr "%1(e)ko errepika errepikatzetik banandu nahi duzu?"
 
 #: calendarview.cpp:1575 calendarview.cpp:1587 calendarview.cpp:2246
-#: calendarview.cpp:2305 calendarview.cpp:2335
-#, kde-format
+#, fuzzy, kde-format
+#| msgid "KOrganizer Confirmation"
+msgctxt "@title:window"
 msgid "KOrganizer Confirmation"
-msgstr "«KOrganizer»en berrespena"
+msgstr "KOrganizer-en berrespena"
 
 #: calendarview.cpp:1576
 #, kde-format
@@ -1514,7 +1519,9 @@ msgid "Dissociating the future occurrences failed."
 msgstr "Etorkizuneko errepikak banatzea huts egin du."
 
 #: calendarview.cpp:1616 calendarview.cpp:1618
-#, kde-format
+#, fuzzy, kde-format
+#| msgid "Dissociating Failed"
+msgctxt "@title:window"
 msgid "Dissociating Failed"
 msgstr "Banantzea huts egin du"
 
@@ -1600,6 +1607,11 @@ msgstr ""
 "Egunkariko \"%1\" elementua data ezberdinetan errepikatzen da; ziur zaude "
 "hura eta haren errepika guztiak ezabatu nahi dituzula?"
 
+#: calendarview.cpp:2305 calendarview.cpp:2335
+#, kde-format
+msgid "KOrganizer Confirmation"
+msgstr "«KOrganizer»en berrespena"
+
 #: calendarview.cpp:2313
 #, kde-format
 msgid "Also Delete &Future"
@@ -1658,7 +1670,9 @@ msgid "Delete all completed to-dos from checked calendars?"
 msgstr "Markatutako egutegietan osatutako zeregin guztiak ezabatu?"
 
 #: calendarview.cpp:2415
-#, kde-format
+#, fuzzy, kde-format
+#| msgid "Purge To-dos"
+msgctxt "@title:window"
 msgid "Purge To-dos"
 msgstr "Betiko ezabatu zereginak"
 
@@ -1678,20 +1692,10 @@ msgstr "Ez da \"%1\" editatzeko gai, beste prozesu batek trabatuta duelako."
 msgid "Unable to copy the item to %1."
 msgstr "Ez da elementua %1(e)ra kopiatzeko gai."
 
-#: calendarview.cpp:2439
-#, kde-format
-msgid "Copying Failed"
-msgstr "Kopiatzea huts egin du"
-
 #: calendarview.cpp:2474
 #, kde-format
 msgid "Unable to move the item to  %1."
 msgstr "Ez da elementua %1(e)ra mugitzeko gai."
-
-#: calendarview.cpp:2474
-#, kde-format
-msgid "Moving Failed"
-msgstr "Mugitzea huts egin du"
 
 #: calendarview.cpp:2684
 #, kde-format
@@ -3762,7 +3766,9 @@ msgstr ""
 "eginiko aldaketa guztiak galdu egingo dira."
 
 #: prefs/kprefsdialog.cpp:869
-#, kde-format
+#, fuzzy, kde-format
+#| msgid "Setting Default Preferences"
+msgctxt "@title:window"
 msgid "Setting Default Preferences"
 msgstr "Hobespen lehenetsiak ezartzen"
 
@@ -6043,6 +6049,12 @@ msgstr "%1"
 msgctxt "4 digit year"
 msgid "%1"
 msgstr "%1"
+
+#~ msgid "Copying Failed"
+#~ msgstr "Kopiatzea huts egin du"
+
+#~ msgid "Moving Failed"
+#~ msgstr "Mugitzea huts egin du"
 
 #~ msgctxt "A collection of all declined invidations."
 #~ msgid "Declined Invitations"
@@ -10241,12 +10253,6 @@ msgstr "%1"
 #~ msgctxt "@title:window"
 #~ msgid "Edit %1: %2"
 #~ msgstr "Editatu %1"
-
-#, fuzzy
-#~| msgid "KOrganizer Confirmation"
-#~ msgctxt "@title:window"
-#~ msgid "KOrganizer Confirmation"
-#~ msgstr "KOrganizer-en berrespena"
 
 #, fuzzy
 #~| msgid "Atte&ndees"

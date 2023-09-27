@@ -15,7 +15,7 @@ msgid ""
 msgstr ""
 "Project-Id-Version: korganizer\n"
 "Report-Msgid-Bugs-To: https://bugs.kde.org\n"
-"POT-Creation-Date: 2023-09-24 01:44+0000\n"
+"POT-Creation-Date: 2023-09-27 01:41+0000\n"
 "PO-Revision-Date: 2002-11-09 12:52+0200\n"
 "Last-Translator: Thelma Lungcuzo <thelma@translate.org.za>\n"
 "Language-Team: Xhosa <xhosa@translate.org.za>\n"
@@ -1099,6 +1099,7 @@ msgstr "Ayikwazi ukuphatha ikhalenda ebekwe kude.\n"
 
 #: actionmanager.cpp:1036
 #, fuzzy, kde-format
+msgctxt "@title:window"
 msgid "Error"
 msgstr "Akukho Mposiso"
 
@@ -1164,6 +1165,7 @@ msgstr ""
 
 #: actionmanager.cpp:1461
 #, fuzzy, kde-format
+msgctxt "@title:window"
 msgid "Remove Attachments"
 msgstr "Abathathi nxaxheba"
 
@@ -1388,7 +1390,7 @@ msgctxt "@info"
 msgid "Unable to copy the item \"%1\" to %2."
 msgstr "Ayikwazi ukuphatha ikhalenda ebekwe kude.\n"
 
-#: calendarview.cpp:1458
+#: calendarview.cpp:1458 calendarview.cpp:2439
 #, fuzzy, kde-format
 msgctxt "@title:window"
 msgid "Copying Failed"
@@ -1402,7 +1404,7 @@ msgid ""
 "of this item has been put into %2"
 msgstr ""
 
-#: calendarview.cpp:1521 calendarview.cpp:1537
+#: calendarview.cpp:1521 calendarview.cpp:1537 calendarview.cpp:2474
 #, fuzzy, kde-format
 msgctxt "@title:window"
 msgid "Moving Failed"
@@ -1432,8 +1434,9 @@ msgid "Do you want to dissociate the occurrence on %1 from the recurrence?"
 msgstr "Dwelisa iziganeko zemini yangoku"
 
 #: calendarview.cpp:1575 calendarview.cpp:1587 calendarview.cpp:2246
-#: calendarview.cpp:2305 calendarview.cpp:2335
-#, kde-format
+#, fuzzy, kde-format
+#| msgid "KOrganizer Confirmation"
+msgctxt "@title:window"
 msgid "KOrganizer Confirmation"
 msgstr "Uqinisekiso lwe KOrganizer"
 
@@ -1476,6 +1479,7 @@ msgstr "Dwelisa iziganeko zemini yangoku"
 
 #: calendarview.cpp:1616 calendarview.cpp:1618
 #, fuzzy, kde-format
+msgctxt "@title:window"
 msgid "Dissociating Failed"
 msgstr "Indawo ephelela kuyo"
 
@@ -1557,6 +1561,11 @@ msgstr ""
 "ukuba ufuna ukucima esi siganeko kunye nazo zonke izinto eziphindezenzeka "
 "zayo?"
 
+#: calendarview.cpp:2305 calendarview.cpp:2335
+#, kde-format
+msgid "KOrganizer Confirmation"
+msgstr "Uqinisekiso lwe KOrganizer"
+
 #: calendarview.cpp:2313
 #, fuzzy, kde-format
 msgid "Also Delete &Future"
@@ -1615,6 +1624,7 @@ msgstr "Cima zonke ezigqityiweyo Ku-Dos?"
 
 #: calendarview.cpp:2415
 #, fuzzy, kde-format
+msgctxt "@title:window"
 msgid "Purge To-dos"
 msgstr "Coca Ku-Dos"
 
@@ -1634,20 +1644,10 @@ msgstr ""
 msgid "Unable to copy the item to %1."
 msgstr "Ayikwazi ukuphatha ikhalenda ebekwe kude.\n"
 
-#: calendarview.cpp:2439
-#, fuzzy, kde-format
-msgid "Copying Failed"
-msgstr "Indawo ephelela kuyo"
-
 #: calendarview.cpp:2474
 #, fuzzy, kde-format
 msgid "Unable to move the item to  %1."
 msgstr "Ayikwazi ukuphatha ikhalenda ebekwe kude.\n"
-
-#: calendarview.cpp:2474
-#, fuzzy, kde-format
-msgid "Moving Failed"
-msgstr "Indawo ephelela kuyo"
 
 #: calendarview.cpp:2684
 #, fuzzy, kde-format
@@ -3660,7 +3660,9 @@ msgstr ""
 "iinguqulelo kancinane zesiko zizakulahleka."
 
 #: prefs/kprefsdialog.cpp:869
-#, kde-format
+#, fuzzy, kde-format
+#| msgid "Setting Default Preferences"
+msgctxt "@title:window"
 msgid "Setting Default Preferences"
 msgstr "Icwangcisa Ezikhethwayo Ezingagqibekanga"
 
@@ -5676,6 +5678,14 @@ msgstr "%1 %"
 msgctxt "4 digit year"
 msgid "%1"
 msgstr "%1 %"
+
+#, fuzzy
+#~ msgid "Copying Failed"
+#~ msgstr "Indawo ephelela kuyo"
+
+#, fuzzy
+#~ msgid "Moving Failed"
+#~ msgstr "Indawo ephelela kuyo"
 
 #, fuzzy
 #~ msgctxt "A collection of all declined invidations."
@@ -8396,12 +8406,6 @@ msgstr "%1 %"
 #~ msgctxt "@title:window"
 #~ msgid "Edit %1: %2"
 #~ msgstr "Ixesha Lesiphelo: %1"
-
-#, fuzzy
-#~| msgid "KOrganizer Confirmation"
-#~ msgctxt "@title:window"
-#~ msgid "KOrganizer Confirmation"
-#~ msgstr "Uqinisekiso lwe KOrganizer"
 
 #, fuzzy
 #~ msgctxt "@title:tab"

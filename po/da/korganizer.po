@@ -10,7 +10,7 @@ msgid ""
 msgstr ""
 "Project-Id-Version: korganizer\n"
 "Report-Msgid-Bugs-To: https://bugs.kde.org\n"
-"POT-Creation-Date: 2023-09-24 01:44+0000\n"
+"POT-Creation-Date: 2023-09-27 01:41+0000\n"
 "PO-Revision-Date: 2020-08-01 11:26+0200\n"
 "Last-Translator: Martin Schlander <mschlander@opensuse.org>\n"
 "Language-Team: Danish <kde-i18n-doc@kde.org>\n"
@@ -1099,7 +1099,9 @@ msgid "Unable to save calendar to the file %1."
 msgstr "Kan ikke gemme kalenderen til filen %1."
 
 #: actionmanager.cpp:1036
-#, kde-format
+#, fuzzy, kde-format
+#| msgid "Error"
+msgctxt "@title:window"
 msgid "Error"
 msgstr "Fejl"
 
@@ -1164,7 +1166,9 @@ msgid "Removing attachments from an email might invalidate its signature."
 msgstr "Fjernelse af bilag fra en e-mail kan ugyldiggøre dens underskrift."
 
 #: actionmanager.cpp:1461
-#, kde-format
+#, fuzzy, kde-format
+#| msgid "Remove Attachments"
+msgctxt "@title:window"
 msgid "Remove Attachments"
 msgstr "Fjern bilag"
 
@@ -1397,7 +1401,7 @@ msgctxt "@info"
 msgid "Unable to copy the item \"%1\" to %2."
 msgstr "Kan ikke kopiere elementet \"%1\" til %2."
 
-#: calendarview.cpp:1458
+#: calendarview.cpp:1458 calendarview.cpp:2439
 #, kde-format
 msgctxt "@title:window"
 msgid "Copying Failed"
@@ -1417,7 +1421,7 @@ msgstr ""
 "Kan ikke fjerne elementet \"%1\" fra %2. En kopi af dette element er dog "
 "blevet placeret i %3."
 
-#: calendarview.cpp:1521 calendarview.cpp:1537
+#: calendarview.cpp:1521 calendarview.cpp:1537 calendarview.cpp:2474
 #, kde-format
 msgctxt "@title:window"
 msgid "Moving Failed"
@@ -1449,8 +1453,8 @@ msgid "Do you want to dissociate the occurrence on %1 from the recurrence?"
 msgstr "Vil du dissociere forekomsten %1 fra gentagelsen?"
 
 #: calendarview.cpp:1575 calendarview.cpp:1587 calendarview.cpp:2246
-#: calendarview.cpp:2305 calendarview.cpp:2335
 #, kde-format
+msgctxt "@title:window"
 msgid "KOrganizer Confirmation"
 msgstr "KOrganizer-bekræftelse"
 
@@ -1494,7 +1498,9 @@ msgid "Dissociating the future occurrences failed."
 msgstr "Dissociering af fremtidig forekomst mislykkedes"
 
 #: calendarview.cpp:1616 calendarview.cpp:1618
-#, kde-format
+#, fuzzy, kde-format
+#| msgid "Dissociating Failed"
+msgctxt "@title:window"
 msgid "Dissociating Failed"
 msgstr "Dissociering mislykkedes"
 
@@ -1582,6 +1588,11 @@ msgstr ""
 "Kalenderelementet \"%1\" gentages over flere datoer. Vil du virkelig slette "
 "det, og alle dets gentagelser?"
 
+#: calendarview.cpp:2305 calendarview.cpp:2335
+#, kde-format
+msgid "KOrganizer Confirmation"
+msgstr "KOrganizer-bekræftelse"
+
 #: calendarview.cpp:2313
 #, kde-format
 msgid "Also Delete &Future"
@@ -1639,7 +1650,9 @@ msgid "Delete all completed to-dos from checked calendars?"
 msgstr "Slet alle gennemførte gøremål fra markerede kalendere?"
 
 #: calendarview.cpp:2415
-#, kde-format
+#, fuzzy, kde-format
+#| msgid "Purge To-dos"
+msgctxt "@title:window"
 msgid "Purge To-dos"
 msgstr "Ryd gøremål"
 
@@ -1659,20 +1672,10 @@ msgstr "Kan ikke redigere \"%1\" fordi den er låst af en anden proces."
 msgid "Unable to copy the item to %1."
 msgstr "Kan ikke kopiere elementet til %1"
 
-#: calendarview.cpp:2439
-#, kde-format
-msgid "Copying Failed"
-msgstr "Kopiering mislykkedes"
-
 #: calendarview.cpp:2474
 #, kde-format
 msgid "Unable to move the item to  %1."
 msgstr "Kan ikke flytte elementet til %1."
-
-#: calendarview.cpp:2474
-#, kde-format
-msgid "Moving Failed"
-msgstr "Flytning mislykkedes"
 
 #: calendarview.cpp:2684
 #, kde-format
@@ -3770,7 +3773,9 @@ msgstr ""
 "brugervalgte ændringer vil gå tabt."
 
 #: prefs/kprefsdialog.cpp:869
-#, kde-format
+#, fuzzy, kde-format
+#| msgid "Setting Default Preferences"
+msgctxt "@title:window"
 msgid "Setting Default Preferences"
 msgstr "Opsætning af standardindstillinger"
 
@@ -6116,6 +6121,12 @@ msgstr "%1"
 msgctxt "4 digit year"
 msgid "%1"
 msgstr "%1"
+
+#~ msgid "Copying Failed"
+#~ msgstr "Kopiering mislykkedes"
+
+#~ msgid "Moving Failed"
+#~ msgstr "Flytning mislykkedes"
 
 #~ msgctxt "A collection of all declined invidations."
 #~ msgid "Declined Invitations"
@@ -10412,10 +10423,6 @@ msgstr "%1"
 #~ msgctxt "@info"
 #~ msgid "Do you really want to cancel?"
 #~ msgstr "Vil du virkelig annullere?"
-
-#~ msgctxt "@title:window"
-#~ msgid "KOrganizer Confirmation"
-#~ msgstr "KOrganizer-bekræftelse"
 
 #~ msgctxt "@title:tab"
 #~ msgid "Atte&ndees"

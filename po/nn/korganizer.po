@@ -9,7 +9,7 @@ msgid ""
 msgstr ""
 "Project-Id-Version: korganizer\n"
 "Report-Msgid-Bugs-To: https://bugs.kde.org\n"
-"POT-Creation-Date: 2023-09-24 01:44+0000\n"
+"POT-Creation-Date: 2023-09-27 01:41+0000\n"
 "PO-Revision-Date: 2021-10-18 20:25+0200\n"
 "Last-Translator: Karl Ove Hufthammer <karl@huftis.org>\n"
 "Language-Team: Norwegian Nynorsk <l10n-no@lister.huftis.org>\n"
@@ -1072,7 +1072,9 @@ msgid "Unable to save calendar to the file %1."
 msgstr "Klarte ikkje lagra kalenderen til fila «%1»."
 
 #: actionmanager.cpp:1036
-#, kde-format
+#, fuzzy, kde-format
+#| msgid "Error"
+msgctxt "@title:window"
 msgid "Error"
 msgstr "Feil"
 
@@ -1137,7 +1139,9 @@ msgid "Removing attachments from an email might invalidate its signature."
 msgstr "Å fjerna vedlegg frå ein e-post kan gjera signaturen ugyldig."
 
 #: actionmanager.cpp:1461
-#, kde-format
+#, fuzzy, kde-format
+#| msgid "Remove Attachments"
+msgctxt "@title:window"
 msgid "Remove Attachments"
 msgstr "Fjern vedlegg"
 
@@ -1363,7 +1367,7 @@ msgctxt "@info"
 msgid "Unable to copy the item \"%1\" to %2."
 msgstr "Klarte ikkje kopiera elementet «%1» til %2."
 
-#: calendarview.cpp:1458
+#: calendarview.cpp:1458 calendarview.cpp:2439
 #, kde-format
 msgctxt "@title:window"
 msgid "Copying Failed"
@@ -1377,7 +1381,7 @@ msgid ""
 "of this item has been put into %2"
 msgstr ""
 
-#: calendarview.cpp:1521 calendarview.cpp:1537
+#: calendarview.cpp:1521 calendarview.cpp:1537 calendarview.cpp:2474
 #, kde-format
 msgctxt "@title:window"
 msgid "Moving Failed"
@@ -1407,8 +1411,9 @@ msgid "Do you want to dissociate the occurrence on %1 from the recurrence?"
 msgstr ""
 
 #: calendarview.cpp:1575 calendarview.cpp:1587 calendarview.cpp:2246
-#: calendarview.cpp:2305 calendarview.cpp:2335
-#, kde-format
+#, fuzzy, kde-format
+#| msgid "KOrganizer Confirmation"
+msgctxt "@title:window"
 msgid "KOrganizer Confirmation"
 msgstr "Kalender-stadfesting"
 
@@ -1450,7 +1455,9 @@ msgid "Dissociating the future occurrences failed."
 msgstr "Klarte ikkje kopla fri frå framtidige gjentakingar."
 
 #: calendarview.cpp:1616 calendarview.cpp:1618
-#, kde-format
+#, fuzzy, kde-format
+#| msgid "Dissociating Failed"
+msgctxt "@title:window"
 msgid "Dissociating Failed"
 msgstr "Feil ved frikopling"
 
@@ -1535,6 +1542,11 @@ msgstr ""
 "Elementet «%1» vert gjenteke over fleire datoar. Er du sikker på at du vil "
 "sletta elementet og alle gjentakingane?"
 
+#: calendarview.cpp:2305 calendarview.cpp:2335
+#, kde-format
+msgid "KOrganizer Confirmation"
+msgstr "Kalender-stadfesting"
+
 #: calendarview.cpp:2313
 #, kde-format
 msgid "Also Delete &Future"
@@ -1590,7 +1602,9 @@ msgid "Delete all completed to-dos from checked calendars?"
 msgstr ""
 
 #: calendarview.cpp:2415
-#, kde-format
+#, fuzzy, kde-format
+#| msgid "Purge To-dos"
+msgctxt "@title:window"
 msgid "Purge To-dos"
 msgstr "Slett oppgåver"
 
@@ -1610,20 +1624,10 @@ msgstr "Kan ikkje redigera «%1», då ho er låst av ein annan prosess."
 msgid "Unable to copy the item to %1."
 msgstr "Klarte ikkje kopiera elementet til %1."
 
-#: calendarview.cpp:2439
-#, kde-format
-msgid "Copying Failed"
-msgstr "Feil ved kopiering"
-
 #: calendarview.cpp:2474
 #, kde-format
 msgid "Unable to move the item to  %1."
 msgstr "Klarte ikkje flytta elementet til %1."
-
-#: calendarview.cpp:2474
-#, kde-format
-msgid "Moving Failed"
-msgstr "Feil ved flytting"
 
 #: calendarview.cpp:2684
 #, kde-format
@@ -3638,6 +3642,7 @@ msgstr ""
 
 #: prefs/kprefsdialog.cpp:869
 #, kde-format
+msgctxt "@title:window"
 msgid "Setting Default Preferences"
 msgstr ""
 
@@ -5755,3 +5760,9 @@ msgstr "%1"
 msgctxt "4 digit year"
 msgid "%1"
 msgstr "%1"
+
+#~ msgid "Copying Failed"
+#~ msgstr "Feil ved kopiering"
+
+#~ msgid "Moving Failed"
+#~ msgstr "Feil ved flytting"

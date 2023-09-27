@@ -10,7 +10,7 @@ msgid ""
 msgstr ""
 "Project-Id-Version: korganizer\n"
 "Report-Msgid-Bugs-To: https://bugs.kde.org\n"
-"POT-Creation-Date: 2023-09-24 01:44+0000\n"
+"POT-Creation-Date: 2023-09-27 01:41+0000\n"
 "PO-Revision-Date: 2019-11-05 20:02+0100\n"
 "Last-Translator: Matej Mrenica <matejm98mthw@gmail.com>\n"
 "Language-Team: Slovak <kde-i18n-doc@kde.org>\n"
@@ -1135,7 +1135,9 @@ msgid "Unable to save calendar to the file %1."
 msgstr "Nepodarilo sa uložiť kalendár do súboru %1."
 
 #: actionmanager.cpp:1036
-#, kde-format
+#, fuzzy, kde-format
+#| msgid "Error"
+msgctxt "@title:window"
 msgid "Error"
 msgstr "Chyba"
 
@@ -1200,7 +1202,9 @@ msgid "Removing attachments from an email might invalidate its signature."
 msgstr "Odstránenie prílohy z e-mailu môže zneplatniť jeho ​​podpis."
 
 #: actionmanager.cpp:1461
-#, kde-format
+#, fuzzy, kde-format
+#| msgid "Remove Attachments"
+msgctxt "@title:window"
 msgid "Remove Attachments"
 msgstr "Odstrániť prílohy"
 
@@ -1441,7 +1445,7 @@ msgctxt "@info"
 msgid "Unable to copy the item \"%1\" to %2."
 msgstr "Nepodarilo sa skopírovať položku \"%1\" do %2."
 
-#: calendarview.cpp:1458
+#: calendarview.cpp:1458 calendarview.cpp:2439
 #, kde-format
 msgctxt "@title:window"
 msgid "Copying Failed"
@@ -1461,7 +1465,7 @@ msgstr ""
 "Nemožno odstrániť položku \"%1\" z %2. Avšak, kópia tejto položky bola "
 "uložená do %3."
 
-#: calendarview.cpp:1521 calendarview.cpp:1537
+#: calendarview.cpp:1521 calendarview.cpp:1537 calendarview.cpp:2474
 #, kde-format
 msgctxt "@title:window"
 msgid "Moving Failed"
@@ -1491,8 +1495,9 @@ msgid "Do you want to dissociate the occurrence on %1 from the recurrence?"
 msgstr "Chcete oddeliť výskyt na %1 z opakovania?"
 
 #: calendarview.cpp:1575 calendarview.cpp:1587 calendarview.cpp:2246
-#: calendarview.cpp:2305 calendarview.cpp:2335
-#, kde-format
+#, fuzzy, kde-format
+#| msgid "KOrganizer Confirmation"
+msgctxt "@title:window"
 msgid "KOrganizer Confirmation"
 msgstr "KOrganizer Potvrdenie"
 
@@ -1534,7 +1539,9 @@ msgid "Dissociating the future occurrences failed."
 msgstr "Zrušiť asociáciu udalosti od opakovania"
 
 #: calendarview.cpp:1616 calendarview.cpp:1618
-#, kde-format
+#, fuzzy, kde-format
+#| msgid "Dissociating Failed"
+msgctxt "@title:window"
 msgid "Dissociating Failed"
 msgstr "Inštalácia zlyhala."
 
@@ -1621,6 +1628,11 @@ msgstr ""
 "Položka kalendára  \"%1\" je naplánovaná na viaceré dátumy. Ste si istý, že "
 "ju chcete zmazať a aj všetky jej opakovania?"
 
+#: calendarview.cpp:2305 calendarview.cpp:2335
+#, kde-format
+msgid "KOrganizer Confirmation"
+msgstr "KOrganizer Potvrdenie"
+
 #: calendarview.cpp:2313
 #, kde-format
 msgid "Also Delete &Future"
@@ -1679,7 +1691,9 @@ msgid "Delete all completed to-dos from checked calendars?"
 msgstr "Odstrániť všetky dokončené úlohy z označených kalendárov?"
 
 #: calendarview.cpp:2415
-#, kde-format
+#, fuzzy, kde-format
+#| msgid "Purge To-dos"
+msgctxt "@title:window"
 msgid "Purge To-dos"
 msgstr "Vyčistiť úlohy"
 
@@ -1699,20 +1713,10 @@ msgstr "Nemožno upraviť \"%1\", pretože je zamknutý iným procesom."
 msgid "Unable to copy the item to %1."
 msgstr "Nepodarilo sa skopírovať položku do %1."
 
-#: calendarview.cpp:2439
-#, kde-format
-msgid "Copying Failed"
-msgstr "Plánovanie zlyhalo"
-
 #: calendarview.cpp:2474
 #, kde-format
 msgid "Unable to move the item to  %1."
 msgstr "Nemôžem presunúť položku do %1."
-
-#: calendarview.cpp:2474
-#, kde-format
-msgid "Moving Failed"
-msgstr "Plánovanie zlyhalo"
 
 #: calendarview.cpp:2684
 #, kde-format
@@ -3851,7 +3855,9 @@ msgstr ""
 "užívateľom zmené nastavenia sa nenávratne stratia."
 
 #: prefs/kprefsdialog.cpp:869
-#, kde-format
+#, fuzzy, kde-format
+#| msgid "Setting Default Preferences"
+msgctxt "@title:window"
 msgid "Setting Default Preferences"
 msgstr "Obnovuje pôvodné nastavenia"
 
@@ -6201,6 +6207,12 @@ msgstr "%1"
 msgctxt "4 digit year"
 msgid "%1"
 msgstr "%1"
+
+#~ msgid "Copying Failed"
+#~ msgstr "Plánovanie zlyhalo"
+
+#~ msgid "Moving Failed"
+#~ msgstr "Plánovanie zlyhalo"
 
 #~ msgctxt "A collection of all declined invidations."
 #~ msgid "Declined Invitations"

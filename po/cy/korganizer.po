@@ -11,7 +11,7 @@ msgid ""
 msgstr ""
 "Project-Id-Version: korganizer\n"
 "Report-Msgid-Bugs-To: https://bugs.kde.org\n"
-"POT-Creation-Date: 2023-09-24 01:44+0000\n"
+"POT-Creation-Date: 2023-09-27 01:41+0000\n"
 "PO-Revision-Date: 2004-02-25 13:53+0000\n"
 "Last-Translator: KD at KGyfieithu <kyfieithu@dotmon.com>\n"
 "Language-Team: Cymraeg <cy@li.org>\n"
@@ -1115,6 +1115,7 @@ msgstr "Methu cadw'r eitem i-wneud"
 
 #: actionmanager.cpp:1036
 #, fuzzy, kde-format
+msgctxt "@title:window"
 msgid "Error"
 msgstr "Dim Gwall"
 
@@ -1181,6 +1182,7 @@ msgstr ""
 #: actionmanager.cpp:1461
 #, fuzzy, kde-format
 #| msgid "Attach&ments"
+msgctxt "@title:window"
 msgid "Remove Attachments"
 msgstr "Atodia&dau"
 
@@ -1409,7 +1411,7 @@ msgctxt "@info"
 msgid "Unable to copy the item \"%1\" to %2."
 msgstr "Methu cadw'r eitem i-wneud"
 
-#: calendarview.cpp:1458
+#: calendarview.cpp:1458 calendarview.cpp:2439
 #, fuzzy, kde-format
 msgctxt "@title:window"
 msgid "Copying Failed"
@@ -1423,7 +1425,7 @@ msgid ""
 "of this item has been put into %2"
 msgstr ""
 
-#: calendarview.cpp:1521 calendarview.cpp:1537
+#: calendarview.cpp:1521 calendarview.cpp:1537 calendarview.cpp:2474
 #, fuzzy, kde-format
 msgctxt "@title:window"
 msgid "Moving Failed"
@@ -1453,8 +1455,9 @@ msgid "Do you want to dissociate the occurrence on %1 from the recurrence?"
 msgstr "Rhestri digwyddiadau'r diwrnod cyfredol"
 
 #: calendarview.cpp:1575 calendarview.cpp:1587 calendarview.cpp:2246
-#: calendarview.cpp:2305 calendarview.cpp:2335
-#, kde-format
+#, fuzzy, kde-format
+#| msgid "KOrganizer Confirmation"
+msgctxt "@title:window"
 msgid "KOrganizer Confirmation"
 msgstr "Cadarnhâd KOrganizer"
 
@@ -1498,6 +1501,7 @@ msgstr "Rhestri digwyddiadau'r diwrnod cyfredol"
 
 #: calendarview.cpp:1616 calendarview.cpp:1618
 #, fuzzy, kde-format
+msgctxt "@title:window"
 msgid "Dissociating Failed"
 msgstr "Methodd y gosod."
 
@@ -1580,6 +1584,11 @@ msgstr ""
 "Mae'r digwyddiad hyn yn ail-ddigwydd dros mwy nag un dyddiad. A ydych chi'n "
 "siŵr eich bod eisiau dileu y digwyddiad a phob un o'i ail-ddigwyddiadau?"
 
+#: calendarview.cpp:2305 calendarview.cpp:2335
+#, kde-format
+msgid "KOrganizer Confirmation"
+msgstr "Cadarnhâd KOrganizer"
+
 #: calendarview.cpp:2313
 #, fuzzy, kde-format
 msgid "Also Delete &Future"
@@ -1639,7 +1648,9 @@ msgid "Delete all completed to-dos from checked calendars?"
 msgstr "Dileu pob I'w-Wneud sydd wedi eu gorffen?"
 
 #: calendarview.cpp:2415
-#, kde-format
+#, fuzzy, kde-format
+#| msgid "Purge To-dos"
+msgctxt "@title:window"
 msgid "Purge To-dos"
 msgstr "Carthu I-Wneudau"
 
@@ -1659,20 +1670,10 @@ msgstr "Methu golygu'r nifer.  Cloir gan broses arall."
 msgid "Unable to copy the item to %1."
 msgstr "Methu cadw'r eitem i-wneud"
 
-#: calendarview.cpp:2439
-#, fuzzy, kde-format
-msgid "Copying Failed"
-msgstr "Methodd y gosod."
-
 #: calendarview.cpp:2474
 #, fuzzy, kde-format
 msgid "Unable to move the item to  %1."
 msgstr "Methu cadw'r eitem i-wneud"
-
-#: calendarview.cpp:2474
-#, fuzzy, kde-format
-msgid "Moving Failed"
-msgstr "Methodd y gosod."
 
 #: calendarview.cpp:2684
 #, fuzzy, kde-format
@@ -3729,7 +3730,9 @@ msgstr ""
 "addasiad."
 
 #: prefs/kprefsdialog.cpp:869
-#, kde-format
+#, fuzzy, kde-format
+#| msgid "Setting Default Preferences"
+msgctxt "@title:window"
 msgid "Setting Default Preferences"
 msgstr "Gosod Hoffiannau Rhagosod"
 
@@ -5780,6 +5783,14 @@ msgstr "%1"
 msgctxt "4 digit year"
 msgid "%1"
 msgstr "%1"
+
+#, fuzzy
+#~ msgid "Copying Failed"
+#~ msgstr "Methodd y gosod."
+
+#, fuzzy
+#~ msgid "Moving Failed"
+#~ msgstr "Methodd y gosod."
 
 #, fuzzy
 #~ msgctxt "A collection of all declined invidations."
@@ -9041,12 +9052,6 @@ msgstr "%1"
 #~ msgctxt "@title:window"
 #~ msgid "Edit %1: %2"
 #~ msgstr "Golygu %1"
-
-#, fuzzy
-#~| msgid "KOrganizer Confirmation"
-#~ msgctxt "@title:window"
-#~ msgid "KOrganizer Confirmation"
-#~ msgstr "Cadarnhâd KOrganizer"
 
 #, fuzzy
 #~| msgid "Atte&ndees"

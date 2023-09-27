@@ -8,7 +8,7 @@ msgid ""
 msgstr ""
 "Project-Id-Version: korganizer\n"
 "Report-Msgid-Bugs-To: https://bugs.kde.org\n"
-"POT-Creation-Date: 2023-09-24 01:44+0000\n"
+"POT-Creation-Date: 2023-09-27 01:41+0000\n"
 "PO-Revision-Date: 2012-01-13 10:32+0330\n"
 "Last-Translator: Mohammad Reza Mirdamadi <mohi@ubuntu.ir>\n"
 "Language-Team: Farsi (Persian) <>\n"
@@ -1143,7 +1143,9 @@ msgid "Unable to save calendar to the file %1."
 msgstr "قادر به ذخیره تقویم در پرونده %1 نیست."
 
 #: actionmanager.cpp:1036
-#, kde-format
+#, fuzzy, kde-format
+#| msgid "Error"
+msgctxt "@title:window"
 msgid "Error"
 msgstr "خطا"
 
@@ -1208,7 +1210,9 @@ msgid "Removing attachments from an email might invalidate its signature."
 msgstr ""
 
 #: actionmanager.cpp:1461
-#, kde-format
+#, fuzzy, kde-format
+#| msgid "Remove Attachments"
+msgctxt "@title:window"
 msgid "Remove Attachments"
 msgstr "حذف پیوستها"
 
@@ -1457,7 +1461,7 @@ msgctxt "@info"
 msgid "Unable to copy the item \"%1\" to %2."
 msgstr "قادر به رونوشت فقره در %1 نیست."
 
-#: calendarview.cpp:1458
+#: calendarview.cpp:1458 calendarview.cpp:2439
 #, fuzzy, kde-format
 #| msgid "Copying Failed"
 msgctxt "@title:window"
@@ -1472,7 +1476,7 @@ msgid ""
 "of this item has been put into %2"
 msgstr ""
 
-#: calendarview.cpp:1521 calendarview.cpp:1537
+#: calendarview.cpp:1521 calendarview.cpp:1537 calendarview.cpp:2474
 #, fuzzy, kde-format
 #| msgid "Moving Failed"
 msgctxt "@title:window"
@@ -1505,8 +1509,9 @@ msgid "Do you want to dissociate the occurrence on %1 from the recurrence?"
 msgstr "تفکیک رویداد از تکرار"
 
 #: calendarview.cpp:1575 calendarview.cpp:1587 calendarview.cpp:2246
-#: calendarview.cpp:2305 calendarview.cpp:2335
-#, kde-format
+#, fuzzy, kde-format
+#| msgid "KOrganizer Confirmation"
+msgctxt "@title:window"
 msgid "KOrganizer Confirmation"
 msgstr "تأیید KOrganizer"
 
@@ -1552,7 +1557,9 @@ msgid "Dissociating the future occurrences failed."
 msgstr "خرابی در تفکیک رخدادهای آینده."
 
 #: calendarview.cpp:1616 calendarview.cpp:1618
-#, kde-format
+#, fuzzy, kde-format
+#| msgid "Dissociating Failed"
+msgctxt "@title:window"
 msgid "Dissociating Failed"
 msgstr "خرابی در تفکیک"
 
@@ -1644,6 +1651,11 @@ msgstr ""
 "فقره تقویم »%1« در تاریخهای چندگانه تکرار می‌شود؛ مطمئن هستید که می‌خواهید آن "
 "و همه تکرارهایش را حذف کنید؟"
 
+#: calendarview.cpp:2305 calendarview.cpp:2335
+#, kde-format
+msgid "KOrganizer Confirmation"
+msgstr "تأیید KOrganizer"
+
 #: calendarview.cpp:2313
 #, fuzzy, kde-format
 #| msgid "Delete &Future"
@@ -1711,7 +1723,9 @@ msgid "Delete all completed to-dos from checked calendars?"
 msgstr "تمام کارهای انجامی کامل‌شده حذف شوند؟"
 
 #: calendarview.cpp:2415
-#, kde-format
+#, fuzzy, kde-format
+#| msgid "Purge To-dos"
+msgctxt "@title:window"
 msgid "Purge To-dos"
 msgstr "پاک‌کردن کارهای انجامی"
 
@@ -1732,20 +1746,10 @@ msgstr "قادر به ویرایش فقره نیست: با فرایند دیگر
 msgid "Unable to copy the item to %1."
 msgstr "قادر به رونوشت فقره در %1 نیست."
 
-#: calendarview.cpp:2439
-#, kde-format
-msgid "Copying Failed"
-msgstr "خرابی در رونوشت"
-
 #: calendarview.cpp:2474
 #, kde-format
 msgid "Unable to move the item to  %1."
 msgstr "قادر به حرکت دادن فقره به  %1 نیست."
-
-#: calendarview.cpp:2474
-#, kde-format
-msgid "Moving Failed"
-msgstr "خرابی در حرکت"
 
 #: calendarview.cpp:2684
 #, fuzzy, kde-format
@@ -3957,7 +3961,9 @@ msgstr ""
 "می‌روند."
 
 #: prefs/kprefsdialog.cpp:869
-#, kde-format
+#, fuzzy, kde-format
+#| msgid "Setting Default Preferences"
+msgctxt "@title:window"
 msgid "Setting Default Preferences"
 msgstr "تنظیم تنظیمات پیش‌فرض"
 
@@ -6260,6 +6266,12 @@ msgstr "%1٪"
 msgctxt "4 digit year"
 msgid "%1"
 msgstr "%1٪"
+
+#~ msgid "Copying Failed"
+#~ msgstr "خرابی در رونوشت"
+
+#~ msgid "Moving Failed"
+#~ msgstr "خرابی در حرکت"
 
 #, fuzzy
 #~| msgid "Delete Confirmation"
@@ -10153,12 +10165,6 @@ msgstr "%1٪"
 #~ msgctxt "@title:window"
 #~ msgid "Edit %1: %2"
 #~ msgstr "ویرایش %1"
-
-#, fuzzy
-#~| msgid "KOrganizer Confirmation"
-#~ msgctxt "@title:window"
-#~ msgid "KOrganizer Confirmation"
-#~ msgstr "تأیید KOrganizer"
 
 #, fuzzy
 #~| msgid "Atte&ndees"

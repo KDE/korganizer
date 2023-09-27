@@ -7,7 +7,7 @@ msgid ""
 msgstr ""
 "Project-Id-Version: korganizer\n"
 "Report-Msgid-Bugs-To: https://bugs.kde.org\n"
-"POT-Creation-Date: 2023-09-24 01:44+0000\n"
+"POT-Creation-Date: 2023-09-27 01:41+0000\n"
 "PO-Revision-Date: 2014-09-18 17:03+0200\n"
 "Last-Translator: Sönke Dibbern <s_dibbern@web.de>\n"
 "Language-Team: Low Saxon <kde-i18n-nds@kde.org>\n"
@@ -1140,7 +1140,9 @@ msgid "Unable to save calendar to the file %1."
 msgstr "Kalenner lett sik nich in Datei \"%1\" sekern."
 
 #: actionmanager.cpp:1036
-#, kde-format
+#, fuzzy, kde-format
+#| msgid "Error"
+msgctxt "@title:window"
 msgid "Error"
 msgstr "Fehler"
 
@@ -1206,7 +1208,9 @@ msgstr ""
 "Dat Wegdoon vun en Nettbreef sien Bilagen mag sien Ünnerschrift leeg maken."
 
 #: actionmanager.cpp:1461
-#, kde-format
+#, fuzzy, kde-format
+#| msgid "Remove Attachments"
+msgctxt "@title:window"
 msgid "Remove Attachments"
 msgstr "Bilagen wegmaken"
 
@@ -1452,7 +1456,7 @@ msgctxt "@info"
 msgid "Unable to copy the item \"%1\" to %2."
 msgstr "De Indrag lett sik nich vun \"%1\" na \"%2\" koperen."
 
-#: calendarview.cpp:1458
+#: calendarview.cpp:1458 calendarview.cpp:2439
 #, kde-format
 msgctxt "@title:window"
 msgid "Copying Failed"
@@ -1472,7 +1476,7 @@ msgstr ""
 "De Indrag \"%1\" lett sik nich ut \"%2\" wegmaken, man en Kopie dorvun wöör "
 "na \"%3\" daan."
 
-#: calendarview.cpp:1521 calendarview.cpp:1537
+#: calendarview.cpp:1521 calendarview.cpp:1537 calendarview.cpp:2474
 #, kde-format
 msgctxt "@title:window"
 msgid "Moving Failed"
@@ -1503,9 +1507,10 @@ msgstr ""
 msgid "Do you want to dissociate the occurrence on %1 from the recurrence?"
 msgstr "Wullt Du dat Vörkamen op %1 ut de Wedderhalen aflösen?"
 
+# unreviewed-context
 #: calendarview.cpp:1575 calendarview.cpp:1587 calendarview.cpp:2246
-#: calendarview.cpp:2305 calendarview.cpp:2335
 #, kde-format
+msgctxt "@title:window"
 msgid "KOrganizer Confirmation"
 msgstr "Beglöven - KOrganizer"
 
@@ -1549,7 +1554,9 @@ msgid "Dissociating the future occurrences failed."
 msgstr "Aflösen vun de tokamen Vörkamen fehlslaan."
 
 #: calendarview.cpp:1616 calendarview.cpp:1618
-#, kde-format
+#, fuzzy, kde-format
+#| msgid "Dissociating Failed"
+msgctxt "@title:window"
 msgid "Dissociating Failed"
 msgstr "Aflösen fehlslaan"
 
@@ -1639,6 +1646,11 @@ msgstr ""
 "De Kalennerindrag \"%1\" wedderhaalt sik mehrmaals, büst Du seker, dat Du em "
 "un all sien Wedderhalen wegdoon wullt?"
 
+#: calendarview.cpp:2305 calendarview.cpp:2335
+#, kde-format
+msgid "KOrganizer Confirmation"
+msgstr "Beglöven - KOrganizer"
+
 #: calendarview.cpp:2313
 #, kde-format
 msgid "Also Delete &Future"
@@ -1698,7 +1710,9 @@ msgid "Delete all completed to-dos from checked calendars?"
 msgstr "All utföhrt Opgaven ut de anmaakten Kalenners wegdoon?"
 
 #: calendarview.cpp:2415
-#, kde-format
+#, fuzzy, kde-format
+#| msgid "Purge To-dos"
+msgctxt "@title:window"
 msgid "Purge To-dos"
 msgstr "Opgaven oprümen"
 
@@ -1718,20 +1732,10 @@ msgstr "\"%1\" lett sik nich bewerken, en anner Perzess hett em afslaten."
 msgid "Unable to copy the item to %1."
 msgstr "Indrag lett sik nich na \"%1\" koperen."
 
-#: calendarview.cpp:2439
-#, kde-format
-msgid "Copying Failed"
-msgstr "Koperen fehlslaan"
-
 #: calendarview.cpp:2474
 #, kde-format
 msgid "Unable to move the item to  %1."
 msgstr "De Indrag lett sik nich na \"%1\" verschuven."
-
-#: calendarview.cpp:2474
-#, kde-format
-msgid "Moving Failed"
-msgstr "Verschuven fehlslaan"
 
 #: calendarview.cpp:2684
 #, kde-format
@@ -3999,7 +4003,9 @@ msgstr ""
 "gaht denn verloren."
 
 #: prefs/kprefsdialog.cpp:869
-#, kde-format
+#, fuzzy, kde-format
+#| msgid "Setting Default Preferences"
+msgctxt "@title:window"
 msgid "Setting Default Preferences"
 msgstr "Standardweerten warrt instellt"
 
@@ -6385,6 +6391,12 @@ msgstr "%1"
 msgctxt "4 digit year"
 msgid "%1"
 msgstr "%1"
+
+#~ msgid "Copying Failed"
+#~ msgstr "Koperen fehlslaan"
+
+#~ msgid "Moving Failed"
+#~ msgstr "Verschuven fehlslaan"
 
 #, fuzzy
 #~| msgctxt "@info:tooltip"
@@ -10838,11 +10850,6 @@ msgstr "%1"
 #~ msgctxt "@info"
 #~ msgid "Do you really want to cancel?"
 #~ msgstr "Wullt Du redig afbreken?"
-
-# unreviewed-context
-#~ msgctxt "@title:window"
-#~ msgid "KOrganizer Confirmation"
-#~ msgstr "Beglöven - KOrganizer"
 
 #~ msgctxt "@title:tab"
 #~ msgid "Atte&ndees"
