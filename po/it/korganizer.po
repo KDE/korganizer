@@ -16,7 +16,7 @@ msgstr ""
 "Project-Id-Version: korganizer\n"
 "Report-Msgid-Bugs-To: https://bugs.kde.org\n"
 "POT-Creation-Date: 2023-09-27 01:41+0000\n"
-"PO-Revision-Date: 2023-09-21 13:33+0200\n"
+"PO-Revision-Date: 2023-09-27 17:47+0200\n"
 "Last-Translator: Luigi Toscano <luigi.toscano@tiscali.it>\n"
 "Language-Team: Italian <kde-i18n-it@kde.org>\n"
 "Language: it\n"
@@ -1126,8 +1126,7 @@ msgid "Unable to save calendar to the file %1."
 msgstr "Impossibile salvare il calendario nel file %1."
 
 #: actionmanager.cpp:1036
-#, fuzzy, kde-format
-#| msgid "Error"
+#, kde-format
 msgctxt "@title:window"
 msgid "Error"
 msgstr "Errore"
@@ -1195,8 +1194,7 @@ msgstr ""
 "invalidarne la firma."
 
 #: actionmanager.cpp:1461
-#, fuzzy, kde-format
-#| msgid "Remove Attachments"
+#, kde-format
 msgctxt "@title:window"
 msgid "Remove Attachments"
 msgstr "Rimuovi allegati"
@@ -1481,7 +1479,7 @@ msgstr "Vuoi dissociare l'occorrenza in %1 dalla ricorrenza?"
 #, kde-format
 msgctxt "@title:window"
 msgid "KOrganizer Confirmation"
-msgstr "Conferma KOrganizer"
+msgstr "Conferma - KOrganizer"
 
 #: calendarview.cpp:1576
 #, kde-format
@@ -1523,8 +1521,7 @@ msgid "Dissociating the future occurrences failed."
 msgstr "Dissociazione delle ricorrenze future non riuscita."
 
 #: calendarview.cpp:1616 calendarview.cpp:1618
-#, fuzzy, kde-format
-#| msgid "Dissociating Failed"
+#, kde-format
 msgctxt "@title:window"
 msgid "Dissociating Failed"
 msgstr "Dissociazione non riuscita"
@@ -1673,8 +1670,7 @@ msgid "Delete all completed to-dos from checked calendars?"
 msgstr "Elimino tutte le cose da fare completate dai calendari selezionati?"
 
 #: calendarview.cpp:2415
-#, fuzzy, kde-format
-#| msgid "Purge To-dos"
+#, kde-format
 msgctxt "@title:window"
 msgid "Purge To-dos"
 msgstr "Elimina cose da fare"
@@ -3779,8 +3775,7 @@ msgstr ""
 "modifiche che hai fatto andranno perse."
 
 #: prefs/kprefsdialog.cpp:869
-#, fuzzy, kde-format
-#| msgid "Setting Default Preferences"
+#, kde-format
 msgctxt "@title:window"
 msgid "Setting Default Preferences"
 msgstr "Imposta le preferenze predefinite"

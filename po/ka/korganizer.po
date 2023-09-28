@@ -8,7 +8,7 @@ msgstr ""
 "Project-Id-Version: korganizer\n"
 "Report-Msgid-Bugs-To: https://bugs.kde.org\n"
 "POT-Creation-Date: 2023-09-27 01:41+0000\n"
-"PO-Revision-Date: 2023-09-26 14:42+0200\n"
+"PO-Revision-Date: 2023-09-27 06:05+0200\n"
 "Last-Translator: Temuri Doghonadze <temuri.doghonadze@gmail.com>\n"
 "Language-Team: Georgian <kde-i18n-doc@kde.org>\n"
 "Language: ka\n"
@@ -1075,8 +1075,7 @@ msgid "Unable to save calendar to the file %1."
 msgstr "კალენდრის ფაილში %1 შენახვა შეუძლებელია."
 
 #: actionmanager.cpp:1036
-#, fuzzy, kde-format
-#| msgid "Error"
+#, kde-format
 msgctxt "@title:window"
 msgid "Error"
 msgstr "შეცდომა"
@@ -1144,8 +1143,7 @@ msgstr ""
 "გახადოს."
 
 #: actionmanager.cpp:1461
-#, fuzzy, kde-format
-#| msgid "Remove Attachments"
+#, kde-format
 msgctxt "@title:window"
 msgid "Remove Attachments"
 msgstr "მიმაგრებული ფაილების კოპირება"
@@ -1414,8 +1412,7 @@ msgid "Do you want to dissociate the occurrence on %1 from the recurrence?"
 msgstr ""
 
 #: calendarview.cpp:1575 calendarview.cpp:1587 calendarview.cpp:2246
-#, fuzzy, kde-format
-#| msgid "KOrganizer Confirmation"
+#, kde-format
 msgctxt "@title:window"
 msgid "KOrganizer Confirmation"
 msgstr "KOrganizer -ის დასტური"
@@ -1458,8 +1455,7 @@ msgid "Dissociating the future occurrences failed."
 msgstr "მომავალი გამეორების ასოციაციის მოხსნა ჩავარდა."
 
 #: calendarview.cpp:1616 calendarview.cpp:1618
-#, fuzzy, kde-format
-#| msgid "Dissociating Failed"
+#, kde-format
 msgctxt "@title:window"
 msgid "Dissociating Failed"
 msgstr "ასოციაციის მოხსნა ჩავარდა"
@@ -1595,8 +1591,7 @@ msgid "Delete all completed to-dos from checked calendars?"
 msgstr "წავშალო ყველა დასრულებული გასაკეთებელი მონიშნული კალენდრებიდან?"
 
 #: calendarview.cpp:2415
-#, fuzzy, kde-format
-#| msgid "Purge To-dos"
+#, kde-format
 msgctxt "@title:window"
 msgid "Purge To-dos"
 msgstr "გასაკეთებლების მოსუფთავება"
@@ -3575,8 +3570,7 @@ msgid ""
 msgstr ""
 
 #: prefs/kprefsdialog.cpp:869
-#, fuzzy, kde-format
-#| msgid "Setting Default Preferences"
+#, kde-format
 msgctxt "@title:window"
 msgid "Setting Default Preferences"
 msgstr "ნაგულისხმევ პარამეტრების დაყენება"

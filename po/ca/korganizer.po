@@ -14,7 +14,7 @@ msgstr ""
 "Project-Id-Version: korganizer\n"
 "Report-Msgid-Bugs-To: https://bugs.kde.org\n"
 "POT-Creation-Date: 2023-09-27 01:41+0000\n"
-"PO-Revision-Date: 2023-09-22 11:34+0200\n"
+"PO-Revision-Date: 2023-09-27 12:37+0200\n"
 "Last-Translator: Josep M. Ferrer <txemaq@gmail.com>\n"
 "Language-Team: Catalan <kde-i18n-ca@kde.org>\n"
 "Language: ca\n"
@@ -1128,8 +1128,7 @@ msgid "Unable to save calendar to the file %1."
 msgstr "No s'ha pogut desar el calendari al fitxer %1."
 
 #: actionmanager.cpp:1036
-#, fuzzy, kde-format
-#| msgid "Error"
+#, kde-format
 msgctxt "@title:window"
 msgid "Error"
 msgstr "Error"
@@ -1196,8 +1195,7 @@ msgid "Removing attachments from an email might invalidate its signature."
 msgstr "L'eliminació d'adjunts d'un correu pot invalidar la seva signatura."
 
 #: actionmanager.cpp:1461
-#, fuzzy, kde-format
-#| msgid "Remove Attachments"
+#, kde-format
 msgctxt "@title:window"
 msgid "Remove Attachments"
 msgstr "Elimina els adjunts"
@@ -1478,8 +1476,7 @@ msgid "Do you want to dissociate the occurrence on %1 from the recurrence?"
 msgstr "Voleu dissociar l'ocurrència en %1 de la repetició?"
 
 #: calendarview.cpp:1575 calendarview.cpp:1587 calendarview.cpp:2246
-#, fuzzy, kde-format
-#| msgid "KOrganizer Confirmation"
+#, kde-format
 msgctxt "@title:window"
 msgid "KOrganizer Confirmation"
 msgstr "Confirmació del KOrganizer"
@@ -1524,8 +1521,7 @@ msgid "Dissociating the future occurrences failed."
 msgstr "Ha fallat la dissociació de les ocurrències futures."
 
 #: calendarview.cpp:1616 calendarview.cpp:1618
-#, fuzzy, kde-format
-#| msgid "Dissociating Failed"
+#, kde-format
 msgctxt "@title:window"
 msgid "Dissociating Failed"
 msgstr "La dissociació ha fallat"
@@ -1676,8 +1672,7 @@ msgstr ""
 "Suprimeixo totes les tasques pendents finalitzades dels calendaris marcats?"
 
 #: calendarview.cpp:2415
-#, fuzzy, kde-format
-#| msgid "Purge To-dos"
+#, kde-format
 msgctxt "@title:window"
 msgid "Purge To-dos"
 msgstr "Purga les tasques pendents"
@@ -3788,8 +3783,7 @@ msgstr ""
 "perdran totes les modificacions personalitzades."
 
 #: prefs/kprefsdialog.cpp:869
-#, fuzzy, kde-format
-#| msgid "Setting Default Preferences"
+#, kde-format
 msgctxt "@title:window"
 msgid "Setting Default Preferences"
 msgstr "Estableix les preferències predeterminades"

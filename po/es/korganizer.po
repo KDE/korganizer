@@ -21,7 +21,7 @@ msgstr ""
 "Project-Id-Version: korganizer\n"
 "Report-Msgid-Bugs-To: https://bugs.kde.org\n"
 "POT-Creation-Date: 2023-09-27 01:41+0000\n"
-"PO-Revision-Date: 2023-09-21 16:48+0200\n"
+"PO-Revision-Date: 2023-09-28 02:22+0200\n"
 "Last-Translator: Eloy Cuadra <ecuadra@eloihr.net>\n"
 "Language-Team: Spanish <kde-l10n-es@kde.org>\n"
 "Language: es\n"
@@ -1132,8 +1132,7 @@ msgid "Unable to save calendar to the file %1."
 msgstr "No se puede guardar el calendario en el archivo %1."
 
 #: actionmanager.cpp:1036
-#, fuzzy, kde-format
-#| msgid "Error"
+#, kde-format
 msgctxt "@title:window"
 msgid "Error"
 msgstr "Error"
@@ -1200,8 +1199,7 @@ msgid "Removing attachments from an email might invalidate its signature."
 msgstr "Eliminar los adjuntos de un correo podría invalidar su firma."
 
 #: actionmanager.cpp:1461
-#, fuzzy, kde-format
-#| msgid "Remove Attachments"
+#, kde-format
 msgctxt "@title:window"
 msgid "Remove Attachments"
 msgstr "Eliminar adjuntos"
@@ -1482,8 +1480,7 @@ msgid "Do you want to dissociate the occurrence on %1 from the recurrence?"
 msgstr "¿Desea disociar la aparición en %1 de la repetición?"
 
 #: calendarview.cpp:1575 calendarview.cpp:1587 calendarview.cpp:2246
-#, fuzzy, kde-format
-#| msgid "KOrganizer Confirmation"
+#, kde-format
 msgctxt "@title:window"
 msgid "KOrganizer Confirmation"
 msgstr "Confirmación de KOrganizer"
@@ -1528,8 +1525,7 @@ msgid "Dissociating the future occurrences failed."
 msgstr "La disociación de las apariciones futuras ha fallado."
 
 #: calendarview.cpp:1616 calendarview.cpp:1618
-#, fuzzy, kde-format
-#| msgid "Dissociating Failed"
+#, kde-format
 msgctxt "@title:window"
 msgid "Dissociating Failed"
 msgstr "La disociación ha fallado"
@@ -1666,7 +1662,7 @@ msgid ""
 "All calendars are unchecked in the Calendar Manager. No to-do was purged."
 msgstr ""
 "Todos los calendarios están desmarcados en el gestor de calendarios. No se "
-"purgó ninguna tarea pendiente."
+"ha purgado ninguna tarea pendiente."
 
 #: calendarview.cpp:2409 calendarview.cpp:2691
 #, kde-format
@@ -1679,8 +1675,7 @@ msgid "Delete all completed to-dos from checked calendars?"
 msgstr "¿Borrar todas las tareas pendientes de calendarios marcados?"
 
 #: calendarview.cpp:2415
-#, fuzzy, kde-format
-#| msgid "Purge To-dos"
+#, kde-format
 msgctxt "@title:window"
 msgid "Purge To-dos"
 msgstr "Purgar las tareas pendientes"
@@ -1709,7 +1704,7 @@ msgstr "No se puede mover el elemento a %1."
 #: calendarview.cpp:2684
 #, kde-format
 msgid "0 completed to-dos were purged."
-msgstr "Se purgaron cero tareas pendientes completadas."
+msgstr "Se han purgado 0 tareas pendientes completadas."
 
 #: calendarview.cpp:2685 calendarview.cpp:2695
 #, kde-format
@@ -1727,8 +1722,8 @@ msgstr[1] ""
 #, kde-format
 msgid "%1 completed to-do was purged."
 msgid_plural "%1 completed to-dos were purged."
-msgstr[0] "Se purgó la tarea pendiente completada %1."
-msgstr[1] "Se purgaron %1 tareas pendientes completadas."
+msgstr[0] "Se ha purgado %1 tarea pendiente completada."
+msgstr[1] "Se han purgado %1 tareas pendientes completadas."
 
 #: calendarview.cpp:2700
 #, kde-format
@@ -3789,8 +3784,7 @@ msgstr ""
 "preferencias. Todas las modificaciones personalizadas se perderán."
 
 #: prefs/kprefsdialog.cpp:869
-#, fuzzy, kde-format
-#| msgid "Setting Default Preferences"
+#, kde-format
 msgctxt "@title:window"
 msgid "Setting Default Preferences"
 msgstr "Volver a las preferencias predeterminadas"

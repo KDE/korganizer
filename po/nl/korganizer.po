@@ -19,7 +19,7 @@ msgstr ""
 "Project-Id-Version: korganizer\n"
 "Report-Msgid-Bugs-To: https://bugs.kde.org\n"
 "POT-Creation-Date: 2023-09-27 01:41+0000\n"
-"PO-Revision-Date: 2023-09-21 22:29+0200\n"
+"PO-Revision-Date: 2023-09-27 11:51+0200\n"
 "Last-Translator: Freek de Kruijf <freekdekruijf@kde.nl>\n"
 "Language-Team: \n"
 "Language: nl\n"
@@ -1131,8 +1131,7 @@ msgid "Unable to save calendar to the file %1."
 msgstr "Kon de agenda niet naar bestand %1 opslaan."
 
 #: actionmanager.cpp:1036
-#, fuzzy, kde-format
-#| msgid "Error"
+#, kde-format
 msgctxt "@title:window"
 msgid "Error"
 msgstr "Fout"
@@ -1200,8 +1199,7 @@ msgstr ""
 "maken."
 
 #: actionmanager.cpp:1461
-#, fuzzy, kde-format
-#| msgid "Remove Attachments"
+#, kde-format
 msgctxt "@title:window"
 msgid "Remove Attachments"
 msgstr "Bijlagen verwijderen"
@@ -1524,8 +1522,7 @@ msgid "Dissociating the future occurrences failed."
 msgstr "Het loskoppelen van de toekomstige voorvallen is mislukt."
 
 #: calendarview.cpp:1616 calendarview.cpp:1618
-#, fuzzy, kde-format
-#| msgid "Dissociating Failed"
+#, kde-format
 msgctxt "@title:window"
 msgid "Dissociating Failed"
 msgstr "Het loskoppelen is mislukt"
@@ -1674,8 +1671,7 @@ msgid "Delete all completed to-dos from checked calendars?"
 msgstr "Alle voltooide taken uit geactiveerde agenda's verwijderen?"
 
 #: calendarview.cpp:2415
-#, fuzzy, kde-format
-#| msgid "Purge To-dos"
+#, kde-format
 msgctxt "@title:window"
 msgid "Purge To-dos"
 msgstr "Taken opruimen"
@@ -3774,8 +3770,7 @@ msgstr ""
 "standaardwaarden. Al uw aanpassingen gaan dan verloren."
 
 #: prefs/kprefsdialog.cpp:869
-#, fuzzy, kde-format
-#| msgid "Setting Default Preferences"
+#, kde-format
 msgctxt "@title:window"
 msgid "Setting Default Preferences"
 msgstr "Standaardvoorkeuren worden ingesteld"

@@ -12,7 +12,7 @@ msgstr ""
 "Project-Id-Version: korganizer\n"
 "Report-Msgid-Bugs-To: https://bugs.kde.org\n"
 "POT-Creation-Date: 2023-09-27 01:41+0000\n"
-"PO-Revision-Date: 2023-09-21 13:30+0300\n"
+"PO-Revision-Date: 2023-09-27 08:28+0300\n"
 "Last-Translator: Yuri Chornoivan <yurchor@ukr.net>\n"
 "Language-Team: Ukrainian <kde-i18n-uk@kde.org>\n"
 "Language: uk\n"
@@ -1128,8 +1128,7 @@ msgid "Unable to save calendar to the file %1."
 msgstr "Неможливо зберегти календар у файл %1."
 
 #: actionmanager.cpp:1036
-#, fuzzy, kde-format
-#| msgid "Error"
+#, kde-format
 msgctxt "@title:window"
 msgid "Error"
 msgstr "Помилка"
@@ -1196,11 +1195,10 @@ msgstr ""
 "Вилучення додатків з електронного листа може зробити підпис некоректним."
 
 #: actionmanager.cpp:1461
-#, fuzzy, kde-format
-#| msgid "Remove Attachments"
+#, kde-format
 msgctxt "@title:window"
 msgid "Remove Attachments"
-msgstr "Вилучити долучення"
+msgstr "Вилучення долучень"
 
 #: actionmanager.cpp:1612
 #, kde-format
@@ -1478,8 +1476,7 @@ msgid "Do you want to dissociate the occurrence on %1 from the recurrence?"
 msgstr "Бажаєте виокремити подію о %1 з повторення?"
 
 #: calendarview.cpp:1575 calendarview.cpp:1587 calendarview.cpp:2246
-#, fuzzy, kde-format
-#| msgid "KOrganizer Confirmation"
+#, kde-format
 msgctxt "@title:window"
 msgid "KOrganizer Confirmation"
 msgstr "Підтвердження KOrganizer"
@@ -1524,8 +1521,7 @@ msgid "Dissociating the future occurrences failed."
 msgstr "Відділення майбутніх подій зазнало невдачі."
 
 #: calendarview.cpp:1616 calendarview.cpp:1618
-#, fuzzy, kde-format
-#| msgid "Dissociating Failed"
+#, kde-format
 msgctxt "@title:window"
 msgid "Dissociating Failed"
 msgstr "Відділення зазнало невдачі"
@@ -1674,8 +1670,7 @@ msgid "Delete all completed to-dos from checked calendars?"
 msgstr "Вилучити усі виконані завдання з позначених календарів?"
 
 #: calendarview.cpp:2415
-#, fuzzy, kde-format
-#| msgid "Purge To-dos"
+#, kde-format
 msgctxt "@title:window"
 msgid "Purge To-dos"
 msgstr "Очищення завдань"
@@ -3805,8 +3800,7 @@ msgstr ""
 "налаштування будуть втрачені."
 
 #: prefs/kprefsdialog.cpp:869
-#, fuzzy, kde-format
-#| msgid "Setting Default Preferences"
+#, kde-format
 msgctxt "@title:window"
 msgid "Setting Default Preferences"
 msgstr "Встановлення стандартних значень"

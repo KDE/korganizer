@@ -1,7 +1,7 @@
 # translation of korganizer.po to Slovenian
 # Translation of korganizer.po to Slovenian
 # Copyright (C) 2001,2002, 2003, 2004, 2005, 2006 Free Software Foundation, Inc.
-# $Id: korganizer.po 1661036 2023-09-27 02:03:03Z scripty $
+# $Id: korganizer.po 1661106 2023-09-28 02:01:52Z scripty $
 # $Source$
 #
 # Roman Maurer <roman.maurer@hermes.si>, 2001.
@@ -15,15 +15,15 @@ msgstr ""
 "Project-Id-Version: korganizer\n"
 "Report-Msgid-Bugs-To: https://bugs.kde.org\n"
 "POT-Creation-Date: 2023-09-27 01:41+0000\n"
-"PO-Revision-Date: 2023-09-21 17:36+0200\n"
+"PO-Revision-Date: 2023-09-27 09:50+0200\n"
 "Last-Translator: Matjaž Jeran <matjaz.jeran@amis.net>\n"
 "Language-Team: Slovenian <lugos-slo@lugos.si>\n"
 "Language: sl\n"
 "MIME-Version: 1.0\n"
 "Content-Type: text/plain; charset=UTF-8\n"
 "Content-Transfer-Encoding: 8bit\n"
-"Plural-Forms: nplurals=4; plural=(n%100==1 ? 1 : n%100==2 ? 2 : n%100==3 || n"
-"%100==4 ? 3 : 0);\n"
+"Plural-Forms: nplurals=4; plural=(n%100==1 ? 0 : n%100==2 ? 1 : n%100>=3 && n"
+"%100<=4 ? 2 : 3);\n"
 "Translator: Andrej Mernik <andrejm@ubuntu.si>\n"
 "X-Generator: Poedit 3.3.2\n"
 
@@ -1129,8 +1129,7 @@ msgid "Unable to save calendar to the file %1."
 msgstr "Ni mogoče shraniti koledarja v datoteko %1."
 
 #: actionmanager.cpp:1036
-#, fuzzy, kde-format
-#| msgid "Error"
+#, kde-format
 msgctxt "@title:window"
 msgid "Error"
 msgstr "Napaka"
@@ -1196,8 +1195,7 @@ msgid "Removing attachments from an email might invalidate its signature."
 msgstr "Odstranitev prilog iz e-pošte lahko prekine veljavnost podpisa."
 
 #: actionmanager.cpp:1461
-#, fuzzy, kde-format
-#| msgid "Remove Attachments"
+#, kde-format
 msgctxt "@title:window"
 msgid "Remove Attachments"
 msgstr "Odstrani priloge"
@@ -1475,8 +1473,7 @@ msgid "Do you want to dissociate the occurrence on %1 from the recurrence?"
 msgstr "Ali želite razvezati pojavitev na dan %1 od ponovitve?"
 
 #: calendarview.cpp:1575 calendarview.cpp:1587 calendarview.cpp:2246
-#, fuzzy, kde-format
-#| msgid "KOrganizer Confirmation"
+#, kde-format
 msgctxt "@title:window"
 msgid "KOrganizer Confirmation"
 msgstr "Potrditev KOrganizerja"
@@ -1521,8 +1518,7 @@ msgid "Dissociating the future occurrences failed."
 msgstr "Razvezovanje prihodnjih pojavitev ni uspelo."
 
 #: calendarview.cpp:1616 calendarview.cpp:1618
-#, fuzzy, kde-format
-#| msgid "Dissociating Failed"
+#, kde-format
 msgctxt "@title:window"
 msgid "Dissociating Failed"
 msgstr "Razvezovanje ni uspelo"
@@ -1672,8 +1668,7 @@ msgid "Delete all completed to-dos from checked calendars?"
 msgstr "Ali iz označenih koledarjev izbrišem vsa zaključena opravila?"
 
 #: calendarview.cpp:2415
-#, fuzzy, kde-format
-#| msgid "Purge To-dos"
+#, kde-format
 msgctxt "@title:window"
 msgid "Purge To-dos"
 msgstr "Počisti opravila"
@@ -3793,11 +3788,10 @@ msgstr ""
 "bodo izgubljene."
 
 #: prefs/kprefsdialog.cpp:869
-#, fuzzy, kde-format
-#| msgid "Setting Default Preferences"
+#, kde-format
 msgctxt "@title:window"
 msgid "Setting Default Preferences"
-msgstr "Nastavljanje privzetih možnosti"
+msgstr "Nastavljanje privzetih preferenc"
 
 #: prefs/kprefsdialog.cpp:870
 #, kde-format
