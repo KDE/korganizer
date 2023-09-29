@@ -8,7 +8,7 @@ msgstr ""
 "Project-Id-Version: korganizer\n"
 "Report-Msgid-Bugs-To: https://bugs.kde.org\n"
 "POT-Creation-Date: 2023-09-27 01:41+0000\n"
-"PO-Revision-Date: 2023-09-27 06:05+0200\n"
+"PO-Revision-Date: 2023-09-28 12:14+0200\n"
 "Last-Translator: Temuri Doghonadze <temuri.doghonadze@gmail.com>\n"
 "Language-Team: Georgian <kde-i18n-doc@kde.org>\n"
 "Language: ka\n"
@@ -1717,7 +1717,7 @@ msgstr "მომხმარებლის ხატულის დაყე�
 #, kde-format
 msgctxt "@info:whatsthis"
 msgid "Check this box if you want to set a custom icon for this folder."
-msgstr ""
+msgstr "ჩართეთ ეს, თუ ამ საქაღალდისთვის თქვენი ხატულის დაყენება გნებავთ."
 
 #. i18n: ectx: Menu (file)
 #: data/korganizer_part.rc:4 data/korganizerui.rc:4
@@ -2411,8 +2411,8 @@ msgstr "უახლოესი მოვლენები"
 #, kde-format
 msgid "No upcoming events starting within the next day"
 msgid_plural "No upcoming events starting within the next %1 days"
-msgstr[0] ""
-msgstr[1] ""
+msgstr[0] "ხვალ მომავალი მოვლენები არ გაქვთ"
+msgstr[1] "შემდეგ %1 დღეში მომავალი მოვლენები არ გაქვთ"
 
 #: kontactplugin/korganizer/apptsummarywidget.cpp:240
 #, kde-format
@@ -2447,6 +2447,7 @@ msgctxt "@info:whatsthis"
 msgid ""
 "You will be presented with a dialog where you can create a new journal entry."
 msgstr ""
+"გაჩვენებთ ახალ ფანჯარას, სადაც ახალი ჟურნალის ჩანაწერის დამატება შეგიძლიათ."
 
 #: kontactplugin/korganizer/kcmapptsummary.cpp:71
 #: kontactplugin/korganizer/kcmtodosummary.cpp:56
@@ -2475,6 +2476,8 @@ msgctxt "@info:whatsthis"
 msgid ""
 "You will be presented with a dialog where you can create a new event item."
 msgstr ""
+"წარმოგედგინებათ ფანჯარა, საიდანაც ახალი მოვლენის ჩანაწერის დამატება "
+"შეგიძლიათ."
 
 #: kontactplugin/korganizer/korganizerplugin.cpp:146
 #: kontactplugin/korganizer/todoplugin.cpp:146
@@ -2588,6 +2591,8 @@ msgctxt "@info:whatsthis"
 msgid ""
 "You will be presented with a dialog where you can create a new to-do item."
 msgstr ""
+"წარმოგედგინებათ ფანჯარა, საიდანაც ახალი გასაკეთებლის ჩანაწერის დამატება "
+"შეგიძლიათ."
 
 #. i18n: ectx: property (windowTitle), widget (QWidget, TodoSummaryConfig_Base)
 #: kontactplugin/korganizer/todosummaryconfig_base.ui:16
@@ -2631,7 +2636,7 @@ msgstr ""
 #: kontactplugin/korganizer/todosummaryconfig_base.ui:65
 #, kde-format
 msgid "Select the days for showing pending To-dos"
-msgstr ""
+msgstr "აირჩიეთ დღეები დარჩენილი გასაკეთებლების საჩვენებლად"
 
 #. i18n: ectx: property (whatsThis), widget (QRadioButton, mDateRangeButton)
 #: kontactplugin/korganizer/todosummaryconfig_base.ui:71
@@ -2645,7 +2650,7 @@ msgstr ""
 #: kontactplugin/korganizer/todosummaryconfig_base.ui:87
 #, kde-format
 msgid "Set the number of days to show pending To-dos"
-msgstr ""
+msgstr "აირჩიეთ დღეების რაოდენობა დარჩენილი გასაკეთებლების საჩვენებლად"
 
 #. i18n: ectx: property (whatsThis), widget (QSpinBox, mCustomDays)
 #: kontactplugin/korganizer/todosummaryconfig_base.ui:90
@@ -3062,7 +3067,7 @@ msgstr ""
 #: kontactplugin/specialdates/sdsummaryconfig_base.ui:231
 #, kde-format
 msgid "Show anni&versaries"
-msgstr ""
+msgstr "&იუბილეების ჩვენება"
 
 #: kontactplugin/specialdates/sdsummarywidget.cpp:97
 #, kde-format
@@ -3181,12 +3186,12 @@ msgstr "კალენდარი"
 #: korganizer_options.h:18
 #, kde-format
 msgid "Import the specified files as separate calendars"
-msgstr ""
+msgstr "მითითებული ფაილების ცალ-ცალკე კალენდრებში შემოტანა"
 
 #: korganizer_options.h:20
 #, kde-format
 msgid "Merge the specified files into an existing calendar"
-msgstr ""
+msgstr "მითითებული ფაილების არსებულ კალენდარში შერწყმა"
 
 #: korganizer_options.h:21
 #, kde-format
@@ -3671,6 +3676,9 @@ msgid ""
 "Select which regions you want to use the holidays here. Defined holidays are "
 "shown as non-working days in the date navigator, the agenda view, etc."
 msgstr ""
+"აქ აირჩიეთ რეგიონი, რომლისთვისაც დასვენების დღეების გამოყენებაც გნებავთ. "
+"აღწერილი დასვენების დღეები მონაცემების ნავიგატორში, დღის წესრიგის ხედში და ა."
+"შ. როგორც არასამუშაო, ისე გამოჩნდება."
 
 #. i18n: ectx: label, entry (WeekStartDay), group (Time &amp; Date)
 #: settings/korganizer.kcfg:55
@@ -4687,7 +4695,7 @@ msgstr ""
 #: ui/filteredit_base.ui:124
 #, kde-format
 msgid "Hide &recurring events and to-dos"
-msgstr ""
+msgstr "&განმეორებადი მოვლენებისა და გასაკეთებლების დამალვა"
 
 #. i18n: ectx: property (whatsThis), widget (QCheckBox, mCompletedCheck)
 #: ui/filteredit_base.ui:131
@@ -4800,7 +4808,7 @@ msgstr ""
 #: ui/filteredit_base.ui:318
 #, kde-format
 msgid "Hide to-dos not assigned to me"
-msgstr ""
+msgstr "გასაკეთებლების დამალვა, რომლებიც ჩემზე არაა მონიჭებული"
 
 #. i18n: ectx: attribute (title), widget (QWidget, tabPublish)
 #: ui/kogroupwareprefspage.ui:36
@@ -4833,7 +4841,7 @@ msgstr ""
 #: ui/kogroupwareprefspage.ui:72
 #, kde-format
 msgid "Publish your free/&busy information automatically"
-msgstr ""
+msgstr "თქვენი თავისუფალი/დაკავებულობის ინფორმაციის ავტომატური გამოქვეყნება"
 
 #. i18n: ectx: property (whatsThis), widget (QLabel, publishDelayLabel)
 #. i18n: ectx: property (whatsThis), widget (QSpinBox, publishDelay)
@@ -4849,7 +4857,7 @@ msgstr ""
 #: ui/kogroupwareprefspage.ui:99
 #, kde-format
 msgid "Minimum time between uploads (in minutes):"
-msgstr ""
+msgstr "მინიმალური დრო ატვირთვებს შორის (წუთებში):"
 
 #. i18n: ectx: property (whatsThis), widget (QLabel, TextLabel3)
 #. i18n: ectx: property (whatsThis), widget (QSpinBox, publishDays)
@@ -4958,7 +4966,7 @@ msgstr "სერვერის URL:"
 #: ui/kogroupwareprefspage.ui:308
 #, kde-format
 msgid "(No need if using Kolab server version 2)"
-msgstr ""
+msgstr "(საჭირო არაა, თუ იყენებთ Kolab სერვერის მეორე ვერსიას)"
 
 #. i18n: ectx: attribute (title), widget (QWidget, tabRetrieve)
 #: ui/kogroupwareprefspage.ui:335
@@ -5010,7 +5018,7 @@ msgstr ""
 #: ui/kogroupwareprefspage.ui:385
 #, kde-format
 msgid "Use full email &address for retrieval"
-msgstr ""
+msgstr "მისაღებად ელფოსტის სრული მისამართის გამოყენება"
 
 #. i18n: ectx: property (whatsThis), widget (QLineEdit, retrieveUrl)
 #. i18n: ectx: property (whatsThis), widget (QLabel, TextLabel7_2)
@@ -5059,6 +5067,8 @@ msgstr "&ძებნა:"
 #, kde-format
 msgid "Search pattern. Use wildcards “*” and “?” as desired."
 msgstr ""
+"ძებნის ნიმუში. სადაც გნებავთ, შეგიძლიათ, ვაილდკარდები \"*\" და \"?\" "
+"გამოიყენოთ."
 
 #. i18n: ectx: property (whatsThis), widget (QLineEdit, searchEdit)
 #: ui/searchdialog_base.ui:52
@@ -5087,7 +5097,7 @@ msgstr "ძებნა"
 #: ui/searchdialog_base.ui:73
 #, kde-format
 msgid "Search for events with matching criteria."
-msgstr ""
+msgstr "მოვლენების მოძებნა, რომლებიც მითითებულ პირობას აკმაყოფილებენ."
 
 #. i18n: ectx: property (whatsThis), widget (QCheckBox, eventsCheck)
 #: ui/searchdialog_base.ui:76
@@ -5108,6 +5118,7 @@ msgstr "&მოვლენები"
 #, kde-format
 msgid "Search for journal entries with matching criteria."
 msgstr ""
+"ჟურნალის ჩანაწერების მოძებნა, რომლებიც მითითებულ პირობას აკმაყოფილებენ."
 
 #. i18n: ectx: property (whatsThis), widget (QCheckBox, journalsCheck)
 #: ui/searchdialog_base.ui:92
@@ -5127,7 +5138,7 @@ msgstr "&ჟურნალები"
 #: ui/searchdialog_base.ui:102
 #, kde-format
 msgid "Search for to-dos with matching criteria."
-msgstr ""
+msgstr "გასაკეთებლების მოძებნა, რომლებიც მითითებულ პირობას აკმაყოფილებენ."
 
 #. i18n: ectx: property (whatsThis), widget (QCheckBox, todosCheck)
 #: ui/searchdialog_base.ui:105
@@ -5385,7 +5396,7 @@ msgstr "აგენდა %1"
 #, kde-format
 msgctxt "@title:window"
 msgid "Configure Side-By-Side View"
-msgstr ""
+msgstr "გვერდიგვერდ ხედის მორგება"
 
 #. i18n: ectx: property (text), widget (QRadioButton, useDefaultRB)
 #: views/multiagendaview/multiagendaviewconfigwidget.ui:17
