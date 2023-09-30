@@ -95,6 +95,18 @@ void KOTodoView::setModel(QAbstractItemModel *model)
     mView->setModel(model);
 }
 
+void KOTodoView::calendarAdded(const Akonadi::CollectionCalendar::Ptr &calendar)
+{
+    BaseView::calendarAdded(calendar);
+    mView->addCalendar(calendar);
+}
+
+void KOTodoView::calendarRemoved(const Akonadi::CollectionCalendar::Ptr &calendar)
+{
+    BaseView::calendarRemoved(calendar);
+    mView->removeCalendar(calendar);
+}
+
 Akonadi::Item::List KOTodoView::selectedIncidences()
 {
     return mView->selectedIncidences();

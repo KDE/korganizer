@@ -26,6 +26,8 @@ public:
     ~KOTodoView() override;
 
     void setModel(QAbstractItemModel *model) override;
+    void calendarAdded(const Akonadi::CollectionCalendar::Ptr &calendar) override;
+    void calendarRemoved(const Akonadi::CollectionCalendar::Ptr &calendar) override;
 
     Q_REQUIRED_RESULT Akonadi::Item::List selectedIncidences() override;
     Q_REQUIRED_RESULT KCalendarCore::DateList selectedIncidenceDates() override;
