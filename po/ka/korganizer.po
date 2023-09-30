@@ -8,7 +8,7 @@ msgstr ""
 "Project-Id-Version: korganizer\n"
 "Report-Msgid-Bugs-To: https://bugs.kde.org\n"
 "POT-Creation-Date: 2023-09-27 01:41+0000\n"
-"PO-Revision-Date: 2023-09-28 12:14+0200\n"
+"PO-Revision-Date: 2023-09-29 06:43+0200\n"
 "Last-Translator: Temuri Doghonadze <temuri.doghonadze@gmail.com>\n"
 "Language-Team: Georgian <kde-i18n-doc@kde.org>\n"
 "Language: ka\n"
@@ -3639,6 +3639,11 @@ msgid ""
 "Kolab server or have to manage multiple accounts using Kontact as a KDE "
 "Kolab client. "
 msgstr ""
+"აირჩიეთ ეს პარამეტრი, რათა აირჩიოთ კალენდარი, რომელიც გამოიყენება ჩასაწერად, "
+"როცა ქმნით ახალ მოვლენას, გასაკეთებელს ან ჟურნალის ჩანაწერს. ეს არჩევანი "
+"რეკომენდებულია, თუ Kolab სერვერის გაზიარებული საქაღალდეების გამოყენებას "
+"აპირებთ, ან გიწევთ Kontact-ით, როგორც KDE-ის Kolab-ის კლიენტით, ერთზე მეტი "
+"ანგარიში მართოთ. "
 
 #. i18n: ectx: whatsthis, entry (TimeZoneId), group (Time &amp; Date)
 #: settings/korganizer.kcfg:40
@@ -3662,6 +3667,8 @@ msgid ""
 "Enter the start time for events here. This time should be the earliest time "
 "that you use for events, as it will be displayed at the top."
 msgstr ""
+"შეიყვანეთ აქ მოვლენებების დაწყების დრო. ეს დრო ყველაზე ადრე უნდა იყოს ყველა "
+"თარიღამდე, რომლებსაც მოვლენებისთვის იყენებთ, რადგან ის სიის თავში გამოჩნდება."
 
 #. i18n: ectx: label, entry (Holidays), group (Time &amp; Date)
 #: settings/korganizer.kcfg:50
@@ -3699,6 +3706,8 @@ msgid ""
 "Select the first day of each week. Normally, you can ignore this since it is "
 "set in your locale."
 msgstr ""
+"აირჩიეთ კვირის პირველი დღე. ნორმალურად, ეს შეგიძლიათ გამოტოვოთ, რადგან ის "
+"ლოკალზე გასწორდება."
 
 #. i18n: ectx: label, entry (WorkingHoursStart), group (Time &amp; Date)
 #: settings/korganizer.kcfg:62
@@ -3713,6 +3722,8 @@ msgid ""
 "Enter the start time for the working hours here. The working hours will be "
 "marked with color by KOrganizer."
 msgstr ""
+"აირჩიეთ სამუშაო საათების დაწყების დრო. სამუშაო საათებს KOrganizer სხვა ფერით "
+"მონიშნავს."
 
 #. i18n: ectx: label, entry (WorkingHoursEnd), group (Time &amp; Date)
 #: settings/korganizer.kcfg:68
@@ -3727,6 +3738,8 @@ msgid ""
 "Enter the ending time for the working hours here. The working hours will be "
 "marked with color by KOrganizer."
 msgstr ""
+"აირჩიეთ სამუშაო საათების დასასრულის დრო. სამუშაო საათებს KOrganizer სხვა "
+"ფერით მონიშნავს."
 
 #. i18n: ectx: label, entry, group (Time &amp; Date)
 #: settings/korganizer.kcfg:74
@@ -3775,6 +3788,8 @@ msgid ""
 "Check this box to display summary tooltips when hovering the mouse over an "
 "event or a to-do."
 msgstr ""
+"დასვით ეს თოლია მოვლენაზე ან გასაკეთებელზე თაგუნას კურსორის გადატარებისას "
+"შეჯამების მინიშნებების საჩვენებლად."
 
 #. i18n: ectx: label, entry, group (General View)
 #: settings/korganizer.kcfg:96
@@ -3804,12 +3819,14 @@ msgid ""
 "access the next \"x\" days view, choose the \"Next X Days\" menu item from "
 "the \"View\" menu."
 msgstr ""
+"აირჩიეთ დღეების რაოდენობა \"x\" შემდეგ დღეებში საჩვენებლად. შემდეგი \"x\" "
+"დღის საჩვენებლად \"ხედის\" მენიუში \"შემდეგი X დღის ჩვენება\" აირჩიეთ."
 
 #. i18n: ectx: tooltip, entry, group (General View)
 #: settings/korganizer.kcfg:104
 #, kde-format
 msgid "Show this many days at a time in the Next \"x\" days view"
-msgstr ""
+msgstr "შემდეგი \"x\" დღის ხედში ერთდროულად ამდენი დღის ჩვენება"
 
 #. i18n: ectx: label, entry (DailyRecur), group (General View)
 #: settings/korganizer.kcfg:109
@@ -3825,6 +3842,9 @@ msgid ""
 "typeface in the Date Navigator, or uncheck it to give more prominence to "
 "other (non daily recurring) events."
 msgstr ""
+"დასვით ეს თოლია, რათა დღეები, როლებიც დღიურად განმეორებად მოვლენებს "
+"შეიცავენ, თარიღის ნავიგატორში სქელი ფონტით გაჩვენოთ, ან მოხსენით, რათა მეტი "
+"მნიშვნელობა სხვა (არა-ყოველდღიურ) მოვლენებს მიანიჭოთ."
 
 #. i18n: ectx: label, entry (WeeklyRecur), group (General View)
 #: settings/korganizer.kcfg:115
@@ -3840,6 +3860,9 @@ msgid ""
 "typeface in the Date Navigator, or uncheck it to give more prominence to "
 "other (non weekly recurring) events."
 msgstr ""
+"დასვით ეს თოლია, რათა დღეები, როლებიც ყოველკვირეულად განმეორებად მოვლენებს "
+"შეიცავენ, თარიღის ნავიგატორში სქელი ფონტით გაჩვენოთ, ან მოხსენით, რათა მეტი "
+"მნიშვნელობა სხვა (არა-ყოველკვირეულ) მოვლენებს მიანიჭოთ."
 
 #. i18n: ectx: label, entry (HighlightTodos), group (General View)
 #: settings/korganizer.kcfg:121
@@ -3854,6 +3877,8 @@ msgid ""
 "Check this box to show the days containing to-dos in bold typeface in the "
 "Date Navigator when in to-do view."
 msgstr ""
+"დასვით ეს თოლია, რათა მონაცემების ნავიგატორის გასაკეთებლების ხედში "
+"განმეორებადი გასაკეთებლების შემცველი დღეები სქელი ფონტით გაჩვენოთ."
 
 #. i18n: ectx: label, entry (HighlightJournals), group (General View)
 #: settings/korganizer.kcfg:127
@@ -3868,12 +3893,15 @@ msgid ""
 "Check this box to show the days containing journals in bold typeface in the "
 "Date Navigator when in journal view."
 msgstr ""
+"დასვით ეს თოლია, რათა მონაცემების ნავიგატორის ჟურნალის ხედში ჟურნალის "
+"შემცველი დღეები სქელი ფონტით გაჩვენოთ."
 
 #. i18n: ectx: label, entry (WeekNumbersShowWork), group (General View)
 #: settings/korganizer.kcfg:133
 #, kde-format
 msgid "Week numbers select a work week when in work week mode"
 msgstr ""
+"კვირის ნორები აირჩევენ სამუშაო კვიარას, როცა სამუშაო კვირის რეჟიმია ჩართული"
 
 #. i18n: ectx: whatsthis, entry (WeekNumbersShowWork), group (General View)
 #: settings/korganizer.kcfg:134
@@ -3882,6 +3910,8 @@ msgid ""
 "Check this box to select a working week when clicking on the Date "
 "Navigator's week numbers, or uncheck it to choose the whole week."
 msgstr ""
+"დასვით ეს თოლია, რომ მონაცემების ნავიგატორის კვირის რიცხვებზე დაწკაპუნებისას "
+"სამუშაო კვირა აირჩიოთ, ან გამორთეთ, რომ მთელი კვირა აირჩიოთ."
 
 #. i18n: ectx: label, entry, group (Agenda View)
 #: settings/korganizer.kcfg:142
@@ -3896,12 +3926,14 @@ msgid ""
 "Select the height of the hour rows in the agenda grid, in pixels. Increasing "
 "this value will make each row in the agenda grid taller."
 msgstr ""
+"აირჩიეთ დღის წესრიგის ბადეში საათის მწკრივების სიმაღლე, პიქსელებში. ამ "
+"მნიშვნელობის გაზრდა დღის წესრიგის ბადის ყველა მწკრივის სიმაღლეს გაზრდის."
 
 #. i18n: ectx: tooltip, entry, group (Agenda View)
 #: settings/korganizer.kcfg:144
 #, kde-format
 msgid "Set the height (in pixels) for an hour in the agenda grid"
-msgstr ""
+msgstr "დააყენეთ დღის წესრიგის ბადეში საათის სიმაღლე, პიქსელებში"
 
 #. i18n: ectx: label, entry (EnableAgendaItemIcons), group (Agenda View)
 #: settings/korganizer.kcfg:151
@@ -3916,6 +3948,8 @@ msgid ""
 "Check this box to display icons (alarm, recursion, etc.) in agenda view "
 "items."
 msgstr ""
+"ჩართეთ ეს თოლია დღის წესრიგის ხედის ელემენტებში ხატულების (განგაში, რეკურსია "
+"და ა.შ.) საჩვენებლად."
 
 #. i18n: ectx: tooltip, entry (EnableAgendaItemIcons), group (Agenda View)
 #: settings/korganizer.kcfg:153
@@ -3955,6 +3989,8 @@ msgid ""
 "Check this box to display a line in the day or week view indicating the "
 "current-time line (Marcus Bains line)."
 msgstr ""
+"დასვით თოლია დღის ან კვირის ხედში მიმდინარე-დროის ხაზის საჩვენებლად (მარკუს "
+"ბეინსის ხაზი)."
 
 #. i18n: ectx: tooltip, entry (MarcusBainsEnabled), group (Agenda View)
 #: settings/korganizer.kcfg:167
@@ -3985,6 +4021,7 @@ msgstr "მიმდინარე დროის მაჩვენებე�
 #, kde-format
 msgid "Time range selection in agenda view starts event editor"
 msgstr ""
+"დღის განრიგის ხედში დროის შუალედის მონიშვნა მოვლენების რედაქტორს გაუშვებს"
 
 #. i18n: ectx: whatsthis, entry (SelectionStartsEditor), group (Agenda View)
 #: settings/korganizer.kcfg:180
@@ -3999,7 +4036,7 @@ msgstr ""
 #: settings/korganizer.kcfg:181
 #, kde-format
 msgid "Enable automatic event editor with time range selection"
-msgstr ""
+msgstr "მოვლენების რედაქტორის ჩართვა დროის შუალედის მონიშვნასტან ერთად"
 
 #. i18n: ectx: label, entry, group (Agenda View)
 #. i18n: ectx: label, entry, group (Month View)

@@ -14,7 +14,7 @@ msgstr ""
 "Project-Id-Version: korganizer\n"
 "Report-Msgid-Bugs-To: https://bugs.kde.org\n"
 "POT-Creation-Date: 2023-09-27 01:41+0000\n"
-"PO-Revision-Date: 2023-09-27 12:37+0200\n"
+"PO-Revision-Date: 2023-09-29 16:01+0200\n"
 "Last-Translator: Josep M. Ferrer <txemaq@gmail.com>\n"
 "Language-Team: Catalan <kde-i18n-ca@kde.org>\n"
 "Language: ca\n"
@@ -483,7 +483,7 @@ msgid ""
 "Navigator sidebar will be shown."
 msgstr ""
 "Canvia a la vista «Què toca ara», la qual mostra els esdeveniments i tasques "
-"pendents «properes» en una llista curta per a una lectura ràpida. Es "
+"pendents «pròximes» en una llista curta per a una lectura ràpida. Es "
 "mostraran totes les tasques pendents obertes, però només es mostraran els "
 "esdeveniments dels dies seleccionats al navegador de dates de la barra "
 "lateral."
@@ -2341,7 +2341,7 @@ msgstr "Configuració del resum dels esdeveniments"
 #: kontactplugin/korganizer/apptsummaryconfig_base.ui:14
 #, kde-format
 msgid "Show Upcoming Events Starting"
-msgstr "Mostra l'inici dels esdeveniments propers"
+msgstr "Mostra l'inici dels esdeveniments pròxims"
 
 #. i18n: ectx: property (toolTip), widget (QRadioButton, mDateTodayButton)
 #: kontactplugin/korganizer/apptsummaryconfig_base.ui:20
@@ -2393,7 +2393,7 @@ msgstr "En el proper &mes (31 dies)"
 #: kontactplugin/korganizer/apptsummaryconfig_base.ui:57
 #, kde-format
 msgid "Select the days for showing upcoming events"
-msgstr "Seleccioneu els dies per a mostrar esdeveniments propers"
+msgstr "Seleccioneu els dies per a mostrar esdeveniments pròxims"
 
 #. i18n: ectx: property (whatsThis), widget (QRadioButton, mDateRangeButton)
 #: kontactplugin/korganizer/apptsummaryconfig_base.ui:60
@@ -2403,7 +2403,7 @@ msgid ""
 "upcoming events."
 msgstr ""
 "Activeu aquesta casella si voleu especificar el nombre de dies en el futur "
-"per als esdeveniments propers."
+"per als esdeveniments pròxims."
 
 #. i18n: ectx: property (text), widget (QRadioButton, mDateRangeButton)
 #: kontactplugin/korganizer/apptsummaryconfig_base.ui:63
@@ -2411,13 +2411,13 @@ msgstr ""
 #: kontactplugin/specialdates/sdsummaryconfig_base.ui:71
 #, kde-format
 msgid "Within the &next:"
-msgstr "En els &propers:"
+msgstr "En els &pròxims:"
 
 #. i18n: ectx: property (toolTip), widget (QSpinBox, mCustomDays)
 #: kontactplugin/korganizer/apptsummaryconfig_base.ui:76
 #, kde-format
 msgid "Set the number of days to show upcoming events"
-msgstr "Estableix el nombre de dies per a mostrar els esdeveniments propers"
+msgstr "Estableix el nombre de dies per a mostrar els esdeveniments pròxims"
 
 #. i18n: ectx: property (whatsThis), widget (QSpinBox, mCustomDays)
 #: kontactplugin/korganizer/apptsummaryconfig_base.ui:79
@@ -2427,7 +2427,7 @@ msgid ""
 "year in the future."
 msgstr ""
 "Useu aquest botó de selecció de valors per a establir el nombre de dies per "
-"a mostrar els esdeveniments propers fins a 1 any en el futur."
+"a mostrar els esdeveniments pròxims fins a 1 any en el futur."
 
 #. i18n: ectx: property (specialValueText), widget (QSpinBox, mCustomDays)
 #: kontactplugin/korganizer/apptsummaryconfig_base.ui:82
@@ -2450,7 +2450,7 @@ msgstr " dies"
 #: kontactplugin/korganizer/apptsummaryconfig_base.ui:122
 #, kde-format
 msgid "Show These Upcoming Events From Your Calendar"
-msgstr "Mostra aquests esdeveniments propers des del calendari"
+msgstr "Mostra aquests esdeveniments pròxims des del calendari"
 
 #. i18n: ectx: property (toolTip), widget (QCheckBox, mShowBirthdaysFromCal)
 #: kontactplugin/korganizer/apptsummaryconfig_base.ui:128
@@ -2469,7 +2469,7 @@ msgid ""
 "resource in your calendar."
 msgstr ""
 "Habiliteu aquesta opció per a incloure les dates de naixement del calendari "
-"en el resum d'esdeveniments propers. Aquesta opció només està disponible si "
+"en el resum d'esdeveniments pròxims. Aquesta opció només està disponible si "
 "esteu usant el recurs «data de naixement» en el calendari."
 
 #. i18n: ectx: property (text), widget (QCheckBox, mShowBirthdaysFromCal)
@@ -2498,7 +2498,7 @@ msgid ""
 "Birthdays resource in your calendar."
 msgstr ""
 "Habiliteu aquesta opció per a incloure els aniversaris del calendari en el "
-"resum d'esdeveniments propers. Aquesta opció només està disponible si esteu "
+"resum d'esdeveniments pròxims. Aquesta opció només està disponible si esteu "
 "usant el recurs «data de naixement» en el calendari."
 
 #. i18n: ectx: property (text), widget (QCheckBox, mShowAnniversariesFromCal)
@@ -2546,14 +2546,14 @@ msgstr "Mostra només els &meus esdeveniments"
 #: kontactplugin/korganizer/apptsummarywidget.cpp:46
 #, kde-format
 msgid "Upcoming Events"
-msgstr "Esdeveniments propers"
+msgstr "Esdeveniments pròxims"
 
 #: kontactplugin/korganizer/apptsummarywidget.cpp:207
 #, kde-format
 msgid "No upcoming events starting within the next day"
 msgid_plural "No upcoming events starting within the next %1 days"
 msgstr[0] "No hi ha cap esdeveniment per demà"
-msgstr[1] "No hi ha cap esdeveniment en els propers %1 dies"
+msgstr[1] "No hi ha cap esdeveniment en els pròxims %1 dies"
 
 #: kontactplugin/korganizer/apptsummarywidget.cpp:240
 #, kde-format
@@ -2988,7 +2988,7 @@ msgid "No pending to-dos due within the next day"
 msgid_plural "No pending to-dos due within the next %1 days"
 msgstr[0] "No hi ha tasques pendents inacabades que vencin demà"
 msgstr[1] ""
-"No hi ha tasques pendents inacabades que vencin en els propers %1 dies"
+"No hi ha tasques pendents inacabades que vencin en els pròxims %1 dies"
 
 #: kontactplugin/korganizer/todosummarywidget.cpp:329
 #, kde-format
@@ -3089,7 +3089,7 @@ msgstr ""
 #: kontactplugin/specialdates/sdsummaryconfig_base.ui:65
 #, kde-format
 msgid "Select the days for showing upcoming special occasions"
-msgstr "Seleccioneu els dies per a mostrar les properes ocasions especials"
+msgstr "Seleccioneu els dies per a mostrar les pròximes ocasions especials"
 
 #. i18n: ectx: property (whatsThis), widget (QRadioButton, mDateRangeButton)
 #: kontactplugin/specialdates/sdsummaryconfig_base.ui:68
@@ -3099,14 +3099,14 @@ msgid ""
 "upcoming special occasions."
 msgstr ""
 "Activeu aquesta casella si voleu especificar el nombre de dies en el futur "
-"per a les properes ocasions especials."
+"per a les pròximes ocasions especials."
 
 #. i18n: ectx: property (toolTip), widget (QSpinBox, mCustomDays)
 #: kontactplugin/specialdates/sdsummaryconfig_base.ui:84
 #, kde-format
 msgid "Set the number of days to show upcoming special occasions"
 msgstr ""
-"Estableix el nombre de dies per a mostrar les properes ocasions especials"
+"Estableix el nombre de dies per a mostrar les pròximes ocasions especials"
 
 #. i18n: ectx: property (whatsThis), widget (QSpinBox, mCustomDays)
 #: kontactplugin/specialdates/sdsummaryconfig_base.ui:87
@@ -3116,7 +3116,7 @@ msgid ""
 "occasions up to one year in the future."
 msgstr ""
 "Useu aquest botó de selecció de valors per a establir el nombre de dies per "
-"a mostrar les properes ocasions especials fins a un any en el futur."
+"a mostrar les pròximes ocasions especials fins a un any en el futur."
 
 #. i18n: ectx: property (title), widget (QGroupBox, mShowFromCalGroup)
 #: kontactplugin/specialdates/sdsummaryconfig_base.ui:130
@@ -3139,7 +3139,7 @@ msgid ""
 "tag."
 msgstr ""
 "Habiliteu aquesta opció per a incloure les dates de naixement del calendari "
-"en el resum d'ocasions especials properes. Normalment, són esdeveniments amb "
+"en el resum d'ocasions especials pròximes. Normalment, són esdeveniments amb "
 "l'etiqueta «Data de naixement»."
 
 #. i18n: ectx: property (toolTip), widget (QCheckBox, mShowAnniversariesFromCalBox)
@@ -3157,7 +3157,7 @@ msgid ""
 "\"Anniversary\" tag."
 msgstr ""
 "Habiliteu aquesta opció per a incloure els aniversaris del calendari en el "
-"resum d'ocasions especials properes. Normalment, aquests són esdeveniments "
+"resum d'ocasions especials pròximes. Normalment, aquests són esdeveniments "
 "amb l'etiqueta «Aniversari»."
 
 #. i18n: ectx: property (toolTip), widget (QCheckBox, mShowHolidaysFromCalBox)
@@ -3175,7 +3175,7 @@ msgid ""
 "region, or events with the \"Holiday\" tag."
 msgstr ""
 "Habiliteu aquesta opció per a incloure els festius del calendari en el resum "
-"d'ocasions especials properes. Aquests són esdeveniments de la vostra regió "
+"d'ocasions especials pròximes. Aquests són esdeveniments de la vostra regió "
 "per als dies festius configurada, o esdeveniments amb l'etiqueta «Festiu»."
 
 #. i18n: ectx: property (text), widget (QCheckBox, mShowHolidaysFromCalBox)
@@ -3259,7 +3259,7 @@ msgstr "Mostra els ani&versaris"
 #: kontactplugin/specialdates/sdsummarywidget.cpp:97
 #, kde-format
 msgid "Upcoming Special Dates"
-msgstr "Dates especials properes"
+msgstr "Dates especials pròximes"
 
 #: kontactplugin/specialdates/sdsummarywidget.cpp:450
 #, kde-format
@@ -3310,7 +3310,7 @@ msgstr[1] "%1 anys"
 msgid "No special dates within the next 1 day"
 msgid_plural "No special dates pending within the next %1 days"
 msgstr[0] "No hi ha cap data especial per demà"
-msgstr[1] "No hi ha cap data especial en els propers %1 dies"
+msgstr[1] "No hi ha cap data especial en els pròxims %1 dies"
 
 #: kontactplugin/specialdates/sdsummarywidget.cpp:656
 #, kde-format
@@ -4044,14 +4044,14 @@ msgid ""
 "the \"View\" menu."
 msgstr ""
 "Seleccioneu el nombre «x» de dies que es mostraran a la vista de dies "
-"propers. Per a accedir a la vista dels «x» dies propers, trieu l'element del "
+"pròxims. Per a accedir a la vista dels «x» dies pròxims, trieu l'element del "
 "menú «Propers x dies» des del menú «Visualitza»."
 
 #. i18n: ectx: tooltip, entry, group (General View)
 #: settings/korganizer.kcfg:104
 #, kde-format
 msgid "Show this many days at a time in the Next \"x\" days view"
-msgstr "Mostra aquests dies alhora a la vista de propers «x» dies"
+msgstr "Mostra aquests dies alhora a la vista de pròxims «x» dies"
 
 #. i18n: ectx: label, entry (DailyRecur), group (General View)
 #: settings/korganizer.kcfg:109
@@ -6113,39 +6113,3 @@ msgstr "%1"
 msgctxt "4 digit year"
 msgid "%1"
 msgstr "%1"
-
-#~ msgid "Copying Failed"
-#~ msgstr "La còpia ha fallat"
-
-#~ msgid "Moving Failed"
-#~ msgstr "Ha fallat l'acció de moure"
-
-#~ msgctxt "A collection of all declined invidations."
-#~ msgid "Declined Invitations"
-#~ msgstr "Invitacions refusades"
-
-#~ msgctxt "A collection of all open invidations."
-#~ msgid "Open Invitations"
-#~ msgstr "Invitacions obertes"
-
-#~ msgctxt "@title:window"
-#~ msgid "%1"
-#~ msgstr "%1"
-
-#~ msgid "KCMUserFeedBack"
-#~ msgstr "KCMUserFeedBack"
-
-#~ msgid "KOrganizer Configure User FeedBack"
-#~ msgstr "Configura els comentaris de l'usuari del KOrganizer"
-
-#~ msgid "(c) 2020-2021 Laurent Montel"
-#~ msgstr "(c) 2020-2021 Laurent Montel"
-
-#~ msgid "KCMDesignerfields"
-#~ msgstr "KCMDesignerfields"
-
-#~ msgid "Qt Designer Fields Dialog"
-#~ msgstr "Diàleg de camps del Qt Designer"
-
-#~ msgid "(c) 2004 Tobias Koenig"
-#~ msgstr "(c) 2004 Tobias Koenig"

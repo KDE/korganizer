@@ -5760,9 +5760,3 @@ msgstr "%1"
 msgctxt "4 digit year"
 msgid "%1"
 msgstr "%1"
-
-#~ msgid "Copying Failed"
-#~ msgstr "Feil ved kopiering"
-
-#~ msgid "Moving Failed"
-#~ msgstr "Feil ved flytting"

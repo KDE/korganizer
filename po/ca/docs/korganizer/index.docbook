@@ -535,7 +535,7 @@
 >Conclusió</title>
 
 <para
->Aquest curs de cinc minuts tan sols cobreix operacions bàsiques del &korganizer;. Ara hauríeu de seguir endavant i llegir la resta d'aquest manual per a alliberar tot el poder de les capacitats del &korganizer;. Però si no ho voleu fer, almenys hauríeu de passar per la <link linkend="faq"
+>Aquest curs de cinc minuts tan sols cobreix operacions bàsiques del &korganizer;. Ara hauríeu de seguir endavant i llegir la resta d'aquest manual per a alliberar tot el poder de les capacitats del &korganizer;. Però si no ho voleu fer, almenys hauríeu de revisar per les <link linkend="faq"
 >&PMF;</link
 >.</para>
 
@@ -959,7 +959,7 @@ choose the <menuchoice
 >Vistes i filtres</title>
 
 <para
->Mentre que els calendaris (recursos) poden contenir esdeveniments, tasques pendents i/o entrades de diari, aquests elements poden ser d'una naturalesa molt diversa. Les tasques pendents poden no tenir data associada, així que la vista del programa no és adequada. Les entrades de diari són una recopilació de les vostres reflexions, ocurrències o experiències. Necessiten el seu propi mode de vista, perquè no estan relacionades amb la llista d'esdeveniments propers o la llista de tasques pendents, &etc;</para>
+>Mentre que els calendaris (recursos) poden contenir esdeveniments, tasques pendents i/o entrades de diari, aquests elements poden ser d'una naturalesa molt diversa. Les tasques pendents poden no tenir data associada, així que la vista del programa no és adequada. Les entrades de diari són una recopilació de les vostres reflexions, ocurrències o experiències. Necessiten el seu propi mode de vista, perquè no estan relacionades amb la llista d'esdeveniments pròxims o la llista de tasques pendents, &etc;</para>
 
 <para
 >Per a resoldre el desafiament de mostrar la vostra informació d'una manera útil i intuïtiva, el &korganizer; ofereix vistes diferents, filtres i capacitats de cerca. També podeu assignar etiquetes als esdeveniments i tasques pendents relacionades, el qual pot ser-vos útil per a veure-les posteriorment, emprant filtres o colors.</para>
@@ -1134,7 +1134,7 @@ choose the <menuchoice
 ><para
 >Feu doble clic sobre qualsevol regió de temps de l'esdeveniment, i el &korganizer; crearà automàticament un esdeveniment amb la durada predeterminada (el qual és personalitzable en el diàleg de preferències). Podeu afegir immediatament el resum. Els esdeveniments s'<quote
 >ajusten</quote
-> en increments de mitja hora, arrodonint a la mitja hora més propera d'on heu fet clic.</para
+> en increments de mitja hora, arrodonint a la mitja hora més pròxima d'on heu fet clic.</para
 ></listitem>
 <listitem
 ><para
@@ -1193,12 +1193,12 @@ choose the <menuchoice
 <para
 >Aquesta vista presenta la <link linkend="agenda-view"
 >vista d'agenda</link
-> per als propers dies, inici des d'avui. Podeu canviar el nombre de dies a mostrar en la <link linkend="config-main-views"
+> per als pròxims dies, inici des d'avui. Podeu canviar el nombre de dies a mostrar en la <link linkend="config-main-views"
 >configuració de la vista del &korganizer;</link
 >. El valor predeterminat és 3.</para>
 
 <para
->Canvieu la pantalla a la vista dels propers dies escollint l'element de menú <menuchoice
+>Canvieu la pantalla a la vista dels pròxims dies escollint l'element de menú <menuchoice
 ><guimenu
 >Ves</guimenu
 ><guimenuitem
@@ -1757,7 +1757,7 @@ choose the <menuchoice
 ><para
 >Actualment, el &korganizer; <emphasis
 >mostra</emphasis
-> els elements propietat d'altres persones i marcats com a confidencials. Altres clients els poden tractar de forma diferent, però cal tenir cura quan publiqueu esdeveniments privats o confidencials: iCalendar és un format de fitxer de text, i es pot llegir amb un editor de text (si hi teniu accés). De manera que si voleu mantenir els elements realment com a confidencials, assegureu-vos que useu un recurs al qual tan sols hi podeu accedir vós.</para
+> els elements propietat d'altres persones i marcats com a confidencials. Altres clients els poden tractar de forma diferent, però cal tenir cura quan publiqueu esdeveniments privats o confidencials: iCalendar és un format de fitxer de text, i es pot llegir amb un editor de text (si hi teniu accés). De manera que si voleu mantenir els elements realment com a confidencials, assegureu-vos que useu un recurs al qual tan sols podeu accedir vós.</para
 ></warning
 ></listitem>
 </varlistentry>
@@ -1983,8 +1983,8 @@ choose the <menuchoice
 >Excepcions</title>
 
 <para
->Podeu tenir establerta una regla de repetició molt bona, però adonar-vos que hi ha algunes excepcions. Si per exemple configureu el vostre horari de classes, potser voldreu fer excepcions per als festius i similars. En aquesta àrea, podeu afegir, canviar i suprimir dates des de la llista d'excepcions (&pex;, hores per en què si coincideix la regla de repetició, l'esdeveniment <emphasis
->no serà planificat</emphasis
+>Podeu tenir establerta una regla de repetició molt bona, però adonar-vos que hi ha algunes excepcions. Si per exemple configureu el vostre horari de classes, potser voldreu fer excepcions per als festius i similars. En aquesta àrea, podeu afegir, canviar i suprimir dates des de la llista d'excepcions (&pex;, hores en què si coincideix la regla de repetició, l'esdeveniment <emphasis
+>no es planificarà</emphasis
 >). Trieu una data amb el selector de dates i premeu <guibutton
 >Afegeix</guibutton
 > per a incloure-la. Per a suprimir dates, ressalteu-les en el quadre del costat dret i llavors feu clic sobre <guibutton
@@ -2198,7 +2198,7 @@ choose the <menuchoice
 >Tasques pendents</title>
 
 <para
->La llista de tasques pendents és una llista on escriure notes personals sobre coses que heu de fer. Les tasques pendents són tasques, que es poden o no planificar. Hi ha tasques pendents a curt i a llarg termini. Per exemple, podeu anar a una perruqueria en una setmana, i podeu vendre el vostre cotxe vell en un any. Probablement no voldreu que aparegui un recordatori en cap data en particular, simplement voleu tenir una llista de coses a fer, i les dates en les que han d'estar finalitzades (data de venciment).</para>
+>La llista de tasques pendents és una llista on escriure notes personals sobre coses que heu de fer. Les tasques pendents són tasques, que es poden o no planificar. Hi ha tasques pendents a curt i a llarg termini. Per exemple, podeu anar a una perruqueria en una setmana, i podeu vendre el vostre cotxe vell en un any. Probablement no voldreu que aparegui un recordatori en cap data en particular, simplement voleu tenir una llista de coses a fer, i les dates en les quals han d'estar finalitzades (data de venciment).</para>
 
 <para
 >Per a introduir una tasca pendent nova, escolliu <menuchoice
@@ -2532,7 +2532,7 @@ choose the <menuchoice
 
 
 <para
->Si no esteu satisfet amb alguna de les característiques de l'esdeveniment o de la tasca pendent a la que heu estat invitat, i voleu enviar una contraproposta a l'organitzador (per exemple, una localització o horari alternatiu), simplement editeu l'element i envieu-lo de volta com a proposta, seleccionant l'element i escollint l'element de menú <menuchoice
+>Si no esteu satisfet amb alguna de les característiques de l'esdeveniment o de la tasca pendent a la qual heu estat invitat, i voleu enviar una contraproposta a l'organitzador (per exemple, una localització o horari alternatiu), simplement editeu l'element i envieu-lo de volta com a proposta, seleccionant l'element i escollint l'element de menú <menuchoice
 ><guimenu
 >Planifica</guimenu
 ><guimenuitem
@@ -2610,7 +2610,7 @@ choose the <menuchoice
 
 <para
 >En aquest exemple, introduireu un esdeveniment. Necessiteu convocar una reunió <emphasis
->el proper dilluns</emphasis
+>el pròxim dilluns</emphasis
 > per a fer el llançament del vostre nou producte. La vostra cap, <emphasis
 >Joan Holden</emphasis
 >, serà la presidenta i <emphasis
@@ -2634,7 +2634,7 @@ choose the <menuchoice
 <procedure>
 <step
 ><para
->Utilitzant el navegador de dates, aneu cap al proper dilluns.</para
+>Utilitzant el navegador de dates, aneu cap al pròxim dilluns.</para
 ></step>
 
 <step
@@ -2670,7 +2670,7 @@ choose the <menuchoice
 ><para
 >Aneu a la pestanya <guilabel
 >Recordatori</guilabel
->. Establiu l'hora del recordatori a 15 minuts, el temps just per a gaudir d'una tassa de te abans que comenci la reunió.</para
+>. Establiu l'hora del recordatori a 15 minuts, el temps just per a gaudir d'una tassa de te abans que comencés la reunió.</para
 ></step>
 
 <step
@@ -2960,7 +2960,7 @@ choose the <menuchoice
 ></term>
 <listitem
 ><para
->Seleccioneu l'hora a la que comença el dia en la llista desplegable. Aquesta pot ser l'hora a la que normalment us aixequeu, o l'hora a la que comenceu a treballar. Aquesta opció no evita que es puguin afegir o veure elements abans d'aquesta hora, tan sols estableix l'hora a mostrar de manera predeterminada en la zona superior de la vista de calendari. Useu la barra de desplaçament per a mostrar els esdeveniments anteriors o posteriors a la vista d'agenda.</para
+>Seleccioneu l'hora a la qual comença el dia en la llista desplegable. Aquesta pot ser l'hora a la qual normalment us aixequeu, o l'hora a la qual comenceu a treballar. Aquesta opció no evita que es puguin afegir o veure elements abans d'aquesta hora, tan sols estableix l'hora a mostrar de manera predeterminada en la zona superior de la vista de calendari. Useu la barra de desplaçament per a mostrar els esdeveniments anteriors o posteriors a la vista d'agenda.</para
 ></listitem>
 </varlistentry>
 
@@ -4482,7 +4482,7 @@ special events, &etc;</para>
 <para
 >Hi ha diverses <quote
 >vistes</quote
-> diferents disponibles per a mostrar els esdeveniments, tasques pendents i entrades de diari. El &korganizer; és prou intel·ligent per a recordar entre les sessions quina ha estat l'última vista activa, i la propera vegada que s'iniciï, es mostrarà aquesta vista.</para>
+> diferents disponibles per a mostrar els esdeveniments, tasques pendents i entrades de diari. El &korganizer; és prou intel·ligent per a recordar entre les sessions quina ha estat l'última vista activa, i la pròxima vegada que s'iniciï, es mostrarà aquesta vista.</para>
 
 <para
 >En general, cada vista proveeix una manera de mostrar les entrades del diari, tasques pendents i esdeveniments restringits a un període de temps o estil de visualització en particular. Feu clic sobre qualsevol element per a seleccionar-lo com a acció més endavant. Fer clic <mousebutton
@@ -4638,7 +4638,7 @@ format="PNG"/></imageobject
 >Canvia a mostrar la vista «Què toca ara».</action
 ></para>
 <para
->Aquesta vista mostra els vostres propers esdeveniments i tasques pendents. Els esdeveniments i tasques pendents es mostren un per línia.</para>
+>Aquesta vista mostra els vostres pròxims esdeveniments i tasques pendents. Els esdeveniments i tasques pendents es mostren un per línia.</para>
 <para
 >Per a més informació sobre aquesta acció, si us plau, consulteu <xref linkend="whatsnext-view"/>.</para>
 </listitem>
