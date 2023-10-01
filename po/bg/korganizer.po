@@ -1,10 +1,10 @@
-# Mincho Kondarev <mkondarev@yahoo.de>, 2022, 2023.
+# SPDX-FileCopyrightText: 2022, 2023 Mincho Kondarev <mkondarev@yahoo.de>
 msgid ""
 msgstr ""
 "Project-Id-Version: korganizer\n"
 "Report-Msgid-Bugs-To: https://bugs.kde.org\n"
 "POT-Creation-Date: 2023-09-27 01:41+0000\n"
-"PO-Revision-Date: 2023-09-24 22:20+0200\n"
+"PO-Revision-Date: 2023-09-30 10:23+0200\n"
 "Last-Translator: Mincho Kondarev <mkondarev@yahoo.de>\n"
 "Language-Team: \n"
 "Language: bg\n"
@@ -12,7 +12,7 @@ msgstr ""
 "Content-Type: text/plain; charset=UTF-8\n"
 "Content-Transfer-Encoding: 8bit\n"
 "Plural-Forms: nplurals=2; plural=n != 1;\n"
-"X-Generator: Lokalize 23.04.3\n"
+"X-Generator: Lokalize 23.08.1\n"
 
 #, kde-format
 msgctxt "NAME OF TRANSLATORS"
@@ -1112,8 +1112,7 @@ msgid "Unable to save calendar to the file %1."
 msgstr "Календарът не може да бъде записан във файла \"%1\"."
 
 #: actionmanager.cpp:1036
-#, fuzzy, kde-format
-#| msgid "Error"
+#, kde-format
 msgctxt "@title:window"
 msgid "Error"
 msgstr "Грешка"
@@ -1180,8 +1179,7 @@ msgstr ""
 "Премахването на прикачени файлове от имейл може да обезсили неговия подпис."
 
 #: actionmanager.cpp:1461
-#, fuzzy, kde-format
-#| msgid "Remove Attachments"
+#, kde-format
 msgctxt "@title:window"
 msgid "Remove Attachments"
 msgstr "Премахване на прикачените файлове"
@@ -1462,11 +1460,10 @@ msgid "Do you want to dissociate the occurrence on %1 from the recurrence?"
 msgstr "Искате ли да отделите появата на %1 от повторната поява?"
 
 #: calendarview.cpp:1575 calendarview.cpp:1587 calendarview.cpp:2246
-#, fuzzy, kde-format
-#| msgid "KOrganizer Confirmation"
+#, kde-format
 msgctxt "@title:window"
 msgid "KOrganizer Confirmation"
-msgstr "Потвърждение KOrganizer"
+msgstr "Потвърждение на KOrganizer"
 
 #: calendarview.cpp:1576
 #, kde-format
@@ -1508,8 +1505,7 @@ msgid "Dissociating the future occurrences failed."
 msgstr "Грешка при отделянето на бъдещи повторения."
 
 #: calendarview.cpp:1616 calendarview.cpp:1618
-#, fuzzy, kde-format
-#| msgid "Dissociating Failed"
+#, kde-format
 msgctxt "@title:window"
 msgid "Dissociating Failed"
 msgstr "Грешка при отделянето"
@@ -1658,8 +1654,7 @@ msgid "Delete all completed to-dos from checked calendars?"
 msgstr "Да се ​​изтрият ли всички завършени задачи от отметнатите календари?"
 
 #: calendarview.cpp:2415
-#, fuzzy, kde-format
-#| msgid "Purge To-dos"
+#, kde-format
 msgctxt "@title:window"
 msgid "Purge To-dos"
 msgstr "Изтриване на задачи"
@@ -3763,8 +3758,7 @@ msgstr ""
 "подразбиране. Всички промени, които сте направили, ще бъдат загубени."
 
 #: prefs/kprefsdialog.cpp:869
-#, fuzzy, kde-format
-#| msgid "Setting Default Preferences"
+#, kde-format
 msgctxt "@title:window"
 msgid "Setting Default Preferences"
 msgstr "Задаване на настройките по подразбиране"

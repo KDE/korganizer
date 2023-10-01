@@ -14,7 +14,7 @@ msgstr ""
 "Project-Id-Version: korganizer\n"
 "Report-Msgid-Bugs-To: https://bugs.kde.org\n"
 "POT-Creation-Date: 2023-09-27 01:41+0000\n"
-"PO-Revision-Date: 2023-09-29 16:01+0200\n"
+"PO-Revision-Date: 2023-09-30 18:20+0200\n"
 "Last-Translator: Josep M. Ferrer <txemaq@gmail.com>\n"
 "Language-Team: Catalan <kde-i18n-ca@kde.org>\n"
 "Language: ca\n"
@@ -2387,7 +2387,7 @@ msgstr ""
 #: kontactplugin/specialdates/sdsummaryconfig_base.ui:50
 #, kde-format
 msgid "Within the next &month (31 days)"
-msgstr "En el proper &mes (31 dies)"
+msgstr "En el pròxim &mes (31 dies)"
 
 #. i18n: ectx: property (toolTip), widget (QRadioButton, mDateRangeButton)
 #: kontactplugin/korganizer/apptsummaryconfig_base.ui:57
@@ -4033,7 +4033,7 @@ msgstr ""
 #: settings/korganizer.kcfg:102
 #, kde-format
 msgid "Next x days"
-msgstr "Propers x dies"
+msgstr "Pròxims x dies"
 
 #. i18n: ectx: whatsthis, entry, group (General View)
 #: settings/korganizer.kcfg:103
@@ -4044,8 +4044,8 @@ msgid ""
 "the \"View\" menu."
 msgstr ""
 "Seleccioneu el nombre «x» de dies que es mostraran a la vista de dies "
-"pròxims. Per a accedir a la vista dels «x» dies pròxims, trieu l'element del "
-"menú «Propers x dies» des del menú «Visualitza»."
+"pròxims. Per a accedir a la vista dels «x» dies pròxims, trieu l'element de "
+"menú «Pròxims x dies» des del menú «Visualitza»."
 
 #. i18n: ectx: tooltip, entry, group (General View)
 #: settings/korganizer.kcfg:104
@@ -5555,7 +5555,7 @@ msgid ""
 "For example, the search pattern “meet*boss” matches “Meeting with boss”. The "
 "pattern “c?t” would match “cat”, “cot”, and so on."
 msgstr ""
-"Examina diversos camps per veure si contenen el patró de cerca: el patró "
+"Examina diversos camps per a veure si contenen el patró de cerca: el patró "
 "«reunió» coincidirà amb «reunió de llançament». S'admeten els comodins "
 "«*» (coincideix amb qualsevol nombre de caràcters) i «?» (coincideix amb "
 "qualsevol caràcter únic). Per exemple, el patró de cerca «reunió*direcció» "

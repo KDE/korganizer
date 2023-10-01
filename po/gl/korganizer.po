@@ -366,7 +366,7 @@ msgstr ""
 #: actionmanager.cpp:278
 #, kde-format
 msgid "Could not load calendar %1."
-msgstr "Non se puido cargar o calendario %1."
+msgstr "Non foi posíbel cargar o calendario %1."
 
 #: actionmanager.cpp:288
 #, kde-format
@@ -1105,7 +1105,7 @@ msgstr "Engadiuse un calendario novo correctamente"
 #: actionmanager.cpp:858
 #, kde-format
 msgid "Could not add a calendar. Error: %1"
-msgstr "Non se puido engadir un calendario. Erro: %1"
+msgstr "Non foi posíbel engadir un calendario. Erro: %1"
 
 #: actionmanager.cpp:915
 #, kde-format
@@ -1127,7 +1127,7 @@ msgstr "Produciuse un erro: %1"
 #: actionmanager.cpp:992
 #, kde-format
 msgid "Cannot upload calendar to '%1'"
-msgstr "Non se pode enviar o calendario a «%1»."
+msgstr "Non é posíbel enviar o calendario a «%1»."
 
 #: actionmanager.cpp:998
 #, kde-format
@@ -1137,7 +1137,7 @@ msgstr "Gardado o calendario '%1'."
 #: actionmanager.cpp:1036
 #, kde-format
 msgid "Unable to save calendar to the file %1."
-msgstr "Non se pode gardar o calendario no ficheiro %1."
+msgstr "Non é posíbel gardar o calendario no ficheiro %1."
 
 #: actionmanager.cpp:1036
 #, fuzzy, kde-format
@@ -1149,7 +1149,7 @@ msgstr "Erro"
 #: actionmanager.cpp:1081
 #, kde-format
 msgid "Could not start control module for date and time format."
-msgstr "Non se puido iniciar o módulo de control do formato de data e hora."
+msgstr "Non foi posíbel iniciar o módulo de control do formato de data e hora."
 
 #: actionmanager.cpp:1260
 #, kde-format
@@ -1451,7 +1451,7 @@ msgstr "Copiado sen problemas"
 #, kde-format
 msgctxt "@info"
 msgid "Unable to copy the item \"%1\" to %2."
-msgstr "Non se pode copiar o elemento para \"%1\" para %2."
+msgstr "Non é posíbel copiar o elemento para \"%1\" para %2."
 
 #: calendarview.cpp:1458 calendarview.cpp:2439
 #, kde-format
@@ -1496,7 +1496,7 @@ msgstr "Moveuse sen problemas"
 msgctxt "@info"
 msgid "Unable to add the item \"%1\" into %2. This item has not been moved."
 msgstr ""
-"Non se pode engadir o elemento \"%1\" a %2. Non se moveu este elemento."
+"Non é posíbel engadir o elemento \"%1\" a %2. Non se moveu este elemento."
 
 #: calendarview.cpp:1571
 #, kde-format
@@ -1588,7 +1588,7 @@ msgstr "Motivo descoñecido"
 #, kde-format
 msgctxt "@info"
 msgid "Cannot write iCalendar file %1. %2"
-msgstr "Non se pode escribir o ficheiro iCalendar %1. %2"
+msgstr "Non é posíbel escribir o ficheiro iCalendar %1. %2"
 
 #: calendarview.cpp:1907 calendarview.cpp:1946
 #, kde-format
@@ -1717,17 +1717,17 @@ msgstr "Borrar"
 #, kde-format
 msgctxt "@info"
 msgid "Unable to edit \"%1\" because it is locked by another process."
-msgstr "Non se pode editar «%1» porque está bloqueado por outro proceso."
+msgstr "Non é posíbel editar «%1» porque está bloqueado por outro proceso."
 
 #: calendarview.cpp:2439
 #, kde-format
 msgid "Unable to copy the item to %1."
-msgstr "Non se pode copiar o elemento para %1."
+msgstr "Non é posíbel copiar o elemento para %1."
 
 #: calendarview.cpp:2474
 #, kde-format
 msgid "Unable to move the item to  %1."
-msgstr "Non se pode mover o elemento para %1."
+msgstr "Non é posíbel mover o elemento para %1."
 
 #: calendarview.cpp:2684
 #, kde-format
@@ -2384,7 +2384,7 @@ msgstr "Conmutar a &lembranza"
 #: kohelper.cpp:57
 #, kde-format
 msgid "Unable to save %1 \"%2\"."
-msgstr "Non se pode gardar %1 \"%2\"."
+msgstr "Non é posíbel gardar %1 \"%2\"."
 
 #. i18n: ectx: property (windowTitle), widget (QWidget, ApptSummaryConfig_Base)
 #: kontactplugin/korganizer/apptsummaryconfig_base.ui:8
@@ -3475,8 +3475,8 @@ msgid ""
 "Please properly configure at least 1 work day in the Time and Date "
 "preferences."
 msgstr ""
-"Non se pode amosar a semana laboral dado que non se configuraron os días en "
-"que se traballa. Configure axeitadamente cando menos un día laboral nas "
+"Non é posíbel amosar a semana laboral dado que non se configuraron os días "
+"en que se traballa. Configure axeitadamente cando menos un día laboral nas "
 "preferencias de hora e data."
 
 #: prefs/koprefsdialogcolorsandfonts.cpp:41
@@ -3626,7 +3626,7 @@ msgstr "Configurar"
 #, kde-format
 msgctxt "@info"
 msgid "Unable to configure this plugin"
-msgstr "Non se pode configurar este complemento"
+msgstr "Non é posíbel configurar este complemento"
 
 #: prefs/koprefsdialogtime.cpp:40
 #, kde-format
@@ -5513,7 +5513,7 @@ msgstr "URL do servidor:"
 #: ui/kogroupwareprefspage.ui:308
 #, kde-format
 msgid "(No need if using Kolab server version 2)"
-msgstr "(Non é preciso se se está a utilizar a versión 2 do servidor de Kolab)"
+msgstr "(Non é preciso se se está a usar a versión 2 do servidor de Kolab)"
 
 #. i18n: ectx: attribute (title), widget (QWidget, tabRetrieve)
 #: ui/kogroupwareprefspage.ui:335

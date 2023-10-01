@@ -1,5 +1,5 @@
 # translation of korganizer.po to
-# Version: $Revision: 1661036 $
+# Version: $Revision: 1661394 $
 # translated by Krzysztof Jasiutowicz <kpjas@priv.onet.pl>
 # contains his updates from 26.01.1999
 # Krzysztof Lichota <lichota@mimuw.edu.pl>, 2002, 2005, 2006.
@@ -14,7 +14,7 @@ msgstr ""
 "Project-Id-Version: korganizer\n"
 "Report-Msgid-Bugs-To: https://bugs.kde.org\n"
 "POT-Creation-Date: 2023-09-27 01:41+0000\n"
-"PO-Revision-Date: 2023-09-24 08:05+0200\n"
+"PO-Revision-Date: 2023-09-30 11:00+0200\n"
 "Last-Translator: Łukasz Wojniłowicz <lukasz.wojnilowicz@gmail.com>\n"
 "Language-Team: Polish <kde-i18n-doc@kde.org>\n"
 "Language: pl\n"
@@ -1129,8 +1129,7 @@ msgid "Unable to save calendar to the file %1."
 msgstr "Nie można zapisać kalendarza do pliku %1."
 
 #: actionmanager.cpp:1036
-#, fuzzy, kde-format
-#| msgid "Error"
+#, kde-format
 msgctxt "@title:window"
 msgid "Error"
 msgstr "Błąd"
@@ -1196,8 +1195,7 @@ msgid "Removing attachments from an email might invalidate its signature."
 msgstr "Usunięcie załączników z e-maila może uszkodzić jego sygnaturę."
 
 #: actionmanager.cpp:1461
-#, fuzzy, kde-format
-#| msgid "Remove Attachments"
+#, kde-format
 msgctxt "@title:window"
 msgid "Remove Attachments"
 msgstr "Usuń załączniki"
@@ -1522,8 +1520,7 @@ msgid "Dissociating the future occurrences failed."
 msgstr "Odłączanie przyszłych wydarzeń nie powiodło się."
 
 #: calendarview.cpp:1616 calendarview.cpp:1618
-#, fuzzy, kde-format
-#| msgid "Dissociating Failed"
+#, kde-format
 msgctxt "@title:window"
 msgid "Dissociating Failed"
 msgstr "Niepowodzenie odłączania"
@@ -1673,8 +1670,7 @@ msgid "Delete all completed to-dos from checked calendars?"
 msgstr "Czy usunąć wszystkie zakończone zadania z zaznaczonych kalendarzy?"
 
 #: calendarview.cpp:2415
-#, fuzzy, kde-format
-#| msgid "Purge To-dos"
+#, kde-format
 msgctxt "@title:window"
 msgid "Purge To-dos"
 msgstr "Wyczyść zadania"
@@ -3774,8 +3770,7 @@ msgstr ""
 "Zamierzasz przywrócić domyślne ustawienia. Wszystkie zmiany zostaną utracone."
 
 #: prefs/kprefsdialog.cpp:869
-#, fuzzy, kde-format
-#| msgid "Setting Default Preferences"
+#, kde-format
 msgctxt "@title:window"
 msgid "Setting Default Preferences"
 msgstr "Przywracanie ustawień domyślnych"
