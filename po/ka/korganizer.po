@@ -8,7 +8,7 @@ msgstr ""
 "Project-Id-Version: korganizer\n"
 "Report-Msgid-Bugs-To: https://bugs.kde.org\n"
 "POT-Creation-Date: 2023-09-27 01:41+0000\n"
-"PO-Revision-Date: 2023-09-30 09:49+0200\n"
+"PO-Revision-Date: 2023-10-02 13:31+0200\n"
 "Last-Translator: Temuri Doghonadze <temuri.doghonadze@gmail.com>\n"
 "Language-Team: Georgian <kde-i18n-doc@kde.org>\n"
 "Language: ka\n"
@@ -16,7 +16,7 @@ msgstr ""
 "Content-Type: text/plain; charset=UTF-8\n"
 "Content-Transfer-Encoding: 8bit\n"
 "Plural-Forms: nplurals=2; plural=(n != 1);\n"
-"X-Generator: Poedit 3.3.2\n"
+"X-Generator: Poedit 3.4\n"
 
 #, kde-format
 msgctxt "NAME OF TRANSLATORS"
@@ -1628,7 +1628,11 @@ msgid "%1 to-do was ignored because it has uncompleted or read-only children."
 msgid_plural ""
 "%1 to-dos were ignored because they have uncompleted or read-only children."
 msgstr[0] ""
+"%1 გასაკეთებელი გამოტოვებელია იმიტომ, რომ მას დაუსრულებელი ან მხოლოდ "
+"კითხვადი შვილები გააჩნია."
 msgstr[1] ""
+"%1 გასაკეთებელი გამოტოვებელია იმიტომ, რომ მას დაუსრულებელი ან მხოლოდ "
+"კითხვადი შვილები გააჩნია."
 
 #: calendarview.cpp:2689 calendarview.cpp:2694
 #, kde-format
@@ -2328,6 +2332,8 @@ msgstr "მომავალი მოვლენების ჩვენე�
 #, kde-format
 msgid "Show birthdays from your calendar when also using the Birthday resource"
 msgstr ""
+"თქვენი კალენდრიდან დაბადების დღეების ჩვენება მაშინ, როცა დაბადების დღის "
+"რესურსიც გამოიყენება"
 
 #. i18n: ectx: property (whatsThis), widget (QCheckBox, mShowBirthdaysFromCal)
 #: kontactplugin/korganizer/apptsummaryconfig_base.ui:131
@@ -2352,6 +2358,8 @@ msgstr "&დაბადების დღეების ჩვენება
 msgid ""
 "Shows anniversaries from your calendar when using the Birthdays resource"
 msgstr ""
+"თქვენი კალენდრიდან იუბილეების ჩვენება მაშინ, როცა დაბადების დღის რესურსიც "
+"გამოიყენება"
 
 #. i18n: ectx: property (whatsThis), widget (QCheckBox, mShowAnniversariesFromCal)
 #: kontactplugin/korganizer/apptsummaryconfig_base.ui:144
@@ -2762,7 +2770,7 @@ msgstr ""
 #: kontactplugin/korganizer/todosummaryconfig_base.ui:206
 #, kde-format
 msgid "Over&due (not completed and beyond due-date)"
-msgstr ""
+msgstr "&ვადაგადაცილებული (არ დასრულებულა, ან ვადაა გადაცილებული)"
 
 #. i18n: ectx: property (toolTip), widget (QCheckBox, mShowMineOnly)
 #: kontactplugin/korganizer/todosummaryconfig_base.ui:222
@@ -2908,7 +2916,7 @@ msgstr ""
 #: kontactplugin/specialdates/sdsummaryconfig_base.ui:44
 #, kde-format
 msgid "Show special occasions starting within the next month"
-msgstr ""
+msgstr "განსაკუთრებული შემთხვევების ჩვენება, რომლებიც შემდეგი თვიდან იწყება"
 
 #. i18n: ectx: property (whatsThis), widget (QRadioButton, mDateMonthButton)
 #: kontactplugin/specialdates/sdsummaryconfig_base.ui:47
@@ -3148,7 +3156,7 @@ msgstr "განსაკუთრებული თარიღების �
 #: kontactplugin/specialdates/specialdates_plugin.cpp:38
 #, kde-format
 msgid "Kontact Special Dates Summary"
-msgstr ""
+msgstr "Kontact-ის განსაკუთრებული თარიღების შეჯამება"
 
 #: kontactplugin/specialdates/specialdates_plugin.cpp:40
 #, kde-format
