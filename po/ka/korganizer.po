@@ -8,7 +8,7 @@ msgstr ""
 "Project-Id-Version: korganizer\n"
 "Report-Msgid-Bugs-To: https://bugs.kde.org\n"
 "POT-Creation-Date: 2023-07-24 10:10+0000\n"
-"PO-Revision-Date: 2023-01-30 12:21+0100\n"
+"PO-Revision-Date: 2023-10-04 18:58+0200\n"
 "Last-Translator: Temuri Doghonadze <temuri.doghonadze@gmail.com>\n"
 "Language-Team: Georgian <kde-i18n-doc@kde.org>\n"
 "Language: ka\n"
@@ -16,7 +16,7 @@ msgstr ""
 "Content-Type: text/plain; charset=UTF-8\n"
 "Content-Transfer-Encoding: 8bit\n"
 "Plural-Forms: nplurals=2; plural=(n != 1);\n"
-"X-Generator: Poedit 3.2.2\n"
+"X-Generator: Poedit 3.4\n"
 
 #, kde-format
 msgctxt "NAME OF TRANSLATORS"
@@ -314,6 +314,8 @@ msgid ""
 "Select this menu entry if you would like to import the contents of an "
 "iCalendar or vCalendar file into your current calendar collection."
 msgstr ""
+"აირჩიეთ ეს მენიუს პუნქტი, თუ გნებავთ iCalendar ან vCalendar ფაილების "
+"შემცველობის მიმდინარე კალენრის კოლექციაში შემოტანა."
 
 #: actionmanager.cpp:252
 #, kde-format
@@ -330,7 +332,7 @@ msgstr "კალენდრის \"ახალი რამერუმე�
 #, kde-format
 msgctxt "@info:tooltip"
 msgid "Search \"Get Hot New Stuff\" for calendars to import"
-msgstr ""
+msgstr "მოძებნეთ \"სიახლეების მოძებნა\" კალენდრებში შემოსატნად"
 
 #: actionmanager.cpp:256
 #, kde-format
@@ -339,16 +341,19 @@ msgid ""
 "This menu entry opens the \"Get Hot New Stuff\" dialog that allows you to "
 "search and import fun and useful calendars donated to the community."
 msgstr ""
+"ეს მენიუს პუნქტი გახსნის \"სიახლეების მიღების\" დიალოგს, რომელიც საშუალებას "
+"გაძლევთ, მოძებნოთ და შემოიტანოთ სახალისო და გამოსადეგი კალენდრები, რომლებსაც "
+"საზოგადოება ამზადებს."
 
 #: actionmanager.cpp:277
 #, kde-format
 msgid "Could not load calendar %1."
-msgstr ""
+msgstr "ვერ ჩავტვირთე კალენდარი %1."
 
 #: actionmanager.cpp:287
 #, kde-format
 msgid "The downloaded events will be merged into your current calendar."
-msgstr ""
+msgstr "გადმოწერილი მოვლენები თქვენს მიმდინარე კალენდარში ჩაისმება."
 
 #: actionmanager.cpp:304
 #, kde-format
@@ -373,23 +378,25 @@ msgctxt "@info:whatsthis"
 msgid ""
 "Allows you to export your entire calendar collection to one iCalendar file."
 msgstr ""
+"საშუალებას გაძლევთ, თქვენი სრული კალენდრის კოლექცია ერთ iCalendar-ის ფაილში "
+"გაიტანოთ."
 
 #: actionmanager.cpp:313
 #, kde-format
 msgid "Archive O&ld Incidences..."
-msgstr ""
+msgstr "ძველი &ინციდენტების დაარქივება..."
 
 #: actionmanager.cpp:314
 #, kde-format
 msgctxt "@info:status"
 msgid "Archive events and to-dos to a file"
-msgstr ""
+msgstr "მოვლენებისა და გასაკეთებლების დაარქივება ფაილში"
 
 #: actionmanager.cpp:315
 #, kde-format
 msgctxt "@info:tooltip"
 msgid "Archive old events and to-dos to an iCalendar file"
-msgstr ""
+msgstr "დააარქივეთ ძველი მოვლენები და გასაკეთებლები iCalendar-ის ფაილში"
 
 #: actionmanager.cpp:317
 #, kde-format
@@ -399,23 +406,26 @@ msgid ""
 "dos that you can archive into an iCalendar file.  They will be removed from "
 "your existing calendar collection."
 msgstr ""
+"ეს მენიუს პუნქტი გახსნის დიალოგს, რომელიც საშუალებას გაძლევთ, აირჩიოთ ძველი "
+"მოვლენები და გასაკეთებლები, რომლებიც შეგიძლიათ, iCalendar-ის ფაილში "
+"დააარქივოთ.  ისინი წაიშლება არსებული კალენდრის კოლექციიდან."
 
 #: actionmanager.cpp:325
 #, kde-format
 msgid "Pur&ge Completed To-dos"
-msgstr ""
+msgstr "დასრულებული გასაკეთებლების &მოსუფთავება"
 
 #: actionmanager.cpp:326
 #, kde-format
 msgctxt "@info:status"
 msgid "Purge completed to-dos"
-msgstr ""
+msgstr "დასრულებული გასაკეთებლების მოსუფთავება"
 
 #: actionmanager.cpp:327
 #, kde-format
 msgctxt "@info:tooltip"
 msgid "Remove completed to-dos from your calendar"
-msgstr ""
+msgstr "დასრულებული გასაკეთებლების წაშლა თქვენი კალენდრიდან"
 
 #: actionmanager.cpp:329
 #, kde-format
@@ -424,6 +434,8 @@ msgid ""
 "Allows you to remove all completed to-dos from your calendar collection. "
 "This action cannot be undone!"
 msgstr ""
+"საშუალებას გაძლევთ, თქვენი კალენდრის კოლექციიდან ყველა დასრულებული "
+"გასაკეთებელი წაშალოთ. ეს ქმედება შეუქცევადია!"
 
 #. i18n: ectx: property (text), widget (QPushButton, mDeleteButton)
 #: actionmanager.cpp:366 actionmanager.cpp:621 actionmanager.cpp:1308
@@ -441,13 +453,13 @@ msgstr "რა არის &შემდეგი"
 #, kde-format
 msgctxt "@info:status"
 msgid "What's Next View"
-msgstr ""
+msgstr "რა არის შემდეგი - ხედი"
 
 #: actionmanager.cpp:385
 #, kde-format
 msgctxt "@info:tooltip"
 msgid "Switch to the What's Next View"
-msgstr ""
+msgstr "რა არის შემდეგი - ხედზე გადართვა"
 
 #: actionmanager.cpp:387
 #, kde-format
@@ -458,6 +470,10 @@ msgid ""
 "will be displayed, but only the events from the days selected in the Date "
 "Navigator sidebar will be shown."
 msgstr ""
+"გადართავს ხედზე \"რა არის ახალი\", რომელიც გაჩვენებთ მოვლენებს და "
+"გასაკეთებლებს, რომლებიც \"უკვე ახლოსაა, მოკლე სიაში, სწრაფად წასაკითხად.  "
+"ნაჩვენები იქნება ყველა ღია გასაკეთებელი, დანახვით, მხოლოდ თარიღის "
+"ნავიგატორის პანელზე არჩეულ დღეებში არსებულ მოვლენებს დაინახავთ."
 
 #: actionmanager.cpp:395
 #, kde-format
@@ -474,7 +490,7 @@ msgstr "თვის ხედი"
 #, kde-format
 msgctxt "@info:tooltip"
 msgid "Switch to the Month View"
-msgstr ""
+msgstr "თვის ხედზე გადართვა"
 
 #: actionmanager.cpp:399
 #, kde-format
@@ -483,6 +499,8 @@ msgid ""
 "Switches to the Month View, which shows all the events and due to-dos in a "
 "familiar monthly calendar layout."
 msgstr ""
+"გადართავს თვის ხედზე, რომელიც ყველა მოვლენას და გასაკეთებელს, ნაცნობ, თვის "
+"კალენდრის განლაგების მსგავსად აჩვენებს."
 
 #: actionmanager.cpp:405
 #, kde-format
@@ -509,6 +527,9 @@ msgid ""
 "one or more days, sorted chronologically.  You can also see the length of "
 "each event in the day timetable."
 msgstr ""
+"გადართავს დღის წესრიგის ხედს, რომელიც წარმოგიდგენთ თქვენს მოვლენებს, ან "
+"გასაკეთებლებს, რომლების დროც დადგა, ქრონოლოგიურად დალაგებულს, რამდენიმე "
+"დღით.  თითოეული მოვლენის ხანგრძლივობის ნახვა დღის განრიგში შეგიძლიათ."
 
 #: actionmanager.cpp:416
 #, kde-format
@@ -534,6 +555,9 @@ msgid ""
 "Switches to the List View, which displays all your to-dos, events and "
 "journal entries for the dates selected in the Date Navigator as a list."
 msgstr ""
+"გადართავს სიის ხედზე, რომელიც ყველა თქვენს გასაკეთებელს, მოვლენას და "
+"ჟურნალის ჩანაწერს, იმ თარიღებისთვის, რომლებიც თარიღის ნავიგატორში აირჩიეთ, "
+"სიის სახით გაჩვენებთ."
 
 #: actionmanager.cpp:426
 #, kde-format
@@ -550,7 +574,7 @@ msgstr "განრგის სიის ხედი"
 #, kde-format
 msgctxt "@info:tooltip"
 msgid "Switch to the To-do List View"
-msgstr ""
+msgstr "გასაკეთებლების სიის ხედზე გადართვა"
 
 #: actionmanager.cpp:430
 #, kde-format
@@ -559,6 +583,8 @@ msgid ""
 "Switches to the To-do List view, which provides a place for you to track "
 "tasks that need to be done."
 msgstr ""
+"გადართავს გასაკეთებლების სიის ხედზე, რომელიც წარმოგიდგენთ ადგილს, სადაც "
+"შეგიძლიათ, თვალყური ადევნოთ ამოცანებს, რომლებიც დასასრულებელი გაქვთ."
 
 #: actionmanager.cpp:436
 #, kde-format
@@ -584,6 +610,8 @@ msgid ""
 "Switches to the Journal View, which provides a place for you to record your "
 "reflections, occurrences or experiences."
 msgstr ""
+"გადართავს ჟურნალის ხედზე, რომელიც წარმოგიდგენთ ადგილს, რომელიც თქვენი "
+"გამოცდილებისა თუ გამოძახილის ჩასაწერად შეგიძლიათ, გამიყენოთ."
 
 #: actionmanager.cpp:446
 #, kde-format
@@ -609,6 +637,8 @@ msgid ""
 "Switches to the Timeline View, which shows all events for the selected "
 "timespan in a Gantt view. Each calendar is displayed in a separate line."
 msgstr ""
+"გადართავს დროის ხაზის ხედზე, რომლებიც გაჩვენებთ ყველა მოვლენას მონიშნულ "
+"შუალედში, განტის ხედში. თითოეულ კალენდარს ცალ-ცალკე ხაზზე გაჩვენებთ."
 
 #: actionmanager.cpp:459
 #, kde-format
@@ -634,6 +664,8 @@ msgid ""
 "This action will refresh and redraw the current calendar view. It does not "
 "sync or update any calendar folders."
 msgstr ""
+"ეს ქმედება მიმდინარე კალენდრის ხედს განაახლებს და თავიდან დახატავს. ის არ "
+"ასინქრონებს ან განაახლებს კალენდრის საქაღალდეებს."
 
 #: actionmanager.cpp:472
 #, kde-format
@@ -644,13 +676,13 @@ msgstr "&ფილტრი"
 #, kde-format
 msgctxt "@info:status"
 msgid "Filter incidences"
-msgstr ""
+msgstr "ინციდენტების გაფილტვრა"
 
 #: actionmanager.cpp:474
 #, kde-format
 msgctxt "@info:tooltip"
 msgid "Filter incidences from the calendar"
-msgstr ""
+msgstr "კალენდრიდან ინციდენტების გაფილტვრა"
 
 #: actionmanager.cpp:476
 #, kde-format
@@ -659,6 +691,9 @@ msgid ""
 "Runs user-defined view filters on the calendar collection. Filters must be "
 "created first. See \"Manage View Filters\" option in the Settings menu."
 msgstr ""
+"გაუშვებს მომხმარებლის მიერ აღწერილ ხედის ფილტრებს კალენდრის კოლექციაზე. "
+"ფილტრები უკვე უნდა არსებობდეს. იხილეთ \"ხედის ფილტრების მართვის\" პუნქტი "
+"მორგების მენიუში."
 
 #: actionmanager.cpp:488
 #, kde-format
@@ -702,13 +737,13 @@ msgstr "&დღევანდელ დღეზე გადახვევა
 #, kde-format
 msgctxt "@info:tooltip"
 msgid "Scroll the view to today"
-msgstr ""
+msgstr "დღევანდელ დღეზე გადახვევა"
 
 #: actionmanager.cpp:516
 #, kde-format
 msgctxt "@info:whatsthis"
 msgid "Scrolls the current view to the today's date."
-msgstr ""
+msgstr "მიმდინარე ხედის დღევანდელ თარიღზე გადახვევა."
 
 #: actionmanager.cpp:521
 #, kde-format
@@ -732,7 +767,7 @@ msgstr "&უკან გადახვევა"
 #, kde-format
 msgctxt "@info:tooltip"
 msgid "Scroll the view backward"
-msgstr ""
+msgstr "ხედის უკან გადახვევა"
 
 #: actionmanager.cpp:526
 #, kde-format
@@ -741,6 +776,7 @@ msgid ""
 "Scrolls backward by a day, week, month or year, depending on the current "
 "calendar view."
 msgstr ""
+"გადაახვევს უკან დღით, კვირით ან წლით, მიმდინარე კალენდრის ხედის მიხედვით."
 
 #: actionmanager.cpp:532
 #, kde-format
@@ -758,13 +794,13 @@ msgstr "წინ"
 #, kde-format
 msgctxt "@info:status"
 msgid "Scroll Forward"
-msgstr ""
+msgstr "წინ გადახვევა"
 
 #: actionmanager.cpp:535
 #, kde-format
 msgctxt "@info:tooltip"
 msgid "Scroll the view forward"
-msgstr ""
+msgstr "ხედის წინ გადახვევა"
 
 #: actionmanager.cpp:537
 #, kde-format
@@ -773,6 +809,7 @@ msgid ""
 "Scrolls forward by a day, week, month or year, depending on the current "
 "calendar view."
 msgstr ""
+"გადაახვევს წინ დღით, კვირით ან წლით, მიმდინარე კალენდრის ხედის მიხედვით."
 
 #: actionmanager.cpp:542
 #, kde-format
@@ -820,6 +857,8 @@ msgid ""
 "Starts a dialog that allows you to create a new Event with reminders, "
 "attendees, recurrences and much more."
 msgstr ""
+"გაუშვებს ფანჯარას, რომელიც საშუალებას გაძლევთ, შექმნათ, ახალი მოვლენა, "
+"შემხსენებლებით, დამსწრეებით, გამეორებებით და ა.შ."
 
 #: actionmanager.cpp:575 kodaymatrix.cpp:485
 #, kde-format
@@ -845,6 +884,8 @@ msgid ""
 "Starts a dialog that allows you to create a new To-do with reminders, "
 "attendees, recurrences and much more."
 msgstr ""
+"გაუშვებს ფანჯარას, რომელიც საშუალებას გაძლევთ, შექმნათ, ახალი გასაკეთებელი, "
+"შემხსენებლებით, დამსწრეებით, გამეორებებით და ა.შ."
 
 #: actionmanager.cpp:586
 #, kde-format
@@ -872,7 +913,7 @@ msgstr "ახალი ჟურნალის შექმნა"
 #, kde-format
 msgctxt "@info:whatsthis"
 msgid "Starts a dialog that allows you to create a new Journal entry."
-msgstr ""
+msgstr "გაჩვენებთ ფანჯარას, სადაც ახალი ჟურნალის ჩანაწერის შექმნა შეგიძლიათ."
 
 #: actionmanager.cpp:602
 #, kde-format
@@ -903,6 +944,8 @@ msgid ""
 "Starts a configuration dialog that allows you to change the settings for the "
 "current calendar view."
 msgstr ""
+"გაუშვებს მორგების ფანჯარას, რომელიც მიმდინარე კალენდრის ხედის პარამეტრების "
+"შეცვლის საშუალებას გაძლევთ."
 
 #: actionmanager.cpp:613 actionmanager.cpp:1302 actionmanager.cpp:1338
 #, kde-format
@@ -917,7 +960,7 @@ msgstr "&ჩასწორება…"
 #: actionmanager.cpp:626
 #, kde-format
 msgid "&Make Sub-to-do Independent"
-msgstr ""
+msgstr "ქვეგასაკეთებლის დამოუკიდებლად &გადაკეთება"
 
 #. i18n( "&Activate Reminder" ), 0,
 #. mCalendarView, SLOT(toggleAlarm()),
@@ -926,12 +969,12 @@ msgstr ""
 #: actionmanager.cpp:638
 #, kde-format
 msgid "&Publish Item Information..."
-msgstr ""
+msgstr "ელემენტის ინფორმაციის &გამოცემა..."
 
 #: actionmanager.cpp:645
 #, kde-format
 msgid "Send &Invitation to Attendees"
-msgstr ""
+msgstr "დამსწრეებისთვის &მოსაწვევის გაგზავნა"
 
 #: actionmanager.cpp:653
 #, kde-format
@@ -941,7 +984,7 @@ msgstr "&განახლების მოთხოვნა"
 #: actionmanager.cpp:661
 #, kde-format
 msgid "Send &Cancellation to Attendees"
-msgstr ""
+msgstr "გაუქმების გაგზავნა &დამსწრეებისთვის"
 
 #: actionmanager.cpp:669
 #, kde-format
@@ -957,7 +1000,7 @@ msgstr "ცვლილების &მოთხოვნა"
 #: actionmanager.cpp:685
 #, kde-format
 msgid "&Mail Free Busy Information..."
-msgstr ""
+msgstr "თავისუფალი/დაკავებულის ინფორმაციის &ელფოსტით გაგზავნა..."
 
 #: actionmanager.cpp:690
 #, kde-format
@@ -967,7 +1010,7 @@ msgstr "&iCalendar-ის სახით გაგზავნა..."
 #: actionmanager.cpp:697
 #, kde-format
 msgid "&Upload Free Busy Information"
-msgstr ""
+msgstr "თავისუფალი/დაკავებულის ინფორმაციის &ატვირთვა"
 
 #: actionmanager.cpp:703
 #, kde-format
@@ -987,22 +1030,22 @@ msgstr "განრიგის ხედის ჩვენება"
 #: actionmanager.cpp:719
 #, kde-format
 msgid "Show Item Viewer"
-msgstr ""
+msgstr "ელემენტის დათვალიერების ჩვენება"
 
 #: actionmanager.cpp:735
 #, kde-format
 msgid "Show Calendar Manager"
-msgstr ""
+msgstr "კალენდრის მმართველის ჩვენება"
 
 #: actionmanager.cpp:748
 #, kde-format
 msgid "Configure &Date && Time..."
-msgstr ""
+msgstr "&თარიღისა და დროის მორგება..."
 
 #: actionmanager.cpp:752
 #, kde-format
 msgid "Manage View &Filters..."
-msgstr ""
+msgstr "ხედის &ფილტრების მართვა..."
 
 #: actionmanager.cpp:756
 #, kde-format
@@ -1018,35 +1061,35 @@ msgstr "KOrganizer-ის &მორგება..."
 #, kde-format
 msgid "1 incidence was imported successfully."
 msgid_plural "%1 incidences were imported successfully."
-msgstr[0] ""
-msgstr[1] ""
+msgstr[0] "1 ინციდენტი წარმატებით იქნა შემოტანილი."
+msgstr[1] "%1 ინციდენტი წარმატებით იქნა შემოტანილი."
 
 #: actionmanager.cpp:844
 #, kde-format
 msgid "There was an error while merging the calendar: %1"
-msgstr ""
+msgstr "შეცდომა კალენდრების შერწყმისას: %1"
 
 #: actionmanager.cpp:855
 #, kde-format
 msgid "New calendar added successfully"
-msgstr ""
+msgstr "ახალი კალენდრის დამატება წარმატებულია"
 
 #: actionmanager.cpp:857
 #, kde-format
 msgid "Could not add a calendar. Error: %1"
-msgstr ""
+msgstr "კალენდრის დამატება შეუძლებელია. შეცდომა: %1"
 
 #: actionmanager.cpp:914
 #, kde-format
 msgctxt "@title:window"
 msgid "Select Calendar File to Open"
-msgstr ""
+msgstr "აირჩიეთ გასახსნელი კალენდრის ფაილი"
 
 #: actionmanager.cpp:942
 #, kde-format
 msgctxt "@title:window"
 msgid "Select Calendar File to Import"
-msgstr ""
+msgstr "აირჩიეთ შემოსატანი კალენდრს ფაილი"
 
 #: actionmanager.cpp:973
 #, kde-format
@@ -1056,17 +1099,17 @@ msgstr "შეცდომა: %1"
 #: actionmanager.cpp:991
 #, kde-format
 msgid "Cannot upload calendar to '%1'"
-msgstr ""
+msgstr "კალენდრის '%1'-ზე ატვირთვა შეუძლებელია"
 
 #: actionmanager.cpp:997
 #, kde-format
 msgid "Saved calendar '%1'."
-msgstr ""
+msgstr "კალენდარი '%1' შენახულია."
 
 #: actionmanager.cpp:1035
 #, kde-format
 msgid "Unable to save calendar to the file %1."
-msgstr ""
+msgstr "კალენდრის ფაილში %1 შენახვა შეუძლებელია."
 
 #: actionmanager.cpp:1035
 #, kde-format
@@ -1076,7 +1119,7 @@ msgstr "შეცდომა"
 #: actionmanager.cpp:1084
 #, kde-format
 msgid "Could not start control module for date and time format."
-msgstr ""
+msgstr "დროისა და თარიღის ფორმატის კონტროლის მოდულის გაშვება შეუძლებელია."
 
 #: actionmanager.cpp:1263
 #, kde-format
@@ -1121,7 +1164,7 @@ msgstr "&ხაზშივე მიბმა"
 #: actionmanager.cpp:1418
 #, kde-format
 msgid "Attach inline &without attachments"
-msgstr ""
+msgstr "ხაზში ჩასმა &მიმაგრების გარეშე"
 
 #: actionmanager.cpp:1420 actionmanager.cpp:1525
 #, kde-format
@@ -1132,6 +1175,8 @@ msgstr "გაუქმება"
 #, kde-format
 msgid "Removing attachments from an email might invalidate its signature."
 msgstr ""
+"ელფოსტიდან მიმაგრებული ფაილების წაშლამ შეიძლება მისი ხელმოწერა არასწორი "
+"გახადოს."
 
 #: actionmanager.cpp:1459
 #, kde-format
@@ -1173,6 +1218,10 @@ msgid ""
 "you select add, then a new calendar will be created for you automatically.</"
 "p>"
 msgstr ""
+"<p>გნებავთ ეს კალენდარი არსებულ კალენდართან შეაერთოთ, თუ სულ ახალ კალენდარს "
+"შექმნით?</p><p>თუ აირჩევთ შეერთებას, შესაძლებლობა გექნებათ, სამიზნე "
+"კალენდარი აირჩიოთ.</p><p>თუ აირჩევთ დამატებას, ახალ კალენდარს ავტომატურად "
+"შეგიქმნით.</p>"
 
 #: actionmanager.cpp:1653
 #, kde-format
@@ -1212,7 +1261,7 @@ msgstr "მიუთითეთ საკვანძო სიტყვა"
 #, kde-format
 msgctxt "@info:whatsthis"
 msgid "Lets you search for a keyword in your calendars"
-msgstr ""
+msgstr "საშუალებას გაძლევთ, კალენდარში საკვანძო სიტყვა იპოვოთ"
 
 #: akonadicollectionview.cpp:408
 #, kde-format
@@ -1230,13 +1279,13 @@ msgstr "კალენდრის საქაღალდის თვის�
 #, kde-format
 msgctxt "@action:inmenu"
 msgid "&Set Folder Color..."
-msgstr ""
+msgstr "საქაღალდის სახელის დაყენება ..."
 
 #: akonadicollectionview.cpp:510
 #, kde-format
 msgctxt "@action:inmenu"
 msgid "Set as &Default Folder"
-msgstr ""
+msgstr "&ნაგულისხმევ საქაღალდედ დაყენება"
 
 #: akonadicollectionview.cpp:516
 #, kde-format
@@ -1248,13 +1297,13 @@ msgstr "სერვერის მხარეს გამოწერა..."
 #, kde-format
 msgctxt "@info"
 msgid "Do you really want replace your current default calendar with \"%1\"?"
-msgstr ""
+msgstr "მართლა გნებავთ ამჟამად ნაგულისხმევი კალენდარი \"%1\"-ით ჩაანაცვლოთ?"
 
 #: akonadicollectionview.cpp:562
 #, kde-format
 msgctxt "@title:window"
 msgid "Replace Default Calendar?"
-msgstr ""
+msgstr "ჩავანაცვლო ნაგულისხმევი კალენდარი?"
 
 #: akonadicollectionview.cpp:662
 #, kde-format
@@ -1266,7 +1315,7 @@ msgstr "კალენდრის დამატება"
 #, kde-format
 msgctxt "@info"
 msgid "Do you really want to delete calendar %1?"
-msgstr ""
+msgstr "მართლა გნებავთ, წაშალოთ კალენდარი %1?"
 
 #: akonadicollectionview.cpp:705
 #, kde-format
@@ -1280,6 +1329,8 @@ msgid ""
 "<p><em>No Item Selected</em></p><p>Select an event, to-do or journal entry "
 "to view its details here.</p>"
 msgstr ""
+"<p><em>ელემენტი არჩეული არაა</em></p><p>მონიშნეთ მოვლენა, გასაკეთებელი ან "
+"ჟურნალის ჩანაწერი, რომლის დეტალების აქ ნახვაც გნებავთ.</p>"
 
 #: calendarview.cpp:245
 #, kde-format
@@ -1287,11 +1338,13 @@ msgid ""
 "View the details of events, journal entries or to-dos selected in "
 "KOrganizer's main view here."
 msgstr ""
+"აქ შეგიძლიათ, Korganzer-ის მთავარ ხედში არჩეული მოვლენის დეტალების, ჟურნალის "
+"ჩანაწერების ან გასაკეთებლის დეტალები იხილოთ."
 
 #: calendarview.cpp:600
 #, kde-format
 msgid "Todo completed: %1 (%2)"
-msgstr ""
+msgstr "გასაკეთებელი დასრულდა: %1 (%2)"
 
 #: calendarview.cpp:609
 #, kde-format
@@ -1304,12 +1357,14 @@ msgid ""
 "The item \"%1\" is filtered by your current filter rules, so it will be "
 "hidden and not appear in the view."
 msgstr ""
+"ელემენტი \"%1\" გაიფილტრა თქვენი მიმდინარე ფილტრის წესებით, ასე რომ, ის "
+"დამალულია და ხედში არ გამოჩნდება."
 
 #: calendarview.cpp:727
 #, kde-format
 msgctxt "@info"
 msgid "Do you really want to permanently remove the item \"%1\"?"
-msgstr ""
+msgstr "მართლა გნებავთ, სამუდამოდ წაშალოთ ელემენტი \"%1\"?"
 
 #: calendarview.cpp:728
 #, kde-format
@@ -1320,40 +1375,40 @@ msgstr "წავშალო ჩანაწერი?"
 #: calendarview.cpp:803
 #, kde-format
 msgid "Paste failed: unable to determine a valid target date."
-msgstr ""
+msgstr "ჩასმის შეცდომა: სწორი სამიზნე თარიღის დადგენა შეუძლებელია."
 
 #: calendarview.cpp:1233
 #, kde-format
 msgid "Make sub-to-dos independent"
-msgstr ""
+msgstr "ყველა ქვეგასაკეთებლის დამოუკიდებლად გადაკეთება"
 
 #: calendarview.cpp:1290
 #, kde-format
 msgid "Toggle Reminder"
-msgstr ""
+msgstr "შემხსენებლის გადართვა"
 
 #: calendarview.cpp:1322 calendarview.cpp:1374
 #, kde-format
 msgid "Toggle To-do Completed"
-msgstr ""
+msgstr "გასაკეთებლის გაკეთებულობის გადართვა"
 
 #: calendarview.cpp:1426
 #, kde-format
 msgctxt "@info"
 msgid "\"%1\" was successfully copied to %2."
-msgstr ""
+msgstr "\"%1\" წარმატებით დაკოპირდა %2-ზე."
 
 #: calendarview.cpp:1427
 #, kde-format
 msgctxt "@title:window"
 msgid "Copying Succeeded"
-msgstr ""
+msgstr "კოპირება წარმატებულია"
 
 #: calendarview.cpp:1431
 #, kde-format
 msgctxt "@info"
 msgid "Unable to copy the item \"%1\" to %2."
-msgstr ""
+msgstr "\"%1\"-ის %2-ში კოპირება შეუძლებელია."
 
 #: calendarview.cpp:1432
 #, kde-format
@@ -1368,6 +1423,8 @@ msgid ""
 "Unable to remove the item \"%1\" from the original calendar. However, a copy "
 "of this item has been put into %2"
 msgstr ""
+"ელემენტის \"%1\" საწყისი კალენდრიდან წაშლა შეუძლებელია. მაგრამ ამ ელემენტის "
+"ასლი %2-ში ჩავდეთ"
 
 #: calendarview.cpp:1495 calendarview.cpp:1511
 #, kde-format
@@ -1379,24 +1436,25 @@ msgstr "გადატანის შეცდომა"
 #, kde-format
 msgctxt "@info"
 msgid "\"%1\" was successfully moved from %2 to %3."
-msgstr ""
+msgstr "\"%1\" წარმატებით იქნა გადატანილი %2-დან %3-ში."
 
 #: calendarview.cpp:1501
 #, kde-format
 msgctxt "@title:window"
 msgid "Moving Succeeded"
-msgstr ""
+msgstr "გადატანა წარმატებულია"
 
 #: calendarview.cpp:1507
 #, kde-format
 msgctxt "@info"
 msgid "Unable to add the item \"%1\" into %2. This item has not been moved."
 msgstr ""
+"ელემენტის %1 %2-ში ჩამატება შეუძლებელია. ელემენტის გადატანა არ მომხდარა."
 
 #: calendarview.cpp:1545
 #, kde-format
 msgid "Do you want to dissociate the occurrence on %1 from the recurrence?"
-msgstr ""
+msgstr "გნებავთ ინციდენტის %1 გამეორებისგან მოცილება?"
 
 #: calendarview.cpp:1549 calendarview.cpp:1561 calendarview.cpp:2215
 #: calendarview.cpp:2274 calendarview.cpp:2304
@@ -1407,54 +1465,54 @@ msgstr "KOrganizer -ის დასტური"
 #: calendarview.cpp:1550
 #, kde-format
 msgid "&Dissociate"
-msgstr ""
+msgstr "&ასოცირების გაუქმება"
 
 #: calendarview.cpp:1556
 #, kde-format
 msgid ""
 "Do you want to dissociate the occurrence on %1 from the recurrence or also "
 "dissociate future ones?"
-msgstr ""
+msgstr "გნებავთ ინციდენტის %1 გამეორებიდან მომავლისთვისაც მოვაცილო?"
 
 #: calendarview.cpp:1562
 #, kde-format
 msgid "&Only Dissociate This One"
-msgstr ""
+msgstr "&ამჯერად მხოლოდ ასოცირების მხოსნა"
 
 #: calendarview.cpp:1563
 #, kde-format
 msgid "&Also Dissociate Future Ones"
-msgstr ""
+msgstr "&ასევე მომავალი ასოცირებების მოხსნა"
 
 #: calendarview.cpp:1581
 #, kde-format
 msgid "Dissociate future occurrences"
-msgstr ""
+msgstr "მომავალი გამეორებების ასოცირების მოხსნა"
 
 #: calendarview.cpp:1583
 #, kde-format
 msgid "Dissociate occurrence"
-msgstr ""
+msgstr "გამეორების ასოცირების მოხსნა"
 
 #: calendarview.cpp:1590
 #, kde-format
 msgid "Dissociating the future occurrences failed."
-msgstr ""
+msgstr "მომავალი გამეორების ასოციაციის მოხსნა ჩავარდა."
 
 #: calendarview.cpp:1590 calendarview.cpp:1592
 #, kde-format
 msgid "Dissociating Failed"
-msgstr ""
+msgstr "ასოციაციის მოხსნა ჩავარდა"
 
 #: calendarview.cpp:1592
 #, kde-format
 msgid "Dissociating the occurrence failed."
-msgstr ""
+msgstr "გამეორების ასოცირების მოხსნა ჩავარდა."
 
 #: calendarview.cpp:1754
 #, kde-format
 msgid "iCalendars (*.ics)"
-msgstr ""
+msgstr "iCalendars (*.ics)"
 
 #: calendarview.cpp:1763
 #, kde-format
@@ -1465,7 +1523,7 @@ msgstr "გნებავთ, გადააწეროთ %1-ს?"
 #, kde-format
 msgctxt "@title:window"
 msgid "Export Calendar"
-msgstr ""
+msgstr "კალენდრს გატანა"
 
 #: calendarview.cpp:1778
 #, kde-format
@@ -1477,7 +1535,7 @@ msgstr "უცნობი მიზეზი"
 #, kde-format
 msgctxt "@info"
 msgid "Cannot write iCalendar file %1. %2"
-msgstr ""
+msgstr "შეცდომა iCalendar-ის ფაილის %1 ჩაწერისას. %2"
 
 #: calendarview.cpp:1876 calendarview.cpp:1915
 #, kde-format
@@ -1491,6 +1549,9 @@ msgid ""
 "make all its sub-to-dos independent, or delete the to-do with all its sub-to-"
 "dos?"
 msgstr ""
+"ელემენტი \"%1\" ქვეგასაკეთებლებს შეიცავს. გნებავთ ამოჭრათ მხოლოდ ეს ელემენტი "
+"და მისი ქვეგასაკეთებლები დამოუკიდებლები გახადოთ, თუ თავისი ქვეგასაკეთებლებით "
+"ამოვჭრა?"
 
 #: calendarview.cpp:2216
 #, kde-format
@@ -1508,11 +1569,13 @@ msgid ""
 "The item \"%1\" is marked read-only and cannot be deleted; it probably "
 "belongs to a read-only calendar."
 msgstr ""
+"ელემენტი \"%1\" მონიშნულია, როგორც მხოლოდ-წაკითხვადი და მისი წაშლა "
+"შეუძლებელია. ალბათ, ის, მხოლოდ-კითხვად კალენდარს ეკუთვნის."
 
 #: calendarview.cpp:2252
 #, kde-format
 msgid "Removing not possible"
-msgstr ""
+msgstr "წაშლა შეუძლებელია"
 
 #: calendarview.cpp:2270
 #, kde-format
@@ -1520,11 +1583,13 @@ msgid ""
 "The calendar item \"%1\" recurs over multiple dates; are you sure you want "
 "to delete it and all its recurrences?"
 msgstr ""
+"კალენდრის ელემენტი \"%1\" ერთზე მეტ თარიღზე მეორდება. მართლა გნებავთ მისი და "
+"მისი ყველა გამეორების წაშლა?"
 
 #: calendarview.cpp:2282
 #, kde-format
 msgid "Also Delete &Future"
-msgstr ""
+msgstr "&მომავალშიც წაიშლება"
 
 #: calendarview.cpp:2286
 #, kde-format
@@ -1532,6 +1597,8 @@ msgid ""
 "The calendar item \"%1\" recurs over multiple dates. Do you want to delete "
 "only the current one on %2, also future occurrences, or all its occurrences?"
 msgstr ""
+"კალენდრის ელემენტი \"%1\" ერთზე მეტ თარიღზე მეორდება. გნებავთ, წაშალოთ "
+"მიმდინარე %2-ზე, მომავალი გამეორება თუ მისი ყველა გამეორება?"
 
 #: calendarview.cpp:2293
 #, kde-format
@@ -1539,6 +1606,8 @@ msgid ""
 "The calendar item \"%1\" recurs over multiple dates. Do you want to delete "
 "only the current one on %2 or all its occurrences?"
 msgstr ""
+"კალენდრის ელემენტი \"%1\" ერთზე მეტ თარიღზე მეორდება. გნებავთ, მხოლოდ "
+"მიმდინარე, %2-ზე, წაშალოთ, თუ მისი ყველა გამეორება?"
 
 #: calendarview.cpp:2305
 #, kde-format
@@ -1560,21 +1629,23 @@ msgstr "\"%1\"-ის წაშლა"
 msgid ""
 "All calendars are unchecked in the Calendar Manager. No to-do was purged."
 msgstr ""
+"კალენდრის მმართველში ყველა კალენდრის მონიშვნა მოხსნილია. გასაკეთებლები არ "
+"მოცილებულა."
 
 #: calendarview.cpp:2378 calendarview.cpp:2627
 #, kde-format
 msgid "There are no completed to-dos to purge."
-msgstr ""
+msgstr "მოსასუფთავებელი გასაკეთებლების გარეშე."
 
 #: calendarview.cpp:2383
 #, kde-format
 msgid "Delete all completed to-dos from checked calendars?"
-msgstr ""
+msgstr "წავშალო ყველა დასრულებული გასაკეთებელი მონიშნული კალენდრებიდან?"
 
 #: calendarview.cpp:2384
 #, kde-format
 msgid "Purge To-dos"
-msgstr ""
+msgstr "გასაკეთებლების მოსუფთავება"
 
 #: calendarview.cpp:2385
 #, kde-format
@@ -1585,12 +1656,12 @@ msgstr "გაწმენდა"
 #, kde-format
 msgctxt "@info"
 msgid "Unable to edit \"%1\" because it is locked by another process."
-msgstr ""
+msgstr "\"%1\"-ის ჩასწორება შეუძლებელია, რადგან ის სხვა პროცესმა დაბლოკა."
 
 #: calendarview.cpp:2408
 #, kde-format
 msgid "Unable to copy the item to %1."
-msgstr ""
+msgstr "ელემენტის %1-ში კოპირება შეუძლებელია."
 
 #: calendarview.cpp:2408
 #, kde-format
@@ -1600,7 +1671,7 @@ msgstr "კოპირების შეცდომა"
 #: calendarview.cpp:2443
 #, kde-format
 msgid "Unable to move the item to  %1."
-msgstr ""
+msgstr "ელემენტის %1-ში გადატანა შეუძლებელია."
 
 #: calendarview.cpp:2443
 #, kde-format
@@ -1610,7 +1681,7 @@ msgstr "გადატანის შეცდომა"
 #: calendarview.cpp:2620
 #, kde-format
 msgid "0 completed to-dos were purged."
-msgstr ""
+msgstr "მოსუფთავებულია 0 დასრულებული გასაკეთებელი."
 
 #: calendarview.cpp:2621 calendarview.cpp:2631
 #, kde-format
@@ -1618,19 +1689,23 @@ msgid "%1 to-do was ignored because it has uncompleted or read-only children."
 msgid_plural ""
 "%1 to-dos were ignored because they have uncompleted or read-only children."
 msgstr[0] ""
+"%1 გასაკეთებელი გამოტოვებელია იმიტომ, რომ მას დაუსრულებელი ან მხოლოდ "
+"კითხვადი შვილები გააჩნია."
 msgstr[1] ""
+"%1 გასაკეთებელი გამოტოვებელია იმიტომ, რომ მას დაუსრულებელი ან მხოლოდ "
+"კითხვადი შვილები გააჩნია."
 
 #: calendarview.cpp:2625 calendarview.cpp:2630
 #, kde-format
 msgid "%1 completed to-do was purged."
 msgid_plural "%1 completed to-dos were purged."
-msgstr[0] ""
-msgstr[1] ""
+msgstr[0] "%1 დასრულებული გასაკეთებელი მოსუფთავდა."
+msgstr[1] "%1 დასრულებული გასაკეთებელი მოსუფთავდა."
 
 #: calendarview.cpp:2636
 #, kde-format
 msgid "An error occurred while purging completed to-dos: %1"
-msgstr ""
+msgstr "შეცდომა დასრულებული გასაკეთებლების მოსუფთავებისას: %1"
 
 #: calendarview.cpp:2690
 #, kde-format
@@ -1638,6 +1713,8 @@ msgid ""
 "You created an incidence in a calendar that is currently filtered out.\n"
 "On the left sidebar, enable it in the calendar manager to see the incidence."
 msgstr ""
+"კალენდარში შექმენით ინციდენტი, რომელიც ახლა გაფილტრულია.\n"
+"მარცხენა მხარეს, ჩართეთ ის კალენდრის მმართველში, რათა ინციდენტი დაინახოთ."
 
 #: calendarview.cpp:2694
 #, kde-format
@@ -1646,6 +1723,9 @@ msgid ""
 "You can enable it through the calendar manager (Settings->Sidebar->Show "
 "Calendar Manager)"
 msgstr ""
+"შექმენით ინციდენტი, რომელიც ამჟამად გაფილტრულია.\n"
+"მისი ჩართვა კალენდრის მმართველით შეგიძლიათ (მორგება->გვერდითი პანელი-"
+">კალენდრის მმართველის ჩვენება)"
 
 #: collectiongeneralpage.cpp:37
 #, kde-format
@@ -1663,7 +1743,7 @@ msgstr "საქაღალდის სახელის დაყენე�
 #, kde-format
 msgctxt "@info:whatsthis"
 msgid "Enter a name here to set the name of this folder."
-msgstr ""
+msgstr "საქაღალდის სახელის დასაყენებლად ის აქ შეიყვანეთ."
 
 #: collectiongeneralpage.cpp:47
 #, kde-format
@@ -1675,13 +1755,13 @@ msgstr "&სახელი:"
 #, kde-format
 msgctxt "@option:check"
 msgid "Block reminders locally"
-msgstr ""
+msgstr "შემხსენებლების ლოკალურად დაბლოკვა"
 
 #: collectiongeneralpage.cpp:51
 #, kde-format
 msgctxt "@info:tooltip"
 msgid "Ignore reminders from this calendar"
-msgstr ""
+msgstr "ამ კალენდრიდან შემხსენებლების იგნორი"
 
 #: collectiongeneralpage.cpp:53
 #, kde-format
@@ -1690,6 +1770,8 @@ msgid ""
 "Check this box if you do not want to receive reminders from items associated "
 "with this calendar."
 msgstr ""
+"დასვით ეს თოლია, თუ არ გნებავთ ამ კალენდართან ასოცირებული შემხსენებლების "
+"მიღება."
 
 #: collectiongeneralpage.cpp:58
 #, kde-format
@@ -1701,13 +1783,13 @@ msgstr "&ხატულის ხელით მითითება:"
 #, kde-format
 msgctxt "@info:tooltip"
 msgid "Set a custom icon"
-msgstr ""
+msgstr "მომხმარებლის ხატულის დაყენება"
 
 #: collectiongeneralpage.cpp:60
 #, kde-format
 msgctxt "@info:whatsthis"
 msgid "Check this box if you want to set a custom icon for this folder."
-msgstr ""
+msgstr "ჩართეთ ეს, თუ ამ საქაღალდისთვის თქვენი ხატულის დაყენება გნებავთ."
 
 #. i18n: ectx: Menu (file)
 #: data/korganizer_part.rc:4 data/korganizerui.rc:4
@@ -1815,6 +1897,11 @@ msgid ""
 "shows a week. The number in the left column is the number of the week in the "
 "year. Press it to select the whole week.</p></qt>"
 msgstr ""
+"<qt><p>აქ შეგიძლიათ აირჩიოთ თარიღები, რომელიც KOrganizer-ის მთავარ ხედში "
+"გამოჩნდება. ერთ დღეზე მეტის მოსანიშნად გეჭიროთ თაგუნას ღილაკი.</"
+"p><p>დააწექით ზედა ღილაკებს, რომ წინა / შემდეგი თვე ან წელიწადი დაათვალიეროთ."
+"</p><p>თითოეული ხაზი კვირას აჩვენებს. რიცხვი მარცხენა სვეტში ამ კვირის წლის "
+"ნომერია. დააწექით მას მთელი კვირის მოსანიშნად.</p></qt>"
 
 #: dialog/filtereditdialog.cpp:31
 #, kde-format
@@ -1826,13 +1913,13 @@ msgstr "კალენდრის ფილტრების ჩასწო�
 #, kde-format
 msgctxt "@info:whatsthis"
 msgid "Press this button to define a new filter."
-msgstr ""
+msgstr "დააწექით ამ ღილაკს ახალი ფილტრის აღსაწერად."
 
 #: dialog/filtereditdialog.cpp:88
 #, kde-format
 msgctxt "@info:whatsthis"
 msgid "Press this button to remove the currently active filter."
-msgstr ""
+msgstr "დააწექით ამ ღილაკს ამჟამად აქტიური ფილტრის წასაშლელად."
 
 #: dialog/filtereditdialog.cpp:219
 #, kde-format
@@ -1844,7 +1931,7 @@ msgstr "ახალი ფილტრი %1"
 #, kde-format
 msgctxt "@info"
 msgid "Do you really want to permanently remove the filter \"%1\"?"
-msgstr ""
+msgstr "მართლა გნებავთ, სამუდამოდ წაშალოთ ფილტრი \"%1\"?"
 
 #: dialog/filtereditdialog.cpp:243
 #, kde-format
@@ -1890,7 +1977,7 @@ msgstr "ძებნის დაწყება"
 #, kde-format
 msgctxt "@info:whatsthis"
 msgid "Press this button to start the search."
-msgstr ""
+msgstr "დააწექით ამ ღილაკს ძებნის დასაწყებად."
 
 #: dialog/searchdialog.cpp:123
 #, kde-format
@@ -1899,12 +1986,14 @@ msgid ""
 "Invalid search expression, cannot perform the search. Please enter a search "
 "expression using the wildcard characters '*' and '?' where needed."
 msgstr ""
+"საძებნი გამოსახულება არასწორია. ძებნა ვერ მოხდება. შეიყვანეთ საძებნი "
+"გამოსახულება ვაილდკარდის სიმბოლოებით '*' და '?', როცა დაგჭირდებათ."
 
 #: dialog/searchdialog.cpp:135
 #, kde-format
 msgctxt "@info"
 msgid "No items were found that match your search pattern."
-msgstr ""
+msgstr "თქვენს საძებნ ნიმუშს არაფერი შეესაბამება."
 
 #: dialog/searchdialog.cpp:136
 #, kde-format
@@ -1924,7 +2013,7 @@ msgstr[1] "%1 ემთხვევა"
 #, kde-format
 msgctxt "A collection of all declined invidations."
 msgid "Declined Invitations"
-msgstr ""
+msgstr "უარყოფილი მოსაწვევები"
 
 #: helper/searchcollectionhelper.cpp:114
 #, kde-format
@@ -1966,7 +2055,7 @@ msgstr "თარიღი"
 #: kcmdesignerfields.cpp:167
 #, kde-format
 msgid "<qt>Do you really want to delete '<b>%1</b>'?</qt>"
-msgstr ""
+msgstr "<qt>მართლა გნებავთ, წაშალოთ '<b>%1</b>'?</qt>"
 
 #: kcmdesignerfields.cpp:181 kcmdesignerfields.cpp:184
 #, kde-format
@@ -1984,6 +2073,8 @@ msgid ""
 "<qt><b>Warning:</b> Qt Designer could not be found. It is probably not "
 "installed. You will only be able to import existing designer files.</qt>"
 msgstr ""
+"<qt><b>გაფრთხილება:</b>Qt Designer ვერ ვიპოვე. ალბათ, ის დაყენებული არაა. "
+"შეგიძლიათ მხოლოდ არსებული დიზაინერის ფაილების შემოტანა.</qt>"
 
 #: kcmdesignerfields.cpp:307
 #, kde-format
@@ -1993,7 +2084,7 @@ msgstr "ხელმისაწვდომი გვერდები"
 #: kcmdesignerfields.cpp:314 kcmdesignerfields.cpp:316
 #, kde-format
 msgid "Preview of Selected Page"
-msgstr ""
+msgstr "მონიშნული გვერდის მინიატურა"
 
 #: kcmdesignerfields.cpp:336
 #, kde-format
@@ -2031,7 +2122,7 @@ msgstr "გვერდის შემოტანა..."
 #: kcmdesignerfields.cpp:387 kcmdesignerfields.cpp:389
 #, kde-format
 msgid "Edit with Qt Designer..."
-msgstr ""
+msgstr "Qt Designer-ით ჩასწორება..."
 
 #: kcmdesignerfields.cpp:415
 #, kde-format
@@ -2056,13 +2147,14 @@ msgstr "აღწერა:"
 #: koapp.cpp:63
 #, kde-format
 msgid "Failed to retrieve incidence from Akonadi"
-msgstr ""
+msgstr "Akonadi-დან ინციდენტის მიღება ჩავარდა"
 
 #: koapp.cpp:68
 #, kde-format
 msgid ""
 "Failed to retrieve incidence from Akonadi: requested incidence doesn't exist."
 msgstr ""
+"Akonadi-დან ინციდენტის მიღება ჩავარდა: მოთხოვნილი ინციდენტი არ არსებბს."
 
 #: kocorehelper.cpp:30
 #, kde-format
@@ -2148,61 +2240,61 @@ msgstr "&ჩასმა"
 #, kde-format
 msgctxt "@action:inmenu"
 msgid "Create To-do from Event"
-msgstr ""
+msgstr "მოვლენიდან გასაკეთებლის შექმნა"
 
 #: koeventpopupmenu.cpp:91
 #, kde-format
 msgctxt "@action:inmenu"
 msgid "Create Note for Event"
-msgstr ""
+msgstr "მოვლენისთვის შენისთვის შექმნა"
 
 #: koeventpopupmenu.cpp:102
 #, kde-format
 msgctxt "@action:inmenu"
 msgid "Togg&le To-do Completed"
-msgstr ""
+msgstr "გასაკეთებლის &დასრულების გადართვა"
 
 #: koeventpopupmenu.cpp:107
 #, kde-format
 msgctxt "@action:inmenu"
 msgid "Create Event from To-do"
-msgstr ""
+msgstr "გასაკეთებლიდან მოვლენის შექმნა"
 
 #: koeventpopupmenu.cpp:113
 #, kde-format
 msgctxt "@action:inmenu"
 msgid "Create Note for To-do"
-msgstr ""
+msgstr "გასაკეთებლისთვის შენიშვნის შექმნა"
 
 #: koeventpopupmenu.cpp:124
 #, kde-format
 msgctxt "@action:inmenu"
 msgid "&Toggle Reminder"
-msgstr ""
+msgstr "შემხსენებლის &გადართვა"
 
 #: koeventpopupmenu.cpp:131
 #, kde-format
 msgctxt "@action:inmenu"
 msgid "&Dissociate From Recurrence..."
-msgstr ""
+msgstr "&გამეორებიდან ამოღება..."
 
 #: koeventpopupmenu.cpp:139
 #, kde-format
 msgctxt "@action:inmenu"
 msgid "Send as iCalendar..."
-msgstr ""
+msgstr "გაგზავნა, როგორც iCalendar-ის ფაილი..."
 
 #: koeventpopupmenu.cpp:188
 #, kde-format
 msgctxt "@action:inmenu"
 msgid "&Toggle Reminder Off"
-msgstr ""
+msgstr "შემხსენებლის გადართვა &გამორთ"
 
 #: koeventpopupmenu.cpp:189
 #, kde-format
 msgctxt "@action:inmenu"
 msgid "&Toggle Reminder On"
-msgstr ""
+msgstr "შემხსენებლის გადართვა ჩ&ართ"
 
 #: kohelper.cpp:57
 #, kde-format
@@ -2213,25 +2305,27 @@ msgstr "%1-ის შენახვის შეცდომა \"%2\"."
 #: kontactplugin/korganizer/apptsummaryconfig_base.ui:8
 #, kde-format
 msgid "Event Summary Configuration"
-msgstr ""
+msgstr "მოვლენის შეჯამების მორგება"
 
 #. i18n: ectx: property (title), widget (QGroupBox, mDaysButtonGroup)
 #: kontactplugin/korganizer/apptsummaryconfig_base.ui:14
 #, kde-format
 msgid "Show Upcoming Events Starting"
-msgstr ""
+msgstr "მომავალი მოვლენების დაწყების ჩვენება"
 
 #. i18n: ectx: property (toolTip), widget (QRadioButton, mDateTodayButton)
 #: kontactplugin/korganizer/apptsummaryconfig_base.ui:20
 #, kde-format
 msgid "Show events for today only"
-msgstr ""
+msgstr "მხოლოდ დღევანდელი მოვლენების ჩვენება"
 
 #. i18n: ectx: property (whatsThis), widget (QRadioButton, mDateTodayButton)
 #: kontactplugin/korganizer/apptsummaryconfig_base.ui:23
 #, kde-format
 msgid "Check this box if you want to see events occurring on this date only."
 msgstr ""
+"დასვით ეს თოლია, თუ გნებავთ დაინახოთ მოვლენები, რომლებიც მხოლოდ ამ თარიღზე "
+"ხდება."
 
 #. i18n: ectx: property (text), widget (QRadioButton, mDateTodayButton)
 #: kontactplugin/korganizer/apptsummaryconfig_base.ui:26
@@ -2245,7 +2339,7 @@ msgstr "&მხოლოდ დღეს"
 #: kontactplugin/korganizer/apptsummaryconfig_base.ui:36
 #, kde-format
 msgid "Show events starting within the next month"
-msgstr ""
+msgstr "მოვლენების ჩვენება, რომლებიც შემდეგი თვიდან იწყება"
 
 #. i18n: ectx: property (whatsThis), widget (QRadioButton, mDateMonthButton)
 #: kontactplugin/korganizer/apptsummaryconfig_base.ui:39
@@ -2254,6 +2348,8 @@ msgid ""
 "Check this box if you want to see events that start sometime during the next "
 "31 days."
 msgstr ""
+"დასვით ეს თოლია, თუ გნებავთ დაინახოთ მოვლენები, რომლებიც შემდეგი 31 დღის "
+"განმავლობაში იწყება."
 
 #. i18n: ectx: property (text), widget (QRadioButton, mDateMonthButton)
 #: kontactplugin/korganizer/apptsummaryconfig_base.ui:42
@@ -2261,13 +2357,13 @@ msgstr ""
 #: kontactplugin/specialdates/sdsummaryconfig_base.ui:50
 #, kde-format
 msgid "Within the next &month (31 days)"
-msgstr ""
+msgstr "შემდეგი თ&ვის განმავლობაში (31 დღე)"
 
 #. i18n: ectx: property (toolTip), widget (QRadioButton, mDateRangeButton)
 #: kontactplugin/korganizer/apptsummaryconfig_base.ui:57
 #, kde-format
 msgid "Select the days for showing upcoming events"
-msgstr ""
+msgstr "აირჩიეთ დღე მომავალი მოვლენების საჩვენებლად"
 
 #. i18n: ectx: property (whatsThis), widget (QRadioButton, mDateRangeButton)
 #: kontactplugin/korganizer/apptsummaryconfig_base.ui:60
@@ -2276,6 +2372,8 @@ msgid ""
 "Check this box if you want to specify the number of days in the future for "
 "upcoming events."
 msgstr ""
+"დასვით ეს თოია, თუ გნებავთ, მიუთითოთ მომავალი დღეები მომავალში მომავალი "
+"მოვლენებისთვის."
 
 #. i18n: ectx: property (text), widget (QRadioButton, mDateRangeButton)
 #: kontactplugin/korganizer/apptsummaryconfig_base.ui:63
@@ -2283,13 +2381,13 @@ msgstr ""
 #: kontactplugin/specialdates/sdsummaryconfig_base.ui:71
 #, kde-format
 msgid "Within the &next:"
-msgstr ""
+msgstr "შ&ემდეგ:"
 
 #. i18n: ectx: property (toolTip), widget (QSpinBox, mCustomDays)
 #: kontactplugin/korganizer/apptsummaryconfig_base.ui:76
 #, kde-format
 msgid "Set the number of days to show upcoming events"
-msgstr ""
+msgstr "დააყენეთ მომავალი მოვლენების საჩვენებელი დღეების რაოდენობა"
 
 #. i18n: ectx: property (whatsThis), widget (QSpinBox, mCustomDays)
 #: kontactplugin/korganizer/apptsummaryconfig_base.ui:79
@@ -2298,6 +2396,8 @@ msgid ""
 "Use this spinbox to set the number of days to show upcoming events up to 1 "
 "year in the future."
 msgstr ""
+"გამოიყენეთ ეს ტრიალა, რათა დააყენოთ დღეები დარჩენილი მოვლენების საჩვენებლად, "
+"მომავალში, ერთ წლამდე."
 
 #. i18n: ectx: property (specialValueText), widget (QSpinBox, mCustomDays)
 #: kontactplugin/korganizer/apptsummaryconfig_base.ui:82
@@ -2320,13 +2420,15 @@ msgstr " დღე"
 #: kontactplugin/korganizer/apptsummaryconfig_base.ui:122
 #, kde-format
 msgid "Show These Upcoming Events From Your Calendar"
-msgstr ""
+msgstr "მომავალი მოვლენების ჩვენება თქვენი კალენდრიდან"
 
 #. i18n: ectx: property (toolTip), widget (QCheckBox, mShowBirthdaysFromCal)
 #: kontactplugin/korganizer/apptsummaryconfig_base.ui:128
 #, kde-format
 msgid "Show birthdays from your calendar when also using the Birthday resource"
 msgstr ""
+"თქვენი კალენდრიდან დაბადების დღეების ჩვენება მაშინ, როცა დაბადების დღის "
+"რესურსიც გამოიყენება"
 
 #. i18n: ectx: property (whatsThis), widget (QCheckBox, mShowBirthdaysFromCal)
 #: kontactplugin/korganizer/apptsummaryconfig_base.ui:131
@@ -2336,6 +2438,9 @@ msgid ""
 "events summary. This option is only available if you are using the Birthdays "
 "resource in your calendar."
 msgstr ""
+"ჩართეთ ეს პარამეტრი, თქვენი კალენდრის მომავალი მოვლენების შეჯამებაში "
+"დაბადების დღეებიც გამოჩნდეს. ეს პარამეტრი, მხოლოდ, მაშინაა ხელმისაწვდომი, "
+"როცა კალენდარში დაბადების დღის რესურსს იყენებთ."
 
 #. i18n: ectx: property (text), widget (QCheckBox, mShowBirthdaysFromCal)
 #. i18n: ectx: property (text), widget (QCheckBox, mShowBirthdaysFromCalBox)
@@ -2351,6 +2456,8 @@ msgstr "&დაბადების დღეების ჩვენება
 msgid ""
 "Shows anniversaries from your calendar when using the Birthdays resource"
 msgstr ""
+"თქვენი კალენდრიდან იუბილეების ჩვენება მაშინ, როცა დაბადების დღის რესურსიც "
+"გამოიყენება"
 
 #. i18n: ectx: property (whatsThis), widget (QCheckBox, mShowAnniversariesFromCal)
 #: kontactplugin/korganizer/apptsummaryconfig_base.ui:144
@@ -2360,6 +2467,9 @@ msgid ""
 "upcoming events summary. This option is only available if you are using the "
 "Birthdays resource in your calendar."
 msgstr ""
+"ჩართეთ ეს პარამეტრი, თქვენი კალენდრის მომავალი მოვლენების შეჯამებაში "
+"იუბილეებიც გამოჩნდეს. ეს პარამეტრი, მხოლოდ, მაშინაა ხელმისაწვდომი, როცა "
+"კალენდარში დაბადების დღის რესურსს იყენებთ."
 
 #. i18n: ectx: property (text), widget (QCheckBox, mShowAnniversariesFromCal)
 #. i18n: ectx: property (text), widget (QCheckBox, mShowAnniversariesFromCalBox)
@@ -2367,7 +2477,7 @@ msgstr ""
 #: kontactplugin/specialdates/sdsummaryconfig_base.ui:158
 #, kde-format
 msgid "Show &anniversaries"
-msgstr ""
+msgstr "&მნიშვნელოვანი დღეების ჩვენება"
 
 #. i18n: ectx: property (title), widget (QGroupBox, groupBox)
 #. i18n: ectx: property (title), widget (QGroupBox, mGroupwareGroup)
@@ -2383,7 +2493,7 @@ msgstr "Groupware-ის მორგება"
 #: kontactplugin/specialdates/sdsummaryconfig_base.ui:250
 #, kde-format
 msgid "Show events belonging to my calendars only"
-msgstr ""
+msgstr "მხოლოდ, იმ მოვლენების ჩვენება, რომლებიც ჩემს კალენდარს ეკუთვნის"
 
 #. i18n: ectx: property (whatsThis), widget (QCheckBox, mShowMineOnly)
 #: kontactplugin/korganizer/apptsummaryconfig_base.ui:166
@@ -2393,13 +2503,15 @@ msgid ""
 "Check this box if you want the summary to show events belonging to your "
 "calendars only."
 msgstr ""
+"დასვით ეს თოლია, თუ გნებვთ, შეჯამებაში, მხოლოდ, თქვენი კალენდრების კუთვნილი "
+"მოვლენები დაინახოთ."
 
 #. i18n: ectx: property (text), widget (QCheckBox, mShowMineOnly)
 #: kontactplugin/korganizer/apptsummaryconfig_base.ui:169
 #: kontactplugin/specialdates/sdsummaryconfig_base.ui:256
 #, kde-format
 msgid "Show &my events only"
-msgstr ""
+msgstr "&მხოლოდ ჩემი მოვლენების ჩვენება"
 
 #: kontactplugin/korganizer/apptsummarywidget.cpp:46
 #, kde-format
@@ -2410,18 +2522,18 @@ msgstr "უახლოესი მოვლენები"
 #, kde-format
 msgid "No upcoming events starting within the next day"
 msgid_plural "No upcoming events starting within the next %1 days"
-msgstr[0] ""
-msgstr[1] ""
+msgstr[0] "ხვალ მომავალი მოვლენები არ გაქვთ"
+msgstr[1] "შემდეგ %1 დღეში მომავალი მოვლენები არ გაქვთ"
 
 #: kontactplugin/korganizer/apptsummarywidget.cpp:240
 #, kde-format
 msgid "&Edit Appointment..."
-msgstr ""
+msgstr "შეხვედრის ჩასწორება..."
 
 #: kontactplugin/korganizer/apptsummarywidget.cpp:242
 #, kde-format
 msgid "&Delete Appointment"
-msgstr ""
+msgstr "&შეხვედრის წაშლა"
 
 #: kontactplugin/korganizer/apptsummarywidget.cpp:261
 #, kde-format
@@ -2446,6 +2558,7 @@ msgctxt "@info:whatsthis"
 msgid ""
 "You will be presented with a dialog where you can create a new journal entry."
 msgstr ""
+"გაჩვენებთ ახალ ფანჯარას, სადაც ახალი ჟურნალის ჩანაწერის დამატება შეგიძლიათ."
 
 #: kontactplugin/korganizer/kcmapptsummary.cpp:91
 #: kontactplugin/korganizer/kcmtodosummary.cpp:73
@@ -2474,6 +2587,8 @@ msgctxt "@info:whatsthis"
 msgid ""
 "You will be presented with a dialog where you can create a new event item."
 msgstr ""
+"წარმოგედგინებათ ფანჯარა, საიდანაც ახალი მოვლენის ჩანაწერის დამატება "
+"შეგიძლიათ."
 
 #: kontactplugin/korganizer/korganizerplugin.cpp:146
 #: kontactplugin/korganizer/todoplugin.cpp:146
@@ -2501,7 +2616,7 @@ msgstr "ფოსტა: %1"
 #, kde-format
 msgctxt "Event from email content"
 msgid "<b>From:</b> %1<br /><b>To:</b> %2<br /><b>Subject:</b> %3"
-msgstr ""
+msgstr "<b>ვისგან:</b> %1<br /><b>To:</b> %2<br /><b>სათაური:</b> %3"
 
 #: kontactplugin/korganizer/summaryeventinfo.cpp:136
 #, kde-format
@@ -2587,36 +2702,40 @@ msgctxt "@info:whatsthis"
 msgid ""
 "You will be presented with a dialog where you can create a new to-do item."
 msgstr ""
+"წარმოგედგინებათ ფანჯარა, საიდანაც ახალი გასაკეთებლის ჩანაწერის დამატება "
+"შეგიძლიათ."
 
 #. i18n: ectx: property (windowTitle), widget (QWidget, TodoSummaryConfig_Base)
 #: kontactplugin/korganizer/todosummaryconfig_base.ui:16
 #, kde-format
 msgid "To-do Summary Configuration"
-msgstr ""
+msgstr "გასაკეთებლის შეჯამების მორგება"
 
 #. i18n: ectx: property (title), widget (QGroupBox, mDaysGroup)
 #: kontactplugin/korganizer/todosummaryconfig_base.ui:22
 #, kde-format
 msgid "Show To-dos Due"
-msgstr ""
+msgstr "გასაკეთებლების მოსალოდნელი დროის ჩვენება"
 
 #. i18n: ectx: property (toolTip), widget (QRadioButton, mDateTodayButton)
 #: kontactplugin/korganizer/todosummaryconfig_base.ui:28
 #, kde-format
 msgid "Show To-dos due today only"
-msgstr ""
+msgstr "გასაკეთებლების მოსალოდნელი დროის ჩვენება მხოლოდ დღეისთვის"
 
 #. i18n: ectx: property (whatsThis), widget (QRadioButton, mDateTodayButton)
 #: kontactplugin/korganizer/todosummaryconfig_base.ui:31
 #, kde-format
 msgid "Check this box if you want to see To-dos due on this date only."
 msgstr ""
+"დასვით ეს თოლია, თუ გნებავთ, დაინახოთ გასაკეთებლები, რომლის დროც ამ თარიღზე "
+"დგება."
 
 #. i18n: ectx: property (toolTip), widget (QRadioButton, mDateMonthButton)
 #: kontactplugin/korganizer/todosummaryconfig_base.ui:44
 #, kde-format
 msgid "Show To-dos due within the next month"
-msgstr ""
+msgstr "შემდეგ თვეში მოსალოდნელი გასაკეთებლების დროის ჩვენება"
 
 #. i18n: ectx: property (whatsThis), widget (QRadioButton, mDateMonthButton)
 #: kontactplugin/korganizer/todosummaryconfig_base.ui:47
@@ -2625,12 +2744,14 @@ msgid ""
 "Check this box if you want to see To-dos that are due sometime during the "
 "next 31 days."
 msgstr ""
+"დასვით ეს თოლია, თუ გნებავთ დაინახოთ მოვლენები, რომლების დროც შემდეგი 31 "
+"დღის განმავლობაში დგება."
 
 #. i18n: ectx: property (toolTip), widget (QRadioButton, mDateRangeButton)
 #: kontactplugin/korganizer/todosummaryconfig_base.ui:65
 #, kde-format
 msgid "Select the days for showing pending To-dos"
-msgstr ""
+msgstr "აირჩიეთ დღეები დარჩენილი გასაკეთებლების საჩვენებლად"
 
 #. i18n: ectx: property (whatsThis), widget (QRadioButton, mDateRangeButton)
 #: kontactplugin/korganizer/todosummaryconfig_base.ui:71
@@ -2639,12 +2760,14 @@ msgid ""
 "Check this box if you want specify the number of days in the future for "
 "pending To-dos."
 msgstr ""
+"დასვით ეს თოლია, თუ გნებავთ მიუთითოთ დღეების რაოდენობა მომავალში, დარჩენილი "
+"გასაკეთებლებისთვის."
 
 #. i18n: ectx: property (toolTip), widget (QSpinBox, mCustomDays)
 #: kontactplugin/korganizer/todosummaryconfig_base.ui:87
 #, kde-format
 msgid "Set the number of days to show pending To-dos"
-msgstr ""
+msgstr "აირჩიეთ დღეების რაოდენობა დარჩენილი გასაკეთებლების საჩვენებლად"
 
 #. i18n: ectx: property (whatsThis), widget (QSpinBox, mCustomDays)
 #: kontactplugin/korganizer/todosummaryconfig_base.ui:90
@@ -2653,18 +2776,20 @@ msgid ""
 "Use this spinbox to set the number of days to show pending To-dos up to 1 "
 "year in the future."
 msgstr ""
+"გამოიყენეთ ეს ტრიალა, რათა დააყენოთ დღეები დარჩენილი გასაკეთებლების "
+"საჩვენებლად, მომავალში, ერთ წლამდე."
 
 #. i18n: ectx: property (title), widget (QGroupBox, mHideGroup)
 #: kontactplugin/korganizer/todosummaryconfig_base.ui:133
 #, kde-format
 msgid "Hide Following To-do Types"
-msgstr ""
+msgstr "შემდეგი გასაკეთებლის ტიპების დამალვა"
 
 #. i18n: ectx: property (toolTip), widget (QCheckBox, mHideCompletedBox)
 #: kontactplugin/korganizer/todosummaryconfig_base.ui:139
 #, kde-format
 msgid "Hide completed To-dos"
-msgstr ""
+msgstr "დასრულებული გასაკეთებლების დამალვა"
 
 #. i18n: ectx: property (whatsThis), widget (QCheckBox, mHideCompletedBox)
 #: kontactplugin/korganizer/todosummaryconfig_base.ui:142
@@ -2673,6 +2798,7 @@ msgid ""
 "Check this box if you do not want to see To-dos that have already been "
 "completed."
 msgstr ""
+"დასვით ეს თოლია, თუარ გსურთ, დაინახოთ გასაკეთებლები, რომლებიც უკვე დასრულდა."
 
 #. i18n: ectx: property (text), widget (QCheckBox, mHideCompletedBox)
 #: kontactplugin/korganizer/todosummaryconfig_base.ui:145
@@ -2684,25 +2810,25 @@ msgstr "&დასრულებულია"
 #: kontactplugin/korganizer/todosummaryconfig_base.ui:155
 #, kde-format
 msgid "Hide To-dos without a due date"
-msgstr ""
+msgstr "განსაზღვრული დროის არმქონე გასაკეთებლების დამალვა"
 
 #. i18n: ectx: property (whatsThis), widget (QCheckBox, mHideOpenEndedBox)
 #: kontactplugin/korganizer/todosummaryconfig_base.ui:158
 #, kde-format
 msgid "Check this box if you do not want to see open-ended To-dos."
-msgstr ""
+msgstr "დასვით ეს თოლია, თუ არ გსურთ, ღიაბოლოიანი გასაკეთებლები დაინახოთ."
 
 #. i18n: ectx: property (text), widget (QCheckBox, mHideOpenEndedBox)
 #: kontactplugin/korganizer/todosummaryconfig_base.ui:161
 #, kde-format
 msgid "&Open-ended (no due date)"
-msgstr ""
+msgstr "&ღია-ბოლოთი (არა-განსაზღვრული დროით)"
 
 #. i18n: ectx: property (toolTip), widget (QCheckBox, mHideUnstartedBox)
 #: kontactplugin/korganizer/todosummaryconfig_base.ui:171
 #, kde-format
 msgid "Hide unstarted To-dos"
-msgstr ""
+msgstr "გასაკეთებლების დამალვა, რომლებიც არ დაწყებულა"
 
 #. i18n: ectx: property (whatsThis), widget (QCheckBox, mHideUnstartedBox)
 #: kontactplugin/korganizer/todosummaryconfig_base.ui:174
@@ -2711,18 +2837,20 @@ msgid ""
 "Check this box if you do not want to see To-dos with a start date in the "
 "future."
 msgstr ""
+"დასვით ეს თოლია, თუ არ გსურთ, დაინახოთ გასაკეთებლები, რომლის დაწყების "
+"თარიღიც მომავალშია."
 
 #. i18n: ectx: property (text), widget (QCheckBox, mHideUnstartedBox)
 #: kontactplugin/korganizer/todosummaryconfig_base.ui:177
 #, kde-format
 msgid "&Unstarted (start date is in the future)"
-msgstr ""
+msgstr "&არ დაწყებულა (დაწყების თარიღი მომავალშია)"
 
 #. i18n: ectx: property (toolTip), widget (QCheckBox, mHideInProgressBox)
 #: kontactplugin/korganizer/todosummaryconfig_base.ui:184
 #, kde-format
 msgid "Hide in-progress To-dos"
-msgstr ""
+msgstr "მიმდინარე გასაკეთებლების დამალვა"
 
 #. i18n: ectx: property (whatsThis), widget (QCheckBox, mHideInProgressBox)
 #: kontactplugin/korganizer/todosummaryconfig_base.ui:187
@@ -2731,18 +2859,20 @@ msgid ""
 "Check this box if you do not want to see To-dos that have been started but "
 "are not yet completed."
 msgstr ""
+"დასვით ეს თოლია, თუ არ გსურთ, დაინახოთ გააკეთებლები, რომლებიც დაიწყო, მაგრამ "
+"ჯერ არ დასრულებულა."
 
 #. i18n: ectx: property (text), widget (QCheckBox, mHideInProgressBox)
 #: kontactplugin/korganizer/todosummaryconfig_base.ui:190
 #, kde-format
 msgid "&In-progress (started but not completed)"
-msgstr ""
+msgstr "&მიმდინარეობს (დაიწყო, მაგრამ არ დასრულებულა)"
 
 #. i18n: ectx: property (toolTip), widget (QCheckBox, mHideOverdueBox)
 #: kontactplugin/korganizer/todosummaryconfig_base.ui:197
 #, kde-format
 msgid "Hide overdue To-dos"
-msgstr ""
+msgstr "ვადაგადაცილებული გასაკეთებლების დამალვა"
 
 #. i18n: ectx: property (whatsThis), widget (QCheckBox, mHideOverdueBox)
 #: kontactplugin/korganizer/todosummaryconfig_base.ui:203
@@ -2751,18 +2881,20 @@ msgid ""
 "Check this box if you do not want to see To-dos that are past their due date "
 "but have not yet been completed."
 msgstr ""
+"დასვით ეს თოლია, თუ არ გსურთ, დაინახოთ გასაკეთებლები, რომლის დაწყების "
+"თარიღიც წარსულშია, მაგრამ ჯერ არ დასრულებულა."
 
 #. i18n: ectx: property (text), widget (QCheckBox, mHideOverdueBox)
 #: kontactplugin/korganizer/todosummaryconfig_base.ui:206
 #, kde-format
 msgid "Over&due (not completed and beyond due-date)"
-msgstr ""
+msgstr "&ვადაგადაცილებული (არ დასრულებულა, ან ვადაა გადაცილებული)"
 
 #. i18n: ectx: property (toolTip), widget (QCheckBox, mShowMineOnly)
 #: kontactplugin/korganizer/todosummaryconfig_base.ui:222
 #, kde-format
 msgid "Show To-dos belonging to my calendars only"
-msgstr ""
+msgstr "მხოლოდ, იმ გასაკეთებლები ჩვენება, რომლებიც ჩემს კალენდარს ეკუთვნის"
 
 #. i18n: ectx: property (whatsThis), widget (QCheckBox, mShowMineOnly)
 #: kontactplugin/korganizer/todosummaryconfig_base.ui:225
@@ -2771,12 +2903,14 @@ msgid ""
 "Check this box if you want the summary to show To-dos belonging to your "
 "calendars only."
 msgstr ""
+"დასვით ეს თოლია, თუ გნებავთ, შეჯამებებში ნაჩვენები იყოს გასაკეთებლები, "
+"რომლებიც, მხოლოდ, თქვენს კალენდარს ეკუთვნის."
 
 #. i18n: ectx: property (text), widget (QCheckBox, mShowMineOnly)
 #: kontactplugin/korganizer/todosummaryconfig_base.ui:228
 #, kde-format
 msgid "Show &my To-dos only"
-msgstr ""
+msgstr "&მხოლოდ ჩემი გასაკეთებლების ჩვენება"
 
 #: kontactplugin/korganizer/todosummarywidget.cpp:42
 #, kde-format
@@ -2812,29 +2946,29 @@ msgstr[1] "%1 დღის წინ"
 #, kde-format
 msgctxt "the to-do is due"
 msgid "due"
-msgstr ""
+msgstr "დანიშნული დრო"
 
 #: kontactplugin/korganizer/todosummarywidget.cpp:271
 #, kde-format
 msgid "No pending to-dos due within the next day"
 msgid_plural "No pending to-dos due within the next %1 days"
-msgstr[0] ""
-msgstr[1] ""
+msgstr[0] "ხვალისთვის დარჩენილი გასაკეთებლები არ გაქვთ"
+msgstr[1] "შემდეგ %1 დღეში დარჩენილი გასაკეთებლები არ გაქვთ"
 
 #: kontactplugin/korganizer/todosummarywidget.cpp:329
 #, kde-format
 msgid "&Mark To-do Completed"
-msgstr ""
+msgstr "გასაკეთებლის დასრულებულად &მონიშვნა"
 
 #: kontactplugin/korganizer/todosummarywidget.cpp:349
 #, kde-format
 msgid "Edit To-do: \"%1\""
-msgstr ""
+msgstr "გასაკეთებლის ჩასწორება: \"%1\""
 
 #: kontactplugin/korganizer/todosummarywidget.cpp:369
 #, kde-format
 msgid "open-ended"
-msgstr ""
+msgstr "ღია-ბოლოთი"
 
 #: kontactplugin/korganizer/todosummarywidget.cpp:371
 #, kde-format
@@ -2846,7 +2980,7 @@ msgstr ""
 #, kde-format
 msgctxt "the to-do starts today"
 msgid "starts today"
-msgstr ""
+msgstr "დღეს იწყება"
 
 #: kontactplugin/korganizer/todosummarywidget.cpp:377
 #, kde-format
@@ -2876,19 +3010,19 @@ msgstr ","
 #: kontactplugin/specialdates/sdsummaryconfig_base.ui:16
 #, kde-format
 msgid "Special Dates Summary Configuration"
-msgstr ""
+msgstr "განსაკუთრებული თარიღების შემაჯამებელ კონფიგურაცია"
 
 #. i18n: ectx: property (title), widget (QGroupBox, mDaysGroup)
 #: kontactplugin/specialdates/sdsummaryconfig_base.ui:22
 #, kde-format
 msgid "Show Special Dates Starting"
-msgstr ""
+msgstr "განსაკუთრებული თარიღებს დასაწყისის ჩვენება"
 
 #. i18n: ectx: property (toolTip), widget (QRadioButton, mDateTodayButton)
 #: kontactplugin/specialdates/sdsummaryconfig_base.ui:28
 #, kde-format
 msgid "Show special occasions for today only"
-msgstr ""
+msgstr "განსაკუთრებული შემთხვევების ჩვენება მხოლოდ დღეისთვის"
 
 #. i18n: ectx: property (whatsThis), widget (QRadioButton, mDateTodayButton)
 #: kontactplugin/specialdates/sdsummaryconfig_base.ui:31
@@ -2897,12 +3031,14 @@ msgid ""
 "Check this box if you want to see special occasions occurring on this date "
 "only."
 msgstr ""
+"დასვით ეს თოლა, თუ გნებავთ, დაინახოთ სპეციალური თარიღები, რომლებიც, მხოლოდ, "
+"ამ დღეს ხდება."
 
 #. i18n: ectx: property (toolTip), widget (QRadioButton, mDateMonthButton)
 #: kontactplugin/specialdates/sdsummaryconfig_base.ui:44
 #, kde-format
 msgid "Show special occasions starting within the next month"
-msgstr ""
+msgstr "განსაკუთრებული შემთხვევების ჩვენება, რომლებიც შემდეგი თვიდან იწყება"
 
 #. i18n: ectx: property (whatsThis), widget (QRadioButton, mDateMonthButton)
 #: kontactplugin/specialdates/sdsummaryconfig_base.ui:47
@@ -2911,12 +3047,14 @@ msgid ""
 "Check this box if you want to see special occasions that start sometime "
 "during the next 31 days."
 msgstr ""
+"დასვით ეს თოლია, თუ გნებავთ დაინახოთ სპეციალური თარიღები, რომლებიც შემდეგი "
+"31 დღის განმავლობაში იწყება."
 
 #. i18n: ectx: property (toolTip), widget (QRadioButton, mDateRangeButton)
 #: kontactplugin/specialdates/sdsummaryconfig_base.ui:65
 #, kde-format
 msgid "Select the days for showing upcoming special occasions"
-msgstr ""
+msgstr "აირჩიეთ დღეები მომავალი მოვლენების საჩვენებლად"
 
 #. i18n: ectx: property (whatsThis), widget (QRadioButton, mDateRangeButton)
 #: kontactplugin/specialdates/sdsummaryconfig_base.ui:68
@@ -2925,12 +3063,14 @@ msgid ""
 "Check this box if you want to specify the number of days in the future for "
 "upcoming special occasions."
 msgstr ""
+"დასვით ეს თოლია, თუ გნებავთ, მიუთითოთ დღეების რაოდენობა მომავალში, "
+"სპეციალური თარიღებისთვის."
 
 #. i18n: ectx: property (toolTip), widget (QSpinBox, mCustomDays)
 #: kontactplugin/specialdates/sdsummaryconfig_base.ui:84
 #, kde-format
 msgid "Set the number of days to show upcoming special occasions"
-msgstr ""
+msgstr "დააყენეთ მომავალი სპეცალური თარიღების საჩვენებელი დღეების რაოდენობა"
 
 #. i18n: ectx: property (whatsThis), widget (QSpinBox, mCustomDays)
 #: kontactplugin/specialdates/sdsummaryconfig_base.ui:87
@@ -2939,18 +3079,20 @@ msgid ""
 "Use this spinbox to set the number of days to show upcoming special "
 "occasions up to one year in the future."
 msgstr ""
+"გამოყენეთ ეს ტრიალა, რათა დააყენოთ დღეების რაოდენობა მომავალი სპეციალური "
+"თარიღების საჩვენებლად მომავალში, ერთ წლამდე."
 
 #. i18n: ectx: property (title), widget (QGroupBox, mShowFromCalGroup)
 #: kontactplugin/specialdates/sdsummaryconfig_base.ui:130
 #, kde-format
 msgid "Show These Special Dates From Your Calendar"
-msgstr ""
+msgstr "ამ განსაკუთრებული თარიღების თქვენი კალენდრიდან ჩვენება"
 
 #. i18n: ectx: property (toolTip), widget (QCheckBox, mShowBirthdaysFromCalBox)
 #: kontactplugin/specialdates/sdsummaryconfig_base.ui:136
 #, kde-format
 msgid "Show birthdays from your calendar"
-msgstr ""
+msgstr "დაბადების დღეების ჩვენება თქვენი კალენდრიდან"
 
 #. i18n: ectx: property (whatsThis), widget (QCheckBox, mShowBirthdaysFromCalBox)
 #: kontactplugin/specialdates/sdsummaryconfig_base.ui:139
@@ -2960,12 +3102,15 @@ msgid ""
 "special occasions summary. Typically, these are events with the \"Birthday\" "
 "tag."
 msgstr ""
+"ჩართეთ ეს პარამეტრი თქვენს კალენდარში არსებული დაბადების დღეების მომავალი "
+"სპეციალური თარიღების შეჯამებაში ჩასასმელად. ჩვეულებრივ, ეს მოვლენებია, "
+"რომლებსაც \"დაბადების დღის\" ჭდე გააჩნიათ."
 
 #. i18n: ectx: property (toolTip), widget (QCheckBox, mShowAnniversariesFromCalBox)
 #: kontactplugin/specialdates/sdsummaryconfig_base.ui:152
 #, kde-format
 msgid "Show anniversaries from your calendar"
-msgstr ""
+msgstr "იუბილეების ჩვენება თქვენი კალენდრიდან"
 
 #. i18n: ectx: property (whatsThis), widget (QCheckBox, mShowAnniversariesFromCalBox)
 #: kontactplugin/specialdates/sdsummaryconfig_base.ui:155
@@ -2975,12 +3120,15 @@ msgid ""
 "upcoming special occasions summary. Typically, these are events with the "
 "\"Anniversary\" tag."
 msgstr ""
+"ჩართეთ ეს პარამეტრი თქვენს კალენდარში არსებული იუბილეების მომავალი "
+"სპეციალური თარიღების შეჯამებაში ჩასასმელად. ჩვეულებრივ, ეს მოვლენებია, "
+"რომლებსაც \"იუბილეს\" ჭდე გააჩნიათ."
 
 #. i18n: ectx: property (toolTip), widget (QCheckBox, mShowHolidaysFromCalBox)
 #: kontactplugin/specialdates/sdsummaryconfig_base.ui:168
 #, kde-format
 msgid "Show holidays from your calendar"
-msgstr ""
+msgstr "დასვენების დღეების ჩვენება თქვენი კალენდრიდან"
 
 #. i18n: ectx: property (whatsThis), widget (QCheckBox, mShowHolidaysFromCalBox)
 #: kontactplugin/specialdates/sdsummaryconfig_base.ui:171
@@ -2990,6 +3138,9 @@ msgid ""
 "special occasions summary. These are events from your configured holiday "
 "region, or events with the \"Holiday\" tag."
 msgstr ""
+"ჩართეთ ეს პარამეტრი თქვენს კალენდარში არსებული დასვენების  დღეების მომავალი "
+"სპეციალური თარიღების შეჯამებაში ჩასასმელად. ეს მოვლენებია თქვენს მიერ "
+"მითითებული რეგიონდან, ან მოვლენები, \"დასვენების დღის\" ჭდით."
 
 #. i18n: ectx: property (text), widget (QCheckBox, mShowHolidaysFromCalBox)
 #: kontactplugin/specialdates/sdsummaryconfig_base.ui:174
@@ -3001,7 +3152,7 @@ msgstr "&დასვენებების ჩვენება"
 #: kontactplugin/specialdates/sdsummaryconfig_base.ui:184
 #, kde-format
 msgid "Show special occasions from your calendar"
-msgstr ""
+msgstr "თქვენი კალენდრიდან განსაკუთრებული შემთხვევების ჩვენება"
 
 #. i18n: ectx: property (whatsThis), widget (QCheckBox, mShowSpecialsFromCalBox)
 #: kontactplugin/specialdates/sdsummaryconfig_base.ui:187
@@ -3010,24 +3161,26 @@ msgid ""
 "Enable this option to include events from your calendar with the \"special "
 "occasion\" tag."
 msgstr ""
+"ჩართეთ ეს პარამეტრი, რომ ჩასვათ თქვენი კალენდრის ის მოვლენები, რომლებსაც "
+"\"სპეციალური თარიღის\" ჭდე გააჩნიათ."
 
 #. i18n: ectx: property (text), widget (QCheckBox, mShowSpecialsFromCalBox)
 #: kontactplugin/specialdates/sdsummaryconfig_base.ui:190
 #, kde-format
 msgid "Show s&pecial occasions"
-msgstr ""
+msgstr "განსაკუთრებული &შემთხვევების ჩვენება"
 
 #. i18n: ectx: property (title), widget (QGroupBox, mShowFromKABButtonGroup)
 #: kontactplugin/specialdates/sdsummaryconfig_base.ui:203
 #, kde-format
 msgid "Show These Special Dates From Your Contact List"
-msgstr ""
+msgstr "ამ განსაკუთრებული თარიღების თქვენი კონტაქტების სიიდან ჩვენება"
 
 #. i18n: ectx: property (toolTip), widget (QCheckBox, mShowBirthdaysFromKABBox)
 #: kontactplugin/specialdates/sdsummaryconfig_base.ui:209
 #, kde-format
 msgid "Show birthdays from your address book"
-msgstr ""
+msgstr "დაბადების დღეების ჩვენება თქვენი მისამართების წიგნიდან"
 
 #. i18n: ectx: property (whatsThis), widget (QCheckBox, mShowBirthdaysFromKABBox)
 #: kontactplugin/specialdates/sdsummaryconfig_base.ui:212
@@ -3047,7 +3200,7 @@ msgstr "&დაბადების დღეების ჩვენება
 #: kontactplugin/specialdates/sdsummaryconfig_base.ui:225
 #, kde-format
 msgid "Show anniversaries from your address book"
-msgstr ""
+msgstr "იუბილეების ჩვენება თქვენი მისამართების წიგნიდან"
 
 #. i18n: ectx: property (whatsThis), widget (QCheckBox, mShowAnniversariesFromKABBox)
 #: kontactplugin/specialdates/sdsummaryconfig_base.ui:228
@@ -3061,7 +3214,7 @@ msgstr ""
 #: kontactplugin/specialdates/sdsummaryconfig_base.ui:231
 #, kde-format
 msgid "Show anni&versaries"
-msgstr ""
+msgstr "&იუბილეების ჩვენება"
 
 #: kontactplugin/specialdates/sdsummarywidget.cpp:97
 #, kde-format
@@ -3116,8 +3269,8 @@ msgstr[1] "%1 წელი"
 #, kde-format
 msgid "No special dates within the next 1 day"
 msgid_plural "No special dates pending within the next %1 days"
-msgstr[0] ""
-msgstr[1] ""
+msgstr[0] "ხვალ განსაკუთრებული თარიღი არაა"
+msgstr[1] "შემდეგი %1 დღე განსაკუთრებული თარიღი არაა"
 
 #: kontactplugin/specialdates/sdsummarywidget.cpp:656
 #, kde-format
@@ -3132,17 +3285,17 @@ msgstr "კონტაქტის &ნახვა"
 #: kontactplugin/specialdates/sdsummarywidget.cpp:672
 #, kde-format
 msgid "Mail to:\"%1\""
-msgstr ""
+msgstr "ელფოსტა ვის: \"%1\""
 
 #: kontactplugin/specialdates/specialdates_plugin.cpp:36
 #, kde-format
 msgid "Special Dates Summary"
-msgstr ""
+msgstr "განსაკუთრებული თარიღების შეჯამება"
 
 #: kontactplugin/specialdates/specialdates_plugin.cpp:38
 #, kde-format
 msgid "Kontact Special Dates Summary"
-msgstr ""
+msgstr "Kontact-ის განსაკუთრებული თარიღების შეჯამება"
 
 #: kontactplugin/specialdates/specialdates_plugin.cpp:40
 #, kde-format
@@ -3180,17 +3333,17 @@ msgstr "კალენდარი"
 #: korganizer_options.h:18
 #, kde-format
 msgid "Import the specified files as separate calendars"
-msgstr ""
+msgstr "მითითებული ფაილების ცალ-ცალკე კალენდრებში შემოტანა"
 
 #: korganizer_options.h:20
 #, kde-format
 msgid "Merge the specified files into an existing calendar"
-msgstr ""
+msgstr "მითითებული ფაილების არსებულ კალენდარში შერწყმა"
 
 #: korganizer_options.h:21
 #, kde-format
 msgid "Display the specified incidence (by URL)"
-msgstr ""
+msgstr "მითითებული ინციდენტის ჩვენება (URL-ით)"
 
 #: korganizer_options.h:24
 #, kde-format
@@ -3198,6 +3351,8 @@ msgid ""
 "Calendar files or urls. Unless -i or -m is explicitly specified, the user "
 "will be asked whether to import or merge"
 msgstr ""
+"კალენდრის ფაილები ან ბმულები. თუ -i ან -m პარამეტრებს ხელით არ მიუთითებთ, "
+"შერწყმის ან შემოტანის შესახებ მომხმარებელს ვკითხავთ"
 
 #: korganizer_options.h:28
 #, kde-format
@@ -3207,7 +3362,7 @@ msgstr "მომხმარებლის უკუკავშირის �
 #: koviewmanager.cpp:418
 #, kde-format
 msgid "Merged calendar"
-msgstr ""
+msgstr "შერწყმული კალენდარი"
 
 #: koviewmanager.cpp:433
 #, kde-format
@@ -3241,12 +3396,14 @@ msgid ""
 "Select the tag you want to modify. You can change the selected tag's color "
 "using the adjacent color button."
 msgstr ""
+"აირჩიეთ ჭდე, რომელიც გნებავთ, შეცვალოთ. მონიშნული ჭდის ფერის შეცვლა "
+"ახლომდებარე ფერის ღილაკით შეგიძლიათ."
 
 #: prefs/koprefsdialogcolorsandfonts.cpp:127
 #, kde-format
 msgctxt "@info:whatsthis"
 msgid "Choose the color of the tag selected in the adjacent combo box."
-msgstr ""
+msgstr "აირჩიეთ ჭდის ფერი ახლომდებარე ჩამოსაშლელი სიიდან არჩეული ფერით."
 
 #: prefs/koprefsdialogcolorsandfonts.cpp:135
 #, kde-format
@@ -3261,13 +3418,15 @@ msgid ""
 "Select the calendar you want to modify. You can change the selected calendar "
 "color using the button below."
 msgstr ""
+"აირჩიეთ კალენდარი, რომელიც გნებავთ, შეცვალოთ. მონიშნული კალენდრის ფერი ქვედა "
+"ღილაკით შეგიძლიათ, შეცვალოთ."
 
 #: prefs/koprefsdialogcolorsandfonts.cpp:154
 #, kde-format
 msgctxt "@info:whatsthis"
 msgid ""
 "Choose here the color of the calendar selected using the combo box above."
-msgstr ""
+msgstr "აირჩიეთ მონიშნული კალენდრის ფერი ზედა ჩამოსაშლელი სიიდან."
 
 #: prefs/koprefsdialogcolorsandfonts.cpp:166
 #, kde-format
@@ -3329,19 +3488,19 @@ msgstr "მდებარეობა"
 #, kde-format
 msgctxt "@option:check"
 msgid "Show at the top of the agenda views"
-msgstr ""
+msgstr "დღის წესრიგის ხედის დასაწყისში ჩვენება"
 
 #: prefs/koprefsdialogplugins.cpp:99
 #, kde-format
 msgctxt "@option:check"
 msgid "Show at the bottom of the agenda views"
-msgstr ""
+msgstr "დღის წესრიგის ხედის ბოლოში ჩვენება"
 
 #: prefs/koprefsdialogplugins.cpp:133
 #, kde-format
 msgctxt "@title:group"
 msgid "Calendar Decorations"
-msgstr ""
+msgstr "კალენდრის დეკორაციები"
 
 #: prefs/koprefsdialogplugins.cpp:153
 #, kde-format
@@ -3353,7 +3512,7 @@ msgstr "მორგება"
 #, kde-format
 msgctxt "@info"
 msgid "Unable to configure this plugin"
-msgstr ""
+msgstr "ამ დამატების მორგება შეუძლებელია"
 
 #: prefs/koprefsdialogtime.cpp:54
 #, kde-format
@@ -3377,7 +3536,7 @@ msgstr "დასვენებები"
 #, kde-format
 msgctxt "@label"
 msgid "Use holiday region:"
-msgstr ""
+msgstr "დასვენების რეგიონი:"
 
 #: prefs/koprefsdialogtime.cpp:101
 #, kde-format
@@ -3389,7 +3548,7 @@ msgstr "%1 (%2)"
 #, kde-format
 msgctxt "@item:inlistbox"
 msgid "Select Holiday Regions"
-msgstr ""
+msgstr "აირჩიეთ დასვენების რეგიონები"
 
 #: prefs/koprefsdialogtime.cpp:122
 #, kde-format
@@ -3405,6 +3564,9 @@ msgid ""
 "week. If this is a work day for you, check this box, or the working hours "
 "will not be marked with color."
 msgstr ""
+"დასვით ეს თოლია, რათა KOrganizer-ს აიძულოთ, ამ კვირის დღის სამუშაო საათები "
+"დანიშნოს. თუ ეს თქვენთვის სამუშაო დღეა, დასვით ეს თოლია, ან სამუშაო საათები "
+"ფერით არ დაინიშნება."
 
 #: prefs/koprefsdialogtime.cpp:152
 #, kde-format
@@ -3571,11 +3733,13 @@ msgid ""
 "You are about to set all preferences to default values. All custom "
 "modifications will be lost."
 msgstr ""
+"აპირებთ, ყველა პარამეტრი საწყის მნიშვნელობაზე დააბრუნოთ. თქვენი შეტანილი "
+"ყველა ცვლილება დაიკარგება."
 
 #: prefs/kprefsdialog.cpp:869
 #, kde-format
 msgid "Setting Default Preferences"
-msgstr ""
+msgstr "ნაგულისხმევ პარამეტრების დაყენება"
 
 #: prefs/kprefsdialog.cpp:870
 #, kde-format
@@ -3592,25 +3756,25 @@ msgstr "წაშლის დადასტურება"
 #: settings/korganizer.kcfg:16
 #, kde-format
 msgid "Always confirm when deleting items"
-msgstr ""
+msgstr "ელემენტების წაშლა ყოველთვის დადასტურდება"
 
 #. i18n: ectx: whatsthis, entry (Confirm), group (Save Settings)
 #: settings/korganizer.kcfg:17
 #, kde-format
 msgid "Check this box to display a confirmation dialog when deleting items."
-msgstr ""
+msgstr "ჩართეთ ეს ელემენტების წაშლისას დამახსოვრების დიალოგის გამოსატანად."
 
 #. i18n: ectx: label, entry (Destination), group (Save Settings)
 #: settings/korganizer.kcfg:22
 #, kde-format
 msgid "New Events, To-dos and Journal Entries Should"
-msgstr ""
+msgstr "ახალი მოვლენები, დაგეგმილები და ჟურნალის ჩანაწერები უნდა"
 
 #. i18n: ectx: label, entry (Destination), group (Save Settings)
 #: settings/korganizer.kcfg:25
 #, kde-format
 msgid "Be added to the default calendar"
-msgstr ""
+msgstr "დაემატება ნაგულისხმევ კალენდარს"
 
 #. i18n: ectx: whatsthis, entry (Destination), group (Save Settings)
 #: settings/korganizer.kcfg:26
@@ -3619,6 +3783,8 @@ msgid ""
 "Select this option to always record new events, to-dos and journal entries "
 "using the current default calendar."
 msgstr ""
+"აირჩიეს პარამეტრი ახალი მოვლენების, გასაკეთებლების და ჟურნალის ჩანაწერების "
+"მიმდინარე ნაგულისხმევი კალენდრის გამოყენებით ჩასაწერად."
 
 #. i18n: ectx: label, entry (Destination), group (Save Settings)
 #: settings/korganizer.kcfg:29
@@ -3636,6 +3802,11 @@ msgid ""
 "Kolab server or have to manage multiple accounts using Kontact as a KDE "
 "Kolab client. "
 msgstr ""
+"აირჩიეთ ეს პარამეტრი, რათა აირჩიოთ კალენდარი, რომელიც გამოიყენება ჩასაწერად, "
+"როცა ქმნით ახალ მოვლენას, გასაკეთებელს ან ჟურნალის ჩანაწერს. ეს არჩევანი "
+"რეკომენდებულია, თუ Kolab სერვერის გაზიარებული საქაღალდეების გამოყენებას "
+"აპირებთ, ან გიწევთ Kontact-ით, როგორც KDE-ის Kolab-ის კლიენტით, ერთზე მეტი "
+"ანგარიში მართოთ. "
 
 #. i18n: ectx: whatsthis, entry (TimeZoneId), group (Time &amp; Date)
 #: settings/korganizer.kcfg:40
@@ -3645,6 +3816,9 @@ msgid ""
 "your city is not listed, select one which shares the same timezone. "
 "KOrganizer will automatically adjust for daylight savings."
 msgstr ""
+"აირჩიეთ თქვენი დროის სარტყელი ქვემორე მდებარეობების სიიდან. თუ თქვენი ქალაქი "
+"ჩამონათვალში არაა, აირჩიეთ სხვა, იგივე დროის სარტყლიდან. დროის დაზოგვის "
+"პარამეტრებს KOrganizer ავტომატურად მოერგება."
 
 #. i18n: ectx: label, entry (DayBegins), group (Time &amp; Date)
 #: settings/korganizer.kcfg:44
@@ -3659,6 +3833,8 @@ msgid ""
 "Enter the start time for events here. This time should be the earliest time "
 "that you use for events, as it will be displayed at the top."
 msgstr ""
+"შეიყვანეთ აქ მოვლენებების დაწყების დრო. ეს დრო ყველაზე ადრე უნდა იყოს ყველა "
+"თარიღამდე, რომლებსაც მოვლენებისთვის იყენებთ, რადგან ის სიის თავში გამოჩნდება."
 
 #. i18n: ectx: label, entry (Holidays), group (Time &amp; Date)
 #: settings/korganizer.kcfg:50
@@ -3673,6 +3849,9 @@ msgid ""
 "Select which regions you want to use the holidays here. Defined holidays are "
 "shown as non-working days in the date navigator, the agenda view, etc."
 msgstr ""
+"აქ აირჩიეთ რეგიონი, რომლისთვისაც დასვენების დღეების გამოყენებაც გნებავთ. "
+"აღწერილი დასვენების დღეები მონაცემების ნავიგატორში, დღის წესრიგის ხედში და ა."
+"შ. როგორც არასამუშაო, ისე გამოჩნდება."
 
 #. i18n: ectx: label, entry (WeekStartDay), group (Time &amp; Date)
 #: settings/korganizer.kcfg:55
@@ -3693,6 +3872,8 @@ msgid ""
 "Select the first day of each week. Normally, you can ignore this since it is "
 "set in your locale."
 msgstr ""
+"აირჩიეთ კვირის პირველი დღე. ნორმალურად, ეს შეგიძლიათ გამოტოვოთ, რადგან ის "
+"ლოკალზე გასწორდება."
 
 #. i18n: ectx: label, entry (WorkingHoursStart), group (Time &amp; Date)
 #: settings/korganizer.kcfg:62
@@ -3707,6 +3888,8 @@ msgid ""
 "Enter the start time for the working hours here. The working hours will be "
 "marked with color by KOrganizer."
 msgstr ""
+"აირჩიეთ სამუშაო საათების დაწყების დრო. სამუშაო საათებს KOrganizer სხვა ფერით "
+"მონიშნავს."
 
 #. i18n: ectx: label, entry (WorkingHoursEnd), group (Time &amp; Date)
 #: settings/korganizer.kcfg:68
@@ -3721,6 +3904,8 @@ msgid ""
 "Enter the ending time for the working hours here. The working hours will be "
 "marked with color by KOrganizer."
 msgstr ""
+"აირჩიეთ სამუშაო საათების დასასრულის დრო. სამუშაო საათებს KOrganizer სხვა "
+"ფერით მონიშნავს."
 
 #. i18n: ectx: label, entry, group (Time &amp; Date)
 #: settings/korganizer.kcfg:74
@@ -3735,13 +3920,15 @@ msgid ""
 "Check this box to prevent KOrganizer from marking the working hours on "
 "holidays."
 msgstr ""
+"ჩართეთ ეს თოლია, რათა KOrganizer-ს დასვენების დღეებში სამუშაო საათების "
+"ჩვენება აუკრძალოთ."
 
 #. i18n: ectx: label, entry (ColorMonthBusyDaysEnabled), group (Time &amp; Date)
 #. i18n: ectx: label, entry (ColorBusyDaysEnabled), group (Agenda View)
 #: settings/korganizer.kcfg:80 settings/korganizer.kcfg:212
 #, kde-format
 msgid "Color busy days with a different background color"
-msgstr ""
+msgstr "დაკავებული დღეების გამოკვეთა სხვა ფონის ფერით"
 
 #. i18n: ectx: whatsthis, entry (ColorMonthBusyDaysEnabled), group (Time &amp; Date)
 #: settings/korganizer.kcfg:81
@@ -3753,6 +3940,10 @@ msgid ""
 "Colors configuration page. Look for the \"Busy days background color\" "
 "setting."
 msgstr ""
+"დასვით ეს თოლია, თუ გნებავთ, თვის ხედის ფონის ფერი სხვა ფერით იყოს შეღებილი "
+"დღეებში, რომელსაც ერთი სრულდღიანი მოვლენა მაინც, როგორც დაკავებულია "
+"მონიშნული. ფონის ფერი ასევე ფერების მორგების გვერდზეც შეგიძლიათ, შეცვალოთ. "
+"იპოვეთ პარამეტრი \"დაკავებული დღეების ფონის ფერი\"."
 
 #. i18n: ectx: label, entry, group (General View)
 #: settings/korganizer.kcfg:90
@@ -3767,12 +3958,14 @@ msgid ""
 "Check this box to display summary tooltips when hovering the mouse over an "
 "event or a to-do."
 msgstr ""
+"დასვით ეს თოლია მოვლენაზე ან გასაკეთებელზე თაგუნას კურსორის გადატარებისას "
+"შეჯამების მინიშნებების საჩვენებლად."
 
 #. i18n: ectx: label, entry, group (General View)
 #: settings/korganizer.kcfg:96
 #, kde-format
 msgid "To-dos use tag colors"
-msgstr ""
+msgstr "გასაკეთებლები ჭდის ფერებს იყენებს"
 
 #. i18n: ectx: whatsthis, entry, group (General View)
 #: settings/korganizer.kcfg:97
@@ -3781,6 +3974,9 @@ msgid ""
 "Check this box so that to-dos will use tag colors and not colors specific to "
 "their due, due today or overdue state"
 msgstr ""
+"დასვით ეს თოლია, რომ გასაკეთებლებმა გამოიყენონ ჭდის ფერები და არა ფერები, "
+"რომელიც მათ დროის დადგომას, დღევანდელ დადგომას ან გადაცილების მდგომარეობას "
+"აღნიშნავს"
 
 #. i18n: ectx: label, entry, group (General View)
 #: settings/korganizer.kcfg:102
@@ -3796,12 +3992,14 @@ msgid ""
 "access the next \"x\" days view, choose the \"Next X Days\" menu item from "
 "the \"View\" menu."
 msgstr ""
+"აირჩიეთ დღეების რაოდენობა \"x\" შემდეგ დღეებში საჩვენებლად. შემდეგი \"x\" "
+"დღის საჩვენებლად \"ხედის\" მენიუში \"შემდეგი X დღის ჩვენება\" აირჩიეთ."
 
 #. i18n: ectx: tooltip, entry, group (General View)
 #: settings/korganizer.kcfg:104
 #, kde-format
 msgid "Show this many days at a time in the Next \"x\" days view"
-msgstr ""
+msgstr "შემდეგი \"x\" დღის ხედში ერთდროულად ამდენი დღის ჩვენება"
 
 #. i18n: ectx: label, entry (DailyRecur), group (General View)
 #: settings/korganizer.kcfg:109
@@ -3817,6 +4015,9 @@ msgid ""
 "typeface in the Date Navigator, or uncheck it to give more prominence to "
 "other (non daily recurring) events."
 msgstr ""
+"დასვით ეს თოლია, რათა დღეები, როლებიც დღიურად განმეორებად მოვლენებს "
+"შეიცავენ, თარიღის ნავიგატორში სქელი ფონტით გაჩვენოთ, ან მოხსენით, რათა მეტი "
+"მნიშვნელობა სხვა (არა-ყოველდღიურ) მოვლენებს მიანიჭოთ."
 
 #. i18n: ectx: label, entry (WeeklyRecur), group (General View)
 #: settings/korganizer.kcfg:115
@@ -3832,12 +4033,15 @@ msgid ""
 "typeface in the Date Navigator, or uncheck it to give more prominence to "
 "other (non weekly recurring) events."
 msgstr ""
+"დასვით ეს თოლია, რათა დღეები, როლებიც ყოველკვირეულად განმეორებად მოვლენებს "
+"შეიცავენ, თარიღის ნავიგატორში სქელი ფონტით გაჩვენოთ, ან მოხსენით, რათა მეტი "
+"მნიშვნელობა სხვა (არა-ყოველკვირეულ) მოვლენებს მიანიჭოთ."
 
 #. i18n: ectx: label, entry (HighlightTodos), group (General View)
 #: settings/korganizer.kcfg:121
 #, kde-format
 msgid "Show to-dos instead of events when in Todo View"
-msgstr ""
+msgstr "გასაკეთებლებს ხედში ყოფნისას მოვლენების მაგიერ გასაკეთებლების ჩვენება"
 
 #. i18n: ectx: whatsthis, entry (HighlightTodos), group (General View)
 #: settings/korganizer.kcfg:122
@@ -3846,12 +4050,14 @@ msgid ""
 "Check this box to show the days containing to-dos in bold typeface in the "
 "Date Navigator when in to-do view."
 msgstr ""
+"დასვით ეს თოლია, რათა მონაცემების ნავიგატორის გასაკეთებლების ხედში "
+"განმეორებადი გასაკეთებლების შემცველი დღეები სქელი ფონტით გაჩვენოთ."
 
 #. i18n: ectx: label, entry (HighlightJournals), group (General View)
 #: settings/korganizer.kcfg:127
 #, kde-format
 msgid "Show journals instead of events when in Journal View"
-msgstr ""
+msgstr "ჟურნალის ხედში ყოფნისას მოვლენების მაგიერ ჟურნალების ჩვენება"
 
 #. i18n: ectx: whatsthis, entry (HighlightJournals), group (General View)
 #: settings/korganizer.kcfg:128
@@ -3860,12 +4066,15 @@ msgid ""
 "Check this box to show the days containing journals in bold typeface in the "
 "Date Navigator when in journal view."
 msgstr ""
+"დასვით ეს თოლია, რათა მონაცემების ნავიგატორის ჟურნალის ხედში ჟურნალის "
+"შემცველი დღეები სქელი ფონტით გაჩვენოთ."
 
 #. i18n: ectx: label, entry (WeekNumbersShowWork), group (General View)
 #: settings/korganizer.kcfg:133
 #, kde-format
 msgid "Week numbers select a work week when in work week mode"
 msgstr ""
+"კვირის ნორები აირჩევენ სამუშაო კვიარას, როცა სამუშაო კვირის რეჟიმია ჩართული"
 
 #. i18n: ectx: whatsthis, entry (WeekNumbersShowWork), group (General View)
 #: settings/korganizer.kcfg:134
@@ -3874,6 +4083,8 @@ msgid ""
 "Check this box to select a working week when clicking on the Date "
 "Navigator's week numbers, or uncheck it to choose the whole week."
 msgstr ""
+"დასვით ეს თოლია, რომ მონაცემების ნავიგატორის კვირის რიცხვებზე დაწკაპუნებისას "
+"სამუშაო კვირა აირჩიოთ, ან გამორთეთ, რომ მთელი კვირა აირჩიოთ."
 
 #. i18n: ectx: label, entry, group (Agenda View)
 #: settings/korganizer.kcfg:142
@@ -3888,18 +4099,20 @@ msgid ""
 "Select the height of the hour rows in the agenda grid, in pixels. Increasing "
 "this value will make each row in the agenda grid taller."
 msgstr ""
+"აირჩიეთ დღის წესრიგის ბადეში საათის მწკრივების სიმაღლე, პიქსელებში. ამ "
+"მნიშვნელობის გაზრდა დღის წესრიგის ბადის ყველა მწკრივის სიმაღლეს გაზრდის."
 
 #. i18n: ectx: tooltip, entry, group (Agenda View)
 #: settings/korganizer.kcfg:144
 #, kde-format
 msgid "Set the height (in pixels) for an hour in the agenda grid"
-msgstr ""
+msgstr "დააყენეთ დღის წესრიგის ბადეში საათის სიმაღლე, პიქსელებში"
 
 #. i18n: ectx: label, entry (EnableAgendaItemIcons), group (Agenda View)
 #: settings/korganizer.kcfg:151
 #, kde-format
 msgid "Show icons in agenda view items"
-msgstr ""
+msgstr "დღის წესრიგის ხედის ელემენტებში ხატულების ჩვენება"
 
 #. i18n: ectx: whatsthis, entry (EnableAgendaItemIcons), group (Agenda View)
 #: settings/korganizer.kcfg:152
@@ -3908,6 +4121,8 @@ msgid ""
 "Check this box to display icons (alarm, recursion, etc.) in agenda view "
 "items."
 msgstr ""
+"ჩართეთ ეს თოლია დღის წესრიგის ხედის ელემენტებში ხატულების (განგაში, რეკურსია "
+"და ა.შ.) საჩვენებლად."
 
 #. i18n: ectx: tooltip, entry (EnableAgendaItemIcons), group (Agenda View)
 #: settings/korganizer.kcfg:153
@@ -3926,19 +4141,19 @@ msgstr "განრიგის ჩვენება"
 #: settings/korganizer.kcfg:159
 #, kde-format
 msgid "Check this box to display to-dos in the agenda view."
-msgstr ""
+msgstr "ჩართეთ ეს თოლია დღის წესრიგის ხედში გასაკეთებლების საჩვენებლად."
 
 #. i18n: ectx: tooltip, entry (ShowTodosAgendaView), group (Agenda View)
 #: settings/korganizer.kcfg:160
 #, kde-format
 msgid "Display to-dos in the agenda view"
-msgstr ""
+msgstr "დღის წესრიგის ხედში გასაკეთებლების ჩვენება"
 
 #. i18n: ectx: label, entry (MarcusBainsEnabled), group (Agenda View)
 #: settings/korganizer.kcfg:165
 #, kde-format
 msgid "Show current-time (Marcus Bains) line"
-msgstr ""
+msgstr "მიმდინარე დროის (მარკუს ბეინსის) ხაზის ჩვენება"
 
 #. i18n: ectx: whatsthis, entry (MarcusBainsEnabled), group (Agenda View)
 #: settings/korganizer.kcfg:166
@@ -3947,36 +4162,39 @@ msgid ""
 "Check this box to display a line in the day or week view indicating the "
 "current-time line (Marcus Bains line)."
 msgstr ""
+"დასვით თოლია დღის ან კვირის ხედში მიმდინარე-დროის ხაზის საჩვენებლად (მარკუს "
+"ბეინსის ხაზი)."
 
 #. i18n: ectx: tooltip, entry (MarcusBainsEnabled), group (Agenda View)
 #: settings/korganizer.kcfg:167
 #, kde-format
 msgid "Display the current-time indicator"
-msgstr ""
+msgstr "მიმდინარე დროის მაჩვენებლის ჩვენება"
 
 #. i18n: ectx: label, entry (MarcusBainsShowSeconds), group (Agenda View)
 #: settings/korganizer.kcfg:172
 #, kde-format
 msgid "Show seconds on the current-time (Marcus Bains) line"
-msgstr ""
+msgstr "მიმდინარე დროის (მარკუს ბეინსის) ხაზზე წამების ჩვენება"
 
 #. i18n: ectx: whatsthis, entry (MarcusBainsShowSeconds), group (Agenda View)
 #: settings/korganizer.kcfg:173
 #, kde-format
 msgid "Check this box if you want to show seconds on the current-time line."
-msgstr ""
+msgstr "ჩართეთ ეს თოლია, თუ გნებავთ მიმდინარე დროის ხაზზე წამებიც გამოჩნდეს."
 
 #. i18n: ectx: tooltip, entry (MarcusBainsShowSeconds), group (Agenda View)
 #: settings/korganizer.kcfg:174
 #, kde-format
 msgid "Display seconds with the current-time indicator"
-msgstr ""
+msgstr "მიმდინარე დროის მაჩვენებელთან წამების ჩვენება"
 
 #. i18n: ectx: label, entry (SelectionStartsEditor), group (Agenda View)
 #: settings/korganizer.kcfg:179
 #, kde-format
 msgid "Time range selection in agenda view starts event editor"
 msgstr ""
+"დღის განრიგის ხედში დროის შუალედის მონიშვნა მოვლენების რედაქტორს გაუშვებს"
 
 #. i18n: ectx: whatsthis, entry (SelectionStartsEditor), group (Agenda View)
 #: settings/korganizer.kcfg:180
@@ -3986,12 +4204,16 @@ msgid ""
 "time range in the daily and weekly view. To select a time range, drag the "
 "mouse from the start time to the end time of the event you are about to plan."
 msgstr ""
+"დასვით ეს თოლია მოვლენების რედაქტორის ავტომატურად გასაშვებად, როცა დროის "
+"დღის ან კვირის ხედში დროის შუალედს გაუშვებთ. იმისათვის, რომ დროის შუალედი "
+"მონიშნოთ, გადაათრიეთ თაგუნა საწყისი დროიდან საბოლოო დრომდე მოვლენისთვის, "
+"რომლის დაგეგმვასაც აპირებთ."
 
 #. i18n: ectx: tooltip, entry (SelectionStartsEditor), group (Agenda View)
 #: settings/korganizer.kcfg:181
 #, kde-format
 msgid "Enable automatic event editor with time range selection"
-msgstr ""
+msgstr "მოვლენების რედაქტორის ჩართვა დროის შუალედის მონიშვნასტან ერთად"
 
 #. i18n: ectx: label, entry, group (Agenda View)
 #. i18n: ectx: label, entry, group (Month View)
@@ -4005,7 +4227,7 @@ msgstr "ფერის გამოყენება"
 #: settings/korganizer.kcfg:189 settings/korganizer.kcfg:279
 #, kde-format
 msgid "Tag inside, calendar outside"
-msgstr ""
+msgstr "ჭდე შიგნით, კალენდარი გარეთ"
 
 #. i18n: ectx: whatsthis, entry, group (Agenda View)
 #. i18n: ectx: whatsthis, entry, group (Month View)
@@ -4025,13 +4247,15 @@ msgid ""
 "Draw agenda items with their tag color inside and calendar color for their "
 "border"
 msgstr ""
+"დღის წესრიგის ელემენტების დახატვა მათი ჭდის ფერით შიგნიდან და კალენდრის "
+"ფერით მათი საზღვრისთვის"
 
 #. i18n: ectx: label, entry, group (Agenda View)
 #. i18n: ectx: label, entry, group (Month View)
 #: settings/korganizer.kcfg:194 settings/korganizer.kcfg:284
 #, kde-format
 msgid "Calendar inside, tag outside"
-msgstr ""
+msgstr "კალენდარი შიგნით, ჭდე გარეთ"
 
 #. i18n: ectx: whatsthis, entry, group (Agenda View)
 #. i18n: ectx: whatsthis, entry, group (Month View)
@@ -4051,6 +4275,8 @@ msgid ""
 "Draw agenda items with their calendar color inside and tag color for their "
 "border"
 msgstr ""
+"დღის წესრიგის ელემენტების დახატვა მათი კალენდრის ფერით შიგნიდან და ჭდის "
+"ფერით მათი საზღვრისთვის"
 
 #. i18n: ectx: label, entry, group (Agenda View)
 #. i18n: ectx: label, entry, group (Month View)
@@ -4067,12 +4293,17 @@ msgid ""
 "(both inside and border) using the color of their associated tag.  Please "
 "use the Colors and Fonts configuration page for setting these colors."
 msgstr ""
+"აირჩეთ პარამეტრი \"მხოლოდ ჭდე\", თუ გნებავთ, კალენდრის ელემენტები (ორივე, "
+"შიგნიდან და საზღვარი) ასოცირებული ჭდის ფერით დაიხატოს.   ამ ფერების "
+"დასაყენებლად შეგიძლიათ მორგების ფანჯრის ფერებისა და ფონტების არჩევის გვერდი "
+"გამოიყენოთ."
 
 #. i18n: ectx: tooltip, entry, group (Agenda View)
 #: settings/korganizer.kcfg:201
 #, kde-format
 msgid "Draw agenda items using their tag color for the inside and border"
 msgstr ""
+"დღის წესრიგის ელემენტების დახატვა მათი ჭდის ფერში შიგნიდან და საზღვრისთვის"
 
 #. i18n: ectx: label, entry, group (Agenda View)
 #. i18n: ectx: label, entry, group (Month View)
@@ -4089,12 +4320,18 @@ msgid ""
 "(both inside and border) using the color of their calendar. Please use the "
 "Colors and Fonts configuration page for setting these colors."
 msgstr ""
+"აირჩეთ პარამეტრი \"მხოლოდ კალენდარი\", თუ გნებავთ, კალენდრის ელემენტები "
+"(ორივე, შიგნიდან და საზღვარი) მათი კალენდრის ფერით დაიხატოს. ამ ფერების "
+"დასაყენებლად შეგიძლიათ მორგების ფანჯრის ფერებისა და ფონტების არჩევის გვერდი "
+"გამოიყენოთ."
 
 #. i18n: ectx: tooltip, entry, group (Agenda View)
 #: settings/korganizer.kcfg:206
 #, kde-format
 msgid "Draw agenda items using their calendar color for the inside and border"
 msgstr ""
+"დღის წესრიგის ელემენტების დახატვა მათი კალენდრის ფერში შიგნიდან და "
+"საზღვრისთვის"
 
 #. i18n: ectx: whatsthis, entry (ColorBusyDaysEnabled), group (Agenda View)
 #: settings/korganizer.kcfg:213
@@ -4105,6 +4342,10 @@ msgid ""
 "you can change the background color used for this option on the Colors "
 "configuration page. Look for the \"Busy days background color\" setting."
 msgstr ""
+"დასვით ეს თოლია, თუ გნებავთ, დღის წესრიგის ფონის ფერი სხვა ფერით იყოს "
+"შეღებილი დღეებში, რომელსაც ერთი სრულდღიანი მოვლენა მაინც, როგორც დაკავებულია "
+"მონიშნული. ფონის ფერი ასევე ფერების მორგების გვერდზეც შეგიძლიათ, შეცვალოთ. "
+"იპოვეთ პარამეტრი \"დაკავებული დღეების ფონის ფერი\"."
 
 #. i18n: ectx: label, entry (AgendaViewCalendarDisplay), group (Agenda View)
 #: settings/korganizer.kcfg:217
@@ -4125,12 +4366,14 @@ msgid ""
 "Select the \"Merge all calendars into one view\" option if you would like "
 "all your calendars to be shown together in one agenda view."
 msgstr ""
+"აირჩიეთ პარამეტრი \"ყველა კალენდრის ერთ ხედში შერწყმა\", თუ გნებავთ, ყველა "
+"კალენდარი ერთ დღის წესრიგის ხედში იხილოთ."
 
 #. i18n: ectx: tooltip, entry (AgendaViewCalendarDisplay), group (Agenda View)
 #: settings/korganizer.kcfg:222
 #, kde-format
 msgid "Show all calendars merged together"
-msgstr ""
+msgstr "ყველა კალენდრის შერწყმა და ჩვენება"
 
 #. i18n: ectx: label, entry (AgendaViewCalendarDisplay), group (Agenda View)
 #: settings/korganizer.kcfg:225
@@ -4145,18 +4388,20 @@ msgid ""
 "Select the \"Show calendars side by side\" option if you would like to see "
 "two calendars at once, in a side-by-side view."
 msgstr ""
+"არჩიეთ პარამეტრი \"კალენდრების გვერდიგვერდ ჩვენება\", თუ ორი კალენდრის "
+"გვერდიგვერდ ხედში ნახვა გნებავთ."
 
 #. i18n: ectx: tooltip, entry (AgendaViewCalendarDisplay), group (Agenda View)
 #: settings/korganizer.kcfg:227
 #, kde-format
 msgid "Show two calendars side-by-side"
-msgstr ""
+msgstr "ორი კალენდრის გვერდიგვერდ ჩვენება"
 
 #. i18n: ectx: label, entry (AgendaViewCalendarDisplay), group (Agenda View)
 #: settings/korganizer.kcfg:230
 #, kde-format
 msgid "Switch between views with tabs"
-msgstr ""
+msgstr "ხედებს შორის ტაბულაციით გადართვა"
 
 #. i18n: ectx: whatsthis, entry (AgendaViewCalendarDisplay), group (Agenda View)
 #: settings/korganizer.kcfg:231
@@ -4165,18 +4410,20 @@ msgid ""
 "Select \"Switch between views with tabs\" if you would like to alternate "
 "between calendars using the tab key."
 msgstr ""
+"აირჩიეთ პარამეტრი \"ხედებს შორის ტაბით გადართვა\", თუ გნებავთ, ღილაკმა Tab "
+"კალენდრებს შორის გადაგიყვანოთ."
 
 #. i18n: ectx: tooltip, entry (AgendaViewCalendarDisplay), group (Agenda View)
 #: settings/korganizer.kcfg:232
 #, kde-format
 msgid "Tab through calendars"
-msgstr ""
+msgstr "ტაბულაციით გადართვა კალენდრებს შორის"
 
 #. i18n: ectx: label, entry (EnableMonthItemIcons), group (Month View)
 #: settings/korganizer.kcfg:242
 #, kde-format
 msgid "Show icons in month view items"
-msgstr ""
+msgstr "ხატულების ჩართვა თვის ხედის ელემენტებში"
 
 #. i18n: ectx: whatsthis, entry (EnableMonthItemIcons), group (Month View)
 #: settings/korganizer.kcfg:243
@@ -4184,42 +4431,44 @@ msgstr ""
 msgid ""
 "Check this box to display icons (alarm, recursion, etc.) in month view items."
 msgstr ""
+"ჩართეთ ეს თოლია თვის ხედის ელემენტებში ხატულების (განგაში, რეკურსია და ა.შ.) "
+"საჩვენებლად."
 
 #. i18n: ectx: tooltip, entry (EnableMonthItemIcons), group (Month View)
 #: settings/korganizer.kcfg:244
 #, kde-format
 msgid "Display icons in month view items"
-msgstr ""
+msgstr "თვის ხედის ელემენტებში ხატულების ჩვენება"
 
 #. i18n: ectx: label, entry (ShowTimeInMonthView), group (Month View)
 #: settings/korganizer.kcfg:249
 #, kde-format
 msgid "Show time in month view items"
-msgstr ""
+msgstr "დროის ჩვენება თვის ხედის ელემენტებში"
 
 #. i18n: ectx: whatsthis, entry (ShowTimeInMonthView), group (Month View)
 #: settings/korganizer.kcfg:250
 #, kde-format
 msgid "Check this box to display the time in month view items."
-msgstr ""
+msgstr "ჩართეთ ეს თოლია თვის ხედის ელემენტებში დროის საჩვენებლად."
 
 #. i18n: ectx: tooltip, entry (ShowTimeInMonthView), group (Month View)
 #: settings/korganizer.kcfg:251
 #, kde-format
 msgid "Display time in month view items"
-msgstr ""
+msgstr "დროის ჩვენება თვის ხედის ელემენტებში"
 
 #. i18n: ectx: whatsthis, entry (ShowTodosMonthView), group (Month View)
 #: settings/korganizer.kcfg:257
 #, kde-format
 msgid "Check this box to display to-dos in the month view."
-msgstr ""
+msgstr "ჩართეთ ეს თოლია თვის ხედის ელემენტებში გასაკეთებლების საჩვენებლად."
 
 #. i18n: ectx: tooltip, entry (ShowTodosMonthView), group (Month View)
 #: settings/korganizer.kcfg:258
 #, kde-format
 msgid "Display to-dos in the month view"
-msgstr ""
+msgstr "თვის ხედში გასაკეთებლების ჩვენება"
 
 #. i18n: ectx: label, entry (ShowJournalsMonthView), group (Month View)
 #: settings/korganizer.kcfg:263
@@ -4231,13 +4480,13 @@ msgstr "ჟურნალების ნახვა"
 #: settings/korganizer.kcfg:264
 #, kde-format
 msgid "Check this box to display journals in the month view."
-msgstr ""
+msgstr "ჩართეთ ეს თოლია თვის ხედის ელემენტებში ჟურნალების საჩვენებლად."
 
 #. i18n: ectx: tooltip, entry (ShowJournalsMonthView), group (Month View)
 #: settings/korganizer.kcfg:265
 #, kde-format
 msgid "Display journals in the month view"
-msgstr ""
+msgstr "თვის ხედში ჟურნალის ჩვენება"
 
 #. i18n: ectx: label, entry, group (Month View)
 #: settings/korganizer.kcfg:270
@@ -4254,6 +4503,10 @@ msgid ""
 "but other widgets, such as the date navigator, the item details and the "
 "calendars list, will not be displayed."
 msgstr ""
+"დასვით ეს თოლია თვის ხედის ჩვენებისას KOrganizer-ის სრული ფანჯრის "
+"საჩვენებლად. თუ ეს თოლია დასმულია, თვის ხედისთვის მეტ ადგილს მიიღებთ, მაგრამ "
+"სხვა ვიჯეტები, როგორიცაა თარიღის ნავიგატორი, ელემენტის დეტალები და "
+"კალენდრების სია, ნაჩვენები არ იქნება."
 
 #. i18n: ectx: tooltip, entry, group (Month View)
 #: settings/korganizer.kcfg:281
@@ -4262,6 +4515,8 @@ msgid ""
 "Draw month items with their tag color inside and calendar color for their "
 "border"
 msgstr ""
+"თვის ელემენტების დახატვა მათი ჭდის ფერით შიგნიდან და კალენდრის ფერში "
+"საზღვრისთვის"
 
 #. i18n: ectx: tooltip, entry, group (Month View)
 #: settings/korganizer.kcfg:286
@@ -4270,6 +4525,8 @@ msgid ""
 "Draw month items with their calendar color inside and tag color for their "
 "border"
 msgstr ""
+"თვის ელემენტების დახატვა მათი კალენდრის ფერით შიგნიდან და ჭდის ფერით მათი "
+"საზღვრის"
 
 #. i18n: ectx: whatsthis, entry, group (Month View)
 #: settings/korganizer.kcfg:290
@@ -4279,12 +4536,17 @@ msgid ""
 "(both inside and border) in the color of their associated tag.  Please use "
 "the Colors and Fonts configuration page for setting these colors."
 msgstr ""
+"აირჩეთ პარამეტრი \"მხოლოდ ჭდე\", თუ გნებავთ, კალენდრის ელემენტები (ორივე, "
+"შიგნიდან და საზღვარი) ასოცირებული ჭდის ფერით დაიხატოს. ამ ფერების "
+"დასაყენებლად შეგიძლიათ მორგების ფანჯრის ფერებისა და ფონტების არჩევის გვერდი "
+"გამოიყენოთ."
 
 #. i18n: ectx: tooltip, entry, group (Month View)
 #: settings/korganizer.kcfg:291
 #, kde-format
 msgid "Draw month items using their tag color for the inside and border"
 msgstr ""
+"თვის ელემენტების დახატვა შიგნით და საზღვარზე მათი ჭდის ფერის გამოყენებით"
 
 #. i18n: ectx: whatsthis, entry, group (Month View)
 #: settings/korganizer.kcfg:295
@@ -4294,18 +4556,22 @@ msgid ""
 "(both inside and border) in the color of their calendar.  Please use the "
 "Colors and Fonts configuration page for setting these colors."
 msgstr ""
+"აირჩეთ პარამეტრი \"მხოლოდ კალენდარი\", თუ გნებავთ, კალენდრის ელემენტები "
+"(ორივე, შიგნიდან და საზღვარი) ასოცირებული კალენდრის ფერით დაიხატოს.   ამ "
+"ფერების დასაყენებლად შეგიძლიათ მორგების ფანჯრის ფერებისა და ფონტების არჩევის "
+"გვერდი გამოიყენოთ."
 
 #. i18n: ectx: tooltip, entry, group (Month View)
 #: settings/korganizer.kcfg:296
 #, kde-format
 msgid "Draw month items using their calendar color for the inside and border"
-msgstr ""
+msgstr "თვის ელემენტების დახატვა მათი კალენდრის ფერში შიგნიდან და საზღვრისთვის"
 
 #. i18n: ectx: label, entry, group (Todo View)
 #: settings/korganizer.kcfg:306
 #, kde-format
 msgid "Always display completed to-dos at the bottom of the list"
-msgstr ""
+msgstr "დასრულებული გასაკეთებლები ნაჩვენები ყოველთვის სიის ბოლოში იქნება"
 
 #. i18n: ectx: tooltip, entry, group (Todo View)
 #: settings/korganizer.kcfg:307
@@ -4314,6 +4580,8 @@ msgid ""
 "Completed to-dos are displayed at the bottom of the list, regardless of "
 "priority"
 msgstr ""
+"დასრულებული გასაკეთებლები, მათი პრიორიტეტის მიუხედავად, სიის ბოლოში იქნებიან "
+"ნაჩვენები"
 
 #. i18n: ectx: whatsthis, entry, group (Todo View)
 #: settings/korganizer.kcfg:308
@@ -4322,18 +4590,20 @@ msgid ""
 "Check this box if you want all completed to-dos to be always grouped at the "
 "bottom of the to-do list."
 msgstr ""
+"დასვით ეს თოლია, თუ გნებავთ, დასრულებული გასაკეთებლები სიის ბოლოში, "
+"დაჯგუფებულად გამოჩნდეს."
 
 #. i18n: ectx: label, entry, group (Todo View)
 #: settings/korganizer.kcfg:313
 #, kde-format
 msgid "To-do list view uses full window"
-msgstr ""
+msgstr "გასაკეთებლების სიის ხედი სრულ ფანჯარას იყენებს"
 
 #. i18n: ectx: tooltip, entry, group (Todo View)
 #: settings/korganizer.kcfg:314
 #, kde-format
 msgid "Display to-do list in a full KOrganizer window"
-msgstr ""
+msgstr "გასაკეთებლების სიის სრულ KOrganzer-ის ფანჯარაში ჩვენება"
 
 #. i18n: ectx: whatsthis, entry, group (Todo View)
 #: settings/korganizer.kcfg:315
@@ -4344,18 +4614,22 @@ msgid ""
 "list view, but other widgets, such as the date navigator, the to-do details "
 "and the calendars list, will not be displayed."
 msgstr ""
+"დასვით ეს თოლია გასაკეთებლების სიის ხედის ჩვენებისას KOrganizer-ის სრული "
+"ფანჯრის საჩვენებლად. თუ ეს თოლია დასმულია, გასაკეთებლების სიის ხედისთვის მეტ "
+"ადგილს მიიღებთ, მაგრამ სხვა ვიჯეტები, როგორიცაა თარიღის ნავიგატორი, "
+"გასაკეთებლის დეტალები და კალენდრების სია, ნაჩვენები არ იქნება."
 
 #. i18n: ectx: label, entry, group (Todo View)
 #: settings/korganizer.kcfg:320
 #, kde-format
 msgid "Display to-dos in a flat list"
-msgstr ""
+msgstr "გასაკეთებლების ბრტყელ სიაში ჩვენება"
 
 #. i18n: ectx: tooltip, entry, group (Todo View)
 #: settings/korganizer.kcfg:321
 #, kde-format
 msgid "Display to-dos as a flat list instead of a hierarchical tree"
-msgstr ""
+msgstr "გასაკეთებლების იერარქიული ხის მაგიერ ბრტყელ სიაში ჩვენება"
 
 #. i18n: ectx: whatsthis, entry, group (Todo View)
 #: settings/korganizer.kcfg:322
@@ -4364,12 +4638,14 @@ msgid ""
 "Check this box if you want to see all your to-dos in a flat list instead of "
 "being arranged in a hierarchical tree."
 msgstr ""
+"დასვით ეს თოლია, თუ გნებავთ, ყველა თქვენი გასაკეთებელი იერარქიული ხის მაგიერ "
+"ბრტყელი სიის სახით დაინახოთ."
 
 #. i18n: ectx: label, entry, group (Todo View)
 #: settings/korganizer.kcfg:327
 #, kde-format
 msgid "Record completed to-dos in journal entries"
-msgstr ""
+msgstr "დასრულებული გასაკეთებლების ჩაწერა ჟურნალის ჩანაწერებში"
 
 #. i18n: ectx: whatsthis, entry, group (Todo View)
 #: settings/korganizer.kcfg:328
@@ -4378,6 +4654,8 @@ msgid ""
 "Check this box to record the completion of a to-do in a new entry of your "
 "journal automatically."
 msgstr ""
+"დასვით ეს თოლია გასაკეთებლის დასრულების შესახებ ჟურნალში ახალი ჩანაწერის "
+"ავტომატურად გასაკეთებლად."
 
 #. i18n: ectx: label, entry, group (Colors)
 #. i18n: ectx: label, entry, group (Theming)
@@ -4398,38 +4676,41 @@ msgid ""
 "Select the holiday color here. The holiday color will be used for the "
 "holiday name in the month view and the holiday number in the date navigator."
 msgstr ""
+"აირჩიეთ აქ დასვენების დღის ფერები. დასვენების დღის ფერი გამოყენებული იქნება "
+"დასვენების სახელებზე თვის ხედში და დასვენების დღის ნომერზე თარიღის "
+"ნავიგატორში."
 
 #. i18n: ectx: label, entry (AgendaBgColor), group (Colors)
 #. i18n: ectx: label, entry, group (Theming)
 #: settings/korganizer.kcfg:342 settings/korganizer.kcfg:482
 #, kde-format
 msgid "Agenda view background color"
-msgstr ""
+msgstr "დღის წესრიგის ხედის ფონის ფერი"
 
 #. i18n: ectx: whatsthis, entry (AgendaBgColor), group (Colors)
 #. i18n: ectx: whatsthis, entry, group (Theming)
 #: settings/korganizer.kcfg:343 settings/korganizer.kcfg:483
 #, kde-format
 msgid "Select the agenda view background color here."
-msgstr ""
+msgstr "აირჩიეთ დღის წესრიგის ხედის ფონის ფერი."
 
 #. i18n: ectx: label, entry, group (Colors)
 #: settings/korganizer.kcfg:348
 #, kde-format
 msgid "Agenda view current-time line color"
-msgstr ""
+msgstr "დღის წესრიგის ხედის მიმდინარე დროის ხაზის ფერი"
 
 #. i18n: ectx: whatsthis, entry, group (Colors)
 #: settings/korganizer.kcfg:349
 #, kde-format
 msgid "Select a color to use for the current-time (Marcus Bains) line."
-msgstr ""
+msgstr "აირჩიეთ ფერი მიმდინარე დრის (მარკუს ბეინსის) ხაზისთვის."
 
 #. i18n: ectx: tooltip, entry, group (Colors)
 #: settings/korganizer.kcfg:350
 #, kde-format
 msgid "Use this color for the Agenda View current-time (Marcus Bains) line"
-msgstr ""
+msgstr "ამ ფერის გამოყენება მიმდინარე დრის (მარკუს ბეინსის) ხაზისთვის"
 
 #. i18n: ectx: label, entry (ViewBgBusyColor), group (Colors)
 #: settings/korganizer.kcfg:355
@@ -4444,6 +4725,8 @@ msgid ""
 "When you have an all day event marked as busy, you can have a different "
 "agenda or month view background color for that day. Select the color here."
 msgstr ""
+"როცა თქვენ მთელი დღე, როგორც დაკავებული, გაქვთ მონიშნული, შეგიძლიათ, ამ დღეს "
+"დღის განრიგში ან თვის ხედში სხვა ფერი ჰქონდეს. ამ ფერს აქედან აყენებთ."
 
 #. i18n: ectx: label, entry, group (Colors)
 #. i18n: ectx: label, entry, group (Theme/Month view)
@@ -4456,7 +4739,7 @@ msgstr "სამუშაო საათების ფერი"
 #: settings/korganizer.kcfg:362
 #, kde-format
 msgid "Select the working hours color for the agenda view here."
-msgstr ""
+msgstr "აირჩიეთ სამუშაო საათები ამ დღის წესრიგის ხედისთვის."
 
 #. i18n: ectx: label, entry (TodoDueTodayColor), group (Colors)
 #. i18n: ectx: label, entry, group (Theme/Month view)
@@ -4470,7 +4753,7 @@ msgstr "დღეს დაგეგმილის ფერი"
 #: settings/korganizer.kcfg:368 settings/korganizer.kcfg:634
 #, kde-format
 msgid "Select the to-do due today color here."
-msgstr ""
+msgstr "აირჩიეთ დღეს გადაცილებული დაგეგმილის ფერი."
 
 #. i18n: ectx: label, entry (TodoOverdueColor), group (Colors)
 #. i18n: ectx: label, entry, group (Theme/Month view)
@@ -4484,7 +4767,7 @@ msgstr "გადაცილებული გეგმის ფერი"
 #: settings/korganizer.kcfg:374 settings/korganizer.kcfg:648
 #, kde-format
 msgid "Select the to-do overdue color here."
-msgstr ""
+msgstr "არჩიეთ გადაცილებული დაგეგმილის ფერი."
 
 #. i18n: ectx: label, entry, group (Fonts)
 #: settings/korganizer.kcfg:382
@@ -4500,6 +4783,10 @@ msgid ""
 "that shows the hours in the agenda view. This button will open the \"Select "
 "Font\" dialog, allowing you to choose the hour font for the time bar."
 msgstr ""
+"დააწექით ამ ღილაკს დროის პანელის ფონტის მოსარგებად. დროის პანელი ვიჯეტია, "
+"რომელიც დღის წესრიგის ხედში საათებს აჩვენებს. ეს ღილაკი გახსნის ფონტის "
+"არჩევნის ფანჯარას, რითიც საშუალებას გაძლევთ, დროის პანელზე საათის "
+"საჩვენებელი ფონტი აირჩიოთ."
 
 #. i18n: ectx: label, entry, group (Fonts)
 #: settings/korganizer.kcfg:387
@@ -4515,6 +4802,9 @@ msgid ""
 "the \"Select Font\" dialog, allowing you to choose the font for the items in "
 "the month view."
 msgstr ""
+"დააწექით ამ ღილაკს თვის ხედის ფონტის მოსარგებად. ეს ღილაკი გასნის ფონტის "
+"არჩევის ფანჯარას, რითიც საშუალებას მოგცემთ, აირჩიოთ ფონტი, რომლითაც თვის "
+"ხედის ელემენტები გამოჩნდება."
 
 #. i18n: ectx: label, entry, group (Fonts)
 #: settings/korganizer.kcfg:392
@@ -4530,6 +4820,9 @@ msgid ""
 "the \"Select Font\" dialog, allowing you to choose the font for the events "
 "in the agenda view."
 msgstr ""
+"დააწექით ამ ღილაკს დღის წესრიგის ფონტის მოსარგებად. ეს ღილაკი გასნის ფონტის "
+"არჩევის ფანჯარას, რითიც საშუალებას მოგცემთ, აირჩიოთ ფონტი, რომლითაც დღის "
+"წესრიგის ელემენტები გამოჩნდება."
 
 #. i18n: ectx: label, entry, group (Fonts)
 #: settings/korganizer.kcfg:397
@@ -4545,6 +4838,9 @@ msgid ""
 "open the \"Select Font\" dialog, allowing you to choose the font for the "
 "current-time line in the agenda view."
 msgstr ""
+"დააწექით ამ ღილაკს მიმდინარე დროის ხაზის ფონტის მოსარგებად. ეს ღილაკი გასნის "
+"ფონტის არჩევის ფანჯარას, რითიც საშუალებას მოგცემთ, აირჩიოთ ფონტი, რომლითაც "
+"მიმდინარე დროის ხაზის ელემენტები გამოჩნდება."
 
 #. i18n: ectx: label, entry (DefaultTodoAttachMethod), group (Hidden Options)
 #: settings/korganizer.kcfg:422
@@ -4556,7 +4852,7 @@ msgstr "გეგმაზე მიმაგრების ნაგული�
 #: settings/korganizer.kcfg:423
 #, kde-format
 msgid "The default way of attaching dropped emails to a task"
-msgstr ""
+msgstr "დაყრილი ელფოსტების ამოცანაზე მიმაგრების ნაგულისხმევი გზა"
 
 #. i18n: ectx: label, entry (DefaultTodoAttachMethod), group (Hidden Options)
 #: settings/korganizer.kcfg:426
@@ -4590,6 +4886,8 @@ msgid ""
 "Select the highlight color here. The highlight color will be used for "
 "marking the currently selected area in your agenda and in the date navigator."
 msgstr ""
+"აირჩიეთ გამოკვეთის ფერი. გამოკვეთის ფერი დღის წესრიგში და თარიღის "
+"ნავიგატორში ამჟამად მონიშნული ადგილის გამოსაკვეთად გამოიყენება."
 
 #. i18n: ectx: label, entry, group (Theming)
 #: settings/korganizer.kcfg:558
@@ -4604,18 +4902,20 @@ msgid ""
 "Use system color instead of user defined color. If enabled will ignore all "
 "other color settings"
 msgstr ""
+"მომხმარებლის მიერ მითითებული ფერის მაგიერ სისტემური ფერის გამოყენება. თუ "
+"ჩართულია, ის ყველა სხვა ფერის პარამეტრს გადაფარავს"
 
 #. i18n: ectx: label, entry, group (Theme/Month view)
 #: settings/korganizer.kcfg:570
 #, kde-format
 msgid "Month view background color"
-msgstr ""
+msgstr "თვის ხედის ფონის ფერი"
 
 #. i18n: ectx: whatsthis, entry, group (Theme/Month view)
 #: settings/korganizer.kcfg:571
 #, kde-format
 msgid "Select the Month view background color here."
-msgstr ""
+msgstr "აირჩიეთ თვის ხედის ფონის ფერი."
 
 #. i18n: ectx: whatsthis, entry, group (Theme/Month view)
 #: settings/korganizer.kcfg:578
@@ -4624,12 +4924,14 @@ msgid ""
 "Select the highlight color here. The highlight color will be used for "
 "marking the currently selected area in your Month and in the date navigator."
 msgstr ""
+"აირჩიეთ გამოკვეთის ფერი. გამოკვეთის ფერი თვის ხედში და თარიღის ნავიგატორში "
+"ამჟამად მონიშნული ადგილის გამოსაკვეთად გამოიყენება."
 
 #. i18n: ectx: whatsthis, entry, group (Theme/Month view)
 #: settings/korganizer.kcfg:583
 #, kde-format
 msgid "Select the working hours background color for the Month view here."
-msgstr ""
+msgstr "აქ შეგიძლიათ თვის ხედისთვის სამუშაო საათების ფონის ფერი აირჩიოთ."
 
 #. i18n: ectx: label, entry, group (Theme/Month view)
 #: settings/korganizer.kcfg:605
@@ -4645,6 +4947,9 @@ msgid ""
 "for events in your Month. Note that you can specify a separate color for "
 "each event tag below."
 msgstr ""
+"აირჩიეთ ნაგულისხმევი მოვლენის ფერი. ნაგულისხმევი მოვლენინს ფერი თქვენი თვის "
+"მოვლენებში გამოიყენება. დაიმახსოვრეთ, რომ ქვემოთ თითოეული მოვლენის ჭდისთვის "
+"ფერები ცალ-ცალკე შეგიძლიათ, აირჩიოთ."
 
 #. i18n: ectx: property (placeholderText), widget (KListWidgetSearchLine, searchline)
 #: ui/filteredit_base.ui:35
@@ -4685,7 +4990,7 @@ msgstr ""
 #: ui/filteredit_base.ui:124
 #, kde-format
 msgid "Hide &recurring events and to-dos"
-msgstr ""
+msgstr "&განმეორებადი მოვლენებისა და გასაკეთებლების დამალვა"
 
 #. i18n: ectx: property (whatsThis), widget (QCheckBox, mCompletedCheck)
 #: ui/filteredit_base.ui:131
@@ -4695,12 +5000,15 @@ msgid ""
 "that have been completed. Optionally, only items that have been completed a "
 "given number of days are hidden."
 msgstr ""
+"თუ ეს თოლია დასმულია, ფილტრი სიიდან ყველა დასრულებულ გასაკეთებელს დამალავს. "
+"ასევე შეგიძლიათ მიუთითოთ, დაიმალოს ელემენტები, რომლებიც მითითებული "
+"რაოდენობის დღის წინ დასრულდა."
 
 #. i18n: ectx: property (text), widget (QCheckBox, mCompletedCheck)
 #: ui/filteredit_base.ui:134
 #, kde-format
 msgid "Hide co&mpleted to-dos"
-msgstr ""
+msgstr "დასრულებული &გასაკეთებლების დამალვა"
 
 #. i18n: ectx: property (whatsThis), widget (QLabel, mCompletedTimeSpanLabel)
 #: ui/filteredit_base.ui:177
@@ -4711,12 +5019,16 @@ msgid ""
 "as you check it. You can increase or decrease the number of days in the "
 "spinbox."
 msgstr ""
+"ეს პარამეტრი საშუალებას გაძლევთ, აირჩიოთ, რომელი დასრულებული გასაკეთებელი "
+"უნდა დაიმალოს. როცა აირჩიევთ <i>დაუყოვნებლივ</I>, ის დამალავს გასაკეთებლებს "
+"მაშინვე, როგორც კი მას დაასრულებთ. დღეების რაოდენობის გაზრდა და შემცირება "
+"ტრიალათი შეგიძლიათ."
 
 #. i18n: ectx: property (text), widget (QLabel, mCompletedTimeSpanLabel)
 #: ui/filteredit_base.ui:180
 #, kde-format
 msgid "Da&ys after completion:"
-msgstr ""
+msgstr "&დღე დასრულების შემდეგ:"
 
 #. i18n: ectx: property (whatsThis), widget (QSpinBox, mCompletedTimeSpan)
 #: ui/filteredit_base.ui:193
@@ -4742,7 +5054,7 @@ msgstr ""
 #: ui/filteredit_base.ui:221
 #, kde-format
 msgid "Hide &inactive to-dos"
-msgstr ""
+msgstr "&არააქტიური გასაკეთებლების დამალვა"
 
 #. i18n: ectx: property (title), widget (QGroupBox, mCategoriesButtonGroup)
 #: ui/filteredit_base.ui:228
@@ -4762,7 +5074,7 @@ msgstr ""
 #: ui/filteredit_base.ui:275
 #, kde-format
 msgid "Show all except selected"
-msgstr ""
+msgstr "მონიშნულის გარდა ყველას ჩვენება"
 
 #. i18n: ectx: property (whatsThis), widget (QRadioButton, mCatShowCheck)
 #: ui/filteredit_base.ui:288
@@ -4771,12 +5083,14 @@ msgid ""
 "When this option is chosen, this filter will show all items containing any "
 "of the selected tags."
 msgstr ""
+"როცა ეს პარამეტრი არჩეულია, ეს ფილტრი აჩვენებს ყველა ელემენტს, რომელიც "
+"ნებისმიერ მონიშნულ ჭდეს შეიცავს."
 
 #. i18n: ectx: property (text), widget (QRadioButton, mCatShowCheck)
 #: ui/filteredit_base.ui:291
 #, kde-format
 msgid "Show only selected"
-msgstr ""
+msgstr "მხოლოდ მონიშნულების ჩვენება"
 
 #. i18n: ectx: property (text), widget (QPushButton, mCatEditButton)
 #: ui/filteredit_base.ui:301
@@ -4798,7 +5112,7 @@ msgstr ""
 #: ui/filteredit_base.ui:318
 #, kde-format
 msgid "Hide to-dos not assigned to me"
-msgstr ""
+msgstr "გასაკეთებლების დამალვა, რომლებიც ჩემზე არაა მონიჭებული"
 
 #. i18n: ectx: attribute (title), widget (QWidget, tabPublish)
 #: ui/kogroupwareprefspage.ui:36
@@ -4847,7 +5161,7 @@ msgstr ""
 #: ui/kogroupwareprefspage.ui:99
 #, kde-format
 msgid "Minimum time between uploads (in minutes):"
-msgstr ""
+msgstr "მინიმალური დრო ატვირთვებს შორის (წუთებში):"
 
 #. i18n: ectx: property (whatsThis), widget (QLabel, TextLabel3)
 #. i18n: ectx: property (whatsThis), widget (QSpinBox, publishDays)
@@ -4859,6 +5173,8 @@ msgid ""
 "Configure the number of calendar days you wish to be published and available "
 "to others here."
 msgstr ""
+"მიუთითეთ კალენდრის დღეები, რომლებიც გნებავთ, სხვებისთვის, აქ გამოქვეყნდეს და "
+"ხელმისაწვდომი იყოს."
 
 #. i18n: ectx: property (text), widget (QLabel, TextLabel3)
 #: ui/kogroupwareprefspage.ui:141
@@ -4870,7 +5186,7 @@ msgstr "გამოქვეყნება"
 #: ui/kogroupwareprefspage.ui:170
 #, kde-format
 msgid "days of free/busy information"
-msgstr ""
+msgstr "თავისუფალი/დაკავებულის ინფორმაციის დღეები"
 
 #. i18n: ectx: property (title), widget (QGroupBox, ButtonGroup2)
 #. i18n: ectx: property (title), widget (QGroupBox, ButtonGroup2_2)
@@ -4897,7 +5213,7 @@ msgstr ""
 #: ui/kogroupwareprefspage.ui:413 ui/kogroupwareprefspage.ui:486
 #, kde-format
 msgid "Enter your groupware server login password here."
-msgstr ""
+msgstr "შეიყვანეთ Groupware სერვერის მომხმარებელი და პაროლი."
 
 #. i18n: ectx: property (text), widget (QLabel, textLabel2)
 #: ui/kogroupwareprefspage.ui:243
@@ -4956,7 +5272,7 @@ msgstr "სერვერის URL:"
 #: ui/kogroupwareprefspage.ui:308
 #, kde-format
 msgid "(No need if using Kolab server version 2)"
-msgstr ""
+msgstr "(საჭირო არაა, თუ იყენებთ Kolab სერვერის მეორე ვერსიას)"
 
 #. i18n: ectx: attribute (title), widget (QWidget, tabRetrieve)
 #: ui/kogroupwareprefspage.ui:335
@@ -4985,7 +5301,7 @@ msgstr ""
 #: ui/kogroupwareprefspage.ui:369
 #, kde-format
 msgid "Retrieve other people's free/&busy information automatically"
-msgstr ""
+msgstr "სხვების თავისუფალი/&დაკავებულობის ინფორმაციის ავტომატური გამოთხოვა"
 
 #. i18n: ectx: property (toolTip), widget (QCheckBox, fullDomainRetrieval)
 #: ui/kogroupwareprefspage.ui:379
@@ -4993,6 +5309,7 @@ msgstr ""
 msgid ""
 "Set this to retrieve user@domain.ifb instead of user.ifb from the server"
 msgstr ""
+"დააყენეთ, სერვერიდან user.ifb-ის მაგიერ user@domain.ifb-ის გამოსათხოვად"
 
 #. i18n: ectx: property (whatsThis), widget (QCheckBox, fullDomainRetrieval)
 #: ui/kogroupwareprefspage.ui:382
@@ -5027,6 +5344,17 @@ msgid ""
 "\n"
 "https://kolab2.example.com/freebusy/user.xfb"
 msgstr ""
+"შეიყვანეთ URL სერვერისთვის, რომელზეც თავისუფალი/დაკავებულობის ინფორმაციის "
+"გამოქვეყნება ხდება.\n"
+"ეს ინფორმაცია სერვერის ადმინისტრატორს სთხოვეთ.\n"
+"იხილეთ Kolab2 სერვერს URL-ის მაგალითი:\n"
+"\n"
+"https://kolab2.example.com/freebusy/\n"
+"\n"
+"ან, შეგიძლიათ, თავისუფალი/დაკავებულობამდე სრული ბილიკი მიუთითოთ. "
+"მაგალითად: \n"
+"\n"
+"https://kolab2.example.com/freebusy/user.xfb"
 
 #. i18n: ectx: property (text), widget (QLabel, textLabel3)
 #: ui/kogroupwareprefspage.ui:476
@@ -5057,6 +5385,8 @@ msgstr "&ძებნა:"
 #, kde-format
 msgid "Search pattern. Use wildcards “*” and “?” as desired."
 msgstr ""
+"ძებნის ნიმუში. სადაც გნებავთ, შეგიძლიათ, ვაილდკარდები \"*\" და \"?\" "
+"გამოიყენოთ."
 
 #. i18n: ectx: property (whatsThis), widget (QLineEdit, searchEdit)
 #: ui/searchdialog_base.ui:52
@@ -5085,7 +5415,7 @@ msgstr "ძებნა"
 #: ui/searchdialog_base.ui:73
 #, kde-format
 msgid "Search for events with matching criteria."
-msgstr ""
+msgstr "მოვლენების მოძებნა, რომლებიც მითითებულ პირობას აკმაყოფილებენ."
 
 #. i18n: ectx: property (whatsThis), widget (QCheckBox, eventsCheck)
 #: ui/searchdialog_base.ui:76
@@ -5106,6 +5436,7 @@ msgstr "&მოვლენები"
 #, kde-format
 msgid "Search for journal entries with matching criteria."
 msgstr ""
+"ჟურნალის ჩანაწერების მოძებნა, რომლებიც მითითებულ პირობას აკმაყოფილებენ."
 
 #. i18n: ectx: property (whatsThis), widget (QCheckBox, journalsCheck)
 #: ui/searchdialog_base.ui:92
@@ -5125,7 +5456,7 @@ msgstr "&ჟურნალები"
 #: ui/searchdialog_base.ui:102
 #, kde-format
 msgid "Search for to-dos with matching criteria."
-msgstr ""
+msgstr "გასაკეთებლების მოძებნა, რომლებიც მითითებულ პირობას აკმაყოფილებენ."
 
 #. i18n: ectx: property (whatsThis), widget (QCheckBox, todosCheck)
 #: ui/searchdialog_base.ui:105
@@ -5139,7 +5470,7 @@ msgstr ""
 #: ui/searchdialog_base.ui:108
 #, kde-format
 msgid "To-&dos"
-msgstr ""
+msgstr "&გასაკეთებლები"
 
 #. i18n: ectx: property (title), widget (QGroupBox, searchGroup)
 #: ui/searchdialog_base.ui:121
@@ -5151,13 +5482,13 @@ msgstr ""
 #: ui/searchdialog_base.ui:127
 #, kde-format
 msgid "Include tags in your search."
-msgstr ""
+msgstr "თქვენს ძებნაში ჭდეების ჩასმა."
 
 #. i18n: ectx: property (whatsThis), widget (QCheckBox, categoryCheck)
 #: ui/searchdialog_base.ui:130
 #, kde-format
 msgid "Check this box if you want to match tags against your search pattern."
-msgstr ""
+msgstr "დასვით ეს თოლია, თუ გნებავთ, თქვენს ძებნის ნიმუშს ჭდეებიც დაემთხვეს."
 
 #. i18n: ectx: property (text), widget (QCheckBox, categoryCheck)
 #: ui/searchdialog_base.ui:133
@@ -5169,7 +5500,7 @@ msgstr "&ჭდეები"
 #: ui/searchdialog_base.ui:140
 #, kde-format
 msgid "Include locations in your search."
-msgstr ""
+msgstr "თქვენს ძებნაში მდებარეობების ჩასმა."
 
 #. i18n: ectx: property (whatsThis), widget (QCheckBox, locationCheck)
 #: ui/searchdialog_base.ui:143
@@ -5177,6 +5508,7 @@ msgstr ""
 msgid ""
 "Check this box if you want to match locations against your search pattern."
 msgstr ""
+"დასვით ეს თოლია, თუ გნებავთ, თქვენს ძებნის ნიმუშს მდებარეობებიც დაემთხვეს."
 
 #. i18n: ectx: property (text), widget (QCheckBox, locationCheck)
 #: ui/searchdialog_base.ui:146
@@ -5188,14 +5520,14 @@ msgstr "მდებარეობები"
 #: ui/searchdialog_base.ui:153
 #, kde-format
 msgid "Include descriptions in your search."
-msgstr ""
+msgstr "თქვენს ძებნაში აღწერების ჩასმა."
 
 #. i18n: ectx: property (whatsThis), widget (QCheckBox, descriptionCheck)
 #: ui/searchdialog_base.ui:156
 #, kde-format
 msgid ""
 "Check this box if you want to match descriptions against your search pattern."
-msgstr ""
+msgstr "დასვით ეს თოლია, თუ გნებავთ, თქვენს ძებნის ნიმუშს აღწერებიც დაემთხვეს."
 
 #. i18n: ectx: property (text), widget (QCheckBox, descriptionCheck)
 #: ui/searchdialog_base.ui:159
@@ -5207,7 +5539,7 @@ msgstr "&აღწერები"
 #: ui/searchdialog_base.ui:166
 #, kde-format
 msgid "Include summaries in your search."
-msgstr ""
+msgstr "თქვენს ძებნაში მიმოხილვების ჩასმა."
 
 #. i18n: ectx: property (whatsThis), widget (QCheckBox, summaryCheck)
 #: ui/searchdialog_base.ui:169
@@ -5215,6 +5547,7 @@ msgstr ""
 msgid ""
 "Check this box if you want to match summaries against your search pattern."
 msgstr ""
+"დასვით ეს თოლია, თუ გნებავთ, თქვენს ძებნის ნიმუშს შეჯამებებიც დაემთხვეს."
 
 #. i18n: ectx: property (text), widget (QCheckBox, summaryCheck)
 #: ui/searchdialog_base.ui:172
@@ -5226,7 +5559,7 @@ msgstr "&შეჯამებები"
 #: ui/searchdialog_base.ui:182
 #, kde-format
 msgid "Include attendees in your search."
-msgstr ""
+msgstr "თქვენს ძებნაში დამსწრეების ჩასმა."
 
 #. i18n: ectx: property (whatsThis), widget (QCheckBox, attendeeCheck)
 #: ui/searchdialog_base.ui:185
@@ -5234,6 +5567,7 @@ msgstr ""
 msgid ""
 "Check this box if you want to match attendees against your search pattern."
 msgstr ""
+"დასვით ეს თოლია, თუ გნებავთ, თქვენს ძებნის ნიმუშს დამსწრეებიც დაემთხვეს."
 
 #. i18n: ectx: property (text), widget (QCheckBox, attendeeCheck)
 #: ui/searchdialog_base.ui:188
@@ -5257,13 +5591,14 @@ msgstr "&ვისგან:"
 #: ui/searchdialog_base.ui:225
 #, kde-format
 msgid "The starting date of the period to search."
-msgstr ""
+msgstr "საძებნი პერიოდის საწყისი თარიღი."
 
 #. i18n: ectx: property (whatsThis), widget (KDateComboBox, startDate)
 #: ui/searchdialog_base.ui:228
 #, kde-format
 msgid "Search for items in the time period starting at the date given here."
 msgstr ""
+"ელემენტების ძებნა მითითებულ შუალედში, რომელიც აქ მითითებული თარიღით იწყება."
 
 #. i18n: ectx: property (text), item, widget (KDateComboBox, startDate)
 #. i18n: ectx: property (text), item, widget (KDateComboBox, endDate)
@@ -5282,13 +5617,15 @@ msgstr "&ვის:"
 #: ui/searchdialog_base.ui:263
 #, kde-format
 msgid "The ending date of the period to search."
-msgstr ""
+msgstr "საძებნი პერიოდის ბოლო თარიღი."
 
 #. i18n: ectx: property (whatsThis), widget (KDateComboBox, endDate)
 #: ui/searchdialog_base.ui:266
 #, kde-format
 msgid "Search for items in the time period ending at the date given here."
 msgstr ""
+"ელემენტების ძებნა მითითებულ შუალედში, რომელიც აქ მითითებული თარიღით "
+"მთავრდება."
 
 #. i18n: ectx: property (toolTip), widget (QCheckBox, inclusiveCheck)
 #: ui/searchdialog_base.ui:280
@@ -5297,6 +5634,8 @@ msgid ""
 "Display events only if their start date and end date are both in the date "
 "range specified."
 msgstr ""
+"მოვლენების ჩვენება, მხოლოდ, თუ მათი, ორივე, დასაწყისის და დასასრულის თარიღი "
+"მითითებული თარიღის შუალედშია."
 
 #. i18n: ectx: property (whatsThis), widget (QCheckBox, inclusiveCheck)
 #: ui/searchdialog_base.ui:283
@@ -5312,7 +5651,7 @@ msgstr ""
 #: ui/searchdialog_base.ui:286
 #, kde-format
 msgid "Exclude e&vents that extend outside the specified date range"
-msgstr ""
+msgstr "იმ მოვლენების ამოღება, რომლებიც &მითითებულ თარიღის შუალედს სცდება"
 
 #. i18n: ectx: property (toolTip), widget (QCheckBox, includeUndatedTodos)
 #: ui/searchdialog_base.ui:293
@@ -5336,7 +5675,7 @@ msgstr ""
 #: ui/searchdialog_base.ui:299
 #, kde-format
 msgid "Include all to-dos &within the specified date range"
-msgstr ""
+msgstr "მითითებული თარიღის შუალედში არსებული &ყველა გასაკეთებლის ჩასმა"
 
 #: views/collectionview/quickview.cpp:79 views/collectionview/quickview.cpp:83
 #, kde-format
@@ -5366,7 +5705,7 @@ msgstr "თვე"
 #: views/collectionview/quickview.ui:61
 #, kde-format
 msgid "Agenda"
-msgstr "აგენდა"
+msgstr "დღის წესრიგი"
 
 #. i18n: ectx: property (text), widget (QPushButton, mPreviousBtn)
 #: views/collectionview/quickview.ui:84
@@ -5383,25 +5722,25 @@ msgstr ">"
 #: views/multiagendaview/multiagendaview.cpp:36
 #, kde-format
 msgid "Agenda %1"
-msgstr "აგენდა %1"
+msgstr "დღის წესრიგი %1"
 
 #: views/multiagendaview/multiagendaview.cpp:295
 #, kde-format
 msgctxt "@title:window"
 msgid "Configure Side-By-Side View"
-msgstr ""
+msgstr "გვერდიგვერდ ხედის მორგება"
 
 #. i18n: ectx: property (text), widget (QRadioButton, useDefaultRB)
 #: views/multiagendaview/multiagendaviewconfigwidget.ui:17
 #, kde-format
 msgid "Show one calendar per agenda column"
-msgstr ""
+msgstr "თითოეული დღის წესრიგის სვეტისთვის ერთი კალენდრის ჩვენება"
 
 #. i18n: ectx: property (text), widget (QRadioButton, useCustomRB)
 #: views/multiagendaview/multiagendaviewconfigwidget.ui:27
 #, kde-format
 msgid "Use custom calendar setup"
-msgstr ""
+msgstr "მომხმარებლის კალენდრის პარამეტრების გამოყენება"
 
 #. i18n: ectx: property (text), widget (QLabel, columnNumberLabel)
 #: views/multiagendaview/multiagendaviewconfigwidget.ui:36
@@ -5431,7 +5770,7 @@ msgstr "%1/%2"
 #: widgets/kdatenavigator.cpp:179
 #, kde-format
 msgid "Scroll to week number %1"
-msgstr ""
+msgstr "გადახვევა კვირაზე %1"
 
 #: widgets/kdatenavigator.cpp:181
 #, kde-format
@@ -5439,6 +5778,8 @@ msgid ""
 "Click here to scroll the display to week number %1 of the currently "
 "displayed year."
 msgstr ""
+"დააწკაპუნეთ, რომ ჩვენება ამჟამად ნაჩვენები წლის, კვირაზე, ნომრით %1, "
+"გადაახვიოთ."
 
 #: widgets/kdatenavigator.cpp:227
 #, kde-format
@@ -5448,7 +5789,7 @@ msgstr "%1"
 #: widgets/kdatenavigator.cpp:228
 #, kde-format
 msgid "A column header of the %1 dates in the month."
-msgstr ""
+msgstr "სვეტის თავსართი %1 თარიღისთვის, თვეში."
 
 #: widgets/kitemiconcheckcombo.cpp:17
 #, kde-format
@@ -5493,7 +5834,7 @@ msgstr "ესწრება"
 #: widgets/kitemiconcheckcombo.cpp:25
 #, kde-format
 msgid "Maybe Attending"
-msgstr ""
+msgstr "შეიძლება ესწრება"
 
 #: widgets/kitemiconcheckcombo.cpp:26
 #, kde-format
@@ -5509,7 +5850,7 @@ msgstr "გამოსაყენებელი ხატულები"
 #: widgets/navigatorbar.cpp:31
 #, kde-format
 msgid "Scroll backward to the previous year"
-msgstr ""
+msgstr "უკან, წინა წელზე გადახვევა"
 
 #: widgets/navigatorbar.cpp:32
 #, kde-format
@@ -5517,11 +5858,13 @@ msgid ""
 "Click this button to scroll the display to the same approximate day of the "
 "previous year"
 msgstr ""
+"დააწკაპუნეთ ამ ღილაკზე რომ გადავახვიოთ წინა წლის დაახლოებით იგივე დღის "
+"თარიღზე"
 
 #: widgets/navigatorbar.cpp:36
 #, kde-format
 msgid "Scroll backward to the previous month"
-msgstr ""
+msgstr "უკან, წინა თვეზე გადახვევა"
 
 #: widgets/navigatorbar.cpp:37
 #, kde-format
@@ -5529,11 +5872,13 @@ msgid ""
 "Click this button to scroll the display to the same approximate date of the "
 "previous month"
 msgstr ""
+"დააწკაპუნეთ ამ ღილაკზე რომ გადავახვიოთ წინა თვის დაახლოებით იგივე დღის "
+"თარიღზე"
 
 #: widgets/navigatorbar.cpp:41
 #, kde-format
 msgid "Scroll forward to the next month"
-msgstr ""
+msgstr "წინ, შემდეგ თვეზე გადახვევა"
 
 #: widgets/navigatorbar.cpp:42
 #, kde-format
@@ -5541,11 +5886,13 @@ msgid ""
 "Click this button to scroll the display to the same approximate date of the "
 "next month"
 msgstr ""
+"დააწკაპუნეთ ამ ღილაკზე რომ გადავახვიოთ შემდეგი თვის დაახლოებით იგივე დღის "
+"თარიღზე"
 
 #: widgets/navigatorbar.cpp:46
 #, kde-format
 msgid "Scroll forward to the next year"
-msgstr ""
+msgstr "წინ, შემდეგ წელზე გადახვევა"
 
 #: widgets/navigatorbar.cpp:47
 #, kde-format
@@ -5553,6 +5900,8 @@ msgid ""
 "Click this button to scroll the display to the same approximate day of the "
 "next year"
 msgstr ""
+"დააწკაპუნეთ ამ ღილაკზე რომ გადავახვიოთ შემდეგი წლის დაახლოებით იგივე დღის "
+"თარიღზე"
 
 #: widgets/navigatorbar.cpp:54
 #, kde-format
