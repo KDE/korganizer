@@ -40,22 +40,22 @@ KORGANIZERPRIVATE_EXPORT QColor getTextColor(const QColor &c);
   @param incidence the incidence for which the color is needed (to
                    determine which  subresource needs to be used)
 */
-Q_REQUIRED_RESULT KORGANIZERPRIVATE_EXPORT QColor resourceColor(const Akonadi::Item &incidence);
+[[nodiscard]] KORGANIZERPRIVATE_EXPORT QColor resourceColor(const Akonadi::Item &incidence);
 
-Q_REQUIRED_RESULT KORGANIZERPRIVATE_EXPORT QColor resourceColor(const Akonadi::Collection &collection);
-Q_REQUIRED_RESULT KORGANIZERPRIVATE_EXPORT QColor resourceColorKnown(const Akonadi::Collection &collection);
+[[nodiscard]] KORGANIZERPRIVATE_EXPORT QColor resourceColor(const Akonadi::Collection &collection);
+[[nodiscard]] KORGANIZERPRIVATE_EXPORT QColor resourceColorKnown(const Akonadi::Collection &collection);
 KORGANIZERPRIVATE_EXPORT void setResourceColor(const Akonadi::Collection &collection, const QColor &color);
 
 /**
   Returns the number of years between the @p start QDate and the @p end QDate
   (i.e. the difference in the year number of both dates)
 */
-Q_REQUIRED_RESULT KORGANIZERPRIVATE_EXPORT int yearDiff(QDate start, QDate end);
+[[nodiscard]] KORGANIZERPRIVATE_EXPORT int yearDiff(QDate start, QDate end);
 
 /**
   Return true if it's the standard (that is, the current default) calendar.
 */
-Q_REQUIRED_RESULT KORGANIZERPRIVATE_EXPORT bool isStandardCalendar(Akonadi::Collection::Id id);
+[[nodiscard]] KORGANIZERPRIVATE_EXPORT bool isStandardCalendar(Akonadi::Collection::Id id);
 
 KORGANIZERPRIVATE_EXPORT void showSaveIncidenceErrorMsg(QWidget *parent, const KCalendarCore::Incidence::Ptr &incidence);
 }

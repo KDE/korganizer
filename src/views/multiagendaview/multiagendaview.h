@@ -35,19 +35,19 @@ public:
 
     void setModel(QAbstractItemModel *model) override;
 
-    Q_REQUIRED_RESULT Akonadi::Item::List selectedIncidences() override;
-    Q_REQUIRED_RESULT KCalendarCore::DateList selectedIncidenceDates() override;
-    Q_REQUIRED_RESULT int currentDateCount() const override;
-    Q_REQUIRED_RESULT int maxDatesHint() const override;
+    [[nodiscard]] Akonadi::Item::List selectedIncidences() override;
+    [[nodiscard]] KCalendarCore::DateList selectedIncidenceDates() override;
+    [[nodiscard]] int currentDateCount() const override;
+    [[nodiscard]] int maxDatesHint() const override;
 
-    Q_REQUIRED_RESULT bool eventDurationHint(QDateTime &startDt, QDateTime &endDt, bool &allDay) override;
+    [[nodiscard]] bool eventDurationHint(QDateTime &startDt, QDateTime &endDt, bool &allDay) override;
 
     void setCollectionSelectionProxyModel(KCheckableProxyModel *model);
 
     /**
      * reimplemented from KOrg::BaseView
      */
-    Q_REQUIRED_RESULT bool hasConfigurationDialog() const override;
+    [[nodiscard]] bool hasConfigurationDialog() const override;
 
     /**
      * reimplemented from KOrg::BaseView
@@ -64,7 +64,7 @@ public:
 
     void setDateRange(const QDateTime &start, const QDateTime &end, const QDate &preferredMonth = QDate()) override;
 
-    Q_REQUIRED_RESULT Akonadi::Collection::Id collectionId() const override;
+    [[nodiscard]] Akonadi::Collection::Id collectionId() const override;
 
 public Q_SLOTS:
     void showDates(const QDate &start, const QDate &end, const QDate &preferredMonth = QDate()) override;

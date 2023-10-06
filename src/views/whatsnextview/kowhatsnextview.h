@@ -20,23 +20,23 @@ public:
     explicit KOWhatsNextView(QWidget *parent = nullptr);
     ~KOWhatsNextView() override;
 
-    Q_REQUIRED_RESULT int currentDateCount() const override;
-    Q_REQUIRED_RESULT Akonadi::Item::List selectedIncidences() override
+    [[nodiscard]] int currentDateCount() const override;
+    [[nodiscard]] Akonadi::Item::List selectedIncidences() override
     {
         return {};
     }
 
-    Q_REQUIRED_RESULT KCalendarCore::DateList selectedIncidenceDates() override
+    [[nodiscard]] KCalendarCore::DateList selectedIncidenceDates() override
     {
         return {};
     }
 
-    Q_REQUIRED_RESULT bool supportsDateNavigation() const override
+    [[nodiscard]] bool supportsDateNavigation() const override
     {
         return true;
     }
 
-    Q_REQUIRED_RESULT CalendarSupport::CalPrinterBase::PrintType printType() const override;
+    [[nodiscard]] CalendarSupport::CalPrinterBase::PrintType printType() const override;
 
 public Q_SLOTS:
     void updateView() override;

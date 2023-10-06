@@ -79,16 +79,16 @@ public Q_SLOTS:
     bool importURL(const QUrl &url, bool merge);
 
     /** Save calendar file to URL of current calendar */
-    Q_REQUIRED_RESULT bool saveURL();
+    [[nodiscard]] bool saveURL();
 
     /** Save calendar file to URL */
-    Q_REQUIRED_RESULT bool saveAsURL(const QUrl &QUrl);
+    [[nodiscard]] bool saveAsURL(const QUrl &QUrl);
 
     void toggleMenubar(bool dontShowWarning = false);
 
 public:
     /** Get current URL */
-    Q_REQUIRED_RESULT QUrl url() const
+    [[nodiscard]] QUrl url() const
     {
         return mURL;
     }
@@ -97,16 +97,16 @@ public:
     static KOrg::MainWindow *findInstance(const QUrl &url);
 
     /** Open calendar file from URL */
-    Q_REQUIRED_RESULT bool openURL(const QString &url);
+    [[nodiscard]] bool openURL(const QString &url);
 
     /** Open calendar file from URL */
-    Q_REQUIRED_RESULT bool mergeURL(const QString &url);
+    [[nodiscard]] bool mergeURL(const QString &url);
 
     /** Save calendar file to URL */
-    Q_REQUIRED_RESULT bool saveAsURL(const QString &url);
+    [[nodiscard]] bool saveAsURL(const QString &url);
 
     /** Get current URL as QString */
-    Q_REQUIRED_RESULT QString getCurrentURLasString() const;
+    [[nodiscard]] QString getCurrentURLasString() const;
 
     /**
       Delete the incidence with the given unique id from current calendar.

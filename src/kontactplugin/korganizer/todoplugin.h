@@ -23,16 +23,16 @@ public:
     TodoPlugin(KontactInterface::Core *core, const KPluginMetaData &data, const QVariantList &);
     ~TodoPlugin() override;
 
-    Q_REQUIRED_RESULT bool isRunningStandalone() const override;
+    [[nodiscard]] bool isRunningStandalone() const override;
     int weight() const override
     {
         return 450;
     }
 
-    Q_REQUIRED_RESULT bool canDecodeMimeData(const QMimeData *) const override;
+    [[nodiscard]] bool canDecodeMimeData(const QMimeData *) const override;
     void processDropEvent(QDropEvent *) override;
 
-    Q_REQUIRED_RESULT QStringList invisibleToolbarActions() const override;
+    [[nodiscard]] QStringList invisibleToolbarActions() const override;
 
     KontactInterface::Summary *createSummaryWidget(QWidget *parent) override;
 

@@ -68,7 +68,7 @@ public:
     /** returns the first and last date of the 6*7 matrix that displays @p month
      * @param month The month we want to get matrix boundaries
      */
-    Q_REQUIRED_RESULT static QPair<QDate, QDate> matrixLimits(QDate month);
+    [[nodiscard]] static QPair<QDate, QDate> matrixLimits(QDate month);
 
     /**
       Associate a calendar with this day matrix. If there is a calendar, the
@@ -128,7 +128,7 @@ public:
     /** Is today visible in the view? Keep this in sync with
      * the values today (below) can take.
      */
-    Q_REQUIRED_RESULT bool isTodayVisible() const
+    [[nodiscard]] bool isTodayVisible() const
     {
         return mToday >= 0;
     }
@@ -140,12 +140,12 @@ public:
      * in the array of visible dates and going from
      * top left (0) to bottom right (41).
      */
-    Q_REQUIRED_RESULT bool isBeginningOfMonth() const
+    [[nodiscard]] bool isBeginningOfMonth() const
     {
         return mToday <= 8;
     }
 
-    Q_REQUIRED_RESULT bool isEndOfMonth() const
+    [[nodiscard]] bool isEndOfMonth() const
     {
         return mToday >= 27;
     }

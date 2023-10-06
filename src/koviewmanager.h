@@ -78,13 +78,13 @@ public:
     void connectView(KOrg::BaseView *);
     void addView(KOrg::BaseView *, bool isTab = false);
 
-    Q_REQUIRED_RESULT Akonadi::Item currentSelection();
+    [[nodiscard]] Akonadi::Item currentSelection();
 
     /**
      * If there's a selected incidence, it's date is returned, otherwise
      * an invalid QDate is returned.
      */
-    Q_REQUIRED_RESULT QDate currentSelectionDate();
+    [[nodiscard]] QDate currentSelectionDate();
 
     KOAgendaView *agendaView() const
     {
@@ -115,13 +115,13 @@ public:
      * to know if agenda is selected, because agenda has other modes
      * (tabbed, side by side). Use this function instead.
      */
-    Q_REQUIRED_RESULT bool agendaIsSelected() const;
+    [[nodiscard]] bool agendaIsSelected() const;
 
     /**
       Return the current range mode:
       week, work week, day or nextX days, etc.
     */
-    Q_REQUIRED_RESULT RangeMode rangeMode() const
+    [[nodiscard]] RangeMode rangeMode() const
     {
         return mRangeMode;
     }

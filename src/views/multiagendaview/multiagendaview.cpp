@@ -303,7 +303,7 @@ public:
 
     void setUpColumns(int n);
     AkonadiCollectionView *createView(KCheckableProxyModel *model);
-    Q_REQUIRED_RESULT AkonadiCollectionView *view(int index) const;
+    [[nodiscard]] AkonadiCollectionView *view(int index) const;
     QList<KCheckableProxyModel *> newlyCreated;
     QList<KCheckableProxyModel *> selections;
     QList<QString> titles;

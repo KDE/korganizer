@@ -38,7 +38,7 @@ public:
     QString mParent;
 
 private:
-    Q_REQUIRED_RESULT QVariant data(int role) const override
+    [[nodiscard]] QVariant data(int role) const override
     {
         if (role == Qt::DisplayRole) {
             if (mName != mUid) {

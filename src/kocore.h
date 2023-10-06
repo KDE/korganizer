@@ -28,7 +28,7 @@ public:
 
     static KOCore *self();
 
-    Q_REQUIRED_RESULT QList<KPluginMetaData> availableCalendarDecorations();
+    [[nodiscard]] QList<KPluginMetaData> availableCalendarDecorations();
 
     EventViews::CalendarDecoration::Decoration *loadCalendarDecoration(const KPluginMetaData &service);
     EventViews::CalendarDecoration::Decoration::List loadCalendarDecorations();

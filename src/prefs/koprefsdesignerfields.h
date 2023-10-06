@@ -16,9 +16,9 @@ public:
     explicit KOPrefsDesignerFields(QObject *parent, const KPluginMetaData &data);
 
 protected:
-    Q_REQUIRED_RESULT QString localUiDir() override;
-    Q_REQUIRED_RESULT QString uiPath() override;
+    [[nodiscard]] QString localUiDir() override;
+    [[nodiscard]] QString uiPath() override;
     void writeActivePages(const QStringList &) override;
-    Q_REQUIRED_RESULT QStringList readActivePages() override;
-    Q_REQUIRED_RESULT QString applicationName() override;
+    [[nodiscard]] QStringList readActivePages() override;
+    [[nodiscard]] QString applicationName() override;
 };

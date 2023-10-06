@@ -39,7 +39,7 @@ public:
     /**
       Is there only one instance left?
     */
-    Q_REQUIRED_RESULT bool lastInstance();
+    [[nodiscard]] bool lastInstance();
 
     /**
       Is there a instance with this URL?

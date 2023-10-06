@@ -164,8 +164,8 @@ public:
      */
     void updateHighlightModes();
 
-    Q_REQUIRED_RESULT QDate startDate() override;
-    Q_REQUIRED_RESULT QDate endDate() override;
+    [[nodiscard]] QDate startDate() override;
+    [[nodiscard]] QDate endDate() override;
 
     KOrg::BaseView *currentView() const;
     void addView(KOrg::BaseView *) override;
@@ -181,26 +181,26 @@ public:
      * Returns the item selected in the current view (or an invalid one if none selected)
      * @reimp
      */
-    Q_REQUIRED_RESULT Akonadi::Item currentSelection() override;
+    [[nodiscard]] Akonadi::Item currentSelection() override;
 
     /**
      * Returns a pointer to the incidence selected in the current view. If there
      * is no selection, return the selected todo from the todo list on the left.
      */
-    Q_REQUIRED_RESULT Akonadi::Item selectedIncidence();
+    [[nodiscard]] Akonadi::Item selectedIncidence();
 
     /**
      * Returns true if there's a filter applied.
      */
-    Q_REQUIRED_RESULT bool isFiltered() const;
+    [[nodiscard]] bool isFiltered() const;
 
     /**
      * Returns the name of the current filter.
      */
-    Q_REQUIRED_RESULT QString currentFilterName() const;
+    [[nodiscard]] QString currentFilterName() const;
 
     /** query if the calendar is read-only. */
-    Q_REQUIRED_RESULT bool isReadOnly() const;
+    [[nodiscard]] bool isReadOnly() const;
 
 Q_SIGNALS:
     /** when change is made to options dialog, the topwidget will catch this

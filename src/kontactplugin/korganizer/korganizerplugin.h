@@ -25,18 +25,18 @@ public:
     KOrganizerPlugin(KontactInterface::Core *core, const KPluginMetaData &data, const QVariantList &);
     ~KOrganizerPlugin() override;
 
-    Q_REQUIRED_RESULT bool isRunningStandalone() const override;
+    [[nodiscard]] bool isRunningStandalone() const override;
     int weight() const override
     {
         return 400;
     }
 
-    Q_REQUIRED_RESULT bool canDecodeMimeData(const QMimeData *) const override;
+    [[nodiscard]] bool canDecodeMimeData(const QMimeData *) const override;
     void processDropEvent(QDropEvent *) override;
 
     KontactInterface::Summary *createSummaryWidget(QWidget *parent) override;
 
-    Q_REQUIRED_RESULT QStringList invisibleToolbarActions() const override;
+    [[nodiscard]] QStringList invisibleToolbarActions() const override;
 
     void select() override;
 

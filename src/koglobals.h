@@ -31,11 +31,11 @@ public:
 
     ~KOGlobals();
 
-    Q_REQUIRED_RESULT QMap<QDate, QStringList> holiday(const QDate &start, const QDate &end) const;
+    [[nodiscard]] QMap<QDate, QStringList> holiday(const QDate &start, const QDate &end) const;
 
-    Q_REQUIRED_RESULT int firstDayOfWeek() const;
+    [[nodiscard]] int firstDayOfWeek() const;
 
-    Q_REQUIRED_RESULT int getWorkWeekMask();
+    [[nodiscard]] int getWorkWeekMask();
 
     /**
        Set which holiday regions the user wants to use.
@@ -45,7 +45,7 @@ public:
 
     /** return the HolidayRegion object or 0 if none has been defined
      */
-    Q_REQUIRED_RESULT QList<KHolidays::HolidayRegion *> holidays() const;
+    [[nodiscard]] QList<KHolidays::HolidayRegion *> holidays() const;
 
 protected:
     KOGlobals();

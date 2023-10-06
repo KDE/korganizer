@@ -34,22 +34,22 @@ public:
     explicit KOTimelineView(QWidget *parent = nullptr);
     ~KOTimelineView() override;
 
-    Q_REQUIRED_RESULT Akonadi::Item::List selectedIncidences() override;
-    Q_REQUIRED_RESULT KCalendarCore::DateList selectedIncidenceDates() override;
-    Q_REQUIRED_RESULT int currentDateCount() const override;
+    [[nodiscard]] Akonadi::Item::List selectedIncidences() override;
+    [[nodiscard]] KCalendarCore::DateList selectedIncidenceDates() override;
+    [[nodiscard]] int currentDateCount() const override;
     void showDates(const QDate &, const QDate &, const QDate &preferredMonth = QDate()) override;
     void showIncidences(const Akonadi::Item::List &incidenceList, const QDate &date) override;
     void updateView() override;
     void changeIncidenceDisplay(const Akonadi::Item &incidence, Akonadi::IncidenceChanger::ChangeType) override;
-    Q_REQUIRED_RESULT int maxDatesHint() const override
+    [[nodiscard]] int maxDatesHint() const override
     {
         return 0;
     }
 
-    Q_REQUIRED_RESULT bool eventDurationHint(QDateTime &startDt, QDateTime &endDt, bool &allDay) override;
+    [[nodiscard]] bool eventDurationHint(QDateTime &startDt, QDateTime &endDt, bool &allDay) override;
     void setIncidenceChanger(Akonadi::IncidenceChanger *changer) override;
 
-    Q_REQUIRED_RESULT CalendarSupport::CalPrinterBase::PrintType printType() const override;
+    [[nodiscard]] CalendarSupport::CalPrinterBase::PrintType printType() const override;
 
 public Q_SLOTS:
     void calendarAdded(const Akonadi::CollectionCalendar::Ptr &calendar) override;

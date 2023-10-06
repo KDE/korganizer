@@ -64,10 +64,10 @@ public:
     KCheckableProxyModel *collectionSelectionProxyModel() const;
     void setCollectionSelectionProxyModel(KCheckableProxyModel *);
 
-    Q_REQUIRED_RESULT Akonadi::Collection selectedCollection() const;
-    Q_REQUIRED_RESULT Akonadi::Collection::List checkedCollections() const;
-    Q_REQUIRED_RESULT bool isChecked(const Akonadi::Collection &) const;
-    Q_REQUIRED_RESULT Akonadi::Collection currentCalendar() const;
+    [[nodiscard]] Akonadi::Collection selectedCollection() const;
+    [[nodiscard]] Akonadi::Collection::List checkedCollections() const;
+    [[nodiscard]] bool isChecked(const Akonadi::Collection &) const;
+    [[nodiscard]] Akonadi::Collection currentCalendar() const;
 
 Q_SIGNALS:
     void collectionEnabled(const Akonadi::Collection &);

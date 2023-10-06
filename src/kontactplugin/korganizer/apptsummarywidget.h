@@ -44,7 +44,7 @@ public:
     }
 
 protected:
-    Q_REQUIRED_RESULT bool eventFilter(QObject *obj, QEvent *e) override;
+    [[nodiscard]] bool eventFilter(QObject *obj, QEvent *e) override;
 
 private Q_SLOTS:
     void updateView();

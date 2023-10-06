@@ -58,7 +58,7 @@ private:
 
     int span(const KCalendarCore::Event::Ptr &event) const;
     int dayof(const KCalendarCore::Event::Ptr &event, const QDate &date) const;
-    Q_REQUIRED_RESULT bool initHolidays();
+    [[nodiscard]] bool initHolidays();
     void dateDiff(const QDate &date, int &days, int &years) const;
     void createLabels();
 

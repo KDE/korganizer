@@ -28,7 +28,7 @@ public:
 protected:
     void loadUiFiles();
     void loadActivePages(const QStringList &);
-    Q_REQUIRED_RESULT QStringList saveActivePages();
+    [[nodiscard]] QStringList saveActivePages();
 
     virtual QString localUiDir() = 0;
     virtual QString uiPath() = 0;
