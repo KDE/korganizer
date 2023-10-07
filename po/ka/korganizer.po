@@ -8,7 +8,7 @@ msgstr ""
 "Project-Id-Version: korganizer\n"
 "Report-Msgid-Bugs-To: https://bugs.kde.org\n"
 "POT-Creation-Date: 2023-09-27 01:41+0000\n"
-"PO-Revision-Date: 2023-10-04 09:10+0200\n"
+"PO-Revision-Date: 2023-10-06 05:17+0200\n"
 "Last-Translator: Temuri Doghonadze <temuri.doghonadze@gmail.com>\n"
 "Language-Team: Georgian <kde-i18n-doc@kde.org>\n"
 "Language: ka\n"
@@ -3176,6 +3176,8 @@ msgid ""
 "Enable this option to include birthdays from your address book in the "
 "upcoming special occasions summary."
 msgstr ""
+"ამ პარამეტრის ჩართვა თქვენი მისამართების წიგნიდან დაბადების დღეებს უახლოეს "
+"სპეციალური თარიღების შეჯამებაში გამოაჩენს."
 
 #. i18n: ectx: property (text), widget (QCheckBox, mShowBirthdaysFromKABBox)
 #: kontactplugin/specialdates/sdsummaryconfig_base.ui:215
@@ -3196,6 +3198,8 @@ msgid ""
 "Enable this option to include anniversaries from your address book in the "
 "upcoming special occasions summary."
 msgstr ""
+"ამ პარამეტრის ჩართვა თქვენი მისამართების წიგნიდან იუბილეებს უახლოეს "
+"სპეციალური თარიღების შეჯამებაში გამოაჩენს."
 
 #. i18n: ectx: property (text), widget (QCheckBox, mShowAnniversariesFromKABBox)
 #: kontactplugin/specialdates/sdsummaryconfig_base.ui:231
@@ -3365,6 +3369,8 @@ msgid ""
 "Please properly configure at least 1 work day in the Time and Date "
 "preferences."
 msgstr ""
+"სამუშაო კვირის ჩვენება შეუძლებელია, რადგან სამუშაო დღეები მორგებული არაა. "
+"მიუთითეთ 1 დღე მაინც, დროისა და თარიღის მორგების ფანჯარაში."
 
 #: prefs/koprefsdialogcolorsandfonts.cpp:41
 #, kde-format
@@ -4225,6 +4231,10 @@ msgid ""
 "drawn in the color of its calendar.  Please use the Colors and Fonts "
 "configuration page for setting these colors."
 msgstr ""
+"აირჩიეთ პარამეტრი \"ჭდე შიგნით, კალენდარი გარეთ\", თუ გნებავთ, კალენდრის "
+"ელემენტები მათი ასოცირებული ჭდის ფერით დაიხატოს, ელემენტის საზღვარი კი მისი "
+"კალენდრის ფერით.  ამ ფერების დასაყენებლად მორგების ფანჯრის ფერებისა და "
+"ფონტების ჩანართი გამოიყენეთ."
 
 #. i18n: ectx: tooltip, entry, group (Agenda View)
 #: settings/korganizer.kcfg:191
@@ -4253,6 +4263,10 @@ msgid ""
 "drawn in the color of its tag.  Please use the Colors and Fonts "
 "configuration page for setting these colors."
 msgstr ""
+"აირჩიეთ პარამეტრი \"კალენდარი შიგნით, ჭდე გარეთ\", თუ გნებავთ, კალენდრის "
+"ელემენტები მათი ასოცირებული კალენდრის ფერით დაიხატოს, ელემენტის საზღვარი კი "
+"მისი ჭდის ფერით.  ამ ფერების დასაყენებლად მორგების ფანჯრის ფერებისა და "
+"ფონტების ჩანართი გამოიყენეთ."
 
 #. i18n: ectx: tooltip, entry, group (Agenda View)
 #: settings/korganizer.kcfg:196
@@ -4971,6 +4985,9 @@ msgid ""
 "your views. Daily and weekly recurring items may take a lot of space, so it "
 "might be handy to hide them."
 msgstr ""
+"აირჩიეთ ეს პარამეტრები, თუ არ გნებავთ, თქვენს ხედებში, განმეორებადი "
+"მოვლენები და გასაკეთებლები გამოჩნდეს. დღეში ან კვირაში განმეორებად "
+"ელემენტები ბევრ ადგილს ხარჯავენ და შეიძლება, სასარგებლო იყოს, დამალოთ ისინი."
 
 #. i18n: ectx: property (text), widget (QCheckBox, mRecurringCheck)
 #: ui/filteredit_base.ui:124
@@ -5035,6 +5052,9 @@ msgid ""
 "been reached. (Note that the start date is not the due date of the to-do "
 "item.)"
 msgstr ""
+"ეს პარამეტრი თქვენი სიიდან ყველა იმ გასაკეთებელს დამალავს, რომლის დაწყების "
+"თარიღიც ჯერ არ დამდგარა. (დაიმახსოვრეთ, რომ გასაკეთებლებისთვის დაწყების დრო "
+"და ელემენტის დრო ერთი და იგივე არაა.)"
 
 #. i18n: ectx: property (text), widget (QCheckBox, mHideInactiveTodosCheck)
 #: ui/filteredit_base.ui:221
@@ -5055,6 +5075,8 @@ msgid ""
 "When this option is chosen, this filter will show all items which do <i>not</"
 "i> contain any of the selected tags."
 msgstr ""
+"როცა ამ პარამეტრს აირჩევთ, ეს ფილტრი აჩვენებს ყველა ელემენტს, რომელიც, "
+"შერჩეულ ჭდეებს <i>არ</I>შეიცავს."
 
 #. i18n: ectx: property (text), widget (QRadioButton, mCatHideCheck)
 #: ui/filteredit_base.ui:275
@@ -5093,6 +5115,10 @@ msgid ""
 "Only to-dos which have least one attendee will be checked.  If you are not "
 "in the list of attendees the to-do will be hidden."
 msgstr ""
+"ეს პარამეტრი დამალავს თქვენი სიიდან ყველა გასაკეთებელს, რომელიც ვინმე "
+"სხვაზეა მინიჭებული.<br>\n"
+"შემოწმდება მხოლოდ გასაკეთებლები, რომლებსაც ერთი დამსწრე მანც გააჩნია.   თუ "
+"თქვენ გასაკეთებლის დამსწრეების სიაში არ ბრძანდებით, ის დაიმალება."
 
 #. i18n: ectx: property (text), widget (QCheckBox, mHideTodosNotAssignedToMeCheck)
 #: ui/filteredit_base.ui:318
