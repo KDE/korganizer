@@ -8,7 +8,7 @@ msgstr ""
 "Project-Id-Version: korganizer\n"
 "Report-Msgid-Bugs-To: https://bugs.kde.org\n"
 "POT-Creation-Date: 2023-09-27 01:41+0000\n"
-"PO-Revision-Date: 2023-10-06 05:17+0200\n"
+"PO-Revision-Date: 2023-10-07 05:56+0200\n"
 "Last-Translator: Temuri Doghonadze <temuri.doghonadze@gmail.com>\n"
 "Language-Team: Georgian <kde-i18n-doc@kde.org>\n"
 "Language: ka\n"
@@ -2090,6 +2090,21 @@ msgid ""
 "custom fields with an application name of %2.  To change the application "
 "name to be edited, set the widget name in Qt Designer.</p></qt>"
 msgstr ""
+"<qt><p>ეს სექცია, საშუალებას გაძლევთ, საკუთარი GUI ელემენტები დაამატოთ "
+"('<i>ვიჯეტები</i>') %1-ში თქვენი საკუთარი მნიშვნელობების დასაამახსოვრებლად. "
+"იმოქმედეთ, როგორც აღწერილია ქვემოთ:</p><ol><li>დააწკაპუნეთ '<i>Qt Designer-"
+"ით ჩასწორებაზე</i>'</li><li> დიალოგურ ფანჯარაში აირჩიეთ '<i>ვიჯეტი</i>', "
+"შემდეგ კი დააწკაპუნეთ ღილაკზე <i>დიახ</i></li><li>დაამატეთ თქვენი ვიჯეტები "
+"ფორმას</li><li>შეინახეთ ფაილი Qt Designer-ის მიერ შემოთავაზებულ საქაღალდეში</"
+"li><li>დახურეთ Qt Designer</li></ol><p>იმ შემთხვევაში, თუ დიზაინიერის ფაილი "
+"(*.ui) უკვე გაქვთ, უბრალოდ მონიშნეთ '<i>გვერდის შემოტანა</i>'</"
+"p><p><b>მნიშვნელოვანია:</b> ფორმაში ყველა შეყვანის ვიჯეტის სახელი, რომელსაც "
+"ფორმაში მოათავსებთ, '<i>X_</i>'-ით უნდა იწყებოდეს. ასე რომ, თუ გნებავთ, "
+"ვიჯეტი თქვენს ჩანაწერს, '<i>X-Foo</i>' ემთხვეოდეს, დააყენეთ ვიჯეტის თვისება "
+"<i>name</i> მნიშვნელობაზე '<i>X_Foo</i>'.</p><p><b>მნიშვნელოვანია:</b> "
+"ვიჯეტი ჩაასწორებს მომხმარებლის ველებს აპლიკაციის სახელით %2. ჩასასწროებელი "
+"აპლიკაციის სახელის შესაცვლელად Qt Designer-ში ვიჯეტის სახელი დააყენეთ.</p></"
+"qt>"
 
 #: kcmdesignerfields.cpp:325
 #, kde-format
@@ -5043,6 +5058,10 @@ msgid ""
 "items will be hidden, that have been marked finished longer than 24 hours "
 "ago."
 msgstr ""
+"აქ შეგიძლიათ, მიუთითოთ დღეების რაოდენობა, რომელშიც გასაკეთებლები უნდა "
+"დასრულდეს, რათა ის სიიდან დაიმალოს. თუ აირჩევთ \"დაუყოვნებლივ\", ყველა "
+"დასრულებული გასაკეთებელი დაიმალება. თუ, მაგალითად, აირჩევთ მნიშვნელობას 1, "
+"დაიმალება ყველა გასაკეთებელი, რომელიც 24 საათზე მეტი ხნის წინ დასრულდა."
 
 #. i18n: ectx: property (whatsThis), widget (QCheckBox, mHideInactiveTodosCheck)
 #: ui/filteredit_base.ui:218
@@ -5140,6 +5159,9 @@ msgid ""
 "into account when inviting you for a meeting. Only the times you have "
 "already busy are published, not why they are busy."
 msgstr ""
+"თავისუფალი/დაკავებულობის ინფორმაციის გამოქვეყნებით სხვებს საშუალებას აძლევთ "
+"სხვებს, შეხვედრაზე მოწვევისას, თქვენი კალენდარიც გაითვალისწინოს. "
+"გამოქვეყნდება დროები როცა არ გცალიათ. მიზეზი კი, რატომ არ გცალიათ - არა."
 
 #. i18n: ectx: property (whatsThis), widget (QCheckBox, publishEnable)
 #: ui/kogroupwareprefspage.ui:69
@@ -5152,6 +5174,14 @@ msgid ""
 "as the Kolab2 server taking care of publishing your Free/Busy information "
 "and manages the access to it from other users."
 msgstr ""
+"დასვით ეს თოლია, თუ გნებავთ, თქვენი თავისუფალი/დაკავებულობის ინფორმაცია "
+"ავტომატურად აიტვირთოს.\n"
+"შესაძლებელია, გამოტოვოთ ეს პარამეტრი და თქვენი თავისუფალი/დაკავებულობის "
+"ინფორმაცია ან ელფოსტით მიიწერეთ, ან ატვირთეთ KOrganizer-ის დაგეგმვის მენიუს "
+"გამოყენებით.\n"
+"შენიშვნა: თუ 'KOrganizer' 'KDE Kolab'-ის კლიენტად გამოიყენება, ეს საჭირო "
+"არა, რადგან თქვენი თავისუფალი/დაკავებულობის ინფორმაციის გამოქვეყნებაზე და "
+"მასზე სხვა მომხმარებლის წვდომაზე Kolab2-ის სერვერი აგებს პასუხს."
 
 #. i18n: ectx: property (text), widget (QCheckBox, publishEnable)
 #: ui/kogroupwareprefspage.ui:72
@@ -5168,6 +5198,8 @@ msgid ""
 "This configuration is only effective in case you choose to publish your "
 "information automatically."
 msgstr ""
+"აქ შეგიძლიათ ატვირთვებს შორის მინიმალური ინტერვალი დააყენოთ. ამ პარამეტრს "
+"მნიშვნელობა მხოლოდ მაშინ აქვს, როცა ინფორმაციას ავტომატურად აქვეყნებთ."
 
 #. i18n: ectx: property (text), widget (QLabel, publishDelayLabel)
 #: ui/kogroupwareprefspage.ui:99
@@ -5216,6 +5248,9 @@ msgid ""
 "published here.\n"
 "Ask the server administrator for this information."
 msgstr ""
+"შეიყვანეთ სერვერის ბმული, რომელზეც თავისუფალი/დაკავებულის ინფორმაცია "
+"გამოქვეყნდება.\n"
+"ეს ინფორმაცია სერვერის ადმინისტრატორმა უნდა მოგაწოდოთ."
 
 #. i18n: ectx: property (whatsThis), widget (QLineEdit, publishPassword)
 #. i18n: ectx: property (whatsThis), widget (QLabel, textLabel2)
@@ -5247,6 +5282,12 @@ msgid ""
 "default your UID would be your email address on the Kolab2 server but it may "
 "also be different. In the last case enter your UID."
 msgstr ""
+"შეიყვანეთ სერვერზე თქვენი ანგარიშით შესვლისას საჭირო ინფორმაცია.\n"
+"\n"
+"Kolab2 სერვერის სპეციფიკურობა: დაარეგისტრირეს თქვენი UID (უნიკალური "
+"იდენტიფიკატორი). ნაგულისხმევად თქვენი UID Kolab2 სერვერზე არსებული თქვენი "
+"ელფოსტის მისმართია, მაგრამ, ის შეიძლება, განსხვავდებოდეს, UID-ის შემთხვევაში "
+"მაინც."
 
 #. i18n: ectx: property (text), widget (QLabel, TextLabel6)
 #: ui/kogroupwareprefspage.ui:258
@@ -5266,6 +5307,11 @@ msgid ""
 "For security reasons, it is not recommended to store your password in the "
 "configuration file."
 msgstr ""
+"ამ თოლიის დასმა KOrganizer-ს თქვენს პაროლებს დაამახსოვრებინებს და ყოველ "
+"ჯერზე თავისუფალი/დაკავებულობის ინფორმაციის ატვირთვას აღარ გკითხავთ, მისი "
+"ფაილში დამახსოვრებით.\n"
+"უსაფრთხოების მიზნით, პაროლის კონფიგურაციის ფაილში დამახსოვრება რეკომენდებული "
+"არაა."
 
 #. i18n: ectx: property (text), widget (QCheckBox, publishSavePassword)
 #: ui/kogroupwareprefspage.ui:287
@@ -5299,6 +5345,9 @@ msgid ""
 "By retrieving Free/Busy information that others have published, you can take "
 "their calendar into account when inviting them to a meeting."
 msgstr ""
+"თავისუფალი/დაკავებულობის ინფორმაციის, რომლებიც სხვებმა გამოაქვეყნეს, "
+"მიღებით, მათი შეხვედრაზე მოწვევისას, შეგიძლიათ, მათი კალენდარი "
+"გაითვალისწინოთ."
 
 #. i18n: ectx: property (whatsThis), widget (QCheckBox, retrieveEnable)
 #: ui/kogroupwareprefspage.ui:366
@@ -5308,6 +5357,9 @@ msgid ""
 "automatically. Note that you have to fill the correct server information to "
 "make this possible."
 msgstr ""
+"დასვით ეს თოლია, თუ გნებავთ, სხვების თავისუფალი/დაკავებულის ინფორმაცია "
+"ავტომატურად მიიღოთ. დაიმახსოვრეთ, რომ ამისთვის სერვერის ინფორმაცია სწორად "
+"უნდა შეავსოთ."
 
 #. i18n: ectx: property (text), widget (QCheckBox, retrieveEnable)
 #: ui/kogroupwareprefspage.ui:369
@@ -5332,6 +5384,10 @@ msgid ""
 "busy file in the format user.ifb (for example joe.ifb). Ask the server "
 "Administrator if you are not sure about how to configure this option."
 msgstr ""
+"დასვით ეს თოლია, რათა თავისუფალი/დაკავებულობის ფაილი \"user@domain.ifb\" "
+"ფორმატში (მაგ: joe@company.com.ifb) გადმოვწერო. წინააღმდეგ შემთხვევაში ამ "
+"ფაილს user.ifb (მაგ: joe.ifb) ფორმატში გამოვითხოვ. ამ პარამეტრის მორგების "
+"დეტალებისთვის სერვერის ადმინისტრატორს მისწერეთ."
 
 #. i18n: ectx: property (text), widget (QCheckBox, fullDomainRetrieval)
 #: ui/kogroupwareprefspage.ui:385
@@ -5410,6 +5466,12 @@ msgid ""
 "For example, the search pattern “meet*boss” matches “Meeting with boss”. The "
 "pattern “c?t” would match “cat”, “cot”, and so on."
 msgstr ""
+"დაათვალიერეთ სხვადასხვა ველები, რათა ნახოთ, შეიცავენ თუ არა ისინი ძებნის "
+"ნიმუშს: ნიმუში \"შეხვედრა\" დაემთხვევა \"პირველი შეხვედრა\"-ს. ვაილდკარდი \"*"
+"\"(ემთხვევა ნებისმერი რაოდენობის სიმბოლოს) და \"?\" (ემთხვევა ერთ სიმბოლოს) "
+"მხარდაჭერილია.  მაგალითად, თუ ძიების ნიმუში \"უფროსთან*შეხვედრა\"-ა, ს "
+"დაემთხვევა \"უფროსთან შეხვედრას\". ნიმუში \"c?t\" დაემთხვევა როგორც \"cat\"-"
+"ს, ისე \"cot\"-ს და ა.შ."
 
 #. i18n: ectx: property (text), widget (QLineEdit, searchEdit)
 #: ui/searchdialog_base.ui:55
@@ -5436,6 +5498,9 @@ msgid ""
 "Check this box if you want to search for events that match the search "
 "pattern and have start dates or end dates in the given date range."
 msgstr ""
+"დასვით ეს თოლია, თუ გნებავთ, მოძებნოთ მოვლენები, რომლებიც თქვენს ძებნის "
+"ნიმუშს ემთხვევა და მისი დასაწყისისა და დასასრულის თარიღები მითითებულ "
+"შუალედშია."
 
 #. i18n: ectx: property (text), widget (QCheckBox, eventsCheck)
 #: ui/searchdialog_base.ui:79
@@ -5457,6 +5522,9 @@ msgid ""
 "Check this box if you want to search for journal entries that match the "
 "search pattern and have start dates in the given date range."
 msgstr ""
+"დასვით ეს თოლია, თუ გნებავთ, მოძებნოთ ჟურნალის ჩანაწერები, რომლებიც თქვენს "
+"ძებნის ნიმუშს ემთხვევა და მისი დასაწყისისა და დასასრულის თარიღები მითითებულ "
+"შუალედშია."
 
 #. i18n: ectx: property (text), widget (QCheckBox, journalsCheck)
 #: ui/searchdialog_base.ui:95
@@ -5477,6 +5545,9 @@ msgid ""
 "Check this box if you want to search for to-dos that match the search "
 "pattern and have due dates in the given date range."
 msgstr ""
+"დასვით ეს თოლია, თუ გნებავთ, მოძებნოთ გასაკეთებლები, რომლებიც თქვენს ძებნის "
+"ნიმუშს ემთხვევა და მისი დასაწყისისა და დასასრულის თარიღები მითითებულ "
+"შუალედშია."
 
 #. i18n: ectx: property (text), widget (QCheckBox, todosCheck)
 #: ui/searchdialog_base.ui:108
@@ -5658,6 +5729,10 @@ msgid ""
 "after it, or end during the date range but start before it, will be excluded "
 "from the search results."
 msgstr ""
+"დასვით ეს თოლია, თუ გნებავთ, იპოვოთ, მხოლოდ, ის მოვლენები, რომლებიც სრულად "
+"მითითებულ დროის შუალედში ხდება.  მოვლენები, რომლებიც იწყება მითითებულ "
+"შუალედში, მაგრამ მის შემდეგ სრულდება, ან სრულდება მითითებულ შუალედში, მაგრამ "
+"იწყება მის დასაწყისამდე, ძებნის შედეგებიდან ამოღებული იქნება."
 
 #. i18n: ectx: property (text), widget (QCheckBox, inclusiveCheck)
 #: ui/searchdialog_base.ui:286
@@ -5672,6 +5747,9 @@ msgid ""
 "Include to-dos that have a start date, due date,  or completion date in the "
 "date range specified, or have neither a start date nor an end date."
 msgstr ""
+"იმ გასაკეთებლების ჩასმა, რომლებსაც დასაწყისის,   მისი დროის ან დასრულების "
+"თარიღი დროის მითითებულ შუალედშია ან არ აქვს არც დასაწყისის თარიღი და არც "
+"დასრულების."
 
 #. i18n: ectx: property (whatsThis), widget (QCheckBox, includeUndatedTodos)
 #: ui/searchdialog_base.ui:296
@@ -5682,6 +5760,11 @@ msgid ""
 "nor an end date.  If the box is unchecked, only to-dos that have a due date "
 "in the date range will be displayed."
 msgstr ""
+"დასვით ეს თოლია, რომ მოვძებნო გასაკეთებლები, რომლებსაც დაწყების თარიღი, "
+"დროის თარიღი ან დასრულების თარიღი მითითებული თარიღის შუალედში აქვს, ან არ "
+"აქვს მითითებული არც დასაწყისის, არც დასასრულის თარიღები.  თუ ეს თოლია "
+"მოხსნილია, ნაჩვენები იქნება გასაკეთებლები, რომლის დროის დადგომაც მითითებულ "
+"შუალედშია."
 
 #. i18n: ectx: property (text), widget (QCheckBox, includeUndatedTodos)
 #: ui/searchdialog_base.ui:299
