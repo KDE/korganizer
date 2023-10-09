@@ -9,7 +9,7 @@ msgstr ""
 "Project-Id-Version: Korganizer\n"
 "Report-Msgid-Bugs-To: https://bugs.kde.org\n"
 "POT-Creation-Date: 2023-09-27 01:41+0000\n"
-"PO-Revision-Date: 2023-03-01 01:54+0100\n"
+"PO-Revision-Date: 2023-10-08 23:33+0200\n"
 "Last-Translator: Shinjo Park <kde@peremen.name>\n"
 "Language-Team: Korean <kde-kr@kde.org>\n"
 "Language: ko\n"
@@ -17,7 +17,7 @@ msgstr ""
 "Content-Type: text/plain; charset=UTF-8\n"
 "Content-Transfer-Encoding: 8bit\n"
 "Plural-Forms: nplurals=1; plural=0;\n"
-"X-Generator: Lokalize 21.12.3\n"
+"X-Generator: Lokalize 22.12.3\n"
 
 #, kde-format
 msgctxt "NAME OF TRANSLATORS"
@@ -1094,8 +1094,7 @@ msgid "Unable to save calendar to the file %1."
 msgstr "%1 파일로 캘린더를 저장할 수 없습니다."
 
 #: actionmanager.cpp:1036
-#, fuzzy, kde-format
-#| msgid "Error"
+#, kde-format
 msgctxt "@title:window"
 msgid "Error"
 msgstr "오류"
@@ -1161,8 +1160,7 @@ msgid "Removing attachments from an email might invalidate its signature."
 msgstr "이메일에서 첨부를 삭제하면 디지털 서명을 무효화할 수도 있습니다."
 
 #: actionmanager.cpp:1461
-#, fuzzy, kde-format
-#| msgid "Remove Attachments"
+#, kde-format
 msgctxt "@title:window"
 msgid "Remove Attachments"
 msgstr "첨부 삭제"
@@ -1439,8 +1437,7 @@ msgid "Do you want to dissociate the occurrence on %1 from the recurrence?"
 msgstr "%1의 반복 항목을 전체 반복에서 분리하시겠습니까?"
 
 #: calendarview.cpp:1575 calendarview.cpp:1587 calendarview.cpp:2246
-#, fuzzy, kde-format
-#| msgid "KOrganizer Confirmation"
+#, kde-format
 msgctxt "@title:window"
 msgid "KOrganizer Confirmation"
 msgstr "KOrganizer 확인"
@@ -1485,8 +1482,7 @@ msgid "Dissociating the future occurrences failed."
 msgstr "미래 항목을 분리할 수 없습니다."
 
 #: calendarview.cpp:1616 calendarview.cpp:1618
-#, fuzzy, kde-format
-#| msgid "Dissociating Failed"
+#, kde-format
 msgctxt "@title:window"
 msgid "Dissociating Failed"
 msgstr "분리 실패"
@@ -1635,8 +1631,7 @@ msgid "Delete all completed to-dos from checked calendars?"
 msgstr "모든 완료된 할 일을 선택한 캘린더에서 삭제하시겠습니까?"
 
 #: calendarview.cpp:2415
-#, fuzzy, kde-format
-#| msgid "Purge To-dos"
+#, kde-format
 msgctxt "@title:window"
 msgid "Purge To-dos"
 msgstr "할 일 비우기"
@@ -3590,14 +3585,9 @@ msgid "day(s)"
 msgstr "일"
 
 #: prefs/koprefsdialogtime.cpp:217
-#, fuzzy, kde-format
-#| msgid ""
-#| "*.ogg *.wav *.mp3 *.wma *.flac *.aiff *.raw *.au *.ra|Audio Files (*.ogg "
-#| "*.wav *.mp3 *.wma *.flac *.aiff *.raw *.au *.ra)"
+#, kde-format
 msgid "Audio Files (*.ogg *.wav *.mp3 *.wma *.flac *.aiff *.raw *.au *.ra)"
-msgstr ""
-"*.ogg *.wav *.mp3 *.wma *.flac *.aiff *.raw *.au *.ra|오디오 파일 (*.ogg *."
-"wav *.mp3 *.wma *.flac *.aiff *.raw *.au *.ra)"
+msgstr "오디오 파일 (*.ogg *.wav *.mp3 *.wma *.flac *.aiff *.raw *.au *.ra)"
 
 #: prefs/koprefsdialogviews.cpp:42
 #, kde-format
@@ -3673,8 +3663,7 @@ msgid ""
 msgstr "모든 설정을 기본값으로 초기화합니다. 모든 변경 사항이 초기화됩니다."
 
 #: prefs/kprefsdialog.cpp:869
-#, fuzzy, kde-format
-#| msgid "Setting Default Preferences"
+#, kde-format
 msgctxt "@title:window"
 msgid "Setting Default Preferences"
 msgstr "기본 설정 변경"

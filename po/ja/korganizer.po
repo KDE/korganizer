@@ -1484,8 +1484,7 @@ msgid "Do you want to dissociate the occurrence on %1 from the recurrence?"
 msgstr "%1 のイベントを繰り返しから分離しますか？"
 
 #: calendarview.cpp:1575 calendarview.cpp:1587 calendarview.cpp:2246
-#, fuzzy, kde-format
-#| msgid "KOrganizer Confirmation"
+#, kde-format
 msgctxt "@title:window"
 msgid "KOrganizer Confirmation"
 msgstr "KOrganizer 確認"
@@ -6097,38 +6096,3 @@ msgstr "%1"
 msgctxt "4 digit year"
 msgid "%1"
 msgstr "%1年"
-
-#~ msgid "Copying Failed"
-#~ msgstr "コピー失敗"
-
-#~ msgid "Moving Failed"
-#~ msgstr "移動失敗"
-
-#, fuzzy
-#~| msgid "Send &Invitation to Attendees"
-#~ msgctxt "A collection of all declined invidations."
-#~ msgid "Declined Invitations"
-#~ msgstr "参加者に出席依頼を送信(&I)"
-
-#, fuzzy
-#~| msgid "Send &Invitation to Attendees"
-#~ msgctxt "A collection of all open invidations."
-#~ msgid "Open Invitations"
-#~ msgstr "参加者に出席依頼を送信(&I)"
-
-# longDayName
-#, fuzzy
-#~| msgid "%1"
-#~ msgctxt "@title:window"
-#~ msgid "%1"
-#~ msgstr "%1"
-
-#, fuzzy
-#~| msgid "KOrganizer Confirmation"
-#~ msgid "KOrganizer Configure User FeedBack"
-#~ msgstr "KOrganizer 確認"
-
-#, fuzzy
-#~| msgid "(c), 2004 Tobias Koenig"
-#~ msgid "(c) 2004 Tobias Koenig"
-#~ msgstr "(c), 2004 Tobias Koenig"
