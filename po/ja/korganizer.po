@@ -6115,13 +6115,3 @@ msgstr "%1"
 msgctxt "4 digit year"
 msgid "%1"
 msgstr "%1年"
-
-#, fuzzy
-#~| msgid "KOrganizer Confirmation"
-#~ msgid "KOrganizer Configure User FeedBack"
-#~ msgstr "KOrganizer 確認"
-
-#, fuzzy
-#~| msgid "(c), 2004 Tobias Koenig"
-#~ msgid "(c) 2004 Tobias Koenig"
-#~ msgstr "(c), 2004 Tobias Koenig"
