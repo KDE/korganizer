@@ -122,9 +122,9 @@ if(NOT APPLE)
 endif()
 
 set(KDEPIM_HAVE_X11 ${X11_FOUND})
-configure_file(config-korganizer.h.cmake ${CMAKE_CURRENT_BINARY_DIR}/config-korganizer.h)
+configure_file(config-korganizer.h.in ${CMAKE_CURRENT_BINARY_DIR}/config-korganizer.h)
 include_directories(${korganizer_SOURCE_DIR} ${korganizer_BINARY_DIR})
-configure_file(korganizer-version.h.cmake ${CMAKE_CURRENT_BINARY_DIR}/korganizer-version.h @ONLY)
+configure_file(korganizer-version.h.in ${CMAKE_CURRENT_BINARY_DIR}/korganizer-version.h @ONLY)
 
 
 ecm_set_disabled_deprecation_versions(QT 6.5
