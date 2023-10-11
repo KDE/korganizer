@@ -121,7 +121,13 @@ void SearchDialog::doSearch()
 {
     QRegularExpression re;
     re.setPatternOptions(QRegularExpression::CaseInsensitiveOption);
-    re.setPattern(QRegularExpression::wildcardToRegularExpression(m_ui->searchEdit->text()));
+    const QString pattern = QRegularExpression::wildcardToRegularExpression(m_ui->searchEdit->text(),
+                                                                            QRegularExpression::UnanchoredWildcardConversion
+#if QT_VERSION >= QT_VERSION_CHECK(6, 6, 0)
+                                                                                | QRegularExpression::NonPathWildcardConversion
+#endif
+    );
+    re.setPattern(pattern);
     if (!re.isValid()) {
         KMessageBox::error(this,
                            i18nc("@info",
