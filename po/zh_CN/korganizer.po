@@ -3,7 +3,7 @@ msgstr ""
 "Project-Id-Version: kdeorg\n"
 "Report-Msgid-Bugs-To: https://bugs.kde.org\n"
 "POT-Creation-Date: 2023-09-27 01:41+0000\n"
-"PO-Revision-Date: 2023-09-16 10:08\n"
+"PO-Revision-Date: 2023-10-10 14:25\n"
 "Last-Translator: \n"
 "Language-Team: Chinese Simplified\n"
 "Language: zh_CN\n"
@@ -14,8 +14,8 @@ msgstr ""
 "X-Crowdin-Project: kdeorg\n"
 "X-Crowdin-Project-ID: 269464\n"
 "X-Crowdin-Language: zh-CN\n"
-"X-Crowdin-File: /kf5-trunk/messages/korganizer/korganizer.pot\n"
-"X-Crowdin-File-ID: 3875\n"
+"X-Crowdin-File: /kf6-trunk/messages/korganizer/korganizer.pot\n"
+"X-Crowdin-File-ID: 45527\n"
 
 #, kde-format
 msgctxt "NAME OF TRANSLATORS"
@@ -1080,8 +1080,7 @@ msgid "Unable to save calendar to the file %1."
 msgstr "无法将日历保存到文件 %1。"
 
 #: actionmanager.cpp:1036
-#, fuzzy, kde-format
-#| msgid "Error"
+#, kde-format
 msgctxt "@title:window"
 msgid "Error"
 msgstr "错误"
@@ -1147,8 +1146,7 @@ msgid "Removing attachments from an email might invalidate its signature."
 msgstr "删除邮件中的附件可能会使签名失效。"
 
 #: actionmanager.cpp:1461
-#, fuzzy, kde-format
-#| msgid "Remove Attachments"
+#, kde-format
 msgctxt "@title:window"
 msgid "Remove Attachments"
 msgstr "删除附件"
@@ -1421,8 +1419,7 @@ msgid "Do you want to dissociate the occurrence on %1 from the recurrence?"
 msgstr "您想要将发生于 %1 的事件从重现中拆分出来吗？"
 
 #: calendarview.cpp:1575 calendarview.cpp:1587 calendarview.cpp:2246
-#, fuzzy, kde-format
-#| msgid "KOrganizer Confirmation"
+#, kde-format
 msgctxt "@title:window"
 msgid "KOrganizer Confirmation"
 msgstr "KOrganizer 确认"
@@ -1465,8 +1462,7 @@ msgid "Dissociating the future occurrences failed."
 msgstr "拆分未来的事件失败。"
 
 #: calendarview.cpp:1616 calendarview.cpp:1618
-#, fuzzy, kde-format
-#| msgid "Dissociating Failed"
+#, kde-format
 msgctxt "@title:window"
 msgid "Dissociating Failed"
 msgstr "拆分失败"
@@ -1607,8 +1603,7 @@ msgid "Delete all completed to-dos from checked calendars?"
 msgstr "从选中日历中删除所有已完成的待办事项吗？"
 
 #: calendarview.cpp:2415
-#, fuzzy, kde-format
-#| msgid "Purge To-dos"
+#, kde-format
 msgctxt "@title:window"
 msgid "Purge To-dos"
 msgstr "删除待办事项"
@@ -3529,14 +3524,9 @@ msgid "day(s)"
 msgstr "天"
 
 #: prefs/koprefsdialogtime.cpp:217
-#, fuzzy, kde-format
-#| msgid ""
-#| "*.ogg *.wav *.mp3 *.wma *.flac *.aiff *.raw *.au *.ra|Audio Files (*.ogg "
-#| "*.wav *.mp3 *.wma *.flac *.aiff *.raw *.au *.ra)"
+#, kde-format
 msgid "Audio Files (*.ogg *.wav *.mp3 *.wma *.flac *.aiff *.raw *.au *.ra)"
 msgstr ""
-"*.ogg *.wav *.mp3 *.wma *.flac *.aiff *.raw *.au *.ra|音频文件 (*.ogg *.wav "
-"*.mp3 *.wma *.flac *.aiff *.raw *.au *.ra)"
 
 #: prefs/koprefsdialogviews.cpp:42
 #, kde-format
@@ -3612,8 +3602,7 @@ msgid ""
 msgstr "您将会把所有首选项设置为默认值，所有自定义的更改将会丢失。"
 
 #: prefs/kprefsdialog.cpp:869
-#, fuzzy, kde-format
-#| msgid "Setting Default Preferences"
+#, kde-format
 msgctxt "@title:window"
 msgid "Setting Default Preferences"
 msgstr "正在将首选项设为默认"
@@ -5725,17 +5714,3 @@ msgstr "%1"
 msgctxt "4 digit year"
 msgid "%1"
 msgstr "%1"
-
-#~ msgid "Copying Failed"
-#~ msgstr "复制失败"
-
-#~ msgid "Moving Failed"
-#~ msgstr "移动失败"
-
-#~ msgctxt "A collection of all declined invidations."
-#~ msgid "Declined Invitations"
-#~ msgstr "拒绝的邀请"
-
-#~ msgctxt "A collection of all open invidations."
-#~ msgid "Open Invitations"
-#~ msgstr "开放邀请"

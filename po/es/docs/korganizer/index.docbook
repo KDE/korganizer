@@ -1155,7 +1155,7 @@ choose the <menuchoice
 
 <tip
 ><para
->Hay dos accesos rápidos muy útiles para añadir eventos: <itemizedlist>
+>Hay dos atajos de teclado muy útiles para añadir eventos: <itemizedlist>
 <listitem
 ><para
 >Haga doble clic sobre cualquier región de tiempo del evento y, &korganizer; creará automáticamente un evento con la duración predeterminada (que es personalizable en el diálogo de preferencias). Puede añadir inmediatamente el resumen. Los eventos se «ajustan» en incrementos de media hora, redondeando a la media hora más cercana de donde pulsó.</para
@@ -1543,7 +1543,7 @@ choose the <menuchoice
 > <guimenuitem
 >Buscar</guimenuitem
 ></menuchoice
->, o pulse el acceso rápido <keycombo action="simul"
+>, o pulse el atajo de teclado <keycombo action="simul"
 >&Ctrl;<keycap
 >f</keycap
 > </keycombo
@@ -2131,7 +2131,7 @@ choose the <menuchoice
 >Esto muestra el esquema de planificación de disponibilidad a la derecha, donde cada línea representa a uno de los asistentes listado a la izquierda. Las áreas marcadas en el diagrama representan el tiempo ya tomado por otros eventos, las áreas desmarcadas representan tiempo libre desde otros eventos. Puede mover el evento a un diferente punto en el tiempo arrastrándolo con el ratón o cambiarlo de tamaño moviendo los bordes del área resaltada con el ratón.</para>
 
 <para
->La información de disponibilidad solo está disponible si el asistente publica su esquema de disponibilidad y si &korganizer; está configurado correctamente para recuperarla. Para más información sobre la configuración de &korganizer; para recuperar y publicar información de disponibilidad, por favor, compruebe xref linkend=«config»/>. Haciendo doble clic sobre la entrada de un asistente en la lista le permitirá introducir la ubicación de sus información de disponibilidad. </para>
+>La información de disponibilidad solo está disponible si el asistente publica su esquema de disponibilidad y si &korganizer; está configurado correctamente para recuperarla. Para más información sobre la configuración de &korganizer; para recuperar y publicar información de disponibilidad, compruebe <xref linkend="config"/>. Haciendo doble clic sobre la entrada de un asistente en la lista le permitirá introducir la ubicación de sus información de disponibilidad. </para>
 
 <variablelist>
 
@@ -3323,7 +3323,7 @@ choose the <menuchoice
 > si le gustaría pintar elementos de calendario (tanto el interior como el borde) en el color de su calendario asociado.</para>
 
 <para
->Por favor, use la página de configuración <link linkend="config-main-colors"
+>Use la página de configuración <link linkend="config-main-colors"
 >Colores y tipos de letra</link
 > para establecer esos colores.</para>
 </listitem>
@@ -3338,7 +3338,7 @@ choose the <menuchoice
 ><para
 >Marque esta casilla si quiere que el fondo de la vista de agenda se rellene con un color diferente en los días que tienen al menos un evento marcado como ocupado.</para>
 <para
->Por favor, mire en el área de configuración de colores para seleccionar el color de fondo para la vista de ocupado de la agenda de su elección.</para
+>Consulte el área de configuración de colores para seleccionar el color de fondo para la vista de ocupado de la agenda de su elección.</para
 ></listitem>
 </varlistentry>
 
@@ -3390,7 +3390,7 @@ choose the <menuchoice
 ><para
 >Marque esta casilla si quiere que el fondo de la vista de mes se rellene con un color diferente en los días que tengan al menos un evento de día completo marcado como ocupado.</para>
 <para
->Por favor, mire en el área de configuración de colores para seleccionar el color de fondo para la vista de ocupado de la agenda/vista de mes de su elección.</para
+>Consulte el área de configuración de colores para seleccionar el color de fondo para la vista de ocupado de la agenda/vista de mes de su elección.</para
 ></listitem>
 </varlistentry>
 
