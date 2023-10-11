@@ -116,7 +116,13 @@ void SearchDialog::doSearch()
 {
     QRegularExpression re;
     re.setPatternOptions(QRegularExpression::CaseInsensitiveOption);
-    re.setPattern(QRegularExpression::wildcardToRegularExpression(m_ui->searchEdit->text()));
+    QString pattern = QRegularExpression::wildcardToRegularExpression(m_ui->searchEdit->text());
+    // TODO Qt6, pass QRegularExpression::UnanchoredWildcardConversion
+    // (also TODO Qt6.6, pass QRegularExpression::NonPathWildcardConversion)
+    // Hack meanwhile: remove \A and \z from \A(?:searchString)\z"
+    pattern.remove(QStringLiteral(R"(\A)"));
+    pattern.remove(QStringLiteral(R"(\z)"));
+    re.setPattern(pattern);
     if (!re.isValid()) {
         KMessageBox::error(this,
                            i18nc("@info",
