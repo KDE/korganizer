@@ -6,7 +6,7 @@ msgid ""
 msgstr ""
 "Project-Id-Version: KDE 4.3\n"
 "Report-Msgid-Bugs-To: https://bugs.kde.org\n"
-"POT-Creation-Date: 2023-07-24 10:10+0000\n"
+"POT-Creation-Date: 2023-10-12 02:30+0000\n"
 "PO-Revision-Date: 2014-10-05 13:09+0200\n"
 "Last-Translator: Kristóf Kiszel <ulysses@kubuntu.org>\n"
 "Language-Team: Hungarian <kde-l10n-hu@kde.org>\n"
@@ -2059,7 +2059,7 @@ msgctxt "@info:whatsthis"
 msgid "Press this button to start the search."
 msgstr "Nyomja meg ezt a gombot új szűrő definiálásához."
 
-#: dialog/searchdialog.cpp:123
+#: dialog/searchdialog.cpp:129
 #, fuzzy, kde-format
 #| msgid ""
 #| "Invalid search expression, cannot perform the search. Please enter a "
@@ -2073,21 +2073,21 @@ msgstr ""
 "meg a keresési kifejezést, helyettesítő karakterek, például '*' és '?' is "
 "használhatók."
 
-#: dialog/searchdialog.cpp:135
+#: dialog/searchdialog.cpp:141
 #, fuzzy, kde-format
 #| msgid "No items were found that match your search pattern."
 msgctxt "@info"
 msgid "No items were found that match your search pattern."
 msgstr "Nincs találat a keresett mintára."
 
-#: dialog/searchdialog.cpp:136
+#: dialog/searchdialog.cpp:142
 #, fuzzy, kde-format
 #| msgid "Search Results"
 msgctxt "@title:window"
 msgid "Search Results"
 msgstr "Keresési eredmények"
 
-#: dialog/searchdialog.cpp:151
+#: dialog/searchdialog.cpp:157
 #, kde-format
 msgctxt "@label"
 msgid "%1 match"

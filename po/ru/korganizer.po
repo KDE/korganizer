@@ -17,7 +17,7 @@ msgid ""
 msgstr ""
 "Project-Id-Version: korganizer\n"
 "Report-Msgid-Bugs-To: https://bugs.kde.org\n"
-"POT-Creation-Date: 2023-07-24 10:10+0000\n"
+"POT-Creation-Date: 2023-10-12 02:30+0000\n"
 "PO-Revision-Date: 2023-01-12 11:11+0300\n"
 "Last-Translator: Alexander Yavorsky <kekcuha@gmail.com>\n"
 "Language-Team: Russian <kde-russian@lists.kde.ru>\n"
@@ -2016,7 +2016,7 @@ msgctxt "@info:whatsthis"
 msgid "Press this button to start the search."
 msgstr "Нажмите эту кнопку, чтобы начать поиск."
 
-#: dialog/searchdialog.cpp:123
+#: dialog/searchdialog.cpp:129
 #, kde-format
 msgctxt "@info"
 msgid ""
@@ -2025,19 +2025,19 @@ msgid ""
 msgstr ""
 "Неверная строка поиска. Укажите условия поиска, используя символы «*» и «?»."
 
-#: dialog/searchdialog.cpp:135
+#: dialog/searchdialog.cpp:141
 #, kde-format
 msgctxt "@info"
 msgid "No items were found that match your search pattern."
 msgstr "Не найдено ни одного элемента, соответствующего поисковому шаблону."
 
-#: dialog/searchdialog.cpp:136
+#: dialog/searchdialog.cpp:142
 #, kde-format
 msgctxt "@title:window"
 msgid "Search Results"
 msgstr "Результаты поиска"
 
-#: dialog/searchdialog.cpp:151
+#: dialog/searchdialog.cpp:157
 #, kde-format
 msgctxt "@label"
 msgid "%1 match"

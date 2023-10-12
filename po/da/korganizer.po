@@ -10,7 +10,7 @@ msgid ""
 msgstr ""
 "Project-Id-Version: korganizer\n"
 "Report-Msgid-Bugs-To: https://bugs.kde.org\n"
-"POT-Creation-Date: 2023-07-24 10:10+0000\n"
+"POT-Creation-Date: 2023-10-12 02:30+0000\n"
 "PO-Revision-Date: 2020-08-01 11:26+0200\n"
 "Last-Translator: Martin Schlander <mschlander@opensuse.org>\n"
 "Language-Team: Danish <kde-i18n-doc@kde.org>\n"
@@ -1977,7 +1977,7 @@ msgctxt "@info:whatsthis"
 msgid "Press this button to start the search."
 msgstr "Tryk på denne knap for at starte søgningen."
 
-#: dialog/searchdialog.cpp:123
+#: dialog/searchdialog.cpp:129
 #, kde-format
 msgctxt "@info"
 msgid ""
@@ -1987,19 +1987,19 @@ msgstr ""
 "Ugyldigt søgeudtryk, kan ikke udføre søgningen. Indtast et søgeudtryk med "
 "'*' og '?' som jokertegn, hvor det behøves."
 
-#: dialog/searchdialog.cpp:135
+#: dialog/searchdialog.cpp:141
 #, kde-format
 msgctxt "@info"
 msgid "No items were found that match your search pattern."
 msgstr "Ingen elementer som matcher dit søgemønster blev fundet."
 
-#: dialog/searchdialog.cpp:136
+#: dialog/searchdialog.cpp:142
 #, kde-format
 msgctxt "@title:window"
 msgid "Search Results"
 msgstr "Søgeresultater"
 
-#: dialog/searchdialog.cpp:151
+#: dialog/searchdialog.cpp:157
 #, kde-format
 msgctxt "@label"
 msgid "%1 match"

@@ -10,7 +10,7 @@ msgid ""
 msgstr ""
 "Project-Id-Version: korganizer\n"
 "Report-Msgid-Bugs-To: https://bugs.kde.org\n"
-"POT-Creation-Date: 2023-07-24 10:10+0000\n"
+"POT-Creation-Date: 2023-10-12 02:30+0000\n"
 "PO-Revision-Date: 2019-11-05 20:02+0100\n"
 "Last-Translator: Matej Mrenica <matejm98mthw@gmail.com>\n"
 "Language-Team: Slovak <kde-i18n-doc@kde.org>\n"
@@ -2026,7 +2026,7 @@ msgctxt "@info:whatsthis"
 msgid "Press this button to start the search."
 msgstr "Stlačte toto tlačidlo na spustenie hľadania."
 
-#: dialog/searchdialog.cpp:123
+#: dialog/searchdialog.cpp:129
 #, fuzzy, kde-format
 #| msgid ""
 #| "Invalid search expression, cannot perform the search. Please enter a "
@@ -2039,7 +2039,7 @@ msgstr ""
 "Nesprávny výraz na vyhľadávanie, Nemôžem vykonať toto vyhľadávanie Zadajte "
 "výraz s náhradnými znakmi '*' a '?' ak sú potrebné"
 
-#: dialog/searchdialog.cpp:135
+#: dialog/searchdialog.cpp:141
 #, fuzzy, kde-format
 #| msgid "No items were found that match your search pattern."
 msgctxt "@info"
@@ -2047,14 +2047,14 @@ msgid "No items were found that match your search pattern."
 msgstr ""
 "Neboli nájdené žiadne položky, ktoré zodpovedajú vášmu hľadanému výrazu."
 
-#: dialog/searchdialog.cpp:136
+#: dialog/searchdialog.cpp:142
 #, fuzzy, kde-format
 #| msgid "Search Results"
 msgctxt "@title:window"
 msgid "Search Results"
 msgstr "Výsledky hľadania"
 
-#: dialog/searchdialog.cpp:151
+#: dialog/searchdialog.cpp:157
 #, kde-format
 msgctxt "@label"
 msgid "%1 match"

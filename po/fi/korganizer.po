@@ -16,7 +16,7 @@ msgid ""
 msgstr ""
 "Project-Id-Version: korganizer\n"
 "Report-Msgid-Bugs-To: https://bugs.kde.org\n"
-"POT-Creation-Date: 2023-07-24 10:10+0000\n"
+"POT-Creation-Date: 2023-10-12 02:30+0000\n"
 "PO-Revision-Date: 2022-11-05 21:18+0200\n"
 "Last-Translator: Tommi Nieminen <translator@legisign.org>\n"
 "Language-Team: Finnish <kde-i18n-doc@kde.org>\n"
@@ -1991,7 +1991,7 @@ msgctxt "@info:whatsthis"
 msgid "Press this button to start the search."
 msgstr "Aloita haku painamalla tästä."
 
-#: dialog/searchdialog.cpp:123
+#: dialog/searchdialog.cpp:129
 #, kde-format
 msgctxt "@info"
 msgid ""
@@ -2001,19 +2001,19 @@ msgstr ""
 "Virheellinen hakulause: haku ei onnistu.  Anna hakulause, jossa voi tarpeen "
 "mukaan käyttää jokerimerkkejä ”*” ja ”?”."
 
-#: dialog/searchdialog.cpp:135
+#: dialog/searchdialog.cpp:141
 #, kde-format
 msgctxt "@info"
 msgid "No items were found that match your search pattern."
 msgstr "Hakulausettasi vastaavia kohteita ei löytynyt."
 
-#: dialog/searchdialog.cpp:136
+#: dialog/searchdialog.cpp:142
 #, kde-format
 msgctxt "@title:window"
 msgid "Search Results"
 msgstr "Hakutulokset"
 
-#: dialog/searchdialog.cpp:151
+#: dialog/searchdialog.cpp:157
 #, kde-format
 msgctxt "@label"
 msgid "%1 match"

@@ -15,7 +15,7 @@ msgid ""
 msgstr ""
 "Project-Id-Version: korganizer\n"
 "Report-Msgid-Bugs-To: https://bugs.kde.org\n"
-"POT-Creation-Date: 2023-07-24 10:10+0000\n"
+"POT-Creation-Date: 2023-10-12 02:30+0000\n"
 "PO-Revision-Date: 2022-11-13 00:11+0100\n"
 "Last-Translator: Luigi Toscano <luigi.toscano@tiscali.it>\n"
 "Language-Team: Italian <kde-i18n-it@kde.org>\n"
@@ -2003,7 +2003,7 @@ msgctxt "@info:whatsthis"
 msgid "Press this button to start the search."
 msgstr "Premi questo pulsante per avviare la ricerca."
 
-#: dialog/searchdialog.cpp:123
+#: dialog/searchdialog.cpp:129
 #, kde-format
 msgctxt "@info"
 msgid ""
@@ -2013,19 +2013,19 @@ msgstr ""
 "Espressione di ricerca non valida, impossibile cercare. Inserisci una "
 "espressione di ricerca usando i caratteri jolly «*» e «?» dove necessario."
 
-#: dialog/searchdialog.cpp:135
+#: dialog/searchdialog.cpp:141
 #, kde-format
 msgctxt "@info"
 msgid "No items were found that match your search pattern."
 msgstr "Non è stata trovata nessuna voce corrispondente ai criteri di ricerca."
 
-#: dialog/searchdialog.cpp:136
+#: dialog/searchdialog.cpp:142
 #, kde-format
 msgctxt "@title:window"
 msgid "Search Results"
 msgstr "Risultati della ricerca"
 
-#: dialog/searchdialog.cpp:151
+#: dialog/searchdialog.cpp:157
 #, kde-format
 msgctxt "@label"
 msgid "%1 match"

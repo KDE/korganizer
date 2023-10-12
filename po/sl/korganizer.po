@@ -1,7 +1,7 @@
 # translation of korganizer.po to Slovenian
 # Translation of korganizer.po to Slovenian
 # Copyright (C) 2001,2002, 2003, 2004, 2005, 2006 Free Software Foundation, Inc.
-# $Id: korganizer.po 1656527 2023-07-24 10:40:23Z scripty $
+# $Id: korganizer.po 1662173 2023-10-12 03:00:04Z scripty $
 # $Source$
 #
 # Roman Maurer <roman.maurer@hermes.si>, 2001.
@@ -14,7 +14,7 @@ msgid ""
 msgstr ""
 "Project-Id-Version: korganizer\n"
 "Report-Msgid-Bugs-To: https://bugs.kde.org\n"
-"POT-Creation-Date: 2023-07-24 10:10+0000\n"
+"POT-Creation-Date: 2023-10-12 02:30+0000\n"
 "PO-Revision-Date: 2023-03-31 09:14+0200\n"
 "Last-Translator: Matjaž Jeran <matjaz.jeran@amis.net>\n"
 "Language-Team: Slovenian <lugos-slo@lugos.si>\n"
@@ -2006,7 +2006,7 @@ msgctxt "@info:whatsthis"
 msgid "Press this button to start the search."
 msgstr "Pritisnite ta gumb, da začnete iskanje."
 
-#: dialog/searchdialog.cpp:123
+#: dialog/searchdialog.cpp:129
 #, kde-format
 msgctxt "@info"
 msgid ""
@@ -2016,7 +2016,7 @@ msgstr ""
 "Neveljavni iskalni izraz, iskanja ni mogoče opraviti. Vstavite iskalni izraz "
 "z uporabo nadomestnih znakov '*' in '?', kjer je to potrebno."
 
-#: dialog/searchdialog.cpp:135
+#: dialog/searchdialog.cpp:141
 #, kde-format
 msgctxt "@info"
 msgid "No items were found that match your search pattern."
@@ -2024,13 +2024,13 @@ msgstr ""
 "Najdenega ni bilo nobenega predmeta, ki bi se ujemal z vašim iskalnim "
 "vzorcem."
 
-#: dialog/searchdialog.cpp:136
+#: dialog/searchdialog.cpp:142
 #, kde-format
 msgctxt "@title:window"
 msgid "Search Results"
 msgstr "Rezultati iskanja"
 
-#: dialog/searchdialog.cpp:151
+#: dialog/searchdialog.cpp:157
 #, kde-format
 msgctxt "@label"
 msgid "%1 match"
