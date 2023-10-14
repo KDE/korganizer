@@ -15,7 +15,7 @@ msgid ""
 msgstr ""
 "Project-Id-Version: korganizer\n"
 "Report-Msgid-Bugs-To: https://bugs.kde.org\n"
-"POT-Creation-Date: 2023-09-27 01:41+0000\n"
+"POT-Creation-Date: 2023-10-14 01:49+0000\n"
 "PO-Revision-Date: 2021-11-06 10:56+0200\n"
 "Last-Translator: Stelios <sstavra@gmail.com>\n"
 "Language-Team: Greek <kde-i18n-el@kde.org>\n"
@@ -2038,7 +2038,7 @@ msgctxt "@info:whatsthis"
 msgid "Press this button to start the search."
 msgstr "Πατήστε αυτό το κουμπί για να ξεκινήσει η αναζήτηση."
 
-#: dialog/searchdialog.cpp:128
+#: dialog/searchdialog.cpp:134
 #, kde-format
 msgctxt "@info"
 msgid ""
@@ -2049,19 +2049,19 @@ msgstr ""
 "εισάγετε μια έκφραση αναζήτησης χρησιμοποιώντας τους χαρακτήρες "
 "υποκατάστασης '*' και '?' όπου χρειάζονται."
 
-#: dialog/searchdialog.cpp:140
+#: dialog/searchdialog.cpp:146
 #, kde-format
 msgctxt "@info"
 msgid "No items were found that match your search pattern."
 msgstr "Δε βρέθηκε γεγονός που να ταιριάζει στην έκφραση αναζήτησής σας."
 
-#: dialog/searchdialog.cpp:141
+#: dialog/searchdialog.cpp:147
 #, kde-format
 msgctxt "@title:window"
 msgid "Search Results"
 msgstr "Αποτελέσματα αναζήτησης"
 
-#: dialog/searchdialog.cpp:156
+#: dialog/searchdialog.cpp:162
 #, kde-format
 msgctxt "@label"
 msgid "%1 match"

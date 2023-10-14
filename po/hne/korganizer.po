@@ -8,7 +8,7 @@ msgid ""
 msgstr ""
 "Project-Id-Version: korganizer\n"
 "Report-Msgid-Bugs-To: https://bugs.kde.org\n"
-"POT-Creation-Date: 2023-09-27 01:41+0000\n"
+"POT-Creation-Date: 2023-10-14 01:49+0000\n"
 "PO-Revision-Date: 2009-02-28 20:07+0530\n"
 "Last-Translator: Ravishankar Shrivastava <raviratlami@aol.in>\n"
 "Language-Team: Hindi <kde-i18n-doc@lists.kde.org>\n"
@@ -2011,7 +2011,7 @@ msgctxt "@info:whatsthis"
 msgid "Press this button to start the search."
 msgstr "एक नवा छनइया परिभासित करे बर ए बटन ल दबाव."
 
-#: dialog/searchdialog.cpp:128
+#: dialog/searchdialog.cpp:134
 #, kde-format
 msgctxt "@info"
 msgid ""
@@ -2019,21 +2019,21 @@ msgid ""
 "expression using the wildcard characters '*' and '?' where needed."
 msgstr ""
 
-#: dialog/searchdialog.cpp:140
+#: dialog/searchdialog.cpp:146
 #, fuzzy, kde-format
 #| msgid "No events were found matching your search expression."
 msgctxt "@info"
 msgid "No items were found that match your search pattern."
 msgstr "आप मन के खोजे के एक्सप्रेसन्स से कोनो मिलत जुलत घटना नइ मिलिस."
 
-#: dialog/searchdialog.cpp:141
+#: dialog/searchdialog.cpp:147
 #, fuzzy, kde-format
 #| msgid "Search In"
 msgctxt "@title:window"
 msgid "Search Results"
 msgstr "में खोजव"
 
-#: dialog/searchdialog.cpp:156
+#: dialog/searchdialog.cpp:162
 #, kde-format
 msgctxt "@label"
 msgid "%1 match"

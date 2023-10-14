@@ -7,7 +7,7 @@ msgid ""
 msgstr ""
 "Project-Id-Version: kdepim\n"
 "Report-Msgid-Bugs-To: https://bugs.kde.org\n"
-"POT-Creation-Date: 2023-09-27 01:41+0000\n"
+"POT-Creation-Date: 2023-10-14 01:49+0000\n"
 "PO-Revision-Date: 2009-06-08 01:08+0000\n"
 "Last-Translator: Vilson Gjeci <vilsongjeci@gmail.com>\n"
 "Language-Team: Albanian <sq@li.org>\n"
@@ -1941,7 +1941,7 @@ msgctxt "@info:whatsthis"
 msgid "Press this button to start the search."
 msgstr ""
 
-#: dialog/searchdialog.cpp:128
+#: dialog/searchdialog.cpp:134
 #, kde-format
 msgctxt "@info"
 msgid ""
@@ -1949,19 +1949,19 @@ msgid ""
 "expression using the wildcard characters '*' and '?' where needed."
 msgstr ""
 
-#: dialog/searchdialog.cpp:140
+#: dialog/searchdialog.cpp:146
 #, kde-format
 msgctxt "@info"
 msgid "No items were found that match your search pattern."
 msgstr ""
 
-#: dialog/searchdialog.cpp:141
+#: dialog/searchdialog.cpp:147
 #, kde-format
 msgctxt "@title:window"
 msgid "Search Results"
 msgstr ""
 
-#: dialog/searchdialog.cpp:156
+#: dialog/searchdialog.cpp:162
 #, kde-format
 msgctxt "@label"
 msgid "%1 match"

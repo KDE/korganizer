@@ -19,7 +19,7 @@ msgid ""
 msgstr ""
 "Project-Id-Version: kdepim-kde4\n"
 "Report-Msgid-Bugs-To: https://bugs.kde.org\n"
-"POT-Creation-Date: 2023-09-27 01:41+0000\n"
+"POT-Creation-Date: 2023-10-14 01:49+0000\n"
 "PO-Revision-Date: 2023-09-27 12:57+0300\n"
 "Last-Translator: Emir SARI <emir_sari@icloud.com>\n"
 "Language-Team: Turkish <kde-l10n-tr@kde.org>\n"
@@ -2008,7 +2008,7 @@ msgctxt "@info:whatsthis"
 msgid "Press this button to start the search."
 msgstr "Aramayı başlatmak için bu düğmeye basın."
 
-#: dialog/searchdialog.cpp:128
+#: dialog/searchdialog.cpp:134
 #, kde-format
 msgctxt "@info"
 msgid ""
@@ -2018,19 +2018,19 @@ msgstr ""
 "Geçersiz arama ifadesi, arama yapılamıyor. Lütfen arama karakterleri '*' ve "
 "'?' içeren bir arama yapın."
 
-#: dialog/searchdialog.cpp:140
+#: dialog/searchdialog.cpp:146
 #, kde-format
 msgctxt "@info"
 msgid "No items were found that match your search pattern."
 msgstr "Arama dizginizle eşleşen bir öge bulunamadı."
 
-#: dialog/searchdialog.cpp:141
+#: dialog/searchdialog.cpp:147
 #, kde-format
 msgctxt "@title:window"
 msgid "Search Results"
 msgstr "Arama Sonuçları"
 
-#: dialog/searchdialog.cpp:156
+#: dialog/searchdialog.cpp:162
 #, kde-format
 msgctxt "@label"
 msgid "%1 match"

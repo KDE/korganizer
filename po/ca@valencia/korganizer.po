@@ -13,7 +13,7 @@ msgid ""
 msgstr ""
 "Project-Id-Version: korganizer\n"
 "Report-Msgid-Bugs-To: https://bugs.kde.org\n"
-"POT-Creation-Date: 2023-09-27 01:41+0000\n"
+"POT-Creation-Date: 2023-10-14 01:49+0000\n"
 "PO-Revision-Date: 2023-09-30 18:20+0200\n"
 "Last-Translator: Josep M. Ferrer <txemaq@gmail.com>\n"
 "Language-Team: Catalan <kde-i18n-ca@kde.org>\n"
@@ -745,7 +745,7 @@ msgstr "Hui"
 #, kde-format
 msgctxt "@info:status"
 msgid "Scroll to Today"
-msgstr "Ves a hui"
+msgstr "Ves fins a hui"
 
 #: actionmanager.cpp:516
 #, kde-format
@@ -2007,7 +2007,7 @@ msgctxt "@info:whatsthis"
 msgid "Press this button to start the search."
 msgstr "Premeu este botó per a iniciar la busca."
 
-#: dialog/searchdialog.cpp:128
+#: dialog/searchdialog.cpp:134
 #, kde-format
 msgctxt "@info"
 msgid ""
@@ -2017,19 +2017,19 @@ msgstr ""
 "L'expressió de la busca no és vàlida, no es pot fer la busca. Introduïu una "
 "expressió de busca utilitzant els comodins «*» i «?» on calga."
 
-#: dialog/searchdialog.cpp:140
+#: dialog/searchdialog.cpp:146
 #, kde-format
 msgctxt "@info"
 msgid "No items were found that match your search pattern."
 msgstr "No s'ha trobat cap element que coincidisca amb el patró de busca."
 
-#: dialog/searchdialog.cpp:141
+#: dialog/searchdialog.cpp:147
 #, kde-format
 msgctxt "@title:window"
 msgid "Search Results"
 msgstr "Resultats de la busca"
 
-#: dialog/searchdialog.cpp:156
+#: dialog/searchdialog.cpp:162
 #, kde-format
 msgctxt "@label"
 msgid "%1 match"
@@ -5505,8 +5505,8 @@ msgstr ""
 "\n"
 "https://kolab2.exemple.com/lliureocupat/\n"
 "\n"
-"De manera alternativa, podeu indicar un camí complet al lliure/ocupat. Per "
-"exemple: \n"
+"De manera alternativa, podeu indicar un camí complet en el lliure/ocupat. "
+"Per exemple: \n"
 "\n"
 "https://kolab2.exemple.com/lliureocupat/usuari.xfb"
 
