@@ -745,7 +745,7 @@ msgstr "Hui"
 #, kde-format
 msgctxt "@info:status"
 msgid "Scroll to Today"
-msgstr "Ves a hui"
+msgstr "Ves fins a hui"
 
 #: actionmanager.cpp:515
 #, kde-format
@@ -5521,8 +5521,8 @@ msgstr ""
 "\n"
 "https://kolab2.exemple.com/lliureocupat/\n"
 "\n"
-"De manera alternativa, podeu indicar un camí complet al lliure/ocupat. Per "
-"exemple: \n"
+"De manera alternativa, podeu indicar un camí complet en el lliure/ocupat. "
+"Per exemple: \n"
 "\n"
 "https://kolab2.exemple.com/lliureocupat/usuari.xfb"
 
