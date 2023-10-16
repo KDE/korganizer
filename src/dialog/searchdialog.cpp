@@ -121,12 +121,12 @@ void SearchDialog::doSearch()
 {
     QRegularExpression re;
     re.setPatternOptions(QRegularExpression::CaseInsensitiveOption);
-    const QString pattern = QRegularExpression::wildcardToRegularExpression(m_ui->searchEdit->text(),
-                                                                            QRegularExpression::UnanchoredWildcardConversion
+    QRegularExpression::WildcardConversionOptions options;
+    options |= QRegularExpression::UnanchoredWildcardConversion;
 #if QT_VERSION >= QT_VERSION_CHECK(6, 6, 0)
-                                                                                | QRegularExpression::NonPathWildcardConversion
+    options |= QRegularExpression::NonPathWildcardConversion;
 #endif
-    );
+    const QString pattern = QRegularExpression::wildcardToRegularExpression(m_ui->searchEdit->text(), options);
     re.setPattern(pattern);
     if (!re.isValid()) {
         KMessageBox::error(this,
