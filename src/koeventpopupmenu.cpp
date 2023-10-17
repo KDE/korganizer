@@ -303,9 +303,12 @@ void KOEventPopupMenu::forward()
     if (CalendarSupport::hasIncidence(mCurrentIncidence)) {
         KCalendarCore::Incidence::Ptr incidence = Akonadi::CalendarUtils::incidence(mCurrentIncidence);
         if (incidence) {
-            Akonadi::ITIPHandler handler(this);
-            handler.setCalendar(mCalendar);
-            handler.sendAsICalendar(incidence, this);
+            auto *handler = new Akonadi::ITIPHandler(this);
+            connect(handler, &Akonadi::ITIPHandler::sentAsICalendar, this, [handler]() {
+                handler->deleteLater();
+            });
+            handler->setCalendar(mCalendar);
+            handler->sendAsICalendar(incidence, this);
         }
     }
 }
