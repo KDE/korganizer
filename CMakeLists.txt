@@ -127,6 +127,7 @@ include_directories(${korganizer_SOURCE_DIR} ${korganizer_BINARY_DIR})
 configure_file(korganizer-version.h.in ${CMAKE_CURRENT_BINARY_DIR}/korganizer-version.h @ONLY)
 
 
+add_definitions(-DQT_NO_CONTEXTLESS_CONNECT)
 ecm_set_disabled_deprecation_versions(QT 6.5
      KF 5.240.0
 )
