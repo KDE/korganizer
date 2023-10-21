@@ -25,7 +25,8 @@ msgstr ""
 "Content-Type: text/plain; charset=UTF-8\n"
 "Content-Transfer-Encoding: 8bit\n"
 "X-Generator: Zanata 3.9.6\n"
-"Plural-Forms: nplurals=2; plural=n != 1;\n"
+"Plural-Forms: nplurals=4; plural=(n == 1) ? 0 : ((n == 2) ? 1 : ((n > 10 && "
+"n % 10 == 0) ? 2 : 3));\n"
 
 #, kde-format
 msgctxt "NAME OF TRANSLATORS"
@@ -794,6 +795,8 @@ msgid "&Next Day"
 msgid_plural "&Next %1 Days"
 msgstr[0] "היום ה&בא"
 msgstr[1] "%1 הימים ה&באים"
+msgstr[2] ""
+msgstr[3] ""
 
 #: actionmanager.cpp:554
 #, kde-format
@@ -1030,6 +1033,8 @@ msgid "1 incidence was imported successfully."
 msgid_plural "%1 incidences were imported successfully."
 msgstr[0] ""
 msgstr[1] ""
+msgstr[2] ""
+msgstr[3] ""
 
 #: actionmanager.cpp:845
 #, kde-format
@@ -1649,6 +1654,8 @@ msgid_plural ""
 "%1 to-dos were ignored because they have uncompleted or read-only children."
 msgstr[0] ""
 msgstr[1] ""
+msgstr[2] ""
+msgstr[3] ""
 
 #: calendarview.cpp:2689 calendarview.cpp:2694
 #, fuzzy, kde-format
@@ -1656,6 +1663,8 @@ msgid "%1 completed to-do was purged."
 msgid_plural "%1 completed to-dos were purged."
 msgstr[0] "הסתר משימות &שהושלמו"
 msgstr[1] "הסתר משימות &שהושלמו"
+msgstr[2] ""
+msgstr[3] ""
 
 #: calendarview.cpp:2700
 #, fuzzy, kde-format
@@ -1960,6 +1969,8 @@ msgid "%1 match"
 msgid_plural "%1 matches"
 msgstr[0] ""
 msgstr[1] ""
+msgstr[2] ""
+msgstr[3] ""
 
 #: kcmdesignerfields.cpp:61 kcmdesignerfields.cpp:62 kcmdesignerfields.cpp:67
 #: kcmdesignerfields.cpp:68
@@ -2450,6 +2461,8 @@ msgid "No upcoming events starting within the next day"
 msgid_plural "No upcoming events starting within the next %1 days"
 msgstr[0] ""
 msgstr[1] ""
+msgstr[2] ""
+msgstr[3] ""
 
 #: kontactplugin/korganizer/apptsummarywidget.cpp:240
 #, fuzzy, kde-format
@@ -2493,6 +2506,8 @@ msgid " day"
 msgid_plural " days"
 msgstr[0] "יום אחד"
 msgstr[1] "%1 ימים"
+msgstr[2] ""
+msgstr[3] ""
 
 #: kontactplugin/korganizer/korganizerplugin.cpp:44
 #, fuzzy, kde-format
@@ -2561,6 +2576,8 @@ msgid "in 1 day"
 msgid_plural "in %1 days"
 msgstr[0] "יום אחד"
 msgstr[1] "%1 ימים"
+msgstr[2] ""
+msgstr[3] ""
 
 #: kontactplugin/korganizer/summaryeventinfo.cpp:184
 #, kde-format
@@ -2575,6 +2592,8 @@ msgid "1 hr"
 msgid_plural "%1 hrs"
 msgstr[0] ""
 msgstr[1] ""
+msgstr[2] ""
+msgstr[3] ""
 
 #: kontactplugin/korganizer/summaryeventinfo.cpp:193
 #, fuzzy, kde-format
@@ -2583,6 +2602,8 @@ msgid "1 min"
 msgid_plural "%1 mins"
 msgstr[0] "דקה אחת"
 msgstr[1] "%1 דקות"
+msgstr[2] ""
+msgstr[3] ""
 
 #: kontactplugin/korganizer/summaryeventinfo.cpp:200
 #: kontactplugin/specialdates/sdsummarywidget.cpp:485
@@ -2845,6 +2866,8 @@ msgid "1 day ago"
 msgid_plural "%1 days ago"
 msgstr[0] "יום אחד"
 msgstr[1] "%1 ימים"
+msgstr[2] ""
+msgstr[3] ""
 
 #: kontactplugin/korganizer/todosummarywidget.cpp:218
 #, fuzzy, kde-format
@@ -2858,6 +2881,8 @@ msgid "No pending to-dos due within the next day"
 msgid_plural "No pending to-dos due within the next %1 days"
 msgstr[0] "הדפס רק מטלות שתאריך היעד שלהן נמצא ב&טווח:"
 msgstr[1] "הדפס רק מטלות שתאריך היעד שלהן נמצא ב&טווח:"
+msgstr[2] ""
+msgstr[3] ""
 
 #: kontactplugin/korganizer/todosummarywidget.cpp:329
 #, fuzzy, kde-format
@@ -3149,6 +3174,8 @@ msgid "one year"
 msgid_plural "%1 years"
 msgstr[0] "השנה הבאה"
 msgstr[1] "השנה הבאה"
+msgstr[2] ""
+msgstr[3] ""
 
 #: kontactplugin/specialdates/sdsummarywidget.cpp:562
 #, kde-format
@@ -3156,6 +3183,8 @@ msgid "No special dates within the next 1 day"
 msgid_plural "No special dates pending within the next %1 days"
 msgstr[0] ""
 msgstr[1] ""
+msgstr[2] ""
+msgstr[3] ""
 
 #: kontactplugin/specialdates/sdsummarywidget.cpp:656
 #, fuzzy, kde-format
