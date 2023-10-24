@@ -790,9 +790,9 @@ void ActionManager::updateHamburgerMenu()
 
     menu->addAction(mACollection->action(QStringLiteral("conf_datetime")));
     menu->addSeparator();
-    menu->addAction(mACollection->action(QLatin1String(KStandardAction::name(KStandardAction::Print))));
+    menu->addAction(mACollection->action(StandardAction::name(KStandardAction::Print)));
     menu->addSeparator();
-    menu->addAction(mACollection->action(QLatin1String(KStandardAction::name(KStandardAction::Quit))));
+    menu->addAction(mACollection->action(KStandardAction::name(KStandardAction::Quit)));
     mHamburgerMenu->setMenu(menu);
 }
 
