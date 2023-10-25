@@ -24,7 +24,7 @@ int main(int argc, char **argv)
 {
     KOrganizerApp app(argc, &argv);
     KCrash::initialize();
-    KLocalizedString::setApplicationDomain("korganizer");
+    KLocalizedString::setApplicationDomain(QByteArrayLiteral("korganizer"));
 
     KOrg::AboutData aboutData;
     app.setAboutData(aboutData);
