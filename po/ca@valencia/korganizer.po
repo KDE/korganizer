@@ -2814,7 +2814,7 @@ msgstr ""
 #: kontactplugin/korganizer/todosummaryconfig_base.ui:133
 #, kde-format
 msgid "Hide Following To-do Types"
-msgstr "Oculta els següents tipus de tasques pendents"
+msgstr "Oculta els tipus següents de tasques pendents"
 
 #. i18n: ectx: property (toolTip), widget (QCheckBox, mHideCompletedBox)
 #: kontactplugin/korganizer/todosummaryconfig_base.ui:139
