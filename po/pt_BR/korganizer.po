@@ -11,22 +11,22 @@
 # Eduardo Habkost <ehabkost@conectiva.com.br>, 2005.
 # Henrique Pinto <henrique.pinto@kdemail.net>, 2005.
 # André Marcelo Alvarenga <alvarenga@kde.org>, 2008, 2009, 2010, 2011, 2012, 2013, 2014, 2015, 2016, 2018, 2019, 2020.
-# Luiz Fernando Ranghetti <elchevive@opensuse.org>, 2009, 2010, 2012, 2018, 2019, 2020, 2021, 2022.
+# Luiz Fernando Ranghetti <elchevive@opensuse.org>, 2009, 2010, 2012, 2018, 2019, 2020, 2021, 2022, 2023.
 # Marcus Vinícius de Andrade Gama <marcus.gama@gmail.com>, 2010, 2012.
 msgid ""
 msgstr ""
 "Project-Id-Version: korganizer\n"
 "Report-Msgid-Bugs-To: https://bugs.kde.org\n"
 "POT-Creation-Date: 2023-10-14 01:49+0000\n"
-"PO-Revision-Date: 2022-10-19 15:39-0300\n"
+"PO-Revision-Date: 2023-10-26 15:21-0300\n"
 "Last-Translator: Luiz Fernando Ranghetti <elchevive@opensuse.org>\n"
-"Language-Team: Portuguese <kde-i18n-pt_BR@kde.org>\n"
+"Language-Team: Brazilian Portuguese <kde-i18n-pt_BR@kde.org>\n"
 "Language: pt_BR\n"
 "MIME-Version: 1.0\n"
 "Content-Type: text/plain; charset=UTF-8\n"
 "Content-Transfer-Encoding: 8bit\n"
 "Plural-Forms: nplurals=2; plural=(n > 1);\n"
-"X-Generator: Lokalize 21.12.3\n"
+"X-Generator: Lokalize 22.12.3\n"
 
 #, kde-format
 msgctxt "NAME OF TRANSLATORS"
@@ -1128,8 +1128,7 @@ msgid "Unable to save calendar to the file %1."
 msgstr "Não foi possível salvar o calendário para o arquivo %1."
 
 #: actionmanager.cpp:1036
-#, fuzzy, kde-format
-#| msgid "Error"
+#, kde-format
 msgctxt "@title:window"
 msgid "Error"
 msgstr "Erro"
@@ -1196,8 +1195,7 @@ msgid "Removing attachments from an email might invalidate its signature."
 msgstr "A remoção dos anexos de um e-mail poderá invalidar a sua assinatura."
 
 #: actionmanager.cpp:1461
-#, fuzzy, kde-format
-#| msgid "Remove Attachments"
+#, kde-format
 msgctxt "@title:window"
 msgid "Remove Attachments"
 msgstr "Remover anexos"
@@ -1479,8 +1477,7 @@ msgid "Do you want to dissociate the occurrence on %1 from the recurrence?"
 msgstr "Deseja desassociar a ocorrência em %1 da recorrência?"
 
 #: calendarview.cpp:1575 calendarview.cpp:1587 calendarview.cpp:2246
-#, fuzzy, kde-format
-#| msgid "KOrganizer Confirmation"
+#, kde-format
 msgctxt "@title:window"
 msgid "KOrganizer Confirmation"
 msgstr "Confirmação do KOrganizer"
@@ -1525,11 +1522,10 @@ msgid "Dissociating the future occurrences failed."
 msgstr "A desassociação de ocorrências futuras falhou."
 
 #: calendarview.cpp:1616 calendarview.cpp:1618
-#, fuzzy, kde-format
-#| msgid "Dissociating Failed"
+#, kde-format
 msgctxt "@title:window"
 msgid "Dissociating Failed"
-msgstr "Desassociação falhou"
+msgstr "Falha na desassociação"
 
 #: calendarview.cpp:1618
 #, kde-format
@@ -1677,8 +1673,7 @@ msgid "Delete all completed to-dos from checked calendars?"
 msgstr "Excluir todas as tarefas concluídas dos calendários assinalados?"
 
 #: calendarview.cpp:2415
-#, fuzzy, kde-format
-#| msgid "Purge To-dos"
+#, kde-format
 msgctxt "@title:window"
 msgid "Purge To-dos"
 msgstr "Eliminar tarefas"
@@ -3701,14 +3696,10 @@ msgid "day(s)"
 msgstr "dia(s)"
 
 #: prefs/koprefsdialogtime.cpp:217
-#, fuzzy, kde-format
-#| msgid ""
-#| "*.ogg *.wav *.mp3 *.wma *.flac *.aiff *.raw *.au *.ra|Audio Files (*.ogg "
-#| "*.wav *.mp3 *.wma *.flac *.aiff *.raw *.au *.ra)"
+#, kde-format
 msgid "Audio Files (*.ogg *.wav *.mp3 *.wma *.flac *.aiff *.raw *.au *.ra)"
 msgstr ""
-"*.ogg *.wav *.mp3 *.wma *.flac *.aiff *.raw *.au *.ra|Arquivos de áudio (*."
-"ogg *.wav *.mp3 *.wma *.flac *.aiff *.raw *.au *.ra)"
+"Arquivos de áudio (*.ogg *.wav *.mp3 *.wma *.flac *.aiff *.raw *.au *.ra)"
 
 #: prefs/koprefsdialogviews.cpp:42
 #, kde-format
@@ -3786,8 +3777,7 @@ msgstr ""
 "as modificações personalizadas serão perdidas."
 
 #: prefs/kprefsdialog.cpp:869
-#, fuzzy, kde-format
-#| msgid "Setting Default Preferences"
+#, kde-format
 msgctxt "@title:window"
 msgid "Setting Default Preferences"
 msgstr "Definindo preferências padrão"

@@ -819,9 +819,7 @@ store.kde.org KOrganizer Calendars-->
 <para
 >Podeu exportar les vostres dades com a un fitxer iCalendar, el qual està acceptat per la majoria de les aplicacions de planificació. El &korganizer; exportarà tots els elements de calendari dels recursos habilitats (marcats) que <link linkend="filters-view"
 >no estan filtrats</link
-> (anomenem-los elements <quote
->actius</quote
->). En altres paraules, si no podeu veure un element de calendari, no podran estar en el fitxer exportat. Per a treure d'un filtre els elements no desitjats abans d'exportar-los, podeu crear <link linkend="filters-view"
+> (anomenem-los elements «actius»). En altres paraules, si no podeu veure un element de calendari, no podran estar en el fitxer exportat. Per a treure d'un filtre els elements no desitjats abans d'exportar-los, podeu crear <link linkend="filters-view"
 >filtres</link
 >. Els filtres encara seran més efectius si classifiqueu els vostres esdeveniments i tasques pendents per <link linkend="categories-view"
 >etiquetes</link
@@ -832,9 +830,7 @@ store.kde.org KOrganizer Calendars-->
 > de la barra lateral.</para>
 
 <para
->Per a exportar tots els vostres esdeveniments, tasques pendents i entrades del diari <quote
->actives</quote
-> (independentment de quin recurs pertanyin) com un fitxer iCalendar nou, escolliu l'element de menú <menuchoice
+>Per a exportar tots els vostres esdeveniments, tasques pendents i entrades del diari «actives» (independentment de quin recurs pertanyin) com un fitxer iCalendar nou, escolliu l'element de menú <menuchoice
 ><guimenu
 >Fitxer</guimenu
 ><guisubmenu
@@ -1132,9 +1128,7 @@ choose the <menuchoice
 >Hi ha dues dreceres molt útils per a afegir esdeveniments: <itemizedlist>
 <listitem
 ><para
->Feu doble clic sobre qualsevol regió de temps de l'esdeveniment, i el &korganizer; crearà automàticament un esdeveniment amb la durada predeterminada (el qual és personalitzable en el diàleg de preferències). Podeu afegir immediatament el resum. Els esdeveniments s'<quote
->ajusten</quote
-> en increments de mitja hora, arrodonint a la mitja hora més pròxima d'on heu fet clic.</para
+>Feu doble clic sobre qualsevol regió de temps de l'esdeveniment, i el &korganizer; crearà automàticament un esdeveniment amb la durada predeterminada (el qual és personalitzable en el diàleg de preferències). Podeu afegir immediatament el resum. Els esdeveniments s'«ajusten» en increments de mitja hora, arrodonint a la mitja hora més pròxima d'on heu fet clic.</para
 ></listitem>
 <listitem
 ><para
@@ -1337,14 +1331,10 @@ choose the <menuchoice
 >.</para>
 
 <para
->Podeu donar a una tasca pendent una <quote
->data de venciment</quote
->, en altres paraules, una data per a la qual haurà d'estar finalitzada.</para>
+>Podeu donar a una tasca pendent una «data de venciment», en altres paraules, una data per a la qual haurà d'estar finalitzada.</para>
 
 <para
->També podeu assignar prioritats a les tasques pendents, i apareixeran ordenades segons la seva prioritat. A un número més petit, una prioritat més gran, excepte el zero (0), que es defineix com a <quote
->sense prioritat</quote
->.</para>
+>També podeu assignar prioritats a les tasques pendents, i apareixeran ordenades segons la seva prioritat. A un número més petit, una prioritat més gran, excepte el zero (0), que es defineix com a «sense prioritat».</para>
 
 <para
 >Per a crear una entrada nova de tasca pendent, feu clic dret sobre el component de barra lateral de la vista de les tasques pendents, o la vista de la llista de tasques pendents, i escolliu l'element de menú <guimenuitem
@@ -1367,9 +1357,7 @@ choose the <menuchoice
 > necessària.</para>
 
 <para
->Feu clic sobre qualsevol tasca pendent de la llista per a ressaltar-la. Si feu clic sobre la casella de línia grossa a l'esquerra de la descripció de la tasca pendent, canviarà l'estat de <quote
->finalitzada</quote
->. Si feu doble clic sobre la descripció de la tasca pendent, podreu editar tots els seus detalls.</para>
+>Feu clic sobre qualsevol tasca pendent de la llista per a ressaltar-la. Si feu clic sobre la casella de línia grossa a l'esquerra de la descripció de la tasca pendent, canviarà l'estat de «finalitzada». Si feu doble clic sobre la descripció de la tasca pendent, podreu editar tots els seus detalls.</para>
 
 <para
 >També podeu triar <link linkend="managing-purge-archive"
@@ -1535,11 +1523,7 @@ choose the <menuchoice
 >producte</emphasis
 > després, hauríeu d'escriure <userinput
 >reunió*producte</userinput
-> en el diàleg de cerca. El &korganizer; localitzarà entrades com <quote
->Tasca pendent: Convocar una reunió per al producte nou</quote
->, <quote
->Reunió per a tractar l'antiga línia de productes</quote
-> i similars. No es fa distinció entre majúscules i minúscules.</para
+> en el diàleg de cerca. El &korganizer; localitzarà entrades com «Tasca pendent: Convocar una reunió per al producte nou», «Reunió per a tractar l'antiga línia de productes» i similars. No es fa distinció entre majúscules i minúscules.</para
 ></tip>
 
 <para
@@ -1744,15 +1728,7 @@ choose the <menuchoice
 >Privat</guilabel
 > o <guilabel
 >Confidencial</guilabel
-> per a mantenir l'esdeveniment com a privat o confidencial. De moment, aquesta tria estableix correctament l'atribut <quote
->CLASS</quote
-> dels esdeveniments com <quote
->PUBLIC</quote
->, <quote
->PRIVATE</quote
-> o <quote
->CONFIDENTIAL</quote
->. De tota manera, si aquestes opcions s'usen realment per a restringir l'accés a informació segons el client i/o la implementació del servidor de treball en grup.</para>
+> per a mantenir l'esdeveniment com a privat o confidencial. De moment, aquesta tria estableix correctament l'atribut «CLASS» dels esdeveniments com «PUBLIC», «PRIVATE» o «CONFIDENTIAL». De tota manera, si aquestes opcions s'usen realment per a restringir l'accés a informació segons el client i/o la implementació del servidor de treball en grup.</para>
 <warning
 ><para
 >Actualment, el &korganizer; <emphasis
@@ -1972,9 +1948,7 @@ choose the <menuchoice
 >Interval de repetició</title>
 
 <para
->De manera predeterminada, els esdeveniments que es repeteixin ho faran per sempre; no hi ha <quote
->fi</quote
-> a la repetició. Això pot ser o no desitjable, de manera que sereu capaç de finalitzar la repetició seleccionant una data final o un nombre de repeticions.</para>
+>De manera predeterminada, els esdeveniments que es repeteixin ho faran per sempre; no hi ha «fi» a la repetició. Això pot ser o no desitjable, de manera que sereu capaç de finalitzar la repetició seleccionant una data final o un nombre de repeticions.</para>
 
 </sect3>
 
@@ -2860,11 +2834,7 @@ choose the <menuchoice
 ><para
 ><guilabel
 >Nom complet</guilabel
-> està establert inicialment a <quote
->Anònim</quote
-> amb una adreça de correu electrònic <quote
->desconegut@peraquí</quote
->. La podeu canviar introduint-hi el nom. Aquest nom serà mostrat de manera predeterminada com a <guilabel
+> està establert inicialment a «Anònim» amb una adreça de correu electrònic «desconegut@peraquí». La podeu canviar introduint-hi el nom. Aquest nom serà mostrat de manera predeterminada com a <guilabel
 >Organitzador</guilabel
 > en les tasques pendents i els esdeveniments.</para
 ></listitem>
@@ -3944,9 +3914,7 @@ choose the <menuchoice
 <title
 >Connector d'imatge del dia de la Viquipèdia per als calendaris</title>
 <para
->Aquest connector proporciona la <quote
->imatge del dia</quote
-> de la Viquipèdia. </para>
+>Aquest connector proporciona la «imatge del dia» de la Viquipèdia. </para>
 </sect2>
 
 <sect2 id="jewish-calendar-plugin">
@@ -3970,9 +3938,7 @@ choose the <menuchoice
 >Menús</title>
 
 <para
->Quan s'inicia el &korganizer;, apareix la finestra principal del &korganizer;. La finestra conté diversos components: una barra de menús, una barra d'eines, un calendari de mes, un plafó principal amb la <quote
->vista</quote
-> actual d'esdeveniments i una llista de tasques pendents.</para>
+>Quan s'inicia el &korganizer;, apareix la finestra principal del &korganizer;. La finestra conté diversos components: una barra de menús, una barra d'eines, un calendari de mes, un plafó principal amb la «vista» actual d'esdeveniments i una llista de tasques pendents.</para>
 
 <para
 >Els menús proveeixen accés a totes les operacions comunes que es poden realitzar amb el calendari, incloent-hi desa, carrega, afegeix o suprimeix esdeveniments, tasques pendents i entrades de diari, imprimeix i més.</para>
@@ -4480,9 +4446,7 @@ special events, &etc;</para>
 >Visualitza</title>
 
 <para
->Hi ha diverses <quote
->vistes</quote
-> diferents disponibles per a mostrar els esdeveniments, tasques pendents i entrades de diari. El &korganizer; és prou intel·ligent per a recordar entre les sessions quina ha estat l'última vista activa, i la pròxima vegada que s'iniciï, es mostrarà aquesta vista.</para>
+>Hi ha diverses «vistes» diferents disponibles per a mostrar els esdeveniments, tasques pendents i entrades de diari. El &korganizer; és prou intel·ligent per a recordar entre les sessions quina ha estat l'última vista activa, i la pròxima vegada que s'iniciï, es mostrarà aquesta vista.</para>
 
 <para
 >En general, cada vista proveeix una manera de mostrar les entrades del diari, tasques pendents i esdeveniments restringits a un període de temps o estil de visualització en particular. Feu clic sobre qualsevol element per a seleccionar-lo com a acció més endavant. Fer clic <mousebutton
@@ -5543,9 +5507,7 @@ format="PNG"/></imageobject
 <glossdef>
 
 <para
->Una data de venciment simplement és la data en la qual la tasca pendent haurà d'estar finalitzada. Per exemple, si la tasca pendent és tornar llibres a la biblioteca el 16 de novembre, aquesta data s'anomena <quote
->la data de venciment de la tasca pendent</quote
->.</para>
+>Una data de venciment simplement és la data en la qual la tasca pendent haurà d'estar finalitzada. Per exemple, si la tasca pendent és tornar llibres a la biblioteca el 16 de novembre, aquesta data s'anomena «la data de venciment de la tasca pendent».</para>
 
 </glossdef>
 </glossentry>
