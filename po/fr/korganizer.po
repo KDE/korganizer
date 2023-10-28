@@ -25,7 +25,7 @@ msgstr ""
 "Project-Id-Version: korganizer\n"
 "Report-Msgid-Bugs-To: https://bugs.kde.org\n"
 "POT-Creation-Date: 2023-10-14 01:49+0000\n"
-"PO-Revision-Date: 2023-09-28 08:05+0200\n"
+"PO-Revision-Date: 2023-10-26 18:40+0200\n"
 "Last-Translator: Xavier BESNARD <xavier.besnard@neuf.fr>\n"
 "Language-Team: fr\n"
 "Language: fr\n"
@@ -1565,7 +1565,7 @@ msgstr "La dissociation des occurrences futures a échoué."
 #, kde-format
 msgctxt "@title:window"
 msgid "Dissociating Failed"
-msgstr "Impossier de réaliser une dissociation"
+msgstr "Impossible de réaliser une dissociation"
 
 #: calendarview.cpp:1618
 #, kde-format
