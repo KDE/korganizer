@@ -59,7 +59,7 @@ set(AKONADINOTES_LIB_VERSION "5.240.40")
 
 find_package(Qt6 ${QT_REQUIRED_VERSION} CONFIG REQUIRED DBus Gui Widgets Test UiTools)
 
-find_package(KUserFeedbackQt6 1.2.1 CONFIG)
+find_package(KUserFeedbackQt6 1.3.0 CONFIG)
 
 set_package_properties(KUserFeedbackQt6 PROPERTIES DESCRIPTION "User Feedback lib" TYPE OPTIONAL PURPOSE "Allow to send Telemetry Information (optional).")
 
