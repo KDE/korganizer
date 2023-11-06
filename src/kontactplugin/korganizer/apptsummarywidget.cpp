@@ -68,14 +68,14 @@ void ApptSummaryWidget::configUpdated()
 {
     KConfig config(QStringLiteral("kcmapptsummaryrc"));
 
-    KConfigGroup group = config.group(QLatin1String("Days"));
+    KConfigGroup group = config.group(QStringLiteral("Days"));
     mDaysAhead = group.readEntry("DaysToShow", 7);
 
-    group = config.group(QLatin1String("Show"));
+    group = config.group(QStringLiteral("Show"));
     mShowBirthdaysFromCal = group.readEntry("BirthdaysFromCalendar", true);
     mShowAnniversariesFromCal = group.readEntry("AnniversariesFromCalendar", true);
 
-    group = config.group(QLatin1String("Groupware"));
+    group = config.group(QStringLiteral("Groupware"));
     mShowMineOnly = group.readEntry("ShowMineOnly", false);
 
     updateView();

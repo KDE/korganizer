@@ -65,17 +65,17 @@ void TodoSummaryWidget::updateView()
     mLabels.clear();
 
     KConfig config(QStringLiteral("kcmtodosummaryrc"));
-    KConfigGroup group = config.group(QLatin1String("Days"));
+    KConfigGroup group = config.group(QStringLiteral("Days"));
     int mDaysToGo = group.readEntry("DaysToShow", 7);
 
-    group = config.group(QLatin1String("Hide"));
+    group = config.group(QStringLiteral("Hide"));
     mHideInProgress = group.readEntry("InProgress", false);
     mHideOverdue = group.readEntry("Overdue", false);
     mHideCompleted = group.readEntry("Completed", true);
     mHideOpenEnded = group.readEntry("OpenEnded", true);
     mHideNotStarted = group.readEntry("NotStarted", false);
 
-    group = config.group(QLatin1String("Groupware"));
+    group = config.group(QStringLiteral("Groupware"));
     mShowMineOnly = group.readEntry("ShowMineOnly", false);
 
     // for each todo,

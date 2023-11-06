@@ -130,10 +130,10 @@ void SDSummaryWidget::configUpdated()
 {
     KConfig config(QStringLiteral("kcmsdsummaryrc"));
 
-    KConfigGroup group = config.group(QLatin1String("Days"));
+    KConfigGroup group = config.group(QStringLiteral("Days"));
     mDaysAhead = group.readEntry("DaysToShow", 7);
 
-    group = config.group(QLatin1String("Show"));
+    group = config.group(QStringLiteral("Show"));
     mShowBirthdaysFromKAB = group.readEntry("BirthdaysFromContacts", true);
     mShowBirthdaysFromCal = group.readEntry("BirthdaysFromCalendar", true);
 
@@ -144,7 +144,7 @@ void SDSummaryWidget::configUpdated()
 
     mShowSpecialsFromCal = group.readEntry("SpecialsFromCalendar", true);
 
-    group = config.group(QLatin1String("Groupware"));
+    group = config.group(QStringLiteral("Groupware"));
     mShowMineOnly = group.readEntry("ShowMineOnly", false);
 
     updateView();
@@ -153,7 +153,7 @@ void SDSummaryWidget::configUpdated()
 bool SDSummaryWidget::initHolidays()
 {
     KConfig _hconfig(QStringLiteral("korganizerrc"));
-    KConfigGroup hconfig(&_hconfig, QLatin1String("Time & Date"));
+    KConfigGroup hconfig(&_hconfig, QStringLiteral("Time & Date"));
     QString location = hconfig.readEntry("Holidays");
     if (!location.isEmpty()) {
         delete mHolidays;

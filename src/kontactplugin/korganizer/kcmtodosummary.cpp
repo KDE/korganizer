@@ -61,7 +61,7 @@ void KCMTodoSummary::load()
     // Note: match default entry values with those in defaults() and
     // TodoSummaryWidget::updateView().
     KConfig config(QStringLiteral("kcmtodosummaryrc"));
-    KConfigGroup group = config.group(QLatin1String("Days"));
+    KConfigGroup group = config.group(QStringLiteral("Days"));
 
     int days = group.readEntry("DaysToShow", 7);
     if (days == 1) {
@@ -74,14 +74,14 @@ void KCMTodoSummary::load()
         mCustomDays->setEnabled(true);
     }
 
-    group = config.group(QLatin1String("Hide"));
+    group = config.group(QStringLiteral("Hide"));
     mHideInProgressBox->setChecked(group.readEntry("InProgress", false));
     mHideOverdueBox->setChecked(group.readEntry("Overdue", false));
     mHideCompletedBox->setChecked(group.readEntry("Completed", true));
     mHideOpenEndedBox->setChecked(group.readEntry("OpenEnded", true));
     mHideUnstartedBox->setChecked(group.readEntry("NotStarted", false));
 
-    group = config.group(QLatin1String("Groupware"));
+    group = config.group(QStringLiteral("Groupware"));
     mShowMineOnly->setChecked(group.readEntry("ShowMineOnly", false));
 
     setNeedsSave(false);
@@ -90,7 +90,7 @@ void KCMTodoSummary::load()
 void KCMTodoSummary::save()
 {
     KConfig config(QStringLiteral("kcmtodosummaryrc"));
-    KConfigGroup group = config.group(QLatin1String("Days"));
+    KConfigGroup group = config.group(QStringLiteral("Days"));
 
     int days;
     if (mDateTodayButton->isChecked()) {
@@ -102,14 +102,14 @@ void KCMTodoSummary::save()
     }
     group.writeEntry("DaysToShow", days);
 
-    group = config.group(QLatin1String("Hide"));
+    group = config.group(QStringLiteral("Hide"));
     group.writeEntry("InProgress", mHideInProgressBox->isChecked());
     group.writeEntry("Overdue", mHideOverdueBox->isChecked());
     group.writeEntry("Completed", mHideCompletedBox->isChecked());
     group.writeEntry("OpenEnded", mHideOpenEndedBox->isChecked());
     group.writeEntry("NotStarted", mHideUnstartedBox->isChecked());
 
-    group = config.group(QLatin1String("Groupware"));
+    group = config.group(QStringLiteral("Groupware"));
     group.writeEntry("ShowMineOnly", mShowMineOnly->isChecked());
 
     config.sync();

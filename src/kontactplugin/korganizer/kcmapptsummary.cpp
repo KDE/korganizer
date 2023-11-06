@@ -74,7 +74,7 @@ void KCMApptSummary::customDaysChanged(int value)
 void KCMApptSummary::load()
 {
     KConfig config(QStringLiteral("kcmapptsummaryrc"));
-    KConfigGroup group = config.group(QLatin1String("Days"));
+    KConfigGroup group = config.group(QStringLiteral("Days"));
 
     int days = group.readEntry("DaysToShow", 7);
     if (days == 1) {
@@ -87,12 +87,12 @@ void KCMApptSummary::load()
         mCustomDays->setEnabled(true);
     }
 
-    group = config.group(QLatin1String("Show"));
+    group = config.group(QStringLiteral("Show"));
 
     mShowBirthdaysFromCal->setChecked(group.readEntry("BirthdaysFromCalendar", true));
     mShowAnniversariesFromCal->setChecked(group.readEntry("AnniversariesFromCalendar", true));
 
-    group = config.group(QLatin1String("Groupware"));
+    group = config.group(QStringLiteral("Groupware"));
     mShowMineOnly->setChecked(group.readEntry("ShowMineOnly", false));
 
     setNeedsSave(false);
@@ -101,7 +101,7 @@ void KCMApptSummary::load()
 void KCMApptSummary::save()
 {
     KConfig config(QStringLiteral("kcmapptsummaryrc"));
-    KConfigGroup group = config.group(QLatin1String("Days"));
+    KConfigGroup group = config.group(QStringLiteral("Days"));
 
     int days;
     switch (mDaysButtonGroup->checkedId()) {
@@ -119,11 +119,11 @@ void KCMApptSummary::save()
 
     group.writeEntry("DaysToShow", days);
 
-    group = config.group(QLatin1String("Show"));
+    group = config.group(QStringLiteral("Show"));
     group.writeEntry("BirthdaysFromCalendar", mShowBirthdaysFromCal->isChecked());
     group.writeEntry("AnniversariesFromCalendar", mShowAnniversariesFromCal->isChecked());
 
-    group = config.group(QLatin1String("Groupware"));
+    group = config.group(QStringLiteral("Groupware"));
     group.writeEntry("ShowMineOnly", mShowMineOnly->isChecked());
 
     config.sync();

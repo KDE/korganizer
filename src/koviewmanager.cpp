@@ -52,7 +52,7 @@ KOrg::BaseView *KOViewManager::currentView()
 
 void KOViewManager::readSettings(KConfig *config)
 {
-    KConfigGroup generalConfig(config, QLatin1String("General"));
+    KConfigGroup generalConfig(config, QStringLiteral("General"));
     const QString view = generalConfig.readEntry("Current View");
 
     if (view == QLatin1String("WhatsNext")) {
@@ -99,7 +99,7 @@ void KOViewManager::readSettings(KConfig *config)
 
 void KOViewManager::writeSettings(KConfig *config)
 {
-    KConfigGroup generalConfig(config, QLatin1String("General"));
+    KConfigGroup generalConfig(config, QStringLiteral("General"));
     QString view;
     if (mCurrentView == mWhatsNextView) {
         view = QStringLiteral("WhatsNext");
@@ -581,7 +581,7 @@ QWidget *KOViewManager::widgetForView(KOrg::BaseView *view) const
 void KOViewManager::currentAgendaViewTabChanged(int index)
 {
     KSharedConfig::Ptr config = KSharedConfig::openConfig();
-    KConfigGroup viewConfig(config, QLatin1String("Views"));
+    KConfigGroup viewConfig(config, QStringLiteral("Views"));
     viewConfig.writeEntry("Agenda View Tab Index", mAgendaViewTabs->currentIndex());
 
     if (index > -1) {
