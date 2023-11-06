@@ -52,7 +52,7 @@ KOrg::BaseView *KOViewManager::currentView()
 
 void KOViewManager::readSettings(KConfig *config)
 {
-    KConfigGroup generalConfig(config, "General");
+    KConfigGroup generalConfig(config, QLatin1String("General"));
     const QString view = generalConfig.readEntry("Current View");
 
     if (view == QLatin1String("WhatsNext")) {
@@ -99,7 +99,7 @@ void KOViewManager::readSettings(KConfig *config)
 
 void KOViewManager::writeSettings(KConfig *config)
 {
-    KConfigGroup generalConfig(config, "General");
+    KConfigGroup generalConfig(config, QLatin1String("General"));
     QString view;
     if (mCurrentView == mWhatsNextView) {
         view = QStringLiteral("WhatsNext");
@@ -131,7 +131,7 @@ void KOViewManager::writeSettings(KConfig *config)
 
     // write out custom view configuration
     for (KOrg::BaseView *const baseView : std::as_const(mViews)) {
-        KConfigGroup group = KSharedConfig::openConfig()->group(baseView->identifier());
+        KConfigGroup group = KSharedConfig::openConfig()->group(QLatin1String(baseView->identifier()));
         baseView->saveConfig(group);
     }
 
@@ -347,7 +347,7 @@ void KOViewManager::addView(KOrg::BaseView *view, bool isTab)
     view->setModel(mMainView->calendar()->entityTreeModel());
     connectView(view);
     mViews.append(view);
-    const KConfigGroup group = KSharedConfig::openConfig()->group(view->identifier());
+    const KConfigGroup group = KSharedConfig::openConfig()->group(QLatin1String(view->identifier()));
     view->restoreConfig(group);
     if (!isTab) {
         mMainView->viewStack()->addWidget(view);
@@ -581,7 +581,7 @@ QWidget *KOViewManager::widgetForView(KOrg::BaseView *view) const
 void KOViewManager::currentAgendaViewTabChanged(int index)
 {
     KSharedConfig::Ptr config = KSharedConfig::openConfig();
-    KConfigGroup viewConfig(config, "Views");
+    KConfigGroup viewConfig(config, QLatin1String("Views"));
     viewConfig.writeEntry("Agenda View Tab Index", mAgendaViewTabs->currentIndex());
 
     if (index > -1) {

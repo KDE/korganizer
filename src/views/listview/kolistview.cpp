@@ -147,12 +147,12 @@ void KOListView::popupMenu(const QPoint &point)
 
 void KOListView::readSettings(KConfig *config)
 {
-    mListView->readSettings(config->group("ListView Layout"));
+    mListView->readSettings(config->group(QLatin1String("ListView Layout")));
 }
 
 void KOListView::writeSettings(KConfig *config)
 {
-    auto cfgGroup = config->group("ListView Layout");
+    auto cfgGroup = config->group(QLatin1String("ListView Layout"));
     mListView->writeSettings(cfgGroup);
 }
 

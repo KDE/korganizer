@@ -188,7 +188,7 @@ void ActionManager::createCalendarAkonadi()
     Q_ASSERT(calendar());
 
     KSharedConfig::Ptr config = KSharedConfig::openConfig();
-    mCollectionSelectionModelStateSaver = new KViewStateMaintainer<Akonadi::ETMViewStateSaver>(config->group("GlobalCollectionSelection"));
+    mCollectionSelectionModelStateSaver = new KViewStateMaintainer<Akonadi::ETMViewStateSaver>(config->group(QLatin1String("GlobalCollectionSelection")));
     mCollectionSelectionModelStateSaver->setSelectionModel(calendar()->checkableProxyModel()->selectionModel());
 
     AkonadiCollectionViewFactory factory(mCalendarView);
@@ -201,7 +201,7 @@ void ActionManager::createCalendarAkonadi()
 
     connect(mCollectionView, &AkonadiCollectionView::colorsChanged, mCalendarView, qOverload<>(&CalendarView::updateConfig));
 
-    mCollectionViewStateSaver = new KViewStateMaintainer<Akonadi::ETMViewStateSaver>(config->group("GlobalCollectionView"));
+    mCollectionViewStateSaver = new KViewStateMaintainer<Akonadi::ETMViewStateSaver>(config->group(QLatin1String("GlobalCollectionView")));
     mCollectionViewStateSaver->setView(mCollectionView->view());
 
     KCheckableProxyModel *checkableProxy = calendar()->checkableProxyModel();
@@ -721,7 +721,7 @@ void ActionManager::initActions()
     mACollection->addAction(QStringLiteral("show_eventviewer"), mEventViewerShowAction);
     connect(mEventViewerShowAction, &KToggleAction::triggered, this, &ActionManager::toggleEventViewer);
 
-    KConfigGroup config(KSharedConfig::openConfig(), "Settings");
+    KConfigGroup config(KSharedConfig::openConfig(), QLatin1String("Settings"));
     mDateNavigatorShowAction->setChecked(config.readEntry("DateNavigatorVisible", true));
     // if we are a kpart, then let's not show the todo in the left pane by
     // default since there's also a Todo part and we'll assume they'll be
@@ -878,7 +878,7 @@ void ActionManager::restoreCollectionViewSetting()
 void ActionManager::writeSettings()
 {
     KSharedConfig::Ptr config = KSharedConfig::openConfig();
-    KConfigGroup group = config->group("Settings");
+    KConfigGroup group = config->group(QLatin1String("Settings"));
     mCalendarView->writeSettings();
 
     if (mDateNavigatorShowAction) {
@@ -900,8 +900,8 @@ void ActionManager::writeSettings()
     mCollectionViewStateSaver->saveState();
     mCollectionSelectionModelStateSaver->saveState();
 
-    KConfigGroup selectionViewGroup = config->group("GlobalCollectionView");
-    KConfigGroup selectionGroup = config->group("GlobalCollectionSelection");
+    KConfigGroup selectionViewGroup = config->group(QLatin1String("GlobalCollectionView"));
+    KConfigGroup selectionGroup = config->group(QLatin1String("GlobalCollectionSelection"));
     selectionGroup.sync();
     selectionViewGroup.sync();
     config->sync();

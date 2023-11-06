@@ -65,7 +65,7 @@ void KCMSDSummary::load()
 {
     KConfig config(QStringLiteral("kcmsdsummaryrc"));
 
-    KConfigGroup group = config.group("Days");
+    KConfigGroup group = config.group(QLatin1String("Days"));
     const int days = group.readEntry("DaysToShow", 7);
     if (days == 1) {
         mDateTodayButton->setChecked(true);
@@ -77,7 +77,7 @@ void KCMSDSummary::load()
         mCustomDays->setEnabled(true);
     }
 
-    group = config.group("Show");
+    group = config.group(QLatin1String("Show"));
 
     mShowBirthdaysFromKABBox->setChecked(group.readEntry("BirthdaysFromContacts", true));
     mShowBirthdaysFromCalBox->setChecked(group.readEntry("BirthdaysFromCalendar", true));
@@ -89,7 +89,7 @@ void KCMSDSummary::load()
 
     mShowSpecialsFromCalBox->setChecked(group.readEntry("SpecialsFromCalendar", true));
 
-    group = config.group("Groupware");
+    group = config.group(QLatin1String("Groupware"));
     mShowMineOnly->setChecked(group.readEntry("ShowMineOnly", false));
 
     setNeedsSave(false);
@@ -99,7 +99,7 @@ void KCMSDSummary::save()
 {
     KConfig config(QStringLiteral("kcmsdsummaryrc"));
 
-    KConfigGroup group = config.group("Days");
+    KConfigGroup group = config.group(QLatin1String("Days"));
 
     int days;
     if (mDateTodayButton->isChecked()) {
@@ -111,7 +111,7 @@ void KCMSDSummary::save()
     }
     group.writeEntry("DaysToShow", days);
 
-    group = config.group("Show");
+    group = config.group(QLatin1String("Show"));
 
     group.writeEntry("BirthdaysFromContacts", mShowBirthdaysFromKABBox->isChecked());
     group.writeEntry("BirthdaysFromCalendar", mShowBirthdaysFromCalBox->isChecked());
@@ -123,7 +123,7 @@ void KCMSDSummary::save()
 
     group.writeEntry("SpecialsFromCalendar", mShowSpecialsFromCalBox->isChecked());
 
-    group = config.group("Groupware");
+    group = config.group(QLatin1String("Groupware"));
     group.writeEntry("ShowMineOnly", mShowMineOnly->isChecked());
 
     group.sync();

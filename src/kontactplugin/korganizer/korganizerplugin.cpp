@@ -56,7 +56,7 @@ KOrganizerPlugin::KOrganizerPlugin(KontactInterface::Core *core, const KPluginMe
 
     // information for the reminder daemon
     KConfig cfg(QStringLiteral("defaultcalendarrc"));
-    KConfigGroup grp(&cfg, QStringLiteral("General"));
+    KConfigGroup grp(&cfg, QLatin1String(QStringLiteral("General")));
     grp.writeEntry(QStringLiteral("ApplicationId"), QStringLiteral("org.kde.kontact"));
     grp.writeEntry(QStringLiteral("KontactPlugin"), QStringLiteral("korganizer"));
 }

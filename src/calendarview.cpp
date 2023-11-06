@@ -398,7 +398,7 @@ void CalendarView::readSettings()
     // defaults where none are to be found
 
     KSharedConfig::Ptr config = KSharedConfig::openConfig();
-    KConfigGroup geometryConfig(config, "KOrganizer Geometry");
+    KConfigGroup geometryConfig(config, QLatin1String("KOrganizer Geometry"));
 
     QList<int> sizes = geometryConfig.readEntry("Separator1", QList<int>());
     if (sizes.count() != 2 || sizes.count() == sizes.count(0)) {
@@ -417,7 +417,7 @@ void CalendarView::readSettings()
 
     readFilterSettings(config.data());
 
-    KConfigGroup viewConfig(config, "Views");
+    KConfigGroup viewConfig(config, QLatin1String("Views"));
     int dateCount = viewConfig.readEntry("ShownDatesCount", 7);
     if (dateCount == 7) {
         mDateNavigator->selectWeek();
@@ -432,7 +432,7 @@ void CalendarView::readSettings()
 void CalendarView::writeSettings()
 {
     auto config = KSharedConfig::openConfig();
-    KConfigGroup geometryConfig(config, "KOrganizer Geometry");
+    KConfigGroup geometryConfig(config, QLatin1String("KOrganizer Geometry"));
 
     QList<int> list = mMainSplitterSizes.isEmpty() ? mPanner->sizes() : mMainSplitterSizes;
     // splitter sizes are invalid (all zero) unless we have been shown once
@@ -454,7 +454,7 @@ void CalendarView::writeSettings()
 
     writeFilterSettings(config.data());
 
-    KConfigGroup viewConfig(config, "Views");
+    KConfigGroup viewConfig(config, QLatin1String("Views"));
     viewConfig.writeEntry("ShownDatesCount", mDateNavigator->selectedDates().count());
 
     config->sync();
@@ -465,7 +465,7 @@ void CalendarView::readFilterSettings(KConfig *config)
     qDeleteAll(mFilters);
     mFilters.clear();
 
-    KConfigGroup generalConfig(config, "General");
+    KConfigGroup generalConfig(config, QLatin1String("General"));
     // FIXME: Move the filter loading and saving to the CalFilter class in libkcal
     QStringList filterList = generalConfig.readEntry("CalendarFilters", QStringList());
     QString currentFilter = generalConfig.readEntry("Current Filter");
@@ -502,7 +502,7 @@ void CalendarView::writeFilterSettings(KConfig *config)
     // Delete Old Group
     for (const QString &conf : oldFilterList) {
         KConfigGroup group = config->group(conf);
-        group.deleteGroup();
+        group.deleteGroup(QLatin1String());
     }
 
     filterList.reserve(mFilters.count());
@@ -513,7 +513,7 @@ void CalendarView::writeFilterSettings(KConfig *config)
         filterConfig.writeEntry("CategoryList", filter->categoryList());
         filterConfig.writeEntry("HideTodoDays", filter->completedTimeSpan());
     }
-    KConfigGroup generalConfig(config, "General");
+    KConfigGroup generalConfig(config, QLatin1String("General"));
     generalConfig.writeEntry("CalendarFilters", filterList);
     if (mCurrentFilter) {
         generalConfig.writeEntry("Current Filter", mCurrentFilter->name());
