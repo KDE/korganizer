@@ -19,6 +19,7 @@
 
 #include <Akonadi/ManageAccountWidget>
 #include <IncidenceEditor/IncidenceEditorSettings>
+#include <akonadi/calendarsettings.h>
 
 #include <KLocalizedString>
 #include <QCheckBox>
@@ -55,6 +56,12 @@ KOPrefsDialogMain::KOPrefsDialogMain(QObject *parent, const KPluginMetaData &dat
     Korganizer::KPrefsWidRadios *defaultEmailAttachMethod =
         addWidRadios(IncidenceEditorNG::IncidenceEditorSettings::self()->defaultEmailAttachMethodItem(), personalFrame);
     personalLayout->addWidget(defaultEmailAttachMethod->groupBox());
+
+    auto remindersGroup = new QGroupBox(i18nc("@title:group", "Reminders"), personalFrame);
+    auto remindersLayout = new QFormLayout(remindersGroup);
+    Korganizer::KPrefsWidBool *onlyMyReminders = addWidBool(Akonadi::CalendarSettings::self()->onlyShowRemindersForMyEventsItem(), remindersGroup);
+    remindersLayout->addWidget(onlyMyReminders->checkBox());
+    personalLayout->addWidget(remindersGroup);
     personalLayout->addStretch(1);
 
     // Save Settings
