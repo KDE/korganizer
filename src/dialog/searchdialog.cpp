@@ -52,6 +52,9 @@ SearchDialog::SearchDialog(CalendarView *calendarview)
 
     connect(m_ui->searchEdit, &QLineEdit::textChanged, this, &SearchDialog::searchPatternChanged);
 
+    connect(m_ui->dateRangeCheckbox, &QCheckBox::toggled, this, &SearchDialog::dateRangeCheckboxToggled);
+    dateRangeCheckboxToggled();
+
     // Results list view
     auto layout = new QVBoxLayout;
     layout->setContentsMargins({});
@@ -115,6 +118,16 @@ void SearchDialog::showEvent(QShowEvent *event)
 void SearchDialog::searchPatternChanged(const QString &pattern)
 {
     m_user1Button->setEnabled(!pattern.isEmpty());
+}
+
+void SearchDialog::dateRangeCheckboxToggled()
+{
+    m_ui->startDate->setEnabled(m_ui->dateRangeCheckbox->isChecked());
+    m_ui->startDateLabel->setEnabled(m_ui->dateRangeCheckbox->isChecked());
+    m_ui->endDate->setEnabled(m_ui->dateRangeCheckbox->isChecked());
+    m_ui->endDateLabel->setEnabled(m_ui->dateRangeCheckbox->isChecked());
+    m_ui->inclusiveCheck->setEnabled(m_ui->dateRangeCheckbox->isChecked());
+    m_ui->includeUndatedTodos->setEnabled(m_ui->dateRangeCheckbox->isChecked());
 }
 
 void SearchDialog::doSearch()
@@ -184,17 +197,14 @@ void SearchDialog::search(const QRegularExpression &regularExpression)
     const QDate endDt = m_ui->endDate->date();
 
     KCalendarCore::Event::List events;
-    if (m_ui->eventsCheck->isChecked()) {
-        for (const auto &calendar : m_calendarview->enabledCalendars()) {
-            events += calendar->events(startDt, endDt, QTimeZone::systemTimeZone(), m_ui->inclusiveCheck->isChecked());
-        }
-    }
-
     KCalendarCore::Todo::List todos;
-
-    if (m_ui->todosCheck->isChecked()) {
-        if (m_ui->includeUndatedTodos->isChecked()) {
-            for (const auto &calendar : m_calendarview->enabledCalendars()) {
+    KCalendarCore::Journal::List journals;
+    for (const auto &calendar : m_calendarview->enabledCalendars()) {
+        if (m_ui->dateRangeCheckbox->isChecked()) {
+            if (m_ui->eventsCheck->isChecked()) {
+                events += calendar->events(startDt, endDt, QTimeZone::systemTimeZone(), m_ui->inclusiveCheck->isChecked());
+            }
+            if (m_ui->includeUndatedTodos->isChecked()) {
                 for (const KCalendarCore::Todo::Ptr &todo : calendar->todos()) {
                     Q_ASSERT(todo);
                     if ((!todo->hasStartDate() && !todo->hasDueDate()) // undated
@@ -207,26 +217,26 @@ void SearchDialog::search(const QRegularExpression &regularExpression)
                         todos.append(todo);
                     }
                 }
+            } else {
+                todos += calendar->todos(startDt, endDt, QTimeZone::systemTimeZone(), m_ui->inclusiveCheck->isChecked());
             }
-        } else {
-            QDate dt = startDt;
-            while (dt <= endDt) {
-                for (const auto &calendar : m_calendarview->enabledCalendars()) {
-                    todos += calendar->todos(dt);
-                }
-                dt = dt.addDays(1);
-            }
-        }
-    }
 
-    KCalendarCore::Journal::List journals;
-    if (m_ui->journalsCheck->isChecked()) {
-        QDate dt = startDt;
-        while (dt <= endDt) {
-            for (const auto &calendar : m_calendarview->enabledCalendars()) {
-                journals += calendar->journals(dt);
+            if (m_ui->journalsCheck->isChecked()) {
+                for (auto dt = startDt; dt <= endDt; dt = dt.addDays(1)) {
+                    journals += calendar->journals(dt);
+                }
             }
-            dt = dt.addDays(1);
+
+        } else {
+            if (m_ui->eventsCheck->isChecked()) {
+                events += calendar->events();
+            }
+            if (m_ui->todosCheck->isChecked()) {
+                todos += calendar->todos();
+            }
+            if (m_ui->journalsCheck->isChecked()) {
+                journals += calendar->journals();
+            }
         }
     }
 

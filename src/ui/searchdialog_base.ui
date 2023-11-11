@@ -8,11 +8,11 @@
    <rect>
     <x>0</x>
     <y>0</y>
-    <width>380</width>
-    <height>431</height>
+    <width>401</width>
+    <height>831</height>
    </rect>
   </property>
-  <layout class="QGridLayout" name="gridLayout_2">
+  <layout class="QGridLayout" name="gridLayout_2" rowstretch="0,0,0,1,0">
    <property name="leftMargin">
     <number>0</number>
    </property>
@@ -198,7 +198,23 @@
       <string>Date Range</string>
      </property>
      <layout class="QFormLayout" name="formLayout">
-      <item row="0" column="0">
+      <item row="0" column="0" colspan="2">
+       <widget class="QCheckBox" name="dateRangeCheckbox">
+        <property name="toolTip">
+         <string>When checked, the search will be limited to the specified date range.</string>
+        </property>
+        <property name="whatsThis">
+         <string>Check this box to search for events within a specified date range. If the box is unchecked, all events will be searched.</string>
+        </property>
+        <property name="text">
+         <string>Limit search to specified date range</string>
+        </property>
+        <property name="checked">
+         <bool>true</bool>
+        </property>
+       </widget>
+      </item>
+      <item row="1" column="0">
        <layout class="QHBoxLayout" name="horizontalLayout_2">
         <item>
          <widget class="QLabel" name="startDateLabel">
@@ -236,7 +252,7 @@
         </item>
        </layout>
       </item>
-      <item row="0" column="1">
+      <item row="1" column="1">
        <layout class="QHBoxLayout" name="horizontalLayout_3">
         <item>
          <widget class="QLabel" name="endDateLabel">
@@ -274,7 +290,7 @@
         </item>
        </layout>
       </item>
-      <item row="1" column="0" colspan="2">
+      <item row="2" column="0" colspan="2">
        <widget class="QCheckBox" name="inclusiveCheck">
         <property name="toolTip">
          <string>Display events only if their start date and end date are both in the date range specified.</string>
@@ -287,7 +303,7 @@
         </property>
        </widget>
       </item>
-      <item row="2" column="0" colspan="2">
+      <item row="3" column="0" colspan="2">
        <widget class="QCheckBox" name="includeUndatedTodos">
         <property name="toolTip">
          <string>Include to-dos that have a start date, due date,  or completion date in the date range specified, or have neither a start date nor an end date.</string>
@@ -306,6 +322,13 @@
      </layout>
     </widget>
    </item>
+   <item row="4" column="0">
+    <widget class="QLabel" name="numItems">
+     <property name="text">
+      <string/>
+     </property>
+    </widget>
+   </item>
    <item row="3" column="0" colspan="2">
     <widget class="QFrame" name="listViewFrame">
      <property name="sizePolicy">
@@ -319,13 +342,6 @@
      </property>
      <property name="frameShadow">
       <enum>QFrame::Raised</enum>
-     </property>
-    </widget>
-   </item>
-   <item row="4" column="0">
-    <widget class="QLabel" name="numItems">
-     <property name="text">
-      <string/>
      </property>
     </widget>
    </item>

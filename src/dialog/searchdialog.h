@@ -45,6 +45,7 @@ public:
 private Q_SLOTS:
     void popupMenu(const QPoint &point);
     void slotHelpRequested();
+    void dateRangeCheckboxToggled();
 
 Q_SIGNALS:
     void showIncidenceSignal(const Akonadi::Item &);
