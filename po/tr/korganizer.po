@@ -2,6 +2,7 @@
 # This file is distributed under the same license as the PACKAGE package.
 #
 # Translators:
+# SPDX-FileCopyrightText: 2022, 2023 Emir SARI <emir_sari@icloud.com>
 # Adem Alp Yıldız <ademalp@kde.org.tr>, 2005.
 # Engin Çağatay <engincagatay@yahoo.com>, 2005.
 # Görkem Çetin <gorkem@kde.org>, 2002-2004.
@@ -14,13 +15,13 @@
 # Volkan Gezer <volkangezer@gmail.com>, 2013-2014, 2015, 2017.
 # Yaşar Şentürk <yasar@kde.org.tr>, 2005.
 # Kaan Ozdincer <kaanozdincer@gmail.com>, 2014.
-# SPDX-FileCopyrightText: 2022, 2023 Emir SARI <emir_sari@icloud.com>
+# Emir SARI <emir_sari@icloud.com>, 2023.
 msgid ""
 msgstr ""
 "Project-Id-Version: kdepim-kde4\n"
 "Report-Msgid-Bugs-To: https://bugs.kde.org\n"
 "POT-Creation-Date: 2023-10-14 01:49+0000\n"
-"PO-Revision-Date: 2023-11-02 13:22+0300\n"
+"PO-Revision-Date: 2023-11-11 23:31+0300\n"
 "Last-Translator: Emir SARI <emir_sari@icloud.com>\n"
 "Language-Team: Turkish <kde-l10n-tr@kde.org>\n"
 "Language: tr\n"
@@ -28,7 +29,7 @@ msgstr ""
 "Content-Type: text/plain; charset=UTF-8\n"
 "Content-Transfer-Encoding: 8bit\n"
 "Plural-Forms: nplurals=2; plural=(n > 1);\n"
-"X-Generator: Lokalize 23.08.2\n"
+"X-Generator: Lokalize 23.11.70\n"
 "(http: //www.transifex.com/projects/p/kdepim-k-tr/language/tr/)\n"
 "X-POOTLE-MTIME: 1413104942.000000\n"
 
@@ -4246,9 +4247,9 @@ msgid ""
 "mouse from the start time to the end time of the event you are about to plan."
 msgstr ""
 "Günlük ve haftalık görünümde bir tarih aralığı seçtiğinizde etkinlik "
-"düzenleyiciyi otomatik olarak başlatmak için bu kutuyu işaretleyin. Bir "
-"zaman aralığı seçmek için fareyi başlangıç zamanından tasarladığınız "
-"etkinliğin bitiş zamanına dek sürükleyin."
+"düzenleyiciyi kendiliğinden başlatmak için bu kutuyu işaretleyin. Bir zaman "
+"aralığı seçmek için fareyi başlangıç zamanından tasarladığınız etkinliğin "
+"bitiş zamanına dek sürükleyin."
 
 #. i18n: ectx: tooltip, entry (SelectionStartsEditor), group (Agenda View)
 #: settings/korganizer.kcfg:181
@@ -5205,7 +5206,7 @@ msgid ""
 "as the Kolab2 server taking care of publishing your Free/Busy information "
 "and manages the access to it from other users."
 msgstr ""
-"Uygun/Meşgul bilgisini otomatik olarak yüklemek için bu kutuyu işaretleyin.\n"
+"Uygun/Meşgul bilgisini kendiliğinden yüklemek için bu kutuyu işaretleyin.\n"
 "Bu seçeneği atlamak ve K Organizatör'ün Zamanlama menüsünü kullanarak Uygun/"
 "Meşgul bilgisini yüklemek veya postalamak mümkündür.\n"
 "Not: K Organizatör, KDE Kolab istemcisi olarak çalışıyorsa buna gerek "
@@ -5228,7 +5229,7 @@ msgid ""
 "information automatically."
 msgstr ""
 "Her yükleme arasındaki en düşük zaman aralığını dakika türünden buraya "
-"belirtin. Bu ayar, yalnızca bilgilerinizi otomatik olarak yayımlamayı "
+"belirtin. Bu ayar, yalnızca bilgilerinizi kendiliğinden yayımlamayı "
 "seçtiğiniz takdirde etkili olacaktır."
 
 #. i18n: ectx: property (text), widget (QLabel, publishDelayLabel)
@@ -5385,14 +5386,14 @@ msgid ""
 "automatically. Note that you have to fill the correct server information to "
 "make this possible."
 msgstr ""
-"Başkalarının Uygun/Meşgul bilgisini otomatik olarak almak için bu kutuyu "
+"Başkalarının Uygun/Meşgul bilgisini kendiliğinden almak için bu kutuyu "
 "işaretleyin. Bunu yapabilmek için doğru sunucu bilgisini girmelisiniz."
 
 #. i18n: ectx: property (text), widget (QCheckBox, retrieveEnable)
 #: ui/kogroupwareprefspage.ui:369
 #, kde-format
 msgid "Retrieve other people's free/&busy information automatically"
-msgstr "Diğer kişilerin &uygun/meşgul bilgilerini otomatik olarak al"
+msgstr "Diğer kişilerin &uygun/meşgul bilgilerini kendiliğinden al"
 
 #. i18n: ectx: property (toolTip), widget (QCheckBox, fullDomainRetrieval)
 #: ui/kogroupwareprefspage.ui:379
