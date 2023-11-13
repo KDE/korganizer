@@ -59,19 +59,12 @@ set(AKONADINOTES_LIB_VERSION "5.240.81")
 
 find_package(Qt6 ${QT_REQUIRED_VERSION} CONFIG REQUIRED DBus Gui Widgets Test UiTools)
 
-find_package(KUserFeedbackQt6 1.3.0 CONFIG)
-
-set_package_properties(KUserFeedbackQt6 PROPERTIES DESCRIPTION "User Feedback lib" TYPE OPTIONAL PURPOSE "Allow to send Telemetry Information (optional).")
-
-if (TARGET KUserFeedbackWidgetsQt6)
-    add_definitions(-DWITH_KUSERFEEDBACK)
-endif()
-
 set(PIMCOMMON_LIB_VERSION "5.240.81")
 set(LIBKDEPIM_LIB_VERSION "5.240.81")
 set(LIBINCIDENCEEDITOR_LIB_VERSION "5.240.81")
 set(CALENDARSUPPORT_LIB_VERSION "5.240.81")
 set(EVENTVIEW_LIB_VERSION "5.240.81")
+
 # Find KF6 package
 find_package(KF6I18n ${KF_MIN_VERSION} CONFIG REQUIRED)
 find_package(KF6Config ${KF_MIN_VERSION} CONFIG REQUIRED)
@@ -88,6 +81,13 @@ find_package(KF6WidgetsAddons ${KF_MIN_VERSION} CONFIG REQUIRED)
 find_package(KF6WindowSystem ${KF_MIN_VERSION} CONFIG REQUIRED)
 find_package(KF6XmlGui ${KF_MIN_VERSION} CONFIG REQUIRED)
 find_package(KF6Holidays ${KF_MIN_VERSION} CONFIG REQUIRED)
+find_package(KF6UserFeedback ${KF_MIN_VERSION} CONFIG)
+
+set_package_properties(KF6UserFeedback PROPERTIES DESCRIPTION "User Feedback lib" TYPE OPTIONAL PURPOSE "Allow to send Telemetry Information (optional).")
+
+if (TARGET KF6::UserFeedbackWidgets)
+    add_definitions(-DWITH_KUSERFEEDBACK)
+endif()
 
 find_package(KF6DocTools ${KF_MIN_VERSION})
 set_package_properties(KF6DocTools PROPERTIES DESCRIPTION

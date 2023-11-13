@@ -17,8 +17,8 @@ add_subdirectory(views/collectionview)
 ########### next target ###############
 
 set(korganizer_userfeedback_LIB)
-if(TARGET KUserFeedbackWidgetsQt6)
-    set(korganizer_userfeedback_LIB KUserFeedbackWidgetsQt6)
+if(TARGET KF6::UserFeedbackWidgets)
+    set(korganizer_userfeedback_LIB KF6::UserFeedbackWidgets)
 endif()
 
 set(korganizer_common_SRCS)
@@ -187,7 +187,7 @@ install(TARGETS
 
 ########### next target ###############
 set(korganizerprivate_userfeedback_SRCS)
-if(TARGET KUserFeedbackWidgetsQt6)
+if(TARGET KF6::UserFeedbackWidgets)
     set(korganizerprivate_userfeedback_SRCS ${korganizerprivate_userfeedback_SRCS}
         userfeedback/userfeedbackmanager.cpp
         userfeedback/korganizeruserfeedbackprovider.cpp

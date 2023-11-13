@@ -15,7 +15,7 @@
 #ifdef WITH_KUSERFEEDBACK
 #include "userfeedback/userfeedbackmanager.h"
 
-#include <KUserFeedbackQt6/FeedbackConfigWidget>
+#include <KUserFeedback/FeedbackConfigWidget>
 
 K_PLUGIN_CLASS_WITH_JSON(KOPrefsUserFeedBack, "korganizer_userfeedback.json")
 

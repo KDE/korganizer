@@ -7,7 +7,7 @@
 #pragma once
 
 #include "korganizerprivate_export.h"
-#include <KUserFeedbackQt6/Provider>
+#include <KUserFeedback/Provider>
 
 class KORGANIZERPRIVATE_EXPORT KOrganizerUserFeedbackProvider : public KUserFeedback::Provider
 {
