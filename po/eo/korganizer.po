@@ -6,8 +6,8 @@ msgid ""
 msgstr ""
 "Project-Id-Version: korganizer\n"
 "Report-Msgid-Bugs-To: https://bugs.kde.org\n"
-"POT-Creation-Date: 2023-10-14 01:49+0000\n"
-"PO-Revision-Date: 2023-09-27 21:36+0100\n"
+"POT-Creation-Date: 2023-11-13 01:38+0000\n"
+"PO-Revision-Date: 2023-11-12 16:39+0100\n"
 "Last-Translator: Oliver Kellogg <okellogg@users.sourceforge.net>\n"
 "Language-Team: esperanto <kde-i18n-eo@kde.org>\n"
 "Language: eo\n"
@@ -1963,25 +1963,25 @@ msgctxt "@title:window"
 msgid "Find in Calendars"
 msgstr "Trovi en Kalendaroj"
 
-#: dialog/searchdialog.cpp:70
+#: dialog/searchdialog.cpp:73
 #, kde-format
 msgctxt "@action:button search in calendar"
 msgid "&Search"
 msgstr "&Serĉi"
 
-#: dialog/searchdialog.cpp:72
+#: dialog/searchdialog.cpp:75
 #, kde-format
 msgctxt "@info:tooltip"
 msgid "Start the search"
 msgstr "Komenci la serĉon"
 
-#: dialog/searchdialog.cpp:73
+#: dialog/searchdialog.cpp:76
 #, kde-format
 msgctxt "@info:whatsthis"
 msgid "Press this button to start the search."
 msgstr "Premu ĉi tiun butonon por komenci la serĉon."
 
-#: dialog/searchdialog.cpp:134
+#: dialog/searchdialog.cpp:147
 #, kde-format
 msgctxt "@info"
 msgid ""
@@ -1991,19 +1991,19 @@ msgstr ""
 "Nevalida serĉesprimo, ne povas plenumi la serĉon. Bonvolu enigi serĉesprimon "
 "per la ĵokeraj signoj '*' kaj '?' kie necesas."
 
-#: dialog/searchdialog.cpp:146
+#: dialog/searchdialog.cpp:159
 #, kde-format
 msgctxt "@info"
 msgid "No items were found that match your search pattern."
 msgstr "Neniuj eroj estis trovitaj, kiuj kongruas kun via serĉŝablono."
 
-#: dialog/searchdialog.cpp:147
+#: dialog/searchdialog.cpp:160
 #, kde-format
 msgctxt "@title:window"
 msgid "Search Results"
 msgstr "Serĉrezultoj"
 
-#: dialog/searchdialog.cpp:162
+#: dialog/searchdialog.cpp:175
 #, kde-format
 msgctxt "@label"
 msgid "%1 match"
@@ -3453,31 +3453,37 @@ msgctxt "@label"
 msgid "Mail transport:"
 msgstr "Poŝttransporto:"
 
-#: prefs/koprefsdialogmain.cpp:39
+#: prefs/koprefsdialogmain.cpp:40
 #, kde-format
 msgctxt "@title:tab personal settings"
 msgid "Personal"
 msgstr "Personaj"
 
-#: prefs/koprefsdialogmain.cpp:45
+#: prefs/koprefsdialogmain.cpp:46
 #, kde-format
 msgctxt "@title:group email settings"
 msgid "Email Settings"
 msgstr "Retpoŝtaj Agordoj"
 
-#: prefs/koprefsdialogmain.cpp:62
+#: prefs/koprefsdialogmain.cpp:60 prefs/koprefsdialogtime.cpp:187
+#, kde-format
+msgctxt "@title:group"
+msgid "Reminders"
+msgstr "Rememorigiloj"
+
+#: prefs/koprefsdialogmain.cpp:69
 #, kde-format
 msgctxt "@title:tab"
 msgid "Save"
 msgstr "Konservi"
 
-#: prefs/koprefsdialogmain.cpp:74
+#: prefs/koprefsdialogmain.cpp:81
 #, kde-format
 msgctxt "@title:tab calendar account settings"
 msgid "Calendars"
 msgstr "Kalendaroj"
 
-#: prefs/koprefsdialogmain.cpp:78
+#: prefs/koprefsdialogmain.cpp:85
 #, kde-format
 msgctxt "@title"
 msgid "Calendar Accounts"
@@ -3627,12 +3633,6 @@ msgstr "Defaŭltaj Valoroj"
 msgctxt "@title:group"
 msgid "Appointments"
 msgstr "Nomumoj"
-
-#: prefs/koprefsdialogtime.cpp:187
-#, kde-format
-msgctxt "@title:group"
-msgid "Reminders"
-msgstr "Rememorigiloj"
 
 #: prefs/koprefsdialogtime.cpp:192
 #, kde-format
@@ -4793,10 +4793,10 @@ msgid ""
 "that shows the hours in the agenda view. This button will open the \"Select "
 "Font\" dialog, allowing you to choose the hour font for the time bar."
 msgstr ""
-"Premu ĉi tiun butonon por agordi la tiparo de tempodrinkejo. La "
-"tempodrinkejo estas la fenestraĵo kiu montras la horojn en la tagorda vido. "
-"Ĉi tiu butono malfermos la dialogon \"Elekti tiparon\", permesante al vi "
-"elekti la hortiparo por la tempodrinkejo."
+"Premu ĉi tiun butonon por agordi la tiparon de tempobreto. La tempobreto "
+"estas la fenestraĵo kiu montras la horojn en la tagorda vido. Ĉi tiu butono "
+"malfermos la dialogon \"Elekti tiparon\", permesante al vi elekti la "
+"hortiparo por la tempobreto."
 
 #. i18n: ectx: label, entry, group (Fonts)
 #: settings/korganizer.kcfg:387
@@ -5650,51 +5650,72 @@ msgstr "Ĉeestantoj"
 msgid "Date Range"
 msgstr "Datintervalo"
 
+#. i18n: ectx: property (toolTip), widget (QCheckBox, dateRangeCheckbox)
+#: ui/searchdialog_base.ui:204
+#, fuzzy, kde-format
+#| msgid "Include all to-dos &within the specified date range"
+msgid "When checked, the search will be limited to the specified date range."
+msgstr "Enmetu ĉiujn farendojn &ene de la specifita datintervalo"
+
+#. i18n: ectx: property (whatsThis), widget (QCheckBox, dateRangeCheckbox)
+#: ui/searchdialog_base.ui:207
+#, kde-format
+msgid ""
+"Check this box to search for events within a specified date range. If the "
+"box is unchecked, all events will be searched."
+msgstr ""
+
+#. i18n: ectx: property (text), widget (QCheckBox, dateRangeCheckbox)
+#: ui/searchdialog_base.ui:210
+#, kde-format
+msgid "Limit search to specified date range"
+msgstr ""
+
 #. i18n: ectx: property (text), widget (QLabel, startDateLabel)
-#: ui/searchdialog_base.ui:206
+#: ui/searchdialog_base.ui:222
 #, kde-format
 msgid "Fr&om:"
 msgstr "D&e:"
 
 #. i18n: ectx: property (toolTip), widget (KDateComboBox, startDate)
-#: ui/searchdialog_base.ui:225
+#: ui/searchdialog_base.ui:241
 #, kde-format
 msgid "The starting date of the period to search."
 msgstr "La komenca dato de la periodo por serĉi."
 
 #. i18n: ectx: property (whatsThis), widget (KDateComboBox, startDate)
-#: ui/searchdialog_base.ui:228
+#: ui/searchdialog_base.ui:244
 #, kde-format
 msgid "Search for items in the time period starting at the date given here."
 msgstr "Serĉi erojn en la tempoperiodo ekde la dato donita ĉi tie."
 
 #. i18n: ectx: property (text), item, widget (KDateComboBox, startDate)
 #. i18n: ectx: property (text), item, widget (KDateComboBox, endDate)
-#: ui/searchdialog_base.ui:232 ui/searchdialog_base.ui:270
+#: ui/searchdialog_base.ui:248 ui/searchdialog_base.ui:286
 #, kde-format
 msgid "2008-08-18"
 msgstr "2008-08-18"
 
 #. i18n: ectx: property (text), widget (QLabel, endDateLabel)
-#: ui/searchdialog_base.ui:244
+#: ui/searchdialog_base.ui:260
 #, kde-format
 msgid "&To:"
 msgstr "&Al:"
 
 #. i18n: ectx: property (toolTip), widget (KDateComboBox, endDate)
-#: ui/searchdialog_base.ui:263
+#: ui/searchdialog_base.ui:279
 #, kde-format
 msgid "The ending date of the period to search."
 msgstr "La findato de la periodo por serĉi."
 
 #. i18n: ectx: property (whatsThis), widget (KDateComboBox, endDate)
-#: ui/searchdialog_base.ui:266
+#: ui/searchdialog_base.ui:282
 #, kde-format
 msgid "Search for items in the time period ending at the date given here."
 msgstr "Serĉi erojn en la tempoperiodo finiĝanta ĉe la dato donita ĉi tie."
 
 #. i18n: ectx: property (toolTip), widget (QCheckBox, inclusiveCheck)
-#: ui/searchdialog_base.ui:280
+#: ui/searchdialog_base.ui:296
 #, kde-format
 msgid ""
 "Display events only if their start date and end date are both in the date "
@@ -5704,7 +5725,7 @@ msgstr ""
 "datintervalo specifita."
 
 #. i18n: ectx: property (whatsThis), widget (QCheckBox, inclusiveCheck)
-#: ui/searchdialog_base.ui:283
+#: ui/searchdialog_base.ui:299
 #, kde-format
 msgid ""
 "Check this box if you only want to find events that occur entirely within "
@@ -5718,13 +5739,13 @@ msgstr ""
 "estos ekskluditaj de la serĉrezultoj."
 
 #. i18n: ectx: property (text), widget (QCheckBox, inclusiveCheck)
-#: ui/searchdialog_base.ui:286
+#: ui/searchdialog_base.ui:302
 #, kde-format
 msgid "Exclude e&vents that extend outside the specified date range"
 msgstr "Ekskludi e&ventojn kiuj etendiĝas ekster la specifita datintervalo"
 
 #. i18n: ectx: property (toolTip), widget (QCheckBox, includeUndatedTodos)
-#: ui/searchdialog_base.ui:293
+#: ui/searchdialog_base.ui:309
 #, kde-format
 msgid ""
 "Include to-dos that have a start date, due date,  or completion date in the "
@@ -5734,7 +5755,7 @@ msgstr ""
 "datintervalo specifita, aŭ havas nek komencdaton nek findaton."
 
 #. i18n: ectx: property (whatsThis), widget (QCheckBox, includeUndatedTodos)
-#: ui/searchdialog_base.ui:296
+#: ui/searchdialog_base.ui:312
 #, kde-format
 msgid ""
 "Check this box to search for to-dos that have a start date, due date, or "
@@ -5748,7 +5769,7 @@ msgstr ""
 "en la datintervalo, estos montrataj."
 
 #. i18n: ectx: property (text), widget (QCheckBox, includeUndatedTodos)
-#: ui/searchdialog_base.ui:299
+#: ui/searchdialog_base.ui:315
 #, kde-format
 msgid "Include all to-dos &within the specified date range"
 msgstr "Enmetu ĉiujn farendojn &ene de la specifita datintervalo"

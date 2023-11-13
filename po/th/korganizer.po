@@ -6,7 +6,7 @@ msgid ""
 msgstr ""
 "Project-Id-Version: korganizer\n"
 "Report-Msgid-Bugs-To: https://bugs.kde.org\n"
-"POT-Creation-Date: 2023-10-14 01:49+0000\n"
+"POT-Creation-Date: 2023-11-13 01:38+0000\n"
 "PO-Revision-Date: 2008-07-21 16:18+0700\n"
 "Last-Translator: Thanomsub Noppaburana <donga.nb@gmail.com>\n"
 "Language-Team: Thai <thai-l10n@googlegroups.com>\n"
@@ -2035,7 +2035,7 @@ msgctxt "@title:window"
 msgid "Find in Calendars"
 msgstr "ปฏิทิน"
 
-#: dialog/searchdialog.cpp:70
+#: dialog/searchdialog.cpp:73
 #, fuzzy, kde-format
 #| msgctxt "@label in QuickSearchLine"
 #| msgid "Search"
@@ -2043,21 +2043,21 @@ msgctxt "@action:button search in calendar"
 msgid "&Search"
 msgstr "ค้นหา"
 
-#: dialog/searchdialog.cpp:72
+#: dialog/searchdialog.cpp:75
 #, fuzzy, kde-format
 #| msgid "Start date: "
 msgctxt "@info:tooltip"
 msgid "Start the search"
 msgstr "วันที่เริ่ม: "
 
-#: dialog/searchdialog.cpp:73
+#: dialog/searchdialog.cpp:76
 #, fuzzy, kde-format
 #| msgid "Press this button to define a new filter."
 msgctxt "@info:whatsthis"
 msgid "Press this button to start the search."
 msgstr "กดที่ปุ่มนี้เพื่อนิยามตัวกรองใหม่"
 
-#: dialog/searchdialog.cpp:134
+#: dialog/searchdialog.cpp:147
 #, fuzzy, kde-format
 #| msgid ""
 #| "Invalid search expression, cannot perform the search. Please enter a "
@@ -2070,21 +2070,21 @@ msgstr ""
 "เงื่อนไขการค้นหาใช้งานไม่ได้ ทำให้ไม่สามารถทำการค้นหาได้ "
 "โปรดป้อนเงื่อนไขการค้นหาที่มีการใช้อักขระไวล์การ์ด '*' และ '?' ตามต้องการ"
 
-#: dialog/searchdialog.cpp:146
+#: dialog/searchdialog.cpp:159
 #, fuzzy, kde-format
 #| msgid "No events were found matching your search expression."
 msgctxt "@info"
 msgid "No items were found that match your search pattern."
 msgstr "ไม่พบเหตุการณ์ที่ตรงกับเงื่อนไขการค้นหาของคุณ"
 
-#: dialog/searchdialog.cpp:147
+#: dialog/searchdialog.cpp:160
 #, fuzzy, kde-format
 #| msgid "Search In"
 msgctxt "@title:window"
 msgid "Search Results"
 msgstr "ค้นหาใน"
 
-#: dialog/searchdialog.cpp:162
+#: dialog/searchdialog.cpp:175
 #, kde-format
 msgctxt "@label"
 msgid "%1 match"
@@ -3610,32 +3610,39 @@ msgctxt "@label"
 msgid "Mail transport:"
 msgstr ""
 
-#: prefs/koprefsdialogmain.cpp:39
+#: prefs/koprefsdialogmain.cpp:40
 #, kde-format
 msgctxt "@title:tab personal settings"
 msgid "Personal"
 msgstr "ส่วนบุคคล"
 
-#: prefs/koprefsdialogmain.cpp:45
+#: prefs/koprefsdialogmain.cpp:46
 #, kde-format
 msgctxt "@title:group email settings"
 msgid "Email Settings"
 msgstr "การตั้งค่าอีเมล"
 
-#: prefs/koprefsdialogmain.cpp:62
+#: prefs/koprefsdialogmain.cpp:60 prefs/koprefsdialogtime.cpp:187
+#, fuzzy, kde-format
+#| msgid "Reminder"
+msgctxt "@title:group"
+msgid "Reminders"
+msgstr "เตือนความจำ"
+
+#: prefs/koprefsdialogmain.cpp:69
 #, kde-format
 msgctxt "@title:tab"
 msgid "Save"
 msgstr "บันทึก"
 
-#: prefs/koprefsdialogmain.cpp:74
+#: prefs/koprefsdialogmain.cpp:81
 #, fuzzy, kde-format
 #| msgid "Calendars"
 msgctxt "@title:tab calendar account settings"
 msgid "Calendars"
 msgstr "ปฏิทิน"
 
-#: prefs/koprefsdialogmain.cpp:78
+#: prefs/koprefsdialogmain.cpp:85
 #, fuzzy, kde-format
 #| msgctxt "@title:group"
 #| msgid "Calendar Decorations"
@@ -3796,13 +3803,6 @@ msgstr "ค่าปริยาย"
 msgctxt "@title:group"
 msgid "Appointments"
 msgstr "การนัดหมาย"
-
-#: prefs/koprefsdialogtime.cpp:187
-#, fuzzy, kde-format
-#| msgid "Reminder"
-msgctxt "@title:group"
-msgid "Reminders"
-msgstr "เตือนความจำ"
 
 #: prefs/koprefsdialogtime.cpp:192
 #, kde-format
@@ -5755,53 +5755,74 @@ msgstr "ผู้เข้าร่วม"
 msgid "Date Range"
 msgstr "ช่วงวัน"
 
+#. i18n: ectx: property (toolTip), widget (QCheckBox, dateRangeCheckbox)
+#: ui/searchdialog_base.ui:204
+#, fuzzy, kde-format
+#| msgid "Include to-dos &without due date"
+msgid "When checked, the search will be limited to the specified date range."
+msgstr "รวมสิ่งที่จะทำที่ไม่มีวันครบกำหนด"
+
+#. i18n: ectx: property (whatsThis), widget (QCheckBox, dateRangeCheckbox)
+#: ui/searchdialog_base.ui:207
+#, kde-format
+msgid ""
+"Check this box to search for events within a specified date range. If the "
+"box is unchecked, all events will be searched."
+msgstr ""
+
+#. i18n: ectx: property (text), widget (QCheckBox, dateRangeCheckbox)
+#: ui/searchdialog_base.ui:210
+#, kde-format
+msgid "Limit search to specified date range"
+msgstr ""
+
 #. i18n: ectx: property (text), widget (QLabel, startDateLabel)
-#: ui/searchdialog_base.ui:206
+#: ui/searchdialog_base.ui:222
 #, kde-format
 msgid "Fr&om:"
 msgstr "จาก:"
 
 #. i18n: ectx: property (toolTip), widget (KDateComboBox, startDate)
-#: ui/searchdialog_base.ui:225
+#: ui/searchdialog_base.ui:241
 #, fuzzy, kde-format
 #| msgid "Sets the start date for this to-do"
 msgid "The starting date of the period to search."
 msgstr "ตั้งค่าวันที่เริ่มสำหรับสิ่งที่จะทำนี้"
 
 #. i18n: ectx: property (whatsThis), widget (KDateComboBox, startDate)
-#: ui/searchdialog_base.ui:228
+#: ui/searchdialog_base.ui:244
 #, kde-format
 msgid "Search for items in the time period starting at the date given here."
 msgstr ""
 
 #. i18n: ectx: property (text), item, widget (KDateComboBox, startDate)
 #. i18n: ectx: property (text), item, widget (KDateComboBox, endDate)
-#: ui/searchdialog_base.ui:232 ui/searchdialog_base.ui:270
+#: ui/searchdialog_base.ui:248 ui/searchdialog_base.ui:286
 #, fuzzy, kde-format
 #| msgid "2008-01-14"
 msgid "2008-08-18"
 msgstr "2008-01-14"
 
 #. i18n: ectx: property (text), widget (QLabel, endDateLabel)
-#: ui/searchdialog_base.ui:244
+#: ui/searchdialog_base.ui:260
 #, kde-format
 msgid "&To:"
 msgstr "ถึง:"
 
 #. i18n: ectx: property (toolTip), widget (KDateComboBox, endDate)
-#: ui/searchdialog_base.ui:263
+#: ui/searchdialog_base.ui:279
 #, kde-format
 msgid "The ending date of the period to search."
 msgstr ""
 
 #. i18n: ectx: property (whatsThis), widget (KDateComboBox, endDate)
-#: ui/searchdialog_base.ui:266
+#: ui/searchdialog_base.ui:282
 #, kde-format
 msgid "Search for items in the time period ending at the date given here."
 msgstr ""
 
 #. i18n: ectx: property (toolTip), widget (QCheckBox, inclusiveCheck)
-#: ui/searchdialog_base.ui:280
+#: ui/searchdialog_base.ui:296
 #, kde-format
 msgid ""
 "Display events only if their start date and end date are both in the date "
@@ -5809,7 +5830,7 @@ msgid ""
 msgstr ""
 
 #. i18n: ectx: property (whatsThis), widget (QCheckBox, inclusiveCheck)
-#: ui/searchdialog_base.ui:283
+#: ui/searchdialog_base.ui:299
 #, kde-format
 msgid ""
 "Check this box if you only want to find events that occur entirely within "
@@ -5819,13 +5840,13 @@ msgid ""
 msgstr ""
 
 #. i18n: ectx: property (text), widget (QCheckBox, inclusiveCheck)
-#: ui/searchdialog_base.ui:286
+#: ui/searchdialog_base.ui:302
 #, kde-format
 msgid "Exclude e&vents that extend outside the specified date range"
 msgstr ""
 
 #. i18n: ectx: property (toolTip), widget (QCheckBox, includeUndatedTodos)
-#: ui/searchdialog_base.ui:293
+#: ui/searchdialog_base.ui:309
 #, kde-format
 msgid ""
 "Include to-dos that have a start date, due date,  or completion date in the "
@@ -5833,7 +5854,7 @@ msgid ""
 msgstr ""
 
 #. i18n: ectx: property (whatsThis), widget (QCheckBox, includeUndatedTodos)
-#: ui/searchdialog_base.ui:296
+#: ui/searchdialog_base.ui:312
 #, kde-format
 msgid ""
 "Check this box to search for to-dos that have a start date, due date, or "
@@ -5843,7 +5864,7 @@ msgid ""
 msgstr ""
 
 #. i18n: ectx: property (text), widget (QCheckBox, includeUndatedTodos)
-#: ui/searchdialog_base.ui:299
+#: ui/searchdialog_base.ui:315
 #, fuzzy, kde-format
 #| msgid "Include to-dos &without due date"
 msgid "Include all to-dos &within the specified date range"

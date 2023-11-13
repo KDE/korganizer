@@ -3,7 +3,7 @@ msgid ""
 msgstr ""
 "Project-Id-Version: korganizer\n"
 "Report-Msgid-Bugs-To: https://bugs.kde.org\n"
-"POT-Creation-Date: 2023-10-14 01:49+0000\n"
+"POT-Creation-Date: 2023-11-13 01:38+0000\n"
 "PO-Revision-Date: 2023-09-30 10:23+0200\n"
 "Last-Translator: Mincho Kondarev <mkondarev@yahoo.de>\n"
 "Language-Team: \n"
@@ -1967,25 +1967,25 @@ msgctxt "@title:window"
 msgid "Find in Calendars"
 msgstr "Намиране в календари"
 
-#: dialog/searchdialog.cpp:70
+#: dialog/searchdialog.cpp:73
 #, kde-format
 msgctxt "@action:button search in calendar"
 msgid "&Search"
 msgstr "&Търсене"
 
-#: dialog/searchdialog.cpp:72
+#: dialog/searchdialog.cpp:75
 #, kde-format
 msgctxt "@info:tooltip"
 msgid "Start the search"
 msgstr "Започнете търсенето"
 
-#: dialog/searchdialog.cpp:73
+#: dialog/searchdialog.cpp:76
 #, kde-format
 msgctxt "@info:whatsthis"
 msgid "Press this button to start the search."
 msgstr "Натиснете този бутон, за да започнете търсенето."
 
-#: dialog/searchdialog.cpp:134
+#: dialog/searchdialog.cpp:147
 #, kde-format
 msgctxt "@info"
 msgid ""
@@ -1996,20 +1996,20 @@ msgstr ""
 "израз за търсене, използвайки заместващите символи '*' и '?' където е "
 "необходимо."
 
-#: dialog/searchdialog.cpp:146
+#: dialog/searchdialog.cpp:159
 #, kde-format
 msgctxt "@info"
 msgid "No items were found that match your search pattern."
 msgstr ""
 "Не бяха намерени елементи, които съответстват на вашия модел на търсене."
 
-#: dialog/searchdialog.cpp:147
+#: dialog/searchdialog.cpp:160
 #, kde-format
 msgctxt "@title:window"
 msgid "Search Results"
 msgstr "Резултати от търсенето"
 
-#: dialog/searchdialog.cpp:162
+#: dialog/searchdialog.cpp:175
 #, kde-format
 msgctxt "@label"
 msgid "%1 match"
@@ -3471,31 +3471,37 @@ msgctxt "@label"
 msgid "Mail transport:"
 msgstr "Транспорт по пощата:"
 
-#: prefs/koprefsdialogmain.cpp:39
+#: prefs/koprefsdialogmain.cpp:40
 #, kde-format
 msgctxt "@title:tab personal settings"
 msgid "Personal"
 msgstr "Лични"
 
-#: prefs/koprefsdialogmain.cpp:45
+#: prefs/koprefsdialogmain.cpp:46
 #, kde-format
 msgctxt "@title:group email settings"
 msgid "Email Settings"
 msgstr "Настройки на е-поща"
 
-#: prefs/koprefsdialogmain.cpp:62
+#: prefs/koprefsdialogmain.cpp:60 prefs/koprefsdialogtime.cpp:187
+#, kde-format
+msgctxt "@title:group"
+msgid "Reminders"
+msgstr "Напомняния"
+
+#: prefs/koprefsdialogmain.cpp:69
 #, kde-format
 msgctxt "@title:tab"
 msgid "Save"
 msgstr "Запазване"
 
-#: prefs/koprefsdialogmain.cpp:74
+#: prefs/koprefsdialogmain.cpp:81
 #, kde-format
 msgctxt "@title:tab calendar account settings"
 msgid "Calendars"
 msgstr "Календари"
 
-#: prefs/koprefsdialogmain.cpp:78
+#: prefs/koprefsdialogmain.cpp:85
 #, kde-format
 msgctxt "@title"
 msgid "Calendar Accounts"
@@ -3646,12 +3652,6 @@ msgstr "Стойности по подразбиране"
 msgctxt "@title:group"
 msgid "Appointments"
 msgstr "Срещи"
-
-#: prefs/koprefsdialogtime.cpp:187
-#, kde-format
-msgctxt "@title:group"
-msgid "Reminders"
-msgstr "Напомняния"
 
 #: prefs/koprefsdialogtime.cpp:192
 #, kde-format
@@ -5699,51 +5699,72 @@ msgstr "Участници"
 msgid "Date Range"
 msgstr "Период"
 
+#. i18n: ectx: property (toolTip), widget (QCheckBox, dateRangeCheckbox)
+#: ui/searchdialog_base.ui:204
+#, fuzzy, kde-format
+#| msgid "Include all to-dos &within the specified date range"
+msgid "When checked, the search will be limited to the specified date range."
+msgstr "Включване на всички задачи &за посочения период от време"
+
+#. i18n: ectx: property (whatsThis), widget (QCheckBox, dateRangeCheckbox)
+#: ui/searchdialog_base.ui:207
+#, kde-format
+msgid ""
+"Check this box to search for events within a specified date range. If the "
+"box is unchecked, all events will be searched."
+msgstr ""
+
+#. i18n: ectx: property (text), widget (QCheckBox, dateRangeCheckbox)
+#: ui/searchdialog_base.ui:210
+#, kde-format
+msgid "Limit search to specified date range"
+msgstr ""
+
 #. i18n: ectx: property (text), widget (QLabel, startDateLabel)
-#: ui/searchdialog_base.ui:206
+#: ui/searchdialog_base.ui:222
 #, kde-format
 msgid "Fr&om:"
 msgstr "О&т:"
 
 #. i18n: ectx: property (toolTip), widget (KDateComboBox, startDate)
-#: ui/searchdialog_base.ui:225
+#: ui/searchdialog_base.ui:241
 #, kde-format
 msgid "The starting date of the period to search."
 msgstr "Началната дата на периода за търсене."
 
 #. i18n: ectx: property (whatsThis), widget (KDateComboBox, startDate)
-#: ui/searchdialog_base.ui:228
+#: ui/searchdialog_base.ui:244
 #, kde-format
 msgid "Search for items in the time period starting at the date given here."
 msgstr "Търсене на елементи в периода, започващ от посочената тук дата."
 
 #. i18n: ectx: property (text), item, widget (KDateComboBox, startDate)
 #. i18n: ectx: property (text), item, widget (KDateComboBox, endDate)
-#: ui/searchdialog_base.ui:232 ui/searchdialog_base.ui:270
+#: ui/searchdialog_base.ui:248 ui/searchdialog_base.ui:286
 #, kde-format
 msgid "2008-08-18"
 msgstr "2008-08-18"
 
 #. i18n: ectx: property (text), widget (QLabel, endDateLabel)
-#: ui/searchdialog_base.ui:244
+#: ui/searchdialog_base.ui:260
 #, kde-format
 msgid "&To:"
 msgstr "&До:"
 
 #. i18n: ectx: property (toolTip), widget (KDateComboBox, endDate)
-#: ui/searchdialog_base.ui:263
+#: ui/searchdialog_base.ui:279
 #, kde-format
 msgid "The ending date of the period to search."
 msgstr "Крайната дата на периода за търсене."
 
 #. i18n: ectx: property (whatsThis), widget (KDateComboBox, endDate)
-#: ui/searchdialog_base.ui:266
+#: ui/searchdialog_base.ui:282
 #, kde-format
 msgid "Search for items in the time period ending at the date given here."
 msgstr "Търсене на елементи в периода, приключващ на посочената тук дата."
 
 #. i18n: ectx: property (toolTip), widget (QCheckBox, inclusiveCheck)
-#: ui/searchdialog_base.ui:280
+#: ui/searchdialog_base.ui:296
 #, kde-format
 msgid ""
 "Display events only if their start date and end date are both in the date "
@@ -5753,7 +5774,7 @@ msgstr ""
 "впосочения период."
 
 #. i18n: ectx: property (whatsThis), widget (QCheckBox, inclusiveCheck)
-#: ui/searchdialog_base.ui:283
+#: ui/searchdialog_base.ui:299
 #, kde-format
 msgid ""
 "Check this box if you only want to find events that occur entirely within "
@@ -5768,13 +5789,13 @@ msgstr ""
 "търсенето."
 
 #. i18n: ectx: property (text), widget (QCheckBox, inclusiveCheck)
-#: ui/searchdialog_base.ui:286
+#: ui/searchdialog_base.ui:302
 #, kde-format
 msgid "Exclude e&vents that extend outside the specified date range"
 msgstr "Изключване на &събития извън посочения период"
 
 #. i18n: ectx: property (toolTip), widget (QCheckBox, includeUndatedTodos)
-#: ui/searchdialog_base.ui:293
+#: ui/searchdialog_base.ui:309
 #, kde-format
 msgid ""
 "Include to-dos that have a start date, due date,  or completion date in the "
@@ -5785,7 +5806,7 @@ msgstr ""
 "дата."
 
 #. i18n: ectx: property (whatsThis), widget (QCheckBox, includeUndatedTodos)
-#: ui/searchdialog_base.ui:296
+#: ui/searchdialog_base.ui:312
 #, kde-format
 msgid ""
 "Check this box to search for to-dos that have a start date, due date, or "
@@ -5800,7 +5821,7 @@ msgstr ""
 "изпълнение в посочения период, ще бъдат показани."
 
 #. i18n: ectx: property (text), widget (QCheckBox, includeUndatedTodos)
-#: ui/searchdialog_base.ui:299
+#: ui/searchdialog_base.ui:315
 #, kde-format
 msgid "Include all to-dos &within the specified date range"
 msgstr "Включване на всички задачи &за посочения период от време"
