@@ -14,7 +14,7 @@ msgstr ""
 "Project-Id-Version: korganizer\n"
 "Report-Msgid-Bugs-To: https://bugs.kde.org\n"
 "POT-Creation-Date: 2023-11-13 01:38+0000\n"
-"PO-Revision-Date: 2023-09-30 18:20+0200\n"
+"PO-Revision-Date: 2023-11-13 13:34+0100\n"
 "Last-Translator: Josep M. Ferrer <txemaq@gmail.com>\n"
 "Language-Team: Catalan <kde-i18n-ca@kde.org>\n"
 "Language: ca@valencia\n"
@@ -751,7 +751,7 @@ msgstr "Ves fins a hui"
 #, kde-format
 msgctxt "@info:tooltip"
 msgid "Scroll the view to today"
-msgstr "Desplaça la vista a hui"
+msgstr "Desplaça la vista fins a hui"
 
 #: actionmanager.cpp:517
 #, kde-format
@@ -1795,8 +1795,8 @@ msgid ""
 "Check this box if you do not want to receive reminders from items associated "
 "with this calendar."
 msgstr ""
-"Marqueu esta casella si no voleu rebre recordatoris dels elements associats "
-"amb este calendari."
+"Seleccioneu esta casella si no voleu rebre recordatoris dels elements "
+"associats amb este calendari."
 
 #: collectiongeneralpage.cpp:58
 #, kde-format
@@ -1815,8 +1815,8 @@ msgstr "Establiu una icona personalitzada"
 msgctxt "@info:whatsthis"
 msgid "Check this box if you want to set a custom icon for this folder."
 msgstr ""
-"Marqueu esta casella si voleu establir una icona personalitzada per a esta "
-"carpeta."
+"Seleccioneu esta casella si voleu establir una icona personalitzada per a "
+"esta carpeta."
 
 #. i18n: ectx: Menu (file)
 #: data/korganizer_part.rc:4 data/korganizerui.rc:4
@@ -2355,7 +2355,7 @@ msgstr "Mostra només els esdeveniments d'hui"
 #, kde-format
 msgid "Check this box if you want to see events occurring on this date only."
 msgstr ""
-"Marqueu esta casella si voleu veure els esdeveniments només d'esta data."
+"Seleccioneu esta casella si voleu veure els esdeveniments només d'esta data."
 
 #. i18n: ectx: property (text), widget (QRadioButton, mDateTodayButton)
 #: kontactplugin/korganizer/apptsummaryconfig_base.ui:26
@@ -2378,8 +2378,8 @@ msgid ""
 "Check this box if you want to see events that start sometime during the next "
 "31 days."
 msgstr ""
-"Marqueu esta casella si voleu veure els esdeveniments que s'inicien durant "
-"els següents 31 dies."
+"Seleccioneu esta casella si voleu veure els esdeveniments que s'inicien "
+"durant els següents 31 dies."
 
 #. i18n: ectx: property (text), widget (QRadioButton, mDateMonthButton)
 #: kontactplugin/korganizer/apptsummaryconfig_base.ui:42
@@ -2402,8 +2402,8 @@ msgid ""
 "Check this box if you want to specify the number of days in the future for "
 "upcoming events."
 msgstr ""
-"Marqueu esta casella si voleu especificar el nombre de dies en el futur per "
-"als esdeveniments pròxims."
+"Seleccioneu esta casella si voleu especificar el nombre de dies en el futur "
+"per als esdeveniments pròxims."
 
 #. i18n: ectx: property (text), widget (QRadioButton, mDateRangeButton)
 #: kontactplugin/korganizer/apptsummaryconfig_base.ui:63
@@ -2468,8 +2468,8 @@ msgid ""
 "events summary. This option is only available if you are using the Birthdays "
 "resource in your calendar."
 msgstr ""
-"Habiliteu esta opció per a incloure les dates de naixement del calendari en "
-"el resum d'esdeveniments pròxims. Esta opció només estarà disponible si "
+"Seleccioneu esta opció per a incloure les dates de naixement del calendari "
+"en el resum d'esdeveniments pròxims. Esta opció només estarà disponible si "
 "esteu utilitzant el recurs «data de naixement» en el calendari."
 
 #. i18n: ectx: property (text), widget (QCheckBox, mShowBirthdaysFromCal)
@@ -2497,7 +2497,7 @@ msgid ""
 "upcoming events summary. This option is only available if you are using the "
 "Birthdays resource in your calendar."
 msgstr ""
-"Habiliteu esta opció per a incloure els aniversaris del calendari en el "
+"Seleccioneu esta opció per a incloure els aniversaris del calendari en el "
 "resum d'esdeveniments pròxims. Esta opció només estarà disponible si esteu "
 "utilitzant el recurs «data de naixement» en el calendari."
 
@@ -2533,8 +2533,8 @@ msgid ""
 "Check this box if you want the summary to show events belonging to your "
 "calendars only."
 msgstr ""
-"Marqueu esta casella si voleu que el resum mostre només els esdeveniments "
-"que pertanyen als vostres calendaris."
+"Seleccioneu esta casella si voleu que el resum mostre només els "
+"esdeveniments que pertanyen als vostres calendaris."
 
 #. i18n: ectx: property (text), widget (QCheckBox, mShowMineOnly)
 #: kontactplugin/korganizer/apptsummaryconfig_base.ui:169
@@ -2758,7 +2758,7 @@ msgstr "Mostra només el venciment de les tasques pendents d'hui"
 #, kde-format
 msgid "Check this box if you want to see To-dos due on this date only."
 msgstr ""
-"Marqueu esta casella si voleu veure el venciment de les tasques pendents "
+"Seleccioneu esta casella si voleu veure el venciment de les tasques pendents "
 "només d'esta data."
 
 #. i18n: ectx: property (toolTip), widget (QRadioButton, mDateMonthButton)
@@ -2774,8 +2774,8 @@ msgid ""
 "Check this box if you want to see To-dos that are due sometime during the "
 "next 31 days."
 msgstr ""
-"Marqueu esta casella si voleu veure les tasques pendents que vencen durant "
-"els següents 31 dies."
+"Seleccioneu esta casella si voleu veure les tasques pendents que vencen "
+"durant els següents 31 dies."
 
 #. i18n: ectx: property (toolTip), widget (QRadioButton, mDateRangeButton)
 #: kontactplugin/korganizer/todosummaryconfig_base.ui:65
@@ -2790,8 +2790,8 @@ msgid ""
 "Check this box if you want specify the number of days in the future for "
 "pending To-dos."
 msgstr ""
-"Marqueu esta casella si voleu especificar el nombre de dies futurs per a les "
-"tasques pendents inacabades."
+"Seleccioneu esta casella si voleu especificar el nombre de dies futurs per a "
+"les tasques pendents inacabades."
 
 #. i18n: ectx: property (toolTip), widget (QSpinBox, mCustomDays)
 #: kontactplugin/korganizer/todosummaryconfig_base.ui:87
@@ -2829,7 +2829,7 @@ msgid ""
 "Check this box if you do not want to see To-dos that have already been "
 "completed."
 msgstr ""
-"Marqueu esta casella si no voleu veure les tasques pendents que ja s'han "
+"Seleccioneu esta casella si no voleu veure les tasques pendents que ja s'han "
 "finalitzat."
 
 #. i18n: ectx: property (text), widget (QCheckBox, mHideCompletedBox)
@@ -2849,7 +2849,8 @@ msgstr "Oculta les tasques pendents sense data de venciment"
 #, kde-format
 msgid "Check this box if you do not want to see open-ended To-dos."
 msgstr ""
-"Marqueu esta casella si no voleu veure les tasques pendents amb final obert."
+"Seleccioneu esta casella si no voleu veure les tasques pendents amb final "
+"obert."
 
 #. i18n: ectx: property (text), widget (QCheckBox, mHideOpenEndedBox)
 #: kontactplugin/korganizer/todosummaryconfig_base.ui:161
@@ -2870,8 +2871,8 @@ msgid ""
 "Check this box if you do not want to see To-dos with a start date in the "
 "future."
 msgstr ""
-"Marqueu esta casella si no voleu veure les tasques pendents amb data d'inici "
-"futura."
+"Seleccioneu esta casella si no voleu veure les tasques pendents amb data "
+"d'inici futura."
 
 #. i18n: ectx: property (text), widget (QCheckBox, mHideUnstartedBox)
 #: kontactplugin/korganizer/todosummaryconfig_base.ui:177
@@ -2892,7 +2893,7 @@ msgid ""
 "Check this box if you do not want to see To-dos that have been started but "
 "are not yet completed."
 msgstr ""
-"Marqueu esta casella si no voleu veure les tasques pendents que s'han "
+"Seleccioneu esta casella si no voleu veure les tasques pendents que s'han "
 "iniciat però no s'han finalitzat."
 
 #. i18n: ectx: property (text), widget (QCheckBox, mHideInProgressBox)
@@ -2914,7 +2915,7 @@ msgid ""
 "Check this box if you do not want to see To-dos that are past their due date "
 "but have not yet been completed."
 msgstr ""
-"Marqueu esta casella si no voleu veure les tasques pendents que han "
+"Seleccioneu esta casella si no voleu veure les tasques pendents que han "
 "ultrapassat la seua data de venciment però que encara no s'han finalitzat."
 
 #. i18n: ectx: property (text), widget (QCheckBox, mHideOverdueBox)
@@ -2936,8 +2937,8 @@ msgid ""
 "Check this box if you want the summary to show To-dos belonging to your "
 "calendars only."
 msgstr ""
-"Marqueu esta casella si voleu que el resum mostre només les tasques pendents "
-"que pertanyen als vostres calendaris."
+"Seleccioneu esta casella si voleu que el resum mostre només les tasques "
+"pendents que pertanyen als vostres calendaris."
 
 #. i18n: ectx: property (text), widget (QCheckBox, mShowMineOnly)
 #: kontactplugin/korganizer/todosummaryconfig_base.ui:228
@@ -3065,7 +3066,8 @@ msgid ""
 "Check this box if you want to see special occasions occurring on this date "
 "only."
 msgstr ""
-"Marqueu esta casella si voleu veure les ocasions especials només d'esta data."
+"Seleccioneu esta casella si voleu veure les ocasions especials només d'esta "
+"data."
 
 #. i18n: ectx: property (toolTip), widget (QRadioButton, mDateMonthButton)
 #: kontactplugin/specialdates/sdsummaryconfig_base.ui:44
@@ -3080,7 +3082,7 @@ msgid ""
 "Check this box if you want to see special occasions that start sometime "
 "during the next 31 days."
 msgstr ""
-"Marqueu esta casella si voleu veure les ocasions especials que s'inicien "
+"Seleccioneu esta casella si voleu veure les ocasions especials que s'inicien "
 "durant els següents 31 dies."
 
 #. i18n: ectx: property (toolTip), widget (QRadioButton, mDateRangeButton)
@@ -3096,8 +3098,8 @@ msgid ""
 "Check this box if you want to specify the number of days in the future for "
 "upcoming special occasions."
 msgstr ""
-"Marqueu esta casella si voleu especificar el nombre de dies en el futur per "
-"a les pròximes ocasions especials."
+"Seleccioneu esta casella si voleu especificar el nombre de dies en el futur "
+"per a les pròximes ocasions especials."
 
 #. i18n: ectx: property (toolTip), widget (QSpinBox, mCustomDays)
 #: kontactplugin/specialdates/sdsummaryconfig_base.ui:84
@@ -3136,8 +3138,8 @@ msgid ""
 "special occasions summary. Typically, these are events with the \"Birthday\" "
 "tag."
 msgstr ""
-"Habiliteu esta opció per a incloure les dates de naixement del calendari en "
-"el resum d'ocasions especials pròximes. Normalment, són esdeveniments amb "
+"Seleccioneu esta opció per a incloure les dates de naixement del calendari "
+"en el resum d'ocasions especials pròximes. Normalment, són esdeveniments amb "
 "l'etiqueta «Data de naixement»."
 
 #. i18n: ectx: property (toolTip), widget (QCheckBox, mShowAnniversariesFromCalBox)
@@ -3154,7 +3156,7 @@ msgid ""
 "upcoming special occasions summary. Typically, these are events with the "
 "\"Anniversary\" tag."
 msgstr ""
-"Habiliteu esta opció per a incloure els aniversaris del calendari en el "
+"Seleccioneu esta opció per a incloure els aniversaris del calendari en el "
 "resum d'ocasions especials pròximes. Normalment, estos són esdeveniments amb "
 "l'etiqueta «Aniversari»."
 
@@ -3172,7 +3174,7 @@ msgid ""
 "special occasions summary. These are events from your configured holiday "
 "region, or events with the \"Holiday\" tag."
 msgstr ""
-"Habiliteu esta opció per a incloure els festius del calendari en el resum "
+"Seleccioneu esta opció per a incloure els festius del calendari en el resum "
 "d'ocasions especials pròximes. Estos són esdeveniments de la vostra regió "
 "per als dies festius configurada, o esdeveniments amb l'etiqueta «Festiu»."
 
@@ -3195,7 +3197,7 @@ msgid ""
 "Enable this option to include events from your calendar with the \"special "
 "occasion\" tag."
 msgstr ""
-"Habiliteu esta opció per a incloure els esdeveniments del calendari amb "
+"Seleccioneu esta opció per a incloure els esdeveniments del calendari amb "
 "l'etiqueta «ocasions especials»."
 
 #. i18n: ectx: property (text), widget (QCheckBox, mShowSpecialsFromCalBox)
@@ -3223,7 +3225,7 @@ msgid ""
 "Enable this option to include birthdays from your address book in the "
 "upcoming special occasions summary."
 msgstr ""
-"Habiliteu esta opció per a incloure les dates de naixement des de la "
+"Seleccioneu esta opció per a incloure les dates de naixement des de la "
 "llibreta d'adreces en el resum d'ocasions especials."
 
 #. i18n: ectx: property (text), widget (QCheckBox, mShowBirthdaysFromKABBox)
@@ -3245,7 +3247,7 @@ msgid ""
 "Enable this option to include anniversaries from your address book in the "
 "upcoming special occasions summary."
 msgstr ""
-"Habiliteu esta opció per a incloure els aniversaris des de la llibreta "
+"Seleccioneu esta opció per a incloure els aniversaris des de la llibreta "
 "d'adreces en el resum d'ocasions especials."
 
 #. i18n: ectx: property (text), widget (QCheckBox, mShowAnniversariesFromKABBox)
@@ -3617,9 +3619,9 @@ msgid ""
 "week. If this is a work day for you, check this box, or the working hours "
 "will not be marked with color."
 msgstr ""
-"Marqueu esta casella per a fer que KOrganizer marque les hores laborables "
-"per a este dia de la setmana. Si este dia és laborable, marqueu la casella o "
-"les hores laborables no es marcaran amb color."
+"Seleccioneu esta casella per a fer que KOrganizer marque les hores "
+"laborables per a este dia de la setmana. Si este dia és laborable, "
+"seleccioneu la casella o les hores laborables no es marcaran amb color."
 
 #: prefs/koprefsdialogtime.cpp:138
 #, kde-format
@@ -3808,7 +3810,7 @@ msgstr "Confirma sempre en suprimir elements"
 #, kde-format
 msgid "Check this box to display a confirmation dialog when deleting items."
 msgstr ""
-"Marqueu esta casella per a mostrar un diàleg de confirmació en suprimir "
+"Seleccioneu esta casella per a mostrar un diàleg de confirmació en suprimir "
 "elements."
 
 #. i18n: ectx: label, entry (Destination), group (Save Settings)
@@ -3969,7 +3971,7 @@ msgid ""
 "Check this box to prevent KOrganizer from marking the working hours on "
 "holidays."
 msgstr ""
-"Marqueu esta casella per a evitar que KOrganizer marque com a hores "
+"Seleccioneu esta casella per a evitar que KOrganizer marque com a hores "
 "laborables als dies festius."
 
 #. i18n: ectx: label, entry (ColorMonthBusyDaysEnabled), group (Time &amp; Date)
@@ -3989,10 +3991,10 @@ msgid ""
 "Colors configuration page. Look for the \"Busy days background color\" "
 "setting."
 msgstr ""
-"Marqueu esta casella si voleu que el fons de la vista mensual s'emplene amb "
-"un color diferent els dies que teniu almenys un esdeveniment de tot el dia "
-"marcat com a ocupat. També podeu canviar el color de fons utilitzat per a "
-"esta opció en la pàgina de configuració dels colors. Mireu la configuració "
+"Seleccioneu esta casella si voleu que el fons de la vista mensual s'emplene "
+"amb un color diferent els dies que teniu almenys un esdeveniment de tot el "
+"dia marcat com a ocupat. També podeu canviar el color de fons utilitzat per "
+"a esta opció en la pàgina de configuració dels colors. Mireu la configuració "
 "«Color de fons per als dies ocupats»."
 
 #. i18n: ectx: label, entry, group (General View)
@@ -4008,8 +4010,8 @@ msgid ""
 "Check this box to display summary tooltips when hovering the mouse over an "
 "event or a to-do."
 msgstr ""
-"Marqueu esta casella per a mostrar un consell amb el resum de l'esdeveniment "
-"o la tasca pendent en passar-hi el ratolí per damunt."
+"Seleccioneu esta casella per a mostrar un consell amb el resum de "
+"l'esdeveniment o la tasca pendent en passar-hi el ratolí per damunt."
 
 #. i18n: ectx: label, entry, group (General View)
 #: settings/korganizer.kcfg:96
@@ -4024,9 +4026,9 @@ msgid ""
 "Check this box so that to-dos will use tag colors and not colors specific to "
 "their due, due today or overdue state"
 msgstr ""
-"Marqueu esta casella perquè les tasques pendents utilitzen els colors de les "
-"etiquetes en lloc de colors específics al seu estat de venciment, venciment "
-"d'hui o endarreriment"
+"Seleccioneu esta casella perquè les tasques pendents utilitzen els colors de "
+"les etiquetes en lloc de colors específics al seu estat de venciment, "
+"venciment d'hui o endarreriment"
 
 #. i18n: ectx: label, entry, group (General View)
 #: settings/korganizer.kcfg:102
@@ -4066,9 +4068,9 @@ msgid ""
 "typeface in the Date Navigator, or uncheck it to give more prominence to "
 "other (non daily recurring) events."
 msgstr ""
-"Marqueu esta casella per a mostrar en negreta els dies que contenen "
-"esdeveniments de repetició diària en el navegador de dates, o desmarqueu-la "
-"per a donar més prominència a altres esdeveniments (que no es repetisquen "
+"Seleccioneu esta casella per a mostrar en negreta els dies que contenen "
+"esdeveniments de repetició diària en el navegador de dates, o desseleccioneu-"
+"la per a donar més prominència a altres esdeveniments (que no es repetisquen "
 "diàriament)."
 
 #. i18n: ectx: label, entry (WeeklyRecur), group (General View)
@@ -4085,10 +4087,10 @@ msgid ""
 "typeface in the Date Navigator, or uncheck it to give more prominence to "
 "other (non weekly recurring) events."
 msgstr ""
-"Marqueu esta casella per a mostrar en negreta els dies que contenen "
-"esdeveniments de repetició setmanal en el navegador de dates, o desmarqueu-"
-"la per a donar més prominència a altres esdeveniments (que no es repetisquen "
-"setmanalment)."
+"Seleccioneu esta casella per a mostrar en negreta els dies que contenen "
+"esdeveniments de repetició setmanal en el navegador de dates, o "
+"desseleccioneu-la per a donar més prominència a altres esdeveniments (que no "
+"es repetisquen setmanalment)."
 
 #. i18n: ectx: label, entry (HighlightTodos), group (General View)
 #: settings/korganizer.kcfg:121
@@ -4105,9 +4107,9 @@ msgid ""
 "Check this box to show the days containing to-dos in bold typeface in the "
 "Date Navigator when in to-do view."
 msgstr ""
-"Marqueu esta casella per a mostrar en negreta els dies que contenen tasques "
-"pendents en el navegador de dates quan esteu en la vista de les tasques "
-"pendents."
+"Seleccioneu esta casella per a mostrar en negreta els dies que contenen "
+"tasques pendents en el navegador de dates quan esteu en la vista de les "
+"tasques pendents."
 
 #. i18n: ectx: label, entry (HighlightJournals), group (General View)
 #: settings/korganizer.kcfg:127
@@ -4122,8 +4124,8 @@ msgid ""
 "Check this box to show the days containing journals in bold typeface in the "
 "Date Navigator when in journal view."
 msgstr ""
-"Marqueu esta casella per a mostrar en negreta els dies que contenen diaris "
-"en el navegador de dates quan esteu en la vista de diari."
+"Seleccioneu esta casella per a mostrar en negreta els dies que contenen "
+"diaris en el navegador de dates quan esteu en la vista de diari."
 
 #. i18n: ectx: label, entry (WeekNumbersShowWork), group (General View)
 #: settings/korganizer.kcfg:133
@@ -4140,9 +4142,9 @@ msgid ""
 "Check this box to select a working week when clicking on the Date "
 "Navigator's week numbers, or uncheck it to choose the whole week."
 msgstr ""
-"Marqueu esta casella per a seleccionar una setmana laboral clicant en els "
-"nombres de setmana del navegador de dates, o desactiveu-la per a seleccionar "
-"la setmana sencera."
+"Seleccioneu esta casella per a seleccionar una setmana laboral clicant en "
+"els nombres de setmana del navegador de dates, o desactiveu-la per a "
+"seleccionar la setmana sencera."
 
 #. i18n: ectx: label, entry, group (Agenda View)
 #: settings/korganizer.kcfg:142
@@ -4181,8 +4183,8 @@ msgid ""
 "Check this box to display icons (alarm, recursion, etc.) in agenda view "
 "items."
 msgstr ""
-"Marqueu esta casella per a mostrar les icones (alarma, repetició, etc.) en "
-"els elements en la vista d'agenda."
+"Seleccioneu esta casella per a mostrar les icones (alarma, repetició, etc.) "
+"en els elements en la vista d'agenda."
 
 #. i18n: ectx: tooltip, entry (EnableAgendaItemIcons), group (Agenda View)
 #: settings/korganizer.kcfg:153
@@ -4202,7 +4204,8 @@ msgstr "Mostra les tasques pendents"
 #, kde-format
 msgid "Check this box to display to-dos in the agenda view."
 msgstr ""
-"Marqueu esta casella per a mostrar les tasques pendents en la vista d'agenda."
+"Seleccioneu esta casella per a mostrar les tasques pendents en la vista "
+"d'agenda."
 
 #. i18n: ectx: tooltip, entry (ShowTodosAgendaView), group (Agenda View)
 #: settings/korganizer.kcfg:160
@@ -4223,8 +4226,8 @@ msgid ""
 "Check this box to display a line in the day or week view indicating the "
 "current-time line (Marcus Bains line)."
 msgstr ""
-"Marqueu esta casella per a mostrar una línia en la vista diària o setmanal "
-"indicant la línia de temps actual (línia de Marcus Bains)."
+"Seleccioneu esta casella per a mostrar una línia en la vista diària o "
+"setmanal indicant la línia de temps actual (línia de Marcus Bains)."
 
 #. i18n: ectx: tooltip, entry (MarcusBainsEnabled), group (Agenda View)
 #: settings/korganizer.kcfg:167
@@ -4243,7 +4246,8 @@ msgstr "Mostra els segons en la línia de l'hora actual (Marcus Bains)"
 #, kde-format
 msgid "Check this box if you want to show seconds on the current-time line."
 msgstr ""
-"Marqueu esta casella si voleu mostrar els segons en la línia de temps actual."
+"Seleccioneu esta casella si voleu mostrar els segons en la línia de temps "
+"actual."
 
 #. i18n: ectx: tooltip, entry (MarcusBainsShowSeconds), group (Agenda View)
 #: settings/korganizer.kcfg:174
@@ -4267,10 +4271,11 @@ msgid ""
 "time range in the daily and weekly view. To select a time range, drag the "
 "mouse from the start time to the end time of the event you are about to plan."
 msgstr ""
-"Marqueu esta casella per a iniciar l'editor d'esdeveniments automàticament "
-"quan seleccioneu un interval de temps en la vista diària o setmanal. Per a "
-"seleccionar un interval de temps, arrossegueu el ratolí des de l'hora "
-"d'inici fins a la final de l'esdeveniment que esteu a punt de planificar."
+"Seleccioneu esta casella per a iniciar l'editor d'esdeveniments "
+"automàticament quan seleccioneu un interval de temps en la vista diària o "
+"setmanal. Per a seleccionar un interval de temps, arrossegueu el ratolí des "
+"de l'hora d'inici fins a la final de l'esdeveniment que esteu a punt de "
+"planificar."
 
 #. i18n: ectx: tooltip, entry (SelectionStartsEditor), group (Agenda View)
 #: settings/korganizer.kcfg:181
@@ -4416,11 +4421,11 @@ msgid ""
 "you can change the background color used for this option on the Colors "
 "configuration page. Look for the \"Busy days background color\" setting."
 msgstr ""
-"Marqueu esta casella si voleu que el fons de l'agenda s'emplene amb un color "
-"diferent els dies que teniu almenys un esdeveniment de tot el dia marcat com "
-"a ocupat. També podeu canviar el color de fons utilitzat per a esta opció en "
-"la pàgina de configuració dels colors. Mireu la configuració «Color de fons "
-"per als dies ocupats»."
+"Seleccioneu esta casella si voleu que el fons de l'agenda s'emplene amb un "
+"color diferent els dies que teniu almenys un esdeveniment de tot el dia "
+"marcat com a ocupat. També podeu canviar el color de fons utilitzat per a "
+"esta opció en la pàgina de configuració dels colors. Mireu la configuració "
+"«Color de fons per als dies ocupats»."
 
 #. i18n: ectx: label, entry (AgendaViewCalendarDisplay), group (Agenda View)
 #: settings/korganizer.kcfg:217
@@ -4506,8 +4511,8 @@ msgstr "Mostra les icones dels elements de la vista mensual"
 msgid ""
 "Check this box to display icons (alarm, recursion, etc.) in month view items."
 msgstr ""
-"Marqueu esta casella per a mostrar les icones (alarma, repetició, etc.) en "
-"els elements en la vista mensual."
+"Seleccioneu esta casella per a mostrar les icones (alarma, repetició, etc.) "
+"en els elements en la vista mensual."
 
 #. i18n: ectx: tooltip, entry (EnableMonthItemIcons), group (Month View)
 #: settings/korganizer.kcfg:244
@@ -4526,8 +4531,8 @@ msgstr "Mostra l'hora en els elements en la vista mensual"
 #, kde-format
 msgid "Check this box to display the time in month view items."
 msgstr ""
-"Marqueu esta casella per a visualitzar l'hora en els elements en la vista "
-"mensual."
+"Seleccioneu esta casella per a visualitzar l'hora en els elements en la "
+"vista mensual."
 
 #. i18n: ectx: tooltip, entry (ShowTimeInMonthView), group (Month View)
 #: settings/korganizer.kcfg:251
@@ -4540,7 +4545,8 @@ msgstr "Mostra l'hora en els elements de la vista mensual"
 #, kde-format
 msgid "Check this box to display to-dos in the month view."
 msgstr ""
-"Marqueu esta casella per a mostrar les tasques pendents en la vista mensual."
+"Seleccioneu esta casella per a mostrar les tasques pendents en la vista "
+"mensual."
 
 #. i18n: ectx: tooltip, entry (ShowTodosMonthView), group (Month View)
 #: settings/korganizer.kcfg:258
@@ -4558,7 +4564,7 @@ msgstr "Mostra els diaris"
 #: settings/korganizer.kcfg:264
 #, kde-format
 msgid "Check this box to display journals in the month view."
-msgstr "Marqueu esta casella per a mostrar els diaris en la vista mensual."
+msgstr "Seleccioneu esta casella per a mostrar els diaris en la vista mensual."
 
 #. i18n: ectx: tooltip, entry (ShowJournalsMonthView), group (Month View)
 #: settings/korganizer.kcfg:265
@@ -4581,8 +4587,8 @@ msgid ""
 "but other widgets, such as the date navigator, the item details and the "
 "calendars list, will not be displayed."
 msgstr ""
-"Marqueu esta casella per a utilitzar tota la finestra de KOrganizer en "
-"mostrar la vista mensual. Si es marca esta casella, guanyareu una mica "
+"Seleccioneu esta casella per a utilitzar tota la finestra de KOrganizer en "
+"mostrar la vista mensual. Si se selecciona esta casella, guanyareu una mica "
 "d'espai en la vista mensual, però no es mostraran altres ginys, com ara el "
 "navegador de dates, els detalls de l'element i la llista de calendaris."
 
@@ -4672,8 +4678,9 @@ msgid ""
 "Check this box if you want all completed to-dos to be always grouped at the "
 "bottom of the to-do list."
 msgstr ""
-"Marqueu esta casella si voleu que totes les tasques pendents finalitzades "
-"s'agrupen sempre a la part inferior de la llista de tasques pendents."
+"Seleccioneu esta casella si voleu que totes les tasques pendents "
+"finalitzades s'agrupen sempre a la part inferior de la llista de tasques "
+"pendents."
 
 #. i18n: ectx: label, entry, group (Todo View)
 #: settings/korganizer.kcfg:313
@@ -4698,11 +4705,11 @@ msgid ""
 "list view, but other widgets, such as the date navigator, the to-do details "
 "and the calendars list, will not be displayed."
 msgstr ""
-"Marqueu esta casella per a utilitzar tota la finestra de KOrganizer en "
-"mostrar la vista de la llista de tasques pendents. Si es marca esta casella, "
-"guanyareu una mica d'espai en la vista de la llista de tasques pendents, "
-"però no es mostraran altres ginys, com ara el navegador de dates, els "
-"detalls de la tasca pendent i la llista de calendaris."
+"Seleccioneu esta casella per a utilitzar tota la finestra de KOrganizer en "
+"mostrar la vista de la llista de tasques pendents. Si se selecciona esta "
+"casella, guanyareu una mica d'espai en la vista de la llista de tasques "
+"pendents, però no es mostraran altres ginys, com ara el navegador de dates, "
+"els detalls de la tasca pendent i la llista de calendaris."
 
 #. i18n: ectx: label, entry, group (Todo View)
 #: settings/korganizer.kcfg:320
@@ -4724,8 +4731,8 @@ msgid ""
 "Check this box if you want to see all your to-dos in a flat list instead of "
 "being arranged in a hierarchical tree."
 msgstr ""
-"Marqueu esta casella si voleu veure totes les tasques pendents en una llista "
-"plana en lloc d'organitzades en un arbre jeràrquic."
+"Seleccioneu esta casella si voleu veure totes les tasques pendents en una "
+"llista plana en lloc d'organitzades en un arbre jeràrquic."
 
 #. i18n: ectx: label, entry, group (Todo View)
 #: settings/korganizer.kcfg:327
@@ -4740,8 +4747,8 @@ msgid ""
 "Check this box to record the completion of a to-do in a new entry of your "
 "journal automatically."
 msgstr ""
-"Marqueu esta casella per a enregistrar automàticament la finalització d'una "
-"tasca pendent en una entrada nova del diari."
+"Seleccioneu esta casella per a enregistrar automàticament la finalització "
+"d'una tasca pendent en una entrada nova del diari."
 
 #. i18n: ectx: label, entry, group (Colors)
 #. i18n: ectx: label, entry, group (Theming)
@@ -4993,8 +5000,8 @@ msgid ""
 "Use system color instead of user defined color. If enabled will ignore all "
 "other color settings"
 msgstr ""
-"Utilitza el color del sistema en lloc del color definit per l'usuari. Si "
-"està activada, s'ignorarà qualsevol configuració del color"
+"Utilitza el color del sistema en lloc del color definit per l'usuari. Si se "
+"selecciona, s'ignorarà qualsevol configuració del color"
 
 #. i18n: ectx: label, entry, group (Theme/Month view)
 #: settings/korganizer.kcfg:570
@@ -5097,7 +5104,7 @@ msgid ""
 "that have been completed. Optionally, only items that have been completed a "
 "given number of days are hidden."
 msgstr ""
-"Si es marca esta casella, el filtre ocultarà tots els elements de tasca "
+"Si se selecciona esta casella, el filtre ocultarà tots els elements de tasca "
 "pendent de la llista que hagen estat finalitzades. De manera opcional, només "
 "s'ocultaran els elements que hagen estat finalitzats fa un cert nombre de "
 "dies."
@@ -5256,7 +5263,7 @@ msgid ""
 "as the Kolab2 server taking care of publishing your Free/Busy information "
 "and manages the access to it from other users."
 msgstr ""
-"Marqueu esta casella per a pujar la informació de lliure/ocupat "
+"Seleccioneu esta casella per a pujar la informació de lliure/ocupat "
 "automàticament.\n"
 "És possible ometre esta opció i enviar per correu o pujar la informació de "
 "lliure/ocupat utilitzant el menú de planificació de KOrganizer.\n"
@@ -5392,9 +5399,9 @@ msgid ""
 "For security reasons, it is not recommended to store your password in the "
 "configuration file."
 msgstr ""
-"Marqueu esta casella per a fer que KOrganizer recorde la vostra contrasenya, "
-"guardant-la en el fitxer de configuració, i no vos la demane cada vegada que "
-"puja la vostra informació de lliure/ocupat.\n"
+"Seleccioneu esta casella per a fer que KOrganizer recorde la vostra "
+"contrasenya, guardant-la en el fitxer de configuració, i no vos la demane "
+"cada vegada que puja la vostra informació de lliure/ocupat.\n"
 "No és recomanable guardar la contrasenya en el fitxer de configuració per "
 "motius de seguretat."
 
@@ -5441,8 +5448,8 @@ msgid ""
 "automatically. Note that you have to fill the correct server information to "
 "make this possible."
 msgstr ""
-"Marqueu esta casella per a recuperar automàticament la informació de lliure/"
-"ocupat d'altri. Cal tindre present que heu d'emplenar correctament la "
+"Seleccioneu esta casella per a recuperar automàticament la informació de "
+"lliure/ocupat d'altri. Cal tindre present que heu d'emplenar correctament la "
 "informació del servidor per tal de fer-ho possible."
 
 #. i18n: ectx: property (text), widget (QCheckBox, retrieveEnable)
@@ -5457,7 +5464,7 @@ msgstr "Recupera automàticament la informació de &lliure/ocupat d'altra gent"
 msgid ""
 "Set this to retrieve user@domain.ifb instead of user.ifb from the server"
 msgstr ""
-"Activeu-la per a recuperar del servidor usuari@domini.ifb en comptes "
+"Seleccioneu-la per a recuperar del servidor usuari@domini.ifb en comptes "
 "d'usuari.ifb"
 
 #. i18n: ectx: property (whatsThis), widget (QCheckBox, fullDomainRetrieval)
@@ -5469,8 +5476,8 @@ msgid ""
 "busy file in the format user.ifb (for example joe.ifb). Ask the server "
 "Administrator if you are not sure about how to configure this option."
 msgstr ""
-"Marqueu esta casella per a baixar un fitxer de lliure/ocupat amb el format "
-"«usuari@domini.ifb» (per exemple pep@sugranyes.com.ifb). Altrament es "
+"Seleccioneu esta casella per a baixar un fitxer de lliure/ocupat amb el "
+"format «usuari@domini.ifb» (per exemple pep@sugranyes.com.ifb). Altrament es "
 "baixarà un fitxer de lliure/ocupat amb el format usuari.ifb (per exemple pep."
 "ifb). Demaneu-ho a l'administrador del servidor si no teniu clar com "
 "configurar esta opció."
@@ -5582,8 +5589,8 @@ msgid ""
 "Check this box if you want to search for events that match the search "
 "pattern and have start dates or end dates in the given date range."
 msgstr ""
-"Marqueu esta casella si voleu buscar esdeveniments que coincidisquen amb el "
-"criteri de busca i tinguen data d'inici o data final dins l'interval de "
+"Seleccioneu esta casella si voleu buscar esdeveniments que coincidisquen amb "
+"el criteri de busca i tinguen data d'inici o data final dins l'interval de "
 "dates indicat."
 
 #. i18n: ectx: property (text), widget (QCheckBox, eventsCheck)
@@ -5605,8 +5612,9 @@ msgid ""
 "Check this box if you want to search for journal entries that match the "
 "search pattern and have start dates in the given date range."
 msgstr ""
-"Marqueu esta casella si voleu buscar entrades de diari que coincidisquen amb "
-"el criteri de busca i tinguen data d'inici dins l'interval de dates indicat."
+"Seleccioneu esta casella si voleu buscar entrades de diari que coincidisquen "
+"amb el criteri de busca i tinguen data d'inici dins l'interval de dates "
+"indicat."
 
 #. i18n: ectx: property (text), widget (QCheckBox, journalsCheck)
 #: ui/searchdialog_base.ui:95
@@ -5627,8 +5635,8 @@ msgid ""
 "Check this box if you want to search for to-dos that match the search "
 "pattern and have due dates in the given date range."
 msgstr ""
-"Marqueu esta casella si voleu buscar tasques pendents que coincidisquen amb "
-"el criteri de busca i tinguen data de venciment dins l'interval de dates "
+"Seleccioneu esta casella si voleu buscar tasques pendents que coincidisquen "
+"amb el criteri de busca i tinguen data de venciment dins l'interval de dates "
 "indicat."
 
 #. i18n: ectx: property (text), widget (QCheckBox, todosCheck)
@@ -5654,8 +5662,8 @@ msgstr "Inclou les etiquetes en la busca."
 #, kde-format
 msgid "Check this box if you want to match tags against your search pattern."
 msgstr ""
-"Marqueu esta casella si voleu fer coincidir les etiquetes amb el patró de "
-"busca."
+"Seleccioneu esta casella si voleu fer coincidir les etiquetes amb el patró "
+"de busca."
 
 #. i18n: ectx: property (text), widget (QCheckBox, categoryCheck)
 #: ui/searchdialog_base.ui:133
@@ -5675,8 +5683,8 @@ msgstr "Inclou les ubicacions en la busca."
 msgid ""
 "Check this box if you want to match locations against your search pattern."
 msgstr ""
-"Marqueu esta casella si voleu fer coincidir les ubicacions amb el patró de "
-"busca."
+"Seleccioneu esta casella si voleu fer coincidir les ubicacions amb el patró "
+"de busca."
 
 #. i18n: ectx: property (text), widget (QCheckBox, locationCheck)
 #: ui/searchdialog_base.ui:146
@@ -5696,8 +5704,8 @@ msgstr "Inclou les descripcions en la busca."
 msgid ""
 "Check this box if you want to match descriptions against your search pattern."
 msgstr ""
-"Marqueu esta casella si voleu fer coincidir les descripcions amb el patró de "
-"busca."
+"Seleccioneu esta casella si voleu fer coincidir les descripcions amb el "
+"patró de busca."
 
 #. i18n: ectx: property (text), widget (QCheckBox, descriptionCheck)
 #: ui/searchdialog_base.ui:159
@@ -5717,7 +5725,8 @@ msgstr "Inclou els resums en la busca."
 msgid ""
 "Check this box if you want to match summaries against your search pattern."
 msgstr ""
-"Marqueu esta casella si voleu fer coincidir els resums amb el patró de busca."
+"Seleccioneu esta casella si voleu fer coincidir els resums amb el patró de "
+"busca."
 
 #. i18n: ectx: property (text), widget (QCheckBox, summaryCheck)
 #: ui/searchdialog_base.ui:172
@@ -5737,8 +5746,8 @@ msgstr "Inclou els assistents en la busca."
 msgid ""
 "Check this box if you want to match attendees against your search pattern."
 msgstr ""
-"Marqueu esta casella si voleu fer coincidir els assistents amb el patró de "
-"busca."
+"Seleccioneu esta casella si voleu fer coincidir els assistents amb el patró "
+"de busca."
 
 #. i18n: ectx: property (text), widget (QCheckBox, attendeeCheck)
 #: ui/searchdialog_base.ui:188
@@ -5754,11 +5763,10 @@ msgstr "Interval de dates"
 
 #. i18n: ectx: property (toolTip), widget (QCheckBox, dateRangeCheckbox)
 #: ui/searchdialog_base.ui:204
-#, fuzzy, kde-format
-#| msgid "Include all to-dos &within the specified date range"
+#, kde-format
 msgid "When checked, the search will be limited to the specified date range."
 msgstr ""
-"Inclou totes les tasques pendents &dins de l'interval de dates especificat"
+"Quan se selecciona, la busca es limitarà a l'interval de dates especificat."
 
 #. i18n: ectx: property (whatsThis), widget (QCheckBox, dateRangeCheckbox)
 #: ui/searchdialog_base.ui:207
@@ -5767,12 +5775,15 @@ msgid ""
 "Check this box to search for events within a specified date range. If the "
 "box is unchecked, all events will be searched."
 msgstr ""
+"Seleccioneu esta casella per a buscar esdeveniments dins d'un interval de "
+"dates especificat. Si la casella està desmarcada, es buscaran tots els "
+"esdeveniments."
 
 #. i18n: ectx: property (text), widget (QCheckBox, dateRangeCheckbox)
 #: ui/searchdialog_base.ui:210
 #, kde-format
 msgid "Limit search to specified date range"
-msgstr ""
+msgstr "Limita la busca a l'interval especificat de dates"
 
 #. i18n: ectx: property (text), widget (QLabel, startDateLabel)
 #: ui/searchdialog_base.ui:222
@@ -5840,7 +5851,7 @@ msgid ""
 "after it, or end during the date range but start before it, will be excluded "
 "from the search results."
 msgstr ""
-"Marqueu esta casella si només voleu buscar esdeveniments que es facen "
+"Seleccioneu esta casella si només voleu buscar esdeveniments que es facen "
 "totalment entre l'interval de dates especificat. Els esdeveniments que "
 "s'inicien durant l'interval de dates però acaben després, o acaben dins "
 "l'interval de dates però comencen abans, s'exclouran del resultat de la "
@@ -5874,7 +5885,7 @@ msgid ""
 "nor an end date.  If the box is unchecked, only to-dos that have a due date "
 "in the date range will be displayed."
 msgstr ""
-"Marqueu esta casella per a buscar tasques pendents que tenen una data "
+"Seleccioneu esta casella per a buscar tasques pendents que tenen una data "
 "d'inici, data de venciment, o data de compleció dins de l'interval de dates "
 "especificat, o no tinguen cap data d'inici o data final. Si la casella no "
 "està activada, només es mostraran les tasques pendents que tenen una data de "
