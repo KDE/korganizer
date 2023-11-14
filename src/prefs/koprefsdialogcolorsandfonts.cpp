@@ -32,7 +32,9 @@ KOPrefsDialogColorsAndFonts::KOPrefsDialogColorsAndFonts(QObject *parent, const 
     : Korganizer::KPrefsModule(KOPrefs::instance(), parent, data)
 {
     auto topTopLayout = new QVBoxLayout(widget());
+    topTopLayout->setContentsMargins({});
     auto tabWidget = new QTabWidget(widget());
+    tabWidget->setDocumentMode(true);
     topTopLayout->addWidget(tabWidget);
 
     auto colorFrame = new QWidget(widget());

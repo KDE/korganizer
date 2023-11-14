@@ -31,7 +31,9 @@ KOPrefsDialogMain::KOPrefsDialogMain(QObject *parent, const KPluginMetaData &dat
     : Korganizer::KPrefsModule(KOPrefs::instance(), parent, data)
 {
     auto topTopLayout = new QVBoxLayout(widget());
+    topTopLayout->setContentsMargins({});
     auto tabWidget = new QTabWidget(widget());
+    tabWidget->setDocumentMode(true);
     topTopLayout->addWidget(tabWidget);
 
     // Personal Settings

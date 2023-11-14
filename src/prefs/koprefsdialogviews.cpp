@@ -31,7 +31,9 @@ KOPrefsDialogViews::KOPrefsDialogViews(QObject *parent, const KPluginMetaData &d
     , mAgendaIconComboBox(new KItemIconCheckCombo(KItemIconCheckCombo::AgendaType, widget()))
 {
     auto topTopLayout = new QVBoxLayout(widget());
+    topTopLayout->setContentsMargins({});
     auto tabWidget = new QTabWidget(widget());
+    tabWidget->setDocumentMode(true);
     topTopLayout->addWidget(tabWidget);
 
     connect(mMonthIconComboBox, &KPIM::KCheckComboBox::checkedItemsChanged, this, &Korganizer::KPrefsModule::slotWidChanged);

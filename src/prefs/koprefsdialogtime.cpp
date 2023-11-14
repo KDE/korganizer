@@ -33,7 +33,9 @@ KOPrefsDialogTime::KOPrefsDialogTime(QObject *parent, const KPluginMetaData &dat
     : Korganizer::KPrefsModule(KOPrefs::instance(), parent, data)
 {
     auto layout = new QVBoxLayout(widget());
+    layout->setContentsMargins({});
     auto tabWidget = new QTabWidget(widget());
+    tabWidget->setDocumentMode(true);
     layout->addWidget(tabWidget);
 
     auto regionalPage = new QFrame(widget());

@@ -44,7 +44,9 @@ KOPrefsDialogGroupwareScheduling::KOPrefsDialogGroupwareScheduling(QObject *pare
     connect(mGroupwarePage->fullDomainRetrieval, &QCheckBox::toggled, this, &KOPrefsDialogGroupwareScheduling::slotWidChanged);
     connect(mGroupwarePage->publishEnable, &QCheckBox::toggled, this, &KOPrefsDialogGroupwareScheduling::slotWidChanged);
 
-    (new QVBoxLayout(this->widget()))->addWidget(widget);
+    auto layout = new QVBoxLayout(this->widget());
+    layout->setContentsMargins({});
+    layout->addWidget(widget);
 
     load();
 }

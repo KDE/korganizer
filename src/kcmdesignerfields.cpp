@@ -259,7 +259,6 @@ void KCMDesignerFields::defaults()
 void KCMDesignerFields::initGUI()
 {
     auto layout = new QVBoxLayout(widget());
-    layout->setContentsMargins({});
 
     const bool noDesigner = QStandardPaths::findExecutable(QStringLiteral("designer")).isEmpty();
 
