@@ -1,6 +1,8 @@
-# SPDX-FileCopyrightText: 2020-2021 Laurent Montel <montel@kde.org>
+# SPDX-FileCopyrightText: 2020-2023 Laurent Montel <montel@kde.org>
 # SPDX-License-Identifier: CC0-1.0
 
 include:
-  - https://invent.kde.org/sysadmin/ci-utilities/raw/master/gitlab-templates/linux-qt6.yml
-  - https://invent.kde.org/sysadmin/ci-utilities/raw/master/gitlab-templates/freebsd-qt6.yml    
+  - project: sysadmin/ci-utilities
+    file:
+      - /gitlab-templates/linux-qt6.yml
+      - /gitlab-templates/freebsd-qt6.yml
