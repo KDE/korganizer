@@ -2,7 +2,7 @@ msgid ""
 msgstr ""
 "Project-Id-Version: kdeorg\n"
 "Report-Msgid-Bugs-To: https://bugs.kde.org\n"
-"POT-Creation-Date: 2023-11-13 01:38+0000\n"
+"POT-Creation-Date: 2023-11-15 01:39+0000\n"
 "PO-Revision-Date: 2023-11-11 07:20\n"
 "Last-Translator: \n"
 "Language-Team: Chinese Simplified\n"
@@ -1993,7 +1993,7 @@ msgstr "导入页面"
 msgid "Designer Files"
 msgstr "设计师文件"
 
-#: kcmdesignerfields.cpp:268
+#: kcmdesignerfields.cpp:267
 #, kde-format
 msgid ""
 "<qt><b>Warning:</b> Qt Designer could not be found. It is probably not "
@@ -2002,17 +2002,17 @@ msgstr ""
 "<qt><b>警告：</b>Qt 设计师可能找不到。可能没有安装该程序。您只能导入现有的设"
 "计师文件。</qt>"
 
-#: kcmdesignerfields.cpp:278
+#: kcmdesignerfields.cpp:277
 #, kde-format
 msgid "Available Pages"
 msgstr "可用页"
 
-#: kcmdesignerfields.cpp:284
+#: kcmdesignerfields.cpp:283
 #, kde-format
 msgid "Preview of Selected Page"
 msgstr "选中页的预览"
 
-#: kcmdesignerfields.cpp:303
+#: kcmdesignerfields.cpp:302
 #, kde-format
 msgid ""
 "<qt><p>This section allows you to add your own GUI Elements ('<i>Widgets</"
@@ -2039,42 +2039,42 @@ msgstr ""
 "i> 属性设为 '<i>X_Foo</i>'。</p><p><b>重要说明：</b> 部件在编辑自定义条目时将"
 "使用 %2 为应用程序名。您可以在 Qt 设计师中设置表单名以更改此名称。</p></qt>"
 
-#: kcmdesignerfields.cpp:325
+#: kcmdesignerfields.cpp:324
 #, kde-format
 msgid "<a href=\"whatsthis:%1\">How does this work?</a>"
 msgstr "<a href=\"whatsthis:%1\">此事项如何生效？</a>"
 
-#: kcmdesignerfields.cpp:336
+#: kcmdesignerfields.cpp:335
 #, kde-format
 msgid "Delete Page"
 msgstr "删除页面"
 
-#: kcmdesignerfields.cpp:339
+#: kcmdesignerfields.cpp:338
 #, kde-format
 msgid "Import Page..."
 msgstr "导入页面..."
 
-#: kcmdesignerfields.cpp:341
+#: kcmdesignerfields.cpp:340
 #, kde-format
 msgid "Edit with Qt Designer..."
 msgstr "用 Qt 设计师编辑..."
 
-#: kcmdesignerfields.cpp:366
+#: kcmdesignerfields.cpp:365
 #, kde-format
 msgid "Key:"
 msgstr "键："
 
-#: kcmdesignerfields.cpp:368
+#: kcmdesignerfields.cpp:367
 #, kde-format
 msgid "Type:"
 msgstr "类型："
 
-#: kcmdesignerfields.cpp:370
+#: kcmdesignerfields.cpp:369
 #, kde-format
 msgid "Classname:"
 msgstr "类名："
 
-#: kcmdesignerfields.cpp:372
+#: kcmdesignerfields.cpp:371
 #, kde-format
 msgid "Description:"
 msgstr "描述："
@@ -3253,19 +3253,19 @@ msgstr ""
 "由于未配置工作日，无法显示工作周视图。请先在时间和日期首选项中正确配置一个工"
 "作日。"
 
-#: prefs/koprefsdialogcolorsandfonts.cpp:41
+#: prefs/koprefsdialogcolorsandfonts.cpp:43
 #, kde-format
 msgctxt "@title:tab"
 msgid "Colors"
 msgstr "颜色"
 
-#: prefs/koprefsdialogcolorsandfonts.cpp:91
+#: prefs/koprefsdialogcolorsandfonts.cpp:93
 #, kde-format
 msgctxt "@title:group"
 msgid "Tags"
 msgstr "标签"
 
-#: prefs/koprefsdialogcolorsandfonts.cpp:105
+#: prefs/koprefsdialogcolorsandfonts.cpp:107
 #, kde-format
 msgctxt "@info:whatsthis"
 msgid ""
@@ -3273,19 +3273,19 @@ msgid ""
 "using the adjacent color button."
 msgstr "选择您想要修改的标签，可通过相邻颜色按钮更改所选标签的颜色。"
 
-#: prefs/koprefsdialogcolorsandfonts.cpp:113
+#: prefs/koprefsdialogcolorsandfonts.cpp:115
 #, kde-format
 msgctxt "@info:whatsthis"
 msgid "Choose the color of the tag selected in the adjacent combo box."
 msgstr "在相邻颜色选择框中选择所选标签的颜色。"
 
-#: prefs/koprefsdialogcolorsandfonts.cpp:121
+#: prefs/koprefsdialogcolorsandfonts.cpp:123
 #, kde-format
 msgctxt "@title:group"
 msgid "Resources"
 msgstr "资源"
 
-#: prefs/koprefsdialogcolorsandfonts.cpp:132
+#: prefs/koprefsdialogcolorsandfonts.cpp:134
 #, kde-format
 msgctxt "@info:whatsthis"
 msgid ""
@@ -3293,21 +3293,21 @@ msgid ""
 "color using the button below."
 msgstr "选择您要修改的日历。您可使用下面的按钮更改选中日历的颜色。"
 
-#: prefs/koprefsdialogcolorsandfonts.cpp:140
+#: prefs/koprefsdialogcolorsandfonts.cpp:142
 #, kde-format
 msgctxt "@info:whatsthis"
 msgid ""
 "Choose here the color of the calendar selected using the combo box above."
 msgstr "在此选择上面组合框中所选日历的颜色。"
 
-#: prefs/koprefsdialogcolorsandfonts.cpp:148
+#: prefs/koprefsdialogcolorsandfonts.cpp:150
 #, kde-format
 msgctxt "@title:tab"
 msgid "Fonts"
 msgstr "字体"
 
-#: prefs/koprefsdialogcolorsandfonts.cpp:161
-#: prefs/koprefsdialogcolorsandfonts.cpp:167
+#: prefs/koprefsdialogcolorsandfonts.cpp:163
+#: prefs/koprefsdialogcolorsandfonts.cpp:169
 #, kde-format
 msgctxt "@label"
 msgid "Event text"
@@ -3319,37 +3319,37 @@ msgctxt "@label"
 msgid "Mail transport:"
 msgstr "邮件传送："
 
-#: prefs/koprefsdialogmain.cpp:40
+#: prefs/koprefsdialogmain.cpp:42
 #, kde-format
 msgctxt "@title:tab personal settings"
 msgid "Personal"
 msgstr "个人"
 
-#: prefs/koprefsdialogmain.cpp:46
+#: prefs/koprefsdialogmain.cpp:48
 #, kde-format
 msgctxt "@title:group email settings"
 msgid "Email Settings"
 msgstr "电子邮件设置"
 
-#: prefs/koprefsdialogmain.cpp:60 prefs/koprefsdialogtime.cpp:187
+#: prefs/koprefsdialogmain.cpp:62 prefs/koprefsdialogtime.cpp:189
 #, kde-format
 msgctxt "@title:group"
 msgid "Reminders"
 msgstr "提醒"
 
-#: prefs/koprefsdialogmain.cpp:69
+#: prefs/koprefsdialogmain.cpp:71
 #, kde-format
 msgctxt "@title:tab"
 msgid "Save"
 msgstr "保存"
 
-#: prefs/koprefsdialogmain.cpp:81
+#: prefs/koprefsdialogmain.cpp:83
 #, kde-format
 msgctxt "@title:tab calendar account settings"
 msgid "Calendars"
 msgstr "日历"
 
-#: prefs/koprefsdialogmain.cpp:85
+#: prefs/koprefsdialogmain.cpp:87
 #, kde-format
 msgctxt "@title"
 msgid "Calendar Accounts"
@@ -3392,49 +3392,49 @@ msgctxt "@info"
 msgid "Unable to configure this plugin"
 msgstr "无法配置此插件"
 
-#: prefs/koprefsdialogtime.cpp:40
+#: prefs/koprefsdialogtime.cpp:42
 #, kde-format
 msgctxt "@title:tab"
 msgid "Regional"
 msgstr "区域"
 
-#: prefs/koprefsdialogtime.cpp:44
+#: prefs/koprefsdialogtime.cpp:46
 #, kde-format
 msgctxt "@title:group"
 msgid "General Time and Date"
 msgstr "常规时间和日期"
 
-#: prefs/koprefsdialogtime.cpp:53
+#: prefs/koprefsdialogtime.cpp:55
 #, kde-format
 msgctxt "@title:group"
 msgid "Holidays"
 msgstr "假日"
 
-#: prefs/koprefsdialogtime.cpp:64
+#: prefs/koprefsdialogtime.cpp:66
 #, kde-format
 msgctxt "@label"
 msgid "Use holiday region:"
 msgstr "使用假日区域："
 
-#: prefs/koprefsdialogtime.cpp:87
+#: prefs/koprefsdialogtime.cpp:89
 #, kde-format
 msgctxt "@item:inlistbox Holiday region, region language"
 msgid "%1 (%2)"
 msgstr "%1 (%2)"
 
-#: prefs/koprefsdialogtime.cpp:96
+#: prefs/koprefsdialogtime.cpp:98
 #, kde-format
 msgctxt "@item:inlistbox"
 msgid "Select Holiday Regions"
 msgstr "选择假日区域"
 
-#: prefs/koprefsdialogtime.cpp:108
+#: prefs/koprefsdialogtime.cpp:110
 #, kde-format
 msgctxt "@title:group"
 msgid "Working Period"
 msgstr "工作周期"
 
-#: prefs/koprefsdialogtime.cpp:123
+#: prefs/koprefsdialogtime.cpp:125
 #, kde-format
 msgctxt "@info:whatsthis"
 msgid ""
@@ -3445,139 +3445,139 @@ msgstr ""
 "选中此项可使 KOrganizer 对一周中这一天的上班时间加以标记。如果这天是工作日，"
 "请选中此项，否则不会有颜色标记。"
 
-#: prefs/koprefsdialogtime.cpp:138
+#: prefs/koprefsdialogtime.cpp:140
 #, kde-format
 msgctxt "@item:inlistbox"
 msgid "Monday"
 msgstr "星期一"
 
-#: prefs/koprefsdialogtime.cpp:138
+#: prefs/koprefsdialogtime.cpp:140
 #, kde-format
 msgctxt "@item:inlistbox"
 msgid "Tuesday"
 msgstr "星期二"
 
-#: prefs/koprefsdialogtime.cpp:138
+#: prefs/koprefsdialogtime.cpp:140
 #, kde-format
 msgctxt "@item:inlistbox"
 msgid "Wednesday"
 msgstr "星期三"
 
-#: prefs/koprefsdialogtime.cpp:139
+#: prefs/koprefsdialogtime.cpp:141
 #, kde-format
 msgctxt "@item:inlistbox"
 msgid "Thursday"
 msgstr "星期四"
 
-#: prefs/koprefsdialogtime.cpp:139
+#: prefs/koprefsdialogtime.cpp:141
 #, kde-format
 msgctxt "@item:inlistbox"
 msgid "Friday"
 msgstr "星期五"
 
-#: prefs/koprefsdialogtime.cpp:139
+#: prefs/koprefsdialogtime.cpp:141
 #, kde-format
 msgctxt "@item:inlistbox"
 msgid "Saturday"
 msgstr "星期六"
 
-#: prefs/koprefsdialogtime.cpp:140
+#: prefs/koprefsdialogtime.cpp:142
 #, kde-format
 msgctxt "@item:inlistbox"
 msgid "Sunday"
 msgstr "星期日"
 
-#: prefs/koprefsdialogtime.cpp:169
+#: prefs/koprefsdialogtime.cpp:171
 #, kde-format
 msgctxt "@title:tab"
 msgid "Default Values"
 msgstr "默认值"
 
-#: prefs/koprefsdialogtime.cpp:172
+#: prefs/koprefsdialogtime.cpp:174
 #, kde-format
 msgctxt "@title:group"
 msgid "Appointments"
 msgstr "约会"
 
-#: prefs/koprefsdialogtime.cpp:192
+#: prefs/koprefsdialogtime.cpp:194
 #, kde-format
 msgctxt "@label"
 msgid "Default reminder time:"
 msgstr "默认提醒时间："
 
-#: prefs/koprefsdialogtime.cpp:205
+#: prefs/koprefsdialogtime.cpp:207
 #, kde-format
 msgctxt "@item:inlistbox reminder units in minutes"
 msgid "minute(s)"
 msgstr "分钟"
 
-#: prefs/koprefsdialogtime.cpp:206
+#: prefs/koprefsdialogtime.cpp:208
 #, kde-format
 msgctxt "@item:inlistbox reminder time units in hours"
 msgid "hour(s)"
 msgstr "小时"
 
-#: prefs/koprefsdialogtime.cpp:207
+#: prefs/koprefsdialogtime.cpp:209
 #, kde-format
 msgctxt "@item:inlistbox reminder time units in days"
 msgid "day(s)"
 msgstr "天"
 
-#: prefs/koprefsdialogtime.cpp:217
+#: prefs/koprefsdialogtime.cpp:219
 #, kde-format
 msgid "Audio Files (*.ogg *.wav *.mp3 *.wma *.flac *.aiff *.raw *.au *.ra)"
 msgstr ""
 
-#: prefs/koprefsdialogviews.cpp:42
+#: prefs/koprefsdialogviews.cpp:44
 #, kde-format
 msgctxt "@title:tab general settings"
 msgid "General"
 msgstr "常规"
 
-#: prefs/koprefsdialogviews.cpp:48 prefs/koprefsdialogviews.cpp:85
-#: prefs/koprefsdialogviews.cpp:129 prefs/koprefsdialogviews.cpp:156
+#: prefs/koprefsdialogviews.cpp:50 prefs/koprefsdialogviews.cpp:87
+#: prefs/koprefsdialogviews.cpp:131 prefs/koprefsdialogviews.cpp:158
 #, kde-format
 msgctxt "@title:group"
 msgid "Display Options"
 msgstr "显示选项"
 
-#: prefs/koprefsdialogviews.cpp:54
+#: prefs/koprefsdialogviews.cpp:56
 #, kde-format
 msgctxt "@label suffix in the N days spin box"
 msgid " days"
 msgstr " 天"
 
-#: prefs/koprefsdialogviews.cpp:67
+#: prefs/koprefsdialogviews.cpp:69
 #, kde-format
 msgctxt "@title:group"
 msgid "Date Navigator"
 msgstr "日期导航器"
 
-#: prefs/koprefsdialogviews.cpp:79
+#: prefs/koprefsdialogviews.cpp:81
 #, kde-format
 msgctxt "@title:tab"
 msgid "Agenda View"
 msgstr "日程视图"
 
-#: prefs/koprefsdialogviews.cpp:91
+#: prefs/koprefsdialogviews.cpp:93
 #, kde-format
 msgctxt "@label suffix in the hour size spin box"
 msgid " pixels"
 msgstr " 像素"
 
-#: prefs/koprefsdialogviews.cpp:123
+#: prefs/koprefsdialogviews.cpp:125
 #, kde-format
 msgctxt "@title:tab"
 msgid "Month View"
 msgstr "月视图"
 
-#: prefs/koprefsdialogviews.cpp:150
+#: prefs/koprefsdialogviews.cpp:152
 #, kde-format
 msgctxt "@title:tab"
 msgid "Todo View"
 msgstr "待办视图"
 
-#: prefs/koprefsdialogviews.cpp:163
+#: prefs/koprefsdialogviews.cpp:165
 #, kde-format
 msgctxt "@title:group"
 msgid "Other Options"
@@ -4902,13 +4902,13 @@ msgid "Hide to-dos not assigned to me"
 msgstr "隐藏未指派给我的待办事项"
 
 #. i18n: ectx: attribute (title), widget (QWidget, tabPublish)
-#: ui/kogroupwareprefspage.ui:36
+#: ui/kogroupwareprefspage.ui:39
 #, kde-format
 msgid "P&ublish"
 msgstr "发布(&U)"
 
 #. i18n: ectx: property (text), widget (QLabel, TextLabel1)
-#: ui/kogroupwareprefspage.ui:57
+#: ui/kogroupwareprefspage.ui:60
 #, kde-format
 msgid ""
 "By publishing Free/Busy information, you allow others to take your calendar "
@@ -4919,7 +4919,7 @@ msgstr ""
 "只会发布您的忙碌时段，而不会包含原因。"
 
 #. i18n: ectx: property (whatsThis), widget (QCheckBox, publishEnable)
-#: ui/kogroupwareprefspage.ui:69
+#: ui/kogroupwareprefspage.ui:72
 #, kde-format
 msgid ""
 "Check this box to upload your Free/Busy information automatically.\n"
@@ -4936,14 +4936,14 @@ msgstr ""
 "Kolab2 服务器会接管您的空闲/忙碌信息的发布以及来自其他用户的访问。"
 
 #. i18n: ectx: property (text), widget (QCheckBox, publishEnable)
-#: ui/kogroupwareprefspage.ui:72
+#: ui/kogroupwareprefspage.ui:75
 #, kde-format
 msgid "Publish your free/&busy information automatically"
 msgstr "自动发布您的空闲/忙碌信息(&B)"
 
 #. i18n: ectx: property (whatsThis), widget (QLabel, publishDelayLabel)
 #. i18n: ectx: property (whatsThis), widget (QSpinBox, publishDelay)
-#: ui/kogroupwareprefspage.ui:96 ui/kogroupwareprefspage.ui:109
+#: ui/kogroupwareprefspage.ui:99 ui/kogroupwareprefspage.ui:112
 #, kde-format
 msgid ""
 "Configure minimum the interval of time in minutes between each upload here. "
@@ -4954,7 +4954,7 @@ msgstr ""
 "息时，此配置才会生效。"
 
 #. i18n: ectx: property (text), widget (QLabel, publishDelayLabel)
-#: ui/kogroupwareprefspage.ui:99
+#: ui/kogroupwareprefspage.ui:102
 #, kde-format
 msgid "Minimum time between uploads (in minutes):"
 msgstr "上传的最小时间(分钟)："
@@ -4962,8 +4962,8 @@ msgstr "上传的最小时间(分钟)："
 #. i18n: ectx: property (whatsThis), widget (QLabel, TextLabel3)
 #. i18n: ectx: property (whatsThis), widget (QSpinBox, publishDays)
 #. i18n: ectx: property (whatsThis), widget (QLabel, TextLabel4)
-#: ui/kogroupwareprefspage.ui:138 ui/kogroupwareprefspage.ui:151
-#: ui/kogroupwareprefspage.ui:167
+#: ui/kogroupwareprefspage.ui:141 ui/kogroupwareprefspage.ui:154
+#: ui/kogroupwareprefspage.ui:170
 #, kde-format
 msgid ""
 "Configure the number of calendar days you wish to be published and available "
@@ -4971,27 +4971,27 @@ msgid ""
 msgstr "配置向其他人公布的日程天数。"
 
 #. i18n: ectx: property (text), widget (QLabel, TextLabel3)
-#: ui/kogroupwareprefspage.ui:141
+#: ui/kogroupwareprefspage.ui:144
 #, kde-format
 msgid "Publish"
 msgstr "发布"
 
 #. i18n: ectx: property (text), widget (QLabel, TextLabel4)
-#: ui/kogroupwareprefspage.ui:170
+#: ui/kogroupwareprefspage.ui:173
 #, kde-format
 msgid "days of free/busy information"
 msgstr "发布空闲/忙碌信息的日期"
 
 #. i18n: ectx: property (title), widget (QGroupBox, ButtonGroup2)
 #. i18n: ectx: property (title), widget (QGroupBox, ButtonGroup2_2)
-#: ui/kogroupwareprefspage.ui:195 ui/kogroupwareprefspage.ui:392
+#: ui/kogroupwareprefspage.ui:198 ui/kogroupwareprefspage.ui:395
 #, kde-format
 msgid "Server Information"
 msgstr "服务器信息"
 
 #. i18n: ectx: property (whatsThis), widget (QLineEdit, publishUrl)
 #. i18n: ectx: property (whatsThis), widget (QLabel, TextLabel7)
-#: ui/kogroupwareprefspage.ui:223 ui/kogroupwareprefspage.ui:295
+#: ui/kogroupwareprefspage.ui:226 ui/kogroupwareprefspage.ui:298
 #, kde-format
 msgid ""
 "Enter the URL for the server on which your Free/Busy information shall be "
@@ -5005,14 +5005,14 @@ msgstr ""
 #. i18n: ectx: property (whatsThis), widget (QLabel, textLabel2)
 #. i18n: ectx: property (whatsThis), widget (QLineEdit, retrievePassword)
 #. i18n: ectx: property (whatsThis), widget (QLabel, textLabel4)
-#: ui/kogroupwareprefspage.ui:230 ui/kogroupwareprefspage.ui:240
-#: ui/kogroupwareprefspage.ui:413 ui/kogroupwareprefspage.ui:486
+#: ui/kogroupwareprefspage.ui:233 ui/kogroupwareprefspage.ui:243
+#: ui/kogroupwareprefspage.ui:416 ui/kogroupwareprefspage.ui:489
 #, kde-format
 msgid "Enter your groupware server login password here."
 msgstr "在此输入群件服务器的登录密码。"
 
 #. i18n: ectx: property (text), widget (QLabel, textLabel2)
-#: ui/kogroupwareprefspage.ui:243
+#: ui/kogroupwareprefspage.ui:246
 #, kde-format
 msgid "Password:"
 msgstr "密码："
@@ -5021,8 +5021,8 @@ msgstr "密码："
 #. i18n: ectx: property (whatsThis), widget (QLineEdit, publishUser)
 #. i18n: ectx: property (whatsThis), widget (QLineEdit, retrieveUser)
 #. i18n: ectx: property (whatsThis), widget (QLabel, textLabel3)
-#: ui/kogroupwareprefspage.ui:255 ui/kogroupwareprefspage.ui:276
-#: ui/kogroupwareprefspage.ui:425 ui/kogroupwareprefspage.ui:473
+#: ui/kogroupwareprefspage.ui:258 ui/kogroupwareprefspage.ui:279
+#: ui/kogroupwareprefspage.ui:428 ui/kogroupwareprefspage.ui:476
 #, kde-format
 msgid ""
 "Enter the login information relative to your account on the server here.\n"
@@ -5038,7 +5038,7 @@ msgstr ""
 "UID。"
 
 #. i18n: ectx: property (text), widget (QLabel, TextLabel6)
-#: ui/kogroupwareprefspage.ui:258
+#: ui/kogroupwareprefspage.ui:261
 #, kde-format
 msgctxt "login name on the Kolab server"
 msgid "Username:"
@@ -5046,7 +5046,7 @@ msgstr "用户名："
 
 #. i18n: ectx: property (whatsThis), widget (QCheckBox, publishSavePassword)
 #. i18n: ectx: property (whatsThis), widget (QCheckBox, retrieveSavePassword)
-#: ui/kogroupwareprefspage.ui:284 ui/kogroupwareprefspage.ui:506
+#: ui/kogroupwareprefspage.ui:287 ui/kogroupwareprefspage.ui:509
 #, kde-format
 msgid ""
 "Check this box to make KOrganizer remember your password and skip asking you "
@@ -5060,32 +5060,32 @@ msgstr ""
 "出于安全原因，我们并不推荐您在配置文件中储存您的密码。"
 
 #. i18n: ectx: property (text), widget (QCheckBox, publishSavePassword)
-#: ui/kogroupwareprefspage.ui:287
+#: ui/kogroupwareprefspage.ui:290
 #, kde-format
 msgid "Remember p&assword"
 msgstr "记住密码(&A)"
 
 #. i18n: ectx: property (text), widget (QLabel, TextLabel7)
 #. i18n: ectx: property (text), widget (QLabel, TextLabel7_2)
-#: ui/kogroupwareprefspage.ui:298 ui/kogroupwareprefspage.ui:461
+#: ui/kogroupwareprefspage.ui:301 ui/kogroupwareprefspage.ui:464
 #, kde-format
 msgid "Server URL:"
 msgstr "服务器 URL："
 
 #. i18n: ectx: property (text), widget (QLabel, label)
-#: ui/kogroupwareprefspage.ui:308
+#: ui/kogroupwareprefspage.ui:311
 #, kde-format
 msgid "(No need if using Kolab server version 2)"
 msgstr "(使用 Kolab v2 服务器时不需要)"
 
 #. i18n: ectx: attribute (title), widget (QWidget, tabRetrieve)
-#: ui/kogroupwareprefspage.ui:335
+#: ui/kogroupwareprefspage.ui:338
 #, kde-format
 msgid "&Retrieve"
 msgstr "获取(&R)"
 
 #. i18n: ectx: property (text), widget (QLabel, TextLabel2)
-#: ui/kogroupwareprefspage.ui:356
+#: ui/kogroupwareprefspage.ui:359
 #, kde-format
 msgid ""
 "By retrieving Free/Busy information that others have published, you can take "
@@ -5095,7 +5095,7 @@ msgstr ""
 "排。"
 
 #. i18n: ectx: property (whatsThis), widget (QCheckBox, retrieveEnable)
-#: ui/kogroupwareprefspage.ui:366
+#: ui/kogroupwareprefspage.ui:369
 #, kde-format
 msgid ""
 "Check this box to retrieve other people's Free/Busy information "
@@ -5106,20 +5106,20 @@ msgstr ""
 "正确的服务器信息。"
 
 #. i18n: ectx: property (text), widget (QCheckBox, retrieveEnable)
-#: ui/kogroupwareprefspage.ui:369
+#: ui/kogroupwareprefspage.ui:372
 #, kde-format
 msgid "Retrieve other people's free/&busy information automatically"
 msgstr "自动获取其他人的空闲/忙碌信息(&B)"
 
 #. i18n: ectx: property (toolTip), widget (QCheckBox, fullDomainRetrieval)
-#: ui/kogroupwareprefspage.ui:379
+#: ui/kogroupwareprefspage.ui:382
 #, kde-format
 msgid ""
 "Set this to retrieve user@domain.ifb instead of user.ifb from the server"
 msgstr "设置此项可从服务器上获取 user@domain.ifb 的信息而非 user.ifb 的信息。"
 
 #. i18n: ectx: property (whatsThis), widget (QCheckBox, fullDomainRetrieval)
-#: ui/kogroupwareprefspage.ui:382
+#: ui/kogroupwareprefspage.ui:385
 #, kde-format
 msgid ""
 "Check this box to download a free/busy file in the format \"user@domain.ifb"
@@ -5132,14 +5132,14 @@ msgstr ""
 "请询问服务器管理员。"
 
 #. i18n: ectx: property (text), widget (QCheckBox, fullDomainRetrieval)
-#: ui/kogroupwareprefspage.ui:385
+#: ui/kogroupwareprefspage.ui:388
 #, kde-format
 msgid "Use full email &address for retrieval"
 msgstr "使用完整的电子邮件地址获取(&A)"
 
 #. i18n: ectx: property (whatsThis), widget (QLineEdit, retrieveUrl)
 #. i18n: ectx: property (whatsThis), widget (QLabel, TextLabel7_2)
-#: ui/kogroupwareprefspage.ui:443 ui/kogroupwareprefspage.ui:458
+#: ui/kogroupwareprefspage.ui:446 ui/kogroupwareprefspage.ui:461
 #, kde-format
 msgctxt "@info:whatsthis"
 msgid ""
@@ -5161,19 +5161,19 @@ msgstr ""
 "https://kolab2.example.com/freebusy/user.xfb"
 
 #. i18n: ectx: property (text), widget (QLabel, textLabel3)
-#: ui/kogroupwareprefspage.ui:476
+#: ui/kogroupwareprefspage.ui:479
 #, kde-format
 msgid "User&name:"
 msgstr "用户名(&N)："
 
 #. i18n: ectx: property (text), widget (QLabel, textLabel4)
-#: ui/kogroupwareprefspage.ui:489
+#: ui/kogroupwareprefspage.ui:492
 #, kde-format
 msgid "Passwor&d:"
 msgstr "密码(&D)："
 
 #. i18n: ectx: property (text), widget (QCheckBox, retrieveSavePassword)
-#: ui/kogroupwareprefspage.ui:509
+#: ui/kogroupwareprefspage.ui:512
 #, kde-format
 msgid "Re&member password"
 msgstr "记住密码(&M)"

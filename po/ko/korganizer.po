@@ -8,7 +8,7 @@ msgid ""
 msgstr ""
 "Project-Id-Version: Korganizer\n"
 "Report-Msgid-Bugs-To: https://bugs.kde.org\n"
-"POT-Creation-Date: 2023-11-13 01:38+0000\n"
+"POT-Creation-Date: 2023-11-15 01:39+0000\n"
 "PO-Revision-Date: 2023-10-08 23:33+0200\n"
 "Last-Translator: Shinjo Park <kde@peremen.name>\n"
 "Language-Team: Korean <kde-kr@kde.org>\n"
@@ -2027,7 +2027,7 @@ msgstr "쪽 가져오기"
 msgid "Designer Files"
 msgstr "Designer 파일"
 
-#: kcmdesignerfields.cpp:268
+#: kcmdesignerfields.cpp:267
 #, kde-format
 msgid ""
 "<qt><b>Warning:</b> Qt Designer could not be found. It is probably not "
@@ -2036,17 +2036,17 @@ msgstr ""
 "<qt><b>경고:</b> Qt Designer를 찾을 수 없습니다. 설치되지 않은 것 같습니다. "
 "기존 Designer 파일을 가져오기만 할 수 있습니다.</qt>"
 
-#: kcmdesignerfields.cpp:278
+#: kcmdesignerfields.cpp:277
 #, kde-format
 msgid "Available Pages"
 msgstr "사용 가능한 쪽"
 
-#: kcmdesignerfields.cpp:284
+#: kcmdesignerfields.cpp:283
 #, kde-format
 msgid "Preview of Selected Page"
 msgstr "선택한 쪽 미리 보기"
 
-#: kcmdesignerfields.cpp:303
+#: kcmdesignerfields.cpp:302
 #, kde-format
 msgid ""
 "<qt><p>This section allows you to add your own GUI Elements ('<i>Widgets</"
@@ -2076,42 +2076,42 @@ msgstr ""
 "(를) 사용합니다. 편집할 앱 이름을 변경하려면 Qt Designer에서 위젯 이름을 설정"
 "하십시오.</p></qt>"
 
-#: kcmdesignerfields.cpp:325
+#: kcmdesignerfields.cpp:324
 #, kde-format
 msgid "<a href=\"whatsthis:%1\">How does this work?</a>"
 msgstr "<a href=\"whatsthis:%1\">어떻게 작동하나요?</a>"
 
-#: kcmdesignerfields.cpp:336
+#: kcmdesignerfields.cpp:335
 #, kde-format
 msgid "Delete Page"
 msgstr "쪽 삭제"
 
-#: kcmdesignerfields.cpp:339
+#: kcmdesignerfields.cpp:338
 #, kde-format
 msgid "Import Page..."
 msgstr "쪽 가져오기..."
 
-#: kcmdesignerfields.cpp:341
+#: kcmdesignerfields.cpp:340
 #, kde-format
 msgid "Edit with Qt Designer..."
 msgstr "Qt Designer로 편집..."
 
-#: kcmdesignerfields.cpp:366
+#: kcmdesignerfields.cpp:365
 #, kde-format
 msgid "Key:"
 msgstr "키:"
 
-#: kcmdesignerfields.cpp:368
+#: kcmdesignerfields.cpp:367
 #, kde-format
 msgid "Type:"
 msgstr "형식:"
 
-#: kcmdesignerfields.cpp:370
+#: kcmdesignerfields.cpp:369
 #, kde-format
 msgid "Classname:"
 msgstr "클래스 이름:"
 
-#: kcmdesignerfields.cpp:372
+#: kcmdesignerfields.cpp:371
 #, kde-format
 msgid "Description:"
 msgstr "설명:"
@@ -3309,19 +3309,19 @@ msgstr ""
 "업무일을 설정하지 않았기 때문에 업무 주간을 표시할 수 없습니다. 날짜와 시간 "
 "설정에서 업무일을 최소 1일 설정하십시오."
 
-#: prefs/koprefsdialogcolorsandfonts.cpp:41
+#: prefs/koprefsdialogcolorsandfonts.cpp:43
 #, kde-format
 msgctxt "@title:tab"
 msgid "Colors"
 msgstr "색상"
 
-#: prefs/koprefsdialogcolorsandfonts.cpp:91
+#: prefs/koprefsdialogcolorsandfonts.cpp:93
 #, kde-format
 msgctxt "@title:group"
 msgid "Tags"
 msgstr "태그"
 
-#: prefs/koprefsdialogcolorsandfonts.cpp:105
+#: prefs/koprefsdialogcolorsandfonts.cpp:107
 #, kde-format
 msgctxt "@info:whatsthis"
 msgid ""
@@ -3331,19 +3331,19 @@ msgstr ""
 "수정할 태그를 선택하십시오. 인접한 색상 단추를 사용하여 선택한 태그의 색상을 "
 "편집할 수 있습니다."
 
-#: prefs/koprefsdialogcolorsandfonts.cpp:113
+#: prefs/koprefsdialogcolorsandfonts.cpp:115
 #, kde-format
 msgctxt "@info:whatsthis"
 msgid "Choose the color of the tag selected in the adjacent combo box."
 msgstr "인접한 콤보 상자에서 선택한 태그의 색상을 선택하십시오."
 
-#: prefs/koprefsdialogcolorsandfonts.cpp:121
+#: prefs/koprefsdialogcolorsandfonts.cpp:123
 #, kde-format
 msgctxt "@title:group"
 msgid "Resources"
 msgstr "리소스"
 
-#: prefs/koprefsdialogcolorsandfonts.cpp:132
+#: prefs/koprefsdialogcolorsandfonts.cpp:134
 #, kde-format
 msgctxt "@info:whatsthis"
 msgid ""
@@ -3353,21 +3353,21 @@ msgstr ""
 "수정할 캘린더를 선택하십시오. 아래의 색상 단추를 사용하여 선택한 캘린더의 색"
 "상을 편집할 수 있습니다."
 
-#: prefs/koprefsdialogcolorsandfonts.cpp:140
+#: prefs/koprefsdialogcolorsandfonts.cpp:142
 #, kde-format
 msgctxt "@info:whatsthis"
 msgid ""
 "Choose here the color of the calendar selected using the combo box above."
 msgstr "위에 있는 콤보 상자에서 선택한 캘린더의 색상을 선택하십시오."
 
-#: prefs/koprefsdialogcolorsandfonts.cpp:148
+#: prefs/koprefsdialogcolorsandfonts.cpp:150
 #, kde-format
 msgctxt "@title:tab"
 msgid "Fonts"
 msgstr "글꼴"
 
-#: prefs/koprefsdialogcolorsandfonts.cpp:161
-#: prefs/koprefsdialogcolorsandfonts.cpp:167
+#: prefs/koprefsdialogcolorsandfonts.cpp:163
+#: prefs/koprefsdialogcolorsandfonts.cpp:169
 #, kde-format
 msgctxt "@label"
 msgid "Event text"
@@ -3379,37 +3379,37 @@ msgctxt "@label"
 msgid "Mail transport:"
 msgstr "메일 전송 방법"
 
-#: prefs/koprefsdialogmain.cpp:40
+#: prefs/koprefsdialogmain.cpp:42
 #, kde-format
 msgctxt "@title:tab personal settings"
 msgid "Personal"
 msgstr "개인"
 
-#: prefs/koprefsdialogmain.cpp:46
+#: prefs/koprefsdialogmain.cpp:48
 #, kde-format
 msgctxt "@title:group email settings"
 msgid "Email Settings"
 msgstr "이메일 설정"
 
-#: prefs/koprefsdialogmain.cpp:60 prefs/koprefsdialogtime.cpp:187
+#: prefs/koprefsdialogmain.cpp:62 prefs/koprefsdialogtime.cpp:189
 #, kde-format
 msgctxt "@title:group"
 msgid "Reminders"
 msgstr "알림"
 
-#: prefs/koprefsdialogmain.cpp:69
+#: prefs/koprefsdialogmain.cpp:71
 #, kde-format
 msgctxt "@title:tab"
 msgid "Save"
 msgstr "저장"
 
-#: prefs/koprefsdialogmain.cpp:81
+#: prefs/koprefsdialogmain.cpp:83
 #, kde-format
 msgctxt "@title:tab calendar account settings"
 msgid "Calendars"
 msgstr "캘린더"
 
-#: prefs/koprefsdialogmain.cpp:85
+#: prefs/koprefsdialogmain.cpp:87
 #, kde-format
 msgctxt "@title"
 msgid "Calendar Accounts"
@@ -3452,49 +3452,49 @@ msgctxt "@info"
 msgid "Unable to configure this plugin"
 msgstr "이 플러그인을 설정할 수 없음"
 
-#: prefs/koprefsdialogtime.cpp:40
+#: prefs/koprefsdialogtime.cpp:42
 #, kde-format
 msgctxt "@title:tab"
 msgid "Regional"
 msgstr "지역"
 
-#: prefs/koprefsdialogtime.cpp:44
+#: prefs/koprefsdialogtime.cpp:46
 #, kde-format
 msgctxt "@title:group"
 msgid "General Time and Date"
 msgstr "일반 날짜와 시간"
 
-#: prefs/koprefsdialogtime.cpp:53
+#: prefs/koprefsdialogtime.cpp:55
 #, kde-format
 msgctxt "@title:group"
 msgid "Holidays"
 msgstr "공휴일"
 
-#: prefs/koprefsdialogtime.cpp:64
+#: prefs/koprefsdialogtime.cpp:66
 #, kde-format
 msgctxt "@label"
 msgid "Use holiday region:"
 msgstr "공휴일 지역 사용:"
 
-#: prefs/koprefsdialogtime.cpp:87
+#: prefs/koprefsdialogtime.cpp:89
 #, kde-format
 msgctxt "@item:inlistbox Holiday region, region language"
 msgid "%1 (%2)"
 msgstr "%1(%2)"
 
-#: prefs/koprefsdialogtime.cpp:96
+#: prefs/koprefsdialogtime.cpp:98
 #, kde-format
 msgctxt "@item:inlistbox"
 msgid "Select Holiday Regions"
 msgstr "공휴일 지역 선택"
 
-#: prefs/koprefsdialogtime.cpp:108
+#: prefs/koprefsdialogtime.cpp:110
 #, kde-format
 msgctxt "@title:group"
 msgid "Working Period"
 msgstr "업무 기간"
 
-#: prefs/koprefsdialogtime.cpp:123
+#: prefs/koprefsdialogtime.cpp:125
 #, kde-format
 msgctxt "@info:whatsthis"
 msgid ""
@@ -3506,139 +3506,139 @@ msgstr ""
 "일이 업무일이라면 상자를 선택하십시오. 선택하지 않은 요일은 업무 시간을 별도"
 "로 표시하지 않습니다."
 
-#: prefs/koprefsdialogtime.cpp:138
+#: prefs/koprefsdialogtime.cpp:140
 #, kde-format
 msgctxt "@item:inlistbox"
 msgid "Monday"
 msgstr "월요일"
 
-#: prefs/koprefsdialogtime.cpp:138
+#: prefs/koprefsdialogtime.cpp:140
 #, kde-format
 msgctxt "@item:inlistbox"
 msgid "Tuesday"
 msgstr "화요일"
 
-#: prefs/koprefsdialogtime.cpp:138
+#: prefs/koprefsdialogtime.cpp:140
 #, kde-format
 msgctxt "@item:inlistbox"
 msgid "Wednesday"
 msgstr "수요일"
 
-#: prefs/koprefsdialogtime.cpp:139
+#: prefs/koprefsdialogtime.cpp:141
 #, kde-format
 msgctxt "@item:inlistbox"
 msgid "Thursday"
 msgstr "목요일"
 
-#: prefs/koprefsdialogtime.cpp:139
+#: prefs/koprefsdialogtime.cpp:141
 #, kde-format
 msgctxt "@item:inlistbox"
 msgid "Friday"
 msgstr "금요일"
 
-#: prefs/koprefsdialogtime.cpp:139
+#: prefs/koprefsdialogtime.cpp:141
 #, kde-format
 msgctxt "@item:inlistbox"
 msgid "Saturday"
 msgstr "토요일"
 
-#: prefs/koprefsdialogtime.cpp:140
+#: prefs/koprefsdialogtime.cpp:142
 #, kde-format
 msgctxt "@item:inlistbox"
 msgid "Sunday"
 msgstr "일요일"
 
-#: prefs/koprefsdialogtime.cpp:169
+#: prefs/koprefsdialogtime.cpp:171
 #, kde-format
 msgctxt "@title:tab"
 msgid "Default Values"
 msgstr "기본값"
 
-#: prefs/koprefsdialogtime.cpp:172
+#: prefs/koprefsdialogtime.cpp:174
 #, kde-format
 msgctxt "@title:group"
 msgid "Appointments"
 msgstr "약속"
 
-#: prefs/koprefsdialogtime.cpp:192
+#: prefs/koprefsdialogtime.cpp:194
 #, kde-format
 msgctxt "@label"
 msgid "Default reminder time:"
 msgstr "기본 알림 시간:"
 
-#: prefs/koprefsdialogtime.cpp:205
+#: prefs/koprefsdialogtime.cpp:207
 #, kde-format
 msgctxt "@item:inlistbox reminder units in minutes"
 msgid "minute(s)"
 msgstr "분"
 
-#: prefs/koprefsdialogtime.cpp:206
+#: prefs/koprefsdialogtime.cpp:208
 #, kde-format
 msgctxt "@item:inlistbox reminder time units in hours"
 msgid "hour(s)"
 msgstr "시간"
 
-#: prefs/koprefsdialogtime.cpp:207
+#: prefs/koprefsdialogtime.cpp:209
 #, kde-format
 msgctxt "@item:inlistbox reminder time units in days"
 msgid "day(s)"
 msgstr "일"
 
-#: prefs/koprefsdialogtime.cpp:217
+#: prefs/koprefsdialogtime.cpp:219
 #, kde-format
 msgid "Audio Files (*.ogg *.wav *.mp3 *.wma *.flac *.aiff *.raw *.au *.ra)"
 msgstr "오디오 파일 (*.ogg *.wav *.mp3 *.wma *.flac *.aiff *.raw *.au *.ra)"
 
-#: prefs/koprefsdialogviews.cpp:42
+#: prefs/koprefsdialogviews.cpp:44
 #, kde-format
 msgctxt "@title:tab general settings"
 msgid "General"
 msgstr "일반"
 
-#: prefs/koprefsdialogviews.cpp:48 prefs/koprefsdialogviews.cpp:85
-#: prefs/koprefsdialogviews.cpp:129 prefs/koprefsdialogviews.cpp:156
+#: prefs/koprefsdialogviews.cpp:50 prefs/koprefsdialogviews.cpp:87
+#: prefs/koprefsdialogviews.cpp:131 prefs/koprefsdialogviews.cpp:158
 #, kde-format
 msgctxt "@title:group"
 msgid "Display Options"
 msgstr "표시 옵션"
 
-#: prefs/koprefsdialogviews.cpp:54
+#: prefs/koprefsdialogviews.cpp:56
 #, kde-format
 msgctxt "@label suffix in the N days spin box"
 msgid " days"
 msgstr " 일"
 
-#: prefs/koprefsdialogviews.cpp:67
+#: prefs/koprefsdialogviews.cpp:69
 #, kde-format
 msgctxt "@title:group"
 msgid "Date Navigator"
 msgstr "날짜 탐색기"
 
-#: prefs/koprefsdialogviews.cpp:79
+#: prefs/koprefsdialogviews.cpp:81
 #, kde-format
 msgctxt "@title:tab"
 msgid "Agenda View"
 msgstr "일정 보기"
 
-#: prefs/koprefsdialogviews.cpp:91
+#: prefs/koprefsdialogviews.cpp:93
 #, kde-format
 msgctxt "@label suffix in the hour size spin box"
 msgid " pixels"
 msgstr "픽셀"
 
-#: prefs/koprefsdialogviews.cpp:123
+#: prefs/koprefsdialogviews.cpp:125
 #, kde-format
 msgctxt "@title:tab"
 msgid "Month View"
 msgstr "월간 보기"
 
-#: prefs/koprefsdialogviews.cpp:150
+#: prefs/koprefsdialogviews.cpp:152
 #, kde-format
 msgctxt "@title:tab"
 msgid "Todo View"
 msgstr "할 일 보기"
 
-#: prefs/koprefsdialogviews.cpp:163
+#: prefs/koprefsdialogviews.cpp:165
 #, kde-format
 msgctxt "@title:group"
 msgid "Other Options"
@@ -5007,13 +5007,13 @@ msgid "Hide to-dos not assigned to me"
 msgstr "내게 할당되지 않은 할 일 숨기기"
 
 #. i18n: ectx: attribute (title), widget (QWidget, tabPublish)
-#: ui/kogroupwareprefspage.ui:36
+#: ui/kogroupwareprefspage.ui:39
 #, kde-format
 msgid "P&ublish"
 msgstr "게시(&U)"
 
 #. i18n: ectx: property (text), widget (QLabel, TextLabel1)
-#: ui/kogroupwareprefspage.ui:57
+#: ui/kogroupwareprefspage.ui:60
 #, kde-format
 msgid ""
 "By publishing Free/Busy information, you allow others to take your calendar "
@@ -5025,7 +5025,7 @@ msgstr ""
 "에 무엇을 하는지는 게시하지 않습니다."
 
 #. i18n: ectx: property (whatsThis), widget (QCheckBox, publishEnable)
-#: ui/kogroupwareprefspage.ui:69
+#: ui/kogroupwareprefspage.ui:72
 #, kde-format
 msgid ""
 "Check this box to upload your Free/Busy information automatically.\n"
@@ -5043,14 +5043,14 @@ msgstr ""
 "도록 합니다."
 
 #. i18n: ectx: property (text), widget (QCheckBox, publishEnable)
-#: ui/kogroupwareprefspage.ui:72
+#: ui/kogroupwareprefspage.ui:75
 #, kde-format
 msgid "Publish your free/&busy information automatically"
 msgstr "자동으로 바쁨/한가함 정보 게시(&B)"
 
 #. i18n: ectx: property (whatsThis), widget (QLabel, publishDelayLabel)
 #. i18n: ectx: property (whatsThis), widget (QSpinBox, publishDelay)
-#: ui/kogroupwareprefspage.ui:96 ui/kogroupwareprefspage.ui:109
+#: ui/kogroupwareprefspage.ui:99 ui/kogroupwareprefspage.ui:112
 #, kde-format
 msgid ""
 "Configure minimum the interval of time in minutes between each upload here. "
@@ -5061,7 +5061,7 @@ msgstr ""
 "우에만 사용됩니다."
 
 #. i18n: ectx: property (text), widget (QLabel, publishDelayLabel)
-#: ui/kogroupwareprefspage.ui:99
+#: ui/kogroupwareprefspage.ui:102
 #, kde-format
 msgid "Minimum time between uploads (in minutes):"
 msgstr "업로드 최소 시간 간격(분 단위):"
@@ -5069,8 +5069,8 @@ msgstr "업로드 최소 시간 간격(분 단위):"
 #. i18n: ectx: property (whatsThis), widget (QLabel, TextLabel3)
 #. i18n: ectx: property (whatsThis), widget (QSpinBox, publishDays)
 #. i18n: ectx: property (whatsThis), widget (QLabel, TextLabel4)
-#: ui/kogroupwareprefspage.ui:138 ui/kogroupwareprefspage.ui:151
-#: ui/kogroupwareprefspage.ui:167
+#: ui/kogroupwareprefspage.ui:141 ui/kogroupwareprefspage.ui:154
+#: ui/kogroupwareprefspage.ui:170
 #, kde-format
 msgid ""
 "Configure the number of calendar days you wish to be published and available "
@@ -5078,27 +5078,27 @@ msgid ""
 msgstr "바쁨/한가함 정보를 게시할 날짜 수를 설정합니다."
 
 #. i18n: ectx: property (text), widget (QLabel, TextLabel3)
-#: ui/kogroupwareprefspage.ui:141
+#: ui/kogroupwareprefspage.ui:144
 #, kde-format
 msgid "Publish"
 msgstr "게시"
 
 #. i18n: ectx: property (text), widget (QLabel, TextLabel4)
-#: ui/kogroupwareprefspage.ui:170
+#: ui/kogroupwareprefspage.ui:173
 #, kde-format
 msgid "days of free/busy information"
 msgstr "일간의 바쁨/한가함 정보"
 
 #. i18n: ectx: property (title), widget (QGroupBox, ButtonGroup2)
 #. i18n: ectx: property (title), widget (QGroupBox, ButtonGroup2_2)
-#: ui/kogroupwareprefspage.ui:195 ui/kogroupwareprefspage.ui:392
+#: ui/kogroupwareprefspage.ui:198 ui/kogroupwareprefspage.ui:395
 #, kde-format
 msgid "Server Information"
 msgstr "서버 정보"
 
 #. i18n: ectx: property (whatsThis), widget (QLineEdit, publishUrl)
 #. i18n: ectx: property (whatsThis), widget (QLabel, TextLabel7)
-#: ui/kogroupwareprefspage.ui:223 ui/kogroupwareprefspage.ui:295
+#: ui/kogroupwareprefspage.ui:226 ui/kogroupwareprefspage.ui:298
 #, kde-format
 msgid ""
 "Enter the URL for the server on which your Free/Busy information shall be "
@@ -5112,14 +5112,14 @@ msgstr ""
 #. i18n: ectx: property (whatsThis), widget (QLabel, textLabel2)
 #. i18n: ectx: property (whatsThis), widget (QLineEdit, retrievePassword)
 #. i18n: ectx: property (whatsThis), widget (QLabel, textLabel4)
-#: ui/kogroupwareprefspage.ui:230 ui/kogroupwareprefspage.ui:240
-#: ui/kogroupwareprefspage.ui:413 ui/kogroupwareprefspage.ui:486
+#: ui/kogroupwareprefspage.ui:233 ui/kogroupwareprefspage.ui:243
+#: ui/kogroupwareprefspage.ui:416 ui/kogroupwareprefspage.ui:489
 #, kde-format
 msgid "Enter your groupware server login password here."
 msgstr "그룹웨어 서버 로그인 암호를 입력하십시오."
 
 #. i18n: ectx: property (text), widget (QLabel, textLabel2)
-#: ui/kogroupwareprefspage.ui:243
+#: ui/kogroupwareprefspage.ui:246
 #, kde-format
 msgid "Password:"
 msgstr "암호:"
@@ -5128,8 +5128,8 @@ msgstr "암호:"
 #. i18n: ectx: property (whatsThis), widget (QLineEdit, publishUser)
 #. i18n: ectx: property (whatsThis), widget (QLineEdit, retrieveUser)
 #. i18n: ectx: property (whatsThis), widget (QLabel, textLabel3)
-#: ui/kogroupwareprefspage.ui:255 ui/kogroupwareprefspage.ui:276
-#: ui/kogroupwareprefspage.ui:425 ui/kogroupwareprefspage.ui:473
+#: ui/kogroupwareprefspage.ui:258 ui/kogroupwareprefspage.ui:279
+#: ui/kogroupwareprefspage.ui:428 ui/kogroupwareprefspage.ui:476
 #, kde-format
 msgid ""
 "Enter the login information relative to your account on the server here.\n"
@@ -5145,7 +5145,7 @@ msgstr ""
 "이 경우에는 UID를 직접 입력하십시오."
 
 #. i18n: ectx: property (text), widget (QLabel, TextLabel6)
-#: ui/kogroupwareprefspage.ui:258
+#: ui/kogroupwareprefspage.ui:261
 #, kde-format
 msgctxt "login name on the Kolab server"
 msgid "Username:"
@@ -5153,7 +5153,7 @@ msgstr "사용자 이름:"
 
 #. i18n: ectx: property (whatsThis), widget (QCheckBox, publishSavePassword)
 #. i18n: ectx: property (whatsThis), widget (QCheckBox, retrieveSavePassword)
-#: ui/kogroupwareprefspage.ui:284 ui/kogroupwareprefspage.ui:506
+#: ui/kogroupwareprefspage.ui:287 ui/kogroupwareprefspage.ui:509
 #, kde-format
 msgid ""
 "Check this box to make KOrganizer remember your password and skip asking you "
@@ -5167,32 +5167,32 @@ msgstr ""
 "보안상의 이유로 설정 파일에 암호를 저장하는 것은 추천하지 않습니다."
 
 #. i18n: ectx: property (text), widget (QCheckBox, publishSavePassword)
-#: ui/kogroupwareprefspage.ui:287
+#: ui/kogroupwareprefspage.ui:290
 #, kde-format
 msgid "Remember p&assword"
 msgstr "암호 기억(&A)"
 
 #. i18n: ectx: property (text), widget (QLabel, TextLabel7)
 #. i18n: ectx: property (text), widget (QLabel, TextLabel7_2)
-#: ui/kogroupwareprefspage.ui:298 ui/kogroupwareprefspage.ui:461
+#: ui/kogroupwareprefspage.ui:301 ui/kogroupwareprefspage.ui:464
 #, kde-format
 msgid "Server URL:"
 msgstr "서버 주소:"
 
 #. i18n: ectx: property (text), widget (QLabel, label)
-#: ui/kogroupwareprefspage.ui:308
+#: ui/kogroupwareprefspage.ui:311
 #, kde-format
 msgid "(No need if using Kolab server version 2)"
 msgstr "(Kolab 서버 버전 2를 사용한다면 필요하지 않음)"
 
 #. i18n: ectx: attribute (title), widget (QWidget, tabRetrieve)
-#: ui/kogroupwareprefspage.ui:335
+#: ui/kogroupwareprefspage.ui:338
 #, kde-format
 msgid "&Retrieve"
 msgstr "가져오기(&R)"
 
 #. i18n: ectx: property (text), widget (QLabel, TextLabel2)
-#: ui/kogroupwareprefspage.ui:356
+#: ui/kogroupwareprefspage.ui:359
 #, kde-format
 msgid ""
 "By retrieving Free/Busy information that others have published, you can take "
@@ -5202,7 +5202,7 @@ msgstr ""
 "할 수 있습니다."
 
 #. i18n: ectx: property (whatsThis), widget (QCheckBox, retrieveEnable)
-#: ui/kogroupwareprefspage.ui:366
+#: ui/kogroupwareprefspage.ui:369
 #, kde-format
 msgid ""
 "Check this box to retrieve other people's Free/Busy information "
@@ -5213,20 +5213,20 @@ msgstr ""
 "정을 사용하려면 올바른 서버 정보를 입력해야 합니다."
 
 #. i18n: ectx: property (text), widget (QCheckBox, retrieveEnable)
-#: ui/kogroupwareprefspage.ui:369
+#: ui/kogroupwareprefspage.ui:372
 #, kde-format
 msgid "Retrieve other people's free/&busy information automatically"
 msgstr "자동으로 다른 사람의 바쁨/한가함 정보 가져오기(&B)"
 
 #. i18n: ectx: property (toolTip), widget (QCheckBox, fullDomainRetrieval)
-#: ui/kogroupwareprefspage.ui:379
+#: ui/kogroupwareprefspage.ui:382
 #, kde-format
 msgid ""
 "Set this to retrieve user@domain.ifb instead of user.ifb from the server"
 msgstr "서버에서 user.ifb 대신 user@domain.ifb를 가져오려면 선택하십시오"
 
 #. i18n: ectx: property (whatsThis), widget (QCheckBox, fullDomainRetrieval)
-#: ui/kogroupwareprefspage.ui:382
+#: ui/kogroupwareprefspage.ui:385
 #, kde-format
 msgid ""
 "Check this box to download a free/busy file in the format \"user@domain.ifb"
@@ -5240,14 +5240,14 @@ msgstr ""
 "시오."
 
 #. i18n: ectx: property (text), widget (QCheckBox, fullDomainRetrieval)
-#: ui/kogroupwareprefspage.ui:385
+#: ui/kogroupwareprefspage.ui:388
 #, kde-format
 msgid "Use full email &address for retrieval"
 msgstr "가져올 때 전체 이메일 주소 사용(&A)"
 
 #. i18n: ectx: property (whatsThis), widget (QLineEdit, retrieveUrl)
 #. i18n: ectx: property (whatsThis), widget (QLabel, TextLabel7_2)
-#: ui/kogroupwareprefspage.ui:443 ui/kogroupwareprefspage.ui:458
+#: ui/kogroupwareprefspage.ui:446 ui/kogroupwareprefspage.ui:461
 #, kde-format
 msgctxt "@info:whatsthis"
 msgid ""
@@ -5272,19 +5272,19 @@ msgstr ""
 "https://kolab2.example.com/freebusy/user.xfb"
 
 #. i18n: ectx: property (text), widget (QLabel, textLabel3)
-#: ui/kogroupwareprefspage.ui:476
+#: ui/kogroupwareprefspage.ui:479
 #, kde-format
 msgid "User&name:"
 msgstr "사용자 이름(&N):"
 
 #. i18n: ectx: property (text), widget (QLabel, textLabel4)
-#: ui/kogroupwareprefspage.ui:489
+#: ui/kogroupwareprefspage.ui:492
 #, kde-format
 msgid "Passwor&d:"
 msgstr "암호(&D):"
 
 #. i18n: ectx: property (text), widget (QCheckBox, retrieveSavePassword)
-#: ui/kogroupwareprefspage.ui:509
+#: ui/kogroupwareprefspage.ui:512
 #, kde-format
 msgid "Re&member password"
 msgstr "암호 기억(&M)"

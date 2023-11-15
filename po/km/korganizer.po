@@ -8,7 +8,7 @@ msgid ""
 msgstr ""
 "Project-Id-Version: korganizer\n"
 "Report-Msgid-Bugs-To: https://bugs.kde.org\n"
-"POT-Creation-Date: 2023-11-13 01:38+0000\n"
+"POT-Creation-Date: 2023-11-15 01:39+0000\n"
 "PO-Revision-Date: 2012-07-09 10:04+0700\n"
 "Last-Translator: Khoem Sokhem <khoemsokhem@khmeros.info>\n"
 "Language-Team: Khmer\n"
@@ -2108,7 +2108,7 @@ msgstr "នាំចូល​ទំព័រ​"
 msgid "Designer Files"
 msgstr "ឯកសារ​ *.ui|Designer ​​"
 
-#: kcmdesignerfields.cpp:268
+#: kcmdesignerfields.cpp:267
 #, kde-format
 msgid ""
 "<qt><b>Warning:</b> Qt Designer could not be found. It is probably not "
@@ -2117,17 +2117,17 @@ msgstr ""
 "<qt><b>ការព្រមាន​ ៖​</b> កម្មវិធី​​រចនា​ Qt មិន​អាច​ត្រូវបាន​រកឃើញ​ ។ វាប្រហែលជា​មិន​បានដំឡើង​ ។​ "
 "អ្នក​នឹង​​អាច​នាំចូលឯកសារកម្មវិធីរចនាដែលមាន​ស្រាប់​តែប៉ុណ្ណោះ​ ។​</qt>"
 
-#: kcmdesignerfields.cpp:278
+#: kcmdesignerfields.cpp:277
 #, kde-format
 msgid "Available Pages"
 msgstr "ទំព័រ​ដែល​អាច​រកបាន​"
 
-#: kcmdesignerfields.cpp:284
+#: kcmdesignerfields.cpp:283
 #, kde-format
 msgid "Preview of Selected Page"
 msgstr "មើល​ជាមុន​នៃទំព័រ​ដែល​បានជ្រើស​"
 
-#: kcmdesignerfields.cpp:303
+#: kcmdesignerfields.cpp:302
 #, kde-format
 msgid ""
 "<qt><p>This section allows you to add your own GUI Elements ('<i>Widgets</"
@@ -2157,42 +2157,42 @@ msgstr ""
 "កម្មវិធីរបស់​​ %2 ។  ផ្លាស់ប្តូរ​ឈ្មោះកម្មវិធីត្រូវបាន​កែសម្រួល​​ កំណត់ឈ្មោះ​ធាតុ​ក្រាហ្វិក​ក្នុង​កម្មវិធី​រចនា​​ Qt ។"
 "</p></qt>"
 
-#: kcmdesignerfields.cpp:325
+#: kcmdesignerfields.cpp:324
 #, kde-format
 msgid "<a href=\"whatsthis:%1\">How does this work?</a>"
 msgstr "<a href=\"whatsthis:%1\">តើ​វា​ដំណើរការ​យ៉ាង​ដូចម្ដេច ?</a>"
 
-#: kcmdesignerfields.cpp:336
+#: kcmdesignerfields.cpp:335
 #, kde-format
 msgid "Delete Page"
 msgstr "លុប​ទំព័រ​​"
 
-#: kcmdesignerfields.cpp:339
+#: kcmdesignerfields.cpp:338
 #, kde-format
 msgid "Import Page..."
 msgstr "នាំចូល​ទំព័រ​..."
 
-#: kcmdesignerfields.cpp:341
+#: kcmdesignerfields.cpp:340
 #, kde-format
 msgid "Edit with Qt Designer..."
 msgstr "កែសម្រួលជាមួយ​កម្មវិធី​រចនា​ Qt ​...​"
 
-#: kcmdesignerfields.cpp:366
+#: kcmdesignerfields.cpp:365
 #, kde-format
 msgid "Key:"
 msgstr "សោ ៖"
 
-#: kcmdesignerfields.cpp:368
+#: kcmdesignerfields.cpp:367
 #, kde-format
 msgid "Type:"
 msgstr "ប្រភេទ ៖​"
 
-#: kcmdesignerfields.cpp:370
+#: kcmdesignerfields.cpp:369
 #, kde-format
 msgid "Classname:"
 msgstr "Classname ៖"
 
-#: kcmdesignerfields.cpp:372
+#: kcmdesignerfields.cpp:371
 #, kde-format
 msgid "Description:"
 msgstr "សេចក្តី​ពិពណ៌នា ៖"
@@ -3498,19 +3498,19 @@ msgstr ""
 "រចនាសម្ព័ន្ធ​ឲ្យ​បាន​ត្រឹមត្រូវ​យ៉ាង​ហោចណាស់​មាន​ថ្ងៃ​ធ្វើការ​មួយ​ថ្ងៃ​នៅ​ក្នុង​ចំណូល​ចិត្ត​កាលបរិច្ឆេទ និង​"
 "ពេលវេលា ។"
 
-#: prefs/koprefsdialogcolorsandfonts.cpp:41
+#: prefs/koprefsdialogcolorsandfonts.cpp:43
 #, kde-format
 msgctxt "@title:tab"
 msgid "Colors"
 msgstr "ពណ៌"
 
-#: prefs/koprefsdialogcolorsandfonts.cpp:91
+#: prefs/koprefsdialogcolorsandfonts.cpp:93
 #, kde-format
 msgctxt "@title:group"
 msgid "Tags"
 msgstr ""
 
-#: prefs/koprefsdialogcolorsandfonts.cpp:105
+#: prefs/koprefsdialogcolorsandfonts.cpp:107
 #, fuzzy, kde-format
 #| msgctxt "@info:whatsthis"
 #| msgid ""
@@ -3523,7 +3523,7 @@ msgid ""
 msgstr ""
 "ជ្រើស​ប្រតិទិន​ដែល​អ្នក​ចង់​កែប្រែ ។ អ្នក​អាច​ផ្លាស់ប្ដូរ​ពណ៌​ប្រតិទិន​ដែល​បាន​ជ្រើស ដោយ​ប្រើ​ប៊ូតុង​ខាង​ខាងក្រោម ។"
 
-#: prefs/koprefsdialogcolorsandfonts.cpp:113
+#: prefs/koprefsdialogcolorsandfonts.cpp:115
 #, fuzzy, kde-format
 #| msgctxt "@info:whatsthis"
 #| msgid ""
@@ -3532,13 +3532,13 @@ msgctxt "@info:whatsthis"
 msgid "Choose the color of the tag selected in the adjacent combo box."
 msgstr "នៅទីនេះ ជ្រើស​ពណ៌​ប្រតិទិន​ដែលបានជ្រើស ដោយ​ប្រើ​ប្រអប់ផ្សំ​ខាង​លើ ។"
 
-#: prefs/koprefsdialogcolorsandfonts.cpp:121
+#: prefs/koprefsdialogcolorsandfonts.cpp:123
 #, kde-format
 msgctxt "@title:group"
 msgid "Resources"
 msgstr "ធនធាន"
 
-#: prefs/koprefsdialogcolorsandfonts.cpp:132
+#: prefs/koprefsdialogcolorsandfonts.cpp:134
 #, kde-format
 msgctxt "@info:whatsthis"
 msgid ""
@@ -3547,21 +3547,21 @@ msgid ""
 msgstr ""
 "ជ្រើស​ប្រតិទិន​ដែល​អ្នក​ចង់​កែប្រែ ។ អ្នក​អាច​ផ្លាស់ប្ដូរ​ពណ៌​ប្រតិទិន​ដែល​បាន​ជ្រើស ដោយ​ប្រើ​ប៊ូតុង​ខាង​ខាងក្រោម ។"
 
-#: prefs/koprefsdialogcolorsandfonts.cpp:140
+#: prefs/koprefsdialogcolorsandfonts.cpp:142
 #, kde-format
 msgctxt "@info:whatsthis"
 msgid ""
 "Choose here the color of the calendar selected using the combo box above."
 msgstr "នៅទីនេះ ជ្រើស​ពណ៌​ប្រតិទិន​ដែលបានជ្រើស ដោយ​ប្រើ​ប្រអប់ផ្សំ​ខាង​លើ ។"
 
-#: prefs/koprefsdialogcolorsandfonts.cpp:148
+#: prefs/koprefsdialogcolorsandfonts.cpp:150
 #, kde-format
 msgctxt "@title:tab"
 msgid "Fonts"
 msgstr "ពុម្ព​អក្សរ"
 
-#: prefs/koprefsdialogcolorsandfonts.cpp:161
-#: prefs/koprefsdialogcolorsandfonts.cpp:167
+#: prefs/koprefsdialogcolorsandfonts.cpp:163
+#: prefs/koprefsdialogcolorsandfonts.cpp:169
 #, kde-format
 msgctxt "@label"
 msgid "Event text"
@@ -3573,37 +3573,37 @@ msgctxt "@label"
 msgid "Mail transport:"
 msgstr "បញ្ជូន​សំបុត្រ​ ៖"
 
-#: prefs/koprefsdialogmain.cpp:40
+#: prefs/koprefsdialogmain.cpp:42
 #, kde-format
 msgctxt "@title:tab personal settings"
 msgid "Personal"
 msgstr "ផ្ទាល់​ខ្លួន​"
 
-#: prefs/koprefsdialogmain.cpp:46
+#: prefs/koprefsdialogmain.cpp:48
 #, kde-format
 msgctxt "@title:group email settings"
 msgid "Email Settings"
 msgstr "កា​រកំណត់​អ៊ីមែល"
 
-#: prefs/koprefsdialogmain.cpp:60 prefs/koprefsdialogtime.cpp:187
+#: prefs/koprefsdialogmain.cpp:62 prefs/koprefsdialogtime.cpp:189
 #, kde-format
 msgctxt "@title:group"
 msgid "Reminders"
 msgstr "កម្មវិធី​រំលឹក"
 
-#: prefs/koprefsdialogmain.cpp:69
+#: prefs/koprefsdialogmain.cpp:71
 #, kde-format
 msgctxt "@title:tab"
 msgid "Save"
 msgstr "រក្សា​​ទុក​​"
 
-#: prefs/koprefsdialogmain.cpp:81
+#: prefs/koprefsdialogmain.cpp:83
 #, kde-format
 msgctxt "@title:tab calendar account settings"
 msgid "Calendars"
 msgstr "ប្រតិទិន​"
 
-#: prefs/koprefsdialogmain.cpp:85
+#: prefs/koprefsdialogmain.cpp:87
 #, fuzzy, kde-format
 #| msgctxt "@title:group"
 #| msgid "Calendar Decorations"
@@ -3649,31 +3649,31 @@ msgctxt "@info"
 msgid "Unable to configure this plugin"
 msgstr "មិន​អាច​កំណត់​រចនាសម្ព័ន្ធ​កម្មវិធី​ជំនួយ​នេះ​បាន​ឡើយ"
 
-#: prefs/koprefsdialogtime.cpp:40
+#: prefs/koprefsdialogtime.cpp:42
 #, kde-format
 msgctxt "@title:tab"
 msgid "Regional"
 msgstr "តំបន់"
 
-#: prefs/koprefsdialogtime.cpp:44
+#: prefs/koprefsdialogtime.cpp:46
 #, kde-format
 msgctxt "@title:group"
 msgid "General Time and Date"
 msgstr "កាលបរិច្ឆេទ និង​ពេលវេលា"
 
-#: prefs/koprefsdialogtime.cpp:53
+#: prefs/koprefsdialogtime.cpp:55
 #, kde-format
 msgctxt "@title:group"
 msgid "Holidays"
 msgstr "ថ្ងៃ​ឈប់​សម្រាក"
 
-#: prefs/koprefsdialogtime.cpp:64
+#: prefs/koprefsdialogtime.cpp:66
 #, kde-format
 msgctxt "@label"
 msgid "Use holiday region:"
 msgstr "ប្រើ​តំបន់​ថ្ងៃ​ឈប់​សម្រាក ៖"
 
-#: prefs/koprefsdialogtime.cpp:87
+#: prefs/koprefsdialogtime.cpp:89
 #, fuzzy, kde-format
 #| msgctxt "Holday region, region language"
 #| msgid "%1 (%2)"
@@ -3681,20 +3681,20 @@ msgctxt "@item:inlistbox Holiday region, region language"
 msgid "%1 (%2)"
 msgstr "%1 (%2)"
 
-#: prefs/koprefsdialogtime.cpp:96
+#: prefs/koprefsdialogtime.cpp:98
 #, fuzzy, kde-format
 #| msgid "Use holiday region:"
 msgctxt "@item:inlistbox"
 msgid "Select Holiday Regions"
 msgstr "ប្រើ​តំបន់​ថ្ងៃ​ឈប់​សម្រាក ៖"
 
-#: prefs/koprefsdialogtime.cpp:108
+#: prefs/koprefsdialogtime.cpp:110
 #, kde-format
 msgctxt "@title:group"
 msgid "Working Period"
 msgstr "​រយៈពេលធ្វើការ​"
 
-#: prefs/koprefsdialogtime.cpp:123
+#: prefs/koprefsdialogtime.cpp:125
 #, kde-format
 msgctxt "@info:whatsthis"
 msgid ""
@@ -3705,86 +3705,86 @@ msgstr ""
 "គូស​ធីក​ប្រអប់​នេះដើម្បី​ឲ្យ KOrganizer សម្គាល់​ម៉ោង​ធ្វើ​ការ​សម្រាប់​ថ្ងៃ​នេះនៃ​សប្ដាហ៍ ។ បើ​វា​ជា​ថ្ងៃ​"
 "ធ្វើការសម្រាប់​អ្នក សូម​ធីក​ប្រអប់​នេះ ឬ​បើ​ពុំ​នោះ​ទេ ម៉ោង​ធ្វើការ​នឹង​មិន​ត្រូវ​បាន​សម្គាល់​ដោយ​ពណ៌​ឡើយ ។"
 
-#: prefs/koprefsdialogtime.cpp:138
+#: prefs/koprefsdialogtime.cpp:140
 #, kde-format
 msgctxt "@item:inlistbox"
 msgid "Monday"
 msgstr ""
 
-#: prefs/koprefsdialogtime.cpp:138
+#: prefs/koprefsdialogtime.cpp:140
 #, kde-format
 msgctxt "@item:inlistbox"
 msgid "Tuesday"
 msgstr ""
 
-#: prefs/koprefsdialogtime.cpp:138
+#: prefs/koprefsdialogtime.cpp:140
 #, kde-format
 msgctxt "@item:inlistbox"
 msgid "Wednesday"
 msgstr ""
 
-#: prefs/koprefsdialogtime.cpp:139
+#: prefs/koprefsdialogtime.cpp:141
 #, kde-format
 msgctxt "@item:inlistbox"
 msgid "Thursday"
 msgstr ""
 
-#: prefs/koprefsdialogtime.cpp:139
+#: prefs/koprefsdialogtime.cpp:141
 #, fuzzy, kde-format
 #| msgid "Holiday"
 msgctxt "@item:inlistbox"
 msgid "Friday"
 msgstr "ថ្ងៃ​ឈប់​សម្រាក"
 
-#: prefs/koprefsdialogtime.cpp:139
+#: prefs/koprefsdialogtime.cpp:141
 #, kde-format
 msgctxt "@item:inlistbox"
 msgid "Saturday"
 msgstr ""
 
-#: prefs/koprefsdialogtime.cpp:140
+#: prefs/koprefsdialogtime.cpp:142
 #, kde-format
 msgctxt "@item:inlistbox"
 msgid "Sunday"
 msgstr ""
 
-#: prefs/koprefsdialogtime.cpp:169
+#: prefs/koprefsdialogtime.cpp:171
 #, kde-format
 msgctxt "@title:tab"
 msgid "Default Values"
 msgstr "តម្លៃ​លំនាំដើម"
 
-#: prefs/koprefsdialogtime.cpp:172
+#: prefs/koprefsdialogtime.cpp:174
 #, kde-format
 msgctxt "@title:group"
 msgid "Appointments"
 msgstr "ការ​ណាត់ជួប"
 
-#: prefs/koprefsdialogtime.cpp:192
+#: prefs/koprefsdialogtime.cpp:194
 #, kde-format
 msgctxt "@label"
 msgid "Default reminder time:"
 msgstr "ពេលវេលា​របស់​កម្មវិធី​រំលឹក​លំនាំដើម ៖"
 
-#: prefs/koprefsdialogtime.cpp:205
+#: prefs/koprefsdialogtime.cpp:207
 #, kde-format
 msgctxt "@item:inlistbox reminder units in minutes"
 msgid "minute(s)"
 msgstr "នាទី"
 
-#: prefs/koprefsdialogtime.cpp:206
+#: prefs/koprefsdialogtime.cpp:208
 #, kde-format
 msgctxt "@item:inlistbox reminder time units in hours"
 msgid "hour(s)"
 msgstr "ម៉ោង"
 
-#: prefs/koprefsdialogtime.cpp:207
+#: prefs/koprefsdialogtime.cpp:209
 #, kde-format
 msgctxt "@item:inlistbox reminder time units in days"
 msgid "day(s)"
 msgstr "ថ្ងៃ"
 
-#: prefs/koprefsdialogtime.cpp:217
+#: prefs/koprefsdialogtime.cpp:219
 #, fuzzy, kde-format
 #| msgid ""
 #| "*.ogg *.wav *.mp3 *.wma *.flac *.aiff *.raw *.au *.ra|Audio Files (*.ogg "
@@ -3794,56 +3794,56 @@ msgstr ""
 "*.ogg *.wav *.mp3 *.wma *.flac *.aiff *.raw *.au *.ra|Audio Files (*.ogg *."
 "wav *.mp3 *.wma *.flac *.aiff *.raw *.au *.ra)"
 
-#: prefs/koprefsdialogviews.cpp:42
+#: prefs/koprefsdialogviews.cpp:44
 #, kde-format
 msgctxt "@title:tab general settings"
 msgid "General"
 msgstr "ទូទៅ"
 
-#: prefs/koprefsdialogviews.cpp:48 prefs/koprefsdialogviews.cpp:85
-#: prefs/koprefsdialogviews.cpp:129 prefs/koprefsdialogviews.cpp:156
+#: prefs/koprefsdialogviews.cpp:50 prefs/koprefsdialogviews.cpp:87
+#: prefs/koprefsdialogviews.cpp:131 prefs/koprefsdialogviews.cpp:158
 #, kde-format
 msgctxt "@title:group"
 msgid "Display Options"
 msgstr "ជម្រើស​បង្ហាញ"
 
-#: prefs/koprefsdialogviews.cpp:54
+#: prefs/koprefsdialogviews.cpp:56
 #, kde-format
 msgctxt "@label suffix in the N days spin box"
 msgid " days"
 msgstr " ថ្ងៃ"
 
-#: prefs/koprefsdialogviews.cpp:67
+#: prefs/koprefsdialogviews.cpp:69
 #, kde-format
 msgctxt "@title:group"
 msgid "Date Navigator"
 msgstr "កម្មវិធី​រុករក​កាលបរិច្ឆេទ"
 
-#: prefs/koprefsdialogviews.cpp:79
+#: prefs/koprefsdialogviews.cpp:81
 #, kde-format
 msgctxt "@title:tab"
 msgid "Agenda View"
 msgstr "ទិដ្ឋភាព​របៀបវារៈ"
 
-#: prefs/koprefsdialogviews.cpp:91
+#: prefs/koprefsdialogviews.cpp:93
 #, kde-format
 msgctxt "@label suffix in the hour size spin box"
 msgid " pixels"
 msgstr " ភីកសែល"
 
-#: prefs/koprefsdialogviews.cpp:123
+#: prefs/koprefsdialogviews.cpp:125
 #, kde-format
 msgctxt "@title:tab"
 msgid "Month View"
 msgstr "ទិដ្ឋភាព​ខែ"
 
-#: prefs/koprefsdialogviews.cpp:150
+#: prefs/koprefsdialogviews.cpp:152
 #, kde-format
 msgctxt "@title:tab"
 msgid "Todo View"
 msgstr "ទិដ្ឋភាព​ការងារ​ត្រូវ​ធ្វើ"
 
-#: prefs/koprefsdialogviews.cpp:163
+#: prefs/koprefsdialogviews.cpp:165
 #, kde-format
 msgctxt "@title:group"
 msgid "Other Options"
@@ -5291,13 +5291,13 @@ msgid "Hide to-dos not assigned to me"
 msgstr "លាក់​ការងារ​ត្រូវ​ធ្វើ ដែល​មិន​បាន​ផ្ដល់​ឲ្យ​ខ្ញុំ"
 
 #. i18n: ectx: attribute (title), widget (QWidget, tabPublish)
-#: ui/kogroupwareprefspage.ui:36
+#: ui/kogroupwareprefspage.ui:39
 #, kde-format
 msgid "P&ublish"
 msgstr "បោះពុម្ព​ផ្សាយ"
 
 #. i18n: ectx: property (text), widget (QLabel, TextLabel1)
-#: ui/kogroupwareprefspage.ui:57
+#: ui/kogroupwareprefspage.ui:60
 #, kde-format
 msgid ""
 "By publishing Free/Busy information, you allow others to take your calendar "
@@ -5309,7 +5309,7 @@ msgstr ""
 "ពេលវេលា​ដែល​ពួកគេ​រវល់ឡើយ ។"
 
 #. i18n: ectx: property (whatsThis), widget (QCheckBox, publishEnable)
-#: ui/kogroupwareprefspage.ui:69
+#: ui/kogroupwareprefspage.ui:72
 #, kde-format
 msgid ""
 "Check this box to upload your Free/Busy information automatically.\n"
@@ -5327,14 +5327,14 @@ msgstr ""
 "គ្រប់គ្រង​ការ​ចូលដំណើរការ​​ពី​អ្នក​ប្រើ​ផ្សេង​ទៀត​រួច​ហើយ ។"
 
 #. i18n: ectx: property (text), widget (QCheckBox, publishEnable)
-#: ui/kogroupwareprefspage.ui:72
+#: ui/kogroupwareprefspage.ui:75
 #, kde-format
 msgid "Publish your free/&busy information automatically"
 msgstr "បោះពុម្ព​ផ្សាយ​ព័ត៌មាន​ទំនេរ/រវល់​របស់​អ្នក ដោយ​ស្វ័យប្រវត្តិ"
 
 #. i18n: ectx: property (whatsThis), widget (QLabel, publishDelayLabel)
 #. i18n: ectx: property (whatsThis), widget (QSpinBox, publishDelay)
-#: ui/kogroupwareprefspage.ui:96 ui/kogroupwareprefspage.ui:109
+#: ui/kogroupwareprefspage.ui:99 ui/kogroupwareprefspage.ui:112
 #, kde-format
 msgid ""
 "Configure minimum the interval of time in minutes between each upload here. "
@@ -5346,7 +5346,7 @@ msgstr ""
 "ប៉ុណ្ណោះ ។"
 
 #. i18n: ectx: property (text), widget (QLabel, publishDelayLabel)
-#: ui/kogroupwareprefspage.ui:99
+#: ui/kogroupwareprefspage.ui:102
 #, kde-format
 msgid "Minimum time between uploads (in minutes):"
 msgstr "រយៈពេល​អប្បបរមា ចន្លោះ​ពេល​ផ្ទុក​ឡើង (គិតជា​នាទី) ៖"
@@ -5354,8 +5354,8 @@ msgstr "រយៈពេល​អប្បបរមា ចន្លោះ​ព�
 #. i18n: ectx: property (whatsThis), widget (QLabel, TextLabel3)
 #. i18n: ectx: property (whatsThis), widget (QSpinBox, publishDays)
 #. i18n: ectx: property (whatsThis), widget (QLabel, TextLabel4)
-#: ui/kogroupwareprefspage.ui:138 ui/kogroupwareprefspage.ui:151
-#: ui/kogroupwareprefspage.ui:167
+#: ui/kogroupwareprefspage.ui:141 ui/kogroupwareprefspage.ui:154
+#: ui/kogroupwareprefspage.ui:170
 #, kde-format
 msgid ""
 "Configure the number of calendar days you wish to be published and available "
@@ -5364,27 +5364,27 @@ msgstr ""
 "កំណត់​រចនាសម្ព័ន្ធ​ចំនួន​ថ្ងៃ​ប្រតិទិន ដែល​អ្នក​ចង់​ឲ្យ​បោះពុម្ព​ផ្សាយ និង​មាន​ចំពោះ​អ្នក​ផ្សេង​ទៀត នៅ​ទីនេះ ។"
 
 #. i18n: ectx: property (text), widget (QLabel, TextLabel3)
-#: ui/kogroupwareprefspage.ui:141
+#: ui/kogroupwareprefspage.ui:144
 #, kde-format
 msgid "Publish"
 msgstr "បោះពុម្ព​ផ្សាយ"
 
 #. i18n: ectx: property (text), widget (QLabel, TextLabel4)
-#: ui/kogroupwareprefspage.ui:170
+#: ui/kogroupwareprefspage.ui:173
 #, kde-format
 msgid "days of free/busy information"
 msgstr "ព័ត៌មាន​អំពី​ថ្ងៃ​ទំនេរ/រវល់"
 
 #. i18n: ectx: property (title), widget (QGroupBox, ButtonGroup2)
 #. i18n: ectx: property (title), widget (QGroupBox, ButtonGroup2_2)
-#: ui/kogroupwareprefspage.ui:195 ui/kogroupwareprefspage.ui:392
+#: ui/kogroupwareprefspage.ui:198 ui/kogroupwareprefspage.ui:395
 #, kde-format
 msgid "Server Information"
 msgstr "​ព័ត៌មាន​របស់​ម៉ាស៊ីន​បម្រើ"
 
 #. i18n: ectx: property (whatsThis), widget (QLineEdit, publishUrl)
 #. i18n: ectx: property (whatsThis), widget (QLabel, TextLabel7)
-#: ui/kogroupwareprefspage.ui:223 ui/kogroupwareprefspage.ui:295
+#: ui/kogroupwareprefspage.ui:226 ui/kogroupwareprefspage.ui:298
 #, kde-format
 msgid ""
 "Enter the URL for the server on which your Free/Busy information shall be "
@@ -5398,14 +5398,14 @@ msgstr ""
 #. i18n: ectx: property (whatsThis), widget (QLabel, textLabel2)
 #. i18n: ectx: property (whatsThis), widget (QLineEdit, retrievePassword)
 #. i18n: ectx: property (whatsThis), widget (QLabel, textLabel4)
-#: ui/kogroupwareprefspage.ui:230 ui/kogroupwareprefspage.ui:240
-#: ui/kogroupwareprefspage.ui:413 ui/kogroupwareprefspage.ui:486
+#: ui/kogroupwareprefspage.ui:233 ui/kogroupwareprefspage.ui:243
+#: ui/kogroupwareprefspage.ui:416 ui/kogroupwareprefspage.ui:489
 #, kde-format
 msgid "Enter your groupware server login password here."
 msgstr "បញ្ចូល​ពាក្យ​សម្ងាត់​ចូល​ម៉ាស៊ីន​បម្រើ groupware នៅ​ទី​នេះ ។"
 
 #. i18n: ectx: property (text), widget (QLabel, textLabel2)
-#: ui/kogroupwareprefspage.ui:243
+#: ui/kogroupwareprefspage.ui:246
 #, kde-format
 msgid "Password:"
 msgstr "ពាក្យ​សម្ងាត់ ៖"
@@ -5414,8 +5414,8 @@ msgstr "ពាក្យ​សម្ងាត់ ៖"
 #. i18n: ectx: property (whatsThis), widget (QLineEdit, publishUser)
 #. i18n: ectx: property (whatsThis), widget (QLineEdit, retrieveUser)
 #. i18n: ectx: property (whatsThis), widget (QLabel, textLabel3)
-#: ui/kogroupwareprefspage.ui:255 ui/kogroupwareprefspage.ui:276
-#: ui/kogroupwareprefspage.ui:425 ui/kogroupwareprefspage.ui:473
+#: ui/kogroupwareprefspage.ui:258 ui/kogroupwareprefspage.ui:279
+#: ui/kogroupwareprefspage.ui:428 ui/kogroupwareprefspage.ui:476
 #, kde-format
 msgid ""
 "Enter the login information relative to your account on the server here.\n"
@@ -5431,7 +5431,7 @@ msgstr ""
 "ផង​ដែរ ។ បើ​ជា​ករណី​ចុងក្រោយ សូម​បញ្ចូល UID របស់​អ្នក ។"
 
 #. i18n: ectx: property (text), widget (QLabel, TextLabel6)
-#: ui/kogroupwareprefspage.ui:258
+#: ui/kogroupwareprefspage.ui:261
 #, kde-format
 msgctxt "login name on the Kolab server"
 msgid "Username:"
@@ -5439,7 +5439,7 @@ msgstr "ឈ្មោះ​អ្នក​ប្រើ ៖"
 
 #. i18n: ectx: property (whatsThis), widget (QCheckBox, publishSavePassword)
 #. i18n: ectx: property (whatsThis), widget (QCheckBox, retrieveSavePassword)
-#: ui/kogroupwareprefspage.ui:284 ui/kogroupwareprefspage.ui:506
+#: ui/kogroupwareprefspage.ui:287 ui/kogroupwareprefspage.ui:509
 #, kde-format
 msgid ""
 "Check this box to make KOrganizer remember your password and skip asking you "
@@ -5453,32 +5453,32 @@ msgstr ""
 "ដើម្បី​ឲ្យ​មាន​សុវត្ថិភាព អ្នក​មិន​គួរ​ទុក​ពាក្យ​សម្ងាត់​របស់​អ្នក​នៅ​ក្នុង​ឯកសារ​កំណត់​រចនាសម្ព័ន្ធ​ឡើយ ។"
 
 #. i18n: ectx: property (text), widget (QCheckBox, publishSavePassword)
-#: ui/kogroupwareprefspage.ui:287
+#: ui/kogroupwareprefspage.ui:290
 #, kde-format
 msgid "Remember p&assword"
 msgstr "ចងចាំ​ពាក្យ​សម្ងាត់"
 
 #. i18n: ectx: property (text), widget (QLabel, TextLabel7)
 #. i18n: ectx: property (text), widget (QLabel, TextLabel7_2)
-#: ui/kogroupwareprefspage.ui:298 ui/kogroupwareprefspage.ui:461
+#: ui/kogroupwareprefspage.ui:301 ui/kogroupwareprefspage.ui:464
 #, kde-format
 msgid "Server URL:"
 msgstr "URL ម៉ាស៊ីន​បម្រើ ៖"
 
 #. i18n: ectx: property (text), widget (QLabel, label)
-#: ui/kogroupwareprefspage.ui:308
+#: ui/kogroupwareprefspage.ui:311
 #, kde-format
 msgid "(No need if using Kolab server version 2)"
 msgstr "(No need if using Kolab server version 2)"
 
 #. i18n: ectx: attribute (title), widget (QWidget, tabRetrieve)
-#: ui/kogroupwareprefspage.ui:335
+#: ui/kogroupwareprefspage.ui:338
 #, kde-format
 msgid "&Retrieve"
 msgstr "ទៅយក"
 
 #. i18n: ectx: property (text), widget (QLabel, TextLabel2)
-#: ui/kogroupwareprefspage.ui:356
+#: ui/kogroupwareprefspage.ui:359
 #, kde-format
 msgid ""
 "By retrieving Free/Busy information that others have published, you can take "
@@ -5488,7 +5488,7 @@ msgstr ""
 "ពេល​អញ្ជើញ​ពួក​គាត់​មក​ចូលរួម​ប្រជុំ ។"
 
 #. i18n: ectx: property (whatsThis), widget (QCheckBox, retrieveEnable)
-#: ui/kogroupwareprefspage.ui:366
+#: ui/kogroupwareprefspage.ui:369
 #, fuzzy, kde-format
 #| msgid ""
 #| "Check this box to retrieve other peoples' Free/Busy information "
@@ -5503,21 +5503,21 @@ msgstr ""
 "បំពេញ​ព័ត៌មាន​ត្រឹមត្រូវ​អំពី​ម៉ាស៊ីន​បម្រើ ដើម្បី​អាច​ធ្វើ​ដូច្នេះ​បាន​ ។"
 
 #. i18n: ectx: property (text), widget (QCheckBox, retrieveEnable)
-#: ui/kogroupwareprefspage.ui:369
+#: ui/kogroupwareprefspage.ui:372
 #, fuzzy, kde-format
 #| msgid "Retrieve other peoples' free/&busy information automatically"
 msgid "Retrieve other people's free/&busy information automatically"
 msgstr "ទៅយក​ព័ត៌មាន​ទំនេរ/រវល់​របស់​អ្នក​ផ្សេង​ទៀត ដោយ​ស្វ័យប្រវត្តិ"
 
 #. i18n: ectx: property (toolTip), widget (QCheckBox, fullDomainRetrieval)
-#: ui/kogroupwareprefspage.ui:379
+#: ui/kogroupwareprefspage.ui:382
 #, kde-format
 msgid ""
 "Set this to retrieve user@domain.ifb instead of user.ifb from the server"
 msgstr "កំណត់​ជម្រើស​នេះ​ដើម្បី​ទៅ​យក user@domain.ifb ជំនួស​ឲ្យ user.ifb ពី​ម៉ាស៊ីនបម្រើ"
 
 #. i18n: ectx: property (whatsThis), widget (QCheckBox, fullDomainRetrieval)
-#: ui/kogroupwareprefspage.ui:382
+#: ui/kogroupwareprefspage.ui:385
 #, kde-format
 msgid ""
 "Check this box to download a free/busy file in the format \"user@domain.ifb"
@@ -5531,14 +5531,14 @@ msgstr ""
 "នេះ ។"
 
 #. i18n: ectx: property (text), widget (QCheckBox, fullDomainRetrieval)
-#: ui/kogroupwareprefspage.ui:385
+#: ui/kogroupwareprefspage.ui:388
 #, kde-format
 msgid "Use full email &address for retrieval"
 msgstr "ប្រើ​អាសយដ្ឋាន​អ៊ីមែល​ពេញលេញ ដើម្បី​ទៅយក"
 
 #. i18n: ectx: property (whatsThis), widget (QLineEdit, retrieveUrl)
 #. i18n: ectx: property (whatsThis), widget (QLabel, TextLabel7_2)
-#: ui/kogroupwareprefspage.ui:443 ui/kogroupwareprefspage.ui:458
+#: ui/kogroupwareprefspage.ui:446 ui/kogroupwareprefspage.ui:461
 #, kde-format
 msgctxt "@info:whatsthis"
 msgid ""
@@ -5564,19 +5564,19 @@ msgstr ""
 "https://kolab2.example.com/freebusy/user.xfb"
 
 #. i18n: ectx: property (text), widget (QLabel, textLabel3)
-#: ui/kogroupwareprefspage.ui:476
+#: ui/kogroupwareprefspage.ui:479
 #, kde-format
 msgid "User&name:"
 msgstr "ឈ្មោះ​អ្នក​ប្រើ ៖"
 
 #. i18n: ectx: property (text), widget (QLabel, textLabel4)
-#: ui/kogroupwareprefspage.ui:489
+#: ui/kogroupwareprefspage.ui:492
 #, kde-format
 msgid "Passwor&d:"
 msgstr "ពាក្យ​សម្ងាត់ ៖"
 
 #. i18n: ectx: property (text), widget (QCheckBox, retrieveSavePassword)
-#: ui/kogroupwareprefspage.ui:509
+#: ui/kogroupwareprefspage.ui:512
 #, kde-format
 msgid "Re&member password"
 msgstr "ចងចាំ​ពាក្យ​សម្ងាត់"

@@ -6,7 +6,7 @@ msgid ""
 msgstr ""
 "Project-Id-Version: korganizer\n"
 "Report-Msgid-Bugs-To: https://bugs.kde.org\n"
-"POT-Creation-Date: 2023-11-13 01:38+0000\n"
+"POT-Creation-Date: 2023-11-15 01:39+0000\n"
 "PO-Revision-Date: 2007-09-17 14:45+0545\n"
 "Last-Translator: Nabin Gautam <nabin@mpp.org.np>\n"
 "Language-Team: Nepali <info@mpp.org.np>\n"
@@ -2154,24 +2154,24 @@ msgstr "क्यालेन्डर आयात गर्नुहोस्"
 msgid "Designer Files"
 msgstr "*.ics|आई क्यालेन्डर फाइल"
 
-#: kcmdesignerfields.cpp:268
+#: kcmdesignerfields.cpp:267
 #, kde-format
 msgid ""
 "<qt><b>Warning:</b> Qt Designer could not be found. It is probably not "
 "installed. You will only be able to import existing designer files.</qt>"
 msgstr ""
 
-#: kcmdesignerfields.cpp:278
+#: kcmdesignerfields.cpp:277
 #, kde-format
 msgid "Available Pages"
 msgstr ""
 
-#: kcmdesignerfields.cpp:284
+#: kcmdesignerfields.cpp:283
 #, kde-format
 msgid "Preview of Selected Page"
 msgstr ""
 
-#: kcmdesignerfields.cpp:303
+#: kcmdesignerfields.cpp:302
 #, kde-format
 msgid ""
 "<qt><p>This section allows you to add your own GUI Elements ('<i>Widgets</"
@@ -2189,46 +2189,46 @@ msgid ""
 "name to be edited, set the widget name in Qt Designer.</p></qt>"
 msgstr ""
 
-#: kcmdesignerfields.cpp:325
+#: kcmdesignerfields.cpp:324
 #, kde-format
 msgid "<a href=\"whatsthis:%1\">How does this work?</a>"
 msgstr ""
 
-#: kcmdesignerfields.cpp:336
+#: kcmdesignerfields.cpp:335
 #, fuzzy, kde-format
 #| msgid "Delete"
 msgid "Delete Page"
 msgstr "मेट्नुहोस्"
 
-#: kcmdesignerfields.cpp:339
+#: kcmdesignerfields.cpp:338
 #, fuzzy, kde-format
 #| msgid "Import &Calendar..."
 msgid "Import Page..."
 msgstr "क्यालेन्डर आयात गर्नुहोस्..."
 
-#: kcmdesignerfields.cpp:341
+#: kcmdesignerfields.cpp:340
 #, kde-format
 msgid "Edit with Qt Designer..."
 msgstr ""
 
-#: kcmdesignerfields.cpp:366
+#: kcmdesignerfields.cpp:365
 #, kde-format
 msgid "Key:"
 msgstr ""
 
-#: kcmdesignerfields.cpp:368
+#: kcmdesignerfields.cpp:367
 #, fuzzy, kde-format
 #| msgid "Type:"
 msgid "Type:"
 msgstr "प्रकार:"
 
-#: kcmdesignerfields.cpp:370
+#: kcmdesignerfields.cpp:369
 #, fuzzy, kde-format
 #| msgid "Username:"
 msgid "Classname:"
 msgstr "प्रयोगकर्ता नाम:"
 
-#: kcmdesignerfields.cpp:372
+#: kcmdesignerfields.cpp:371
 #, kde-format
 msgid "Description:"
 msgstr "वर्णन:"
@@ -3532,19 +3532,19 @@ msgid ""
 "preferences."
 msgstr ""
 
-#: prefs/koprefsdialogcolorsandfonts.cpp:41
+#: prefs/koprefsdialogcolorsandfonts.cpp:43
 #, kde-format
 msgctxt "@title:tab"
 msgid "Colors"
 msgstr ""
 
-#: prefs/koprefsdialogcolorsandfonts.cpp:91
+#: prefs/koprefsdialogcolorsandfonts.cpp:93
 #, kde-format
 msgctxt "@title:group"
 msgid "Tags"
 msgstr ""
 
-#: prefs/koprefsdialogcolorsandfonts.cpp:105
+#: prefs/koprefsdialogcolorsandfonts.cpp:107
 #, fuzzy, kde-format
 #| msgid ""
 #| "Select here the event category you want to modify. You can change the "
@@ -3557,7 +3557,7 @@ msgstr ""
 "यहाँ तपाईँले परिमार्जन गर्न चाहेको घटना कोटि चयन गर्नुहोस् । तपाईँले तलको बटन प्रयोग गरेर "
 "चयन गरिएको कोटि रङ परिवर्तन गर्न सक्नुहुन्छ ।"
 
-#: prefs/koprefsdialogcolorsandfonts.cpp:113
+#: prefs/koprefsdialogcolorsandfonts.cpp:115
 #, fuzzy, kde-format
 #| msgid ""
 #| "Choose here the color of the resource selected using the combo box above."
@@ -3565,14 +3565,14 @@ msgctxt "@info:whatsthis"
 msgid "Choose the color of the tag selected in the adjacent combo box."
 msgstr "यहाँ माथिको कम्बो बाकस प्रयोग गरेर चयन गरिएको स्रोतको रङ रोज्नुहोस् ।"
 
-#: prefs/koprefsdialogcolorsandfonts.cpp:121
+#: prefs/koprefsdialogcolorsandfonts.cpp:123
 #, fuzzy, kde-format
 #| msgid "Resources"
 msgctxt "@title:group"
 msgid "Resources"
 msgstr "स्रोत"
 
-#: prefs/koprefsdialogcolorsandfonts.cpp:132
+#: prefs/koprefsdialogcolorsandfonts.cpp:134
 #, fuzzy, kde-format
 #| msgid ""
 #| "Select here the event category you want to modify. You can change the "
@@ -3585,7 +3585,7 @@ msgstr ""
 "यहाँ तपाईँले परिमार्जन गर्न चाहेको घटना कोटि चयन गर्नुहोस् । तपाईँले तलको बटन प्रयोग गरेर "
 "चयन गरिएको कोटि रङ परिवर्तन गर्न सक्नुहुन्छ ।"
 
-#: prefs/koprefsdialogcolorsandfonts.cpp:140
+#: prefs/koprefsdialogcolorsandfonts.cpp:142
 #, fuzzy, kde-format
 #| msgid ""
 #| "Choose here the color of the resource selected using the combo box above."
@@ -3594,15 +3594,15 @@ msgid ""
 "Choose here the color of the calendar selected using the combo box above."
 msgstr "यहाँ माथिको कम्बो बाकस प्रयोग गरेर चयन गरिएको स्रोतको रङ रोज्नुहोस् ।"
 
-#: prefs/koprefsdialogcolorsandfonts.cpp:148
+#: prefs/koprefsdialogcolorsandfonts.cpp:150
 #, fuzzy, kde-format
 #| msgid "month(s)"
 msgctxt "@title:tab"
 msgid "Fonts"
 msgstr "महिना"
 
-#: prefs/koprefsdialogcolorsandfonts.cpp:161
-#: prefs/koprefsdialogcolorsandfonts.cpp:167
+#: prefs/koprefsdialogcolorsandfonts.cpp:163
+#: prefs/koprefsdialogcolorsandfonts.cpp:169
 #, fuzzy, kde-format
 #| msgid "Event text"
 msgctxt "@label"
@@ -3615,42 +3615,42 @@ msgctxt "@label"
 msgid "Mail transport:"
 msgstr ""
 
-#: prefs/koprefsdialogmain.cpp:40
+#: prefs/koprefsdialogmain.cpp:42
 #, fuzzy, kde-format
 #| msgid "Personal"
 msgctxt "@title:tab personal settings"
 msgid "Personal"
 msgstr "व्यक्तिगत"
 
-#: prefs/koprefsdialogmain.cpp:46
+#: prefs/koprefsdialogmain.cpp:48
 #, fuzzy, kde-format
 #| msgid "&Settings"
 msgctxt "@title:group email settings"
 msgid "Email Settings"
 msgstr "सेटिङ"
 
-#: prefs/koprefsdialogmain.cpp:60 prefs/koprefsdialogtime.cpp:187
+#: prefs/koprefsdialogmain.cpp:62 prefs/koprefsdialogtime.cpp:189
 #, fuzzy, kde-format
 #| msgid "Reminder"
 msgctxt "@title:group"
 msgid "Reminders"
 msgstr "स्मरणकर्ता"
 
-#: prefs/koprefsdialogmain.cpp:69
+#: prefs/koprefsdialogmain.cpp:71
 #, fuzzy, kde-format
 #| msgid "&Save"
 msgctxt "@title:tab"
 msgid "Save"
 msgstr "बचत गर्नुहोस्"
 
-#: prefs/koprefsdialogmain.cpp:81
+#: prefs/koprefsdialogmain.cpp:83
 #, fuzzy, kde-format
 #| msgid "Calendar"
 msgctxt "@title:tab calendar account settings"
 msgid "Calendars"
 msgstr "क्यालेन्डर"
 
-#: prefs/koprefsdialogmain.cpp:85
+#: prefs/koprefsdialogmain.cpp:87
 #, fuzzy, kde-format
 #| msgid "Calendar"
 msgctxt "@title"
@@ -3700,34 +3700,34 @@ msgctxt "@info"
 msgid "Unable to configure this plugin"
 msgstr "यो प्लगइन कन्फिगर गर्न असमर्थ"
 
-#: prefs/koprefsdialogtime.cpp:40
+#: prefs/koprefsdialogtime.cpp:42
 #, fuzzy, kde-format
 #| msgid "Personal"
 msgctxt "@title:tab"
 msgid "Regional"
 msgstr "व्यक्तिगत"
 
-#: prefs/koprefsdialogtime.cpp:44
+#: prefs/koprefsdialogtime.cpp:46
 #, kde-format
 msgctxt "@title:group"
 msgid "General Time and Date"
 msgstr ""
 
-#: prefs/koprefsdialogtime.cpp:53
+#: prefs/koprefsdialogtime.cpp:55
 #, fuzzy, kde-format
 #| msgid "Holiday"
 msgctxt "@title:group"
 msgid "Holidays"
 msgstr "छुट्टि"
 
-#: prefs/koprefsdialogtime.cpp:64
+#: prefs/koprefsdialogtime.cpp:66
 #, fuzzy, kde-format
 #| msgid "Use holiday region:"
 msgctxt "@label"
 msgid "Use holiday region:"
 msgstr "बिदा क्षेत्र प्रयोग गर्नुहोस्:"
 
-#: prefs/koprefsdialogtime.cpp:87
+#: prefs/koprefsdialogtime.cpp:89
 #, fuzzy, kde-format
 #| msgctxt "short_weekday date (e.g. Mon 13)"
 #| msgid "%1 %2"
@@ -3735,21 +3735,21 @@ msgctxt "@item:inlistbox Holiday region, region language"
 msgid "%1 (%2)"
 msgstr "%1 %2"
 
-#: prefs/koprefsdialogtime.cpp:96
+#: prefs/koprefsdialogtime.cpp:98
 #, fuzzy, kde-format
 #| msgid "Use holiday region:"
 msgctxt "@item:inlistbox"
 msgid "Select Holiday Regions"
 msgstr "बिदा क्षेत्र प्रयोग गर्नुहोस्:"
 
-#: prefs/koprefsdialogtime.cpp:108
+#: prefs/koprefsdialogtime.cpp:110
 #, fuzzy, kde-format
 #| msgid "Working Hours"
 msgctxt "@title:group"
 msgid "Working Period"
 msgstr "कार्य घण्टा"
 
-#: prefs/koprefsdialogtime.cpp:123
+#: prefs/koprefsdialogtime.cpp:125
 #, fuzzy, kde-format
 #| msgid ""
 #| "Check this box to make KOrganizer mark the working hours for this day of "
@@ -3765,112 +3765,112 @@ msgstr ""
 "गर्नुहोस् । यदि यो तपाईँको कार्य दिन भएमा, यो बाकस जाँच गर्नुहोस्, वा कार्य घण्टा रङले "
 "चिन्ह लागाइने छैनन् ।"
 
-#: prefs/koprefsdialogtime.cpp:138
+#: prefs/koprefsdialogtime.cpp:140
 #, kde-format
 msgctxt "@item:inlistbox"
 msgid "Monday"
 msgstr ""
 
-#: prefs/koprefsdialogtime.cpp:138
+#: prefs/koprefsdialogtime.cpp:140
 #, kde-format
 msgctxt "@item:inlistbox"
 msgid "Tuesday"
 msgstr ""
 
-#: prefs/koprefsdialogtime.cpp:138
+#: prefs/koprefsdialogtime.cpp:140
 #, kde-format
 msgctxt "@item:inlistbox"
 msgid "Wednesday"
 msgstr ""
 
-#: prefs/koprefsdialogtime.cpp:139
+#: prefs/koprefsdialogtime.cpp:141
 #, kde-format
 msgctxt "@item:inlistbox"
 msgid "Thursday"
 msgstr ""
 
-#: prefs/koprefsdialogtime.cpp:139
+#: prefs/koprefsdialogtime.cpp:141
 #, fuzzy, kde-format
 #| msgid "Holiday"
 msgctxt "@item:inlistbox"
 msgid "Friday"
 msgstr "छुट्टि"
 
-#: prefs/koprefsdialogtime.cpp:139
+#: prefs/koprefsdialogtime.cpp:141
 #, kde-format
 msgctxt "@item:inlistbox"
 msgid "Saturday"
 msgstr ""
 
-#: prefs/koprefsdialogtime.cpp:140
+#: prefs/koprefsdialogtime.cpp:142
 #, kde-format
 msgctxt "@item:inlistbox"
 msgid "Sunday"
 msgstr ""
 
-#: prefs/koprefsdialogtime.cpp:169
+#: prefs/koprefsdialogtime.cpp:171
 #, fuzzy, kde-format
 #| msgid "Default Calendar"
 msgctxt "@title:tab"
 msgid "Default Values"
 msgstr "पूर्वनिर्धारित क्यालेन्डर"
 
-#: prefs/koprefsdialogtime.cpp:172
+#: prefs/koprefsdialogtime.cpp:174
 #, fuzzy, kde-format
 #| msgid "Appointment"
 msgctxt "@title:group"
 msgid "Appointments"
 msgstr "नियुक्ति"
 
-#: prefs/koprefsdialogtime.cpp:192
+#: prefs/koprefsdialogtime.cpp:194
 #, fuzzy, kde-format
 #| msgid "Default reminder time:"
 msgctxt "@label"
 msgid "Default reminder time:"
 msgstr "पूर्वनिर्धारित स्मरणकर्ता समय:"
 
-#: prefs/koprefsdialogtime.cpp:205
+#: prefs/koprefsdialogtime.cpp:207
 #, fuzzy, kde-format
 #| msgid "minute(s)"
 msgctxt "@item:inlistbox reminder units in minutes"
 msgid "minute(s)"
 msgstr "मिनेट"
 
-#: prefs/koprefsdialogtime.cpp:206
+#: prefs/koprefsdialogtime.cpp:208
 #, fuzzy, kde-format
 #| msgid "hour(s)"
 msgctxt "@item:inlistbox reminder time units in hours"
 msgid "hour(s)"
 msgstr "घण्टा"
 
-#: prefs/koprefsdialogtime.cpp:207
+#: prefs/koprefsdialogtime.cpp:209
 #, fuzzy, kde-format
 #| msgid "day(s)"
 msgctxt "@item:inlistbox reminder time units in days"
 msgid "day(s)"
 msgstr "दिन"
 
-#: prefs/koprefsdialogtime.cpp:217
+#: prefs/koprefsdialogtime.cpp:219
 #, kde-format
 msgid "Audio Files (*.ogg *.wav *.mp3 *.wma *.flac *.aiff *.raw *.au *.ra)"
 msgstr ""
 
-#: prefs/koprefsdialogviews.cpp:42
+#: prefs/koprefsdialogviews.cpp:44
 #, fuzzy, kde-format
 #| msgid "General"
 msgctxt "@title:tab general settings"
 msgid "General"
 msgstr "साधारण"
 
-#: prefs/koprefsdialogviews.cpp:48 prefs/koprefsdialogviews.cpp:85
-#: prefs/koprefsdialogviews.cpp:129 prefs/koprefsdialogviews.cpp:156
+#: prefs/koprefsdialogviews.cpp:50 prefs/koprefsdialogviews.cpp:87
+#: prefs/koprefsdialogviews.cpp:131 prefs/koprefsdialogviews.cpp:158
 #, fuzzy, kde-format
 #| msgid "Display Options"
 msgctxt "@title:group"
 msgid "Display Options"
 msgstr "प्रदर्शन विकल्प"
 
-#: prefs/koprefsdialogviews.cpp:54
+#: prefs/koprefsdialogviews.cpp:56
 #, fuzzy, kde-format
 #| msgctxt "suffix in the N days spin box"
 #| msgid " days"
@@ -3878,21 +3878,21 @@ msgctxt "@label suffix in the N days spin box"
 msgid " days"
 msgstr " दिन"
 
-#: prefs/koprefsdialogviews.cpp:67
+#: prefs/koprefsdialogviews.cpp:69
 #, fuzzy, kde-format
 #| msgid "Date Navigator"
 msgctxt "@title:group"
 msgid "Date Navigator"
 msgstr "मिति नेभिगेटर"
 
-#: prefs/koprefsdialogviews.cpp:79
+#: prefs/koprefsdialogviews.cpp:81
 #, fuzzy, kde-format
 #| msgid "Agenda View"
 msgctxt "@title:tab"
 msgid "Agenda View"
 msgstr "एजेन्डा दृश्य"
 
-#: prefs/koprefsdialogviews.cpp:91
+#: prefs/koprefsdialogviews.cpp:93
 #, fuzzy, kde-format
 #| msgctxt "suffix in the hour size spin box"
 #| msgid " pixel"
@@ -3900,21 +3900,21 @@ msgctxt "@label suffix in the hour size spin box"
 msgid " pixels"
 msgstr " पिक्सेल"
 
-#: prefs/koprefsdialogviews.cpp:123
+#: prefs/koprefsdialogviews.cpp:125
 #, fuzzy, kde-format
 #| msgid "Month View"
 msgctxt "@title:tab"
 msgid "Month View"
 msgstr "महिना दृश्य"
 
-#: prefs/koprefsdialogviews.cpp:150
+#: prefs/koprefsdialogviews.cpp:152
 #, fuzzy, kde-format
 #| msgid "To-do View"
 msgctxt "@title:tab"
 msgid "Todo View"
 msgstr "गर्नुपर्ने कार्यको दृश्य"
 
-#: prefs/koprefsdialogviews.cpp:163
+#: prefs/koprefsdialogviews.cpp:165
 #, fuzzy, kde-format
 #| msgid "Other Options"
 msgctxt "@title:group"
@@ -5367,13 +5367,13 @@ msgid "Hide to-dos not assigned to me"
 msgstr "मलाई निर्दिष्ट नगरिएका गर्नुपर्ने कार्य लुकाउनुहोस्"
 
 #. i18n: ectx: attribute (title), widget (QWidget, tabPublish)
-#: ui/kogroupwareprefspage.ui:36
+#: ui/kogroupwareprefspage.ui:39
 #, kde-format
 msgid "P&ublish"
 msgstr "प्रकाशन"
 
 #. i18n: ectx: property (text), widget (QLabel, TextLabel1)
-#: ui/kogroupwareprefspage.ui:57
+#: ui/kogroupwareprefspage.ui:60
 #, kde-format
 msgid ""
 "By publishing Free/Busy information, you allow others to take your calendar "
@@ -5385,7 +5385,7 @@ msgstr ""
 "गरिएका छन्, तर तिनीहरू किन व्यस्त छन् प्रकाशन गरिएको छैन ।"
 
 #. i18n: ectx: property (whatsThis), widget (QCheckBox, publishEnable)
-#: ui/kogroupwareprefspage.ui:69
+#: ui/kogroupwareprefspage.ui:72
 #, kde-format
 msgid ""
 "Check this box to upload your Free/Busy information automatically.\n"
@@ -5403,14 +5403,14 @@ msgstr ""
 "यसको पहुँच व्यवस्थापन गर्न, सावधान हुन आवश्यक छैन ।"
 
 #. i18n: ectx: property (text), widget (QCheckBox, publishEnable)
-#: ui/kogroupwareprefspage.ui:72
+#: ui/kogroupwareprefspage.ui:75
 #, kde-format
 msgid "Publish your free/&busy information automatically"
 msgstr "तपाईँको स्वतन्त्र/व्यस्त सूचना स्वचालिर रूपले प्रकाशन गर्नुहोस्"
 
 #. i18n: ectx: property (whatsThis), widget (QLabel, publishDelayLabel)
 #. i18n: ectx: property (whatsThis), widget (QSpinBox, publishDelay)
-#: ui/kogroupwareprefspage.ui:96 ui/kogroupwareprefspage.ui:109
+#: ui/kogroupwareprefspage.ui:99 ui/kogroupwareprefspage.ui:112
 #, kde-format
 msgid ""
 "Configure minimum the interval of time in minutes between each upload here. "
@@ -5421,7 +5421,7 @@ msgstr ""
 "आफ्नो सूचनाको स्वचालित रूपमा प्रकाशन गर्न रोजेमा मात्र प्रभावकारी हुन्छ ।"
 
 #. i18n: ectx: property (text), widget (QLabel, publishDelayLabel)
-#: ui/kogroupwareprefspage.ui:99
+#: ui/kogroupwareprefspage.ui:102
 #, kde-format
 msgid "Minimum time between uploads (in minutes):"
 msgstr "अनलोड बीचको न्यूनतम समय (मिनेटमा):"
@@ -5429,8 +5429,8 @@ msgstr "अनलोड बीचको न्यूनतम समय (मि�
 #. i18n: ectx: property (whatsThis), widget (QLabel, TextLabel3)
 #. i18n: ectx: property (whatsThis), widget (QSpinBox, publishDays)
 #. i18n: ectx: property (whatsThis), widget (QLabel, TextLabel4)
-#: ui/kogroupwareprefspage.ui:138 ui/kogroupwareprefspage.ui:151
-#: ui/kogroupwareprefspage.ui:167
+#: ui/kogroupwareprefspage.ui:141 ui/kogroupwareprefspage.ui:154
+#: ui/kogroupwareprefspage.ui:170
 #, kde-format
 msgid ""
 "Configure the number of calendar days you wish to be published and available "
@@ -5440,27 +5440,27 @@ msgstr ""
 "गर्नुहोस् ।"
 
 #. i18n: ectx: property (text), widget (QLabel, TextLabel3)
-#: ui/kogroupwareprefspage.ui:141
+#: ui/kogroupwareprefspage.ui:144
 #, kde-format
 msgid "Publish"
 msgstr "प्रकाशन"
 
 #. i18n: ectx: property (text), widget (QLabel, TextLabel4)
-#: ui/kogroupwareprefspage.ui:170
+#: ui/kogroupwareprefspage.ui:173
 #, kde-format
 msgid "days of free/busy information"
 msgstr "स्वतन्त्र/व्यस्त जानकारीका दिन"
 
 #. i18n: ectx: property (title), widget (QGroupBox, ButtonGroup2)
 #. i18n: ectx: property (title), widget (QGroupBox, ButtonGroup2_2)
-#: ui/kogroupwareprefspage.ui:195 ui/kogroupwareprefspage.ui:392
+#: ui/kogroupwareprefspage.ui:198 ui/kogroupwareprefspage.ui:395
 #, kde-format
 msgid "Server Information"
 msgstr "सर्भर जानकारी"
 
 #. i18n: ectx: property (whatsThis), widget (QLineEdit, publishUrl)
 #. i18n: ectx: property (whatsThis), widget (QLabel, TextLabel7)
-#: ui/kogroupwareprefspage.ui:223 ui/kogroupwareprefspage.ui:295
+#: ui/kogroupwareprefspage.ui:226 ui/kogroupwareprefspage.ui:298
 #, fuzzy, kde-format
 #| msgid ""
 #| "Enter the URL for the server on which your Free/Busy information shall be "
@@ -5482,14 +5482,14 @@ msgstr ""
 #. i18n: ectx: property (whatsThis), widget (QLabel, textLabel2)
 #. i18n: ectx: property (whatsThis), widget (QLineEdit, retrievePassword)
 #. i18n: ectx: property (whatsThis), widget (QLabel, textLabel4)
-#: ui/kogroupwareprefspage.ui:230 ui/kogroupwareprefspage.ui:240
-#: ui/kogroupwareprefspage.ui:413 ui/kogroupwareprefspage.ui:486
+#: ui/kogroupwareprefspage.ui:233 ui/kogroupwareprefspage.ui:243
+#: ui/kogroupwareprefspage.ui:416 ui/kogroupwareprefspage.ui:489
 #, kde-format
 msgid "Enter your groupware server login password here."
 msgstr "तपाईँको ग्रुपवेयर सर्भर लगइन पासवर्ड यहाँ प्रविष्ट गर्नुहोस् ।"
 
 #. i18n: ectx: property (text), widget (QLabel, textLabel2)
-#: ui/kogroupwareprefspage.ui:243
+#: ui/kogroupwareprefspage.ui:246
 #, kde-format
 msgid "Password:"
 msgstr "पासवर्ड:"
@@ -5498,8 +5498,8 @@ msgstr "पासवर्ड:"
 #. i18n: ectx: property (whatsThis), widget (QLineEdit, publishUser)
 #. i18n: ectx: property (whatsThis), widget (QLineEdit, retrieveUser)
 #. i18n: ectx: property (whatsThis), widget (QLabel, textLabel3)
-#: ui/kogroupwareprefspage.ui:255 ui/kogroupwareprefspage.ui:276
-#: ui/kogroupwareprefspage.ui:425 ui/kogroupwareprefspage.ui:473
+#: ui/kogroupwareprefspage.ui:258 ui/kogroupwareprefspage.ui:279
+#: ui/kogroupwareprefspage.ui:428 ui/kogroupwareprefspage.ui:476
 #, kde-format
 msgid ""
 "Enter the login information relative to your account on the server here.\n"
@@ -5515,7 +5515,7 @@ msgstr ""
 "सक्छ । अन्तिम केसमा तपाईँको UID प्रविष्ट गर्नुहोस् ।"
 
 #. i18n: ectx: property (text), widget (QLabel, TextLabel6)
-#: ui/kogroupwareprefspage.ui:258
+#: ui/kogroupwareprefspage.ui:261
 #, fuzzy, kde-format
 #| msgid "Username:"
 msgctxt "login name on the Kolab server"
@@ -5524,7 +5524,7 @@ msgstr "प्रयोगकर्ता नाम:"
 
 #. i18n: ectx: property (whatsThis), widget (QCheckBox, publishSavePassword)
 #. i18n: ectx: property (whatsThis), widget (QCheckBox, retrieveSavePassword)
-#: ui/kogroupwareprefspage.ui:284 ui/kogroupwareprefspage.ui:506
+#: ui/kogroupwareprefspage.ui:287 ui/kogroupwareprefspage.ui:509
 #, kde-format
 msgid ""
 "Check this box to make KOrganizer remember your password and skip asking you "
@@ -5539,32 +5539,32 @@ msgstr ""
 "सुरक्षाका कारणले, कन्फिगरेसन फाइलमा तपाईँको पासवर्ड भण्डारण गर्न सिफारिस गरिएको छैन ।"
 
 #. i18n: ectx: property (text), widget (QCheckBox, publishSavePassword)
-#: ui/kogroupwareprefspage.ui:287
+#: ui/kogroupwareprefspage.ui:290
 #, kde-format
 msgid "Remember p&assword"
 msgstr "पासवर्ड सम्झनुहोस्"
 
 #. i18n: ectx: property (text), widget (QLabel, TextLabel7)
 #. i18n: ectx: property (text), widget (QLabel, TextLabel7_2)
-#: ui/kogroupwareprefspage.ui:298 ui/kogroupwareprefspage.ui:461
+#: ui/kogroupwareprefspage.ui:301 ui/kogroupwareprefspage.ui:464
 #, kde-format
 msgid "Server URL:"
 msgstr "सर्भर URL:"
 
 #. i18n: ectx: property (text), widget (QLabel, label)
-#: ui/kogroupwareprefspage.ui:308
+#: ui/kogroupwareprefspage.ui:311
 #, kde-format
 msgid "(No need if using Kolab server version 2)"
 msgstr ""
 
 #. i18n: ectx: attribute (title), widget (QWidget, tabRetrieve)
-#: ui/kogroupwareprefspage.ui:335
+#: ui/kogroupwareprefspage.ui:338
 #, kde-format
 msgid "&Retrieve"
 msgstr "पुन: प्राप्त गर्नुहोस्"
 
 #. i18n: ectx: property (text), widget (QLabel, TextLabel2)
-#: ui/kogroupwareprefspage.ui:356
+#: ui/kogroupwareprefspage.ui:359
 #, kde-format
 msgid ""
 "By retrieving Free/Busy information that others have published, you can take "
@@ -5574,7 +5574,7 @@ msgstr ""
 "गर्दा खाताभित्र तिनको क्यालेन्डर लिन सक्नुहुन्छ ।"
 
 #. i18n: ectx: property (whatsThis), widget (QCheckBox, retrieveEnable)
-#: ui/kogroupwareprefspage.ui:366
+#: ui/kogroupwareprefspage.ui:369
 #, fuzzy, kde-format
 #| msgid ""
 #| "Check this box to retrieve other peoples' Free/Busy information "
@@ -5589,21 +5589,21 @@ msgstr ""
 "। याद गर्नुहोस् यो सम्भव हुन तपाईँले ठीक सर्भर जानकारी भर्नुपर्छ ।"
 
 #. i18n: ectx: property (text), widget (QCheckBox, retrieveEnable)
-#: ui/kogroupwareprefspage.ui:369
+#: ui/kogroupwareprefspage.ui:372
 #, fuzzy, kde-format
 #| msgid "Retrieve other peoples' free/&busy information automatically"
 msgid "Retrieve other people's free/&busy information automatically"
 msgstr "अरू मानिसका स्वतन्त्र/व्यस्त जानकारी स्वचालित रूपमा पुन: प्राप्त गर्नुहोस्"
 
 #. i18n: ectx: property (toolTip), widget (QCheckBox, fullDomainRetrieval)
-#: ui/kogroupwareprefspage.ui:379
+#: ui/kogroupwareprefspage.ui:382
 #, kde-format
 msgid ""
 "Set this to retrieve user@domain.ifb instead of user.ifb from the server"
 msgstr "सर्भरबाट पुन: प्राप्त गर्न user.ifb को साटोमा user@domain.ifb सेट गर्नुहोस्"
 
 #. i18n: ectx: property (whatsThis), widget (QCheckBox, fullDomainRetrieval)
-#: ui/kogroupwareprefspage.ui:382
+#: ui/kogroupwareprefspage.ui:385
 #, kde-format
 msgid ""
 "Check this box to download a free/busy file in the format \"user@domain.ifb"
@@ -5617,14 +5617,14 @@ msgstr ""
 "तपाईँ निश्चिन्त हुनुहुन्न भने सर्भर प्रशाषकलाई सोध्नुहोस् ।"
 
 #. i18n: ectx: property (text), widget (QCheckBox, fullDomainRetrieval)
-#: ui/kogroupwareprefspage.ui:385
+#: ui/kogroupwareprefspage.ui:388
 #, kde-format
 msgid "Use full email &address for retrieval"
 msgstr "पुन: प्राप्तिका लागि पूरा इमेल ठेगाना प्रयोग गर्नुहोस्"
 
 #. i18n: ectx: property (whatsThis), widget (QLineEdit, retrieveUrl)
 #. i18n: ectx: property (whatsThis), widget (QLabel, TextLabel7_2)
-#: ui/kogroupwareprefspage.ui:443 ui/kogroupwareprefspage.ui:458
+#: ui/kogroupwareprefspage.ui:446 ui/kogroupwareprefspage.ui:461
 #, fuzzy, kde-format
 #| msgid ""
 #| "Enter the URL for the server on which the Free/Busy information is "
@@ -5649,19 +5649,19 @@ msgstr ""
 "यहाँ कोल्याब२ सर्भर URL उदाहरण छ: \"webdavs://kolab2.com/freebusy/\""
 
 #. i18n: ectx: property (text), widget (QLabel, textLabel3)
-#: ui/kogroupwareprefspage.ui:476
+#: ui/kogroupwareprefspage.ui:479
 #, kde-format
 msgid "User&name:"
 msgstr "प्रयोगकर्ता नाम:"
 
 #. i18n: ectx: property (text), widget (QLabel, textLabel4)
-#: ui/kogroupwareprefspage.ui:489
+#: ui/kogroupwareprefspage.ui:492
 #, kde-format
 msgid "Passwor&d:"
 msgstr "पासवर्ड:"
 
 #. i18n: ectx: property (text), widget (QCheckBox, retrieveSavePassword)
-#: ui/kogroupwareprefspage.ui:509
+#: ui/kogroupwareprefspage.ui:512
 #, kde-format
 msgid "Re&member password"
 msgstr "पासवर्ड सम्झनुहोस्"

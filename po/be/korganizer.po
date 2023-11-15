@@ -11,7 +11,7 @@ msgid ""
 msgstr ""
 "Project-Id-Version: korganizer\n"
 "Report-Msgid-Bugs-To: https://bugs.kde.org\n"
-"POT-Creation-Date: 2023-11-13 01:38+0000\n"
+"POT-Creation-Date: 2023-11-15 01:39+0000\n"
 "PO-Revision-Date: 2008-01-01 23:20+0200\n"
 "Last-Translator: Darafei Praliaskouski <komzpa@gmail.com>\n"
 "Language-Team: Belarusian (Official spelling) <i18n@mova.org>\n"
@@ -2083,24 +2083,24 @@ msgstr "Імпартаваць каляндар"
 msgid "Designer Files"
 msgstr "*.ics|Файлы iCalendar"
 
-#: kcmdesignerfields.cpp:268
+#: kcmdesignerfields.cpp:267
 #, kde-format
 msgid ""
 "<qt><b>Warning:</b> Qt Designer could not be found. It is probably not "
 "installed. You will only be able to import existing designer files.</qt>"
 msgstr ""
 
-#: kcmdesignerfields.cpp:278
+#: kcmdesignerfields.cpp:277
 #, kde-format
 msgid "Available Pages"
 msgstr ""
 
-#: kcmdesignerfields.cpp:284
+#: kcmdesignerfields.cpp:283
 #, kde-format
 msgid "Preview of Selected Page"
 msgstr ""
 
-#: kcmdesignerfields.cpp:303
+#: kcmdesignerfields.cpp:302
 #, kde-format
 msgid ""
 "<qt><p>This section allows you to add your own GUI Elements ('<i>Widgets</"
@@ -2118,45 +2118,45 @@ msgid ""
 "name to be edited, set the widget name in Qt Designer.</p></qt>"
 msgstr ""
 
-#: kcmdesignerfields.cpp:325
+#: kcmdesignerfields.cpp:324
 #, kde-format
 msgid "<a href=\"whatsthis:%1\">How does this work?</a>"
 msgstr ""
 
-#: kcmdesignerfields.cpp:336
+#: kcmdesignerfields.cpp:335
 #, fuzzy, kde-format
 #| msgid "Delete"
 msgid "Delete Page"
 msgstr "Выдаліць"
 
-#: kcmdesignerfields.cpp:339
+#: kcmdesignerfields.cpp:338
 #, fuzzy, kde-format
 #| msgid "Import &Calendar..."
 msgid "Import Page..."
 msgstr "Імпартаваць &каляндар..."
 
-#: kcmdesignerfields.cpp:341
+#: kcmdesignerfields.cpp:340
 #, kde-format
 msgid "Edit with Qt Designer..."
 msgstr ""
 
-#: kcmdesignerfields.cpp:366
+#: kcmdesignerfields.cpp:365
 #, kde-format
 msgid "Key:"
 msgstr ""
 
-#: kcmdesignerfields.cpp:368
+#: kcmdesignerfields.cpp:367
 #, fuzzy, kde-format
 #| msgid "Type"
 msgid "Type:"
 msgstr "Тып:"
 
-#: kcmdesignerfields.cpp:370
+#: kcmdesignerfields.cpp:369
 #, fuzzy, kde-format
 msgid "Classname:"
 msgstr "Карыстальнік:"
 
-#: kcmdesignerfields.cpp:372
+#: kcmdesignerfields.cpp:371
 #, fuzzy, kde-format
 msgid "Description:"
 msgstr "Апісанне:"
@@ -3395,19 +3395,19 @@ msgid ""
 "preferences."
 msgstr ""
 
-#: prefs/koprefsdialogcolorsandfonts.cpp:41
+#: prefs/koprefsdialogcolorsandfonts.cpp:43
 #, fuzzy, kde-format
 msgctxt "@title:tab"
 msgid "Colors"
 msgstr "Колеры"
 
-#: prefs/koprefsdialogcolorsandfonts.cpp:91
+#: prefs/koprefsdialogcolorsandfonts.cpp:93
 #, kde-format
 msgctxt "@title:group"
 msgid "Tags"
 msgstr ""
 
-#: prefs/koprefsdialogcolorsandfonts.cpp:105
+#: prefs/koprefsdialogcolorsandfonts.cpp:107
 #, fuzzy, kde-format
 msgctxt "@info:whatsthis"
 msgid ""
@@ -3417,20 +3417,20 @@ msgstr ""
 "Вылучыце катэгорыю для змены. Пасля вылучэння катэгорыі вы можаце вылучыць "
 "яе колер, націснуўшы кнопку ўнізе."
 
-#: prefs/koprefsdialogcolorsandfonts.cpp:113
+#: prefs/koprefsdialogcolorsandfonts.cpp:115
 #, fuzzy, kde-format
 msgctxt "@info:whatsthis"
 msgid "Choose the color of the tag selected in the adjacent combo box."
 msgstr "Вылучыце колер крыніцы вылучанага вышэй."
 
-#: prefs/koprefsdialogcolorsandfonts.cpp:121
+#: prefs/koprefsdialogcolorsandfonts.cpp:123
 #, fuzzy, kde-format
 #| msgid "Resources"
 msgctxt "@title:group"
 msgid "Resources"
 msgstr "Рэсурсы"
 
-#: prefs/koprefsdialogcolorsandfonts.cpp:132
+#: prefs/koprefsdialogcolorsandfonts.cpp:134
 #, fuzzy, kde-format
 msgctxt "@info:whatsthis"
 msgid ""
@@ -3440,22 +3440,22 @@ msgstr ""
 "Вылучыце катэгорыю для змены. Пасля вылучэння катэгорыі вы можаце вылучыць "
 "яе колер, націснуўшы кнопку ўнізе."
 
-#: prefs/koprefsdialogcolorsandfonts.cpp:140
+#: prefs/koprefsdialogcolorsandfonts.cpp:142
 #, fuzzy, kde-format
 msgctxt "@info:whatsthis"
 msgid ""
 "Choose here the color of the calendar selected using the combo box above."
 msgstr "Вылучыце колер крыніцы вылучанага вышэй."
 
-#: prefs/koprefsdialogcolorsandfonts.cpp:148
+#: prefs/koprefsdialogcolorsandfonts.cpp:150
 #, fuzzy, kde-format
 #| msgid "month(s)"
 msgctxt "@title:tab"
 msgid "Fonts"
 msgstr "Шрыфты"
 
-#: prefs/koprefsdialogcolorsandfonts.cpp:161
-#: prefs/koprefsdialogcolorsandfonts.cpp:167
+#: prefs/koprefsdialogcolorsandfonts.cpp:163
+#: prefs/koprefsdialogcolorsandfonts.cpp:169
 #, fuzzy, kde-format
 msgctxt "@label"
 msgid "Event text"
@@ -3467,40 +3467,40 @@ msgctxt "@label"
 msgid "Mail transport:"
 msgstr ""
 
-#: prefs/koprefsdialogmain.cpp:40
+#: prefs/koprefsdialogmain.cpp:42
 #, fuzzy, kde-format
 #| msgid "Personal"
 msgctxt "@title:tab personal settings"
 msgid "Personal"
 msgstr "Асабістыя"
 
-#: prefs/koprefsdialogmain.cpp:46
+#: prefs/koprefsdialogmain.cpp:48
 #, fuzzy, kde-format
 #| msgid "Meeting"
 msgctxt "@title:group email settings"
 msgid "Email Settings"
 msgstr "&Настаўленні"
 
-#: prefs/koprefsdialogmain.cpp:60 prefs/koprefsdialogtime.cpp:187
+#: prefs/koprefsdialogmain.cpp:62 prefs/koprefsdialogtime.cpp:189
 #, fuzzy, kde-format
 msgctxt "@title:group"
 msgid "Reminders"
 msgstr "&Напамін:"
 
-#: prefs/koprefsdialogmain.cpp:69
+#: prefs/koprefsdialogmain.cpp:71
 #, fuzzy, kde-format
 msgctxt "@title:tab"
 msgid "Save"
 msgstr "Запісаць"
 
-#: prefs/koprefsdialogmain.cpp:81
+#: prefs/koprefsdialogmain.cpp:83
 #, fuzzy, kde-format
 #| msgid "Calendar"
 msgctxt "@title:tab calendar account settings"
 msgid "Calendars"
 msgstr "Каляндар"
 
-#: prefs/koprefsdialogmain.cpp:85
+#: prefs/koprefsdialogmain.cpp:87
 #, fuzzy, kde-format
 #| msgid "Calendar"
 msgctxt "@title"
@@ -3547,53 +3547,53 @@ msgctxt "@info"
 msgid "Unable to configure this plugin"
 msgstr "Немагчыма настроіць гэтае дапаўненьне"
 
-#: prefs/koprefsdialogtime.cpp:40
+#: prefs/koprefsdialogtime.cpp:42
 #, fuzzy, kde-format
 #| msgid "Personal"
 msgctxt "@title:tab"
 msgid "Regional"
 msgstr "Пэрсанальныя"
 
-#: prefs/koprefsdialogtime.cpp:44
+#: prefs/koprefsdialogtime.cpp:46
 #, kde-format
 msgctxt "@title:group"
 msgid "General Time and Date"
 msgstr ""
 
-#: prefs/koprefsdialogtime.cpp:53
+#: prefs/koprefsdialogtime.cpp:55
 #, fuzzy, kde-format
 #| msgid "Holiday"
 msgctxt "@title:group"
 msgid "Holidays"
 msgstr "Свята"
 
-#: prefs/koprefsdialogtime.cpp:64
+#: prefs/koprefsdialogtime.cpp:66
 #, fuzzy, kde-format
 msgctxt "@label"
 msgid "Use holiday region:"
 msgstr "Паказваць святы:"
 
-#: prefs/koprefsdialogtime.cpp:87
+#: prefs/koprefsdialogtime.cpp:89
 #, fuzzy, kde-format
 #| msgid "%1 - %2"
 msgctxt "@item:inlistbox Holiday region, region language"
 msgid "%1 (%2)"
 msgstr "%1 (%2)"
 
-#: prefs/koprefsdialogtime.cpp:96
+#: prefs/koprefsdialogtime.cpp:98
 #, fuzzy, kde-format
 msgctxt "@item:inlistbox"
 msgid "Select Holiday Regions"
 msgstr "Паказваць святы:"
 
-#: prefs/koprefsdialogtime.cpp:108
+#: prefs/koprefsdialogtime.cpp:110
 #, fuzzy, kde-format
 #| msgid "Working Hours"
 msgctxt "@title:group"
 msgid "Working Period"
 msgstr "Працоўныя гадзіны"
 
-#: prefs/koprefsdialogtime.cpp:123
+#: prefs/koprefsdialogtime.cpp:125
 #, fuzzy, kde-format
 msgctxt "@info:whatsthis"
 msgid ""
@@ -3604,145 +3604,145 @@ msgstr ""
 "Пры ўключэнні гэтай опцыі, бягучы дзень будзе лічыцца працоўным (паказаныя "
 "працоўныя гадзіны)."
 
-#: prefs/koprefsdialogtime.cpp:138
+#: prefs/koprefsdialogtime.cpp:140
 #, kde-format
 msgctxt "@item:inlistbox"
 msgid "Monday"
 msgstr ""
 
-#: prefs/koprefsdialogtime.cpp:138
+#: prefs/koprefsdialogtime.cpp:140
 #, kde-format
 msgctxt "@item:inlistbox"
 msgid "Tuesday"
 msgstr ""
 
-#: prefs/koprefsdialogtime.cpp:138
+#: prefs/koprefsdialogtime.cpp:140
 #, kde-format
 msgctxt "@item:inlistbox"
 msgid "Wednesday"
 msgstr ""
 
-#: prefs/koprefsdialogtime.cpp:139
+#: prefs/koprefsdialogtime.cpp:141
 #, kde-format
 msgctxt "@item:inlistbox"
 msgid "Thursday"
 msgstr ""
 
-#: prefs/koprefsdialogtime.cpp:139
+#: prefs/koprefsdialogtime.cpp:141
 #, fuzzy, kde-format
 #| msgid "Holiday"
 msgctxt "@item:inlistbox"
 msgid "Friday"
 msgstr "Свята"
 
-#: prefs/koprefsdialogtime.cpp:139
+#: prefs/koprefsdialogtime.cpp:141
 #, kde-format
 msgctxt "@item:inlistbox"
 msgid "Saturday"
 msgstr ""
 
-#: prefs/koprefsdialogtime.cpp:140
+#: prefs/koprefsdialogtime.cpp:142
 #, kde-format
 msgctxt "@item:inlistbox"
 msgid "Sunday"
 msgstr ""
 
-#: prefs/koprefsdialogtime.cpp:169
+#: prefs/koprefsdialogtime.cpp:171
 #, fuzzy, kde-format
 #| msgid "Default Calendar"
 msgctxt "@title:tab"
 msgid "Default Values"
 msgstr "Каляндар па ўмаўчаньні"
 
-#: prefs/koprefsdialogtime.cpp:172
+#: prefs/koprefsdialogtime.cpp:174
 #, fuzzy, kde-format
 #| msgid "Appointment"
 msgctxt "@title:group"
 msgid "Appointments"
 msgstr "Сустрэча"
 
-#: prefs/koprefsdialogtime.cpp:192
+#: prefs/koprefsdialogtime.cpp:194
 #, fuzzy, kde-format
 msgctxt "@label"
 msgid "Default reminder time:"
 msgstr "Час сустрэчы па ўмаўчаньні"
 
-#: prefs/koprefsdialogtime.cpp:205
+#: prefs/koprefsdialogtime.cpp:207
 #, fuzzy, kde-format
 msgctxt "@item:inlistbox reminder units in minutes"
 msgid "minute(s)"
 msgstr "хвілінаў"
 
-#: prefs/koprefsdialogtime.cpp:206
+#: prefs/koprefsdialogtime.cpp:208
 #, fuzzy, kde-format
 msgctxt "@item:inlistbox reminder time units in hours"
 msgid "hour(s)"
 msgstr "гадзінаў"
 
-#: prefs/koprefsdialogtime.cpp:207
+#: prefs/koprefsdialogtime.cpp:209
 #, fuzzy, kde-format
 #| msgid "day(s)"
 msgctxt "@item:inlistbox reminder time units in days"
 msgid "day(s)"
 msgstr "дзён"
 
-#: prefs/koprefsdialogtime.cpp:217
+#: prefs/koprefsdialogtime.cpp:219
 #, kde-format
 msgid "Audio Files (*.ogg *.wav *.mp3 *.wma *.flac *.aiff *.raw *.au *.ra)"
 msgstr ""
 
-#: prefs/koprefsdialogviews.cpp:42
+#: prefs/koprefsdialogviews.cpp:44
 #, fuzzy, kde-format
 #| msgid "General"
 msgctxt "@title:tab general settings"
 msgid "General"
 msgstr "Агульныя"
 
-#: prefs/koprefsdialogviews.cpp:48 prefs/koprefsdialogviews.cpp:85
-#: prefs/koprefsdialogviews.cpp:129 prefs/koprefsdialogviews.cpp:156
+#: prefs/koprefsdialogviews.cpp:50 prefs/koprefsdialogviews.cpp:87
+#: prefs/koprefsdialogviews.cpp:131 prefs/koprefsdialogviews.cpp:158
 #, fuzzy, kde-format
 msgctxt "@title:group"
 msgid "Display Options"
 msgstr "Паказваць"
 
-#: prefs/koprefsdialogviews.cpp:54
+#: prefs/koprefsdialogviews.cpp:56
 #, fuzzy, kde-format
 #| msgid "In days"
 msgctxt "@label suffix in the N days spin box"
 msgid " days"
 msgstr " дзён"
 
-#: prefs/koprefsdialogviews.cpp:67
+#: prefs/koprefsdialogviews.cpp:69
 #, fuzzy, kde-format
 msgctxt "@title:group"
 msgid "Date Navigator"
 msgstr "Каляндар"
 
-#: prefs/koprefsdialogviews.cpp:79
+#: prefs/koprefsdialogviews.cpp:81
 #, fuzzy, kde-format
 msgctxt "@title:tab"
 msgid "Agenda View"
 msgstr "Расклад"
 
-#: prefs/koprefsdialogviews.cpp:91
+#: prefs/koprefsdialogviews.cpp:93
 #, fuzzy, kde-format
 msgctxt "@label suffix in the hour size spin box"
 msgid " pixels"
 msgstr " піксель"
 
-#: prefs/koprefsdialogviews.cpp:123
+#: prefs/koprefsdialogviews.cpp:125
 #, fuzzy, kde-format
 msgctxt "@title:tab"
 msgid "Month View"
 msgstr "Прагляд месяца"
 
-#: prefs/koprefsdialogviews.cpp:150
+#: prefs/koprefsdialogviews.cpp:152
 #, fuzzy, kde-format
 msgctxt "@title:tab"
 msgid "Todo View"
 msgstr "Задачы"
 
-#: prefs/koprefsdialogviews.cpp:163
+#: prefs/koprefsdialogviews.cpp:165
 #, fuzzy, kde-format
 msgctxt "@title:group"
 msgid "Other Options"
@@ -5070,13 +5070,13 @@ msgid "Hide to-dos not assigned to me"
 msgstr "Схаваць задачы, прызначаныя іншым"
 
 #. i18n: ectx: attribute (title), widget (QWidget, tabPublish)
-#: ui/kogroupwareprefspage.ui:36
+#: ui/kogroupwareprefspage.ui:39
 #, fuzzy, kde-format
 msgid "P&ublish"
 msgstr "Апублікаваць"
 
 #. i18n: ectx: property (text), widget (QLabel, TextLabel1)
-#: ui/kogroupwareprefspage.ui:57
+#: ui/kogroupwareprefspage.ui:60
 #, fuzzy, kde-format
 msgid ""
 "By publishing Free/Busy information, you allow others to take your calendar "
@@ -5089,7 +5089,7 @@ msgstr ""
 "расчынення, чым будзе занята гэты час."
 
 #. i18n: ectx: property (whatsThis), widget (QCheckBox, publishEnable)
-#: ui/kogroupwareprefspage.ui:69
+#: ui/kogroupwareprefspage.ui:72
 #, fuzzy, kde-format
 msgid ""
 "Check this box to upload your Free/Busy information automatically.\n"
@@ -5110,14 +5110,14 @@ msgstr ""
 "інфармацыі аб занятым часе і кіруе доступам да яе іншых карыстачоў."
 
 #. i18n: ectx: property (text), widget (QCheckBox, publishEnable)
-#: ui/kogroupwareprefspage.ui:72
+#: ui/kogroupwareprefspage.ui:75
 #, fuzzy, kde-format
 msgid "Publish your free/&busy information automatically"
 msgstr "Апублікоўваць інфармацыю аб занятым часе аўтаматычна"
 
 #. i18n: ectx: property (whatsThis), widget (QLabel, publishDelayLabel)
 #. i18n: ectx: property (whatsThis), widget (QSpinBox, publishDelay)
-#: ui/kogroupwareprefspage.ui:96 ui/kogroupwareprefspage.ui:109
+#: ui/kogroupwareprefspage.ui:99 ui/kogroupwareprefspage.ui:112
 #, fuzzy, kde-format
 msgid ""
 "Configure minimum the interval of time in minutes between each upload here. "
@@ -5128,7 +5128,7 @@ msgstr ""
 "параметр выкарыстоўваецца толькі ў выпадку аўтаматычнага апублікавання."
 
 #. i18n: ectx: property (text), widget (QLabel, publishDelayLabel)
-#: ui/kogroupwareprefspage.ui:99
+#: ui/kogroupwareprefspage.ui:102
 #, fuzzy, kde-format
 msgid "Minimum time between uploads (in minutes):"
 msgstr "Мінімальны час паміж абнаўленнямі (хвілін):"
@@ -5136,8 +5136,8 @@ msgstr "Мінімальны час паміж абнаўленнямі (хві�
 #. i18n: ectx: property (whatsThis), widget (QLabel, TextLabel3)
 #. i18n: ectx: property (whatsThis), widget (QSpinBox, publishDays)
 #. i18n: ectx: property (whatsThis), widget (QLabel, TextLabel4)
-#: ui/kogroupwareprefspage.ui:138 ui/kogroupwareprefspage.ui:151
-#: ui/kogroupwareprefspage.ui:167
+#: ui/kogroupwareprefspage.ui:141 ui/kogroupwareprefspage.ui:154
+#: ui/kogroupwareprefspage.ui:170
 #, fuzzy, kde-format
 msgid ""
 "Configure the number of calendar days you wish to be published and available "
@@ -5146,27 +5146,27 @@ msgstr ""
 "Колькасць каляндарных дзён з інфармацыяй аб занятым часе для публікацыі."
 
 #. i18n: ectx: property (text), widget (QLabel, TextLabel3)
-#: ui/kogroupwareprefspage.ui:141
+#: ui/kogroupwareprefspage.ui:144
 #, kde-format
 msgid "Publish"
 msgstr "Апублікаваць"
 
 #. i18n: ectx: property (text), widget (QLabel, TextLabel4)
-#: ui/kogroupwareprefspage.ui:170
+#: ui/kogroupwareprefspage.ui:173
 #, fuzzy, kde-format
 msgid "days of free/busy information"
 msgstr "перыяд у днях захоўвання інфармацыі аб занятым часе"
 
 #. i18n: ectx: property (title), widget (QGroupBox, ButtonGroup2)
 #. i18n: ectx: property (title), widget (QGroupBox, ButtonGroup2_2)
-#: ui/kogroupwareprefspage.ui:195 ui/kogroupwareprefspage.ui:392
+#: ui/kogroupwareprefspage.ui:198 ui/kogroupwareprefspage.ui:395
 #, kde-format
 msgid "Server Information"
 msgstr "Інфармацыя аб сэрвэры"
 
 #. i18n: ectx: property (whatsThis), widget (QLineEdit, publishUrl)
 #. i18n: ectx: property (whatsThis), widget (QLabel, TextLabel7)
-#: ui/kogroupwareprefspage.ui:223 ui/kogroupwareprefspage.ui:295
+#: ui/kogroupwareprefspage.ui:226 ui/kogroupwareprefspage.ui:298
 #, fuzzy, kde-format
 msgid ""
 "Enter the URL for the server on which your Free/Busy information shall be "
@@ -5184,14 +5184,14 @@ msgstr ""
 #. i18n: ectx: property (whatsThis), widget (QLabel, textLabel2)
 #. i18n: ectx: property (whatsThis), widget (QLineEdit, retrievePassword)
 #. i18n: ectx: property (whatsThis), widget (QLabel, textLabel4)
-#: ui/kogroupwareprefspage.ui:230 ui/kogroupwareprefspage.ui:240
-#: ui/kogroupwareprefspage.ui:413 ui/kogroupwareprefspage.ui:486
+#: ui/kogroupwareprefspage.ui:233 ui/kogroupwareprefspage.ui:243
+#: ui/kogroupwareprefspage.ui:416 ui/kogroupwareprefspage.ui:489
 #, fuzzy, kde-format
 msgid "Enter your groupware server login password here."
 msgstr "Увядзіце пароль для доступу да сервера сумеснай працы."
 
 #. i18n: ectx: property (text), widget (QLabel, textLabel2)
-#: ui/kogroupwareprefspage.ui:243
+#: ui/kogroupwareprefspage.ui:246
 #, kde-format
 msgid "Password:"
 msgstr "Пароль:"
@@ -5200,8 +5200,8 @@ msgstr "Пароль:"
 #. i18n: ectx: property (whatsThis), widget (QLineEdit, publishUser)
 #. i18n: ectx: property (whatsThis), widget (QLineEdit, retrieveUser)
 #. i18n: ectx: property (whatsThis), widget (QLabel, textLabel3)
-#: ui/kogroupwareprefspage.ui:255 ui/kogroupwareprefspage.ui:276
-#: ui/kogroupwareprefspage.ui:425 ui/kogroupwareprefspage.ui:473
+#: ui/kogroupwareprefspage.ui:258 ui/kogroupwareprefspage.ui:279
+#: ui/kogroupwareprefspage.ui:428 ui/kogroupwareprefspage.ui:476
 #, fuzzy, kde-format
 msgid ""
 "Enter the login information relative to your account on the server here.\n"
@@ -5219,7 +5219,7 @@ msgstr ""
 "выкарыстоўваецца ваш адрас электроннай пошты, аднак UID можа быць і іншым."
 
 #. i18n: ectx: property (text), widget (QLabel, TextLabel6)
-#: ui/kogroupwareprefspage.ui:258
+#: ui/kogroupwareprefspage.ui:261
 #, fuzzy, kde-format
 msgctxt "login name on the Kolab server"
 msgid "Username:"
@@ -5227,7 +5227,7 @@ msgstr "Карыстальнік:"
 
 #. i18n: ectx: property (whatsThis), widget (QCheckBox, publishSavePassword)
 #. i18n: ectx: property (whatsThis), widget (QCheckBox, retrieveSavePassword)
-#: ui/kogroupwareprefspage.ui:284 ui/kogroupwareprefspage.ui:506
+#: ui/kogroupwareprefspage.ui:287 ui/kogroupwareprefspage.ui:509
 #, fuzzy, kde-format
 msgid ""
 "Check this box to make KOrganizer remember your password and skip asking you "
@@ -5244,32 +5244,32 @@ msgstr ""
 "праграмы."
 
 #. i18n: ectx: property (text), widget (QCheckBox, publishSavePassword)
-#: ui/kogroupwareprefspage.ui:287
+#: ui/kogroupwareprefspage.ui:290
 #, fuzzy, kde-format
 msgid "Remember p&assword"
 msgstr "Запомніць пароль"
 
 #. i18n: ectx: property (text), widget (QLabel, TextLabel7)
 #. i18n: ectx: property (text), widget (QLabel, TextLabel7_2)
-#: ui/kogroupwareprefspage.ui:298 ui/kogroupwareprefspage.ui:461
+#: ui/kogroupwareprefspage.ui:301 ui/kogroupwareprefspage.ui:464
 #, kde-format
 msgid "Server URL:"
 msgstr "URL сэрвэра:"
 
 #. i18n: ectx: property (text), widget (QLabel, label)
-#: ui/kogroupwareprefspage.ui:308
+#: ui/kogroupwareprefspage.ui:311
 #, kde-format
 msgid "(No need if using Kolab server version 2)"
 msgstr ""
 
 #. i18n: ectx: attribute (title), widget (QWidget, tabRetrieve)
-#: ui/kogroupwareprefspage.ui:335
+#: ui/kogroupwareprefspage.ui:338
 #, fuzzy, kde-format
 msgid "&Retrieve"
 msgstr "Атрымаць"
 
 #. i18n: ectx: property (text), widget (QLabel, TextLabel2)
-#: ui/kogroupwareprefspage.ui:356
+#: ui/kogroupwareprefspage.ui:359
 #, fuzzy, kde-format
 msgid ""
 "By retrieving Free/Busy information that others have published, you can take "
@@ -5279,7 +5279,7 @@ msgstr ""
 "можаце ўзгадніць з імі час сустрэчы."
 
 #. i18n: ectx: property (whatsThis), widget (QCheckBox, retrieveEnable)
-#: ui/kogroupwareprefspage.ui:366
+#: ui/kogroupwareprefspage.ui:369
 #, fuzzy, kde-format
 msgid ""
 "Check this box to retrieve other people's Free/Busy information "
@@ -5291,13 +5291,13 @@ msgstr ""
 "гэтай аперацыі."
 
 #. i18n: ectx: property (text), widget (QCheckBox, retrieveEnable)
-#: ui/kogroupwareprefspage.ui:369
+#: ui/kogroupwareprefspage.ui:372
 #, fuzzy, kde-format
 msgid "Retrieve other people's free/&busy information automatically"
 msgstr "Атрымаць інфармацыю аб занятым часе іншых людзей аўтаматычна"
 
 #. i18n: ectx: property (toolTip), widget (QCheckBox, fullDomainRetrieval)
-#: ui/kogroupwareprefspage.ui:379
+#: ui/kogroupwareprefspage.ui:382
 #, fuzzy, kde-format
 msgid ""
 "Set this to retrieve user@domain.ifb instead of user.ifb from the server"
@@ -5306,7 +5306,7 @@ msgstr ""
 "дадзеных з сервера"
 
 #. i18n: ectx: property (whatsThis), widget (QCheckBox, fullDomainRetrieval)
-#: ui/kogroupwareprefspage.ui:382
+#: ui/kogroupwareprefspage.ui:385
 #, fuzzy, kde-format
 msgid ""
 "Check this box to download a free/busy file in the format \"user@domain.ifb"
@@ -5320,14 +5320,14 @@ msgstr ""
 "адміністратара калі не ўпэўненыя ў гэтым параметры."
 
 #. i18n: ectx: property (text), widget (QCheckBox, fullDomainRetrieval)
-#: ui/kogroupwareprefspage.ui:385
+#: ui/kogroupwareprefspage.ui:388
 #, fuzzy, kde-format
 msgid "Use full email &address for retrieval"
 msgstr "Выкарыстаць поўны адрас электроннай пошты для атрымання дадзеных"
 
 #. i18n: ectx: property (whatsThis), widget (QLineEdit, retrieveUrl)
 #. i18n: ectx: property (whatsThis), widget (QLabel, TextLabel7_2)
-#: ui/kogroupwareprefspage.ui:443 ui/kogroupwareprefspage.ui:458
+#: ui/kogroupwareprefspage.ui:446 ui/kogroupwareprefspage.ui:461
 #, fuzzy, kde-format
 msgctxt "@info:whatsthis"
 msgid ""
@@ -5349,19 +5349,19 @@ msgstr ""
 "Прыклад адрасу для сервера Kolab2: \"webdavs://kolab2.com/freebusy/\""
 
 #. i18n: ectx: property (text), widget (QLabel, textLabel3)
-#: ui/kogroupwareprefspage.ui:476
+#: ui/kogroupwareprefspage.ui:479
 #, fuzzy, kde-format
 msgid "User&name:"
 msgstr "&Карыстальнік:"
 
 #. i18n: ectx: property (text), widget (QLabel, textLabel4)
-#: ui/kogroupwareprefspage.ui:489
+#: ui/kogroupwareprefspage.ui:492
 #, fuzzy, kde-format
 msgid "Passwor&d:"
 msgstr "Пароль:"
 
 #. i18n: ectx: property (text), widget (QCheckBox, retrieveSavePassword)
-#: ui/kogroupwareprefspage.ui:509
+#: ui/kogroupwareprefspage.ui:512
 #, fuzzy, kde-format
 msgid "Re&member password"
 msgstr "Запомніць пароль"
