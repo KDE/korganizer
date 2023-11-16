@@ -12,7 +12,6 @@
 
 KItemIconCheckCombo::KItemIconCheckCombo(ViewType viewType, QWidget *parent)
     : KPIM::KCheckComboBox(parent)
-    , mViewType(viewType)
 {
     addItem(i18n("Calendar's custom icon"));
     addItem(QIcon::fromTheme(QStringLiteral("view-calendar-tasks")), i18n("To-do"));

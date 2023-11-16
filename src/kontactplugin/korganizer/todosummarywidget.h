@@ -60,7 +60,6 @@ private:
     TodoPlugin *mPlugin = nullptr;
     QGridLayout *mLayout = nullptr;
 
-    bool mDaysToGo = false;
     bool mHideInProgress = false;
     bool mHideOverdue = false;
     bool mHideCompleted = false;

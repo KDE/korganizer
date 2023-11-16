@@ -23,7 +23,4 @@ public:
 
     void setCheckedIcons(const QSet<EventViews::EventView::ItemIcon> &icons);
     [[nodiscard]] QSet<EventViews::EventView::ItemIcon> checkedIcons() const;
-
-private:
-    const KItemIconCheckCombo::ViewType mViewType;
 };
