@@ -25,7 +25,7 @@ msgstr ""
 "Project-Id-Version: korganizer\n"
 "Report-Msgid-Bugs-To: https://bugs.kde.org\n"
 "POT-Creation-Date: 2023-11-15 01:39+0000\n"
-"PO-Revision-Date: 2023-10-26 18:40+0200\n"
+"PO-Revision-Date: 2023-11-14 17:24+0100\n"
 "Last-Translator: Xavier BESNARD <xavier.besnard@neuf.fr>\n"
 "Language-Team: fr\n"
 "Language: fr\n"
@@ -33,7 +33,7 @@ msgstr ""
 "Content-Type: text/plain; charset=UTF-8\n"
 "Content-Transfer-Encoding: 8bit\n"
 "Plural-Forms: nplurals=2; plural=(n > 1);\n"
-"X-Generator: Lokalize 23.08.1\n"
+"X-Generator: Lokalize 23.08.3\n"
 "X-Environment: kde\n"
 "X-Accelerator-Marker: &\n"
 "X-Text-Markup: kde4\n"
@@ -5875,10 +5875,11 @@ msgstr "Plage de date"
 
 #. i18n: ectx: property (toolTip), widget (QCheckBox, dateRangeCheckbox)
 #: ui/searchdialog_base.ui:204
-#, fuzzy, kde-format
-#| msgid "Include all to-dos &within the specified date range"
+#, kde-format
 msgid "When checked, the search will be limited to the specified date range."
-msgstr "Inclure toutes les tâches à &faire dans la période de date indiquée."
+msgstr ""
+"Lorsque cette case est cochée, la recherche sera limitée à la plage "
+"spécifiée de dates."
 
 #. i18n: ectx: property (whatsThis), widget (QCheckBox, dateRangeCheckbox)
 #: ui/searchdialog_base.ui:207
@@ -5887,12 +5888,15 @@ msgid ""
 "Check this box to search for events within a specified date range. If the "
 "box is unchecked, all events will be searched."
 msgstr ""
+"Veuillez cocher cette case pour rechercher des évènements dans une plage "
+"spécifiée de dates. Si la case n’est pas cochée, tous les événements seront "
+"recherchés."
 
 #. i18n: ectx: property (text), widget (QCheckBox, dateRangeCheckbox)
 #: ui/searchdialog_base.ui:210
 #, kde-format
 msgid "Limit search to specified date range"
-msgstr ""
+msgstr "Limiter la recherche à une plage spécifiée de dates."
 
 #. i18n: ectx: property (text), widget (QLabel, startDateLabel)
 #: ui/searchdialog_base.ui:222

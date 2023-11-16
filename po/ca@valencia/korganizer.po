@@ -1699,7 +1699,7 @@ msgstr "No s'ha pogut copiar l'element a %1."
 #: calendarview.cpp:2474
 #, kde-format
 msgid "Unable to move the item to  %1."
-msgstr "No s'ha pogut moure l'element a %1."
+msgstr "No s'ha pogut moure l'element cap a %1."
 
 #: calendarview.cpp:2684
 #, kde-format
