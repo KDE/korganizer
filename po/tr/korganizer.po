@@ -20,7 +20,7 @@ msgid ""
 msgstr ""
 "Project-Id-Version: kdepim-kde4\n"
 "Report-Msgid-Bugs-To: https://bugs.kde.org\n"
-"POT-Creation-Date: 2023-11-15 01:39+0000\n"
+"POT-Creation-Date: 2023-11-17 01:38+0000\n"
 "PO-Revision-Date: 2023-11-13 05:16+0300\n"
 "Last-Translator: Emir SARI <emir_sari@icloud.com>\n"
 "Language-Team: Turkish <kde-l10n-tr@kde.org>\n"
@@ -5918,57 +5918,57 @@ msgstr "%1"
 msgid "A column header of the %1 dates in the month."
 msgstr "Ay içindeki %1 tarihe ait sütun başlığı."
 
-#: widgets/kitemiconcheckcombo.cpp:17
+#: widgets/kitemiconcheckcombo.cpp:16
 #, kde-format
 msgid "Calendar's custom icon"
 msgstr "Takvimin özel simgesi"
 
-#: widgets/kitemiconcheckcombo.cpp:18
+#: widgets/kitemiconcheckcombo.cpp:17
 #, kde-format
 msgid "To-do"
 msgstr "Yapılacaklar"
 
-#: widgets/kitemiconcheckcombo.cpp:19
+#: widgets/kitemiconcheckcombo.cpp:18
 #, kde-format
 msgid "Journal"
 msgstr "Günce"
 
-#: widgets/kitemiconcheckcombo.cpp:20
+#: widgets/kitemiconcheckcombo.cpp:19
 #, kde-format
 msgid "Recurring"
 msgstr "Yinelenen"
 
-#: widgets/kitemiconcheckcombo.cpp:21
+#: widgets/kitemiconcheckcombo.cpp:20
 #, kde-format
 msgid "Alarm"
 msgstr "Alarm"
 
-#: widgets/kitemiconcheckcombo.cpp:22
+#: widgets/kitemiconcheckcombo.cpp:21
 #, kde-format
 msgid "Read Only"
 msgstr "Saltokunur"
 
-#: widgets/kitemiconcheckcombo.cpp:23
+#: widgets/kitemiconcheckcombo.cpp:22
 #, kde-format
 msgid "Needs Reply"
 msgstr "Yanıt Gerekiyor"
 
-#: widgets/kitemiconcheckcombo.cpp:24
+#: widgets/kitemiconcheckcombo.cpp:23
 #, kde-format
 msgid "Attending"
 msgstr "Katılıyor"
 
-#: widgets/kitemiconcheckcombo.cpp:25
+#: widgets/kitemiconcheckcombo.cpp:24
 #, kde-format
 msgid "Maybe Attending"
 msgstr "Belki Katılacak"
 
-#: widgets/kitemiconcheckcombo.cpp:26
+#: widgets/kitemiconcheckcombo.cpp:25
 #, kde-format
 msgid "Organizer"
 msgstr "Düzenleyici"
 
-#: widgets/kitemiconcheckcombo.cpp:35
+#: widgets/kitemiconcheckcombo.cpp:34
 #, kde-format
 msgctxt "@item:inlistbox"
 msgid "Icons to use"

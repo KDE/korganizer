@@ -17,8 +17,8 @@ msgid ""
 msgstr ""
 "Project-Id-Version: korganizer\n"
 "Report-Msgid-Bugs-To: https://bugs.kde.org\n"
-"POT-Creation-Date: 2023-11-15 01:39+0000\n"
-"PO-Revision-Date: 2023-11-10 08:57+0200\n"
+"POT-Creation-Date: 2023-11-17 01:38+0000\n"
+"PO-Revision-Date: 2023-11-16 13:23+0200\n"
 "Last-Translator: Yaron Shahrabani <sh.yaron@gmail.com>\n"
 "Language-Team: צוות התרגום של KDE ישראל\n"
 "Language: he\n"
@@ -61,6 +61,11 @@ msgid ""
 "Copyright © 2006–2012 Allen Winter\n"
 "Copyright © 2012–2022 KOrganizer authors"
 msgstr ""
+"כל הזכויות שמורות © 1997–1999 פרסטון בראון\n"
+"כל הזכויות שמורות © 2000–2004, 2007 קורנליוס שומאכר\n"
+"כל הזכויות שמורות © 2004–2005 ריינהולג קיינהופר\n"
+"כל הזכויות שמורות © 2006–2012 אלן וינטר\n"
+"כל הזכויות שמורות © 2012–2022 יוצרי KOrganizer"
 
 #: aboutdata.cpp:30 kontactplugin/specialdates/specialdates_plugin.cpp:42
 #, kde-format
@@ -155,7 +160,7 @@ msgstr "בשבועות"
 #: aboutdata.cpp:44
 #, kde-format
 msgid "Thomas Eitzenberger"
-msgstr ""
+msgstr "תומס אייצנברג"
 
 #: aboutdata.cpp:45
 #, kde-format
@@ -230,7 +235,7 @@ msgstr ""
 #: aboutdata.cpp:58
 #, kde-format
 msgid "Part of work sponsored by Google with Summer of Code 2005"
-msgstr ""
+msgstr "חלק מהעבודה מומן על ידי Google דרך Summer of Code 2005"
 
 #: aboutdata.cpp:59
 #, fuzzy, kde-format
@@ -5663,57 +5668,57 @@ msgstr "%1"
 msgid "A column header of the %1 dates in the month."
 msgstr ""
 
-#: widgets/kitemiconcheckcombo.cpp:17
+#: widgets/kitemiconcheckcombo.cpp:16
 #, fuzzy, kde-format
 msgid "Calendar's custom icon"
 msgstr "לוח־שנה"
 
-#: widgets/kitemiconcheckcombo.cpp:18
+#: widgets/kitemiconcheckcombo.cpp:17
 #, fuzzy, kde-format
 msgid "To-do"
 msgstr "מטלה:"
 
-#: widgets/kitemiconcheckcombo.cpp:19
+#: widgets/kitemiconcheckcombo.cpp:18
 #, fuzzy, kde-format
 msgid "Journal"
 msgstr "י&ומן"
 
-#: widgets/kitemiconcheckcombo.cpp:20
+#: widgets/kitemiconcheckcombo.cpp:19
 #, fuzzy, kde-format
 msgid "Recurring"
 msgstr "חזרה"
 
-#: widgets/kitemiconcheckcombo.cpp:21
+#: widgets/kitemiconcheckcombo.cpp:20
 #, fuzzy, kde-format
 msgid "Alarm"
 msgstr "תזכורת"
 
-#: widgets/kitemiconcheckcombo.cpp:22
+#: widgets/kitemiconcheckcombo.cpp:21
 #, kde-format
 msgid "Read Only"
 msgstr "קריאה בלבד"
 
-#: widgets/kitemiconcheckcombo.cpp:23
+#: widgets/kitemiconcheckcombo.cpp:22
 #, kde-format
 msgid "Needs Reply"
 msgstr ""
 
-#: widgets/kitemiconcheckcombo.cpp:24
+#: widgets/kitemiconcheckcombo.cpp:23
 #, kde-format
 msgid "Attending"
 msgstr "משתתף"
 
-#: widgets/kitemiconcheckcombo.cpp:25
+#: widgets/kitemiconcheckcombo.cpp:24
 #, kde-format
 msgid "Maybe Attending"
 msgstr ""
 
-#: widgets/kitemiconcheckcombo.cpp:26
+#: widgets/kitemiconcheckcombo.cpp:25
 #, kde-format
 msgid "Organizer"
 msgstr "מארגן"
 
-#: widgets/kitemiconcheckcombo.cpp:35
+#: widgets/kitemiconcheckcombo.cpp:34
 #, kde-format
 msgctxt "@item:inlistbox"
 msgid "Icons to use"
