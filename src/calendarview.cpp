@@ -185,7 +185,7 @@ CalendarView::CalendarView(QWidget *parent)
     // Signals emitted by mDateNavigator
     connect(mDateNavigator, &DateNavigator::datesSelected, this, &CalendarView::showDates);
 
-    connect(mDateNavigatorContainer, &DateNavigatorContainer::newEventSignal, this, [=](const QDate &s, const QDate &t) {
+    connect(mDateNavigatorContainer, &DateNavigatorContainer::newEventSignal, this, [this](const QDate &s, const QDate &t) {
         newEvent(QDateTime(s, QTime::currentTime()), QDateTime(t, QTime::currentTime()));
     });
 
@@ -195,10 +195,10 @@ CalendarView::CalendarView(QWidget *parent)
     // Signals emitted by mNavigatorBar
     connect(mNavigatorBar, &NavigatorBar::prevYearClicked, mDateNavigator, &DateNavigator::selectPreviousYear);
     connect(mNavigatorBar, &NavigatorBar::nextYearClicked, mDateNavigator, &DateNavigator::selectNextYear);
-    connect(mNavigatorBar, &NavigatorBar::prevMonthClicked, this, [=]() {
+    connect(mNavigatorBar, &NavigatorBar::prevMonthClicked, this, [this]() {
         mDateNavigator->selectPreviousMonth();
     });
-    connect(mNavigatorBar, &NavigatorBar::nextMonthClicked, this, [=]() {
+    connect(mNavigatorBar, &NavigatorBar::nextMonthClicked, this, [this]() {
         mDateNavigator->selectNextMonth();
     });
     connect(mNavigatorBar, &NavigatorBar::monthSelected, mDateNavigator, &DateNavigator::selectMonth);

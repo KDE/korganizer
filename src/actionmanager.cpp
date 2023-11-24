@@ -341,10 +341,10 @@ void ActionManager::initActions()
         mCutAction = mACollection->addAction(KStandardAction::Cut, QStringLiteral("korganizer_cut"), mCalendarView, &CalendarView::edit_cut);
         mCopyAction = mACollection->addAction(KStandardAction::Copy, QStringLiteral("korganizer_copy"), mCalendarView, &CalendarView::edit_copy);
         pasteAction = mACollection->addAction(KStandardAction::Paste, QStringLiteral("korganizer_paste"), mCalendarView, &CalendarView::edit_paste);
-        mUndoAction = mACollection->addAction(KStandardAction::Undo, QStringLiteral("korganizer_undo"), this, [=]() {
+        mUndoAction = mACollection->addAction(KStandardAction::Undo, QStringLiteral("korganizer_undo"), this, [history]() {
             history->undo();
         });
-        mRedoAction = mACollection->addAction(KStandardAction::Redo, QStringLiteral("korganizer_redo"), this, [=]() {
+        mRedoAction = mACollection->addAction(KStandardAction::Redo, QStringLiteral("korganizer_redo"), this, [history]() {
             history->redo();
         });
     } else {
@@ -353,13 +353,13 @@ void ActionManager::initActions()
         pasteAction = KStandardAction::paste(mCalendarView, &CalendarView::edit_paste, mACollection);
         mUndoAction = KStandardAction::undo(
             this,
-            [=]() {
+            [history]() {
                 history->undo();
             },
             mACollection);
         mRedoAction = KStandardAction::redo(
             this,
-            [=]() {
+            [history]() {
                 history->redo();
             },
             mACollection);
@@ -638,14 +638,14 @@ void ActionManager::initActions()
     /************************** SCHEDULE MENU ********************************/
     mPublishEvent = new QAction(QIcon::fromTheme(QStringLiteral("mail-send")), i18n("&Publish Item Information..."), this);
     mACollection->addAction(QStringLiteral("schedule_publish"), mPublishEvent);
-    connect(mPublishEvent, &QAction::triggered, this, [=](bool) {
+    connect(mPublishEvent, &QAction::triggered, this, [this](bool) {
         mCalendarView->schedule_publish();
     });
     mPublishEvent->setEnabled(false);
 
     mSendInvitation = new QAction(QIcon::fromTheme(QStringLiteral("mail-send")), i18n("Send &Invitation to Attendees"), this);
     mACollection->addAction(QStringLiteral("schedule_request"), mSendInvitation);
-    connect(mSendInvitation, &QAction::triggered, this, [=](bool) {
+    connect(mSendInvitation, &QAction::triggered, this, [this](bool) {
         mCalendarView->schedule_request();
     });
     mSendInvitation->setEnabled(false);
@@ -653,7 +653,7 @@ void ActionManager::initActions()
 
     mRequestUpdate = new QAction(i18n("Re&quest Update"), this);
     mACollection->addAction(QStringLiteral("schedule_refresh"), mRequestUpdate);
-    connect(mRequestUpdate, &QAction::triggered, this, [=](bool) {
+    connect(mRequestUpdate, &QAction::triggered, this, [this](bool) {
         mCalendarView->schedule_refresh();
     });
     mRequestUpdate->setEnabled(false);
@@ -661,7 +661,7 @@ void ActionManager::initActions()
 
     mSendCancel = new QAction(i18n("Send &Cancellation to Attendees"), this);
     mACollection->addAction(QStringLiteral("schedule_cancel"), mSendCancel);
-    connect(mSendCancel, &QAction::triggered, this, [=](bool) {
+    connect(mSendCancel, &QAction::triggered, this, [this](bool) {
         mCalendarView->schedule_cancel();
     });
     mSendCancel->setEnabled(false);
@@ -669,7 +669,7 @@ void ActionManager::initActions()
 
     mSendStatusUpdate = new QAction(QIcon::fromTheme(QStringLiteral("mail-reply-sender")), i18n("Send Status &Update"), this);
     mACollection->addAction(QStringLiteral("schedule_reply"), mSendStatusUpdate);
-    connect(mSendStatusUpdate, &QAction::triggered, this, [=](bool) {
+    connect(mSendStatusUpdate, &QAction::triggered, this, [this](bool) {
         mCalendarView->schedule_reply();
     });
     mSendStatusUpdate->setEnabled(false);
@@ -677,7 +677,7 @@ void ActionManager::initActions()
 
     mRequestChange = new QAction(i18nc("counter proposal", "Request Chan&ge"), this);
     mACollection->addAction(QStringLiteral("schedule_counter"), mRequestChange);
-    connect(mRequestChange, &QAction::triggered, this, [=](bool) {
+    connect(mRequestChange, &QAction::triggered, this, [this](bool) {
         mCalendarView->schedule_counter();
     });
     mRequestChange->setEnabled(false);
@@ -690,7 +690,7 @@ void ActionManager::initActions()
 
     mForwardEvent = new QAction(QIcon::fromTheme(QStringLiteral("mail-forward")), i18n("&Send as iCalendar..."), this);
     mACollection->addAction(QStringLiteral("schedule_forward"), mForwardEvent);
-    connect(mForwardEvent, &QAction::triggered, this, [=](bool) {
+    connect(mForwardEvent, &QAction::triggered, this, [this](bool) {
         mCalendarView->schedule_forward();
     });
     mForwardEvent->setEnabled(false);

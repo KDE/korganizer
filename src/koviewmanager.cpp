@@ -256,10 +256,10 @@ void KOViewManager::connectView(KOrg::BaseView *view)
 
     // showing/editing/deleting an incidence. The calendar view takes care of the action.
     connect(view, &BaseView::showIncidenceSignal, mMainView, qOverload<const Akonadi::Item &>(&CalendarView::showIncidence));
-    connect(view, &BaseView::editIncidenceSignal, this, [=](const Akonadi::Item &i) {
+    connect(view, &BaseView::editIncidenceSignal, this, [this](const Akonadi::Item &i) {
         mMainView->editIncidence(i, false);
     });
-    connect(view, &BaseView::deleteIncidenceSignal, this, [=](const Akonadi::Item &i) {
+    connect(view, &BaseView::deleteIncidenceSignal, this, [this](const Akonadi::Item &i) {
         mMainView->deleteIncidence(i, false);
     });
     connect(view, &BaseView::copyIncidenceSignal, mMainView, &CalendarView::copyIncidence);
@@ -275,7 +275,7 @@ void KOViewManager::connectView(KOrg::BaseView *view)
     // signals to create new incidences
     connect(view, qOverload<>(&BaseView::newEventSignal), mMainView, qOverload<>(&CalendarView::newEvent));
     connect(view, qOverload<const QDateTime &>(&BaseView::newEventSignal), mMainView, qOverload<const QDateTime &>(&CalendarView::newEvent));
-    connect(view, qOverload<const QDateTime &, const QDateTime &>(&BaseView::newEventSignal), this, [=](const QDateTime &s, const QDateTime &e) {
+    connect(view, qOverload<const QDateTime &, const QDateTime &>(&BaseView::newEventSignal), this, [this](const QDateTime &s, const QDateTime &e) {
         mMainView->newEvent(s, e, false);
     });
     connect(view, qOverload<const QDate &>(&BaseView::newEventSignal), mMainView, qOverload<const QDate &>(&CalendarView::newEvent));
@@ -417,7 +417,7 @@ void KOViewManager::showAgendaView()
 
             addView(mAgendaView, showBoth);
 
-            connect(mAgendaView, &KOAgendaView::zoomViewHorizontally, this, [=](const QDate &d, int n) {
+            connect(mAgendaView, &KOAgendaView::zoomViewHorizontally, this, [this](const QDate &d, int n) {
                 mMainView->dateNavigator()->selectDates(d, n, QDate());
             });
             auto config = KSharedConfig::openConfig();
