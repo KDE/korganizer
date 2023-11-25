@@ -60,7 +60,7 @@ KDateNavigator::KDateNavigator(QWidget *parent)
     }
 
     mDayMatrix = new KODayMatrix(this);
-    mDayMatrix->setObjectName(QStringLiteral("KDateNavigator::dayMatrix"));
+    mDayMatrix->setObjectName(QLatin1StringView("KDateNavigator::dayMatrix"));
 
     connect(mDayMatrix, &KODayMatrix::selected, this, &KDateNavigator::datesSelected);
 

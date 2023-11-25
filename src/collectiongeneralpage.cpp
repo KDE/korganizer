@@ -33,7 +33,7 @@ using namespace CalendarSupport;
 CollectionGeneralPage::CollectionGeneralPage(QWidget *parent)
     : CollectionPropertiesPage(parent)
 {
-    setObjectName(QStringLiteral("CalendarSupport::CollectionGeneralPage"));
+    setObjectName(QLatin1StringView("CalendarSupport::CollectionGeneralPage"));
     setPageTitle(i18nc("@title:tab General settings for a folder.", "General"));
 }
 

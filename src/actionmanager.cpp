@@ -194,7 +194,7 @@ void ActionManager::createCalendarAkonadi()
     AkonadiCollectionViewFactory factory(mCalendarView);
     mCalendarView->addExtension(&factory);
     mCollectionView = factory.collectionView();
-    mCollectionView->setObjectName(QStringLiteral("Resource View"));
+    mCollectionView->setObjectName(QLatin1StringView("Resource View"));
     connect(mCollectionView, &AkonadiCollectionView::resourcesAddedRemoved, this, &ActionManager::slotResourcesAddedRemoved);
 
     connect(mCollectionView, &AkonadiCollectionView::defaultResourceChanged, this, &ActionManager::slotDefaultResourceChanged);

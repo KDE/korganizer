@@ -53,7 +53,7 @@ KOrganizer::KOrganizer()
     KOCore::self()->addXMLGUIClient(this, this);
     //  setMinimumSize(600,400);  // make sure we don't get resized too small...
 
-    mCalendarView->setObjectName(QStringLiteral("KOrganizer::CalendarView"));
+    mCalendarView->setObjectName(QLatin1StringView("KOrganizer::CalendarView"));
     setCentralWidget(mCalendarView);
 
     mActionManager = new ActionManager(this, mCalendarView, this, this, false, menuBar(), toolBar());

@@ -412,7 +412,7 @@ AkonadiCollectionView::AkonadiCollectionView(CalendarView *view, bool hasContext
     topLayout->addWidget(searchCol);
 
     auto colorProxy = new ColorProxyModel(this);
-    colorProxy->setObjectName(QStringLiteral("Show calendar colors"));
+    colorProxy->setObjectName(QLatin1StringView("Show calendar colors"));
     colorProxy->setDynamicSortFilter(true);
     mBaseModel = colorProxy;
 
@@ -426,7 +426,7 @@ AkonadiCollectionView::AkonadiCollectionView(CalendarView *view, bool hasContext
     // Filter tree view.
     auto searchProxy = new ReparentingModel(this);
     searchProxy->setSourceModel(collectionFilter);
-    searchProxy->setObjectName(QStringLiteral("searchProxy"));
+    searchProxy->setObjectName(QLatin1StringView("searchProxy"));
 
     auto filterTreeViewModel = new QSortFilterProxyModel(this);
     filterTreeViewModel->setFilterCaseSensitivity(Qt::CaseInsensitive);

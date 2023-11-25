@@ -23,7 +23,7 @@ KOPrefsDialogGroupwareScheduling::KOPrefsDialogGroupwareScheduling(QObject *pare
     , mGroupwarePage(new Ui::KOGroupwarePrefsPage())
 {
     auto widget = new QWidget(this->widget());
-    widget->setObjectName(QStringLiteral("KOGrouparePrefsPage"));
+    widget->setObjectName(QLatin1StringView("KOGrouparePrefsPage"));
 
     mGroupwarePage->setupUi(widget);
 

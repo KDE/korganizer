@@ -103,7 +103,7 @@ CalendarView::CalendarView(QWidget *parent)
     // calendars in korganizer shouldn't affect kontact's summary view
     mCalendar = Akonadi::ETMCalendar::Ptr(new Akonadi::ETMCalendar(CalendarSupport::calendarSingleton().data()));
 
-    mCalendar->setObjectName(QStringLiteral("KOrg Calendar"));
+    mCalendar->setObjectName(QLatin1StringView("KOrg Calendar"));
     mCalendarClipboard = new Akonadi::CalendarClipboard(mCalendar, mChanger, this);
     mITIPHandler = new Akonadi::ITIPHandler(this);
     mITIPHandler->setCalendar(mCalendar);
@@ -134,21 +134,21 @@ CalendarView::CalendarView(QWidget *parent)
 
     // create the main layout frames.
     mPanner = new QSplitter(Qt::Horizontal, this);
-    mPanner->setObjectName(QStringLiteral("CalendarView::Panner"));
+    mPanner->setObjectName(QLatin1StringView("CalendarView::Panner"));
     topLayout->addWidget(mPanner);
 
     mLeftSplitter = new QSplitter(Qt::Vertical, mPanner);
-    mLeftSplitter->setObjectName(QStringLiteral("CalendarView::LeftFrame"));
+    mLeftSplitter->setObjectName(QLatin1StringView("CalendarView::LeftFrame"));
     // The GUI checkboxes of "show widget XYZ" are confusing when the QSplitter
     // hides the widget magically. I know I blamed Akonadi for not showing my
     // calendar more than once.
     mLeftSplitter->setChildrenCollapsible(false);
 
     mDateNavigatorContainer = new DateNavigatorContainer(mLeftSplitter);
-    mDateNavigatorContainer->setObjectName(QStringLiteral("CalendarView::DateNavigator"));
+    mDateNavigatorContainer->setObjectName(QLatin1StringView("CalendarView::DateNavigator"));
 
     mTodoList = new KOTodoView(true /*sidebar*/, mLeftSplitter);
-    mTodoList->setObjectName(QStringLiteral("todolist"));
+    mTodoList->setObjectName(QLatin1StringView("todolist"));
     connect(this, &CalendarView::calendarAdded, mTodoList, &KOTodoView::calendarAdded);
     connect(this, &CalendarView::calendarRemoved, mTodoList, &KOTodoView::calendarRemoved);
 
@@ -157,7 +157,7 @@ CalendarView::CalendarView(QWidget *parent)
     mEventViewerBoxVBoxLayout->setContentsMargins({});
     mEventViewerBoxVBoxLayout->setContentsMargins({});
     mEventViewer = new CalendarSupport::IncidenceViewer(mCalendar->entityTreeModel(), mEventViewerBox);
-    mEventViewer->setObjectName(QStringLiteral("EventViewer"));
+    mEventViewer->setObjectName(QLatin1StringView("EventViewer"));
     mEventViewerBoxVBoxLayout->addWidget(mEventViewer);
 
     auto rightBox = new QWidget(mPanner);
