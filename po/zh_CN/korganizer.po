@@ -3,7 +3,7 @@ msgstr ""
 "Project-Id-Version: kdeorg\n"
 "Report-Msgid-Bugs-To: https://bugs.kde.org\n"
 "POT-Creation-Date: 2023-11-17 01:38+0000\n"
-"PO-Revision-Date: 2023-11-19 03:37\n"
+"PO-Revision-Date: 2023-11-25 02:26\n"
 "Last-Translator: \n"
 "Language-Team: Chinese Simplified\n"
 "Language: zh_CN\n"
@@ -25,7 +25,7 @@ msgstr "KDE 中国,Guo Yunhe,Tyson Tan"
 #, kde-format
 msgctxt "EMAIL OF TRANSLATORS"
 msgid "Your emails"
-msgstr "kde-china@kde.org,i@guoyunhe.me,tysontan@tysontan.com"
+msgstr "kde-china@kde.org, i@guoyunhe.me, tds00@qq.com"
 
 #: aboutdata.cpp:18 kontactplugin/korganizer/journalplugin.cpp:26
 #: kontactplugin/korganizer/korganizerplugin.cpp:42
@@ -654,13 +654,13 @@ msgstr "过滤器(&I)"
 #, kde-format
 msgctxt "@info:status"
 msgid "Filter incidences"
-msgstr "筛选事件"
+msgstr "过滤事件"
 
 #: actionmanager.cpp:475
 #, kde-format
 msgctxt "@info:tooltip"
 msgid "Filter incidences from the calendar"
-msgstr "筛选日历中的事件"
+msgstr "过滤日历中的事件"
 
 #: actionmanager.cpp:477
 #, kde-format
@@ -669,7 +669,7 @@ msgid ""
 "Runs user-defined view filters on the calendar collection. Filters must be "
 "created first. See \"Manage View Filters\" option in the Settings menu."
 msgstr ""
-"筛选用户所选视图中的日历收藏，必须先在“管理视图筛选”设置菜单项中创建筛选条"
+"过滤用户所选视图中的日历收藏，必须先在“管理视图过滤”设置菜单项中创建过滤条"
 "件。"
 
 #: actionmanager.cpp:489
