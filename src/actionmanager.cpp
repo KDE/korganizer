@@ -1177,7 +1177,7 @@ bool ActionManager::showIncidenceContext(Akonadi::Item::Id id)
 
 void ActionManager::showIncidenceByUid(const QString &uid, const QDateTime &occurrence, const QString &xdgActivationToken)
 {
-    mCalendarView->showIncidenceByUid(uid);
+    mCalendarView->showIncidenceByUid(uid, occurrence.date());
     mCalendarView->showDate(occurrence.date());
 
     KWindowSystem::setCurrentXdgActivationToken(xdgActivationToken);

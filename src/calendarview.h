@@ -306,8 +306,10 @@ public Q_SLOTS:
     /**
       Show an incidence in context, given its uid.
       @param uid the iCal uid of the incidence to show.
+      @param activeDate The active date is used to calculate the actual date of
+                        the selected incidence in case of recurring incidences.
     */
-    void showIncidenceByUid(const QString &uid);
+    void showIncidenceByUid(const QString &uid, QDate activeDate = {});
 
     /** Create an editor for the supplied incidence. It calls the correct editXXX method*/
     bool editIncidence(const Akonadi::Item &item, bool isCounter = false) override;
