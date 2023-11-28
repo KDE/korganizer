@@ -2189,12 +2189,12 @@ bool CalendarView::editIncidence(const Akonadi::Item &item, bool isCounter)
     return true;
 }
 
-void CalendarView::showIncidenceByUid(const QString &uid)
+void CalendarView::showIncidenceByUid(const QString &uid, QDate activeDate)
 {
     const auto item = mCalendar->item(uid);
     if (item.isValid()) {
         showIncidenceContext(item);
-        mEventViewer->setIncidence(item);
+        mEventViewer->setIncidence(item, activeDate);
     }
 }
 
