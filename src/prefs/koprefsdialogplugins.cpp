@@ -61,6 +61,8 @@ KOPrefsDialogPlugins::KOPrefsDialogPlugins(QObject *parent, const KPluginMetaDat
     , mPositioningGroupBox(new QGroupBox(i18nc("@title:group", "Position"), widget()))
 {
     auto topTopLayout = new QVBoxLayout(widget());
+    topTopLayout->setContentsMargins({});
+    topTopLayout->setSpacing(0);
     mTreeWidget->setColumnCount(2);
     mTreeWidget->setHeaderHidden(true);
     mTreeWidget->setSelectionMode(QAbstractItemView::SingleSelection);
