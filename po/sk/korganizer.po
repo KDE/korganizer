@@ -4,21 +4,21 @@
 # Richard Harnos <rharos@gmail.com>, 2006.
 # Richard Fric <Richard.Fric@kdemail.net>, 2006, 2007, 2009.
 # Jozef Riha <jose1711@gmail.com>, 2007.
-# Roman Paholík <wizzardsk@gmail.com>, 2012, 2013, 2014, 2015, 2016, 2017.
+# SPDX-FileCopyrightText: 2012, 2013, 2014, 2015, 2016, 2017, 2023 Roman Paholík <wizzardsk@gmail.com>
 # Matej Mrenica <matejm98mthw@gmail.com>, 2019.
 msgid ""
 msgstr ""
 "Project-Id-Version: korganizer\n"
 "Report-Msgid-Bugs-To: https://bugs.kde.org\n"
 "POT-Creation-Date: 2023-10-12 02:30+0000\n"
-"PO-Revision-Date: 2019-11-05 20:02+0100\n"
-"Last-Translator: Matej Mrenica <matejm98mthw@gmail.com>\n"
-"Language-Team: Slovak <kde-i18n-doc@kde.org>\n"
+"PO-Revision-Date: 2023-12-11 19:06+0100\n"
+"Last-Translator: Roman Paholik <wizzardsk@gmail.com>\n"
+"Language-Team: Slovak <kde-sk@linux.sk>\n"
 "Language: sk\n"
 "MIME-Version: 1.0\n"
 "Content-Type: text/plain; charset=UTF-8\n"
 "Content-Transfer-Encoding: 8bit\n"
-"X-Generator: Lokalize 19.08.2\n"
+"X-Generator: Lokalize 23.08.3\n"
 "Plural-Forms: nplurals=3; plural=(n==1) ? 0 : (n>=2 && n<=4) ? 1 : 2;\n"
 
 #, kde-format
@@ -304,9 +304,7 @@ msgid "Import &Calendar..."
 msgstr "Importovať kalendár"
 
 #: actionmanager.cpp:243
-#, fuzzy, kde-format
-#| msgctxt "@title:window"
-#| msgid "Import Calendar"
+#, kde-format
 msgctxt "@info:status"
 msgid "Import a calendar"
 msgstr "Importovať kalendár"
@@ -519,9 +517,7 @@ msgid "&Agenda"
 msgstr "Agenda"
 
 #: actionmanager.cpp:406
-#, fuzzy, kde-format
-#| msgctxt "@title:tab"
-#| msgid "Agenda View"
+#, kde-format
 msgctxt "@info:status"
 msgid "Agenda View"
 msgstr "Pohľad agendy"
@@ -549,12 +545,10 @@ msgid "&Event List"
 msgstr "Zoznam udalostí"
 
 #: actionmanager.cpp:417
-#, fuzzy, kde-format
-#| msgctxt "@title:tab"
-#| msgid "Month View"
+#, kde-format
 msgctxt "@info:status"
 msgid "List View"
-msgstr "Mesačný pohľad"
+msgstr "Pohľad zoznamu"
 
 #: actionmanager.cpp:418
 #, kde-format
@@ -881,15 +875,13 @@ msgid "New &To-do..."
 msgstr "Nová úloha..."
 
 #: actionmanager.cpp:576
-#, fuzzy, kde-format
-#| msgid "Create a new To-do"
+#, kde-format
 msgctxt "@info:status"
 msgid "Create a new To-do"
 msgstr "Vytvoriť novú úlohu"
 
 #: actionmanager.cpp:577
-#, fuzzy, kde-format
-#| msgid "Create a new To-do"
+#, kde-format
 msgctxt "@info:tooltip"
 msgid "Create a new To-do"
 msgstr "Vytvoriť novú úlohu"
@@ -913,18 +905,16 @@ msgid "New &Journal..."
 msgstr "Nový Diár"
 
 #: actionmanager.cpp:595
-#, fuzzy, kde-format
-#| msgid "Create a new Journal"
+#, kde-format
 msgctxt "@info:status"
 msgid "Create a new Journal"
-msgstr "Vytvoriť nový diár"
+msgstr "Vytvoriť nový žurnál"
 
 #: actionmanager.cpp:596
-#, fuzzy, kde-format
-#| msgid "Create a new Journal"
+#, kde-format
 msgctxt "@info:tooltip"
 msgid "Create a new Journal"
-msgstr "Vytvoriť nový diár"
+msgstr "Vytvoriť nový žurnál"
 
 #: actionmanager.cpp:597
 #, fuzzy, kde-format
@@ -1072,7 +1062,7 @@ msgstr "Upraviť &filtre..."
 #, fuzzy, kde-format
 #| msgid "Manage C&ategories..."
 msgid "Manage T&ags..."
-msgstr "Upraviť &kategórie..."
+msgstr "Spravovať značky"
 
 #: actionmanager.cpp:764
 #, kde-format
@@ -1264,14 +1254,14 @@ msgstr "Pridať ako nový kalendár"
 #, kde-format
 msgctxt "@item this is the default calendar"
 msgid "%1 (Offline)"
-msgstr ""
+msgstr "%1 (Nepripojený)"
 
 #: akonadicollectionview.cpp:287
 #, fuzzy, kde-format
 #| msgid "Use as &Default Calendar"
 msgctxt "@item this is the default calendar"
 msgid "%1 (Default)"
-msgstr "Použiť ako predvolený kalendár"
+msgstr "%1 (Predvolený)"
 
 #: akonadicollectionview.cpp:402
 #, fuzzy, kde-format
@@ -1313,8 +1303,7 @@ msgid "Set as &Default Folder"
 msgstr "Použiť ako predvolený kalendár"
 
 #: akonadicollectionview.cpp:516
-#, fuzzy, kde-format
-#| msgid "Serverside Subscription..."
+#, kde-format
 msgctxt "@action:inmenu"
 msgid "Serverside Subscription..."
 msgstr "Prihlásenie na strane servera..."
@@ -1334,8 +1323,7 @@ msgid "Replace Default Calendar?"
 msgstr "Použiť ako predvolený kalendár"
 
 #: akonadicollectionview.cpp:662
-#, fuzzy, kde-format
-#| msgid "Add Calendar"
+#, kde-format
 msgctxt "@title:window"
 msgid "Add Calendar"
 msgstr "Pridať kalendár"
@@ -1352,7 +1340,7 @@ msgstr "Naozaj chcete odstrániť kalendár %1?"
 #| msgid "Delete Calendar"
 msgctxt "@title:window"
 msgid "Delete Calendar"
-msgstr "Odstrániť kalendár"
+msgstr "Vymazať kalendár?"
 
 #: calendarview.cpp:239
 #, kde-format
@@ -1655,10 +1643,9 @@ msgid "Delete &All"
 msgstr "Odstrániť vš&etko"
 
 #: calendarview.cpp:2338 calendarview.cpp:2345
-#, fuzzy, kde-format
-#| msgid "Delete All"
+#, kde-format
 msgid "Delete \"%1\""
-msgstr "Odstrániť všetko"
+msgstr "Vymazať \"%1\""
 
 #: calendarview.cpp:2373
 #, kde-format
@@ -2048,20 +2035,19 @@ msgstr ""
 "Neboli nájdené žiadne položky, ktoré zodpovedajú vášmu hľadanému výrazu."
 
 #: dialog/searchdialog.cpp:142
-#, fuzzy, kde-format
-#| msgid "Search Results"
+#, kde-format
 msgctxt "@title:window"
 msgid "Search Results"
 msgstr "Výsledky hľadania"
 
 #: dialog/searchdialog.cpp:157
-#, kde-format
+#, fuzzy, kde-format
 msgctxt "@label"
 msgid "%1 match"
 msgid_plural "%1 matches"
-msgstr[0] ""
-msgstr[1] ""
-msgstr[2] ""
+msgstr[0] "%1 odpovedajúca"
+msgstr[1] "%1 odpovedajúce"
+msgstr[2] "%1 odpovedajúcich"
 
 #: helper/searchcollectionhelper.cpp:106
 #, kde-format
@@ -2263,7 +2249,7 @@ msgstr "&Zrušiť"
 #| msgid "&Show"
 msgctxt "@action:inmenu"
 msgid "&Show"
-msgstr "&Zobraziť"
+msgstr "Zobraziť"
 
 #: koeventpopupmenu.cpp:47
 #, fuzzy, kde-format
@@ -2287,16 +2273,13 @@ msgid "&Print..."
 msgstr "&Tlačiť..."
 
 #: koeventpopupmenu.cpp:55
-#, fuzzy, kde-format
-#| msgid "Print Previe&w..."
+#, kde-format
 msgctxt "@action:inmenu"
 msgid "Print Previe&w..."
 msgstr "Náhľad t&lače..."
 
 #: koeventpopupmenu.cpp:76
-#, fuzzy, kde-format
-#| msgctxt "cut this event"
-#| msgid "C&ut"
+#, kde-format
 msgctxt "@action:inmenu cut this incidence"
 msgid "C&ut"
 msgstr "Vystrihnúť"
@@ -2334,28 +2317,26 @@ msgstr "Vytvoriť udalosť"
 #| msgid "Togg&le To-do Completed"
 msgctxt "@action:inmenu"
 msgid "Togg&le To-do Completed"
-msgstr "Prepnúť dokončené ú&lohy"
+msgstr "Prepnúť dokončené úlohy"
 
 #: koeventpopupmenu.cpp:107
-#, fuzzy, kde-format
-#| msgid "Create Event"
+#, kde-format
 msgctxt "@action:inmenu"
 msgid "Create Event from To-do"
-msgstr "Vytvoriť udalosť"
+msgstr "Vytvoriť udalosť z úlohy"
 
 #: koeventpopupmenu.cpp:113
-#, fuzzy, kde-format
-#| msgid "Create To-do"
+#, kde-format
 msgctxt "@action:inmenu"
 msgid "Create Note for To-do"
-msgstr "Vytvoriť To-do"
+msgstr "Vytvoriť poznámku pre úlohu"
 
 #: koeventpopupmenu.cpp:124
 #, fuzzy, kde-format
 #| msgid "&Toggle Reminder"
 msgctxt "@action:inmenu"
 msgid "&Toggle Reminder"
-msgstr "Pripo&menutie:"
+msgstr "Prepnúť pripomienkovač"
 
 #: koeventpopupmenu.cpp:131
 #, fuzzy, kde-format
@@ -2694,7 +2675,7 @@ msgstr "Poznámka: %1"
 #| msgid "Mail: %1"
 msgctxt "Event from email summary"
 msgid "Mail: %1"
-msgstr "Mail: %1"
+msgstr "Pošta"
 
 #: kontactplugin/korganizer/korganizerplugin.cpp:191
 #: kontactplugin/korganizer/todoplugin.cpp:191
@@ -3464,9 +3445,9 @@ msgstr ""
 "-i alebo -m, užívateľ bude opýtaný na import alebo zlúčenie"
 
 #: korganizer_options.h:28
-#, kde-format
+#, fuzzy, kde-format
 msgid "Lists the available options for user feedback"
-msgstr ""
+msgstr "Uvádza dostupné možnosti spätnej väzby od používateľov"
 
 #: koviewmanager.cpp:418
 #, kde-format
@@ -3496,10 +3477,10 @@ msgid "Colors"
 msgstr "Farby"
 
 #: prefs/koprefsdialogcolorsandfonts.cpp:105
-#, kde-format
+#, fuzzy, kde-format
 msgctxt "@title:group"
 msgid "Tags"
-msgstr ""
+msgstr "Značky"
 
 #: prefs/koprefsdialogcolorsandfonts.cpp:119
 #, fuzzy, kde-format
@@ -3844,13 +3825,13 @@ msgstr "&Popisy"
 #, fuzzy, kde-format
 #| msgid "Change..."
 msgid "Choose..."
-msgstr "&Upraviť"
+msgstr "Vybrať..."
 
 #: prefs/kprefsdialog.cpp:765
-#, kde-format
+#, fuzzy, kde-format
 msgctxt "@title:window"
 msgid "Preferences"
-msgstr ""
+msgstr "Nastavenia"
 
 #: prefs/kprefsdialog.cpp:867
 #, kde-format
@@ -5244,9 +5225,9 @@ msgstr "Skryť neaktívne úlohy"
 
 #. i18n: ectx: property (title), widget (QGroupBox, mCategoriesButtonGroup)
 #: ui/filteredit_base.ui:228
-#, kde-format
+#, fuzzy, kde-format
 msgid "Tags"
-msgstr ""
+msgstr "Značky"
 
 #. i18n: ectx: property (whatsThis), widget (QRadioButton, mCatHideCheck)
 #: ui/filteredit_base.ui:272
@@ -5748,9 +5729,9 @@ msgstr ""
 
 #. i18n: ectx: property (text), widget (QCheckBox, categoryCheck)
 #: ui/searchdialog_base.ui:133
-#, kde-format
+#, fuzzy, kde-format
 msgid "Ta&gs"
-msgstr ""
+msgstr "Značky"
 
 #. i18n: ectx: property (toolTip), widget (QCheckBox, locationCheck)
 #: ui/searchdialog_base.ui:140
