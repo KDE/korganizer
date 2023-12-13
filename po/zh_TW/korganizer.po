@@ -9,19 +9,20 @@
 #
 # Frank Weng (a.k.a. Franklin) <franklin at goodhorse dot idv dot tw>, 2006, 2007, 2008, 2009, 2010.
 # Franklin Weng <franklin at goodhorse dot idv dot tw>, 2007, 2008.
+# SPDX-FileCopyrightText: 2023 Kisaragi Hiu <mail@kisaragi-hiu.com>
 msgid ""
 msgstr ""
 "Project-Id-Version: korganizer\n"
 "Report-Msgid-Bugs-To: https://bugs.kde.org\n"
 "POT-Creation-Date: 2023-12-06 01:38+0000\n"
-"PO-Revision-Date: 2015-06-14 13:34+0800\n"
-"Last-Translator: Franklin\n"
-"Language-Team: Chinese Traditional <kde-i18n-doc@kde.org>\n"
+"PO-Revision-Date: 2023-12-13 03:03+0900\n"
+"Last-Translator: Kisaragi Hiu <mail@kisaragi-hiu.com>\n"
+"Language-Team: Traditional Chinese <zh-l10n@lists.slat.org>\n"
 "Language: zh_TW\n"
 "MIME-Version: 1.0\n"
 "Content-Type: text/plain; charset=UTF-8\n"
 "Content-Transfer-Encoding: 8bit\n"
-"X-Generator: Lokalize 1.5\n"
+"X-Generator: Lokalize 23.08.4\n"
 "Plural-Forms: nplurals=1; plural=0;\n"
 
 #, kde-format
@@ -5314,7 +5315,7 @@ msgstr "取得行程資訊(&R)"
 msgid ""
 "By retrieving Free/Busy information that others have published, you can take "
 "their calendar into account when inviting them to a meeting."
-msgstr "取得其他人的行程資訊後，您可以參考他們的行程並決定會議時間。"
+msgstr "取得其他人的行程資訊後，您可以在決定會議時間前先參考他們的行程。"
 
 #. i18n: ectx: property (whatsThis), widget (QCheckBox, retrieveEnable)
 #: ui/kogroupwareprefspage.ui:369
@@ -5356,7 +5357,7 @@ msgstr ""
 #: ui/kogroupwareprefspage.ui:388
 #, kde-format
 msgid "Use full email &address for retrieval"
-msgstr "使用完整的待辦事項來取得資訊(&A)"
+msgstr "使用完整電子郵件地址取得行程資訊(&A)"
 
 #. i18n: ectx: property (whatsThis), widget (QLineEdit, retrieveUrl)
 #. i18n: ectx: property (whatsThis), widget (QLabel, TextLabel7_2)
