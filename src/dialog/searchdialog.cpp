@@ -136,9 +136,7 @@ void SearchDialog::doSearch()
     re.setPatternOptions(QRegularExpression::CaseInsensitiveOption);
     QRegularExpression::WildcardConversionOptions options;
     options |= QRegularExpression::UnanchoredWildcardConversion;
-#if QT_VERSION >= QT_VERSION_CHECK(6, 6, 0)
     options |= QRegularExpression::NonPathWildcardConversion;
-#endif
     const QString pattern = QRegularExpression::wildcardToRegularExpression(m_ui->searchEdit->text(), options);
     re.setPattern(pattern);
     if (!re.isValid()) {
