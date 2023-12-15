@@ -24,13 +24,17 @@
 #include <Libkdepim/StatusbarProgressWidget>
 
 // #include "korganizer_debug.h"
+#include <KAboutData>
 #include <KActionCollection>
 #include <KSharedConfig>
 #include <KShortcutsDialog>
 #include <KStandardAction>
 #include <KToolBar>
+#include <PimCommon/NeedUpdateVersionUtils>
+#include <PimCommon/NeedUpdateVersionWidget>
 #include <QLabel>
 #include <QStatusBar>
+#include <QVBoxLayout>
 #ifdef WITH_KUSERFEEDBACK
 #include "userfeedback/userfeedbackmanager.h"
 
@@ -53,8 +57,22 @@ KOrganizer::KOrganizer()
     KOCore::self()->addXMLGUIClient(this, this);
     //  setMinimumSize(600,400);  // make sure we don't get resized too small...
 
+    auto mainWidget = new QWidget(this);
+    auto mainWidgetLayout = new QVBoxLayout(mainWidget);
+    mainWidgetLayout->setContentsMargins({});
+    mainWidgetLayout->setSpacing(0);
+    if (PimCommon::NeedUpdateVersionUtils::checkVersion()) {
+        const auto status = PimCommon::NeedUpdateVersionUtils::obsoleteVersionStatus(KAboutData::applicationData().version(), QDate::currentDate());
+        if (status != PimCommon::NeedUpdateVersionUtils::ObsoleteVersion::NotObsoleteYet) {
+            auto needUpdateVersionWidget = new PimCommon::NeedUpdateVersionWidget(this);
+            mainWidgetLayout->addWidget(needUpdateVersionWidget);
+            needUpdateVersionWidget->setObsoleteVersion(status);
+        }
+    }
+    mainWidgetLayout->addWidget(mCalendarView);
+
     mCalendarView->setObjectName(QLatin1StringView("KOrganizer::CalendarView"));
-    setCentralWidget(mCalendarView);
+    setCentralWidget(mainWidget);
 
     mActionManager = new ActionManager(this, mCalendarView, this, this, false, menuBar(), toolBar());
     (void)new KOrganizerIfaceImpl(mActionManager, this, QStringLiteral("IfaceImpl"));
