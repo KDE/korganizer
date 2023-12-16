@@ -17,7 +17,7 @@ msgid ""
 msgstr ""
 "Project-Id-Version: korganizer\n"
 "Report-Msgid-Bugs-To: https://bugs.kde.org\n"
-"POT-Creation-Date: 2023-12-06 01:38+0000\n"
+"POT-Creation-Date: 2023-12-16 01:38+0000\n"
 "PO-Revision-Date: 2023-12-10 11:13+0530\n"
 "Last-Translator: Kishore G <kishore96@gmail.com>\n"
 "Language-Team: Tamil <kde-i18n-doc@kde.org>\n"
@@ -1980,7 +1980,7 @@ msgctxt "@info:whatsthis"
 msgid "Press this button to start the search."
 msgstr "ஒரு புதிய அல்ங்காரத்தை வரையறுக்க இந்த பட்டனை அழுத்தவும்."
 
-#: dialog/searchdialog.cpp:147
+#: dialog/searchdialog.cpp:145
 #, fuzzy, kde-format
 #| msgid ""
 #| "Invalid search expression, cannot perform the search. Please enter a "
@@ -1993,21 +1993,21 @@ msgstr ""
 "செல்லாத தேடுதல் தொடர், தேடுதலை செய்ய முடியாது. தயவு செய்து வொய்ல்ட் அட்டை '*' மற்றும் "
 "'?' யை தேவைப்படும் இடத்தில் பயன்படுத்தவும்."
 
-#: dialog/searchdialog.cpp:159
+#: dialog/searchdialog.cpp:157
 #, fuzzy, kde-format
 #| msgid "No events were found matching your search expression."
 msgctxt "@info"
 msgid "No items were found that match your search pattern."
 msgstr "உங்களது தேடல் உரையில் எந்த ஒரு நிகழும் பொருந்தவில்லை"
 
-#: dialog/searchdialog.cpp:160
+#: dialog/searchdialog.cpp:158
 #, fuzzy, kde-format
 #| msgid "Search In"
 msgctxt "@title:window"
 msgid "Search Results"
 msgstr "உள்ளே தேடு"
 
-#: dialog/searchdialog.cpp:175
+#: dialog/searchdialog.cpp:173
 #, kde-format
 msgctxt "@label"
 msgid "%1 match"
@@ -3319,19 +3319,19 @@ msgstr "தற்போதைய பராமரிப்பாளர்"
 msgid "Tobias Koenig"
 msgstr ""
 
-#: korganizer.cpp:274
+#: korganizer.cpp:285
 #, kde-format
 msgid "New Calendar"
 msgstr "நாள்காட்டி"
 
-#: korganizer.cpp:278
+#: korganizer.cpp:289
 #, fuzzy, kde-format
 #| msgid "read-only"
 msgctxt "the calendar is read-only"
 msgid "read-only"
 msgstr "படித்தல்-மட்டும்"
 
-#: korganizer.cpp:281
+#: korganizer.cpp:292
 #, kde-format
 msgid "Calendar"
 msgstr "நாள்காட்டி"

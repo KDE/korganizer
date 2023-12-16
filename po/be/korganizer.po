@@ -11,7 +11,7 @@ msgid ""
 msgstr ""
 "Project-Id-Version: korganizer\n"
 "Report-Msgid-Bugs-To: https://bugs.kde.org\n"
-"POT-Creation-Date: 2023-12-06 01:38+0000\n"
+"POT-Creation-Date: 2023-12-16 01:38+0000\n"
 "PO-Revision-Date: 2008-01-01 23:20+0200\n"
 "Last-Translator: Darafei Praliaskouski <komzpa@gmail.com>\n"
 "Language-Team: Belarusian (Official spelling) <i18n@mova.org>\n"
@@ -2001,7 +2001,7 @@ msgctxt "@info:whatsthis"
 msgid "Press this button to start the search."
 msgstr "Націсніце на гэтую кнопку для стварэння новага фільтра."
 
-#: dialog/searchdialog.cpp:147
+#: dialog/searchdialog.cpp:145
 #, fuzzy, kde-format
 msgctxt "@info"
 msgid ""
@@ -2010,20 +2010,20 @@ msgid ""
 msgstr ""
 "Няслушны радок пошуку. Пакажыце ўмовы пошуку,выкарыстаючы знакі '*' і '?'."
 
-#: dialog/searchdialog.cpp:159
+#: dialog/searchdialog.cpp:157
 #, fuzzy, kde-format
 msgctxt "@info"
 msgid "No items were found that match your search pattern."
 msgstr "Падзеі не знойдзеныя."
 
-#: dialog/searchdialog.cpp:160
+#: dialog/searchdialog.cpp:158
 #, fuzzy, kde-format
 #| msgid "Search In"
 msgctxt "@title:window"
 msgid "Search Results"
 msgstr "Шукаць у"
 
-#: dialog/searchdialog.cpp:175
+#: dialog/searchdialog.cpp:173
 #, kde-format
 msgctxt "@label"
 msgid "%1 match"
@@ -3331,19 +3331,19 @@ msgstr "Падтрымка"
 msgid "Tobias Koenig"
 msgstr ""
 
-#: korganizer.cpp:274
+#: korganizer.cpp:285
 #, kde-format
 msgid "New Calendar"
 msgstr "Новы каляндар"
 
-#: korganizer.cpp:278
+#: korganizer.cpp:289
 #, fuzzy, kde-format
 #| msgid "read-only"
 msgctxt "the calendar is read-only"
 msgid "read-only"
 msgstr "толькі чытанне"
 
-#: korganizer.cpp:281
+#: korganizer.cpp:292
 #, kde-format
 msgid "Calendar"
 msgstr "Каляндар"

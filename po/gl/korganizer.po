@@ -15,7 +15,7 @@ msgid ""
 msgstr ""
 "Project-Id-Version: korganizer\n"
 "Report-Msgid-Bugs-To: https://bugs.kde.org\n"
-"POT-Creation-Date: 2023-12-06 01:38+0000\n"
+"POT-Creation-Date: 2023-12-16 01:38+0000\n"
 "PO-Revision-Date: 2023-11-18 14:05+0100\n"
 "Last-Translator: Adrián Chaves (Gallaecio) <adrian@chaves.io>\n"
 "Language-Team: Galician <proxecto@trasno.gal>\n"
@@ -1985,7 +1985,7 @@ msgctxt "@info:whatsthis"
 msgid "Press this button to start the search."
 msgstr "Prema este botón para iniciar a busca."
 
-#: dialog/searchdialog.cpp:147
+#: dialog/searchdialog.cpp:145
 #, kde-format
 msgctxt "@info"
 msgid ""
@@ -1996,19 +1996,19 @@ msgstr ""
 "insira a expresión de busca usando os caracteres comodín '*' '?' onde sexa "
 "preciso."
 
-#: dialog/searchdialog.cpp:159
+#: dialog/searchdialog.cpp:157
 #, kde-format
 msgctxt "@info"
 msgid "No items were found that match your search pattern."
 msgstr "Non se atoparon elementos que correspondan co padrón buscado."
 
-#: dialog/searchdialog.cpp:160
+#: dialog/searchdialog.cpp:158
 #, kde-format
 msgctxt "@title:window"
 msgid "Search Results"
 msgstr "Resultados da busca"
 
-#: dialog/searchdialog.cpp:175
+#: dialog/searchdialog.cpp:173
 #, kde-format
 msgctxt "@label"
 msgid "%1 match"
@@ -3321,18 +3321,18 @@ msgstr "Mantedor actual."
 msgid "Tobias Koenig"
 msgstr "Tobias Koenig"
 
-#: korganizer.cpp:274
+#: korganizer.cpp:285
 #, kde-format
 msgid "New Calendar"
 msgstr "Novo calendario"
 
-#: korganizer.cpp:278
+#: korganizer.cpp:289
 #, kde-format
 msgctxt "the calendar is read-only"
 msgid "read-only"
 msgstr "só-lectura"
 
-#: korganizer.cpp:281
+#: korganizer.cpp:292
 #, kde-format
 msgid "Calendar"
 msgstr "Calendario"

@@ -8,7 +8,7 @@ msgid ""
 msgstr ""
 "Project-Id-Version: korganizer\n"
 "Report-Msgid-Bugs-To: https://bugs.kde.org\n"
-"POT-Creation-Date: 2023-12-06 01:38+0000\n"
+"POT-Creation-Date: 2023-12-16 01:38+0000\n"
 "PO-Revision-Date: 2012-07-09 10:04+0700\n"
 "Last-Translator: Khoem Sokhem <khoemsokhem@khmeros.info>\n"
 "Language-Team: Khmer\n"
@@ -2027,7 +2027,7 @@ msgctxt "@info:whatsthis"
 msgid "Press this button to start the search."
 msgstr "ចុច​ប៊ូតុង​នេះ ដើម្បី​កំណត់​តម្រង​ថ្មី​មួយ ។​"
 
-#: dialog/searchdialog.cpp:147
+#: dialog/searchdialog.cpp:145
 #, fuzzy, kde-format
 #| msgid ""
 #| "Invalid search expression, cannot perform the search. Please enter a "
@@ -2040,21 +2040,21 @@ msgstr ""
 "កន្សោម​ស្វែងរកមិន​ត្រឹមត្រូវ​ឡើយ ដូច្នេះ​មិន​អាច​ធ្វើការ​ស្វែងរក​បាន​ឡើយ ។ សូម​បញ្ចូល​កន្សោម​ស្វែង​រក​មួយ ដោយ​"
 "ប្រើ​តួអក្សរ​ជំនួស '*' និង​ '?' ត្រង់​កន្លែង​ដែល​ត្រូវការ ។"
 
-#: dialog/searchdialog.cpp:159
+#: dialog/searchdialog.cpp:157
 #, fuzzy, kde-format
 #| msgid "No items were found that match your search pattern."
 msgctxt "@info"
 msgid "No items were found that match your search pattern."
 msgstr "រកមិន​ឃើញ​ធាតុ​ដែល​ផ្គូផ្គង​ការ​ស្វែងរក​លំនាំ​របស់​អ្នកឡើយ​​ ។"
 
-#: dialog/searchdialog.cpp:160
+#: dialog/searchdialog.cpp:158
 #, fuzzy, kde-format
 #| msgid "Search In"
 msgctxt "@title:window"
 msgid "Search Results"
 msgstr "ស្វែង​រក​ក្នុង"
 
-#: dialog/searchdialog.cpp:175
+#: dialog/searchdialog.cpp:173
 #, kde-format
 msgctxt "@label"
 msgid "%1 match"
@@ -3426,18 +3426,18 @@ msgstr "អតីត​អ្នក​ថែទាំ​"
 msgid "Tobias Koenig"
 msgstr "Tobias Koenig"
 
-#: korganizer.cpp:274
+#: korganizer.cpp:285
 #, kde-format
 msgid "New Calendar"
 msgstr "ប្រតិទិន​ថ្មី"
 
-#: korganizer.cpp:278
+#: korganizer.cpp:289
 #, kde-format
 msgctxt "the calendar is read-only"
 msgid "read-only"
 msgstr "បាន​តែ​អាន"
 
-#: korganizer.cpp:281
+#: korganizer.cpp:292
 #, kde-format
 msgid "Calendar"
 msgstr "ប្រតិទិន"

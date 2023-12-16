@@ -5,7 +5,7 @@ msgid ""
 msgstr ""
 "Project-Id-Version: korganizer-1.1.1\n"
 "Report-Msgid-Bugs-To: https://bugs.kde.org\n"
-"POT-Creation-Date: 2023-12-06 01:38+0000\n"
+"POT-Creation-Date: 2023-12-16 01:38+0000\n"
 "PO-Revision-Date: 2022-02-06 19:07+0000\n"
 "Last-Translator: Sergiu Bivol <sergiu@cip.md>\n"
 "Language-Team: Romanian\n"
@@ -1956,7 +1956,7 @@ msgctxt "@info:whatsthis"
 msgid "Press this button to start the search."
 msgstr "Apăsați acest buton pentru a defini un filtru nou."
 
-#: dialog/searchdialog.cpp:147
+#: dialog/searchdialog.cpp:145
 #, fuzzy, kde-format
 msgctxt "@info"
 msgid ""
@@ -1968,7 +1968,7 @@ msgstr ""
 "căutare utilizând wildcard-urile  '*' și '?'\n"
 "acolo unde este nevoie."
 
-#: dialog/searchdialog.cpp:159
+#: dialog/searchdialog.cpp:157
 #, fuzzy, kde-format
 #| msgid "No events were found matching your search expression."
 msgctxt "@info"
@@ -1977,13 +1977,13 @@ msgstr ""
 "Nu am găsit evenimente care să se\n"
 "potrivească cu expresia căutată."
 
-#: dialog/searchdialog.cpp:160
+#: dialog/searchdialog.cpp:158
 #, fuzzy, kde-format
 msgctxt "@title:window"
 msgid "Search Results"
 msgstr "Caută în:"
 
-#: dialog/searchdialog.cpp:175
+#: dialog/searchdialog.cpp:173
 #, kde-format
 msgctxt "@label"
 msgid "%1 match"
@@ -3318,19 +3318,19 @@ msgstr "Fostul responsabil"
 msgid "Tobias Koenig"
 msgstr "Tobias König"
 
-#: korganizer.cpp:274
+#: korganizer.cpp:285
 #, kde-format
 msgid "New Calendar"
 msgstr "Calendar nou"
 
-#: korganizer.cpp:278
+#: korganizer.cpp:289
 #, fuzzy, kde-format
 #| msgid "read-only"
 msgctxt "the calendar is read-only"
 msgid "read-only"
 msgstr "Numai citire"
 
-#: korganizer.cpp:281
+#: korganizer.cpp:292
 #, kde-format
 msgid "Calendar"
 msgstr "Calendar"

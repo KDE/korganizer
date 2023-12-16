@@ -6,7 +6,7 @@ msgid ""
 msgstr ""
 "Project-Id-Version: \n"
 "Report-Msgid-Bugs-To: https://bugs.kde.org\n"
-"POT-Creation-Date: 2023-12-06 01:38+0000\n"
+"POT-Creation-Date: 2023-12-16 01:38+0000\n"
 "PO-Revision-Date: 2013-04-15 10:39+0530\n"
 "Last-Translator: Chetan Khona <chetan@kompkin.com>\n"
 "Language-Team: Marathi <kde-i18n-doc@kde.org>\n"
@@ -2043,7 +2043,7 @@ msgctxt "@info:whatsthis"
 msgid "Press this button to start the search."
 msgstr "नवीन गाळणी निश्चीत करण्यासाठी हे बटण दाबा."
 
-#: dialog/searchdialog.cpp:147
+#: dialog/searchdialog.cpp:145
 #, fuzzy, kde-format
 #| msgid ""
 #| "Invalid search expression, cannot perform the search. Please enter a "
@@ -2056,21 +2056,21 @@ msgstr ""
 "शोधाची अभीव्यक्ती/पदावली अवैध आहे, शोध होऊ शकत नाही. '*' आणि '?' असे वाइल्डकार्डवर्ण "
 "वापरून शोध अभीव्यक्ती/पदावलीची नोंद करा."
 
-#: dialog/searchdialog.cpp:159
+#: dialog/searchdialog.cpp:157
 #, fuzzy, kde-format
 #| msgid "No items were found that match your search pattern."
 msgctxt "@info"
 msgid "No items were found that match your search pattern."
 msgstr "तुमच्या शोध पद्धतीशी जुळणाऱ्या बाबी सापडल्या नाहीत."
 
-#: dialog/searchdialog.cpp:160
+#: dialog/searchdialog.cpp:158
 #, fuzzy, kde-format
 #| msgid "Search Results"
 msgctxt "@title:window"
 msgid "Search Results"
 msgstr "शोध परिणाम"
 
-#: dialog/searchdialog.cpp:175
+#: dialog/searchdialog.cpp:173
 #, kde-format
 msgctxt "@label"
 msgid "%1 match"
@@ -3461,18 +3461,18 @@ msgstr "पूर्वीचा पालक"
 msgid "Tobias Koenig"
 msgstr "टोबीआस कोएनींग"
 
-#: korganizer.cpp:274
+#: korganizer.cpp:285
 #, kde-format
 msgid "New Calendar"
 msgstr "नवीन दिनदर्शिका"
 
-#: korganizer.cpp:278
+#: korganizer.cpp:289
 #, kde-format
 msgctxt "the calendar is read-only"
 msgid "read-only"
 msgstr "फक्त वाचण्यासाठी"
 
-#: korganizer.cpp:281
+#: korganizer.cpp:292
 #, kde-format
 msgid "Calendar"
 msgstr "दिनदर्शिका"
