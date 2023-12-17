@@ -1732,7 +1732,7 @@ msgstr ""
 #, kde-format
 msgctxt "@title:tab General settings for a folder."
 msgid "General"
-msgstr "Ĝenerale"
+msgstr "Ĝenerala"
 
 #: collectiongeneralpage.cpp:45
 #, kde-format
@@ -3683,7 +3683,7 @@ msgstr ""
 #, kde-format
 msgctxt "@title:tab general settings"
 msgid "General"
-msgstr "Ĝenerale"
+msgstr "Ĝenerala"
 
 #: prefs/koprefsdialogviews.cpp:64 prefs/koprefsdialogviews.cpp:105
 #: prefs/koprefsdialogviews.cpp:153 prefs/koprefsdialogviews.cpp:184
