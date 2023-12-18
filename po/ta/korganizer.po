@@ -18,7 +18,7 @@ msgstr ""
 "Project-Id-Version: korganizer\n"
 "Report-Msgid-Bugs-To: https://bugs.kde.org\n"
 "POT-Creation-Date: 2023-12-16 01:38+0000\n"
-"PO-Revision-Date: 2023-12-10 11:13+0530\n"
+"PO-Revision-Date: 2023-12-17 16:42+0530\n"
 "Last-Translator: Kishore G <kishore96@gmail.com>\n"
 "Language-Team: Tamil <kde-i18n-doc@kde.org>\n"
 "Language: ta\n"
@@ -1719,11 +1719,10 @@ msgid ""
 msgstr ""
 
 #: collectiongeneralpage.cpp:37
-#, fuzzy, kde-format
-#| msgid "General"
+#, kde-format
 msgctxt "@title:tab General settings for a folder."
 msgid "General"
-msgstr "பொது"
+msgstr "பொதுவானவை"
 
 #: collectiongeneralpage.cpp:45
 #, fuzzy, kde-format
@@ -3678,11 +3677,10 @@ msgid "Audio Files (*.ogg *.wav *.mp3 *.wma *.flac *.aiff *.raw *.au *.ra)"
 msgstr ""
 
 #: prefs/koprefsdialogviews.cpp:44
-#, fuzzy, kde-format
-#| msgid "General"
+#, kde-format
 msgctxt "@title:tab general settings"
 msgid "General"
-msgstr "பொது"
+msgstr "பொதுவானவை"
 
 #: prefs/koprefsdialogviews.cpp:50 prefs/koprefsdialogviews.cpp:87
 #: prefs/koprefsdialogviews.cpp:131 prefs/koprefsdialogviews.cpp:158

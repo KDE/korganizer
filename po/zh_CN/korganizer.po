@@ -3,7 +3,7 @@ msgstr ""
 "Project-Id-Version: kdeorg\n"
 "Report-Msgid-Bugs-To: https://bugs.kde.org\n"
 "POT-Creation-Date: 2023-12-16 01:38+0000\n"
-"PO-Revision-Date: 2023-12-09 09:25\n"
+"PO-Revision-Date: 2023-12-17 11:26\n"
 "Last-Translator: \n"
 "Language-Team: Chinese Simplified\n"
 "Language: zh_CN\n"
@@ -2287,7 +2287,7 @@ msgstr "如果您只想看到开始于接下来 31 天内的事件，请选中�
 #: kontactplugin/specialdates/sdsummaryconfig_base.ui:50
 #, kde-format
 msgid "Within the next &month (31 days)"
-msgstr "一个月内 (31 天)(&M)"
+msgstr "一个月内 (31 天) (&M)"
 
 #. i18n: ectx: property (toolTip), widget (QRadioButton, mDateRangeButton)
 #: kontactplugin/korganizer/apptsummaryconfig_base.ui:57
@@ -2721,7 +2721,7 @@ msgstr "如果您不想显示无限期的待办事项，请选中此项。"
 #: kontactplugin/korganizer/todosummaryconfig_base.ui:161
 #, kde-format
 msgid "&Open-ended (no due date)"
-msgstr "无期限 (未安排日期)(&O)"
+msgstr "无期限 (未安排日期) (&O)"
 
 #. i18n: ectx: property (toolTip), widget (QCheckBox, mHideUnstartedBox)
 #: kontactplugin/korganizer/todosummaryconfig_base.ui:171
@@ -2741,7 +2741,7 @@ msgstr "如果您不想显示尚未开始的待办事项，请选中此项。"
 #: kontactplugin/korganizer/todosummaryconfig_base.ui:177
 #, kde-format
 msgid "&Unstarted (start date is in the future)"
-msgstr "未开始 (开始日期在将来)(&U)"
+msgstr "未开始 (开始日期在将来) (&U)"
 
 #. i18n: ectx: property (toolTip), widget (QCheckBox, mHideInProgressBox)
 #: kontactplugin/korganizer/todosummaryconfig_base.ui:184
@@ -2761,7 +2761,7 @@ msgstr "如果您不想显示已开始但尚未结束的待办事项，请选中
 #: kontactplugin/korganizer/todosummaryconfig_base.ui:190
 #, kde-format
 msgid "&In-progress (started but not completed)"
-msgstr "完成中 (开始而未完成)(&I)"
+msgstr "完成中 (开始而未完成) (&I)"
 
 #. i18n: ectx: property (toolTip), widget (QCheckBox, mHideOverdueBox)
 #: kontactplugin/korganizer/todosummaryconfig_base.ui:197
@@ -2781,7 +2781,7 @@ msgstr "如果您不想显示已过期却仍未结束的待办事项，请选中
 #: kontactplugin/korganizer/todosummaryconfig_base.ui:206
 #, kde-format
 msgid "Over&due (not completed and beyond due-date)"
-msgstr "过期 (未完成而超过了安排日期)(&D)"
+msgstr "过期 (未完成而超过了安排日期) (&D)"
 
 #. i18n: ectx: property (toolTip), widget (QCheckBox, mShowMineOnly)
 #: kontactplugin/korganizer/todosummaryconfig_base.ui:222
