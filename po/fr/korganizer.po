@@ -17,8 +17,8 @@
 # Anne-Marie Mahfouf <annemarie.mahfouf@free.fr>, 2010.
 # Vincent Pinon <vpinon@kde.org>, 2017, 2018.
 # Simon Depiets <sdepiets@gmail.com>, 2018, 2019, 2020.
-# SPDX-FileCopyrightText: 2020, 2021, 2022, 2023 Xavier Besnard <xavier.besnard@neuf.fr>
-# Xavier BESNARD <xavier.besnard@neuf.fr>, 2023.
+# SPDX-FileCopyrightText: 2020, 2021, 2022, 2023 Xavier Besnard <xavier.besnard@kde.org>
+# Xavier Besnard <xavier.besnard@kde.org>, 2023.
 #
 msgid ""
 msgstr ""
@@ -26,7 +26,7 @@ msgstr ""
 "Report-Msgid-Bugs-To: https://bugs.kde.org\n"
 "POT-Creation-Date: 2023-12-16 01:38+0000\n"
 "PO-Revision-Date: 2023-11-14 17:24+0100\n"
-"Last-Translator: Xavier BESNARD <xavier.besnard@neuf.fr>\n"
+"Last-Translator: Xavier BESNARD <xavier.besnard@kde.org>\n"
 "Language-Team: fr\n"
 "Language: fr\n"
 "MIME-Version: 1.0\n"
@@ -51,7 +51,7 @@ msgid "Your emails"
 msgstr ""
 "kde@macolu.org, Sebastien.Renard@digitalfox.homeip.net, Eric.Depagne@obspm."
 "fr, duranceau@kde.org, cousin@kde.org, caulier.gilles@free.fr, "
-"sdepiets@gmail.com, xavier.besnard@neuf.fr"
+"sdepiets@gmail.com, xavier.besnard@kde.org"
 
 #: aboutdata.cpp:18 kontactplugin/korganizer/journalplugin.cpp:26
 #: kontactplugin/korganizer/korganizerplugin.cpp:42
