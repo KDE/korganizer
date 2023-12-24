@@ -32,6 +32,7 @@
         "Description[uk]": "Додаток списку завдань KOrganizer для Kontact",
         "Description[x-test]": "xxKontact KOrganizer To-do List Pluginxx",
         "Description[zh_CN]": "Kontact KOrganizer 待办清单插件",
+        "Description[zh_TW]": "Kontact KOrganizer 待辦事項外掛程式",
         "EnabledByDefault": true,
         "Icon": "view-pim-tasks",
         "License": "GPL",

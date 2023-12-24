@@ -32,6 +32,7 @@
         "Description[uk]": "Зведення налаштування майбутніх подій",
         "Description[x-test]": "xxUpcoming Events Summary Setupxx",
         "Description[zh_CN]": "近期事件摘要设置",
+        "Description[zh_TW]": "將發生的事件摘要設定",
         "Icon": "korganizer",
         "Name": "Upcoming Events",
         "Name[ar]": "الأحداث القادمة",

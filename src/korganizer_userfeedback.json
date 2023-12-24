@@ -32,6 +32,7 @@
         "Description[uk]": "Налаштування відгуків користувача щодо KOrganizer",
         "Description[x-test]": "xxKOrganizer User Feedback Configurationxx",
         "Description[zh_CN]": "KOrganizer 用户反馈配置",
+        "Description[zh_TW]": "KOrganizer 使用者意見回應設定",
         "Icon": "preferences-other",
         "Name": "User Feedback",
         "Name[ar]": "معلومات المستخدمين",
@@ -65,7 +66,8 @@
         "Name[tr]": "Kullanıcı Geri Bildirimi",
         "Name[uk]": "Відгуки користувача",
         "Name[x-test]": "xxUser Feedbackxx",
-        "Name[zh_CN]": "用户反馈"
+        "Name[zh_CN]": "用户反馈",
+        "Name[zh_TW]": "使用者意見回應"
     },
     "X-KDE-Weight": 600
 }

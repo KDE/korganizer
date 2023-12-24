@@ -32,6 +32,7 @@
         "Description[uk]": "Додаток журналу для (KOrganizer) Kontact",
         "Description[x-test]": "xxKontact KOrganizer Journal Pluginxx",
         "Description[zh_CN]": "Kontact KOrganizer 日记插件",
+        "Description[zh_TW]": "Kontact KOrganizer Journal 外掛程式",
         "EnabledByDefault": true,
         "Icon": "view-pim-journal",
         "License": "GPL",

@@ -32,6 +32,7 @@
         "Description[uk]": "Додаток особливих дат",
         "Description[x-test]": "xxSpecial Dates Pluginxx",
         "Description[zh_CN]": "特殊日期插件",
+        "Description[zh_TW]": "特殊日期外掛程式",
         "EnabledByDefault": true,
         "Icon": "view-calendar-special-occasion",
         "License": "GPL",

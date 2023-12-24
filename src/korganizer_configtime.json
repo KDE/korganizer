@@ -32,6 +32,7 @@
         "Description[uk]": "Налаштування часу і дати в KOrganizer",
         "Description[x-test]": "xxKOrganizer Time and Date Configurationxx",
         "Description[zh_CN]": "KOrganizer 时间和日期配置",
+        "Description[zh_TW]": "KOrganizer 時間與日期設定",
         "Icon": "preferences-system-time",
         "Name": "Time and Date",
         "Name[ar]": "الوقت والتّاريخ",

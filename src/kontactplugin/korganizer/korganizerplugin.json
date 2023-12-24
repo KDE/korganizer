@@ -32,6 +32,7 @@
         "Description[uk]": "Додаток календаря KOrganizer для Kontact",
         "Description[x-test]": "xxKontact KOrganizer Pluginxx",
         "Description[zh_CN]": "Kontact KOrganizer 插件",
+        "Description[zh_TW]": "Kontact KOrganizer 外掛程式",
         "EnabledByDefault": true,
         "Icon": "view-pim-calendar",
         "License": "GPL",

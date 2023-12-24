@@ -32,6 +32,7 @@
         "Description[uk]": "Налаштування кольорів і шрифтів у KOrganizer",
         "Description[x-test]": "xxKOrganizer Colors and Fonts Configurationxx",
         "Description[zh_CN]": "KOrganizer 颜色和字体配置",
+        "Description[zh_TW]": "KOrganizer 顏色與字型設定",
         "Icon": "preferences-desktop-color",
         "Name": "Colors and Fonts",
         "Name[ar]": "الألوان والخطوط",
