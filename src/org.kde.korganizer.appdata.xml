@@ -38,6 +38,7 @@
   <developer_name xml:lang="uk">Спільнота KDE</developer_name>
   <developer_name xml:lang="x-test">xxThe KDE Communityxx</developer_name>
   <developer_name xml:lang="zh-CN">KDE 社区</developer_name>
+  <developer_name xml:lang="zh-TW">KDE 社群</developer_name>
   <name>KOrganizer</name>
   <name xml:lang="ar">منظّمك</name>
   <name xml:lang="ast">KOrganizer</name>
@@ -233,6 +234,7 @@
       <li xml:lang="uk">підтримка роботи з декількома календарями та списками завдань;</li>
       <li xml:lang="x-test">xxSupport for multiple calendars and todo listsxx</li>
       <li xml:lang="zh-CN">支持多个日历和待办事项清单</li>
+      <li xml:lang="zh-TW">支援多重行事曆與待辦清單</li>
       <li>Storage model</li>
       <li xml:lang="ar">نموذج للتّخزين</li>
       <li xml:lang="az">Məlumatların müxtəlif saxlanılma üsulları</li>
@@ -268,6 +270,7 @@
       <li xml:lang="uk">модель зберігання даних;</li>
       <li xml:lang="x-test">xxStorage modelxx</li>
       <li xml:lang="zh-CN">存储模式</li>
+      <li xml:lang="zh-TW">儲存模型</li>
       <li>Undo and Redo</li>
       <li xml:lang="ar">التّراجع والإعادة</li>
       <li xml:lang="az">Əməlin ləğv edilməsi və geri qaytarılması</li>
@@ -303,6 +306,7 @@
       <li xml:lang="uk">можливості скасування та повторення дій;</li>
       <li xml:lang="x-test">xxUndo and Redoxx</li>
       <li xml:lang="zh-CN">撤销和重做</li>
+      <li xml:lang="zh-TW">復原、重做</li>
       <li>Todo integration with agenda view</li>
       <li xml:lang="ar">تكامل المهامّ مع منظور جدول الأعمال</li>
       <li xml:lang="az">Gündəlikdə tapşıqıları göstərmək</li>
@@ -338,6 +342,7 @@
       <li xml:lang="uk">вбудовування завдань до порядку денного;</li>
       <li xml:lang="x-test">xxTodo integration with agenda viewxx</li>
       <li xml:lang="zh-CN">待办集成到议程视图</li>
+      <li xml:lang="zh-TW">將待辦事項與行程檢視整合</li>
       <li>Attachments for events and todos</li>
       <li xml:lang="ar">مرفقات للأحداث والمهامّ</li>
       <li xml:lang="az">Tədbirlər və tapşırıqlar üçün qoşma fayllar</li>
@@ -373,6 +378,7 @@
       <li xml:lang="uk">можливість створення долучень до записів подій та завдань;</li>
       <li xml:lang="x-test">xxAttachments for events and todosxx</li>
       <li xml:lang="zh-CN">事件和待办附件</li>
+      <li xml:lang="zh-TW">事件與待辦事項的附件</li>
       <li>Quick todo and event entries</li>
       <li xml:lang="ar">مدخلات مهامّ وأحداث سريعة</li>
       <li xml:lang="az">Tapşırıqların və tədbirlərin cəld yaradılması</li>
@@ -407,6 +413,7 @@
       <li xml:lang="uk">швидке створення записів завдань та подій;</li>
       <li xml:lang="x-test">xxQuick todo and event entriesxx</li>
       <li xml:lang="zh-CN">快速待办和事件项目</li>
+      <li xml:lang="zh-TW">快速待辦與事件項目</li>
       <li>Print support</li>
       <li xml:lang="ar">دعم الطّباعة</li>
       <li xml:lang="az">Çap dəstəyi</li>
@@ -442,6 +449,7 @@
       <li xml:lang="uk">підтримка друку календарів.</li>
       <li xml:lang="x-test">xxPrint supportxx</li>
       <li xml:lang="zh-CN">打印支持</li>
+      <li xml:lang="zh-TW">支援列印功能</li>
     </ul>
   </description>
   <url type="homepage">https://kontact.kde.org/components/korganizer/</url>
