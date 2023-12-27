@@ -51,11 +51,6 @@ void KCMSDSummary::modified()
     markAsChanged();
 }
 
-void KCMSDSummary::buttonClicked(int id)
-{
-    mCustomDays->setEnabled(id == 2);
-}
-
 void KCMSDSummary::customDaysChanged(int value)
 {
     mCustomDays->setSuffix(i18np(" day", " days", value));

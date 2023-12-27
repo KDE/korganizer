@@ -24,6 +24,5 @@ public:
 
 private Q_SLOTS:
     void modified();
-    void buttonClicked(int id);
     void customDaysChanged(int value);
 };
