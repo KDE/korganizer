@@ -17,7 +17,7 @@ msgid ""
 msgstr ""
 "Project-Id-Version: korganizer\n"
 "Report-Msgid-Bugs-To: https://bugs.kde.org\n"
-"POT-Creation-Date: 2023-12-16 01:38+0000\n"
+"POT-Creation-Date: 2023-12-28 01:33+0000\n"
 "PO-Revision-Date: 2023-01-12 11:11+0300\n"
 "Last-Translator: Alexander Yavorsky <kekcuha@gmail.com>\n"
 "Language-Team: Russian <kde-russian@lists.kde.ru>\n"
@@ -2615,7 +2615,7 @@ msgstr "Будет открыто диалоговое окно для созд�
 
 #: kontactplugin/korganizer/kcmapptsummary.cpp:71
 #: kontactplugin/korganizer/kcmtodosummary.cpp:56
-#: kontactplugin/specialdates/kcmsdsummary.cpp:61
+#: kontactplugin/specialdates/kcmsdsummary.cpp:56
 #, kde-format
 msgid " day"
 msgid_plural " days"

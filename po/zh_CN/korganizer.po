@@ -2,7 +2,7 @@ msgid ""
 msgstr ""
 "Project-Id-Version: kdeorg\n"
 "Report-Msgid-Bugs-To: https://bugs.kde.org\n"
-"POT-Creation-Date: 2023-12-16 01:38+0000\n"
+"POT-Creation-Date: 2023-12-28 01:33+0000\n"
 "PO-Revision-Date: 2023-12-23 08:00\n"
 "Last-Translator: \n"
 "Language-Team: Chinese Simplified\n"
@@ -2478,7 +2478,7 @@ msgstr "这将展示一个对话框，告诉您在哪里新建日记项。"
 
 #: kontactplugin/korganizer/kcmapptsummary.cpp:71
 #: kontactplugin/korganizer/kcmtodosummary.cpp:56
-#: kontactplugin/specialdates/kcmsdsummary.cpp:61
+#: kontactplugin/specialdates/kcmsdsummary.cpp:56
 #, kde-format
 msgid " day"
 msgid_plural " days"

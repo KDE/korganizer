@@ -10,7 +10,7 @@ msgid ""
 msgstr ""
 "Project-Id-Version: korganizer\n"
 "Report-Msgid-Bugs-To: https://bugs.kde.org\n"
-"POT-Creation-Date: 2023-12-16 01:38+0000\n"
+"POT-Creation-Date: 2023-12-28 01:33+0000\n"
 "PO-Revision-Date: 2012-01-28 16:07-0800\n"
 "Last-Translator: Fumiaki Okushi <okushi@kde.gr.jp>\n"
 "Language-Team: Japanese <kde-jp@kde.org>\n"
@@ -2605,7 +2605,7 @@ msgstr ""
 
 #: kontactplugin/korganizer/kcmapptsummary.cpp:71
 #: kontactplugin/korganizer/kcmtodosummary.cpp:56
-#: kontactplugin/specialdates/kcmsdsummary.cpp:61
+#: kontactplugin/specialdates/kcmsdsummary.cpp:56
 #, fuzzy, kde-format
 #| msgctxt "@label suffix in the N days spin box"
 #| msgid " days"

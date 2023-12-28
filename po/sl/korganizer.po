@@ -1,7 +1,7 @@
 # translation of korganizer.po to Slovenian
 # Translation of korganizer.po to Slovenian
 # Copyright (C) 2001,2002, 2003, 2004, 2005, 2006 Free Software Foundation, Inc.
-# $Id: korganizer.po 1667397 2023-12-16 02:03:53Z scripty $
+# $Id: korganizer.po 1668312 2023-12-28 02:00:09Z scripty $
 # $Source$
 #
 # Roman Maurer <roman.maurer@hermes.si>, 2001.
@@ -14,7 +14,7 @@ msgid ""
 msgstr ""
 "Project-Id-Version: korganizer\n"
 "Report-Msgid-Bugs-To: https://bugs.kde.org\n"
-"POT-Creation-Date: 2023-12-16 01:38+0000\n"
+"POT-Creation-Date: 2023-12-28 01:33+0000\n"
 "PO-Revision-Date: 2023-11-13 09:40+0100\n"
 "Last-Translator: Matjaž Jeran <matjaz.jeran@amis.net>\n"
 "Language-Team: Slovenian <lugos-slo@lugos.si>\n"
@@ -2592,7 +2592,7 @@ msgstr ""
 
 #: kontactplugin/korganizer/kcmapptsummary.cpp:71
 #: kontactplugin/korganizer/kcmtodosummary.cpp:56
-#: kontactplugin/specialdates/kcmsdsummary.cpp:61
+#: kontactplugin/specialdates/kcmsdsummary.cpp:56
 #, kde-format
 msgid " day"
 msgid_plural " days"

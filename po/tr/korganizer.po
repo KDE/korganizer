@@ -20,8 +20,8 @@ msgid ""
 msgstr ""
 "Project-Id-Version: kdepim-kde4\n"
 "Report-Msgid-Bugs-To: https://bugs.kde.org\n"
-"POT-Creation-Date: 2023-12-16 01:38+0000\n"
-"PO-Revision-Date: 2023-12-09 22:15+0300\n"
+"POT-Creation-Date: 2023-12-28 01:33+0000\n"
+"PO-Revision-Date: 2023-12-27 14:37+0300\n"
 "Last-Translator: Emir SARI <emir_sari@icloud.com>\n"
 "Language-Team: Turkish <kde-l10n-tr@kde.org>\n"
 "Language: tr\n"
@@ -29,7 +29,7 @@ msgstr ""
 "Content-Type: text/plain; charset=UTF-8\n"
 "Content-Transfer-Encoding: 8bit\n"
 "Plural-Forms: nplurals=2; plural=(n > 1);\n"
-"X-Generator: Lokalize 24.01.80\n"
+"X-Generator: Lokalize 24.01.85\n"
 "(http: //www.transifex.com/projects/p/kdepim-k-tr/language/tr/)\n"
 "X-POOTLE-MTIME: 1413104942.000000\n"
 
@@ -488,7 +488,7 @@ msgid ""
 "will be displayed, but only the events from the days selected in the Date "
 "Navigator sidebar will be shown."
 msgstr ""
-"\"Sıradaki\" etkinliklerinizi ve yapılacaklarınıza hızlıca göz atmanıza izin "
+"\"Sıradaki\" etkinliklerinizi ve yapılacaklarınıza tez göz atmanıza izin "
 "veren \"Sırada Ne Var\" görünümüne geçer. Tüm bekleyen yapılacaklar "
 "görüntülenir; ancak yalnızca Tarih Gezgini kenar çubuğunda seçlii günlerdeki "
 "etkinlikler gösterilir."
@@ -2590,7 +2590,7 @@ msgstr ""
 
 #: kontactplugin/korganizer/kcmapptsummary.cpp:71
 #: kontactplugin/korganizer/kcmtodosummary.cpp:56
-#: kontactplugin/specialdates/kcmsdsummary.cpp:61
+#: kontactplugin/specialdates/kcmsdsummary.cpp:56
 #, kde-format
 msgid " day"
 msgid_plural " days"
