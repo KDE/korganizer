@@ -118,6 +118,7 @@
   <summary xml:lang="uk">KOrganizer програма-календар для планування заходів.</summary>
   <summary xml:lang="x-test">xxKOrganizer is a calendar and scheduling applicationxx</summary>
   <summary xml:lang="zh-CN">KOrganizer 是一个日历和计划任务程序</summary>
+  <summary xml:lang="zh-TW">KOrganizer 是一個行事曆與行程規劃應用程式</summary>
   <description>
     <p>
       KOrganizer is the calendar and scheduling component of Kontact. It provides management of events and tasks, alarm notification, web export, network transparent handling of data, group scheduling, import and export of calendar files and more. It is able to work together with a wide variety of calendaring services, including NextCloud, Kolab, Google Calendar and others. KOrganizer is fully customizable to your needs and is an integral part of the Kontact suite, which aims to be a complete solution for organizing your personal data. KOrganizer supports the two dominant standards for storing and exchanging calendar data, vCalendar and iCalendar.
@@ -409,7 +410,7 @@
       <li xml:lang="sk">Rýchle položky úloh a udalostí</li>
       <li xml:lang="sl">Hitra čakajoča opravila in vnosi dogodkov</li>
       <li xml:lang="sv">Snabba uppgifts- och händelseposter</li>
-      <li xml:lang="tr">Hızlı yapılacak ve olay girişi</li>
+      <li xml:lang="tr">Tez yapılacak ve etkinlik girişi</li>
       <li xml:lang="uk">швидке створення записів завдань та подій;</li>
       <li xml:lang="x-test">xxQuick todo and event entriesxx</li>
       <li xml:lang="zh-CN">快速待办和事件项目</li>
