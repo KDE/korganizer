@@ -6,7 +6,7 @@
   SPDX-FileCopyrightText: 2004 Cornelius Schumacher <schumacher@kde.org>
   SPDX-FileCopyrightText: 2004 Reinhold Kainhofer <reinhold@kainhofer.com>
   SPDX-FileCopyrightText: 2005 Rafal Rzepecki <divide@users.sourceforge.net>
-  SPDX-FileCopyrightText: 2010-2021 Laurent Montel <montel@kde.org>
+  SPDX-FileCopyrightText: 2010-2024 Laurent Montel <montel@kde.org>
   SPDX-FileCopyrightText: 2012-2019 Allen Winter <winter@kde.org>
 
   SPDX-License-Identifier: GPL-2.0-or-later WITH Qt-Commercial-exception-1.0
