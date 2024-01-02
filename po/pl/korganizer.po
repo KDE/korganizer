@@ -1,5 +1,5 @@
 # translation of korganizer.po to
-# Version: $Revision: 1668312 $
+# Version: $Revision: 1668765 $
 # translated by Krzysztof Jasiutowicz <kpjas@priv.onet.pl>
 # contains his updates from 26.01.1999
 # Krzysztof Lichota <lichota@mimuw.edu.pl>, 2002, 2005, 2006.
@@ -13,7 +13,7 @@ msgid ""
 msgstr ""
 "Project-Id-Version: korganizer\n"
 "Report-Msgid-Bugs-To: https://bugs.kde.org\n"
-"POT-Creation-Date: 2023-12-28 01:33+0000\n"
+"POT-Creation-Date: 2024-01-02 01:32+0000\n"
 "PO-Revision-Date: 2023-12-23 11:45+0100\n"
 "Last-Translator: Łukasz Wojniłowicz <lukasz.wojnilowicz@gmai.com>\n"
 "Language-Team: Polish <kde-i18n-doc@kde.org>\n"
@@ -53,13 +53,19 @@ msgid "A Personal Organizer"
 msgstr "Osobisty organizator"
 
 #: aboutdata.cpp:22
-#, kde-format
+#, fuzzy, kde-format
+#| msgid ""
+#| "Copyright © 1997–1999 Preston Brown\n"
+#| "Copyright © 2000–2004, 2007 Cornelius Schumacher\n"
+#| "Copyright © 2004–2005 Reinhold Kainhofer\n"
+#| "Copyright © 2006–2012 Allen Winter\n"
+#| "Copyright © 2012–2022 KOrganizer authors"
 msgid ""
 "Copyright © 1997–1999 Preston Brown\n"
 "Copyright © 2000–2004, 2007 Cornelius Schumacher\n"
 "Copyright © 2004–2005 Reinhold Kainhofer\n"
 "Copyright © 2006–2012 Allen Winter\n"
-"Copyright © 2012–2022 KOrganizer authors"
+"Copyright © 2012–2024 KOrganizer authors"
 msgstr ""
 "Prawa autorskie © 1997–1999 Preston Brown\n"
 "Prawa autorskie © 2000–2004, 2007 Cornelius Schumacher\n"
