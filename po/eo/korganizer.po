@@ -8,7 +8,7 @@ msgstr ""
 "Project-Id-Version: korganizer\n"
 "Report-Msgid-Bugs-To: https://bugs.kde.org\n"
 "POT-Creation-Date: 2024-01-02 01:32+0000\n"
-"PO-Revision-Date: 2024-01-03 12:30+0100\n"
+"PO-Revision-Date: 2024-01-04 22:05+0100\n"
 "Last-Translator: Oliver Kellogg <okellogg@users.sourceforge.net>\n"
 "Language-Team: esperanto <kde-i18n-eo@kde.org>\n"
 "Language: eo\n"
@@ -956,7 +956,7 @@ msgstr "&Montri"
 #: actionmanager.cpp:618 actionmanager.cpp:1302 actionmanager.cpp:1341
 #, kde-format
 msgid "&Edit..."
-msgstr "&Redakto"
+msgstr "R&edakti..."
 
 #: actionmanager.cpp:627
 #, kde-format
@@ -3699,7 +3699,7 @@ msgstr "Vido de Tagordo"
 #, kde-format
 msgctxt "@label suffix in the hour size spin box"
 msgid " pixels"
-msgstr "pikseloj"
+msgstr " rastrumeroj"
 
 #: prefs/koprefsdialogviews.cpp:125
 #, kde-format

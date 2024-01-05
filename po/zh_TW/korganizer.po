@@ -9,13 +9,13 @@
 #
 # Frank Weng (a.k.a. Franklin) <franklin at goodhorse dot idv dot tw>, 2006, 2007, 2008, 2009, 2010.
 # Franklin Weng <franklin at goodhorse dot idv dot tw>, 2007, 2008.
-# SPDX-FileCopyrightText: 2023 Kisaragi Hiu <mail@kisaragi-hiu.com>
+# SPDX-FileCopyrightText: 2023, 2024 Kisaragi Hiu <mail@kisaragi-hiu.com>
 msgid ""
 msgstr ""
 "Project-Id-Version: korganizer\n"
 "Report-Msgid-Bugs-To: https://bugs.kde.org\n"
 "POT-Creation-Date: 2024-01-02 01:32+0000\n"
-"PO-Revision-Date: 2023-12-27 17:52+0900\n"
+"PO-Revision-Date: 2024-01-05 04:51+0900\n"
 "Last-Translator: Kisaragi Hiu <mail@kisaragi-hiu.com>\n"
 "Language-Team: Traditional Chinese <zh-l10n@lists.slat.org>\n"
 "Language: zh_TW\n"
@@ -51,13 +51,7 @@ msgid "A Personal Organizer"
 msgstr "個人事務組織軟體"
 
 #: aboutdata.cpp:22
-#, fuzzy, kde-format
-#| msgid ""
-#| "Copyright © 1997–1999 Preston Brown\n"
-#| "Copyright © 2000–2004, 2007 Cornelius Schumacher\n"
-#| "Copyright © 2004–2005 Reinhold Kainhofer\n"
-#| "Copyright © 2006–2012 Allen Winter\n"
-#| "Copyright © 2012–2022 KOrganizer authors"
+#, kde-format
 msgid ""
 "Copyright © 1997–1999 Preston Brown\n"
 "Copyright © 2000–2004, 2007 Cornelius Schumacher\n"
@@ -69,7 +63,7 @@ msgstr ""
 "Copyright © 2000–2004, 2007 Cornelius Schumacher\n"
 "Copyright © 2004–2005 Reinhold Kainhofer\n"
 "Copyright © 2006–2012 Allen Winter\n"
-"Copyright © 2012–2022 KOrganizer 作者群"
+"Copyright © 2012–2024 KOrganizer 作者群"
 
 #: aboutdata.cpp:30 kontactplugin/specialdates/specialdates_plugin.cpp:42
 #, kde-format
@@ -548,7 +542,7 @@ msgstr "清單檢視"
 #, kde-format
 msgctxt "@info:tooltip"
 msgid "Switch to the List View"
-msgstr ""
+msgstr "切換至清單檢視"
 
 #: actionmanager.cpp:421
 #, kde-format
@@ -557,6 +551,8 @@ msgid ""
 "Switches to the List View, which displays all your to-dos, events and "
 "journal entries for the dates selected in the Date Navigator as a list."
 msgstr ""
+"切換至清單檢視，這裡會以清單方式顯示您日期瀏覽中所選日期內的所有待辦事項、事"
+"件和日誌項目。"
 
 #: actionmanager.cpp:427
 #, kde-format
@@ -581,7 +577,7 @@ msgctxt "@info:whatsthis"
 msgid ""
 "Switches to the To-do List view, which provides a place for you to track "
 "tasks that need to be done."
-msgstr ""
+msgstr "切換至待辦事項清單檢視，提供讓您追蹤需要完成的事項的地方。"
 
 #: actionmanager.cpp:437
 #, kde-format
@@ -671,7 +667,7 @@ msgstr "過濾器(&I)"
 #, kde-format
 msgctxt "@info:status"
 msgid "Filter incidences"
-msgstr ""
+msgstr "過濾重複事件"
 
 #: actionmanager.cpp:475
 #, fuzzy, kde-format
@@ -688,6 +684,8 @@ msgid ""
 "Runs user-defined view filters on the calendar collection. Filters must be "
 "created first. See \"Manage View Filters\" option in the Settings menu."
 msgstr ""
+"對行事曆收藏執行使用者定義的檢視過濾器。必須先建立好過濾器。請見設定選單中的"
+"「管理檢視過濾器」選項。"
 
 #: actionmanager.cpp:489
 #, kde-format
@@ -737,7 +735,7 @@ msgstr "讓檢視跳到今天"
 #, kde-format
 msgctxt "@info:whatsthis"
 msgid "Scrolls the current view to the today's date."
-msgstr ""
+msgstr "將目前檢視捲動到今天的日期。"
 
 #: actionmanager.cpp:522
 #, kde-format
@@ -769,7 +767,7 @@ msgctxt "@info:whatsthis"
 msgid ""
 "Scrolls backward by a day, week, month or year, depending on the current "
 "calendar view."
-msgstr ""
+msgstr "根據目前行事曆檢視，往過去捲動一天、一週、一個月或一年。"
 
 #: actionmanager.cpp:533
 #, kde-format
@@ -801,7 +799,7 @@ msgctxt "@info:whatsthis"
 msgid ""
 "Scrolls forward by a day, week, month or year, depending on the current "
 "calendar view."
-msgstr ""
+msgstr "根據目前行事曆檢視，往未來捲動一天、一週、一個月或一年。"
 
 #: actionmanager.cpp:543
 #, kde-format
@@ -848,6 +846,8 @@ msgid ""
 "Starts a dialog that allows you to create a new Event with reminders, "
 "attendees, recurrences and much more."
 msgstr ""
+"會開啟一個設定對話框，讓您建立新的事件，並為其加上提醒、參與者、重複方式等等"
+"資訊。"
 
 #: actionmanager.cpp:576 kodaymatrix.cpp:485
 #, kde-format
@@ -873,6 +873,8 @@ msgid ""
 "Starts a dialog that allows you to create a new To-do with reminders, "
 "attendees, recurrences and much more."
 msgstr ""
+"會開啟一個設定對話框，讓您建立新的待辦事項，並為其加上提醒、參與者、重複方式"
+"等等資訊。"
 
 #: actionmanager.cpp:587
 #, kde-format
@@ -934,7 +936,7 @@ msgctxt "@info:whatsthis"
 msgid ""
 "Starts a configuration dialog that allows you to change the settings for the "
 "current calendar view."
-msgstr ""
+msgstr "會開啟一個設定對話框，讓您調整目前行事曆檢視的設定。"
 
 #: actionmanager.cpp:614 actionmanager.cpp:1299 actionmanager.cpp:1340
 #, kde-format
@@ -1248,7 +1250,7 @@ msgstr "設定搜尋關鍵字"
 #, kde-format
 msgctxt "@info:whatsthis"
 msgid "Lets you search for a keyword in your calendars"
-msgstr ""
+msgstr "讓您在您的行事曆中搜尋關鍵字"
 
 #: akonadicollectionview.cpp:411
 #, kde-format
@@ -2114,7 +2116,7 @@ msgstr "從 Akonadi 取得重複事件時失敗"
 #, kde-format
 msgid ""
 "Failed to retrieve incidence from Akonadi: requested incidence doesn't exist."
-msgstr ""
+msgstr "從 Akonadi 取得重複事件時失敗：請求的重複事件不存在。"
 
 #: kocorehelper.cpp:30
 #, kde-format
@@ -2555,7 +2557,7 @@ msgstr "郵件：%1"
 #, kde-format
 msgctxt "Event from email content"
 msgid "<b>From:</b> %1<br /><b>To:</b> %2<br /><b>Subject:</b> %3"
-msgstr ""
+msgstr "<b>寄件者：</b>%1<br /><b>收件者：</b>%2<br /><b>主旨：</b>%3"
 
 #: kontactplugin/korganizer/summaryeventinfo.cpp:136
 #, kde-format
@@ -3248,7 +3250,7 @@ msgstr "將指定的檔案與現有的行事曆合併"
 #: korganizer_options.h:21
 #, kde-format
 msgid "Display the specified incidence (by URL)"
-msgstr ""
+msgstr "顯示指定的重複事件（依網址）"
 
 #: korganizer_options.h:24
 #, kde-format
@@ -3261,7 +3263,7 @@ msgstr ""
 #: korganizer_options.h:28
 #, kde-format
 msgid "Lists the available options for user feedback"
-msgstr ""
+msgstr "列出能用於使用者意見回應的選項"
 
 #: koviewmanager.cpp:427
 #, kde-format
@@ -3636,13 +3638,13 @@ msgstr "偏好設定"
 msgid ""
 "You are about to set all preferences to default values. All custom "
 "modifications will be lost."
-msgstr ""
+msgstr "您即將把所有偏好設定都重設為預設值。會喪失您所進行的所有變更。"
 
 #: prefs/kprefsdialog.cpp:869
 #, kde-format
 msgctxt "@title:window"
 msgid "Setting Default Preferences"
-msgstr ""
+msgstr "設定預設偏好設定"
 
 #: prefs/kprefsdialog.cpp:870
 #, kde-format
@@ -3745,17 +3747,13 @@ msgstr "使用假日區域設定："
 
 #. i18n: ectx: whatsthis, entry (Holidays), group (Time &amp; Date)
 #: settings/korganizer.kcfg:51
-#, fuzzy, kde-format
-#| msgid ""
-#| "Select from which region you want to use the holidays here. Defined "
-#| "holidays are shown as non-working days in the date navigator, the agenda "
-#| "view, etc."
+#, kde-format
 msgid ""
 "Select which regions you want to use the holidays here. Defined holidays are "
 "shown as non-working days in the date navigator, the agenda view, etc."
 msgstr ""
-"請選擇您使用的假日區域。「假日」在瀏覽日期或檢視行程時將會被列為不必工作的日"
-"子。"
+"請選擇您要使用哪些區域的假日。定義的假日在日期瀏覽、行程檢視等處會顯示為非工"
+"作日。"
 
 #. i18n: ectx: label, entry (WeekStartDay), group (Time &amp; Date)
 #: settings/korganizer.kcfg:55
@@ -3775,7 +3773,7 @@ msgstr "選取每週的第一天"
 msgid ""
 "Select the first day of each week. Normally, you can ignore this since it is "
 "set in your locale."
-msgstr ""
+msgstr "選取每週的第一天。一般來說，您可以忽略此選項，因為其已由您的語系設定。"
 
 #. i18n: ectx: label, entry (WorkingHoursStart), group (Time &amp; Date)
 #: settings/korganizer.kcfg:62
@@ -4765,10 +4763,9 @@ msgstr "選擇重點顏色。重點顏色會用於行程表或日期瀏覽中，
 
 #. i18n: ectx: label, entry, group (Theming)
 #: settings/korganizer.kcfg:558
-#, fuzzy, kde-format
-#| msgid "Use custom &icons:"
+#, kde-format
 msgid "Use system color"
-msgstr "使用自訂圖示(&I):"
+msgstr "使用系統色彩"
 
 #. i18n: ectx: whatsthis, entry, group (Theming)
 #: settings/korganizer.kcfg:559
@@ -4776,7 +4773,7 @@ msgstr "使用自訂圖示(&I):"
 msgid ""
 "Use system color instead of user defined color. If enabled will ignore all "
 "other color settings"
-msgstr ""
+msgstr "使用系統色彩而非使用者定義的色彩。若啟用，將會忽略所有其他的色彩設定"
 
 #. i18n: ectx: label, entry, group (Theme/Month view)
 #: settings/korganizer.kcfg:570
@@ -4899,10 +4896,9 @@ msgstr ""
 
 #. i18n: ectx: property (text), widget (QLabel, mCompletedTimeSpanLabel)
 #: ui/filteredit_base.ui:180
-#, fuzzy, kde-format
-#| msgid "Days after completion:"
+#, kde-format
 msgid "Da&ys after completion:"
-msgstr "多久以前完成的："
+msgstr "完成之後幾天(&Y)："
 
 #. i18n: ectx: property (whatsThis), widget (QSpinBox, mCompletedTimeSpan)
 #: ui/filteredit_base.ui:193
