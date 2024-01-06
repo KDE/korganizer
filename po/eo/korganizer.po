@@ -8,7 +8,7 @@ msgstr ""
 "Project-Id-Version: korganizer\n"
 "Report-Msgid-Bugs-To: https://bugs.kde.org\n"
 "POT-Creation-Date: 2024-01-02 01:32+0000\n"
-"PO-Revision-Date: 2024-01-04 22:05+0100\n"
+"PO-Revision-Date: 2024-01-05 21:02+0100\n"
 "Last-Translator: Oliver Kellogg <okellogg@users.sourceforge.net>\n"
 "Language-Team: esperanto <kde-i18n-eo@kde.org>\n"
 "Language: eo\n"
@@ -2418,7 +2418,7 @@ msgstr "1 tago"
 #, kde-format
 msgctxt "days to show in summary"
 msgid " days"
-msgstr "tagoj"
+msgstr " tagoj"
 
 #. i18n: ectx: property (title), widget (QGroupBox, mShowButtonGroup)
 #: kontactplugin/korganizer/apptsummaryconfig_base.ui:122
@@ -3681,7 +3681,7 @@ msgstr "Montraj Opcioj"
 #, kde-format
 msgctxt "@label suffix in the N days spin box"
 msgid " days"
-msgstr "tagoj"
+msgstr " tagoj"
 
 #: prefs/koprefsdialogviews.cpp:69
 #, kde-format
