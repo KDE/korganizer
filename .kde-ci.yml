@@ -40,3 +40,6 @@ Dependencies:
     'frameworks/kcontacts': '@latest-kf6'
     'frameworks/kcalendarcore': '@latest-kf6'
     'frameworks/kuserfeedback': '@latest-kf6'
+
+Options:
+  require-passing-tests-on: [ 'Linux', 'FreeBSD' ]      
