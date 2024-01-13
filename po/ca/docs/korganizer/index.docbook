@@ -1486,7 +1486,7 @@ choose the <menuchoice
 >.</para>
 
 <para
->Els filtres són útils per <link linkend="managing-export"
+>Els filtres són útils en <link linkend="managing-export"
 >exportar el vostre calendari</link
 >. Si useu un filtre, tan sols s'exportaran els elements filtrats (visibles). Els filtres també són més efectius quan els elements ja es troben classificats i organitzats per <link linkend="categories-view"
 >etiquetes</link
@@ -2324,7 +2324,7 @@ choose the <menuchoice
 ><guimenuitem
 >Envia una invitació als assistents</guimenuitem
 ></menuchoice
->. També, si canvieu el vostre estat com assistent a un esdeveniment al qual se us ha invitat, us demanarà si voleu enviar una actualització a l'organitzador de l'esdeveniment, de manera que després haureu d'utilitzar l'element de menú <menuchoice
+>. També, si canvieu el vostre estat com a assistent a un esdeveniment al qual se us ha invitat, us demanarà si voleu enviar una actualització a l'organitzador de l'esdeveniment, de manera que després haureu d'utilitzar l'element de menú <menuchoice
 ><guimenu
 >Planifica</guimenu
 > <guimenuitem
@@ -2447,7 +2447,7 @@ choose the <menuchoice
 
 <sect1 id="as-attendee">
 <title
->Actuar com assistent</title>
+>Actuar com a assistent</title>
 
 <para
 >Quan rebeu un correu electrònic amb una invitació i l'accepteu, l'esdeveniment o tasca pendent serà afegida al vostre calendari. Si és un esdeveniment, se situa una petita icona <inlinemediaobject
@@ -2998,7 +2998,7 @@ choose the <menuchoice
 >Esdeveniment nou</link
 > des del <link linkend="entering-data-events"
 >menú d'accions</link
-> o creeu un esdeveniment d'alguna altra manera que el &korganizer; no pugui endevinar quan us agradaria que comenci l'esdeveniment, el &korganizer; posarà aquesta hora en la de començament de l'editor com a valor predeterminat.</para
+> o creeu un esdeveniment d'alguna altra manera que el &korganizer; no pugui endevinar quan us agradaria que comencés l'esdeveniment, el &korganizer; posarà aquesta hora en la de començament de l'editor com a valor predeterminat.</para
 ></listitem>
 </varlistentry>
 
