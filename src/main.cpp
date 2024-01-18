@@ -35,6 +35,7 @@ int main(int argc, char **argv)
     const QStringList args = QApplication::arguments();
     cmdArgs->process(args);
     aboutData.processCommandLine(cmdArgs);
+    QApplication::setWindowIcon(QIcon::fromTheme(QStringLiteral("korganizer")));
 
 #ifdef WITH_KUSERFEEDBACK
     if (cmdArgs->isSet(QStringLiteral("feedback"))) {
