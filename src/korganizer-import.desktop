@@ -217,6 +217,6 @@ GenericName[wa]=Organizeu da sinne
 GenericName[x-test]=xxPersonal Organizerxx
 GenericName[zh_CN]=个人日程安排工具
 GenericName[zh_TW]=個人行程組織軟體
-X-KDE-StartupNotify=true
+StartupNotify=true
 X-DBUS-StartupType=Unique
 InitialPreference=10

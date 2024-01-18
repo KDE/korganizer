@@ -77,6 +77,6 @@ NoDisplay=true
 MimeType=application/x-vnd.akonadi.calendar.event;application/x-vnd.akonadi.calendar.journal;application/x-vnd.akonadi.calendar.todo;text/calendar
 X-KDE-Protocols=akonadi
 
-X-KDE-StartupNotify=true
+StartupNotify=true
 X-DBUS-StartupType=Unique
 X-DBUS-ServiceName=org.kde.korganizer
