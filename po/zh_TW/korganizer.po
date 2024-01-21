@@ -15,7 +15,7 @@ msgstr ""
 "Project-Id-Version: korganizer\n"
 "Report-Msgid-Bugs-To: https://bugs.kde.org\n"
 "POT-Creation-Date: 2024-01-02 01:32+0000\n"
-"PO-Revision-Date: 2024-01-05 19:51+0900\n"
+"PO-Revision-Date: 2024-01-21 01:59+0900\n"
 "Last-Translator: Kisaragi Hiu <mail@kisaragi-hiu.com>\n"
 "Language-Team: Traditional Chinese <zh-l10n@lists.slat.org>\n"
 "Language: zh_TW\n"
@@ -5399,10 +5399,9 @@ msgstr "標籤(&G)"
 
 #. i18n: ectx: property (toolTip), widget (QCheckBox, locationCheck)
 #: ui/searchdialog_base.ui:140
-#, fuzzy, kde-format
-#| msgid "Include item locations in your search"
+#, kde-format
 msgid "Include locations in your search."
-msgstr "在搜尋中包含項目位置"
+msgstr "在搜尋中包含位置。"
 
 #. i18n: ectx: property (whatsThis), widget (QCheckBox, locationCheck)
 #: ui/searchdialog_base.ui:143
@@ -5422,10 +5421,9 @@ msgstr "位置"
 
 #. i18n: ectx: property (toolTip), widget (QCheckBox, descriptionCheck)
 #: ui/searchdialog_base.ui:153
-#, fuzzy, kde-format
-#| msgid "Include item descriptions in your search"
+#, kde-format
 msgid "Include descriptions in your search."
-msgstr "在搜尋中包含項目描述"
+msgstr "在搜尋中包含描述。"
 
 #. i18n: ectx: property (whatsThis), widget (QCheckBox, descriptionCheck)
 #: ui/searchdialog_base.ui:156
@@ -5445,10 +5443,9 @@ msgstr "說明(&R)"
 
 #. i18n: ectx: property (toolTip), widget (QCheckBox, summaryCheck)
 #: ui/searchdialog_base.ui:166
-#, fuzzy, kde-format
-#| msgid "Include item summaries in your search"
+#, kde-format
 msgid "Include summaries in your search."
-msgstr "在搜尋中包含項目摘要"
+msgstr "在搜尋中包含摘要。"
 
 #. i18n: ectx: property (whatsThis), widget (QCheckBox, summaryCheck)
 #: ui/searchdialog_base.ui:169
@@ -5468,20 +5465,16 @@ msgstr "摘要(&M)"
 
 #. i18n: ectx: property (toolTip), widget (QCheckBox, attendeeCheck)
 #: ui/searchdialog_base.ui:182
-#, fuzzy, kde-format
-#| msgid "Include item categories in your search"
+#, kde-format
 msgid "Include attendees in your search."
-msgstr "在搜尋中包含項目類別"
+msgstr "在搜尋中包含參加者。"
 
 #. i18n: ectx: property (whatsThis), widget (QCheckBox, attendeeCheck)
 #: ui/searchdialog_base.ui:185
-#, fuzzy, kde-format
-#| msgid ""
-#| "Check this box if you want to match item categories against your search "
-#| "pattern."
+#, kde-format
 msgid ""
 "Check this box if you want to match attendees against your search pattern."
-msgstr "若您要在搜尋時比對類別，請勾選此選項。"
+msgstr "若您要在搜尋時比對參加者，請勾選此選項。"
 
 #. i18n: ectx: property (text), widget (QCheckBox, attendeeCheck)
 #: ui/searchdialog_base.ui:188
@@ -5606,6 +5599,8 @@ msgid ""
 "Include to-dos that have a start date, due date,  or completion date in the "
 "date range specified, or have neither a start date nor an end date."
 msgstr ""
+"包含符合以下條件的待辦事項：有起始日期、到期日期或完成日期且各日期在指定日期"
+"範圍內，或沒有起始日期也沒有結束日期。"
 
 #. i18n: ectx: property (whatsThis), widget (QCheckBox, includeUndatedTodos)
 #: ui/searchdialog_base.ui:312
@@ -5616,13 +5611,15 @@ msgid ""
 "nor an end date.  If the box is unchecked, only to-dos that have a due date "
 "in the date range will be displayed."
 msgstr ""
+"勾選此選項以搜尋符合此條件的待辦事項：有起始日期、到期日期或完成日期且各日期"
+"在指定日期範圍內，或沒有起始日期也沒有結束日期。不勾選此選項時，只會顯示到期"
+"日期在日期範圍內的待辦事項。"
 
 #. i18n: ectx: property (text), widget (QCheckBox, includeUndatedTodos)
 #: ui/searchdialog_base.ui:315
-#, fuzzy, kde-format
-#| msgid "Include E&vents within the specified date range"
+#, kde-format
 msgid "Include all to-dos &within the specified date range"
-msgstr "包含指定日期範圍內的事件(&V)"
+msgstr "包含指定日期範圍內的待辦事項(&W)"
 
 #. i18n: ectx: property (text), widget (QPushButton, mDayBtn)
 #: views/collectionview/quickview.ui:34
