@@ -15,14 +15,14 @@ msgstr ""
 "Project-Id-Version: korganizer\n"
 "Report-Msgid-Bugs-To: https://bugs.kde.org\n"
 "POT-Creation-Date: 2024-01-02 01:32+0000\n"
-"PO-Revision-Date: 2024-01-21 01:59+0900\n"
+"PO-Revision-Date: 2024-01-28 00:58+0900\n"
 "Last-Translator: Kisaragi Hiu <mail@kisaragi-hiu.com>\n"
 "Language-Team: Traditional Chinese <zh-l10n@lists.slat.org>\n"
 "Language: zh_TW\n"
 "MIME-Version: 1.0\n"
 "Content-Type: text/plain; charset=UTF-8\n"
 "Content-Transfer-Encoding: 8bit\n"
-"X-Generator: Lokalize 23.08.4\n"
+"X-Generator: Lokalize 24.01.95\n"
 "Plural-Forms: nplurals=1; plural=0;\n"
 
 #, kde-format
@@ -315,15 +315,14 @@ msgid "Import an iCalendar or vCalendar file"
 msgstr "匯入 iCalendar 或 vCalendar 檔案"
 
 #: actionmanager.cpp:247
-#, fuzzy, kde-format
-#| msgid ""
-#| "Select this menu entry if you would like to merge the contents of another "
-#| "iCalendar into your current calendar."
+#, kde-format
 msgctxt "@info:whatsthis"
 msgid ""
 "Select this menu entry if you would like to import the contents of an "
 "iCalendar or vCalendar file into your current calendar collection."
-msgstr "選取此項目，您可以將另一個 iCalendar 的內容合併到目前的行事曆。"
+msgstr ""
+"選取此項目來將一個 iCalendar 或 vCalendar 檔案的內容匯入您目前的行事曆收藏"
+"中。"
 
 #: actionmanager.cpp:253
 #, kde-format
@@ -437,7 +436,7 @@ msgctxt "@info:whatsthis"
 msgid ""
 "Allows you to remove all completed to-dos from your calendar collection. "
 "This action cannot be undone!"
-msgstr ""
+msgstr "讓您從行事曆收藏中移除所有已完成的待辦事項。這個動作無法復原！"
 
 #. i18n: ectx: property (text), widget (QPushButton, mDeleteButton)
 #: actionmanager.cpp:367 actionmanager.cpp:622 actionmanager.cpp:1305
@@ -499,7 +498,7 @@ msgctxt "@info:whatsthis"
 msgid ""
 "Switches to the Month View, which shows all the events and due to-dos in a "
 "familiar monthly calendar layout."
-msgstr ""
+msgstr "切換到月份檢視，用常見的月份行事曆版面配置來顯示所有事件和待辦事項。"
 
 #: actionmanager.cpp:406
 #, kde-format
@@ -526,6 +525,8 @@ msgid ""
 "one or more days, sorted chronologically.  You can also see the length of "
 "each event in the day timetable."
 msgstr ""
+"切換到行程檢視，這個檢視會將您某天內或某幾天內的事件和待辦事項依時間排序一一"
+"顯示。在單日時間表內可以看到各個事件的長度。"
 
 #: actionmanager.cpp:417
 #, kde-format
@@ -670,12 +671,10 @@ msgid "Filter incidences"
 msgstr "過濾重複事件"
 
 #: actionmanager.cpp:475
-#, fuzzy, kde-format
-#| msgctxt "@info:tooltip"
-#| msgid "The reminder is set for this date/time"
+#, kde-format
 msgctxt "@info:tooltip"
 msgid "Filter incidences from the calendar"
-msgstr "已設定提醒於此日期/時間"
+msgstr "從行事曆過濾事件"
 
 #: actionmanager.cpp:477
 #, kde-format
@@ -899,14 +898,10 @@ msgid "Create a new Journal"
 msgstr "建立新日誌"
 
 #: actionmanager.cpp:598
-#, fuzzy, kde-format
-#| msgctxt "@info:whatsthis"
-#| msgid ""
-#| "You will be presented with a dialog where you can create a new journal "
-#| "entry."
+#, kde-format
 msgctxt "@info:whatsthis"
 msgid "Starts a dialog that allows you to create a new Journal entry."
-msgstr "會顯示一對話框，讓您建立新的日誌項目。"
+msgstr "會顯示一個對話框，讓您建立新的日誌項目。"
 
 #: actionmanager.cpp:603
 #, kde-format
@@ -1718,11 +1713,10 @@ msgid "&Name:"
 msgstr "名稱(&N)："
 
 #: collectiongeneralpage.cpp:50
-#, fuzzy, kde-format
-#| msgid "No reminders"
+#, kde-format
 msgctxt "@option:check"
 msgid "Block reminders locally"
-msgstr "無提醒"
+msgstr "在本地封鎖提醒"
 
 #: collectiongeneralpage.cpp:51
 #, kde-format
@@ -1731,15 +1725,12 @@ msgid "Ignore reminders from this calendar"
 msgstr "忽略這個行事曆的提醒"
 
 #: collectiongeneralpage.cpp:53
-#, fuzzy, kde-format
-#| msgid ""
-#| "Check this box if you do not want to see To-dos with a start date in the "
-#| "future."
+#, kde-format
 msgctxt "@info:whatsthis"
 msgid ""
 "Check this box if you do not want to receive reminders from items associated "
 "with this calendar."
-msgstr "勾選此選項，可隱藏尚未開始的待辦事項。"
+msgstr "勾選此選項來停止收到來自這個行事曆的項目的提醒。"
 
 #: collectiongeneralpage.cpp:58
 #, kde-format
@@ -1955,8 +1946,7 @@ msgstr ""
 "無效的搜尋條件，無法進行搜尋。有必要時，請在搜尋條件中使用萬用字元“*”和“?”。"
 
 #: dialog/searchdialog.cpp:157
-#, fuzzy, kde-format
-#| msgid "No items were found that match your search pattern."
+#, kde-format
 msgctxt "@info"
 msgid "No items were found that match your search pattern."
 msgstr "沒有找到符合您的搜尋條件的項目。"
@@ -3062,14 +3052,11 @@ msgstr "在您的行事曆中顯示特殊事件"
 
 #. i18n: ectx: property (whatsThis), widget (QCheckBox, mShowSpecialsFromCalBox)
 #: kontactplugin/specialdates/sdsummaryconfig_base.ui:187
-#, fuzzy, kde-format
-#| msgid ""
-#| "Enable this option to include events from your calendar with the "
-#| "\"special occasion\" category."
+#, kde-format
 msgid ""
 "Enable this option to include events from your calendar with the \"special "
 "occasion\" tag."
-msgstr "開啟此選項的話，則會引入「特殊事件」類別中的事件到您的行事曆中。"
+msgstr "啟用此選項來包含您的行事曆中有「特殊事件」標籤的事件。"
 
 #. i18n: ectx: property (text), widget (QCheckBox, mShowSpecialsFromCalBox)
 #: kontactplugin/specialdates/sdsummaryconfig_base.ui:190
@@ -3298,25 +3285,18 @@ msgid "Tags"
 msgstr "標籤"
 
 #: prefs/koprefsdialogcolorsandfonts.cpp:107
-#, fuzzy, kde-format
-#| msgctxt "@info:whatsthis"
-#| msgid ""
-#| "Select the calendar you want to modify. You can change the selected "
-#| "calendar color using the button below."
+#, kde-format
 msgctxt "@info:whatsthis"
 msgid ""
 "Select the tag you want to modify. You can change the selected tag's color "
 "using the adjacent color button."
-msgstr "選擇您要變更的行事曆。您可以用底下的按鈕改變所選的行事曆顏色。"
+msgstr "選擇您要變更的標籤。您可以用旁邊的顏色按鈕來改變所選標籤的顏色。"
 
 #: prefs/koprefsdialogcolorsandfonts.cpp:115
-#, fuzzy, kde-format
-#| msgctxt "@info:whatsthis"
-#| msgid ""
-#| "Choose here the color of the calendar selected using the combo box above."
+#, kde-format
 msgctxt "@info:whatsthis"
 msgid "Choose the color of the tag selected in the adjacent combo box."
-msgstr "在此選擇此行事曆的顏色。"
+msgstr "在旁邊的方塊選擇所選標籤的顏色。"
 
 #: prefs/koprefsdialogcolorsandfonts.cpp:123
 #, kde-format
@@ -3677,21 +3657,17 @@ msgstr "新的事件、待辦事項與日誌項目應該"
 
 #. i18n: ectx: label, entry (Destination), group (Save Settings)
 #: settings/korganizer.kcfg:25
-#, fuzzy, kde-format
-#| msgid "Be added to the standard calendar"
+#, kde-format
 msgid "Be added to the default calendar"
-msgstr "加到標準行事曆中"
+msgstr "加到預設行事曆中"
 
 #. i18n: ectx: whatsthis, entry (Destination), group (Save Settings)
 #: settings/korganizer.kcfg:26
-#, fuzzy, kde-format
-#| msgid ""
-#| "Select this option to always record new events, to-dos and journal "
-#| "entries using the standard calendar."
+#, kde-format
 msgid ""
 "Select this option to always record new events, to-dos and journal entries "
 "using the current default calendar."
-msgstr "選擇此項目，會將新的事件、待辦事項及日誌項目加到標準行事曆中。"
+msgstr "選擇此選項來將新的事件、待辦事項及日誌項目加到目前的預設行事曆中。"
 
 #. i18n: ectx: label, entry (Destination), group (Save Settings)
 #: settings/korganizer.kcfg:29
@@ -3859,14 +3835,12 @@ msgstr "待辦事項使用標籤的顏色"
 
 #. i18n: ectx: whatsthis, entry, group (General View)
 #: settings/korganizer.kcfg:97
-#, fuzzy, kde-format
-#| msgid ""
-#| "Check this box so that to-dos will use category colors and not colors "
-#| "specific to their due, due today or overdue state"
+#, kde-format
 msgid ""
 "Check this box so that to-dos will use tag colors and not colors specific to "
 "their due, due today or overdue state"
-msgstr "勾選此選項的話，待辦事項會使用分類的顏色，而不是根據到期日來區分顏色。"
+msgstr ""
+"勾選此選項的話，待辦事項會使用標籤的顏色，而不是根據到期狀態來區分顏色。"
 
 #. i18n: ectx: label, entry, group (General View)
 #: settings/korganizer.kcfg:102
@@ -4108,31 +4082,23 @@ msgstr "標籤在內，行事曆在外"
 #. i18n: ectx: whatsthis, entry, group (Agenda View)
 #. i18n: ectx: whatsthis, entry, group (Month View)
 #: settings/korganizer.kcfg:190 settings/korganizer.kcfg:280
-#, fuzzy, kde-format
-#| msgid ""
-#| "Select the \"Category inside, calendar outside\" option if you would like "
-#| "to draw calendar items in their associated category color, with the "
-#| "item's border drawn in the color of its calendar.  Please use the Colors "
-#| "and Fonts configuration page for setting these colors."
+#, kde-format
 msgid ""
 "Select the \"Tag inside, calendar outside\" option if you would like to draw "
 "calendar items using their associated tag color, with the item's border "
 "drawn in the color of its calendar.  Please use the Colors and Fonts "
 "configuration page for setting these colors."
 msgstr ""
-"「類別在內，行事曆在外」表示您要依所屬類別來繪製行事曆項目，然後它的邊框則是"
-"依行事曆的顏色。您可以用「顏色與字型」設定頁來設定這些顏色。"
+"「標籤在內，行事曆在外」表示您要依所包含標籤來繪製行事曆項目，然後它的邊框則"
+"是依行事曆的顏色。您可以用「顏色與字型」設定頁面來設定這些顏色。"
 
 #. i18n: ectx: tooltip, entry, group (Agenda View)
 #: settings/korganizer.kcfg:191
-#, fuzzy, kde-format
-#| msgid ""
-#| "Draw agenda items in their category color inside and calendar color for "
-#| "their border"
+#, kde-format
 msgid ""
 "Draw agenda items with their tag color inside and calendar color for their "
 "border"
-msgstr "繪製行程項目時，用類別的顏色畫裡面，邊框則用行事曆的顏色"
+msgstr "繪製行程項目時，用標籤的顏色繪製內部，邊框則用行事曆的顏色"
 
 #. i18n: ectx: label, entry, group (Agenda View)
 #. i18n: ectx: label, entry, group (Month View)
@@ -4144,31 +4110,23 @@ msgstr "行事曆在內，標籤在外"
 #. i18n: ectx: whatsthis, entry, group (Agenda View)
 #. i18n: ectx: whatsthis, entry, group (Month View)
 #: settings/korganizer.kcfg:195 settings/korganizer.kcfg:285
-#, fuzzy, kde-format
-#| msgid ""
-#| "Select the \"Calendar inside, category outside\" option if you would like "
-#| "to draw calendar items in their associated calendar color, with the "
-#| "item's border drawn in the color of its category.  Please use the Colors "
-#| "and Fonts configuration page for setting these colors."
+#, kde-format
 msgid ""
 "Select the \"Calendar inside, tag outside\" option if you would like to draw "
 "calendar items using their associated calendar color, with the item's border "
 "drawn in the color of its tag.  Please use the Colors and Fonts "
 "configuration page for setting these colors."
 msgstr ""
-"「行事曆在內，類別在外」表示您要依行事曆來繪製行事曆項目，然後它的邊框則是依"
-"所屬類別的顏色。您可以用「顏色與字型」設定頁來設定這些顏色。"
+"「行事曆在內，標籤在外」表示您要依行事曆顏色來繪製行事曆項目，然後它的邊框則"
+"是依所包含標籤的顏色。您可以用「顏色與字型」設定頁面來設定這些顏色。"
 
 #. i18n: ectx: tooltip, entry, group (Agenda View)
 #: settings/korganizer.kcfg:196
-#, fuzzy, kde-format
-#| msgid ""
-#| "Draw agenda items in their calendar color inside and category color for "
-#| "their border"
+#, kde-format
 msgid ""
 "Draw agenda items with their calendar color inside and tag color for their "
 "border"
-msgstr "繪製行程項目時，用行事曆的顏色畫裡面，邊框則用類別的顏色"
+msgstr "繪製行程項目時，用行事曆的顏色繪製內部，邊框則用標籤的顏色"
 
 #. i18n: ectx: label, entry, group (Agenda View)
 #. i18n: ectx: label, entry, group (Month View)
@@ -4179,27 +4137,20 @@ msgstr "只有標籤"
 
 #. i18n: ectx: whatsthis, entry, group (Agenda View)
 #: settings/korganizer.kcfg:200
-#, fuzzy, kde-format
-#| msgid ""
-#| "Select the \"Only category\" option if you would like to draw calendar "
-#| "items (both inside and border) in the color of their associated "
-#| "category.  Please use the Colors and Fonts configuration page for setting "
-#| "these colors."
+#, kde-format
 msgid ""
 "Select the \"Only tag\" option if you would like to draw calendar items "
 "(both inside and border) using the color of their associated tag.  Please "
 "use the Colors and Fonts configuration page for setting these colors."
 msgstr ""
-"「只有類別」表示您只依所屬類別來繪製行事曆項目，包含邊框。您可以用「顏色與字"
-"型」設定頁來設定這些顏色。"
+"「只有標籤」表示您只依所包含標籤來繪製行事曆項目，包含邊框。您可以用「顏色與"
+"字型」設定頁面來設定這些顏色。"
 
 #. i18n: ectx: tooltip, entry, group (Agenda View)
 #: settings/korganizer.kcfg:201
-#, fuzzy, kde-format
-#| msgid ""
-#| "Draw agenda items using their category color for the inside and border"
+#, kde-format
 msgid "Draw agenda items using their tag color for the inside and border"
-msgstr "繪製行程項目時，用所屬類別的顏色畫裡面與邊框"
+msgstr "繪製行程項目時，用所包含標籤的顏色繪製內部與邊框"
 
 #. i18n: ectx: label, entry, group (Agenda View)
 #. i18n: ectx: label, entry, group (Month View)
@@ -4210,18 +4161,14 @@ msgstr "只有行事曆"
 
 #. i18n: ectx: whatsthis, entry, group (Agenda View)
 #: settings/korganizer.kcfg:205
-#, fuzzy, kde-format
-#| msgid ""
-#| "Select the \"Only calendar\" option if you would like to draw calendar "
-#| "items (both inside and border) in the color of their calendar. Please use "
-#| "the Colors and Fonts configuration page for setting these colors."
+#, kde-format
 msgid ""
 "Select the \"Only calendar\" option if you would like to draw calendar items "
 "(both inside and border) using the color of their calendar. Please use the "
 "Colors and Fonts configuration page for setting these colors."
 msgstr ""
 "「只有行事曆」表示您只依行事曆來繪製行事曆項目，包含邊框。您可以用「顏色與字"
-"型」設定頁來設定這些顏色。"
+"型」設定頁面來設定這些顏色。"
 
 #. i18n: ectx: tooltip, entry, group (Agenda View)
 #: settings/korganizer.kcfg:206
@@ -4397,49 +4344,36 @@ msgstr ""
 
 #. i18n: ectx: tooltip, entry, group (Month View)
 #: settings/korganizer.kcfg:281
-#, fuzzy, kde-format
-#| msgid ""
-#| "Draw month items in their category color inside and calendar color for "
-#| "their border"
+#, kde-format
 msgid ""
 "Draw month items with their tag color inside and calendar color for their "
 "border"
-msgstr "繪製月檢視項目時，用類別的顏色畫裡面，邊框則用行事曆的顏色"
+msgstr "繪製月份檢視項目時，用標籤的顏色繪製內部，邊框則用行事曆的顏色"
 
 #. i18n: ectx: tooltip, entry, group (Month View)
 #: settings/korganizer.kcfg:286
-#, fuzzy, kde-format
-#| msgid ""
-#| "Draw month items in their calendar color inside and category color for "
-#| "their border"
+#, kde-format
 msgid ""
 "Draw month items with their calendar color inside and tag color for their "
 "border"
-msgstr "繪製月檢視項目時，用行事曆的顏色畫裡面，邊框則用類別的顏色"
+msgstr "繪製月份檢視項目時，用行事曆的顏色繪製內部，邊框則用類別的顏色"
 
 #. i18n: ectx: whatsthis, entry, group (Month View)
 #: settings/korganizer.kcfg:290
-#, fuzzy, kde-format
-#| msgid ""
-#| "Select the \"Only category\" option if you would like to draw calendar "
-#| "items (both inside and border) in the color of their associated "
-#| "category.  Please use the Colors and Fonts configuration page for setting "
-#| "these colors."
+#, kde-format
 msgid ""
 "Select the \"Only tag\" option if you would like to draw calendar items "
 "(both inside and border) in the color of their associated tag.  Please use "
 "the Colors and Fonts configuration page for setting these colors."
 msgstr ""
-"「只有類別」表示您只依所屬類別來繪製行事曆項目，包含邊框。您可以用「顏色與字"
-"型」設定頁來設定這些顏色。"
+"「只有標籤」表示您只依所包含標籤來繪製行事曆項目，包含邊框。您可以用「顏色與"
+"字型」設定頁面來設定這些顏色。"
 
 #. i18n: ectx: tooltip, entry, group (Month View)
 #: settings/korganizer.kcfg:291
-#, fuzzy, kde-format
-#| msgid ""
-#| "Draw month items using their category color for the inside and border"
+#, kde-format
 msgid "Draw month items using their tag color for the inside and border"
-msgstr "繪製月檢視項目時，用所屬類別的顏色畫裡面與邊框"
+msgstr "繪製月份檢視項目時，用所包含標籤的顏色畫裡面與邊框"
 
 #. i18n: ectx: whatsthis, entry, group (Month View)
 #: settings/korganizer.kcfg:295
@@ -4809,18 +4743,14 @@ msgstr "預設事件顏色"
 
 #. i18n: ectx: whatsthis, entry, group (Theme/Month view)
 #: settings/korganizer.kcfg:606
-#, fuzzy, kde-format
-#| msgid ""
-#| "Select the default event color here. The default event color will be used "
-#| "for events categories in your Month. Note that you can specify a separate "
-#| "color for each event category below."
+#, kde-format
 msgid ""
 "Select the default event color here. The default event color will be used "
 "for events in your Month. Note that you can specify a separate color for "
 "each event tag below."
 msgstr ""
-"在此選擇預設事件顏色。預設事件顏色會用於月檢視中的事件類別。注意您可以個別選"
-"擇某一個事件類別的顏色。"
+"在此選擇預設事件顏色。預設事件顏色會用於月份檢視中的事件。您也可以在下方選擇"
+"各個事件標籤的顏色。"
 
 #. i18n: ectx: property (placeholderText), widget (KListWidgetSearchLine, searchline)
 #: ui/filteredit_base.ui:35
@@ -4936,14 +4866,11 @@ msgstr "標籤"
 
 #. i18n: ectx: property (whatsThis), widget (QRadioButton, mCatHideCheck)
 #: ui/filteredit_base.ui:272
-#, fuzzy, kde-format
-#| msgid ""
-#| "When this option is enabled, this filter will show all items which do "
-#| "<i>not</i> contain the selected categories."
+#, kde-format
 msgid ""
 "When this option is chosen, this filter will show all items which do <i>not</"
 "i> contain any of the selected tags."
-msgstr "選取此選項，過濾器會顯示所有不屬於選取的類別的項目。"
+msgstr "選取此選項時，此過濾器會顯示所有<i>不</i>包含所選標籤的項目。"
 
 #. i18n: ectx: property (text), widget (QRadioButton, mCatHideCheck)
 #: ui/filteredit_base.ui:275
@@ -4953,14 +4880,11 @@ msgstr "顯示選取的類別以外的所有項目"
 
 #. i18n: ectx: property (whatsThis), widget (QRadioButton, mCatShowCheck)
 #: ui/filteredit_base.ui:288
-#, fuzzy, kde-format
-#| msgid ""
-#| "When this option is enabled, this filter will show all items containing "
-#| "at least the selected items."
+#, kde-format
 msgid ""
 "When this option is chosen, this filter will show all items containing any "
 "of the selected tags."
-msgstr "選取此選項，過濾器會顯示所有屬於選取的類別的項目。"
+msgstr "選取此選項時，此過濾器會顯示所有包含所選標籤的項目。"
 
 #. i18n: ectx: property (text), widget (QRadioButton, mCatShowCheck)
 #: ui/filteredit_base.ui:291
@@ -5273,10 +5197,9 @@ msgstr "搜尋(&S)："
 
 #. i18n: ectx: property (toolTip), widget (QLineEdit, searchEdit)
 #: ui/searchdialog_base.ui:49
-#, fuzzy, kde-format
-#| msgid "Search pattern, use wildcards '*' and '?' as desired."
+#, kde-format
 msgid "Search pattern. Use wildcards “*” and “?” as desired."
-msgstr "搜尋樣式，可以使用萬用字元 '*' 與 '?'。"
+msgstr "搜尋樣式。可以使用萬用字元 '*' 與 '?'。"
 
 #. i18n: ectx: property (whatsThis), widget (QLineEdit, searchEdit)
 #: ui/searchdialog_base.ui:52
@@ -5288,6 +5211,10 @@ msgid ""
 "For example, the search pattern “meet*boss” matches “Meeting with boss”. The "
 "pattern “c?t” would match “cat”, “cot”, and so on."
 msgstr ""
+"檢查各種欄位來看它們是否符合搜尋樣式：樣式 \"meet\" 會符合 \"kick-off meeting"
+"\"。萬用字元 \"*\" 會符合任何數量的任何字元；\"?\" 則會符合單一個任何字元。舉"
+"例來說，樣式 \"meet*boss\" 會符合 \"Meeting with boss\"，而樣式 \"c?t\" 則會"
+"符合 \"cat\"、\"cot\" 等等。"
 
 #. i18n: ectx: property (text), widget (QLineEdit, searchEdit)
 #: ui/searchdialog_base.ui:55
@@ -5303,21 +5230,18 @@ msgstr "搜尋"
 
 #. i18n: ectx: property (toolTip), widget (QCheckBox, eventsCheck)
 #: ui/searchdialog_base.ui:73
-#, fuzzy, kde-format
-#| msgid "Search for Events with matching criteria"
+#, kde-format
 msgid "Search for events with matching criteria."
-msgstr "搜尋符合條件的事件"
+msgstr "搜尋符合條件的事件。"
 
 #. i18n: ectx: property (whatsThis), widget (QCheckBox, eventsCheck)
 #: ui/searchdialog_base.ui:76
-#, fuzzy, kde-format
-#| msgid ""
-#| "Check this box if you want to search for Event items that match the "
-#| "search criteria."
+#, kde-format
 msgid ""
 "Check this box if you want to search for events that match the search "
 "pattern and have start dates or end dates in the given date range."
-msgstr "勾選此選項以搜尋符合條件的事件項目。"
+msgstr ""
+"勾選此選項，以搜尋符合搜尋樣式，且開始或結束日期在提供的日期範圍內的事件。"
 
 #. i18n: ectx: property (text), widget (QCheckBox, eventsCheck)
 #: ui/searchdialog_base.ui:79
@@ -5327,21 +5251,17 @@ msgstr "事件(&E)"
 
 #. i18n: ectx: property (toolTip), widget (QCheckBox, journalsCheck)
 #: ui/searchdialog_base.ui:89
-#, fuzzy, kde-format
-#| msgid "Search for Journals with matching criteria"
+#, kde-format
 msgid "Search for journal entries with matching criteria."
-msgstr "搜尋符合條件的日誌"
+msgstr "搜尋符合條件的日誌項目。"
 
 #. i18n: ectx: property (whatsThis), widget (QCheckBox, journalsCheck)
 #: ui/searchdialog_base.ui:92
-#, fuzzy, kde-format
-#| msgid ""
-#| "Check this box if you want to search for Journal items that match the "
-#| "search criteria."
+#, kde-format
 msgid ""
 "Check this box if you want to search for journal entries that match the "
 "search pattern and have start dates in the given date range."
-msgstr "勾選此選項以搜尋符合條件的日誌。"
+msgstr "勾選此選項以搜尋符合條件且開始日在提供日期範圍內的日誌項目。"
 
 #. i18n: ectx: property (text), widget (QCheckBox, journalsCheck)
 #: ui/searchdialog_base.ui:95
@@ -5351,21 +5271,18 @@ msgstr "日誌(&J)"
 
 #. i18n: ectx: property (toolTip), widget (QCheckBox, todosCheck)
 #: ui/searchdialog_base.ui:102
-#, fuzzy, kde-format
-#| msgid "Search for To-dos with matching criteria"
+#, kde-format
 msgid "Search for to-dos with matching criteria."
-msgstr "搜尋符合條件的待辦事項"
+msgstr "搜尋符合條件的待辦事項。"
 
 #. i18n: ectx: property (whatsThis), widget (QCheckBox, todosCheck)
 #: ui/searchdialog_base.ui:105
-#, fuzzy, kde-format
-#| msgid ""
-#| "Check this box if you want to search To-do items that match the search "
-#| "criteria."
+#, kde-format
 msgid ""
 "Check this box if you want to search for to-dos that match the search "
 "pattern and have due dates in the given date range."
-msgstr "勾選此選項以搜尋符合條件的待辦事項。"
+msgstr ""
+"勾選此選項，以搜尋符合搜尋樣式，且到期日期在提供的日期範圍內的待辦事項。"
 
 #. i18n: ectx: property (text), widget (QCheckBox, todosCheck)
 #: ui/searchdialog_base.ui:108
@@ -5405,13 +5322,10 @@ msgstr "在搜尋中包含位置。"
 
 #. i18n: ectx: property (whatsThis), widget (QCheckBox, locationCheck)
 #: ui/searchdialog_base.ui:143
-#, fuzzy, kde-format
-#| msgid ""
-#| "Check this box if you want to match item locations against your search "
-#| "pattern."
+#, kde-format
 msgid ""
 "Check this box if you want to match locations against your search pattern."
-msgstr "若您要在搜尋時比對項目位置，請勾選此選項。"
+msgstr "若您要在搜尋時比對位置，請勾選此選項。"
 
 #. i18n: ectx: property (text), widget (QCheckBox, locationCheck)
 #: ui/searchdialog_base.ui:146
@@ -5427,13 +5341,10 @@ msgstr "在搜尋中包含描述。"
 
 #. i18n: ectx: property (whatsThis), widget (QCheckBox, descriptionCheck)
 #: ui/searchdialog_base.ui:156
-#, fuzzy, kde-format
-#| msgid ""
-#| "Check this box if you want to match item descriptions against your search "
-#| "pattern."
+#, kde-format
 msgid ""
 "Check this box if you want to match descriptions against your search pattern."
-msgstr "若您要在搜尋時比對項目描述，請勾選此選項。"
+msgstr "若您要在搜尋時比對描述，請勾選此選項。"
 
 #. i18n: ectx: property (text), widget (QCheckBox, descriptionCheck)
 #: ui/searchdialog_base.ui:159
@@ -5449,13 +5360,10 @@ msgstr "在搜尋中包含摘要。"
 
 #. i18n: ectx: property (whatsThis), widget (QCheckBox, summaryCheck)
 #: ui/searchdialog_base.ui:169
-#, fuzzy, kde-format
-#| msgid ""
-#| "Check this box if you want to match item summaries against your search "
-#| "pattern."
+#, kde-format
 msgid ""
 "Check this box if you want to match summaries against your search pattern."
-msgstr "若您要在搜尋時比對項目摘要，請勾選此選項。"
+msgstr "若您要在搜尋時比對摘要，請勾選此選項。"
 
 #. i18n: ectx: property (text), widget (QCheckBox, summaryCheck)
 #: ui/searchdialog_base.ui:172
@@ -5490,10 +5398,9 @@ msgstr "日期範圍"
 
 #. i18n: ectx: property (toolTip), widget (QCheckBox, dateRangeCheckbox)
 #: ui/searchdialog_base.ui:204
-#, fuzzy, kde-format
-#| msgid "Include E&vents within the specified date range"
+#, kde-format
 msgid "When checked, the search will be limited to the specified date range."
-msgstr "包含指定日期範圍內的事件(&V)"
+msgstr "勾選時，搜尋會限定於指定日期範圍內。"
 
 #. i18n: ectx: property (whatsThis), widget (QCheckBox, dateRangeCheckbox)
 #: ui/searchdialog_base.ui:207
@@ -5502,6 +5409,7 @@ msgid ""
 "Check this box to search for events within a specified date range. If the "
 "box is unchecked, all events will be searched."
 msgstr ""
+"勾選此選項來搜尋在指定日期範圍內的事件。取消勾選此選項時會搜尋所有事件。"
 
 #. i18n: ectx: property (text), widget (QCheckBox, dateRangeCheckbox)
 #: ui/searchdialog_base.ui:210
@@ -5523,12 +5431,9 @@ msgstr "搜尋時間範圍的開始日期。"
 
 #. i18n: ectx: property (whatsThis), widget (KDateComboBox, startDate)
 #: ui/searchdialog_base.ui:244
-#, fuzzy, kde-format
-#| msgid ""
-#| "Search for items with a starting date on or after the date you specify "
-#| "here."
+#, kde-format
 msgid "Search for items in the time period starting at the date given here."
-msgstr "包含您在此指定的日期開始或在此日期之後的項目"
+msgstr "搜尋在此時間範圍內的項目（在此指定開始日期）"
 
 #. i18n: ectx: property (text), item, widget (KDateComboBox, startDate)
 #. i18n: ectx: property (text), item, widget (KDateComboBox, endDate)
@@ -5551,46 +5456,35 @@ msgstr "搜尋時間範圍的結束日期。"
 
 #. i18n: ectx: property (whatsThis), widget (KDateComboBox, endDate)
 #: ui/searchdialog_base.ui:282
-#, fuzzy, kde-format
-#| msgid ""
-#| "Search for items with an ending date on or before the date you specify "
-#| "here."
+#, kde-format
 msgid "Search for items in the time period ending at the date given here."
-msgstr "包含您在此指定的日期結束或在此日期之前的項目"
+msgstr "搜尋在此時間範圍內的項目（在此指定結束日期）"
 
 #. i18n: ectx: property (toolTip), widget (QCheckBox, inclusiveCheck)
 #: ui/searchdialog_base.ui:296
-#, fuzzy, kde-format
-#| msgid ""
-#| "Include Events only if their date range falls into the range specified "
-#| "above"
+#, kde-format
 msgid ""
 "Display events only if their start date and end date are both in the date "
 "range specified."
-msgstr "包含日期範圍落在上述指定範圍內的事件"
+msgstr "事件開始和結束日期都在指定日期範圍內時才顯示。"
 
 #. i18n: ectx: property (whatsThis), widget (QCheckBox, inclusiveCheck)
 #: ui/searchdialog_base.ui:299
-#, fuzzy, kde-format
-#| msgid ""
-#| "Check this box if you want to include Events that occur within the date "
-#| "range specified.  Events that do not fall completely within the date "
-#| "range will be excluded from the search results."
+#, kde-format
 msgid ""
 "Check this box if you only want to find events that occur entirely within "
 "the date range specified.  Events that start during the date range but end "
 "after it, or end during the date range but start before it, will be excluded "
 "from the search results."
 msgstr ""
-"若您要包含在指定日期範圍內的事件，請勾選此選項。若該事件未完全在此日期範圍"
-"內，則會被排除在搜尋結果之外。"
+"如果您要只找到完全在指定日期範圍內發生的事件，請勾選此選項。搜尋結果會排除開"
+"始時間在範圍內但結束在範圍外、或是開始時在範圍外（即使結束在範圍內）的事件。"
 
 #. i18n: ectx: property (text), widget (QCheckBox, inclusiveCheck)
 #: ui/searchdialog_base.ui:302
-#, fuzzy, kde-format
-#| msgid "Include E&vents within the specified date range"
+#, kde-format
 msgid "Exclude e&vents that extend outside the specified date range"
-msgstr "包含指定日期範圍內的事件(&V)"
+msgstr "排除突出指定的日期範圍內的事件(&V)"
 
 #. i18n: ectx: property (toolTip), widget (QCheckBox, includeUndatedTodos)
 #: ui/searchdialog_base.ui:309
