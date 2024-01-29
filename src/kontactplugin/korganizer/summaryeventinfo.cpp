@@ -55,10 +55,10 @@ bool SummaryEventInfo::skip(const KCalendarCore::Event::Ptr &event)
     // simply check categories because the birthdays resource always adds
     // the appropriate category to the event.
     QStringList c = event->categories();
-    if (!mShowBirthdays && c.contains(QLatin1String("BIRTHDAY"), Qt::CaseInsensitive)) {
+    if (!mShowBirthdays && c.contains(QLatin1StringView("BIRTHDAY"), Qt::CaseInsensitive)) {
         return true;
     }
-    if (!mShowAnniversaries && c.contains(QLatin1String("ANNIVERSARY"), Qt::CaseInsensitive)) {
+    if (!mShowAnniversaries && c.contains(QLatin1StringView("ANNIVERSARY"), Qt::CaseInsensitive)) {
         return true;
     }
 
@@ -159,7 +159,7 @@ SummaryEventInfo::List SummaryEventInfo::eventsForRange(QDate start, QDate end, 
         // Print the date span for multiday, floating events, for the
         // first day of the event only.
         if (ev->isMultiDay() && ev->allDay() && firstDayOfMultiday && span > 1) {
-            str = IncidenceFormatter::dateToString(ev->dtStart().toLocalTime().date(), false) + QLatin1String(" -\n ")
+            str = IncidenceFormatter::dateToString(ev->dtStart().toLocalTime().date(), false) + QLatin1StringView(" -\n ")
                 + IncidenceFormatter::dateToString(ev->dtEnd().toLocalTime().date(), false);
         }
         summaryEvent->dateSpan = str;
@@ -253,9 +253,9 @@ SummaryEventInfo::List SummaryEventInfo::eventsForRange(QDate start, QDate end, 
             QDateTime next = ev->recurrence()->getNextDateTime(kdt);
             QString tmp = IncidenceFormatter::dateTimeToString(ev->recurrence()->getNextDateTime(next), ev->allDay(), true);
             if (!summaryEvent->timeRange.isEmpty()) {
-                summaryEvent->timeRange += QLatin1String("<br>");
+                summaryEvent->timeRange += QLatin1StringView("<br>");
             }
-            summaryEvent->timeRange += QLatin1String("<font size=\"small\"><i>") + i18nc("next occurrence", "Next: %1", tmp) + QLatin1String("</i></font>");
+            summaryEvent->timeRange += QLatin1StringView("<font size=\"small\"><i>") + i18nc("next occurrence", "Next: %1", tmp) + QLatin1String("</i></font>");
         }
     }
 

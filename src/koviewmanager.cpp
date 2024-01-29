@@ -55,21 +55,21 @@ void KOViewManager::readSettings(KConfig *config)
     KConfigGroup generalConfig(config, QStringLiteral("General"));
     const QString view = generalConfig.readEntry("Current View");
 
-    if (view == QLatin1String("WhatsNext")) {
+    if (view == QLatin1StringView("WhatsNext")) {
         showWhatsNextView();
-    } else if (view == QLatin1String("OldMonth")) {
+    } else if (view == QLatin1StringView("OldMonth")) {
         // the oldmonth view is gone, so we assume the new month view
         showMonthView();
-    } else if (view == QLatin1String("List")) {
+    } else if (view == QLatin1StringView("List")) {
         showListView();
         mListView->readSettings(config);
-    } else if (view == QLatin1String("Journal")) {
+    } else if (view == QLatin1StringView("Journal")) {
         showJournalView();
-    } else if (view == QLatin1String("Todo")) {
+    } else if (view == QLatin1StringView("Todo")) {
         showTodoView();
-    } else if (view == QLatin1String("Timeline")) {
+    } else if (view == QLatin1StringView("Timeline")) {
         showTimeLineView();
-    } else if (view == QLatin1String("Month")) {
+    } else if (view == QLatin1StringView("Month")) {
         showMonthView();
     } else {
         showAgendaView();
@@ -131,7 +131,7 @@ void KOViewManager::writeSettings(KConfig *config)
 
     // write out custom view configuration
     for (KOrg::BaseView *const baseView : std::as_const(mViews)) {
-        KConfigGroup group = KSharedConfig::openConfig()->group(QLatin1String(baseView->identifier()));
+        KConfigGroup group = KSharedConfig::openConfig()->group(QLatin1StringView(baseView->identifier()));
         baseView->saveConfig(group);
     }
 
@@ -347,7 +347,7 @@ void KOViewManager::addView(KOrg::BaseView *view, bool isTab)
     view->setModel(mMainView->calendar()->entityTreeModel());
     connectView(view);
     mViews.append(view);
-    const KConfigGroup group = KSharedConfig::openConfig()->group(QLatin1String(view->identifier()));
+    const KConfigGroup group = KSharedConfig::openConfig()->group(QLatin1StringView(view->identifier()));
     view->restoreConfig(group);
     if (!isTab) {
         mMainView->viewStack()->addWidget(view);

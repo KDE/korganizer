@@ -320,7 +320,7 @@ protected:
         const auto attr = col.attribute<Akonadi::CollectionIdentificationAttribute>();
 
         // We filter the user folders because we insert person nodes for user folders.
-        if ((attr && attr->collectionNamespace().startsWith("usertoplevel")) || col.name().contains(QLatin1String("Other Users"))) {
+        if ((attr && attr->collectionNamespace().startsWith("usertoplevel")) || col.name().contains(QLatin1StringView("Other Users"))) {
             return false;
         }
         return true;
@@ -677,7 +677,7 @@ void AkonadiCollectionView::updateMenu()
         const Akonadi::Collection collection = Akonadi::CollectionUtils::fromIndex(index);
 
         if (collection.isValid() && !collection.contentMimeTypes().isEmpty()) {
-            if (collection.remoteId() == QLatin1String("akonadi_birthdays_resource")) {
+            if (collection.remoteId() == QLatin1StringView("akonadi_birthdays_resource")) {
                 mAssignColor->setEnabled(false);
             }
 

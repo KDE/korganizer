@@ -132,9 +132,9 @@ void ApptSummaryWidget::updateView()
 
         // Icon label
         auto label = new QLabel(this);
-        if (ev->categories().contains(QLatin1String("BIRTHDAY"), Qt::CaseInsensitive)) {
+        if (ev->categories().contains(QLatin1StringView("BIRTHDAY"), Qt::CaseInsensitive)) {
             label->setPixmap(pmb);
-        } else if (ev->categories().contains(QLatin1String("ANNIVERSARY"), Qt::CaseInsensitive)) {
+        } else if (ev->categories().contains(QLatin1StringView("ANNIVERSARY"), Qt::CaseInsensitive)) {
             label->setPixmap(pma);
         } else {
             label->setPixmap(pm);

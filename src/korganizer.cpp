@@ -286,13 +286,13 @@ void KOrganizer::setTitle()
         }
 
         if (mCalendarView->isReadOnly()) {
-            title += QLatin1String(" [") + i18nc("the calendar is read-only", "read-only") + QLatin1Char(']');
+            title += QLatin1StringView(" [") + i18nc("the calendar is read-only", "read-only") + QLatin1Char(']');
         }
     } else {
         title = i18n("Calendar");
     }
     if (mCalendarView->isFiltered()) {
-        title += QLatin1String(" - <") + mCalendarView->currentFilterName() + QLatin1String("> ");
+        title += QLatin1StringView(" - <") + mCalendarView->currentFilterName() + QLatin1String("> ");
     }
 
     setCaption(title, false);

@@ -700,14 +700,14 @@ public:
 private:
     void checkSourceIndex(const QModelIndex &sourceIndex) override
     {
-        if (sourceIndex.data().toString() == QLatin1String("personfolder")) {
+        if (sourceIndex.data().toString() == QLatin1StringView("personfolder")) {
             model.addNode(ReparentingModel::Node::Ptr(new DummyNode(model, QStringLiteral("personnode"))));
         }
     }
 
     void checkSourceIndexRemoval(const QModelIndex &sourceIndex) override
     {
-        if (sourceIndex.data().toString() == QLatin1String("personfolder")) {
+        if (sourceIndex.data().toString() == QLatin1StringView("personfolder")) {
             model.removeNode(DummyNode(model, QStringLiteral("personnode")));
         }
     }

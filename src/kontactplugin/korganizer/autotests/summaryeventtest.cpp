@@ -100,7 +100,7 @@ void SummaryEventTester::test_Multiday()
     const SummaryEventInfo::List eventsToday = SummaryEventInfo::eventsForDate(today, cal);
     QCOMPARE(3, eventsToday.size());
     for (const SummaryEventInfo *ev : eventsToday) {
-        if (ev->summaryText == multidayWithTimeInProgress + QLatin1String(" (2/7)")) {
+        if (ev->summaryText == multidayWithTimeInProgress + QLatin1StringView(" (2/7)")) {
             QCOMPARE(ev->timeRange,
                      QStringLiteral("%1 - %2").arg(QLocale::system().toString(QTime(0, 0), QLocale::ShortFormat),
                                                    QLocale::system().toString(QTime(23, 59), QLocale::ShortFormat)));

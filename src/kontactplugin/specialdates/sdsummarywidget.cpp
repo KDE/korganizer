@@ -257,13 +257,13 @@ void SDSummaryWidget::createLabels()
               // TODO: CalHelper is deprecated, remove this?
               */
 
-            if (ev->customProperty("KABC", "BIRTHDAY") == QLatin1String("YES")) {
+            if (ev->customProperty("KABC", "BIRTHDAY") == QLatin1StringView("YES")) {
                 // Skipping, because these are got by the BirthdaySearchJob
                 // See comments in updateView()
                 continue;
             }
 
-            if (!mShowAnniversariesFromKAB && ev->customProperty("KABC", "ANNIVERSARY") == QLatin1String("YES")) {
+            if (!mShowAnniversariesFromKAB && ev->customProperty("KABC", "ANNIVERSARY") == QLatin1StringView("YES")) {
                 continue;
             }
 
@@ -274,7 +274,7 @@ void SDSummaryWidget::createLabels()
                 for (it2 = c.constBegin(); it2 != end; ++it2) {
                     const QString itUpper((*it2).toUpper());
                     // Append Birthday Event?
-                    if (mShowBirthdaysFromCal && (itUpper == QLatin1String("BIRTHDAY"))) {
+                    if (mShowBirthdaysFromCal && (itUpper == QLatin1StringView("BIRTHDAY"))) {
                         SDEntry entry;
                         entry.type = IncidenceTypeEvent;
                         entry.category = CategoryBirthday;
@@ -296,9 +296,9 @@ void SDSummaryWidget::createLabels()
                     }
 
                     // Append Anniversary Event?
-                    if (itUpper == QLatin1String("ANNIVERSARY")) {
+                    if (itUpper == QLatin1StringView("ANNIVERSARY")) {
                         // !mShowAnniversariesFromKAB was handled above.
-                        const bool isKAB = ev->customProperty("KABC", "ANNIVERSARY") == QLatin1String("YES");
+                        const bool isKAB = ev->customProperty("KABC", "ANNIVERSARY") == QLatin1StringView("YES");
                         if (isKAB || mShowAnniversariesFromCal) {
                             SDEntry entry;
                             entry.type = IncidenceTypeEvent;
@@ -314,7 +314,7 @@ void SDSummaryWidget::createLabels()
                     }
 
                     // Append Holiday Event?
-                    if (mShowHolidays && (itUpper == QLatin1String("HOLIDAY"))) {
+                    if (mShowHolidays && (itUpper == QLatin1StringView("HOLIDAY"))) {
                         SDEntry entry;
                         entry.type = IncidenceTypeEvent;
                         entry.category = CategoryHoliday;
@@ -332,7 +332,7 @@ void SDSummaryWidget::createLabels()
                     }
 
                     // Append Special Occasion Event?
-                    if (mShowSpecialsFromCal && (itUpper == QLatin1String("SPECIAL OCCASION"))) {
+                    if (mShowSpecialsFromCal && (itUpper == QLatin1StringView("SPECIAL OCCASION"))) {
                         SDEntry entry;
                         entry.type = IncidenceTypeEvent;
                         entry.category = CategoryOther;
@@ -362,9 +362,9 @@ void SDSummaryWidget::createLabels()
                 for (; it != holidays.constEnd(); ++it) {
                     SDEntry entry;
                     entry.type = IncidenceTypeEvent;
-                    if ((*it).categoryList().contains(QLatin1String("seasonal"))) {
+                    if ((*it).categoryList().contains(QLatin1StringView("seasonal"))) {
                         entry.category = CategorySeasonal;
-                    } else if ((*it).categoryList().contains(QLatin1String("public"))) {
+                    } else if ((*it).categoryList().contains(QLatin1StringView("public"))) {
                         entry.category = CategoryHoliday;
                     } else {
                         entry.category = CategoryOther;
@@ -466,7 +466,7 @@ void SDSummaryWidget::createLabels()
             // first day of the event only.
             if ((*addrIt).span > 1) {
                 QString endstr = QLocale::system().toString(sD.addDays((*addrIt).span - 1), QLocale::LongFormat);
-                datestr += QLatin1String(" -\n ") + endstr;
+                datestr += QLatin1StringView(" -\n ") + endstr;
             }
 
             label = new QLabel(datestr, this);

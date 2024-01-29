@@ -71,12 +71,12 @@ public:
 
             const QList<QWidget *> list = wdg->findChildren<QWidget *>();
             for (QWidget *it : list) {
-                if (allowedTypes.contains(QLatin1String(it->metaObject()->className()))) {
+                if (allowedTypes.contains(QLatin1StringView(it->metaObject()->className()))) {
                     const QString objectName = it->objectName();
-                    if (objectName.startsWith(QLatin1String("X_"))) {
+                    if (objectName.startsWith(QLatin1StringView("X_"))) {
                         new QTreeWidgetItem(this,
-                                            QStringList() << objectName << allowedTypes[QLatin1String(it->metaObject()->className())]
-                                                          << QLatin1String(it->metaObject()->className()) << it->whatsThis());
+                                            QStringList() << objectName << allowedTypes[QLatin1StringView(it->metaObject()->className())]
+                                                          << QLatin1StringView(it->metaObject()->className()) << it->whatsThis());
                     }
                 }
             }
@@ -363,7 +363,7 @@ void KCMDesignerFields::updatePreview()
                                         "<tr><td align=\"right\"><b>%7</b></td><td>%8</td></tr>"
                                         "</table></qt>")
                                         .arg(i18n("Key:"),
-                                             item->text(0).replace(QLatin1String("X_"), QStringLiteral("X-")),
+                                             item->text(0).replace(QLatin1StringView("X_"), QStringLiteral("X-")),
                                              i18n("Type:"),
                                              item->text(1),
                                              i18n("Classname:"),
@@ -417,7 +417,7 @@ void KCMDesignerFields::startDesigner()
     }
 
     // finally jump there
-    QDir::setCurrent(QLatin1String(cepPath.toLocal8Bit()));
+    QDir::setCurrent(QLatin1StringView(cepPath.toLocal8Bit()));
 
     QStringList args;
     QTreeWidgetItem *item = nullptr;
@@ -436,7 +436,7 @@ void KCMDesignerFields::startDesigner()
 
 void KCMDesignerFields::showWhatsThis(const QString &href)
 {
-    if (href.startsWith(QLatin1String("whatsthis:"))) {
+    if (href.startsWith(QLatin1StringView("whatsthis:"))) {
         const QPoint pos = QCursor::pos();
         QWhatsThis::showText(pos, href.mid(10), widget());
     }

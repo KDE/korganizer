@@ -684,7 +684,7 @@ private:
      * If mimeType is set, the collection to return will have to support that mime type.
      * If no valid collection is found, an invalid one is returned.
      */
-    Akonadi::Collection defaultCollection(const QLatin1String &mimeType = QLatin1String("")) const;
+    Akonadi::Collection defaultCollection(const QLatin1StringView &mimeType = QLatin1String("")) const;
 
     /**
      * Creates a new incidence editor and chooses a decent default for the collection

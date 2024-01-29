@@ -170,10 +170,10 @@ void TodoPlugin::processDropEvent(QDropEvent *event)
 
     if (md->hasUrls()) {
         for (const auto &url : md->urls()) {
-            if (url.scheme() == QLatin1String("akonadi") && url.hasQuery()) {
+            if (url.scheme() == QLatin1StringView("akonadi") && url.hasQuery()) {
                 const QUrlQuery query(url.query());
                 if (!query.queryItemValue(QStringLiteral("item")).isEmpty()
-                    && query.queryItemValue(QStringLiteral("type")) == QLatin1String("message/rfc822")) {
+                    && query.queryItemValue(QStringLiteral("type")) == QLatin1StringView("message/rfc822")) {
                     auto job = new Akonadi::ItemFetchJob(Akonadi::Item(static_cast<qint64>(query.queryItemValue(QStringLiteral("item")).toLongLong())));
                     job->fetchScope().fetchAllAttributes();
                     job->fetchScope().fetchFullPayload(true);
@@ -184,7 +184,7 @@ void TodoPlugin::processDropEvent(QDropEvent *event)
                         auto fetchJob = qobject_cast<Akonadi::ItemFetchJob *>(job);
                         const Akonadi::Item::List items = fetchJob->items();
                         for (const Akonadi::Item &item : items) {
-                            if (item.mimeType() == QLatin1String("message/rfc822")) {
+                            if (item.mimeType() == QLatin1StringView("message/rfc822")) {
                                 auto mail = item.payload<KMime::Message::Ptr>();
                                 interface()->openTodoEditor(i18nc("Event from email summary", "Mail: %1", mail->subject()->asUnicodeString()),
                                                             i18nc("Event from email content",

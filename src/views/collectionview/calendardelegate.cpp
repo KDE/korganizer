@@ -62,8 +62,8 @@ QList<StyledCalendarDelegate::Action> StyledCalendarDelegate::getActions(const Q
 {
     const Akonadi::Collection col = Akonadi::CollectionUtils::fromIndex(index);
     // qCDebug(KORGANIZER_LOG) << index.data().toString() << enabled;
-    const bool isSearchCollection = col.resource().startsWith(QLatin1String("akonadi_search_resource"));
-    const bool isKolabCollection = col.resource().startsWith(QLatin1String("akonadi_kolab_resource"));
+    const bool isSearchCollection = col.resource().startsWith(QLatin1StringView("akonadi_search_resource"));
+    const bool isKolabCollection = col.resource().startsWith(QLatin1StringView("akonadi_kolab_resource"));
     const bool isTopLevelCollection = (col.parentCollection() == Akonadi::Collection::root());
     const bool isToplevelSearchCollection = (isTopLevelCollection && isSearchCollection);
     const bool isToplevelKolabCollection = (isTopLevelCollection && isKolabCollection);

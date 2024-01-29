@@ -213,7 +213,7 @@ KOPrefsDialogTime::KOPrefsDialogTime(QObject *parent, const KPluginMetaData &dat
 
     if (CalendarSupport::KCalPrefs::instance()->audioFilePathItem()->value().isEmpty()) {
         const QString defAudioFile =
-            QStandardPaths::locate(QStandardPaths::GenericDataLocation, QStringLiteral("sound/") + QLatin1String("KDE-Sys-Warning.ogg"));
+            QStandardPaths::locate(QStandardPaths::GenericDataLocation, QStringLiteral("sound/") + QLatin1StringView("KDE-Sys-Warning.ogg"));
         CalendarSupport::KCalPrefs::instance()->audioFilePathItem()->setValue(defAudioFile);
     }
     QString filter = i18n("Audio Files (*.ogg *.wav *.mp3 *.wma *.flac *.aiff *.raw *.au *.ra)");

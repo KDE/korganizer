@@ -910,7 +910,7 @@ void ActionManager::writeSettings()
 void ActionManager::file_open()
 {
     const QString defaultPath = QStandardPaths::writableLocation(QStandardPaths::GenericDataLocation);
-    const QUrl dir = QUrl::fromLocalFile(defaultPath + QLatin1String("/korganizer/"));
+    const QUrl dir = QUrl::fromLocalFile(defaultPath + QLatin1StringView("/korganizer/"));
     const QUrl url =
         QFileDialog::getOpenFileUrl(dialogParent(), i18nc("@title:window", "Select Calendar File to Open"), dir, QStringLiteral("text/calendar (*.ics *.vcs)"));
 
@@ -938,7 +938,7 @@ void ActionManager::file_open(const QUrl &url)
 void ActionManager::file_import()
 {
     const QString defaultPath = QStandardPaths::writableLocation(QStandardPaths::GenericDataLocation);
-    const QUrl dir = QUrl::fromLocalFile(defaultPath + QLatin1String("/korganizer/"));
+    const QUrl dir = QUrl::fromLocalFile(defaultPath + QLatin1StringView("/korganizer/"));
     const QUrl url = QFileDialog::getOpenFileUrl(dialogParent(),
                                                  i18nc("@title:window", "Select Calendar File to Import"),
                                                  dir,
@@ -1409,7 +1409,7 @@ void ActionManager::openEventEditor(const QString &summary,
                                     const QString &attachmentMimetype)
 {
     int action = IncidenceEditorNG::IncidenceEditorSettings::self()->defaultEmailAttachMethod();
-    if (attachmentMimetype != QLatin1String("message/rfc822")) {
+    if (attachmentMimetype != QLatin1StringView("message/rfc822")) {
         action = IncidenceEditorNG::IncidenceEditorSettings::Link;
     } else if (file.isEmpty()) {
         action = KOPrefs::TodoAttachLink;
@@ -1515,7 +1515,7 @@ void ActionManager::openTodoEditor(const QString &summary,
                                    const QString &attachmentMimetype)
 {
     int action = KOPrefs::instance()->defaultTodoAttachMethod();
-    if (attachmentMimetype != QLatin1String("message/rfc822")) {
+    if (attachmentMimetype != QLatin1StringView("message/rfc822")) {
         action = KOPrefs::TodoAttachLink;
     } else if (file.isEmpty()) {
         action = KOPrefs::TodoAttachLink;

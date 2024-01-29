@@ -92,7 +92,7 @@ void KOPrefsDialogGroupwareScheduling::usrWriteConfig()
     Akonadi::CalendarSettings::self()->setFreeBusyRetrieveSavePassword(mGroupwarePage->retrieveSavePassword->isChecked());
 
     // clear the url cache for our user
-    const QString configFile = QStandardPaths::writableLocation(QStandardPaths::GenericDataLocation) + QLatin1String("/korganizer/freebusyurls");
+    const QString configFile = QStandardPaths::writableLocation(QStandardPaths::GenericDataLocation) + QLatin1StringView("/korganizer/freebusyurls");
     KConfig cfg(configFile);
     cfg.deleteGroup(CalendarSupport::KCalPrefs::instance()->email());
 
