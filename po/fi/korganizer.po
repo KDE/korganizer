@@ -10,14 +10,14 @@
 # Tapio Kautto <eleknader@phnet.fi>, 2004.
 # Ilpo Kantonen <ilpo@iki.fi>, 2005, 2006.
 # Mikko Piippo <piippo@cc.helsinki.fi>, 2007, 2008.
-# Tommi Nieminen <translator@legisign.org>, 2009, 2011, 2012, 2013, 2016, 2017, 2018, 2019, 2020, 2021, 2022, 2023.
+# Tommi Nieminen <translator@legisign.org>, 2009, 2011, 2012, 2013, 2016, 2017, 2018, 2019, 2020, 2021, 2022, 2023, 2024.
 # Lasse Liehu <lasse.liehu@gmail.com>, 2010, 2011, 2012, 2013, 2014, 2015, 2016.
 msgid ""
 msgstr ""
 "Project-Id-Version: korganizer\n"
 "Report-Msgid-Bugs-To: https://bugs.kde.org\n"
 "POT-Creation-Date: 2024-01-02 01:32+0000\n"
-"PO-Revision-Date: 2023-09-27 18:29+0300\n"
+"PO-Revision-Date: 2024-01-11 17:28+0200\n"
 "Last-Translator: Tommi Nieminen <translator@legisign.org>\n"
 "Language-Team: Finnish <kde-i18n-doc@kde.org>\n"
 "Language: fi\n"
@@ -1129,8 +1129,7 @@ msgid "Unable to save calendar to the file %1."
 msgstr "Kalenteria ei voitu tallentaa tiedostoon %1."
 
 #: actionmanager.cpp:1036
-#, fuzzy, kde-format
-#| msgid "Error"
+#, kde-format
 msgctxt "@title:window"
 msgid "Error"
 msgstr "Virhe"
@@ -1198,8 +1197,7 @@ msgstr ""
 "virheellisen."
 
 #: actionmanager.cpp:1461
-#, fuzzy, kde-format
-#| msgid "Remove Attachments"
+#, kde-format
 msgctxt "@title:window"
 msgid "Remove Attachments"
 msgstr "Poista liitteet"
@@ -1477,12 +1475,10 @@ msgid "Do you want to dissociate the occurrence on %1 from the recurrence?"
 msgstr "Haluatko irrottaa tapahtuman %1 toistoista?"
 
 #: calendarview.cpp:1575 calendarview.cpp:1587 calendarview.cpp:2246
-#, fuzzy, kde-format
-#| msgctxt "@title:window"
-#| msgid "KOrganizer Confirmation"
+#, kde-format
 msgctxt "@title:window"
 msgid "KOrganizer Confirmation"
-msgstr "KOrganizer varmistus"
+msgstr "KOrganizer: vahvistus"
 
 #: calendarview.cpp:1576
 #, kde-format
@@ -1524,11 +1520,10 @@ msgid "Dissociating the future occurrences failed."
 msgstr "Tulevien tapahtumien irrotus epäonnistui."
 
 #: calendarview.cpp:1616 calendarview.cpp:1618
-#, fuzzy, kde-format
-#| msgid "Dissociating Failed"
+#, kde-format
 msgctxt "@title:window"
 msgid "Dissociating Failed"
-msgstr "Irrotus epäonnistui."
+msgstr "Irrotus epäonnistui"
 
 #: calendarview.cpp:1618
 #, kde-format
@@ -1673,11 +1668,10 @@ msgid "Delete all completed to-dos from checked calendars?"
 msgstr "Poistetaanko kaikki valmiit tehtävät valituista kalentereista?"
 
 #: calendarview.cpp:2415
-#, fuzzy, kde-format
-#| msgid "Purge To-dos"
+#, kde-format
 msgctxt "@title:window"
 msgid "Purge To-dos"
-msgstr "Poista tehtävät"
+msgstr "Puhdista tehtävät"
 
 #: calendarview.cpp:2416
 #, kde-format
@@ -3760,11 +3754,10 @@ msgid ""
 msgstr "Olet palauttamassa oletusasetukset. Kaikki omat muutokset menetetään."
 
 #: prefs/kprefsdialog.cpp:869
-#, fuzzy, kde-format
-#| msgid "Setting Default Preferences"
+#, kde-format
 msgctxt "@title:window"
 msgid "Setting Default Preferences"
-msgstr "Otetaan oletusasetukset käyttöön."
+msgstr "Asetetaan oletusasetuksia"
 
 #: prefs/kprefsdialog.cpp:870
 #, kde-format
@@ -5646,10 +5639,9 @@ msgstr "Tietoalue"
 
 #. i18n: ectx: property (toolTip), widget (QCheckBox, dateRangeCheckbox)
 #: ui/searchdialog_base.ui:204
-#, fuzzy, kde-format
-#| msgid "Include all to-dos &within the specified date range"
+#, kde-format
 msgid "When checked, the search will be limited to the specified date range."
-msgstr "Sisällytä &annetun aikavälin tehtävät"
+msgstr "Kun valittu, haku rajataan annettuun päivämääräväliin."
 
 #. i18n: ectx: property (whatsThis), widget (QCheckBox, dateRangeCheckbox)
 #: ui/searchdialog_base.ui:207
@@ -5658,12 +5650,14 @@ msgid ""
 "Check this box to search for events within a specified date range. If the "
 "box is unchecked, all events will be searched."
 msgstr ""
+"Valitsemalla tämän ruudun tapahtumahaku rajataan annettuun päivämääräväliin, "
+"muuten etsitään kaikista tapahtumista."
 
 #. i18n: ectx: property (text), widget (QCheckBox, dateRangeCheckbox)
 #: ui/searchdialog_base.ui:210
 #, kde-format
 msgid "Limit search to specified date range"
-msgstr ""
+msgstr "Rajaa haku annettuun päivämääräväliin"
 
 #. i18n: ectx: property (text), widget (QLabel, startDateLabel)
 #: ui/searchdialog_base.ui:222
