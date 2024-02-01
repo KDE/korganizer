@@ -255,7 +255,8 @@ SummaryEventInfo::List SummaryEventInfo::eventsForRange(QDate start, QDate end, 
             if (!summaryEvent->timeRange.isEmpty()) {
                 summaryEvent->timeRange += QLatin1StringView("<br>");
             }
-            summaryEvent->timeRange += QLatin1StringView("<font size=\"small\"><i>") + i18nc("next occurrence", "Next: %1", tmp) + QLatin1String("</i></font>");
+            summaryEvent->timeRange +=
+                QLatin1StringView("<font size=\"small\"><i>") + i18nc("next occurrence", "Next: %1", tmp) + QLatin1StringView("</i></font>");
         }
     }
 

@@ -292,7 +292,7 @@ void KOrganizer::setTitle()
         title = i18n("Calendar");
     }
     if (mCalendarView->isFiltered()) {
-        title += QLatin1StringView(" - <") + mCalendarView->currentFilterName() + QLatin1String("> ");
+        title += QLatin1StringView(" - <") + mCalendarView->currentFilterName() + QLatin1StringView("> ");
     }
 
     setCaption(title, false);

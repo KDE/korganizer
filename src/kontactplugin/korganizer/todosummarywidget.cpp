@@ -368,7 +368,7 @@ const QString TodoSummaryWidget::stateStr(const KCalendarCore::Todo::Ptr &todo)
     if (todo->isOpenEnded()) {
         str1 = i18n("open-ended");
     } else if (todo->isOverdue()) {
-        str1 = QLatin1StringView("<font color=\"red\">") + i18nc("the to-do is overdue", "overdue") + QLatin1String("</font>");
+        str1 = QLatin1StringView("<font color=\"red\">") + i18nc("the to-do is overdue", "overdue") + QLatin1StringView("</font>");
     } else if (startsToday(todo)) {
         str1 = i18nc("the to-do starts today", "starts today");
     }
@@ -379,7 +379,7 @@ const QString TodoSummaryWidget::stateStr(const KCalendarCore::Todo::Ptr &todo)
         str2 += i18nc("the to-do is completed", "completed");
     } else if (todo->isInProgress(false)) {
         str2 += i18nc("the to-do is in-progress", "in-progress ");
-        str2 += QLatin1StringView(" (") + QString::number(todo->percentComplete()) + QLatin1String("%)");
+        str2 += QLatin1StringView(" (") + QString::number(todo->percentComplete()) + QLatin1StringView("%)");
     }
 
     if (!str1.isEmpty() && !str2.isEmpty()) {
