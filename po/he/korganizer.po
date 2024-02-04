@@ -12,13 +12,13 @@
 # Diego Iastrubni <elcuco@kde.org>, 2006, 2009.
 # Chen Levy <contrib@chenlevy.com>, 2006.
 # Elkana Bardugo <ttv200@gmail.com>, 2017. #zanata
-# SPDX-FileCopyrightText: 2023 Yaron Shahrabani <sh.yaron@gmail.com>
+# SPDX-FileCopyrightText: 2023, 2024 Yaron Shahrabani <sh.yaron@gmail.com>
 msgid ""
 msgstr ""
 "Project-Id-Version: korganizer\n"
 "Report-Msgid-Bugs-To: https://bugs.kde.org\n"
 "POT-Creation-Date: 2024-02-02 00:38+0000\n"
-"PO-Revision-Date: 2023-11-16 13:23+0200\n"
+"PO-Revision-Date: 2024-02-03 23:48+0200\n"
 "Last-Translator: Yaron Shahrabani <sh.yaron@gmail.com>\n"
 "Language-Team: צוות התרגום של KDE ישראל\n"
 "Language: he\n"
@@ -27,12 +27,12 @@ msgstr ""
 "Content-Transfer-Encoding: 8bit\n"
 "Plural-Forms: nplurals=4; plural=(n == 1) ? 0 : ((n == 2) ? 1 : ((n > 10 && "
 "n % 10 == 0) ? 2 : 3));\n"
-"X-Generator: Poedit 3.3.2\n"
+"X-Generator: Lokalize 23.08.4\n"
 
 #, kde-format
 msgctxt "NAME OF TRANSLATORS"
 msgid "Your names"
-msgstr "צוות התרגום של KDE ישראל דיאגו, איסטרובני חן ,לוי"
+msgstr "צוות התרגום של KDE ישראל,דיאגו איסטרובני,חן לוי"
 
 #, kde-format
 msgctxt "EMAIL OF TRANSLATORS"
@@ -2864,7 +2864,7 @@ msgstr "יום"
 #, kde-format
 msgctxt "the to-do is due tomorrow"
 msgid "Tomorrow"
-msgstr ""
+msgstr "מחר"
 
 #: kontactplugin/korganizer/todosummarywidget.cpp:188
 #, kde-format
@@ -3153,7 +3153,7 @@ msgstr "יום"
 #, kde-format
 msgctxt "the special day is tomorrow"
 msgid "Tomorrow"
-msgstr ""
+msgstr "מחר"
 
 #: kontactplugin/specialdates/sdsummarywidget.cpp:498
 #, fuzzy, kde-format
@@ -3238,7 +3238,7 @@ msgstr "מתחזק נוכחי"
 #: kontactplugin/specialdates/specialdates_plugin.cpp:43
 #, kde-format
 msgid "Tobias Koenig"
-msgstr ""
+msgstr "טוביאס קוניג"
 
 #: korganizer.cpp:285
 #, kde-format
@@ -3291,7 +3291,7 @@ msgstr "לוח השנה מוזג"
 #: koviewmanager.cpp:442
 #, kde-format
 msgid "Calendars Side by Side"
-msgstr ""
+msgstr "לוחות שנה זה לצד זה"
 
 #: koviewmanager.cpp:475
 #, kde-format
@@ -3305,13 +3305,13 @@ msgstr ""
 #, kde-format
 msgctxt "@title:tab"
 msgid "Colors"
-msgstr ""
+msgstr "צבעים"
 
 #: prefs/koprefsdialogcolorsandfonts.cpp:93
 #, kde-format
 msgctxt "@title:group"
 msgid "Tags"
-msgstr ""
+msgstr "תגיות"
 
 #: prefs/koprefsdialogcolorsandfonts.cpp:107
 #, fuzzy, kde-format
@@ -3353,17 +3353,17 @@ msgid ""
 msgstr "בחר כאן את הצבע של המשאב הנבחר באמצעות התיבה המשולבת מעל."
 
 #: prefs/koprefsdialogcolorsandfonts.cpp:150
-#, fuzzy, kde-format
+#, kde-format
 msgctxt "@title:tab"
 msgid "Fonts"
-msgstr "חודש(ים)"
+msgstr "גופנים"
 
 #: prefs/koprefsdialogcolorsandfonts.cpp:163
 #: prefs/koprefsdialogcolorsandfonts.cpp:169
-#, fuzzy, kde-format
+#, kde-format
 msgctxt "@label"
 msgid "Event text"
-msgstr "טקסט אירועים"
+msgstr "טקסט האירוע"
 
 #: prefs/koprefsdialoggroupscheduling.cpp:39
 #, kde-format
@@ -3372,22 +3372,22 @@ msgid "Mail transport:"
 msgstr ""
 
 #: prefs/koprefsdialogmain.cpp:42
-#, fuzzy, kde-format
+#, kde-format
 msgctxt "@title:tab personal settings"
 msgid "Personal"
-msgstr "אישיn#: koprefs.cpp:164"
+msgstr "אישי"
 
 #: prefs/koprefsdialogmain.cpp:48
-#, fuzzy, kde-format
+#, kde-format
 msgctxt "@title:group email settings"
 msgid "Email Settings"
-msgstr "פגישה"
+msgstr "הגדרות דוא״ל"
 
 #: prefs/koprefsdialogmain.cpp:62 prefs/koprefsdialogtime.cpp:189
-#, fuzzy, kde-format
+#, kde-format
 msgctxt "@title:group"
 msgid "Reminders"
-msgstr "תזכורת"
+msgstr "תזכורות"
 
 #: prefs/koprefsdialogmain.cpp:71
 #, kde-format
@@ -3396,22 +3396,22 @@ msgid "Save"
 msgstr "שמירה"
 
 #: prefs/koprefsdialogmain.cpp:83
-#, fuzzy, kde-format
+#, kde-format
 msgctxt "@title:tab calendar account settings"
 msgid "Calendars"
-msgstr "לוח־שנה"
+msgstr "לוחות־שנה"
 
 #: prefs/koprefsdialogmain.cpp:87
-#, fuzzy, kde-format
+#, kde-format
 msgctxt "@title"
 msgid "Calendar Accounts"
-msgstr "לוח־שנה"
+msgstr "חשבונות לוח־שנה"
 
 #: prefs/koprefsdialogplugins.cpp:61
-#, fuzzy, kde-format
+#, kde-format
 msgctxt "@title:group"
 msgid "Position"
-msgstr "יעד"
+msgstr "מקום"
 
 #. i18nc( "@option:check", "Show in the month view" ), mPositioningGroupBox );
 #: prefs/koprefsdialogplugins.cpp:88
@@ -3427,10 +3427,10 @@ msgid "Show at the bottom of the agenda views"
 msgstr "הצג נבחרים בלבד"
 
 #: prefs/koprefsdialogplugins.cpp:123
-#, fuzzy, kde-format
+#, kde-format
 msgctxt "@title:group"
 msgid "Calendar Decorations"
-msgstr "לוח־שנה"
+msgstr "עיטורי לוח־שנה"
 
 #: prefs/koprefsdialogplugins.cpp:143
 #, kde-format
@@ -3502,44 +3502,43 @@ msgstr ""
 #, kde-format
 msgctxt "@item:inlistbox"
 msgid "Monday"
-msgstr ""
+msgstr "יום שני"
 
 #: prefs/koprefsdialogtime.cpp:140
 #, kde-format
 msgctxt "@item:inlistbox"
 msgid "Tuesday"
-msgstr ""
+msgstr "יום שלישי"
 
 #: prefs/koprefsdialogtime.cpp:140
 #, kde-format
 msgctxt "@item:inlistbox"
 msgid "Wednesday"
-msgstr ""
+msgstr "יום רביעי"
 
 #: prefs/koprefsdialogtime.cpp:141
 #, kde-format
 msgctxt "@item:inlistbox"
 msgid "Thursday"
-msgstr ""
+msgstr "יום חמישי"
 
 #: prefs/koprefsdialogtime.cpp:141
-#, fuzzy, kde-format
-#| msgid "Holiday"
+#, kde-format
 msgctxt "@item:inlistbox"
 msgid "Friday"
-msgstr "חג"
+msgstr "יום שישי"
 
 #: prefs/koprefsdialogtime.cpp:141
 #, kde-format
 msgctxt "@item:inlistbox"
 msgid "Saturday"
-msgstr ""
+msgstr "שבת"
 
 #: prefs/koprefsdialogtime.cpp:142
 #, kde-format
 msgctxt "@item:inlistbox"
 msgid "Sunday"
-msgstr ""
+msgstr "יום ראשון"
 
 #: prefs/koprefsdialogtime.cpp:171
 #, fuzzy, kde-format
@@ -3580,26 +3579,26 @@ msgstr "ימים"
 #: prefs/koprefsdialogtime.cpp:219
 #, kde-format
 msgid "Audio Files (*.ogg *.wav *.mp3 *.wma *.flac *.aiff *.raw *.au *.ra)"
-msgstr ""
+msgstr "קובצי שמע (‎*.ogg‏ ‎*.wav‏ ‎*.mp3‏ ‎*.wma‏ ‎*.flac‏ ‎*.aiff‏ ‎*.raw‏ ‎*.au‏ ‎*.ra)"
 
 #: prefs/koprefsdialogviews.cpp:44
-#, fuzzy, kde-format
+#, kde-format
 msgctxt "@title:tab general settings"
 msgid "General"
 msgstr "כללי"
 
 #: prefs/koprefsdialogviews.cpp:50 prefs/koprefsdialogviews.cpp:87
 #: prefs/koprefsdialogviews.cpp:131 prefs/koprefsdialogviews.cpp:158
-#, fuzzy, kde-format
+#, kde-format
 msgctxt "@title:group"
 msgid "Display Options"
-msgstr "אפשרויות מיון"
+msgstr "אפשרויות תצוגה"
 
 #: prefs/koprefsdialogviews.cpp:56
-#, fuzzy, kde-format
+#, kde-format
 msgctxt "@label suffix in the N days spin box"
 msgid " days"
-msgstr "ימים"
+msgstr " ימים"
 
 #: prefs/koprefsdialogviews.cpp:69
 #, fuzzy, kde-format
@@ -3608,46 +3607,45 @@ msgid "Date Navigator"
 msgstr "תאריכון"
 
 #: prefs/koprefsdialogviews.cpp:81
-#, fuzzy, kde-format
+#, kde-format
 msgctxt "@title:tab"
 msgid "Agenda View"
 msgstr "תצוגת סדר־יום"
 
 #: prefs/koprefsdialogviews.cpp:93
-#, fuzzy, kde-format
+#, kde-format
 msgctxt "@label suffix in the hour size spin box"
 msgid " pixels"
-msgstr " פיקסל"
+msgstr " פיקסלים"
 
 #: prefs/koprefsdialogviews.cpp:125
-#, fuzzy, kde-format
+#, kde-format
 msgctxt "@title:tab"
 msgid "Month View"
 msgstr "תצוגת חודש"
 
 #: prefs/koprefsdialogviews.cpp:152
-#, fuzzy, kde-format
+#, kde-format
 msgctxt "@title:tab"
 msgid "Todo View"
-msgstr "תצוגת משימות"
+msgstr "תצוגת מטלות"
 
 #: prefs/koprefsdialogviews.cpp:165
-#, fuzzy, kde-format
+#, kde-format
 msgctxt "@title:group"
 msgid "Other Options"
-msgstr "אפשריות נוספות"
+msgstr "אפשרויות אחרות"
 
 #: prefs/kprefsdialog.cpp:234
-#, fuzzy, kde-format
-#| msgid "Change..."
+#, kde-format
 msgid "Choose..."
-msgstr "שנה..."
+msgstr "בחירה…"
 
 #: prefs/kprefsdialog.cpp:765
 #, kde-format
 msgctxt "@title:window"
 msgid "Preferences"
-msgstr ""
+msgstr "העדפות"
 
 #: prefs/kprefsdialog.cpp:867
 #, kde-format
@@ -4041,9 +4039,9 @@ msgstr "הצג נבחרים בלבד"
 #. i18n: ectx: label, entry (ShowTodosAgendaView), group (Agenda View)
 #. i18n: ectx: label, entry (ShowTodosMonthView), group (Month View)
 #: settings/korganizer.kcfg:158 settings/korganizer.kcfg:256
-#, fuzzy, kde-format
+#, kde-format
 msgid "Show to-dos"
-msgstr "&הצג מטלה"
+msgstr "הצגת מטלות"
 
 #. i18n: ectx: whatsthis, entry (ShowTodosAgendaView), group (Agenda View)
 #: settings/korganizer.kcfg:159
@@ -5117,7 +5115,7 @@ msgstr ""
 
 #. i18n: ectx: property (text), widget (QLabel, TextLabel6)
 #: ui/kogroupwareprefspage.ui:261
-#, fuzzy, kde-format
+#, kde-format
 msgctxt "login name on the Kolab server"
 msgid "Username:"
 msgstr "שם משתמש:"
@@ -5570,27 +5568,27 @@ msgstr "כלול מטלות &ללא תאריך יעד"
 
 #. i18n: ectx: property (text), widget (QPushButton, mDayBtn)
 #: views/collectionview/quickview.ui:34
-#, fuzzy, kde-format
+#, kde-format
 msgid "Day"
 msgstr "יום"
 
 #. i18n: ectx: property (text), widget (QPushButton, mWeekBtn)
 #: views/collectionview/quickview.ui:41
-#, fuzzy, kde-format
+#, kde-format
 msgid "Week"
 msgstr "שבוע"
 
 #. i18n: ectx: property (text), widget (QPushButton, mMothBtn)
 #: views/collectionview/quickview.ui:51
-#, fuzzy, kde-format
+#, kde-format
 msgid "Month"
 msgstr "חודש"
 
 #. i18n: ectx: property (text), widget (QPushButton, mAgendaBtn)
 #: views/collectionview/quickview.ui:61
-#, fuzzy, kde-format
+#, kde-format
 msgid "Agenda"
-msgstr "תצוגת סדר יום"
+msgstr "סדר יום"
 
 #. i18n: ectx: property (text), widget (QPushButton, mPreviousBtn)
 #: views/collectionview/quickview.ui:84
@@ -5605,15 +5603,15 @@ msgid ">"
 msgstr ""
 
 #: views/multiagendaview/multiagendaview.cpp:37
-#, fuzzy, kde-format
+#, kde-format
 msgid "Agenda %1"
-msgstr "תצוגת סדר יום"
+msgstr "סדר יום %1"
 
 #: views/multiagendaview/multiagendaview.cpp:340
-#, fuzzy, kde-format
+#, kde-format
 msgctxt "@title:window"
 msgid "Configure Side-By-Side View"
-msgstr "הגדרות &תאריך ושעה..."
+msgstr "הגדרת תצוגת זה לצד זה"
 
 #. i18n: ectx: property (text), widget (QRadioButton, useDefaultRB)
 #: views/multiagendaview/multiagendaviewconfigwidget.ui:17
@@ -5635,16 +5633,16 @@ msgstr ""
 
 #. i18n: ectx: property (text), widget (QLabel, titleLabel)
 #: views/multiagendaview/multiagendaviewconfigwidget.ui:84
-#, fuzzy, kde-format
+#, kde-format
 msgctxt "Agenda title"
 msgid "Title"
-msgstr "&כותרת:"
+msgstr "כותרת"
 
 #. i18n: ectx: property (text), widget (QLabel, selectedCalendarsLabel)
 #: views/multiagendaview/multiagendaviewconfigwidget.ui:102
-#, fuzzy, kde-format
+#, kde-format
 msgid "Selected Calendars"
-msgstr "לוח־שנה חדש"
+msgstr "לוחות שנה נבחרים"
 
 #: widgets/kdatenavigator.cpp:169
 #, kde-format
@@ -5653,9 +5651,9 @@ msgid "%1/%2"
 msgstr "%1/%2"
 
 #: widgets/kdatenavigator.cpp:174
-#, fuzzy, kde-format
+#, kde-format
 msgid "Scroll to week number %1"
-msgstr "הדפס &מספרי שבועות"
+msgstr "גלילה לשבוע מספר %1"
 
 #: widgets/kdatenavigator.cpp:176
 #, kde-format
@@ -5675,19 +5673,19 @@ msgid "A column header of the %1 dates in the month."
 msgstr ""
 
 #: widgets/kitemiconcheckcombo.cpp:16
-#, fuzzy, kde-format
+#, kde-format
 msgid "Calendar's custom icon"
-msgstr "לוח־שנה"
+msgstr "סמל מותאם אישית ללוח שנה"
 
 #: widgets/kitemiconcheckcombo.cpp:17
-#, fuzzy, kde-format
+#, kde-format
 msgid "To-do"
-msgstr "מטלה:"
+msgstr "מטלה"
 
 #: widgets/kitemiconcheckcombo.cpp:18
-#, fuzzy, kde-format
+#, kde-format
 msgid "Journal"
-msgstr "י&ומן"
+msgstr "יומן"
 
 #: widgets/kitemiconcheckcombo.cpp:19
 #, fuzzy, kde-format
@@ -5789,13 +5787,13 @@ msgid "Select a year"
 msgstr "נא לבחור שנה"
 
 #: widgets/navigatorbar.cpp:109
-#, fuzzy, kde-format
+#, kde-format
 msgctxt "monthname"
 msgid "%1"
 msgstr "%1"
 
 #: widgets/navigatorbar.cpp:110
-#, fuzzy, kde-format
+#, kde-format
 msgctxt "4 digit year"
 msgid "%1"
 msgstr "%1"
