@@ -104,6 +104,6 @@
         "Name[zh_CN]": "定制页",
         "Name[zh_TW]": "Custom Pages"
     },
-    "X-DocPath": "korganizer/preferences.html",
+    "X-DocPath": "korganizer/config.html#config-custom-pages",
     "X-KDE-Weight": 800
 }
