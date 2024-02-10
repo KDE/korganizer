@@ -2,14 +2,14 @@
 # Copyright (C) 2008 This_file_is_part_of_KDE
 # This file is distributed under the same license as the kdepim package.
 # Myong-sung Kim <xfuncrushx@gmail.com>, 2008.
-# Shinjo Park <kde@peremen.name>, 2009, 2015, 2019, 2020, 2021, 2022, 2023.
+# SPDX-FileCopyrightText: 2009, 2015, 2019, 2020, 2021, 2022, 2023, 2024 Shinjo Park <kde@peremen.name>
 #
 msgid ""
 msgstr ""
 "Project-Id-Version: Korganizer\n"
 "Report-Msgid-Bugs-To: https://bugs.kde.org\n"
 "POT-Creation-Date: 2024-02-02 00:38+0000\n"
-"PO-Revision-Date: 2023-10-08 23:33+0200\n"
+"PO-Revision-Date: 2024-02-09 23:54+0100\n"
 "Last-Translator: Shinjo Park <kde@peremen.name>\n"
 "Language-Team: Korean <kde-kr@kde.org>\n"
 "Language: ko\n"
@@ -17,7 +17,7 @@ msgstr ""
 "Content-Type: text/plain; charset=UTF-8\n"
 "Content-Transfer-Encoding: 8bit\n"
 "Plural-Forms: nplurals=1; plural=0;\n"
-"X-Generator: Lokalize 22.12.3\n"
+"X-Generator: Lokalize 23.08.1\n"
 
 #, kde-format
 msgctxt "NAME OF TRANSLATORS"
@@ -43,13 +43,7 @@ msgid "A Personal Organizer"
 msgstr "개인 오거나이저"
 
 #: aboutdata.cpp:22
-#, fuzzy, kde-format
-#| msgid ""
-#| "Copyright © 1997–1999 Preston Brown\n"
-#| "Copyright © 2000–2004, 2007 Cornelius Schumacher\n"
-#| "Copyright © 2004–2005 Reinhold Kainhofer\n"
-#| "Copyright © 2006–2012 Allen Winter\n"
-#| "Copyright © 2012–2022 KOrganizer authors"
+#, kde-format
 msgid ""
 "Copyright © 1997–1999 Preston Brown\n"
 "Copyright © 2000–2004, 2007 Cornelius Schumacher\n"
@@ -61,7 +55,7 @@ msgstr ""
 "Copyright © 2000–2004, 2007 Cornelius Schumacher\n"
 "Copyright © 2004–2005 Reinhold Kainhofer\n"
 "Copyright © 2006–2012 Allen Winter\n"
-"Copyright © 2012–2022 KOrganizer authors"
+"Copyright © 2012–2024 KOrganizer authors"
 
 #: aboutdata.cpp:30 kontactplugin/specialdates/specialdates_plugin.cpp:42
 #, kde-format
@@ -5510,10 +5504,9 @@ msgstr "날짜 범위"
 
 #. i18n: ectx: property (toolTip), widget (QCheckBox, dateRangeCheckbox)
 #: ui/searchdialog_base.ui:204
-#, fuzzy, kde-format
-#| msgid "Include all to-dos &within the specified date range"
+#, kde-format
 msgid "When checked, the search will be limited to the specified date range."
-msgstr "지정한 날짜 범위에 있는 모든 할 일 포함(&V)"
+msgstr "이 옵션을 사용하면 지정한 날짜 범위로 검색을 제한합니다."
 
 #. i18n: ectx: property (whatsThis), widget (QCheckBox, dateRangeCheckbox)
 #: ui/searchdialog_base.ui:207
@@ -5522,12 +5515,14 @@ msgid ""
 "Check this box to search for events within a specified date range. If the "
 "box is unchecked, all events will be searched."
 msgstr ""
+"이 옵션을 사용하면 선택한 날짜 범위에 있는 이벤트만 검색합니다. 이 옵션을 사"
+"용하지 않으면 모든 옵션을 검색합니다."
 
 #. i18n: ectx: property (text), widget (QCheckBox, dateRangeCheckbox)
 #: ui/searchdialog_base.ui:210
 #, kde-format
 msgid "Limit search to specified date range"
-msgstr ""
+msgstr "지정한 날짜 범위로 검색 제한"
 
 #. i18n: ectx: property (text), widget (QLabel, startDateLabel)
 #: ui/searchdialog_base.ui:222
