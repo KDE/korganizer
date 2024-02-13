@@ -17,7 +17,6 @@
 #include "calendarview.h"
 #include "impl/korganizerifaceimpl.h"
 #include "kocore.h"
-#include "koglobals.h"
 #include "plugininterface/korganizerplugininterface.h"
 
 #include <Libkdepim/ProgressStatusBarWidget>
