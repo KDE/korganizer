@@ -48,6 +48,7 @@ private Q_SLOTS:
 
 private:
     void initGUI();
+    QString mDesignerProcessName;
 
     QTreeWidget *mPageView = nullptr;
     QLabel *mPagePreview = nullptr;
