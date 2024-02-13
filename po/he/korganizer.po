@@ -18,7 +18,7 @@ msgstr ""
 "Project-Id-Version: korganizer\n"
 "Report-Msgid-Bugs-To: https://bugs.kde.org\n"
 "POT-Creation-Date: 2024-02-02 00:38+0000\n"
-"PO-Revision-Date: 2024-02-03 23:48+0200\n"
+"PO-Revision-Date: 2024-02-12 22:18+0200\n"
 "Last-Translator: Yaron Shahrabani <sh.yaron@gmail.com>\n"
 "Language-Team: צוות התרגום של KDE ישראל\n"
 "Language: he\n"
@@ -5445,9 +5445,9 @@ msgstr "בחר באפשרות זו אם ברצונך להציג שניות בק�
 
 #. i18n: ectx: property (text), widget (QCheckBox, attendeeCheck)
 #: ui/searchdialog_base.ui:188
-#, fuzzy, kde-format
+#, kde-format
 msgid "Attendees"
-msgstr "&נוכחים"
+msgstr "משתתפים"
 
 #. i18n: ectx: property (title), widget (QGroupBox, dateRangeGroup)
 #: ui/searchdialog_base.ui:198
@@ -5688,9 +5688,9 @@ msgid "Journal"
 msgstr "יומן"
 
 #: widgets/kitemiconcheckcombo.cpp:19
-#, fuzzy, kde-format
+#, kde-format
 msgid "Recurring"
-msgstr "חזרה"
+msgstr "מחזורי"
 
 #: widgets/kitemiconcheckcombo.cpp:20
 #, fuzzy, kde-format
