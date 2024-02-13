@@ -8,7 +8,6 @@
 */
 
 #include "koprefs.h"
-#include "korganizer_debug.h"
 #include <QFontDatabase>
 
 class KOPrefsPrivate
