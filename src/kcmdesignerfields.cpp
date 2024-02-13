@@ -260,7 +260,12 @@ void KCMDesignerFields::initGUI()
 {
     auto layout = new QVBoxLayout(widget());
 
-    const bool noDesigner = QStandardPaths::findExecutable(QStringLiteral("designer")).isEmpty();
+    mDesignerProcessName = QStringLiteral("designer");
+    bool noDesigner = QStandardPaths::findExecutable(mDesignerProcessName).isEmpty();
+    if (noDesigner) {
+        mDesignerProcessName = QStringLiteral("designer6");
+        noDesigner = QStandardPaths::findExecutable(mDesignerProcessName).isEmpty();
+    }
 
     if (noDesigner) {
         const QString txt = i18n(
@@ -429,7 +434,7 @@ void KCMDesignerFields::startDesigner()
         args.append(pageItem->path());
     }
 
-    auto job = new KIO::CommandLauncherJob(QStringLiteral("designer"), args, this);
+    auto job = new KIO::CommandLauncherJob(mDesignerProcessName, args, this);
     job->setUiDelegate(new KDialogJobUiDelegate(KJobUiDelegate::AutoHandlingEnabled, widget()));
     job->start();
 }
