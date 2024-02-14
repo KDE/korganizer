@@ -2,7 +2,7 @@ msgid ""
 msgstr ""
 "Project-Id-Version: kdeorg\n"
 "Report-Msgid-Bugs-To: https://bugs.kde.org\n"
-"POT-Creation-Date: 2024-01-02 01:32+0000\n"
+"POT-Creation-Date: 2024-02-14 02:28+0000\n"
 "PO-Revision-Date: 2024-01-06 03:32\n"
 "Last-Translator: \n"
 "Language-Team: Chinese Simplified\n"
@@ -1988,7 +1988,7 @@ msgstr "导入页面"
 msgid "Designer Files"
 msgstr "设计师文件"
 
-#: kcmdesignerfields.cpp:267
+#: kcmdesignerfields.cpp:272
 #, kde-format
 msgid ""
 "<qt><b>Warning:</b> Qt Designer could not be found. It is probably not "
@@ -1997,17 +1997,17 @@ msgstr ""
 "<qt><b>警告：</b>Qt 设计师可能找不到。可能没有安装该程序。您只能导入现有的设"
 "计师文件。</qt>"
 
-#: kcmdesignerfields.cpp:277
+#: kcmdesignerfields.cpp:282
 #, kde-format
 msgid "Available Pages"
 msgstr "可用页"
 
-#: kcmdesignerfields.cpp:283
+#: kcmdesignerfields.cpp:288
 #, kde-format
 msgid "Preview of Selected Page"
 msgstr "选中页的预览"
 
-#: kcmdesignerfields.cpp:302
+#: kcmdesignerfields.cpp:307
 #, kde-format
 msgid ""
 "<qt><p>This section allows you to add your own GUI Elements ('<i>Widgets</"
@@ -2034,42 +2034,42 @@ msgstr ""
 "i> 属性设为 '<i>X_Foo</i>'。</p><p><b>重要说明：</b> 部件在编辑自定义条目时将"
 "使用 %2 为应用程序名。您可以在 Qt 设计师中设置表单名以更改此名称。</p></qt>"
 
-#: kcmdesignerfields.cpp:324
+#: kcmdesignerfields.cpp:329
 #, kde-format
 msgid "<a href=\"whatsthis:%1\">How does this work?</a>"
 msgstr "<a href=\"whatsthis:%1\">此事项如何生效？</a>"
 
-#: kcmdesignerfields.cpp:335
+#: kcmdesignerfields.cpp:340
 #, kde-format
 msgid "Delete Page"
 msgstr "删除页面"
 
-#: kcmdesignerfields.cpp:338
+#: kcmdesignerfields.cpp:343
 #, kde-format
 msgid "Import Page..."
 msgstr "导入页面..."
 
-#: kcmdesignerfields.cpp:340
+#: kcmdesignerfields.cpp:345
 #, kde-format
 msgid "Edit with Qt Designer..."
 msgstr "用 Qt 设计师编辑..."
 
-#: kcmdesignerfields.cpp:365
+#: kcmdesignerfields.cpp:370
 #, kde-format
 msgid "Key:"
 msgstr "键："
 
-#: kcmdesignerfields.cpp:367
+#: kcmdesignerfields.cpp:372
 #, kde-format
 msgid "Type:"
 msgstr "类型："
 
-#: kcmdesignerfields.cpp:369
+#: kcmdesignerfields.cpp:374
 #, kde-format
 msgid "Classname:"
 msgstr "类名："
 
-#: kcmdesignerfields.cpp:371
+#: kcmdesignerfields.cpp:376
 #, kde-format
 msgid "Description:"
 msgstr "描述："

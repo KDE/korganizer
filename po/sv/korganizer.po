@@ -10,7 +10,7 @@ msgid ""
 msgstr ""
 "Project-Id-Version: korganizer\n"
 "Report-Msgid-Bugs-To: https://bugs.kde.org\n"
-"POT-Creation-Date: 2024-01-02 01:32+0000\n"
+"POT-Creation-Date: 2024-02-14 02:28+0000\n"
 "PO-Revision-Date: 2023-07-31 10:08+0200\n"
 "Last-Translator: Stefan Asserhäll <stefan.asserhall@bredband.net>\n"
 "Language-Team: Swedish <kde-i18n-doc@kde.org>\n"
@@ -2064,7 +2064,7 @@ msgstr "Importera sida"
 msgid "Designer Files"
 msgstr "Designer-filer"
 
-#: kcmdesignerfields.cpp:267
+#: kcmdesignerfields.cpp:272
 #, kde-format
 msgid ""
 "<qt><b>Warning:</b> Qt Designer could not be found. It is probably not "
@@ -2074,17 +2074,17 @@ msgstr ""
 "installerad. Du kommer bara att kunna importera befintliga Designer-filer.</"
 "qt>"
 
-#: kcmdesignerfields.cpp:277
+#: kcmdesignerfields.cpp:282
 #, kde-format
 msgid "Available Pages"
 msgstr "Tillgängliga sidor"
 
-#: kcmdesignerfields.cpp:283
+#: kcmdesignerfields.cpp:288
 #, kde-format
 msgid "Preview of Selected Page"
 msgstr "Förhandsgranskning av vald sida"
 
-#: kcmdesignerfields.cpp:302
+#: kcmdesignerfields.cpp:307
 #, kde-format
 msgid ""
 "<qt><p>This section allows you to add your own GUI Elements ('<i>Widgets</"
@@ -2116,42 +2116,42 @@ msgstr ""
 "redigerar egna fält med programnamnet %2. För att ändra programnamnet som "
 "ska redigeras, ange den grafiska komponentens namn i Qt Designer.</p></qt>"
 
-#: kcmdesignerfields.cpp:324
+#: kcmdesignerfields.cpp:329
 #, kde-format
 msgid "<a href=\"whatsthis:%1\">How does this work?</a>"
 msgstr "<a href=\"whatsthis:%1\">Hur fungerar det här?</a>"
 
-#: kcmdesignerfields.cpp:335
+#: kcmdesignerfields.cpp:340
 #, kde-format
 msgid "Delete Page"
 msgstr "Ta bort sida"
 
-#: kcmdesignerfields.cpp:338
+#: kcmdesignerfields.cpp:343
 #, kde-format
 msgid "Import Page..."
 msgstr "Importera sida..."
 
-#: kcmdesignerfields.cpp:340
+#: kcmdesignerfields.cpp:345
 #, kde-format
 msgid "Edit with Qt Designer..."
 msgstr "Redigera med Qt Designer..."
 
-#: kcmdesignerfields.cpp:365
+#: kcmdesignerfields.cpp:370
 #, kde-format
 msgid "Key:"
 msgstr "Nyckel:"
 
-#: kcmdesignerfields.cpp:367
+#: kcmdesignerfields.cpp:372
 #, kde-format
 msgid "Type:"
 msgstr "Typ:"
 
-#: kcmdesignerfields.cpp:369
+#: kcmdesignerfields.cpp:374
 #, kde-format
 msgid "Classname:"
 msgstr "Klassnamn:"
 
-#: kcmdesignerfields.cpp:371
+#: kcmdesignerfields.cpp:376
 #, kde-format
 msgid "Description:"
 msgstr "Beskrivning:"

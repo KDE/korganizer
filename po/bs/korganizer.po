@@ -7,7 +7,7 @@ msgid ""
 msgstr ""
 "Project-Id-Version: __kde__kdepim__korganizer\n"
 "Report-Msgid-Bugs-To: https://bugs.kde.org\n"
-"POT-Creation-Date: 2024-01-02 01:32+0000\n"
+"POT-Creation-Date: 2024-02-14 02:28+0000\n"
 "PO-Revision-Date: 2014-01-31 19:03+0100\n"
 "Last-Translator: Samir Ribić <megaribi@epn.ba>\n"
 "Language-Team:  <bs@li.org>\n"
@@ -2136,7 +2136,7 @@ msgstr "Uvezi stranu"
 msgid "Designer Files"
 msgstr "*.ui|Dizajnerske datoteke"
 
-#: kcmdesignerfields.cpp:267
+#: kcmdesignerfields.cpp:272
 #, kde-format
 msgid ""
 "<qt><b>Warning:</b> Qt Designer could not be found. It is probably not "
@@ -2145,17 +2145,17 @@ msgstr ""
 "<qt><b>Upozorenje:</b> Ne mogu da nađem Qt Designer. Verovatno nije "
 "instaliran. Moćićete da uvozite jedino postojeće dizajnerske datoteke.</qt>"
 
-#: kcmdesignerfields.cpp:277
+#: kcmdesignerfields.cpp:282
 #, kde-format
 msgid "Available Pages"
 msgstr "Dostupne strane"
 
-#: kcmdesignerfields.cpp:283
+#: kcmdesignerfields.cpp:288
 #, kde-format
 msgid "Preview of Selected Page"
 msgstr "Pregled izabrane strane"
 
-#: kcmdesignerfields.cpp:302
+#: kcmdesignerfields.cpp:307
 #, kde-format
 msgid ""
 "<qt><p>This section allows you to add your own GUI Elements ('<i>Widgets</"
@@ -2187,42 +2187,42 @@ msgstr ""
 "polja s imenom aplikacije %2.  Da promijenite ime aplikacije koja se "
 "mijenja, postavite ime grafičke kontrole u Qt Designer.</p></qt>"
 
-#: kcmdesignerfields.cpp:324
+#: kcmdesignerfields.cpp:329
 #, kde-format
 msgid "<a href=\"whatsthis:%1\">How does this work?</a>"
 msgstr "<a href=\"whatsthis:%1\">Kako ovo radi?</a>"
 
-#: kcmdesignerfields.cpp:335
+#: kcmdesignerfields.cpp:340
 #, kde-format
 msgid "Delete Page"
 msgstr "Obriši stranicu"
 
-#: kcmdesignerfields.cpp:338
+#: kcmdesignerfields.cpp:343
 #, kde-format
 msgid "Import Page..."
 msgstr "Uvezi stranu..."
 
-#: kcmdesignerfields.cpp:340
+#: kcmdesignerfields.cpp:345
 #, kde-format
 msgid "Edit with Qt Designer..."
 msgstr "Uredi pomoću Qt Designer-a..."
 
-#: kcmdesignerfields.cpp:365
+#: kcmdesignerfields.cpp:370
 #, kde-format
 msgid "Key:"
 msgstr "Ključ:"
 
-#: kcmdesignerfields.cpp:367
+#: kcmdesignerfields.cpp:372
 #, kde-format
 msgid "Type:"
 msgstr "Vrsta:"
 
-#: kcmdesignerfields.cpp:369
+#: kcmdesignerfields.cpp:374
 #, kde-format
 msgid "Classname:"
 msgstr "Ime klase:"
 
-#: kcmdesignerfields.cpp:371
+#: kcmdesignerfields.cpp:376
 #, kde-format
 msgid "Description:"
 msgstr "Opis:"

@@ -14,7 +14,7 @@ msgid ""
 msgstr ""
 "Project-Id-Version: korganizer\n"
 "Report-Msgid-Bugs-To: https://bugs.kde.org\n"
-"POT-Creation-Date: 2024-01-02 01:32+0000\n"
+"POT-Creation-Date: 2024-02-14 02:28+0000\n"
 "PO-Revision-Date: 2024-01-28 00:58+0900\n"
 "Last-Translator: Kisaragi Hiu <mail@kisaragi-hiu.com>\n"
 "Language-Team: Traditional Chinese <zh-l10n@lists.slat.org>\n"
@@ -2010,7 +2010,7 @@ msgstr "匯入設計頁"
 msgid "Designer Files"
 msgstr "Designer 檔案"
 
-#: kcmdesignerfields.cpp:267
+#: kcmdesignerfields.cpp:272
 #, kde-format
 msgid ""
 "<qt><b>Warning:</b> Qt Designer could not be found. It is probably not "
@@ -2019,17 +2019,17 @@ msgstr ""
 "<qt><b>警告：</b>找不到 Qt Designer。有可能尚未安裝。您目前只能匯入已存在的 "
 "designer 檔案。</qt>"
 
-#: kcmdesignerfields.cpp:277
+#: kcmdesignerfields.cpp:282
 #, kde-format
 msgid "Available Pages"
 msgstr "可使用的設計頁"
 
-#: kcmdesignerfields.cpp:283
+#: kcmdesignerfields.cpp:288
 #, kde-format
 msgid "Preview of Selected Page"
 msgstr "預覽所選擇的設計頁"
 
-#: kcmdesignerfields.cpp:302
+#: kcmdesignerfields.cpp:307
 #, kde-format
 msgid ""
 "<qt><p>This section allows you to add your own GUI Elements ('<i>Widgets</"
@@ -2057,42 +2057,42 @@ msgstr ""
 "件會依應用程式名稱 %2 編輯自定欄位。如果要變更編輯的應用程式名稱，請在 Qt "
 "Designer 中設定元件的名稱。</p></qt>"
 
-#: kcmdesignerfields.cpp:324
+#: kcmdesignerfields.cpp:329
 #, kde-format
 msgid "<a href=\"whatsthis:%1\">How does this work?</a>"
 msgstr "<a href=\"whatsthis:%1\">這如何運作？</a>"
 
-#: kcmdesignerfields.cpp:335
+#: kcmdesignerfields.cpp:340
 #, kde-format
 msgid "Delete Page"
 msgstr "刪除頁面"
 
-#: kcmdesignerfields.cpp:338
+#: kcmdesignerfields.cpp:343
 #, kde-format
 msgid "Import Page..."
 msgstr "匯入設計頁..."
 
-#: kcmdesignerfields.cpp:340
+#: kcmdesignerfields.cpp:345
 #, kde-format
 msgid "Edit with Qt Designer..."
 msgstr "以 Qt Designer 編輯..."
 
-#: kcmdesignerfields.cpp:365
+#: kcmdesignerfields.cpp:370
 #, kde-format
 msgid "Key:"
 msgstr "金鑰："
 
-#: kcmdesignerfields.cpp:367
+#: kcmdesignerfields.cpp:372
 #, kde-format
 msgid "Type:"
 msgstr "類型："
 
-#: kcmdesignerfields.cpp:369
+#: kcmdesignerfields.cpp:374
 #, kde-format
 msgid "Classname:"
 msgstr "類別名稱："
 
-#: kcmdesignerfields.cpp:371
+#: kcmdesignerfields.cpp:376
 #, kde-format
 msgid "Description:"
 msgstr "說明："

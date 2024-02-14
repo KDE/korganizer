@@ -10,7 +10,7 @@ msgid ""
 msgstr ""
 "Project-Id-Version: korganizer\n"
 "Report-Msgid-Bugs-To: https://bugs.kde.org\n"
-"POT-Creation-Date: 2024-01-02 01:32+0000\n"
+"POT-Creation-Date: 2024-02-14 02:28+0000\n"
 "PO-Revision-Date: 2022-12-31 15:15+0000\n"
 "Last-Translator: Steve Allewell <steve.allewell@gmail.com>\n"
 "Language-Team: British English <kde-l10n-en_gb@kde.org>\n"
@@ -2062,7 +2062,7 @@ msgstr "Import Page"
 msgid "Designer Files"
 msgstr "Designer Files"
 
-#: kcmdesignerfields.cpp:267
+#: kcmdesignerfields.cpp:272
 #, kde-format
 msgid ""
 "<qt><b>Warning:</b> Qt Designer could not be found. It is probably not "
@@ -2071,17 +2071,17 @@ msgstr ""
 "<qt><b>Warning:</b> Qt Designer could not be found. It is probably not "
 "installed. You will only be able to import existing designer files.</qt>"
 
-#: kcmdesignerfields.cpp:277
+#: kcmdesignerfields.cpp:282
 #, kde-format
 msgid "Available Pages"
 msgstr "Available Pages"
 
-#: kcmdesignerfields.cpp:283
+#: kcmdesignerfields.cpp:288
 #, kde-format
 msgid "Preview of Selected Page"
 msgstr "Preview of Selected Page"
 
-#: kcmdesignerfields.cpp:302
+#: kcmdesignerfields.cpp:307
 #, kde-format
 msgid ""
 "<qt><p>This section allows you to add your own GUI Elements ('<i>Widgets</"
@@ -2112,42 +2112,42 @@ msgstr ""
 "custom fields with an application name of %2.  To change the application "
 "name to be edited, set the widget name in Qt Designer.</p></qt>"
 
-#: kcmdesignerfields.cpp:324
+#: kcmdesignerfields.cpp:329
 #, kde-format
 msgid "<a href=\"whatsthis:%1\">How does this work?</a>"
 msgstr "<a href=\"whatsthis:%1\">How does this work?</a>"
 
-#: kcmdesignerfields.cpp:335
+#: kcmdesignerfields.cpp:340
 #, kde-format
 msgid "Delete Page"
 msgstr "Delete Page"
 
-#: kcmdesignerfields.cpp:338
+#: kcmdesignerfields.cpp:343
 #, kde-format
 msgid "Import Page..."
 msgstr "Import Page..."
 
-#: kcmdesignerfields.cpp:340
+#: kcmdesignerfields.cpp:345
 #, kde-format
 msgid "Edit with Qt Designer..."
 msgstr "Edit with Qt Designer..."
 
-#: kcmdesignerfields.cpp:365
+#: kcmdesignerfields.cpp:370
 #, kde-format
 msgid "Key:"
 msgstr "Key:"
 
-#: kcmdesignerfields.cpp:367
+#: kcmdesignerfields.cpp:372
 #, kde-format
 msgid "Type:"
 msgstr "Type:"
 
-#: kcmdesignerfields.cpp:369
+#: kcmdesignerfields.cpp:374
 #, kde-format
 msgid "Classname:"
 msgstr "Classname:"
 
-#: kcmdesignerfields.cpp:371
+#: kcmdesignerfields.cpp:376
 #, kde-format
 msgid "Description:"
 msgstr "Description:"
