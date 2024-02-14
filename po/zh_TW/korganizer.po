@@ -14,7 +14,7 @@ msgid ""
 msgstr ""
 "Project-Id-Version: korganizer\n"
 "Report-Msgid-Bugs-To: https://bugs.kde.org\n"
-"POT-Creation-Date: 2024-02-02 00:38+0000\n"
+"POT-Creation-Date: 2024-02-14 00:38+0000\n"
 "PO-Revision-Date: 2024-01-28 00:58+0900\n"
 "Last-Translator: Kisaragi Hiu <mail@kisaragi-hiu.com>\n"
 "Language-Team: Traditional Chinese <zh-l10n@lists.slat.org>\n"
@@ -39,7 +39,7 @@ msgstr ""
 
 #: aboutdata.cpp:18 kontactplugin/korganizer/journalplugin.cpp:26
 #: kontactplugin/korganizer/korganizerplugin.cpp:42
-#: kontactplugin/korganizer/todoplugin.cpp:39
+#: kontactplugin/korganizer/todoplugin.cpp:38
 #: kontactplugin/specialdates/specialdates_plugin.cpp:23 korganizer_part.cpp:56
 #, kde-format
 msgid "KOrganizer"
@@ -2010,7 +2010,7 @@ msgstr "匯入設計頁"
 msgid "Designer Files"
 msgstr "Designer 檔案"
 
-#: kcmdesignerfields.cpp:267
+#: kcmdesignerfields.cpp:272
 #, kde-format
 msgid ""
 "<qt><b>Warning:</b> Qt Designer could not be found. It is probably not "
@@ -2019,17 +2019,17 @@ msgstr ""
 "<qt><b>警告：</b>找不到 Qt Designer。有可能尚未安裝。您目前只能匯入已存在的 "
 "designer 檔案。</qt>"
 
-#: kcmdesignerfields.cpp:277
+#: kcmdesignerfields.cpp:282
 #, kde-format
 msgid "Available Pages"
 msgstr "可使用的設計頁"
 
-#: kcmdesignerfields.cpp:283
+#: kcmdesignerfields.cpp:288
 #, kde-format
 msgid "Preview of Selected Page"
 msgstr "預覽所選擇的設計頁"
 
-#: kcmdesignerfields.cpp:302
+#: kcmdesignerfields.cpp:307
 #, kde-format
 msgid ""
 "<qt><p>This section allows you to add your own GUI Elements ('<i>Widgets</"
@@ -2057,42 +2057,42 @@ msgstr ""
 "件會依應用程式名稱 %2 編輯自定欄位。如果要變更編輯的應用程式名稱，請在 Qt "
 "Designer 中設定元件的名稱。</p></qt>"
 
-#: kcmdesignerfields.cpp:324
+#: kcmdesignerfields.cpp:329
 #, kde-format
 msgid "<a href=\"whatsthis:%1\">How does this work?</a>"
 msgstr "<a href=\"whatsthis:%1\">這如何運作？</a>"
 
-#: kcmdesignerfields.cpp:335
+#: kcmdesignerfields.cpp:340
 #, kde-format
 msgid "Delete Page"
 msgstr "刪除頁面"
 
-#: kcmdesignerfields.cpp:338
+#: kcmdesignerfields.cpp:343
 #, kde-format
 msgid "Import Page..."
 msgstr "匯入設計頁..."
 
-#: kcmdesignerfields.cpp:340
+#: kcmdesignerfields.cpp:345
 #, kde-format
 msgid "Edit with Qt Designer..."
 msgstr "以 Qt Designer 編輯..."
 
-#: kcmdesignerfields.cpp:365
+#: kcmdesignerfields.cpp:370
 #, kde-format
 msgid "Key:"
 msgstr "金鑰："
 
-#: kcmdesignerfields.cpp:367
+#: kcmdesignerfields.cpp:372
 #, kde-format
 msgid "Type:"
 msgstr "類型："
 
-#: kcmdesignerfields.cpp:369
+#: kcmdesignerfields.cpp:374
 #, kde-format
 msgid "Classname:"
 msgstr "類別名稱："
 
-#: kcmdesignerfields.cpp:371
+#: kcmdesignerfields.cpp:376
 #, kde-format
 msgid "Description:"
 msgstr "說明："
@@ -2522,28 +2522,28 @@ msgid ""
 msgstr "會顯示一對話框，讓您建立新事件項目。"
 
 #: kontactplugin/korganizer/korganizerplugin.cpp:146
-#: kontactplugin/korganizer/todoplugin.cpp:146
+#: kontactplugin/korganizer/todoplugin.cpp:145
 #, kde-format
 msgctxt "@item"
 msgid "Meeting"
 msgstr "會議"
 
 #: kontactplugin/korganizer/korganizerplugin.cpp:160
-#: kontactplugin/korganizer/todoplugin.cpp:160
+#: kontactplugin/korganizer/todoplugin.cpp:159
 #, kde-format
 msgctxt "@item"
 msgid "Note: %1"
 msgstr "便條：%1"
 
 #: kontactplugin/korganizer/korganizerplugin.cpp:189
-#: kontactplugin/korganizer/todoplugin.cpp:189
+#: kontactplugin/korganizer/todoplugin.cpp:188
 #, kde-format
 msgctxt "Event from email summary"
 msgid "Mail: %1"
 msgstr "郵件：%1"
 
 #: kontactplugin/korganizer/korganizerplugin.cpp:191
-#: kontactplugin/korganizer/todoplugin.cpp:191
+#: kontactplugin/korganizer/todoplugin.cpp:190
 #, kde-format
 msgctxt "Event from email content"
 msgid "<b>From:</b> %1<br /><b>To:</b> %2<br /><b>Subject:</b> %3"
@@ -2612,19 +2612,19 @@ msgctxt "next occurrence"
 msgid "Next: %1"
 msgstr "下一個：%1"
 
-#: kontactplugin/korganizer/todoplugin.cpp:41
+#: kontactplugin/korganizer/todoplugin.cpp:40
 #, kde-format
 msgctxt "@action:inmenu"
 msgid "New To-do..."
 msgstr "新增待辦事項..."
 
-#: kontactplugin/korganizer/todoplugin.cpp:44
+#: kontactplugin/korganizer/todoplugin.cpp:43
 #, kde-format
 msgctxt "@info:status"
 msgid "Create a new to-do"
 msgstr "建立新的待辦事項"
 
-#: kontactplugin/korganizer/todoplugin.cpp:48
+#: kontactplugin/korganizer/todoplugin.cpp:47
 #, kde-format
 msgctxt "@info:whatsthis"
 msgid ""
@@ -3208,18 +3208,18 @@ msgstr "目前維護者"
 msgid "Tobias Koenig"
 msgstr "Tobias Koenig"
 
-#: korganizer.cpp:285
+#: korganizer.cpp:284
 #, kde-format
 msgid "New Calendar"
 msgstr "新行事曆"
 
-#: korganizer.cpp:289
+#: korganizer.cpp:288
 #, kde-format
 msgctxt "the calendar is read-only"
 msgid "read-only"
 msgstr "唯讀"
 
-#: korganizer.cpp:292
+#: korganizer.cpp:291
 #, kde-format
 msgid "Calendar"
 msgstr "行事曆"

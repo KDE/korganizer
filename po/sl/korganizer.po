@@ -1,7 +1,7 @@
 # translation of korganizer.po to Slovenian
 # Translation of korganizer.po to Slovenian
 # Copyright (C) 2001,2002, 2003, 2004, 2005, 2006 Free Software Foundation, Inc.
-# $Id: korganizer.po 1671877 2024-02-02 01:07:03Z scripty $
+# $Id: korganizer.po 1673150 2024-02-14 01:07:42Z scripty $
 # $Source$
 #
 # Roman Maurer <roman.maurer@hermes.si>, 2001.
@@ -14,7 +14,7 @@ msgid ""
 msgstr ""
 "Project-Id-Version: korganizer\n"
 "Report-Msgid-Bugs-To: https://bugs.kde.org\n"
-"POT-Creation-Date: 2024-02-02 00:38+0000\n"
+"POT-Creation-Date: 2024-02-14 00:38+0000\n"
 "PO-Revision-Date: 2024-01-02 14:47+0100\n"
 "Last-Translator: Matjaž Jeran <matjaz.jeran@amis.net>\n"
 "Language-Team: Slovenian <lugos-slo@lugos.si>\n"
@@ -43,7 +43,7 @@ msgstr ""
 
 #: aboutdata.cpp:18 kontactplugin/korganizer/journalplugin.cpp:26
 #: kontactplugin/korganizer/korganizerplugin.cpp:42
-#: kontactplugin/korganizer/todoplugin.cpp:39
+#: kontactplugin/korganizer/todoplugin.cpp:38
 #: kontactplugin/specialdates/specialdates_plugin.cpp:23 korganizer_part.cpp:56
 #, kde-format
 msgid "KOrganizer"
@@ -2085,7 +2085,7 @@ msgstr "Uvozi stran"
 msgid "Designer Files"
 msgstr "Datoteke Designer"
 
-#: kcmdesignerfields.cpp:267
+#: kcmdesignerfields.cpp:272
 #, kde-format
 msgid ""
 "<qt><b>Warning:</b> Qt Designer could not be found. It is probably not "
@@ -2094,17 +2094,17 @@ msgstr ""
 "<qt><b>Opozorilo:</b> Qt Designerja ni bilo mogoče najti. Verjetno ni "
 "nameščen. Lahko boste le uvozili obstoječe datoteke snovalnika.</qt>"
 
-#: kcmdesignerfields.cpp:277
+#: kcmdesignerfields.cpp:282
 #, kde-format
 msgid "Available Pages"
 msgstr "Razpoložljive strani"
 
-#: kcmdesignerfields.cpp:283
+#: kcmdesignerfields.cpp:288
 #, kde-format
 msgid "Preview of Selected Page"
 msgstr "Predogled izbrane strani"
 
-#: kcmdesignerfields.cpp:302
+#: kcmdesignerfields.cpp:307
 #, kde-format
 msgid ""
 "<qt><p>This section allows you to add your own GUI Elements ('<i>Widgets</"
@@ -2136,42 +2136,42 @@ msgstr ""
 "%2. Če želite spremeniti ime programa, ki bo urejan, nastavite ime gradnika "
 "v Qt Designerju.</p></qt>"
 
-#: kcmdesignerfields.cpp:324
+#: kcmdesignerfields.cpp:329
 #, kde-format
 msgid "<a href=\"whatsthis:%1\">How does this work?</a>"
 msgstr "<a href=\"whatsthis:%1\">Kako to deluje?</a>"
 
-#: kcmdesignerfields.cpp:335
+#: kcmdesignerfields.cpp:340
 #, kde-format
 msgid "Delete Page"
 msgstr "Izbriši stran"
 
-#: kcmdesignerfields.cpp:338
+#: kcmdesignerfields.cpp:343
 #, kde-format
 msgid "Import Page..."
 msgstr "Uvozi stran ..."
 
-#: kcmdesignerfields.cpp:340
+#: kcmdesignerfields.cpp:345
 #, kde-format
 msgid "Edit with Qt Designer..."
 msgstr "Uredi z Qt Designerjem ..."
 
-#: kcmdesignerfields.cpp:365
+#: kcmdesignerfields.cpp:370
 #, kde-format
 msgid "Key:"
 msgstr "Ključ:"
 
-#: kcmdesignerfields.cpp:367
+#: kcmdesignerfields.cpp:372
 #, kde-format
 msgid "Type:"
 msgstr "Vrsta:"
 
-#: kcmdesignerfields.cpp:369
+#: kcmdesignerfields.cpp:374
 #, kde-format
 msgid "Classname:"
 msgstr "Ime razreda:"
 
-#: kcmdesignerfields.cpp:371
+#: kcmdesignerfields.cpp:376
 #, kde-format
 msgid "Description:"
 msgstr "Opis:"
@@ -2622,28 +2622,28 @@ msgstr ""
 "Pojavilo se bo pogovorno okno, v katerem boste lahko ustvarili nov dogodek."
 
 #: kontactplugin/korganizer/korganizerplugin.cpp:146
-#: kontactplugin/korganizer/todoplugin.cpp:146
+#: kontactplugin/korganizer/todoplugin.cpp:145
 #, kde-format
 msgctxt "@item"
 msgid "Meeting"
 msgstr "Srečanje"
 
 #: kontactplugin/korganizer/korganizerplugin.cpp:160
-#: kontactplugin/korganizer/todoplugin.cpp:160
+#: kontactplugin/korganizer/todoplugin.cpp:159
 #, kde-format
 msgctxt "@item"
 msgid "Note: %1"
 msgstr "Sporočilce: %1"
 
 #: kontactplugin/korganizer/korganizerplugin.cpp:189
-#: kontactplugin/korganizer/todoplugin.cpp:189
+#: kontactplugin/korganizer/todoplugin.cpp:188
 #, kde-format
 msgctxt "Event from email summary"
 msgid "Mail: %1"
 msgstr "Pošta: %1"
 
 #: kontactplugin/korganizer/korganizerplugin.cpp:191
-#: kontactplugin/korganizer/todoplugin.cpp:191
+#: kontactplugin/korganizer/todoplugin.cpp:190
 #, kde-format
 msgctxt "Event from email content"
 msgid "<b>From:</b> %1<br /><b>To:</b> %2<br /><b>Subject:</b> %3"
@@ -2721,19 +2721,19 @@ msgctxt "next occurrence"
 msgid "Next: %1"
 msgstr "Naslednja: %1"
 
-#: kontactplugin/korganizer/todoplugin.cpp:41
+#: kontactplugin/korganizer/todoplugin.cpp:40
 #, kde-format
 msgctxt "@action:inmenu"
 msgid "New To-do..."
 msgstr "Novo opravilo ..."
 
-#: kontactplugin/korganizer/todoplugin.cpp:44
+#: kontactplugin/korganizer/todoplugin.cpp:43
 #, kde-format
 msgctxt "@info:status"
 msgid "Create a new to-do"
 msgstr "Ustvari novo opravilo"
 
-#: kontactplugin/korganizer/todoplugin.cpp:48
+#: kontactplugin/korganizer/todoplugin.cpp:47
 #, kde-format
 msgctxt "@info:whatsthis"
 msgid ""
@@ -3365,18 +3365,18 @@ msgstr "Trenutni vzdrževalec"
 msgid "Tobias Koenig"
 msgstr "Tobias Koenig"
 
-#: korganizer.cpp:285
+#: korganizer.cpp:284
 #, kde-format
 msgid "New Calendar"
 msgstr "Nov koledar"
 
-#: korganizer.cpp:289
+#: korganizer.cpp:288
 #, kde-format
 msgctxt "the calendar is read-only"
 msgid "read-only"
 msgstr "samo za branje"
 
-#: korganizer.cpp:292
+#: korganizer.cpp:291
 #, kde-format
 msgid "Calendar"
 msgstr "Koledar"

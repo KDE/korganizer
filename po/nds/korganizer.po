@@ -7,7 +7,7 @@ msgid ""
 msgstr ""
 "Project-Id-Version: korganizer\n"
 "Report-Msgid-Bugs-To: https://bugs.kde.org\n"
-"POT-Creation-Date: 2024-02-02 00:38+0000\n"
+"POT-Creation-Date: 2024-02-14 00:38+0000\n"
 "PO-Revision-Date: 2014-09-18 17:03+0200\n"
 "Last-Translator: Sönke Dibbern <s_dibbern@web.de>\n"
 "Language-Team: Low Saxon <kde-i18n-nds@kde.org>\n"
@@ -30,7 +30,7 @@ msgstr "heiko@evermann.de, s_dibbern@web.de, m.j.wiese@web.de"
 
 #: aboutdata.cpp:18 kontactplugin/korganizer/journalplugin.cpp:26
 #: kontactplugin/korganizer/korganizerplugin.cpp:42
-#: kontactplugin/korganizer/todoplugin.cpp:39
+#: kontactplugin/korganizer/todoplugin.cpp:38
 #: kontactplugin/specialdates/specialdates_plugin.cpp:23 korganizer_part.cpp:56
 #, kde-format
 msgid "KOrganizer"
@@ -2144,7 +2144,7 @@ msgstr "Siet importeren"
 msgid "Designer Files"
 msgstr "*.ui|Designer-Dateien"
 
-#: kcmdesignerfields.cpp:267
+#: kcmdesignerfields.cpp:272
 #, kde-format
 msgid ""
 "<qt><b>Warning:</b> Qt Designer could not be found. It is probably not "
@@ -2154,17 +2154,17 @@ msgstr ""
 "dat nich installeert. Du kannst also bloots vörhannen Designer-Dateien "
 "importeren.</qt>"
 
-#: kcmdesignerfields.cpp:277
+#: kcmdesignerfields.cpp:282
 #, kde-format
 msgid "Available Pages"
 msgstr "Verföögbor Sieden"
 
-#: kcmdesignerfields.cpp:283
+#: kcmdesignerfields.cpp:288
 #, kde-format
 msgid "Preview of Selected Page"
 msgstr "Vöransicht för utsöchte Siet"
 
-#: kcmdesignerfields.cpp:302
+#: kcmdesignerfields.cpp:307
 #, kde-format
 msgid ""
 "<qt><p>This section allows you to add your own GUI Elements ('<i>Widgets</"
@@ -2196,43 +2196,43 @@ msgstr ""
 "Programmnaam för't Bewerken ännern wullt, legg den Elementnaam in Qt-"
 "Designer fast.</p></qt>"
 
-#: kcmdesignerfields.cpp:324
+#: kcmdesignerfields.cpp:329
 #, kde-format
 msgid "<a href=\"whatsthis:%1\">How does this work?</a>"
 msgstr "<a href=\"whatsthis:%1\">Wodennig funkscheneert dat?</a>"
 
-#: kcmdesignerfields.cpp:335
+#: kcmdesignerfields.cpp:340
 #, kde-format
 msgid "Delete Page"
 msgstr "Siet wegdoon"
 
-#: kcmdesignerfields.cpp:338
+#: kcmdesignerfields.cpp:343
 #, kde-format
 msgid "Import Page..."
 msgstr "Siet importeren..."
 
-#: kcmdesignerfields.cpp:340
+#: kcmdesignerfields.cpp:345
 #, kde-format
 msgid "Edit with Qt Designer..."
 msgstr "Mit Qt-Designer bewerken..."
 
-#: kcmdesignerfields.cpp:365
+#: kcmdesignerfields.cpp:370
 #, kde-format
 msgid "Key:"
 msgstr "Slötel:"
 
 # unreviewed-context
-#: kcmdesignerfields.cpp:367
+#: kcmdesignerfields.cpp:372
 #, kde-format
 msgid "Type:"
 msgstr "Typ:"
 
-#: kcmdesignerfields.cpp:369
+#: kcmdesignerfields.cpp:374
 #, kde-format
 msgid "Classname:"
 msgstr "Klassnaam:"
 
-#: kcmdesignerfields.cpp:371
+#: kcmdesignerfields.cpp:376
 #, kde-format
 msgid "Description:"
 msgstr "Beschrieven:"
@@ -2723,7 +2723,7 @@ msgid ""
 msgstr ""
 
 #: kontactplugin/korganizer/korganizerplugin.cpp:146
-#: kontactplugin/korganizer/todoplugin.cpp:146
+#: kontactplugin/korganizer/todoplugin.cpp:145
 #, fuzzy, kde-format
 #| msgctxt "incidence category"
 #| msgid "Meeting"
@@ -2732,7 +2732,7 @@ msgid "Meeting"
 msgstr "Mööt"
 
 #: kontactplugin/korganizer/korganizerplugin.cpp:160
-#: kontactplugin/korganizer/todoplugin.cpp:160
+#: kontactplugin/korganizer/todoplugin.cpp:159
 #, fuzzy, kde-format
 #| msgid "Notes:"
 msgctxt "@item"
@@ -2740,7 +2740,7 @@ msgid "Note: %1"
 msgstr "Notizen:"
 
 #: kontactplugin/korganizer/korganizerplugin.cpp:189
-#: kontactplugin/korganizer/todoplugin.cpp:189
+#: kontactplugin/korganizer/todoplugin.cpp:188
 #, fuzzy, kde-format
 #| msgid "KMail"
 msgctxt "Event from email summary"
@@ -2748,7 +2748,7 @@ msgid "Mail: %1"
 msgstr "KMail"
 
 #: kontactplugin/korganizer/korganizerplugin.cpp:191
-#: kontactplugin/korganizer/todoplugin.cpp:191
+#: kontactplugin/korganizer/todoplugin.cpp:190
 #, kde-format
 msgctxt "Event from email content"
 msgid "<b>From:</b> %1<br /><b>To:</b> %2<br /><b>Subject:</b> %3"
@@ -2829,21 +2829,21 @@ msgctxt "next occurrence"
 msgid "Next: %1"
 msgstr "Wedderhalen: %1"
 
-#: kontactplugin/korganizer/todoplugin.cpp:41
+#: kontactplugin/korganizer/todoplugin.cpp:40
 #, fuzzy, kde-format
 #| msgid "&New To-do..."
 msgctxt "@action:inmenu"
 msgid "New To-do..."
 msgstr "&Niege Opgaav..."
 
-#: kontactplugin/korganizer/todoplugin.cpp:44
+#: kontactplugin/korganizer/todoplugin.cpp:43
 #, fuzzy, kde-format
 #| msgid "Create a new To-do"
 msgctxt "@info:status"
 msgid "Create a new to-do"
 msgstr "En nieg Opgaav opstellen"
 
-#: kontactplugin/korganizer/todoplugin.cpp:48
+#: kontactplugin/korganizer/todoplugin.cpp:47
 #, kde-format
 msgctxt "@info:whatsthis"
 msgid ""
@@ -3520,18 +3520,18 @@ msgstr "Verleden Pleger"
 msgid "Tobias Koenig"
 msgstr "Tobias Koenig"
 
-#: korganizer.cpp:285
+#: korganizer.cpp:284
 #, kde-format
 msgid "New Calendar"
 msgstr "Nieg Kalenner"
 
-#: korganizer.cpp:289
+#: korganizer.cpp:288
 #, kde-format
 msgctxt "the calendar is read-only"
 msgid "read-only"
 msgstr "bloots-leesbor"
 
-#: korganizer.cpp:292
+#: korganizer.cpp:291
 #, kde-format
 msgid "Calendar"
 msgstr "Kalenner"
