@@ -1109,7 +1109,7 @@ void ActionManager::dumpText(const QString &str)
 
 void ActionManager::toggleDateNavigator()
 {
-    bool visible = mDateNavigatorShowAction->isChecked();
+    const bool visible = mDateNavigatorShowAction->isChecked();
     if (mCalendarView) {
         mCalendarView->showDateNavigator(visible);
     }
@@ -1117,7 +1117,7 @@ void ActionManager::toggleDateNavigator()
 
 void ActionManager::toggleTodoView()
 {
-    bool visible = mTodoViewShowAction->isChecked();
+    const bool visible = mTodoViewShowAction->isChecked();
     if (mCalendarView) {
         mCalendarView->showTodoView(visible);
     }
@@ -1125,7 +1125,7 @@ void ActionManager::toggleTodoView()
 
 void ActionManager::toggleEventViewer()
 {
-    bool visible = mEventViewerShowAction->isChecked();
+    const bool visible = mEventViewerShowAction->isChecked();
     if (mCalendarView) {
         mCalendarView->showEventViewer(visible);
     }
