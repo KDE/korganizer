@@ -786,6 +786,7 @@ void ActionManager::initActions()
 
 void ActionManager::updateHamburgerMenu()
 {
+    delete mHamburgerMenu->menu();
     auto menu = new QMenu;
 
     menu->addAction(mACollection->action(QStringLiteral("conf_datetime")));
