@@ -43,13 +43,13 @@ KOPrefsDialogViews::KOPrefsDialogViews(QObject *parent, const KPluginMetaData &d
     auto generalFrame = new QFrame(widget());
     tabWidget->addTab(generalFrame, QIcon::fromTheme(QStringLiteral("view-choose")), i18nc("@title:tab general settings", "General"));
 
-    QBoxLayout *generalLayout = new QVBoxLayout(generalFrame);
+    auto generalLayout = new QVBoxLayout(generalFrame);
 
     // GroupBox: Views->General->Display Options
     auto gdisplayLayout = new QVBoxLayout;
     auto gdisplayBox = new QGroupBox(i18nc("@title:group", "Display Options"));
 
-    QBoxLayout *nextDaysLayout = new QHBoxLayout;
+    auto nextDaysLayout = new QHBoxLayout;
     gdisplayLayout->addLayout(nextDaysLayout);
 
     Korganizer::KPrefsWidInt *nextDays = addWidInt(KOPrefs::instance()->nextXDaysItem());
@@ -80,7 +80,7 @@ KOPrefsDialogViews::KOPrefsDialogViews(QObject *parent, const KPluginMetaData &d
     auto agendaFrame = new QFrame(widget());
     tabWidget->addTab(agendaFrame, QIcon::fromTheme(QStringLiteral("view-calendar-workweek")), i18nc("@title:tab", "Agenda View"));
 
-    QBoxLayout *agendaLayout = new QVBoxLayout(agendaFrame);
+    auto agendaLayout = new QVBoxLayout(agendaFrame);
 
     // GroupBox: Views->Agenda View->Display Options
     auto adisplayLayout = new QVBoxLayout;
@@ -151,7 +151,7 @@ KOPrefsDialogViews::KOPrefsDialogViews(QObject *parent, const KPluginMetaData &d
     auto todoFrame = new QFrame(widget());
     tabWidget->addTab(todoFrame, QIcon::fromTheme(QStringLiteral("view-calendar-tasks")), i18nc("@title:tab", "Todo View"));
 
-    QBoxLayout *todoLayout = new QVBoxLayout(todoFrame);
+    auto todoLayout = new QVBoxLayout(todoFrame);
 
     // GroupBox: Views->Todo View->Display Options
     auto tdisplayLayout = new QVBoxLayout;
