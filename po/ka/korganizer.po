@@ -7,7 +7,7 @@ msgid ""
 msgstr ""
 "Project-Id-Version: korganizer\n"
 "Report-Msgid-Bugs-To: https://bugs.kde.org\n"
-"POT-Creation-Date: 2024-02-14 02:28+0000\n"
+"POT-Creation-Date: 2024-02-16 02:32+0000\n"
 "PO-Revision-Date: 2024-01-02 05:26+0100\n"
 "Last-Translator: Temuri Doghonadze <temuri.doghonadze@gmail.com>\n"
 "Language-Team: Georgian <kde-i18n-doc@kde.org>\n"
@@ -438,8 +438,8 @@ msgstr ""
 "გასაკეთებელი წაშალოთ. ეს ქმედება შეუქცევადია!"
 
 #. i18n: ectx: property (text), widget (QPushButton, mDeleteButton)
-#: actionmanager.cpp:367 actionmanager.cpp:622 actionmanager.cpp:1305
-#: actionmanager.cpp:1342 ui/filteredit_base.ui:56
+#: actionmanager.cpp:367 actionmanager.cpp:622 actionmanager.cpp:1306
+#: actionmanager.cpp:1343 ui/filteredit_base.ui:56
 #, kde-format
 msgid "&Delete"
 msgstr "&წაშლა"
@@ -816,7 +816,7 @@ msgstr ""
 msgid "&Day"
 msgstr "&დღე"
 
-#: actionmanager.cpp:552 actionmanager.cpp:1062
+#: actionmanager.cpp:552 actionmanager.cpp:1063
 #, kde-format
 msgid "&Next Day"
 msgid_plural "&Next %1 Days"
@@ -947,12 +947,12 @@ msgstr ""
 "გაუშვებს მორგების ფანჯარას, რომელიც მიმდინარე კალენდრის ხედის პარამეტრების "
 "შეცვლის საშუალებას გაძლევთ."
 
-#: actionmanager.cpp:614 actionmanager.cpp:1299 actionmanager.cpp:1340
+#: actionmanager.cpp:614 actionmanager.cpp:1300 actionmanager.cpp:1341
 #, kde-format
 msgid "&Show"
 msgstr "&ჩვენება"
 
-#: actionmanager.cpp:618 actionmanager.cpp:1302 actionmanager.cpp:1341
+#: actionmanager.cpp:618 actionmanager.cpp:1303 actionmanager.cpp:1342
 #, kde-format
 msgid "&Edit..."
 msgstr "&ჩასწორება…"
@@ -1057,160 +1057,160 @@ msgstr "&ჭდეების მართვა..."
 msgid "&Configure KOrganizer..."
 msgstr "KOrganizer-ის &მორგება..."
 
-#: actionmanager.cpp:842
+#: actionmanager.cpp:843
 #, kde-format
 msgid "1 incidence was imported successfully."
 msgid_plural "%1 incidences were imported successfully."
 msgstr[0] "1 ინციდენტი წარმატებით იქნა შემოტანილი."
 msgstr[1] "%1 ინციდენტი წარმატებით იქნა შემოტანილი."
 
-#: actionmanager.cpp:845
+#: actionmanager.cpp:846
 #, kde-format
 msgid "There was an error while merging the calendar: %1"
 msgstr "შეცდომა კალენდრების შერწყმისას: %1"
 
-#: actionmanager.cpp:856
+#: actionmanager.cpp:857
 #, kde-format
 msgid "New calendar added successfully"
 msgstr "ახალი კალენდრის დამატება წარმატებულია"
 
-#: actionmanager.cpp:858
+#: actionmanager.cpp:859
 #, kde-format
 msgid "Could not add a calendar. Error: %1"
 msgstr "კალენდრის დამატება შეუძლებელია. შეცდომა: %1"
 
-#: actionmanager.cpp:915
+#: actionmanager.cpp:916
 #, kde-format
 msgctxt "@title:window"
 msgid "Select Calendar File to Open"
 msgstr "აირჩიეთ გასახსნელი კალენდრის ფაილი"
 
-#: actionmanager.cpp:943
+#: actionmanager.cpp:944
 #, kde-format
 msgctxt "@title:window"
 msgid "Select Calendar File to Import"
 msgstr "აირჩიეთ შემოსატანი კალენდრს ფაილი"
 
-#: actionmanager.cpp:974
+#: actionmanager.cpp:975
 #, kde-format
 msgid "An error occurred: %1"
 msgstr "შეცდომა: %1"
 
-#: actionmanager.cpp:992
+#: actionmanager.cpp:993
 #, kde-format
 msgid "Cannot upload calendar to '%1'"
 msgstr "კალენდრის '%1'-ზე ატვირთვა შეუძლებელია"
 
-#: actionmanager.cpp:998
+#: actionmanager.cpp:999
 #, kde-format
 msgid "Saved calendar '%1'."
 msgstr "კალენდარი '%1' შენახულია."
 
-#: actionmanager.cpp:1036
+#: actionmanager.cpp:1037
 #, kde-format
 msgid "Unable to save calendar to the file %1."
 msgstr "კალენდრის ფაილში %1 შენახვა შეუძლებელია."
 
-#: actionmanager.cpp:1036
+#: actionmanager.cpp:1037
 #, kde-format
 msgctxt "@title:window"
 msgid "Error"
 msgstr "შეცდომა"
 
-#: actionmanager.cpp:1081
+#: actionmanager.cpp:1082
 #, kde-format
 msgid "Could not start control module for date and time format."
 msgstr "დროისა და თარიღის ფორმატის კონტროლის მოდულის გაშვება შეუძლებელია."
 
-#: actionmanager.cpp:1260
+#: actionmanager.cpp:1261
 #, kde-format
 msgid "&Show Event"
 msgstr "&მოვლენის ჩვენება"
 
-#: actionmanager.cpp:1263
+#: actionmanager.cpp:1264
 #, kde-format
 msgid "&Edit Event..."
 msgstr "&მოვლენის ჩასწორება..."
 
-#: actionmanager.cpp:1266
+#: actionmanager.cpp:1267
 #, kde-format
 msgid "&Delete Event"
 msgstr "მოვლენის &წაშლა"
 
-#: actionmanager.cpp:1274
+#: actionmanager.cpp:1275
 #, kde-format
 msgid "&Show To-do"
 msgstr "&გეგმის ჩვენება"
 
-#: actionmanager.cpp:1277 kontactplugin/korganizer/todosummarywidget.cpp:321
+#: actionmanager.cpp:1278 kontactplugin/korganizer/todosummarywidget.cpp:321
 #, kde-format
 msgid "&Edit To-do..."
 msgstr "&გეგმის ჩასწორება.."
 
-#: actionmanager.cpp:1280 kontactplugin/korganizer/todosummarywidget.cpp:323
+#: actionmanager.cpp:1281 kontactplugin/korganizer/todosummarywidget.cpp:323
 #, kde-format
 msgid "&Delete To-do"
 msgstr "&გეგმის წაშლა"
 
-#: actionmanager.cpp:1418 actionmanager.cpp:1524
+#: actionmanager.cpp:1419 actionmanager.cpp:1525
 #, kde-format
 msgid "Attach as &link"
 msgstr "&ბმულად მიბმა"
 
-#: actionmanager.cpp:1419 actionmanager.cpp:1525
+#: actionmanager.cpp:1420 actionmanager.cpp:1526
 #, kde-format
 msgid "Attach &inline"
 msgstr "&ხაზშივე მიბმა"
 
-#: actionmanager.cpp:1420
+#: actionmanager.cpp:1421
 #, kde-format
 msgid "Attach inline &without attachments"
 msgstr "ხაზში ჩასმა &მიმაგრების გარეშე"
 
-#: actionmanager.cpp:1422 actionmanager.cpp:1527
+#: actionmanager.cpp:1423 actionmanager.cpp:1528
 #, kde-format
 msgid "C&ancel"
 msgstr "გაუქმება"
 
-#: actionmanager.cpp:1460
+#: actionmanager.cpp:1461
 #, kde-format
 msgid "Removing attachments from an email might invalidate its signature."
 msgstr ""
 "ელფოსტიდან მიმაგრებული ფაილების წაშლამ შეიძლება მისი ხელმოწერა არასწორი "
 "გახადოს."
 
-#: actionmanager.cpp:1461
+#: actionmanager.cpp:1462
 #, kde-format
 msgctxt "@title:window"
 msgid "Remove Attachments"
 msgstr "მიმაგრებული ფაილების კოპირება"
 
-#: actionmanager.cpp:1612
+#: actionmanager.cpp:1613
 #, kde-format
 msgid "Undo: %1"
 msgstr "დაბრუნება: %1"
 
-#: actionmanager.cpp:1615 actionmanager.cpp:1631
+#: actionmanager.cpp:1616 actionmanager.cpp:1632
 #, kde-format
 msgid "Undo"
 msgstr "დაბრუნება"
 
-#: actionmanager.cpp:1625
+#: actionmanager.cpp:1626
 #, kde-format
 msgid "Redo: %1"
 msgstr "გამეორება: %1"
 
-#: actionmanager.cpp:1628
+#: actionmanager.cpp:1629
 #, kde-format
 msgid "Redo"
 msgstr "გამეორება"
 
-#: actionmanager.cpp:1642
+#: actionmanager.cpp:1643
 #, kde-format
 msgid "URL '%1' is invalid."
 msgstr "არასწორი URL: %1."
 
-#: actionmanager.cpp:1647
+#: actionmanager.cpp:1648
 #, kde-format
 msgctxt "@info"
 msgid ""
@@ -1225,18 +1225,18 @@ msgstr ""
 "კალენდარი აირჩიოთ.</p><p>თუ აირჩევთ დამატებას, ახალ კალენდარს ავტომატურად "
 "შეგიქმნით.</p>"
 
-#: actionmanager.cpp:1655
+#: actionmanager.cpp:1656
 #, kde-format
 msgctxt "@title:window"
 msgid "Import Calendar"
 msgstr "კალენდრის შემოტანა"
 
-#: actionmanager.cpp:1656
+#: actionmanager.cpp:1657
 #, kde-format
 msgid "Merge into existing calendar"
 msgstr "არსებულ კალენდარში შერწყმა"
 
-#: actionmanager.cpp:1657
+#: actionmanager.cpp:1658
 #, kde-format
 msgid "Add as new calendar"
 msgstr "ახალ კალენდრად დამატება"

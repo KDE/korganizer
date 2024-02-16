@@ -17,7 +17,7 @@ msgid ""
 msgstr ""
 "Project-Id-Version: korganizer\n"
 "Report-Msgid-Bugs-To: https://bugs.kde.org\n"
-"POT-Creation-Date: 2024-02-14 02:28+0000\n"
+"POT-Creation-Date: 2024-02-16 02:32+0000\n"
 "PO-Revision-Date: 2024-02-10 14:01+0300\n"
 "Last-Translator: Alexander Yavorsky <kekcuha@gmail.com>\n"
 "Language-Team: Russian <kde-russian@lists.kde.ru>\n"
@@ -451,8 +451,8 @@ msgstr ""
 "Это действие необратимо!"
 
 #. i18n: ectx: property (text), widget (QPushButton, mDeleteButton)
-#: actionmanager.cpp:367 actionmanager.cpp:622 actionmanager.cpp:1305
-#: actionmanager.cpp:1342 ui/filteredit_base.ui:56
+#: actionmanager.cpp:367 actionmanager.cpp:622 actionmanager.cpp:1306
+#: actionmanager.cpp:1343 ui/filteredit_base.ui:56
 #, kde-format
 msgid "&Delete"
 msgstr "&Удалить"
@@ -835,7 +835,7 @@ msgstr ""
 msgid "&Day"
 msgstr "&День"
 
-#: actionmanager.cpp:552 actionmanager.cpp:1062
+#: actionmanager.cpp:552 actionmanager.cpp:1063
 #, kde-format
 msgid "&Next Day"
 msgid_plural "&Next %1 Days"
@@ -969,12 +969,12 @@ msgid ""
 msgstr "Запуск диалога настройки параметров просмотра в режиме «Календарь»."
 
 # BUGME: please add ellipsis as it opens a dialog --aspotashev
-#: actionmanager.cpp:614 actionmanager.cpp:1299 actionmanager.cpp:1340
+#: actionmanager.cpp:614 actionmanager.cpp:1300 actionmanager.cpp:1341
 #, kde-format
 msgid "&Show"
 msgstr "Пр&осмотреть..."
 
-#: actionmanager.cpp:618 actionmanager.cpp:1302 actionmanager.cpp:1341
+#: actionmanager.cpp:618 actionmanager.cpp:1303 actionmanager.cpp:1342
 #, kde-format
 msgid "&Edit..."
 msgstr "&Изменить..."
@@ -1079,7 +1079,7 @@ msgstr "Ме&тки событий..."
 msgid "&Configure KOrganizer..."
 msgstr "Настроить KOrganizer..."
 
-#: actionmanager.cpp:842
+#: actionmanager.cpp:843
 #, kde-format
 msgid "1 incidence was imported successfully."
 msgid_plural "%1 incidences were imported successfully."
@@ -1088,155 +1088,155 @@ msgstr[1] "Успешно импортировано %1 события."
 msgstr[2] "Успешно импортировано %1 событий."
 msgstr[3] "Успешно импортировано одно событие."
 
-#: actionmanager.cpp:845
+#: actionmanager.cpp:846
 #, kde-format
 msgid "There was an error while merging the calendar: %1"
 msgstr "При объединении данных календаря произошла ошибка: %1"
 
-#: actionmanager.cpp:856
+#: actionmanager.cpp:857
 #, kde-format
 msgid "New calendar added successfully"
 msgstr "Календарь добавлен успешно"
 
-#: actionmanager.cpp:858
+#: actionmanager.cpp:859
 #, kde-format
 msgid "Could not add a calendar. Error: %1"
 msgstr "Добавить календарь не удалось. Ошибка: %1"
 
-#: actionmanager.cpp:915
+#: actionmanager.cpp:916
 #, kde-format
 msgctxt "@title:window"
 msgid "Select Calendar File to Open"
 msgstr "Выбор файла календаря"
 
-#: actionmanager.cpp:943
+#: actionmanager.cpp:944
 #, kde-format
 msgctxt "@title:window"
 msgid "Select Calendar File to Import"
 msgstr "Выбор файла календаря для импорта"
 
-#: actionmanager.cpp:974
+#: actionmanager.cpp:975
 #, kde-format
 msgid "An error occurred: %1"
 msgstr "Произошла ошибка: %1"
 
-#: actionmanager.cpp:992
+#: actionmanager.cpp:993
 #, kde-format
 msgid "Cannot upload calendar to '%1'"
 msgstr "Не удаётся разместить календарь «%1»"
 
-#: actionmanager.cpp:998
+#: actionmanager.cpp:999
 #, kde-format
 msgid "Saved calendar '%1'."
 msgstr "Сохранён календарь «%1»."
 
-#: actionmanager.cpp:1036
+#: actionmanager.cpp:1037
 #, kde-format
 msgid "Unable to save calendar to the file %1."
 msgstr "Невозможно сохранить календарь в файл %1."
 
-#: actionmanager.cpp:1036
+#: actionmanager.cpp:1037
 #, kde-format
 msgctxt "@title:window"
 msgid "Error"
 msgstr "Ошибка"
 
-#: actionmanager.cpp:1081
+#: actionmanager.cpp:1082
 #, kde-format
 msgid "Could not start control module for date and time format."
 msgstr ""
 "Не удаётся запустить модуль изменения параметров формата времени и даты."
 
 # BUGME: please add ellipsis as it opens a dialog --aspotashev
-#: actionmanager.cpp:1260
+#: actionmanager.cpp:1261
 #, kde-format
 msgid "&Show Event"
 msgstr "&Просмотреть событие..."
 
-#: actionmanager.cpp:1263
+#: actionmanager.cpp:1264
 #, kde-format
 msgid "&Edit Event..."
 msgstr "&Изменить событие..."
 
-#: actionmanager.cpp:1266
+#: actionmanager.cpp:1267
 #, kde-format
 msgid "&Delete Event"
 msgstr "&Удалить событие"
 
 # BUGME: please add ellipsis as it opens a dialog --aspotashev
-#: actionmanager.cpp:1274
+#: actionmanager.cpp:1275
 #, kde-format
 msgid "&Show To-do"
 msgstr "&Просмотреть задачу..."
 
-#: actionmanager.cpp:1277 kontactplugin/korganizer/todosummarywidget.cpp:321
+#: actionmanager.cpp:1278 kontactplugin/korganizer/todosummarywidget.cpp:321
 #, kde-format
 msgid "&Edit To-do..."
 msgstr "&Изменить задачу..."
 
-#: actionmanager.cpp:1280 kontactplugin/korganizer/todosummarywidget.cpp:323
+#: actionmanager.cpp:1281 kontactplugin/korganizer/todosummarywidget.cpp:323
 #, kde-format
 msgid "&Delete To-do"
 msgstr "&Удалить задачу"
 
-#: actionmanager.cpp:1418 actionmanager.cpp:1524
+#: actionmanager.cpp:1419 actionmanager.cpp:1525
 #, kde-format
 msgid "Attach as &link"
 msgstr "Присоединить как &ссылку"
 
-#: actionmanager.cpp:1419 actionmanager.cpp:1525
+#: actionmanager.cpp:1420 actionmanager.cpp:1526
 #, kde-format
 msgid "Attach &inline"
 msgstr "Отп&равить в теле письма"
 
-#: actionmanager.cpp:1420
+#: actionmanager.cpp:1421
 #, kde-format
 msgid "Attach inline &without attachments"
 msgstr "Присоединить &письмо без вложений"
 
-#: actionmanager.cpp:1422 actionmanager.cpp:1527
+#: actionmanager.cpp:1423 actionmanager.cpp:1528
 #, kde-format
 msgid "C&ancel"
 msgstr "О&тменить"
 
-#: actionmanager.cpp:1460
+#: actionmanager.cpp:1461
 #, kde-format
 msgid "Removing attachments from an email might invalidate its signature."
 msgstr ""
 "Удаление вложений из письма может сделать его подпись недействительной."
 
-#: actionmanager.cpp:1461
+#: actionmanager.cpp:1462
 #, kde-format
 msgctxt "@title:window"
 msgid "Remove Attachments"
 msgstr "Удаление вложений"
 
-#: actionmanager.cpp:1612
+#: actionmanager.cpp:1613
 #, kde-format
 msgid "Undo: %1"
 msgstr "Отменить %1"
 
-#: actionmanager.cpp:1615 actionmanager.cpp:1631
+#: actionmanager.cpp:1616 actionmanager.cpp:1632
 #, kde-format
 msgid "Undo"
 msgstr "Отменить действие"
 
-#: actionmanager.cpp:1625
+#: actionmanager.cpp:1626
 #, kde-format
 msgid "Redo: %1"
 msgstr "Повторить %1"
 
-#: actionmanager.cpp:1628
+#: actionmanager.cpp:1629
 #, kde-format
 msgid "Redo"
 msgstr "Повторить действие"
 
-#: actionmanager.cpp:1642
+#: actionmanager.cpp:1643
 #, kde-format
 msgid "URL '%1' is invalid."
 msgstr "Ошибка в ссылке «%1»."
 
-#: actionmanager.cpp:1647
+#: actionmanager.cpp:1648
 #, kde-format
 msgctxt "@info"
 msgid ""
@@ -1251,18 +1251,18 @@ msgstr ""
 "календарь.</p><p>Если решено добавить календарь, новый календарь будет "
 "создан автоматически.</p>"
 
-#: actionmanager.cpp:1655
+#: actionmanager.cpp:1656
 #, kde-format
 msgctxt "@title:window"
 msgid "Import Calendar"
 msgstr "Импорт календаря"
 
-#: actionmanager.cpp:1656
+#: actionmanager.cpp:1657
 #, kde-format
 msgid "Merge into existing calendar"
 msgstr "Объединить с существующим календарём"
 
-#: actionmanager.cpp:1657
+#: actionmanager.cpp:1658
 #, kde-format
 msgid "Add as new calendar"
 msgstr "Добавить календарь"
