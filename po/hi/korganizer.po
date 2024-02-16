@@ -8,7 +8,7 @@ msgid ""
 msgstr ""
 "Project-Id-Version: korganizer\n"
 "Report-Msgid-Bugs-To: https://bugs.kde.org\n"
-"POT-Creation-Date: 2024-02-14 00:38+0000\n"
+"POT-Creation-Date: 2024-02-16 00:39+0000\n"
 "PO-Revision-Date: 2021-07-10 10:57+0530\n"
 "Last-Translator: Raghavendra Kamath <raghu@raghukamath.com>\n"
 "Language-Team: kde-hindi\n"
@@ -438,8 +438,8 @@ msgid ""
 msgstr ""
 
 #. i18n: ectx: property (text), widget (QPushButton, mDeleteButton)
-#: actionmanager.cpp:367 actionmanager.cpp:622 actionmanager.cpp:1305
-#: actionmanager.cpp:1342 ui/filteredit_base.ui:56
+#: actionmanager.cpp:367 actionmanager.cpp:622 actionmanager.cpp:1306
+#: actionmanager.cpp:1343 ui/filteredit_base.ui:56
 #, kde-format
 msgid "&Delete"
 msgstr "मिटाएँ (&D)"
@@ -803,7 +803,7 @@ msgstr ""
 msgid "&Day"
 msgstr "दिन (&D)"
 
-#: actionmanager.cpp:552 actionmanager.cpp:1062
+#: actionmanager.cpp:552 actionmanager.cpp:1063
 #, fuzzy, kde-format
 msgid "&Next Day"
 msgid_plural "&Next %1 Days"
@@ -931,12 +931,12 @@ msgid ""
 "current calendar view."
 msgstr ""
 
-#: actionmanager.cpp:614 actionmanager.cpp:1299 actionmanager.cpp:1340
+#: actionmanager.cpp:614 actionmanager.cpp:1300 actionmanager.cpp:1341
 #, kde-format
 msgid "&Show"
 msgstr "दिखाएँ (&S)"
 
-#: actionmanager.cpp:618 actionmanager.cpp:1302 actionmanager.cpp:1341
+#: actionmanager.cpp:618 actionmanager.cpp:1303 actionmanager.cpp:1342
 #, kde-format
 msgid "&Edit..."
 msgstr "संपादन... (&E)"
@@ -1045,166 +1045,166 @@ msgstr "वर्ग का प्रबंधन करें... (&a)"
 msgid "&Configure KOrganizer..."
 msgstr "कैलेण्डर कॉन्फ़िगर करें... (&C)"
 
-#: actionmanager.cpp:842
+#: actionmanager.cpp:843
 #, kde-format
 msgid "1 incidence was imported successfully."
 msgid_plural "%1 incidences were imported successfully."
 msgstr[0] ""
 msgstr[1] ""
 
-#: actionmanager.cpp:845
+#: actionmanager.cpp:846
 #, kde-format
 msgid "There was an error while merging the calendar: %1"
 msgstr ""
 
-#: actionmanager.cpp:856
+#: actionmanager.cpp:857
 #, fuzzy, kde-format
 #| msgid "The item information was successfully sent."
 msgid "New calendar added successfully"
 msgstr "वस्तु जानकारी सफलतापूर्वक भेज दी गई."
 
-#: actionmanager.cpp:858
+#: actionmanager.cpp:859
 #, fuzzy, kde-format
 #| msgid "Could not load calendar '%1'."
 msgid "Could not add a calendar. Error: %1"
 msgstr "कैलेण्डर '%1' को लोड नहीं कर सका."
 
-#: actionmanager.cpp:915
+#: actionmanager.cpp:916
 #, fuzzy, kde-format
 #| msgid "Edit Calendar Filters"
 msgctxt "@title:window"
 msgid "Select Calendar File to Open"
 msgstr "कैलेन्डर फ़िल्टरों का संपादन करें"
 
-#: actionmanager.cpp:943
+#: actionmanager.cpp:944
 #, fuzzy, kde-format
 #| msgid "Edit Calendar Filters"
 msgctxt "@title:window"
 msgid "Select Calendar File to Import"
 msgstr "कैलेन्डर फ़िल्टरों का संपादन करें"
 
-#: actionmanager.cpp:974
+#: actionmanager.cpp:975
 #, fuzzy, kde-format
 #| msgid "Error Occurred"
 msgid "An error occurred: %1"
 msgstr "त्रुटि हुई"
 
-#: actionmanager.cpp:992
+#: actionmanager.cpp:993
 #, kde-format
 msgid "Cannot upload calendar to '%1'"
 msgstr " '%1' को कैलेन्डर अपलोड नहीं कर सका."
 
-#: actionmanager.cpp:998
+#: actionmanager.cpp:999
 #, kde-format
 msgid "Saved calendar '%1'."
 msgstr "सहेजा गया कैलेन्डर '%1'."
 
-#: actionmanager.cpp:1036
+#: actionmanager.cpp:1037
 #, kde-format
 msgid "Unable to save calendar to the file %1."
 msgstr "कैलेण्डर को फ़ाइल %1 में सहेजने में अक्षम."
 
-#: actionmanager.cpp:1036
+#: actionmanager.cpp:1037
 #, fuzzy, kde-format
 #| msgid "Error"
 msgctxt "@title:window"
 msgid "Error"
 msgstr "त्रुटि"
 
-#: actionmanager.cpp:1081
+#: actionmanager.cpp:1082
 #, kde-format
 msgid "Could not start control module for date and time format."
 msgstr "नियंत्रण मॉड्यूल को तारीख तथा समय फ़ॉर्मेट में प्रारंभ नहीं कर सका."
 
-#: actionmanager.cpp:1260
+#: actionmanager.cpp:1261
 #, kde-format
 msgid "&Show Event"
 msgstr "कार्यक्रम दिखाएँ (&S)"
 
-#: actionmanager.cpp:1263
+#: actionmanager.cpp:1264
 #, kde-format
 msgid "&Edit Event..."
 msgstr "कार्यक्रम का संपादन करें... (&E)"
 
-#: actionmanager.cpp:1266
+#: actionmanager.cpp:1267
 #, kde-format
 msgid "&Delete Event"
 msgstr "कार्यक्रम मिटाएँ (&D)"
 
-#: actionmanager.cpp:1274
+#: actionmanager.cpp:1275
 #, kde-format
 msgid "&Show To-do"
 msgstr "कार्यसूची दिखाएँ (&S)"
 
-#: actionmanager.cpp:1277 kontactplugin/korganizer/todosummarywidget.cpp:321
+#: actionmanager.cpp:1278 kontactplugin/korganizer/todosummarywidget.cpp:321
 #, kde-format
 msgid "&Edit To-do..."
 msgstr "कार्यसूची संपादित करें... (&E)"
 
-#: actionmanager.cpp:1280 kontactplugin/korganizer/todosummarywidget.cpp:323
+#: actionmanager.cpp:1281 kontactplugin/korganizer/todosummarywidget.cpp:323
 #, kde-format
 msgid "&Delete To-do"
 msgstr "कार्यसूची मिटाएँ (&D)"
 
-#: actionmanager.cpp:1418 actionmanager.cpp:1524
+#: actionmanager.cpp:1419 actionmanager.cpp:1525
 #, kde-format
 msgid "Attach as &link"
 msgstr "लिंक के रुप में संलग्न करें (&l)"
 
-#: actionmanager.cpp:1419 actionmanager.cpp:1525
+#: actionmanager.cpp:1420 actionmanager.cpp:1526
 #, kde-format
 msgid "Attach &inline"
 msgstr "इनलाइन संलग्न करें (&i)"
 
-#: actionmanager.cpp:1420
+#: actionmanager.cpp:1421
 #, kde-format
 msgid "Attach inline &without attachments"
 msgstr "संलग्नकों के बगैर इनलाइन संलग्न करें (&w)"
 
-#: actionmanager.cpp:1422 actionmanager.cpp:1527
+#: actionmanager.cpp:1423 actionmanager.cpp:1528
 #, kde-format
 msgid "C&ancel"
 msgstr "रद्द करें (&a)"
 
-#: actionmanager.cpp:1460
+#: actionmanager.cpp:1461
 #, kde-format
 msgid "Removing attachments from an email might invalidate its signature."
 msgstr ""
 
-#: actionmanager.cpp:1461
+#: actionmanager.cpp:1462
 #, fuzzy, kde-format
 #| msgid "Remove Attachments"
 msgctxt "@title:window"
 msgid "Remove Attachments"
 msgstr "संलग्नक निकालें"
 
-#: actionmanager.cpp:1612
+#: actionmanager.cpp:1613
 #, fuzzy, kde-format
 msgid "Undo: %1"
 msgstr "पहले जैसा (%1)"
 
-#: actionmanager.cpp:1615 actionmanager.cpp:1631
+#: actionmanager.cpp:1616 actionmanager.cpp:1632
 #, kde-format
 msgid "Undo"
 msgstr "पहले जैसा"
 
-#: actionmanager.cpp:1625
+#: actionmanager.cpp:1626
 #, fuzzy, kde-format
 #| msgid "Redo (%1)"
 msgid "Redo: %1"
 msgstr "दोहराएँ (%1)"
 
-#: actionmanager.cpp:1628
+#: actionmanager.cpp:1629
 #, kde-format
 msgid "Redo"
 msgstr "दोहराएँ"
 
-#: actionmanager.cpp:1642
+#: actionmanager.cpp:1643
 #, kde-format
 msgid "URL '%1' is invalid."
 msgstr "यूआरएल '%1' अवैध है."
 
-#: actionmanager.cpp:1647
+#: actionmanager.cpp:1648
 #, kde-format
 msgctxt "@info"
 msgid ""
@@ -1215,19 +1215,19 @@ msgid ""
 "p>"
 msgstr ""
 
-#: actionmanager.cpp:1655
+#: actionmanager.cpp:1656
 #, fuzzy, kde-format
 #| msgid "Import Calendar"
 msgctxt "@title:window"
 msgid "Import Calendar"
 msgstr "कैलेन्डर आयात करें"
 
-#: actionmanager.cpp:1656
+#: actionmanager.cpp:1657
 #, kde-format
 msgid "Merge into existing calendar"
 msgstr "मौजूदा कैलेन्डर में शामिल करें"
 
-#: actionmanager.cpp:1657
+#: actionmanager.cpp:1658
 #, kde-format
 msgid "Add as new calendar"
 msgstr "नए कैलेण्डर के रूप में जोड़ें"
