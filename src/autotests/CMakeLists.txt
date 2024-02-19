@@ -47,7 +47,7 @@ add_akonadi_isolated_test_advanced(koeventpopupmenutest.cpp "${koeventpopupmenut
 
 ecm_add_test(testtoggletodo.cpp
   LINK_LIBRARIES
-    Qt6::Test
+    Qt::Test
     KF6::CalendarCore
     KPim6::IdentityManagementCore
     korganizer_core
