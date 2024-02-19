@@ -36,12 +36,15 @@ KOPrefsDialogGroupScheduling::KOPrefsDialogGroupScheduling(QObject *parent, cons
     Korganizer::KPrefsWidBool *bcc = addWidBool(Akonadi::CalendarSettings::self()->bccItem(), topFrame);
     topLayout->addWidget(bcc->checkBox(), 1, 0, 1, 2);
 
+    Korganizer::KPrefsWidBool *hideDeclined = addWidBool(Akonadi::CalendarSettings::self()->hideDeclinedInvitationsItem(), topFrame);
+    topLayout->addWidget(hideDeclined->checkBox(), 2, 0, 1, 2);
+
     auto aTransportLabel = new QLabel(i18nc("@label", "Mail transport:"), topFrame);
-    topLayout->addWidget(aTransportLabel, 2, 0, 1, 2);
+    topLayout->addWidget(aTransportLabel, 3, 0, 1, 2);
 
     auto tmw = new MailTransport::TransportManagementWidget(topFrame);
     tmw->layout()->setContentsMargins({});
-    topLayout->addWidget(tmw, 3, 0, 1, 2);
+    topLayout->addWidget(tmw, 4, 0, 1, 2);
     load();
 }
 

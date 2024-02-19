@@ -51,6 +51,7 @@ class History;
 class IncidenceChanger;
 class CalendarClipboard;
 class TodoPurger;
+class CalFilterPartStatusProxyModel;
 }
 
 class QSplitter;
@@ -692,6 +693,11 @@ private:
      */
     IncidenceEditorNG::IncidenceDialog *createIncidenceEditor(const Akonadi::Item &item, const Akonadi::Collection &collection = Akonadi::Collection());
 
+    /**
+     * Returns the model that contains events, with any proxy filters on top.
+     */
+    QAbstractItemModel *eventsModel() const;
+
     CalendarSupport::CalPrinter *mCalPrinter = nullptr;
     Akonadi::TodoPurger *mTodoPurger = nullptr;
 
@@ -728,6 +734,8 @@ private:
     // Calendar filters
     QList<KCalendarCore::CalFilter *> mFilters;
     KCalendarCore::CalFilter *mCurrentFilter = nullptr;
+
+    Akonadi::CalFilterPartStatusProxyModel *mPartStatFilterProxy = nullptr;
 
     // various housekeeping variables.
     bool mReadOnly; // flag indicating if calendar is read-only

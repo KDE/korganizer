@@ -35,8 +35,10 @@
 #include <Akonadi/AttributeFactory>
 #include <Akonadi/CollectionIdentificationAttribute>
 
+#include <Akonadi/CalFilterPartStatusProxyModel>
 #include <Akonadi/CalendarClipboard>
 #include <Akonadi/CalendarUtils>
+#include <Akonadi/EntityTreeModel>
 #include <Akonadi/FreeBusyManager>
 #include <Akonadi/IncidenceChanger>
 #include <Akonadi/TodoPurger>
@@ -90,7 +92,6 @@ enum ItemActions {
 
 CalendarView::CalendarView(QWidget *parent)
     : CalendarViewBase(parent)
-    , mSearchCollectionHelper(this)
 {
     Akonadi::ControlGui::widgetNeedsAkonadi(this);
     mChanger = new Akonadi::IncidenceChanger(new IncidenceEditorNG::IndividualMailComponentFactory(this), this);
@@ -110,6 +111,12 @@ CalendarView::CalendarView(QWidget *parent)
     connect(mCalendarClipboard, &Akonadi::CalendarClipboard::cutFinished, this, &CalendarView::onCutFinished);
 
     mChanger->setEntityTreeModel(mCalendar->entityTreeModel());
+
+    mPartStatFilterProxy = new Akonadi::CalFilterPartStatusProxyModel(this);
+    if (Akonadi::CalendarSettings::self()->hideDeclinedInvitations()) {
+        mPartStatFilterProxy->setBlockedStatusList({KCalendarCore::Attendee::Declined});
+    }
+    mPartStatFilterProxy->setSourceModel(mCalendar->entityTreeModel());
 
     Akonadi::AttributeFactory::registerAttribute<PimCommon::ImapAclAttribute>();
     Akonadi::AttributeFactory::registerAttribute<Akonadi::CollectionIdentificationAttribute>();
@@ -286,6 +293,11 @@ CalendarView::~CalendarView()
     delete mEventViewer;
 }
 
+QAbstractItemModel *CalendarView::eventsModel() const
+{
+    return mPartStatFilterProxy;
+}
+
 Akonadi::ETMCalendar::Ptr CalendarView::calendar() const
 {
     return mCalendar;
@@ -313,7 +325,7 @@ Akonadi::CollectionCalendar::Ptr CalendarView::calendarForCollection(const Akona
         ++it;
     }
 
-    const auto calendar = Akonadi::CollectionCalendar::Ptr::create(mCalendar->entityTreeModel(), collection);
+    const auto calendar = Akonadi::CollectionCalendar::Ptr::create(eventsModel(), collection);
     mCalendars.emplace_back(calendar);
     return calendar;
 }
@@ -588,6 +600,12 @@ void CalendarView::updateConfig()
     mChanger->setDestinationPolicy(static_cast<Akonadi::IncidenceChanger::DestinationPolicy>(KOPrefs::instance()->destination()));
 
     mChanger->setGroupwareCommunication(CalendarSupport::KCalPrefs::instance()->useGroupwareCommunication());
+
+    if (Akonadi::CalendarSettings::self()->hideDeclinedInvitations()) {
+        mPartStatFilterProxy->setBlockedStatusList({KCalendarCore::Attendee::Declined});
+    } else {
+        mPartStatFilterProxy->setBlockedStatusList({});
+    }
 }
 
 void CalendarView::slotCreateFinished(int changeId, const Akonadi::Item &item, Akonadi::IncidenceChanger::ResultCode resultCode, const QString &errorString)
