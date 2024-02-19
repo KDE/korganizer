@@ -37,11 +37,6 @@ void KOHelper::setResourceColor(const Akonadi::Collection &collection, const QCo
     KOPrefs::instance()->eventViewsPreferences()->writeConfig();
 }
 
-QColor KOHelper::resourceColor(const Akonadi::Item &item)
-{
-    return EventViews::resourceColor(item, KOPrefs::instance()->eventViewsPreferences());
-}
-
 int KOHelper::yearDiff(QDate start, QDate end)
 {
     return end.year() - start.year();
