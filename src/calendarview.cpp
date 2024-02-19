@@ -2305,7 +2305,7 @@ bool CalendarView::deleteIncidence(const Akonadi::Item &item, bool force)
                                                     i18n("KOrganizer Confirmation"),
                                                     KGuiItem(i18n("Delete All")));
         } else {
-            QDateTime itemDateTime(itemDate, {}, Qt::LocalTime);
+            QDateTime itemDateTime(itemDate, {}, QTimeZone::LocalTime);
             bool isFirst = !incidence->recurrence()->getPreviousDateTime(itemDateTime).isValid();
             bool isLast = !incidence->recurrence()->getNextDateTime(itemDateTime).isValid();
 
@@ -2383,9 +2383,11 @@ bool CalendarView::deleteIncidence(const Akonadi::Item &item, bool force)
         if (recur->allDay()) {
             recur->addExDate(itemDate);
         } else {
-            auto itemDateTime = recur->startDateTime();
+            // Convert to local time, because the `itemDate` is a day in local timezone, but the actual
+            // incidence might be originally recurring in another day in it's original timezone.
+            auto itemDateTime = recur->startDateTime().toLocalTime();
             itemDateTime.setDate(itemDate);
-            recur->addExDateTime(itemDateTime);
+            recur->addExDateTime(itemDateTime.toTimeZone(recur->startDateTime().timeZone()));
         }
         (void)mChanger->modifyIncidence(item, oldIncidence, this);
         break;
