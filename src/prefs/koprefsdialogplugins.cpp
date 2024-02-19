@@ -108,7 +108,6 @@ KOPrefsDialogPlugins::KOPrefsDialogPlugins(QObject *parent, const KPluginMetaDat
 
 KOPrefsDialogPlugins::~KOPrefsDialogPlugins()
 {
-    delete mDecorations;
 }
 
 void KOPrefsDialogPlugins::usrReadConfig()
