@@ -8,7 +8,7 @@ msgid ""
 msgstr ""
 "Project-Id-Version: korganizer\n"
 "Report-Msgid-Bugs-To: https://bugs.kde.org\n"
-"POT-Creation-Date: 2024-02-16 00:39+0000\n"
+"POT-Creation-Date: 2024-02-20 00:38+0000\n"
 "PO-Revision-Date: 2012-01-13 10:32+0330\n"
 "Last-Translator: Mohammad Reza Mirdamadi <mohi@ubuntu.ir>\n"
 "Language-Team: Farsi (Persian) <>\n"
@@ -2408,7 +2408,7 @@ msgctxt "@action:inmenu"
 msgid "&Toggle Reminder On"
 msgstr "&زدن ضامن یادآوری‌"
 
-#: kohelper.cpp:57
+#: kohelper.cpp:52
 #, kde-format
 msgid "Unable to save %1 \"%2\"."
 msgstr "قادر به ذخیره %1 »%2« نیست."
@@ -3696,21 +3696,21 @@ msgctxt "@option:check"
 msgid "Show at the bottom of the agenda views"
 msgstr "نمایش در نمای ماه"
 
-#: prefs/koprefsdialogplugins.cpp:123
+#: prefs/koprefsdialogplugins.cpp:122
 #, fuzzy, kde-format
 #| msgid "Calendars"
 msgctxt "@title:group"
 msgid "Calendar Decorations"
 msgstr "تقویمها"
 
-#: prefs/koprefsdialogplugins.cpp:143
+#: prefs/koprefsdialogplugins.cpp:142
 #, fuzzy, kde-format
 #| msgid "Configure Holidays"
 msgctxt "@action"
 msgid "Configure"
 msgstr "پیکربندی تعطیلات"
 
-#: prefs/koprefsdialogplugins.cpp:202
+#: prefs/koprefsdialogplugins.cpp:201
 #, fuzzy, kde-format
 #| msgid "Unable to configure this plugin"
 msgctxt "@info"

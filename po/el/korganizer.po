@@ -15,7 +15,7 @@ msgid ""
 msgstr ""
 "Project-Id-Version: korganizer\n"
 "Report-Msgid-Bugs-To: https://bugs.kde.org\n"
-"POT-Creation-Date: 2024-02-16 00:39+0000\n"
+"POT-Creation-Date: 2024-02-20 00:38+0000\n"
 "PO-Revision-Date: 2021-11-06 10:56+0200\n"
 "Last-Translator: Stelios <sstavra@gmail.com>\n"
 "Language-Team: Greek <kde-i18n-el@kde.org>\n"
@@ -2364,7 +2364,7 @@ msgctxt "@action:inmenu"
 msgid "&Toggle Reminder On"
 msgstr "&Εμφάνιση/απόκρυψη υπενθύμισης"
 
-#: kohelper.cpp:57
+#: kohelper.cpp:52
 #, kde-format
 msgid "Unable to save %1 \"%2\"."
 msgstr "Αδύνατη η αποθήκευση του %1 \"%2\"."
@@ -3592,20 +3592,20 @@ msgctxt "@option:check"
 msgid "Show at the bottom of the agenda views"
 msgstr "Εμφάνιση κάτω από τις προβολές ατζέντας"
 
-#: prefs/koprefsdialogplugins.cpp:123
+#: prefs/koprefsdialogplugins.cpp:122
 #, kde-format
 msgctxt "@title:group"
 msgid "Calendar Decorations"
 msgstr "Διακοσμήσεις ημερολογίου"
 
-#: prefs/koprefsdialogplugins.cpp:143
+#: prefs/koprefsdialogplugins.cpp:142
 #, fuzzy, kde-format
 #| msgid "Configure"
 msgctxt "@action"
 msgid "Configure"
 msgstr "Διαμόρφωση"
 
-#: prefs/koprefsdialogplugins.cpp:202
+#: prefs/koprefsdialogplugins.cpp:201
 #, kde-format
 msgctxt "@info"
 msgid "Unable to configure this plugin"

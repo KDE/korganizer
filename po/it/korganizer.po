@@ -15,7 +15,7 @@ msgid ""
 msgstr ""
 "Project-Id-Version: korganizer\n"
 "Report-Msgid-Bugs-To: https://bugs.kde.org\n"
-"POT-Creation-Date: 2024-02-16 00:39+0000\n"
+"POT-Creation-Date: 2024-02-20 00:38+0000\n"
 "PO-Revision-Date: 2024-01-02 19:27+0100\n"
 "Last-Translator: Luigi Toscano <luigi.toscano@tiscali.it>\n"
 "Language-Team: Italian <kde-i18n-it@kde.org>\n"
@@ -2324,7 +2324,7 @@ msgctxt "@action:inmenu"
 msgid "&Toggle Reminder On"
 msgstr "A&ttiva promemoria"
 
-#: kohelper.cpp:57
+#: kohelper.cpp:52
 #, kde-format
 msgid "Unable to save %1 \"%2\"."
 msgstr "Impossibile salvare %1 «%2»."
@@ -3544,19 +3544,19 @@ msgctxt "@option:check"
 msgid "Show at the bottom of the agenda views"
 msgstr "Mostra in basso nelle viste agenda"
 
-#: prefs/koprefsdialogplugins.cpp:123
+#: prefs/koprefsdialogplugins.cpp:122
 #, kde-format
 msgctxt "@title:group"
 msgid "Calendar Decorations"
 msgstr "Decorazioni calendario"
 
-#: prefs/koprefsdialogplugins.cpp:143
+#: prefs/koprefsdialogplugins.cpp:142
 #, kde-format
 msgctxt "@action"
 msgid "Configure"
 msgstr "Configura"
 
-#: prefs/koprefsdialogplugins.cpp:202
+#: prefs/koprefsdialogplugins.cpp:201
 #, kde-format
 msgctxt "@info"
 msgid "Unable to configure this plugin"
