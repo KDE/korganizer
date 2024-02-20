@@ -3,7 +3,7 @@ msgid ""
 msgstr ""
 "Project-Id-Version: korganizer\n"
 "Report-Msgid-Bugs-To: https://bugs.kde.org\n"
-"POT-Creation-Date: 2024-02-16 02:32+0000\n"
+"POT-Creation-Date: 2024-02-20 02:28+0000\n"
 "PO-Revision-Date: 2024-01-11 21:41+0100\n"
 "Last-Translator: Mincho Kondarev <mkondarev@yahoo.de>\n"
 "Language-Team: Bulgarian <kde-i18n-doc@kde.org>\n"
@@ -1413,7 +1413,7 @@ msgctxt "@info"
 msgid "Unable to copy the item \"%1\" to %2."
 msgstr "Не може да се копира елемента \" %1 \"в %2."
 
-#: calendarview.cpp:1458 calendarview.cpp:2439
+#: calendarview.cpp:1458 calendarview.cpp:2441
 #, kde-format
 msgctxt "@title:window"
 msgid "Copying Failed"
@@ -1429,7 +1429,7 @@ msgstr ""
 "Не може да се премахне елементът \" %1\" от оригиналния календар. Въпреки "
 "това, копие на този елемент е поставено в %2."
 
-#: calendarview.cpp:1521 calendarview.cpp:1537 calendarview.cpp:2474
+#: calendarview.cpp:1521 calendarview.cpp:1537 calendarview.cpp:2476
 #, kde-format
 msgctxt "@title:window"
 msgid "Moving Failed"
@@ -1635,7 +1635,7 @@ msgstr "Изтриване на &всички"
 msgid "Delete \"%1\""
 msgstr "Изтриване \"%1\""
 
-#: calendarview.cpp:2404
+#: calendarview.cpp:2406
 #, kde-format
 msgid ""
 "All calendars are unchecked in the Calendar Manager. No to-do was purged."
@@ -1643,49 +1643,49 @@ msgstr ""
 "Всички календари са отменени в Мениджъра на календарите. Не е извършено "
 "никакво задължение."
 
-#: calendarview.cpp:2409 calendarview.cpp:2691
+#: calendarview.cpp:2411 calendarview.cpp:2693
 #, kde-format
 msgid "There are no completed to-dos to purge."
 msgstr "Няма завършени задачи за прочистване."
 
-#: calendarview.cpp:2414
+#: calendarview.cpp:2416
 #, kde-format
 msgid "Delete all completed to-dos from checked calendars?"
 msgstr "Да се ​​изтрият ли всички завършени задачи от отметнатите календари?"
 
-#: calendarview.cpp:2415
+#: calendarview.cpp:2417
 #, kde-format
 msgctxt "@title:window"
 msgid "Purge To-dos"
 msgstr "Изтриване на задачи"
 
-#: calendarview.cpp:2416
+#: calendarview.cpp:2418
 #, kde-format
 msgid "Purge"
 msgstr "Прочистване"
 
-#: calendarview.cpp:2427
+#: calendarview.cpp:2429
 #, kde-format
 msgctxt "@info"
 msgid "Unable to edit \"%1\" because it is locked by another process."
 msgstr "Не може да се редактира \" %1 \", защото е заключен от друг процес."
 
-#: calendarview.cpp:2439
+#: calendarview.cpp:2441
 #, kde-format
 msgid "Unable to copy the item to %1."
 msgstr "Копирането на събитието в %1 беше неуспешно."
 
-#: calendarview.cpp:2474
+#: calendarview.cpp:2476
 #, kde-format
 msgid "Unable to move the item to  %1."
 msgstr "Преместването на елемента в  %1 е невъзможно."
 
-#: calendarview.cpp:2684
+#: calendarview.cpp:2686
 #, kde-format
 msgid "0 completed to-dos were purged."
 msgstr "Изчистени са 0 завършени задачи."
 
-#: calendarview.cpp:2685 calendarview.cpp:2695
+#: calendarview.cpp:2687 calendarview.cpp:2697
 #, kde-format
 msgid "%1 to-do was ignored because it has uncompleted or read-only children."
 msgid_plural ""
@@ -1697,19 +1697,19 @@ msgstr[1] ""
 "%1 задачи бяха пренебрегнати, защото имат незавършени или само за четене "
 "дъщерни задачи."
 
-#: calendarview.cpp:2689 calendarview.cpp:2694
+#: calendarview.cpp:2691 calendarview.cpp:2696
 #, kde-format
 msgid "%1 completed to-do was purged."
 msgid_plural "%1 completed to-dos were purged."
 msgstr[0] "%1 завършена задача бе изчистена."
 msgstr[1] "%1 завършени задачи бяха изчистени."
 
-#: calendarview.cpp:2700
+#: calendarview.cpp:2702
 #, kde-format
 msgid "An error occurred while purging completed to-dos: %1"
 msgstr "Възникна грешка при прочистването на завършените задачи: %1"
 
-#: calendarview.cpp:2754
+#: calendarview.cpp:2756
 #, kde-format
 msgid ""
 "You created an incidence in a calendar that is currently filtered out.\n"
@@ -1719,7 +1719,7 @@ msgstr ""
 "Активирайте го в мениджъра на календара в левия страничен панел, за да "
 "видите събитието."
 
-#: calendarview.cpp:2758
+#: calendarview.cpp:2760
 #, kde-format
 msgid ""
 "You created an incidence in a calendar that is currently filtered out.\n"

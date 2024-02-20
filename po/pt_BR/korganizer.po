@@ -17,7 +17,7 @@ msgid ""
 msgstr ""
 "Project-Id-Version: korganizer\n"
 "Report-Msgid-Bugs-To: https://bugs.kde.org\n"
-"POT-Creation-Date: 2024-02-16 02:32+0000\n"
+"POT-Creation-Date: 2024-02-20 02:28+0000\n"
 "PO-Revision-Date: 2024-01-11 20:40-0300\n"
 "Last-Translator: Luiz Fernando Ranghetti <elchevive@opensuse.org>\n"
 "Language-Team: Brazilian Portuguese <kde-i18n-pt_BR@kde.org>\n"
@@ -1430,7 +1430,7 @@ msgctxt "@info"
 msgid "Unable to copy the item \"%1\" to %2."
 msgstr "Não foi possível copiar o item \"%1\" to %2."
 
-#: calendarview.cpp:1458 calendarview.cpp:2439
+#: calendarview.cpp:1458 calendarview.cpp:2441
 #, kde-format
 msgctxt "@title:window"
 msgid "Copying Failed"
@@ -1446,7 +1446,7 @@ msgstr ""
 "Não foi possível remover o item \"%1\" do calendário original. Contudo, uma "
 "cópia deste item foi colocada em %2."
 
-#: calendarview.cpp:1521 calendarview.cpp:1537 calendarview.cpp:2474
+#: calendarview.cpp:1521 calendarview.cpp:1537 calendarview.cpp:2476
 #, kde-format
 msgctxt "@title:window"
 msgid "Moving Failed"
@@ -1654,7 +1654,7 @@ msgstr "Excluir &todas"
 msgid "Delete \"%1\""
 msgstr "Excluir \"%1\""
 
-#: calendarview.cpp:2404
+#: calendarview.cpp:2406
 #, kde-format
 msgid ""
 "All calendars are unchecked in the Calendar Manager. No to-do was purged."
@@ -1662,50 +1662,50 @@ msgstr ""
 "Todos os calendários estão desmarcados no Gerenciador de Calendários. "
 "Nenhuma tarefa foi eliminada."
 
-#: calendarview.cpp:2409 calendarview.cpp:2691
+#: calendarview.cpp:2411 calendarview.cpp:2693
 #, kde-format
 msgid "There are no completed to-dos to purge."
 msgstr "Não há tarefas concluídas a serem eliminadas."
 
-#: calendarview.cpp:2414
+#: calendarview.cpp:2416
 #, kde-format
 msgid "Delete all completed to-dos from checked calendars?"
 msgstr "Excluir todas as tarefas concluídas dos calendários assinalados?"
 
-#: calendarview.cpp:2415
+#: calendarview.cpp:2417
 #, kde-format
 msgctxt "@title:window"
 msgid "Purge To-dos"
 msgstr "Eliminar tarefas"
 
-#: calendarview.cpp:2416
+#: calendarview.cpp:2418
 #, kde-format
 msgid "Purge"
 msgstr "Eliminar"
 
-#: calendarview.cpp:2427
+#: calendarview.cpp:2429
 #, kde-format
 msgctxt "@info"
 msgid "Unable to edit \"%1\" because it is locked by another process."
 msgstr ""
 "Não foi possível editar \"%1\" porque ele está bloqueado por outro processo."
 
-#: calendarview.cpp:2439
+#: calendarview.cpp:2441
 #, kde-format
 msgid "Unable to copy the item to %1."
 msgstr "Não foi possível copiar o item para %1."
 
-#: calendarview.cpp:2474
+#: calendarview.cpp:2476
 #, kde-format
 msgid "Unable to move the item to  %1."
 msgstr "Não foi possível mover o item para %1."
 
-#: calendarview.cpp:2684
+#: calendarview.cpp:2686
 #, kde-format
 msgid "0 completed to-dos were purged."
 msgstr "Nenhuma tarefa concluída foi eliminada."
 
-#: calendarview.cpp:2685 calendarview.cpp:2695
+#: calendarview.cpp:2687 calendarview.cpp:2697
 #, kde-format
 msgid "%1 to-do was ignored because it has uncompleted or read-only children."
 msgid_plural ""
@@ -1717,19 +1717,19 @@ msgstr[1] ""
 "Foram ignoradas %1 tarefas porque tem filhas não concluídas ou apenas para "
 "leitura."
 
-#: calendarview.cpp:2689 calendarview.cpp:2694
+#: calendarview.cpp:2691 calendarview.cpp:2696
 #, kde-format
 msgid "%1 completed to-do was purged."
 msgid_plural "%1 completed to-dos were purged."
 msgstr[0] "%1 tarefa concluída foi eliminada."
 msgstr[1] "%1 tarefas concluídas foram eliminadas."
 
-#: calendarview.cpp:2700
+#: calendarview.cpp:2702
 #, kde-format
 msgid "An error occurred while purging completed to-dos: %1"
 msgstr "Ocorreu um erro ao eliminar as tarefas concluídas: %1"
 
-#: calendarview.cpp:2754
+#: calendarview.cpp:2756
 #, kde-format
 msgid ""
 "You created an incidence in a calendar that is currently filtered out.\n"
@@ -1740,7 +1740,7 @@ msgstr ""
 "Na barra lateral esquerda, ative-o no gerenciador de calendários para ver a "
 "incidência."
 
-#: calendarview.cpp:2758
+#: calendarview.cpp:2760
 #, kde-format
 msgid ""
 "You created an incidence in a calendar that is currently filtered out.\n"

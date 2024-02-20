@@ -17,7 +17,7 @@ msgid ""
 msgstr ""
 "Project-Id-Version: korganizer\n"
 "Report-Msgid-Bugs-To: https://bugs.kde.org\n"
-"POT-Creation-Date: 2024-02-16 02:32+0000\n"
+"POT-Creation-Date: 2024-02-20 02:28+0000\n"
 "PO-Revision-Date: 2023-11-16 13:23+0200\n"
 "Last-Translator: Yaron Shahrabani <sh.yaron@gmail.com>\n"
 "Language-Team: צוות התרגום של KDE ישראל\n"
@@ -1391,7 +1391,7 @@ msgctxt "@info"
 msgid "Unable to copy the item \"%1\" to %2."
 msgstr "אין אפשרות להעתיק את הפריט על %1."
 
-#: calendarview.cpp:1458 calendarview.cpp:2439
+#: calendarview.cpp:1458 calendarview.cpp:2441
 #, fuzzy, kde-format
 msgctxt "@title:window"
 msgid "Copying Failed"
@@ -1407,7 +1407,7 @@ msgstr ""
 "לא ניתן להסיר את הפריט „%1” מלוח השנה המקורי. עם זאת, עותק של הפריט הזה הוצב "
 "תחת %2"
 
-#: calendarview.cpp:1521 calendarview.cpp:1537 calendarview.cpp:2474
+#: calendarview.cpp:1521 calendarview.cpp:1537 calendarview.cpp:2476
 #, fuzzy, kde-format
 msgctxt "@title:window"
 msgid "Moving Failed"
@@ -1610,56 +1610,56 @@ msgstr "מחיקה של ה&כול"
 msgid "Delete \"%1\""
 msgstr "מחק ה&כל"
 
-#: calendarview.cpp:2404
+#: calendarview.cpp:2406
 #, kde-format
 msgid ""
 "All calendars are unchecked in the Calendar Manager. No to-do was purged."
 msgstr ""
 
-#: calendarview.cpp:2409 calendarview.cpp:2691
+#: calendarview.cpp:2411 calendarview.cpp:2693
 #, fuzzy, kde-format
 msgid "There are no completed to-dos to purge."
 msgstr "העבר &קו על תקציר המטלות שהושלמו"
 
-#: calendarview.cpp:2414
+#: calendarview.cpp:2416
 #, fuzzy, kde-format
 msgid "Delete all completed to-dos from checked calendars?"
 msgstr "האם למחוק את כל המטלות שהושלמו?"
 
-#: calendarview.cpp:2415
+#: calendarview.cpp:2417
 #, fuzzy, kde-format
 #| msgid "Purge To-dos"
 msgctxt "@title:window"
 msgid "Purge To-dos"
 msgstr "מחיקת מטלות"
 
-#: calendarview.cpp:2416
+#: calendarview.cpp:2418
 #, kde-format
 msgid "Purge"
 msgstr "מחיקה מוחלטת"
 
-#: calendarview.cpp:2427
+#: calendarview.cpp:2429
 #, fuzzy, kde-format
 msgctxt "@info"
 msgid "Unable to edit \"%1\" because it is locked by another process."
 msgstr "אין אפשרות לערוך את הפריט: הוא נעול על ידי תהליך אחר."
 
-#: calendarview.cpp:2439
+#: calendarview.cpp:2441
 #, kde-format
 msgid "Unable to copy the item to %1."
 msgstr "אי אפשר להעתיק את הפריט אל %1."
 
-#: calendarview.cpp:2474
+#: calendarview.cpp:2476
 #, fuzzy, kde-format
 msgid "Unable to move the item to  %1."
 msgstr "אין אפשרות להעביר את הפריט ל־ %1."
 
-#: calendarview.cpp:2684
+#: calendarview.cpp:2686
 #, fuzzy, kde-format
 msgid "0 completed to-dos were purged."
 msgstr "הסתר משימות &שהושלמו"
 
-#: calendarview.cpp:2685 calendarview.cpp:2695
+#: calendarview.cpp:2687 calendarview.cpp:2697
 #, kde-format
 msgid "%1 to-do was ignored because it has uncompleted or read-only children."
 msgid_plural ""
@@ -1669,7 +1669,7 @@ msgstr[1] ""
 msgstr[2] ""
 msgstr[3] ""
 
-#: calendarview.cpp:2689 calendarview.cpp:2694
+#: calendarview.cpp:2691 calendarview.cpp:2696
 #, fuzzy, kde-format
 msgid "%1 completed to-do was purged."
 msgid_plural "%1 completed to-dos were purged."
@@ -1678,19 +1678,19 @@ msgstr[1] "הסתר משימות &שהושלמו"
 msgstr[2] ""
 msgstr[3] ""
 
-#: calendarview.cpp:2700
+#: calendarview.cpp:2702
 #, fuzzy, kde-format
 msgid "An error occurred while purging completed to-dos: %1"
 msgstr "מוחק מטלות שהושלמו"
 
-#: calendarview.cpp:2754
+#: calendarview.cpp:2756
 #, kde-format
 msgid ""
 "You created an incidence in a calendar that is currently filtered out.\n"
 "On the left sidebar, enable it in the calendar manager to see the incidence."
 msgstr ""
 
-#: calendarview.cpp:2758
+#: calendarview.cpp:2760
 #, kde-format
 msgid ""
 "You created an incidence in a calendar that is currently filtered out.\n"

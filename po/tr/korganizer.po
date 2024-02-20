@@ -20,7 +20,7 @@ msgid ""
 msgstr ""
 "Project-Id-Version: kdepim-kde4\n"
 "Report-Msgid-Bugs-To: https://bugs.kde.org\n"
-"POT-Creation-Date: 2024-02-16 02:32+0000\n"
+"POT-Creation-Date: 2024-02-20 02:28+0000\n"
 "PO-Revision-Date: 2024-01-02 16:04+0300\n"
 "Last-Translator: Emir SARI <emir_sari@icloud.com>\n"
 "Language-Team: Turkish <kde-l10n-tr@kde.org>\n"
@@ -1434,7 +1434,7 @@ msgctxt "@info"
 msgid "Unable to copy the item \"%1\" to %2."
 msgstr "\"%1\" ögesi, %2 konumuna kopyalanamadı."
 
-#: calendarview.cpp:1458 calendarview.cpp:2439
+#: calendarview.cpp:1458 calendarview.cpp:2441
 #, kde-format
 msgctxt "@title:window"
 msgid "Copying Failed"
@@ -1450,7 +1450,7 @@ msgstr ""
 "\"%1\" ögesi özgün takvimden kaldırılamıyor. Yine de, bu ögenin bir kopyası "
 "%2 içine koyuldu."
 
-#: calendarview.cpp:1521 calendarview.cpp:1537 calendarview.cpp:2474
+#: calendarview.cpp:1521 calendarview.cpp:1537 calendarview.cpp:2476
 #, kde-format
 msgctxt "@title:window"
 msgid "Moving Failed"
@@ -1658,7 +1658,7 @@ msgstr "&Tümünü Sil"
 msgid "Delete \"%1\""
 msgstr "\"%1\" Ögesini Sil"
 
-#: calendarview.cpp:2404
+#: calendarview.cpp:2406
 #, kde-format
 msgid ""
 "All calendars are unchecked in the Calendar Manager. No to-do was purged."
@@ -1666,28 +1666,28 @@ msgstr ""
 "Takvim Yöneticisindeki hiçbir takvim işaretli değil. Yapılacak hiçbir şey "
 "temizlenmedi."
 
-#: calendarview.cpp:2409 calendarview.cpp:2691
+#: calendarview.cpp:2411 calendarview.cpp:2693
 #, kde-format
 msgid "There are no completed to-dos to purge."
 msgstr "Temizlenecek biten yapılacak bulunamadı."
 
-#: calendarview.cpp:2414
+#: calendarview.cpp:2416
 #, kde-format
 msgid "Delete all completed to-dos from checked calendars?"
 msgstr "İşaretlenmiş takvimlerdeki tamamlanmış tüm yapılacak silinsin mi?"
 
-#: calendarview.cpp:2415
+#: calendarview.cpp:2417
 #, kde-format
 msgctxt "@title:window"
 msgid "Purge To-dos"
 msgstr "Yapılacakları Temizle"
 
-#: calendarview.cpp:2416
+#: calendarview.cpp:2418
 #, kde-format
 msgid "Purge"
 msgstr "Temizle"
 
-#: calendarview.cpp:2427
+#: calendarview.cpp:2429
 #, kde-format
 msgctxt "@info"
 msgid "Unable to edit \"%1\" because it is locked by another process."
@@ -1695,22 +1695,22 @@ msgstr ""
 "\"%1\" ögesi düzenlenemiyor; çünkü bu öge başka bir süreç tarafından "
 "kilitlenmiş."
 
-#: calendarview.cpp:2439
+#: calendarview.cpp:2441
 #, kde-format
 msgid "Unable to copy the item to %1."
 msgstr "Öge, %1 konumuna kopyalanamıyor."
 
-#: calendarview.cpp:2474
+#: calendarview.cpp:2476
 #, kde-format
 msgid "Unable to move the item to  %1."
 msgstr "Öge, %1 konumuna taşınamıyor."
 
-#: calendarview.cpp:2684
+#: calendarview.cpp:2686
 #, kde-format
 msgid "0 completed to-dos were purged."
 msgstr "Herhangi bir yapılacak temizlenmedi."
 
-#: calendarview.cpp:2685 calendarview.cpp:2695
+#: calendarview.cpp:2687 calendarview.cpp:2697
 #, kde-format
 msgid "%1 to-do was ignored because it has uncompleted or read-only children."
 msgid_plural ""
@@ -1722,19 +1722,19 @@ msgstr[1] ""
 "Tamamlanmadığından veya saltokunur alt ögeye sahip olduğundan %1 yapılacak "
 "yok sayıldı."
 
-#: calendarview.cpp:2689 calendarview.cpp:2694
+#: calendarview.cpp:2691 calendarview.cpp:2696
 #, kde-format
 msgid "%1 completed to-do was purged."
 msgid_plural "%1 completed to-dos were purged."
 msgstr[0] "%1 tamamlanmış yapılacak silindi."
 msgstr[1] "%1 tamamlanmış yapılacak silindi."
 
-#: calendarview.cpp:2700
+#: calendarview.cpp:2702
 #, kde-format
 msgid "An error occurred while purging completed to-dos: %1"
 msgstr "Tamamlanmış yapılacaklar temizlenirken bir hata oluştu: %1"
 
-#: calendarview.cpp:2754
+#: calendarview.cpp:2756
 #, kde-format
 msgid ""
 "You created an incidence in a calendar that is currently filtered out.\n"
@@ -1744,7 +1744,7 @@ msgstr ""
 "Etkinliği görebilmek için sol kenar çubuğunda takvim yöneticisi içinden "
 "etkinleştirin."
 
-#: calendarview.cpp:2758
+#: calendarview.cpp:2760
 #, kde-format
 msgid ""
 "You created an incidence in a calendar that is currently filtered out.\n"

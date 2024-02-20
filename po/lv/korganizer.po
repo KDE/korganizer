@@ -9,7 +9,7 @@ msgid ""
 msgstr ""
 "Project-Id-Version: korganizer\n"
 "Report-Msgid-Bugs-To: https://bugs.kde.org\n"
-"POT-Creation-Date: 2024-02-16 02:32+0000\n"
+"POT-Creation-Date: 2024-02-20 02:28+0000\n"
 "PO-Revision-Date: 2010-01-22 22:15+0200\n"
 "Last-Translator: Viesturs Zarins <viesturs.zarins@mii.lu.lv>\n"
 "Language-Team: Latvian <locale@laka.lv>\n"
@@ -1464,7 +1464,7 @@ msgctxt "@info"
 msgid "Unable to copy the item \"%1\" to %2."
 msgstr "Neizdevas kopēt ierakstu \"%1\" uz %2."
 
-#: calendarview.cpp:1458 calendarview.cpp:2439
+#: calendarview.cpp:1458 calendarview.cpp:2441
 #, kde-format
 msgctxt "@title:window"
 msgid "Copying Failed"
@@ -1484,7 +1484,7 @@ msgstr ""
 "Neizdevās izņemt ierakstu \"%1\" no %2. Tomēr šī ieraksta kopija tika "
 "pievienota %3."
 
-#: calendarview.cpp:1521 calendarview.cpp:1537 calendarview.cpp:2474
+#: calendarview.cpp:1521 calendarview.cpp:1537 calendarview.cpp:2476
 #, kde-format
 msgctxt "@title:window"
 msgid "Moving Failed"
@@ -1697,59 +1697,59 @@ msgstr "Dzēst &visas"
 msgid "Delete \"%1\""
 msgstr "Dzēst %1"
 
-#: calendarview.cpp:2404
+#: calendarview.cpp:2406
 #, kde-format
 msgid ""
 "All calendars are unchecked in the Calendar Manager. No to-do was purged."
 msgstr ""
 
-#: calendarview.cpp:2409 calendarview.cpp:2691
+#: calendarview.cpp:2411 calendarview.cpp:2693
 #, fuzzy, kde-format
 #| msgid "Strike &out completed to-do summaries"
 msgid "There are no completed to-dos to purge."
 msgstr "Pārsvītr&ot pabeigto darbu kopsavilkumus"
 
-#: calendarview.cpp:2414
+#: calendarview.cpp:2416
 #, fuzzy, kde-format
 #| msgid "Delete all completed to-dos?"
 msgid "Delete all completed to-dos from checked calendars?"
 msgstr "Dzēst visus pabeigtos darbus?"
 
-#: calendarview.cpp:2415
+#: calendarview.cpp:2417
 #, fuzzy, kde-format
 #| msgid "Purge To-dos"
 msgctxt "@title:window"
 msgid "Purge To-dos"
 msgstr "Tīrīt darbus"
 
-#: calendarview.cpp:2416
+#: calendarview.cpp:2418
 #, kde-format
 msgid "Purge"
 msgstr "Tīrīt"
 
-#: calendarview.cpp:2427
+#: calendarview.cpp:2429
 #, kde-format
 msgctxt "@info"
 msgid "Unable to edit \"%1\" because it is locked by another process."
 msgstr "Nevar rediģēt \"%1\", jo to noslēdzis kāds cits process."
 
-#: calendarview.cpp:2439
+#: calendarview.cpp:2441
 #, kde-format
 msgid "Unable to copy the item to %1."
 msgstr "Nevar kopēt šo ierakstu uz %1."
 
-#: calendarview.cpp:2474
+#: calendarview.cpp:2476
 #, kde-format
 msgid "Unable to move the item to  %1."
 msgstr "Neizdevās pārvietot šo ierakstu uz %1."
 
-#: calendarview.cpp:2684
+#: calendarview.cpp:2686
 #, fuzzy, kde-format
 #| msgid "Hide co&mpleted to-dos"
 msgid "0 completed to-dos were purged."
 msgstr "Slēpt &pabeigtos darbus"
 
-#: calendarview.cpp:2685 calendarview.cpp:2695
+#: calendarview.cpp:2687 calendarview.cpp:2697
 #, kde-format
 msgid "%1 to-do was ignored because it has uncompleted or read-only children."
 msgid_plural ""
@@ -1758,7 +1758,7 @@ msgstr[0] ""
 msgstr[1] ""
 msgstr[2] ""
 
-#: calendarview.cpp:2689 calendarview.cpp:2694
+#: calendarview.cpp:2691 calendarview.cpp:2696
 #, fuzzy, kde-format
 #| msgid "Hide co&mpleted to-dos"
 msgid "%1 completed to-do was purged."
@@ -1767,20 +1767,20 @@ msgstr[0] "Slēpt &pabeigtos darbus"
 msgstr[1] "Slēpt &pabeigtos darbus"
 msgstr[2] "Slēpt &pabeigtos darbus"
 
-#: calendarview.cpp:2700
+#: calendarview.cpp:2702
 #, fuzzy, kde-format
 #| msgid "Purging completed to-dos"
 msgid "An error occurred while purging completed to-dos: %1"
 msgstr "Aizvāc pabeigtos darbus"
 
-#: calendarview.cpp:2754
+#: calendarview.cpp:2756
 #, kde-format
 msgid ""
 "You created an incidence in a calendar that is currently filtered out.\n"
 "On the left sidebar, enable it in the calendar manager to see the incidence."
 msgstr ""
 
-#: calendarview.cpp:2758
+#: calendarview.cpp:2760
 #, kde-format
 msgid ""
 "You created an incidence in a calendar that is currently filtered out.\n"

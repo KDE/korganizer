@@ -18,7 +18,7 @@ msgid ""
 msgstr ""
 "Project-Id-Version: korganizer\n"
 "Report-Msgid-Bugs-To: https://bugs.kde.org\n"
-"POT-Creation-Date: 2024-02-16 02:32+0000\n"
+"POT-Creation-Date: 2024-02-20 02:28+0000\n"
 "PO-Revision-Date: 2024-01-02 12:32+0100\n"
 "Last-Translator: Freek de Kruijf <freekdekruijf@kde.nl>\n"
 "Language-Team: \n"
@@ -1431,7 +1431,7 @@ msgctxt "@info"
 msgid "Unable to copy the item \"%1\" to %2."
 msgstr "Kon het item \"%1\"niet naar %2 kopiëren."
 
-#: calendarview.cpp:1458 calendarview.cpp:2439
+#: calendarview.cpp:1458 calendarview.cpp:2441
 #, kde-format
 msgctxt "@title:window"
 msgid "Copying Failed"
@@ -1447,7 +1447,7 @@ msgstr ""
 "Kon het item \"%1\" niet verwijderen uit de oorspronkelijke agenda. Maar een "
 "kopie hiervan is naar %2 geschreven."
 
-#: calendarview.cpp:1521 calendarview.cpp:1537 calendarview.cpp:2474
+#: calendarview.cpp:1521 calendarview.cpp:1537 calendarview.cpp:2476
 #, kde-format
 msgctxt "@title:window"
 msgid "Moving Failed"
@@ -1652,7 +1652,7 @@ msgstr "&Alle verwijderen"
 msgid "Delete \"%1\""
 msgstr "\"%1\" verwijderen"
 
-#: calendarview.cpp:2404
+#: calendarview.cpp:2406
 #, kde-format
 msgid ""
 "All calendars are unchecked in the Calendar Manager. No to-do was purged."
@@ -1660,28 +1660,28 @@ msgstr ""
 "Alle agenda's zijn niet geactiveerd in de beheerder van agenda's. Er zijn "
 "geen taken geschoond."
 
-#: calendarview.cpp:2409 calendarview.cpp:2691
+#: calendarview.cpp:2411 calendarview.cpp:2693
 #, kde-format
 msgid "There are no completed to-dos to purge."
 msgstr "Er zijn geen voltooide taken op te ruimen."
 
-#: calendarview.cpp:2414
+#: calendarview.cpp:2416
 #, kde-format
 msgid "Delete all completed to-dos from checked calendars?"
 msgstr "Alle voltooide taken uit geactiveerde agenda's verwijderen?"
 
-#: calendarview.cpp:2415
+#: calendarview.cpp:2417
 #, kde-format
 msgctxt "@title:window"
 msgid "Purge To-dos"
 msgstr "Taken opruimen"
 
-#: calendarview.cpp:2416
+#: calendarview.cpp:2418
 #, kde-format
 msgid "Purge"
 msgstr "Verwijderen"
 
-#: calendarview.cpp:2427
+#: calendarview.cpp:2429
 #, kde-format
 msgctxt "@info"
 msgid "Unable to edit \"%1\" because it is locked by another process."
@@ -1689,22 +1689,22 @@ msgstr ""
 "\"%1\" kan niet worden bewerkt, omdat het is vergrendeld door een ander "
 "proces."
 
-#: calendarview.cpp:2439
+#: calendarview.cpp:2441
 #, kde-format
 msgid "Unable to copy the item to %1."
 msgstr "Kon het item niet naar %1 kopiëren."
 
-#: calendarview.cpp:2474
+#: calendarview.cpp:2476
 #, kde-format
 msgid "Unable to move the item to  %1."
 msgstr "Het item kon niet naar %1 worden verplaatst."
 
-#: calendarview.cpp:2684
+#: calendarview.cpp:2686
 #, kde-format
 msgid "0 completed to-dos were purged."
 msgstr "0 voltooide taken zijn opgeruimd"
 
-#: calendarview.cpp:2685 calendarview.cpp:2695
+#: calendarview.cpp:2687 calendarview.cpp:2697
 #, kde-format
 msgid "%1 to-do was ignored because it has uncompleted or read-only children."
 msgid_plural ""
@@ -1715,19 +1715,19 @@ msgstr[1] ""
 "%1 taken zijn genegeerd omdat deze onvoltooide of alleen-lezen subtaken "
 "bevat."
 
-#: calendarview.cpp:2689 calendarview.cpp:2694
+#: calendarview.cpp:2691 calendarview.cpp:2696
 #, kde-format
 msgid "%1 completed to-do was purged."
 msgid_plural "%1 completed to-dos were purged."
 msgstr[0] "%1 voltooide taak is opgeruimd."
 msgstr[1] "%1 voltooide taken zijn opgeruimd."
 
-#: calendarview.cpp:2700
+#: calendarview.cpp:2702
 #, kde-format
 msgid "An error occurred while purging completed to-dos: %1"
 msgstr "Er is een fout opgetreden bij het opruimen van voltooide taken: %1"
 
-#: calendarview.cpp:2754
+#: calendarview.cpp:2756
 #, kde-format
 msgid ""
 "You created an incidence in a calendar that is currently filtered out.\n"
@@ -1737,7 +1737,7 @@ msgstr ""
 "U kunt die zichtbaar maken als u die activeert in het agendabeheer in de "
 "zijbalk links."
 
-#: calendarview.cpp:2758
+#: calendarview.cpp:2760
 #, kde-format
 msgid ""
 "You created an incidence in a calendar that is currently filtered out.\n"
