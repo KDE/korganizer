@@ -6,7 +6,7 @@ msgid ""
 msgstr ""
 "Project-Id-Version: korganizer\n"
 "Report-Msgid-Bugs-To: https://bugs.kde.org\n"
-"POT-Creation-Date: 2024-02-20 00:38+0000\n"
+"POT-Creation-Date: 2024-02-22 00:38+0000\n"
 "PO-Revision-Date: 2008-07-21 16:18+0700\n"
 "Last-Translator: Thanomsub Noppaburana <donga.nb@gmail.com>\n"
 "Language-Team: Thai <thai-l10n@googlegroups.com>\n"
@@ -1358,7 +1358,7 @@ msgctxt "@title:window"
 msgid "Delete Calendar"
 msgstr "ปฏิทินปริยาย"
 
-#: calendarview.cpp:241
+#: calendarview.cpp:248
 #, kde-format
 msgid ""
 "<p><em>No Item Selected</em></p><p>Select an event, to-do or journal entry "
@@ -1367,7 +1367,7 @@ msgstr ""
 "<p><em>ยังไม่มีการเลือกรายการ</em></p><p>เลือกรายการของ เหตุการณ์, สิ่งที่จะทำ "
 "หรือบันทึกประจำวัน เพื่อแสดงรายละเอียดที่นี่</p>"
 
-#: calendarview.cpp:247
+#: calendarview.cpp:254
 #, kde-format
 msgid ""
 "View the details of events, journal entries or to-dos selected in "
@@ -1376,17 +1376,17 @@ msgstr ""
 "แสดงรายละเอียดของเหตุการณ์, บันทึกประจำวัน หรือสิ่งที่จะทำที่ได้เลือกไว้ในมุมมองหลักของ "
 "KOrganizer ได้ที่นี่"
 
-#: calendarview.cpp:626
+#: calendarview.cpp:644
 #, kde-format
 msgid "Todo completed: %1 (%2)"
 msgstr "สิ่งที่จะทำเสร็จสมบูรณ์แล้ว: %1 (%2)"
 
-#: calendarview.cpp:635
+#: calendarview.cpp:653
 #, kde-format
 msgid "Journal of %1"
 msgstr "บันทึกประจำวันของ %1"
 
-#: calendarview.cpp:684
+#: calendarview.cpp:702
 #, kde-format
 msgid ""
 "The item \"%1\" is filtered by your current filter rules, so it will be "
@@ -1394,72 +1394,72 @@ msgid ""
 msgstr ""
 "รายการ \"%1\" ถูกกรองโดยกฏการกรองปัจจุบันของคุณ ดังนั้นมันจะถูกซ่อนและไม่ปรากฏในมุมมอง"
 
-#: calendarview.cpp:753
+#: calendarview.cpp:771
 #, fuzzy, kde-format
 #| msgid "<qt>Do you really want to delete the resource <b>%1</b>?</qt>"
 msgctxt "@info"
 msgid "Do you really want to permanently remove the item \"%1\"?"
 msgstr "<qt>คุณต้องการจะลบทรัพยากร <b>%1</b> นี้ จริงหรือไม่ ?</qt>"
 
-#: calendarview.cpp:754
+#: calendarview.cpp:772
 #, fuzzy, kde-format
 #| msgid "Delete Old Items"
 msgctxt "@title:window"
 msgid "Delete Item?"
 msgstr "ลบรายการเก่า"
 
-#: calendarview.cpp:829
+#: calendarview.cpp:847
 #, fuzzy, kde-format
 #| msgid "Please specify a valid start date."
 msgid "Paste failed: unable to determine a valid target date."
 msgstr "โปรดระบุวันเริ่มที่ถูกต้อง"
 
-#: calendarview.cpp:1259
+#: calendarview.cpp:1277
 #, kde-format
 msgid "Make sub-to-dos independent"
 msgstr "ทำให้รายการย่อยของสิ่งที่จะทำเป็นอิสระ"
 
-#: calendarview.cpp:1316
+#: calendarview.cpp:1334
 #, fuzzy, kde-format
 #| msgid "&Toggle Reminder"
 msgid "Toggle Reminder"
 msgstr "เปิด/ปิดการเตือนความจำ"
 
-#: calendarview.cpp:1348 calendarview.cpp:1400
+#: calendarview.cpp:1366 calendarview.cpp:1418
 #, fuzzy, kde-format
 #| msgctxt "delete completed to-dos"
 #| msgid "Pur&ge Completed"
 msgid "Toggle To-do Completed"
 msgstr "กำจัดตัวที่เสร็จแล้ว"
 
-#: calendarview.cpp:1452
+#: calendarview.cpp:1470
 #, kde-format
 msgctxt "@info"
 msgid "\"%1\" was successfully copied to %2."
 msgstr ""
 
-#: calendarview.cpp:1453
+#: calendarview.cpp:1471
 #, fuzzy, kde-format
 #| msgid "Copying Failed"
 msgctxt "@title:window"
 msgid "Copying Succeeded"
 msgstr "การคัดลอกล้มเหลว"
 
-#: calendarview.cpp:1457
+#: calendarview.cpp:1475
 #, fuzzy, kde-format
 #| msgid "Unable to copy the item to %1."
 msgctxt "@info"
 msgid "Unable to copy the item \"%1\" to %2."
 msgstr "ไม่สามารถคัดลอกรายการไปยัง %1 ได้"
 
-#: calendarview.cpp:1458 calendarview.cpp:2439
+#: calendarview.cpp:1476 calendarview.cpp:2457
 #, fuzzy, kde-format
 #| msgid "Copying Failed"
 msgctxt "@title:window"
 msgid "Copying Failed"
 msgstr "การคัดลอกล้มเหลว"
 
-#: calendarview.cpp:1517
+#: calendarview.cpp:1535
 #, kde-format
 msgctxt "@info"
 msgid ""
@@ -1467,51 +1467,51 @@ msgid ""
 "of this item has been put into %2"
 msgstr ""
 
-#: calendarview.cpp:1521 calendarview.cpp:1537 calendarview.cpp:2474
+#: calendarview.cpp:1539 calendarview.cpp:1555 calendarview.cpp:2492
 #, fuzzy, kde-format
 #| msgid "Moving Failed"
 msgctxt "@title:window"
 msgid "Moving Failed"
 msgstr "การทำการย้ายล้มเหลว"
 
-#: calendarview.cpp:1526
+#: calendarview.cpp:1544
 #, kde-format
 msgctxt "@info"
 msgid "\"%1\" was successfully moved from %2 to %3."
 msgstr ""
 
-#: calendarview.cpp:1527
+#: calendarview.cpp:1545
 #, fuzzy, kde-format
 #| msgid "Moving Failed"
 msgctxt "@title:window"
 msgid "Moving Succeeded"
 msgstr "การทำการย้ายล้มเหลว"
 
-#: calendarview.cpp:1533
+#: calendarview.cpp:1551
 #, kde-format
 msgctxt "@info"
 msgid "Unable to add the item \"%1\" into %2. This item has not been moved."
 msgstr ""
 
-#: calendarview.cpp:1571
+#: calendarview.cpp:1589
 #, fuzzy, kde-format
 #| msgid "Dissociate event from recurrence"
 msgid "Do you want to dissociate the occurrence on %1 from the recurrence?"
 msgstr "แยกเหตุการณ์ออกจากการเกิดขึ้นใหม่"
 
-#: calendarview.cpp:1575 calendarview.cpp:1587 calendarview.cpp:2246
+#: calendarview.cpp:1593 calendarview.cpp:1605 calendarview.cpp:2264
 #, kde-format
 msgctxt "@title:window"
 msgid "KOrganizer Confirmation"
 msgstr "การยืนยันของ KOrganizer"
 
-#: calendarview.cpp:1576
+#: calendarview.cpp:1594
 #, fuzzy, kde-format
 #| msgid "T&ime associated"
 msgid "&Dissociate"
 msgstr "เกี่ยวข้องกับเว&ลาด้วย"
 
-#: calendarview.cpp:1582
+#: calendarview.cpp:1600
 #, fuzzy, kde-format
 #| msgid "Dissociate event from recurrence"
 msgid ""
@@ -1519,82 +1519,82 @@ msgid ""
 "dissociate future ones?"
 msgstr "แยกเหตุการณ์ออกจากการเกิดขึ้นใหม่"
 
-#: calendarview.cpp:1588
+#: calendarview.cpp:1606
 #, fuzzy, kde-format
 #| msgid "&Dissociate This Occurrence"
 msgid "&Only Dissociate This One"
 msgstr "ถอนการเกิดขึ้นอีกนี้"
 
-#: calendarview.cpp:1589
+#: calendarview.cpp:1607
 #, fuzzy, kde-format
 #| msgid "Dissociate &Future Occurrences"
 msgid "&Also Dissociate Future Ones"
 msgstr "ถอนการเกิดขึ้นอีกที่จะเกิดในอนาคต"
 
-#: calendarview.cpp:1607
+#: calendarview.cpp:1625
 #, kde-format
 msgid "Dissociate future occurrences"
 msgstr "ถอนการเกิดขึ้นอีกในอนาคต"
 
-#: calendarview.cpp:1609
+#: calendarview.cpp:1627
 #, kde-format
 msgid "Dissociate occurrence"
 msgstr "ถอนการเกิดขึ้นอีก"
 
-#: calendarview.cpp:1616
+#: calendarview.cpp:1634
 #, kde-format
 msgid "Dissociating the future occurrences failed."
 msgstr "การถอนการเกิดขึ้นอีกในอนาคตล้มเหลว"
 
-#: calendarview.cpp:1616 calendarview.cpp:1618
+#: calendarview.cpp:1634 calendarview.cpp:1636
 #, fuzzy, kde-format
 #| msgid "Dissociating Failed"
 msgctxt "@title:window"
 msgid "Dissociating Failed"
 msgstr "การถอนอีกล้มเหลว"
 
-#: calendarview.cpp:1618
+#: calendarview.cpp:1636
 #, kde-format
 msgid "Dissociating the occurrence failed."
 msgstr "การถอนการเกิดขึ้นอีกล้มเหลว"
 
-#: calendarview.cpp:1780
+#: calendarview.cpp:1798
 #, fuzzy, kde-format
 #| msgid "Calendars"
 msgid "iCalendars (*.ics)"
 msgstr "ปฏิทิน"
 
-#: calendarview.cpp:1789
+#: calendarview.cpp:1807
 #, kde-format
 msgid "Do you want to overwrite %1?"
 msgstr ""
 
-#: calendarview.cpp:1790
+#: calendarview.cpp:1808
 #, fuzzy, kde-format
 #| msgid "Import Calendar"
 msgctxt "@title:window"
 msgid "Export Calendar"
 msgstr "นำเข้าปฏิทิน"
 
-#: calendarview.cpp:1804
+#: calendarview.cpp:1822
 #, kde-format
 msgctxt "save failure cause unknown"
 msgid "Reason unknown"
 msgstr ""
 
-#: calendarview.cpp:1806
+#: calendarview.cpp:1824
 #, fuzzy, kde-format
 #| msgid "Cannot write archive file %1."
 msgctxt "@info"
 msgid "Cannot write iCalendar file %1. %2"
 msgstr "ไม่สามารถเขียนแฟ้มจัดเก็บ %1 ได้"
 
-#: calendarview.cpp:1907 calendarview.cpp:1946
+#: calendarview.cpp:1925 calendarview.cpp:1964
 #, kde-format
 msgid "No filter"
 msgstr "ไม่มีตัวกรอง"
 
-#: calendarview.cpp:2241
+#: calendarview.cpp:2259
 #, kde-format
 msgid ""
 "The item \"%1\" has sub-to-dos. Do you want to delete just this item and "
@@ -1605,17 +1605,17 @@ msgstr ""
 "และทำให้รายการย่อยของสิ่งที่จะทำของมันเป็นอิสระหรือไม่ "
 "หรือจะลบสิ่งที่จะทำพร้อมทั้งรายกายย่อยทั้งหมดของมันด้วย ?"
 
-#: calendarview.cpp:2247
+#: calendarview.cpp:2265
 #, kde-format
 msgid "Delete Only This"
 msgstr "ลบตัวนี้เท่านั้น"
 
-#: calendarview.cpp:2248 calendarview.cpp:2306
+#: calendarview.cpp:2266 calendarview.cpp:2324
 #, kde-format
 msgid "Delete All"
 msgstr "ลบทั้งหมด"
 
-#: calendarview.cpp:2279
+#: calendarview.cpp:2297
 #, fuzzy, kde-format
 #| msgid ""
 #| "The item \"%1\" is marked read-only and cannot be deleted; it probably "
@@ -1627,12 +1627,12 @@ msgstr ""
 "รายการ \"%1\" ถูกกำหนดให้อ่านได้อย่างเดียวและไม่สามารถทำการลบได้ "
 "มันอาจจะเป็นทรัพยากรของปฏิทินที่ให้อ่านได้อย่างเดียว"
 
-#: calendarview.cpp:2283
+#: calendarview.cpp:2301
 #, kde-format
 msgid "Removing not possible"
 msgstr "การเอาออกเป็นไปไม่ได้"
 
-#: calendarview.cpp:2301
+#: calendarview.cpp:2319
 #, kde-format
 msgid ""
 "The calendar item \"%1\" recurs over multiple dates; are you sure you want "
@@ -1641,18 +1641,18 @@ msgstr ""
 "รายการของปฏิทินรายการ \"%1\" จะเกิดขึ้นอีกหลายครั้งในหลายวัน; "
 "คุณแน่ใจหรือว่าต้องการจะลบมันและการเกิดขึ้นอีกของมันทั้งหมดด้วย ?"
 
-#: calendarview.cpp:2305 calendarview.cpp:2335
+#: calendarview.cpp:2323 calendarview.cpp:2353
 #, kde-format
 msgid "KOrganizer Confirmation"
 msgstr "การยืนยันสำหรับ KOrganizer"
 
-#: calendarview.cpp:2313
+#: calendarview.cpp:2331
 #, fuzzy, kde-format
 #| msgid "Delete &Future"
 msgid "Also Delete &Future"
 msgstr "ลบที่จะเกิดอนาคต"
 
-#: calendarview.cpp:2317
+#: calendarview.cpp:2335
 #, fuzzy, kde-format
 #| msgid ""
 #| "The calendar item \"%1\" recurs over multiple dates. Do you want to "
@@ -1666,7 +1666,7 @@ msgstr ""
 "คุณต้องการที่จะลบเพียงตัวเดียวบน %2,   ลบเฉพาะที่จะเกิดขึ้นอีกในอนาคตทั้งหมด, "
 "หรือจะลบการเกิดขึ้นอีกทั้งหมดของมัน ?"
 
-#: calendarview.cpp:2324
+#: calendarview.cpp:2342
 #, fuzzy, kde-format
 #| msgid ""
 #| "The calendar item \"%1\" recurs over multiple dates. Do you want to "
@@ -1680,103 +1680,103 @@ msgstr ""
 "คุณต้องการที่จะลบเพียงตัวเดียวบน %2,   ลบเฉพาะที่จะเกิดขึ้นอีกในอนาคตทั้งหมด, "
 "หรือจะลบการเกิดขึ้นอีกทั้งหมดของมัน ?"
 
-#: calendarview.cpp:2336
+#: calendarview.cpp:2354
 #, kde-format
 msgid "Delete C&urrent"
 msgstr "ลบรายการปัจจุบัน"
 
-#: calendarview.cpp:2338
+#: calendarview.cpp:2356
 #, kde-format
 msgid "Delete &All"
 msgstr "ลบทั้งหมด"
 
-#: calendarview.cpp:2369 calendarview.cpp:2376
+#: calendarview.cpp:2387 calendarview.cpp:2394
 #, fuzzy, kde-format
 #| msgid "Delete %1"
 msgid "Delete \"%1\""
 msgstr "ลบ %1"
 
-#: calendarview.cpp:2404
+#: calendarview.cpp:2422
 #, kde-format
 msgid ""
 "All calendars are unchecked in the Calendar Manager. No to-do was purged."
 msgstr ""
 
-#: calendarview.cpp:2409 calendarview.cpp:2691
+#: calendarview.cpp:2427 calendarview.cpp:2709
 #, fuzzy, kde-format
 #| msgid "Strike &out completed to-do summaries"
 msgid "There are no completed to-dos to purge."
 msgstr "ขีดฆ่ารายงานสรุปสิ่งที่จะทำที่เสร็จสมบูรณ์แล้ว"
 
-#: calendarview.cpp:2414
+#: calendarview.cpp:2432
 #, fuzzy, kde-format
 #| msgid "Delete all completed to-dos?"
 msgid "Delete all completed to-dos from checked calendars?"
 msgstr "ลบสิ่งที่จะทำที่เสร็จสมบูรณ์แล้วทั้งหมดหรือไม่ ?"
 
-#: calendarview.cpp:2415
+#: calendarview.cpp:2433
 #, fuzzy, kde-format
 #| msgid "Purge To-dos"
 msgctxt "@title:window"
 msgid "Purge To-dos"
 msgstr "กำจัดสิ่งที่จะทำ"
 
-#: calendarview.cpp:2416
+#: calendarview.cpp:2434
 #, kde-format
 msgid "Purge"
 msgstr "กำจัด"
 
-#: calendarview.cpp:2427
+#: calendarview.cpp:2445
 #, fuzzy, kde-format
 #| msgid "Unable to edit item: it is locked by another process."
 msgctxt "@info"
 msgid "Unable to edit \"%1\" because it is locked by another process."
 msgstr "ไม่สามารถแก้ไขรายการได้: มันถูกล็อคไว้โดยโพรเซสงานอื่น"
 
-#: calendarview.cpp:2439
+#: calendarview.cpp:2457
 #, kde-format
 msgid "Unable to copy the item to %1."
 msgstr "ไม่สามารถคัดลอกรายการไปยัง %1 ได้"
 
-#: calendarview.cpp:2474
+#: calendarview.cpp:2492
 #, kde-format
 msgid "Unable to move the item to  %1."
 msgstr "ไม่สามารถย้ายรายการไปยัง %1  ได้"
 
-#: calendarview.cpp:2684
+#: calendarview.cpp:2702
 #, fuzzy, kde-format
 #| msgid "Hide co&mpleted to-dos"
 msgid "0 completed to-dos were purged."
 msgstr "ซ่อนสิ่งที่จะทำที่เสร็จสมบูรณ์แล้ว"
 
-#: calendarview.cpp:2685 calendarview.cpp:2695
+#: calendarview.cpp:2703 calendarview.cpp:2713
 #, kde-format
 msgid "%1 to-do was ignored because it has uncompleted or read-only children."
 msgid_plural ""
 "%1 to-dos were ignored because they have uncompleted or read-only children."
 msgstr[0] ""
 
-#: calendarview.cpp:2689 calendarview.cpp:2694
+#: calendarview.cpp:2707 calendarview.cpp:2712
 #, fuzzy, kde-format
 #| msgid "Hide co&mpleted to-dos"
 msgid "%1 completed to-do was purged."
 msgid_plural "%1 completed to-dos were purged."
 msgstr[0] "ซ่อนสิ่งที่จะทำที่เสร็จสมบูรณ์แล้ว"
 
-#: calendarview.cpp:2700
+#: calendarview.cpp:2718
 #, fuzzy, kde-format
 #| msgid "Purging completed to-dos"
 msgid "An error occurred while purging completed to-dos: %1"
 msgstr "กำจัดสิ่งที่จะทำที่เสร็จสมบูรณ์แล้ว"
 
-#: calendarview.cpp:2754
+#: calendarview.cpp:2772
 #, kde-format
 msgid ""
 "You created an incidence in a calendar that is currently filtered out.\n"
 "On the left sidebar, enable it in the calendar manager to see the incidence."
 msgstr ""
 
-#: calendarview.cpp:2758
+#: calendarview.cpp:2776
 #, kde-format
 msgid ""
 "You created an incidence in a calendar that is currently filtered out.\n"
@@ -3604,7 +3604,7 @@ msgctxt "@label"
 msgid "Event text"
 msgstr "ข้อความของเหตุการณ์"
 
-#: prefs/koprefsdialoggroupscheduling.cpp:39
+#: prefs/koprefsdialoggroupscheduling.cpp:42
 #, kde-format
 msgctxt "@label"
 msgid "Mail transport:"
