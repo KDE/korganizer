@@ -38,7 +38,7 @@ public:
 
     void addText(const QString &text);
 
-    QPushButton *editButton() const;
+    [[nodiscard]] QPushButton *editButton() const;
 
 private:
     void editIncidence();

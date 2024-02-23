@@ -21,12 +21,10 @@ public:
     void save() override;
     void defaults() override;
 
-private Q_SLOTS:
-    void modified();
+private:
     void buttonClicked(QAbstractButton *button);
     void customDaysChanged(int value);
-
-private:
+    void modified();
     QButtonGroup *const mDaysButtonGroup;
     QButtonGroup *const mShowButtonGroup;
     QButtonGroup *const mGroupwareButtonGroup;

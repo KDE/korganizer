@@ -26,7 +26,7 @@ public:
     ~KOrganizerPlugin() override;
 
     [[nodiscard]] bool isRunningStandalone() const override;
-    int weight() const override
+    [[nodiscard]] int weight() const override
     {
         return 400;
     }

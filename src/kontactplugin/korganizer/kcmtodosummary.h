@@ -23,7 +23,7 @@ public:
     void save() override;
     void defaults() override;
 
-private Q_SLOTS:
+private:
     void modified();
     void customDaysChanged(int value);
 };

@@ -24,7 +24,7 @@ public:
     ~JournalPlugin() override;
 
     [[nodiscard]] bool isRunningStandalone() const override;
-    int weight() const override
+    [[nodiscard]] int weight() const override
     {
         return 525;
     }
@@ -38,10 +38,8 @@ public:
 protected:
     KParts::Part *createPart() override;
 
-private Q_SLOTS:
-    void slotNewJournal();
-
 private:
+    void slotNewJournal();
     OrgKdeKorganizerCalendarInterface *mIface = nullptr;
     KontactInterface::UniqueAppWatcher *mUniqueAppWatcher = nullptr;
 };

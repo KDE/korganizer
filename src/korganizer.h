@@ -41,7 +41,7 @@ public:
 
     KOrg::CalendarViewBase *view() const override;
     ActionManager *actionManager() override;
-    KActionCollection *getActionCollection() const override;
+    [[nodiscard]] KActionCollection *getActionCollection() const override;
 
     // void initializePluginActions();
     /**
