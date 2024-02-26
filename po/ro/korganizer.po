@@ -1436,7 +1436,9 @@ msgid "Do you want to dissociate the occurrence on %1 from the recurrence?"
 msgstr ""
 
 #: calendarview.cpp:1575 calendarview.cpp:1587 calendarview.cpp:2246
-#, kde-format
+#, fuzzy, kde-format
+#| msgctxt "@title:window"
+#| msgid "KOrganizer Confirmation"
 msgctxt "@title:window"
 msgid "KOrganizer Confirmation"
 msgstr "Confirmare KOrganizator"
