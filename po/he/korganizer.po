@@ -18,7 +18,7 @@ msgstr ""
 "Project-Id-Version: korganizer\n"
 "Report-Msgid-Bugs-To: https://bugs.kde.org\n"
 "POT-Creation-Date: 2024-02-22 00:38+0000\n"
-"PO-Revision-Date: 2024-02-20 23:18+0200\n"
+"PO-Revision-Date: 2024-02-28 09:56+0200\n"
 "Last-Translator: Yaron Shahrabani <sh.yaron@gmail.com>\n"
 "Language-Team: צוות התרגום של KDE ישראל\n"
 "Language: he\n"
@@ -5100,7 +5100,7 @@ msgstr "סיסמה:"
 #. i18n: ectx: property (whatsThis), widget (QLabel, textLabel3)
 #: ui/kogroupwareprefspage.ui:258 ui/kogroupwareprefspage.ui:279
 #: ui/kogroupwareprefspage.ui:428 ui/kogroupwareprefspage.ui:476
-#, kde-format
+#, fuzzy, kde-format
 msgid ""
 "Enter the login information relative to your account on the server here.\n"
 "\n"
@@ -5123,7 +5123,7 @@ msgstr "שם משתמש:"
 #. i18n: ectx: property (whatsThis), widget (QCheckBox, publishSavePassword)
 #. i18n: ectx: property (whatsThis), widget (QCheckBox, retrieveSavePassword)
 #: ui/kogroupwareprefspage.ui:287 ui/kogroupwareprefspage.ui:509
-#, kde-format
+#, fuzzy, kde-format
 msgid ""
 "Check this box to make KOrganizer remember your password and skip asking you "
 "each time it uploads your Free/Busy information, by storing it in the "
@@ -5163,7 +5163,7 @@ msgstr "&קבלה"
 
 #. i18n: ectx: property (text), widget (QLabel, TextLabel2)
 #: ui/kogroupwareprefspage.ui:359
-#, kde-format
+#, fuzzy, kde-format
 msgid ""
 "By retrieving Free/Busy information that others have published, you can take "
 "their calendar into account when inviting them to a meeting."
@@ -5197,7 +5197,7 @@ msgstr "יש להגדיר את זה כדי לקבל user@domain.ifb במקום u
 
 #. i18n: ectx: property (whatsThis), widget (QCheckBox, fullDomainRetrieval)
 #: ui/kogroupwareprefspage.ui:385
-#, kde-format
+#, fuzzy, kde-format
 msgid ""
 "Check this box to download a free/busy file in the format \"user@domain.ifb"
 "\" (for example joe@company.com.ifb). Otherwise, it will download a free/"
@@ -5212,7 +5212,7 @@ msgstr ""
 #: ui/kogroupwareprefspage.ui:388
 #, kde-format
 msgid "Use full email &address for retrieval"
-msgstr "שימוש בכתובת &דוא״ל מלאה לקבלה"
+msgstr "להשתמש בכתובת &דוא״ל מלאה לקבלה"
 
 #. i18n: ectx: property (whatsThis), widget (QLineEdit, retrieveUrl)
 #. i18n: ectx: property (whatsThis), widget (QLabel, TextLabel7_2)

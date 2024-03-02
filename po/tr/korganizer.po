@@ -21,7 +21,7 @@ msgstr ""
 "Project-Id-Version: kdepim-kde4\n"
 "Report-Msgid-Bugs-To: https://bugs.kde.org\n"
 "POT-Creation-Date: 2024-02-22 00:38+0000\n"
-"PO-Revision-Date: 2024-01-02 16:04+0300\n"
+"PO-Revision-Date: 2024-03-01 15:53+0300\n"
 "Last-Translator: Emir SARI <emir_sari@icloud.com>\n"
 "Language-Team: Turkish <kde-l10n-tr@kde.org>\n"
 "Language: tr\n"
@@ -29,7 +29,7 @@ msgstr ""
 "Content-Type: text/plain; charset=UTF-8\n"
 "Content-Transfer-Encoding: 8bit\n"
 "Plural-Forms: nplurals=2; plural=(n > 1);\n"
-"X-Generator: Lokalize 24.01.85\n"
+"X-Generator: Lokalize 24.02.0\n"
 "(http: //www.transifex.com/projects/p/kdepim-k-tr/language/tr/)\n"
 "X-POOTLE-MTIME: 1413104942.000000\n"
 
@@ -3950,7 +3950,7 @@ msgstr ""
 #: settings/korganizer.kcfg:74
 #, kde-format
 msgid "Exclude holidays"
-msgstr "Tatilleri dışarıda tut"
+msgstr "Tatilleri dışla"
 
 #. i18n: ectx: whatsthis, entry, group (Time &amp; Date)
 #: settings/korganizer.kcfg:75
@@ -5770,7 +5770,7 @@ msgid ""
 "after it, or end during the date range but start before it, will be excluded "
 "from the search results."
 msgstr ""
-"Yalnızca tümüyle verilen tarih aralığı içinde olan etkinlikleri bulmak "
+"Yalnızca tümüyle verilen tarih erimi içinde olan etkinlikleri bulmak "
 "istiyorsanız bu kutuyu işaretleyin. Tarih aralığında başlayan; ancak "
 "sonrasında biten veya aralıktayken biten; ancak öncesinde başlayan "
 "etkinlikler, arama sonuçlarında içerilmeyecektir."
@@ -5779,7 +5779,7 @@ msgstr ""
 #: ui/searchdialog_base.ui:302
 #, kde-format
 msgid "Exclude e&vents that extend outside the specified date range"
-msgstr "Belirtilen tarih aralığı dışına uzayan etkinlikleri dışarıda tut"
+msgstr "Belirtilen tarih erimi dışına uzayan etkinlikleri dışla"
 
 #. i18n: ectx: property (toolTip), widget (QCheckBox, includeUndatedTodos)
 #: ui/searchdialog_base.ui:309
