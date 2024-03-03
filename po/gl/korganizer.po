@@ -16,7 +16,7 @@ msgstr ""
 "Project-Id-Version: korganizer\n"
 "Report-Msgid-Bugs-To: https://bugs.kde.org\n"
 "POT-Creation-Date: 2024-02-20 02:28+0000\n"
-"PO-Revision-Date: 2024-01-03 07:58+0100\n"
+"PO-Revision-Date: 2024-03-02 21:19+0100\n"
 "Last-Translator: Adrián Chaves (Gallaecio) <adrian@chaves.io>\n"
 "Language-Team: Proxecto Trasno (proxecto@trasno.gal)\n"
 "Language: gl\n"
@@ -24,7 +24,7 @@ msgstr ""
 "Content-Type: text/plain; charset=UTF-8\n"
 "Content-Transfer-Encoding: 8bit\n"
 "Plural-Forms: nplurals=2; plural=n != 1;\n"
-"X-Generator: Lokalize 23.08.4\n"
+"X-Generator: Lokalize 23.08.5\n"
 
 #, kde-format
 msgctxt "NAME OF TRANSLATORS"
@@ -2105,7 +2105,7 @@ msgstr ""
 "diálogo, escolla «Trebello» e prema <i>Aceptar</i>.</li> <li>Engada os seus "
 "trebellos ao formulario.</li> <li>Garde o ficheiro no directorio suxerido "
 "por Qt Designer.</li> <li>Peche Qt Designer.</li> </ol> <p>No caso de que "
-"aínda teña o ficheiro de deseño (*.iu) situado nalgún lugar do disco duro, "
+"aínda teña o ficheiro de deseño (*.ui) situado nalgún lugar do disco duro, "
 "escolla «<i>Importar unha páxina</i>».</p> <p><b>Importante:</b> O nome de "
 "cada trebello de entrada que coloque no formulario debe comezar por «<i>X_</"
 "i>»; así que se quere que o trebello aluda a certa entrada de nome «<i>X-"
@@ -3358,7 +3358,7 @@ msgid ""
 "Calendar files or urls. Unless -i or -m is explicitly specified, the user "
 "will be asked whether to import or merge"
 msgstr ""
-"Ficheiros de calendario ou url. A non ser que se especifique explicitamente -"
+"Ficheiros de calendario ou URL. A non ser que se especifique explicitamente -"
 "i ou -m, preguntaráselle ao usuario se desexa importar ou fusionar"
 
 #: korganizer_options.h:28
@@ -3429,7 +3429,7 @@ msgid ""
 "color using the button below."
 msgstr ""
 "Escolla aquí o calendario que quere modificar. Pode cambiar a cor do "
-"calendario selecionado co botón de embaixo."
+"calendario seleccionado co botón de embaixo."
 
 #: prefs/koprefsdialogcolorsandfonts.cpp:142
 #, kde-format
@@ -3829,7 +3829,7 @@ msgid ""
 msgstr ""
 "Escolla a súa zona horaria nesta lista de lugares. Se non aparece a súa "
 "cidade, escolla unha que comparta a mesma zona horaria. KOrganizer axustará "
-"automaticamente os aforros de luz diurna."
+"automaticamente os aforros de luz diúrna."
 
 #. i18n: ectx: label, entry (DayBegins), group (Time &amp; Date)
 #: settings/korganizer.kcfg:44
@@ -4096,7 +4096,7 @@ msgid ""
 "Check this box to select a working week when clicking on the Date "
 "Navigator's week numbers, or uncheck it to choose the whole week."
 msgstr ""
-"Marque esta opción para escoller unha semana laborar ao premer os números de "
+"Marque esta opción para escoller unha semana laboral ao premer os números de "
 "semana do Navegador de Datas ou anule a selección para escoller a semana "
 "enteira."
 
@@ -4220,7 +4220,7 @@ msgid ""
 "mouse from the start time to the end time of the event you are about to plan."
 msgstr ""
 "Marque esta opción para iniciar o editor de eventos automaticamente cando "
-"seleccione un intervalo horario na vista diara e semanal. Para seleccionar "
+"seleccione un intervalo horario na vista diaria e semanal. Para seleccionar "
 "un intervalo horario, arrastre o rato desde a hora de inicio á hora de "
 "remate no evento que estea a piques de planificar."
 
@@ -5257,7 +5257,7 @@ msgid ""
 "Ask the server administrator for this information."
 msgstr ""
 "Insira aquí o URL do servidor no que se debe publicar a súa información de "
-"Ocupación/Dispoñiblidade.\n"
+"Ocupación/Dispoñibilidade.\n"
 "Pídalle esta información ao administrador do sistema."
 
 #. i18n: ectx: property (whatsThis), widget (QLineEdit, publishPassword)
@@ -5463,6 +5463,7 @@ msgstr "&Buscar por:"
 msgid "Search pattern. Use wildcards “*” and “?” as desired."
 msgstr "Padrón de busca. Use os comodíns «*» e «?» á vontade."
 
+# well-spelled: xef
 #. i18n: ectx: property (whatsThis), widget (QLineEdit, searchEdit)
 #: ui/searchdialog_base.ui:52
 #, kde-format
