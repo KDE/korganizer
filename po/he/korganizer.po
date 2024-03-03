@@ -18,7 +18,7 @@ msgstr ""
 "Project-Id-Version: korganizer\n"
 "Report-Msgid-Bugs-To: https://bugs.kde.org\n"
 "POT-Creation-Date: 2024-02-22 00:38+0000\n"
-"PO-Revision-Date: 2024-02-28 09:56+0200\n"
+"PO-Revision-Date: 2024-03-02 21:34+0200\n"
 "Last-Translator: Yaron Shahrabani <sh.yaron@gmail.com>\n"
 "Language-Team: צוות התרגום של KDE ישראל\n"
 "Language: he\n"
@@ -3144,10 +3144,10 @@ msgid "Upcoming Special Dates"
 msgstr ""
 
 #: kontactplugin/specialdates/sdsummarywidget.cpp:450
-#, fuzzy, kde-format
+#, kde-format
 msgctxt "the special day is today"
 msgid "Today"
-msgstr "יום"
+msgstr "היום"
 
 #: kontactplugin/specialdates/sdsummarywidget.cpp:452
 #, kde-format
@@ -3156,7 +3156,7 @@ msgid "Tomorrow"
 msgstr "מחר"
 
 #: kontactplugin/specialdates/sdsummarywidget.cpp:498
-#, fuzzy, kde-format
+#, kde-format
 msgid "Birthday"
 msgstr "יום הולדת"
 
@@ -3176,7 +3176,7 @@ msgid "Change of Seasons"
 msgstr ""
 
 #: kontactplugin/specialdates/sdsummarywidget.cpp:510
-#, fuzzy, kde-format
+#, kde-format
 msgid "Special Occasion"
 msgstr "אירוע מיוחד"
 
@@ -3199,14 +3199,14 @@ msgstr[2] ""
 msgstr[3] ""
 
 #: kontactplugin/specialdates/sdsummarywidget.cpp:656
-#, fuzzy, kde-format
+#, kde-format
 msgid "Send &Mail"
-msgstr "שלח דוא\"ל"
+msgstr "&שליחת דוא״ל"
 
 #: kontactplugin/specialdates/sdsummarywidget.cpp:657
-#, fuzzy, kde-format
+#, kde-format
 msgid "View &Contact"
-msgstr "חפש ב"
+msgstr "ה&צגת פרטי קשר"
 
 #: kontactplugin/specialdates/sdsummarywidget.cpp:672
 #, kde-format
@@ -3231,7 +3231,7 @@ msgid ""
 msgstr ""
 
 #: kontactplugin/specialdates/specialdates_plugin.cpp:42
-#, fuzzy, kde-format
+#, kde-format
 msgid "Current Maintainer"
 msgstr "מתחזק נוכחי"
 
@@ -3246,7 +3246,7 @@ msgid "New Calendar"
 msgstr "לוח שנה חדש"
 
 #: korganizer.cpp:288
-#, fuzzy, kde-format
+#, kde-format
 msgctxt "the calendar is read-only"
 msgid "read-only"
 msgstr "קריאה בלבד"
@@ -3482,7 +3482,7 @@ msgid "Select Holiday Regions"
 msgstr "כבד את חגי־:"
 
 #: prefs/koprefsdialogtime.cpp:110
-#, fuzzy, kde-format
+#, kde-format
 msgctxt "@title:group"
 msgid "Working Period"
 msgstr "שעות עבודה"
@@ -3553,10 +3553,10 @@ msgid "Appointments"
 msgstr "פגישות"
 
 #: prefs/koprefsdialogtime.cpp:194
-#, fuzzy, kde-format
+#, kde-format
 msgctxt "@label"
 msgid "Default reminder time:"
-msgstr "זמן התזכורת המשמש כברירת מחדל:"
+msgstr "זמן ברירת מחדל לתזכורת:"
 
 #: prefs/koprefsdialogtime.cpp:207
 #, fuzzy, kde-format
@@ -4739,9 +4739,9 @@ msgstr ""
 
 #. i18n: ectx: label, entry, group (Theming)
 #: settings/korganizer.kcfg:558
-#, fuzzy, kde-format
+#, kde-format
 msgid "Use system color"
-msgstr "לוח־שנה"
+msgstr "להשתמש בצבע המערכת"
 
 #. i18n: ectx: whatsthis, entry, group (Theming)
 #: settings/korganizer.kcfg:559
@@ -4753,9 +4753,9 @@ msgstr ""
 
 #. i18n: ectx: label, entry, group (Theme/Month view)
 #: settings/korganizer.kcfg:570
-#, fuzzy, kde-format
+#, kde-format
 msgid "Month view background color"
-msgstr "צבע רקע לתצוגת סדר־יום"
+msgstr "צבע רקע לתצוגת חודש"
 
 #. i18n: ectx: whatsthis, entry, group (Theme/Month view)
 #: settings/korganizer.kcfg:571
@@ -4905,7 +4905,7 @@ msgstr ""
 #: ui/filteredit_base.ui:221
 #, kde-format
 msgid "Hide &inactive to-dos"
-msgstr "הסתר מטלות &בלתי פעילות"
+msgstr "הסתרת מטלות &בלתי פעילות"
 
 #. i18n: ectx: property (title), widget (QGroupBox, mCategoriesButtonGroup)
 #: ui/filteredit_base.ui:228
@@ -4930,7 +4930,7 @@ msgstr ""
 #: ui/filteredit_base.ui:275
 #, kde-format
 msgid "Show all except selected"
-msgstr "הצג הכל פרט לנבחרים"
+msgstr "הצגה של הכול פרט לנבחרים"
 
 #. i18n: ectx: property (whatsThis), widget (QRadioButton, mCatShowCheck)
 #: ui/filteredit_base.ui:288
@@ -4949,7 +4949,7 @@ msgstr ""
 #: ui/filteredit_base.ui:291
 #, kde-format
 msgid "Show only selected"
-msgstr "הצג נבחרים בלבד"
+msgstr "הצגת הנבחרים בלבד"
 
 #. i18n: ectx: property (text), widget (QPushButton, mCatEditButton)
 #: ui/filteredit_base.ui:301
@@ -4980,7 +4980,7 @@ msgstr "הסתר מטלות שאינן שלי"
 #: ui/kogroupwareprefspage.ui:39
 #, kde-format
 msgid "P&ublish"
-msgstr "פ&רסם"
+msgstr "פ&רסום"
 
 #. i18n: ectx: property (text), widget (QLabel, TextLabel1)
 #: ui/kogroupwareprefspage.ui:60
@@ -5032,7 +5032,7 @@ msgstr ""
 #: ui/kogroupwareprefspage.ui:102
 #, kde-format
 msgid "Minimum time between uploads (in minutes):"
-msgstr "זמן מינימלי בין עדכונים (בדקות):"
+msgstr "זמן מזערי בין עדכונים (בדקות):"
 
 #. i18n: ectx: property (whatsThis), widget (QLabel, TextLabel3)
 #. i18n: ectx: property (whatsThis), widget (QSpinBox, publishDays)
@@ -5043,7 +5043,7 @@ msgstr "זמן מינימלי בין עדכונים (בדקות):"
 msgid ""
 "Configure the number of calendar days you wish to be published and available "
 "to others here."
-msgstr "הגדר כאן את מספר הימים בלוח השנה שברצונך לפרסם ולהעמיד לרשות אחרים."
+msgstr "נא להגדיר כאן את מספר הימים בלוח השנה לפרסום ולהעמדה לרשות אחרים."
 
 #. i18n: ectx: property (text), widget (QLabel, TextLabel3)
 #: ui/kogroupwareprefspage.ui:144
