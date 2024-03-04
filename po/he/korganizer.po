@@ -18,7 +18,7 @@ msgstr ""
 "Project-Id-Version: korganizer\n"
 "Report-Msgid-Bugs-To: https://bugs.kde.org\n"
 "POT-Creation-Date: 2024-02-22 00:38+0000\n"
-"PO-Revision-Date: 2024-03-02 21:34+0200\n"
+"PO-Revision-Date: 2024-03-03 13:34+0200\n"
 "Last-Translator: Yaron Shahrabani <sh.yaron@gmail.com>\n"
 "Language-Team: צוות התרגום של KDE ישראל\n"
 "Language: he\n"
@@ -1246,10 +1246,10 @@ msgid "Lets you search for a keyword in your calendars"
 msgstr "מאפשר לך לחפש מילת מפתח בלוחות השנה שלך"
 
 #: akonadicollectionview.cpp:411
-#, fuzzy, kde-format
+#, kde-format
 msgctxt "@info/plain Displayed grayed-out inside the textbox, verb to search"
 msgid "Search..."
-msgstr "חפש ב"
+msgstr "חיפוש…"
 
 #: akonadicollectionview.cpp:495 manageshowcollectionproperties.cpp:76
 #, fuzzy, kde-format
