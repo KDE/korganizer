@@ -21,7 +21,7 @@ msgstr ""
 "Project-Id-Version: kdepim-kde4\n"
 "Report-Msgid-Bugs-To: https://bugs.kde.org\n"
 "POT-Creation-Date: 2024-02-22 00:38+0000\n"
-"PO-Revision-Date: 2024-03-01 15:53+0300\n"
+"PO-Revision-Date: 2024-03-08 18:41+0300\n"
 "Last-Translator: Emir SARI <emir_sari@icloud.com>\n"
 "Language-Team: Turkish <kde-l10n-tr@kde.org>\n"
 "Language: tr\n"
@@ -3396,7 +3396,7 @@ msgstr "Kullanıcı geri bildirimi için kullanılabilir seçenekleri listeler"
 #: koviewmanager.cpp:427
 #, kde-format
 msgid "Merged calendar"
-msgstr "Birleştirilmiş takvim"
+msgstr "Birleşik takvim"
 
 #: koviewmanager.cpp:442
 #, kde-format
@@ -4420,7 +4420,7 @@ msgstr ""
 #: settings/korganizer.kcfg:222
 #, kde-format
 msgid "Show all calendars merged together"
-msgstr "Tüm takvimleri birleştirilmiş olarak göster"
+msgstr "Tüm takvimleri birleşik olarak göster"
 
 #. i18n: ectx: label, entry (AgendaViewCalendarDisplay), group (Agenda View)
 #: settings/korganizer.kcfg:225
