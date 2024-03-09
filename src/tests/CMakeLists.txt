@@ -18,13 +18,3 @@ target_link_libraries(korgplugins
   KF6::KIOCore
 )
 
-########### next target ###############
-add_executable(testkcmdesignerfields testkcmdesignerfields.cpp ../kcmdesignerfields.cpp ../korganizer_debug.cpp)
-set_target_properties(testkcmdesignerfields PROPERTIES COMPILE_FLAGS -DTESTKCMDESIGNERCURRENTDIR="\\"${CMAKE_CURRENT_SOURCE_DIR}/\\"")
-target_link_libraries(testkcmdesignerfields
-  KF6::KIOCore
-  KF6::I18n
-  Qt::UiTools
-  KF6::KCMUtils
-  KF6::KIOWidgets
-)

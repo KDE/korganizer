@@ -74,7 +74,6 @@ target_link_libraries(korganizer_kcm_static
     KPim6::IncidenceEditor
     korganizer_core
     korganizerprivate
-    Qt::UiTools
     KF6::CalendarCore
     KF6::Holidays
     KPim6::MailTransport
@@ -87,10 +86,6 @@ target_link_libraries(korganizer_kcm_static
 add_library(korganizer_configcolorsandfonts MODULE prefs/koprefsdialogcolorsandfonts.cpp prefs/koprefsdialogcolorsandfonts.h)
 target_link_libraries(korganizer_configcolorsandfonts korganizer_kcm_static)
 install(TARGETS korganizer_configcolorsandfonts DESTINATION ${KDE_INSTALL_PLUGINDIR}/pim6/kcms/korganizer)
-
-add_library(korganizer_configdesignerfields MODULE prefs/koprefsdesignerfields.cpp kcmdesignerfields.cpp prefs/koprefsdesignerfields.h kcmdesignerfields.h)
-target_link_libraries(korganizer_configdesignerfields korganizer_kcm_static)
-install(TARGETS korganizer_configdesignerfields DESTINATION ${KDE_INSTALL_PLUGINDIR}/pim6/kcms/korganizer)
 
 add_library(korganizer_configfreebusy MODULE prefs/koprefsdialoggroupwarescheduling.h prefs/koprefsdialoggroupwarescheduling.cpp)
 target_link_libraries(korganizer_configfreebusy korganizer_kcm_static)
