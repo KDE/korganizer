@@ -14,7 +14,7 @@ msgstr ""
 "Project-Id-Version: korganizer\n"
 "Report-Msgid-Bugs-To: https://bugs.kde.org\n"
 "POT-Creation-Date: 2024-02-20 02:28+0000\n"
-"PO-Revision-Date: 2024-01-14 12:48+0100\n"
+"PO-Revision-Date: 2024-03-10 12:30+0100\n"
 "Last-Translator: Josep M. Ferrer <txemaq@gmail.com>\n"
 "Language-Team: Catalan <kde-i18n-ca@kde.org>\n"
 "Language: ca@valencia\n"
@@ -1374,7 +1374,7 @@ msgid ""
 "The item \"%1\" is filtered by your current filter rules, so it will be "
 "hidden and not appear in the view."
 msgstr ""
-"L'element «%1» s'ha filtrat amb les regles de filtratge actuals, per tant "
+"L'element «%1» s'ha filtrat amb les regles de filtratge actuals, per tant, "
 "s'ocultarà i no apareixerà en la vista."
 
 #: calendarview.cpp:753
@@ -2552,7 +2552,7 @@ msgstr "Esdeveniments pròxims"
 #, kde-format
 msgid "No upcoming events starting within the next day"
 msgid_plural "No upcoming events starting within the next %1 days"
-msgstr[0] "No hi ha cap esdeveniment per demà"
+msgstr[0] "No hi ha cap esdeveniment en el pròxim dia"
 msgstr[1] "No hi ha cap esdeveniment en els pròxims %1 dies"
 
 #: kontactplugin/korganizer/apptsummarywidget.cpp:240
@@ -3309,7 +3309,7 @@ msgstr[1] "%1 anys"
 #, kde-format
 msgid "No special dates within the next 1 day"
 msgid_plural "No special dates pending within the next %1 days"
-msgstr[0] "No hi ha cap data especial per demà"
+msgstr[0] "No hi ha cap data especial en el pròxim dia"
 msgstr[1] "No hi ha cap data especial en els pròxims %1 dies"
 
 #: kontactplugin/specialdates/sdsummarywidget.cpp:656
@@ -3817,13 +3817,13 @@ msgstr ""
 #: settings/korganizer.kcfg:22
 #, kde-format
 msgid "New Events, To-dos and Journal Entries Should"
-msgstr "Els esdeveniments, tasques pendents i entrades de diari noves han de"
+msgstr "Els esdeveniments, tasques pendents i entrades de diari noves s'han"
 
 #. i18n: ectx: label, entry (Destination), group (Save Settings)
 #: settings/korganizer.kcfg:25
 #, kde-format
 msgid "Be added to the default calendar"
-msgstr "Ser afegides al calendari predeterminat"
+msgstr "D'afegir al calendari predeterminat"
 
 #. i18n: ectx: whatsthis, entry (Destination), group (Save Settings)
 #: settings/korganizer.kcfg:26
@@ -3840,7 +3840,7 @@ msgstr ""
 #: settings/korganizer.kcfg:29
 #, kde-format
 msgid "Be asked which calendar to use"
-msgstr "Pregunta quin calendari s'ha d'utilitzar"
+msgstr "De demanar a quin calendari s'ha d'utilitzar"
 
 #. i18n: ectx: whatsthis, entry (Destination), group (Save Settings)
 #: settings/korganizer.kcfg:30
@@ -5088,7 +5088,7 @@ msgid ""
 msgstr ""
 "Seleccioneu esta opció si no voleu mostrar els esdeveniments i tasques "
 "pendents repetitius en les vistes. Els elements repetits diàriament i "
-"setmanal poden ocupar un munt d'espai, per tant pot ser útil ocultar-los."
+"setmanal poden ocupar un munt d'espai, per tant, pot ser útil ocultar-los."
 
 #. i18n: ectx: property (text), widget (QCheckBox, mRecurringCheck)
 #: ui/filteredit_base.ui:124
