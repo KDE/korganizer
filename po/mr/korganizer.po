@@ -6,7 +6,7 @@ msgid ""
 msgstr ""
 "Project-Id-Version: \n"
 "Report-Msgid-Bugs-To: https://bugs.kde.org\n"
-"POT-Creation-Date: 2024-02-22 00:38+0000\n"
+"POT-Creation-Date: 2024-03-11 00:38+0000\n"
 "PO-Revision-Date: 2013-04-15 10:39+0530\n"
 "Last-Translator: Chetan Khona <chetan@kompkin.com>\n"
 "Language-Team: Marathi <kde-i18n-doc@kde.org>\n"
@@ -2077,143 +2077,6 @@ msgid "%1 match"
 msgid_plural "%1 matches"
 msgstr[0] ""
 msgstr[1] ""
-
-#: kcmdesignerfields.cpp:61 kcmdesignerfields.cpp:62 kcmdesignerfields.cpp:67
-#: kcmdesignerfields.cpp:68
-#, kde-format
-msgid "Text"
-msgstr "मजकूर"
-
-#: kcmdesignerfields.cpp:63
-#, kde-format
-msgid "Numeric Value"
-msgstr "अंकीय मूल्य "
-
-#: kcmdesignerfields.cpp:64
-#, kde-format
-msgid "Boolean"
-msgstr "बूलियन"
-
-#: kcmdesignerfields.cpp:65
-#, kde-format
-msgid "Selection"
-msgstr "निवड"
-
-#: kcmdesignerfields.cpp:66 kcmdesignerfields.cpp:69
-#, kde-format
-msgid "Date & Time"
-msgstr "दिनांक व वेळ"
-
-#: kcmdesignerfields.cpp:70
-#, kde-format
-msgid "Date"
-msgstr "दिनांक"
-
-#: kcmdesignerfields.cpp:158
-#, kde-format
-msgid "<qt>Do you really want to delete '<b>%1</b>'?</qt>"
-msgstr "<qt>तुम्हाला नक्की '<b>%1</b>' नष्ट करायचे आहे का?</qt>"
-
-#: kcmdesignerfields.cpp:171
-#, kde-format
-msgid "Import Page"
-msgstr "आयात पान/पान आयात करा"
-
-#: kcmdesignerfields.cpp:173
-#, fuzzy, kde-format
-#| msgid "*.ui|Designer Files"
-msgid "Designer Files"
-msgstr "*.ui| आरेखन प्रक्षेत्र"
-
-#: kcmdesignerfields.cpp:272
-#, kde-format
-msgid ""
-"<qt><b>Warning:</b> Qt Designer could not be found. It is probably not "
-"installed. You will only be able to import existing designer files.</qt>"
-msgstr ""
-"<qt><b>इशारा:</b> Qt आरेखक/रचनाकार मिळाला नाही. तो स्थापित केला नसल्याची शक्यता "
-"आहे.तुम्हाला फक्त  सध्याच्या आरेखन फाईल्स आयात करणे शक्य आहे.</qt>"
-
-#: kcmdesignerfields.cpp:282
-#, kde-format
-msgid "Available Pages"
-msgstr "उपलब्ध पाने"
-
-#: kcmdesignerfields.cpp:288
-#, kde-format
-msgid "Preview of Selected Page"
-msgstr "निवडलेल्या पानाचे पूर्ववलोकन"
-
-#: kcmdesignerfields.cpp:307
-#, kde-format
-msgid ""
-"<qt><p>This section allows you to add your own GUI Elements ('<i>Widgets</"
-"i>') to store your own values into %1. Proceed as described below:</"
-"p><ol><li>Click on '<i>Edit with Qt Designer</i>'</li><li>In the dialog, "
-"select '<i>Widget</i>', then click <i>OK</i></li><li>Add your widgets to the "
-"form</li><li>Save the file in the directory proposed by Qt Designer</"
-"li><li>Close Qt Designer</li></ol><p>In case you already have a designer "
-"file (*.ui) located somewhere on your hard disk, simply choose '<i>Import "
-"Page</i>'</p><p><b>Important:</b> The name of each input widget you place "
-"within the form must start with '<i>X_</i>'; so if you want the widget to "
-"correspond to your custom entry '<i>X-Foo</i>', set the widget's <i>name</i> "
-"property to '<i>X_Foo</i>'.</p><p><b>Important:</b> The widget will edit "
-"custom fields with an application name of %2.  To change the application "
-"name to be edited, set the widget name in Qt Designer.</p></qt>"
-msgstr ""
-"<qt><p>हा विभाग तुम्हाला तुमची स्वतःची मूल्ये %1 मध्ये संग्रहित करण्यासाठी तुमची स्वतःची "
-"GUI मूलतत्वे मिसळण्याची संधी देतो.('<i>विजेट्स</i>’)खाली दिल्याप्रमाणे पुढे जा:</"
-"p><ol><li>वर क्लिक करा '<i> Qt आरेखकासह् संवाद क्षेत्रात संपादन करा.</i>'</"
-"li><li>निवडा '<i>विजेट</i>', नंतर क्लिक करा <i>ठीक आहे</i></li><li>तुमची विजेट्स "
-"प्रपत्रात/नमुन्यात मिसळा</li><li> Qt आरेखकाने प्रस्तावित केलेल्या निर्देशिकेत फाईल संग्रहित "
-"करा</li><li>Qt आरेखक बंद करा</li></ol><p>जर तुमच्याकडे तुमच्या हार्ड डिस्कवर दिसलेली "
-"आरेखन फाईल(*.ui) आधीपासून असेल तर फक्त आयात पानाची निवड<i> करा</i>'</"
-"p><p><b>महत्वाचे:</b> तुम्ही प्रपत्रात/नमुन्यात स्थापित करीत असलेल्या प्रत्येक विजेट इनपुटचे "
-"नाव<i>X_</i> याने सुरु होते:म्हणून जर विजेट तुमच्या '<i>X-Foo</i>' या इच्छिक नोंदीशी "
-"सुसंगत असावयास पाहिजे असेल तर विजेटचे <i>नावाचे</i>वैशिष्ट्य '<i>X_Foo</i>' येथे स्थापित "
-"करा.</p><p><b>महत्वाचे:</b>  %2 या नावाच्या अनुप्रयोगाने विजेट तुमची इच्छिक प्रक्षेत्रे "
-"संपादन करेल. संपादन करावयाच्या अनुप्रयोगाचे नाव बदलायचे असेल तर विजेटचे नाव  Qt आरेखकात "
-"टाका,</p></qt>"
-
-#: kcmdesignerfields.cpp:329
-#, kde-format
-msgid "<a href=\"whatsthis:%1\">How does this work?</a>"
-msgstr "<a href=\"whatsthis:%1\">हे काम कसे करते?</a>"
-
-#: kcmdesignerfields.cpp:340
-#, kde-format
-msgid "Delete Page"
-msgstr "पान काढून टाका"
-
-#: kcmdesignerfields.cpp:343
-#, kde-format
-msgid "Import Page..."
-msgstr "पान आयात करा..."
-
-#: kcmdesignerfields.cpp:345
-#, kde-format
-msgid "Edit with Qt Designer..."
-msgstr "Qt आरेखकसह/बरोबर संपादन करा"
-
-#: kcmdesignerfields.cpp:370
-#, kde-format
-msgid "Key:"
-msgstr "कळ :"
-
-#: kcmdesignerfields.cpp:372
-#, kde-format
-msgid "Type:"
-msgstr "प्रकार :"
-
-#: kcmdesignerfields.cpp:374
-#, kde-format
-msgid "Classname:"
-msgstr "प्रवर्गाचे नाव"
-
-#: kcmdesignerfields.cpp:376
-#, kde-format
-msgid "Description:"
-msgstr "वर्णन :"
 
 #: koapp.cpp:63
 #, fuzzy, kde-format
@@ -6275,6 +6138,102 @@ msgstr "%1"
 msgctxt "4 digit year"
 msgid "%1"
 msgstr "%1"
+
+#~ msgid "Text"
+#~ msgstr "मजकूर"
+
+#~ msgid "Numeric Value"
+#~ msgstr "अंकीय मूल्य "
+
+#~ msgid "Boolean"
+#~ msgstr "बूलियन"
+
+#~ msgid "Selection"
+#~ msgstr "निवड"
+
+#~ msgid "Date & Time"
+#~ msgstr "दिनांक व वेळ"
+
+#~ msgid "Date"
+#~ msgstr "दिनांक"
+
+#~ msgid "<qt>Do you really want to delete '<b>%1</b>'?</qt>"
+#~ msgstr "<qt>तुम्हाला नक्की '<b>%1</b>' नष्ट करायचे आहे का?</qt>"
+
+#~ msgid "Import Page"
+#~ msgstr "आयात पान/पान आयात करा"
+
+#, fuzzy
+#~| msgid "*.ui|Designer Files"
+#~ msgid "Designer Files"
+#~ msgstr "*.ui| आरेखन प्रक्षेत्र"
+
+#~ msgid ""
+#~ "<qt><b>Warning:</b> Qt Designer could not be found. It is probably not "
+#~ "installed. You will only be able to import existing designer files.</qt>"
+#~ msgstr ""
+#~ "<qt><b>इशारा:</b> Qt आरेखक/रचनाकार मिळाला नाही. तो स्थापित केला नसल्याची "
+#~ "शक्यता आहे.तुम्हाला फक्त  सध्याच्या आरेखन फाईल्स आयात करणे शक्य आहे.</qt>"
+
+#~ msgid "Available Pages"
+#~ msgstr "उपलब्ध पाने"
+
+#~ msgid "Preview of Selected Page"
+#~ msgstr "निवडलेल्या पानाचे पूर्ववलोकन"
+
+#~ msgid ""
+#~ "<qt><p>This section allows you to add your own GUI Elements ('<i>Widgets</"
+#~ "i>') to store your own values into %1. Proceed as described below:</"
+#~ "p><ol><li>Click on '<i>Edit with Qt Designer</i>'</li><li>In the dialog, "
+#~ "select '<i>Widget</i>', then click <i>OK</i></li><li>Add your widgets to "
+#~ "the form</li><li>Save the file in the directory proposed by Qt Designer</"
+#~ "li><li>Close Qt Designer</li></ol><p>In case you already have a designer "
+#~ "file (*.ui) located somewhere on your hard disk, simply choose '<i>Import "
+#~ "Page</i>'</p><p><b>Important:</b> The name of each input widget you place "
+#~ "within the form must start with '<i>X_</i>'; so if you want the widget to "
+#~ "correspond to your custom entry '<i>X-Foo</i>', set the widget's <i>name</"
+#~ "i> property to '<i>X_Foo</i>'.</p><p><b>Important:</b> The widget will "
+#~ "edit custom fields with an application name of %2.  To change the "
+#~ "application name to be edited, set the widget name in Qt Designer.</p></"
+#~ "qt>"
+#~ msgstr ""
+#~ "<qt><p>हा विभाग तुम्हाला तुमची स्वतःची मूल्ये %1 मध्ये संग्रहित करण्यासाठी तुमची "
+#~ "स्वतःची GUI मूलतत्वे मिसळण्याची संधी देतो.('<i>विजेट्स</i>’)खाली दिल्याप्रमाणे पुढे जा:"
+#~ "</p><ol><li>वर क्लिक करा '<i> Qt आरेखकासह् संवाद क्षेत्रात संपादन करा.</i>'</"
+#~ "li><li>निवडा '<i>विजेट</i>', नंतर क्लिक करा <i>ठीक आहे</i></li><li>तुमची विजेट्स "
+#~ "प्रपत्रात/नमुन्यात मिसळा</li><li> Qt आरेखकाने प्रस्तावित केलेल्या निर्देशिकेत फाईल "
+#~ "संग्रहित करा</li><li>Qt आरेखक बंद करा</li></ol><p>जर तुमच्याकडे तुमच्या हार्ड "
+#~ "डिस्कवर दिसलेली आरेखन फाईल(*.ui) आधीपासून असेल तर फक्त आयात पानाची निवड<i> करा</"
+#~ "i>'</p><p><b>महत्वाचे:</b> तुम्ही प्रपत्रात/नमुन्यात स्थापित करीत असलेल्या प्रत्येक "
+#~ "विजेट इनपुटचे नाव<i>X_</i> याने सुरु होते:म्हणून जर विजेट तुमच्या '<i>X-Foo</i>' या "
+#~ "इच्छिक नोंदीशी सुसंगत असावयास पाहिजे असेल तर विजेटचे <i>नावाचे</i>वैशिष्ट्य "
+#~ "'<i>X_Foo</i>' येथे स्थापित करा.</p><p><b>महत्वाचे:</b>  %2 या नावाच्या "
+#~ "अनुप्रयोगाने विजेट तुमची इच्छिक प्रक्षेत्रे संपादन करेल. संपादन करावयाच्या अनुप्रयोगाचे नाव "
+#~ "बदलायचे असेल तर विजेटचे नाव  Qt आरेखकात टाका,</p></qt>"
+
+#~ msgid "<a href=\"whatsthis:%1\">How does this work?</a>"
+#~ msgstr "<a href=\"whatsthis:%1\">हे काम कसे करते?</a>"
+
+#~ msgid "Delete Page"
+#~ msgstr "पान काढून टाका"
+
+#~ msgid "Import Page..."
+#~ msgstr "पान आयात करा..."
+
+#~ msgid "Edit with Qt Designer..."
+#~ msgstr "Qt आरेखकसह/बरोबर संपादन करा"
+
+#~ msgid "Key:"
+#~ msgstr "कळ :"
+
+#~ msgid "Type:"
+#~ msgstr "प्रकार :"
+
+#~ msgid "Classname:"
+#~ msgstr "प्रवर्गाचे नाव"
+
+#~ msgid "Description:"
+#~ msgstr "वर्णन :"
 
 #~ msgid "Copying Failed"
 #~ msgstr "नक्कल करण्याचे काम अयशस्वी झाले"

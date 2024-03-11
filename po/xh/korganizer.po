@@ -15,7 +15,7 @@ msgid ""
 msgstr ""
 "Project-Id-Version: korganizer\n"
 "Report-Msgid-Bugs-To: https://bugs.kde.org\n"
-"POT-Creation-Date: 2024-02-22 00:38+0000\n"
+"POT-Creation-Date: 2024-03-11 00:38+0000\n"
 "PO-Revision-Date: 2002-11-09 12:52+0200\n"
 "Last-Translator: Thelma Lungcuzo <thelma@translate.org.za>\n"
 "Language-Team: Xhosa <xhosa@translate.org.za>\n"
@@ -1975,129 +1975,6 @@ msgid "%1 match"
 msgid_plural "%1 matches"
 msgstr[0] ""
 msgstr[1] ""
-
-#: kcmdesignerfields.cpp:61 kcmdesignerfields.cpp:62 kcmdesignerfields.cpp:67
-#: kcmdesignerfields.cpp:68
-#, fuzzy, kde-format
-msgid "Text"
-msgstr "Uvavanyo"
-
-#: kcmdesignerfields.cpp:63
-#, kde-format
-msgid "Numeric Value"
-msgstr ""
-
-#: kcmdesignerfields.cpp:64
-#, kde-format
-msgid "Boolean"
-msgstr ""
-
-#: kcmdesignerfields.cpp:65
-#, fuzzy, kde-format
-#| msgid "Select Mode"
-msgid "Selection"
-msgstr "Khetha Indlela"
-
-#: kcmdesignerfields.cpp:66 kcmdesignerfields.cpp:69
-#, fuzzy, kde-format
-#| msgid "Date && Time"
-msgid "Date & Time"
-msgstr "Umhla && Ixesha"
-
-#: kcmdesignerfields.cpp:70
-#, fuzzy, kde-format
-msgid "Date"
-msgstr "Lindeleka:"
-
-#: kcmdesignerfields.cpp:158
-#, fuzzy, kde-format
-msgid "<qt>Do you really want to delete '<b>%1</b>'?</qt>"
-msgstr "Ayikwazi ukwenza ifayile ezakulayishwa phezulu"
-
-#: kcmdesignerfields.cpp:171
-#, fuzzy, kde-format
-msgid "Import Page"
-msgstr "i Khalenda"
-
-#: kcmdesignerfields.cpp:173
-#, fuzzy, kde-format
-msgid "Designer Files"
-msgstr "*.vcs|vIifayile ze Khalenda"
-
-#: kcmdesignerfields.cpp:272
-#, kde-format
-msgid ""
-"<qt><b>Warning:</b> Qt Designer could not be found. It is probably not "
-"installed. You will only be able to import existing designer files.</qt>"
-msgstr ""
-
-#: kcmdesignerfields.cpp:282
-#, kde-format
-msgid "Available Pages"
-msgstr ""
-
-#: kcmdesignerfields.cpp:288
-#, kde-format
-msgid "Preview of Selected Page"
-msgstr ""
-
-#: kcmdesignerfields.cpp:307
-#, kde-format
-msgid ""
-"<qt><p>This section allows you to add your own GUI Elements ('<i>Widgets</"
-"i>') to store your own values into %1. Proceed as described below:</"
-"p><ol><li>Click on '<i>Edit with Qt Designer</i>'</li><li>In the dialog, "
-"select '<i>Widget</i>', then click <i>OK</i></li><li>Add your widgets to the "
-"form</li><li>Save the file in the directory proposed by Qt Designer</"
-"li><li>Close Qt Designer</li></ol><p>In case you already have a designer "
-"file (*.ui) located somewhere on your hard disk, simply choose '<i>Import "
-"Page</i>'</p><p><b>Important:</b> The name of each input widget you place "
-"within the form must start with '<i>X_</i>'; so if you want the widget to "
-"correspond to your custom entry '<i>X-Foo</i>', set the widget's <i>name</i> "
-"property to '<i>X_Foo</i>'.</p><p><b>Important:</b> The widget will edit "
-"custom fields with an application name of %2.  To change the application "
-"name to be edited, set the widget name in Qt Designer.</p></qt>"
-msgstr ""
-
-#: kcmdesignerfields.cpp:329
-#, kde-format
-msgid "<a href=\"whatsthis:%1\">How does this work?</a>"
-msgstr ""
-
-#: kcmdesignerfields.cpp:340
-#, fuzzy, kde-format
-msgid "Delete Page"
-msgstr "Cima..."
-
-#: kcmdesignerfields.cpp:343
-#, fuzzy, kde-format
-msgid "Import Page..."
-msgstr "i Khalenda"
-
-#: kcmdesignerfields.cpp:345
-#, kde-format
-msgid "Edit with Qt Designer..."
-msgstr ""
-
-#: kcmdesignerfields.cpp:370
-#, kde-format
-msgid "Key:"
-msgstr ""
-
-#: kcmdesignerfields.cpp:372
-#, fuzzy, kde-format
-msgid "Type:"
-msgstr "Udidi Lwemboniselo"
-
-#: kcmdesignerfields.cpp:374
-#, fuzzy, kde-format
-msgid "Classname:"
-msgstr "Igama lakho"
-
-#: kcmdesignerfields.cpp:376
-#, fuzzy, kde-format
-msgid "Description:"
-msgstr "Iinkcazelo"
 
 #: koapp.cpp:63
 #, fuzzy, kde-format
@@ -5698,6 +5575,56 @@ msgstr "%1 %"
 msgctxt "4 digit year"
 msgid "%1"
 msgstr "%1 %"
+
+#, fuzzy
+#~ msgid "Text"
+#~ msgstr "Uvavanyo"
+
+#, fuzzy
+#~| msgid "Select Mode"
+#~ msgid "Selection"
+#~ msgstr "Khetha Indlela"
+
+#, fuzzy
+#~| msgid "Date && Time"
+#~ msgid "Date & Time"
+#~ msgstr "Umhla && Ixesha"
+
+#, fuzzy
+#~ msgid "Date"
+#~ msgstr "Lindeleka:"
+
+#, fuzzy
+#~ msgid "<qt>Do you really want to delete '<b>%1</b>'?</qt>"
+#~ msgstr "Ayikwazi ukwenza ifayile ezakulayishwa phezulu"
+
+#, fuzzy
+#~ msgid "Import Page"
+#~ msgstr "i Khalenda"
+
+#, fuzzy
+#~ msgid "Designer Files"
+#~ msgstr "*.vcs|vIifayile ze Khalenda"
+
+#, fuzzy
+#~ msgid "Delete Page"
+#~ msgstr "Cima..."
+
+#, fuzzy
+#~ msgid "Import Page..."
+#~ msgstr "i Khalenda"
+
+#, fuzzy
+#~ msgid "Type:"
+#~ msgstr "Udidi Lwemboniselo"
+
+#, fuzzy
+#~ msgid "Classname:"
+#~ msgstr "Igama lakho"
+
+#, fuzzy
+#~ msgid "Description:"
+#~ msgstr "Iinkcazelo"
 
 #, fuzzy
 #~ msgid "Copying Failed"

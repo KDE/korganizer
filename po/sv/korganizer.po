@@ -10,7 +10,7 @@ msgid ""
 msgstr ""
 "Project-Id-Version: korganizer\n"
 "Report-Msgid-Bugs-To: https://bugs.kde.org\n"
-"POT-Creation-Date: 2024-02-22 00:38+0000\n"
+"POT-Creation-Date: 2024-03-11 00:38+0000\n"
 "PO-Revision-Date: 2023-07-31 10:08+0200\n"
 "Last-Translator: Stefan Asserhäll <stefan.asserhall@bredband.net>\n"
 "Language-Team: Swedish <kde-i18n-doc@kde.org>\n"
@@ -2017,144 +2017,6 @@ msgid "%1 match"
 msgid_plural "%1 matches"
 msgstr[0] "%1 träff"
 msgstr[1] "%1 träffar"
-
-#: kcmdesignerfields.cpp:61 kcmdesignerfields.cpp:62 kcmdesignerfields.cpp:67
-#: kcmdesignerfields.cpp:68
-#, kde-format
-msgid "Text"
-msgstr "Text"
-
-#: kcmdesignerfields.cpp:63
-#, kde-format
-msgid "Numeric Value"
-msgstr "Numeriskt värde"
-
-#: kcmdesignerfields.cpp:64
-#, kde-format
-msgid "Boolean"
-msgstr "Boolesk"
-
-#: kcmdesignerfields.cpp:65
-#, kde-format
-msgid "Selection"
-msgstr "Markering"
-
-#: kcmdesignerfields.cpp:66 kcmdesignerfields.cpp:69
-#, kde-format
-msgid "Date & Time"
-msgstr "Datum och tid"
-
-#: kcmdesignerfields.cpp:70
-#, kde-format
-msgid "Date"
-msgstr "Datum"
-
-#: kcmdesignerfields.cpp:158
-#, kde-format
-msgid "<qt>Do you really want to delete '<b>%1</b>'?</qt>"
-msgstr "<qt>Vill du verkligen ta bort '<b>%1</b>' ?</qt>"
-
-#: kcmdesignerfields.cpp:171
-#, kde-format
-msgid "Import Page"
-msgstr "Importera sida"
-
-#: kcmdesignerfields.cpp:173
-#, kde-format
-msgid "Designer Files"
-msgstr "Designer-filer"
-
-#: kcmdesignerfields.cpp:272
-#, kde-format
-msgid ""
-"<qt><b>Warning:</b> Qt Designer could not be found. It is probably not "
-"installed. You will only be able to import existing designer files.</qt>"
-msgstr ""
-"<qt><b>Varning:</b> Qt Designer kunde inte hittas. Den är troligen inte "
-"installerad. Du kommer bara att kunna importera befintliga Designer-filer.</"
-"qt>"
-
-#: kcmdesignerfields.cpp:282
-#, kde-format
-msgid "Available Pages"
-msgstr "Tillgängliga sidor"
-
-#: kcmdesignerfields.cpp:288
-#, kde-format
-msgid "Preview of Selected Page"
-msgstr "Förhandsgranskning av vald sida"
-
-#: kcmdesignerfields.cpp:307
-#, kde-format
-msgid ""
-"<qt><p>This section allows you to add your own GUI Elements ('<i>Widgets</"
-"i>') to store your own values into %1. Proceed as described below:</"
-"p><ol><li>Click on '<i>Edit with Qt Designer</i>'</li><li>In the dialog, "
-"select '<i>Widget</i>', then click <i>OK</i></li><li>Add your widgets to the "
-"form</li><li>Save the file in the directory proposed by Qt Designer</"
-"li><li>Close Qt Designer</li></ol><p>In case you already have a designer "
-"file (*.ui) located somewhere on your hard disk, simply choose '<i>Import "
-"Page</i>'</p><p><b>Important:</b> The name of each input widget you place "
-"within the form must start with '<i>X_</i>'; so if you want the widget to "
-"correspond to your custom entry '<i>X-Foo</i>', set the widget's <i>name</i> "
-"property to '<i>X_Foo</i>'.</p><p><b>Important:</b> The widget will edit "
-"custom fields with an application name of %2.  To change the application "
-"name to be edited, set the widget name in Qt Designer.</p></qt>"
-msgstr ""
-"<qt><p>Den här sidan låter dig lägga till dina egna grafiska element "
-"('<i>komponenter</i>') för att lagra egna värden i %1. Fortsätt enligt "
-"beskrivningen nedan:</p><ol><li>Klicka på '<i>Redigera med Qt Designer...</"
-"i>'</li><li>Välj '<i>Widget</i>' i dialogrutan, och klicka därefter på "
-"<i>OK</i></li><li>Lägg till dina egna grafiska komponenter i formuläret</"
-"li><li>Spara filen i katalogen som föreslås av Qt Designer</li><li>Stäng Qt "
-"Designer</li></ol><p> Om du redan har en Designer-fil (*.ui) någonstans på "
-"hårddisken, välj helt enkelt '<i>Importera sida</i>'</p> <p><b>Viktigt:</b> "
-"Namnet på varje indatakomponent som du lägger till i formuläret måste börja "
-"med '<i>X_</i>', så om du vill att den grafiska komponenten ska motsvara din "
-"egen post '<i>X-Post</i>', ska den grafiska komponentens namnegenskap anges "
-"som '<i>X_Post</i>'.</p><p><b>Viktigt:</b> Den grafiska komponenten "
-"redigerar egna fält med programnamnet %2. För att ändra programnamnet som "
-"ska redigeras, ange den grafiska komponentens namn i Qt Designer.</p></qt>"
-
-#: kcmdesignerfields.cpp:329
-#, kde-format
-msgid "<a href=\"whatsthis:%1\">How does this work?</a>"
-msgstr "<a href=\"whatsthis:%1\">Hur fungerar det här?</a>"
-
-#: kcmdesignerfields.cpp:340
-#, kde-format
-msgid "Delete Page"
-msgstr "Ta bort sida"
-
-#: kcmdesignerfields.cpp:343
-#, kde-format
-msgid "Import Page..."
-msgstr "Importera sida..."
-
-#: kcmdesignerfields.cpp:345
-#, kde-format
-msgid "Edit with Qt Designer..."
-msgstr "Redigera med Qt Designer..."
-
-#: kcmdesignerfields.cpp:370
-#, kde-format
-msgid "Key:"
-msgstr "Nyckel:"
-
-#: kcmdesignerfields.cpp:372
-#, kde-format
-msgid "Type:"
-msgstr "Typ:"
-
-#: kcmdesignerfields.cpp:374
-#, kde-format
-msgid "Classname:"
-msgstr "Klassnamn:"
-
-#: kcmdesignerfields.cpp:376
-#, kde-format
-msgid "Description:"
-msgstr "Beskrivning:"
 
 #: koapp.cpp:63
 #, kde-format
@@ -6006,6 +5868,103 @@ msgstr "%1"
 msgctxt "4 digit year"
 msgid "%1"
 msgstr "%1"
+
+#~ msgid "Text"
+#~ msgstr "Text"
+
+#~ msgid "Numeric Value"
+#~ msgstr "Numeriskt värde"
+
+#~ msgid "Boolean"
+#~ msgstr "Boolesk"
+
+#~ msgid "Selection"
+#~ msgstr "Markering"
+
+#~ msgid "Date & Time"
+#~ msgstr "Datum och tid"
+
+#~ msgid "Date"
+#~ msgstr "Datum"
+
+#~ msgid "<qt>Do you really want to delete '<b>%1</b>'?</qt>"
+#~ msgstr "<qt>Vill du verkligen ta bort '<b>%1</b>' ?</qt>"
+
+#~ msgid "Import Page"
+#~ msgstr "Importera sida"
+
+#~ msgid "Designer Files"
+#~ msgstr "Designer-filer"
+
+#~ msgid ""
+#~ "<qt><b>Warning:</b> Qt Designer could not be found. It is probably not "
+#~ "installed. You will only be able to import existing designer files.</qt>"
+#~ msgstr ""
+#~ "<qt><b>Varning:</b> Qt Designer kunde inte hittas. Den är troligen inte "
+#~ "installerad. Du kommer bara att kunna importera befintliga Designer-filer."
+#~ "</qt>"
+
+#~ msgid "Available Pages"
+#~ msgstr "Tillgängliga sidor"
+
+#~ msgid "Preview of Selected Page"
+#~ msgstr "Förhandsgranskning av vald sida"
+
+#~ msgid ""
+#~ "<qt><p>This section allows you to add your own GUI Elements ('<i>Widgets</"
+#~ "i>') to store your own values into %1. Proceed as described below:</"
+#~ "p><ol><li>Click on '<i>Edit with Qt Designer</i>'</li><li>In the dialog, "
+#~ "select '<i>Widget</i>', then click <i>OK</i></li><li>Add your widgets to "
+#~ "the form</li><li>Save the file in the directory proposed by Qt Designer</"
+#~ "li><li>Close Qt Designer</li></ol><p>In case you already have a designer "
+#~ "file (*.ui) located somewhere on your hard disk, simply choose '<i>Import "
+#~ "Page</i>'</p><p><b>Important:</b> The name of each input widget you place "
+#~ "within the form must start with '<i>X_</i>'; so if you want the widget to "
+#~ "correspond to your custom entry '<i>X-Foo</i>', set the widget's <i>name</"
+#~ "i> property to '<i>X_Foo</i>'.</p><p><b>Important:</b> The widget will "
+#~ "edit custom fields with an application name of %2.  To change the "
+#~ "application name to be edited, set the widget name in Qt Designer.</p></"
+#~ "qt>"
+#~ msgstr ""
+#~ "<qt><p>Den här sidan låter dig lägga till dina egna grafiska element "
+#~ "('<i>komponenter</i>') för att lagra egna värden i %1. Fortsätt enligt "
+#~ "beskrivningen nedan:</p><ol><li>Klicka på '<i>Redigera med Qt Designer..."
+#~ "</i>'</li><li>Välj '<i>Widget</i>' i dialogrutan, och klicka därefter på "
+#~ "<i>OK</i></li><li>Lägg till dina egna grafiska komponenter i formuläret</"
+#~ "li><li>Spara filen i katalogen som föreslås av Qt Designer</li><li>Stäng "
+#~ "Qt Designer</li></ol><p> Om du redan har en Designer-fil (*.ui) "
+#~ "någonstans på hårddisken, välj helt enkelt '<i>Importera sida</i>'</p> "
+#~ "<p><b>Viktigt:</b> Namnet på varje indatakomponent som du lägger till i "
+#~ "formuläret måste börja med '<i>X_</i>', så om du vill att den grafiska "
+#~ "komponenten ska motsvara din egen post '<i>X-Post</i>', ska den grafiska "
+#~ "komponentens namnegenskap anges som '<i>X_Post</i>'.</p><p><b>Viktigt:</"
+#~ "b> Den grafiska komponenten redigerar egna fält med programnamnet %2. För "
+#~ "att ändra programnamnet som ska redigeras, ange den grafiska komponentens "
+#~ "namn i Qt Designer.</p></qt>"
+
+#~ msgid "<a href=\"whatsthis:%1\">How does this work?</a>"
+#~ msgstr "<a href=\"whatsthis:%1\">Hur fungerar det här?</a>"
+
+#~ msgid "Delete Page"
+#~ msgstr "Ta bort sida"
+
+#~ msgid "Import Page..."
+#~ msgstr "Importera sida..."
+
+#~ msgid "Edit with Qt Designer..."
+#~ msgstr "Redigera med Qt Designer..."
+
+#~ msgid "Key:"
+#~ msgstr "Nyckel:"
+
+#~ msgid "Type:"
+#~ msgstr "Typ:"
+
+#~ msgid "Classname:"
+#~ msgstr "Klassnamn:"
+
+#~ msgid "Description:"
+#~ msgstr "Beskrivning:"
 
 #~ msgid "Copying Failed"
 #~ msgstr "Kopiering misslyckades"

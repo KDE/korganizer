@@ -7,7 +7,7 @@ msgid ""
 msgstr ""
 "Project-Id-Version: korganizer\n"
 "Report-Msgid-Bugs-To: https://bugs.kde.org\n"
-"POT-Creation-Date: 2024-02-22 00:38+0000\n"
+"POT-Creation-Date: 2024-03-11 00:38+0000\n"
 "PO-Revision-Date: 2006-12-17 13:34+0000\n"
 "Last-Translator: Mashrab Kuvatov <kmashrab@uni-bremen.de>\n"
 "Language-Team: Uzbek <floss-uz-l10n@googlegroups.com>\n"
@@ -2004,135 +2004,6 @@ msgctxt "@label"
 msgid "%1 match"
 msgid_plural "%1 matches"
 msgstr[0] ""
-
-#: kcmdesignerfields.cpp:61 kcmdesignerfields.cpp:62 kcmdesignerfields.cpp:67
-#: kcmdesignerfields.cpp:68
-#, kde-format
-msgid "Text"
-msgstr ""
-
-#: kcmdesignerfields.cpp:63
-#, kde-format
-msgid "Numeric Value"
-msgstr ""
-
-#: kcmdesignerfields.cpp:64
-#, kde-format
-msgid "Boolean"
-msgstr ""
-
-#: kcmdesignerfields.cpp:65
-#, fuzzy, kde-format
-#| msgid "Select a month"
-msgid "Selection"
-msgstr "Ойни танлаш"
-
-#: kcmdesignerfields.cpp:66 kcmdesignerfields.cpp:69
-#, fuzzy, kde-format
-#| msgid "Date && Time"
-msgid "Date & Time"
-msgstr "Сана ва вақт"
-
-#: kcmdesignerfields.cpp:70
-#, fuzzy, kde-format
-#| msgid "&Date:"
-msgid "Date"
-msgstr "Са&на:"
-
-#: kcmdesignerfields.cpp:158
-#, fuzzy, kde-format
-#| msgid "Could not load calendar '%1'."
-msgid "<qt>Do you really want to delete '<b>%1</b>'?</qt>"
-msgstr "'%1' календарини юклаб бўлмади."
-
-#: kcmdesignerfields.cpp:171
-#, fuzzy, kde-format
-#| msgid "Import Calendar"
-msgid "Import Page"
-msgstr "Календарни импорт қилиш"
-
-#: kcmdesignerfields.cpp:173
-#, fuzzy, kde-format
-#| msgid "*.ics|iCalendar Files"
-msgid "Designer Files"
-msgstr "*.ics|iCalendar файллар"
-
-#: kcmdesignerfields.cpp:272
-#, kde-format
-msgid ""
-"<qt><b>Warning:</b> Qt Designer could not be found. It is probably not "
-"installed. You will only be able to import existing designer files.</qt>"
-msgstr ""
-
-#: kcmdesignerfields.cpp:282
-#, kde-format
-msgid "Available Pages"
-msgstr ""
-
-#: kcmdesignerfields.cpp:288
-#, kde-format
-msgid "Preview of Selected Page"
-msgstr ""
-
-#: kcmdesignerfields.cpp:307
-#, kde-format
-msgid ""
-"<qt><p>This section allows you to add your own GUI Elements ('<i>Widgets</"
-"i>') to store your own values into %1. Proceed as described below:</"
-"p><ol><li>Click on '<i>Edit with Qt Designer</i>'</li><li>In the dialog, "
-"select '<i>Widget</i>', then click <i>OK</i></li><li>Add your widgets to the "
-"form</li><li>Save the file in the directory proposed by Qt Designer</"
-"li><li>Close Qt Designer</li></ol><p>In case you already have a designer "
-"file (*.ui) located somewhere on your hard disk, simply choose '<i>Import "
-"Page</i>'</p><p><b>Important:</b> The name of each input widget you place "
-"within the form must start with '<i>X_</i>'; so if you want the widget to "
-"correspond to your custom entry '<i>X-Foo</i>', set the widget's <i>name</i> "
-"property to '<i>X_Foo</i>'.</p><p><b>Important:</b> The widget will edit "
-"custom fields with an application name of %2.  To change the application "
-"name to be edited, set the widget name in Qt Designer.</p></qt>"
-msgstr ""
-
-#: kcmdesignerfields.cpp:329
-#, kde-format
-msgid "<a href=\"whatsthis:%1\">How does this work?</a>"
-msgstr ""
-
-#: kcmdesignerfields.cpp:340
-#, fuzzy, kde-format
-msgid "Delete Page"
-msgstr "%1'ни ўчириш"
-
-#: kcmdesignerfields.cpp:343
-#, fuzzy, kde-format
-#| msgid "Import &Calendar..."
-msgid "Import Page..."
-msgstr "Календарни &импорт қилиш..."
-
-#: kcmdesignerfields.cpp:345
-#, kde-format
-msgid "Edit with Qt Designer..."
-msgstr ""
-
-#: kcmdesignerfields.cpp:370
-#, kde-format
-msgid "Key:"
-msgstr ""
-
-#: kcmdesignerfields.cpp:372
-#, fuzzy, kde-format
-msgid "Type:"
-msgstr "Тури"
-
-#: kcmdesignerfields.cpp:374
-#, fuzzy, kde-format
-#| msgid "Username:"
-msgid "Classname:"
-msgstr "Фойдаланувчи:"
-
-#: kcmdesignerfields.cpp:376
-#, fuzzy, kde-format
-msgid "Description:"
-msgstr "&Таърифи"
 
 #: koapp.cpp:63
 #, fuzzy, kde-format
@@ -5794,6 +5665,58 @@ msgstr ""
 msgctxt "4 digit year"
 msgid "%1"
 msgstr ""
+
+#, fuzzy
+#~| msgid "Select a month"
+#~ msgid "Selection"
+#~ msgstr "Ойни танлаш"
+
+#, fuzzy
+#~| msgid "Date && Time"
+#~ msgid "Date & Time"
+#~ msgstr "Сана ва вақт"
+
+#, fuzzy
+#~| msgid "&Date:"
+#~ msgid "Date"
+#~ msgstr "Са&на:"
+
+#, fuzzy
+#~| msgid "Could not load calendar '%1'."
+#~ msgid "<qt>Do you really want to delete '<b>%1</b>'?</qt>"
+#~ msgstr "'%1' календарини юклаб бўлмади."
+
+#, fuzzy
+#~| msgid "Import Calendar"
+#~ msgid "Import Page"
+#~ msgstr "Календарни импорт қилиш"
+
+#, fuzzy
+#~| msgid "*.ics|iCalendar Files"
+#~ msgid "Designer Files"
+#~ msgstr "*.ics|iCalendar файллар"
+
+#, fuzzy
+#~ msgid "Delete Page"
+#~ msgstr "%1'ни ўчириш"
+
+#, fuzzy
+#~| msgid "Import &Calendar..."
+#~ msgid "Import Page..."
+#~ msgstr "Календарни &импорт қилиш..."
+
+#, fuzzy
+#~ msgid "Type:"
+#~ msgstr "Тури"
+
+#, fuzzy
+#~| msgid "Username:"
+#~ msgid "Classname:"
+#~ msgstr "Фойдаланувчи:"
+
+#, fuzzy
+#~ msgid "Description:"
+#~ msgstr "&Таърифи"
 
 #~ msgid "Copying Failed"
 #~ msgstr "Нусха олиш муваффақиятсиз тугади"

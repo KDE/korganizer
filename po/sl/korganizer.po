@@ -1,7 +1,7 @@
 # translation of korganizer.po to Slovenian
 # Translation of korganizer.po to Slovenian
 # Copyright (C) 2001,2002, 2003, 2004, 2005, 2006 Free Software Foundation, Inc.
-# $Id: korganizer.po 1674274 2024-02-27 01:07:58Z scripty $
+# $Id: korganizer.po 1675312 2024-03-11 01:07:18Z scripty $
 # $Source$
 #
 # Roman Maurer <roman.maurer@hermes.si>, 2001.
@@ -14,7 +14,7 @@ msgid ""
 msgstr ""
 "Project-Id-Version: korganizer\n"
 "Report-Msgid-Bugs-To: https://bugs.kde.org\n"
-"POT-Creation-Date: 2024-02-22 00:38+0000\n"
+"POT-Creation-Date: 2024-03-11 00:38+0000\n"
 "PO-Revision-Date: 2024-02-26 00:35+0100\n"
 "Last-Translator: Jure Repinc <jlp@holodeck1.com>\n"
 "Language-Team: Slovenian <lugos-slo@lugos.si>\n"
@@ -2038,143 +2038,6 @@ msgstr[0] "%1 ujemanj"
 msgstr[1] "%1 ujemanje"
 msgstr[2] "%1 ujemanji"
 msgstr[3] "%1 ujemanja"
-
-#: kcmdesignerfields.cpp:61 kcmdesignerfields.cpp:62 kcmdesignerfields.cpp:67
-#: kcmdesignerfields.cpp:68
-#, kde-format
-msgid "Text"
-msgstr "Besedilo"
-
-#: kcmdesignerfields.cpp:63
-#, kde-format
-msgid "Numeric Value"
-msgstr "Številčna vrednost"
-
-#: kcmdesignerfields.cpp:64
-#, kde-format
-msgid "Boolean"
-msgstr "Logična vrednost"
-
-#: kcmdesignerfields.cpp:65
-#, kde-format
-msgid "Selection"
-msgstr "Izbira"
-
-#: kcmdesignerfields.cpp:66 kcmdesignerfields.cpp:69
-#, kde-format
-msgid "Date & Time"
-msgstr "Datum in čas"
-
-#: kcmdesignerfields.cpp:70
-#, kde-format
-msgid "Date"
-msgstr "Datum"
-
-#: kcmdesignerfields.cpp:158
-#, kde-format
-msgid "<qt>Do you really want to delete '<b>%1</b>'?</qt>"
-msgstr "<qt>Ali resnično želite izbrisati »<b>%1</b>«?</qt>"
-
-#: kcmdesignerfields.cpp:171
-#, kde-format
-msgid "Import Page"
-msgstr "Uvozi stran"
-
-#: kcmdesignerfields.cpp:173
-#, kde-format
-msgid "Designer Files"
-msgstr "Datoteke Designer"
-
-#: kcmdesignerfields.cpp:272
-#, kde-format
-msgid ""
-"<qt><b>Warning:</b> Qt Designer could not be found. It is probably not "
-"installed. You will only be able to import existing designer files.</qt>"
-msgstr ""
-"<qt><b>Opozorilo:</b> Qt Designerja ni bilo mogoče najti. Verjetno ni "
-"nameščen. Lahko boste le uvozili obstoječe datoteke snovalnika.</qt>"
-
-#: kcmdesignerfields.cpp:282
-#, kde-format
-msgid "Available Pages"
-msgstr "Razpoložljive strani"
-
-#: kcmdesignerfields.cpp:288
-#, kde-format
-msgid "Preview of Selected Page"
-msgstr "Predogled izbrane strani"
-
-#: kcmdesignerfields.cpp:307
-#, kde-format
-msgid ""
-"<qt><p>This section allows you to add your own GUI Elements ('<i>Widgets</"
-"i>') to store your own values into %1. Proceed as described below:</"
-"p><ol><li>Click on '<i>Edit with Qt Designer</i>'</li><li>In the dialog, "
-"select '<i>Widget</i>', then click <i>OK</i></li><li>Add your widgets to the "
-"form</li><li>Save the file in the directory proposed by Qt Designer</"
-"li><li>Close Qt Designer</li></ol><p>In case you already have a designer "
-"file (*.ui) located somewhere on your hard disk, simply choose '<i>Import "
-"Page</i>'</p><p><b>Important:</b> The name of each input widget you place "
-"within the form must start with '<i>X_</i>'; so if you want the widget to "
-"correspond to your custom entry '<i>X-Foo</i>', set the widget's <i>name</i> "
-"property to '<i>X_Foo</i>'.</p><p><b>Important:</b> The widget will edit "
-"custom fields with an application name of %2.  To change the application "
-"name to be edited, set the widget name in Qt Designer.</p></qt>"
-msgstr ""
-"<qt><p>Ta odsek vam omogoča, da dodate lastne predmete uporabniškega "
-"vmesnika (<i>gradnike</i>) za shranjevanje vaših lastnih vrednosti v %1. "
-"Nadaljujte po naslednjem postopku:</p><ol><li>Kliknite na <i>Uredi z Qt "
-"Designerjem</i></li><li>V pogovornem oknu izberite <i>Gradnik</i> in "
-"kliknite <i>V redu</i></li><li>Dodajte svoje gradnike na obrazec</"
-"li><li>Shranite datoteko v mapo, ki jo predlaga Qt Designer</li><li>Zaprite "
-"Qt Designer</li></ol><p>V primeru, da že imate datoteko Qt Designerja (*.ui) "
-"nekje na trdem disku, preprosto izberite <i>Uvozi stran</i></"
-"p><p><b>Pomembno:</b> imena posameznih vnosnih gradnikov, ki jih postavite "
-"na obrazec, se morajo začeti z <i>X_</i>. Npr. če želite, da gradnik ustreza "
-"vnosu <i>X-Nekaj</i>, nastavite lastnost gradnika <i>name</i> na <i>X_Nekaj</"
-"i>.</p><p><b>Pomembno:</b> Gradnik bo polja po meri urejal z imenom programa "
-"%2. Če želite spremeniti ime programa, ki bo urejan, nastavite ime gradnika "
-"v Qt Designerju.</p></qt>"
-
-#: kcmdesignerfields.cpp:329
-#, kde-format
-msgid "<a href=\"whatsthis:%1\">How does this work?</a>"
-msgstr "<a href=\"whatsthis:%1\">Kako to deluje?</a>"
-
-#: kcmdesignerfields.cpp:340
-#, kde-format
-msgid "Delete Page"
-msgstr "Izbriši stran"
-
-#: kcmdesignerfields.cpp:343
-#, kde-format
-msgid "Import Page..."
-msgstr "Uvozi stran …"
-
-#: kcmdesignerfields.cpp:345
-#, kde-format
-msgid "Edit with Qt Designer..."
-msgstr "Uredi s Qt Designer-jem …"
-
-#: kcmdesignerfields.cpp:370
-#, kde-format
-msgid "Key:"
-msgstr "Ključ:"
-
-#: kcmdesignerfields.cpp:372
-#, kde-format
-msgid "Type:"
-msgstr "Vrsta:"
-
-#: kcmdesignerfields.cpp:374
-#, kde-format
-msgid "Classname:"
-msgstr "Ime razreda:"
-
-#: kcmdesignerfields.cpp:376
-#, kde-format
-msgid "Description:"
-msgstr "Opis:"
 
 #: koapp.cpp:63
 #, kde-format
@@ -6062,6 +5925,101 @@ msgstr "%1"
 msgctxt "4 digit year"
 msgid "%1"
 msgstr "%1"
+
+#~ msgid "Text"
+#~ msgstr "Besedilo"
+
+#~ msgid "Numeric Value"
+#~ msgstr "Številčna vrednost"
+
+#~ msgid "Boolean"
+#~ msgstr "Logična vrednost"
+
+#~ msgid "Selection"
+#~ msgstr "Izbira"
+
+#~ msgid "Date & Time"
+#~ msgstr "Datum in čas"
+
+#~ msgid "Date"
+#~ msgstr "Datum"
+
+#~ msgid "<qt>Do you really want to delete '<b>%1</b>'?</qt>"
+#~ msgstr "<qt>Ali resnično želite izbrisati »<b>%1</b>«?</qt>"
+
+#~ msgid "Import Page"
+#~ msgstr "Uvozi stran"
+
+#~ msgid "Designer Files"
+#~ msgstr "Datoteke Designer"
+
+#~ msgid ""
+#~ "<qt><b>Warning:</b> Qt Designer could not be found. It is probably not "
+#~ "installed. You will only be able to import existing designer files.</qt>"
+#~ msgstr ""
+#~ "<qt><b>Opozorilo:</b> Qt Designerja ni bilo mogoče najti. Verjetno ni "
+#~ "nameščen. Lahko boste le uvozili obstoječe datoteke snovalnika.</qt>"
+
+#~ msgid "Available Pages"
+#~ msgstr "Razpoložljive strani"
+
+#~ msgid "Preview of Selected Page"
+#~ msgstr "Predogled izbrane strani"
+
+#~ msgid ""
+#~ "<qt><p>This section allows you to add your own GUI Elements ('<i>Widgets</"
+#~ "i>') to store your own values into %1. Proceed as described below:</"
+#~ "p><ol><li>Click on '<i>Edit with Qt Designer</i>'</li><li>In the dialog, "
+#~ "select '<i>Widget</i>', then click <i>OK</i></li><li>Add your widgets to "
+#~ "the form</li><li>Save the file in the directory proposed by Qt Designer</"
+#~ "li><li>Close Qt Designer</li></ol><p>In case you already have a designer "
+#~ "file (*.ui) located somewhere on your hard disk, simply choose '<i>Import "
+#~ "Page</i>'</p><p><b>Important:</b> The name of each input widget you place "
+#~ "within the form must start with '<i>X_</i>'; so if you want the widget to "
+#~ "correspond to your custom entry '<i>X-Foo</i>', set the widget's <i>name</"
+#~ "i> property to '<i>X_Foo</i>'.</p><p><b>Important:</b> The widget will "
+#~ "edit custom fields with an application name of %2.  To change the "
+#~ "application name to be edited, set the widget name in Qt Designer.</p></"
+#~ "qt>"
+#~ msgstr ""
+#~ "<qt><p>Ta odsek vam omogoča, da dodate lastne predmete uporabniškega "
+#~ "vmesnika (<i>gradnike</i>) za shranjevanje vaših lastnih vrednosti v %1. "
+#~ "Nadaljujte po naslednjem postopku:</p><ol><li>Kliknite na <i>Uredi z Qt "
+#~ "Designerjem</i></li><li>V pogovornem oknu izberite <i>Gradnik</i> in "
+#~ "kliknite <i>V redu</i></li><li>Dodajte svoje gradnike na obrazec</"
+#~ "li><li>Shranite datoteko v mapo, ki jo predlaga Qt Designer</"
+#~ "li><li>Zaprite Qt Designer</li></ol><p>V primeru, da že imate datoteko Qt "
+#~ "Designerja (*.ui) nekje na trdem disku, preprosto izberite <i>Uvozi "
+#~ "stran</i></p><p><b>Pomembno:</b> imena posameznih vnosnih gradnikov, ki "
+#~ "jih postavite na obrazec, se morajo začeti z <i>X_</i>. Npr. če želite, "
+#~ "da gradnik ustreza vnosu <i>X-Nekaj</i>, nastavite lastnost gradnika "
+#~ "<i>name</i> na <i>X_Nekaj</i>.</p><p><b>Pomembno:</b> Gradnik bo polja po "
+#~ "meri urejal z imenom programa %2. Če želite spremeniti ime programa, ki "
+#~ "bo urejan, nastavite ime gradnika v Qt Designerju.</p></qt>"
+
+#~ msgid "<a href=\"whatsthis:%1\">How does this work?</a>"
+#~ msgstr "<a href=\"whatsthis:%1\">Kako to deluje?</a>"
+
+#~ msgid "Delete Page"
+#~ msgstr "Izbriši stran"
+
+#~ msgid "Import Page..."
+#~ msgstr "Uvozi stran …"
+
+#~ msgid "Edit with Qt Designer..."
+#~ msgstr "Uredi s Qt Designer-jem …"
+
+#~ msgid "Key:"
+#~ msgstr "Ključ:"
+
+#~ msgid "Type:"
+#~ msgstr "Vrsta:"
+
+#~ msgid "Classname:"
+#~ msgstr "Ime razreda:"
+
+#~ msgid "Description:"
+#~ msgstr "Opis:"
 
 #~ msgid "Copying Failed"
 #~ msgstr "Kopiranje ni uspelo"

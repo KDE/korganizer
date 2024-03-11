@@ -11,7 +11,7 @@ msgid ""
 msgstr ""
 "Project-Id-Version: korganizer\n"
 "Report-Msgid-Bugs-To: https://bugs.kde.org\n"
-"POT-Creation-Date: 2024-02-22 00:38+0000\n"
+"POT-Creation-Date: 2024-03-11 00:38+0000\n"
 "PO-Revision-Date: 2022-09-25 18:08+0400\n"
 "Last-Translator: Zayed Al-Saidi <zayed.alsaidi@gmail.com>\n"
 "Language-Team: ar\n"
@@ -2018,140 +2018,6 @@ msgstr[2] "تطابقان"
 msgstr[3] "%1 تطابقات"
 msgstr[4] "%1 تطابقًا"
 msgstr[5] "%1 تطابق"
-
-#: kcmdesignerfields.cpp:61 kcmdesignerfields.cpp:62 kcmdesignerfields.cpp:67
-#: kcmdesignerfields.cpp:68
-#, kde-format
-msgid "Text"
-msgstr "نص"
-
-#: kcmdesignerfields.cpp:63
-#, kde-format
-msgid "Numeric Value"
-msgstr "قيمة عددية"
-
-#: kcmdesignerfields.cpp:64
-#, kde-format
-msgid "Boolean"
-msgstr "قيمة منطقية"
-
-#: kcmdesignerfields.cpp:65
-#, kde-format
-msgid "Selection"
-msgstr "تحديد"
-
-#: kcmdesignerfields.cpp:66 kcmdesignerfields.cpp:69
-#, kde-format
-msgid "Date & Time"
-msgstr "التاريخ والوقت"
-
-#: kcmdesignerfields.cpp:70
-#, kde-format
-msgid "Date"
-msgstr "التاريخ"
-
-#: kcmdesignerfields.cpp:158
-#, kde-format
-msgid "<qt>Do you really want to delete '<b>%1</b>'?</qt>"
-msgstr "أمتأكّد من حذف ”<b>%1</b>“؟"
-
-#: kcmdesignerfields.cpp:171
-#, kde-format
-msgid "Import Page"
-msgstr "استورِد صفحة"
-
-#: kcmdesignerfields.cpp:173
-#, kde-format
-msgid "Designer Files"
-msgstr "ملفات المصمّم"
-
-#: kcmdesignerfields.cpp:272
-#, kde-format
-msgid ""
-"<qt><b>Warning:</b> Qt Designer could not be found. It is probably not "
-"installed. You will only be able to import existing designer files.</qt>"
-msgstr ""
-"<b>تحذير:</b> تعذّر العثور على «كيوت المصمّم». أغلب الظن أنه ليس مثبّتًا. لن "
-"تقدر إلا على استيراد ملفات «كيوت المصمّم» الموجودة."
-
-#: kcmdesignerfields.cpp:282
-#, kde-format
-msgid "Available Pages"
-msgstr "الصفحات المتوفّرة"
-
-#: kcmdesignerfields.cpp:288
-#, kde-format
-msgid "Preview of Selected Page"
-msgstr "معاينة الصفحة المحدّدة"
-
-#: kcmdesignerfields.cpp:307
-#, kde-format
-msgid ""
-"<qt><p>This section allows you to add your own GUI Elements ('<i>Widgets</"
-"i>') to store your own values into %1. Proceed as described below:</"
-"p><ol><li>Click on '<i>Edit with Qt Designer</i>'</li><li>In the dialog, "
-"select '<i>Widget</i>', then click <i>OK</i></li><li>Add your widgets to the "
-"form</li><li>Save the file in the directory proposed by Qt Designer</"
-"li><li>Close Qt Designer</li></ol><p>In case you already have a designer "
-"file (*.ui) located somewhere on your hard disk, simply choose '<i>Import "
-"Page</i>'</p><p><b>Important:</b> The name of each input widget you place "
-"within the form must start with '<i>X_</i>'; so if you want the widget to "
-"correspond to your custom entry '<i>X-Foo</i>', set the widget's <i>name</i> "
-"property to '<i>X_Foo</i>'.</p><p><b>Important:</b> The widget will edit "
-"custom fields with an application name of %2.  To change the application "
-"name to be edited, set the widget name in Qt Designer.</p></qt>"
-msgstr ""
-"<p>يتيح لك هذا القسم إضافة عناصر واجهة (أو ”ودجات“) جديدة من إنشائك لتخزين "
-"قيمك أنت في %1. تابِع كما هو موضّح أسفله:</p><ol><li>انقر زر ”حرّر مستخدمًا "
-"«كيوت المصمّم»</li><li>في الحواريّ اختر ”Widget“ ثم انقر ”حسنًا“</li><li>أضِف "
-"ودجاتك إلى الاستمارة</li><li>احفظ الملف في الدليل الذي اقترحه عليك «كيوت "
-"المصمّم»</li><li>أغلِق «كيوت المصمّم</li></ol><p>إن كان لديك ملفًا جاهزًا أصلًا "
-"(ملف مصمّم ‎*.ui) موجود في مكان ما في القرص الصلب، فاختر ”استورد صفحة“ فحسب</"
-"p><p><b>هام:</b> يجب أن يبدأ اسم كل ودجة دخل تضعها في الاستمارة بالمحرفين "
-"”X_‎“، فإن أردت للودجة أن تقابل المدخلة الخاصّة لك بالاسم ”X-Foo“، فاضبط خاصية "
-"”اسم/name“ الودجة على ”X_Foo“.</p><p><b>هام:</b> ستُعدّل الودجة الحقول المخصّصة "
-"كتطبيق اسمه %2.  لتغير اسم التطبيق الذي سيُحرّر، اضبط اسم الودجة في «كيوت "
-"المصمّم».</p>"
-
-#: kcmdesignerfields.cpp:329
-#, kde-format
-msgid "<a href=\"whatsthis:%1\">How does this work?</a>"
-msgstr "<a href=\"whatsthis:%1\">كيف يعمل هذا؟</a>"
-
-#: kcmdesignerfields.cpp:340
-#, kde-format
-msgid "Delete Page"
-msgstr "احذف الصفحة"
-
-#: kcmdesignerfields.cpp:343
-#, kde-format
-msgid "Import Page..."
-msgstr "استورِد صفحة…"
-
-#: kcmdesignerfields.cpp:345
-#, kde-format
-msgid "Edit with Qt Designer..."
-msgstr "حرّر مستخدمًا «كيوت المصمّم»…"
-
-#: kcmdesignerfields.cpp:370
-#, kde-format
-msgid "Key:"
-msgstr "المفتاح:"
-
-#: kcmdesignerfields.cpp:372
-#, kde-format
-msgid "Type:"
-msgstr "النوع:"
-
-#: kcmdesignerfields.cpp:374
-#, kde-format
-msgid "Classname:"
-msgstr "اسم الصنف:"
-
-#: kcmdesignerfields.cpp:376
-#, kde-format
-msgid "Description:"
-msgstr "الوصف:"
 
 #: koapp.cpp:63
 #, fuzzy, kde-format
@@ -5865,6 +5731,98 @@ msgstr "%1"
 msgctxt "4 digit year"
 msgid "%1"
 msgstr "%1"
+
+#~ msgid "Text"
+#~ msgstr "نص"
+
+#~ msgid "Numeric Value"
+#~ msgstr "قيمة عددية"
+
+#~ msgid "Boolean"
+#~ msgstr "قيمة منطقية"
+
+#~ msgid "Selection"
+#~ msgstr "تحديد"
+
+#~ msgid "Date & Time"
+#~ msgstr "التاريخ والوقت"
+
+#~ msgid "Date"
+#~ msgstr "التاريخ"
+
+#~ msgid "<qt>Do you really want to delete '<b>%1</b>'?</qt>"
+#~ msgstr "أمتأكّد من حذف ”<b>%1</b>“؟"
+
+#~ msgid "Import Page"
+#~ msgstr "استورِد صفحة"
+
+#~ msgid "Designer Files"
+#~ msgstr "ملفات المصمّم"
+
+#~ msgid ""
+#~ "<qt><b>Warning:</b> Qt Designer could not be found. It is probably not "
+#~ "installed. You will only be able to import existing designer files.</qt>"
+#~ msgstr ""
+#~ "<b>تحذير:</b> تعذّر العثور على «كيوت المصمّم». أغلب الظن أنه ليس مثبّتًا. لن "
+#~ "تقدر إلا على استيراد ملفات «كيوت المصمّم» الموجودة."
+
+#~ msgid "Available Pages"
+#~ msgstr "الصفحات المتوفّرة"
+
+#~ msgid "Preview of Selected Page"
+#~ msgstr "معاينة الصفحة المحدّدة"
+
+#~ msgid ""
+#~ "<qt><p>This section allows you to add your own GUI Elements ('<i>Widgets</"
+#~ "i>') to store your own values into %1. Proceed as described below:</"
+#~ "p><ol><li>Click on '<i>Edit with Qt Designer</i>'</li><li>In the dialog, "
+#~ "select '<i>Widget</i>', then click <i>OK</i></li><li>Add your widgets to "
+#~ "the form</li><li>Save the file in the directory proposed by Qt Designer</"
+#~ "li><li>Close Qt Designer</li></ol><p>In case you already have a designer "
+#~ "file (*.ui) located somewhere on your hard disk, simply choose '<i>Import "
+#~ "Page</i>'</p><p><b>Important:</b> The name of each input widget you place "
+#~ "within the form must start with '<i>X_</i>'; so if you want the widget to "
+#~ "correspond to your custom entry '<i>X-Foo</i>', set the widget's <i>name</"
+#~ "i> property to '<i>X_Foo</i>'.</p><p><b>Important:</b> The widget will "
+#~ "edit custom fields with an application name of %2.  To change the "
+#~ "application name to be edited, set the widget name in Qt Designer.</p></"
+#~ "qt>"
+#~ msgstr ""
+#~ "<p>يتيح لك هذا القسم إضافة عناصر واجهة (أو ”ودجات“) جديدة من إنشائك "
+#~ "لتخزين قيمك أنت في %1. تابِع كما هو موضّح أسفله:</p><ol><li>انقر زر ”حرّر "
+#~ "مستخدمًا «كيوت المصمّم»</li><li>في الحواريّ اختر ”Widget“ ثم انقر ”حسنًا“</"
+#~ "li><li>أضِف ودجاتك إلى الاستمارة</li><li>احفظ الملف في الدليل الذي اقترحه "
+#~ "عليك «كيوت المصمّم»</li><li>أغلِق «كيوت المصمّم</li></ol><p>إن كان لديك ملفًا "
+#~ "جاهزًا أصلًا (ملف مصمّم ‎*.ui) موجود في مكان ما في القرص الصلب، فاختر ”استورد "
+#~ "صفحة“ فحسب</p><p><b>هام:</b> يجب أن يبدأ اسم كل ودجة دخل تضعها في "
+#~ "الاستمارة بالمحرفين ”X_‎“، فإن أردت للودجة أن تقابل المدخلة الخاصّة لك "
+#~ "بالاسم ”X-Foo“، فاضبط خاصية ”اسم/name“ الودجة على ”X_Foo“.</p><p><b>هام:</"
+#~ "b> ستُعدّل الودجة الحقول المخصّصة كتطبيق اسمه %2.  لتغير اسم التطبيق الذي "
+#~ "سيُحرّر، اضبط اسم الودجة في «كيوت المصمّم».</p>"
+
+#~ msgid "<a href=\"whatsthis:%1\">How does this work?</a>"
+#~ msgstr "<a href=\"whatsthis:%1\">كيف يعمل هذا؟</a>"
+
+#~ msgid "Delete Page"
+#~ msgstr "احذف الصفحة"
+
+#~ msgid "Import Page..."
+#~ msgstr "استورِد صفحة…"
+
+#~ msgid "Edit with Qt Designer..."
+#~ msgstr "حرّر مستخدمًا «كيوت المصمّم»…"
+
+#~ msgid "Key:"
+#~ msgstr "المفتاح:"
+
+#~ msgid "Type:"
+#~ msgstr "النوع:"
+
+#~ msgid "Classname:"
+#~ msgstr "اسم الصنف:"
+
+#~ msgid "Description:"
+#~ msgstr "الوصف:"
 
 #~ msgid "Copying Failed"
 #~ msgstr "فشل النسخ"

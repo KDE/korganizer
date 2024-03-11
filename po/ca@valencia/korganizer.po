@@ -13,8 +13,8 @@ msgid ""
 msgstr ""
 "Project-Id-Version: korganizer\n"
 "Report-Msgid-Bugs-To: https://bugs.kde.org\n"
-"POT-Creation-Date: 2024-02-22 00:38+0000\n"
-"PO-Revision-Date: 2024-01-12 18:11+0100\n"
+"POT-Creation-Date: 2024-03-11 00:38+0000\n"
+"PO-Revision-Date: 2024-03-10 12:30+0100\n"
 "Last-Translator: Josep M. Ferrer <txemaq@gmail.com>\n"
 "Language-Team: Catalan <kde-i18n-ca@kde.org>\n"
 "Language: ca@valencia\n"
@@ -1374,7 +1374,7 @@ msgid ""
 "The item \"%1\" is filtered by your current filter rules, so it will be "
 "hidden and not appear in the view."
 msgstr ""
-"L'element «%1» s'ha filtrat amb les regles de filtratge actuals, per tant "
+"L'element «%1» s'ha filtrat amb les regles de filtratge actuals, per tant, "
 "s'ocultarà i no apareixerà en la vista."
 
 #: calendarview.cpp:771
@@ -2037,143 +2037,6 @@ msgid_plural "%1 matches"
 msgstr[0] "%1 coincidència"
 msgstr[1] "%1 coincidències"
 
-#: kcmdesignerfields.cpp:61 kcmdesignerfields.cpp:62 kcmdesignerfields.cpp:67
-#: kcmdesignerfields.cpp:68
-#, kde-format
-msgid "Text"
-msgstr "Text"
-
-#: kcmdesignerfields.cpp:63
-#, kde-format
-msgid "Numeric Value"
-msgstr "Valor numèric"
-
-#: kcmdesignerfields.cpp:64
-#, kde-format
-msgid "Boolean"
-msgstr "Booleà"
-
-#: kcmdesignerfields.cpp:65
-#, kde-format
-msgid "Selection"
-msgstr "Selecció"
-
-#: kcmdesignerfields.cpp:66 kcmdesignerfields.cpp:69
-#, kde-format
-msgid "Date & Time"
-msgstr "Data i hora"
-
-#: kcmdesignerfields.cpp:70
-#, kde-format
-msgid "Date"
-msgstr "Data"
-
-#: kcmdesignerfields.cpp:158
-#, kde-format
-msgid "<qt>Do you really want to delete '<b>%1</b>'?</qt>"
-msgstr "<qt>Segur que voleu suprimir «<b>%1</b>»?</qt>"
-
-#: kcmdesignerfields.cpp:171
-#, kde-format
-msgid "Import Page"
-msgstr "Importa una pàgina"
-
-#: kcmdesignerfields.cpp:173
-#, kde-format
-msgid "Designer Files"
-msgstr "Fitxers de Designer"
-
-#: kcmdesignerfields.cpp:272
-#, kde-format
-msgid ""
-"<qt><b>Warning:</b> Qt Designer could not be found. It is probably not "
-"installed. You will only be able to import existing designer files.</qt>"
-msgstr ""
-"<qt><b>Avís:</b> No s'ha pogut trobar Qt Designer. Probablement no està "
-"instal·lat. No podreu importar els fitxers existents de «designer».</qt>"
-
-#: kcmdesignerfields.cpp:282
-#, kde-format
-msgid "Available Pages"
-msgstr "Pàgines disponibles"
-
-#: kcmdesignerfields.cpp:288
-#, kde-format
-msgid "Preview of Selected Page"
-msgstr "Vista prèvia de la pàgina seleccionada"
-
-#: kcmdesignerfields.cpp:307
-#, kde-format
-msgid ""
-"<qt><p>This section allows you to add your own GUI Elements ('<i>Widgets</"
-"i>') to store your own values into %1. Proceed as described below:</"
-"p><ol><li>Click on '<i>Edit with Qt Designer</i>'</li><li>In the dialog, "
-"select '<i>Widget</i>', then click <i>OK</i></li><li>Add your widgets to the "
-"form</li><li>Save the file in the directory proposed by Qt Designer</"
-"li><li>Close Qt Designer</li></ol><p>In case you already have a designer "
-"file (*.ui) located somewhere on your hard disk, simply choose '<i>Import "
-"Page</i>'</p><p><b>Important:</b> The name of each input widget you place "
-"within the form must start with '<i>X_</i>'; so if you want the widget to "
-"correspond to your custom entry '<i>X-Foo</i>', set the widget's <i>name</i> "
-"property to '<i>X_Foo</i>'.</p><p><b>Important:</b> The widget will edit "
-"custom fields with an application name of %2.  To change the application "
-"name to be edited, set the widget name in Qt Designer.</p></qt>"
-msgstr ""
-"<qt><p>Esta secció permet afegir els vostres propis elements de la IGU "
-"(«<i>Ginys</i>») per a guardar els valors personals a %1. Procediu tal com "
-"es descriu tot seguit:</p><ol><li>Feu clic en «<i>Edició amb Qt Designer</"
-"i>»</li><li>En el diàleg, seleccioneu «<i>Giny</i>», després feu clic en "
-"<i>Bé</i></li><li>Afegiu els vostres ginys al formulari</li><li>Guardeu el "
-"fitxer en el directori proposat per Qt Designer</li><li>Tanqueu Qt Designer</"
-"li></ol><p>Si ja teniu un fitxer designer (*.ui) ubicat en algun lloc del "
-"disc dur, senzillament escolliu «<i>Importa pàgina</i>»</p><p><b>Important:</"
-"b> el nom de cada giny d'entrada que situeu al formulari ha de començar amb "
-"«<i>X_</i>»; així que si voleu que el giny corresponga al vostre camp "
-"d'entrada personalitzat «<i>X-Foo</i>», establiu la propietat del <i>nom</i> "
-"del giny a «<i>X_Foo</i>».</p><p><b>Important:</b> el giny editarà els camps "
-"personalitzats amb el nom d'aplicació %2. Per a canviar el nom de "
-"l'aplicació editora, establiu el nom del giny a Qt Designer.</p></qt>"
-
-#: kcmdesignerfields.cpp:329
-#, kde-format
-msgid "<a href=\"whatsthis:%1\">How does this work?</a>"
-msgstr "<a href=\"whatsthis:%1\">Com funciona açò?</a>"
-
-#: kcmdesignerfields.cpp:340
-#, kde-format
-msgid "Delete Page"
-msgstr "Suprimix la pàgina"
-
-#: kcmdesignerfields.cpp:343
-#, kde-format
-msgid "Import Page..."
-msgstr "Importa una pàgina..."
-
-#: kcmdesignerfields.cpp:345
-#, kde-format
-msgid "Edit with Qt Designer..."
-msgstr "Edita amb Qt Designer..."
-
-#: kcmdesignerfields.cpp:370
-#, kde-format
-msgid "Key:"
-msgstr "Clau:"
-
-#: kcmdesignerfields.cpp:372
-#, kde-format
-msgid "Type:"
-msgstr "Tipus:"
-
-#: kcmdesignerfields.cpp:374
-#, kde-format
-msgid "Classname:"
-msgstr "Nom de la classe:"
-
-#: kcmdesignerfields.cpp:376
-#, kde-format
-msgid "Description:"
-msgstr "Descripció:"
-
 #: koapp.cpp:63
 #, kde-format
 msgid "Failed to retrieve incidence from Akonadi"
@@ -2552,7 +2415,7 @@ msgstr "Esdeveniments pròxims"
 #, kde-format
 msgid "No upcoming events starting within the next day"
 msgid_plural "No upcoming events starting within the next %1 days"
-msgstr[0] "No hi ha cap esdeveniment per demà"
+msgstr[0] "No hi ha cap esdeveniment en el pròxim dia"
 msgstr[1] "No hi ha cap esdeveniment en els pròxims %1 dies"
 
 #: kontactplugin/korganizer/apptsummarywidget.cpp:240
@@ -3309,7 +3172,7 @@ msgstr[1] "%1 anys"
 #, kde-format
 msgid "No special dates within the next 1 day"
 msgid_plural "No special dates pending within the next %1 days"
-msgstr[0] "No hi ha cap data especial per demà"
+msgstr[0] "No hi ha cap data especial en el pròxim dia"
 msgstr[1] "No hi ha cap data especial en els pròxims %1 dies"
 
 #: kontactplugin/specialdates/sdsummarywidget.cpp:656
@@ -3817,13 +3680,13 @@ msgstr ""
 #: settings/korganizer.kcfg:22
 #, kde-format
 msgid "New Events, To-dos and Journal Entries Should"
-msgstr "Els esdeveniments, tasques pendents i entrades de diari noves han de"
+msgstr "Els esdeveniments, tasques pendents i entrades de diari noves s'han"
 
 #. i18n: ectx: label, entry (Destination), group (Save Settings)
 #: settings/korganizer.kcfg:25
 #, kde-format
 msgid "Be added to the default calendar"
-msgstr "Ser afegides al calendari predeterminat"
+msgstr "D'afegir al calendari predeterminat"
 
 #. i18n: ectx: whatsthis, entry (Destination), group (Save Settings)
 #: settings/korganizer.kcfg:26
@@ -3840,7 +3703,7 @@ msgstr ""
 #: settings/korganizer.kcfg:29
 #, kde-format
 msgid "Be asked which calendar to use"
-msgstr "Pregunta quin calendari s'ha d'utilitzar"
+msgstr "De demanar a quin calendari s'ha d'utilitzar"
 
 #. i18n: ectx: whatsthis, entry (Destination), group (Save Settings)
 #: settings/korganizer.kcfg:30
@@ -5088,7 +4951,7 @@ msgid ""
 msgstr ""
 "Seleccioneu esta opció si no voleu mostrar els esdeveniments i tasques "
 "pendents repetitius en les vistes. Els elements repetits diàriament i "
-"setmanal poden ocupar un munt d'espai, per tant pot ser útil ocultar-los."
+"setmanal poden ocupar un munt d'espai, per tant, pot ser útil ocultar-los."
 
 #. i18n: ectx: property (text), widget (QCheckBox, mRecurringCheck)
 #: ui/filteredit_base.ui:124
@@ -6139,3 +6002,99 @@ msgstr "%1"
 msgctxt "4 digit year"
 msgid "%1"
 msgstr "%1"
+
+#~ msgid "Text"
+#~ msgstr "Text"
+
+#~ msgid "Numeric Value"
+#~ msgstr "Valor numèric"
+
+#~ msgid "Boolean"
+#~ msgstr "Booleà"
+
+#~ msgid "Selection"
+#~ msgstr "Selecció"
+
+#~ msgid "Date & Time"
+#~ msgstr "Data i hora"
+
+#~ msgid "Date"
+#~ msgstr "Data"
+
+#~ msgid "<qt>Do you really want to delete '<b>%1</b>'?</qt>"
+#~ msgstr "<qt>Segur que voleu suprimir «<b>%1</b>»?</qt>"
+
+#~ msgid "Import Page"
+#~ msgstr "Importa una pàgina"
+
+#~ msgid "Designer Files"
+#~ msgstr "Fitxers de Designer"
+
+#~ msgid ""
+#~ "<qt><b>Warning:</b> Qt Designer could not be found. It is probably not "
+#~ "installed. You will only be able to import existing designer files.</qt>"
+#~ msgstr ""
+#~ "<qt><b>Avís:</b> No s'ha pogut trobar Qt Designer. Probablement no està "
+#~ "instal·lat. No podreu importar els fitxers existents de «designer».</qt>"
+
+#~ msgid "Available Pages"
+#~ msgstr "Pàgines disponibles"
+
+#~ msgid "Preview of Selected Page"
+#~ msgstr "Vista prèvia de la pàgina seleccionada"
+
+#~ msgid ""
+#~ "<qt><p>This section allows you to add your own GUI Elements ('<i>Widgets</"
+#~ "i>') to store your own values into %1. Proceed as described below:</"
+#~ "p><ol><li>Click on '<i>Edit with Qt Designer</i>'</li><li>In the dialog, "
+#~ "select '<i>Widget</i>', then click <i>OK</i></li><li>Add your widgets to "
+#~ "the form</li><li>Save the file in the directory proposed by Qt Designer</"
+#~ "li><li>Close Qt Designer</li></ol><p>In case you already have a designer "
+#~ "file (*.ui) located somewhere on your hard disk, simply choose '<i>Import "
+#~ "Page</i>'</p><p><b>Important:</b> The name of each input widget you place "
+#~ "within the form must start with '<i>X_</i>'; so if you want the widget to "
+#~ "correspond to your custom entry '<i>X-Foo</i>', set the widget's <i>name</"
+#~ "i> property to '<i>X_Foo</i>'.</p><p><b>Important:</b> The widget will "
+#~ "edit custom fields with an application name of %2.  To change the "
+#~ "application name to be edited, set the widget name in Qt Designer.</p></"
+#~ "qt>"
+#~ msgstr ""
+#~ "<qt><p>Esta secció permet afegir els vostres propis elements de la IGU "
+#~ "(«<i>Ginys</i>») per a guardar els valors personals a %1. Procediu tal "
+#~ "com es descriu tot seguit:</p><ol><li>Feu clic en «<i>Edició amb Qt "
+#~ "Designer</i>»</li><li>En el diàleg, seleccioneu «<i>Giny</i>», després "
+#~ "feu clic en <i>Bé</i></li><li>Afegiu els vostres ginys al formulari</"
+#~ "li><li>Guardeu el fitxer en el directori proposat per Qt Designer</"
+#~ "li><li>Tanqueu Qt Designer</li></ol><p>Si ja teniu un fitxer designer (*."
+#~ "ui) ubicat en algun lloc del disc dur, senzillament escolliu «<i>Importa "
+#~ "pàgina</i>»</p><p><b>Important:</b> el nom de cada giny d'entrada que "
+#~ "situeu al formulari ha de començar amb «<i>X_</i>»; així que si voleu que "
+#~ "el giny corresponga al vostre camp d'entrada personalitzat «<i>X-Foo</"
+#~ "i>», establiu la propietat del <i>nom</i> del giny a «<i>X_Foo</i>».</"
+#~ "p><p><b>Important:</b> el giny editarà els camps personalitzats amb el "
+#~ "nom d'aplicació %2. Per a canviar el nom de l'aplicació editora, establiu "
+#~ "el nom del giny a Qt Designer.</p></qt>"
+
+#~ msgid "<a href=\"whatsthis:%1\">How does this work?</a>"
+#~ msgstr "<a href=\"whatsthis:%1\">Com funciona açò?</a>"
+
+#~ msgid "Delete Page"
+#~ msgstr "Suprimix la pàgina"
+
+#~ msgid "Import Page..."
+#~ msgstr "Importa una pàgina..."
+
+#~ msgid "Edit with Qt Designer..."
+#~ msgstr "Edita amb Qt Designer..."
+
+#~ msgid "Key:"
+#~ msgstr "Clau:"
+
+#~ msgid "Type:"
+#~ msgstr "Tipus:"
+
+#~ msgid "Classname:"
+#~ msgstr "Nom de la classe:"
+
+#~ msgid "Description:"
+#~ msgstr "Descripció:"

@@ -7,7 +7,7 @@ msgid ""
 msgstr ""
 "Project-Id-Version: korganizer\n"
 "Report-Msgid-Bugs-To: https://bugs.kde.org\n"
-"POT-Creation-Date: 2024-02-22 00:38+0000\n"
+"POT-Creation-Date: 2024-03-11 00:38+0000\n"
 "PO-Revision-Date: 2011-01-04 07:42+0530\n"
 "Last-Translator: A S Alam <aalam@users.sf.net>\n"
 "Language-Team: Punjabi/Panjabi <punjabi-users@lists.sf.net>\n"
@@ -2024,130 +2024,6 @@ msgid "%1 match"
 msgid_plural "%1 matches"
 msgstr[0] ""
 msgstr[1] ""
-
-#: kcmdesignerfields.cpp:61 kcmdesignerfields.cpp:62 kcmdesignerfields.cpp:67
-#: kcmdesignerfields.cpp:68
-#, kde-format
-msgid "Text"
-msgstr "ਟੈਕਸਟ"
-
-#: kcmdesignerfields.cpp:63
-#, kde-format
-msgid "Numeric Value"
-msgstr ""
-
-#: kcmdesignerfields.cpp:64
-#, kde-format
-msgid "Boolean"
-msgstr ""
-
-#: kcmdesignerfields.cpp:65
-#, kde-format
-msgid "Selection"
-msgstr "ਚੋਣ"
-
-#: kcmdesignerfields.cpp:66 kcmdesignerfields.cpp:69
-#, kde-format
-msgid "Date & Time"
-msgstr "ਸਮਾਂ ਅਤੇ ਮਿਤੀ"
-
-#: kcmdesignerfields.cpp:70
-#, kde-format
-msgid "Date"
-msgstr "ਮਿਤੀ"
-
-#: kcmdesignerfields.cpp:158
-#, fuzzy, kde-format
-#| msgid "Unable to create calendar resource '%1'."
-msgid "<qt>Do you really want to delete '<b>%1</b>'?</qt>"
-msgstr "'%1' ਕੈਲੰਡਰ ਸਰੋਤ ਬਣਾਉਣ ਲਈ ਅਸਫ਼ਲ ਹੈ।"
-
-#: kcmdesignerfields.cpp:171
-#, kde-format
-msgid "Import Page"
-msgstr "ਸਫ਼ਾ ਇੰਪੋਰਟ"
-
-#: kcmdesignerfields.cpp:173
-#, fuzzy, kde-format
-#| msgid "*.ics|iCalendar Files"
-msgid "Designer Files"
-msgstr "*.ics|i ਕੈਲੰਡਰ ਫਾਇਲਾਂ"
-
-#: kcmdesignerfields.cpp:272
-#, kde-format
-msgid ""
-"<qt><b>Warning:</b> Qt Designer could not be found. It is probably not "
-"installed. You will only be able to import existing designer files.</qt>"
-msgstr ""
-
-#: kcmdesignerfields.cpp:282
-#, kde-format
-msgid "Available Pages"
-msgstr ""
-
-#: kcmdesignerfields.cpp:288
-#, kde-format
-msgid "Preview of Selected Page"
-msgstr ""
-
-#: kcmdesignerfields.cpp:307
-#, kde-format
-msgid ""
-"<qt><p>This section allows you to add your own GUI Elements ('<i>Widgets</"
-"i>') to store your own values into %1. Proceed as described below:</"
-"p><ol><li>Click on '<i>Edit with Qt Designer</i>'</li><li>In the dialog, "
-"select '<i>Widget</i>', then click <i>OK</i></li><li>Add your widgets to the "
-"form</li><li>Save the file in the directory proposed by Qt Designer</"
-"li><li>Close Qt Designer</li></ol><p>In case you already have a designer "
-"file (*.ui) located somewhere on your hard disk, simply choose '<i>Import "
-"Page</i>'</p><p><b>Important:</b> The name of each input widget you place "
-"within the form must start with '<i>X_</i>'; so if you want the widget to "
-"correspond to your custom entry '<i>X-Foo</i>', set the widget's <i>name</i> "
-"property to '<i>X_Foo</i>'.</p><p><b>Important:</b> The widget will edit "
-"custom fields with an application name of %2.  To change the application "
-"name to be edited, set the widget name in Qt Designer.</p></qt>"
-msgstr ""
-
-#: kcmdesignerfields.cpp:329
-#, kde-format
-msgid "<a href=\"whatsthis:%1\">How does this work?</a>"
-msgstr ""
-
-#: kcmdesignerfields.cpp:340
-#, kde-format
-msgid "Delete Page"
-msgstr "ਸਫ਼ਾ ਹਟਾਓ"
-
-#: kcmdesignerfields.cpp:343
-#, fuzzy, kde-format
-#| msgid "Import &Calendar..."
-msgid "Import Page..."
-msgstr "ਕੈਲੰਡਰ ਅਯਾਤ(&C)..."
-
-#: kcmdesignerfields.cpp:345
-#, kde-format
-msgid "Edit with Qt Designer..."
-msgstr ""
-
-#: kcmdesignerfields.cpp:370
-#, kde-format
-msgid "Key:"
-msgstr ""
-
-#: kcmdesignerfields.cpp:372
-#, kde-format
-msgid "Type:"
-msgstr "ਕਿਸਮ:"
-
-#: kcmdesignerfields.cpp:374
-#, kde-format
-msgid "Classname:"
-msgstr "ਕਲਾਸ-ਨਾਂ:"
-
-#: kcmdesignerfields.cpp:376
-#, kde-format
-msgid "Description:"
-msgstr "ਵੇਰਵਾ:"
 
 #: koapp.cpp:63
 #, fuzzy, kde-format
@@ -5871,6 +5747,48 @@ msgstr "%1"
 msgctxt "4 digit year"
 msgid "%1"
 msgstr "%1"
+
+#~ msgid "Text"
+#~ msgstr "ਟੈਕਸਟ"
+
+#~ msgid "Selection"
+#~ msgstr "ਚੋਣ"
+
+#~ msgid "Date & Time"
+#~ msgstr "ਸਮਾਂ ਅਤੇ ਮਿਤੀ"
+
+#~ msgid "Date"
+#~ msgstr "ਮਿਤੀ"
+
+#, fuzzy
+#~| msgid "Unable to create calendar resource '%1'."
+#~ msgid "<qt>Do you really want to delete '<b>%1</b>'?</qt>"
+#~ msgstr "'%1' ਕੈਲੰਡਰ ਸਰੋਤ ਬਣਾਉਣ ਲਈ ਅਸਫ਼ਲ ਹੈ।"
+
+#~ msgid "Import Page"
+#~ msgstr "ਸਫ਼ਾ ਇੰਪੋਰਟ"
+
+#, fuzzy
+#~| msgid "*.ics|iCalendar Files"
+#~ msgid "Designer Files"
+#~ msgstr "*.ics|i ਕੈਲੰਡਰ ਫਾਇਲਾਂ"
+
+#~ msgid "Delete Page"
+#~ msgstr "ਸਫ਼ਾ ਹਟਾਓ"
+
+#, fuzzy
+#~| msgid "Import &Calendar..."
+#~ msgid "Import Page..."
+#~ msgstr "ਕੈਲੰਡਰ ਅਯਾਤ(&C)..."
+
+#~ msgid "Type:"
+#~ msgstr "ਕਿਸਮ:"
+
+#~ msgid "Classname:"
+#~ msgstr "ਕਲਾਸ-ਨਾਂ:"
+
+#~ msgid "Description:"
+#~ msgstr "ਵੇਰਵਾ:"
 
 #~ msgid "Copying Failed"
 #~ msgstr "ਨਕਲ ਅਸਫਲ ਰਹੀ"

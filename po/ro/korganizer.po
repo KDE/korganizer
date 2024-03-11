@@ -5,7 +5,7 @@ msgid ""
 msgstr ""
 "Project-Id-Version: korganizer-1.1.1\n"
 "Report-Msgid-Bugs-To: https://bugs.kde.org\n"
-"POT-Creation-Date: 2024-02-22 00:38+0000\n"
+"POT-Creation-Date: 2024-03-11 00:38+0000\n"
 "PO-Revision-Date: 2022-02-06 19:07+0000\n"
 "Last-Translator: Sergiu Bivol <sergiu@cip.md>\n"
 "Language-Team: Romanian\n"
@@ -1993,135 +1993,6 @@ msgid_plural "%1 matches"
 msgstr[0] ""
 msgstr[1] ""
 msgstr[2] ""
-
-#: kcmdesignerfields.cpp:61 kcmdesignerfields.cpp:62 kcmdesignerfields.cpp:67
-#: kcmdesignerfields.cpp:68
-#, kde-format
-msgid "Text"
-msgstr "Text"
-
-#: kcmdesignerfields.cpp:63
-#, kde-format
-msgid "Numeric Value"
-msgstr ""
-
-#: kcmdesignerfields.cpp:64
-#, kde-format
-msgid "Boolean"
-msgstr ""
-
-#: kcmdesignerfields.cpp:65
-#, fuzzy, kde-format
-#| msgid "Select Mode"
-msgid "Selection"
-msgstr "Mod selecție"
-
-#: kcmdesignerfields.cpp:66 kcmdesignerfields.cpp:69
-#, fuzzy, kde-format
-#| msgid "Date && Time"
-msgid "Date & Time"
-msgstr "Dată și oră"
-
-#: kcmdesignerfields.cpp:70
-#, fuzzy, kde-format
-msgid "Date"
-msgstr "Data <="
-
-#: kcmdesignerfields.cpp:158
-#, fuzzy, kde-format
-msgid "<qt>Do you really want to delete '<b>%1</b>'?</qt>"
-msgstr "Nu pot deschide cartea de adrese."
-
-#: kcmdesignerfields.cpp:171
-#, fuzzy, kde-format
-#| msgid "Import Calendar"
-msgid "Import Page"
-msgstr "Importă calendar"
-
-#: kcmdesignerfields.cpp:173
-#, fuzzy, kde-format
-msgid "Designer Files"
-msgstr "*.vcs|Fișiere vCalendar"
-
-#: kcmdesignerfields.cpp:272
-#, kde-format
-msgid ""
-"<qt><b>Warning:</b> Qt Designer could not be found. It is probably not "
-"installed. You will only be able to import existing designer files.</qt>"
-msgstr ""
-
-#: kcmdesignerfields.cpp:282
-#, kde-format
-msgid "Available Pages"
-msgstr ""
-
-#: kcmdesignerfields.cpp:288
-#, kde-format
-msgid "Preview of Selected Page"
-msgstr ""
-
-#: kcmdesignerfields.cpp:307
-#, kde-format
-msgid ""
-"<qt><p>This section allows you to add your own GUI Elements ('<i>Widgets</"
-"i>') to store your own values into %1. Proceed as described below:</"
-"p><ol><li>Click on '<i>Edit with Qt Designer</i>'</li><li>In the dialog, "
-"select '<i>Widget</i>', then click <i>OK</i></li><li>Add your widgets to the "
-"form</li><li>Save the file in the directory proposed by Qt Designer</"
-"li><li>Close Qt Designer</li></ol><p>In case you already have a designer "
-"file (*.ui) located somewhere on your hard disk, simply choose '<i>Import "
-"Page</i>'</p><p><b>Important:</b> The name of each input widget you place "
-"within the form must start with '<i>X_</i>'; so if you want the widget to "
-"correspond to your custom entry '<i>X-Foo</i>', set the widget's <i>name</i> "
-"property to '<i>X_Foo</i>'.</p><p><b>Important:</b> The widget will edit "
-"custom fields with an application name of %2.  To change the application "
-"name to be edited, set the widget name in Qt Designer.</p></qt>"
-msgstr ""
-
-#: kcmdesignerfields.cpp:329
-#, kde-format
-msgid "<a href=\"whatsthis:%1\">How does this work?</a>"
-msgstr ""
-
-#: kcmdesignerfields.cpp:340
-#, fuzzy, kde-format
-#| msgid "Delete"
-msgid "Delete Page"
-msgstr "Șterge"
-
-#: kcmdesignerfields.cpp:343
-#, fuzzy, kde-format
-msgid "Import Page..."
-msgstr "Calendar nou"
-
-#: kcmdesignerfields.cpp:345
-#, kde-format
-msgid "Edit with Qt Designer..."
-msgstr ""
-
-#: kcmdesignerfields.cpp:370
-#, kde-format
-msgid "Key:"
-msgstr ""
-
-#: kcmdesignerfields.cpp:372
-#, fuzzy, kde-format
-#| msgctxt "@label"
-#| msgid "Type:"
-msgid "Type:"
-msgstr "Tip:"
-
-#: kcmdesignerfields.cpp:374
-#, fuzzy, kde-format
-#| msgctxt "login name on the Kolab server"
-#| msgid "Username:"
-msgid "Classname:"
-msgstr "Nume utilizator:"
-
-#: kcmdesignerfields.cpp:376
-#, kde-format
-msgid "Description:"
-msgstr "Descriere:"
 
 #: koapp.cpp:63
 #, fuzzy, kde-format
@@ -5805,6 +5676,60 @@ msgstr "De făcut: %1"
 msgctxt "4 digit year"
 msgid "%1"
 msgstr "De făcut: %1"
+
+#~ msgid "Text"
+#~ msgstr "Text"
+
+#, fuzzy
+#~| msgid "Select Mode"
+#~ msgid "Selection"
+#~ msgstr "Mod selecție"
+
+#, fuzzy
+#~| msgid "Date && Time"
+#~ msgid "Date & Time"
+#~ msgstr "Dată și oră"
+
+#, fuzzy
+#~ msgid "Date"
+#~ msgstr "Data <="
+
+#, fuzzy
+#~ msgid "<qt>Do you really want to delete '<b>%1</b>'?</qt>"
+#~ msgstr "Nu pot deschide cartea de adrese."
+
+#, fuzzy
+#~| msgid "Import Calendar"
+#~ msgid "Import Page"
+#~ msgstr "Importă calendar"
+
+#, fuzzy
+#~ msgid "Designer Files"
+#~ msgstr "*.vcs|Fișiere vCalendar"
+
+#, fuzzy
+#~| msgid "Delete"
+#~ msgid "Delete Page"
+#~ msgstr "Șterge"
+
+#, fuzzy
+#~ msgid "Import Page..."
+#~ msgstr "Calendar nou"
+
+#, fuzzy
+#~| msgctxt "@label"
+#~| msgid "Type:"
+#~ msgid "Type:"
+#~ msgstr "Tip:"
+
+#, fuzzy
+#~| msgctxt "login name on the Kolab server"
+#~| msgid "Username:"
+#~ msgid "Classname:"
+#~ msgstr "Nume utilizator:"
+
+#~ msgid "Description:"
+#~ msgstr "Descriere:"
 
 #, fuzzy
 #~ msgid "Copying Failed"

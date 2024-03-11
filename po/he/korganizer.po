@@ -17,8 +17,8 @@ msgid ""
 msgstr ""
 "Project-Id-Version: korganizer\n"
 "Report-Msgid-Bugs-To: https://bugs.kde.org\n"
-"POT-Creation-Date: 2024-02-22 00:38+0000\n"
-"PO-Revision-Date: 2024-03-10 00:42+0200\n"
+"POT-Creation-Date: 2024-03-11 00:38+0000\n"
+"PO-Revision-Date: 2024-03-10 23:59+0200\n"
 "Last-Translator: Yaron Shahrabani <sh.yaron@gmail.com>\n"
 "Language-Team: צוות התרגום של KDE ישראל\n"
 "Language: he\n"
@@ -141,7 +141,7 @@ msgstr "ברטיאן ברויקסמה"
 #: aboutdata.cpp:39
 #, kde-format
 msgid "Laszlo Boloni"
-msgstr ""
+msgstr "לאזלו בולוני"
 
 #: aboutdata.cpp:40
 #, kde-format
@@ -156,7 +156,7 @@ msgstr "קריסטופר ברד"
 #: aboutdata.cpp:42
 #, kde-format
 msgid "Kalle Dalheimer"
-msgstr ""
+msgstr "קאל דלהיימר"
 
 #: aboutdata.cpp:43
 #, kde-format
@@ -176,12 +176,12 @@ msgstr "ניל הארט"
 #: aboutdata.cpp:46
 #, kde-format
 msgid "Declan Houlihan"
-msgstr ""
+msgstr "דקלאן הוליהן"
 
 #: aboutdata.cpp:47
 #, kde-format
 msgid "Hans-Jürgen Husel"
-msgstr ""
+msgstr "האנס־יורגן הוסל"
 
 #: aboutdata.cpp:48
 #, kde-format
@@ -226,7 +226,7 @@ msgstr "גלן פרקר"
 #: aboutdata.cpp:56
 #, kde-format
 msgid "Dan Pilone"
-msgstr ""
+msgstr "דן פיילון"
 
 #: aboutdata.cpp:57
 #, kde-format
@@ -236,7 +236,7 @@ msgstr "רומן רוהר"
 #: aboutdata.cpp:58
 #, kde-format
 msgid "Rafał Rzepecki"
-msgstr ""
+msgstr "רפאו ז׳פקי"
 
 #: aboutdata.cpp:58
 #, kde-format
@@ -251,22 +251,22 @@ msgstr "דון סנדרס"
 #: aboutdata.cpp:60
 #, kde-format
 msgid "Bram Schoenmakers"
-msgstr ""
+msgstr "בראם שומאכרס"
 
 #: aboutdata.cpp:61
 #, kde-format
 msgid "Günter Schwann"
-msgstr ""
+msgstr "גונטר שוואן"
 
 #: aboutdata.cpp:62
 #, kde-format
 msgid "Herwin Jan Steehouwer"
-msgstr ""
+msgstr "הרווין יאן שטיהאוור"
 
 #: aboutdata.cpp:63
 #, kde-format
 msgid "Mario Teijeiro"
-msgstr ""
+msgstr "מריו טייחיירו"
 
 #: aboutdata.cpp:64
 #, kde-format
@@ -276,22 +276,22 @@ msgstr "ניק תומפסון"
 #: aboutdata.cpp:65
 #, kde-format
 msgid "Bo Thorsen"
-msgstr ""
+msgstr "בו ת׳ורסן"
 
 #: aboutdata.cpp:66
 #, kde-format
 msgid "Larry Wright"
-msgstr ""
+msgstr "לארי רייט"
 
 #: aboutdata.cpp:67
 #, kde-format
 msgid "Thomas Zander"
-msgstr ""
+msgstr "תומס זנדר"
 
 #: aboutdata.cpp:68
 #, kde-format
 msgid "Fester Zigterman"
-msgstr ""
+msgstr "פסטר ציגטרמן"
 
 #: actionmanager.cpp:130
 #, kde-format
@@ -299,6 +299,8 @@ msgid ""
 "<qt>This will hide the menu bar completely. You can show it again by typing "
 "%1.</qt>"
 msgstr ""
+"<qt> ההגדרה הזאת תסתיר את שורת התפריטים לגמרי. ניתן להציג אותה שוב על ידי "
+"הרצת הפקודה %1. </qt>"
 
 #: actionmanager.cpp:133
 #, kde-format
@@ -329,6 +331,8 @@ msgid ""
 "Select this menu entry if you would like to import the contents of an "
 "iCalendar or vCalendar file into your current calendar collection."
 msgstr ""
+"יש לבחור ברשומת התפריט הזאת כדי לייבא תוכן של קובץ iCalendar או vCalendar "
+"לאוסף לוחות השנה הנוכחי שלך."
 
 #: actionmanager.cpp:253
 #, kde-format
@@ -339,13 +343,13 @@ msgstr "הורדת לוחות שנה חדשים…"
 #, kde-format
 msgctxt "@info:status"
 msgid "Load a calendar from \"Get Hot New Stuff\""
-msgstr ""
+msgstr "טעינת לוח שנה מ„הורדת דברים חדשים לוהטים”"
 
 #: actionmanager.cpp:255
 #, kde-format
 msgctxt "@info:tooltip"
 msgid "Search \"Get Hot New Stuff\" for calendars to import"
-msgstr ""
+msgstr "חיפוש לוחות שנה לייבוא ב„הורדת דברים חדשים לוהטים”"
 
 #: actionmanager.cpp:257
 #, kde-format
@@ -354,6 +358,8 @@ msgid ""
 "This menu entry opens the \"Get Hot New Stuff\" dialog that allows you to "
 "search and import fun and useful calendars donated to the community."
 msgstr ""
+"רשומת תפריט זאת פותחת את חלונית „הורדת דברים חדשים לוהטים” שמאפשר לך לחפש "
+"ולייבא לוחות שנה משעשעים ושימושיים שנתרמו על ידי הקהילה."
 
 #: actionmanager.cpp:278
 #, kde-format
@@ -380,14 +386,14 @@ msgstr "ייצוא לוח שנה לקובץ"
 #, kde-format
 msgctxt "@info:tooltip"
 msgid "Export your calendar to an iCalendar file"
-msgstr ""
+msgstr "ייצוא לוח השנה שלך לקובץ iCalendar"
 
 #: actionmanager.cpp:308
 #, kde-format
 msgctxt "@info:whatsthis"
 msgid ""
 "Allows you to export your entire calendar collection to one iCalendar file."
-msgstr ""
+msgstr "מאפשר לך לייצר את כל אוסף לוחות השנה שלך לקובץ iCalendat יחיד."
 
 #: actionmanager.cpp:314
 #, kde-format
@@ -591,7 +597,7 @@ msgstr "תצוגת יומן"
 #, kde-format
 msgctxt "@info:tooltip"
 msgid "Switch to the Journal View"
-msgstr ""
+msgstr "עובר לתצוגת היומן"
 
 #: actionmanager.cpp:441
 #, kde-format
@@ -1382,7 +1388,7 @@ msgid "Unable to copy the item \"%1\" to %2."
 msgstr "אין אפשרות להעתיק את הפריט על %1."
 
 #: calendarview.cpp:1476 calendarview.cpp:2457
-#, fuzzy, kde-format
+#, kde-format
 msgctxt "@title:window"
 msgid "Copying Failed"
 msgstr "העתקה נכשלה"
@@ -1398,7 +1404,7 @@ msgstr ""
 "תחת %2"
 
 #: calendarview.cpp:1539 calendarview.cpp:1555 calendarview.cpp:2492
-#, fuzzy, kde-format
+#, kde-format
 msgctxt "@title:window"
 msgid "Moving Failed"
 msgstr "העברה נכשלה"
@@ -1410,10 +1416,10 @@ msgid "\"%1\" was successfully moved from %2 to %3."
 msgstr "„%1” הועבר בהצלחה מתוך %2 אל %3."
 
 #: calendarview.cpp:1545
-#, fuzzy, kde-format
+#, kde-format
 msgctxt "@title:window"
 msgid "Moving Succeeded"
-msgstr "העברה נכשלה"
+msgstr "העברה הצליחה"
 
 #: calendarview.cpp:1551
 #, kde-format
@@ -1427,11 +1433,10 @@ msgid "Do you want to dissociate the occurrence on %1 from the recurrence?"
 msgstr "                 הצגת רשימה של האירועים ליום הנוכחי"
 
 #: calendarview.cpp:1593 calendarview.cpp:1605 calendarview.cpp:2264
-#, fuzzy, kde-format
-#| msgid "KOrganizer Confirmation"
+#, kde-format
 msgctxt "@title:window"
 msgid "KOrganizer Confirmation"
-msgstr "בקשה לאישור מ־KOrganizer"
+msgstr "אישור KOrganizer"
 
 #: calendarview.cpp:1594
 #, fuzzy, kde-format
@@ -1493,16 +1498,16 @@ msgid "Do you want to overwrite %1?"
 msgstr "לדרוס את %1?"
 
 #: calendarview.cpp:1808
-#, fuzzy, kde-format
+#, kde-format
 msgctxt "@title:window"
 msgid "Export Calendar"
-msgstr "ייבוא של לוח־שנה"
+msgstr "ייצוא לוח שנה"
 
 #: calendarview.cpp:1822
-#, fuzzy, kde-format
+#, kde-format
 msgctxt "save failure cause unknown"
 msgid "Reason unknown"
-msgstr "לא ידוע"
+msgstr "הסיבה לא ידועה"
 
 #: calendarview.cpp:1824
 #, fuzzy, kde-format
@@ -1531,9 +1536,9 @@ msgid "Delete Only This"
 msgstr "למחוק רק את זה"
 
 #: calendarview.cpp:2266 calendarview.cpp:2324
-#, fuzzy, kde-format
+#, kde-format
 msgid "Delete All"
-msgstr "מחק ה&כל"
+msgstr "מחיקה של הכול"
 
 #: calendarview.cpp:2297
 #, fuzzy, kde-format
@@ -1596,9 +1601,9 @@ msgid "Delete &All"
 msgstr "מחיקה של ה&כול"
 
 #: calendarview.cpp:2387 calendarview.cpp:2394
-#, fuzzy, kde-format
+#, kde-format
 msgid "Delete \"%1\""
-msgstr "מחק ה&כל"
+msgstr "למחוק את „%1”"
 
 #: calendarview.cpp:2422
 #, kde-format
@@ -1617,11 +1622,10 @@ msgid "Delete all completed to-dos from checked calendars?"
 msgstr "האם למחוק את כל המטלות שהושלמו?"
 
 #: calendarview.cpp:2433
-#, fuzzy, kde-format
-#| msgid "Purge To-dos"
+#, kde-format
 msgctxt "@title:window"
 msgid "Purge To-dos"
-msgstr "מחיקת מטלות"
+msgstr "ניפוי מטלות"
 
 #: calendarview.cpp:2434
 #, kde-format
@@ -1640,14 +1644,14 @@ msgid "Unable to copy the item to %1."
 msgstr "אי אפשר להעתיק את הפריט אל %1."
 
 #: calendarview.cpp:2492
-#, fuzzy, kde-format
+#, kde-format
 msgid "Unable to move the item to  %1."
-msgstr "אין אפשרות להעביר את הפריט ל־ %1."
+msgstr "לא ניתן להעביר את הפריט אל %1."
 
 #: calendarview.cpp:2702
-#, fuzzy, kde-format
+#, kde-format
 msgid "0 completed to-dos were purged."
-msgstr "הסתר משימות &שהושלמו"
+msgstr "0 מטלות שהושלמו נופו."
 
 #: calendarview.cpp:2703 calendarview.cpp:2713
 #, kde-format
@@ -1669,9 +1673,9 @@ msgstr[2] ""
 msgstr[3] ""
 
 #: calendarview.cpp:2718
-#, fuzzy, kde-format
+#, kde-format
 msgid "An error occurred while purging completed to-dos: %1"
-msgstr "מוחק מטלות שהושלמו"
+msgstr "אירעה שגיאה בניפוי המטלות שהושלמו: %1"
 
 #: calendarview.cpp:2772
 #, kde-format
@@ -1972,127 +1976,6 @@ msgstr[0] ""
 msgstr[1] ""
 msgstr[2] ""
 msgstr[3] ""
-
-#: kcmdesignerfields.cpp:61 kcmdesignerfields.cpp:62 kcmdesignerfields.cpp:67
-#: kcmdesignerfields.cpp:68
-#, kde-format
-msgid "Text"
-msgstr "טקסט"
-
-#: kcmdesignerfields.cpp:63
-#, kde-format
-msgid "Numeric Value"
-msgstr "ערך מספרי"
-
-#: kcmdesignerfields.cpp:64
-#, kde-format
-msgid "Boolean"
-msgstr "בוליאני"
-
-#: kcmdesignerfields.cpp:65
-#, kde-format
-msgid "Selection"
-msgstr "בחירה"
-
-#: kcmdesignerfields.cpp:66 kcmdesignerfields.cpp:69
-#, kde-format
-msgid "Date & Time"
-msgstr "תאריך ושעה"
-
-#: kcmdesignerfields.cpp:70
-#, kde-format
-msgid "Date"
-msgstr "תאריך"
-
-#: kcmdesignerfields.cpp:158
-#, fuzzy, kde-format
-msgid "<qt>Do you really want to delete '<b>%1</b>'?</qt>"
-msgstr "<qt>האם אתה בטוח שברצונך למחוק את המשאב <b>%1</b>?</qt>"
-
-#: kcmdesignerfields.cpp:171
-#, kde-format
-msgid "Import Page"
-msgstr "ייבוא עמוד"
-
-#: kcmdesignerfields.cpp:173
-#, kde-format
-msgid "Designer Files"
-msgstr "קובצי מעצבים"
-
-#: kcmdesignerfields.cpp:272
-#, kde-format
-msgid ""
-"<qt><b>Warning:</b> Qt Designer could not be found. It is probably not "
-"installed. You will only be able to import existing designer files.</qt>"
-msgstr ""
-
-#: kcmdesignerfields.cpp:282
-#, kde-format
-msgid "Available Pages"
-msgstr "עמודים זמינים"
-
-#: kcmdesignerfields.cpp:288
-#, kde-format
-msgid "Preview of Selected Page"
-msgstr "הצגה מקדימה של העמוד הנבחר"
-
-#: kcmdesignerfields.cpp:307
-#, kde-format
-msgid ""
-"<qt><p>This section allows you to add your own GUI Elements ('<i>Widgets</"
-"i>') to store your own values into %1. Proceed as described below:</"
-"p><ol><li>Click on '<i>Edit with Qt Designer</i>'</li><li>In the dialog, "
-"select '<i>Widget</i>', then click <i>OK</i></li><li>Add your widgets to the "
-"form</li><li>Save the file in the directory proposed by Qt Designer</"
-"li><li>Close Qt Designer</li></ol><p>In case you already have a designer "
-"file (*.ui) located somewhere on your hard disk, simply choose '<i>Import "
-"Page</i>'</p><p><b>Important:</b> The name of each input widget you place "
-"within the form must start with '<i>X_</i>'; so if you want the widget to "
-"correspond to your custom entry '<i>X-Foo</i>', set the widget's <i>name</i> "
-"property to '<i>X_Foo</i>'.</p><p><b>Important:</b> The widget will edit "
-"custom fields with an application name of %2.  To change the application "
-"name to be edited, set the widget name in Qt Designer.</p></qt>"
-msgstr ""
-
-#: kcmdesignerfields.cpp:329
-#, kde-format
-msgid "<a href=\"whatsthis:%1\">How does this work?</a>"
-msgstr ""
-
-#: kcmdesignerfields.cpp:340
-#, kde-format
-msgid "Delete Page"
-msgstr "מחיקת עמוד"
-
-#: kcmdesignerfields.cpp:343
-#, kde-format
-msgid "Import Page..."
-msgstr "ייבוא עמוד…"
-
-#: kcmdesignerfields.cpp:345
-#, kde-format
-msgid "Edit with Qt Designer..."
-msgstr "עריכה עם Qt Designer…"
-
-#: kcmdesignerfields.cpp:370
-#, kde-format
-msgid "Key:"
-msgstr "מפתח:"
-
-#: kcmdesignerfields.cpp:372
-#, kde-format
-msgid "Type:"
-msgstr "סוג:"
-
-#: kcmdesignerfields.cpp:374
-#, kde-format
-msgid "Classname:"
-msgstr "שם המחלקה:"
-
-#: kcmdesignerfields.cpp:376
-#, kde-format
-msgid "Description:"
-msgstr "תיאור:"
 
 #: koapp.cpp:63
 #, fuzzy, kde-format
@@ -4691,13 +4574,13 @@ msgstr ""
 #: settings/korganizer.kcfg:426
 #, kde-format
 msgid "Always ask"
-msgstr ""
+msgstr "תמיד לשאול"
 
 #. i18n: ectx: label, entry (DefaultTodoAttachMethod), group (Hidden Options)
 #: settings/korganizer.kcfg:429
 #, kde-format
 msgid "Only attach link to message"
-msgstr ""
+msgstr "לצרף רק קישור להודעה"
 
 #. i18n: ectx: label, entry (DefaultTodoAttachMethod), group (Hidden Options)
 #: settings/korganizer.kcfg:432
@@ -5787,6 +5670,61 @@ msgstr "%1"
 msgctxt "4 digit year"
 msgid "%1"
 msgstr "%1"
+
+#~ msgid "Text"
+#~ msgstr "טקסט"
+
+#~ msgid "Numeric Value"
+#~ msgstr "ערך מספרי"
+
+#~ msgid "Boolean"
+#~ msgstr "בוליאני"
+
+#~ msgid "Selection"
+#~ msgstr "בחירה"
+
+#~ msgid "Date & Time"
+#~ msgstr "תאריך ושעה"
+
+#~ msgid "Date"
+#~ msgstr "תאריך"
+
+#, fuzzy
+#~ msgid "<qt>Do you really want to delete '<b>%1</b>'?</qt>"
+#~ msgstr "<qt>האם אתה בטוח שברצונך למחוק את המשאב <b>%1</b>?</qt>"
+
+#~ msgid "Import Page"
+#~ msgstr "ייבוא עמוד"
+
+#~ msgid "Designer Files"
+#~ msgstr "קובצי מעצבים"
+
+#~ msgid "Available Pages"
+#~ msgstr "עמודים זמינים"
+
+#~ msgid "Preview of Selected Page"
+#~ msgstr "הצגה מקדימה של העמוד הנבחר"
+
+#~ msgid "Delete Page"
+#~ msgstr "מחיקת עמוד"
+
+#~ msgid "Import Page..."
+#~ msgstr "ייבוא עמוד…"
+
+#~ msgid "Edit with Qt Designer..."
+#~ msgstr "עריכה עם Qt Designer…"
+
+#~ msgid "Key:"
+#~ msgstr "מפתח:"
+
+#~ msgid "Type:"
+#~ msgstr "סוג:"
+
+#~ msgid "Classname:"
+#~ msgstr "שם המחלקה:"
+
+#~ msgid "Description:"
+#~ msgstr "תיאור:"
 
 #~ msgid "Copying Failed"
 #~ msgstr "העתקה נכשלה"

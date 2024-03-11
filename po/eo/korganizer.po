@@ -7,7 +7,7 @@ msgid ""
 msgstr ""
 "Project-Id-Version: korganizer\n"
 "Report-Msgid-Bugs-To: https://bugs.kde.org\n"
-"POT-Creation-Date: 2024-02-22 00:38+0000\n"
+"POT-Creation-Date: 2024-03-11 00:38+0000\n"
 "PO-Revision-Date: 2024-01-05 21:02+0100\n"
 "Last-Translator: Oliver Kellogg <okellogg@users.sourceforge.net>\n"
 "Language-Team: esperanto <kde-i18n-eo@kde.org>\n"
@@ -2011,143 +2011,6 @@ msgid "%1 match"
 msgid_plural "%1 matches"
 msgstr[0] "%1 kongruo"
 msgstr[1] "%1 kongruoj"
-
-#: kcmdesignerfields.cpp:61 kcmdesignerfields.cpp:62 kcmdesignerfields.cpp:67
-#: kcmdesignerfields.cpp:68
-#, kde-format
-msgid "Text"
-msgstr "Teksto"
-
-#: kcmdesignerfields.cpp:63
-#, kde-format
-msgid "Numeric Value"
-msgstr "Nombra Valoro"
-
-#: kcmdesignerfields.cpp:64
-#, kde-format
-msgid "Boolean"
-msgstr "Bulea"
-
-#: kcmdesignerfields.cpp:65
-#, kde-format
-msgid "Selection"
-msgstr "Elekto"
-
-#: kcmdesignerfields.cpp:66 kcmdesignerfields.cpp:69
-#, kde-format
-msgid "Date & Time"
-msgstr "Dato & Tempo"
-
-#: kcmdesignerfields.cpp:70
-#, kde-format
-msgid "Date"
-msgstr "Dato"
-
-#: kcmdesignerfields.cpp:158
-#, kde-format
-msgid "<qt>Do you really want to delete '<b>%1</b>'?</qt>"
-msgstr "<qt>Ĉu vi vere volas forigi '<b>%1</b>'?</qt>"
-
-#: kcmdesignerfields.cpp:171
-#, kde-format
-msgid "Import Page"
-msgstr "Import Paĝo"
-
-#: kcmdesignerfields.cpp:173
-#, kde-format
-msgid "Designer Files"
-msgstr "Designer Dosieroj"
-
-#: kcmdesignerfields.cpp:272
-#, kde-format
-msgid ""
-"<qt><b>Warning:</b> Qt Designer could not be found. It is probably not "
-"installed. You will only be able to import existing designer files.</qt>"
-msgstr ""
-"<qt><b>Averto:</b> Qt Designer ne troviĝis. Ĝi verŝajne ne estas instalita. "
-"Vi nur povos importi ekzistantajn dezajnajn dosierojn.</qt>"
-
-#: kcmdesignerfields.cpp:282
-#, kde-format
-msgid "Available Pages"
-msgstr "Disponeblaj Paĝoj"
-
-#: kcmdesignerfields.cpp:288
-#, kde-format
-msgid "Preview of Selected Page"
-msgstr "Antaŭrigardo de Elektita Paĝo"
-
-#: kcmdesignerfields.cpp:307
-#, kde-format
-msgid ""
-"<qt><p>This section allows you to add your own GUI Elements ('<i>Widgets</"
-"i>') to store your own values into %1. Proceed as described below:</"
-"p><ol><li>Click on '<i>Edit with Qt Designer</i>'</li><li>In the dialog, "
-"select '<i>Widget</i>', then click <i>OK</i></li><li>Add your widgets to the "
-"form</li><li>Save the file in the directory proposed by Qt Designer</"
-"li><li>Close Qt Designer</li></ol><p>In case you already have a designer "
-"file (*.ui) located somewhere on your hard disk, simply choose '<i>Import "
-"Page</i>'</p><p><b>Important:</b> The name of each input widget you place "
-"within the form must start with '<i>X_</i>'; so if you want the widget to "
-"correspond to your custom entry '<i>X-Foo</i>', set the widget's <i>name</i> "
-"property to '<i>X_Foo</i>'.</p><p><b>Important:</b> The widget will edit "
-"custom fields with an application name of %2.  To change the application "
-"name to be edited, set the widget name in Qt Designer.</p></qt>"
-msgstr ""
-"<qt><p>Ĉi tiu sekcio permesas al vi aldoni viajn proprajn GUI-Elementojn "
-"('<i>Widgets</i>') por konservi viajn proprajn valorojn en %1. Sekvu kiel "
-"priskribite sube:</p><ol><li>Alklaku '<i>Redakti per Qt Designer</i>'</"
-"li><li>En la dialogo, elektu '<i>Fenestraĵo</i>', tiam alklaku <i>Bone</i></"
-"li><li>Aldonu viajn fenestraĵojn al la formularo</li><li>Konservu la "
-"dosieron en la dosierujo proponita de Qt Designer</li><li>Fermu Qt Designer</"
-"li></ol><p>Se vi jam havas dezajnistan dosieron (*.ui) situantan ie sur via "
-"malmola disko, simple elektu '<i>Importi Paĝon</i>'</p><p><b>Grava:</b> La "
-"nomo de ĉiu eniga fenestraĵo, kiun vi metas en la formularon, devas "
-"komenciĝi per '<i>X_</i>'; do se vi volas, ke la fenestraĵo respondu al via "
-"propra enskribo '<i>X-Foo</i>', agordu la proprecon <i>nomo</i> de la "
-"fenestraĵo al '<i>X_Foo</i>'.</p><p><b>Grave:</b> La fenestraĵo redaktos "
-"proprajn kampojn kun aplika nomo %2. Por ŝanĝi la redaktotan aplikaĵon, "
-"agordu la fenestraĵan nomon en Qt Designer.</p></qt>"
-
-#: kcmdesignerfields.cpp:329
-#, kde-format
-msgid "<a href=\"whatsthis:%1\">How does this work?</a>"
-msgstr "<a href=\"whatsthis:%1\">Kiel ĉi tio funkcias?</a>"
-
-#: kcmdesignerfields.cpp:340
-#, kde-format
-msgid "Delete Page"
-msgstr "Forigi Paĝon"
-
-#: kcmdesignerfields.cpp:343
-#, kde-format
-msgid "Import Page..."
-msgstr "Importi paĝon..."
-
-#: kcmdesignerfields.cpp:345
-#, kde-format
-msgid "Edit with Qt Designer..."
-msgstr "Redakti per Qt Designer..."
-
-#: kcmdesignerfields.cpp:370
-#, kde-format
-msgid "Key:"
-msgstr "Ŝlosilo:"
-
-#: kcmdesignerfields.cpp:372
-#, kde-format
-msgid "Type:"
-msgstr "Tipo:"
-
-#: kcmdesignerfields.cpp:374
-#, kde-format
-msgid "Classname:"
-msgstr "Klasnomo:"
-
-#: kcmdesignerfields.cpp:376
-#, kde-format
-msgid "Description:"
-msgstr "Priskribo:"
 
 #: koapp.cpp:63
 #, kde-format
@@ -6017,3 +5880,99 @@ msgstr "%1"
 msgctxt "4 digit year"
 msgid "%1"
 msgstr "%1"
+
+#~ msgid "Text"
+#~ msgstr "Teksto"
+
+#~ msgid "Numeric Value"
+#~ msgstr "Nombra Valoro"
+
+#~ msgid "Boolean"
+#~ msgstr "Bulea"
+
+#~ msgid "Selection"
+#~ msgstr "Elekto"
+
+#~ msgid "Date & Time"
+#~ msgstr "Dato & Tempo"
+
+#~ msgid "Date"
+#~ msgstr "Dato"
+
+#~ msgid "<qt>Do you really want to delete '<b>%1</b>'?</qt>"
+#~ msgstr "<qt>Ĉu vi vere volas forigi '<b>%1</b>'?</qt>"
+
+#~ msgid "Import Page"
+#~ msgstr "Import Paĝo"
+
+#~ msgid "Designer Files"
+#~ msgstr "Designer Dosieroj"
+
+#~ msgid ""
+#~ "<qt><b>Warning:</b> Qt Designer could not be found. It is probably not "
+#~ "installed. You will only be able to import existing designer files.</qt>"
+#~ msgstr ""
+#~ "<qt><b>Averto:</b> Qt Designer ne troviĝis. Ĝi verŝajne ne estas "
+#~ "instalita. Vi nur povos importi ekzistantajn dezajnajn dosierojn.</qt>"
+
+#~ msgid "Available Pages"
+#~ msgstr "Disponeblaj Paĝoj"
+
+#~ msgid "Preview of Selected Page"
+#~ msgstr "Antaŭrigardo de Elektita Paĝo"
+
+#~ msgid ""
+#~ "<qt><p>This section allows you to add your own GUI Elements ('<i>Widgets</"
+#~ "i>') to store your own values into %1. Proceed as described below:</"
+#~ "p><ol><li>Click on '<i>Edit with Qt Designer</i>'</li><li>In the dialog, "
+#~ "select '<i>Widget</i>', then click <i>OK</i></li><li>Add your widgets to "
+#~ "the form</li><li>Save the file in the directory proposed by Qt Designer</"
+#~ "li><li>Close Qt Designer</li></ol><p>In case you already have a designer "
+#~ "file (*.ui) located somewhere on your hard disk, simply choose '<i>Import "
+#~ "Page</i>'</p><p><b>Important:</b> The name of each input widget you place "
+#~ "within the form must start with '<i>X_</i>'; so if you want the widget to "
+#~ "correspond to your custom entry '<i>X-Foo</i>', set the widget's <i>name</"
+#~ "i> property to '<i>X_Foo</i>'.</p><p><b>Important:</b> The widget will "
+#~ "edit custom fields with an application name of %2.  To change the "
+#~ "application name to be edited, set the widget name in Qt Designer.</p></"
+#~ "qt>"
+#~ msgstr ""
+#~ "<qt><p>Ĉi tiu sekcio permesas al vi aldoni viajn proprajn GUI-Elementojn "
+#~ "('<i>Widgets</i>') por konservi viajn proprajn valorojn en %1. Sekvu kiel "
+#~ "priskribite sube:</p><ol><li>Alklaku '<i>Redakti per Qt Designer</i>'</"
+#~ "li><li>En la dialogo, elektu '<i>Fenestraĵo</i>', tiam alklaku <i>Bone</"
+#~ "i></li><li>Aldonu viajn fenestraĵojn al la formularo</li><li>Konservu la "
+#~ "dosieron en la dosierujo proponita de Qt Designer</li><li>Fermu Qt "
+#~ "Designer</li></ol><p>Se vi jam havas dezajnistan dosieron (*.ui) "
+#~ "situantan ie sur via malmola disko, simple elektu '<i>Importi Paĝon</i>'</"
+#~ "p><p><b>Grava:</b> La nomo de ĉiu eniga fenestraĵo, kiun vi metas en la "
+#~ "formularon, devas komenciĝi per '<i>X_</i>'; do se vi volas, ke la "
+#~ "fenestraĵo respondu al via propra enskribo '<i>X-Foo</i>', agordu la "
+#~ "proprecon <i>nomo</i> de la fenestraĵo al '<i>X_Foo</i>'.</p><p><b>Grave:"
+#~ "</b> La fenestraĵo redaktos proprajn kampojn kun aplika nomo %2. Por "
+#~ "ŝanĝi la redaktotan aplikaĵon, agordu la fenestraĵan nomon en Qt Designer."
+#~ "</p></qt>"
+
+#~ msgid "<a href=\"whatsthis:%1\">How does this work?</a>"
+#~ msgstr "<a href=\"whatsthis:%1\">Kiel ĉi tio funkcias?</a>"
+
+#~ msgid "Delete Page"
+#~ msgstr "Forigi Paĝon"
+
+#~ msgid "Import Page..."
+#~ msgstr "Importi paĝon..."
+
+#~ msgid "Edit with Qt Designer..."
+#~ msgstr "Redakti per Qt Designer..."
+
+#~ msgid "Key:"
+#~ msgstr "Ŝlosilo:"
+
+#~ msgid "Type:"
+#~ msgstr "Tipo:"
+
+#~ msgid "Classname:"
+#~ msgstr "Klasnomo:"
+
+#~ msgid "Description:"
+#~ msgstr "Priskribo:"

@@ -10,7 +10,7 @@ msgid ""
 msgstr ""
 "Project-Id-Version: korganizer\n"
 "Report-Msgid-Bugs-To: https://bugs.kde.org\n"
-"POT-Creation-Date: 2024-02-22 00:38+0000\n"
+"POT-Creation-Date: 2024-03-11 00:38+0000\n"
 "PO-Revision-Date: 2024-02-02 23:04+0200\n"
 "Last-Translator: Mindaugas Baranauskas <opensuse.lietuviu.kalba@gmail.com>\n"
 "Language-Team: lt <kde-i18n-lt@kde.org>\n"
@@ -2070,145 +2070,6 @@ msgstr[0] ""
 msgstr[1] ""
 msgstr[2] ""
 msgstr[3] ""
-
-#: kcmdesignerfields.cpp:61 kcmdesignerfields.cpp:62 kcmdesignerfields.cpp:67
-#: kcmdesignerfields.cpp:68
-#, kde-format
-msgid "Text"
-msgstr "Tekstas"
-
-#: kcmdesignerfields.cpp:63
-#, kde-format
-msgid "Numeric Value"
-msgstr "Skaitinė reikšmė"
-
-#: kcmdesignerfields.cpp:64
-#, kde-format
-msgid "Boolean"
-msgstr "Loginis"
-
-#: kcmdesignerfields.cpp:65
-#, kde-format
-msgid "Selection"
-msgstr "Pažymėjimas"
-
-#: kcmdesignerfields.cpp:66 kcmdesignerfields.cpp:69
-#, kde-format
-msgid "Date & Time"
-msgstr "Data ir laikas"
-
-#: kcmdesignerfields.cpp:70
-#, kde-format
-msgid "Date"
-msgstr "Data"
-
-#: kcmdesignerfields.cpp:158
-#, kde-format
-msgid "<qt>Do you really want to delete '<b>%1</b>'?</qt>"
-msgstr "<qt>Ar tikrai norite pašalinti „<b>%1</b>“?</qt>"
-
-#: kcmdesignerfields.cpp:171
-#, kde-format
-msgid "Import Page"
-msgstr "Importuoti puslapį"
-
-#: kcmdesignerfields.cpp:173
-#, fuzzy, kde-format
-#| msgid "*.ui|Designer Files"
-msgid "Designer Files"
-msgstr "*.ui|Designer failai"
-
-#: kcmdesignerfields.cpp:272
-#, kde-format
-msgid ""
-"<qt><b>Warning:</b> Qt Designer could not be found. It is probably not "
-"installed. You will only be able to import existing designer files.</qt>"
-msgstr ""
-"<qt><b>Perspėjimas:</b> Qt Designer programa nerasta. Greičiausiai ši "
-"programa nėra įdiegta. Galėsite importuoti tik egzistuojančius „designer“ "
-"failus.</qt>"
-
-#: kcmdesignerfields.cpp:282
-#, kde-format
-msgid "Available Pages"
-msgstr "Prieinami puslapiai"
-
-#: kcmdesignerfields.cpp:288
-#, kde-format
-msgid "Preview of Selected Page"
-msgstr "Pažymėto puslapio peržiūra"
-
-#: kcmdesignerfields.cpp:307
-#, kde-format
-msgid ""
-"<qt><p>This section allows you to add your own GUI Elements ('<i>Widgets</"
-"i>') to store your own values into %1. Proceed as described below:</"
-"p><ol><li>Click on '<i>Edit with Qt Designer</i>'</li><li>In the dialog, "
-"select '<i>Widget</i>', then click <i>OK</i></li><li>Add your widgets to the "
-"form</li><li>Save the file in the directory proposed by Qt Designer</"
-"li><li>Close Qt Designer</li></ol><p>In case you already have a designer "
-"file (*.ui) located somewhere on your hard disk, simply choose '<i>Import "
-"Page</i>'</p><p><b>Important:</b> The name of each input widget you place "
-"within the form must start with '<i>X_</i>'; so if you want the widget to "
-"correspond to your custom entry '<i>X-Foo</i>', set the widget's <i>name</i> "
-"property to '<i>X_Foo</i>'.</p><p><b>Important:</b> The widget will edit "
-"custom fields with an application name of %2.  To change the application "
-"name to be edited, set the widget name in Qt Designer.</p></qt>"
-msgstr ""
-"<qt><p>Šioje skiltyje galite pridėti savo grafinės sąsajos elementus "
-"('<i>valdiklius</i>'), kurie leis įrašyti jūsų reikšmes į %1. Darykite taip:"
-"</p><ol><li>Spauskite '<i>Redaguoti su Qt Designer</i>'</li><li>Dialoge "
-"parinkite '<i>Valdiklis</i>', tada spauskite <i>Gerai</i></li><li>Pridėkite "
-"savo valdiklius į formą</li><li>Įrašykite failą aplanke, kurį pasiūlys Qt "
-"Designer</li><li>Uždarykite Qt Designer</li></ol><p>Jei jau turite "
-"dizainerio failą (*.ui), esantį kažkur jūsų diske, tiesiog parinkite "
-"'<i>Importuoti puslapį</i>'</p><p><b>Svarbu:</b> Kiekvieno jūsų pridedamo į "
-"formą valdiklio pavadinimas turi prasidėti „<i>X_</i>“. Taigi jei norite "
-"valdiklio, atitinkančio jūsų savą įrašą „<i>X-Foo</i>“, nurodykite valdiklio "
-"savybę <i>pavadinimas</i> „<i>X_Foo</i>“.</p><p><b>Svarbu:</b> Valdiklis "
-"keis savus laukus su programa, kuri vadinasi %2.  Norėdami pakeisti "
-"redaguojamos programos pavadinimą, nustatykite valdiklio pavadinimą "
-"naudodami Qt Designer.</p></qt>"
-
-#: kcmdesignerfields.cpp:329
-#, kde-format
-msgid "<a href=\"whatsthis:%1\">How does this work?</a>"
-msgstr "<a href=\"whatsthis:%1\">Kaip tai veikia?</a>"
-
-#: kcmdesignerfields.cpp:340
-#, kde-format
-msgid "Delete Page"
-msgstr "Pašalinti puslapį"
-
-#: kcmdesignerfields.cpp:343
-#, kde-format
-msgid "Import Page..."
-msgstr "Importuoti puslapį..."
-
-#: kcmdesignerfields.cpp:345
-#, kde-format
-msgid "Edit with Qt Designer..."
-msgstr "Redaguoti su Qt Designer..."
-
-#: kcmdesignerfields.cpp:370
-#, kde-format
-msgid "Key:"
-msgstr "Klavišas:"
-
-#: kcmdesignerfields.cpp:372
-#, kde-format
-msgid "Type:"
-msgstr "Tipas:"
-
-#: kcmdesignerfields.cpp:374
-#, kde-format
-msgid "Classname:"
-msgstr "Klasės pavadinimas:"
-
-#: kcmdesignerfields.cpp:376
-#, kde-format
-msgid "Description:"
-msgstr "Aprašymas:"
 
 #: koapp.cpp:63
 #, fuzzy, kde-format
@@ -6196,6 +6057,104 @@ msgstr "%1"
 msgctxt "4 digit year"
 msgid "%1"
 msgstr "%1"
+
+#~ msgid "Text"
+#~ msgstr "Tekstas"
+
+#~ msgid "Numeric Value"
+#~ msgstr "Skaitinė reikšmė"
+
+#~ msgid "Boolean"
+#~ msgstr "Loginis"
+
+#~ msgid "Selection"
+#~ msgstr "Pažymėjimas"
+
+#~ msgid "Date & Time"
+#~ msgstr "Data ir laikas"
+
+#~ msgid "Date"
+#~ msgstr "Data"
+
+#~ msgid "<qt>Do you really want to delete '<b>%1</b>'?</qt>"
+#~ msgstr "<qt>Ar tikrai norite pašalinti „<b>%1</b>“?</qt>"
+
+#~ msgid "Import Page"
+#~ msgstr "Importuoti puslapį"
+
+#, fuzzy
+#~| msgid "*.ui|Designer Files"
+#~ msgid "Designer Files"
+#~ msgstr "*.ui|Designer failai"
+
+#~ msgid ""
+#~ "<qt><b>Warning:</b> Qt Designer could not be found. It is probably not "
+#~ "installed. You will only be able to import existing designer files.</qt>"
+#~ msgstr ""
+#~ "<qt><b>Perspėjimas:</b> Qt Designer programa nerasta. Greičiausiai ši "
+#~ "programa nėra įdiegta. Galėsite importuoti tik egzistuojančius „designer“ "
+#~ "failus.</qt>"
+
+#~ msgid "Available Pages"
+#~ msgstr "Prieinami puslapiai"
+
+#~ msgid "Preview of Selected Page"
+#~ msgstr "Pažymėto puslapio peržiūra"
+
+#~ msgid ""
+#~ "<qt><p>This section allows you to add your own GUI Elements ('<i>Widgets</"
+#~ "i>') to store your own values into %1. Proceed as described below:</"
+#~ "p><ol><li>Click on '<i>Edit with Qt Designer</i>'</li><li>In the dialog, "
+#~ "select '<i>Widget</i>', then click <i>OK</i></li><li>Add your widgets to "
+#~ "the form</li><li>Save the file in the directory proposed by Qt Designer</"
+#~ "li><li>Close Qt Designer</li></ol><p>In case you already have a designer "
+#~ "file (*.ui) located somewhere on your hard disk, simply choose '<i>Import "
+#~ "Page</i>'</p><p><b>Important:</b> The name of each input widget you place "
+#~ "within the form must start with '<i>X_</i>'; so if you want the widget to "
+#~ "correspond to your custom entry '<i>X-Foo</i>', set the widget's <i>name</"
+#~ "i> property to '<i>X_Foo</i>'.</p><p><b>Important:</b> The widget will "
+#~ "edit custom fields with an application name of %2.  To change the "
+#~ "application name to be edited, set the widget name in Qt Designer.</p></"
+#~ "qt>"
+#~ msgstr ""
+#~ "<qt><p>Šioje skiltyje galite pridėti savo grafinės sąsajos elementus "
+#~ "('<i>valdiklius</i>'), kurie leis įrašyti jūsų reikšmes į %1. Darykite "
+#~ "taip:</p><ol><li>Spauskite '<i>Redaguoti su Qt Designer</i>'</"
+#~ "li><li>Dialoge parinkite '<i>Valdiklis</i>', tada spauskite <i>Gerai</i></"
+#~ "li><li>Pridėkite savo valdiklius į formą</li><li>Įrašykite failą aplanke, "
+#~ "kurį pasiūlys Qt Designer</li><li>Uždarykite Qt Designer</li></ol><p>Jei "
+#~ "jau turite dizainerio failą (*.ui), esantį kažkur jūsų diske, tiesiog "
+#~ "parinkite '<i>Importuoti puslapį</i>'</p><p><b>Svarbu:</b> Kiekvieno jūsų "
+#~ "pridedamo į formą valdiklio pavadinimas turi prasidėti „<i>X_</i>“. Taigi "
+#~ "jei norite valdiklio, atitinkančio jūsų savą įrašą „<i>X-Foo</i>“, "
+#~ "nurodykite valdiklio savybę <i>pavadinimas</i> „<i>X_Foo</i>“.</"
+#~ "p><p><b>Svarbu:</b> Valdiklis keis savus laukus su programa, kuri "
+#~ "vadinasi %2.  Norėdami pakeisti redaguojamos programos pavadinimą, "
+#~ "nustatykite valdiklio pavadinimą naudodami Qt Designer.</p></qt>"
+
+#~ msgid "<a href=\"whatsthis:%1\">How does this work?</a>"
+#~ msgstr "<a href=\"whatsthis:%1\">Kaip tai veikia?</a>"
+
+#~ msgid "Delete Page"
+#~ msgstr "Pašalinti puslapį"
+
+#~ msgid "Import Page..."
+#~ msgstr "Importuoti puslapį..."
+
+#~ msgid "Edit with Qt Designer..."
+#~ msgstr "Redaguoti su Qt Designer..."
+
+#~ msgid "Key:"
+#~ msgstr "Klavišas:"
+
+#~ msgid "Type:"
+#~ msgstr "Tipas:"
+
+#~ msgid "Classname:"
+#~ msgstr "Klasės pavadinimas:"
+
+#~ msgid "Description:"
+#~ msgstr "Aprašymas:"
 
 #~ msgid "Copying Failed"
 #~ msgstr "Kopijavimas nepavyko"

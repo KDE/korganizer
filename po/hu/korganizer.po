@@ -7,7 +7,7 @@ msgid ""
 msgstr ""
 "Project-Id-Version: KDE 4.3\n"
 "Report-Msgid-Bugs-To: https://bugs.kde.org\n"
-"POT-Creation-Date: 2024-02-22 00:38+0000\n"
+"POT-Creation-Date: 2024-03-11 00:38+0000\n"
 "PO-Revision-Date: 2024-02-19 14:04+0100\n"
 "Last-Translator: Kristof Kiszel <ulysses@fsf.hu>\n"
 "Language-Team: Hungarian <kde-l10n-hu@kde.org>\n"
@@ -2080,145 +2080,6 @@ msgid "%1 match"
 msgid_plural "%1 matches"
 msgstr[0] ""
 msgstr[1] ""
-
-#: kcmdesignerfields.cpp:61 kcmdesignerfields.cpp:62 kcmdesignerfields.cpp:67
-#: kcmdesignerfields.cpp:68
-#, kde-format
-msgid "Text"
-msgstr "Szöveg"
-
-#: kcmdesignerfields.cpp:63
-#, kde-format
-msgid "Numeric Value"
-msgstr "Szám"
-
-#: kcmdesignerfields.cpp:64
-#, kde-format
-msgid "Boolean"
-msgstr "Logikai"
-
-#: kcmdesignerfields.cpp:65
-#, kde-format
-msgid "Selection"
-msgstr "Kijelölés"
-
-#: kcmdesignerfields.cpp:66 kcmdesignerfields.cpp:69
-#, kde-format
-msgid "Date & Time"
-msgstr "Dátum & Idő"
-
-#: kcmdesignerfields.cpp:70
-#, kde-format
-msgid "Date"
-msgstr "Dátum"
-
-#: kcmdesignerfields.cpp:158
-#, kde-format
-msgid "<qt>Do you really want to delete '<b>%1</b>'?</qt>"
-msgstr "<qt>Biztosan törölni szeretné ezt: „<b>%1</b>”?</qt>"
-
-#: kcmdesignerfields.cpp:171
-#, kde-format
-msgid "Import Page"
-msgstr "Oldal importálása"
-
-#: kcmdesignerfields.cpp:173
-#, fuzzy, kde-format
-#| msgid "*.ui|Designer Files"
-msgid "Designer Files"
-msgstr "*.ui|Designer-fájlok"
-
-#: kcmdesignerfields.cpp:272
-#, kde-format
-msgid ""
-"<qt><b>Warning:</b> Qt Designer could not be found. It is probably not "
-"installed. You will only be able to import existing designer files.</qt>"
-msgstr ""
-"<qt><b>Figyelem:</b> a Qt Designer nem található, valószínűleg nincs "
-"telepítve. Csak már létező Designer-fájlokat lehet importálni.</qt>"
-
-#: kcmdesignerfields.cpp:282
-#, kde-format
-msgid "Available Pages"
-msgstr "Rendelkezésre álló lapok"
-
-#: kcmdesignerfields.cpp:288
-#, kde-format
-msgid "Preview of Selected Page"
-msgstr "A kijelölt lap előnézete"
-
-#: kcmdesignerfields.cpp:307
-#, kde-format
-msgid ""
-"<qt><p>This section allows you to add your own GUI Elements ('<i>Widgets</"
-"i>') to store your own values into %1. Proceed as described below:</"
-"p><ol><li>Click on '<i>Edit with Qt Designer</i>'</li><li>In the dialog, "
-"select '<i>Widget</i>', then click <i>OK</i></li><li>Add your widgets to the "
-"form</li><li>Save the file in the directory proposed by Qt Designer</"
-"li><li>Close Qt Designer</li></ol><p>In case you already have a designer "
-"file (*.ui) located somewhere on your hard disk, simply choose '<i>Import "
-"Page</i>'</p><p><b>Important:</b> The name of each input widget you place "
-"within the form must start with '<i>X_</i>'; so if you want the widget to "
-"correspond to your custom entry '<i>X-Foo</i>', set the widget's <i>name</i> "
-"property to '<i>X_Foo</i>'.</p><p><b>Important:</b> The widget will edit "
-"custom fields with an application name of %2.  To change the application "
-"name to be edited, set the widget name in Qt Designer.</p></qt>"
-msgstr ""
-"<qt><p>Ez a szakasz lehetővé teszi saját GUI elemek („<i>widgetek</i>”) "
-"felvételét a saját értékek tárolásához a következőbe: %1. Tegye a "
-"következőket:</p><ol><li>Kattintson a „<i>Szerkesztés Qt Designerrel</i>”</"
-"li> menüpontra<li>Az ablakban válassza a „<i>Widget</i>” lehetőséget, majd "
-"nyomja meg az <i>OK</i> gombot</li><li>Vegye fel widgetjeit az űrlapra</"
-"li><li>Mentse a fájlt a Qt Designer által felajánlott könyvtárba</"
-"li><li>Zárja be a Qt Designert</li></ol><p>Ha már van egy Designer fájlja (*."
-"ui) valahol a merevlemezen, egyszerűen válassza az „<i>Oldal importálása</"
-"i>” menüpontot</p><p><b>Fontos:</b> Az űrlapon belül elhelyezett összes "
-"bemeneti widget nevének az „<i>X_</i>” karakterekkel kell kezdődniük; így ha "
-"a widgetet az  „<i>X-valami</i>” nevű egyéni bejegyzésnek akarja "
-"megfeleltetni, akkor állítsa a widget <i>név</i> tulajdonságát „<i>X_valami</"
-"i>”-re.</p><p><b>Fontos:</b> A widget az egyéni mezőket a(z) %2 nevű "
-"alkalmazásban fogja szerkeszteni. A szerkesztendő alkalmazás nevének "
-"módosításához állítsa be a widget nevét a Qt Designerben.</p></qt>"
-
-#: kcmdesignerfields.cpp:329
-#, kde-format
-msgid "<a href=\"whatsthis:%1\">How does this work?</a>"
-msgstr "<a href=\"whatsthis:%1\">Hogyan működik ez?</a>"
-
-#: kcmdesignerfields.cpp:340
-#, kde-format
-msgid "Delete Page"
-msgstr "Oldal törlése"
-
-#: kcmdesignerfields.cpp:343
-#, kde-format
-msgid "Import Page..."
-msgstr "Lap importálása…"
-
-#: kcmdesignerfields.cpp:345
-#, kde-format
-msgid "Edit with Qt Designer..."
-msgstr "Szerkesztés a Qt Designerrel…"
-
-#: kcmdesignerfields.cpp:370
-#, kde-format
-msgid "Key:"
-msgstr "Kulcs:"
-
-#: kcmdesignerfields.cpp:372
-#, kde-format
-msgid "Type:"
-msgstr "Típus:"
-
-#: kcmdesignerfields.cpp:374
-#, kde-format
-msgid "Classname:"
-msgstr "Osztály:"
-
-#: kcmdesignerfields.cpp:376
-#, kde-format
-msgid "Description:"
-msgstr "Leírás:"
 
 #: koapp.cpp:63
 #, fuzzy, kde-format
@@ -6348,6 +6209,105 @@ msgstr "%1"
 msgctxt "4 digit year"
 msgid "%1"
 msgstr "%1"
+
+#~ msgid "Text"
+#~ msgstr "Szöveg"
+
+#~ msgid "Numeric Value"
+#~ msgstr "Szám"
+
+#~ msgid "Boolean"
+#~ msgstr "Logikai"
+
+#~ msgid "Selection"
+#~ msgstr "Kijelölés"
+
+#~ msgid "Date & Time"
+#~ msgstr "Dátum & Idő"
+
+#~ msgid "Date"
+#~ msgstr "Dátum"
+
+#~ msgid "<qt>Do you really want to delete '<b>%1</b>'?</qt>"
+#~ msgstr "<qt>Biztosan törölni szeretné ezt: „<b>%1</b>”?</qt>"
+
+#~ msgid "Import Page"
+#~ msgstr "Oldal importálása"
+
+#, fuzzy
+#~| msgid "*.ui|Designer Files"
+#~ msgid "Designer Files"
+#~ msgstr "*.ui|Designer-fájlok"
+
+#~ msgid ""
+#~ "<qt><b>Warning:</b> Qt Designer could not be found. It is probably not "
+#~ "installed. You will only be able to import existing designer files.</qt>"
+#~ msgstr ""
+#~ "<qt><b>Figyelem:</b> a Qt Designer nem található, valószínűleg nincs "
+#~ "telepítve. Csak már létező Designer-fájlokat lehet importálni.</qt>"
+
+#~ msgid "Available Pages"
+#~ msgstr "Rendelkezésre álló lapok"
+
+#~ msgid "Preview of Selected Page"
+#~ msgstr "A kijelölt lap előnézete"
+
+#~ msgid ""
+#~ "<qt><p>This section allows you to add your own GUI Elements ('<i>Widgets</"
+#~ "i>') to store your own values into %1. Proceed as described below:</"
+#~ "p><ol><li>Click on '<i>Edit with Qt Designer</i>'</li><li>In the dialog, "
+#~ "select '<i>Widget</i>', then click <i>OK</i></li><li>Add your widgets to "
+#~ "the form</li><li>Save the file in the directory proposed by Qt Designer</"
+#~ "li><li>Close Qt Designer</li></ol><p>In case you already have a designer "
+#~ "file (*.ui) located somewhere on your hard disk, simply choose '<i>Import "
+#~ "Page</i>'</p><p><b>Important:</b> The name of each input widget you place "
+#~ "within the form must start with '<i>X_</i>'; so if you want the widget to "
+#~ "correspond to your custom entry '<i>X-Foo</i>', set the widget's <i>name</"
+#~ "i> property to '<i>X_Foo</i>'.</p><p><b>Important:</b> The widget will "
+#~ "edit custom fields with an application name of %2.  To change the "
+#~ "application name to be edited, set the widget name in Qt Designer.</p></"
+#~ "qt>"
+#~ msgstr ""
+#~ "<qt><p>Ez a szakasz lehetővé teszi saját GUI elemek („<i>widgetek</i>”) "
+#~ "felvételét a saját értékek tárolásához a következőbe: %1. Tegye a "
+#~ "következőket:</p><ol><li>Kattintson a „<i>Szerkesztés Qt Designerrel</"
+#~ "i>”</li> menüpontra<li>Az ablakban válassza a „<i>Widget</i>” "
+#~ "lehetőséget, majd nyomja meg az <i>OK</i> gombot</li><li>Vegye fel "
+#~ "widgetjeit az űrlapra</li><li>Mentse a fájlt a Qt Designer által "
+#~ "felajánlott könyvtárba</li><li>Zárja be a Qt Designert</li></ol><p>Ha már "
+#~ "van egy Designer fájlja (*.ui) valahol a merevlemezen, egyszerűen "
+#~ "válassza az „<i>Oldal importálása</i>” menüpontot</p><p><b>Fontos:</b> Az "
+#~ "űrlapon belül elhelyezett összes bemeneti widget nevének az „<i>X_</i>” "
+#~ "karakterekkel kell kezdődniük; így ha a widgetet az  „<i>X-valami</i>” "
+#~ "nevű egyéni bejegyzésnek akarja megfeleltetni, akkor állítsa a widget "
+#~ "<i>név</i> tulajdonságát „<i>X_valami</i>”-re.</p><p><b>Fontos:</b> A "
+#~ "widget az egyéni mezőket a(z) %2 nevű alkalmazásban fogja szerkeszteni. A "
+#~ "szerkesztendő alkalmazás nevének módosításához állítsa be a widget nevét "
+#~ "a Qt Designerben.</p></qt>"
+
+#~ msgid "<a href=\"whatsthis:%1\">How does this work?</a>"
+#~ msgstr "<a href=\"whatsthis:%1\">Hogyan működik ez?</a>"
+
+#~ msgid "Delete Page"
+#~ msgstr "Oldal törlése"
+
+#~ msgid "Import Page..."
+#~ msgstr "Lap importálása…"
+
+#~ msgid "Edit with Qt Designer..."
+#~ msgstr "Szerkesztés a Qt Designerrel…"
+
+#~ msgid "Key:"
+#~ msgstr "Kulcs:"
+
+#~ msgid "Type:"
+#~ msgstr "Típus:"
+
+#~ msgid "Classname:"
+#~ msgstr "Osztály:"
+
+#~ msgid "Description:"
+#~ msgstr "Leírás:"
 
 #~ msgid "Copying Failed"
 #~ msgstr "A másolás nem sikerült"

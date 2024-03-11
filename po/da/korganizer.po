@@ -10,7 +10,7 @@ msgid ""
 msgstr ""
 "Project-Id-Version: korganizer\n"
 "Report-Msgid-Bugs-To: https://bugs.kde.org\n"
-"POT-Creation-Date: 2024-02-22 00:38+0000\n"
+"POT-Creation-Date: 2024-03-11 00:38+0000\n"
 "PO-Revision-Date: 2020-08-01 11:26+0200\n"
 "Last-Translator: Martin Schlander <mschlander@opensuse.org>\n"
 "Language-Team: Danish <kde-i18n-doc@kde.org>\n"
@@ -2009,144 +2009,6 @@ msgid "%1 match"
 msgid_plural "%1 matches"
 msgstr[0] "%1 match"
 msgstr[1] "%1 match"
-
-#: kcmdesignerfields.cpp:61 kcmdesignerfields.cpp:62 kcmdesignerfields.cpp:67
-#: kcmdesignerfields.cpp:68
-#, kde-format
-msgid "Text"
-msgstr "Tekst"
-
-#: kcmdesignerfields.cpp:63
-#, kde-format
-msgid "Numeric Value"
-msgstr "Numerisk værdi"
-
-#: kcmdesignerfields.cpp:64
-#, kde-format
-msgid "Boolean"
-msgstr "Boolesk"
-
-#: kcmdesignerfields.cpp:65
-#, kde-format
-msgid "Selection"
-msgstr "Markering"
-
-#: kcmdesignerfields.cpp:66 kcmdesignerfields.cpp:69
-#, kde-format
-msgid "Date & Time"
-msgstr "Dato og klokkeslæt"
-
-#: kcmdesignerfields.cpp:70
-#, kde-format
-msgid "Date"
-msgstr "Dato"
-
-#: kcmdesignerfields.cpp:158
-#, kde-format
-msgid "<qt>Do you really want to delete '<b>%1</b>'?</qt>"
-msgstr "<qt>Vil du virkelig slette \"<b>%1</b>\"?</qt>"
-
-#: kcmdesignerfields.cpp:171
-#, kde-format
-msgid "Import Page"
-msgstr "Importér side"
-
-#: kcmdesignerfields.cpp:173
-#, kde-format
-msgid "Designer Files"
-msgstr "Designer-filer"
-
-#: kcmdesignerfields.cpp:272
-#, kde-format
-msgid ""
-"<qt><b>Warning:</b> Qt Designer could not be found. It is probably not "
-"installed. You will only be able to import existing designer files.</qt>"
-msgstr ""
-"<qt><b>Advarsel:</b> Qt Designer kunne ikke findes. Den er sandsynligvis "
-"ikke installeret. Du vil kun kunne importere eksisterende designer-filer.</"
-"qt>"
-
-#: kcmdesignerfields.cpp:282
-#, kde-format
-msgid "Available Pages"
-msgstr "Tilgængelige sider"
-
-#: kcmdesignerfields.cpp:288
-#, kde-format
-msgid "Preview of Selected Page"
-msgstr "Forhåndsvisning af den valgte side"
-
-#: kcmdesignerfields.cpp:307
-#, kde-format
-msgid ""
-"<qt><p>This section allows you to add your own GUI Elements ('<i>Widgets</"
-"i>') to store your own values into %1. Proceed as described below:</"
-"p><ol><li>Click on '<i>Edit with Qt Designer</i>'</li><li>In the dialog, "
-"select '<i>Widget</i>', then click <i>OK</i></li><li>Add your widgets to the "
-"form</li><li>Save the file in the directory proposed by Qt Designer</"
-"li><li>Close Qt Designer</li></ol><p>In case you already have a designer "
-"file (*.ui) located somewhere on your hard disk, simply choose '<i>Import "
-"Page</i>'</p><p><b>Important:</b> The name of each input widget you place "
-"within the form must start with '<i>X_</i>'; so if you want the widget to "
-"correspond to your custom entry '<i>X-Foo</i>', set the widget's <i>name</i> "
-"property to '<i>X_Foo</i>'.</p><p><b>Important:</b> The widget will edit "
-"custom fields with an application name of %2.  To change the application "
-"name to be edited, set the widget name in Qt Designer.</p></qt>"
-msgstr ""
-"<qt><p>Denne sektion lader dig tilføje dine egne GUI-elementer "
-"(\"<i>kontroller</i>\") til at gemme dine egne værdier i %1. Gør som "
-"beskrevet nedenfor:</p><ol><li>Klik på \"<i>Redigér med Qt Designer</i>\"</"
-"li><li>I dialogen vælges \"<i>Kontrol</i>\", klik så <i>OK</i></"
-"li><li>Tilføj dine kontroller til formularen</li><li>Gem filen i den mappe "
-"som foreslås af Qt Designer</li><li>Luk Qt Designer</li></ol><p>I tilfælde "
-"af at du allerede har en designer-fil (*.ui) placeret et sted på din "
-"harddisk, så vælg simpelthen \"<i>Importér side</i>\"</p><p><b>Vigtigt:</b> "
-"Navnet på hver input-kontrol du placerer i formularen skal begynde med "
-"\"<i>X_</i>\", så hvis du vil have at kontrollen skal svare til din "
-"brugerdefinerede indgang \"<i>X-Foo</i>\", så sæt kontrollens <i>navn</i>-"
-"egenskab til \"<i>X_Foo</i>\".</p><p><b>Vigtigt:</b> Kontrollen vil redigere "
-"brugerdefinerede felter med programnavnet %2.  For at ændre programnavnet "
-"der skal redigeres, sættes kontrolnavnet i Qt Designer.</p></qt>"
-
-#: kcmdesignerfields.cpp:329
-#, kde-format
-msgid "<a href=\"whatsthis:%1\">How does this work?</a>"
-msgstr "<a href=\"whatsthis:%1\">Hvordan virker dette?</a>"
-
-#: kcmdesignerfields.cpp:340
-#, kde-format
-msgid "Delete Page"
-msgstr "Slet side"
-
-#: kcmdesignerfields.cpp:343
-#, kde-format
-msgid "Import Page..."
-msgstr "Importér side..."
-
-#: kcmdesignerfields.cpp:345
-#, kde-format
-msgid "Edit with Qt Designer..."
-msgstr "Redigér med Qt Designer..."
-
-#: kcmdesignerfields.cpp:370
-#, kde-format
-msgid "Key:"
-msgstr "Nøgle:"
-
-#: kcmdesignerfields.cpp:372
-#, kde-format
-msgid "Type:"
-msgstr "Type:"
-
-#: kcmdesignerfields.cpp:374
-#, kde-format
-msgid "Classname:"
-msgstr "Klassenavn:"
-
-#: kcmdesignerfields.cpp:376
-#, kde-format
-msgid "Description:"
-msgstr "Beskrivelse:"
 
 #: koapp.cpp:63
 #, kde-format
@@ -6142,6 +6004,103 @@ msgstr "%1"
 msgctxt "4 digit year"
 msgid "%1"
 msgstr "%1"
+
+#~ msgid "Text"
+#~ msgstr "Tekst"
+
+#~ msgid "Numeric Value"
+#~ msgstr "Numerisk værdi"
+
+#~ msgid "Boolean"
+#~ msgstr "Boolesk"
+
+#~ msgid "Selection"
+#~ msgstr "Markering"
+
+#~ msgid "Date & Time"
+#~ msgstr "Dato og klokkeslæt"
+
+#~ msgid "Date"
+#~ msgstr "Dato"
+
+#~ msgid "<qt>Do you really want to delete '<b>%1</b>'?</qt>"
+#~ msgstr "<qt>Vil du virkelig slette \"<b>%1</b>\"?</qt>"
+
+#~ msgid "Import Page"
+#~ msgstr "Importér side"
+
+#~ msgid "Designer Files"
+#~ msgstr "Designer-filer"
+
+#~ msgid ""
+#~ "<qt><b>Warning:</b> Qt Designer could not be found. It is probably not "
+#~ "installed. You will only be able to import existing designer files.</qt>"
+#~ msgstr ""
+#~ "<qt><b>Advarsel:</b> Qt Designer kunne ikke findes. Den er sandsynligvis "
+#~ "ikke installeret. Du vil kun kunne importere eksisterende designer-filer."
+#~ "</qt>"
+
+#~ msgid "Available Pages"
+#~ msgstr "Tilgængelige sider"
+
+#~ msgid "Preview of Selected Page"
+#~ msgstr "Forhåndsvisning af den valgte side"
+
+#~ msgid ""
+#~ "<qt><p>This section allows you to add your own GUI Elements ('<i>Widgets</"
+#~ "i>') to store your own values into %1. Proceed as described below:</"
+#~ "p><ol><li>Click on '<i>Edit with Qt Designer</i>'</li><li>In the dialog, "
+#~ "select '<i>Widget</i>', then click <i>OK</i></li><li>Add your widgets to "
+#~ "the form</li><li>Save the file in the directory proposed by Qt Designer</"
+#~ "li><li>Close Qt Designer</li></ol><p>In case you already have a designer "
+#~ "file (*.ui) located somewhere on your hard disk, simply choose '<i>Import "
+#~ "Page</i>'</p><p><b>Important:</b> The name of each input widget you place "
+#~ "within the form must start with '<i>X_</i>'; so if you want the widget to "
+#~ "correspond to your custom entry '<i>X-Foo</i>', set the widget's <i>name</"
+#~ "i> property to '<i>X_Foo</i>'.</p><p><b>Important:</b> The widget will "
+#~ "edit custom fields with an application name of %2.  To change the "
+#~ "application name to be edited, set the widget name in Qt Designer.</p></"
+#~ "qt>"
+#~ msgstr ""
+#~ "<qt><p>Denne sektion lader dig tilføje dine egne GUI-elementer "
+#~ "(\"<i>kontroller</i>\") til at gemme dine egne værdier i %1. Gør som "
+#~ "beskrevet nedenfor:</p><ol><li>Klik på \"<i>Redigér med Qt Designer</i>"
+#~ "\"</li><li>I dialogen vælges \"<i>Kontrol</i>\", klik så <i>OK</i></"
+#~ "li><li>Tilføj dine kontroller til formularen</li><li>Gem filen i den "
+#~ "mappe som foreslås af Qt Designer</li><li>Luk Qt Designer</li></ol><p>I "
+#~ "tilfælde af at du allerede har en designer-fil (*.ui) placeret et sted på "
+#~ "din harddisk, så vælg simpelthen \"<i>Importér side</i>\"</"
+#~ "p><p><b>Vigtigt:</b> Navnet på hver input-kontrol du placerer i "
+#~ "formularen skal begynde med \"<i>X_</i>\", så hvis du vil have at "
+#~ "kontrollen skal svare til din brugerdefinerede indgang \"<i>X-Foo</i>\", "
+#~ "så sæt kontrollens <i>navn</i>-egenskab til \"<i>X_Foo</i>\".</"
+#~ "p><p><b>Vigtigt:</b> Kontrollen vil redigere brugerdefinerede felter med "
+#~ "programnavnet %2.  For at ændre programnavnet der skal redigeres, sættes "
+#~ "kontrolnavnet i Qt Designer.</p></qt>"
+
+#~ msgid "<a href=\"whatsthis:%1\">How does this work?</a>"
+#~ msgstr "<a href=\"whatsthis:%1\">Hvordan virker dette?</a>"
+
+#~ msgid "Delete Page"
+#~ msgstr "Slet side"
+
+#~ msgid "Import Page..."
+#~ msgstr "Importér side..."
+
+#~ msgid "Edit with Qt Designer..."
+#~ msgstr "Redigér med Qt Designer..."
+
+#~ msgid "Key:"
+#~ msgstr "Nøgle:"
+
+#~ msgid "Type:"
+#~ msgstr "Type:"
+
+#~ msgid "Classname:"
+#~ msgstr "Klassenavn:"
+
+#~ msgid "Description:"
+#~ msgstr "Beskrivelse:"
 
 #~ msgid "Copying Failed"
 #~ msgstr "Kopiering mislykkedes"

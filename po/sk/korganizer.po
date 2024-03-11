@@ -10,7 +10,7 @@ msgid ""
 msgstr ""
 "Project-Id-Version: korganizer\n"
 "Report-Msgid-Bugs-To: https://bugs.kde.org\n"
-"POT-Creation-Date: 2024-02-22 00:38+0000\n"
+"POT-Creation-Date: 2024-03-11 00:38+0000\n"
 "PO-Revision-Date: 2019-11-05 20:02+0100\n"
 "Last-Translator: Matej Mrenica <matejm98mthw@gmail.com>\n"
 "Language-Team: Slovak <kde-i18n-doc@kde.org>\n"
@@ -2066,144 +2066,6 @@ msgid_plural "%1 matches"
 msgstr[0] ""
 msgstr[1] ""
 msgstr[2] ""
-
-#: kcmdesignerfields.cpp:61 kcmdesignerfields.cpp:62 kcmdesignerfields.cpp:67
-#: kcmdesignerfields.cpp:68
-#, kde-format
-msgid "Text"
-msgstr "Text"
-
-#: kcmdesignerfields.cpp:63
-#, kde-format
-msgid "Numeric Value"
-msgstr "Číselná hodnota"
-
-#: kcmdesignerfields.cpp:64
-#, kde-format
-msgid "Boolean"
-msgstr "Logická hodnota"
-
-#: kcmdesignerfields.cpp:65
-#, kde-format
-msgid "Selection"
-msgstr "Výber"
-
-#: kcmdesignerfields.cpp:66 kcmdesignerfields.cpp:69
-#, kde-format
-msgid "Date & Time"
-msgstr "Dátum a čas"
-
-#: kcmdesignerfields.cpp:70
-#, kde-format
-msgid "Date"
-msgstr "Dátum"
-
-#: kcmdesignerfields.cpp:158
-#, kde-format
-msgid "<qt>Do you really want to delete '<b>%1</b>'?</qt>"
-msgstr "<qt>Naozaj chcete vymazať '<b>%1</b>'?</qt>"
-
-#: kcmdesignerfields.cpp:171
-#, kde-format
-msgid "Import Page"
-msgstr "Importovať stranu"
-
-#: kcmdesignerfields.cpp:173
-#, kde-format
-msgid "Designer Files"
-msgstr "Súbory Designer"
-
-#: kcmdesignerfields.cpp:272
-#, kde-format
-msgid ""
-"<qt><b>Warning:</b> Qt Designer could not be found. It is probably not "
-"installed. You will only be able to import existing designer files.</qt>"
-msgstr ""
-"<qt><b>Varovanie:</b> Qt Designer nemožno nájsť. Pravdepodobne nie je "
-"nainštalovaný. Budete môcť importovať iba existujúce súbory designer.</qt>"
-
-#: kcmdesignerfields.cpp:282
-#, kde-format
-msgid "Available Pages"
-msgstr "Dostupné strany"
-
-#: kcmdesignerfields.cpp:288
-#, kde-format
-msgid "Preview of Selected Page"
-msgstr "Náhľad vybranej strany"
-
-#: kcmdesignerfields.cpp:307
-#, kde-format
-msgid ""
-"<qt><p>This section allows you to add your own GUI Elements ('<i>Widgets</"
-"i>') to store your own values into %1. Proceed as described below:</"
-"p><ol><li>Click on '<i>Edit with Qt Designer</i>'</li><li>In the dialog, "
-"select '<i>Widget</i>', then click <i>OK</i></li><li>Add your widgets to the "
-"form</li><li>Save the file in the directory proposed by Qt Designer</"
-"li><li>Close Qt Designer</li></ol><p>In case you already have a designer "
-"file (*.ui) located somewhere on your hard disk, simply choose '<i>Import "
-"Page</i>'</p><p><b>Important:</b> The name of each input widget you place "
-"within the form must start with '<i>X_</i>'; so if you want the widget to "
-"correspond to your custom entry '<i>X-Foo</i>', set the widget's <i>name</i> "
-"property to '<i>X_Foo</i>'.</p><p><b>Important:</b> The widget will edit "
-"custom fields with an application name of %2.  To change the application "
-"name to be edited, set the widget name in Qt Designer.</p></qt>"
-msgstr ""
-"<qt><p>Táto sekcia vám umožní pridať svoje vlastné elementy GUI "
-"('<i>Grafické prvky</i>') pre uloženie vašich vlastných hodnôt do %1. "
-"Postupujte, ako je nižšie popísané:</p><ol><li>Kliknite na '<i>Upraviť s Qt "
-"Designer</i>'</li><li>V dialógu vyberte '<i>Grafický prvok</i>', potom "
-"stlačiť <i>OK</i></li><li>Pridajte vaše grafické prvky do formulára</"
-"li><li>Uložte súbor v adresári navrhnutom Qt Designer</li><li>Zavrite Qt "
-"Designer</li></ol><p>V prípade, že už máte umiestnený súbor designer (*.ui) "
-"niekde na vašom pevnom disku, jednoducho vyberte '<i>Importovať stranu</i>'</"
-"p><p><b>Dôležité:</b> Názov každého vstupného grafického prvku umiestneného "
-"do formulára musí začínať s '<i>X_</i>'; teda, ak chcete, aby grafický prvok "
-"odpovedal vašej vlastnej položke '<i>X-Foo</i>', nastavte vlastnosť "
-"<i>názov</i> grafického prvku na '<i>X_Foo</i>'.</p><p><b>Dôležité:</b> "
-"Grafický prvok bude upravovať vlastné polia s názvom aplikácie %2.  Ak "
-"chcete zmeniť názov aplikácie pre upravovanie, nastavte názov grafického "
-"prvku v Qt Designer.</p></qt>"
-
-#: kcmdesignerfields.cpp:329
-#, kde-format
-msgid "<a href=\"whatsthis:%1\">How does this work?</a>"
-msgstr "<a href=\"whatsthis:%1\">Ako toto funguje?</a>"
-
-#: kcmdesignerfields.cpp:340
-#, kde-format
-msgid "Delete Page"
-msgstr "Odstrániť stranu"
-
-#: kcmdesignerfields.cpp:343
-#, kde-format
-msgid "Import Page..."
-msgstr "Importovať stranu..."
-
-#: kcmdesignerfields.cpp:345
-#, kde-format
-msgid "Edit with Qt Designer..."
-msgstr "Upraviť s Qt Designer..."
-
-#: kcmdesignerfields.cpp:370
-#, kde-format
-msgid "Key:"
-msgstr "Kľúč:"
-
-#: kcmdesignerfields.cpp:372
-#, kde-format
-msgid "Type:"
-msgstr "Typ:"
-
-#: kcmdesignerfields.cpp:374
-#, kde-format
-msgid "Classname:"
-msgstr "Názov triedy:"
-
-#: kcmdesignerfields.cpp:376
-#, kde-format
-msgid "Description:"
-msgstr "Popis:"
 
 #: koapp.cpp:63
 #, fuzzy, kde-format
@@ -6228,6 +6090,102 @@ msgstr "%1"
 msgctxt "4 digit year"
 msgid "%1"
 msgstr "%1"
+
+#~ msgid "Text"
+#~ msgstr "Text"
+
+#~ msgid "Numeric Value"
+#~ msgstr "Číselná hodnota"
+
+#~ msgid "Boolean"
+#~ msgstr "Logická hodnota"
+
+#~ msgid "Selection"
+#~ msgstr "Výber"
+
+#~ msgid "Date & Time"
+#~ msgstr "Dátum a čas"
+
+#~ msgid "Date"
+#~ msgstr "Dátum"
+
+#~ msgid "<qt>Do you really want to delete '<b>%1</b>'?</qt>"
+#~ msgstr "<qt>Naozaj chcete vymazať '<b>%1</b>'?</qt>"
+
+#~ msgid "Import Page"
+#~ msgstr "Importovať stranu"
+
+#~ msgid "Designer Files"
+#~ msgstr "Súbory Designer"
+
+#~ msgid ""
+#~ "<qt><b>Warning:</b> Qt Designer could not be found. It is probably not "
+#~ "installed. You will only be able to import existing designer files.</qt>"
+#~ msgstr ""
+#~ "<qt><b>Varovanie:</b> Qt Designer nemožno nájsť. Pravdepodobne nie je "
+#~ "nainštalovaný. Budete môcť importovať iba existujúce súbory designer.</qt>"
+
+#~ msgid "Available Pages"
+#~ msgstr "Dostupné strany"
+
+#~ msgid "Preview of Selected Page"
+#~ msgstr "Náhľad vybranej strany"
+
+#~ msgid ""
+#~ "<qt><p>This section allows you to add your own GUI Elements ('<i>Widgets</"
+#~ "i>') to store your own values into %1. Proceed as described below:</"
+#~ "p><ol><li>Click on '<i>Edit with Qt Designer</i>'</li><li>In the dialog, "
+#~ "select '<i>Widget</i>', then click <i>OK</i></li><li>Add your widgets to "
+#~ "the form</li><li>Save the file in the directory proposed by Qt Designer</"
+#~ "li><li>Close Qt Designer</li></ol><p>In case you already have a designer "
+#~ "file (*.ui) located somewhere on your hard disk, simply choose '<i>Import "
+#~ "Page</i>'</p><p><b>Important:</b> The name of each input widget you place "
+#~ "within the form must start with '<i>X_</i>'; so if you want the widget to "
+#~ "correspond to your custom entry '<i>X-Foo</i>', set the widget's <i>name</"
+#~ "i> property to '<i>X_Foo</i>'.</p><p><b>Important:</b> The widget will "
+#~ "edit custom fields with an application name of %2.  To change the "
+#~ "application name to be edited, set the widget name in Qt Designer.</p></"
+#~ "qt>"
+#~ msgstr ""
+#~ "<qt><p>Táto sekcia vám umožní pridať svoje vlastné elementy GUI "
+#~ "('<i>Grafické prvky</i>') pre uloženie vašich vlastných hodnôt do %1. "
+#~ "Postupujte, ako je nižšie popísané:</p><ol><li>Kliknite na '<i>Upraviť s "
+#~ "Qt Designer</i>'</li><li>V dialógu vyberte '<i>Grafický prvok</i>', potom "
+#~ "stlačiť <i>OK</i></li><li>Pridajte vaše grafické prvky do formulára</"
+#~ "li><li>Uložte súbor v adresári navrhnutom Qt Designer</li><li>Zavrite Qt "
+#~ "Designer</li></ol><p>V prípade, že už máte umiestnený súbor designer (*."
+#~ "ui) niekde na vašom pevnom disku, jednoducho vyberte '<i>Importovať "
+#~ "stranu</i>'</p><p><b>Dôležité:</b> Názov každého vstupného grafického "
+#~ "prvku umiestneného do formulára musí začínať s '<i>X_</i>'; teda, ak "
+#~ "chcete, aby grafický prvok odpovedal vašej vlastnej položke '<i>X-Foo</"
+#~ "i>', nastavte vlastnosť <i>názov</i> grafického prvku na '<i>X_Foo</i>'.</"
+#~ "p><p><b>Dôležité:</b> Grafický prvok bude upravovať vlastné polia s "
+#~ "názvom aplikácie %2.  Ak chcete zmeniť názov aplikácie pre upravovanie, "
+#~ "nastavte názov grafického prvku v Qt Designer.</p></qt>"
+
+#~ msgid "<a href=\"whatsthis:%1\">How does this work?</a>"
+#~ msgstr "<a href=\"whatsthis:%1\">Ako toto funguje?</a>"
+
+#~ msgid "Delete Page"
+#~ msgstr "Odstrániť stranu"
+
+#~ msgid "Import Page..."
+#~ msgstr "Importovať stranu..."
+
+#~ msgid "Edit with Qt Designer..."
+#~ msgstr "Upraviť s Qt Designer..."
+
+#~ msgid "Key:"
+#~ msgstr "Kľúč:"
+
+#~ msgid "Type:"
+#~ msgstr "Typ:"
+
+#~ msgid "Classname:"
+#~ msgstr "Názov triedy:"
+
+#~ msgid "Description:"
+#~ msgstr "Popis:"
 
 #~ msgid "Copying Failed"
 #~ msgstr "Plánovanie zlyhalo"

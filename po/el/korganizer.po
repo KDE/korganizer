@@ -15,7 +15,7 @@ msgid ""
 msgstr ""
 "Project-Id-Version: korganizer\n"
 "Report-Msgid-Bugs-To: https://bugs.kde.org\n"
-"POT-Creation-Date: 2024-02-22 00:38+0000\n"
+"POT-Creation-Date: 2024-03-11 00:38+0000\n"
 "PO-Revision-Date: 2021-11-06 10:56+0200\n"
 "Last-Translator: Stelios <sstavra@gmail.com>\n"
 "Language-Team: Greek <kde-i18n-el@kde.org>\n"
@@ -2068,147 +2068,6 @@ msgid "%1 match"
 msgid_plural "%1 matches"
 msgstr[0] "%1 ταίριασμα"
 msgstr[1] "%1 ταιριάσματα"
-
-#: kcmdesignerfields.cpp:61 kcmdesignerfields.cpp:62 kcmdesignerfields.cpp:67
-#: kcmdesignerfields.cpp:68
-#, kde-format
-msgid "Text"
-msgstr "Κείμενο"
-
-#: kcmdesignerfields.cpp:63
-#, kde-format
-msgid "Numeric Value"
-msgstr "Αριθμητική τιμή"
-
-#: kcmdesignerfields.cpp:64
-#, kde-format
-msgid "Boolean"
-msgstr "Boolean"
-
-#: kcmdesignerfields.cpp:65
-#, kde-format
-msgid "Selection"
-msgstr "Επιλογή"
-
-#: kcmdesignerfields.cpp:66 kcmdesignerfields.cpp:69
-#, kde-format
-msgid "Date & Time"
-msgstr "Ημερομηνία & Ώρα"
-
-#: kcmdesignerfields.cpp:70
-#, kde-format
-msgid "Date"
-msgstr "Ημερομηνία"
-
-#: kcmdesignerfields.cpp:158
-#, kde-format
-msgid "<qt>Do you really want to delete '<b>%1</b>'?</qt>"
-msgstr "<qt>Θέλετε πράγματι να διαγράψετε το '<b>%1</b>';</qt>"
-
-#: kcmdesignerfields.cpp:171
-#, kde-format
-msgid "Import Page"
-msgstr "Εισαγωγή σελίδας"
-
-#: kcmdesignerfields.cpp:173
-#, kde-format
-msgid "Designer Files"
-msgstr "Αρχεία Designer"
-
-#: kcmdesignerfields.cpp:272
-#, kde-format
-msgid ""
-"<qt><b>Warning:</b> Qt Designer could not be found. It is probably not "
-"installed. You will only be able to import existing designer files.</qt>"
-msgstr ""
-"<qt><b>Προειδοποίηση:</b> Το Qt Designer δεν βρέθηκε. Πιθανώς δεν είναι "
-"εγκατεστημένο. Θα μπορείτε μόνο να εισάγετε τα υπάρχοντα αρχεία designer.</"
-"qt>"
-
-#: kcmdesignerfields.cpp:282
-#, kde-format
-msgid "Available Pages"
-msgstr "Διαθέσιμες σελίδες"
-
-#: kcmdesignerfields.cpp:288
-#, kde-format
-msgid "Preview of Selected Page"
-msgstr "Προεπισκόπηση της επιλεγμένης σελίδας"
-
-#: kcmdesignerfields.cpp:307
-#, kde-format
-msgid ""
-"<qt><p>This section allows you to add your own GUI Elements ('<i>Widgets</"
-"i>') to store your own values into %1. Proceed as described below:</"
-"p><ol><li>Click on '<i>Edit with Qt Designer</i>'</li><li>In the dialog, "
-"select '<i>Widget</i>', then click <i>OK</i></li><li>Add your widgets to the "
-"form</li><li>Save the file in the directory proposed by Qt Designer</"
-"li><li>Close Qt Designer</li></ol><p>In case you already have a designer "
-"file (*.ui) located somewhere on your hard disk, simply choose '<i>Import "
-"Page</i>'</p><p><b>Important:</b> The name of each input widget you place "
-"within the form must start with '<i>X_</i>'; so if you want the widget to "
-"correspond to your custom entry '<i>X-Foo</i>', set the widget's <i>name</i> "
-"property to '<i>X_Foo</i>'.</p><p><b>Important:</b> The widget will edit "
-"custom fields with an application name of %2.  To change the application "
-"name to be edited, set the widget name in Qt Designer.</p></qt>"
-msgstr ""
-"<qt><p>Αυτή η ενότητα σας επιτρέπει την προσθήκη των δικών σας αντικειμένων "
-"περιβάλλοντος («<i>Γραφικά συστατικά</i>») για την αποθήκευση των δικών σας "
-"τιμών στο %1. Προχωρήστε με τον τρόπο που περιγράφεται παρακάτω:</"
-"p><ol><li>Κάντε κλικ στο «<i>Επεξεργασία με τον Qt Designer</i>»</"
-"li><li>Στον διάλογο, επιλέξτε «<i>Συστατικό</i>», έπειτα κάντε κλικ στο "
-"<i>Εντάξει</i></li><li>Προσθέστε τα συστατικά σας στην φόρμα</"
-"li><li>Αποθηκεύστε το αρχείο στον κατάλογο που προτείνεται από τον Qt "
-"Designer</li><li>Κλείστε τον Qt Designer</li></ol><p>Στην περίπτωση που "
-"διαθέτετε ήδη ένα αρχείο designer (*.ui) κάπου στον σκληρό σας δίσκο, "
-"επιλέγοντας απλά «<i>Εισαγωγή σελίδας</i>»</p><p><b>Σημαντικό:</b> Το όνομα "
-"καθενός από τα συστατικά εισαγωγής που τοποθετείτε μέσα στην φόρμα πρέπει να "
-"αρχίζει με «<i>X_</i>». Έτσι αν θέλετε το συστατικό να αντιστοιχεί στην "
-"προσαρμοσμένη σας εισαγωγή «<i>X-Foo</i>», ρυθμίστε την ιδιότητα <i>όνομα</"
-"i> του συστατικού σε «<i>X_Foo</i>».</p><p><b>Σημαντικό:</b> Το συστατικό θα "
-"επεξεργαστεί τα προσαρμοσμένα πεδία με το όνομα της εφαρμογής %2. Για να "
-"αλλάξετε το όνομα της εφαρμογής, θα πρέπει να αλλάξετε το όνομα του γραφικού "
-"συστατικού στον Qt Designer.</p></qt>"
-
-#: kcmdesignerfields.cpp:329
-#, kde-format
-msgid "<a href=\"whatsthis:%1\">How does this work?</a>"
-msgstr "<a href=\"whatsthis:%1\">Πώς δουλεύει αυτό;</a>"
-
-#: kcmdesignerfields.cpp:340
-#, kde-format
-msgid "Delete Page"
-msgstr "Διαγραφή σελίδας"
-
-#: kcmdesignerfields.cpp:343
-#, kde-format
-msgid "Import Page..."
-msgstr "Εισαγωγή σελίδας..."
-
-#: kcmdesignerfields.cpp:345
-#, kde-format
-msgid "Edit with Qt Designer..."
-msgstr "Επεξεργασία με τον Qt Designer"
-
-#: kcmdesignerfields.cpp:370
-#, kde-format
-msgid "Key:"
-msgstr "Κλειδί:"
-
-#: kcmdesignerfields.cpp:372
-#, kde-format
-msgid "Type:"
-msgstr "Τύπος:"
-
-#: kcmdesignerfields.cpp:374
-#, kde-format
-msgid "Classname:"
-msgstr "Όνομα κλάσης:"
-
-#: kcmdesignerfields.cpp:376
-#, kde-format
-msgid "Description:"
-msgstr "Περιγραφή:"
 
 #: koapp.cpp:63
 #, kde-format
@@ -6184,6 +6043,106 @@ msgstr "%1"
 msgctxt "4 digit year"
 msgid "%1"
 msgstr "%1"
+
+#~ msgid "Text"
+#~ msgstr "Κείμενο"
+
+#~ msgid "Numeric Value"
+#~ msgstr "Αριθμητική τιμή"
+
+#~ msgid "Boolean"
+#~ msgstr "Boolean"
+
+#~ msgid "Selection"
+#~ msgstr "Επιλογή"
+
+#~ msgid "Date & Time"
+#~ msgstr "Ημερομηνία & Ώρα"
+
+#~ msgid "Date"
+#~ msgstr "Ημερομηνία"
+
+#~ msgid "<qt>Do you really want to delete '<b>%1</b>'?</qt>"
+#~ msgstr "<qt>Θέλετε πράγματι να διαγράψετε το '<b>%1</b>';</qt>"
+
+#~ msgid "Import Page"
+#~ msgstr "Εισαγωγή σελίδας"
+
+#~ msgid "Designer Files"
+#~ msgstr "Αρχεία Designer"
+
+#~ msgid ""
+#~ "<qt><b>Warning:</b> Qt Designer could not be found. It is probably not "
+#~ "installed. You will only be able to import existing designer files.</qt>"
+#~ msgstr ""
+#~ "<qt><b>Προειδοποίηση:</b> Το Qt Designer δεν βρέθηκε. Πιθανώς δεν είναι "
+#~ "εγκατεστημένο. Θα μπορείτε μόνο να εισάγετε τα υπάρχοντα αρχεία designer."
+#~ "</qt>"
+
+#~ msgid "Available Pages"
+#~ msgstr "Διαθέσιμες σελίδες"
+
+#~ msgid "Preview of Selected Page"
+#~ msgstr "Προεπισκόπηση της επιλεγμένης σελίδας"
+
+#~ msgid ""
+#~ "<qt><p>This section allows you to add your own GUI Elements ('<i>Widgets</"
+#~ "i>') to store your own values into %1. Proceed as described below:</"
+#~ "p><ol><li>Click on '<i>Edit with Qt Designer</i>'</li><li>In the dialog, "
+#~ "select '<i>Widget</i>', then click <i>OK</i></li><li>Add your widgets to "
+#~ "the form</li><li>Save the file in the directory proposed by Qt Designer</"
+#~ "li><li>Close Qt Designer</li></ol><p>In case you already have a designer "
+#~ "file (*.ui) located somewhere on your hard disk, simply choose '<i>Import "
+#~ "Page</i>'</p><p><b>Important:</b> The name of each input widget you place "
+#~ "within the form must start with '<i>X_</i>'; so if you want the widget to "
+#~ "correspond to your custom entry '<i>X-Foo</i>', set the widget's <i>name</"
+#~ "i> property to '<i>X_Foo</i>'.</p><p><b>Important:</b> The widget will "
+#~ "edit custom fields with an application name of %2.  To change the "
+#~ "application name to be edited, set the widget name in Qt Designer.</p></"
+#~ "qt>"
+#~ msgstr ""
+#~ "<qt><p>Αυτή η ενότητα σας επιτρέπει την προσθήκη των δικών σας "
+#~ "αντικειμένων περιβάλλοντος («<i>Γραφικά συστατικά</i>») για την "
+#~ "αποθήκευση των δικών σας τιμών στο %1. Προχωρήστε με τον τρόπο που "
+#~ "περιγράφεται παρακάτω:</p><ol><li>Κάντε κλικ στο «<i>Επεξεργασία με τον "
+#~ "Qt Designer</i>»</li><li>Στον διάλογο, επιλέξτε «<i>Συστατικό</i>», "
+#~ "έπειτα κάντε κλικ στο <i>Εντάξει</i></li><li>Προσθέστε τα συστατικά σας "
+#~ "στην φόρμα</li><li>Αποθηκεύστε το αρχείο στον κατάλογο που προτείνεται "
+#~ "από τον Qt Designer</li><li>Κλείστε τον Qt Designer</li></ol><p>Στην "
+#~ "περίπτωση που διαθέτετε ήδη ένα αρχείο designer (*.ui) κάπου στον σκληρό "
+#~ "σας δίσκο, επιλέγοντας απλά «<i>Εισαγωγή σελίδας</i>»</p><p><b>Σημαντικό:"
+#~ "</b> Το όνομα καθενός από τα συστατικά εισαγωγής που τοποθετείτε μέσα "
+#~ "στην φόρμα πρέπει να αρχίζει με «<i>X_</i>». Έτσι αν θέλετε το συστατικό "
+#~ "να αντιστοιχεί στην προσαρμοσμένη σας εισαγωγή «<i>X-Foo</i>», ρυθμίστε "
+#~ "την ιδιότητα <i>όνομα</i> του συστατικού σε «<i>X_Foo</i>».</"
+#~ "p><p><b>Σημαντικό:</b> Το συστατικό θα επεξεργαστεί τα προσαρμοσμένα "
+#~ "πεδία με το όνομα της εφαρμογής %2. Για να αλλάξετε το όνομα της "
+#~ "εφαρμογής, θα πρέπει να αλλάξετε το όνομα του γραφικού συστατικού στον Qt "
+#~ "Designer.</p></qt>"
+
+#~ msgid "<a href=\"whatsthis:%1\">How does this work?</a>"
+#~ msgstr "<a href=\"whatsthis:%1\">Πώς δουλεύει αυτό;</a>"
+
+#~ msgid "Delete Page"
+#~ msgstr "Διαγραφή σελίδας"
+
+#~ msgid "Import Page..."
+#~ msgstr "Εισαγωγή σελίδας..."
+
+#~ msgid "Edit with Qt Designer..."
+#~ msgstr "Επεξεργασία με τον Qt Designer"
+
+#~ msgid "Key:"
+#~ msgstr "Κλειδί:"
+
+#~ msgid "Type:"
+#~ msgstr "Τύπος:"
+
+#~ msgid "Classname:"
+#~ msgstr "Όνομα κλάσης:"
+
+#~ msgid "Description:"
+#~ msgstr "Περιγραφή:"
 
 #~ msgid "Copying Failed"
 #~ msgstr "Η αντιγραφή απέτυχε"

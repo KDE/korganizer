@@ -6,7 +6,7 @@ msgid ""
 msgstr ""
 "Project-Id-Version: korganizer\n"
 "Report-Msgid-Bugs-To: https://bugs.kde.org\n"
-"POT-Creation-Date: 2024-02-22 00:38+0000\n"
+"POT-Creation-Date: 2024-03-11 00:38+0000\n"
 "PO-Revision-Date: 2013-03-24 10:49+0100\n"
 "Last-Translator: Jean Cayron <jean.cayron@base.be>\n"
 "Language-Team: Walloon <linux-wa@walon.org>\n"
@@ -2055,138 +2055,6 @@ msgid "%1 match"
 msgid_plural "%1 matches"
 msgstr[0] ""
 msgstr[1] ""
-
-#: kcmdesignerfields.cpp:61 kcmdesignerfields.cpp:62 kcmdesignerfields.cpp:67
-#: kcmdesignerfields.cpp:68
-#, kde-format
-msgid "Text"
-msgstr ""
-
-#: kcmdesignerfields.cpp:63
-#, kde-format
-msgid "Numeric Value"
-msgstr ""
-
-#: kcmdesignerfields.cpp:64
-#, kde-format
-msgid "Boolean"
-msgstr ""
-
-#: kcmdesignerfields.cpp:65
-#, fuzzy, kde-format
-#| msgctxt "@item:inlistbox no timezone selected"
-#| msgid "[No selection]"
-msgid "Selection"
-msgstr "[Nou tchoes]"
-
-#: kcmdesignerfields.cpp:66 kcmdesignerfields.cpp:69
-#, fuzzy, kde-format
-#| msgid "Date && Time"
-msgid "Date & Time"
-msgstr "Date et eure"
-
-#: kcmdesignerfields.cpp:70
-#, fuzzy, kde-format
-#| msgid "&Date:"
-msgid "Date"
-msgstr "&Date:"
-
-#: kcmdesignerfields.cpp:158
-#, fuzzy, kde-format
-#| msgctxt "@info"
-#| msgid "Do you really want to cancel?"
-msgid "<qt>Do you really want to delete '<b>%1</b>'?</qt>"
-msgstr "Voloz vs rinoncî podbon ?"
-
-#: kcmdesignerfields.cpp:171
-#, fuzzy, kde-format
-#| msgid "Import Calendar"
-msgid "Import Page"
-msgstr "Abaguer calindrî"
-
-#: kcmdesignerfields.cpp:173
-#, fuzzy, kde-format
-#| msgctxt "@label filter for KUrlRequester"
-#| msgid "*.ics|iCalendar Files"
-msgid "Designer Files"
-msgstr "*.ics|Fitchîs iCalendar"
-
-#: kcmdesignerfields.cpp:272
-#, kde-format
-msgid ""
-"<qt><b>Warning:</b> Qt Designer could not be found. It is probably not "
-"installed. You will only be able to import existing designer files.</qt>"
-msgstr ""
-
-#: kcmdesignerfields.cpp:282
-#, kde-format
-msgid "Available Pages"
-msgstr ""
-
-#: kcmdesignerfields.cpp:288
-#, kde-format
-msgid "Preview of Selected Page"
-msgstr ""
-
-#: kcmdesignerfields.cpp:307
-#, kde-format
-msgid ""
-"<qt><p>This section allows you to add your own GUI Elements ('<i>Widgets</"
-"i>') to store your own values into %1. Proceed as described below:</"
-"p><ol><li>Click on '<i>Edit with Qt Designer</i>'</li><li>In the dialog, "
-"select '<i>Widget</i>', then click <i>OK</i></li><li>Add your widgets to the "
-"form</li><li>Save the file in the directory proposed by Qt Designer</"
-"li><li>Close Qt Designer</li></ol><p>In case you already have a designer "
-"file (*.ui) located somewhere on your hard disk, simply choose '<i>Import "
-"Page</i>'</p><p><b>Important:</b> The name of each input widget you place "
-"within the form must start with '<i>X_</i>'; so if you want the widget to "
-"correspond to your custom entry '<i>X-Foo</i>', set the widget's <i>name</i> "
-"property to '<i>X_Foo</i>'.</p><p><b>Important:</b> The widget will edit "
-"custom fields with an application name of %2.  To change the application "
-"name to be edited, set the widget name in Qt Designer.</p></qt>"
-msgstr ""
-
-#: kcmdesignerfields.cpp:329
-#, kde-format
-msgid "<a href=\"whatsthis:%1\">How does this work?</a>"
-msgstr ""
-
-#: kcmdesignerfields.cpp:340
-#, fuzzy, kde-format
-#| msgid "Delete"
-msgid "Delete Page"
-msgstr "Disfacer"
-
-#: kcmdesignerfields.cpp:343
-#, fuzzy, kde-format
-#| msgid "Import Calendar"
-msgid "Import Page..."
-msgstr "Abaguer calindrî"
-
-#: kcmdesignerfields.cpp:345
-#, kde-format
-msgid "Edit with Qt Designer..."
-msgstr ""
-
-#: kcmdesignerfields.cpp:370
-#, kde-format
-msgid "Key:"
-msgstr ""
-
-#: kcmdesignerfields.cpp:372
-#, kde-format
-msgid "Type:"
-msgstr ""
-
-#: kcmdesignerfields.cpp:374
-#, kde-format
-msgid "Classname:"
-msgstr ""
-
-#: kcmdesignerfields.cpp:376
-#, kde-format
-msgid "Description:"
-msgstr ""
 
 #: koapp.cpp:63
 #, fuzzy, kde-format
@@ -5971,6 +5839,49 @@ msgstr ""
 msgctxt "4 digit year"
 msgid "%1"
 msgstr ""
+
+#, fuzzy
+#~| msgctxt "@item:inlistbox no timezone selected"
+#~| msgid "[No selection]"
+#~ msgid "Selection"
+#~ msgstr "[Nou tchoes]"
+
+#, fuzzy
+#~| msgid "Date && Time"
+#~ msgid "Date & Time"
+#~ msgstr "Date et eure"
+
+#, fuzzy
+#~| msgid "&Date:"
+#~ msgid "Date"
+#~ msgstr "&Date:"
+
+#, fuzzy
+#~| msgctxt "@info"
+#~| msgid "Do you really want to cancel?"
+#~ msgid "<qt>Do you really want to delete '<b>%1</b>'?</qt>"
+#~ msgstr "Voloz vs rinoncî podbon ?"
+
+#, fuzzy
+#~| msgid "Import Calendar"
+#~ msgid "Import Page"
+#~ msgstr "Abaguer calindrî"
+
+#, fuzzy
+#~| msgctxt "@label filter for KUrlRequester"
+#~| msgid "*.ics|iCalendar Files"
+#~ msgid "Designer Files"
+#~ msgstr "*.ics|Fitchîs iCalendar"
+
+#, fuzzy
+#~| msgid "Delete"
+#~ msgid "Delete Page"
+#~ msgstr "Disfacer"
+
+#, fuzzy
+#~| msgid "Import Calendar"
+#~ msgid "Import Page..."
+#~ msgstr "Abaguer calindrî"
 
 #, fuzzy
 #~| msgid "Delete Confirmation"

@@ -15,7 +15,7 @@ msgid ""
 msgstr ""
 "Project-Id-Version: korganizer\n"
 "Report-Msgid-Bugs-To: https://bugs.kde.org\n"
-"POT-Creation-Date: 2024-02-22 00:38+0000\n"
+"POT-Creation-Date: 2024-03-11 00:38+0000\n"
 "PO-Revision-Date: 2024-01-02 19:27+0100\n"
 "Last-Translator: Luigi Toscano <luigi.toscano@tiscali.it>\n"
 "Language-Team: Italian <kde-i18n-it@kde.org>\n"
@@ -2031,145 +2031,6 @@ msgid "%1 match"
 msgid_plural "%1 matches"
 msgstr[0] "Una corrispondenza"
 msgstr[1] "%1 corrispondenze"
-
-#: kcmdesignerfields.cpp:61 kcmdesignerfields.cpp:62 kcmdesignerfields.cpp:67
-#: kcmdesignerfields.cpp:68
-#, kde-format
-msgid "Text"
-msgstr "Testo"
-
-#: kcmdesignerfields.cpp:63
-#, kde-format
-msgid "Numeric Value"
-msgstr "Valore"
-
-#: kcmdesignerfields.cpp:64
-#, kde-format
-msgid "Boolean"
-msgstr "Booleano"
-
-#: kcmdesignerfields.cpp:65
-#, kde-format
-msgid "Selection"
-msgstr "Selezione"
-
-#: kcmdesignerfields.cpp:66 kcmdesignerfields.cpp:69
-#, kde-format
-msgid "Date & Time"
-msgstr "Data e ora"
-
-#: kcmdesignerfields.cpp:70
-#, kde-format
-msgid "Date"
-msgstr "Data"
-
-#: kcmdesignerfields.cpp:158
-#, kde-format
-msgid "<qt>Do you really want to delete '<b>%1</b>'?</qt>"
-msgstr "<qt>Vuoi veramente eliminare '<b>%1</b>'?</qt>"
-
-#: kcmdesignerfields.cpp:171
-#, kde-format
-msgid "Import Page"
-msgstr "Importa pagina"
-
-#: kcmdesignerfields.cpp:173
-#, kde-format
-msgid "Designer Files"
-msgstr "File Designer"
-
-#: kcmdesignerfields.cpp:272
-#, kde-format
-msgid ""
-"<qt><b>Warning:</b> Qt Designer could not be found. It is probably not "
-"installed. You will only be able to import existing designer files.</qt>"
-msgstr ""
-"<qt><b>Attenzione:</b> Impossibile trovare Qt Designer. Probabilmente non è "
-"installato. Sarai solo in grado di importare file designer esistenti.</qt>"
-
-#: kcmdesignerfields.cpp:282
-#, kde-format
-msgid "Available Pages"
-msgstr "Pagine disponibili"
-
-#: kcmdesignerfields.cpp:288
-#, kde-format
-msgid "Preview of Selected Page"
-msgstr "Anteprima della pagina selezionata"
-
-#: kcmdesignerfields.cpp:307
-#, kde-format
-msgid ""
-"<qt><p>This section allows you to add your own GUI Elements ('<i>Widgets</"
-"i>') to store your own values into %1. Proceed as described below:</"
-"p><ol><li>Click on '<i>Edit with Qt Designer</i>'</li><li>In the dialog, "
-"select '<i>Widget</i>', then click <i>OK</i></li><li>Add your widgets to the "
-"form</li><li>Save the file in the directory proposed by Qt Designer</"
-"li><li>Close Qt Designer</li></ol><p>In case you already have a designer "
-"file (*.ui) located somewhere on your hard disk, simply choose '<i>Import "
-"Page</i>'</p><p><b>Important:</b> The name of each input widget you place "
-"within the form must start with '<i>X_</i>'; so if you want the widget to "
-"correspond to your custom entry '<i>X-Foo</i>', set the widget's <i>name</i> "
-"property to '<i>X_Foo</i>'.</p><p><b>Important:</b> The widget will edit "
-"custom fields with an application name of %2.  To change the application "
-"name to be edited, set the widget name in Qt Designer.</p></qt>"
-msgstr ""
-"<qt><p>Questa sezione ti permette di aggiungere elementi GUI (&quot;"
-"<i>(widget)</i>&quot;) fatti da te, per salvare i tuoi dati all'interno di "
-"%1. Procedi così:</p><ol><li>Fai clic su &quot;<i>Modifica con Qt Designer</"
-"i>&quot;</li> <li>Nella finestra, seleziona &quot;<i>Elemento</i>&quot;, poi "
-"fai clic su <i>OK</i></li><li>Aggiungi i tuoi elementi nel modulo (form)</"
-"li><li>Salva il file nella cartella indicata da Qt Designer</li><li>Chiudi "
-"Qt Designer</li></ol><p>Nel caso tu possieda già un file designer (*.ui) "
-"posizionato da qualche parte nel tuo disco fisso, semplicemente scegli &quot;"
-"<i>Importa pagina</i>&quot;</p><p><b>Importante:</b>Il nome di ogni elemento "
-"di inserimento che disponi nel modulo (form) deve iniziare con &quot;<i>X_</"
-"i>&quot;; quindi se vuoi che l'elemento corrisponda a una tua voce "
-"personalizzata &quot;<i>X-Foo</i>&quot;, imposta la proprietà <i>name</i> "
-"dell'elemento &quot;<i>X_Foo</i>&quot;.</p><p><b>Importante:</b> L'elemento "
-"modificherà i campi personalizzati con un nome applicazione pari a %2. Per "
-"cambiare il nome dell'applicazione da modificare, imposta il nome "
-"dell'elemento in Qt Designer.</p></qt>"
-
-#: kcmdesignerfields.cpp:329
-#, kde-format
-msgid "<a href=\"whatsthis:%1\">How does this work?</a>"
-msgstr "<a href=\"whatsthis:%1\">Come funziona?</a>"
-
-#: kcmdesignerfields.cpp:340
-#, kde-format
-msgid "Delete Page"
-msgstr "Elimina pagina"
-
-#: kcmdesignerfields.cpp:343
-#, kde-format
-msgid "Import Page..."
-msgstr "Importa pagina..."
-
-#: kcmdesignerfields.cpp:345
-#, kde-format
-msgid "Edit with Qt Designer..."
-msgstr "Modifica con Qt Designer..."
-
-#: kcmdesignerfields.cpp:370
-#, kde-format
-msgid "Key:"
-msgstr "Chiave:"
-
-#: kcmdesignerfields.cpp:372
-#, kde-format
-msgid "Type:"
-msgstr "Tipo:"
-
-#: kcmdesignerfields.cpp:374
-#, kde-format
-msgid "Classname:"
-msgstr "Nome classe:"
-
-#: kcmdesignerfields.cpp:376
-#, kde-format
-msgid "Description:"
-msgstr "Descrizione:"
 
 #: koapp.cpp:63
 #, kde-format
@@ -6094,6 +5955,105 @@ msgstr "%1"
 msgctxt "4 digit year"
 msgid "%1"
 msgstr "%1"
+
+#~ msgid "Text"
+#~ msgstr "Testo"
+
+#~ msgid "Numeric Value"
+#~ msgstr "Valore"
+
+#~ msgid "Boolean"
+#~ msgstr "Booleano"
+
+#~ msgid "Selection"
+#~ msgstr "Selezione"
+
+#~ msgid "Date & Time"
+#~ msgstr "Data e ora"
+
+#~ msgid "Date"
+#~ msgstr "Data"
+
+#~ msgid "<qt>Do you really want to delete '<b>%1</b>'?</qt>"
+#~ msgstr "<qt>Vuoi veramente eliminare '<b>%1</b>'?</qt>"
+
+#~ msgid "Import Page"
+#~ msgstr "Importa pagina"
+
+#~ msgid "Designer Files"
+#~ msgstr "File Designer"
+
+#~ msgid ""
+#~ "<qt><b>Warning:</b> Qt Designer could not be found. It is probably not "
+#~ "installed. You will only be able to import existing designer files.</qt>"
+#~ msgstr ""
+#~ "<qt><b>Attenzione:</b> Impossibile trovare Qt Designer. Probabilmente non "
+#~ "è installato. Sarai solo in grado di importare file designer esistenti.</"
+#~ "qt>"
+
+#~ msgid "Available Pages"
+#~ msgstr "Pagine disponibili"
+
+#~ msgid "Preview of Selected Page"
+#~ msgstr "Anteprima della pagina selezionata"
+
+#~ msgid ""
+#~ "<qt><p>This section allows you to add your own GUI Elements ('<i>Widgets</"
+#~ "i>') to store your own values into %1. Proceed as described below:</"
+#~ "p><ol><li>Click on '<i>Edit with Qt Designer</i>'</li><li>In the dialog, "
+#~ "select '<i>Widget</i>', then click <i>OK</i></li><li>Add your widgets to "
+#~ "the form</li><li>Save the file in the directory proposed by Qt Designer</"
+#~ "li><li>Close Qt Designer</li></ol><p>In case you already have a designer "
+#~ "file (*.ui) located somewhere on your hard disk, simply choose '<i>Import "
+#~ "Page</i>'</p><p><b>Important:</b> The name of each input widget you place "
+#~ "within the form must start with '<i>X_</i>'; so if you want the widget to "
+#~ "correspond to your custom entry '<i>X-Foo</i>', set the widget's <i>name</"
+#~ "i> property to '<i>X_Foo</i>'.</p><p><b>Important:</b> The widget will "
+#~ "edit custom fields with an application name of %2.  To change the "
+#~ "application name to be edited, set the widget name in Qt Designer.</p></"
+#~ "qt>"
+#~ msgstr ""
+#~ "<qt><p>Questa sezione ti permette di aggiungere elementi GUI (&quot;"
+#~ "<i>(widget)</i>&quot;) fatti da te, per salvare i tuoi dati all'interno "
+#~ "di %1. Procedi così:</p><ol><li>Fai clic su &quot;<i>Modifica con Qt "
+#~ "Designer</i>&quot;</li> <li>Nella finestra, seleziona &quot;<i>Elemento</"
+#~ "i>&quot;, poi fai clic su <i>OK</i></li><li>Aggiungi i tuoi elementi nel "
+#~ "modulo (form)</li><li>Salva il file nella cartella indicata da Qt "
+#~ "Designer</li><li>Chiudi Qt Designer</li></ol><p>Nel caso tu possieda già "
+#~ "un file designer (*.ui) posizionato da qualche parte nel tuo disco fisso, "
+#~ "semplicemente scegli &quot;<i>Importa pagina</i>&quot;</"
+#~ "p><p><b>Importante:</b>Il nome di ogni elemento di inserimento che "
+#~ "disponi nel modulo (form) deve iniziare con &quot;<i>X_</i>&quot;; quindi "
+#~ "se vuoi che l'elemento corrisponda a una tua voce personalizzata &quot;"
+#~ "<i>X-Foo</i>&quot;, imposta la proprietà <i>name</i> dell'elemento &quot;"
+#~ "<i>X_Foo</i>&quot;.</p><p><b>Importante:</b> L'elemento modificherà i "
+#~ "campi personalizzati con un nome applicazione pari a %2. Per cambiare il "
+#~ "nome dell'applicazione da modificare, imposta il nome dell'elemento in Qt "
+#~ "Designer.</p></qt>"
+
+#~ msgid "<a href=\"whatsthis:%1\">How does this work?</a>"
+#~ msgstr "<a href=\"whatsthis:%1\">Come funziona?</a>"
+
+#~ msgid "Delete Page"
+#~ msgstr "Elimina pagina"
+
+#~ msgid "Import Page..."
+#~ msgstr "Importa pagina..."
+
+#~ msgid "Edit with Qt Designer..."
+#~ msgstr "Modifica con Qt Designer..."
+
+#~ msgid "Key:"
+#~ msgstr "Chiave:"
+
+#~ msgid "Type:"
+#~ msgstr "Tipo:"
+
+#~ msgid "Classname:"
+#~ msgstr "Nome classe:"
+
+#~ msgid "Description:"
+#~ msgstr "Descrizione:"
 
 #~ msgid "Copying Failed"
 #~ msgstr "Copia non riuscita"

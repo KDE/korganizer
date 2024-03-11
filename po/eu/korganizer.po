@@ -13,7 +13,7 @@ msgid ""
 msgstr ""
 "Project-Id-Version: korganizer\n"
 "Report-Msgid-Bugs-To: https://bugs.kde.org\n"
-"POT-Creation-Date: 2024-02-22 00:38+0000\n"
+"POT-Creation-Date: 2024-03-11 00:38+0000\n"
 "PO-Revision-Date: 2024-01-02 21:41+0100\n"
 "Last-Translator: Iñigo Salvador Azurmendi <xalba@ni.eus>\n"
 "Language-Team: Basque <kde-i18n-eu@kde.org>\n"
@@ -2027,144 +2027,6 @@ msgid "%1 match"
 msgid_plural "%1 matches"
 msgstr[0] "Bat-etortze %1"
 msgstr[1] "%1 bat-etortze"
-
-#: kcmdesignerfields.cpp:61 kcmdesignerfields.cpp:62 kcmdesignerfields.cpp:67
-#: kcmdesignerfields.cpp:68
-#, kde-format
-msgid "Text"
-msgstr "Testua"
-
-#: kcmdesignerfields.cpp:63
-#, kde-format
-msgid "Numeric Value"
-msgstr "Zenbakizko balioa"
-
-#: kcmdesignerfields.cpp:64
-#, kde-format
-msgid "Boolean"
-msgstr "Boolearra"
-
-#: kcmdesignerfields.cpp:65
-#, kde-format
-msgid "Selection"
-msgstr "Hautapena"
-
-#: kcmdesignerfields.cpp:66 kcmdesignerfields.cpp:69
-#, kde-format
-msgid "Date & Time"
-msgstr "Data eta ordua"
-
-#: kcmdesignerfields.cpp:70
-#, kde-format
-msgid "Date"
-msgstr "Data"
-
-#: kcmdesignerfields.cpp:158
-#, kde-format
-msgid "<qt>Do you really want to delete '<b>%1</b>'?</qt>"
-msgstr "<qt>Benetan ezabatu nahi duzu '<b>%1</b>'?</qt>"
-
-#: kcmdesignerfields.cpp:171
-#, kde-format
-msgid "Import Page"
-msgstr "Inportatu orrialdea"
-
-#: kcmdesignerfields.cpp:173
-#, kde-format
-msgid "Designer Files"
-msgstr "Diseinatzaile fitxategiak"
-
-#: kcmdesignerfields.cpp:272
-#, kde-format
-msgid ""
-"<qt><b>Warning:</b> Qt Designer could not be found. It is probably not "
-"installed. You will only be able to import existing designer files.</qt>"
-msgstr ""
-"<qt><b>Abisua:</b>Ezin izan du Qt aurkitu. Baliteke instalatu gabe egotea. "
-"Lehendik dauden diseinu-fitxategiak bakarrik inporta ditzakezu.</qt>"
-
-#: kcmdesignerfields.cpp:282
-#, kde-format
-msgid "Available Pages"
-msgstr "Orrialde erabilgarriak"
-
-#: kcmdesignerfields.cpp:288
-#, kde-format
-msgid "Preview of Selected Page"
-msgstr "Hautatutako orrialdeen aurreikuspegia"
-
-#: kcmdesignerfields.cpp:307
-#, kde-format
-msgid ""
-"<qt><p>This section allows you to add your own GUI Elements ('<i>Widgets</"
-"i>') to store your own values into %1. Proceed as described below:</"
-"p><ol><li>Click on '<i>Edit with Qt Designer</i>'</li><li>In the dialog, "
-"select '<i>Widget</i>', then click <i>OK</i></li><li>Add your widgets to the "
-"form</li><li>Save the file in the directory proposed by Qt Designer</"
-"li><li>Close Qt Designer</li></ol><p>In case you already have a designer "
-"file (*.ui) located somewhere on your hard disk, simply choose '<i>Import "
-"Page</i>'</p><p><b>Important:</b> The name of each input widget you place "
-"within the form must start with '<i>X_</i>'; so if you want the widget to "
-"correspond to your custom entry '<i>X-Foo</i>', set the widget's <i>name</i> "
-"property to '<i>X_Foo</i>'.</p><p><b>Important:</b> The widget will edit "
-"custom fields with an application name of %2.  To change the application "
-"name to be edited, set the widget name in Qt Designer.</p></qt>"
-msgstr ""
-"<qt><p>Atal honek, %1(e)an zure balio propioak gordetzeko zure GUI elementu "
-"propioak ('<i>Trepetak</i>') gehitzeko aukera ematen dizu. Jarraitu behean "
-"deskribatutakoaren arabera:%1</p><ol><li>Egin klik 'Editatu «Qt "
-"Designer»rekin<i>'</i></li>Elkarrizketan aukeratu '<li>Trepeta<i>', ondoren "
-"egin klik </i>Ados<i> botoian</i></li><li>Gehitu zure trepetak inprimakian</"
-"li><li>Gorde fitxategia «Qt Designer»rek proposatutako direktorioan</"
-"li><li>Itxi «Qt Designer»</li></ol><p> Diseinatzailearen fitxategi bat (*."
-"ui) zure disko zurrunean nonbait kokatua baduzu, '<i>Inportatu orrialdea</"
-"i>' aukeratu besterik ez duzu egin behar.</p><p><b>Garrantzitsua:</b> "
-"Inprimakian kokatzen duzun trepeta guztien izena '<i>X_</i>' hasiera izan "
-"behar du; beraz, trepeta zuk neurrira ipinitako '<i>X-Foo</i>' sarrerari "
-"egokitu nahi badiozu, ezarri trepetaren <i>izena</i> propietatea '<i>X_Foo</"
-"i>' gisa.</p><p><b>Garrantzitsua:</b> Trepetak neurrira ipinitako eremuak "
-"editatuko ditu, %2 aplikazio izen batekin. Editatu beharreko aplikazioaren "
-"izena aldatzeko, ezarri trepetaren izena «Qt Designer»ren.</p></qt>"
-
-#: kcmdesignerfields.cpp:329
-#, kde-format
-msgid "<a href=\"whatsthis:%1\">How does this work?</a>"
-msgstr "<a href=\"whatsthis:%1\">Hori nola dabil?</a>"
-
-#: kcmdesignerfields.cpp:340
-#, kde-format
-msgid "Delete Page"
-msgstr "Ezabatu orrialdea"
-
-#: kcmdesignerfields.cpp:343
-#, kde-format
-msgid "Import Page..."
-msgstr "Inportatu orrialdea..."
-
-#: kcmdesignerfields.cpp:345
-#, kde-format
-msgid "Edit with Qt Designer..."
-msgstr "Editatu «Qt Designer»rekin..."
-
-#: kcmdesignerfields.cpp:370
-#, kde-format
-msgid "Key:"
-msgstr "Gakoa:"
-
-#: kcmdesignerfields.cpp:372
-#, kde-format
-msgid "Type:"
-msgstr "Mota:"
-
-#: kcmdesignerfields.cpp:374
-#, kde-format
-msgid "Classname:"
-msgstr "Klase-izena:"
-
-#: kcmdesignerfields.cpp:376
-#, kde-format
-msgid "Description:"
-msgstr "Deskribapena:"
 
 #: koapp.cpp:63
 #, kde-format
@@ -6065,6 +5927,104 @@ msgstr "%1"
 msgctxt "4 digit year"
 msgid "%1"
 msgstr "%1"
+
+#~ msgid "Text"
+#~ msgstr "Testua"
+
+#~ msgid "Numeric Value"
+#~ msgstr "Zenbakizko balioa"
+
+#~ msgid "Boolean"
+#~ msgstr "Boolearra"
+
+#~ msgid "Selection"
+#~ msgstr "Hautapena"
+
+#~ msgid "Date & Time"
+#~ msgstr "Data eta ordua"
+
+#~ msgid "Date"
+#~ msgstr "Data"
+
+#~ msgid "<qt>Do you really want to delete '<b>%1</b>'?</qt>"
+#~ msgstr "<qt>Benetan ezabatu nahi duzu '<b>%1</b>'?</qt>"
+
+#~ msgid "Import Page"
+#~ msgstr "Inportatu orrialdea"
+
+#~ msgid "Designer Files"
+#~ msgstr "Diseinatzaile fitxategiak"
+
+#~ msgid ""
+#~ "<qt><b>Warning:</b> Qt Designer could not be found. It is probably not "
+#~ "installed. You will only be able to import existing designer files.</qt>"
+#~ msgstr ""
+#~ "<qt><b>Abisua:</b>Ezin izan du Qt aurkitu. Baliteke instalatu gabe "
+#~ "egotea. Lehendik dauden diseinu-fitxategiak bakarrik inporta ditzakezu.</"
+#~ "qt>"
+
+#~ msgid "Available Pages"
+#~ msgstr "Orrialde erabilgarriak"
+
+#~ msgid "Preview of Selected Page"
+#~ msgstr "Hautatutako orrialdeen aurreikuspegia"
+
+#~ msgid ""
+#~ "<qt><p>This section allows you to add your own GUI Elements ('<i>Widgets</"
+#~ "i>') to store your own values into %1. Proceed as described below:</"
+#~ "p><ol><li>Click on '<i>Edit with Qt Designer</i>'</li><li>In the dialog, "
+#~ "select '<i>Widget</i>', then click <i>OK</i></li><li>Add your widgets to "
+#~ "the form</li><li>Save the file in the directory proposed by Qt Designer</"
+#~ "li><li>Close Qt Designer</li></ol><p>In case you already have a designer "
+#~ "file (*.ui) located somewhere on your hard disk, simply choose '<i>Import "
+#~ "Page</i>'</p><p><b>Important:</b> The name of each input widget you place "
+#~ "within the form must start with '<i>X_</i>'; so if you want the widget to "
+#~ "correspond to your custom entry '<i>X-Foo</i>', set the widget's <i>name</"
+#~ "i> property to '<i>X_Foo</i>'.</p><p><b>Important:</b> The widget will "
+#~ "edit custom fields with an application name of %2.  To change the "
+#~ "application name to be edited, set the widget name in Qt Designer.</p></"
+#~ "qt>"
+#~ msgstr ""
+#~ "<qt><p>Atal honek, %1(e)an zure balio propioak gordetzeko zure GUI "
+#~ "elementu propioak ('<i>Trepetak</i>') gehitzeko aukera ematen dizu. "
+#~ "Jarraitu behean deskribatutakoaren arabera:%1</p><ol><li>Egin klik "
+#~ "'Editatu «Qt Designer»rekin<i>'</i></li>Elkarrizketan aukeratu "
+#~ "'<li>Trepeta<i>', ondoren egin klik </i>Ados<i> botoian</i></"
+#~ "li><li>Gehitu zure trepetak inprimakian</li><li>Gorde fitxategia «Qt "
+#~ "Designer»rek proposatutako direktorioan</li><li>Itxi «Qt Designer»</li></"
+#~ "ol><p> Diseinatzailearen fitxategi bat (*.ui) zure disko zurrunean "
+#~ "nonbait kokatua baduzu, '<i>Inportatu orrialdea</i>' aukeratu besterik ez "
+#~ "duzu egin behar.</p><p><b>Garrantzitsua:</b> Inprimakian kokatzen duzun "
+#~ "trepeta guztien izena '<i>X_</i>' hasiera izan behar du; beraz, trepeta "
+#~ "zuk neurrira ipinitako '<i>X-Foo</i>' sarrerari egokitu nahi badiozu, "
+#~ "ezarri trepetaren <i>izena</i> propietatea '<i>X_Foo</i>' gisa.</"
+#~ "p><p><b>Garrantzitsua:</b> Trepetak neurrira ipinitako eremuak editatuko "
+#~ "ditu, %2 aplikazio izen batekin. Editatu beharreko aplikazioaren izena "
+#~ "aldatzeko, ezarri trepetaren izena «Qt Designer»ren.</p></qt>"
+
+#~ msgid "<a href=\"whatsthis:%1\">How does this work?</a>"
+#~ msgstr "<a href=\"whatsthis:%1\">Hori nola dabil?</a>"
+
+#~ msgid "Delete Page"
+#~ msgstr "Ezabatu orrialdea"
+
+#~ msgid "Import Page..."
+#~ msgstr "Inportatu orrialdea..."
+
+#~ msgid "Edit with Qt Designer..."
+#~ msgstr "Editatu «Qt Designer»rekin..."
+
+#~ msgid "Key:"
+#~ msgstr "Gakoa:"
+
+#~ msgid "Type:"
+#~ msgstr "Mota:"
+
+#~ msgid "Classname:"
+#~ msgstr "Klase-izena:"
+
+#~ msgid "Description:"
+#~ msgstr "Deskribapena:"
 
 #~ msgid "Copying Failed"
 #~ msgstr "Kopiatzea huts egin du"

@@ -7,7 +7,7 @@ msgid ""
 msgstr ""
 "Project-Id-Version: __kde__kdepim__korganizer\n"
 "Report-Msgid-Bugs-To: https://bugs.kde.org\n"
-"POT-Creation-Date: 2024-02-22 00:38+0000\n"
+"POT-Creation-Date: 2024-03-11 00:38+0000\n"
 "PO-Revision-Date: 2014-01-31 19:03+0100\n"
 "Last-Translator: Samir Ribić <megaribi@epn.ba>\n"
 "Language-Team:  <bs@li.org>\n"
@@ -2088,144 +2088,6 @@ msgid_plural "%1 matches"
 msgstr[0] ""
 msgstr[1] ""
 msgstr[2] ""
-
-#: kcmdesignerfields.cpp:61 kcmdesignerfields.cpp:62 kcmdesignerfields.cpp:67
-#: kcmdesignerfields.cpp:68
-#, kde-format
-msgid "Text"
-msgstr "Tekst"
-
-#: kcmdesignerfields.cpp:63
-#, kde-format
-msgid "Numeric Value"
-msgstr "Numerička vrijednost"
-
-#: kcmdesignerfields.cpp:64
-#, kde-format
-msgid "Boolean"
-msgstr "Logički"
-
-#: kcmdesignerfields.cpp:65
-#, kde-format
-msgid "Selection"
-msgstr "Izbor"
-
-#: kcmdesignerfields.cpp:66 kcmdesignerfields.cpp:69
-#, kde-format
-msgid "Date & Time"
-msgstr "Datum i vrijeme"
-
-#: kcmdesignerfields.cpp:70
-#, kde-format
-msgid "Date"
-msgstr "Datum"
-
-#: kcmdesignerfields.cpp:158
-#, kde-format
-msgid "<qt>Do you really want to delete '<b>%1</b>'?</qt>"
-msgstr "<qt>Želite li zaista da obrišete '<b>%1</b>'?</qt>"
-
-#: kcmdesignerfields.cpp:171
-#, kde-format
-msgid "Import Page"
-msgstr "Uvezi stranu"
-
-#: kcmdesignerfields.cpp:173
-#, fuzzy, kde-format
-#| msgid "*.ui|Designer Files"
-msgid "Designer Files"
-msgstr "*.ui|Dizajnerske datoteke"
-
-#: kcmdesignerfields.cpp:272
-#, kde-format
-msgid ""
-"<qt><b>Warning:</b> Qt Designer could not be found. It is probably not "
-"installed. You will only be able to import existing designer files.</qt>"
-msgstr ""
-"<qt><b>Upozorenje:</b> Ne mogu da nađem Qt Designer. Verovatno nije "
-"instaliran. Moćićete da uvozite jedino postojeće dizajnerske datoteke.</qt>"
-
-#: kcmdesignerfields.cpp:282
-#, kde-format
-msgid "Available Pages"
-msgstr "Dostupne strane"
-
-#: kcmdesignerfields.cpp:288
-#, kde-format
-msgid "Preview of Selected Page"
-msgstr "Pregled izabrane strane"
-
-#: kcmdesignerfields.cpp:307
-#, kde-format
-msgid ""
-"<qt><p>This section allows you to add your own GUI Elements ('<i>Widgets</"
-"i>') to store your own values into %1. Proceed as described below:</"
-"p><ol><li>Click on '<i>Edit with Qt Designer</i>'</li><li>In the dialog, "
-"select '<i>Widget</i>', then click <i>OK</i></li><li>Add your widgets to the "
-"form</li><li>Save the file in the directory proposed by Qt Designer</"
-"li><li>Close Qt Designer</li></ol><p>In case you already have a designer "
-"file (*.ui) located somewhere on your hard disk, simply choose '<i>Import "
-"Page</i>'</p><p><b>Important:</b> The name of each input widget you place "
-"within the form must start with '<i>X_</i>'; so if you want the widget to "
-"correspond to your custom entry '<i>X-Foo</i>', set the widget's <i>name</i> "
-"property to '<i>X_Foo</i>'.</p><p><b>Important:</b> The widget will edit "
-"custom fields with an application name of %2.  To change the application "
-"name to be edited, set the widget name in Qt Designer.</p></qt>"
-msgstr ""
-"<qt><p>Ova sekcija vam omogućava da dodate vlastite GUI elemente "
-"('<i>Widget, grafička kontrola</i>') da smjestite vlastite vrijednosti u %1. "
-"Uradite kako je opisano dolje:</p><ol><li>Kliknite na '<i>Uredi s Qt "
-"Designer</i>'</li><li>U dijaloškom prozoru odaberite '<i>Grafička kontrola</"
-"i>', pa kliknite na <i>U redu</i></li><li>Dodajte grafičke kontrole na "
-"formular</li><li>Snimite datoteke u direktorij koji preporučuje Qt Designer</"
-"li><li>Zatvorite Qt Designer</li></ol><p>Ako već imate dizajnersku datoteku "
-"(*.ui) lociranu negdje na disku, prosto odaberite '<i>Uvezi stranicu</i>'</"
-"p><p><b>Važno:</b> Ime svake ulazne kontrole koju stavljate na formu mora "
-"početi s '<i>X_</i>'; pa ako želite da kontrola odgovara vešem vlastitom "
-"elementu'<i>X-Foo</i>', postavite svojstvo <i>name</i> grafičke kontrole na "
-"'<i>X_Foo</i>'.</p><p><b>Važno:</b> Grafička kontorla će izmijeniti vlastita "
-"polja s imenom aplikacije %2.  Da promijenite ime aplikacije koja se "
-"mijenja, postavite ime grafičke kontrole u Qt Designer.</p></qt>"
-
-#: kcmdesignerfields.cpp:329
-#, kde-format
-msgid "<a href=\"whatsthis:%1\">How does this work?</a>"
-msgstr "<a href=\"whatsthis:%1\">Kako ovo radi?</a>"
-
-#: kcmdesignerfields.cpp:340
-#, kde-format
-msgid "Delete Page"
-msgstr "Obriši stranicu"
-
-#: kcmdesignerfields.cpp:343
-#, kde-format
-msgid "Import Page..."
-msgstr "Uvezi stranu..."
-
-#: kcmdesignerfields.cpp:345
-#, kde-format
-msgid "Edit with Qt Designer..."
-msgstr "Uredi pomoću Qt Designer-a..."
-
-#: kcmdesignerfields.cpp:370
-#, kde-format
-msgid "Key:"
-msgstr "Ključ:"
-
-#: kcmdesignerfields.cpp:372
-#, kde-format
-msgid "Type:"
-msgstr "Vrsta:"
-
-#: kcmdesignerfields.cpp:374
-#, kde-format
-msgid "Classname:"
-msgstr "Ime klase:"
-
-#: kcmdesignerfields.cpp:376
-#, kde-format
-msgid "Description:"
-msgstr "Opis:"
 
 #: koapp.cpp:63
 #, fuzzy, kde-format
@@ -6327,6 +6189,105 @@ msgstr "%1"
 msgctxt "4 digit year"
 msgid "%1"
 msgstr "%1"
+
+#~ msgid "Text"
+#~ msgstr "Tekst"
+
+#~ msgid "Numeric Value"
+#~ msgstr "Numerička vrijednost"
+
+#~ msgid "Boolean"
+#~ msgstr "Logički"
+
+#~ msgid "Selection"
+#~ msgstr "Izbor"
+
+#~ msgid "Date & Time"
+#~ msgstr "Datum i vrijeme"
+
+#~ msgid "Date"
+#~ msgstr "Datum"
+
+#~ msgid "<qt>Do you really want to delete '<b>%1</b>'?</qt>"
+#~ msgstr "<qt>Želite li zaista da obrišete '<b>%1</b>'?</qt>"
+
+#~ msgid "Import Page"
+#~ msgstr "Uvezi stranu"
+
+#, fuzzy
+#~| msgid "*.ui|Designer Files"
+#~ msgid "Designer Files"
+#~ msgstr "*.ui|Dizajnerske datoteke"
+
+#~ msgid ""
+#~ "<qt><b>Warning:</b> Qt Designer could not be found. It is probably not "
+#~ "installed. You will only be able to import existing designer files.</qt>"
+#~ msgstr ""
+#~ "<qt><b>Upozorenje:</b> Ne mogu da nađem Qt Designer. Verovatno nije "
+#~ "instaliran. Moćićete da uvozite jedino postojeće dizajnerske datoteke.</"
+#~ "qt>"
+
+#~ msgid "Available Pages"
+#~ msgstr "Dostupne strane"
+
+#~ msgid "Preview of Selected Page"
+#~ msgstr "Pregled izabrane strane"
+
+#~ msgid ""
+#~ "<qt><p>This section allows you to add your own GUI Elements ('<i>Widgets</"
+#~ "i>') to store your own values into %1. Proceed as described below:</"
+#~ "p><ol><li>Click on '<i>Edit with Qt Designer</i>'</li><li>In the dialog, "
+#~ "select '<i>Widget</i>', then click <i>OK</i></li><li>Add your widgets to "
+#~ "the form</li><li>Save the file in the directory proposed by Qt Designer</"
+#~ "li><li>Close Qt Designer</li></ol><p>In case you already have a designer "
+#~ "file (*.ui) located somewhere on your hard disk, simply choose '<i>Import "
+#~ "Page</i>'</p><p><b>Important:</b> The name of each input widget you place "
+#~ "within the form must start with '<i>X_</i>'; so if you want the widget to "
+#~ "correspond to your custom entry '<i>X-Foo</i>', set the widget's <i>name</"
+#~ "i> property to '<i>X_Foo</i>'.</p><p><b>Important:</b> The widget will "
+#~ "edit custom fields with an application name of %2.  To change the "
+#~ "application name to be edited, set the widget name in Qt Designer.</p></"
+#~ "qt>"
+#~ msgstr ""
+#~ "<qt><p>Ova sekcija vam omogućava da dodate vlastite GUI elemente "
+#~ "('<i>Widget, grafička kontrola</i>') da smjestite vlastite vrijednosti u "
+#~ "%1. Uradite kako je opisano dolje:</p><ol><li>Kliknite na '<i>Uredi s Qt "
+#~ "Designer</i>'</li><li>U dijaloškom prozoru odaberite '<i>Grafička "
+#~ "kontrola</i>', pa kliknite na <i>U redu</i></li><li>Dodajte grafičke "
+#~ "kontrole na formular</li><li>Snimite datoteke u direktorij koji "
+#~ "preporučuje Qt Designer</li><li>Zatvorite Qt Designer</li></ol><p>Ako već "
+#~ "imate dizajnersku datoteku (*.ui) lociranu negdje na disku, prosto "
+#~ "odaberite '<i>Uvezi stranicu</i>'</p><p><b>Važno:</b> Ime svake ulazne "
+#~ "kontrole koju stavljate na formu mora početi s '<i>X_</i>'; pa ako želite "
+#~ "da kontrola odgovara vešem vlastitom elementu'<i>X-Foo</i>', postavite "
+#~ "svojstvo <i>name</i> grafičke kontrole na '<i>X_Foo</i>'.</p><p><b>Važno:"
+#~ "</b> Grafička kontorla će izmijeniti vlastita polja s imenom aplikacije "
+#~ "%2.  Da promijenite ime aplikacije koja se mijenja, postavite ime "
+#~ "grafičke kontrole u Qt Designer.</p></qt>"
+
+#~ msgid "<a href=\"whatsthis:%1\">How does this work?</a>"
+#~ msgstr "<a href=\"whatsthis:%1\">Kako ovo radi?</a>"
+
+#~ msgid "Delete Page"
+#~ msgstr "Obriši stranicu"
+
+#~ msgid "Import Page..."
+#~ msgstr "Uvezi stranu..."
+
+#~ msgid "Edit with Qt Designer..."
+#~ msgstr "Uredi pomoću Qt Designer-a..."
+
+#~ msgid "Key:"
+#~ msgstr "Ključ:"
+
+#~ msgid "Type:"
+#~ msgstr "Vrsta:"
+
+#~ msgid "Classname:"
+#~ msgstr "Ime klase:"
+
+#~ msgid "Description:"
+#~ msgstr "Opis:"
 
 #~ msgid "Copying Failed"
 #~ msgstr "Kopiranje neuspješno"

@@ -6,7 +6,7 @@ msgid ""
 msgstr ""
 "Project-Id-Version: korganizer\n"
 "Report-Msgid-Bugs-To: https://bugs.kde.org\n"
-"POT-Creation-Date: 2024-02-22 00:38+0000\n"
+"POT-Creation-Date: 2024-03-11 00:38+0000\n"
 "PO-Revision-Date: 2013-09-30 02:22+0600\n"
 "Last-Translator: Sairan Kikkarin <sairan@computer.org>\n"
 "Language-Team: Kazakh <kde-i18n-doc@kde.org>\n"
@@ -2067,144 +2067,6 @@ msgctxt "@label"
 msgid "%1 match"
 msgid_plural "%1 matches"
 msgstr[0] ""
-
-#: kcmdesignerfields.cpp:61 kcmdesignerfields.cpp:62 kcmdesignerfields.cpp:67
-#: kcmdesignerfields.cpp:68
-#, kde-format
-msgid "Text"
-msgstr "Мәтін"
-
-#: kcmdesignerfields.cpp:63
-#, kde-format
-msgid "Numeric Value"
-msgstr "Сан"
-
-#: kcmdesignerfields.cpp:64
-#, kde-format
-msgid "Boolean"
-msgstr "Логикалық"
-
-#: kcmdesignerfields.cpp:65
-#, kde-format
-msgid "Selection"
-msgstr "Таңдауы"
-
-#: kcmdesignerfields.cpp:66 kcmdesignerfields.cpp:69
-#, kde-format
-msgid "Date & Time"
-msgstr "Күн & Уақыты"
-
-#: kcmdesignerfields.cpp:70
-#, kde-format
-msgid "Date"
-msgstr "Күні"
-
-#: kcmdesignerfields.cpp:158
-#, kde-format
-msgid "<qt>Do you really want to delete '<b>%1</b>'?</qt>"
-msgstr "<qt>'<b>%1</b>' дегенді шын өшірмексіз бе?</qt>"
-
-#: kcmdesignerfields.cpp:171
-#, kde-format
-msgid "Import Page"
-msgstr "Бетті импорттау"
-
-#: kcmdesignerfields.cpp:173
-#, fuzzy, kde-format
-#| msgid "*.ui|Designer Files"
-msgid "Designer Files"
-msgstr "*.ui|Designer файлдары"
-
-#: kcmdesignerfields.cpp:272
-#, kde-format
-msgid ""
-"<qt><b>Warning:</b> Qt Designer could not be found. It is probably not "
-"installed. You will only be able to import existing designer files.</qt>"
-msgstr ""
-"<qt><b>Ескерту:</b> Qt Designer табылған жоқ. Орнатылмаған сияқты. Бар "
-"файлдарын тек ғана импорттай аласыз..</qt>"
-
-#: kcmdesignerfields.cpp:282
-#, kde-format
-msgid "Available Pages"
-msgstr "Бар беттері"
-
-#: kcmdesignerfields.cpp:288
-#, kde-format
-msgid "Preview of Selected Page"
-msgstr "Таңдалған бетті алдын-ала қарау"
-
-#: kcmdesignerfields.cpp:307
-#, kde-format
-msgid ""
-"<qt><p>This section allows you to add your own GUI Elements ('<i>Widgets</"
-"i>') to store your own values into %1. Proceed as described below:</"
-"p><ol><li>Click on '<i>Edit with Qt Designer</i>'</li><li>In the dialog, "
-"select '<i>Widget</i>', then click <i>OK</i></li><li>Add your widgets to the "
-"form</li><li>Save the file in the directory proposed by Qt Designer</"
-"li><li>Close Qt Designer</li></ol><p>In case you already have a designer "
-"file (*.ui) located somewhere on your hard disk, simply choose '<i>Import "
-"Page</i>'</p><p><b>Important:</b> The name of each input widget you place "
-"within the form must start with '<i>X_</i>'; so if you want the widget to "
-"correspond to your custom entry '<i>X-Foo</i>', set the widget's <i>name</i> "
-"property to '<i>X_Foo</i>'.</p><p><b>Important:</b> The widget will edit "
-"custom fields with an application name of %2.  To change the application "
-"name to be edited, set the widget name in Qt Designer.</p></qt>"
-msgstr ""
-"<qt><p>Бұл бөлімінде, %1 дегенге түрлі мәндеріңіз жазылған өзіңіздің "
-"графикалық интерфейс бөлшектерін ('<i>Виджеттерді</i>') қоса аласыз. Қалай "
-"істейтіні мында түсіндірілген:</p><ol><li>'<i>Qt Designer-мен өңдеу</i>' "
-"дегенді түртіңіз.</li><li>Шыққан диалогында '<i>Виджет</i>' дегенті таңдап, "
-"<i>ОК</i> батырмасын басыңыз</li><li>Виджетіңізді пішінге қосыңыз.</"
-"li><li>Qt Designer ұсынған каталогына файлды сақтаңыз</li><li>Qt Designer-ді "
-"жабыңыз</li></ol><p>Егерде дискіңіздің бір жерінде Designer (*.ui) файлыңыз "
-"болса, жәй ғана '<i>Бетті импорттау</i>' дегенді таңдаңыз</p><p><b>Маңызды:</"
-"b> Пішінге орналастырған кіріс виджеттерінің атаулары, ол виджет '<i>X-Foo</"
-"i>' бөлшегіңізбен сәйкесті болу үшін, атаулары '<i>X_</i>' деп басталу "
-"керек. Виджеттің <i>атауын</i> '<i>X_Foo</i>' дегенге сәйкес қылып беріңіз.</"
-"p><p><b>Маңызды:</b> Бұл виджет өрістеріңізді %2 деп аталған қолданбамен "
-"өңдейді.  Қолданбасын ауыстыру үшін Qt Designer-де виджеттің атауын ауыстыру "
-"керек.</p> </qt>"
-
-#: kcmdesignerfields.cpp:329
-#, kde-format
-msgid "<a href=\"whatsthis:%1\">How does this work?</a>"
-msgstr "<a href=\"whatsthis:%1\">Бұл қалай істейді?</a>"
-
-#: kcmdesignerfields.cpp:340
-#, kde-format
-msgid "Delete Page"
-msgstr "Бетті өшіру"
-
-#: kcmdesignerfields.cpp:343
-#, kde-format
-msgid "Import Page..."
-msgstr "Бетті импорттау..."
-
-#: kcmdesignerfields.cpp:345
-#, kde-format
-msgid "Edit with Qt Designer..."
-msgstr "Qt Designer-мен өңдеу..."
-
-#: kcmdesignerfields.cpp:370
-#, kde-format
-msgid "Key:"
-msgstr "Кілті:"
-
-#: kcmdesignerfields.cpp:372
-#, kde-format
-msgid "Type:"
-msgstr "Түрі:"
-
-#: kcmdesignerfields.cpp:374
-#, kde-format
-msgid "Classname:"
-msgstr "Класының атауы:"
-
-#: kcmdesignerfields.cpp:376
-#, kde-format
-msgid "Description:"
-msgstr "Сипаттамасы:"
 
 #: koapp.cpp:63
 #, fuzzy, kde-format
@@ -6227,6 +6089,103 @@ msgstr "%1"
 msgctxt "4 digit year"
 msgid "%1"
 msgstr "%1"
+
+#~ msgid "Text"
+#~ msgstr "Мәтін"
+
+#~ msgid "Numeric Value"
+#~ msgstr "Сан"
+
+#~ msgid "Boolean"
+#~ msgstr "Логикалық"
+
+#~ msgid "Selection"
+#~ msgstr "Таңдауы"
+
+#~ msgid "Date & Time"
+#~ msgstr "Күн & Уақыты"
+
+#~ msgid "Date"
+#~ msgstr "Күні"
+
+#~ msgid "<qt>Do you really want to delete '<b>%1</b>'?</qt>"
+#~ msgstr "<qt>'<b>%1</b>' дегенді шын өшірмексіз бе?</qt>"
+
+#~ msgid "Import Page"
+#~ msgstr "Бетті импорттау"
+
+#, fuzzy
+#~| msgid "*.ui|Designer Files"
+#~ msgid "Designer Files"
+#~ msgstr "*.ui|Designer файлдары"
+
+#~ msgid ""
+#~ "<qt><b>Warning:</b> Qt Designer could not be found. It is probably not "
+#~ "installed. You will only be able to import existing designer files.</qt>"
+#~ msgstr ""
+#~ "<qt><b>Ескерту:</b> Qt Designer табылған жоқ. Орнатылмаған сияқты. Бар "
+#~ "файлдарын тек ғана импорттай аласыз..</qt>"
+
+#~ msgid "Available Pages"
+#~ msgstr "Бар беттері"
+
+#~ msgid "Preview of Selected Page"
+#~ msgstr "Таңдалған бетті алдын-ала қарау"
+
+#~ msgid ""
+#~ "<qt><p>This section allows you to add your own GUI Elements ('<i>Widgets</"
+#~ "i>') to store your own values into %1. Proceed as described below:</"
+#~ "p><ol><li>Click on '<i>Edit with Qt Designer</i>'</li><li>In the dialog, "
+#~ "select '<i>Widget</i>', then click <i>OK</i></li><li>Add your widgets to "
+#~ "the form</li><li>Save the file in the directory proposed by Qt Designer</"
+#~ "li><li>Close Qt Designer</li></ol><p>In case you already have a designer "
+#~ "file (*.ui) located somewhere on your hard disk, simply choose '<i>Import "
+#~ "Page</i>'</p><p><b>Important:</b> The name of each input widget you place "
+#~ "within the form must start with '<i>X_</i>'; so if you want the widget to "
+#~ "correspond to your custom entry '<i>X-Foo</i>', set the widget's <i>name</"
+#~ "i> property to '<i>X_Foo</i>'.</p><p><b>Important:</b> The widget will "
+#~ "edit custom fields with an application name of %2.  To change the "
+#~ "application name to be edited, set the widget name in Qt Designer.</p></"
+#~ "qt>"
+#~ msgstr ""
+#~ "<qt><p>Бұл бөлімінде, %1 дегенге түрлі мәндеріңіз жазылған өзіңіздің "
+#~ "графикалық интерфейс бөлшектерін ('<i>Виджеттерді</i>') қоса аласыз. "
+#~ "Қалай істейтіні мында түсіндірілген:</p><ol><li>'<i>Qt Designer-мен "
+#~ "өңдеу</i>' дегенді түртіңіз.</li><li>Шыққан диалогында '<i>Виджет</i>' "
+#~ "дегенті таңдап, <i>ОК</i> батырмасын басыңыз</li><li>Виджетіңізді пішінге "
+#~ "қосыңыз.</li><li>Qt Designer ұсынған каталогына файлды сақтаңыз</"
+#~ "li><li>Qt Designer-ді жабыңыз</li></ol><p>Егерде дискіңіздің бір жерінде "
+#~ "Designer (*.ui) файлыңыз болса, жәй ғана '<i>Бетті импорттау</i>' дегенді "
+#~ "таңдаңыз</p><p><b>Маңызды:</b> Пішінге орналастырған кіріс виджеттерінің "
+#~ "атаулары, ол виджет '<i>X-Foo</i>' бөлшегіңізбен сәйкесті болу үшін, "
+#~ "атаулары '<i>X_</i>' деп басталу керек. Виджеттің <i>атауын</i> "
+#~ "'<i>X_Foo</i>' дегенге сәйкес қылып беріңіз.</p><p><b>Маңызды:</b> Бұл "
+#~ "виджет өрістеріңізді %2 деп аталған қолданбамен өңдейді.  Қолданбасын "
+#~ "ауыстыру үшін Qt Designer-де виджеттің атауын ауыстыру керек.</p> </qt>"
+
+#~ msgid "<a href=\"whatsthis:%1\">How does this work?</a>"
+#~ msgstr "<a href=\"whatsthis:%1\">Бұл қалай істейді?</a>"
+
+#~ msgid "Delete Page"
+#~ msgstr "Бетті өшіру"
+
+#~ msgid "Import Page..."
+#~ msgstr "Бетті импорттау..."
+
+#~ msgid "Edit with Qt Designer..."
+#~ msgstr "Qt Designer-мен өңдеу..."
+
+#~ msgid "Key:"
+#~ msgstr "Кілті:"
+
+#~ msgid "Type:"
+#~ msgstr "Түрі:"
+
+#~ msgid "Classname:"
+#~ msgstr "Класының атауы:"
+
+#~ msgid "Description:"
+#~ msgstr "Сипаттамасы:"
 
 #~ msgid "Copying Failed"
 #~ msgstr "Көшірмелеу жаңылды"

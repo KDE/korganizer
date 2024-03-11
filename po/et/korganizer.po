@@ -8,7 +8,7 @@ msgid ""
 msgstr ""
 "Project-Id-Version: korganizer\n"
 "Report-Msgid-Bugs-To: https://bugs.kde.org\n"
-"POT-Creation-Date: 2024-02-22 00:38+0000\n"
+"POT-Creation-Date: 2024-03-11 00:38+0000\n"
 "PO-Revision-Date: 2020-05-11 16:37+0300\n"
 "Last-Translator: Marek Laane <qiilaq69@gmail.com>\n"
 "Language-Team: Estonian <kde-et@lists.linux.ee>\n"
@@ -2035,142 +2035,6 @@ msgid "%1 match"
 msgid_plural "%1 matches"
 msgstr[0] "%1 vaste"
 msgstr[1] "%1 vastet"
-
-#: kcmdesignerfields.cpp:61 kcmdesignerfields.cpp:62 kcmdesignerfields.cpp:67
-#: kcmdesignerfields.cpp:68
-#, kde-format
-msgid "Text"
-msgstr "Tekst"
-
-#: kcmdesignerfields.cpp:63
-#, kde-format
-msgid "Numeric Value"
-msgstr "Arvväärtus"
-
-#: kcmdesignerfields.cpp:64
-#, kde-format
-msgid "Boolean"
-msgstr "Tõeväärtus"
-
-#: kcmdesignerfields.cpp:65
-#, kde-format
-msgid "Selection"
-msgstr "Valik"
-
-#: kcmdesignerfields.cpp:66 kcmdesignerfields.cpp:69
-#, kde-format
-msgid "Date & Time"
-msgstr "Kuupäev ja kellaaeg"
-
-#: kcmdesignerfields.cpp:70
-#, kde-format
-msgid "Date"
-msgstr "Kuupäev"
-
-#: kcmdesignerfields.cpp:158
-#, kde-format
-msgid "<qt>Do you really want to delete '<b>%1</b>'?</qt>"
-msgstr "<qt>Kas tõesti kustutada '<b>%1</b>'?</qt>"
-
-#: kcmdesignerfields.cpp:171
-#, kde-format
-msgid "Import Page"
-msgstr "Lehekülje import"
-
-#: kcmdesignerfields.cpp:173
-#, kde-format
-msgid "Designer Files"
-msgstr "Designeri failid"
-
-#: kcmdesignerfields.cpp:272
-#, kde-format
-msgid ""
-"<qt><b>Warning:</b> Qt Designer could not be found. It is probably not "
-"installed. You will only be able to import existing designer files.</qt>"
-msgstr ""
-"<qt><b>Hoiatus:</b> Qt Disainerit ei leitud. Arvatavasti pole see siis "
-"paigaldatudki. Sel juhul saad ainult importida olemasolevaid Disaineri faile."
-"</qt>"
-
-#: kcmdesignerfields.cpp:282
-#, kde-format
-msgid "Available Pages"
-msgstr "Saadaolevad leheküljed"
-
-#: kcmdesignerfields.cpp:288
-#, kde-format
-msgid "Preview of Selected Page"
-msgstr "Valitud lehekülje eelvaatlus"
-
-#: kcmdesignerfields.cpp:307
-#, kde-format
-msgid ""
-"<qt><p>This section allows you to add your own GUI Elements ('<i>Widgets</"
-"i>') to store your own values into %1. Proceed as described below:</"
-"p><ol><li>Click on '<i>Edit with Qt Designer</i>'</li><li>In the dialog, "
-"select '<i>Widget</i>', then click <i>OK</i></li><li>Add your widgets to the "
-"form</li><li>Save the file in the directory proposed by Qt Designer</"
-"li><li>Close Qt Designer</li></ol><p>In case you already have a designer "
-"file (*.ui) located somewhere on your hard disk, simply choose '<i>Import "
-"Page</i>'</p><p><b>Important:</b> The name of each input widget you place "
-"within the form must start with '<i>X_</i>'; so if you want the widget to "
-"correspond to your custom entry '<i>X-Foo</i>', set the widget's <i>name</i> "
-"property to '<i>X_Foo</i>'.</p><p><b>Important:</b> The widget will edit "
-"custom fields with an application name of %2.  To change the application "
-"name to be edited, set the widget name in Qt Designer.</p></qt>"
-msgstr ""
-"<qt><p>Selles osas on sul võimalik lisada omaenda graafilise kasutajaliidese "
-"elemente ('<i>vidinad</i>'), et salvestada oma %1 väärtused. Selleks talita "
-"nii:</p><ol><li>Klõpsa nupule '<i>Muuda Qt Disaineriga</i>'</"
-"li><li>Dialoogis vali '<i>Vidin</i>' ja klõpsa nupule <i>OK</i></li><li>Lisa "
-"oma vidinad vormile</li><li>Salvesta fail Qt Disaineri pakutud kataloogis</"
-"li><li>Sulge Qt Disainer</li></ol><p>Kui sinu kõvakettal leidub juba "
-"Disaineri faile (*.ui), siis vali lihtsalt '<i>Impordi lehekülg</i>'</"
-"p><p><b>Tähtis:</b> iga vormi lisatava sisendvidina nime alguses peab seisma "
-"'<i>X_</i>'. Kui tahad näha vidinat, mis vastaks sinu loodud kirjele '<i>X-"
-"Suva</i>', määra vidina omaduse <i>nimi</i> väärtuseks '<i>X_Suva</i>'.</"
-"p><p><b>Tähtis:</b> vidin muudab kohandatud välju rakenduse nimega %2. Kui "
-"soovid muuta rakenduse nime, määra vidina nimi Qt Disaineris.</p></qt>"
-
-#: kcmdesignerfields.cpp:329
-#, kde-format
-msgid "<a href=\"whatsthis:%1\">How does this work?</a>"
-msgstr "<a href=\"whatsthis:%1\">Kuidas see käib?</a>"
-
-#: kcmdesignerfields.cpp:340
-#, kde-format
-msgid "Delete Page"
-msgstr "Kustuta lehekülg"
-
-#: kcmdesignerfields.cpp:343
-#, kde-format
-msgid "Import Page..."
-msgstr "Impordi lehekülg..."
-
-#: kcmdesignerfields.cpp:345
-#, kde-format
-msgid "Edit with Qt Designer..."
-msgstr "Muuda Qt Disaineriga..."
-
-#: kcmdesignerfields.cpp:370
-#, kde-format
-msgid "Key:"
-msgstr "Võti:"
-
-#: kcmdesignerfields.cpp:372
-#, kde-format
-msgid "Type:"
-msgstr "Tüüp:"
-
-#: kcmdesignerfields.cpp:374
-#, kde-format
-msgid "Classname:"
-msgstr "Klassinimi:"
-
-#: kcmdesignerfields.cpp:376
-#, kde-format
-msgid "Description:"
-msgstr "Kirjeldus:"
 
 #: koapp.cpp:63
 #, kde-format
@@ -6108,6 +5972,101 @@ msgstr "%1"
 msgctxt "4 digit year"
 msgid "%1"
 msgstr "%1"
+
+#~ msgid "Text"
+#~ msgstr "Tekst"
+
+#~ msgid "Numeric Value"
+#~ msgstr "Arvväärtus"
+
+#~ msgid "Boolean"
+#~ msgstr "Tõeväärtus"
+
+#~ msgid "Selection"
+#~ msgstr "Valik"
+
+#~ msgid "Date & Time"
+#~ msgstr "Kuupäev ja kellaaeg"
+
+#~ msgid "Date"
+#~ msgstr "Kuupäev"
+
+#~ msgid "<qt>Do you really want to delete '<b>%1</b>'?</qt>"
+#~ msgstr "<qt>Kas tõesti kustutada '<b>%1</b>'?</qt>"
+
+#~ msgid "Import Page"
+#~ msgstr "Lehekülje import"
+
+#~ msgid "Designer Files"
+#~ msgstr "Designeri failid"
+
+#~ msgid ""
+#~ "<qt><b>Warning:</b> Qt Designer could not be found. It is probably not "
+#~ "installed. You will only be able to import existing designer files.</qt>"
+#~ msgstr ""
+#~ "<qt><b>Hoiatus:</b> Qt Disainerit ei leitud. Arvatavasti pole see siis "
+#~ "paigaldatudki. Sel juhul saad ainult importida olemasolevaid Disaineri "
+#~ "faile.</qt>"
+
+#~ msgid "Available Pages"
+#~ msgstr "Saadaolevad leheküljed"
+
+#~ msgid "Preview of Selected Page"
+#~ msgstr "Valitud lehekülje eelvaatlus"
+
+#~ msgid ""
+#~ "<qt><p>This section allows you to add your own GUI Elements ('<i>Widgets</"
+#~ "i>') to store your own values into %1. Proceed as described below:</"
+#~ "p><ol><li>Click on '<i>Edit with Qt Designer</i>'</li><li>In the dialog, "
+#~ "select '<i>Widget</i>', then click <i>OK</i></li><li>Add your widgets to "
+#~ "the form</li><li>Save the file in the directory proposed by Qt Designer</"
+#~ "li><li>Close Qt Designer</li></ol><p>In case you already have a designer "
+#~ "file (*.ui) located somewhere on your hard disk, simply choose '<i>Import "
+#~ "Page</i>'</p><p><b>Important:</b> The name of each input widget you place "
+#~ "within the form must start with '<i>X_</i>'; so if you want the widget to "
+#~ "correspond to your custom entry '<i>X-Foo</i>', set the widget's <i>name</"
+#~ "i> property to '<i>X_Foo</i>'.</p><p><b>Important:</b> The widget will "
+#~ "edit custom fields with an application name of %2.  To change the "
+#~ "application name to be edited, set the widget name in Qt Designer.</p></"
+#~ "qt>"
+#~ msgstr ""
+#~ "<qt><p>Selles osas on sul võimalik lisada omaenda graafilise "
+#~ "kasutajaliidese elemente ('<i>vidinad</i>'), et salvestada oma %1 "
+#~ "väärtused. Selleks talita nii:</p><ol><li>Klõpsa nupule '<i>Muuda Qt "
+#~ "Disaineriga</i>'</li><li>Dialoogis vali '<i>Vidin</i>' ja klõpsa nupule "
+#~ "<i>OK</i></li><li>Lisa oma vidinad vormile</li><li>Salvesta fail Qt "
+#~ "Disaineri pakutud kataloogis</li><li>Sulge Qt Disainer</li></ol><p>Kui "
+#~ "sinu kõvakettal leidub juba Disaineri faile (*.ui), siis vali lihtsalt "
+#~ "'<i>Impordi lehekülg</i>'</p><p><b>Tähtis:</b> iga vormi lisatava "
+#~ "sisendvidina nime alguses peab seisma '<i>X_</i>'. Kui tahad näha "
+#~ "vidinat, mis vastaks sinu loodud kirjele '<i>X-Suva</i>', määra vidina "
+#~ "omaduse <i>nimi</i> väärtuseks '<i>X_Suva</i>'.</p><p><b>Tähtis:</b> "
+#~ "vidin muudab kohandatud välju rakenduse nimega %2. Kui soovid muuta "
+#~ "rakenduse nime, määra vidina nimi Qt Disaineris.</p></qt>"
+
+#~ msgid "<a href=\"whatsthis:%1\">How does this work?</a>"
+#~ msgstr "<a href=\"whatsthis:%1\">Kuidas see käib?</a>"
+
+#~ msgid "Delete Page"
+#~ msgstr "Kustuta lehekülg"
+
+#~ msgid "Import Page..."
+#~ msgstr "Impordi lehekülg..."
+
+#~ msgid "Edit with Qt Designer..."
+#~ msgstr "Muuda Qt Disaineriga..."
+
+#~ msgid "Key:"
+#~ msgstr "Võti:"
+
+#~ msgid "Type:"
+#~ msgstr "Tüüp:"
+
+#~ msgid "Classname:"
+#~ msgstr "Klassinimi:"
+
+#~ msgid "Description:"
+#~ msgstr "Kirjeldus:"
 
 #~ msgid "Copying Failed"
 #~ msgstr "Kopeerimine nurjus"

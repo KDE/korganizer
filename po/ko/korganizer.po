@@ -8,7 +8,7 @@ msgid ""
 msgstr ""
 "Project-Id-Version: Korganizer\n"
 "Report-Msgid-Bugs-To: https://bugs.kde.org\n"
-"POT-Creation-Date: 2024-02-22 00:38+0000\n"
+"POT-Creation-Date: 2024-03-11 00:38+0000\n"
 "PO-Revision-Date: 2024-02-09 23:54+0100\n"
 "Last-Translator: Shinjo Park <kde@peremen.name>\n"
 "Language-Team: Korean <kde-kr@kde.org>\n"
@@ -1980,141 +1980,6 @@ msgctxt "@label"
 msgid "%1 match"
 msgid_plural "%1 matches"
 msgstr[0] "%1개 일치함"
-
-#: kcmdesignerfields.cpp:61 kcmdesignerfields.cpp:62 kcmdesignerfields.cpp:67
-#: kcmdesignerfields.cpp:68
-#, kde-format
-msgid "Text"
-msgstr "텍스트"
-
-#: kcmdesignerfields.cpp:63
-#, kde-format
-msgid "Numeric Value"
-msgstr "숫자 값"
-
-#: kcmdesignerfields.cpp:64
-#, kde-format
-msgid "Boolean"
-msgstr "참/거짓"
-
-#: kcmdesignerfields.cpp:65
-#, kde-format
-msgid "Selection"
-msgstr "선택"
-
-#: kcmdesignerfields.cpp:66 kcmdesignerfields.cpp:69
-#, kde-format
-msgid "Date & Time"
-msgstr "날짜와 시간"
-
-#: kcmdesignerfields.cpp:70
-#, kde-format
-msgid "Date"
-msgstr "날짜"
-
-#: kcmdesignerfields.cpp:158
-#, kde-format
-msgid "<qt>Do you really want to delete '<b>%1</b>'?</qt>"
-msgstr "<qt>'<b>%1</b>'을(를) 삭제하시겠습니까?</qt>"
-
-#: kcmdesignerfields.cpp:171
-#, kde-format
-msgid "Import Page"
-msgstr "쪽 가져오기"
-
-#: kcmdesignerfields.cpp:173
-#, kde-format
-msgid "Designer Files"
-msgstr "Designer 파일"
-
-#: kcmdesignerfields.cpp:272
-#, kde-format
-msgid ""
-"<qt><b>Warning:</b> Qt Designer could not be found. It is probably not "
-"installed. You will only be able to import existing designer files.</qt>"
-msgstr ""
-"<qt><b>경고:</b> Qt Designer를 찾을 수 없습니다. 설치되지 않은 것 같습니다. "
-"기존 Designer 파일을 가져오기만 할 수 있습니다.</qt>"
-
-#: kcmdesignerfields.cpp:282
-#, kde-format
-msgid "Available Pages"
-msgstr "사용 가능한 쪽"
-
-#: kcmdesignerfields.cpp:288
-#, kde-format
-msgid "Preview of Selected Page"
-msgstr "선택한 쪽 미리 보기"
-
-#: kcmdesignerfields.cpp:307
-#, kde-format
-msgid ""
-"<qt><p>This section allows you to add your own GUI Elements ('<i>Widgets</"
-"i>') to store your own values into %1. Proceed as described below:</"
-"p><ol><li>Click on '<i>Edit with Qt Designer</i>'</li><li>In the dialog, "
-"select '<i>Widget</i>', then click <i>OK</i></li><li>Add your widgets to the "
-"form</li><li>Save the file in the directory proposed by Qt Designer</"
-"li><li>Close Qt Designer</li></ol><p>In case you already have a designer "
-"file (*.ui) located somewhere on your hard disk, simply choose '<i>Import "
-"Page</i>'</p><p><b>Important:</b> The name of each input widget you place "
-"within the form must start with '<i>X_</i>'; so if you want the widget to "
-"correspond to your custom entry '<i>X-Foo</i>', set the widget's <i>name</i> "
-"property to '<i>X_Foo</i>'.</p><p><b>Important:</b> The widget will edit "
-"custom fields with an application name of %2.  To change the application "
-"name to be edited, set the widget name in Qt Designer.</p></qt>"
-msgstr ""
-"<qt><p>이 부분에서는 %1에 사용자 정의 값을 저장할 수 있는 사용자 정의 GUI 구"
-"성 요소('<i>위젯</i>')를 추가할 수 있습니다. 아래에 있는 절차대로 진행하십시"
-"오.</p><ol><li>'<i>Qt Designer로 편집</i>'을 클릭</li><li>대화 상자에서 '<i>"
-"위젯</i>'을 선택하고 <i>확인</i>을 클릭</li><li>폼에 사용자 정의 위젯 추가</"
-"li><li>Qt Designer에서 제안한 디렉터리에 파일 저장</li><li>Qt Designer 종료</"
-"li></ol><p>디스크에 이미 Designer 파일(*.ui)이 있다면 '<i>쪽 가져오기</i>'를 "
-"선택하십시오</p><p><b>중요:</b> 폼에 추가하는 입력 위젯의 이름은 '<i>X_</"
-"i>'로 시작해야 합니다. 예를 들어서 사용자 정의 항목 '<i>X-Foo</i>'에 해당하"
-"는 위젯을 만들려면 위젯의 <i>name</i> 속성을 '<i>X_Foo</i>'로 설정하십시오.</"
-"p><p><b>중요:</b> 이 위젯은 사용자 정의 필드를 편집할 때 앱 이름으로 %2을"
-"(를) 사용합니다. 편집할 앱 이름을 변경하려면 Qt Designer에서 위젯 이름을 설정"
-"하십시오.</p></qt>"
-
-#: kcmdesignerfields.cpp:329
-#, kde-format
-msgid "<a href=\"whatsthis:%1\">How does this work?</a>"
-msgstr "<a href=\"whatsthis:%1\">어떻게 작동하나요?</a>"
-
-#: kcmdesignerfields.cpp:340
-#, kde-format
-msgid "Delete Page"
-msgstr "쪽 삭제"
-
-#: kcmdesignerfields.cpp:343
-#, kde-format
-msgid "Import Page..."
-msgstr "쪽 가져오기..."
-
-#: kcmdesignerfields.cpp:345
-#, kde-format
-msgid "Edit with Qt Designer..."
-msgstr "Qt Designer로 편집..."
-
-#: kcmdesignerfields.cpp:370
-#, kde-format
-msgid "Key:"
-msgstr "키:"
-
-#: kcmdesignerfields.cpp:372
-#, kde-format
-msgid "Type:"
-msgstr "형식:"
-
-#: kcmdesignerfields.cpp:374
-#, kde-format
-msgid "Classname:"
-msgstr "클래스 이름:"
-
-#: kcmdesignerfields.cpp:376
-#, kde-format
-msgid "Description:"
-msgstr "설명:"
 
 #: koapp.cpp:63
 #, kde-format
@@ -5854,6 +5719,99 @@ msgstr "%1"
 msgctxt "4 digit year"
 msgid "%1"
 msgstr "%1년"
+
+#~ msgid "Text"
+#~ msgstr "텍스트"
+
+#~ msgid "Numeric Value"
+#~ msgstr "숫자 값"
+
+#~ msgid "Boolean"
+#~ msgstr "참/거짓"
+
+#~ msgid "Selection"
+#~ msgstr "선택"
+
+#~ msgid "Date & Time"
+#~ msgstr "날짜와 시간"
+
+#~ msgid "Date"
+#~ msgstr "날짜"
+
+#~ msgid "<qt>Do you really want to delete '<b>%1</b>'?</qt>"
+#~ msgstr "<qt>'<b>%1</b>'을(를) 삭제하시겠습니까?</qt>"
+
+#~ msgid "Import Page"
+#~ msgstr "쪽 가져오기"
+
+#~ msgid "Designer Files"
+#~ msgstr "Designer 파일"
+
+#~ msgid ""
+#~ "<qt><b>Warning:</b> Qt Designer could not be found. It is probably not "
+#~ "installed. You will only be able to import existing designer files.</qt>"
+#~ msgstr ""
+#~ "<qt><b>경고:</b> Qt Designer를 찾을 수 없습니다. 설치되지 않은 것 같습니"
+#~ "다. 기존 Designer 파일을 가져오기만 할 수 있습니다.</qt>"
+
+#~ msgid "Available Pages"
+#~ msgstr "사용 가능한 쪽"
+
+#~ msgid "Preview of Selected Page"
+#~ msgstr "선택한 쪽 미리 보기"
+
+#~ msgid ""
+#~ "<qt><p>This section allows you to add your own GUI Elements ('<i>Widgets</"
+#~ "i>') to store your own values into %1. Proceed as described below:</"
+#~ "p><ol><li>Click on '<i>Edit with Qt Designer</i>'</li><li>In the dialog, "
+#~ "select '<i>Widget</i>', then click <i>OK</i></li><li>Add your widgets to "
+#~ "the form</li><li>Save the file in the directory proposed by Qt Designer</"
+#~ "li><li>Close Qt Designer</li></ol><p>In case you already have a designer "
+#~ "file (*.ui) located somewhere on your hard disk, simply choose '<i>Import "
+#~ "Page</i>'</p><p><b>Important:</b> The name of each input widget you place "
+#~ "within the form must start with '<i>X_</i>'; so if you want the widget to "
+#~ "correspond to your custom entry '<i>X-Foo</i>', set the widget's <i>name</"
+#~ "i> property to '<i>X_Foo</i>'.</p><p><b>Important:</b> The widget will "
+#~ "edit custom fields with an application name of %2.  To change the "
+#~ "application name to be edited, set the widget name in Qt Designer.</p></"
+#~ "qt>"
+#~ msgstr ""
+#~ "<qt><p>이 부분에서는 %1에 사용자 정의 값을 저장할 수 있는 사용자 정의 GUI "
+#~ "구성 요소('<i>위젯</i>')를 추가할 수 있습니다. 아래에 있는 절차대로 진행하"
+#~ "십시오.</p><ol><li>'<i>Qt Designer로 편집</i>'을 클릭</li><li>대화 상자에"
+#~ "서 '<i>위젯</i>'을 선택하고 <i>확인</i>을 클릭</li><li>폼에 사용자 정의 위"
+#~ "젯 추가</li><li>Qt Designer에서 제안한 디렉터리에 파일 저장</li><li>Qt "
+#~ "Designer 종료</li></ol><p>디스크에 이미 Designer 파일(*.ui)이 있다면 '<i>"
+#~ "쪽 가져오기</i>'를 선택하십시오</p><p><b>중요:</b> 폼에 추가하는 입력 위젯"
+#~ "의 이름은 '<i>X_</i>'로 시작해야 합니다. 예를 들어서 사용자 정의 항목 "
+#~ "'<i>X-Foo</i>'에 해당하는 위젯을 만들려면 위젯의 <i>name</i> 속성을 "
+#~ "'<i>X_Foo</i>'로 설정하십시오.</p><p><b>중요:</b> 이 위젯은 사용자 정의 필"
+#~ "드를 편집할 때 앱 이름으로 %2을(를) 사용합니다. 편집할 앱 이름을 변경하려"
+#~ "면 Qt Designer에서 위젯 이름을 설정하십시오.</p></qt>"
+
+#~ msgid "<a href=\"whatsthis:%1\">How does this work?</a>"
+#~ msgstr "<a href=\"whatsthis:%1\">어떻게 작동하나요?</a>"
+
+#~ msgid "Delete Page"
+#~ msgstr "쪽 삭제"
+
+#~ msgid "Import Page..."
+#~ msgstr "쪽 가져오기..."
+
+#~ msgid "Edit with Qt Designer..."
+#~ msgstr "Qt Designer로 편집..."
+
+#~ msgid "Key:"
+#~ msgstr "키:"
+
+#~ msgid "Type:"
+#~ msgstr "형식:"
+
+#~ msgid "Classname:"
+#~ msgstr "클래스 이름:"
+
+#~ msgid "Description:"
+#~ msgstr "설명:"
 
 #~ msgid "Copying Failed"
 #~ msgstr "복사 실패"

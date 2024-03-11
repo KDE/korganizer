@@ -15,7 +15,7 @@ msgid ""
 msgstr ""
 "Project-Id-Version: korganizer\n"
 "Report-Msgid-Bugs-To: https://bugs.kde.org\n"
-"POT-Creation-Date: 2024-02-22 00:38+0000\n"
+"POT-Creation-Date: 2024-03-11 00:38+0000\n"
 "PO-Revision-Date: 2024-03-02 21:19+0100\n"
 "Last-Translator: Adrián Chaves (Gallaecio) <adrian@chaves.io>\n"
 "Language-Team: Proxecto Trasno (proxecto@trasno.gal)\n"
@@ -2015,144 +2015,6 @@ msgid "%1 match"
 msgid_plural "%1 matches"
 msgstr[0] "%1 coincidencia"
 msgstr[1] "%1 coincidencias"
-
-#: kcmdesignerfields.cpp:61 kcmdesignerfields.cpp:62 kcmdesignerfields.cpp:67
-#: kcmdesignerfields.cpp:68
-#, kde-format
-msgid "Text"
-msgstr "Texto"
-
-#: kcmdesignerfields.cpp:63
-#, kde-format
-msgid "Numeric Value"
-msgstr "Valor numérico"
-
-#: kcmdesignerfields.cpp:64
-#, kde-format
-msgid "Boolean"
-msgstr "Lóxico"
-
-#: kcmdesignerfields.cpp:65
-#, kde-format
-msgid "Selection"
-msgstr "Selección"
-
-#: kcmdesignerfields.cpp:66 kcmdesignerfields.cpp:69
-#, kde-format
-msgid "Date & Time"
-msgstr "Data e hora"
-
-#: kcmdesignerfields.cpp:70
-#, kde-format
-msgid "Date"
-msgstr "Data"
-
-#: kcmdesignerfields.cpp:158
-#, kde-format
-msgid "<qt>Do you really want to delete '<b>%1</b>'?</qt>"
-msgstr "<qt>Seguro que quere eliminar «<b>%1</b>»?</qt>"
-
-#: kcmdesignerfields.cpp:171
-#, kde-format
-msgid "Import Page"
-msgstr "Importar unha páxina"
-
-#: kcmdesignerfields.cpp:173
-#, kde-format
-msgid "Designer Files"
-msgstr "Ficheiros de Designer"
-
-#: kcmdesignerfields.cpp:272
-#, kde-format
-msgid ""
-"<qt><b>Warning:</b> Qt Designer could not be found. It is probably not "
-"installed. You will only be able to import existing designer files.</qt>"
-msgstr ""
-"<qt><b>Aviso:</b> Non se puido atopar Qt Designer. Probabelmente non estea "
-"instalado. Só será quen de importar os ficheiros xa existentes do deseñador."
-"</qt>"
-
-#: kcmdesignerfields.cpp:282
-#, kde-format
-msgid "Available Pages"
-msgstr "Páxinas dispoñíbeis"
-
-#: kcmdesignerfields.cpp:288
-#, kde-format
-msgid "Preview of Selected Page"
-msgstr "Previsualización da páxina seleccionada"
-
-#: kcmdesignerfields.cpp:307
-#, kde-format
-msgid ""
-"<qt><p>This section allows you to add your own GUI Elements ('<i>Widgets</"
-"i>') to store your own values into %1. Proceed as described below:</"
-"p><ol><li>Click on '<i>Edit with Qt Designer</i>'</li><li>In the dialog, "
-"select '<i>Widget</i>', then click <i>OK</i></li><li>Add your widgets to the "
-"form</li><li>Save the file in the directory proposed by Qt Designer</"
-"li><li>Close Qt Designer</li></ol><p>In case you already have a designer "
-"file (*.ui) located somewhere on your hard disk, simply choose '<i>Import "
-"Page</i>'</p><p><b>Important:</b> The name of each input widget you place "
-"within the form must start with '<i>X_</i>'; so if you want the widget to "
-"correspond to your custom entry '<i>X-Foo</i>', set the widget's <i>name</i> "
-"property to '<i>X_Foo</i>'.</p><p><b>Important:</b> The widget will edit "
-"custom fields with an application name of %2.  To change the application "
-"name to be edited, set the widget name in Qt Designer.</p></qt>"
-msgstr ""
-"<qt> <p>Esta sección permite engadir os seus propios elementos de interface "
-"gráfica (trebellos) para gardar os seus propios valores en %1. Proceda como "
-"segue:</p> <ol> <li>Prema «<i>Editar con Qt Designer</i>».</li> <li>No "
-"diálogo, escolla «Trebello» e prema <i>Aceptar</i>.</li> <li>Engada os seus "
-"trebellos ao formulario.</li> <li>Garde o ficheiro no directorio suxerido "
-"por Qt Designer.</li> <li>Peche Qt Designer.</li> </ol> <p>No caso de que "
-"aínda teña o ficheiro de deseño (*.ui) situado nalgún lugar do disco duro, "
-"escolla «<i>Importar unha páxina</i>».</p> <p><b>Importante:</b> O nome de "
-"cada trebello de entrada que coloque no formulario debe comezar por «<i>X_</"
-"i>»; así que se quere que o trebello aluda a certa entrada de nome «<i>X-"
-"Entrada</i>», poña o <i>nome</i> do trebello como «<i>X_Entrada</i>».</p> "
-"<p><b>Importante:</b> O trebello edita os campos personalizados co nome de "
-"aplicación %2. Para cambiar o nome da aplicación que estea a editar, defina "
-"o nome do trebello en Qt Designer.</p></qt>"
-
-#: kcmdesignerfields.cpp:329
-#, kde-format
-msgid "<a href=\"whatsthis:%1\">How does this work?</a>"
-msgstr "<a href=\"whatsthis:%1\">Como funciona isto?</a>"
-
-#: kcmdesignerfields.cpp:340
-#, kde-format
-msgid "Delete Page"
-msgstr "Eliminar a páxina"
-
-#: kcmdesignerfields.cpp:343
-#, kde-format
-msgid "Import Page..."
-msgstr "Importar unha páxina…"
-
-#: kcmdesignerfields.cpp:345
-#, kde-format
-msgid "Edit with Qt Designer..."
-msgstr "Editar con Qt Designer…"
-
-#: kcmdesignerfields.cpp:370
-#, kde-format
-msgid "Key:"
-msgstr "Chave:"
-
-#: kcmdesignerfields.cpp:372
-#, kde-format
-msgid "Type:"
-msgstr "Tipo:"
-
-#: kcmdesignerfields.cpp:374
-#, kde-format
-msgid "Classname:"
-msgstr "Nome da clase:"
-
-#: kcmdesignerfields.cpp:376
-#, kde-format
-msgid "Description:"
-msgstr "Descrición:"
 
 #: koapp.cpp:63
 #, kde-format
@@ -6028,6 +5890,103 @@ msgstr "%1"
 msgctxt "4 digit year"
 msgid "%1"
 msgstr "%1"
+
+#~ msgid "Text"
+#~ msgstr "Texto"
+
+#~ msgid "Numeric Value"
+#~ msgstr "Valor numérico"
+
+#~ msgid "Boolean"
+#~ msgstr "Lóxico"
+
+#~ msgid "Selection"
+#~ msgstr "Selección"
+
+#~ msgid "Date & Time"
+#~ msgstr "Data e hora"
+
+#~ msgid "Date"
+#~ msgstr "Data"
+
+#~ msgid "<qt>Do you really want to delete '<b>%1</b>'?</qt>"
+#~ msgstr "<qt>Seguro que quere eliminar «<b>%1</b>»?</qt>"
+
+#~ msgid "Import Page"
+#~ msgstr "Importar unha páxina"
+
+#~ msgid "Designer Files"
+#~ msgstr "Ficheiros de Designer"
+
+#~ msgid ""
+#~ "<qt><b>Warning:</b> Qt Designer could not be found. It is probably not "
+#~ "installed. You will only be able to import existing designer files.</qt>"
+#~ msgstr ""
+#~ "<qt><b>Aviso:</b> Non se puido atopar Qt Designer. Probabelmente non "
+#~ "estea instalado. Só será quen de importar os ficheiros xa existentes do "
+#~ "deseñador.</qt>"
+
+#~ msgid "Available Pages"
+#~ msgstr "Páxinas dispoñíbeis"
+
+#~ msgid "Preview of Selected Page"
+#~ msgstr "Previsualización da páxina seleccionada"
+
+#~ msgid ""
+#~ "<qt><p>This section allows you to add your own GUI Elements ('<i>Widgets</"
+#~ "i>') to store your own values into %1. Proceed as described below:</"
+#~ "p><ol><li>Click on '<i>Edit with Qt Designer</i>'</li><li>In the dialog, "
+#~ "select '<i>Widget</i>', then click <i>OK</i></li><li>Add your widgets to "
+#~ "the form</li><li>Save the file in the directory proposed by Qt Designer</"
+#~ "li><li>Close Qt Designer</li></ol><p>In case you already have a designer "
+#~ "file (*.ui) located somewhere on your hard disk, simply choose '<i>Import "
+#~ "Page</i>'</p><p><b>Important:</b> The name of each input widget you place "
+#~ "within the form must start with '<i>X_</i>'; so if you want the widget to "
+#~ "correspond to your custom entry '<i>X-Foo</i>', set the widget's <i>name</"
+#~ "i> property to '<i>X_Foo</i>'.</p><p><b>Important:</b> The widget will "
+#~ "edit custom fields with an application name of %2.  To change the "
+#~ "application name to be edited, set the widget name in Qt Designer.</p></"
+#~ "qt>"
+#~ msgstr ""
+#~ "<qt> <p>Esta sección permite engadir os seus propios elementos de "
+#~ "interface gráfica (trebellos) para gardar os seus propios valores en %1. "
+#~ "Proceda como segue:</p> <ol> <li>Prema «<i>Editar con Qt Designer</i>».</"
+#~ "li> <li>No diálogo, escolla «Trebello» e prema <i>Aceptar</i>.</li> "
+#~ "<li>Engada os seus trebellos ao formulario.</li> <li>Garde o ficheiro no "
+#~ "directorio suxerido por Qt Designer.</li> <li>Peche Qt Designer.</li> </"
+#~ "ol> <p>No caso de que aínda teña o ficheiro de deseño (*.ui) situado "
+#~ "nalgún lugar do disco duro, escolla «<i>Importar unha páxina</i>».</p> "
+#~ "<p><b>Importante:</b> O nome de cada trebello de entrada que coloque no "
+#~ "formulario debe comezar por «<i>X_</i>»; así que se quere que o trebello "
+#~ "aluda a certa entrada de nome «<i>X-Entrada</i>», poña o <i>nome</i> do "
+#~ "trebello como «<i>X_Entrada</i>».</p> <p><b>Importante:</b> O trebello "
+#~ "edita os campos personalizados co nome de aplicación %2. Para cambiar o "
+#~ "nome da aplicación que estea a editar, defina o nome do trebello en Qt "
+#~ "Designer.</p></qt>"
+
+#~ msgid "<a href=\"whatsthis:%1\">How does this work?</a>"
+#~ msgstr "<a href=\"whatsthis:%1\">Como funciona isto?</a>"
+
+#~ msgid "Delete Page"
+#~ msgstr "Eliminar a páxina"
+
+#~ msgid "Import Page..."
+#~ msgstr "Importar unha páxina…"
+
+#~ msgid "Edit with Qt Designer..."
+#~ msgstr "Editar con Qt Designer…"
+
+#~ msgid "Key:"
+#~ msgstr "Chave:"
+
+#~ msgid "Type:"
+#~ msgstr "Tipo:"
+
+#~ msgid "Classname:"
+#~ msgstr "Nome da clase:"
+
+#~ msgid "Description:"
+#~ msgstr "Descrición:"
 
 #~ msgid "Copying Failed"
 #~ msgstr "Fallou a copia"
