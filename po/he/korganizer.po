@@ -18,7 +18,7 @@ msgstr ""
 "Project-Id-Version: korganizer\n"
 "Report-Msgid-Bugs-To: https://bugs.kde.org\n"
 "POT-Creation-Date: 2024-03-11 00:38+0000\n"
-"PO-Revision-Date: 2024-03-10 23:59+0200\n"
+"PO-Revision-Date: 2024-03-12 06:16+0200\n"
 "Last-Translator: Yaron Shahrabani <sh.yaron@gmail.com>\n"
 "Language-Team: צוות התרגום של KDE ישראל\n"
 "Language: he\n"
@@ -446,6 +446,8 @@ msgid ""
 "Allows you to remove all completed to-dos from your calendar collection. "
 "This action cannot be undone!"
 msgstr ""
+"מאפשר לך להסיר את כל המטלות שהושלמו מאוסף לוחות השנה שלך. זאת פעולה בלתי "
+"הפיכה!"
 
 #. i18n: ectx: property (text), widget (QPushButton, mDeleteButton)
 #: actionmanager.cpp:367 actionmanager.cpp:622 actionmanager.cpp:1306
@@ -469,7 +471,7 @@ msgstr "תצוגת מה הלאה"
 #, kde-format
 msgctxt "@info:tooltip"
 msgid "Switch to the What's Next View"
-msgstr ""
+msgstr "מעבר לתצוגת מה הלאה"
 
 #: actionmanager.cpp:388
 #, kde-format
@@ -2741,13 +2743,13 @@ msgid "%1 %2"
 msgstr "%1 %2"
 
 #: kontactplugin/korganizer/todosummarywidget.cpp:216
-#, fuzzy, kde-format
+#, kde-format
 msgid "1 day ago"
 msgid_plural "%1 days ago"
-msgstr[0] "יום אחד"
-msgstr[1] "%1 ימים"
-msgstr[2] ""
-msgstr[3] ""
+msgstr[0] "אתמול"
+msgstr[1] "שלשום"
+msgstr[2] "לפני %1 ימים"
+msgstr[3] "לפני %1 ימים"
 
 #: kontactplugin/korganizer/todosummarywidget.cpp:218
 #, kde-format
@@ -3004,12 +3006,12 @@ msgstr ""
 #: kontactplugin/specialdates/sdsummaryconfig_base.ui:231
 #, kde-format
 msgid "Show anni&versaries"
-msgstr ""
+msgstr "הצגת ימי &נישואין"
 
 #: kontactplugin/specialdates/sdsummarywidget.cpp:97
 #, kde-format
 msgid "Upcoming Special Dates"
-msgstr ""
+msgstr "תאריכים מיוחדים בקרוב"
 
 #: kontactplugin/specialdates/sdsummarywidget.cpp:450
 #, kde-format
@@ -3031,7 +3033,7 @@ msgstr "יום הולדת"
 #: kontactplugin/specialdates/sdsummarywidget.cpp:501
 #, kde-format
 msgid "Anniversary"
-msgstr ""
+msgstr "יום נישואין"
 
 #: kontactplugin/specialdates/sdsummarywidget.cpp:504
 #, kde-format
@@ -3041,7 +3043,7 @@ msgstr "חג"
 #: kontactplugin/specialdates/sdsummarywidget.cpp:507
 #, kde-format
 msgid "Change of Seasons"
-msgstr ""
+msgstr "החלפת עונות"
 
 #: kontactplugin/specialdates/sdsummarywidget.cpp:510
 #, kde-format
@@ -3079,17 +3081,17 @@ msgstr "ה&צגת פרטי קשר"
 #: kontactplugin/specialdates/sdsummarywidget.cpp:672
 #, kde-format
 msgid "Mail to:\"%1\""
-msgstr ""
+msgstr "דוא״ל אל:„%1”"
 
 #: kontactplugin/specialdates/specialdates_plugin.cpp:36
 #, kde-format
 msgid "Special Dates Summary"
-msgstr ""
+msgstr "תקציר תאריכים מיוחדים"
 
 #: kontactplugin/specialdates/specialdates_plugin.cpp:38
 #, kde-format
 msgid "Kontact Special Dates Summary"
-msgstr ""
+msgstr "תקציר תאריכים מיוחדים של Kontact"
 
 #: kontactplugin/specialdates/specialdates_plugin.cpp:40
 #, kde-format
@@ -3097,6 +3099,8 @@ msgid ""
 "Copyright © 2003 Tobias Koenig\n"
 "Copyright © 2004–2010 Allen Winter"
 msgstr ""
+"Copyright © 2003 טוביאס קוניג\n"
+"Copyright © 2004‏–2010 אלן וינטר"
 
 #: kontactplugin/specialdates/specialdates_plugin.cpp:42
 #, kde-format
@@ -4345,9 +4349,9 @@ msgstr ""
 
 #. i18n: ectx: label, entry, group (Todo View)
 #: settings/korganizer.kcfg:320
-#, fuzzy, kde-format
+#, kde-format
 msgid "Display to-dos in a flat list"
-msgstr "אפשר פסי גלילה בתאי תצוגת חודש"
+msgstr "הצגת מטלות ברשימה שטוחה"
 
 #. i18n: ectx: tooltip, entry, group (Todo View)
 #: settings/korganizer.kcfg:321
@@ -5052,9 +5056,9 @@ msgstr ""
 
 #. i18n: ectx: property (text), widget (QCheckBox, retrieveEnable)
 #: ui/kogroupwareprefspage.ui:372
-#, fuzzy, kde-format
+#, kde-format
 msgid "Retrieve other people's free/&busy information automatically"
-msgstr "השג מידע פנוי/&עסוק של אנשים אחרים באופן אוטומטי"
+msgstr "למשוך את פרטי פנוי/&עסוק של אנשים אחרים אוטומטית"
 
 #. i18n: ectx: property (toolTip), widget (QCheckBox, fullDomainRetrieval)
 #: ui/kogroupwareprefspage.ui:382
@@ -5165,11 +5169,13 @@ msgstr ""
 
 #. i18n: ectx: property (whatsThis), widget (QCheckBox, eventsCheck)
 #: ui/searchdialog_base.ui:76
-#, fuzzy, kde-format
+#, kde-format
 msgid ""
 "Check this box if you want to search for events that match the search "
 "pattern and have start dates or end dates in the given date range."
-msgstr "בחר באפשרות זו אם ברצונך להציג שניות בקו־הזמן הנוכחי."
+msgstr ""
+"יש לסמן את התיבה הזאת כדי לחפש אירועים שעונים לתבנית החיפוש ותאריכי התחלה או "
+"הסיום שלהם הם בטווח התאריכים שצוין."
 
 #. i18n: ectx: property (text), widget (QCheckBox, eventsCheck)
 #: ui/searchdialog_base.ui:79
@@ -5185,11 +5191,13 @@ msgstr ""
 
 #. i18n: ectx: property (whatsThis), widget (QCheckBox, journalsCheck)
 #: ui/searchdialog_base.ui:92
-#, fuzzy, kde-format
+#, kde-format
 msgid ""
 "Check this box if you want to search for journal entries that match the "
 "search pattern and have start dates in the given date range."
-msgstr "בחר באפשרות זו אם ברצונך להציג שניות בקו־הזמן הנוכחי."
+msgstr ""
+"יש לסמן את התיבה הזאת כדי לחפש רשומות יומן שעונות לתבנית החיפוש ויש להן "
+"תאריכי יעד בטווח התאריכים שצוין."
 
 #. i18n: ectx: property (text), widget (QCheckBox, journalsCheck)
 #: ui/searchdialog_base.ui:95
@@ -5205,11 +5213,13 @@ msgstr ""
 
 #. i18n: ectx: property (whatsThis), widget (QCheckBox, todosCheck)
 #: ui/searchdialog_base.ui:105
-#, fuzzy, kde-format
+#, kde-format
 msgid ""
 "Check this box if you want to search for to-dos that match the search "
 "pattern and have due dates in the given date range."
-msgstr "בחר באפשרות זו אם ברצונך להציג שניות בקו־הזמן הנוכחי."
+msgstr ""
+"יש לסמן את התיבה הזאת כדי לחפש מטלות שעונות לתבנית החיפוש ויש להן תאריכי יעד "
+"בטווח התאריכים שצוין."
 
 #. i18n: ectx: property (text), widget (QCheckBox, todosCheck)
 #: ui/searchdialog_base.ui:108
@@ -5329,9 +5339,9 @@ msgstr "טווח תאריכים"
 
 #. i18n: ectx: property (toolTip), widget (QCheckBox, dateRangeCheckbox)
 #: ui/searchdialog_base.ui:204
-#, fuzzy, kde-format
+#, kde-format
 msgid "When checked, the search will be limited to the specified date range."
-msgstr "כלול מטלות &ללא תאריך יעד"
+msgstr "כשהאפשרות מסומנת, החיפוש יוגבל לטווח התאריכים שצוין."
 
 #. i18n: ectx: property (whatsThis), widget (QCheckBox, dateRangeCheckbox)
 #: ui/searchdialog_base.ui:207
@@ -5434,9 +5444,9 @@ msgstr ""
 
 #. i18n: ectx: property (text), widget (QCheckBox, includeUndatedTodos)
 #: ui/searchdialog_base.ui:315
-#, fuzzy, kde-format
+#, kde-format
 msgid "Include all to-dos &within the specified date range"
-msgstr "כלול מטלות &ללא תאריך יעד"
+msgstr "לכלול את כל המטלות ב&טווח התאריכים שצוין"
 
 #. i18n: ectx: property (text), widget (QPushButton, mDayBtn)
 #: views/collectionview/quickview.ui:34
