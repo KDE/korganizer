@@ -7,7 +7,7 @@ msgid ""
 msgstr ""
 "Project-Id-Version: korganizer\n"
 "Report-Msgid-Bugs-To: https://bugs.kde.org\n"
-"POT-Creation-Date: 2024-02-20 02:28+0000\n"
+"POT-Creation-Date: 2024-03-13 02:23+0000\n"
 "PO-Revision-Date: 2013-09-08 07:05+0900\n"
 "Last-Translator: Gheyret Kenji <gheyret@gmail.com>\n"
 "Language-Team: Uyghur Computer Science Association <UKIJ@yahoogroups.com>\n"
@@ -3455,20 +3455,20 @@ msgctxt "@option:check"
 msgid "Show at the bottom of the agenda views"
 msgstr ""
 
-#: prefs/koprefsdialogplugins.cpp:123
+#: prefs/koprefsdialogplugins.cpp:122
 #, kde-format
 msgctxt "@title:group"
 msgid "Calendar Decorations"
 msgstr ""
 
-#: prefs/koprefsdialogplugins.cpp:143
+#: prefs/koprefsdialogplugins.cpp:142
 #, fuzzy, kde-format
 #| msgid "Configure"
 msgctxt "@action"
 msgid "Configure"
 msgstr "سەپلە"
 
-#: prefs/koprefsdialogplugins.cpp:202
+#: prefs/koprefsdialogplugins.cpp:201
 #, kde-format
 msgctxt "@info"
 msgid "Unable to configure this plugin"

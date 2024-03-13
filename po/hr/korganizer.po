@@ -5,7 +5,7 @@ msgid ""
 msgstr ""
 "Project-Id-Version: korganizer 0\n"
 "Report-Msgid-Bugs-To: https://bugs.kde.org\n"
-"POT-Creation-Date: 2024-02-20 02:28+0000\n"
+"POT-Creation-Date: 2024-03-13 02:23+0000\n"
 "PO-Revision-Date: 2011-02-27 12:20+0100\n"
 "Last-Translator: Marko Dimjasevic <marko@dimjasevic.net>\n"
 "Language-Team: Croatian <kde-croatia-list@lists.sourceforge.net>\n"
@@ -3405,20 +3405,20 @@ msgctxt "@option:check"
 msgid "Show at the bottom of the agenda views"
 msgstr "Pokaži samo odabrane"
 
-#: prefs/koprefsdialogplugins.cpp:123
+#: prefs/koprefsdialogplugins.cpp:122
 #, fuzzy, kde-format
 #| msgid "Calendar"
 msgctxt "@title:group"
 msgid "Calendar Decorations"
 msgstr "Kalendar"
 
-#: prefs/koprefsdialogplugins.cpp:143
+#: prefs/koprefsdialogplugins.cpp:142
 #, fuzzy, kde-format
 msgctxt "@action"
 msgid "Configure"
 msgstr "Podešavanje..."
 
-#: prefs/koprefsdialogplugins.cpp:202
+#: prefs/koprefsdialogplugins.cpp:201
 #, fuzzy, kde-format
 msgctxt "@info"
 msgid "Unable to configure this plugin"
