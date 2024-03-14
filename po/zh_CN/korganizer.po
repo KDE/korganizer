@@ -3,7 +3,7 @@ msgstr ""
 "Project-Id-Version: kdeorg\n"
 "Report-Msgid-Bugs-To: https://bugs.kde.org\n"
 "POT-Creation-Date: 2024-03-11 00:38+0000\n"
-"PO-Revision-Date: 2024-03-09 04:46\n"
+"PO-Revision-Date: 2024-03-13 20:04\n"
 "Last-Translator: \n"
 "Language-Team: Chinese Simplified\n"
 "Language: zh_CN\n"
@@ -5597,94 +5597,3 @@ msgstr "%1"
 msgctxt "4 digit year"
 msgid "%1"
 msgstr "%1"
-
-#~ msgid "Text"
-#~ msgstr "文本"
-
-#~ msgid "Numeric Value"
-#~ msgstr "数值"
-
-#~ msgid "Boolean"
-#~ msgstr "布尔值"
-
-#~ msgid "Selection"
-#~ msgstr "选择"
-
-#~ msgid "Date & Time"
-#~ msgstr "日期和时间"
-
-#~ msgid "Date"
-#~ msgstr "日期"
-
-#~ msgid "<qt>Do you really want to delete '<b>%1</b>'?</qt>"
-#~ msgstr "<qt>您真的要删除“<b>%1</b>”吗?</qt>"
-
-#~ msgid "Import Page"
-#~ msgstr "导入页面"
-
-#~ msgid "Designer Files"
-#~ msgstr "设计师文件"
-
-#~ msgid ""
-#~ "<qt><b>Warning:</b> Qt Designer could not be found. It is probably not "
-#~ "installed. You will only be able to import existing designer files.</qt>"
-#~ msgstr ""
-#~ "<qt><b>警告：</b>Qt 设计师可能找不到。可能没有安装该程序。您只能导入现有的"
-#~ "设计师文件。</qt>"
-
-#~ msgid "Available Pages"
-#~ msgstr "可用页"
-
-#~ msgid "Preview of Selected Page"
-#~ msgstr "选中页的预览"
-
-#~ msgid ""
-#~ "<qt><p>This section allows you to add your own GUI Elements ('<i>Widgets</"
-#~ "i>') to store your own values into %1. Proceed as described below:</"
-#~ "p><ol><li>Click on '<i>Edit with Qt Designer</i>'</li><li>In the dialog, "
-#~ "select '<i>Widget</i>', then click <i>OK</i></li><li>Add your widgets to "
-#~ "the form</li><li>Save the file in the directory proposed by Qt Designer</"
-#~ "li><li>Close Qt Designer</li></ol><p>In case you already have a designer "
-#~ "file (*.ui) located somewhere on your hard disk, simply choose '<i>Import "
-#~ "Page</i>'</p><p><b>Important:</b> The name of each input widget you place "
-#~ "within the form must start with '<i>X_</i>'; so if you want the widget to "
-#~ "correspond to your custom entry '<i>X-Foo</i>', set the widget's <i>name</"
-#~ "i> property to '<i>X_Foo</i>'.</p><p><b>Important:</b> The widget will "
-#~ "edit custom fields with an application name of %2.  To change the "
-#~ "application name to be edited, set the widget name in Qt Designer.</p></"
-#~ "qt>"
-#~ msgstr ""
-#~ "<qt><p>在本节，您可以添加您自己的图形窗口部件 ('<i>Widgets</i>') 到 %1 中"
-#~ "以存储您的数据。使用方法如下：</p><ol><li>点击 '<i>用 Qt 设计师编辑</i>'</"
-#~ "li><li>在对话框中选择 '<i>Widget</i>'，并点击<i>确定</i></li><li>在表单中"
-#~ "添加您的窗口部件</li><li>在 Qt 设计师给出的目录中保存文件</li><li>关闭 Qt "
-#~ "设计师</li></ol><p>如果您的硬盘上已有一个设计师文件 (*.ui)，请选择'<i>导入"
-#~ "页面</i>'</p><p><b>重要说明：</b> 表单中的每个输入部件的名称都必须"
-#~ "以'<i>X_</i>'开头；既如果您希望某个部件与您的自定义条目'<i>X-Foo</i>'相关"
-#~ "联，请将部件的 <i>name</i> 属性设为 '<i>X_Foo</i>'。</p><p><b>重要说明：</"
-#~ "b> 部件在编辑自定义条目时将使用 %2 为应用程序名。您可以在 Qt 设计师中设置"
-#~ "表单名以更改此名称。</p></qt>"
-
-#~ msgid "<a href=\"whatsthis:%1\">How does this work?</a>"
-#~ msgstr "<a href=\"whatsthis:%1\">此事项如何生效？</a>"
-
-#~ msgid "Delete Page"
-#~ msgstr "删除页面"
-
-#~ msgid "Import Page..."
-#~ msgstr "导入页面..."
-
-#~ msgid "Edit with Qt Designer..."
-#~ msgstr "用 Qt 设计师编辑..."
-
-#~ msgid "Key:"
-#~ msgstr "键："
-
-#~ msgid "Type:"
-#~ msgstr "类型："
-
-#~ msgid "Classname:"
-#~ msgstr "类名："
-
-#~ msgid "Description:"
-#~ msgstr "描述："

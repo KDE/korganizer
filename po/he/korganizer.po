@@ -18,7 +18,7 @@ msgstr ""
 "Project-Id-Version: korganizer\n"
 "Report-Msgid-Bugs-To: https://bugs.kde.org\n"
 "POT-Creation-Date: 2024-03-11 00:38+0000\n"
-"PO-Revision-Date: 2024-03-12 06:16+0200\n"
+"PO-Revision-Date: 2024-03-13 09:38+0200\n"
 "Last-Translator: Yaron Shahrabani <sh.yaron@gmail.com>\n"
 "Language-Team: צוות התרגום של KDE ישראל\n"
 "Language: he\n"
@@ -2071,10 +2071,10 @@ msgid "&Paste"
 msgstr "ה&דבקה"
 
 #: koeventpopupmenu.cpp:85
-#, fuzzy, kde-format
+#, kde-format
 msgctxt "@action:inmenu"
 msgid "Create To-do from Event"
-msgstr "לחץ להוספת מטלה חדשה"
+msgstr "יצירת מטלה מאירוע"
 
 #: koeventpopupmenu.cpp:89
 #, kde-format
@@ -4213,9 +4213,9 @@ msgstr "סמן תיבה זו על־מנת להציג חלון אישור בעת 
 
 #. i18n: ectx: tooltip, entry (ShowTodosMonthView), group (Month View)
 #: settings/korganizer.kcfg:258
-#, fuzzy, kde-format
+#, kde-format
 msgid "Display to-dos in the month view"
-msgstr "אפשר פסי גלילה בתאי תצוגת חודש"
+msgstr "הצגת מטלות בתצוגת החודש"
 
 #. i18n: ectx: label, entry (ShowJournalsMonthView), group (Month View)
 #: settings/korganizer.kcfg:263
@@ -4231,9 +4231,9 @@ msgstr "סמן תיבה זו על־מנת להציג חלון אישור בעת 
 
 #. i18n: ectx: tooltip, entry (ShowJournalsMonthView), group (Month View)
 #: settings/korganizer.kcfg:265
-#, fuzzy, kde-format
+#, kde-format
 msgid "Display journals in the month view"
-msgstr "אפשר פסי גלילה בתאי תצוגת חודש"
+msgstr "הצגת יומני בתצוגת החודש"
 
 #. i18n: ectx: label, entry, group (Month View)
 #: settings/korganizer.kcfg:270
@@ -4330,9 +4330,9 @@ msgstr "תצוגת המשימות משתמשת בחלון מלא"
 
 #. i18n: ectx: tooltip, entry, group (Todo View)
 #: settings/korganizer.kcfg:314
-#, fuzzy, kde-format
+#, kde-format
 msgid "Display to-do list in a full KOrganizer window"
-msgstr "תצוגת המשימות משתמשת בחלון מלא"
+msgstr "הצגת רשימת מטלות בחלון KOrganizer מלא"
 
 #. i18n: ectx: whatsthis, entry, group (Todo View)
 #: settings/korganizer.kcfg:315
@@ -4420,27 +4420,27 @@ msgstr "בחר כאן בצבע הרקע לתצוגת סדר־היום."
 
 #. i18n: ectx: label, entry, group (Colors)
 #: settings/korganizer.kcfg:348
-#, fuzzy, kde-format
+#, kde-format
 msgid "Agenda view current-time line color"
-msgstr "מציג מידע אודות מועד הפגישה."
+msgstr "צבע שורת הזמן הנוכחי בתצוגת סדר היום"
 
 #. i18n: ectx: whatsthis, entry, group (Colors)
 #: settings/korganizer.kcfg:349
-#, fuzzy, kde-format
+#, kde-format
 msgid "Select a color to use for the current-time (Marcus Bains) line."
-msgstr "הצג קו המציג את השעה הנוכחית (הקו של מרקוס ביין)"
+msgstr "נא לבחור את הצבע של שורת הזמן הנוכחי (מרקוס ביינס)."
 
 #. i18n: ectx: tooltip, entry, group (Colors)
 #: settings/korganizer.kcfg:350
-#, fuzzy, kde-format
+#, kde-format
 msgid "Use this color for the Agenda View current-time (Marcus Bains) line"
-msgstr "הצג קו המציג את השעה הנוכחית (הקו של מרקוס ביין)"
+msgstr "יש להשתמש בצבע הזה לשורת הזמן הנוכחי (מרקוס ביינס) בתצוגת סדר היום"
 
 #. i18n: ectx: label, entry (ViewBgBusyColor), group (Colors)
 #: settings/korganizer.kcfg:355
-#, fuzzy, kde-format
+#, kde-format
 msgid "Busy days background color"
-msgstr "צבע רקע לתצוגת סדר־יום"
+msgstr "צבע רקע לימים עמוסים"
 
 #. i18n: ectx: whatsthis, entry (ViewBgBusyColor), group (Colors)
 #: settings/korganizer.kcfg:356
@@ -4517,15 +4517,14 @@ msgstr "תצוגת חודש"
 
 #. i18n: ectx: whatsthis, entry, group (Fonts)
 #: settings/korganizer.kcfg:388
-#, fuzzy, kde-format
+#, kde-format
 msgid ""
 "Press this button to configure the month view font. This button will open "
 "the \"Select Font\" dialog, allowing you to choose the font for the items in "
 "the month view."
 msgstr ""
-"לחץ על כפתור זה על־מנת להגדיר את גופן עבור תצוגה חודשית.  כפתור זה פותח את "
-"תיבת השיחה &quot;בחר גופן&quot;, ומאפשר לבחור גופן עבור הפריטים בתצוגה "
-"החודשית."
+"לחיצה על הכפתור הזה תאפשר להגדיר את גופן תצוגת החודש. הכפתור הזה יפתח את "
+"חלונית „בחירת גופן” שבה ניתן לבחור את הגופן לפריטים בתצוגת החודש."
 
 #. i18n: ectx: label, entry, group (Fonts)
 #: settings/korganizer.kcfg:392
@@ -4535,14 +4534,14 @@ msgstr "תצוגת סדר יום"
 
 #. i18n: ectx: whatsthis, entry, group (Fonts)
 #: settings/korganizer.kcfg:393
-#, fuzzy, kde-format
+#, kde-format
 msgid ""
 "Press this button to configure the agenda view font. This button will open "
 "the \"Select Font\" dialog, allowing you to choose the font for the events "
 "in the agenda view."
 msgstr ""
-"לחץ על כפתור זה על־מנת להגדיר את גופן תצוגת סדר־היום.  כפתור זה פותח את תיבת "
-"השיחה &quot;בחר גופן&quot;, ומאפשר לבחור גופן עבור האירועים בתצוגת סדר־היום."
+"לחיצה על הכפתור הזה תאפשר להגדיר את גופן תצוגת סדר היום. הכפתור הזה יפתח את "
+"חלונית „בחירת גופן” שבה ניתן לבחור את הגופן לאירועים בתצוגת סדר היום."
 
 #. i18n: ectx: label, entry, group (Fonts)
 #: settings/korganizer.kcfg:397
@@ -4552,21 +4551,21 @@ msgstr "קו זמן נוכחי"
 
 #. i18n: ectx: whatsthis, entry, group (Fonts)
 #: settings/korganizer.kcfg:398
-#, fuzzy, kde-format
+#, kde-format
 msgid ""
 "Press this button to configure the current-time line font. This button will "
 "open the \"Select Font\" dialog, allowing you to choose the font for the "
 "current-time line in the agenda view."
 msgstr ""
-"לחץ על כפתור זה על־מנת להגדיר את גופן קו־הזמן הנוכחי.  כפתור זה פותח את תיבת "
-"השיחה &quot;בחר גופן&quot;, ומאפשר לבחור גופן עבור קו־הזמן הנוכחי בתצוגת סדר־"
-"היום."
+"לחיצה על הכפתור הזה תאפשר להגדיר את גופן שורת הזמן הנוכחי. הכפתור הזה יפתח "
+"את חלונית „בחירת גופן” שבה ניתן לבחור את הגופן לטובת שורת הזמן הנוכחי בתצוגת "
+"סדר היום."
 
 #. i18n: ectx: label, entry (DefaultTodoAttachMethod), group (Hidden Options)
 #: settings/korganizer.kcfg:422
-#, fuzzy, kde-format
+#, kde-format
 msgid "Default todo attachment method"
-msgstr "שעת הפגישה המשמשת כברירת מחדל"
+msgstr "שיטת הצמדת קבצים למטלות כברירת מחדל"
 
 #. i18n: ectx: whatsthis, entry (DefaultTodoAttachMethod), group (Hidden Options)
 #: settings/korganizer.kcfg:423
