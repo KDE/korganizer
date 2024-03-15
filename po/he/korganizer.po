@@ -18,7 +18,7 @@ msgstr ""
 "Project-Id-Version: korganizer\n"
 "Report-Msgid-Bugs-To: https://bugs.kde.org\n"
 "POT-Creation-Date: 2024-03-11 00:38+0000\n"
-"PO-Revision-Date: 2024-03-13 09:38+0200\n"
+"PO-Revision-Date: 2024-03-14 15:01+0200\n"
 "Last-Translator: Yaron Shahrabani <sh.yaron@gmail.com>\n"
 "Language-Team: צוות התרגום של KDE ישראל\n"
 "Language: he\n"
@@ -2306,7 +2306,7 @@ msgstr ""
 #: kontactplugin/specialdates/sdsummaryconfig_base.ui:244
 #, kde-format
 msgid "Groupware Settings"
-msgstr "הגדרות Grorupware"
+msgstr "הגדרות Groupware"
 
 #. i18n: ectx: property (toolTip), widget (QCheckBox, mShowMineOnly)
 #: kontactplugin/korganizer/apptsummaryconfig_base.ui:163
@@ -2938,9 +2938,9 @@ msgstr ""
 
 #. i18n: ectx: property (text), widget (QCheckBox, mShowHolidaysFromCalBox)
 #: kontactplugin/specialdates/sdsummaryconfig_base.ui:174
-#, fuzzy, kde-format
+#, kde-format
 msgid "Show &holidays"
-msgstr "ה&צג משך בתור:"
+msgstr "הצגת &חגים"
 
 #. i18n: ectx: property (toolTip), widget (QCheckBox, mShowSpecialsFromCalBox)
 #: kontactplugin/specialdates/sdsummaryconfig_base.ui:184
@@ -2958,9 +2958,9 @@ msgstr ""
 
 #. i18n: ectx: property (text), widget (QCheckBox, mShowSpecialsFromCalBox)
 #: kontactplugin/specialdates/sdsummaryconfig_base.ui:190
-#, fuzzy, kde-format
+#, kde-format
 msgid "Show s&pecial occasions"
-msgstr "אירוע מיוחד"
+msgstr "הצגת &אירועים מיוחדים"
 
 #. i18n: ectx: property (title), widget (QGroupBox, mShowFromKABButtonGroup)
 #: kontactplugin/specialdates/sdsummaryconfig_base.ui:203
@@ -2984,9 +2984,9 @@ msgstr ""
 
 #. i18n: ectx: property (text), widget (QCheckBox, mShowBirthdaysFromKABBox)
 #: kontactplugin/specialdates/sdsummaryconfig_base.ui:215
-#, fuzzy, kde-format
+#, kde-format
 msgid "Show birth&days"
-msgstr "הצג את שניהם"
+msgstr "הצגת ימי הו&לדת"
 
 #. i18n: ectx: property (toolTip), widget (QCheckBox, mShowAnniversariesFromKABBox)
 #: kontactplugin/specialdates/sdsummaryconfig_base.ui:225
@@ -3129,14 +3129,14 @@ msgid "Calendar"
 msgstr "לוח שנה"
 
 #: korganizer_options.h:18
-#, fuzzy, kde-format
+#, kde-format
 msgid "Import the specified files as separate calendars"
-msgstr "הוסף מצורף"
+msgstr "לייבא את הקבצים שצוינו כלוחות שנה נפרדים"
 
 #: korganizer_options.h:20
-#, fuzzy, kde-format
+#, kde-format
 msgid "Merge the specified files into an existing calendar"
-msgstr "הוסף מצורף"
+msgstr "מיזוג הקבצים שצוינו ללוח שנה קיים"
 
 #: korganizer_options.h:21
 #, kde-format
@@ -3473,10 +3473,10 @@ msgid " days"
 msgstr " ימים"
 
 #: prefs/koprefsdialogviews.cpp:69
-#, fuzzy, kde-format
+#, kde-format
 msgctxt "@title:group"
 msgid "Date Navigator"
-msgstr "תאריכון"
+msgstr "נווט תאריכים"
 
 #: prefs/koprefsdialogviews.cpp:81
 #, kde-format
@@ -3649,16 +3649,15 @@ msgstr ""
 
 #. i18n: ectx: label, entry (WeekStartDay), group (Time &amp; Date)
 #: settings/korganizer.kcfg:55
-#, fuzzy, kde-format
+#, kde-format
 msgid "Weekly start day:"
-msgstr "תאריך התחלה:"
+msgstr "יום התחלה לתזמון שבועי:"
 
 #. i18n: ectx: tooltip, entry (WeekStartDay), group (Time &amp; Date)
 #: settings/korganizer.kcfg:56
-#, fuzzy, kde-format
-#| msgid "Select the to-do due today color here."
+#, kde-format
 msgid "Select the first day of each week"
-msgstr "בחר כאן בצבע מטלה שהיום הוא שתאריך היעד שלה."
+msgstr "נא לבחור את היום הראשון בכל שבוע"
 
 #. i18n: ectx: whatsthis, entry (WeekStartDay), group (Time &amp; Date)
 #: settings/korganizer.kcfg:57
@@ -3994,7 +3993,7 @@ msgstr ""
 #: settings/korganizer.kcfg:186 settings/korganizer.kcfg:276
 #, kde-format
 msgid "Color Usage"
-msgstr ""
+msgstr "שימוש בצבע"
 
 #. i18n: ectx: label, entry, group (Agenda View)
 #. i18n: ectx: label, entry, group (Month View)
@@ -4164,22 +4163,23 @@ msgstr ""
 
 #. i18n: ectx: tooltip, entry (AgendaViewCalendarDisplay), group (Agenda View)
 #: settings/korganizer.kcfg:232
-#, fuzzy, kde-format
+#, kde-format
 msgid "Tab through calendars"
-msgstr "לוח השנה מוזג"
+msgstr "מעבר בטאב בין לוחות השנה"
 
 #. i18n: ectx: label, entry (EnableMonthItemIcons), group (Month View)
 #: settings/korganizer.kcfg:242
-#, fuzzy, kde-format
+#, kde-format
 msgid "Show icons in month view items"
-msgstr "הצג נבחרים בלבד"
+msgstr "הצגת סמלים לפריטי תצוגת חודש"
 
 #. i18n: ectx: whatsthis, entry (EnableMonthItemIcons), group (Month View)
 #: settings/korganizer.kcfg:243
-#, fuzzy, kde-format
+#, kde-format
 msgid ""
 "Check this box to display icons (alarm, recursion, etc.) in month view items."
-msgstr "סמן תיבה זו על־מנת להציג חלון אישור בעת מחיקת פריט."
+msgstr ""
+"יש לסמן את התיבה הזאת כדי להציג סמלים (התראה, חזרה וכו׳) בפריטי תצוגת חודש."
 
 #. i18n: ectx: tooltip, entry (EnableMonthItemIcons), group (Month View)
 #: settings/korganizer.kcfg:244
