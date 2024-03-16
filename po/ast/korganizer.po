@@ -1,13 +1,13 @@
 # Copyright (C) 2023 This file is copyright:
 # This file is distributed under the same license as the korganizer package.
 #
-# SPDX-FileCopyrightText: 2023 Enol P. <enolp@softastur.org>
+# SPDX-FileCopyrightText: 2023, 2024 Enol P. <enolp@softastur.org>
 msgid ""
 msgstr ""
 "Project-Id-Version: korganizer\n"
 "Report-Msgid-Bugs-To: https://bugs.kde.org\n"
 "POT-Creation-Date: 2024-03-11 00:38+0000\n"
-"PO-Revision-Date: 2023-12-15 13:50+0100\n"
+"PO-Revision-Date: 2024-03-15 01:17+0100\n"
 "Last-Translator: Enol P. <enolp@softastur.org>\n"
 "Language-Team: Assamese <alministradores@softastur.org>\n"
 "Language: ast\n"
@@ -15,7 +15,7 @@ msgstr ""
 "Content-Type: text/plain; charset=UTF-8\n"
 "Content-Transfer-Encoding: 8bit\n"
 "Plural-Forms: nplurals=2; plural=n != 1;\n"
-"X-Generator: Lokalize 23.08.4\n"
+"X-Generator: Lokalize 24.02.0\n"
 
 #, kde-format
 msgctxt "NAME OF TRANSLATORS"
@@ -3081,7 +3081,7 @@ msgid ""
 msgstr ""
 "Nun ye posible amosar la selmana llaboral darréu que nun hai nengún día "
 "llaboral configuráu. Configura afayadizamente polo menos 1 día llaboral nes "
-"preferencies de «Hora ya data»."
+"preferencies de «Hora y data»."
 
 #: prefs/koprefsdialogcolorsandfonts.cpp:43
 #, kde-format
