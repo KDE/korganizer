@@ -80,5 +80,3 @@ MimeType=application/x-vnd.akonadi.calendar.event;application/x-vnd.akonadi.cale
 X-KDE-Protocols=akonadi
 
 StartupNotify=true
-X-DBUS-StartupType=Unique
-X-DBUS-ServiceName=org.kde.korganizer
