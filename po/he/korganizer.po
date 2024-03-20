@@ -18,7 +18,7 @@ msgstr ""
 "Project-Id-Version: korganizer\n"
 "Report-Msgid-Bugs-To: https://bugs.kde.org\n"
 "POT-Creation-Date: 2024-03-11 00:38+0000\n"
-"PO-Revision-Date: 2024-03-18 12:48+0200\n"
+"PO-Revision-Date: 2024-03-19 08:57+0200\n"
 "Last-Translator: Yaron Shahrabani <sh.yaron@gmail.com>\n"
 "Language-Team: צוות התרגום של KDE ישראל\n"
 "Language: he\n"
@@ -1143,9 +1143,9 @@ msgid "Attach as &link"
 msgstr "צירוף כ&קישור"
 
 #: actionmanager.cpp:1420 actionmanager.cpp:1526
-#, fuzzy, kde-format
+#, kde-format
 msgid "Attach &inline"
-msgstr "הוסף מצורף"
+msgstr "הוספה כ&חלק מההודעה"
 
 #: actionmanager.cpp:1421
 #, kde-format
