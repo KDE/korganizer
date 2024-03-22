@@ -278,6 +278,9 @@ CalendarView::~CalendarView()
 {
     mCalendar->unregisterObserver(this);
     mCalendar->setFilter(nullptr); // So calendar doesn't deleted it twice
+    forEachCalendar([](auto calendar) {
+        calendar->setFilter(nullptr);
+    });
     qDeleteAll(mFilters);
     qDeleteAll(mExtensions);
 
@@ -314,8 +317,24 @@ Akonadi::CollectionCalendar::Ptr CalendarView::calendarForCollection(const Akona
     }
 
     const auto calendar = Akonadi::CollectionCalendar::Ptr::create(mCalendar->entityTreeModel(), collection);
+    calendar->setFilter(mCurrentFilter);
     mCalendars.emplace_back(calendar);
     return calendar;
+}
+
+void CalendarView::forEachCalendar(std::function<void(Akonadi::CollectionCalendar::Ptr)> func)
+{
+    auto it = mCalendars.begin();
+    while (it != mCalendars.end()) {
+        auto collection = it->lock();
+        if (!collection) {
+            it = mCalendars.erase(it);
+            continue;
+        }
+
+        func(collection);
+        ++it;
+    }
 }
 
 QDate CalendarView::activeDate(bool fallbackToToday)
@@ -1916,6 +1935,9 @@ void CalendarView::updateFilter()
     Q_EMIT filtersUpdated(filters, pos + 1);
 
     mCalendar->setFilter(mCurrentFilter);
+    forEachCalendar([this](auto calendar) {
+        calendar->setFilter(mCurrentFilter);
+    });
 }
 
 void CalendarView::filterActivated(int filterNo)
@@ -1927,6 +1949,9 @@ void CalendarView::filterActivated(int filterNo)
     if (newFilter != mCurrentFilter) {
         mCurrentFilter = newFilter;
         mCalendar->setFilter(mCurrentFilter);
+        forEachCalendar([this](auto calendar) {
+            calendar->setFilter(mCurrentFilter);
+        });
         mViewManager->addChange(EventViews::EventView::FilterChanged);
         updateView();
     }
@@ -2582,6 +2607,7 @@ void CalendarView::collectionDeselected(const Akonadi::Collection &collection)
     }
 
     const auto calendar = *calendarIt;
+    calendar->setFilter(nullptr);
     mEnabledCalendars.removeOne(calendar);
     mDateNavigatorContainer->removeCalendar(calendar);
     Q_EMIT calendarRemoved(calendar);

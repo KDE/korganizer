@@ -23,6 +23,7 @@
 
 #include <CalendarSupport/MessageWidget>
 
+#include <functional>
 #include <list>
 
 class DateChecker;
@@ -691,6 +692,14 @@ private:
      * in the collection combo.
      */
     IncidenceEditorNG::IncidenceDialog *createIncidenceEditor(const Akonadi::Item &item, const Akonadi::Collection &collection = Akonadi::Collection());
+
+    /**
+     * Loops over mCalendars and invokes @p func for each valid calendar in the list.
+     *
+     * During looping the function also takes care of removing any stale weak pointers
+     * from the list.
+     */
+    void forEachCalendar(std::function<void(Akonadi::CollectionCalendar::Ptr)> func);
 
     CalendarSupport::CalPrinter *mCalPrinter = nullptr;
     Akonadi::TodoPurger *mTodoPurger = nullptr;
