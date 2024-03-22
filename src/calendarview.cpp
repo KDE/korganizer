@@ -735,7 +735,7 @@ void CalendarView::updateView(const QDate &start, const QDate &end, const QDate 
 {
     const bool currentViewIsTodoView = mViewManager->currentView()->identifier() == "DefaultTodoView";
 
-    if (updateTodos && !currentViewIsTodoView && mTodoList->isVisible()) {
+    if (updateTodos && mTodoList->isVisible()) {
         // Update the sidepane todoView
         mTodoList->updateView();
     }
@@ -2009,7 +2009,7 @@ void CalendarView::showTodoView(bool show)
 {
     if (show) {
         if (!mTodoList->model()) {
-            mTodoList->setModel(eventsModel());
+            mTodoList->setModel(mCalendar->entityTreeModel());
         }
         mTodoList->show();
         mTodoList->updateView();
