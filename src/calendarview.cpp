@@ -2008,6 +2008,9 @@ void CalendarView::showDateNavigator(bool show)
 void CalendarView::showTodoView(bool show)
 {
     if (show) {
+        if (!mTodoList->model()) {
+            mTodoList->setModel(eventsModel());
+        }
         mTodoList->show();
         mTodoList->updateView();
     } else {
