@@ -21,7 +21,7 @@ msgstr ""
 "Project-Id-Version: kdepim-kde4\n"
 "Report-Msgid-Bugs-To: https://bugs.kde.org\n"
 "POT-Creation-Date: 2024-03-11 00:38+0000\n"
-"PO-Revision-Date: 2024-03-22 01:10+0300\n"
+"PO-Revision-Date: 2024-03-22 16:14+0300\n"
 "Last-Translator: Emir SARI <emir_sari@icloud.com>\n"
 "Language-Team: Turkish <kde-l10n-tr@kde.org>\n"
 "Language: tr\n"
@@ -1611,7 +1611,7 @@ msgid ""
 "to delete it and all its recurrences?"
 msgstr ""
 "\"%1\" takvim ögesi birden fazla günde yineleniyor; bu ögeyi ve tüm "
-"yinelemelerini silmek istediğinize emin misiniz?"
+"yinelemelerini silmek istediğinizden emin misiniz?"
 
 #: calendarview.cpp:2323 calendarview.cpp:2353
 #, kde-format
@@ -1961,7 +1961,7 @@ msgstr "Yeni Süzgeç %1"
 #, kde-format
 msgctxt "@info"
 msgid "Do you really want to permanently remove the filter \"%1\"?"
-msgstr "\"%1\" süzgecini gerçekten silmek istediğinize emin misiniz?"
+msgstr "\"%1\" süzgecini gerçekten silmek istediğinizden emin misiniz?"
 
 #: dialog/filtereditdialog.cpp:243
 #, kde-format
