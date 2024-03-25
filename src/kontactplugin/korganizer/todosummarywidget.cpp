@@ -39,7 +39,7 @@ TodoSummaryWidget::TodoSummaryWidget(TodoPlugin *plugin, QWidget *parent)
     mainLayout->setSpacing(3);
     mainLayout->setContentsMargins(3, 3, 3, 3);
 
-    QWidget *header = createHeader(this, QStringLiteral("korg-todo"), i18n("Pending To-dos"));
+    QWidget *header = createHeader(this, QStringLiteral("view-calendar-tasks"), i18n("Pending To-dos"));
     mainLayout->addWidget(header);
 
     mLayout = new QGridLayout();
