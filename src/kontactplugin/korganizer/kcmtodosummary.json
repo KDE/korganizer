@@ -34,7 +34,7 @@
         "Description[x-test]": "xxPending To-dos Summary Setupxx",
         "Description[zh_CN]": "未决待办事项摘要设置",
         "Description[zh_TW]": "未決定的待辦事項摘要設定",
-        "Icon": "korg-todo",
+        "Icon": "view-calendar-tasks",
         "Name": "Pending To-dos",
         "Name[ar]": "المهامّ المرجأة",
         "Name[az]": "Gözlənilən tapşırıqlar",
