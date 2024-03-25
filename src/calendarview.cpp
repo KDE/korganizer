@@ -45,6 +45,7 @@
 #include <Akonadi/CollectionMaintenancePage>
 #include <Akonadi/CollectionPropertiesDialog>
 #include <Akonadi/ControlGui>
+#include <Akonadi/EntityTreeModel>
 
 #include <CalendarSupport/CalPrinter>
 #include <CalendarSupport/CalendarSingleton>
