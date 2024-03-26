@@ -190,6 +190,10 @@ void ActionManager::createCalendarAkonadi()
     KSharedConfig::Ptr config = KSharedConfig::openConfig();
     mCollectionSelectionModelStateSaver = new KViewStateMaintainer<Akonadi::ETMViewStateSaver>(config->group(QStringLiteral("GlobalCollectionSelection")));
     mCollectionSelectionModelStateSaver->setSelectionModel(calendar()->checkableProxyModel()->selectionModel());
+    connect(calendar()->checkableProxyModel()->selectionModel(),
+            &QItemSelectionModel::selectionChanged,
+            mCollectionSelectionModelStateSaver,
+            &KViewStateMaintainer<Akonadi::ETMViewStateSaver>::saveState);
 
     AkonadiCollectionViewFactory factory(mCalendarView);
     mCalendarView->addExtension(&factory);
