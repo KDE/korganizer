@@ -10,7 +10,7 @@ msgid ""
 msgstr ""
 "Project-Id-Version: korganizer\n"
 "Report-Msgid-Bugs-To: https://bugs.kde.org\n"
-"POT-Creation-Date: 2024-03-11 00:38+0000\n"
+"POT-Creation-Date: 2024-03-26 00:38+0000\n"
 "PO-Revision-Date: 2012-01-28 16:07-0800\n"
 "Last-Translator: Fumiaki Okushi <okushi@kde.gr.jp>\n"
 "Language-Team: Japanese <kde-jp@kde.org>\n"
@@ -1440,7 +1440,7 @@ msgctxt "@info"
 msgid "Unable to copy the item \"%1\" to %2."
 msgstr "アイテム “%1” を %2 にコピーできませんでした。"
 
-#: calendarview.cpp:1476 calendarview.cpp:2457
+#: calendarview.cpp:1476 calendarview.cpp:2459
 #, kde-format
 msgctxt "@title:window"
 msgid "Copying Failed"
@@ -1454,7 +1454,7 @@ msgid ""
 "of this item has been put into %2"
 msgstr ""
 
-#: calendarview.cpp:1539 calendarview.cpp:1555 calendarview.cpp:2492
+#: calendarview.cpp:1539 calendarview.cpp:1555 calendarview.cpp:2494
 #, kde-format
 msgctxt "@title:window"
 msgid "Moving Failed"
@@ -1664,87 +1664,87 @@ msgstr "すべて削除(&A)"
 msgid "Delete \"%1\""
 msgstr "すべて削除"
 
-#: calendarview.cpp:2422
+#: calendarview.cpp:2424
 #, kde-format
 msgid ""
 "All calendars are unchecked in the Calendar Manager. No to-do was purged."
 msgstr ""
 
 # ACCELERATOR changed by translator
-#: calendarview.cpp:2427 calendarview.cpp:2709
+#: calendarview.cpp:2429 calendarview.cpp:2711
 #, fuzzy, kde-format
 #| msgid "Strike &out completed to-do summaries"
 msgid "There are no completed to-dos to purge."
 msgstr "完了済み To-Do の要約に取り消し線を引く(&K)"
 
-#: calendarview.cpp:2432
+#: calendarview.cpp:2434
 #, fuzzy, kde-format
 #| msgid "Delete all completed to-dos?"
 msgid "Delete all completed to-dos from checked calendars?"
 msgstr "完了済みのすべての To-Do を削除しますか？"
 
-#: calendarview.cpp:2433
+#: calendarview.cpp:2435
 #, fuzzy, kde-format
 #| msgid "Purge To-dos"
 msgctxt "@title:window"
 msgid "Purge To-dos"
 msgstr "完了済み To-Do を一括削除"
 
-#: calendarview.cpp:2434
+#: calendarview.cpp:2436
 #, kde-format
 msgid "Purge"
 msgstr "削除"
 
-#: calendarview.cpp:2445
+#: calendarview.cpp:2447
 #, kde-format
 msgctxt "@info"
 msgid "Unable to edit \"%1\" because it is locked by another process."
 msgstr "他のプロセスによってロックされているため “%1” は編集できません。"
 
-#: calendarview.cpp:2457
+#: calendarview.cpp:2459
 #, kde-format
 msgid "Unable to copy the item to %1."
 msgstr "アイテムを %1 にコピーできません。"
 
-#: calendarview.cpp:2492
+#: calendarview.cpp:2494
 #, kde-format
 msgid "Unable to move the item to  %1."
 msgstr "アイテムを %1 に移動できません。"
 
-#: calendarview.cpp:2702
+#: calendarview.cpp:2704
 #, fuzzy, kde-format
 #| msgid "Hide co&mpleted to-dos"
 msgid "0 completed to-dos were purged."
 msgstr "完了した To-Do を隠す(&M)"
 
-#: calendarview.cpp:2703 calendarview.cpp:2713
+#: calendarview.cpp:2705 calendarview.cpp:2715
 #, kde-format
 msgid "%1 to-do was ignored because it has uncompleted or read-only children."
 msgid_plural ""
 "%1 to-dos were ignored because they have uncompleted or read-only children."
 msgstr[0] ""
 
-#: calendarview.cpp:2707 calendarview.cpp:2712
+#: calendarview.cpp:2709 calendarview.cpp:2714
 #, fuzzy, kde-format
 #| msgid "Hide co&mpleted to-dos"
 msgid "%1 completed to-do was purged."
 msgid_plural "%1 completed to-dos were purged."
 msgstr[0] "完了した To-Do を隠す(&M)"
 
-#: calendarview.cpp:2718
+#: calendarview.cpp:2720
 #, fuzzy, kde-format
 #| msgid "Purging completed to-dos"
 msgid "An error occurred while purging completed to-dos: %1"
 msgstr "完了済み To-Do を一括削除"
 
-#: calendarview.cpp:2772
+#: calendarview.cpp:2774
 #, kde-format
 msgid ""
 "You created an incidence in a calendar that is currently filtered out.\n"
 "On the left sidebar, enable it in the calendar manager to see the incidence."
 msgstr ""
 
-#: calendarview.cpp:2776
+#: calendarview.cpp:2778
 #, kde-format
 msgid ""
 "You created an incidence in a calendar that is currently filtered out.\n"

@@ -16,7 +16,7 @@ msgid ""
 msgstr ""
 "Project-Id-Version: korganizer\n"
 "Report-Msgid-Bugs-To: https://bugs.kde.org\n"
-"POT-Creation-Date: 2024-03-11 00:38+0000\n"
+"POT-Creation-Date: 2024-03-26 00:38+0000\n"
 "PO-Revision-Date: 2023-01-30 15:28+0100\n"
 "Last-Translator: Frank Steinmetzger <dev-kde@felsenfleischer.de>\n"
 "Language-Team: German <kde-i18n-de@kde.org>\n"
@@ -1439,7 +1439,7 @@ msgctxt "@info"
 msgid "Unable to copy the item \"%1\" to %2."
 msgstr "Der Eintrag „%1“ kann nicht nach %2 kopiert werden."
 
-#: calendarview.cpp:1476 calendarview.cpp:2457
+#: calendarview.cpp:1476 calendarview.cpp:2459
 #, kde-format
 msgctxt "@title:window"
 msgid "Copying Failed"
@@ -1455,7 +1455,7 @@ msgstr ""
 "Das Ereignis „%1“ kann nicht vom Originalkalender entfernt werden. Jedoch "
 "wurde eine Kopie in %2 abgelegt"
 
-#: calendarview.cpp:1539 calendarview.cpp:1555 calendarview.cpp:2492
+#: calendarview.cpp:1539 calendarview.cpp:1555 calendarview.cpp:2494
 #, kde-format
 msgctxt "@title:window"
 msgid "Moving Failed"
@@ -1668,7 +1668,7 @@ msgstr "Alle &löschen"
 msgid "Delete \"%1\""
 msgstr "„%1“ löschen"
 
-#: calendarview.cpp:2422
+#: calendarview.cpp:2424
 #, kde-format
 msgid ""
 "All calendars are unchecked in the Calendar Manager. No to-do was purged."
@@ -1676,29 +1676,29 @@ msgstr ""
 "Es sind keine Kalender in der Kalenderverwaltung angekreuzt. Daher wurden "
 "keine Aufgaben gelöscht."
 
-#: calendarview.cpp:2427 calendarview.cpp:2709
+#: calendarview.cpp:2429 calendarview.cpp:2711
 #, kde-format
 msgid "There are no completed to-dos to purge."
 msgstr "Es gibt keine erledigten Aufgaben zu löschen."
 
-#: calendarview.cpp:2432
+#: calendarview.cpp:2434
 #, kde-format
 msgid "Delete all completed to-dos from checked calendars?"
 msgstr "Alle erledigten Aufgaben aus den angekreuzte Kalendern löschen?"
 
-#: calendarview.cpp:2433
+#: calendarview.cpp:2435
 #, fuzzy, kde-format
 #| msgid "Purge To-dos"
 msgctxt "@title:window"
 msgid "Purge To-dos"
 msgstr "Aufgaben löschen"
 
-#: calendarview.cpp:2434
+#: calendarview.cpp:2436
 #, kde-format
 msgid "Purge"
 msgstr "Löschen"
 
-#: calendarview.cpp:2445
+#: calendarview.cpp:2447
 #, kde-format
 msgctxt "@info"
 msgid "Unable to edit \"%1\" because it is locked by another process."
@@ -1706,22 +1706,22 @@ msgstr ""
 "Bearbeiten des Eintrags „%1“ ist nicht möglich weil er durch einen anderen "
 "Prozess blockiert wird."
 
-#: calendarview.cpp:2457
+#: calendarview.cpp:2459
 #, kde-format
 msgid "Unable to copy the item to %1."
 msgstr "Der Eintrag kann nicht nach %1 kopiert werden."
 
-#: calendarview.cpp:2492
+#: calendarview.cpp:2494
 #, kde-format
 msgid "Unable to move the item to  %1."
 msgstr "Der Eintrag kann nicht nach %1 verschoben werden."
 
-#: calendarview.cpp:2702
+#: calendarview.cpp:2704
 #, kde-format
 msgid "0 completed to-dos were purged."
 msgstr "Es wurden keine erledigten Aufgaben gelöscht."
 
-#: calendarview.cpp:2703 calendarview.cpp:2713
+#: calendarview.cpp:2705 calendarview.cpp:2715
 #, kde-format
 msgid "%1 to-do was ignored because it has uncompleted or read-only children."
 msgid_plural ""
@@ -1733,19 +1733,19 @@ msgstr[1] ""
 "%1 Aufgaben wurden ignoriert, da sie nicht erledigte oder nur lesbare "
 "Unteraufgaben haben."
 
-#: calendarview.cpp:2707 calendarview.cpp:2712
+#: calendarview.cpp:2709 calendarview.cpp:2714
 #, kde-format
 msgid "%1 completed to-do was purged."
 msgid_plural "%1 completed to-dos were purged."
 msgstr[0] "%1 erledigte Aufgabe wurde gelöscht."
 msgstr[1] "%1 erledigte Aufgaben wurde gelöscht."
 
-#: calendarview.cpp:2718
+#: calendarview.cpp:2720
 #, kde-format
 msgid "An error occurred while purging completed to-dos: %1"
 msgstr "Beim Löschen erledigter Aufgaben ist ein Fehler aufgetreten: %1"
 
-#: calendarview.cpp:2772
+#: calendarview.cpp:2774
 #, kde-format
 msgid ""
 "You created an incidence in a calendar that is currently filtered out.\n"
@@ -1756,7 +1756,7 @@ msgstr ""
 "Aktivieren Sie den Kalender in der linken Seitenleiste in der "
 "Kalenderverwaltung, um das Ereignis zu sehen."
 
-#: calendarview.cpp:2776
+#: calendarview.cpp:2778
 #, kde-format
 msgid ""
 "You created an incidence in a calendar that is currently filtered out.\n"

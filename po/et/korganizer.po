@@ -8,7 +8,7 @@ msgid ""
 msgstr ""
 "Project-Id-Version: korganizer\n"
 "Report-Msgid-Bugs-To: https://bugs.kde.org\n"
-"POT-Creation-Date: 2024-03-11 00:38+0000\n"
+"POT-Creation-Date: 2024-03-26 00:38+0000\n"
 "PO-Revision-Date: 2020-05-11 16:37+0300\n"
 "Last-Translator: Marek Laane <qiilaq69@gmail.com>\n"
 "Language-Team: Estonian <kde-et@lists.linux.ee>\n"
@@ -1430,7 +1430,7 @@ msgctxt "@info"
 msgid "Unable to copy the item \"%1\" to %2."
 msgstr "Elemendi \"%1\" kopeerimine kalendrisse %2 nurjus."
 
-#: calendarview.cpp:1476 calendarview.cpp:2457
+#: calendarview.cpp:1476 calendarview.cpp:2459
 #, kde-format
 msgctxt "@title:window"
 msgid "Copying Failed"
@@ -1450,7 +1450,7 @@ msgstr ""
 "Elemendi \"%1\" eemaldamine ressursist %2 nurjus. Siiski lisati elemendi "
 "koopia ressurssi %3."
 
-#: calendarview.cpp:1539 calendarview.cpp:1555 calendarview.cpp:2492
+#: calendarview.cpp:1539 calendarview.cpp:1555 calendarview.cpp:2494
 #, kde-format
 msgctxt "@title:window"
 msgid "Moving Failed"
@@ -1657,58 +1657,58 @@ msgstr "Ku&stuta kõik"
 msgid "Delete \"%1\""
 msgstr "Kustuta %1"
 
-#: calendarview.cpp:2422
+#: calendarview.cpp:2424
 #, kde-format
 msgid ""
 "All calendars are unchecked in the Calendar Manager. No to-do was purged."
 msgstr ""
 "Kõik kalendrid on kalendrihalduris märkimata. Ühtegi ülesannet ei kustutatud."
 
-#: calendarview.cpp:2427 calendarview.cpp:2709
+#: calendarview.cpp:2429 calendarview.cpp:2711
 #, kde-format
 msgid "There are no completed to-dos to purge."
 msgstr "Pole ühtegi täidetud ülesannet, mida kustutada."
 
-#: calendarview.cpp:2432
+#: calendarview.cpp:2434
 #, kde-format
 msgid "Delete all completed to-dos from checked calendars?"
 msgstr "Kas kustutada märgitud kalendritest kõik täidetud ülesanded?"
 
-#: calendarview.cpp:2433
+#: calendarview.cpp:2435
 #, fuzzy, kde-format
 #| msgid "Purge To-dos"
 msgctxt "@title:window"
 msgid "Purge To-dos"
 msgstr "Täidetud ülesannete kustutamine"
 
-#: calendarview.cpp:2434
+#: calendarview.cpp:2436
 #, kde-format
 msgid "Purge"
 msgstr "Kustuta"
 
-#: calendarview.cpp:2445
+#: calendarview.cpp:2447
 #, kde-format
 msgctxt "@info"
 msgid "Unable to edit \"%1\" because it is locked by another process."
 msgstr ""
 "Elementi \"%1\" ei saa muuta, sest selle on lukustanud mingi muu protsess."
 
-#: calendarview.cpp:2457
+#: calendarview.cpp:2459
 #, kde-format
 msgid "Unable to copy the item to %1."
 msgstr "Sündmuse või ülesande kopeerimine asukohta %1 nurjus."
 
-#: calendarview.cpp:2492
+#: calendarview.cpp:2494
 #, kde-format
 msgid "Unable to move the item to  %1."
 msgstr "Sündmuse või ülesande liigutamine asukohta %1 nurjus."
 
-#: calendarview.cpp:2702
+#: calendarview.cpp:2704
 #, kde-format
 msgid "0 completed to-dos were purged."
 msgstr "Kustutati 0 täidetud ülesannet."
 
-#: calendarview.cpp:2703 calendarview.cpp:2713
+#: calendarview.cpp:2705 calendarview.cpp:2715
 #, kde-format
 msgid "%1 to-do was ignored because it has uncompleted or read-only children."
 msgid_plural ""
@@ -1720,19 +1720,19 @@ msgstr[1] ""
 "%1 ülesannet jäeti kõrvale, sest neil oli lõpetamata või kirjutuskaitstud "
 "alamülesandeid."
 
-#: calendarview.cpp:2707 calendarview.cpp:2712
+#: calendarview.cpp:2709 calendarview.cpp:2714
 #, kde-format
 msgid "%1 completed to-do was purged."
 msgid_plural "%1 completed to-dos were purged."
 msgstr[0] "Kustutati %1 täidetud ülesanne."
 msgstr[1] "Kustutati %1 täidetud ülesannet."
 
-#: calendarview.cpp:2718
+#: calendarview.cpp:2720
 #, kde-format
 msgid "An error occurred while purging completed to-dos: %1"
 msgstr "Täidetud ülesannete kustutamisel tekkis tõrge: %1"
 
-#: calendarview.cpp:2772
+#: calendarview.cpp:2774
 #, kde-format
 msgid ""
 "You created an incidence in a calendar that is currently filtered out.\n"
@@ -1741,7 +1741,7 @@ msgstr ""
 "Lõid sündmuse kalendris, mis on praegu välja filtreeritud.\n"
 "Sündmuse nägemiseks lülita kalender vasakul külgribal kalendrihalduris sisse."
 
-#: calendarview.cpp:2776
+#: calendarview.cpp:2778
 #, kde-format
 msgid ""
 "You created an incidence in a calendar that is currently filtered out.\n"

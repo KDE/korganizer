@@ -19,7 +19,7 @@ msgid ""
 msgstr ""
 "Project-Id-Version: korganizer\n"
 "Report-Msgid-Bugs-To: https://bugs.kde.org\n"
-"POT-Creation-Date: 2024-03-11 00:38+0000\n"
+"POT-Creation-Date: 2024-03-26 00:38+0000\n"
 "PO-Revision-Date: 2007-03-28 20:53+0200\n"
 "Last-Translator: Rinse de Vries <rinsedevries@kde.nl>\n"
 "Language-Team: Frysk <kde-i18n-fry@kde.org>\n"
@@ -1480,7 +1480,7 @@ msgctxt "@info"
 msgid "Unable to copy the item \"%1\" to %2."
 msgstr "Koe it item net nei %1 kopiearje."
 
-#: calendarview.cpp:1476 calendarview.cpp:2457
+#: calendarview.cpp:1476 calendarview.cpp:2459
 #, fuzzy, kde-format
 #| msgid "Copying Failed"
 msgctxt "@title:window"
@@ -1495,7 +1495,7 @@ msgid ""
 "of this item has been put into %2"
 msgstr ""
 
-#: calendarview.cpp:1539 calendarview.cpp:1555 calendarview.cpp:2492
+#: calendarview.cpp:1539 calendarview.cpp:1555 calendarview.cpp:2494
 #, fuzzy, kde-format
 #| msgid "Moving Failed"
 msgctxt "@title:window"
@@ -1724,37 +1724,37 @@ msgstr "&Alles wiskje"
 msgid "Delete \"%1\""
 msgstr "%1 wiskje"
 
-#: calendarview.cpp:2422
+#: calendarview.cpp:2424
 #, kde-format
 msgid ""
 "All calendars are unchecked in the Calendar Manager. No to-do was purged."
 msgstr ""
 
-#: calendarview.cpp:2427 calendarview.cpp:2709
+#: calendarview.cpp:2429 calendarview.cpp:2711
 #, fuzzy, kde-format
 #| msgid "Strike &out completed to-do summaries"
 msgid "There are no completed to-dos to purge."
 msgstr "Dienmakke taakgearfettingen tr&ochstreekje"
 
-#: calendarview.cpp:2432
+#: calendarview.cpp:2434
 #, fuzzy, kde-format
 #| msgid "Delete all completed to-dos?"
 msgid "Delete all completed to-dos from checked calendars?"
 msgstr "Alle dien makke taken wiskje?"
 
-#: calendarview.cpp:2433
+#: calendarview.cpp:2435
 #, fuzzy, kde-format
 #| msgid "Purge To-dos"
 msgctxt "@title:window"
 msgid "Purge To-dos"
 msgstr "Taken oprêde"
 
-#: calendarview.cpp:2434
+#: calendarview.cpp:2436
 #, kde-format
 msgid "Purge"
 msgstr "Wiskje"
 
-#: calendarview.cpp:2445
+#: calendarview.cpp:2447
 #, fuzzy, kde-format
 #| msgid "Unable to edit item: it is locked by another process."
 msgctxt "@info"
@@ -1762,24 +1762,24 @@ msgid "Unable to edit \"%1\" because it is locked by another process."
 msgstr ""
 "Dit item kin net bewurke wurde. It is ferskoattele troch in oar proses."
 
-#: calendarview.cpp:2457
+#: calendarview.cpp:2459
 #, kde-format
 msgid "Unable to copy the item to %1."
 msgstr "Koe it item net nei %1 kopiearje."
 
-#: calendarview.cpp:2492
+#: calendarview.cpp:2494
 #, fuzzy, kde-format
 #| msgid "Unable to move the item to %1."
 msgid "Unable to move the item to  %1."
 msgstr "It item koe net nei %1 fersetten wurde."
 
-#: calendarview.cpp:2702
+#: calendarview.cpp:2704
 #, fuzzy, kde-format
 #| msgid "Hide co&mpleted to-dos"
 msgid "0 completed to-dos were purged."
 msgstr "Dien makke taken ferber&gje"
 
-#: calendarview.cpp:2703 calendarview.cpp:2713
+#: calendarview.cpp:2705 calendarview.cpp:2715
 #, kde-format
 msgid "%1 to-do was ignored because it has uncompleted or read-only children."
 msgid_plural ""
@@ -1787,7 +1787,7 @@ msgid_plural ""
 msgstr[0] ""
 msgstr[1] ""
 
-#: calendarview.cpp:2707 calendarview.cpp:2712
+#: calendarview.cpp:2709 calendarview.cpp:2714
 #, fuzzy, kde-format
 #| msgid "Hide co&mpleted to-dos"
 msgid "%1 completed to-do was purged."
@@ -1795,20 +1795,20 @@ msgid_plural "%1 completed to-dos were purged."
 msgstr[0] "Dien makke taken ferber&gje"
 msgstr[1] "Dien makke taken ferber&gje"
 
-#: calendarview.cpp:2718
+#: calendarview.cpp:2720
 #, fuzzy, kde-format
 #| msgid "Purging completed to-dos"
 msgid "An error occurred while purging completed to-dos: %1"
 msgstr "Taken dy't dien binne wurde wiske"
 
-#: calendarview.cpp:2772
+#: calendarview.cpp:2774
 #, kde-format
 msgid ""
 "You created an incidence in a calendar that is currently filtered out.\n"
 "On the left sidebar, enable it in the calendar manager to see the incidence."
 msgstr ""
 
-#: calendarview.cpp:2776
+#: calendarview.cpp:2778
 #, kde-format
 msgid ""
 "You created an incidence in a calendar that is currently filtered out.\n"
