@@ -47,6 +47,7 @@
 #include <Akonadi/CollectionMaintenancePage>
 #include <Akonadi/CollectionPropertiesDialog>
 #include <Akonadi/ControlGui>
+#include <Akonadi/EntityTreeModel>
 
 #include <CalendarSupport/CalPrinter>
 #include <CalendarSupport/CalendarSingleton>
@@ -285,6 +286,9 @@ CalendarView::~CalendarView()
 {
     mCalendar->unregisterObserver(this);
     mCalendar->setFilter(nullptr); // So calendar doesn't deleted it twice
+    forEachCalendar([](auto calendar) {
+        calendar->setFilter(nullptr);
+    });
     qDeleteAll(mFilters);
     qDeleteAll(mExtensions);
 
@@ -326,8 +330,24 @@ Akonadi::CollectionCalendar::Ptr CalendarView::calendarForCollection(const Akona
     }
 
     const auto calendar = Akonadi::CollectionCalendar::Ptr::create(eventsModel(), collection);
+    calendar->setFilter(mCurrentFilter);
     mCalendars.emplace_back(calendar);
     return calendar;
+}
+
+void CalendarView::forEachCalendar(std::function<void(Akonadi::CollectionCalendar::Ptr)> func)
+{
+    auto it = mCalendars.begin();
+    while (it != mCalendars.end()) {
+        auto collection = it->lock();
+        if (!collection) {
+            it = mCalendars.erase(it);
+            continue;
+        }
+
+        func(collection);
+        ++it;
+    }
 }
 
 QDate CalendarView::activeDate(bool fallbackToToday)
@@ -734,7 +754,7 @@ void CalendarView::updateView(const QDate &start, const QDate &end, const QDate 
 {
     const bool currentViewIsTodoView = mViewManager->currentView()->identifier() == "DefaultTodoView";
 
-    if (updateTodos && !currentViewIsTodoView && mTodoList->isVisible()) {
+    if (updateTodos && mTodoList->isVisible()) {
         // Update the sidepane todoView
         mTodoList->updateView();
     }
@@ -1934,6 +1954,9 @@ void CalendarView::updateFilter()
     Q_EMIT filtersUpdated(filters, pos + 1);
 
     mCalendar->setFilter(mCurrentFilter);
+    forEachCalendar([this](auto calendar) {
+        calendar->setFilter(mCurrentFilter);
+    });
 }
 
 void CalendarView::filterActivated(int filterNo)
@@ -1945,6 +1968,9 @@ void CalendarView::filterActivated(int filterNo)
     if (newFilter != mCurrentFilter) {
         mCurrentFilter = newFilter;
         mCalendar->setFilter(mCurrentFilter);
+        forEachCalendar([this](auto calendar) {
+            calendar->setFilter(mCurrentFilter);
+        });
         mViewManager->addChange(EventViews::EventView::FilterChanged);
         updateView();
     }
@@ -2001,6 +2027,9 @@ void CalendarView::showDateNavigator(bool show)
 void CalendarView::showTodoView(bool show)
 {
     if (show) {
+        if (!mTodoList->model()) {
+            mTodoList->setModel(mCalendar->entityTreeModel());
+        }
         mTodoList->show();
         mTodoList->updateView();
     } else {
@@ -2600,6 +2629,7 @@ void CalendarView::collectionDeselected(const Akonadi::Collection &collection)
     }
 
     const auto calendar = *calendarIt;
+    calendar->setFilter(nullptr);
     mEnabledCalendars.removeOne(calendar);
     mDateNavigatorContainer->removeCalendar(calendar);
     Q_EMIT calendarRemoved(calendar);
