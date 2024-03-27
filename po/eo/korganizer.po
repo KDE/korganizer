@@ -7,7 +7,7 @@ msgid ""
 msgstr ""
 "Project-Id-Version: korganizer\n"
 "Report-Msgid-Bugs-To: https://bugs.kde.org\n"
-"POT-Creation-Date: 2024-03-13 02:23+0000\n"
+"POT-Creation-Date: 2024-03-27 02:52+0000\n"
 "PO-Revision-Date: 2024-01-05 21:02+0100\n"
 "Last-Translator: Oliver Kellogg <okellogg@users.sourceforge.net>\n"
 "Language-Team: esperanto <kde-i18n-eo@kde.org>\n"
@@ -1325,7 +1325,7 @@ msgctxt "@title:window"
 msgid "Delete Calendar"
 msgstr "Forigi Kalendaron"
 
-#: calendarview.cpp:241
+#: calendarview.cpp:242
 #, kde-format
 msgid ""
 "<p><em>No Item Selected</em></p><p>Select an event, to-do or journal entry "
@@ -1334,7 +1334,7 @@ msgstr ""
 "<p><em>Neniu Elektita Ero</em></p><p>Elektu eventon, faron aŭ taglibran "
 "enskribon por vidi ĝiajn detalojn ĉi tie.</p>"
 
-#: calendarview.cpp:247
+#: calendarview.cpp:248
 #, kde-format
 msgid ""
 "View the details of events, journal entries or to-dos selected in "
@@ -1343,17 +1343,17 @@ msgstr ""
 "Rigardu la detalojn de eventoj, taglibraj enskriboj aŭ farendoj elektitaj en "
 "la ĉefa vido de KOrganizer ĉi tie."
 
-#: calendarview.cpp:626
+#: calendarview.cpp:646
 #, kde-format
 msgid "Todo completed: %1 (%2)"
 msgstr "Ĉio finita: %1 (%2)"
 
-#: calendarview.cpp:635
+#: calendarview.cpp:655
 #, kde-format
 msgid "Journal of %1"
 msgstr "Revuo de %1"
 
-#: calendarview.cpp:684
+#: calendarview.cpp:704
 #, kde-format
 msgid ""
 "The item \"%1\" is filtered by your current filter rules, so it will be "
@@ -1362,63 +1362,63 @@ msgstr ""
 "La elemento \"%1\" estas filtrita de viaj nunaj filtrilaj reguloj, do ĝi "
 "estos kaŝita kaj ne aperos en la vido."
 
-#: calendarview.cpp:753
+#: calendarview.cpp:773
 #, kde-format
 msgctxt "@info"
 msgid "Do you really want to permanently remove the item \"%1\"?"
 msgstr "Ĉu vi vere volas por ĉiam forigi la eron \"%1\"?"
 
-#: calendarview.cpp:754
+#: calendarview.cpp:774
 #, kde-format
 msgctxt "@title:window"
 msgid "Delete Item?"
 msgstr "Ĉu forigi eron?"
 
-#: calendarview.cpp:829
+#: calendarview.cpp:849
 #, kde-format
 msgid "Paste failed: unable to determine a valid target date."
 msgstr "Alglui malsukcesis: ne eblas determini validan celdaton."
 
-#: calendarview.cpp:1259
+#: calendarview.cpp:1279
 #, kde-format
 msgid "Make sub-to-dos independent"
 msgstr "Igi subfarojn sendependaj"
 
-#: calendarview.cpp:1316
+#: calendarview.cpp:1336
 #, kde-format
 msgid "Toggle Reminder"
 msgstr "Baskuligi Rememorigilon"
 
-#: calendarview.cpp:1348 calendarview.cpp:1400
+#: calendarview.cpp:1368 calendarview.cpp:1420
 #, kde-format
 msgid "Toggle To-do Completed"
 msgstr "Baskuligi Farendon Plenumita"
 
-#: calendarview.cpp:1452
+#: calendarview.cpp:1472
 #, kde-format
 msgctxt "@info"
 msgid "\"%1\" was successfully copied to %2."
 msgstr "\"%1\" sukcese kopiis al %2."
 
-#: calendarview.cpp:1453
+#: calendarview.cpp:1473
 #, kde-format
 msgctxt "@title:window"
 msgid "Copying Succeeded"
 msgstr "Kopiado Sukcesis"
 
-#: calendarview.cpp:1457
+#: calendarview.cpp:1477
 #, kde-format
 msgctxt "@info"
 msgid "Unable to copy the item \"%1\" to %2."
 msgstr "Ne eblas kopii la eron \"%1\" al %2."
 
-#: calendarview.cpp:1458 calendarview.cpp:2441
+#: calendarview.cpp:1478 calendarview.cpp:2470
 #, kde-format
 msgctxt "@title:window"
 msgid "Copying Failed"
 msgstr "Kopiado Malsukcesis"
 
-#: calendarview.cpp:1517
+#: calendarview.cpp:1537
 #, kde-format
 msgctxt "@info"
 msgid ""
@@ -1428,47 +1428,47 @@ msgstr ""
 "Ne eblas forigi la eron \"%1\" de la originala kalendaro. Tamen kopio de ĉi "
 "tiu ero estis metita en %2"
 
-#: calendarview.cpp:1521 calendarview.cpp:1537 calendarview.cpp:2476
+#: calendarview.cpp:1541 calendarview.cpp:1557 calendarview.cpp:2505
 #, kde-format
 msgctxt "@title:window"
 msgid "Moving Failed"
 msgstr "Movado Malsukcesis"
 
-#: calendarview.cpp:1526
+#: calendarview.cpp:1546
 #, kde-format
 msgctxt "@info"
 msgid "\"%1\" was successfully moved from %2 to %3."
 msgstr "\"%1\" estis sukcese movita de %2 al %3."
 
-#: calendarview.cpp:1527
+#: calendarview.cpp:1547
 #, kde-format
 msgctxt "@title:window"
 msgid "Moving Succeeded"
 msgstr "Movado Sukcesis"
 
-#: calendarview.cpp:1533
+#: calendarview.cpp:1553
 #, kde-format
 msgctxt "@info"
 msgid "Unable to add the item \"%1\" into %2. This item has not been moved."
 msgstr "Ne eblas aldoni la eron \"%1\" en %2. Ĉi tiu aĵo ne estis movita."
 
-#: calendarview.cpp:1571
+#: calendarview.cpp:1591
 #, kde-format
 msgid "Do you want to dissociate the occurrence on %1 from the recurrence?"
 msgstr "Ĉu vi volas apartigi la aperon sur %1 de la ripeto?"
 
-#: calendarview.cpp:1575 calendarview.cpp:1587 calendarview.cpp:2246
+#: calendarview.cpp:1595 calendarview.cpp:1607 calendarview.cpp:2275
 #, kde-format
 msgctxt "@title:window"
 msgid "KOrganizer Confirmation"
 msgstr "Konfirmo de KOrganizer"
 
-#: calendarview.cpp:1576
+#: calendarview.cpp:1596
 #, kde-format
 msgid "&Dissociate"
 msgstr "&Disocigi"
 
-#: calendarview.cpp:1582
+#: calendarview.cpp:1602
 #, kde-format
 msgid ""
 "Do you want to dissociate the occurrence on %1 from the recurrence or also "
@@ -1477,76 +1477,76 @@ msgstr ""
 "Ĉu vi volas malligi la aperon sur %1 de la ripetiĝo aŭ ankaŭ disigi la "
 "estontajn?"
 
-#: calendarview.cpp:1588
+#: calendarview.cpp:1608
 #, kde-format
 msgid "&Only Dissociate This One"
 msgstr "Nur Malas&ocii Tiun"
 
-#: calendarview.cpp:1589
+#: calendarview.cpp:1609
 #, kde-format
 msgid "&Also Dissociate Future Ones"
 msgstr "&Ankaŭ Malasocii Estontecajn"
 
-#: calendarview.cpp:1607
+#: calendarview.cpp:1627
 #, kde-format
 msgid "Dissociate future occurrences"
 msgstr "Malasocii estontajn okazojn"
 
-#: calendarview.cpp:1609
+#: calendarview.cpp:1629
 #, kde-format
 msgid "Dissociate occurrence"
 msgstr "Malasocii okazon"
 
-#: calendarview.cpp:1616
+#: calendarview.cpp:1636
 #, kde-format
 msgid "Dissociating the future occurrences failed."
 msgstr "Malasociiĝo de la estontaj okazoj malsukcesis."
 
-#: calendarview.cpp:1616 calendarview.cpp:1618
+#: calendarview.cpp:1636 calendarview.cpp:1638
 #, kde-format
 msgctxt "@title:window"
 msgid "Dissociating Failed"
 msgstr "Malasociiĝo Malsukcesis"
 
-#: calendarview.cpp:1618
+#: calendarview.cpp:1638
 #, kde-format
 msgid "Dissociating the occurrence failed."
 msgstr "Malasociiĝo de la okazo malsukcesis."
 
-#: calendarview.cpp:1780
+#: calendarview.cpp:1800
 #, kde-format
 msgid "iCalendars (*.ics)"
 msgstr "iCalendars (*.ics)"
 
-#: calendarview.cpp:1789
+#: calendarview.cpp:1809
 #, kde-format
 msgid "Do you want to overwrite %1?"
 msgstr "Ĉu vi volas anstataŭigi %1?"
 
-#: calendarview.cpp:1790
+#: calendarview.cpp:1810
 #, kde-format
 msgctxt "@title:window"
 msgid "Export Calendar"
 msgstr "Eksporti Kalendaron"
 
-#: calendarview.cpp:1804
+#: calendarview.cpp:1824
 #, kde-format
 msgctxt "save failure cause unknown"
 msgid "Reason unknown"
 msgstr "Kialo nekonata"
 
-#: calendarview.cpp:1806
+#: calendarview.cpp:1826
 #, kde-format
 msgctxt "@info"
 msgid "Cannot write iCalendar file %1. %2"
 msgstr "Ne povas skribi iCalendar-dosieron %1. %2"
 
-#: calendarview.cpp:1907 calendarview.cpp:1946
+#: calendarview.cpp:1927 calendarview.cpp:1972
 #, kde-format
 msgid "No filter"
 msgstr "Neniu filtrilo"
 
-#: calendarview.cpp:2241
+#: calendarview.cpp:2270
 #, kde-format
 msgid ""
 "The item \"%1\" has sub-to-dos. Do you want to delete just this item and "
@@ -1557,17 +1557,17 @@ msgstr ""
 "fari ĉiujn ĝiajn subfarendojn sendependaj, aŭ forigi la faron kun ĉiuj ĝiaj "
 "subfaroj?"
 
-#: calendarview.cpp:2247
+#: calendarview.cpp:2276
 #, kde-format
 msgid "Delete Only This"
 msgstr "Forigi Nur Ĉi tiun"
 
-#: calendarview.cpp:2248 calendarview.cpp:2306
+#: calendarview.cpp:2277 calendarview.cpp:2335
 #, kde-format
 msgid "Delete All"
 msgstr "Forigi Ĉiujn"
 
-#: calendarview.cpp:2279
+#: calendarview.cpp:2308
 #, kde-format
 msgid ""
 "The item \"%1\" is marked read-only and cannot be deleted; it probably "
@@ -1576,12 +1576,12 @@ msgstr ""
 "La ero \"%1\" estas markita nurlegebla kaj ne povas esti forigita; ĝi "
 "verŝajne apartenas al nurlegebla kalendaro."
 
-#: calendarview.cpp:2283
+#: calendarview.cpp:2312
 #, kde-format
 msgid "Removing not possible"
 msgstr "Forigo ne eblas"
 
-#: calendarview.cpp:2301
+#: calendarview.cpp:2330
 #, kde-format
 msgid ""
 "The calendar item \"%1\" recurs over multiple dates; are you sure you want "
@@ -1590,17 +1590,17 @@ msgstr ""
 "La kalendara ero \"%1\" ripetiĝas dum pluraj datoj; ĉu vi certas, ke vi "
 "volas forigi ĝin kaj ĉiujn ĝiajn ripetiĝojn?"
 
-#: calendarview.cpp:2305 calendarview.cpp:2335
+#: calendarview.cpp:2334 calendarview.cpp:2364
 #, kde-format
 msgid "KOrganizer Confirmation"
 msgstr "Konfirmo de KOrganizer"
 
-#: calendarview.cpp:2313
+#: calendarview.cpp:2342
 #, kde-format
 msgid "Also Delete &Future"
 msgstr "Ankaŭ Forigi &Estonton"
 
-#: calendarview.cpp:2317
+#: calendarview.cpp:2346
 #, kde-format
 msgid ""
 "The calendar item \"%1\" recurs over multiple dates. Do you want to delete "
@@ -1609,7 +1609,7 @@ msgstr ""
 "La kalendara ero \"%1\" ripetiĝas dum pluraj datoj. Ĉu vi volas forigi nur "
 "la nunan ĉe %2, ankaŭ estontajn apojn, aŭ ĉiujn ĝiajn apojn?"
 
-#: calendarview.cpp:2324
+#: calendarview.cpp:2353
 #, kde-format
 msgid ""
 "The calendar item \"%1\" recurs over multiple dates. Do you want to delete "
@@ -1618,22 +1618,22 @@ msgstr ""
 "La kalendara ero \"%1\" ripetiĝas dum pluraj datoj. Ĉu vi volas forigi nur "
 "la nunan ĉe %2 aŭ ĉiujn ĝiajn apojn?"
 
-#: calendarview.cpp:2336
+#: calendarview.cpp:2365
 #, kde-format
 msgid "Delete C&urrent"
 msgstr "Forigi C&aktualen"
 
-#: calendarview.cpp:2338
+#: calendarview.cpp:2367
 #, kde-format
 msgid "Delete &All"
 msgstr "Forigi &Ĉion"
 
-#: calendarview.cpp:2369 calendarview.cpp:2376
+#: calendarview.cpp:2398 calendarview.cpp:2405
 #, kde-format
 msgid "Delete \"%1\""
 msgstr "Forigi \"%1\""
 
-#: calendarview.cpp:2406
+#: calendarview.cpp:2435
 #, kde-format
 msgid ""
 "All calendars are unchecked in the Calendar Manager. No to-do was purged."
@@ -1641,49 +1641,49 @@ msgstr ""
 "Ĉiuj kalendaroj estas nemarkitaj en la Kalendara Administranto. Neniu faro "
 "estis elpurigita."
 
-#: calendarview.cpp:2411 calendarview.cpp:2693
+#: calendarview.cpp:2440 calendarview.cpp:2723
 #, kde-format
 msgid "There are no completed to-dos to purge."
 msgstr "Ne estas finitaj faroj por purigi."
 
-#: calendarview.cpp:2416
+#: calendarview.cpp:2445
 #, kde-format
 msgid "Delete all completed to-dos from checked calendars?"
 msgstr "Ĉu forigi ĉiujn finitajn farojn el markitaj kalendaroj?"
 
-#: calendarview.cpp:2417
+#: calendarview.cpp:2446
 #, kde-format
 msgctxt "@title:window"
 msgid "Purge To-dos"
 msgstr "Elpurigi Farendojn"
 
-#: calendarview.cpp:2418
+#: calendarview.cpp:2447
 #, kde-format
 msgid "Purge"
 msgstr "Elpurigi"
 
-#: calendarview.cpp:2429
+#: calendarview.cpp:2458
 #, kde-format
 msgctxt "@info"
 msgid "Unable to edit \"%1\" because it is locked by another process."
 msgstr "Ne eblas redakti \"%1\" ĉar ĝi estas ŝlosita de alia procezo."
 
-#: calendarview.cpp:2441
+#: calendarview.cpp:2470
 #, kde-format
 msgid "Unable to copy the item to %1."
 msgstr "Ne eblas kopii la eron al %1."
 
-#: calendarview.cpp:2476
+#: calendarview.cpp:2505
 #, kde-format
 msgid "Unable to move the item to  %1."
 msgstr "Ne eblas movi la eron al %1."
 
-#: calendarview.cpp:2686
+#: calendarview.cpp:2716
 #, kde-format
 msgid "0 completed to-dos were purged."
 msgstr "0 kompletigitaj faroj estis elpurigitaj."
 
-#: calendarview.cpp:2687 calendarview.cpp:2697
+#: calendarview.cpp:2717 calendarview.cpp:2727
 #, kde-format
 msgid "%1 to-do was ignored because it has uncompleted or read-only children."
 msgid_plural ""
@@ -1694,19 +1694,19 @@ msgstr[1] ""
 "%1 farendoj estis ignoritaj ĉar ili havas nekompletajn aŭ nurlegeblajn "
 "infanojn"
 
-#: calendarview.cpp:2691 calendarview.cpp:2696
+#: calendarview.cpp:2721 calendarview.cpp:2726
 #, kde-format
 msgid "%1 completed to-do was purged."
 msgid_plural "%1 completed to-dos were purged."
 msgstr[0] "%1 plenumita farendo estis forigita."
 msgstr[1] "%1 plenumitaj farendoj estis forigitaj."
 
-#: calendarview.cpp:2702
+#: calendarview.cpp:2732
 #, kde-format
 msgid "An error occurred while purging completed to-dos: %1"
 msgstr "Okazis eraro dum purigado de finitaj faroj: %1"
 
-#: calendarview.cpp:2756
+#: calendarview.cpp:2786
 #, kde-format
 msgid ""
 "You created an incidence in a calendar that is currently filtered out.\n"
@@ -1716,7 +1716,7 @@ msgstr ""
 "Sur la maldekstra flanka kolumno, ebligu ĝin en la kalendara administranto "
 "por vidi la okazaĵon."
 
-#: calendarview.cpp:2760
+#: calendarview.cpp:2790
 #, kde-format
 msgid ""
 "You created an incidence in a calendar that is currently filtered out.\n"

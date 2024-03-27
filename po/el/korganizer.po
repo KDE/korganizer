@@ -15,7 +15,7 @@ msgid ""
 msgstr ""
 "Project-Id-Version: korganizer\n"
 "Report-Msgid-Bugs-To: https://bugs.kde.org\n"
-"POT-Creation-Date: 2024-03-13 02:23+0000\n"
+"POT-Creation-Date: 2024-03-27 02:52+0000\n"
 "PO-Revision-Date: 2021-11-06 10:56+0200\n"
 "Last-Translator: Stelios <sstavra@gmail.com>\n"
 "Language-Team: Greek <kde-i18n-el@kde.org>\n"
@@ -1357,7 +1357,7 @@ msgctxt "@title:window"
 msgid "Delete Calendar"
 msgstr "Διαγραφή του ημερολογίου"
 
-#: calendarview.cpp:241
+#: calendarview.cpp:242
 #, kde-format
 msgid ""
 "<p><em>No Item Selected</em></p><p>Select an event, to-do or journal entry "
@@ -1367,7 +1367,7 @@ msgstr ""
 "υλοποίηση εργασία ή μια καταχώρηση χρονικού για να δείτε εδώ τις "
 "λεπτομέρειές του.</p>"
 
-#: calendarview.cpp:247
+#: calendarview.cpp:248
 #, kde-format
 msgid ""
 "View the details of events, journal entries or to-dos selected in "
@@ -1376,17 +1376,17 @@ msgstr ""
 "Κύρια προβολή εδώ του KOrganizer για λεπτομέρειες των γεγονότων, των "
 "καταχωρήσεων χρονικού ή των προς υλοποίηση εργασιών."
 
-#: calendarview.cpp:626
+#: calendarview.cpp:646
 #, kde-format
 msgid "Todo completed: %1 (%2)"
 msgstr "Ολοκληρωμένα προς υλοποίηση: %1 (%2)"
 
-#: calendarview.cpp:635
+#: calendarview.cpp:655
 #, kde-format
 msgid "Journal of %1"
 msgstr "Χρονικό του %1"
 
-#: calendarview.cpp:684
+#: calendarview.cpp:704
 #, kde-format
 msgid ""
 "The item \"%1\" is filtered by your current filter rules, so it will be "
@@ -1395,64 +1395,64 @@ msgstr ""
 "Το αντικείμενο \"%1\" φιλτράρεται από τους τρέχοντες κανόνες σας φίλτρου, "
 "γι' αυτό θα είναι κρυφό και δε θα εμφανίζεται στην προβολή."
 
-#: calendarview.cpp:753
+#: calendarview.cpp:773
 #, kde-format
 msgctxt "@info"
 msgid "Do you really want to permanently remove the item \"%1\"?"
 msgstr "Επιθυμείτε πραγματικά την αφαίρεση του αντικειμένου με όνομα \"%1\";"
 
-#: calendarview.cpp:754
+#: calendarview.cpp:774
 #, kde-format
 msgctxt "@title:window"
 msgid "Delete Item?"
 msgstr "Διαγραφή αντικειμένου;"
 
-#: calendarview.cpp:829
+#: calendarview.cpp:849
 #, kde-format
 msgid "Paste failed: unable to determine a valid target date."
 msgstr "Η επικόλληση απέτυχε: αδυναμία προσδιορισμού μία έγκυρης ημερομηνίας."
 
-#: calendarview.cpp:1259
+#: calendarview.cpp:1279
 #, kde-format
 msgid "Make sub-to-dos independent"
 msgstr "Κάνε τις υποεργασίες προς υλοποίηση ανεξάρτητες"
 
-#: calendarview.cpp:1316
+#: calendarview.cpp:1336
 #, kde-format
 msgid "Toggle Reminder"
 msgstr "Εναλλαγή υπενθύμισης"
 
 # Στο ημερολόγιο, δεξί κλικ, εναλλαγή μιας εργασίας σε ολοκληρωμένη, και αν είναι ήδη ολοκληρωμένη την σημειώνει προς υλοποίηση.
-#: calendarview.cpp:1348 calendarview.cpp:1400
+#: calendarview.cpp:1368 calendarview.cpp:1420
 #, kde-format
 msgid "Toggle To-do Completed"
 msgstr "Εναλλαγή ολοκλήρωσης για τις προς υλοποίηση εργασίες"
 
-#: calendarview.cpp:1452
+#: calendarview.cpp:1472
 #, kde-format
 msgctxt "@info"
 msgid "\"%1\" was successfully copied to %2."
 msgstr "Το \"%1\" αντιγράφτηκε στο %2 με επιτυχία."
 
-#: calendarview.cpp:1453
+#: calendarview.cpp:1473
 #, kde-format
 msgctxt "@title:window"
 msgid "Copying Succeeded"
 msgstr "Η αντιγραφή ολοκληρώθηκε με επιτυχία"
 
-#: calendarview.cpp:1457
+#: calendarview.cpp:1477
 #, kde-format
 msgctxt "@info"
 msgid "Unable to copy the item \"%1\" to %2."
 msgstr "Αδυναμία αντιγραφής του αντικειμένου \"%1\" στο %2."
 
-#: calendarview.cpp:1458 calendarview.cpp:2441
+#: calendarview.cpp:1478 calendarview.cpp:2470
 #, kde-format
 msgctxt "@title:window"
 msgid "Copying Failed"
 msgstr "Η αντιγραφή απέτυχε"
 
-#: calendarview.cpp:1517
+#: calendarview.cpp:1537
 #, fuzzy, kde-format
 #| msgctxt "@info"
 #| msgid ""
@@ -1466,25 +1466,25 @@ msgstr ""
 "Αδυναμία διαγραφής του αντικειμένου \"%1\" από το %2. Εντούτοις, ένα "
 "αντίγραφο του αντικειμένου υπάρχει στο %3."
 
-#: calendarview.cpp:1521 calendarview.cpp:1537 calendarview.cpp:2476
+#: calendarview.cpp:1541 calendarview.cpp:1557 calendarview.cpp:2505
 #, kde-format
 msgctxt "@title:window"
 msgid "Moving Failed"
 msgstr "Η μετακίνηση απέτυχε"
 
-#: calendarview.cpp:1526
+#: calendarview.cpp:1546
 #, kde-format
 msgctxt "@info"
 msgid "\"%1\" was successfully moved from %2 to %3."
 msgstr "Το \"%1\" μετακινήθηκε από το %2 στο %3 με επιτυχία."
 
-#: calendarview.cpp:1527
+#: calendarview.cpp:1547
 #, kde-format
 msgctxt "@title:window"
 msgid "Moving Succeeded"
 msgstr "Η μετακίνηση ολοκληρώθηκε με επιτυχία"
 
-#: calendarview.cpp:1533
+#: calendarview.cpp:1553
 #, kde-format
 msgctxt "@info"
 msgid "Unable to add the item \"%1\" into %2. This item has not been moved."
@@ -1492,25 +1492,25 @@ msgstr ""
 "Αδυναμία προσθήκης του αντικειμένου \"%1% στο %2. Το αντικείμενο δε "
 "μετακινήθηκε.."
 
-#: calendarview.cpp:1571
+#: calendarview.cpp:1591
 #, kde-format
 msgid "Do you want to dissociate the occurrence on %1 from the recurrence?"
 msgstr ""
 "Επιθυμείτε τον διαχωρισμό της εμφάνισης στις %1 από την συχνότητα της "
 "επανάληψής της;"
 
-#: calendarview.cpp:1575 calendarview.cpp:1587 calendarview.cpp:2246
+#: calendarview.cpp:1595 calendarview.cpp:1607 calendarview.cpp:2275
 #, kde-format
 msgctxt "@title:window"
 msgid "KOrganizer Confirmation"
 msgstr "Επιβεβαίωση KOrganizer"
 
-#: calendarview.cpp:1576
+#: calendarview.cpp:1596
 #, kde-format
 msgid "&Dissociate"
 msgstr "&Διαχωρισμός"
 
-#: calendarview.cpp:1582
+#: calendarview.cpp:1602
 #, kde-format
 msgid ""
 "Do you want to dissociate the occurrence on %1 from the recurrence or also "
@@ -1519,77 +1519,77 @@ msgstr ""
 "Επιθυμείτε την ο διαχωρισμό της εμφάνισης στις %1 από την επανάληψη ή επίσης "
 "το διαχωρισμό και όλων των μελλοντικών επαναλήψεων;"
 
-#: calendarview.cpp:1588
+#: calendarview.cpp:1608
 #, kde-format
 msgid "&Only Dissociate This One"
 msgstr "&Διαχωρισμός μόνο αυτής της εμφάνισης"
 
-#: calendarview.cpp:1589
+#: calendarview.cpp:1609
 #, kde-format
 msgid "&Also Dissociate Future Ones"
 msgstr "&Διαχωρισμός και μελλοντικών εμφανίσεων"
 
-#: calendarview.cpp:1607
+#: calendarview.cpp:1627
 #, kde-format
 msgid "Dissociate future occurrences"
 msgstr "Διαχωρισμός μελλοντικών εμφανίσεων"
 
-#: calendarview.cpp:1609
+#: calendarview.cpp:1629
 #, kde-format
 msgid "Dissociate occurrence"
 msgstr "Διαχωρισμός εμφάνισης"
 
-#: calendarview.cpp:1616
+#: calendarview.cpp:1636
 #, kde-format
 msgid "Dissociating the future occurrences failed."
 msgstr "Αποτυχία διαχωρισμού των μελλοντικών εμφανίσεων."
 
-#: calendarview.cpp:1616 calendarview.cpp:1618
+#: calendarview.cpp:1636 calendarview.cpp:1638
 #, fuzzy, kde-format
 #| msgid "Dissociating Failed"
 msgctxt "@title:window"
 msgid "Dissociating Failed"
 msgstr "Ο διαχωρισμός απέτυχε"
 
-#: calendarview.cpp:1618
+#: calendarview.cpp:1638
 #, kde-format
 msgid "Dissociating the occurrence failed."
 msgstr "Αποτυχία διαχωρισμού της εμφάνισης."
 
-#: calendarview.cpp:1780
+#: calendarview.cpp:1800
 #, kde-format
 msgid "iCalendars (*.ics)"
 msgstr "iCalendars (*.ics)"
 
-#: calendarview.cpp:1789
+#: calendarview.cpp:1809
 #, kde-format
 msgid "Do you want to overwrite %1?"
 msgstr "Επιθυμείτε την αντικατάσταση του %1;"
 
-#: calendarview.cpp:1790
+#: calendarview.cpp:1810
 #, kde-format
 msgctxt "@title:window"
 msgid "Export Calendar"
 msgstr "Εξαγωγή ημερολογίου"
 
-#: calendarview.cpp:1804
+#: calendarview.cpp:1824
 #, kde-format
 msgctxt "save failure cause unknown"
 msgid "Reason unknown"
 msgstr "Άγνωστη αιτία"
 
-#: calendarview.cpp:1806
+#: calendarview.cpp:1826
 #, kde-format
 msgctxt "@info"
 msgid "Cannot write iCalendar file %1. %2"
 msgstr "Αδυναμία εγγραφής στο αρχείο iCalendar %1. %2"
 
-#: calendarview.cpp:1907 calendarview.cpp:1946
+#: calendarview.cpp:1927 calendarview.cpp:1972
 #, kde-format
 msgid "No filter"
 msgstr "Κανένα φίλτρο"
 
-#: calendarview.cpp:2241
+#: calendarview.cpp:2270
 #, kde-format
 msgid ""
 "The item \"%1\" has sub-to-dos. Do you want to delete just this item and "
@@ -1600,17 +1600,17 @@ msgstr ""
 "αντικειμένου και τη μετατροπή των υποεργασιών προς υλοποίηση σε ανεξάρτητες, "
 "ή διαγραφή της προς υλοποίηση εργασίας και όλων των υποεργασιών της;"
 
-#: calendarview.cpp:2247
+#: calendarview.cpp:2276
 #, kde-format
 msgid "Delete Only This"
 msgstr "Διαγραφή μόνο αυτού"
 
-#: calendarview.cpp:2248 calendarview.cpp:2306
+#: calendarview.cpp:2277 calendarview.cpp:2335
 #, kde-format
 msgid "Delete All"
 msgstr "Διαγραφή όλων"
 
-#: calendarview.cpp:2279
+#: calendarview.cpp:2308
 #, kde-format
 msgid ""
 "The item \"%1\" is marked read-only and cannot be deleted; it probably "
@@ -1620,12 +1620,12 @@ msgstr ""
 "διαγραφεί: πιθανότατα ανήκει σε έναν πόρο ημερολογίου που είναι μόνο για "
 "ανάγνωση."
 
-#: calendarview.cpp:2283
+#: calendarview.cpp:2312
 #, kde-format
 msgid "Removing not possible"
 msgstr "Αδυναμία αφαίρεσης"
 
-#: calendarview.cpp:2301
+#: calendarview.cpp:2330
 #, kde-format
 msgid ""
 "The calendar item \"%1\" recurs over multiple dates; are you sure you want "
@@ -1635,17 +1635,17 @@ msgstr ""
 "Είστε σίγουροι ότι θέλετε να διαγράψετε αυτό καθώς και όλες τις επαναλήψεις "
 "του;"
 
-#: calendarview.cpp:2305 calendarview.cpp:2335
+#: calendarview.cpp:2334 calendarview.cpp:2364
 #, kde-format
 msgid "KOrganizer Confirmation"
 msgstr "KOrganizer επιβεβαίωση"
 
-#: calendarview.cpp:2313
+#: calendarview.cpp:2342
 #, kde-format
 msgid "Also Delete &Future"
 msgstr "Διαγραφή και &μελλοντικών"
 
-#: calendarview.cpp:2317
+#: calendarview.cpp:2346
 #, kde-format
 msgid ""
 "The calendar item \"%1\" recurs over multiple dates. Do you want to delete "
@@ -1655,7 +1655,7 @@ msgstr ""
 "Επιθυμείτε την διαγραφή μόνο της τρέχουσας επανάληψής του την %2, και τις "
 "μελλοντικές επαναλήψεις, ή όλες τις επαναλήψεις του;"
 
-#: calendarview.cpp:2324
+#: calendarview.cpp:2353
 #, kde-format
 msgid ""
 "The calendar item \"%1\" recurs over multiple dates. Do you want to delete "
@@ -1665,22 +1665,22 @@ msgstr ""
 "Επιθυμείτε την διαγραφή μόνο της τρέχουσας επανάληψής του την %2, ή όλες τις "
 "επαναλήψεις του;"
 
-#: calendarview.cpp:2336
+#: calendarview.cpp:2365
 #, kde-format
 msgid "Delete C&urrent"
 msgstr "Διαγραφή τρέ&χουσας"
 
-#: calendarview.cpp:2338
+#: calendarview.cpp:2367
 #, kde-format
 msgid "Delete &All"
 msgstr "Δι&αγραφή όλων"
 
-#: calendarview.cpp:2369 calendarview.cpp:2376
+#: calendarview.cpp:2398 calendarview.cpp:2405
 #, kde-format
 msgid "Delete \"%1\""
 msgstr "Διαγραφή «%1»"
 
-#: calendarview.cpp:2406
+#: calendarview.cpp:2435
 #, kde-format
 msgid ""
 "All calendars are unchecked in the Calendar Manager. No to-do was purged."
@@ -1688,52 +1688,52 @@ msgstr ""
 "Κανένα ημερολόγιο δεν είναι επιλεγμένο στον Διαχειριστή ημερολογίων. Καμία "
 "εργασία προς υλοποίηση δεν εκκαθαρίστηκε."
 
-#: calendarview.cpp:2411 calendarview.cpp:2693
+#: calendarview.cpp:2440 calendarview.cpp:2723
 #, kde-format
 msgid "There are no completed to-dos to purge."
 msgstr ""
 "Δεν υπάρχουν ολοκληρωμένες εργασίες προς υλοποίηση για να εκκαθαριστούν."
 
-#: calendarview.cpp:2416
+#: calendarview.cpp:2445
 #, kde-format
 msgid "Delete all completed to-dos from checked calendars?"
 msgstr "Διαγραφή όλων των ολοκληρωμένων προς υλοποίηση εργασιών;"
 
-#: calendarview.cpp:2417
+#: calendarview.cpp:2446
 #, fuzzy, kde-format
 #| msgid "Purge To-dos"
 msgctxt "@title:window"
 msgid "Purge To-dos"
 msgstr "Καθαρισμός των προς υλοποίηση εργασιών"
 
-#: calendarview.cpp:2418
+#: calendarview.cpp:2447
 #, kde-format
 msgid "Purge"
 msgstr "Καθαρισμός"
 
-#: calendarview.cpp:2429
+#: calendarview.cpp:2458
 #, kde-format
 msgctxt "@info"
 msgid "Unable to edit \"%1\" because it is locked by another process."
 msgstr ""
 "Αδυναμία επεξεργασίας \"%1\", διότι είναι κλειδωμένο από μια άλλη διεργασία."
 
-#: calendarview.cpp:2441
+#: calendarview.cpp:2470
 #, kde-format
 msgid "Unable to copy the item to %1."
 msgstr "Αδυναμία αντιγραφής του αντικειμένου στο %1."
 
-#: calendarview.cpp:2476
+#: calendarview.cpp:2505
 #, kde-format
 msgid "Unable to move the item to  %1."
 msgstr "Αδυναμία μετακίνησης του αντικειμένου στο %1."
 
-#: calendarview.cpp:2686
+#: calendarview.cpp:2716
 #, kde-format
 msgid "0 completed to-dos were purged."
 msgstr "0 ολοκληρωμένες εργασίες προς υλοποίηση εκκαθαρίστηκαν."
 
-#: calendarview.cpp:2687 calendarview.cpp:2697
+#: calendarview.cpp:2717 calendarview.cpp:2727
 #, kde-format
 msgid "%1 to-do was ignored because it has uncompleted or read-only children."
 msgid_plural ""
@@ -1745,21 +1745,21 @@ msgstr[1] ""
 "%1 εργασίες προς υλοποίηση αγνοήθηκαν γιατί έχουν ανολοκλήρωτους ή απογόνους "
 "μόνο για ανάγνωση."
 
-#: calendarview.cpp:2691 calendarview.cpp:2696
+#: calendarview.cpp:2721 calendarview.cpp:2726
 #, kde-format
 msgid "%1 completed to-do was purged."
 msgid_plural "%1 completed to-dos were purged."
 msgstr[0] "%1 ολοκληρωμένη εργασία προς υλοποίηση εκκαθαρίστηκε."
 msgstr[1] "%1 ολοκληρωμένες εργασίες προς υλοποίηση εκκαθαρίστηκαν."
 
-#: calendarview.cpp:2702
+#: calendarview.cpp:2732
 #, kde-format
 msgid "An error occurred while purging completed to-dos: %1"
 msgstr ""
 "Παρουσιάστηκε σφάλμα κατά τον καθαρισμό των ολοκληρωμένων εργασιών προς "
 "υλοποίηση: %1"
 
-#: calendarview.cpp:2756
+#: calendarview.cpp:2786
 #, kde-format
 msgid ""
 "You created an incidence in a calendar that is currently filtered out.\n"
@@ -1770,7 +1770,7 @@ msgstr ""
 "Στην αριστερή πλευρική μπάρα, ενεργοποιήστε το στον διαχειριστή ημερολογίων "
 "για να δείτε το συμβάν."
 
-#: calendarview.cpp:2760
+#: calendarview.cpp:2790
 #, kde-format
 msgid ""
 "You created an incidence in a calendar that is currently filtered out.\n"
