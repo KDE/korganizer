@@ -7,7 +7,7 @@ msgid ""
 msgstr ""
 "Project-Id-Version: KDE 4.3\n"
 "Report-Msgid-Bugs-To: https://bugs.kde.org\n"
-"POT-Creation-Date: 2024-03-26 00:38+0000\n"
+"POT-Creation-Date: 2024-03-27 00:38+0000\n"
 "PO-Revision-Date: 2024-03-22 10:20+0100\n"
 "Last-Translator: Kristof Kiszel <ulysses@fsf.hu>\n"
 "Language-Team: Hungarian <kde-l10n-hu@kde.org>\n"
@@ -1349,7 +1349,7 @@ msgctxt "@title:window"
 msgid "Delete Calendar"
 msgstr "Naptár törlése"
 
-#: calendarview.cpp:248
+#: calendarview.cpp:249
 #, kde-format
 msgid ""
 "<p><em>No Item Selected</em></p><p>Select an event, to-do or journal entry "
@@ -1358,7 +1358,7 @@ msgstr ""
 "<p><em>Egy elem sincs kijelölve</em></p><p>Ha kijelöl egy eseményt, "
 "feladatot vagy naplóbejegyzést, akkor itt jelennek meg annak részletei.</p>"
 
-#: calendarview.cpp:254
+#: calendarview.cpp:255
 #, kde-format
 msgid ""
 "View the details of events, journal entries or to-dos selected in "
@@ -1367,17 +1367,17 @@ msgstr ""
 "Itt lehet megnézni a KOrganizer fő nézetében kijelölt események, "
 "naplóbejegyzések és feladatok részleteit."
 
-#: calendarview.cpp:644
+#: calendarview.cpp:664
 #, kde-format
 msgid "Todo completed: %1 (%2)"
 msgstr "Feladat befejezve: %1 (%2)"
 
-#: calendarview.cpp:653
+#: calendarview.cpp:673
 #, kde-format
 msgid "Journal of %1"
 msgstr "Napló - %1"
 
-#: calendarview.cpp:702
+#: calendarview.cpp:722
 #, kde-format
 msgid ""
 "The item \"%1\" is filtered by your current filter rules, so it will be "
@@ -1386,63 +1386,63 @@ msgstr ""
 "A(z) „%1” elem beleesik az aktuális szűrőbe, ezért el lesz rejtve, nem "
 "jelenik meg a nézetben."
 
-#: calendarview.cpp:771
+#: calendarview.cpp:791
 #, kde-format
 msgctxt "@info"
 msgid "Do you really want to permanently remove the item \"%1\"?"
 msgstr "Biztos benne, hogy véglegesen törli a(z) „%1” elemet?"
 
-#: calendarview.cpp:772
+#: calendarview.cpp:792
 #, kde-format
 msgctxt "@title:window"
 msgid "Delete Item?"
 msgstr "Törli az elemet?"
 
-#: calendarview.cpp:847
+#: calendarview.cpp:867
 #, kde-format
 msgid "Paste failed: unable to determine a valid target date."
 msgstr "Beillesztés nem sikerült: nem határozható meg érvényes céldátum."
 
-#: calendarview.cpp:1277
+#: calendarview.cpp:1297
 #, kde-format
 msgid "Make sub-to-dos independent"
 msgstr "A részfeladatok önállóvá tétele"
 
-#: calendarview.cpp:1334
+#: calendarview.cpp:1354
 #, kde-format
 msgid "Toggle Reminder"
 msgstr "Emlékeztető ki-be"
 
-#: calendarview.cpp:1366 calendarview.cpp:1418
+#: calendarview.cpp:1386 calendarview.cpp:1438
 #, kde-format
 msgid "Toggle To-do Completed"
 msgstr "Befejezett feladatok ki-be"
 
-#: calendarview.cpp:1470
+#: calendarview.cpp:1490
 #, kde-format
 msgctxt "@info"
 msgid "\"%1\" was successfully copied to %2."
 msgstr "„%1” sikeresen átmásolva ide: %2."
 
-#: calendarview.cpp:1471
+#: calendarview.cpp:1491
 #, kde-format
 msgctxt "@title:window"
 msgid "Copying Succeeded"
 msgstr "A másolás sikerült"
 
-#: calendarview.cpp:1475
+#: calendarview.cpp:1495
 #, kde-format
 msgctxt "@info"
 msgid "Unable to copy the item \"%1\" to %2."
 msgstr "Nem sikerült átmásolni a(z) „%1” elemet ide: %2."
 
-#: calendarview.cpp:1476 calendarview.cpp:2459
+#: calendarview.cpp:1496 calendarview.cpp:2488
 #, kde-format
 msgctxt "@title:window"
 msgid "Copying Failed"
 msgstr "A másolás nem sikerült"
 
-#: calendarview.cpp:1535
+#: calendarview.cpp:1555
 #, fuzzy, kde-format
 #| msgctxt "@info"
 #| msgid ""
@@ -1456,25 +1456,25 @@ msgstr ""
 "Nem lehet eltávolítani a(z) „%1” elemet ebből: %2. Azonban az elem másolata "
 "bekerült ide: %3,"
 
-#: calendarview.cpp:1539 calendarview.cpp:1555 calendarview.cpp:2494
+#: calendarview.cpp:1559 calendarview.cpp:1575 calendarview.cpp:2523
 #, kde-format
 msgctxt "@title:window"
 msgid "Moving Failed"
 msgstr "Az áthelyezés nem sikerült"
 
-#: calendarview.cpp:1544
+#: calendarview.cpp:1564
 #, kde-format
 msgctxt "@info"
 msgid "\"%1\" was successfully moved from %2 to %3."
 msgstr "„%1” sikeresen áthelyezve innen: %2 ide: %3."
 
-#: calendarview.cpp:1545
+#: calendarview.cpp:1565
 #, kde-format
 msgctxt "@title:window"
 msgid "Moving Succeeded"
 msgstr "Az áthelyezés sikerült"
 
-#: calendarview.cpp:1551
+#: calendarview.cpp:1571
 #, kde-format
 msgctxt "@info"
 msgid "Unable to add the item \"%1\" into %2. This item has not been moved."
@@ -1482,23 +1482,23 @@ msgstr ""
 "Nem lehet hozzáadni a(z) „%1” elemet ehhez: %2. Ez az elem nem lett "
 "áthelyezve."
 
-#: calendarview.cpp:1589
+#: calendarview.cpp:1609
 #, kde-format
 msgid "Do you want to dissociate the occurrence on %1 from the recurrence?"
 msgstr "Le akarja választani az ismétlődésről a(z) %1 napi előfordulást?"
 
-#: calendarview.cpp:1593 calendarview.cpp:1605 calendarview.cpp:2264
+#: calendarview.cpp:1613 calendarview.cpp:1625 calendarview.cpp:2293
 #, kde-format
 msgctxt "@title:window"
 msgid "KOrganizer Confirmation"
 msgstr "KOrganizer jóváhagyás"
 
-#: calendarview.cpp:1594
+#: calendarview.cpp:1614
 #, kde-format
 msgid "&Dissociate"
 msgstr "&Leválasztás"
 
-#: calendarview.cpp:1600
+#: calendarview.cpp:1620
 #, kde-format
 msgid ""
 "Do you want to dissociate the occurrence on %1 from the recurrence or also "
@@ -1507,56 +1507,56 @@ msgstr ""
 "Le akarja választani az ismétlődésről a(z) %1 napi előfordulást, vagy csak a "
 "jövőbelieket?"
 
-#: calendarview.cpp:1606
+#: calendarview.cpp:1626
 #, kde-format
 msgid "&Only Dissociate This One"
 msgstr "Csak &ezt az egyet"
 
-#: calendarview.cpp:1607
+#: calendarview.cpp:1627
 #, kde-format
 msgid "&Also Dissociate Future Ones"
 msgstr "Az ezutáni előfordulásokat &is"
 
-#: calendarview.cpp:1625
+#: calendarview.cpp:1645
 #, kde-format
 msgid "Dissociate future occurrences"
 msgstr "A jövőbeli előfordulások leválasztása"
 
-#: calendarview.cpp:1627
+#: calendarview.cpp:1647
 #, kde-format
 msgid "Dissociate occurrence"
 msgstr "Az esemény elválasztása a többi előfordulástól"
 
-#: calendarview.cpp:1634
+#: calendarview.cpp:1654
 #, kde-format
 msgid "Dissociating the future occurrences failed."
 msgstr "A jövőbeli előfordulások leválasztása nem sikerült."
 
-#: calendarview.cpp:1634 calendarview.cpp:1636
+#: calendarview.cpp:1654 calendarview.cpp:1656
 #, fuzzy, kde-format
 #| msgid "Dissociating Failed"
 msgctxt "@title:window"
 msgid "Dissociating Failed"
 msgstr "A leválasztás nem sikerült"
 
-#: calendarview.cpp:1636
+#: calendarview.cpp:1656
 #, kde-format
 msgid "Dissociating the occurrence failed."
 msgstr "Az esemény elválasztása nem sikerült."
 
-#: calendarview.cpp:1798
+#: calendarview.cpp:1818
 #, fuzzy, kde-format
 #| msgctxt "@title:tab calendar account settings"
 #| msgid "Calendars"
 msgid "iCalendars (*.ics)"
 msgstr "Naptárak"
 
-#: calendarview.cpp:1807
+#: calendarview.cpp:1827
 #, kde-format
 msgid "Do you want to overwrite %1?"
 msgstr "Felül szeretné írni: %1?"
 
-#: calendarview.cpp:1808
+#: calendarview.cpp:1828
 #, fuzzy, kde-format
 #| msgctxt "@title:window"
 #| msgid "Import Calendar"
@@ -1564,24 +1564,24 @@ msgctxt "@title:window"
 msgid "Export Calendar"
 msgstr "Naptár importálása"
 
-#: calendarview.cpp:1822
+#: calendarview.cpp:1842
 #, kde-format
 msgctxt "save failure cause unknown"
 msgid "Reason unknown"
 msgstr "Ismeretlen okból"
 
-#: calendarview.cpp:1824
+#: calendarview.cpp:1844
 #, kde-format
 msgctxt "@info"
 msgid "Cannot write iCalendar file %1. %2"
 msgstr "Nem sikerült írni a következő iCalendar-fájlba: %1. %2"
 
-#: calendarview.cpp:1925 calendarview.cpp:1964
+#: calendarview.cpp:1945 calendarview.cpp:1990
 #, kde-format
 msgid "No filter"
 msgstr "Nincs szűrő"
 
-#: calendarview.cpp:2259
+#: calendarview.cpp:2288
 #, kde-format
 msgid ""
 "The item \"%1\" has sub-to-dos. Do you want to delete just this item and "
@@ -1592,17 +1592,17 @@ msgstr ""
 "törölni (ekkor a részfeladatok önálló feladattá válnak), vagy a "
 "részfeladatokat is törölni szeretné?"
 
-#: calendarview.cpp:2265
+#: calendarview.cpp:2294
 #, kde-format
 msgid "Delete Only This"
 msgstr "Törlés (csak ezt)"
 
-#: calendarview.cpp:2266 calendarview.cpp:2324
+#: calendarview.cpp:2295 calendarview.cpp:2353
 #, kde-format
 msgid "Delete All"
 msgstr "Minden törlése"
 
-#: calendarview.cpp:2297
+#: calendarview.cpp:2326
 #, kde-format
 msgid ""
 "The item \"%1\" is marked read-only and cannot be deleted; it probably "
@@ -1611,12 +1611,12 @@ msgstr ""
 "Az „%1” elem csak olvashatóként van megjelölve, nem törölhető; valószínűleg "
 "egy csak olvasható naptárhoz tartozik."
 
-#: calendarview.cpp:2301
+#: calendarview.cpp:2330
 #, kde-format
 msgid "Removing not possible"
 msgstr "Az eltávolítás nem lehetséges"
 
-#: calendarview.cpp:2319
+#: calendarview.cpp:2348
 #, kde-format
 msgid ""
 "The calendar item \"%1\" recurs over multiple dates; are you sure you want "
@@ -1625,17 +1625,17 @@ msgstr ""
 "A(z) „%1” bejegyzés több napon megismétlődik. Biztosan törölni szeretné az "
 "esemény minden előfordulását?"
 
-#: calendarview.cpp:2323 calendarview.cpp:2353
+#: calendarview.cpp:2352 calendarview.cpp:2382
 #, kde-format
 msgid "KOrganizer Confirmation"
 msgstr "KOrganizer jóváhagyás"
 
-#: calendarview.cpp:2331
+#: calendarview.cpp:2360
 #, kde-format
 msgid "Also Delete &Future"
 msgstr "A &későbbieket is"
 
-#: calendarview.cpp:2335
+#: calendarview.cpp:2364
 #, kde-format
 msgid ""
 "The calendar item \"%1\" recurs over multiple dates. Do you want to delete "
@@ -1645,7 +1645,7 @@ msgstr ""
 "szeretné törölni (%2), esetleg a későbbi előfordulásokat is, vagy minden "
 "előfordulást?"
 
-#: calendarview.cpp:2342
+#: calendarview.cpp:2371
 #, kde-format
 msgid ""
 "The calendar item \"%1\" recurs over multiple dates. Do you want to delete "
@@ -1654,23 +1654,23 @@ msgstr ""
 "A(z) „%1” naptárbejegyzés több napon megismétlődik. Csak ezt az előfordulást "
 "szeretné törölni (%2), vagy minden előfordulást?"
 
-#: calendarview.cpp:2354
+#: calendarview.cpp:2383
 #, kde-format
 msgid "Delete C&urrent"
 msgstr "Az akt&uális törlése"
 
-#: calendarview.cpp:2356
+#: calendarview.cpp:2385
 #, kde-format
 msgid "Delete &All"
 msgstr "Mind&en törlése"
 
-#: calendarview.cpp:2387 calendarview.cpp:2394
+#: calendarview.cpp:2416 calendarview.cpp:2423
 #, fuzzy, kde-format
 #| msgid "Delete %1"
 msgid "Delete \"%1\""
 msgstr "%1 törlése"
 
-#: calendarview.cpp:2424
+#: calendarview.cpp:2453
 #, kde-format
 msgid ""
 "All calendars are unchecked in the Calendar Manager. No to-do was purged."
@@ -1678,50 +1678,50 @@ msgstr ""
 "Egyetlen naptár sincs kiválasztva a Naptárkezelőben. Nem kerültek feladatok "
 "törlésre."
 
-#: calendarview.cpp:2429 calendarview.cpp:2711
+#: calendarview.cpp:2458 calendarview.cpp:2741
 #, kde-format
 msgid "There are no completed to-dos to purge."
 msgstr "Nincsenek törlendő befejezett feladatok."
 
-#: calendarview.cpp:2434
+#: calendarview.cpp:2463
 #, kde-format
 msgid "Delete all completed to-dos from checked calendars?"
 msgstr "Töröli az összes befejezett feladatot a kijelölt naptárakból?"
 
-#: calendarview.cpp:2435
+#: calendarview.cpp:2464
 #, fuzzy, kde-format
 #| msgid "Purge To-dos"
 msgctxt "@title:window"
 msgid "Purge To-dos"
 msgstr "A feladatok törlése"
 
-#: calendarview.cpp:2436
+#: calendarview.cpp:2465
 #, kde-format
 msgid "Purge"
 msgstr "Törlés"
 
-#: calendarview.cpp:2447
+#: calendarview.cpp:2476
 #, kde-format
 msgctxt "@info"
 msgid "Unable to edit \"%1\" because it is locked by another process."
 msgstr "„%1” nem szerkeszthető, mert egy másik folyamat zárolja."
 
-#: calendarview.cpp:2459
+#: calendarview.cpp:2488
 #, kde-format
 msgid "Unable to copy the item to %1."
 msgstr "Nem sikerült átmásolni az elemet ide: %1."
 
-#: calendarview.cpp:2494
+#: calendarview.cpp:2523
 #, kde-format
 msgid "Unable to move the item to  %1."
 msgstr "Nem sikerült áthelyezni az elemet ide: %1."
 
-#: calendarview.cpp:2704
+#: calendarview.cpp:2734
 #, kde-format
 msgid "0 completed to-dos were purged."
 msgstr "0 befejezett feladat lett törölve."
 
-#: calendarview.cpp:2705 calendarview.cpp:2715
+#: calendarview.cpp:2735 calendarview.cpp:2745
 #, kde-format
 msgid "%1 to-do was ignored because it has uncompleted or read-only children."
 msgid_plural ""
@@ -1733,19 +1733,19 @@ msgstr[1] ""
 "%1 feladat mellőzve lett, mert befejezetlen vagy csak olvasható gyermekei "
 "vannak."
 
-#: calendarview.cpp:2709 calendarview.cpp:2714
+#: calendarview.cpp:2739 calendarview.cpp:2744
 #, kde-format
 msgid "%1 completed to-do was purged."
 msgid_plural "%1 completed to-dos were purged."
 msgstr[0] "%1 befejezett feladat lett törölve."
 msgstr[1] "%1 befejezett feladat lett törölve."
 
-#: calendarview.cpp:2720
+#: calendarview.cpp:2750
 #, kde-format
 msgid "An error occurred while purging completed to-dos: %1"
 msgstr "Hiba történt a befejezett feladatok törlése közben: %1"
 
-#: calendarview.cpp:2774
+#: calendarview.cpp:2804
 #, kde-format
 msgid ""
 "You created an incidence in a calendar that is currently filtered out.\n"
@@ -1755,7 +1755,7 @@ msgstr ""
 "A bal oldalsávon engedélyezze azt a naptárkezelőben az esemény "
 "megtekintéséhez."
 
-#: calendarview.cpp:2778
+#: calendarview.cpp:2808
 #, kde-format
 msgid ""
 "You created an incidence in a calendar that is currently filtered out.\n"
