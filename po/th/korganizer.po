@@ -6,7 +6,7 @@ msgid ""
 msgstr ""
 "Project-Id-Version: korganizer\n"
 "Report-Msgid-Bugs-To: https://bugs.kde.org\n"
-"POT-Creation-Date: 2024-03-27 10:57+0000\n"
+"POT-Creation-Date: 2024-03-29 02:46+0000\n"
 "PO-Revision-Date: 2008-07-21 16:18+0700\n"
 "Last-Translator: Thanomsub Noppaburana <donga.nb@gmail.com>\n"
 "Language-Team: Thai <thai-l10n@googlegroups.com>\n"
@@ -2399,7 +2399,7 @@ msgctxt "@action:inmenu"
 msgid "&Toggle Reminder On"
 msgstr "เปิด/ปิดการเตือนความจำ"
 
-#: kohelper.cpp:57
+#: kohelper.cpp:52
 #, kde-format
 msgid "Unable to save %1 \"%2\"."
 msgstr "ไม่สามารถบันทึก %1 \"%2\""

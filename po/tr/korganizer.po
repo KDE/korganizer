@@ -20,7 +20,7 @@ msgid ""
 msgstr ""
 "Project-Id-Version: kdepim-kde4\n"
 "Report-Msgid-Bugs-To: https://bugs.kde.org\n"
-"POT-Creation-Date: 2024-03-27 10:57+0000\n"
+"POT-Creation-Date: 2024-03-29 02:46+0000\n"
 "PO-Revision-Date: 2024-03-22 01:10+0300\n"
 "Last-Translator: Emir SARI <emir_sari@icloud.com>\n"
 "Language-Team: Turkish <kde-l10n-tr@kde.org>\n"
@@ -2327,7 +2327,7 @@ msgctxt "@action:inmenu"
 msgid "&Toggle Reminder On"
 msgstr "Anımsatıcıyı &Kapat"
 
-#: kohelper.cpp:57
+#: kohelper.cpp:52
 #, kde-format
 msgid "Unable to save %1 \"%2\"."
 msgstr "%1 \"%2\" kaydedilemiyor."
