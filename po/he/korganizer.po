@@ -18,7 +18,7 @@ msgstr ""
 "Project-Id-Version: korganizer\n"
 "Report-Msgid-Bugs-To: https://bugs.kde.org\n"
 "POT-Creation-Date: 2024-03-27 00:38+0000\n"
-"PO-Revision-Date: 2024-03-26 20:03+0200\n"
+"PO-Revision-Date: 2024-03-29 10:47+0300\n"
 "Last-Translator: Yaron Shahrabani <sh.yaron@gmail.com>\n"
 "Language-Team: צוות התרגום של KDE ישראל\n"
 "Language: he\n"
@@ -1569,9 +1569,9 @@ msgid "KOrganizer Confirmation"
 msgstr "בקשה לאישור מ־KOrganizer"
 
 #: calendarview.cpp:2360
-#, fuzzy, kde-format
+#, kde-format
 msgid "Also Delete &Future"
-msgstr "מחק &עתידיים"
+msgstr "למחוק גם &עתידיים"
 
 #: calendarview.cpp:2364
 #, fuzzy, kde-format
@@ -1613,14 +1613,14 @@ msgid ""
 msgstr ""
 
 #: calendarview.cpp:2458 calendarview.cpp:2741
-#, fuzzy, kde-format
+#, kde-format
 msgid "There are no completed to-dos to purge."
-msgstr "העבר &קו על תקציר המטלות שהושלמו"
+msgstr "אין מטלות שהושלמו לניפוי."
 
 #: calendarview.cpp:2463
-#, fuzzy, kde-format
+#, kde-format
 msgid "Delete all completed to-dos from checked calendars?"
-msgstr "האם למחוק את כל המטלות שהושלמו?"
+msgstr "למחוק את כל המטלות מלוחות השנה המסומנים?"
 
 #: calendarview.cpp:2464
 #, kde-format
@@ -1634,10 +1634,10 @@ msgid "Purge"
 msgstr "מחיקה מוחלטת"
 
 #: calendarview.cpp:2476
-#, fuzzy, kde-format
+#, kde-format
 msgctxt "@info"
 msgid "Unable to edit \"%1\" because it is locked by another process."
-msgstr "אין אפשרות לערוך את הפריט: הוא נעול על ידי תהליך אחר."
+msgstr "לא ניתן לערוך את „%1” כיוון שננעלה על ידי תהליך אחר."
 
 #: calendarview.cpp:2488
 #, kde-format
@@ -1750,10 +1750,10 @@ msgid "Set a custom icon"
 msgstr "להגדיר סמל מותאם אישית"
 
 #: collectiongeneralpage.cpp:60
-#, fuzzy, kde-format
+#, kde-format
 msgctxt "@info:whatsthis"
 msgid "Check this box if you want to set a custom icon for this folder."
-msgstr "בחר באפשרות זו אם ברצונך להציג שניות בקו־הזמן הנוכחי."
+msgstr "יש לסמן את התיבה הזאת כדי להגדיר סמל משלך לתיקייה הזאת."
 
 #. i18n: ectx: Menu (file)
 #: data/korganizer_part.rc:4 data/korganizerui.rc:4
@@ -1874,16 +1874,16 @@ msgid "Edit Calendar Filters"
 msgstr "עריכת מסנני לוחות שנה"
 
 #: dialog/filtereditdialog.cpp:87
-#, fuzzy, kde-format
+#, kde-format
 msgctxt "@info:whatsthis"
 msgid "Press this button to define a new filter."
-msgstr "לחץ על כפתור זה כדי להגדיר מסנן חדש."
+msgstr "יש ללחוץ על הכפתור הזה כדי להגדיר מסנן חדש."
 
 #: dialog/filtereditdialog.cpp:88
-#, fuzzy, kde-format
+#, kde-format
 msgctxt "@info:whatsthis"
 msgid "Press this button to remove the currently active filter."
-msgstr "לחץ על כפתור זה כדי להסיר את המסנן הפעיל."
+msgstr "לחיצה על כפתור זה תסיר את המסנן הפעיל כרגע."
 
 #: dialog/filtereditdialog.cpp:219
 #, kde-format
@@ -1938,10 +1938,10 @@ msgid "Start the search"
 msgstr "התחלת החיפוש"
 
 #: dialog/searchdialog.cpp:76
-#, fuzzy, kde-format
+#, kde-format
 msgctxt "@info:whatsthis"
 msgid "Press this button to start the search."
-msgstr "לחץ על כפתור זה כדי להגדיר מסנן חדש."
+msgstr "יש ללחוץ על הכפתור הזה כדי להתחיל את החיפוש."
 
 #: dialog/searchdialog.cpp:145
 #, fuzzy, kde-format
@@ -2766,7 +2766,7 @@ msgid "due"
 msgstr "יעד"
 
 #: kontactplugin/korganizer/todosummarywidget.cpp:271
-#, fuzzy, kde-format
+#, kde-format
 msgid "No pending to-dos due within the next day"
 msgid_plural "No pending to-dos due within the next %1 days"
 msgstr[0] "אין מטלות ממתינות שאמורות להסתיים מחר"
@@ -2876,11 +2876,13 @@ msgstr "נא לבחור את הימים להצגת האירועים המיוחד
 
 #. i18n: ectx: property (whatsThis), widget (QRadioButton, mDateRangeButton)
 #: kontactplugin/specialdates/sdsummaryconfig_base.ui:68
-#, fuzzy, kde-format
+#, kde-format
 msgid ""
 "Check this box if you want to specify the number of days in the future for "
 "upcoming special occasions."
-msgstr "סמן אפשרות זאת אם ברצונך להדפיס מטלות, ממוקמות לפי תאריך היעד שלהן."
+msgstr ""
+"יש לסמן את התיבה הזאת כדי להציג את מספר הימים העתידיים לאירועים מיוחדים "
+"קרובים."
 
 #. i18n: ectx: property (toolTip), widget (QSpinBox, mCustomDays)
 #: kontactplugin/specialdates/sdsummaryconfig_base.ui:84
@@ -3205,20 +3207,20 @@ msgid "Tags"
 msgstr "תגיות"
 
 #: prefs/koprefsdialogcolorsandfonts.cpp:107
-#, fuzzy, kde-format
+#, kde-format
 msgctxt "@info:whatsthis"
 msgid ""
 "Select the tag you want to modify. You can change the selected tag's color "
 "using the adjacent color button."
 msgstr ""
-"בחר את הקטגוריה שברצונך לעדכן. ניתן לשנות את הצבע המשויך לקטגוריה בעזרת "
-"הכפתור למטה."
+"נא לבחור את התגית לשינוי. אפשר לערוך את צבע התגית הנבחרת באמצעות כפתור הצבע "
+"הסמוך."
 
 #: prefs/koprefsdialogcolorsandfonts.cpp:115
-#, fuzzy, kde-format
+#, kde-format
 msgctxt "@info:whatsthis"
 msgid "Choose the color of the tag selected in the adjacent combo box."
-msgstr "בחר כאן את הצבע של המשאב הנבחר באמצעות התיבה המשולבת מעל."
+msgstr "נא לבחור את צבע התגית הנבחרת בתיבת הבחירה הסמוכה."
 
 #: prefs/koprefsdialogcolorsandfonts.cpp:123
 #, kde-format
@@ -3227,14 +3229,14 @@ msgid "Resources"
 msgstr "משאבים"
 
 #: prefs/koprefsdialogcolorsandfonts.cpp:134
-#, fuzzy, kde-format
+#, kde-format
 msgctxt "@info:whatsthis"
 msgid ""
 "Select the calendar you want to modify. You can change the selected calendar "
 "color using the button below."
 msgstr ""
-"בחר את הקטגוריה שברצונך לעדכן. ניתן לשנות את הצבע המשויך לקטגוריה בעזרת "
-"הכפתור למטה."
+"נא לבחור את לוח השנה לשינוי. אפשר לערוך את צבע לוח השנה הנבחר באמצעות הכפתור "
+"שלהלן."
 
 #: prefs/koprefsdialogcolorsandfonts.cpp:142
 #, fuzzy, kde-format
@@ -3354,10 +3356,10 @@ msgid "Holidays"
 msgstr "חגים"
 
 #: prefs/koprefsdialogtime.cpp:66
-#, fuzzy, kde-format
+#, kde-format
 msgctxt "@label"
 msgid "Use holiday region:"
-msgstr "כבד את חגי־:"
+msgstr "להשתמש באזור חגים:"
 
 #: prefs/koprefsdialogtime.cpp:89
 #, kde-format
@@ -3366,11 +3368,10 @@ msgid "%1 (%2)"
 msgstr "%1 (%2)"
 
 #: prefs/koprefsdialogtime.cpp:98
-#, fuzzy, kde-format
-#| msgid "Use holiday region:"
+#, kde-format
 msgctxt "@item:inlistbox"
 msgid "Select Holiday Regions"
-msgstr "כבד את חגי־:"
+msgstr "בחירת אזורי חגים"
 
 #: prefs/koprefsdialogtime.cpp:110
 #, kde-format
@@ -3450,22 +3451,22 @@ msgid "Default reminder time:"
 msgstr "זמן ברירת מחדל לתזכורת:"
 
 #: prefs/koprefsdialogtime.cpp:207
-#, fuzzy, kde-format
+#, kde-format
 msgctxt "@item:inlistbox reminder units in minutes"
 msgid "minute(s)"
-msgstr "דקות"
+msgstr "דקה/דקות"
 
 #: prefs/koprefsdialogtime.cpp:208
-#, fuzzy, kde-format
+#, kde-format
 msgctxt "@item:inlistbox reminder time units in hours"
 msgid "hour(s)"
-msgstr "שעות"
+msgstr "שעה/שעות"
 
 #: prefs/koprefsdialogtime.cpp:209
-#, fuzzy, kde-format
+#, kde-format
 msgctxt "@item:inlistbox reminder time units in days"
 msgid "day(s)"
-msgstr "ימים"
+msgstr "יום/ימים"
 
 #: prefs/koprefsdialogtime.cpp:219
 #, kde-format
@@ -3647,24 +3648,19 @@ msgstr ""
 
 #. i18n: ectx: label, entry (Holidays), group (Time &amp; Date)
 #: settings/korganizer.kcfg:50
-#, fuzzy, kde-format
-#| msgid "Use holiday region:"
+#, kde-format
 msgid "Use holiday regions:"
-msgstr "כבד את חגי־:"
+msgstr "להשתמש באזור חגים:"
 
 #. i18n: ectx: whatsthis, entry (Holidays), group (Time &amp; Date)
 #: settings/korganizer.kcfg:51
-#, fuzzy, kde-format
-#| msgid ""
-#| "Select from which region you want to use the holidays here. Defined "
-#| "holidays are shown as non-working days in the date navigator, the agenda "
-#| "view, etc."
+#, kde-format
 msgid ""
 "Select which regions you want to use the holidays here. Defined holidays are "
 "shown as non-working days in the date navigator, the agenda view, etc."
 msgstr ""
-"בחר כאן את האזור הגאוגרפי לפיו יקבעו ימי־החג. ימי־חג יוצגו כימים שאינם ימי־"
-"עבודה תאריכון, בתצוגת סדר־היום, וכדו'."
+"נא לבחור כאן באילו אזורים להשתמש להחלת חגים. החגים המוגדרים מופיעים כימי "
+"חופש מעבודה במנווט התאריכים, תצוגת סדר היום ועוד."
 
 #. i18n: ectx: label, entry (WeekStartDay), group (Time &amp; Date)
 #: settings/korganizer.kcfg:55
@@ -3937,9 +3933,9 @@ msgstr "הצגת מטלות"
 
 #. i18n: ectx: whatsthis, entry (ShowTodosAgendaView), group (Agenda View)
 #: settings/korganizer.kcfg:159
-#, fuzzy, kde-format
+#, kde-format
 msgid "Check this box to display to-dos in the agenda view."
-msgstr "סמן תיבה זו על־מנת להציג חלון אישור בעת מחיקת פריט."
+msgstr "יש לזמן את התיבה הזאת כדי להציג מטלות בתצוגת סדר היום."
 
 #. i18n: ectx: tooltip, entry (ShowTodosAgendaView), group (Agenda View)
 #: settings/korganizer.kcfg:160
@@ -4204,33 +4200,33 @@ msgstr ""
 
 #. i18n: ectx: tooltip, entry (EnableMonthItemIcons), group (Month View)
 #: settings/korganizer.kcfg:244
-#, fuzzy, kde-format
+#, kde-format
 msgid "Display icons in month view items"
-msgstr "אפשר פסי גלילה בתאי תצוגת חודש"
+msgstr "הצגת סמלים בפריטי תצוגת חודש"
 
 #. i18n: ectx: label, entry (ShowTimeInMonthView), group (Month View)
 #: settings/korganizer.kcfg:249
-#, fuzzy, kde-format
+#, kde-format
 msgid "Show time in month view items"
-msgstr "הצג נבחרים בלבד"
+msgstr "הצגת שעה בפריטי תצוגת חודש"
 
 #. i18n: ectx: whatsthis, entry (ShowTimeInMonthView), group (Month View)
 #: settings/korganizer.kcfg:250
-#, fuzzy, kde-format
+#, kde-format
 msgid "Check this box to display the time in month view items."
-msgstr "סמן תיבה זו על־מנת להציג חלון אישור בעת מחיקת פריט."
+msgstr "יש לסמן את התיבה הזאת כדי להציג את השעה בפריטי תצוגת חודש"
 
 #. i18n: ectx: tooltip, entry (ShowTimeInMonthView), group (Month View)
 #: settings/korganizer.kcfg:251
-#, fuzzy, kde-format
+#, kde-format
 msgid "Display time in month view items"
-msgstr "אפשר פסי גלילה בתאי תצוגת חודש"
+msgstr "הצגת השעה בפריטי תצוגת חודש"
 
 #. i18n: ectx: whatsthis, entry (ShowTodosMonthView), group (Month View)
 #: settings/korganizer.kcfg:257
-#, fuzzy, kde-format
+#, kde-format
 msgid "Check this box to display to-dos in the month view."
-msgstr "סמן תיבה זו על־מנת להציג חלון אישור בעת מחיקת פריט."
+msgstr "יש לזמן את התיבה הזאת כדי להציג מטלות בתצוגת החודש."
 
 #. i18n: ectx: tooltip, entry (ShowTodosMonthView), group (Month View)
 #: settings/korganizer.kcfg:258
@@ -4246,9 +4242,9 @@ msgstr "הצגת יומנים"
 
 #. i18n: ectx: whatsthis, entry (ShowJournalsMonthView), group (Month View)
 #: settings/korganizer.kcfg:264
-#, fuzzy, kde-format
+#, kde-format
 msgid "Check this box to display journals in the month view."
-msgstr "סמן תיבה זו על־מנת להציג חלון אישור בעת מחיקת פריט."
+msgstr "יש לסמן את התיבה הזאת כדי להציג יומנים בתצוגת החודש."
 
 #. i18n: ectx: tooltip, entry (ShowJournalsMonthView), group (Month View)
 #: settings/korganizer.kcfg:265
