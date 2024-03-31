@@ -18,7 +18,7 @@ msgstr ""
 "Project-Id-Version: korganizer\n"
 "Report-Msgid-Bugs-To: https://bugs.kde.org\n"
 "POT-Creation-Date: 2024-03-27 00:38+0000\n"
-"PO-Revision-Date: 2024-03-29 10:47+0300\n"
+"PO-Revision-Date: 2024-03-29 14:14+0300\n"
 "Last-Translator: Yaron Shahrabani <sh.yaron@gmail.com>\n"
 "Language-Team: צוות התרגום של KDE ישראל\n"
 "Language: he\n"
@@ -53,13 +53,7 @@ msgid "A Personal Organizer"
 msgstr "ארגונית אישית"
 
 #: aboutdata.cpp:22
-#, fuzzy, kde-format
-#| msgid ""
-#| "Copyright © 1997–1999 Preston Brown\n"
-#| "Copyright © 2000–2004, 2007 Cornelius Schumacher\n"
-#| "Copyright © 2004–2005 Reinhold Kainhofer\n"
-#| "Copyright © 2006–2012 Allen Winter\n"
-#| "Copyright © 2012–2022 KOrganizer authors"
+#, kde-format
 msgid ""
 "Copyright © 1997–1999 Preston Brown\n"
 "Copyright © 2000–2004, 2007 Cornelius Schumacher\n"
@@ -69,9 +63,9 @@ msgid ""
 msgstr ""
 "כל הזכויות שמורות © 1997–1999 פרסטון בראון\n"
 "כל הזכויות שמורות © 2000–2004, 2007 קורנליוס שומאכר\n"
-"כל הזכויות שמורות © 2004–2005 ריינהולג קיינהופר\n"
+"כל הזכויות שמורות © 2004–2005 ריינהולד קיינהופר\n"
 "כל הזכויות שמורות © 2006–2012 אלן וינטר\n"
-"כל הזכויות שמורות © 2012–2022 יוצרי KOrganizer"
+"כל הזכויות שמורות © 2012–2024 יוצרי KOrganizer"
 
 #: aboutdata.cpp:30 kontactplugin/specialdates/specialdates_plugin.cpp:42
 #, kde-format
@@ -401,17 +395,16 @@ msgid "Archive O&ld Incidences..."
 msgstr "העברת מאורעות ישנים ל&ארכיון…"
 
 #: actionmanager.cpp:315
-#, fuzzy, kde-format
-#| msgid "Hide &recurring events and to-dos"
+#, kde-format
 msgctxt "@info:status"
 msgid "Archive events and to-dos to a file"
-msgstr "הסתר מטלות ואירועים ה&חוזרים על עצמם"
+msgstr "העברת אירועים ומטלות לקובץ ארכיון"
 
 #: actionmanager.cpp:316
-#, fuzzy, kde-format
+#, kde-format
 msgctxt "@info:tooltip"
 msgid "Archive old events and to-dos to an iCalendar file"
-msgstr "אין אפשרות לייצא את רשומות היומן לקובץ vCalendar."
+msgstr "העברת אירועים ומטלות ישנים לקובץ iCalendar כארכיון"
 
 #: actionmanager.cpp:318
 #, kde-format
@@ -423,15 +416,15 @@ msgid ""
 msgstr ""
 
 #: actionmanager.cpp:326
-#, fuzzy, kde-format
+#, kde-format
 msgid "Pur&ge Completed To-dos"
-msgstr "&מחק משימות שהושלמו"
+msgstr "ניפוי מטלות &שהושלמו"
 
 #: actionmanager.cpp:327
-#, fuzzy, kde-format
+#, kde-format
 msgctxt "@info:status"
 msgid "Purge completed to-dos"
-msgstr "&מחק משימות שהושלמו"
+msgstr "ניפוי מטלות שהושלמו"
 
 #: actionmanager.cpp:328
 #, kde-format
@@ -671,10 +664,10 @@ msgid "Filter incidences"
 msgstr "סינון מאורעות"
 
 #: actionmanager.cpp:475
-#, fuzzy, kde-format
+#, kde-format
 msgctxt "@info:tooltip"
 msgid "Filter incidences from the calendar"
-msgstr "מפעיל את התזכורת עבור אירוע או מטלה זו."
+msgstr "סינון מאורעות מלוח השנה"
 
 #: actionmanager.cpp:477
 #, kde-format
@@ -965,9 +958,9 @@ msgid "Re&quest Update"
 msgstr "&בקשת עדכון"
 
 #: actionmanager.cpp:662
-#, fuzzy, kde-format
+#, kde-format
 msgid "Send &Cancellation to Attendees"
-msgstr "שלח הודעת ביטול ל&נוכחים"
+msgstr "שליחת &ביטול לנוכחים"
 
 #: actionmanager.cpp:670
 #, kde-format
@@ -1169,24 +1162,24 @@ msgid "Remove Attachments"
 msgstr "הסרת קבצים מצורפים"
 
 #: actionmanager.cpp:1613
-#, fuzzy, kde-format
+#, kde-format
 msgid "Undo: %1"
-msgstr "בטל (%1)"
+msgstr "החזרה: %1"
 
 #: actionmanager.cpp:1616 actionmanager.cpp:1632
-#, fuzzy, kde-format
+#, kde-format
 msgid "Undo"
-msgstr "בטל (%1)"
+msgstr "החזרה"
 
 #: actionmanager.cpp:1626
-#, fuzzy, kde-format
+#, kde-format
 msgid "Redo: %1"
-msgstr "בצע שוב (%1)"
+msgstr "ביצוע חוזר: %1"
 
 #: actionmanager.cpp:1629
-#, fuzzy, kde-format
+#, kde-format
 msgid "Redo"
-msgstr "בצע שוב (%1)"
+msgstr "ביצוע חוזר"
 
 #: actionmanager.cpp:1643
 #, kde-format
@@ -1293,10 +1286,10 @@ msgid "Add Calendar"
 msgstr "הוספת לוח שנה"
 
 #: akonadicollectionview.cpp:744
-#, fuzzy, kde-format
+#, kde-format
 msgctxt "@info"
 msgid "Do you really want to delete calendar %1?"
-msgstr "<qt>האם אתה בטוח שברצונך למחוק את המשאב <b>%1</b>?</qt>"
+msgstr "למחוק את לוח השנה %1?"
 
 #: akonadicollectionview.cpp:745
 #, kde-format
@@ -1542,13 +1535,13 @@ msgid "Delete All"
 msgstr "מחיקה של הכול"
 
 #: calendarview.cpp:2326
-#, fuzzy, kde-format
+#, kde-format
 msgid ""
 "The item \"%1\" is marked read-only and cannot be deleted; it probably "
 "belongs to a read-only calendar."
 msgstr ""
-"הפריט \"%1\" מסומן לקריאה בלבד, ואין אפשרות למחוק אותו; הוא ככל הנראה משתייך "
-"ללוח־שנה או משאב עם אפשרות לקריאה בלבד."
+"הפריט \"%1\" מסומן לקריאה בלבד, ואי אפשר למחוק אותו, הוא ככל הנראה משויך "
+"ללוח שנה או למשאב שמוגדרים לקריאה בלבד."
 
 #: calendarview.cpp:2330
 #, kde-format
@@ -1730,12 +1723,12 @@ msgid "Ignore reminders from this calendar"
 msgstr "התעלמות מתזכורות מלוח השנה הזה"
 
 #: collectiongeneralpage.cpp:53
-#, fuzzy, kde-format
+#, kde-format
 msgctxt "@info:whatsthis"
 msgid ""
 "Check this box if you do not want to receive reminders from items associated "
 "with this calendar."
-msgstr "בחר באפשרות זו אם ברצונך להציג שניות בקו־הזמן הנוכחי."
+msgstr "יש לסמן את התיבה הזאת כדי לקבל תזכורות מפריטים שמשויכים ללוח השנה הזה."
 
 #: collectiongeneralpage.cpp:58
 #, kde-format
@@ -1944,17 +1937,14 @@ msgid "Press this button to start the search."
 msgstr "יש ללחוץ על הכפתור הזה כדי להתחיל את החיפוש."
 
 #: dialog/searchdialog.cpp:145
-#, fuzzy, kde-format
-#| msgid ""
-#| "Invalid search expression, cannot perform the search. Please enter a "
-#| "search expression using the wildcard characters '*' and '?' where needed."
+#, kde-format
 msgctxt "@info"
 msgid ""
 "Invalid search expression, cannot perform the search. Please enter a search "
 "expression using the wildcard characters '*' and '?' where needed."
 msgstr ""
-"ביטוי חיפוש שגוי, אין אפשרות לבצע את החיפוש. הזן ביטוי חיפוש, והשתמש בתווים "
-"הכלליים \"*\" ו־\"?\" במקרה הצורך."
+"ביטוי החיפוש שגוי, אי אפשר לחפש. נא למלא ביטוי לחיפוש, ולהשתמש בתווים "
+"הכוללניים „*” ו־„?” במקרה הצורך."
 
 #: dialog/searchdialog.cpp:157
 #, fuzzy, kde-format
@@ -1979,9 +1969,9 @@ msgstr[2] ""
 msgstr[3] ""
 
 #: koapp.cpp:63
-#, fuzzy, kde-format
+#, kde-format
 msgid "Failed to retrieve incidence from Akonadi"
-msgstr "מפעיל את התזכורת עבור אירוע או מטלה זו."
+msgstr "משיכת המאורע מ־Akonadi נכשלה"
 
 #: koapp.cpp:68
 #, kde-format
