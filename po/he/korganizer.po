@@ -18,7 +18,7 @@ msgstr ""
 "Project-Id-Version: korganizer\n"
 "Report-Msgid-Bugs-To: https://bugs.kde.org\n"
 "POT-Creation-Date: 2024-03-27 00:38+0000\n"
-"PO-Revision-Date: 2024-03-29 14:14+0300\n"
+"PO-Revision-Date: 2024-03-31 23:47+0300\n"
 "Last-Translator: Yaron Shahrabani <sh.yaron@gmail.com>\n"
 "Language-Team: צוות התרגום של KDE ישראל\n"
 "Language: he\n"
@@ -1422,9 +1422,9 @@ msgid "Unable to add the item \"%1\" into %2. This item has not been moved."
 msgstr "לא ניתן להוסיף את הפריט „%1” לתוך %2. הפריט לא הועבר."
 
 #: calendarview.cpp:1609
-#, fuzzy, kde-format
+#, kde-format
 msgid "Do you want to dissociate the occurrence on %1 from the recurrence?"
-msgstr "                 הצגת רשימה של האירועים ליום הנוכחי"
+msgstr "לנתק את המופע ב־%1 מהמחזור?"
 
 #: calendarview.cpp:1613 calendarview.cpp:1625 calendarview.cpp:2293
 #, kde-format
@@ -1433,26 +1433,26 @@ msgid "KOrganizer Confirmation"
 msgstr "אישור KOrganizer"
 
 #: calendarview.cpp:1614
-#, fuzzy, kde-format
+#, kde-format
 msgid "&Dissociate"
-msgstr "זמ&ן מוקצה"
+msgstr "ל&נתק"
 
 #: calendarview.cpp:1620
-#, fuzzy, kde-format
+#, kde-format
 msgid ""
 "Do you want to dissociate the occurrence on %1 from the recurrence or also "
 "dissociate future ones?"
-msgstr "                 הצגת רשימה של האירועים ליום הנוכחי"
+msgstr "לנתק את המופע ב־%1 מהמחזור או לנתק גם את העתידיים?"
 
 #: calendarview.cpp:1626
-#, fuzzy, kde-format
+#, kde-format
 msgid "&Only Dissociate This One"
-msgstr "&בטל קישור של מופע זה"
+msgstr "ל&נתק רק את זה"
 
 #: calendarview.cpp:1627
-#, fuzzy, kde-format
+#, kde-format
 msgid "&Also Dissociate Future Ones"
-msgstr "&בטל קישור של מופעים עתידיים"
+msgstr "לנתק &גם את העתידיים"
 
 #: calendarview.cpp:1645
 #, kde-format
@@ -1470,11 +1470,10 @@ msgid "Dissociating the future occurrences failed."
 msgstr "ניתוק המופעים העתידיים נכשל."
 
 #: calendarview.cpp:1654 calendarview.cpp:1656
-#, fuzzy, kde-format
-#| msgid "Dissociating Failed"
+#, kde-format
 msgctxt "@title:window"
 msgid "Dissociating Failed"
-msgstr "ביטול הקישור נכשל"
+msgstr "הניתוק נכשל"
 
 #: calendarview.cpp:1656
 #, kde-format
@@ -1947,10 +1946,10 @@ msgstr ""
 "הכוללניים „*” ו־„?” במקרה הצורך."
 
 #: dialog/searchdialog.cpp:157
-#, fuzzy, kde-format
+#, kde-format
 msgctxt "@info"
 msgid "No items were found that match your search pattern."
-msgstr "לא נמצאו אירועים התואמים לביטוי החיפוש שלך."
+msgstr "לא נמצאו פריטים שעונים על ביטוי החיפוש שלך."
 
 #: dialog/searchdialog.cpp:158
 #, kde-format
@@ -2090,17 +2089,16 @@ msgid "Create Note for To-do"
 msgstr "יצירת הערה למטלה"
 
 #: koeventpopupmenu.cpp:122
-#, fuzzy, kde-format
-#| msgid "&Toggle Reminder"
+#, kde-format
 msgctxt "@action:inmenu"
 msgid "&Toggle Reminder"
-msgstr "&שנה מצב תזכורת"
+msgstr "ה&חלפת מצב תזכורת"
 
 #: koeventpopupmenu.cpp:129
-#, fuzzy, kde-format
+#, kde-format
 msgctxt "@action:inmenu"
 msgid "&Dissociate From Recurrence..."
-msgstr "בטל קישור של מופע"
+msgstr "&ניתוק מהמחזור…"
 
 #: koeventpopupmenu.cpp:137
 #, kde-format
@@ -2109,18 +2107,16 @@ msgid "Send as iCalendar..."
 msgstr "&שליחה כ־iCalendar…"
 
 #: koeventpopupmenu.cpp:187
-#, fuzzy, kde-format
-#| msgid "&Toggle Reminder"
+#, kde-format
 msgctxt "@action:inmenu"
 msgid "&Toggle Reminder Off"
-msgstr "&שנה מצב תזכורת"
+msgstr "&כיבוי התזכורת"
 
 #: koeventpopupmenu.cpp:188
-#, fuzzy, kde-format
-#| msgid "&Toggle Reminder"
+#, kde-format
 msgctxt "@action:inmenu"
 msgid "&Toggle Reminder On"
-msgstr "&שנה מצב תזכורת"
+msgstr "ה&פעלת התזכורת"
 
 #: kohelper.cpp:52
 #, kde-format
@@ -3229,11 +3225,11 @@ msgstr ""
 "שלהלן."
 
 #: prefs/koprefsdialogcolorsandfonts.cpp:142
-#, fuzzy, kde-format
+#, kde-format
 msgctxt "@info:whatsthis"
 msgid ""
 "Choose here the color of the calendar selected using the combo box above."
-msgstr "בחר כאן את הצבע של המשאב הנבחר באמצעות התיבה המשולבת מעל."
+msgstr "נא לבחור כאן את צבע לוח השנה שנבחר באמצעות התיבה המשולבת שלעיל."
 
 #: prefs/koprefsdialogcolorsandfonts.cpp:150
 #, kde-format
@@ -3370,15 +3366,15 @@ msgid "Working Period"
 msgstr "שעות עבודה"
 
 #: prefs/koprefsdialogtime.cpp:125
-#, fuzzy, kde-format
+#, kde-format
 msgctxt "@info:whatsthis"
 msgid ""
 "Check this box to make KOrganizer mark the working hours for this day of the "
 "week. If this is a work day for you, check this box, or the working hours "
 "will not be marked with color."
 msgstr ""
-"סמן תיבה זו להורות ל־ KOrganizer לסמן את שעות העבודה עבור יום זה בשבוע. אם "
-"זהו יום עבודה עבורך, סמן תיבה זו, או ששעות העבודה לא יסומנו בצבע."
+"סימון התיבה הזאת יגרום ל־KOrganizer לסמן את שעות העבודה ליום הזה בשבוע. אם "
+"זה יום עבודה שלך, יש לסמן את התיבה הזאת, או ששעות העבודה לא יסומנו בצבע הזה."
 
 #: prefs/koprefsdialogtime.cpp:140
 #, kde-format
@@ -3573,25 +3569,25 @@ msgstr "אירועים חדשים, מטלות ורשומות ביומן אמור
 
 #. i18n: ectx: label, entry (Destination), group (Save Settings)
 #: settings/korganizer.kcfg:25
-#, fuzzy, kde-format
+#, kde-format
 msgid "Be added to the default calendar"
-msgstr "להתווסף למשאב התקני"
+msgstr "יתווסף ללוח השנה כברירת המחדל"
 
 #. i18n: ectx: whatsthis, entry (Destination), group (Save Settings)
 #: settings/korganizer.kcfg:26
-#, fuzzy, kde-format
+#, kde-format
 msgid ""
 "Select this option to always record new events, to-dos and journal entries "
 "using the current default calendar."
 msgstr ""
-"בחר באפשרות זו על־מנת לאחסן תמיד אירועים חדשים, משימות ורשומות יומן על־ידי "
-"המשאב התקני."
+"יש לבחור את האפשרות הזאת כדי תמיד לתעד אירועים מטלות ורשומות יומן באמצעות "
+"לוח שנה שמוגדר כרגע כברירת המחדל."
 
 #. i18n: ectx: label, entry (Destination), group (Save Settings)
 #: settings/korganizer.kcfg:29
-#, fuzzy, kde-format
+#, kde-format
 msgid "Be asked which calendar to use"
-msgstr "לשאול באיזה משאב להשתמש"
+msgstr "להישאל באיזה לוח שנה להשתמש"
 
 #. i18n: ectx: whatsthis, entry (Destination), group (Save Settings)
 #: settings/korganizer.kcfg:30
@@ -3719,9 +3715,9 @@ msgstr "סימון תיבה זו ימנע מ־KOrganizer לסמן את שעות 
 #. i18n: ectx: label, entry (ColorMonthBusyDaysEnabled), group (Time &amp; Date)
 #. i18n: ectx: label, entry (ColorBusyDaysEnabled), group (Agenda View)
 #: settings/korganizer.kcfg:80 settings/korganizer.kcfg:212
-#, fuzzy, kde-format
+#, kde-format
 msgid "Color busy days with a different background color"
-msgstr "צבע רקע לתצוגת סדר־יום"
+msgstr "צביעת ימים עמוסים בצבע רקע שונה"
 
 #. i18n: ectx: whatsthis, entry (ColorMonthBusyDaysEnabled), group (Time &amp; Date)
 #: settings/korganizer.kcfg:81
@@ -3736,19 +3732,18 @@ msgstr ""
 
 #. i18n: ectx: label, entry, group (General View)
 #: settings/korganizer.kcfg:90
-#, fuzzy, kde-format
+#, kde-format
 msgid "Enable tooltips for displaying summaries"
-msgstr "אפשר כתובית צפה המציגה תקציר לאירועים"
+msgstr "הפעלת חלוניות עצה כדי להציג תקצירים"
 
 #. i18n: ectx: whatsthis, entry, group (General View)
 #: settings/korganizer.kcfg:91
-#, fuzzy, kde-format
+#, kde-format
 msgid ""
 "Check this box to display summary tooltips when hovering the mouse over an "
 "event or a to-do."
 msgstr ""
-"סמן תיבה זו כדי להציג את תקציר האירוע בכתובית צפה כאשר סמן העכבר מרחף מעל "
-"האירוע."
+"יש לסמן את התיבה הזאת כדי להציג חלוניות עצה בעת מעבר מעל אירוע או מטלה."
 
 #. i18n: ectx: label, entry, group (General View)
 #: settings/korganizer.kcfg:96
@@ -3772,15 +3767,14 @@ msgstr "מספר הימים הבאים"
 
 #. i18n: ectx: whatsthis, entry, group (General View)
 #: settings/korganizer.kcfg:103
-#, fuzzy, kde-format
+#, kde-format
 msgid ""
 "Select the number of \"x\" days to be displayed in the next days view. To "
 "access the next \"x\" days view, choose the \"Next X Days\" menu item from "
 "the \"View\" menu."
 msgstr ""
-"בחר בתיבת טווח זו את המספר עבור &quot;x&quot;  ימים שיופיעו בתצוגת הימים "
-"הבאים. כדי לגשת ל־ &quot;x&quot; הימים הבאים, בחר בפריט \"X הימים הבאים\" "
-"מתוך תפריט &quot;תצוגה&quot;."
+"נא לבחור את מספר ימי „X” להצגה בתצוגת הימים הקרובים. כדי לגשת לתצוגת „x” "
+"הימים הקרובים, יש לבחור בפריט „X הימים הקרובים” מתפריט „תצוגה”."
 
 #. i18n: ectx: tooltip, entry, group (General View)
 #: settings/korganizer.kcfg:104
@@ -3832,14 +3826,13 @@ msgstr ""
 
 #. i18n: ectx: whatsthis, entry (HighlightTodos), group (General View)
 #: settings/korganizer.kcfg:122
-#, fuzzy, kde-format
+#, kde-format
 msgid ""
 "Check this box to show the days containing to-dos in bold typeface in the "
 "Date Navigator when in to-do view."
 msgstr ""
-"סמן תיבה זו כדי להציג בכתב מודגש, את הימים הכוללים אירועים החוזרים על עצמם "
-"בתאריכון, או בטל את הסימון כדי לתת משקל יתר לאירועים אחרים (שאינם חוזרים על "
-"עצמם בכל יום)."
+"סימון התיבה הזאת יציג את הימים שמכילים מטלות בסגנון גופן מודגש בנווט "
+"התאריכים בתצוגת המטלות."
 
 #. i18n: ectx: label, entry (HighlightJournals), group (General View)
 #: settings/korganizer.kcfg:127
@@ -3849,14 +3842,13 @@ msgstr ""
 
 #. i18n: ectx: whatsthis, entry (HighlightJournals), group (General View)
 #: settings/korganizer.kcfg:128
-#, fuzzy, kde-format
+#, kde-format
 msgid ""
 "Check this box to show the days containing journals in bold typeface in the "
 "Date Navigator when in journal view."
 msgstr ""
-"סמן תיבה זו כדי להציג בכתב מודגש, את הימים הכוללים אירועים החוזרים על עצמם "
-"בתאריכון, או בטל את הסימון כדי לתת משקל יתר לאירועים אחרים (שאינם חוזרים על "
-"עצמם בכל יום)."
+"סימון התיבה הזאת יציג את הימים שמכילים יומנים בסגנון גופן מודגש בנווט "
+"התאריכים בתצוגת היומן."
 
 #. i18n: ectx: label, entry (WeekNumbersShowWork), group (General View)
 #: settings/korganizer.kcfg:133
@@ -3941,11 +3933,13 @@ msgstr "הצגת קו השעה הנוכחית (מרקוס ביינס)"
 
 #. i18n: ectx: whatsthis, entry (MarcusBainsEnabled), group (Agenda View)
 #: settings/korganizer.kcfg:166
-#, fuzzy, kde-format
+#, kde-format
 msgid ""
 "Check this box to display a line in the day or week view indicating the "
 "current-time line (Marcus Bains line)."
-msgstr "אם נבחר, קו אדום יופיע בתצוגת היום או שבוע המסמן את השעה הנוכחית."
+msgstr ""
+"סימון התיבה הזאת יציג קו בתצוגת היום או השבוע שמציין את קו השעה הנוכחית (קו "
+"מרקוס ביינס)."
 
 #. i18n: ectx: tooltip, entry (MarcusBainsEnabled), group (Agenda View)
 #: settings/korganizer.kcfg:167
@@ -5558,7 +5552,7 @@ msgstr "%1"
 #: widgets/kdatenavigator.cpp:223
 #, kde-format
 msgid "A column header of the %1 dates in the month."
-msgstr ""
+msgstr "כותרת עמודה לתאריכי %1 בחודש."
 
 #: widgets/kitemiconcheckcombo.cpp:16
 #, kde-format
