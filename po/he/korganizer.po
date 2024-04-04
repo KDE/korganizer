@@ -18,7 +18,7 @@ msgstr ""
 "Project-Id-Version: korganizer\n"
 "Report-Msgid-Bugs-To: https://bugs.kde.org\n"
 "POT-Creation-Date: 2024-03-27 00:38+0000\n"
-"PO-Revision-Date: 2024-03-31 23:47+0300\n"
+"PO-Revision-Date: 2024-04-03 22:38+0300\n"
 "Last-Translator: Yaron Shahrabani <sh.yaron@gmail.com>\n"
 "Language-Team: צוות התרגום של KDE ישראל\n"
 "Language: he\n"
@@ -4631,9 +4631,9 @@ msgstr "צבע רקע לתצוגת חודש"
 
 #. i18n: ectx: whatsthis, entry, group (Theme/Month view)
 #: settings/korganizer.kcfg:571
-#, fuzzy, kde-format
+#, kde-format
 msgid "Select the Month view background color here."
-msgstr "בחר כאן בצבע הרקע לתצוגת סדר־היום."
+msgstr "כאן ניתן לבחור את צבע רקע תצוגת החודש."
 
 #. i18n: ectx: whatsthis, entry, group (Theme/Month view)
 #: settings/korganizer.kcfg:578
@@ -4806,16 +4806,13 @@ msgstr "הצגה של הכול פרט לנבחרים"
 
 #. i18n: ectx: property (whatsThis), widget (QRadioButton, mCatShowCheck)
 #: ui/filteredit_base.ui:288
-#, fuzzy, kde-format
-#| msgid ""
-#| "When this option is enabled, this filter will show all items containing "
-#| "at least the selected items."
+#, kde-format
 msgid ""
 "When this option is chosen, this filter will show all items containing any "
 "of the selected tags."
 msgstr ""
-"כאשר אפשרות זאת פעילה, מסנן זה יציג את כל הפריטים שמכילים לפחות פריט נבחר "
-"אחד."
+"כאשר האפשרות הזאת מסומנת, המסנן הזה יציג את כל הפריטים שמכילים לפחות אחת "
+"מהתגיות האלו."
 
 #. i18n: ectx: property (text), widget (QRadioButton, mCatShowCheck)
 #: ui/filteredit_base.ui:291
@@ -4939,16 +4936,14 @@ msgstr "מידע של השרת"
 #. i18n: ectx: property (whatsThis), widget (QLineEdit, publishUrl)
 #. i18n: ectx: property (whatsThis), widget (QLabel, TextLabel7)
 #: ui/kogroupwareprefspage.ui:226 ui/kogroupwareprefspage.ui:298
-#, fuzzy, kde-format
+#, kde-format
 msgid ""
 "Enter the URL for the server on which your Free/Busy information shall be "
 "published here.\n"
 "Ask the server administrator for this information."
 msgstr ""
-"הזן כאן כתובת URL עבור השרת עליו יפורסם מידע פנוי/עסוק.\n"
-"בקש מידע זה ממנהל השרת.\n"
-"הנה דוגמה לכתובת שרת Kolab2: \"webdavs://kolab2.com/freebusy/joe@kolab2.com."
-"ifb\""
+"נא למלא כאן את כתובת השרת אליו יפורסמו פרטי פנאי/עיסוק.\n"
+"נא לבקש את הפרטים מהנהלת השרת."
 
 #. i18n: ectx: property (whatsThis), widget (QLineEdit, publishPassword)
 #. i18n: ectx: property (whatsThis), widget (QLabel, textLabel2)
@@ -5355,7 +5350,7 @@ msgstr ""
 #: ui/searchdialog_base.ui:210
 #, kde-format
 msgid "Limit search to specified date range"
-msgstr ""
+msgstr "הגבלת החיפוש לטווח התאריכים שצוין"
 
 #. i18n: ectx: property (text), widget (QLabel, startDateLabel)
 #: ui/searchdialog_base.ui:222
@@ -5367,13 +5362,13 @@ msgstr "מ&תאריך:"
 #: ui/searchdialog_base.ui:241
 #, kde-format
 msgid "The starting date of the period to search."
-msgstr ""
+msgstr "תאריך ההתחלה של התקופה לחיפוש."
 
 #. i18n: ectx: property (whatsThis), widget (KDateComboBox, startDate)
 #: ui/searchdialog_base.ui:244
 #, kde-format
 msgid "Search for items in the time period starting at the date given here."
-msgstr ""
+msgstr "חיפוש אחר פריטים בטווח הזמן שמתחיל בתאריך שסופק כאן."
 
 #. i18n: ectx: property (text), item, widget (KDateComboBox, startDate)
 #. i18n: ectx: property (text), item, widget (KDateComboBox, endDate)
@@ -5392,13 +5387,13 @@ msgstr "&עד תאריך:"
 #: ui/searchdialog_base.ui:279
 #, kde-format
 msgid "The ending date of the period to search."
-msgstr ""
+msgstr "תאריך הסיום של התקופה לחיפוש."
 
 #. i18n: ectx: property (whatsThis), widget (KDateComboBox, endDate)
 #: ui/searchdialog_base.ui:282
 #, kde-format
 msgid "Search for items in the time period ending at the date given here."
-msgstr ""
+msgstr "חיפוש אחר פריטים בטווח הזמן שמסתיים בתאריך שסופק כאן."
 
 #. i18n: ectx: property (toolTip), widget (QCheckBox, inclusiveCheck)
 #: ui/searchdialog_base.ui:296
@@ -5422,7 +5417,7 @@ msgstr ""
 #: ui/searchdialog_base.ui:302
 #, kde-format
 msgid "Exclude e&vents that extend outside the specified date range"
-msgstr ""
+msgstr "להחריג &אירועים שמתפרסים מחוץ לטווח התאריכים שצוין"
 
 #. i18n: ectx: property (toolTip), widget (QCheckBox, includeUndatedTodos)
 #: ui/searchdialog_base.ui:309
