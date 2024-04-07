@@ -18,7 +18,7 @@ msgstr ""
 "Project-Id-Version: korganizer\n"
 "Report-Msgid-Bugs-To: https://bugs.kde.org\n"
 "POT-Creation-Date: 2024-03-27 00:38+0000\n"
-"PO-Revision-Date: 2024-04-03 22:38+0300\n"
+"PO-Revision-Date: 2024-04-06 16:02+0300\n"
 "Last-Translator: Yaron Shahrabani <sh.yaron@gmail.com>\n"
 "Language-Team: צוות התרגום של KDE ישראל\n"
 "Language: he\n"
@@ -4637,19 +4637,19 @@ msgstr "כאן ניתן לבחור את צבע רקע תצוגת החודש."
 
 #. i18n: ectx: whatsthis, entry, group (Theme/Month view)
 #: settings/korganizer.kcfg:578
-#, fuzzy, kde-format
+#, kde-format
 msgid ""
 "Select the highlight color here. The highlight color will be used for "
 "marking the currently selected area in your Month and in the date navigator."
 msgstr ""
-"בחר כאן בצבע הסימון. צבע הסימון ישמש לסימון האזורים הנבחרים כעת בסדר־היום "
-"ובתאריכון."
+"נא לבחור כאן בצבע ההדגשה. צבע ההדגשה ישמש לסימון האזור הנבחר בחודש שלך "
+"ובנווט התאריכים."
 
 #. i18n: ectx: whatsthis, entry, group (Theme/Month view)
 #: settings/korganizer.kcfg:583
-#, fuzzy, kde-format
+#, kde-format
 msgid "Select the working hours background color for the Month view here."
-msgstr "בחר כאן בצבע לסימון שעות העבודה בתצוגת סדר־היום."
+msgstr "נא לבחור כאן את צבע רק שעות העבודה לתצוגת חודש."
 
 #. i18n: ectx: label, entry, group (Theme/Month view)
 #: settings/korganizer.kcfg:605
@@ -4659,14 +4659,14 @@ msgstr "צבע אירוע ברירת מחדל"
 
 #. i18n: ectx: whatsthis, entry, group (Theme/Month view)
 #: settings/korganizer.kcfg:606
-#, fuzzy, kde-format
+#, kde-format
 msgid ""
 "Select the default event color here. The default event color will be used "
 "for events in your Month. Note that you can specify a separate color for "
 "each event tag below."
 msgstr ""
-"בחר כאן בצבעי ברירת המחדל לאירוע. צבע ברירת המחדל ישמש לקטגוריות האירועים "
-"בסדר־היום שלך. שים־לב שביכולתך לציין למטה צבע נפרד עבור כל קטגוריה."
+"נא לבחור כאן את צבע ברירת המחדל לאירועים. צבע ברירת המחדל לאירועים יופיע "
+"באירועים בחודש שלך. נא לשים לב שאפשר להגדיר צבע נפרד לכל תגית אירועי להלן."
 
 #. i18n: ectx: property (placeholderText), widget (KListWidgetSearchLine, searchline)
 #: ui/filteredit_base.ui:35
@@ -5537,7 +5537,7 @@ msgstr "גלילה לשבוע מספר %1"
 msgid ""
 "Click here to scroll the display to week number %1 of the currently "
 "displayed year."
-msgstr ""
+msgstr "לחיצה כאן תגלול את התצוגה לשבוע מס׳ %1 בשנה הנוכחית המוצגת."
 
 #: widgets/kdatenavigator.cpp:222
 #, kde-format
