@@ -26,6 +26,7 @@
 #include <QTabWidget>
 #include <QTimeEdit>
 #include <QVBoxLayout>
+#include <calendarsupport/kcalprefs.h>
 
 K_PLUGIN_CLASS_WITH_JSON(KOPrefsDialogTime, "korganizer_configtime.json")
 
@@ -48,7 +49,7 @@ KOPrefsDialogTime::KOPrefsDialogTime(QObject *parent, const KPluginMetaData &dat
 
     auto datetimeLayout = new QGridLayout(datetimeGroupBox);
 
-    Korganizer::KPrefsWidTime *dayBegins = addWidTime(KOPrefs::instance()->dayBeginsItem(), regionalPage);
+    Korganizer::KPrefsWidTime *dayBegins = addWidTime(CalendarSupport::KCalPrefs::instance()->dayBeginsItem(), regionalPage);
     datetimeLayout->addWidget(dayBegins->label(), 1, 0);
     datetimeLayout->addWidget(dayBegins->timeEdit(), 1, 1);
 
@@ -64,15 +65,15 @@ KOPrefsDialogTime::KOPrefsDialogTime(QObject *parent, const KPluginMetaData &dat
     holidaysLayout->addWidget(holidayRegBox, 1, 0, 1, 2);
 
     auto holidayLabel = new QLabel(i18nc("@label", "Use holiday region:"), holidayRegBox);
-    holidayLabel->setToolTip(KOPrefs::instance()->holidaysItem()->toolTip());
-    holidayLabel->setWhatsThis(KOPrefs::instance()->holidaysItem()->whatsThis());
+    holidayLabel->setToolTip(CalendarSupport::KCalPrefs::instance()->holidaysItem()->toolTip());
+    holidayLabel->setWhatsThis(CalendarSupport::KCalPrefs::instance()->holidaysItem()->whatsThis());
 
     mHolidayCheckCombo = new KPIM::KCheckComboBox(holidayRegBox);
     holidayRegBoxHBoxLayout->addWidget(mHolidayCheckCombo);
     connect(mHolidayCheckCombo, &KPIM::KCheckComboBox::checkedItemsChanged, this, &KOPrefsDialogTime::slotWidChanged);
 
-    mHolidayCheckCombo->setToolTip(KOPrefs::instance()->holidaysItem()->toolTip());
-    mHolidayCheckCombo->setWhatsThis(KOPrefs::instance()->holidaysItem()->whatsThis());
+    mHolidayCheckCombo->setToolTip(CalendarSupport::KCalPrefs::instance()->holidaysItem()->toolTip());
+    mHolidayCheckCombo->setWhatsThis(CalendarSupport::KCalPrefs::instance()->holidaysItem()->whatsThis());
 
     const QStringList regions = KHolidays::HolidayRegion::regionCodes();
     std::vector<std::pair<QString, QString>> regionsMap;
@@ -161,7 +162,7 @@ KOPrefsDialogTime::KOPrefsDialogTime(QObject *parent, const KPluginMetaData &dat
     workEndLayout->addWidget(workEnd->label());
     workEndLayout->addWidget(workEnd->timeEdit());
 
-    Korganizer::KPrefsWidBool *excludeHolidays = addWidBool(KOPrefs::instance()->excludeHolidaysItem());
+    Korganizer::KPrefsWidBool *excludeHolidays = addWidBool(CalendarSupport::KCalPrefs::instance()->excludeHolidaysItem());
 
     workingHoursLayout->addWidget(excludeHolidays->checkBox());
 
@@ -253,7 +254,7 @@ void KOPrefsDialogTime::usrWriteConfig()
             HolidayRegions.append(mHolidayCheckCombo->itemData(index).toString());
         }
     }
-    KOPrefs::instance()->mHolidays = HolidayRegions;
+    CalendarSupport::KCalPrefs::instance()->mHolidays = HolidayRegions;
 
     CalendarSupport::KCalPrefs::instance()->mReminderTime = mReminderTimeSpin->value();
     CalendarSupport::KCalPrefs::instance()->mReminderTimeUnits = mReminderUnitsCombo->currentIndex();

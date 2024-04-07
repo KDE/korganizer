@@ -13,7 +13,7 @@
 #include "corehelper.h"
 #include "kocore.h"
 #include "koglobals.h"
-#include "prefs/koprefs.h"
+#include <CalendarSupport/KCalPrefs>
 
 class KOCoreHelper : public KOrg::CoreHelper
 {
@@ -28,6 +28,6 @@ public:
 
     [[nodiscard]] QTime dayStart() override
     {
-        return KOPrefs::instance()->mDayBegins.time();
+        return CalendarSupport::KCalPrefs::instance()->mDayBegins.time();
     }
 };

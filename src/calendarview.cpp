@@ -259,7 +259,7 @@ CalendarView::CalendarView(QWidget *parent)
     mViewManager->connectTodoView(mTodoList);
     mViewManager->connectView(mTodoList);
 
-    KOGlobals::self()->setHolidays(KOPrefs::instance()->mHolidays);
+    KOGlobals::self()->setHolidays(CalendarSupport::KCalPrefs::instance()->mHolidays);
 
     connect(QApplication::clipboard(), &QClipboard::dataChanged, this, &CalendarView::checkClipboard);
 
@@ -603,7 +603,7 @@ void CalendarView::updateConfig()
         mCalPrinter = nullptr;
     }
 
-    KOGlobals::self()->setHolidays(KOPrefs::instance()->mHolidays);
+    KOGlobals::self()->setHolidays(CalendarSupport::KCalPrefs::instance()->mHolidays);
 
     // config changed lets tell the date navigator the new modes
     // if there weren't changed they are ignored
