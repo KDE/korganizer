@@ -5611,28 +5611,3 @@ msgstr "%1"
 msgctxt "4 digit year"
 msgid "%1"
 msgstr "%1"
-
-#~ msgid "Day begins at"
-#~ msgstr "Dagen startar"
-
-#~ msgid ""
-#~ "Enter the start time for events here. This time should be the earliest "
-#~ "time that you use for events, as it will be displayed at the top."
-#~ msgstr ""
-#~ "Skriv inn det tidlegaste klokkeslettet du kjem til å registrera hendingar "
-#~ "på. Dette klokkeslettet vert vist øvst."
-
-#~ msgid ""
-#~ "Select which regions you want to use the holidays here. Defined holidays "
-#~ "are shown as non-working days in the date navigator, the agenda view, etc."
-#~ msgstr ""
-#~ "Vel kva område du vil henta fridagar frå. Høgtider og andre fridagar vert "
-#~ "markerte som dette i datooversikta, timeplanen og andre stadar."
-
-#~ msgid "Exclude holidays"
-#~ msgstr "Utanom fridagar"
-
-#~ msgid ""
-#~ "Check this box to prevent KOrganizer from marking the working hours on "
-#~ "holidays."
-#~ msgstr "Ikkje marker arbeidstimar som arbeidstid på fridagar."
