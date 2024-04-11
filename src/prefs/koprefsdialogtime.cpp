@@ -128,8 +128,11 @@ KOPrefsDialogTime::KOPrefsDialogTime(QObject *parent, const KPluginMetaData &dat
                                              "If this is a work day for you, check "
                                              "this box, or the working hours will not be "
                                              "marked with color."));
-
+#if QT_VERSION < QT_VERSION_CHECK(6, 7, 0)
         connect(mWorkDays[index], &QCheckBox::stateChanged, this, &Korganizer::KPrefsModule::slotWidChanged);
+#else
+        connect(mWorkDays[index], &QCheckBox::checkStateChanged, this, &Korganizer::KPrefsModule::slotWidChanged);
+#endif
 
         workDaysLayout->addWidget(mWorkDays[index]);
     }
