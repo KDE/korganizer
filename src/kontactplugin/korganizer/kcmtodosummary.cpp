@@ -27,17 +27,24 @@ KCMTodoSummary::KCMTodoSummary(QObject *parent, const KPluginMetaData &data)
     connect(mDateTodayButton, &QRadioButton::clicked, this, &KCMTodoSummary::modified);
     connect(mDateMonthButton, &QRadioButton::clicked, this, &KCMTodoSummary::modified);
     connect(mDateRangeButton, &QRadioButton::clicked, this, &KCMTodoSummary::modified);
-
+#if QT_VERSION < QT_VERSION_CHECK(6, 7, 0)
     connect(mHideCompletedBox, &QCheckBox::stateChanged, this, &KCMTodoSummary::modified);
     connect(mHideOpenEndedBox, &QCheckBox::stateChanged, this, &KCMTodoSummary::modified);
     connect(mHideUnstartedBox, &QCheckBox::stateChanged, this, &KCMTodoSummary::modified);
     connect(mHideInProgressBox, &QCheckBox::stateChanged, this, &KCMTodoSummary::modified);
     connect(mHideOverdueBox, &QCheckBox::stateChanged, this, &KCMTodoSummary::modified);
+    connect(mShowMineOnly, &QCheckBox::stateChanged, this, &KCMTodoSummary::modified);
+#else
+    connect(mHideCompletedBox, &QCheckBox::checkStateChanged, this, &KCMTodoSummary::modified);
+    connect(mHideOpenEndedBox, &QCheckBox::checkStateChanged, this, &KCMTodoSummary::modified);
+    connect(mHideUnstartedBox, &QCheckBox::checkStateChanged, this, &KCMTodoSummary::modified);
+    connect(mHideInProgressBox, &QCheckBox::checkStateChanged, this, &KCMTodoSummary::modified);
+    connect(mHideOverdueBox, &QCheckBox::checkStateChanged, this, &KCMTodoSummary::modified);
+    connect(mShowMineOnly, &QCheckBox::checkStateChanged, this, &KCMTodoSummary::modified);
+#endif
 
     connect(mCustomDays, &QSpinBox::valueChanged, this, &KCMTodoSummary::modified);
     connect(mCustomDays, &QSpinBox::valueChanged, this, &KCMTodoSummary::customDaysChanged);
-
-    connect(mShowMineOnly, &QCheckBox::stateChanged, this, &KCMTodoSummary::modified);
 
     KAcceleratorManager::manage(widget());
 

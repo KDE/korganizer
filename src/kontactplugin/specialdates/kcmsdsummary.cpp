@@ -31,15 +31,23 @@ KCMSDSummary::KCMSDSummary(QObject *parent, const KPluginMetaData &data)
     connect(mCustomDays, &QSpinBox::valueChanged, this, &KCMSDSummary::modified);
     connect(mCustomDays, &QSpinBox::valueChanged, this, &KCMSDSummary::customDaysChanged);
 
+#if QT_VERSION < QT_VERSION_CHECK(6, 7, 0)
     connect(mShowBirthdaysFromCalBox, &QCheckBox::stateChanged, this, &KCMSDSummary::modified);
     connect(mShowAnniversariesFromCalBox, &QCheckBox::stateChanged, this, &KCMSDSummary::modified);
     connect(mShowHolidaysFromCalBox, &QCheckBox::stateChanged, this, &KCMSDSummary::modified);
     connect(mShowSpecialsFromCalBox, &QCheckBox::stateChanged, this, &KCMSDSummary::modified);
-
-    connect(mShowBirthdaysFromKABBox, &QCheckBox::stateChanged, this, &KCMSDSummary::modified);
     connect(mShowAnniversariesFromKABBox, &QCheckBox::stateChanged, this, &KCMSDSummary::modified);
-
+    connect(mShowBirthdaysFromKABBox, &QCheckBox::stateChanged, this, &KCMSDSummary::modified);
     connect(mShowMineOnly, &QCheckBox::stateChanged, this, &KCMSDSummary::modified);
+#else
+    connect(mShowBirthdaysFromCalBox, &QCheckBox::checkStateChanged, this, &KCMSDSummary::modified);
+    connect(mShowAnniversariesFromCalBox, &QCheckBox::checkStateChanged, this, &KCMSDSummary::modified);
+    connect(mShowHolidaysFromCalBox, &QCheckBox::checkStateChanged, this, &KCMSDSummary::modified);
+    connect(mShowSpecialsFromCalBox, &QCheckBox::checkStateChanged, this, &KCMSDSummary::modified);
+    connect(mShowAnniversariesFromKABBox, &QCheckBox::checkStateChanged, this, &KCMSDSummary::modified);
+    connect(mShowBirthdaysFromKABBox, &QCheckBox::checkStateChanged, this, &KCMSDSummary::modified);
+    connect(mShowMineOnly, &QCheckBox::checkStateChanged, this, &KCMSDSummary::modified);
+#endif
 
     KAcceleratorManager::manage(widget());
 
