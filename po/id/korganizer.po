@@ -6,7 +6,7 @@ msgid ""
 msgstr ""
 "Project-Id-Version: korganizer\n"
 "Report-Msgid-Bugs-To: https://bugs.kde.org\n"
-"POT-Creation-Date: 2024-04-09 00:38+0000\n"
+"POT-Creation-Date: 2024-04-12 00:38+0000\n"
 "PO-Revision-Date: 2022-09-30 08:03+0700\n"
 "Last-Translator: Wantoyèk <wantoyek@gmail.com>\n"
 "Language-Team: Indonesian <kde-i18n-doc@kde.org>\n"
@@ -2452,8 +2452,8 @@ msgstr ""
 "baru."
 
 #: kontactplugin/korganizer/kcmapptsummary.cpp:71
-#: kontactplugin/korganizer/kcmtodosummary.cpp:56
-#: kontactplugin/specialdates/kcmsdsummary.cpp:56
+#: kontactplugin/korganizer/kcmtodosummary.cpp:63
+#: kontactplugin/specialdates/kcmsdsummary.cpp:64
 #, kde-format
 msgid " day"
 msgid_plural " days"
@@ -3361,7 +3361,7 @@ msgctxt "@title:group email settings"
 msgid "Email Settings"
 msgstr "Pengaturan Email"
 
-#: prefs/koprefsdialogmain.cpp:62 prefs/koprefsdialogtime.cpp:190
+#: prefs/koprefsdialogmain.cpp:62 prefs/koprefsdialogtime.cpp:193
 #, kde-format
 msgctxt "@title:group"
 msgid "Reminders"
@@ -3476,85 +3476,85 @@ msgstr ""
 "hari ini. Jika ini adalah hari kerja untukmu, centang kotak ini, atau jam "
 "kerja tidak akan ditandai dengan warna."
 
-#: prefs/koprefsdialogtime.cpp:141
+#: prefs/koprefsdialogtime.cpp:144
 #, kde-format
 msgctxt "@item:inlistbox"
 msgid "Monday"
 msgstr "Senin"
 
-#: prefs/koprefsdialogtime.cpp:141
+#: prefs/koprefsdialogtime.cpp:144
 #, kde-format
 msgctxt "@item:inlistbox"
 msgid "Tuesday"
 msgstr "Selasa"
 
-#: prefs/koprefsdialogtime.cpp:141
+#: prefs/koprefsdialogtime.cpp:144
 #, kde-format
 msgctxt "@item:inlistbox"
 msgid "Wednesday"
 msgstr "Rabu"
 
-#: prefs/koprefsdialogtime.cpp:142
+#: prefs/koprefsdialogtime.cpp:145
 #, kde-format
 msgctxt "@item:inlistbox"
 msgid "Thursday"
 msgstr "Kamis"
 
-#: prefs/koprefsdialogtime.cpp:142
+#: prefs/koprefsdialogtime.cpp:145
 #, kde-format
 msgctxt "@item:inlistbox"
 msgid "Friday"
 msgstr "Jumat"
 
-#: prefs/koprefsdialogtime.cpp:142
+#: prefs/koprefsdialogtime.cpp:145
 #, kde-format
 msgctxt "@item:inlistbox"
 msgid "Saturday"
 msgstr "Sabtu"
 
-#: prefs/koprefsdialogtime.cpp:143
+#: prefs/koprefsdialogtime.cpp:146
 #, kde-format
 msgctxt "@item:inlistbox"
 msgid "Sunday"
 msgstr "Minggu"
 
-#: prefs/koprefsdialogtime.cpp:172
+#: prefs/koprefsdialogtime.cpp:175
 #, kde-format
 msgctxt "@title:tab"
 msgid "Default Values"
 msgstr "Nilai Default"
 
-#: prefs/koprefsdialogtime.cpp:175
+#: prefs/koprefsdialogtime.cpp:178
 #, kde-format
 msgctxt "@title:group"
 msgid "Appointments"
 msgstr "Janji Temu"
 
-#: prefs/koprefsdialogtime.cpp:195
+#: prefs/koprefsdialogtime.cpp:198
 #, kde-format
 msgctxt "@label"
 msgid "Default reminder time:"
 msgstr "Waktu pengingat default:"
 
-#: prefs/koprefsdialogtime.cpp:208
+#: prefs/koprefsdialogtime.cpp:211
 #, kde-format
 msgctxt "@item:inlistbox reminder units in minutes"
 msgid "minute(s)"
 msgstr "menit"
 
-#: prefs/koprefsdialogtime.cpp:209
+#: prefs/koprefsdialogtime.cpp:212
 #, kde-format
 msgctxt "@item:inlistbox reminder time units in hours"
 msgid "hour(s)"
 msgstr "jam"
 
-#: prefs/koprefsdialogtime.cpp:210
+#: prefs/koprefsdialogtime.cpp:213
 #, kde-format
 msgctxt "@item:inlistbox reminder time units in days"
 msgid "day(s)"
 msgstr "hari"
 
-#: prefs/koprefsdialogtime.cpp:220
+#: prefs/koprefsdialogtime.cpp:223
 #, fuzzy, kde-format
 #| msgid ""
 #| "*.ogg *.wav *.mp3 *.wma *.flac *.aiff *.raw *.au *.ra|Audio Files (*.ogg "

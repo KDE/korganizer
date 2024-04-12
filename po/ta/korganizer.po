@@ -17,7 +17,7 @@ msgid ""
 msgstr ""
 "Project-Id-Version: korganizer\n"
 "Report-Msgid-Bugs-To: https://bugs.kde.org\n"
-"POT-Creation-Date: 2024-04-09 00:38+0000\n"
+"POT-Creation-Date: 2024-04-12 00:38+0000\n"
 "PO-Revision-Date: 2023-12-17 16:42+0530\n"
 "Last-Translator: Kishore G <kishore96@gmail.com>\n"
 "Language-Team: Tamil <kde-i18n-doc@kde.org>\n"
@@ -2433,8 +2433,8 @@ msgid ""
 msgstr ""
 
 #: kontactplugin/korganizer/kcmapptsummary.cpp:71
-#: kontactplugin/korganizer/kcmtodosummary.cpp:56
-#: kontactplugin/specialdates/kcmsdsummary.cpp:56
+#: kontactplugin/korganizer/kcmtodosummary.cpp:63
+#: kontactplugin/specialdates/kcmsdsummary.cpp:64
 #, fuzzy, kde-format
 msgid " day"
 msgid_plural " days"
@@ -3334,7 +3334,7 @@ msgctxt "@title:group email settings"
 msgid "Email Settings"
 msgstr "திட்டக்கூட்டம்"
 
-#: prefs/koprefsdialogmain.cpp:62 prefs/koprefsdialogtime.cpp:190
+#: prefs/koprefsdialogmain.cpp:62 prefs/koprefsdialogtime.cpp:193
 #, fuzzy, kde-format
 msgctxt "@title:group"
 msgid "Reminders"
@@ -3460,90 +3460,90 @@ msgid ""
 "will not be marked with color."
 msgstr ""
 
-#: prefs/koprefsdialogtime.cpp:141
+#: prefs/koprefsdialogtime.cpp:144
 #, kde-format
 msgctxt "@item:inlistbox"
 msgid "Monday"
 msgstr "திங்கள்"
 
-#: prefs/koprefsdialogtime.cpp:141
+#: prefs/koprefsdialogtime.cpp:144
 #, kde-format
 msgctxt "@item:inlistbox"
 msgid "Tuesday"
 msgstr "செவ்வாய்"
 
-#: prefs/koprefsdialogtime.cpp:141
+#: prefs/koprefsdialogtime.cpp:144
 #, kde-format
 msgctxt "@item:inlistbox"
 msgid "Wednesday"
 msgstr "புதன்"
 
-#: prefs/koprefsdialogtime.cpp:142
+#: prefs/koprefsdialogtime.cpp:145
 #, kde-format
 msgctxt "@item:inlistbox"
 msgid "Thursday"
 msgstr "வியாழன்"
 
-#: prefs/koprefsdialogtime.cpp:142
+#: prefs/koprefsdialogtime.cpp:145
 #, kde-format
 msgctxt "@item:inlistbox"
 msgid "Friday"
 msgstr "வெள்ளி"
 
-#: prefs/koprefsdialogtime.cpp:142
+#: prefs/koprefsdialogtime.cpp:145
 #, kde-format
 msgctxt "@item:inlistbox"
 msgid "Saturday"
 msgstr "சனி"
 
-#: prefs/koprefsdialogtime.cpp:143
+#: prefs/koprefsdialogtime.cpp:146
 #, kde-format
 msgctxt "@item:inlistbox"
 msgid "Sunday"
 msgstr "ஞாயிறு"
 
-#: prefs/koprefsdialogtime.cpp:172
+#: prefs/koprefsdialogtime.cpp:175
 #, fuzzy, kde-format
 #| msgid "Default Calendar"
 msgctxt "@title:tab"
 msgid "Default Values"
 msgstr "முன்னிருப்பு நாள்காட்டி"
 
-#: prefs/koprefsdialogtime.cpp:175
+#: prefs/koprefsdialogtime.cpp:178
 #, fuzzy, kde-format
 #| msgid "Appointment"
 msgctxt "@title:group"
 msgid "Appointments"
 msgstr "சந்திப்பு"
 
-#: prefs/koprefsdialogtime.cpp:195
+#: prefs/koprefsdialogtime.cpp:198
 #, fuzzy, kde-format
 msgctxt "@label"
 msgid "Default reminder time:"
 msgstr "முன்னிருப்பு அலார நேரம்"
 
-#: prefs/koprefsdialogtime.cpp:208
+#: prefs/koprefsdialogtime.cpp:211
 #, fuzzy, kde-format
 #| msgid "minute(s)"
 msgctxt "@item:inlistbox reminder units in minutes"
 msgid "minute(s)"
 msgstr "நிமிடம்(கள்)"
 
-#: prefs/koprefsdialogtime.cpp:209
+#: prefs/koprefsdialogtime.cpp:212
 #, fuzzy, kde-format
 #| msgid "hour(s)"
 msgctxt "@item:inlistbox reminder time units in hours"
 msgid "hour(s)"
 msgstr "மணி(கள்)"
 
-#: prefs/koprefsdialogtime.cpp:210
+#: prefs/koprefsdialogtime.cpp:213
 #, fuzzy, kde-format
 #| msgid "day(s)"
 msgctxt "@item:inlistbox reminder time units in days"
 msgid "day(s)"
 msgstr "நாள்(கள்)"
 
-#: prefs/koprefsdialogtime.cpp:220
+#: prefs/koprefsdialogtime.cpp:223
 #, kde-format
 msgid "Audio Files (*.ogg *.wav *.mp3 *.wma *.flac *.aiff *.raw *.au *.ra)"
 msgstr ""

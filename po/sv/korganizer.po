@@ -10,7 +10,7 @@ msgid ""
 msgstr ""
 "Project-Id-Version: korganizer\n"
 "Report-Msgid-Bugs-To: https://bugs.kde.org\n"
-"POT-Creation-Date: 2024-04-09 00:38+0000\n"
+"POT-Creation-Date: 2024-04-12 00:38+0000\n"
 "PO-Revision-Date: 2023-07-31 10:08+0200\n"
 "Last-Translator: Stefan Asserhäll <stefan.asserhall@bredband.net>\n"
 "Language-Team: Swedish <kde-i18n-doc@kde.org>\n"
@@ -2429,8 +2429,8 @@ msgid ""
 msgstr "En dialogrutan visas där du kan skapa en ny journalanteckning."
 
 #: kontactplugin/korganizer/kcmapptsummary.cpp:71
-#: kontactplugin/korganizer/kcmtodosummary.cpp:56
-#: kontactplugin/specialdates/kcmsdsummary.cpp:56
+#: kontactplugin/korganizer/kcmtodosummary.cpp:63
+#: kontactplugin/specialdates/kcmsdsummary.cpp:64
 #, kde-format
 msgid " day"
 msgid_plural " days"
@@ -3329,7 +3329,7 @@ msgctxt "@title:group email settings"
 msgid "Email Settings"
 msgstr "E-postinställningar"
 
-#: prefs/koprefsdialogmain.cpp:62 prefs/koprefsdialogtime.cpp:190
+#: prefs/koprefsdialogmain.cpp:62 prefs/koprefsdialogtime.cpp:193
 #, kde-format
 msgctxt "@title:group"
 msgid "Reminders"
@@ -3444,85 +3444,85 @@ msgstr ""
 "det är en arbetsdag för dig, markera rutan, annars visas inte arbetstiden "
 "med färg."
 
-#: prefs/koprefsdialogtime.cpp:141
+#: prefs/koprefsdialogtime.cpp:144
 #, kde-format
 msgctxt "@item:inlistbox"
 msgid "Monday"
 msgstr "måndag"
 
-#: prefs/koprefsdialogtime.cpp:141
+#: prefs/koprefsdialogtime.cpp:144
 #, kde-format
 msgctxt "@item:inlistbox"
 msgid "Tuesday"
 msgstr "tisdag"
 
-#: prefs/koprefsdialogtime.cpp:141
+#: prefs/koprefsdialogtime.cpp:144
 #, kde-format
 msgctxt "@item:inlistbox"
 msgid "Wednesday"
 msgstr "onsdag"
 
-#: prefs/koprefsdialogtime.cpp:142
+#: prefs/koprefsdialogtime.cpp:145
 #, kde-format
 msgctxt "@item:inlistbox"
 msgid "Thursday"
 msgstr "torsdag"
 
-#: prefs/koprefsdialogtime.cpp:142
+#: prefs/koprefsdialogtime.cpp:145
 #, kde-format
 msgctxt "@item:inlistbox"
 msgid "Friday"
 msgstr "fredag"
 
-#: prefs/koprefsdialogtime.cpp:142
+#: prefs/koprefsdialogtime.cpp:145
 #, kde-format
 msgctxt "@item:inlistbox"
 msgid "Saturday"
 msgstr "lördag"
 
-#: prefs/koprefsdialogtime.cpp:143
+#: prefs/koprefsdialogtime.cpp:146
 #, kde-format
 msgctxt "@item:inlistbox"
 msgid "Sunday"
 msgstr "söndag"
 
-#: prefs/koprefsdialogtime.cpp:172
+#: prefs/koprefsdialogtime.cpp:175
 #, kde-format
 msgctxt "@title:tab"
 msgid "Default Values"
 msgstr "Standardvärden"
 
-#: prefs/koprefsdialogtime.cpp:175
+#: prefs/koprefsdialogtime.cpp:178
 #, kde-format
 msgctxt "@title:group"
 msgid "Appointments"
 msgstr "Möten"
 
-#: prefs/koprefsdialogtime.cpp:195
+#: prefs/koprefsdialogtime.cpp:198
 #, kde-format
 msgctxt "@label"
 msgid "Default reminder time:"
 msgstr "Standardtid för påminnelse:"
 
-#: prefs/koprefsdialogtime.cpp:208
+#: prefs/koprefsdialogtime.cpp:211
 #, kde-format
 msgctxt "@item:inlistbox reminder units in minutes"
 msgid "minute(s)"
 msgstr "minut(er)"
 
-#: prefs/koprefsdialogtime.cpp:209
+#: prefs/koprefsdialogtime.cpp:212
 #, kde-format
 msgctxt "@item:inlistbox reminder time units in hours"
 msgid "hour(s)"
 msgstr "timma(r)"
 
-#: prefs/koprefsdialogtime.cpp:210
+#: prefs/koprefsdialogtime.cpp:213
 #, kde-format
 msgctxt "@item:inlistbox reminder time units in days"
 msgid "day(s)"
 msgstr "dag(ar)"
 
-#: prefs/koprefsdialogtime.cpp:220
+#: prefs/koprefsdialogtime.cpp:223
 #, fuzzy, kde-format
 #| msgid ""
 #| "*.ogg *.wav *.mp3 *.wma *.flac *.aiff *.raw *.au *.ra|Audio Files (*.ogg "

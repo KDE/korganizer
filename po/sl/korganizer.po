@@ -1,7 +1,7 @@
 # translation of korganizer.po to Slovenian
 # Translation of korganizer.po to Slovenian
 # Copyright (C) 2001,2002, 2003, 2004, 2005, 2006 Free Software Foundation, Inc.
-# $Id: korganizer.po 1677554 2024-04-09 01:09:06Z scripty $
+# $Id: korganizer.po 1677750 2024-04-12 01:07:57Z scripty $
 # $Source$
 #
 # Roman Maurer <roman.maurer@hermes.si>, 2001.
@@ -14,7 +14,7 @@ msgid ""
 msgstr ""
 "Project-Id-Version: korganizer\n"
 "Report-Msgid-Bugs-To: https://bugs.kde.org\n"
-"POT-Creation-Date: 2024-04-09 00:38+0000\n"
+"POT-Creation-Date: 2024-04-12 00:38+0000\n"
 "PO-Revision-Date: 2024-02-26 00:35+0100\n"
 "Last-Translator: Jure Repinc <jlp@holodeck1.com>\n"
 "Language-Team: Slovenian <lugos-slo@lugos.si>\n"
@@ -2454,8 +2454,8 @@ msgstr ""
 "dnevnika."
 
 #: kontactplugin/korganizer/kcmapptsummary.cpp:71
-#: kontactplugin/korganizer/kcmtodosummary.cpp:56
-#: kontactplugin/specialdates/kcmsdsummary.cpp:56
+#: kontactplugin/korganizer/kcmtodosummary.cpp:63
+#: kontactplugin/specialdates/kcmsdsummary.cpp:64
 #, kde-format
 msgid " day"
 msgid_plural " days"
@@ -3376,7 +3376,7 @@ msgctxt "@title:group email settings"
 msgid "Email Settings"
 msgstr "Nastavitve e-pošte"
 
-#: prefs/koprefsdialogmain.cpp:62 prefs/koprefsdialogtime.cpp:190
+#: prefs/koprefsdialogmain.cpp:62 prefs/koprefsdialogtime.cpp:193
 #, kde-format
 msgctxt "@title:group"
 msgid "Reminders"
@@ -3491,85 +3491,85 @@ msgstr ""
 "tednu. Če je to vaš delovni dan, označite to polje. V nasprotnem primeru "
 "delovne ure ne bodo označene s posebno barvo."
 
-#: prefs/koprefsdialogtime.cpp:141
+#: prefs/koprefsdialogtime.cpp:144
 #, kde-format
 msgctxt "@item:inlistbox"
 msgid "Monday"
 msgstr "Ponedeljek"
 
-#: prefs/koprefsdialogtime.cpp:141
+#: prefs/koprefsdialogtime.cpp:144
 #, kde-format
 msgctxt "@item:inlistbox"
 msgid "Tuesday"
 msgstr "Torek"
 
-#: prefs/koprefsdialogtime.cpp:141
+#: prefs/koprefsdialogtime.cpp:144
 #, kde-format
 msgctxt "@item:inlistbox"
 msgid "Wednesday"
 msgstr "Sreda"
 
-#: prefs/koprefsdialogtime.cpp:142
+#: prefs/koprefsdialogtime.cpp:145
 #, kde-format
 msgctxt "@item:inlistbox"
 msgid "Thursday"
 msgstr "Četrtek"
 
-#: prefs/koprefsdialogtime.cpp:142
+#: prefs/koprefsdialogtime.cpp:145
 #, kde-format
 msgctxt "@item:inlistbox"
 msgid "Friday"
 msgstr "Petek"
 
-#: prefs/koprefsdialogtime.cpp:142
+#: prefs/koprefsdialogtime.cpp:145
 #, kde-format
 msgctxt "@item:inlistbox"
 msgid "Saturday"
 msgstr "Sobota"
 
-#: prefs/koprefsdialogtime.cpp:143
+#: prefs/koprefsdialogtime.cpp:146
 #, kde-format
 msgctxt "@item:inlistbox"
 msgid "Sunday"
 msgstr "Nedelja"
 
-#: prefs/koprefsdialogtime.cpp:172
+#: prefs/koprefsdialogtime.cpp:175
 #, kde-format
 msgctxt "@title:tab"
 msgid "Default Values"
 msgstr "Privzete vrednosti"
 
-#: prefs/koprefsdialogtime.cpp:175
+#: prefs/koprefsdialogtime.cpp:178
 #, kde-format
 msgctxt "@title:group"
 msgid "Appointments"
 msgstr "Sestanki"
 
-#: prefs/koprefsdialogtime.cpp:195
+#: prefs/koprefsdialogtime.cpp:198
 #, kde-format
 msgctxt "@label"
 msgid "Default reminder time:"
 msgstr "Privzeti čas opomnika:"
 
-#: prefs/koprefsdialogtime.cpp:208
+#: prefs/koprefsdialogtime.cpp:211
 #, kde-format
 msgctxt "@item:inlistbox reminder units in minutes"
 msgid "minute(s)"
 msgstr "minut"
 
-#: prefs/koprefsdialogtime.cpp:209
+#: prefs/koprefsdialogtime.cpp:212
 #, kde-format
 msgctxt "@item:inlistbox reminder time units in hours"
 msgid "hour(s)"
 msgstr "ur"
 
-#: prefs/koprefsdialogtime.cpp:210
+#: prefs/koprefsdialogtime.cpp:213
 #, kde-format
 msgctxt "@item:inlistbox reminder time units in days"
 msgid "day(s)"
 msgstr "dni"
 
-#: prefs/koprefsdialogtime.cpp:220
+#: prefs/koprefsdialogtime.cpp:223
 #, kde-format
 msgid "Audio Files (*.ogg *.wav *.mp3 *.wma *.flac *.aiff *.raw *.au *.ra)"
 msgstr ""

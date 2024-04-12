@@ -6,7 +6,7 @@ msgid ""
 msgstr ""
 "Project-Id-Version: korganizer\n"
 "Report-Msgid-Bugs-To: https://bugs.kde.org\n"
-"POT-Creation-Date: 2024-04-09 00:38+0000\n"
+"POT-Creation-Date: 2024-04-12 00:38+0000\n"
 "PO-Revision-Date: 2013-03-24 10:49+0100\n"
 "Last-Translator: Jean Cayron <jean.cayron@base.be>\n"
 "Language-Team: Walloon <linux-wa@walon.org>\n"
@@ -2502,8 +2502,8 @@ msgid ""
 msgstr ""
 
 #: kontactplugin/korganizer/kcmapptsummary.cpp:71
-#: kontactplugin/korganizer/kcmtodosummary.cpp:56
-#: kontactplugin/specialdates/kcmsdsummary.cpp:56
+#: kontactplugin/korganizer/kcmtodosummary.cpp:63
+#: kontactplugin/specialdates/kcmsdsummary.cpp:64
 #, fuzzy, kde-format
 #| msgctxt "@label suffix in the N days spin box"
 #| msgid " days"
@@ -3445,7 +3445,7 @@ msgctxt "@title:group email settings"
 msgid "Email Settings"
 msgstr "Tchuzes d' emilaedje"
 
-#: prefs/koprefsdialogmain.cpp:62 prefs/koprefsdialogtime.cpp:190
+#: prefs/koprefsdialogmain.cpp:62 prefs/koprefsdialogtime.cpp:193
 #, fuzzy, kde-format
 #| msgctxt "@title:window"
 #| msgid "Reminders"
@@ -3570,56 +3570,56 @@ msgid ""
 "will not be marked with color."
 msgstr ""
 
-#: prefs/koprefsdialogtime.cpp:141
+#: prefs/koprefsdialogtime.cpp:144
 #, kde-format
 msgctxt "@item:inlistbox"
 msgid "Monday"
 msgstr ""
 
-#: prefs/koprefsdialogtime.cpp:141
+#: prefs/koprefsdialogtime.cpp:144
 #, kde-format
 msgctxt "@item:inlistbox"
 msgid "Tuesday"
 msgstr ""
 
-#: prefs/koprefsdialogtime.cpp:141
+#: prefs/koprefsdialogtime.cpp:144
 #, kde-format
 msgctxt "@item:inlistbox"
 msgid "Wednesday"
 msgstr ""
 
-#: prefs/koprefsdialogtime.cpp:142
+#: prefs/koprefsdialogtime.cpp:145
 #, kde-format
 msgctxt "@item:inlistbox"
 msgid "Thursday"
 msgstr ""
 
-#: prefs/koprefsdialogtime.cpp:142
+#: prefs/koprefsdialogtime.cpp:145
 #, fuzzy, kde-format
 #| msgid "Holiday"
 msgctxt "@item:inlistbox"
 msgid "Friday"
 msgstr "Condjî"
 
-#: prefs/koprefsdialogtime.cpp:142
+#: prefs/koprefsdialogtime.cpp:145
 #, kde-format
 msgctxt "@item:inlistbox"
 msgid "Saturday"
 msgstr ""
 
-#: prefs/koprefsdialogtime.cpp:143
+#: prefs/koprefsdialogtime.cpp:146
 #, kde-format
 msgctxt "@item:inlistbox"
 msgid "Sunday"
 msgstr ""
 
-#: prefs/koprefsdialogtime.cpp:172
+#: prefs/koprefsdialogtime.cpp:175
 #, kde-format
 msgctxt "@title:tab"
 msgid "Default Values"
 msgstr "Prémetowès valixhances"
 
-#: prefs/koprefsdialogtime.cpp:175
+#: prefs/koprefsdialogtime.cpp:178
 #, fuzzy, kde-format
 #| msgctxt "incidence category: appointment"
 #| msgid "Appointment"
@@ -3627,13 +3627,13 @@ msgctxt "@title:group"
 msgid "Appointments"
 msgstr "Radjoû"
 
-#: prefs/koprefsdialogtime.cpp:195
+#: prefs/koprefsdialogtime.cpp:198
 #, kde-format
 msgctxt "@label"
 msgid "Default reminder time:"
 msgstr "Prémetou tårdjaedje pol rimimbraedje:"
 
-#: prefs/koprefsdialogtime.cpp:208
+#: prefs/koprefsdialogtime.cpp:211
 #, fuzzy, kde-format
 #| msgctxt "@item:inlistbox alarm expressed in minutes"
 #| msgid "minute(s)"
@@ -3641,7 +3641,7 @@ msgctxt "@item:inlistbox reminder units in minutes"
 msgid "minute(s)"
 msgstr "munute(s)"
 
-#: prefs/koprefsdialogtime.cpp:209
+#: prefs/koprefsdialogtime.cpp:212
 #, fuzzy, kde-format
 #| msgctxt "@item:inlistbox alarm expressed in hours"
 #| msgid "hour(s)"
@@ -3649,7 +3649,7 @@ msgctxt "@item:inlistbox reminder time units in hours"
 msgid "hour(s)"
 msgstr "eure(s)"
 
-#: prefs/koprefsdialogtime.cpp:210
+#: prefs/koprefsdialogtime.cpp:213
 #, fuzzy, kde-format
 #| msgctxt "@label recurrence expressed in days"
 #| msgid "day(s)"
@@ -3657,7 +3657,7 @@ msgctxt "@item:inlistbox reminder time units in days"
 msgid "day(s)"
 msgstr "djoû(s)"
 
-#: prefs/koprefsdialogtime.cpp:220
+#: prefs/koprefsdialogtime.cpp:223
 #, kde-format
 msgid "Audio Files (*.ogg *.wav *.mp3 *.wma *.flac *.aiff *.raw *.au *.ra)"
 msgstr ""
