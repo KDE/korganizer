@@ -18,7 +18,7 @@ msgstr ""
 "Project-Id-Version: korganizer\n"
 "Report-Msgid-Bugs-To: https://bugs.kde.org\n"
 "POT-Creation-Date: 2024-04-12 00:38+0000\n"
-"PO-Revision-Date: 2024-04-06 16:02+0300\n"
+"PO-Revision-Date: 2024-04-15 14:32+0300\n"
 "Last-Translator: Yaron Shahrabani <sh.yaron@gmail.com>\n"
 "Language-Team: צוות התרגום של KDE ישראל\n"
 "Language: he\n"
@@ -4526,7 +4526,7 @@ msgstr "שיטת הצמדת קבצים למטלות כברירת מחדל"
 #: settings/korganizer.kcfg:406
 #, kde-format
 msgid "The default way of attaching dropped emails to a task"
-msgstr ""
+msgstr "דרך ברירת המחדל לצירוף הודעות לתוך משימה"
 
 #. i18n: ectx: label, entry (DefaultTodoAttachMethod), group (Hidden Options)
 #: settings/korganizer.kcfg:409
@@ -4576,6 +4576,8 @@ msgid ""
 "Use system color instead of user defined color. If enabled will ignore all "
 "other color settings"
 msgstr ""
+"להשתמש בצבע המערכת במקום בצבע המוגדר. אם האפשרות פעילה להתעלם מכל הגדרות "
+"הצבע האחרות"
 
 #. i18n: ectx: label, entry, group (Theme/Month view)
 #: settings/korganizer.kcfg:553
@@ -4974,7 +4976,7 @@ msgstr "כתובת שרת:"
 #: ui/kogroupwareprefspage.ui:311
 #, kde-format
 msgid "(No need if using Kolab server version 2)"
-msgstr ""
+msgstr "(אין צורך בעת שימוש עם שרת Kolab בגרסה 2)"
 
 #. i18n: ectx: attribute (title), widget (QWidget, tabRetrieve)
 #: ui/kogroupwareprefspage.ui:338
@@ -5038,7 +5040,7 @@ msgstr "להשתמש בכתובת &דוא״ל מלאה לקבלה"
 #. i18n: ectx: property (whatsThis), widget (QLineEdit, retrieveUrl)
 #. i18n: ectx: property (whatsThis), widget (QLabel, TextLabel7_2)
 #: ui/kogroupwareprefspage.ui:446 ui/kogroupwareprefspage.ui:461
-#, fuzzy, kde-format
+#, kde-format
 msgctxt "@info:whatsthis"
 msgid ""
 "Enter the URL for the server on which the Free/Busy information is published "
@@ -5052,10 +5054,15 @@ msgid ""
 "\n"
 "https://kolab2.example.com/freebusy/user.xfb"
 msgstr ""
-"הזן כאן כתובת URL עבור השרת בו מתפרסים נתוני פנוי/עסוק.\n"
-"בקש ממנהל השרת את המידע הזה.\n"
-"דוגמה עבור כתובת לשרת Kolab2 עשויה להראות כך: \"webdavs://kolab2.com/"
-"freebusy/\""
+"נא למלא כאן את כתובת השרת אליו מפורסמים נתוני פנוי/עסוק..\n"
+"אפשר לבקש את הפרטים האלה מהנהלת השרת.\n"
+"הנה דוגמה לכתובת שרת Kolab2:\n"
+"\n"
+"https://kolab2.example.com/freebusy/\n"
+"\n"
+"לחלופין, אפשר לציין את הנתיב המלא לנתוני פנוי/עסוק. למשל: \n"
+"\n"
+"https://kolab2.example.com/freebusy/user.xfb"
 
 #. i18n: ectx: property (text), widget (QLabel, textLabel3)
 #: ui/kogroupwareprefspage.ui:479
@@ -5085,7 +5092,7 @@ msgstr "&חיפוש אחר:"
 #: ui/searchdialog_base.ui:49
 #, kde-format
 msgid "Search pattern. Use wildcards “*” and “?” as desired."
-msgstr ""
+msgstr "תבנית חיפוש. אפשר להשתמש בתווים הכוללניים „*” ואת „?” לפי הצורך."
 
 #. i18n: ectx: property (whatsThis), widget (QLineEdit, searchEdit)
 #: ui/searchdialog_base.ui:52
