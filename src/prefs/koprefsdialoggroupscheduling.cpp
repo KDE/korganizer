@@ -12,7 +12,7 @@
 #include <CalendarSupport/KCalPrefs>
 #include <KLocalizedString>
 #include <KPluginFactory>
-#include <MailTransport/TransportManagementWidget>
+#include <MailTransport/TransportManagementWidgetNg>
 #include <QCheckBox>
 #include <QLabel>
 #include <QVBoxLayout>
@@ -42,7 +42,7 @@ KOPrefsDialogGroupScheduling::KOPrefsDialogGroupScheduling(QObject *parent, cons
     auto aTransportLabel = new QLabel(i18nc("@label", "Mail transport:"), topFrame);
     topLayout->addWidget(aTransportLabel, 3, 0, 1, 2);
 
-    auto tmw = new MailTransport::TransportManagementWidget(topFrame);
+    auto tmw = new MailTransport::TransportManagementWidgetNg(topFrame);
     tmw->layout()->setContentsMargins({});
     topLayout->addWidget(tmw, 4, 0, 1, 2);
     load();
