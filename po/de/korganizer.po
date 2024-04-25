@@ -1,3 +1,4 @@
+# SPDX-FileCopyrightText: 2024 Johannes Obermayr <johannesobermayr@gmx.de>
 # Stefan Winter <swinter@kde.org>, 2002, 2003, 2004, 2005, 2006, 2007.
 # Thomas Diehl <thd@kde.org>, 2002,2003, 2005.
 # Stephan Johach <hunsum@gmx.de>, 2003, 2004, 2005, 2006.
@@ -17,15 +18,15 @@ msgstr ""
 "Project-Id-Version: korganizer\n"
 "Report-Msgid-Bugs-To: https://bugs.kde.org\n"
 "POT-Creation-Date: 2024-04-12 00:38+0000\n"
-"PO-Revision-Date: 2023-01-30 15:28+0100\n"
-"Last-Translator: Frank Steinmetzger <dev-kde@felsenfleischer.de>\n"
+"PO-Revision-Date: 2024-04-24 00:23+0200\n"
+"Last-Translator: Johannes Obermayr <johannesobermayr@gmx.de>\n"
 "Language-Team: German <kde-i18n-de@kde.org>\n"
 "Language: de\n"
 "MIME-Version: 1.0\n"
 "Content-Type: text/plain; charset=UTF-8\n"
 "Content-Transfer-Encoding: 8bit\n"
 "Plural-Forms: nplurals=2; plural=(n != 1);\n"
-"X-Generator: Lokalize 22.12.1\n"
+"X-Generator: Lokalize 24.02.2\n"
 
 #, kde-format
 msgctxt "NAME OF TRANSLATORS"
@@ -51,13 +52,7 @@ msgid "A Personal Organizer"
 msgstr "Ein persönliches Organisationsprogramm"
 
 #: aboutdata.cpp:22
-#, fuzzy, kde-format
-#| msgid ""
-#| "Copyright © 1997–1999 Preston Brown\n"
-#| "Copyright © 2000–2004, 2007 Cornelius Schumacher\n"
-#| "Copyright © 2004–2005 Reinhold Kainhofer\n"
-#| "Copyright © 2006–2012 Allen Winter\n"
-#| "Copyright © 2012–2022 KOrganizer authors"
+#, kde-format
 msgid ""
 "Copyright © 1997–1999 Preston Brown\n"
 "Copyright © 2000–2004, 2007 Cornelius Schumacher\n"
@@ -69,7 +64,7 @@ msgstr ""
 "Copyright © 2000–2004, 2007 Cornelius Schumacher\n"
 "Copyright © 2004–2005 Reinhold Kainhofer\n"
 "Copyright © 2006–2012 Allen Winter\n"
-"Copyright © 2012–2022 KOrganizer-Autoren"
+"Copyright © 2012–2024 KOrganizer-Autoren"
 
 #: aboutdata.cpp:30 kontactplugin/specialdates/specialdates_plugin.cpp:42
 #, kde-format
@@ -1133,8 +1128,7 @@ msgid "Unable to save calendar to the file %1."
 msgstr "Speichern des Kalenders in Datei %1 nicht möglich."
 
 #: actionmanager.cpp:1037
-#, fuzzy, kde-format
-#| msgid "Error"
+#, kde-format
 msgctxt "@title:window"
 msgid "Error"
 msgstr "Fehler"
@@ -1201,8 +1195,7 @@ msgstr ""
 "Das Entfernen von Anhängen aus E-Mails kann deren Signatur ungültig machen."
 
 #: actionmanager.cpp:1462
-#, fuzzy, kde-format
-#| msgid "Remove Attachments"
+#, kde-format
 msgctxt "@title:window"
 msgid "Remove Attachments"
 msgstr "Anhänge entfernen"
@@ -1489,9 +1482,7 @@ msgstr ""
 "herauslösen?"
 
 #: calendarview.cpp:1613 calendarview.cpp:1625 calendarview.cpp:2293
-#, fuzzy, kde-format
-#| msgctxt "@title:window"
-#| msgid "KOrganizer Confirmation"
+#, kde-format
 msgctxt "@title:window"
 msgid "KOrganizer Confirmation"
 msgstr "KOrganizer-Bestätigung"
@@ -1536,8 +1527,7 @@ msgid "Dissociating the future occurrences failed."
 msgstr "Herauslösen aller zukünftigen Vorkommen fehlgeschlagen."
 
 #: calendarview.cpp:1654 calendarview.cpp:1656
-#, fuzzy, kde-format
-#| msgid "Dissociating Failed"
+#, kde-format
 msgctxt "@title:window"
 msgid "Dissociating Failed"
 msgstr "Herauslösen fehlgeschlagen"
@@ -1687,8 +1677,7 @@ msgid "Delete all completed to-dos from checked calendars?"
 msgstr "Alle erledigten Aufgaben aus den angekreuzte Kalendern löschen?"
 
 #: calendarview.cpp:2464
-#, fuzzy, kde-format
-#| msgid "Purge To-dos"
+#, kde-format
 msgctxt "@title:window"
 msgid "Purge To-dos"
 msgstr "Aufgaben löschen"
@@ -3590,14 +3579,9 @@ msgid "day(s)"
 msgstr "Tag(e)"
 
 #: prefs/koprefsdialogtime.cpp:223
-#, fuzzy, kde-format
-#| msgid ""
-#| "*.ogg *.wav *.mp3 *.wma *.flac *.aiff *.raw *.au *.ra|Audio Files (*.ogg "
-#| "*.wav *.mp3 *.wma *.flac *.aiff *.raw *.au *.ra)"
+#, kde-format
 msgid "Audio Files (*.ogg *.wav *.mp3 *.wma *.flac *.aiff *.raw *.au *.ra)"
-msgstr ""
-"*.ogg *.wav *.mp3 *.wma *.flac *.aiff *.raw *.au *.ra|Audio-Dateien (*.ogg *."
-"wav *.mp3 *.wma *.flac *.aiff *.raw *.au *.ra)"
+msgstr "Audio-Dateien (*.ogg *.wav *.mp3 *.wma *.flac *.aiff *.raw *.au *.ra)"
 
 #: prefs/koprefsdialogviews.cpp:44
 #, kde-format
@@ -3675,8 +3659,7 @@ msgstr ""
 "selbst durchgeführten Änderungen gehen dabei verloren."
 
 #: prefs/kprefsdialog.cpp:869
-#, fuzzy, kde-format
-#| msgid "Setting Default Preferences"
+#, kde-format
 msgctxt "@title:window"
 msgid "Setting Default Preferences"
 msgstr "Standardwerte werden gesetzt"
@@ -5597,10 +5580,11 @@ msgstr "Datumsbereich"
 
 #. i18n: ectx: property (toolTip), widget (QCheckBox, dateRangeCheckbox)
 #: ui/searchdialog_base.ui:204
-#, fuzzy, kde-format
-#| msgid "Include all to-dos &within the specified date range"
+#, kde-format
 msgid "When checked, the search will be limited to the specified date range."
-msgstr "Aufgaben &innerhalb des Zeitbereichs einbeziehen"
+msgstr ""
+"Ist diese Einstellung aktiviert, wird die Suche nur innerhalb des "
+"angegebenen Datumsbereiches ausgeführt."
 
 #. i18n: ectx: property (whatsThis), widget (QCheckBox, dateRangeCheckbox)
 #: ui/searchdialog_base.ui:207
@@ -5609,12 +5593,15 @@ msgid ""
 "Check this box to search for events within a specified date range. If the "
 "box is unchecked, all events will be searched."
 msgstr ""
+"Markieren Sie dieses Feld, um nach Ereignissen innerhalb des angegebenen "
+"Datumsbereiches zu suchen. Ist dieses Feld nicht markiert, wird nach allen "
+"Ereignissen gesucht."
 
 #. i18n: ectx: property (text), widget (QCheckBox, dateRangeCheckbox)
 #: ui/searchdialog_base.ui:210
 #, kde-format
 msgid "Limit search to specified date range"
-msgstr ""
+msgstr "Suche auf den angegebenen Datumsbereich beschränken"
 
 #. i18n: ectx: property (text), widget (QLabel, startDateLabel)
 #: ui/searchdialog_base.ui:222
