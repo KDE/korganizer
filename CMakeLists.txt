@@ -129,7 +129,7 @@ configure_file(korganizer-version.h.in ${CMAKE_CURRENT_BINARY_DIR}/korganizer-ve
 
 
 add_definitions(-DQT_NO_CONTEXTLESS_CONNECT)
-ecm_set_disabled_deprecation_versions(QT 6.6
+ecm_set_disabled_deprecation_versions(QT 6.7
      KF 6.2.0
 )
 
