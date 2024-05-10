@@ -213,7 +213,7 @@ void KODayMatrix::updateView(QDate actdate)
     }
 
     // TODO_Recurrence: If we just change the selection, but not the data,
-    // there's no need to update the whole list of incidences... This is just a
+    // there's no need to update the whole list of incidences… This is just a
     // waste of computational power
     updateIncidences();
     QMap<QDate, QStringList> holidaysByDate = KOGlobals::self()->holiday(mDays[0], mDays[NUMDAYS - 1]);
@@ -481,9 +481,9 @@ void KODayMatrix::popupMenu(const QDate &date, const QDate &date2)
 {
     QMenu popup(this);
     popup.setTitle(date.toString());
-    QAction *newEventAction = popup.addAction(QIcon::fromTheme(QStringLiteral("appointment-new")), i18n("New E&vent..."));
-    QAction *newTodoAction = popup.addAction(QIcon::fromTheme(QStringLiteral("task-new")), i18n("New &To-do..."));
-    QAction *newJournalAction = popup.addAction(QIcon::fromTheme(QStringLiteral("journal-new")), i18n("New &Journal..."));
+    QAction *newEventAction = popup.addAction(QIcon::fromTheme(QStringLiteral("appointment-new")), i18n("New E&vent…"));
+    QAction *newTodoAction = popup.addAction(QIcon::fromTheme(QStringLiteral("task-new")), i18n("New &To-do…"));
+    QAction *newJournalAction = popup.addAction(QIcon::fromTheme(QStringLiteral("journal-new")), i18n("New &Journal…"));
     QAction *ret = popup.exec(QCursor::pos());
     if (ret == newEventAction) {
         Q_EMIT newEventSignal(date, date2);

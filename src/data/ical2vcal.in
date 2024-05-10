@@ -130,7 +130,7 @@ sub process_appointment
 		}
 		$curappt{"summary"} = $summary;
 		if (length($description) > 0) {
-		    $summary = $summary . "...";
+		    $summary = $summary . "…";
 		    $curappt{"description"} = $description;
 		}
 	    } elsif ($line =~ /^Text/) {
@@ -151,7 +151,7 @@ sub process_appointment
 		}
 		$curappt{"summary"} = $summary;
 		if (length($description) > 0) {
-		    $summary = $summary . "...";
+		    $summary = $summary . "…";
 		    $curappt{"description"} = $description;
 		}
 	    } elsif ($line =~ /^Alarms/) {

@@ -42,15 +42,15 @@ void KOEventPopupMenu::init(MenuStyle menuStyle)
     // These actions are always shown, no matter what
     addAction(QIcon::fromTheme(QStringLiteral("document-preview")), i18nc("@action:inmenu", "&Show"), this, &KOEventPopupMenu::popupShow);
 
-    addAction(QIcon::fromTheme(QStringLiteral("document-edit")), i18nc("@action:inmenu", "&Edit..."), this, &KOEventPopupMenu::popupEdit);
+    addAction(QIcon::fromTheme(QStringLiteral("document-edit")), i18nc("@action:inmenu", "&Edit…"), this, &KOEventPopupMenu::popupEdit);
 
     addAction(QIcon::fromTheme(QStringLiteral("edit-delete")), i18nc("@action:inmenu delete this incidence", "&Delete"), this, &KOEventPopupMenu::popupDelete);
 
     addSeparator();
 
-    addAction(QIcon::fromTheme(QStringLiteral("document-print")), i18nc("@action:inmenu", "&Print..."), this, &KOEventPopupMenu::slotPrint);
+    addAction(QIcon::fromTheme(QStringLiteral("document-print")), i18nc("@action:inmenu", "&Print…"), this, &KOEventPopupMenu::slotPrint);
 
-    addAction(QIcon::fromTheme(QStringLiteral("document-print-preview")), i18nc("@action:inmenu", "Print Previe&w..."), this, &KOEventPopupMenu::printPreview);
+    addAction(QIcon::fromTheme(QStringLiteral("document-print-preview")), i18nc("@action:inmenu", "Print Previe&w…"), this, &KOEventPopupMenu::printPreview);
 
     // Add more menu actions according to Menu style
     switch (menuStyle) {
@@ -126,7 +126,7 @@ void KOEventPopupMenu::appendReminderOnlyItems()
 void KOEventPopupMenu::appendRecurrenceOnlyItems()
 {
     mRecurrenceOnlyItems.append(addSeparator());
-    mDissociateOccurrences = addAction(i18nc("@action:inmenu", "&Dissociate From Recurrence..."), this, &KOEventPopupMenu::dissociateOccurrences);
+    mDissociateOccurrences = addAction(i18nc("@action:inmenu", "&Dissociate From Recurrence…"), this, &KOEventPopupMenu::dissociateOccurrences);
     mRecurrenceOnlyItems.append(mDissociateOccurrences);
 }
 
@@ -134,7 +134,7 @@ void KOEventPopupMenu::appendShareOnlyItems()
 {
     mShareOnlyItems.append(addSeparator());
     mShareOnlyItems.append(
-        addAction(QIcon::fromTheme(QStringLiteral("mail-forward")), i18nc("@action:inmenu", "Send as iCalendar..."), this, &KOEventPopupMenu::forward));
+        addAction(QIcon::fromTheme(QStringLiteral("mail-forward")), i18nc("@action:inmenu", "Send as iCalendar…"), this, &KOEventPopupMenu::forward));
 }
 
 void KOEventPopupMenu::showIncidencePopup(const Akonadi::CollectionCalendar::Ptr &calendar, const Akonadi::Item &item, const QDate &qd)

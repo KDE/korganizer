@@ -25,7 +25,7 @@ JournalPlugin::JournalPlugin(KontactInterface::Core *core, const KPluginMetaData
 {
     setComponentName(QStringLiteral("korganizer"), i18n("KOrganizer"));
 
-    auto action = new QAction(QIcon::fromTheme(QStringLiteral("journal-new")), i18nc("@action:inmenu", "New Journal..."), this);
+    auto action = new QAction(QIcon::fromTheme(QStringLiteral("journal-new")), i18nc("@action:inmenu", "New Journal…"), this);
     actionCollection()->addAction(QStringLiteral("new_journal"), action);
     actionCollection()->setDefaultShortcut(action, QKeySequence(Qt::CTRL | Qt::SHIFT | Qt::Key_J));
     QString str = i18nc("@info:status", "Create a new journal");

@@ -298,7 +298,7 @@
            <item row="2" column="1">
             <widget class="QPushButton" name="mCatEditButton">
              <property name="text">
-              <string>Change...</string>
+              <string>Change…</string>
              </property>
              <property name="shortcut">
               <string/>

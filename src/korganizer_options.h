@@ -23,7 +23,7 @@ static void korganizer_options(QCommandLineParser *parser)
     parser->addPositionalArgument(QStringLiteral("calendars"),
                                   i18n("Calendar files or urls. Unless -i or -m is explicitly specified, "
                                        "the user will be asked whether to import or merge"),
-                                  QStringLiteral("[calendar...]"));
+                                  QStringLiteral("[calendar…]"));
 #ifdef WITH_KUSERFEEDBACK
     parser->addOption(QCommandLineOption(QStringLiteral("feedback"), i18n("Lists the available options for user feedback")));
 #endif

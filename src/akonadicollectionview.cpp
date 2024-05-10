@@ -408,7 +408,7 @@ AkonadiCollectionView::AkonadiCollectionView(CalendarView *view, bool hasContext
     searchCol->setPlaceholderText(
         i18nc("@info/plain Displayed grayed-out inside the "
               "textbox, verb to search",
-              "Search..."));
+              "Search…"));
     topLayout->addWidget(searchCol);
 
     auto colorProxy = new ColorProxyModel(this);
@@ -504,7 +504,7 @@ AkonadiCollectionView::AkonadiCollectionView(CalendarView *view, bool hasContext
                 &ManageShowCollectionProperties::showCollectionProperties);
 
         mAssignColor = new QAction(mCollectionView);
-        mAssignColor->setText(i18nc("@action:inmenu", "&Set Folder Color..."));
+        mAssignColor->setText(i18nc("@action:inmenu", "&Set Folder Color…"));
         mAssignColor->setEnabled(false);
         xmlclient->actionCollection()->addAction(QStringLiteral("assign_color"), mAssignColor);
         connect(mAssignColor, &QAction::triggered, this, &AkonadiCollectionView::assignColor);
@@ -515,8 +515,7 @@ AkonadiCollectionView::AkonadiCollectionView(CalendarView *view, bool hasContext
         xmlclient->actionCollection()->addAction(QStringLiteral("set_standard_calendar"), mDefaultCalendar);
         connect(mDefaultCalendar, &QAction::triggered, this, &AkonadiCollectionView::setDefaultCalendar);
 
-        mServerSideSubscription =
-            new QAction(QIcon::fromTheme(QStringLiteral("folder-bookmarks")), i18nc("@action:inmenu", "Serverside Subscription..."), this);
+        mServerSideSubscription = new QAction(QIcon::fromTheme(QStringLiteral("folder-bookmarks")), i18nc("@action:inmenu", "Serverside Subscription…"), this);
         xmlclient->actionCollection()->addAction(QStringLiteral("serverside_subscription"), mServerSideSubscription);
         connect(mServerSideSubscription, &QAction::triggered, this, &AkonadiCollectionView::slotServerSideSubscription);
     }

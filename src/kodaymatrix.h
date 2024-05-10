@@ -264,7 +264,7 @@ private:
         other number than 42. so change it at your own risk :o) */
     static const int NUMDAYS;
 
-    /** calendar instance to be queried for holidays, events, ... */
+    /** calendar instance to be queried for holidays, events, … */
     QList<Akonadi::CollectionCalendar::Ptr> mCalendars;
 
     /** starting date of the matrix */

@@ -318,7 +318,7 @@ void TodoSummaryWidget::popupMenu(const QString &uid)
     }
     Akonadi::Item item = mCalendar->item(uid);
     QMenu popup(this);
-    QAction *editIt = popup.addAction(i18n("&Edit To-do..."));
+    QAction *editIt = popup.addAction(i18n("&Edit To-do…"));
     editIt->setIcon(QIcon::fromTheme(QStringLiteral("document-edit")));
     QAction *delIt = popup.addAction(i18n("&Delete To-do"));
     delIt->setIcon(QIcon::fromTheme(QStringLiteral("edit-delete")));
