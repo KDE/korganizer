@@ -18,7 +18,7 @@ msgstr ""
 "Project-Id-Version: korganizer\n"
 "Report-Msgid-Bugs-To: https://bugs.kde.org\n"
 "POT-Creation-Date: 2024-04-12 00:38+0000\n"
-"PO-Revision-Date: 2024-05-03 15:50+0300\n"
+"PO-Revision-Date: 2024-05-09 08:28+0300\n"
 "Last-Translator: Yaron Shahrabani <sh.yaron@gmail.com>\n"
 "Language-Team: צוות התרגום של KDE ישראל\n"
 "Language: he\n"
@@ -3941,7 +3941,7 @@ msgstr ""
 #: settings/korganizer.kcfg:164
 #, kde-format
 msgid "Enable automatic event editor with time range selection"
-msgstr ""
+msgstr "הפעלת עורך אירועים אוטומטית עם בחירת טווח זמנים"
 
 #. i18n: ectx: label, entry, group (Agenda View)
 #. i18n: ectx: label, entry, group (Month View)
@@ -4086,7 +4086,7 @@ msgstr "הצגת כל לוחות השנה ממוזגים יחד"
 #: settings/korganizer.kcfg:208
 #, kde-format
 msgid "Show calendars side by side"
-msgstr ""
+msgstr "הצגת לוחות שנה זה לצד זה"
 
 #. i18n: ectx: whatsthis, entry (AgendaViewCalendarDisplay), group (Agenda View)
 #: settings/korganizer.kcfg:209
@@ -4100,13 +4100,13 @@ msgstr ""
 #: settings/korganizer.kcfg:210
 #, kde-format
 msgid "Show two calendars side-by-side"
-msgstr ""
+msgstr "הצגת שני לוחות שנה זה לצד זה"
 
 #. i18n: ectx: label, entry (AgendaViewCalendarDisplay), group (Agenda View)
 #: settings/korganizer.kcfg:213
 #, kde-format
 msgid "Switch between views with tabs"
-msgstr ""
+msgstr "החלפה בין תצוגות עם לשוניות"
 
 #. i18n: ectx: whatsthis, entry (AgendaViewCalendarDisplay), group (Agenda View)
 #: settings/korganizer.kcfg:214
