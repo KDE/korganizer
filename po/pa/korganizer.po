@@ -7,7 +7,7 @@ msgid ""
 msgstr ""
 "Project-Id-Version: korganizer\n"
 "Report-Msgid-Bugs-To: https://bugs.kde.org\n"
-"POT-Creation-Date: 2024-04-12 00:38+0000\n"
+"POT-Creation-Date: 2024-05-12 00:39+0000\n"
 "PO-Revision-Date: 2011-01-04 07:42+0530\n"
 "Last-Translator: A S Alam <aalam@users.sf.net>\n"
 "Language-Team: Punjabi/Panjabi <punjabi-users@lists.sf.net>\n"
@@ -287,9 +287,10 @@ msgid "Hide menu bar"
 msgstr "ਸਮਾਂ ਪੱਟੀ"
 
 #: actionmanager.cpp:243
-#, kde-format
-msgid "Import &Calendar..."
-msgstr "ਕੈਲੰਡਰ ਅਯਾਤ(&C)..."
+#, fuzzy, kde-format
+#| msgid "Import Calendar"
+msgid "Import &Calendar…"
+msgstr "ਕੈਲੰਡਰ ਆਯਾਤ"
 
 #: actionmanager.cpp:244
 #, fuzzy, kde-format
@@ -316,7 +317,7 @@ msgstr ""
 #: actionmanager.cpp:253
 #, fuzzy, kde-format
 #| msgid "New Calendar"
-msgid "Get New Calendars..."
+msgid "Get New Calendars…"
 msgstr "ਨਵਾਂ ਕੈਲੰਡਰ"
 
 #: actionmanager.cpp:254
@@ -353,7 +354,7 @@ msgstr ""
 #: actionmanager.cpp:305
 #, fuzzy, kde-format
 #| msgid "Import &Calendar..."
-msgid "Export as &iCalendar..."
+msgid "Export as &iCalendar…"
 msgstr "ਕੈਲੰਡਰ ਅਯਾਤ(&C)..."
 
 #: actionmanager.cpp:306
@@ -378,7 +379,7 @@ msgstr ""
 
 #: actionmanager.cpp:314
 #, kde-format
-msgid "Archive O&ld Incidences..."
+msgid "Archive O&ld Incidences…"
 msgstr ""
 
 #: actionmanager.cpp:315
@@ -830,9 +831,11 @@ msgid "&Week"
 msgstr "ਹਫਤਾ(&W)"
 
 #: actionmanager.cpp:566 kodaymatrix.cpp:484
-#, kde-format
-msgid "New E&vent..."
-msgstr "ਨਵੀਂ ਘਟਨਾ(&v)..."
+#, fuzzy, kde-format
+#| msgctxt "@title:window"
+#| msgid "New Event"
+msgid "New E&vent…"
+msgstr "ਨਵਾਂ ਈਵੈਂਟ"
 
 #: actionmanager.cpp:567
 #, fuzzy, kde-format
@@ -857,8 +860,9 @@ msgid ""
 msgstr ""
 
 #: actionmanager.cpp:576 kodaymatrix.cpp:485
-#, kde-format
-msgid "New &To-do..."
+#, fuzzy, kde-format
+#| msgid "New &To-do..."
+msgid "New &To-do…"
 msgstr "ਨਵਾਂ ਕੰਮ (&T)..."
 
 #: actionmanager.cpp:577
@@ -884,13 +888,15 @@ msgid ""
 msgstr ""
 
 #: actionmanager.cpp:587
-#, kde-format
-msgid "New Su&b-to-do..."
-msgstr ""
+#, fuzzy, kde-format
+#| msgid "New &To-do..."
+msgid "New Su&b-to-do…"
+msgstr "ਨਵਾਂ ਕੰਮ (&T)..."
 
 #: actionmanager.cpp:595 kodaymatrix.cpp:486
-#, kde-format
-msgid "New &Journal..."
+#, fuzzy, kde-format
+#| msgid "New &Journal..."
+msgid "New &Journal…"
 msgstr "ਨਵਾਂ ਰੋਜ਼ਨਾਮਚਾ(&J)..."
 
 #: actionmanager.cpp:596
@@ -914,8 +920,9 @@ msgid "Starts a dialog that allows you to create a new Journal entry."
 msgstr ""
 
 #: actionmanager.cpp:603
-#, kde-format
-msgid "Configure View..."
+#, fuzzy, kde-format
+#| msgid "Configure View..."
+msgid "Configure View…"
 msgstr "ਝਲਕ ਸੰਰਚਨਾ..."
 
 #: actionmanager.cpp:604
@@ -951,9 +958,10 @@ msgid "&Show"
 msgstr "ਵੇਖੋ(&S)"
 
 #: actionmanager.cpp:618 actionmanager.cpp:1303 actionmanager.cpp:1342
-#, kde-format
-msgid "&Edit..."
-msgstr "ਸੋਧ(&E)..."
+#, fuzzy, kde-format
+#| msgid "&Edit"
+msgid "&Edit…"
+msgstr "ਸੋਧ(&E)"
 
 #: actionmanager.cpp:627
 #, kde-format
@@ -966,7 +974,7 @@ msgstr ""
 #. ************************* SCHEDULE MENU *******************************
 #: actionmanager.cpp:639
 #, kde-format
-msgid "&Publish Item Information..."
+msgid "&Publish Item Information…"
 msgstr ""
 
 #: actionmanager.cpp:646
@@ -996,14 +1004,15 @@ msgid "Request Chan&ge"
 msgstr "ਬੇਨਤੀ ਤਬਦੀਲ(&g)"
 
 #: actionmanager.cpp:686
-#, kde-format
-msgid "&Mail Free Busy Information..."
+#, fuzzy, kde-format
+#| msgid "&Mail Free Busy Information..."
+msgid "&Mail Free Busy Information…"
 msgstr "ਵਿਹਲਾ-ਰੁਝਿਆ ਜਾਣਕਾਰੀ ਪੱਤਰ(&M)..."
 
 #: actionmanager.cpp:691
 #, fuzzy, kde-format
 #| msgid "&vCalendar..."
-msgid "&Send as iCalendar..."
+msgid "&Send as iCalendar…"
 msgstr "&vਕੈਲੰਡਰ..."
 
 #: actionmanager.cpp:698
@@ -1037,25 +1046,27 @@ msgid "Show Calendar Manager"
 msgstr "ਕੈਲੰਡਰ ਮੈਨੇਜਰ ਵੇਖੋ"
 
 #: actionmanager.cpp:749
-#, kde-format
-msgid "Configure &Date && Time..."
+#, fuzzy, kde-format
+#| msgid "Configure &Date && Time..."
+msgid "Configure &Date && Time…"
 msgstr "ਮਿਤੀ ਅਤੇ ਸਮਾਂ ਸੰਰਚਨਾ(&D)..."
 
 #: actionmanager.cpp:753
-#, kde-format
-msgid "Manage View &Filters..."
+#, fuzzy, kde-format
+#| msgid "Manage View &Filters..."
+msgid "Manage View &Filters…"
 msgstr "ਵੇਖਣ ਫਿਲਟਰ ਪਰਬੰਧਨ(&F)..."
 
 #: actionmanager.cpp:757
 #, fuzzy, kde-format
 #| msgid "Manage C&ategories..."
-msgid "Manage T&ags..."
+msgid "Manage T&ags…"
 msgstr "ਵਰਗ ਪਰਬੰਧਨ(&a)..."
 
 #: actionmanager.cpp:765
 #, fuzzy, kde-format
 #| msgid "&Configure Calendar..."
-msgid "&Configure KOrganizer..."
+msgid "&Configure KOrganizer…"
 msgstr "ਕੈਲੰਡਰ ਸੰਰਚਨਾ(&C)..."
 
 #: actionmanager.cpp:843
@@ -1134,8 +1145,9 @@ msgid "&Show Event"
 msgstr "ਘਟਨਾ ਵੇਖਾਓ"
 
 #: actionmanager.cpp:1264
-#, kde-format
-msgid "&Edit Event..."
+#, fuzzy, kde-format
+#| msgid "&Edit Event..."
+msgid "&Edit Event…"
 msgstr "ਘਟਨ ਸੋਧ(&E)..."
 
 #: actionmanager.cpp:1267
@@ -1149,8 +1161,9 @@ msgid "&Show To-do"
 msgstr "ਕੰਮ-ਕਾਰ ਵੇਖਾਓ"
 
 #: actionmanager.cpp:1278 kontactplugin/korganizer/todosummarywidget.cpp:321
-#, kde-format
-msgid "&Edit To-do..."
+#, fuzzy, kde-format
+#| msgid "&Edit To-do..."
+msgid "&Edit To-do…"
 msgstr "ਕੰਮ-ਕਾਰ ਸੋਧ..."
 
 #: actionmanager.cpp:1281 kontactplugin/korganizer/todosummarywidget.cpp:323
@@ -1274,11 +1287,9 @@ msgstr ""
 
 #: akonadicollectionview.cpp:411
 #, fuzzy, kde-format
-#| msgctxt ""
-#| "@info/plain Displayed grayed-out inside the textbox, verb to search"
 #| msgid "Search"
 msgctxt "@info/plain Displayed grayed-out inside the textbox, verb to search"
-msgid "Search..."
+msgid "Search…"
 msgstr "ਖੋਜ"
 
 #: akonadicollectionview.cpp:495 manageshowcollectionproperties.cpp:76
@@ -1292,7 +1303,7 @@ msgstr "%1 ਦੀ ਵਿਸ਼ੇਸ਼ਤਾ"
 #: akonadicollectionview.cpp:507
 #, kde-format
 msgctxt "@action:inmenu"
-msgid "&Set Folder Color..."
+msgid "&Set Folder Color…"
 msgstr ""
 
 #: akonadicollectionview.cpp:513
@@ -1302,41 +1313,41 @@ msgctxt "@action:inmenu"
 msgid "Set as &Default Folder"
 msgstr "ਮੂਲ ਕੈਲੰਡਰ ਵਾਂਗ ਵਰਤੋਂ"
 
-#: akonadicollectionview.cpp:519
+#: akonadicollectionview.cpp:518
 #, kde-format
 msgctxt "@action:inmenu"
-msgid "Serverside Subscription..."
+msgid "Serverside Subscription…"
 msgstr ""
 
-#: akonadicollectionview.cpp:564
+#: akonadicollectionview.cpp:563
 #, fuzzy, kde-format
 #| msgid "Do you really want to delete calendar %1?"
 msgctxt "@info"
 msgid "Do you really want replace your current default calendar with \"%1\"?"
 msgstr "ਕੀ ਤੁਸੀਂ %1 ਕੈਲੰਡਰ ਹਟਾਉਣਾ ਚਾਹੁੰਦੇ ਹੋ?"
 
-#: akonadicollectionview.cpp:565
+#: akonadicollectionview.cpp:564
 #, fuzzy, kde-format
 #| msgid "Use as &Default Calendar"
 msgctxt "@title:window"
 msgid "Replace Default Calendar?"
 msgstr "ਮੂਲ ਕੈਲੰਡਰ ਵਾਂਗ ਵਰਤੋਂ"
 
-#: akonadicollectionview.cpp:702
+#: akonadicollectionview.cpp:701
 #, fuzzy, kde-format
 #| msgid "Add Calendar"
 msgctxt "@title:window"
 msgid "Add Calendar"
 msgstr "ਕੈਲੰਡਰ ਸ਼ਾਮਲ"
 
-#: akonadicollectionview.cpp:744
+#: akonadicollectionview.cpp:743
 #, fuzzy, kde-format
 #| msgid "Do you really want to delete calendar %1?"
 msgctxt "@info"
 msgid "Do you really want to delete calendar %1?"
 msgstr "ਕੀ ਤੁਸੀਂ %1 ਕੈਲੰਡਰ ਹਟਾਉਣਾ ਚਾਹੁੰਦੇ ਹੋ?"
 
-#: akonadicollectionview.cpp:745
+#: akonadicollectionview.cpp:744
 #, fuzzy, kde-format
 #| msgid "Delete Calendar"
 msgctxt "@title:window"
@@ -1957,9 +1968,9 @@ msgid "Event Viewer"
 msgstr "ਘਟਨਾ ਦਰਸ਼ਕ"
 
 #: dialog/koeventviewerdialog.cpp:40
-#, kde-format
-msgid "Edit..."
-msgstr "ਸੋਧ..."
+#, fuzzy, kde-format
+msgid "Edit…"
+msgstr "   ਸੋਧ   %1"
 
 #: dialog/koeventviewerdialog.cpp:41
 #, fuzzy, kde-format
@@ -2078,10 +2089,10 @@ msgstr "ਵੇਖੋ(&S)"
 
 #: koeventpopupmenu.cpp:45
 #, fuzzy, kde-format
-#| msgid "&Edit..."
+#| msgid "&Edit"
 msgctxt "@action:inmenu"
-msgid "&Edit..."
-msgstr "ਸੋਧ(&E)..."
+msgid "&Edit…"
+msgstr "ਸੋਧ(&E)"
 
 #: koeventpopupmenu.cpp:47
 #, fuzzy, kde-format
@@ -2092,16 +2103,16 @@ msgstr "ਹਟਾਓ(&D)"
 
 #: koeventpopupmenu.cpp:51
 #, fuzzy, kde-format
-#| msgid "&Print..."
+#| msgid "&Print"
 msgctxt "@action:inmenu"
-msgid "&Print..."
-msgstr "ਪਰਿੰਟ ਕਰੋ(&P)..."
+msgid "&Print…"
+msgstr "ਪਰਿੰਟ ਕਰੋ(&P)"
 
 #: koeventpopupmenu.cpp:53
 #, fuzzy, kde-format
 #| msgid "Print Previe&w..."
 msgctxt "@action:inmenu"
-msgid "Print Previe&w..."
+msgid "Print Previe&w…"
 msgstr "ਪਰਿੰਟ ਝਲਕ(&w)..."
 
 #: koeventpopupmenu.cpp:74
@@ -2172,14 +2183,14 @@ msgstr "ਯਾਦ-ਪੱਤਰ ਤਬਦੀਲ(&T)"
 #, fuzzy, kde-format
 #| msgid "Split future recurrences"
 msgctxt "@action:inmenu"
-msgid "&Dissociate From Recurrence..."
+msgid "&Dissociate From Recurrence…"
 msgstr "ਭਵਿੱਖ ਮੌਜੂਦਾ ਵੰਡੋ"
 
 #: koeventpopupmenu.cpp:137
 #, fuzzy, kde-format
 #| msgid "&vCalendar..."
 msgctxt "@action:inmenu"
-msgid "Send as iCalendar..."
+msgid "Send as iCalendar…"
 msgstr "&vਕੈਲੰਡਰ..."
 
 #: koeventpopupmenu.cpp:187
@@ -2423,7 +2434,7 @@ msgstr[1] ""
 #: kontactplugin/korganizer/apptsummarywidget.cpp:240
 #, fuzzy, kde-format
 #| msgid "Appointment"
-msgid "&Edit Appointment..."
+msgid "&Edit Appointment…"
 msgstr "ਮੁਲਾਕਾਤ"
 
 #: kontactplugin/korganizer/apptsummarywidget.cpp:242
@@ -2443,7 +2454,7 @@ msgstr "ਈਵੈਂਟ ਸੋਧ: %1"
 #, fuzzy, kde-format
 #| msgid "New &Journal..."
 msgctxt "@action:inmenu"
-msgid "New Journal..."
+msgid "New Journal…"
 msgstr "ਨਵਾਂ ਰੋਜ਼ਨਾਮਚਾ(&J)..."
 
 #: kontactplugin/korganizer/journalplugin.cpp:31
@@ -2473,10 +2484,11 @@ msgstr[1] "%1 ਦਿਨ"
 
 #: kontactplugin/korganizer/korganizerplugin.cpp:44
 #, fuzzy, kde-format
-#| msgid "New E&vent..."
+#| msgctxt "@title:window"
+#| msgid "New Event"
 msgctxt "@action:inmenu"
-msgid "New Event..."
-msgstr "ਨਵੀਂ ਘਟਨਾ(&v)..."
+msgid "New Event…"
+msgstr "ਨਵਾਂ ਈਵੈਂਟ"
 
 #: kontactplugin/korganizer/korganizerplugin.cpp:47
 #, fuzzy, kde-format
@@ -2602,7 +2614,7 @@ msgstr "ਮੁੜ ਵਾਪਿਸ(%1)"
 #, fuzzy, kde-format
 #| msgid "&New To-do..."
 msgctxt "@action:inmenu"
-msgid "New To-do..."
+msgid "New To-do…"
 msgstr "ਨਵਾਂ ਕੰਮ ਕਾਰ(&N)"
 
 #: kontactplugin/korganizer/todoplugin.cpp:43
@@ -3649,7 +3661,7 @@ msgstr "ਹੋਰ ਚੋਣਾਂ"
 #: prefs/kprefsdialog.cpp:234
 #, fuzzy, kde-format
 #| msgid "Change..."
-msgid "Choose..."
+msgid "Choose…"
 msgstr "ਤਬਦੀਲ..."
 
 #: prefs/kprefsdialog.cpp:765
@@ -4862,9 +4874,10 @@ msgstr "ਸਿਰਫ ਚੁਣੇ ਹੀ ਵੇਖਾਓ"
 
 #. i18n: ectx: property (text), widget (QPushButton, mCatEditButton)
 #: ui/filteredit_base.ui:301
-#, kde-format
-msgid "Change..."
-msgstr "ਤਬਦੀਲ..."
+#, fuzzy, kde-format
+#| msgid "&Change"
+msgid "Change…"
+msgstr "ਤਬਦੀਲ(&C)"
 
 #. i18n: ectx: property (whatsThis), widget (QCheckBox, mHideTodosNotAssignedToMeCheck)
 #: ui/filteredit_base.ui:315
@@ -5704,6 +5717,57 @@ msgstr "%1"
 msgctxt "4 digit year"
 msgid "%1"
 msgstr "%1"
+
+#~ msgid "Import &Calendar..."
+#~ msgstr "ਕੈਲੰਡਰ ਅਯਾਤ(&C)..."
+
+#~ msgid "New E&vent..."
+#~ msgstr "ਨਵੀਂ ਘਟਨਾ(&v)..."
+
+#~ msgid "New &Journal..."
+#~ msgstr "ਨਵਾਂ ਰੋਜ਼ਨਾਮਚਾ(&J)..."
+
+#~ msgid "&Edit..."
+#~ msgstr "ਸੋਧ(&E)..."
+
+#, fuzzy
+#~| msgctxt ""
+#~| "@info/plain Displayed grayed-out inside the textbox, verb to search"
+#~| msgid "Search"
+#~ msgctxt ""
+#~ "@info/plain Displayed grayed-out inside the textbox, verb to search"
+#~ msgid "Search..."
+#~ msgstr "ਖੋਜ"
+
+#~ msgid "Edit..."
+#~ msgstr "ਸੋਧ..."
+
+#, fuzzy
+#~| msgid "&Edit..."
+#~ msgctxt "@action:inmenu"
+#~ msgid "&Edit..."
+#~ msgstr "ਸੋਧ(&E)..."
+
+#, fuzzy
+#~| msgid "&Print..."
+#~ msgctxt "@action:inmenu"
+#~ msgid "&Print..."
+#~ msgstr "ਪਰਿੰਟ ਕਰੋ(&P)..."
+
+#, fuzzy
+#~| msgid "New &Journal..."
+#~ msgctxt "@action:inmenu"
+#~ msgid "New Journal..."
+#~ msgstr "ਨਵਾਂ ਰੋਜ਼ਨਾਮਚਾ(&J)..."
+
+#, fuzzy
+#~| msgid "New E&vent..."
+#~ msgctxt "@action:inmenu"
+#~ msgid "New Event..."
+#~ msgstr "ਨਵੀਂ ਘਟਨਾ(&v)..."
+
+#~ msgid "Change..."
+#~ msgstr "ਤਬਦੀਲ..."
 
 #~ msgid "Day begins at"
 #~ msgstr "ਦਿਨ ਸ਼ੁਰੂ ਹੁੰਦਾ ਹੈ"
@@ -7840,9 +7904,6 @@ msgstr "%1"
 #~ msgid "Delete this journal entry"
 #~ msgstr "ਇਹ ਰੋਜ਼ਨਾਮਚਾ ਇੰਦਰਾਜ਼ ਹਟਾਓ"
 
-#~ msgid "&Print"
-#~ msgstr "ਪਰਿੰਟ ਕਰੋ(&P)"
-
 #, fuzzy
 #~ msgid "Print this journal entry"
 #~ msgstr "ਇਹ ਰੋਜ਼ਨਾਮਚਾ ਇੰਦਰਾਜ਼ ਸੋਧ"
@@ -7980,12 +8041,6 @@ msgstr "%1"
 #~| msgid "New &To-do..."
 #~ msgctxt "@action:inmenu create a new to-do"
 #~ msgid "New &To-do..."
-#~ msgstr "ਨਵਾਂ ਕੰਮ (&T)..."
-
-#, fuzzy
-#~| msgid "New &To-do..."
-#~ msgctxt "@action:inmenu create a new sub-to-do"
-#~ msgid "New Su&b-to-do..."
 #~ msgstr "ਨਵਾਂ ਕੰਮ (&T)..."
 
 #, fuzzy
@@ -8511,12 +8566,6 @@ msgstr "%1"
 #~ msgctxt "@title general journal settings"
 #~ msgid "General"
 #~ msgstr "ਸਧਾਰਨ"
-
-#, fuzzy
-#~| msgid "New &Journal..."
-#~ msgctxt "@title:window"
-#~ msgid "New Journal"
-#~ msgstr "ਨਵਾਂ ਰੋਜ਼ਨਾਮਚਾ(&J)..."
 
 #~ msgctxt "@label"
 #~ msgid "Attachment name"
@@ -9322,12 +9371,6 @@ msgstr "%1"
 #~ msgstr "ਸ਼ਾਮਿਲ(&A)"
 
 #, fuzzy
-#~| msgid "&Change"
-#~ msgctxt "@action:button"
-#~ msgid "&Change"
-#~ msgstr "ਤਬਦੀਲ(&C)"
-
-#, fuzzy
 #~| msgid "&Delete"
 #~ msgctxt "@action:button"
 #~ msgid "&Delete"
@@ -9860,10 +9903,6 @@ msgstr "%1"
 #~ msgctxt "@title:tab"
 #~ msgid "&Attendees"
 #~ msgstr "ਸਰੋਤੇ(&n)"
-
-#~ msgctxt "@title:window"
-#~ msgid "New Event"
-#~ msgstr "ਨਵਾਂ ਈਵੈਂਟ"
 
 #, fuzzy
 #~| msgid "Atte&ndees"
@@ -11223,10 +11262,6 @@ msgstr "%1"
 
 #~ msgid "&Remove..."
 #~ msgstr "ਹਟਾਉ..."
-
-#, fuzzy
-#~ msgid "Edit"
-#~ msgstr "   ਸੋਧ   %1"
 
 #, fuzzy
 #~| msgid "day(s)"

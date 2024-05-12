@@ -20,7 +20,7 @@ msgid ""
 msgstr ""
 "Project-Id-Version: kdepim-kde4\n"
 "Report-Msgid-Bugs-To: https://bugs.kde.org\n"
-"POT-Creation-Date: 2024-04-12 00:38+0000\n"
+"POT-Creation-Date: 2024-05-12 00:39+0000\n"
 "PO-Revision-Date: 2024-03-22 16:14+0300\n"
 "Last-Translator: Emir SARI <emir_sari@icloud.com>\n"
 "Language-Team: Turkish <kde-l10n-tr@kde.org>\n"
@@ -309,9 +309,11 @@ msgid "Hide menu bar"
 msgstr "Menü çubuğunu gizle"
 
 #: actionmanager.cpp:243
-#, kde-format
-msgid "Import &Calendar..."
-msgstr "&Takvim İçe Aktar..."
+#, fuzzy, kde-format
+#| msgctxt "@title:window"
+#| msgid "Import Calendar"
+msgid "Import &Calendar…"
+msgstr "İçe Takvim Aktar"
 
 #: actionmanager.cpp:244
 #, kde-format
@@ -336,8 +338,9 @@ msgstr ""
 "içeriğini içe aktarmak istiyorsanız bu menü girdisini seçin."
 
 #: actionmanager.cpp:253
-#, kde-format
-msgid "Get New Calendars..."
+#, fuzzy, kde-format
+#| msgid "Get New Calendars..."
+msgid "Get New Calendars…"
 msgstr "Yeni Takvimler Al..."
 
 #: actionmanager.cpp:254
@@ -374,8 +377,9 @@ msgid "The downloaded events will be merged into your current calendar."
 msgstr "İndirilen etkinlikler, geçerli takviminize birleştirilecek."
 
 #: actionmanager.cpp:305
-#, kde-format
-msgid "Export as &iCalendar..."
+#, fuzzy, kde-format
+#| msgid "Export as &iCalendar..."
+msgid "Export as &iCalendar…"
 msgstr "&iCalendar Olarak Dışa Aktar..."
 
 #: actionmanager.cpp:306
@@ -400,8 +404,9 @@ msgstr ""
 "verir."
 
 #: actionmanager.cpp:314
-#, kde-format
-msgid "Archive O&ld Incidences..."
+#, fuzzy, kde-format
+#| msgid "Archive O&ld Incidences..."
+msgid "Archive O&ld Incidences…"
 msgstr "&Eski Etkinlikleri Arşivle..."
 
 #: actionmanager.cpp:315
@@ -853,8 +858,9 @@ msgid "&Week"
 msgstr "&Hafta"
 
 #: actionmanager.cpp:566 kodaymatrix.cpp:484
-#, kde-format
-msgid "New E&vent..."
+#, fuzzy, kde-format
+#| msgid "New E&vent..."
+msgid "New E&vent…"
 msgstr "Y&eni Etkinlik..."
 
 #: actionmanager.cpp:567
@@ -881,8 +887,9 @@ msgstr ""
 "ekleyebilirsiniz."
 
 #: actionmanager.cpp:576 kodaymatrix.cpp:485
-#, kde-format
-msgid "New &To-do..."
+#, fuzzy, kde-format
+#| msgid "New &To-do..."
+msgid "New &To-do…"
 msgstr "Ye&ni Yapılacak..."
 
 #: actionmanager.cpp:577
@@ -909,13 +916,15 @@ msgstr ""
 "ekleyebilirsiniz."
 
 #: actionmanager.cpp:587
-#, kde-format
-msgid "New Su&b-to-do..."
+#, fuzzy, kde-format
+#| msgid "New Su&b-to-do..."
+msgid "New Su&b-to-do…"
 msgstr "Y&eni Alt Yapılacak..."
 
 #: actionmanager.cpp:595 kodaymatrix.cpp:486
-#, kde-format
-msgid "New &Journal..."
+#, fuzzy, kde-format
+#| msgid "New &Journal..."
+msgid "New &Journal…"
 msgstr "Yeni &Günce..."
 
 #: actionmanager.cpp:596
@@ -937,8 +946,9 @@ msgid "Starts a dialog that allows you to create a new Journal entry."
 msgstr "Yeni bir günce girdisi ekleyebileceğiniz bir iletişim kutusu açar."
 
 #: actionmanager.cpp:603
-#, kde-format
-msgid "Configure View..."
+#, fuzzy, kde-format
+#| msgid "Configure View..."
+msgid "Configure View…"
 msgstr "Görünümü Yapılandır..."
 
 #: actionmanager.cpp:604
@@ -974,9 +984,10 @@ msgid "&Show"
 msgstr "&Göster"
 
 #: actionmanager.cpp:618 actionmanager.cpp:1303 actionmanager.cpp:1342
-#, kde-format
-msgid "&Edit..."
-msgstr "Dü&zenle..."
+#, fuzzy, kde-format
+#| msgid "&Edit"
+msgid "&Edit…"
+msgstr "Dü&zen"
 
 #: actionmanager.cpp:627
 #, kde-format
@@ -988,8 +999,9 @@ msgstr "Alt Yapılacak'ı &Bağımsız Yap"
 #. mACollection, "activate_alarm" );
 #. ************************* SCHEDULE MENU *******************************
 #: actionmanager.cpp:639
-#, kde-format
-msgid "&Publish Item Information..."
+#, fuzzy, kde-format
+#| msgid "&Publish Item Information..."
+msgid "&Publish Item Information…"
 msgstr "Öge Bilgisini &Yayımla..."
 
 #: actionmanager.cpp:646
@@ -1019,13 +1031,15 @@ msgid "Request Chan&ge"
 msgstr "&Değişiklik İste"
 
 #: actionmanager.cpp:686
-#, kde-format
-msgid "&Mail Free Busy Information..."
+#, fuzzy, kde-format
+#| msgid "&Mail Free Busy Information..."
+msgid "&Mail Free Busy Information…"
 msgstr "&Uygun/Meşgul Bilgisini E-posta ile Gönder..."
 
 #: actionmanager.cpp:691
-#, kde-format
-msgid "&Send as iCalendar..."
+#, fuzzy, kde-format
+#| msgid "&Send as iCalendar..."
+msgid "&Send as iCalendar…"
 msgstr "&iCalendar Olarak Gönder..."
 
 #: actionmanager.cpp:698
@@ -1059,23 +1073,27 @@ msgid "Show Calendar Manager"
 msgstr "Takvim Yöneticisini Göster"
 
 #: actionmanager.cpp:749
-#, kde-format
-msgid "Configure &Date && Time..."
+#, fuzzy, kde-format
+#| msgid "Configure &Date && Time..."
+msgid "Configure &Date && Time…"
 msgstr "&Tarihi ve Saati Yapılandır..."
 
 #: actionmanager.cpp:753
-#, kde-format
-msgid "Manage View &Filters..."
+#, fuzzy, kde-format
+#| msgid "Manage View &Filters..."
+msgid "Manage View &Filters…"
 msgstr "Görünüm Sü&zgeçlerini Yönet..."
 
 #: actionmanager.cpp:757
-#, kde-format
-msgid "Manage T&ags..."
+#, fuzzy, kde-format
+#| msgid "Manage T&ags..."
+msgid "Manage T&ags…"
 msgstr "Et&iketleri Yönet..."
 
 #: actionmanager.cpp:765
-#, kde-format
-msgid "&Configure KOrganizer..."
+#, fuzzy, kde-format
+#| msgid "&Configure KOrganizer..."
+msgid "&Configure KOrganizer…"
 msgstr "&K Organizatör'ü Yapılandır..."
 
 #: actionmanager.cpp:843
@@ -1149,8 +1167,9 @@ msgid "&Show Event"
 msgstr "Etkinliği &Göster"
 
 #: actionmanager.cpp:1264
-#, kde-format
-msgid "&Edit Event..."
+#, fuzzy, kde-format
+#| msgid "&Edit Event..."
+msgid "&Edit Event…"
 msgstr "Etkinliği Dü&zenle..."
 
 #: actionmanager.cpp:1267
@@ -1164,8 +1183,9 @@ msgid "&Show To-do"
 msgstr "Yapılacak'ı &Göster"
 
 #: actionmanager.cpp:1278 kontactplugin/korganizer/todosummarywidget.cpp:321
-#, kde-format
-msgid "&Edit To-do..."
+#, fuzzy, kde-format
+#| msgid "&Edit To-do..."
+msgid "&Edit To-do…"
 msgstr "Yapılacak'ı Dü&zenle..."
 
 #: actionmanager.cpp:1281 kontactplugin/korganizer/todosummarywidget.cpp:323
@@ -1285,10 +1305,12 @@ msgid "Lets you search for a keyword in your calendars"
 msgstr "Takvimlerinizde bir anahtar sözcüğü aramanıza izin verir"
 
 #: akonadicollectionview.cpp:411
-#, kde-format
+#, fuzzy, kde-format
+#| msgctxt "Displayed grayed-out inside the textbox, verb to search"
+#| msgid "Search"
 msgctxt "@info/plain Displayed grayed-out inside the textbox, verb to search"
-msgid "Search..."
-msgstr "Ara..."
+msgid "Search…"
+msgstr "Ara"
 
 #: akonadicollectionview.cpp:495 manageshowcollectionproperties.cpp:76
 #, kde-format
@@ -1297,9 +1319,11 @@ msgid "Properties of Calendar Folder %1"
 msgstr "%1 Takvim Klasörü Özellikleri"
 
 #: akonadicollectionview.cpp:507
-#, kde-format
+#, fuzzy, kde-format
+#| msgctxt "@action:inmenu"
+#| msgid "&Set Folder Color..."
 msgctxt "@action:inmenu"
-msgid "&Set Folder Color..."
+msgid "&Set Folder Color…"
 msgstr "Kla&sör Rengi Ayarla..."
 
 #: akonadicollectionview.cpp:513
@@ -1308,13 +1332,15 @@ msgctxt "@action:inmenu"
 msgid "Set as &Default Folder"
 msgstr "&Öntanımlı Klasör Olarak Ayarla"
 
-#: akonadicollectionview.cpp:519
-#, kde-format
+#: akonadicollectionview.cpp:518
+#, fuzzy, kde-format
+#| msgctxt "@action:inmenu"
+#| msgid "Serverside Subscription..."
 msgctxt "@action:inmenu"
-msgid "Serverside Subscription..."
+msgid "Serverside Subscription…"
 msgstr "Sunucu Tarafı Aboneliği..."
 
-#: akonadicollectionview.cpp:564
+#: akonadicollectionview.cpp:563
 #, kde-format
 msgctxt "@info"
 msgid "Do you really want replace your current default calendar with \"%1\"?"
@@ -1322,25 +1348,25 @@ msgstr ""
 "Geçerli öntanımlı takviminizi \"%1\" ile gerçekten değiştirmek istiyor "
 "musunuz?"
 
-#: akonadicollectionview.cpp:565
+#: akonadicollectionview.cpp:564
 #, kde-format
 msgctxt "@title:window"
 msgid "Replace Default Calendar?"
 msgstr "&Öntanımlı Takvimi Değiştir?"
 
-#: akonadicollectionview.cpp:702
+#: akonadicollectionview.cpp:701
 #, kde-format
 msgctxt "@title:window"
 msgid "Add Calendar"
 msgstr "Takvim Ekle"
 
-#: akonadicollectionview.cpp:744
+#: akonadicollectionview.cpp:743
 #, kde-format
 msgctxt "@info"
 msgid "Do you really want to delete calendar %1?"
 msgstr "%1 takvimini gerçekten silmek istiyor musunuz?"
 
-#: akonadicollectionview.cpp:745
+#: akonadicollectionview.cpp:744
 #, kde-format
 msgctxt "@title:window"
 msgid "Delete Calendar"
@@ -1976,9 +2002,10 @@ msgid "Event Viewer"
 msgstr "Etkinlik Görüntüleyicisi"
 
 #: dialog/koeventviewerdialog.cpp:40
-#, kde-format
-msgid "Edit..."
-msgstr "Düzenle..."
+#, fuzzy, kde-format
+#| msgid "&Edit"
+msgid "Edit…"
+msgstr "Dü&zen"
 
 #: dialog/koeventviewerdialog.cpp:41
 #, kde-format
@@ -2089,10 +2116,11 @@ msgid "&Show"
 msgstr "&Göster"
 
 #: koeventpopupmenu.cpp:45
-#, kde-format
+#, fuzzy, kde-format
+#| msgid "&Edit"
 msgctxt "@action:inmenu"
-msgid "&Edit..."
-msgstr "Dü&zenle..."
+msgid "&Edit…"
+msgstr "Dü&zen"
 
 #: koeventpopupmenu.cpp:47
 #, kde-format
@@ -2101,15 +2129,19 @@ msgid "&Delete"
 msgstr "&Sil"
 
 #: koeventpopupmenu.cpp:51
-#, kde-format
+#, fuzzy, kde-format
+#| msgctxt "@action:inmenu"
+#| msgid "&Print..."
 msgctxt "@action:inmenu"
-msgid "&Print..."
+msgid "&Print…"
 msgstr "&Yazdır..."
 
 #: koeventpopupmenu.cpp:53
-#, kde-format
+#, fuzzy, kde-format
+#| msgctxt "@action:inmenu"
+#| msgid "Print Previe&w..."
 msgctxt "@action:inmenu"
-msgid "Print Previe&w..."
+msgid "Print Previe&w…"
 msgstr "Y&azdırma Önizlemesi..."
 
 #: koeventpopupmenu.cpp:74
@@ -2167,15 +2199,19 @@ msgid "&Toggle Reminder"
 msgstr "&Anımsatıcıyı Aç/Kapat"
 
 #: koeventpopupmenu.cpp:129
-#, kde-format
+#, fuzzy, kde-format
+#| msgctxt "@action:inmenu"
+#| msgid "&Dissociate From Recurrence..."
 msgctxt "@action:inmenu"
-msgid "&Dissociate From Recurrence..."
+msgid "&Dissociate From Recurrence…"
 msgstr "&Yinelemeden İlişkilendirmeyi Kaldır..."
 
 #: koeventpopupmenu.cpp:137
-#, kde-format
+#, fuzzy, kde-format
+#| msgctxt "@action:inmenu"
+#| msgid "Send as iCalendar..."
 msgctxt "@action:inmenu"
-msgid "Send as iCalendar..."
+msgid "Send as iCalendar…"
 msgstr "&iCalendar Olarak Gönder..."
 
 #: koeventpopupmenu.cpp:187
@@ -2417,8 +2453,9 @@ msgstr[0] "Yarın başlayacak etkinlik yok"
 msgstr[1] "Sonraki %1 gün içinde başlayacak etkinlik yok"
 
 #: kontactplugin/korganizer/apptsummarywidget.cpp:240
-#, kde-format
-msgid "&Edit Appointment..."
+#, fuzzy, kde-format
+#| msgid "&Edit Appointment..."
+msgid "&Edit Appointment…"
 msgstr "Randevuyu Dü&zenle..."
 
 #: kontactplugin/korganizer/apptsummarywidget.cpp:242
@@ -2432,9 +2469,11 @@ msgid "Edit Event: \"%1\""
 msgstr "Etkinliği Düzenle: \"%1\""
 
 #: kontactplugin/korganizer/journalplugin.cpp:28
-#, kde-format
+#, fuzzy, kde-format
+#| msgctxt "@action:inmenu"
+#| msgid "New Journal..."
 msgctxt "@action:inmenu"
-msgid "New Journal..."
+msgid "New Journal…"
 msgstr "Yeni Günce..."
 
 #: kontactplugin/korganizer/journalplugin.cpp:31
@@ -2461,9 +2500,11 @@ msgstr[0] " gün"
 msgstr[1] " gün"
 
 #: kontactplugin/korganizer/korganizerplugin.cpp:44
-#, kde-format
+#, fuzzy, kde-format
+#| msgctxt "@action:inmenu"
+#| msgid "New Event..."
 msgctxt "@action:inmenu"
-msgid "New Event..."
+msgid "New Event…"
 msgstr "Yeni Etkinlik..."
 
 #: kontactplugin/korganizer/korganizerplugin.cpp:47
@@ -2575,9 +2616,11 @@ msgid "Next: %1"
 msgstr "Sonraki: %1"
 
 #: kontactplugin/korganizer/todoplugin.cpp:40
-#, kde-format
+#, fuzzy, kde-format
+#| msgctxt "@action:inmenu"
+#| msgid "New To-do..."
 msgctxt "@action:inmenu"
-msgid "New To-do..."
+msgid "New To-do…"
 msgstr "Yeni Yapılacak..."
 
 #: kontactplugin/korganizer/todoplugin.cpp:43
@@ -3617,8 +3660,9 @@ msgid "Other Options"
 msgstr "Diğer Seçenekler"
 
 #: prefs/kprefsdialog.cpp:234
-#, kde-format
-msgid "Choose..."
+#, fuzzy, kde-format
+#| msgid "Choose..."
+msgid "Choose…"
 msgstr "Seç..."
 
 #: prefs/kprefsdialog.cpp:765
@@ -4967,8 +5011,9 @@ msgstr "Yalnızca seçiliyi göster"
 
 #. i18n: ectx: property (text), widget (QPushButton, mCatEditButton)
 #: ui/filteredit_base.ui:301
-#, kde-format
-msgid "Change..."
+#, fuzzy, kde-format
+#| msgid "Change..."
+msgid "Change…"
 msgstr "Değiştir..."
 
 #. i18n: ectx: property (whatsThis), widget (QCheckBox, mHideTodosNotAssignedToMeCheck)
@@ -5858,6 +5903,24 @@ msgstr "%1"
 msgctxt "4 digit year"
 msgid "%1"
 msgstr "%1"
+
+#~ msgid "Import &Calendar..."
+#~ msgstr "&Takvim İçe Aktar..."
+
+#~ msgid "&Edit..."
+#~ msgstr "Dü&zenle..."
+
+#~ msgctxt ""
+#~ "@info/plain Displayed grayed-out inside the textbox, verb to search"
+#~ msgid "Search..."
+#~ msgstr "Ara..."
+
+#~ msgid "Edit..."
+#~ msgstr "Düzenle..."
+
+#~ msgctxt "@action:inmenu"
+#~ msgid "&Edit..."
+#~ msgstr "Dü&zenle..."
 
 #~ msgid "Day begins at"
 #~ msgstr "Gün başlangıcı"

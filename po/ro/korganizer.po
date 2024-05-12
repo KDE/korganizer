@@ -5,7 +5,7 @@ msgid ""
 msgstr ""
 "Project-Id-Version: korganizer-1.1.1\n"
 "Report-Msgid-Bugs-To: https://bugs.kde.org\n"
-"POT-Creation-Date: 2024-04-12 00:38+0000\n"
+"POT-Creation-Date: 2024-05-12 00:39+0000\n"
 "PO-Revision-Date: 2022-02-06 19:07+0000\n"
 "Last-Translator: Sergiu Bivol <sergiu@cip.md>\n"
 "Language-Team: Romanian\n"
@@ -283,9 +283,10 @@ msgid "Hide menu bar"
 msgstr "Bară de timp"
 
 #: actionmanager.cpp:243
-#, kde-format
-msgid "Import &Calendar..."
-msgstr "Importă &calendar..."
+#, fuzzy, kde-format
+#| msgid "Import Calendar"
+msgid "Import &Calendar…"
+msgstr "Importă calendar"
 
 #: actionmanager.cpp:244
 #, fuzzy, kde-format
@@ -312,7 +313,7 @@ msgstr ""
 #: actionmanager.cpp:253
 #, fuzzy, kde-format
 #| msgid "New Calendar"
-msgid "Get New Calendars..."
+msgid "Get New Calendars…"
 msgstr "Calendar nou"
 
 #: actionmanager.cpp:254
@@ -346,8 +347,9 @@ msgid "The downloaded events will be merged into your current calendar."
 msgstr ""
 
 #: actionmanager.cpp:305
-#, kde-format
-msgid "Export as &iCalendar..."
+#, fuzzy, kde-format
+#| msgid "Export as &iCalendar..."
+msgid "Export as &iCalendar…"
 msgstr "Export ca &iCalendar..."
 
 #: actionmanager.cpp:306
@@ -373,7 +375,7 @@ msgstr ""
 #: actionmanager.cpp:314
 #, fuzzy, kde-format
 #| msgid "Archive O&ld Entries..."
-msgid "Archive O&ld Incidences..."
+msgid "Archive O&ld Incidences…"
 msgstr "Arhivează înregistrări&le vechi..."
 
 #: actionmanager.cpp:315
@@ -812,8 +814,8 @@ msgid "&Week"
 msgstr "&Săptămâna"
 
 #: actionmanager.cpp:566 kodaymatrix.cpp:484
-#, kde-format
-msgid "New E&vent..."
+#, fuzzy, kde-format
+msgid "New E&vent…"
 msgstr "E&veniment nou..."
 
 #: actionmanager.cpp:567
@@ -839,9 +841,9 @@ msgid ""
 msgstr ""
 
 #: actionmanager.cpp:576 kodaymatrix.cpp:485
-#, kde-format
-msgid "New &To-do..."
-msgstr "&De-făcut nou..."
+#, fuzzy, kde-format
+msgid "New &To-do…"
+msgstr "Lucrare nouă"
 
 #: actionmanager.cpp:577
 #, fuzzy, kde-format
@@ -865,13 +867,13 @@ msgstr ""
 
 #: actionmanager.cpp:587
 #, fuzzy, kde-format
-msgid "New Su&b-to-do..."
+msgid "New Su&b-to-do…"
 msgstr "Sub-lucrare nouă..."
 
 #: actionmanager.cpp:595 kodaymatrix.cpp:486
-#, kde-format
-msgid "New &Journal..."
-msgstr "&Jurnal nou..."
+#, fuzzy, kde-format
+msgid "New &Journal…"
+msgstr "&Jurnal"
 
 #: actionmanager.cpp:596
 #, fuzzy, kde-format
@@ -894,8 +896,9 @@ msgid "Starts a dialog that allows you to create a new Journal entry."
 msgstr ""
 
 #: actionmanager.cpp:603
-#, kde-format
-msgid "Configure View..."
+#, fuzzy, kde-format
+#| msgid "Configure View..."
+msgid "Configure View…"
 msgstr "Configurare vizualizare..."
 
 #: actionmanager.cpp:604
@@ -931,9 +934,10 @@ msgid "&Show"
 msgstr "&Arată"
 
 #: actionmanager.cpp:618 actionmanager.cpp:1303 actionmanager.cpp:1342
-#, kde-format
-msgid "&Edit..."
-msgstr "&Editare..."
+#, fuzzy, kde-format
+#| msgid "&Edit"
+msgid "&Edit…"
+msgstr "&Editare"
 
 #: actionmanager.cpp:627
 #, kde-format
@@ -946,7 +950,7 @@ msgstr ""
 #. ************************* SCHEDULE MENU *******************************
 #: actionmanager.cpp:639
 #, kde-format
-msgid "&Publish Item Information..."
+msgid "&Publish Item Information…"
 msgstr ""
 
 #: actionmanager.cpp:646
@@ -977,12 +981,12 @@ msgstr "Cere &modificare"
 
 #: actionmanager.cpp:686
 #, fuzzy, kde-format
-msgid "&Mail Free Busy Information..."
+msgid "&Mail Free Busy Information…"
 msgstr "Confirmare Organizator"
 
 #: actionmanager.cpp:691
 #, fuzzy, kde-format
-msgid "&Send as iCalendar..."
+msgid "&Send as iCalendar…"
 msgstr "Trimite ca iCalendar..."
 
 #: actionmanager.cpp:698
@@ -1016,23 +1020,24 @@ msgid "Show Calendar Manager"
 msgstr "Exportă calendar ca pagină de web"
 
 #: actionmanager.cpp:749
-#, kde-format
-msgid "Configure &Date && Time..."
+#, fuzzy, kde-format
+#| msgid "Configure &Date && Time..."
+msgid "Configure &Date && Time…"
 msgstr "Configurare &dată și oră..."
 
 #: actionmanager.cpp:753
 #, fuzzy, kde-format
-msgid "Manage View &Filters..."
+msgid "Manage View &Filters…"
 msgstr "Editează filtre"
 
 #: actionmanager.cpp:757
 #, fuzzy, kde-format
-msgid "Manage T&ags..."
+msgid "Manage T&ags…"
 msgstr "Editează categorii"
 
 #: actionmanager.cpp:765
 #, fuzzy, kde-format
-msgid "&Configure KOrganizer..."
+msgid "&Configure KOrganizer…"
 msgstr "Confirmat"
 
 #: actionmanager.cpp:843
@@ -1111,7 +1116,7 @@ msgstr "E&veniment nou..."
 
 #: actionmanager.cpp:1264
 #, fuzzy, kde-format
-msgid "&Edit Event..."
+msgid "&Edit Event…"
 msgstr "Editează evenimentul"
 
 #: actionmanager.cpp:1267
@@ -1126,7 +1131,7 @@ msgstr "Afișează..."
 
 #: actionmanager.cpp:1278 kontactplugin/korganizer/todosummarywidget.cpp:321
 #, fuzzy, kde-format
-msgid "&Edit To-do..."
+msgid "&Edit To-do…"
 msgstr "Editează..."
 
 #: actionmanager.cpp:1281 kontactplugin/korganizer/todosummarywidget.cpp:323
@@ -1250,7 +1255,7 @@ msgstr ""
 #| msgctxt "@label in QuickSearchLine"
 #| msgid "Search"
 msgctxt "@info/plain Displayed grayed-out inside the textbox, verb to search"
-msgid "Search..."
+msgid "Search…"
 msgstr "Caută"
 
 #: akonadicollectionview.cpp:495 manageshowcollectionproperties.cpp:76
@@ -1264,7 +1269,7 @@ msgstr "Proprietăți pentru %1"
 #: akonadicollectionview.cpp:507
 #, kde-format
 msgctxt "@action:inmenu"
-msgid "&Set Folder Color..."
+msgid "&Set Folder Color…"
 msgstr ""
 
 #: akonadicollectionview.cpp:513
@@ -1273,37 +1278,37 @@ msgctxt "@action:inmenu"
 msgid "Set as &Default Folder"
 msgstr "Format implicit calendar"
 
-#: akonadicollectionview.cpp:519
+#: akonadicollectionview.cpp:518
 #, kde-format
 msgctxt "@action:inmenu"
-msgid "Serverside Subscription..."
+msgid "Serverside Subscription…"
 msgstr ""
 
-#: akonadicollectionview.cpp:564
+#: akonadicollectionview.cpp:563
 #, fuzzy, kde-format
 msgctxt "@info"
 msgid "Do you really want replace your current default calendar with \"%1\"?"
 msgstr "Nu pot deschide cartea de adrese."
 
-#: akonadicollectionview.cpp:565
+#: akonadicollectionview.cpp:564
 #, fuzzy, kde-format
 msgctxt "@title:window"
 msgid "Replace Default Calendar?"
 msgstr "Format implicit calendar"
 
-#: akonadicollectionview.cpp:702
+#: akonadicollectionview.cpp:701
 #, fuzzy, kde-format
 msgctxt "@title:window"
 msgid "Add Calendar"
 msgstr "Calendar nou"
 
-#: akonadicollectionview.cpp:744
+#: akonadicollectionview.cpp:743
 #, fuzzy, kde-format
 msgctxt "@info"
 msgid "Do you really want to delete calendar %1?"
 msgstr "Nu pot deschide cartea de adrese."
 
-#: akonadicollectionview.cpp:745
+#: akonadicollectionview.cpp:744
 #, fuzzy, kde-format
 msgctxt "@title:window"
 msgid "Delete Calendar"
@@ -1922,9 +1927,9 @@ msgid "Event Viewer"
 msgstr "Vizualizor evenimente"
 
 #: dialog/koeventviewerdialog.cpp:40
-#, kde-format
-msgid "Edit..."
-msgstr "Editare..."
+#, fuzzy, kde-format
+msgid "Edit…"
+msgstr "Timp de sfârșit: %1"
 
 #: dialog/koeventviewerdialog.cpp:41
 #, fuzzy, kde-format
@@ -2048,10 +2053,10 @@ msgstr "&Arată"
 
 #: koeventpopupmenu.cpp:45
 #, fuzzy, kde-format
-#| msgid "&Edit..."
+#| msgid "&Edit"
 msgctxt "@action:inmenu"
-msgid "&Edit..."
-msgstr "&Editare..."
+msgid "&Edit…"
+msgstr "&Editare"
 
 #: koeventpopupmenu.cpp:47
 #, fuzzy, kde-format
@@ -2062,16 +2067,16 @@ msgstr "Ș&terge"
 
 #: koeventpopupmenu.cpp:51
 #, fuzzy, kde-format
-#| msgid "&Print..."
+#| msgid "&Print"
 msgctxt "@action:inmenu"
-msgid "&Print..."
-msgstr "Im&primare..."
+msgid "&Print…"
+msgstr "Ti&părește"
 
 #: koeventpopupmenu.cpp:53
 #, fuzzy, kde-format
 #| msgid "&Print..."
 msgctxt "@action:inmenu"
-msgid "Print Previe&w..."
+msgid "Print Previe&w…"
 msgstr "Im&primare..."
 
 #: koeventpopupmenu.cpp:74
@@ -2137,13 +2142,13 @@ msgstr "Amintire:"
 #: koeventpopupmenu.cpp:129
 #, fuzzy, kde-format
 msgctxt "@action:inmenu"
-msgid "&Dissociate From Recurrence..."
+msgid "&Dissociate From Recurrence…"
 msgstr "Listează evenimentele pentru ziua curentă"
 
 #: koeventpopupmenu.cpp:137
 #, fuzzy, kde-format
 msgctxt "@action:inmenu"
-msgid "Send as iCalendar..."
+msgid "Send as iCalendar…"
 msgstr "Trimite ca iCalendar..."
 
 #: koeventpopupmenu.cpp:187
@@ -2382,7 +2387,7 @@ msgstr[2] ""
 #, fuzzy, kde-format
 #| msgctxt "incidence category: appointment"
 #| msgid "Appointment"
-msgid "&Edit Appointment..."
+msgid "&Edit Appointment…"
 msgstr "Întâlnire"
 
 #: kontactplugin/korganizer/apptsummarywidget.cpp:242
@@ -2400,10 +2405,9 @@ msgstr "Editează evenimentul"
 
 #: kontactplugin/korganizer/journalplugin.cpp:28
 #, fuzzy, kde-format
-#| msgid "New &Journal..."
 msgctxt "@action:inmenu"
-msgid "New Journal..."
-msgstr "&Jurnal nou..."
+msgid "New Journal…"
+msgstr "&Jurnal"
 
 #: kontactplugin/korganizer/journalplugin.cpp:31
 #, fuzzy, kde-format
@@ -2433,9 +2437,8 @@ msgstr[2] "%1 de zile"
 
 #: kontactplugin/korganizer/korganizerplugin.cpp:44
 #, fuzzy, kde-format
-#| msgid "New E&vent..."
 msgctxt "@action:inmenu"
-msgid "New Event..."
+msgid "New Event…"
 msgstr "E&veniment nou..."
 
 #: kontactplugin/korganizer/korganizerplugin.cpp:47
@@ -2564,8 +2567,8 @@ msgstr "Re-face: %1"
 #: kontactplugin/korganizer/todoplugin.cpp:40
 #, fuzzy, kde-format
 msgctxt "@action:inmenu"
-msgid "New To-do..."
-msgstr "Lucrare nouă..."
+msgid "New To-do…"
+msgstr "Lucrare nouă"
 
 #: kontactplugin/korganizer/todoplugin.cpp:43
 #, fuzzy, kde-format
@@ -3605,7 +3608,7 @@ msgstr "Alte opțiuni"
 #: prefs/kprefsdialog.cpp:234
 #, fuzzy, kde-format
 #| msgid "Change..."
-msgid "Choose..."
+msgid "Choose…"
 msgstr "Modifică..."
 
 #: prefs/kprefsdialog.cpp:765
@@ -4799,9 +4802,11 @@ msgstr "Nici un eveniment selectat."
 
 #. i18n: ectx: property (text), widget (QPushButton, mCatEditButton)
 #: ui/filteredit_base.ui:301
-#, kde-format
-msgid "Change..."
-msgstr "Modifică..."
+#, fuzzy, kde-format
+#| msgctxt "@action:button"
+#| msgid "&Change"
+msgid "Change…"
+msgstr "Modifi&că"
 
 #. i18n: ectx: property (whatsThis), widget (QCheckBox, mHideTodosNotAssignedToMeCheck)
 #: ui/filteredit_base.ui:315
@@ -5632,6 +5637,64 @@ msgstr "De făcut: %1"
 msgctxt "4 digit year"
 msgid "%1"
 msgstr "De făcut: %1"
+
+#~ msgid "Import &Calendar..."
+#~ msgstr "Importă &calendar..."
+
+#~ msgid "New E&vent..."
+#~ msgstr "E&veniment nou..."
+
+#~ msgid "New &To-do..."
+#~ msgstr "&De-făcut nou..."
+
+#~ msgid "New &Journal..."
+#~ msgstr "&Jurnal nou..."
+
+#~ msgid "&Edit..."
+#~ msgstr "&Editare..."
+
+#, fuzzy
+#~| msgctxt "@label in QuickSearchLine"
+#~| msgid "Search"
+#~ msgctxt ""
+#~ "@info/plain Displayed grayed-out inside the textbox, verb to search"
+#~ msgid "Search..."
+#~ msgstr "Caută"
+
+#~ msgid "Edit..."
+#~ msgstr "Editare..."
+
+#, fuzzy
+#~| msgid "&Edit..."
+#~ msgctxt "@action:inmenu"
+#~ msgid "&Edit..."
+#~ msgstr "&Editare..."
+
+#, fuzzy
+#~| msgid "&Print..."
+#~ msgctxt "@action:inmenu"
+#~ msgid "&Print..."
+#~ msgstr "Im&primare..."
+
+#, fuzzy
+#~| msgid "New &Journal..."
+#~ msgctxt "@action:inmenu"
+#~ msgid "New Journal..."
+#~ msgstr "&Jurnal nou..."
+
+#, fuzzy
+#~| msgid "New E&vent..."
+#~ msgctxt "@action:inmenu"
+#~ msgid "New Event..."
+#~ msgstr "E&veniment nou..."
+
+#, fuzzy
+#~ msgctxt "@action:inmenu"
+#~ msgid "New To-do..."
+#~ msgstr "Lucrare nouă..."
+
+#~ msgid "Change..."
+#~ msgstr "Modifică..."
 
 #, fuzzy
 #~ msgid "Day begins at"
@@ -7548,9 +7611,6 @@ msgstr "De făcut: %1"
 #~ msgid "Delete this journal entry"
 #~ msgstr "Șterge această înregistrare de jurnal"
 
-#~ msgid "&Print"
-#~ msgstr "Ti&părește"
-
 #~ msgid "Print this journal entry"
 #~ msgstr "Tipărește această înregistrare de jurnal"
 
@@ -8258,11 +8318,6 @@ msgstr "De făcut: %1"
 #~ msgstr "&General"
 
 #, fuzzy
-#~ msgctxt "@title:window"
-#~ msgid "New To-do"
-#~ msgstr "Lucrare nouă"
-
-#, fuzzy
 #~ msgid "Sets the title of this journal."
 #~ msgstr "&Editează întâlnirea..."
 
@@ -8296,11 +8351,6 @@ msgstr "De făcut: %1"
 #~ msgctxt "@title general journal settings"
 #~ msgid "General"
 #~ msgstr "General"
-
-#, fuzzy
-#~ msgctxt "@title:window"
-#~ msgid "New Journal"
-#~ msgstr "&Jurnal"
 
 #, fuzzy
 #~ msgctxt "@label attachment contains binary data"
@@ -8894,10 +8944,6 @@ msgstr "De făcut: %1"
 #~ msgstr "&Adaugă"
 
 #~ msgctxt "@action:button"
-#~ msgid "&Change"
-#~ msgstr "Modifi&că"
-
-#~ msgctxt "@action:button"
 #~ msgid "&Delete"
 #~ msgstr "Ș&terge"
 
@@ -9393,11 +9439,6 @@ msgstr "De făcut: %1"
 #~ msgctxt "@title:tab"
 #~ msgid "&Attendees"
 #~ msgstr "Însoțitori"
-
-#, fuzzy
-#~ msgctxt "@title:window"
-#~ msgid "New Event"
-#~ msgstr "E&veniment nou..."
 
 #, fuzzy
 #~ msgctxt "@title:window"
@@ -10571,10 +10612,6 @@ msgstr "De făcut: %1"
 #, fuzzy
 #~ msgid "&Remove..."
 #~ msgstr "Șterge lucrare"
-
-#, fuzzy
-#~ msgid "Edit"
-#~ msgstr "Timp de sfârșit: %1"
 
 #, fuzzy
 #~| msgid "day(s)"

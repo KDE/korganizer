@@ -6,7 +6,7 @@ msgid ""
 msgstr ""
 "Project-Id-Version: korganizer\n"
 "Report-Msgid-Bugs-To: https://bugs.kde.org\n"
-"POT-Creation-Date: 2024-04-12 00:38+0000\n"
+"POT-Creation-Date: 2024-05-12 00:39+0000\n"
 "PO-Revision-Date: 2008-07-21 16:18+0700\n"
 "Last-Translator: Thanomsub Noppaburana <donga.nb@gmail.com>\n"
 "Language-Team: Thai <thai-l10n@googlegroups.com>\n"
@@ -292,9 +292,10 @@ msgid "Hide menu bar"
 msgstr "แถบเวลา"
 
 #: actionmanager.cpp:243
-#, kde-format
-msgid "Import &Calendar..."
-msgstr "นำเข้าปฏิทิน..."
+#, fuzzy, kde-format
+#| msgid "Import Calendar"
+msgid "Import &Calendar…"
+msgstr "นำเข้าปฏิทิน"
 
 #: actionmanager.cpp:244
 #, fuzzy, kde-format
@@ -321,7 +322,7 @@ msgstr ""
 #: actionmanager.cpp:253
 #, fuzzy, kde-format
 #| msgid "New Calendar"
-msgid "Get New Calendars..."
+msgid "Get New Calendars…"
 msgstr "ปฏิทินใหม่"
 
 #: actionmanager.cpp:254
@@ -358,7 +359,7 @@ msgstr ""
 #: actionmanager.cpp:305
 #, fuzzy, kde-format
 #| msgid "Import &Calendar..."
-msgid "Export as &iCalendar..."
+msgid "Export as &iCalendar…"
 msgstr "นำเข้าปฏิทิน..."
 
 #: actionmanager.cpp:306
@@ -384,7 +385,7 @@ msgstr ""
 #: actionmanager.cpp:314
 #, fuzzy, kde-format
 #| msgid "Archive O&ld Entries..."
-msgid "Archive O&ld Incidences..."
+msgid "Archive O&ld Incidences…"
 msgstr "จัดเก็บรายการเก่าเป็นแฟ้มจัดเก็บ..."
 
 #: actionmanager.cpp:315
@@ -842,9 +843,11 @@ msgid "&Week"
 msgstr "รายสัปดาห์"
 
 #: actionmanager.cpp:566 kodaymatrix.cpp:484
-#, kde-format
-msgid "New E&vent..."
-msgstr "เหตุการณ์ใหม่..."
+#, fuzzy, kde-format
+#| msgctxt "@title:window"
+#| msgid "New Event"
+msgid "New E&vent…"
+msgstr "เหตุการณ์ใหม่"
 
 #: actionmanager.cpp:567
 #, fuzzy, kde-format
@@ -869,9 +872,11 @@ msgid ""
 msgstr ""
 
 #: actionmanager.cpp:576 kodaymatrix.cpp:485
-#, kde-format
-msgid "New &To-do..."
-msgstr "สิ่งที่จะทำใหม่..."
+#, fuzzy, kde-format
+#| msgctxt "@title:window"
+#| msgid "New To-do"
+msgid "New &To-do…"
+msgstr "สิ่งที่จะทำใหม่"
 
 #: actionmanager.cpp:577
 #, fuzzy, kde-format
@@ -896,13 +901,15 @@ msgid ""
 msgstr ""
 
 #: actionmanager.cpp:587
-#, kde-format
-msgid "New Su&b-to-do..."
+#, fuzzy, kde-format
+#| msgid "New Su&b-to-do..."
+msgid "New Su&b-to-do…"
 msgstr "ตัวย่อยสิ่งที่จะทำใหม่..."
 
 #: actionmanager.cpp:595 kodaymatrix.cpp:486
-#, kde-format
-msgid "New &Journal..."
+#, fuzzy, kde-format
+#| msgid "New &Journal..."
+msgid "New &Journal…"
 msgstr "บันทึกประจำวันใหม่..."
 
 #: actionmanager.cpp:596
@@ -929,7 +936,7 @@ msgstr ""
 #, fuzzy, kde-format
 #| msgctxt "@action:button"
 #| msgid "Configure &Plugin..."
-msgid "Configure View..."
+msgid "Configure View…"
 msgstr "ปรับแต่งส่วนเสริม..."
 
 #: actionmanager.cpp:604
@@ -966,9 +973,10 @@ msgid "&Show"
 msgstr "แสดง"
 
 #: actionmanager.cpp:618 actionmanager.cpp:1303 actionmanager.cpp:1342
-#, kde-format
-msgid "&Edit..."
-msgstr "แก้ไข..."
+#, fuzzy, kde-format
+#| msgid "&Edit"
+msgid "&Edit…"
+msgstr "แก้ไข"
 
 #: actionmanager.cpp:627
 #, kde-format
@@ -980,8 +988,9 @@ msgstr "ทำให้สิ่งที่จะทำย่อยเป็น
 #. mACollection, "activate_alarm" );
 #. ************************* SCHEDULE MENU *******************************
 #: actionmanager.cpp:639
-#, kde-format
-msgid "&Publish Item Information..."
+#, fuzzy, kde-format
+#| msgid "&Publish Item Information..."
+msgid "&Publish Item Information…"
 msgstr "ส่งข่าวข้อมูลของรายการ..."
 
 #: actionmanager.cpp:646
@@ -1011,13 +1020,15 @@ msgid "Request Chan&ge"
 msgstr "ร้องขอเปลี่ยนแปลง"
 
 #: actionmanager.cpp:686
-#, kde-format
-msgid "&Mail Free Busy Information..."
+#, fuzzy, kde-format
+#| msgid "&Mail Free Busy Information..."
+msgid "&Mail Free Busy Information…"
 msgstr "แจ้งข้อมูลว่าว่าง/ไม่ว่างทางอีเมล..."
 
 #: actionmanager.cpp:691
-#, kde-format
-msgid "&Send as iCalendar..."
+#, fuzzy, kde-format
+#| msgid "&Send as iCalendar..."
+msgid "&Send as iCalendar…"
 msgstr "ส่งไปยังระบบ iCalendar..."
 
 #: actionmanager.cpp:698
@@ -1053,25 +1064,27 @@ msgid "Show Calendar Manager"
 msgstr "ส่งออกปฏิทินไปเป็นหน้าเว็บ"
 
 #: actionmanager.cpp:749
-#, kde-format
-msgid "Configure &Date && Time..."
+#, fuzzy, kde-format
+#| msgid "Configure &Date && Time..."
+msgid "Configure &Date && Time…"
 msgstr "ปรับแต่งวันที่และเวลา..."
 
 #: actionmanager.cpp:753
-#, kde-format
-msgid "Manage View &Filters..."
+#, fuzzy, kde-format
+#| msgid "Manage View &Filters..."
+msgid "Manage View &Filters…"
 msgstr "จัดการตัวกรองมุมมอง..."
 
 #: actionmanager.cpp:757
 #, fuzzy, kde-format
 #| msgid "Manage C&ategories..."
-msgid "Manage T&ags..."
+msgid "Manage T&ags…"
 msgstr "จัดการหมวดหมู่..."
 
 #: actionmanager.cpp:765
 #, fuzzy, kde-format
 #| msgid "&Configure Calendar..."
-msgid "&Configure KOrganizer..."
+msgid "&Configure KOrganizer…"
 msgstr "ปรับแต่งปฏิทิน..."
 
 #: actionmanager.cpp:843
@@ -1150,8 +1163,9 @@ msgid "&Show Event"
 msgstr "แสดงเหตุการณ์"
 
 #: actionmanager.cpp:1264
-#, kde-format
-msgid "&Edit Event..."
+#, fuzzy, kde-format
+#| msgid "&Edit Event..."
+msgid "&Edit Event…"
 msgstr "แก้ไขเหตุการณ์..."
 
 #: actionmanager.cpp:1267
@@ -1165,8 +1179,9 @@ msgid "&Show To-do"
 msgstr "แสดงสิ่งที่จะทำ"
 
 #: actionmanager.cpp:1278 kontactplugin/korganizer/todosummarywidget.cpp:321
-#, kde-format
-msgid "&Edit To-do..."
+#, fuzzy, kde-format
+#| msgid "&Edit To-do..."
+msgid "&Edit To-do…"
 msgstr "แก้ไขสิ่งที่จะทำ..."
 
 #: actionmanager.cpp:1281 kontactplugin/korganizer/todosummarywidget.cpp:323
@@ -1293,7 +1308,7 @@ msgstr ""
 #| msgctxt "@label in QuickSearchLine"
 #| msgid "Search"
 msgctxt "@info/plain Displayed grayed-out inside the textbox, verb to search"
-msgid "Search..."
+msgid "Search…"
 msgstr "ค้นหา"
 
 #: akonadicollectionview.cpp:495 manageshowcollectionproperties.cpp:76
@@ -1307,7 +1322,7 @@ msgstr "คุณสมบัติของ %1"
 #: akonadicollectionview.cpp:507
 #, kde-format
 msgctxt "@action:inmenu"
-msgid "&Set Folder Color..."
+msgid "&Set Folder Color…"
 msgstr ""
 
 #: akonadicollectionview.cpp:513
@@ -1317,41 +1332,41 @@ msgctxt "@action:inmenu"
 msgid "Set as &Default Folder"
 msgstr "ใช้เป็นปฏิทินปริยาย"
 
-#: akonadicollectionview.cpp:519
+#: akonadicollectionview.cpp:518
 #, kde-format
 msgctxt "@action:inmenu"
-msgid "Serverside Subscription..."
+msgid "Serverside Subscription…"
 msgstr ""
 
-#: akonadicollectionview.cpp:564
+#: akonadicollectionview.cpp:563
 #, fuzzy, kde-format
 #| msgid "<qt>Do you really want to delete the resource <b>%1</b>?</qt>"
 msgctxt "@info"
 msgid "Do you really want replace your current default calendar with \"%1\"?"
 msgstr "<qt>คุณต้องการจะลบทรัพยากร <b>%1</b> นี้ จริงหรือไม่ ?</qt>"
 
-#: akonadicollectionview.cpp:565
+#: akonadicollectionview.cpp:564
 #, fuzzy, kde-format
 #| msgid "Use as &Default Calendar"
 msgctxt "@title:window"
 msgid "Replace Default Calendar?"
 msgstr "ใช้เป็นปฏิทินปริยาย"
 
-#: akonadicollectionview.cpp:702
+#: akonadicollectionview.cpp:701
 #, fuzzy, kde-format
 #| msgid "Add as new calendar"
 msgctxt "@title:window"
 msgid "Add Calendar"
 msgstr "เพิ่มเป็นปฏิทินใหม่"
 
-#: akonadicollectionview.cpp:744
+#: akonadicollectionview.cpp:743
 #, fuzzy, kde-format
 #| msgid "<qt>Do you really want to delete the resource <b>%1</b>?</qt>"
 msgctxt "@info"
 msgid "Do you really want to delete calendar %1?"
 msgstr "<qt>คุณต้องการจะลบทรัพยากร <b>%1</b> นี้ จริงหรือไม่ ?</qt>"
 
-#: akonadicollectionview.cpp:745
+#: akonadicollectionview.cpp:744
 #, fuzzy, kde-format
 #| msgid "Default Calendar"
 msgctxt "@title:window"
@@ -2019,9 +2034,10 @@ msgid "Event Viewer"
 msgstr "ตัวดูเหตุการณ์"
 
 #: dialog/koeventviewerdialog.cpp:40
-#, kde-format
-msgid "Edit..."
-msgstr "แก้ไข..."
+#, fuzzy, kde-format
+#| msgid "&Edit"
+msgid "Edit…"
+msgstr "แก้ไข"
 
 #: dialog/koeventviewerdialog.cpp:41
 #, kde-format
@@ -2146,10 +2162,10 @@ msgstr "แสดง"
 
 #: koeventpopupmenu.cpp:45
 #, fuzzy, kde-format
-#| msgid "&Edit..."
+#| msgid "&Edit"
 msgctxt "@action:inmenu"
-msgid "&Edit..."
-msgstr "แก้ไข..."
+msgid "&Edit…"
+msgstr "แก้ไข"
 
 #: koeventpopupmenu.cpp:47
 #, fuzzy, kde-format
@@ -2160,16 +2176,16 @@ msgstr "ลบ"
 
 #: koeventpopupmenu.cpp:51
 #, fuzzy, kde-format
-#| msgid "&Print..."
+#| msgid "&Print"
 msgctxt "@action:inmenu"
-msgid "&Print..."
-msgstr "พิมพ์..."
+msgid "&Print…"
+msgstr "พิมพ์"
 
 #: koeventpopupmenu.cpp:53
 #, fuzzy, kde-format
 #| msgid "&Print..."
 msgctxt "@action:inmenu"
-msgid "Print Previe&w..."
+msgid "Print Previe&w…"
 msgstr "พิมพ์..."
 
 #: koeventpopupmenu.cpp:74
@@ -2241,14 +2257,14 @@ msgstr "เปิด/ปิดการเตือนความจำ"
 #, fuzzy, kde-format
 #| msgid "Dissociate occurrence"
 msgctxt "@action:inmenu"
-msgid "&Dissociate From Recurrence..."
+msgid "&Dissociate From Recurrence…"
 msgstr "ถอนการเกิดขึ้นอีก"
 
 #: koeventpopupmenu.cpp:137
 #, fuzzy, kde-format
 #| msgid "&Send as iCalendar..."
 msgctxt "@action:inmenu"
-msgid "Send as iCalendar..."
+msgid "Send as iCalendar…"
 msgstr "ส่งไปยังระบบ iCalendar..."
 
 #: koeventpopupmenu.cpp:187
@@ -2495,7 +2511,7 @@ msgstr[0] ""
 #, fuzzy, kde-format
 #| msgctxt "incidence category: appointment"
 #| msgid "Appointment"
-msgid "&Edit Appointment..."
+msgid "&Edit Appointment…"
 msgstr "การนัดหมาย"
 
 #: kontactplugin/korganizer/apptsummarywidget.cpp:242
@@ -2516,7 +2532,7 @@ msgstr "แก้ไขเหตุการณ์"
 #, fuzzy, kde-format
 #| msgid "New &Journal..."
 msgctxt "@action:inmenu"
-msgid "New Journal..."
+msgid "New Journal…"
 msgstr "บันทึกประจำวันใหม่..."
 
 #: kontactplugin/korganizer/journalplugin.cpp:31
@@ -2545,10 +2561,11 @@ msgstr[0] "%1 วัน"
 
 #: kontactplugin/korganizer/korganizerplugin.cpp:44
 #, fuzzy, kde-format
-#| msgid "New E&vent..."
+#| msgctxt "@title:window"
+#| msgid "New Event"
 msgctxt "@action:inmenu"
-msgid "New Event..."
-msgstr "เหตุการณ์ใหม่..."
+msgid "New Event…"
+msgstr "เหตุการณ์ใหม่"
 
 #: kontactplugin/korganizer/korganizerplugin.cpp:47
 #, fuzzy, kde-format
@@ -2670,10 +2687,11 @@ msgstr "ทำซ้ำ (%1)"
 
 #: kontactplugin/korganizer/todoplugin.cpp:40
 #, fuzzy, kde-format
-#| msgid "&New To-do..."
+#| msgctxt "@title:window"
+#| msgid "New To-do"
 msgctxt "@action:inmenu"
-msgid "New To-do..."
-msgstr "สิ่งที่จะทำใหม่..."
+msgid "New To-do…"
+msgstr "สิ่งที่จะทำใหม่"
 
 #: kontactplugin/korganizer/todoplugin.cpp:43
 #, fuzzy, kde-format
@@ -3767,7 +3785,7 @@ msgstr "ตัวเลือกอื่น ๆ"
 #: prefs/kprefsdialog.cpp:234
 #, fuzzy, kde-format
 #| msgid "Change..."
-msgid "Choose..."
+msgid "Choose…"
 msgstr "เปลี่ยน..."
 
 #: prefs/kprefsdialog.cpp:765
@@ -5082,9 +5100,11 @@ msgstr "แสดงเฉพาะที่เลือกไว้"
 
 #. i18n: ectx: property (text), widget (QPushButton, mCatEditButton)
 #: ui/filteredit_base.ui:301
-#, kde-format
-msgid "Change..."
-msgstr "เปลี่ยน..."
+#, fuzzy, kde-format
+#| msgctxt "@action:button"
+#| msgid "&Change"
+msgid "Change…"
+msgstr "เปลี่ยน"
 
 #. i18n: ectx: property (whatsThis), widget (QCheckBox, mHideTodosNotAssignedToMeCheck)
 #: ui/filteredit_base.ui:315
@@ -5944,6 +5964,65 @@ msgstr "%1%"
 msgctxt "4 digit year"
 msgid "%1"
 msgstr "%1%"
+
+#~ msgid "Import &Calendar..."
+#~ msgstr "นำเข้าปฏิทิน..."
+
+#~ msgid "New E&vent..."
+#~ msgstr "เหตุการณ์ใหม่..."
+
+#~ msgid "New &To-do..."
+#~ msgstr "สิ่งที่จะทำใหม่..."
+
+#~ msgid "New &Journal..."
+#~ msgstr "บันทึกประจำวันใหม่..."
+
+#~ msgid "&Edit..."
+#~ msgstr "แก้ไข..."
+
+#, fuzzy
+#~| msgctxt "@label in QuickSearchLine"
+#~| msgid "Search"
+#~ msgctxt ""
+#~ "@info/plain Displayed grayed-out inside the textbox, verb to search"
+#~ msgid "Search..."
+#~ msgstr "ค้นหา"
+
+#~ msgid "Edit..."
+#~ msgstr "แก้ไข..."
+
+#, fuzzy
+#~| msgid "&Edit..."
+#~ msgctxt "@action:inmenu"
+#~ msgid "&Edit..."
+#~ msgstr "แก้ไข..."
+
+#, fuzzy
+#~| msgid "&Print..."
+#~ msgctxt "@action:inmenu"
+#~ msgid "&Print..."
+#~ msgstr "พิมพ์..."
+
+#, fuzzy
+#~| msgid "New &Journal..."
+#~ msgctxt "@action:inmenu"
+#~ msgid "New Journal..."
+#~ msgstr "บันทึกประจำวันใหม่..."
+
+#, fuzzy
+#~| msgid "New E&vent..."
+#~ msgctxt "@action:inmenu"
+#~ msgid "New Event..."
+#~ msgstr "เหตุการณ์ใหม่..."
+
+#, fuzzy
+#~| msgid "&New To-do..."
+#~ msgctxt "@action:inmenu"
+#~ msgid "New To-do..."
+#~ msgstr "สิ่งที่จะทำใหม่..."
+
+#~ msgid "Change..."
+#~ msgstr "เปลี่ยน..."
 
 #~ msgid "Day begins at"
 #~ msgstr "เริ่มวันด้วยเวลา"
@@ -8741,9 +8820,6 @@ msgstr "%1%"
 #~ msgid "Delete this journal entry"
 #~ msgstr "ลบรายการบันทึกประจำวันนี้"
 
-#~ msgid "&Print"
-#~ msgstr "พิมพ์"
-
 #~ msgid "Print this journal entry"
 #~ msgstr "พิมพ์รายการบันทึกประจำวันนี้"
 
@@ -9614,10 +9690,6 @@ msgstr "%1%"
 #~ msgid "&General"
 #~ msgstr "ค่าทั่วไป"
 
-#~ msgctxt "@title:window"
-#~ msgid "New To-do"
-#~ msgstr "สิ่งที่จะทำใหม่"
-
 #~ msgid "Sets the title of this journal."
 #~ msgstr "ตั้งค่าเรื่องของบันทึกประจำวันนี้"
 
@@ -9649,12 +9721,6 @@ msgstr "%1%"
 #~ msgctxt "@title general journal settings"
 #~ msgid "General"
 #~ msgstr "ทั่วไป"
-
-#, fuzzy
-#~| msgid "New &Journal..."
-#~ msgctxt "@title:window"
-#~ msgid "New Journal"
-#~ msgstr "บันทึกประจำวันใหม่..."
 
 #~ msgctxt "@label attachment contains binary data"
 #~ msgid "[Binary data]"
@@ -10370,10 +10436,6 @@ msgstr "%1%"
 #~ "Add this date as an exception to the recurrence rules for this event or "
 #~ "to-do."
 #~ msgstr "เพิ่มวันนี้ให้ถูกยกเว้นในเงื่อนไขการเกิดขึ้นอีกของเหตุการณ์หรือสิ่งที่จะทำนี้"
-
-#~ msgctxt "@action:button"
-#~ msgid "&Change"
-#~ msgstr "เปลี่ยน"
 
 #~ msgctxt "@action:button"
 #~ msgid "&Delete"
@@ -11158,10 +11220,6 @@ msgstr "%1%"
 #~ "busy during your event."
 #~ msgstr ""
 #~ "แท็บ ว่าง/ไม่ว่าง จะให้คุณได้ดูว่า ผู้เข้าร่วมคนอื่น ๆ กำลังว่างหรือยุ่งอยู่ในระหว่างเหตุการณ์ของคุณ"
-
-#~ msgctxt "@title:window"
-#~ msgid "New Event"
-#~ msgstr "เหตุการณ์ใหม่"
 
 #, fuzzy
 #~| msgid "No Attendees"

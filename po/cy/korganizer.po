@@ -11,7 +11,7 @@ msgid ""
 msgstr ""
 "Project-Id-Version: korganizer\n"
 "Report-Msgid-Bugs-To: https://bugs.kde.org\n"
-"POT-Creation-Date: 2024-04-12 00:38+0000\n"
+"POT-Creation-Date: 2024-05-12 00:39+0000\n"
 "PO-Revision-Date: 2004-02-25 13:53+0000\n"
 "Last-Translator: KD at KGyfieithu <kyfieithu@dotmon.com>\n"
 "Language-Team: Cymraeg <cy@li.org>\n"
@@ -294,7 +294,8 @@ msgstr "Bar amser:"
 
 #: actionmanager.cpp:243
 #, fuzzy, kde-format
-msgid "Import &Calendar..."
+#| msgid "Import Calendar"
+msgid "Import &Calendar…"
 msgstr "Mewnforio Calendr"
 
 #: actionmanager.cpp:244
@@ -321,7 +322,7 @@ msgstr ""
 #: actionmanager.cpp:253
 #, fuzzy, kde-format
 #| msgid "New Calendar"
-msgid "Get New Calendars..."
+msgid "Get New Calendars…"
 msgstr "Calendr Newydd"
 
 #: actionmanager.cpp:254
@@ -359,7 +360,7 @@ msgstr ""
 
 #: actionmanager.cpp:305
 #, fuzzy, kde-format
-msgid "Export as &iCalendar..."
+msgid "Export as &iCalendar…"
 msgstr "Mewnforio Calendr"
 
 #: actionmanager.cpp:306
@@ -385,7 +386,7 @@ msgstr ""
 #: actionmanager.cpp:314
 #, fuzzy, kde-format
 #| msgid "Archive O&ld Entries..."
-msgid "Archive O&ld Incidences..."
+msgid "Archive O&ld Incidences…"
 msgstr "Archifio &Hen Gofnodion..."
 
 #: actionmanager.cpp:315
@@ -832,9 +833,10 @@ msgid "&Week"
 msgstr "&Wythnos"
 
 #: actionmanager.cpp:566 kodaymatrix.cpp:484
-#, kde-format
-msgid "New E&vent..."
-msgstr "D&igwyddiad Newydd..."
+#, fuzzy, kde-format
+#| msgid "New Event"
+msgid "New E&vent…"
+msgstr "Digwyddiad Newydd"
 
 #: actionmanager.cpp:567
 #, fuzzy, kde-format
@@ -857,9 +859,10 @@ msgid ""
 msgstr ""
 
 #: actionmanager.cpp:576 kodaymatrix.cpp:485
-#, kde-format
-msgid "New &To-do..."
-msgstr "&I'w-Gwneud Newydd..."
+#, fuzzy, kde-format
+#| msgid "New To-do"
+msgid "New &To-do…"
+msgstr "I'w-Wneud newydd..."
 
 #: actionmanager.cpp:577
 #, fuzzy, kde-format
@@ -882,13 +885,14 @@ msgid ""
 msgstr ""
 
 #: actionmanager.cpp:587
-#, kde-format
-msgid "New Su&b-to-do..."
+#, fuzzy, kde-format
+#| msgid "New Su&b-to-do..."
+msgid "New Su&b-to-do…"
 msgstr "Is-I'w-&Gwneud Newydd..."
 
 #: actionmanager.cpp:595 kodaymatrix.cpp:486
 #, fuzzy, kde-format
-msgid "New &Journal..."
+msgid "New &Journal…"
 msgstr "&Dyddlyfr"
 
 #: actionmanager.cpp:596
@@ -912,7 +916,7 @@ msgstr ""
 #: actionmanager.cpp:603
 #, fuzzy, kde-format
 #| msgid "&Configure..."
-msgid "Configure View..."
+msgid "Configure View…"
 msgstr "&Ffurfweddu..."
 
 #: actionmanager.cpp:604
@@ -949,8 +953,8 @@ msgid "&Show"
 msgstr "&Dangos"
 
 #: actionmanager.cpp:618 actionmanager.cpp:1303 actionmanager.cpp:1342
-#, kde-format
-msgid "&Edit..."
+#, fuzzy, kde-format
+msgid "&Edit…"
 msgstr "&Golygu..."
 
 #: actionmanager.cpp:627
@@ -964,7 +968,7 @@ msgstr "&Gwneud Is-I'w-Wneud yn Annibynnol"
 #. ************************* SCHEDULE MENU *******************************
 #: actionmanager.cpp:639
 #, kde-format
-msgid "&Publish Item Information..."
+msgid "&Publish Item Information…"
 msgstr ""
 
 #: actionmanager.cpp:646
@@ -995,13 +999,13 @@ msgstr "Gwr&thgynnig"
 
 #: actionmanager.cpp:686
 #, fuzzy, kde-format
-msgid "&Mail Free Busy Information..."
+msgid "&Mail Free Busy Information…"
 msgstr "Cyhoeddi Gwybodaeth Rhydd Brysur"
 
 #: actionmanager.cpp:691
 #, fuzzy, kde-format
 #| msgid "&iCalendar..."
-msgid "&Send as iCalendar..."
+msgid "&Send as iCalendar…"
 msgstr "&iCalendr..."
 
 #: actionmanager.cpp:698
@@ -1037,23 +1041,24 @@ msgid "Show Calendar Manager"
 msgstr "Allforio Calendr fel Tudalen Wê"
 
 #: actionmanager.cpp:749
-#, kde-format
-msgid "Configure &Date && Time..."
+#, fuzzy, kde-format
+#| msgid "Configure &Date && Time..."
+msgid "Configure &Date && Time…"
 msgstr "Ffurfweddu &Dyddiad && Amser..."
 
 #: actionmanager.cpp:753
 #, fuzzy, kde-format
-msgid "Manage View &Filters..."
+msgid "Manage View &Filters…"
 msgstr "Golygu'r &Hidlenni"
 
 #: actionmanager.cpp:757
 #, fuzzy, kde-format
-msgid "Manage T&ags..."
+msgid "Manage T&ags…"
 msgstr "Golygu'r C&ategorïau..."
 
 #: actionmanager.cpp:765
 #, fuzzy, kde-format
-msgid "&Configure KOrganizer..."
+msgid "&Configure KOrganizer…"
 msgstr "Ffurfweddu'r &Ategion"
 
 #: actionmanager.cpp:843
@@ -1130,8 +1135,9 @@ msgid "&Show Event"
 msgstr "Dango&s Digwyddiad"
 
 #: actionmanager.cpp:1264
-#, kde-format
-msgid "&Edit Event..."
+#, fuzzy, kde-format
+#| msgid "&Edit Event..."
+msgid "&Edit Event…"
 msgstr "&Golygu Digwyddiad..."
 
 #: actionmanager.cpp:1267
@@ -1145,8 +1151,9 @@ msgid "&Show To-do"
 msgstr "Dango&s I'w-Wneud"
 
 #: actionmanager.cpp:1278 kontactplugin/korganizer/todosummarywidget.cpp:321
-#, kde-format
-msgid "&Edit To-do..."
+#, fuzzy, kde-format
+#| msgid "&Edit To-do..."
+msgid "&Edit To-do…"
 msgstr "&Golygu I'w-Wneud"
 
 #: actionmanager.cpp:1281 kontactplugin/korganizer/todosummarywidget.cpp:323
@@ -1269,7 +1276,7 @@ msgstr ""
 #: akonadicollectionview.cpp:411
 #, fuzzy, kde-format
 msgctxt "@info/plain Displayed grayed-out inside the textbox, verb to search"
-msgid "Search..."
+msgid "Search…"
 msgstr "Chwilio Mewn"
 
 #: akonadicollectionview.cpp:495 manageshowcollectionproperties.cpp:76
@@ -1282,7 +1289,7 @@ msgstr "Golygu Hidlennau Calendr"
 #: akonadicollectionview.cpp:507
 #, kde-format
 msgctxt "@action:inmenu"
-msgid "&Set Folder Color..."
+msgid "&Set Folder Color…"
 msgstr ""
 
 #: akonadicollectionview.cpp:513
@@ -1291,37 +1298,37 @@ msgctxt "@action:inmenu"
 msgid "Set as &Default Folder"
 msgstr "Fformat Calendr Rhagosodedig"
 
-#: akonadicollectionview.cpp:519
+#: akonadicollectionview.cpp:518
 #, kde-format
 msgctxt "@action:inmenu"
-msgid "Serverside Subscription..."
+msgid "Serverside Subscription…"
 msgstr ""
 
-#: akonadicollectionview.cpp:564
+#: akonadicollectionview.cpp:563
 #, fuzzy, kde-format
 msgctxt "@info"
 msgid "Do you really want replace your current default calendar with \"%1\"?"
 msgstr "<qt>A ydych yn wir eisiau dileu'r adnodd? <b>%1</b>?</qt>"
 
-#: akonadicollectionview.cpp:565
+#: akonadicollectionview.cpp:564
 #, fuzzy, kde-format
 msgctxt "@title:window"
 msgid "Replace Default Calendar?"
 msgstr "Fformat Calendr Rhagosodedig"
 
-#: akonadicollectionview.cpp:702
+#: akonadicollectionview.cpp:701
 #, fuzzy, kde-format
 msgctxt "@title:window"
 msgid "Add Calendar"
 msgstr "Calendr Newydd"
 
-#: akonadicollectionview.cpp:744
+#: akonadicollectionview.cpp:743
 #, fuzzy, kde-format
 msgctxt "@info"
 msgid "Do you really want to delete calendar %1?"
 msgstr "<qt>A ydych yn wir eisiau dileu'r adnodd? <b>%1</b>?</qt>"
 
-#: akonadicollectionview.cpp:745
+#: akonadicollectionview.cpp:744
 #, fuzzy, kde-format
 msgctxt "@title:window"
 msgid "Delete Calendar"
@@ -1938,9 +1945,8 @@ msgstr "Gwelydd Digwyddiadau"
 
 #: dialog/koeventviewerdialog.cpp:40
 #, fuzzy, kde-format
-#| msgid "Edit..."
-msgid "Edit..."
-msgstr "Golygu..."
+msgid "Edit…"
+msgstr "Golygu %1"
 
 #: dialog/koeventviewerdialog.cpp:41
 #, fuzzy, kde-format
@@ -2059,9 +2065,8 @@ msgstr "&Dangos"
 
 #: koeventpopupmenu.cpp:45
 #, fuzzy, kde-format
-#| msgid "&Edit..."
 msgctxt "@action:inmenu"
-msgid "&Edit..."
+msgid "&Edit…"
 msgstr "&Golygu..."
 
 #: koeventpopupmenu.cpp:47
@@ -2073,13 +2078,13 @@ msgstr "Dileu %1"
 #: koeventpopupmenu.cpp:51
 #, fuzzy, kde-format
 msgctxt "@action:inmenu"
-msgid "&Print..."
-msgstr "&Golygu..."
+msgid "&Print…"
+msgstr "Argraffu& diwrnod"
 
 #: koeventpopupmenu.cpp:53
 #, fuzzy, kde-format
 msgctxt "@action:inmenu"
-msgid "Print Previe&w..."
+msgid "Print Previe&w…"
 msgstr "&Golygu..."
 
 #: koeventpopupmenu.cpp:74
@@ -2142,14 +2147,14 @@ msgstr "&Atgof:"
 #: koeventpopupmenu.cpp:129
 #, fuzzy, kde-format
 msgctxt "@action:inmenu"
-msgid "&Dissociate From Recurrence..."
+msgid "&Dissociate From Recurrence…"
 msgstr "Rhestri digwyddiadau'r diwrnod cyfredol"
 
 #: koeventpopupmenu.cpp:137
 #, fuzzy, kde-format
 #| msgid "&iCalendar..."
 msgctxt "@action:inmenu"
-msgid "Send as iCalendar..."
+msgid "Send as iCalendar…"
 msgstr "&iCalendr..."
 
 #: koeventpopupmenu.cpp:187
@@ -2381,7 +2386,7 @@ msgstr[1] ""
 #: kontactplugin/korganizer/apptsummarywidget.cpp:240
 #, fuzzy, kde-format
 #| msgid "Appointment"
-msgid "&Edit Appointment..."
+msgid "&Edit Appointment…"
 msgstr "Apwyntiad"
 
 #: kontactplugin/korganizer/apptsummarywidget.cpp:242
@@ -2399,7 +2404,7 @@ msgstr "Golygu Digwyddiad"
 #: kontactplugin/korganizer/journalplugin.cpp:28
 #, fuzzy, kde-format
 msgctxt "@action:inmenu"
-msgid "New Journal..."
+msgid "New Journal…"
 msgstr "&Dyddlyfr"
 
 #: kontactplugin/korganizer/journalplugin.cpp:31
@@ -2426,10 +2431,10 @@ msgstr[1] " %1 o Ddiwrnodau"
 
 #: kontactplugin/korganizer/korganizerplugin.cpp:44
 #, fuzzy, kde-format
-#| msgid "New E&vent..."
+#| msgid "New Event"
 msgctxt "@action:inmenu"
-msgid "New Event..."
-msgstr "D&igwyddiad Newydd..."
+msgid "New Event…"
+msgstr "Digwyddiad Newydd"
 
 #: kontactplugin/korganizer/korganizerplugin.cpp:47
 #, fuzzy, kde-format
@@ -2546,10 +2551,10 @@ msgstr "Ailwneud (%1)"
 
 #: kontactplugin/korganizer/todoplugin.cpp:40
 #, fuzzy, kde-format
-#| msgid "&New To-do..."
+#| msgid "New To-do"
 msgctxt "@action:inmenu"
-msgid "New To-do..."
-msgstr "&I'w-Wneud newydd..."
+msgid "New To-do…"
+msgstr "I'w-Wneud newydd..."
 
 #: kontactplugin/korganizer/todoplugin.cpp:43
 #, fuzzy, kde-format
@@ -3584,7 +3589,7 @@ msgstr "Dis&grifiadau"
 #: prefs/kprefsdialog.cpp:234
 #, fuzzy, kde-format
 #| msgid "Change..."
-msgid "Choose..."
+msgid "Choose…"
 msgstr "Newid..."
 
 #: prefs/kprefsdialog.cpp:765
@@ -4794,9 +4799,10 @@ msgstr "Dangos y dewisiad yn unig"
 
 #. i18n: ectx: property (text), widget (QPushButton, mCatEditButton)
 #: ui/filteredit_base.ui:301
-#, kde-format
-msgid "Change..."
-msgstr "Newid..."
+#, fuzzy, kde-format
+#| msgid "&Change"
+msgid "Change…"
+msgstr "&Newid"
 
 #. i18n: ectx: property (whatsThis), widget (QCheckBox, mHideTodosNotAssignedToMeCheck)
 #: ui/filteredit_base.ui:315
@@ -5634,6 +5640,65 @@ msgstr "%1"
 msgctxt "4 digit year"
 msgid "%1"
 msgstr "%1"
+
+#, fuzzy
+#~ msgid "Import &Calendar..."
+#~ msgstr "Mewnforio Calendr"
+
+#~ msgid "New E&vent..."
+#~ msgstr "D&igwyddiad Newydd..."
+
+#~ msgid "New &To-do..."
+#~ msgstr "&I'w-Gwneud Newydd..."
+
+#, fuzzy
+#~ msgid "New &Journal..."
+#~ msgstr "&Dyddlyfr"
+
+#~ msgid "&Edit..."
+#~ msgstr "&Golygu..."
+
+#, fuzzy
+#~ msgctxt ""
+#~ "@info/plain Displayed grayed-out inside the textbox, verb to search"
+#~ msgid "Search..."
+#~ msgstr "Chwilio Mewn"
+
+#, fuzzy
+#~| msgid "Edit..."
+#~ msgid "Edit..."
+#~ msgstr "Golygu..."
+
+#, fuzzy
+#~| msgid "&Edit..."
+#~ msgctxt "@action:inmenu"
+#~ msgid "&Edit..."
+#~ msgstr "&Golygu..."
+
+#, fuzzy
+#~ msgctxt "@action:inmenu"
+#~ msgid "&Print..."
+#~ msgstr "&Golygu..."
+
+#, fuzzy
+#~ msgctxt "@action:inmenu"
+#~ msgid "New Journal..."
+#~ msgstr "&Dyddlyfr"
+
+#, fuzzy
+#~| msgid "New E&vent..."
+#~ msgctxt "@action:inmenu"
+#~ msgid "New Event..."
+#~ msgstr "D&igwyddiad Newydd..."
+
+#, fuzzy
+#~| msgid "&New To-do..."
+#~ msgctxt "@action:inmenu"
+#~ msgid "New To-do..."
+#~ msgstr "&I'w-Wneud newydd..."
+
+#~ msgid "Change..."
+#~ msgstr "Newid..."
 
 #~ msgid "Day begins at"
 #~ msgstr "Diwrnod yn ddechrau am:"
@@ -8031,10 +8096,6 @@ msgstr "%1"
 #~ msgstr "Dileu Hen Ddigwyddiadau"
 
 #, fuzzy
-#~ msgid "&Print"
-#~ msgstr "Argraffu& diwrnod"
-
-#, fuzzy
 #~ msgid "Print this journal entry"
 #~ msgstr "Dileu Hen Ddigwyddiadau"
 
@@ -8810,12 +8871,6 @@ msgstr "%1"
 #~ msgstr "&Cyffredinol"
 
 #, fuzzy
-#~| msgid "New To-do"
-#~ msgctxt "@title:window"
-#~ msgid "New To-do"
-#~ msgstr "I'w-Wneud newydd..."
-
-#, fuzzy
 #~ msgid "Sets the title of this journal."
 #~ msgstr "Dileu Hen Ddigwyddiadau"
 
@@ -8849,11 +8904,6 @@ msgstr "%1"
 #~ msgctxt "@title general journal settings"
 #~ msgid "General"
 #~ msgstr "Cyffredinol"
-
-#, fuzzy
-#~ msgctxt "@title:window"
-#~ msgid "New Journal"
-#~ msgstr "&Dyddlyfr"
 
 #, fuzzy
 #~| msgid "[Binary data]"
@@ -9605,12 +9655,6 @@ msgstr "%1"
 #~ msgstr "&Ychwanegu..."
 
 #, fuzzy
-#~| msgid "&Change"
-#~ msgctxt "@action:button"
-#~ msgid "&Change"
-#~ msgstr "&Newid"
-
-#, fuzzy
 #~ msgctxt "@action:button"
 #~ msgid "&Delete"
 #~ msgstr "Dileu %1"
@@ -10145,12 +10189,6 @@ msgstr "%1"
 #~ msgctxt "@title:tab"
 #~ msgid "&Attendees"
 #~ msgstr "Cyfarfotwyr"
-
-#, fuzzy
-#~| msgid "New Event"
-#~ msgctxt "@title:window"
-#~ msgid "New Event"
-#~ msgstr "Digwyddiad Newydd"
 
 #, fuzzy
 #~ msgctxt "@title:window"
@@ -11619,10 +11657,6 @@ msgstr "%1"
 
 #~ msgid "&Remove..."
 #~ msgstr "&Gwaredu..."
-
-#, fuzzy
-#~ msgid "Edit"
-#~ msgstr "Golygu %1"
 
 #, fuzzy
 #~| msgid "day(s)"

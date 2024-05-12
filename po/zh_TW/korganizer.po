@@ -14,7 +14,7 @@ msgid ""
 msgstr ""
 "Project-Id-Version: korganizer\n"
 "Report-Msgid-Bugs-To: https://bugs.kde.org\n"
-"POT-Creation-Date: 2024-04-12 00:38+0000\n"
+"POT-Creation-Date: 2024-05-12 00:39+0000\n"
 "PO-Revision-Date: 2024-05-09 06:49+0900\n"
 "Last-Translator: Kisaragi Hiu <mail@kisaragi-hiu.com>\n"
 "Language-Team: Traditional Chinese <zh-l10n@lists.slat.org>\n"
@@ -298,9 +298,11 @@ msgid "Hide menu bar"
 msgstr "隱藏選單列"
 
 #: actionmanager.cpp:243
-#, kde-format
-msgid "Import &Calendar..."
-msgstr "匯入行事曆...(&C)"
+#, fuzzy, kde-format
+#| msgctxt "@title:window"
+#| msgid "Import Calendar"
+msgid "Import &Calendar…"
+msgstr "匯入行事曆"
 
 #: actionmanager.cpp:244
 #, kde-format
@@ -325,8 +327,9 @@ msgstr ""
 "中。"
 
 #: actionmanager.cpp:253
-#, kde-format
-msgid "Get New Calendars..."
+#, fuzzy, kde-format
+#| msgid "Get New Calendars..."
+msgid "Get New Calendars…"
 msgstr "取得新行事曆..."
 
 #: actionmanager.cpp:254
@@ -362,8 +365,9 @@ msgid "The downloaded events will be merged into your current calendar."
 msgstr "已下載的事件會合併到您目前的行事曆。"
 
 #: actionmanager.cpp:305
-#, kde-format
-msgid "Export as &iCalendar..."
+#, fuzzy, kde-format
+#| msgid "Export as &iCalendar..."
+msgid "Export as &iCalendar…"
 msgstr "匯出為 iCalendar(&I)..."
 
 #: actionmanager.cpp:306
@@ -386,8 +390,9 @@ msgid ""
 msgstr "讓您將您的整個行事曆收藏匯出成一個 iCalendar 檔案。"
 
 #: actionmanager.cpp:314
-#, kde-format
-msgid "Archive O&ld Incidences..."
+#, fuzzy, kde-format
+#| msgid "Archive O&ld Incidences..."
+msgid "Archive O&ld Incidences…"
 msgstr "封存舊事件(&L)..."
 
 #: actionmanager.cpp:315
@@ -822,8 +827,9 @@ msgid "&Week"
 msgstr "週覽表(&W)"
 
 #: actionmanager.cpp:566 kodaymatrix.cpp:484
-#, kde-format
-msgid "New E&vent..."
+#, fuzzy, kde-format
+#| msgid "New E&vent..."
+msgid "New E&vent…"
 msgstr "新事件...(&V)"
 
 #: actionmanager.cpp:567
@@ -849,8 +855,9 @@ msgstr ""
 "資訊。"
 
 #: actionmanager.cpp:576 kodaymatrix.cpp:485
-#, kde-format
-msgid "New &To-do..."
+#, fuzzy, kde-format
+#| msgid "New &To-do..."
+msgid "New &To-do…"
 msgstr "新增待辦事項(&T)..."
 
 #: actionmanager.cpp:577
@@ -876,13 +883,15 @@ msgstr ""
 "等等資訊。"
 
 #: actionmanager.cpp:587
-#, kde-format
-msgid "New Su&b-to-do..."
+#, fuzzy, kde-format
+#| msgid "New Su&b-to-do..."
+msgid "New Su&b-to-do…"
 msgstr "新增子待辦事項(&B)..."
 
 #: actionmanager.cpp:595 kodaymatrix.cpp:486
-#, kde-format
-msgid "New &Journal..."
+#, fuzzy, kde-format
+#| msgid "New &Journal..."
+msgid "New &Journal…"
 msgstr "新日誌(&J)..."
 
 #: actionmanager.cpp:596
@@ -904,8 +913,9 @@ msgid "Starts a dialog that allows you to create a new Journal entry."
 msgstr "會顯示一個對話框，讓您建立新的日誌項目。"
 
 #: actionmanager.cpp:603
-#, kde-format
-msgid "Configure View..."
+#, fuzzy, kde-format
+#| msgid "Configure View..."
+msgid "Configure View…"
 msgstr "設定檢視..."
 
 #: actionmanager.cpp:604
@@ -939,9 +949,10 @@ msgid "&Show"
 msgstr "顯示(&S)"
 
 #: actionmanager.cpp:618 actionmanager.cpp:1303 actionmanager.cpp:1342
-#, kde-format
-msgid "&Edit..."
-msgstr "編輯(&E)..."
+#, fuzzy, kde-format
+#| msgid "&Edit"
+msgid "&Edit…"
+msgstr "編輯(&E)"
 
 #: actionmanager.cpp:627
 #, kde-format
@@ -953,8 +964,9 @@ msgstr "將子待辦事項獨立出來(&M)"
 #. mACollection, "activate_alarm" );
 #. ************************* SCHEDULE MENU *******************************
 #: actionmanager.cpp:639
-#, kde-format
-msgid "&Publish Item Information..."
+#, fuzzy, kde-format
+#| msgid "&Publish Item Information..."
+msgid "&Publish Item Information…"
 msgstr "發布項目資訊...(&P)"
 
 #: actionmanager.cpp:646
@@ -984,13 +996,15 @@ msgid "Request Chan&ge"
 msgstr "變更要求(&G)"
 
 #: actionmanager.cpp:686
-#, kde-format
-msgid "&Mail Free Busy Information..."
+#, fuzzy, kde-format
+#| msgid "&Mail Free Busy Information..."
+msgid "&Mail Free Busy Information…"
 msgstr "寄發行程資訊郵件...(&M)"
 
 #: actionmanager.cpp:691
-#, kde-format
-msgid "&Send as iCalendar..."
+#, fuzzy, kde-format
+#| msgid "&Send as iCalendar..."
+msgid "&Send as iCalendar…"
 msgstr "以 iCalendar 送出(&S)..."
 
 #: actionmanager.cpp:698
@@ -1024,23 +1038,27 @@ msgid "Show Calendar Manager"
 msgstr "顯示行事曆管理程式"
 
 #: actionmanager.cpp:749
-#, kde-format
-msgid "Configure &Date && Time..."
+#, fuzzy, kde-format
+#| msgid "Configure &Date && Time..."
+msgid "Configure &Date && Time…"
 msgstr "設定日期和時間...(&D)"
 
 #: actionmanager.cpp:753
-#, kde-format
-msgid "Manage View &Filters..."
+#, fuzzy, kde-format
+#| msgid "Manage View &Filters..."
+msgid "Manage View &Filters…"
 msgstr "管理檢視過濾器...(&F)"
 
 #: actionmanager.cpp:757
-#, kde-format
-msgid "Manage T&ags..."
+#, fuzzy, kde-format
+#| msgid "Manage T&ags..."
+msgid "Manage T&ags…"
 msgstr "管理標籤(&A)..."
 
 #: actionmanager.cpp:765
-#, kde-format
-msgid "&Configure KOrganizer..."
+#, fuzzy, kde-format
+#| msgid "&Configure KOrganizer..."
+msgid "&Configure KOrganizer…"
 msgstr "設定 KOrganizer(&C)..."
 
 #: actionmanager.cpp:843
@@ -1113,8 +1131,9 @@ msgid "&Show Event"
 msgstr "顯示事件(&S)"
 
 #: actionmanager.cpp:1264
-#, kde-format
-msgid "&Edit Event..."
+#, fuzzy, kde-format
+#| msgid "&Edit Event..."
+msgid "&Edit Event…"
 msgstr "編輯事件...(&E)"
 
 #: actionmanager.cpp:1267
@@ -1128,8 +1147,9 @@ msgid "&Show To-do"
 msgstr "顯示待辦事項(&S)"
 
 #: actionmanager.cpp:1278 kontactplugin/korganizer/todosummarywidget.cpp:321
-#, kde-format
-msgid "&Edit To-do..."
+#, fuzzy, kde-format
+#| msgid "&Edit To-do..."
+msgid "&Edit To-do…"
 msgstr "編輯待辦事項...(&E)"
 
 #: actionmanager.cpp:1281 kontactplugin/korganizer/todosummarywidget.cpp:323
@@ -1248,10 +1268,12 @@ msgid "Lets you search for a keyword in your calendars"
 msgstr "讓您在您的行事曆中搜尋關鍵字"
 
 #: akonadicollectionview.cpp:411
-#, kde-format
+#, fuzzy, kde-format
+#| msgctxt "Displayed grayed-out inside the textbox, verb to search"
+#| msgid "Search"
 msgctxt "@info/plain Displayed grayed-out inside the textbox, verb to search"
-msgid "Search..."
-msgstr "搜尋…"
+msgid "Search…"
+msgstr "搜尋"
 
 #: akonadicollectionview.cpp:495 manageshowcollectionproperties.cpp:76
 #, kde-format
@@ -1260,9 +1282,11 @@ msgid "Properties of Calendar Folder %1"
 msgstr "行事曆資料夾 %1 的內容"
 
 #: akonadicollectionview.cpp:507
-#, kde-format
+#, fuzzy, kde-format
+#| msgctxt "@action:inmenu"
+#| msgid "&Set Folder Color..."
 msgctxt "@action:inmenu"
-msgid "&Set Folder Color..."
+msgid "&Set Folder Color…"
 msgstr "設定資料夾顏色(&S)..."
 
 #: akonadicollectionview.cpp:513
@@ -1271,37 +1295,39 @@ msgctxt "@action:inmenu"
 msgid "Set as &Default Folder"
 msgstr "設為預設資料夾(&D)"
 
-#: akonadicollectionview.cpp:519
-#, kde-format
+#: akonadicollectionview.cpp:518
+#, fuzzy, kde-format
+#| msgctxt "@action:inmenu"
+#| msgid "Serverside Subscription..."
 msgctxt "@action:inmenu"
-msgid "Serverside Subscription..."
+msgid "Serverside Subscription…"
 msgstr "伺服器端訂閱..."
 
-#: akonadicollectionview.cpp:564
+#: akonadicollectionview.cpp:563
 #, kde-format
 msgctxt "@info"
 msgid "Do you really want replace your current default calendar with \"%1\"?"
 msgstr "您確定要將您的預設行事曆替換為 \"%1\" 嗎？"
 
-#: akonadicollectionview.cpp:565
+#: akonadicollectionview.cpp:564
 #, kde-format
 msgctxt "@title:window"
 msgid "Replace Default Calendar?"
 msgstr "替換預設行事曆？"
 
-#: akonadicollectionview.cpp:702
+#: akonadicollectionview.cpp:701
 #, kde-format
 msgctxt "@title:window"
 msgid "Add Calendar"
 msgstr "新增行事曆"
 
-#: akonadicollectionview.cpp:744
+#: akonadicollectionview.cpp:743
 #, kde-format
 msgctxt "@info"
 msgid "Do you really want to delete calendar %1?"
 msgstr "您確定要刪除行事曆 %1 嗎？"
 
-#: akonadicollectionview.cpp:745
+#: akonadicollectionview.cpp:744
 #, kde-format
 msgctxt "@title:window"
 msgid "Delete Calendar"
@@ -1903,9 +1929,10 @@ msgid "Event Viewer"
 msgstr "事件檢視器"
 
 #: dialog/koeventviewerdialog.cpp:40
-#, kde-format
-msgid "Edit..."
-msgstr "編輯..."
+#, fuzzy, kde-format
+#| msgid "&Edit"
+msgid "Edit…"
+msgstr "編輯(&E)"
 
 #: dialog/koeventviewerdialog.cpp:41
 #, kde-format
@@ -2014,10 +2041,11 @@ msgid "&Show"
 msgstr "顯示(&S)"
 
 #: koeventpopupmenu.cpp:45
-#, kde-format
+#, fuzzy, kde-format
+#| msgid "&Edit"
 msgctxt "@action:inmenu"
-msgid "&Edit..."
-msgstr "編輯(&E)..."
+msgid "&Edit…"
+msgstr "編輯(&E)"
 
 #: koeventpopupmenu.cpp:47
 #, kde-format
@@ -2026,15 +2054,19 @@ msgid "&Delete"
 msgstr "刪除(&D)"
 
 #: koeventpopupmenu.cpp:51
-#, kde-format
+#, fuzzy, kde-format
+#| msgctxt "@action:inmenu"
+#| msgid "&Print..."
 msgctxt "@action:inmenu"
-msgid "&Print..."
+msgid "&Print…"
 msgstr "列印(&P)..."
 
 #: koeventpopupmenu.cpp:53
-#, kde-format
+#, fuzzy, kde-format
+#| msgctxt "@action:inmenu"
+#| msgid "Print Previe&w..."
 msgctxt "@action:inmenu"
-msgid "Print Previe&w..."
+msgid "Print Previe&w…"
 msgstr "預覽列印(&W)..."
 
 #: koeventpopupmenu.cpp:74
@@ -2092,15 +2124,19 @@ msgid "&Toggle Reminder"
 msgstr "切換提醒(&T)"
 
 #: koeventpopupmenu.cpp:129
-#, kde-format
+#, fuzzy, kde-format
+#| msgctxt "@action:inmenu"
+#| msgid "&Dissociate From Recurrence..."
 msgctxt "@action:inmenu"
-msgid "&Dissociate From Recurrence..."
+msgid "&Dissociate From Recurrence…"
 msgstr "從重複中分離此事件(&D)..."
 
 #: koeventpopupmenu.cpp:137
-#, kde-format
+#, fuzzy, kde-format
+#| msgctxt "@action:inmenu"
+#| msgid "Send as iCalendar..."
 msgctxt "@action:inmenu"
-msgid "Send as iCalendar..."
+msgid "Send as iCalendar…"
 msgstr "以 iCalendar 送出..."
 
 #: koeventpopupmenu.cpp:187
@@ -2328,8 +2364,9 @@ msgid_plural "No upcoming events starting within the next %1 days"
 msgstr[0] "未來 %1 天內沒有將發生的事件"
 
 #: kontactplugin/korganizer/apptsummarywidget.cpp:240
-#, kde-format
-msgid "&Edit Appointment..."
+#, fuzzy, kde-format
+#| msgid "&Edit Appointment..."
+msgid "&Edit Appointment…"
 msgstr "編輯約會(&E)..."
 
 #: kontactplugin/korganizer/apptsummarywidget.cpp:242
@@ -2343,9 +2380,11 @@ msgid "Edit Event: \"%1\""
 msgstr "編輯事件：%1"
 
 #: kontactplugin/korganizer/journalplugin.cpp:28
-#, kde-format
+#, fuzzy, kde-format
+#| msgctxt "@action:inmenu"
+#| msgid "New Journal..."
 msgctxt "@action:inmenu"
-msgid "New Journal..."
+msgid "New Journal…"
 msgstr "新增日誌..."
 
 #: kontactplugin/korganizer/journalplugin.cpp:31
@@ -2370,9 +2409,11 @@ msgid_plural " days"
 msgstr[0] " 天"
 
 #: kontactplugin/korganizer/korganizerplugin.cpp:44
-#, kde-format
+#, fuzzy, kde-format
+#| msgctxt "@action:inmenu"
+#| msgid "New Event..."
 msgctxt "@action:inmenu"
-msgid "New Event..."
+msgid "New Event…"
 msgstr "新增事件..."
 
 #: kontactplugin/korganizer/korganizerplugin.cpp:47
@@ -2480,9 +2521,11 @@ msgid "Next: %1"
 msgstr "下一個：%1"
 
 #: kontactplugin/korganizer/todoplugin.cpp:40
-#, kde-format
+#, fuzzy, kde-format
+#| msgctxt "@action:inmenu"
+#| msgid "New To-do..."
 msgctxt "@action:inmenu"
-msgid "New To-do..."
+msgid "New To-do…"
 msgstr "新增待辦事項..."
 
 #: kontactplugin/korganizer/todoplugin.cpp:43
@@ -3470,8 +3513,9 @@ msgid "Other Options"
 msgstr "其他選項"
 
 #: prefs/kprefsdialog.cpp:234
-#, kde-format
-msgid "Choose..."
+#, fuzzy, kde-format
+#| msgid "Choose..."
+msgid "Choose…"
 msgstr "選擇…"
 
 #: prefs/kprefsdialog.cpp:765
@@ -4716,8 +4760,9 @@ msgstr "只顯示選取的類別"
 
 #. i18n: ectx: property (text), widget (QPushButton, mCatEditButton)
 #: ui/filteredit_base.ui:301
-#, kde-format
-msgid "Change..."
+#, fuzzy, kde-format
+#| msgid "Change..."
+msgid "Change…"
 msgstr "變更..."
 
 #. i18n: ectx: property (whatsThis), widget (QCheckBox, mHideTodosNotAssignedToMeCheck)
@@ -5568,6 +5613,24 @@ msgstr "%1"
 msgctxt "4 digit year"
 msgid "%1"
 msgstr "%1"
+
+#~ msgid "Import &Calendar..."
+#~ msgstr "匯入行事曆...(&C)"
+
+#~ msgid "&Edit..."
+#~ msgstr "編輯(&E)..."
+
+#~ msgctxt ""
+#~ "@info/plain Displayed grayed-out inside the textbox, verb to search"
+#~ msgid "Search..."
+#~ msgstr "搜尋…"
+
+#~ msgid "Edit..."
+#~ msgstr "編輯..."
+
+#~ msgctxt "@action:inmenu"
+#~ msgid "&Edit..."
+#~ msgstr "編輯(&E)..."
 
 #~ msgid "Day begins at"
 #~ msgstr "每日開始時間"

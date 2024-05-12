@@ -8,7 +8,7 @@ msgid ""
 msgstr ""
 "Project-Id-Version: korganizer\n"
 "Report-Msgid-Bugs-To: https://bugs.kde.org\n"
-"POT-Creation-Date: 2024-04-12 00:38+0000\n"
+"POT-Creation-Date: 2024-05-12 00:39+0000\n"
 "PO-Revision-Date: 2012-01-13 10:32+0330\n"
 "Last-Translator: Mohammad Reza Mirdamadi <mohi@ubuntu.ir>\n"
 "Language-Team: Farsi (Persian) <>\n"
@@ -295,9 +295,10 @@ msgid "Hide menu bar"
 msgstr "میله زمان"
 
 #: actionmanager.cpp:243
-#, kde-format
-msgid "Import &Calendar..."
-msgstr "واردات &تقویم...‌"
+#, fuzzy, kde-format
+#| msgid "Import Calendar"
+msgid "Import &Calendar…"
+msgstr "واردات تقویم"
 
 #: actionmanager.cpp:244
 #, fuzzy, kde-format
@@ -324,7 +325,7 @@ msgstr ""
 #: actionmanager.cpp:253
 #, fuzzy, kde-format
 #| msgid "New Calendar"
-msgid "Get New Calendars..."
+msgid "Get New Calendars…"
 msgstr "تقویم جدید"
 
 #: actionmanager.cpp:254
@@ -361,7 +362,7 @@ msgstr "رویدادهای بارگذاری‌شده در تقویم جاری ش
 #: actionmanager.cpp:305
 #, fuzzy, kde-format
 #| msgid "Import &Calendar..."
-msgid "Export as &iCalendar..."
+msgid "Export as &iCalendar…"
 msgstr "واردات &تقویم...‌"
 
 #: actionmanager.cpp:306
@@ -387,7 +388,7 @@ msgstr ""
 #: actionmanager.cpp:314
 #, fuzzy, kde-format
 #| msgid "Archive O&ld Entries..."
-msgid "Archive O&ld Incidences..."
+msgid "Archive O&ld Incidences…"
 msgstr "بایگانی مدخلهای &قدیمی...‌"
 
 #: actionmanager.cpp:315
@@ -852,9 +853,10 @@ msgid "&Week"
 msgstr "&هفته‌"
 
 #: actionmanager.cpp:566 kodaymatrix.cpp:484
-#, kde-format
-msgid "New E&vent..."
-msgstr "&رویداد جدید...‌"
+#, fuzzy, kde-format
+#| msgid "New Event"
+msgid "New E&vent…"
+msgstr "رویداد جدید"
 
 #: actionmanager.cpp:567
 #, fuzzy, kde-format
@@ -879,9 +881,10 @@ msgid ""
 msgstr ""
 
 #: actionmanager.cpp:576 kodaymatrix.cpp:485
-#, kde-format
-msgid "New &To-do..."
-msgstr "&کار انجامی جدید...‌"
+#, fuzzy, kde-format
+#| msgid "New To-do"
+msgid "New &To-do…"
+msgstr "کار انجامی جدید"
 
 #: actionmanager.cpp:577
 #, fuzzy, kde-format
@@ -906,13 +909,15 @@ msgid ""
 msgstr ""
 
 #: actionmanager.cpp:587
-#, kde-format
-msgid "New Su&b-to-do..."
+#, fuzzy, kde-format
+#| msgid "New Su&b-to-do..."
+msgid "New Su&b-to-do…"
 msgstr "&کار انجامی فرعی جدید...‌"
 
 #: actionmanager.cpp:595 kodaymatrix.cpp:486
-#, kde-format
-msgid "New &Journal..."
+#, fuzzy, kde-format
+#| msgid "New &Journal..."
+msgid "New &Journal…"
 msgstr "&نشریه جدید...‌"
 
 #: actionmanager.cpp:596
@@ -938,7 +943,7 @@ msgstr ""
 #: actionmanager.cpp:603
 #, fuzzy, kde-format
 #| msgid "Configure &Plugin..."
-msgid "Configure View..."
+msgid "Configure View…"
 msgstr "پیکربندی &وصله...‌"
 
 #: actionmanager.cpp:604
@@ -975,9 +980,10 @@ msgid "&Show"
 msgstr "&نمایش‌"
 
 #: actionmanager.cpp:618 actionmanager.cpp:1303 actionmanager.cpp:1342
-#, kde-format
-msgid "&Edit..."
-msgstr "&ویرایش...‌"
+#, fuzzy, kde-format
+#| msgid "&Edit"
+msgid "&Edit…"
+msgstr "&ویرایش‌"
 
 #: actionmanager.cpp:627
 #, kde-format
@@ -989,8 +995,9 @@ msgstr "مستقل &کردن کار انجامی فرعی‌"
 #. mACollection, "activate_alarm" );
 #. ************************* SCHEDULE MENU *******************************
 #: actionmanager.cpp:639
-#, kde-format
-msgid "&Publish Item Information..."
+#, fuzzy, kde-format
+#| msgid "&Publish Item Information..."
+msgid "&Publish Item Information…"
 msgstr "&انتشار اطلاعات فقره...‌"
 
 #: actionmanager.cpp:646
@@ -1020,13 +1027,15 @@ msgid "Request Chan&ge"
 msgstr "درخواست &تغییر‌"
 
 #: actionmanager.cpp:686
-#, kde-format
-msgid "&Mail Free Busy Information..."
+#, fuzzy, kde-format
+#| msgid "&Mail Free Busy Information..."
+msgid "&Mail Free Busy Information…"
 msgstr "اطلاعات آزاد و اشغال &نامه...‌"
 
 #: actionmanager.cpp:691
-#, kde-format
-msgid "&Send as iCalendar..."
+#, fuzzy, kde-format
+#| msgid "&Send as iCalendar..."
+msgid "&Send as iCalendar…"
 msgstr "&ارسال به عنوان iCalendar...‌"
 
 #: actionmanager.cpp:698
@@ -1062,25 +1071,27 @@ msgid "Show Calendar Manager"
 msgstr "صادرات تقویم به عنوان صفحه وب"
 
 #: actionmanager.cpp:749
-#, kde-format
-msgid "Configure &Date && Time..."
+#, fuzzy, kde-format
+#| msgid "Configure &Date && Time..."
+msgid "Configure &Date && Time…"
 msgstr "پیکربندی &تاریخ و زمان...‌"
 
 #: actionmanager.cpp:753
-#, kde-format
-msgid "Manage View &Filters..."
+#, fuzzy, kde-format
+#| msgid "Manage View &Filters..."
+msgid "Manage View &Filters…"
 msgstr "مدیریت &پالایه‌های نما...‌"
 
 #: actionmanager.cpp:757
 #, fuzzy, kde-format
 #| msgid "Manage C&ategories..."
-msgid "Manage T&ags..."
+msgid "Manage T&ags…"
 msgstr "مدیریت &دسته‌ها...‌"
 
 #: actionmanager.cpp:765
 #, fuzzy, kde-format
 #| msgid "&Configure Calendar..."
-msgid "&Configure KOrganizer..."
+msgid "&Configure KOrganizer…"
 msgstr "&پیکربندی تقویم...‌"
 
 #: actionmanager.cpp:843
@@ -1160,8 +1171,9 @@ msgid "&Show Event"
 msgstr "&نمایش رویداد‌"
 
 #: actionmanager.cpp:1264
-#, kde-format
-msgid "&Edit Event..."
+#, fuzzy, kde-format
+#| msgid "&Edit Event..."
+msgid "&Edit Event…"
 msgstr "&ویرایش رویداد...‌"
 
 #: actionmanager.cpp:1267
@@ -1175,8 +1187,9 @@ msgid "&Show To-do"
 msgstr "&نمایش کار انجامی‌"
 
 #: actionmanager.cpp:1278 kontactplugin/korganizer/todosummarywidget.cpp:321
-#, kde-format
-msgid "&Edit To-do..."
+#, fuzzy, kde-format
+#| msgid "&Edit To-do..."
+msgid "&Edit To-do…"
 msgstr "&ویرایش کار انجامی...‌"
 
 #: actionmanager.cpp:1281 kontactplugin/korganizer/todosummarywidget.cpp:323
@@ -1302,7 +1315,7 @@ msgstr ""
 #, fuzzy, kde-format
 #| msgid "Search"
 msgctxt "@info/plain Displayed grayed-out inside the textbox, verb to search"
-msgid "Search..."
+msgid "Search…"
 msgstr "جستجو"
 
 #: akonadicollectionview.cpp:495 manageshowcollectionproperties.cpp:76
@@ -1315,7 +1328,7 @@ msgstr "ویژگیهای %1"
 #: akonadicollectionview.cpp:507
 #, kde-format
 msgctxt "@action:inmenu"
-msgid "&Set Folder Color..."
+msgid "&Set Folder Color…"
 msgstr ""
 
 #: akonadicollectionview.cpp:513
@@ -1325,41 +1338,41 @@ msgctxt "@action:inmenu"
 msgid "Set as &Default Folder"
 msgstr "استفاده به عنوان تقویم &پیش‌فرض‌"
 
-#: akonadicollectionview.cpp:519
+#: akonadicollectionview.cpp:518
 #, kde-format
 msgctxt "@action:inmenu"
-msgid "Serverside Subscription..."
+msgid "Serverside Subscription…"
 msgstr ""
 
-#: akonadicollectionview.cpp:564
+#: akonadicollectionview.cpp:563
 #, fuzzy, kde-format
 #| msgid "<qt>Do you really want to delete the resource <b>%1</b>?</qt>"
 msgctxt "@info"
 msgid "Do you really want replace your current default calendar with \"%1\"?"
 msgstr "<qt>واقعاً می‌خواهید منبع <b>%1</b> را حذف کنید؟</qt>"
 
-#: akonadicollectionview.cpp:565
+#: akonadicollectionview.cpp:564
 #, fuzzy, kde-format
 #| msgid "Use as &Default Calendar"
 msgctxt "@title:window"
 msgid "Replace Default Calendar?"
 msgstr "استفاده به عنوان تقویم &پیش‌فرض‌"
 
-#: akonadicollectionview.cpp:702
+#: akonadicollectionview.cpp:701
 #, fuzzy, kde-format
 #| msgid "Add as new calendar"
 msgctxt "@title:window"
 msgid "Add Calendar"
 msgstr "افزودن به عنوان تقویم جدید"
 
-#: akonadicollectionview.cpp:744
+#: akonadicollectionview.cpp:743
 #, fuzzy, kde-format
 #| msgid "<qt>Do you really want to delete the resource <b>%1</b>?</qt>"
 msgctxt "@info"
 msgid "Do you really want to delete calendar %1?"
 msgstr "<qt>واقعاً می‌خواهید منبع <b>%1</b> را حذف کنید؟</qt>"
 
-#: akonadicollectionview.cpp:745
+#: akonadicollectionview.cpp:744
 #, fuzzy, kde-format
 #| msgid "Default Calendar"
 msgctxt "@title:window"
@@ -2031,9 +2044,9 @@ msgstr "مشاهده‌گر رویداد"
 
 #: dialog/koeventviewerdialog.cpp:40
 #, fuzzy, kde-format
-#| msgid "Edit..."
-msgid "Edit..."
-msgstr "ویرایش..."
+#| msgid "Edit"
+msgid "Edit…"
+msgstr "ویرایش"
 
 #: dialog/koeventviewerdialog.cpp:41
 #, fuzzy, kde-format
@@ -2159,10 +2172,10 @@ msgstr "&نمایش‌"
 
 #: koeventpopupmenu.cpp:45
 #, fuzzy, kde-format
-#| msgid "&Edit..."
+#| msgid "&Edit"
 msgctxt "@action:inmenu"
-msgid "&Edit..."
-msgstr "&ویرایش...‌"
+msgid "&Edit…"
+msgstr "&ویرایش‌"
 
 #: koeventpopupmenu.cpp:47
 #, fuzzy, kde-format
@@ -2173,16 +2186,16 @@ msgstr "&حذف‌"
 
 #: koeventpopupmenu.cpp:51
 #, fuzzy, kde-format
-#| msgid "&Print..."
+#| msgid "&Print"
 msgctxt "@action:inmenu"
-msgid "&Print..."
-msgstr "&چاپ...‌"
+msgid "&Print…"
+msgstr "&چاپ‌"
 
 #: koeventpopupmenu.cpp:53
 #, fuzzy, kde-format
 #| msgid "&Print..."
 msgctxt "@action:inmenu"
-msgid "Print Previe&w..."
+msgid "Print Previe&w…"
 msgstr "&چاپ...‌"
 
 #: koeventpopupmenu.cpp:74
@@ -2253,14 +2266,14 @@ msgstr "&زدن ضامن یادآوری‌"
 #, fuzzy, kde-format
 #| msgid "Dissociate occurrence"
 msgctxt "@action:inmenu"
-msgid "&Dissociate From Recurrence..."
+msgid "&Dissociate From Recurrence…"
 msgstr "تفکیک رخداد"
 
 #: koeventpopupmenu.cpp:137
 #, fuzzy, kde-format
 #| msgid "&Send as iCalendar..."
 msgctxt "@action:inmenu"
-msgid "Send as iCalendar..."
+msgid "Send as iCalendar…"
 msgstr "&ارسال به عنوان iCalendar...‌"
 
 #: koeventpopupmenu.cpp:187
@@ -2509,7 +2522,7 @@ msgstr[1] ""
 #: kontactplugin/korganizer/apptsummarywidget.cpp:240
 #, fuzzy, kde-format
 #| msgid "Appointment"
-msgid "&Edit Appointment..."
+msgid "&Edit Appointment…"
 msgstr "قرار ملاقات"
 
 #: kontactplugin/korganizer/apptsummarywidget.cpp:242
@@ -2528,7 +2541,7 @@ msgstr "ویرایش رویداد"
 #, fuzzy, kde-format
 #| msgid "New &Journal..."
 msgctxt "@action:inmenu"
-msgid "New Journal..."
+msgid "New Journal…"
 msgstr "&نشریه جدید...‌"
 
 #: kontactplugin/korganizer/journalplugin.cpp:31
@@ -2558,10 +2571,10 @@ msgstr[1] ""
 
 #: kontactplugin/korganizer/korganizerplugin.cpp:44
 #, fuzzy, kde-format
-#| msgid "New E&vent..."
+#| msgid "New Event"
 msgctxt "@action:inmenu"
-msgid "New Event..."
-msgstr "&رویداد جدید...‌"
+msgid "New Event…"
+msgstr "رویداد جدید"
 
 #: kontactplugin/korganizer/korganizerplugin.cpp:47
 #, fuzzy, kde-format
@@ -2692,10 +2705,10 @@ msgstr "از نو )%1("
 
 #: kontactplugin/korganizer/todoplugin.cpp:40
 #, fuzzy, kde-format
-#| msgid "&New To-do..."
+#| msgid "New To-do"
 msgctxt "@action:inmenu"
-msgid "New To-do..."
-msgstr "کار انجامی &جدید...‌"
+msgid "New To-do…"
+msgstr "کار انجامی جدید"
 
 #: kontactplugin/korganizer/todoplugin.cpp:43
 #, fuzzy, kde-format
@@ -3810,7 +3823,7 @@ msgstr "گزینه‌های دیگر"
 #: prefs/kprefsdialog.cpp:234
 #, fuzzy, kde-format
 #| msgid "Change..."
-msgid "Choose..."
+msgid "Choose…"
 msgstr "تغییر..."
 
 #: prefs/kprefsdialog.cpp:765
@@ -5182,9 +5195,10 @@ msgstr "فقط نمایش برگزیده"
 
 #. i18n: ectx: property (text), widget (QPushButton, mCatEditButton)
 #: ui/filteredit_base.ui:301
-#, kde-format
-msgid "Change..."
-msgstr "تغییر..."
+#, fuzzy, kde-format
+#| msgid "&Change"
+msgid "Change…"
+msgstr "&تغییر‌"
 
 #. i18n: ectx: property (whatsThis), widget (QCheckBox, mHideTodosNotAssignedToMeCheck)
 #: ui/filteredit_base.ui:315
@@ -6102,6 +6116,66 @@ msgstr "%1٪"
 msgctxt "4 digit year"
 msgid "%1"
 msgstr "%1٪"
+
+#~ msgid "Import &Calendar..."
+#~ msgstr "واردات &تقویم...‌"
+
+#~ msgid "New E&vent..."
+#~ msgstr "&رویداد جدید...‌"
+
+#~ msgid "New &To-do..."
+#~ msgstr "&کار انجامی جدید...‌"
+
+#~ msgid "New &Journal..."
+#~ msgstr "&نشریه جدید...‌"
+
+#~ msgid "&Edit..."
+#~ msgstr "&ویرایش...‌"
+
+#, fuzzy
+#~| msgid "Search"
+#~ msgctxt ""
+#~ "@info/plain Displayed grayed-out inside the textbox, verb to search"
+#~ msgid "Search..."
+#~ msgstr "جستجو"
+
+#, fuzzy
+#~| msgid "Edit..."
+#~ msgid "Edit..."
+#~ msgstr "ویرایش..."
+
+#, fuzzy
+#~| msgid "&Edit..."
+#~ msgctxt "@action:inmenu"
+#~ msgid "&Edit..."
+#~ msgstr "&ویرایش...‌"
+
+#, fuzzy
+#~| msgid "&Print..."
+#~ msgctxt "@action:inmenu"
+#~ msgid "&Print..."
+#~ msgstr "&چاپ...‌"
+
+#, fuzzy
+#~| msgid "New &Journal..."
+#~ msgctxt "@action:inmenu"
+#~ msgid "New Journal..."
+#~ msgstr "&نشریه جدید...‌"
+
+#, fuzzy
+#~| msgid "New E&vent..."
+#~ msgctxt "@action:inmenu"
+#~ msgid "New Event..."
+#~ msgstr "&رویداد جدید...‌"
+
+#, fuzzy
+#~| msgid "&New To-do..."
+#~ msgctxt "@action:inmenu"
+#~ msgid "New To-do..."
+#~ msgstr "کار انجامی &جدید...‌"
+
+#~ msgid "Change..."
+#~ msgstr "تغییر..."
 
 #~ msgid "Day begins at"
 #~ msgstr "آغاز روز در"
@@ -8936,9 +9010,6 @@ msgstr "%1٪"
 #~ msgid "Delete this journal entry"
 #~ msgstr "حذف این مدخل نشریه"
 
-#~ msgid "&Print"
-#~ msgstr "&چاپ‌"
-
 #~ msgid "Print this journal entry"
 #~ msgstr "چاپ این مدخل نشریه"
 
@@ -9882,12 +9953,6 @@ msgstr "%1٪"
 #~ msgid "&General"
 #~ msgstr "&عمومی‌"
 
-#, fuzzy
-#~| msgid "New To-do"
-#~ msgctxt "@title:window"
-#~ msgid "New To-do"
-#~ msgstr "کار انجامی جدید"
-
 #~ msgid "Sets the title of this journal."
 #~ msgstr "عنوان این نشریه را تنظیم می‌کند."
 
@@ -9924,12 +9989,6 @@ msgstr "%1٪"
 #~ msgctxt "@title general journal settings"
 #~ msgid "General"
 #~ msgstr "عمومی"
-
-#, fuzzy
-#~| msgid "New &Journal..."
-#~ msgctxt "@title:window"
-#~ msgid "New Journal"
-#~ msgstr "&نشریه جدید...‌"
 
 #, fuzzy
 #~| msgid "Attachment name"
@@ -11062,12 +11121,6 @@ msgstr "%1٪"
 #~ "انجامی."
 
 #, fuzzy
-#~| msgid "&Change"
-#~ msgctxt "@action:button"
-#~ msgid "&Change"
-#~ msgstr "&تغییر‌"
-
-#, fuzzy
 #~| msgid "&Delete"
 #~ msgctxt "@action:button"
 #~ msgid "&Delete"
@@ -11990,12 +12043,6 @@ msgstr "%1٪"
 #~ msgstr ""
 #~ "تب آزاد/اشغال به شما اجازه می‌دهد که ببینید آیا در مدت رویداد شما، "
 #~ "شرکت‌کنندگان آزاد هستند یا مشغول."
-
-#, fuzzy
-#~| msgid "New Event"
-#~ msgctxt "@title:window"
-#~ msgid "New Event"
-#~ msgstr "رویداد جدید"
 
 #, fuzzy
 #~| msgid "No Attendees"
@@ -14038,9 +14085,6 @@ msgstr "%1٪"
 
 #~ msgid "&Remove..."
 #~ msgstr "&حذف...‌"
-
-#~ msgid "Edit"
-#~ msgstr "ویرایش"
 
 #, fuzzy
 #~| msgid "day(s)"

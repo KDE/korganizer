@@ -15,7 +15,7 @@ msgid ""
 msgstr ""
 "Project-Id-Version: korganizer\n"
 "Report-Msgid-Bugs-To: https://bugs.kde.org\n"
-"POT-Creation-Date: 2024-04-12 00:38+0000\n"
+"POT-Creation-Date: 2024-05-12 00:39+0000\n"
 "PO-Revision-Date: 2002-11-09 12:52+0200\n"
 "Last-Translator: Thelma Lungcuzo <thelma@translate.org.za>\n"
 "Language-Team: Xhosa <xhosa@translate.org.za>\n"
@@ -295,7 +295,7 @@ msgstr "Ibar yexesha:"
 
 #: actionmanager.cpp:243
 #, fuzzy, kde-format
-msgid "Import &Calendar..."
+msgid "Import &Calendar…"
 msgstr "i Khalenda"
 
 #: actionmanager.cpp:244
@@ -321,7 +321,7 @@ msgstr ""
 #: actionmanager.cpp:253
 #, fuzzy, kde-format
 #| msgid "New Calendar"
-msgid "Get New Calendars..."
+msgid "Get New Calendars…"
 msgstr "Icalendar Entsha"
 
 #: actionmanager.cpp:254
@@ -356,7 +356,7 @@ msgstr "Iziganeko ezilayishwe ezantsi zizakudibaniswa kwi khalenda yangoku."
 
 #: actionmanager.cpp:305
 #, fuzzy, kde-format
-msgid "Export as &iCalendar..."
+msgid "Export as &iCalendar…"
 msgstr "i Khalenda"
 
 #: actionmanager.cpp:306
@@ -380,7 +380,7 @@ msgstr ""
 
 #: actionmanager.cpp:314
 #, fuzzy, kde-format
-msgid "Archive O&ld Incidences..."
+msgid "Archive O&ld Incidences…"
 msgstr "Gcina Amangeno Amadala..."
 
 #: actionmanager.cpp:315
@@ -821,8 +821,8 @@ msgid "&Week"
 msgstr "&Iveki"
 
 #: actionmanager.cpp:566 kodaymatrix.cpp:484
-#, kde-format
-msgid "New E&vent..."
+#, fuzzy, kde-format
+msgid "New E&vent…"
 msgstr "Isi&ganeko Esitsha..."
 
 #: actionmanager.cpp:567
@@ -847,8 +847,8 @@ msgstr ""
 
 #: actionmanager.cpp:576 kodaymatrix.cpp:485
 #, fuzzy, kde-format
-msgid "New &To-do..."
-msgstr "Okutsha &Ukwe-nza..."
+msgid "New &To-do…"
+msgstr "Ukwe-Nza Okutsha"
 
 #: actionmanager.cpp:577
 #, fuzzy, kde-format
@@ -872,12 +872,12 @@ msgstr ""
 
 #: actionmanager.cpp:587
 #, fuzzy, kde-format
-msgid "New Su&b-to-do..."
+msgid "New Su&b-to-do…"
 msgstr "Entsha Es&ezantsi-Ukwe-Nza..."
 
 #: actionmanager.cpp:595 kodaymatrix.cpp:486
 #, fuzzy, kde-format
-msgid "New &Journal..."
+msgid "New &Journal…"
 msgstr "&Incwadi egcina ii akhawuti"
 
 #: actionmanager.cpp:596
@@ -900,7 +900,7 @@ msgstr ""
 
 #: actionmanager.cpp:603
 #, fuzzy, kde-format
-msgid "Configure View..."
+msgid "Configure View…"
 msgstr "Qwalasela..."
 
 #: actionmanager.cpp:604
@@ -936,8 +936,8 @@ msgid "&Show"
 msgstr "&Bonisa"
 
 #: actionmanager.cpp:618 actionmanager.cpp:1303 actionmanager.cpp:1342
-#, kde-format
-msgid "&Edit..."
+#, fuzzy, kde-format
+msgid "&Edit…"
 msgstr "&Hlela..."
 
 #: actionmanager.cpp:627
@@ -951,7 +951,7 @@ msgstr "&Yenza Ulwenzo- Olusezantsi Oluzimeleyo"
 #. ************************* SCHEDULE MENU *******************************
 #: actionmanager.cpp:639
 #, kde-format
-msgid "&Publish Item Information..."
+msgid "&Publish Item Information…"
 msgstr ""
 
 #: actionmanager.cpp:646
@@ -982,12 +982,12 @@ msgstr "Isibali"
 
 #: actionmanager.cpp:686
 #, fuzzy, kde-format
-msgid "&Mail Free Busy Information..."
+msgid "&Mail Free Busy Information…"
 msgstr "Papasha Iinkcukacha ye Free Busy"
 
 #: actionmanager.cpp:691
 #, fuzzy, kde-format
-msgid "&Send as iCalendar..."
+msgid "&Send as iCalendar…"
 msgstr "iKhalenda..."
 
 #: actionmanager.cpp:698
@@ -1022,23 +1022,24 @@ msgid "Show Calendar Manager"
 msgstr "Rhweba Ngaphandle Ikhalenda Njengephepha Le Web"
 
 #: actionmanager.cpp:749
-#, kde-format
-msgid "Configure &Date && Time..."
+#, fuzzy, kde-format
+#| msgid "Configure &Date && Time..."
+msgid "Configure &Date && Time…"
 msgstr "Qwalasela &Umhla && Ixesha..."
 
 #: actionmanager.cpp:753
 #, fuzzy, kde-format
-msgid "Manage View &Filters..."
+msgid "Manage View &Filters…"
 msgstr "Hlela &Amacebo okucoca ulwelo..."
 
 #: actionmanager.cpp:757
 #, fuzzy, kde-format
-msgid "Manage T&ags..."
+msgid "Manage T&ags…"
 msgstr "Hlela I&intlobo..."
 
 #: actionmanager.cpp:765
 #, fuzzy, kde-format
-msgid "&Configure KOrganizer..."
+msgid "&Configure KOrganizer…"
 msgstr "Qwalasela &I Plagin..."
 
 #: actionmanager.cpp:843
@@ -1114,8 +1115,9 @@ msgid "&Show Event"
 msgstr "&Bonisa Isiganeko"
 
 #: actionmanager.cpp:1264
-#, kde-format
-msgid "&Edit Event..."
+#, fuzzy, kde-format
+#| msgid "&Edit Event..."
+msgid "&Edit Event…"
 msgstr "&Hlela Isiganeko..."
 
 #: actionmanager.cpp:1267
@@ -1130,7 +1132,7 @@ msgstr "&Bonisa Eza-Kwenziwa"
 
 #: actionmanager.cpp:1278 kontactplugin/korganizer/todosummarywidget.cpp:321
 #, fuzzy, kde-format
-msgid "&Edit To-do..."
+msgid "&Edit To-do…"
 msgstr "&Hlela Eza-Kwenziwa..."
 
 #: actionmanager.cpp:1281 kontactplugin/korganizer/todosummarywidget.cpp:323
@@ -1248,7 +1250,7 @@ msgstr ""
 #: akonadicollectionview.cpp:411
 #, fuzzy, kde-format
 msgctxt "@info/plain Displayed grayed-out inside the textbox, verb to search"
-msgid "Search..."
+msgid "Search…"
 msgstr "Phendla Kwi"
 
 #: akonadicollectionview.cpp:495 manageshowcollectionproperties.cpp:76
@@ -1261,7 +1263,7 @@ msgstr "Hlela Amacebo okucoca ulwelo e Khalenda"
 #: akonadicollectionview.cpp:507
 #, kde-format
 msgctxt "@action:inmenu"
-msgid "&Set Folder Color..."
+msgid "&Set Folder Color…"
 msgstr ""
 
 #: akonadicollectionview.cpp:513
@@ -1270,37 +1272,37 @@ msgctxt "@action:inmenu"
 msgid "Set as &Default Folder"
 msgstr "Ifomati ye Khalenda Engagqibekanga"
 
-#: akonadicollectionview.cpp:519
+#: akonadicollectionview.cpp:518
 #, kde-format
 msgctxt "@action:inmenu"
-msgid "Serverside Subscription..."
+msgid "Serverside Subscription…"
 msgstr ""
 
-#: akonadicollectionview.cpp:564
+#: akonadicollectionview.cpp:563
 #, fuzzy, kde-format
 msgctxt "@info"
 msgid "Do you really want replace your current default calendar with \"%1\"?"
 msgstr "Ayikwazi ukwenza ifayile ezakulayishwa phezulu"
 
-#: akonadicollectionview.cpp:565
+#: akonadicollectionview.cpp:564
 #, fuzzy, kde-format
 msgctxt "@title:window"
 msgid "Replace Default Calendar?"
 msgstr "Ifomati ye Khalenda Engagqibekanga"
 
-#: akonadicollectionview.cpp:702
+#: akonadicollectionview.cpp:701
 #, fuzzy, kde-format
 msgctxt "@title:window"
 msgid "Add Calendar"
 msgstr "Icalendar Entsha"
 
-#: akonadicollectionview.cpp:744
+#: akonadicollectionview.cpp:743
 #, fuzzy, kde-format
 msgctxt "@info"
 msgid "Do you really want to delete calendar %1?"
 msgstr "Ayikwazi ukwenza ifayile ezakulayishwa phezulu"
 
-#: akonadicollectionview.cpp:745
+#: akonadicollectionview.cpp:744
 #, fuzzy, kde-format
 msgctxt "@title:window"
 msgid "Delete Calendar"
@@ -1907,9 +1909,8 @@ msgstr "Umboniseli Wesiganeko"
 
 #: dialog/koeventviewerdialog.cpp:40
 #, fuzzy, kde-format
-#| msgid "Edit..."
-msgid "Edit..."
-msgstr "Hlela..."
+msgid "Edit…"
+msgstr "Ixesha Lesiphelo: %1"
 
 #: dialog/koeventviewerdialog.cpp:41
 #, fuzzy, kde-format
@@ -2028,9 +2029,8 @@ msgstr "&Bonisa"
 
 #: koeventpopupmenu.cpp:45
 #, fuzzy, kde-format
-#| msgid "&Edit..."
 msgctxt "@action:inmenu"
-msgid "&Edit..."
+msgid "&Edit…"
 msgstr "&Hlela..."
 
 #: koeventpopupmenu.cpp:47
@@ -2042,13 +2042,13 @@ msgstr "Cima..."
 #: koeventpopupmenu.cpp:51
 #, fuzzy, kde-format
 msgctxt "@action:inmenu"
-msgid "&Print..."
-msgstr "&Hlela..."
+msgid "&Print…"
+msgstr "i Khalenda"
 
 #: koeventpopupmenu.cpp:53
 #, fuzzy, kde-format
 msgctxt "@action:inmenu"
-msgid "Print Previe&w..."
+msgid "Print Previe&w…"
 msgstr "&Hlela..."
 
 #: koeventpopupmenu.cpp:74
@@ -2110,13 +2110,13 @@ msgstr "Umkhumbuzi:"
 #: koeventpopupmenu.cpp:129
 #, fuzzy, kde-format
 msgctxt "@action:inmenu"
-msgid "&Dissociate From Recurrence..."
+msgid "&Dissociate From Recurrence…"
 msgstr "Dwelisa iziganeko zemini yangoku"
 
 #: koeventpopupmenu.cpp:137
 #, fuzzy, kde-format
 msgctxt "@action:inmenu"
-msgid "Send as iCalendar..."
+msgid "Send as iCalendar…"
 msgstr "iKhalenda..."
 
 #: koeventpopupmenu.cpp:187
@@ -2344,7 +2344,7 @@ msgstr[1] ""
 #: kontactplugin/korganizer/apptsummarywidget.cpp:240
 #, fuzzy, kde-format
 #| msgid "Appointment"
-msgid "&Edit Appointment..."
+msgid "&Edit Appointment…"
 msgstr "Ixesha ledinga"
 
 #: kontactplugin/korganizer/apptsummarywidget.cpp:242
@@ -2362,7 +2362,7 @@ msgstr "Hlela isiganeko"
 #: kontactplugin/korganizer/journalplugin.cpp:28
 #, fuzzy, kde-format
 msgctxt "@action:inmenu"
-msgid "New Journal..."
+msgid "New Journal…"
 msgstr "&Incwadi egcina ii akhawuti"
 
 #: kontactplugin/korganizer/journalplugin.cpp:31
@@ -2389,9 +2389,8 @@ msgstr[1] "%1 Imihla"
 
 #: kontactplugin/korganizer/korganizerplugin.cpp:44
 #, fuzzy, kde-format
-#| msgid "New E&vent..."
 msgctxt "@action:inmenu"
-msgid "New Event..."
+msgid "New Event…"
 msgstr "Isi&ganeko Esitsha..."
 
 #: kontactplugin/korganizer/korganizerplugin.cpp:47
@@ -2507,8 +2506,8 @@ msgstr "Ukwe-nza: %1"
 #: kontactplugin/korganizer/todoplugin.cpp:40
 #, fuzzy, kde-format
 msgctxt "@action:inmenu"
-msgid "New To-do..."
-msgstr "Ukwe-nza Okutsha..."
+msgid "New To-do…"
+msgstr "Ukwe-Nza Okutsha"
 
 #: kontactplugin/korganizer/todoplugin.cpp:43
 #, fuzzy, kde-format
@@ -3518,7 +3517,7 @@ msgstr "Iinkcazelo"
 
 #: prefs/kprefsdialog.cpp:234
 #, fuzzy, kde-format
-msgid "Choose..."
+msgid "Choose…"
 msgstr "Qwalasela..."
 
 #: prefs/kprefsdialog.cpp:765
@@ -4717,7 +4716,7 @@ msgstr "Bonisa okukhethiweyo kuphela"
 #. i18n: ectx: property (text), widget (QPushButton, mCatEditButton)
 #: ui/filteredit_base.ui:301
 #, fuzzy, kde-format
-msgid "Change..."
+msgid "Change…"
 msgstr "Qwalasela..."
 
 #. i18n: ectx: property (whatsThis), widget (QCheckBox, mHideTodosNotAssignedToMeCheck)
@@ -5533,6 +5532,66 @@ msgstr "%1 %"
 msgctxt "4 digit year"
 msgid "%1"
 msgstr "%1 %"
+
+#, fuzzy
+#~ msgid "Import &Calendar..."
+#~ msgstr "i Khalenda"
+
+#~ msgid "New E&vent..."
+#~ msgstr "Isi&ganeko Esitsha..."
+
+#, fuzzy
+#~ msgid "New &To-do..."
+#~ msgstr "Okutsha &Ukwe-nza..."
+
+#, fuzzy
+#~ msgid "New &Journal..."
+#~ msgstr "&Incwadi egcina ii akhawuti"
+
+#~ msgid "&Edit..."
+#~ msgstr "&Hlela..."
+
+#, fuzzy
+#~ msgctxt ""
+#~ "@info/plain Displayed grayed-out inside the textbox, verb to search"
+#~ msgid "Search..."
+#~ msgstr "Phendla Kwi"
+
+#, fuzzy
+#~| msgid "Edit..."
+#~ msgid "Edit..."
+#~ msgstr "Hlela..."
+
+#, fuzzy
+#~| msgid "&Edit..."
+#~ msgctxt "@action:inmenu"
+#~ msgid "&Edit..."
+#~ msgstr "&Hlela..."
+
+#, fuzzy
+#~ msgctxt "@action:inmenu"
+#~ msgid "&Print..."
+#~ msgstr "&Hlela..."
+
+#, fuzzy
+#~ msgctxt "@action:inmenu"
+#~ msgid "New Journal..."
+#~ msgstr "&Incwadi egcina ii akhawuti"
+
+#, fuzzy
+#~| msgid "New E&vent..."
+#~ msgctxt "@action:inmenu"
+#~ msgid "New Event..."
+#~ msgstr "Isi&ganeko Esitsha..."
+
+#, fuzzy
+#~ msgctxt "@action:inmenu"
+#~ msgid "New To-do..."
+#~ msgstr "Ukwe-nza Okutsha..."
+
+#, fuzzy
+#~ msgid "Change..."
+#~ msgstr "Qwalasela..."
 
 #, fuzzy
 #~ msgid "Day begins at"
@@ -7544,10 +7603,6 @@ msgstr "%1 %"
 #~ msgstr "Cima iziganeko ezindala"
 
 #, fuzzy
-#~ msgid "&Print"
-#~ msgstr "i Khalenda"
-
-#, fuzzy
 #~ msgid "Print this journal entry"
 #~ msgstr "Cima iziganeko ezindala"
 
@@ -8192,11 +8247,6 @@ msgstr "%1 %"
 #~ msgstr "Ngokubanzi"
 
 #, fuzzy
-#~ msgctxt "@title:window"
-#~ msgid "New To-do"
-#~ msgstr "Ukwe-Nza Okutsha"
-
-#, fuzzy
 #~ msgid "Sets the title of this journal."
 #~ msgstr "Cima iziganeko ezindala"
 
@@ -8232,11 +8282,6 @@ msgstr "%1 %"
 #~ msgctxt "@title general journal settings"
 #~ msgid "General"
 #~ msgstr "Ngokubanzi"
-
-#, fuzzy
-#~ msgctxt "@title:window"
-#~ msgid "New Journal"
-#~ msgstr "&Incwadi egcina ii akhawuti"
 
 #, fuzzy
 #~ msgctxt "@label"
@@ -8936,11 +8981,6 @@ msgstr "%1 %"
 
 #, fuzzy
 #~ msgctxt "@action:button"
-#~ msgid "&Change"
-#~ msgstr "Qwalasela..."
-
-#, fuzzy
-#~ msgctxt "@action:button"
 #~ msgid "&Delete"
 #~ msgstr "Cima..."
 
@@ -9433,11 +9473,6 @@ msgstr "%1 %"
 #~ msgctxt "@title:tab"
 #~ msgid "&Attendees"
 #~ msgstr "Abathathi nxaxheba"
-
-#, fuzzy
-#~ msgctxt "@title:window"
-#~ msgid "New Event"
-#~ msgstr "Isi&ganeko Esitsha..."
 
 #, fuzzy
 #~ msgctxt "@title:window"
@@ -10749,10 +10784,6 @@ msgstr "%1 %"
 #, fuzzy
 #~ msgid "&Remove..."
 #~ msgstr "Template..."
-
-#, fuzzy
-#~ msgid "Edit"
-#~ msgstr "Ixesha Lesiphelo: %1"
 
 #, fuzzy
 #~| msgid "day(s)"

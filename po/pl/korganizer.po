@@ -1,5 +1,5 @@
 # translation of korganizer.po to
-# Version: $Revision: 1677750 $
+# Version: $Revision: 1679813 $
 # translated by Krzysztof Jasiutowicz <kpjas@priv.onet.pl>
 # contains his updates from 26.01.1999
 # Krzysztof Lichota <lichota@mimuw.edu.pl>, 2002, 2005, 2006.
@@ -13,7 +13,7 @@ msgid ""
 msgstr ""
 "Project-Id-Version: korganizer\n"
 "Report-Msgid-Bugs-To: https://bugs.kde.org\n"
-"POT-Creation-Date: 2024-04-12 00:38+0000\n"
+"POT-Creation-Date: 2024-05-12 00:39+0000\n"
 "PO-Revision-Date: 2024-01-07 11:58+0100\n"
 "Last-Translator: Łukasz Wojniłowicz <lukasz.wojnilowicz@gmail.com>\n"
 "Language-Team: Polish <kde-i18n-doc@kde.org>\n"
@@ -302,9 +302,11 @@ msgid "Hide menu bar"
 msgstr "Ukryj pasek menu"
 
 #: actionmanager.cpp:243
-#, kde-format
-msgid "Import &Calendar..."
-msgstr "Zaimportuj &kalendarz..."
+#, fuzzy, kde-format
+#| msgctxt "@title:window"
+#| msgid "Import Calendar"
+msgid "Import &Calendar…"
+msgstr "Zaimportuj kalendarz"
 
 #: actionmanager.cpp:244
 #, kde-format
@@ -329,8 +331,9 @@ msgstr ""
 "lub vKalendarz do swojego bieżącego kalendarza."
 
 #: actionmanager.cpp:253
-#, kde-format
-msgid "Get New Calendars..."
+#, fuzzy, kde-format
+#| msgid "Get New Calendars..."
+msgid "Get New Calendars…"
 msgstr "Pobierz nowe kalendarze..."
 
 #: actionmanager.cpp:254
@@ -367,8 +370,9 @@ msgid "The downloaded events will be merged into your current calendar."
 msgstr "Pobrane wydarzenia zostaną wstawione do twojego bieżącego kalendarza."
 
 #: actionmanager.cpp:305
-#, kde-format
-msgid "Export as &iCalendar..."
+#, fuzzy, kde-format
+#| msgid "Export as &iCalendar..."
+msgid "Export as &iCalendar…"
 msgstr "Wyeksportuj jako &iKalendarz..."
 
 #: actionmanager.cpp:306
@@ -393,8 +397,9 @@ msgstr ""
 "iKalendarz."
 
 #: actionmanager.cpp:314
-#, kde-format
-msgid "Archive O&ld Incidences..."
+#, fuzzy, kde-format
+#| msgid "Archive O&ld Incidences..."
+msgid "Archive O&ld Incidences…"
 msgstr "Zarchiwizuj &stare wystąpienia..."
 
 #: actionmanager.cpp:315
@@ -849,9 +854,11 @@ msgid "&Week"
 msgstr "&Tydzień"
 
 #: actionmanager.cpp:566 kodaymatrix.cpp:484
-#, kde-format
-msgid "New E&vent..."
-msgstr "Nowe wy&darzenie..."
+#, fuzzy, kde-format
+#| msgctxt "@title:window"
+#| msgid "New Event"
+msgid "New E&vent…"
+msgstr "Nowe zdarzenie"
 
 #: actionmanager.cpp:567
 #, kde-format
@@ -876,9 +883,11 @@ msgstr ""
 "przypomnieniami, uczestnikami, powtórzeniami i wiele więcej."
 
 #: actionmanager.cpp:576 kodaymatrix.cpp:485
-#, kde-format
-msgid "New &To-do..."
-msgstr "Nowe &zadanie..."
+#, fuzzy, kde-format
+#| msgctxt "@title:window"
+#| msgid "New To-do"
+msgid "New &To-do…"
+msgstr "Nowe zadanie"
 
 #: actionmanager.cpp:577
 #, kde-format
@@ -903,14 +912,17 @@ msgstr ""
 "przypomnieniami, uczestnikami, powtórzeniami i wiele więcej."
 
 #: actionmanager.cpp:587
-#, kde-format
-msgid "New Su&b-to-do..."
+#, fuzzy, kde-format
+#| msgid "New Su&b-to-do..."
+msgid "New Su&b-to-do…"
 msgstr "Nowe &pod-zadanie..."
 
 #: actionmanager.cpp:595 kodaymatrix.cpp:486
-#, kde-format
-msgid "New &Journal..."
-msgstr "Nowy &dziennik..."
+#, fuzzy, kde-format
+#| msgctxt "@title:window"
+#| msgid "New Journal"
+msgid "New &Journal…"
+msgstr "Nowy dziennik"
 
 #: actionmanager.cpp:596
 #, kde-format
@@ -932,8 +944,9 @@ msgstr ""
 "Otwiera okno dialogowe, które umożliwia stworzenie nowego wpisu dziennika."
 
 #: actionmanager.cpp:603
-#, kde-format
-msgid "Configure View..."
+#, fuzzy, kde-format
+#| msgid "Configure View..."
+msgid "Configure View…"
 msgstr "Ustawienia widoku..."
 
 #: actionmanager.cpp:604
@@ -969,9 +982,10 @@ msgid "&Show"
 msgstr "&Pokaż"
 
 #: actionmanager.cpp:618 actionmanager.cpp:1303 actionmanager.cpp:1342
-#, kde-format
-msgid "&Edit..."
-msgstr "&Edytuj..."
+#, fuzzy, kde-format
+#| msgid "&Edit"
+msgid "&Edit…"
+msgstr "&Edycja"
 
 #: actionmanager.cpp:627
 #, kde-format
@@ -983,8 +997,9 @@ msgstr "U&niezależnij pod-zadanie"
 #. mACollection, "activate_alarm" );
 #. ************************* SCHEDULE MENU *******************************
 #: actionmanager.cpp:639
-#, kde-format
-msgid "&Publish Item Information..."
+#, fuzzy, kde-format
+#| msgid "&Publish Item Information..."
+msgid "&Publish Item Information…"
 msgstr "O&publikuj informacje o elemencie..."
 
 #: actionmanager.cpp:646
@@ -1014,13 +1029,15 @@ msgid "Request Chan&ge"
 msgstr "Wyślij &kontrpropozycję"
 
 #: actionmanager.cpp:686
-#, kde-format
-msgid "&Mail Free Busy Information..."
+#, fuzzy, kde-format
+#| msgid "&Mail Free Busy Information..."
+msgid "&Mail Free Busy Information…"
 msgstr "Wyślij pocztą infor&mację wolny/zajęty..."
 
 #: actionmanager.cpp:691
-#, kde-format
-msgid "&Send as iCalendar..."
+#, fuzzy, kde-format
+#| msgid "&Send as iCalendar..."
+msgid "&Send as iCalendar…"
 msgstr "Wyślij jako &iKalendarz..."
 
 #: actionmanager.cpp:698
@@ -1054,23 +1071,27 @@ msgid "Show Calendar Manager"
 msgstr "Pokaż program do zarządzania kalendarzem"
 
 #: actionmanager.cpp:749
-#, kde-format
-msgid "Configure &Date && Time..."
+#, fuzzy, kde-format
+#| msgid "Configure &Date && Time..."
+msgid "Configure &Date && Time…"
 msgstr "Ustawienia &daty i czasu..."
 
 #: actionmanager.cpp:753
-#, kde-format
-msgid "Manage View &Filters..."
+#, fuzzy, kde-format
+#| msgid "Manage View &Filters..."
+msgid "Manage View &Filters…"
 msgstr "Edycja &filtrów widoków..."
 
 #: actionmanager.cpp:757
-#, kde-format
-msgid "Manage T&ags..."
+#, fuzzy, kde-format
+#| msgid "Manage T&ags..."
+msgid "Manage T&ags…"
 msgstr "Z&arządzanie znacznikami..."
 
 #: actionmanager.cpp:765
-#, kde-format
-msgid "&Configure KOrganizer..."
+#, fuzzy, kde-format
+#| msgid "&Configure KOrganizer..."
+msgid "&Configure KOrganizer…"
 msgstr "&Ustawienia KOrganizer..."
 
 #: actionmanager.cpp:843
@@ -1145,8 +1166,9 @@ msgid "&Show Event"
 msgstr "&Pokaż wydarzenie"
 
 #: actionmanager.cpp:1264
-#, kde-format
-msgid "&Edit Event..."
+#, fuzzy, kde-format
+#| msgid "&Edit Event..."
+msgid "&Edit Event…"
 msgstr "&Edytuj wydarzenie..."
 
 #: actionmanager.cpp:1267
@@ -1160,8 +1182,9 @@ msgid "&Show To-do"
 msgstr "P&okaż zadanie"
 
 #: actionmanager.cpp:1278 kontactplugin/korganizer/todosummarywidget.cpp:321
-#, kde-format
-msgid "&Edit To-do..."
+#, fuzzy, kde-format
+#| msgid "&Edit To-do..."
+msgid "&Edit To-do…"
 msgstr "&Edytuj zadanie..."
 
 #: actionmanager.cpp:1281 kontactplugin/korganizer/todosummarywidget.cpp:323
@@ -1281,10 +1304,12 @@ msgid "Lets you search for a keyword in your calendars"
 msgstr "Umożliwia szukanie słowa kluczowego w kalendarzach"
 
 #: akonadicollectionview.cpp:411
-#, kde-format
+#, fuzzy, kde-format
+#| msgctxt "Displayed grayed-out inside the textbox, verb to search"
+#| msgid "Search"
 msgctxt "@info/plain Displayed grayed-out inside the textbox, verb to search"
-msgid "Search..."
-msgstr "Szukaj..."
+msgid "Search…"
+msgstr "Znajdź"
 
 #: akonadicollectionview.cpp:495 manageshowcollectionproperties.cpp:76
 #, kde-format
@@ -1293,9 +1318,11 @@ msgid "Properties of Calendar Folder %1"
 msgstr "Właściwości katalogu kalendarza %1"
 
 #: akonadicollectionview.cpp:507
-#, kde-format
+#, fuzzy, kde-format
+#| msgctxt "@action:inmenu"
+#| msgid "&Set Folder Color..."
 msgctxt "@action:inmenu"
-msgid "&Set Folder Color..."
+msgid "&Set Folder Color…"
 msgstr "U&staw kolor katalogu..."
 
 #: akonadicollectionview.cpp:513
@@ -1304,38 +1331,40 @@ msgctxt "@action:inmenu"
 msgid "Set as &Default Folder"
 msgstr "Ustaw jako &domyślny katalog"
 
-#: akonadicollectionview.cpp:519
-#, kde-format
+#: akonadicollectionview.cpp:518
+#, fuzzy, kde-format
+#| msgctxt "@action:inmenu"
+#| msgid "Serverside Subscription..."
 msgctxt "@action:inmenu"
-msgid "Serverside Subscription..."
+msgid "Serverside Subscription…"
 msgstr "Subskrybowanie na serwerze..."
 
-#: akonadicollectionview.cpp:564
+#: akonadicollectionview.cpp:563
 #, kde-format
 msgctxt "@info"
 msgid "Do you really want replace your current default calendar with \"%1\"?"
 msgstr ""
 "Czy na pewno zastąpić twój obecny domyślny kalendarz, kalendarzem \"%1\"?"
 
-#: akonadicollectionview.cpp:565
+#: akonadicollectionview.cpp:564
 #, kde-format
 msgctxt "@title:window"
 msgid "Replace Default Calendar?"
 msgstr "Czy zastąpić domyślny kalendarz?"
 
-#: akonadicollectionview.cpp:702
+#: akonadicollectionview.cpp:701
 #, kde-format
 msgctxt "@title:window"
 msgid "Add Calendar"
 msgstr "Dodaj kalendarz"
 
-#: akonadicollectionview.cpp:744
+#: akonadicollectionview.cpp:743
 #, kde-format
 msgctxt "@info"
 msgid "Do you really want to delete calendar %1?"
 msgstr "Czy na pewno chcesz usunąć kalendarz %1?"
 
-#: akonadicollectionview.cpp:745
+#: akonadicollectionview.cpp:744
 #, kde-format
 msgctxt "@title:window"
 msgid "Delete Calendar"
@@ -1969,9 +1998,10 @@ msgid "Event Viewer"
 msgstr "Przeglądarka wydarzeń"
 
 #: dialog/koeventviewerdialog.cpp:40
-#, kde-format
-msgid "Edit..."
-msgstr "Edytuj..."
+#, fuzzy, kde-format
+#| msgid "&Edit"
+msgid "Edit…"
+msgstr "&Edycja"
 
 #: dialog/koeventviewerdialog.cpp:41
 #, kde-format
@@ -2085,10 +2115,11 @@ msgid "&Show"
 msgstr "&Pokaż"
 
 #: koeventpopupmenu.cpp:45
-#, kde-format
+#, fuzzy, kde-format
+#| msgid "&Edit"
 msgctxt "@action:inmenu"
-msgid "&Edit..."
-msgstr "&Edytuj..."
+msgid "&Edit…"
+msgstr "&Edycja"
 
 #: koeventpopupmenu.cpp:47
 #, kde-format
@@ -2097,15 +2128,18 @@ msgid "&Delete"
 msgstr "&Usuń"
 
 #: koeventpopupmenu.cpp:51
-#, kde-format
+#, fuzzy, kde-format
+#| msgid "&Print"
 msgctxt "@action:inmenu"
-msgid "&Print..."
-msgstr "Wydr&ukuj..."
+msgid "&Print…"
+msgstr "Druku&j"
 
 #: koeventpopupmenu.cpp:53
-#, kde-format
+#, fuzzy, kde-format
+#| msgctxt "@action:inmenu"
+#| msgid "Print Previe&w..."
 msgctxt "@action:inmenu"
-msgid "Print Previe&w..."
+msgid "Print Previe&w…"
 msgstr "Podejrzyj &wydruk..."
 
 #: koeventpopupmenu.cpp:74
@@ -2163,15 +2197,19 @@ msgid "&Toggle Reminder"
 msgstr "Przełącz p&rzypomnienia"
 
 #: koeventpopupmenu.cpp:129
-#, kde-format
+#, fuzzy, kde-format
+#| msgctxt "@action:inmenu"
+#| msgid "&Dissociate From Recurrence..."
 msgctxt "@action:inmenu"
-msgid "&Dissociate From Recurrence..."
+msgid "&Dissociate From Recurrence…"
 msgstr "O&dłącz od powtarzania..."
 
 #: koeventpopupmenu.cpp:137
-#, kde-format
+#, fuzzy, kde-format
+#| msgctxt "@action:inmenu"
+#| msgid "Send as iCalendar..."
 msgctxt "@action:inmenu"
-msgid "Send as iCalendar..."
+msgid "Send as iCalendar…"
 msgstr "Wyślij jako iKalendarz..."
 
 #: koeventpopupmenu.cpp:187
@@ -2412,8 +2450,9 @@ msgstr[1] "Brak wydarzeń zaczynających się w ciągu najbliższych %1 dni"
 msgstr[2] "Brak wydarzeń zaczynających się w ciągu najbliższych %1 dni"
 
 #: kontactplugin/korganizer/apptsummarywidget.cpp:240
-#, kde-format
-msgid "&Edit Appointment..."
+#, fuzzy, kde-format
+#| msgid "&Edit Appointment..."
+msgid "&Edit Appointment…"
 msgstr "&Edytuj spotkanie..."
 
 #: kontactplugin/korganizer/apptsummarywidget.cpp:242
@@ -2427,10 +2466,12 @@ msgid "Edit Event: \"%1\""
 msgstr "Edytuj wydarzenie: \"%1\""
 
 #: kontactplugin/korganizer/journalplugin.cpp:28
-#, kde-format
+#, fuzzy, kde-format
+#| msgctxt "@title:window"
+#| msgid "New Journal"
 msgctxt "@action:inmenu"
-msgid "New Journal..."
-msgstr "Nowy dziennik..."
+msgid "New Journal…"
+msgstr "Nowy dziennik"
 
 #: kontactplugin/korganizer/journalplugin.cpp:31
 #, kde-format
@@ -2458,10 +2499,12 @@ msgstr[1] " dni"
 msgstr[2] " dni"
 
 #: kontactplugin/korganizer/korganizerplugin.cpp:44
-#, kde-format
+#, fuzzy, kde-format
+#| msgctxt "@title:window"
+#| msgid "New Event"
 msgctxt "@action:inmenu"
-msgid "New Event..."
-msgstr "Nowe wydarzenie..."
+msgid "New Event…"
+msgstr "Nowe zdarzenie"
 
 #: kontactplugin/korganizer/korganizerplugin.cpp:47
 #, kde-format
@@ -2575,10 +2618,12 @@ msgid "Next: %1"
 msgstr "Następne: %1"
 
 #: kontactplugin/korganizer/todoplugin.cpp:40
-#, kde-format
+#, fuzzy, kde-format
+#| msgctxt "@title:window"
+#| msgid "New To-do"
 msgctxt "@action:inmenu"
-msgid "New To-do..."
-msgstr "Nowe zadanie..."
+msgid "New To-do…"
+msgstr "Nowe zadanie"
 
 #: kontactplugin/korganizer/todoplugin.cpp:43
 #, kde-format
@@ -3614,8 +3659,9 @@ msgid "Other Options"
 msgstr "Inne ustawienia"
 
 #: prefs/kprefsdialog.cpp:234
-#, kde-format
-msgid "Choose..."
+#, fuzzy, kde-format
+#| msgid "Choose..."
+msgid "Choose…"
 msgstr "Wybierz..."
 
 #: prefs/kprefsdialog.cpp:765
@@ -4966,9 +5012,11 @@ msgstr "Pokaż tylko wybrane"
 
 #. i18n: ectx: property (text), widget (QPushButton, mCatEditButton)
 #: ui/filteredit_base.ui:301
-#, kde-format
-msgid "Change..."
-msgstr "Zmień..."
+#, fuzzy, kde-format
+#| msgctxt "@action:button"
+#| msgid "&Change"
+msgid "Change…"
+msgstr "&Zmień"
 
 #. i18n: ectx: property (whatsThis), widget (QCheckBox, mHideTodosNotAssignedToMeCheck)
 #: ui/filteredit_base.ui:315
@@ -5863,6 +5911,55 @@ msgstr "%1"
 msgctxt "4 digit year"
 msgid "%1"
 msgstr "%1"
+
+#~ msgid "Import &Calendar..."
+#~ msgstr "Zaimportuj &kalendarz..."
+
+#~ msgid "New E&vent..."
+#~ msgstr "Nowe wy&darzenie..."
+
+#~ msgid "New &To-do..."
+#~ msgstr "Nowe &zadanie..."
+
+#~ msgid "New &Journal..."
+#~ msgstr "Nowy &dziennik..."
+
+#~ msgid "&Edit..."
+#~ msgstr "&Edytuj..."
+
+#~ msgid "&Edit To-do..."
+#~ msgstr "&Edytuj zadanie..."
+
+#~ msgctxt ""
+#~ "@info/plain Displayed grayed-out inside the textbox, verb to search"
+#~ msgid "Search..."
+#~ msgstr "Szukaj..."
+
+#~ msgid "Edit..."
+#~ msgstr "Edytuj..."
+
+#~ msgctxt "@action:inmenu"
+#~ msgid "&Edit..."
+#~ msgstr "&Edytuj..."
+
+#~ msgctxt "@action:inmenu"
+#~ msgid "&Print..."
+#~ msgstr "Wydr&ukuj..."
+
+#~ msgctxt "@action:inmenu"
+#~ msgid "New Journal..."
+#~ msgstr "Nowy dziennik..."
+
+#~ msgctxt "@action:inmenu"
+#~ msgid "New Event..."
+#~ msgstr "Nowe wydarzenie..."
+
+#~ msgctxt "@action:inmenu"
+#~ msgid "New To-do..."
+#~ msgstr "Nowe zadanie..."
+
+#~ msgid "Change..."
+#~ msgstr "Zmień..."
 
 #~ msgid "Day begins at"
 #~ msgstr "Dzień zaczyna się o"
@@ -9194,9 +9291,6 @@ msgstr "%1"
 #~ msgid "Delete this journal entry"
 #~ msgstr "Usuń ten wpis dziennika"
 
-#~ msgid "&Print"
-#~ msgstr "Druku&j"
-
 #~ msgid "Print this journal entry"
 #~ msgstr "Wydrukuj ten wpis dziennika"
 
@@ -10245,10 +10339,6 @@ msgstr "%1"
 #~ msgid "Rec&urrence"
 #~ msgstr "Po&wtarzanie"
 
-#~ msgctxt "@title:window"
-#~ msgid "New To-do"
-#~ msgstr "Nowe zadanie"
-
 #~ msgctxt "@info"
 #~ msgid "Template does not contain a valid to-do."
 #~ msgstr "Szablon nie zawiera poprawnego zadania."
@@ -10722,10 +10812,6 @@ msgstr "%1"
 #~ msgstr ""
 #~ "Karta Wolny/zajęty pozwala na zobaczenie czy inni uczestnicy mają wolny "
 #~ "czas w czasie Twojego zdarzenia."
-
-#~ msgctxt "@title:window"
-#~ msgid "New Event"
-#~ msgstr "Nowe zdarzenie"
 
 #~ msgctxt "@info"
 #~ msgid ""
@@ -11525,10 +11611,6 @@ msgstr "%1"
 #~ "zadania."
 
 #~ msgctxt "@action:button"
-#~ msgid "&Change"
-#~ msgstr "&Zmień"
-
-#~ msgctxt "@action:button"
 #~ msgid "&Delete"
 #~ msgstr "&Usuń"
 
@@ -11756,10 +11838,6 @@ msgstr "%1"
 #~ msgctxt "@title:window"
 #~ msgid "Edit Journal: %1"
 #~ msgstr "Edytuj dziennik: %1"
-
-#~ msgctxt "@title:window"
-#~ msgid "New Journal"
-#~ msgstr "Nowy dziennik"
 
 #~ msgctxt "@info"
 #~ msgid "Template does not contain a valid journal."
@@ -13211,12 +13289,6 @@ msgstr "%1"
 #~| msgid "Atte&ndees"
 #~ msgid "Attendees:"
 #~ msgstr "Uczest&nicy"
-
-#, fuzzy
-#~| msgid "&Edit To-do..."
-#~ msgctxt "@title:window"
-#~ msgid "Edit To-do"
-#~ msgstr "&Edytuj zadanie..."
 
 #~ msgid "categories-view"
 #~ msgstr "widok-kategorii"

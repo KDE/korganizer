@@ -9,7 +9,7 @@ msgid ""
 msgstr ""
 "Project-Id-Version: korganizer\n"
 "Report-Msgid-Bugs-To: https://bugs.kde.org\n"
-"POT-Creation-Date: 2024-04-12 00:38+0000\n"
+"POT-Creation-Date: 2024-05-12 00:39+0000\n"
 "PO-Revision-Date: 2010-01-22 22:15+0200\n"
 "Last-Translator: Viesturs Zarins <viesturs.zarins@mii.lu.lv>\n"
 "Language-Team: Latvian <locale@laka.lv>\n"
@@ -297,9 +297,10 @@ msgid "Hide menu bar"
 msgstr "Laika josla"
 
 #: actionmanager.cpp:243
-#, kde-format
-msgid "Import &Calendar..."
-msgstr "Importēt &kalendāru..."
+#, fuzzy, kde-format
+#| msgid "Import Calendar"
+msgid "Import &Calendar…"
+msgstr "Importēt kalendāru"
 
 #: actionmanager.cpp:244
 #, fuzzy, kde-format
@@ -331,7 +332,7 @@ msgstr ""
 #: actionmanager.cpp:253
 #, fuzzy, kde-format
 #| msgid "New Calendar"
-msgid "Get New Calendars..."
+msgid "Get New Calendars…"
 msgstr "Jauns kalendārs"
 
 #: actionmanager.cpp:254
@@ -368,7 +369,7 @@ msgstr "Lejupielādētie notikumi tika pievienoti aktīvajam kalendāram."
 #: actionmanager.cpp:305
 #, fuzzy, kde-format
 #| msgid "Import &Calendar..."
-msgid "Export as &iCalendar..."
+msgid "Export as &iCalendar…"
 msgstr "Importēt &kalendāru..."
 
 #: actionmanager.cpp:306
@@ -394,7 +395,7 @@ msgstr ""
 #: actionmanager.cpp:314
 #, fuzzy, kde-format
 #| msgid "Archive O&ld Entries..."
-msgid "Archive O&ld Incidences..."
+msgid "Archive O&ld Incidences…"
 msgstr "Arhivēt &vecos ierakstus..."
 
 #: actionmanager.cpp:315
@@ -855,9 +856,11 @@ msgid "&Week"
 msgstr "&Nedēļa"
 
 #: actionmanager.cpp:566 kodaymatrix.cpp:484
-#, kde-format
-msgid "New E&vent..."
-msgstr "Jauns &notikums..."
+#, fuzzy, kde-format
+#| msgctxt "@title:window"
+#| msgid "New Event"
+msgid "New E&vent…"
+msgstr "Jauns notikums"
 
 #: actionmanager.cpp:567
 #, fuzzy, kde-format
@@ -882,9 +885,11 @@ msgid ""
 msgstr ""
 
 #: actionmanager.cpp:576 kodaymatrix.cpp:485
-#, kde-format
-msgid "New &To-do..."
-msgstr "Jauns &darbs..."
+#, fuzzy, kde-format
+#| msgctxt "@title:window"
+#| msgid "New To-do"
+msgid "New &To-do…"
+msgstr "Jauns darbs"
 
 #: actionmanager.cpp:577
 #, fuzzy, kde-format
@@ -909,14 +914,17 @@ msgid ""
 msgstr ""
 
 #: actionmanager.cpp:587
-#, kde-format
-msgid "New Su&b-to-do..."
+#, fuzzy, kde-format
+#| msgid "New Su&b-to-do..."
+msgid "New Su&b-to-do…"
 msgstr "Jauns a&pakšdarbs..."
 
 #: actionmanager.cpp:595 kodaymatrix.cpp:486
-#, kde-format
-msgid "New &Journal..."
-msgstr "&Jauns dienasgrāmatas ieraksts..."
+#, fuzzy, kde-format
+#| msgctxt "@title:window"
+#| msgid "New Journal"
+msgid "New &Journal…"
+msgstr "Jauns dienasgrāmatas ieraksts"
 
 #: actionmanager.cpp:596
 #, fuzzy, kde-format
@@ -942,7 +950,7 @@ msgstr ""
 #, fuzzy, kde-format
 #| msgctxt "@action:button"
 #| msgid "Configure &Plugin..."
-msgid "Configure View..."
+msgid "Configure View…"
 msgstr "Konfigurēt s&praudni..."
 
 #: actionmanager.cpp:604
@@ -979,9 +987,10 @@ msgid "&Show"
 msgstr "&Rādīt"
 
 #: actionmanager.cpp:618 actionmanager.cpp:1303 actionmanager.cpp:1342
-#, kde-format
-msgid "&Edit..."
-msgstr "R&ediģēt..."
+#, fuzzy, kde-format
+#| msgid "&Edit"
+msgid "&Edit…"
+msgstr "R&ediģēt"
 
 #: actionmanager.cpp:627
 #, kde-format
@@ -993,8 +1002,9 @@ msgstr "&Padarīt apakšdarbu neatkarīgu"
 #. mACollection, "activate_alarm" );
 #. ************************* SCHEDULE MENU *******************************
 #: actionmanager.cpp:639
-#, kde-format
-msgid "&Publish Item Information..."
+#, fuzzy, kde-format
+#| msgid "&Publish Item Information..."
+msgid "&Publish Item Information…"
 msgstr "&Publicēt ierakstu..."
 
 #: actionmanager.cpp:646
@@ -1024,13 +1034,15 @@ msgid "Request Chan&ge"
 msgstr "Pieprasīt iz&maiņas"
 
 #: actionmanager.cpp:686
-#, kde-format
-msgid "&Mail Free Busy Information..."
+#, fuzzy, kde-format
+#| msgid "&Mail Free Busy Information..."
+msgid "&Mail Free Busy Information…"
 msgstr "&Nosūtīt brīvs/aizņemts informāciju..."
 
 #: actionmanager.cpp:691
-#, kde-format
-msgid "&Send as iCalendar..."
+#, fuzzy, kde-format
+#| msgid "&Send as iCalendar..."
+msgid "&Send as iCalendar…"
 msgstr "&Sūtīt kā iCalendar..."
 
 #: actionmanager.cpp:698
@@ -1064,25 +1076,27 @@ msgid "Show Calendar Manager"
 msgstr "Rādīt kalendāru pārvaldnieku"
 
 #: actionmanager.cpp:749
-#, kde-format
-msgid "Configure &Date && Time..."
+#, fuzzy, kde-format
+#| msgid "Configure &Date && Time..."
+msgid "Configure &Date && Time…"
 msgstr "Konfigurēt &datumu un laiku..."
 
 #: actionmanager.cpp:753
-#, kde-format
-msgid "Manage View &Filters..."
+#, fuzzy, kde-format
+#| msgid "Manage View &Filters..."
+msgid "Manage View &Filters…"
 msgstr "Pārvaldīt skata &filtrus..."
 
 #: actionmanager.cpp:757
 #, fuzzy, kde-format
 #| msgid "Manage C&ategories..."
-msgid "Manage T&ags..."
+msgid "Manage T&ags…"
 msgstr "Pārvaldīt k&ategorijas..."
 
 #: actionmanager.cpp:765
 #, fuzzy, kde-format
 #| msgid "&Configure Calendar..."
-msgid "&Configure KOrganizer..."
+msgid "&Configure KOrganizer…"
 msgstr "&Konfigurēt kalendāru..."
 
 #: actionmanager.cpp:843
@@ -1165,8 +1179,9 @@ msgid "&Show Event"
 msgstr "&Rādīt notikumu"
 
 #: actionmanager.cpp:1264
-#, kde-format
-msgid "&Edit Event..."
+#, fuzzy, kde-format
+#| msgid "&Edit Event..."
+msgid "&Edit Event…"
 msgstr "R&ediģēt notikumu..."
 
 #: actionmanager.cpp:1267
@@ -1180,8 +1195,9 @@ msgid "&Show To-do"
 msgstr "&Rādīt darbu"
 
 #: actionmanager.cpp:1278 kontactplugin/korganizer/todosummarywidget.cpp:321
-#, kde-format
-msgid "&Edit To-do..."
+#, fuzzy, kde-format
+#| msgid "&Edit To-do..."
+msgid "&Edit To-do…"
 msgstr "R&ediģēt darbu..."
 
 #: actionmanager.cpp:1281 kontactplugin/korganizer/todosummarywidget.cpp:323
@@ -1309,7 +1325,7 @@ msgstr ""
 #| msgctxt "@label in QuickSearchLine"
 #| msgid "Search"
 msgctxt "@info/plain Displayed grayed-out inside the textbox, verb to search"
-msgid "Search..."
+msgid "Search…"
 msgstr "Meklēt"
 
 #: akonadicollectionview.cpp:495 manageshowcollectionproperties.cpp:76
@@ -1323,7 +1339,7 @@ msgstr "%1 īpašības"
 #: akonadicollectionview.cpp:507
 #, kde-format
 msgctxt "@action:inmenu"
-msgid "&Set Folder Color..."
+msgid "&Set Folder Color…"
 msgstr ""
 
 #: akonadicollectionview.cpp:513
@@ -1333,27 +1349,27 @@ msgctxt "@action:inmenu"
 msgid "Set as &Default Folder"
 msgstr "Izmantot par &noklusēto kalendāru"
 
-#: akonadicollectionview.cpp:519
+#: akonadicollectionview.cpp:518
 #, kde-format
 msgctxt "@action:inmenu"
-msgid "Serverside Subscription..."
+msgid "Serverside Subscription…"
 msgstr ""
 
-#: akonadicollectionview.cpp:564
+#: akonadicollectionview.cpp:563
 #, fuzzy, kde-format
 #| msgid "<qt>Do you really want to remove the calendar <b>%1</b>?</qt>"
 msgctxt "@info"
 msgid "Do you really want replace your current default calendar with \"%1\"?"
 msgstr "<qt>Vai tiešām vēlaties izņemt šo kalendāru <b>%1</b>?</qt>"
 
-#: akonadicollectionview.cpp:565
+#: akonadicollectionview.cpp:564
 #, fuzzy, kde-format
 #| msgid "Use as &Default Calendar"
 msgctxt "@title:window"
 msgid "Replace Default Calendar?"
 msgstr "Izmantot par &noklusēto kalendāru"
 
-#: akonadicollectionview.cpp:702
+#: akonadicollectionview.cpp:701
 #, fuzzy, kde-format
 #| msgctxt "@info:tooltip"
 #| msgid "Add calendar"
@@ -1361,14 +1377,14 @@ msgctxt "@title:window"
 msgid "Add Calendar"
 msgstr "Pievienot kalendāru"
 
-#: akonadicollectionview.cpp:744
+#: akonadicollectionview.cpp:743
 #, fuzzy, kde-format
 #| msgid "<qt>Do you really want to remove the calendar <b>%1</b>?</qt>"
 msgctxt "@info"
 msgid "Do you really want to delete calendar %1?"
 msgstr "<qt>Vai tiešām vēlaties izņemt šo kalendāru <b>%1</b>?</qt>"
 
-#: akonadicollectionview.cpp:745
+#: akonadicollectionview.cpp:744
 #, fuzzy, kde-format
 #| msgid "Default Calendar"
 msgctxt "@title:window"
@@ -2028,9 +2044,10 @@ msgid "Event Viewer"
 msgstr "Notikumu skatītājs"
 
 #: dialog/koeventviewerdialog.cpp:40
-#, kde-format
-msgid "Edit..."
-msgstr "Rediģēt..."
+#, fuzzy, kde-format
+#| msgid "&Edit"
+msgid "Edit…"
+msgstr "R&ediģēt"
 
 #: dialog/koeventviewerdialog.cpp:41
 #, kde-format
@@ -2158,10 +2175,10 @@ msgstr "&Rādīt"
 
 #: koeventpopupmenu.cpp:45
 #, fuzzy, kde-format
-#| msgid "&Edit..."
+#| msgid "&Edit"
 msgctxt "@action:inmenu"
-msgid "&Edit..."
-msgstr "R&ediģēt..."
+msgid "&Edit…"
+msgstr "R&ediģēt"
 
 #: koeventpopupmenu.cpp:47
 #, fuzzy, kde-format
@@ -2172,16 +2189,16 @@ msgstr "&Dzēst"
 
 #: koeventpopupmenu.cpp:51
 #, fuzzy, kde-format
-#| msgid "&Print..."
+#| msgid "&Print"
 msgctxt "@action:inmenu"
-msgid "&Print..."
-msgstr "&Drukāt..."
+msgid "&Print…"
+msgstr "&Drukāt"
 
 #: koeventpopupmenu.cpp:53
 #, fuzzy, kde-format
 #| msgid "Print Previe&w..."
 msgctxt "@action:inmenu"
-msgid "Print Previe&w..."
+msgid "Print Previe&w…"
 msgstr "Drukas priekšapska&te..."
 
 #: koeventpopupmenu.cpp:74
@@ -2254,14 +2271,14 @@ msgstr "&Pārslēgt atgādinājumu"
 #, fuzzy, kde-format
 #| msgid "&Dissociate From Recurrence..."
 msgctxt "@action:inmenu"
-msgid "&Dissociate From Recurrence..."
+msgid "&Dissociate From Recurrence…"
 msgstr "&Nošķirt no atkārtošanās..."
 
 #: koeventpopupmenu.cpp:137
 #, fuzzy, kde-format
 #| msgid "&Send as iCalendar..."
 msgctxt "@action:inmenu"
-msgid "Send as iCalendar..."
+msgid "Send as iCalendar…"
 msgstr "&Sūtīt kā iCalendar..."
 
 #: koeventpopupmenu.cpp:187
@@ -2516,7 +2533,7 @@ msgstr[2] ""
 #, fuzzy, kde-format
 #| msgctxt "incidence category: appointment"
 #| msgid "Appointment"
-msgid "&Edit Appointment..."
+msgid "&Edit Appointment…"
 msgstr "Tikšanās"
 
 #: kontactplugin/korganizer/apptsummarywidget.cpp:242
@@ -2535,10 +2552,11 @@ msgstr "Redīģē notikumu : %1"
 
 #: kontactplugin/korganizer/journalplugin.cpp:28
 #, fuzzy, kde-format
-#| msgid "New &Journal..."
+#| msgctxt "@title:window"
+#| msgid "New Journal"
 msgctxt "@action:inmenu"
-msgid "New Journal..."
-msgstr "&Jauns dienasgrāmatas ieraksts..."
+msgid "New Journal…"
+msgstr "Jauns dienasgrāmatas ieraksts"
 
 #: kontactplugin/korganizer/journalplugin.cpp:31
 #, fuzzy, kde-format
@@ -2568,10 +2586,11 @@ msgstr[2] "%1 dienu"
 
 #: kontactplugin/korganizer/korganizerplugin.cpp:44
 #, fuzzy, kde-format
-#| msgid "New E&vent..."
+#| msgctxt "@title:window"
+#| msgid "New Event"
 msgctxt "@action:inmenu"
-msgid "New Event..."
-msgstr "Jauns &notikums..."
+msgid "New Event…"
+msgstr "Jauns notikums"
 
 #: kontactplugin/korganizer/korganizerplugin.cpp:47
 #, fuzzy, kde-format
@@ -2699,10 +2718,11 @@ msgstr "Pārdarīt (%1)"
 
 #: kontactplugin/korganizer/todoplugin.cpp:40
 #, fuzzy, kde-format
-#| msgid "New &To-do..."
+#| msgctxt "@title:window"
+#| msgid "New To-do"
 msgctxt "@action:inmenu"
-msgid "New To-do..."
-msgstr "Jauns &darbs..."
+msgid "New To-do…"
+msgstr "Jauns darbs"
 
 #: kontactplugin/korganizer/todoplugin.cpp:43
 #, fuzzy, kde-format
@@ -3828,7 +3848,7 @@ msgstr "Citas opcijas"
 #: prefs/kprefsdialog.cpp:234
 #, fuzzy, kde-format
 #| msgid "Change..."
-msgid "Choose..."
+msgid "Choose…"
 msgstr "Mainīt..."
 
 #: prefs/kprefsdialog.cpp:765
@@ -5236,9 +5256,11 @@ msgstr "Rādīt tikai izvēlētos"
 
 #. i18n: ectx: property (text), widget (QPushButton, mCatEditButton)
 #: ui/filteredit_base.ui:301
-#, kde-format
-msgid "Change..."
-msgstr "Mainīt..."
+#, fuzzy, kde-format
+#| msgctxt "@action:button"
+#| msgid "&Change"
+msgid "Change…"
+msgstr "&Mainīt"
 
 #. i18n: ectx: property (whatsThis), widget (QCheckBox, mHideTodosNotAssignedToMeCheck)
 #: ui/filteredit_base.ui:315
@@ -6180,6 +6202,68 @@ msgstr "%1"
 msgctxt "4 digit year"
 msgid "%1"
 msgstr "%1"
+
+#~ msgid "Import &Calendar..."
+#~ msgstr "Importēt &kalendāru..."
+
+#~ msgid "New E&vent..."
+#~ msgstr "Jauns &notikums..."
+
+#~ msgid "New &To-do..."
+#~ msgstr "Jauns &darbs..."
+
+#~ msgid "New &Journal..."
+#~ msgstr "&Jauns dienasgrāmatas ieraksts..."
+
+#~ msgid "&Edit..."
+#~ msgstr "R&ediģēt..."
+
+#~ msgid "&Edit To-do..."
+#~ msgstr "R&ediģēt darbu..."
+
+#, fuzzy
+#~| msgctxt "@label in QuickSearchLine"
+#~| msgid "Search"
+#~ msgctxt ""
+#~ "@info/plain Displayed grayed-out inside the textbox, verb to search"
+#~ msgid "Search..."
+#~ msgstr "Meklēt"
+
+#~ msgid "Edit..."
+#~ msgstr "Rediģēt..."
+
+#, fuzzy
+#~| msgid "&Edit..."
+#~ msgctxt "@action:inmenu"
+#~ msgid "&Edit..."
+#~ msgstr "R&ediģēt..."
+
+#, fuzzy
+#~| msgid "&Print..."
+#~ msgctxt "@action:inmenu"
+#~ msgid "&Print..."
+#~ msgstr "&Drukāt..."
+
+#, fuzzy
+#~| msgid "New &Journal..."
+#~ msgctxt "@action:inmenu"
+#~ msgid "New Journal..."
+#~ msgstr "&Jauns dienasgrāmatas ieraksts..."
+
+#, fuzzy
+#~| msgid "New E&vent..."
+#~ msgctxt "@action:inmenu"
+#~ msgid "New Event..."
+#~ msgstr "Jauns &notikums..."
+
+#, fuzzy
+#~| msgid "New &To-do..."
+#~ msgctxt "@action:inmenu"
+#~ msgid "New To-do..."
+#~ msgstr "Jauns &darbs..."
+
+#~ msgid "Change..."
+#~ msgstr "Mainīt..."
 
 #~ msgid "Day begins at"
 #~ msgstr "Diena sākas pulkst."
@@ -9368,9 +9452,6 @@ msgstr "%1"
 #~ msgid "Delete this journal entry"
 #~ msgstr "Dzēst šo dienasgrāmatas ierakstu"
 
-#~ msgid "&Print"
-#~ msgstr "&Drukāt"
-
 #~ msgid "Print this journal entry"
 #~ msgstr "Drukāt šo dienasgrāmatas ierakstu"
 
@@ -10374,10 +10455,6 @@ msgstr "%1"
 #~ msgid "Rec&urrence"
 #~ msgstr "Atkā&rtošanās"
 
-#~ msgctxt "@title:window"
-#~ msgid "New To-do"
-#~ msgstr "Jauns darbs"
-
 #~ msgctxt "@info"
 #~ msgid "Template does not contain a valid to-do."
 #~ msgstr "Sagatave nesatur derīgu darbu."
@@ -10846,10 +10923,6 @@ msgstr "%1"
 #~ msgstr ""
 #~ "Brīvs/aizņemts cilne ļauj apskatīt vai citi dalībnieki notikuma laikā ir "
 #~ "brīvi vai aizņemti."
-
-#~ msgctxt "@title:window"
-#~ msgid "New Event"
-#~ msgstr "Jauns notikums"
 
 #, fuzzy
 #~| msgid ""
@@ -11678,10 +11751,6 @@ msgstr "%1"
 #~ msgstr "Pievienot šo datumu kā izņēmumu notikuma vai darba atkārtošanā."
 
 #~ msgctxt "@action:button"
-#~ msgid "&Change"
-#~ msgstr "&Mainīt"
-
-#~ msgctxt "@action:button"
 #~ msgid "&Delete"
 #~ msgstr "&Dzēst"
 
@@ -11905,10 +11974,6 @@ msgstr "%1"
 #~ msgctxt "@title:window"
 #~ msgid "Edit Journal: %1"
 #~ msgstr "Rediģē dienasgrāmatas ierakstu: %1"
-
-#~ msgctxt "@title:window"
-#~ msgid "New Journal"
-#~ msgstr "Jauns dienasgrāmatas ieraksts"
 
 #~ msgctxt "@info"
 #~ msgid "Template does not contain a valid journal."
@@ -13414,12 +13479,6 @@ msgstr "%1"
 #~| msgid "Atte&ndees"
 #~ msgid "Attendees:"
 #~ msgstr "Dalīb&nieki"
-
-#, fuzzy
-#~| msgid "&Edit To-do..."
-#~ msgctxt "@title:window"
-#~ msgid "Edit To-do"
-#~ msgstr "R&ediģēt darbu..."
 
 #~ msgid "categories-view"
 #~ msgstr "kategoriju-skats"

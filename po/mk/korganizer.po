@@ -7,7 +7,7 @@ msgid ""
 msgstr ""
 "Project-Id-Version: korganizer\n"
 "Report-Msgid-Bugs-To: https://bugs.kde.org\n"
-"POT-Creation-Date: 2024-04-12 00:38+0000\n"
+"POT-Creation-Date: 2024-05-12 00:39+0000\n"
 "PO-Revision-Date: 2007-02-28 14:24+0100\n"
 "Last-Translator: Bozidar Proevski <bobibobi@freemail.com.mk>\n"
 "Language-Team: Macedonian <mkde-l10n@lists.sourceforge.net>\n"
@@ -290,9 +290,10 @@ msgid "Hide menu bar"
 msgstr "Време"
 
 #: actionmanager.cpp:243
-#, kde-format
-msgid "Import &Calendar..."
-msgstr "Внеси &календар..."
+#, fuzzy, kde-format
+#| msgid "Import Calendar"
+msgid "Import &Calendar…"
+msgstr "Внесете календар"
 
 #: actionmanager.cpp:244
 #, fuzzy, kde-format
@@ -319,7 +320,7 @@ msgstr ""
 #: actionmanager.cpp:253
 #, fuzzy, kde-format
 #| msgid "New Calendar"
-msgid "Get New Calendars..."
+msgid "Get New Calendars…"
 msgstr "Нов календар"
 
 #: actionmanager.cpp:254
@@ -356,7 +357,7 @@ msgstr ""
 #: actionmanager.cpp:305
 #, fuzzy, kde-format
 #| msgid "Import &Calendar..."
-msgid "Export as &iCalendar..."
+msgid "Export as &iCalendar…"
 msgstr "Внеси &календар..."
 
 #: actionmanager.cpp:306
@@ -382,7 +383,7 @@ msgstr ""
 #: actionmanager.cpp:314
 #, fuzzy, kde-format
 #| msgid "Archive O&ld Entries..."
-msgid "Archive O&ld Incidences..."
+msgid "Archive O&ld Incidences…"
 msgstr "Архивирај ги &старите ставки..."
 
 #: actionmanager.cpp:315
@@ -827,9 +828,10 @@ msgid "&Week"
 msgstr "&Недела"
 
 #: actionmanager.cpp:566 kodaymatrix.cpp:484
-#, kde-format
-msgid "New E&vent..."
-msgstr "Нов &настан..."
+#, fuzzy, kde-format
+#| msgid "New Event"
+msgid "New E&vent…"
+msgstr "Нов настан"
 
 #: actionmanager.cpp:567
 #, fuzzy, kde-format
@@ -854,8 +856,9 @@ msgid ""
 msgstr ""
 
 #: actionmanager.cpp:576 kodaymatrix.cpp:485
-#, kde-format
-msgid "New &To-do..."
+#, fuzzy, kde-format
+#| msgid "New &To-do..."
+msgid "New &To-do…"
 msgstr "Нова &задача..."
 
 #: actionmanager.cpp:577
@@ -881,13 +884,15 @@ msgid ""
 msgstr ""
 
 #: actionmanager.cpp:587
-#, kde-format
-msgid "New Su&b-to-do..."
+#, fuzzy, kde-format
+#| msgid "New Su&b-to-do..."
+msgid "New Su&b-to-do…"
 msgstr "Нова по&дзадача..."
 
 #: actionmanager.cpp:595 kodaymatrix.cpp:486
-#, kde-format
-msgid "New &Journal..."
+#, fuzzy, kde-format
+#| msgid "New &Journal..."
+msgid "New &Journal…"
 msgstr "Нов &дневник..."
 
 #: actionmanager.cpp:596
@@ -913,7 +918,7 @@ msgstr ""
 #: actionmanager.cpp:603
 #, fuzzy, kde-format
 #| msgid "&Configure..."
-msgid "Configure View..."
+msgid "Configure View…"
 msgstr "&Конфигурирај..."
 
 #: actionmanager.cpp:604
@@ -950,8 +955,8 @@ msgid "&Show"
 msgstr "Пр&икажи"
 
 #: actionmanager.cpp:618 actionmanager.cpp:1303 actionmanager.cpp:1342
-#, kde-format
-msgid "&Edit..."
+#, fuzzy, kde-format
+msgid "&Edit…"
 msgstr "&Уреди..."
 
 #: actionmanager.cpp:627
@@ -965,7 +970,7 @@ msgstr "Направи ја подзадачата &независна"
 #. ************************* SCHEDULE MENU *******************************
 #: actionmanager.cpp:639
 #, kde-format
-msgid "&Publish Item Information..."
+msgid "&Publish Item Information…"
 msgstr ""
 
 #: actionmanager.cpp:646
@@ -996,13 +1001,13 @@ msgstr "Барај &промена"
 
 #: actionmanager.cpp:686
 #, fuzzy, kde-format
-msgid "&Mail Free Busy Information..."
+msgid "&Mail Free Busy Information…"
 msgstr "Уредете ја локацијата за „слободно/зафатено“"
 
 #: actionmanager.cpp:691
 #, fuzzy, kde-format
 #| msgid "&iCalendar..."
-msgid "&Send as iCalendar..."
+msgid "&Send as iCalendar…"
 msgstr "&iCalendar..."
 
 #: actionmanager.cpp:698
@@ -1038,25 +1043,27 @@ msgid "Show Calendar Manager"
 msgstr "Нов календар"
 
 #: actionmanager.cpp:749
-#, kde-format
-msgid "Configure &Date && Time..."
+#, fuzzy, kde-format
+#| msgid "Configure &Date && Time..."
+msgid "Configure &Date && Time…"
 msgstr "Конфигурирај &датум и време..."
 
 #: actionmanager.cpp:753
-#, kde-format
-msgid "Manage View &Filters..."
+#, fuzzy, kde-format
+#| msgid "Manage View &Filters..."
+msgid "Manage View &Filters…"
 msgstr "Менаџирај &филтри за преглед..."
 
 #: actionmanager.cpp:757
 #, fuzzy, kde-format
 #| msgid "Manage C&ategories..."
-msgid "Manage T&ags..."
+msgid "Manage T&ags…"
 msgstr "Менаџирај &категории..."
 
 #: actionmanager.cpp:765
 #, fuzzy, kde-format
 #| msgid "&Configure Calendar..."
-msgid "&Configure KOrganizer..."
+msgid "&Configure KOrganizer…"
 msgstr "&Конфигурирај календар..."
 
 #: actionmanager.cpp:843
@@ -1136,8 +1143,9 @@ msgid "&Show Event"
 msgstr "Прикажи &настан"
 
 #: actionmanager.cpp:1264
-#, kde-format
-msgid "&Edit Event..."
+#, fuzzy, kde-format
+#| msgid "&Edit Event..."
+msgid "&Edit Event…"
 msgstr "Ур&еди настан..."
 
 #: actionmanager.cpp:1267
@@ -1151,9 +1159,10 @@ msgid "&Show To-do"
 msgstr ""
 
 #: actionmanager.cpp:1278 kontactplugin/korganizer/todosummarywidget.cpp:321
-#, kde-format
-msgid "&Edit To-do..."
-msgstr ""
+#, fuzzy, kde-format
+#| msgid "To-do:"
+msgid "&Edit To-do…"
+msgstr "Задача:"
 
 #: actionmanager.cpp:1281 kontactplugin/korganizer/todosummarywidget.cpp:323
 #, kde-format
@@ -1277,7 +1286,7 @@ msgstr ""
 #: akonadicollectionview.cpp:411
 #, fuzzy, kde-format
 msgctxt "@info/plain Displayed grayed-out inside the textbox, verb to search"
-msgid "Search..."
+msgid "Search…"
 msgstr "Барај во"
 
 #: akonadicollectionview.cpp:495 manageshowcollectionproperties.cpp:76
@@ -1290,7 +1299,7 @@ msgstr "Уредете филтри за календарот"
 #: akonadicollectionview.cpp:507
 #, kde-format
 msgctxt "@action:inmenu"
-msgid "&Set Folder Color..."
+msgid "&Set Folder Color…"
 msgstr ""
 
 #: akonadicollectionview.cpp:513
@@ -1300,41 +1309,41 @@ msgctxt "@action:inmenu"
 msgid "Set as &Default Folder"
 msgstr "Користи како стан&дарден календар"
 
-#: akonadicollectionview.cpp:519
+#: akonadicollectionview.cpp:518
 #, kde-format
 msgctxt "@action:inmenu"
-msgid "Serverside Subscription..."
+msgid "Serverside Subscription…"
 msgstr ""
 
-#: akonadicollectionview.cpp:564
+#: akonadicollectionview.cpp:563
 #, fuzzy, kde-format
 #| msgid "<qt>Do you really want to delete the resource <b>%1</b>?</qt>"
 msgctxt "@info"
 msgid "Do you really want replace your current default calendar with \"%1\"?"
 msgstr "<qt>Дали навистина сакате да го избришете ресурсот <b>%1</b>?</qt>"
 
-#: akonadicollectionview.cpp:565
+#: akonadicollectionview.cpp:564
 #, fuzzy, kde-format
 #| msgid "Use as &Default Calendar"
 msgctxt "@title:window"
 msgid "Replace Default Calendar?"
 msgstr "Користи како стан&дарден календар"
 
-#: akonadicollectionview.cpp:702
+#: akonadicollectionview.cpp:701
 #, fuzzy, kde-format
 #| msgid "Add as new calendar"
 msgctxt "@title:window"
 msgid "Add Calendar"
 msgstr "Додај како нов календар"
 
-#: akonadicollectionview.cpp:744
+#: akonadicollectionview.cpp:743
 #, fuzzy, kde-format
 #| msgid "<qt>Do you really want to delete the resource <b>%1</b>?</qt>"
 msgctxt "@info"
 msgid "Do you really want to delete calendar %1?"
 msgstr "<qt>Дали навистина сакате да го избришете ресурсот <b>%1</b>?</qt>"
 
-#: akonadicollectionview.cpp:745
+#: akonadicollectionview.cpp:744
 #, fuzzy, kde-format
 #| msgid "Default Calendar"
 msgctxt "@title:window"
@@ -1960,9 +1969,8 @@ msgstr "Прегледник на настани"
 
 #: dialog/koeventviewerdialog.cpp:40
 #, fuzzy, kde-format
-#| msgid "Edit..."
-msgid "Edit..."
-msgstr "Уреди..."
+msgid "Edit…"
+msgstr "Уреди %1"
 
 #: dialog/koeventviewerdialog.cpp:41
 #, fuzzy, kde-format
@@ -2078,9 +2086,8 @@ msgstr "Пр&икажи"
 
 #: koeventpopupmenu.cpp:45
 #, fuzzy, kde-format
-#| msgid "&Edit..."
 msgctxt "@action:inmenu"
-msgid "&Edit..."
+msgid "&Edit…"
 msgstr "&Уреди..."
 
 #: koeventpopupmenu.cpp:47
@@ -2092,13 +2099,13 @@ msgstr "Избриши %1"
 #: koeventpopupmenu.cpp:51
 #, fuzzy, kde-format
 msgctxt "@action:inmenu"
-msgid "&Print..."
-msgstr "&Уреди..."
+msgid "&Print…"
+msgstr "Испечати &ден"
 
 #: koeventpopupmenu.cpp:53
 #, fuzzy, kde-format
 msgctxt "@action:inmenu"
-msgid "Print Previe&w..."
+msgid "Print Previe&w…"
 msgstr "&Уреди..."
 
 #: koeventpopupmenu.cpp:74
@@ -2166,14 +2173,14 @@ msgstr "Смени по&тсетник"
 #, fuzzy, kde-format
 #| msgid "&Enable recurrence"
 msgctxt "@action:inmenu"
-msgid "&Dissociate From Recurrence..."
+msgid "&Dissociate From Recurrence…"
 msgstr "Овозможи повторувањ&е"
 
 #: koeventpopupmenu.cpp:137
 #, fuzzy, kde-format
 #| msgid "&iCalendar..."
 msgctxt "@action:inmenu"
-msgid "Send as iCalendar..."
+msgid "Send as iCalendar…"
 msgstr "&iCalendar..."
 
 #: koeventpopupmenu.cpp:187
@@ -2410,7 +2417,7 @@ msgstr[2] ""
 
 #: kontactplugin/korganizer/apptsummarywidget.cpp:240
 #, fuzzy, kde-format
-msgid "&Edit Appointment..."
+msgid "&Edit Appointment…"
 msgstr "Закажан состанок"
 
 #: kontactplugin/korganizer/apptsummarywidget.cpp:242
@@ -2428,7 +2435,7 @@ msgstr "Уредете настан"
 #, fuzzy, kde-format
 #| msgid "New &Journal..."
 msgctxt "@action:inmenu"
-msgid "New Journal..."
+msgid "New Journal…"
 msgstr "Нов &дневник..."
 
 #: kontactplugin/korganizer/journalplugin.cpp:31
@@ -2459,10 +2466,10 @@ msgstr[2] "%1 дена"
 
 #: kontactplugin/korganizer/korganizerplugin.cpp:44
 #, fuzzy, kde-format
-#| msgid "New E&vent..."
+#| msgid "New Event"
 msgctxt "@action:inmenu"
-msgid "New Event..."
-msgstr "Нов &настан..."
+msgid "New Event…"
+msgstr "Нов настан"
 
 #: kontactplugin/korganizer/korganizerplugin.cpp:47
 #, fuzzy, kde-format
@@ -2588,10 +2595,10 @@ msgstr "Повтори (%1)"
 
 #: kontactplugin/korganizer/todoplugin.cpp:40
 #, fuzzy, kde-format
-#| msgid "&New To-do..."
+#| msgid "New &To-do..."
 msgctxt "@action:inmenu"
-msgid "New To-do..."
-msgstr "&Нова задача..."
+msgid "New To-do…"
+msgstr "Нова &задача..."
 
 #: kontactplugin/korganizer/todoplugin.cpp:43
 #, fuzzy, kde-format
@@ -3662,7 +3669,7 @@ msgstr "Други опции"
 #: prefs/kprefsdialog.cpp:234
 #, fuzzy, kde-format
 #| msgid "Change..."
-msgid "Choose..."
+msgid "Choose…"
 msgstr "Измени..."
 
 #: prefs/kprefsdialog.cpp:765
@@ -4860,9 +4867,10 @@ msgstr "Прикажи ги само избраните"
 
 #. i18n: ectx: property (text), widget (QPushButton, mCatEditButton)
 #: ui/filteredit_base.ui:301
-#, kde-format
-msgid "Change..."
-msgstr "Измени..."
+#, fuzzy, kde-format
+#| msgid "&Change"
+msgid "Change…"
+msgstr "И&змени"
 
 #. i18n: ectx: property (whatsThis), widget (QCheckBox, mHideTodosNotAssignedToMeCheck)
 #: ui/filteredit_base.ui:315
@@ -5694,6 +5702,64 @@ msgstr "%1"
 msgctxt "4 digit year"
 msgid "%1"
 msgstr "%1"
+
+#~ msgid "Import &Calendar..."
+#~ msgstr "Внеси &календар..."
+
+#~ msgid "New E&vent..."
+#~ msgstr "Нов &настан..."
+
+#~ msgid "New &To-do..."
+#~ msgstr "Нова &задача..."
+
+#~ msgid "New &Journal..."
+#~ msgstr "Нов &дневник..."
+
+#~ msgid "&Edit..."
+#~ msgstr "&Уреди..."
+
+#, fuzzy
+#~ msgctxt ""
+#~ "@info/plain Displayed grayed-out inside the textbox, verb to search"
+#~ msgid "Search..."
+#~ msgstr "Барај во"
+
+#, fuzzy
+#~| msgid "Edit..."
+#~ msgid "Edit..."
+#~ msgstr "Уреди..."
+
+#, fuzzy
+#~| msgid "&Edit..."
+#~ msgctxt "@action:inmenu"
+#~ msgid "&Edit..."
+#~ msgstr "&Уреди..."
+
+#, fuzzy
+#~ msgctxt "@action:inmenu"
+#~ msgid "&Print..."
+#~ msgstr "&Уреди..."
+
+#, fuzzy
+#~| msgid "New &Journal..."
+#~ msgctxt "@action:inmenu"
+#~ msgid "New Journal..."
+#~ msgstr "Нов &дневник..."
+
+#, fuzzy
+#~| msgid "New E&vent..."
+#~ msgctxt "@action:inmenu"
+#~ msgid "New Event..."
+#~ msgstr "Нов &настан..."
+
+#, fuzzy
+#~| msgid "&New To-do..."
+#~ msgctxt "@action:inmenu"
+#~ msgid "New To-do..."
+#~ msgstr "&Нова задача..."
+
+#~ msgid "Change..."
+#~ msgstr "Измени..."
 
 #~ msgid "Day begins at"
 #~ msgstr "Денот почнува во"
@@ -7839,10 +7905,6 @@ msgstr "%1"
 #~ msgstr "(празна е.-адреса)"
 
 #, fuzzy
-#~ msgid "&Print"
-#~ msgstr "Испечати &ден"
-
-#, fuzzy
 #~ msgid "Print this journal entry"
 #~ msgstr "ставка од дневник"
 
@@ -8535,12 +8597,6 @@ msgstr "%1"
 #~ msgstr "&Општо"
 
 #, fuzzy
-#~| msgid "New &To-do..."
-#~ msgctxt "@title:window"
-#~ msgid "New To-do"
-#~ msgstr "Нова &задача..."
-
-#, fuzzy
 #~| msgid "T&itle:"
 #~ msgctxt "journal title"
 #~ msgid "T&itle:"
@@ -8577,12 +8633,6 @@ msgstr "%1"
 #~ msgctxt "@title general journal settings"
 #~ msgid "General"
 #~ msgstr "Општо"
-
-#, fuzzy
-#~| msgid "New &Journal..."
-#~ msgctxt "@title:window"
-#~ msgid "New Journal"
-#~ msgstr "Нов &дневник..."
 
 #, fuzzy
 #~| msgid "[Binary data]"
@@ -9612,12 +9662,6 @@ msgstr "%1"
 #~ "настан или задача."
 
 #, fuzzy
-#~| msgid "&Change"
-#~ msgctxt "@action:button"
-#~ msgid "&Change"
-#~ msgstr "И&змени"
-
-#, fuzzy
 #~ msgctxt "@action:button"
 #~ msgid "&Delete"
 #~ msgstr "Избриши %1"
@@ -10484,12 +10528,6 @@ msgstr "%1"
 #~ msgstr ""
 #~ "Ливчето „Присутни“ ви дозволува да додадете или отстраните присутни на/од "
 #~ "овој настан или задача."
-
-#, fuzzy
-#~| msgid "New Event"
-#~ msgctxt "@title:window"
-#~ msgid "New Event"
-#~ msgstr "Нов настан"
 
 #, fuzzy
 #~ msgctxt "@title:window"
@@ -12162,10 +12200,6 @@ msgstr "%1"
 
 #~ msgid "&Remove..."
 #~ msgstr "О&тстрани..."
-
-#, fuzzy
-#~ msgid "Edit"
-#~ msgstr "Уреди %1"
 
 #, fuzzy
 #~| msgid "day(s)"

@@ -17,7 +17,7 @@ msgid ""
 msgstr ""
 "Project-Id-Version: korganizer\n"
 "Report-Msgid-Bugs-To: https://bugs.kde.org\n"
-"POT-Creation-Date: 2024-04-12 00:38+0000\n"
+"POT-Creation-Date: 2024-05-12 00:39+0000\n"
 "PO-Revision-Date: 2023-12-17 16:42+0530\n"
 "Last-Translator: Kishore G <kishore96@gmail.com>\n"
 "Language-Team: Tamil <kde-i18n-doc@kde.org>\n"
@@ -294,9 +294,10 @@ msgid "Hide menu bar"
 msgstr "பட்டிப் பட்டையை மறை"
 
 #: actionmanager.cpp:243
-#, kde-format
-msgid "Import &Calendar..."
-msgstr "நாள்காட்டியை இ&றக்குமதி செய்..."
+#, fuzzy, kde-format
+#| msgid "Import Calendar"
+msgid "Import &Calendar…"
+msgstr "நாள்காட்டியை இறக்குமதி செய்"
 
 #: actionmanager.cpp:244
 #, kde-format
@@ -319,8 +320,9 @@ msgid ""
 msgstr ""
 
 #: actionmanager.cpp:253
-#, kde-format
-msgid "Get New Calendars..."
+#, fuzzy, kde-format
+#| msgid "Get New Calendars..."
+msgid "Get New Calendars…"
 msgstr "புதிய நாள்காட்டிகளை பெறு..."
 
 #: actionmanager.cpp:254
@@ -354,8 +356,9 @@ msgid "The downloaded events will be merged into your current calendar."
 msgstr "இறக்கிய நிகழ்வுகளை உங்களின் நடைமுறை நாள்காட்டியில் ஒன்றாகச் சேர்க்கப்படும்."
 
 #: actionmanager.cpp:305
-#, kde-format
-msgid "Export as &iCalendar..."
+#, fuzzy, kde-format
+#| msgid "Export as &iCalendar..."
+msgid "Export as &iCalendar…"
 msgstr "iCalendar-ஆக ஏற்றுமதி செய்"
 
 #: actionmanager.cpp:306
@@ -378,8 +381,9 @@ msgid ""
 msgstr ""
 
 #: actionmanager.cpp:314
-#, kde-format
-msgid "Archive O&ld Incidences..."
+#, fuzzy, kde-format
+#| msgid "Archive O&ld Incidences..."
+msgid "Archive O&ld Incidences…"
 msgstr "&பழைய நிகழ்வுகளைக் காப்பகப்படுத்து..."
 
 #: actionmanager.cpp:315
@@ -810,9 +814,10 @@ msgid "&Week"
 msgstr "&வாரம்"
 
 #: actionmanager.cpp:566 kodaymatrix.cpp:484
-#, kde-format
-msgid "New E&vent..."
-msgstr "&புதிய நிகழ்வு"
+#, fuzzy, kde-format
+#| msgid "New Event"
+msgid "New E&vent…"
+msgstr "புதிய நிகழ்வு"
 
 #: actionmanager.cpp:567
 #, kde-format
@@ -835,9 +840,10 @@ msgid ""
 msgstr ""
 
 #: actionmanager.cpp:576 kodaymatrix.cpp:485
-#, kde-format
-msgid "New &To-do..."
-msgstr "&புதிய செயல்..."
+#, fuzzy, kde-format
+#| msgid "New To-do"
+msgid "New &To-do…"
+msgstr "புதியதாக செய்யவேண்டியது"
 
 #: actionmanager.cpp:577
 #, fuzzy, kde-format
@@ -862,13 +868,14 @@ msgid ""
 msgstr ""
 
 #: actionmanager.cpp:587
-#, kde-format
-msgid "New Su&b-to-do..."
+#, fuzzy, kde-format
+#| msgid "New Su&b-to-do..."
+msgid "New Su&b-to-do…"
 msgstr "&புதிய உபசெயல்"
 
 #: actionmanager.cpp:595 kodaymatrix.cpp:486
 #, fuzzy, kde-format
-msgid "New &Journal..."
+msgid "New &Journal…"
 msgstr "&பத்திரிக்கை"
 
 #: actionmanager.cpp:596
@@ -892,8 +899,9 @@ msgid "Starts a dialog that allows you to create a new Journal entry."
 msgstr ""
 
 #: actionmanager.cpp:603
-#, kde-format
-msgid "Configure View..."
+#, fuzzy, kde-format
+#| msgid "Configure View..."
+msgid "Configure View…"
 msgstr "காட்சிமுறையை அமை..."
 
 #: actionmanager.cpp:604
@@ -928,9 +936,10 @@ msgid "&Show"
 msgstr "&காட்டு"
 
 #: actionmanager.cpp:618 actionmanager.cpp:1303 actionmanager.cpp:1342
-#, kde-format
-msgid "&Edit..."
-msgstr "&திருத்து..."
+#, fuzzy, kde-format
+#| msgid "&Edit"
+msgid "&Edit…"
+msgstr "&திருத்து"
 
 #: actionmanager.cpp:627
 #, kde-format
@@ -943,7 +952,7 @@ msgstr "&சார்செயலை தனிச்செயலாக்கு"
 #. ************************* SCHEDULE MENU *******************************
 #: actionmanager.cpp:639
 #, kde-format
-msgid "&Publish Item Information..."
+msgid "&Publish Item Information…"
 msgstr ""
 
 #: actionmanager.cpp:646
@@ -976,13 +985,13 @@ msgstr ""
 
 #: actionmanager.cpp:686
 #, fuzzy, kde-format
-msgid "&Mail Free Busy Information..."
+msgid "&Mail Free Busy Information…"
 msgstr "அஞ்சல் இல்லாத வேலையுள்ள தகவல்"
 
 #: actionmanager.cpp:691
 #, fuzzy, kde-format
 #| msgid "&iCalendar..."
-msgid "&Send as iCalendar..."
+msgid "&Send as iCalendar…"
 msgstr "&iCalendar..."
 
 #: actionmanager.cpp:698
@@ -1020,24 +1029,25 @@ msgstr ""
 "செய்                                                                             "
 
 #: actionmanager.cpp:749
-#, kde-format
-msgid "Configure &Date && Time..."
+#, fuzzy, kde-format
+#| msgid "Configure &Date && Time..."
+msgid "Configure &Date && Time…"
 msgstr "தேதி &&  நேரம் அமைக்கவும்..."
 
 #: actionmanager.cpp:753
 #, fuzzy, kde-format
-msgid "Manage View &Filters..."
+msgid "Manage View &Filters…"
 msgstr "வடிகட்டியை திருத்து"
 
 #: actionmanager.cpp:757
 #, fuzzy, kde-format
-msgid "Manage T&ags..."
+msgid "Manage T&ags…"
 msgstr "வகைகளை திருத்து"
 
 #: actionmanager.cpp:765
 #, fuzzy, kde-format
 #| msgid "&Configure Calendar..."
-msgid "&Configure KOrganizer..."
+msgid "&Configure KOrganizer…"
 msgstr "&சொருகுதலில் கட்டமை"
 
 #: actionmanager.cpp:843
@@ -1115,8 +1125,9 @@ msgid "&Show Event"
 msgstr "நிகழ்வை காட்டு"
 
 #: actionmanager.cpp:1264
-#, kde-format
-msgid "&Edit Event..."
+#, fuzzy, kde-format
+#| msgid "&Edit Event..."
+msgid "&Edit Event…"
 msgstr "நிகழ்வை திருத்து"
 
 #: actionmanager.cpp:1267
@@ -1130,8 +1141,9 @@ msgid "&Show To-do"
 msgstr "&செய்யவேண்டியதை காட்டு"
 
 #: actionmanager.cpp:1278 kontactplugin/korganizer/todosummarywidget.cpp:321
-#, kde-format
-msgid "&Edit To-do..."
+#, fuzzy, kde-format
+#| msgid "&Edit To-do..."
+msgid "&Edit To-do…"
 msgstr "&செய்யவேண்டியதை திருத்து..."
 
 #: actionmanager.cpp:1281 kontactplugin/korganizer/todosummarywidget.cpp:323
@@ -1256,7 +1268,7 @@ msgstr ""
 #: akonadicollectionview.cpp:411
 #, fuzzy, kde-format
 msgctxt "@info/plain Displayed grayed-out inside the textbox, verb to search"
-msgid "Search..."
+msgid "Search…"
 msgstr "உள்ளே தேடு"
 
 #: akonadicollectionview.cpp:495 manageshowcollectionproperties.cpp:76
@@ -1269,7 +1281,7 @@ msgstr "நாள்காட்டி வடிகட்டிகளை தி�
 #: akonadicollectionview.cpp:507
 #, kde-format
 msgctxt "@action:inmenu"
-msgid "&Set Folder Color..."
+msgid "&Set Folder Color…"
 msgstr ""
 
 #: akonadicollectionview.cpp:513
@@ -1279,41 +1291,41 @@ msgctxt "@action:inmenu"
 msgid "Set as &Default Folder"
 msgstr "முன்னிருப்பு நாள்காட்டியாக பயன்படுத்து"
 
-#: akonadicollectionview.cpp:519
+#: akonadicollectionview.cpp:518
 #, kde-format
 msgctxt "@action:inmenu"
-msgid "Serverside Subscription..."
+msgid "Serverside Subscription…"
 msgstr ""
 
-#: akonadicollectionview.cpp:564
+#: akonadicollectionview.cpp:563
 #, fuzzy, kde-format
 #| msgid "<qt>Do you really want to delete the resource <b>%1</b>?</qt>"
 msgctxt "@info"
 msgid "Do you really want replace your current default calendar with \"%1\"?"
 msgstr "<qt>நீங்கள் கண்டிப்பாக மூலத்தை அழிக்க வேண்டுமா<b>%1</b>?</qt>"
 
-#: akonadicollectionview.cpp:565
+#: akonadicollectionview.cpp:564
 #, fuzzy, kde-format
 #| msgid "Use as &Default Calendar"
 msgctxt "@title:window"
 msgid "Replace Default Calendar?"
 msgstr "முன்னிருப்பு நாள்காட்டியாக பயன்படுத்து"
 
-#: akonadicollectionview.cpp:702
+#: akonadicollectionview.cpp:701
 #, fuzzy, kde-format
 #| msgid "Add as new calendar"
 msgctxt "@title:window"
 msgid "Add Calendar"
 msgstr "Add as new calendar"
 
-#: akonadicollectionview.cpp:744
+#: akonadicollectionview.cpp:743
 #, fuzzy, kde-format
 #| msgid "<qt>Do you really want to delete the resource <b>%1</b>?</qt>"
 msgctxt "@info"
 msgid "Do you really want to delete calendar %1?"
 msgstr "<qt>நீங்கள் கண்டிப்பாக மூலத்தை அழிக்க வேண்டுமா<b>%1</b>?</qt>"
 
-#: akonadicollectionview.cpp:745
+#: akonadicollectionview.cpp:744
 #, fuzzy, kde-format
 #| msgid "Default Calendar"
 msgctxt "@title:window"
@@ -1944,9 +1956,8 @@ msgstr "நிகழ்வை காண்பவர்"
 
 #: dialog/koeventviewerdialog.cpp:40
 #, fuzzy, kde-format
-#| msgid "Edit..."
-msgid "Edit..."
-msgstr "திருத்தி"
+msgid "Edit…"
+msgstr "%1னை திருத்து"
 
 #: dialog/koeventviewerdialog.cpp:41
 #, fuzzy, kde-format
@@ -2070,10 +2081,10 @@ msgstr "&காட்டு"
 
 #: koeventpopupmenu.cpp:45
 #, fuzzy, kde-format
-#| msgid "&Edit..."
+#| msgid "&Edit"
 msgctxt "@action:inmenu"
-msgid "&Edit..."
-msgstr "&திருத்து..."
+msgid "&Edit…"
+msgstr "&திருத்து"
 
 #: koeventpopupmenu.cpp:47
 #, fuzzy, kde-format
@@ -2084,13 +2095,13 @@ msgstr "%1னை அழி"
 #: koeventpopupmenu.cpp:51
 #, fuzzy, kde-format
 msgctxt "@action:inmenu"
-msgid "&Print..."
-msgstr "&திருத்து..."
+msgid "&Print…"
+msgstr "நாளை அச்சிடு"
 
 #: koeventpopupmenu.cpp:53
 #, fuzzy, kde-format
 msgctxt "@action:inmenu"
-msgid "Print Previe&w..."
+msgid "Print Previe&w…"
 msgstr "&திருத்து..."
 
 #: koeventpopupmenu.cpp:74
@@ -2156,14 +2167,14 @@ msgstr "&நினைவுக்குறிப்பு"
 #, fuzzy, kde-format
 #| msgid "Dissociate occurrence"
 msgctxt "@action:inmenu"
-msgid "&Dissociate From Recurrence..."
+msgid "&Dissociate From Recurrence…"
 msgstr "பின் மறுநிகழ்வை பிரி"
 
 #: koeventpopupmenu.cpp:137
 #, fuzzy, kde-format
 #| msgid "&iCalendar..."
 msgctxt "@action:inmenu"
-msgid "Send as iCalendar..."
+msgid "Send as iCalendar…"
 msgstr "&iCalendar..."
 
 #: koeventpopupmenu.cpp:187
@@ -2397,7 +2408,7 @@ msgstr[1] ""
 #: kontactplugin/korganizer/apptsummarywidget.cpp:240
 #, fuzzy, kde-format
 #| msgid "Appointment"
-msgid "&Edit Appointment..."
+msgid "&Edit Appointment…"
 msgstr "சந்திப்பு"
 
 #: kontactplugin/korganizer/apptsummarywidget.cpp:242
@@ -2415,7 +2426,7 @@ msgstr "நிகழ்வை திருத்து"
 #: kontactplugin/korganizer/journalplugin.cpp:28
 #, fuzzy, kde-format
 msgctxt "@action:inmenu"
-msgid "New Journal..."
+msgid "New Journal…"
 msgstr "&பத்திரிக்கை"
 
 #: kontactplugin/korganizer/journalplugin.cpp:31
@@ -2443,10 +2454,10 @@ msgstr[1] "%1 நாட்கள்"
 
 #: kontactplugin/korganizer/korganizerplugin.cpp:44
 #, fuzzy, kde-format
-#| msgid "New E&vent..."
+#| msgid "New Event"
 msgctxt "@action:inmenu"
-msgid "New Event..."
-msgstr "&புதிய நிகழ்வு"
+msgid "New Event…"
+msgstr "புதிய நிகழ்வு"
 
 #: kontactplugin/korganizer/korganizerplugin.cpp:47
 #, fuzzy, kde-format
@@ -2564,9 +2575,10 @@ msgstr "மறுபடி செய் (%1)"
 
 #: kontactplugin/korganizer/todoplugin.cpp:40
 #, fuzzy, kde-format
+#| msgid "New To-do"
 msgctxt "@action:inmenu"
-msgid "New To-do..."
-msgstr "புதியதை செய்ய"
+msgid "New To-do…"
+msgstr "புதியதாக செய்யவேண்டியது"
 
 #: kontactplugin/korganizer/todoplugin.cpp:43
 #, fuzzy, kde-format
@@ -3614,7 +3626,7 @@ msgstr "மற்ற விருப்பத்தேர்வுகள்"
 
 #: prefs/kprefsdialog.cpp:234
 #, fuzzy, kde-format
-msgid "Choose..."
+msgid "Choose…"
 msgstr "மாற்றம்"
 
 #: prefs/kprefsdialog.cpp:765
@@ -4828,7 +4840,8 @@ msgstr "தேர்வு செய்ததை மட்டும் காட
 #. i18n: ectx: property (text), widget (QPushButton, mCatEditButton)
 #: ui/filteredit_base.ui:301
 #, fuzzy, kde-format
-msgid "Change..."
+#| msgid "&Change"
+msgid "Change…"
 msgstr "மாற்றம்"
 
 #. i18n: ectx: property (whatsThis), widget (QCheckBox, mHideTodosNotAssignedToMeCheck)
@@ -5672,6 +5685,64 @@ msgstr "%1"
 msgctxt "4 digit year"
 msgid "%1"
 msgstr "%1"
+
+#~ msgid "Import &Calendar..."
+#~ msgstr "நாள்காட்டியை இ&றக்குமதி செய்..."
+
+#~ msgid "New E&vent..."
+#~ msgstr "&புதிய நிகழ்வு"
+
+#~ msgid "New &To-do..."
+#~ msgstr "&புதிய செயல்..."
+
+#, fuzzy
+#~ msgid "New &Journal..."
+#~ msgstr "&பத்திரிக்கை"
+
+#~ msgid "&Edit..."
+#~ msgstr "&திருத்து..."
+
+#, fuzzy
+#~ msgctxt ""
+#~ "@info/plain Displayed grayed-out inside the textbox, verb to search"
+#~ msgid "Search..."
+#~ msgstr "உள்ளே தேடு"
+
+#, fuzzy
+#~| msgid "Edit..."
+#~ msgid "Edit..."
+#~ msgstr "திருத்தி"
+
+#, fuzzy
+#~| msgid "&Edit..."
+#~ msgctxt "@action:inmenu"
+#~ msgid "&Edit..."
+#~ msgstr "&திருத்து..."
+
+#, fuzzy
+#~ msgctxt "@action:inmenu"
+#~ msgid "&Print..."
+#~ msgstr "&திருத்து..."
+
+#, fuzzy
+#~ msgctxt "@action:inmenu"
+#~ msgid "New Journal..."
+#~ msgstr "&பத்திரிக்கை"
+
+#, fuzzy
+#~| msgid "New E&vent..."
+#~ msgctxt "@action:inmenu"
+#~ msgid "New Event..."
+#~ msgstr "&புதிய நிகழ்வு"
+
+#, fuzzy
+#~ msgctxt "@action:inmenu"
+#~ msgid "New To-do..."
+#~ msgstr "புதியதை செய்ய"
+
+#, fuzzy
+#~ msgid "Change..."
+#~ msgstr "மாற்றம்"
 
 #~ msgid "Day begins at"
 #~ msgstr "நாள் ஆரம்பிக்கும்"
@@ -8263,10 +8334,6 @@ msgstr "%1"
 #~ msgstr "பழைய நிகழ்வுகளை நீக்கு"
 
 #, fuzzy
-#~ msgid "&Print"
-#~ msgstr "நாளை அச்சிடு"
-
-#, fuzzy
 #~ msgid "Print this journal entry"
 #~ msgstr "பழைய நிகழ்வுகளை நீக்கு"
 
@@ -9126,12 +9193,6 @@ msgstr "%1"
 #~ msgid "&General"
 #~ msgstr "&பொது"
 
-#, fuzzy
-#~| msgid "New To-do"
-#~ msgctxt "@title:window"
-#~ msgid "New To-do"
-#~ msgstr "புதியதாக செய்யவேண்டியது"
-
 #~ msgid "Sets the title of this journal."
 #~ msgstr "பழைய நிகழ்வுகளை நீக்கு"
 
@@ -9164,11 +9225,6 @@ msgstr "%1"
 #~ msgctxt "@title general journal settings"
 #~ msgid "General"
 #~ msgstr "பொது"
-
-#, fuzzy
-#~ msgctxt "@title:window"
-#~ msgid "New Journal"
-#~ msgstr "&பத்திரிக்கை"
 
 #, fuzzy
 #~| msgid "[Binary data]"
@@ -10141,12 +10197,6 @@ msgstr "%1"
 #~ "இந்த நிகழ்வு அல்லது செய்யவேண்டியதிற்கான நிகழ்வுக்க்கு இந்த தேதியை ஒரு விலக்காக அமை."
 
 #, fuzzy
-#~| msgid "&Change"
-#~ msgctxt "@action:button"
-#~ msgid "&Change"
-#~ msgstr "மாற்றம்"
-
-#, fuzzy
 #~ msgctxt "@action:button"
 #~ msgid "&Delete"
 #~ msgstr "%1னை அழி"
@@ -10893,12 +10943,6 @@ msgstr "%1"
 #~ msgctxt "@title:tab"
 #~ msgid "&Attendees"
 #~ msgstr "வருகையாளர்"
-
-#, fuzzy
-#~| msgid "New Event"
-#~ msgctxt "@title:window"
-#~ msgid "New Event"
-#~ msgstr "புதிய நிகழ்வு"
 
 #, fuzzy
 #~| msgid "Exchange"
@@ -12573,10 +12617,6 @@ msgstr "%1"
 
 #~ msgid "&Remove..."
 #~ msgstr "நீக்கு"
-
-#, fuzzy
-#~ msgid "Edit"
-#~ msgstr "%1னை திருத்து"
 
 #, fuzzy
 #~| msgid "day(s)"
