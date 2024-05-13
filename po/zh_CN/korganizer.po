@@ -283,11 +283,9 @@ msgid "Hide menu bar"
 msgstr "隐藏菜单栏"
 
 #: actionmanager.cpp:243
-#, fuzzy, kde-format
-#| msgctxt "@title:window"
-#| msgid "Import Calendar"
+#, kde-format
 msgid "Import &Calendar…"
-msgstr "导入日历"
+msgstr ""
 
 #: actionmanager.cpp:244
 #, kde-format
@@ -310,10 +308,9 @@ msgid ""
 msgstr "若要将 iCalendar 或 vCalendar 文件导入至当前日历收藏，请选择此菜单项。"
 
 #: actionmanager.cpp:253
-#, fuzzy, kde-format
-#| msgid "Get New Calendars..."
+#, kde-format
 msgid "Get New Calendars…"
-msgstr "获取新日历..."
+msgstr ""
 
 #: actionmanager.cpp:254
 #, kde-format
@@ -348,10 +345,9 @@ msgid "The downloaded events will be merged into your current calendar."
 msgstr "已下载的事件会合并到您当前的日历。"
 
 #: actionmanager.cpp:305
-#, fuzzy, kde-format
-#| msgid "Export as &iCalendar..."
+#, kde-format
 msgid "Export as &iCalendar…"
-msgstr "导出为 iCalendar(&I)..."
+msgstr ""
 
 #: actionmanager.cpp:306
 #, kde-format
@@ -373,10 +369,9 @@ msgid ""
 msgstr "可让您将整个日历收藏导出为一个 iCalendar 文件。"
 
 #: actionmanager.cpp:314
-#, fuzzy, kde-format
-#| msgid "Archive O&ld Incidences..."
+#, kde-format
 msgid "Archive O&ld Incidences…"
-msgstr "归档旧事件(&L)..."
+msgstr ""
 
 #: actionmanager.cpp:315
 #, kde-format
@@ -808,10 +803,9 @@ msgid "&Week"
 msgstr "周视图(&W)"
 
 #: actionmanager.cpp:566 kodaymatrix.cpp:484
-#, fuzzy, kde-format
-#| msgid "New E&vent..."
+#, kde-format
 msgid "New E&vent…"
-msgstr "新建事件(&V)..."
+msgstr ""
 
 #: actionmanager.cpp:567
 #, kde-format
@@ -834,10 +828,9 @@ msgid ""
 msgstr "打开对话框，并可让您创建一个带提醒、参与者、重复及更多选项的新日程。"
 
 #: actionmanager.cpp:576 kodaymatrix.cpp:485
-#, fuzzy, kde-format
-#| msgid "New &To-do..."
+#, kde-format
 msgid "New &To-do…"
-msgstr "新建待办事项(&T)..."
+msgstr ""
 
 #: actionmanager.cpp:577
 #, kde-format
@@ -861,16 +854,14 @@ msgstr ""
 "打开对话框，并可让您创建一个带提醒、参与者、重复及更多选项的新待办事项。"
 
 #: actionmanager.cpp:587
-#, fuzzy, kde-format
-#| msgid "New Su&b-to-do..."
+#, kde-format
 msgid "New Su&b-to-do…"
-msgstr "新建子待办事项(&B)..."
+msgstr ""
 
 #: actionmanager.cpp:595 kodaymatrix.cpp:486
-#, fuzzy, kde-format
-#| msgid "New &Journal..."
+#, kde-format
 msgid "New &Journal…"
-msgstr "新建日记(&J)..."
+msgstr ""
 
 #: actionmanager.cpp:596
 #, kde-format
@@ -891,10 +882,9 @@ msgid "Starts a dialog that allows you to create a new Journal entry."
 msgstr "打开对话框，并可让您创建一个新的日记项。"
 
 #: actionmanager.cpp:603
-#, fuzzy, kde-format
-#| msgid "Configure View..."
+#, kde-format
 msgid "Configure View…"
-msgstr "配置视图..."
+msgstr ""
 
 #: actionmanager.cpp:604
 #, kde-format
@@ -927,10 +917,9 @@ msgid "&Show"
 msgstr "显示(&S)"
 
 #: actionmanager.cpp:618 actionmanager.cpp:1303 actionmanager.cpp:1342
-#, fuzzy, kde-format
-#| msgid "&Edit"
+#, kde-format
 msgid "&Edit…"
-msgstr "编辑(&E)"
+msgstr ""
 
 #: actionmanager.cpp:627
 #, kde-format
@@ -942,10 +931,9 @@ msgstr "将子待办事项独立(&M)"
 #. mACollection, "activate_alarm" );
 #. ************************* SCHEDULE MENU *******************************
 #: actionmanager.cpp:639
-#, fuzzy, kde-format
-#| msgid "&Publish Item Information..."
+#, kde-format
 msgid "&Publish Item Information…"
-msgstr "发布项目信息(&P)..."
+msgstr ""
 
 #: actionmanager.cpp:646
 #, kde-format
@@ -974,16 +962,14 @@ msgid "Request Chan&ge"
 msgstr "请求更新(&G)"
 
 #: actionmanager.cpp:686
-#, fuzzy, kde-format
-#| msgid "&Mail Free Busy Information..."
+#, kde-format
 msgid "&Mail Free Busy Information…"
-msgstr "用邮件发送空闲/忙碌信息(&M)..."
+msgstr ""
 
 #: actionmanager.cpp:691
-#, fuzzy, kde-format
-#| msgid "&Send as iCalendar..."
+#, kde-format
 msgid "&Send as iCalendar…"
-msgstr "以 iCalendar 发送(&S)..."
+msgstr ""
 
 #: actionmanager.cpp:698
 #, kde-format
@@ -1016,28 +1002,24 @@ msgid "Show Calendar Manager"
 msgstr "显示日历管理器"
 
 #: actionmanager.cpp:749
-#, fuzzy, kde-format
-#| msgid "Configure &Date && Time..."
+#, kde-format
 msgid "Configure &Date && Time…"
-msgstr "配置日期和时间(&D)..."
+msgstr ""
 
 #: actionmanager.cpp:753
-#, fuzzy, kde-format
-#| msgid "Manage View &Filters..."
+#, kde-format
 msgid "Manage View &Filters…"
-msgstr "管理视图过滤器(&F)..."
+msgstr ""
 
 #: actionmanager.cpp:757
-#, fuzzy, kde-format
-#| msgid "Manage T&ags..."
+#, kde-format
 msgid "Manage T&ags…"
-msgstr "管理标签(&T)..."
+msgstr ""
 
 #: actionmanager.cpp:765
-#, fuzzy, kde-format
-#| msgid "&Configure KOrganizer..."
+#, kde-format
 msgid "&Configure KOrganizer…"
-msgstr "配置 KOrganizer(&C)..."
+msgstr ""
 
 #: actionmanager.cpp:843
 #, kde-format
@@ -1109,10 +1091,9 @@ msgid "&Show Event"
 msgstr "显示事件(&S)"
 
 #: actionmanager.cpp:1264
-#, fuzzy, kde-format
-#| msgid "&Edit Event..."
+#, kde-format
 msgid "&Edit Event…"
-msgstr "编辑事件(&E)..."
+msgstr ""
 
 #: actionmanager.cpp:1267
 #, kde-format
@@ -1125,10 +1106,9 @@ msgid "&Show To-do"
 msgstr "显示待办事项(&S)"
 
 #: actionmanager.cpp:1278 kontactplugin/korganizer/todosummarywidget.cpp:321
-#, fuzzy, kde-format
-#| msgid "&Edit To-do..."
+#, kde-format
 msgid "&Edit To-do…"
-msgstr "编辑待办事项(&E)..."
+msgstr ""
 
 #: actionmanager.cpp:1281 kontactplugin/korganizer/todosummarywidget.cpp:323
 #, kde-format
@@ -1246,12 +1226,10 @@ msgid "Lets you search for a keyword in your calendars"
 msgstr "可让您在日历中搜索关键词"
 
 #: akonadicollectionview.cpp:411
-#, fuzzy, kde-format
-#| msgctxt "Displayed grayed-out inside the textbox, verb to search"
-#| msgid "Search"
+#, kde-format
 msgctxt "@info/plain Displayed grayed-out inside the textbox, verb to search"
 msgid "Search…"
-msgstr "查找"
+msgstr ""
 
 #: akonadicollectionview.cpp:495 manageshowcollectionproperties.cpp:76
 #, kde-format
@@ -1260,12 +1238,10 @@ msgid "Properties of Calendar Folder %1"
 msgstr "日历目录 %1 属性"
 
 #: akonadicollectionview.cpp:507
-#, fuzzy, kde-format
-#| msgctxt "@action:inmenu"
-#| msgid "&Set Folder Color..."
+#, kde-format
 msgctxt "@action:inmenu"
 msgid "&Set Folder Color…"
-msgstr "设置文件夹颜色..."
+msgstr ""
 
 #: akonadicollectionview.cpp:513
 #, kde-format
@@ -1274,12 +1250,10 @@ msgid "Set as &Default Folder"
 msgstr "设置为默认文件夹(&D)"
 
 #: akonadicollectionview.cpp:518
-#, fuzzy, kde-format
-#| msgctxt "@action:inmenu"
-#| msgid "Serverside Subscription..."
+#, kde-format
 msgctxt "@action:inmenu"
 msgid "Serverside Subscription…"
-msgstr "服务器端订阅..."
+msgstr ""
 
 #: akonadicollectionview.cpp:563
 #, kde-format
@@ -1907,10 +1881,9 @@ msgid "Event Viewer"
 msgstr "事件查看器"
 
 #: dialog/koeventviewerdialog.cpp:40
-#, fuzzy, kde-format
-#| msgid "&Edit"
+#, kde-format
 msgid "Edit…"
-msgstr "编辑(&E)"
+msgstr ""
 
 #: dialog/koeventviewerdialog.cpp:41
 #, kde-format
@@ -2019,11 +1992,10 @@ msgid "&Show"
 msgstr "显示(&S)"
 
 #: koeventpopupmenu.cpp:45
-#, fuzzy, kde-format
-#| msgid "&Edit"
+#, kde-format
 msgctxt "@action:inmenu"
 msgid "&Edit…"
-msgstr "编辑(&E)"
+msgstr ""
 
 #: koeventpopupmenu.cpp:47
 #, kde-format
@@ -2032,20 +2004,16 @@ msgid "&Delete"
 msgstr "删除(&D)"
 
 #: koeventpopupmenu.cpp:51
-#, fuzzy, kde-format
-#| msgctxt "@action:inmenu"
-#| msgid "&Print..."
+#, kde-format
 msgctxt "@action:inmenu"
 msgid "&Print…"
-msgstr "打印(&P)..."
+msgstr ""
 
 #: koeventpopupmenu.cpp:53
-#, fuzzy, kde-format
-#| msgctxt "@action:inmenu"
-#| msgid "Print Previe&w..."
+#, kde-format
 msgctxt "@action:inmenu"
 msgid "Print Previe&w…"
-msgstr "打印预览(&W)..."
+msgstr ""
 
 #: koeventpopupmenu.cpp:74
 #, kde-format
@@ -2102,20 +2070,16 @@ msgid "&Toggle Reminder"
 msgstr "切换提醒(&T)"
 
 #: koeventpopupmenu.cpp:129
-#, fuzzy, kde-format
-#| msgctxt "@action:inmenu"
-#| msgid "&Dissociate From Recurrence..."
+#, kde-format
 msgctxt "@action:inmenu"
 msgid "&Dissociate From Recurrence…"
-msgstr "拆分重现(&D)..."
+msgstr ""
 
 #: koeventpopupmenu.cpp:137
-#, fuzzy, kde-format
-#| msgctxt "@action:inmenu"
-#| msgid "Send as iCalendar..."
+#, kde-format
 msgctxt "@action:inmenu"
 msgid "Send as iCalendar…"
-msgstr "以 iCalendar 发送..."
+msgstr ""
 
 #: koeventpopupmenu.cpp:187
 #, kde-format
@@ -2342,10 +2306,9 @@ msgid_plural "No upcoming events starting within the next %1 days"
 msgstr[0] "在以后 %1 天内没有会到来的事件。"
 
 #: kontactplugin/korganizer/apptsummarywidget.cpp:240
-#, fuzzy, kde-format
-#| msgid "&Edit Appointment..."
+#, kde-format
 msgid "&Edit Appointment…"
-msgstr "编辑约会(&E)..."
+msgstr ""
 
 #: kontactplugin/korganizer/apptsummarywidget.cpp:242
 #, kde-format
@@ -2358,12 +2321,10 @@ msgid "Edit Event: \"%1\""
 msgstr "编辑事件：“%1”"
 
 #: kontactplugin/korganizer/journalplugin.cpp:28
-#, fuzzy, kde-format
-#| msgctxt "@action:inmenu"
-#| msgid "New Journal..."
+#, kde-format
 msgctxt "@action:inmenu"
 msgid "New Journal…"
-msgstr "新建日记..."
+msgstr ""
 
 #: kontactplugin/korganizer/journalplugin.cpp:31
 #, kde-format
@@ -2387,12 +2348,10 @@ msgid_plural " days"
 msgstr[0] " 天"
 
 #: kontactplugin/korganizer/korganizerplugin.cpp:44
-#, fuzzy, kde-format
-#| msgctxt "@action:inmenu"
-#| msgid "New Event..."
+#, kde-format
 msgctxt "@action:inmenu"
 msgid "New Event…"
-msgstr "新建事件..."
+msgstr ""
 
 #: kontactplugin/korganizer/korganizerplugin.cpp:47
 #, kde-format
@@ -2499,12 +2458,10 @@ msgid "Next: %1"
 msgstr "下一个：“%1”"
 
 #: kontactplugin/korganizer/todoplugin.cpp:40
-#, fuzzy, kde-format
-#| msgctxt "@action:inmenu"
-#| msgid "New To-do..."
+#, kde-format
 msgctxt "@action:inmenu"
 msgid "New To-do…"
-msgstr "新建待办事项..."
+msgstr ""
 
 #: kontactplugin/korganizer/todoplugin.cpp:43
 #, kde-format
@@ -3490,10 +3447,9 @@ msgid "Other Options"
 msgstr "其他选项"
 
 #: prefs/kprefsdialog.cpp:234
-#, fuzzy, kde-format
-#| msgid "Choose..."
+#, kde-format
 msgid "Choose…"
-msgstr "选择..."
+msgstr ""
 
 #: prefs/kprefsdialog.cpp:765
 #, kde-format
@@ -4741,10 +4697,9 @@ msgstr "显示全部选中的"
 
 #. i18n: ectx: property (text), widget (QPushButton, mCatEditButton)
 #: ui/filteredit_base.ui:301
-#, fuzzy, kde-format
-#| msgid "Change..."
+#, kde-format
 msgid "Change…"
-msgstr "更改..."
+msgstr ""
 
 #. i18n: ectx: property (whatsThis), widget (QCheckBox, mHideTodosNotAssignedToMeCheck)
 #: ui/filteredit_base.ui:315
@@ -5598,21 +5553,3 @@ msgstr "%1"
 msgctxt "4 digit year"
 msgid "%1"
 msgstr "%1"
-
-#~ msgid "Import &Calendar..."
-#~ msgstr "导入日历(&C)..."
-
-#~ msgid "&Edit..."
-#~ msgstr "编辑(&E)..."
-
-#~ msgctxt ""
-#~ "@info/plain Displayed grayed-out inside the textbox, verb to search"
-#~ msgid "Search..."
-#~ msgstr "搜索..."
-
-#~ msgid "Edit..."
-#~ msgstr "编辑..."
-
-#~ msgctxt "@action:inmenu"
-#~ msgid "&Edit..."
-#~ msgstr "编辑(&E)..."

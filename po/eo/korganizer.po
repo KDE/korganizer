@@ -8,7 +8,7 @@ msgstr ""
 "Project-Id-Version: korganizer\n"
 "Report-Msgid-Bugs-To: https://bugs.kde.org\n"
 "POT-Creation-Date: 2024-05-12 00:39+0000\n"
-"PO-Revision-Date: 2024-01-05 21:02+0100\n"
+"PO-Revision-Date: 2024-05-12 10:35+0100\n"
 "Last-Translator: Oliver Kellogg <okellogg@users.sourceforge.net>\n"
 "Language-Team: esperanto <kde-i18n-eo@kde.org>\n"
 "Language: eo\n"
@@ -291,11 +291,9 @@ msgid "Hide menu bar"
 msgstr "Kaŝi menubreton"
 
 #: actionmanager.cpp:243
-#, fuzzy, kde-format
-#| msgctxt "@title:window"
-#| msgid "Import Calendar"
+#, kde-format
 msgid "Import &Calendar…"
-msgstr "Importi Kalendaron"
+msgstr "Importi &Kalendaron…"
 
 #: actionmanager.cpp:244
 #, kde-format
@@ -320,10 +318,9 @@ msgstr ""
 "vCalendar dosiero en vian nunan kalendaran kolekton."
 
 #: actionmanager.cpp:253
-#, fuzzy, kde-format
-#| msgid "Get New Calendars..."
+#, kde-format
 msgid "Get New Calendars…"
-msgstr "Akiru novajn kalendarojn..."
+msgstr "Akiri Novajn Kalendarojn…"
 
 #: actionmanager.cpp:254
 #, kde-format
@@ -359,22 +356,21 @@ msgid "The downloaded events will be merged into your current calendar."
 msgstr "La elŝutitaj eventoj estos kunfanditaj en vian nunan kalendaron."
 
 #: actionmanager.cpp:305
-#, fuzzy, kde-format
-#| msgid "Export as &iCalendar..."
+#, kde-format
 msgid "Export as &iCalendar…"
-msgstr "Eksporti kiel &iCalendar..."
+msgstr "Elporti kiel &iCalendar…"
 
 #: actionmanager.cpp:306
 #, kde-format
 msgctxt "@info:status"
 msgid "Export calendar to file"
-msgstr "Eksportu kalendaron al dosiero"
+msgstr "Elporti kalendaron al dosiero"
 
 #: actionmanager.cpp:307
 #, kde-format
 msgctxt "@info:tooltip"
 msgid "Export your calendar to an iCalendar file"
-msgstr "Eksportu vian kalendaron al iCalendar-dosiero"
+msgstr "Elportu vian kalendaron al iCalendar-dosiero"
 
 #: actionmanager.cpp:308
 #, kde-format
@@ -386,10 +382,9 @@ msgstr ""
 "dosiero."
 
 #: actionmanager.cpp:314
-#, fuzzy, kde-format
-#| msgid "Archive O&ld Incidences..."
+#, kde-format
 msgid "Archive O&ld Incidences…"
-msgstr "Enarkivigi Ma&lnovajn Okazaĵojn..."
+msgstr "Enarkivigi Ma&lnovajn Okazaĵojn…"
 
 #: actionmanager.cpp:315
 #, kde-format
@@ -840,10 +835,9 @@ msgid "&Week"
 msgstr "S&emajno"
 
 #: actionmanager.cpp:566 kodaymatrix.cpp:484
-#, fuzzy, kde-format
-#| msgid "New E&vent..."
+#, kde-format
 msgid "New E&vent…"
-msgstr "Nova E&vento..."
+msgstr "Nova E&vento…"
 
 #: actionmanager.cpp:567
 #, kde-format
@@ -868,10 +862,9 @@ msgstr ""
 "partoprenantoj, ripetiĝoj kaj multe pli."
 
 #: actionmanager.cpp:576 kodaymatrix.cpp:485
-#, fuzzy, kde-format
-#| msgid "New &To-do..."
+#, kde-format
 msgid "New &To-do…"
-msgstr "Nova &Farendo..."
+msgstr "Nova &Farendo…"
 
 #: actionmanager.cpp:577
 #, kde-format
@@ -896,28 +889,26 @@ msgstr ""
 "partoprenantoj, ripetiĝoj kaj multe pli."
 
 #: actionmanager.cpp:587
-#, fuzzy, kde-format
-#| msgid "New Su&b-to-do..."
+#, kde-format
 msgid "New Su&b-to-do…"
-msgstr "Nova Su&b-farendo..."
+msgstr "Nova Su&b-farendo…"
 
 #: actionmanager.cpp:595 kodaymatrix.cpp:486
-#, fuzzy, kde-format
-#| msgid "New &Journal..."
+#, kde-format
 msgid "New &Journal…"
-msgstr "Nova Ĵ&urnalo..."
+msgstr "Nova Ta&glibro…"
 
 #: actionmanager.cpp:596
 #, kde-format
 msgctxt "@info:status"
 msgid "Create a new Journal"
-msgstr "Kreu novan Revuon"
+msgstr "Krei novan Taglibron"
 
 #: actionmanager.cpp:597
 #, kde-format
 msgctxt "@info:tooltip"
 msgid "Create a new Journal"
-msgstr "Kreu novan Revuon"
+msgstr "Kreu novan Taglibron"
 
 #: actionmanager.cpp:598
 #, kde-format
@@ -926,10 +917,9 @@ msgid "Starts a dialog that allows you to create a new Journal entry."
 msgstr "Lanĉas dialogon, kiu ebligas al vi krei novan taglibran enskribon."
 
 #: actionmanager.cpp:603
-#, fuzzy, kde-format
-#| msgid "Configure View..."
+#, kde-format
 msgid "Configure View…"
-msgstr "Agordi Vidon..."
+msgstr "Agordi Vidon…"
 
 #: actionmanager.cpp:604
 #, kde-format
@@ -964,10 +954,9 @@ msgid "&Show"
 msgstr "&Montri"
 
 #: actionmanager.cpp:618 actionmanager.cpp:1303 actionmanager.cpp:1342
-#, fuzzy, kde-format
-#| msgid "&Edit"
+#, kde-format
 msgid "&Edit…"
-msgstr "&Redakti"
+msgstr "R&edakti…"
 
 #: actionmanager.cpp:627
 #, kde-format
@@ -979,10 +968,9 @@ msgstr "Igi Subfarendon Se&ndependa"
 #. mACollection, "activate_alarm" );
 #. ************************* SCHEDULE MENU *******************************
 #: actionmanager.cpp:639
-#, fuzzy, kde-format
-#| msgid "&Publish Item Information..."
+#, kde-format
 msgid "&Publish Item Information…"
-msgstr "&Publikigi Erajn Informojn..."
+msgstr "&Publikigi Erajn Informojn…"
 
 #: actionmanager.cpp:646
 #, kde-format
@@ -1011,16 +999,14 @@ msgid "Request Chan&ge"
 msgstr "Peti Ŝa&nĝon"
 
 #: actionmanager.cpp:686
-#, fuzzy, kde-format
-#| msgid "&Mail Free Busy Information..."
+#, kde-format
 msgid "&Mail Free Busy Information…"
-msgstr "Retpoŝti Libera/Okupita-Infor&mon..."
+msgstr "Retpoŝti Libera/Okupita-Infor&mon…"
 
 #: actionmanager.cpp:691
-#, fuzzy, kde-format
-#| msgid "&Send as iCalendar..."
+#, kde-format
 msgid "&Send as iCalendar…"
-msgstr "&Sendu kiel iCalendar..."
+msgstr "&Sendi kiel iCalendar…"
 
 #: actionmanager.cpp:698
 #, kde-format
@@ -1053,28 +1039,24 @@ msgid "Show Calendar Manager"
 msgstr "Montri Kalendaran Administranton"
 
 #: actionmanager.cpp:749
-#, fuzzy, kde-format
-#| msgid "Configure &Date && Time..."
+#, kde-format
 msgid "Configure &Date && Time…"
-msgstr "Agordi &Daton && Tempon..."
+msgstr "Agordi &Daton && Horon…"
 
 #: actionmanager.cpp:753
-#, fuzzy, kde-format
-#| msgid "Manage View &Filters..."
+#, kde-format
 msgid "Manage View &Filters…"
-msgstr "Administri Vidajn &Filtrilojn..."
+msgstr "Administri Vidajn &Filtrilojn…"
 
 #: actionmanager.cpp:757
-#, fuzzy, kde-format
-#| msgid "Manage T&ags..."
+#, kde-format
 msgid "Manage T&ags…"
-msgstr "&Administri Etikedojn..."
+msgstr "&Administri Etikedojn…"
 
 #: actionmanager.cpp:765
-#, fuzzy, kde-format
-#| msgid "&Configure KOrganizer..."
+#, kde-format
 msgid "&Configure KOrganizer…"
-msgstr "Agordi &KOrganizer..."
+msgstr "Agordi &KOrganizer…"
 
 #: actionmanager.cpp:843
 #, kde-format
@@ -1139,7 +1121,7 @@ msgstr "Eraro"
 #: actionmanager.cpp:1082
 #, kde-format
 msgid "Could not start control module for date and time format."
-msgstr "Ne eblis lanĉi kontrolmodulon por data kaj hora formato."
+msgstr "Ne eblis lanĉi regmodulon por data kaj hora formato."
 
 #: actionmanager.cpp:1261
 #, kde-format
@@ -1147,10 +1129,9 @@ msgid "&Show Event"
 msgstr "&Montri Eventon"
 
 #: actionmanager.cpp:1264
-#, fuzzy, kde-format
-#| msgid "&Edit Event..."
+#, kde-format
 msgid "&Edit Event…"
-msgstr "&Redakti Eventon..."
+msgstr "R&edakti Eventon…"
 
 #: actionmanager.cpp:1267
 #, kde-format
@@ -1163,10 +1144,9 @@ msgid "&Show To-do"
 msgstr "&Montri Faron"
 
 #: actionmanager.cpp:1278 kontactplugin/korganizer/todosummarywidget.cpp:321
-#, fuzzy, kde-format
-#| msgid "&Edit To-do..."
+#, kde-format
 msgid "&Edit To-do…"
-msgstr "&Redakti Farendon..."
+msgstr "R&edakti Farendon…"
 
 #: actionmanager.cpp:1281 kontactplugin/korganizer/todosummarywidget.cpp:323
 #, kde-format
@@ -1285,12 +1265,10 @@ msgid "Lets you search for a keyword in your calendars"
 msgstr "Permesas serĉi ŝlosilvorton en viaj kalendaroj"
 
 #: akonadicollectionview.cpp:411
-#, fuzzy, kde-format
-#| msgctxt "Displayed grayed-out inside the textbox, verb to search"
-#| msgid "Search"
+#, kde-format
 msgctxt "@info/plain Displayed grayed-out inside the textbox, verb to search"
 msgid "Search…"
-msgstr "Serĉi"
+msgstr "Serĉi…"
 
 #: akonadicollectionview.cpp:495 manageshowcollectionproperties.cpp:76
 #, kde-format
@@ -1299,12 +1277,10 @@ msgid "Properties of Calendar Folder %1"
 msgstr "Propraĵoj de Kalendara Dosierujo %1"
 
 #: akonadicollectionview.cpp:507
-#, fuzzy, kde-format
-#| msgctxt "@action:inmenu"
-#| msgid "&Set Folder Color..."
+#, kde-format
 msgctxt "@action:inmenu"
 msgid "&Set Folder Color…"
-msgstr "Meti Do&sieruj-Koloron..."
+msgstr "Meti Do&sieruj-Koloron…"
 
 #: akonadicollectionview.cpp:513
 #, kde-format
@@ -1313,12 +1289,10 @@ msgid "Set as &Default Folder"
 msgstr "Meti kiel &Defaŭlta Dosierujo"
 
 #: akonadicollectionview.cpp:518
-#, fuzzy, kde-format
-#| msgctxt "@action:inmenu"
-#| msgid "Serverside Subscription..."
+#, kde-format
 msgctxt "@action:inmenu"
 msgid "Serverside Subscription…"
-msgstr "Servilflanka Abono..."
+msgstr "Servilflanka Abono…"
 
 #: akonadicollectionview.cpp:563
 #, kde-format
@@ -1377,7 +1351,7 @@ msgstr "Ĉio finita: %1 (%2)"
 #: calendarview.cpp:673
 #, kde-format
 msgid "Journal of %1"
-msgstr "Revuo de %1"
+msgstr "Taglibro de %1"
 
 #: calendarview.cpp:722
 #, kde-format
@@ -1492,7 +1466,7 @@ msgstr "Konfirmo de KOrganizer"
 #: calendarview.cpp:1614
 #, kde-format
 msgid "&Dissociate"
-msgstr "&Disocigi"
+msgstr "&Malassociigi"
 
 #: calendarview.cpp:1620
 #, kde-format
@@ -1975,10 +1949,9 @@ msgid "Event Viewer"
 msgstr "Event Viewer"
 
 #: dialog/koeventviewerdialog.cpp:40
-#, fuzzy, kde-format
-#| msgid "&Edit"
+#, kde-format
 msgid "Edit…"
-msgstr "&Redakti"
+msgstr "Redakti…"
 
 #: dialog/koeventviewerdialog.cpp:41
 #, kde-format
@@ -2089,11 +2062,10 @@ msgid "&Show"
 msgstr "&Montri"
 
 #: koeventpopupmenu.cpp:45
-#, fuzzy, kde-format
-#| msgid "&Edit"
+#, kde-format
 msgctxt "@action:inmenu"
 msgid "&Edit…"
-msgstr "&Redakti"
+msgstr "Redakti…"
 
 #: koeventpopupmenu.cpp:47
 #, kde-format
@@ -2102,20 +2074,16 @@ msgid "&Delete"
 msgstr "&Forigi"
 
 #: koeventpopupmenu.cpp:51
-#, fuzzy, kde-format
-#| msgctxt "@action:inmenu"
-#| msgid "&Print..."
+#, kde-format
 msgctxt "@action:inmenu"
 msgid "&Print…"
-msgstr "&Presi..."
+msgstr "&Presi…"
 
 #: koeventpopupmenu.cpp:53
-#, fuzzy, kde-format
-#| msgctxt "@action:inmenu"
-#| msgid "Print Previe&w..."
+#, kde-format
 msgctxt "@action:inmenu"
 msgid "Print Previe&w…"
-msgstr "Presa Antaŭ&rigardo..."
+msgstr "Presa Antaŭ&rigardo…"
 
 #: koeventpopupmenu.cpp:74
 #, kde-format
@@ -2172,20 +2140,16 @@ msgid "&Toggle Reminder"
 msgstr "&Baskuligi Rememorigilon"
 
 #: koeventpopupmenu.cpp:129
-#, fuzzy, kde-format
-#| msgctxt "@action:inmenu"
-#| msgid "&Dissociate From Recurrence..."
+#, kde-format
 msgctxt "@action:inmenu"
 msgid "&Dissociate From Recurrence…"
-msgstr "&Malassociigi de Ripetiĝo..."
+msgstr "&Malassociigi de Ripetiĝo…"
 
 #: koeventpopupmenu.cpp:137
-#, fuzzy, kde-format
-#| msgctxt "@action:inmenu"
-#| msgid "Send as iCalendar..."
+#, kde-format
 msgctxt "@action:inmenu"
 msgid "Send as iCalendar…"
-msgstr "Sendi kiel iCalendar..."
+msgstr "Sendi kiel iCalendar…"
 
 #: koeventpopupmenu.cpp:187
 #, kde-format
@@ -2427,10 +2391,9 @@ msgstr[0] "Neniuj venontaj eventoj komencantaj dum la sekva tago"
 msgstr[1] "Neniuj venontaj eventoj komencantaj dum la sekvaj %1 tagoj"
 
 #: kontactplugin/korganizer/apptsummarywidget.cpp:240
-#, fuzzy, kde-format
-#| msgid "&Edit Appointment..."
+#, kde-format
 msgid "&Edit Appointment…"
-msgstr "R&edakti rendevuon..."
+msgstr "R&edakti rendevuon…"
 
 #: kontactplugin/korganizer/apptsummarywidget.cpp:242
 #, kde-format
@@ -2443,12 +2406,10 @@ msgid "Edit Event: \"%1\""
 msgstr "Redakti Eventon: \"%1\""
 
 #: kontactplugin/korganizer/journalplugin.cpp:28
-#, fuzzy, kde-format
-#| msgctxt "@action:inmenu"
-#| msgid "New Journal..."
+#, kde-format
 msgctxt "@action:inmenu"
 msgid "New Journal…"
-msgstr "Nova Taglibro..."
+msgstr "Nova Taglibro…"
 
 #: kontactplugin/korganizer/journalplugin.cpp:31
 #, kde-format
@@ -2474,12 +2435,10 @@ msgstr[0] " tago"
 msgstr[1] " tagoj"
 
 #: kontactplugin/korganizer/korganizerplugin.cpp:44
-#, fuzzy, kde-format
-#| msgctxt "@action:inmenu"
-#| msgid "New Event..."
+#, kde-format
 msgctxt "@action:inmenu"
 msgid "New Event…"
-msgstr "Nova Evento..."
+msgstr "Nova Evento…"
 
 #: kontactplugin/korganizer/korganizerplugin.cpp:47
 #, kde-format
@@ -2589,12 +2548,10 @@ msgid "Next: %1"
 msgstr "Sekva: %1"
 
 #: kontactplugin/korganizer/todoplugin.cpp:40
-#, fuzzy, kde-format
-#| msgctxt "@action:inmenu"
-#| msgid "New To-do..."
+#, kde-format
 msgctxt "@action:inmenu"
 msgid "New To-do…"
-msgstr "Nova Farendo..."
+msgstr "Nova Farendo…"
 
 #: kontactplugin/korganizer/todoplugin.cpp:43
 #, kde-format
@@ -3626,10 +3583,9 @@ msgid "Other Options"
 msgstr "Aliaj Opcioj"
 
 #: prefs/kprefsdialog.cpp:234
-#, fuzzy, kde-format
-#| msgid "Choose..."
+#, kde-format
 msgid "Choose…"
-msgstr "Elekti..."
+msgstr "Elekti…"
 
 #: prefs/kprefsdialog.cpp:765
 #, kde-format
@@ -3736,7 +3692,7 @@ msgstr ""
 #: settings/korganizer.kcfg:44
 #, kde-format
 msgid "Weekly start day:"
-msgstr "Semajna komenca tago:"
+msgstr "Semajna komenctago:"
 
 #. i18n: ectx: tooltip, entry (WeekStartDay), group (Time &amp; Date)
 #: settings/korganizer.kcfg:45
@@ -3921,7 +3877,7 @@ msgstr ""
 #: settings/korganizer.kcfg:110
 #, kde-format
 msgid "Show journals instead of events when in Journal View"
-msgstr "Montru taglibrojn anstataŭ eventojn kiam en Journal View"
+msgstr "Montru taglibrojn anstataŭ eventojn kiam en Taglibra Vido"
 
 #. i18n: ectx: whatsthis, entry (HighlightJournals), group (General View)
 #: settings/korganizer.kcfg:111
@@ -3962,14 +3918,14 @@ msgid ""
 "Select the height of the hour rows in the agenda grid, in pixels. Increasing "
 "this value will make each row in the agenda grid taller."
 msgstr ""
-"Elektu la altecon de la horvicoj en la tagorda krado, en pikseloj. Pliigi ĉi "
-"tiun valoron plialtigos ĉiun vicon en la tagorda krado."
+"Elektu la altecon de la horvicoj en la tagorda krado, en rastrumeroj. Pliigi "
+"ĉi tiun valoron plialtigos ĉiun vicon en la tagorda krado."
 
 #. i18n: ectx: tooltip, entry, group (Agenda View)
 #: settings/korganizer.kcfg:127
 #, kde-format
 msgid "Set the height (in pixels) for an hour in the agenda grid"
-msgstr "Meti la altecon (en pikseloj) por horo en la tagorda krado"
+msgstr "Meti la altecon (en rastrumeroj) por horo en la tagorda krado"
 
 #. i18n: ectx: label, entry (EnableAgendaItemIcons), group (Agenda View)
 #: settings/korganizer.kcfg:134
@@ -4975,10 +4931,9 @@ msgstr "Montri nur elektitajn"
 
 #. i18n: ectx: property (text), widget (QPushButton, mCatEditButton)
 #: ui/filteredit_base.ui:301
-#, fuzzy, kde-format
-#| msgid "Change..."
+#, kde-format
 msgid "Change…"
-msgstr "Ŝanĝi..."
+msgstr "Ŝanĝi…"
 
 #. i18n: ectx: property (whatsThis), widget (QCheckBox, mHideTodosNotAssignedToMeCheck)
 #: ui/filteredit_base.ui:315
@@ -5876,148 +5831,3 @@ msgstr "%1"
 msgctxt "4 digit year"
 msgid "%1"
 msgstr "%1"
-
-#~ msgid "Import &Calendar..."
-#~ msgstr "Importi &Kalendaron..."
-
-#~ msgid "&Edit..."
-#~ msgstr "R&edakti..."
-
-#~ msgctxt ""
-#~ "@info/plain Displayed grayed-out inside the textbox, verb to search"
-#~ msgid "Search..."
-#~ msgstr "Serĉi..."
-
-#~ msgid "Edit..."
-#~ msgstr "Redakti..."
-
-#~ msgctxt "@action:inmenu"
-#~ msgid "&Edit..."
-#~ msgstr "&Redakto"
-
-#~ msgid "Day begins at"
-#~ msgstr "Tago komenciĝas je"
-
-#~ msgid ""
-#~ "Enter the start time for events here. This time should be the earliest "
-#~ "time that you use for events, as it will be displayed at the top."
-#~ msgstr ""
-#~ "Enigu la komencan tempon por eventoj ĉi tie. Ĉi tiu tempo devus esti la "
-#~ "plej frua tempo, kiun vi uzas por eventoj, ĉar ĝi estos montrata supre."
-
-#~ msgid "Use holiday regions:"
-#~ msgstr "Uzi feriajn regionojn:"
-
-#~ msgid ""
-#~ "Select which regions you want to use the holidays here. Defined holidays "
-#~ "are shown as non-working days in the date navigator, the agenda view, etc."
-#~ msgstr ""
-#~ "Elektu kiujn regionojn vi volas uzi la feriojn ĉi tie. Difinitaj ferioj "
-#~ "estas montritaj kiel nelaborataj tagoj en la datnavigilo, la tagorda "
-#~ "vido, ktp."
-
-#~ msgid "Exclude holidays"
-#~ msgstr "Ekskludi feriojn"
-
-#~ msgid ""
-#~ "Check this box to prevent KOrganizer from marking the working hours on "
-#~ "holidays."
-#~ msgstr ""
-#~ "Marku ĉi tiun skatolon por malhelpi KOrganizer marki la laborhorojn dum "
-#~ "ferioj."
-
-#~ msgid "Text"
-#~ msgstr "Teksto"
-
-#~ msgid "Numeric Value"
-#~ msgstr "Nombra Valoro"
-
-#~ msgid "Boolean"
-#~ msgstr "Bulea"
-
-#~ msgid "Selection"
-#~ msgstr "Elekto"
-
-#~ msgid "Date & Time"
-#~ msgstr "Dato & Tempo"
-
-#~ msgid "Date"
-#~ msgstr "Dato"
-
-#~ msgid "<qt>Do you really want to delete '<b>%1</b>'?</qt>"
-#~ msgstr "<qt>Ĉu vi vere volas forigi '<b>%1</b>'?</qt>"
-
-#~ msgid "Import Page"
-#~ msgstr "Import Paĝo"
-
-#~ msgid "Designer Files"
-#~ msgstr "Designer Dosieroj"
-
-#~ msgid ""
-#~ "<qt><b>Warning:</b> Qt Designer could not be found. It is probably not "
-#~ "installed. You will only be able to import existing designer files.</qt>"
-#~ msgstr ""
-#~ "<qt><b>Averto:</b> Qt Designer ne troviĝis. Ĝi verŝajne ne estas "
-#~ "instalita. Vi nur povos importi ekzistantajn dezajnajn dosierojn.</qt>"
-
-#~ msgid "Available Pages"
-#~ msgstr "Disponeblaj Paĝoj"
-
-#~ msgid "Preview of Selected Page"
-#~ msgstr "Antaŭrigardo de Elektita Paĝo"
-
-#~ msgid ""
-#~ "<qt><p>This section allows you to add your own GUI Elements ('<i>Widgets</"
-#~ "i>') to store your own values into %1. Proceed as described below:</"
-#~ "p><ol><li>Click on '<i>Edit with Qt Designer</i>'</li><li>In the dialog, "
-#~ "select '<i>Widget</i>', then click <i>OK</i></li><li>Add your widgets to "
-#~ "the form</li><li>Save the file in the directory proposed by Qt Designer</"
-#~ "li><li>Close Qt Designer</li></ol><p>In case you already have a designer "
-#~ "file (*.ui) located somewhere on your hard disk, simply choose '<i>Import "
-#~ "Page</i>'</p><p><b>Important:</b> The name of each input widget you place "
-#~ "within the form must start with '<i>X_</i>'; so if you want the widget to "
-#~ "correspond to your custom entry '<i>X-Foo</i>', set the widget's <i>name</"
-#~ "i> property to '<i>X_Foo</i>'.</p><p><b>Important:</b> The widget will "
-#~ "edit custom fields with an application name of %2.  To change the "
-#~ "application name to be edited, set the widget name in Qt Designer.</p></"
-#~ "qt>"
-#~ msgstr ""
-#~ "<qt><p>Ĉi tiu sekcio permesas al vi aldoni viajn proprajn GUI-Elementojn "
-#~ "('<i>Widgets</i>') por konservi viajn proprajn valorojn en %1. Sekvu kiel "
-#~ "priskribite sube:</p><ol><li>Alklaku '<i>Redakti per Qt Designer</i>'</"
-#~ "li><li>En la dialogo, elektu '<i>Fenestraĵo</i>', tiam alklaku <i>Bone</"
-#~ "i></li><li>Aldonu viajn fenestraĵojn al la formularo</li><li>Konservu la "
-#~ "dosieron en la dosierujo proponita de Qt Designer</li><li>Fermu Qt "
-#~ "Designer</li></ol><p>Se vi jam havas dezajnistan dosieron (*.ui) "
-#~ "situantan ie sur via malmola disko, simple elektu '<i>Importi Paĝon</i>'</"
-#~ "p><p><b>Grava:</b> La nomo de ĉiu eniga fenestraĵo, kiun vi metas en la "
-#~ "formularon, devas komenciĝi per '<i>X_</i>'; do se vi volas, ke la "
-#~ "fenestraĵo respondu al via propra enskribo '<i>X-Foo</i>', agordu la "
-#~ "proprecon <i>nomo</i> de la fenestraĵo al '<i>X_Foo</i>'.</p><p><b>Grave:"
-#~ "</b> La fenestraĵo redaktos proprajn kampojn kun aplika nomo %2. Por "
-#~ "ŝanĝi la redaktotan aplikaĵon, agordu la fenestraĵan nomon en Qt Designer."
-#~ "</p></qt>"
-
-#~ msgid "<a href=\"whatsthis:%1\">How does this work?</a>"
-#~ msgstr "<a href=\"whatsthis:%1\">Kiel ĉi tio funkcias?</a>"
-
-#~ msgid "Delete Page"
-#~ msgstr "Forigi Paĝon"
-
-#~ msgid "Import Page..."
-#~ msgstr "Importi paĝon..."
-
-#~ msgid "Edit with Qt Designer..."
-#~ msgstr "Redakti per Qt Designer..."
-
-#~ msgid "Key:"
-#~ msgstr "Ŝlosilo:"
-
-#~ msgid "Type:"
-#~ msgstr "Tipo:"
-
-#~ msgid "Classname:"
-#~ msgstr "Klasnomo:"
-
-#~ msgid "Description:"
-#~ msgstr "Priskribo:"

@@ -8,7 +8,7 @@ msgstr ""
 "Project-Id-Version: korganizer\n"
 "Report-Msgid-Bugs-To: https://bugs.kde.org\n"
 "POT-Creation-Date: 2024-05-12 00:39+0000\n"
-"PO-Revision-Date: 2024-01-02 05:26+0100\n"
+"PO-Revision-Date: 2024-05-12 03:57+0200\n"
 "Last-Translator: Temuri Doghonadze <temuri.doghonadze@gmail.com>\n"
 "Language-Team: Georgian <kde-i18n-doc@kde.org>\n"
 "Language: ka\n"
@@ -291,11 +291,9 @@ msgid "Hide menu bar"
 msgstr "მენიუს ზოლის დამალვა"
 
 #: actionmanager.cpp:243
-#, fuzzy, kde-format
-#| msgctxt "@title:window"
-#| msgid "Import Calendar"
+#, kde-format
 msgid "Import &Calendar…"
-msgstr "კალენდრის შემოტანა"
+msgstr "&კალენდრის შემოტანა…"
 
 #: actionmanager.cpp:244
 #, kde-format
@@ -320,10 +318,9 @@ msgstr ""
 "შემცველობის მიმდინარე კალენრის კოლექციაში შემოტანა."
 
 #: actionmanager.cpp:253
-#, fuzzy, kde-format
-#| msgid "Get New Calendars..."
+#, kde-format
 msgid "Get New Calendars…"
-msgstr "მიიღეთ ახალი კალენდრები..."
+msgstr "მიიღეთ ახალი კალენდრები…"
 
 #: actionmanager.cpp:254
 #, kde-format
@@ -359,10 +356,9 @@ msgid "The downloaded events will be merged into your current calendar."
 msgstr "გადმოწერილი მოვლენები თქვენს მიმდინარე კალენდარში ჩაისმება."
 
 #: actionmanager.cpp:305
-#, fuzzy, kde-format
-#| msgid "Export as &iCalendar..."
+#, kde-format
 msgid "Export as &iCalendar…"
-msgstr "ICalender-ის გატანა..."
+msgstr "&iCalender-ის გატანა…"
 
 #: actionmanager.cpp:306
 #, kde-format
@@ -386,10 +382,9 @@ msgstr ""
 "გაიტანოთ."
 
 #: actionmanager.cpp:314
-#, fuzzy, kde-format
-#| msgid "Archive O&ld Incidences..."
+#, kde-format
 msgid "Archive O&ld Incidences…"
-msgstr "ძველი &ინციდენტების დაარქივება..."
+msgstr "ძველი &ინციდენტების დაარქივება…"
 
 #: actionmanager.cpp:315
 #, kde-format
@@ -839,10 +834,9 @@ msgid "&Week"
 msgstr "&კვირა"
 
 #: actionmanager.cpp:566 kodaymatrix.cpp:484
-#, fuzzy, kde-format
-#| msgid "New E&vent..."
+#, kde-format
 msgid "New E&vent…"
-msgstr "ახალი &მოვლენა..."
+msgstr "ახალი &მოვლენა…"
 
 #: actionmanager.cpp:567
 #, kde-format
@@ -867,10 +861,9 @@ msgstr ""
 "შემხსენებლებით, დამსწრეებით, გამეორებებით და ა.შ."
 
 #: actionmanager.cpp:576 kodaymatrix.cpp:485
-#, fuzzy, kde-format
-#| msgid "New &To-do..."
+#, kde-format
 msgid "New &To-do…"
-msgstr "&ახალი განრიგი..."
+msgstr "&ახალი განრიგი…"
 
 #: actionmanager.cpp:577
 #, kde-format
@@ -895,16 +888,14 @@ msgstr ""
 "შემხსენებლებით, დამსწრეებით, გამეორებებით და ა.შ."
 
 #: actionmanager.cpp:587
-#, fuzzy, kde-format
-#| msgid "New Su&b-to-do..."
+#, kde-format
 msgid "New Su&b-to-do…"
-msgstr "ახალი &ქვეგანრიგი..."
+msgstr "ახალი &ქვეგანრიგი…"
 
 #: actionmanager.cpp:595 kodaymatrix.cpp:486
-#, fuzzy, kde-format
-#| msgid "New &Journal..."
+#, kde-format
 msgid "New &Journal…"
-msgstr "&ახალი ჟურნალი..."
+msgstr "&ახალი ჟურნალი…"
 
 #: actionmanager.cpp:596
 #, kde-format
@@ -925,10 +916,9 @@ msgid "Starts a dialog that allows you to create a new Journal entry."
 msgstr "გაჩვენებთ ფანჯარას, სადაც ახალი ჟურნალის ჩანაწერის შექმნა შეგიძლიათ."
 
 #: actionmanager.cpp:603
-#, fuzzy, kde-format
-#| msgid "Configure View..."
+#, kde-format
 msgid "Configure View…"
-msgstr "ხედის მორგება..."
+msgstr "ხედის მორგება…"
 
 #: actionmanager.cpp:604
 #, kde-format
@@ -963,10 +953,9 @@ msgid "&Show"
 msgstr "&ჩვენება"
 
 #: actionmanager.cpp:618 actionmanager.cpp:1303 actionmanager.cpp:1342
-#, fuzzy, kde-format
-#| msgid "&Edit"
+#, kde-format
 msgid "&Edit…"
-msgstr "&რედაქტირება"
+msgstr "&ჩასწორება…"
 
 #: actionmanager.cpp:627
 #, kde-format
@@ -978,10 +967,9 @@ msgstr "ქვეგასაკეთებლის დამოუკიდ�
 #. mACollection, "activate_alarm" );
 #. ************************* SCHEDULE MENU *******************************
 #: actionmanager.cpp:639
-#, fuzzy, kde-format
-#| msgid "&Publish Item Information..."
+#, kde-format
 msgid "&Publish Item Information…"
-msgstr "ელემენტის ინფორმაციის &გამოცემა..."
+msgstr "ელემენტის ინფორმაციის &გამოცემა…"
 
 #: actionmanager.cpp:646
 #, kde-format
@@ -1010,16 +998,14 @@ msgid "Request Chan&ge"
 msgstr "ცვლილების &მოთხოვნა"
 
 #: actionmanager.cpp:686
-#, fuzzy, kde-format
-#| msgid "&Mail Free Busy Information..."
+#, kde-format
 msgid "&Mail Free Busy Information…"
-msgstr "თავისუფალი/დაკავებულის ინფორმაციის &ელფოსტით გაგზავნა..."
+msgstr "თავისუფალი/დაკავებულის ინფორმაციის &ელფოსტით გაგზავნა…"
 
 #: actionmanager.cpp:691
-#, fuzzy, kde-format
-#| msgid "&Send as iCalendar..."
+#, kde-format
 msgid "&Send as iCalendar…"
-msgstr "&iCalendar-ის სახით გაგზავნა..."
+msgstr "&iCalendar-ის სახით გაგზავნა…"
 
 #: actionmanager.cpp:698
 #, kde-format
@@ -1052,28 +1038,24 @@ msgid "Show Calendar Manager"
 msgstr "კალენდრის მმართველის ჩვენება"
 
 #: actionmanager.cpp:749
-#, fuzzy, kde-format
-#| msgid "Configure &Date && Time..."
+#, kde-format
 msgid "Configure &Date && Time…"
-msgstr "&თარიღისა და დროის მორგება..."
+msgstr "&თარიღისა და დროის მორგება…"
 
 #: actionmanager.cpp:753
-#, fuzzy, kde-format
-#| msgid "Manage View &Filters..."
+#, kde-format
 msgid "Manage View &Filters…"
-msgstr "ხედის &ფილტრების მართვა..."
+msgstr "ხედის &ფილტრების მართვა…"
 
 #: actionmanager.cpp:757
-#, fuzzy, kde-format
-#| msgid "Manage T&ags..."
+#, kde-format
 msgid "Manage T&ags…"
-msgstr "&ჭდეების მართვა..."
+msgstr "&ჭდეების მართვა…"
 
 #: actionmanager.cpp:765
-#, fuzzy, kde-format
-#| msgid "&Configure KOrganizer..."
+#, kde-format
 msgid "&Configure KOrganizer…"
-msgstr "KOrganizer-ის &მორგება..."
+msgstr "KOrganizer-ის &მორგება…"
 
 #: actionmanager.cpp:843
 #, kde-format
@@ -1146,10 +1128,9 @@ msgid "&Show Event"
 msgstr "&მოვლენის ჩვენება"
 
 #: actionmanager.cpp:1264
-#, fuzzy, kde-format
-#| msgid "&Edit Event..."
+#, kde-format
 msgid "&Edit Event…"
-msgstr "&მოვლენის ჩასწორება..."
+msgstr "&მოვლენის ჩასწორება…"
 
 #: actionmanager.cpp:1267
 #, kde-format
@@ -1162,10 +1143,9 @@ msgid "&Show To-do"
 msgstr "&გეგმის ჩვენება"
 
 #: actionmanager.cpp:1278 kontactplugin/korganizer/todosummarywidget.cpp:321
-#, fuzzy, kde-format
-#| msgid "&Edit To-do..."
+#, kde-format
 msgid "&Edit To-do…"
-msgstr "&გეგმის ჩასწორება.."
+msgstr "&გეგმის ჩასწორება…"
 
 #: actionmanager.cpp:1281 kontactplugin/korganizer/todosummarywidget.cpp:323
 #, kde-format
@@ -1286,12 +1266,10 @@ msgid "Lets you search for a keyword in your calendars"
 msgstr "საშუალებას გაძლევთ, კალენდარში საკვანძო სიტყვა იპოვოთ"
 
 #: akonadicollectionview.cpp:411
-#, fuzzy, kde-format
-#| msgctxt "Displayed grayed-out inside the textbox, verb to search"
-#| msgid "Search"
+#, kde-format
 msgctxt "@info/plain Displayed grayed-out inside the textbox, verb to search"
 msgid "Search…"
-msgstr "ძებნა"
+msgstr "ძებნა…"
 
 #: akonadicollectionview.cpp:495 manageshowcollectionproperties.cpp:76
 #, kde-format
@@ -1300,12 +1278,10 @@ msgid "Properties of Calendar Folder %1"
 msgstr "კალენდრის საქაღალდის თვისებები: %1"
 
 #: akonadicollectionview.cpp:507
-#, fuzzy, kde-format
-#| msgctxt "@action:inmenu"
-#| msgid "&Set Folder Color..."
+#, kde-format
 msgctxt "@action:inmenu"
 msgid "&Set Folder Color…"
-msgstr "საქაღალდის სახელის დაყენება ..."
+msgstr "საქაღალდის ფერის დაყენება …"
 
 #: akonadicollectionview.cpp:513
 #, kde-format
@@ -1314,12 +1290,10 @@ msgid "Set as &Default Folder"
 msgstr "&ნაგულისხმევ საქაღალდედ დაყენება"
 
 #: akonadicollectionview.cpp:518
-#, fuzzy, kde-format
-#| msgctxt "@action:inmenu"
-#| msgid "Serverside Subscription..."
+#, kde-format
 msgctxt "@action:inmenu"
 msgid "Serverside Subscription…"
-msgstr "სერვერის მხარეს გამოწერა..."
+msgstr "სერვერის მხარეს გამოწერა…"
 
 #: akonadicollectionview.cpp:563
 #, kde-format
@@ -1971,10 +1945,9 @@ msgid "Event Viewer"
 msgstr "მოვლენების ნახავ"
 
 #: dialog/koeventviewerdialog.cpp:40
-#, fuzzy, kde-format
-#| msgid "&Edit"
+#, kde-format
 msgid "Edit…"
-msgstr "&რედაქტირება"
+msgstr "ჩასწორება…"
 
 #: dialog/koeventviewerdialog.cpp:41
 #, kde-format
@@ -2086,11 +2059,10 @@ msgid "&Show"
 msgstr "&ჩვენება"
 
 #: koeventpopupmenu.cpp:45
-#, fuzzy, kde-format
-#| msgid "&Edit"
+#, kde-format
 msgctxt "@action:inmenu"
 msgid "&Edit…"
-msgstr "&რედაქტირება"
+msgstr "&ჩასწორება…"
 
 #: koeventpopupmenu.cpp:47
 #, kde-format
@@ -2099,20 +2071,16 @@ msgid "&Delete"
 msgstr "&წაშლა"
 
 #: koeventpopupmenu.cpp:51
-#, fuzzy, kde-format
-#| msgctxt "@action:inmenu"
-#| msgid "&Print..."
+#, kde-format
 msgctxt "@action:inmenu"
 msgid "&Print…"
-msgstr "&ამობეჭდვა..."
+msgstr "&ბეჭდვა…"
 
 #: koeventpopupmenu.cpp:53
-#, fuzzy, kde-format
-#| msgctxt "@action:inmenu"
-#| msgid "Print Previe&w..."
+#, kde-format
 msgctxt "@action:inmenu"
 msgid "Print Previe&w…"
-msgstr "&დასაბეჭდის გადახედვა..."
+msgstr "&დასაბეჭდის მინიატურა…"
 
 #: koeventpopupmenu.cpp:74
 #, kde-format
@@ -2169,20 +2137,16 @@ msgid "&Toggle Reminder"
 msgstr "შემხსენებლის &გადართვა"
 
 #: koeventpopupmenu.cpp:129
-#, fuzzy, kde-format
-#| msgctxt "@action:inmenu"
-#| msgid "&Dissociate From Recurrence..."
+#, kde-format
 msgctxt "@action:inmenu"
 msgid "&Dissociate From Recurrence…"
-msgstr "&გამეორებიდან ამოღება..."
+msgstr "&გამეორებიდან ამოღება…"
 
 #: koeventpopupmenu.cpp:137
-#, fuzzy, kde-format
-#| msgctxt "@action:inmenu"
-#| msgid "Send as iCalendar..."
+#, kde-format
 msgctxt "@action:inmenu"
 msgid "Send as iCalendar…"
-msgstr "გაგზავნა, როგორც iCalendar-ის ფაილი..."
+msgstr "გაგზავნა, როგორც iCalendar-ის ფაილი…"
 
 #: koeventpopupmenu.cpp:187
 #, kde-format
@@ -2426,10 +2390,9 @@ msgstr[0] "ხვალ მომავალი მოვლენები ა
 msgstr[1] "შემდეგ %1 დღეში მომავალი მოვლენები არ გაქვთ"
 
 #: kontactplugin/korganizer/apptsummarywidget.cpp:240
-#, fuzzy, kde-format
-#| msgid "&Edit Appointment..."
+#, kde-format
 msgid "&Edit Appointment…"
-msgstr "შეხვედრის ჩასწორება..."
+msgstr "შეხვედრის ჩასწორება…"
 
 #: kontactplugin/korganizer/apptsummarywidget.cpp:242
 #, kde-format
@@ -2442,12 +2405,10 @@ msgid "Edit Event: \"%1\""
 msgstr "მოვლენის ჩასწორება \"%1\""
 
 #: kontactplugin/korganizer/journalplugin.cpp:28
-#, fuzzy, kde-format
-#| msgctxt "@action:inmenu"
-#| msgid "New Journal..."
+#, kde-format
 msgctxt "@action:inmenu"
 msgid "New Journal…"
-msgstr "ახალი ჟურნალი..."
+msgstr "ახალი ჟურნალი…"
 
 #: kontactplugin/korganizer/journalplugin.cpp:31
 #, kde-format
@@ -2473,12 +2434,10 @@ msgstr[0] " დღე"
 msgstr[1] " დღე"
 
 #: kontactplugin/korganizer/korganizerplugin.cpp:44
-#, fuzzy, kde-format
-#| msgctxt "@action:inmenu"
-#| msgid "New Event..."
+#, kde-format
 msgctxt "@action:inmenu"
 msgid "New Event…"
-msgstr "ახალი მოვლენა..."
+msgstr "ახალი მოვლენა…"
 
 #: kontactplugin/korganizer/korganizerplugin.cpp:47
 #, kde-format
@@ -2590,12 +2549,10 @@ msgid "Next: %1"
 msgstr "შემდეგი: %1"
 
 #: kontactplugin/korganizer/todoplugin.cpp:40
-#, fuzzy, kde-format
-#| msgctxt "@action:inmenu"
-#| msgid "New To-do..."
+#, kde-format
 msgctxt "@action:inmenu"
 msgid "New To-do…"
-msgstr "ახალი განრიგი..."
+msgstr "ახალი განრიგი…"
 
 #: kontactplugin/korganizer/todoplugin.cpp:43
 #, kde-format
@@ -3628,10 +3585,9 @@ msgid "Other Options"
 msgstr "სხვა პარამეტრები"
 
 #: prefs/kprefsdialog.cpp:234
-#, fuzzy, kde-format
-#| msgid "Choose..."
+#, kde-format
 msgid "Choose…"
-msgstr "არჩევა..."
+msgstr "აირჩიეთ…"
 
 #: prefs/kprefsdialog.cpp:765
 #, kde-format
@@ -4978,10 +4934,9 @@ msgstr "მხოლოდ მონიშნულების ჩვენე�
 
 #. i18n: ectx: property (text), widget (QPushButton, mCatEditButton)
 #: ui/filteredit_base.ui:301
-#, fuzzy, kde-format
-#| msgid "Change..."
+#, kde-format
 msgid "Change…"
-msgstr "შეცვლა..."
+msgstr "ცვლილება…"
 
 #. i18n: ectx: property (whatsThis), widget (QCheckBox, mHideTodosNotAssignedToMeCheck)
 #: ui/filteredit_base.ui:315
