@@ -21,7 +21,7 @@ msgstr ""
 "Project-Id-Version: korganizer\n"
 "Report-Msgid-Bugs-To: https://bugs.kde.org\n"
 "POT-Creation-Date: 2024-04-12 00:38+0000\n"
-"PO-Revision-Date: 2024-01-05 01:16+0100\n"
+"PO-Revision-Date: 2024-05-12 16:32+0200\n"
 "Last-Translator: Eloy Cuadra <ecuadra@eloihr.net>\n"
 "Language-Team: Spanish <kde-l10n-es@kde.org>\n"
 "Language: es\n"
@@ -30,7 +30,7 @@ msgstr ""
 "Content-Transfer-Encoding: 8bit\n"
 "First-Translator: Boris Wesslowski <Boris@Wesslowski.com>\n"
 "Second-Translator: Pablo de Vicente <pvicentea@nexo.es>\n"
-"X-Generator: Lokalize 23.08.4\n"
+"X-Generator: Lokalize 24.02.2\n"
 "Plural-Forms: nplurals=2; plural=n != 1;\n"
 
 #, kde-format
@@ -1081,8 +1081,8 @@ msgstr "&Configurar KOrganizer..."
 #, kde-format
 msgid "1 incidence was imported successfully."
 msgid_plural "%1 incidences were imported successfully."
-msgstr[0] "Se importó satisfactoriamente una incidencia."
-msgstr[1] "Se importaron satisfactoriamente %1 incidencias."
+msgstr[0] "Se ha importado correctamente 1 incidencia."
+msgstr[1] "Se han importado correctamente %1 incidencias."
 
 #: actionmanager.cpp:846
 #, kde-format
@@ -1114,7 +1114,7 @@ msgstr "Seleccionar archivo de calendario que importar"
 #: actionmanager.cpp:975
 #, kde-format
 msgid "An error occurred: %1"
-msgstr "Ocurrió un error: %1"
+msgstr "Ha ocurrido un error: %1"
 
 #: actionmanager.cpp:993
 #, kde-format
@@ -1227,7 +1227,7 @@ msgstr "Rehacer"
 #: actionmanager.cpp:1643
 #, kde-format
 msgid "URL '%1' is invalid."
-msgstr "El URL «%1» no es válida."
+msgstr "La URL «%1» no es válida."
 
 #: actionmanager.cpp:1648
 #, kde-format
@@ -1239,11 +1239,11 @@ msgid ""
 "you select add, then a new calendar will be created for you automatically.</"
 "p>"
 msgstr ""
-"<p>¿Le gustaría mezclar este elemento de calendario con un calendario "
+"<p>¿Le gustaría fusionar este elemento de calendario con un calendario "
 "existente o usarlo para crear un calendario completamente nuevo?</p><p>Si "
-"usted selecciona mezclar, entonces se le dará la oportunidad de seleccionar "
-"el calendario destino.</p><p>Si selecciona añadir, entonces se creará "
-"automáticamente un nuevo calendario para usted.</p>"
+"selecciona fusionar, se le dará la oportunidad de seleccionar el calendario "
+"destino.</p><p>Si selecciona añadir, se creará automáticamente un nuevo "
+"calendario.</p>"
 
 #: actionmanager.cpp:1656
 #, kde-format
@@ -1398,7 +1398,9 @@ msgstr "¿Borrar elemento?"
 #: calendarview.cpp:867
 #, kde-format
 msgid "Paste failed: unable to determine a valid target date."
-msgstr "Falló el pegado: no se encontró una fecha de destino válida."
+msgstr ""
+"La operación de pegado ha fallado: no se ha encontrado una fecha de destino "
+"válida."
 
 #: calendarview.cpp:1297
 #, kde-format
@@ -1712,11 +1714,11 @@ msgid "%1 to-do was ignored because it has uncompleted or read-only children."
 msgid_plural ""
 "%1 to-dos were ignored because they have uncompleted or read-only children."
 msgstr[0] ""
-"La tarea pendiente %1 se ignoró porque tenía un hijo incompleto o de solo "
+"Se ha ignorado %1 tarea pendiente porque tenía un hijo incompleto o de solo "
 "lectura."
 msgstr[1] ""
-"Se ignoraron %1 tareas pendientes porque tenían hijos incompletos o de solo "
-"lectura."
+"Se han ignorado %1 tareas pendientes porque tenían hijos incompletos o de "
+"solo lectura."
 
 #: calendarview.cpp:2739 calendarview.cpp:2744
 #, kde-format
@@ -1729,7 +1731,8 @@ msgstr[1] "Se han purgado %1 tareas pendientes completadas."
 #, kde-format
 msgid "An error occurred while purging completed to-dos: %1"
 msgstr ""
-"Ocurrió un error mientras se purgaban tareas pendientes completadas: %1"
+"Ha ocurrido un error mientras se purgaban las tareas pendientes completadas: "
+"%1"
 
 #: calendarview.cpp:2804
 #, kde-format
@@ -1737,7 +1740,7 @@ msgid ""
 "You created an incidence in a calendar that is currently filtered out.\n"
 "On the left sidebar, enable it in the calendar manager to see the incidence."
 msgstr ""
-"Usted creó una incidencia en un calendario que está filtrado actualmente.\n"
+"Ha creado una incidencia en un calendario que está filtrado actualmente.\n"
 "En el panel lateral izquierdo, actívela en el gestor de calendarios para "
 "verla."
 
@@ -1748,9 +1751,9 @@ msgid ""
 "You can enable it through the calendar manager (Settings->Sidebar->Show "
 "Calendar Manager)"
 msgstr ""
-"Usted creó una incidencia en un calendario que está filtrado actualmente.\n"
-"Usted puede activarla mediante el gestor de calendarios (Preferencias-> "
-"Panel lateral->Mostrar gestor de calendarios)"
+"Ha creado una incidencia en un calendario que está filtrado actualmente.\n"
+"Puede activarla mediante el gestor de calendarios (Preferencias-> Panel "
+"lateral->Mostrar gestor de calendarios)"
 
 #: collectiongeneralpage.cpp:37
 #, kde-format
@@ -1795,7 +1798,7 @@ msgid ""
 "Check this box if you do not want to receive reminders from items associated "
 "with this calendar."
 msgstr ""
-"Marque esta casilla si usted no quiere recibir recordatorios desde elementos "
+"Marque esta casilla si no quiere recibir recordatorios de elementos "
 "asociados con este calendario."
 
 #: collectiongeneralpage.cpp:58
@@ -1815,8 +1818,8 @@ msgstr "Establecer icono personalizado"
 msgctxt "@info:whatsthis"
 msgid "Check this box if you want to set a custom icon for this folder."
 msgstr ""
-"Marque esta casilla si usted quiere establecer un icono personalizado para "
-"esta carpeta."
+"Marque esta casilla si quiere definir un icono personalizado para esta "
+"carpeta."
 
 #. i18n: ectx: Menu (file)
 #: data/korganizer_part.rc:4 data/korganizerui.rc:4
@@ -2014,15 +2017,16 @@ msgid ""
 "Invalid search expression, cannot perform the search. Please enter a search "
 "expression using the wildcard characters '*' and '?' where needed."
 msgstr ""
-"Expresión de búsqueda no válida, no se puede realizar la búsqueda. Por "
-"favor, introduzca una expresión de búsqueda usando los caracteres comodines "
-"«*» y «?» donde sea necesario."
+"Expresión de búsqueda no válida, no se puede realizar la búsqueda. "
+"Introduzca una expresión de búsqueda usando los caracteres comodines «*» y "
+"«?» donde sea necesario."
 
 #: dialog/searchdialog.cpp:157
 #, kde-format
 msgctxt "@info"
 msgid "No items were found that match your search pattern."
-msgstr "No se encontraron elementos que concuerden con su patrón de búsqueda."
+msgstr ""
+"No se han encontrado elementos que coincidan con el patrón de búsqueda."
 
 #: dialog/searchdialog.cpp:158
 #, kde-format
@@ -2219,8 +2223,7 @@ msgstr "Mostrar solo los eventos de hoy"
 #, kde-format
 msgid "Check this box if you want to see events occurring on this date only."
 msgstr ""
-"Marque esta casilla si usted quiere ver los eventos que sucedan solo en esta "
-"fecha."
+"Marque esta casilla si quiere ver los eventos que sucedan solo en esta fecha."
 
 #. i18n: ectx: property (text), widget (QRadioButton, mDateTodayButton)
 #: kontactplugin/korganizer/apptsummaryconfig_base.ui:26
@@ -2243,8 +2246,8 @@ msgid ""
 "Check this box if you want to see events that start sometime during the next "
 "31 days."
 msgstr ""
-"Marque esta casilla si usted quiere ver los eventos que comiencen durante "
-"los próximos 31 días."
+"Marque esta casilla si quiere ver los eventos que comiencen durante los "
+"próximos 31 días."
 
 #. i18n: ectx: property (text), widget (QRadioButton, mDateMonthButton)
 #: kontactplugin/korganizer/apptsummaryconfig_base.ui:42
@@ -2267,8 +2270,8 @@ msgid ""
 "Check this box if you want to specify the number of days in the future for "
 "upcoming events."
 msgstr ""
-"Marque esta casilla si usted quiere especificar el número de días para los "
-"eventos futuros."
+"Marque esta casilla si quiere especificar el número de días para los eventos "
+"futuros."
 
 #. i18n: ectx: property (text), widget (QRadioButton, mDateRangeButton)
 #: kontactplugin/korganizer/apptsummaryconfig_base.ui:63
@@ -2334,7 +2337,7 @@ msgid ""
 "resource in your calendar."
 msgstr ""
 "Active esta opción para incluir cumpleaños desde su calendario en el resumen "
-"de eventos futuros. Esta opción solo está disponible si usted está usando el "
+"de eventos futuros. Esta opción solo está disponible si está usando el "
 "recurso de cumpleaños en su calendario."
 
 #. i18n: ectx: property (text), widget (QCheckBox, mShowBirthdaysFromCal)
@@ -2362,8 +2365,8 @@ msgid ""
 "Birthdays resource in your calendar."
 msgstr ""
 "Active esta opción para incluir aniversarios desde su calendario en el "
-"resumen de eventos futuros. Esta opción solo está disponible si usted está "
-"usando el recurso de cumpleaños en su calendario."
+"resumen de eventos futuros. Esta opción solo está disponible si está usando "
+"el recurso de cumpleaños en su calendario."
 
 #. i18n: ectx: property (text), widget (QCheckBox, mShowAnniversariesFromCal)
 #. i18n: ectx: property (text), widget (QCheckBox, mShowAnniversariesFromCalBox)
@@ -2397,8 +2400,8 @@ msgid ""
 "Check this box if you want the summary to show events belonging to your "
 "calendars only."
 msgstr ""
-"Marque esta casilla si usted quiere que el resumen muestre eventos que "
-"pertenezcan solo a sus calendarios."
+"Marque esta casilla si quiere que el resumen muestre eventos que pertenezcan "
+"solo a sus calendarios."
 
 #. i18n: ectx: property (text), widget (QCheckBox, mShowMineOnly)
 #: kontactplugin/korganizer/apptsummaryconfig_base.ui:169
@@ -2452,8 +2455,7 @@ msgctxt "@info:whatsthis"
 msgid ""
 "You will be presented with a dialog where you can create a new journal entry."
 msgstr ""
-"Se le mostrará un diálogo donde usted puede crear una nueva entrada de "
-"diario."
+"Se le mostrará un diálogo donde puede crear una nueva entrada de diario."
 
 #: kontactplugin/korganizer/kcmapptsummary.cpp:71
 #: kontactplugin/korganizer/kcmtodosummary.cpp:63
@@ -2482,8 +2484,7 @@ msgctxt "@info:whatsthis"
 msgid ""
 "You will be presented with a dialog where you can create a new event item."
 msgstr ""
-"Se le mostrará un diálogo donde usted podrá crear un nuevo elemento de "
-"evento."
+"Se le mostrará un diálogo donde podrá crear un nuevo elemento de evento."
 
 #: kontactplugin/korganizer/korganizerplugin.cpp:146
 #: kontactplugin/korganizer/todoplugin.cpp:145
@@ -2597,7 +2598,7 @@ msgctxt "@info:whatsthis"
 msgid ""
 "You will be presented with a dialog where you can create a new to-do item."
 msgstr ""
-"Se le mostrará un diálogo donde usted podrá crear un nuevo elemento de tarea "
+"Se le mostrará un diálogo donde podrá crear un nuevo elemento de tarea "
 "pendiente."
 
 #. i18n: ectx: property (windowTitle), widget (QWidget, TodoSummaryConfig_Base)
@@ -2623,8 +2624,8 @@ msgstr "Mostrar tareas pendientes vencidas solo hoy"
 #, kde-format
 msgid "Check this box if you want to see To-dos due on this date only."
 msgstr ""
-"Marque esta casilla si usted quiere ver las tareas pendientes vencidas que "
-"sucedan solo en esta fecha."
+"Marque esta casilla si quiere ver las tareas pendientes vencidas que sucedan "
+"solo en esta fecha."
 
 #. i18n: ectx: property (toolTip), widget (QRadioButton, mDateMonthButton)
 #: kontactplugin/korganizer/todosummaryconfig_base.ui:44
@@ -2655,8 +2656,8 @@ msgid ""
 "Check this box if you want specify the number of days in the future for "
 "pending To-dos."
 msgstr ""
-"Marque esta casilla si usted quiere especificar él número de das en el "
-"futuro para tareas pendientes."
+"Marque esta casilla si quiere especificar él número de das en el futuro para "
+"tareas pendientes."
 
 #. i18n: ectx: property (toolTip), widget (QSpinBox, mCustomDays)
 #: kontactplugin/korganizer/todosummaryconfig_base.ui:87
@@ -2693,8 +2694,8 @@ msgid ""
 "Check this box if you do not want to see To-dos that have already been "
 "completed."
 msgstr ""
-"Marque esta casilla si usted no quiere mostrar las tareas pendientes que ya "
-"se han terminado."
+"Marque esta casilla si no quiere mostrar las tareas pendientes que ya se han "
+"terminado."
 
 #. i18n: ectx: property (text), widget (QCheckBox, mHideCompletedBox)
 #: kontactplugin/korganizer/todosummaryconfig_base.ui:145
@@ -2713,7 +2714,7 @@ msgstr "Ocultar las tareas pendientes sin fecha de vencimiento"
 #, kde-format
 msgid "Check this box if you do not want to see open-ended To-dos."
 msgstr ""
-"Marque esta casilla si usted no quiere mostrar tareas pendientes abiertas "
+"Marque esta casilla si no quiere mostrar tareas pendientes abiertas "
 "finalizadas."
 
 #. i18n: ectx: property (text), widget (QCheckBox, mHideOpenEndedBox)
@@ -2735,8 +2736,8 @@ msgid ""
 "Check this box if you do not want to see To-dos with a start date in the "
 "future."
 msgstr ""
-"Marque esta casilla si usted no quiere mostrar tareas pendientes que "
-"comiencen en una fecha en el futuro."
+"Marque esta casilla si no quiere mostrar tareas pendientes que comiencen en "
+"una fecha en el futuro."
 
 #. i18n: ectx: property (text), widget (QCheckBox, mHideUnstartedBox)
 #: kontactplugin/korganizer/todosummaryconfig_base.ui:177
@@ -2779,7 +2780,7 @@ msgid ""
 "Check this box if you do not want to see To-dos that are past their due date "
 "but have not yet been completed."
 msgstr ""
-"Marque esta casilla si usted no quiere mostrar las tareas pendientes que han "
+"Marque esta casilla si no quiere mostrar las tareas pendientes que han "
 "pasado su fecha de vencimiento, pero no se han terminado todavía."
 
 #. i18n: ectx: property (text), widget (QCheckBox, mHideOverdueBox)
@@ -2801,8 +2802,8 @@ msgid ""
 "Check this box if you want the summary to show To-dos belonging to your "
 "calendars only."
 msgstr ""
-"Marque esta casilla si usted quiere que el resumen muestre tareas pendientes "
-"que pertenezcan solo a sus calendarios."
+"Marque esta casilla si quiere que el resumen muestre tareas pendientes que "
+"pertenezcan solo a sus calendarios."
 
 #. i18n: ectx: property (text), widget (QCheckBox, mShowMineOnly)
 #: kontactplugin/korganizer/todosummaryconfig_base.ui:228
@@ -2929,8 +2930,8 @@ msgid ""
 "Check this box if you want to see special occasions occurring on this date "
 "only."
 msgstr ""
-"Marque esta casilla si usted quiere ver las ocasiones especiales que sucedan "
-"solo en esta fecha."
+"Marque esta casilla si quiere ver las ocasiones especiales que sucedan solo "
+"en esta fecha."
 
 #. i18n: ectx: property (toolTip), widget (QRadioButton, mDateMonthButton)
 #: kontactplugin/specialdates/sdsummaryconfig_base.ui:44
@@ -2945,8 +2946,8 @@ msgid ""
 "Check this box if you want to see special occasions that start sometime "
 "during the next 31 days."
 msgstr ""
-"Marque esta casilla si usted quiere ver las ocasiones especiales que "
-"comiencen durante los próximos 31 días."
+"Marque esta casilla si quiere ver las ocasiones especiales que comiencen "
+"durante los próximos 31 días."
 
 #. i18n: ectx: property (toolTip), widget (QRadioButton, mDateRangeButton)
 #: kontactplugin/specialdates/sdsummaryconfig_base.ui:65
@@ -2961,7 +2962,7 @@ msgid ""
 "Check this box if you want to specify the number of days in the future for "
 "upcoming special occasions."
 msgstr ""
-"Marque esta casilla si usted quiere especificar el número de días para las "
+"Marque esta casilla si quiere especificar el número de días para las "
 "ocasiones especiales futuras."
 
 #. i18n: ectx: property (toolTip), widget (QSpinBox, mCustomDays)
@@ -3280,9 +3281,9 @@ msgid ""
 "Please properly configure at least 1 work day in the Time and Date "
 "preferences."
 msgstr ""
-"No es posible mostrar el trabajo semanal, puesto que no se han configurado "
-"días de trabajo. Por favor, configure adecuadamente al menos un día en las "
-"preferencias de fecha y hora."
+"No se puede mostrar el trabajo semanal, puesto que no se han configurado los "
+"días de trabajo. Configure adecuadamente al menos un día en las preferencias "
+"de fecha y hora."
 
 #: prefs/koprefsdialogcolorsandfonts.cpp:43
 #, kde-format
@@ -3751,8 +3752,8 @@ msgid ""
 "Select the first day of each week. Normally, you can ignore this since it is "
 "set in your locale."
 msgstr ""
-"Seleccione el primer día de cada semana. Normalmente, usted puede ignorar "
-"esto, dado que se establece en su configuración regional."
+"Seleccione el primer día de cada semana. Normalmente, puede ignorar esto, ya "
+"que se define en su configuración regional."
 
 #. i18n: ectx: label, entry (WorkingHoursStart), group (Time &amp; Date)
 #: settings/korganizer.kcfg:51
@@ -3803,11 +3804,11 @@ msgid ""
 "Colors configuration page. Look for the \"Busy days background color\" "
 "setting."
 msgstr ""
-"Marque esta casilla si usted quiere que el fondo de la vista de mes se "
-"rellene con un color diferente en los días que tienen al menos un evento "
-"marcado como ocupado. Además, usted puede cambiar el color de fondo que se "
-"usa en esta opción en la página de configuración de colores. Busque la "
-"configuración de «Mostrar color de fondo para ocupado en la vista de mes»."
+"Marque esta casilla si quiere que el fondo de la vista de mes se rellene con "
+"un color diferente en los días que tienen al menos un evento marcado como "
+"ocupado. Además, puede cambiar el color de fondo que se usa en esta opción "
+"en la página de configuración de colores. Busque la configuración de "
+"«Mostrar color de fondo para ocupado en la vista de mes»."
 
 #. i18n: ectx: label, entry, group (General View)
 #: settings/korganizer.kcfg:73
@@ -4211,8 +4212,8 @@ msgid ""
 msgstr ""
 "Seleccione la opción «Solo calendario» si desea dibujar los elementos del "
 "calendario (tanto su interior como su borde) con el color de su calendario. "
-"Por favor, use la página de configuración de colores y tipos de letra para "
-"definir estos colores."
+"Use la página de configuración de colores y tipos de letra para definir "
+"estos colores."
 
 #. i18n: ectx: tooltip, entry, group (Agenda View)
 #: settings/korganizer.kcfg:189
@@ -4231,10 +4232,10 @@ msgid ""
 "you can change the background color used for this option on the Colors "
 "configuration page. Look for the \"Busy days background color\" setting."
 msgstr ""
-"Marque esta casilla si usted quiere que el fondo de la agenda se rellene con "
-"un color diferente en los días que tienen al menos un evento marcado como "
-"ocupado. Además, usted puede cambiar el color de fondo que se usa en esta "
-"opción en la página de configuración de colores. Busque la configuración de "
+"Marque esta casilla si quiere que el fondo de la agenda se rellene con un "
+"color diferente en los días que tienen al menos un evento marcado como "
+"ocupado. Además, puede cambiar el color de fondo que se usa en esta opción "
+"en la página de configuración de colores. Busque la configuración de "
 "«Mostrar color de fondo para días ocupados»."
 
 #. i18n: ectx: label, entry (AgendaViewCalendarDisplay), group (Agenda View)
@@ -4628,9 +4629,9 @@ msgid ""
 "When you have an all day event marked as busy, you can have a different "
 "agenda or month view background color for that day. Select the color here."
 msgstr ""
-"Cuando usted tiene todos los eventos de un día marcados como ocupados, usted "
-"puede tener un color de fondo distinto para la vista de agenda o vista de "
-"mes de ese día. Seleccione el color aquí."
+"Cuando tiene todos los eventos de un día marcados como ocupados, puede tener "
+"un color de fondo distinto para la vista de agenda o vista de mes de ese "
+"día. Seleccione el color aquí."
 
 #. i18n: ectx: label, entry, group (Colors)
 #. i18n: ectx: label, entry, group (Theme/Month view)
@@ -4953,8 +4954,8 @@ msgid ""
 "items will be hidden, that have been marked finished longer than 24 hours "
 "ago."
 msgstr ""
-"Aquí usted puede proporcionar el número de días que un elemento de tarea "
-"pendiente tiene que haberse completado para ocultarse en la lista de tareas "
+"Aquí puede proporcionar el número de días que un elemento de tarea pendiente "
+"tiene que haberse completado para ocultarse en la lista de tareas "
 "pendientes. Si selecciona «Inmediatamente», se ocultarán todas las tareas "
 "pendientes completadas. Si, por ejemplo, elige el valor 1, se ocultarán "
 "todos los elementos de tareas pendientes que se hayan marcado como "
@@ -5146,7 +5147,7 @@ msgid ""
 "published here.\n"
 "Ask the server administrator for this information."
 msgstr ""
-"Introduzca aquí el URL del servidor en el que quiera que se publique su "
+"Introduzca aquí la URL del servidor en el que quiera que se publique su "
 "información de disponibilidad.\n"
 "Pida al administrador del servidor esta información."
 
@@ -5315,14 +5316,14 @@ msgid ""
 "\n"
 "https://kolab2.example.com/freebusy/user.xfb"
 msgstr ""
-"Introduzca aquí el URL del servidor en el que publicar la información de "
+"Introduzca aquí la URL del servidor en el que publicar la información de "
 "disponibilidad.\n"
 "Pregunte esta información al administrador del servidor.\n"
 "Aquí tiene un URL de ejemplo para un servidor Kolab2:\n"
 "\n"
 "https://kolab2.example.com/freebusy/\n"
 "\n"
-"De otra forma, usted puede especificar una ruta completa a la "
+"De forma alternativa, puede especificar una ruta completa a la "
 "disponibilidad. Por ejemplo:\n"
 "\n"
 "https://kolab2.example.com/freebusy/user.xfb"
