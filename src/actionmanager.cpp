@@ -240,7 +240,7 @@ void ActionManager::initActions()
     //~~~~~~~~~~~~~~~~~~~~~~~~ IMPORT / EXPORT ~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~
     /** Import Action **/
     // TODO: Icon
-    mImportAction = new QAction(i18n("Import &Calendar…"), this);
+    mImportAction = new QAction(i18nc("@action", "Import &Calendar…"), this);
     mImportAction->setStatusTip(i18nc("@info:status", "Import a calendar"));
     mImportAction->setToolTip(i18nc("@info:tooltip", "Import an iCalendar or vCalendar file"));
     mImportAction->setWhatsThis(i18nc("@info:whatsthis",
@@ -302,7 +302,7 @@ void ActionManager::initActions()
     QAction *action = nullptr;
     /** Export Action **/
     // TODO: Icon
-    action = new QAction(i18n("Export as &iCalendar…"), this);
+    action = new QAction(i18nc("@action", "Export as &iCalendar…"), this);
     action->setStatusTip(i18nc("@info:status", "Export calendar to file"));
     action->setToolTip(i18nc("@info:tooltip", "Export your calendar to an iCalendar file"));
     action->setWhatsThis(i18nc("@info:whatsthis", "Allows you to export your entire calendar collection to one iCalendar file."));
@@ -311,7 +311,7 @@ void ActionManager::initActions()
 
     /** Archive Action **/
     // TODO: Icon
-    action = new QAction(i18n("Archive O&ld Incidences…"), this);
+    action = new QAction(i18nc("@action", "Archive O&ld Incidences…"), this);
     action->setStatusTip(i18nc("@info:status", "Archive events and to-dos to a file"));
     action->setToolTip(i18nc("@info:tooltip", "Archive old events and to-dos to an iCalendar file"));
     action->setWhatsThis(i18nc("@info:whatsthis",
@@ -323,7 +323,7 @@ void ActionManager::initActions()
 
     /** Purge Todos Action **/
     // TODO: Icon
-    action = new QAction(i18n("Pur&ge Completed To-dos"), mACollection);
+    action = new QAction(i18nc("@action", "Pur&ge Completed To-dos"), mACollection);
     action->setStatusTip(i18nc("@info:status", "Purge completed to-dos"));
     action->setToolTip(i18nc("@info:tooltip", "Remove completed to-dos from your calendar"));
     action->setWhatsThis(i18nc("@info:whatsthis",
@@ -457,7 +457,7 @@ void ActionManager::initActions()
 
     /** Refresh Action **/
     // TODO: icon
-    action = new QAction(i18n("&Refresh"), this);
+    action = new QAction(i18nc("@action", "&Refresh"), this);
     action->setStatusTip(i18nc("@info:status", "Refresh"));
     action->setToolTip(i18nc("@info:tooltip", "Refresh the display"));
     action->setWhatsThis(i18nc("@info:whatsthis",
@@ -584,7 +584,7 @@ void ActionManager::initActions()
 
     /** New Sub-To-do Action **/
     // TODO: icon
-    mNewSubtodoAction = new QAction(i18n("New Su&b-to-do…"), this);
+    mNewSubtodoAction = new QAction(i18nc("@action", "New Su&b-to-do…"), this);
     // TODO: statustip, tooltip, whatsthis
     mACollection->addAction(QStringLiteral("new_subtodo"), mNewSubtodoAction);
     connect(mNewSubtodoAction, &QAction::triggered, this, &ActionManager::slotNewSubTodo);
@@ -624,7 +624,7 @@ void ActionManager::initActions()
     connect(mDeleteIncidenceAction, &QAction::triggered, mCalendarView, qOverload<>(&CalendarView::deleteIncidence));
     mACollection->setDefaultShortcut(mDeleteIncidenceAction, QKeySequence(Qt::Key_Delete));
 
-    action = new QAction(i18n("&Make Sub-to-do Independent"), this);
+    action = new QAction(i18nc("@action", "&Make Sub-to-do Independent"), this);
     mACollection->addAction(QStringLiteral("unsub_todo"), action);
     connect(action, &QAction::triggered, mCalendarView, &CalendarView::todo_unsub);
     action->setEnabled(false);
@@ -651,7 +651,7 @@ void ActionManager::initActions()
     mSendInvitation->setEnabled(false);
     connect(mCalendarView, &CalendarView::organizerEventsSelected, mSendInvitation, &QAction::setEnabled);
 
-    mRequestUpdate = new QAction(i18n("Re&quest Update"), this);
+    mRequestUpdate = new QAction(i18nc("@action", "Re&quest Update"), this);
     mACollection->addAction(QStringLiteral("schedule_refresh"), mRequestUpdate);
     connect(mRequestUpdate, &QAction::triggered, this, [this](bool) {
         mCalendarView->schedule_refresh();
@@ -659,7 +659,7 @@ void ActionManager::initActions()
     mRequestUpdate->setEnabled(false);
     connect(mCalendarView, &CalendarView::groupEventsSelected, mRequestUpdate, &QAction::setEnabled);
 
-    mSendCancel = new QAction(i18n("Send &Cancellation to Attendees"), this);
+    mSendCancel = new QAction(i18nc("@action", "Send &Cancellation to Attendees"), this);
     mACollection->addAction(QStringLiteral("schedule_cancel"), mSendCancel);
     connect(mSendCancel, &QAction::triggered, this, [this](bool) {
         mCalendarView->schedule_cancel();
@@ -683,7 +683,7 @@ void ActionManager::initActions()
     mRequestChange->setEnabled(false);
     connect(mCalendarView, &CalendarView::groupEventsSelected, mRequestChange, &QAction::setEnabled);
 
-    action = new QAction(i18n("&Mail Free Busy Information…"), this);
+    action = new QAction(i18nc("@action", "&Mail Free Busy Information…"), this);
     mACollection->addAction(QStringLiteral("mail_freebusy"), action);
     connect(action, &QAction::triggered, mCalendarView, &CalendarView::mailFreeBusy);
     action->setEnabled(true);
@@ -695,7 +695,7 @@ void ActionManager::initActions()
     });
     mForwardEvent->setEnabled(false);
 
-    action = new QAction(i18n("&Upload Free Busy Information"), this);
+    action = new QAction(i18nc("@action", "&Upload Free Busy Information"), this);
     mACollection->addAction(QStringLiteral("upload_freebusy"), action);
     connect(action, &QAction::triggered, mCalendarView, &CalendarView::uploadFreeBusy);
     action->setEnabled(true);
@@ -746,7 +746,7 @@ void ActionManager::initActions()
     mShowMenuBarAction->setChecked(KOPrefs::instance()->showMenuBar());
     toggleMenubar(true);
 
-    action = new QAction(i18n("Configure &Date && Time…"), this);
+    action = new QAction(i18nc("@action", "Configure &Date && Time…"), this);
     mACollection->addAction(QStringLiteral("conf_datetime"), action);
     connect(action, &QAction::triggered, this, &ActionManager::configureDateTime);
 
@@ -754,7 +754,7 @@ void ActionManager::initActions()
     mACollection->addAction(QStringLiteral("edit_filters"), action);
     connect(action, &QAction::triggered, mCalendarView, &CalendarView::editFilters);
 
-    action = new QAction(i18n("Manage T&ags…"), this);
+    action = new QAction(i18nc("@action", "Manage T&ags…"), this);
     mACollection->addAction(QStringLiteral("edit_categories"), action);
     connect(action, &QAction::triggered, mCalendarView->dialogManager(), &KODialogManager::showCategoryEditDialog);
 
