@@ -1654,8 +1654,8 @@ void ActionManager::importCalendar(const QUrl &url)
     const int answer = KMessageBox::questionTwoActionsCancel(dialogParent(),
                                                              questionText,
                                                              i18nc("@title:window", "Import Calendar"),
-                                                             KGuiItem(i18n("Merge into existing calendar")),
-                                                             KGuiItem(i18n("Add as new calendar")));
+                                                             KGuiItem(i18nc("@action:button", "Merge into existing calendar")),
+                                                             KGuiItem(i18nc("@action:button", "Add as new calendar")));
 
     switch (answer) {
     case KMessageBox::ButtonCode::PrimaryAction: // merge

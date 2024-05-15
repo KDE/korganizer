@@ -1611,7 +1611,7 @@ void CalendarView::dissociateOccurrences(const Akonadi::Item &item, QDate date)
                                                       "from the recurrence?",
                                                       QLocale::system().toString(date, QLocale::LongFormat)),
                                                  i18nc("@title:window", "KOrganizer Confirmation"),
-                                                 KGuiItem(i18n("&Dissociate")),
+                                                 KGuiItem(i18nc("@action:button", "&Dissociate")),
                                                  KStandardGuiItem::cancel());
 
         doOnlyThis = (answer == KMessageBox::ButtonCode::PrimaryAction);
@@ -1623,8 +1623,8 @@ void CalendarView::dissociateOccurrences(const Akonadi::Item &item, QDate date)
                                                             "dissociate future ones?",
                                                             QLocale::system().toString(date, QLocale::LongFormat)),
                                                        i18nc("@title:window", "KOrganizer Confirmation"),
-                                                       KGuiItem(i18n("&Only Dissociate This One")),
-                                                       KGuiItem(i18n("&Also Dissociate Future Ones")));
+                                                       KGuiItem(i18nc("@action:button", "&Only Dissociate This One")),
+                                                       KGuiItem(i18nc("@action:button", "&Also Dissociate Future Ones")));
 
         doOnlyThis = (answer == KMessageBox::ButtonCode::PrimaryAction);
         doFuture = (answer == KMessageBox::ButtonCode::SecondaryAction);
@@ -2291,8 +2291,8 @@ int CalendarView::questionIndependentChildren(const Akonadi::Item &item)
                                                         "delete the to-do with all its sub-to-dos?",
                                                         incidence->summary()),
                                                    i18nc("@title:window", "KOrganizer Confirmation"),
-                                                   KGuiItem(i18n("Delete Only This")),
-                                                   KGuiItem(i18n("Delete All")));
+                                                   KGuiItem(i18nc("@action:button", "Delete Only This")),
+                                                   KGuiItem(i18nc("@action:button", "Delete All")));
 
         if (km == KMessageBox::ButtonCode::SecondaryAction) {
             km = KMessageBox::Continue;
@@ -2350,7 +2350,7 @@ bool CalendarView::deleteIncidence(const Akonadi::Item &item, bool force)
                                                          "and all its recurrences?",
                                                          incidence->summary()),
                                                     i18n("KOrganizer Confirmation"),
-                                                    KGuiItem(i18n("Delete All")));
+                                                    KGuiItem(i18nc("@action:button", "Delete All")));
         } else {
             QDateTime itemDateTime(itemDate, {}, QTimeZone::LocalTime);
             bool isFirst = !incidence->recurrence()->getPreviousDateTime(itemDateTime).isValid();
@@ -2462,7 +2462,7 @@ void CalendarView::purgeCompleted()
     int result = KMessageBox::warningContinueCancel(this,
                                                     i18n("Delete all completed to-dos from checked calendars?"),
                                                     i18nc("@title:window", "Purge To-dos"),
-                                                    KGuiItem(i18n("Purge"), QIcon::fromTheme(QStringLiteral("entry-delete"))));
+                                                    KGuiItem(i18nc("@action:button", "Purge"), QIcon::fromTheme(QStringLiteral("entry-delete"))));
 
     if (result == KMessageBox::Continue) {
         mTodoPurger->purgeCompletedTodos();

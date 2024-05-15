@@ -37,8 +37,8 @@ KOEventViewerDialog::KOEventViewerDialog(Akonadi::ETMCalendar *calendar, QWidget
     buttonBox->addButton(user2Button, QDialogButtonBox::ActionRole);
     connect(buttonBox, &QDialogButtonBox::rejected, this, &KOEventViewerDialog::reject);
     setModal(false);
-    KGuiItem::assign(mUser1Button, KGuiItem(i18n("Edit…"), QIcon::fromTheme(QStringLiteral("document-edit"))));
-    KGuiItem::assign(user2Button, KGuiItem(i18n("Show in Context")));
+    KGuiItem::assign(mUser1Button, KGuiItem(i18nc("@action:button", "Edit…"), QIcon::fromTheme(QStringLiteral("document-edit"))));
+    KGuiItem::assign(user2Button, KGuiItem(i18nc("@action:button", "Show in Context")));
     mEventViewer = new CalendarSupport::IncidenceViewer(calendar, this);
     mainLayout->addWidget(mEventViewer);
     mainLayout->addWidget(buttonBox);
