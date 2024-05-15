@@ -39,8 +39,8 @@ const KAboutData SpecialdatesPlugin::aboutData()
                                       KAboutLicense::LGPL,
                                       i18n("Copyright © 2003 Tobias Koenig\n"
                                            "Copyright © 2004–2010 Allen Winter"));
-    aboutData.addAuthor(i18n("Allen Winter"), i18n("Current Maintainer"), QStringLiteral("winter@kde.org"));
-    aboutData.addAuthor(i18n("Tobias Koenig"), QString(), QStringLiteral("tokoe@kde.org"));
+    aboutData.addAuthor(i18nc("@info:credit", "Allen Winter"), i18n("Current Maintainer"), QStringLiteral("winter@kde.org"));
+    aboutData.addAuthor(i18nc("@info:credit", "Tobias Koenig"), QString(), QStringLiteral("tokoe@kde.org"));
     aboutData.setProductName("kontact/specialdates");
     return aboutData;
 }
