@@ -6,7 +6,7 @@ msgid ""
 msgstr ""
 "Project-Id-Version: korganizer\n"
 "Report-Msgid-Bugs-To: https://bugs.kde.org\n"
-"POT-Creation-Date: 2024-05-12 00:39+0000\n"
+"POT-Creation-Date: 2024-05-15 00:39+0000\n"
 "PO-Revision-Date: 2023-05-29 22:20+0400\n"
 "Last-Translator: Kheyyam <xxmn77@gmail.com>\n"
 "Language-Team: Azerbaijani <kde-i18n-doc@kde.org>\n"
@@ -301,6 +301,7 @@ msgstr "Menyu panelini gizlədin"
 #, fuzzy, kde-format
 #| msgctxt "@title:window"
 #| msgid "Import Calendar"
+msgctxt "@action"
 msgid "Import &Calendar…"
 msgstr "Təqvim idxaı edin"
 
@@ -367,6 +368,7 @@ msgstr "Endirilmiş tədbirlər sizin cari təqviminizdə birləşdiriləcəkdir
 #: actionmanager.cpp:305
 #, fuzzy, kde-format
 #| msgid "Export as &iCalendar..."
+msgctxt "@action"
 msgid "Export as &iCalendar…"
 msgstr "&iCalendar kimi ixrac edin..."
 
@@ -394,6 +396,7 @@ msgstr ""
 #: actionmanager.cpp:314
 #, fuzzy, kde-format
 #| msgid "Archive O&ld Incidences..."
+msgctxt "@action"
 msgid "Archive O&ld Incidences…"
 msgstr "Kö&hnə hadisələri arxivləyin..."
 
@@ -422,7 +425,9 @@ msgstr ""
 "təqvim kolleksiyanızdan silinəcək."
 
 #: actionmanager.cpp:326
-#, kde-format
+#, fuzzy, kde-format
+#| msgid "Pur&ge Completed To-dos"
+msgctxt "@action"
 msgid "Pur&ge Completed To-dos"
 msgstr "Başa çatmış tapşırıqları &silin"
 
@@ -653,7 +658,9 @@ msgstr ""
 "Qantt diaqramında göstərir. Hər təqvim ayrıca sətirdə verilir."
 
 #: actionmanager.cpp:460
-#, kde-format
+#, fuzzy, kde-format
+#| msgid "&Refresh"
+msgctxt "@action"
 msgid "&Refresh"
 msgstr "&Təzələmək"
 
@@ -904,6 +911,7 @@ msgstr ""
 #: actionmanager.cpp:587
 #, fuzzy, kde-format
 #| msgid "New Su&b-to-do..."
+msgctxt "@action"
 msgid "New Su&b-to-do…"
 msgstr "Yeni a&lt tapşırırq..."
 
@@ -976,7 +984,9 @@ msgid "&Edit…"
 msgstr "&Düzəliş edin"
 
 #: actionmanager.cpp:627
-#, kde-format
+#, fuzzy, kde-format
+#| msgid "&Make Sub-to-do Independent"
+msgctxt "@action"
 msgid "&Make Sub-to-do Independent"
 msgstr "&Müstəqil olaraq alt-tapşırıq yaradın"
 
@@ -996,12 +1006,16 @@ msgid "Send &Invitation to Attendees"
 msgstr "&İştirakçılara dəvət göndərin"
 
 #: actionmanager.cpp:654
-#, kde-format
+#, fuzzy, kde-format
+#| msgid "Re&quest Update"
+msgctxt "@action"
 msgid "Re&quest Update"
 msgstr "Yenilənmələri &soruşun"
 
 #: actionmanager.cpp:662
-#, kde-format
+#, fuzzy, kde-format
+#| msgid "Send &Cancellation to Attendees"
+msgctxt "@action"
 msgid "Send &Cancellation to Attendees"
 msgstr "&Ləğv etmək haqqında bildiriş göndərin"
 
@@ -1019,6 +1033,7 @@ msgstr "&Dəyişdirilməlidir"
 #: actionmanager.cpp:686
 #, fuzzy, kde-format
 #| msgid "&Mail Free Busy Information..."
+msgctxt "@action"
 msgid "&Mail Free Busy Information…"
 msgstr "P&oçtla sərbəst/məşğul məlumatlarını göndərin..."
 
@@ -1029,7 +1044,9 @@ msgid "&Send as iCalendar…"
 msgstr "iCalendar kimi &göndərin..."
 
 #: actionmanager.cpp:698
-#, kde-format
+#, fuzzy, kde-format
+#| msgid "&Upload Free Busy Information"
+msgctxt "@action"
 msgid "&Upload Free Busy Information"
 msgstr "Sərbəst/məşğul məlumatlarını yükləyin"
 
@@ -1061,6 +1078,7 @@ msgstr "Təqvimlər meneceri"
 #: actionmanager.cpp:749
 #, fuzzy, kde-format
 #| msgid "Configure &Date && Time..."
+msgctxt "@action"
 msgid "Configure &Date && Time…"
 msgstr "&Tarix və vaxt ayarları..."
 
@@ -1073,6 +1091,7 @@ msgstr "&Süzgəclər..."
 #: actionmanager.cpp:757
 #, fuzzy, kde-format
 #| msgid "Manage T&ags..."
+msgctxt "@action"
 msgid "Manage T&ags…"
 msgstr "Y&arlıqlar..."
 

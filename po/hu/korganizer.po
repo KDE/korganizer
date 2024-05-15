@@ -7,7 +7,7 @@ msgid ""
 msgstr ""
 "Project-Id-Version: KDE 4.3\n"
 "Report-Msgid-Bugs-To: https://bugs.kde.org\n"
-"POT-Creation-Date: 2024-05-12 00:39+0000\n"
+"POT-Creation-Date: 2024-05-15 00:39+0000\n"
 "PO-Revision-Date: 2024-03-22 10:20+0100\n"
 "Last-Translator: Kristof Kiszel <ulysses@fsf.hu>\n"
 "Language-Team: Hungarian <kde-l10n-hu@kde.org>\n"
@@ -299,6 +299,7 @@ msgstr "Menüsáv elrejtése"
 #, fuzzy, kde-format
 #| msgctxt "@title:window"
 #| msgid "Import Calendar"
+msgctxt "@action"
 msgid "Import &Calendar…"
 msgstr "Naptár importálása"
 
@@ -366,6 +367,7 @@ msgstr "A letöltött események át lesznek emelve az aktuális naptárba."
 #: actionmanager.cpp:305
 #, fuzzy, kde-format
 #| msgid "Export as &iCalendar..."
+msgctxt "@action"
 msgid "Export as &iCalendar…"
 msgstr "Exportálás i&Calendarként…"
 
@@ -393,6 +395,7 @@ msgstr ""
 #: actionmanager.cpp:314
 #, fuzzy, kde-format
 #| msgid "Archive O&ld Incidences..."
+msgctxt "@action"
 msgid "Archive O&ld Incidences…"
 msgstr "Régi események archivá&lása…"
 
@@ -421,7 +424,9 @@ msgstr ""
 "azokat. Ezek eltávolításra kerülnek a meglévő naptárgyűjteményéből."
 
 #: actionmanager.cpp:326
-#, kde-format
+#, fuzzy, kde-format
+#| msgid "Pur&ge Completed To-dos"
+msgctxt "@action"
 msgid "Pur&ge Completed To-dos"
 msgstr "A lezárt feladatok tö&rlése"
 
@@ -644,7 +649,9 @@ msgid ""
 msgstr ""
 
 #: actionmanager.cpp:460
-#, kde-format
+#, fuzzy, kde-format
+#| msgid "&Refresh"
+msgctxt "@action"
 msgid "&Refresh"
 msgstr "&Frissítés"
 
@@ -901,6 +908,7 @@ msgstr ""
 #: actionmanager.cpp:587
 #, fuzzy, kde-format
 #| msgid "New Su&b-to-do..."
+msgctxt "@action"
 msgid "New Su&b-to-do…"
 msgstr "Új &részfeladat..."
 
@@ -976,7 +984,9 @@ msgid "&Edit…"
 msgstr "Sz&erkesztés"
 
 #: actionmanager.cpp:627
-#, kde-format
+#, fuzzy, kde-format
+#| msgid "&Make Sub-to-do Independent"
+msgctxt "@action"
 msgid "&Make Sub-to-do Independent"
 msgstr "A részf&eladat önállóvá tétele"
 
@@ -996,12 +1006,16 @@ msgid "Send &Invitation to Attendees"
 msgstr "Meg&hívó küldése a résztvevőknek"
 
 #: actionmanager.cpp:654
-#, kde-format
+#, fuzzy, kde-format
+#| msgid "Re&quest Update"
+msgctxt "@action"
 msgid "Re&quest Update"
 msgstr "&Frissítés kérése"
 
 #: actionmanager.cpp:662
-#, kde-format
+#, fuzzy, kde-format
+#| msgid "Send &Cancellation to Attendees"
+msgctxt "@action"
 msgid "Send &Cancellation to Attendees"
 msgstr "&Lemondási értesítés a résztvevőknek"
 
@@ -1019,6 +1033,7 @@ msgstr "Mó&dosítás kérése"
 #: actionmanager.cpp:686
 #, fuzzy, kde-format
 #| msgid "&Mail Free Busy Information..."
+msgctxt "@action"
 msgid "&Mail Free Busy Information…"
 msgstr "A fo&glaltsági információk elküldése levélben…"
 
@@ -1029,7 +1044,9 @@ msgid "&Send as iCalendar…"
 msgstr "&iCalendar-bejegyzésként..."
 
 #: actionmanager.cpp:698
-#, kde-format
+#, fuzzy, kde-format
+#| msgid "&Upload Free Busy Information"
+msgctxt "@action"
 msgid "&Upload Free Busy Information"
 msgstr "A foglaltsági a&datok feltöltése"
 
@@ -1061,6 +1078,7 @@ msgstr "A naptárkezelő megjelenítése"
 #: actionmanager.cpp:749
 #, fuzzy, kde-format
 #| msgid "Configure &Date && Time..."
+msgctxt "@action"
 msgid "Configure &Date && Time…"
 msgstr "A dát&um és az idő beállítása..."
 
@@ -1073,6 +1091,7 @@ msgstr "A nézeti s&zűrők szerkesztése..."
 #: actionmanager.cpp:757
 #, fuzzy, kde-format
 #| msgid "Manage C&ategories..."
+msgctxt "@action"
 msgid "Manage T&ags…"
 msgstr "A k&ategóriák szerkesztése..."
 

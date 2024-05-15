@@ -17,8 +17,8 @@ msgid ""
 msgstr ""
 "Project-Id-Version: korganizer\n"
 "Report-Msgid-Bugs-To: https://bugs.kde.org\n"
-"POT-Creation-Date: 2024-05-12 00:39+0000\n"
-"PO-Revision-Date: 2024-05-13 16:05+0300\n"
+"POT-Creation-Date: 2024-05-15 00:39+0000\n"
+"PO-Revision-Date: 2024-05-14 19:05+0300\n"
 "Last-Translator: Yaron Shahrabani <sh.yaron@gmail.com>\n"
 "Language-Team: צוות התרגום של KDE ישראל\n"
 "Language: he\n"
@@ -27,7 +27,7 @@ msgstr ""
 "Content-Transfer-Encoding: 8bit\n"
 "Plural-Forms: nplurals=4; plural=(n == 1) ? 0 : ((n == 2) ? 1 : ((n > 10 && "
 "n % 10 == 0) ? 2 : 3));\n"
-"X-Generator: Lokalize 23.08.5\n"
+"X-Generator: Lokalize 24.02.2\n"
 
 #, kde-format
 msgctxt "NAME OF TRANSLATORS"
@@ -302,7 +302,9 @@ msgid "Hide menu bar"
 msgstr "הסתרת סרגל תפריטים"
 
 #: actionmanager.cpp:243
-#, kde-format
+#, fuzzy, kde-format
+#| msgid "Import &Calendar…"
+msgctxt "@action"
 msgid "Import &Calendar…"
 msgstr "יי&בוא לוח שנה…"
 
@@ -366,7 +368,9 @@ msgid "The downloaded events will be merged into your current calendar."
 msgstr "האירועים שהורדו ימוזגו לתוך לוח השנה הנוכחי שלך."
 
 #: actionmanager.cpp:305
-#, kde-format
+#, fuzzy, kde-format
+#| msgid "Export as &iCalendar…"
+msgctxt "@action"
 msgid "Export as &iCalendar…"
 msgstr "יי&צוא כ־iCalendar…"
 
@@ -390,7 +394,9 @@ msgid ""
 msgstr "מאפשר לך לייצר את כל אוסף לוחות השנה שלך לקובץ iCalendat יחיד."
 
 #: actionmanager.cpp:314
-#, kde-format
+#, fuzzy, kde-format
+#| msgid "Archive O&ld Incidences…"
+msgctxt "@action"
 msgid "Archive O&ld Incidences…"
 msgstr "העברת מאורעות ישנים ל&ארכיון…"
 
@@ -416,7 +422,9 @@ msgid ""
 msgstr ""
 
 #: actionmanager.cpp:326
-#, kde-format
+#, fuzzy, kde-format
+#| msgid "Pur&ge Completed To-dos"
+msgctxt "@action"
 msgid "Pur&ge Completed To-dos"
 msgstr "ניפוי מטלות &שהושלמו"
 
@@ -627,7 +635,9 @@ msgid ""
 msgstr ""
 
 #: actionmanager.cpp:460
-#, kde-format
+#, fuzzy, kde-format
+#| msgid "&Refresh"
+msgctxt "@action"
 msgid "&Refresh"
 msgstr "&רענון"
 
@@ -865,7 +875,9 @@ msgid ""
 msgstr ""
 
 #: actionmanager.cpp:587
-#, kde-format
+#, fuzzy, kde-format
+#| msgid "New Su&b-to-do…"
+msgctxt "@action"
 msgid "New Su&b-to-do…"
 msgstr "מ&טלת משנה חדשה…"
 
@@ -933,7 +945,9 @@ msgid "&Edit…"
 msgstr "&עריכה…"
 
 #: actionmanager.cpp:627
-#, kde-format
+#, fuzzy, kde-format
+#| msgid "&Make Sub-to-do Independent"
+msgctxt "@action"
 msgid "&Make Sub-to-do Independent"
 msgstr "ה&סבת משימת משנה לעצמאית"
 
@@ -952,12 +966,16 @@ msgid "Send &Invitation to Attendees"
 msgstr "שליחת מי&דע למשתתפים"
 
 #: actionmanager.cpp:654
-#, kde-format
+#, fuzzy, kde-format
+#| msgid "Re&quest Update"
+msgctxt "@action"
 msgid "Re&quest Update"
 msgstr "&בקשת עדכון"
 
 #: actionmanager.cpp:662
-#, kde-format
+#, fuzzy, kde-format
+#| msgid "Send &Cancellation to Attendees"
+msgctxt "@action"
 msgid "Send &Cancellation to Attendees"
 msgstr "שליחת &ביטול לנוכחים"
 
@@ -973,7 +991,9 @@ msgid "Request Chan&ge"
 msgstr "בקשת &שינוי"
 
 #: actionmanager.cpp:686
-#, kde-format
+#, fuzzy, kde-format
+#| msgid "&Mail Free Busy Information…"
+msgctxt "@action"
 msgid "&Mail Free Busy Information…"
 msgstr "שליחת פרטי פנוי/עסוק ב&דוא״ל…"
 
@@ -983,7 +1003,9 @@ msgid "&Send as iCalendar…"
 msgstr "&שליחה כ־iCalendar…"
 
 #: actionmanager.cpp:698
-#, kde-format
+#, fuzzy, kde-format
+#| msgid "&Upload Free Busy Information"
+msgctxt "@action"
 msgid "&Upload Free Busy Information"
 msgstr "ה&עלאת פרטי פנוי/עסוק"
 
@@ -1013,7 +1035,9 @@ msgid "Show Calendar Manager"
 msgstr "הצגת מנהל לוחות שנה"
 
 #: actionmanager.cpp:749
-#, kde-format
+#, fuzzy, kde-format
+#| msgid "Configure &Date && Time…"
+msgctxt "@action"
 msgid "Configure &Date && Time…"
 msgstr "הגדרות &תאריך ושעה…"
 
@@ -1023,7 +1047,9 @@ msgid "Manage View &Filters…"
 msgstr "ניהול מס&נני תצוגה…"
 
 #: actionmanager.cpp:757
-#, kde-format
+#, fuzzy, kde-format
+#| msgid "Manage T&ags…"
+msgctxt "@action"
 msgid "Manage T&ags…"
 msgstr "ניהול ת&גיות…"
 
@@ -1700,7 +1726,7 @@ msgstr "הגדרת שם התיקייה הזאת"
 #, kde-format
 msgctxt "@info:whatsthis"
 msgid "Enter a name here to set the name of this folder."
-msgstr ""
+msgstr "נא למלא שם כאן כדי להגדיר את שם התיקייה הזאת."
 
 #: collectiongeneralpage.cpp:47
 #, kde-format
@@ -1975,7 +2001,7 @@ msgstr "משיכת המאורע מ־Akonadi נכשלה"
 #, kde-format
 msgid ""
 "Failed to retrieve incidence from Akonadi: requested incidence doesn't exist."
-msgstr ""
+msgstr "משיכת המאורע מ־Akonadi נכשלה: המאורע המבוקש לא קיים."
 
 #: kocorehelper.cpp:30
 #, kde-format
@@ -4944,7 +4970,7 @@ msgstr "שם משתמש:"
 #. i18n: ectx: property (whatsThis), widget (QCheckBox, publishSavePassword)
 #. i18n: ectx: property (whatsThis), widget (QCheckBox, retrieveSavePassword)
 #: ui/kogroupwareprefspage.ui:287 ui/kogroupwareprefspage.ui:509
-#, fuzzy, kde-format
+#, kde-format
 msgid ""
 "Check this box to make KOrganizer remember your password and skip asking you "
 "each time it uploads your Free/Busy information, by storing it in the "
@@ -4952,10 +4978,9 @@ msgid ""
 "For security reasons, it is not recommended to store your password in the "
 "configuration file."
 msgstr ""
-"סמן תיבה זו על־מנת לגרום ל־ KOrganizer לזכור את ססמתך ולחדול מלשאול אותך בכל "
-"פעם שהוא שהארגונית מעלה את נתוני פנוי/עסוק, על ידי שמירת הססמה בקובץ "
-"ההגדרות.\n"
-"עקב סיבות אבטחה, אין זה מומלץ לשמור את ססמתך בקובץ ההגדרות."
+"סימון התיבה הזאת יגרום ל־KOrganizer לזכור את הסיסמה שלך ולא לשאול אותך עם כל "
+"פעם שפרטי הפנוי/עסוק שלך נשלחים, על ידי איחסונה בקובץ ההגדרות שלך.\n"
+"מטעמי אבטחה, לא מומלץ לאחסן את הסיסמה שלך בקובץ ההגדרות."
 
 #. i18n: ectx: property (text), widget (QCheckBox, publishSavePassword)
 #: ui/kogroupwareprefspage.ui:290
@@ -4984,24 +5009,24 @@ msgstr "&קבלה"
 
 #. i18n: ectx: property (text), widget (QLabel, TextLabel2)
 #: ui/kogroupwareprefspage.ui:359
-#, fuzzy, kde-format
+#, kde-format
 msgid ""
 "By retrieving Free/Busy information that others have published, you can take "
 "their calendar into account when inviting them to a meeting."
 msgstr ""
-"על ידי קבלה של מידע פנוי/עסוק שאחרים פרסומו, אתה יכול לקחת בחשבון את הלוחות "
-"זמנים של אחרים בזמן שאתה מזמין אותם לפגישה."
+"משיכה של פרטי פנוי/עסוק שפורסמו על ידי אחרים, אפשר לקחת את לוח השנה שלהם "
+"בחשבון בהזמנתם לפגישה."
 
 #. i18n: ectx: property (whatsThis), widget (QCheckBox, retrieveEnable)
 #: ui/kogroupwareprefspage.ui:369
-#, fuzzy, kde-format
+#, kde-format
 msgid ""
 "Check this box to retrieve other people's Free/Busy information "
 "automatically. Note that you have to fill the correct server information to "
 "make this possible."
 msgstr ""
-"סמן תיבה זו על־מנת להשיג מידע פנוי/עסוק של אנשים אחרים באופן אוטומטי. שים־לב "
-"שעליך למלא את מידע השרת המתאים כדי לאפשר זאת."
+"סימון התיבה הזאת תמשוך את פרטי פנוי/עסוק אוטומטית של אחרים. חשוב למלא את "
+"פרטי השרת הנכונים כדי שזה יתאפשר."
 
 #. i18n: ectx: property (text), widget (QCheckBox, retrieveEnable)
 #: ui/kogroupwareprefspage.ui:372

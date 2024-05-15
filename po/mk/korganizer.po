@@ -7,7 +7,7 @@ msgid ""
 msgstr ""
 "Project-Id-Version: korganizer\n"
 "Report-Msgid-Bugs-To: https://bugs.kde.org\n"
-"POT-Creation-Date: 2024-05-12 00:39+0000\n"
+"POT-Creation-Date: 2024-05-15 00:39+0000\n"
 "PO-Revision-Date: 2007-02-28 14:24+0100\n"
 "Last-Translator: Bozidar Proevski <bobibobi@freemail.com.mk>\n"
 "Language-Team: Macedonian <mkde-l10n@lists.sourceforge.net>\n"
@@ -292,6 +292,7 @@ msgstr "Време"
 #: actionmanager.cpp:243
 #, fuzzy, kde-format
 #| msgid "Import Calendar"
+msgctxt "@action"
 msgid "Import &Calendar…"
 msgstr "Внесете календар"
 
@@ -357,6 +358,7 @@ msgstr ""
 #: actionmanager.cpp:305
 #, fuzzy, kde-format
 #| msgid "Import &Calendar..."
+msgctxt "@action"
 msgid "Export as &iCalendar…"
 msgstr "Внеси &календар..."
 
@@ -383,6 +385,7 @@ msgstr ""
 #: actionmanager.cpp:314
 #, fuzzy, kde-format
 #| msgid "Archive O&ld Entries..."
+msgctxt "@action"
 msgid "Archive O&ld Incidences…"
 msgstr "Архивирај ги &старите ставки..."
 
@@ -411,6 +414,7 @@ msgstr ""
 #, fuzzy, kde-format
 #| msgctxt "delete completed to-dos"
 #| msgid "Pur&ge Completed To-dos"
+msgctxt "@action"
 msgid "Pur&ge Completed To-dos"
 msgstr "Избриши &ги довршените задачи"
 
@@ -634,6 +638,7 @@ msgstr ""
 
 #: actionmanager.cpp:460
 #, fuzzy, kde-format
+msgctxt "@action"
 msgid "&Refresh"
 msgstr "Reeh"
 
@@ -886,6 +891,7 @@ msgstr ""
 #: actionmanager.cpp:587
 #, fuzzy, kde-format
 #| msgid "New Su&b-to-do..."
+msgctxt "@action"
 msgid "New Su&b-to-do…"
 msgstr "Нова по&дзадача..."
 
@@ -960,7 +966,9 @@ msgid "&Edit…"
 msgstr "&Уреди..."
 
 #: actionmanager.cpp:627
-#, kde-format
+#, fuzzy, kde-format
+#| msgid "&Make Sub-to-do Independent"
+msgctxt "@action"
 msgid "&Make Sub-to-do Independent"
 msgstr "Направи ја подзадачата &независна"
 
@@ -979,12 +987,15 @@ msgid "Send &Invitation to Attendees"
 msgstr "&Испрати покана на присутните"
 
 #: actionmanager.cpp:654
-#, kde-format
+#, fuzzy, kde-format
+#| msgid "Re&quest response"
+msgctxt "@action"
 msgid "Re&quest Update"
-msgstr ""
+msgstr "&Барај одговор"
 
 #: actionmanager.cpp:662
 #, fuzzy, kde-format
+msgctxt "@action"
 msgid "Send &Cancellation to Attendees"
 msgstr "&Испрати покана на присутните"
 
@@ -1001,6 +1012,7 @@ msgstr "Барај &промена"
 
 #: actionmanager.cpp:686
 #, fuzzy, kde-format
+msgctxt "@action"
 msgid "&Mail Free Busy Information…"
 msgstr "Уредете ја локацијата за „слободно/зафатено“"
 
@@ -1011,9 +1023,10 @@ msgid "&Send as iCalendar…"
 msgstr "&iCalendar..."
 
 #: actionmanager.cpp:698
-#, kde-format
+#, fuzzy, kde-format
+msgctxt "@action"
 msgid "&Upload Free Busy Information"
-msgstr ""
+msgstr "Уредете ја локацијата за „слободно/зафатено“"
 
 #: actionmanager.cpp:704
 #, fuzzy, kde-format
@@ -1045,6 +1058,7 @@ msgstr "Нов календар"
 #: actionmanager.cpp:749
 #, fuzzy, kde-format
 #| msgid "Configure &Date && Time..."
+msgctxt "@action"
 msgid "Configure &Date && Time…"
 msgstr "Конфигурирај &датум и време..."
 
@@ -1057,6 +1071,7 @@ msgstr "Менаџирај &филтри за преглед..."
 #: actionmanager.cpp:757
 #, fuzzy, kde-format
 #| msgid "Manage C&ategories..."
+msgctxt "@action"
 msgid "Manage T&ags…"
 msgstr "Менаџирај &категории..."
 
@@ -8990,12 +9005,6 @@ msgstr "%1"
 #~ msgstr ""
 #~ "Уредува дали да се испрати е-пошт. порака на присутниот избран во горната "
 #~ "листа за да се побара одговор во врска со присуството."
-
-#, fuzzy
-#~| msgid "Re&quest response"
-#~ msgctxt "@option:check"
-#~ msgid "Re&quest response"
-#~ msgstr "&Барај одговор"
 
 #, fuzzy
 #~| msgid "&New"

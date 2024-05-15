@@ -6,7 +6,7 @@ msgid ""
 msgstr ""
 "Project-Id-Version: korganizer\n"
 "Report-Msgid-Bugs-To: https://bugs.kde.org\n"
-"POT-Creation-Date: 2024-05-12 00:39+0000\n"
+"POT-Creation-Date: 2024-05-15 00:39+0000\n"
 "PO-Revision-Date: 2021-10-18 13:48+0200\n"
 "Last-Translator: Prof. Dr. Eduard Werner <e.werner@rz.uni-leipzig.de>\n"
 "Language-Team: Upper Sorbian\n"
@@ -284,6 +284,7 @@ msgstr ""
 
 #: actionmanager.cpp:243
 #, fuzzy, kde-format
+msgctxt "@action"
 msgid "Import &Calendar…"
 msgstr "Konfiguracija &skrótšenkow..."
 
@@ -345,6 +346,7 @@ msgstr ""
 #: actionmanager.cpp:305
 #, fuzzy, kde-format
 #| msgid "Export as &iCalendar..."
+msgctxt "@action"
 msgid "Export as &iCalendar…"
 msgstr "Jako &iCalendar eksportować..."
 
@@ -369,6 +371,7 @@ msgstr ""
 
 #: actionmanager.cpp:314
 #, kde-format
+msgctxt "@action"
 msgid "Archive O&ld Incidences…"
 msgstr ""
 
@@ -394,9 +397,11 @@ msgid ""
 msgstr ""
 
 #: actionmanager.cpp:326
-#, kde-format
+#, fuzzy, kde-format
+#| msgid "Pending To-dos"
+msgctxt "@action"
 msgid "Pur&ge Completed To-dos"
-msgstr ""
+msgstr "Njewotbyte nadawki"
 
 #: actionmanager.cpp:327
 #, kde-format
@@ -606,7 +611,9 @@ msgid ""
 msgstr ""
 
 #: actionmanager.cpp:460
-#, kde-format
+#, fuzzy, kde-format
+#| msgid "&Refresh"
+msgctxt "@action"
 msgid "&Refresh"
 msgstr "Po&nowić"
 
@@ -854,6 +861,7 @@ msgstr ""
 
 #: actionmanager.cpp:587
 #, fuzzy, kde-format
+msgctxt "@action"
 msgid "New Su&b-to-do…"
 msgstr "Na:"
 
@@ -925,6 +933,7 @@ msgstr "&Wobdźěłać"
 
 #: actionmanager.cpp:627
 #, kde-format
+msgctxt "@action"
 msgid "&Make Sub-to-do Independent"
 msgstr ""
 
@@ -944,11 +953,13 @@ msgstr ""
 
 #: actionmanager.cpp:654
 #, fuzzy, kde-format
+msgctxt "@action"
 msgid "Re&quest Update"
 msgstr "&Wróćo na prěnjotny staw"
 
 #: actionmanager.cpp:662
 #, kde-format
+msgctxt "@action"
 msgid "Send &Cancellation to Attendees"
 msgstr ""
 
@@ -965,6 +976,7 @@ msgstr ""
 
 #: actionmanager.cpp:686
 #, fuzzy, kde-format
+msgctxt "@action"
 msgid "&Mail Free Busy Information…"
 msgstr "Konfiguracija resursow"
 
@@ -974,9 +986,10 @@ msgid "&Send as iCalendar…"
 msgstr "Konfiguracija &skrótšenkow..."
 
 #: actionmanager.cpp:698
-#, kde-format
+#, fuzzy, kde-format
+msgctxt "@action"
 msgid "&Upload Free Busy Information"
-msgstr ""
+msgstr "Konfiguracija resursow"
 
 #: actionmanager.cpp:704
 #, fuzzy, kde-format
@@ -1007,6 +1020,7 @@ msgstr ""
 #, fuzzy, kde-format
 #| msgctxt "@info:status"
 #| msgid "Configure the view"
+msgctxt "@action"
 msgid "Configure &Date && Time…"
 msgstr "Napohlad připrawić"
 
@@ -1017,6 +1031,7 @@ msgstr "Filtry wobdźěłać..."
 
 #: actionmanager.cpp:757
 #, fuzzy, kde-format
+msgctxt "@action"
 msgid "Manage T&ags…"
 msgstr "Kategorije"
 

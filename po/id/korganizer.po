@@ -6,7 +6,7 @@ msgid ""
 msgstr ""
 "Project-Id-Version: korganizer\n"
 "Report-Msgid-Bugs-To: https://bugs.kde.org\n"
-"POT-Creation-Date: 2024-05-12 00:39+0000\n"
+"POT-Creation-Date: 2024-05-15 00:39+0000\n"
 "PO-Revision-Date: 2022-09-30 08:03+0700\n"
 "Last-Translator: Wantoyèk <wantoyek@gmail.com>\n"
 "Language-Team: Indonesian <kde-i18n-doc@kde.org>\n"
@@ -300,6 +300,7 @@ msgstr "Sembunyikan bilah menu"
 #, fuzzy, kde-format
 #| msgctxt "@title:window"
 #| msgid "Import Calendar"
+msgctxt "@action"
 msgid "Import &Calendar…"
 msgstr "Impor Kalender"
 
@@ -367,6 +368,7 @@ msgstr "Acara yang diunduh akan digabungkan ke dalam kalendermu saat ini."
 #: actionmanager.cpp:305
 #, fuzzy, kde-format
 #| msgid "Export as &iCalendar..."
+msgctxt "@action"
 msgid "Export as &iCalendar…"
 msgstr "Ekspor sebagai &iCalendar..."
 
@@ -394,6 +396,7 @@ msgstr ""
 #: actionmanager.cpp:314
 #, fuzzy, kde-format
 #| msgid "Archive O&ld Incidences..."
+msgctxt "@action"
 msgid "Archive O&ld Incidences…"
 msgstr "Arsipkan Insiden &Lama..."
 
@@ -422,7 +425,9 @@ msgstr ""
 "dihapus dari koleksi kalendermu yang ada."
 
 #: actionmanager.cpp:326
-#, kde-format
+#, fuzzy, kde-format
+#| msgid "Pur&ge Completed To-dos"
+msgctxt "@action"
 msgid "Pur&ge Completed To-dos"
 msgstr "&Musnahkan Rencana yang Sudah Usai"
 
@@ -653,7 +658,9 @@ msgstr ""
 "baris terpisah."
 
 #: actionmanager.cpp:460
-#, kde-format
+#, fuzzy, kde-format
+#| msgid "&Refresh"
+msgctxt "@action"
 msgid "&Refresh"
 msgstr "&Segarkan"
 
@@ -906,6 +913,7 @@ msgstr ""
 #: actionmanager.cpp:587
 #, fuzzy, kde-format
 #| msgid "New Su&b-to-do..."
+msgctxt "@action"
 msgid "New Su&b-to-do…"
 msgstr "&Sub-rencana Baru..."
 
@@ -980,7 +988,9 @@ msgid "&Edit…"
 msgstr "&Edit"
 
 #: actionmanager.cpp:627
-#, kde-format
+#, fuzzy, kde-format
+#| msgid "&Make Sub-to-do Independent"
+msgctxt "@action"
 msgid "&Make Sub-to-do Independent"
 msgstr "&Buat Sub-rencana Independen"
 
@@ -1000,12 +1010,16 @@ msgid "Send &Invitation to Attendees"
 msgstr "Kirimkan &Undangan kepada Peserta"
 
 #: actionmanager.cpp:654
-#, kde-format
+#, fuzzy, kde-format
+#| msgid "Re&quest Update"
+msgctxt "@action"
 msgid "Re&quest Update"
 msgstr "Min&ta Pembaruan"
 
 #: actionmanager.cpp:662
-#, kde-format
+#, fuzzy, kde-format
+#| msgid "Send &Cancellation to Attendees"
+msgctxt "@action"
 msgid "Send &Cancellation to Attendees"
 msgstr "Kirimkan Pem&batalan kepada Peserta"
 
@@ -1023,6 +1037,7 @@ msgstr "Minta Peruba&han"
 #: actionmanager.cpp:686
 #, fuzzy, kde-format
 #| msgid "&Mail Free Busy Information..."
+msgctxt "@action"
 msgid "&Mail Free Busy Information…"
 msgstr "&Mail Informasi Senggang Sibuk..."
 
@@ -1033,7 +1048,9 @@ msgid "&Send as iCalendar…"
 msgstr "&Kirimkan sebagai iCalendar..."
 
 #: actionmanager.cpp:698
-#, kde-format
+#, fuzzy, kde-format
+#| msgid "&Upload Free Busy Information"
+msgctxt "@action"
 msgid "&Upload Free Busy Information"
 msgstr "&Unggah Informasi Senggang Sibuk"
 
@@ -1065,6 +1082,7 @@ msgstr "Tampilkan Manajer Kalender"
 #: actionmanager.cpp:749
 #, fuzzy, kde-format
 #| msgid "Configure &Date && Time..."
+msgctxt "@action"
 msgid "Configure &Date && Time…"
 msgstr "Konfigurasikan &Waktu && Tanggal"
 
@@ -1077,6 +1095,7 @@ msgstr "Kelola &Filter Tampilan..."
 #: actionmanager.cpp:757
 #, fuzzy, kde-format
 #| msgid "Manage T&ags..."
+msgctxt "@action"
 msgid "Manage T&ags…"
 msgstr "Kelola T&ag..."
 

@@ -5,7 +5,7 @@ msgid ""
 msgstr ""
 "Project-Id-Version: korganizer 0\n"
 "Report-Msgid-Bugs-To: https://bugs.kde.org\n"
-"POT-Creation-Date: 2024-05-12 00:39+0000\n"
+"POT-Creation-Date: 2024-05-15 00:39+0000\n"
 "PO-Revision-Date: 2011-02-27 12:20+0100\n"
 "Last-Translator: Marko Dimjasevic <marko@dimjasevic.net>\n"
 "Language-Team: Croatian <kde-croatia-list@lists.sourceforge.net>\n"
@@ -289,6 +289,7 @@ msgstr "Vremenska zona:"
 
 #: actionmanager.cpp:243
 #, fuzzy, kde-format
+msgctxt "@action"
 msgid "Import &Calendar…"
 msgstr "Uvezi kalendar"
 
@@ -350,6 +351,7 @@ msgstr "Preuzeti događaji biti će stopljeni sa vašim trenutnim kalendarom."
 
 #: actionmanager.cpp:305
 #, fuzzy, kde-format
+msgctxt "@action"
 msgid "Export as &iCalendar…"
 msgstr "Uvezi kalendar"
 
@@ -374,6 +376,7 @@ msgstr ""
 
 #: actionmanager.cpp:314
 #, fuzzy, kde-format
+msgctxt "@action"
 msgid "Archive O&ld Incidences…"
 msgstr "Arhiviraj stare zapise"
 
@@ -400,6 +403,7 @@ msgstr ""
 
 #: actionmanager.cpp:326
 #, fuzzy, kde-format
+msgctxt "@action"
 msgid "Pur&ge Completed To-dos"
 msgstr "Obriši završene"
 
@@ -614,6 +618,7 @@ msgstr ""
 
 #: actionmanager.cpp:460
 #, fuzzy, kde-format
+msgctxt "@action"
 msgid "&Refresh"
 msgstr "Osvježi"
 
@@ -857,6 +862,7 @@ msgstr ""
 
 #: actionmanager.cpp:587
 #, fuzzy, kde-format
+msgctxt "@action"
 msgid "New Su&b-to-do…"
 msgstr "Novi &podzadatak..."
 
@@ -925,6 +931,7 @@ msgstr "&Uredi..."
 
 #: actionmanager.cpp:627
 #, fuzzy, kde-format
+msgctxt "@action"
 msgid "&Make Sub-to-do Independent"
 msgstr "&Učini podzadatak nezavisnim"
 
@@ -944,11 +951,13 @@ msgstr ""
 
 #: actionmanager.cpp:654
 #, fuzzy, kde-format
+msgctxt "@action"
 msgid "Re&quest Update"
 msgstr "Zahtjev"
 
 #: actionmanager.cpp:662
 #, kde-format
+msgctxt "@action"
 msgid "Send &Cancellation to Attendees"
 msgstr ""
 
@@ -965,6 +974,7 @@ msgstr "Protivprijedlog"
 
 #: actionmanager.cpp:686
 #, fuzzy, kde-format
+msgctxt "@action"
 msgid "&Mail Free Busy Information…"
 msgstr "Osobne informacije"
 
@@ -975,6 +985,7 @@ msgstr "&Umetni postojeći kalendar..."
 
 #: actionmanager.cpp:698
 #, fuzzy, kde-format
+msgctxt "@action"
 msgid "&Upload Free Busy Information"
 msgstr "Osobne informacije"
 
@@ -1005,6 +1016,7 @@ msgstr "Izvezi kalendar kao veb-stranu"
 
 #: actionmanager.cpp:749
 #, fuzzy, kde-format
+msgctxt "@action"
 msgid "Configure &Date && Time…"
 msgstr "Podesi &datum i vrijeme..."
 
@@ -1015,6 +1027,7 @@ msgstr "&Kategorije..."
 
 #: actionmanager.cpp:757
 #, fuzzy, kde-format
+msgctxt "@action"
 msgid "Manage T&ags…"
 msgstr "Uredi k&ategorije..."
 

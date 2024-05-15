@@ -10,7 +10,7 @@ msgid ""
 msgstr ""
 "Project-Id-Version: korganizer\n"
 "Report-Msgid-Bugs-To: https://bugs.kde.org\n"
-"POT-Creation-Date: 2024-05-12 00:39+0000\n"
+"POT-Creation-Date: 2024-05-15 00:39+0000\n"
 "PO-Revision-Date: 2012-01-28 16:07-0800\n"
 "Last-Translator: Fumiaki Okushi <okushi@kde.gr.jp>\n"
 "Language-Team: Japanese <kde-jp@kde.org>\n"
@@ -300,6 +300,7 @@ msgstr "時間バー"
 #: actionmanager.cpp:243
 #, fuzzy, kde-format
 #| msgid "Import Calendar"
+msgctxt "@action"
 msgid "Import &Calendar…"
 msgstr "カレンダーをインポート"
 
@@ -368,6 +369,7 @@ msgstr "ダウンロードされたイベントは現在のカレンダーにマ
 #: actionmanager.cpp:305
 #, fuzzy, kde-format
 #| msgid "Export as &iCalendar..."
+msgctxt "@action"
 msgid "Export as &iCalendar…"
 msgstr "iCalendar としてエクスポート(&I)..."
 
@@ -395,6 +397,7 @@ msgstr ""
 #: actionmanager.cpp:314
 #, fuzzy, kde-format
 #| msgid "Archive O&ld Entries..."
+msgctxt "@action"
 msgid "Archive O&ld Incidences…"
 msgstr "古いアイテムをアーカイブ(&L)..."
 
@@ -421,7 +424,9 @@ msgid ""
 msgstr ""
 
 #: actionmanager.cpp:326
-#, kde-format
+#, fuzzy, kde-format
+#| msgid "Pur&ge Completed To-dos"
+msgctxt "@action"
 msgid "Pur&ge Completed To-dos"
 msgstr "完了済み To-Do を一括削除(&G)"
 
@@ -647,7 +652,9 @@ msgid ""
 msgstr ""
 
 #: actionmanager.cpp:460
-#, kde-format
+#, fuzzy, kde-format
+#| msgid "&Refresh"
+msgctxt "@action"
 msgid "&Refresh"
 msgstr "更新(&R)"
 
@@ -900,6 +907,7 @@ msgstr ""
 #: actionmanager.cpp:587
 #, fuzzy, kde-format
 #| msgid "New Su&b-to-do..."
+msgctxt "@action"
 msgid "New Su&b-to-do…"
 msgstr "新しいサブ To-Do(&B)..."
 
@@ -974,7 +982,9 @@ msgid "&Edit…"
 msgstr "編集(&E)"
 
 #: actionmanager.cpp:627
-#, kde-format
+#, fuzzy, kde-format
+#| msgid "&Make Sub-to-do Independent"
+msgctxt "@action"
 msgid "&Make Sub-to-do Independent"
 msgstr "サブ To-Do を独立させる(&M)"
 
@@ -994,12 +1004,16 @@ msgid "Send &Invitation to Attendees"
 msgstr "参加者に出席依頼を送信(&I)"
 
 #: actionmanager.cpp:654
-#, kde-format
+#, fuzzy, kde-format
+#| msgid "Re&quest Update"
+msgctxt "@action"
 msgid "Re&quest Update"
 msgstr "主催者に更新情報を要求(&Q)"
 
 #: actionmanager.cpp:662
-#, kde-format
+#, fuzzy, kde-format
+#| msgid "Send &Cancellation to Attendees"
+msgctxt "@action"
 msgid "Send &Cancellation to Attendees"
 msgstr "参加者にキャンセル通知を送信(&C)"
 
@@ -1017,6 +1031,7 @@ msgstr "主催者に変更を提案(&G)"
 #: actionmanager.cpp:686
 #, fuzzy, kde-format
 #| msgid "&Mail Free Busy Information..."
+msgctxt "@action"
 msgid "&Mail Free Busy Information…"
 msgstr "フリー/ビジー情報をメールで送信(&M)..."
 
@@ -1027,7 +1042,9 @@ msgid "&Send as iCalendar…"
 msgstr "iCalendar として送信(&S)..."
 
 #: actionmanager.cpp:698
-#, kde-format
+#, fuzzy, kde-format
+#| msgid "&Upload Free Busy Information"
+msgctxt "@action"
 msgid "&Upload Free Busy Information"
 msgstr "フリー/ビジー情報をアップロード(&U)"
 
@@ -1059,6 +1076,7 @@ msgstr "カレンダーマネージャを表示"
 #: actionmanager.cpp:749
 #, fuzzy, kde-format
 #| msgid "Configure &Date && Time..."
+msgctxt "@action"
 msgid "Configure &Date && Time…"
 msgstr "日付と時間の書式を設定(&D)..."
 
@@ -1071,6 +1089,7 @@ msgstr "ビューフィルタの管理(&F)..."
 #: actionmanager.cpp:757
 #, fuzzy, kde-format
 #| msgid "Manage C&ategories..."
+msgctxt "@action"
 msgid "Manage T&ags…"
 msgstr "カテゴリを編集(&A)..."
 

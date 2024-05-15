@@ -13,7 +13,7 @@ msgid ""
 msgstr ""
 "Project-Id-Version: korganizer\n"
 "Report-Msgid-Bugs-To: https://bugs.kde.org\n"
-"POT-Creation-Date: 2024-05-12 00:39+0000\n"
+"POT-Creation-Date: 2024-05-15 00:39+0000\n"
 "PO-Revision-Date: 2024-05-12 21:36+0200\n"
 "Last-Translator: Josep M. Ferrer <txemaq@gmail.com>\n"
 "Language-Team: Catalan <kde-i18n-ca@kde.org>\n"
@@ -303,7 +303,9 @@ msgid "Hide menu bar"
 msgstr "Oculta la barra de menús"
 
 #: actionmanager.cpp:243
-#, kde-format
+#, fuzzy, kde-format
+#| msgid "Import &Calendar…"
+msgctxt "@action"
 msgid "Import &Calendar…"
 msgstr "Importa un &calendari…"
 
@@ -367,7 +369,9 @@ msgid "The downloaded events will be merged into your current calendar."
 msgstr "Els esdeveniments descarregats es barrejaran amb el calendari actual."
 
 #: actionmanager.cpp:305
-#, kde-format
+#, fuzzy, kde-format
+#| msgid "Export as &iCalendar…"
+msgctxt "@action"
 msgid "Export as &iCalendar…"
 msgstr "Exporta com a &iCalendar…"
 
@@ -392,7 +396,9 @@ msgstr ""
 "Permet exportar tota la vostra col·lecció de calendari a un fitxer iCalendar."
 
 #: actionmanager.cpp:314
-#, kde-format
+#, fuzzy, kde-format
+#| msgid "Archive O&ld Incidences…"
+msgctxt "@action"
 msgid "Archive O&ld Incidences…"
 msgstr "Ar&xiva les incidències antigues…"
 
@@ -423,7 +429,9 @@ msgstr ""
 "S'eliminaran de la col·lecció existent de calendari."
 
 #: actionmanager.cpp:326
-#, kde-format
+#, fuzzy, kde-format
+#| msgid "Pur&ge Completed To-dos"
+msgctxt "@action"
 msgid "Pur&ge Completed To-dos"
 msgstr "Nete&ja les tasques pendents finalitzades"
 
@@ -655,7 +663,9 @@ msgstr ""
 "calendari es visualitza en una línia separada."
 
 #: actionmanager.cpp:460
-#, kde-format
+#, fuzzy, kde-format
+#| msgid "&Refresh"
+msgctxt "@action"
 msgid "&Refresh"
 msgstr "Actualit&za"
 
@@ -904,7 +914,9 @@ msgstr ""
 "assistents, repeticions i molt més."
 
 #: actionmanager.cpp:587
-#, kde-format
+#, fuzzy, kde-format
+#| msgid "New Su&b-to-do…"
+msgctxt "@action"
 msgid "New Su&b-to-do…"
 msgstr "Su&btasca pendent nova…"
 
@@ -974,7 +986,9 @@ msgid "&Edit…"
 msgstr "&Edita…"
 
 #: actionmanager.cpp:627
-#, kde-format
+#, fuzzy, kde-format
+#| msgid "&Make Sub-to-do Independent"
+msgctxt "@action"
 msgid "&Make Sub-to-do Independent"
 msgstr "&Fes independent la subtasca pendent"
 
@@ -993,12 +1007,16 @@ msgid "Send &Invitation to Attendees"
 msgstr "Envia una &invitació als assistents"
 
 #: actionmanager.cpp:654
-#, kde-format
+#, fuzzy, kde-format
+#| msgid "Re&quest Update"
+msgctxt "@action"
 msgid "Re&quest Update"
 msgstr "&Petició d'actualització"
 
 #: actionmanager.cpp:662
-#, kde-format
+#, fuzzy, kde-format
+#| msgid "Send &Cancellation to Attendees"
+msgctxt "@action"
 msgid "Send &Cancellation to Attendees"
 msgstr "Envia la &cancel·lació als assistents"
 
@@ -1014,7 +1032,9 @@ msgid "Request Chan&ge"
 msgstr "Petició de can&vi"
 
 #: actionmanager.cpp:686
-#, kde-format
+#, fuzzy, kde-format
+#| msgid "&Mail Free Busy Information…"
+msgctxt "@action"
 msgid "&Mail Free Busy Information…"
 msgstr "En&via per correu la informació de lliure/ocupat…"
 
@@ -1024,7 +1044,9 @@ msgid "&Send as iCalendar…"
 msgstr "&Envia com a iCalendar…"
 
 #: actionmanager.cpp:698
-#, kde-format
+#, fuzzy, kde-format
+#| msgid "&Upload Free Busy Information"
+msgctxt "@action"
 msgid "&Upload Free Busy Information"
 msgstr "P&uja la informació de lliure/ocupat"
 
@@ -1054,7 +1076,9 @@ msgid "Show Calendar Manager"
 msgstr "Mostra el gestor de calendaris"
 
 #: actionmanager.cpp:749
-#, kde-format
+#, fuzzy, kde-format
+#| msgid "Configure &Date && Time…"
+msgctxt "@action"
 msgid "Configure &Date && Time…"
 msgstr "Configura la &data i l'hora…"
 
@@ -1064,7 +1088,9 @@ msgid "Manage View &Filters…"
 msgstr "Gestiona els &filtres de vista…"
 
 #: actionmanager.cpp:757
-#, kde-format
+#, fuzzy, kde-format
+#| msgid "Manage T&ags…"
+msgctxt "@action"
 msgid "Manage T&ags…"
 msgstr "Gestiona &les etiquetes…"
 

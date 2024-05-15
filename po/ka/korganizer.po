@@ -7,7 +7,7 @@ msgid ""
 msgstr ""
 "Project-Id-Version: korganizer\n"
 "Report-Msgid-Bugs-To: https://bugs.kde.org\n"
-"POT-Creation-Date: 2024-05-12 00:39+0000\n"
+"POT-Creation-Date: 2024-05-15 00:39+0000\n"
 "PO-Revision-Date: 2024-05-12 03:57+0200\n"
 "Last-Translator: Temuri Doghonadze <temuri.doghonadze@gmail.com>\n"
 "Language-Team: Georgian <kde-i18n-doc@kde.org>\n"
@@ -291,7 +291,9 @@ msgid "Hide menu bar"
 msgstr "მენიუს ზოლის დამალვა"
 
 #: actionmanager.cpp:243
-#, kde-format
+#, fuzzy, kde-format
+#| msgid "Import &Calendar…"
+msgctxt "@action"
 msgid "Import &Calendar…"
 msgstr "&კალენდრის შემოტანა…"
 
@@ -356,7 +358,9 @@ msgid "The downloaded events will be merged into your current calendar."
 msgstr "გადმოწერილი მოვლენები თქვენს მიმდინარე კალენდარში ჩაისმება."
 
 #: actionmanager.cpp:305
-#, kde-format
+#, fuzzy, kde-format
+#| msgid "Export as &iCalendar…"
+msgctxt "@action"
 msgid "Export as &iCalendar…"
 msgstr "&iCalender-ის გატანა…"
 
@@ -382,7 +386,9 @@ msgstr ""
 "გაიტანოთ."
 
 #: actionmanager.cpp:314
-#, kde-format
+#, fuzzy, kde-format
+#| msgid "Archive O&ld Incidences…"
+msgctxt "@action"
 msgid "Archive O&ld Incidences…"
 msgstr "ძველი &ინციდენტების დაარქივება…"
 
@@ -411,7 +417,9 @@ msgstr ""
 "დააარქივოთ.  ისინი წაიშლება არსებული კალენდრის კოლექციიდან."
 
 #: actionmanager.cpp:326
-#, kde-format
+#, fuzzy, kde-format
+#| msgid "Pur&ge Completed To-dos"
+msgctxt "@action"
 msgid "Pur&ge Completed To-dos"
 msgstr "დასრულებული გასაკეთებლების &მოსუფთავება"
 
@@ -641,7 +649,9 @@ msgstr ""
 "შუალედში, განტის ხედში. თითოეულ კალენდარს ცალ-ცალკე ხაზზე გაჩვენებთ."
 
 #: actionmanager.cpp:460
-#, kde-format
+#, fuzzy, kde-format
+#| msgid "&Refresh"
+msgctxt "@action"
 msgid "&Refresh"
 msgstr "&განახლება"
 
@@ -888,7 +898,9 @@ msgstr ""
 "შემხსენებლებით, დამსწრეებით, გამეორებებით და ა.შ."
 
 #: actionmanager.cpp:587
-#, kde-format
+#, fuzzy, kde-format
+#| msgid "New Su&b-to-do…"
+msgctxt "@action"
 msgid "New Su&b-to-do…"
 msgstr "ახალი &ქვეგანრიგი…"
 
@@ -958,7 +970,9 @@ msgid "&Edit…"
 msgstr "&ჩასწორება…"
 
 #: actionmanager.cpp:627
-#, kde-format
+#, fuzzy, kde-format
+#| msgid "&Make Sub-to-do Independent"
+msgctxt "@action"
 msgid "&Make Sub-to-do Independent"
 msgstr "ქვეგასაკეთებლის დამოუკიდებლად &გადაკეთება"
 
@@ -977,12 +991,16 @@ msgid "Send &Invitation to Attendees"
 msgstr "დამსწრეებისთვის &მოსაწვევის გაგზავნა"
 
 #: actionmanager.cpp:654
-#, kde-format
+#, fuzzy, kde-format
+#| msgid "Re&quest Update"
+msgctxt "@action"
 msgid "Re&quest Update"
 msgstr "&განახლების მოთხოვნა"
 
 #: actionmanager.cpp:662
-#, kde-format
+#, fuzzy, kde-format
+#| msgid "Send &Cancellation to Attendees"
+msgctxt "@action"
 msgid "Send &Cancellation to Attendees"
 msgstr "გაუქმების გაგზავნა &დამსწრეებისთვის"
 
@@ -998,7 +1016,9 @@ msgid "Request Chan&ge"
 msgstr "ცვლილების &მოთხოვნა"
 
 #: actionmanager.cpp:686
-#, kde-format
+#, fuzzy, kde-format
+#| msgid "&Mail Free Busy Information…"
+msgctxt "@action"
 msgid "&Mail Free Busy Information…"
 msgstr "თავისუფალი/დაკავებულის ინფორმაციის &ელფოსტით გაგზავნა…"
 
@@ -1008,7 +1028,9 @@ msgid "&Send as iCalendar…"
 msgstr "&iCalendar-ის სახით გაგზავნა…"
 
 #: actionmanager.cpp:698
-#, kde-format
+#, fuzzy, kde-format
+#| msgid "&Upload Free Busy Information"
+msgctxt "@action"
 msgid "&Upload Free Busy Information"
 msgstr "თავისუფალი/დაკავებულის ინფორმაციის &ატვირთვა"
 
@@ -1038,7 +1060,9 @@ msgid "Show Calendar Manager"
 msgstr "კალენდრის მმართველის ჩვენება"
 
 #: actionmanager.cpp:749
-#, kde-format
+#, fuzzy, kde-format
+#| msgid "Configure &Date && Time…"
+msgctxt "@action"
 msgid "Configure &Date && Time…"
 msgstr "&თარიღისა და დროის მორგება…"
 
@@ -1048,7 +1072,9 @@ msgid "Manage View &Filters…"
 msgstr "ხედის &ფილტრების მართვა…"
 
 #: actionmanager.cpp:757
-#, kde-format
+#, fuzzy, kde-format
+#| msgid "Manage T&ags…"
+msgctxt "@action"
 msgid "Manage T&ags…"
 msgstr "&ჭდეების მართვა…"
 

@@ -9,7 +9,7 @@ msgid ""
 msgstr ""
 "Project-Id-Version: korganizer\n"
 "Report-Msgid-Bugs-To: https://bugs.kde.org\n"
-"POT-Creation-Date: 2024-05-12 00:39+0000\n"
+"POT-Creation-Date: 2024-05-15 00:39+0000\n"
 "PO-Revision-Date: 2024-04-26 11:02+0200\n"
 "Last-Translator: Vit Pelcak <vpelcak@suse.cz>\n"
 "Language-Team: Czech <kde-i18n-doc@kde.org>\n"
@@ -298,6 +298,7 @@ msgstr "Skrýt nabídku"
 #, fuzzy, kde-format
 #| msgctxt "@title:window"
 #| msgid "Import Calendar"
+msgctxt "@action"
 msgid "Import &Calendar…"
 msgstr "Importovat kalendář"
 
@@ -360,6 +361,7 @@ msgstr "Stažené události budou sloučeny s vaším kalendářem."
 #: actionmanager.cpp:305
 #, fuzzy, kde-format
 #| msgid "Export as &iCalendar..."
+msgctxt "@action"
 msgid "Export as &iCalendar…"
 msgstr "Exportovat jako &iCalendar..."
 
@@ -384,6 +386,7 @@ msgstr ""
 
 #: actionmanager.cpp:314
 #, kde-format
+msgctxt "@action"
 msgid "Archive O&ld Incidences…"
 msgstr ""
 
@@ -409,7 +412,9 @@ msgid ""
 msgstr ""
 
 #: actionmanager.cpp:326
-#, kde-format
+#, fuzzy, kde-format
+#| msgid "Pur&ge Completed To-dos"
+msgctxt "@action"
 msgid "Pur&ge Completed To-dos"
 msgstr "Pročistit dokončené úkol&y"
 
@@ -619,7 +624,9 @@ msgid ""
 msgstr ""
 
 #: actionmanager.cpp:460
-#, kde-format
+#, fuzzy, kde-format
+#| msgid "&Refresh"
+msgctxt "@action"
 msgid "&Refresh"
 msgstr "O&bnovit"
 
@@ -860,6 +867,7 @@ msgstr ""
 #: actionmanager.cpp:587
 #, fuzzy, kde-format
 #| msgid "New Su&b-to-do..."
+msgctxt "@action"
 msgid "New Su&b-to-do…"
 msgstr "Nový po&dúkol..."
 
@@ -930,7 +938,9 @@ msgid "&Edit…"
 msgstr "Úpravy"
 
 #: actionmanager.cpp:627
-#, kde-format
+#, fuzzy, kde-format
+#| msgid "&Make Sub-to-do Independent"
+msgctxt "@action"
 msgid "&Make Sub-to-do Independent"
 msgstr "Učinit podúkol nezávislý&m"
 
@@ -950,12 +960,16 @@ msgid "Send &Invitation to Attendees"
 msgstr "Odeslat po&zvánku účastníkům"
 
 #: actionmanager.cpp:654
-#, kde-format
+#, fuzzy, kde-format
+#| msgid "Re&quest Update"
+msgctxt "@action"
 msgid "Re&quest Update"
 msgstr "Požadovat &aktualizaci"
 
 #: actionmanager.cpp:662
-#, kde-format
+#, fuzzy, kde-format
+#| msgid "Send &Cancellation to Attendees"
+msgctxt "@action"
 msgid "Send &Cancellation to Attendees"
 msgstr "Odeslat účastníkům &storno"
 
@@ -973,6 +987,7 @@ msgstr "P&ožadovat změnu"
 #: actionmanager.cpp:686
 #, fuzzy, kde-format
 #| msgid "&Mail Free Busy Information..."
+msgctxt "@action"
 msgid "&Mail Free Busy Information…"
 msgstr "Odeslat informace o aktivitě e&mailem..."
 
@@ -983,7 +998,9 @@ msgid "&Send as iCalendar…"
 msgstr "Ode&slat jako iCalendar..."
 
 #: actionmanager.cpp:698
-#, kde-format
+#, fuzzy, kde-format
+#| msgid "&Upload Free Busy Information"
+msgctxt "@action"
 msgid "&Upload Free Busy Information"
 msgstr "Odeslat in&formace o aktivitě"
 
@@ -1015,6 +1032,7 @@ msgstr "Zobrazit správce kalendáře"
 #: actionmanager.cpp:749
 #, fuzzy, kde-format
 #| msgid "Configure &Date && Time..."
+msgctxt "@action"
 msgid "Configure &Date && Time…"
 msgstr "Nastavit &datum a čas..."
 
@@ -1027,6 +1045,7 @@ msgstr "Upravit &filtry pohledů..."
 #: actionmanager.cpp:757
 #, fuzzy, kde-format
 #| msgid "Manage T&ags..."
+msgctxt "@action"
 msgid "Manage T&ags…"
 msgstr "Spravovat zn&ačky..."
 

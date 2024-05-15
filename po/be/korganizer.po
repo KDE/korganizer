@@ -11,7 +11,7 @@ msgid ""
 msgstr ""
 "Project-Id-Version: korganizer\n"
 "Report-Msgid-Bugs-To: https://bugs.kde.org\n"
-"POT-Creation-Date: 2024-05-12 00:39+0000\n"
+"POT-Creation-Date: 2024-05-15 00:39+0000\n"
 "PO-Revision-Date: 2008-01-01 23:20+0200\n"
 "Last-Translator: Darafei Praliaskouski <komzpa@gmail.com>\n"
 "Language-Team: Belarusian (Official spelling) <i18n@mova.org>\n"
@@ -296,6 +296,7 @@ msgstr "Панель часу"
 #: actionmanager.cpp:243
 #, fuzzy, kde-format
 #| msgid "Import Calendar"
+msgctxt "@action"
 msgid "Import &Calendar…"
 msgstr "Імпартаваць каляндар"
 
@@ -361,6 +362,7 @@ msgstr "Запампаваныя падзеі будуць аб'яднаныя �
 #: actionmanager.cpp:305
 #, fuzzy, kde-format
 #| msgid "Import &Calendar..."
+msgctxt "@action"
 msgid "Export as &iCalendar…"
 msgstr "Імпартаваць &каляндар..."
 
@@ -386,6 +388,7 @@ msgstr ""
 
 #: actionmanager.cpp:314
 #, fuzzy, kde-format
+msgctxt "@action"
 msgid "Archive O&ld Incidences…"
 msgstr "Архіваваць старыя запісы..."
 
@@ -413,6 +416,7 @@ msgstr ""
 #: actionmanager.cpp:326
 #, fuzzy, kde-format
 #| msgid "Purging completed to-dos"
+msgctxt "@action"
 msgid "Pur&ge Completed To-dos"
 msgstr "Ачыстка выкананых заданняў"
 
@@ -627,6 +631,7 @@ msgstr ""
 
 #: actionmanager.cpp:460
 #, fuzzy, kde-format
+msgctxt "@action"
 msgid "&Refresh"
 msgstr "&Абнавіць"
 
@@ -879,6 +884,7 @@ msgstr ""
 #: actionmanager.cpp:587
 #, fuzzy, kde-format
 #| msgid "New Su&b-to-do..."
+msgctxt "@action"
 msgid "New Su&b-to-do…"
 msgstr "Новае па&дзаданне..."
 
@@ -951,6 +957,7 @@ msgstr "&Змяніць"
 
 #: actionmanager.cpp:627
 #, fuzzy, kde-format
+msgctxt "@action"
 msgid "&Make Sub-to-do Independent"
 msgstr "Зрабіць подзадачу самастойнай"
 
@@ -970,11 +977,13 @@ msgstr "Накіраваць апавяшчэнні"
 
 #: actionmanager.cpp:654
 #, fuzzy, kde-format
+msgctxt "@action"
 msgid "Re&quest Update"
 msgstr "&Дата:"
 
 #: actionmanager.cpp:662
 #, fuzzy, kde-format
+msgctxt "@action"
 msgid "Send &Cancellation to Attendees"
 msgstr "Накіраваць апавяшчэнне аб адмене"
 
@@ -991,6 +1000,7 @@ msgstr "&Дата:"
 
 #: actionmanager.cpp:686
 #, fuzzy, kde-format
+msgctxt "@action"
 msgid "&Mail Free Busy Information…"
 msgstr "Адправіць звесткі аб занятым часе па пошце..."
 
@@ -1002,6 +1012,7 @@ msgstr "&iCalendar..."
 
 #: actionmanager.cpp:698
 #, fuzzy, kde-format
+msgctxt "@action"
 msgid "&Upload Free Busy Information"
 msgstr "Апублікаваць інфармацыю аб занятым часе"
 
@@ -1034,6 +1045,7 @@ msgstr "Экспарт каляндара ў вэб-старонку"
 #: actionmanager.cpp:749
 #, fuzzy, kde-format
 #| msgid "Configure &Date && Time..."
+msgctxt "@action"
 msgid "Configure &Date && Time…"
 msgstr "Настроіць &дату і час..."
 
@@ -1044,6 +1056,7 @@ msgstr "Рэдагаваць &фільтры..."
 
 #: actionmanager.cpp:757
 #, fuzzy, kde-format
+msgctxt "@action"
 msgid "Manage T&ags…"
 msgstr "Рэдагаваць к&атэгорыі..."
 

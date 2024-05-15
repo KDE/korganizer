@@ -2,7 +2,7 @@ msgid ""
 msgstr ""
 "Project-Id-Version: kdeorg\n"
 "Report-Msgid-Bugs-To: https://bugs.kde.org\n"
-"POT-Creation-Date: 2024-05-12 00:39+0000\n"
+"POT-Creation-Date: 2024-05-15 00:39+0000\n"
 "PO-Revision-Date: 2024-04-22 15:58\n"
 "Last-Translator: \n"
 "Language-Team: Chinese Simplified\n"
@@ -283,9 +283,12 @@ msgid "Hide menu bar"
 msgstr "隐藏菜单栏"
 
 #: actionmanager.cpp:243
-#, kde-format
+#, fuzzy, kde-format
+#| msgctxt "@title:window"
+#| msgid "Import Calendar"
+msgctxt "@action"
 msgid "Import &Calendar…"
-msgstr ""
+msgstr "导入日历"
 
 #: actionmanager.cpp:244
 #, kde-format
@@ -345,9 +348,12 @@ msgid "The downloaded events will be merged into your current calendar."
 msgstr "已下载的事件会合并到您当前的日历。"
 
 #: actionmanager.cpp:305
-#, kde-format
+#, fuzzy, kde-format
+#| msgctxt "@title:window"
+#| msgid "Export Calendar"
+msgctxt "@action"
 msgid "Export as &iCalendar…"
-msgstr ""
+msgstr "导出日历"
 
 #: actionmanager.cpp:306
 #, kde-format
@@ -370,6 +376,7 @@ msgstr "可让您将整个日历收藏导出为一个 iCalendar 文件。"
 
 #: actionmanager.cpp:314
 #, kde-format
+msgctxt "@action"
 msgid "Archive O&ld Incidences…"
 msgstr ""
 
@@ -397,7 +404,9 @@ msgstr ""
 "项。归档后，所选项将从已有的日历收藏中删除。"
 
 #: actionmanager.cpp:326
-#, kde-format
+#, fuzzy, kde-format
+#| msgid "Pur&ge Completed To-dos"
+msgctxt "@action"
 msgid "Pur&ge Completed To-dos"
 msgstr "删除已完成的待办事项(&G)"
 
@@ -616,7 +625,9 @@ msgstr ""
 "行。"
 
 #: actionmanager.cpp:460
-#, kde-format
+#, fuzzy, kde-format
+#| msgid "&Refresh"
+msgctxt "@action"
 msgid "&Refresh"
 msgstr "刷新(&R)"
 
@@ -855,6 +866,7 @@ msgstr ""
 
 #: actionmanager.cpp:587
 #, kde-format
+msgctxt "@action"
 msgid "New Su&b-to-do…"
 msgstr ""
 
@@ -922,7 +934,9 @@ msgid "&Edit…"
 msgstr ""
 
 #: actionmanager.cpp:627
-#, kde-format
+#, fuzzy, kde-format
+#| msgid "&Make Sub-to-do Independent"
+msgctxt "@action"
 msgid "&Make Sub-to-do Independent"
 msgstr "将子待办事项独立(&M)"
 
@@ -941,12 +955,16 @@ msgid "Send &Invitation to Attendees"
 msgstr "给参与者发送邀请(&I)"
 
 #: actionmanager.cpp:654
-#, kde-format
+#, fuzzy, kde-format
+#| msgid "Re&quest Update"
+msgctxt "@action"
 msgid "Re&quest Update"
 msgstr "请求更新(&Q)"
 
 #: actionmanager.cpp:662
-#, kde-format
+#, fuzzy, kde-format
+#| msgid "Send &Cancellation to Attendees"
+msgctxt "@action"
 msgid "Send &Cancellation to Attendees"
 msgstr "给参与者发送取消通知(&C)"
 
@@ -962,9 +980,11 @@ msgid "Request Chan&ge"
 msgstr "请求更新(&G)"
 
 #: actionmanager.cpp:686
-#, kde-format
+#, fuzzy, kde-format
+#| msgid "&Upload Free Busy Information"
+msgctxt "@action"
 msgid "&Mail Free Busy Information…"
-msgstr ""
+msgstr "上传空闲/忙碌信息(&U)"
 
 #: actionmanager.cpp:691
 #, kde-format
@@ -972,7 +992,9 @@ msgid "&Send as iCalendar…"
 msgstr ""
 
 #: actionmanager.cpp:698
-#, kde-format
+#, fuzzy, kde-format
+#| msgid "&Upload Free Busy Information"
+msgctxt "@action"
 msgid "&Upload Free Busy Information"
 msgstr "上传空闲/忙碌信息(&U)"
 
@@ -1002,9 +1024,12 @@ msgid "Show Calendar Manager"
 msgstr "显示日历管理器"
 
 #: actionmanager.cpp:749
-#, kde-format
+#, fuzzy, kde-format
+#| msgctxt "@info:status"
+#| msgid "Configure the view"
+msgctxt "@action"
 msgid "Configure &Date && Time…"
-msgstr ""
+msgstr "配置视图"
 
 #: actionmanager.cpp:753
 #, kde-format
@@ -1013,6 +1038,7 @@ msgstr ""
 
 #: actionmanager.cpp:757
 #, kde-format
+msgctxt "@action"
 msgid "Manage T&ags…"
 msgstr ""
 

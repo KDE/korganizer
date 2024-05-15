@@ -6,7 +6,7 @@ msgid ""
 msgstr ""
 "Project-Id-Version: korganizer\n"
 "Report-Msgid-Bugs-To: https://bugs.kde.org\n"
-"POT-Creation-Date: 2024-05-12 00:39+0000\n"
+"POT-Creation-Date: 2024-05-15 00:39+0000\n"
 "PO-Revision-Date: 2008-07-21 16:18+0700\n"
 "Last-Translator: Thanomsub Noppaburana <donga.nb@gmail.com>\n"
 "Language-Team: Thai <thai-l10n@googlegroups.com>\n"
@@ -294,6 +294,7 @@ msgstr "แถบเวลา"
 #: actionmanager.cpp:243
 #, fuzzy, kde-format
 #| msgid "Import Calendar"
+msgctxt "@action"
 msgid "Import &Calendar…"
 msgstr "นำเข้าปฏิทิน"
 
@@ -359,6 +360,7 @@ msgstr ""
 #: actionmanager.cpp:305
 #, fuzzy, kde-format
 #| msgid "Import &Calendar..."
+msgctxt "@action"
 msgid "Export as &iCalendar…"
 msgstr "นำเข้าปฏิทิน..."
 
@@ -385,6 +387,7 @@ msgstr ""
 #: actionmanager.cpp:314
 #, fuzzy, kde-format
 #| msgid "Archive O&ld Entries..."
+msgctxt "@action"
 msgid "Archive O&ld Incidences…"
 msgstr "จัดเก็บรายการเก่าเป็นแฟ้มจัดเก็บ..."
 
@@ -413,7 +416,9 @@ msgid ""
 msgstr ""
 
 #: actionmanager.cpp:326
-#, kde-format
+#, fuzzy, kde-format
+#| msgid "Pur&ge Completed To-dos"
+msgctxt "@action"
 msgid "Pur&ge Completed To-dos"
 msgstr "กำจัดสิ่งที่จะทำที่เสร็จสมบูรณ์แล้ว"
 
@@ -642,7 +647,9 @@ msgid ""
 msgstr ""
 
 #: actionmanager.cpp:460
-#, kde-format
+#, fuzzy, kde-format
+#| msgid "&Refresh"
+msgctxt "@action"
 msgid "&Refresh"
 msgstr "ปรับปรุงใหม่"
 
@@ -903,6 +910,7 @@ msgstr ""
 #: actionmanager.cpp:587
 #, fuzzy, kde-format
 #| msgid "New Su&b-to-do..."
+msgctxt "@action"
 msgid "New Su&b-to-do…"
 msgstr "ตัวย่อยสิ่งที่จะทำใหม่..."
 
@@ -979,7 +987,9 @@ msgid "&Edit…"
 msgstr "แก้ไข"
 
 #: actionmanager.cpp:627
-#, kde-format
+#, fuzzy, kde-format
+#| msgid "&Make Sub-to-do Independent"
+msgctxt "@action"
 msgid "&Make Sub-to-do Independent"
 msgstr "ทำให้สิ่งที่จะทำย่อยเป็นอิสระ"
 
@@ -999,12 +1009,16 @@ msgid "Send &Invitation to Attendees"
 msgstr "ส่งคำเชิญไปยังผู้เข้าร่วม"
 
 #: actionmanager.cpp:654
-#, kde-format
+#, fuzzy, kde-format
+#| msgid "Re&quest Update"
+msgctxt "@action"
 msgid "Re&quest Update"
 msgstr "ร้องขอปรับปรุง"
 
 #: actionmanager.cpp:662
-#, kde-format
+#, fuzzy, kde-format
+#| msgid "Send &Cancellation to Attendees"
+msgctxt "@action"
 msgid "Send &Cancellation to Attendees"
 msgstr "ส่งคำขอยกเลิกไปยังผู้เข้าร่วม"
 
@@ -1022,6 +1036,7 @@ msgstr "ร้องขอเปลี่ยนแปลง"
 #: actionmanager.cpp:686
 #, fuzzy, kde-format
 #| msgid "&Mail Free Busy Information..."
+msgctxt "@action"
 msgid "&Mail Free Busy Information…"
 msgstr "แจ้งข้อมูลว่าว่าง/ไม่ว่างทางอีเมล..."
 
@@ -1032,7 +1047,9 @@ msgid "&Send as iCalendar…"
 msgstr "ส่งไปยังระบบ iCalendar..."
 
 #: actionmanager.cpp:698
-#, kde-format
+#, fuzzy, kde-format
+#| msgid "&Upload Free Busy Information"
+msgctxt "@action"
 msgid "&Upload Free Busy Information"
 msgstr "อัปโหลดข้อมูลว่าว่าง/ไม่ว่าง"
 
@@ -1066,6 +1083,7 @@ msgstr "ส่งออกปฏิทินไปเป็นหน้าเว
 #: actionmanager.cpp:749
 #, fuzzy, kde-format
 #| msgid "Configure &Date && Time..."
+msgctxt "@action"
 msgid "Configure &Date && Time…"
 msgstr "ปรับแต่งวันที่และเวลา..."
 
@@ -1078,6 +1096,7 @@ msgstr "จัดการตัวกรองมุมมอง..."
 #: actionmanager.cpp:757
 #, fuzzy, kde-format
 #| msgid "Manage C&ategories..."
+msgctxt "@action"
 msgid "Manage T&ags…"
 msgstr "จัดการหมวดหมู่..."
 

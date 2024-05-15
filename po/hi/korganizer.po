@@ -8,7 +8,7 @@ msgid ""
 msgstr ""
 "Project-Id-Version: korganizer\n"
 "Report-Msgid-Bugs-To: https://bugs.kde.org\n"
-"POT-Creation-Date: 2024-05-12 00:39+0000\n"
+"POT-Creation-Date: 2024-05-15 00:39+0000\n"
 "PO-Revision-Date: 2021-07-10 10:57+0530\n"
 "Last-Translator: Raghavendra Kamath <raghu@raghukamath.com>\n"
 "Language-Team: kde-hindi\n"
@@ -295,6 +295,7 @@ msgstr "समय पट्टी"
 #: actionmanager.cpp:243
 #, fuzzy, kde-format
 #| msgid "Import Calendar"
+msgctxt "@action"
 msgid "Import &Calendar…"
 msgstr "कैलेन्डर आयात करें"
 
@@ -360,6 +361,7 @@ msgstr "आपके मौज़ूदा कैलेन्डर में �
 #: actionmanager.cpp:305
 #, fuzzy, kde-format
 #| msgid "Import &Calendar..."
+msgctxt "@action"
 msgid "Export as &iCalendar…"
 msgstr "कैलेन्डर आयात करें... (&C)"
 
@@ -386,6 +388,7 @@ msgstr ""
 #: actionmanager.cpp:314
 #, fuzzy, kde-format
 #| msgid "Archive O&ld Entries..."
+msgctxt "@action"
 msgid "Archive O&ld Incidences…"
 msgstr "पुरानी प्रविष्टियों को अभिलेखित करें... (&l)"
 
@@ -414,6 +417,7 @@ msgstr ""
 
 #: actionmanager.cpp:326
 #, fuzzy, kde-format
+msgctxt "@action"
 msgid "Pur&ge Completed To-dos"
 msgstr "पूर्ण कार्यसूची को अलग करें (&g)"
 
@@ -632,7 +636,9 @@ msgid ""
 msgstr ""
 
 #: actionmanager.cpp:460
-#, kde-format
+#, fuzzy, kde-format
+#| msgid "&Refresh"
+msgctxt "@action"
 msgid "&Refresh"
 msgstr "ताज़ा करें (&R)"
 
@@ -874,6 +880,7 @@ msgstr ""
 #: actionmanager.cpp:587
 #, fuzzy, kde-format
 #| msgid "New Su&b-to-do..."
+msgctxt "@action"
 msgid "New Su&b-to-do…"
 msgstr "नई उप कार्य-सूची... (&b)"
 
@@ -946,7 +953,9 @@ msgid "&Edit…"
 msgstr "संपादन (&E)"
 
 #: actionmanager.cpp:627
-#, kde-format
+#, fuzzy, kde-format
+#| msgid "&Make Sub-to-do Independent"
+msgctxt "@action"
 msgid "&Make Sub-to-do Independent"
 msgstr "उप-कार्य-सूची को स्वतंत्र बनाएँ (&M)"
 
@@ -966,12 +975,16 @@ msgid "Send &Invitation to Attendees"
 msgstr "उपस्थितों को निमंत्रण भेजें (&I)"
 
 #: actionmanager.cpp:654
-#, kde-format
+#, fuzzy, kde-format
+#| msgid "Re&quest Update"
+msgctxt "@action"
 msgid "Re&quest Update"
 msgstr "अद्यतन निवेदित करें (&q)"
 
 #: actionmanager.cpp:662
-#, kde-format
+#, fuzzy, kde-format
+#| msgid "Send &Cancellation to Attendees"
+msgctxt "@action"
 msgid "Send &Cancellation to Attendees"
 msgstr "उपस्थितों को रद्द करने की सूचना भेजें"
 
@@ -989,6 +1002,7 @@ msgstr "बदलने का निवेदन दें (&g)"
 #: actionmanager.cpp:686
 #, fuzzy, kde-format
 #| msgid "&Mail Free Busy Information..."
+msgctxt "@action"
 msgid "&Mail Free Busy Information…"
 msgstr "उपलब्ध/व्यस्त जानकारी ईमेल करें... (&M)"
 
@@ -999,7 +1013,9 @@ msgid "&Send as iCalendar…"
 msgstr "आईकैलेण्डर के रूप में भेजें... (&S)"
 
 #: actionmanager.cpp:698
-#, kde-format
+#, fuzzy, kde-format
+#| msgid "&Upload Free Busy Information"
+msgctxt "@action"
 msgid "&Upload Free Busy Information"
 msgstr "उपलब्ध व्यस्त जानकारी अपलोड करें (&U)"
 
@@ -1033,6 +1049,7 @@ msgstr "कैलेन्डर को वेब पृष्ठ के रू�
 #: actionmanager.cpp:749
 #, fuzzy, kde-format
 #| msgid "Configure &Date && Time..."
+msgctxt "@action"
 msgid "Configure &Date && Time…"
 msgstr "तारीख़ व समय को कॉन्फ़िगर करें... (&D)"
 
@@ -1045,6 +1062,7 @@ msgstr "दृश्य फ़िल्टर इस्तेमाल करे
 #: actionmanager.cpp:757
 #, fuzzy, kde-format
 #| msgid "Manage C&ategories..."
+msgctxt "@action"
 msgid "Manage T&ags…"
 msgstr "वर्ग का प्रबंधन करें... (&a)"
 

@@ -8,7 +8,7 @@ msgid ""
 msgstr ""
 "Project-Id-Version: korganizer\n"
 "Report-Msgid-Bugs-To: https://bugs.kde.org\n"
-"POT-Creation-Date: 2024-05-12 00:39+0000\n"
+"POT-Creation-Date: 2024-05-15 00:39+0000\n"
 "PO-Revision-Date: 2020-05-11 16:37+0300\n"
 "Last-Translator: Marek Laane <qiilaq69@gmail.com>\n"
 "Language-Team: Estonian <kde-et@lists.linux.ee>\n"
@@ -300,6 +300,7 @@ msgstr "Peida menüüriba"
 #, fuzzy, kde-format
 #| msgctxt "@title:window"
 #| msgid "Import Calendar"
+msgctxt "@action"
 msgid "Import &Calendar…"
 msgstr "Kalendri import"
 
@@ -367,6 +368,7 @@ msgstr "Laaditud sündmused lisatakse käesolevasse kalendrisse."
 #: actionmanager.cpp:305
 #, fuzzy, kde-format
 #| msgid "Export as &iCalendar..."
+msgctxt "@action"
 msgid "Export as &iCalendar…"
 msgstr "Ekspordi &iCalendarina..."
 
@@ -392,6 +394,7 @@ msgstr "Võimaldab eksportida kogu kalendri ühe iCalendari failina."
 #: actionmanager.cpp:314
 #, fuzzy, kde-format
 #| msgid "Archive O&ld Incidences..."
+msgctxt "@action"
 msgid "Archive O&ld Incidences…"
 msgstr "Arhiveeri &vanad kirjed..."
 
@@ -429,7 +432,9 @@ msgstr ""
 "eemaldatakse olemasolevast kalendrikogust."
 
 #: actionmanager.cpp:326
-#, kde-format
+#, fuzzy, kde-format
+#| msgid "Pur&ge Completed To-dos"
+msgctxt "@action"
 msgid "Pur&ge Completed To-dos"
 msgstr "Ku&stuta täidetud ülesanded"
 
@@ -658,7 +663,9 @@ msgstr ""
 "Gantti vaates. Kõiki kalendreid näidatakse eraldi real."
 
 #: actionmanager.cpp:460
-#, kde-format
+#, fuzzy, kde-format
+#| msgid "&Refresh"
+msgctxt "@action"
 msgid "&Refresh"
 msgstr "&Värskenda"
 
@@ -915,6 +922,7 @@ msgstr ""
 #: actionmanager.cpp:587
 #, fuzzy, kde-format
 #| msgid "New Su&b-to-do..."
+msgctxt "@action"
 msgid "New Su&b-to-do…"
 msgstr "Uus &alamülesanne..."
 
@@ -987,7 +995,9 @@ msgid "&Edit…"
 msgstr "&Redigeerimine"
 
 #: actionmanager.cpp:627
-#, kde-format
+#, fuzzy, kde-format
+#| msgid "&Make Sub-to-do Independent"
+msgctxt "@action"
 msgid "&Make Sub-to-do Independent"
 msgstr "&Muuda alamülesanne sõltumatuks"
 
@@ -1007,12 +1017,16 @@ msgid "Send &Invitation to Attendees"
 msgstr "Saada kutse osale&jatele"
 
 #: actionmanager.cpp:654
-#, kde-format
+#, fuzzy, kde-format
+#| msgid "Re&quest Update"
+msgctxt "@action"
 msgid "Re&quest Update"
 msgstr "Uuenda in&fot"
 
 #: actionmanager.cpp:662
-#, kde-format
+#, fuzzy, kde-format
+#| msgid "Send &Cancellation to Attendees"
+msgctxt "@action"
 msgid "Send &Cancellation to Attendees"
 msgstr "Saada &katkestusteade osalejatele"
 
@@ -1030,6 +1044,7 @@ msgstr "Vastu&ettepanek"
 #: actionmanager.cpp:686
 #, fuzzy, kde-format
 #| msgid "&Mail Free Busy Information..."
+msgctxt "@action"
 msgid "&Mail Free Busy Information…"
 msgstr "Saada teave va&ba/hõivatud aja kohta"
 
@@ -1040,7 +1055,9 @@ msgid "&Send as iCalendar…"
 msgstr "&Saada iCalendarina..."
 
 #: actionmanager.cpp:698
-#, kde-format
+#, fuzzy, kde-format
+#| msgid "&Upload Free Busy Information"
+msgctxt "@action"
 msgid "&Upload Free Busy Information"
 msgstr "Avalda vaba/hõivatud in&fo"
 
@@ -1072,6 +1089,7 @@ msgstr "Kalendrihalduri näitamine"
 #: actionmanager.cpp:749
 #, fuzzy, kde-format
 #| msgid "Configure &Date && Time..."
+msgctxt "@action"
 msgid "Configure &Date && Time…"
 msgstr "Kuupäeva && kellaaja sea&distamine..."
 
@@ -1084,6 +1102,7 @@ msgstr "Vaate&filtrite muutmine..."
 #: actionmanager.cpp:757
 #, fuzzy, kde-format
 #| msgid "Manage C&ategories..."
+msgctxt "@action"
 msgid "Manage T&ags…"
 msgstr "&Kategooriate muutmine..."
 

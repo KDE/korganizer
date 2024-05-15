@@ -7,7 +7,7 @@ msgid ""
 msgstr ""
 "Project-Id-Version: \n"
 "Report-Msgid-Bugs-To: https://bugs.kde.org\n"
-"POT-Creation-Date: 2024-05-12 00:39+0000\n"
+"POT-Creation-Date: 2024-05-15 00:39+0000\n"
 "PO-Revision-Date: 2024-05-13 12:31+0200\n"
 "Last-Translator: giovanni <g.sora@tiscali.it>\n"
 "Language-Team: Interlingua <kde-i18n-doc@kde.org>\n"
@@ -291,7 +291,9 @@ msgid "Hide menu bar"
 msgstr "Cela barra de tempore"
 
 #: actionmanager.cpp:243
-#, kde-format
+#, fuzzy, kde-format
+#| msgid "Import &Calendar…"
+msgctxt "@action"
 msgid "Import &Calendar…"
 msgstr "Importa &Calendario…"
 
@@ -356,7 +358,9 @@ msgid "The downloaded events will be merged into your current calendar."
 msgstr "Le eventos discargate essera fusionate in tu calendario currente."
 
 #: actionmanager.cpp:305
-#, kde-format
+#, fuzzy, kde-format
+#| msgid "Export as &iCalendar…"
+msgctxt "@action"
 msgid "Export as &iCalendar…"
 msgstr "Exporta como &iCalendar..."
 
@@ -382,7 +386,9 @@ msgstr ""
 "iCalendar."
 
 #: actionmanager.cpp:314
-#, kde-format
+#, fuzzy, kde-format
+#| msgid "Archive O&ld Incidences…"
+msgctxt "@action"
 msgid "Archive O&ld Incidences…"
 msgstr "Archiva vetu&le incidentias..."
 
@@ -411,7 +417,9 @@ msgstr ""
 "essera removite ex tu collection de calendario existente."
 
 #: actionmanager.cpp:326
-#, kde-format
+#, fuzzy, kde-format
+#| msgid "Pur&ge Completed To-dos"
+msgctxt "@action"
 msgid "Pur&ge Completed To-dos"
 msgstr "Pur&ga activitatas de facer completate"
 
@@ -641,7 +649,9 @@ msgstr ""
 "in un rango separate."
 
 #: actionmanager.cpp:460
-#, kde-format
+#, fuzzy, kde-format
+#| msgid "&Refresh"
+msgctxt "@action"
 msgid "&Refresh"
 msgstr "&Refresca"
 
@@ -890,7 +900,9 @@ msgstr ""
 "participantes, recurrentias e multo altere."
 
 #: actionmanager.cpp:587
-#, kde-format
+#, fuzzy, kde-format
+#| msgid "New Su&b-to-do…"
+msgctxt "@action"
 msgid "New Su&b-to-do…"
 msgstr "Nove Su&b-activitate-de-facer..."
 
@@ -960,7 +972,9 @@ msgid "&Edit…"
 msgstr "&Edita…"
 
 #: actionmanager.cpp:627
-#, kde-format
+#, fuzzy, kde-format
+#| msgid "&Make Sub-to-do Independent"
+msgctxt "@action"
 msgid "&Make Sub-to-do Independent"
 msgstr "Re&nde Sub-Activitate independente"
 
@@ -979,12 +993,16 @@ msgid "Send &Invitation to Attendees"
 msgstr "Invia un &invitation a participantes"
 
 #: actionmanager.cpp:654
-#, kde-format
+#, fuzzy, kde-format
+#| msgid "Re&quest Update"
+msgctxt "@action"
 msgid "Re&quest Update"
 msgstr "Re&quire actualisation"
 
 #: actionmanager.cpp:662
-#, kde-format
+#, fuzzy, kde-format
+#| msgid "Send &Cancellation to Attendees"
+msgctxt "@action"
 msgid "Send &Cancellation to Attendees"
 msgstr "Invia &cancellation a participantes"
 
@@ -1000,7 +1018,9 @@ msgid "Request Chan&ge"
 msgstr "Req&uire modification"
 
 #: actionmanager.cpp:686
-#, kde-format
+#, fuzzy, kde-format
+#| msgid "&Mail Free Busy Information…"
+msgctxt "@action"
 msgid "&Mail Free Busy Information…"
 msgstr "Invia per e-posta infor&mation de Libere/Occupate..."
 
@@ -1010,7 +1030,9 @@ msgid "&Send as iCalendar…"
 msgstr "I&nvia como iCalendar..."
 
 #: actionmanager.cpp:698
-#, kde-format
+#, fuzzy, kde-format
+#| msgid "&Upload Free Busy Information"
+msgctxt "@action"
 msgid "&Upload Free Busy Information"
 msgstr "&Carga information de Libere/Occupate"
 
@@ -1040,7 +1062,9 @@ msgid "Show Calendar Manager"
 msgstr "Monstra gerente de calendario"
 
 #: actionmanager.cpp:749
-#, kde-format
+#, fuzzy, kde-format
+#| msgid "Configure &Date && Time…"
+msgctxt "@action"
 msgid "Configure &Date && Time…"
 msgstr "Configura &Data && Tempore..."
 
@@ -1050,7 +1074,9 @@ msgid "Manage View &Filters…"
 msgstr "Gere &Filtros de vista..."
 
 #: actionmanager.cpp:757
-#, kde-format
+#, fuzzy, kde-format
+#| msgid "Manage T&ags…"
+msgctxt "@action"
 msgid "Manage T&ags…"
 msgstr "Gere Etiquett&as..."
 

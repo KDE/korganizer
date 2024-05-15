@@ -10,7 +10,7 @@ msgid ""
 msgstr ""
 "Project-Id-Version: korganizer\n"
 "Report-Msgid-Bugs-To: https://bugs.kde.org\n"
-"POT-Creation-Date: 2024-05-12 00:39+0000\n"
+"POT-Creation-Date: 2024-05-15 00:39+0000\n"
 "PO-Revision-Date: 2019-09-27 23:59+0500\n"
 "Last-Translator: Victor Ibragimov <victor.ibragimov@gmail.com>\n"
 "Language-Team: English <kde-i18n-doc@kde.org>\n"
@@ -298,6 +298,7 @@ msgstr "Лавҳаи вақт"
 #: actionmanager.cpp:243
 #, fuzzy, kde-format
 #| msgid "Import Calendar"
+msgctxt "@action"
 msgid "Import &Calendar…"
 msgstr "Воридоти тақвим"
 
@@ -362,6 +363,7 @@ msgstr "Воқеаҳои кучондашуда бо тақвими шумо п�
 
 #: actionmanager.cpp:305
 #, fuzzy, kde-format
+msgctxt "@action"
 msgid "Export as &iCalendar…"
 msgstr "Воридоти тақвим"
 
@@ -387,6 +389,7 @@ msgstr ""
 
 #: actionmanager.cpp:314
 #, fuzzy, kde-format
+msgctxt "@action"
 msgid "Archive O&ld Incidences…"
 msgstr "Архив кардани сабтҳои кӯҳна"
 
@@ -414,6 +417,7 @@ msgstr ""
 
 #: actionmanager.cpp:326
 #, fuzzy, kde-format
+msgctxt "@action"
 msgid "Pur&ge Completed To-dos"
 msgstr "Ҳузфи масъалаҳои иҷрокардашуда"
 
@@ -632,6 +636,7 @@ msgstr ""
 
 #: actionmanager.cpp:460
 #, fuzzy, kde-format
+msgctxt "@action"
 msgid "&Refresh"
 msgstr "Бозсозӣ"
 
@@ -880,6 +885,7 @@ msgstr ""
 
 #: actionmanager.cpp:587
 #, fuzzy, kde-format
+msgctxt "@action"
 msgid "New Su&b-to-do…"
 msgstr "Зермасъалаи &нав..."
 
@@ -950,6 +956,7 @@ msgstr "&Таъғир додан..."
 
 #: actionmanager.cpp:627
 #, fuzzy, kde-format
+msgctxt "@action"
 msgid "&Make Sub-to-do Independent"
 msgstr "&Зермасъаларо мустаъқил кардан"
 
@@ -969,11 +976,13 @@ msgstr ""
 
 #: actionmanager.cpp:654
 #, fuzzy, kde-format
+msgctxt "@action"
 msgid "Re&quest Update"
 msgstr "Дархост Пурсиш"
 
 #: actionmanager.cpp:662
 #, kde-format
+msgctxt "@action"
 msgid "Send &Cancellation to Attendees"
 msgstr ""
 
@@ -990,6 +999,7 @@ msgstr "Такрор кардан Ҳисобкунанда"
 
 #: actionmanager.cpp:686
 #, fuzzy, kde-format
+msgctxt "@action"
 msgid "&Mail Free Busy Information…"
 msgstr "Машғулияти Ахбороти Озоди Почта"
 
@@ -1000,6 +1010,7 @@ msgstr "iТақвим..."
 
 #: actionmanager.cpp:698
 #, fuzzy, kde-format
+msgctxt "@action"
 msgid "&Upload Free Busy Information"
 msgstr "Нашр кардани Ахбороти Озоди Машғул"
 
@@ -1032,6 +1043,7 @@ msgstr "Содироти тақвимот ба саҳифаи веб"
 #: actionmanager.cpp:749
 #, fuzzy, kde-format
 #| msgid "Configure &Date && Time..."
+msgctxt "@action"
 msgid "Configure &Date && Time…"
 msgstr "Танзими &Таърих ва вақт..."
 
@@ -1042,6 +1054,7 @@ msgstr "Муҳаррири &филтрҳо..."
 
 #: actionmanager.cpp:757
 #, fuzzy, kde-format
+msgctxt "@action"
 msgid "Manage T&ags…"
 msgstr "Муҳаррири К&атегорияҳо..."
 

@@ -8,7 +8,7 @@ msgid ""
 msgstr ""
 "Project-Id-Version: Korganizer\n"
 "Report-Msgid-Bugs-To: https://bugs.kde.org\n"
-"POT-Creation-Date: 2024-05-12 00:39+0000\n"
+"POT-Creation-Date: 2024-05-15 00:39+0000\n"
 "PO-Revision-Date: 2024-02-09 23:54+0100\n"
 "Last-Translator: Shinjo Park <kde@peremen.name>\n"
 "Language-Team: Korean <kde-kr@kde.org>\n"
@@ -294,6 +294,7 @@ msgstr "메뉴 표시줄 숨기기"
 #, fuzzy, kde-format
 #| msgctxt "@title:window"
 #| msgid "Import Calendar"
+msgctxt "@action"
 msgid "Import &Calendar…"
 msgstr "캘린더 가져오기"
 
@@ -360,6 +361,7 @@ msgstr "다운로드한 이벤트를 현재 캘린더에 합칩니다."
 #: actionmanager.cpp:305
 #, fuzzy, kde-format
 #| msgid "Export as &iCalendar..."
+msgctxt "@action"
 msgid "Export as &iCalendar…"
 msgstr "iCalendar로 내보내기(&I)..."
 
@@ -385,6 +387,7 @@ msgstr "전체 캘린더 모음집을 단일 iCalendar 파일로 내보냅니다
 #: actionmanager.cpp:314
 #, fuzzy, kde-format
 #| msgid "Archive O&ld Incidences..."
+msgctxt "@action"
 msgid "Archive O&ld Incidences…"
 msgstr "오래된 반복 항목 정리(&L)..."
 
@@ -412,7 +415,9 @@ msgstr ""
 "화 상자를 엽니다. 기존 캘린더 모음집에서 삭제됩니다."
 
 #: actionmanager.cpp:326
-#, kde-format
+#, fuzzy, kde-format
+#| msgid "Pur&ge Completed To-dos"
+msgctxt "@action"
 msgid "Pur&ge Completed To-dos"
 msgstr "완료한 할 일 정리(&G)"
 
@@ -635,7 +640,9 @@ msgstr ""
 "니다. 각각 캘린더는 다른 선으로 표시됩니다."
 
 #: actionmanager.cpp:460
-#, kde-format
+#, fuzzy, kde-format
+#| msgid "&Refresh"
+msgctxt "@action"
 msgid "&Refresh"
 msgstr "새로 고침(&R)"
 
@@ -882,6 +889,7 @@ msgstr ""
 #: actionmanager.cpp:587
 #, fuzzy, kde-format
 #| msgid "New Su&b-to-do..."
+msgctxt "@action"
 msgid "New Su&b-to-do…"
 msgstr "하위 할 일 만들기(&B)..."
 
@@ -952,7 +960,9 @@ msgid "&Edit…"
 msgstr "편집(&E)"
 
 #: actionmanager.cpp:627
-#, kde-format
+#, fuzzy, kde-format
+#| msgid "&Make Sub-to-do Independent"
+msgctxt "@action"
 msgid "&Make Sub-to-do Independent"
 msgstr "하위 할 일을 독립 항목으로 만들기(&M)"
 
@@ -972,12 +982,16 @@ msgid "Send &Invitation to Attendees"
 msgstr "참석자에게 초대장 전송(&I)"
 
 #: actionmanager.cpp:654
-#, kde-format
+#, fuzzy, kde-format
+#| msgid "Re&quest Update"
+msgctxt "@action"
 msgid "Re&quest Update"
 msgstr "업데이트 요청(&Q)"
 
 #: actionmanager.cpp:662
-#, kde-format
+#, fuzzy, kde-format
+#| msgid "Send &Cancellation to Attendees"
+msgctxt "@action"
 msgid "Send &Cancellation to Attendees"
 msgstr "참석자에게 취소 안내 전송(&C)"
 
@@ -995,6 +1009,7 @@ msgstr "변경 요청(&G)"
 #: actionmanager.cpp:686
 #, fuzzy, kde-format
 #| msgid "&Mail Free Busy Information..."
+msgctxt "@action"
 msgid "&Mail Free Busy Information…"
 msgstr "바쁨/한가함 정보 메일 보내기(&M)..."
 
@@ -1005,7 +1020,9 @@ msgid "&Send as iCalendar…"
 msgstr "iCalendar로 전송(&S)..."
 
 #: actionmanager.cpp:698
-#, kde-format
+#, fuzzy, kde-format
+#| msgid "&Upload Free Busy Information"
+msgctxt "@action"
 msgid "&Upload Free Busy Information"
 msgstr "바쁨/한가함 정보 업로드(&U)"
 
@@ -1037,6 +1054,7 @@ msgstr "캘린더 관리자 표시"
 #: actionmanager.cpp:749
 #, fuzzy, kde-format
 #| msgid "Configure &Date && Time..."
+msgctxt "@action"
 msgid "Configure &Date && Time…"
 msgstr "날짜와 시간 설정(&D)..."
 
@@ -1049,6 +1067,7 @@ msgstr "보기 필터 관리(&F)..."
 #: actionmanager.cpp:757
 #, fuzzy, kde-format
 #| msgid "Manage T&ags..."
+msgctxt "@action"
 msgid "Manage T&ags…"
 msgstr "태그 관리(&A)..."
 

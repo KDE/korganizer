@@ -4,7 +4,7 @@ msgid ""
 msgstr ""
 "Project-Id-Version: kdepim/korganizer.po\n"
 "Report-Msgid-Bugs-To: https://bugs.kde.org\n"
-"POT-Creation-Date: 2024-05-12 00:39+0000\n"
+"POT-Creation-Date: 2024-05-15 00:39+0000\n"
 "PO-Revision-Date: 2004-09-20 15:44+0200\n"
 "Last-Translator: Thierry Vignaud <tvignaud@mandriva.com>\n"
 "Language-Team: Breton <LL@li.org>\n"
@@ -289,6 +289,7 @@ msgstr "Barenn eur"
 #: actionmanager.cpp:243
 #, fuzzy, kde-format
 #| msgid "Import Calendar"
+msgctxt "@action"
 msgid "Import &Calendar…"
 msgstr "Enporzh an deiziadur"
 
@@ -354,6 +355,7 @@ msgstr ""
 #: actionmanager.cpp:305
 #, fuzzy, kde-format
 #| msgid "Import &Calendar..."
+msgctxt "@action"
 msgid "Export as &iCalendar…"
 msgstr "Enporzh an &deiziadur ..."
 
@@ -379,6 +381,7 @@ msgstr ""
 
 #: actionmanager.cpp:314
 #, kde-format
+msgctxt "@action"
 msgid "Archive O&ld Incidences…"
 msgstr ""
 
@@ -405,6 +408,7 @@ msgstr ""
 
 #: actionmanager.cpp:326
 #, fuzzy, kde-format
+msgctxt "@action"
 msgid "Pur&ge Completed To-dos"
 msgstr "Echu eo ar ska&rzhañ"
 
@@ -627,7 +631,9 @@ msgid ""
 msgstr ""
 
 #: actionmanager.cpp:460
-#, kde-format
+#, fuzzy, kde-format
+#| msgid "&Refresh"
+msgctxt "@action"
 msgid "&Refresh"
 msgstr "&Adtresañ"
 
@@ -887,6 +893,7 @@ msgstr ""
 #: actionmanager.cpp:587
 #, fuzzy, kde-format
 #| msgid "New &To-do..."
+msgctxt "@action"
 msgid "New Su&b-to-do…"
 msgstr "&Tra d'ober nevez ..."
 
@@ -963,6 +970,7 @@ msgstr "&Aozañ"
 
 #: actionmanager.cpp:627
 #, kde-format
+msgctxt "@action"
 msgid "&Make Sub-to-do Independent"
 msgstr ""
 
@@ -982,11 +990,13 @@ msgstr ""
 
 #: actionmanager.cpp:654
 #, fuzzy, kde-format
+msgctxt "@action"
 msgid "Re&quest Update"
 msgstr "Deiziad ar fin :"
 
 #: actionmanager.cpp:662
 #, kde-format
+msgctxt "@action"
 msgid "Send &Cancellation to Attendees"
 msgstr ""
 
@@ -1003,6 +1013,7 @@ msgstr ""
 
 #: actionmanager.cpp:686
 #, kde-format
+msgctxt "@action"
 msgid "&Mail Free Busy Information…"
 msgstr ""
 
@@ -1013,9 +1024,11 @@ msgid "&Send as iCalendar…"
 msgstr "&iCalendar ..."
 
 #: actionmanager.cpp:698
-#, kde-format
+#, fuzzy, kde-format
+#| msgid "Include Information"
+msgctxt "@action"
 msgid "&Upload Free Busy Information"
-msgstr ""
+msgstr "Enlakaat an titouroù"
 
 #: actionmanager.cpp:704
 #, fuzzy, kde-format
@@ -1047,6 +1060,7 @@ msgstr "Ezporzh an deiziadur en ur bajenn gwiad"
 #: actionmanager.cpp:749
 #, fuzzy, kde-format
 #| msgid "Configure &Date && Time..."
+msgctxt "@action"
 msgid "Configure &Date && Time…"
 msgstr "Kefluniañ &Deiziad hag Eur ..."
 
@@ -1058,6 +1072,7 @@ msgstr "Aozañ ar &siloù ..."
 #: actionmanager.cpp:757
 #, fuzzy, kde-format
 #| msgid "Manage C&ategories..."
+msgctxt "@action"
 msgid "Manage T&ags…"
 msgstr "Merañ ar r&ummoù ..."
 
@@ -6964,9 +6979,6 @@ msgstr "%1"
 
 #~ msgid "Print Layout"
 #~ msgstr "Doare moulañ"
-
-#~ msgid "Include Information"
-#~ msgstr "Enlakaat an titouroù"
 
 #, fuzzy
 #~| msgid "&Description"

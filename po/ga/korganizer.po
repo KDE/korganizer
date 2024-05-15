@@ -6,7 +6,7 @@ msgid ""
 msgstr ""
 "Project-Id-Version: kdepim/korganizer.po\n"
 "Report-Msgid-Bugs-To: https://bugs.kde.org\n"
-"POT-Creation-Date: 2024-05-12 00:39+0000\n"
+"POT-Creation-Date: 2024-05-15 00:39+0000\n"
 "PO-Revision-Date: 2004-12-03 14:52-0500\n"
 "Last-Translator: Kevin Scannell <kscanne@gmail.com>\n"
 "Language-Team: Irish <gaeilge-gnulinux@lists.sourceforge.net>\n"
@@ -295,6 +295,7 @@ msgstr ""
 #, fuzzy, kde-format
 #| msgctxt "@title:window"
 #| msgid "Import Calendar"
+msgctxt "@action"
 msgid "Import &Calendar…"
 msgstr "Iompórtáil Féilire"
 
@@ -360,6 +361,7 @@ msgstr ""
 #: actionmanager.cpp:305
 #, fuzzy, kde-format
 #| msgid "Export as &iCalendar..."
+msgctxt "@action"
 msgid "Export as &iCalendar…"
 msgstr "Easpórtáil mar &iCalendar..."
 
@@ -387,6 +389,7 @@ msgstr ""
 #: actionmanager.cpp:314
 #, fuzzy, kde-format
 #| msgid "Archive O&ld Entries..."
+msgctxt "@action"
 msgid "Archive O&ld Incidences…"
 msgstr "Cuir &Seaniontrálacha i gCartlann..."
 
@@ -414,7 +417,9 @@ msgid ""
 msgstr ""
 
 #: actionmanager.cpp:326
-#, kde-format
+#, fuzzy, kde-format
+#| msgid "Pur&ge Completed To-dos"
+msgctxt "@action"
 msgid "Pur&ge Completed To-dos"
 msgstr "Pur&gaigh Tascanna Críochnaithe"
 
@@ -637,7 +642,9 @@ msgid ""
 msgstr ""
 
 #: actionmanager.cpp:460
-#, kde-format
+#, fuzzy, kde-format
+#| msgid "&Refresh"
+msgctxt "@action"
 msgid "&Refresh"
 msgstr "&Athnuaigh"
 
@@ -898,6 +905,7 @@ msgstr ""
 #: actionmanager.cpp:587
 #, fuzzy, kde-format
 #| msgid "New Su&b-to-do..."
+msgctxt "@action"
 msgid "New Su&b-to-do…"
 msgstr "&Fo-Thasc Nua..."
 
@@ -974,6 +982,7 @@ msgstr "&Eagar"
 
 #: actionmanager.cpp:627
 #, kde-format
+msgctxt "@action"
 msgid "&Make Sub-to-do Independent"
 msgstr ""
 
@@ -992,12 +1001,15 @@ msgid "Send &Invitation to Attendees"
 msgstr ""
 
 #: actionmanager.cpp:654
-#, kde-format
+#, fuzzy, kde-format
+#| msgid "Due date"
+msgctxt "@action"
 msgid "Re&quest Update"
-msgstr ""
+msgstr "Spriocdháta"
 
 #: actionmanager.cpp:662
 #, kde-format
+msgctxt "@action"
 msgid "Send &Cancellation to Attendees"
 msgstr ""
 
@@ -1014,6 +1026,7 @@ msgstr ""
 
 #: actionmanager.cpp:686
 #, kde-format
+msgctxt "@action"
 msgid "&Mail Free Busy Information…"
 msgstr ""
 
@@ -1024,9 +1037,11 @@ msgid "&Send as iCalendar…"
 msgstr "&Seol mar iCalendar..."
 
 #: actionmanager.cpp:698
-#, kde-format
+#, fuzzy, kde-format
+#| msgid "Include Information"
+msgctxt "@action"
 msgid "&Upload Free Busy Information"
-msgstr ""
+msgstr "Cuir Eolas San Áireamh"
 
 #: actionmanager.cpp:704
 #, kde-format
@@ -1056,6 +1071,7 @@ msgstr ""
 #: actionmanager.cpp:749
 #, fuzzy, kde-format
 #| msgid "Configure &Date && Time..."
+msgctxt "@action"
 msgid "Configure &Date && Time…"
 msgstr "Cumraigh &Dáta agus Am..."
 
@@ -1067,6 +1083,7 @@ msgstr ""
 #: actionmanager.cpp:757
 #, fuzzy, kde-format
 #| msgid "Manage C&ategories..."
+msgctxt "@action"
 msgid "Manage T&ags…"
 msgstr "Bainistigh C&atagóirí..."
 
@@ -6980,9 +6997,6 @@ msgstr "%1"
 #~ msgid "Print Layout"
 #~ msgstr "Leagan Amach Priontála"
 
-#~ msgid "Include Information"
-#~ msgstr "Cuir Eolas San Áireamh"
-
 #~ msgid "Include &descriptions"
 #~ msgstr "Cuir &cur síos san áireamh"
 
@@ -7375,9 +7389,6 @@ msgstr "%1"
 
 #~ msgid "&Priority"
 #~ msgstr "&Tosaíocht"
-
-#~ msgid "Due date"
-#~ msgstr "Spriocdháta"
 
 #~ msgid "Per&centage completed"
 #~ msgstr "&Céatadán críochnaithe"

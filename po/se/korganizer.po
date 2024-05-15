@@ -5,7 +5,7 @@ msgid ""
 msgstr ""
 "Project-Id-Version: korganizer\n"
 "Report-Msgid-Bugs-To: https://bugs.kde.org\n"
-"POT-Creation-Date: 2024-05-12 00:39+0000\n"
+"POT-Creation-Date: 2024-05-15 00:39+0000\n"
 "PO-Revision-Date: 2006-01-10 20:33+0100\n"
 "Last-Translator: Børre Gaup <boerre@skolelinux.no>\n"
 "Language-Team: Northern Sami <l10n-no@lister.huftis.org>\n"
@@ -285,9 +285,11 @@ msgid "Hide menu bar"
 msgstr ""
 
 #: actionmanager.cpp:243
-#, kde-format
+#, fuzzy, kde-format
+#| msgid "New Calendar"
+msgctxt "@action"
 msgid "Import &Calendar…"
-msgstr ""
+msgstr "Ođđa kaleandar"
 
 #: actionmanager.cpp:244
 #, kde-format
@@ -346,9 +348,11 @@ msgid "The downloaded events will be merged into your current calendar."
 msgstr "Vižžojuvvon dáhpáhusat bárgiduvvojit du kaleandáriin."
 
 #: actionmanager.cpp:305
-#, kde-format
+#, fuzzy, kde-format
+#| msgid "New Calendar"
+msgctxt "@action"
 msgid "Export as &iCalendar…"
-msgstr ""
+msgstr "Ođđa kaleandar"
 
 #: actionmanager.cpp:306
 #, kde-format
@@ -371,6 +375,7 @@ msgstr ""
 
 #: actionmanager.cpp:314
 #, kde-format
+msgctxt "@action"
 msgid "Archive O&ld Incidences…"
 msgstr ""
 
@@ -397,6 +402,7 @@ msgstr ""
 
 #: actionmanager.cpp:326
 #, kde-format
+msgctxt "@action"
 msgid "Pur&ge Completed To-dos"
 msgstr ""
 
@@ -607,6 +613,7 @@ msgstr ""
 
 #: actionmanager.cpp:460
 #, kde-format
+msgctxt "@action"
 msgid "&Refresh"
 msgstr ""
 
@@ -844,9 +851,12 @@ msgid ""
 msgstr ""
 
 #: actionmanager.cpp:587
-#, kde-format
+#, fuzzy, kde-format
+#| msgctxt "@action:inmenu"
+#| msgid "New To-do..."
+msgctxt "@action"
 msgid "New Su&b-to-do…"
-msgstr ""
+msgstr "Ođđa gáldu …"
 
 #: actionmanager.cpp:595 kodaymatrix.cpp:486
 #, fuzzy, kde-format
@@ -917,6 +927,7 @@ msgstr "&Doaimmat …"
 
 #: actionmanager.cpp:627
 #, kde-format
+msgctxt "@action"
 msgid "&Make Sub-to-do Independent"
 msgstr ""
 
@@ -936,11 +947,13 @@ msgstr ""
 
 #: actionmanager.cpp:654
 #, kde-format
+msgctxt "@action"
 msgid "Re&quest Update"
 msgstr ""
 
 #: actionmanager.cpp:662
 #, kde-format
+msgctxt "@action"
 msgid "Send &Cancellation to Attendees"
 msgstr ""
 
@@ -957,6 +970,7 @@ msgstr ""
 
 #: actionmanager.cpp:686
 #, kde-format
+msgctxt "@action"
 msgid "&Mail Free Busy Information…"
 msgstr ""
 
@@ -968,6 +982,7 @@ msgstr "Ođđa kaleandar"
 
 #: actionmanager.cpp:698
 #, kde-format
+msgctxt "@action"
 msgid "&Upload Free Busy Information"
 msgstr ""
 
@@ -999,6 +1014,7 @@ msgstr ""
 #: actionmanager.cpp:749
 #, fuzzy, kde-format
 #| msgid "Configure &Date && Time..."
+msgctxt "@action"
 msgid "Configure &Date && Time…"
 msgstr "Heivet &dáhtona ja áiggi …"
 
@@ -1009,6 +1025,7 @@ msgstr ""
 
 #: actionmanager.cpp:757
 #, kde-format
+msgctxt "@action"
 msgid "Manage T&ags…"
 msgstr ""
 

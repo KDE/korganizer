@@ -5,7 +5,7 @@ msgid ""
 msgstr ""
 "Project-Id-Version: korganizer-1.1.1\n"
 "Report-Msgid-Bugs-To: https://bugs.kde.org\n"
-"POT-Creation-Date: 2024-05-12 00:39+0000\n"
+"POT-Creation-Date: 2024-05-15 00:39+0000\n"
 "PO-Revision-Date: 2022-02-06 19:07+0000\n"
 "Last-Translator: Sergiu Bivol <sergiu@cip.md>\n"
 "Language-Team: Romanian\n"
@@ -285,6 +285,7 @@ msgstr "Bară de timp"
 #: actionmanager.cpp:243
 #, fuzzy, kde-format
 #| msgid "Import Calendar"
+msgctxt "@action"
 msgid "Import &Calendar…"
 msgstr "Importă calendar"
 
@@ -349,6 +350,7 @@ msgstr ""
 #: actionmanager.cpp:305
 #, fuzzy, kde-format
 #| msgid "Export as &iCalendar..."
+msgctxt "@action"
 msgid "Export as &iCalendar…"
 msgstr "Export ca &iCalendar..."
 
@@ -375,6 +377,7 @@ msgstr ""
 #: actionmanager.cpp:314
 #, fuzzy, kde-format
 #| msgid "Archive O&ld Entries..."
+msgctxt "@action"
 msgid "Archive O&ld Incidences…"
 msgstr "Arhivează înregistrări&le vechi..."
 
@@ -401,6 +404,7 @@ msgstr ""
 
 #: actionmanager.cpp:326
 #, fuzzy, kde-format
+msgctxt "@action"
 msgid "Pur&ge Completed To-dos"
 msgstr "Ștergere terminată"
 
@@ -617,7 +621,9 @@ msgid ""
 msgstr ""
 
 #: actionmanager.cpp:460
-#, kde-format
+#, fuzzy, kde-format
+#| msgid "&Refresh"
+msgctxt "@action"
 msgid "&Refresh"
 msgstr "&Actualizează"
 
@@ -867,6 +873,7 @@ msgstr ""
 
 #: actionmanager.cpp:587
 #, fuzzy, kde-format
+msgctxt "@action"
 msgid "New Su&b-to-do…"
 msgstr "Sub-lucrare nouă..."
 
@@ -941,6 +948,7 @@ msgstr "&Editare"
 
 #: actionmanager.cpp:627
 #, kde-format
+msgctxt "@action"
 msgid "&Make Sub-to-do Independent"
 msgstr ""
 
@@ -959,12 +967,16 @@ msgid "Send &Invitation to Attendees"
 msgstr "Trimite &invitație către participanți"
 
 #: actionmanager.cpp:654
-#, kde-format
+#, fuzzy, kde-format
+#| msgid "Re&quest Update"
+msgctxt "@action"
 msgid "Re&quest Update"
 msgstr "Cere &actualizare"
 
 #: actionmanager.cpp:662
-#, kde-format
+#, fuzzy, kde-format
+#| msgid "Send &Cancellation to Attendees"
+msgctxt "@action"
 msgid "Send &Cancellation to Attendees"
 msgstr "Trimite anulare &către participanți"
 
@@ -981,6 +993,7 @@ msgstr "Cere &modificare"
 
 #: actionmanager.cpp:686
 #, fuzzy, kde-format
+msgctxt "@action"
 msgid "&Mail Free Busy Information…"
 msgstr "Confirmare Organizator"
 
@@ -991,6 +1004,7 @@ msgstr "Trimite ca iCalendar..."
 
 #: actionmanager.cpp:698
 #, fuzzy, kde-format
+msgctxt "@action"
 msgid "&Upload Free Busy Information"
 msgstr "Confirmare Organizator"
 
@@ -1022,6 +1036,7 @@ msgstr "Exportă calendar ca pagină de web"
 #: actionmanager.cpp:749
 #, fuzzy, kde-format
 #| msgid "Configure &Date && Time..."
+msgctxt "@action"
 msgid "Configure &Date && Time…"
 msgstr "Configurare &dată și oră..."
 
@@ -1032,6 +1047,7 @@ msgstr "Editează filtre"
 
 #: actionmanager.cpp:757
 #, fuzzy, kde-format
+msgctxt "@action"
 msgid "Manage T&ags…"
 msgstr "Editează categorii"
 

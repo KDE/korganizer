@@ -13,7 +13,7 @@ msgid ""
 msgstr ""
 "Project-Id-Version: korganizer\n"
 "Report-Msgid-Bugs-To: https://bugs.kde.org\n"
-"POT-Creation-Date: 2024-05-12 00:39+0000\n"
+"POT-Creation-Date: 2024-05-15 00:39+0000\n"
 "PO-Revision-Date: 2009-07-28 20:21+0000\n"
 "Last-Translator: Sveinn í Felli <sveinki@nett.is>\n"
 "Language-Team: Icelandic <kde-isl@molar.is>\n"
@@ -301,6 +301,7 @@ msgstr "Klukkurönd"
 #: actionmanager.cpp:243
 #, fuzzy, kde-format
 #| msgid "Import Calendar"
+msgctxt "@action"
 msgid "Import &Calendar…"
 msgstr "Flytja inn dagatal"
 
@@ -366,6 +367,7 @@ msgstr "Sóttum atburðum verður bætt inn í dagbókina þína."
 #: actionmanager.cpp:305
 #, fuzzy, kde-format
 #| msgid "Import &Calendar..."
+msgctxt "@action"
 msgid "Export as &iCalendar…"
 msgstr "Flytja inn &dagatal..."
 
@@ -392,6 +394,7 @@ msgstr ""
 #: actionmanager.cpp:314
 #, fuzzy, kde-format
 #| msgid "Archive O&ld Entries..."
+msgctxt "@action"
 msgid "Archive O&ld Incidences…"
 msgstr "Vista gam&lar færslur í safnskrá..."
 
@@ -419,6 +422,7 @@ msgstr ""
 
 #: actionmanager.cpp:326
 #, fuzzy, kde-format
+msgctxt "@action"
 msgid "Pur&ge Completed To-dos"
 msgstr "Eyða kláruðum"
 
@@ -641,6 +645,7 @@ msgstr ""
 
 #: actionmanager.cpp:460
 #, fuzzy, kde-format
+msgctxt "@action"
 msgid "&Refresh"
 msgstr "&Endurnýja"
 
@@ -902,6 +907,7 @@ msgstr ""
 #: actionmanager.cpp:587
 #, fuzzy, kde-format
 #| msgid "New Su&b-to-do..."
+msgctxt "@action"
 msgid "New Su&b-to-do…"
 msgstr "Nýr un&dirverkþáttur..."
 
@@ -976,7 +982,9 @@ msgid "&Edit…"
 msgstr "Br&eyta"
 
 #: actionmanager.cpp:627
-#, kde-format
+#, fuzzy, kde-format
+#| msgid "&Make Sub-to-do Independent"
+msgctxt "@action"
 msgid "&Make Sub-to-do Independent"
 msgstr "&Gera undirverkþátt sjálfstæðan"
 
@@ -996,11 +1004,13 @@ msgstr ""
 
 #: actionmanager.cpp:654
 #, fuzzy, kde-format
+msgctxt "@action"
 msgid "Re&quest Update"
 msgstr "Senda &beiðni"
 
 #: actionmanager.cpp:662
 #, kde-format
+msgctxt "@action"
 msgid "Send &Cancellation to Attendees"
 msgstr ""
 
@@ -1017,6 +1027,7 @@ msgstr "Breytinga&rtillaga"
 
 #: actionmanager.cpp:686
 #, fuzzy, kde-format
+msgctxt "@action"
 msgid "&Mail Free Busy Information…"
 msgstr "&Póstsenda laus/upptekin upplýsingar"
 
@@ -1027,7 +1038,9 @@ msgid "&Send as iCalendar…"
 msgstr "&iCalendar..."
 
 #: actionmanager.cpp:698
-#, kde-format
+#, fuzzy, kde-format
+#| msgid "&Upload Free Busy Information"
+msgctxt "@action"
 msgid "&Upload Free Busy Information"
 msgstr "Senda la&us/upptekin upplýsingar"
 
@@ -1061,6 +1074,7 @@ msgstr "Flytja dagatal út sem vefsíðu"
 #: actionmanager.cpp:749
 #, fuzzy, kde-format
 #| msgid "Configure &Date && Time..."
+msgctxt "@action"
 msgid "Configure &Date && Time…"
 msgstr "Stilla &dagsetningu og tíma..."
 
@@ -1072,6 +1086,7 @@ msgstr "Sýsla með &skoðunarsíur..."
 
 #: actionmanager.cpp:757
 #, fuzzy, kde-format
+msgctxt "@action"
 msgid "Manage T&ags…"
 msgstr "Sýsla með &flokka..."
 

@@ -17,7 +17,7 @@ msgid ""
 msgstr ""
 "Project-Id-Version: korganizer\n"
 "Report-Msgid-Bugs-To: https://bugs.kde.org\n"
-"POT-Creation-Date: 2024-05-12 00:39+0000\n"
+"POT-Creation-Date: 2024-05-15 00:39+0000\n"
 "PO-Revision-Date: 2024-05-12 15:01+0530\n"
 "Last-Translator: Kishore G <kishore96@gmail.com>\n"
 "Language-Team: Tamil <kde-i18n-doc@kde.org>\n"
@@ -294,7 +294,9 @@ msgid "Hide menu bar"
 msgstr "பட்டிப் பட்டையை மறை"
 
 #: actionmanager.cpp:243
-#, kde-format
+#, fuzzy, kde-format
+#| msgid "Import &Calendar…"
+msgctxt "@action"
 msgid "Import &Calendar…"
 msgstr "&நாள்காட்டியை இறக்குமதி செய்…"
 
@@ -354,7 +356,9 @@ msgid "The downloaded events will be merged into your current calendar."
 msgstr "இறக்கிய நிகழ்வுகளை உங்களின் நடைமுறை நாள்காட்டியில் ஒன்றாகச் சேர்க்கப்படும்."
 
 #: actionmanager.cpp:305
-#, kde-format
+#, fuzzy, kde-format
+#| msgid "Export as &iCalendar…"
+msgctxt "@action"
 msgid "Export as &iCalendar…"
 msgstr "iCalendar-&ஆக ஏற்றுமதி செய்…"
 
@@ -378,7 +382,9 @@ msgid ""
 msgstr ""
 
 #: actionmanager.cpp:314
-#, kde-format
+#, fuzzy, kde-format
+#| msgid "Archive O&ld Incidences…"
+msgctxt "@action"
 msgid "Archive O&ld Incidences…"
 msgstr "&பழைய நிகழ்வுகளைக் காப்பகப்படுத்து…"
 
@@ -405,7 +411,9 @@ msgid ""
 msgstr ""
 
 #: actionmanager.cpp:326
-#, kde-format
+#, fuzzy, kde-format
+#| msgid "Pur&ge Completed To-dos"
+msgctxt "@action"
 msgid "Pur&ge Completed To-dos"
 msgstr "&செய்யவேண்டியவற்றில் முடித்தவற்றை நீக்கு"
 
@@ -617,7 +625,9 @@ msgid ""
 msgstr ""
 
 #: actionmanager.cpp:460
-#, kde-format
+#, fuzzy, kde-format
+#| msgid "&Refresh"
+msgctxt "@action"
 msgid "&Refresh"
 msgstr "&புதுப்பி"
 
@@ -864,6 +874,7 @@ msgstr ""
 #: actionmanager.cpp:587
 #, fuzzy, kde-format
 #| msgid "New Su&b-to-do..."
+msgctxt "@action"
 msgid "New Su&b-to-do…"
 msgstr "&புதிய உபசெயல்"
 
@@ -934,7 +945,9 @@ msgid "&Edit…"
 msgstr "&திருத்து…"
 
 #: actionmanager.cpp:627
-#, kde-format
+#, fuzzy, kde-format
+#| msgid "&Make Sub-to-do Independent"
+msgctxt "@action"
 msgid "&Make Sub-to-do Independent"
 msgstr "&சார்செயலை தனிச்செயலாக்கு"
 
@@ -954,11 +967,13 @@ msgstr ""
 
 #: actionmanager.cpp:654
 #, fuzzy, kde-format
+msgctxt "@action"
 msgid "Re&quest Update"
 msgstr "விருப்பம்"
 
 #: actionmanager.cpp:662
 #, kde-format
+msgctxt "@action"
 msgid "Send &Cancellation to Attendees"
 msgstr ""
 
@@ -977,6 +992,7 @@ msgstr ""
 
 #: actionmanager.cpp:686
 #, fuzzy, kde-format
+msgctxt "@action"
 msgid "&Mail Free Busy Information…"
 msgstr "அஞ்சல் இல்லாத வேலையுள்ள தகவல்"
 
@@ -986,7 +1002,9 @@ msgid "&Send as iCalendar…"
 msgstr "iCalendar &ஆக அனுப்பு..."
 
 #: actionmanager.cpp:698
-#, kde-format
+#, fuzzy, kde-format
+#| msgid "&Upload Free Busy Information"
+msgctxt "@action"
 msgid "&Upload Free Busy Information"
 msgstr "வேலைபுரியும் தகவலை ஏற்று"
 
@@ -1020,7 +1038,9 @@ msgstr ""
 "செய்                                                                             "
 
 #: actionmanager.cpp:749
-#, kde-format
+#, fuzzy, kde-format
+#| msgid "Configure &Date && Time…"
+msgctxt "@action"
 msgid "Configure &Date && Time…"
 msgstr "&தேதியையும் நேரத்தையும் அமை…"
 
@@ -1030,7 +1050,9 @@ msgid "Manage View &Filters…"
 msgstr "&காட்சி வடிகட்டிகளை அமை…"
 
 #: actionmanager.cpp:757
-#, kde-format
+#, fuzzy, kde-format
+#| msgid "Manage T&ags…"
+msgctxt "@action"
 msgid "Manage T&ags…"
 msgstr "கு&றிச்சொற்களை நிர்வகி…"
 

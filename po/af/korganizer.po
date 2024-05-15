@@ -6,7 +6,7 @@ msgid ""
 msgstr ""
 "Project-Id-Version: korganizer VERSION\n"
 "Report-Msgid-Bugs-To: https://bugs.kde.org\n"
-"POT-Creation-Date: 2024-05-12 00:39+0000\n"
+"POT-Creation-Date: 2024-05-15 00:39+0000\n"
 "PO-Revision-Date: 2002-11-07 11:37+0200\n"
 "Last-Translator: WEB-Translator <http://kde.af.org.za>\n"
 "Language-Team: AFRIKAANS <AF@lia.org.za>\n"
@@ -285,6 +285,7 @@ msgstr "Tyd kolom:"
 
 #: actionmanager.cpp:243
 #, fuzzy, kde-format
+msgctxt "@action"
 msgid "Import &Calendar…"
 msgstr "Ikalender"
 
@@ -347,6 +348,7 @@ msgstr ""
 
 #: actionmanager.cpp:305
 #, fuzzy, kde-format
+msgctxt "@action"
 msgid "Export as &iCalendar…"
 msgstr "Ikalender"
 
@@ -371,6 +373,7 @@ msgstr ""
 
 #: actionmanager.cpp:314
 #, fuzzy, kde-format
+msgctxt "@action"
 msgid "Archive O&ld Incidences…"
 msgstr "Argief Ou Inskrywings..."
 
@@ -399,6 +402,7 @@ msgstr ""
 
 #: actionmanager.cpp:326
 #, fuzzy, kde-format
+msgctxt "@action"
 msgid "Pur&ge Completed To-dos"
 msgstr "Maak skoon Klaar"
 
@@ -612,6 +616,7 @@ msgstr ""
 
 #: actionmanager.cpp:460
 #, fuzzy, kde-format
+msgctxt "@action"
 msgid "&Refresh"
 msgstr "Verfris"
 
@@ -860,6 +865,7 @@ msgstr ""
 
 #: actionmanager.cpp:587
 #, fuzzy, kde-format
+msgctxt "@action"
 msgid "New Su&b-to-do…"
 msgstr "Nuwe Sub-To-Do..."
 
@@ -930,6 +936,7 @@ msgstr "Redigeer..."
 
 #: actionmanager.cpp:627
 #, fuzzy, kde-format
+msgctxt "@action"
 msgid "&Make Sub-to-do Independent"
 msgstr "Maak Sub-To-Do Onafhanklike"
 
@@ -949,11 +956,13 @@ msgstr ""
 
 #: actionmanager.cpp:654
 #, fuzzy, kde-format
+msgctxt "@action"
 msgid "Re&quest Update"
 msgstr "Versoek"
 
 #: actionmanager.cpp:662
 #, kde-format
+msgctxt "@action"
 msgid "Send &Cancellation to Attendees"
 msgstr ""
 
@@ -970,6 +979,7 @@ msgstr "Teller"
 
 #: actionmanager.cpp:686
 #, fuzzy, kde-format
+msgctxt "@action"
 msgid "&Mail Free Busy Information…"
 msgstr "Publiseer Vry Besig Informasie"
 
@@ -980,6 +990,7 @@ msgstr "Ikalender..."
 
 #: actionmanager.cpp:698
 #, fuzzy, kde-format
+msgctxt "@action"
 msgid "&Upload Free Busy Information"
 msgstr "Publiseer Vry Besig Informasie"
 
@@ -1012,6 +1023,7 @@ msgstr "Voer uit Kalender as Web Bladsy"
 #: actionmanager.cpp:749
 #, fuzzy, kde-format
 #| msgid "Configure &Date && Time..."
+msgctxt "@action"
 msgid "Configure &Date && Time…"
 msgstr "Konfigureer Datum && Tyd..."
 
@@ -1022,6 +1034,7 @@ msgstr "Redigeer Filters..."
 
 #: actionmanager.cpp:757
 #, fuzzy, kde-format
+msgctxt "@action"
 msgid "Manage T&ags…"
 msgstr "Redigeer Katagoriee..."
 

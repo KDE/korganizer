@@ -15,7 +15,7 @@ msgid ""
 msgstr ""
 "Project-Id-Version: korganizer\n"
 "Report-Msgid-Bugs-To: https://bugs.kde.org\n"
-"POT-Creation-Date: 2024-05-12 00:39+0000\n"
+"POT-Creation-Date: 2024-05-15 00:39+0000\n"
 "PO-Revision-Date: 2002-11-09 12:52+0200\n"
 "Last-Translator: Thelma Lungcuzo <thelma@translate.org.za>\n"
 "Language-Team: Xhosa <xhosa@translate.org.za>\n"
@@ -295,6 +295,7 @@ msgstr "Ibar yexesha:"
 
 #: actionmanager.cpp:243
 #, fuzzy, kde-format
+msgctxt "@action"
 msgid "Import &Calendar…"
 msgstr "i Khalenda"
 
@@ -356,6 +357,7 @@ msgstr "Iziganeko ezilayishwe ezantsi zizakudibaniswa kwi khalenda yangoku."
 
 #: actionmanager.cpp:305
 #, fuzzy, kde-format
+msgctxt "@action"
 msgid "Export as &iCalendar…"
 msgstr "i Khalenda"
 
@@ -380,6 +382,7 @@ msgstr ""
 
 #: actionmanager.cpp:314
 #, fuzzy, kde-format
+msgctxt "@action"
 msgid "Archive O&ld Incidences…"
 msgstr "Gcina Amangeno Amadala..."
 
@@ -407,6 +410,7 @@ msgstr ""
 
 #: actionmanager.cpp:326
 #, fuzzy, kde-format
+msgctxt "@action"
 msgid "Pur&ge Completed To-dos"
 msgstr ""
 "cima ngokugqityiwe Ku-Dos\n"
@@ -624,6 +628,7 @@ msgstr ""
 
 #: actionmanager.cpp:460
 #, fuzzy, kde-format
+msgctxt "@action"
 msgid "&Refresh"
 msgstr "Hlaziya"
 
@@ -872,6 +877,7 @@ msgstr ""
 
 #: actionmanager.cpp:587
 #, fuzzy, kde-format
+msgctxt "@action"
 msgid "New Su&b-to-do…"
 msgstr "Entsha Es&ezantsi-Ukwe-Nza..."
 
@@ -942,6 +948,7 @@ msgstr "&Hlela..."
 
 #: actionmanager.cpp:627
 #, fuzzy, kde-format
+msgctxt "@action"
 msgid "&Make Sub-to-do Independent"
 msgstr "&Yenza Ulwenzo- Olusezantsi Oluzimeleyo"
 
@@ -961,11 +968,13 @@ msgstr ""
 
 #: actionmanager.cpp:654
 #, fuzzy, kde-format
+msgctxt "@action"
 msgid "Re&quest Update"
 msgstr "Cela"
 
 #: actionmanager.cpp:662
 #, kde-format
+msgctxt "@action"
 msgid "Send &Cancellation to Attendees"
 msgstr ""
 
@@ -982,6 +991,7 @@ msgstr "Isibali"
 
 #: actionmanager.cpp:686
 #, fuzzy, kde-format
+msgctxt "@action"
 msgid "&Mail Free Busy Information…"
 msgstr "Papasha Iinkcukacha ye Free Busy"
 
@@ -992,6 +1002,7 @@ msgstr "iKhalenda..."
 
 #: actionmanager.cpp:698
 #, fuzzy, kde-format
+msgctxt "@action"
 msgid "&Upload Free Busy Information"
 msgstr "Papasha Iinkcukacha ye Free Busy"
 
@@ -1024,6 +1035,7 @@ msgstr "Rhweba Ngaphandle Ikhalenda Njengephepha Le Web"
 #: actionmanager.cpp:749
 #, fuzzy, kde-format
 #| msgid "Configure &Date && Time..."
+msgctxt "@action"
 msgid "Configure &Date && Time…"
 msgstr "Qwalasela &Umhla && Ixesha..."
 
@@ -1034,6 +1046,7 @@ msgstr "Hlela &Amacebo okucoca ulwelo..."
 
 #: actionmanager.cpp:757
 #, fuzzy, kde-format
+msgctxt "@action"
 msgid "Manage T&ags…"
 msgstr "Hlela I&intlobo..."
 

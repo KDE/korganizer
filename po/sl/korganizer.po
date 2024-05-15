@@ -1,7 +1,7 @@
 # translation of korganizer.po to Slovenian
 # Translation of korganizer.po to Slovenian
 # Copyright (C) 2001,2002, 2003, 2004, 2005, 2006 Free Software Foundation, Inc.
-# $Id: korganizer.po 1679945 2024-05-13 01:10:44Z scripty $
+# $Id: korganizer.po 1680053 2024-05-15 01:11:10Z scripty $
 # $Source$
 #
 # Roman Maurer <roman.maurer@hermes.si>, 2001.
@@ -14,7 +14,7 @@ msgid ""
 msgstr ""
 "Project-Id-Version: korganizer\n"
 "Report-Msgid-Bugs-To: https://bugs.kde.org\n"
-"POT-Creation-Date: 2024-05-12 00:39+0000\n"
+"POT-Creation-Date: 2024-05-15 00:39+0000\n"
 "PO-Revision-Date: 2024-05-12 08:15+0200\n"
 "Last-Translator: Matjaž Jeran <matjaz.jeran@amis.net>\n"
 "Language-Team: Slovenian <lugos-slo@lugos.si>\n"
@@ -304,7 +304,9 @@ msgid "Hide menu bar"
 msgstr "Skrij menijsko vrstico"
 
 #: actionmanager.cpp:243
-#, kde-format
+#, fuzzy, kde-format
+#| msgid "Import &Calendar…"
+msgctxt "@action"
 msgid "Import &Calendar…"
 msgstr "Uvozi koledar…"
 
@@ -368,7 +370,9 @@ msgid "The downloaded events will be merged into your current calendar."
 msgstr "Prejeti dogodki bodo združeni z vašim trenutnim koledarjem."
 
 #: actionmanager.cpp:305
-#, kde-format
+#, fuzzy, kde-format
+#| msgid "Export as &iCalendar…"
+msgctxt "@action"
 msgid "Export as &iCalendar…"
 msgstr "Izvozi kot &iCalendar…"
 
@@ -392,7 +396,9 @@ msgid ""
 msgstr "Omogoča izvoz celotne zbirke koledarja v eno datoteko iCalendar."
 
 #: actionmanager.cpp:314
-#, kde-format
+#, fuzzy, kde-format
+#| msgid "Archive O&ld Incidences…"
+msgctxt "@action"
 msgid "Archive O&ld Incidences…"
 msgstr "Arhiviraj stare pojavitve…"
 
@@ -421,7 +427,9 @@ msgstr ""
 "iz vaše obstoječe zbirke koledarja."
 
 #: actionmanager.cpp:326
-#, kde-format
+#, fuzzy, kde-format
+#| msgid "Pur&ge Completed To-dos"
+msgctxt "@action"
 msgid "Pur&ge Completed To-dos"
 msgstr "Počisti zaključena opravila"
 
@@ -650,7 +658,9 @@ msgstr ""
 "interval v Ganttovem diagramu. Vsak koledar je prikazan v ločeni vrstici."
 
 #: actionmanager.cpp:460
-#, kde-format
+#, fuzzy, kde-format
+#| msgid "&Refresh"
+msgctxt "@action"
 msgid "&Refresh"
 msgstr "Osveži"
 
@@ -901,7 +911,9 @@ msgstr ""
 "udeleženci, ponovitvami in še veliko več."
 
 #: actionmanager.cpp:587
-#, kde-format
+#, fuzzy, kde-format
+#| msgid "New Su&b-to-do…"
+msgctxt "@action"
 msgid "New Su&b-to-do…"
 msgstr "Novo podopravilo…"
 
@@ -973,7 +985,9 @@ msgid "&Edit…"
 msgstr "Ur&edi…"
 
 #: actionmanager.cpp:627
-#, kde-format
+#, fuzzy, kde-format
+#| msgid "&Make Sub-to-do Independent"
+msgctxt "@action"
 msgid "&Make Sub-to-do Independent"
 msgstr "Naredi podopravilo samostojno"
 
@@ -992,12 +1006,16 @@ msgid "Send &Invitation to Attendees"
 msgstr "Udeležencem pošlji povabilo"
 
 #: actionmanager.cpp:654
-#, kde-format
+#, fuzzy, kde-format
+#| msgid "Re&quest Update"
+msgctxt "@action"
 msgid "Re&quest Update"
 msgstr "Zahtevaj posodobitev"
 
 #: actionmanager.cpp:662
-#, kde-format
+#, fuzzy, kde-format
+#| msgid "Send &Cancellation to Attendees"
+msgctxt "@action"
 msgid "Send &Cancellation to Attendees"
 msgstr "Udeležencem pošlji preklic"
 
@@ -1013,7 +1031,9 @@ msgid "Request Chan&ge"
 msgstr "Zahtevaj spremembo"
 
 #: actionmanager.cpp:686
-#, kde-format
+#, fuzzy, kde-format
+#| msgid "&Mail Free Busy Information…"
+msgctxt "@action"
 msgid "&Mail Free Busy Information…"
 msgstr "Pošlji e-pošto s podatke o prostosti/zasedenosti…"
 
@@ -1023,7 +1043,9 @@ msgid "&Send as iCalendar…"
 msgstr "Pošlji kot iCalendar…"
 
 #: actionmanager.cpp:698
-#, kde-format
+#, fuzzy, kde-format
+#| msgid "&Upload Free Busy Information"
+msgctxt "@action"
 msgid "&Upload Free Busy Information"
 msgstr "Naloži podatke o prostosti/zasedenosti"
 
@@ -1053,7 +1075,9 @@ msgid "Show Calendar Manager"
 msgstr "Pokaži upravljalnik koledarjev"
 
 #: actionmanager.cpp:749
-#, kde-format
+#, fuzzy, kde-format
+#| msgid "Configure &Date && Time…"
+msgctxt "@action"
 msgid "Configure &Date && Time…"
 msgstr "Nastavi &datum in čas…"
 
@@ -1063,7 +1087,9 @@ msgid "Manage View &Filters…"
 msgstr "Upravljanje &filtrov prikaza…"
 
 #: actionmanager.cpp:757
-#, kde-format
+#, fuzzy, kde-format
+#| msgid "Manage T&ags…"
+msgctxt "@action"
 msgid "Manage T&ags…"
 msgstr "Upravljanje oznak…"
 

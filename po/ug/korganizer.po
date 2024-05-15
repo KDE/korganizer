@@ -7,7 +7,7 @@ msgid ""
 msgstr ""
 "Project-Id-Version: korganizer\n"
 "Report-Msgid-Bugs-To: https://bugs.kde.org\n"
-"POT-Creation-Date: 2024-05-12 00:39+0000\n"
+"POT-Creation-Date: 2024-05-15 00:39+0000\n"
 "PO-Revision-Date: 2013-09-08 07:05+0900\n"
 "Last-Translator: Gheyret Kenji <gheyret@gmail.com>\n"
 "Language-Team: Uyghur Computer Science Association <UKIJ@yahoogroups.com>\n"
@@ -285,6 +285,7 @@ msgstr "تىزىملىك بالدىقىنى يوشۇر"
 #: actionmanager.cpp:243
 #, fuzzy, kde-format
 #| msgid "Only calendar"
+msgctxt "@action"
 msgid "Import &Calendar…"
 msgstr "يىلنامىلا"
 
@@ -348,6 +349,7 @@ msgstr ""
 #: actionmanager.cpp:305
 #, fuzzy, kde-format
 #| msgid "Only calendar"
+msgctxt "@action"
 msgid "Export as &iCalendar…"
 msgstr "يىلنامىلا"
 
@@ -374,6 +376,7 @@ msgstr ""
 
 #: actionmanager.cpp:314
 #, kde-format
+msgctxt "@action"
 msgid "Archive O&ld Incidences…"
 msgstr ""
 
@@ -399,9 +402,11 @@ msgid ""
 msgstr ""
 
 #: actionmanager.cpp:326
-#, kde-format
+#, fuzzy, kde-format
+#| msgid "Delete To-do"
+msgctxt "@action"
 msgid "Pur&ge Completed To-dos"
-msgstr ""
+msgstr "قىلىدىغان ئىشلارنى ئۆچۈرۈش"
 
 #: actionmanager.cpp:327
 #, fuzzy, kde-format
@@ -620,7 +625,9 @@ msgid ""
 msgstr ""
 
 #: actionmanager.cpp:460
-#, kde-format
+#, fuzzy, kde-format
+#| msgid "&Refresh"
+msgctxt "@action"
 msgid "&Refresh"
 msgstr "يېڭىلا(&R)"
 
@@ -877,6 +884,7 @@ msgstr ""
 #: actionmanager.cpp:587
 #, fuzzy, kde-format
 #| msgid "New Su&b-to-do..."
+msgctxt "@action"
 msgid "New Su&b-to-do…"
 msgstr "يېڭى تارماق قىلىدىغان ئىشلار(&B)…"
 
@@ -952,6 +960,7 @@ msgstr "تەھرىر(&E)"
 
 #: actionmanager.cpp:627
 #, kde-format
+msgctxt "@action"
 msgid "&Make Sub-to-do Independent"
 msgstr ""
 
@@ -970,12 +979,15 @@ msgid "Send &Invitation to Attendees"
 msgstr ""
 
 #: actionmanager.cpp:654
-#, kde-format
+#, fuzzy, kde-format
+#| msgid "Due date"
+msgctxt "@action"
 msgid "Re&quest Update"
-msgstr ""
+msgstr "مۆھلىتى"
 
 #: actionmanager.cpp:662
 #, kde-format
+msgctxt "@action"
 msgid "Send &Cancellation to Attendees"
 msgstr ""
 
@@ -992,6 +1004,7 @@ msgstr ""
 
 #: actionmanager.cpp:686
 #, kde-format
+msgctxt "@action"
 msgid "&Mail Free Busy Information…"
 msgstr ""
 
@@ -1003,6 +1016,7 @@ msgstr "يىلنامە"
 
 #: actionmanager.cpp:698
 #, kde-format
+msgctxt "@action"
 msgid "&Upload Free Busy Information"
 msgstr ""
 
@@ -1034,6 +1048,7 @@ msgstr ""
 #: actionmanager.cpp:749
 #, fuzzy, kde-format
 #| msgid "Configure View..."
+msgctxt "@action"
 msgid "Configure &Date && Time…"
 msgstr "كۆرۈنۈشنى سەپلەش…"
 
@@ -1044,6 +1059,7 @@ msgstr ""
 
 #: actionmanager.cpp:757
 #, kde-format
+msgctxt "@action"
 msgid "Manage T&ags…"
 msgstr ""
 
@@ -6304,9 +6320,6 @@ msgstr "%1"
 
 #~ msgid "&Priority"
 #~ msgstr "مەرتىۋىسى(&P)"
-
-#~ msgid "Due date"
-#~ msgstr "مۆھلىتى"
 
 #~ msgctxt "@title:window"
 #~ msgid "Reminders"

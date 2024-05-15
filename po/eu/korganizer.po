@@ -13,7 +13,7 @@ msgid ""
 msgstr ""
 "Project-Id-Version: korganizer\n"
 "Report-Msgid-Bugs-To: https://bugs.kde.org\n"
-"POT-Creation-Date: 2024-05-12 00:39+0000\n"
+"POT-Creation-Date: 2024-05-15 00:39+0000\n"
 "PO-Revision-Date: 2024-01-02 21:41+0100\n"
 "Last-Translator: Iñigo Salvador Azurmendi <xalba@ni.eus>\n"
 "Language-Team: Basque <kde-i18n-eu@kde.org>\n"
@@ -300,6 +300,7 @@ msgstr "Ezkutatu menu-barra"
 #, fuzzy, kde-format
 #| msgctxt "@title:window"
 #| msgid "Import Calendar"
+msgctxt "@action"
 msgid "Import &Calendar…"
 msgstr "Inportatu egutegia"
 
@@ -367,6 +368,7 @@ msgstr "Zama-jaitsitako ekitaldiak zure uneko egutegian bateratuko dira."
 #: actionmanager.cpp:305
 #, fuzzy, kde-format
 #| msgid "Export as &iCalendar..."
+msgctxt "@action"
 msgid "Export as &iCalendar…"
 msgstr "Esportatu «&iCalendar» gisa..."
 
@@ -394,6 +396,7 @@ msgstr ""
 #: actionmanager.cpp:314
 #, fuzzy, kde-format
 #| msgid "Archive O&ld Incidences..."
+msgctxt "@action"
 msgid "Archive O&ld Incidences…"
 msgstr "Artxibatu intzidentzia &zaharrak..."
 
@@ -422,7 +425,9 @@ msgstr ""
 "aukera ematen dizuna."
 
 #: actionmanager.cpp:326
-#, kde-format
+#, fuzzy, kde-format
+#| msgid "Pur&ge Completed To-dos"
+msgctxt "@action"
 msgid "Pur&ge Completed To-dos"
 msgstr "Betiko e&zabatu osatutako zereginak"
 
@@ -654,7 +659,9 @@ msgstr ""
 "ekitaldi guztiak erakusten ditu Gantt ikuspegi batean."
 
 #: actionmanager.cpp:460
-#, kde-format
+#, fuzzy, kde-format
+#| msgid "&Refresh"
+msgctxt "@action"
 msgid "&Refresh"
 msgstr "Be&rritu"
 
@@ -907,6 +914,7 @@ msgstr ""
 #: actionmanager.cpp:587
 #, fuzzy, kde-format
 #| msgid "New Su&b-to-do..."
+msgctxt "@action"
 msgid "New Su&b-to-do…"
 msgstr "&Azpi-zeregin berria..."
 
@@ -981,7 +989,9 @@ msgid "&Edit…"
 msgstr "&Editatu"
 
 #: actionmanager.cpp:627
-#, kde-format
+#, fuzzy, kde-format
+#| msgid "&Make Sub-to-do Independent"
+msgctxt "@action"
 msgid "&Make Sub-to-do Independent"
 msgstr "Egi&n azpi-zeregina independente"
 
@@ -1001,12 +1011,16 @@ msgid "Send &Invitation to Attendees"
 msgstr "Bidali gonb&idapena partaideei"
 
 #: actionmanager.cpp:654
-#, kde-format
+#, fuzzy, kde-format
+#| msgid "Re&quest Update"
+msgctxt "@action"
 msgid "Re&quest Update"
 msgstr "Es&katu eguneratzea"
 
 #: actionmanager.cpp:662
-#, kde-format
+#, fuzzy, kde-format
+#| msgid "Send &Cancellation to Attendees"
+msgctxt "@action"
 msgid "Send &Cancellation to Attendees"
 msgstr "Bidali e&zeztapena partaideei"
 
@@ -1024,6 +1038,7 @@ msgstr "Eskatu &aldaketa"
 #: actionmanager.cpp:686
 #, fuzzy, kde-format
 #| msgid "&Mail Free Busy Information..."
+msgctxt "@action"
 msgid "&Mail Free Busy Information…"
 msgstr "&Postaz bidali libre/lanpetua informazioa..."
 
@@ -1034,7 +1049,9 @@ msgid "&Send as iCalendar…"
 msgstr "&Bidali «iCalendar» gisa..."
 
 #: actionmanager.cpp:698
-#, kde-format
+#, fuzzy, kde-format
+#| msgid "&Upload Free Busy Information"
+msgctxt "@action"
 msgid "&Upload Free Busy Information"
 msgstr "&Zama-igo libre/lanpetua informazioa"
 
@@ -1066,6 +1083,7 @@ msgstr "Erakutsi Egutegi Kudeatzailea"
 #: actionmanager.cpp:749
 #, fuzzy, kde-format
 #| msgid "Configure &Date && Time..."
+msgctxt "@action"
 msgid "Configure &Date && Time…"
 msgstr "Konfiguratu &Data eta Ordua..."
 
@@ -1078,6 +1096,7 @@ msgstr "Kudeatu Ikuspegi-ira&gazkiak..."
 #: actionmanager.cpp:757
 #, fuzzy, kde-format
 #| msgid "Manage T&ags..."
+msgctxt "@action"
 msgid "Manage T&ags…"
 msgstr "Kudeatu Etiket&ak..."
 

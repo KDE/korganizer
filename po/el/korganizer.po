@@ -15,7 +15,7 @@ msgid ""
 msgstr ""
 "Project-Id-Version: korganizer\n"
 "Report-Msgid-Bugs-To: https://bugs.kde.org\n"
-"POT-Creation-Date: 2024-05-12 00:39+0000\n"
+"POT-Creation-Date: 2024-05-15 00:39+0000\n"
 "PO-Revision-Date: 2021-11-06 10:56+0200\n"
 "Last-Translator: Stelios <sstavra@gmail.com>\n"
 "Language-Team: Greek <kde-i18n-el@kde.org>\n"
@@ -308,6 +308,7 @@ msgstr "Απόκρυψη της γραμμή μενού"
 #, fuzzy, kde-format
 #| msgctxt "@title:window"
 #| msgid "Import Calendar"
+msgctxt "@action"
 msgid "Import &Calendar…"
 msgstr "Εισαγωγή ημερολογίου"
 
@@ -376,6 +377,7 @@ msgstr "Τα ληφθέντα γεγονότα θα συγχωνευτούν σ�
 #: actionmanager.cpp:305
 #, fuzzy, kde-format
 #| msgid "Export as &iCalendar..."
+msgctxt "@action"
 msgid "Export as &iCalendar…"
 msgstr "Εξαγωγή ως &iCalendar..."
 
@@ -403,6 +405,7 @@ msgstr ""
 #: actionmanager.cpp:314
 #, fuzzy, kde-format
 #| msgid "Archive O&ld Incidences..."
+msgctxt "@action"
 msgid "Archive O&ld Incidences…"
 msgstr "Αρχειοθέτηση πα&λιών περιστατικών..."
 
@@ -431,7 +434,9 @@ msgstr ""
 "ένα αρχείο iCalendar.  Θα διαγραφούν από την τρέχουσα συλλογή ημερολογίων."
 
 #: actionmanager.cpp:326
-#, kde-format
+#, fuzzy, kde-format
+#| msgid "Pur&ge Completed To-dos"
+msgctxt "@action"
 msgid "Pur&ge Completed To-dos"
 msgstr "Κα&θαρισμός ολοκληρωμένων εργασιών"
 
@@ -663,7 +668,9 @@ msgstr ""
 "παρουσιάζεται σε μια ξεχωριστή γραμμή."
 
 #: actionmanager.cpp:460
-#, kde-format
+#, fuzzy, kde-format
+#| msgid "&Refresh"
+msgctxt "@action"
 msgid "&Refresh"
 msgstr "Α&νανέωση"
 
@@ -920,6 +927,7 @@ msgstr ""
 #: actionmanager.cpp:587
 #, fuzzy, kde-format
 #| msgid "New Su&b-to-do..."
+msgctxt "@action"
 msgid "New Su&b-to-do…"
 msgstr "Νέα &υποεργασία προς υλοποίηση..."
 
@@ -995,7 +1003,9 @@ msgid "&Edit…"
 msgstr "&Επεξεργασία"
 
 #: actionmanager.cpp:627
-#, kde-format
+#, fuzzy, kde-format
+#| msgid "&Make Sub-to-do Independent"
+msgctxt "@action"
 msgid "&Make Sub-to-do Independent"
 msgstr "&Κάνε την υποεργασία προς υλοποίηση ανεξάρτητη"
 
@@ -1015,12 +1025,16 @@ msgid "Send &Invitation to Attendees"
 msgstr "Αποστολή &πρόσκλησης στους συμμετέχοντες"
 
 #: actionmanager.cpp:654
-#, kde-format
+#, fuzzy, kde-format
+#| msgid "Re&quest Update"
+msgctxt "@action"
 msgid "Re&quest Update"
 msgstr "&Αίτηση ενημέρωσης"
 
 #: actionmanager.cpp:662
-#, kde-format
+#, fuzzy, kde-format
+#| msgid "Send &Cancellation to Attendees"
+msgctxt "@action"
 msgid "Send &Cancellation to Attendees"
 msgstr "Αποστολή α&κύρωσης στους συμμετέχοντες"
 
@@ -1038,6 +1052,7 @@ msgstr "Αίτηση &τροποποίησης"
 #: actionmanager.cpp:686
 #, fuzzy, kde-format
 #| msgid "&Mail Free Busy Information..."
+msgctxt "@action"
 msgid "&Mail Free Busy Information…"
 msgstr ""
 "&Αποστολή μέσω ηλ.αλληλογραφίας πληροφοριών ελεύθερος-η / απασχολημένος-η..."
@@ -1049,7 +1064,9 @@ msgid "&Send as iCalendar…"
 msgstr "&Αποστολή ως iCalendar..."
 
 #: actionmanager.cpp:698
-#, kde-format
+#, fuzzy, kde-format
+#| msgid "&Upload Free Busy Information"
+msgctxt "@action"
 msgid "&Upload Free Busy Information"
 msgstr "&Αποστολή πληροφοριών ελεύθερος-η / απασχολημένος-η"
 
@@ -1081,6 +1098,7 @@ msgstr "Εμφάνιση διαχειριστή ημερολογίων"
 #: actionmanager.cpp:749
 #, fuzzy, kde-format
 #| msgid "Configure &Date && Time..."
+msgctxt "@action"
 msgid "Configure &Date && Time…"
 msgstr "Διαμόρφωση &ημερομηνίας && ώρας..."
 
@@ -1093,6 +1111,7 @@ msgstr "Διαχείριση &φίλτρων προβολής..."
 #: actionmanager.cpp:757
 #, fuzzy, kde-format
 #| msgid "Manage T&ags..."
+msgctxt "@action"
 msgid "Manage T&ags…"
 msgstr "Διαχείριση ετι&κετών..."
 
