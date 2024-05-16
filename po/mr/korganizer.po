@@ -6,7 +6,7 @@ msgid ""
 msgstr ""
 "Project-Id-Version: \n"
 "Report-Msgid-Bugs-To: https://bugs.kde.org\n"
-"POT-Creation-Date: 2024-05-15 00:39+0000\n"
+"POT-Creation-Date: 2024-05-16 00:39+0000\n"
 "PO-Revision-Date: 2013-04-15 10:39+0530\n"
 "Last-Translator: Chetan Khona <chetan@kompkin.com>\n"
 "Language-Team: Marathi <kde-i18n-doc@kde.org>\n"
@@ -60,7 +60,9 @@ msgstr ""
 "स्वामित्व हक्क © २००६-२०१२ एलन विंटर"
 
 #: aboutdata.cpp:30 kontactplugin/specialdates/specialdates_plugin.cpp:42
-#, kde-format
+#, fuzzy, kde-format
+#| msgid "Allen Winter"
+msgctxt "@info:credit"
 msgid "Allen Winter"
 msgstr "अलन विंटर"
 
@@ -70,7 +72,9 @@ msgid "Maintainer"
 msgstr "पालक"
 
 #: aboutdata.cpp:31
-#, kde-format
+#, fuzzy, kde-format
+#| msgid "Reinhold Kainhofer"
+msgctxt "@info:credit"
 msgid "Reinhold Kainhofer"
 msgstr "रेनहोल्ड केईनहोफार"
 
@@ -80,12 +84,16 @@ msgid "Former Maintainer"
 msgstr "पूर्वीचा पालक"
 
 #: aboutdata.cpp:32
-#, kde-format
+#, fuzzy, kde-format
+#| msgid "Cornelius Schumacher"
+msgctxt "@info:credit"
 msgid "Cornelius Schumacher"
 msgstr "कॉर्नेलियस शूमेकर"
 
 #: aboutdata.cpp:33
-#, kde-format
+#, fuzzy, kde-format
+#| msgid "Preston Brown"
+msgctxt "@info:credit"
 msgid "Preston Brown"
 msgstr "प्रेस्टन ब्राउन"
 
@@ -95,9 +103,11 @@ msgid "Original Author"
 msgstr "मूळ लेखक"
 
 #: aboutdata.cpp:34
-#, kde-format
+#, fuzzy, kde-format
+#| msgid "Former Maintainer"
+msgctxt "@info:credit"
 msgid "Laurent Montel"
-msgstr ""
+msgstr "पूर्वीचा पालक"
 
 #: aboutdata.cpp:34
 #, kde-format
@@ -105,122 +115,170 @@ msgid "Developer"
 msgstr ""
 
 #: aboutdata.cpp:35
-#, kde-format
+#, fuzzy, kde-format
+#| msgid "Richard Apodaca"
+msgctxt "@info:credit"
 msgid "Richard Apodaca"
 msgstr "रिचर्ड एपोदाका"
 
 #: aboutdata.cpp:36
-#, kde-format
+#, fuzzy, kde-format
+#| msgid "Björn Balazs"
+msgctxt "@info:credit"
 msgid "Björn Balazs"
 msgstr "बीजोम बालाझ"
 
 #: aboutdata.cpp:37
-#, kde-format
+#, fuzzy, kde-format
+#| msgid "Jan-Pascal van Best"
+msgctxt "@info:credit"
 msgid "Jan-Pascal van Best"
 msgstr "जान-पास्कल वान बेस्ट"
 
 #: aboutdata.cpp:38
-#, kde-format
+#, fuzzy, kde-format
+#| msgid "Bertjan Broeksema"
+msgctxt "@info:credit"
 msgid "Bertjan Broeksema"
 msgstr "बर्टीअन ब्रूईकसेमा"
 
 #: aboutdata.cpp:39
-#, kde-format
+#, fuzzy, kde-format
+#| msgid "Laszlo Boloni"
+msgctxt "@info:credit"
 msgid "Laszlo Boloni"
 msgstr "लास्जलो बोलोनी"
 
 #: aboutdata.cpp:40
-#, kde-format
+#, fuzzy, kde-format
+#| msgid "Barry Benowitz"
+msgctxt "@info:credit"
 msgid "Barry Benowitz"
 msgstr "बैरी बेनोविद्ज"
 
 #: aboutdata.cpp:41
-#, kde-format
+#, fuzzy, kde-format
+#| msgid "Christopher Beard"
+msgctxt "@info:credit"
 msgid "Christopher Beard"
 msgstr "क्रिस्टोफ़र बीयर्ड"
 
 #: aboutdata.cpp:42
-#, kde-format
+#, fuzzy, kde-format
+#| msgid "Kalle Dalheimer"
+msgctxt "@info:credit"
 msgid "Kalle Dalheimer"
 msgstr "काल दाल्हेमेर"
 
 #: aboutdata.cpp:43
-#, kde-format
+#, fuzzy, kde-format
+#| msgid "Ian Dawes"
+msgctxt "@info:credit"
 msgid "Ian Dawes"
 msgstr "इयान दवास"
 
 #: aboutdata.cpp:44
-#, kde-format
+#, fuzzy, kde-format
+#| msgid "Thomas Eitzenberger"
+msgctxt "@info:credit"
 msgid "Thomas Eitzenberger"
 msgstr "थॉमस एत्जेनबर्गर"
 
 #: aboutdata.cpp:45
-#, kde-format
+#, fuzzy, kde-format
+#| msgid "Neil Hart"
+msgctxt "@info:credit"
 msgid "Neil Hart"
 msgstr "नील हार्ट"
 
 #: aboutdata.cpp:46
-#, kde-format
+#, fuzzy, kde-format
+#| msgid "Declan Houlihan"
+msgctxt "@info:credit"
 msgid "Declan Houlihan"
 msgstr "डेक्लेन हालीहान"
 
 #: aboutdata.cpp:47
-#, kde-format
+#, fuzzy, kde-format
+#| msgid "Hans-Jürgen Husel"
+msgctxt "@info:credit"
 msgid "Hans-Jürgen Husel"
 msgstr "हैंस-जुरगेन हसेल"
 
 #: aboutdata.cpp:48
-#, kde-format
+#, fuzzy, kde-format
+#| msgid "Tim Jansen"
+msgctxt "@info:credit"
 msgid "Tim Jansen"
 msgstr "टिम जेन्सन"
 
 #: aboutdata.cpp:49
-#, kde-format
+#, fuzzy, kde-format
+#| msgid "Christian Kirsch"
+msgctxt "@info:credit"
 msgid "Christian Kirsch"
 msgstr "क्रिश्चियन किर्स्च"
 
 #: aboutdata.cpp:50
-#, kde-format
+#, fuzzy, kde-format
+#| msgid "Tobias König"
+msgctxt "@info:credit"
 msgid "Tobias König"
 msgstr "टोबीआस कोनिग"
 
 #: aboutdata.cpp:51
-#, kde-format
+#, fuzzy, kde-format
+#| msgid "Martin Koller"
+msgctxt "@info:credit"
 msgid "Martin Koller"
 msgstr "मार्टीन कोलर"
 
 #: aboutdata.cpp:52
-#, kde-format
+#, fuzzy, kde-format
+#| msgid "Uwe Koloska"
+msgctxt "@info:credit"
 msgid "Uwe Koloska"
 msgstr "उवे कोलोस्का"
 
 #: aboutdata.cpp:53
-#, kde-format
+#, fuzzy, kde-format
+#| msgid "Sergio Luis Martins"
+msgctxt "@info:credit"
 msgid "Sergio Luis Martins"
 msgstr "सर्जिओ लुईस मार्टीन्स"
 
 #: aboutdata.cpp:54
-#, kde-format
+#, fuzzy, kde-format
+#| msgid "Mike McQuaid"
+msgctxt "@info:credit"
 msgid "Mike McQuaid"
 msgstr "माईक मेक्वेड"
 
 #: aboutdata.cpp:55
-#, kde-format
+#, fuzzy, kde-format
+#| msgid "Glen Parker"
+msgctxt "@info:credit"
 msgid "Glen Parker"
 msgstr "ग्लेन पार्कर"
 
 #: aboutdata.cpp:56
-#, kde-format
+#, fuzzy, kde-format
+#| msgid "Dan Pilone"
+msgctxt "@info:credit"
 msgid "Dan Pilone"
 msgstr "डान पिलोन"
 
 #: aboutdata.cpp:57
-#, kde-format
+#, fuzzy, kde-format
+#| msgid "Roman Rohr"
+msgctxt "@info:credit"
 msgid "Roman Rohr"
 msgstr "रोमन रोहर"
 
 #: aboutdata.cpp:58
-#, kde-format
+#, fuzzy, kde-format
+#| msgid "Rafał Rzepecki"
+msgctxt "@info:credit"
 msgid "Rafał Rzepecki"
 msgstr "राफल रजेपेकी"
 
@@ -231,52 +289,72 @@ msgstr ""
 "कामाचा काही भाग गूगलने समर ऑफ कोडबरोबर (Summer of Code 2005) प्रायोजित केलेला आहे "
 
 #: aboutdata.cpp:59
-#, kde-format
+#, fuzzy, kde-format
+#| msgid "Don Sanders"
+msgctxt "@info:credit"
 msgid "Don Sanders"
 msgstr "डॉन सेन्दर्स"
 
 #: aboutdata.cpp:60
-#, kde-format
+#, fuzzy, kde-format
+#| msgid "Bram Schoenmakers"
+msgctxt "@info:credit"
 msgid "Bram Schoenmakers"
 msgstr "ब्रैम शियोनमेकर्स"
 
 #: aboutdata.cpp:61
-#, kde-format
+#, fuzzy, kde-format
+#| msgid "Günter Schwann"
+msgctxt "@info:credit"
 msgid "Günter Schwann"
 msgstr "गुंतर शवान्न"
 
 #: aboutdata.cpp:62
-#, kde-format
+#, fuzzy, kde-format
+#| msgid "Herwin Jan Steehouwer"
+msgctxt "@info:credit"
 msgid "Herwin Jan Steehouwer"
 msgstr "हरविन जान स्टीहावर"
 
 #: aboutdata.cpp:63
-#, kde-format
+#, fuzzy, kde-format
+#| msgid "Mario Teijeiro"
+msgctxt "@info:credit"
 msgid "Mario Teijeiro"
 msgstr "मारियो तेइजेरो"
 
 #: aboutdata.cpp:64
-#, kde-format
+#, fuzzy, kde-format
+#| msgid "Nick Thompson"
+msgctxt "@info:credit"
 msgid "Nick Thompson"
 msgstr "निक थोम्पसन"
 
 #: aboutdata.cpp:65
-#, kde-format
+#, fuzzy, kde-format
+#| msgid "Bo Thorsen"
+msgctxt "@info:credit"
 msgid "Bo Thorsen"
 msgstr "बो थॉर्सेन"
 
 #: aboutdata.cpp:66
-#, kde-format
+#, fuzzy, kde-format
+#| msgid "Larry Wright"
+msgctxt "@info:credit"
 msgid "Larry Wright"
 msgstr "लैरी राइट"
 
 #: aboutdata.cpp:67
-#, kde-format
+#, fuzzy, kde-format
+#| msgid "Thomas Zander"
+msgctxt "@info:credit"
 msgid "Thomas Zander"
 msgstr "थॉमस जेंडर"
 
 #: aboutdata.cpp:68
-#, kde-format
+#, fuzzy, kde-format
+#| msgid "Fester Zigterman"
+msgctxt "@info:credit"
 msgid "Fester Zigterman"
 msgstr "फेस्तर जिग्तरमन"
 
@@ -1292,12 +1370,16 @@ msgid "Import Calendar"
 msgstr "दिनदर्शिका आयात करा..."
 
 #: actionmanager.cpp:1657
-#, kde-format
+#, fuzzy, kde-format
+#| msgid "Merge into existing calendar"
+msgctxt "@action:button"
 msgid "Merge into existing calendar"
 msgstr "सध्याच्या दिनदर्शिकेत विलीन/सम्मिलीत करा"
 
 #: actionmanager.cpp:1658
-#, kde-format
+#, fuzzy, kde-format
+#| msgid "Add as new calendar"
+msgctxt "@action:button"
 msgid "Add as new calendar"
 msgstr "नवीन दिनदर्शिका म्हणून वाढवा/मिळावा"
 
@@ -1540,7 +1622,9 @@ msgid "KOrganizer Confirmation"
 msgstr "के-ऑर्गनायझर समर्थन"
 
 #: calendarview.cpp:1614
-#, kde-format
+#, fuzzy, kde-format
+#| msgid "&Dissociate"
+msgctxt "@action:button"
 msgid "&Dissociate"
 msgstr "वेगळे करा (&D)"
 
@@ -1554,12 +1638,16 @@ msgstr ""
 "पुनारावृत्तीदेखील टाळावयाची आहे?"
 
 #: calendarview.cpp:1626
-#, kde-format
+#, fuzzy, kde-format
+#| msgid "&Only Dissociate This One"
+msgctxt "@action:button"
 msgid "&Only Dissociate This One"
 msgstr "फक्त ही घटना वेगळी करा (&O)"
 
 #: calendarview.cpp:1627
-#, kde-format
+#, fuzzy, kde-format
+#| msgid "&Also Dissociate Future Ones"
+msgctxt "@action:button"
 msgid "&Also Dissociate Future Ones"
 msgstr "भविष्यातील घटना वेगळ्या करा (&A)"
 
@@ -1639,12 +1727,16 @@ msgstr ""
 "तिच्या सर्व उपयाद्यांबरोबर वगळायची आहे?"
 
 #: calendarview.cpp:2294
-#, kde-format
+#, fuzzy, kde-format
+#| msgid "Delete Only This"
+msgctxt "@action:button"
 msgid "Delete Only This"
 msgstr "फक्त हे काढून टाका/वगळा"
 
 #: calendarview.cpp:2295 calendarview.cpp:2353
-#, kde-format
+#, fuzzy, kde-format
+#| msgid "Delete All"
+msgctxt "@action:button"
 msgid "Delete All"
 msgstr "सर्व काढून टाका"
 
@@ -1741,7 +1833,9 @@ msgid "Purge To-dos"
 msgstr "करावयाची कामे पुसा/पुसून टाका"
 
 #: calendarview.cpp:2465
-#, kde-format
+#, fuzzy, kde-format
+#| msgid "Purge"
+msgctxt "@action:button"
 msgid "Purge"
 msgstr "पुसा/पुसून टाका"
 
@@ -2041,11 +2135,14 @@ msgstr "घटना प्रदर्शक"
 #: dialog/koeventviewerdialog.cpp:40
 #, fuzzy, kde-format
 #| msgid "&Edit"
+msgctxt "@action:button"
 msgid "Edit…"
 msgstr "संपादन (&E)"
 
 #: dialog/koeventviewerdialog.cpp:41
-#, kde-format
+#, fuzzy, kde-format
+#| msgid "Show in Context"
+msgctxt "@action:button"
 msgid "Show in Context"
 msgstr "संदर्भासह दाखवा"
 
@@ -3357,7 +3454,9 @@ msgid "Current Maintainer"
 msgstr "पूर्वीचा पालक"
 
 #: kontactplugin/specialdates/specialdates_plugin.cpp:43
-#, kde-format
+#, fuzzy, kde-format
+#| msgid "Tobias Koenig"
+msgctxt "@info:credit"
 msgid "Tobias Koenig"
 msgstr "टोबीआस कोएनींग"
 
@@ -3816,7 +3915,9 @@ msgid "Setting Default Preferences"
 msgstr "पूर्वनिर्धारित प्राधान्यक्रम स्थापित होत आहेत"
 
 #: prefs/kprefsdialog.cpp:870
-#, kde-format
+#, fuzzy, kde-format
+#| msgid "Reset to Defaults"
+msgctxt "@action:button"
 msgid "Reset to Defaults"
 msgstr "मूलभूत पुन्हस्थापित करा"
 

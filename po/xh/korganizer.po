@@ -15,7 +15,7 @@ msgid ""
 msgstr ""
 "Project-Id-Version: korganizer\n"
 "Report-Msgid-Bugs-To: https://bugs.kde.org\n"
-"POT-Creation-Date: 2024-05-15 00:39+0000\n"
+"POT-Creation-Date: 2024-05-16 00:39+0000\n"
 "PO-Revision-Date: 2002-11-09 12:52+0200\n"
 "Last-Translator: Thelma Lungcuzo <thelma@translate.org.za>\n"
 "Language-Team: Xhosa <xhosa@translate.org.za>\n"
@@ -62,6 +62,7 @@ msgstr ""
 
 #: aboutdata.cpp:30 kontactplugin/specialdates/specialdates_plugin.cpp:42
 #, kde-format
+msgctxt "@info:credit"
 msgid "Allen Winter"
 msgstr ""
 
@@ -72,6 +73,7 @@ msgstr "Umlondolozi Wangoku"
 
 #: aboutdata.cpp:31
 #, kde-format
+msgctxt "@info:credit"
 msgid "Reinhold Kainhofer"
 msgstr ""
 
@@ -83,11 +85,13 @@ msgstr "Umlondolozi Wangoku"
 
 #: aboutdata.cpp:32
 #, kde-format
+msgctxt "@info:credit"
 msgid "Cornelius Schumacher"
 msgstr ""
 
 #: aboutdata.cpp:33
 #, kde-format
+msgctxt "@info:credit"
 msgid "Preston Brown"
 msgstr ""
 
@@ -97,9 +101,11 @@ msgid "Original Author"
 msgstr "Ubhali Woqobo"
 
 #: aboutdata.cpp:34
-#, kde-format
+#, fuzzy, kde-format
+#| msgid "Current Maintainer"
+msgctxt "@info:credit"
 msgid "Laurent Montel"
-msgstr ""
+msgstr "Umlondolozi Wangoku"
 
 #: aboutdata.cpp:34
 #, kde-format
@@ -108,121 +114,145 @@ msgstr ""
 
 #: aboutdata.cpp:35
 #, kde-format
+msgctxt "@info:credit"
 msgid "Richard Apodaca"
 msgstr ""
 
 #: aboutdata.cpp:36
 #, kde-format
+msgctxt "@info:credit"
 msgid "Björn Balazs"
 msgstr ""
 
 #: aboutdata.cpp:37
 #, kde-format
+msgctxt "@info:credit"
 msgid "Jan-Pascal van Best"
 msgstr ""
 
 #: aboutdata.cpp:38
 #, kde-format
+msgctxt "@info:credit"
 msgid "Bertjan Broeksema"
 msgstr ""
 
 #: aboutdata.cpp:39
 #, kde-format
+msgctxt "@info:credit"
 msgid "Laszlo Boloni"
 msgstr ""
 
 #: aboutdata.cpp:40
 #, kde-format
+msgctxt "@info:credit"
 msgid "Barry Benowitz"
 msgstr ""
 
 #: aboutdata.cpp:41
 #, kde-format
+msgctxt "@info:credit"
 msgid "Christopher Beard"
 msgstr ""
 
 #: aboutdata.cpp:42
 #, kde-format
+msgctxt "@info:credit"
 msgid "Kalle Dalheimer"
 msgstr ""
 
 #: aboutdata.cpp:43
 #, fuzzy, kde-format
+msgctxt "@info:credit"
 msgid "Ian Dawes"
 msgstr "iveki(ii) kwi:"
 
 #: aboutdata.cpp:44
 #, kde-format
+msgctxt "@info:credit"
 msgid "Thomas Eitzenberger"
 msgstr ""
 
 #: aboutdata.cpp:45
 #, kde-format
+msgctxt "@info:credit"
 msgid "Neil Hart"
 msgstr ""
 
 #: aboutdata.cpp:46
 #, kde-format
+msgctxt "@info:credit"
 msgid "Declan Houlihan"
 msgstr ""
 
 #: aboutdata.cpp:47
 #, kde-format
+msgctxt "@info:credit"
 msgid "Hans-Jürgen Husel"
 msgstr ""
 
 #: aboutdata.cpp:48
 #, fuzzy, kde-format
+msgctxt "@info:credit"
 msgid "Tim Jansen"
 msgstr "Ummandla wexesha:"
 
 #: aboutdata.cpp:49
 #, kde-format
+msgctxt "@info:credit"
 msgid "Christian Kirsch"
 msgstr ""
 
 #: aboutdata.cpp:50
 #, kde-format
+msgctxt "@info:credit"
 msgid "Tobias König"
 msgstr ""
 
 #: aboutdata.cpp:51
 #, fuzzy, kde-format
+msgctxt "@info:credit"
 msgid "Martin Koller"
 msgstr "Umlondolozi Wangoku"
 
 #: aboutdata.cpp:52
 #, fuzzy, kde-format
+msgctxt "@info:credit"
 msgid "Uwe Koloska"
 msgstr "Khetha umbala"
 
 #: aboutdata.cpp:53
 #, kde-format
+msgctxt "@info:credit"
 msgid "Sergio Luis Martins"
 msgstr ""
 
 #: aboutdata.cpp:54
 #, kde-format
+msgctxt "@info:credit"
 msgid "Mike McQuaid"
 msgstr ""
 
 #: aboutdata.cpp:55
 #, kde-format
+msgctxt "@info:credit"
 msgid "Glen Parker"
 msgstr ""
 
 #: aboutdata.cpp:56
 #, kde-format
+msgctxt "@info:credit"
 msgid "Dan Pilone"
 msgstr ""
 
 #: aboutdata.cpp:57
 #, kde-format
+msgctxt "@info:credit"
 msgid "Roman Rohr"
 msgstr ""
 
 #: aboutdata.cpp:58
 #, kde-format
+msgctxt "@info:credit"
 msgid "Rafał Rzepecki"
 msgstr ""
 
@@ -233,51 +263,61 @@ msgstr ""
 
 #: aboutdata.cpp:59
 #, fuzzy, kde-format
+msgctxt "@info:credit"
 msgid "Don Sanders"
 msgstr "Umkhumbuzi:"
 
 #: aboutdata.cpp:60
 #, kde-format
+msgctxt "@info:credit"
 msgid "Bram Schoenmakers"
 msgstr ""
 
 #: aboutdata.cpp:61
 #, kde-format
+msgctxt "@info:credit"
 msgid "Günter Schwann"
 msgstr ""
 
 #: aboutdata.cpp:62
 #, kde-format
+msgctxt "@info:credit"
 msgid "Herwin Jan Steehouwer"
 msgstr ""
 
 #: aboutdata.cpp:63
 #, kde-format
+msgctxt "@info:credit"
 msgid "Mario Teijeiro"
 msgstr ""
 
 #: aboutdata.cpp:64
 #, kde-format
+msgctxt "@info:credit"
 msgid "Nick Thompson"
 msgstr ""
 
 #: aboutdata.cpp:65
 #, kde-format
+msgctxt "@info:credit"
 msgid "Bo Thorsen"
 msgstr ""
 
 #: aboutdata.cpp:66
 #, kde-format
+msgctxt "@info:credit"
 msgid "Larry Wright"
 msgstr ""
 
 #: aboutdata.cpp:67
 #, kde-format
+msgctxt "@info:credit"
 msgid "Thomas Zander"
 msgstr ""
 
 #: aboutdata.cpp:68
 #, kde-format
+msgctxt "@info:credit"
 msgid "Fester Zigterman"
 msgstr ""
 
@@ -1227,12 +1267,14 @@ msgid "Import Calendar"
 msgstr "i Khalenda"
 
 #: actionmanager.cpp:1657
-#, kde-format
+#, fuzzy, kde-format
+msgctxt "@action:button"
 msgid "Merge into existing calendar"
-msgstr ""
+msgstr "Hlela isiganeko"
 
 #: actionmanager.cpp:1658
 #, fuzzy, kde-format
+msgctxt "@action:button"
 msgid "Add as new calendar"
 msgstr "Icalendar Entsha"
 
@@ -1457,6 +1499,7 @@ msgstr "Uqinisekiso lwe KOrganizer"
 
 #: calendarview.cpp:1614
 #, fuzzy, kde-format
+msgctxt "@action:button"
 msgid "&Dissociate"
 msgstr "Ixesha lihlanganisiwe"
 
@@ -1469,11 +1512,13 @@ msgstr "Dwelisa iziganeko zemini yangoku"
 
 #: calendarview.cpp:1626
 #, fuzzy, kde-format
+msgctxt "@action:button"
 msgid "&Only Dissociate This One"
 msgstr "Dwelisa iziganeko zemini yangoku"
 
 #: calendarview.cpp:1627
 #, fuzzy, kde-format
+msgctxt "@action:button"
 msgid "&Also Dissociate Future Ones"
 msgstr "Dwelisa iziganeko zemini yangoku"
 
@@ -1546,11 +1591,13 @@ msgstr ""
 
 #: calendarview.cpp:2294
 #, fuzzy, kde-format
+msgctxt "@action:button"
 msgid "Delete Only This"
 msgstr "Cima iziganeko ezindala"
 
 #: calendarview.cpp:2295 calendarview.cpp:2353
 #, fuzzy, kde-format
+msgctxt "@action:button"
 msgid "Delete All"
 msgstr "Cima..."
 
@@ -1644,7 +1691,9 @@ msgid "Purge To-dos"
 msgstr "Coca Ku-Dos"
 
 #: calendarview.cpp:2465
-#, kde-format
+#, fuzzy, kde-format
+#| msgid "Purge"
+msgctxt "@action:button"
 msgid "Purge"
 msgstr "Coca"
 
@@ -1922,11 +1971,13 @@ msgstr "Umboniseli Wesiganeko"
 
 #: dialog/koeventviewerdialog.cpp:40
 #, fuzzy, kde-format
+msgctxt "@action:button"
 msgid "Edit…"
 msgstr "Ixesha Lesiphelo: %1"
 
 #: dialog/koeventviewerdialog.cpp:41
 #, fuzzy, kde-format
+msgctxt "@action:button"
 msgid "Show in Context"
 msgstr "Bonisa okukhethiweyo kuphela"
 
@@ -3117,6 +3168,7 @@ msgstr "Umlondolozi Wangoku"
 
 #: kontactplugin/specialdates/specialdates_plugin.cpp:43
 #, kde-format
+msgctxt "@info:credit"
 msgid "Tobias Koenig"
 msgstr ""
 
@@ -3557,6 +3609,7 @@ msgstr "Icwangcisa Ezikhethwayo Ezingagqibekanga"
 
 #: prefs/kprefsdialog.cpp:870
 #, kde-format
+msgctxt "@action:button"
 msgid "Reset to Defaults"
 msgstr ""
 

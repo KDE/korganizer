@@ -2,7 +2,7 @@ msgid ""
 msgstr ""
 "Project-Id-Version: kdeorg\n"
 "Report-Msgid-Bugs-To: https://bugs.kde.org\n"
-"POT-Creation-Date: 2024-05-15 00:39+0000\n"
+"POT-Creation-Date: 2024-05-16 00:39+0000\n"
 "PO-Revision-Date: 2024-04-22 15:58\n"
 "Last-Translator: \n"
 "Language-Team: Chinese Simplified\n"
@@ -51,7 +51,9 @@ msgid ""
 msgstr ""
 
 #: aboutdata.cpp:30 kontactplugin/specialdates/specialdates_plugin.cpp:42
-#, kde-format
+#, fuzzy, kde-format
+#| msgid "Allen Winter"
+msgctxt "@info:credit"
 msgid "Allen Winter"
 msgstr "Allen Winter"
 
@@ -61,7 +63,9 @@ msgid "Maintainer"
 msgstr "维护者"
 
 #: aboutdata.cpp:31
-#, kde-format
+#, fuzzy, kde-format
+#| msgid "Reinhold Kainhofer"
+msgctxt "@info:credit"
 msgid "Reinhold Kainhofer"
 msgstr "Reinhold Kainhofer"
 
@@ -71,12 +75,16 @@ msgid "Former Maintainer"
 msgstr "前任维护者"
 
 #: aboutdata.cpp:32
-#, kde-format
+#, fuzzy, kde-format
+#| msgid "Cornelius Schumacher"
+msgctxt "@info:credit"
 msgid "Cornelius Schumacher"
 msgstr "Cornelius Schumacher"
 
 #: aboutdata.cpp:33
-#, kde-format
+#, fuzzy, kde-format
+#| msgid "Preston Brown"
+msgctxt "@info:credit"
 msgid "Preston Brown"
 msgstr "Preston Brown"
 
@@ -86,7 +94,9 @@ msgid "Original Author"
 msgstr "原作者"
 
 #: aboutdata.cpp:34
-#, kde-format
+#, fuzzy, kde-format
+#| msgid "Laurent Montel"
+msgctxt "@info:credit"
 msgid "Laurent Montel"
 msgstr "Laurent Montel"
 
@@ -96,122 +106,170 @@ msgid "Developer"
 msgstr "开发者"
 
 #: aboutdata.cpp:35
-#, kde-format
+#, fuzzy, kde-format
+#| msgid "Richard Apodaca"
+msgctxt "@info:credit"
 msgid "Richard Apodaca"
 msgstr "Richard Apodaca"
 
 #: aboutdata.cpp:36
-#, kde-format
+#, fuzzy, kde-format
+#| msgid "Björn Balazs"
+msgctxt "@info:credit"
 msgid "Björn Balazs"
 msgstr "Björn Balazs"
 
 #: aboutdata.cpp:37
-#, kde-format
+#, fuzzy, kde-format
+#| msgid "Jan-Pascal van Best"
+msgctxt "@info:credit"
 msgid "Jan-Pascal van Best"
 msgstr "Jan-Pascal van Best"
 
 #: aboutdata.cpp:38
-#, kde-format
+#, fuzzy, kde-format
+#| msgid "Bertjan Broeksema"
+msgctxt "@info:credit"
 msgid "Bertjan Broeksema"
 msgstr "Bertjan Broeksema"
 
 #: aboutdata.cpp:39
-#, kde-format
+#, fuzzy, kde-format
+#| msgid "Laszlo Boloni"
+msgctxt "@info:credit"
 msgid "Laszlo Boloni"
 msgstr "Laszlo Boloni"
 
 #: aboutdata.cpp:40
-#, kde-format
+#, fuzzy, kde-format
+#| msgid "Barry Benowitz"
+msgctxt "@info:credit"
 msgid "Barry Benowitz"
 msgstr "Barry Benowitz"
 
 #: aboutdata.cpp:41
-#, kde-format
+#, fuzzy, kde-format
+#| msgid "Christopher Beard"
+msgctxt "@info:credit"
 msgid "Christopher Beard"
 msgstr "Christopher Beard"
 
 #: aboutdata.cpp:42
-#, kde-format
+#, fuzzy, kde-format
+#| msgid "Kalle Dalheimer"
+msgctxt "@info:credit"
 msgid "Kalle Dalheimer"
 msgstr "Kalle Dalheimer"
 
 #: aboutdata.cpp:43
-#, kde-format
+#, fuzzy, kde-format
+#| msgid "Ian Dawes"
+msgctxt "@info:credit"
 msgid "Ian Dawes"
 msgstr "Ian Dawes"
 
 #: aboutdata.cpp:44
-#, kde-format
+#, fuzzy, kde-format
+#| msgid "Thomas Eitzenberger"
+msgctxt "@info:credit"
 msgid "Thomas Eitzenberger"
 msgstr "Thomas Eitzenberger"
 
 #: aboutdata.cpp:45
-#, kde-format
+#, fuzzy, kde-format
+#| msgid "Neil Hart"
+msgctxt "@info:credit"
 msgid "Neil Hart"
 msgstr "Neil Hart"
 
 #: aboutdata.cpp:46
-#, kde-format
+#, fuzzy, kde-format
+#| msgid "Declan Houlihan"
+msgctxt "@info:credit"
 msgid "Declan Houlihan"
 msgstr "Declan Houlihan"
 
 #: aboutdata.cpp:47
-#, kde-format
+#, fuzzy, kde-format
+#| msgid "Hans-Jürgen Husel"
+msgctxt "@info:credit"
 msgid "Hans-Jürgen Husel"
 msgstr "Hans-Jürgen Husel"
 
 #: aboutdata.cpp:48
-#, kde-format
+#, fuzzy, kde-format
+#| msgid "Tim Jansen"
+msgctxt "@info:credit"
 msgid "Tim Jansen"
 msgstr "Tim Jansen"
 
 #: aboutdata.cpp:49
-#, kde-format
+#, fuzzy, kde-format
+#| msgid "Christian Kirsch"
+msgctxt "@info:credit"
 msgid "Christian Kirsch"
 msgstr "Christian Kirsch"
 
 #: aboutdata.cpp:50
-#, kde-format
+#, fuzzy, kde-format
+#| msgid "Tobias König"
+msgctxt "@info:credit"
 msgid "Tobias König"
 msgstr "Tobias König"
 
 #: aboutdata.cpp:51
-#, kde-format
+#, fuzzy, kde-format
+#| msgid "Martin Koller"
+msgctxt "@info:credit"
 msgid "Martin Koller"
 msgstr "Martin Koller"
 
 #: aboutdata.cpp:52
-#, kde-format
+#, fuzzy, kde-format
+#| msgid "Uwe Koloska"
+msgctxt "@info:credit"
 msgid "Uwe Koloska"
 msgstr "Uwe Koloska"
 
 #: aboutdata.cpp:53
-#, kde-format
+#, fuzzy, kde-format
+#| msgid "Sergio Luis Martins"
+msgctxt "@info:credit"
 msgid "Sergio Luis Martins"
 msgstr "Sergio Luis Martins"
 
 #: aboutdata.cpp:54
-#, kde-format
+#, fuzzy, kde-format
+#| msgid "Mike McQuaid"
+msgctxt "@info:credit"
 msgid "Mike McQuaid"
 msgstr "Mike McQuaid"
 
 #: aboutdata.cpp:55
-#, kde-format
+#, fuzzy, kde-format
+#| msgid "Glen Parker"
+msgctxt "@info:credit"
 msgid "Glen Parker"
 msgstr "Glen Parker"
 
 #: aboutdata.cpp:56
-#, kde-format
+#, fuzzy, kde-format
+#| msgid "Dan Pilone"
+msgctxt "@info:credit"
 msgid "Dan Pilone"
 msgstr "Dan Pilone"
 
 #: aboutdata.cpp:57
-#, kde-format
+#, fuzzy, kde-format
+#| msgid "Roman Rohr"
+msgctxt "@info:credit"
 msgid "Roman Rohr"
 msgstr "Roman Rohr"
 
 #: aboutdata.cpp:58
-#, kde-format
+#, fuzzy, kde-format
+#| msgid "Rafał Rzepecki"
+msgctxt "@info:credit"
 msgid "Rafał Rzepecki"
 msgstr "Rafał Rzepecki"
 
@@ -221,52 +279,72 @@ msgid "Part of work sponsored by Google with Summer of Code 2005"
 msgstr "Google 赞助的代码之夏 2005 活动中的部分工作"
 
 #: aboutdata.cpp:59
-#, kde-format
+#, fuzzy, kde-format
+#| msgid "Don Sanders"
+msgctxt "@info:credit"
 msgid "Don Sanders"
 msgstr "Don Sanders"
 
 #: aboutdata.cpp:60
-#, kde-format
+#, fuzzy, kde-format
+#| msgid "Bram Schoenmakers"
+msgctxt "@info:credit"
 msgid "Bram Schoenmakers"
 msgstr "Bram Schoenmakers"
 
 #: aboutdata.cpp:61
-#, kde-format
+#, fuzzy, kde-format
+#| msgid "Günter Schwann"
+msgctxt "@info:credit"
 msgid "Günter Schwann"
 msgstr "Günter Schwann"
 
 #: aboutdata.cpp:62
-#, kde-format
+#, fuzzy, kde-format
+#| msgid "Herwin Jan Steehouwer"
+msgctxt "@info:credit"
 msgid "Herwin Jan Steehouwer"
 msgstr "Herwin Jan Steehouwer"
 
 #: aboutdata.cpp:63
-#, kde-format
+#, fuzzy, kde-format
+#| msgid "Mario Teijeiro"
+msgctxt "@info:credit"
 msgid "Mario Teijeiro"
 msgstr "Mario Teijeiro"
 
 #: aboutdata.cpp:64
-#, kde-format
+#, fuzzy, kde-format
+#| msgid "Nick Thompson"
+msgctxt "@info:credit"
 msgid "Nick Thompson"
 msgstr "Nick Thompson"
 
 #: aboutdata.cpp:65
-#, kde-format
+#, fuzzy, kde-format
+#| msgid "Bo Thorsen"
+msgctxt "@info:credit"
 msgid "Bo Thorsen"
 msgstr "Bo Thorsen"
 
 #: aboutdata.cpp:66
-#, kde-format
+#, fuzzy, kde-format
+#| msgid "Larry Wright"
+msgctxt "@info:credit"
 msgid "Larry Wright"
 msgstr "Larry Wright"
 
 #: aboutdata.cpp:67
-#, kde-format
+#, fuzzy, kde-format
+#| msgid "Thomas Zander"
+msgctxt "@info:credit"
 msgid "Thomas Zander"
 msgstr "Thomas Zander"
 
 #: aboutdata.cpp:68
-#, kde-format
+#, fuzzy, kde-format
+#| msgid "Fester Zigterman"
+msgctxt "@info:credit"
 msgid "Fester Zigterman"
 msgstr "Fester Zigterman"
 
@@ -283,12 +361,10 @@ msgid "Hide menu bar"
 msgstr "隐藏菜单栏"
 
 #: actionmanager.cpp:243
-#, fuzzy, kde-format
-#| msgctxt "@title:window"
-#| msgid "Import Calendar"
+#, kde-format
 msgctxt "@action"
 msgid "Import &Calendar…"
-msgstr "导入日历"
+msgstr ""
 
 #: actionmanager.cpp:244
 #, kde-format
@@ -348,12 +424,10 @@ msgid "The downloaded events will be merged into your current calendar."
 msgstr "已下载的事件会合并到您当前的日历。"
 
 #: actionmanager.cpp:305
-#, fuzzy, kde-format
-#| msgctxt "@title:window"
-#| msgid "Export Calendar"
+#, kde-format
 msgctxt "@action"
 msgid "Export as &iCalendar…"
-msgstr "导出日历"
+msgstr ""
 
 #: actionmanager.cpp:306
 #, kde-format
@@ -404,8 +478,7 @@ msgstr ""
 "项。归档后，所选项将从已有的日历收藏中删除。"
 
 #: actionmanager.cpp:326
-#, fuzzy, kde-format
-#| msgid "Pur&ge Completed To-dos"
+#, kde-format
 msgctxt "@action"
 msgid "Pur&ge Completed To-dos"
 msgstr "删除已完成的待办事项(&G)"
@@ -625,8 +698,7 @@ msgstr ""
 "行。"
 
 #: actionmanager.cpp:460
-#, fuzzy, kde-format
-#| msgid "&Refresh"
+#, kde-format
 msgctxt "@action"
 msgid "&Refresh"
 msgstr "刷新(&R)"
@@ -934,8 +1006,7 @@ msgid "&Edit…"
 msgstr ""
 
 #: actionmanager.cpp:627
-#, fuzzy, kde-format
-#| msgid "&Make Sub-to-do Independent"
+#, kde-format
 msgctxt "@action"
 msgid "&Make Sub-to-do Independent"
 msgstr "将子待办事项独立(&M)"
@@ -955,15 +1026,13 @@ msgid "Send &Invitation to Attendees"
 msgstr "给参与者发送邀请(&I)"
 
 #: actionmanager.cpp:654
-#, fuzzy, kde-format
-#| msgid "Re&quest Update"
+#, kde-format
 msgctxt "@action"
 msgid "Re&quest Update"
 msgstr "请求更新(&Q)"
 
 #: actionmanager.cpp:662
-#, fuzzy, kde-format
-#| msgid "Send &Cancellation to Attendees"
+#, kde-format
 msgctxt "@action"
 msgid "Send &Cancellation to Attendees"
 msgstr "给参与者发送取消通知(&C)"
@@ -980,11 +1049,10 @@ msgid "Request Chan&ge"
 msgstr "请求更新(&G)"
 
 #: actionmanager.cpp:686
-#, fuzzy, kde-format
-#| msgid "&Upload Free Busy Information"
+#, kde-format
 msgctxt "@action"
 msgid "&Mail Free Busy Information…"
-msgstr "上传空闲/忙碌信息(&U)"
+msgstr ""
 
 #: actionmanager.cpp:691
 #, kde-format
@@ -992,8 +1060,7 @@ msgid "&Send as iCalendar…"
 msgstr ""
 
 #: actionmanager.cpp:698
-#, fuzzy, kde-format
-#| msgid "&Upload Free Busy Information"
+#, kde-format
 msgctxt "@action"
 msgid "&Upload Free Busy Information"
 msgstr "上传空闲/忙碌信息(&U)"
@@ -1024,12 +1091,10 @@ msgid "Show Calendar Manager"
 msgstr "显示日历管理器"
 
 #: actionmanager.cpp:749
-#, fuzzy, kde-format
-#| msgctxt "@info:status"
-#| msgid "Configure the view"
+#, kde-format
 msgctxt "@action"
 msgid "Configure &Date && Time…"
-msgstr "配置视图"
+msgstr ""
 
 #: actionmanager.cpp:753
 #, kde-format
@@ -1218,12 +1283,16 @@ msgid "Import Calendar"
 msgstr "导入日历"
 
 #: actionmanager.cpp:1657
-#, kde-format
+#, fuzzy, kde-format
+#| msgid "Merge into existing calendar"
+msgctxt "@action:button"
 msgid "Merge into existing calendar"
 msgstr "合并入已有日历"
 
 #: actionmanager.cpp:1658
-#, kde-format
+#, fuzzy, kde-format
+#| msgid "Add as new calendar"
+msgctxt "@action:button"
 msgid "Add as new calendar"
 msgstr "添加为新日历"
 
@@ -1446,7 +1515,9 @@ msgid "KOrganizer Confirmation"
 msgstr "KOrganizer 确认"
 
 #: calendarview.cpp:1614
-#, kde-format
+#, fuzzy, kde-format
+#| msgid "&Dissociate"
+msgctxt "@action:button"
 msgid "&Dissociate"
 msgstr "拆分(&D)"
 
@@ -1458,12 +1529,16 @@ msgid ""
 msgstr "您想要将发生于 %1 的事件从重现中拆分出来还是拆分未来的事件？"
 
 #: calendarview.cpp:1626
-#, kde-format
+#, fuzzy, kde-format
+#| msgid "&Only Dissociate This One"
+msgctxt "@action:button"
 msgid "&Only Dissociate This One"
 msgstr "只拆分本次事件(&O)"
 
 #: calendarview.cpp:1627
-#, kde-format
+#, fuzzy, kde-format
+#| msgid "&Also Dissociate Future Ones"
+msgctxt "@action:button"
 msgid "&Also Dissociate Future Ones"
 msgstr "拆分未来的事件(&A)"
 
@@ -1537,12 +1612,16 @@ msgstr ""
 "目及其全部子待办事项？"
 
 #: calendarview.cpp:2294
-#, kde-format
+#, fuzzy, kde-format
+#| msgid "Delete Only This"
+msgctxt "@action:button"
 msgid "Delete Only This"
 msgstr "仅删除此项"
 
 #: calendarview.cpp:2295 calendarview.cpp:2353
-#, kde-format
+#, fuzzy, kde-format
+#| msgid "Delete All"
+msgctxt "@action:button"
 msgid "Delete All"
 msgstr "全部删除"
 
@@ -1630,7 +1709,9 @@ msgid "Purge To-dos"
 msgstr "删除待办事项"
 
 #: calendarview.cpp:2465
-#, kde-format
+#, fuzzy, kde-format
+#| msgid "Purge"
+msgctxt "@action:button"
 msgid "Purge"
 msgstr "删除"
 
@@ -1907,12 +1988,16 @@ msgid "Event Viewer"
 msgstr "事件查看器"
 
 #: dialog/koeventviewerdialog.cpp:40
-#, kde-format
+#, fuzzy, kde-format
+#| msgid "&Edit"
+msgctxt "@action:button"
 msgid "Edit…"
-msgstr ""
+msgstr "编辑(&E)"
 
 #: dialog/koeventviewerdialog.cpp:41
-#, kde-format
+#, fuzzy, kde-format
+#| msgid "Show in Context"
+msgctxt "@action:button"
 msgid "Show in Context"
 msgstr "在上下文中显示"
 
@@ -3075,7 +3160,9 @@ msgid "Current Maintainer"
 msgstr "当前维护者"
 
 #: kontactplugin/specialdates/specialdates_plugin.cpp:43
-#, kde-format
+#, fuzzy, kde-format
+#| msgid "Tobias Koenig"
+msgctxt "@info:credit"
 msgid "Tobias Koenig"
 msgstr "Tobias Koenig"
 
@@ -3497,7 +3584,9 @@ msgid "Setting Default Preferences"
 msgstr "正在将首选项设为默认"
 
 #: prefs/kprefsdialog.cpp:870
-#, kde-format
+#, fuzzy, kde-format
+#| msgid "Reset to Defaults"
+msgctxt "@action:button"
 msgid "Reset to Defaults"
 msgstr "重置为默认值"
 

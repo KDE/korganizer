@@ -17,7 +17,7 @@ msgid ""
 msgstr ""
 "Project-Id-Version: korganizer\n"
 "Report-Msgid-Bugs-To: https://bugs.kde.org\n"
-"POT-Creation-Date: 2024-05-15 00:39+0000\n"
+"POT-Creation-Date: 2024-05-16 00:39+0000\n"
 "PO-Revision-Date: 2024-05-14 19:05+0300\n"
 "Last-Translator: Yaron Shahrabani <sh.yaron@gmail.com>\n"
 "Language-Team: צוות התרגום של KDE ישראל\n"
@@ -68,7 +68,9 @@ msgstr ""
 "כל הזכויות שמורות © 2012–2024 יוצרי KOrganizer"
 
 #: aboutdata.cpp:30 kontactplugin/specialdates/specialdates_plugin.cpp:42
-#, kde-format
+#, fuzzy, kde-format
+#| msgid "Allen Winter"
+msgctxt "@info:credit"
 msgid "Allen Winter"
 msgstr "אלן וינטר"
 
@@ -78,7 +80,9 @@ msgid "Maintainer"
 msgstr "מתחזק"
 
 #: aboutdata.cpp:31
-#, kde-format
+#, fuzzy, kde-format
+#| msgid "Reinhold Kainhofer"
+msgctxt "@info:credit"
 msgid "Reinhold Kainhofer"
 msgstr "ריינהולד קיינהופר"
 
@@ -88,12 +92,16 @@ msgid "Former Maintainer"
 msgstr "מתחזק לשעבר"
 
 #: aboutdata.cpp:32
-#, kde-format
+#, fuzzy, kde-format
+#| msgid "Cornelius Schumacher"
+msgctxt "@info:credit"
 msgid "Cornelius Schumacher"
 msgstr "קורנליוס שומאכר"
 
 #: aboutdata.cpp:33
-#, kde-format
+#, fuzzy, kde-format
+#| msgid "Preston Brown"
+msgctxt "@info:credit"
 msgid "Preston Brown"
 msgstr "פרסטון בראון"
 
@@ -103,7 +111,9 @@ msgid "Original Author"
 msgstr "יוצר מקורי"
 
 #: aboutdata.cpp:34
-#, kde-format
+#, fuzzy, kde-format
+#| msgid "Laurent Montel"
+msgctxt "@info:credit"
 msgid "Laurent Montel"
 msgstr "לורנט מונטל"
 
@@ -113,122 +123,170 @@ msgid "Developer"
 msgstr "מפתח"
 
 #: aboutdata.cpp:35
-#, kde-format
+#, fuzzy, kde-format
+#| msgid "Richard Apodaca"
+msgctxt "@info:credit"
 msgid "Richard Apodaca"
 msgstr "ריצ׳ארד אפוקדה"
 
 #: aboutdata.cpp:36
-#, kde-format
+#, fuzzy, kde-format
+#| msgid "Björn Balazs"
+msgctxt "@info:credit"
 msgid "Björn Balazs"
 msgstr "ביורן בלאש"
 
 #: aboutdata.cpp:37
-#, kde-format
+#, fuzzy, kde-format
+#| msgid "Jan-Pascal van Best"
+msgctxt "@info:credit"
 msgid "Jan-Pascal van Best"
 msgstr "ז׳אן־פסקל ואן בסט"
 
 #: aboutdata.cpp:38
-#, kde-format
+#, fuzzy, kde-format
+#| msgid "Bertjan Broeksema"
+msgctxt "@info:credit"
 msgid "Bertjan Broeksema"
 msgstr "ברטיאן ברויקסמה"
 
 #: aboutdata.cpp:39
-#, kde-format
+#, fuzzy, kde-format
+#| msgid "Laszlo Boloni"
+msgctxt "@info:credit"
 msgid "Laszlo Boloni"
 msgstr "לאזלו בולוני"
 
 #: aboutdata.cpp:40
-#, kde-format
+#, fuzzy, kde-format
+#| msgid "Barry Benowitz"
+msgctxt "@info:credit"
 msgid "Barry Benowitz"
 msgstr "בארי בנוביץ"
 
 #: aboutdata.cpp:41
-#, kde-format
+#, fuzzy, kde-format
+#| msgid "Christopher Beard"
+msgctxt "@info:credit"
 msgid "Christopher Beard"
 msgstr "קריסטופר ברד"
 
 #: aboutdata.cpp:42
-#, kde-format
+#, fuzzy, kde-format
+#| msgid "Kalle Dalheimer"
+msgctxt "@info:credit"
 msgid "Kalle Dalheimer"
 msgstr "קאל דלהיימר"
 
 #: aboutdata.cpp:43
-#, kde-format
+#, fuzzy, kde-format
+#| msgid "Ian Dawes"
+msgctxt "@info:credit"
 msgid "Ian Dawes"
 msgstr "איאן דוס"
 
 #: aboutdata.cpp:44
-#, kde-format
+#, fuzzy, kde-format
+#| msgid "Thomas Eitzenberger"
+msgctxt "@info:credit"
 msgid "Thomas Eitzenberger"
 msgstr "תומס אייצנברג"
 
 #: aboutdata.cpp:45
-#, kde-format
+#, fuzzy, kde-format
+#| msgid "Neil Hart"
+msgctxt "@info:credit"
 msgid "Neil Hart"
 msgstr "ניל הארט"
 
 #: aboutdata.cpp:46
-#, kde-format
+#, fuzzy, kde-format
+#| msgid "Declan Houlihan"
+msgctxt "@info:credit"
 msgid "Declan Houlihan"
 msgstr "דקלאן הוליהן"
 
 #: aboutdata.cpp:47
-#, kde-format
+#, fuzzy, kde-format
+#| msgid "Hans-Jürgen Husel"
+msgctxt "@info:credit"
 msgid "Hans-Jürgen Husel"
 msgstr "האנס־יורגן הוסל"
 
 #: aboutdata.cpp:48
-#, kde-format
+#, fuzzy, kde-format
+#| msgid "Tim Jansen"
+msgctxt "@info:credit"
 msgid "Tim Jansen"
 msgstr "טים ג׳נסן"
 
 #: aboutdata.cpp:49
-#, kde-format
+#, fuzzy, kde-format
+#| msgid "Christian Kirsch"
+msgctxt "@info:credit"
 msgid "Christian Kirsch"
 msgstr "קריסטיאן קירש"
 
 #: aboutdata.cpp:50
-#, kde-format
+#, fuzzy, kde-format
+#| msgid "Tobias König"
+msgctxt "@info:credit"
 msgid "Tobias König"
 msgstr "טוביאס קניג"
 
 #: aboutdata.cpp:51
-#, kde-format
+#, fuzzy, kde-format
+#| msgid "Martin Koller"
+msgctxt "@info:credit"
 msgid "Martin Koller"
 msgstr "מרטין קולר"
 
 #: aboutdata.cpp:52
-#, kde-format
+#, fuzzy, kde-format
+#| msgid "Uwe Koloska"
+msgctxt "@info:credit"
 msgid "Uwe Koloska"
 msgstr "אווה קולוסקה"
 
 #: aboutdata.cpp:53
-#, kde-format
+#, fuzzy, kde-format
+#| msgid "Sergio Luis Martins"
+msgctxt "@info:credit"
 msgid "Sergio Luis Martins"
 msgstr "סרג׳יו לואיס מרטינז"
 
 #: aboutdata.cpp:54
-#, kde-format
+#, fuzzy, kde-format
+#| msgid "Mike McQuaid"
+msgctxt "@info:credit"
 msgid "Mike McQuaid"
 msgstr "מייק מקווייד"
 
 #: aboutdata.cpp:55
-#, kde-format
+#, fuzzy, kde-format
+#| msgid "Glen Parker"
+msgctxt "@info:credit"
 msgid "Glen Parker"
 msgstr "גלן פרקר"
 
 #: aboutdata.cpp:56
-#, kde-format
+#, fuzzy, kde-format
+#| msgid "Dan Pilone"
+msgctxt "@info:credit"
 msgid "Dan Pilone"
 msgstr "דן פיילון"
 
 #: aboutdata.cpp:57
-#, kde-format
+#, fuzzy, kde-format
+#| msgid "Roman Rohr"
+msgctxt "@info:credit"
 msgid "Roman Rohr"
 msgstr "רומן רוהר"
 
 #: aboutdata.cpp:58
-#, kde-format
+#, fuzzy, kde-format
+#| msgid "Rafał Rzepecki"
+msgctxt "@info:credit"
 msgid "Rafał Rzepecki"
 msgstr "רפאו ז׳פקי"
 
@@ -238,52 +296,72 @@ msgid "Part of work sponsored by Google with Summer of Code 2005"
 msgstr "חלק מהעבודה מומן על ידי Google דרך Summer of Code 2005"
 
 #: aboutdata.cpp:59
-#, kde-format
+#, fuzzy, kde-format
+#| msgid "Don Sanders"
+msgctxt "@info:credit"
 msgid "Don Sanders"
 msgstr "דון סנדרס"
 
 #: aboutdata.cpp:60
-#, kde-format
+#, fuzzy, kde-format
+#| msgid "Bram Schoenmakers"
+msgctxt "@info:credit"
 msgid "Bram Schoenmakers"
 msgstr "בראם שומאכרס"
 
 #: aboutdata.cpp:61
-#, kde-format
+#, fuzzy, kde-format
+#| msgid "Günter Schwann"
+msgctxt "@info:credit"
 msgid "Günter Schwann"
 msgstr "גונטר שוואן"
 
 #: aboutdata.cpp:62
-#, kde-format
+#, fuzzy, kde-format
+#| msgid "Herwin Jan Steehouwer"
+msgctxt "@info:credit"
 msgid "Herwin Jan Steehouwer"
 msgstr "הרווין יאן שטיהאוור"
 
 #: aboutdata.cpp:63
-#, kde-format
+#, fuzzy, kde-format
+#| msgid "Mario Teijeiro"
+msgctxt "@info:credit"
 msgid "Mario Teijeiro"
 msgstr "מריו טייחיירו"
 
 #: aboutdata.cpp:64
-#, kde-format
+#, fuzzy, kde-format
+#| msgid "Nick Thompson"
+msgctxt "@info:credit"
 msgid "Nick Thompson"
 msgstr "ניק תומפסון"
 
 #: aboutdata.cpp:65
-#, kde-format
+#, fuzzy, kde-format
+#| msgid "Bo Thorsen"
+msgctxt "@info:credit"
 msgid "Bo Thorsen"
 msgstr "בו ת׳ורסן"
 
 #: aboutdata.cpp:66
-#, kde-format
+#, fuzzy, kde-format
+#| msgid "Larry Wright"
+msgctxt "@info:credit"
 msgid "Larry Wright"
 msgstr "לארי רייט"
 
 #: aboutdata.cpp:67
-#, kde-format
+#, fuzzy, kde-format
+#| msgid "Thomas Zander"
+msgctxt "@info:credit"
 msgid "Thomas Zander"
 msgstr "תומס זנדר"
 
 #: aboutdata.cpp:68
-#, kde-format
+#, fuzzy, kde-format
+#| msgid "Fester Zigterman"
+msgctxt "@info:credit"
 msgid "Fester Zigterman"
 msgstr "פסטר ציגטרמן"
 
@@ -1229,12 +1307,16 @@ msgid "Import Calendar"
 msgstr "ייבוא לוח שנה"
 
 #: actionmanager.cpp:1657
-#, kde-format
+#, fuzzy, kde-format
+#| msgid "Merge into existing calendar"
+msgctxt "@action:button"
 msgid "Merge into existing calendar"
 msgstr "מיזוג לתוך לוח השנה"
 
 #: actionmanager.cpp:1658
-#, kde-format
+#, fuzzy, kde-format
+#| msgid "Add as new calendar"
+msgctxt "@action:button"
 msgid "Add as new calendar"
 msgstr "הוספה בתור לוח שנה חדש"
 
@@ -1458,7 +1540,9 @@ msgid "KOrganizer Confirmation"
 msgstr "אישור KOrganizer"
 
 #: calendarview.cpp:1614
-#, kde-format
+#, fuzzy, kde-format
+#| msgid "&Dissociate"
+msgctxt "@action:button"
 msgid "&Dissociate"
 msgstr "ל&נתק"
 
@@ -1470,12 +1554,16 @@ msgid ""
 msgstr "לנתק את המופע ב־%1 מהמחזור או לנתק גם את העתידיים?"
 
 #: calendarview.cpp:1626
-#, kde-format
+#, fuzzy, kde-format
+#| msgid "&Only Dissociate This One"
+msgctxt "@action:button"
 msgid "&Only Dissociate This One"
 msgstr "ל&נתק רק את זה"
 
 #: calendarview.cpp:1627
-#, kde-format
+#, fuzzy, kde-format
+#| msgid "&Also Dissociate Future Ones"
+msgctxt "@action:button"
 msgid "&Also Dissociate Future Ones"
 msgstr "לנתק &גם את העתידיים"
 
@@ -1549,12 +1637,16 @@ msgstr ""
 "תלויות, או שמא למחוק את המטלה וכל מטלות המשנה שלה?"
 
 #: calendarview.cpp:2294
-#, kde-format
+#, fuzzy, kde-format
+#| msgid "Delete Only This"
+msgctxt "@action:button"
 msgid "Delete Only This"
 msgstr "למחוק רק את זה"
 
 #: calendarview.cpp:2295 calendarview.cpp:2353
-#, kde-format
+#, fuzzy, kde-format
+#| msgid "Delete All"
+msgctxt "@action:button"
 msgid "Delete All"
 msgstr "מחיקה של הכול"
 
@@ -1646,7 +1738,9 @@ msgid "Purge To-dos"
 msgstr "ניפוי מטלות"
 
 #: calendarview.cpp:2465
-#, kde-format
+#, fuzzy, kde-format
+#| msgid "Purge"
+msgctxt "@action:button"
 msgid "Purge"
 msgstr "מחיקה מוחלטת"
 
@@ -1927,12 +2021,16 @@ msgid "Event Viewer"
 msgstr "מציג אירועים"
 
 #: dialog/koeventviewerdialog.cpp:40
-#, kde-format
+#, fuzzy, kde-format
+#| msgid "Edit…"
+msgctxt "@action:button"
 msgid "Edit…"
 msgstr "עריכה…"
 
 #: dialog/koeventviewerdialog.cpp:41
-#, kde-format
+#, fuzzy, kde-format
+#| msgid "Show in Context"
+msgctxt "@action:button"
 msgid "Show in Context"
 msgstr "הצגה בהקשר"
 
@@ -3140,7 +3238,9 @@ msgid "Current Maintainer"
 msgstr "מתחזק נוכחי"
 
 #: kontactplugin/specialdates/specialdates_plugin.cpp:43
-#, kde-format
+#, fuzzy, kde-format
+#| msgid "Tobias Koenig"
+msgctxt "@info:credit"
 msgid "Tobias Koenig"
 msgstr "טוביאס קוניג"
 
@@ -3564,7 +3664,9 @@ msgid "Setting Default Preferences"
 msgstr "הגדרת העדפות ברירת מחדל"
 
 #: prefs/kprefsdialog.cpp:870
-#, kde-format
+#, fuzzy, kde-format
+#| msgid "Reset to Defaults"
+msgctxt "@action:button"
 msgid "Reset to Defaults"
 msgstr "איפוס לברירות המחדל"
 
