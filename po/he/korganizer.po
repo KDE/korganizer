@@ -18,7 +18,7 @@ msgstr ""
 "Project-Id-Version: korganizer\n"
 "Report-Msgid-Bugs-To: https://bugs.kde.org\n"
 "POT-Creation-Date: 2024-05-16 00:39+0000\n"
-"PO-Revision-Date: 2024-05-14 19:05+0300\n"
+"PO-Revision-Date: 2024-05-16 08:23+0300\n"
 "Last-Translator: Yaron Shahrabani <sh.yaron@gmail.com>\n"
 "Language-Team: צוות התרגום של KDE ישראל\n"
 "Language: he\n"
@@ -68,8 +68,7 @@ msgstr ""
 "כל הזכויות שמורות © 2012–2024 יוצרי KOrganizer"
 
 #: aboutdata.cpp:30 kontactplugin/specialdates/specialdates_plugin.cpp:42
-#, fuzzy, kde-format
-#| msgid "Allen Winter"
+#, kde-format
 msgctxt "@info:credit"
 msgid "Allen Winter"
 msgstr "אלן וינטר"
@@ -80,8 +79,7 @@ msgid "Maintainer"
 msgstr "מתחזק"
 
 #: aboutdata.cpp:31
-#, fuzzy, kde-format
-#| msgid "Reinhold Kainhofer"
+#, kde-format
 msgctxt "@info:credit"
 msgid "Reinhold Kainhofer"
 msgstr "ריינהולד קיינהופר"
@@ -92,15 +90,13 @@ msgid "Former Maintainer"
 msgstr "מתחזק לשעבר"
 
 #: aboutdata.cpp:32
-#, fuzzy, kde-format
-#| msgid "Cornelius Schumacher"
+#, kde-format
 msgctxt "@info:credit"
 msgid "Cornelius Schumacher"
 msgstr "קורנליוס שומאכר"
 
 #: aboutdata.cpp:33
-#, fuzzy, kde-format
-#| msgid "Preston Brown"
+#, kde-format
 msgctxt "@info:credit"
 msgid "Preston Brown"
 msgstr "פרסטון בראון"
@@ -111,8 +107,7 @@ msgid "Original Author"
 msgstr "יוצר מקורי"
 
 #: aboutdata.cpp:34
-#, fuzzy, kde-format
-#| msgid "Laurent Montel"
+#, kde-format
 msgctxt "@info:credit"
 msgid "Laurent Montel"
 msgstr "לורנט מונטל"
@@ -123,169 +118,145 @@ msgid "Developer"
 msgstr "מפתח"
 
 #: aboutdata.cpp:35
-#, fuzzy, kde-format
-#| msgid "Richard Apodaca"
+#, kde-format
 msgctxt "@info:credit"
 msgid "Richard Apodaca"
 msgstr "ריצ׳ארד אפוקדה"
 
 #: aboutdata.cpp:36
-#, fuzzy, kde-format
-#| msgid "Björn Balazs"
+#, kde-format
 msgctxt "@info:credit"
 msgid "Björn Balazs"
 msgstr "ביורן בלאש"
 
 #: aboutdata.cpp:37
-#, fuzzy, kde-format
-#| msgid "Jan-Pascal van Best"
+#, kde-format
 msgctxt "@info:credit"
 msgid "Jan-Pascal van Best"
 msgstr "ז׳אן־פסקל ואן בסט"
 
 #: aboutdata.cpp:38
-#, fuzzy, kde-format
-#| msgid "Bertjan Broeksema"
+#, kde-format
 msgctxt "@info:credit"
 msgid "Bertjan Broeksema"
 msgstr "ברטיאן ברויקסמה"
 
 #: aboutdata.cpp:39
-#, fuzzy, kde-format
-#| msgid "Laszlo Boloni"
+#, kde-format
 msgctxt "@info:credit"
 msgid "Laszlo Boloni"
 msgstr "לאזלו בולוני"
 
 #: aboutdata.cpp:40
-#, fuzzy, kde-format
-#| msgid "Barry Benowitz"
+#, kde-format
 msgctxt "@info:credit"
 msgid "Barry Benowitz"
 msgstr "בארי בנוביץ"
 
 #: aboutdata.cpp:41
-#, fuzzy, kde-format
-#| msgid "Christopher Beard"
+#, kde-format
 msgctxt "@info:credit"
 msgid "Christopher Beard"
 msgstr "קריסטופר ברד"
 
 #: aboutdata.cpp:42
-#, fuzzy, kde-format
-#| msgid "Kalle Dalheimer"
+#, kde-format
 msgctxt "@info:credit"
 msgid "Kalle Dalheimer"
 msgstr "קאל דלהיימר"
 
 #: aboutdata.cpp:43
-#, fuzzy, kde-format
-#| msgid "Ian Dawes"
+#, kde-format
 msgctxt "@info:credit"
 msgid "Ian Dawes"
 msgstr "איאן דוס"
 
 #: aboutdata.cpp:44
-#, fuzzy, kde-format
-#| msgid "Thomas Eitzenberger"
+#, kde-format
 msgctxt "@info:credit"
 msgid "Thomas Eitzenberger"
 msgstr "תומס אייצנברג"
 
 #: aboutdata.cpp:45
-#, fuzzy, kde-format
-#| msgid "Neil Hart"
+#, kde-format
 msgctxt "@info:credit"
 msgid "Neil Hart"
 msgstr "ניל הארט"
 
 #: aboutdata.cpp:46
-#, fuzzy, kde-format
-#| msgid "Declan Houlihan"
+#, kde-format
 msgctxt "@info:credit"
 msgid "Declan Houlihan"
 msgstr "דקלאן הוליהן"
 
 #: aboutdata.cpp:47
-#, fuzzy, kde-format
-#| msgid "Hans-Jürgen Husel"
+#, kde-format
 msgctxt "@info:credit"
 msgid "Hans-Jürgen Husel"
 msgstr "האנס־יורגן הוסל"
 
 #: aboutdata.cpp:48
-#, fuzzy, kde-format
-#| msgid "Tim Jansen"
+#, kde-format
 msgctxt "@info:credit"
 msgid "Tim Jansen"
 msgstr "טים ג׳נסן"
 
 #: aboutdata.cpp:49
-#, fuzzy, kde-format
-#| msgid "Christian Kirsch"
+#, kde-format
 msgctxt "@info:credit"
 msgid "Christian Kirsch"
 msgstr "קריסטיאן קירש"
 
 #: aboutdata.cpp:50
-#, fuzzy, kde-format
-#| msgid "Tobias König"
+#, kde-format
 msgctxt "@info:credit"
 msgid "Tobias König"
 msgstr "טוביאס קניג"
 
 #: aboutdata.cpp:51
-#, fuzzy, kde-format
-#| msgid "Martin Koller"
+#, kde-format
 msgctxt "@info:credit"
 msgid "Martin Koller"
 msgstr "מרטין קולר"
 
 #: aboutdata.cpp:52
-#, fuzzy, kde-format
-#| msgid "Uwe Koloska"
+#, kde-format
 msgctxt "@info:credit"
 msgid "Uwe Koloska"
 msgstr "אווה קולוסקה"
 
 #: aboutdata.cpp:53
-#, fuzzy, kde-format
-#| msgid "Sergio Luis Martins"
+#, kde-format
 msgctxt "@info:credit"
 msgid "Sergio Luis Martins"
 msgstr "סרג׳יו לואיס מרטינז"
 
 #: aboutdata.cpp:54
-#, fuzzy, kde-format
-#| msgid "Mike McQuaid"
+#, kde-format
 msgctxt "@info:credit"
 msgid "Mike McQuaid"
 msgstr "מייק מקווייד"
 
 #: aboutdata.cpp:55
-#, fuzzy, kde-format
-#| msgid "Glen Parker"
+#, kde-format
 msgctxt "@info:credit"
 msgid "Glen Parker"
 msgstr "גלן פרקר"
 
 #: aboutdata.cpp:56
-#, fuzzy, kde-format
-#| msgid "Dan Pilone"
+#, kde-format
 msgctxt "@info:credit"
 msgid "Dan Pilone"
 msgstr "דן פיילון"
 
 #: aboutdata.cpp:57
-#, fuzzy, kde-format
-#| msgid "Roman Rohr"
+#, kde-format
 msgctxt "@info:credit"
 msgid "Roman Rohr"
 msgstr "רומן רוהר"
 
 #: aboutdata.cpp:58
-#, fuzzy, kde-format
-#| msgid "Rafał Rzepecki"
+#, kde-format
 msgctxt "@info:credit"
 msgid "Rafał Rzepecki"
 msgstr "רפאו ז׳פקי"
@@ -296,71 +267,61 @@ msgid "Part of work sponsored by Google with Summer of Code 2005"
 msgstr "חלק מהעבודה מומן על ידי Google דרך Summer of Code 2005"
 
 #: aboutdata.cpp:59
-#, fuzzy, kde-format
-#| msgid "Don Sanders"
+#, kde-format
 msgctxt "@info:credit"
 msgid "Don Sanders"
 msgstr "דון סנדרס"
 
 #: aboutdata.cpp:60
-#, fuzzy, kde-format
-#| msgid "Bram Schoenmakers"
+#, kde-format
 msgctxt "@info:credit"
 msgid "Bram Schoenmakers"
 msgstr "בראם שומאכרס"
 
 #: aboutdata.cpp:61
-#, fuzzy, kde-format
-#| msgid "Günter Schwann"
+#, kde-format
 msgctxt "@info:credit"
 msgid "Günter Schwann"
 msgstr "גונטר שוואן"
 
 #: aboutdata.cpp:62
-#, fuzzy, kde-format
-#| msgid "Herwin Jan Steehouwer"
+#, kde-format
 msgctxt "@info:credit"
 msgid "Herwin Jan Steehouwer"
 msgstr "הרווין יאן שטיהאוור"
 
 #: aboutdata.cpp:63
-#, fuzzy, kde-format
-#| msgid "Mario Teijeiro"
+#, kde-format
 msgctxt "@info:credit"
 msgid "Mario Teijeiro"
 msgstr "מריו טייחיירו"
 
 #: aboutdata.cpp:64
-#, fuzzy, kde-format
-#| msgid "Nick Thompson"
+#, kde-format
 msgctxt "@info:credit"
 msgid "Nick Thompson"
 msgstr "ניק תומפסון"
 
 #: aboutdata.cpp:65
-#, fuzzy, kde-format
-#| msgid "Bo Thorsen"
+#, kde-format
 msgctxt "@info:credit"
 msgid "Bo Thorsen"
 msgstr "בו ת׳ורסן"
 
 #: aboutdata.cpp:66
-#, fuzzy, kde-format
-#| msgid "Larry Wright"
+#, kde-format
 msgctxt "@info:credit"
 msgid "Larry Wright"
 msgstr "לארי רייט"
 
 #: aboutdata.cpp:67
-#, fuzzy, kde-format
-#| msgid "Thomas Zander"
+#, kde-format
 msgctxt "@info:credit"
 msgid "Thomas Zander"
 msgstr "תומס זנדר"
 
 #: aboutdata.cpp:68
-#, fuzzy, kde-format
-#| msgid "Fester Zigterman"
+#, kde-format
 msgctxt "@info:credit"
 msgid "Fester Zigterman"
 msgstr "פסטר ציגטרמן"
@@ -380,8 +341,7 @@ msgid "Hide menu bar"
 msgstr "הסתרת סרגל תפריטים"
 
 #: actionmanager.cpp:243
-#, fuzzy, kde-format
-#| msgid "Import &Calendar…"
+#, kde-format
 msgctxt "@action"
 msgid "Import &Calendar…"
 msgstr "יי&בוא לוח שנה…"
@@ -446,8 +406,7 @@ msgid "The downloaded events will be merged into your current calendar."
 msgstr "האירועים שהורדו ימוזגו לתוך לוח השנה הנוכחי שלך."
 
 #: actionmanager.cpp:305
-#, fuzzy, kde-format
-#| msgid "Export as &iCalendar…"
+#, kde-format
 msgctxt "@action"
 msgid "Export as &iCalendar…"
 msgstr "יי&צוא כ־iCalendar…"
@@ -472,8 +431,7 @@ msgid ""
 msgstr "מאפשר לך לייצר את כל אוסף לוחות השנה שלך לקובץ iCalendat יחיד."
 
 #: actionmanager.cpp:314
-#, fuzzy, kde-format
-#| msgid "Archive O&ld Incidences…"
+#, kde-format
 msgctxt "@action"
 msgid "Archive O&ld Incidences…"
 msgstr "העברת מאורעות ישנים ל&ארכיון…"
@@ -498,10 +456,11 @@ msgid ""
 "dos that you can archive into an iCalendar file.  They will be removed from "
 "your existing calendar collection."
 msgstr ""
+"רשומת היומן הזאת פותחת חלונית שמאפשרת לך לבחור אירועים ומטלות ישנים שניתן "
+"להעביר לארכיון בקובץ iCalendar. הם יוסרו מאוסף לוחות השנה הקיים שלך."
 
 #: actionmanager.cpp:326
-#, fuzzy, kde-format
-#| msgid "Pur&ge Completed To-dos"
+#, kde-format
 msgctxt "@action"
 msgid "Pur&ge Completed To-dos"
 msgstr "ניפוי מטלות &שהושלמו"
@@ -627,7 +586,7 @@ msgstr "תצוגת רשימה"
 #, kde-format
 msgctxt "@info:tooltip"
 msgid "Switch to the List View"
-msgstr ""
+msgstr "מעבר לתצוגת הרשימה"
 
 #: actionmanager.cpp:421
 #, kde-format
@@ -636,6 +595,8 @@ msgid ""
 "Switches to the List View, which displays all your to-dos, events and "
 "journal entries for the dates selected in the Date Navigator as a list."
 msgstr ""
+"מעבר לתצוגת הרשימה, שמציגה את כל המטלות, האירועים ורשומות היומן שלך לתאריכים "
+"שנבחרו בתאריכון כרשימה."
 
 #: actionmanager.cpp:427
 #, kde-format
@@ -660,7 +621,7 @@ msgctxt "@info:whatsthis"
 msgid ""
 "Switches to the To-do List view, which provides a place for you to track "
 "tasks that need to be done."
-msgstr ""
+msgstr "מעבר לתצוגת המטלות, שמספקת מקום למעקב אחר מה שיש לבצע."
 
 #: actionmanager.cpp:437
 #, kde-format
@@ -686,6 +647,7 @@ msgid ""
 "Switches to the Journal View, which provides a place for you to record your "
 "reflections, occurrences or experiences."
 msgstr ""
+"מעבר לתצוגת יומן, שמספקת מקום לתעד את נקודת המבט, התחושות והחוויות שלך."
 
 #: actionmanager.cpp:447
 #, kde-format
@@ -702,7 +664,7 @@ msgstr "תצוגת ציר זמן"
 #, kde-format
 msgctxt "@info:tooltip"
 msgid "Switch to the Timeline View"
-msgstr ""
+msgstr "מעבר לתצוגת ציר זמן"
 
 #: actionmanager.cpp:451
 #, kde-format
@@ -711,10 +673,11 @@ msgid ""
 "Switches to the Timeline View, which shows all events for the selected "
 "timespan in a Gantt view. Each calendar is displayed in a separate line."
 msgstr ""
+"מעבר לתצוגת ציר הזמן, שמציגה את כל האירועים בפרק זמן מסוים בתצוגת גאנט. כל "
+"לוח שנה מוצג בשורה נפרדת."
 
 #: actionmanager.cpp:460
-#, fuzzy, kde-format
-#| msgid "&Refresh"
+#, kde-format
 msgctxt "@action"
 msgid "&Refresh"
 msgstr "&רענון"
@@ -738,6 +701,8 @@ msgid ""
 "This action will refresh and redraw the current calendar view. It does not "
 "sync or update any calendar folders."
 msgstr ""
+"הפעולה הזאת תרענן את תצוגת לוח השנה הנוכחית. היא לא מסנכרנת או מעדכנת תיקיות "
+"לוח שנה כלשהן."
 
 #: actionmanager.cpp:473
 #, kde-format
@@ -953,8 +918,7 @@ msgid ""
 msgstr ""
 
 #: actionmanager.cpp:587
-#, fuzzy, kde-format
-#| msgid "New Su&b-to-do…"
+#, kde-format
 msgctxt "@action"
 msgid "New Su&b-to-do…"
 msgstr "מ&טלת משנה חדשה…"
@@ -1023,11 +987,10 @@ msgid "&Edit…"
 msgstr "&עריכה…"
 
 #: actionmanager.cpp:627
-#, fuzzy, kde-format
-#| msgid "&Make Sub-to-do Independent"
+#, kde-format
 msgctxt "@action"
 msgid "&Make Sub-to-do Independent"
-msgstr "ה&סבת משימת משנה לעצמאית"
+msgstr "ה&סבת מטלת משנה לעצמאית"
 
 #. i18n( "&Activate Reminder" ), 0,
 #. mCalendarView, SLOT(toggleAlarm()),
@@ -1044,15 +1007,13 @@ msgid "Send &Invitation to Attendees"
 msgstr "שליחת מי&דע למשתתפים"
 
 #: actionmanager.cpp:654
-#, fuzzy, kde-format
-#| msgid "Re&quest Update"
+#, kde-format
 msgctxt "@action"
 msgid "Re&quest Update"
 msgstr "&בקשת עדכון"
 
 #: actionmanager.cpp:662
-#, fuzzy, kde-format
-#| msgid "Send &Cancellation to Attendees"
+#, kde-format
 msgctxt "@action"
 msgid "Send &Cancellation to Attendees"
 msgstr "שליחת &ביטול לנוכחים"
@@ -1069,8 +1030,7 @@ msgid "Request Chan&ge"
 msgstr "בקשת &שינוי"
 
 #: actionmanager.cpp:686
-#, fuzzy, kde-format
-#| msgid "&Mail Free Busy Information…"
+#, kde-format
 msgctxt "@action"
 msgid "&Mail Free Busy Information…"
 msgstr "שליחת פרטי פנוי/עסוק ב&דוא״ל…"
@@ -1081,8 +1041,7 @@ msgid "&Send as iCalendar…"
 msgstr "&שליחה כ־iCalendar…"
 
 #: actionmanager.cpp:698
-#, fuzzy, kde-format
-#| msgid "&Upload Free Busy Information"
+#, kde-format
 msgctxt "@action"
 msgid "&Upload Free Busy Information"
 msgstr "ה&עלאת פרטי פנוי/עסוק"
@@ -1113,11 +1072,10 @@ msgid "Show Calendar Manager"
 msgstr "הצגת מנהל לוחות שנה"
 
 #: actionmanager.cpp:749
-#, fuzzy, kde-format
-#| msgid "Configure &Date && Time…"
+#, kde-format
 msgctxt "@action"
 msgid "Configure &Date && Time…"
-msgstr "הגדרות &תאריך ושעה…"
+msgstr "הגדרת &תאריך ושעה…"
 
 #: actionmanager.cpp:753
 #, kde-format
@@ -1125,8 +1083,7 @@ msgid "Manage View &Filters…"
 msgstr "ניהול מס&נני תצוגה…"
 
 #: actionmanager.cpp:757
-#, fuzzy, kde-format
-#| msgid "Manage T&ags…"
+#, kde-format
 msgctxt "@action"
 msgid "Manage T&ags…"
 msgstr "ניהול ת&גיות…"
@@ -1307,15 +1264,13 @@ msgid "Import Calendar"
 msgstr "ייבוא לוח שנה"
 
 #: actionmanager.cpp:1657
-#, fuzzy, kde-format
-#| msgid "Merge into existing calendar"
+#, kde-format
 msgctxt "@action:button"
 msgid "Merge into existing calendar"
-msgstr "מיזוג לתוך לוח השנה"
+msgstr "מיזוג ללוח שנה קיים"
 
 #: actionmanager.cpp:1658
-#, fuzzy, kde-format
-#| msgid "Add as new calendar"
+#, kde-format
 msgctxt "@action:button"
 msgid "Add as new calendar"
 msgstr "הוספה בתור לוח שנה חדש"
@@ -1540,8 +1495,7 @@ msgid "KOrganizer Confirmation"
 msgstr "אישור KOrganizer"
 
 #: calendarview.cpp:1614
-#, fuzzy, kde-format
-#| msgid "&Dissociate"
+#, kde-format
 msgctxt "@action:button"
 msgid "&Dissociate"
 msgstr "ל&נתק"
@@ -1554,15 +1508,13 @@ msgid ""
 msgstr "לנתק את המופע ב־%1 מהמחזור או לנתק גם את העתידיים?"
 
 #: calendarview.cpp:1626
-#, fuzzy, kde-format
-#| msgid "&Only Dissociate This One"
+#, kde-format
 msgctxt "@action:button"
 msgid "&Only Dissociate This One"
 msgstr "ל&נתק רק את זה"
 
 #: calendarview.cpp:1627
-#, fuzzy, kde-format
-#| msgid "&Also Dissociate Future Ones"
+#, kde-format
 msgctxt "@action:button"
 msgid "&Also Dissociate Future Ones"
 msgstr "לנתק &גם את העתידיים"
@@ -1637,18 +1589,16 @@ msgstr ""
 "תלויות, או שמא למחוק את המטלה וכל מטלות המשנה שלה?"
 
 #: calendarview.cpp:2294
-#, fuzzy, kde-format
-#| msgid "Delete Only This"
+#, kde-format
 msgctxt "@action:button"
 msgid "Delete Only This"
 msgstr "למחוק רק את זה"
 
 #: calendarview.cpp:2295 calendarview.cpp:2353
-#, fuzzy, kde-format
-#| msgid "Delete All"
+#, kde-format
 msgctxt "@action:button"
 msgid "Delete All"
-msgstr "מחיקה של הכול"
+msgstr "למחוק את הכול"
 
 #: calendarview.cpp:2326
 #, kde-format
@@ -1738,11 +1688,10 @@ msgid "Purge To-dos"
 msgstr "ניפוי מטלות"
 
 #: calendarview.cpp:2465
-#, fuzzy, kde-format
-#| msgid "Purge"
+#, kde-format
 msgctxt "@action:button"
 msgid "Purge"
-msgstr "מחיקה מוחלטת"
+msgstr "ניפוי"
 
 #: calendarview.cpp:2476
 #, kde-format
@@ -2021,15 +1970,13 @@ msgid "Event Viewer"
 msgstr "מציג אירועים"
 
 #: dialog/koeventviewerdialog.cpp:40
-#, fuzzy, kde-format
-#| msgid "Edit…"
+#, kde-format
 msgctxt "@action:button"
 msgid "Edit…"
 msgstr "עריכה…"
 
 #: dialog/koeventviewerdialog.cpp:41
-#, fuzzy, kde-format
-#| msgid "Show in Context"
+#, kde-format
 msgctxt "@action:button"
 msgid "Show in Context"
 msgstr "הצגה בהקשר"
@@ -2194,10 +2141,10 @@ msgid "Create Note for Event"
 msgstr "יצירת הערה לאירוע"
 
 #: koeventpopupmenu.cpp:100
-#, fuzzy, kde-format
+#, kde-format
 msgctxt "@action:inmenu"
 msgid "Togg&le To-do Completed"
-msgstr "&מחק משימות שהושלמו"
+msgstr "החלפת מצב ה&שלמה של משימות"
 
 #: koeventpopupmenu.cpp:105
 #, kde-format
@@ -2256,7 +2203,7 @@ msgstr "הגדרות תקציר אירוע"
 #: kontactplugin/korganizer/apptsummaryconfig_base.ui:14
 #, kde-format
 msgid "Show Upcoming Events Starting"
-msgstr ""
+msgstr "הצגת אירועים קרובים שמתחילים"
 
 #. i18n: ectx: property (toolTip), widget (QRadioButton, mDateTodayButton)
 #: kontactplugin/korganizer/apptsummaryconfig_base.ui:20
@@ -2282,7 +2229,7 @@ msgstr "רק היו&ם"
 #: kontactplugin/korganizer/apptsummaryconfig_base.ui:36
 #, kde-format
 msgid "Show events starting within the next month"
-msgstr ""
+msgstr "הצגת אירועים שמתחילים בחודש הקרוב"
 
 #. i18n: ectx: property (whatsThis), widget (QRadioButton, mDateMonthButton)
 #: kontactplugin/korganizer/apptsummaryconfig_base.ui:39
@@ -2378,6 +2325,8 @@ msgid ""
 "events summary. This option is only available if you are using the Birthdays "
 "resource in your calendar."
 msgstr ""
+"יש להפעיל את האפשרות הזאת כדי לכלול ימי הולדת מלוח השנה שלך בתקציר האירועים "
+"הקרובים. האפשרות הזאת זמינה רק אם משאב ימי ההולדת פעיל בלוח השנה שלך."
 
 #. i18n: ectx: property (text), widget (QCheckBox, mShowBirthdaysFromCal)
 #. i18n: ectx: property (text), widget (QCheckBox, mShowBirthdaysFromCalBox)
@@ -2402,6 +2351,8 @@ msgid ""
 "upcoming events summary. This option is only available if you are using the "
 "Birthdays resource in your calendar."
 msgstr ""
+"יש להפעיל את האפשרות הזאת כדי לכלול ימי שנה מלוח השנה שלך בתקציר האירועים "
+"הקרובים. האפשרות הזאת זמינה רק אם משאב ימי ההולדת פעיל בלוח השנה שלך."
 
 #. i18n: ectx: property (text), widget (QCheckBox, mShowAnniversariesFromCal)
 #. i18n: ectx: property (text), widget (QCheckBox, mShowAnniversariesFromCalBox)
@@ -2708,6 +2659,8 @@ msgid ""
 "Use this spinbox to set the number of days to show pending To-dos up to 1 "
 "year in the future."
 msgstr ""
+"אפשר להשתמש בתיבת הטווח הזאת כדי להגדיר את מספר הימים להצגת מטלות ממתינות עד "
+"שנה בעתיד."
 
 #. i18n: ectx: property (title), widget (QGroupBox, mHideGroup)
 #: kontactplugin/korganizer/todosummaryconfig_base.ui:133
@@ -2896,13 +2849,13 @@ msgstr "עריכת מטלה: „%1”"
 #: kontactplugin/korganizer/todosummarywidget.cpp:369
 #, kde-format
 msgid "open-ended"
-msgstr ""
+msgstr "פתוחי־קצה"
 
 #: kontactplugin/korganizer/todosummarywidget.cpp:371
 #, kde-format
 msgctxt "the to-do is overdue"
 msgid "overdue"
-msgstr ""
+msgstr "חלפו"
 
 #: kontactplugin/korganizer/todosummarywidget.cpp:373
 #, kde-format
@@ -2914,7 +2867,7 @@ msgstr "מתחילה היום"
 #, kde-format
 msgctxt "the to-do has not been started yet"
 msgid "not-started"
-msgstr ""
+msgstr "לא־החלו"
 
 #: kontactplugin/korganizer/todosummarywidget.cpp:379
 #, kde-format
@@ -2926,7 +2879,7 @@ msgstr "הושלמה"
 #, kde-format
 msgctxt "the to-do is in-progress"
 msgid "in-progress "
-msgstr ""
+msgstr "בתהליך"
 
 #: kontactplugin/korganizer/todosummarywidget.cpp:386
 #, kde-format
@@ -3238,8 +3191,7 @@ msgid "Current Maintainer"
 msgstr "מתחזק נוכחי"
 
 #: kontactplugin/specialdates/specialdates_plugin.cpp:43
-#, fuzzy, kde-format
-#| msgid "Tobias Koenig"
+#, kde-format
 msgctxt "@info:credit"
 msgid "Tobias Koenig"
 msgstr "טוביאס קוניג"
@@ -3664,8 +3616,7 @@ msgid "Setting Default Preferences"
 msgstr "הגדרת העדפות ברירת מחדל"
 
 #: prefs/kprefsdialog.cpp:870
-#, fuzzy, kde-format
-#| msgid "Reset to Defaults"
+#, kde-format
 msgctxt "@action:button"
 msgid "Reset to Defaults"
 msgstr "איפוס לברירות המחדל"
@@ -4080,9 +4031,9 @@ msgstr "שימוש בצבע"
 #. i18n: ectx: label, entry, group (Agenda View)
 #. i18n: ectx: label, entry, group (Month View)
 #: settings/korganizer.kcfg:172 settings/korganizer.kcfg:262
-#, fuzzy, kde-format
+#, kde-format
 msgid "Tag inside, calendar outside"
-msgstr "לוח־שנה"
+msgstr "תגית בפנים, לוח שנה בחוץ"
 
 #. i18n: ectx: whatsthis, entry, group (Agenda View)
 #. i18n: ectx: whatsthis, entry, group (Month View)
