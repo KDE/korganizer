@@ -8,7 +8,7 @@ msgstr ""
 "Project-Id-Version: korganizer\n"
 "Report-Msgid-Bugs-To: https://bugs.kde.org\n"
 "POT-Creation-Date: 2024-05-16 00:39+0000\n"
-"PO-Revision-Date: 2024-05-15 09:56+0100\n"
+"PO-Revision-Date: 2024-05-17 06:24+0100\n"
 "Last-Translator: Oliver Kellogg <olivermkellogg@gmail.com>\n"
 "Language-Team: esperanto <kde-i18n-eo@kde.org>\n"
 "Language: eo\n"
@@ -57,8 +57,7 @@ msgstr ""
 "Kopirajto © 2012–2024 aŭtoroj de KOrganizer"
 
 #: aboutdata.cpp:30 kontactplugin/specialdates/specialdates_plugin.cpp:42
-#, fuzzy, kde-format
-#| msgid "Allen Winter"
+#, kde-format
 msgctxt "@info:credit"
 msgid "Allen Winter"
 msgstr "Allen Winter"
@@ -69,8 +68,7 @@ msgid "Maintainer"
 msgstr "Prizorganto"
 
 #: aboutdata.cpp:31
-#, fuzzy, kde-format
-#| msgid "Reinhold Kainhofer"
+#, kde-format
 msgctxt "@info:credit"
 msgid "Reinhold Kainhofer"
 msgstr "Reinhold Kainhofer"
@@ -81,15 +79,13 @@ msgid "Former Maintainer"
 msgstr "Iama prizorganto"
 
 #: aboutdata.cpp:32
-#, fuzzy, kde-format
-#| msgid "Cornelius Schumacher"
+#, kde-format
 msgctxt "@info:credit"
 msgid "Cornelius Schumacher"
 msgstr "Cornelius Schumacher"
 
 #: aboutdata.cpp:33
-#, fuzzy, kde-format
-#| msgid "Preston Brown"
+#, kde-format
 msgctxt "@info:credit"
 msgid "Preston Brown"
 msgstr "Preston Brown"
@@ -100,8 +96,7 @@ msgid "Original Author"
 msgstr "Originala aŭtoro"
 
 #: aboutdata.cpp:34
-#, fuzzy, kde-format
-#| msgid "Laurent Montel"
+#, kde-format
 msgctxt "@info:credit"
 msgid "Laurent Montel"
 msgstr "Laurent Montel"
@@ -112,169 +107,145 @@ msgid "Developer"
 msgstr "Ellaboranto"
 
 #: aboutdata.cpp:35
-#, fuzzy, kde-format
-#| msgid "Richard Apodaca"
+#, kde-format
 msgctxt "@info:credit"
 msgid "Richard Apodaca"
 msgstr "Richard Apodaca"
 
 #: aboutdata.cpp:36
-#, fuzzy, kde-format
-#| msgid "Björn Balazs"
+#, kde-format
 msgctxt "@info:credit"
 msgid "Björn Balazs"
 msgstr "Björn Balazs"
 
 #: aboutdata.cpp:37
-#, fuzzy, kde-format
-#| msgid "Jan-Pascal van Best"
+#, kde-format
 msgctxt "@info:credit"
 msgid "Jan-Pascal van Best"
 msgstr "Jan-Pascal van Best"
 
 #: aboutdata.cpp:38
-#, fuzzy, kde-format
-#| msgid "Bertjan Broeksema"
+#, kde-format
 msgctxt "@info:credit"
 msgid "Bertjan Broeksema"
 msgstr "Bertjan Broeksema"
 
 #: aboutdata.cpp:39
-#, fuzzy, kde-format
-#| msgid "Laszlo Boloni"
+#, kde-format
 msgctxt "@info:credit"
 msgid "Laszlo Boloni"
 msgstr "Laszlo Boloni"
 
 #: aboutdata.cpp:40
-#, fuzzy, kde-format
-#| msgid "Barry Benowitz"
+#, kde-format
 msgctxt "@info:credit"
 msgid "Barry Benowitz"
 msgstr "Barry Benowitz"
 
 #: aboutdata.cpp:41
-#, fuzzy, kde-format
-#| msgid "Christopher Beard"
+#, kde-format
 msgctxt "@info:credit"
 msgid "Christopher Beard"
 msgstr "Christopher Beard"
 
 #: aboutdata.cpp:42
-#, fuzzy, kde-format
-#| msgid "Kalle Dalheimer"
+#, kde-format
 msgctxt "@info:credit"
 msgid "Kalle Dalheimer"
 msgstr "Kalle Dalheimer"
 
 #: aboutdata.cpp:43
-#, fuzzy, kde-format
-#| msgid "Ian Dawes"
+#, kde-format
 msgctxt "@info:credit"
 msgid "Ian Dawes"
 msgstr "Ian Dawes"
 
 #: aboutdata.cpp:44
-#, fuzzy, kde-format
-#| msgid "Thomas Eitzenberger"
+#, kde-format
 msgctxt "@info:credit"
 msgid "Thomas Eitzenberger"
 msgstr "Thomas Eitzenberger"
 
 #: aboutdata.cpp:45
-#, fuzzy, kde-format
-#| msgid "Neil Hart"
+#, kde-format
 msgctxt "@info:credit"
 msgid "Neil Hart"
 msgstr "Neil Hart"
 
 #: aboutdata.cpp:46
-#, fuzzy, kde-format
-#| msgid "Declan Houlihan"
+#, kde-format
 msgctxt "@info:credit"
 msgid "Declan Houlihan"
 msgstr "Declan Houlihan"
 
 #: aboutdata.cpp:47
-#, fuzzy, kde-format
-#| msgid "Hans-Jürgen Husel"
+#, kde-format
 msgctxt "@info:credit"
 msgid "Hans-Jürgen Husel"
 msgstr "Hans-Jürgen Husel"
 
 #: aboutdata.cpp:48
-#, fuzzy, kde-format
-#| msgid "Tim Jansen"
+#, kde-format
 msgctxt "@info:credit"
 msgid "Tim Jansen"
 msgstr "Tim Jansen"
 
 #: aboutdata.cpp:49
-#, fuzzy, kde-format
-#| msgid "Christian Kirsch"
+#, kde-format
 msgctxt "@info:credit"
 msgid "Christian Kirsch"
 msgstr "Christian Kirsch"
 
 #: aboutdata.cpp:50
-#, fuzzy, kde-format
-#| msgid "Tobias König"
+#, kde-format
 msgctxt "@info:credit"
 msgid "Tobias König"
 msgstr "Tobias König"
 
 #: aboutdata.cpp:51
-#, fuzzy, kde-format
-#| msgid "Martin Koller"
+#, kde-format
 msgctxt "@info:credit"
 msgid "Martin Koller"
 msgstr "Martin Koller"
 
 #: aboutdata.cpp:52
-#, fuzzy, kde-format
-#| msgid "Uwe Koloska"
+#, kde-format
 msgctxt "@info:credit"
 msgid "Uwe Koloska"
 msgstr "Uwe Koloska"
 
 #: aboutdata.cpp:53
-#, fuzzy, kde-format
-#| msgid "Sergio Luis Martins"
+#, kde-format
 msgctxt "@info:credit"
 msgid "Sergio Luis Martins"
 msgstr "Sergio Luis Martins"
 
 #: aboutdata.cpp:54
-#, fuzzy, kde-format
-#| msgid "Mike McQuaid"
+#, kde-format
 msgctxt "@info:credit"
 msgid "Mike McQuaid"
 msgstr "Mike McQuaid"
 
 #: aboutdata.cpp:55
-#, fuzzy, kde-format
-#| msgid "Glen Parker"
+#, kde-format
 msgctxt "@info:credit"
 msgid "Glen Parker"
 msgstr "Glen Parker"
 
 #: aboutdata.cpp:56
-#, fuzzy, kde-format
-#| msgid "Dan Pilone"
+#, kde-format
 msgctxt "@info:credit"
 msgid "Dan Pilone"
 msgstr "Dan Pilone"
 
 #: aboutdata.cpp:57
-#, fuzzy, kde-format
-#| msgid "Roman Rohr"
+#, kde-format
 msgctxt "@info:credit"
 msgid "Roman Rohr"
 msgstr "Roman Rohr"
 
 #: aboutdata.cpp:58
-#, fuzzy, kde-format
-#| msgid "Rafał Rzepecki"
+#, kde-format
 msgctxt "@info:credit"
 msgid "Rafał Rzepecki"
 msgstr "Rafał Rzepecki"
@@ -285,71 +256,61 @@ msgid "Part of work sponsored by Google with Summer of Code 2005"
 msgstr "Parto de laboro sponsorita de Google kun Somero de Kodo 2005"
 
 #: aboutdata.cpp:59
-#, fuzzy, kde-format
-#| msgid "Don Sanders"
+#, kde-format
 msgctxt "@info:credit"
 msgid "Don Sanders"
 msgstr "Don Sanders"
 
 #: aboutdata.cpp:60
-#, fuzzy, kde-format
-#| msgid "Bram Schoenmakers"
+#, kde-format
 msgctxt "@info:credit"
 msgid "Bram Schoenmakers"
 msgstr "Bram Schoenmakers"
 
 #: aboutdata.cpp:61
-#, fuzzy, kde-format
-#| msgid "Günter Schwann"
+#, kde-format
 msgctxt "@info:credit"
 msgid "Günter Schwann"
 msgstr "Günter Schwann"
 
 #: aboutdata.cpp:62
-#, fuzzy, kde-format
-#| msgid "Herwin Jan Steehouwer"
+#, kde-format
 msgctxt "@info:credit"
 msgid "Herwin Jan Steehouwer"
 msgstr "Herwin Jan Steehouwer"
 
 #: aboutdata.cpp:63
-#, fuzzy, kde-format
-#| msgid "Mario Teijeiro"
+#, kde-format
 msgctxt "@info:credit"
 msgid "Mario Teijeiro"
 msgstr "Mario Teijeiro"
 
 #: aboutdata.cpp:64
-#, fuzzy, kde-format
-#| msgid "Nick Thompson"
+#, kde-format
 msgctxt "@info:credit"
 msgid "Nick Thompson"
 msgstr "Nick Thompson"
 
 #: aboutdata.cpp:65
-#, fuzzy, kde-format
-#| msgid "Bo Thorsen"
+#, kde-format
 msgctxt "@info:credit"
 msgid "Bo Thorsen"
 msgstr "Bo Thorsen"
 
 #: aboutdata.cpp:66
-#, fuzzy, kde-format
-#| msgid "Larry Wright"
+#, kde-format
 msgctxt "@info:credit"
 msgid "Larry Wright"
 msgstr "Larry Wright"
 
 #: aboutdata.cpp:67
-#, fuzzy, kde-format
-#| msgid "Thomas Zander"
+#, kde-format
 msgctxt "@info:credit"
 msgid "Thomas Zander"
 msgstr "Thomas Zander"
 
 #: aboutdata.cpp:68
-#, fuzzy, kde-format
-#| msgid "Fester Zigterman"
+#, kde-format
 msgctxt "@info:credit"
 msgid "Fester Zigterman"
 msgstr "Fester Zigterman"
@@ -774,8 +735,8 @@ msgid ""
 "created first. See \"Manage View Filters\" option in the Settings menu."
 msgstr ""
 "Rulas uzant-difinitajn rigardfiltrilojn sur la kalendara kolekto. Filtriloj "
-"devas esti kreitaj unue. Vidu opcion \"Administri Vidajn Filtrilojn\" en la "
-"menuo Agordoj."
+"devas esti kreitaj unue. Vidu elekteblon \"Administri Vidajn Filtrilojn\" en "
+"la menuo Agordoj."
 
 #: actionmanager.cpp:489
 #, kde-format
@@ -1322,15 +1283,13 @@ msgid "Import Calendar"
 msgstr "Importi Kalendaron"
 
 #: actionmanager.cpp:1657
-#, fuzzy, kde-format
-#| msgid "Merge into existing calendar"
+#, kde-format
 msgctxt "@action:button"
 msgid "Merge into existing calendar"
 msgstr "Kunfandi en ekzistantan kalendaron"
 
 #: actionmanager.cpp:1658
-#, fuzzy, kde-format
-#| msgid "Add as new calendar"
+#, kde-format
 msgctxt "@action:button"
 msgid "Add as new calendar"
 msgstr "Aldoni kiel nova kalendaro"
@@ -1559,8 +1518,7 @@ msgid "KOrganizer Confirmation"
 msgstr "Konfirmo de KOrganizer"
 
 #: calendarview.cpp:1614
-#, fuzzy, kde-format
-#| msgid "&Dissociate"
+#, kde-format
 msgctxt "@action:button"
 msgid "&Dissociate"
 msgstr "&Malassociigi"
@@ -1575,15 +1533,13 @@ msgstr ""
 "estontajn?"
 
 #: calendarview.cpp:1626
-#, fuzzy, kde-format
-#| msgid "&Only Dissociate This One"
+#, kde-format
 msgctxt "@action:button"
 msgid "&Only Dissociate This One"
 msgstr "Nur Malas&ocii Tiun"
 
 #: calendarview.cpp:1627
-#, fuzzy, kde-format
-#| msgid "&Also Dissociate Future Ones"
+#, kde-format
 msgctxt "@action:button"
 msgid "&Also Dissociate Future Ones"
 msgstr "&Ankaŭ Malasocii Estontecajn"
@@ -1659,15 +1615,13 @@ msgstr ""
 "subfaroj?"
 
 #: calendarview.cpp:2294
-#, fuzzy, kde-format
-#| msgid "Delete Only This"
+#, kde-format
 msgctxt "@action:button"
 msgid "Delete Only This"
 msgstr "Forigi Nur Ĉi tiun"
 
 #: calendarview.cpp:2295 calendarview.cpp:2353
-#, fuzzy, kde-format
-#| msgid "Delete All"
+#, kde-format
 msgctxt "@action:button"
 msgid "Delete All"
 msgstr "Forigi Ĉiujn"
@@ -1763,8 +1717,7 @@ msgid "Purge To-dos"
 msgstr "Elpurigi Farendojn"
 
 #: calendarview.cpp:2465
-#, fuzzy, kde-format
-#| msgid "Purge"
+#, kde-format
 msgctxt "@action:button"
 msgid "Purge"
 msgstr "Elpurigi"
@@ -2056,15 +2009,13 @@ msgid "Event Viewer"
 msgstr "Event Viewer"
 
 #: dialog/koeventviewerdialog.cpp:40
-#, fuzzy, kde-format
-#| msgid "Edit…"
+#, kde-format
 msgctxt "@action:button"
 msgid "Edit…"
 msgstr "Redakti…"
 
 #: dialog/koeventviewerdialog.cpp:41
-#, fuzzy, kde-format
-#| msgid "Show in Context"
+#, kde-format
 msgctxt "@action:button"
 msgid "Show in Context"
 msgstr "Montri en Kunteksto"
@@ -2415,9 +2366,9 @@ msgid ""
 "events summary. This option is only available if you are using the Birthdays "
 "resource in your calendar."
 msgstr ""
-"Ebligu ĉi tiun opcion por inkluzivi naskiĝtagojn de via kalendaro en la "
-"venontajn eventoresumojn. Ĉi tiu opcio disponeblas nur se vi uzas la rimedon "
-"Naskiĝtagoj en via kalendaro."
+"Ŝaltu ĉi tiun elekteblon por inkluzivi naskiĝtagojn de via kalendaro en la "
+"venontajn eventoresumojn. Ĉi tiu elekteblo disponeblas nur se vi uzas la "
+"rimedon Naskiĝtagoj en via kalendaro."
 
 #. i18n: ectx: property (text), widget (QCheckBox, mShowBirthdaysFromCal)
 #. i18n: ectx: property (text), widget (QCheckBox, mShowBirthdaysFromCalBox)
@@ -2443,9 +2394,9 @@ msgid ""
 "upcoming events summary. This option is only available if you are using the "
 "Birthdays resource in your calendar."
 msgstr ""
-"Ebligu ĉi tiun opcion por inkluzivi datrevenojn de via kalendaro en la "
-"venontajn eventoresumojn. Ĉi tiu opcio disponeblas nur se vi uzas la rimedon "
-"Naskiĝtagoj en via kalendaro."
+"Ebligu ĉi tiun elekteblon por inkluzivi datrevenojn de via kalendaro en la "
+"venontajn eventoresumojn. Ĉi tiu elekteblo disponeblas nur se vi uzas la "
+"rimedon Naskiĝtagoj en via kalendaro."
 
 #. i18n: ectx: property (text), widget (QCheckBox, mShowAnniversariesFromCal)
 #. i18n: ectx: property (text), widget (QCheckBox, mShowAnniversariesFromCalBox)
@@ -3073,7 +3024,7 @@ msgid ""
 "special occasions summary. Typically, these are events with the \"Birthday\" "
 "tag."
 msgstr ""
-"Ebligu ĉi tiun opcion por inkluzivi naskiĝtagojn de via kalendaro en la "
+"Ebligu ĉi tiun elekteblon por inkluzivi naskiĝtagojn de via kalendaro en la "
 "venontaj specialaj okazoj resumo. Tipe, ĉi tiuj estas eventoj kun la etikedo "
 "\"Naskiĝtago\"."
 
@@ -3091,7 +3042,7 @@ msgid ""
 "upcoming special occasions summary. Typically, these are events with the "
 "\"Anniversary\" tag."
 msgstr ""
-"Ebligu ĉi tiun opcion por inkluzivi datrevenojn de via kalendaro en la "
+"Ebligu ĉi tiun elekteblon por inkluzivi datrevenojn de via kalendaro en la "
 "venontaj specialaj okazoj resumo. Tipe, ĉi tiuj estas eventoj kun la etikedo "
 "\"Datreveno\"."
 
@@ -3109,9 +3060,9 @@ msgid ""
 "special occasions summary. These are events from your configured holiday "
 "region, or events with the \"Holiday\" tag."
 msgstr ""
-"Ebligu ĉi tiun opcion por inkluzivi feriojn de via kalendaro en la venontaj "
-"specialaj okazoj resumo. Ĉi tiuj estas eventoj de via agordita feria "
-"regiono, aŭ eventoj kun la etikedo \"Feriado\"."
+"Ebligu ĉi tiun elekteblon por inkluzivi feriojn de via kalendaro en la "
+"resumo de venontaj specialaj okazaĵoj. Ĉi tiuj estas eventoj de via agordita "
+"feria regiono, aŭ eventoj kun la etikedo \"Feriado\"."
 
 #. i18n: ectx: property (text), widget (QCheckBox, mShowHolidaysFromCalBox)
 #: kontactplugin/specialdates/sdsummaryconfig_base.ui:174
@@ -3132,8 +3083,8 @@ msgid ""
 "Enable this option to include events from your calendar with the \"special "
 "occasion\" tag."
 msgstr ""
-"Ebligu ĉi tiun opcion por inkluzivi eventojn el via kalendaro kun la etikedo "
-"\"speciala okazo\"."
+"Ebligu ĉi tiun elekteblon por inkluzivi eventojn el via kalendaro kun la "
+"etikedo \"speciala okazo\"."
 
 #. i18n: ectx: property (text), widget (QCheckBox, mShowSpecialsFromCalBox)
 #: kontactplugin/specialdates/sdsummaryconfig_base.ui:190
@@ -3160,7 +3111,7 @@ msgid ""
 "Enable this option to include birthdays from your address book in the "
 "upcoming special occasions summary."
 msgstr ""
-"Ebligu ĉi tiun opcion por inkluzivi naskiĝtagojn de via adreslibro en la "
+"Ebligu ĉi tiun elekteblon por inkluzivi naskiĝtagojn de via adreslibro en la "
 "venontan specialokazan resumon."
 
 #. i18n: ectx: property (text), widget (QCheckBox, mShowBirthdaysFromKABBox)
@@ -3182,7 +3133,7 @@ msgid ""
 "Enable this option to include anniversaries from your address book in the "
 "upcoming special occasions summary."
 msgstr ""
-"Ebligu ĉi tiun opcion por inkluzivi datrevenojn el via adreslibro en la "
+"Ŝaltu ĉi tiun elekteblon por inkluzivi datrevenojn el via adreslibro en la "
 "venontan resumon pri specialaj okazoj."
 
 #. i18n: ectx: property (text), widget (QCheckBox, mShowAnniversariesFromKABBox)
@@ -3287,8 +3238,7 @@ msgid "Current Maintainer"
 msgstr "Nuna Prizorganto"
 
 #: kontactplugin/specialdates/specialdates_plugin.cpp:43
-#, fuzzy, kde-format
-#| msgid "Tobias Koenig"
+#, kde-format
 msgctxt "@info:credit"
 msgid "Tobias Koenig"
 msgstr "Tobias Koenig"
@@ -3336,7 +3286,7 @@ msgstr ""
 #: korganizer_options.h:28
 #, kde-format
 msgid "Lists the available options for user feedback"
-msgstr "Listigas la disponeblajn opciojn por uzant-sugestoj"
+msgstr "Listigas la disponeblajn elekteblojn por uzant-sugestoj"
 
 #: koviewmanager.cpp:427
 #, kde-format
@@ -3651,7 +3601,7 @@ msgstr "Ĝenerala"
 #, kde-format
 msgctxt "@title:group"
 msgid "Display Options"
-msgstr "Montraj Opcioj"
+msgstr "Montraj Elektebloj"
 
 #: prefs/koprefsdialogviews.cpp:56
 #, kde-format
@@ -3693,7 +3643,7 @@ msgstr "Ĉio Vido"
 #, kde-format
 msgctxt "@title:group"
 msgid "Other Options"
-msgstr "Aliaj Opcioj"
+msgstr "Aliaj Elektebloj"
 
 #: prefs/kprefsdialog.cpp:234
 #, kde-format
@@ -3722,8 +3672,7 @@ msgid "Setting Default Preferences"
 msgstr "Agordante Defaŭltajn Preferojn"
 
 #: prefs/kprefsdialog.cpp:870
-#, fuzzy, kde-format
-#| msgid "Reset to Defaults"
+#, kde-format
 msgctxt "@action:button"
 msgid "Reset to Defaults"
 msgstr "Restarigi defaŭltojn"
@@ -5059,7 +5008,7 @@ msgid ""
 "Only to-dos which have least one attendee will be checked.  If you are not "
 "in the list of attendees the to-do will be hidden."
 msgstr ""
-"Ĉi tiu opcio kaŝas ĉiujn farojn el via listo, kiuj estas asignitaj al iu "
+"Ĉi tiu elekteblo kaŝas ĉiujn farojn el via listo, kiuj estas asignitaj al iu "
 "alia.<br>\n"
 "Nur faraĵoj kiuj havas almenaŭ unu partoprenanton estos markitaj. Se vi ne "
 "estas en la listo de ĉeestantoj, la farendo estos kaŝita."
@@ -5308,7 +5257,7 @@ msgstr ""
 "Marku ĉi tiun skatolon por elŝuti liberan/okupitan dosieron en la formato "
 "\"uzanto@domajno.ifb\" (ekzemple joe@firmao.com.ifb). Alie, ĝi elŝutos "
 "liberan/okupatan dosieron en la formato user.ifb (ekzemple joe.ifb). Demandu "
-"al la servila Administranto se vi ne certas kiel agordi ĉi tiun opcion."
+"al la servila Administranto se vi ne certas kiel agordi ĉi tiun elekteblon."
 
 #. i18n: ectx: property (text), widget (QCheckBox, fullDomainRetrieval)
 #: ui/kogroupwareprefspage.ui:388
