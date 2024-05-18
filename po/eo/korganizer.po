@@ -8,8 +8,8 @@ msgstr ""
 "Project-Id-Version: korganizer\n"
 "Report-Msgid-Bugs-To: https://bugs.kde.org\n"
 "POT-Creation-Date: 2024-04-12 00:38+0000\n"
-"PO-Revision-Date: 2024-01-05 21:02+0100\n"
-"Last-Translator: Oliver Kellogg <okellogg@users.sourceforge.net>\n"
+"PO-Revision-Date: 2024-05-17 06:24+0100\n"
+"Last-Translator: Oliver Kellogg <olivermkellogg@gmail.com>\n"
 "Language-Team: esperanto <kde-i18n-eo@kde.org>\n"
 "Language: eo\n"
 "MIME-Version: 1.0\n"
@@ -26,7 +26,7 @@ msgstr "Axel Rousseau,Oliver Kellogg"
 #, kde-format
 msgctxt "EMAIL OF TRANSLATORS"
 msgid "Your emails"
-msgstr "axel@esperanto-jeunes.org,okellogg@users.sourceforge.net"
+msgstr "axel@esperanto-jeunes.org,olivermkellogg@gmail.com"
 
 #: aboutdata.cpp:18 kontactplugin/korganizer/journalplugin.cpp:26
 #: kontactplugin/korganizer/korganizerplugin.cpp:42
@@ -364,13 +364,13 @@ msgstr "Eksporti kiel &iCalendar..."
 #, kde-format
 msgctxt "@info:status"
 msgid "Export calendar to file"
-msgstr "Eksportu kalendaron al dosiero"
+msgstr "Elporti kalendaron al dosiero"
 
 #: actionmanager.cpp:307
 #, kde-format
 msgctxt "@info:tooltip"
 msgid "Export your calendar to an iCalendar file"
-msgstr "Eksportu vian kalendaron al iCalendar-dosiero"
+msgstr "Elportu vian kalendaron al iCalendar-dosiero"
 
 #: actionmanager.cpp:308
 #, kde-format
@@ -691,8 +691,8 @@ msgid ""
 "created first. See \"Manage View Filters\" option in the Settings menu."
 msgstr ""
 "Rulas uzant-difinitajn rigardfiltrilojn sur la kalendara kolekto. Filtriloj "
-"devas esti kreitaj unue. Vidu opcion \"Administri Vidajn Filtrilojn\" en la "
-"menuo Agordoj."
+"devas esti kreitaj unue. Vidu elekteblon \"Administri Vidajn Filtrilojn\" en "
+"la menuo Agordoj."
 
 #: actionmanager.cpp:489
 #, kde-format
@@ -902,13 +902,13 @@ msgstr "Nova Ĵ&urnalo..."
 #, kde-format
 msgctxt "@info:status"
 msgid "Create a new Journal"
-msgstr "Kreu novan Revuon"
+msgstr "Kreu novan Taglibron"
 
 #: actionmanager.cpp:597
 #, kde-format
 msgctxt "@info:tooltip"
 msgid "Create a new Journal"
-msgstr "Kreu novan Revuon"
+msgstr "Kreu novan Taglibron"
 
 #: actionmanager.cpp:598
 #, kde-format
@@ -1121,7 +1121,7 @@ msgstr "Eraro"
 #: actionmanager.cpp:1082
 #, kde-format
 msgid "Could not start control module for date and time format."
-msgstr "Ne eblis lanĉi kontrolmodulon por data kaj hora formato."
+msgstr "Ne eblis lanĉi regmodulon por data kaj hora formato."
 
 #: actionmanager.cpp:1261
 #, kde-format
@@ -1351,7 +1351,7 @@ msgstr "Ĉio finita: %1 (%2)"
 #: calendarview.cpp:673
 #, kde-format
 msgid "Journal of %1"
-msgstr "Revuo de %1"
+msgstr "Taglibro de %1"
 
 #: calendarview.cpp:722
 #, kde-format
@@ -1466,7 +1466,7 @@ msgstr "Konfirmo de KOrganizer"
 #: calendarview.cpp:1614
 #, kde-format
 msgid "&Dissociate"
-msgstr "&Disocigi"
+msgstr "&Malassociigi"
 
 #: calendarview.cpp:1620
 #, kde-format
@@ -2304,9 +2304,9 @@ msgid ""
 "events summary. This option is only available if you are using the Birthdays "
 "resource in your calendar."
 msgstr ""
-"Ebligu ĉi tiun opcion por inkluzivi naskiĝtagojn de via kalendaro en la "
-"venontajn eventoresumojn. Ĉi tiu opcio disponeblas nur se vi uzas la rimedon "
-"Naskiĝtagoj en via kalendaro."
+"Ŝaltu ĉi tiun elekteblon por inkluzivi naskiĝtagojn de via kalendaro en la "
+"venontajn eventoresumojn. Ĉi tiu elekteblo disponeblas nur se vi uzas la "
+"rimedon Naskiĝtagoj en via kalendaro."
 
 #. i18n: ectx: property (text), widget (QCheckBox, mShowBirthdaysFromCal)
 #. i18n: ectx: property (text), widget (QCheckBox, mShowBirthdaysFromCalBox)
@@ -2332,9 +2332,9 @@ msgid ""
 "upcoming events summary. This option is only available if you are using the "
 "Birthdays resource in your calendar."
 msgstr ""
-"Ebligu ĉi tiun opcion por inkluzivi datrevenojn de via kalendaro en la "
-"venontajn eventoresumojn. Ĉi tiu opcio disponeblas nur se vi uzas la rimedon "
-"Naskiĝtagoj en via kalendaro."
+"Ebligu ĉi tiun elekteblon por inkluzivi datrevenojn de via kalendaro en la "
+"venontajn eventoresumojn. Ĉi tiu elekteblo disponeblas nur se vi uzas la "
+"rimedon Naskiĝtagoj en via kalendaro."
 
 #. i18n: ectx: property (text), widget (QCheckBox, mShowAnniversariesFromCal)
 #. i18n: ectx: property (text), widget (QCheckBox, mShowAnniversariesFromCalBox)
@@ -2962,7 +2962,7 @@ msgid ""
 "special occasions summary. Typically, these are events with the \"Birthday\" "
 "tag."
 msgstr ""
-"Ebligu ĉi tiun opcion por inkluzivi naskiĝtagojn de via kalendaro en la "
+"Ebligu ĉi tiun elekteblon por inkluzivi naskiĝtagojn de via kalendaro en la "
 "venontaj specialaj okazoj resumo. Tipe, ĉi tiuj estas eventoj kun la etikedo "
 "\"Naskiĝtago\"."
 
@@ -2980,7 +2980,7 @@ msgid ""
 "upcoming special occasions summary. Typically, these are events with the "
 "\"Anniversary\" tag."
 msgstr ""
-"Ebligu ĉi tiun opcion por inkluzivi datrevenojn de via kalendaro en la "
+"Ebligu ĉi tiun elekteblon por inkluzivi datrevenojn de via kalendaro en la "
 "venontaj specialaj okazoj resumo. Tipe, ĉi tiuj estas eventoj kun la etikedo "
 "\"Datreveno\"."
 
@@ -2998,9 +2998,9 @@ msgid ""
 "special occasions summary. These are events from your configured holiday "
 "region, or events with the \"Holiday\" tag."
 msgstr ""
-"Ebligu ĉi tiun opcion por inkluzivi feriojn de via kalendaro en la venontaj "
-"specialaj okazoj resumo. Ĉi tiuj estas eventoj de via agordita feria "
-"regiono, aŭ eventoj kun la etikedo \"Feriado\"."
+"Ebligu ĉi tiun elekteblon por inkluzivi feriojn de via kalendaro en la "
+"resumo de venontaj specialaj okazaĵoj. Ĉi tiuj estas eventoj de via agordita "
+"feria regiono, aŭ eventoj kun la etikedo \"Feriado\"."
 
 #. i18n: ectx: property (text), widget (QCheckBox, mShowHolidaysFromCalBox)
 #: kontactplugin/specialdates/sdsummaryconfig_base.ui:174
@@ -3021,8 +3021,8 @@ msgid ""
 "Enable this option to include events from your calendar with the \"special "
 "occasion\" tag."
 msgstr ""
-"Ebligu ĉi tiun opcion por inkluzivi eventojn el via kalendaro kun la etikedo "
-"\"speciala okazo\"."
+"Ebligu ĉi tiun elekteblon por inkluzivi eventojn el via kalendaro kun la "
+"etikedo \"speciala okazo\"."
 
 #. i18n: ectx: property (text), widget (QCheckBox, mShowSpecialsFromCalBox)
 #: kontactplugin/specialdates/sdsummaryconfig_base.ui:190
@@ -3049,7 +3049,7 @@ msgid ""
 "Enable this option to include birthdays from your address book in the "
 "upcoming special occasions summary."
 msgstr ""
-"Ebligu ĉi tiun opcion por inkluzivi naskiĝtagojn de via adreslibro en la "
+"Ebligu ĉi tiun elekteblon por inkluzivi naskiĝtagojn de via adreslibro en la "
 "venontan specialokazan resumon."
 
 #. i18n: ectx: property (text), widget (QCheckBox, mShowBirthdaysFromKABBox)
@@ -3071,7 +3071,7 @@ msgid ""
 "Enable this option to include anniversaries from your address book in the "
 "upcoming special occasions summary."
 msgstr ""
-"Ebligu ĉi tiun opcion por inkluzivi datrevenojn el via adreslibro en la "
+"Ŝaltu ĉi tiun elekteblon por inkluzivi datrevenojn el via adreslibro en la "
 "venontan resumon pri specialaj okazoj."
 
 #. i18n: ectx: property (text), widget (QCheckBox, mShowAnniversariesFromKABBox)
@@ -3223,7 +3223,7 @@ msgstr ""
 #: korganizer_options.h:28
 #, kde-format
 msgid "Lists the available options for user feedback"
-msgstr "Listigas la disponeblajn opciojn por uzant-sugestoj"
+msgstr "Listigas la disponeblajn elekteblojn por uzant-sugestoj"
 
 #: koviewmanager.cpp:427
 #, kde-format
@@ -3538,7 +3538,7 @@ msgstr "Ĝenerala"
 #, kde-format
 msgctxt "@title:group"
 msgid "Display Options"
-msgstr "Montraj Opcioj"
+msgstr "Montraj Elektebloj"
 
 #: prefs/koprefsdialogviews.cpp:56
 #, kde-format
@@ -3580,7 +3580,7 @@ msgstr "Ĉio Vido"
 #, kde-format
 msgctxt "@title:group"
 msgid "Other Options"
-msgstr "Aliaj Opcioj"
+msgstr "Aliaj Elektebloj"
 
 #: prefs/kprefsdialog.cpp:234
 #, kde-format
@@ -3692,7 +3692,7 @@ msgstr ""
 #: settings/korganizer.kcfg:44
 #, kde-format
 msgid "Weekly start day:"
-msgstr "Semajna komenca tago:"
+msgstr "Semajna komenctago:"
 
 #. i18n: ectx: tooltip, entry (WeekStartDay), group (Time &amp; Date)
 #: settings/korganizer.kcfg:45
@@ -3877,7 +3877,7 @@ msgstr ""
 #: settings/korganizer.kcfg:110
 #, kde-format
 msgid "Show journals instead of events when in Journal View"
-msgstr "Montru taglibrojn anstataŭ eventojn kiam en Journal View"
+msgstr "Montru taglibrojn anstataŭ eventojn kiam en Taglibra Vido"
 
 #. i18n: ectx: whatsthis, entry (HighlightJournals), group (General View)
 #: settings/korganizer.kcfg:111
@@ -3918,14 +3918,14 @@ msgid ""
 "Select the height of the hour rows in the agenda grid, in pixels. Increasing "
 "this value will make each row in the agenda grid taller."
 msgstr ""
-"Elektu la altecon de la horvicoj en la tagorda krado, en pikseloj. Pliigi ĉi "
-"tiun valoron plialtigos ĉiun vicon en la tagorda krado."
+"Elektu la altecon de la horvicoj en la tagorda krado, en rastrumeroj. Pliigi "
+"ĉi tiun valoron plialtigos ĉiun vicon en la tagorda krado."
 
 #. i18n: ectx: tooltip, entry, group (Agenda View)
 #: settings/korganizer.kcfg:127
 #, kde-format
 msgid "Set the height (in pixels) for an hour in the agenda grid"
-msgstr "Meti la altecon (en pikseloj) por horo en la tagorda krado"
+msgstr "Meti la altecon (en rastrumeroj) por horo en la tagorda krado"
 
 #. i18n: ectx: label, entry (EnableAgendaItemIcons), group (Agenda View)
 #: settings/korganizer.kcfg:134
@@ -4944,7 +4944,7 @@ msgid ""
 "Only to-dos which have least one attendee will be checked.  If you are not "
 "in the list of attendees the to-do will be hidden."
 msgstr ""
-"Ĉi tiu opcio kaŝas ĉiujn farojn el via listo, kiuj estas asignitaj al iu "
+"Ĉi tiu elekteblo kaŝas ĉiujn farojn el via listo, kiuj estas asignitaj al iu "
 "alia.<br>\n"
 "Nur faraĵoj kiuj havas almenaŭ unu partoprenanton estos markitaj. Se vi ne "
 "estas en la listo de ĉeestantoj, la farendo estos kaŝita."
@@ -5193,7 +5193,7 @@ msgstr ""
 "Marku ĉi tiun skatolon por elŝuti liberan/okupitan dosieron en la formato "
 "\"uzanto@domajno.ifb\" (ekzemple joe@firmao.com.ifb). Alie, ĝi elŝutos "
 "liberan/okupatan dosieron en la formato user.ifb (ekzemple joe.ifb). Demandu "
-"al la servila Administranto se vi ne certas kiel agordi ĉi tiun opcion."
+"al la servila Administranto se vi ne certas kiel agordi ĉi tiun elekteblon."
 
 #. i18n: ectx: property (text), widget (QCheckBox, fullDomainRetrieval)
 #: ui/kogroupwareprefspage.ui:388
@@ -5831,130 +5831,3 @@ msgstr "%1"
 msgctxt "4 digit year"
 msgid "%1"
 msgstr "%1"
-
-#~ msgid "Day begins at"
-#~ msgstr "Tago komenciĝas je"
-
-#~ msgid ""
-#~ "Enter the start time for events here. This time should be the earliest "
-#~ "time that you use for events, as it will be displayed at the top."
-#~ msgstr ""
-#~ "Enigu la komencan tempon por eventoj ĉi tie. Ĉi tiu tempo devus esti la "
-#~ "plej frua tempo, kiun vi uzas por eventoj, ĉar ĝi estos montrata supre."
-
-#~ msgid "Use holiday regions:"
-#~ msgstr "Uzi feriajn regionojn:"
-
-#~ msgid ""
-#~ "Select which regions you want to use the holidays here. Defined holidays "
-#~ "are shown as non-working days in the date navigator, the agenda view, etc."
-#~ msgstr ""
-#~ "Elektu kiujn regionojn vi volas uzi la feriojn ĉi tie. Difinitaj ferioj "
-#~ "estas montritaj kiel nelaborataj tagoj en la datnavigilo, la tagorda "
-#~ "vido, ktp."
-
-#~ msgid "Exclude holidays"
-#~ msgstr "Ekskludi feriojn"
-
-#~ msgid ""
-#~ "Check this box to prevent KOrganizer from marking the working hours on "
-#~ "holidays."
-#~ msgstr ""
-#~ "Marku ĉi tiun skatolon por malhelpi KOrganizer marki la laborhorojn dum "
-#~ "ferioj."
-
-#~ msgid "Text"
-#~ msgstr "Teksto"
-
-#~ msgid "Numeric Value"
-#~ msgstr "Nombra Valoro"
-
-#~ msgid "Boolean"
-#~ msgstr "Bulea"
-
-#~ msgid "Selection"
-#~ msgstr "Elekto"
-
-#~ msgid "Date & Time"
-#~ msgstr "Dato & Tempo"
-
-#~ msgid "Date"
-#~ msgstr "Dato"
-
-#~ msgid "<qt>Do you really want to delete '<b>%1</b>'?</qt>"
-#~ msgstr "<qt>Ĉu vi vere volas forigi '<b>%1</b>'?</qt>"
-
-#~ msgid "Import Page"
-#~ msgstr "Import Paĝo"
-
-#~ msgid "Designer Files"
-#~ msgstr "Designer Dosieroj"
-
-#~ msgid ""
-#~ "<qt><b>Warning:</b> Qt Designer could not be found. It is probably not "
-#~ "installed. You will only be able to import existing designer files.</qt>"
-#~ msgstr ""
-#~ "<qt><b>Averto:</b> Qt Designer ne troviĝis. Ĝi verŝajne ne estas "
-#~ "instalita. Vi nur povos importi ekzistantajn dezajnajn dosierojn.</qt>"
-
-#~ msgid "Available Pages"
-#~ msgstr "Disponeblaj Paĝoj"
-
-#~ msgid "Preview of Selected Page"
-#~ msgstr "Antaŭrigardo de Elektita Paĝo"
-
-#~ msgid ""
-#~ "<qt><p>This section allows you to add your own GUI Elements ('<i>Widgets</"
-#~ "i>') to store your own values into %1. Proceed as described below:</"
-#~ "p><ol><li>Click on '<i>Edit with Qt Designer</i>'</li><li>In the dialog, "
-#~ "select '<i>Widget</i>', then click <i>OK</i></li><li>Add your widgets to "
-#~ "the form</li><li>Save the file in the directory proposed by Qt Designer</"
-#~ "li><li>Close Qt Designer</li></ol><p>In case you already have a designer "
-#~ "file (*.ui) located somewhere on your hard disk, simply choose '<i>Import "
-#~ "Page</i>'</p><p><b>Important:</b> The name of each input widget you place "
-#~ "within the form must start with '<i>X_</i>'; so if you want the widget to "
-#~ "correspond to your custom entry '<i>X-Foo</i>', set the widget's <i>name</"
-#~ "i> property to '<i>X_Foo</i>'.</p><p><b>Important:</b> The widget will "
-#~ "edit custom fields with an application name of %2.  To change the "
-#~ "application name to be edited, set the widget name in Qt Designer.</p></"
-#~ "qt>"
-#~ msgstr ""
-#~ "<qt><p>Ĉi tiu sekcio permesas al vi aldoni viajn proprajn GUI-Elementojn "
-#~ "('<i>Widgets</i>') por konservi viajn proprajn valorojn en %1. Sekvu kiel "
-#~ "priskribite sube:</p><ol><li>Alklaku '<i>Redakti per Qt Designer</i>'</"
-#~ "li><li>En la dialogo, elektu '<i>Fenestraĵo</i>', tiam alklaku <i>Bone</"
-#~ "i></li><li>Aldonu viajn fenestraĵojn al la formularo</li><li>Konservu la "
-#~ "dosieron en la dosierujo proponita de Qt Designer</li><li>Fermu Qt "
-#~ "Designer</li></ol><p>Se vi jam havas dezajnistan dosieron (*.ui) "
-#~ "situantan ie sur via malmola disko, simple elektu '<i>Importi Paĝon</i>'</"
-#~ "p><p><b>Grava:</b> La nomo de ĉiu eniga fenestraĵo, kiun vi metas en la "
-#~ "formularon, devas komenciĝi per '<i>X_</i>'; do se vi volas, ke la "
-#~ "fenestraĵo respondu al via propra enskribo '<i>X-Foo</i>', agordu la "
-#~ "proprecon <i>nomo</i> de la fenestraĵo al '<i>X_Foo</i>'.</p><p><b>Grave:"
-#~ "</b> La fenestraĵo redaktos proprajn kampojn kun aplika nomo %2. Por "
-#~ "ŝanĝi la redaktotan aplikaĵon, agordu la fenestraĵan nomon en Qt Designer."
-#~ "</p></qt>"
-
-#~ msgid "<a href=\"whatsthis:%1\">How does this work?</a>"
-#~ msgstr "<a href=\"whatsthis:%1\">Kiel ĉi tio funkcias?</a>"
-
-#~ msgid "Delete Page"
-#~ msgstr "Forigi Paĝon"
-
-#~ msgid "Import Page..."
-#~ msgstr "Importi paĝon..."
-
-#~ msgid "Edit with Qt Designer..."
-#~ msgstr "Redakti per Qt Designer..."
-
-#~ msgid "Key:"
-#~ msgstr "Ŝlosilo:"
-
-#~ msgid "Type:"
-#~ msgstr "Tipo:"
-
-#~ msgid "Classname:"
-#~ msgstr "Klasnomo:"
-
-#~ msgid "Description:"
-#~ msgstr "Priskribo:"
