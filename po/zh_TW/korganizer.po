@@ -15,7 +15,7 @@ msgstr ""
 "Project-Id-Version: korganizer\n"
 "Report-Msgid-Bugs-To: https://bugs.kde.org\n"
 "POT-Creation-Date: 2024-04-12 00:38+0000\n"
-"PO-Revision-Date: 2024-05-09 06:49+0900\n"
+"PO-Revision-Date: 2024-05-18 17:36+0900\n"
 "Last-Translator: Kisaragi Hiu <mail@kisaragi-hiu.com>\n"
 "Language-Team: Traditional Chinese <zh-l10n@lists.slat.org>\n"
 "Language: zh_TW\n"
@@ -1120,7 +1120,7 @@ msgstr "編輯事件...(&E)"
 #: actionmanager.cpp:1267
 #, kde-format
 msgid "&Delete Event"
-msgstr "刪除事件...(&D)"
+msgstr "刪除事件…(&D)"
 
 #: actionmanager.cpp:1275
 #, kde-format
