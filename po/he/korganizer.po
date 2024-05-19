@@ -18,7 +18,7 @@ msgstr ""
 "Project-Id-Version: korganizer\n"
 "Report-Msgid-Bugs-To: https://bugs.kde.org\n"
 "POT-Creation-Date: 2024-05-16 00:39+0000\n"
-"PO-Revision-Date: 2024-05-17 13:58+0300\n"
+"PO-Revision-Date: 2024-05-18 15:49+0300\n"
 "Last-Translator: Yaron Shahrabani <sh.yaron@gmail.com>\n"
 "Language-Team: צוות התרגום של KDE ישראל\n"
 "Language: he\n"
@@ -1213,7 +1213,7 @@ msgstr "הוספה כ&חלק מההודעה"
 #: actionmanager.cpp:1421
 #, kde-format
 msgid "Attach inline &without attachments"
-msgstr ""
+msgstr "צירוף כ&חלק מההודעה בלי לצרף כקובץ"
 
 #: actionmanager.cpp:1423 actionmanager.cpp:1528
 #, kde-format
@@ -1655,13 +1655,13 @@ msgstr ""
 "המופעים העתידיים או את כל המופעים שלו?"
 
 #: calendarview.cpp:2371
-#, fuzzy, kde-format
+#, kde-format
 msgid ""
 "The calendar item \"%1\" recurs over multiple dates. Do you want to delete "
 "only the current one on %2 or all its occurrences?"
 msgstr ""
-"פריט לוח־השנה \"%1\" חוזר על עצמו במספר תאריכים. האם ברצונך למחוק רק את "
-"הפריט הנוכחי החל ב%2, רק את החזרות העתידיות, או את כל החזרות?"
+"פריט לוח השנה „%1” חוזר על עצמו על פני מגוון תאריכים. למחוק את הפריט הנוכחי "
+"שב־%2 או את כל המופעים?"
 
 #: calendarview.cpp:2383
 #, kde-format
@@ -1765,6 +1765,8 @@ msgid ""
 "You can enable it through the calendar manager (Settings->Sidebar->Show "
 "Calendar Manager)"
 msgstr ""
+"יצרת מאורע בלוח שנה שסונן החוצה.\n"
+"אפשר להפעיל אותו דרך מנהל לוחות השנה (הגדרות->סרגל צד->הצגת מנהל לוחות שנה)"
 
 #: collectiongeneralpage.cpp:37
 #, kde-format
@@ -2995,12 +2997,14 @@ msgid ""
 "special occasions summary. Typically, these are events with the \"Birthday\" "
 "tag."
 msgstr ""
+"הפעלת האפשרות הזאת תכלול ימי הולדת מלוח השנה שלך בתקציר המאורעות המיוחדים "
+"הקרובים. בדרך כלל אלו אירועים עם התגית „יום הולדת”."
 
 #. i18n: ectx: property (toolTip), widget (QCheckBox, mShowAnniversariesFromCalBox)
 #: kontactplugin/specialdates/sdsummaryconfig_base.ui:152
 #, kde-format
 msgid "Show anniversaries from your calendar"
-msgstr ""
+msgstr "הצגת ימי שנה מלוח השנה שלך"
 
 #. i18n: ectx: property (whatsThis), widget (QCheckBox, mShowAnniversariesFromCalBox)
 #: kontactplugin/specialdates/sdsummaryconfig_base.ui:155
@@ -3010,6 +3014,8 @@ msgid ""
 "upcoming special occasions summary. Typically, these are events with the "
 "\"Anniversary\" tag."
 msgstr ""
+"הפעלת האפשרות הזאת תכלול ימי שנה מלוח השנה שלך בתקציר המאורעות המיוחדים "
+"הקרובים. בדרך כלל אלו אירועים עם התגית „יום שנה”."
 
 #. i18n: ectx: property (toolTip), widget (QCheckBox, mShowHolidaysFromCalBox)
 #: kontactplugin/specialdates/sdsummaryconfig_base.ui:168
@@ -3025,6 +3031,8 @@ msgid ""
 "special occasions summary. These are events from your configured holiday "
 "region, or events with the \"Holiday\" tag."
 msgstr ""
+"הפעלת האפשרות הזאת תכלול חגים מלוח השנה שלך בתקציר המאורעות המיוחדים "
+"הקרובים. אלו אירועים מאזור החגים המוגדר שלך או אירועים עם התגית „יום הולדת”."
 
 #. i18n: ectx: property (text), widget (QCheckBox, mShowHolidaysFromCalBox)
 #: kontactplugin/specialdates/sdsummaryconfig_base.ui:174
@@ -3269,6 +3277,8 @@ msgid ""
 "Please properly configure at least 1 work day in the Time and Date "
 "preferences."
 msgstr ""
+"לא ניתן להציג את שבוע העבודה כיוון שלא הוגדרו ימי עבודה. נא להגדיר לפחות יום "
+"עבודה 1 בהעדפות השעה והתאריך."
 
 #: prefs/koprefsdialogcolorsandfonts.cpp:43
 #, kde-format
@@ -3621,6 +3631,8 @@ msgid ""
 "You are about to set all preferences to default values. All custom "
 "modifications will be lost."
 msgstr ""
+"הפעולה הזאת תגדיר את כל ההעדפות לערכי ברירת המחדל שלהן. כל הערכים שהוגדרו "
+"עצמאית יאבדו."
 
 #: prefs/kprefsdialog.cpp:869
 #, kde-format
@@ -3682,7 +3694,7 @@ msgstr "להישאל באיזה לוח שנה להשתמש"
 
 #. i18n: ectx: whatsthis, entry (Destination), group (Save Settings)
 #: settings/korganizer.kcfg:30
-#, fuzzy, kde-format
+#, kde-format
 msgid ""
 "Select this option to choose the calendar to be used to record the item each "
 "time you create a new event, to-do or journal entry. This choice is "
@@ -3690,10 +3702,9 @@ msgid ""
 "Kolab server or have to manage multiple accounts using Kontact as a KDE "
 "Kolab client. "
 msgstr ""
-"סמן אפשרות זאת כדי לבחור את המשאב שישמש לשמירת הפריט בכל פעם שתיצור אירוע "
-"חדש, מטלה או רשומת יומן. ברירה זו מומלצת אם בכוונתך להשתמש ביכולות התיקייה "
-"המשותפת של שרת ה־ Kolab או שעליך בנהל מספר חשבונות בעזרת Kontact כלקוח KDE "
-"Kolab."
+"יש לבחור באפשרות הזאת כדי לבחור את לוח השנה לאחסון הפריט עם כל יצירה של "
+"אירוע, מטלה או רשומת יומן חדשים. הבחירה הזאת מומלצת אם התכנון שלך הוא להשתמש "
+"במגוון חשבונות באמצעות Kontact כלקוח Kolab של KDE."
 
 #. i18n: ectx: whatsthis, entry (TimeZoneId), group (Time &amp; Date)
 #: settings/korganizer.kcfg:40
@@ -3726,6 +3737,8 @@ msgid ""
 "Select the first day of each week. Normally, you can ignore this since it is "
 "set in your locale."
 msgstr ""
+"בחירת היום הראשון בכל שבוע. בדרך כלל אפשר להתעלם מזה כי זה מוגדר על ידי "
+"ההגדרות האזוריות שלך."
 
 #. i18n: ectx: label, entry (WorkingHoursStart), group (Time &amp; Date)
 #: settings/korganizer.kcfg:51
@@ -3825,7 +3838,7 @@ msgstr ""
 #: settings/korganizer.kcfg:87
 #, kde-format
 msgid "Show this many days at a time in the Next \"x\" days view"
-msgstr ""
+msgstr "הצגת כמות כזאת של ימים בכל פעם בתצוגת „x” הימים הבאים"
 
 #. i18n: ectx: label, entry (DailyRecur), group (General View)
 #: settings/korganizer.kcfg:92
@@ -3867,7 +3880,7 @@ msgstr ""
 #: settings/korganizer.kcfg:104
 #, kde-format
 msgid "Show to-dos instead of events when in Todo View"
-msgstr ""
+msgstr "הצגת מטלות במקום אירועים בתצוגת מטלות"
 
 #. i18n: ectx: whatsthis, entry (HighlightTodos), group (General View)
 #: settings/korganizer.kcfg:105
@@ -3883,7 +3896,7 @@ msgstr ""
 #: settings/korganizer.kcfg:110
 #, kde-format
 msgid "Show journals instead of events when in Journal View"
-msgstr ""
+msgstr "הצגת יומנים במקום אירועים בתצוגת יומן"
 
 #. i18n: ectx: whatsthis, entry (HighlightJournals), group (General View)
 #: settings/korganizer.kcfg:111
@@ -3899,7 +3912,7 @@ msgstr ""
 #: settings/korganizer.kcfg:116
 #, kde-format
 msgid "Week numbers select a work week when in work week mode"
-msgstr ""
+msgstr "מספרי השבועות בוחרים מספר שבוע כאשר נמצאים במצב שבוע עבודה"
 
 #. i18n: ectx: whatsthis, entry (WeekNumbersShowWork), group (General View)
 #: settings/korganizer.kcfg:117
@@ -3908,6 +3921,8 @@ msgid ""
 "Check this box to select a working week when clicking on the Date "
 "Navigator's week numbers, or uncheck it to choose the whole week."
 msgstr ""
+"יש לסמן את התיבה הזאת כדי לבחור שבוע עבודה בלחיצה על מספרי השבוע בתאריכון, "
+"או לבטל את הסימון כדי לבחור את השבוע כולו."
 
 #. i18n: ectx: label, entry, group (Agenda View)
 #: settings/korganizer.kcfg:125
@@ -3922,12 +3937,14 @@ msgid ""
 "Select the height of the hour rows in the agenda grid, in pixels. Increasing "
 "this value will make each row in the agenda grid taller."
 msgstr ""
+"בחירת גובה שורות השעה ברשת לוח השנה, בפיקסלים. הגדלת הערך הזה תגביה את גובה "
+"השורה ברשת סדר היום."
 
 #. i18n: ectx: tooltip, entry, group (Agenda View)
 #: settings/korganizer.kcfg:127
 #, kde-format
 msgid "Set the height (in pixels) for an hour in the agenda grid"
-msgstr ""
+msgstr "נא להגדיר את הגובה (בפיקסלים) לשעה ברשת סדר היום"
 
 #. i18n: ectx: label, entry (EnableAgendaItemIcons), group (Agenda View)
 #: settings/korganizer.kcfg:134
@@ -4018,15 +4035,15 @@ msgstr "טווח הזמנים הנבחר בתצוגת סדר היום מפעיל
 
 #. i18n: ectx: whatsthis, entry (SelectionStartsEditor), group (Agenda View)
 #: settings/korganizer.kcfg:163
-#, fuzzy, kde-format
+#, kde-format
 msgid ""
 "Check this box to start the event editor automatically when you select a "
 "time range in the daily and weekly view. To select a time range, drag the "
 "mouse from the start time to the end time of the event you are about to plan."
 msgstr ""
-"סמן תיבה זו על־מנת להפעיל את עורך האירוע באופן אוטומטי כאשר אתה בוחר טווח "
-"זמנים בתצוגה היומית או השבועית. כדי לבחור טווח זמנים, גרור את העכבר מזמן "
-"ההתחלה לזמן הסיום של אירוע שברצונך לתכנן."
+"יש לסמן את התיבה הזאת כדי להתחיל את עורך האירועים אוטומטית בעת בחירת טווח "
+"זמן בתצוגה היומית והשבועית. כדי לבחור את טווח הזמן, יש לגרור את העכבר מזמן "
+"ההתחלה עד זמן הסיום של האירוע המתוכנן."
 
 #. i18n: ectx: tooltip, entry (SelectionStartsEditor), group (Agenda View)
 #: settings/korganizer.kcfg:164
@@ -4065,7 +4082,7 @@ msgstr ""
 msgid ""
 "Draw agenda items with their tag color inside and calendar color for their "
 "border"
-msgstr ""
+msgstr "לצייר פריטי סדר יום עם צבע התגית שלהם בפנים ואת צבע לוח השנה למסגרת"
 
 #. i18n: ectx: label, entry, group (Agenda View)
 #. i18n: ectx: label, entry, group (Month View)
@@ -4113,14 +4130,14 @@ msgstr ""
 #: settings/korganizer.kcfg:184
 #, kde-format
 msgid "Draw agenda items using their tag color for the inside and border"
-msgstr ""
+msgstr "ציור פריטי סדר יום באמצעות צבע התגית שלהם לחלק הפנימי והמסגרת"
 
 #. i18n: ectx: label, entry, group (Agenda View)
 #. i18n: ectx: label, entry, group (Month View)
 #: settings/korganizer.kcfg:187 settings/korganizer.kcfg:277
 #, kde-format
 msgid "Only calendar"
-msgstr "לוח־שנה בלבד"
+msgstr "לוח שנה בלבד"
 
 #. i18n: ectx: whatsthis, entry, group (Agenda View)
 #: settings/korganizer.kcfg:188
@@ -4135,7 +4152,7 @@ msgstr ""
 #: settings/korganizer.kcfg:189
 #, kde-format
 msgid "Draw agenda items using their calendar color for the inside and border"
-msgstr ""
+msgstr "ציור פריטי סדר יום באמצעות צבע לוח השנה שלהם לחלק הפנימי והמסגרת"
 
 #. i18n: ectx: whatsthis, entry (ColorBusyDaysEnabled), group (Agenda View)
 #: settings/korganizer.kcfg:196
@@ -4151,7 +4168,7 @@ msgstr ""
 #: settings/korganizer.kcfg:200
 #, kde-format
 msgid "Multiple Calendar Display"
-msgstr "תצוגה מרובת לוחות־שנה"
+msgstr "תצוגה מרובת לוחות שנה"
 
 #. i18n: ectx: label, entry (AgendaViewCalendarDisplay), group (Agenda View)
 #: settings/korganizer.kcfg:203
@@ -4166,6 +4183,8 @@ msgid ""
 "Select the \"Merge all calendars into one view\" option if you would like "
 "all your calendars to be shown together in one agenda view."
 msgstr ""
+"יש לבחור באפשרות „מיזוג כל לוחות השנה לתצוגה אחת” כדי שכל לוחות השנה שלך "
+"יופיעו יחד בתצוגת סדר יום אחידה."
 
 #. i18n: ectx: tooltip, entry (AgendaViewCalendarDisplay), group (Agenda View)
 #: settings/korganizer.kcfg:205
@@ -4186,6 +4205,8 @@ msgid ""
 "Select the \"Show calendars side by side\" option if you would like to see "
 "two calendars at once, in a side-by-side view."
 msgstr ""
+"יש לבחור באפשרות „הצגת לוחות שנה זה לצד זה” כדי ששני לוחות שנה יופיעו בבת־"
+"אחת, בתצוגה עם שני צדדים אחד ליד השנה."
 
 #. i18n: ectx: tooltip, entry (AgendaViewCalendarDisplay), group (Agenda View)
 #: settings/korganizer.kcfg:210
@@ -4306,7 +4327,7 @@ msgstr ""
 msgid ""
 "Draw month items with their tag color inside and calendar color for their "
 "border"
-msgstr ""
+msgstr "לצייר פריטי חודש עם צבע התגית שלהם בפנים ואת צבע לוח השנה למסגרת"
 
 #. i18n: ectx: tooltip, entry, group (Month View)
 #: settings/korganizer.kcfg:269
@@ -4314,7 +4335,7 @@ msgstr ""
 msgid ""
 "Draw month items with their calendar color inside and tag color for their "
 "border"
-msgstr ""
+msgstr "לצייר פריטי חודש עם צבע לוח השנה שלהם בפנים ואת צבע התגית כמסגרת"
 
 #. i18n: ectx: whatsthis, entry, group (Month View)
 #: settings/korganizer.kcfg:273
@@ -4329,7 +4350,7 @@ msgstr ""
 #: settings/korganizer.kcfg:274
 #, kde-format
 msgid "Draw month items using their tag color for the inside and border"
-msgstr ""
+msgstr "ציור פריטי חודש באמצעות צבע התגית שלהם לחלק הפנימי והמסגרת"
 
 #. i18n: ectx: whatsthis, entry, group (Month View)
 #: settings/korganizer.kcfg:278
@@ -4344,13 +4365,13 @@ msgstr ""
 #: settings/korganizer.kcfg:279
 #, kde-format
 msgid "Draw month items using their calendar color for the inside and border"
-msgstr ""
+msgstr "ציור פריטי חודש באמצעות צבע לוח השנה שלהם לחלק הפנימי והמסגרת"
 
 #. i18n: ectx: label, entry, group (Todo View)
 #: settings/korganizer.kcfg:289
 #, kde-format
 msgid "Always display completed to-dos at the bottom of the list"
-msgstr ""
+msgstr "תמיד להציג מטלות שהושלמו בתחתית הרשימה"
 
 #. i18n: ectx: tooltip, entry, group (Todo View)
 #: settings/korganizer.kcfg:290
@@ -4358,7 +4379,7 @@ msgstr ""
 msgid ""
 "Completed to-dos are displayed at the bottom of the list, regardless of "
 "priority"
-msgstr ""
+msgstr "מטלות שהסתיימו תוצגנה בתחתית הרשימה, ללא תלות בעדיפות שלהן"
 
 #. i18n: ectx: whatsthis, entry, group (Todo View)
 #: settings/korganizer.kcfg:291
@@ -4367,6 +4388,8 @@ msgid ""
 "Check this box if you want all completed to-dos to be always grouped at the "
 "bottom of the to-do list."
 msgstr ""
+"יש לסמן את התיבה הזאת כדי שכל המטלות שהושלמו תמיד תקובצנה יחדיו בתחתית רשימת "
+"המטלות."
 
 #. i18n: ectx: label, entry, group (Todo View)
 #: settings/korganizer.kcfg:296
@@ -4403,7 +4426,7 @@ msgstr "הצגת מטלות ברשימה שטוחה"
 #: settings/korganizer.kcfg:304
 #, kde-format
 msgid "Display to-dos as a flat list instead of a hierarchical tree"
-msgstr ""
+msgstr "הצגת מטלות ברשימה שטוחה במקום בעץ היררכי"
 
 #. i18n: ectx: whatsthis, entry, group (Todo View)
 #: settings/korganizer.kcfg:305
@@ -4495,6 +4518,8 @@ msgid ""
 "When you have an all day event marked as busy, you can have a different "
 "agenda or month view background color for that day. Select the color here."
 msgstr ""
+"כשיש לך אירועי יום שלם שמסומנים במצב עסוק, איכולים להיות מספר צבעי רקע תצוגת "
+"סדר יום או חודש ליום הזה. ניתן לבחור את הצבע כאן."
 
 #. i18n: ectx: label, entry, group (Colors)
 #. i18n: ectx: label, entry, group (Theme/Month view)
@@ -4743,15 +4768,14 @@ msgstr "שם:"
 
 #. i18n: ectx: property (whatsThis), widget (QCheckBox, mRecurringCheck)
 #: ui/filteredit_base.ui:121
-#, fuzzy, kde-format
+#, kde-format
 msgid ""
 "Select this option if you do not want to show recurring events and to-dos in "
 "your views. Daily and weekly recurring items may take a lot of space, so it "
 "might be handy to hide them."
 msgstr ""
-"בחר באפשרות זאת אם אין ברצונך להציג מטלות ואירועים החוזרים על עצמם. פריטים "
-"החוזרים על עצמם בכל יום ובכל שבוע עלולים לתפוס שטח רב, כך שהסתרתם עשויה "
-"להיות מועילה."
+"יש לבחור באפשרות הזאת שלא יוצגו אירועים ומטלות חוזרים בתצוגות שלך. פריטים "
+"במחזוריות יומית ושבועית יכולים לתפוס מקום רב, לכן לפעמים כדאי להסתיר אותם."
 
 #. i18n: ectx: property (text), widget (QCheckBox, mRecurringCheck)
 #: ui/filteredit_base.ui:124
@@ -4834,16 +4858,13 @@ msgstr "תגיות"
 
 #. i18n: ectx: property (whatsThis), widget (QRadioButton, mCatHideCheck)
 #: ui/filteredit_base.ui:272
-#, fuzzy, kde-format
-#| msgid ""
-#| "When this option is enabled, this filter will show all items which do "
-#| "<i>not</i> contain the selected categories."
+#, kde-format
 msgid ""
 "When this option is chosen, this filter will show all items which do <i>not</"
 "i> contain any of the selected tags."
 msgstr ""
-"כאשר אפשרות זאת פעילה, מסנן זה יציג את כל הפריטים ש<i>אינם</i> נכללים "
-"בקטגוריות הנבחרות."
+"כאשר אפשרות זאת נבחרת, מסנן זה יציג את כל הפריטים ש<i>אינם</i> נכללים באף "
+"אחת מהתגיות הנבחרות."
 
 #. i18n: ectx: property (text), widget (QRadioButton, mCatHideCheck)
 #: ui/filteredit_base.ui:275
@@ -5109,16 +5130,17 @@ msgstr "יש להגדיר את זה כדי לקבל user@domain.ifb במקום u
 
 #. i18n: ectx: property (whatsThis), widget (QCheckBox, fullDomainRetrieval)
 #: ui/kogroupwareprefspage.ui:385
-#, fuzzy, kde-format
+#, kde-format
 msgid ""
 "Check this box to download a free/busy file in the format \"user@domain.ifb"
 "\" (for example joe@company.com.ifb). Otherwise, it will download a free/"
 "busy file in the format user.ifb (for example joe.ifb). Ask the server "
 "Administrator if you are not sure about how to configure this option."
 msgstr ""
-"סמן תיבה זאת על־מנת להוריד את קובץ נתוני פנוי/עסוק בתבנית \"user@domain.ifb"
-"\" (למשל joe@company.com.ifb). אחרת, קובץ נתוני פנוי/עסוק יהיה בתבנית user."
-"ifb (למשל joe.ifb). שאל את מנהל השרת אם אינך בטוח כיצד להגדיר אפשרות זאת."
+"יש לסמן את התיבה הזאת כדי להוריד את קובץ פנוי/עסוק בתבנית „user@domain."
+"ifb” (למשל: israel@israeli.org.ifb). אחרת קובץ הפנוי/עסוק שירד יהיה בתבנית "
+"user.ifb (למשל: joe.ifb). כדאי להתייעץ עם הנהלת השרת במקרה של ספק בנוגע "
+"להגדרת האפשרות הזאת."
 
 #. i18n: ectx: property (text), widget (QCheckBox, fullDomainRetrieval)
 #: ui/kogroupwareprefspage.ui:388
