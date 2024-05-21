@@ -18,7 +18,7 @@ msgstr ""
 "Project-Id-Version: korganizer\n"
 "Report-Msgid-Bugs-To: https://bugs.kde.org\n"
 "POT-Creation-Date: 2024-05-16 00:39+0000\n"
-"PO-Revision-Date: 2024-05-18 15:49+0300\n"
+"PO-Revision-Date: 2024-05-19 11:13+0300\n"
 "Last-Translator: Yaron Shahrabani <sh.yaron@gmail.com>\n"
 "Language-Team: צוות התרגום של KDE ישראל\n"
 "Language: he\n"
@@ -4075,6 +4075,9 @@ msgid ""
 "drawn in the color of its calendar.  Please use the Colors and Fonts "
 "configuration page for setting these colors."
 msgstr ""
+"יש לבחור באפשרות „תגית בפנים, לוח שנה בחוץ” כדי לצייר את פריטי לוח השנה "
+"באמצעות צבע התגית שמוקצה להם, כאשר מסגרת הפריט תצויר בצבע לוח השנה שלו. נא "
+"להשתמש בעמוד ההגדרות צבעים וגופנים כדי להגדיר את הצבעים האלה."
 
 #. i18n: ectx: tooltip, entry, group (Agenda View)
 #: settings/korganizer.kcfg:174
@@ -4101,6 +4104,9 @@ msgid ""
 "drawn in the color of its tag.  Please use the Colors and Fonts "
 "configuration page for setting these colors."
 msgstr ""
+"יש לבחור באפשרות לוח שנה בפנים, תגית בחוץ” כדי לצייר את פריטי לוח השנה "
+"באמצעות צבע לוח השנה שמוקצה להם, כאשר מסגרת הפריט תצויר בצבע התגית שלו נא "
+"להשתמש בעמוד ההגדרות צבעים וגופנים כדי להגדיר את הצבעים האלה."
 
 #. i18n: ectx: tooltip, entry, group (Agenda View)
 #: settings/korganizer.kcfg:179
@@ -4125,6 +4131,9 @@ msgid ""
 "(both inside and border) using the color of their associated tag.  Please "
 "use the Colors and Fonts configuration page for setting these colors."
 msgstr ""
+"יש לבחור באפשרות „תגית בלבד” כדי לצייר פריטי לוח שנה (פנימית ומסגרת) עם צבעי "
+"התגית המשויכת להם. נא להשתמש בעמוד ההגדרות צבעים וגופנים כדי להגדיר את "
+"הצבעים האלה."
 
 #. i18n: ectx: tooltip, entry, group (Agenda View)
 #: settings/korganizer.kcfg:184
@@ -4147,6 +4156,9 @@ msgid ""
 "(both inside and border) using the color of their calendar. Please use the "
 "Colors and Fonts configuration page for setting these colors."
 msgstr ""
+"יש לבחור באפשרות לוח שנה בלבד” כדי לצייר פריטי לוח שנה (פנימית ומסגרת) עם "
+"צבעי לוח השנה שלהם. נא להשתמש בעמוד ההגדרות צבעים וגופנים כדי להגדיר את "
+"הצבעים האלה."
 
 #. i18n: ectx: tooltip, entry, group (Agenda View)
 #: settings/korganizer.kcfg:189
@@ -4430,11 +4442,13 @@ msgstr "הצגת מטלות ברשימה שטוחה במקום בעץ היררכ
 
 #. i18n: ectx: whatsthis, entry, group (Todo View)
 #: settings/korganizer.kcfg:305
-#, fuzzy, kde-format
+#, kde-format
 msgid ""
 "Check this box if you want to see all your to-dos in a flat list instead of "
 "being arranged in a hierarchical tree."
-msgstr "בחר באפשרות זו אם ברצונך להציג שניות בקו־הזמן הנוכחי."
+msgstr ""
+"יש לסמן את התיבה הזאת כדי להציג את כל המטלות שלך ברשימה שטוחה במקום שתסודרנה "
+"באופן היררכי."
 
 #. i18n: ectx: label, entry, group (Todo View)
 #: settings/korganizer.kcfg:310
@@ -4444,12 +4458,12 @@ msgstr "תיעוד משימות שהושלמו בתור רשומות ליומן"
 
 #. i18n: ectx: whatsthis, entry, group (Todo View)
 #: settings/korganizer.kcfg:311
-#, fuzzy, kde-format
+#, kde-format
 msgid ""
 "Check this box to record the completion of a to-do in a new entry of your "
 "journal automatically."
 msgstr ""
-"סמן תיבה זו על־מנת לאחסן  באופן אוטומטי את השלמת המטלות ברשומה חדשה ביומנך."
+"יש לסמן את התיבה הזאת כדי לתעד השלמת מטלה ברשומה חדשה ביומן שלך אוטומטית."
 
 #. i18n: ectx: label, entry, group (Colors)
 #. i18n: ectx: label, entry, group (Theming)
@@ -4570,15 +4584,15 @@ msgstr "סרגל השעות"
 
 #. i18n: ectx: whatsthis, entry, group (Fonts)
 #: settings/korganizer.kcfg:366
-#, fuzzy, kde-format
+#, kde-format
 msgid ""
 "Press this button to configure the time bar font. The time bar is the widget "
 "that shows the hours in the agenda view. This button will open the \"Select "
 "Font\" dialog, allowing you to choose the hour font for the time bar."
 msgstr ""
-"לחץ על כפתור זה על־מנת להגדיר את גופן סרגל הזמן. סרגל הזמן הוא פריט־התצוגה "
-"שמראה את השעות בתצוגת סדר־היום. כפתור זה פותח את תיבת השיחה &quot;בחר "
-"גופן&quot;, ומאפשר לבחור גופן עבור השעה בסרגל הזמן."
+"לחיצה על הכפתור הזה תאפשר להגדיר את גופן סרגל הזמן. סרגל הזמן הוא הווידג׳ט "
+"שמציג את השעות בתצוגת סדר היום. הכפתור הזה יפתח את החלונית „בחירת גופן”, "
+"שמאפשר לך לבחור את גופן השעה לסרגל השעות."
 
 #. i18n: ectx: label, entry, group (Fonts)
 #: settings/korganizer.kcfg:370
@@ -4920,14 +4934,14 @@ msgstr "פ&רסום"
 
 #. i18n: ectx: property (text), widget (QLabel, TextLabel1)
 #: ui/kogroupwareprefspage.ui:60
-#, fuzzy, kde-format
+#, kde-format
 msgid ""
 "By publishing Free/Busy information, you allow others to take your calendar "
 "into account when inviting you for a meeting. Only the times you have "
 "already busy are published, not why they are busy."
 msgstr ""
-"על ידי פרסום פרטי פנוי/עסוק, לאחרים מותר לקחת בחשבון את הלוח הזמנים שלך כאשר "
-"הם מזמינים אותך לפגישה. רק הזמן בו עסוק בו מתפרסם, לא הסיבה."
+"פרסום פרטי פנוי/עסוק מאפשר לאחרים להתחשב בלוח השנה שלך כשמזמינים אותך "
+"לפגישות. רק הזמנים שבהם אין לך פנאי מפורסמים, בלי הסיבה לכך."
 
 #. i18n: ectx: property (whatsThis), widget (QCheckBox, publishEnable)
 #: ui/kogroupwareprefspage.ui:72
@@ -5034,7 +5048,7 @@ msgstr "סיסמה:"
 #. i18n: ectx: property (whatsThis), widget (QLabel, textLabel3)
 #: ui/kogroupwareprefspage.ui:258 ui/kogroupwareprefspage.ui:279
 #: ui/kogroupwareprefspage.ui:428 ui/kogroupwareprefspage.ui:476
-#, fuzzy, kde-format
+#, kde-format
 msgid ""
 "Enter the login information relative to your account on the server here.\n"
 "\n"
@@ -5042,10 +5056,11 @@ msgid ""
 "default your UID would be your email address on the Kolab2 server but it may "
 "also be different. In the last case enter your UID."
 msgstr ""
-"הזן כאן את מידע ההתחברות המתייחס לחשבונך בשרת.\n"
-"בפרט עבור שרת Kolab2: רשום את המזהה הייחודי שלך (UID). ברירה המחדל עבור "
-"המזהה הייחודי שלך יהיה כתובת הדוא\"ל שלך בשרת ה־ Kolab2 או הוא עשוי גם להיות "
-"שונה מכך. במקרה זה עליך להזין את המזהה."
+"נא למלא כאן את פרטי הכניסה למערכת ביחס לחשבון שלך לשרת.\n"
+"\n"
+"התייחסות נקודתית לשרת Kolab2: ה־UID (Unique IDentifier - מזהה ייחודי) שלך "
+"רשום. כברירת מחדל ה־UID שלך יהיה כתובת הדוא״ל שלך בשרת ה־Kolab2 אך זה לא "
+"חייב להיות ככה. אם המקרה האחרון תקף יש למלא את ה־UID שלך."
 
 #. i18n: ectx: property (text), widget (QLabel, TextLabel6)
 #: ui/kogroupwareprefspage.ui:261
