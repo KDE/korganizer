@@ -57,7 +57,9 @@ target_link_libraries(korganizer
     KF6::WindowSystem
     ${korganizer_userfeedback_LIB}
     )
-
+if(TARGET KF6::IconThemes)
+    target_link_libraries(korganizer KF6::IconThemes)
+endif()
 install(TARGETS
     korganizer ${KDE_INSTALL_TARGETS_DEFAULT_ARGS}
     )
