@@ -51,13 +51,13 @@ NavigatorBar::NavigatorBar(QWidget *parent)
     mMonth->setPopupMode(QToolButton::InstantPopup);
     mMonth->setAutoRaise(true);
     mMonth->setFont(tfont);
-    mMonth->setToolTip(i18n("Select a month"));
+    mMonth->setToolTip(i18nc("@info:tooltip", "Select a month"));
 
     // Create year button
     mYear->setPopupMode(QToolButton::InstantPopup);
     mYear->setAutoRaise(true);
     mYear->setFont(tfont);
-    mYear->setToolTip(i18n("Select a year"));
+    mYear->setToolTip(i18nc("@info:tooltip", "Select a year"));
 
     // set up control frame layout
     auto ctrlLayout = new QHBoxLayout(this);

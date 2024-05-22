@@ -171,7 +171,7 @@ void KDateNavigator::updateDates()
             weeknum.setNum(weeknumstart);
         }
         mWeeknos[i]->setText(weeknum);
-        mWeeknos[i]->setToolTip(i18n("Scroll to week number %1", weeknum));
+        mWeeknos[i]->setToolTip(i18nc("@info:tooltip", "Scroll to week number %1", weeknum));
         mWeeknos[i]->setWhatsThis(
             i18n("Click here to scroll the display to week number %1 "
                  "of the currently displayed year.",
@@ -219,7 +219,7 @@ void KDateNavigator::updateConfig()
         QString dayName = QLocale().dayName(day, QLocale::ShortFormat);
         QString longDayName = QLocale().dayName(day, QLocale::LongFormat);
         mHeadings[i]->setText(dayName);
-        mHeadings[i]->setToolTip(i18n("%1", longDayName));
+        mHeadings[i]->setToolTip(i18nc("@info:tooltip", "%1", longDayName));
         mHeadings[i]->setWhatsThis(i18n("A column header of the %1 dates in the month.", longDayName));
     }
     mDayMatrix->setUpdateNeeded();
