@@ -18,7 +18,7 @@ msgstr ""
 "Project-Id-Version: korganizer\n"
 "Report-Msgid-Bugs-To: https://bugs.kde.org\n"
 "POT-Creation-Date: 2024-05-16 00:39+0000\n"
-"PO-Revision-Date: 2024-05-19 11:13+0300\n"
+"PO-Revision-Date: 2024-05-20 20:30+0300\n"
 "Last-Translator: Yaron Shahrabani <sh.yaron@gmail.com>\n"
 "Language-Team: צוות התרגום של KDE ישראל\n"
 "Language: he\n"
@@ -3787,6 +3787,10 @@ msgid ""
 "Colors configuration page. Look for the \"Busy days background color\" "
 "setting."
 msgstr ""
+"יש לסמן את התיבה הזאת כדי לצבוע את רקע תצוגת החודש בצבע שונה בימים שיש בהם "
+"לפחות אירוע אחד לכל היום שמסומן במצב עסוק. כמו כן, אפשר לשנות את צבע הרקע "
+"לשימוש האפשרות הזאת בעמוד הגדרות הצבעים. יש לחפש את ההגדרה „צבע רקע לימים "
+"עסוקים”."
 
 #. i18n: ectx: label, entry, group (General View)
 #: settings/korganizer.kcfg:73
@@ -4175,6 +4179,10 @@ msgid ""
 "you can change the background color used for this option on the Colors "
 "configuration page. Look for the \"Busy days background color\" setting."
 msgstr ""
+"יש לסמן את התיבה הזאת כדי לצבוע את רקע סדר היום בצבע שונה בימים שיש בהם "
+"לפחות אירוע אחד לכל היום שמסומן במצב עסוק. כמו כן, אפשר לשנות את צבע הרקע "
+"לשימוש האפשרות הזאת בעמוד הגדרות הצבעים. יש לחפש את ההגדרה „צבע רקע לימים "
+"עסוקים”."
 
 #. i18n: ectx: label, entry (AgendaViewCalendarDisplay), group (Agenda View)
 #: settings/korganizer.kcfg:200
@@ -4523,7 +4531,7 @@ msgstr "יש להשתמש בצבע הזה לשורת הזמן הנוכחי (מר
 #: settings/korganizer.kcfg:338
 #, kde-format
 msgid "Busy days background color"
-msgstr "צבע רקע לימים עמוסים"
+msgstr "צבע רקע לימים עסוקים"
 
 #. i18n: ectx: whatsthis, entry (ViewBgBusyColor), group (Colors)
 #: settings/korganizer.kcfg:339
