@@ -14,14 +14,14 @@ msgstr ""
 "Project-Id-Version: korganizer\n"
 "Report-Msgid-Bugs-To: https://bugs.kde.org\n"
 "POT-Creation-Date: 2024-04-12 00:38+0000\n"
-"PO-Revision-Date: 2024-01-02 21:41+0100\n"
+"PO-Revision-Date: 2024-05-22 21:03+0200\n"
 "Last-Translator: Iñigo Salvador Azurmendi <xalba@ni.eus>\n"
 "Language-Team: Basque <kde-i18n-eu@kde.org>\n"
 "Language: eu\n"
 "MIME-Version: 1.0\n"
 "Content-Type: text/plain; charset=UTF-8\n"
 "Content-Transfer-Encoding: 8bit\n"
-"X-Generator: Lokalize 23.08.4\n"
+"X-Generator: Lokalize 24.02.2\n"
 "Plural-Forms: nplurals=2; plural=(n != 1);\n"
 
 #, kde-format
@@ -506,8 +506,8 @@ msgid ""
 "Switches to the Month View, which shows all the events and due to-dos in a "
 "familiar monthly calendar layout."
 msgstr ""
-"Hilabeteko ikuspegira aldatzen du, bertan ekitaldi eta egiteko dauden "
-"zeregin guztiak hilabetekako egutegi antolaera ezagun batean erakusten ditu."
+"Hilabeteko ikuspegira aldatzen du, non ekitaldi eta egiteko dauden zeregin "
+"guztiak hilabetekako egutegi antolaera ezagun batean erakusten ditu."
 
 #: actionmanager.cpp:406
 #, kde-format
@@ -534,8 +534,8 @@ msgid ""
 "one or more days, sorted chronologically.  You can also see the length of "
 "each event in the day timetable."
 msgstr ""
-"Agenda ikuspegira aldatzen du, bertan zure ekitaldiak edo egiteko dauden "
-"zereginak aurkezten ditu, egun baterako edo gehiagorako, kronologikoki "
+"Agenda ikuspegira aldatzen du, non zure ekitaldiak edo egiteko dauden "
+"zereginak aurkezten dituen, egun baterako edo gehiagorako, kronologikoki "
 "antolatuta. Eguneko ordutegian, ekitaldi bakoitzaren luzera ikusteko aukera "
 "duzu."
 
@@ -591,8 +591,8 @@ msgid ""
 "Switches to the To-do List view, which provides a place for you to track "
 "tasks that need to be done."
 msgstr ""
-"Zereginen zerrenda ikuspegira aldatzen du, egin beharreko atazen jarraipena "
-"egiteko leku bat eskaintzen du."
+"Zereginen zerrenda ikuspegira aldatzen du, non egin beharreko atazen "
+"jarraipena egiteko leku bat eskaintzen duen."
 
 #: actionmanager.cpp:437
 #, kde-format
@@ -618,8 +618,8 @@ msgid ""
 "Switches to the Journal View, which provides a place for you to record your "
 "reflections, occurrences or experiences."
 msgstr ""
-"Egunkaria ikuspegira aldatzen du, bertan zure gogoeta, gertaera eta "
-"bizipenak erregistratzeko leku bat ematen du."
+"Egunkari ikuspegira aldatzen du, non zure gogoetak, gertaerak eta bizipenak "
+"erregistratzeko lekua ematen dizun."
 
 #: actionmanager.cpp:447
 #, kde-format
@@ -3017,7 +3017,8 @@ msgid ""
 "region, or events with the \"Holiday\" tag."
 msgstr ""
 "Gaitu aukera hori zure egutegiko jaiegunak hurrengo gertaera berezien "
-"laburpenean sartzeko. \"Jaieguna\" etiketa duten ekitaldiak izan ohi dira."
+"laburpenean sartzeko. Konfiguratuta duzun jaiegun-eskualdeko ekitaldiak "
+"dira, edo \"Jaieguna\" etiketa duten ekitaldiak."
 
 #. i18n: ectx: property (text), widget (QCheckBox, mShowHolidaysFromCalBox)
 #: kontactplugin/specialdates/sdsummaryconfig_base.ui:174
@@ -3657,13 +3658,13 @@ msgstr ""
 #: settings/korganizer.kcfg:22
 #, kde-format
 msgid "New Events, To-dos and Journal Entries Should"
-msgstr "Gertaera, egiteko eta egunkari sarrera berriak daudenean"
+msgstr "Ekitaldi, zeregin eta egunkari-sarrera berriak daudenean"
 
 #. i18n: ectx: label, entry (Destination), group (Save Settings)
 #: settings/korganizer.kcfg:25
 #, kde-format
 msgid "Be added to the default calendar"
-msgstr "Egutegi lehenetsira gehitu"
+msgstr "Egutegi lehenetsira gehitu beharko lirateke"
 
 #. i18n: ectx: whatsthis, entry (Destination), group (Save Settings)
 #: settings/korganizer.kcfg:26
@@ -3679,7 +3680,7 @@ msgstr ""
 #: settings/korganizer.kcfg:29
 #, kde-format
 msgid "Be asked which calendar to use"
-msgstr "Galdetu zein egunkari erabili"
+msgstr "Zein egutegi erabili galdetu beharko luke"
 
 #. i18n: ectx: whatsthis, entry (Destination), group (Save Settings)
 #: settings/korganizer.kcfg:30
@@ -3713,7 +3714,7 @@ msgstr ""
 #: settings/korganizer.kcfg:44
 #, kde-format
 msgid "Weekly start day:"
-msgstr "Astea hasteko eguna:"
+msgstr "Asteko hasiera-eguna:"
 
 #. i18n: ectx: tooltip, entry (WeekStartDay), group (Time &amp; Date)
 #: settings/korganizer.kcfg:45
@@ -3735,7 +3736,7 @@ msgstr ""
 #: settings/korganizer.kcfg:51
 #, kde-format
 msgid "Daily starting hour"
-msgstr "Eguneko hasteko ordua"
+msgstr "Eguneko hasiera-ordua"
 
 #. i18n: ectx: whatsthis, entry (WorkingHoursStart), group (Time &amp; Date)
 #: settings/korganizer.kcfg:52
@@ -3875,9 +3876,9 @@ msgid ""
 "typeface in the Date Navigator, or uncheck it to give more prominence to "
 "other (non weekly recurring) events."
 msgstr ""
-"Hautatu hau asteroko gertaera errepikakorrak dituzten egunak Data "
+"Hautatu hau asteroko ekitaldi errepikakorrak dituzten egunak Data "
 "arakatzailean letra-tipo lodia erabiliz erakusteko, edo desautatu beste "
-"gertaerei (asteroko errepikakorrak ez direnei) garrantzi gehiago emateko."
+"ekitaldiei (asteroko errepikakorrak ez direnei) garrantzi gehiago emateko."
 
 #. i18n: ectx: label, entry (HighlightTodos), group (General View)
 #: settings/korganizer.kcfg:104
@@ -4452,7 +4453,7 @@ msgstr ""
 #: settings/korganizer.kcfg:296
 #, kde-format
 msgid "To-do list view uses full window"
-msgstr "Egitekoen zerrendak leiho osoa erabiltzen du"
+msgstr "Zeregin-zerrendak leiho osoa erabiltzen du"
 
 #. i18n: ectx: tooltip, entry, group (Todo View)
 #: settings/korganizer.kcfg:297
@@ -4620,14 +4621,14 @@ msgstr "Hautatu hemen epemuga gaur duten zereginen kolorea."
 #: settings/korganizer.kcfg:356 settings/korganizer.kcfg:630
 #, kde-format
 msgid "To-do overdue color"
-msgstr "Atzeratutako egiteko burutugabeen kolorea"
+msgstr "Atzeratutako zereginen kolorea"
 
 #. i18n: ectx: whatsthis, entry (TodoOverdueColor), group (Colors)
 #. i18n: ectx: whatsthis, entry, group (Theme/Month view)
 #: settings/korganizer.kcfg:357 settings/korganizer.kcfg:631
 #, kde-format
 msgid "Select the to-do overdue color here."
-msgstr "Hautatu atzeratutako egiteko burutugabeen kolorea."
+msgstr "Hautatu hemen atzeratutako zereginen kolorea."
 
 #. i18n: ectx: label, entry, group (Fonts)
 #: settings/korganizer.kcfg:365
@@ -4883,10 +4884,9 @@ msgid ""
 "as you check it. You can increase or decrease the number of days in the "
 "spinbox."
 msgstr ""
-"Aukera horrek osatutako zein zeregin ezkutatuko diren hautatzeko aukera "
-"ematen dizu. <i>Berehala</i> hautatzen duzunean, egitekoa, markatu bezain "
-"laster ezkutatuko da. Egun kopurua biratze-laukian handitu edo txikiagotu "
-"dezakezu."
+"Aukera horrek osatutako zein zeregin ezkutatu hautatzeko aukera ematen dizu. "
+"<i>Berehala</i> hautatzen duzunean, zeregina, markatu bezain laster "
+"ezkutatuko da. Egun-kopurua biratze-laukian handitu edo txikiagotu dezakezu."
 
 #. i18n: ectx: property (text), widget (QLabel, mCompletedTimeSpanLabel)
 #: ui/filteredit_base.ui:180
@@ -4980,9 +4980,9 @@ msgid ""
 "Only to-dos which have least one attendee will be checked.  If you are not "
 "in the list of attendees the to-do will be hidden."
 msgstr ""
-"Aukera honek beste norbaiti esleitutako zeregin guztiak zure zerrendatik "
-"ezkutatzen ditu. <br>\n"
-"Gutxienez partaide bat duten egitekoak egiaztatuko dira. Partaideen "
+"Aukera honek beste norbaiti esleitutako zeregin guztiak zure "
+"zerrendanezkutatzen ditu.<br>\n"
+"Gutxienez partaide bat duten zereginak egiaztatuko dira. Partaideen "
 "zerrendan ez bazaude zeregina ezkutatuko da."
 
 #. i18n: ectx: property (text), widget (QCheckBox, mHideTodosNotAssignedToMeCheck)
