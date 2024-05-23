@@ -15,7 +15,7 @@ msgid ""
 msgstr ""
 "Project-Id-Version: korganizer\n"
 "Report-Msgid-Bugs-To: https://bugs.kde.org\n"
-"POT-Creation-Date: 2024-05-16 00:39+0000\n"
+"POT-Creation-Date: 2024-05-23 00:39+0000\n"
 "PO-Revision-Date: 2015-02-07 22:17+0100\n"
 "Last-Translator: Bjørn Steensrud <bjornst@skogkatt.homelinux.org>\n"
 "Language-Team: Norwegian Bokmål <l10n-no@lister.huftis.org>\n"
@@ -5639,7 +5639,9 @@ msgid "%1/%2"
 msgstr "%1/%2"
 
 #: widgets/kdatenavigator.cpp:174
-#, kde-format
+#, fuzzy, kde-format
+#| msgid "Scroll to week number %1"
+msgctxt "@info:tooltip"
 msgid "Scroll to week number %1"
 msgstr "Rull til uke nr %1"
 
@@ -5651,7 +5653,9 @@ msgid ""
 msgstr "Trykk her for å rulle visningen til uke %1 i det året som vises nå."
 
 #: widgets/kdatenavigator.cpp:222
-#, kde-format
+#, fuzzy, kde-format
+#| msgid "%1"
+msgctxt "@info:tooltip"
 msgid "%1"
 msgstr "%1"
 
@@ -5771,12 +5775,16 @@ msgstr ""
 "Rull fram til omtrent samme dato i neste år ved å trykke på denne knappen."
 
 #: widgets/navigatorbar.cpp:54
-#, kde-format
+#, fuzzy, kde-format
+#| msgid "Select a month"
+msgctxt "@info:tooltip"
 msgid "Select a month"
 msgstr "Velg en måned"
 
 #: widgets/navigatorbar.cpp:60
-#, kde-format
+#, fuzzy, kde-format
+#| msgid "Select a year"
+msgctxt "@info:tooltip"
 msgid "Select a year"
 msgstr "Velg et år"
 

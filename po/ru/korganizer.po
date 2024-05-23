@@ -17,7 +17,7 @@ msgid ""
 msgstr ""
 "Project-Id-Version: korganizer\n"
 "Report-Msgid-Bugs-To: https://bugs.kde.org\n"
-"POT-Creation-Date: 2024-05-16 00:39+0000\n"
+"POT-Creation-Date: 2024-05-23 00:39+0000\n"
 "PO-Revision-Date: 2024-02-10 14:01+0300\n"
 "Last-Translator: Alexander Yavorsky <kekcuha@gmail.com>\n"
 "Language-Team: Russian <kde-russian@lists.kde.ru>\n"
@@ -5862,7 +5862,9 @@ msgid "%1/%2"
 msgstr "%1-%2"
 
 #: widgets/kdatenavigator.cpp:174
-#, kde-format
+#, fuzzy, kde-format
+#| msgid "Scroll to week number %1"
+msgctxt "@info:tooltip"
 msgid "Scroll to week number %1"
 msgstr "Прокрутить к %1 неделе"
 
@@ -5874,7 +5876,9 @@ msgid ""
 msgstr "Прокрутить экран к %1 неделе отображаемого года."
 
 #: widgets/kdatenavigator.cpp:222
-#, kde-format
+#, fuzzy, kde-format
+#| msgid "%1"
+msgctxt "@info:tooltip"
 msgid "%1"
 msgstr "%1"
 
@@ -5988,12 +5992,16 @@ msgid ""
 msgstr "Прокрутить экран к ближайшему такому же дню следующего года"
 
 #: widgets/navigatorbar.cpp:54
-#, kde-format
+#, fuzzy, kde-format
+#| msgid "Select a month"
+msgctxt "@info:tooltip"
 msgid "Select a month"
 msgstr "Выбрать месяц"
 
 #: widgets/navigatorbar.cpp:60
-#, kde-format
+#, fuzzy, kde-format
+#| msgid "Select a year"
+msgctxt "@info:tooltip"
 msgid "Select a year"
 msgstr "Выбрать год"
 

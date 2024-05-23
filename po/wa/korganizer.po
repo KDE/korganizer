@@ -6,7 +6,7 @@ msgid ""
 msgstr ""
 "Project-Id-Version: korganizer\n"
 "Report-Msgid-Bugs-To: https://bugs.kde.org\n"
-"POT-Creation-Date: 2024-05-16 00:39+0000\n"
+"POT-Creation-Date: 2024-05-23 00:39+0000\n"
 "PO-Revision-Date: 2013-03-24 10:49+0100\n"
 "Last-Translator: Jean Cayron <jean.cayron@base.be>\n"
 "Language-Team: Walloon <linux-wa@walon.org>\n"
@@ -5776,9 +5776,11 @@ msgid "%1/%2"
 msgstr "%1/%2"
 
 #: widgets/kdatenavigator.cpp:174
-#, kde-format
+#, fuzzy, kde-format
+#| msgid "Print &week"
+msgctxt "@info:tooltip"
 msgid "Scroll to week number %1"
-msgstr ""
+msgstr "Rexhe li &samwinne"
 
 #: widgets/kdatenavigator.cpp:176
 #, kde-format
@@ -5788,7 +5790,9 @@ msgid ""
 msgstr ""
 
 #: widgets/kdatenavigator.cpp:222
-#, kde-format
+#, fuzzy, kde-format
+#| msgid "%1"
+msgctxt "@info:tooltip"
 msgid "%1"
 msgstr "%1"
 
@@ -5912,14 +5916,19 @@ msgid ""
 msgstr ""
 
 #: widgets/navigatorbar.cpp:54
-#, kde-format
+#, fuzzy, kde-format
+#| msgctxt "@item:inlistbox no timezone selected"
+#| msgid "[No selection]"
+msgctxt "@info:tooltip"
 msgid "Select a month"
-msgstr ""
+msgstr "[Nou tchoes]"
 
 #: widgets/navigatorbar.cpp:60
-#, kde-format
+#, fuzzy, kde-format
+#| msgid "New Calendar"
+msgctxt "@info:tooltip"
 msgid "Select a year"
-msgstr ""
+msgstr "Novea calindrî"
 
 #: widgets/navigatorbar.cpp:109
 #, kde-format
@@ -5976,12 +5985,6 @@ msgstr ""
 #~| msgid "Use holiday region:"
 #~ msgid "Use holiday regions:"
 #~ msgstr "Eployî payis po les condjîs:"
-
-#, fuzzy
-#~| msgctxt "@item:inlistbox no timezone selected"
-#~| msgid "[No selection]"
-#~ msgid "Selection"
-#~ msgstr "[Nou tchoes]"
 
 #, fuzzy
 #~| msgid "Date && Time"
@@ -7668,11 +7671,6 @@ msgstr ""
 #~| msgid "Changing Recurring Item"
 #~ msgid "Print daily recurring items"
 #~ msgstr "Candjî l' cayet recurint"
-
-#, fuzzy
-#~| msgid "Print &week"
-#~ msgid "Print week numbers"
-#~ msgstr "Rexhe li &samwinne"
 
 #~ msgctxt "starttime - endtime summary"
 #~ msgid "%1-%2 %3"

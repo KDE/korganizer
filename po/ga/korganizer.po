@@ -6,7 +6,7 @@ msgid ""
 msgstr ""
 "Project-Id-Version: kdepim/korganizer.po\n"
 "Report-Msgid-Bugs-To: https://bugs.kde.org\n"
-"POT-Creation-Date: 2024-05-16 00:39+0000\n"
+"POT-Creation-Date: 2024-05-23 00:39+0000\n"
 "PO-Revision-Date: 2004-12-03 14:52-0500\n"
 "Last-Translator: Kevin Scannell <kscanne@gmail.com>\n"
 "Language-Team: Irish <gaeilge-gnulinux@lists.sourceforge.net>\n"
@@ -5681,9 +5681,11 @@ msgid "%1/%2"
 msgstr "%1/%2"
 
 #: widgets/kdatenavigator.cpp:174
-#, kde-format
+#, fuzzy, kde-format
+#| msgid "Print week numbers"
+msgctxt "@info:tooltip"
 msgid "Scroll to week number %1"
-msgstr ""
+msgstr "Priontáil uimhreacha na seachtainí"
 
 #: widgets/kdatenavigator.cpp:176
 #, kde-format
@@ -5693,7 +5695,9 @@ msgid ""
 msgstr ""
 
 #: widgets/kdatenavigator.cpp:222
-#, kde-format
+#, fuzzy, kde-format
+#| msgid "%1"
+msgctxt "@info:tooltip"
 msgid "%1"
 msgstr "%1"
 
@@ -5809,12 +5813,16 @@ msgid ""
 msgstr ""
 
 #: widgets/navigatorbar.cpp:54
-#, kde-format
+#, fuzzy, kde-format
+#| msgid "Select a month"
+msgctxt "@info:tooltip"
 msgid "Select a month"
 msgstr "Roghnaigh mí"
 
 #: widgets/navigatorbar.cpp:60
-#, kde-format
+#, fuzzy, kde-format
+#| msgid "Select a year"
+msgctxt "@info:tooltip"
 msgid "Select a year"
 msgstr "Roghnaigh bliain"
 
@@ -7404,9 +7412,6 @@ msgstr "%1"
 
 #~ msgid "Exclude private items"
 #~ msgstr "Ná cuir imeachtaí príobháideacha san áireamh"
-
-#~ msgid "Print week numbers"
-#~ msgstr "Priontáil uimhreacha na seachtainí"
 
 #~ msgid "This printing style does not have any configuration options."
 #~ msgstr "Níl aon roghanna cumraíochta ag an stíl phriontála seo."

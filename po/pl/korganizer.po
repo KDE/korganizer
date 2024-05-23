@@ -1,5 +1,5 @@
 # translation of korganizer.po to
-# Version: $Revision: 1680149 $
+# Version: $Revision: 1680631 $
 # translated by Krzysztof Jasiutowicz <kpjas@priv.onet.pl>
 # contains his updates from 26.01.1999
 # Krzysztof Lichota <lichota@mimuw.edu.pl>, 2002, 2005, 2006.
@@ -13,7 +13,7 @@ msgid ""
 msgstr ""
 "Project-Id-Version: korganizer\n"
 "Report-Msgid-Bugs-To: https://bugs.kde.org\n"
-"POT-Creation-Date: 2024-05-16 00:39+0000\n"
+"POT-Creation-Date: 2024-05-23 00:39+0000\n"
 "PO-Revision-Date: 2024-01-07 11:58+0100\n"
 "Last-Translator: Łukasz Wojniłowicz <lukasz.wojnilowicz@gmail.com>\n"
 "Language-Team: Polish <kde-i18n-doc@kde.org>\n"
@@ -5879,7 +5879,9 @@ msgid "%1/%2"
 msgstr "%1/%2"
 
 #: widgets/kdatenavigator.cpp:174
-#, kde-format
+#, fuzzy, kde-format
+#| msgid "Scroll to week number %1"
+msgctxt "@info:tooltip"
 msgid "Scroll to week number %1"
 msgstr "Przewiń do tygodnia numer %1"
 
@@ -5891,7 +5893,9 @@ msgid ""
 msgstr "Kliknij by przewinąć ekran do tygodnia numer %1 bieżącego roku."
 
 #: widgets/kdatenavigator.cpp:222
-#, kde-format
+#, fuzzy, kde-format
+#| msgid "%1"
+msgctxt "@info:tooltip"
 msgid "%1"
 msgstr "%1"
 
@@ -6011,12 +6015,16 @@ msgstr ""
 "przybliżeniu)."
 
 #: widgets/navigatorbar.cpp:54
-#, kde-format
+#, fuzzy, kde-format
+#| msgid "Select a month"
+msgctxt "@info:tooltip"
 msgid "Select a month"
 msgstr "Wybierz miesiąc"
 
 #: widgets/navigatorbar.cpp:60
-#, kde-format
+#, fuzzy, kde-format
+#| msgid "Select a year"
+msgctxt "@info:tooltip"
 msgid "Select a year"
 msgstr "Wybierz rok"
 

@@ -6,7 +6,7 @@ msgid ""
 msgstr ""
 "Project-Id-Version: korganizer\n"
 "Report-Msgid-Bugs-To: https://bugs.kde.org\n"
-"POT-Creation-Date: 2024-05-16 00:39+0000\n"
+"POT-Creation-Date: 2024-05-23 00:39+0000\n"
 "PO-Revision-Date: 2008-07-21 16:18+0700\n"
 "Last-Translator: Thanomsub Noppaburana <donga.nb@gmail.com>\n"
 "Language-Team: Thai <thai-l10n@googlegroups.com>\n"
@@ -5917,6 +5917,7 @@ msgstr "%1/%2"
 #: widgets/kdatenavigator.cpp:174
 #, fuzzy, kde-format
 #| msgid "Print week &numbers"
+msgctxt "@info:tooltip"
 msgid "Scroll to week number %1"
 msgstr "พิมพ์หมายเลขสัปดาห์"
 
@@ -5930,6 +5931,7 @@ msgstr ""
 #: widgets/kdatenavigator.cpp:222
 #, fuzzy, kde-format
 #| msgid "%1%"
+msgctxt "@info:tooltip"
 msgid "%1"
 msgstr "%1%"
 
@@ -6053,13 +6055,16 @@ msgid ""
 msgstr ""
 
 #: widgets/navigatorbar.cpp:54
-#, kde-format
+#, fuzzy, kde-format
+#| msgid "Select a month"
+msgctxt "@info:tooltip"
 msgid "Select a month"
 msgstr "เลือกเดือน"
 
 #: widgets/navigatorbar.cpp:60
 #, fuzzy, kde-format
 #| msgid "Select a month"
+msgctxt "@info:tooltip"
 msgid "Select a year"
 msgstr "เลือกเดือน"
 

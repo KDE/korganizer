@@ -6,7 +6,7 @@ msgid ""
 msgstr ""
 "Project-Id-Version: korganizer\n"
 "Report-Msgid-Bugs-To: https://bugs.kde.org\n"
-"POT-Creation-Date: 2024-05-16 00:39+0000\n"
+"POT-Creation-Date: 2024-05-23 00:39+0000\n"
 "PO-Revision-Date: 2021-10-18 13:48+0200\n"
 "Last-Translator: Prof. Dr. Eduard Werner <e.werner@rz.uni-leipzig.de>\n"
 "Language-Team: Upper Sorbian\n"
@@ -5382,6 +5382,7 @@ msgstr ""
 
 #: widgets/kdatenavigator.cpp:174
 #, kde-format
+msgctxt "@info:tooltip"
 msgid "Scroll to week number %1"
 msgstr ""
 
@@ -5394,6 +5395,7 @@ msgstr ""
 
 #: widgets/kdatenavigator.cpp:222
 #, kde-format
+msgctxt "@info:tooltip"
 msgid "%1"
 msgstr ""
 
@@ -5507,12 +5509,15 @@ msgid ""
 msgstr ""
 
 #: widgets/navigatorbar.cpp:54
-#, kde-format
+#, fuzzy, kde-format
+#| msgid "Selection"
+msgctxt "@info:tooltip"
 msgid "Select a month"
-msgstr ""
+msgstr "Wuzwolenje"
 
 #: widgets/navigatorbar.cpp:60
 #, fuzzy, kde-format
+msgctxt "@info:tooltip"
 msgid "Select a year"
 msgstr "Kategorije"
 
@@ -5560,9 +5565,6 @@ msgstr ""
 
 #~ msgid "Boolean"
 #~ msgstr "Boolean"
-
-#~ msgid "Selection"
-#~ msgstr "Wuzwolenje"
 
 #~ msgid "Date & Time"
 #~ msgstr "Datum a &čas"

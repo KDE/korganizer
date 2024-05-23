@@ -7,7 +7,7 @@ msgid ""
 msgstr ""
 "Project-Id-Version: korganizer\n"
 "Report-Msgid-Bugs-To: https://bugs.kde.org\n"
-"POT-Creation-Date: 2024-05-16 00:39+0000\n"
+"POT-Creation-Date: 2024-05-23 00:39+0000\n"
 "PO-Revision-Date: 2007-02-28 14:24+0100\n"
 "Last-Translator: Bozidar Proevski <bobibobi@freemail.com.mk>\n"
 "Language-Team: Macedonian <mkde-l10n@lists.sourceforge.net>\n"
@@ -5618,9 +5618,11 @@ msgid "%1/%2"
 msgstr "%1/%2"
 
 #: widgets/kdatenavigator.cpp:174
-#, kde-format
+#, fuzzy, kde-format
+#| msgid "Print &week"
+msgctxt "@info:tooltip"
 msgid "Scroll to week number %1"
-msgstr ""
+msgstr "Испечати &седмица"
 
 #: widgets/kdatenavigator.cpp:176
 #, kde-format
@@ -5630,7 +5632,9 @@ msgid ""
 msgstr ""
 
 #: widgets/kdatenavigator.cpp:222
-#, kde-format
+#, fuzzy, kde-format
+#| msgid "%1"
+msgctxt "@info:tooltip"
 msgid "%1"
 msgstr "%1"
 
@@ -5751,13 +5755,16 @@ msgid ""
 msgstr ""
 
 #: widgets/navigatorbar.cpp:54
-#, kde-format
+#, fuzzy, kde-format
+#| msgid "Select a month"
+msgctxt "@info:tooltip"
 msgid "Select a month"
 msgstr "Изберете месец"
 
 #: widgets/navigatorbar.cpp:60
 #, fuzzy, kde-format
 #| msgid "Select a month"
+msgctxt "@info:tooltip"
 msgid "Select a year"
 msgstr "Изберете месец"
 
@@ -7677,11 +7684,6 @@ msgstr "%1"
 #~| msgid "Exclude holidays"
 #~ msgid "Exclude private items"
 #~ msgstr "Исклучи празници"
-
-#, fuzzy
-#~| msgid "Print &week"
-#~ msgid "Print week numbers"
-#~ msgstr "Испечати &седмица"
 
 #~ msgid "This printing style does not have any configuration options."
 #~ msgstr "Овој стил за печатење нема опции за конфигурирање."

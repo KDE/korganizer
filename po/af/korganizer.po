@@ -6,7 +6,7 @@ msgid ""
 msgstr ""
 "Project-Id-Version: korganizer VERSION\n"
 "Report-Msgid-Bugs-To: https://bugs.kde.org\n"
-"POT-Creation-Date: 2024-05-16 00:39+0000\n"
+"POT-Creation-Date: 2024-05-23 00:39+0000\n"
 "PO-Revision-Date: 2002-11-07 11:37+0200\n"
 "Last-Translator: WEB-Translator <http://kde.af.org.za>\n"
 "Language-Team: AFRIKAANS <AF@lia.org.za>\n"
@@ -5447,6 +5447,7 @@ msgstr ""
 
 #: widgets/kdatenavigator.cpp:174
 #, fuzzy, kde-format
+msgctxt "@info:tooltip"
 msgid "Scroll to week number %1"
 msgstr "Besig om te druk"
 
@@ -5459,6 +5460,7 @@ msgstr ""
 
 #: widgets/kdatenavigator.cpp:222
 #, fuzzy, kde-format
+msgctxt "@info:tooltip"
 msgid "%1"
 msgstr "%1 %"
 
@@ -5576,11 +5578,13 @@ msgstr ""
 
 #: widgets/navigatorbar.cpp:54
 #, fuzzy, kde-format
+msgctxt "@info:tooltip"
 msgid "Select a month"
 msgstr "Kies Modus"
 
 #: widgets/navigatorbar.cpp:60
 #, fuzzy, kde-format
+msgctxt "@info:tooltip"
 msgid "Select a year"
 msgstr "Kies Modus"
 

@@ -7,7 +7,7 @@ msgid ""
 msgstr ""
 "Project-Id-Version: kdepim\n"
 "Report-Msgid-Bugs-To: https://bugs.kde.org\n"
-"POT-Creation-Date: 2024-05-16 00:39+0000\n"
+"POT-Creation-Date: 2024-05-23 00:39+0000\n"
 "PO-Revision-Date: 2009-06-08 01:08+0000\n"
 "Last-Translator: Vilson Gjeci <vilsongjeci@gmail.com>\n"
 "Language-Team: Albanian <sq@li.org>\n"
@@ -5488,6 +5488,7 @@ msgstr "%1/%2"
 
 #: widgets/kdatenavigator.cpp:174
 #, kde-format
+msgctxt "@info:tooltip"
 msgid "Scroll to week number %1"
 msgstr ""
 
@@ -5499,7 +5500,9 @@ msgid ""
 msgstr ""
 
 #: widgets/kdatenavigator.cpp:222
-#, kde-format
+#, fuzzy, kde-format
+#| msgid "%1"
+msgctxt "@info:tooltip"
 msgid "%1"
 msgstr "%1"
 
@@ -5615,13 +5618,16 @@ msgstr ""
 
 #: widgets/navigatorbar.cpp:54
 #, kde-format
+msgctxt "@info:tooltip"
 msgid "Select a month"
 msgstr ""
 
 #: widgets/navigatorbar.cpp:60
-#, kde-format
+#, fuzzy, kde-format
+#| msgid "Default Calendar"
+msgctxt "@info:tooltip"
 msgid "Select a year"
-msgstr ""
+msgstr "Kalendari i Parazgjedhur"
 
 #: widgets/navigatorbar.cpp:109
 #, kde-format

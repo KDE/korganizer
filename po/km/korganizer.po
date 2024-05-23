@@ -8,7 +8,7 @@ msgid ""
 msgstr ""
 "Project-Id-Version: korganizer\n"
 "Report-Msgid-Bugs-To: https://bugs.kde.org\n"
-"POT-Creation-Date: 2024-05-16 00:39+0000\n"
+"POT-Creation-Date: 2024-05-23 00:39+0000\n"
 "PO-Revision-Date: 2012-07-09 10:04+0700\n"
 "Last-Translator: Khoem Sokhem <khoemsokhem@khmeros.info>\n"
 "Language-Team: Khmer\n"
@@ -5988,7 +5988,9 @@ msgid "%1/%2"
 msgstr "%1/%2"
 
 #: widgets/kdatenavigator.cpp:174
-#, kde-format
+#, fuzzy, kde-format
+#| msgid "Scroll to week number %1"
+msgctxt "@info:tooltip"
 msgid "Scroll to week number %1"
 msgstr "រមូរ​ទៅ​លេខ​សប្ដាហ៍ %1"
 
@@ -6000,7 +6002,9 @@ msgid ""
 msgstr "ចុច​ទីនេះ ដើម្បីរមូរ​ការ​បង្ហាញ​ទៅ​លេខ​សប្ដាហ៍ %1 នៃ​ឆ្នាំ​ដែល​បាន​បង្ហាញ​បច្ចុប្បន្ន ។"
 
 #: widgets/kdatenavigator.cpp:222
-#, kde-format
+#, fuzzy, kde-format
+#| msgid "%1"
+msgctxt "@info:tooltip"
 msgid "%1"
 msgstr "%1"
 
@@ -6116,12 +6120,16 @@ msgid ""
 msgstr "ចុច​ប៊ូតុង​នេះ​ដើម្បី​រមូរ​ការ​បង្ហាញ​ទៅ​ថ្ងៃ​ប្រហាក់ប្រហែល​ដូច​គ្នា​នៃ​ឆ្នាំ​ក្រោយ"
 
 #: widgets/navigatorbar.cpp:54
-#, kde-format
+#, fuzzy, kde-format
+#| msgid "Select a month"
+msgctxt "@info:tooltip"
 msgid "Select a month"
 msgstr "ជ្រើស​ខែ​មួយ"
 
 #: widgets/navigatorbar.cpp:60
-#, kde-format
+#, fuzzy, kde-format
+#| msgid "Select a year"
+msgctxt "@info:tooltip"
 msgid "Select a year"
 msgstr "ជ្រើស​ឆ្នាំ"
 

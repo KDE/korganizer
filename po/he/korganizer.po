@@ -17,8 +17,8 @@ msgid ""
 msgstr ""
 "Project-Id-Version: korganizer\n"
 "Report-Msgid-Bugs-To: https://bugs.kde.org\n"
-"POT-Creation-Date: 2024-05-16 00:39+0000\n"
-"PO-Revision-Date: 2024-05-20 20:30+0300\n"
+"POT-Creation-Date: 2024-05-23 00:39+0000\n"
+"PO-Revision-Date: 2024-05-22 21:50+0300\n"
 "Last-Translator: Yaron Shahrabani <sh.yaron@gmail.com>\n"
 "Language-Team: צוות התרגום של KDE ישראל\n"
 "Language: he\n"
@@ -1757,6 +1757,8 @@ msgid ""
 "You created an incidence in a calendar that is currently filtered out.\n"
 "On the left sidebar, enable it in the calendar manager to see the incidence."
 msgstr ""
+"יצרת מאורע בלוח שנה שהוחרג על ידי הסינון.\n"
+"בסרגל הצד הימני, יש להפעיל אותו במנהל לוחות השנה כדי לראות את המאורע."
 
 #: calendarview.cpp:2808
 #, kde-format
@@ -2047,10 +2049,10 @@ msgstr "תוצאות חיפוש"
 msgctxt "@label"
 msgid "%1 match"
 msgid_plural "%1 matches"
-msgstr[0] ""
-msgstr[1] ""
-msgstr[2] ""
-msgstr[3] ""
+msgstr[0] "תוצאה"
+msgstr[1] "שתי תוצאות"
+msgstr[2] "%1 תוצאות"
+msgstr[3] "%1 תוצאות"
 
 #: koapp.cpp:63
 #, kde-format
@@ -3254,6 +3256,8 @@ msgid ""
 "Calendar files or urls. Unless -i or -m is explicitly specified, the user "
 "will be asked whether to import or merge"
 msgstr ""
+"קובצי לוחות שנה או כתובות. אלא אם ‎-i או ‎-m צוינו במפורש, תופיע שאלה למשתמש "
+"האם לייבא או למזג"
 
 #: korganizer_options.h:28
 #, kde-format
@@ -3820,6 +3824,8 @@ msgid ""
 "Check this box so that to-dos will use tag colors and not colors specific to "
 "their due, due today or overdue state"
 msgstr ""
+"יש לסמן את התיבה הזאת כדי שמטלות תשתמשנה בצבעי תגיות ולא בצבע המסוים למצב "
+"מועד הסיום שלהן, שהסיום הוא היום או שעבר מועד הסיום"
 
 #. i18n: ectx: label, entry, group (General View)
 #: settings/korganizer.kcfg:85
@@ -4238,7 +4244,7 @@ msgstr "הצגת שני לוחות שנה זה לצד זה"
 #: settings/korganizer.kcfg:213
 #, kde-format
 msgid "Switch between views with tabs"
-msgstr "החלפה בין תצוגות עם לשוניות"
+msgstr "החלפה בין תצוגות עם טאבים"
 
 #. i18n: ectx: whatsthis, entry (AgendaViewCalendarDisplay), group (Agenda View)
 #: settings/korganizer.kcfg:214
@@ -4247,6 +4253,8 @@ msgid ""
 "Select \"Switch between views with tabs\" if you would like to alternate "
 "between calendars using the tab key."
 msgstr ""
+"יש לבחור באפשרות „החלפה בין תצוגות עם טאבים” כדי להחליף בין לוחות שנה עם מקש "
+"טאב."
 
 #. i18n: ectx: tooltip, entry (AgendaViewCalendarDisplay), group (Agenda View)
 #: settings/korganizer.kcfg:215
@@ -4365,6 +4373,9 @@ msgid ""
 "(both inside and border) in the color of their associated tag.  Please use "
 "the Colors and Fonts configuration page for setting these colors."
 msgstr ""
+"יש לבחור באפשרות „תגית בלבד” כדי לצייר פריטי לוח שנה (פנימית ומסגרת) בצבעי "
+"התגית המשויכת להם. נא להשתמש בעמוד ההגדרות צבעים וגופנים כדי להגדיר את "
+"הצבעים האלה."
 
 #. i18n: ectx: tooltip, entry, group (Month View)
 #: settings/korganizer.kcfg:274
@@ -4380,6 +4391,9 @@ msgid ""
 "(both inside and border) in the color of their calendar.  Please use the "
 "Colors and Fonts configuration page for setting these colors."
 msgstr ""
+"יש לבחור באפשרות לוח שנה בלבד” כדי לצייר פריטי לוח שנה (פנימית ומסגרת) בצבעי "
+"לוח השנה שלהם. נא להשתמש בעמוד ההגדרות צבעים וגופנים כדי להגדיר את הצבעים "
+"האלה."
 
 #. i18n: ectx: tooltip, entry, group (Month View)
 #: settings/korganizer.kcfg:279
@@ -5631,7 +5645,9 @@ msgid "%1/%2"
 msgstr "%1/%2"
 
 #: widgets/kdatenavigator.cpp:174
-#, kde-format
+#, fuzzy, kde-format
+#| msgid "Scroll to week number %1"
+msgctxt "@info:tooltip"
 msgid "Scroll to week number %1"
 msgstr "גלילה לשבוע מס׳ %1"
 
@@ -5643,7 +5659,9 @@ msgid ""
 msgstr "לחיצה כאן תגלול את התצוגה לשבוע מס׳ %1 בשנה הנוכחית המוצגת."
 
 #: widgets/kdatenavigator.cpp:222
-#, kde-format
+#, fuzzy, kde-format
+#| msgid "%1"
+msgctxt "@info:tooltip"
 msgid "%1"
 msgstr "%1"
 
@@ -5758,12 +5776,16 @@ msgid ""
 msgstr "יש ללחוץ על הכפתור כדי לגלול את התצוגה לאותו היום המשוערך בשנה הבאה"
 
 #: widgets/navigatorbar.cpp:54
-#, kde-format
+#, fuzzy, kde-format
+#| msgid "Select a month"
+msgctxt "@info:tooltip"
 msgid "Select a month"
 msgstr "נא לבחור חודש"
 
 #: widgets/navigatorbar.cpp:60
-#, kde-format
+#, fuzzy, kde-format
+#| msgid "Select a year"
+msgctxt "@info:tooltip"
 msgid "Select a year"
 msgstr "נא לבחור שנה"
 
