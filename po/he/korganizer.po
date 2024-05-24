@@ -18,7 +18,7 @@ msgstr ""
 "Project-Id-Version: korganizer\n"
 "Report-Msgid-Bugs-To: https://bugs.kde.org\n"
 "POT-Creation-Date: 2024-05-23 00:39+0000\n"
-"PO-Revision-Date: 2024-05-22 21:50+0300\n"
+"PO-Revision-Date: 2024-05-23 09:45+0300\n"
 "Last-Translator: Yaron Shahrabani <sh.yaron@gmail.com>\n"
 "Language-Team: צוות התרגום של KDE ישראל\n"
 "Language: he\n"
@@ -1107,10 +1107,10 @@ msgstr "ה&גדרת KOrganizer…"
 #, kde-format
 msgid "1 incidence was imported successfully."
 msgid_plural "%1 incidences were imported successfully."
-msgstr[0] ""
-msgstr[1] ""
-msgstr[2] ""
-msgstr[3] ""
+msgstr[0] "מאורע יובא בהצלחה."
+msgstr[1] "שני מאורעות יובאו בהצלחה."
+msgstr[2] "%1 מאורעות יובאו בהצלחה."
+msgstr[3] "%1 מאורעות יובאו בהצלחה."
 
 #: actionmanager.cpp:846
 #, kde-format
@@ -1732,10 +1732,10 @@ msgstr "0 מטלות שהושלמו נופו."
 msgid "%1 to-do was ignored because it has uncompleted or read-only children."
 msgid_plural ""
 "%1 to-dos were ignored because they have uncompleted or read-only children."
-msgstr[0] ""
-msgstr[1] ""
-msgstr[2] ""
-msgstr[3] ""
+msgstr[0] "מטלה אחת נפסחה כיוון שלא הושלמה או שהיא צאצא לקריאה בלבד."
+msgstr[1] "שתי מטלות נפסחו כיוון שלא הושלמו או שהן צאצאיות לקריאה בלבד."
+msgstr[2] "%1 מטלות נפסחו כיוון שלא הושלמו או שהן צאצאיות לקריאה בלבד."
+msgstr[3] "%1 מטלות נפסחו כיוון שלא הושלמו או שהן צאצאיות לקריאה בלבד."
 
 #: calendarview.cpp:2739 calendarview.cpp:2744
 #, kde-format
@@ -1931,7 +1931,7 @@ msgstr "סרגל כלים של מסננים"
 
 # kde-il: swap right<->left due to --revese
 #: datenavigatorcontainer.cpp:28
-#, fuzzy, kde-format
+#, kde-format
 msgid ""
 "<qt><p>Select the dates you want to display in KOrganizer's main view here. "
 "Hold the mouse button to select more than one day.</p><p>Press the top "
@@ -1939,10 +1939,10 @@ msgid ""
 "shows a week. The number in the left column is the number of the week in the "
 "year. Press it to select the whole week.</p></qt>"
 msgstr ""
-"<qt><p> בחר כאן בתאריך שברצונך להציג בתצוגה הראשי של KOrganizer. החזק בלחצן "
-"העכבר על־מנת לבחור יותר מיום אחד.</p><p> לחץ על הכפתורים העליונים כדי לעיין "
-"בחודשים הקודמים והבאים או בשנים אחרות.</p><p> כל שורה מציגה שבוע. המספר "
-"בעמודה הימנית הוא מספר השבוע בשנה. לחץ עליו כדי לבחור בשבוע כולו.</p></qt>"
+"<qt><p>נא לבחור כאן את התאריכים להצגה בתצוגה הראשית של KOrganizer.יש להחזיק "
+"עם העכבר כדי לבחור יותר מיום.</p><p>לחיצה על הכפתורים העליונים תאפשר לנוע "
+"לחודשים או לשנים הבאות / קודמות.</p><p>כל שורה מציגה שבוע. המספר בעמודה "
+"הימנית הוא מספר השבוע ביחס לשנה. בחירה בו תבחר את כל השבוע.</p></qt>"
 
 #: dialog/filtereditdialog.cpp:31
 #, kde-format
@@ -2701,9 +2701,9 @@ msgstr "יש לסמן את התיבה הזאת כדי לצפות במטלות ש
 
 #. i18n: ectx: property (text), widget (QCheckBox, mHideCompletedBox)
 #: kontactplugin/korganizer/todosummaryconfig_base.ui:145
-#, fuzzy, kde-format
+#, kde-format
 msgid "&Completed"
-msgstr "השלמה"
+msgstr "הו&שלם"
 
 #. i18n: ectx: property (toolTip), widget (QCheckBox, mHideOpenEndedBox)
 #: kontactplugin/korganizer/todosummaryconfig_base.ui:155
@@ -4338,16 +4338,16 @@ msgstr "תצוגת החודש משתמשת בחלון מלא"
 
 #. i18n: ectx: whatsthis, entry, group (Month View)
 #: settings/korganizer.kcfg:254
-#, fuzzy, kde-format
+#, kde-format
 msgid ""
 "Check this box to use the full KOrganizer window when displaying the month "
 "view. If this box is checked, you will gain some space for the monthly view, "
 "but other widgets, such as the date navigator, the item details and the "
 "calendars list, will not be displayed."
 msgstr ""
-"סמן תיבה זו על־מנת לעשות שימוש בחלון KOrganizer מלא בעת תצוגה חודשית. אם "
-"תיבה זו מסומנת, תרוויח שטח תצוגה נוסף עבור תצוגה חודשית, אך פריטי־תצוגה "
-"אחרים, כמו התארכון, פירוט האירועים, ורשימת המשאבים, לא יוצגו."
+"יש לסמן את התיבה הזאת כדי להשתמש בחלון המלא של KOrganizer להצגת תצוגת החודש. "
+"אם התיבה הזאת מסומנת, יתפנה לך מקום לתצוגת החודש, אך וידג׳טים אחרים כגון "
+"תאריכון, פרטי הפריט ורשימת לוחות השנה, לא יוצגו."
 
 #. i18n: ectx: tooltip, entry, group (Month View)
 #: settings/korganizer.kcfg:264
@@ -4439,16 +4439,16 @@ msgstr "הצגת רשימת מטלות בחלון KOrganizer מלא"
 
 #. i18n: ectx: whatsthis, entry, group (Todo View)
 #: settings/korganizer.kcfg:298
-#, fuzzy, kde-format
+#, kde-format
 msgid ""
 "Check this box to use the full KOrganizer window when displaying the to-do "
 "list view. If this box is checked, you will gain some space for the to-do "
 "list view, but other widgets, such as the date navigator, the to-do details "
 "and the calendars list, will not be displayed."
 msgstr ""
-"סמן תיבה זו על־מנת לעשות שימוש בחלון KOrganizer מלא בעת תצוגה של רשימת "
-"המטלות. אם תיבה זו מסומנת, תרוויח שטח תצוגה נוסף לרשימת המטלות, אך פריטי־"
-"תצוגה אחרים, כמו התארכון, פירוט המטלות, ורשימת המשאבים, לא יוצגו."
+"יש לסמן את התיבה הזאת כדי להשתמש בחלון המלא של KOrganizer להצגת תצוגת רשימת "
+"המטלות. אם התיבה הזאת מסומנת, יתפנה לך מקום לתצוגת רשימת המטלות, אך וידג׳טים "
+"אחרים כגון תאריכון, פרטי המטלה ורשימת לוחות השנה, לא יוצגו."
 
 #. i18n: ectx: label, entry, group (Todo View)
 #: settings/korganizer.kcfg:303
@@ -5252,6 +5252,10 @@ msgid ""
 "For example, the search pattern “meet*boss” matches “Meeting with boss”. The "
 "pattern “c?t” would match “cat”, “cot”, and so on."
 msgstr ""
+"אפשר לחקור את השדות השונים כדי לראות אם הם מכילים את תבנית החיפוש: התבנית "
+"„פגיש” תמצא גם את „פגישת התנעה”. יש תמיכה גם בתווי ההכללה „*” (לוכד מספר "
+"כלשהו של תווים) ו־„?” (לוכד תו בודד כלשהו). למשל, תבנית החיפוש „פגיש*מנהלת” "
+"ילכוד את „פגישה עם המנהלת”. התבנית „פ?ח” תלכוד את „פרח”, „פלח” וכן הלאה."
 
 #. i18n: ectx: property (text), widget (QLineEdit, searchEdit)
 #: ui/searchdialog_base.ui:55
@@ -5524,6 +5528,9 @@ msgid ""
 "after it, or end during the date range but start before it, will be excluded "
 "from the search results."
 msgstr ""
+"יש לסמן את התיבה הזאת כדי למצוא אירועים שקוראים לחלוטין בתוך טווח תאריכים. "
+"אירועים שמתחילים במהלך טווח התאריכים אבל מסתיימים לאחריו או מסתיים בטווח "
+"התאריכים אבל מתחילים לפניו, יוחרגו מתוצאות החיפוש."
 
 #. i18n: ectx: property (text), widget (QCheckBox, inclusiveCheck)
 #: ui/searchdialog_base.ui:302
@@ -5645,8 +5652,7 @@ msgid "%1/%2"
 msgstr "%1/%2"
 
 #: widgets/kdatenavigator.cpp:174
-#, fuzzy, kde-format
-#| msgid "Scroll to week number %1"
+#, kde-format
 msgctxt "@info:tooltip"
 msgid "Scroll to week number %1"
 msgstr "גלילה לשבוע מס׳ %1"
@@ -5659,8 +5665,7 @@ msgid ""
 msgstr "לחיצה כאן תגלול את התצוגה לשבוע מס׳ %1 בשנה הנוכחית המוצגת."
 
 #: widgets/kdatenavigator.cpp:222
-#, fuzzy, kde-format
-#| msgid "%1"
+#, kde-format
 msgctxt "@info:tooltip"
 msgid "%1"
 msgstr "%1"
@@ -5776,15 +5781,13 @@ msgid ""
 msgstr "יש ללחוץ על הכפתור כדי לגלול את התצוגה לאותו היום המשוערך בשנה הבאה"
 
 #: widgets/navigatorbar.cpp:54
-#, fuzzy, kde-format
-#| msgid "Select a month"
+#, kde-format
 msgctxt "@info:tooltip"
 msgid "Select a month"
 msgstr "נא לבחור חודש"
 
 #: widgets/navigatorbar.cpp:60
-#, fuzzy, kde-format
-#| msgid "Select a year"
+#, kde-format
 msgctxt "@info:tooltip"
 msgid "Select a year"
 msgstr "נא לבחור שנה"

@@ -1,7 +1,7 @@
 # translation of korganizer.po to Slovenian
 # Translation of korganizer.po to Slovenian
 # Copyright (C) 2001,2002, 2003, 2004, 2005, 2006 Free Software Foundation, Inc.
-# $Id: korganizer.po 1680631 2024-05-23 01:10:42Z scripty $
+# $Id: korganizer.po 1680700 2024-05-24 01:10:57Z scripty $
 # $Source$
 #
 # Roman Maurer <roman.maurer@hermes.si>, 2001.
@@ -15,7 +15,7 @@ msgstr ""
 "Project-Id-Version: korganizer\n"
 "Report-Msgid-Bugs-To: https://bugs.kde.org\n"
 "POT-Creation-Date: 2024-05-23 00:39+0000\n"
-"PO-Revision-Date: 2024-05-16 09:26+0200\n"
+"PO-Revision-Date: 2024-05-23 07:20+0200\n"
 "Last-Translator: Matjaž Jeran <matjaz.jeran@amis.net>\n"
 "Language-Team: Slovenian <lugos-slo@lugos.si>\n"
 "Language: sl\n"
@@ -25,7 +25,7 @@ msgstr ""
 "Plural-Forms: nplurals=4; plural=(n%100==1 ? 1 : n%100==2 ? 2 : n%100==3 || n"
 "%100==4 ? 3 : 0);\n"
 "Translator: Andrej Mernik <andrejm@ubuntu.si>\n"
-"X-Generator: Poedit 3.4.2\n"
+"X-Generator: Poedit 3.4.4\n"
 
 #, kde-format
 msgctxt "NAME OF TRANSLATORS"
@@ -5790,11 +5790,10 @@ msgid "%1/%2"
 msgstr "%1/%2"
 
 #: widgets/kdatenavigator.cpp:174
-#, fuzzy, kde-format
-#| msgid "Scroll to week number %1"
+#, kde-format
 msgctxt "@info:tooltip"
 msgid "Scroll to week number %1"
-msgstr "Premakni se na %1. teden"
+msgstr "Premakni se na teden št. %1"
 
 #: widgets/kdatenavigator.cpp:176
 #, kde-format
@@ -5805,8 +5804,7 @@ msgstr ""
 "Kliknite sem, da se premaknete na %1. teden v trenutno prikazanem letu."
 
 #: widgets/kdatenavigator.cpp:222
-#, fuzzy, kde-format
-#| msgid "%1"
+#, kde-format
 msgctxt "@info:tooltip"
 msgid "%1"
 msgstr "%1"
@@ -5925,15 +5923,13 @@ msgstr ""
 "Kliknite ta gumb, da se premaknete na približno isti dan naslednjega leta"
 
 #: widgets/navigatorbar.cpp:54
-#, fuzzy, kde-format
-#| msgid "Select a month"
+#, kde-format
 msgctxt "@info:tooltip"
 msgid "Select a month"
 msgstr "Izberite mesec"
 
 #: widgets/navigatorbar.cpp:60
-#, fuzzy, kde-format
-#| msgid "Select a year"
+#, kde-format
 msgctxt "@info:tooltip"
 msgid "Select a year"
 msgstr "Izberite leto"
