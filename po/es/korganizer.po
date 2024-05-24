@@ -21,7 +21,7 @@ msgstr ""
 "Project-Id-Version: korganizer\n"
 "Report-Msgid-Bugs-To: https://bugs.kde.org\n"
 "POT-Creation-Date: 2024-04-12 00:38+0000\n"
-"PO-Revision-Date: 2024-05-12 16:32+0200\n"
+"PO-Revision-Date: 2024-05-23 17:21+0200\n"
 "Last-Translator: Eloy Cuadra <ecuadra@eloihr.net>\n"
 "Language-Team: Spanish <kde-l10n-es@kde.org>\n"
 "Language: es\n"
@@ -1928,11 +1928,11 @@ msgid ""
 "year. Press it to select the whole week.</p></qt>"
 msgstr ""
 "<qt><p>Seleccione aquí las fechas que quiera mostrar en la vista principal "
-"de KOrganizer. Mantenga presionado el botón del ratón para seleccionar más "
-"de un día.</p><p>Pulse los botones superiores para navegar a los "
-"siguientes / anteriores meses o años.</p><p>Cada línea muestra una semana. "
-"El número en la columna izquierda es el número de la semana en el año. "
-"Presiónelo para seleccionar una semana entera.</p></qt>"
+"de KOrganizer. Mantenga pulsado el botón del ratón para seleccionar más de "
+"un día.</p><p>Pulse los botones superiores para navegar a los siguientes / "
+"anteriores meses o años.</p><p>Cada línea muestra una semana. El número en "
+"la columna izquierda es el número de la semana en el año. Púlselo para "
+"seleccionar una semana entera.</p></qt>"
 
 #: dialog/filtereditdialog.cpp:31
 #, kde-format
@@ -5793,7 +5793,7 @@ msgstr "%1/%2"
 #: widgets/kdatenavigator.cpp:174
 #, kde-format
 msgid "Scroll to week number %1"
-msgstr "Desplazar hacia la semana número %1"
+msgstr "Desplazar hasta la semana número %1"
 
 #: widgets/kdatenavigator.cpp:176
 #, kde-format
@@ -5801,7 +5801,7 @@ msgid ""
 "Click here to scroll the display to week number %1 of the currently "
 "displayed year."
 msgstr ""
-"Presione aquí para desplazar la pantalla a la semana número %1 del año "
+"Pulse aquí para desplazar la pantalla hasta la semana número %1 del año "
 "mostrado actualmente."
 
 #: widgets/kdatenavigator.cpp:222
@@ -5881,8 +5881,8 @@ msgid ""
 "Click this button to scroll the display to the same approximate day of the "
 "previous year"
 msgstr ""
-"Presione este botón para desplazar la pantalla hacia la misma fecha "
-"aproximada del año anterior"
+"Pulse este botón para desplazar la pantalla hasta la misma fecha aproximada "
+"del año anterior"
 
 #: widgets/navigatorbar.cpp:36
 #, kde-format
@@ -5895,8 +5895,8 @@ msgid ""
 "Click this button to scroll the display to the same approximate date of the "
 "previous month"
 msgstr ""
-"Presione este botón para desplazar la pantalla hacia la misma fecha "
-"aproximada del mes anterior"
+"Pulse este botón para desplazar la pantalla hasta la misma fecha aproximada "
+"del mes anterior"
 
 #: widgets/navigatorbar.cpp:41
 #, kde-format
@@ -5909,8 +5909,8 @@ msgid ""
 "Click this button to scroll the display to the same approximate date of the "
 "next month"
 msgstr ""
-"Presione este botón para desplazar la pantalla hacia la misma fecha "
-"aproximada del mes próximo"
+"Pulse este botón para desplazar la pantalla hasta la misma fecha aproximada "
+"del próximo mes"
 
 #: widgets/navigatorbar.cpp:46
 #, kde-format
@@ -5923,8 +5923,8 @@ msgid ""
 "Click this button to scroll the display to the same approximate day of the "
 "next year"
 msgstr ""
-"Presione este botón para desplazar la pantalla hacia el mismo día aproximado "
-"del año próximo"
+"Pulse este botón para desplazar la pantalla hasta el mismo día aproximado "
+"del próximo año"
 
 #: widgets/navigatorbar.cpp:54
 #, kde-format
