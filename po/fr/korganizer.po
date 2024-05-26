@@ -25,7 +25,7 @@ msgstr ""
 "Project-Id-Version: korganizer\n"
 "Report-Msgid-Bugs-To: https://bugs.kde.org\n"
 "POT-Creation-Date: 2024-05-23 00:39+0000\n"
-"PO-Revision-Date: 2024-05-17 09:09+0200\n"
+"PO-Revision-Date: 2024-05-24 09:10+0200\n"
 "Last-Translator: Xavier Besnard <xavier.besnard@kde.org>\n"
 "Language-Team: French <French <kde-francophone@kde.org>>\n"
 "Language: fr\n"
@@ -5968,11 +5968,10 @@ msgid "%1/%2"
 msgstr "%1/%2"
 
 #: widgets/kdatenavigator.cpp:174
-#, fuzzy, kde-format
-#| msgid "Scroll to week number %1"
+#, kde-format
 msgctxt "@info:tooltip"
 msgid "Scroll to week number %1"
-msgstr "Aller à la semaine numéro %1"
+msgstr "Se déplacer à la semaine numéro %1"
 
 #: widgets/kdatenavigator.cpp:176
 #, kde-format
@@ -5985,8 +5984,7 @@ msgstr ""
 
 # unreviewed-context
 #: widgets/kdatenavigator.cpp:222
-#, fuzzy, kde-format
-#| msgid "%1"
+#, kde-format
 msgctxt "@info:tooltip"
 msgid "%1"
 msgstr "%1"
@@ -6112,18 +6110,16 @@ msgstr ""
 "l'année suivante"
 
 #: widgets/navigatorbar.cpp:54
-#, fuzzy, kde-format
-#| msgid "Select a month"
+#, kde-format
 msgctxt "@info:tooltip"
 msgid "Select a month"
-msgstr "Choisissez un mois"
+msgstr "Sélectionnez un mois"
 
 #: widgets/navigatorbar.cpp:60
-#, fuzzy, kde-format
-#| msgid "Select a year"
+#, kde-format
 msgctxt "@info:tooltip"
 msgid "Select a year"
-msgstr "Choisissez une année"
+msgstr "Sélectionnez une année"
 
 # unreviewed-context
 #: widgets/navigatorbar.cpp:109
