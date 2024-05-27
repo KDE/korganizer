@@ -8,7 +8,7 @@ msgstr ""
 "Project-Id-Version: korganizer\n"
 "Report-Msgid-Bugs-To: https://bugs.kde.org\n"
 "POT-Creation-Date: 2024-04-12 00:38+0000\n"
-"PO-Revision-Date: 2024-05-17 06:24+0100\n"
+"PO-Revision-Date: 2024-05-26 22:24+0200\n"
 "Last-Translator: Oliver Kellogg <olivermkellogg@gmail.com>\n"
 "Language-Team: esperanto <kde-i18n-eo@kde.org>\n"
 "Language: eo\n"
@@ -2065,7 +2065,7 @@ msgstr "&Montri"
 #, kde-format
 msgctxt "@action:inmenu"
 msgid "&Edit..."
-msgstr "&Redakto"
+msgstr "R&edakti..."
 
 #: koeventpopupmenu.cpp:47
 #, kde-format
