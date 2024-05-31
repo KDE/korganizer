@@ -4,7 +4,7 @@ msgstr ""
 "Project-Id-Version: korganizer\n"
 "Report-Msgid-Bugs-To: https://bugs.kde.org\n"
 "POT-Creation-Date: 2024-04-12 00:38+0000\n"
-"PO-Revision-Date: 2024-01-11 21:41+0100\n"
+"PO-Revision-Date: 2024-05-30 18:17+0200\n"
 "Last-Translator: Mincho Kondarev <mkondarev@yahoo.de>\n"
 "Language-Team: Bulgarian <kde-i18n-doc@kde.org>\n"
 "Language: bg\n"
@@ -12,7 +12,7 @@ msgstr ""
 "Content-Type: text/plain; charset=UTF-8\n"
 "Content-Transfer-Encoding: 8bit\n"
 "Plural-Forms: nplurals=2; plural=n != 1;\n"
-"X-Generator: Lokalize 23.08.4\n"
+"X-Generator: Lokalize 24.05.0\n"
 
 #, kde-format
 msgctxt "NAME OF TRANSLATORS"
@@ -22,7 +22,7 @@ msgstr "Минчо Кондарев"
 #, kde-format
 msgctxt "EMAIL OF TRANSLATORS"
 msgid "Your emails"
-msgstr "Your emails"
+msgstr "mkondarev@yahoo.de"
 
 #: aboutdata.cpp:18 kontactplugin/korganizer/journalplugin.cpp:26
 #: kontactplugin/korganizer/korganizerplugin.cpp:42
@@ -1220,9 +1220,9 @@ msgid ""
 "p>"
 msgstr ""
 "<p> Искате ли да обедините този елемент от календара в съществуващ календар "
-"или да го използвате за създаване на чисто нов календар? </p> <p> Ако "
+"или да го използвате за създаване на чисто нов календар? </p><p> Ако "
 "изберете обединяване, ще ви бъде предоставена възможност да изберете целевия "
-"календар . </p> <p> Ако изберете добавяне, автоматично ще се създаде нов "
+"календар . </p><p> Ако изберете добавяне, автоматично ще се създаде нов "
 "календар за вас. </p>"
 
 #: actionmanager.cpp:1656
@@ -1902,12 +1902,12 @@ msgid ""
 "shows a week. The number in the left column is the number of the week in the "
 "year. Press it to select the whole week.</p></qt>"
 msgstr ""
-"<qt> <p> Изберете датите, които искате да се показват в основния изглед на "
+"<qt><p> Изберете датите, които искате да се показват в основния изглед на "
 "KOrganizer тук. Задръжте бутона на мишката, за да изберете повече от един "
-"ден. </p> <p> Натиснете горните бутони, за да прегледате следващия / "
-"предходните месеци или години. </p> <p> Всеки ред показва седмица. Числото в "
+"ден. </p><p> Натиснете горните бутони, за да прегледате следващия / "
+"предходните месеци или години. </p><p> Всеки ред показва седмица. Числото в "
 "лявата колона е номерът на седмицата в годината. Натиснете го, за да "
-"изберете цялата седмица. </p> </qt>"
+"изберете цялата седмица. </p></qt>"
 
 #: dialog/filtereditdialog.cpp:31
 #, kde-format
@@ -5882,133 +5882,3 @@ msgstr "%1"
 msgctxt "4 digit year"
 msgid "%1"
 msgstr "%1"
-
-#~ msgid "Day begins at"
-#~ msgstr "Начало на деня"
-
-#~ msgid ""
-#~ "Enter the start time for events here. This time should be the earliest "
-#~ "time that you use for events, as it will be displayed at the top."
-#~ msgstr ""
-#~ "Начален час за събитията. Събитията ще започват след този начален час и "
-#~ "той ще бъде показан най-отгоре."
-
-#~ msgid "Use holiday regions:"
-#~ msgstr "Използване на регионални празнични дни:"
-
-#~ msgid ""
-#~ "Select which regions you want to use the holidays here. Defined holidays "
-#~ "are shown as non-working days in the date navigator, the agenda view, etc."
-#~ msgstr ""
-#~ "Тук изберете кои региони искате да използвате празниците. Дефинираните "
-#~ "празници се показват като неработни дни в навигатора на датите, изгледа "
-#~ "на дневния ред и т.н."
-
-#~ msgid "Exclude holidays"
-#~ msgstr "Изключване на празниците"
-
-#~ msgid ""
-#~ "Check this box to prevent KOrganizer from marking the working hours on "
-#~ "holidays."
-#~ msgstr ""
-#~ "Ако отметката е включена, работните часове в празничните дни няма да "
-#~ "бъдат маркирани като такива."
-
-#~ msgid "Text"
-#~ msgstr "Текст"
-
-#~ msgid "Numeric Value"
-#~ msgstr "Числова стойност"
-
-#~ msgid "Boolean"
-#~ msgstr "Булево"
-
-#~ msgid "Selection"
-#~ msgstr "Маркирана област"
-
-#~ msgid "Date & Time"
-#~ msgstr "Дата и час"
-
-#~ msgid "Date"
-#~ msgstr "Дата"
-
-#~ msgid "<qt>Do you really want to delete '<b>%1</b>'?</qt>"
-#~ msgstr "<qt> Наистина ли искате да изтриете„ <b> %1 </b> “? </qt>"
-
-#~ msgid "Import Page"
-#~ msgstr "Импортиране на страниа"
-
-#~ msgid "Designer Files"
-#~ msgstr "Дизайнерски файлове"
-
-#~ msgid ""
-#~ "<qt><b>Warning:</b> Qt Designer could not be found. It is probably not "
-#~ "installed. You will only be able to import existing designer files.</qt>"
-#~ msgstr ""
-#~ "<qt> <b> Предупреждение: </b> Qt Designer не можа да бъде намерен. "
-#~ "Вероятно не е инсталиран. Ще можете да импортирате само съществуващи "
-#~ "файлове на дизайнера. </qt>"
-
-#~ msgid "Available Pages"
-#~ msgstr "Налични страници"
-
-#~ msgid "Preview of Selected Page"
-#~ msgstr "Преглед на избраната страница"
-
-#~ msgid ""
-#~ "<qt><p>This section allows you to add your own GUI Elements ('<i>Widgets</"
-#~ "i>') to store your own values into %1. Proceed as described below:</"
-#~ "p><ol><li>Click on '<i>Edit with Qt Designer</i>'</li><li>In the dialog, "
-#~ "select '<i>Widget</i>', then click <i>OK</i></li><li>Add your widgets to "
-#~ "the form</li><li>Save the file in the directory proposed by Qt Designer</"
-#~ "li><li>Close Qt Designer</li></ol><p>In case you already have a designer "
-#~ "file (*.ui) located somewhere on your hard disk, simply choose '<i>Import "
-#~ "Page</i>'</p><p><b>Important:</b> The name of each input widget you place "
-#~ "within the form must start with '<i>X_</i>'; so if you want the widget to "
-#~ "correspond to your custom entry '<i>X-Foo</i>', set the widget's <i>name</"
-#~ "i> property to '<i>X_Foo</i>'.</p><p><b>Important:</b> The widget will "
-#~ "edit custom fields with an application name of %2.  To change the "
-#~ "application name to be edited, set the widget name in Qt Designer.</p></"
-#~ "qt>"
-#~ msgstr ""
-#~ "<qt> <p> Този раздел ви позволява да добавяте свои собствени GUI елементи "
-#~ "('<i> Уиджети </i>'), за да съхранявате собствените си стойности в %1. "
-#~ "Продължете, както е описано по-долу: </p> <ol> <li> Кликнете върху „<i> "
-#~ "Редактиране с Qt Designer </i>“ </li> <li> В диалоговия прозорец изберете "
-#~ "„<i> Уиджети</ i > ', след това щракнете върху <i> Добре</i></li> <li> "
-#~ "Добавете своите уиджети към формуляра </li> <li> Запазете файла в "
-#~ "директорията, предложена от Qt Designer </li> <li> Затворете Qt Designer "
-#~ "</li> </ol> <p> В случай, че вече имате дизайнерски файл (* .ui), "
-#~ "разположен някъде на твърдия ви диск, просто изберете „<i> Импортиране на "
-#~ "страница </i>“ </p > <p> <b> Важно: </b> Името на всеки уиджет за "
-#~ "въвеждане, което поставяте във формуляра, трябва да започва с '<i> X_ </"
-#~ "i>'; така че ако искате уиджета да съответства на вашия персонализиран "
-#~ "запис „<i> X-Foo </i>“, задайте свойството <i> name </i> на уиджета на "
-#~ "„<i> X_Foo </i>“. < /p> <p> <b> Важно: </b> Уиджетът ще редактира "
-#~ "персонализирани полета с име на приложението %2. За да промените името на "
-#~ "приложението, което ще се редактира, задайте името на уиджета в Qt "
-#~ "Designer. </p> </qt>"
-
-#~ msgid "<a href=\"whatsthis:%1\">How does this work?</a>"
-#~ msgstr "<a href=\"whatsthis:%1\"> Как работи това? </a>"
-
-#~ msgid "Delete Page"
-#~ msgstr "Изтриване на страница"
-
-#~ msgid "Import Page..."
-#~ msgstr "Внасяне на страница..."
-
-#~ msgid "Edit with Qt Designer..."
-#~ msgstr "Редактиране с Qt Designer ..."
-
-#~ msgid "Key:"
-#~ msgstr "Ключ:"
-
-#~ msgid "Type:"
-#~ msgstr "Вид:"
-
-#~ msgid "Classname:"
-#~ msgstr "Име на класа:"
-
-#~ msgid "Description:"
-#~ msgstr "Определения:"
