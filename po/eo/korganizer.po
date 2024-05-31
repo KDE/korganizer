@@ -8,7 +8,7 @@ msgstr ""
 "Project-Id-Version: korganizer\n"
 "Report-Msgid-Bugs-To: https://bugs.kde.org\n"
 "POT-Creation-Date: 2024-05-23 00:39+0000\n"
-"PO-Revision-Date: 2024-05-26 22:24+0200\n"
+"PO-Revision-Date: 2024-05-30 07:49+0200\n"
 "Last-Translator: Oliver Kellogg <olivermkellogg@gmail.com>\n"
 "Language-Team: esperanto <kde-i18n-eo@kde.org>\n"
 "Language: eo\n"
@@ -2744,7 +2744,7 @@ msgstr "Marku ĉi tiun skatolon se vi ne volas vidi nefermitajn farojn."
 #: kontactplugin/korganizer/todosummaryconfig_base.ui:161
 #, kde-format
 msgid "&Open-ended (no due date)"
-msgstr "Nelimigita (sen limdato)"
+msgstr "Nelimigita (sen limdat&o)"
 
 #. i18n: ectx: property (toolTip), widget (QCheckBox, mHideUnstartedBox)
 #: kontactplugin/korganizer/todosummaryconfig_base.ui:171
@@ -4919,7 +4919,7 @@ msgstr ""
 #: ui/filteredit_base.ui:180
 #, kde-format
 msgid "Da&ys after completion:"
-msgstr "Tagoj post kompletigo:"
+msgstr "Tagoj post komplet&igo:"
 
 #. i18n: ectx: property (whatsThis), widget (QSpinBox, mCompletedTimeSpan)
 #: ui/filteredit_base.ui:193
@@ -5416,7 +5416,7 @@ msgstr ""
 #: ui/searchdialog_base.ui:108
 #, kde-format
 msgid "To-&dos"
-msgstr "Farendoj"
+msgstr "Faren&doj"
 
 #. i18n: ectx: property (title), widget (QGroupBox, searchGroup)
 #: ui/searchdialog_base.ui:121

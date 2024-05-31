@@ -10,7 +10,7 @@ msgstr ""
 "Project-Id-Version: korganizer\n"
 "Report-Msgid-Bugs-To: https://bugs.kde.org\n"
 "POT-Creation-Date: 2024-05-23 00:39+0000\n"
-"PO-Revision-Date: 2024-04-26 11:02+0200\n"
+"PO-Revision-Date: 2024-05-30 10:50+0200\n"
 "Last-Translator: Vit Pelcak <vpelcak@suse.cz>\n"
 "Language-Team: Czech <kde-i18n-doc@kde.org>\n"
 "Language: cs\n"
@@ -75,7 +75,7 @@ msgstr "Správce"
 #, kde-format
 msgctxt "@info:credit"
 msgid "Reinhold Kainhofer"
-msgstr ""
+msgstr "Reinhold Kainhofer"
 
 #: aboutdata.cpp:31 aboutdata.cpp:32
 #, kde-format
@@ -92,7 +92,7 @@ msgstr "Cornelius Schumacher"
 #, kde-format
 msgctxt "@info:credit"
 msgid "Preston Brown"
-msgstr ""
+msgstr "Preston Brown"
 
 #: aboutdata.cpp:33
 #, kde-format
@@ -114,43 +114,43 @@ msgstr "Vývojář"
 #, kde-format
 msgctxt "@info:credit"
 msgid "Richard Apodaca"
-msgstr ""
+msgstr "Richard Apodaca"
 
 #: aboutdata.cpp:36
 #, kde-format
 msgctxt "@info:credit"
 msgid "Björn Balazs"
-msgstr ""
+msgstr "Björn Balazs"
 
 #: aboutdata.cpp:37
 #, kde-format
 msgctxt "@info:credit"
 msgid "Jan-Pascal van Best"
-msgstr ""
+msgstr "Jan-Pascal van Best"
 
 #: aboutdata.cpp:38
 #, kde-format
 msgctxt "@info:credit"
 msgid "Bertjan Broeksema"
-msgstr ""
+msgstr "Bertjan Broeksema"
 
 #: aboutdata.cpp:39
 #, kde-format
 msgctxt "@info:credit"
 msgid "Laszlo Boloni"
-msgstr ""
+msgstr "Laszlo Boloni"
 
 #: aboutdata.cpp:40
 #, kde-format
 msgctxt "@info:credit"
 msgid "Barry Benowitz"
-msgstr ""
+msgstr "Barry Benowitz"
 
 #: aboutdata.cpp:41
 #, kde-format
 msgctxt "@info:credit"
 msgid "Christopher Beard"
-msgstr ""
+msgstr "Christopher Beard"
 
 #: aboutdata.cpp:42
 #, kde-format
@@ -162,79 +162,79 @@ msgstr "Kalle Dalheimer"
 #, kde-format
 msgctxt "@info:credit"
 msgid "Ian Dawes"
-msgstr ""
+msgstr "Ian Dawes"
 
 #: aboutdata.cpp:44
 #, kde-format
 msgctxt "@info:credit"
 msgid "Thomas Eitzenberger"
-msgstr ""
+msgstr "Thomas Eitzenberger"
 
 #: aboutdata.cpp:45
 #, kde-format
 msgctxt "@info:credit"
 msgid "Neil Hart"
-msgstr ""
+msgstr "Neil Hart"
 
 #: aboutdata.cpp:46
 #, kde-format
 msgctxt "@info:credit"
 msgid "Declan Houlihan"
-msgstr ""
+msgstr "Declan Houlihan"
 
 #: aboutdata.cpp:47
 #, kde-format
 msgctxt "@info:credit"
 msgid "Hans-Jürgen Husel"
-msgstr ""
+msgstr "Hans-Jürgen Husel"
 
 #: aboutdata.cpp:48
 #, kde-format
 msgctxt "@info:credit"
 msgid "Tim Jansen"
-msgstr ""
+msgstr "Tim Jansen"
 
 #: aboutdata.cpp:49
 #, kde-format
 msgctxt "@info:credit"
 msgid "Christian Kirsch"
-msgstr ""
+msgstr "Christian Kirsch"
 
 #: aboutdata.cpp:50
 #, kde-format
 msgctxt "@info:credit"
 msgid "Tobias König"
-msgstr ""
+msgstr "Tobias König"
 
 #: aboutdata.cpp:51
 #, kde-format
 msgctxt "@info:credit"
 msgid "Martin Koller"
-msgstr ""
+msgstr "Martin Koller"
 
 #: aboutdata.cpp:52
 #, kde-format
 msgctxt "@info:credit"
 msgid "Uwe Koloska"
-msgstr ""
+msgstr "Uwe Koloska"
 
 #: aboutdata.cpp:53
 #, kde-format
 msgctxt "@info:credit"
 msgid "Sergio Luis Martins"
-msgstr ""
+msgstr "Sergio Luis Martins"
 
 #: aboutdata.cpp:54
 #, kde-format
 msgctxt "@info:credit"
 msgid "Mike McQuaid"
-msgstr ""
+msgstr "Mike McQuaid"
 
 #: aboutdata.cpp:55
 #, kde-format
 msgctxt "@info:credit"
 msgid "Glen Parker"
-msgstr ""
+msgstr "Glen Parker"
 
 #: aboutdata.cpp:56
 #, kde-format
@@ -246,13 +246,13 @@ msgstr "Dan Pilone"
 #, kde-format
 msgctxt "@info:credit"
 msgid "Roman Rohr"
-msgstr ""
+msgstr "Roman Rohr"
 
 #: aboutdata.cpp:58
 #, kde-format
 msgctxt "@info:credit"
 msgid "Rafał Rzepecki"
-msgstr ""
+msgstr "Rafał Rzepecki"
 
 #: aboutdata.cpp:58
 #, kde-format
@@ -263,61 +263,61 @@ msgstr "Část práce sponzoroval Google jeho Summer of Code 2005"
 #, kde-format
 msgctxt "@info:credit"
 msgid "Don Sanders"
-msgstr ""
+msgstr "Don Sanders"
 
 #: aboutdata.cpp:60
 #, kde-format
 msgctxt "@info:credit"
 msgid "Bram Schoenmakers"
-msgstr ""
+msgstr "Bram Schoenmakers"
 
 #: aboutdata.cpp:61
 #, kde-format
 msgctxt "@info:credit"
 msgid "Günter Schwann"
-msgstr ""
+msgstr "Günter Schwann"
 
 #: aboutdata.cpp:62
 #, kde-format
 msgctxt "@info:credit"
 msgid "Herwin Jan Steehouwer"
-msgstr ""
+msgstr "Herwin Jan Steehouwer"
 
 #: aboutdata.cpp:63
 #, kde-format
 msgctxt "@info:credit"
 msgid "Mario Teijeiro"
-msgstr ""
+msgstr "Mario Teijeiro"
 
 #: aboutdata.cpp:64
 #, kde-format
 msgctxt "@info:credit"
 msgid "Nick Thompson"
-msgstr ""
+msgstr "Nick Thompson"
 
 #: aboutdata.cpp:65
 #, kde-format
 msgctxt "@info:credit"
 msgid "Bo Thorsen"
-msgstr ""
+msgstr "Bo Thorsen"
 
 #: aboutdata.cpp:66
 #, kde-format
 msgctxt "@info:credit"
 msgid "Larry Wright"
-msgstr ""
+msgstr "Larry Wright"
 
 #: aboutdata.cpp:67
 #, kde-format
 msgctxt "@info:credit"
 msgid "Thomas Zander"
-msgstr ""
+msgstr "Thomas Zander"
 
 #: aboutdata.cpp:68
 #, kde-format
 msgctxt "@info:credit"
 msgid "Fester Zigterman"
-msgstr ""
+msgstr "Fester Zigterman"
 
 #: actionmanager.cpp:130
 #, kde-format
@@ -337,7 +337,7 @@ msgstr "Skrýt nabídku"
 #, kde-format
 msgctxt "@action"
 msgid "Import &Calendar…"
-msgstr ""
+msgstr "Importovat kalendář…"
 
 #: actionmanager.cpp:244
 #, kde-format
@@ -362,7 +362,7 @@ msgstr ""
 #: actionmanager.cpp:253
 #, kde-format
 msgid "Get New Calendars…"
-msgstr ""
+msgstr "Získat nové kalendáře…"
 
 #: actionmanager.cpp:254
 #, kde-format
@@ -398,7 +398,7 @@ msgstr "Stažené události budou sloučeny s vaším kalendářem."
 #, kde-format
 msgctxt "@action"
 msgid "Export as &iCalendar…"
-msgstr ""
+msgstr "Exportovat jako &iCalendar…"
 
 #: actionmanager.cpp:306
 #, kde-format
@@ -423,7 +423,7 @@ msgstr ""
 #, kde-format
 msgctxt "@action"
 msgid "Archive O&ld Incidences…"
-msgstr ""
+msgstr "A&rchivovat staré výskyty..."
 
 #: actionmanager.cpp:315
 #, kde-format
@@ -450,7 +450,7 @@ msgstr ""
 #, kde-format
 msgctxt "@action"
 msgid "Pur&ge Completed To-dos"
-msgstr ""
+msgstr "Pročistit dokončené úkol&y"
 
 #: actionmanager.cpp:327
 #, kde-format
@@ -661,7 +661,7 @@ msgstr ""
 #, kde-format
 msgctxt "@action"
 msgid "&Refresh"
-msgstr ""
+msgstr "O&bnovit"
 
 #: actionmanager.cpp:461
 #, kde-format
@@ -848,7 +848,7 @@ msgstr "&Týden"
 #: actionmanager.cpp:566 kodaymatrix.cpp:484
 #, kde-format
 msgid "New E&vent…"
-msgstr ""
+msgstr "No&vá událost…"
 
 #: actionmanager.cpp:567
 #, kde-format
@@ -873,7 +873,7 @@ msgstr ""
 #: actionmanager.cpp:576 kodaymatrix.cpp:485
 #, kde-format
 msgid "New &To-do…"
-msgstr ""
+msgstr "Nový úko&l…"
 
 #: actionmanager.cpp:577
 #, kde-format
@@ -899,12 +899,12 @@ msgstr ""
 #, kde-format
 msgctxt "@action"
 msgid "New Su&b-to-do…"
-msgstr ""
+msgstr "Nový po&dúkol…"
 
 #: actionmanager.cpp:595 kodaymatrix.cpp:486
 #, kde-format
 msgid "New &Journal…"
-msgstr ""
+msgstr "Nový &deník…"
 
 #: actionmanager.cpp:596
 #, kde-format
@@ -927,7 +927,7 @@ msgstr ""
 #: actionmanager.cpp:603
 #, kde-format
 msgid "Configure View…"
-msgstr ""
+msgstr "Nastavit pohled…"
 
 #: actionmanager.cpp:604
 #, kde-format
@@ -962,13 +962,13 @@ msgstr "&Zobrazit"
 #: actionmanager.cpp:618 actionmanager.cpp:1303 actionmanager.cpp:1342
 #, kde-format
 msgid "&Edit…"
-msgstr ""
+msgstr "&Upravit…"
 
 #: actionmanager.cpp:627
 #, kde-format
 msgctxt "@action"
 msgid "&Make Sub-to-do Independent"
-msgstr ""
+msgstr "Učinit podúkol nezávislý&m"
 
 #. i18n( "&Activate Reminder" ), 0,
 #. mCalendarView, SLOT(toggleAlarm()),
@@ -977,7 +977,7 @@ msgstr ""
 #: actionmanager.cpp:639
 #, kde-format
 msgid "&Publish Item Information…"
-msgstr ""
+msgstr "&Publikovat informace o položce…"
 
 #: actionmanager.cpp:646
 #, kde-format
@@ -988,13 +988,13 @@ msgstr "Odeslat po&zvánku účastníkům"
 #, kde-format
 msgctxt "@action"
 msgid "Re&quest Update"
-msgstr ""
+msgstr "Požadovat &aktualizaci"
 
 #: actionmanager.cpp:662
 #, kde-format
 msgctxt "@action"
 msgid "Send &Cancellation to Attendees"
-msgstr ""
+msgstr "Odeslat účastníkům &storno"
 
 #: actionmanager.cpp:670
 #, kde-format
@@ -1011,18 +1011,18 @@ msgstr "P&ožadovat změnu"
 #, kde-format
 msgctxt "@action"
 msgid "&Mail Free Busy Information…"
-msgstr ""
+msgstr "Odeslat informace o aktivitě e&mailem…"
 
 #: actionmanager.cpp:691
 #, kde-format
 msgid "&Send as iCalendar…"
-msgstr ""
+msgstr "&Odeslat jako iCalendar…"
 
 #: actionmanager.cpp:698
 #, kde-format
 msgctxt "@action"
 msgid "&Upload Free Busy Information"
-msgstr ""
+msgstr "Odeslat in&formace o aktivitě"
 
 #: actionmanager.cpp:704
 #, kde-format
@@ -1053,23 +1053,23 @@ msgstr "Zobrazit správce kalendáře"
 #, kde-format
 msgctxt "@action"
 msgid "Configure &Date && Time…"
-msgstr ""
+msgstr "Nastavit &datum a čas…"
 
 #: actionmanager.cpp:753
 #, kde-format
 msgid "Manage View &Filters…"
-msgstr ""
+msgstr "Upravit &filtry pohledů…"
 
 #: actionmanager.cpp:757
 #, kde-format
 msgctxt "@action"
 msgid "Manage T&ags…"
-msgstr ""
+msgstr "Spravovat zn&ačky…"
 
 #: actionmanager.cpp:765
 #, kde-format
 msgid "&Configure KOrganizer…"
-msgstr ""
+msgstr "Nastavit &KOrganizer…"
 
 #: actionmanager.cpp:843
 #, kde-format
@@ -1145,7 +1145,7 @@ msgstr "Zobrazit událo&st"
 #: actionmanager.cpp:1264
 #, kde-format
 msgid "&Edit Event…"
-msgstr ""
+msgstr "&Upravit událost…"
 
 #: actionmanager.cpp:1267
 #, kde-format
@@ -1160,7 +1160,7 @@ msgstr "Z&obrazit úkol"
 #: actionmanager.cpp:1278 kontactplugin/korganizer/todosummarywidget.cpp:321
 #, kde-format
 msgid "&Edit To-do…"
-msgstr ""
+msgstr "&Upravit úkol…"
 
 #: actionmanager.cpp:1281 kontactplugin/korganizer/todosummarywidget.cpp:323
 #, kde-format
@@ -1244,13 +1244,13 @@ msgstr "Importovat kalendář"
 #, kde-format
 msgctxt "@action:button"
 msgid "Merge into existing calendar"
-msgstr ""
+msgstr "Sloučit do stávajícího kalendáře"
 
 #: actionmanager.cpp:1658
 #, kde-format
 msgctxt "@action:button"
 msgid "Add as new calendar"
-msgstr ""
+msgstr "Přidat jako nový kalendář"
 
 #: akonadicollectionview.cpp:285
 #, kde-format
@@ -1280,7 +1280,7 @@ msgstr ""
 #, kde-format
 msgctxt "@info/plain Displayed grayed-out inside the textbox, verb to search"
 msgid "Search…"
-msgstr ""
+msgstr "Hledat…"
 
 #: akonadicollectionview.cpp:495 manageshowcollectionproperties.cpp:76
 #, kde-format
@@ -1292,7 +1292,7 @@ msgstr "Vlastnosti složky kalendáře %1"
 #, kde-format
 msgctxt "@action:inmenu"
 msgid "&Set Folder Color…"
-msgstr ""
+msgstr "Na&stavit barvu složky…"
 
 #: akonadicollectionview.cpp:513
 #, kde-format
@@ -1304,7 +1304,7 @@ msgstr ""
 #, kde-format
 msgctxt "@action:inmenu"
 msgid "Serverside Subscription…"
-msgstr ""
+msgstr "Odběr na serveru…"
 
 #: akonadicollectionview.cpp:563
 #, kde-format
@@ -1476,7 +1476,7 @@ msgstr "KOrganizer - potvrzení"
 #, kde-format
 msgctxt "@action:button"
 msgid "&Dissociate"
-msgstr ""
+msgstr "&Rozdělit"
 
 #: calendarview.cpp:1620
 #, kde-format
@@ -1571,13 +1571,13 @@ msgstr ""
 #, kde-format
 msgctxt "@action:button"
 msgid "Delete Only This"
-msgstr ""
+msgstr "Smazat pouze tuto"
 
 #: calendarview.cpp:2295 calendarview.cpp:2353
 #, kde-format
 msgctxt "@action:button"
 msgid "Delete All"
-msgstr ""
+msgstr "Smazat vše"
 
 #: calendarview.cpp:2326
 #, kde-format
@@ -1948,13 +1948,13 @@ msgstr "Prohlížeč událostí"
 #, kde-format
 msgctxt "@action:button"
 msgid "Edit…"
-msgstr ""
+msgstr "Upravit…"
 
 #: dialog/koeventviewerdialog.cpp:41
 #, kde-format
 msgctxt "@action:button"
 msgid "Show in Context"
-msgstr ""
+msgstr "Zobrazit v kontextu"
 
 #: dialog/searchdialog.cpp:40
 #, kde-format
@@ -2076,13 +2076,13 @@ msgstr "&Smazat"
 #, kde-format
 msgctxt "@action:inmenu"
 msgid "&Print…"
-msgstr ""
+msgstr "&Tisknout…"
 
 #: koeventpopupmenu.cpp:53
 #, kde-format
 msgctxt "@action:inmenu"
 msgid "Print Previe&w…"
-msgstr ""
+msgstr "Ná&hled před tiskem…"
 
 #: koeventpopupmenu.cpp:74
 #, kde-format
@@ -2142,13 +2142,13 @@ msgstr "Přepnou&t upomínku"
 #, kde-format
 msgctxt "@action:inmenu"
 msgid "&Dissociate From Recurrence…"
-msgstr ""
+msgstr "V&yčlenit z opakování…"
 
 #: koeventpopupmenu.cpp:137
 #, kde-format
 msgctxt "@action:inmenu"
 msgid "Send as iCalendar…"
-msgstr ""
+msgstr "Odeslat jako iCalendar…"
 
 #: koeventpopupmenu.cpp:187
 #, kde-format
@@ -2381,7 +2381,7 @@ msgstr[2] "Žádné schůzky nejsou na blízku pro příštích %1 dní"
 #: kontactplugin/korganizer/apptsummarywidget.cpp:240
 #, kde-format
 msgid "&Edit Appointment…"
-msgstr ""
+msgstr "&Upravit schůzku…"
 
 #: kontactplugin/korganizer/apptsummarywidget.cpp:242
 #, kde-format
@@ -2397,7 +2397,7 @@ msgstr "Upravit událost: \"%1\""
 #, kde-format
 msgctxt "@action:inmenu"
 msgid "New Journal…"
-msgstr ""
+msgstr "Nový deník…"
 
 #: kontactplugin/korganizer/journalplugin.cpp:31
 #, kde-format
@@ -2426,7 +2426,7 @@ msgstr[2] " dnů"
 #, kde-format
 msgctxt "@action:inmenu"
 msgid "New Event…"
-msgstr ""
+msgstr "Nová událost..."
 
 #: kontactplugin/korganizer/korganizerplugin.cpp:47
 #, kde-format
@@ -2542,7 +2542,7 @@ msgstr "Následující: %1"
 #, kde-format
 msgctxt "@action:inmenu"
 msgid "New To-do…"
-msgstr ""
+msgstr "Nový úkol…"
 
 #: kontactplugin/korganizer/todoplugin.cpp:43
 #, kde-format
@@ -3552,7 +3552,7 @@ msgstr "Ostatní volby"
 #: prefs/kprefsdialog.cpp:234
 #, kde-format
 msgid "Choose…"
-msgstr ""
+msgstr "Vybrat…"
 
 #: prefs/kprefsdialog.cpp:765
 #, kde-format
@@ -3579,7 +3579,7 @@ msgstr "Nastavuji výchozí předvolby"
 #, kde-format
 msgctxt "@action:button"
 msgid "Reset to Defaults"
-msgstr ""
+msgstr "Obnovit výchozí hodnoty"
 
 #. i18n: ectx: label, entry (Confirm), group (Save Settings)
 #: settings/korganizer.kcfg:15
@@ -5497,7 +5497,7 @@ msgstr "%1/%2"
 #, kde-format
 msgctxt "@info:tooltip"
 msgid "Scroll to week number %1"
-msgstr ""
+msgstr "Přejít na týden číslo %1"
 
 #: widgets/kdatenavigator.cpp:176
 #, kde-format
@@ -5625,13 +5625,13 @@ msgstr ""
 #, kde-format
 msgctxt "@info:tooltip"
 msgid "Select a month"
-msgstr ""
+msgstr "Vyberte měsíc"
 
 #: widgets/navigatorbar.cpp:60
 #, kde-format
 msgctxt "@info:tooltip"
 msgid "Select a year"
-msgstr ""
+msgstr "Vyberte rok"
 
 #: widgets/navigatorbar.cpp:109
 #, kde-format
