@@ -8,7 +8,7 @@ msgstr ""
 "Project-Id-Version: KDE 4.3\n"
 "Report-Msgid-Bugs-To: https://bugs.kde.org\n"
 "POT-Creation-Date: 2024-05-23 00:39+0000\n"
-"PO-Revision-Date: 2024-03-22 10:20+0100\n"
+"PO-Revision-Date: 2024-06-02 22:39+0200\n"
 "Last-Translator: Kristof Kiszel <ulysses@fsf.hu>\n"
 "Language-Team: Hungarian <kde-l10n-hu@kde.org>\n"
 "Language: hu\n"
@@ -16,7 +16,7 @@ msgstr ""
 "Content-Type: text/plain; charset=UTF-8\n"
 "Content-Transfer-Encoding: 8bit\n"
 "Plural-Forms: nplurals=2; plural=(n != 1);\n"
-"X-Generator: Lokalize 24.04.70\n"
+"X-Generator: Lokalize 24.02.2\n"
 
 #, kde-format
 msgctxt "NAME OF TRANSLATORS"
@@ -652,18 +652,16 @@ msgid "&To-do List"
 msgstr "Fela&datlista"
 
 #: actionmanager.cpp:428
-#, fuzzy, kde-format
-#| msgid "To-do List"
+#, kde-format
 msgctxt "@info:status"
 msgid "To-do List View"
-msgstr "Feladatlista"
+msgstr "Feladatlista nézet"
 
 #: actionmanager.cpp:429
-#, fuzzy, kde-format
-#| msgid "Title of the to-do list"
+#, kde-format
 msgctxt "@info:tooltip"
 msgid "Switch to the To-do List View"
-msgstr "A feladatlista címe"
+msgstr "Váltás a feladatlista nézetre"
 
 #: actionmanager.cpp:431
 #, kde-format
@@ -679,18 +677,16 @@ msgid "&Journal"
 msgstr "Nap&ló"
 
 #: actionmanager.cpp:438
-#, fuzzy, kde-format
-#| msgid "Journal entries"
+#, kde-format
 msgctxt "@info:status"
 msgid "Journal View"
-msgstr "Naplóbejegyzések"
+msgstr "Napló nézet"
 
 #: actionmanager.cpp:439
-#, fuzzy, kde-format
-#| msgid "Title of the journal list"
+#, kde-format
 msgctxt "@info:tooltip"
 msgid "Switch to the Journal View"
-msgstr "A naplólista címe"
+msgstr "Váltás a napló nézetre"
 
 #: actionmanager.cpp:441
 #, kde-format
@@ -706,11 +702,10 @@ msgid "Time&line"
 msgstr "Idő&vonal"
 
 #: actionmanager.cpp:448
-#, fuzzy, kde-format
-#| msgid "Time&line"
+#, kde-format
 msgctxt "@info:status"
 msgid "Timeline View"
-msgstr "Idő&vonal"
+msgstr "Idővonal nézet"
 
 #: actionmanager.cpp:449
 #, kde-format
@@ -740,11 +735,10 @@ msgid "Refresh"
 msgstr "Frissítés"
 
 #: actionmanager.cpp:462
-#, fuzzy, kde-format
-#| msgid "Before the End"
+#, kde-format
 msgctxt "@info:tooltip"
 msgid "Refresh the display"
-msgstr "A befejezés előtt"
+msgstr "Frissíti a kijelzőt"
 
 #: actionmanager.cpp:464
 #, kde-format
@@ -760,19 +754,16 @@ msgid "F&ilter"
 msgstr "&Szűrő"
 
 #: actionmanager.cpp:474
-#, fuzzy, kde-format
-#| msgid "Print &incidence"
+#, kde-format
 msgctxt "@info:status"
 msgid "Filter incidences"
-msgstr "&Esemény nyomtatása"
+msgstr "Események szűrése"
 
 #: actionmanager.cpp:475
-#, fuzzy, kde-format
-#| msgctxt "@info:tooltip"
-#| msgid "The reminder is set for this date/time"
+#, kde-format
 msgctxt "@info:tooltip"
 msgid "Filter incidences from the calendar"
-msgstr "Az emlékeztető erre a dátumra/időre van beállítva"
+msgstr "Események szűrése a naptárban"
 
 #: actionmanager.cpp:477
 #, kde-format
@@ -815,26 +806,22 @@ msgid "Today"
 msgstr "Ma"
 
 #: actionmanager.cpp:515
-#, fuzzy, kde-format
-#| msgid "Scroll to Today"
+#, kde-format
 msgctxt "@info:status"
 msgid "Scroll to Today"
 msgstr "Görgetés a mai napra"
 
 #: actionmanager.cpp:516
-#, fuzzy, kde-format
-#| msgid "Scroll to Today"
+#, kde-format
 msgctxt "@info:tooltip"
 msgid "Scroll the view to today"
-msgstr "Görgetés a mai napra"
+msgstr "A nézetet a mai napra görgeti"
 
 #: actionmanager.cpp:517
-#, fuzzy, kde-format
-#| msgctxt "@info:whatsthis"
-#| msgid "Replace the currently selected date with this date."
+#, kde-format
 msgctxt "@info:whatsthis"
 msgid "Scrolls the current view to the today's date."
-msgstr "A kijelölt dátum lecserélése erre."
+msgstr "A jelenlegi nézetet a mai dátumra görgeti."
 
 #: actionmanager.cpp:522
 #, kde-format
@@ -849,18 +836,16 @@ msgid "Back"
 msgstr "Vissza"
 
 #: actionmanager.cpp:524
-#, fuzzy, kde-format
-#| msgid "Scroll Backward"
+#, kde-format
 msgctxt "@info:status"
 msgid "Scroll Backward"
 msgstr "Görgetés vissza"
 
 #: actionmanager.cpp:525
-#, fuzzy, kde-format
-#| msgid "Scroll Backward"
+#, kde-format
 msgctxt "@info:tooltip"
 msgid "Scroll the view backward"
-msgstr "Görgetés vissza"
+msgstr "Visszagörgeti a nézetet"
 
 #: actionmanager.cpp:527
 #, kde-format
@@ -889,11 +874,10 @@ msgid "Scroll Forward"
 msgstr "Görgetés előre"
 
 #: actionmanager.cpp:536
-#, fuzzy, kde-format
-#| msgid "Scroll Forward"
+#, kde-format
 msgctxt "@info:tooltip"
 msgid "Scroll the view forward"
-msgstr "Görgetés előre"
+msgstr "Előregörgeti a nézetet"
 
 #: actionmanager.cpp:538
 #, kde-format
@@ -933,18 +917,16 @@ msgid "New E&vent…"
 msgstr "Új esemény"
 
 #: actionmanager.cpp:567
-#, fuzzy, kde-format
-#| msgid "Create a new Event"
+#, kde-format
 msgctxt "@info:status"
 msgid "Create a new Event"
-msgstr "Új esemény"
+msgstr "Új esemény létrehozása"
 
 #: actionmanager.cpp:568
-#, fuzzy, kde-format
-#| msgid "Create a new Event"
+#, kde-format
 msgctxt "@info:tooltip"
 msgid "Create a new Event"
-msgstr "Új esemény"
+msgstr "Új esemény létrehozása"
 
 #: actionmanager.cpp:570
 #, kde-format
@@ -962,18 +944,16 @@ msgid "New &To-do…"
 msgstr "Új feladat"
 
 #: actionmanager.cpp:577
-#, fuzzy, kde-format
-#| msgid "Create a new To-do"
+#, kde-format
 msgctxt "@info:status"
 msgid "Create a new To-do"
-msgstr "Új feladat"
+msgstr "Új feladat létrehozása"
 
 #: actionmanager.cpp:578
-#, fuzzy, kde-format
-#| msgid "Create a new To-do"
+#, kde-format
 msgctxt "@info:tooltip"
 msgid "Create a new To-do"
-msgstr "Új feladat"
+msgstr "Új feladat létrehozása"
 
 #: actionmanager.cpp:580
 #, kde-format
@@ -998,18 +978,16 @@ msgid "New &Journal…"
 msgstr "Új napló"
 
 #: actionmanager.cpp:596
-#, fuzzy, kde-format
-#| msgid "Create a new Journal"
+#, kde-format
 msgctxt "@info:status"
 msgid "Create a new Journal"
-msgstr "Új naplóbejegyzés"
+msgstr "Új naplóbejegyzés létrehozása"
 
 #: actionmanager.cpp:597
-#, fuzzy, kde-format
-#| msgid "Create a new Journal"
+#, kde-format
 msgctxt "@info:tooltip"
 msgid "Create a new Journal"
-msgstr "Új naplóbejegyzés"
+msgstr "Új naplóbejegyzés létrehozása"
 
 #: actionmanager.cpp:598
 #, kde-format
@@ -1029,18 +1007,16 @@ msgid "Configure"
 msgstr "Beállítás"
 
 #: actionmanager.cpp:605
-#, fuzzy, kde-format
-#| msgid "Configure the view"
+#, kde-format
 msgctxt "@info:status"
 msgid "Configure the view"
 msgstr "A nézet beállítása"
 
 #: actionmanager.cpp:606
-#, fuzzy, kde-format
-#| msgid "Configure the view"
+#, kde-format
 msgctxt "@info:tooltip"
 msgid "Configure the current view"
-msgstr "A nézet beállítása"
+msgstr "A jelenlegi nézet beállítása"
 
 #: actionmanager.cpp:608
 #, kde-format
@@ -1202,20 +1178,16 @@ msgid "Could not add a calendar. Error: %1"
 msgstr "Nem sikerült hozzáadni a naptárt. A hiba: %1"
 
 #: actionmanager.cpp:916
-#, fuzzy, kde-format
-#| msgctxt "@title::window"
-#| msgid "Edit Calendar Filters"
+#, kde-format
 msgctxt "@title:window"
 msgid "Select Calendar File to Open"
-msgstr "Naptárszűrők szerkesztése"
+msgstr "Válassza ki a megnyitandó naptárfájlt"
 
 #: actionmanager.cpp:944
-#, fuzzy, kde-format
-#| msgctxt "@title::window"
-#| msgid "Edit Calendar Filters"
+#, kde-format
 msgctxt "@title:window"
 msgid "Select Calendar File to Import"
-msgstr "Naptárszűrők szerkesztése"
+msgstr "Válassza ki az importálandó naptárfájlt"
 
 #: actionmanager.cpp:975
 #, kde-format
@@ -1238,8 +1210,7 @@ msgid "Unable to save calendar to the file %1."
 msgstr "Nem sikerült elmenteni a naptárt ebbe a fájlba: %1."
 
 #: actionmanager.cpp:1037
-#, fuzzy, kde-format
-#| msgid "Error"
+#, kde-format
 msgctxt "@title:window"
 msgid "Error"
 msgstr "Hiba"
@@ -1309,8 +1280,7 @@ msgstr ""
 "érvénytelenné válhat."
 
 #: actionmanager.cpp:1462
-#, fuzzy, kde-format
-#| msgid "Remove Attachments"
+#, kde-format
 msgctxt "@title:window"
 msgid "Remove Attachments"
 msgstr "Mellékletek eltávolítása"
@@ -1377,19 +1347,16 @@ msgid "Add as new calendar"
 msgstr "Hozzáadás új naptárként"
 
 #: akonadicollectionview.cpp:285
-#, fuzzy, kde-format
-#| msgctxt "@action:inmenu lowest priority"
-#| msgid "9 (lowest)"
+#, kde-format
 msgctxt "@item this is the default calendar"
 msgid "%1 (Offline)"
-msgstr "9 (legalacsonyabb)"
+msgstr "%1 (offline)"
 
 #: akonadicollectionview.cpp:288
-#, fuzzy, kde-format
-#| msgid "Use as &Default Calendar"
+#, kde-format
 msgctxt "@item this is the default calendar"
 msgid "%1 (Default)"
-msgstr "Ez legyen az alapé&rtelmezett naptár"
+msgstr "%1 (alapértelmezett)"
 
 #: akonadicollectionview.cpp:405
 #, fuzzy, kde-format
@@ -1451,22 +1418,19 @@ msgid "Replace Default Calendar?"
 msgstr "Ez legyen az alapé&rtelmezett naptár"
 
 #: akonadicollectionview.cpp:701
-#, fuzzy, kde-format
-#| msgid "Add Calendar"
+#, kde-format
 msgctxt "@title:window"
 msgid "Add Calendar"
 msgstr "Naptár hozzáadása"
 
 #: akonadicollectionview.cpp:743
-#, fuzzy, kde-format
-#| msgid "Do you really want to delete calendar %1?"
+#, kde-format
 msgctxt "@info"
 msgid "Do you really want to delete calendar %1?"
 msgstr "Biztos benne, hogy törölni akarja a(z) %1 naptárt?"
 
 #: akonadicollectionview.cpp:744
-#, fuzzy, kde-format
-#| msgid "Delete Calendar"
+#, kde-format
 msgctxt "@title:window"
 msgid "Delete Calendar"
 msgstr "Naptár törlése"
@@ -1673,11 +1637,9 @@ msgid "Dissociating the occurrence failed."
 msgstr "Az esemény elválasztása nem sikerült."
 
 #: calendarview.cpp:1818
-#, fuzzy, kde-format
-#| msgctxt "@title:tab calendar account settings"
-#| msgid "Calendars"
+#, kde-format
 msgid "iCalendars (*.ics)"
-msgstr "Naptárak"
+msgstr "iCalendar (*.ics)"
 
 #: calendarview.cpp:1827
 #, kde-format
@@ -1685,12 +1647,10 @@ msgid "Do you want to overwrite %1?"
 msgstr "Felül szeretné írni: %1?"
 
 #: calendarview.cpp:1828
-#, fuzzy, kde-format
-#| msgctxt "@title:window"
-#| msgid "Import Calendar"
+#, kde-format
 msgctxt "@title:window"
 msgid "Export Calendar"
-msgstr "Naptár importálása"
+msgstr "Naptár exportálása"
 
 #: calendarview.cpp:1842
 #, kde-format
@@ -1797,10 +1757,9 @@ msgid "Delete &All"
 msgstr "Mind&en törlése"
 
 #: calendarview.cpp:2416 calendarview.cpp:2423
-#, fuzzy, kde-format
-#| msgid "Delete %1"
+#, kde-format
 msgid "Delete \"%1\""
-msgstr "%1 törlése"
+msgstr "„%1” törlése"
 
 #: calendarview.cpp:2453
 #, kde-format
@@ -1821,11 +1780,10 @@ msgid "Delete all completed to-dos from checked calendars?"
 msgstr "Töröli az összes befejezett feladatot a kijelölt naptárakból?"
 
 #: calendarview.cpp:2464
-#, fuzzy, kde-format
-#| msgid "Purge To-dos"
+#, kde-format
 msgctxt "@title:window"
 msgid "Purge To-dos"
-msgstr "A feladatok törlése"
+msgstr "Feladatok törlése"
 
 #: calendarview.cpp:2465
 #, fuzzy, kde-format
@@ -1901,9 +1859,7 @@ msgstr ""
 "megjelenítése)"
 
 #: collectiongeneralpage.cpp:37
-#, fuzzy, kde-format
-#| msgctxt "@title:tab general settings"
-#| msgid "General"
+#, kde-format
 msgctxt "@title:tab General settings for a folder."
 msgid "General"
 msgstr "Általános"
@@ -1924,12 +1880,10 @@ msgid "Enter a name here to set the name of this folder."
 msgstr "Adja meg a naptár tulajdonosának teljes nevét a nyomtatáshoz."
 
 #: collectiongeneralpage.cpp:47
-#, fuzzy, kde-format
-#| msgctxt "filter name"
-#| msgid "Name:"
+#, kde-format
 msgctxt "@label:textbox Name of the folder."
 msgid "&Name:"
-msgstr "Név:"
+msgstr "&Név:"
 
 #: collectiongeneralpage.cpp:50
 #, fuzzy, kde-format
@@ -1960,11 +1914,10 @@ msgstr ""
 "feladatokat szeretne keresni."
 
 #: collectiongeneralpage.cpp:58
-#, fuzzy, kde-format
-#| msgid "Calendar's custom icon"
+#, kde-format
 msgctxt "@option:check"
 msgid "&Use custom icon:"
-msgstr "Naptár egyéni ikonja"
+msgstr "&Egyedi ikon:"
 
 #: collectiongeneralpage.cpp:59
 #, fuzzy, kde-format
@@ -2132,11 +2085,10 @@ msgid "Delete Filter?"
 msgstr "Törli a szűrőt?"
 
 #: dialog/koeventviewerdialog.cpp:32
-#, fuzzy, kde-format
-#| msgid "Event Viewer"
+#, kde-format
 msgctxt "@title:window"
 msgid "Event Viewer"
-msgstr "Eseménymegtekintés"
+msgstr "Eseménymegjelenítő"
 
 #: dialog/koeventviewerdialog.cpp:40
 #, fuzzy, kde-format
@@ -2153,41 +2105,31 @@ msgid "Show in Context"
 msgstr "Kontextussal együtt"
 
 #: dialog/searchdialog.cpp:40
-#, fuzzy, kde-format
-#| msgctxt "@title:tab calendar account settings"
-#| msgid "Calendars"
+#, kde-format
 msgctxt "@title:window"
 msgid "Find in Calendars"
-msgstr "Naptárak"
+msgstr "Keresés a naptárakban"
 
 #: dialog/searchdialog.cpp:73
-#, fuzzy, kde-format
-#| msgctxt "search in calendar"
-#| msgid "&Search"
+#, kde-format
 msgctxt "@action:button search in calendar"
 msgid "&Search"
 msgstr "&Keresés"
 
 #: dialog/searchdialog.cpp:75
-#, fuzzy, kde-format
-#| msgid "Start searching"
+#, kde-format
 msgctxt "@info:tooltip"
 msgid "Start the search"
 msgstr "A keresés megkezdése"
 
 #: dialog/searchdialog.cpp:76
-#, fuzzy, kde-format
-#| msgctxt "@info:whatsthis"
-#| msgid "Press this button to define a new filter."
+#, kde-format
 msgctxt "@info:whatsthis"
 msgid "Press this button to start the search."
-msgstr "Nyomja meg ezt a gombot új szűrő definiálásához."
+msgstr "Nyomja meg ezt a gombot a keresés elindításához."
 
 #: dialog/searchdialog.cpp:145
-#, fuzzy, kde-format
-#| msgid ""
-#| "Invalid search expression, cannot perform the search. Please enter a "
-#| "search expression using the wildcard characters '*' and '?' where needed."
+#, kde-format
 msgctxt "@info"
 msgid ""
 "Invalid search expression, cannot perform the search. Please enter a search "
@@ -2198,15 +2140,13 @@ msgstr ""
 "használhatók."
 
 #: dialog/searchdialog.cpp:157
-#, fuzzy, kde-format
-#| msgid "No items were found that match your search pattern."
+#, kde-format
 msgctxt "@info"
 msgid "No items were found that match your search pattern."
 msgstr "Nincs találat a keresett mintára."
 
 #: dialog/searchdialog.cpp:158
-#, fuzzy, kde-format
-#| msgid "Search Results"
+#, kde-format
 msgctxt "@title:window"
 msgid "Search Results"
 msgstr "Keresési eredmények"
@@ -2265,8 +2205,7 @@ msgid "&Cancel"
 msgstr "&Mégsem"
 
 #: koeventpopupmenu.cpp:43
-#, fuzzy, kde-format
-#| msgid "&Show"
+#, kde-format
 msgctxt "@action:inmenu"
 msgid "&Show"
 msgstr "&Megjelenítés"
@@ -2279,8 +2218,7 @@ msgid "&Edit…"
 msgstr "Sz&erkesztés"
 
 #: koeventpopupmenu.cpp:47
-#, fuzzy, kde-format
-#| msgid "&Delete"
+#, kde-format
 msgctxt "@action:inmenu delete this incidence"
 msgid "&Delete"
 msgstr "&Törlés"
@@ -2308,8 +2246,7 @@ msgid "C&ut"
 msgstr "Ki&vágás"
 
 #: koeventpopupmenu.cpp:76
-#, fuzzy, kde-format
-#| msgid "&Copy"
+#, kde-format
 msgctxt "@action:inmenu copy this incidence"
 msgid "&Copy"
 msgstr "Má&solás"
@@ -2643,11 +2580,9 @@ msgid "&Delete Appointment"
 msgstr "Találkozó"
 
 #: kontactplugin/korganizer/apptsummarywidget.cpp:261
-#, fuzzy, kde-format
-#| msgctxt "@title:window"
-#| msgid "Edit Event : %1"
+#, kde-format
 msgid "Edit Event: \"%1\""
-msgstr "Módosítás: %1"
+msgstr "Esemény szerkesztése: „%1”"
 
 #: kontactplugin/korganizer/journalplugin.cpp:28
 #, fuzzy, kde-format
@@ -2658,11 +2593,10 @@ msgid "New Journal…"
 msgstr "Új napló"
 
 #: kontactplugin/korganizer/journalplugin.cpp:31
-#, fuzzy, kde-format
-#| msgid "Create a new Journal"
+#, kde-format
 msgctxt "@info:status"
 msgid "Create a new journal"
-msgstr "Új naplóbejegyzés"
+msgstr "Új naplóbejegyzés létrehozása"
 
 #: kontactplugin/korganizer/journalplugin.cpp:36
 #, kde-format
@@ -2674,13 +2608,11 @@ msgstr ""
 #: kontactplugin/korganizer/kcmapptsummary.cpp:71
 #: kontactplugin/korganizer/kcmtodosummary.cpp:63
 #: kontactplugin/specialdates/kcmsdsummary.cpp:64
-#, fuzzy, kde-format
-#| msgid "1 day"
-#| msgid_plural "%1 days"
+#, kde-format
 msgid " day"
 msgid_plural " days"
-msgstr[0] "1 nap"
-msgstr[1] "%1 nap"
+msgstr[0] " nap"
+msgstr[1] " nap"
 
 #: kontactplugin/korganizer/korganizerplugin.cpp:44
 #, fuzzy, kde-format
@@ -2691,11 +2623,10 @@ msgid "New Event…"
 msgstr "Új esemény"
 
 #: kontactplugin/korganizer/korganizerplugin.cpp:47
-#, fuzzy, kde-format
-#| msgid "Create a new Event"
+#, kde-format
 msgctxt "@info:status"
 msgid "Create a new event"
-msgstr "Új esemény"
+msgstr "Új esemény létrehozása"
 
 #: kontactplugin/korganizer/korganizerplugin.cpp:51
 #, kde-format
@@ -2706,9 +2637,7 @@ msgstr ""
 
 #: kontactplugin/korganizer/korganizerplugin.cpp:146
 #: kontactplugin/korganizer/todoplugin.cpp:145
-#, fuzzy, kde-format
-#| msgctxt "incidence category"
-#| msgid "Meeting"
+#, kde-format
 msgctxt "@item"
 msgid "Meeting"
 msgstr "Találkozó"
@@ -2737,8 +2666,7 @@ msgid "<b>From:</b> %1<br /><b>To:</b> %2<br /><b>Subject:</b> %3"
 msgstr ""
 
 #: kontactplugin/korganizer/summaryeventinfo.cpp:136
-#, fuzzy, kde-format
-#| msgid "Today"
+#, kde-format
 msgctxt "the appointment is today"
 msgid "Today"
 msgstr "Ma"
@@ -2747,7 +2675,7 @@ msgstr "Ma"
 #, kde-format
 msgctxt "the appointment is tomorrow"
 msgid "Tomorrow"
-msgstr ""
+msgstr "Holnap"
 
 #: kontactplugin/korganizer/summaryeventinfo.cpp:171
 #: kontactplugin/korganizer/todosummarywidget.cpp:214
@@ -2775,9 +2703,7 @@ msgstr[0] ""
 msgstr[1] ""
 
 #: kontactplugin/korganizer/summaryeventinfo.cpp:193
-#, fuzzy, kde-format
-#| msgid "1 minute"
-#| msgid_plural "%1 minutes"
+#, kde-format
 msgctxt "use abbreviation for minute to keep the text short"
 msgid "1 min"
 msgid_plural "%1 mins"
@@ -2788,28 +2714,24 @@ msgstr[1] "%1 perc"
 #: kontactplugin/specialdates/sdsummarywidget.cpp:485
 #, kde-format
 msgid "now"
-msgstr ""
+msgstr "most"
 
 #: kontactplugin/korganizer/summaryeventinfo.cpp:203
-#, fuzzy, kde-format
-#| msgid "1 day"
-#| msgid_plural "%1 days"
+#, kde-format
 msgid "all day"
-msgstr "1 nap"
+msgstr "minden nap"
 
 #: kontactplugin/korganizer/summaryeventinfo.cpp:243
-#, fuzzy, kde-format
-#| msgid "%1 - %2"
+#, kde-format
 msgctxt "Time from - to"
 msgid "%1 - %2"
 msgstr "%1 - %2"
 
 #: kontactplugin/korganizer/summaryeventinfo.cpp:259
-#, fuzzy, kde-format
-#| msgid "Redo: %1"
+#, kde-format
 msgctxt "next occurrence"
 msgid "Next: %1"
-msgstr "Újra végrehajtás: %1"
+msgstr "Következő: %1"
 
 #: kontactplugin/korganizer/todoplugin.cpp:40
 #, fuzzy, kde-format
@@ -2820,11 +2742,10 @@ msgid "New To-do…"
 msgstr "Új feladat"
 
 #: kontactplugin/korganizer/todoplugin.cpp:43
-#, fuzzy, kde-format
-#| msgid "Create a new To-do"
+#, kde-format
 msgctxt "@info:status"
 msgid "Create a new to-do"
-msgstr "Új feladat"
+msgstr "Új feladat létrehozása"
 
 #: kontactplugin/korganizer/todoplugin.cpp:47
 #, kde-format
@@ -3075,14 +2996,12 @@ msgid "Show &my To-dos only"
 msgstr "A feladat meg&jelenítése"
 
 #: kontactplugin/korganizer/todosummarywidget.cpp:42
-#, fuzzy, kde-format
-#| msgid "Purge To-dos"
+#, kde-format
 msgid "Pending To-dos"
-msgstr "A feladatok törlése"
+msgstr "Feladatok a közeljövőben"
 
 #: kontactplugin/korganizer/todosummarywidget.cpp:180
-#, fuzzy, kde-format
-#| msgid "Today"
+#, kde-format
 msgctxt "the to-do is due today"
 msgid "Today"
 msgstr "Ma"
@@ -3133,11 +3052,9 @@ msgid "&Mark To-do Completed"
 msgstr "Be&fejezettség ki-be"
 
 #: kontactplugin/korganizer/todosummarywidget.cpp:349
-#, fuzzy, kde-format
-#| msgctxt "@title:window"
-#| msgid "Edit To-do: %1"
+#, kde-format
 msgid "Edit To-do: \"%1\""
-msgstr "Módosítás: %1"
+msgstr "Feladat szerkesztése: „%1”"
 
 #: kontactplugin/korganizer/todosummarywidget.cpp:369
 #, kde-format
@@ -3151,11 +3068,10 @@ msgid "overdue"
 msgstr ""
 
 #: kontactplugin/korganizer/todosummarywidget.cpp:373
-#, fuzzy, kde-format
-#| msgid "No start date"
+#, kde-format
 msgctxt "the to-do starts today"
 msgid "starts today"
-msgstr "Nincs kezdődátum"
+msgstr "ma kezdődik"
 
 #: kontactplugin/korganizer/todosummarywidget.cpp:377
 #, kde-format
@@ -3164,12 +3080,10 @@ msgid "not-started"
 msgstr ""
 
 #: kontactplugin/korganizer/todosummarywidget.cpp:379
-#, fuzzy, kde-format
-#| msgctxt "percent completed"
-#| msgid "co&mpleted"
+#, kde-format
 msgctxt "the to-do is completed"
 msgid "completed"
-msgstr "befeje&zve"
+msgstr "befejezve"
 
 #: kontactplugin/korganizer/todosummarywidget.cpp:381
 #, kde-format
@@ -3178,9 +3092,7 @@ msgid "in-progress "
 msgstr ""
 
 #: kontactplugin/korganizer/todosummarywidget.cpp:386
-#, fuzzy, kde-format
-#| msgctxt "@item:intext delimiter for joining holiday names"
-#| msgid ","
+#, kde-format
 msgctxt "Separator for status like this: overdue, completed"
 msgid ","
 msgstr ","
@@ -3405,8 +3317,7 @@ msgid "Upcoming Special Dates"
 msgstr ""
 
 #: kontactplugin/specialdates/sdsummarywidget.cpp:450
-#, fuzzy, kde-format
-#| msgid "Today"
+#, kde-format
 msgctxt "the special day is today"
 msgid "Today"
 msgstr "Ma"
@@ -3418,9 +3329,7 @@ msgid "Tomorrow"
 msgstr ""
 
 #: kontactplugin/specialdates/sdsummarywidget.cpp:498
-#, fuzzy, kde-format
-#| msgctxt "incidence category"
-#| msgid "Birthday"
+#, kde-format
 msgid "Birthday"
 msgstr "Születésnap"
 
@@ -3440,11 +3349,7 @@ msgid "Change of Seasons"
 msgstr ""
 
 #: kontactplugin/specialdates/sdsummarywidget.cpp:510
-#, fuzzy, kde-format
-#| msgctxt ""
-#| "incidence category: examples: anniversary of historical or personal "
-#| "event; big date; remembrance, etc"
-#| msgid "Special Occasion"
+#, kde-format
 msgid "Special Occasion"
 msgstr "Különleges esemény"
 
@@ -3498,12 +3403,13 @@ msgid ""
 "Copyright © 2003 Tobias Koenig\n"
 "Copyright © 2004–2010 Allen Winter"
 msgstr ""
+"Copyright © Tobias Koenig, 2003.\n"
+"Copyright © Allen Winter, 2004-2010."
 
 #: kontactplugin/specialdates/specialdates_plugin.cpp:42
-#, fuzzy, kde-format
-#| msgid "Former Maintainer"
+#, kde-format
 msgid "Current Maintainer"
-msgstr "Korábbi karbantartó"
+msgstr "Jelenlegi karbantartó"
 
 #: kontactplugin/specialdates/specialdates_plugin.cpp:43
 #, fuzzy, kde-format
@@ -3720,8 +3626,7 @@ msgid "Calendar Decorations"
 msgstr "Naptárdíszítések"
 
 #: prefs/koprefsdialogplugins.cpp:142
-#, fuzzy, kde-format
-#| msgid "Configure"
+#, kde-format
 msgctxt "@action"
 msgid "Configure"
 msgstr "Beállítás"
@@ -3814,11 +3719,10 @@ msgid "Thursday"
 msgstr ""
 
 #: prefs/koprefsdialogtime.cpp:145
-#, fuzzy, kde-format
-#| msgid "Holiday"
+#, kde-format
 msgctxt "@item:inlistbox"
 msgid "Friday"
-msgstr "Szabadság"
+msgstr "Péntek"
 
 #: prefs/koprefsdialogtime.cpp:145
 #, kde-format
@@ -3869,14 +3773,9 @@ msgid "day(s)"
 msgstr "nap"
 
 #: prefs/koprefsdialogtime.cpp:223
-#, fuzzy, kde-format
-#| msgid ""
-#| "*.ogg *.wav *.mp3 *.wma *.flac *.aiff *.raw *.au *.ra|Audio Files (*.ogg "
-#| "*.wav *.mp3 *.wma *.flac *.aiff *.raw *.au *.ra)"
+#, kde-format
 msgid "Audio Files (*.ogg *.wav *.mp3 *.wma *.flac *.aiff *.raw *.au *.ra)"
-msgstr ""
-"*.ogg *.wav *.mp3 *.wma *.flac *.aiff *.raw *.au *.ra|Audio fájlok (*.ogg *."
-"wav *.mp3 *.wma *.flac *.aiff *.raw *.au *.ra)"
+msgstr "Hangfájlok (*.ogg *.wav *.mp3 *.wma *.flac *.aiff *.raw *.au *.ra)"
 
 #: prefs/koprefsdialogviews.cpp:44
 #, kde-format
@@ -4414,10 +4313,9 @@ msgstr "Színhasználat"
 #. i18n: ectx: label, entry, group (Agenda View)
 #. i18n: ectx: label, entry, group (Month View)
 #: settings/korganizer.kcfg:172 settings/korganizer.kcfg:262
-#, fuzzy, kde-format
-#| msgid "Category inside, calendar outside"
+#, kde-format
 msgid "Tag inside, calendar outside"
-msgstr "Kategória belül, naptár kívül"
+msgstr "Címke belül, naptár kívül"
 
 #. i18n: ectx: whatsthis, entry, group (Agenda View)
 #. i18n: ectx: whatsthis, entry, group (Month View)
@@ -4455,10 +4353,9 @@ msgstr ""
 #. i18n: ectx: label, entry, group (Agenda View)
 #. i18n: ectx: label, entry, group (Month View)
 #: settings/korganizer.kcfg:177 settings/korganizer.kcfg:267
-#, fuzzy, kde-format
-#| msgid "Calendar inside, category outside"
+#, kde-format
 msgid "Calendar inside, tag outside"
-msgstr "Naptár belül, kategória kívül"
+msgstr "Naptár belül, címke kívül"
 
 #. i18n: ectx: whatsthis, entry, group (Agenda View)
 #. i18n: ectx: whatsthis, entry, group (Month View)
@@ -4496,10 +4393,9 @@ msgstr ""
 #. i18n: ectx: label, entry, group (Agenda View)
 #. i18n: ectx: label, entry, group (Month View)
 #: settings/korganizer.kcfg:182 settings/korganizer.kcfg:272
-#, fuzzy, kde-format
-#| msgid "Only category"
+#, kde-format
 msgid "Only tag"
-msgstr "Csak kategória"
+msgstr "Csak címke"
 
 #. i18n: ectx: whatsthis, entry, group (Agenda View)
 #: settings/korganizer.kcfg:183
@@ -5132,10 +5028,9 @@ msgstr ""
 
 #. i18n: ectx: label, entry, group (Theming)
 #: settings/korganizer.kcfg:541
-#, fuzzy, kde-format
-#| msgid "&Use colors"
+#, kde-format
 msgid "Use system color"
-msgstr "Színek &használata"
+msgstr "Rendszerszínek használata"
 
 #. i18n: ectx: whatsthis, entry, group (Theming)
 #: settings/korganizer.kcfg:542
@@ -5197,8 +5092,7 @@ msgstr ""
 
 #. i18n: ectx: property (placeholderText), widget (KListWidgetSearchLine, searchline)
 #: ui/filteredit_base.ui:35
-#, fuzzy, kde-format
-#| msgid "Search"
+#, kde-format
 msgctxt "Displayed grayed-out inside the textbox, verb to search"
 msgid "Search"
 msgstr "Keresés"
