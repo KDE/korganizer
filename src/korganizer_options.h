@@ -14,17 +14,18 @@
 
 static void korganizer_options(QCommandLineParser *parser)
 {
-    parser->addOption(
-        QCommandLineOption(QStringList() << QStringLiteral("i") << QStringLiteral("import"), i18n("Import the specified files as separate calendars")));
-    parser->addOption(
-        QCommandLineOption(QStringList() << QStringLiteral("m") << QStringLiteral("merge"), i18n("Merge the specified files into an existing calendar")));
-    parser->addOption(QCommandLineOption({QStringLiteral("view")}, i18n("Display the specified incidence (by URL)"), QStringLiteral("url")));
+    parser->addOption(QCommandLineOption(QStringList() << QStringLiteral("i") << QStringLiteral("import"),
+                                         i18nc("@info:shell", "Import the specified files as separate calendars")));
+    parser->addOption(QCommandLineOption(QStringList() << QStringLiteral("m") << QStringLiteral("merge"),
+                                         i18nc("@info:shell", "Merge the specified files into an existing calendar")));
+    parser->addOption(QCommandLineOption({QStringLiteral("view")}, i18nc("@info:shell", "Display the specified incidence (by URL)"), QStringLiteral("url")));
 
     parser->addPositionalArgument(QStringLiteral("calendars"),
-                                  i18n("Calendar files or urls. Unless -i or -m is explicitly specified, "
-                                       "the user will be asked whether to import or merge"),
+                                  i18nc("@info:shell",
+                                        "Calendar files or urls. Unless -i or -m is explicitly specified, "
+                                        "the user will be asked whether to import or merge"),
                                   QStringLiteral("[calendar…]"));
 #ifdef WITH_KUSERFEEDBACK
-    parser->addOption(QCommandLineOption(QStringLiteral("feedback"), i18n("Lists the available options for user feedback")));
+    parser->addOption(QCommandLineOption(QStringLiteral("feedback"), i18nc("@info:shell", "Lists the available options for user feedback")));
 #endif
 }
