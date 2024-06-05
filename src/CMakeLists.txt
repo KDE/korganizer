@@ -271,6 +271,7 @@ set(korganizerprivate_LIB_SRCS
     views/todoview/kotodoview.h
     views/whatsnextview/kowhatsnextview.h
     pimmessagebox.h
+    korganizer_options.h
     )
 
 set_property(SOURCE ${CMAKE_CURRENT_BINARY_DIR}/qrc_korganizer.cpp PROPERTY SKIP_AUTOMOC ON)
