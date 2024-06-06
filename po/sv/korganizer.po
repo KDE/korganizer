@@ -10,7 +10,7 @@ msgid ""
 msgstr ""
 "Project-Id-Version: korganizer\n"
 "Report-Msgid-Bugs-To: https://bugs.kde.org\n"
-"POT-Creation-Date: 2024-05-23 00:39+0000\n"
+"POT-Creation-Date: 2024-06-06 00:39+0000\n"
 "PO-Revision-Date: 2023-07-31 10:08+0200\n"
 "Last-Translator: Stefan Asserhäll <stefan.asserhall@bredband.net>\n"
 "Language-Team: Swedish <kde-i18n-doc@kde.org>\n"
@@ -3360,22 +3360,32 @@ msgid "Calendar"
 msgstr "Kalender"
 
 #: korganizer_options.h:18
-#, kde-format
+#, fuzzy, kde-format
+#| msgid "Import the specified files as separate calendars"
+msgctxt "@info:shell"
 msgid "Import the specified files as separate calendars"
 msgstr "Importera angivna filer som separata kalendrar"
 
 #: korganizer_options.h:20
-#, kde-format
+#, fuzzy, kde-format
+#| msgid "Merge the specified files into an existing calendar"
+msgctxt "@info:shell"
 msgid "Merge the specified files into an existing calendar"
 msgstr "Sammanfoga angivna filer med en befintlig kalender"
 
 #: korganizer_options.h:21
-#, kde-format
+#, fuzzy, kde-format
+#| msgid "Display the specified incidence (by URL)"
+msgctxt "@info:shell"
 msgid "Display the specified incidence (by URL)"
 msgstr "Visa angiven förekomst (enligt webbadress)"
 
-#: korganizer_options.h:24
-#, kde-format
+#: korganizer_options.h:25
+#, fuzzy, kde-format
+#| msgid ""
+#| "Calendar files or urls. Unless -i or -m is explicitly specified, the user "
+#| "will be asked whether to import or merge"
+msgctxt "@info:shell"
 msgid ""
 "Calendar files or urls. Unless -i or -m is explicitly specified, the user "
 "will be asked whether to import or merge"
@@ -3383,8 +3393,10 @@ msgstr ""
 "Kalenderfiler eller webbadresser. Om inte -i eller -m anges explicit, frågas "
 "användaren om import eller sammanfogning ska göras."
 
-#: korganizer_options.h:28
-#, kde-format
+#: korganizer_options.h:29
+#, fuzzy, kde-format
+#| msgid "Lists the available options for user feedback"
+msgctxt "@info:shell"
 msgid "Lists the available options for user feedback"
 msgstr "Lista tillgängliga alternativ för användaråterkoppling"
 

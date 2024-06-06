@@ -17,7 +17,7 @@ msgid ""
 msgstr ""
 "Project-Id-Version: korganizer\n"
 "Report-Msgid-Bugs-To: https://bugs.kde.org\n"
-"POT-Creation-Date: 2024-05-23 00:39+0000\n"
+"POT-Creation-Date: 2024-06-06 00:39+0000\n"
 "PO-Revision-Date: 2024-02-10 14:01+0300\n"
 "Last-Translator: Alexander Yavorsky <kekcuha@gmail.com>\n"
 "Language-Team: Russian <kde-russian@lists.kde.ru>\n"
@@ -3425,22 +3425,32 @@ msgid "Calendar"
 msgstr "Календарь"
 
 #: korganizer_options.h:18
-#, kde-format
+#, fuzzy, kde-format
+#| msgid "Import the specified files as separate calendars"
+msgctxt "@info:shell"
 msgid "Import the specified files as separate calendars"
 msgstr "Импортировать указанные файлы как отдельные календари"
 
 #: korganizer_options.h:20
-#, kde-format
+#, fuzzy, kde-format
+#| msgid "Merge the specified files into an existing calendar"
+msgctxt "@info:shell"
 msgid "Merge the specified files into an existing calendar"
 msgstr "Слить содержимое указанных файлов в существующий календарь"
 
 #: korganizer_options.h:21
-#, kde-format
+#, fuzzy, kde-format
+#| msgid "Display the specified incidence (by URL)"
+msgctxt "@info:shell"
 msgid "Display the specified incidence (by URL)"
 msgstr "Показать указанное событие (используется URL)."
 
-#: korganizer_options.h:24
-#, kde-format
+#: korganizer_options.h:25
+#, fuzzy, kde-format
+#| msgid ""
+#| "Calendar files or urls. Unless -i or -m is explicitly specified, the user "
+#| "will be asked whether to import or merge"
+msgctxt "@info:shell"
 msgid ""
 "Calendar files or urls. Unless -i or -m is explicitly specified, the user "
 "will be asked whether to import or merge"
@@ -3449,8 +3459,10 @@ msgstr ""
 "котором пользователь может импортировать календарь, слить календари или "
 "открыть в отдельном окне."
 
-#: korganizer_options.h:28
-#, kde-format
+#: korganizer_options.h:29
+#, fuzzy, kde-format
+#| msgid "Lists the available options for user feedback"
+msgctxt "@info:shell"
 msgid "Lists the available options for user feedback"
 msgstr "Показать список данных обратной связи."
 
