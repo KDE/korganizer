@@ -3133,31 +3133,25 @@ msgid "Calendar"
 msgstr "日历"
 
 #: korganizer_options.h:18
-#, fuzzy, kde-format
-#| msgid "Import the specified files as separate calendars"
+#, kde-format
 msgctxt "@info:shell"
 msgid "Import the specified files as separate calendars"
 msgstr "将所指定的文件导入为各自独立的日历"
 
 #: korganizer_options.h:20
-#, fuzzy, kde-format
-#| msgid "Merge the specified files into an existing calendar"
+#, kde-format
 msgctxt "@info:shell"
 msgid "Merge the specified files into an existing calendar"
 msgstr "将所指定的文件合并到已有日历"
 
 #: korganizer_options.h:21
-#, fuzzy, kde-format
-#| msgid "Display the specified incidence (by URL)"
+#, kde-format
 msgctxt "@info:shell"
 msgid "Display the specified incidence (by URL)"
 msgstr "通过 URL 显示指定的事件"
 
 #: korganizer_options.h:25
-#, fuzzy, kde-format
-#| msgid ""
-#| "Calendar files or urls. Unless -i or -m is explicitly specified, the user "
-#| "will be asked whether to import or merge"
+#, kde-format
 msgctxt "@info:shell"
 msgid ""
 "Calendar files or urls. Unless -i or -m is explicitly specified, the user "
@@ -3165,8 +3159,7 @@ msgid ""
 msgstr "日历文件或 URL。除非使用 -i 或 -m 时，程序会询问用户是要导入、合并。"
 
 #: korganizer_options.h:29
-#, fuzzy, kde-format
-#| msgid "Lists the available options for user feedback"
+#, kde-format
 msgctxt "@info:shell"
 msgid "Lists the available options for user feedback"
 msgstr "列出用户反馈中的可用选项"
