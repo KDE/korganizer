@@ -8,7 +8,7 @@ msgstr ""
 "Project-Id-Version: korganizer\n"
 "Report-Msgid-Bugs-To: https://bugs.kde.org\n"
 "POT-Creation-Date: 2024-06-06 00:39+0000\n"
-"PO-Revision-Date: 2024-05-30 07:49+0200\n"
+"PO-Revision-Date: 2024-06-08 10:47+0200\n"
 "Last-Translator: Oliver Kellogg <olivermkellogg@gmail.com>\n"
 "Language-Team: esperanto <kde-i18n-eo@kde.org>\n"
 "Language: eo\n"
@@ -426,7 +426,7 @@ msgstr ""
 #, kde-format
 msgctxt "@action"
 msgid "Archive O&ld Incidences…"
-msgstr "Enarkivigi Ma&lnovajn Okazaĵojn…"
+msgstr "Enarkivigi Ma&lnovajn Incidojn…"
 
 #: actionmanager.cpp:315
 #, kde-format
@@ -719,13 +719,13 @@ msgstr "F&iltrilo"
 #, kde-format
 msgctxt "@info:status"
 msgid "Filter incidences"
-msgstr "Filtri okazojn"
+msgstr "Filtri incidojn"
 
 #: actionmanager.cpp:475
 #, kde-format
 msgctxt "@info:tooltip"
 msgid "Filter incidences from the calendar"
-msgstr "Filtri okazojn el la kalendaro"
+msgstr "Filtri incidojn el la kalendaro"
 
 #: actionmanager.cpp:477
 #, kde-format
@@ -1114,8 +1114,8 @@ msgstr "Agordi &KOrganizer…"
 #, kde-format
 msgid "1 incidence was imported successfully."
 msgid_plural "%1 incidences were imported successfully."
-msgstr[0] "1 okazaĵo estis importita sukcese."
-msgstr[1] "%1 okazaĵoj estis importitaj sukcese."
+msgstr[0] "1 incido estis importita sukcese."
+msgstr[1] "%1 incidoj estis importitaj sukcese."
 
 #: actionmanager.cpp:846
 #, kde-format
@@ -1547,17 +1547,17 @@ msgstr "&Ankaŭ Malasocii Estontecajn"
 #: calendarview.cpp:1645
 #, kde-format
 msgid "Dissociate future occurrences"
-msgstr "Malasocii estontajn okazojn"
+msgstr "Malasocii estontajn okazaĵojn"
 
 #: calendarview.cpp:1647
 #, kde-format
 msgid "Dissociate occurrence"
-msgstr "Malasocii okazon"
+msgstr "Malasocii okazaĵon"
 
 #: calendarview.cpp:1654
 #, kde-format
 msgid "Dissociating the future occurrences failed."
-msgstr "Malasociiĝo de la estontaj okazoj malsukcesis."
+msgstr "Malasociiĝo de la estontaj okazaĵoj malsukcesis."
 
 #: calendarview.cpp:1654 calendarview.cpp:1656
 #, kde-format
@@ -1568,7 +1568,7 @@ msgstr "Malasociiĝo Malsukcesis"
 #: calendarview.cpp:1656
 #, kde-format
 msgid "Dissociating the occurrence failed."
-msgstr "Malasociiĝo de la okazo malsukcesis."
+msgstr "Malasociiĝo de la okazaĵo malsukcesis."
 
 #: calendarview.cpp:1818
 #, kde-format
@@ -1772,7 +1772,7 @@ msgid ""
 "You created an incidence in a calendar that is currently filtered out.\n"
 "On the left sidebar, enable it in the calendar manager to see the incidence."
 msgstr ""
-"Vi kreis okazaĵon en kalendaro, kiu estas nuntempe elfiltrita.\n"
+"Vi kreis incidon en kalendaro, kiu estas nuntempe elfiltrita.\n"
 "Sur la maldekstra flanka kolumno, ebligu ĝin en la kalendara administranto "
 "por vidi la okazaĵon."
 
@@ -1783,7 +1783,7 @@ msgid ""
 "You can enable it through the calendar manager (Settings->Sidebar->Show "
 "Calendar Manager)"
 msgstr ""
-"Vi kreis okazaĵon en kalendaro, kiu estas nuntempe elfiltrita.\n"
+"Vi kreis incidon en kalendaro, kiu estas nuntempe elfiltrita.\n"
 "Vi povas ebligi ĝin per la kalendara administranto (Agordoj->Flankbreto-"
 ">Montri Kalendaran Administranton)"
 
@@ -2077,13 +2077,13 @@ msgstr[1] "%1 kongruoj"
 #: koapp.cpp:63
 #, kde-format
 msgid "Failed to retrieve incidence from Akonadi"
-msgstr "Malsukcesis preni incidencon de Akonadi"
+msgstr "Malsukcesis preni incidon de Akonadi"
 
 #: koapp.cpp:68
 #, kde-format
 msgid ""
 "Failed to retrieve incidence from Akonadi: requested incidence doesn't exist."
-msgstr "Malsukcesis preni incidencon de Akonadi: petita incidenco ne ekzistas."
+msgstr "Malsukcesis preni incidon de Akonadi: petita incido ne ekzistas."
 
 #: kocorehelper.cpp:30
 #, kde-format
@@ -2944,7 +2944,7 @@ msgstr "Montri Specialajn Datojn Komencante"
 #: kontactplugin/specialdates/sdsummaryconfig_base.ui:28
 #, kde-format
 msgid "Show special occasions for today only"
-msgstr "Montri specialajn okazojn nur por hodiaŭ"
+msgstr "Montri specialajn okazaĵojn nur por hodiaŭ"
 
 #. i18n: ectx: property (whatsThis), widget (QRadioButton, mDateTodayButton)
 #: kontactplugin/specialdates/sdsummaryconfig_base.ui:31
@@ -2953,14 +2953,14 @@ msgid ""
 "Check this box if you want to see special occasions occurring on this date "
 "only."
 msgstr ""
-"Marku ĉi tiun skatolon se vi volas vidi specialajn okazojn okazantajn nur en "
-"ĉi tiu dato."
+"Marku ĉi tiun skatolon se vi volas vidi specialajn incidojn okazantajn nur "
+"en ĉi tiu dato."
 
 #. i18n: ectx: property (toolTip), widget (QRadioButton, mDateMonthButton)
 #: kontactplugin/specialdates/sdsummaryconfig_base.ui:44
 #, kde-format
 msgid "Show special occasions starting within the next month"
-msgstr "Montri specialajn okazojn komencantajn dum la venonta monato"
+msgstr "Montri specialajn okazaĵojn komencantajn dum la venonta monato"
 
 #. i18n: ectx: property (whatsThis), widget (QRadioButton, mDateMonthButton)
 #: kontactplugin/specialdates/sdsummaryconfig_base.ui:47
@@ -2969,14 +2969,14 @@ msgid ""
 "Check this box if you want to see special occasions that start sometime "
 "during the next 31 days."
 msgstr ""
-"Marku ĉi tiun skatolon se vi volas vidi specialajn okazojn, kiuj komenciĝas "
-"iam dum la sekvaj 31 tagoj."
+"Marku ĉi tiun skatolon se vi volas vidi specialajn okazaĵojn, kiuj "
+"komenciĝas iam dum la sekvaj 31 tagoj."
 
 #. i18n: ectx: property (toolTip), widget (QRadioButton, mDateRangeButton)
 #: kontactplugin/specialdates/sdsummaryconfig_base.ui:65
 #, kde-format
 msgid "Select the days for showing upcoming special occasions"
-msgstr "Elekti la tagojn por montri venontajn specialajn okazojn"
+msgstr "Elekti la tagojn por montri venontajn specialajn okazaĵojn"
 
 #. i18n: ectx: property (whatsThis), widget (QRadioButton, mDateRangeButton)
 #: kontactplugin/specialdates/sdsummaryconfig_base.ui:68
@@ -2986,13 +2986,13 @@ msgid ""
 "upcoming special occasions."
 msgstr ""
 "Marku ĉi tiun skatolon se vi volas specifi la nombron da tagoj estonte por "
-"venontaj specialaj okazoj."
+"venontaj specialaj okazaĵoj."
 
 #. i18n: ectx: property (toolTip), widget (QSpinBox, mCustomDays)
 #: kontactplugin/specialdates/sdsummaryconfig_base.ui:84
 #, kde-format
 msgid "Set the number of days to show upcoming special occasions"
-msgstr "Meti la nombron da tagoj por montri venontajn specialajn okazojn"
+msgstr "Meti la nombron da tagoj por montri venontajn specialajn okazaĵojn"
 
 #. i18n: ectx: property (whatsThis), widget (QSpinBox, mCustomDays)
 #: kontactplugin/specialdates/sdsummaryconfig_base.ui:87
@@ -3002,7 +3002,7 @@ msgid ""
 "occasions up to one year in the future."
 msgstr ""
 "Uzu ĉi tiun spinkeston por agordi la nombron da tagoj por montri venontajn "
-"specialajn okazojn ĝis unu jaro en la estonteco."
+"specialajn okazaĵojn ĝis unu jaro en la estonteco."
 
 #. i18n: ectx: property (title), widget (QGroupBox, mShowFromCalGroup)
 #: kontactplugin/specialdates/sdsummaryconfig_base.ui:130
@@ -3025,8 +3025,8 @@ msgid ""
 "tag."
 msgstr ""
 "Ebligu ĉi tiun elekteblon por inkluzivi naskiĝtagojn de via kalendaro en la "
-"venontaj specialaj okazoj resumo. Tipe, ĉi tiuj estas eventoj kun la etikedo "
-"\"Naskiĝtago\"."
+"resumo de venontaj specialaj okazaĵoj. Tipe, ĉi tiuj estas eventoj kun la "
+"etikedo \"Naskiĝtago\"."
 
 #. i18n: ectx: property (toolTip), widget (QCheckBox, mShowAnniversariesFromCalBox)
 #: kontactplugin/specialdates/sdsummaryconfig_base.ui:152
@@ -3043,8 +3043,8 @@ msgid ""
 "\"Anniversary\" tag."
 msgstr ""
 "Ebligu ĉi tiun elekteblon por inkluzivi datrevenojn de via kalendaro en la "
-"venontaj specialaj okazoj resumo. Tipe, ĉi tiuj estas eventoj kun la etikedo "
-"\"Datreveno\"."
+"resumo de venontaj specialaj okazaĵoj. Tipe, ĉi tiuj estas eventoj kun la "
+"etikedo \"Datreveno\"."
 
 #. i18n: ectx: property (toolTip), widget (QCheckBox, mShowHolidaysFromCalBox)
 #: kontactplugin/specialdates/sdsummaryconfig_base.ui:168
@@ -3182,7 +3182,7 @@ msgstr "Ŝanĝo de Sezonoj"
 #: kontactplugin/specialdates/sdsummarywidget.cpp:510
 #, kde-format
 msgid "Special Occasion"
-msgstr "Speciala okazo"
+msgstr "Speciala Okazo"
 
 #: kontactplugin/specialdates/sdsummarywidget.cpp:552
 #, kde-format
@@ -3260,31 +3260,25 @@ msgid "Calendar"
 msgstr "Kalendaro"
 
 #: korganizer_options.h:18
-#, fuzzy, kde-format
-#| msgid "Import the specified files as separate calendars"
+#, kde-format
 msgctxt "@info:shell"
 msgid "Import the specified files as separate calendars"
-msgstr "Importi la specifitajn dosierojn kiel apartajn kalendarojn"
+msgstr "Enporti la specifitajn dosierojn kiel apartaj kalendaroj"
 
 #: korganizer_options.h:20
-#, fuzzy, kde-format
-#| msgid "Merge the specified files into an existing calendar"
+#, kde-format
 msgctxt "@info:shell"
 msgid "Merge the specified files into an existing calendar"
 msgstr "Kunfandi la specifitajn dosierojn en ekzistantan kalendaron"
 
 #: korganizer_options.h:21
-#, fuzzy, kde-format
-#| msgid "Display the specified incidence (by URL)"
+#, kde-format
 msgctxt "@info:shell"
 msgid "Display the specified incidence (by URL)"
-msgstr "Montri la specifitan okazon (per URL)"
+msgstr "Montri la specifitan incidon (per URL)"
 
 #: korganizer_options.h:25
-#, fuzzy, kde-format
-#| msgid ""
-#| "Calendar files or urls. Unless -i or -m is explicitly specified, the user "
-#| "will be asked whether to import or merge"
+#, kde-format
 msgctxt "@info:shell"
 msgid ""
 "Calendar files or urls. Unless -i or -m is explicitly specified, the user "
@@ -3294,8 +3288,7 @@ msgstr ""
 "la uzanto estos demandita ĉu importi aŭ kunfandi"
 
 #: korganizer_options.h:29
-#, fuzzy, kde-format
-#| msgid "Lists the available options for user feedback"
+#, kde-format
 msgctxt "@info:shell"
 msgid "Lists the available options for user feedback"
 msgstr "Listigas la disponeblajn elekteblojn por uzant-sugestoj"
