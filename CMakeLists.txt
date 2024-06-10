@@ -86,6 +86,25 @@ find_package(KF6UserFeedback ${KF_MIN_VERSION} CONFIG)
 
 set_package_properties(KF6UserFeedback PROPERTIES DESCRIPTION "User Feedback lib" TYPE OPTIONAL PURPOSE "Allow to send Telemetry Information (optional).")
 
+option(OPTION_USE_PLASMA_ACTIVITIES "Activate plasma activities (experimental)" OFF)
+if (OPTION_USE_PLASMA_ACTIVITIES)
+    if (NOT WIN32 AND NOT APPLE)
+       set(OPTION_USE_PLASMA_ACTIVITIES true)
+    else()
+       set(OPTION_USE_PLASMA_ACTIVITIES false)
+    endif()
+endif()
+if (OPTION_USE_PLASMA_ACTIVITIES)
+    if (NOT WIN32 AND NOT APPLE)
+       find_package(PlasmaActivities "6.0.0")
+    endif()
+endif()
+
+if (TARGET Plasma::Activities)
+    set(HAVE_ACTIVITY_SUPPORT TRUE)
+endif()
+
+
 if (TARGET KF6::UserFeedbackWidgets)
     add_definitions(-DWITH_KUSERFEEDBACK)
 endif()
