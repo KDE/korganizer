@@ -5,14 +5,14 @@
 */
 
 #pragma once
-#include "kaddressbook_export.h"
+#include "korganizerprivate_export.h"
 #include <QObject>
 namespace KActivities
 {
 class Consumer;
 }
 class AccountActivities;
-class KADDRESSBOOK_EXPORT ActivitiesManager : public QObject
+class KORGANIZERPRIVATE_EXPORT ActivitiesManager : public QObject
 {
     Q_OBJECT
 public:

@@ -27,7 +27,10 @@ ecm_qt_declare_logging_category(korganizer_common_SRCS HEADER korganizer_debug.h
         OLD_CATEGORY_NAMES log_korganizer
         EXPORT KORGANIZER
     )
-
+ecm_qt_declare_logging_category(korganizer_common_SRCS HEADER korganizer_activities_debug.h IDENTIFIER KORGANIZER_ACIVITIES_LOG CATEGORY_NAME org.kde.pim.korganizer.activities
+        DESCRIPTION "korganizer (korganizer) activities"
+        EXPORT KORGANIZER
+    )
 set(korganizer_SRCS
     main.cpp
     korganizer.cpp
@@ -274,6 +277,20 @@ set(korganizerprivate_LIB_SRCS
     korganizer_options.h
     )
 
+if (TARGET Plasma::Activities)
+    set(korganizerprivate_LIB_SRCS ${korganizerprivate_LIB_SRCS}
+        activities/activitiesmanager.h
+        activities/activitiesmanager.cpp
+
+        activities/accountactivities.h
+        activities/accountactivities.cpp
+    )
+    if (BUILD_TESTING)
+       add_subdirectory(activities/autotests)
+    endif()
+endif()
+
+
 set_property(SOURCE ${CMAKE_CURRENT_BINARY_DIR}/qrc_korganizer.cpp PROPERTY SKIP_AUTOMOC ON)
 set_property(SOURCE ${CMAKE_CURRENT_BINARY_DIR}/qrc_agendaitemtheme.cpp PROPERTY SKIP_AUTOMOC ON)
 
@@ -349,6 +366,11 @@ target_link_libraries(korganizerprivate
     KF6::KIOGui
     ${korganizer_userfeedback_LIB}
     )
+
+if (TARGET Plasma::Activities)
+    target_link_libraries(korganizerprivate PRIVATE Plasma::Activities)
+endif()
+
 
 target_include_directories(korganizerprivate PUBLIC
     "$<BUILD_INTERFACE:${korganizer_SOURCE_DIR};${korganizer_BINARY_DIR}>"

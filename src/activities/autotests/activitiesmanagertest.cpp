@@ -17,7 +17,7 @@ void ActivitiesManagerTest::shouldHaveDefaultValues()
 {
     ActivitiesManager w;
     QVERIFY(!w.enabled());
-    QVERIFY(w.ldapActivities());
+    QVERIFY(w.accountActivities());
 }
 
 #include "moc_activitiesmanagertest.cpp"

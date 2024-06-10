@@ -7,7 +7,7 @@ macro(add_kaddressbook_activities_test _source)
     add_executable( ${_name} ${_test} ${ARGN} ${_name}.h)
     add_test(NAME ${_name} COMMAND ${_name} )
     ecm_mark_as_test(${_name})
-    target_link_libraries( ${_name} Qt::Test Plasma::Activities kaddressbookprivate)
+    target_link_libraries( ${_name} Qt::Test Plasma::Activities korganizerprivate)
     set_target_properties(${_name} PROPERTIES
         DISABLE_PRECOMPILE_HEADERS ON
     )

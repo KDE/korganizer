@@ -6,7 +6,7 @@
 
 #include "activitiesmanager.h"
 #include "accountactivities.h"
-#include "kaddressbook_activities_debug.h"
+#include "korganizer_activities_debug.h"
 
 #include <PlasmaActivities/Consumer>
 
@@ -16,16 +16,16 @@ ActivitiesManager::ActivitiesManager(QObject *parent)
     , mAccountActivities(new AccountActivities(this))
 {
     connect(mActivitiesConsumer, &KActivities::Consumer::currentActivityChanged, this, [this](const QString &activityId) {
-        qCDebug(KADDRESSBOOK_ACTIVITIES_LOG) << " switch to activity " << activityId;
+        qCDebug(KORGANIZER_ACIVITIES_LOG) << " switch to activity " << activityId;
         Q_EMIT activitiesChanged();
     });
     connect(mActivitiesConsumer, &KActivities::Consumer::activityRemoved, this, [this](const QString &activityId) {
-        qCDebug(KADDRESSBOOK_ACTIVITIES_LOG) << " Activity removed " << activityId;
+        qCDebug(KORGANIZER_ACIVITIES_LOG) << " Activity removed " << activityId;
         Q_EMIT activitiesChanged();
     });
     connect(mActivitiesConsumer, &KActivities::Consumer::serviceStatusChanged, this, &ActivitiesManager::activitiesChanged);
     if (mActivitiesConsumer->serviceStatus() != KActivities::Consumer::ServiceStatus::Running) {
-        qCWarning(KADDRESSBOOK_ACTIVITIES_LOG) << "Plasma activities is not running: " << mActivitiesConsumer->serviceStatus();
+        qCWarning(KORGANIZER_ACIVITIES_LOG) << "Plasma activities is not running: " << mActivitiesConsumer->serviceStatus();
     }
     connect(this, &ActivitiesManager::activitiesChanged, this, [this]() {
         Q_EMIT mAccountActivities->activitiesChanged();
