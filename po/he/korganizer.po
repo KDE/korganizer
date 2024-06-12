@@ -18,7 +18,7 @@ msgstr ""
 "Project-Id-Version: korganizer\n"
 "Report-Msgid-Bugs-To: https://bugs.kde.org\n"
 "POT-Creation-Date: 2024-06-06 00:39+0000\n"
-"PO-Revision-Date: 2024-06-06 05:59+0300\n"
+"PO-Revision-Date: 2024-06-09 20:38+0300\n"
 "Last-Translator: Yaron Shahrabani <sh.yaron@gmail.com>\n"
 "Language-Team: צוות התרגום של KDE ישראל\n"
 "Language: he\n"
@@ -3725,7 +3725,7 @@ msgid ""
 msgstr ""
 "נא לבחור את אזור הזמן שלך מרשימת המקומות שבתיבה הנגללת. אם עירך לא מופיעה "
 "ברשימה, אפשר לבחור אחת שחולקת את אותו אזור זמן. KOrganizer יתאים אוטומטית את "
-"המעבר בין שעון חורץ לשעון קיץ ולהפך."
+"המעבר בין שעון חורף לשעון קיץ ולהפך."
 
 #. i18n: ectx: label, entry (WeekStartDay), group (Time &amp; Date)
 #: settings/korganizer.kcfg:44
