@@ -33,7 +33,7 @@
 
 int main(int argc, char **argv)
 {
-#if HAVE_KICONTHEME && (KICONTHEMES_VERSION >= QT_VERSION_CHECK(6, 3, 0))
+#if HAVE_KICONTHEME
     KIconTheme::initTheme();
 #endif
     KOrganizerApp app(argc, &argv);
