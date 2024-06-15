@@ -161,6 +161,7 @@ endif()
 
 
 add_subdirectory(src)
+add_subdirectory(plugins)
 
 ecm_qt_install_logging_categories(
         EXPORT KORGANIZER
