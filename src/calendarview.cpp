@@ -1996,7 +1996,7 @@ void CalendarView::takeOverEvent()
     const Akonadi::Item item = currentSelection();
     KCalendarCore::Incidence::Ptr incidence = Akonadi::CalendarUtils::incidence(item);
 
-    if (incidence) {
+    if (!incidence) {
         return;
     }
 
