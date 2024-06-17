@@ -47,7 +47,7 @@
 #include <KIO/FileCopyJob>
 #include <KIO/StatJob>
 #include <KJobWidgets>
-#include <KMime/KMimeMessage>
+#include <KMime/Message>
 
 #include <KActionCollection>
 #include <KActionMenu>
