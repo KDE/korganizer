@@ -1,5 +1,5 @@
 # translation of korganizer.po to
-# Version: $Revision: 1681059 $
+# Version: $Revision: 1682479 $
 # SPDX-FileCopyrightText: 2011, 2012, 2013, 2014, 2015, 2016, 2017, 2018, 2019, 2020, 2021, 2022, 2023, 2024 Łukasz Wojniłowicz <lukasz.wojnilowicz@gmail.com>
 # translated by Krzysztof Jasiutowicz <kpjas@priv.onet.pl>
 # Krzysztof Lichota <lichota@mimuw.edu.pl>, 2002, 2005, 2006.
@@ -14,7 +14,7 @@ msgstr ""
 "Project-Id-Version: korganizer\n"
 "Report-Msgid-Bugs-To: https://bugs.kde.org\n"
 "POT-Creation-Date: 2024-04-12 00:38+0000\n"
-"PO-Revision-Date: 2024-01-07 11:58+0100\n"
+"PO-Revision-Date: 2024-06-16 10:07+0200\n"
 "Last-Translator: Łukasz Wojniłowicz <lukasz.wojnilowicz@gmail.com>\n"
 "Language-Team: Polish <kde-i18n-doc@kde.org>\n"
 "Language: pl\n"
@@ -23,6 +23,7 @@ msgstr ""
 "Content-Transfer-Encoding: 8bit\n"
 "Plural-Forms: nplurals=3; plural=(n==1 ? 0 : n%10>=2 && n%10<=4 && (n%100<10 "
 "|| n%100>=20) ? 1 : 2);\n"
+"X-Generator: Lokalize 23.08.5\n"
 
 #, kde-format
 msgctxt "NAME OF TRANSLATORS"
@@ -315,7 +316,7 @@ msgstr "Zaimportuj kalendarz"
 #, kde-format
 msgctxt "@info:tooltip"
 msgid "Import an iCalendar or vCalendar file"
-msgstr "Zaimportuj plik iKalendarz lub vKalendarz"
+msgstr "Zaimportuj plik iCalendar lub vCalendar"
 
 #: actionmanager.cpp:247
 #, kde-format
@@ -324,8 +325,8 @@ msgid ""
 "Select this menu entry if you would like to import the contents of an "
 "iCalendar or vCalendar file into your current calendar collection."
 msgstr ""
-"Wybierz ten element menu, jeśli chcesz importować zawartość pliku iKalendarz "
-"lub vKalendarz do swojego bieżącego kalendarza."
+"Wybierz ten element menu, jeśli chcesz importować zawartość pliku iCalendar "
+"lub vCalendar do swojego bieżącego kalendarza."
 
 #: actionmanager.cpp:253
 #, kde-format
@@ -368,7 +369,7 @@ msgstr "Pobrane wydarzenia zostaną wstawione do twojego bieżącego kalendarza.
 #: actionmanager.cpp:305
 #, kde-format
 msgid "Export as &iCalendar..."
-msgstr "Wyeksportuj jako &iKalendarz..."
+msgstr "Wyeksportuj jako &iCalendar..."
 
 #: actionmanager.cpp:306
 #, kde-format
@@ -380,7 +381,7 @@ msgstr "Wyeksportuj kalendarz do pliku"
 #, kde-format
 msgctxt "@info:tooltip"
 msgid "Export your calendar to an iCalendar file"
-msgstr "Wyeksportuj swój kalendarz do pliku iKalendarz"
+msgstr "Wyeksportuj swój kalendarz do pliku iCalendar"
 
 #: actionmanager.cpp:308
 #, kde-format
@@ -389,7 +390,7 @@ msgid ""
 "Allows you to export your entire calendar collection to one iCalendar file."
 msgstr ""
 "Umożliwia wyeksportowanie całego zbioru kalendarza do pojedynczego pliku "
-"iKalendarz."
+"iCalendar."
 
 #: actionmanager.cpp:314
 #, kde-format
@@ -1020,7 +1021,7 @@ msgstr "Wyślij pocztą infor&mację wolny/zajęty..."
 #: actionmanager.cpp:691
 #, kde-format
 msgid "&Send as iCalendar..."
-msgstr "Wyślij jako &iKalendarz..."
+msgstr "Wyślij jako &iCalendar..."
 
 #: actionmanager.cpp:698
 #, kde-format
@@ -1532,7 +1533,7 @@ msgstr "Odłączenie wydarzenia nie powiodło się."
 #: calendarview.cpp:1818
 #, kde-format
 msgid "iCalendars (*.ics)"
-msgstr "iKalendarze (*.ics)"
+msgstr "iCalendars (*.ics)"
 
 #: calendarview.cpp:1827
 #, kde-format
@@ -1555,7 +1556,7 @@ msgstr "Przyczyna nieznana"
 #, kde-format
 msgctxt "@info"
 msgid "Cannot write iCalendar file %1. %2"
-msgstr "Nie można zapisać pliku iKalendarz %1. %2"
+msgstr "Nie można zapisać pliku iCalendar %1. %2"
 
 #: calendarview.cpp:1945 calendarview.cpp:1990
 #, kde-format
@@ -2171,7 +2172,7 @@ msgstr "O&dłącz od powtarzania..."
 #, kde-format
 msgctxt "@action:inmenu"
 msgid "Send as iCalendar..."
-msgstr "Wyślij jako iKalendarz..."
+msgstr "Wyślij jako iCalendar..."
 
 #: koeventpopupmenu.cpp:187
 #, kde-format
