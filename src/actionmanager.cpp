@@ -215,6 +215,7 @@ void ActionManager::createCalendarAkonadi()
     mCalendarView->readSettings();
 
     // connect(calendar().data(), &Akonadi::ETMCalendar::calendarChanged, mCalendarView, &CalendarView::resourcesChanged);
+    connect(calendar().data(), &Akonadi::ETMCalendar::calendarSelectionEdited, this, &ActionManager::writeSettings);
     connect(mCalendarView, &CalendarView::configChanged, this, &ActionManager::updateConfig);
 
     calendar()->setOwner(KCalendarCore::Person(CalendarSupport::KCalPrefs::instance()->fullName(), CalendarSupport::KCalPrefs::instance()->email()));
@@ -878,6 +879,7 @@ void ActionManager::restoreCollectionViewSetting()
 
 void ActionManager::writeSettings()
 {
+    qDebug();
     KSharedConfig::Ptr config = KSharedConfig::openConfig();
     KConfigGroup group = config->group(QStringLiteral("Settings"));
     mCalendarView->writeSettings();
