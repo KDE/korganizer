@@ -231,7 +231,7 @@ KPrefsWidFont::KPrefsWidFont(KConfigSkeleton::ItemFont *item, QWidget *parent, c
     mPreview = new QLabel(sampleText, parent);
     mPreview->setFrameStyle(QFrame::StyledPanel | QFrame::Sunken);
 
-    mButton = new QPushButton(i18n("Choose…"), parent);
+    mButton = new QPushButton(i18nc("@action:button", "Choose…"), parent);
     connect(mButton, &QPushButton::clicked, this, &Korganizer::KPrefsWidFont::selectFont);
     QString toolTip = mItem->toolTip();
     if (!toolTip.isEmpty()) {
