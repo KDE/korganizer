@@ -7,7 +7,7 @@ msgid ""
 msgstr ""
 "Project-Id-Version: korganizer\n"
 "Report-Msgid-Bugs-To: https://bugs.kde.org\n"
-"POT-Creation-Date: 2024-06-06 00:39+0000\n"
+"POT-Creation-Date: 2024-06-18 00:40+0000\n"
 "PO-Revision-Date: 2024-06-06 05:07+0200\n"
 "Last-Translator: Temuri Doghonadze <temuri.doghonadze@gmail.com>\n"
 "Language-Team: Georgian <kde-i18n-doc@kde.org>\n"
@@ -329,25 +329,25 @@ msgstr ""
 msgid "Hide menu bar"
 msgstr "მენიუს ზოლის დამალვა"
 
-#: actionmanager.cpp:243
+#: actionmanager.cpp:244
 #, kde-format
 msgctxt "@action"
 msgid "Import &Calendar…"
 msgstr "&კალენდრის შემოტანა…"
 
-#: actionmanager.cpp:244
+#: actionmanager.cpp:245
 #, kde-format
 msgctxt "@info:status"
 msgid "Import a calendar"
 msgstr "კალენდრის შემოტანა"
 
-#: actionmanager.cpp:245
+#: actionmanager.cpp:246
 #, kde-format
 msgctxt "@info:tooltip"
 msgid "Import an iCalendar or vCalendar file"
 msgstr "ICalendar ან vCalender ტიპის ფაილის შემოტანა"
 
-#: actionmanager.cpp:247
+#: actionmanager.cpp:248
 #, kde-format
 msgctxt "@info:whatsthis"
 msgid ""
@@ -357,24 +357,24 @@ msgstr ""
 "აირჩიეთ ეს მენიუს პუნქტი, თუ გნებავთ iCalendar ან vCalendar ფაილების "
 "შემცველობის მიმდინარე კალენრის კოლექციაში შემოტანა."
 
-#: actionmanager.cpp:253
+#: actionmanager.cpp:254
 #, kde-format
 msgid "Get New Calendars…"
 msgstr "მიიღეთ ახალი კალენდრები…"
 
-#: actionmanager.cpp:254
+#: actionmanager.cpp:255
 #, kde-format
 msgctxt "@info:status"
 msgid "Load a calendar from \"Get Hot New Stuff\""
 msgstr "კალენდრის \"ახალი რამერუმეების მიღებიდან\" ჩატვირთვა"
 
-#: actionmanager.cpp:255
+#: actionmanager.cpp:256
 #, kde-format
 msgctxt "@info:tooltip"
 msgid "Search \"Get Hot New Stuff\" for calendars to import"
 msgstr "მოძებნეთ \"სიახლეების მოძებნა\" კალენდრებში შემოსატნად"
 
-#: actionmanager.cpp:257
+#: actionmanager.cpp:258
 #, kde-format
 msgctxt "@info:whatsthis"
 msgid ""
@@ -385,35 +385,35 @@ msgstr ""
 "გაძლევთ, მოძებნოთ და შემოიტანოთ სახალისო და გამოსადეგი კალენდრები, რომლებსაც "
 "საზოგადოება ამზადებს."
 
-#: actionmanager.cpp:278
+#: actionmanager.cpp:279
 #, kde-format
 msgid "Could not load calendar %1."
 msgstr "ვერ ჩავტვირთე კალენდარი %1."
 
-#: actionmanager.cpp:288
+#: actionmanager.cpp:289
 #, kde-format
 msgid "The downloaded events will be merged into your current calendar."
 msgstr "გადმოწერილი მოვლენები თქვენს მიმდინარე კალენდარში ჩაისმება."
 
-#: actionmanager.cpp:305
+#: actionmanager.cpp:306
 #, kde-format
 msgctxt "@action"
 msgid "Export as &iCalendar…"
 msgstr "&iCalender-ის გატანა…"
 
-#: actionmanager.cpp:306
+#: actionmanager.cpp:307
 #, kde-format
 msgctxt "@info:status"
 msgid "Export calendar to file"
 msgstr "თქვენი კალენდრის ფაილში გატანა"
 
-#: actionmanager.cpp:307
+#: actionmanager.cpp:308
 #, kde-format
 msgctxt "@info:tooltip"
 msgid "Export your calendar to an iCalendar file"
 msgstr "თქვენი კალენდრის iCalender-ის ფაილში გატანა"
 
-#: actionmanager.cpp:308
+#: actionmanager.cpp:309
 #, kde-format
 msgctxt "@info:whatsthis"
 msgid ""
@@ -422,25 +422,25 @@ msgstr ""
 "საშუალებას გაძლევთ, თქვენი სრული კალენდრის კოლექცია ერთ iCalendar-ის ფაილში "
 "გაიტანოთ."
 
-#: actionmanager.cpp:314
+#: actionmanager.cpp:315
 #, kde-format
 msgctxt "@action"
 msgid "Archive O&ld Incidences…"
 msgstr "ძველი &ინციდენტების დაარქივება…"
 
-#: actionmanager.cpp:315
+#: actionmanager.cpp:316
 #, kde-format
 msgctxt "@info:status"
 msgid "Archive events and to-dos to a file"
 msgstr "მოვლენებისა და გასაკეთებლების დაარქივება ფაილში"
 
-#: actionmanager.cpp:316
+#: actionmanager.cpp:317
 #, kde-format
 msgctxt "@info:tooltip"
 msgid "Archive old events and to-dos to an iCalendar file"
 msgstr "დააარქივეთ ძველი მოვლენები და გასაკეთებლები iCalendar-ის ფაილში"
 
-#: actionmanager.cpp:318
+#: actionmanager.cpp:319
 #, kde-format
 msgctxt "@info:whatsthis"
 msgid ""
@@ -452,25 +452,25 @@ msgstr ""
 "მოვლენები და გასაკეთებლები, რომლებიც შეგიძლიათ, iCalendar-ის ფაილში "
 "დააარქივოთ.  ისინი წაიშლება არსებული კალენდრის კოლექციიდან."
 
-#: actionmanager.cpp:326
+#: actionmanager.cpp:327
 #, kde-format
 msgctxt "@action"
 msgid "Pur&ge Completed To-dos"
 msgstr "დასრულებული გასაკეთებლების &მოსუფთავება"
 
-#: actionmanager.cpp:327
+#: actionmanager.cpp:328
 #, kde-format
 msgctxt "@info:status"
 msgid "Purge completed to-dos"
 msgstr "დასრულებული გასაკეთებლების მოსუფთავება"
 
-#: actionmanager.cpp:328
+#: actionmanager.cpp:329
 #, kde-format
 msgctxt "@info:tooltip"
 msgid "Remove completed to-dos from your calendar"
 msgstr "დასრულებული გასაკეთებლების წაშლა თქვენი კალენდრიდან"
 
-#: actionmanager.cpp:330
+#: actionmanager.cpp:331
 #, kde-format
 msgctxt "@info:whatsthis"
 msgid ""
@@ -481,30 +481,30 @@ msgstr ""
 "გასაკეთებელი წაშალოთ. ეს ქმედება შეუქცევადია!"
 
 #. i18n: ectx: property (text), widget (QPushButton, mDeleteButton)
-#: actionmanager.cpp:367 actionmanager.cpp:622 actionmanager.cpp:1306
-#: actionmanager.cpp:1343 ui/filteredit_base.ui:56
+#: actionmanager.cpp:368 actionmanager.cpp:623 actionmanager.cpp:1308
+#: actionmanager.cpp:1345 ui/filteredit_base.ui:56
 #, kde-format
 msgid "&Delete"
 msgstr "&წაშლა"
 
-#: actionmanager.cpp:384
+#: actionmanager.cpp:385
 #, kde-format
 msgid "What's &Next"
 msgstr "რა არის &შემდეგი"
 
-#: actionmanager.cpp:385
+#: actionmanager.cpp:386
 #, kde-format
 msgctxt "@info:status"
 msgid "What's Next View"
 msgstr "რა არის შემდეგი - ხედი"
 
-#: actionmanager.cpp:386
+#: actionmanager.cpp:387
 #, kde-format
 msgctxt "@info:tooltip"
 msgid "Switch to the What's Next View"
 msgstr "რა არის შემდეგი - ხედზე გადართვა"
 
-#: actionmanager.cpp:388
+#: actionmanager.cpp:389
 #, kde-format
 msgctxt "@info:whatsthis"
 msgid ""
@@ -518,24 +518,24 @@ msgstr ""
 "ნაჩვენები იქნება ყველა ღია გასაკეთებელი, დანახვით, მხოლოდ თარიღის "
 "ნავიგატორის პანელზე არჩეულ დღეებში არსებულ მოვლენებს დაინახავთ."
 
-#: actionmanager.cpp:396
+#: actionmanager.cpp:397
 #, kde-format
 msgid "&Month"
 msgstr "&თვე"
 
-#: actionmanager.cpp:397
+#: actionmanager.cpp:398
 #, kde-format
 msgctxt "@info:status"
 msgid "Month View"
 msgstr "თვის ხედი"
 
-#: actionmanager.cpp:398
+#: actionmanager.cpp:399
 #, kde-format
 msgctxt "@info:tooltip"
 msgid "Switch to the Month View"
 msgstr "თვის ხედზე გადართვა"
 
-#: actionmanager.cpp:400
+#: actionmanager.cpp:401
 #, kde-format
 msgctxt "@info:whatsthis"
 msgid ""
@@ -545,24 +545,24 @@ msgstr ""
 "გადართავს თვის ხედზე, რომელიც ყველა მოვლენას და გასაკეთებელს, ნაცნობ, თვის "
 "კალენდრის განლაგების მსგავსად აჩვენებს."
 
-#: actionmanager.cpp:406
+#: actionmanager.cpp:407
 #, kde-format
 msgid "&Agenda"
 msgstr "&დღის წესრიგი"
 
-#: actionmanager.cpp:407
+#: actionmanager.cpp:408
 #, kde-format
 msgctxt "@info:status"
 msgid "Agenda View"
 msgstr "დღის წესრიგის ხედი"
 
-#: actionmanager.cpp:408
+#: actionmanager.cpp:409
 #, kde-format
 msgctxt "@info:tooltip"
 msgid "Switch to the Agenda View"
 msgstr "დღის წესრიგის ხედზე გადართვა"
 
-#: actionmanager.cpp:410
+#: actionmanager.cpp:411
 #, kde-format
 msgctxt "@info:whatsthis"
 msgid ""
@@ -574,24 +574,24 @@ msgstr ""
 "გასაკეთებლებს, რომლების დროც დადგა, ქრონოლოგიურად დალაგებულს, რამდენიმე "
 "დღით.  თითოეული მოვლენის ხანგრძლივობის ნახვა დღის განრიგში შეგიძლიათ."
 
-#: actionmanager.cpp:417
+#: actionmanager.cpp:418
 #, kde-format
 msgid "&Event List"
 msgstr "&მოვლენების სია"
 
-#: actionmanager.cpp:418
+#: actionmanager.cpp:419
 #, kde-format
 msgctxt "@info:status"
 msgid "List View"
 msgstr "სიის ხედი"
 
-#: actionmanager.cpp:419
+#: actionmanager.cpp:420
 #, kde-format
 msgctxt "@info:tooltip"
 msgid "Switch to the List View"
 msgstr "მოვლენების სიის ხედზე გადართვა"
 
-#: actionmanager.cpp:421
+#: actionmanager.cpp:422
 #, kde-format
 msgctxt "@info:whatsthis"
 msgid ""
@@ -602,24 +602,24 @@ msgstr ""
 "ჟურნალის ჩანაწერს, იმ თარიღებისთვის, რომლებიც თარიღის ნავიგატორში აირჩიეთ, "
 "სიის სახით გაჩვენებთ."
 
-#: actionmanager.cpp:427
+#: actionmanager.cpp:428
 #, kde-format
 msgid "&To-do List"
 msgstr "&განრიგის სია"
 
-#: actionmanager.cpp:428
+#: actionmanager.cpp:429
 #, kde-format
 msgctxt "@info:status"
 msgid "To-do List View"
 msgstr "განრგის სიის ხედი"
 
-#: actionmanager.cpp:429
+#: actionmanager.cpp:430
 #, kde-format
 msgctxt "@info:tooltip"
 msgid "Switch to the To-do List View"
 msgstr "გასაკეთებლების სიის ხედზე გადართვა"
 
-#: actionmanager.cpp:431
+#: actionmanager.cpp:432
 #, kde-format
 msgctxt "@info:whatsthis"
 msgid ""
@@ -629,24 +629,24 @@ msgstr ""
 "გადართავს გასაკეთებლების სიის ხედზე, რომელიც წარმოგიდგენთ ადგილს, სადაც "
 "შეგიძლიათ, თვალყური ადევნოთ ამოცანებს, რომლებიც დასასრულებელი გაქვთ."
 
-#: actionmanager.cpp:437
+#: actionmanager.cpp:438
 #, kde-format
 msgid "&Journal"
 msgstr "&ჟურნალი"
 
-#: actionmanager.cpp:438
+#: actionmanager.cpp:439
 #, kde-format
 msgctxt "@info:status"
 msgid "Journal View"
 msgstr "ჟურნალის ხედი"
 
-#: actionmanager.cpp:439
+#: actionmanager.cpp:440
 #, kde-format
 msgctxt "@info:tooltip"
 msgid "Switch to the Journal View"
 msgstr "ჟურნალის ხედზე გადართვა"
 
-#: actionmanager.cpp:441
+#: actionmanager.cpp:442
 #, kde-format
 msgctxt "@info:whatsthis"
 msgid ""
@@ -656,24 +656,24 @@ msgstr ""
 "გადართავს ჟურნალის ხედზე, რომელიც წარმოგიდგენთ ადგილს, რომელიც თქვენი "
 "გამოცდილებისა თუ გამოძახილის ჩასაწერად შეგიძლიათ, გამიყენოთ."
 
-#: actionmanager.cpp:447
+#: actionmanager.cpp:448
 #, kde-format
 msgid "Time&line"
 msgstr "&დროის ხაზი"
 
-#: actionmanager.cpp:448
+#: actionmanager.cpp:449
 #, kde-format
 msgctxt "@info:status"
 msgid "Timeline View"
 msgstr "დროის ხაზის ხედი"
 
-#: actionmanager.cpp:449
+#: actionmanager.cpp:450
 #, kde-format
 msgctxt "@info:tooltip"
 msgid "Switch to the Timeline View"
 msgstr "დროის ხაზის ხედზე გადართვა"
 
-#: actionmanager.cpp:451
+#: actionmanager.cpp:452
 #, kde-format
 msgctxt "@info:whatsthis"
 msgid ""
@@ -683,25 +683,25 @@ msgstr ""
 "გადართავს დროის ხაზის ხედზე, რომლებიც გაჩვენებთ ყველა მოვლენას მონიშნულ "
 "შუალედში, განტის ხედში. თითოეულ კალენდარს ცალ-ცალკე ხაზზე გაჩვენებთ."
 
-#: actionmanager.cpp:460
+#: actionmanager.cpp:461
 #, kde-format
 msgctxt "@action"
 msgid "&Refresh"
 msgstr "&განახლება"
 
-#: actionmanager.cpp:461
+#: actionmanager.cpp:462
 #, kde-format
 msgctxt "@info:status"
 msgid "Refresh"
 msgstr "განახლება"
 
-#: actionmanager.cpp:462
+#: actionmanager.cpp:463
 #, kde-format
 msgctxt "@info:tooltip"
 msgid "Refresh the display"
 msgstr "ეკრანის განახლება"
 
-#: actionmanager.cpp:464
+#: actionmanager.cpp:465
 #, kde-format
 msgctxt "@info:whatsthis"
 msgid ""
@@ -711,24 +711,24 @@ msgstr ""
 "ეს ქმედება მიმდინარე კალენდრის ხედს განაახლებს და თავიდან დახატავს. ის არ "
 "ასინქრონებს ან განაახლებს კალენდრის საქაღალდეებს."
 
-#: actionmanager.cpp:473
+#: actionmanager.cpp:474
 #, kde-format
 msgid "F&ilter"
 msgstr "&ფილტრი"
 
-#: actionmanager.cpp:474
+#: actionmanager.cpp:475
 #, kde-format
 msgctxt "@info:status"
 msgid "Filter incidences"
 msgstr "ინციდენტების გაფილტვრა"
 
-#: actionmanager.cpp:475
+#: actionmanager.cpp:476
 #, kde-format
 msgctxt "@info:tooltip"
 msgid "Filter incidences from the calendar"
 msgstr "კალენდრიდან ინციდენტების გაფილტვრა"
 
-#: actionmanager.cpp:477
+#: actionmanager.cpp:478
 #, kde-format
 msgctxt "@info:whatsthis"
 msgid ""
@@ -739,81 +739,81 @@ msgstr ""
 "ფილტრები უკვე უნდა არსებობდეს. იხილეთ \"ხედის ფილტრების მართვის\" პუნქტი "
 "მორგების მენიუში."
 
-#: actionmanager.cpp:489
+#: actionmanager.cpp:490
 #, kde-format
 msgid "In Horizontally"
 msgstr "ჰორიზონტალურში"
 
-#: actionmanager.cpp:494
+#: actionmanager.cpp:495
 #, kde-format
 msgid "Out Horizontally"
 msgstr "ჰორიზონტალურიდან"
 
-#: actionmanager.cpp:499
+#: actionmanager.cpp:500
 #, kde-format
 msgid "In Vertically"
 msgstr "ვერტიკალურში"
 
-#: actionmanager.cpp:504
+#: actionmanager.cpp:505
 #, kde-format
 msgid "Out Vertically"
 msgstr "ვერტიკალურიდან"
 
-#: actionmanager.cpp:513
+#: actionmanager.cpp:514
 #, kde-format
 msgctxt "@action Jump to today"
 msgid "To &Today"
 msgstr "&დღემდე"
 
 #. i18n: ectx: property (text), widget (QPushButton, mTodayBtn)
-#: actionmanager.cpp:514 views/collectionview/quickview.ui:94
+#: actionmanager.cpp:515 views/collectionview/quickview.ui:94
 #, kde-format
 msgid "Today"
 msgstr "დღეს"
 
-#: actionmanager.cpp:515
+#: actionmanager.cpp:516
 #, kde-format
 msgctxt "@info:status"
 msgid "Scroll to Today"
 msgstr "&დღევანდელ დღეზე გადახვევა"
 
-#: actionmanager.cpp:516
+#: actionmanager.cpp:517
 #, kde-format
 msgctxt "@info:tooltip"
 msgid "Scroll the view to today"
 msgstr "დღევანდელ დღეზე გადახვევა"
 
-#: actionmanager.cpp:517
+#: actionmanager.cpp:518
 #, kde-format
 msgctxt "@info:whatsthis"
 msgid "Scrolls the current view to the today's date."
 msgstr "მიმდინარე ხედის დღევანდელ თარიღზე გადახვევა."
 
-#: actionmanager.cpp:522
+#: actionmanager.cpp:523
 #, kde-format
 msgctxt "scroll backward"
 msgid "&Backward"
 msgstr "&უკან"
 
-#: actionmanager.cpp:523
+#: actionmanager.cpp:524
 #, kde-format
 msgctxt "scroll backward"
 msgid "Back"
 msgstr "უკან"
 
-#: actionmanager.cpp:524
+#: actionmanager.cpp:525
 #, kde-format
 msgctxt "@info:status"
 msgid "Scroll Backward"
 msgstr "&უკან გადახვევა"
 
-#: actionmanager.cpp:525
+#: actionmanager.cpp:526
 #, kde-format
 msgctxt "@info:tooltip"
 msgid "Scroll the view backward"
 msgstr "ხედის უკან გადახვევა"
 
-#: actionmanager.cpp:527
+#: actionmanager.cpp:528
 #, kde-format
 msgctxt "@info:whatsthis"
 msgid ""
@@ -822,31 +822,31 @@ msgid ""
 msgstr ""
 "გადაახვევს უკან დღით, კვირით ან წლით, მიმდინარე კალენდრის ხედის მიხედვით."
 
-#: actionmanager.cpp:533
+#: actionmanager.cpp:534
 #, kde-format
 msgctxt "scroll forward"
 msgid "&Forward"
 msgstr "&წინ"
 
-#: actionmanager.cpp:534
+#: actionmanager.cpp:535
 #, kde-format
 msgctxt "scroll forward"
 msgid "Forward"
 msgstr "წინ"
 
-#: actionmanager.cpp:535
+#: actionmanager.cpp:536
 #, kde-format
 msgctxt "@info:status"
 msgid "Scroll Forward"
 msgstr "წინ გადახვევა"
 
-#: actionmanager.cpp:536
+#: actionmanager.cpp:537
 #, kde-format
 msgctxt "@info:tooltip"
 msgid "Scroll the view forward"
 msgstr "ხედის წინ გადახვევა"
 
-#: actionmanager.cpp:538
+#: actionmanager.cpp:539
 #, kde-format
 msgctxt "@info:whatsthis"
 msgid ""
@@ -855,46 +855,46 @@ msgid ""
 msgstr ""
 "გადაახვევს წინ დღით, კვირით ან წლით, მიმდინარე კალენდრის ხედის მიხედვით."
 
-#: actionmanager.cpp:543
+#: actionmanager.cpp:544
 #, kde-format
 msgid "&Day"
 msgstr "&დღე"
 
-#: actionmanager.cpp:552 actionmanager.cpp:1063
+#: actionmanager.cpp:553 actionmanager.cpp:1065
 #, kde-format
 msgid "&Next Day"
 msgid_plural "&Next %1 Days"
 msgstr[0] "&შემდეგი დღე"
 msgstr[1] "&შემდეგი %1 დღე"
 
-#: actionmanager.cpp:554
+#: actionmanager.cpp:555
 #, kde-format
 msgid "W&ork Week"
 msgstr "&სამუშაო კვირა"
 
-#: actionmanager.cpp:559
+#: actionmanager.cpp:560
 #, kde-format
 msgid "&Week"
 msgstr "&კვირა"
 
-#: actionmanager.cpp:566 kodaymatrix.cpp:484
+#: actionmanager.cpp:567 kodaymatrix.cpp:484
 #, kde-format
 msgid "New E&vent…"
 msgstr "ახალი &მოვლენა…"
 
-#: actionmanager.cpp:567
+#: actionmanager.cpp:568
 #, kde-format
 msgctxt "@info:status"
 msgid "Create a new Event"
 msgstr "ახალი მოვლენის შექმნა"
 
-#: actionmanager.cpp:568
+#: actionmanager.cpp:569
 #, kde-format
 msgctxt "@info:tooltip"
 msgid "Create a new Event"
 msgstr "ახალი მოვლენის შექმნა"
 
-#: actionmanager.cpp:570
+#: actionmanager.cpp:571
 #, kde-format
 msgctxt "@info:whatsthis"
 msgid ""
@@ -904,24 +904,24 @@ msgstr ""
 "გაუშვებს ფანჯარას, რომელიც საშუალებას გაძლევთ, შექმნათ, ახალი მოვლენა, "
 "შემხსენებლებით, დამსწრეებით, გამეორებებით და ა.შ."
 
-#: actionmanager.cpp:576 kodaymatrix.cpp:485
+#: actionmanager.cpp:577 kodaymatrix.cpp:485
 #, kde-format
 msgid "New &To-do…"
 msgstr "&ახალი განრიგი…"
 
-#: actionmanager.cpp:577
+#: actionmanager.cpp:578
 #, kde-format
 msgctxt "@info:status"
 msgid "Create a new To-do"
 msgstr "ახალი განრიგის შექმნა"
 
-#: actionmanager.cpp:578
+#: actionmanager.cpp:579
 #, kde-format
 msgctxt "@info:tooltip"
 msgid "Create a new To-do"
 msgstr "ახალი განრიგის შექმნა"
 
-#: actionmanager.cpp:580
+#: actionmanager.cpp:581
 #, kde-format
 msgctxt "@info:whatsthis"
 msgid ""
@@ -931,58 +931,58 @@ msgstr ""
 "გაუშვებს ფანჯარას, რომელიც საშუალებას გაძლევთ, შექმნათ, ახალი გასაკეთებელი, "
 "შემხსენებლებით, დამსწრეებით, გამეორებებით და ა.შ."
 
-#: actionmanager.cpp:587
+#: actionmanager.cpp:588
 #, kde-format
 msgctxt "@action"
 msgid "New Su&b-to-do…"
 msgstr "ახალი &ქვეგანრიგი…"
 
-#: actionmanager.cpp:595 kodaymatrix.cpp:486
+#: actionmanager.cpp:596 kodaymatrix.cpp:486
 #, kde-format
 msgid "New &Journal…"
 msgstr "&ახალი ჟურნალი…"
 
-#: actionmanager.cpp:596
-#, kde-format
-msgctxt "@info:status"
-msgid "Create a new Journal"
-msgstr "ახალი ჟურნალის შექმნა"
-
 #: actionmanager.cpp:597
 #, kde-format
-msgctxt "@info:tooltip"
+msgctxt "@info:status"
 msgid "Create a new Journal"
 msgstr "ახალი ჟურნალის შექმნა"
 
 #: actionmanager.cpp:598
 #, kde-format
+msgctxt "@info:tooltip"
+msgid "Create a new Journal"
+msgstr "ახალი ჟურნალის შექმნა"
+
+#: actionmanager.cpp:599
+#, kde-format
 msgctxt "@info:whatsthis"
 msgid "Starts a dialog that allows you to create a new Journal entry."
 msgstr "გაჩვენებთ ფანჯარას, სადაც ახალი ჟურნალის ჩანაწერის შექმნა შეგიძლიათ."
 
-#: actionmanager.cpp:603
+#: actionmanager.cpp:604
 #, kde-format
 msgid "Configure View…"
 msgstr "ხედის მორგება…"
 
-#: actionmanager.cpp:604
+#: actionmanager.cpp:605
 #, kde-format
 msgid "Configure"
 msgstr "მორგება"
 
-#: actionmanager.cpp:605
+#: actionmanager.cpp:606
 #, kde-format
 msgctxt "@info:status"
 msgid "Configure the view"
 msgstr "ხედის მორგება"
 
-#: actionmanager.cpp:606
+#: actionmanager.cpp:607
 #, kde-format
 msgctxt "@info:tooltip"
 msgid "Configure the current view"
 msgstr "მიმდინარე ხედის მორგება"
 
-#: actionmanager.cpp:608
+#: actionmanager.cpp:609
 #, kde-format
 msgctxt "@info:whatsthis"
 msgid ""
@@ -992,17 +992,17 @@ msgstr ""
 "გაუშვებს მორგების ფანჯარას, რომელიც მიმდინარე კალენდრის ხედის პარამეტრების "
 "შეცვლის საშუალებას გაძლევთ."
 
-#: actionmanager.cpp:614 actionmanager.cpp:1300 actionmanager.cpp:1341
+#: actionmanager.cpp:615 actionmanager.cpp:1302 actionmanager.cpp:1343
 #, kde-format
 msgid "&Show"
 msgstr "&ჩვენება"
 
-#: actionmanager.cpp:618 actionmanager.cpp:1303 actionmanager.cpp:1342
+#: actionmanager.cpp:619 actionmanager.cpp:1305 actionmanager.cpp:1344
 #, kde-format
 msgid "&Edit…"
 msgstr "&ჩასწორება…"
 
-#: actionmanager.cpp:627
+#: actionmanager.cpp:628
 #, kde-format
 msgctxt "@action"
 msgid "&Make Sub-to-do Independent"
@@ -1012,257 +1012,257 @@ msgstr "ქვეგასაკეთებლის დამოუკიდ�
 #. mCalendarView, SLOT(toggleAlarm()),
 #. mACollection, "activate_alarm" );
 #. ************************* SCHEDULE MENU *******************************
-#: actionmanager.cpp:639
+#: actionmanager.cpp:640
 #, kde-format
 msgid "&Publish Item Information…"
 msgstr "ელემენტის ინფორმაციის &გამოცემა…"
 
-#: actionmanager.cpp:646
+#: actionmanager.cpp:647
 #, kde-format
 msgid "Send &Invitation to Attendees"
 msgstr "დამსწრეებისთვის &მოსაწვევის გაგზავნა"
 
-#: actionmanager.cpp:654
+#: actionmanager.cpp:655
 #, kde-format
 msgctxt "@action"
 msgid "Re&quest Update"
 msgstr "&განახლების მოთხოვნა"
 
-#: actionmanager.cpp:662
+#: actionmanager.cpp:663
 #, kde-format
 msgctxt "@action"
 msgid "Send &Cancellation to Attendees"
 msgstr "გაუქმების გაგზავნა &დამსწრეებისთვის"
 
-#: actionmanager.cpp:670
+#: actionmanager.cpp:671
 #, kde-format
 msgid "Send Status &Update"
 msgstr "სტატუსის &განახლების გაგზავნა"
 
-#: actionmanager.cpp:678
+#: actionmanager.cpp:679
 #, kde-format
 msgctxt "counter proposal"
 msgid "Request Chan&ge"
 msgstr "ცვლილების &მოთხოვნა"
 
-#: actionmanager.cpp:686
+#: actionmanager.cpp:687
 #, kde-format
 msgctxt "@action"
 msgid "&Mail Free Busy Information…"
 msgstr "თავისუფალი/დაკავებულის ინფორმაციის &ელფოსტით გაგზავნა…"
 
-#: actionmanager.cpp:691
+#: actionmanager.cpp:692
 #, kde-format
 msgid "&Send as iCalendar…"
 msgstr "&iCalendar-ის სახით გაგზავნა…"
 
-#: actionmanager.cpp:698
+#: actionmanager.cpp:699
 #, kde-format
 msgctxt "@action"
 msgid "&Upload Free Busy Information"
 msgstr "თავისუფალი/დაკავებულის ინფორმაციის &ატვირთვა"
 
-#: actionmanager.cpp:704
+#: actionmanager.cpp:705
 #, kde-format
 msgid "&Address Book"
 msgstr "&მისამართების წიგნი"
 
-#: actionmanager.cpp:712
+#: actionmanager.cpp:713
 #, kde-format
 msgid "Show Date Navigator"
 msgstr "თარიღის ნავიგატორის ჩვენება"
 
-#: actionmanager.cpp:716
+#: actionmanager.cpp:717
 #, kde-format
 msgid "Show To-do View"
 msgstr "განრიგის ხედის ჩვენება"
 
-#: actionmanager.cpp:720
+#: actionmanager.cpp:721
 #, kde-format
 msgid "Show Item Viewer"
 msgstr "ელემენტის დათვალიერების ჩვენება"
 
-#: actionmanager.cpp:736
+#: actionmanager.cpp:737
 #, kde-format
 msgid "Show Calendar Manager"
 msgstr "კალენდრის მმართველის ჩვენება"
 
-#: actionmanager.cpp:749
+#: actionmanager.cpp:750
 #, kde-format
 msgctxt "@action"
 msgid "Configure &Date && Time…"
 msgstr "&თარიღისა და დროის მორგება…"
 
-#: actionmanager.cpp:753
+#: actionmanager.cpp:754
 #, kde-format
 msgid "Manage View &Filters…"
 msgstr "ხედის &ფილტრების მართვა…"
 
-#: actionmanager.cpp:757
+#: actionmanager.cpp:758
 #, kde-format
 msgctxt "@action"
 msgid "Manage T&ags…"
 msgstr "&ჭდეების მართვა…"
 
-#: actionmanager.cpp:765
+#: actionmanager.cpp:766
 #, kde-format
 msgid "&Configure KOrganizer…"
 msgstr "KOrganizer-ის &მორგება…"
 
-#: actionmanager.cpp:843
+#: actionmanager.cpp:844
 #, kde-format
 msgid "1 incidence was imported successfully."
 msgid_plural "%1 incidences were imported successfully."
 msgstr[0] "1 ინციდენტი წარმატებით იქნა შემოტანილი."
 msgstr[1] "%1 ინციდენტი წარმატებით იქნა შემოტანილი."
 
-#: actionmanager.cpp:846
+#: actionmanager.cpp:847
 #, kde-format
 msgid "There was an error while merging the calendar: %1"
 msgstr "შეცდომა კალენდრების შერწყმისას: %1"
 
-#: actionmanager.cpp:857
+#: actionmanager.cpp:858
 #, kde-format
 msgid "New calendar added successfully"
 msgstr "ახალი კალენდრის დამატება წარმატებულია"
 
-#: actionmanager.cpp:859
+#: actionmanager.cpp:860
 #, kde-format
 msgid "Could not add a calendar. Error: %1"
 msgstr "კალენდრის დამატება შეუძლებელია. შეცდომა: %1"
 
-#: actionmanager.cpp:916
+#: actionmanager.cpp:918
 #, kde-format
 msgctxt "@title:window"
 msgid "Select Calendar File to Open"
 msgstr "აირჩიეთ გასახსნელი კალენდრის ფაილი"
 
-#: actionmanager.cpp:944
+#: actionmanager.cpp:946
 #, kde-format
 msgctxt "@title:window"
 msgid "Select Calendar File to Import"
 msgstr "აირჩიეთ შემოსატანი კალენდრს ფაილი"
 
-#: actionmanager.cpp:975
+#: actionmanager.cpp:977
 #, kde-format
 msgid "An error occurred: %1"
 msgstr "შეცდომა: %1"
 
-#: actionmanager.cpp:993
+#: actionmanager.cpp:995
 #, kde-format
 msgid "Cannot upload calendar to '%1'"
 msgstr "კალენდრის '%1'-ზე ატვირთვა შეუძლებელია"
 
-#: actionmanager.cpp:999
+#: actionmanager.cpp:1001
 #, kde-format
 msgid "Saved calendar '%1'."
 msgstr "კალენდარი '%1' შენახულია."
 
-#: actionmanager.cpp:1037
+#: actionmanager.cpp:1039
 #, kde-format
 msgid "Unable to save calendar to the file %1."
 msgstr "კალენდრის ფაილში %1 შენახვა შეუძლებელია."
 
-#: actionmanager.cpp:1037
+#: actionmanager.cpp:1039
 #, kde-format
 msgctxt "@title:window"
 msgid "Error"
 msgstr "შეცდომა"
 
-#: actionmanager.cpp:1082
+#: actionmanager.cpp:1084
 #, kde-format
 msgid "Could not start control module for date and time format."
 msgstr "დროისა და თარიღის ფორმატის კონტროლის მოდულის გაშვება შეუძლებელია."
 
-#: actionmanager.cpp:1261
+#: actionmanager.cpp:1263
 #, kde-format
 msgid "&Show Event"
 msgstr "&მოვლენის ჩვენება"
 
-#: actionmanager.cpp:1264
+#: actionmanager.cpp:1266
 #, kde-format
 msgid "&Edit Event…"
 msgstr "&მოვლენის ჩასწორება…"
 
-#: actionmanager.cpp:1267
+#: actionmanager.cpp:1269
 #, kde-format
 msgid "&Delete Event"
 msgstr "მოვლენის &წაშლა"
 
-#: actionmanager.cpp:1275
+#: actionmanager.cpp:1277
 #, kde-format
 msgid "&Show To-do"
 msgstr "&გეგმის ჩვენება"
 
-#: actionmanager.cpp:1278 kontactplugin/korganizer/todosummarywidget.cpp:321
+#: actionmanager.cpp:1280 kontactplugin/korganizer/todosummarywidget.cpp:321
 #, kde-format
 msgid "&Edit To-do…"
 msgstr "&გეგმის ჩასწორება…"
 
-#: actionmanager.cpp:1281 kontactplugin/korganizer/todosummarywidget.cpp:323
+#: actionmanager.cpp:1283 kontactplugin/korganizer/todosummarywidget.cpp:323
 #, kde-format
 msgid "&Delete To-do"
 msgstr "&გეგმის წაშლა"
 
-#: actionmanager.cpp:1419 actionmanager.cpp:1525
+#: actionmanager.cpp:1421 actionmanager.cpp:1527
 #, kde-format
 msgid "Attach as &link"
 msgstr "&ბმულად მიბმა"
 
-#: actionmanager.cpp:1420 actionmanager.cpp:1526
+#: actionmanager.cpp:1422 actionmanager.cpp:1528
 #, kde-format
 msgid "Attach &inline"
 msgstr "&ხაზშივე მიბმა"
 
-#: actionmanager.cpp:1421
+#: actionmanager.cpp:1423
 #, kde-format
 msgid "Attach inline &without attachments"
 msgstr "ხაზში ჩასმა &მიმაგრების გარეშე"
 
-#: actionmanager.cpp:1423 actionmanager.cpp:1528
+#: actionmanager.cpp:1425 actionmanager.cpp:1530
 #, kde-format
 msgid "C&ancel"
 msgstr "გაუქმება"
 
-#: actionmanager.cpp:1461
+#: actionmanager.cpp:1463
 #, kde-format
 msgid "Removing attachments from an email might invalidate its signature."
 msgstr ""
 "ელფოსტიდან მიმაგრებული ფაილების წაშლამ შეიძლება მისი ხელმოწერა არასწორი "
 "გახადოს."
 
-#: actionmanager.cpp:1462
+#: actionmanager.cpp:1464
 #, kde-format
 msgctxt "@title:window"
 msgid "Remove Attachments"
 msgstr "მიმაგრებული ფაილების კოპირება"
 
-#: actionmanager.cpp:1613
+#: actionmanager.cpp:1615
 #, kde-format
 msgid "Undo: %1"
 msgstr "დაბრუნება: %1"
 
-#: actionmanager.cpp:1616 actionmanager.cpp:1632
+#: actionmanager.cpp:1618 actionmanager.cpp:1634
 #, kde-format
 msgid "Undo"
 msgstr "დაბრუნება"
 
-#: actionmanager.cpp:1626
+#: actionmanager.cpp:1628
 #, kde-format
 msgid "Redo: %1"
 msgstr "გამეორება: %1"
 
-#: actionmanager.cpp:1629
+#: actionmanager.cpp:1631
 #, kde-format
 msgid "Redo"
 msgstr "გამეორება"
 
-#: actionmanager.cpp:1643
+#: actionmanager.cpp:1645
 #, kde-format
 msgid "URL '%1' is invalid."
 msgstr "არასწორი URL: %1."
 
-#: actionmanager.cpp:1648
+#: actionmanager.cpp:1650
 #, kde-format
 msgctxt "@info"
 msgid ""
@@ -1277,19 +1277,19 @@ msgstr ""
 "კალენდარი აირჩიოთ.</p><p>თუ აირჩევთ დამატებას, ახალ კალენდარს ავტომატურად "
 "შეგიქმნით.</p>"
 
-#: actionmanager.cpp:1656
+#: actionmanager.cpp:1658
 #, kde-format
 msgctxt "@title:window"
 msgid "Import Calendar"
 msgstr "კალენდრის შემოტანა"
 
-#: actionmanager.cpp:1657
+#: actionmanager.cpp:1659
 #, kde-format
 msgctxt "@action:button"
 msgid "Merge into existing calendar"
 msgstr "არსებულ კალენდარში შერწყმა"
 
-#: actionmanager.cpp:1658
+#: actionmanager.cpp:1660
 #, kde-format
 msgctxt "@action:button"
 msgid "Add as new calendar"
@@ -3653,7 +3653,9 @@ msgid "Other Options"
 msgstr "სხვა პარამეტრები"
 
 #: prefs/kprefsdialog.cpp:234
-#, kde-format
+#, fuzzy, kde-format
+#| msgid "Choose…"
+msgctxt "@action:button"
 msgid "Choose…"
 msgstr "აირჩიეთ…"
 

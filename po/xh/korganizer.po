@@ -15,7 +15,7 @@ msgid ""
 msgstr ""
 "Project-Id-Version: korganizer\n"
 "Report-Msgid-Bugs-To: https://bugs.kde.org\n"
-"POT-Creation-Date: 2024-06-06 00:39+0000\n"
+"POT-Creation-Date: 2024-06-18 00:40+0000\n"
 "PO-Revision-Date: 2002-11-09 12:52+0200\n"
 "Last-Translator: Thelma Lungcuzo <thelma@translate.org.za>\n"
 "Language-Team: Xhosa <xhosa@translate.org.za>\n"
@@ -333,25 +333,25 @@ msgstr ""
 msgid "Hide menu bar"
 msgstr "Ibar yexesha:"
 
-#: actionmanager.cpp:243
+#: actionmanager.cpp:244
 #, fuzzy, kde-format
 msgctxt "@action"
 msgid "Import &Calendar…"
 msgstr "i Khalenda"
 
-#: actionmanager.cpp:244
+#: actionmanager.cpp:245
 #, fuzzy, kde-format
 msgctxt "@info:status"
 msgid "Import a calendar"
 msgstr "i Khalenda"
 
-#: actionmanager.cpp:245
+#: actionmanager.cpp:246
 #, fuzzy, kde-format
 msgctxt "@info:tooltip"
 msgid "Import an iCalendar or vCalendar file"
 msgstr "i Khalenda"
 
-#: actionmanager.cpp:247
+#: actionmanager.cpp:248
 #, kde-format
 msgctxt "@info:whatsthis"
 msgid ""
@@ -359,25 +359,25 @@ msgid ""
 "iCalendar or vCalendar file into your current calendar collection."
 msgstr ""
 
-#: actionmanager.cpp:253
+#: actionmanager.cpp:254
 #, fuzzy, kde-format
 #| msgid "New Calendar"
 msgid "Get New Calendars…"
 msgstr "Icalendar Entsha"
 
-#: actionmanager.cpp:254
+#: actionmanager.cpp:255
 #, kde-format
 msgctxt "@info:status"
 msgid "Load a calendar from \"Get Hot New Stuff\""
 msgstr ""
 
-#: actionmanager.cpp:255
+#: actionmanager.cpp:256
 #, kde-format
 msgctxt "@info:tooltip"
 msgid "Search \"Get Hot New Stuff\" for calendars to import"
 msgstr ""
 
-#: actionmanager.cpp:257
+#: actionmanager.cpp:258
 #, kde-format
 msgctxt "@info:whatsthis"
 msgid ""
@@ -385,61 +385,61 @@ msgid ""
 "search and import fun and useful calendars donated to the community."
 msgstr ""
 
-#: actionmanager.cpp:278
+#: actionmanager.cpp:279
 #, fuzzy, kde-format
 msgid "Could not load calendar %1."
 msgstr "Ayikwazanga ukulayisha ikhalenda '%1'.\n"
 
-#: actionmanager.cpp:288
+#: actionmanager.cpp:289
 #, kde-format
 msgid "The downloaded events will be merged into your current calendar."
 msgstr "Iziganeko ezilayishwe ezantsi zizakudibaniswa kwi khalenda yangoku."
 
-#: actionmanager.cpp:305
+#: actionmanager.cpp:306
 #, fuzzy, kde-format
 msgctxt "@action"
 msgid "Export as &iCalendar…"
 msgstr "i Khalenda"
 
-#: actionmanager.cpp:306
+#: actionmanager.cpp:307
 #, fuzzy, kde-format
 msgctxt "@info:status"
 msgid "Export calendar to file"
 msgstr "i Khalenda"
 
-#: actionmanager.cpp:307
+#: actionmanager.cpp:308
 #, kde-format
 msgctxt "@info:tooltip"
 msgid "Export your calendar to an iCalendar file"
 msgstr ""
 
-#: actionmanager.cpp:308
+#: actionmanager.cpp:309
 #, kde-format
 msgctxt "@info:whatsthis"
 msgid ""
 "Allows you to export your entire calendar collection to one iCalendar file."
 msgstr ""
 
-#: actionmanager.cpp:314
+#: actionmanager.cpp:315
 #, fuzzy, kde-format
 msgctxt "@action"
 msgid "Archive O&ld Incidences…"
 msgstr "Gcina Amangeno Amadala..."
 
-#: actionmanager.cpp:315
+#: actionmanager.cpp:316
 #, fuzzy, kde-format
 msgctxt "@info:status"
 msgid "Archive events and to-dos to a file"
 msgstr "Indawo yokugcina efihlakeleyo/Cima amadinga Adlulileyo"
 
-#: actionmanager.cpp:316
+#: actionmanager.cpp:317
 #, fuzzy, kde-format
 #| msgid "The journal entries can not be exported to a vCalendar file."
 msgctxt "@info:tooltip"
 msgid "Archive old events and to-dos to an iCalendar file"
 msgstr "Amangeno endaba akanakurhwetywa ngaphandle kwifayile ye vCalendar."
 
-#: actionmanager.cpp:318
+#: actionmanager.cpp:319
 #, kde-format
 msgctxt "@info:whatsthis"
 msgid ""
@@ -448,7 +448,7 @@ msgid ""
 "your existing calendar collection."
 msgstr ""
 
-#: actionmanager.cpp:326
+#: actionmanager.cpp:327
 #, fuzzy, kde-format
 msgctxt "@action"
 msgid "Pur&ge Completed To-dos"
@@ -456,7 +456,7 @@ msgstr ""
 "cima ngokugqityiwe Ku-Dos\n"
 "Hlenga-hlengisa Okugqityiweyo"
 
-#: actionmanager.cpp:327
+#: actionmanager.cpp:328
 #, fuzzy, kde-format
 msgctxt "@info:status"
 msgid "Purge completed to-dos"
@@ -464,13 +464,13 @@ msgstr ""
 "cima ngokugqityiwe Ku-Dos\n"
 "Hlenga-hlengisa Okugqityiweyo"
 
-#: actionmanager.cpp:328
+#: actionmanager.cpp:329
 #, fuzzy, kde-format
 msgctxt "@info:tooltip"
 msgid "Remove completed to-dos from your calendar"
 msgstr "Cima zonke ezigqityiweyo Ku-Dos?"
 
-#: actionmanager.cpp:330
+#: actionmanager.cpp:331
 #, kde-format
 msgctxt "@info:whatsthis"
 msgid ""
@@ -479,30 +479,30 @@ msgid ""
 msgstr ""
 
 #. i18n: ectx: property (text), widget (QPushButton, mDeleteButton)
-#: actionmanager.cpp:367 actionmanager.cpp:622 actionmanager.cpp:1306
-#: actionmanager.cpp:1343 ui/filteredit_base.ui:56
+#: actionmanager.cpp:368 actionmanager.cpp:623 actionmanager.cpp:1308
+#: actionmanager.cpp:1345 ui/filteredit_base.ui:56
 #, fuzzy, kde-format
 msgid "&Delete"
 msgstr "Cima..."
 
-#: actionmanager.cpp:384
+#: actionmanager.cpp:385
 #, kde-format
 msgid "What's &Next"
 msgstr "Yintoni &Elandelayo"
 
-#: actionmanager.cpp:385
+#: actionmanager.cpp:386
 #, fuzzy, kde-format
 msgctxt "@info:status"
 msgid "What's Next View"
 msgstr "Yintoni &Elandelayo"
 
-#: actionmanager.cpp:386
+#: actionmanager.cpp:387
 #, kde-format
 msgctxt "@info:tooltip"
 msgid "Switch to the What's Next View"
 msgstr ""
 
-#: actionmanager.cpp:388
+#: actionmanager.cpp:389
 #, kde-format
 msgctxt "@info:whatsthis"
 msgid ""
@@ -512,24 +512,24 @@ msgid ""
 "Navigator sidebar will be shown."
 msgstr ""
 
-#: actionmanager.cpp:396
+#: actionmanager.cpp:397
 #, kde-format
 msgid "&Month"
 msgstr "&Inyanga"
 
-#: actionmanager.cpp:397
+#: actionmanager.cpp:398
 #, fuzzy, kde-format
 msgctxt "@info:status"
 msgid "Month View"
 msgstr "Imboniselo yenyanga:"
 
-#: actionmanager.cpp:398
+#: actionmanager.cpp:399
 #, fuzzy, kde-format
 msgctxt "@info:tooltip"
 msgid "Switch to the Month View"
 msgstr "Imboniselo yenyanga:"
 
-#: actionmanager.cpp:400
+#: actionmanager.cpp:401
 #, kde-format
 msgctxt "@info:whatsthis"
 msgid ""
@@ -537,24 +537,24 @@ msgid ""
 "familiar monthly calendar layout."
 msgstr ""
 
-#: actionmanager.cpp:406
+#: actionmanager.cpp:407
 #, fuzzy, kde-format
 msgid "&Agenda"
 msgstr "Imboniselo yokuzakuxoxwa:"
 
-#: actionmanager.cpp:407
+#: actionmanager.cpp:408
 #, fuzzy, kde-format
 msgctxt "@info:status"
 msgid "Agenda View"
 msgstr "Imboniselo yokuzakuxoxwa:"
 
-#: actionmanager.cpp:408
+#: actionmanager.cpp:409
 #, fuzzy, kde-format
 msgctxt "@info:tooltip"
 msgid "Switch to the Agenda View"
 msgstr "Bonisa okukhethiweyo kuphela"
 
-#: actionmanager.cpp:410
+#: actionmanager.cpp:411
 #, kde-format
 msgctxt "@info:whatsthis"
 msgid ""
@@ -563,25 +563,25 @@ msgid ""
 "each event in the day timetable."
 msgstr ""
 
-#: actionmanager.cpp:417
+#: actionmanager.cpp:418
 #, fuzzy, kde-format
 msgid "&Event List"
 msgstr "Iziganeko:"
 
-#: actionmanager.cpp:418
+#: actionmanager.cpp:419
 #, fuzzy, kde-format
 #| msgid "Center View"
 msgctxt "@info:status"
 msgid "List View"
 msgstr "Umboniso Wasembindini"
 
-#: actionmanager.cpp:419
+#: actionmanager.cpp:420
 #, kde-format
 msgctxt "@info:tooltip"
 msgid "Switch to the List View"
 msgstr ""
 
-#: actionmanager.cpp:421
+#: actionmanager.cpp:422
 #, kde-format
 msgctxt "@info:whatsthis"
 msgid ""
@@ -589,24 +589,24 @@ msgid ""
 "journal entries for the dates selected in the Date Navigator as a list."
 msgstr ""
 
-#: actionmanager.cpp:427
+#: actionmanager.cpp:428
 #, fuzzy, kde-format
 msgid "&To-do List"
 msgstr "&Ukwe-Nza Uluhlu"
 
-#: actionmanager.cpp:428
+#: actionmanager.cpp:429
 #, fuzzy, kde-format
 msgctxt "@info:status"
 msgid "To-do List View"
 msgstr "&Ukwe-Nza Uluhlu"
 
-#: actionmanager.cpp:429
+#: actionmanager.cpp:430
 #, fuzzy, kde-format
 msgctxt "@info:tooltip"
 msgid "Switch to the To-do List View"
 msgstr "Cwangcisa Izimo Zakho"
 
-#: actionmanager.cpp:431
+#: actionmanager.cpp:432
 #, kde-format
 msgctxt "@info:whatsthis"
 msgid ""
@@ -614,24 +614,24 @@ msgid ""
 "tasks that need to be done."
 msgstr ""
 
-#: actionmanager.cpp:437
+#: actionmanager.cpp:438
 #, kde-format
 msgid "&Journal"
 msgstr "&Incwadi egcina ii akhawuti"
 
-#: actionmanager.cpp:438
+#: actionmanager.cpp:439
 #, fuzzy, kde-format
 msgctxt "@info:status"
 msgid "Journal View"
 msgstr "&Incwadi egcina ii akhawuti"
 
-#: actionmanager.cpp:439
+#: actionmanager.cpp:440
 #, fuzzy, kde-format
 msgctxt "@info:tooltip"
 msgid "Switch to the Journal View"
 msgstr "Cima iziganeko ezindala"
 
-#: actionmanager.cpp:441
+#: actionmanager.cpp:442
 #, kde-format
 msgctxt "@info:whatsthis"
 msgid ""
@@ -639,26 +639,26 @@ msgid ""
 "reflections, occurrences or experiences."
 msgstr ""
 
-#: actionmanager.cpp:447
+#: actionmanager.cpp:448
 #, fuzzy, kde-format
 msgid "Time&line"
 msgstr "Ummandla wexesha:"
 
-#: actionmanager.cpp:448
+#: actionmanager.cpp:449
 #, fuzzy, kde-format
 #| msgid "Center View"
 msgctxt "@info:status"
 msgid "Timeline View"
 msgstr "Umboniso Wasembindini"
 
-#: actionmanager.cpp:449
+#: actionmanager.cpp:450
 #, fuzzy, kde-format
 #| msgid "Center View"
 msgctxt "@info:tooltip"
 msgid "Switch to the Timeline View"
 msgstr "Umboniso Wasembindini"
 
-#: actionmanager.cpp:451
+#: actionmanager.cpp:452
 #, kde-format
 msgctxt "@info:whatsthis"
 msgid ""
@@ -666,25 +666,25 @@ msgid ""
 "timespan in a Gantt view. Each calendar is displayed in a separate line."
 msgstr ""
 
-#: actionmanager.cpp:460
+#: actionmanager.cpp:461
 #, fuzzy, kde-format
 msgctxt "@action"
 msgid "&Refresh"
 msgstr "Hlaziya"
 
-#: actionmanager.cpp:461
+#: actionmanager.cpp:462
 #, fuzzy, kde-format
 msgctxt "@info:status"
 msgid "Refresh"
 msgstr "Hlaziya"
 
-#: actionmanager.cpp:462
+#: actionmanager.cpp:463
 #, fuzzy, kde-format
 msgctxt "@info:tooltip"
 msgid "Refresh the display"
 msgstr "Cwangcisa Izimo Zakho"
 
-#: actionmanager.cpp:464
+#: actionmanager.cpp:465
 #, kde-format
 msgctxt "@info:whatsthis"
 msgid ""
@@ -692,24 +692,24 @@ msgid ""
 "sync or update any calendar folders."
 msgstr ""
 
-#: actionmanager.cpp:473
+#: actionmanager.cpp:474
 #, fuzzy, kde-format
 msgid "F&ilter"
 msgstr "Bonisa Icebo lokucoca ulwelo"
 
-#: actionmanager.cpp:474
+#: actionmanager.cpp:475
 #, fuzzy, kde-format
 msgctxt "@info:status"
 msgid "Filter incidences"
 msgstr "Iyashicilela"
 
-#: actionmanager.cpp:475
+#: actionmanager.cpp:476
 #, fuzzy, kde-format
 msgctxt "@info:tooltip"
 msgid "Filter incidences from the calendar"
 msgstr "Cima iziganeko ezindala"
 
-#: actionmanager.cpp:477
+#: actionmanager.cpp:478
 #, kde-format
 msgctxt "@info:whatsthis"
 msgid ""
@@ -717,27 +717,27 @@ msgid ""
 "created first. See \"Manage View Filters\" option in the Settings menu."
 msgstr ""
 
-#: actionmanager.cpp:489
+#: actionmanager.cpp:490
 #, kde-format
 msgid "In Horizontally"
 msgstr ""
 
-#: actionmanager.cpp:494
+#: actionmanager.cpp:495
 #, kde-format
 msgid "Out Horizontally"
 msgstr ""
 
-#: actionmanager.cpp:499
+#: actionmanager.cpp:500
 #, kde-format
 msgid "In Vertically"
 msgstr ""
 
-#: actionmanager.cpp:504
+#: actionmanager.cpp:505
 #, kde-format
 msgid "Out Vertically"
 msgstr ""
 
-#: actionmanager.cpp:513
+#: actionmanager.cpp:514
 #, fuzzy, kde-format
 #| msgid "day"
 msgctxt "@action Jump to today"
@@ -745,61 +745,61 @@ msgid "To &Today"
 msgstr "umhla"
 
 #. i18n: ectx: property (text), widget (QPushButton, mTodayBtn)
-#: actionmanager.cpp:514 views/collectionview/quickview.ui:94
+#: actionmanager.cpp:515 views/collectionview/quickview.ui:94
 #, fuzzy, kde-format
 #| msgid "day"
 msgid "Today"
 msgstr "umhla"
 
-#: actionmanager.cpp:515
+#: actionmanager.cpp:516
 #, fuzzy, kde-format
 #| msgid "Go to &Today"
 msgctxt "@info:status"
 msgid "Scroll to Today"
 msgstr "Yiya ku &Namhlanje"
 
-#: actionmanager.cpp:516
+#: actionmanager.cpp:517
 #, fuzzy, kde-format
 #| msgid "Go to &Today"
 msgctxt "@info:tooltip"
 msgid "Scroll the view to today"
 msgstr "Yiya ku &Namhlanje"
 
-#: actionmanager.cpp:517
+#: actionmanager.cpp:518
 #, kde-format
 msgctxt "@info:whatsthis"
 msgid "Scrolls the current view to the today's date."
 msgstr ""
 
-#: actionmanager.cpp:522
+#: actionmanager.cpp:523
 #, fuzzy, kde-format
 #| msgid "Go &Backward"
 msgctxt "scroll backward"
 msgid "&Backward"
 msgstr "Yiya &Ngasemva"
 
-#: actionmanager.cpp:523
+#: actionmanager.cpp:524
 #, fuzzy, kde-format
 #| msgid "Go &Backward"
 msgctxt "scroll backward"
 msgid "Back"
 msgstr "Yiya &Ngasemva"
 
-#: actionmanager.cpp:524
+#: actionmanager.cpp:525
 #, fuzzy, kde-format
 #| msgid "Go &Backward"
 msgctxt "@info:status"
 msgid "Scroll Backward"
 msgstr "Yiya &Ngasemva"
 
-#: actionmanager.cpp:525
+#: actionmanager.cpp:526
 #, fuzzy, kde-format
 #| msgid "Go &Backward"
 msgctxt "@info:tooltip"
 msgid "Scroll the view backward"
 msgstr "Yiya &Ngasemva"
 
-#: actionmanager.cpp:527
+#: actionmanager.cpp:528
 #, kde-format
 msgctxt "@info:whatsthis"
 msgid ""
@@ -807,35 +807,35 @@ msgid ""
 "calendar view."
 msgstr ""
 
-#: actionmanager.cpp:533
+#: actionmanager.cpp:534
 #, fuzzy, kde-format
 #| msgid "Go &Forward"
 msgctxt "scroll forward"
 msgid "&Forward"
 msgstr "Yiya &Phambili"
 
-#: actionmanager.cpp:534
+#: actionmanager.cpp:535
 #, fuzzy, kde-format
 #| msgid "Go &Forward"
 msgctxt "scroll forward"
 msgid "Forward"
 msgstr "Yiya &Phambili"
 
-#: actionmanager.cpp:535
+#: actionmanager.cpp:536
 #, fuzzy, kde-format
 #| msgid "Go &Forward"
 msgctxt "@info:status"
 msgid "Scroll Forward"
 msgstr "Yiya &Phambili"
 
-#: actionmanager.cpp:536
+#: actionmanager.cpp:537
 #, fuzzy, kde-format
 #| msgid "Go &Forward"
 msgctxt "@info:tooltip"
 msgid "Scroll the view forward"
 msgstr "Yiya &Phambili"
 
-#: actionmanager.cpp:538
+#: actionmanager.cpp:539
 #, kde-format
 msgctxt "@info:whatsthis"
 msgid ""
@@ -843,46 +843,46 @@ msgid ""
 "calendar view."
 msgstr ""
 
-#: actionmanager.cpp:543
+#: actionmanager.cpp:544
 #, kde-format
 msgid "&Day"
 msgstr "&Imini"
 
-#: actionmanager.cpp:552 actionmanager.cpp:1063
+#: actionmanager.cpp:553 actionmanager.cpp:1065
 #, fuzzy, kde-format
 msgid "&Next Day"
 msgid_plural "&Next %1 Days"
 msgstr[0] "&Umhla Olandelayo"
 msgstr[1] "&Imihla %1 Elandelayo"
 
-#: actionmanager.cpp:554
+#: actionmanager.cpp:555
 #, kde-format
 msgid "W&ork Week"
 msgstr "Iveki Yo&msebenzi"
 
-#: actionmanager.cpp:559
+#: actionmanager.cpp:560
 #, kde-format
 msgid "&Week"
 msgstr "&Iveki"
 
-#: actionmanager.cpp:566 kodaymatrix.cpp:484
+#: actionmanager.cpp:567 kodaymatrix.cpp:484
 #, fuzzy, kde-format
 msgid "New E&vent…"
 msgstr "Isi&ganeko Esitsha..."
 
-#: actionmanager.cpp:567
+#: actionmanager.cpp:568
 #, fuzzy, kde-format
 msgctxt "@info:status"
 msgid "Create a new Event"
 msgstr "Cima Ukwe-Nza"
 
-#: actionmanager.cpp:568
+#: actionmanager.cpp:569
 #, fuzzy, kde-format
 msgctxt "@info:tooltip"
 msgid "Create a new Event"
 msgstr "Cima Ukwe-Nza"
 
-#: actionmanager.cpp:570
+#: actionmanager.cpp:571
 #, kde-format
 msgctxt "@info:whatsthis"
 msgid ""
@@ -890,24 +890,24 @@ msgid ""
 "attendees, recurrences and much more."
 msgstr ""
 
-#: actionmanager.cpp:576 kodaymatrix.cpp:485
+#: actionmanager.cpp:577 kodaymatrix.cpp:485
 #, fuzzy, kde-format
 msgid "New &To-do…"
 msgstr "Ukwe-Nza Okutsha"
 
-#: actionmanager.cpp:577
+#: actionmanager.cpp:578
 #, fuzzy, kde-format
 msgctxt "@info:status"
 msgid "Create a new To-do"
 msgstr "Cima Ukwe-Nza"
 
-#: actionmanager.cpp:578
+#: actionmanager.cpp:579
 #, fuzzy, kde-format
 msgctxt "@info:tooltip"
 msgid "Create a new To-do"
 msgstr "Cima Ukwe-Nza"
 
-#: actionmanager.cpp:580
+#: actionmanager.cpp:581
 #, kde-format
 msgctxt "@info:whatsthis"
 msgid ""
@@ -915,60 +915,60 @@ msgid ""
 "attendees, recurrences and much more."
 msgstr ""
 
-#: actionmanager.cpp:587
+#: actionmanager.cpp:588
 #, fuzzy, kde-format
 msgctxt "@action"
 msgid "New Su&b-to-do…"
 msgstr "Entsha Es&ezantsi-Ukwe-Nza..."
 
-#: actionmanager.cpp:595 kodaymatrix.cpp:486
+#: actionmanager.cpp:596 kodaymatrix.cpp:486
 #, fuzzy, kde-format
 msgid "New &Journal…"
 msgstr "&Incwadi egcina ii akhawuti"
 
-#: actionmanager.cpp:596
+#: actionmanager.cpp:597
 #, fuzzy, kde-format
 msgctxt "@info:status"
 msgid "Create a new Journal"
 msgstr "Cima Ukwe-Nza"
 
-#: actionmanager.cpp:597
+#: actionmanager.cpp:598
 #, fuzzy, kde-format
 msgctxt "@info:tooltip"
 msgid "Create a new Journal"
 msgstr "Cima Ukwe-Nza"
 
-#: actionmanager.cpp:598
+#: actionmanager.cpp:599
 #, kde-format
 msgctxt "@info:whatsthis"
 msgid "Starts a dialog that allows you to create a new Journal entry."
 msgstr ""
 
-#: actionmanager.cpp:603
+#: actionmanager.cpp:604
 #, fuzzy, kde-format
 msgid "Configure View…"
 msgstr "Qwalasela..."
 
-#: actionmanager.cpp:604
+#: actionmanager.cpp:605
 #, fuzzy, kde-format
 msgid "Configure"
 msgstr "Qwalasela..."
 
-#: actionmanager.cpp:605
+#: actionmanager.cpp:606
 #, fuzzy, kde-format
 #| msgid "Configure &Date && Time..."
 msgctxt "@info:status"
 msgid "Configure the view"
 msgstr "Qwalasela &Umhla && Ixesha..."
 
-#: actionmanager.cpp:606
+#: actionmanager.cpp:607
 #, fuzzy, kde-format
 #| msgid "Configure &Date && Time..."
 msgctxt "@info:tooltip"
 msgid "Configure the current view"
 msgstr "Qwalasela &Umhla && Ixesha..."
 
-#: actionmanager.cpp:608
+#: actionmanager.cpp:609
 #, kde-format
 msgctxt "@info:whatsthis"
 msgid ""
@@ -976,17 +976,17 @@ msgid ""
 "current calendar view."
 msgstr ""
 
-#: actionmanager.cpp:614 actionmanager.cpp:1300 actionmanager.cpp:1341
+#: actionmanager.cpp:615 actionmanager.cpp:1302 actionmanager.cpp:1343
 #, kde-format
 msgid "&Show"
 msgstr "&Bonisa"
 
-#: actionmanager.cpp:618 actionmanager.cpp:1303 actionmanager.cpp:1342
+#: actionmanager.cpp:619 actionmanager.cpp:1305 actionmanager.cpp:1344
 #, fuzzy, kde-format
 msgid "&Edit…"
 msgstr "&Hlela..."
 
-#: actionmanager.cpp:627
+#: actionmanager.cpp:628
 #, fuzzy, kde-format
 msgctxt "@action"
 msgid "&Make Sub-to-do Independent"
@@ -996,260 +996,260 @@ msgstr "&Yenza Ulwenzo- Olusezantsi Oluzimeleyo"
 #. mCalendarView, SLOT(toggleAlarm()),
 #. mACollection, "activate_alarm" );
 #. ************************* SCHEDULE MENU *******************************
-#: actionmanager.cpp:639
+#: actionmanager.cpp:640
 #, kde-format
 msgid "&Publish Item Information…"
 msgstr ""
 
-#: actionmanager.cpp:646
+#: actionmanager.cpp:647
 #, kde-format
 msgid "Send &Invitation to Attendees"
 msgstr ""
 
-#: actionmanager.cpp:654
+#: actionmanager.cpp:655
 #, fuzzy, kde-format
 msgctxt "@action"
 msgid "Re&quest Update"
 msgstr "Cela"
 
-#: actionmanager.cpp:662
+#: actionmanager.cpp:663
 #, kde-format
 msgctxt "@action"
 msgid "Send &Cancellation to Attendees"
 msgstr ""
 
-#: actionmanager.cpp:670
+#: actionmanager.cpp:671
 #, fuzzy, kde-format
 msgid "Send Status &Update"
 msgstr "Umhla wesiphelo:"
 
-#: actionmanager.cpp:678
+#: actionmanager.cpp:679
 #, fuzzy, kde-format
 msgctxt "counter proposal"
 msgid "Request Chan&ge"
 msgstr "Isibali"
 
-#: actionmanager.cpp:686
+#: actionmanager.cpp:687
 #, fuzzy, kde-format
 msgctxt "@action"
 msgid "&Mail Free Busy Information…"
 msgstr "Papasha Iinkcukacha ye Free Busy"
 
-#: actionmanager.cpp:691
+#: actionmanager.cpp:692
 #, fuzzy, kde-format
 msgid "&Send as iCalendar…"
 msgstr "iKhalenda..."
 
-#: actionmanager.cpp:698
+#: actionmanager.cpp:699
 #, fuzzy, kde-format
 msgctxt "@action"
 msgid "&Upload Free Busy Information"
 msgstr "Papasha Iinkcukacha ye Free Busy"
 
-#: actionmanager.cpp:704
+#: actionmanager.cpp:705
 #, fuzzy, kde-format
 msgid "&Address Book"
 msgstr "Incwadi yedilesi"
 
-#: actionmanager.cpp:712
+#: actionmanager.cpp:713
 #, fuzzy, kde-format
 msgid "Show Date Navigator"
 msgstr "Bonisa ixesha njenge:"
 
-#: actionmanager.cpp:716
+#: actionmanager.cpp:717
 #, fuzzy, kde-format
 msgid "Show To-do View"
 msgstr "Ukwe-nza uluhlu"
 
-#: actionmanager.cpp:720
+#: actionmanager.cpp:721
 #, fuzzy, kde-format
 msgid "Show Item Viewer"
 msgstr "Umboniseli Wesiganeko"
 
-#: actionmanager.cpp:736
+#: actionmanager.cpp:737
 #, fuzzy, kde-format
 #| msgid "Export Calendar as Web Page"
 msgid "Show Calendar Manager"
 msgstr "Rhweba Ngaphandle Ikhalenda Njengephepha Le Web"
 
-#: actionmanager.cpp:749
+#: actionmanager.cpp:750
 #, fuzzy, kde-format
 #| msgid "Configure &Date && Time..."
 msgctxt "@action"
 msgid "Configure &Date && Time…"
 msgstr "Qwalasela &Umhla && Ixesha..."
 
-#: actionmanager.cpp:753
+#: actionmanager.cpp:754
 #, fuzzy, kde-format
 msgid "Manage View &Filters…"
 msgstr "Hlela &Amacebo okucoca ulwelo..."
 
-#: actionmanager.cpp:757
+#: actionmanager.cpp:758
 #, fuzzy, kde-format
 msgctxt "@action"
 msgid "Manage T&ags…"
 msgstr "Hlela I&intlobo..."
 
-#: actionmanager.cpp:765
+#: actionmanager.cpp:766
 #, fuzzy, kde-format
 msgid "&Configure KOrganizer…"
 msgstr "Qwalasela &I Plagin..."
 
-#: actionmanager.cpp:843
+#: actionmanager.cpp:844
 #, kde-format
 msgid "1 incidence was imported successfully."
 msgid_plural "%1 incidences were imported successfully."
 msgstr[0] ""
 msgstr[1] ""
 
-#: actionmanager.cpp:846
+#: actionmanager.cpp:847
 #, kde-format
 msgid "There was an error while merging the calendar: %1"
 msgstr ""
 
-#: actionmanager.cpp:857
+#: actionmanager.cpp:858
 #, fuzzy, kde-format
 msgid "New calendar added successfully"
 msgstr "Papasha Iinkcukacha ye Free Busy"
 
-#: actionmanager.cpp:859
+#: actionmanager.cpp:860
 #, fuzzy, kde-format
 msgid "Could not add a calendar. Error: %1"
 msgstr "Ayikwazanga ukulayisha ikhalenda '%1'.\n"
 
-#: actionmanager.cpp:916
+#: actionmanager.cpp:918
 #, fuzzy, kde-format
 #| msgid "Edit Calendar Filters"
 msgctxt "@title:window"
 msgid "Select Calendar File to Open"
 msgstr "Hlela Amacebo okucoca ulwelo e Khalenda"
 
-#: actionmanager.cpp:944
+#: actionmanager.cpp:946
 #, fuzzy, kde-format
 #| msgid "Edit Calendar Filters"
 msgctxt "@title:window"
 msgid "Select Calendar File to Import"
 msgstr "Hlela Amacebo okucoca ulwelo e Khalenda"
 
-#: actionmanager.cpp:975
+#: actionmanager.cpp:977
 #, kde-format
 msgid "An error occurred: %1"
 msgstr ""
 
-#: actionmanager.cpp:993
+#: actionmanager.cpp:995
 #, kde-format
 msgid "Cannot upload calendar to '%1'"
 msgstr "Ayinakulayisha ngaphezulu ikhalenda kwi '%1'"
 
-#: actionmanager.cpp:999
+#: actionmanager.cpp:1001
 #, kde-format
 msgid "Saved calendar '%1'."
 msgstr "Ikhalenda egciniweyo '%1'."
 
-#: actionmanager.cpp:1037
+#: actionmanager.cpp:1039
 #, fuzzy, kde-format
 msgid "Unable to save calendar to the file %1."
 msgstr "Ayikwazi ukuphatha ikhalenda ebekwe kude.\n"
 
-#: actionmanager.cpp:1037
+#: actionmanager.cpp:1039
 #, fuzzy, kde-format
 msgctxt "@title:window"
 msgid "Error"
 msgstr "Akukho Mposiso"
 
-#: actionmanager.cpp:1082
+#: actionmanager.cpp:1084
 #, fuzzy, kde-format
 msgid "Could not start control module for date and time format."
 msgstr "Ayikwazanga kuqala umnqongo wolawulo lwefomati yomhla nexesha."
 
-#: actionmanager.cpp:1261
+#: actionmanager.cpp:1263
 #, kde-format
 msgid "&Show Event"
 msgstr "&Bonisa Isiganeko"
 
-#: actionmanager.cpp:1264
+#: actionmanager.cpp:1266
 #, fuzzy, kde-format
 #| msgid "&Edit Event..."
 msgid "&Edit Event…"
 msgstr "&Hlela Isiganeko..."
 
-#: actionmanager.cpp:1267
+#: actionmanager.cpp:1269
 #, kde-format
 msgid "&Delete Event"
 msgstr "&Cima Isiganeko"
 
-#: actionmanager.cpp:1275
+#: actionmanager.cpp:1277
 #, fuzzy, kde-format
 msgid "&Show To-do"
 msgstr "&Bonisa Eza-Kwenziwa"
 
-#: actionmanager.cpp:1278 kontactplugin/korganizer/todosummarywidget.cpp:321
+#: actionmanager.cpp:1280 kontactplugin/korganizer/todosummarywidget.cpp:321
 #, fuzzy, kde-format
 msgid "&Edit To-do…"
 msgstr "&Hlela Eza-Kwenziwa..."
 
-#: actionmanager.cpp:1281 kontactplugin/korganizer/todosummarywidget.cpp:323
+#: actionmanager.cpp:1283 kontactplugin/korganizer/todosummarywidget.cpp:323
 #, fuzzy, kde-format
 msgid "&Delete To-do"
 msgstr "&Cima Eza-Kweziwa"
 
-#: actionmanager.cpp:1419 actionmanager.cpp:1525
+#: actionmanager.cpp:1421 actionmanager.cpp:1527
 #, kde-format
 msgid "Attach as &link"
 msgstr ""
 
-#: actionmanager.cpp:1420 actionmanager.cpp:1526
+#: actionmanager.cpp:1422 actionmanager.cpp:1528
 #, fuzzy, kde-format
 msgid "Attach &inline"
 msgstr "Hlela isiganeko"
 
-#: actionmanager.cpp:1421
+#: actionmanager.cpp:1423
 #, kde-format
 msgid "Attach inline &without attachments"
 msgstr ""
 
-#: actionmanager.cpp:1423 actionmanager.cpp:1528
+#: actionmanager.cpp:1425 actionmanager.cpp:1530
 #, kde-format
 msgid "C&ancel"
 msgstr ""
 
-#: actionmanager.cpp:1461
+#: actionmanager.cpp:1463
 #, kde-format
 msgid "Removing attachments from an email might invalidate its signature."
 msgstr ""
 
-#: actionmanager.cpp:1462
+#: actionmanager.cpp:1464
 #, fuzzy, kde-format
 msgctxt "@title:window"
 msgid "Remove Attachments"
 msgstr "Abathathi nxaxheba"
 
-#: actionmanager.cpp:1613
+#: actionmanager.cpp:1615
 #, fuzzy, kde-format
 msgid "Undo: %1"
 msgstr "Ukwe-nza: %1"
 
-#: actionmanager.cpp:1616 actionmanager.cpp:1632
+#: actionmanager.cpp:1618 actionmanager.cpp:1634
 #, kde-format
 msgid "Undo"
 msgstr ""
 
-#: actionmanager.cpp:1626
+#: actionmanager.cpp:1628
 #, fuzzy, kde-format
 msgid "Redo: %1"
 msgstr "Ukwe-nza: %1"
 
-#: actionmanager.cpp:1629
+#: actionmanager.cpp:1631
 #, kde-format
 msgid "Redo"
 msgstr ""
 
-#: actionmanager.cpp:1643
+#: actionmanager.cpp:1645
 #, kde-format
 msgid "URL '%1' is invalid."
 msgstr ""
 
-#: actionmanager.cpp:1648
+#: actionmanager.cpp:1650
 #, kde-format
 msgctxt "@info"
 msgid ""
@@ -1260,19 +1260,19 @@ msgid ""
 "p>"
 msgstr ""
 
-#: actionmanager.cpp:1656
+#: actionmanager.cpp:1658
 #, fuzzy, kde-format
 msgctxt "@title:window"
 msgid "Import Calendar"
 msgstr "i Khalenda"
 
-#: actionmanager.cpp:1657
+#: actionmanager.cpp:1659
 #, fuzzy, kde-format
 msgctxt "@action:button"
 msgid "Merge into existing calendar"
 msgstr "Hlela isiganeko"
 
-#: actionmanager.cpp:1658
+#: actionmanager.cpp:1660
 #, fuzzy, kde-format
 msgctxt "@action:button"
 msgid "Add as new calendar"
@@ -3587,6 +3587,7 @@ msgstr "Iinkcazelo"
 
 #: prefs/kprefsdialog.cpp:234
 #, fuzzy, kde-format
+msgctxt "@action:button"
 msgid "Choose…"
 msgstr "Qwalasela..."
 
