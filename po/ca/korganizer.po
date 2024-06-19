@@ -15,7 +15,7 @@ msgstr ""
 "Project-Id-Version: korganizer\n"
 "Report-Msgid-Bugs-To: https://bugs.kde.org\n"
 "POT-Creation-Date: 2024-06-18 00:40+0000\n"
-"PO-Revision-Date: 2024-06-06 12:24+0200\n"
+"PO-Revision-Date: 2024-06-18 17:15+0200\n"
 "Last-Translator: Josep M. Ferrer <txemaq@gmail.com>\n"
 "Language-Team: Catalan <kde-i18n-ca@kde.org>\n"
 "Language: ca\n"
@@ -3695,8 +3695,7 @@ msgid "Other Options"
 msgstr "Altres opcions"
 
 #: prefs/kprefsdialog.cpp:234
-#, fuzzy, kde-format
-#| msgid "Choose…"
+#, kde-format
 msgctxt "@action:button"
 msgid "Choose…"
 msgstr "Trieu…"

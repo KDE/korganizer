@@ -3555,8 +3555,7 @@ msgid "Other Options"
 msgstr "Ostatní volby"
 
 #: prefs/kprefsdialog.cpp:234
-#, fuzzy, kde-format
-#| msgid "Choose…"
+#, kde-format
 msgctxt "@action:button"
 msgid "Choose…"
 msgstr "Vybrat…"
