@@ -9,7 +9,7 @@ ecm_qt_declare_logging_category(kontact_specialdatesplugin_PART_SRCS HEADER korg
         DESCRIPTION "korganizer (kontactplugins korganizer special dates)"
         OLD_CATEGORY_NAMES log_korganizer_kontactplugins_specialdates
         EXPORT KORGANIZER
-    )
+   )
 
 
 add_library(kontact_specialdatesplugin MODULE ${kontact_specialdatesplugin_PART_SRCS})

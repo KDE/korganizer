@@ -26,11 +26,11 @@ ecm_qt_declare_logging_category(korganizer_common_SRCS HEADER korganizer_debug.h
         DESCRIPTION "korganizer (korganizer)"
         OLD_CATEGORY_NAMES log_korganizer
         EXPORT KORGANIZER
-    )
+   )
 ecm_qt_declare_logging_category(korganizer_common_SRCS HEADER korganizer_activities_debug.h IDENTIFIER KORGANIZER_ACIVITIES_LOG CATEGORY_NAME org.kde.pim.korganizer.activities
         DESCRIPTION "korganizer (korganizer) activities"
         EXPORT KORGANIZER
-    )
+   )
 set(korganizer_SRCS
     main.cpp
     korganizer.cpp
@@ -40,13 +40,13 @@ set(korganizer_SRCS
     koapp.h
     plugininterface/korganizerplugininterface.h
     ${korganizer_common_SRCS}
-    )
+   )
 
 file(GLOB ICONS_SRCS "${CMAKE_CURRENT_SOURCE_DIR}/pixmaps/*-apps-korganizer.png")
 ecm_add_app_icon(korganizer_SRCS ICONS ${ICONS_SRCS})
 
 add_executable(korganizer ${korganizer_SRCS})
-if (COMPILE_WITH_UNITY_CMAKE_SUPPORT)
+if(COMPILE_WITH_UNITY_CMAKE_SUPPORT)
     set_target_properties(korganizer PROPERTIES UNITY_BUILD ON)
 endif()
 target_link_libraries(korganizer
@@ -59,13 +59,13 @@ target_link_libraries(korganizer
     KF6::Crash
     KF6::WindowSystem
     ${korganizer_userfeedback_LIB}
-    )
+   )
 if(TARGET KF6::IconThemes)
     target_link_libraries(korganizer KF6::IconThemes)
 endif()
 install(TARGETS
     korganizer ${KDE_INSTALL_TARGETS_DEFAULT_ARGS}
-    )
+   )
 
 ########### next target ###############
 add_library(korganizer_kcm_static STATIC widgets/kitemiconcheckcombo.cpp prefs/kprefsdialog.cpp widgets/kitemiconcheckcombo.h prefs/kprefsdialog.h ${korganizer_common_SRCS})
@@ -86,7 +86,7 @@ target_link_libraries(korganizer_kcm_static
     KPim6::AkonadiWidgets
     KF6::WindowSystem
     KF6::KIOWidgets
-    )
+   )
 
 add_library(korganizer_configcolorsandfonts MODULE prefs/koprefsdialogcolorsandfonts.cpp prefs/koprefsdialogcolorsandfonts.h)
 target_link_libraries(korganizer_configcolorsandfonts korganizer_kcm_static)
@@ -125,7 +125,7 @@ install(TARGETS korganizer_userfeedback DESTINATION ${KDE_INSTALL_PLUGINDIR}/pim
 set(korganizerpart_PART_SRCS korganizer_part.cpp korganizer_part.h korganizer_debug.cpp)
 
 add_library(korganizerpart MODULE ${korganizerpart_PART_SRCS})
-if (COMPILE_WITH_UNITY_CMAKE_SUPPORT)
+if(COMPILE_WITH_UNITY_CMAKE_SUPPORT)
     set_target_properties(korganizerpart PROPERTIES UNITY_BUILD ON)
 endif()
 
@@ -138,12 +138,12 @@ target_link_libraries(korganizerpart
     KF6::CalendarCore
     KPim6::CalendarUtils
     KF6::KIOWidgets
-    )
+   )
 
 install(TARGETS
     korganizerpart
     DESTINATION ${KDE_INSTALL_PLUGINDIR}
-    )
+   )
 
 ########### next target ###############
 
@@ -153,13 +153,13 @@ set(korganizer_core_LIB_SRCS
     prefs/koprefs.h
     kocore.h
     ${korganizer_common_SRCS}
-    )
+   )
 
 kconfig_add_kcfg_files(korganizer_core_LIB_SRCS settings/koprefs_base.kcfgc)
 
 add_library(korganizer_core ${korganizer_core_LIB_SRCS})
 generate_export_header(korganizer_core BASE_NAME korganizer_core)
-if (COMPILE_WITH_UNITY_CMAKE_SUPPORT)
+if(COMPILE_WITH_UNITY_CMAKE_SUPPORT)
     set_target_properties(korganizer_core PROPERTIES UNITY_BUILD ON)
 endif()
 target_link_libraries(korganizer_core
@@ -169,21 +169,21 @@ target_link_libraries(korganizer_core
     KPim6::CalendarSupport
     KPim6::EventViews
     KPim6::IdentityManagementCore
-    )
+   )
 
 target_include_directories(korganizer_core PUBLIC
     "$<BUILD_INTERFACE:${korganizer_SOURCE_DIR};${korganizer_BINARY_DIR}>"
-    )
+   )
 
 set_target_properties(korganizer_core PROPERTIES
     VERSION ${KDEPIM_LIB_VERSION}
     SOVERSION ${KDEPIM_LIB_SOVERSION}
-    )
+   )
 
 install(TARGETS
     korganizer_core ${KDE_INSTALL_TARGETS_DEFAULT_ARGS}
     LIBRARY NAMELINK_SKIP
-    )
+   )
 
 ########### next target ###############
 set(korganizerprivate_userfeedback_SRCS)
@@ -193,7 +193,7 @@ if(TARGET KF6::UserFeedbackWidgets)
         userfeedback/korganizeruserfeedbackprovider.cpp
         userfeedback/userfeedbackmanager.h
         userfeedback/korganizeruserfeedbackprovider.h
-        )
+       )
 endif()
 
 set(korganizerprivate_LIB_SRCS
@@ -275,17 +275,17 @@ set(korganizerprivate_LIB_SRCS
     views/whatsnextview/kowhatsnextview.h
     pimmessagebox.h
     korganizer_options.h
-    )
+   )
 
-if (TARGET Plasma::Activities)
+if(TARGET Plasma::Activities)
     set(korganizerprivate_LIB_SRCS ${korganizerprivate_LIB_SRCS}
         activities/activitiesmanager.h
         activities/activitiesmanager.cpp
 
         activities/accountactivities.h
         activities/accountactivities.cpp
-    )
-    if (BUILD_TESTING)
+   )
+    if(BUILD_TESTING)
        add_subdirectory(activities/autotests)
     endif()
 endif()
@@ -301,32 +301,32 @@ ki18n_wrap_ui(korganizerprivate_LIB_SRCS
     views/multiagendaview/multiagendaviewconfigwidget.ui
     ui/searchdialog_base.ui
     views/collectionview/quickview.ui
-    )
+   )
 
 qt_add_dbus_adaptor(korganizerprivate_LIB_SRCS
     data/org.kde.korganizer.Korganizer.xml impl/korganizerifaceimpl.h
     KOrganizerIfaceImpl
-    )
+   )
 
 qt_add_dbus_adaptor(korganizerprivate_LIB_SRCS
     data/org.kde.Korganizer.Calendar.xml actionmanager.h
     ActionManager calendaradaptor KOrgCalendarAdaptor
-    )
+   )
 qt_add_dbus_adaptor(korganizerprivate_LIB_SRCS
     data/org.kde.calendar.Calendar.xml actionmanager.h
     ActionManager calendarinterfaceadaptor CalendarInterfaceAdaptor
-    )
+   )
 
 qt_add_dbus_interfaces(korganizerprivate_LIB_SRCS
     data/org.kde.korganizer.Korganizer.xml
-    )
+   )
 
 qt_add_dbus_interfaces(korganizerprivate_LIB_SRCS
     ${korganizer_SOURCE_DIR}/src/data/org.kde.korganizer.Korganizer.xml
-    )
+   )
 
 add_library(korganizerprivate ${korganizerprivate_LIB_SRCS})
-if (COMPILE_WITH_UNITY_CMAKE_SUPPORT)
+if(COMPILE_WITH_UNITY_CMAKE_SUPPORT)
     set_target_properties(korganizerprivate PROPERTIES UNITY_BUILD ON)
     set_source_files_properties(
         ${CMAKE_CURRENT_BINARY_DIR}/qrc_korganizer.cpp
@@ -365,57 +365,57 @@ target_link_libraries(korganizerprivate
     KF6::JobWidgets
     KF6::KIOGui
     ${korganizer_userfeedback_LIB}
-    )
+   )
 
-if (TARGET Plasma::Activities)
+if(TARGET Plasma::Activities)
     target_link_libraries(korganizerprivate PRIVATE Plasma::Activities)
 endif()
 
 
 target_include_directories(korganizerprivate PUBLIC
     "$<BUILD_INTERFACE:${korganizer_SOURCE_DIR};${korganizer_BINARY_DIR}>"
-    )
+   )
 
 set_target_properties(korganizerprivate PROPERTIES
     VERSION ${KDEPIM_LIB_VERSION}
     SOVERSION ${KDEPIM_LIB_SOVERSION}
-    )
+   )
 
 install(TARGETS
     korganizerprivate ${KDE_INSTALL_TARGETS_DEFAULT_ARGS}
     LIBRARY NAMELINK_SKIP
-    )
+   )
 
 ########### install files ###############
 
 install(FILES
     settings/korganizer.kcfg
     DESTINATION ${KDE_INSTALL_KCFGDIR}
-    )
+   )
 
 install(FILES
     data/org.kde.Korganizer.Calendar.xml data/org.kde.korganizer.Korganizer.xml
     DESTINATION ${KDE_INSTALL_DBUSINTERFACEDIR}
-    )
+   )
 
 install(FILES
     data/korganizer.knsrc
     DESTINATION ${KDE_INSTALL_KNSRCDIR}
-    )
+   )
 
 install(PROGRAMS
     org.kde.korganizer.desktop korganizer-import.desktop korganizer-view.desktop
     DESTINATION ${KDE_INSTALL_APPDIR}
-    )
+   )
 
 install(FILES
     org.kde.korganizer.appdata.xml
     DESTINATION ${KDE_INSTALL_METAINFODIR}
-    )
+   )
 
 configure_file(data/org.kde.korganizer.service.in org.kde.korganizer.service)
 install(FILES
     ${CMAKE_CURRENT_BINARY_DIR}/org.kde.korganizer.service
     DESTINATION ${KDE_INSTALL_DBUSSERVICEDIR}
-    )
+   )
 

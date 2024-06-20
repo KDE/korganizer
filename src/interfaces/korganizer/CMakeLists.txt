@@ -8,7 +8,7 @@ target_sources(korganizer_interfaces PRIVATE
     mainwindow.cpp
     baseview.h
     mainwindow.h
-    )
+   )
 generate_export_header(korganizer_interfaces BASE_NAME korganizer_interfaces)
 target_link_libraries(korganizer_interfaces
   KPim6::CalendarSupport

@@ -87,25 +87,25 @@ find_package(KF6UserFeedback ${KF_MIN_VERSION} CONFIG)
 set_package_properties(KF6UserFeedback PROPERTIES DESCRIPTION "User Feedback lib" TYPE OPTIONAL PURPOSE "Allow to send Telemetry Information (optional).")
 
 option(OPTION_USE_PLASMA_ACTIVITIES "Activate plasma activities (experimental)" OFF)
-if (OPTION_USE_PLASMA_ACTIVITIES)
-    if (NOT WIN32 AND NOT APPLE)
+if(OPTION_USE_PLASMA_ACTIVITIES)
+    if(NOT WIN32 AND NOT APPLE)
        set(OPTION_USE_PLASMA_ACTIVITIES true)
     else()
        set(OPTION_USE_PLASMA_ACTIVITIES false)
     endif()
 endif()
-if (OPTION_USE_PLASMA_ACTIVITIES)
-    if (NOT WIN32 AND NOT APPLE)
+if(OPTION_USE_PLASMA_ACTIVITIES)
+    if(NOT WIN32 AND NOT APPLE)
        find_package(PlasmaActivities "6.1.0")
     endif()
 endif()
 
-if (TARGET Plasma::Activities)
+if(TARGET Plasma::Activities)
     set(HAVE_ACTIVITY_SUPPORT TRUE)
 endif()
 
 
-if (TARGET KF6::UserFeedbackWidgets)
+if(TARGET KF6::UserFeedbackWidgets)
     add_definitions(-DWITH_KUSERFEEDBACK)
 endif()
 
@@ -155,7 +155,7 @@ ecm_set_disabled_deprecation_versions(QT 6.7
 option(USE_UNITY_CMAKE_SUPPORT "Use UNITY cmake support (speedup compile time)" OFF)
 
 set(COMPILE_WITH_UNITY_CMAKE_SUPPORT OFF)
-if (USE_UNITY_CMAKE_SUPPORT)
+if(USE_UNITY_CMAKE_SUPPORT)
     set(COMPILE_WITH_UNITY_CMAKE_SUPPORT ON)
 endif()
 
@@ -166,7 +166,7 @@ ecm_qt_install_logging_categories(
         EXPORT KORGANIZER
         FILE korganizer.categories
         DESTINATION ${KDE_INSTALL_LOGGINGCATEGORIESDIR}
-        )
+       )
 
 kde_configure_git_pre_commit_hook(CHECKS CLANG_FORMAT)
 ki18n_install(po)

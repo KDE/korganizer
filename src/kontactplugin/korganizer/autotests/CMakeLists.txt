@@ -3,7 +3,7 @@ return()
 
 set(summaryeventtest_SRCS  summaryeventtest.cpp ../summaryeventinfo.cpp)
 
-add_executable( summaryeventtest ${summaryeventtest_SRCS} )
+add_executable(summaryeventtest ${summaryeventtest_SRCS})
 add_test(NAME summaryeventtest COMMAND summaryeventtest)
 ecm_mark_as_test(summaryeventtest)
 

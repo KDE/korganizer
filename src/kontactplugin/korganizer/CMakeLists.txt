@@ -6,7 +6,7 @@ ecm_qt_declare_logging_category(libcommon_SRCS HEADER korganizerplugin_debug.h I
         DESCRIPTION "korganizer (korganizer kontact plugins)"
         OLD_CATEGORY_NAMES log_korganizer_plugin
         EXPORT KORGANIZER
-    )
+   )
 
 set(kontact_korganizerplugin_PART_SRCS korganizerplugin.cpp apptsummarywidget.cpp summaryeventinfo.cpp korganizerplugin.h apptsummarywidget.h summaryeventinfo.h ${libcommon_SRCS})
 
@@ -55,7 +55,7 @@ add_library(kcmtodosummary MODULE ${kcmtodosummary_PART_SRCS})
 target_link_libraries(kcmtodosummary Qt::Widgets KF6::KCMUtils KF6::I18n KF6::CoreAddons)
 
 ########## Unit Test ###########
-if (BUILD_TESTING)
+if(BUILD_TESTING)
    add_subdirectory(autotests)
 endif()
 ########### install files ###############

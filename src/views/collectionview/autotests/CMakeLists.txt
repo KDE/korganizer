@@ -10,7 +10,7 @@ target_sources(reparentingmodeltest PRIVATE
     reparentingmodeltest.cpp
     ../reparentingmodel.cpp
     ../../../korganizer_debug.cpp
-    )
+   )
 add_test(NAME reparentingmodeltest COMMAND reparentingmodeltest)
 ecm_mark_as_test(reparentingmodeltest)
 ecm_mark_nongui_executable(reparentingmodeltest)
