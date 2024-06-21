@@ -18,7 +18,7 @@ msgstr ""
 "Project-Id-Version: korganizer\n"
 "Report-Msgid-Bugs-To: https://bugs.kde.org\n"
 "POT-Creation-Date: 2024-04-12 00:38+0000\n"
-"PO-Revision-Date: 2024-05-19 17:45+0530\n"
+"PO-Revision-Date: 2024-06-20 21:45+0530\n"
 "Last-Translator: Kishore G <kishore96@gmail.com>\n"
 "Language-Team: Tamil <kde-i18n-doc@kde.org>\n"
 "Language: ta\n"
@@ -26,7 +26,7 @@ msgstr ""
 "Content-Type: text/plain; charset=UTF-8\n"
 "Content-Transfer-Encoding: 8bit\n"
 "Plural-Forms: nplurals=2; plural=n != 1;\n"
-"X-Generator: Lokalize 24.02.2\n"
+"X-Generator: Lokalize 24.05.1\n"
 
 #, kde-format
 msgctxt "NAME OF TRANSLATORS"
@@ -500,10 +500,10 @@ msgid "Agenda View"
 msgstr "நிகழ்ச்சிநிரல் காட்சிமுறை"
 
 #: actionmanager.cpp:408
-#, fuzzy, kde-format
+#, kde-format
 msgctxt "@info:tooltip"
 msgid "Switch to the Agenda View"
-msgstr "தேர்வு செய்ததை மட்டும் காட்டு"
+msgstr "நிகழ்ச்சிநிரல் காட்சிக்கு மாறு"
 
 #: actionmanager.cpp:410
 #, kde-format
@@ -529,7 +529,7 @@ msgstr "பட்டியல் காட்சிமுறை"
 #, kde-format
 msgctxt "@info:tooltip"
 msgid "Switch to the List View"
-msgstr ""
+msgstr "பட்டியல் காட்சிக்கு மாறு"
 
 #: actionmanager.cpp:421
 #, kde-format
@@ -1042,32 +1042,29 @@ msgstr[1] ""
 #: actionmanager.cpp:846
 #, kde-format
 msgid "There was an error while merging the calendar: %1"
-msgstr ""
+msgstr "நாள்காட்டியை ஒன்றணைப்பதில் சிக்கல்: %1"
 
 #: actionmanager.cpp:857
-#, fuzzy, kde-format
+#, kde-format
 msgid "New calendar added successfully"
-msgstr "உங்களது சுதந்திரமான/நேரமின்மை தகவலை தானாக வெளியிடு."
+msgstr "புதிய நாள்காட்டி வெற்றிகரமாக சேர்க்கப்பட்டுள்ளது"
 
 #: actionmanager.cpp:859
-#, fuzzy, kde-format
-#| msgid "Could not load calendar '%1'."
+#, kde-format
 msgid "Could not add a calendar. Error: %1"
-msgstr "'%1' நாள்காட்டியை ஏற்ற முடியவில்லை."
+msgstr "நாள்காட்டியை சேர்க்க முடியவில்லை. சிக்கல்: %1"
 
 #: actionmanager.cpp:916
-#, fuzzy, kde-format
-#| msgid "Edit Calendar Filters"
+#, kde-format
 msgctxt "@title:window"
 msgid "Select Calendar File to Open"
-msgstr "நாள்காட்டி வடிகட்டிகளை திருத்து"
+msgstr "திறக்க வேண்டிய நாள்காட்டி கோப்பைத் தேர்ந்தெடுக்கவும்"
 
 #: actionmanager.cpp:944
-#, fuzzy, kde-format
-#| msgid "Edit Calendar Filters"
+#, kde-format
 msgctxt "@title:window"
 msgid "Select Calendar File to Import"
-msgstr "நாள்காட்டி வடிகட்டிகளை திருத்து"
+msgstr "இறக்குமதி செய்ய வேண்டிய நாள்காட்டி கோப்பைத் தேர்ந்தெடுக்கவும்"
 
 #: actionmanager.cpp:975
 #, kde-format
@@ -1085,9 +1082,9 @@ msgid "Saved calendar '%1'."
 msgstr "சேமிக்கப்பட்ட நாள்காட்டி '%1'"
 
 #: actionmanager.cpp:1037
-#, fuzzy, kde-format
+#, kde-format
 msgid "Unable to save calendar to the file %1."
-msgstr "செய்யவேண்டிய உருப்படியை சேமிக்க முடியவில்லை."
+msgstr "%1 எனும் கோப்பிற்கு நாள்காட்டியை சேமிக்க முடியவில்லை."
 
 #: actionmanager.cpp:1037
 #, kde-format
