@@ -14,7 +14,6 @@ class Ui_quickview;
 
 namespace Akonadi
 {
-class EntityTreeModel;
 }
 
 namespace EventViews
