@@ -12,10 +12,6 @@
 
 class Ui_quickview;
 
-namespace Akonadi
-{
-}
-
 namespace EventViews
 {
 class AgendaView;
