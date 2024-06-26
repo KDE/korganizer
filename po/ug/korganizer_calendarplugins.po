@@ -1,0 +1,2746 @@
+# Uyghur translation for korganizer.
+# Copyright (C) YEAR This_file_is_part_of_KDE
+# This file is distributed under the same license as the PACKAGE package.
+# Sahran <sahran.ug@gmail.com>, 2011.
+#
+msgid ""
+msgstr ""
+"Project-Id-Version: korganizer\n"
+"Report-Msgid-Bugs-To: https://bugs.kde.org\n"
+"POT-Creation-Date: 2024-06-26 00:40+0000\n"
+"PO-Revision-Date: 2013-09-08 07:05+0900\n"
+"Last-Translator: Gheyret Kenji <gheyret@gmail.com>\n"
+"Language-Team: Uyghur Computer Science Association <UKIJ@yahoogroups.com>\n"
+"Language: ug\n"
+"MIME-Version: 1.0\n"
+"Content-Type: text/plain; charset=UTF-8\n"
+"Content-Transfer-Encoding: 8bit\n"
+"Plural-Forms: nplurals=1; plural=0;\n"
+
+#: datenums/configdialog.cpp:28
+#, fuzzy, kde-format
+#| msgid "Configure View..."
+msgctxt "@title:window"
+msgid "Configure Day Numbers"
+msgstr "كۆرۈنۈشنى سەپلەش…"
+
+#: datenums/configdialog.cpp:43
+#, kde-format
+msgid "Show Date Number"
+msgstr ""
+
+#: datenums/configdialog.cpp:48
+#, fuzzy, kde-format
+#| msgid "Show to-dos"
+msgid "Show day number"
+msgstr "قىلىدىغان ئىشلار(to-dos)نى كۆرسەت"
+
+#: datenums/configdialog.cpp:51
+#, kde-format
+msgid "Show days to end of year"
+msgstr ""
+
+#: datenums/configdialog.cpp:54
+#, fuzzy, kde-format
+#| msgid "Show to-dos"
+msgid "Show both"
+msgstr "قىلىدىغان ئىشلار(to-dos)نى كۆرسەت"
+
+#: datenums/datenums.cpp:36
+#, kde-format
+msgid "This plugin shows information on a day's position in the year."
+msgstr ""
+
+#: datenums/datenums.cpp:54
+#, fuzzy, kde-format
+#| msgctxt "N days/hours/minutes before/after the start/end"
+#| msgid "%1 before the end"
+msgid "1 day before the end of the year"
+msgid_plural "%1 days before the end of the year"
+msgstr[0] "تاماملىنىشتىن بۇرۇن %1"
+
+#: datenums/datenums.cpp:59
+#, kde-format
+msgctxt "dayOfYear / daysTillEndOfYear"
+msgid "%1 / %2"
+msgstr "%1 / %2"
+
+#: datenums/datenums.cpp:60
+#, kde-format
+msgid "1 day since the beginning of the year,\n"
+msgid_plural "%1 days since the beginning of the year,\n"
+msgstr[0] ""
+
+#: datenums/datenums.cpp:61
+#, kde-format
+msgid "1 day until the end of the year"
+msgid_plural "%1 days until the end of the year"
+msgstr[0] ""
+
+#: datenums/datenums.cpp:102
+#, kde-format
+msgctxt "Week weekOfYear"
+msgid "Week %1"
+msgstr "%1 ھەپتە"
+
+#: datenums/datenums.cpp:103 datenums/datenums.cpp:113
+#: datenums/datenums.cpp:118
+#, kde-format
+msgid "1 week since the beginning of the year"
+msgid_plural "%1 weeks since the beginning of the year"
+msgstr[0] ""
+
+#: datenums/datenums.cpp:106
+#, kde-format
+msgctxt "weekOfYear (year)"
+msgid "%1 (%2)"
+msgstr "%1 (%2)"
+
+#: datenums/datenums.cpp:107
+#, kde-format
+msgctxt "Week weekOfYear (year)"
+msgid "Week %1 (%2)"
+msgstr "ھەپتە %1 (%2)"
+
+#: datenums/datenums.cpp:122
+#, kde-format
+msgid "1 week remaining"
+msgid_plural "%1 weeks remaining"
+msgstr[0] ""
+
+#: datenums/datenums.cpp:123
+#, kde-format
+msgid "1 week until the end of the year"
+msgid_plural "%1 weeks until the end of the year"
+msgstr[0] ""
+
+#: datenums/datenums.cpp:124
+#, kde-format
+msgctxt "weekOfYear / weeksTillEndOfYear"
+msgid "%1 / %2"
+msgstr "%1 / %2"
+
+#: datenums/datenums.cpp:140
+#, kde-format
+msgctxt ""
+"n weeks since the beginning of the year\n"
+"n weeks until the end of the year"
+msgid ""
+"%1\n"
+"%2"
+msgstr ""
+"%1\n"
+"%2"
+
+#: hebrew/configdialog.cpp:28
+#, fuzzy, kde-format
+#| msgid "Configure"
+msgctxt "@title:window"
+msgid "Configure Holidays"
+msgstr "سەپلە"
+
+#: hebrew/configdialog.cpp:42
+#, kde-format
+msgid "Use Israeli holidays"
+msgstr ""
+
+#: hebrew/configdialog.cpp:46
+#, kde-format
+msgid "Show weekly parsha"
+msgstr ""
+
+#: hebrew/configdialog.cpp:50
+#, kde-format
+msgid "Show day of Omer"
+msgstr ""
+
+#: hebrew/configdialog.cpp:54
+#, fuzzy, kde-format
+#| msgid "Show to-dos"
+msgid "Show Chol HaMoed"
+msgstr "قىلىدىغان ئىشلار(to-dos)نى كۆرسەت"
+
+#: hebrew/hebrew.cpp:60
+#, kde-format
+msgctxt ""
+"Change the next two strings if emphasis is done differently in your language."
+msgid ""
+"<qt><p align=\"center\"><i>\n"
+"%1\n"
+"</i></p></qt>"
+msgstr ""
+
+#: hebrew/hebrew.cpp:67
+#, kde-format
+msgid "This plugin provides the date in the Jewish calendar."
+msgstr ""
+
+#: hebrew/holiday.cpp:75
+#, kde-format
+msgctxt ""
+"These are Jewish holidays and mostly do not have translations. They may have "
+"different spellings in your language; otherwise, just translate the sound to "
+"your characters."
+msgid "Sh. HaHodesh"
+msgstr "Sh. HaHodesh"
+
+#: hebrew/holiday.cpp:83
+#, kde-format
+msgid "Erev Pesach"
+msgstr ""
+
+#: hebrew/holiday.cpp:94
+#, fuzzy, kde-format
+#| msgid "Sh. HaHodesh"
+msgid "Sh. HaGadol"
+msgstr "Sh. HaHodesh"
+
+#: hebrew/holiday.cpp:102
+#, kde-format
+msgid "Pesach"
+msgstr ""
+
+#: hebrew/holiday.cpp:113 hebrew/holiday.cpp:307
+#, kde-format
+msgid "Chol Hamoed"
+msgstr ""
+
+#: hebrew/holiday.cpp:124 hebrew/holiday.cpp:129 hebrew/holiday.cpp:138
+#, kde-format
+msgid "Yom HaShoah"
+msgstr ""
+
+#: hebrew/holiday.cpp:164 hebrew/holiday.cpp:171 hebrew/holiday.cpp:182
+#, kde-format
+msgid "Yom HaAtzmaut"
+msgstr ""
+
+#: hebrew/holiday.cpp:166 hebrew/holiday.cpp:180
+#, kde-format
+msgid "Yom HaZikaron"
+msgstr ""
+
+#: hebrew/holiday.cpp:190
+#, kde-format
+msgid "Yom Yerushalayim"
+msgstr ""
+
+#: hebrew/holiday.cpp:194
+#, kde-format
+msgid "Lag BaOmer"
+msgstr ""
+
+#: hebrew/holiday.cpp:220
+#, kde-format
+msgid "Erev Shavuot"
+msgstr ""
+
+#: hebrew/holiday.cpp:225
+#, kde-format
+msgid "Shavuot"
+msgstr ""
+
+#: hebrew/holiday.cpp:234
+#, kde-format
+msgid "Tzom Tammuz"
+msgstr ""
+
+#: hebrew/holiday.cpp:242
+#, fuzzy, kde-format
+#| msgid "Sh. HaHodesh"
+msgid "Sh. Hazon"
+msgstr "Sh. HaHodesh"
+
+#: hebrew/holiday.cpp:244
+#, kde-format
+msgid "Sh. Nahamu"
+msgstr ""
+
+#: hebrew/holiday.cpp:248
+#, kde-format
+msgid "Tisha B'Av"
+msgstr ""
+
+#: hebrew/holiday.cpp:254
+#, kde-format
+msgid "S'lichot"
+msgstr ""
+
+#: hebrew/holiday.cpp:256
+#, kde-format
+msgid "Erev R.H."
+msgstr ""
+
+#: hebrew/holiday.cpp:264
+#, kde-format
+msgid "Rosh Hashana"
+msgstr ""
+
+#: hebrew/holiday.cpp:268 hebrew/holiday.cpp:283
+#, kde-format
+msgid "Sh. Shuvah"
+msgstr ""
+
+#: hebrew/holiday.cpp:270 hebrew/holiday.cpp:275
+#, kde-format
+msgid "Tzom Gedalia"
+msgstr ""
+
+#: hebrew/holiday.cpp:287
+#, kde-format
+msgid "Erev Y.K."
+msgstr ""
+
+#: hebrew/holiday.cpp:290
+#, kde-format
+msgid "Yom Kippur"
+msgstr ""
+
+#: hebrew/holiday.cpp:293
+#, kde-format
+msgid "Erev Sukkot"
+msgstr ""
+
+#: hebrew/holiday.cpp:298
+#, kde-format
+msgid "Sukkot"
+msgstr ""
+
+#: hebrew/holiday.cpp:311
+#, kde-format
+msgid "Hoshana Rabah"
+msgstr ""
+
+#: hebrew/holiday.cpp:314
+#, kde-format
+msgid "Shmini Atzeret"
+msgstr ""
+
+#: hebrew/holiday.cpp:318
+#, kde-format
+msgid "Simchat Torah"
+msgstr ""
+
+#: hebrew/holiday.cpp:329
+#, kde-format
+msgid "Erev Hanukah"
+msgstr ""
+
+#: hebrew/holiday.cpp:331 hebrew/holiday.cpp:339
+#, kde-format
+msgid "Hanukah"
+msgstr ""
+
+#: hebrew/holiday.cpp:342
+#, kde-format
+msgid "Tzom Tevet"
+msgstr ""
+
+#: hebrew/holiday.cpp:352 hebrew/holiday.cpp:361 hebrew/holiday.cpp:366
+#: hebrew/holiday.cpp:372
+#, kde-format
+msgid "Sh. Shirah"
+msgstr ""
+
+#: hebrew/holiday.cpp:368
+#, kde-format
+msgid "Tu B'Shvat"
+msgstr ""
+
+#: hebrew/holiday.cpp:383 hebrew/holiday.cpp:395 hebrew/holiday.cpp:403
+#, kde-format
+msgid "Sh. Shekalim"
+msgstr ""
+
+#: hebrew/holiday.cpp:392
+#, kde-format
+msgid "Purim Katan"
+msgstr ""
+
+#: hebrew/holiday.cpp:411 hebrew/holiday.cpp:431
+#, kde-format
+msgid "Ta'anit Ester"
+msgstr ""
+
+#: hebrew/holiday.cpp:420 hebrew/holiday.cpp:425
+#, kde-format
+msgid "Sh. Zachor"
+msgstr ""
+
+#: hebrew/holiday.cpp:427
+#, kde-format
+msgid "Erev Purim"
+msgstr ""
+
+#: hebrew/holiday.cpp:435
+#, kde-format
+msgid "Purim"
+msgstr ""
+
+#: hebrew/holiday.cpp:439 hebrew/holiday.cpp:444
+#, kde-format
+msgid "Shushan Purim"
+msgstr ""
+
+#: hebrew/holiday.cpp:455
+#, kde-format
+msgid "Sh. Parah"
+msgstr ""
+
+#: hebrew/holiday.cpp:465
+#, kde-format
+msgid "Sh. HaHodesh"
+msgstr "Sh. HaHodesh"
+
+#: hebrew/holiday.cpp:481
+#, kde-format
+msgid " Omer"
+msgstr ""
+
+#: hebrew/parsha.cpp:28
+#, fuzzy, kde-format
+#| msgid "&Refresh"
+msgctxt ""
+"These are weekly readings and do not have translations. They may have "
+"different spellings in your language; otherwise, just translate the sound to "
+"your characters"
+msgid "Bereshit"
+msgstr "يېڭىلا(&R)"
+
+#: hebrew/parsha.cpp:29
+#, kde-format
+msgid "Noach"
+msgstr ""
+
+#: hebrew/parsha.cpp:29
+#, kde-format
+msgid "Lech L'cha"
+msgstr ""
+
+#: hebrew/parsha.cpp:29
+#, kde-format
+msgid "Vayera"
+msgstr ""
+
+#: hebrew/parsha.cpp:29
+#, kde-format
+msgid "Chaye Sarah"
+msgstr ""
+
+#: hebrew/parsha.cpp:29
+#, kde-format
+msgid "Toldot"
+msgstr ""
+
+#: hebrew/parsha.cpp:29
+#, kde-format
+msgid "Vayetze"
+msgstr ""
+
+#: hebrew/parsha.cpp:29
+#, kde-format
+msgid "Vayishlach"
+msgstr ""
+
+#: hebrew/parsha.cpp:30
+#, kde-format
+msgid "Vayeshev"
+msgstr ""
+
+#: hebrew/parsha.cpp:30
+#, kde-format
+msgid "Miketz"
+msgstr ""
+
+#: hebrew/parsha.cpp:30
+#, kde-format
+msgid "Vayigash"
+msgstr ""
+
+#: hebrew/parsha.cpp:30
+#, kde-format
+msgid "Vayechi"
+msgstr ""
+
+#: hebrew/parsha.cpp:30
+#, kde-format
+msgid "Shemot"
+msgstr ""
+
+#: hebrew/parsha.cpp:30
+#, kde-format
+msgid "Vaera"
+msgstr ""
+
+#: hebrew/parsha.cpp:30
+#, kde-format
+msgid "Bo"
+msgstr ""
+
+#: hebrew/parsha.cpp:31
+#, kde-format
+msgid "Beshalach"
+msgstr ""
+
+#: hebrew/parsha.cpp:31
+#, kde-format
+msgid "Yitro"
+msgstr ""
+
+#: hebrew/parsha.cpp:31
+#, kde-format
+msgid "Mishpatim"
+msgstr ""
+
+#: hebrew/parsha.cpp:31
+#, kde-format
+msgid "Terumah"
+msgstr ""
+
+#: hebrew/parsha.cpp:31
+#, kde-format
+msgid "Tetzaveh"
+msgstr ""
+
+#: hebrew/parsha.cpp:31
+#, kde-format
+msgid "Ki Tisa"
+msgstr ""
+
+#: hebrew/parsha.cpp:31
+#, kde-format
+msgid "Vayakhel"
+msgstr ""
+
+#: hebrew/parsha.cpp:32
+#, kde-format
+msgid "Pekudei"
+msgstr ""
+
+#: hebrew/parsha.cpp:32
+#, kde-format
+msgid "Vayikra"
+msgstr ""
+
+#: hebrew/parsha.cpp:32
+#, kde-format
+msgid "Tzav"
+msgstr ""
+
+#: hebrew/parsha.cpp:32
+#, kde-format
+msgid "Shemini"
+msgstr ""
+
+#: hebrew/parsha.cpp:32
+#, kde-format
+msgid "Tazria"
+msgstr ""
+
+#: hebrew/parsha.cpp:32
+#, kde-format
+msgid "Metzora"
+msgstr ""
+
+#: hebrew/parsha.cpp:32
+#, kde-format
+msgid "Acharei Mot"
+msgstr ""
+
+#: hebrew/parsha.cpp:33
+#, kde-format
+msgid "Kedoshim"
+msgstr ""
+
+#: hebrew/parsha.cpp:33
+#, kde-format
+msgid "Emor"
+msgstr ""
+
+#: hebrew/parsha.cpp:33
+#, kde-format
+msgid "Behar"
+msgstr ""
+
+#: hebrew/parsha.cpp:33
+#, kde-format
+msgid "Bechukotai"
+msgstr ""
+
+#: hebrew/parsha.cpp:33
+#, kde-format
+msgid "Bemidbar"
+msgstr ""
+
+#: hebrew/parsha.cpp:33
+#, kde-format
+msgid "Naso"
+msgstr ""
+
+#: hebrew/parsha.cpp:33
+#, kde-format
+msgid "Behaalotcha"
+msgstr ""
+
+#: hebrew/parsha.cpp:34
+#, kde-format
+msgid "Shelach"
+msgstr ""
+
+#: hebrew/parsha.cpp:34
+#, kde-format
+msgid "Korach"
+msgstr ""
+
+#: hebrew/parsha.cpp:34
+#, kde-format
+msgid "Chukat"
+msgstr ""
+
+#: hebrew/parsha.cpp:34
+#, kde-format
+msgid "Balak"
+msgstr ""
+
+#: hebrew/parsha.cpp:34
+#, kde-format
+msgid "Pinchas"
+msgstr ""
+
+#: hebrew/parsha.cpp:34
+#, kde-format
+msgid "Matot"
+msgstr ""
+
+#: hebrew/parsha.cpp:34
+#, kde-format
+msgid "Masei"
+msgstr ""
+
+#: hebrew/parsha.cpp:35
+#, kde-format
+msgid "Devarim"
+msgstr ""
+
+#: hebrew/parsha.cpp:35
+#, kde-format
+msgid "Vaetchanan"
+msgstr ""
+
+#: hebrew/parsha.cpp:35
+#, kde-format
+msgid "Ekev"
+msgstr ""
+
+#: hebrew/parsha.cpp:35
+#, kde-format
+msgid "Reeh"
+msgstr ""
+
+#: hebrew/parsha.cpp:35
+#, kde-format
+msgid "Shoftim"
+msgstr ""
+
+#: hebrew/parsha.cpp:35
+#, kde-format
+msgid "Ki Tetze"
+msgstr ""
+
+#: hebrew/parsha.cpp:35
+#, kde-format
+msgid "Ki Tavo"
+msgstr ""
+
+#: hebrew/parsha.cpp:36
+#, kde-format
+msgid "Nitzavim"
+msgstr ""
+
+#: hebrew/parsha.cpp:36
+#, kde-format
+msgid "Vayelech"
+msgstr ""
+
+#: hebrew/parsha.cpp:36
+#, kde-format
+msgid "Haazinu"
+msgstr ""
+
+#: lunarphases/lunarphases.cpp:61
+#, kde-format
+msgid ""
+"This plugin displays the day's lunar phase (New, First, Last, Full). "
+"Currently, the phase is computed for noon at UTC; therefore, you should "
+"expect variations by 1 day in either direction."
+msgstr ""
+
+#: picoftheday/configdialog.cpp:28
+#, fuzzy, kde-format
+#| msgid "Configure View..."
+msgctxt "@title:window"
+msgid "Configure Picture of the Day"
+msgstr "كۆرۈنۈشنى سەپلەش…"
+
+#: picoftheday/configdialog.cpp:42
+#, kde-format
+msgid "Thumbnail Aspect Ratio Mode"
+msgstr ""
+
+#: picoftheday/configdialog.cpp:46
+#, fuzzy, kde-format
+#| msgid "Keep aspect ratio"
+msgid "Ignore aspect ratio"
+msgstr "ئېگىزلىك-كەڭلىك نىسبىتىنى ساقلاپ قال"
+
+#: picoftheday/configdialog.cpp:48
+#, kde-format
+msgid ""
+"The thumbnail will be scaled freely. The aspect ratio will not be preserved."
+msgstr ""
+
+#: picoftheday/configdialog.cpp:52
+#, kde-format
+msgid "Keep aspect ratio"
+msgstr "ئېگىزلىك-كەڭلىك نىسبىتىنى ساقلاپ قال"
+
+#: picoftheday/configdialog.cpp:54
+#, kde-format
+msgid ""
+"The thumbnail will be scaled to a rectangle as large as possible inside a "
+"given rectangle, preserving the aspect ratio."
+msgstr ""
+
+#: picoftheday/configdialog.cpp:59
+#, fuzzy, kde-format
+#| msgid "Keep aspect ratio"
+msgid "Keep aspect ratio by expanding"
+msgstr "ئېگىزلىك-كەڭلىك نىسبىتىنى ساقلاپ قال"
+
+#: picoftheday/configdialog.cpp:61
+#, kde-format
+msgid ""
+"The thumbnail will be scaled to a rectangle as small as possible outside a "
+"given rectangle, preserving the aspect ratio."
+msgstr ""
+
+#: picoftheday/element.cpp:209
+#, kde-format
+msgid "Wikipedia POTD: %1"
+msgstr ""
+
+#: picoftheday/element.cpp:326
+#, fuzzy, kde-format
+#| msgid "Delete Page"
+msgid "Picture Page"
+msgstr "بەت ئۆچۈر"
+
+#: picoftheday/element.cpp:326
+#, fuzzy, kde-format
+#| msgid "Loading..."
+msgid "Loading..."
+msgstr "ئوقۇۋاتىدۇ…"
+
+#: picoftheday/element.cpp:332
+#, fuzzy, kde-format
+#| msgid "Configure View..."
+msgid "<qt>Loading <i>Picture of the Day</i>...</qt>"
+msgstr "كۆرۈنۈشنى سەپلەش…"
+
+#: picoftheday/picoftheday.cpp:48
+#, kde-format
+msgid "<qt>This plugin provides the Wikipedia <i>Picture of the Day</i>.</qt>"
+msgstr ""
+
+#: thisdayinhistory/thisdayinhistory.cpp:29
+#, kde-format
+msgid "This plugin provides links to Wikipedia's 'This Day in History' pages."
+msgstr ""
+
+#: thisdayinhistory/thisdayinhistory.cpp:37
+#, kde-format
+msgid "This day in history"
+msgstr ""
+
+#: thisdayinhistory/thisdayinhistory.cpp:39
+#: thisdayinhistory/thisdayinhistory.cpp:53
+#, kde-format
+msgctxt "Localized Wikipedia website"
+msgid "https://en.wikipedia.org/wiki/"
+msgstr ""
+
+#: thisdayinhistory/thisdayinhistory.cpp:40
+#, kde-format
+msgctxt "Qt date format used by the localized Wikipedia"
+msgid "MMMM_d"
+msgstr ""
+
+#: thisdayinhistory/thisdayinhistory.cpp:51
+#, kde-format
+msgid "This month in history"
+msgstr ""
+
+#: thisdayinhistory/thisdayinhistory.cpp:54
+#, kde-format
+msgctxt "Qt date format used by the localized Wikipedia"
+msgid "MMMM_yyyy"
+msgstr ""
+
+#~ msgctxt "NAME OF TRANSLATORS"
+#~ msgid "Your names"
+#~ msgstr "ئابدۇقادىر ئابلىز, غەيرەت كەنجى"
+
+#~ msgctxt "EMAIL OF TRANSLATORS"
+#~ msgid "Your emails"
+#~ msgstr "sahran.ug@gmail.com,  gheyret@gmail.com"
+
+#~ msgid "KOrganizer"
+#~ msgstr "KOrganizer"
+
+#~ msgid "Allen Winter"
+#~ msgstr "Allen Winter"
+
+#~ msgid "Maintainer"
+#~ msgstr "مەسئۇل كىشى"
+
+#~ msgid "Former Maintainer"
+#~ msgstr "بۇرۇنقى مەسئۇل ئادەم"
+
+#~ msgid "Cornelius Schumacher"
+#~ msgstr "Cornelius Schumacher"
+
+#~ msgid "Preston Brown"
+#~ msgstr "Preston Brown"
+
+#~ msgid "Original Author"
+#~ msgstr "ئەسلى ئاپتور"
+
+#~ msgid "Bertjan Broeksema"
+#~ msgstr "Bertjan Broeksema"
+
+#~ msgid "Kalle Dalheimer"
+#~ msgstr "Kalle Dalheimer"
+
+#~ msgid "Tim Jansen"
+#~ msgstr "Tim Jansen"
+
+#~ msgid "Tobias König"
+#~ msgstr "Tobias König"
+
+#~ msgid "Martin Koller"
+#~ msgstr "Martin Koller"
+
+#~ msgid "Glen Parker"
+#~ msgstr "Glen Parker"
+
+#~ msgid "Dan Pilone"
+#~ msgstr "Dan Pilone"
+
+#~ msgid "Don Sanders"
+#~ msgstr "Don Sanders"
+
+#~ msgid "Nick Thompson"
+#~ msgstr "Nick Thompson"
+
+#~ msgid "Bo Thorsen"
+#~ msgstr "Bo Thorsen"
+
+#~ msgid "Thomas Zander"
+#~ msgstr "Thomas Zander"
+
+#~ msgid "Hide menu bar"
+#~ msgstr "تىزىملىك بالدىقىنى يوشۇر"
+
+#~ msgid "&Delete"
+#~ msgstr "ئۆچۈر(&D)"
+
+#~ msgid "Today"
+#~ msgstr "بۈگۈن"
+
+#~ msgctxt "scroll backward"
+#~ msgid "&Backward"
+#~ msgstr "كەينى(&B)"
+
+#~ msgctxt "scroll backward"
+#~ msgid "Back"
+#~ msgstr "كەينى"
+
+#, fuzzy
+#~| msgctxt "scroll backward"
+#~| msgid "&Backward"
+#~ msgid "Scroll Backward"
+#~ msgstr "كەينى(&B)"
+
+#~ msgctxt "scroll forward"
+#~ msgid "&Forward"
+#~ msgstr "ئالدىغا(&F)"
+
+#~ msgctxt "scoll forward"
+#~ msgid "Forward"
+#~ msgstr "ئالدى"
+
+#, fuzzy
+#~| msgctxt "scoll forward"
+#~| msgid "Forward"
+#~ msgid "Scroll Forward"
+#~ msgstr "ئالدى"
+
+#~ msgid "&Day"
+#~ msgstr "كۈن(&D)"
+
+#~ msgid "&Next Day"
+#~ msgid_plural "&Next %1 Days"
+#~ msgstr[0] "كېيىنكى %1 كۈن(&N)"
+
+#~ msgid "W&ork Week"
+#~ msgstr "خىزمەت ھەپتىسى(&O)"
+
+#~ msgid "&Week"
+#~ msgstr "ھەپتە(&W)"
+
+#~ msgid "New E&vent..."
+#~ msgstr "يېڭى ھادىسە(&V)…"
+
+#~ msgid "Create a new Event"
+#~ msgstr "يېڭى ھادىسە قۇرىدۇ"
+
+#~ msgid "New &To-do..."
+#~ msgstr "يېڭى قىلىدىغان ئىشلار(&T)…"
+
+#~ msgid "Create a new To-do"
+#~ msgstr "يېڭىدىن قىلىدىغان ئىشلارنى قۇرىدۇ"
+
+#~ msgid "New Su&b-to-do..."
+#~ msgstr "يېڭى تارماق قىلىدىغان ئىشلار(&B)…"
+
+#~ msgid "New &Journal..."
+#~ msgstr "يېڭى ژۇرنال(&J)…"
+
+#, fuzzy
+#~| msgid "Create a new Event"
+#~ msgid "Create a new Journal"
+#~ msgstr "يېڭى ھادىسە قۇرىدۇ"
+
+#~ msgid "Configure View..."
+#~ msgstr "كۆرۈنۈشنى سەپلەش…"
+
+#~ msgid "&Show"
+#~ msgstr "كۆرسەت(&S)"
+
+#~ msgid "&Edit..."
+#~ msgstr "تەھرىر(&E)…"
+
+#~ msgid "&Address Book"
+#~ msgstr "ئادرېس دەپتىرى(&A)"
+
+#~ msgid "Proceed"
+#~ msgstr "ئىجرا قىلىش"
+
+#~ msgid "Do you want to overwrite file \"%1\"?"
+#~ msgstr "ھۆججەت «%1» نى قاپلىۋېتەمسىز؟"
+
+#~ msgid "Error"
+#~ msgstr "خاتالىق"
+
+#~ msgid "*.ics *.vcs|Calendar Files"
+#~ msgstr "*.ics *.vcs|يىلنامە ھۆججەتلىرى"
+
+#~ msgid "&Edit To-do..."
+#~ msgstr "قىلىدىغان ئىشلارنى تەھرىرلە(&E)"
+
+#~ msgid "&Delete To-do"
+#~ msgstr "قىلىدىغان ئىشلارنى ئۆچۈر(&D)"
+
+#~ msgid "Attach as &link"
+#~ msgstr "ئۇلانما سۈپىتىدە قوشۇش(&L)"
+
+#~ msgid "C&ancel"
+#~ msgstr "ۋاز كەچ(&A)"
+
+#~ msgid "Remove Attachments"
+#~ msgstr "قوشۇلمىنى چىقىرىۋېتىش"
+
+#~ msgid "Undo: %1"
+#~ msgstr "يېنىۋال: %1"
+
+#~ msgid "Undo"
+#~ msgstr "يېنىۋال"
+
+#~ msgid "Redo: %1"
+#~ msgstr "قايتىلا: %1"
+
+#~ msgid "Redo"
+#~ msgstr "قايتىلا"
+
+#, fuzzy
+#~| msgid "Search"
+#~ msgctxt ""
+#~ "@info/plain Displayed grayed-out inside the textbox, verb to search"
+#~ msgid "Search"
+#~ msgstr "ئىزدە"
+
+#, fuzzy
+#~| msgid "Start searching"
+#~ msgid "searching..."
+#~ msgstr "ئىزدەشنى باشلايدۇ"
+
+#~ msgctxt "@title:window"
+#~ msgid "Properties of Calendar Folder %1"
+#~ msgstr "يىلنامە قىسقۇچى ‹%1› نىڭ خاسلىقى"
+
+#~ msgid "Add Calendar"
+#~ msgstr "يىلنامە قوش"
+
+#~ msgid "Delete Calendar"
+#~ msgstr "يىلنامە ئۆچۈرۈش"
+
+#~ msgctxt "@title:window"
+#~ msgid "Copying Failed"
+#~ msgstr "كۆچۈرۈش مەغلۇپ بولدى"
+
+#~ msgctxt "@title:window"
+#~ msgid "Moving Failed"
+#~ msgstr "يۆتكەش مەغلۇپ بولدى"
+
+#, fuzzy
+#~| msgctxt "@title:tab calendar account settings"
+#~| msgid "Calendars"
+#~ msgid "iCalendars (*.ics)"
+#~ msgstr "يىلنامىلەر"
+
+#~ msgid "Do you want to overwrite %1?"
+#~ msgstr "%1 قاپلىۋېتەمسىز؟"
+
+#~ msgctxt "save failure cause unknown"
+#~ msgid "Reason unknown"
+#~ msgstr "سەۋەبى نامەلۇم"
+
+#, fuzzy
+#~| msgctxt "@title:tab calendar account settings"
+#~| msgid "Calendars"
+#~ msgid "vCalendars (*.vcs)"
+#~ msgstr "يىلنامىلەر"
+
+#~ msgid "No filter"
+#~ msgstr "سۈزگۈچ يوق"
+
+#~ msgid "Delete All"
+#~ msgstr "ھەممىنى ئۆچۈر…"
+
+#, fuzzy
+#~| msgid "Delete all completed to-dos?"
+#~ msgid "There are no completed to-dos to purge."
+#~ msgstr "تاماملانغان بارلىق ئىشلارنى ئۆچۈرەمسىز؟"
+
+#, fuzzy
+#~| msgid "Delete all completed to-dos?"
+#~ msgid "Delete all completed to-dos from checked calendars?"
+#~ msgstr "تاماملانغان بارلىق ئىشلارنى ئۆچۈرەمسىز؟"
+
+#~ msgid "Purge"
+#~ msgstr "پاكىزلا"
+
+#~ msgid "Copying Failed"
+#~ msgstr "كۆچۈرۈش مەغلۇپ بولدى"
+
+#~ msgid "Moving Failed"
+#~ msgstr "يۆتكەش مەغلۇپ بولدى"
+
+#, fuzzy
+#~| msgctxt "general settings for html export"
+#~| msgid "General"
+#~ msgctxt "@title:tab General settings for a folder."
+#~ msgid "General"
+#~ msgstr "ئادەتتىكى"
+
+#, fuzzy
+#~| msgctxt "filter name"
+#~| msgid "Name:"
+#~ msgctxt "@label:textbox Name of the folder."
+#~ msgid "&Name:"
+#~ msgstr "ئاتى:"
+
+#~ msgid "&File"
+#~ msgstr "ھۆججەت(&F)"
+
+#~ msgid "&Import"
+#~ msgstr "ئەكىر(&I)"
+
+#~ msgid "&Export"
+#~ msgstr "چىقار(&E)"
+
+#~ msgid "&Edit"
+#~ msgstr "تەھرىر(&E)"
+
+#~ msgid "&View"
+#~ msgstr "كۆرۈنۈش(&V)"
+
+#~ msgid "&Zoom"
+#~ msgstr "كېڭەيت تارايت(&Z)"
+
+#~ msgid "&Go"
+#~ msgstr "يۆتكەل(&G)"
+
+#~ msgid "&Actions"
+#~ msgstr "مەشغۇلاتلار(&A)"
+
+#~ msgid "&Settings"
+#~ msgstr "تەڭشەك(&S)"
+
+#~ msgid "&Help"
+#~ msgstr "ياردەم(&H)"
+
+#~ msgctxt "main toolbar"
+#~ msgid "Main"
+#~ msgstr "ئاساس"
+
+#~ msgid "Views"
+#~ msgstr "كۆرۈنۈشلەر"
+
+#~ msgid "Schedule"
+#~ msgstr "كۈنتەرتىپ"
+
+#~ msgid "Export"
+#~ msgstr "ئېكسپورت قىل"
+
+#~ msgid ""
+#~ "You are about to set all preferences to default values. All custom "
+#~ "modifications will be lost."
+#~ msgstr ""
+#~ "بارلىق تەڭشەكنى كۆڭۈلدىكى قىممەتكە توغرىلىماقچى بولۇۋاتىسىز. بارلىق "
+#~ "ئۆزگەرتىشلەر يوق بولىدۇ."
+
+#~ msgid "Setting Default Preferences"
+#~ msgstr "كۆڭۈلدىكى مايىللىقنى بەلگىلەش"
+
+#~ msgid "Reset to Defaults"
+#~ msgstr "كۆڭۈلدىكىگە قايتۇر"
+
+#~ msgctxt "general settings for html export"
+#~ msgid "General"
+#~ msgstr "ئادەتتىكى"
+
+#~ msgid "Date Range"
+#~ msgstr "چېسلا دائىرىسى"
+
+#~ msgid "Destination"
+#~ msgstr "نىشان"
+
+#~ msgid "To-dos"
+#~ msgstr "قىلىدىغان ئىشلار"
+
+#~ msgid "Events"
+#~ msgstr "ھادىسە"
+
+#~ msgctxt "@title:window"
+#~ msgid "Delete Filter?"
+#~ msgstr "سۈزگۈچنى ئۆچۈرەمسىز؟"
+
+#~ msgid "Event Viewer"
+#~ msgstr "ھادىسە كۆرگۈچ"
+
+#~ msgid "Edit..."
+#~ msgstr "تەھرىر…"
+
+#, fuzzy
+#~| msgid "&Cancel"
+#~ msgctxt "@action:discard creating note"
+#~ msgid "Cancel"
+#~ msgstr "ۋاز كەچ(&C)"
+
+#, fuzzy
+#~| msgctxt "@title:tab"
+#~| msgid "Save"
+#~ msgctxt "@action:save note"
+#~ msgid "Save"
+#~ msgstr "ساقلا"
+
+#, fuzzy
+#~| msgid "&Title:"
+#~ msgid "Title:"
+#~ msgstr "ماۋزۇ(&T):"
+
+#, fuzzy
+#~| msgid "Text"
+#~ msgid "Text:"
+#~ msgstr "تېكىست"
+
+#~ msgctxt "search in calendar"
+#~ msgid "&Search"
+#~ msgstr "ئىزدە(&S)"
+
+#~ msgid "Start searching"
+#~ msgstr "ئىزدەشنى باشلايدۇ"
+
+#~ msgid "Search Results"
+#~ msgstr "ئىزدەش نەتىجىسى"
+
+#~ msgid "%1 item"
+#~ msgid_plural "%1 items"
+#~ msgstr[0] "%1 تۈر"
+
+#~ msgctxt "@title month and year"
+#~ msgid "%1 %2"
+#~ msgstr "%1 %2"
+
+#~ msgctxt "@title:column event start time"
+#~ msgid "Start Time"
+#~ msgstr "باشلىنىش ۋاقتى"
+
+#~ msgctxt "@title:column event end time"
+#~ msgid "End Time"
+#~ msgstr "ئاخىرلىشىش ۋاقتى"
+
+#~ msgctxt "@title:column event description"
+#~ msgid "Event"
+#~ msgstr "ھادىسە"
+
+#~ msgctxt "@title:column event locatin"
+#~ msgid "Location"
+#~ msgstr "ئورنى"
+
+#~ msgctxt "@title:column event categories"
+#~ msgid "Categories"
+#~ msgstr "كاتېگورىيە"
+
+#~ msgctxt "@title:column event attendees"
+#~ msgid "Attendees"
+#~ msgstr "قاتناشقۇچىلار"
+
+#~ msgctxt "@title:column"
+#~ msgid "To-do"
+#~ msgstr "قىلىدىغان ئىش"
+
+#~ msgctxt "@title:column to-do priority"
+#~ msgid "Priority"
+#~ msgstr "مەرتىۋە"
+
+#~ msgctxt "@title:column to-do percent completed"
+#~ msgid "Completed"
+#~ msgstr "تاماملاندى"
+
+#~ msgctxt "@title:column to-do due date"
+#~ msgid "Due Date"
+#~ msgstr "مۆھلىتى(چېسلا)"
+
+#~ msgctxt "@title:column to-do location"
+#~ msgid "Location"
+#~ msgstr "ئورنى"
+
+#~ msgctxt "@title:column to-do categories"
+#~ msgid "Categories"
+#~ msgstr "كاتېگورىيە"
+
+#~ msgctxt "@title:column to-do attendees"
+#~ msgid "Attendees"
+#~ msgstr "قاتناشقۇچىلار"
+
+#, fuzzy
+#~| msgctxt "@info/plain to-do percent complete"
+#~| msgid "%1 %"
+#~ msgctxt "@info to-do percent complete"
+#~ msgid "%1 %"
+#~ msgstr "%1 %"
+
+#, fuzzy
+#~| msgctxt "@info/plain"
+#~| msgid "This page was created "
+#~ msgctxt "@info"
+#~ msgid "This page was created "
+#~ msgstr "بۇ بەت "
+
+#~ msgctxt "@info/plain page creator email link with name"
+#~ msgid "by <link url='mailto:%1'>%2</link> "
+#~ msgstr "ئاپتور <link url='mailto:%1'>%2</link> "
+
+#~ msgctxt "@info/plain page creator email link"
+#~ msgid "by <link url='mailto:%1'>%2</link> "
+#~ msgstr "ئاپتور <link url='mailto:%1'>%2</link> "
+
+#, fuzzy
+#~| msgctxt "@info/plain page creator name only"
+#~| msgid "by %1 "
+#~ msgctxt "@info page creator name only"
+#~ msgid "by %1 "
+#~ msgstr "ئاپتور %1 "
+
+#~ msgctxt "@info/plain page credit with name and link"
+#~ msgid "with <link url='%1'>%2</link>"
+#~ msgstr "<link url='%1'>%2</link> بىلەن"
+
+#, fuzzy
+#~| msgctxt "@info/plain page credit name only"
+#~| msgid "with %1"
+#~ msgctxt "@info page credit name only"
+#~ msgid "with %1"
+#~ msgstr "%1 بىلەن"
+
+#, fuzzy
+#~| msgctxt "@info/plain holiday by date and name"
+#~| msgid "%1, %2"
+#~ msgctxt "@info holiday by date and name"
+#~ msgid "%1, %2"
+#~ msgstr "%1، %2"
+
+#~ msgid "Text"
+#~ msgstr "تېكىست"
+
+#~ msgid "Numeric Value"
+#~ msgstr "رەقەملىك قىممەت"
+
+#~ msgid "Boolean"
+#~ msgstr "بۇلىن"
+
+#~ msgid "Selection"
+#~ msgstr "تاللاش"
+
+#~ msgid "Date & Time"
+#~ msgstr "چېسلا & ۋاقىت"
+
+#~ msgid "Date"
+#~ msgstr "چېسلا"
+
+#, fuzzy
+#~| msgid "(c), 2004 Tobias Koenig"
+#~ msgid "(c) 2004 Tobias Koenig"
+#~ msgstr "(c)، 2004 Tobias Koenig"
+
+#~ msgid "Tobias Koenig"
+#~ msgstr "Tobias Koenig"
+
+#~ msgid "Key:"
+#~ msgstr "شىفىرلىق ئاچقۇچ:"
+
+#~ msgid "Type:"
+#~ msgstr "تىپى:"
+
+#~ msgid "Description:"
+#~ msgstr "چۈشەندۈرۈش:"
+
+#~ msgctxt "@item:intext delimiter for joining holiday names"
+#~ msgid ","
+#~ msgstr "،"
+
+#~ msgctxt "delimiter for joining holiday names"
+#~ msgid ","
+#~ msgstr "،"
+
+#~ msgid "&Move"
+#~ msgstr "يۆتكە(&M)"
+
+#~ msgid "&Copy"
+#~ msgstr "كۆچۈر(&C)"
+
+#~ msgid "&Add"
+#~ msgstr "قوش(&A)"
+
+#~ msgid "&Cancel"
+#~ msgstr "ۋاز كەچ(&C)"
+
+#~ msgid "&Print..."
+#~ msgstr "باس(&P)…"
+
+#~ msgid "Print Previe&w..."
+#~ msgstr "بېسىشنى ئالدىن كۆزەت(&W)…"
+
+#~ msgctxt "cut this event"
+#~ msgid "C&ut"
+#~ msgstr "كەس(&U)"
+
+#~ msgctxt "copy this event"
+#~ msgid "&Copy"
+#~ msgstr "كۆچۈر(&C)"
+
+#~ msgid "&Paste"
+#~ msgstr "چاپلا(&P)"
+
+#~ msgctxt "delete this incidence"
+#~ msgid "&Delete"
+#~ msgstr "ئۆچۈر(&D)"
+
+#, fuzzy
+#~| msgid "Create a new To-do"
+#~ msgid "Create To-do"
+#~ msgstr "يېڭىدىن قىلىدىغان ئىشلارنى قۇرىدۇ"
+
+#, fuzzy
+#~| msgid "Create a new Event"
+#~ msgid "Create Event"
+#~ msgstr "يېڭى ھادىسە قۇرىدۇ"
+
+#~ msgid "Unable to save %1 \"%2\"."
+#~ msgstr "%1 «%2» نى ساقلىغىلى بولمىدى."
+
+#, fuzzy
+#~| msgid "Today"
+#~ msgid "&Today only"
+#~ msgstr "بۈگۈن"
+
+#, fuzzy
+#~| msgid "1 day"
+#~| msgid_plural "%1 days"
+#~ msgid "1 day"
+#~ msgstr "%1 كۈن"
+
+#, fuzzy
+#~| msgctxt "@label suffix in the N days spin box"
+#~| msgid " days"
+#~ msgctxt "days to show in summary"
+#~ msgid " days"
+#~ msgstr " كۈن"
+
+#, fuzzy
+#~| msgid "Show to-dos"
+#~ msgid "Show &birthdays"
+#~ msgstr "قىلىدىغان ئىشلار(to-dos)نى كۆرسەت"
+
+#, fuzzy
+#~| msgctxt "@title:group email settings"
+#~| msgid "Email Settings"
+#~ msgid "Groupware Settings"
+#~ msgstr "ئېلخەت تەڭشىكى"
+
+#, fuzzy
+#~| msgctxt "@title:group"
+#~| msgid "Appointments"
+#~ msgid "&Edit Appointment..."
+#~ msgstr "ئۇچرىشىشلار"
+
+#, fuzzy
+#~| msgctxt "@title:group"
+#~| msgid "Appointments"
+#~ msgid "&Delete Appointment"
+#~ msgstr "ئۇچرىشىشلار"
+
+#, fuzzy
+#~| msgid "Edit %1"
+#~ msgid "Edit Event: \"%1\""
+#~ msgstr "%1 نى تەھرىرلەش"
+
+#, fuzzy
+#~| msgid "New &Journal..."
+#~ msgctxt "@action:inmenu"
+#~ msgid "New Journal..."
+#~ msgstr "يېڭى ژۇرنال(&J)…"
+
+#, fuzzy
+#~| msgid "Create a new Event"
+#~ msgctxt "@info:status"
+#~ msgid "Create a new journal"
+#~ msgstr "يېڭى ھادىسە قۇرىدۇ"
+
+#, fuzzy
+#~| msgid "Journal"
+#~ msgctxt "@action:inmenu"
+#~ msgid "Sync Journal"
+#~ msgstr "ژۇرنال"
+
+#, fuzzy
+#~| msgid "1 day"
+#~| msgid_plural "%1 days"
+#~ msgid " day"
+#~ msgid_plural " days"
+#~ msgstr[0] "%1 كۈن"
+
+#, fuzzy
+#~| msgid "New E&vent..."
+#~ msgctxt "@action:inmenu"
+#~ msgid "New Event..."
+#~ msgstr "يېڭى ھادىسە(&V)…"
+
+#, fuzzy
+#~| msgid "Create a new Event"
+#~ msgctxt "@info:status"
+#~ msgid "Create a new event"
+#~ msgstr "يېڭى ھادىسە قۇرىدۇ"
+
+#, fuzzy
+#~| msgid "Calendar"
+#~ msgctxt "@action:inmenu"
+#~ msgid "Sync Calendar"
+#~ msgstr "يىلنامە"
+
+#, fuzzy
+#~| msgid "&Settings"
+#~ msgctxt "@item"
+#~ msgid "Meeting"
+#~ msgstr "تەڭشەك(&S)"
+
+#, fuzzy
+#~| msgid "Notes:"
+#~ msgctxt "@item"
+#~ msgid "Note: %1"
+#~ msgstr "ئىزاھ:"
+
+#, fuzzy
+#~| msgid "Today"
+#~ msgctxt "the appointment is today"
+#~ msgid "Today"
+#~ msgstr "بۈگۈن"
+
+#, fuzzy
+#~| msgid "1 day"
+#~| msgid_plural "%1 days"
+#~ msgid "in 1 day"
+#~ msgid_plural "in %1 days"
+#~ msgstr[0] "%1 كۈن"
+
+#, fuzzy
+#~| msgid "1 minute"
+#~| msgid_plural "%1 minutes"
+#~ msgctxt "use abbreviation for minute to keep the text short"
+#~ msgid "1 min"
+#~ msgid_plural "%1 mins"
+#~ msgstr[0] "%1 مىنۇت"
+
+#, fuzzy
+#~| msgid "1 day"
+#~| msgid_plural "%1 days"
+#~ msgid "all day"
+#~ msgstr "%1 كۈن"
+
+#, fuzzy
+#~| msgctxt "date from - to"
+#~| msgid "%1 - %2"
+#~ msgctxt "Time from - to"
+#~ msgid "%1 - %2"
+#~ msgstr "%1 - %2"
+
+#, fuzzy
+#~| msgid "Redo: %1"
+#~ msgctxt "next occurrence"
+#~ msgid "Next: %1"
+#~ msgstr "قايتىلا: %1"
+
+#, fuzzy
+#~| msgid "New &To-do..."
+#~ msgctxt "@action:inmenu"
+#~ msgid "New To-do..."
+#~ msgstr "يېڭى قىلىدىغان ئىشلار(&T)…"
+
+#, fuzzy
+#~| msgid "Create a new To-do"
+#~ msgctxt "@info:status"
+#~ msgid "Create a new to-do"
+#~ msgstr "يېڭىدىن قىلىدىغان ئىشلارنى قۇرىدۇ"
+
+#, fuzzy
+#~| msgid "To-do List"
+#~ msgctxt "@action:inmenu"
+#~ msgid "Sync To-do List"
+#~ msgstr "قىلىدىغان ئىش تىزىمى"
+
+#, fuzzy
+#~| msgid "Delete To-do"
+#~ msgid "Hide completed To-dos"
+#~ msgstr "قىلىدىغان ئىشلارنى ئۆچۈرۈش"
+
+#, fuzzy
+#~| msgctxt "@title:column to-do percent completed"
+#~| msgid "Completed"
+#~ msgid "&Completed"
+#~ msgstr "تاماملاندى"
+
+#, fuzzy
+#~| msgid "Show to-dos"
+#~ msgid "Show &my To-dos only"
+#~ msgstr "قىلىدىغان ئىشلار(to-dos)نى كۆرسەت"
+
+#, fuzzy
+#~| msgid "To-dos"
+#~ msgid "Pending To-dos"
+#~ msgstr "قىلىدىغان ئىشلار"
+
+#, fuzzy
+#~| msgid "Today"
+#~ msgctxt "the to-do is due today"
+#~ msgid "Today"
+#~ msgstr "بۈگۈن"
+
+#, fuzzy
+#~| msgid "1 day"
+#~| msgid_plural "%1 days"
+#~ msgid "1 day ago"
+#~ msgid_plural "%1 days ago"
+#~ msgstr[0] "%1 كۈن"
+
+#, fuzzy
+#~| msgctxt "@label to-do due date"
+#~| msgid "Due"
+#~ msgctxt "the to-do is due"
+#~ msgid "due"
+#~ msgstr "مۆھلىتى"
+
+#, fuzzy
+#~| msgid "&Edit To-do..."
+#~ msgid "Edit To-do: \"%1\""
+#~ msgstr "قىلىدىغان ئىشلارنى تەھرىرلە(&E)"
+
+#, fuzzy
+#~| msgctxt "@title:column to-do percent completed"
+#~| msgid "Completed"
+#~ msgctxt "the to-do is completed"
+#~ msgid "completed"
+#~ msgstr "تاماملاندى"
+
+#, fuzzy
+#~| msgctxt "@item:intext delimiter for joining holiday names"
+#~| msgid ","
+#~ msgctxt "Separator for status like this: overdue, completed"
+#~ msgid ","
+#~ msgstr "،"
+
+#, fuzzy
+#~| msgid "Today"
+#~ msgctxt "the special day is today"
+#~ msgid "Today"
+#~ msgstr "بۈگۈن"
+
+#~ msgid "Holiday"
+#~ msgstr "دەم ئېلىش كۈنى"
+
+#, fuzzy
+#~| msgid "Former Maintainer"
+#~ msgid "Current Maintainer"
+#~ msgstr "بۇرۇنقى مەسئۇل ئادەم"
+
+#~ msgid "Calendar"
+#~ msgstr "يىلنامە"
+
+#~ msgid "New Calendar"
+#~ msgstr "يېڭى يىلنامە"
+
+#~ msgctxt "the calendar is read-only"
+#~ msgid "read-only"
+#~ msgstr "ئوقۇشقىلا بولىدۇ"
+
+#~ msgctxt "@title:tab personal settings"
+#~ msgid "Personal"
+#~ msgstr "شەخسىي"
+
+#~ msgctxt "@title:group email settings"
+#~ msgid "Email Settings"
+#~ msgstr "ئېلخەت تەڭشىكى"
+
+#~ msgctxt "@title:tab"
+#~ msgid "Save"
+#~ msgstr "ساقلا"
+
+#~ msgctxt "@title:tab systray settings"
+#~ msgid "System Tray"
+#~ msgstr "سىستېما قوندىقى"
+
+#~ msgctxt "@title:group"
+#~ msgid "Show/Hide Options"
+#~ msgstr "تاللانما كۆرسەت/يوشۇر"
+
+#~ msgctxt "@title:tab calendar account settings"
+#~ msgid "Calendars"
+#~ msgstr "يىلنامىلەر"
+
+#~ msgctxt "@title:group"
+#~ msgid "Holidays"
+#~ msgstr "دەم ئېلىش كۈنى"
+
+#~ msgctxt "@label"
+#~ msgid "Use holiday region:"
+#~ msgstr "تۆۋەندىكى رايونلارنىڭ تەتىلىنى ئىشلەت:"
+
+#~ msgctxt "Holday region, region language"
+#~ msgid "%1 (%2)"
+#~ msgstr "%1 (%2)"
+
+#~ msgctxt "No holiday region"
+#~ msgid "None"
+#~ msgstr "يوق"
+
+#~ msgctxt "@title:group"
+#~ msgid "Appointments"
+#~ msgstr "ئۇچرىشىشلار"
+
+#~ msgctxt "@title:group"
+#~ msgid "Reminders"
+#~ msgstr "ئەسكەرتكۈچلەر"
+
+#~ msgctxt "@label"
+#~ msgid "Default reminder time:"
+#~ msgstr "كۆڭۈلدىكى ئەسلىتىش ۋاقتى:"
+
+#~ msgctxt "@item:inlistbox reminder units in minutes"
+#~ msgid "minute(s)"
+#~ msgstr "مىنۇت"
+
+#~ msgctxt "@item:inlistbox reminder time units in hours"
+#~ msgid "hour(s)"
+#~ msgstr "سائەت"
+
+#~ msgctxt "@item:inlistbox reminder time units in days"
+#~ msgid "day(s)"
+#~ msgstr "كۈن"
+
+#~ msgctxt "@title:tab general settings"
+#~ msgid "General"
+#~ msgstr "ئادەتتىكى"
+
+#~ msgctxt "@title:group"
+#~ msgid "Display Options"
+#~ msgstr "كۆرسىتىش تاللانمىسى"
+
+#~ msgctxt "@label suffix in the N days spin box"
+#~ msgid " days"
+#~ msgstr " كۈن"
+
+#~ msgctxt "@label suffix in the hour size spin box"
+#~ msgid " pixels"
+#~ msgstr " چېكىت"
+
+#~ msgctxt "@title:tab"
+#~ msgid "Month View"
+#~ msgstr "ئاي كۆرۈنۈشى"
+
+#~ msgctxt "@title:tab"
+#~ msgid "Todo View"
+#~ msgstr "قىلىدىغان ئىشلار كۆرۈنۈشى"
+
+#~ msgctxt "@title:group"
+#~ msgid "Other Options"
+#~ msgstr "باشقا تاللانما"
+
+#~ msgctxt "@title:tab"
+#~ msgid "Colors"
+#~ msgstr "رەڭلەر"
+
+#~ msgctxt "@title:group"
+#~ msgid "Categories"
+#~ msgstr "كاتېگورىيە"
+
+#~ msgctxt "@title:group"
+#~ msgid "Resources"
+#~ msgstr "مەنبەلەر"
+
+#~ msgctxt "@title:tab"
+#~ msgid "Fonts"
+#~ msgstr "خەت نۇسخىلىرى"
+
+#~ msgctxt "@title:column plugin name"
+#~ msgid "Name"
+#~ msgstr "ئاتى"
+
+#~ msgctxt "@title:group"
+#~ msgid "Position"
+#~ msgstr "ئورنى"
+
+#~ msgctxt "@title:group"
+#~ msgid "Other Plugins"
+#~ msgstr "باشقا قىستۇرمىلار"
+
+#~ msgid "Full name of the calendar owner"
+#~ msgstr "يىلنامە ئىگىسىنىڭ تولۇق ئاتى"
+
+#~ msgid "Email of the calendar owner"
+#~ msgstr "يىلنامە ئىگىسىنىڭ ئېلخەت ئادرېسى"
+
+#~ msgid "Creator application"
+#~ msgstr "قۇرغۇچى پروگرامما"
+
+#~ msgid "Creator application of the calendar"
+#~ msgstr "يىلنامىنىڭ قۇرغۇچى پروگراممىسى"
+
+#~ msgid "Creator URL"
+#~ msgstr "قۇرغۇچى URL"
+
+#~ msgid "URL of the creator application of the calendar."
+#~ msgstr "يىلنامە ياسىغۇچى پروگراممىنىڭ URL ئى."
+
+#~ msgid "Page Title"
+#~ msgstr "بەت ماۋزۇسى"
+
+#~ msgid "Date start"
+#~ msgstr "باشلىنىش چېسلاسى"
+
+#~ msgid "Date end"
+#~ msgstr "ئاخىرلىشىش چېسلاسى"
+
+#~ msgid "Output filename"
+#~ msgstr "چىقىرىش ھۆججىتىنىڭ ئاتى"
+
+#~ msgid "The output file name for the HTML export."
+#~ msgstr "HTML ئېكسپورتى ئۈچۈن چىقىرىش ھۆججىتىنىڭ ئاتى."
+
+#~ msgid "Style sheet"
+#~ msgstr "ئۇسلۇب ۋارىقى"
+
+#~ msgid "Exclude private incidences from the export"
+#~ msgstr "ئېكسپورت قىلىدىغان مەزمۇندىن خۇسۇىي مەزمۇنلارنى چىقىرىۋەت"
+
+#~ msgid "Exclude confidential incidences from the export"
+#~ msgstr "ئېكسپورت قىلىدىغان مەزمۇندىن مەخپىي مەزمۇنلارنى چىقىرىۋەت"
+
+#~ msgid "Export events as list"
+#~ msgstr "ھادىسىلەرنى تىزىم سۈپىتىدە ئېكسپورت قىل"
+
+#~ msgid "Export in month view"
+#~ msgstr "ئوي كۆرۈنۈشىگە ئېكسپورت قىل"
+
+#~ msgid "Export in week view"
+#~ msgstr "ھەپتە كۆرۈنۈشىگە ئېكسپورت قىل"
+
+#~ msgid "Title of the calendar"
+#~ msgstr "يىلنامە ماۋزۇسى"
+
+#~ msgid "Export location of the events"
+#~ msgstr "ھادىسىلەرنىڭ ئورنىنى ئېكسپورت قىل"
+
+#~ msgid "Export categories of the events"
+#~ msgstr "ھادىسىلەرنىڭ كاتېگورىيەسىنى ئېكسپورت قىل"
+
+#~ msgid "Export attendees of the events"
+#~ msgstr "ھادىسىگە قاتناشقۇچىلارنى ئېكسپورت قىل"
+
+#~ msgid "Export to-do list"
+#~ msgstr "قىلىدىغان ئىشلار تىزىمىغا ئېكسپورت قىل"
+
+#~ msgid "Title of the to-do list"
+#~ msgstr "قىلىدىغان ئىشلارنىڭ ماۋزۇسى"
+
+#~ msgid "To-do List"
+#~ msgstr "قىلىدىغان ئىش تىزىمى"
+
+#~ msgid "Export location of the to-dos"
+#~ msgstr "قىلىدىغان ئىشلارنىڭ ئورنىنى ئېكسپورت قىل"
+
+#~ msgid "Export categories of the to-dos"
+#~ msgstr "قىلىدىغان ئىشلارنىڭ كاتېگورىيەسىنى ئېكسپورت قىل"
+
+#~ msgid "Export attendees of the to-dos"
+#~ msgstr "قىلىدىغان ئىشلارغا قاتناشقۇچىلارنى ئېكسپورت قىل"
+
+#~ msgid "Export journals"
+#~ msgstr "ژۇرناللار ئېكسپورت قىل"
+
+#~ msgid "Title of the free/busy list"
+#~ msgstr "بىكار/ئالدىراش تىزىمىنىڭ ماۋزۇسى"
+
+#~ msgid "Busy times"
+#~ msgstr "ئالدىراش مەزگىللەر"
+
+#~ msgid "Confirm deletes"
+#~ msgstr "ئۆچۈرۈشنى جەزملەش"
+
+#~ msgid "Be added to the standard calendar"
+#~ msgstr "ئۆلچەملىك يىلنامىگە قوشۇلىدۇ"
+
+#~ msgid "Be asked which calendar to use"
+#~ msgstr "قايسى يىلنامىنى ئىشلىتىلىدىغانلىقىنى سورايدۇ"
+
+#~ msgid "Day begins at"
+#~ msgstr "كۈن بېشى"
+
+#~ msgid "Use holiday region:"
+#~ msgstr "تۆۋەندىكى رايونلارنىڭ تەتىلىنى ئىشلەت:"
+
+#~ msgid "Daily starting hour"
+#~ msgstr "ئىشقا بېرىش ۋاقتى"
+
+#~ msgid "Daily ending hour"
+#~ msgstr "ئىشتىن چۈشۈش ۋاقتى"
+
+#~ msgid "Exclude holidays"
+#~ msgstr "تەتىللەرنى چىقىرىۋەت"
+
+#~ msgid "Color busy days with a different background color"
+#~ msgstr "ئالدىراش كۈنلەرنى ئوخشىمىغان تەگلىك رەڭگىدە كۆرسەت"
+
+#~ msgid "Next x days"
+#~ msgstr "كېيىنكى X كۈن"
+
+#~ msgid "Show items that recur daily"
+#~ msgstr "كۈندە تەكرارلىنىدىغان تۈرلەرنى كۆرسەت"
+
+#~ msgid "Show items that recur weekly"
+#~ msgstr "ھەپتىدە تەكرارلىنىدىغان تۈرلەرنى كۆرسەت"
+
+#~ msgid "Hour size"
+#~ msgstr "سائەت چوڭلۇقى"
+
+#~ msgid "Show to-dos"
+#~ msgstr "قىلىدىغان ئىشلار(to-dos)نى كۆرسەت"
+
+#~ msgid "Display the current-time indicator"
+#~ msgstr "نۆۋەتتىكى ۋاقىت كۆرسەتكۈچىنى كۆرسەت"
+
+#~ msgid "Display seconds with the current-time indicator"
+#~ msgstr "نۆۋەتتىكى ۋاقىت كۆرسەتكۈچىدە سېكۇنتلارنى كۆرسەت"
+
+#~ msgid "Color Usage"
+#~ msgstr "رەڭ ئىشلىتىش"
+
+#~ msgid "Category inside, calendar outside"
+#~ msgstr "كاتېگورىيە ئىچىدە، يىلنامە سىرتىدا"
+
+#~ msgid "Calendar inside, category outside"
+#~ msgstr "يىلنامە ئىچىدە، كاتېگورىيە سىرتىدا"
+
+#~ msgid "Only category"
+#~ msgstr "كاتېگورىيەلا"
+
+#~ msgid "Only calendar"
+#~ msgstr "يىلنامىلا"
+
+#~ msgid "Multiple Calendar Display"
+#~ msgstr "كۆپ يىلنامە كۆرسىتىش"
+
+#~ msgid "Merge all calendars into one view"
+#~ msgstr "بارلىق يىلنامىلەرنى بىرلا كۆرۈنۈشكە بىرلەشتۈر"
+
+#~ msgid "Show calendars side by side"
+#~ msgstr "يىلنامىلەرنى يانمۇيان كۆرسەت"
+
+#~ msgid "Show two calendars side-by-side"
+#~ msgstr "ئىككى يىلنامىنى يانمۇ-يان كۆرسەت"
+
+#~ msgid "Display icons in month view items"
+#~ msgstr "ئاي كۆرسىتىش تۈرىدە سىنبەلگىلەرنى كۆرسەت"
+
+#~ msgid "Show time in month view items"
+#~ msgstr "ئاي كۆرسىتىش تۈرىدە ۋاقىتنى كۆرسەت"
+
+#~ msgid "Display time in month view items"
+#~ msgstr "ئاي كۆرسىتىش تۈرىدە ۋاقىتنى كۆرسەت"
+
+#~ msgid "Display to-dos in the month view"
+#~ msgstr "ئاي كۆرسىتىشنىڭ ئىچىدە قىلىدىغان ئىشلارنى كۆرسەت"
+
+#~ msgid "Show journals"
+#~ msgstr "ژۇرناللارنى كۆرسەت"
+
+#~ msgid "Month view uses full window"
+#~ msgstr "ئاي كۆرۈنۈشى تولۇق كۆزنەك ئىشلىتىدۇ"
+
+#~ msgid "Always display completed to-dos at the bottom of the list"
+#~ msgstr "تاماملانغان قىلىدىغان ئىشلارنى ھەمىشە تىزىمنىڭ ئاستىدا كۆرسەت"
+
+#~ msgid "Holiday color"
+#~ msgstr "تەتىل رەڭگى"
+
+#~ msgid "Agenda view background color"
+#~ msgstr "كۈنتەرتىپ كۆرۈنۈشىنىڭ تەگلىك رەڭگى"
+
+#~ msgid "Agenda view current-time line color"
+#~ msgstr "كۈنتەرتىپ كۆرۈنۈشىنىڭ نۆۋەتتىكى ۋاقىت قۇرىنىڭ رەڭگى"
+
+#~ msgid "Time bar"
+#~ msgstr "ۋاقىت بالدىقى"
+
+#~ msgid "Month view"
+#~ msgstr "ئاي كۆرۈنۈشى"
+
+#~ msgid "Agenda view"
+#~ msgstr "كۈنتەرتىپ كۆرۈنۈشى"
+
+#~ msgid "Current-time line"
+#~ msgstr "نوۋېتتىكى ۋاقىت سىزىقى"
+
+#~ msgid "The default way of attaching dropped emails to a task"
+#~ msgstr "تاشلانغان ئېلخەتلەرنى ۋەزىپىگە قوشۇشنىڭ كۆڭۈلدىكى ئۇسۇلى"
+
+#~ msgid "Always ask"
+#~ msgstr "ئىزچىل سورا"
+
+#~ msgid "Only attach link to message"
+#~ msgstr "ئۇچۇرنىڭ ئۇلانمىسىنىلا قوشۇش"
+
+#~ msgid "Attach complete message"
+#~ msgstr "پۈتكۈل ئۇچۇرنى قوش"
+
+#~ msgid "Highlight color"
+#~ msgstr "يورۇتۇش رەڭگى"
+
+#~ msgid "Month view background color"
+#~ msgstr "ئاي كۆرۈنۈشىنىڭ تەگلىك رەڭگى"
+
+#~ msgid "Default event color"
+#~ msgstr "كۆڭۈلدىكى ھادىسە رەڭگى"
+
+#~ msgid "Search"
+#~ msgstr "ئىزدە"
+
+#~ msgid "&New"
+#~ msgstr "يېڭى(&N)"
+
+#~ msgctxt "filter name"
+#~ msgid "Name:"
+#~ msgstr "ئاتى:"
+
+#~ msgid "Categories"
+#~ msgstr "كاتېگورىيە"
+
+#~ msgid "Change..."
+#~ msgstr "ئۆزگەرت…"
+
+#~ msgid "Publish"
+#~ msgstr "ئېلان قىلىش"
+
+#~ msgid "Server Information"
+#~ msgstr "مۇلازىمېتىر ئۇچۇرى"
+
+#~ msgid "Password:"
+#~ msgstr "ئىم:"
+
+#~ msgctxt "login name on the Kolab server"
+#~ msgid "Username:"
+#~ msgstr "ئىشلەتكۈچى ئاتى:"
+
+#~ msgid "Server URL:"
+#~ msgstr "مۇلازىمېتىر URL:"
+
+#~ msgid "User&name:"
+#~ msgstr "ئىشلەتكۈچى ئاتى(&N):"
+
+#~ msgid "&Search for:"
+#~ msgstr "ئىزدە(&S):"
+
+#~ msgid "*"
+#~ msgstr "*"
+
+#~ msgid "Search For"
+#~ msgstr "ئىزدە"
+
+#~ msgid "&Events"
+#~ msgstr "ھادىسىلەر(&E)"
+
+#~ msgid "Locations"
+#~ msgstr "ئورنى"
+
+#~ msgid "Attendees"
+#~ msgstr "قاتناشقۇچىلار"
+
+#~ msgid "&To:"
+#~ msgstr "نىشان(&T):"
+
+#, fuzzy
+#~| msgid "Redo: %1"
+#~ msgid "Person: %1"
+#~ msgstr "قايتىلا: %1"
+
+#, fuzzy
+#~| msgid "&Day"
+#~ msgid "Day"
+#~ msgstr "كۈن(&D)"
+
+#, fuzzy
+#~| msgid "&Week"
+#~ msgid "Week"
+#~ msgstr "ھەپتە(&W)"
+
+#, fuzzy
+#~| msgid "Month view"
+#~ msgid "Month"
+#~ msgstr "ئاي كۆرۈنۈشى"
+
+#, fuzzy
+#~| msgid "Agenda %1"
+#~ msgid "Agenda"
+#~ msgstr "كۈنتەرتىپ %1"
+
+#~ msgid "Agenda %1"
+#~ msgstr "كۈنتەرتىپ %1"
+
+#~ msgid "Number of columns"
+#~ msgstr "ئىستون سانى"
+
+#~ msgid "Title"
+#~ msgstr "ماۋزۇ"
+
+#~ msgctxt "start/end week number of line in date picker"
+#~ msgid "%1/%2"
+#~ msgstr "%1/%2"
+
+#~ msgid "%1"
+#~ msgstr "%1"
+
+#~ msgid "To-do"
+#~ msgstr "قىلىدىغان ئىش"
+
+#~ msgid "Journal"
+#~ msgstr "ژۇرنال"
+
+#~ msgid "Recurring"
+#~ msgstr "تەكرارلانما"
+
+#~ msgid "Alarm"
+#~ msgstr "قوڭغۇراق"
+
+#~ msgid "Read Only"
+#~ msgstr "ئوقۇشقىلا بولىدىغان"
+
+#~ msgid "Organizer"
+#~ msgstr "تەشكىللىگۈچى"
+
+#~ msgid "Select a month"
+#~ msgstr "ئاي تاللايدۇ"
+
+#~ msgid "Select a year"
+#~ msgstr "يىل تاللايدۇ"
+
+#~ msgctxt "monthname"
+#~ msgid "%1"
+#~ msgstr "%1"
+
+#~ msgctxt "4 digit year"
+#~ msgid "%1"
+#~ msgstr "%1"
+
+#, fuzzy
+#~| msgctxt "@title:group"
+#~| msgid "Other Plugins"
+#~ msgid "KOrgPlugins"
+#~ msgstr "باشقا قىستۇرمىلار"
+
+#~ msgid "A&dd..."
+#~ msgstr "قوش(&D)…"
+
+#~ msgid "&Modify..."
+#~ msgstr "ئۆزگەرت(&M)..."
+
+#~ msgid "R&emove"
+#~ msgstr "چىقىرىۋەت(&E)"
+
+#, fuzzy
+#~| msgid "Do you want to overwrite %1?"
+#~ msgid "Do you want to remove account '%1'?"
+#~ msgstr "%1 قاپلىۋېتەمسىز؟"
+
+#, fuzzy
+#~| msgid "Remove Attachments"
+#~ msgid "Remove account?"
+#~ msgstr "قوشۇلمىنى چىقىرىۋېتىش"
+
+#~ msgid "Select Addresses"
+#~ msgstr "ئادرېسلارنى تاللاش"
+
+#~ msgid "Send email to these recipients"
+#~ msgstr "بۇ قوبۇللىغۇچىلارغا ئېلخەت ئەۋەت"
+
+#~ msgid "Cancel recipient selection and the email"
+#~ msgstr "تاپشۇرۇۋلغۇچى تاللاش ۋە ئېلخەتنى ئەمەلدىن قالدۇر"
+
+#~ msgid "(EmptyName)"
+#~ msgstr "(قۇرۇق ئات)"
+
+#~ msgid "(EmptyEmail)"
+#~ msgstr "(قۇرۇق خەت)"
+
+#~ msgid "&Remove"
+#~ msgstr "چىقىرىۋەت(&R)"
+
+#~ msgid "&Select..."
+#~ msgstr "تاللا(&S)…"
+
+#~ msgctxt "recipient name"
+#~ msgid "Name:"
+#~ msgstr "ئاتى:"
+
+#~ msgctxt "recipient email"
+#~ msgid "Email:"
+#~ msgstr "ئېلخەت:"
+
+#~ msgid "Only &This Item"
+#~ msgstr "مۇشۇ تۈرنىلا(&T)"
+
+#~ msgid "&All Occurrences"
+#~ msgstr "ھەممىسى(&A)"
+
+#~ msgid "&To-dos"
+#~ msgstr "قىلىدىغان ئىشلار(&T)"
+
+#~ msgid "Display Options"
+#~ msgstr "كۆرسىتىش تاللانمىسى"
+
+#~ msgctxt ""
+#~ "date from -\n"
+#~ "to"
+#~ msgid ""
+#~ "%1 -\n"
+#~ "%2"
+#~ msgstr ""
+#~ "%1 -\n"
+#~ "%2"
+
+#~ msgid "Start &time:"
+#~ msgstr "باشلىنىش ۋاق&تى:"
+
+#~ msgid "hh:mm"
+#~ msgstr "hh:mm"
+
+#~ msgid "Print Layout"
+#~ msgstr "بېسىش ئۇسلۇبى"
+
+#~ msgctxt "@title general print settings"
+#~ msgid "General"
+#~ msgstr "ئادەتتىكى"
+
+#~ msgid "&Use colors"
+#~ msgstr "رەڭلەرنى ئىشلەت(&U)"
+
+#~ msgid "Start date: "
+#~ msgstr "باشلاش چېسلاسى: "
+
+#~ msgid "End date: "
+#~ msgstr "ئاخىرلاشتۇرۇش چېسلاسى: "
+
+#~ msgid "Duration: "
+#~ msgstr "ۋاقتى: "
+
+#~ msgid "1 hour "
+#~ msgid_plural "%1 hours "
+#~ msgstr[0] "%1 سائەت "
+
+#~ msgid "1 minute "
+#~ msgid_plural "%1 minutes "
+#~ msgstr[0] "%1 مىنۇت "
+
+#~ msgid "Repeats: "
+#~ msgstr "قايتىلاش سانى: "
+
+#~ msgctxt "N days/hours/minutes before/after the start/end"
+#~ msgid "%1 before the start"
+#~ msgstr "باشلىنىشتىن بۇرۇن %1"
+
+#~ msgctxt "N days/hours/minutes before/after the start/end"
+#~ msgid "%1 after the start"
+#~ msgstr "باشلانغاندىن كېيىن %1"
+
+#~ msgctxt "N days/hours/minutes before/after the start/end"
+#~ msgid "%1 after the end"
+#~ msgstr "ئاخىرلاشقاندىن كېيىن %1"
+
+#~ msgid "1 hour"
+#~ msgid_plural "%1 hours"
+#~ msgstr[0] "%1 سائەت"
+
+#~ msgctxt "Spacer for the joined list of categories"
+#~ msgid ", "
+#~ msgstr "، "
+
+#~ msgid "Organizer: "
+#~ msgstr "تەشكىللىگۈچى: "
+
+#~ msgid "Location: "
+#~ msgstr "ئورنى: "
+
+#~ msgctxt "no status"
+#~ msgid "none"
+#~ msgstr "يوق"
+
+#~ msgctxt "unknown status"
+#~ msgid "unknown"
+#~ msgstr "نامەلۇم"
+
+#~ msgctxt "subitem start date"
+#~ msgid "Start Date: %1\n"
+#~ msgstr "باشلاش چېسلاسى: %1\n"
+
+#~ msgctxt "subitem start time"
+#~ msgid "Start Time: %1\n"
+#~ msgstr "باشلىنىش ۋاقتى: %1\n"
+
+#~ msgctxt "subitem due date"
+#~ msgid "Due Date: %1\n"
+#~ msgstr "مۆھلىتى(چېسلا): %1\n"
+
+#~ msgctxt "subitem due time"
+#~ msgid "Due Time: %1\n"
+#~ msgstr "مۆھلىتى(ۋاقىت): %1\n"
+
+#~ msgctxt "subitem counter"
+#~ msgid "%1: "
+#~ msgstr "%1: "
+
+#~ msgctxt "subitem Status: statusString"
+#~ msgid "Status: %1\n"
+#~ msgstr "ھالىتى: %1\n"
+
+#~ msgctxt "subitem Secrecy: secrecyString"
+#~ msgid "Secrecy: %1\n"
+#~ msgstr "مەخپىيلىك: %1\n"
+
+#~ msgid "No Attachments"
+#~ msgstr "قوشۇلما يوق"
+
+#~ msgctxt "Spacer for list of attachments"
+#~ msgid "  "
+#~ msgstr "  "
+
+#~ msgctxt ""
+#~ "Formatting of an attendee: 'Name (Role): Status', e.g. 'Reinhold "
+#~ "Kainhofer <reinhold@kainhofer.com> (Participant): Awaiting Response'"
+#~ msgid "%1 (%2): %3"
+#~ msgstr "%1 (%2): %3"
+
+#~ msgid "Status: %1"
+#~ msgstr "ھالىتى: %1"
+
+#~ msgid "Secrecy: %1"
+#~ msgstr "مەخپىيلىك: %1"
+
+#~ msgid "Settings: "
+#~ msgstr "تەڭشەك: "
+
+#~ msgid "Categories: "
+#~ msgstr "كاتېگورىيە: "
+
+#~ msgctxt "date from-to"
+#~ msgid "%1 - %2"
+#~ msgstr "%1 - %2"
+
+#~ msgctxt ""
+#~ "date from-\n"
+#~ "to"
+#~ msgid ""
+#~ "%1 -\n"
+#~ "%2"
+#~ msgstr ""
+#~ "%1 -\n"
+#~ "%2"
+
+#~ msgctxt "summary, location"
+#~ msgid "%1, %2"
+#~ msgstr "%1، %2"
+
+#~ msgctxt "@option sort by title"
+#~ msgid "Title"
+#~ msgstr "ماۋزۇ"
+
+#~ msgctxt "@option sort by start date/time"
+#~ msgid "Start Date"
+#~ msgstr "باشلاش چېسلاسى"
+
+#~ msgctxt "@option sort by due date/time"
+#~ msgid "Due Date"
+#~ msgstr "مۆھلىتى(چېسلا)"
+
+#~ msgctxt "@option sort by priority"
+#~ msgid "Priority"
+#~ msgstr "مەرتىۋە"
+
+#~ msgctxt "@option sort in increasing order"
+#~ msgid "Ascending"
+#~ msgstr "ئۆسكۈچى"
+
+#~ msgctxt "@option sort in descreasing order"
+#~ msgid "Descending"
+#~ msgstr "كېمەيگۈچى"
+
+#~ msgid "Priority"
+#~ msgstr "مەرتىۋە"
+
+#~ msgctxt "@label to-do summary"
+#~ msgid "Title"
+#~ msgstr "ماۋزۇ"
+
+#~ msgctxt "@label to-do percentage complete"
+#~ msgid "Complete"
+#~ msgstr "تولۇق"
+
+#~ msgctxt "@title:window"
+#~ msgid "Print"
+#~ msgstr "بېسىپ چىقار"
+
+#~ msgctxt "@title:group"
+#~ msgid "Print Style"
+#~ msgstr "بېسىش ئۇسلۇبى"
+
+#~ msgctxt "@item:inlistbox"
+#~ msgid "Portrait"
+#~ msgstr "بوي يۆنىلىش"
+
+#~ msgctxt "@item:inlistbox"
+#~ msgid "Landscape"
+#~ msgstr "توغرا يۆنىلىش"
+
+#~ msgctxt "@action:button"
+#~ msgid "&Preview"
+#~ msgstr "ئالدىن كۆزەت(&P)"
+
+#~ msgid "&Attendees"
+#~ msgstr "قاتناشقۇچىلار(&A)"
+
+#~ msgctxt "to-do summary (Due: datetime)"
+#~ msgid "%1 (Due: %2)"
+#~ msgstr "%1 (قەرەلى: %2)"
+
+#~ msgctxt "to-do summary (Due: date)"
+#~ msgid "%1 (Due: %2)"
+#~ msgstr "%1 (قەرەلى: %2)"
+
+#~ msgid "%1%"
+#~ msgstr "%1%"
+
+#~ msgctxt "Description - date"
+#~ msgid "%1 - %2"
+#~ msgstr "%1 - %2"
+
+#~ msgid "&Priority"
+#~ msgstr "مەرتىۋىسى(&P)"
+
+#~ msgid "Due date"
+#~ msgstr "مۆھلىتى"
+
+#~ msgctxt "@title:window"
+#~ msgid "Reminders"
+#~ msgstr "ئەسكەرتكۈچلەر"
+
+#~ msgctxt "@action:button"
+#~ msgid "Edit..."
+#~ msgstr "تەھرىر…"
+
+#~ msgctxt "@action:button"
+#~ msgid "Suspend"
+#~ msgstr "توڭلات"
+
+#~ msgctxt "@title:column reminder title"
+#~ msgid "Title"
+#~ msgstr "ماۋزۇ"
+
+#~ msgctxt "@item:inlistbox suspend in terms of minutes"
+#~ msgid "minute(s)"
+#~ msgstr "مىنۇت"
+
+#~ msgctxt "@item:inlistbox suspend in terms of hours"
+#~ msgid "hour(s)"
+#~ msgstr "سائەت"
+
+#~ msgctxt "@item:inlistbox suspend in terms of days"
+#~ msgid "day(s)"
+#~ msgstr "كۈن"
+
+#~ msgctxt "@item:inlistbox suspend in terms of weeks"
+#~ msgid "week(s)"
+#~ msgstr "ھەپتە"
+
+#~ msgctxt "@label an elipsis"
+#~ msgid "..."
+#~ msgstr "…"
+
+#~ msgctxt "@title"
+#~ msgid "Reminder"
+#~ msgstr "ئەسكەرتكۈچ"
+
+#~ msgctxt "@action:button start the reminder daemon"
+#~ msgid "Start"
+#~ msgstr "باشلاش"
+
+#~ msgctxt "@action:button do not start the reminder daemon"
+#~ msgid "Do Not Start"
+#~ msgstr "باشلىما"
+
+#~ msgid "Copy All"
+#~ msgstr "ھەممىنى كۆچۈر"
+
+#~ msgid "Delete %1"
+#~ msgstr "%1 ئۆچۈر"
+
+#~ msgid "Add %1"
+#~ msgstr "«%1» نى قوش"
+
+#~ msgctxt "@action:button add a new email address"
+#~ msgid "New"
+#~ msgstr "يېڭى"
+
+#~ msgctxt "@action:button"
+#~ msgid "Remove"
+#~ msgstr "چىقىرىۋەت"
+
+#~ msgctxt "@label"
+#~ msgid "(EmptyEmail)"
+#~ msgstr "(قۇرۇق خەت)"
+
+#~ msgid "&Print"
+#~ msgstr "باس(&P)"
+
+#~ msgid "Time Tracker"
+#~ msgstr "ۋاقىت ئىزلىغۇچى"
+
+#~ msgctxt "Date from - to"
+#~ msgid "%1 - %2"
+#~ msgstr "%1 - %2"
+
+#~ msgctxt "number of hours spent"
+#~ msgid "%1 hour"
+#~ msgid_plural "%1 hours"
+#~ msgstr[0] "%1 سائەت"
+
+#~ msgctxt "percent of hours spent"
+#~ msgid " (%1%)"
+#~ msgstr " (%1%)"
+
+#~ msgctxt "@action:inmenu Unspecified priority"
+#~ msgid "unspecified"
+#~ msgstr "كۆرسىتىلمىگەن"
+
+#~ msgctxt "@action:inmenu highest priority"
+#~ msgid "1 (highest)"
+#~ msgstr "1 (ئەڭ يۇقىرى)"
+
+#~ msgctxt "@action:inmenu"
+#~ msgid "2"
+#~ msgstr "2"
+
+#~ msgctxt "@action:inmenu"
+#~ msgid "3"
+#~ msgstr "3"
+
+#~ msgctxt "@action:inmenu"
+#~ msgid "4"
+#~ msgstr "4"
+
+#~ msgctxt "@action:inmenu medium priority"
+#~ msgid "5 (medium)"
+#~ msgstr "5 (ئوتتۇرا)"
+
+#~ msgctxt "@action:inmenu"
+#~ msgid "6"
+#~ msgstr "6"
+
+#~ msgctxt "@action:inmenu"
+#~ msgid "7"
+#~ msgstr "7"
+
+#~ msgctxt "@action:inmenu"
+#~ msgid "8"
+#~ msgstr "8"
+
+#~ msgctxt "@action:inmenu lowest priority"
+#~ msgid "9 (lowest)"
+#~ msgstr "9 (ئەڭ تۆۋەن)"
+
+#~ msgctxt "yes, recurring to-do"
+#~ msgid "Yes"
+#~ msgstr "ھەئە"
+
+#~ msgctxt "no, not a recurring to-do"
+#~ msgid "No"
+#~ msgstr "ياق"
+
+#~ msgctxt "delimiter for joining category names"
+#~ msgid ","
+#~ msgstr "،"
+
+#~ msgid "Summary"
+#~ msgstr "ئۈزۈندى"
+
+#~ msgid "Recurs"
+#~ msgstr "تەكرارلاش"
+
+#~ msgctxt "@title:column percent complete"
+#~ msgid "Complete"
+#~ msgstr "تولۇق"
+
+#~ msgid "Description"
+#~ msgstr "چۈشەندۈرۈش"
+
+#~| msgid "Display to-dos in the month view"
+#~ msgctxt "@info:tooltip"
+#~ msgid "Display to-do list in a full window"
+#~ msgstr "ئاي كۆرسىتىشنىڭ ئىچىدە قىلىدىغان ئىشلارنى كۆرسەت"
+
+#~| msgid "&Show"
+#~ msgctxt "@action:inmenu show the to-do"
+#~ msgid "&Show"
+#~ msgstr "كۆرسەت(&S)"
+
+#~| msgid "&Edit..."
+#~ msgctxt "@action:inmenu edit the to-do"
+#~ msgid "&Edit..."
+#~ msgstr "تەھرىر(&E)…"
+
+#~| msgid "&Print..."
+#~ msgctxt "@action:inmenu print the to-do"
+#~ msgid "&Print..."
+#~ msgstr "باس(&P)…"
+
+#~| msgid "Print Previe&w..."
+#~ msgctxt "@action:inmenu print preview the to-do"
+#~ msgid "Print Previe&w..."
+#~ msgstr "بېسىشنى ئالدىن كۆزەت(&W)…"
+
+#~| msgid "&Delete"
+#~ msgctxt "@action:inmenu delete the to-do"
+#~ msgid "&Delete"
+#~ msgstr "ئۆچۈر(&D)"
+
+#~| msgid "New &To-do..."
+#~ msgctxt "@action:inmenu create a new to-do"
+#~ msgid "New &To-do..."
+#~ msgstr "يېڭى قىلىدىغان ئىشلار(&T)…"
+
+#~| msgid "New Su&b-to-do..."
+#~ msgctxt "@action:inmenu create a new sub-to-do"
+#~ msgid "New Su&b-to-do..."
+#~ msgstr "يېڭى تارماق قىلىدىغان ئىشلار(&B)…"
+
+#~| msgid "&Copy To"
+#~ msgctxt "@title:menu"
+#~ msgid "&Copy To"
+#~ msgstr "كۆچۈر(&C)"
+
+#~| msgid "&Move To"
+#~ msgctxt "@title:menu"
+#~ msgid "&Move To"
+#~ msgstr "يۆتكە(&M)"
+
+#~| msgctxt "@action:inmenu Unspecified priority"
+#~| msgid "unspecified"
+#~ msgctxt "@action:inmenu unspecified priority"
+#~ msgid "unspecified"
+#~ msgstr "كۆرسىتىلمىگەن"
+
+#~| msgid "2"
+#~ msgctxt "@action:inmenu priority value=2"
+#~ msgid "2"
+#~ msgstr "2"
+
+#~| msgid "3"
+#~ msgctxt "@action:inmenu priority value=3"
+#~ msgid "3"
+#~ msgstr "3"
+
+#~| msgid "4"
+#~ msgctxt "@action:inmenu priority value=4"
+#~ msgid "4"
+#~ msgstr "4"
+
+#~| msgid "6"
+#~ msgctxt "@action:inmenu priority value=6"
+#~ msgid "6"
+#~ msgstr "6"
+
+#~| msgid "7"
+#~ msgctxt "@action:inmenu priority value=7"
+#~ msgid "7"
+#~ msgstr "7"
+
+#~| msgid "8"
+#~ msgctxt "@action:inmenu priority value=8"
+#~ msgid "8"
+#~ msgstr "8"
+
+#~| msgid "Search For"
+#~ msgctxt "@label in QuickSearchLine"
+#~ msgid "Search Summaries"
+#~ msgstr "ئىزدە"
+
+#~| msgctxt "@item:inlistbox"
+#~| msgid "Select Categories"
+#~ msgctxt "@info:tooltip"
+#~ msgid "Filter on these categories"
+#~ msgstr "كاتېگورىيەلەرنى تاللاش"
+
+#~ msgctxt "@item:inlistbox"
+#~ msgid "Select Categories"
+#~ msgstr "كاتېگورىيەلەرنى تاللاش"
+
+#~ msgctxt "@item:intext delimiter for joining category names"
+#~ msgid ","
+#~ msgstr "،"
+
+#~| msgid "Priority"
+#~ msgctxt "@item:inlistbox"
+#~ msgid "Select Priority"
+#~ msgstr "مەرتىۋە"
+
+#~| msgctxt "@action:inmenu Unspecified priority"
+#~| msgid "unspecified"
+#~ msgctxt "@action:inmenu priority is unspecified"
+#~ msgid "unspecified"
+#~ msgstr "كۆرسىتىلمىگەن"
+
+#~| msgctxt "@action:inmenu highest priority"
+#~| msgid "1 (highest)"
+#~ msgctxt "@action:inmenu highest priority"
+#~ msgid "%1 (highest)"
+#~ msgstr "1 (ئەڭ يۇقىرى)"
+
+#~| msgctxt "@action:inmenu medium priority"
+#~| msgid "5 (medium)"
+#~ msgctxt "@action:inmenu medium priority"
+#~ msgid "%1 (medium)"
+#~ msgstr "5 (ئوتتۇرا)"
+
+#~| msgctxt "@action:inmenu lowest priority"
+#~| msgid "9 (lowest)"
+#~ msgctxt "@action:inmenu lowest priority"
+#~ msgid "%1 (lowest)"
+#~ msgstr "9 (ئەڭ تۆۋەن)"
+
+#~| msgid "%1"
+#~ msgctxt "@action:inmenu"
+#~ msgid "%1"
+#~ msgstr "%1"
+
+#~| msgctxt "@action:inmenu Unspecified priority"
+#~| msgid "unspecified"
+#~ msgctxt "priority is unspecified"
+#~ msgid "unspecified"
+#~ msgstr "كۆرسىتىلمىگەن"
+
+#~| msgctxt "highest priority"
+#~| msgid "1 (highest)"
+#~ msgctxt "highest priority"
+#~ msgid "%1 (highest)"
+#~ msgstr "1 (ئەڭ يۇقىرى)"
+
+#~| msgctxt "medium priority"
+#~| msgid "5 (medium)"
+#~ msgctxt "medium priority"
+#~ msgid "%1 (medium)"
+#~ msgstr "5 (ئوتتۇرا)"
+
+#~| msgctxt "lowest priority"
+#~| msgid "9 (lowest)"
+#~ msgctxt "lowest priority"
+#~ msgid "%1 (lowest)"
+#~ msgstr "9 (ئەڭ تۆۋەن)"
+
+#~ msgid "Events:"
+#~ msgstr "ھادىسە:"
+
+#~ msgid "To-do:"
+#~ msgstr "قىلىدىغان ئىش:"
+
+#~ msgctxt "date, from - to"
+#~ msgid "%1, %2 - %3"
+#~ msgstr "%1، %2 - %3"
+
+#~| msgctxt "Checkbox to display todos not hirarchical"
+#~| msgid "Flat View"
+#~ msgctxt "@option:check Checkbox to display todos not hierarchical"
+#~ msgid "Flat View"
+#~ msgstr "تەكشىلىك كۆرۈنۈش"
+
+#~ msgctxt "unspecified priority"
+#~ msgid "unspecified"
+#~ msgstr "كۆرسىتىلمىگەن"
+
+#~ msgctxt "highest priority"
+#~ msgid "1 (highest)"
+#~ msgstr "1 (ئەڭ يۇقىرى)"
+
+#~ msgctxt "medium priority"
+#~ msgid "5 (medium)"
+#~ msgstr "5 (ئوتتۇرا)"
+
+#~ msgctxt "lowest priority"
+#~ msgid "9 (lowest)"
+#~ msgstr "9 (ئەڭ تۆۋەن)"
+
+#~ msgctxt "@label in QuickSearchLine"
+#~ msgid "Search"
+#~ msgstr "ئىزدە"
+
+#~ msgid "&Description"
+#~ msgstr "چۈشەندۈرۈش(&D)"
+
+#~ msgid "Other Options"
+#~ msgstr "باشقا تاللانما"

@@ -1,0 +1,800 @@
+# Copyright (C).
+# Sergiu Bivol <sergiu@cip.md>, 2008, 2009, 2011, 2012, 2013.
+#
+msgid ""
+msgstr ""
+"Project-Id-Version: kdepim-addons\n"
+"Report-Msgid-Bugs-To: https://bugs.kde.org\n"
+"POT-Creation-Date: 2024-06-26 00:40+0000\n"
+"PO-Revision-Date: 2013-02-16 10:43+0200\n"
+"Last-Translator: Sergiu Bivol <sergiu@cip.md>\n"
+"Language-Team: Romanian <kde-i18n-ro@kde.org>\n"
+"Language: ro\n"
+"MIME-Version: 1.0\n"
+"Content-Type: text/plain; charset=UTF-8\n"
+"Content-Transfer-Encoding: 8bit\n"
+"Plural-Forms: nplurals=3; plural=n==1 ? 0 : (n==0 || (n%100 > 0 && n%100 < "
+"20)) ? 1 : 2;\n"
+
+#: datenums/configdialog.cpp:28
+#, fuzzy, kde-format
+msgctxt "@title:window"
+msgid "Configure Day Numbers"
+msgstr "Exclude sărbătorile"
+
+#: datenums/configdialog.cpp:43
+#, fuzzy, kde-format
+msgid "Show Date Number"
+msgstr "Vizualizor evenimente"
+
+#: datenums/configdialog.cpp:48
+#, fuzzy, kde-format
+msgid "Show day number"
+msgstr "Exportă calendar ca pagină de web"
+
+#: datenums/configdialog.cpp:51
+#, fuzzy, kde-format
+#| msgid "Import Calendar"
+msgid "Show days to end of year"
+msgstr "Importă calendar"
+
+#: datenums/configdialog.cpp:54
+#, fuzzy, kde-format
+msgid "Show both"
+msgstr "&Afișează"
+
+#: datenums/datenums.cpp:36
+#, kde-format
+msgid "This plugin shows information on a day's position in the year."
+msgstr ""
+
+#: datenums/datenums.cpp:54
+#, fuzzy, kde-format
+#| msgctxt "@item@intable N days/hours/minutes before/after the start/end"
+#| msgid "%1 before the end"
+msgid "1 day before the end of the year"
+msgid_plural "%1 days before the end of the year"
+msgstr[0] "%1 înainte de sfârșit"
+msgstr[1] "%1 înainte de sfârșit"
+msgstr[2] "%1 înainte de sfârșit"
+
+#: datenums/datenums.cpp:59
+#, fuzzy, kde-format
+msgctxt "dayOfYear / daysTillEndOfYear"
+msgid "%1 / %2"
+msgstr "%1 %2"
+
+#: datenums/datenums.cpp:60
+#, kde-format
+msgid "1 day since the beginning of the year,\n"
+msgid_plural "%1 days since the beginning of the year,\n"
+msgstr[0] ""
+msgstr[1] ""
+msgstr[2] ""
+
+#: datenums/datenums.cpp:61
+#, kde-format
+msgid "1 day until the end of the year"
+msgid_plural "%1 days until the end of the year"
+msgstr[0] ""
+msgstr[1] ""
+msgstr[2] ""
+
+#: datenums/datenums.cpp:102
+#, kde-format
+msgctxt "Week weekOfYear"
+msgid "Week %1"
+msgstr "Săptămâna %1"
+
+#: datenums/datenums.cpp:103 datenums/datenums.cpp:113
+#: datenums/datenums.cpp:118
+#, kde-format
+msgid "1 week since the beginning of the year"
+msgid_plural "%1 weeks since the beginning of the year"
+msgstr[0] ""
+msgstr[1] ""
+msgstr[2] ""
+
+#: datenums/datenums.cpp:106
+#, fuzzy, kde-format
+msgctxt "weekOfYear (year)"
+msgid "%1 (%2)"
+msgstr "%1 %2"
+
+#: datenums/datenums.cpp:107
+#, fuzzy, kde-format
+msgctxt "Week weekOfYear (year)"
+msgid "Week %1 (%2)"
+msgstr "&Săptămâna"
+
+#: datenums/datenums.cpp:122
+#, kde-format
+msgid "1 week remaining"
+msgid_plural "%1 weeks remaining"
+msgstr[0] ""
+msgstr[1] ""
+msgstr[2] ""
+
+#: datenums/datenums.cpp:123
+#, kde-format
+msgid "1 week until the end of the year"
+msgid_plural "%1 weeks until the end of the year"
+msgstr[0] ""
+msgstr[1] ""
+msgstr[2] ""
+
+#: datenums/datenums.cpp:124
+#, fuzzy, kde-format
+msgctxt "weekOfYear / weeksTillEndOfYear"
+msgid "%1 / %2"
+msgstr "%1 %2"
+
+#: datenums/datenums.cpp:140
+#, fuzzy, kde-format
+msgctxt ""
+"n weeks since the beginning of the year\n"
+"n weeks until the end of the year"
+msgid ""
+"%1\n"
+"%2"
+msgstr ""
+"\n"
+"        "
+
+#: hebrew/configdialog.cpp:28
+#, fuzzy, kde-format
+msgctxt "@title:window"
+msgid "Configure Holidays"
+msgstr "Exclude sărbătorile"
+
+#: hebrew/configdialog.cpp:42
+#, fuzzy, kde-format
+msgid "Use Israeli holidays"
+msgstr "Vă rog să specificați un timp de execuție valid."
+
+#: hebrew/configdialog.cpp:46
+#, kde-format
+msgid "Show weekly parsha"
+msgstr ""
+
+#: hebrew/configdialog.cpp:50
+#, kde-format
+msgid "Show day of Omer"
+msgstr ""
+
+#: hebrew/configdialog.cpp:54
+#, fuzzy, kde-format
+#| msgid "Show holidays as:"
+msgid "Show Chol HaMoed"
+msgstr "Arată sărbătorile ca:"
+
+#: hebrew/hebrew.cpp:60
+#, fuzzy, kde-format
+msgctxt ""
+"Change the next two strings if emphasis is done differently in your language."
+msgid ""
+"<qt><p align=\"center\"><i>\n"
+"%1\n"
+"</i></p></qt>"
+msgstr ""
+"<publicat și transmis>\n"
+"\n"
+
+#: hebrew/hebrew.cpp:67
+#, fuzzy, kde-format
+msgid "This plugin provides the date in the Jewish calendar."
+msgstr "Exportă calendar ca pagină de web"
+
+#: hebrew/holiday.cpp:75
+#, fuzzy, kde-format
+#| msgid "Sh. HaHodesh"
+msgctxt ""
+"These are Jewish holidays and mostly do not have translations. They may have "
+"different spellings in your language; otherwise, just translate the sound to "
+"your characters."
+msgid "Sh. HaHodesh"
+msgstr "Sh. HaHodesh"
+
+#: hebrew/holiday.cpp:83
+#, fuzzy, kde-format
+#| msgid "Erev Hanukah"
+msgid "Erev Pesach"
+msgstr "Erev Hanukah"
+
+#: hebrew/holiday.cpp:94
+#, fuzzy, kde-format
+#| msgid "Sh. HaHodesh"
+msgid "Sh. HaGadol"
+msgstr "Sh. HaHodesh"
+
+#: hebrew/holiday.cpp:102
+#, kde-format
+msgid "Pesach"
+msgstr ""
+
+#: hebrew/holiday.cpp:113 hebrew/holiday.cpp:307
+#, kde-format
+msgid "Chol Hamoed"
+msgstr ""
+
+#: hebrew/holiday.cpp:124 hebrew/holiday.cpp:129 hebrew/holiday.cpp:138
+#, kde-format
+msgid "Yom HaShoah"
+msgstr ""
+
+#: hebrew/holiday.cpp:164 hebrew/holiday.cpp:171 hebrew/holiday.cpp:182
+#, kde-format
+msgid "Yom HaAtzmaut"
+msgstr ""
+
+#: hebrew/holiday.cpp:166 hebrew/holiday.cpp:180
+#, kde-format
+msgid "Yom HaZikaron"
+msgstr ""
+
+#: hebrew/holiday.cpp:190
+#, kde-format
+msgid "Yom Yerushalayim"
+msgstr ""
+
+#: hebrew/holiday.cpp:194
+#, fuzzy, kde-format
+msgid "Lag BaOmer"
+msgstr "Proprietar"
+
+#: hebrew/holiday.cpp:220
+#, fuzzy, kde-format
+msgid "Erev Shavuot"
+msgstr "Sâm"
+
+#: hebrew/holiday.cpp:225
+#, fuzzy, kde-format
+msgid "Shavuot"
+msgstr "Sâm"
+
+#: hebrew/holiday.cpp:234
+#, kde-format
+msgid "Tzom Tammuz"
+msgstr ""
+
+#: hebrew/holiday.cpp:242
+#, fuzzy, kde-format
+#| msgid "Sh. HaHodesh"
+msgid "Sh. Hazon"
+msgstr "Sh. HaHodesh"
+
+#: hebrew/holiday.cpp:244
+#, fuzzy, kde-format
+#| msgid "Sh. Shekalim"
+msgid "Sh. Nahamu"
+msgstr "Sh. Shekalim"
+
+#: hebrew/holiday.cpp:248
+#, kde-format
+msgid "Tisha B'Av"
+msgstr ""
+
+#: hebrew/holiday.cpp:254
+#, kde-format
+msgid "S'lichot"
+msgstr ""
+
+#: hebrew/holiday.cpp:256
+#, kde-format
+msgid "Erev R.H."
+msgstr ""
+
+#: hebrew/holiday.cpp:264
+#, kde-format
+msgid "Rosh Hashana"
+msgstr ""
+
+#: hebrew/holiday.cpp:268 hebrew/holiday.cpp:283
+#, fuzzy, kde-format
+#| msgid "Sh. Shirah"
+msgid "Sh. Shuvah"
+msgstr "Sh. Shirah"
+
+#: hebrew/holiday.cpp:270 hebrew/holiday.cpp:275
+#, kde-format
+msgid "Tzom Gedalia"
+msgstr ""
+
+#: hebrew/holiday.cpp:287
+#, kde-format
+msgid "Erev Y.K."
+msgstr ""
+
+#: hebrew/holiday.cpp:290
+#, kde-format
+msgid "Yom Kippur"
+msgstr ""
+
+#: hebrew/holiday.cpp:293
+#, fuzzy, kde-format
+#| msgid "Erev Hanukah"
+msgid "Erev Sukkot"
+msgstr "Erev Hanukah"
+
+#: hebrew/holiday.cpp:298
+#, kde-format
+msgid "Sukkot"
+msgstr ""
+
+#: hebrew/holiday.cpp:311
+#, kde-format
+msgid "Hoshana Rabah"
+msgstr ""
+
+#: hebrew/holiday.cpp:314
+#, kde-format
+msgid "Shmini Atzeret"
+msgstr "Shmini Atzeret"
+
+#: hebrew/holiday.cpp:318
+#, kde-format
+msgid "Simchat Torah"
+msgstr "Simchat Torah"
+
+#: hebrew/holiday.cpp:329
+#, kde-format
+msgid "Erev Hanukah"
+msgstr "Erev Hanukah"
+
+#: hebrew/holiday.cpp:331 hebrew/holiday.cpp:339
+#, kde-format
+msgid "Hanukah"
+msgstr "Hanukah"
+
+#: hebrew/holiday.cpp:342
+#, kde-format
+msgid "Tzom Tevet"
+msgstr "Tzom Tevet"
+
+#: hebrew/holiday.cpp:352 hebrew/holiday.cpp:361 hebrew/holiday.cpp:366
+#: hebrew/holiday.cpp:372
+#, kde-format
+msgid "Sh. Shirah"
+msgstr "Sh. Shirah"
+
+#: hebrew/holiday.cpp:368
+#, kde-format
+msgid "Tu B'Shvat"
+msgstr "Tu B'Shvat"
+
+#: hebrew/holiday.cpp:383 hebrew/holiday.cpp:395 hebrew/holiday.cpp:403
+#, kde-format
+msgid "Sh. Shekalim"
+msgstr "Sh. Shekalim"
+
+#: hebrew/holiday.cpp:392
+#, kde-format
+msgid "Purim Katan"
+msgstr "Purim Katan"
+
+#: hebrew/holiday.cpp:411 hebrew/holiday.cpp:431
+#, kde-format
+msgid "Ta'anit Ester"
+msgstr "Ta'anit Ester"
+
+#: hebrew/holiday.cpp:420 hebrew/holiday.cpp:425
+#, kde-format
+msgid "Sh. Zachor"
+msgstr "Sh. Zachor"
+
+#: hebrew/holiday.cpp:427
+#, kde-format
+msgid "Erev Purim"
+msgstr "Erev Purim"
+
+#: hebrew/holiday.cpp:435
+#, kde-format
+msgid "Purim"
+msgstr "Purim"
+
+#: hebrew/holiday.cpp:439 hebrew/holiday.cpp:444
+#, kde-format
+msgid "Shushan Purim"
+msgstr "Shushan Purim"
+
+#: hebrew/holiday.cpp:455
+#, kde-format
+msgid "Sh. Parah"
+msgstr "Sh. Parah"
+
+#: hebrew/holiday.cpp:465
+#, kde-format
+msgid "Sh. HaHodesh"
+msgstr "Sh. HaHodesh"
+
+#: hebrew/holiday.cpp:481
+#, fuzzy, kde-format
+msgid " Omer"
+msgstr "Proprietar"
+
+#: hebrew/parsha.cpp:28
+#, fuzzy, kde-format
+#| msgid "&Refresh"
+msgctxt ""
+"These are weekly readings and do not have translations. They may have "
+"different spellings in your language; otherwise, just translate the sound to "
+"your characters"
+msgid "Bereshit"
+msgstr "&Actualizează"
+
+#: hebrew/parsha.cpp:29
+#, fuzzy, kde-format
+msgid "Noach"
+msgstr "Martie"
+
+#: hebrew/parsha.cpp:29
+#, kde-format
+msgid "Lech L'cha"
+msgstr ""
+
+#: hebrew/parsha.cpp:29
+#, kde-format
+msgid "Vayera"
+msgstr ""
+
+#: hebrew/parsha.cpp:29
+#, fuzzy, kde-format
+#| msgid "Sh. Parah"
+msgid "Chaye Sarah"
+msgstr "Sh. Parah"
+
+#: hebrew/parsha.cpp:29
+#, fuzzy, kde-format
+msgid "Toldot"
+msgstr "Lucrare"
+
+#: hebrew/parsha.cpp:29
+#, kde-format
+msgid "Vayetze"
+msgstr ""
+
+#: hebrew/parsha.cpp:29
+#, kde-format
+msgid "Vayishlach"
+msgstr ""
+
+#: hebrew/parsha.cpp:30
+#, kde-format
+msgid "Vayeshev"
+msgstr ""
+
+#: hebrew/parsha.cpp:30
+#, kde-format
+msgid "Miketz"
+msgstr ""
+
+#: hebrew/parsha.cpp:30
+#, kde-format
+msgid "Vayigash"
+msgstr ""
+
+#: hebrew/parsha.cpp:30
+#, kde-format
+msgid "Vayechi"
+msgstr ""
+
+#: hebrew/parsha.cpp:30
+#, fuzzy, kde-format
+msgid "Shemot"
+msgstr "Trimis"
+
+#: hebrew/parsha.cpp:30
+#, kde-format
+msgid "Vaera"
+msgstr ""
+
+#: hebrew/parsha.cpp:30
+#, kde-format
+msgid "Bo"
+msgstr ""
+
+#: hebrew/parsha.cpp:31
+#, fuzzy, kde-format
+msgid "Beshalach"
+msgstr "Caută în:"
+
+#: hebrew/parsha.cpp:31
+#, kde-format
+msgid "Yitro"
+msgstr ""
+
+#: hebrew/parsha.cpp:31
+#, kde-format
+msgid "Mishpatim"
+msgstr ""
+
+#: hebrew/parsha.cpp:31
+#, kde-format
+msgid "Terumah"
+msgstr ""
+
+#: hebrew/parsha.cpp:31
+#, fuzzy, kde-format
+msgid "Tetzaveh"
+msgstr "Tentativă"
+
+#: hebrew/parsha.cpp:31
+#, kde-format
+msgid "Ki Tisa"
+msgstr ""
+
+#: hebrew/parsha.cpp:31
+#, kde-format
+msgid "Vayakhel"
+msgstr ""
+
+#: hebrew/parsha.cpp:32
+#, kde-format
+msgid "Pekudei"
+msgstr ""
+
+#: hebrew/parsha.cpp:32
+#, kde-format
+msgid "Vayikra"
+msgstr ""
+
+#: hebrew/parsha.cpp:32
+#, fuzzy, kde-format
+msgid "Tzav"
+msgstr "Călătorie"
+
+#: hebrew/parsha.cpp:32
+#, fuzzy, kde-format
+msgid "Shemini"
+msgstr "Trimis"
+
+#: hebrew/parsha.cpp:32
+#, kde-format
+msgid "Tazria"
+msgstr ""
+
+#: hebrew/parsha.cpp:32
+#, fuzzy, kde-format
+msgid "Metzora"
+msgstr "Metodă"
+
+#: hebrew/parsha.cpp:32
+#, kde-format
+msgid "Acharei Mot"
+msgstr ""
+
+#: hebrew/parsha.cpp:33
+#, kde-format
+msgid "Kedoshim"
+msgstr ""
+
+#: hebrew/parsha.cpp:33
+#, fuzzy, kde-format
+msgid "Emor"
+msgstr "Exportă"
+
+#: hebrew/parsha.cpp:33
+#, kde-format
+msgid "Behar"
+msgstr ""
+
+#: hebrew/parsha.cpp:33
+#, kde-format
+msgid "Bechukotai"
+msgstr ""
+
+#: hebrew/parsha.cpp:33
+#, kde-format
+msgid "Bemidbar"
+msgstr ""
+
+#: hebrew/parsha.cpp:33
+#, kde-format
+msgid "Naso"
+msgstr ""
+
+#: hebrew/parsha.cpp:33
+#, kde-format
+msgid "Behaalotcha"
+msgstr ""
+
+#: hebrew/parsha.cpp:34
+#, fuzzy, kde-format
+msgid "Shelach"
+msgstr "Caută în:"
+
+#: hebrew/parsha.cpp:34
+#, kde-format
+msgid "Korach"
+msgstr ""
+
+#: hebrew/parsha.cpp:34
+#, kde-format
+msgid "Chukat"
+msgstr ""
+
+#: hebrew/parsha.cpp:34
+#, kde-format
+msgid "Balak"
+msgstr ""
+
+#: hebrew/parsha.cpp:34
+#, kde-format
+msgid "Pinchas"
+msgstr ""
+
+#: hebrew/parsha.cpp:34
+#, fuzzy, kde-format
+msgid "Matot"
+msgstr "Lunar"
+
+#: hebrew/parsha.cpp:34
+#, fuzzy, kde-format
+msgid "Masei"
+msgstr "Principal"
+
+#: hebrew/parsha.cpp:35
+#, kde-format
+msgid "Devarim"
+msgstr ""
+
+#: hebrew/parsha.cpp:35
+#, kde-format
+msgid "Vaetchanan"
+msgstr ""
+
+#: hebrew/parsha.cpp:35
+#, kde-format
+msgid "Ekev"
+msgstr ""
+
+#: hebrew/parsha.cpp:35
+#, fuzzy, kde-format
+msgid "Reeh"
+msgstr "Actualizează"
+
+#: hebrew/parsha.cpp:35
+#, fuzzy, kde-format
+msgid "Shoftim"
+msgstr "Afișează ca:"
+
+#: hebrew/parsha.cpp:35
+#, fuzzy, kde-format
+msgid "Ki Tetze"
+msgstr "Tentativă"
+
+#: hebrew/parsha.cpp:35
+#, kde-format
+msgid "Ki Tavo"
+msgstr ""
+
+#: hebrew/parsha.cpp:36
+#, kde-format
+msgid "Nitzavim"
+msgstr ""
+
+#: hebrew/parsha.cpp:36
+#, kde-format
+msgid "Vayelech"
+msgstr ""
+
+#: hebrew/parsha.cpp:36
+#, kde-format
+msgid "Haazinu"
+msgstr ""
+
+#: lunarphases/lunarphases.cpp:61
+#, kde-format
+msgid ""
+"This plugin displays the day's lunar phase (New, First, Last, Full). "
+"Currently, the phase is computed for noon at UTC; therefore, you should "
+"expect variations by 1 day in either direction."
+msgstr ""
+
+#: picoftheday/configdialog.cpp:28
+#, fuzzy, kde-format
+#| msgid "Configure the view"
+msgctxt "@title:window"
+msgid "Configure Picture of the Day"
+msgstr "Configurează vizualizarea"
+
+#: picoftheday/configdialog.cpp:42
+#, kde-format
+msgid "Thumbnail Aspect Ratio Mode"
+msgstr ""
+
+#: picoftheday/configdialog.cpp:46
+#, kde-format
+msgid "Ignore aspect ratio"
+msgstr ""
+
+#: picoftheday/configdialog.cpp:48
+#, kde-format
+msgid ""
+"The thumbnail will be scaled freely. The aspect ratio will not be preserved."
+msgstr ""
+
+#: picoftheday/configdialog.cpp:52
+#, kde-format
+msgid "Keep aspect ratio"
+msgstr ""
+
+#: picoftheday/configdialog.cpp:54
+#, kde-format
+msgid ""
+"The thumbnail will be scaled to a rectangle as large as possible inside a "
+"given rectangle, preserving the aspect ratio."
+msgstr ""
+
+#: picoftheday/configdialog.cpp:59
+#, kde-format
+msgid "Keep aspect ratio by expanding"
+msgstr ""
+
+#: picoftheday/configdialog.cpp:61
+#, kde-format
+msgid ""
+"The thumbnail will be scaled to a rectangle as small as possible outside a "
+"given rectangle, preserving the aspect ratio."
+msgstr ""
+
+#: picoftheday/element.cpp:209
+#, kde-format
+msgid "Wikipedia POTD: %1"
+msgstr ""
+
+#: picoftheday/element.cpp:326
+#, fuzzy, kde-format
+#| msgid "Delete"
+msgid "Picture Page"
+msgstr "Șterge"
+
+#: picoftheday/element.cpp:326
+#, fuzzy, kde-format
+#| msgid "Go &Forward"
+msgid "Loading..."
+msgstr "Încarc..."
+
+#: picoftheday/element.cpp:332
+#, fuzzy, kde-format
+msgid "<qt>Loading <i>Picture of the Day</i>...</qt>"
+msgstr "Exportă calendar ca pagină de web"
+
+#: picoftheday/picoftheday.cpp:48
+#, fuzzy, kde-format
+msgid "<qt>This plugin provides the Wikipedia <i>Picture of the Day</i>.</qt>"
+msgstr "Exportă calendar ca pagină de web"
+
+#: thisdayinhistory/thisdayinhistory.cpp:29
+#, fuzzy, kde-format
+msgid "This plugin provides links to Wikipedia's 'This Day in History' pages."
+msgstr "Exportă calendar ca pagină de web"
+
+#: thisdayinhistory/thisdayinhistory.cpp:37
+#, kde-format
+msgid "This day in history"
+msgstr ""
+
+#: thisdayinhistory/thisdayinhistory.cpp:39
+#: thisdayinhistory/thisdayinhistory.cpp:53
+#, kde-format
+msgctxt "Localized Wikipedia website"
+msgid "https://en.wikipedia.org/wiki/"
+msgstr ""
+
+#: thisdayinhistory/thisdayinhistory.cpp:40
+#, kde-format
+msgctxt "Qt date format used by the localized Wikipedia"
+msgid "MMMM_d"
+msgstr ""
+
+#: thisdayinhistory/thisdayinhistory.cpp:51
+#, kde-format
+msgid "This month in history"
+msgstr ""
+
+#: thisdayinhistory/thisdayinhistory.cpp:54
+#, kde-format
+msgctxt "Qt date format used by the localized Wikipedia"
+msgid "MMMM_yyyy"
+msgstr ""

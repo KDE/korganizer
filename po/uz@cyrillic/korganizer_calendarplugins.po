@@ -1,0 +1,6776 @@
+# translation of korganizer.po to
+# Copyright (C) 2004, 2006 Free Software Foundation, Inc.
+#
+# Mashrab Kuvatov <kmashrab@uni-bremen.de>, 2004, 2006.
+# Abdurahmonov Nurali <mavnur@gmail.com>, 2006.
+msgid ""
+msgstr ""
+"Project-Id-Version: korganizer\n"
+"Report-Msgid-Bugs-To: https://bugs.kde.org\n"
+"POT-Creation-Date: 2024-06-26 00:40+0000\n"
+"PO-Revision-Date: 2006-12-17 13:34+0000\n"
+"Last-Translator: Mashrab Kuvatov <kmashrab@uni-bremen.de>\n"
+"Language-Team: Uzbek <floss-uz-l10n@googlegroups.com>\n"
+"Language: uz@cyrillic\n"
+"MIME-Version: 1.0\n"
+"Content-Type: text/plain; charset=UTF-8\n"
+"Content-Transfer-Encoding: 8bit\n"
+"X-Generator: KBabel 1.11.4\n"
+"Plural-Forms: nplurals=1; plural=0;\n"
+
+#: datenums/configdialog.cpp:28
+#, fuzzy, kde-format
+#| msgid "Configure Day Numbers"
+msgctxt "@title:window"
+msgid "Configure Day Numbers"
+msgstr "Кун рақамларини мослаш"
+
+#: datenums/configdialog.cpp:43
+#, kde-format
+msgid "Show Date Number"
+msgstr ""
+
+#: datenums/configdialog.cpp:48
+#, fuzzy, kde-format
+#| msgid "New Calendar"
+msgid "Show day number"
+msgstr "Янги календар"
+
+#: datenums/configdialog.cpp:51
+#, fuzzy, kde-format
+#| msgid "Import Calendar"
+msgid "Show days to end of year"
+msgstr "Календарни импорт қилиш"
+
+#: datenums/configdialog.cpp:54
+#, kde-format
+msgid "Show both"
+msgstr "Икаласини ҳам кўрсатиш"
+
+#: datenums/datenums.cpp:36
+#, kde-format
+msgid "This plugin shows information on a day's position in the year."
+msgstr ""
+
+#: datenums/datenums.cpp:54
+#, fuzzy, kde-format
+msgid "1 day before the end of the year"
+msgid_plural "%1 days before the end of the year"
+msgstr[0] "Ишга туширилмасин"
+
+#: datenums/datenums.cpp:59
+#, fuzzy, kde-format
+#| msgctxt "short_weekday date (e.g. Mon 13)"
+#| msgid "%1 %2"
+msgctxt "dayOfYear / daysTillEndOfYear"
+msgid "%1 / %2"
+msgstr "%1 %2"
+
+#: datenums/datenums.cpp:60
+#, kde-format
+msgid "1 day since the beginning of the year,\n"
+msgid_plural "%1 days since the beginning of the year,\n"
+msgstr[0] ""
+
+#: datenums/datenums.cpp:61
+#, kde-format
+msgid "1 day until the end of the year"
+msgid_plural "%1 days until the end of the year"
+msgstr[0] ""
+
+#: datenums/datenums.cpp:102
+#, fuzzy, kde-format
+#| msgid "Week"
+msgctxt "Week weekOfYear"
+msgid "Week %1"
+msgstr "Ҳафта"
+
+#: datenums/datenums.cpp:103 datenums/datenums.cpp:113
+#: datenums/datenums.cpp:118
+#, kde-format
+msgid "1 week since the beginning of the year"
+msgid_plural "%1 weeks since the beginning of the year"
+msgstr[0] ""
+
+#: datenums/datenums.cpp:106
+#, fuzzy, kde-format
+#| msgctxt "short_weekday date (e.g. Mon 13)"
+#| msgid "%1 %2"
+msgctxt "weekOfYear (year)"
+msgid "%1 (%2)"
+msgstr "%1 %2"
+
+#: datenums/datenums.cpp:107
+#, fuzzy, kde-format
+#| msgctxt "short_weekday date (e.g. Mon 13)"
+#| msgid "%1 %2"
+msgctxt "Week weekOfYear (year)"
+msgid "Week %1 (%2)"
+msgstr "%1 %2"
+
+#: datenums/datenums.cpp:122
+#, kde-format
+msgid "1 week remaining"
+msgid_plural "%1 weeks remaining"
+msgstr[0] ""
+
+#: datenums/datenums.cpp:123
+#, kde-format
+msgid "1 week until the end of the year"
+msgid_plural "%1 weeks until the end of the year"
+msgstr[0] ""
+
+#: datenums/datenums.cpp:124
+#, fuzzy, kde-format
+#| msgctxt "short_weekday date (e.g. Mon 13)"
+#| msgid "%1 %2"
+msgctxt "weekOfYear / weeksTillEndOfYear"
+msgid "%1 / %2"
+msgstr "%1 %2"
+
+#: datenums/datenums.cpp:140
+#, fuzzy, kde-format
+msgctxt ""
+"n weeks since the beginning of the year\n"
+"n weeks until the end of the year"
+msgid ""
+"%1\n"
+"%2"
+msgstr "%1 %2"
+
+#: hebrew/configdialog.cpp:28
+#, fuzzy, kde-format
+#| msgid "Configure Day Numbers"
+msgctxt "@title:window"
+msgid "Configure Holidays"
+msgstr "Кун рақамларини мослаш"
+
+#: hebrew/configdialog.cpp:42
+#, kde-format
+msgid "Use Israeli holidays"
+msgstr ""
+
+#: hebrew/configdialog.cpp:46
+#, kde-format
+msgid "Show weekly parsha"
+msgstr ""
+
+#: hebrew/configdialog.cpp:50
+#, kde-format
+msgid "Show day of Omer"
+msgstr ""
+
+#: hebrew/configdialog.cpp:54
+#, fuzzy, kde-format
+#| msgid "&Show To-do"
+msgid "Show Chol HaMoed"
+msgstr "Вазифани &кўрсатиш"
+
+#: hebrew/hebrew.cpp:60
+#, kde-format
+msgctxt ""
+"Change the next two strings if emphasis is done differently in your language."
+msgid ""
+"<qt><p align=\"center\"><i>\n"
+"%1\n"
+"</i></p></qt>"
+msgstr ""
+
+#: hebrew/hebrew.cpp:67
+#, kde-format
+msgid "This plugin provides the date in the Jewish calendar."
+msgstr ""
+
+#: hebrew/holiday.cpp:75
+#, fuzzy, kde-format
+msgctxt ""
+"These are Jewish holidays and mostly do not have translations. They may have "
+"different spellings in your language; otherwise, just translate the sound to "
+"your characters."
+msgid "Sh. HaHodesh"
+msgstr "Ниссан"
+
+#: hebrew/holiday.cpp:83
+#, kde-format
+msgid "Erev Pesach"
+msgstr ""
+
+#: hebrew/holiday.cpp:94
+#, fuzzy, kde-format
+msgid "Sh. HaGadol"
+msgstr "Ниссан"
+
+#: hebrew/holiday.cpp:102
+#, kde-format
+msgid "Pesach"
+msgstr ""
+
+#: hebrew/holiday.cpp:113 hebrew/holiday.cpp:307
+#, kde-format
+msgid "Chol Hamoed"
+msgstr ""
+
+#: hebrew/holiday.cpp:124 hebrew/holiday.cpp:129 hebrew/holiday.cpp:138
+#, kde-format
+msgid "Yom HaShoah"
+msgstr ""
+
+#: hebrew/holiday.cpp:164 hebrew/holiday.cpp:171 hebrew/holiday.cpp:182
+#, kde-format
+msgid "Yom HaAtzmaut"
+msgstr ""
+
+#: hebrew/holiday.cpp:166 hebrew/holiday.cpp:180
+#, kde-format
+msgid "Yom HaZikaron"
+msgstr ""
+
+#: hebrew/holiday.cpp:190
+#, kde-format
+msgid "Yom Yerushalayim"
+msgstr ""
+
+#: hebrew/holiday.cpp:194
+#, kde-format
+msgid "Lag BaOmer"
+msgstr ""
+
+#: hebrew/holiday.cpp:220
+#, kde-format
+msgid "Erev Shavuot"
+msgstr ""
+
+#: hebrew/holiday.cpp:225
+#, kde-format
+msgid "Shavuot"
+msgstr ""
+
+#: hebrew/holiday.cpp:234
+#, kde-format
+msgid "Tzom Tammuz"
+msgstr ""
+
+#: hebrew/holiday.cpp:242
+#, fuzzy, kde-format
+msgid "Sh. Hazon"
+msgstr "Ниссан"
+
+#: hebrew/holiday.cpp:244
+#, kde-format
+msgid "Sh. Nahamu"
+msgstr ""
+
+#: hebrew/holiday.cpp:248
+#, kde-format
+msgid "Tisha B'Av"
+msgstr ""
+
+#: hebrew/holiday.cpp:254
+#, kde-format
+msgid "S'lichot"
+msgstr ""
+
+#: hebrew/holiday.cpp:256
+#, kde-format
+msgid "Erev R.H."
+msgstr ""
+
+#: hebrew/holiday.cpp:264
+#, kde-format
+msgid "Rosh Hashana"
+msgstr ""
+
+#: hebrew/holiday.cpp:268 hebrew/holiday.cpp:283
+#, kde-format
+msgid "Sh. Shuvah"
+msgstr ""
+
+#: hebrew/holiday.cpp:270 hebrew/holiday.cpp:275
+#, kde-format
+msgid "Tzom Gedalia"
+msgstr ""
+
+#: hebrew/holiday.cpp:287
+#, kde-format
+msgid "Erev Y.K."
+msgstr ""
+
+#: hebrew/holiday.cpp:290
+#, kde-format
+msgid "Yom Kippur"
+msgstr ""
+
+#: hebrew/holiday.cpp:293
+#, kde-format
+msgid "Erev Sukkot"
+msgstr ""
+
+#: hebrew/holiday.cpp:298
+#, kde-format
+msgid "Sukkot"
+msgstr ""
+
+#: hebrew/holiday.cpp:311
+#, kde-format
+msgid "Hoshana Rabah"
+msgstr ""
+
+#: hebrew/holiday.cpp:314
+#, kde-format
+msgid "Shmini Atzeret"
+msgstr ""
+
+#: hebrew/holiday.cpp:318
+#, kde-format
+msgid "Simchat Torah"
+msgstr ""
+
+#: hebrew/holiday.cpp:329
+#, kde-format
+msgid "Erev Hanukah"
+msgstr ""
+
+#: hebrew/holiday.cpp:331 hebrew/holiday.cpp:339
+#, kde-format
+msgid "Hanukah"
+msgstr ""
+
+#: hebrew/holiday.cpp:342
+#, kde-format
+msgid "Tzom Tevet"
+msgstr ""
+
+#: hebrew/holiday.cpp:352 hebrew/holiday.cpp:361 hebrew/holiday.cpp:366
+#: hebrew/holiday.cpp:372
+#, kde-format
+msgid "Sh. Shirah"
+msgstr ""
+
+#: hebrew/holiday.cpp:368
+#, kde-format
+msgid "Tu B'Shvat"
+msgstr ""
+
+#: hebrew/holiday.cpp:383 hebrew/holiday.cpp:395 hebrew/holiday.cpp:403
+#, kde-format
+msgid "Sh. Shekalim"
+msgstr ""
+
+#: hebrew/holiday.cpp:392
+#, kde-format
+msgid "Purim Katan"
+msgstr ""
+
+#: hebrew/holiday.cpp:411 hebrew/holiday.cpp:431
+#, kde-format
+msgid "Ta'anit Ester"
+msgstr ""
+
+#: hebrew/holiday.cpp:420 hebrew/holiday.cpp:425
+#, kde-format
+msgid "Sh. Zachor"
+msgstr ""
+
+#: hebrew/holiday.cpp:427
+#, kde-format
+msgid "Erev Purim"
+msgstr ""
+
+#: hebrew/holiday.cpp:435
+#, kde-format
+msgid "Purim"
+msgstr ""
+
+#: hebrew/holiday.cpp:439 hebrew/holiday.cpp:444
+#, kde-format
+msgid "Shushan Purim"
+msgstr ""
+
+#: hebrew/holiday.cpp:455
+#, kde-format
+msgid "Sh. Parah"
+msgstr ""
+
+#: hebrew/holiday.cpp:465
+#, fuzzy, kde-format
+msgid "Sh. HaHodesh"
+msgstr "Ниссан"
+
+#: hebrew/holiday.cpp:481
+#, kde-format
+msgid " Omer"
+msgstr ""
+
+#: hebrew/parsha.cpp:28
+#, fuzzy, kde-format
+msgctxt ""
+"These are weekly readings and do not have translations. They may have "
+"different spellings in your language; otherwise, just translate the sound to "
+"your characters"
+msgid "Bereshit"
+msgstr "Ниссан"
+
+#: hebrew/parsha.cpp:29
+#, kde-format
+msgid "Noach"
+msgstr ""
+
+#: hebrew/parsha.cpp:29
+#, kde-format
+msgid "Lech L'cha"
+msgstr ""
+
+#: hebrew/parsha.cpp:29
+#, kde-format
+msgid "Vayera"
+msgstr ""
+
+#: hebrew/parsha.cpp:29
+#, kde-format
+msgid "Chaye Sarah"
+msgstr ""
+
+#: hebrew/parsha.cpp:29
+#, kde-format
+msgid "Toldot"
+msgstr ""
+
+#: hebrew/parsha.cpp:29
+#, kde-format
+msgid "Vayetze"
+msgstr ""
+
+#: hebrew/parsha.cpp:29
+#, kde-format
+msgid "Vayishlach"
+msgstr ""
+
+#: hebrew/parsha.cpp:30
+#, kde-format
+msgid "Vayeshev"
+msgstr ""
+
+#: hebrew/parsha.cpp:30
+#, kde-format
+msgid "Miketz"
+msgstr ""
+
+#: hebrew/parsha.cpp:30
+#, kde-format
+msgid "Vayigash"
+msgstr ""
+
+#: hebrew/parsha.cpp:30
+#, kde-format
+msgid "Vayechi"
+msgstr ""
+
+#: hebrew/parsha.cpp:30
+#, kde-format
+msgid "Shemot"
+msgstr ""
+
+#: hebrew/parsha.cpp:30
+#, kde-format
+msgid "Vaera"
+msgstr ""
+
+#: hebrew/parsha.cpp:30
+#, kde-format
+msgid "Bo"
+msgstr ""
+
+#: hebrew/parsha.cpp:31
+#, kde-format
+msgid "Beshalach"
+msgstr ""
+
+#: hebrew/parsha.cpp:31
+#, kde-format
+msgid "Yitro"
+msgstr ""
+
+#: hebrew/parsha.cpp:31
+#, kde-format
+msgid "Mishpatim"
+msgstr ""
+
+#: hebrew/parsha.cpp:31
+#, kde-format
+msgid "Terumah"
+msgstr ""
+
+#: hebrew/parsha.cpp:31
+#, kde-format
+msgid "Tetzaveh"
+msgstr ""
+
+#: hebrew/parsha.cpp:31
+#, kde-format
+msgid "Ki Tisa"
+msgstr ""
+
+#: hebrew/parsha.cpp:31
+#, kde-format
+msgid "Vayakhel"
+msgstr ""
+
+#: hebrew/parsha.cpp:32
+#, kde-format
+msgid "Pekudei"
+msgstr ""
+
+#: hebrew/parsha.cpp:32
+#, kde-format
+msgid "Vayikra"
+msgstr ""
+
+#: hebrew/parsha.cpp:32
+#, kde-format
+msgid "Tzav"
+msgstr ""
+
+#: hebrew/parsha.cpp:32
+#, kde-format
+msgid "Shemini"
+msgstr ""
+
+#: hebrew/parsha.cpp:32
+#, kde-format
+msgid "Tazria"
+msgstr ""
+
+#: hebrew/parsha.cpp:32
+#, kde-format
+msgid "Metzora"
+msgstr ""
+
+#: hebrew/parsha.cpp:32
+#, kde-format
+msgid "Acharei Mot"
+msgstr ""
+
+#: hebrew/parsha.cpp:33
+#, kde-format
+msgid "Kedoshim"
+msgstr ""
+
+#: hebrew/parsha.cpp:33
+#, kde-format
+msgid "Emor"
+msgstr ""
+
+#: hebrew/parsha.cpp:33
+#, kde-format
+msgid "Behar"
+msgstr ""
+
+#: hebrew/parsha.cpp:33
+#, kde-format
+msgid "Bechukotai"
+msgstr ""
+
+#: hebrew/parsha.cpp:33
+#, kde-format
+msgid "Bemidbar"
+msgstr ""
+
+#: hebrew/parsha.cpp:33
+#, kde-format
+msgid "Naso"
+msgstr ""
+
+#: hebrew/parsha.cpp:33
+#, kde-format
+msgid "Behaalotcha"
+msgstr ""
+
+#: hebrew/parsha.cpp:34
+#, kde-format
+msgid "Shelach"
+msgstr ""
+
+#: hebrew/parsha.cpp:34
+#, kde-format
+msgid "Korach"
+msgstr ""
+
+#: hebrew/parsha.cpp:34
+#, kde-format
+msgid "Chukat"
+msgstr ""
+
+#: hebrew/parsha.cpp:34
+#, kde-format
+msgid "Balak"
+msgstr ""
+
+#: hebrew/parsha.cpp:34
+#, kde-format
+msgid "Pinchas"
+msgstr ""
+
+#: hebrew/parsha.cpp:34
+#, kde-format
+msgid "Matot"
+msgstr ""
+
+#: hebrew/parsha.cpp:34
+#, kde-format
+msgid "Masei"
+msgstr ""
+
+#: hebrew/parsha.cpp:35
+#, kde-format
+msgid "Devarim"
+msgstr ""
+
+#: hebrew/parsha.cpp:35
+#, kde-format
+msgid "Vaetchanan"
+msgstr ""
+
+#: hebrew/parsha.cpp:35
+#, kde-format
+msgid "Ekev"
+msgstr ""
+
+#: hebrew/parsha.cpp:35
+#, kde-format
+msgid "Reeh"
+msgstr ""
+
+#: hebrew/parsha.cpp:35
+#, kde-format
+msgid "Shoftim"
+msgstr ""
+
+#: hebrew/parsha.cpp:35
+#, kde-format
+msgid "Ki Tetze"
+msgstr ""
+
+#: hebrew/parsha.cpp:35
+#, kde-format
+msgid "Ki Tavo"
+msgstr ""
+
+#: hebrew/parsha.cpp:36
+#, kde-format
+msgid "Nitzavim"
+msgstr ""
+
+#: hebrew/parsha.cpp:36
+#, kde-format
+msgid "Vayelech"
+msgstr ""
+
+#: hebrew/parsha.cpp:36
+#, kde-format
+msgid "Haazinu"
+msgstr ""
+
+#: lunarphases/lunarphases.cpp:61
+#, kde-format
+msgid ""
+"This plugin displays the day's lunar phase (New, First, Last, Full). "
+"Currently, the phase is computed for noon at UTC; therefore, you should "
+"expect variations by 1 day in either direction."
+msgstr ""
+
+#: picoftheday/configdialog.cpp:28
+#, fuzzy, kde-format
+#| msgid "Configure &Date && Time..."
+msgctxt "@title:window"
+msgid "Configure Picture of the Day"
+msgstr "Сана ва вақтни &мослаш"
+
+#: picoftheday/configdialog.cpp:42
+#, kde-format
+msgid "Thumbnail Aspect Ratio Mode"
+msgstr ""
+
+#: picoftheday/configdialog.cpp:46
+#, kde-format
+msgid "Ignore aspect ratio"
+msgstr ""
+
+#: picoftheday/configdialog.cpp:48
+#, kde-format
+msgid ""
+"The thumbnail will be scaled freely. The aspect ratio will not be preserved."
+msgstr ""
+
+#: picoftheday/configdialog.cpp:52
+#, kde-format
+msgid "Keep aspect ratio"
+msgstr ""
+
+#: picoftheday/configdialog.cpp:54
+#, kde-format
+msgid ""
+"The thumbnail will be scaled to a rectangle as large as possible inside a "
+"given rectangle, preserving the aspect ratio."
+msgstr ""
+
+#: picoftheday/configdialog.cpp:59
+#, kde-format
+msgid "Keep aspect ratio by expanding"
+msgstr ""
+
+#: picoftheday/configdialog.cpp:61
+#, kde-format
+msgid ""
+"The thumbnail will be scaled to a rectangle as small as possible outside a "
+"given rectangle, preserving the aspect ratio."
+msgstr ""
+
+#: picoftheday/element.cpp:209
+#, kde-format
+msgid "Wikipedia POTD: %1"
+msgstr ""
+
+#: picoftheday/element.cpp:326
+#, fuzzy, kde-format
+msgid "Picture Page"
+msgstr "%1'ни ўчириш"
+
+#: picoftheday/element.cpp:326
+#, fuzzy, kde-format
+#| msgid "Go &Forward"
+msgid "Loading..."
+msgstr "Олдин&га ўтиш"
+
+#: picoftheday/element.cpp:332
+#, fuzzy, kde-format
+#| msgid "Configure &Date && Time..."
+msgid "<qt>Loading <i>Picture of the Day</i>...</qt>"
+msgstr "Сана ва вақтни &мослаш"
+
+#: picoftheday/picoftheday.cpp:48
+#, kde-format
+msgid "<qt>This plugin provides the Wikipedia <i>Picture of the Day</i>.</qt>"
+msgstr ""
+
+#: thisdayinhistory/thisdayinhistory.cpp:29
+#, kde-format
+msgid "This plugin provides links to Wikipedia's 'This Day in History' pages."
+msgstr ""
+
+#: thisdayinhistory/thisdayinhistory.cpp:37
+#, kde-format
+msgid "This day in history"
+msgstr ""
+
+#: thisdayinhistory/thisdayinhistory.cpp:39
+#: thisdayinhistory/thisdayinhistory.cpp:53
+#, kde-format
+msgctxt "Localized Wikipedia website"
+msgid "https://en.wikipedia.org/wiki/"
+msgstr ""
+
+#: thisdayinhistory/thisdayinhistory.cpp:40
+#, kde-format
+msgctxt "Qt date format used by the localized Wikipedia"
+msgid "MMMM_d"
+msgstr ""
+
+#: thisdayinhistory/thisdayinhistory.cpp:51
+#, kde-format
+msgid "This month in history"
+msgstr ""
+
+#: thisdayinhistory/thisdayinhistory.cpp:54
+#, kde-format
+msgctxt "Qt date format used by the localized Wikipedia"
+msgid "MMMM_yyyy"
+msgstr ""
+
+#~ msgctxt "NAME OF TRANSLATORS"
+#~ msgid "Your names"
+#~ msgstr "Машраб Қуватов, Нурали Абдураҳмонов"
+
+#~ msgctxt "EMAIL OF TRANSLATORS"
+#~ msgid "Your emails"
+#~ msgstr "kmashrab@uni-bremen.de, mavnur@gmail.com"
+
+#~ msgid "KOrganizer"
+#~ msgstr "KOrganizer"
+
+#, fuzzy
+#~| msgid "A Personal Organizer for KDE"
+#~ msgid "A Personal Organizer"
+#~ msgstr "KDE учун шахсий органайзер"
+
+#~ msgid "Maintainer"
+#~ msgstr "Таъминловчи"
+
+#, fuzzy
+#~| msgid "Current Maintainer"
+#~ msgid "Former Maintainer"
+#~ msgstr "Жорий таъминловчи"
+
+#~ msgid "Original Author"
+#~ msgstr "Биринчи муаллиф"
+
+#, fuzzy
+#~| msgid "In weeks"
+#~ msgid "Ian Dawes"
+#~ msgstr "Ҳафталарда"
+
+#, fuzzy
+#~ msgid "Tim Jansen"
+#~ msgstr "Вақт зонаси:"
+
+#, fuzzy
+#~| msgid "Maintainer"
+#~ msgid "Martin Koller"
+#~ msgstr "Таъминловчи"
+
+#, fuzzy
+#~| msgid "&Use colors"
+#~ msgid "Uwe Koloska"
+#~ msgstr "&Ранглардан фойдаланиш"
+
+#, fuzzy
+#~ msgid "Don Sanders"
+#~ msgstr "Эсга солиш"
+
+#~ msgid "Import &Calendar..."
+#~ msgstr "Календарни &импорт қилиш..."
+
+#, fuzzy
+#~ msgid "Merge the contents of another iCalendar"
+#~ msgstr "Иловани қўшиш"
+
+#, fuzzy
+#~| msgid "Import &Calendar..."
+#~ msgid "Export as &iCalendar..."
+#~ msgstr "Календарни &импорт қилиш..."
+
+#, fuzzy
+#~| msgid "Import &Calendar..."
+#~ msgid "Export as &vCalendar..."
+#~ msgstr "Календарни &импорт қилиш..."
+
+#, fuzzy
+#~| msgid "Hide co&mpleted to-dos"
+#~ msgid "Pur&ge Completed To-dos"
+#~ msgstr "Ба&жарилган вазифаларни бекитиш"
+
+#, fuzzy
+#~ msgid "&Delete"
+#~ msgstr "%1'ни ўчириш"
+
+#~ msgid "What's &Next"
+#~ msgstr "Навбатда &нима"
+
+#~ msgid "&Month"
+#~ msgstr "&Ой"
+
+#, fuzzy
+#~ msgid "&Agenda"
+#~ msgstr "Ҳодисани кўрувчи"
+
+#, fuzzy
+#~| msgid "&Events"
+#~ msgid "&Event List"
+#~ msgstr "&Ҳодисалар"
+
+#~ msgid "&To-do List"
+#~ msgstr "Вазифалар &рўйхати"
+
+#, fuzzy
+#~ msgid "Time&line"
+#~ msgstr "Вақт зонаси:"
+
+#, fuzzy
+#~ msgid "Time&spent"
+#~ msgstr "Вақт зонаси:"
+
+#~ msgid "&Refresh"
+#~ msgstr "&Янгилаш"
+
+#~ msgid "F&ilter"
+#~ msgstr "&Филтер"
+
+#, fuzzy
+#~| msgid "day"
+#~ msgctxt "@action Jump to today"
+#~ msgid "To &Today"
+#~ msgstr "кун"
+
+#, fuzzy
+#~| msgid "day"
+#~ msgid "Today"
+#~ msgstr "кун"
+
+#, fuzzy
+#~| msgid "Go to &Today"
+#~ msgid "Scroll to Today"
+#~ msgstr "&Бугунга ўтиш"
+
+#, fuzzy
+#~| msgid "Go &Backward"
+#~ msgctxt "scroll backward"
+#~ msgid "&Backward"
+#~ msgstr "&Орқага ўтиш"
+
+#, fuzzy
+#~| msgid "Go &Backward"
+#~ msgctxt "scroll backward"
+#~ msgid "Back"
+#~ msgstr "&Орқага ўтиш"
+
+#, fuzzy
+#~| msgid "Go &Backward"
+#~ msgid "Scroll Backward"
+#~ msgstr "&Орқага ўтиш"
+
+#, fuzzy
+#~| msgid "Go &Forward"
+#~ msgctxt "scroll forward"
+#~ msgid "&Forward"
+#~ msgstr "Олдин&га ўтиш"
+
+#, fuzzy
+#~| msgid "Go &Forward"
+#~ msgctxt "scoll forward"
+#~ msgid "Forward"
+#~ msgstr "Олдин&га ўтиш"
+
+#, fuzzy
+#~| msgid "Go &Forward"
+#~ msgid "Scroll Forward"
+#~ msgstr "Олдин&га ўтиш"
+
+#~ msgid "&Day"
+#~ msgstr "&Кун"
+
+#, fuzzy
+#~ msgid "&Next Day"
+#~ msgid_plural "&Next %1 Days"
+#~ msgstr[0] "&Кейинги кун"
+
+#~ msgid "W&ork Week"
+#~ msgstr "Иш &ҳафта"
+
+#~ msgid "&Week"
+#~ msgstr "Ҳа&фта"
+
+#~ msgid "New E&vent..."
+#~ msgstr "Янги &ҳодиса"
+
+#, fuzzy
+#~| msgid "Click to add a new to-do"
+#~ msgid "Create a new Event"
+#~ msgstr "Янги вазифа қўшиш учун босинг"
+
+#~ msgid "New &To-do..."
+#~ msgstr "Янги &вазифа..."
+
+#, fuzzy
+#~| msgid "Click to add a new to-do"
+#~ msgid "Create a new To-do"
+#~ msgstr "Янги вазифа қўшиш учун босинг"
+
+#~ msgid "New Su&b-to-do..."
+#~ msgstr "Янги туб &вазифа..."
+
+#~ msgid "New &Journal..."
+#~ msgstr "Янги &кундалик"
+
+#, fuzzy
+#~| msgid "Click to add a new to-do"
+#~ msgid "Create a new Journal"
+#~ msgstr "Янги вазифа қўшиш учун босинг"
+
+#, fuzzy
+#~| msgid "&Configure..."
+#~ msgid "Configure View..."
+#~ msgstr "&Мослаш..."
+
+#, fuzzy
+#~| msgid "&Configure..."
+#~ msgid "Configure"
+#~ msgstr "&Мослаш..."
+
+#~ msgid "&Show"
+#~ msgstr "&Кўрсатиш"
+
+#~ msgid "&Edit..."
+#~ msgstr "&Таҳрирлаш"
+
+#~ msgid "Re&quest Update"
+#~ msgstr "Янгилашни сў&раш"
+
+#, fuzzy
+#~| msgid "&iCalendar..."
+#~ msgid "&Send as iCalendar..."
+#~ msgstr "&iCalendar..."
+
+#, fuzzy
+#~| msgid "&Addressbook"
+#~ msgid "&Address Book"
+#~ msgstr "&Манзиллар дафтари"
+
+#~ msgid "Show To-do View"
+#~ msgstr "Вазифалар кўринишини кўрсатиш"
+
+#~ msgid "Configure &Date && Time..."
+#~ msgstr "Сана ва вақтни &мослаш"
+
+#~ msgid "Manage View &Filters..."
+#~ msgstr "&Кўриниш филтерларини бошқариш"
+
+#~ msgid "Manage C&ategories..."
+#~ msgstr "Турку&мларни бошқариш..."
+
+#, fuzzy
+#~| msgid "&Configure Calendar..."
+#~ msgid "&Configure KOrganizer..."
+#~ msgstr "Календар &мосламаси..."
+
+#, fuzzy
+#~| msgid "Could not load calendar '%1'."
+#~ msgid "Could not add a calendar. Error: %1"
+#~ msgstr "'%1' календарини юклаб бўлмади."
+
+#~ msgid "Proceed"
+#~ msgstr "Давом этиш"
+
+#, fuzzy
+#~| msgid "New Calendar"
+#~ msgid "Select path for HTML calendar export"
+#~ msgstr "Янги календар"
+
+#~ msgid ""
+#~ "The calendar has been modified.\n"
+#~ "Do you want to save it?"
+#~ msgstr ""
+#~ "Календарга ўзгариш киритилди.\n"
+#~ "Уни сақлашни истайсизми?"
+
+#, fuzzy
+#~| msgid "*.vcs *.ics|Calendar Files"
+#~ msgid "*.ics *.vcs|Calendar Files"
+#~ msgstr "*.vcs *.ics|Календар файллар"
+
+#, fuzzy
+#~| msgid "Could not load calendar '%1'."
+#~ msgid "Could not load calendar %1."
+#~ msgstr "'%1' календарини юклаб бўлмади."
+
+#~ msgid "&Show Event"
+#~ msgstr "Ҳодисани &кўрсатиш"
+
+#~ msgid "&Edit Event..."
+#~ msgstr "Ҳодисани &таҳрирлаш"
+
+#~ msgid "&Delete Event"
+#~ msgstr "Ҳодисани &ўчириш"
+
+#~ msgid "&Show To-do"
+#~ msgstr "Вазифани &кўрсатиш"
+
+#~ msgid "&Edit To-do..."
+#~ msgstr "Вазифани &таҳрирлаш..."
+
+#~ msgid "&Delete To-do"
+#~ msgstr "Вазифани &олиб ташлаш"
+
+#, fuzzy
+#~ msgid "Attach &inline"
+#~ msgstr "Иловани қўшиш"
+
+#, fuzzy
+#~| msgid "Attach&ments"
+#~ msgid "Remove Attachments"
+#~ msgstr "&Иловалар"
+
+#, fuzzy
+#~| msgid "Undo (%1)"
+#~ msgid "Undo: %1"
+#~ msgstr "Бекор қилиш (%1)"
+
+#, fuzzy
+#~ msgid "Undo"
+#~ msgstr "Бекор қилиш (%1)"
+
+#, fuzzy
+#~| msgid "Redo (%1)"
+#~ msgid "Redo: %1"
+#~ msgstr "Қайтариш (%1)"
+
+#, fuzzy
+#~ msgid "Redo"
+#~ msgstr "Қайтариш (%1)"
+
+#, fuzzy
+#~| msgid "Import Calendar"
+#~ msgctxt "@title:window"
+#~ msgid "Import Calendar"
+#~ msgstr "Календарни импорт қилиш"
+
+#~ msgid "Add as new calendar"
+#~ msgstr "Янги календар сифатида қўшиш"
+
+#, fuzzy
+#~ msgctxt ""
+#~ "@info/plain Displayed grayed-out inside the textbox, verb to search"
+#~ msgid "Search"
+#~ msgstr "&Боши:"
+
+#, fuzzy
+#~| msgid "Go &Forward"
+#~ msgid "searching..."
+#~ msgstr "Олдин&га ўтиш"
+
+#, fuzzy
+#~| msgid "Edit Calendar Filters"
+#~ msgctxt "@title:window"
+#~ msgid "Properties of Calendar Folder %1"
+#~ msgstr "Календар филтерларини таҳрирлаш"
+
+#~ msgid "&Disable Color"
+#~ msgstr "&Ранглардан фойдаланилмасин"
+
+#~ msgid "Use as &Default Calendar"
+#~ msgstr "Андоза &календар сифатида фойдаланиш"
+
+#, fuzzy
+#~| msgid "New Template"
+#~ msgid "Remove from list"
+#~ msgstr "Янги намуна"
+
+#, fuzzy
+#~| msgid "Add as new calendar"
+#~ msgid "Add Calendar"
+#~ msgstr "Янги календар сифатида қўшиш"
+
+#, fuzzy
+#~| msgid "Could not load calendar '%1'."
+#~ msgid "Do you really want to delete calendar %1?"
+#~ msgstr "'%1' календарини юклаб бўлмади."
+
+#, fuzzy
+#~| msgid "Default Calendar"
+#~ msgid "Delete Calendar"
+#~ msgstr "Андоза календар"
+
+#~ msgid "Keep Times"
+#~ msgstr "Вақтни қолдириш"
+
+#~ msgid "Move Times"
+#~ msgstr "Вақтни кўчириш"
+
+#, fuzzy
+#~ msgid "Todo completed: %1 (%2)"
+#~ msgstr "Вазифа бажарилди: %1 (%2)"
+
+#, fuzzy
+#~| msgid "Delete Old Items"
+#~ msgctxt "@title:window"
+#~ msgid "Delete Item?"
+#~ msgstr "Эски нарсаларни олиб ташлаш"
+
+#, fuzzy
+#~| msgid "&Toggle Reminder"
+#~ msgid "Toggle Reminder"
+#~ msgstr "&Эсга солишни ўчириш/ёқиш"
+
+#, fuzzy
+#~| msgid "Hide co&mpleted to-dos"
+#~ msgid "Toggle To-do Completed"
+#~ msgstr "Ба&жарилган вазифаларни бекитиш"
+
+#, fuzzy
+#~| msgid "Copying Failed"
+#~ msgctxt "@title:window"
+#~ msgid "Copying Succeeded"
+#~ msgstr "Нусха олиш муваффақиятсиз тугади"
+
+#, fuzzy
+#~ msgctxt "@info"
+#~ msgid "Unable to copy the item \"%1\" to %2."
+#~ msgstr "'%1' намунани топиб бўлмади."
+
+#, fuzzy
+#~| msgid "Copying Failed"
+#~ msgctxt "@title:window"
+#~ msgid "Copying Failed"
+#~ msgstr "Нусха олиш муваффақиятсиз тугади"
+
+#, fuzzy
+#~| msgid "Moving Failed"
+#~ msgctxt "@title:window"
+#~ msgid "Moving Failed"
+#~ msgstr "Кўчириш муваффақиятсиз тугади"
+
+#, fuzzy
+#~| msgid "Moving Failed"
+#~ msgctxt "@title:window"
+#~ msgid "Moving Succeeded"
+#~ msgstr "Кўчириш муваффақиятсиз тугади"
+
+#, fuzzy
+#~| msgid "Calendar"
+#~ msgid "iCalendars (*.ics)"
+#~ msgstr "Календар"
+
+#, fuzzy
+#~| msgid "Cannot write archive file %1."
+#~ msgctxt "@info"
+#~ msgid "Cannot write iCalendar file %1. %2"
+#~ msgstr "%1 архив файлини ёзиб бўлмади."
+
+#, fuzzy
+#~| msgid "Calendar"
+#~ msgid "vCalendars (*.vcs)"
+#~ msgstr "Календар"
+
+#, fuzzy
+#~| msgid "Cannot write archive file %1."
+#~ msgctxt "@info"
+#~ msgid "Cannot write vCalendar file %1. %2"
+#~ msgstr "%1 архив файлини ёзиб бўлмади."
+
+#~ msgid "&Previous Day"
+#~ msgstr "О&лдинги кун"
+
+#~ msgid "&Previous Week"
+#~ msgstr "Олд&инги ҳафта"
+
+#~ msgid "&Next Week"
+#~ msgstr "Кейинги &ҳафта"
+
+#~ msgid "No filter"
+#~ msgstr "Филтер йўқ"
+
+#~ msgid "Delete Only This"
+#~ msgstr "Фақат шуни ўчириш"
+
+#, fuzzy
+#~ msgid "Delete All"
+#~ msgstr "Ҳам&масини ўчириш"
+
+#, fuzzy
+#~| msgid "Delete To-do"
+#~ msgid "Delete parent to-do"
+#~ msgstr "Вазифани ўчириш"
+
+#, fuzzy
+#~| msgid "Deleting sub-to-dos"
+#~ msgid "Delete parent to-do and sub-to-dos"
+#~ msgstr "Туб вазифалар ўчирилмоқда"
+
+#, fuzzy
+#~| msgid "Delete &Future"
+#~ msgid "Also Delete &Future"
+#~ msgstr "&Келажакдагини ўчириш"
+
+#~ msgid "Delete C&urrent"
+#~ msgstr "&Жорийни ўчириш"
+
+#~ msgid "Delete &All"
+#~ msgstr "Ҳам&масини ўчириш"
+
+#, fuzzy
+#~ msgid "There are no completed to-dos to purge."
+#~ msgstr "%1 да ба&жарилган"
+
+#~ msgid "Copying Failed"
+#~ msgstr "Нусха олиш муваффақиятсиз тугади"
+
+#, fuzzy
+#~ msgid "Unable to move the item to  %1."
+#~ msgstr "'%1' намунани топиб бўлмади."
+
+#~ msgid "Moving Failed"
+#~ msgstr "Кўчириш муваффақиятсиз тугади"
+
+#, fuzzy
+#~| msgid "Hide co&mpleted to-dos"
+#~ msgid "0 completed to-dos were purged."
+#~ msgstr "Ба&жарилган вазифаларни бекитиш"
+
+#, fuzzy
+#~| msgid "Hide co&mpleted to-dos"
+#~ msgid "%1 completed to-do was purged."
+#~ msgid_plural "%1 completed to-dos were purged."
+#~ msgstr[0] "Ба&жарилган вазифаларни бекитиш"
+
+#, fuzzy
+#~| msgid "General"
+#~ msgctxt "@title:tab General settings for a folder."
+#~ msgid "General"
+#~ msgstr "Умумий"
+
+#, fuzzy
+#~| msgid "Name:"
+#~ msgctxt "@label:textbox Name of the folder."
+#~ msgid "&Name:"
+#~ msgstr "Номи:"
+
+#, fuzzy
+#~ msgctxt "@info:tooltip"
+#~ msgid "Set the folder name"
+#~ msgstr "Тугаш куни:"
+
+#, fuzzy
+#~ msgctxt "@option:check"
+#~ msgid "Block reminders locally"
+#~ msgstr "Эсга солиш"
+
+#, fuzzy
+#~| msgid "Activates a reminder for this event or to-do."
+#~ msgctxt "@info:tooltip"
+#~ msgid "Ignore reminders from this calendar"
+#~ msgstr "Ушбу ҳодиса ёки вазифа учун эсга солишни қўллаш."
+
+#, fuzzy
+#~ msgctxt "@info:whatsthis"
+#~ msgid ""
+#~ "Check this box if you do not want to receive reminders from items "
+#~ "associated with this calendar."
+#~ msgstr "Фақат танланганни кўрсатиш"
+
+#, fuzzy
+#~| msgid "Calendar"
+#~ msgctxt "@option:check"
+#~ msgid "&Use custom icon:"
+#~ msgstr "Календар"
+
+#, fuzzy
+#~| msgid "Calendar"
+#~ msgctxt "@info:tooltip"
+#~ msgid "Set a custom icon"
+#~ msgstr "Календар"
+
+#, fuzzy
+#~ msgctxt "@info:whatsthis"
+#~ msgid "Check this box if you want to set a custom icon for this folder."
+#~ msgstr "Фақат танланганни кўрсатиш"
+
+#, fuzzy
+#~ msgid "&File"
+#~ msgstr "С&арлавҳа:"
+
+#, fuzzy
+#~ msgid "&Edit"
+#~ msgstr "&Таҳрирлаш"
+
+#, fuzzy
+#~ msgid "&View"
+#~ msgstr "&Янги"
+
+#, fuzzy
+#~ msgid "&Zoom"
+#~ msgstr "Катталаштириш"
+
+#~ msgid "&Go"
+#~ msgstr "Ў&тиш"
+
+#~ msgid "&Actions"
+#~ msgstr "&Амаллар"
+
+#~ msgid "S&chedule"
+#~ msgstr "&Жадвал"
+
+#, fuzzy
+#~ msgid "&Settings"
+#~ msgstr "Учрашув"
+
+#, fuzzy
+#~| msgid "Main"
+#~ msgctxt "main toolbar"
+#~ msgid "Main"
+#~ msgstr "Асосий"
+
+#~ msgid "Schedule"
+#~ msgstr "Жадвал"
+
+#, fuzzy
+#~| msgid "Calendar"
+#~ msgid "Calendar Colors"
+#~ msgstr "Календар"
+
+#, fuzzy
+#~| msgid "General"
+#~ msgctxt "general settings for html export"
+#~ msgid "General"
+#~ msgstr "Умумий"
+
+#~ msgid "To-dos"
+#~ msgstr "Вазифалар"
+
+#~ msgid "Events"
+#~ msgstr "Ҳодисалар"
+
+#, fuzzy
+#~| msgid "Edit Calendar Filters"
+#~ msgctxt "@title::window"
+#~ msgid "Edit Calendar Filters"
+#~ msgstr "Календар филтерларини таҳрирлаш"
+
+#, fuzzy
+#~| msgid "Sets the Title of this event or to-do."
+#~ msgctxt "@info:whatsthis"
+#~ msgid "Press this button to remove the currently active filter."
+#~ msgstr "Ушбу ҳодиса ёки вазифа сарлавҳасини мослаш."
+
+#, fuzzy
+#~| msgid "New Filter %1"
+#~ msgctxt "@label default filter name"
+#~ msgid "New Filter %1"
+#~ msgstr "Янги филтер %1"
+
+#, fuzzy
+#~| msgid "Delete Old Items"
+#~ msgctxt "@title:window"
+#~ msgid "Delete Filter?"
+#~ msgstr "Эски нарсаларни олиб ташлаш"
+
+#~ msgid "Event Viewer"
+#~ msgstr "Ҳодисани кўрувчи"
+
+#, fuzzy
+#~| msgid "Edit..."
+#~ msgid "Edit..."
+#~ msgstr "Таҳрирлаш"
+
+#, fuzzy
+#~ msgid "Show in Context"
+#~ msgstr "Фақат танланганни кўрсатиш"
+
+#, fuzzy
+#~| msgid "Click to add a new to-do"
+#~ msgctxt "@title:window"
+#~ msgid "Create Note"
+#~ msgstr "Янги вазифа қўшиш учун босинг"
+
+#, fuzzy
+#~ msgctxt "@action:discard creating note"
+#~ msgid "Cancel"
+#~ msgstr "Ўз&гартириш"
+
+#, fuzzy
+#~| msgid "Travel"
+#~ msgctxt "@action:save note"
+#~ msgid "Save"
+#~ msgstr "Саёҳат"
+
+#, fuzzy
+#~| msgid "&Title:"
+#~ msgid "Title:"
+#~ msgstr "Са&рлавҳа:"
+
+#, fuzzy
+#~| msgid "Redo (%1)"
+#~ msgid "Text:"
+#~ msgstr "Қайтариш (%1)"
+
+#, fuzzy
+#~| msgid "New Calendar"
+#~ msgid "Search Calendar"
+#~ msgstr "Янги календар"
+
+#, fuzzy
+#~ msgctxt "search in calendar"
+#~ msgid "&Search"
+#~ msgstr "&Боши:"
+
+#, fuzzy
+#~ msgid "Search Results"
+#~ msgstr "&Боши:"
+
+#, fuzzy
+#~ msgid "%1 item"
+#~ msgid_plural "%1 items"
+#~ msgstr[0] "1 дақиқа"
+
+#, fuzzy
+#~| msgid "Delete Confirmation"
+#~ msgctxt "A collection of all declined invidations."
+#~ msgid "Declined Invitations"
+#~ msgstr "Ўчиришни тасдиқлаш"
+
+#, fuzzy
+#~| msgid "Delete Confirmation"
+#~ msgctxt "A collection of all open invidations."
+#~ msgid "Open Invitations"
+#~ msgstr "Ўчиришни тасдиқлаш"
+
+#, fuzzy
+#~ msgid "Unable to write the output file."
+#~ msgstr "'%1' намунани топиб бўлмади."
+
+#, fuzzy
+#~ msgid "Unable to upload the export file."
+#~ msgstr "'%1' намунани топиб бўлмади."
+
+#, fuzzy
+#~| msgid "Status"
+#~ msgctxt "@title:window"
+#~ msgid "Export Status"
+#~ msgstr "Ҳолати"
+
+#, fuzzy
+#~| msgid "Automatic"
+#~ msgctxt "@info:status"
+#~ msgid "Automatic Export: %1"
+#~ msgstr "Автоматик"
+
+#, fuzzy
+#~| msgctxt "short_weekday date (e.g. Mon 13)"
+#~| msgid "%1 %2"
+#~ msgctxt "@title month and year"
+#~ msgid "%1 %2"
+#~ msgstr "%1 %2"
+
+#, fuzzy
+#~| msgid "Start Time"
+#~ msgctxt "@title:column event start time"
+#~ msgid "Start Time"
+#~ msgstr "Бошлаш вақти"
+
+#, fuzzy
+#~| msgid "End Time"
+#~ msgctxt "@title:column event end time"
+#~ msgid "End Time"
+#~ msgstr "Тугаш вақти"
+
+#, fuzzy
+#~| msgid "Events"
+#~ msgctxt "@title:column event description"
+#~ msgid "Event"
+#~ msgstr "Ҳодисалар"
+
+#, fuzzy
+#~ msgctxt "@title:column event locatin"
+#~ msgid "Location"
+#~ msgstr "&Манзил:"
+
+#, fuzzy
+#~| msgid "Categories"
+#~ msgctxt "@title:column event categories"
+#~ msgid "Categories"
+#~ msgstr "Туркумлар"
+
+#, fuzzy
+#~ msgctxt "@title:column event attendees"
+#~ msgid "Attendees"
+#~ msgstr "&Қатнашувчилар"
+
+#, fuzzy
+#~| msgid "To-do:"
+#~ msgctxt "@title:column"
+#~ msgid "To-do"
+#~ msgstr "Вазифа:"
+
+#, fuzzy
+#~| msgid "Priority"
+#~ msgctxt "@title:column to-do priority"
+#~ msgid "Priority"
+#~ msgstr "Муҳимлик даражаси"
+
+#, fuzzy
+#~| msgid "Complete"
+#~ msgctxt "@title:column to-do percent completed"
+#~ msgid "Completed"
+#~ msgstr "Бажарилган"
+
+#, fuzzy
+#~ msgctxt "@title:column to-do due date"
+#~ msgid "Due Date"
+#~ msgstr "Сана ва вақт"
+
+#, fuzzy
+#~ msgctxt "@title:column to-do location"
+#~ msgid "Location"
+#~ msgstr "&Манзил:"
+
+#, fuzzy
+#~| msgid "Categories"
+#~ msgctxt "@title:column to-do categories"
+#~ msgid "Categories"
+#~ msgstr "Туркумлар"
+
+#, fuzzy
+#~ msgctxt "@title:column to-do attendees"
+#~ msgid "Attendees"
+#~ msgstr "&Қатнашувчилар"
+
+#, fuzzy
+#~| msgid "To-dos:"
+#~ msgctxt "@title:column sub-to-dos of the parent to-do"
+#~ msgid "Sub-To-dos of: "
+#~ msgstr "Вазифалар:"
+
+#, fuzzy
+#~| msgid "To-dos"
+#~ msgctxt "@title:column sub-to-dos of the parent to-do"
+#~ msgid "Sub-To-dos"
+#~ msgstr "Вазифалар"
+
+#, fuzzy
+#~| msgctxt "short_weekday date (e.g. Mon 13)"
+#~| msgid "%1 %2"
+#~ msgctxt "@info to-do percent complete"
+#~ msgid "%1 %"
+#~ msgstr "%1 %2"
+
+#, fuzzy
+#~| msgid "Edit %1"
+#~ msgctxt "@info page credit name only"
+#~ msgid "with %1"
+#~ msgstr "%1'ни таҳрирлаш"
+
+#, fuzzy
+#~| msgctxt "short_weekday date (e.g. Mon 13)"
+#~| msgid "%1 %2"
+#~ msgctxt "@info holiday by date and name"
+#~ msgid "%1, %2"
+#~ msgstr "%1 %2"
+
+#, fuzzy
+#~| msgid "Select a month"
+#~ msgid "Selection"
+#~ msgstr "Ойни танлаш"
+
+#, fuzzy
+#~| msgid "Date && Time"
+#~ msgid "Date & Time"
+#~ msgstr "Сана ва вақт"
+
+#, fuzzy
+#~| msgid "&Date:"
+#~ msgid "Date"
+#~ msgstr "Са&на:"
+
+#, fuzzy
+#~| msgid "Could not load calendar '%1'."
+#~ msgid "<qt>Do you really want to delete '<b>%1</b>'?</qt>"
+#~ msgstr "'%1' календарини юклаб бўлмади."
+
+#, fuzzy
+#~| msgid "Import Calendar"
+#~ msgid "Import Page"
+#~ msgstr "Календарни импорт қилиш"
+
+#, fuzzy
+#~| msgid "*.ics|iCalendar Files"
+#~ msgid "Designer Files (*.ui)"
+#~ msgstr "*.ics|iCalendar файллар"
+
+#, fuzzy
+#~| msgid "Import &Calendar..."
+#~ msgid "Import Page..."
+#~ msgstr "Календарни &импорт қилиш..."
+
+#, fuzzy
+#~ msgid "Type:"
+#~ msgstr "Тури"
+
+#, fuzzy
+#~| msgid "Username:"
+#~ msgid "Classname:"
+#~ msgstr "Фойдаланувчи:"
+
+#, fuzzy
+#~ msgid "Description:"
+#~ msgstr "&Таърифи"
+
+#, fuzzy
+#~ msgctxt "@item:intext delimiter for joining holiday names"
+#~ msgid ","
+#~ msgstr ", "
+
+#, fuzzy
+#~ msgctxt "delimiter for joining holiday names"
+#~ msgid ","
+#~ msgstr ", "
+
+#, fuzzy
+#~ msgid "&Move"
+#~ msgstr "&Кўчириш"
+
+#, fuzzy
+#~ msgid "&Copy"
+#~ msgstr "&Нусха олиш"
+
+#~ msgid "&Add"
+#~ msgstr "&Қўшиш"
+
+#, fuzzy
+#~ msgid "&Cancel"
+#~ msgstr "Ўз&гартириш"
+
+#, fuzzy
+#~ msgid "&Print..."
+#~ msgstr "&Таҳрирлаш"
+
+#, fuzzy
+#~ msgid "Print Previe&w..."
+#~ msgstr "&Таҳрирлаш"
+
+#, fuzzy
+#~ msgctxt "copy this event"
+#~ msgid "&Copy"
+#~ msgstr "&Нусха олиш"
+
+#, fuzzy
+#~| msgid "&Date:"
+#~ msgid "&Paste"
+#~ msgstr "Са&на:"
+
+#, fuzzy
+#~ msgctxt "delete this incidence"
+#~ msgid "&Delete"
+#~ msgstr "%1'ни ўчириш"
+
+#, fuzzy
+#~| msgid "Click to add a new to-do"
+#~ msgid "Create To-do"
+#~ msgstr "Янги вазифа қўшиш учун босинг"
+
+#, fuzzy
+#~| msgid "Click to add a new to-do"
+#~ msgid "Create Event"
+#~ msgstr "Янги вазифа қўшиш учун босинг"
+
+#, fuzzy
+#~| msgid "Click to add a new to-do"
+#~ msgid "Create Note"
+#~ msgstr "Янги вазифа қўшиш учун босинг"
+
+#~ msgid "&Toggle Reminder"
+#~ msgstr "&Эсга солишни ўчириш/ёқиш"
+
+#, fuzzy
+#~| msgid "&iCalendar..."
+#~ msgid "Send as iCalendar..."
+#~ msgstr "&iCalendar..."
+
+#, fuzzy
+#~ msgid "Unable to save %1 \"%2\"."
+#~ msgstr "'%1' намунани топиб бўлмади."
+
+#, fuzzy
+#~| msgid "Calendar"
+#~ msgid "Event Summary Configuration"
+#~ msgstr "Календар"
+
+#, fuzzy
+#~| msgid "Sets the Title of this event or to-do."
+#~ msgid "Show events for today only"
+#~ msgstr "Ушбу ҳодиса ёки вазифа сарлавҳасини мослаш."
+
+#, fuzzy
+#~ msgid ""
+#~ "Check this box if you want to see events occurring on this date only."
+#~ msgstr "Фақат танланганни кўрсатиш"
+
+#, fuzzy
+#~| msgid "day"
+#~ msgid "&Today only"
+#~ msgstr "кун"
+
+#, fuzzy
+#~ msgid ""
+#~ "Check this box if you want to see events that start sometime during the "
+#~ "next 31 days."
+#~ msgstr "Фақат танланганни кўрсатиш"
+
+#, fuzzy
+#~| msgid "Sets the Title of this event or to-do."
+#~ msgid "Select the days for showing upcoming events"
+#~ msgstr "Ушбу ҳодиса ёки вазифа сарлавҳасини мослаш."
+
+#, fuzzy
+#~ msgid "1 day"
+#~ msgstr "1 кун"
+
+#, fuzzy
+#~| msgid "In days"
+#~ msgctxt "days to show in summary"
+#~ msgid " days"
+#~ msgstr "Кунларда"
+
+#, fuzzy
+#~| msgid "Birthdays"
+#~ msgid "Show &birthdays"
+#~ msgstr "Туғилган кунлар"
+
+#, fuzzy
+#~ msgid "Groupware Settings"
+#~ msgstr "Учрашув"
+
+#, fuzzy
+#~| msgid "Import Calendar"
+#~ msgid "Show events belonging to my calendars only"
+#~ msgstr "Календарни импорт қилиш"
+
+#, fuzzy
+#~ msgid ""
+#~ "Check this box if you want the summary to show events belonging to your "
+#~ "calendars only."
+#~ msgstr "Фақат танланганни кўрсатиш"
+
+#, fuzzy
+#~| msgid "Appointment"
+#~ msgid "&Edit Appointment..."
+#~ msgstr "Учрашув"
+
+#, fuzzy
+#~| msgid "Appointment"
+#~ msgid "&Delete Appointment"
+#~ msgstr "Учрашув"
+
+#, fuzzy
+#~| msgid "Edit Event"
+#~ msgid "Edit Event: \"%1\""
+#~ msgstr "Ҳодисани таҳрирлаш"
+
+#, fuzzy
+#~| msgid "New &Journal..."
+#~ msgctxt "@action:inmenu"
+#~ msgid "New Journal..."
+#~ msgstr "Янги &кундалик"
+
+#, fuzzy
+#~| msgid "Click to add a new to-do"
+#~ msgctxt "@info:status"
+#~ msgid "Create a new journal"
+#~ msgstr "Янги вазифа қўшиш учун босинг"
+
+#, fuzzy
+#~| msgid "New &Journal..."
+#~ msgctxt "@action:inmenu"
+#~ msgid "Sync Journal"
+#~ msgstr "Янги &кундалик"
+
+#, fuzzy
+#~ msgid " day"
+#~ msgid_plural " days"
+#~ msgstr[0] "1 кун"
+
+#, fuzzy
+#~| msgid "New E&vent..."
+#~ msgctxt "@action:inmenu"
+#~ msgid "New Event..."
+#~ msgstr "Янги &ҳодиса"
+
+#, fuzzy
+#~| msgid "Click to add a new to-do"
+#~ msgctxt "@info:status"
+#~ msgid "Create a new event"
+#~ msgstr "Янги вазифа қўшиш учун босинг"
+
+#, fuzzy
+#~| msgid "New Calendar"
+#~ msgctxt "@action:inmenu"
+#~ msgid "Sync Calendar"
+#~ msgstr "Янги календар"
+
+#, fuzzy
+#~| msgid "Meeting"
+#~ msgctxt "@item"
+#~ msgid "Meeting"
+#~ msgstr "Учрашув"
+
+#, fuzzy
+#~| msgid "Undo (%1)"
+#~ msgctxt "@item"
+#~ msgid "Note: %1"
+#~ msgstr "Бекор қилиш (%1)"
+
+#, fuzzy
+#~| msgid "From: %1   To: %2   %3"
+#~ msgctxt "@item"
+#~ msgid ""
+#~ "From: %1\n"
+#~ "To: %2\n"
+#~ "Subject: %3"
+#~ msgstr "%1 дан %2 гача   %3"
+
+#, fuzzy
+#~| msgid "KMail"
+#~ msgctxt "@item"
+#~ msgid "Mail: %1"
+#~ msgstr "KMail"
+
+#, fuzzy
+#~| msgid "day"
+#~ msgctxt "the appointment is today"
+#~ msgid "Today"
+#~ msgstr "кун"
+
+#, fuzzy
+#~ msgid "in 1 day"
+#~ msgid_plural "in %1 days"
+#~ msgstr[0] "1 кун"
+
+#, fuzzy
+#~ msgctxt "use abbreviation for minute to keep the text short"
+#~ msgid "1 min"
+#~ msgid_plural "%1 mins"
+#~ msgstr[0] "1 дақиқа"
+
+#, fuzzy
+#~ msgid "all day"
+#~ msgstr "1 кун"
+
+#, fuzzy
+#~ msgctxt "Time from - to"
+#~ msgid "%1 - %2"
+#~ msgstr "%1 %2"
+
+#, fuzzy
+#~| msgid "Redo (%1)"
+#~ msgctxt "next occurrence"
+#~ msgid "Next: %1"
+#~ msgstr "Қайтариш (%1)"
+
+#, fuzzy
+#~| msgid "&New To-do..."
+#~ msgctxt "@action:inmenu"
+#~ msgid "New To-do..."
+#~ msgstr "Янги &вазифа..."
+
+#, fuzzy
+#~| msgid "Click to add a new to-do"
+#~ msgctxt "@info:status"
+#~ msgid "Create a new to-do"
+#~ msgstr "Янги вазифа қўшиш учун босинг"
+
+#, fuzzy
+#~| msgid "To-do List"
+#~ msgctxt "@action:inmenu"
+#~ msgid "Sync To-do List"
+#~ msgstr "Вазифалар рўйхати"
+
+#, fuzzy
+#~ msgctxt "@info:status"
+#~ msgid "Synchronize groupware to-do list"
+#~ msgstr "Ишга туширилмасин"
+
+#, fuzzy
+#~| msgid "Calendar"
+#~ msgid "To-do Summary Configuration"
+#~ msgstr "Календар"
+
+#, fuzzy
+#~| msgid "Show To-do View"
+#~ msgid "Show To-dos Due"
+#~ msgstr "Вазифалар кўринишини кўрсатиш"
+
+#, fuzzy
+#~ msgid "Check this box if you want to see To-dos due on this date only."
+#~ msgstr "Фақат танланганни кўрсатиш"
+
+#, fuzzy
+#~ msgid ""
+#~ "Check this box if you want to see To-dos that are due sometime during the "
+#~ "next 31 days."
+#~ msgstr "Фақат танланганни кўрсатиш"
+
+#, fuzzy
+#~ msgid ""
+#~ "Check this box if you want specify the number of days in the future for "
+#~ "pending To-dos."
+#~ msgstr "Фақат танланганни кўрсатиш"
+
+#, fuzzy
+#~| msgid "Hide co&mpleted to-dos"
+#~ msgid "Hide completed To-dos"
+#~ msgstr "Ба&жарилган вазифаларни бекитиш"
+
+#, fuzzy
+#~ msgid ""
+#~ "Check this box if you do not want to see To-dos that have already been "
+#~ "completed."
+#~ msgstr "Фақат танланганни кўрсатиш"
+
+#, fuzzy
+#~| msgid "Complete"
+#~ msgid "&Completed"
+#~ msgstr "Бажарилган"
+
+#, fuzzy
+#~ msgid "Check this box if you do not want to see open-ended To-dos."
+#~ msgstr "Фақат танланганни кўрсатиш"
+
+#, fuzzy
+#~| msgid "Hide &inactive to-dos"
+#~ msgid "Hide unstarted To-dos"
+#~ msgstr "Актив &бўлмаган вазифаларни бекитиш"
+
+#, fuzzy
+#~ msgid ""
+#~ "Check this box if you do not want to see To-dos with a start date in the "
+#~ "future."
+#~ msgstr "Фақат танланганни кўрсатиш"
+
+#, fuzzy
+#~| msgid "Hide &inactive to-dos"
+#~ msgid "Hide in-progress To-dos"
+#~ msgstr "Актив &бўлмаган вазифаларни бекитиш"
+
+#, fuzzy
+#~ msgid ""
+#~ "Check this box if you do not want to see To-dos that have been started "
+#~ "but are not yet completed."
+#~ msgstr "Фақат танланганни кўрсатиш"
+
+#, fuzzy
+#~| msgid "Hide co&mpleted to-dos"
+#~ msgid "Hide overdue To-dos"
+#~ msgstr "Ба&жарилган вазифаларни бекитиш"
+
+#, fuzzy
+#~ msgid ""
+#~ "Check this box if you do not want to see To-dos that are past their due "
+#~ "date but have not yet been completed."
+#~ msgstr "Фақат танланганни кўрсатиш"
+
+#, fuzzy
+#~| msgid "Import Calendar"
+#~ msgid "Show To-dos belonging to my calendars only"
+#~ msgstr "Календарни импорт қилиш"
+
+#, fuzzy
+#~ msgid ""
+#~ "Check this box if you want the summary to show To-dos belonging to your "
+#~ "calendars only."
+#~ msgstr "Фақат танланганни кўрсатиш"
+
+#, fuzzy
+#~| msgid "&Show To-do"
+#~ msgid "Show &my To-dos only"
+#~ msgstr "Вазифани &кўрсатиш"
+
+#, fuzzy
+#~| msgid "New To-do"
+#~ msgid "Pending To-dos"
+#~ msgstr "Янги вазифа"
+
+#, fuzzy
+#~| msgid "day"
+#~ msgctxt "the to-do is due today"
+#~ msgid "Today"
+#~ msgstr "кун"
+
+#, fuzzy
+#~ msgid "1 day ago"
+#~ msgid_plural "%1 days ago"
+#~ msgstr[0] "1 кун"
+
+#, fuzzy
+#~| msgid "&Date:"
+#~ msgctxt "the to-do is due"
+#~ msgid "due"
+#~ msgstr "Са&на:"
+
+#, fuzzy
+#~| msgid "Hide co&mpleted to-dos"
+#~ msgid "&Mark To-do Completed"
+#~ msgstr "Ба&жарилган вазифаларни бекитиш"
+
+#, fuzzy
+#~| msgid "Edit To-do"
+#~ msgid "Edit To-do: \"%1\""
+#~ msgstr "Вазифани таҳрирлаш"
+
+#, fuzzy
+#~ msgctxt "the to-do starts today"
+#~ msgid "starts today"
+#~ msgstr "Бошлаш куни:"
+
+#, fuzzy
+#~| msgid "co&mpleted"
+#~ msgctxt "the to-do is completed"
+#~ msgid "completed"
+#~ msgstr "&бажарилган"
+
+#, fuzzy
+#~ msgctxt "Separator for status like this: overdue, completed"
+#~ msgid ","
+#~ msgstr ", "
+
+#, fuzzy
+#~| msgid "Calendar"
+#~ msgid "Special Dates Summary Configuration"
+#~ msgstr "Календар"
+
+#, fuzzy
+#~ msgid ""
+#~ "Check this box if you want to see special occasions occurring on this "
+#~ "date only."
+#~ msgstr "Фақат танланганни кўрсатиш"
+
+#, fuzzy
+#~| msgid "Import Calendar"
+#~ msgid "Show birthdays from your calendar"
+#~ msgstr "Календарни импорт қилиш"
+
+#, fuzzy
+#~| msgid "Show both"
+#~ msgid "Show birth&days"
+#~ msgstr "Икаласини ҳам кўрсатиш"
+
+#, fuzzy
+#~| msgid "day"
+#~ msgctxt "the special day is today"
+#~ msgid "Today"
+#~ msgstr "кун"
+
+#, fuzzy
+#~| msgid "Birthday"
+#~ msgid "Birthday"
+#~ msgstr "Туғилган кун"
+
+#~ msgid "Holiday"
+#~ msgstr "Дам олиш"
+
+#, fuzzy
+#~| msgid "Next year"
+#~ msgid "one year"
+#~ msgid_plural "%1 years"
+#~ msgstr[0] "Келаси йил"
+
+#, fuzzy
+#~| msgid "Send Email"
+#~ msgid "Send &Mail"
+#~ msgstr "Хат жўнатиш"
+
+#, fuzzy
+#~| msgid "Current Maintainer"
+#~ msgid "Current Maintainer"
+#~ msgstr "Жорий таъминловчи"
+
+#~ msgid "Calendar"
+#~ msgstr "Календар"
+
+#~ msgid "New Calendar"
+#~ msgstr "Янги календар"
+
+#, fuzzy
+#~| msgid "read-only"
+#~ msgctxt "the calendar is read-only"
+#~ msgid "read-only"
+#~ msgstr "фақат ўқишга"
+
+#, fuzzy
+#~ msgid "Import the specified files as separate calendars"
+#~ msgstr "Иловани қўшиш"
+
+#, fuzzy
+#~ msgid "Merge the specified files into an existing calendar"
+#~ msgstr "Иловани қўшиш"
+
+#, fuzzy
+#~| msgid "New Calendar"
+#~ msgid "Merged calendar"
+#~ msgstr "Янги календар"
+
+#~ msgctxt "Default export file"
+#~ msgid "calendar.html"
+#~ msgstr "calendar.html"
+
+#, fuzzy
+#~| msgid "Personal"
+#~ msgctxt "@title:tab personal settings"
+#~ msgid "Personal"
+#~ msgstr "Шахсий"
+
+#, fuzzy
+#~ msgctxt "@title:group email settings"
+#~ msgid "Email Settings"
+#~ msgstr "Учрашув"
+
+#, fuzzy
+#~| msgid "Travel"
+#~ msgctxt "@title:tab"
+#~ msgid "Save"
+#~ msgstr "Саёҳат"
+
+#, fuzzy
+#~| msgid "Import Calendar"
+#~ msgctxt "@title:group"
+#~ msgid "Exporting Calendar"
+#~ msgstr "Календарни импорт қилиш"
+
+#, fuzzy
+#~| msgid "Other Options"
+#~ msgctxt "@title:group"
+#~ msgid "Show/Hide Options"
+#~ msgstr "Бошқа параметрлар"
+
+#, fuzzy
+#~| msgid "Calendar"
+#~ msgctxt "@title:tab calendar account settings"
+#~ msgid "Calendars"
+#~ msgstr "Календар"
+
+#, fuzzy
+#~| msgid "Personal"
+#~ msgctxt "@title:tab"
+#~ msgid "Regional"
+#~ msgstr "Шахсий"
+
+#, fuzzy
+#~| msgid "Holiday"
+#~ msgctxt "@title:group"
+#~ msgid "Holidays"
+#~ msgstr "Дам олиш"
+
+#, fuzzy
+#~| msgctxt "short_weekday date (e.g. Mon 13)"
+#~| msgid "%1 %2"
+#~ msgctxt "Holday region, region language"
+#~ msgid "%1 (%2)"
+#~ msgstr "%1 %2"
+
+#, fuzzy
+#~| msgid "(None)"
+#~ msgctxt "No holiday region"
+#~ msgid "None"
+#~ msgstr "(Йўқ)"
+
+#, fuzzy
+#~| msgid "Working Hours"
+#~ msgctxt "@title:group"
+#~ msgid "Working Period"
+#~ msgstr "Иш вақти"
+
+#, fuzzy
+#~| msgid "Default Calendar"
+#~ msgctxt "@title:tab"
+#~ msgid "Default Values"
+#~ msgstr "Андоза календар"
+
+#, fuzzy
+#~| msgid "Appointment"
+#~ msgctxt "@title:group"
+#~ msgid "Appointments"
+#~ msgstr "Учрашув"
+
+#, fuzzy
+#~| msgid "Reminder"
+#~ msgctxt "@title:group"
+#~ msgid "Reminders"
+#~ msgstr "Эсга солиш"
+
+#, fuzzy
+#~| msgid "Default reminder time:"
+#~ msgctxt "@label"
+#~ msgid "Default reminder time:"
+#~ msgstr "Андоза эсга солиш вақти:"
+
+#, fuzzy
+#~| msgid "minute(s)"
+#~ msgctxt "@item:inlistbox reminder units in minutes"
+#~ msgid "minute(s)"
+#~ msgstr "дақиқа"
+
+#, fuzzy
+#~| msgid "hour(s)"
+#~ msgctxt "@item:inlistbox reminder time units in hours"
+#~ msgid "hour(s)"
+#~ msgstr "соат"
+
+#, fuzzy
+#~| msgid "day(s)"
+#~ msgctxt "@item:inlistbox reminder time units in days"
+#~ msgid "day(s)"
+#~ msgstr "кун"
+
+#, fuzzy
+#~| msgid "General"
+#~ msgctxt "@title:tab general settings"
+#~ msgid "General"
+#~ msgstr "Умумий"
+
+#, fuzzy
+#~ msgctxt "@title:group"
+#~ msgid "Display Options"
+#~ msgstr "Эсга солиш"
+
+#, fuzzy
+#~| msgid "In days"
+#~ msgctxt "@label suffix in the N days spin box"
+#~ msgid " days"
+#~ msgstr "Кунларда"
+
+#, fuzzy
+#~ msgctxt "@title:tab"
+#~ msgid "Agenda View"
+#~ msgstr "Ҳодисани кўрувчи"
+
+#, fuzzy
+#~| msgid "Month View"
+#~ msgctxt "@title:tab"
+#~ msgid "Month View"
+#~ msgstr "Ой кўриниши"
+
+#, fuzzy
+#~| msgid "To-do View"
+#~ msgctxt "@title:tab"
+#~ msgid "Todo View"
+#~ msgstr "Вазифалар кўриниши"
+
+#, fuzzy
+#~| msgid "Other Options"
+#~ msgctxt "@title:group"
+#~ msgid "Other Options"
+#~ msgstr "Бошқа параметрлар"
+
+#, fuzzy
+#~| msgid "Categories"
+#~ msgctxt "@title:group"
+#~ msgid "Categories"
+#~ msgstr "Туркумлар"
+
+#, fuzzy
+#~| msgid "Resources"
+#~ msgctxt "@title:group"
+#~ msgid "Resources"
+#~ msgstr "Манбалар"
+
+#, fuzzy
+#~| msgid "Sets the Title of this event or to-do."
+#~ msgctxt "@info:whatsthis"
+#~ msgid ""
+#~ "Choose here the color of the calendar selected using the combo box above."
+#~ msgstr "Ушбу ҳодиса ёки вазифа сарлавҳасини мослаш."
+
+#, fuzzy
+#~| msgid "month(s)"
+#~ msgctxt "@title:tab"
+#~ msgid "Fonts"
+#~ msgstr "ой"
+
+#, fuzzy
+#~| msgid "Event text"
+#~ msgctxt "@label"
+#~ msgid "Event text"
+#~ msgstr "Ҳодиса матни"
+
+#, fuzzy
+#~| msgid "Name"
+#~ msgctxt "@title:column plugin name"
+#~ msgid "Name"
+#~ msgstr "Номи"
+
+#, fuzzy
+#~| msgid "Configure &Plugin..."
+#~ msgctxt "@action:button"
+#~ msgid "Configure &Plugin..."
+#~ msgstr "&Плагинни мослаш"
+
+#, fuzzy
+#~| msgid "&Description"
+#~ msgctxt "@title:group"
+#~ msgid "Position"
+#~ msgstr "&Таърифи"
+
+#, fuzzy
+#~ msgctxt "@option:check"
+#~ msgid "Show at the top of the agenda views"
+#~ msgstr "Фақат танланганни кўрсатиш"
+
+#, fuzzy
+#~ msgctxt "@option:check"
+#~ msgid "Show at the bottom of the agenda views"
+#~ msgstr "Фақат танланганни кўрсатиш"
+
+#, fuzzy
+#~| msgid "Calendar"
+#~ msgctxt "@title:group"
+#~ msgid "Calendar Decorations"
+#~ msgstr "Календар"
+
+#, fuzzy
+#~| msgid "Other Options"
+#~ msgctxt "@title:group"
+#~ msgid "Other Plugins"
+#~ msgstr "Бошқа параметрлар"
+
+#, fuzzy
+#~| msgid "Unable to configure this plugin"
+#~ msgctxt "@info"
+#~ msgid "Unable to configure this plugin"
+#~ msgstr "Ушбу плагинни мослаб бўлмади"
+
+#, fuzzy
+#~| msgid "Please enter a name for the new template:"
+#~ msgid "Full name of the calendar owner"
+#~ msgstr "Илтимос янги намунанинг номини киритинг:"
+
+#, fuzzy
+#~| msgid "Please enter a name for the new template:"
+#~ msgid "The full name of the calendar owner for the export"
+#~ msgstr "Илтимос янги намунанинг номини киритинг:"
+
+#, fuzzy
+#~| msgid "Please enter a name for the new template:"
+#~ msgid "The email address of the calendar owner for the export"
+#~ msgstr "Илтимос янги намунанинг номини киритинг:"
+
+#, fuzzy
+#~ msgid "Creator application of the calendar"
+#~ msgstr "'%1' намунани топиб бўлмади."
+
+#, fuzzy
+#~ msgid "Enter a creator application of the calendar, for example KOrganizer."
+#~ msgstr "'%1' намунани топиб бўлмади."
+
+#, fuzzy
+#~| msgid "Server URL:"
+#~ msgid "Creator URL"
+#~ msgstr "&Сервернинг манзили:"
+
+#, fuzzy
+#~| msgid "&Title:"
+#~ msgid "Page Title"
+#~ msgstr "Са&рлавҳа:"
+
+#, fuzzy
+#~| msgid "Default reminder time:"
+#~ msgid "The title of the exported page"
+#~ msgstr "Андоза эсга солиш вақти:"
+
+#, fuzzy
+#~ msgid "Date start"
+#~ msgstr "Ишга туширилмасин"
+
+#, fuzzy
+#~| msgid "Date && Time"
+#~ msgid "Date end"
+#~ msgstr "Сана ва вақт"
+
+#, fuzzy
+#~| msgid "To-do list"
+#~ msgid "Export events as a list"
+#~ msgstr "Вазифалар рўйхати"
+
+#, fuzzy
+#~ msgid "Export in month view"
+#~ msgstr "Фақат танланганни кўрсатиш"
+
+#, fuzzy
+#~ msgid "Export events in a month view"
+#~ msgstr "Фақат танланганни кўрсатиш"
+
+#, fuzzy
+#~ msgid "Check this box if you want your events shown in a month view."
+#~ msgstr "Фақат танланганни кўрсатиш"
+
+#, fuzzy
+#~ msgid "Export events in a week view"
+#~ msgstr "Фақат танланганни кўрсатиш"
+
+#, fuzzy
+#~ msgid "Title of the calendar"
+#~ msgstr "'%1' намунани топиб бўлмади."
+
+#, fuzzy
+#~ msgid "Title for the event calendar"
+#~ msgstr "'%1' намунани топиб бўлмади."
+
+#, fuzzy
+#~| msgid "Please enter a name for the new template:"
+#~ msgid "Enter a string to use for the title of the event calendar."
+#~ msgstr "Илтимос янги намунанинг номини киритинг:"
+
+#, fuzzy
+#~| msgid "&Description"
+#~ msgid "Include the event locations"
+#~ msgstr "&Таърифи"
+
+#, fuzzy
+#~| msgid "Select Cate&gories..."
+#~ msgid "Include the event categories"
+#~ msgstr "Туркумларни &танлаш"
+
+#, fuzzy
+#~ msgid "Include the event attendees"
+#~ msgstr "Ишга туширилмасин"
+
+#, fuzzy
+#~| msgid "To-do list"
+#~ msgid "Export to-do list"
+#~ msgstr "Вазифалар рўйхати"
+
+#, fuzzy
+#~| msgid "To-do list"
+#~ msgid "Export the to-do list"
+#~ msgstr "Вазифалар рўйхати"
+
+#, fuzzy
+#~ msgid "Title of the to-do list"
+#~ msgstr "Ишга туширилмасин"
+
+#~ msgid "To-do List"
+#~ msgstr "Вазифалар рўйхати"
+
+#, fuzzy
+#~ msgid "Title for the to-do list"
+#~ msgstr "Ишга туширилмасин"
+
+#, fuzzy
+#~ msgid "Include the to-do locations"
+#~ msgstr "Ишга туширилмасин"
+
+#, fuzzy
+#~| msgid "Select Cate&gories..."
+#~ msgid "Include the to-do categories"
+#~ msgstr "Туркумларни &танлаш"
+
+#, fuzzy
+#~ msgid "Include the to-do attendees"
+#~ msgstr "1 дақиқа"
+
+#, fuzzy
+#~ msgid "Check this box if you want the to-do attendees to be exported."
+#~ msgstr "Фақат танланганни кўрсатиш"
+
+#, fuzzy
+#~| msgid "New &Journal..."
+#~ msgid "Export journals"
+#~ msgstr "Янги &кундалик"
+
+#, fuzzy
+#~| msgid "Sets the title of this journal."
+#~ msgid "Title of the journal list"
+#~ msgstr "Ушбу кундаликнинг номини кўрсатиш."
+
+#, fuzzy
+#~| msgid "New &Journal..."
+#~ msgid "Journals"
+#~ msgstr "Янги &кундалик"
+
+#, fuzzy
+#~| msgid "Sets the title of this journal."
+#~ msgid "Title for the journal list"
+#~ msgstr "Ушбу кундаликнинг номини кўрсатиш."
+
+#, fuzzy
+#~| msgid "To-do list"
+#~ msgid "Export free/busy list"
+#~ msgstr "Вазифалар рўйхати"
+
+#, fuzzy
+#~| msgid "Business"
+#~ msgid "Busy times"
+#~ msgstr "Иш"
+
+#, fuzzy
+#~| msgid "Sets the title of this journal."
+#~ msgid "Title for the free/busy list"
+#~ msgstr "Ушбу кундаликнинг номини кўрсатиш."
+
+#, fuzzy
+#~ msgid "Export &interval in minutes"
+#~ msgstr "Сақлаш &даври (мин):"
+
+#~ msgid "Confirm deletes"
+#~ msgstr "Ўчиришни тасдиқлаш"
+
+#~ msgid "Next x days"
+#~ msgstr "Кейинги х кун"
+
+#, fuzzy
+#~ msgid "Show icons in agenda view items"
+#~ msgstr "Фақат танланганни кўрсатиш"
+
+#, fuzzy
+#~ msgid "Display icons in agenda view items"
+#~ msgstr "Фақат танланганни кўрсатиш"
+
+#, fuzzy
+#~| msgid "&Show To-do"
+#~ msgid "Show to-dos"
+#~ msgstr "Вазифани &кўрсатиш"
+
+#, fuzzy
+#~ msgid "Display to-dos in the agenda view"
+#~ msgstr "Фақат танланганни кўрсатиш"
+
+#, fuzzy
+#~| msgid "Displays appointment time information."
+#~ msgid "Display the current-time indicator"
+#~ msgstr "Учрашув вақти маълумотини кўрсатиш."
+
+#, fuzzy
+#~| msgid "Show seconds on current-time line"
+#~ msgid "Show seconds on the current-time (Marcus Bains) line"
+#~ msgstr "Жорий вақт қаторида сонияларни кўрсатиш"
+
+#, fuzzy
+#~| msgid "Show seconds on current-time line"
+#~ msgid "Display seconds with the current-time indicator"
+#~ msgstr "Жорий вақт қаторида сонияларни кўрсатиш"
+
+#, fuzzy
+#~| msgid "Calendar"
+#~ msgid "Calendar inside, category outside"
+#~ msgstr "Календар"
+
+#, fuzzy
+#~ msgid "Only category"
+#~ msgstr "Туркумлар"
+
+#, fuzzy
+#~| msgid "Calendar"
+#~ msgid "Only calendar"
+#~ msgstr "Календар"
+
+#, fuzzy
+#~| msgid "Active Calendar"
+#~ msgid "Multiple Calendar Display"
+#~ msgstr "Актив календар"
+
+#, fuzzy
+#~| msgid "New Calendar"
+#~ msgid "Tab through calendars"
+#~ msgstr "Янги календар"
+
+#, fuzzy
+#~ msgid "Show icons in month view items"
+#~ msgstr "Фақат танланганни кўрсатиш"
+
+#, fuzzy
+#~ msgid "Show time in month view items"
+#~ msgstr "Фақат танланганни кўрсатиш"
+
+#, fuzzy
+#~ msgid "Check this box to display the time in month view items."
+#~ msgstr "Фақат танланганни кўрсатиш"
+
+#, fuzzy
+#~ msgid "Display time in month view items"
+#~ msgstr "Фақат танланганни кўрсатиш"
+
+#, fuzzy
+#~ msgid "Check this box to display to-dos in the month view."
+#~ msgstr "Фақат танланганни кўрсатиш"
+
+#, fuzzy
+#~ msgid "Display to-dos in the month view"
+#~ msgstr "Фақат танланганни кўрсатиш"
+
+#, fuzzy
+#~| msgid "New &Journal..."
+#~ msgid "Show journals"
+#~ msgstr "Янги &кундалик"
+
+#, fuzzy
+#~ msgid "Display journals in the month view"
+#~ msgstr "Фақат танланганни кўрсатиш"
+
+#, fuzzy
+#~ msgid "Display to-do list in a full KOrganizer window"
+#~ msgstr "Фақат танланганни кўрсатиш"
+
+#, fuzzy
+#~ msgid "Display to-dos in a flat list"
+#~ msgstr "Фақат танланганни кўрсатиш"
+
+#, fuzzy
+#~| msgid "Displays appointment time information."
+#~ msgid "Agenda view current-time line color"
+#~ msgstr "Учрашув вақти маълумотини кўрсатиш."
+
+#, fuzzy
+#~| msgid "Show seconds on current-time line"
+#~ msgid "Select a color to use for the current-time (Marcus Bains) line."
+#~ msgstr "Жорий вақт қаторида сонияларни кўрсатиш"
+
+#, fuzzy
+#~| msgid "Show seconds on current-time line"
+#~ msgid "Use this color for the Agenda View current-time (Marcus Bains) line"
+#~ msgstr "Жорий вақт қаторида сонияларни кўрсатиш"
+
+#, fuzzy
+#~| msgid "Displays appointment time information."
+#~ msgid "Busy days background color"
+#~ msgstr "Учрашув вақти маълумотини кўрсатиш."
+
+#~ msgid "Month view"
+#~ msgstr "Ой кўриниши"
+
+#, fuzzy
+#~| msgid "Default appointment time"
+#~ msgid "Default todo attachment method"
+#~ msgstr "Андоза учрашув вақти"
+
+#, fuzzy
+#~| msgid "Attach&ments"
+#~ msgid "Attach complete message"
+#~ msgstr "&Иловалар"
+
+#~ msgid "Default event color"
+#~ msgstr "Ҳодисанинг андоза ранги"
+
+#, fuzzy
+#~ msgid "Search"
+#~ msgstr "&Боши:"
+
+#~ msgid "&New"
+#~ msgstr "&Янги"
+
+#~ msgid "Filter Details"
+#~ msgstr "Филтер тафсилотлари"
+
+#, fuzzy
+#~| msgid "Name:"
+#~ msgctxt "filter name"
+#~ msgid "Name:"
+#~ msgstr "Номи:"
+
+#~ msgid "Hide &recurring events and to-dos"
+#~ msgstr "Қай&тариладиган ҳодиса ва вазифаларни бекитиш"
+
+#~ msgid "Hide co&mpleted to-dos"
+#~ msgstr "Ба&жарилган вазифаларни бекитиш"
+
+#~ msgid "Hide &inactive to-dos"
+#~ msgstr "Актив &бўлмаган вазифаларни бекитиш"
+
+#~ msgid "Categories"
+#~ msgstr "Туркумлар"
+
+#~ msgid "Show only selected"
+#~ msgstr "Фақат танланганни кўрсатиш"
+
+#~ msgid "Change..."
+#~ msgstr "Ўзгартириш..."
+
+#~ msgid "Server Information"
+#~ msgstr "Сервер ҳақида маълумот"
+
+#~ msgid "Password:"
+#~ msgstr "Махфий сўз:"
+
+#, fuzzy
+#~| msgid "Username:"
+#~ msgctxt "login name on the Kolab server"
+#~ msgid "Username:"
+#~ msgstr "Фойдаланувчи:"
+
+#~ msgid "Remember p&assword"
+#~ msgstr "&Махфий сўзни эслаб қолиш"
+
+#~ msgid "Server URL:"
+#~ msgstr "&Сервернинг манзили:"
+
+#~ msgid "User&name:"
+#~ msgstr "&Фойдаланувчи:"
+
+#~ msgid "Passwor&d:"
+#~ msgstr "&Махфий сўз:"
+
+#~ msgid "Re&member password"
+#~ msgstr "&Махфий сўзни эслаб қолиш"
+
+#~ msgid "&Events"
+#~ msgstr "&Ҳодисалар"
+
+#~ msgid "To-&dos"
+#~ msgstr "&Вазифалар"
+
+#~ msgid "Cate&gories"
+#~ msgstr "Тур&кумлар"
+
+#, fuzzy
+#~ msgid "Locations"
+#~ msgstr "&Манзил:"
+
+#, fuzzy
+#~| msgid "&Description"
+#~ msgid "Include item descriptions in your search"
+#~ msgstr "&Таърифи"
+
+#~ msgid "Desc&riptions"
+#~ msgstr "Таъри&флар"
+
+#~ msgid "Su&mmaries"
+#~ msgstr "Ҳисо&ботлар"
+
+#, fuzzy
+#~ msgid "Attendees"
+#~ msgstr "&Қатнашувчилар"
+
+#, fuzzy
+#~| msgid "Sets the Title of this event or to-do."
+#~ msgid "Include items with a starting date on or after this date"
+#~ msgstr "Ушбу ҳодиса ёки вазифа сарлавҳасини мослаш."
+
+#, fuzzy
+#~| msgid "Sets the Title of this event or to-do."
+#~ msgid "Include items with ending date on or before this date"
+#~ msgstr "Ушбу ҳодиса ёки вазифа сарлавҳасини мослаш."
+
+#, fuzzy
+#~ msgid ""
+#~ "Check this box to include To-dos without a due date in the search results."
+#~ msgstr "Фақат танланганни кўрсатиш"
+
+#, fuzzy
+#~ msgctxt "Collection: name collectionId"
+#~ msgid "Collection: %1(%2)"
+#~ msgstr "&Манзил:"
+
+#~ msgid "Person: %1"
+#~ msgstr "Киши: %1"
+
+#, fuzzy
+#~| msgid "KMail"
+#~ msgid "Mail: %1"
+#~ msgstr "KMail"
+
+#, fuzzy
+#~| msgid "Organizer: %1"
+#~ msgid "Organization Unit: %1"
+#~ msgstr "Ташкил этувчи: %1"
+
+#, fuzzy
+#~| msgid "Delete To-do"
+#~ msgid "Free/Busy calendar from %1"
+#~ msgstr "Вазифани ўчириш"
+
+#, fuzzy
+#~| msgid "Day"
+#~ msgid "Day"
+#~ msgstr "Кун"
+
+#, fuzzy
+#~| msgid "Week"
+#~ msgid "Week"
+#~ msgstr "Ҳафта"
+
+#, fuzzy
+#~| msgid "Month"
+#~ msgid "Month"
+#~ msgstr "Ой"
+
+#, fuzzy
+#~ msgid "Agenda"
+#~ msgstr "Ҳодисани кўрувчи"
+
+#, fuzzy
+#~ msgid "Agenda %1"
+#~ msgstr "Ҳодисани кўрувчи"
+
+#, fuzzy
+#~| msgid "&Title:"
+#~ msgid "Title"
+#~ msgstr "Са&рлавҳа:"
+
+#, fuzzy
+#~| msgid "New Calendar"
+#~ msgid "Selected Calendars"
+#~ msgstr "Янги календар"
+
+#, fuzzy
+#~| msgid "Calendar"
+#~ msgid "Calendar's custom icon"
+#~ msgstr "Календар"
+
+#, fuzzy
+#~| msgid "To-do:"
+#~ msgid "To-do"
+#~ msgstr "Вазифа:"
+
+#, fuzzy
+#~| msgid "New &Journal..."
+#~ msgid "Journal"
+#~ msgstr "Янги &кундалик"
+
+#, fuzzy
+#~| msgid "Resources"
+#~ msgid "Recurring"
+#~ msgstr "Манбалар"
+
+#, fuzzy
+#~| msgid "read-only"
+#~ msgid "Read Only"
+#~ msgstr "фақат ўқишга"
+
+#, fuzzy
+#~| msgid "Ascending"
+#~ msgid "Attending"
+#~ msgstr "Кўпайиш бўйича"
+
+#, fuzzy
+#~| msgid "KOrganizer"
+#~ msgid "Organizer"
+#~ msgstr "KOrganizer"
+
+#~ msgid "Select a month"
+#~ msgstr "Ойни танлаш"
+
+#, fuzzy
+#~| msgid "Select a month"
+#~ msgid "Select a year"
+#~ msgstr "Ойни танлаш"
+
+#, fuzzy
+#~| msgid "*.vcs|vCalendars"
+#~ msgid "*.ics|iCalendars"
+#~ msgstr "*.vcs|vCalendar файллар"
+
+#~ msgid "*.vcs|vCalendars"
+#~ msgstr "*.vcs|vCalendar файллар"
+
+#, fuzzy
+#~| msgid "Other Options"
+#~ msgid "KOrgPlugins"
+#~ msgstr "Бошқа параметрлар"
+
+#, fuzzy
+#~| msgid "Import Calendar"
+#~ msgid "Import Calendar/Event"
+#~ msgstr "Календарни импорт қилиш"
+
+#, fuzzy
+#~| msgid "Add as new calendar"
+#~ msgid "&Add as new calendar..."
+#~ msgstr "Янги календар сифатида қўшиш"
+
+#, fuzzy
+#~| msgid "Add as new calendar"
+#~ msgid "&Add as new calendar"
+#~ msgstr "Янги календар сифатида қўшиш"
+
+#~ msgid "*.vcs *.ics|Calendar Files"
+#~ msgstr "*.vcs *.ics|Календар файллар"
+
+#, fuzzy
+#~| msgid "New Calendar"
+#~ msgid "Select path for new calendar"
+#~ msgstr "Янги календар"
+
+#, fuzzy
+#~| msgid "Add..."
+#~ msgid "A&dd..."
+#~ msgstr "Қўшиш"
+
+#, fuzzy
+#~| msgid "&Edit..."
+#~ msgid "&Modify..."
+#~ msgstr "&Таҳрирлаш"
+
+#, fuzzy
+#~ msgid "R&emove"
+#~ msgstr "Тутган ўрин"
+
+#, fuzzy
+#~| msgid "Could not load calendar '%1'."
+#~ msgid "Do you want to remove account '%1'?"
+#~ msgstr "'%1' календарини юклаб бўлмади."
+
+#, fuzzy
+#~| msgid "Attach&ments"
+#~ msgid "Remove account?"
+#~ msgstr "&Иловалар"
+
+#~ msgid "Select Addresses"
+#~ msgstr "Манзилларни танлаш"
+
+#~ msgid "(EmptyName)"
+#~ msgstr "(Бўш ном)"
+
+#, fuzzy
+#~| msgid "Click to add a new to-do"
+#~ msgid "Add a new recipient"
+#~ msgstr "Янги вазифа қўшиш учун босинг"
+
+#, fuzzy
+#~| msgid "Select Addressee..."
+#~ msgid "&Select..."
+#~ msgstr "Олувчини танлаш"
+
+#, fuzzy
+#~| msgid "Name:"
+#~ msgctxt "recipient name"
+#~ msgid "Name:"
+#~ msgstr "Номи:"
+
+#, fuzzy
+#~| msgid "Email:"
+#~ msgctxt "recipient email"
+#~ msgid "Email:"
+#~ msgstr "Электрон почта:"
+
+#, fuzzy
+#~| msgid "Additional email address:"
+#~ msgid "The recipient's email address"
+#~ msgstr "Қўшимча электрон почта:"
+
+#, fuzzy
+#~| msgid "Delete &Future"
+#~ msgid "Also &Future Items"
+#~ msgstr "&Келажакдагини ўчириш"
+
+#, fuzzy
+#~| msgid "KOrganizer Reminder Daemon"
+#~ msgid "KOrganizer Theming Stub"
+#~ msgstr "KOrganizer эсга солиш демони"
+
+#, fuzzy
+#~| msgid "Other Options"
+#~ msgctxt "@title:group"
+#~ msgid "Print Plugins"
+#~ msgstr "Бошқа параметрлар"
+
+#~ msgid "Date && Time Range"
+#~ msgstr "Сана ва вақт оралиғи"
+
+#~ msgid "&Start date:"
+#~ msgstr "&Бошлаш куни:"
+
+#~ msgid "&End date:"
+#~ msgstr "&Тугаш куни:"
+
+#~ msgid "&To-dos"
+#~ msgstr "&Вазифалар"
+
+#, fuzzy
+#~| msgid "Print to-&dos"
+#~ msgid "Print Item list"
+#~ msgstr "Вазифаларни &босиб чиқариш"
+
+#, fuzzy
+#~ msgid "Print &journal"
+#~ msgstr "Кундаликни босиб чиқариш"
+
+#, fuzzy
+#~ msgid "Print What's Next"
+#~ msgstr "Навбатда &нима"
+
+#, fuzzy
+#~| msgid "Other Options"
+#~ msgid "Yearly Print Options"
+#~ msgstr "Бошқа параметрлар"
+
+#, fuzzy
+#~ msgid "Print &year:"
+#~ msgstr "Босиб чиқариш услуби"
+
+#, fuzzy
+#~ msgid "Time Boxes"
+#~ msgstr "Вақт зонаси:"
+
+#, fuzzy
+#~ msgctxt ""
+#~ "date from -\n"
+#~ "to"
+#~ msgid ""
+#~ "%1 -\n"
+#~ "%2"
+#~ msgstr "%1 %2"
+
+#, fuzzy
+#~ msgid "Print &year"
+#~ msgstr "Босиб чиқариш услуби"
+
+#~ msgid "Start &time:"
+#~ msgstr "Бошлаш &вақти:"
+
+#~ msgid "End ti&me:"
+#~ msgstr "Ту&гаш вақти:"
+
+#, fuzzy
+#~ msgid "Print Layout"
+#~ msgstr "Олдинги ой"
+
+#, fuzzy
+#~| msgid "&Description"
+#~ msgid "Include &descriptions"
+#~ msgstr "&Таърифи"
+
+#, fuzzy
+#~| msgid "&Description"
+#~ msgid "Print item descriptions"
+#~ msgstr "&Таърифи"
+
+#, fuzzy
+#~| msgid "General"
+#~ msgctxt "@title general print settings"
+#~ msgid "General"
+#~ msgstr "Умумий"
+
+#, fuzzy
+#~| msgid "Other Options"
+#~ msgid "Show note &lines"
+#~ msgstr "Бошқа параметрлар"
+
+#, fuzzy
+#~ msgid "Print &Footer"
+#~ msgstr "Босиб чиқариш услуби"
+
+#~ msgid "&Use colors"
+#~ msgstr "&Ранглардан фойдаланиш"
+
+#, fuzzy
+#~ msgid "Start date: "
+#~ msgstr "Бошлаш куни:"
+
+#, fuzzy
+#~ msgid "End date: "
+#~ msgstr "Тугаш куни:"
+
+#~ msgid "Duration: "
+#~ msgstr "Давом этиши: "
+
+#, fuzzy
+#~ msgid "1 hour "
+#~ msgid_plural "%1 hours "
+#~ msgstr[0] "1 соат"
+
+#, fuzzy
+#~ msgid "1 minute "
+#~ msgid_plural "%1 minutes "
+#~ msgstr[0] "1 дақиқа"
+
+#, fuzzy
+#~ msgid "No end date"
+#~ msgstr "Тугаш куни:"
+
+#, fuzzy
+#~ msgid "Due date: "
+#~ msgstr "Сана ва вақт"
+
+#, fuzzy
+#~ msgid "No due date"
+#~ msgstr "Сана ва вақт"
+
+#, fuzzy
+#~| msgid "Accept"
+#~ msgctxt "except for listed dates"
+#~ msgid " except"
+#~ msgstr "Қабул қилиш"
+
+#, fuzzy
+#~ msgid "Repeats: "
+#~ msgstr "Қайтариш"
+
+#, fuzzy
+#~ msgid "Reminder: "
+#~ msgid_plural "%1 reminders: "
+#~ msgstr[0] "1 дақиқа"
+
+#, fuzzy
+#~ msgid "1 hour"
+#~ msgid_plural "%1 hours"
+#~ msgstr[0] "1 соат"
+
+#, fuzzy
+#~ msgid "Organizer: "
+#~ msgstr "Ташкил этувчи: %1"
+
+#, fuzzy
+#~ msgid "Location: "
+#~ msgstr "&Манзил:"
+
+#, fuzzy
+#~| msgid "No filter"
+#~ msgid "No Subitems"
+#~ msgstr "Филтер йўқ"
+
+#, fuzzy
+#~| msgid "(None)"
+#~ msgctxt "no status"
+#~ msgid "none"
+#~ msgstr "(Йўқ)"
+
+#, fuzzy
+#~| msgid "Unknown"
+#~ msgctxt "unknown status"
+#~ msgid "unknown"
+#~ msgstr "Номаълум"
+
+#, fuzzy
+#~ msgctxt "subitem start date"
+#~ msgid "Start Date: %1\n"
+#~ msgstr "Бошлаш куни:"
+
+#, fuzzy
+#~| msgid "Start Time"
+#~ msgctxt "subitem start time"
+#~ msgid "Start Time: %1\n"
+#~ msgstr "Бошлаш вақти"
+
+#, fuzzy
+#~ msgctxt "subitem due date"
+#~ msgid "Due Date: %1\n"
+#~ msgstr "Сана ва вақт"
+
+#, fuzzy
+#~ msgctxt "subitem due time"
+#~ msgid "Due Time: %1\n"
+#~ msgstr "Вақт зонаси:"
+
+#, fuzzy
+#~| msgctxt "short_weekday date (e.g. Mon 13)"
+#~| msgid "%1 %2"
+#~ msgctxt "subitem counter"
+#~ msgid "%1: "
+#~ msgstr "%1 %2"
+
+#, fuzzy
+#~ msgctxt "subitem Status: statusString"
+#~ msgid "Status: %1\n"
+#~ msgstr "Боши: %1"
+
+#, fuzzy
+#~ msgctxt "subitem Secrecy: secrecyString"
+#~ msgid "Secrecy: %1\n"
+#~ msgstr "Боши: %1"
+
+#, fuzzy
+#~| msgid "Attach&ments"
+#~ msgid "No Attachments"
+#~ msgstr "&Иловалар"
+
+#, fuzzy
+#~ msgid "1 Attachment:"
+#~ msgid_plural "%1 Attachments:"
+#~ msgstr[0] "&Иловалар"
+
+#, fuzzy
+#~ msgid "No Attendees"
+#~ msgstr "&Қатнашувчилар"
+
+#, fuzzy
+#~ msgid "1 Attendee:"
+#~ msgid_plural "%1 Attendees:"
+#~ msgstr[0] "1 дақиқа"
+
+#, fuzzy
+#~ msgid "Status: %1"
+#~ msgstr "Боши: %1"
+
+#, fuzzy
+#~ msgid "Secrecy: %1"
+#~ msgstr "Боши: %1"
+
+#, fuzzy
+#~ msgid "Categories: "
+#~ msgstr "Туркумлар"
+
+#, fuzzy
+#~ msgctxt ""
+#~ "date from-\n"
+#~ "to"
+#~ msgid ""
+#~ "%1 -\n"
+#~ "%2"
+#~ msgstr "%1 %2"
+
+#, fuzzy
+#~| msgid "Events"
+#~ msgid "Today's Events"
+#~ msgstr "Ҳодисалар"
+
+#, fuzzy
+#~| msgctxt "short_weekday date (e.g. Mon 13)"
+#~| msgid "%1 %2"
+#~ msgctxt "summary, location"
+#~ msgid "%1, %2"
+#~ msgstr "%1 %2"
+
+#, fuzzy
+#~| msgid "&Title:"
+#~ msgctxt "@option sort by title"
+#~ msgid "Title"
+#~ msgstr "Са&рлавҳа:"
+
+#, fuzzy
+#~| msgid "Start Date"
+#~ msgctxt "@option sort by start date/time"
+#~ msgid "Start Date"
+#~ msgstr "Бошлаш куни"
+
+#, fuzzy
+#~ msgctxt "@option sort by due date/time"
+#~ msgid "Due Date"
+#~ msgstr "Сана ва вақт"
+
+#, fuzzy
+#~| msgid "Priority"
+#~ msgctxt "@option sort by priority"
+#~ msgid "Priority"
+#~ msgstr "Муҳимлик даражаси"
+
+#, fuzzy
+#~ msgctxt "@option sort by percent completed"
+#~ msgid "Percent Complete"
+#~ msgstr "Бажарилган"
+
+#, fuzzy
+#~| msgid "Ascending"
+#~ msgctxt "@option sort in increasing order"
+#~ msgid "Ascending"
+#~ msgstr "Кўпайиш бўйича"
+
+#, fuzzy
+#~| msgid "Descending"
+#~ msgctxt "@option sort in descreasing order"
+#~ msgid "Descending"
+#~ msgstr "Камайиш бўйича"
+
+#~ msgid "To-do list"
+#~ msgstr "Вазифалар рўйхати"
+
+#~ msgid "Priority"
+#~ msgstr "Муҳимлик даражаси"
+
+#, fuzzy
+#~| msgid "&Title:"
+#~ msgctxt "@label to-do summary"
+#~ msgid "Title"
+#~ msgstr "Са&рлавҳа:"
+
+#, fuzzy
+#~| msgid "Complete"
+#~ msgctxt "@label to-do percentage complete"
+#~ msgid "Complete"
+#~ msgstr "Бажарилган"
+
+#~ msgid "Print mont&h"
+#~ msgstr "&Ойни босиб чиқариш"
+
+#~ msgid "Print to-&dos"
+#~ msgstr "Вазифаларни &босиб чиқариш"
+
+#, fuzzy
+#~ msgctxt "@title:window"
+#~ msgid "Printing error"
+#~ msgstr "Босиб чиқариш услуби"
+
+#, fuzzy
+#~ msgctxt "@title:window"
+#~ msgid "Print"
+#~ msgstr "Босиб чиқариш услуби"
+
+#, fuzzy
+#~| msgid "Print Style"
+#~ msgctxt "@title:group"
+#~ msgid "Print Style"
+#~ msgstr "Босиб чиқариш услуби"
+
+#, fuzzy
+#~| msgid "Start &time:"
+#~ msgctxt "@info:tooltip"
+#~ msgid "Set the print orientation"
+#~ msgstr "Бошлаш &вақти:"
+
+#, fuzzy
+#~ msgctxt "@item:inlistbox"
+#~ msgid "Portrait"
+#~ msgstr "Муҳимлик даражаси"
+
+#, fuzzy
+#~| msgid "Select Cate&gories..."
+#~ msgctxt "@info:tooltip"
+#~ msgid "Select the type of print"
+#~ msgstr "Туркумларни &танлаш"
+
+#, fuzzy
+#~| msgid "&Preview"
+#~ msgctxt "@action:button"
+#~ msgid "&Preview"
+#~ msgstr "Кўриб &чиқиш"
+
+#, fuzzy
+#~ msgid "&Attendees"
+#~ msgstr "&Қатнашувчилар"
+
+#, fuzzy
+#~ msgid "Print the attendees"
+#~ msgstr "1 дақиқа"
+
+#, fuzzy
+#~| msgid "No filter"
+#~ msgid "&Notes, subitems"
+#~ msgstr "Филтер йўқ"
+
+#, fuzzy
+#~| msgid "Print to-&dos"
+#~ msgid "Print the notes"
+#~ msgstr "Вазифаларни &босиб чиқариш"
+
+#~ msgid "Attach&ments"
+#~ msgstr "&Иловалар"
+
+#, fuzzy
+#~ msgid "Print the attachments"
+#~ msgstr "Иловани қўшиш"
+
+#~ msgid "&Start month:"
+#~ msgstr "&Бошлаш ойи:"
+
+#~ msgid "&End month:"
+#~ msgstr "Тугаш &ойи:"
+
+#, fuzzy
+#~| msgid "Hide &recurring events and to-dos"
+#~ msgid "Include weekl&y recurring to-dos and events"
+#~ msgstr "Қай&тариладиган ҳодиса ва вазифаларни бекитиш"
+
+#, fuzzy
+#~ msgctxt "starttime - endtime summary"
+#~ msgid "%1-%2 %3"
+#~ msgstr "%1 %2"
+
+#, fuzzy
+#~ msgctxt "to-do summary (Due: datetime)"
+#~ msgid "%1 (Due: %2)"
+#~ msgstr "Тугаш куни: %1"
+
+#, fuzzy
+#~ msgctxt "to-do summary (Due: date)"
+#~ msgid "%1 (Due: %2)"
+#~ msgstr "Тугаш куни: %1"
+
+#~ msgid "To-do: %1"
+#~ msgstr "Вазифа: %1"
+
+#, fuzzy
+#~ msgid "Name for this to-do list"
+#~ msgstr "Ишга туширилмасин"
+
+#~ msgid "To-dos to Print"
+#~ msgstr "Босиб чиқариш учун вазифалар"
+
+#~ msgid "&Priority"
+#~ msgstr "&Муҳимлик даражаси"
+
+#~ msgid "Sort field:"
+#~ msgstr "Саралаш майдони:"
+
+#~ msgid "Sort direction:"
+#~ msgstr "Саралаш йўналиши:"
+
+#, fuzzy
+#~ msgid "Strike &out completed to-do summaries"
+#~ msgstr "%1 да ба&жарилган"
+
+#, fuzzy
+#~| msgid "Sets the Title of this event or to-do."
+#~ msgid "Starting date for the print"
+#~ msgstr "Ушбу ҳодиса ёки вазифа сарлавҳасини мослаш."
+
+#, fuzzy
+#~| msgid "Reminder"
+#~ msgctxt "@title:window"
+#~ msgid "Reminders"
+#~ msgstr "Эсга солиш"
+
+#, fuzzy
+#~ msgctxt "@action:button"
+#~ msgid "Dismiss Reminder"
+#~ msgstr "Эсга солиш"
+
+#, fuzzy
+#~ msgctxt "@action:button"
+#~ msgid "Dismiss All"
+#~ msgstr "Эсга солиш"
+
+#, fuzzy
+#~| msgid "Edit..."
+#~ msgctxt "@action:button"
+#~ msgid "Edit..."
+#~ msgstr "Таҳрирлаш"
+
+#, fuzzy
+#~| msgid "&Title:"
+#~ msgctxt "@title:column reminder title"
+#~ msgid "Title"
+#~ msgstr "Са&рлавҳа:"
+
+#, fuzzy
+#~| msgid "Date && Time"
+#~ msgctxt "@title:column happens at date/time"
+#~ msgid "Date Time"
+#~ msgstr "Сана ва вақт"
+
+#, fuzzy
+#~ msgctxt "@title:column trigger date/time"
+#~ msgid "Trigger Time"
+#~ msgstr "Сана ва вақт"
+
+#, fuzzy
+#~| msgid "Enter the reminder time here."
+#~ msgctxt "@info:tooltip"
+#~ msgid "The date/time the reminder was triggered"
+#~ msgstr "Эсга солиш вақтини шу ерга киритинг."
+
+#, fuzzy
+#~| msgid "minute(s)"
+#~ msgctxt "@item:inlistbox suspend in terms of minutes"
+#~ msgid "minute(s)"
+#~ msgstr "дақиқа"
+
+#, fuzzy
+#~| msgid "hour(s)"
+#~ msgctxt "@item:inlistbox suspend in terms of hours"
+#~ msgid "hour(s)"
+#~ msgstr "соат"
+
+#, fuzzy
+#~| msgid "day(s)"
+#~ msgctxt "@item:inlistbox suspend in terms of days"
+#~ msgid "day(s)"
+#~ msgstr "кун"
+
+#, fuzzy
+#~| msgid "week(s)"
+#~ msgctxt "@item:inlistbox suspend in terms of weeks"
+#~ msgid "week(s)"
+#~ msgstr "ҳафта(лар)"
+
+#, fuzzy
+#~| msgid "Edit..."
+#~ msgctxt "@label an elipsis"
+#~ msgid "..."
+#~ msgstr "Таҳрирлаш"
+
+#, fuzzy
+#~| msgid "Reminder"
+#~ msgctxt "@title"
+#~ msgid "Reminder"
+#~ msgstr "Эсга солиш"
+
+#, fuzzy
+#~ msgctxt "@title"
+#~ msgid "Reminder: %1"
+#~ msgstr "1 дақиқа"
+
+#, fuzzy
+#~| msgid "Could not start KOrganizer."
+#~ msgctxt "@info"
+#~ msgid "Could not start KOrganizer so editing is not possible."
+#~ msgstr "KOrganizer'ни ишга тушириб бўлмади."
+
+#, fuzzy
+#~| msgid "KOrganizer Reminder Daemon"
+#~ msgctxt "@title:window"
+#~ msgid "KOrganizer Reminder Daemon"
+#~ msgstr "KOrganizer эсга солиш демони"
+
+#, fuzzy
+#~| msgid "Edit Reminders"
+#~ msgctxt "@action:inmenu"
+#~ msgid "Suspend All Reminders"
+#~ msgstr "Эсга солишни таҳрирлаш"
+
+#, fuzzy
+#~ msgctxt "@action:inmenu"
+#~ msgid "Dismiss All Reminders"
+#~ msgstr "Эсга солиш"
+
+#, fuzzy
+#~| msgid "Edit Reminders"
+#~ msgctxt "@action:inmenu"
+#~ msgid "Enable Reminders"
+#~ msgstr "Эсга солишни таҳрирлаш"
+
+#, fuzzy
+#~| msgid "KOrganizer Reminder Daemon"
+#~ msgctxt "@action:inmenu"
+#~ msgid "Start Reminder Daemon at Login"
+#~ msgstr "KOrganizer эсга солиш демони"
+
+#, fuzzy
+#~ msgctxt "@info:status"
+#~ msgid "There is 1 active reminder."
+#~ msgid_plural "There are %1 active reminders."
+#~ msgstr[0] "Эсга солиш"
+
+#, fuzzy
+#~ msgctxt "@info:status"
+#~ msgid "No active reminders."
+#~ msgstr "Эсга солиш"
+
+#, fuzzy
+#~| msgid "KOrganizer Reminder Daemon"
+#~ msgctxt "@title:window"
+#~ msgid "Close KOrganizer Reminder Daemon"
+#~ msgstr "KOrganizer эсга солиш демони"
+
+#, fuzzy
+#~| msgid "Start"
+#~ msgctxt "@action:button start the reminder daemon"
+#~ msgid "Start"
+#~ msgstr "Ишга тушириш"
+
+#, fuzzy
+#~| msgid "Do Not Start"
+#~ msgctxt "@action:button do not start the reminder daemon"
+#~ msgid "Do Not Start"
+#~ msgstr "Ишга туширилмасин"
+
+#~ msgid "KOrganizer Reminder Daemon"
+#~ msgstr "KOrganizer эсга солиш демони"
+
+#, fuzzy
+#~| msgid "&Free/Busy"
+#~ msgid "Free Busy Object"
+#~ msgstr "&Бўш/банд"
+
+#, fuzzy
+#~| msgid "Send Messages"
+#~ msgid "Free Busy Message"
+#~ msgstr "Хабарларни жўнатиш"
+
+#~ msgid "Delete To-do"
+#~ msgstr "Вазифани ўчириш"
+
+#~ msgid "New calendar '%1'."
+#~ msgstr "Янги календар '%1'."
+
+#~ msgid "Could not load calendar '%1'."
+#~ msgstr "'%1' календарини юклаб бўлмади."
+
+#~ msgid "Filter Applied"
+#~ msgstr "Филтер қўлланди"
+
+#, fuzzy
+#~| msgid "Delete Only This"
+#~ msgid "Cut Only This"
+#~ msgstr "Фақат шуни ўчириш"
+
+#, fuzzy
+#~| msgid "Delete Only This"
+#~ msgid "Copy Only This"
+#~ msgstr "Фақат шуни ўчириш"
+
+#, fuzzy
+#~| msgid "&Copy To"
+#~ msgid "Copy All"
+#~ msgstr "&Нусха олиш"
+
+#~ msgid "Delete %1"
+#~ msgstr "%1'ни ўчириш"
+
+#~ msgid "Add %1"
+#~ msgstr "%1'ни қўшиш"
+
+#~ msgid "Edit %1"
+#~ msgstr "%1'ни таҳрирлаш"
+
+#, fuzzy
+#~| msgid "Additional email addresses:"
+#~ msgctxt "@label"
+#~ msgid "Additional email addresses:"
+#~ msgstr "Қўшимча электрон почталар:"
+
+#, fuzzy
+#~| msgid "Additional email address:"
+#~ msgctxt "@label"
+#~ msgid "Additional email address:"
+#~ msgstr "Қўшимча электрон почта:"
+
+#, fuzzy
+#~| msgid "New"
+#~ msgctxt "@action:button add a new email address"
+#~ msgid "New"
+#~ msgstr "Янги"
+
+#, fuzzy
+#~ msgctxt "@action:button"
+#~ msgid "Remove"
+#~ msgstr "Тутган ўрин"
+
+#, fuzzy
+#~| msgid "(EmptyName)"
+#~ msgctxt "@label"
+#~ msgid "(EmptyEmail)"
+#~ msgstr "(Бўш ном)"
+
+#~ msgid "Edit this journal entry"
+#~ msgstr "Ушбу кундалик ёзувини таҳрирлаш"
+
+#~ msgid "Delete this journal entry"
+#~ msgstr "Ушбу кундалик ёзувини ўчириш"
+
+#, fuzzy
+#~ msgid "&Print"
+#~ msgstr "Босиб чиқариш услуби"
+
+#, fuzzy
+#~ msgid "Print this journal entry"
+#~ msgstr "Ушбу кундалик ёзувини таҳрирлаш"
+
+#, fuzzy
+#~ msgid "Opens a print dialog for this journal entry"
+#~ msgstr "Ушбу кундаликнинг номини кўрсатиш."
+
+#, fuzzy
+#~ msgid "No category"
+#~ msgstr "Туркумлар"
+
+#, fuzzy
+#~ msgctxt "number of hours spent"
+#~ msgid "%1 hour"
+#~ msgid_plural "%1 hours"
+#~ msgstr[0] "1 соат"
+
+#, fuzzy
+#~| msgid "Redo (%1)"
+#~ msgctxt "percent of hours spent"
+#~ msgid " (%1%)"
+#~ msgstr "Қайтариш (%1)"
+
+#, fuzzy
+#~ msgctxt "@action:inmenu Unspecified priority"
+#~ msgid "unspecified"
+#~ msgstr "Таъри&флар"
+
+#, fuzzy
+#~| msgid "1 (highest)"
+#~ msgctxt "@action:inmenu highest priority"
+#~ msgid "1 (highest)"
+#~ msgstr "1 (энг юқори)"
+
+#, fuzzy
+#~| msgid "2"
+#~ msgctxt "@action:inmenu"
+#~ msgid "2"
+#~ msgstr "2"
+
+#, fuzzy
+#~| msgid "3"
+#~ msgctxt "@action:inmenu"
+#~ msgid "3"
+#~ msgstr "3"
+
+#, fuzzy
+#~| msgid "4"
+#~ msgctxt "@action:inmenu"
+#~ msgid "4"
+#~ msgstr "4"
+
+#, fuzzy
+#~| msgid "9 (lowest)"
+#~ msgctxt "@action:inmenu lowest priority"
+#~ msgid "9 (lowest)"
+#~ msgstr "9 (энг паст)"
+
+#, fuzzy
+#~ msgctxt "delimiter for joining category names"
+#~ msgid ","
+#~ msgstr ", "
+
+#~ msgid "Summary"
+#~ msgstr "Ҳисобот"
+
+#, fuzzy
+#~| msgid "Complete"
+#~ msgctxt "@title:column percent complete"
+#~ msgid "Complete"
+#~ msgstr "Бажарилган"
+
+#, fuzzy
+#~ msgid "Due Date/Time"
+#~ msgstr "Сана ва вақт"
+
+#, fuzzy
+#~| msgid "&Description"
+#~ msgid "Description"
+#~ msgstr "&Таърифи"
+
+#, fuzzy
+#~ msgctxt "@info:tooltip"
+#~ msgid "Display to-do list in a full window"
+#~ msgstr "Фақат танланганни кўрсатиш"
+
+#, fuzzy
+#~| msgid "&Show"
+#~ msgctxt "@action:inmenu show the to-do"
+#~ msgid "&Show"
+#~ msgstr "&Кўрсатиш"
+
+#, fuzzy
+#~| msgid "&Edit..."
+#~ msgctxt "@action:inmenu edit the to-do"
+#~ msgid "&Edit..."
+#~ msgstr "&Таҳрирлаш"
+
+#, fuzzy
+#~ msgctxt "@action:inmenu print the to-do"
+#~ msgid "&Print..."
+#~ msgstr "&Таҳрирлаш"
+
+#, fuzzy
+#~ msgctxt "@action:inmenu print preview the to-do"
+#~ msgid "Print Previe&w..."
+#~ msgstr "&Таҳрирлаш"
+
+#, fuzzy
+#~ msgctxt "@action:inmenu delete the to-do"
+#~ msgid "&Delete"
+#~ msgstr "%1'ни ўчириш"
+
+#, fuzzy
+#~| msgid "New &To-do..."
+#~ msgctxt "@action:inmenu create a new to-do"
+#~ msgid "New &To-do..."
+#~ msgstr "Янги &вазифа..."
+
+#, fuzzy
+#~| msgid "New Su&b-to-do..."
+#~ msgctxt "@action:inmenu create a new sub-to-do"
+#~ msgid "New Su&b-to-do..."
+#~ msgstr "Янги туб &вазифа..."
+
+#, fuzzy
+#~| msgid "&Copy To"
+#~ msgctxt "@title:menu"
+#~ msgid "&Copy To"
+#~ msgstr "&Нусха олиш"
+
+#, fuzzy
+#~| msgid "&Move To"
+#~ msgctxt "@title:menu"
+#~ msgid "&Move To"
+#~ msgstr "&Кўчириш"
+
+#, fuzzy
+#~ msgctxt "@action:inmenu unspecified priority"
+#~ msgid "unspecified"
+#~ msgstr "Таъри&флар"
+
+#, fuzzy
+#~| msgid "2"
+#~ msgctxt "@action:inmenu priority value=2"
+#~ msgid "2"
+#~ msgstr "2"
+
+#, fuzzy
+#~| msgid "3"
+#~ msgctxt "@action:inmenu priority value=3"
+#~ msgid "3"
+#~ msgstr "3"
+
+#, fuzzy
+#~| msgid "4"
+#~ msgctxt "@action:inmenu priority value=4"
+#~ msgid "4"
+#~ msgstr "4"
+
+#~ msgid "Click to add a new to-do"
+#~ msgstr "Янги вазифа қўшиш учун босинг"
+
+#, fuzzy
+#~| msgid "Su&mmaries"
+#~ msgctxt "@label in QuickSearchLine"
+#~ msgid "Search Summaries"
+#~ msgstr "Ҳисо&ботлар"
+
+#, fuzzy
+#~| msgid "Select Cate&gories..."
+#~ msgctxt "@info:tooltip"
+#~ msgid "Filter on these categories"
+#~ msgstr "Туркумларни &танлаш"
+
+#, fuzzy
+#~| msgid "Select Cate&gories..."
+#~ msgctxt "@item:inlistbox"
+#~ msgid "Select Categories"
+#~ msgstr "Туркумларни &танлаш"
+
+#, fuzzy
+#~ msgctxt "@item:intext delimiter for joining category names"
+#~ msgid ","
+#~ msgstr ", "
+
+#, fuzzy
+#~| msgid "Priority"
+#~ msgctxt "@item:inlistbox"
+#~ msgid "Select Priority"
+#~ msgstr "Муҳимлик даражаси"
+
+#, fuzzy
+#~ msgctxt "@action:inmenu priority is unspecified"
+#~ msgid "unspecified"
+#~ msgstr "Таъри&флар"
+
+#, fuzzy
+#~| msgid "1 (highest)"
+#~ msgctxt "@action:inmenu highest priority"
+#~ msgid "%1 (highest)"
+#~ msgstr "1 (энг юқори)"
+
+#, fuzzy
+#~| msgid "9 (lowest)"
+#~ msgctxt "@action:inmenu lowest priority"
+#~ msgid "%1 (lowest)"
+#~ msgstr "9 (энг паст)"
+
+#, fuzzy
+#~| msgctxt "short_weekday date (e.g. Mon 13)"
+#~| msgid "%1 %2"
+#~ msgctxt "@action:inmenu"
+#~ msgid "%1"
+#~ msgstr "%1 %2"
+
+#, fuzzy
+#~ msgctxt "priority is unspecified"
+#~ msgid "unspecified"
+#~ msgstr "Таъри&флар"
+
+#, fuzzy
+#~| msgid "1 (highest)"
+#~ msgctxt "highest priority"
+#~ msgid "%1 (highest)"
+#~ msgstr "1 (энг юқори)"
+
+#, fuzzy
+#~| msgid "9 (lowest)"
+#~ msgctxt "lowest priority"
+#~ msgid "%1 (lowest)"
+#~ msgstr "9 (энг паст)"
+
+#~ msgid "What's Next?"
+#~ msgstr "Навбатда нима?"
+
+#~ msgid "Events:"
+#~ msgstr "Ҳодисалар:"
+
+#~ msgid "To-do:"
+#~ msgstr "Вазифа:"
+
+#, fuzzy
+#~ msgctxt "to-do due date"
+#~ msgid "  (Due: %1)"
+#~ msgstr "Тугаш куни: %1"
+
+#, fuzzy
+#~| msgid "Month View"
+#~ msgctxt "@option:check Checkbox to display todos not hierarchical"
+#~ msgid "Flat View"
+#~ msgstr "Ой кўриниши"
+
+#, fuzzy
+#~ msgid "Find Events - KOrganizer"
+#~ msgstr "KOrganizer'ни ишга тушириб бўлмади."
+
+#, fuzzy
+#~ msgctxt "@info:tooltip"
+#~ msgid "Fully collapse the to-do tree"
+#~ msgstr "1 дақиқа"
+
+#, fuzzy
+#~ msgctxt "unspecified priority"
+#~ msgid "unspecified"
+#~ msgstr "Таъри&флар"
+
+#, fuzzy
+#~| msgid "1 (highest)"
+#~ msgctxt "highest priority"
+#~ msgid "1 (highest)"
+#~ msgstr "1 (энг юқори)"
+
+#, fuzzy
+#~| msgid "9 (lowest)"
+#~ msgctxt "lowest priority"
+#~ msgid "9 (lowest)"
+#~ msgstr "9 (энг паст)"
+
+#, fuzzy
+#~ msgctxt "@label in QuickSearchLine"
+#~ msgid "Search"
+#~ msgstr "&Боши:"
+
+#~ msgid "&Description"
+#~ msgstr "&Таърифи"
+
+#~ msgid "Other Options"
+#~ msgstr "Бошқа параметрлар"
+
+#, fuzzy
+#~| msgid "Month View"
+#~ msgid "&Month View"
+#~ msgstr "Ой кўриниши"
+
+#, fuzzy
+#~| msgid "Categories"
+#~ msgid "Edit Categories"
+#~ msgstr "Туркумлар"
+
+#, fuzzy
+#~ msgid "New category entry"
+#~ msgstr "Туркумлар"
+
+#, fuzzy
+#~| msgid "Select Cate&gories..."
+#~ msgid "Add the entry to the category list"
+#~ msgstr "Туркумларни &танлаш"
+
+#, fuzzy
+#~| msgid "&Add"
+#~ msgid "A&dd"
+#~ msgstr "&Қўшиш"
+
+#, fuzzy
+#~| msgid "Sets the Title of this event or to-do."
+#~ msgid ""
+#~ "Click this button to insert the entry as a subcategory of the currently "
+#~ "selected category."
+#~ msgstr "Ушбу ҳодиса ёки вазифа сарлавҳасини мослаш."
+
+#, fuzzy
+#~ msgid "Add &Subcategory"
+#~ msgstr "Туркумлар"
+
+#, fuzzy
+#~| msgid "Sets the Title of this event or to-do."
+#~ msgid "Remove the selected category"
+#~ msgstr "Ушбу ҳодиса ёки вазифа сарлавҳасини мослаш."
+
+#, fuzzy
+#~| msgid "Sets the Title of this event or to-do."
+#~ msgid ""
+#~ "Click this button to remove the selected category from the category list."
+#~ msgstr "Ушбу ҳодиса ёки вазифа сарлавҳасини мослаш."
+
+#, fuzzy
+#~| msgid "Categories"
+#~ msgid "Category list"
+#~ msgstr "Туркумлар"
+
+#, fuzzy
+#~| msgid "Select Cate&gories..."
+#~ msgid "Default Category"
+#~ msgstr "Туркумларни &танлаш"
+
+#, fuzzy
+#~ msgid "New category"
+#~ msgstr "Туркумлар"
+
+#, fuzzy
+#~ msgid "New subcategory"
+#~ msgstr "Туркумлар"
+
+#, fuzzy
+#~| msgid "Default appointment time"
+#~ msgid "Default Email Attachment Method"
+#~ msgstr "Андоза учрашув вақти"
+
+#~ msgid "TestKabc"
+#~ msgstr "TestKabc"
+
+#, fuzzy
+#~ msgctxt "@title:window"
+#~ msgid "Archive/Delete Past Events and To-dos"
+#~ msgstr "Ҳодисани &ўчириш"
+
+#, fuzzy
+#~| msgid "&Archive"
+#~ msgctxt "@action:button"
+#~ msgid "&Archive"
+#~ msgstr "&Архивлаш"
+
+#, fuzzy
+#~| msgid "Day(s)"
+#~ msgctxt "@item:inlistbox expires in daily units"
+#~ msgid "Day(s)"
+#~ msgstr "Кун"
+
+#, fuzzy
+#~| msgid "Week(s)"
+#~ msgctxt "@item:inlistbox expiration in weekly units"
+#~ msgid "Week(s)"
+#~ msgstr "Ҳафта"
+
+#, fuzzy
+#~| msgid "Month(s)"
+#~ msgctxt "@item:inlistbox expiration in monthly units"
+#~ msgid "Month(s)"
+#~ msgstr "Ой"
+
+#, fuzzy
+#~| msgid "Archive &file:"
+#~ msgctxt "@label"
+#~ msgid "Archive &file:"
+#~ msgstr "Ар&хив файли:"
+
+#, fuzzy
+#~| msgid "*.ics|iCalendar Files"
+#~ msgctxt "@label filter for KUrlRequester"
+#~ msgid "*.ics|iCalendar Files"
+#~ msgstr "*.ics|iCalendar файллар"
+
+#, fuzzy
+#~| msgid "&Events"
+#~ msgctxt "@option:check"
+#~ msgid "&Events"
+#~ msgstr "&Ҳодисалар"
+
+#, fuzzy
+#~| msgid "&To-dos"
+#~ msgctxt "@option:check"
+#~ msgid "&To-dos"
+#~ msgstr "&Вазифалар"
+
+#~ msgid "In days"
+#~ msgstr "Кунларда"
+
+#~ msgid "In weeks"
+#~ msgstr "Ҳафталарда"
+
+#~ msgid "In months"
+#~ msgstr "Ойларда"
+
+#~ msgid "Archive events"
+#~ msgstr "Ҳодисаларни архивлаш"
+
+#~ msgid "Archive to-dos"
+#~ msgstr "Вазифаларни архивлаш"
+
+#~ msgid "There are no items before %1"
+#~ msgstr "%1'дан олдин ҳеч нарса йўқ"
+
+#~ msgid "Delete Old Items"
+#~ msgstr "Эски нарсаларни олиб ташлаш"
+
+#, fuzzy
+#~| msgid "Cannot write archive file %1."
+#~ msgid "Cannot write archive file %1. %2"
+#~ msgstr "%1 архив файлини ёзиб бўлмади."
+
+#, fuzzy
+#~| msgid "Cannot write archive file %1."
+#~ msgid "Cannot write archive. %1"
+#~ msgstr "%1 архив файлини ёзиб бўлмади."
+
+#~ msgid "Reminder"
+#~ msgstr "Эсга солиш"
+
+#, fuzzy
+#~| msgid "Start Date"
+#~ msgid "Start Date/Time"
+#~ msgstr "Бошлаш куни"
+
+#, fuzzy
+#~ msgid "End Date/Time"
+#~ msgstr "Сана ва вақт"
+
+#, fuzzy
+#~| msgctxt "short_weekday date (e.g. Mon 13)"
+#~| msgid "%1 %2"
+#~ msgid "%2 (1 year)"
+#~ msgid_plural "%2 (%1 years)"
+#~ msgstr[0] "%1 %2"
+
+#~ msgid "No item selected."
+#~ msgstr "Ҳеч нарса танланмаган."
+
+#, fuzzy
+#~| msgid "Go &Forward"
+#~ msgid "Forwarding"
+#~ msgstr "Олдин&га ўтиш"
+
+#, fuzzy
+#~ msgid "Unable to forward the item '%1'"
+#~ msgstr "'%1' намунани топиб бўлмади."
+
+#, fuzzy
+#~| msgid "Go &Forward"
+#~ msgid "Forwarding Error"
+#~ msgstr "Олдин&га ўтиш"
+
+#, fuzzy
+#~| msgid "Go &Forward"
+#~ msgid "Go forward one week"
+#~ msgstr "Олдин&га ўтиш"
+
+#~ msgid "All Day"
+#~ msgstr "Кун бўйи"
+
+#~ msgctxt "short_weekday date (e.g. Mon 13)"
+#~ msgid "%1 %2"
+#~ msgstr "%1 %2"
+
+#, fuzzy
+#~ msgid "Attendee added"
+#~ msgstr "Қатнашувчилар олиб ташланди"
+
+#, fuzzy
+#~ msgid "Timezone:"
+#~ msgstr "Вақт зонаси:"
+
+#, fuzzy
+#~| msgid "Edit Exceptions"
+#~ msgid "&Add Timezones..."
+#~ msgstr "Қоидадан ташқари ҳолатларни таҳрирлаш"
+
+#, fuzzy
+#~ msgid "&Remove Timezone %1"
+#~ msgstr "Вақт зонаси:"
+
+#, fuzzy
+#~ msgid "Timezone: %1"
+#~ msgstr "Вақт зонаси:"
+
+#, fuzzy
+#~ msgid "Timezone"
+#~ msgstr "Вақт зонаси:"
+
+#, fuzzy
+#~| msgid "&iCalendar..."
+#~ msgid "Add Calendar..."
+#~ msgstr "&iCalendar..."
+
+#, fuzzy
+#~ msgid "Reload"
+#~ msgstr "&Қайтадан юклаш"
+
+#, fuzzy
+#~ msgid "Properties..."
+#~ msgstr "&Таҳрирлаш"
+
+#, fuzzy
+#~| msgid "New Calendar"
+#~ msgid "New Calendar..."
+#~ msgstr "Янги календар"
+
+#~ msgid "Start Time"
+#~ msgstr "Бошлаш вақти"
+
+#~ msgid "End Date"
+#~ msgstr "Тугаш куни"
+
+#~ msgid "End Time"
+#~ msgstr "Тугаш вақти"
+
+#~ msgid "Locking Failed"
+#~ msgstr "Қулфлаш муваффақиятсиз тугади"
+
+#, fuzzy
+#~| msgid "Saving Calendar"
+#~ msgctxt "@title:group"
+#~ msgid "Saving Calendar"
+#~ msgstr "Календарни сақлаш"
+
+#, fuzzy
+#~| msgid "&General"
+#~ msgctxt "@title:tab general to-do settings"
+#~ msgid "&General"
+#~ msgstr "&Умумий"
+
+#~ msgid "Sets the title of this journal."
+#~ msgstr "Ушбу кундаликнинг номини кўрсатиш."
+
+#, fuzzy
+#~| msgid "T&itle:"
+#~ msgctxt "journal title"
+#~ msgid "T&itle:"
+#~ msgstr "С&арлавҳа:"
+
+#~ msgid "&Date:"
+#~ msgstr "Са&на:"
+
+#~ msgid "&Time: "
+#~ msgstr "&Вақт: "
+
+#~ msgid "Select Cate&gories..."
+#~ msgstr "Туркумларни &танлаш"
+
+#, fuzzy
+#~| msgid "Please select an appointment."
+#~ msgctxt "@info"
+#~ msgid "Please specify a journal title."
+#~ msgstr "Илтимос учрашувни танланг."
+
+#, fuzzy
+#~| msgid "General"
+#~ msgctxt "@title general journal settings"
+#~ msgid "General"
+#~ msgstr "Умумий"
+
+#, fuzzy
+#~| msgid "New &Journal..."
+#~ msgctxt "@title:window"
+#~ msgid "New Journal"
+#~ msgstr "Янги &кундалик"
+
+#, fuzzy
+#~| msgid "Attach&ments"
+#~ msgctxt "@label"
+#~ msgid "Attachment name"
+#~ msgstr "&Иловалар"
+
+#, fuzzy
+#~| msgid "Attach&ments"
+#~ msgctxt "@info:tooltip"
+#~ msgid "Give the attachment a name"
+#~ msgstr "&Иловалар"
+
+#, fuzzy
+#~ msgctxt "@label"
+#~ msgid "Type:"
+#~ msgstr "Тури"
+
+#, fuzzy
+#~| msgid "Unknown"
+#~ msgctxt "@label unknown mimetype"
+#~ msgid "Unknown"
+#~ msgstr "Номаълум"
+
+#, fuzzy
+#~ msgctxt "@option:check"
+#~ msgid "Store attachment inline"
+#~ msgstr "Иловани қўшиш"
+
+#, fuzzy
+#~ msgctxt "@info:tooltip"
+#~ msgid "Store the attachment file inside the calendar"
+#~ msgstr "Иловани қўшиш"
+
+#, fuzzy
+#~ msgctxt "@label"
+#~ msgid "Location:"
+#~ msgstr "&Манзил:"
+
+#, fuzzy
+#~ msgctxt "@label"
+#~ msgid "Attachments:"
+#~ msgstr "&Иловалар"
+
+#, fuzzy
+#~| msgid "Add Attachment"
+#~ msgctxt "@info:tooltip"
+#~ msgid "Add an attachment"
+#~ msgstr "Иловани қўшиш"
+
+#, fuzzy
+#~| msgid "Attach&ments"
+#~ msgctxt "@info:tooltip"
+#~ msgid "Remove the selected attachment"
+#~ msgstr "&Иловалар"
+
+#, fuzzy
+#~| msgid "Sets the Title of this event or to-do."
+#~ msgctxt "@info:whatsthis"
+#~ msgid ""
+#~ "Removes the attachment selected in the list above from this event or to-"
+#~ "do."
+#~ msgstr "Ушбу ҳодиса ёки вазифа сарлавҳасини мослаш."
+
+#, fuzzy
+#~ msgctxt "@action:inmenu remove the attachment"
+#~ msgid "&Remove"
+#~ msgstr "Тутган ўрин"
+
+#, fuzzy
+#~ msgctxt "@action:inmenu show a dialog used to edit the attachment"
+#~ msgid "&Properties..."
+#~ msgstr "&Таҳрирлаш"
+
+#, fuzzy
+#~ msgctxt "@action:inmenu"
+#~ msgid "&Link here"
+#~ msgstr "&Нусха олиш"
+
+#, fuzzy
+#~ msgctxt "@action:inmenu"
+#~ msgid "&Copy here"
+#~ msgstr "&Нусха олиш"
+
+#, fuzzy
+#~ msgctxt "@action:inmenu"
+#~ msgid "C&ancel"
+#~ msgstr "Ўз&гартириш"
+
+#, fuzzy
+#~| msgid "Add Attachment"
+#~ msgctxt "@title"
+#~ msgid "Add Attachment"
+#~ msgstr "Иловани қўшиш"
+
+#, fuzzy
+#~| msgid "Manage Templates"
+#~ msgctxt "@action:button"
+#~ msgid "Manage &Templates..."
+#~ msgstr "Намуналарни бошқариш"
+
+#, fuzzy
+#~| msgid "Calendar"
+#~ msgid "Calendar:"
+#~ msgstr "Календар"
+
+#, fuzzy
+#~| msgid "Edit %1"
+#~ msgctxt "@title:window"
+#~ msgid "Edit %1: %2"
+#~ msgstr "%1'ни таҳрирлаш"
+
+#, fuzzy
+#~| msgid "Delete Confirmation"
+#~ msgctxt "@title:window"
+#~ msgid "KOrganizer Confirmation"
+#~ msgstr "Ўчиришни тасдиқлаш"
+
+#, fuzzy
+#~| msgid "Atte&ndees"
+#~ msgctxt "@title:tab"
+#~ msgid "Atte&ndees"
+#~ msgstr "&Қатнашувчилар"
+
+#, fuzzy
+#~| msgid "Unable to find template '%1'."
+#~ msgctxt "@info"
+#~ msgid "Unable to find template '%1'."
+#~ msgstr "'%1' намунани топиб бўлмади."
+
+#, fuzzy
+#~| msgid "Error loading template file '%1'."
+#~ msgctxt "@info"
+#~ msgid "Error loading template file '%1'."
+#~ msgstr "'%1' намунани юклашда хато рўй берди."
+
+#, fuzzy
+#~| msgid "Click to add a new to-do"
+#~ msgctxt "@action:button"
+#~ msgid "Create to-do"
+#~ msgstr "Янги вазифа қўшиш учун босинг"
+
+#, fuzzy
+#~| msgid "Name"
+#~ msgctxt "@title:column attendee name"
+#~ msgid "Name"
+#~ msgstr "Номи"
+
+#, fuzzy
+#~| msgid "Email"
+#~ msgctxt "@title:column attendee email"
+#~ msgid "Email"
+#~ msgstr "Электрон почта"
+
+#, fuzzy
+#~| msgid "Role"
+#~ msgctxt "@title:column attendee role"
+#~ msgid "Role"
+#~ msgstr "Тутган ўрин"
+
+#, fuzzy
+#~| msgid "Status"
+#~ msgctxt "@title:column attendee status"
+#~ msgid "Status"
+#~ msgstr "Ҳолати"
+
+#, fuzzy
+#~| msgid "RSVP"
+#~ msgctxt "@title:column attendee has RSVPed?"
+#~ msgid "RSVP"
+#~ msgstr "RSVP"
+
+#, fuzzy
+#~ msgctxt "@title:column attendee delegated to"
+#~ msgid "Delegated To"
+#~ msgstr "%1'ни ўчириш"
+
+#, fuzzy
+#~| msgid "Delete To-do"
+#~ msgctxt "@title:column attendee delegated from"
+#~ msgid "Delegated From"
+#~ msgstr "Вазифани ўчириш"
+
+#, fuzzy
+#~ msgctxt "@title"
+#~ msgid "Invalid Email Address"
+#~ msgstr "Қўшимча электрон почта:"
+
+#, fuzzy
+#~| msgid "Manage Templates"
+#~ msgid "Manage %1 Templates"
+#~ msgstr "Намуналарни бошқариш"
+
+#~ msgid "Template Name"
+#~ msgstr "Намунанинг номи"
+
+#~ msgid "Please enter a name for the new template:"
+#~ msgstr "Илтимос янги намунанинг номини киритинг:"
+
+#, fuzzy
+#~| msgid "New Template"
+#~ msgid "New %1 Template"
+#~ msgstr "Янги намуна"
+
+#, fuzzy
+#~| msgid ""
+#~| "A template with that name already exists, do you want to overwrite it?."
+#~ msgid ""
+#~ "A template with that name already exists, do you want to overwrite it?"
+#~ msgstr "Бундай номли намуна аллақачон мавжуд. Уни алмаштиришни истайсизми?"
+
+#~ msgid "Duplicate Template Name"
+#~ msgstr "Намунанинг номи мавжуд"
+
+#~ msgid "Overwrite"
+#~ msgstr "Алмаштириш"
+
+#, fuzzy
+#~ msgid "Remove"
+#~ msgstr "Тутган ўрин"
+
+#, fuzzy
+#~ msgctxt "@label"
+#~ msgid "Identity as organizer:"
+#~ msgstr "KOrganizer'ни ишга тушириб бўлмади."
+
+#, fuzzy
+#~| msgid "Sets the Title of this event or to-do."
+#~ msgctxt "@info:whatsthis"
+#~ msgid ""
+#~ "Edits the name of the attendee selected in the list above, or adds a new "
+#~ "attendee if there are no attendees in the list."
+#~ msgstr "Ушбу ҳодиса ёки вазифа сарлавҳасини мослаш."
+
+#, fuzzy
+#~| msgid "Na&me:"
+#~ msgctxt "@label attendee's name"
+#~ msgid "Na&me:"
+#~ msgstr "&Исми:"
+
+#, fuzzy
+#~| msgid "Click to add a new to-do"
+#~ msgctxt "@label"
+#~ msgid "Click to add a new attendee"
+#~ msgstr "Янги вазифа қўшиш учун босинг"
+
+#, fuzzy
+#~| msgid "Sets the Title of this event or to-do."
+#~ msgctxt "@info:whatsthis"
+#~ msgid "Edits the role of the attendee selected in the list above."
+#~ msgstr "Ушбу ҳодиса ёки вазифа сарлавҳасини мослаш."
+
+#, fuzzy
+#~| msgid "Ro&le:"
+#~ msgctxt "@label"
+#~ msgid "Ro&le:"
+#~ msgstr "&Тутган ўрин:"
+
+#, fuzzy
+#~| msgid "Sets the Title of this event or to-do."
+#~ msgctxt "@info:whatsthis"
+#~ msgid ""
+#~ "Edits the current attendance status of the attendee selected in the list "
+#~ "above."
+#~ msgstr "Ушбу ҳодиса ёки вазифа сарлавҳасини мослаш."
+
+#, fuzzy
+#~| msgid "Stat&us:"
+#~ msgctxt "@label"
+#~ msgid "Stat&us:"
+#~ msgstr "&Ҳолати:"
+
+#, fuzzy
+#~| msgid "Re&quest Update"
+#~ msgctxt "@info:tooltip"
+#~ msgid "Request a response from the attendee"
+#~ msgstr "Янгилашни сў&раш"
+
+#, fuzzy
+#~| msgid "Sets the Title of this event or to-do."
+#~ msgctxt "@info:whatsthis"
+#~ msgid ""
+#~ "Edits whether to send an email to the attendee selected in the list above "
+#~ "to request a response concerning attendance."
+#~ msgstr "Ушбу ҳодиса ёки вазифа сарлавҳасини мослаш."
+
+#, fuzzy
+#~| msgid "Re&quest Update"
+#~ msgctxt "@option:check"
+#~ msgid "Re&quest response"
+#~ msgstr "Янгилашни сў&раш"
+
+#, fuzzy
+#~| msgid "&New"
+#~ msgctxt "@action:button new attendee"
+#~ msgid "&New"
+#~ msgstr "&Янги"
+
+#, fuzzy
+#~ msgctxt "@info:tooltip"
+#~ msgid "Add an attendee"
+#~ msgstr "1 дақиқа"
+
+#, fuzzy
+#~ msgctxt "@action:button"
+#~ msgid "&Remove"
+#~ msgstr "Тутган ўрин"
+
+#, fuzzy
+#~| msgid "Sets the Title of this event or to-do."
+#~ msgctxt "@info:tooltip"
+#~ msgid "Remove the selected attendee"
+#~ msgstr "Ушбу ҳодиса ёки вазифа сарлавҳасини мослаш."
+
+#, fuzzy
+#~| msgid "Sets the Title of this event or to-do."
+#~ msgctxt "@info:whatsthis"
+#~ msgid "Removes the attendee selected in the list above."
+#~ msgstr "Ушбу ҳодиса ёки вазифа сарлавҳасини мослаш."
+
+#, fuzzy
+#~| msgid "Select Addressee..."
+#~ msgctxt "@action:button"
+#~ msgid "Select Addressee..."
+#~ msgstr "Олувчини танлаш"
+
+#, fuzzy
+#~| msgid "name"
+#~ msgctxt "@item:intext sample attendee email name"
+#~ msgid "name"
+#~ msgstr "исми"
+
+#, fuzzy
+#~| msgid "Sets the Title of this event or to-do."
+#~ msgctxt "@info:whatsthis"
+#~ msgid "Select the identity to use as the organizer for this incidence."
+#~ msgstr "Ушбу ҳодиса ёки вазифа сарлавҳасини мослаш."
+
+#, fuzzy
+#~ msgctxt "@label"
+#~ msgid "Delegated to %1"
+#~ msgstr "%1'ни ўчириш"
+
+#, fuzzy
+#~| msgid "No item selected."
+#~ msgctxt "@label"
+#~ msgid "Not delegated"
+#~ msgstr "Ҳеч нарса танланмаган."
+
+#, fuzzy
+#~| msgid "1st"
+#~ msgctxt "@item:inlistbox"
+#~ msgid "1st"
+#~ msgstr "1 чи"
+
+#, fuzzy
+#~| msgid "2nd"
+#~ msgctxt "@item:inlistbox"
+#~ msgid "2nd"
+#~ msgstr "2 чи"
+
+#, fuzzy
+#~| msgid "3rd"
+#~ msgctxt "@item:inlistbox"
+#~ msgid "3rd"
+#~ msgstr "3 чи"
+
+#, fuzzy
+#~| msgid "4th"
+#~ msgctxt "@item:inlistbox"
+#~ msgid "4th"
+#~ msgstr "4 чи"
+
+#, fuzzy
+#~| msgid "5th"
+#~ msgctxt "@item:inlistbox"
+#~ msgid "5th"
+#~ msgstr "5 чи"
+
+#, fuzzy
+#~| msgid "Last"
+#~ msgctxt "@item:inlistbox last week of the month"
+#~ msgid "Last"
+#~ msgstr "Охирги"
+
+#, fuzzy
+#~| msgid "2nd Last"
+#~ msgctxt "@item:inlistbox"
+#~ msgid "2nd Last"
+#~ msgstr "Охирги 2 чи"
+
+#, fuzzy
+#~| msgid "3rd Last"
+#~ msgctxt "@item:inlistbox"
+#~ msgid "3rd Last"
+#~ msgstr "Охирги 3 чи"
+
+#, fuzzy
+#~| msgid "4th Last"
+#~ msgctxt "@item:inlistbox"
+#~ msgid "4th Last"
+#~ msgstr "Охирги 4 чи"
+
+#, fuzzy
+#~| msgid "5th Last"
+#~ msgctxt "@item:inlistbox"
+#~ msgid "5th Last"
+#~ msgstr "Охирги 5 чи"
+
+#, fuzzy
+#~| msgid "Sets the Title of this event or to-do."
+#~ msgctxt "@info:whatsthis"
+#~ msgid "Sets how often this event or to-do should recur."
+#~ msgstr "Ушбу ҳодиса ёки вазифа сарлавҳасини мослаш."
+
+#, fuzzy
+#~| msgid "day(s)"
+#~ msgctxt "@label recurrence expressed in days"
+#~ msgid "day(s)"
+#~ msgstr "кун"
+
+#, fuzzy
+#~| msgid "week(s)"
+#~ msgctxt "@label"
+#~ msgid "week(s) on:"
+#~ msgstr "ҳафта(лар)"
+
+#, fuzzy
+#~| msgid "Sets the Title of this event or to-do."
+#~ msgctxt "@info:whatsthis"
+#~ msgid "Set %1 as the day when this event or to-do should recur."
+#~ msgstr "Ушбу ҳодиса ёки вазифа сарлавҳасини мослаш."
+
+#, fuzzy
+#~| msgid "Person: %1"
+#~ msgctxt "@info:tooltip"
+#~ msgid "Recur on %1"
+#~ msgstr "Киши: %1"
+
+#, fuzzy
+#~| msgid "month(s)"
+#~ msgctxt "@label"
+#~ msgid "month(s)"
+#~ msgstr "ой"
+
+#, fuzzy
+#~| msgid "6th"
+#~ msgctxt "@item:inlistbox"
+#~ msgid "6th"
+#~ msgstr "6 чи"
+
+#, fuzzy
+#~| msgid "7th"
+#~ msgctxt "@item:inlistbox"
+#~ msgid "7th"
+#~ msgstr "7 чи"
+
+#, fuzzy
+#~| msgid "8th"
+#~ msgctxt "@item:inlistbox"
+#~ msgid "8th"
+#~ msgstr "8 чи"
+
+#, fuzzy
+#~| msgid "9th"
+#~ msgctxt "@item:inlistbox"
+#~ msgid "9th"
+#~ msgstr "9 чи"
+
+#, fuzzy
+#~| msgid "10th"
+#~ msgctxt "@item:inlistbox"
+#~ msgid "10th"
+#~ msgstr "10 чи"
+
+#, fuzzy
+#~| msgid "11th"
+#~ msgctxt "@item:inlistbox"
+#~ msgid "11th"
+#~ msgstr "11 чи"
+
+#, fuzzy
+#~| msgid "12th"
+#~ msgctxt "@item:inlistbox"
+#~ msgid "12th"
+#~ msgstr "12 чи"
+
+#, fuzzy
+#~| msgid "13th"
+#~ msgctxt "@item:inlistbox"
+#~ msgid "13th"
+#~ msgstr "13 чи"
+
+#, fuzzy
+#~| msgid "14th"
+#~ msgctxt "@item:inlistbox"
+#~ msgid "14th"
+#~ msgstr "14 чи"
+
+#, fuzzy
+#~| msgid "15th"
+#~ msgctxt "@item:inlistbox"
+#~ msgid "15th"
+#~ msgstr "15 чи"
+
+#, fuzzy
+#~| msgid "16th"
+#~ msgctxt "@item:inlistbox"
+#~ msgid "16th"
+#~ msgstr "16 чи"
+
+#, fuzzy
+#~| msgid "17th"
+#~ msgctxt "@item:inlistbox"
+#~ msgid "17th"
+#~ msgstr "17 чи"
+
+#, fuzzy
+#~| msgid "18th"
+#~ msgctxt "@item:inlistbox"
+#~ msgid "18th"
+#~ msgstr "18 чи"
+
+#, fuzzy
+#~| msgid "19th"
+#~ msgctxt "@item:inlistbox"
+#~ msgid "19th"
+#~ msgstr "19 чи"
+
+#, fuzzy
+#~| msgid "20th"
+#~ msgctxt "@item:inlistbox"
+#~ msgid "20th"
+#~ msgstr "20 чи"
+
+#, fuzzy
+#~| msgid "21st"
+#~ msgctxt "@item:inlistbox"
+#~ msgid "21st"
+#~ msgstr "21 чи"
+
+#, fuzzy
+#~| msgid "22nd"
+#~ msgctxt "@item:inlistbox"
+#~ msgid "22nd"
+#~ msgstr "22 чи"
+
+#, fuzzy
+#~| msgid "23rd"
+#~ msgctxt "@item:inlistbox"
+#~ msgid "23rd"
+#~ msgstr "23 чи"
+
+#, fuzzy
+#~| msgid "24th"
+#~ msgctxt "@item:inlistbox"
+#~ msgid "24th"
+#~ msgstr "24 чи"
+
+#, fuzzy
+#~| msgid "25th"
+#~ msgctxt "@item:inlistbox"
+#~ msgid "25th"
+#~ msgstr "25 чи"
+
+#, fuzzy
+#~| msgid "26th"
+#~ msgctxt "@item:inlistbox"
+#~ msgid "26th"
+#~ msgstr "26 чи"
+
+#, fuzzy
+#~| msgid "27th"
+#~ msgctxt "@item:inlistbox"
+#~ msgid "27th"
+#~ msgstr "27 чи"
+
+#, fuzzy
+#~| msgid "28th"
+#~ msgctxt "@item:inlistbox"
+#~ msgid "28th"
+#~ msgstr "28 чи"
+
+#, fuzzy
+#~| msgid "29th"
+#~ msgctxt "@item:inlistbox"
+#~ msgid "29th"
+#~ msgstr "29 чи"
+
+#, fuzzy
+#~| msgid "30th"
+#~ msgctxt "@item:inlistbox"
+#~ msgid "30th"
+#~ msgstr "30 чи"
+
+#, fuzzy
+#~| msgid "31st"
+#~ msgctxt "@item:inlistbox"
+#~ msgid "31st"
+#~ msgstr "31 чи"
+
+#, fuzzy
+#~| msgid "Last"
+#~ msgctxt "@item:inlistbox last day of the month"
+#~ msgid "Last"
+#~ msgstr "Охирги"
+
+#, fuzzy
+#~ msgctxt "@item:inlistbox"
+#~ msgid "6th Last"
+#~ msgstr "Охирги 4 чи"
+
+#, fuzzy
+#~ msgctxt "@item:inlistbox"
+#~ msgid "7th Last"
+#~ msgstr "Охирги 4 чи"
+
+#, fuzzy
+#~ msgctxt "@item:inlistbox"
+#~ msgid "8th Last"
+#~ msgstr "Охирги 4 чи"
+
+#, fuzzy
+#~ msgctxt "@item:inlistbox"
+#~ msgid "9th Last"
+#~ msgstr "Охирги 4 чи"
+
+#, fuzzy
+#~ msgctxt "@item:inlistbox"
+#~ msgid "10th Last"
+#~ msgstr "Охирги 4 чи"
+
+#, fuzzy
+#~ msgctxt "@item:inlistbox"
+#~ msgid "11th Last"
+#~ msgstr "Охирги 4 чи"
+
+#, fuzzy
+#~ msgctxt "@item:inlistbox"
+#~ msgid "12th Last"
+#~ msgstr "Охирги 4 чи"
+
+#, fuzzy
+#~ msgctxt "@item:inlistbox"
+#~ msgid "13th Last"
+#~ msgstr "Охирги 4 чи"
+
+#, fuzzy
+#~ msgctxt "@item:inlistbox"
+#~ msgid "14th Last"
+#~ msgstr "Охирги 4 чи"
+
+#, fuzzy
+#~ msgctxt "@item:inlistbox"
+#~ msgid "15th Last"
+#~ msgstr "Охирги 5 чи"
+
+#, fuzzy
+#~ msgctxt "@item:inlistbox"
+#~ msgid "16th Last"
+#~ msgstr "Охирги 4 чи"
+
+#, fuzzy
+#~ msgctxt "@item:inlistbox"
+#~ msgid "17th Last"
+#~ msgstr "Охирги 4 чи"
+
+#, fuzzy
+#~ msgctxt "@item:inlistbox"
+#~ msgid "18th Last"
+#~ msgstr "Охирги 4 чи"
+
+#, fuzzy
+#~ msgctxt "@item:inlistbox"
+#~ msgid "19th Last"
+#~ msgstr "Охирги 4 чи"
+
+#, fuzzy
+#~ msgctxt "@item:inlistbox"
+#~ msgid "20th Last"
+#~ msgstr "Охирги 4 чи"
+
+#, fuzzy
+#~ msgctxt "@item:inlistbox"
+#~ msgid "21st Last"
+#~ msgstr "Охирги 2 чи"
+
+#, fuzzy
+#~ msgctxt "@item:inlistbox"
+#~ msgid "22nd Last"
+#~ msgstr "Охирги 2 чи"
+
+#, fuzzy
+#~ msgctxt "@item:inlistbox"
+#~ msgid "23rd Last"
+#~ msgstr "Охирги 3 чи"
+
+#, fuzzy
+#~ msgctxt "@item:inlistbox"
+#~ msgid "24th Last"
+#~ msgstr "Охирги 4 чи"
+
+#, fuzzy
+#~ msgctxt "@item:inlistbox"
+#~ msgid "25th Last"
+#~ msgstr "Охирги 5 чи"
+
+#, fuzzy
+#~ msgctxt "@item:inlistbox"
+#~ msgid "26th Last"
+#~ msgstr "Охирги 4 чи"
+
+#, fuzzy
+#~ msgctxt "@item:inlistbox"
+#~ msgid "27th Last"
+#~ msgstr "Охирги 4 чи"
+
+#, fuzzy
+#~ msgctxt "@item:inlistbox"
+#~ msgid "28th Last"
+#~ msgstr "Охирги 4 чи"
+
+#, fuzzy
+#~ msgctxt "@item:inlistbox"
+#~ msgid "29th Last"
+#~ msgstr "Охирги 4 чи"
+
+#, fuzzy
+#~ msgctxt "@item:inlistbox"
+#~ msgid "30th Last"
+#~ msgstr "Охирги 4 чи"
+
+#, fuzzy
+#~ msgctxt "@item:inlistbox"
+#~ msgid "31st Last"
+#~ msgstr "Охирги 3 чи"
+
+#, fuzzy
+#~| msgid "day"
+#~ msgctxt "@label"
+#~ msgid "day"
+#~ msgstr "кун"
+
+#, fuzzy
+#~| msgid "year(s)"
+#~ msgctxt "@label"
+#~ msgid "year(s)"
+#~ msgstr "йил"
+
+#, fuzzy
+#~| msgid "&Month"
+#~ msgctxt "@option:radio Part before XXX in 'Recur on NNN. WEEKDAY of MONTH'"
+#~ msgid "&On the"
+#~ msgstr "&Ой"
+
+#, fuzzy
+#~| msgid "E&xceptions"
+#~ msgctxt "@title:group"
+#~ msgid "E&xceptions"
+#~ msgstr "Қоидадан т&ашқари ҳолатлар"
+
+#, fuzzy
+#~| msgid "&Add"
+#~ msgctxt "@action:button"
+#~ msgid "&Add"
+#~ msgstr "&Қўшиш"
+
+#, fuzzy
+#~| msgid "Activates a reminder for this event or to-do."
+#~ msgctxt "@info:whatsthis"
+#~ msgid ""
+#~ "Add this date as an exception to the recurrence rules for this event or "
+#~ "to-do."
+#~ msgstr "Ушбу ҳодиса ёки вазифа учун эсга солишни қўллаш."
+
+#, fuzzy
+#~| msgid "&Change"
+#~ msgctxt "@action:button"
+#~ msgid "&Change"
+#~ msgstr "Ўз&гартириш"
+
+#, fuzzy
+#~ msgctxt "@action:button"
+#~ msgid "&Delete"
+#~ msgstr "%1'ни ўчириш"
+
+#, fuzzy
+#~| msgid "Edit Exceptions"
+#~ msgctxt "@title:window"
+#~ msgid "Edit Exceptions"
+#~ msgstr "Қоидадан ташқари ҳолатларни таҳрирлаш"
+
+#, fuzzy
+#~| msgid "Begins on: %1"
+#~ msgctxt "@label"
+#~ msgid "Begin on:"
+#~ msgstr "Бошланади: %1"
+
+#, fuzzy
+#~ msgctxt "@option radio"
+#~ msgid "&No ending date"
+#~ msgstr "Тугаш куни:"
+
+#, fuzzy
+#~| msgid "Sets the Title of this event or to-do."
+#~ msgctxt "@info:whatsthis"
+#~ msgid "Sets the event or to-do to recur forever."
+#~ msgstr "Ушбу ҳодиса ёки вазифа сарлавҳасини мослаш."
+
+#, fuzzy
+#~| msgid "End Date"
+#~ msgctxt "@option:radio"
+#~ msgid "End &after"
+#~ msgstr "Тугаш куни"
+
+#, fuzzy
+#~ msgctxt "@option:radio"
+#~ msgid "End &on:"
+#~ msgstr "Тугаш &ойи:"
+
+#, fuzzy
+#~| msgid "Begins on: %1"
+#~ msgctxt "@label"
+#~ msgid "Begins on: %1"
+#~ msgstr "Бошланади: %1"
+
+#, fuzzy
+#~| msgid "Resources"
+#~ msgctxt "@title:group"
+#~ msgid "Recurrence Types"
+#~ msgstr "Манбалар"
+
+#, fuzzy
+#~| msgid "&Daily"
+#~ msgctxt "@option:radio recur daily"
+#~ msgid "&Daily"
+#~ msgstr "Ҳар &кун"
+
+#, fuzzy
+#~| msgid "&Weekly"
+#~ msgctxt "@option:radio recur weekly"
+#~ msgid "&Weekly"
+#~ msgstr "Ҳар &ҳафта"
+
+#, fuzzy
+#~| msgid "&Monthly"
+#~ msgctxt "@option:radio recur monthly"
+#~ msgid "&Monthly"
+#~ msgstr "Ҳар &ой"
+
+#, fuzzy
+#~| msgid "&Yearly"
+#~ msgctxt "@option:radio recur yearly"
+#~ msgid "&Yearly"
+#~ msgstr "Ҳар &йил"
+
+#, fuzzy
+#~| msgid "Appointment Time "
+#~ msgctxt "@title:group"
+#~ msgid "Appointment Time "
+#~ msgstr "Учрашув вақти"
+
+#, fuzzy
+#~| msgid "Displays appointment time information."
+#~ msgctxt "@info:whatsthis"
+#~ msgid "Displays appointment time information."
+#~ msgstr "Учрашув вақти маълумотини кўрсатиш."
+
+#~ msgid "Date && Time"
+#~ msgstr "Сана ва вақт"
+
+#, fuzzy
+#~| msgid "Sta&rt:"
+#~ msgctxt "@option:check to-do start datetime"
+#~ msgid "Sta&rt:"
+#~ msgstr "&Боши:"
+
+#, fuzzy
+#~| msgid "&Date:"
+#~ msgctxt "to-do due datetime"
+#~ msgid "&Due:"
+#~ msgstr "Са&на:"
+
+#, fuzzy
+#~| msgid "Resources"
+#~ msgctxt "@label"
+#~ msgid "Recurrence:"
+#~ msgstr "Манбалар"
+
+#, fuzzy
+#~| msgid "co&mpleted"
+#~ msgctxt "to-do completed"
+#~ msgid "co&mpleted"
+#~ msgstr "&бажарилган"
+
+#~ msgid "&Priority:"
+#~ msgstr "&Муҳимлик даражаси:"
+
+#, fuzzy
+#~| msgid "Start: %1"
+#~ msgctxt "to-do start datetime"
+#~ msgid "Start: %1"
+#~ msgstr "Боши: %1"
+
+#, fuzzy
+#~ msgctxt "to-do due datetime"
+#~ msgid "   Due: %1"
+#~ msgstr "Тугаш куни: %1"
+
+#, fuzzy
+#~| msgid "co&mpleted on"
+#~ msgctxt "to-do completed on datetime"
+#~ msgid "co&mpleted on"
+#~ msgstr "&якунланди"
+
+#, fuzzy
+#~| msgid "Sets the Title of this event or to-do."
+#~ msgctxt "@info:whatsthis"
+#~ msgid "Sets the Title of this event or to-do."
+#~ msgstr "Ушбу ҳодиса ёки вазифа сарлавҳасини мослаш."
+
+#, fuzzy
+#~| msgid "Enter the reminder time here."
+#~ msgctxt "@info:tooltip"
+#~ msgid "Set the title"
+#~ msgstr "Эсга солиш вақтини шу ерга киритинг."
+
+#, fuzzy
+#~| msgid "T&itle:"
+#~ msgctxt "@label event or to-do title"
+#~ msgid "T&itle:"
+#~ msgstr "С&арлавҳа:"
+
+#, fuzzy
+#~| msgid "Sets the Title of this event or to-do."
+#~ msgctxt "@info:whatsthis"
+#~ msgid "Sets where the event or to-do will take place."
+#~ msgstr "Ушбу ҳодиса ёки вазифа сарлавҳасини мослаш."
+
+#, fuzzy
+#~| msgid "&Location:"
+#~ msgctxt "@label"
+#~ msgid "&Location:"
+#~ msgstr "&Манзил:"
+
+#, fuzzy
+#~ msgctxt "@label"
+#~ msgid "Categories:"
+#~ msgstr "Туркумлар"
+
+#, fuzzy
+#~| msgid "Select Addressee..."
+#~ msgctxt "@action:button select a category"
+#~ msgid "&Select..."
+#~ msgstr "Олувчини танлаш"
+
+#, fuzzy
+#~ msgctxt "@info:tooltip"
+#~ msgid "Set the secrecy level"
+#~ msgstr "Бошлаш куни:"
+
+#, fuzzy
+#~| msgid "&Toggle Reminder"
+#~ msgctxt "@option:check"
+#~ msgid "Rich text"
+#~ msgstr "&Эсга солишни ўчириш/ёқиш"
+
+#, fuzzy
+#~| msgid "&Toggle Reminder"
+#~ msgctxt "@info:tooltip"
+#~ msgid "Toggle Rich Text"
+#~ msgstr "&Эсга солишни ўчириш/ёқиш"
+
+#, fuzzy
+#~| msgid "&Reminder:"
+#~ msgctxt "@option:check"
+#~ msgid "&Reminder:"
+#~ msgstr "&Эсга солиш:"
+
+#, fuzzy
+#~| msgid "Activates a reminder for this event or to-do."
+#~ msgctxt "@info:whatsthis"
+#~ msgid "Activates a reminder for this event or to-do."
+#~ msgstr "Ушбу ҳодиса ёки вазифа учун эсга солишни қўллаш."
+
+#, fuzzy
+#~ msgctxt "@info:tooltip"
+#~ msgid "Set a reminder"
+#~ msgstr "Эсга солиш"
+
+#, fuzzy
+#~| msgid "Select a month"
+#~ msgctxt "@info:tooltip"
+#~ msgid "Set an alarm"
+#~ msgstr "Ойни танлаш"
+
+#, fuzzy
+#~| msgid "minute(s)"
+#~ msgctxt "@item:inlistbox alarm expressed in minutes"
+#~ msgid "minute(s)"
+#~ msgstr "дақиқа"
+
+#, fuzzy
+#~| msgid "hour(s)"
+#~ msgctxt "@item:inlistbox alarm expressed in hours"
+#~ msgid "hour(s)"
+#~ msgstr "соат"
+
+#, fuzzy
+#~| msgid "day(s)"
+#~ msgctxt "@item:inlistbox alarm expressed in days"
+#~ msgid "day(s)"
+#~ msgstr "кун"
+
+#, fuzzy
+#~| msgid "Advanced"
+#~ msgctxt "@action:button advanced alarm settings"
+#~ msgid "Advanced..."
+#~ msgstr "Қўшимча"
+
+#, fuzzy
+#~| msgid "Activates a reminder for this event or to-do."
+#~ msgctxt "@info:whatsthis"
+#~ msgid "Push this button to create an advanced alarm for this event or to-do"
+#~ msgstr "Ушбу ҳодиса ёки вазифа учун эсга солишни қўллаш."
+
+#, fuzzy
+#~ msgctxt "@label"
+#~ msgid "1 reminder configured"
+#~ msgid_plural "%1 reminders configured"
+#~ msgstr[0] "Эсга солиш"
+
+#, fuzzy
+#~ msgctxt "@label"
+#~ msgid "1 advanced reminder configured"
+#~ msgstr "Эсга солиш"
+
+#, fuzzy
+#~ msgctxt "@label"
+#~ msgid "No attendees"
+#~ msgstr "&Қатнашувчилар"
+
+#, fuzzy
+#~| msgid "Please select an appointment."
+#~ msgctxt "@info"
+#~ msgid "Please specify a title."
+#~ msgstr "Илтимос учрашувни танланг."
+
+#, fuzzy
+#~| msgid "Date && Time"
+#~ msgctxt "@title:group"
+#~ msgid "Date && Time"
+#~ msgstr "Сана ва вақт"
+
+#, fuzzy
+#~| msgid "Sets the Title of this event or to-do."
+#~ msgctxt "@info:whatsthis"
+#~ msgid "Sets options related to the date and time of the event or to-do."
+#~ msgstr "Ушбу ҳодиса ёки вазифа сарлавҳасини мослаш."
+
+#, fuzzy
+#~| msgid "&Start:"
+#~ msgctxt "@label event start time"
+#~ msgid "&Start:"
+#~ msgstr "&Боши:"
+
+#, fuzzy
+#~ msgctxt "@info:tooltip"
+#~ msgid "Set the start date"
+#~ msgstr "Бошлаш куни:"
+
+#, fuzzy
+#~| msgid "Start &time:"
+#~ msgctxt "@info:tooltip"
+#~ msgid "Set the start time"
+#~ msgstr "Бошлаш &вақти:"
+
+#, fuzzy
+#~| msgid "Sets the Title of this event or to-do."
+#~ msgctxt "@info:whatsthis"
+#~ msgid "Select the starting time for this event."
+#~ msgstr "Ушбу ҳодиса ёки вазифа сарлавҳасини мослаш."
+
+#, fuzzy
+#~| msgid "&End:"
+#~ msgctxt "@label"
+#~ msgid "&End:"
+#~ msgstr "&Охири:"
+
+#, fuzzy
+#~| msgid "Enter the reminder time here."
+#~ msgctxt "@info:tooltip"
+#~ msgid "Set the end time"
+#~ msgstr "Эсга солиш вақтини шу ерга киритинг."
+
+#, fuzzy
+#~| msgid "Other Options"
+#~ msgctxt "@label"
+#~ msgid "S&how time as:"
+#~ msgstr "Бошқа параметрлар"
+
+#, fuzzy
+#~| msgid "Busy"
+#~ msgctxt "@item:inlistbox show event as busy time"
+#~ msgid "Busy"
+#~ msgstr "Банд"
+
+#, fuzzy
+#~| msgid "Free"
+#~ msgctxt "@item:inlistbox show event as free time"
+#~ msgid "Free"
+#~ msgstr "Бўш"
+
+#, fuzzy
+#~| msgid "Accept"
+#~ msgctxt "@action:button"
+#~ msgid "Accept"
+#~ msgstr "Қабул қилиш"
+
+#, fuzzy
+#~ msgctxt "@action:button"
+#~ msgid "Decline"
+#~ msgstr "Вақт зонаси:"
+
+#, fuzzy
+#~| msgid "Duration: "
+#~ msgctxt "@label"
+#~ msgid "Duration: "
+#~ msgstr "Давом этиши: "
+
+#, fuzzy
+#~ msgctxt "@label"
+#~ msgid "1 Day"
+#~ msgid_plural "%1 Days"
+#~ msgstr[0] "1 кун"
+
+#, fuzzy
+#~ msgctxt "@label"
+#~ msgid "1 hour"
+#~ msgid_plural "%1 hours"
+#~ msgstr[0] "1 соат"
+
+#, fuzzy
+#~| msgid ", "
+#~ msgctxt "@label"
+#~ msgid ", "
+#~ msgstr ", "
+
+#, fuzzy
+#~ msgctxt "@label"
+#~ msgid "1 minute"
+#~ msgid_plural "%1 minutes"
+#~ msgstr[0] "1 дақиқа"
+
+#, fuzzy
+#~| msgid "Please select an appointment."
+#~ msgctxt "@info"
+#~ msgid "Please specify a valid start time, for example '%1'."
+#~ msgstr "Илтимос учрашувни танланг."
+
+#, fuzzy
+#~| msgid "Please select an appointment."
+#~ msgctxt "@info"
+#~ msgid "Please specify a valid end time, for example '%1'."
+#~ msgstr "Илтимос учрашувни танланг."
+
+#, fuzzy
+#~| msgid "Please select an appointment."
+#~ msgctxt "@info"
+#~ msgid "Please specify a valid start date, for example '%1'."
+#~ msgstr "Илтимос учрашувни танланг."
+
+#, fuzzy
+#~| msgid "Please select an appointment."
+#~ msgctxt "@info"
+#~ msgid "Please specify a valid end date, for example '%1'."
+#~ msgstr "Илтимос учрашувни танланг."
+
+#, fuzzy
+#~| msgid "Unknown"
+#~ msgctxt "@option unknown alarm type"
+#~ msgid "Unknown"
+#~ msgstr "Номаълум"
+
+#, fuzzy
+#~| msgid "Reminder Dialog"
+#~ msgctxt "@option popup reminder dialog"
+#~ msgid "Reminder Dialog"
+#~ msgstr "Эсга солиш ойнаси"
+
+#, fuzzy
+#~| msgid "Email"
+#~ msgctxt "@option send email reminder"
+#~ msgid "Email"
+#~ msgstr "Электрон почта"
+
+#, fuzzy
+#~| msgid "Audio"
+#~ msgctxt "@option play a sound"
+#~ msgid "Audio"
+#~ msgstr "Аудио"
+
+#, fuzzy
+#~ msgctxt "@item@intable N days/hours/minutes before/after the start/end"
+#~ msgid "%1 before the start"
+#~ msgstr "Ишга туширилмасин"
+
+#, fuzzy
+#~ msgctxt "@item@intable N days/hours/minutes before/after the start/end"
+#~ msgid "%1 after the start"
+#~ msgstr "Ишга туширилмасин"
+
+#, fuzzy
+#~ msgctxt "@item@intable N days/hours/minutes before/after the start/end"
+#~ msgid "%1 after the end"
+#~ msgstr "Ишга туширилмасин"
+
+#, fuzzy
+#~ msgctxt "@item@intable alarm offset specified in days"
+#~ msgid "1 day"
+#~ msgid_plural "%1 days"
+#~ msgstr[0] "1 кун"
+
+#, fuzzy
+#~ msgctxt "@item@intable alarm offset specified in hours"
+#~ msgid "1 hour"
+#~ msgid_plural "%1 hours"
+#~ msgstr[0] "1 соат"
+
+#, fuzzy
+#~ msgctxt "@item@intable alarm offset specified in minutes"
+#~ msgid "1 minute"
+#~ msgid_plural "%1 minutes"
+#~ msgstr[0] "1 дақиқа"
+
+#, fuzzy
+#~| msgid "Edit Reminders"
+#~ msgctxt "@title"
+#~ msgid "Edit Reminders"
+#~ msgstr "Эсга солишни таҳрирлаш"
+
+#, fuzzy
+#~ msgctxt "@item:inlistbox"
+#~ msgid "before the to-do starts"
+#~ msgstr "Ишга туширилмасин"
+
+#, fuzzy
+#~ msgctxt "@item:inlistbox"
+#~ msgid "after the to-do starts"
+#~ msgstr "Ишга туширилмасин"
+
+#, fuzzy
+#~| msgid "&General"
+#~ msgctxt "@title:tab general event settings"
+#~ msgid "&General"
+#~ msgstr "&Умумий"
+
+#, fuzzy
+#~ msgctxt "@title:tab"
+#~ msgid "&Attendees"
+#~ msgstr "&Қатнашувчилар"
+
+#, fuzzy
+#~| msgid "New Event"
+#~ msgctxt "@title:window"
+#~ msgid "New Event"
+#~ msgstr "Янги ҳодиса"
+
+#, fuzzy
+#~| msgid "Exchange"
+#~ msgctxt "@title:window"
+#~ msgid "No Changes"
+#~ msgstr "Exchange"
+
+#, fuzzy
+#~| msgid "Hour"
+#~ msgctxt "@item:inlistbox range in hours"
+#~ msgid "Hour"
+#~ msgstr "Соат"
+
+#, fuzzy
+#~| msgid "Event text"
+#~ msgctxt "@action:button"
+#~ msgid "Center on Start"
+#~ msgstr "Ҳодиса матни"
+
+#, fuzzy
+#~ msgctxt "@action:button reload freebusy data"
+#~ msgid "Reload"
+#~ msgstr "&Қайтадан юклаш"
+
+#, fuzzy
+#~| msgid "Atte&ndees"
+#~ msgctxt "@title:column attendee name"
+#~ msgid "Attendee"
+#~ msgstr "&Қатнашувчилар"
+
+#, fuzzy
+#~ msgctxt "@info"
+#~ msgid "No suitable date found."
+#~ msgstr "Бошлаш куни:"
+
+#, fuzzy
+#~ msgctxt "@title:window"
+#~ msgid "Invalid Email Address"
+#~ msgstr "Қўшимча электрон почта:"
+
+#, fuzzy
+#~| msgid "Select Cate&gories..."
+#~ msgid "Select Categories"
+#~ msgstr "Туркумларни &танлаш"
+
+#, fuzzy
+#~ msgid "Category"
+#~ msgstr "Туркумлар"
+
+#, fuzzy
+#~| msgid "Calendar"
+#~ msgid "&Clear Selection"
+#~ msgstr "Календар"
+
+#, fuzzy
+#~| msgid "Select Cate&gories..."
+#~ msgid "&Edit Categories..."
+#~ msgstr "Туркумларни &танлаш"
+
+#~ msgid "Default appointment time"
+#~ msgstr "Андоза учрашув вақти"
+
+#~ msgid "Default duration of new appointment (HH:MM)"
+#~ msgstr "Янги учрашувнинг андоза давом этиш вақти (СС:ДД)"
+
+#, fuzzy
+#~| msgid "Edit Reminders"
+#~ msgid "Enable reminders for new Events"
+#~ msgstr "Эсга солишни таҳрирлаш"
+
+#, fuzzy
+#~| msgid "Edit Reminders"
+#~ msgid "Enable reminders for new To-dos"
+#~ msgstr "Эсга солишни таҳрирлаш"
+
+#, fuzzy
+#~| msgid "Default reminder time:"
+#~ msgid "Default reminder time"
+#~ msgstr "Андоза эсга солиш вақти:"
+
+#, fuzzy
+#~| msgid "Default reminder time:"
+#~ msgid "Default time for reminders"
+#~ msgstr "Андоза эсга солиш вақти:"
+
+#, fuzzy
+#~| msgid "Default reminder time:"
+#~ msgid "Default time unit for reminders"
+#~ msgstr "Андоза эсга солиш вақти:"
+
+#, fuzzy
+#~ msgid "Time"
+#~ msgstr "В&ақт:"
+
+#, fuzzy
+#~| msgid "Enter the reminder time here."
+#~ msgid "Set the reminder trigger time"
+#~ msgstr "Эсга солиш вақтини шу ерга киритинг."
+
+#, fuzzy
+#~| msgid "Sets the Title of this event or to-do."
+#~ msgid "Select the reminder trigger time unit"
+#~ msgstr "Ушбу ҳодиса ёки вазифа сарлавҳасини мослаш."
+
+#, fuzzy
+#~| msgid "minute(s)"
+#~ msgctxt "@item:inlistbox alarm offset expressed in minutes"
+#~ msgid "minute(s)"
+#~ msgstr "дақиқа"
+
+#, fuzzy
+#~| msgid "hour(s)"
+#~ msgctxt "@item:inlistbox alarm offset expressed in hours"
+#~ msgid "hour(s)"
+#~ msgstr "соат"
+
+#, fuzzy
+#~| msgid "day(s)"
+#~ msgctxt "@item:inlistbox alarm offset expressed in days"
+#~ msgid "day(s)"
+#~ msgstr "кун"
+
+#, fuzzy
+#~| msgid "Sets the Title of this event or to-do."
+#~ msgid "Select the reminder trigger relative to the start or end time"
+#~ msgstr "Ушбу ҳодиса ёки вазифа сарлавҳасини мослаш."
+
+#, fuzzy
+#~ msgid "before the event starts"
+#~ msgstr "Ишга туширилмасин"
+
+#, fuzzy
+#~ msgid "after the event starts"
+#~ msgstr "Ишга туширилмасин"
+
+#, fuzzy
+#~ msgid "before the event ends"
+#~ msgstr "Ишга туширилмасин"
+
+#, fuzzy
+#~| msgid "Sets the Title of this event or to-do."
+#~ msgid "Select how often the reminder should repeat"
+#~ msgstr "Ушбу ҳодиса ёки вазифа сарлавҳасини мослаш."
+
+#~ msgid "&Interval:"
+#~ msgstr "Ора&лиқ:"
+
+#, fuzzy
+#~| msgid "Enter the reminder time here."
+#~ msgid "Set the reminder to repeat"
+#~ msgstr "Эсга солиш вақтини шу ерга киритинг."
+
+#, fuzzy
+#~ msgid "&Repeating:"
+#~ msgstr "Қайтариш"
+
+#, fuzzy
+#~ msgctxt "@label:spinbox repeat interval expressed in minutes"
+#~ msgid " Minute(s)"
+#~ msgstr "дақиқа"
+
+#, fuzzy
+#~| msgid "every "
+#~ msgctxt "repeat every X minutes"
+#~ msgid "every "
+#~ msgstr "ҳар "
+
+#~ msgid "Type"
+#~ msgstr "Тури"
+
+#, fuzzy
+#~| msgid "&Daily"
+#~ msgid "&Display"
+#~ msgstr "Ҳар &кун"
+
+#, fuzzy
+#~| msgid "Enter the reminder time here."
+#~ msgid "Send email when the reminder is triggered"
+#~ msgstr "Эсга солиш вақтини шу ерга киритинг."
+
+#, fuzzy
+#~ msgid "Display &text:"
+#~ msgstr "Эсга солиш"
+
+#, fuzzy
+#~ msgid "Sound &file:"
+#~ msgstr "Ар&хив файли:"
+
+#, fuzzy
+#~ msgid "Ar&guments:"
+#~ msgstr "Ар&гументлар:"
+
+#, fuzzy
+#~| msgid "Sets the Title of this event or to-do."
+#~ msgid "Remove the currently selected reminder"
+#~ msgstr "Ушбу ҳодиса ёки вазифа сарлавҳасини мослаш."
+
+#, fuzzy
+#~| msgid "Sets the Title of this event or to-do."
+#~ msgid "Create a new reminder from the currently selected reminder"
+#~ msgstr "Ушбу ҳодиса ёки вазифа сарлавҳасини мослаш."
+
+#, fuzzy
+#~| msgid "Activates a reminder for this event or to-do."
+#~ msgid "The list of reminders for this event or to-do"
+#~ msgstr "Ушбу ҳодиса ёки вазифа учун эсга солишни қўллаш."
+
+#, fuzzy
+#~| msgid "Activates a reminder for this event or to-do."
+#~ msgid ""
+#~ "This area displays a list of all the reminders you have specified for "
+#~ "this event or to-do."
+#~ msgstr "Ушбу ҳодиса ёки вазифа учун эсга солишни қўллаш."
+
+#~ msgid "Repeat"
+#~ msgstr "Қайтариш"
+
+#, fuzzy
+#~| msgid "Manage Templates"
+#~ msgid "The list of managed templates"
+#~ msgstr "Намуналарни бошқариш"
+
+#, fuzzy
+#~ msgid "&New..."
+#~ msgstr "&Янги"
+
+#, fuzzy
+#~| msgid "Sets the Title of this event or to-do."
+#~ msgid "Remove the currently selected template"
+#~ msgstr "Ушбу ҳодиса ёки вазифа сарлавҳасини мослаш."
+
+#, fuzzy
+#~| msgid "Phone Call"
+#~ msgctxt "incidence category: phone call"
+#~ msgid "Phone Call"
+#~ msgstr "Қўнғироқ қилиш"
+
+#, fuzzy
+#~| msgid "Education"
+#~ msgctxt "incidence category"
+#~ msgid "Education"
+#~ msgstr "Таълим"
+
+#, fuzzy
+#~| msgid "Holiday"
+#~ msgctxt ""
+#~ "incidence category: official or unofficial observance of religious/"
+#~ "national/cultural/other significance, often accompanied by celebrations "
+#~ "or festivities"
+#~ msgid "Holiday"
+#~ msgstr "Дам олиш"
+
+#, fuzzy
+#~| msgid "Education"
+#~ msgctxt ""
+#~ "incidence category: a lengthy time away from work or school, a trip "
+#~ "abroad, or simply a pleasure trip away from home"
+#~ msgid "Vacation"
+#~ msgstr "Таълим"
+
+#, fuzzy
+#~| msgid "Personal"
+#~ msgctxt "incidence category"
+#~ msgid "Personal"
+#~ msgstr "Шахсий"
+
+#, fuzzy
+#~| msgid "Travel"
+#~ msgctxt ""
+#~ "incidence category: typically associated with leaving home for business, "
+#~ "and not pleasure"
+#~ msgid "Travel"
+#~ msgstr "Саёҳат"
+
+#, fuzzy
+#~| msgid "Calendar"
+#~ msgid "text/calendar"
+#~ msgstr "Календар"
+
+#~ msgid "Full &name"
+#~ msgstr "Тўлиқ &исми"
+
+#~ msgid "E&mail address"
+#~ msgstr "Электрон п&очта"
+
+#~ msgid "Attendees Removed"
+#~ msgstr "Қатнашувчилар олиб ташланди"
+
+#~ msgid "Do Not Send"
+#~ msgstr "Жўнатилмасин"
+
+#, fuzzy
+#~| msgid "Import Calendar"
+#~ msgid "C&opy to Calendar"
+#~ msgstr "Календарни импорт қилиш"
+
+#, fuzzy
+#~| msgid "New Calendar"
+#~ msgid "&Move to Calendar"
+#~ msgstr "Янги календар"
+
+#, fuzzy
+#~| msgid "Import Calendar"
+#~ msgid "Copy Calendar"
+#~ msgid_plural "Copy %1 Calendars"
+#~ msgstr[0] "Календарни импорт қилиш"
+
+#, fuzzy
+#~| msgid ""
+#~| "The meeting has been moved to\n"
+#~| "Start: %1\n"
+#~| "End: %2."
+#~ msgctxt "@info"
+#~ msgid ""
+#~ "The meeting has been moved to\n"
+#~ "Start: %1\n"
+#~ "End: %2."
+#~ msgstr ""
+#~ "Учрашув кўчирилди\n"
+#~ "Боши: %1\n"
+#~ "Охири: %2."
+
+#, fuzzy
+#~| msgid "KOrganizer"
+#~ msgid "Korganizer"
+#~ msgstr "KOrganizer"
+
+#, fuzzy
+#~| msgid "Could not load calendar '%1'."
+#~ msgid "Could not download calendar %1: %2."
+#~ msgstr "'%1' календарини юклаб бўлмади."
+
+#, fuzzy
+#~| msgctxt "short_weekday date (e.g. Mon 13)"
+#~| msgid "%1 %2"
+#~ msgid "%1 (%2 years)"
+#~ msgstr "%1 %2"
+
+#, fuzzy
+#~| msgid "&Day "
+#~ msgctxt "@option:radio"
+#~ msgid "&Day "
+#~ msgstr "&Кун"
+
+#, fuzzy
+#~| msgid "Day #"
+#~ msgctxt "@option:radio"
+#~ msgid "Day #"
+#~ msgstr "Кун #"
+
+#, fuzzy
+#~| msgid "Sets the Title of this event or to-do."
+#~ msgctxt "@info:whatsthis"
+#~ msgid "Sets the type of recurrence this event or to-do should have."
+#~ msgstr "Ушбу ҳодиса ёки вазифа сарлавҳасини мослаш."
+
+#, fuzzy
+#~| msgid "Daily"
+#~ msgctxt "@item:inlistbox recur daily"
+#~ msgid "Daily"
+#~ msgstr "Ҳар кун"
+
+#, fuzzy
+#~| msgid "Weekly"
+#~ msgctxt "@item:inlistbox recur weekly"
+#~ msgid "Weekly"
+#~ msgstr "Ҳар ҳафта"
+
+#, fuzzy
+#~| msgid "Monthly"
+#~ msgctxt "@item:inlistbox recur monthly"
+#~ msgid "Monthly"
+#~ msgstr "Ҳар ой"
+
+#, fuzzy
+#~| msgid "Yearly"
+#~ msgctxt "@item:inlistbox recur yearly"
+#~ msgid "Yearly"
+#~ msgstr "Ҳар йил"
+
+#, fuzzy
+#~| msgid "Exceptions..."
+#~ msgctxt "@action:button"
+#~ msgid "Exceptions..."
+#~ msgstr "Қоидадан ташқари ҳолатлар"
+
+#, fuzzy
+#~| msgid "Email"
+#~ msgctxt "@title:column email addresses"
+#~ msgid "Email"
+#~ msgstr "Электрон почта"
+
+#~ msgid "Send Email"
+#~ msgstr "Хат жўнатиш"
+
+#, fuzzy
+#~ msgid "Send Update"
+#~ msgstr "Тугаш куни:"
+
+#, fuzzy
+#~| msgid "Edit To-do"
+#~ msgctxt "@title:window"
+#~ msgid "Edit Journal: %1"
+#~ msgstr "Вазифани таҳрирлаш"
+
+#~ msgid "&iCalendar..."
+#~ msgstr "&iCalendar..."
+
+#~ msgid "&vCalendar..."
+#~ msgstr "&vCalendar..."
+
+#, fuzzy
+#~| msgid "New calendar '%1'."
+#~ msgid "Added calendar for URL '%1'."
+#~ msgstr "Янги календар '%1'."
+
+#, fuzzy
+#~ msgid "Unable to create calendar '%1'."
+#~ msgstr "'%1' намунани топиб бўлмади."
+
+#~ msgid ""
+#~ "The calendar contains unsaved changes. Do you want to save them before "
+#~ "exiting?"
+#~ msgstr ""
+#~ "Календарда сақланмаган ўзгаришлар мавжуд. Чиқишдан олдин бу ўзгаришларни "
+#~ "сақлашни истайсизми?"
+
+#, fuzzy
+#~ msgid "Cancel Save"
+#~ msgstr "Ўз&гартириш"
+
+#~ msgid "Mail Client"
+#~ msgstr "Хат-хабар клиенти"
+
+#~ msgid "Sendmail"
+#~ msgstr "Sendmail"
+
+#, fuzzy
+#~| msgid "Edit Calendar Filters"
+#~ msgctxt "@info:tooltip"
+#~ msgid "Edit calendar settings"
+#~ msgstr "Календар филтерларини таҳрирлаш"
+
+#, fuzzy
+#~| msgid "New Calendar"
+#~ msgctxt "@info:tooltip"
+#~ msgid "Remove calendar"
+#~ msgstr "Янги календар"
+
+#, fuzzy
+#~| msgid "Sets the Title of this event or to-do."
+#~ msgctxt "@info:whatsthis"
+#~ msgid ""
+#~ "Press this button to delete the calendar currently selected in the list "
+#~ "above."
+#~ msgstr "Ушбу ҳодиса ёки вазифа сарлавҳасини мослаш."
+
+#, fuzzy
+#~| msgid "Edit Calendar Filters"
+#~ msgid "Add Calendar Folder"
+#~ msgstr "Календар филтерларини таҳрирлаш"
+
+#, fuzzy
+#~| msgid "Add as new calendar"
+#~ msgid "%1 calendar"
+#~ msgstr "Янги календар сифатида қўшиш"
+
+#, fuzzy
+#~| msgid "Please enter a name for the new template:"
+#~ msgid "Please enter a new name for the calendar folder"
+#~ msgstr "Илтимос янги намунанинг номини киритинг:"
+
+#, fuzzy
+#~| msgid "Cannot write archive file %1."
+#~ msgid "<qt>Cannot edit the calendar folder <b>%1</b>.</qt>"
+#~ msgstr "%1 архив файлини ёзиб бўлмади."
+
+#, fuzzy
+#~| msgid "Re&load"
+#~ msgctxt "reload the resource"
+#~ msgid "Re&load"
+#~ msgstr "&Қайтадан юклаш"
+
+#, fuzzy
+#~| msgid "Travel"
+#~ msgctxt "save the resource"
+#~ msgid "&Save"
+#~ msgstr "Саёҳат"
+
+#~ msgid "Show &Info"
+#~ msgstr "&Маълумотни кўрсатиш"
+
+#, fuzzy
+#~| msgid "Edit Calendar Filters"
+#~ msgid "&Add Calendar Folder..."
+#~ msgstr "Календар филтерларини таҳрирлаш"
+
+#, fuzzy
+#~| msgid "General"
+#~ msgctxt "@title:tab general event settings"
+#~ msgid "General"
+#~ msgstr "Умумий"
+
+#, fuzzy
+#~| msgid "Details"
+#~ msgctxt "@title:tab"
+#~ msgid "Details"
+#~ msgstr "Тафсилотлар"
+
+#, fuzzy
+#~| msgid "Resources"
+#~ msgctxt "@title:tab"
+#~ msgid "Rec&urrence"
+#~ msgstr "Манбалар"
+
+#, fuzzy
+#~| msgid "General"
+#~ msgctxt "@title:tab general to-do settings"
+#~ msgid "General"
+#~ msgstr "Умумий"
+
+#~ msgid "Active Calendar"
+#~ msgstr "Актив календар"
+
+#, fuzzy
+#~| msgid "&Reminder:"
+#~ msgctxt "@label"
+#~ msgid "Reminder:"
+#~ msgstr "&Эсга солиш:"
+
+#, fuzzy
+#~| msgid "event"
+#~ msgctxt "incidence type is event"
+#~ msgid "event"
+#~ msgstr "ҳодиса"
+
+#, fuzzy
+#~| msgid "task"
+#~ msgctxt "incidence type is to-do/task"
+#~ msgid "task"
+#~ msgstr "вазифа"
+
+#, fuzzy
+#~| msgid "Edit this journal entry"
+#~ msgctxt "incidence type is journal"
+#~ msgid "journal entry"
+#~ msgstr "Ушбу кундалик ёзувини таҳрирлаш"
+
+#, fuzzy
+#~ msgctxt "@title:column reminder date/time"
+#~ msgid "Reminder Time"
+#~ msgstr "Сана ва вақт"
+
+#~ msgid "Zoom In"
+#~ msgstr "Катталаштириш"
+
+#~ msgid "Zoom Out"
+#~ msgstr "Кичиклаштириш"
+
+#~ msgid "Accept"
+#~ msgstr "Қабул қилиш"
+
+#, fuzzy
+#~| msgid "Reminder"
+#~ msgctxt "@title:column reminder date/time"
+#~ msgid "Reminder"
+#~ msgstr "Эсга солиш"
+
+#, fuzzy
+#~ msgctxt "@item:inlistbox alarm offset expressed in minutes"
+#~ msgid "Minutes"
+#~ msgstr "5 дақиқа"
+
+#, fuzzy
+#~ msgctxt "@item:inlistbox alarm offset expressed in hours"
+#~ msgid "Hours"
+#~ msgstr "Соат"
+
+#, fuzzy
+#~ msgctxt "@item:inlistbox alarm offset expressed in days"
+#~ msgid "Days"
+#~ msgstr "Кун"
+
+#, fuzzy
+#~ msgid "Before the Start"
+#~ msgstr "Ишга туширилмасин"
+
+#, fuzzy
+#~ msgid "&Display reminder"
+#~ msgstr "Эсга солиш"
+
+#, fuzzy
+#~ msgid "Reminder &text:"
+#~ msgstr "Эсга солиш ойнаси"
+
+#, fuzzy
+#~ msgctxt "@label"
+#~ msgid "Time zone:"
+#~ msgstr "Вақт зонаси:"
+
+#, fuzzy
+#~| msgid "Unknown"
+#~ msgctxt "@item:inlistbox unknown timezone"
+#~ msgid "Unknown"
+#~ msgstr "Номаълум"
+
+#, fuzzy
+#~| msgid "[No selection]"
+#~ msgctxt "@item:inlistbox no timezone selected"
+#~ msgid "[No selection]"
+#~ msgstr "[Танланмаган]"
+
+#~ msgid "&Find"
+#~ msgstr "&Қидириш"
+
+#~ msgid "Delete Confirmation"
+#~ msgstr "Ўчиришни тасдиқлаш"
+
+#, fuzzy
+#~ msgctxt "@action:button"
+#~ msgid "Delete"
+#~ msgstr "%1'ни ўчириш"
+
+#, fuzzy
+#~| msgid "Please enter a name for the new template:"
+#~ msgid "Please enter a name for the new subresource"
+#~ msgstr "Илтимос янги намунанинг номини киритинг:"
+
+#, fuzzy
+#~| msgid "Resources"
+#~ msgid "&Add Resource..."
+#~ msgstr "Манбалар"
+
+#, fuzzy
+#~ msgid "Resource Colors"
+#~ msgstr "Манбалар"
+
+#, fuzzy
+#~ msgid "Print &Year:"
+#~ msgstr "Босиб чиқариш услуби"
+
+#, fuzzy
+#~ msgid "No (unset) category color"
+#~ msgstr "Туркумлар"
+
+#~ msgid "&Add..."
+#~ msgstr "&Қўшиш..."
+
+#, fuzzy
+#~ msgctxt "@action:inmenu remove the attachment"
+#~ msgid "&Delete"
+#~ msgstr "%1'ни ўчириш"
+
+#, fuzzy
+#~| msgid "Scheduler Mail Client"
+#~ msgctxt "@title"
+#~ msgid "Scheduler Mail Client"
+#~ msgstr "Почта дастурини режалаштириш"
+
+#, fuzzy
+#~| msgid "Mail client"
+#~ msgctxt "@option:radio"
+#~ msgid "Mail client"
+#~ msgstr "Хат-хабар клиенти"
+
+#, fuzzy
+#~ msgctxt "@item:inlistbox"
+#~ msgid "1 minute"
+#~ msgstr "1 дақиқа"
+
+#, fuzzy
+#~| msgid "5 minutes"
+#~ msgctxt "@item:inlistbox"
+#~ msgid "5 minutes"
+#~ msgstr "5 дақиқа"
+
+#, fuzzy
+#~| msgid "10 minutes"
+#~ msgctxt "@item:inlistbox"
+#~ msgid "10 minutes"
+#~ msgstr "10 дақиқа"
+
+#, fuzzy
+#~| msgid "15 minutes"
+#~ msgctxt "@item:inlistbox"
+#~ msgid "15 minutes"
+#~ msgstr "15 дақиқа"
+
+#, fuzzy
+#~| msgid "30 minutes"
+#~ msgctxt "@item:inlistbox"
+#~ msgid "30 minutes"
+#~ msgstr "30 дақиқа"
+
+#~ msgid "Default Reminder Time"
+#~ msgstr "Андоза эсга солиш вақти"
+
+#, fuzzy
+#~| msgid "Summary"
+#~ msgctxt "@title:column reminder summary"
+#~ msgid "Summary"
+#~ msgstr "Ҳисобот"
+
+#~ msgid "Apply Template"
+#~ msgstr "Намунани қўллаш"
+
+#, fuzzy
+#~| msgid "New &Journal..."
+#~ msgctxt "Journal for DATE"
+#~ msgid "Journal for %1"
+#~ msgstr "Янги &кундалик"
+
+#, fuzzy
+#~ msgctxt "@item delimiter for joining category names"
+#~ msgid ","
+#~ msgstr ", "
+
+#, fuzzy
+#~ msgctxt "@info delimiter for joining category names"
+#~ msgid ","
+#~ msgstr ", "
+
+#, fuzzy
+#~| msgid "Name"
+#~ msgctxt "addressee name"
+#~ msgid "Name"
+#~ msgstr "Номи"
+
+#, fuzzy
+#~| msgid "Email"
+#~ msgctxt "addressee email"
+#~ msgid "Email"
+#~ msgstr "Электрон почта"
+
+#, fuzzy
+#~| msgid "Name:"
+#~ msgctxt "addressee name"
+#~ msgid "Name:"
+#~ msgstr "Номи:"
+
+#~ msgid "Select &Addressee..."
+#~ msgstr "Олувчини &танлаш"
+
+#, fuzzy
+#~| msgid "&Add..."
+#~ msgctxt "@action:button"
+#~ msgid "&Add..."
+#~ msgstr "&Қўшиш..."
+
+#~ msgid "Filter: "
+#~ msgstr "Филтер:"
+
+#, fuzzy
+#~| msgid "Categories"
+#~ msgid "categories-view"
+#~ msgstr "Туркумлар"
+
+#, fuzzy
+#~| msgid "Holiday"
+#~ msgctxt "incidence category"
+#~ msgid "Holiday"
+#~ msgstr "Дам олиш"
+
+#, fuzzy
+#~| msgid "Show only selected"
+#~ msgid "Show timezone selectors"
+#~ msgstr "Фақат танланганни кўрсатиш"
+
+#, fuzzy
+#~ msgid "31st Last"
+#~ msgstr "Охирги 3 чи"
+
+#, fuzzy
+#~ msgid "30th Last"
+#~ msgstr "Охирги 4 чи"
+
+#, fuzzy
+#~ msgid "29th Last"
+#~ msgstr "Охирги 4 чи"
+
+#, fuzzy
+#~ msgid "28th Last"
+#~ msgstr "Охирги 4 чи"
+
+#, fuzzy
+#~ msgid "27th Last"
+#~ msgstr "Охирги 4 чи"
+
+#, fuzzy
+#~ msgid "26th Last"
+#~ msgstr "Охирги 4 чи"
+
+#, fuzzy
+#~ msgid "25th Last"
+#~ msgstr "Охирги 5 чи"
+
+#, fuzzy
+#~ msgid "24th Last"
+#~ msgstr "Охирги 4 чи"
+
+#, fuzzy
+#~ msgid "23rd Last"
+#~ msgstr "Охирги 3 чи"
+
+#, fuzzy
+#~ msgid "22nd Last"
+#~ msgstr "Охирги 2 чи"
+
+#, fuzzy
+#~ msgid "21st Last"
+#~ msgstr "Охирги 2 чи"
+
+#, fuzzy
+#~ msgid "20th Last"
+#~ msgstr "Охирги 4 чи"
+
+#, fuzzy
+#~ msgid "19th Last"
+#~ msgstr "Охирги 4 чи"
+
+#, fuzzy
+#~ msgid "18th Last"
+#~ msgstr "Охирги 4 чи"
+
+#, fuzzy
+#~ msgid "17th Last"
+#~ msgstr "Охирги 4 чи"
+
+#, fuzzy
+#~ msgid "16th Last"
+#~ msgstr "Охирги 4 чи"
+
+#, fuzzy
+#~ msgid "15th Last"
+#~ msgstr "Охирги 5 чи"
+
+#, fuzzy
+#~ msgid "14th Last"
+#~ msgstr "Охирги 4 чи"
+
+#, fuzzy
+#~ msgid "13th Last"
+#~ msgstr "Охирги 4 чи"
+
+#, fuzzy
+#~ msgid "12th Last"
+#~ msgstr "Охирги 4 чи"
+
+#, fuzzy
+#~ msgid "11th Last"
+#~ msgstr "Охирги 4 чи"
+
+#, fuzzy
+#~ msgid "10th Last"
+#~ msgstr "Охирги 4 чи"
+
+#, fuzzy
+#~ msgid "9th Last"
+#~ msgstr "Охирги 4 чи"
+
+#, fuzzy
+#~ msgid "8th Last"
+#~ msgstr "Охирги 4 чи"
+
+#, fuzzy
+#~ msgid "7th Last"
+#~ msgstr "Охирги 4 чи"
+
+#, fuzzy
+#~ msgid "6th Last"
+#~ msgstr "Охирги 4 чи"
+
+#, fuzzy
+#~| msgid "5th Last"
+#~ msgid "5th Last"
+#~ msgstr "Охирги 5 чи"
+
+#, fuzzy
+#~| msgid "4th Last"
+#~ msgid "4th Last"
+#~ msgstr "Охирги 4 чи"
+
+#, fuzzy
+#~| msgid "3rd Last"
+#~ msgid "3rd Last"
+#~ msgstr "Охирги 3 чи"
+
+#, fuzzy
+#~| msgid "2nd Last"
+#~ msgid "2nd Last"
+#~ msgstr "Охирги 2 чи"
+
+#, fuzzy
+#~| msgid "Last"
+#~ msgctxt "last day of the month"
+#~ msgid "Last"
+#~ msgstr "Охирги"
+
+#, fuzzy
+#~| msgid "1st"
+#~ msgid "1st"
+#~ msgstr "1 чи"
+
+#, fuzzy
+#~| msgid "2nd"
+#~ msgid "2nd"
+#~ msgstr "2 чи"
+
+#, fuzzy
+#~| msgid "3rd"
+#~ msgid "3rd"
+#~ msgstr "3 чи"
+
+#, fuzzy
+#~| msgid "4th"
+#~ msgid "4th"
+#~ msgstr "4 чи"
+
+#, fuzzy
+#~| msgid "5th"
+#~ msgid "5th"
+#~ msgstr "5 чи"
+
+#, fuzzy
+#~| msgid "every "
+#~ msgid "Every day"
+#~ msgid_plural "Every %1 days"
+#~ msgstr[0] "ҳар "
+
+#, fuzzy
+#~| msgid "every "
+#~ msgctxt "Every N MONTH[S] on day N"
+#~ msgid "Every month on day %2"
+#~ msgid_plural "Every %1 months on day %2"
+#~ msgstr[0] "ҳар "
+
+#, fuzzy
+#~| msgid "Resources"
+#~ msgid "occurrences"
+#~ msgid_plural "occurrences"
+#~ msgstr[0] "Манбалар"
+
+#, fuzzy
+#~| msgctxt "short_weekday date (e.g. Mon 13)"
+#~| msgid "%1 %2"
+#~ msgctxt "for N %OCCURRENCE[S]"
+#~ msgid "for %1 %2"
+#~ msgstr "%1 %2"
+
+#, fuzzy
+#~ msgid "Attendees:"
+#~ msgstr "&Қатнашувчилар"
+
+#, fuzzy
+#~| msgid "Zoom Out"
+#~ msgctxt "@action:button"
+#~ msgid "Zoom to Fit"
+#~ msgstr "Кичиклаштириш"
+
+#, fuzzy
+#~| msgid "Week"
+#~ msgid "week"
+#~ msgid_plural "weeks"
+#~ msgstr[0] "Ҳафта"
+
+#, fuzzy
+#~| msgid "Month"
+#~ msgid "month"
+#~ msgid_plural "months"
+#~ msgstr[0] "Ой"
+
+#, fuzzy
+#~| msgid "year(s)"
+#~ msgid "year"
+#~ msgid_plural "years"
+#~ msgstr[0] "йил"
+
+#, fuzzy
+#~| msgid "Sets the Title of this event or to-do."
+#~ msgctxt "@info:whatsthis"
+#~ msgid "Day of the week on which this event or to-do should recur."
+#~ msgstr "Ушбу ҳодиса ёки вазифа сарлавҳасини мослаш."
+
+#, fuzzy
+#~ msgctxt "Unspecified priority"
+#~ msgid "unspecified"
+#~ msgstr "Таъри&флар"
+
+#, fuzzy
+#~| msgid "1 (highest)"
+#~ msgid "1 (highest)"
+#~ msgstr "1 (энг юқори)"
+
+#, fuzzy
+#~| msgid "9 (lowest)"
+#~ msgid "9 (lowest)"
+#~ msgstr "9 (энг паст)"
+
+#, fuzzy
+#~| msgid "Month View"
+#~ msgid "&New Month View"
+#~ msgstr "Ой кўриниши"
+
+#, fuzzy
+#~ msgctxt "@info alarm offset specified in days"
+#~ msgid "1 day"
+#~ msgid_plural "%1 days"
+#~ msgstr[0] "1 кун"
+
+#, fuzzy
+#~ msgctxt "@info alarm offset specified in hours"
+#~ msgid "1 hour"
+#~ msgid_plural "%1 hours"
+#~ msgstr[0] "1 соат"
+
+#, fuzzy
+#~ msgctxt "@info alarm offset specified in minutes"
+#~ msgid "1 minute"
+#~ msgid_plural "%1 minutes"
+#~ msgstr[0] "1 дақиқа"
+
+#, fuzzy
+#~| msgid "Calendar"
+#~ msgid "Calendar: %1"
+#~ msgstr "Календар"
+
+#, fuzzy
+#~ msgid "Underline text"
+#~ msgstr "Эсга солиш ойнаси"
+
+#, fuzzy
+#~| msgid "Event text"
+#~ msgid "Center text"
+#~ msgstr "Ҳодиса матни"
+
+#, fuzzy
+#~| msgid "Enter the default reminder time here."
+#~ msgctxt "@info:whatsthis"
+#~ msgid "Enter the default reminder time here."
+#~ msgstr "Андоза эсга солиш вақтини шу ерга киритинг."
+
+#, fuzzy
+#~| msgid "Reminders Enabled"
+#~ msgctxt "@action:inmenu"
+#~ msgid "Reminders Enabled"
+#~ msgstr "Эсга солиш ёқилган"
+
+#, fuzzy
+#~| msgid "Reminder"
+#~ msgctxt "@title:window"
+#~ msgid "Reminder"
+#~ msgstr "Эсга солиш"
+
+#, fuzzy
+#~| msgid "&Date:"
+#~ msgctxt "@title:column reminder due date/time"
+#~ msgid "Due"
+#~ msgstr "Са&на:"
+
+#~ msgid "&Templates..."
+#~ msgstr "&Намуналар..."
+
+#, fuzzy
+#~ msgid "Edit"
+#~ msgstr "%1'ни таҳрирлаш"
+
+#, fuzzy
+#~| msgid "day(s)"
+#~ msgctxt "@label"
+#~ msgid "day(s)"
+#~ msgstr "кун"
+
+#~ msgid "Owner:"
+#~ msgstr "Эгаси:"
+
+#, fuzzy
+#~| msgid "&New"
+#~ msgctxt "@action:button add a new attendee"
+#~ msgid "&New"
+#~ msgstr "&Янги"
+
+#, fuzzy
+#~ msgctxt "@action:button remove this attendee"
+#~ msgid "&Remove"
+#~ msgstr "Тутган ўрин"
+
+#, fuzzy
+#~ msgctxt "@action:button"
+#~ msgid "&Properties..."
+#~ msgstr "&Таҳрирлаш"
+
+#, fuzzy
+#~| msgid "&Show"
+#~ msgctxt "@action:button"
+#~ msgid "&Show"
+#~ msgstr "&Кўрсатиш"
+
+#~ msgid "Role"
+#~ msgstr "Тутган ўрин"
+
+#~ msgid "RSVP"
+#~ msgstr "RSVP"
+
+#, fuzzy
+#~ msgctxt "Example: 5 hours (80%)"
+#~ msgid "%1 hours ("
+#~ msgstr "1 соат"
+
+#~ msgid "<undefined>"
+#~ msgstr "<ноаниқ>"
+
+#~ msgid "Owner: "
+#~ msgstr "Эгаси: "
+
+#~ msgid "Go to &Today"
+#~ msgstr "&Бугунга ўтиш"
+
+#~ msgid "&List"
+#~ msgstr "&Рўйхат"
+
+#~ msgid "Previous year"
+#~ msgstr "Олдинги йил"
+
+#~ msgid "Previous month"
+#~ msgstr "Олдинги ой"
+
+#~ msgid "Next month"
+#~ msgstr "Келаси ой"
+
+#~ msgid "Co-Maintainer"
+#~ msgstr "Иккинчи таъминловчи"
+
+#, fuzzy
+#~| msgid "Go &Forward"
+#~ msgid "Floating"
+#~ msgstr "Олдин&га ўтиш"
+
+#~ msgid "&Title: "
+#~ msgstr "&Сарлавҳа:"
+
+#~ msgid "Ti&me: "
+#~ msgstr "В&ақт:"
+
+#, fuzzy
+#~ msgid "Sets the time associated with this journal  entry"
+#~ msgstr "Ушбу кундаликнинг номини кўрсатиш."
+
+#, fuzzy
+#~ msgid "Reset"
+#~ msgstr "Қайтариш"
+
+#, fuzzy
+#~ msgid "&Reminder Dialog"
+#~ msgstr "Эсга солиш ойнаси"
+
+#, fuzzy
+#~ msgid "A&udio"
+#~ msgstr "Аудио"
+
+#, fuzzy
+#~ msgid "Email &address(es):"
+#~ msgstr "Электрон п&очта"
+
+#~ msgid "URI"
+#~ msgstr "URI"
+
+#~ msgid "MIME Type"
+#~ msgstr "MIME тури"
+
+#~ msgid "Edit Attachment"
+#~ msgstr "Иловани таҳрирлаш"
+
+#~ msgid "&Project"
+#~ msgstr "&Лойиҳа"
+
+#~ msgid "Exchange Plugin"
+#~ msgstr "Exchange плагини"
+
+#~ msgid "Exchange server:"
+#~ msgstr "Exchange сервери:"
+
+#~ msgid "Port:"
+#~ msgstr "Порт:"
+
+#~ msgid "User:"
+#~ msgstr "Фойдаланувчи:"
+
+#~ msgid "Start date:"
+#~ msgstr "Бошлаш куни:"
+
+#~ msgid "End date:"
+#~ msgstr "Тугаш куни:"
+
+#~ msgid "&Download..."
+#~ msgstr "Ёзиб &олиш"
+
+#~ msgid "&Upload Event..."
+#~ msgstr "Ҳодисани &ёзиб қўйиш"
+
+#~ msgid "De&lete Event"
+#~ msgstr "Ҳодисани &ўчириш"
+
+#~ msgid "&Upload"
+#~ msgstr "&Ёзиб қўйиш"
+
+#~ msgid "Unknown Error"
+#~ msgstr "Номаълум хато"

@@ -1,0 +1,3393 @@
+# translation of korganizer.po to Upper Sorbian
+# Copyright (C) 2003,2004 Free Software Foundation, Inc.
+# Prof. Dr. Eduard Werner <e.werner@rz.uni-leipzig.de>, 2003,2004
+#
+msgid ""
+msgstr ""
+"Project-Id-Version: korganizer\n"
+"Report-Msgid-Bugs-To: https://bugs.kde.org\n"
+"POT-Creation-Date: 2024-06-26 00:40+0000\n"
+"PO-Revision-Date: 2004-04-16 17:59+0200\n"
+"Last-Translator: Prof. Dr. Eduard Werner <e.werner@rz.uni-leipzig.de>\n"
+"Language-Team: Upper Sorbian\n"
+"Language: hsb\n"
+"MIME-Version: 1.0\n"
+"Content-Type: text/plain; charset=UTF-8\n"
+"Content-Transfer-Encoding: 8bit\n"
+"Plural-Forms: nplurals=4; plural=n%100==1 ? 0 : n%100==2 ? 1 : n%100==3 || n"
+"%100==4 ? 2 : 3;\n"
+
+#: datenums/configdialog.cpp:28
+#, fuzzy, kde-format
+msgctxt "@title:window"
+msgid "Configure Day Numbers"
+msgstr "&Měsac"
+
+#: datenums/configdialog.cpp:43
+#, fuzzy, kde-format
+msgid "Show Date Number"
+msgstr "Konfiguracija resursow"
+
+#: datenums/configdialog.cpp:48
+#, fuzzy, kde-format
+msgid "Show day number"
+msgstr "&Měsac"
+
+#: datenums/configdialog.cpp:51
+#, fuzzy, kde-format
+msgid "Show days to end of year"
+msgstr "Konfiguracija &skrótšenkow..."
+
+#: datenums/configdialog.cpp:54
+#, fuzzy, kde-format
+msgid "Show both"
+msgstr "Narodniny"
+
+#: datenums/datenums.cpp:36
+#, kde-format
+msgid "This plugin shows information on a day's position in the year."
+msgstr ""
+
+#: datenums/datenums.cpp:54
+#, kde-format
+msgid "1 day before the end of the year"
+msgid_plural "%1 days before the end of the year"
+msgstr[0] ""
+msgstr[1] ""
+msgstr[2] ""
+msgstr[3] ""
+
+#: datenums/datenums.cpp:59
+#, kde-format
+msgctxt "dayOfYear / daysTillEndOfYear"
+msgid "%1 / %2"
+msgstr ""
+
+#: datenums/datenums.cpp:60
+#, kde-format
+msgid "1 day since the beginning of the year,\n"
+msgid_plural "%1 days since the beginning of the year,\n"
+msgstr[0] ""
+msgstr[1] ""
+msgstr[2] ""
+msgstr[3] ""
+
+#: datenums/datenums.cpp:61
+#, kde-format
+msgid "1 day until the end of the year"
+msgid_plural "%1 days until the end of the year"
+msgstr[0] ""
+msgstr[1] ""
+msgstr[2] ""
+msgstr[3] ""
+
+#: datenums/datenums.cpp:102
+#, fuzzy, kde-format
+#| msgid "&Week"
+msgctxt "Week weekOfYear"
+msgid "Week %1"
+msgstr "&Tydźeń"
+
+#: datenums/datenums.cpp:103 datenums/datenums.cpp:113
+#: datenums/datenums.cpp:118
+#, kde-format
+msgid "1 week since the beginning of the year"
+msgid_plural "%1 weeks since the beginning of the year"
+msgstr[0] ""
+msgstr[1] ""
+msgstr[2] ""
+msgstr[3] ""
+
+#: datenums/datenums.cpp:106
+#, fuzzy, kde-format
+msgctxt "weekOfYear (year)"
+msgid "%1 (%2)"
+msgstr "&Tydźeń"
+
+#: datenums/datenums.cpp:107
+#, fuzzy, kde-format
+msgctxt "Week weekOfYear (year)"
+msgid "Week %1 (%2)"
+msgstr "&Tydźeń"
+
+#: datenums/datenums.cpp:122
+#, kde-format
+msgid "1 week remaining"
+msgid_plural "%1 weeks remaining"
+msgstr[0] ""
+msgstr[1] ""
+msgstr[2] ""
+msgstr[3] ""
+
+#: datenums/datenums.cpp:123
+#, kde-format
+msgid "1 week until the end of the year"
+msgid_plural "%1 weeks until the end of the year"
+msgstr[0] ""
+msgstr[1] ""
+msgstr[2] ""
+msgstr[3] ""
+
+#: datenums/datenums.cpp:124
+#, kde-format
+msgctxt "weekOfYear / weeksTillEndOfYear"
+msgid "%1 / %2"
+msgstr ""
+
+#: datenums/datenums.cpp:140
+#, kde-format
+msgctxt ""
+"n weeks since the beginning of the year\n"
+"n weeks until the end of the year"
+msgid ""
+"%1\n"
+"%2"
+msgstr ""
+
+#: hebrew/configdialog.cpp:28
+#, fuzzy, kde-format
+msgctxt "@title:window"
+msgid "Configure Holidays"
+msgstr "Konfiguracija &skrótšenkow..."
+
+#: hebrew/configdialog.cpp:42
+#, kde-format
+msgid "Use Israeli holidays"
+msgstr ""
+
+#: hebrew/configdialog.cpp:46
+#, kde-format
+msgid "Show weekly parsha"
+msgstr ""
+
+#: hebrew/configdialog.cpp:50
+#, kde-format
+msgid "Show day of Omer"
+msgstr ""
+
+#: hebrew/configdialog.cpp:54
+#, fuzzy, kde-format
+msgid "Show Chol HaMoed"
+msgstr "&Měsac"
+
+#: hebrew/hebrew.cpp:60
+#, kde-format
+msgctxt ""
+"Change the next two strings if emphasis is done differently in your language."
+msgid ""
+"<qt><p align=\"center\"><i>\n"
+"%1\n"
+"</i></p></qt>"
+msgstr ""
+
+#: hebrew/hebrew.cpp:67
+#, kde-format
+msgid "This plugin provides the date in the Jewish calendar."
+msgstr ""
+
+#: hebrew/holiday.cpp:75
+#, kde-format
+msgctxt ""
+"These are Jewish holidays and mostly do not have translations. They may have "
+"different spellings in your language; otherwise, just translate the sound to "
+"your characters."
+msgid "Sh. HaHodesh"
+msgstr ""
+
+#: hebrew/holiday.cpp:83
+#, kde-format
+msgid "Erev Pesach"
+msgstr ""
+
+#: hebrew/holiday.cpp:94
+#, kde-format
+msgid "Sh. HaGadol"
+msgstr ""
+
+#: hebrew/holiday.cpp:102
+#, kde-format
+msgid "Pesach"
+msgstr ""
+
+#: hebrew/holiday.cpp:113 hebrew/holiday.cpp:307
+#, kde-format
+msgid "Chol Hamoed"
+msgstr ""
+
+#: hebrew/holiday.cpp:124 hebrew/holiday.cpp:129 hebrew/holiday.cpp:138
+#, kde-format
+msgid "Yom HaShoah"
+msgstr ""
+
+#: hebrew/holiday.cpp:164 hebrew/holiday.cpp:171 hebrew/holiday.cpp:182
+#, kde-format
+msgid "Yom HaAtzmaut"
+msgstr ""
+
+#: hebrew/holiday.cpp:166 hebrew/holiday.cpp:180
+#, kde-format
+msgid "Yom HaZikaron"
+msgstr ""
+
+#: hebrew/holiday.cpp:190
+#, kde-format
+msgid "Yom Yerushalayim"
+msgstr ""
+
+#: hebrew/holiday.cpp:194
+#, kde-format
+msgid "Lag BaOmer"
+msgstr ""
+
+#: hebrew/holiday.cpp:220
+#, fuzzy, kde-format
+msgid "Erev Shavuot"
+msgstr "Shvat"
+
+#: hebrew/holiday.cpp:225
+#, fuzzy, kde-format
+msgid "Shavuot"
+msgstr "Shvat"
+
+#: hebrew/holiday.cpp:234
+#, kde-format
+msgid "Tzom Tammuz"
+msgstr ""
+
+#: hebrew/holiday.cpp:242
+#, kde-format
+msgid "Sh. Hazon"
+msgstr ""
+
+#: hebrew/holiday.cpp:244
+#, kde-format
+msgid "Sh. Nahamu"
+msgstr ""
+
+#: hebrew/holiday.cpp:248
+#, kde-format
+msgid "Tisha B'Av"
+msgstr ""
+
+#: hebrew/holiday.cpp:254
+#, kde-format
+msgid "S'lichot"
+msgstr ""
+
+#: hebrew/holiday.cpp:256
+#, kde-format
+msgid "Erev R.H."
+msgstr ""
+
+#: hebrew/holiday.cpp:264
+#, kde-format
+msgid "Rosh Hashana"
+msgstr ""
+
+#: hebrew/holiday.cpp:268 hebrew/holiday.cpp:283
+#, kde-format
+msgid "Sh. Shuvah"
+msgstr ""
+
+#: hebrew/holiday.cpp:270 hebrew/holiday.cpp:275
+#, kde-format
+msgid "Tzom Gedalia"
+msgstr ""
+
+#: hebrew/holiday.cpp:287
+#, kde-format
+msgid "Erev Y.K."
+msgstr ""
+
+#: hebrew/holiday.cpp:290
+#, kde-format
+msgid "Yom Kippur"
+msgstr ""
+
+#: hebrew/holiday.cpp:293
+#, kde-format
+msgid "Erev Sukkot"
+msgstr ""
+
+#: hebrew/holiday.cpp:298
+#, kde-format
+msgid "Sukkot"
+msgstr ""
+
+#: hebrew/holiday.cpp:311
+#, kde-format
+msgid "Hoshana Rabah"
+msgstr ""
+
+#: hebrew/holiday.cpp:314
+#, kde-format
+msgid "Shmini Atzeret"
+msgstr ""
+
+#: hebrew/holiday.cpp:318
+#, kde-format
+msgid "Simchat Torah"
+msgstr ""
+
+#: hebrew/holiday.cpp:329
+#, kde-format
+msgid "Erev Hanukah"
+msgstr ""
+
+#: hebrew/holiday.cpp:331 hebrew/holiday.cpp:339
+#, kde-format
+msgid "Hanukah"
+msgstr ""
+
+#: hebrew/holiday.cpp:342
+#, fuzzy, kde-format
+msgid "Tzom Tevet"
+msgstr "Tevet"
+
+#: hebrew/holiday.cpp:352 hebrew/holiday.cpp:361 hebrew/holiday.cpp:366
+#: hebrew/holiday.cpp:372
+#, kde-format
+msgid "Sh. Shirah"
+msgstr ""
+
+#: hebrew/holiday.cpp:368
+#, fuzzy, kde-format
+msgid "Tu B'Shvat"
+msgstr "Shvat"
+
+#: hebrew/holiday.cpp:383 hebrew/holiday.cpp:395 hebrew/holiday.cpp:403
+#, kde-format
+msgid "Sh. Shekalim"
+msgstr ""
+
+#: hebrew/holiday.cpp:392
+#, kde-format
+msgid "Purim Katan"
+msgstr ""
+
+#: hebrew/holiday.cpp:411 hebrew/holiday.cpp:431
+#, kde-format
+msgid "Ta'anit Ester"
+msgstr ""
+
+#: hebrew/holiday.cpp:420 hebrew/holiday.cpp:425
+#, kde-format
+msgid "Sh. Zachor"
+msgstr ""
+
+#: hebrew/holiday.cpp:427
+#, kde-format
+msgid "Erev Purim"
+msgstr ""
+
+#: hebrew/holiday.cpp:435
+#, kde-format
+msgid "Purim"
+msgstr ""
+
+#: hebrew/holiday.cpp:439 hebrew/holiday.cpp:444
+#, kde-format
+msgid "Shushan Purim"
+msgstr ""
+
+#: hebrew/holiday.cpp:455
+#, kde-format
+msgid "Sh. Parah"
+msgstr ""
+
+#: hebrew/holiday.cpp:465
+#, kde-format
+msgid "Sh. HaHodesh"
+msgstr ""
+
+#: hebrew/holiday.cpp:481
+#, kde-format
+msgid " Omer"
+msgstr ""
+
+#: hebrew/parsha.cpp:28
+#, fuzzy, kde-format
+msgctxt ""
+"These are weekly readings and do not have translations. They may have "
+"different spellings in your language; otherwise, just translate the sound to "
+"your characters"
+msgid "Bereshit"
+msgstr "Ponowić"
+
+#: hebrew/parsha.cpp:29
+#, fuzzy, kde-format
+msgid "Noach"
+msgstr "Měrc"
+
+#: hebrew/parsha.cpp:29
+#, kde-format
+msgid "Lech L'cha"
+msgstr ""
+
+#: hebrew/parsha.cpp:29
+#, kde-format
+msgid "Vayera"
+msgstr ""
+
+#: hebrew/parsha.cpp:29
+#, kde-format
+msgid "Chaye Sarah"
+msgstr ""
+
+#: hebrew/parsha.cpp:29
+#, kde-format
+msgid "Toldot"
+msgstr ""
+
+#: hebrew/parsha.cpp:29
+#, kde-format
+msgid "Vayetze"
+msgstr ""
+
+#: hebrew/parsha.cpp:29
+#, kde-format
+msgid "Vayishlach"
+msgstr ""
+
+#: hebrew/parsha.cpp:30
+#, kde-format
+msgid "Vayeshev"
+msgstr ""
+
+#: hebrew/parsha.cpp:30
+#, kde-format
+msgid "Miketz"
+msgstr ""
+
+#: hebrew/parsha.cpp:30
+#, kde-format
+msgid "Vayigash"
+msgstr ""
+
+#: hebrew/parsha.cpp:30
+#, kde-format
+msgid "Vayechi"
+msgstr ""
+
+#: hebrew/parsha.cpp:30
+#, kde-format
+msgid "Shemot"
+msgstr ""
+
+#: hebrew/parsha.cpp:30
+#, kde-format
+msgid "Vaera"
+msgstr ""
+
+#: hebrew/parsha.cpp:30
+#, kde-format
+msgid "Bo"
+msgstr ""
+
+#: hebrew/parsha.cpp:31
+#, kde-format
+msgid "Beshalach"
+msgstr ""
+
+#: hebrew/parsha.cpp:31
+#, kde-format
+msgid "Yitro"
+msgstr ""
+
+#: hebrew/parsha.cpp:31
+#, kde-format
+msgid "Mishpatim"
+msgstr ""
+
+#: hebrew/parsha.cpp:31
+#, kde-format
+msgid "Terumah"
+msgstr ""
+
+#: hebrew/parsha.cpp:31
+#, fuzzy, kde-format
+msgid "Tetzaveh"
+msgstr "Tevet"
+
+#: hebrew/parsha.cpp:31
+#, kde-format
+msgid "Ki Tisa"
+msgstr ""
+
+#: hebrew/parsha.cpp:31
+#, kde-format
+msgid "Vayakhel"
+msgstr ""
+
+#: hebrew/parsha.cpp:32
+#, kde-format
+msgid "Pekudei"
+msgstr ""
+
+#: hebrew/parsha.cpp:32
+#, kde-format
+msgid "Vayikra"
+msgstr ""
+
+#: hebrew/parsha.cpp:32
+#, kde-format
+msgid "Tzav"
+msgstr ""
+
+#: hebrew/parsha.cpp:32
+#, kde-format
+msgid "Shemini"
+msgstr ""
+
+#: hebrew/parsha.cpp:32
+#, kde-format
+msgid "Tazria"
+msgstr ""
+
+#: hebrew/parsha.cpp:32
+#, kde-format
+msgid "Metzora"
+msgstr ""
+
+#: hebrew/parsha.cpp:32
+#, kde-format
+msgid "Acharei Mot"
+msgstr ""
+
+#: hebrew/parsha.cpp:33
+#, kde-format
+msgid "Kedoshim"
+msgstr ""
+
+#: hebrew/parsha.cpp:33
+#, kde-format
+msgid "Emor"
+msgstr ""
+
+#: hebrew/parsha.cpp:33
+#, kde-format
+msgid "Behar"
+msgstr ""
+
+#: hebrew/parsha.cpp:33
+#, kde-format
+msgid "Bechukotai"
+msgstr ""
+
+#: hebrew/parsha.cpp:33
+#, kde-format
+msgid "Bemidbar"
+msgstr ""
+
+#: hebrew/parsha.cpp:33
+#, kde-format
+msgid "Naso"
+msgstr ""
+
+#: hebrew/parsha.cpp:33
+#, kde-format
+msgid "Behaalotcha"
+msgstr ""
+
+#: hebrew/parsha.cpp:34
+#, kde-format
+msgid "Shelach"
+msgstr ""
+
+#: hebrew/parsha.cpp:34
+#, kde-format
+msgid "Korach"
+msgstr ""
+
+#: hebrew/parsha.cpp:34
+#, kde-format
+msgid "Chukat"
+msgstr ""
+
+#: hebrew/parsha.cpp:34
+#, kde-format
+msgid "Balak"
+msgstr ""
+
+#: hebrew/parsha.cpp:34
+#, kde-format
+msgid "Pinchas"
+msgstr ""
+
+#: hebrew/parsha.cpp:34
+#, kde-format
+msgid "Matot"
+msgstr ""
+
+#: hebrew/parsha.cpp:34
+#, kde-format
+msgid "Masei"
+msgstr ""
+
+#: hebrew/parsha.cpp:35
+#, kde-format
+msgid "Devarim"
+msgstr ""
+
+#: hebrew/parsha.cpp:35
+#, kde-format
+msgid "Vaetchanan"
+msgstr ""
+
+#: hebrew/parsha.cpp:35
+#, kde-format
+msgid "Ekev"
+msgstr ""
+
+#: hebrew/parsha.cpp:35
+#, fuzzy, kde-format
+msgid "Reeh"
+msgstr "Ponowić"
+
+#: hebrew/parsha.cpp:35
+#, kde-format
+msgid "Shoftim"
+msgstr ""
+
+#: hebrew/parsha.cpp:35
+#, fuzzy, kde-format
+msgid "Ki Tetze"
+msgstr "Tevet"
+
+#: hebrew/parsha.cpp:35
+#, kde-format
+msgid "Ki Tavo"
+msgstr ""
+
+#: hebrew/parsha.cpp:36
+#, kde-format
+msgid "Nitzavim"
+msgstr ""
+
+#: hebrew/parsha.cpp:36
+#, kde-format
+msgid "Vayelech"
+msgstr ""
+
+#: hebrew/parsha.cpp:36
+#, kde-format
+msgid "Haazinu"
+msgstr ""
+
+#: lunarphases/lunarphases.cpp:61
+#, kde-format
+msgid ""
+"This plugin displays the day's lunar phase (New, First, Last, Full). "
+"Currently, the phase is computed for noon at UTC; therefore, you should "
+"expect variations by 1 day in either direction."
+msgstr ""
+
+#: picoftheday/configdialog.cpp:28
+#, fuzzy, kde-format
+msgctxt "@title:window"
+msgid "Configure Picture of the Day"
+msgstr "&Měsac"
+
+#: picoftheday/configdialog.cpp:42
+#, kde-format
+msgid "Thumbnail Aspect Ratio Mode"
+msgstr ""
+
+#: picoftheday/configdialog.cpp:46
+#, kde-format
+msgid "Ignore aspect ratio"
+msgstr ""
+
+#: picoftheday/configdialog.cpp:48
+#, kde-format
+msgid ""
+"The thumbnail will be scaled freely. The aspect ratio will not be preserved."
+msgstr ""
+
+#: picoftheday/configdialog.cpp:52
+#, kde-format
+msgid "Keep aspect ratio"
+msgstr ""
+
+#: picoftheday/configdialog.cpp:54
+#, kde-format
+msgid ""
+"The thumbnail will be scaled to a rectangle as large as possible inside a "
+"given rectangle, preserving the aspect ratio."
+msgstr ""
+
+#: picoftheday/configdialog.cpp:59
+#, kde-format
+msgid "Keep aspect ratio by expanding"
+msgstr ""
+
+#: picoftheday/configdialog.cpp:61
+#, kde-format
+msgid ""
+"The thumbnail will be scaled to a rectangle as small as possible outside a "
+"given rectangle, preserving the aspect ratio."
+msgstr ""
+
+#: picoftheday/element.cpp:209
+#, kde-format
+msgid "Wikipedia POTD: %1"
+msgstr ""
+
+#: picoftheday/element.cpp:326
+#, fuzzy, kde-format
+msgid "Picture Page"
+msgstr "Titl"
+
+#: picoftheday/element.cpp:326
+#, fuzzy, kde-format
+msgid "Loading..."
+msgstr "Konfiguracija &skrótšenkow..."
+
+#: picoftheday/element.cpp:332
+#, fuzzy, kde-format
+msgid "<qt>Loading <i>Picture of the Day</i>...</qt>"
+msgstr "&Měsac"
+
+#: picoftheday/picoftheday.cpp:48
+#, kde-format
+msgid "<qt>This plugin provides the Wikipedia <i>Picture of the Day</i>.</qt>"
+msgstr ""
+
+#: thisdayinhistory/thisdayinhistory.cpp:29
+#, kde-format
+msgid "This plugin provides links to Wikipedia's 'This Day in History' pages."
+msgstr ""
+
+#: thisdayinhistory/thisdayinhistory.cpp:37
+#, kde-format
+msgid "This day in history"
+msgstr ""
+
+#: thisdayinhistory/thisdayinhistory.cpp:39
+#: thisdayinhistory/thisdayinhistory.cpp:53
+#, kde-format
+msgctxt "Localized Wikipedia website"
+msgid "https://en.wikipedia.org/wiki/"
+msgstr ""
+
+#: thisdayinhistory/thisdayinhistory.cpp:40
+#, kde-format
+msgctxt "Qt date format used by the localized Wikipedia"
+msgid "MMMM_d"
+msgstr ""
+
+#: thisdayinhistory/thisdayinhistory.cpp:51
+#, kde-format
+msgid "This month in history"
+msgstr ""
+
+#: thisdayinhistory/thisdayinhistory.cpp:54
+#, kde-format
+msgctxt "Qt date format used by the localized Wikipedia"
+msgid "MMMM_yyyy"
+msgstr ""
+
+#~ msgctxt "NAME OF TRANSLATORS"
+#~ msgid "Your names"
+#~ msgstr "Edward Wornar"
+
+#~ msgctxt "EMAIL OF TRANSLATORS"
+#~ msgid "Your emails"
+#~ msgstr "e.werner@rz.uni-leipzig.de"
+
+#, fuzzy
+#~ msgid "Don Sanders"
+#~ msgstr "Titl"
+
+#, fuzzy
+#~ msgid "Merge the contents of another iCalendar"
+#~ msgstr "&Wróćo na prěnjotny staw"
+
+#, fuzzy
+#~ msgid "&Import From UNIX Ical Tool"
+#~ msgstr "Z &Ical importować"
+
+#, fuzzy
+#~ msgid "Export as &iCalendar..."
+#~ msgstr "Konfiguracija &skrótšenkow..."
+
+#, fuzzy
+#~ msgid "Export as &vCalendar..."
+#~ msgstr "Konfiguracija &skrótšenkow..."
+
+#, fuzzy
+#~ msgid "&Delete"
+#~ msgstr "Titl"
+
+#~ msgid "&Month"
+#~ msgstr "&Měsac"
+
+#, fuzzy
+#~ msgid "&Agenda"
+#~ msgstr "&Měsac"
+
+#, fuzzy
+#~ msgid "&To-do List"
+#~ msgstr "Na:"
+
+#, fuzzy
+#~ msgid "Time&line"
+#~ msgstr "Titl"
+
+#, fuzzy
+#~ msgid "&Refresh"
+#~ msgstr "Ponowić"
+
+#, fuzzy
+#~ msgid "F&ilter"
+#~ msgstr "Filtry wobdźěłać..."
+
+#~ msgid "&Week"
+#~ msgstr "&Tydźeń"
+
+#, fuzzy
+#~ msgid "Create a new To-do"
+#~ msgstr "Na:"
+
+#, fuzzy
+#~ msgid "Configure View..."
+#~ msgstr "Konfiguracija &skrótšenkow..."
+
+#~ msgid "&Edit..."
+#~ msgstr "&wobdźěłać"
+
+#, fuzzy
+#~ msgid "Re&quest Update"
+#~ msgstr "&Wróćo na prěnjotny staw"
+
+#, fuzzy
+#~ msgid "Send Status &Update"
+#~ msgstr "Titl"
+
+#, fuzzy
+#~ msgid "&Mail Free Busy Information..."
+#~ msgstr "Konfiguracija resursow"
+
+#, fuzzy
+#~ msgid "&Send as iCalendar..."
+#~ msgstr "Konfiguracija &skrótšenkow..."
+
+#, fuzzy
+#~ msgid "&Address Book"
+#~ msgstr "Adresnik"
+
+#, fuzzy
+#~ msgid "Show To-do View"
+#~ msgstr "&Měsac"
+
+#, fuzzy
+#~ msgid "Manage View &Filters..."
+#~ msgstr "Filtry wobdźěłać..."
+
+#, fuzzy
+#~ msgid "Manage C&ategories..."
+#~ msgstr "Kategorije"
+
+#, fuzzy
+#~ msgid "&Configure KOrganizer..."
+#~ msgstr "Konfiguracija &skrótšenkow..."
+
+#, fuzzy
+#~ msgid "Select path for HTML calendar export"
+#~ msgstr "Konfiguracija &skrótšenkow..."
+
+#, fuzzy
+#~ msgid "&Edit To-do..."
+#~ msgstr "&wobdźěłać"
+
+#, fuzzy
+#~ msgid "Attach &inline"
+#~ msgstr "&Wróćo na prěnjotny staw"
+
+#, fuzzy
+#~ msgid "Remove Attachments"
+#~ msgstr "&Wróćo na prěnjotny staw"
+
+#, fuzzy
+#~ msgid "Redo: %1"
+#~ msgstr "Titl"
+
+#, fuzzy
+#~ msgctxt "@title:window"
+#~ msgid "Import Calendar"
+#~ msgstr "Konfiguracija &skrótšenkow..."
+
+#, fuzzy
+#~ msgid "searching..."
+#~ msgstr "Konfiguracija &skrótšenkow..."
+
+#, fuzzy
+#~ msgctxt "@title:window"
+#~ msgid "Properties of Calendar Folder %1"
+#~ msgstr "Konfiguracija &skrótšenkow..."
+
+#, fuzzy
+#~ msgid "&Disable Color"
+#~ msgstr "Konfiguracija resursow"
+
+#, fuzzy
+#~ msgid "Use as &Default Calendar"
+#~ msgstr "Konfiguracija resursow"
+
+#, fuzzy
+#~ msgid "Remove from list"
+#~ msgstr "Konfiguracija &skrótšenkow..."
+
+#, fuzzy
+#~ msgid "Add Calendar"
+#~ msgstr "Konfiguracija &skrótšenkow..."
+
+#, fuzzy
+#~ msgid "Delete Calendar"
+#~ msgstr "Konfiguracija resursow"
+
+#, fuzzy
+#~ msgctxt "@title:window"
+#~ msgid "Delete Item?"
+#~ msgstr "Konfiguracija resursow"
+
+#, fuzzy
+#~ msgid "Toggle Reminder"
+#~ msgstr "Titl"
+
+#, fuzzy
+#~ msgctxt "@title:window"
+#~ msgid "Moving Failed"
+#~ msgstr "Konfiguracija &skrótšenkow..."
+
+#, fuzzy
+#~ msgid "iCalendars (*.ics)"
+#~ msgstr "Konfiguracija &skrótšenkow..."
+
+#, fuzzy
+#~ msgid "vCalendars (*.vcs)"
+#~ msgstr "Konfiguracija &skrótšenkow..."
+
+#, fuzzy
+#~ msgid "No filter"
+#~ msgstr "Filtry wobdźěłać..."
+
+#, fuzzy
+#~ msgid "Delete Only This"
+#~ msgstr "Konfiguracija resursow"
+
+#, fuzzy
+#~ msgid "Delete All"
+#~ msgstr "Konfiguracija resursow"
+
+#, fuzzy
+#~ msgid "Delete parent to-do"
+#~ msgstr "Konfiguracija resursow"
+
+#, fuzzy
+#~| msgid "General"
+#~ msgctxt "@title:tab General settings for a folder."
+#~ msgid "General"
+#~ msgstr "Powšitkownje"
+
+#, fuzzy
+#~ msgctxt "@label:textbox Name of the folder."
+#~ msgid "&Name:"
+#~ msgstr "Mjeno:"
+
+#, fuzzy
+#~ msgctxt "@info:tooltip"
+#~ msgid "Set the folder name"
+#~ msgstr "Titl"
+
+#, fuzzy
+#~ msgctxt "@option:check"
+#~ msgid "Block reminders locally"
+#~ msgstr "Titl"
+
+#, fuzzy
+#~ msgctxt "@info:tooltip"
+#~ msgid "Ignore reminders from this calendar"
+#~ msgstr "Konfiguracija resursow"
+
+#, fuzzy
+#~ msgctxt "@info:whatsthis"
+#~ msgid ""
+#~ "Check this box if you do not want to receive reminders from items "
+#~ "associated with this calendar."
+#~ msgstr "Konfiguracija resursow"
+
+#, fuzzy
+#~ msgctxt "@option:check"
+#~ msgid "&Use custom icon:"
+#~ msgstr "Konfiguracija resursow"
+
+#, fuzzy
+#~ msgctxt "@info:tooltip"
+#~ msgid "Set a custom icon"
+#~ msgstr "Konfiguracija resursow"
+
+#, fuzzy
+#~ msgctxt "@info:whatsthis"
+#~ msgid "Check this box if you want to set a custom icon for this folder."
+#~ msgstr "Konfiguracija resursow"
+
+#, fuzzy
+#~ msgid "&File"
+#~ msgstr "Titl"
+
+#, fuzzy
+#~ msgid "&Edit"
+#~ msgstr "&wobdźěłać"
+
+#, fuzzy
+#~ msgid "&View"
+#~ msgstr "&Nowe"
+
+#, fuzzy
+#~ msgid "&Zoom"
+#~ msgstr "Nutř zoomować"
+
+#, fuzzy
+#~ msgid "&Go"
+#~ msgstr "&Dźi"
+
+#, fuzzy
+#~ msgid "Calendar Colors"
+#~ msgstr "Konfiguracija resursow"
+
+#, fuzzy
+#~| msgid "General"
+#~ msgctxt "general settings for html export"
+#~ msgid "General"
+#~ msgstr "Powšitkownje"
+
+#, fuzzy
+#~ msgid "To-dos"
+#~ msgstr "Na:"
+
+#, fuzzy
+#~ msgctxt "@title::window"
+#~ msgid "Edit Calendar Filters"
+#~ msgstr "Konfiguracija &skrótšenkow..."
+
+#, fuzzy
+#~ msgctxt "@label default filter name"
+#~ msgid "New Filter %1"
+#~ msgstr "Filtry wobdźěłać..."
+
+#, fuzzy
+#~ msgctxt "@title:window"
+#~ msgid "Delete Filter?"
+#~ msgstr "Konfiguracija resursow"
+
+#, fuzzy
+#~ msgid "Edit..."
+#~ msgstr "wobdźěłać..."
+
+#, fuzzy
+#~ msgid "Show in Context"
+#~ msgstr "Konfiguracija resursow"
+
+#, fuzzy
+#~ msgctxt "@title:window"
+#~ msgid "Create Note"
+#~ msgstr "Na:"
+
+#, fuzzy
+#~ msgid "Title:"
+#~ msgstr "Titl"
+
+#, fuzzy
+#~ msgid "Text:"
+#~ msgstr "Titl"
+
+#, fuzzy
+#~ msgid "Search Calendar"
+#~ msgstr "Konfiguracija &skrótšenkow..."
+
+#, fuzzy
+#~ msgid "%1 item"
+#~ msgid_plural "%1 items"
+#~ msgstr[0] "&Měsac"
+#~ msgstr[1] "&Měsac"
+#~ msgstr[2] "&Měsac"
+#~ msgstr[3] "&Měsac"
+
+#, fuzzy
+#~ msgctxt "A collection of all declined invidations."
+#~ msgid "Declined Invitations"
+#~ msgstr "Konfiguracija resursow"
+
+#, fuzzy
+#~ msgctxt "A collection of all open invidations."
+#~ msgid "Open Invitations"
+#~ msgstr "Konfiguracija resursow"
+
+#, fuzzy
+#~| msgid "Status"
+#~ msgctxt "@title:window"
+#~ msgid "Export Status"
+#~ msgstr "Staw:"
+
+#, fuzzy
+#~ msgctxt "@title:column event start time"
+#~ msgid "Start Time"
+#~ msgstr "Staw:"
+
+#, fuzzy
+#~ msgctxt "@title:column event end time"
+#~ msgid "End Time"
+#~ msgstr "Titl"
+
+#, fuzzy
+#~ msgctxt "@title:column event description"
+#~ msgid "Event"
+#~ msgstr "&Wróćo na prěnjotny staw"
+
+#, fuzzy
+#~ msgctxt "@title:column event locatin"
+#~ msgid "Location"
+#~ msgstr "Wopisanje:"
+
+#, fuzzy
+#~| msgid "Categories"
+#~ msgctxt "@title:column event categories"
+#~ msgid "Categories"
+#~ msgstr "Kategorije"
+
+#, fuzzy
+#~ msgctxt "@title:column event attendees"
+#~ msgid "Attendees"
+#~ msgstr "Titl"
+
+#, fuzzy
+#~ msgctxt "@title:column"
+#~ msgid "To-do"
+#~ msgstr "Na:"
+
+#, fuzzy
+#~ msgctxt "@title:column to-do due date"
+#~ msgid "Due Date"
+#~ msgstr "Titl"
+
+#, fuzzy
+#~ msgctxt "@title:column to-do location"
+#~ msgid "Location"
+#~ msgstr "Wopisanje:"
+
+#, fuzzy
+#~| msgid "Categories"
+#~ msgctxt "@title:column to-do categories"
+#~ msgid "Categories"
+#~ msgstr "Kategorije"
+
+#, fuzzy
+#~ msgctxt "@title:column to-do attendees"
+#~ msgid "Attendees"
+#~ msgstr "Titl"
+
+#, fuzzy
+#~ msgctxt "@title:column sub-to-dos of the parent to-do"
+#~ msgid "Sub-To-dos of: "
+#~ msgstr "Na:"
+
+#, fuzzy
+#~ msgctxt "@title:column sub-to-dos of the parent to-do"
+#~ msgid "Sub-To-dos"
+#~ msgstr "Na:"
+
+#, fuzzy
+#~ msgid "Selection"
+#~ msgstr "Staw:"
+
+#, fuzzy
+#~ msgid "Date & Time"
+#~ msgstr "Titl"
+
+#, fuzzy
+#~ msgid "Date"
+#~ msgstr "Titl"
+
+#, fuzzy
+#~ msgid "Classname:"
+#~ msgstr "Wužiwar:"
+
+#, fuzzy
+#~ msgid "Description:"
+#~ msgstr "Wopisanje:"
+
+#, fuzzy
+#~ msgid "&Print..."
+#~ msgstr "&wobdźěłać"
+
+#, fuzzy
+#~ msgid "Print Previe&w..."
+#~ msgstr "&wobdźěłać"
+
+#, fuzzy
+#~ msgid "&Paste"
+#~ msgstr "Titl"
+
+#, fuzzy
+#~ msgctxt "delete this incidence"
+#~ msgid "&Delete"
+#~ msgstr "Titl"
+
+#, fuzzy
+#~ msgid "Create To-do"
+#~ msgstr "Na:"
+
+#, fuzzy
+#~ msgid "Create Event"
+#~ msgstr "Na:"
+
+#, fuzzy
+#~ msgid "Create Note"
+#~ msgstr "Na:"
+
+#, fuzzy
+#~ msgid "Send as iCalendar..."
+#~ msgstr "Konfiguracija &skrótšenkow..."
+
+#, fuzzy
+#~ msgid "Event Summary Configuration"
+#~ msgstr "Konfiguracija resursow"
+
+#, fuzzy
+#~ msgid ""
+#~ "Check this box if you want to see events occurring on this date only."
+#~ msgstr "Konfiguracija resursow"
+
+#, fuzzy
+#~ msgid ""
+#~ "Check this box if you want to see events that start sometime during the "
+#~ "next 31 days."
+#~ msgstr "Konfiguracija resursow"
+
+#, fuzzy
+#~ msgid "Select the days for showing upcoming events"
+#~ msgstr "Konfiguracija resursow"
+
+#, fuzzy
+#~ msgid "Show &birthdays"
+#~ msgstr "Narodniny"
+
+#, fuzzy
+#~ msgid "Show events belonging to my calendars only"
+#~ msgstr "Konfiguracija &skrótšenkow..."
+
+#, fuzzy
+#~ msgid ""
+#~ "Check this box if you want the summary to show events belonging to your "
+#~ "calendars only."
+#~ msgstr "Konfiguracija resursow"
+
+#, fuzzy
+#~ msgid "&Edit Appointment..."
+#~ msgstr "Kategorije"
+
+#, fuzzy
+#~ msgid "&Delete Appointment"
+#~ msgstr "Konfiguracija resursow"
+
+#, fuzzy
+#~ msgid "Edit Event: \"%1\""
+#~ msgstr "&Wróćo na prěnjotny staw"
+
+#, fuzzy
+#~| msgctxt "NAME OF TRANSLATORS"
+#~| msgid "Your names"
+#~ msgctxt "@action:inmenu"
+#~ msgid "New Journal..."
+#~ msgstr "Edward Wornar"
+
+#, fuzzy
+#~ msgctxt "@info:status"
+#~ msgid "Create a new journal"
+#~ msgstr "Na:"
+
+#, fuzzy
+#~| msgctxt "NAME OF TRANSLATORS"
+#~| msgid "Your names"
+#~ msgctxt "@action:inmenu"
+#~ msgid "Sync Journal"
+#~ msgstr "Edward Wornar"
+
+#, fuzzy
+#~ msgctxt "@action:inmenu"
+#~ msgid "New Event..."
+#~ msgstr "&Wróćo na prěnjotny staw"
+
+#, fuzzy
+#~ msgctxt "@info:status"
+#~ msgid "Create a new event"
+#~ msgstr "Na:"
+
+#, fuzzy
+#~ msgctxt "@action:inmenu"
+#~ msgid "Sync Calendar"
+#~ msgstr "Konfiguracija &skrótšenkow..."
+
+#, fuzzy
+#~ msgctxt "@item"
+#~ msgid "Meeting"
+#~ msgstr "&Wróćo na prěnjotny staw"
+
+#, fuzzy
+#~ msgctxt "@item"
+#~ msgid "Note: %1"
+#~ msgstr "Titl"
+
+#, fuzzy
+#~ msgctxt "use abbreviation for minute to keep the text short"
+#~ msgid "1 min"
+#~ msgid_plural "%1 mins"
+#~ msgstr[0] "&Měsac"
+#~ msgstr[1] "&Měsac"
+#~ msgstr[2] "&Měsac"
+#~ msgstr[3] "&Měsac"
+
+#, fuzzy
+#~ msgctxt "next occurrence"
+#~ msgid "Next: %1"
+#~ msgstr "Titl"
+
+#, fuzzy
+#~ msgctxt "@action:inmenu"
+#~ msgid "New To-do..."
+#~ msgstr "Na:"
+
+#, fuzzy
+#~ msgctxt "@info:status"
+#~ msgid "Create a new to-do"
+#~ msgstr "Na:"
+
+#, fuzzy
+#~ msgctxt "@action:inmenu"
+#~ msgid "Sync To-do List"
+#~ msgstr "Na:"
+
+#, fuzzy
+#~ msgctxt "@info:status"
+#~ msgid "Synchronize groupware to-do list"
+#~ msgstr "Na:"
+
+#, fuzzy
+#~ msgid "To-do Summary Configuration"
+#~ msgstr "Konfiguracija resursow"
+
+#, fuzzy
+#~ msgid "Check this box if you want to see To-dos due on this date only."
+#~ msgstr "Konfiguracija resursow"
+
+#, fuzzy
+#~ msgid ""
+#~ "Check this box if you want to see To-dos that are due sometime during the "
+#~ "next 31 days."
+#~ msgstr "Konfiguracija resursow"
+
+#, fuzzy
+#~ msgid ""
+#~ "Check this box if you want specify the number of days in the future for "
+#~ "pending To-dos."
+#~ msgstr "Konfiguracija resursow"
+
+#, fuzzy
+#~ msgid ""
+#~ "Check this box if you do not want to see To-dos that have already been "
+#~ "completed."
+#~ msgstr "Konfiguracija resursow"
+
+#, fuzzy
+#~ msgid "Check this box if you do not want to see open-ended To-dos."
+#~ msgstr "Konfiguracija resursow"
+
+#, fuzzy
+#~ msgid ""
+#~ "Check this box if you do not want to see To-dos with a start date in the "
+#~ "future."
+#~ msgstr "Konfiguracija resursow"
+
+#, fuzzy
+#~ msgid ""
+#~ "Check this box if you do not want to see To-dos that have been started "
+#~ "but are not yet completed."
+#~ msgstr "Konfiguracija resursow"
+
+#, fuzzy
+#~ msgid ""
+#~ "Check this box if you do not want to see To-dos that are past their due "
+#~ "date but have not yet been completed."
+#~ msgstr "Konfiguracija resursow"
+
+#, fuzzy
+#~ msgid "Show To-dos belonging to my calendars only"
+#~ msgstr "Konfiguracija &skrótšenkow..."
+
+#, fuzzy
+#~ msgid ""
+#~ "Check this box if you want the summary to show To-dos belonging to your "
+#~ "calendars only."
+#~ msgstr "Konfiguracija resursow"
+
+#, fuzzy
+#~ msgid "Show &my To-dos only"
+#~ msgstr "&Měsac"
+
+#, fuzzy
+#~ msgid "Pending To-dos"
+#~ msgstr "Na:"
+
+#, fuzzy
+#~ msgctxt "the to-do is due"
+#~ msgid "due"
+#~ msgstr "Titl"
+
+#, fuzzy
+#~ msgid "Edit To-do: \"%1\""
+#~ msgstr "&wobdźěłać"
+
+#, fuzzy
+#~ msgctxt "the to-do starts today"
+#~ msgid "starts today"
+#~ msgstr "Staw:"
+
+#, fuzzy
+#~ msgid "Special Dates Summary Configuration"
+#~ msgstr "Konfiguracija resursow"
+
+#, fuzzy
+#~ msgid ""
+#~ "Check this box if you want to see special occasions occurring on this "
+#~ "date only."
+#~ msgstr "Konfiguracija resursow"
+
+#, fuzzy
+#~ msgid "Show birthdays from your calendar"
+#~ msgstr "Konfiguracija &skrótšenkow..."
+
+#, fuzzy
+#~ msgid "Birthday"
+#~ msgstr "Narodniny"
+
+#, fuzzy
+#~ msgid "Send &Mail"
+#~ msgstr "Sendmail"
+
+#, fuzzy
+#~ msgid "Import the specified files as separate calendars"
+#~ msgstr "&Wróćo na prěnjotny staw"
+
+#, fuzzy
+#~ msgid "Merge the specified files into an existing calendar"
+#~ msgstr "&Wróćo na prěnjotny staw"
+
+#, fuzzy
+#~ msgctxt "@title:tab personal settings"
+#~ msgid "Personal"
+#~ msgstr "Wosobinski"
+
+#, fuzzy
+#~ msgctxt "@title:group"
+#~ msgid "Exporting Calendar"
+#~ msgstr "Konfiguracija &skrótšenkow..."
+
+#, fuzzy
+#~ msgctxt "@title:group"
+#~ msgid "Show/Hide Options"
+#~ msgstr "Wopisanje:"
+
+#, fuzzy
+#~ msgctxt "@title:tab calendar account settings"
+#~ msgid "Calendars"
+#~ msgstr "Konfiguracija &skrótšenkow..."
+
+#, fuzzy
+#~ msgctxt "@title:tab"
+#~ msgid "Regional"
+#~ msgstr "Wosobinski"
+
+#, fuzzy
+#~ msgctxt "@title:group"
+#~ msgid "Reminders"
+#~ msgstr "Titl"
+
+#, fuzzy
+#~ msgctxt "@item:inlistbox reminder units in minutes"
+#~ msgid "minute(s)"
+#~ msgstr "&Měsac"
+
+#, fuzzy
+#~| msgid "General"
+#~ msgctxt "@title:tab general settings"
+#~ msgid "General"
+#~ msgstr "Powšitkownje"
+
+#, fuzzy
+#~ msgctxt "@title:group"
+#~ msgid "Display Options"
+#~ msgstr "Titl"
+
+#, fuzzy
+#~ msgctxt "@title:tab"
+#~ msgid "Agenda View"
+#~ msgstr "&Měsac"
+
+#, fuzzy
+#~ msgctxt "@title:tab"
+#~ msgid "Month View"
+#~ msgstr "&Měsac"
+
+#, fuzzy
+#~ msgctxt "@title:tab"
+#~ msgid "Todo View"
+#~ msgstr "&Měsac"
+
+#, fuzzy
+#~ msgctxt "@title:group"
+#~ msgid "Other Options"
+#~ msgstr "Wopisanje:"
+
+#, fuzzy
+#~| msgid "Categories"
+#~ msgctxt "@title:group"
+#~ msgid "Categories"
+#~ msgstr "Kategorije"
+
+#, fuzzy
+#~ msgctxt "@title:group"
+#~ msgid "Resources"
+#~ msgstr "Konfiguracija resursow"
+
+#, fuzzy
+#~ msgctxt "@title:tab"
+#~ msgid "Fonts"
+#~ msgstr "&Měsac"
+
+#, fuzzy
+#~ msgctxt "@label"
+#~ msgid "Event text"
+#~ msgstr "&Wróćo na prěnjotny staw"
+
+#, fuzzy
+#~| msgid "Name"
+#~ msgctxt "@title:column plugin name"
+#~ msgid "Name"
+#~ msgstr "Mjeno"
+
+#, fuzzy
+#~ msgctxt "@action:button"
+#~ msgid "Configure &Plugin..."
+#~ msgstr "Konfiguracija &skrótšenkow..."
+
+#, fuzzy
+#~ msgctxt "@title:group"
+#~ msgid "Position"
+#~ msgstr "Wopisanje:"
+
+#, fuzzy
+#~ msgctxt "@option:check"
+#~ msgid "Show at the top of the agenda views"
+#~ msgstr "Konfiguracija resursow"
+
+#, fuzzy
+#~ msgctxt "@option:check"
+#~ msgid "Show at the bottom of the agenda views"
+#~ msgstr "Konfiguracija resursow"
+
+#, fuzzy
+#~ msgctxt "@title:group"
+#~ msgid "Other Plugins"
+#~ msgstr "Wopisanje:"
+
+#, fuzzy
+#~ msgid "Full name of the calendar owner"
+#~ msgstr "Prošu družinu noweje resursy wubrać:"
+
+#, fuzzy
+#~ msgid "The full name of the calendar owner for the export"
+#~ msgstr "Prošu družinu noweje resursy wubrać:"
+
+#, fuzzy
+#~ msgid "The email address of the calendar owner for the export"
+#~ msgstr "Prošu družinu noweje resursy wubrać:"
+
+#, fuzzy
+#~ msgid "Page Title"
+#~ msgstr "Titl"
+
+#, fuzzy
+#~ msgid "The title of the exported page"
+#~ msgstr "Titl"
+
+#, fuzzy
+#~ msgid "Date end"
+#~ msgstr "Titl"
+
+#, fuzzy
+#~ msgid "Export events as a list"
+#~ msgstr "Na:"
+
+#, fuzzy
+#~ msgid "Export in month view"
+#~ msgstr "Konfiguracija resursow"
+
+#, fuzzy
+#~ msgid "Export events in a month view"
+#~ msgstr "Konfiguracija resursow"
+
+#, fuzzy
+#~ msgid "Check this box if you want your events shown in a month view."
+#~ msgstr "Konfiguracija resursow"
+
+#, fuzzy
+#~ msgid "Export events in a week view"
+#~ msgstr "Konfiguracija resursow"
+
+#, fuzzy
+#~ msgid "Title of the calendar"
+#~ msgstr "Konfiguracija &skrótšenkow..."
+
+#, fuzzy
+#~ msgid "Title for the event calendar"
+#~ msgstr "Konfiguracija &skrótšenkow..."
+
+#, fuzzy
+#~ msgid "Enter a string to use for the title of the event calendar."
+#~ msgstr "Prošu družinu noweje resursy wubrać:"
+
+#, fuzzy
+#~ msgid "Include the event locations"
+#~ msgstr "Konfiguracija resursow"
+
+#, fuzzy
+#~ msgid "Include the event categories"
+#~ msgstr "Kategorije"
+
+#, fuzzy
+#~ msgid "Include the event attendees"
+#~ msgstr "Titl"
+
+#, fuzzy
+#~ msgid "Export to-do list"
+#~ msgstr "Na:"
+
+#, fuzzy
+#~ msgid "Export the to-do list"
+#~ msgstr "Na:"
+
+#, fuzzy
+#~ msgid "To-do List"
+#~ msgstr "Na:"
+
+#, fuzzy
+#~ msgid "Title for the to-do list"
+#~ msgstr "Na:"
+
+#, fuzzy
+#~ msgid "Include the to-do locations"
+#~ msgstr "Wopisanje:"
+
+#, fuzzy
+#~ msgid "Include the to-do categories"
+#~ msgstr "Kategorije"
+
+#, fuzzy
+#~ msgid "Include the to-do attendees"
+#~ msgstr "Titl"
+
+#, fuzzy
+#~ msgid "Check this box if you want the to-do attendees to be exported."
+#~ msgstr "Konfiguracija resursow"
+
+#, fuzzy
+#~| msgid "Status"
+#~ msgid "Export journals"
+#~ msgstr "Staw:"
+
+#, fuzzy
+#~ msgid "Title of the journal list"
+#~ msgstr "Konfiguracija resursow"
+
+#, fuzzy
+#~| msgctxt "NAME OF TRANSLATORS"
+#~| msgid "Your names"
+#~ msgid "Journals"
+#~ msgstr "Edward Wornar"
+
+#, fuzzy
+#~ msgid "Title for the journal list"
+#~ msgstr "Konfiguracija resursow"
+
+#, fuzzy
+#~ msgid "Export free/busy list"
+#~ msgstr "Na:"
+
+#, fuzzy
+#~ msgid "Title for the free/busy list"
+#~ msgstr "Konfiguracija resursow"
+
+#, fuzzy
+#~ msgid "Show icons in agenda view items"
+#~ msgstr "Konfiguracija resursow"
+
+#, fuzzy
+#~ msgid "Display icons in agenda view items"
+#~ msgstr "Konfiguracija resursow"
+
+#, fuzzy
+#~ msgid "Show to-dos"
+#~ msgstr "&Měsac"
+
+#, fuzzy
+#~ msgid "Display to-dos in the agenda view"
+#~ msgstr "Konfiguracija resursow"
+
+#, fuzzy
+#~ msgid "Only category"
+#~ msgstr "Kategorije"
+
+#, fuzzy
+#~ msgid "Only calendar"
+#~ msgstr "Konfiguracija &skrótšenkow..."
+
+#, fuzzy
+#~ msgid "Show icons in month view items"
+#~ msgstr "Konfiguracija resursow"
+
+#, fuzzy
+#~ msgid "Show time in month view items"
+#~ msgstr "Konfiguracija resursow"
+
+#, fuzzy
+#~ msgid "Check this box to display the time in month view items."
+#~ msgstr "Konfiguracija resursow"
+
+#, fuzzy
+#~ msgid "Display time in month view items"
+#~ msgstr "Konfiguracija resursow"
+
+#, fuzzy
+#~ msgid "Check this box to display to-dos in the month view."
+#~ msgstr "Konfiguracija resursow"
+
+#, fuzzy
+#~ msgid "Display to-dos in the month view"
+#~ msgstr "Konfiguracija resursow"
+
+#, fuzzy
+#~ msgid "Display journals in the month view"
+#~ msgstr "Konfiguracija resursow"
+
+#, fuzzy
+#~ msgid "Display to-do list in a full KOrganizer window"
+#~ msgstr "Konfiguracija resursow"
+
+#, fuzzy
+#~ msgid "Display to-dos in a flat list"
+#~ msgstr "Konfiguracija resursow"
+
+#, fuzzy
+#~ msgid "Month view"
+#~ msgstr "&Měsac"
+
+#, fuzzy
+#~ msgid "Attach complete message"
+#~ msgstr "&Wróćo na prěnjotny staw"
+
+#~ msgid "&New"
+#~ msgstr "&Nowe"
+
+#, fuzzy
+#~ msgid "Filter Details"
+#~ msgstr "Filtry wobdźěłać..."
+
+#, fuzzy
+#~ msgctxt "filter name"
+#~ msgid "Name:"
+#~ msgstr "Mjeno:"
+
+#~ msgid "Categories"
+#~ msgstr "Kategorije"
+
+#, fuzzy
+#~ msgid "Change..."
+#~ msgstr "Konfiguracija &skrótšenkow..."
+
+#, fuzzy
+#~ msgid "Server Information"
+#~ msgstr "Konfiguracija resursow"
+
+#, fuzzy
+#~ msgctxt "login name on the Kolab server"
+#~ msgid "Username:"
+#~ msgstr "Wužiwar:"
+
+#, fuzzy
+#~ msgid "User&name:"
+#~ msgstr "Wužiwar:"
+
+#, fuzzy
+#~ msgid "To-&dos"
+#~ msgstr "Na:"
+
+#, fuzzy
+#~ msgid "Cate&gories"
+#~ msgstr "Kategorije"
+
+#, fuzzy
+#~ msgid "Locations"
+#~ msgstr "Wopisanje:"
+
+#, fuzzy
+#~ msgid "Include item descriptions in your search"
+#~ msgstr "Wopisanje:"
+
+#, fuzzy
+#~ msgid "Desc&riptions"
+#~ msgstr "Wopisanje:"
+
+#, fuzzy
+#~ msgid "Attendees"
+#~ msgstr "Titl"
+
+#, fuzzy
+#~ msgid "Fr&om:"
+#~ msgstr "Wot:"
+
+#, fuzzy
+#~ msgid "Include items with a starting date on or after this date"
+#~ msgstr "Konfiguracija resursow"
+
+#, fuzzy
+#~ msgid "&To:"
+#~ msgstr "Na:"
+
+#, fuzzy
+#~ msgid "Include items with ending date on or before this date"
+#~ msgstr "Konfiguracija resursow"
+
+#, fuzzy
+#~ msgid ""
+#~ "Check this box to include To-dos without a due date in the search results."
+#~ msgstr "Konfiguracija resursow"
+
+#, fuzzy
+#~ msgctxt "Collection: name collectionId"
+#~ msgid "Collection: %1(%2)"
+#~ msgstr "Wopisanje:"
+
+#, fuzzy
+#~ msgid "Person: %1"
+#~ msgstr "Wersija:"
+
+#, fuzzy
+#~ msgid "Free/Busy calendar from %1"
+#~ msgstr "Konfiguracija resursow"
+
+#, fuzzy
+#~| msgid "Email"
+#~ msgid "Day"
+#~ msgstr "email"
+
+#, fuzzy
+#~| msgid "&Week"
+#~ msgid "Week"
+#~ msgstr "&Tydźeń"
+
+#, fuzzy
+#~| msgid "&Month"
+#~ msgid "Month"
+#~ msgstr "&Měsac"
+
+#, fuzzy
+#~ msgid "Agenda"
+#~ msgstr "&Měsac"
+
+#, fuzzy
+#~ msgid "Agenda %1"
+#~ msgstr "&Měsac"
+
+#, fuzzy
+#~ msgid "Title"
+#~ msgstr "Titl"
+
+#, fuzzy
+#~ msgid "Selected Calendars"
+#~ msgstr "Konfiguracija &skrótšenkow..."
+
+#, fuzzy
+#~ msgid "Calendar's custom icon"
+#~ msgstr "Konfiguracija resursow"
+
+#, fuzzy
+#~ msgid "To-do"
+#~ msgstr "Na:"
+
+#, fuzzy
+#~| msgctxt "NAME OF TRANSLATORS"
+#~| msgid "Your names"
+#~ msgid "Journal"
+#~ msgstr "Edward Wornar"
+
+#, fuzzy
+#~ msgid "Recurring"
+#~ msgstr "Konfiguracija resursow"
+
+#, fuzzy
+#~ msgid "Alarm"
+#~ msgstr "Adar"
+
+#, fuzzy
+#~ msgid "Attending"
+#~ msgstr "Titl"
+
+#, fuzzy
+#~ msgid "Select a year"
+#~ msgstr "Kategorije"
+
+#, fuzzy
+#~ msgid "KOrgPlugins"
+#~ msgstr "Wopisanje:"
+
+#, fuzzy
+#~ msgid "Import Calendar/Event"
+#~ msgstr "Konfiguracija &skrótšenkow..."
+
+#, fuzzy
+#~ msgid "&Add as new calendar..."
+#~ msgstr "Konfiguracija &skrótšenkow..."
+
+#, fuzzy
+#~ msgid "&Add as new calendar"
+#~ msgstr "Konfiguracija &skrótšenkow..."
+
+#, fuzzy
+#~ msgid "*.vcs *.ics|Calendar Files"
+#~ msgstr "Konfiguracija &skrótšenkow..."
+
+#, fuzzy
+#~ msgid "Select path for new calendar"
+#~ msgstr "Konfiguracija &skrótšenkow..."
+
+#, fuzzy
+#~ msgid "A&dd..."
+#~ msgstr "&wobdźěłać"
+
+#, fuzzy
+#~| msgid "&Edit..."
+#~ msgid "&Modify..."
+#~ msgstr "&wobdźěłać"
+
+#, fuzzy
+#~ msgid "R&emove"
+#~ msgstr "Ponowić"
+
+#, fuzzy
+#~ msgid "Remove account?"
+#~ msgstr "&Wróćo na prěnjotny staw"
+
+#, fuzzy
+#~ msgid "Add a new recipient"
+#~ msgstr "Konfiguracija &skrótšenkow..."
+
+#, fuzzy
+#~ msgid "&Select..."
+#~ msgstr "Kategorije"
+
+#, fuzzy
+#~ msgctxt "recipient name"
+#~ msgid "Name:"
+#~ msgstr "Mjeno:"
+
+#, fuzzy
+#~| msgid "Email"
+#~ msgctxt "recipient email"
+#~ msgid "Email:"
+#~ msgstr "email"
+
+#, fuzzy
+#~ msgctxt "@title:group"
+#~ msgid "Print Plugins"
+#~ msgstr "Wopisanje:"
+
+#, fuzzy
+#~ msgid "&Start date:"
+#~ msgstr "Staw:"
+
+#, fuzzy
+#~ msgid "&End date:"
+#~ msgstr "Titl"
+
+#, fuzzy
+#~ msgid "&To-dos"
+#~ msgstr "Na:"
+
+#, fuzzy
+#~ msgid "Print Item list"
+#~ msgstr "Na:"
+
+#, fuzzy
+#~ msgid "Yearly Print Options"
+#~ msgstr "Wopisanje:"
+
+#, fuzzy
+#~ msgid "Start &time:"
+#~ msgstr "Staw:"
+
+#, fuzzy
+#~ msgid "Include Information"
+#~ msgstr "Konfiguracija resursow"
+
+#, fuzzy
+#~ msgid "Include &descriptions"
+#~ msgstr "Wopisanje:"
+
+#, fuzzy
+#~ msgid "Print item descriptions"
+#~ msgstr "Wopisanje:"
+
+#, fuzzy
+#~| msgid "General"
+#~ msgctxt "@title general print settings"
+#~ msgid "General"
+#~ msgstr "Powšitkownje"
+
+#, fuzzy
+#~ msgid "Show note &lines"
+#~ msgstr "Wopisanje:"
+
+#, fuzzy
+#~ msgid "Print &Footer"
+#~ msgstr "Na:"
+
+#, fuzzy
+#~ msgid "Start date: "
+#~ msgstr "Staw:"
+
+#, fuzzy
+#~ msgid "End date: "
+#~ msgstr "Titl"
+
+#, fuzzy
+#~ msgid "No end date"
+#~ msgstr "Titl"
+
+#, fuzzy
+#~ msgid "Due date: "
+#~ msgstr "Titl"
+
+#, fuzzy
+#~ msgid "Repeats: "
+#~ msgstr "&Wróćo na prěnjotny staw"
+
+#, fuzzy
+#~ msgid "Location: "
+#~ msgstr "Wopisanje:"
+
+#, fuzzy
+#~ msgid "No Subitems"
+#~ msgstr "Filtry wobdźěłać..."
+
+#, fuzzy
+#~ msgctxt "unknown status"
+#~ msgid "unknown"
+#~ msgstr "Njeznaty zmylk"
+
+#, fuzzy
+#~ msgctxt "subitem start date"
+#~ msgid "Start Date: %1\n"
+#~ msgstr "Staw:"
+
+#, fuzzy
+#~ msgctxt "subitem start time"
+#~ msgid "Start Time: %1\n"
+#~ msgstr "Staw:"
+
+#, fuzzy
+#~ msgctxt "subitem due date"
+#~ msgid "Due Date: %1\n"
+#~ msgstr "Titl"
+
+#, fuzzy
+#~ msgctxt "subitem due time"
+#~ msgid "Due Time: %1\n"
+#~ msgstr "Titl"
+
+#, fuzzy
+#~ msgctxt "subitem Status: statusString"
+#~ msgid "Status: %1\n"
+#~ msgstr "Staw:"
+
+#, fuzzy
+#~ msgctxt "subitem Secrecy: secrecyString"
+#~ msgid "Secrecy: %1\n"
+#~ msgstr "Staw:"
+
+#, fuzzy
+#~ msgid "No Attachments"
+#~ msgstr "&Wróćo na prěnjotny staw"
+
+#, fuzzy
+#~ msgid "1 Attachment:"
+#~ msgid_plural "%1 Attachments:"
+#~ msgstr[0] "&Wróćo na prěnjotny staw"
+#~ msgstr[1] "&Wróćo na prěnjotny staw"
+#~ msgstr[2] "&Wróćo na prěnjotny staw"
+#~ msgstr[3] "&Wróćo na prěnjotny staw"
+
+#, fuzzy
+#~ msgid "No Attendees"
+#~ msgstr "Titl"
+
+#, fuzzy
+#~ msgid "Status: %1"
+#~ msgstr "Staw:"
+
+#, fuzzy
+#~ msgid "Secrecy: %1"
+#~ msgstr "Staw:"
+
+#, fuzzy
+#~ msgid "Categories: "
+#~ msgstr "Kategorije"
+
+#, fuzzy
+#~ msgctxt "@option sort by title"
+#~ msgid "Title"
+#~ msgstr "Titl"
+
+#, fuzzy
+#~ msgctxt "@option sort by start date/time"
+#~ msgid "Start Date"
+#~ msgstr "Staw:"
+
+#, fuzzy
+#~ msgctxt "@option sort by due date/time"
+#~ msgid "Due Date"
+#~ msgstr "Titl"
+
+#, fuzzy
+#~ msgctxt "@label to-do summary"
+#~ msgid "Title"
+#~ msgstr "Titl"
+
+#, fuzzy
+#~ msgid "Print to-&dos"
+#~ msgstr "Na:"
+
+#, fuzzy
+#~ msgctxt "@title:window"
+#~ msgid "Print"
+#~ msgstr "&wobdźěłać"
+
+#, fuzzy
+#~ msgctxt "@info:tooltip"
+#~ msgid "Set the print orientation"
+#~ msgstr "Staw:"
+
+#, fuzzy
+#~ msgctxt "@info:tooltip"
+#~ msgid "Select the type of print"
+#~ msgstr "Kategorije"
+
+#, fuzzy
+#~ msgid "Print the attendees"
+#~ msgstr "Titl"
+
+#, fuzzy
+#~ msgid "&Notes, subitems"
+#~ msgstr "Filtry wobdźěłać..."
+
+#, fuzzy
+#~ msgid "Print the notes"
+#~ msgstr "Na:"
+
+#, fuzzy
+#~ msgid "Print the attachments"
+#~ msgstr "&Wróćo na prěnjotny staw"
+
+#, fuzzy
+#~ msgid "&Start month:"
+#~ msgstr "Staw:"
+
+#, fuzzy
+#~ msgid "Name for this to-do list"
+#~ msgstr "Na:"
+
+#, fuzzy
+#~ msgid "To-dos to Print"
+#~ msgstr "Na:"
+
+#, fuzzy
+#~ msgid "Sort field:"
+#~ msgstr "Staw:"
+
+#, fuzzy
+#~ msgid "Starting date for the print"
+#~ msgstr "Konfiguracija resursow"
+
+#, fuzzy
+#~ msgctxt "@title:window"
+#~ msgid "Reminders"
+#~ msgstr "Titl"
+
+#, fuzzy
+#~ msgctxt "@action:button"
+#~ msgid "Dismiss Reminder"
+#~ msgstr "Titl"
+
+#, fuzzy
+#~ msgctxt "@action:button"
+#~ msgid "Dismiss All"
+#~ msgstr "Titl"
+
+#, fuzzy
+#~ msgctxt "@action:button"
+#~ msgid "Edit..."
+#~ msgstr "wobdźěłać..."
+
+#, fuzzy
+#~ msgctxt "@title:column reminder title"
+#~ msgid "Title"
+#~ msgstr "Titl"
+
+#, fuzzy
+#~ msgctxt "@title:column happens at date/time"
+#~ msgid "Date Time"
+#~ msgstr "Titl"
+
+#, fuzzy
+#~ msgctxt "@info:tooltip"
+#~ msgid "The date/time the reminder was triggered"
+#~ msgstr "Titl"
+
+#, fuzzy
+#~ msgctxt "@item:inlistbox suspend in terms of minutes"
+#~ msgid "minute(s)"
+#~ msgstr "&Měsac"
+
+#, fuzzy
+#~ msgctxt "@item:inlistbox suspend in terms of weeks"
+#~ msgid "week(s)"
+#~ msgstr "&Tydźeń"
+
+#, fuzzy
+#~ msgctxt "@label an elipsis"
+#~ msgid "..."
+#~ msgstr "wobdźěłać..."
+
+#, fuzzy
+#~ msgctxt "@title"
+#~ msgid "Reminder"
+#~ msgstr "Titl"
+
+#, fuzzy
+#~ msgctxt "@title"
+#~ msgid "Reminder: %1"
+#~ msgstr "Titl"
+
+#, fuzzy
+#~ msgctxt "@title:window"
+#~ msgid "KOrganizer Reminder Daemon"
+#~ msgstr "Konfiguracija resursow"
+
+#, fuzzy
+#~ msgctxt "@action:inmenu"
+#~ msgid "Suspend All Reminders"
+#~ msgstr "Titl"
+
+#, fuzzy
+#~ msgctxt "@action:inmenu"
+#~ msgid "Dismiss All Reminders"
+#~ msgstr "Titl"
+
+#, fuzzy
+#~ msgctxt "@action:inmenu"
+#~ msgid "Enable Reminders"
+#~ msgstr "Titl"
+
+#, fuzzy
+#~ msgctxt "@info:status"
+#~ msgid "There is 1 active reminder."
+#~ msgid_plural "There are %1 active reminders."
+#~ msgstr[0] "Titl"
+#~ msgstr[1] "Titl"
+#~ msgstr[2] "Titl"
+#~ msgstr[3] "Titl"
+
+#, fuzzy
+#~ msgctxt "@info:status"
+#~ msgid "No active reminders."
+#~ msgstr "Titl"
+
+#, fuzzy
+#~ msgctxt "@action:button start the reminder daemon"
+#~ msgid "Start"
+#~ msgstr "Staw:"
+
+#, fuzzy
+#~ msgid "Filter Applied"
+#~ msgstr "Filtry wobdźěłać..."
+
+#, fuzzy
+#~ msgid "Cut Only This"
+#~ msgstr "Konfiguracija resursow"
+
+#, fuzzy
+#~ msgid "Copy Only This"
+#~ msgstr "Konfiguracija resursow"
+
+#, fuzzy
+#~ msgctxt "@action:button add a new email address"
+#~ msgid "New"
+#~ msgstr "Nowy"
+
+#, fuzzy
+#~ msgctxt "@action:button"
+#~ msgid "Remove"
+#~ msgstr "Ponowić"
+
+#, fuzzy
+#~ msgid "Edit this journal entry"
+#~ msgstr "Konfiguracija resursow"
+
+#, fuzzy
+#~ msgid "Opens an editor dialog for this journal entry"
+#~ msgstr "Konfiguracija resursow"
+
+#, fuzzy
+#~ msgid "Delete this journal entry"
+#~ msgstr "Konfiguracija resursow"
+
+#, fuzzy
+#~ msgid "&Print"
+#~ msgstr "&wobdźěłać"
+
+#, fuzzy
+#~ msgid "Print this journal entry"
+#~ msgstr "Konfiguracija resursow"
+
+#, fuzzy
+#~ msgid "Opens a print dialog for this journal entry"
+#~ msgstr "Konfiguracija resursow"
+
+#, fuzzy
+#~ msgid "No category"
+#~ msgstr "Kategorije"
+
+#, fuzzy
+#~ msgctxt "@action:inmenu Unspecified priority"
+#~ msgid "unspecified"
+#~ msgstr "Wopisanje:"
+
+#, fuzzy
+#~ msgid "Description"
+#~ msgstr "Wopisanje:"
+
+#, fuzzy
+#~ msgctxt "@info:tooltip"
+#~ msgid "Display to-do list in a full window"
+#~ msgstr "Konfiguracija resursow"
+
+#, fuzzy
+#~| msgid "&Edit..."
+#~ msgctxt "@action:inmenu edit the to-do"
+#~ msgid "&Edit..."
+#~ msgstr "&wobdźěłać"
+
+#, fuzzy
+#~ msgctxt "@action:inmenu print the to-do"
+#~ msgid "&Print..."
+#~ msgstr "&wobdźěłać"
+
+#, fuzzy
+#~ msgctxt "@action:inmenu print preview the to-do"
+#~ msgid "Print Previe&w..."
+#~ msgstr "&wobdźěłać"
+
+#, fuzzy
+#~ msgctxt "@action:inmenu delete the to-do"
+#~ msgid "&Delete"
+#~ msgstr "Titl"
+
+#, fuzzy
+#~ msgctxt "@action:inmenu create a new sub-to-do"
+#~ msgid "New Su&b-to-do..."
+#~ msgstr "Na:"
+
+#, fuzzy
+#~ msgctxt "@action:inmenu unspecified priority"
+#~ msgid "unspecified"
+#~ msgstr "Wopisanje:"
+
+#, fuzzy
+#~ msgctxt "@info:tooltip"
+#~ msgid "Filter on these categories"
+#~ msgstr "Kategorije"
+
+#, fuzzy
+#~ msgctxt "@item:inlistbox"
+#~ msgid "Select Categories"
+#~ msgstr "Kategorije"
+
+#, fuzzy
+#~ msgctxt "@item:inlistbox"
+#~ msgid "Select Priority"
+#~ msgstr "Staw:"
+
+#, fuzzy
+#~ msgctxt "@action:inmenu priority is unspecified"
+#~ msgid "unspecified"
+#~ msgstr "Wopisanje:"
+
+#, fuzzy
+#~ msgctxt "priority is unspecified"
+#~ msgid "unspecified"
+#~ msgstr "Wopisanje:"
+
+#, fuzzy
+#~ msgid "To-do:"
+#~ msgstr "Na:"
+
+#, fuzzy
+#~ msgctxt "@option:check Checkbox to display todos not hierarchical"
+#~ msgid "Flat View"
+#~ msgstr "&Měsac"
+
+#, fuzzy
+#~ msgctxt "@info:tooltip"
+#~ msgid "Fully collapse the to-do tree"
+#~ msgstr "Titl"
+
+#, fuzzy
+#~ msgctxt "unspecified priority"
+#~ msgid "unspecified"
+#~ msgstr "Wopisanje:"
+
+#, fuzzy
+#~ msgid "&Description"
+#~ msgstr "Wopisanje:"
+
+#, fuzzy
+#~ msgid "Other Options"
+#~ msgstr "Wopisanje:"
+
+#, fuzzy
+#~ msgid "&Month View"
+#~ msgstr "&Měsac"
+
+#, fuzzy
+#~| msgid "Categories"
+#~ msgid "Edit Categories"
+#~ msgstr "Kategorije"
+
+#, fuzzy
+#~ msgid "New category entry"
+#~ msgstr "Kategorije"
+
+#, fuzzy
+#~ msgid "Add the entry to the category list"
+#~ msgstr "Kategorije"
+
+#, fuzzy
+#~ msgid "A&dd"
+#~ msgstr "&wobdźěłać"
+
+#, fuzzy
+#~ msgid "Add &Subcategory"
+#~ msgstr "Kategorije"
+
+#, fuzzy
+#~ msgid "Remove the selected category"
+#~ msgstr "&Wróćo na prěnjotny staw"
+
+#, fuzzy
+#~| msgid "Categories"
+#~ msgid "Category list"
+#~ msgstr "Kategorije"
+
+#, fuzzy
+#~ msgid "Default Category"
+#~ msgstr "Kategorije"
+
+#, fuzzy
+#~ msgid "New category"
+#~ msgstr "Kategorije"
+
+#, fuzzy
+#~ msgid "New subcategory"
+#~ msgstr "Kategorije"
+
+#, fuzzy
+#~ msgctxt "@action:button"
+#~ msgid "&Archive"
+#~ msgstr "Na:"
+
+#, fuzzy
+#~ msgctxt "@item:inlistbox expiration in weekly units"
+#~ msgid "Week(s)"
+#~ msgstr "&Tydźeń"
+
+#, fuzzy
+#~ msgctxt "@item:inlistbox expiration in monthly units"
+#~ msgid "Month(s)"
+#~ msgstr "&Měsac"
+
+#, fuzzy
+#~ msgctxt "@option:check"
+#~ msgid "&Events"
+#~ msgstr "&Wróćo na prěnjotny staw"
+
+#, fuzzy
+#~ msgctxt "@option:check"
+#~ msgid "&To-dos"
+#~ msgstr "Na:"
+
+#, fuzzy
+#~ msgid "Archive to-dos"
+#~ msgstr "Na:"
+
+#, fuzzy
+#~ msgid "Delete Old Items"
+#~ msgstr "Konfiguracija resursow"
+
+#, fuzzy
+#~ msgid "Start Date/Time"
+#~ msgstr "Staw:"
+
+#, fuzzy
+#~ msgid "End Date/Time"
+#~ msgstr "Titl"
+
+#, fuzzy
+#~ msgid "Attendee added"
+#~ msgstr "Titl"
+
+#, fuzzy
+#~ msgid "Timezone:"
+#~ msgstr "Titl"
+
+#, fuzzy
+#~ msgid "&Add Timezones..."
+#~ msgstr "&wobdźěłać"
+
+#, fuzzy
+#~ msgid "&Remove Timezone %1"
+#~ msgstr "Titl"
+
+#, fuzzy
+#~ msgid "Timezone: %1"
+#~ msgstr "Titl"
+
+#, fuzzy
+#~ msgid "Timezone"
+#~ msgstr "Titl"
+
+#, fuzzy
+#~ msgid "Add Calendar..."
+#~ msgstr "Konfiguracija &skrótšenkow..."
+
+#, fuzzy
+#~ msgid "Properties..."
+#~ msgstr "&wobdźěłać"
+
+#, fuzzy
+#~ msgid "New Calendar..."
+#~ msgstr "Konfiguracija &skrótšenkow..."
+
+#, fuzzy
+#~ msgctxt "@title:group"
+#~ msgid "Saving Calendar"
+#~ msgstr "Konfiguracija &skrótšenkow..."
+
+#, fuzzy
+#~ msgctxt "@title:tab general to-do settings"
+#~ msgid "&General"
+#~ msgstr "Powšitkownje"
+
+#, fuzzy
+#~ msgid "Sets the title of this journal."
+#~ msgstr "Konfiguracija resursow"
+
+#, fuzzy
+#~ msgctxt "journal title"
+#~ msgid "T&itle:"
+#~ msgstr "Titl"
+
+#, fuzzy
+#~ msgid "&Date:"
+#~ msgstr "Titl"
+
+#, fuzzy
+#~ msgid "&Time: "
+#~ msgstr "Titl"
+
+#, fuzzy
+#~ msgid "Select Cate&gories..."
+#~ msgstr "Kategorije"
+
+#, fuzzy
+#~| msgid "General"
+#~ msgctxt "@title general journal settings"
+#~ msgid "General"
+#~ msgstr "Powšitkownje"
+
+#, fuzzy
+#~ msgctxt "@label"
+#~ msgid "Attachment name"
+#~ msgstr "&Wróćo na prěnjotny staw"
+
+#, fuzzy
+#~ msgctxt "@info:tooltip"
+#~ msgid "Give the attachment a name"
+#~ msgstr "&Wróćo na prěnjotny staw"
+
+#, fuzzy
+#~ msgctxt "@label unknown mimetype"
+#~ msgid "Unknown"
+#~ msgstr "Njeznaty zmylk"
+
+#, fuzzy
+#~ msgctxt "@option:check"
+#~ msgid "Store attachment inline"
+#~ msgstr "&Wróćo na prěnjotny staw"
+
+#, fuzzy
+#~ msgctxt "@info:tooltip"
+#~ msgid "Store the attachment file inside the calendar"
+#~ msgstr "&Wróćo na prěnjotny staw"
+
+#, fuzzy
+#~ msgctxt "@label"
+#~ msgid "Location:"
+#~ msgstr "Wopisanje:"
+
+#, fuzzy
+#~ msgctxt "@label"
+#~ msgid "Attachments:"
+#~ msgstr "&Wróćo na prěnjotny staw"
+
+#, fuzzy
+#~ msgctxt "@info:tooltip"
+#~ msgid "Add an attachment"
+#~ msgstr "&Wróćo na prěnjotny staw"
+
+#, fuzzy
+#~ msgctxt "@info:tooltip"
+#~ msgid "Remove the selected attachment"
+#~ msgstr "&Wróćo na prěnjotny staw"
+
+#, fuzzy
+#~ msgctxt "@action:inmenu remove the attachment"
+#~ msgid "&Remove"
+#~ msgstr "Ponowić"
+
+#, fuzzy
+#~ msgctxt "@action:inmenu show a dialog used to edit the attachment"
+#~ msgid "&Properties..."
+#~ msgstr "&wobdźěłać"
+
+#, fuzzy
+#~ msgctxt "@title"
+#~ msgid "Add Attachment"
+#~ msgstr "&Wróćo na prěnjotny staw"
+
+#, fuzzy
+#~ msgctxt "@action:button"
+#~ msgid "Manage &Templates..."
+#~ msgstr "Kategorije"
+
+#, fuzzy
+#~ msgctxt "@title:window"
+#~ msgid "Edit %1: %2"
+#~ msgstr "&wobdźěłać"
+
+#, fuzzy
+#~ msgctxt "@title:window"
+#~ msgid "KOrganizer Confirmation"
+#~ msgstr "Konfiguracija resursow"
+
+#, fuzzy
+#~ msgctxt "@title:tab"
+#~ msgid "Atte&ndees"
+#~ msgstr "Titl"
+
+#, fuzzy
+#~| msgid "Name"
+#~ msgctxt "@title:column attendee name"
+#~ msgid "Name"
+#~ msgstr "Mjeno"
+
+#, fuzzy
+#~| msgid "Email"
+#~ msgctxt "@title:column attendee email"
+#~ msgid "Email"
+#~ msgstr "email"
+
+#, fuzzy
+#~ msgctxt "@title:column attendee role"
+#~ msgid "Role"
+#~ msgstr "Ponowić"
+
+#, fuzzy
+#~| msgid "Status"
+#~ msgctxt "@title:column attendee status"
+#~ msgid "Status"
+#~ msgstr "Staw:"
+
+#, fuzzy
+#~ msgctxt "@title:column attendee delegated to"
+#~ msgid "Delegated To"
+#~ msgstr "Konfiguracija resursow"
+
+#, fuzzy
+#~ msgctxt "@title:column attendee delegated from"
+#~ msgid "Delegated From"
+#~ msgstr "Konfiguracija resursow"
+
+#, fuzzy
+#~ msgid "Manage %1 Templates"
+#~ msgstr "Kategorije"
+
+#, fuzzy
+#~ msgid "Please enter a name for the new template:"
+#~ msgstr "Prošu družinu noweje resursy wubrać:"
+
+#, fuzzy
+#~ msgid "Remove"
+#~ msgstr "Ponowić"
+
+#, fuzzy
+#~ msgctxt "@label attendee's name"
+#~ msgid "Na&me:"
+#~ msgstr "Mjeno:"
+
+#, fuzzy
+#~ msgctxt "@label"
+#~ msgid "Click to add a new attendee"
+#~ msgstr "Titl"
+
+#, fuzzy
+#~ msgctxt "@label"
+#~ msgid "Ro&le:"
+#~ msgstr "Titl"
+
+#, fuzzy
+#~ msgctxt "@label"
+#~ msgid "Stat&us:"
+#~ msgstr "Staw:"
+
+#, fuzzy
+#~ msgctxt "@info:tooltip"
+#~ msgid "Request a response from the attendee"
+#~ msgstr "&Wróćo na prěnjotny staw"
+
+#, fuzzy
+#~ msgctxt "@option:check"
+#~ msgid "Re&quest response"
+#~ msgstr "&Wróćo na prěnjotny staw"
+
+#, fuzzy
+#~| msgid "&New"
+#~ msgctxt "@action:button new attendee"
+#~ msgid "&New"
+#~ msgstr "&Nowe"
+
+#, fuzzy
+#~ msgctxt "@info:tooltip"
+#~ msgid "Add an attendee"
+#~ msgstr "Titl"
+
+#, fuzzy
+#~ msgctxt "@action:button"
+#~ msgid "&Remove"
+#~ msgstr "Ponowić"
+
+#, fuzzy
+#~ msgctxt "@action:button"
+#~ msgid "Select Addressee..."
+#~ msgstr "Kategorije"
+
+#, fuzzy
+#~ msgctxt "@item:intext sample attendee email name"
+#~ msgid "name"
+#~ msgstr "Mjeno"
+
+#, fuzzy
+#~ msgctxt "@info:whatsthis"
+#~ msgid "Select the identity to use as the organizer for this incidence."
+#~ msgstr "Konfiguracija resursow"
+
+#, fuzzy
+#~ msgctxt "@label"
+#~ msgid "Delegated to %1"
+#~ msgstr "Konfiguracija resursow"
+
+#, fuzzy
+#~ msgctxt "@label"
+#~ msgid "Not delegated"
+#~ msgstr "Konfiguracija resursow"
+
+#, fuzzy
+#~ msgctxt "@label"
+#~ msgid "week(s) on:"
+#~ msgstr "&Tydźeń"
+
+#, fuzzy
+#~ msgctxt "@info:tooltip"
+#~ msgid "Recur on %1"
+#~ msgstr "Wersija:"
+
+#, fuzzy
+#~ msgctxt "@label"
+#~ msgid "month(s)"
+#~ msgstr "&Měsac"
+
+#, fuzzy
+#~| msgid "&Month"
+#~ msgctxt "@option:radio Part before XXX in 'Recur on NNN. WEEKDAY of MONTH'"
+#~ msgid "&On the"
+#~ msgstr "&Měsac"
+
+#, fuzzy
+#~ msgctxt "@title:group"
+#~ msgid "E&xceptions"
+#~ msgstr "Wopisanje:"
+
+#, fuzzy
+#~ msgctxt "@action:button"
+#~ msgid "&Add"
+#~ msgstr "&wobdźěłać"
+
+#, fuzzy
+#~ msgctxt "@action:button"
+#~ msgid "&Change"
+#~ msgstr "Konfiguracija &skrótšenkow..."
+
+#, fuzzy
+#~ msgctxt "@action:button"
+#~ msgid "&Delete"
+#~ msgstr "Titl"
+
+#, fuzzy
+#~ msgctxt "@title:window"
+#~ msgid "Edit Exceptions"
+#~ msgstr "Titl"
+
+#, fuzzy
+#~ msgctxt "@option radio"
+#~ msgid "&No ending date"
+#~ msgstr "Titl"
+
+#, fuzzy
+#~ msgctxt "@option:radio"
+#~ msgid "End &after"
+#~ msgstr "Titl"
+
+#, fuzzy
+#~ msgctxt "@label"
+#~ msgid "Begins on: %1"
+#~ msgstr "Wersija:"
+
+#, fuzzy
+#~ msgctxt "@title:group"
+#~ msgid "Recurrence Types"
+#~ msgstr "Konfiguracija resursow"
+
+#, fuzzy
+#~ msgctxt "@option:radio recur weekly"
+#~ msgid "&Weekly"
+#~ msgstr "&Tydźeń"
+
+#, fuzzy
+#~ msgctxt "@option:radio recur monthly"
+#~ msgid "&Monthly"
+#~ msgstr "&Měsac"
+
+#, fuzzy
+#~ msgctxt "@option:check to-do start datetime"
+#~ msgid "Sta&rt:"
+#~ msgstr "Staw:"
+
+#, fuzzy
+#~ msgctxt "to-do due datetime"
+#~ msgid "&Due:"
+#~ msgstr "Titl"
+
+#, fuzzy
+#~ msgctxt "@label"
+#~ msgid "Recurrence:"
+#~ msgstr "Konfiguracija resursow"
+
+#, fuzzy
+#~ msgctxt "to-do start datetime"
+#~ msgid "Start: %1"
+#~ msgstr "Staw:"
+
+#, fuzzy
+#~ msgctxt "@info:whatsthis"
+#~ msgid "Sets the Title of this event or to-do."
+#~ msgstr "Konfiguracija resursow"
+
+#, fuzzy
+#~ msgctxt "@info:tooltip"
+#~ msgid "Set the title"
+#~ msgstr "Staw:"
+
+#, fuzzy
+#~ msgctxt "@label event or to-do title"
+#~ msgid "T&itle:"
+#~ msgstr "Titl"
+
+#, fuzzy
+#~ msgctxt "@label"
+#~ msgid "&Location:"
+#~ msgstr "Wopisanje:"
+
+#, fuzzy
+#~ msgctxt "@label"
+#~ msgid "Categories:"
+#~ msgstr "Kategorije"
+
+#, fuzzy
+#~ msgctxt "@action:button select a category"
+#~ msgid "&Select..."
+#~ msgstr "Kategorije"
+
+#, fuzzy
+#~ msgctxt "@info:tooltip"
+#~ msgid "Set the secrecy level"
+#~ msgstr "Staw:"
+
+#, fuzzy
+#~ msgctxt "@option:check"
+#~ msgid "&Reminder:"
+#~ msgstr "Titl"
+
+#, fuzzy
+#~ msgctxt "@info:whatsthis"
+#~ msgid "Activates a reminder for this event or to-do."
+#~ msgstr "Konfiguracija resursow"
+
+#, fuzzy
+#~ msgctxt "@info:tooltip"
+#~ msgid "Set a reminder"
+#~ msgstr "Titl"
+
+#, fuzzy
+#~ msgctxt "@info:tooltip"
+#~ msgid "Set an alarm"
+#~ msgstr "Kategorije"
+
+#, fuzzy
+#~ msgctxt "@item:inlistbox alarm expressed in minutes"
+#~ msgid "minute(s)"
+#~ msgstr "&Měsac"
+
+#, fuzzy
+#~ msgctxt "@action:button advanced alarm settings"
+#~ msgid "Advanced..."
+#~ msgstr "&wobdźěłać"
+
+#, fuzzy
+#~ msgctxt "@label"
+#~ msgid "1 reminder configured"
+#~ msgid_plural "%1 reminders configured"
+#~ msgstr[0] "Titl"
+#~ msgstr[1] "Titl"
+#~ msgstr[2] "Titl"
+#~ msgstr[3] "Titl"
+
+#, fuzzy
+#~ msgctxt "@label"
+#~ msgid "1 advanced reminder configured"
+#~ msgstr "Titl"
+
+#, fuzzy
+#~ msgctxt "@label"
+#~ msgid "No attendees"
+#~ msgstr "Titl"
+
+#, fuzzy
+#~ msgctxt "@info:whatsthis"
+#~ msgid "Sets options related to the date and time of the event or to-do."
+#~ msgstr "Konfiguracija resursow"
+
+#, fuzzy
+#~ msgctxt "@label event start time"
+#~ msgid "&Start:"
+#~ msgstr "Staw:"
+
+#, fuzzy
+#~ msgctxt "@info:tooltip"
+#~ msgid "Set the start date"
+#~ msgstr "Staw:"
+
+#, fuzzy
+#~ msgctxt "@info:tooltip"
+#~ msgid "Set the start time"
+#~ msgstr "Staw:"
+
+#, fuzzy
+#~ msgctxt "@info:whatsthis"
+#~ msgid "Select the starting time for this event."
+#~ msgstr "Konfiguracija resursow"
+
+#, fuzzy
+#~ msgctxt "@label"
+#~ msgid "&End:"
+#~ msgstr "Titl"
+
+#, fuzzy
+#~ msgctxt "@label"
+#~ msgid "S&how time as:"
+#~ msgstr "Wopisanje:"
+
+#, fuzzy
+#~ msgctxt "@action:button"
+#~ msgid "Decline"
+#~ msgstr "Titl"
+
+#, fuzzy
+#~ msgctxt "@label"
+#~ msgid "Duration: "
+#~ msgstr "Wopisanje:"
+
+#, fuzzy
+#~ msgctxt "@option unknown alarm type"
+#~ msgid "Unknown"
+#~ msgstr "Njeznaty zmylk"
+
+#, fuzzy
+#~| msgid "Email"
+#~ msgctxt "@option send email reminder"
+#~ msgid "Email"
+#~ msgstr "email"
+
+#, fuzzy
+#~ msgctxt "@item@intable alarm offset specified in minutes"
+#~ msgid "1 minute"
+#~ msgid_plural "%1 minutes"
+#~ msgstr[0] "&Měsac"
+#~ msgstr[1] "&Měsac"
+#~ msgstr[2] "&Měsac"
+#~ msgstr[3] "&Měsac"
+
+#, fuzzy
+#~ msgctxt "@title"
+#~ msgid "Edit Reminders"
+#~ msgstr "Titl"
+
+#, fuzzy
+#~ msgctxt "@title:tab general event settings"
+#~ msgid "&General"
+#~ msgstr "Powšitkownje"
+
+#, fuzzy
+#~ msgctxt "@title:tab"
+#~ msgid "&Attendees"
+#~ msgstr "Titl"
+
+#, fuzzy
+#~ msgctxt "@title:window"
+#~ msgid "No Changes"
+#~ msgstr "Plugin za wuměnu datow"
+
+#, fuzzy
+#~ msgctxt "@info"
+#~ msgid "No suitable date found."
+#~ msgstr "Staw:"
+
+#, fuzzy
+#~ msgid "Select Categories"
+#~ msgstr "Kategorije"
+
+#, fuzzy
+#~| msgid "Categories"
+#~ msgid "Category"
+#~ msgstr "Kategorije"
+
+#, fuzzy
+#~ msgid "Enable reminders for new Events"
+#~ msgstr "Titl"
+
+#, fuzzy
+#~ msgid "Enable reminders for new To-dos"
+#~ msgstr "Titl"
+
+#, fuzzy
+#~ msgid "Default reminder time"
+#~ msgstr "Titl"
+
+#, fuzzy
+#~ msgid "Default time for reminders"
+#~ msgstr "Titl"
+
+#, fuzzy
+#~ msgid "Time"
+#~ msgstr "Titl"
+
+#, fuzzy
+#~ msgid "Set the reminder trigger time"
+#~ msgstr "Titl"
+
+#, fuzzy
+#~ msgid "Select the reminder trigger time unit"
+#~ msgstr "Konfiguracija resursow"
+
+#, fuzzy
+#~ msgctxt "@item:inlistbox alarm offset expressed in minutes"
+#~ msgid "minute(s)"
+#~ msgstr "&Měsac"
+
+#, fuzzy
+#~| msgid "Email"
+#~ msgctxt "@item:inlistbox alarm offset expressed in days"
+#~ msgid "day(s)"
+#~ msgstr "email"
+
+#, fuzzy
+#~ msgid "Select the reminder trigger relative to the start or end time"
+#~ msgstr "Konfiguracija resursow"
+
+#, fuzzy
+#~ msgid "&Interval:"
+#~ msgstr "Powšitkownje"
+
+#, fuzzy
+#~ msgid "Set the reminder to repeat"
+#~ msgstr "Titl"
+
+#, fuzzy
+#~ msgid "&Repeating:"
+#~ msgstr "&Wróćo na prěnjotny staw"
+
+#, fuzzy
+#~ msgctxt "@label:spinbox repeat interval expressed in minutes"
+#~ msgid " Minute(s)"
+#~ msgstr "&Měsac"
+
+#, fuzzy
+#~ msgctxt "repeat every X minutes"
+#~ msgid "every "
+#~ msgstr "&Wróćo na prěnjotny staw"
+
+#, fuzzy
+#~ msgid "&Display"
+#~ msgstr "Titl"
+
+#, fuzzy
+#~ msgid "Display &text:"
+#~ msgstr "Titl"
+
+#, fuzzy
+#~ msgid "Sound &file:"
+#~ msgstr "Staw:"
+
+#, fuzzy
+#~ msgid "Remove the currently selected reminder"
+#~ msgstr "&Wróćo na prěnjotny staw"
+
+#, fuzzy
+#~ msgid "Create a new reminder from the currently selected reminder"
+#~ msgstr "&Wróćo na prěnjotny staw"
+
+#, fuzzy
+#~ msgid "The list of reminders for this event or to-do"
+#~ msgstr "Konfiguracija resursow"
+
+#, fuzzy
+#~ msgid "Repeat"
+#~ msgstr "&Wróćo na prěnjotny staw"
+
+#, fuzzy
+#~ msgid "&New..."
+#~ msgstr "&Nowe"
+
+#, fuzzy
+#~ msgid "Remove the currently selected template"
+#~ msgstr "&Wróćo na prěnjotny staw"
+
+#, fuzzy
+#~ msgctxt "incidence category"
+#~ msgid "Education"
+#~ msgstr "Wopisanje:"
+
+#, fuzzy
+#~ msgctxt ""
+#~ "incidence category: a lengthy time away from work or school, a trip "
+#~ "abroad, or simply a pleasure trip away from home"
+#~ msgid "Vacation"
+#~ msgstr "Wopisanje:"
+
+#, fuzzy
+#~ msgctxt "incidence category"
+#~ msgid "Personal"
+#~ msgstr "Wosobinski"
+
+#, fuzzy
+#~ msgid "text/calendar"
+#~ msgstr "Konfiguracija &skrótšenkow..."
+
+#, fuzzy
+#~ msgid "C&opy to Calendar"
+#~ msgstr "Konfiguracija &skrótšenkow..."
+
+#, fuzzy
+#~ msgid "&Move to Calendar"
+#~ msgstr "Konfiguracija &skrótšenkow..."
+
+#, fuzzy
+#~ msgid "Copy Calendar"
+#~ msgid_plural "Copy %1 Calendars"
+#~ msgstr[0] "Konfiguracija &skrótšenkow..."
+#~ msgstr[1] "Konfiguracija &skrótšenkow..."
+#~ msgstr[2] "Konfiguracija &skrótšenkow..."
+#~ msgstr[3] "Konfiguracija &skrótšenkow..."
+
+#, fuzzy
+#~| msgid "Email"
+#~ msgctxt "@item:inlistbox recur daily"
+#~ msgid "Daily"
+#~ msgstr "email"
+
+#, fuzzy
+#~ msgctxt "@item:inlistbox recur weekly"
+#~ msgid "Weekly"
+#~ msgstr "&Tydźeń"
+
+#, fuzzy
+#~ msgctxt "@item:inlistbox recur monthly"
+#~ msgid "Monthly"
+#~ msgstr "&Měsac"
+
+#, fuzzy
+#~| msgid "Email"
+#~ msgctxt "@title:column email addresses"
+#~ msgid "Email"
+#~ msgstr "email"
+
+#, fuzzy
+#~ msgid "Send Email"
+#~ msgstr "Sendmail"
+
+#, fuzzy
+#~ msgid "Send Update"
+#~ msgstr "Titl"
+
+#, fuzzy
+#~ msgctxt "@title:window"
+#~ msgid "Edit Journal: %1"
+#~ msgstr "&wobdźěłać"
+
+#, fuzzy
+#~ msgid "Added calendar for URL '%1'."
+#~ msgstr "Konfiguracija &skrótšenkow..."
+
+#, fuzzy
+#~ msgid "Sendmail"
+#~ msgstr "Sendmail"
+
+#, fuzzy
+#~ msgid "Add Calendar Folder"
+#~ msgstr "Konfiguracija &skrótšenkow..."
+
+#, fuzzy
+#~ msgid "Please enter a new name for the calendar folder"
+#~ msgstr "Prošu družinu noweje resursy wubrać:"
+
+#, fuzzy
+#~ msgid "&Add Calendar Folder..."
+#~ msgstr "Konfiguracija &skrótšenkow..."
+
+#, fuzzy
+#~| msgid "General"
+#~ msgctxt "@title:tab general event settings"
+#~ msgid "General"
+#~ msgstr "Powšitkownje"
+
+#, fuzzy
+#~ msgctxt "@title:tab"
+#~ msgid "Details"
+#~ msgstr "Filtry wobdźěłać..."
+
+#, fuzzy
+#~ msgctxt "@title:tab"
+#~ msgid "Rec&urrence"
+#~ msgstr "Konfiguracija resursow"
+
+#, fuzzy
+#~| msgid "General"
+#~ msgctxt "@title:tab general to-do settings"
+#~ msgid "General"
+#~ msgstr "Powšitkownje"
+
+#, fuzzy
+#~ msgctxt "@label"
+#~ msgid "Reminder:"
+#~ msgstr "Titl"
+
+#, fuzzy
+#~ msgctxt "incidence type is event"
+#~ msgid "event"
+#~ msgstr "&Wróćo na prěnjotny staw"
+
+#, fuzzy
+#~ msgctxt "incidence type is to-do/task"
+#~ msgid "task"
+#~ msgstr "Nadawk"
+
+#, fuzzy
+#~ msgctxt "incidence type is journal"
+#~ msgid "journal entry"
+#~ msgstr "Konfiguracija resursow"
+
+#, fuzzy
+#~ msgctxt "@title:column reminder date/time"
+#~ msgid "Reminder Time"
+#~ msgstr "Titl"
+
+#, fuzzy
+#~ msgid "Zoom In"
+#~ msgstr "Nutř zoomować"
+
+#, fuzzy
+#~ msgid "Zoom Out"
+#~ msgstr "Won zoomować"
+
+#, fuzzy
+#~ msgctxt "@item:inlistbox alarm offset expressed in minutes"
+#~ msgid "Minutes"
+#~ msgstr "&Měsac"
+
+#, fuzzy
+#~ msgctxt "@label"
+#~ msgid "Time zone:"
+#~ msgstr "Titl"
+
+#, fuzzy
+#~ msgctxt "@item:inlistbox unknown timezone"
+#~ msgid "Unknown"
+#~ msgstr "Njeznaty zmylk"
+
+#, fuzzy
+#~ msgid "Delete Confirmation"
+#~ msgstr "Konfiguracija resursow"
+
+#, fuzzy
+#~ msgid "Show Resource View"
+#~ msgstr "Konfiguracija resursow"
+
+#, fuzzy
+#~ msgid "Please enter a name for the new subresource"
+#~ msgstr "Prošu družinu noweje resursy wubrać:"
+
+#, fuzzy
+#~ msgid "&Add Resource..."
+#~ msgstr "Konfiguracija resursow"
+
+#, fuzzy
+#~ msgid "No (unset) category color"
+#~ msgstr "Kategorije"

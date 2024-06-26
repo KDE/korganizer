@@ -1,0 +1,4675 @@
+# translation of korganizer.po to Lithuanian
+# Donatas Glodenis <dgvirtual@akl.lt>, 2004-2009.
+# Laumingis Skripkauskas <om@takas.lt>, 2005.
+# Tomas Straupis <tomasstraupis@gmail.com>, 2011, 2012.
+# Remigijus Jarmalavičius, 2011.
+# Liudas Ališauskas <liudas.alisauskas@gmail.com>, 2012, 2013, 2014.
+# Liudas Alisauskas <liudas@akmc.lt>, 2013.
+# Mindaugas Baranauskas <opensuse.lietuviu.kalba@gmail.com>, 2015.
+msgid ""
+msgstr ""
+"Project-Id-Version: korganizer\n"
+"Report-Msgid-Bugs-To: https://bugs.kde.org\n"
+"POT-Creation-Date: 2024-06-26 00:40+0000\n"
+"PO-Revision-Date: 2024-02-02 21:30+0200\n"
+"Last-Translator: Mindaugas Baranauskas <opensuse.lietuviu.kalba@gmail.com>\n"
+"Language-Team: lt <kde-i18n-lt@kde.org>\n"
+"Language: lt\n"
+"MIME-Version: 1.0\n"
+"Content-Type: text/plain; charset=UTF-8\n"
+"Content-Transfer-Encoding: 8bit\n"
+"Plural-Forms: nplurals=4; plural=(n==1 ? 0 : n%10>=2 && (n%100<10 || n"
+"%100>=20) ? 1 : n%10==0 || (n%100>10 && n%100<20) ? 2 : 3);\n"
+"X-Generator: Poedit 3.0.1\n"
+
+#: datenums/configdialog.cpp:28
+#, fuzzy, kde-format
+#| msgid "Configure Day Numbers"
+msgctxt "@title:window"
+msgid "Configure Day Numbers"
+msgstr "Konfigūruoti dienų numeraciją"
+
+#: datenums/configdialog.cpp:43
+#, kde-format
+msgid "Show Date Number"
+msgstr "Rodyti datos numerį"
+
+#: datenums/configdialog.cpp:48
+#, kde-format
+msgid "Show day number"
+msgstr "Rodyti dienos numerį"
+
+#: datenums/configdialog.cpp:51
+#, kde-format
+msgid "Show days to end of year"
+msgstr "Rodyti dienų iki metų galo skaičių"
+
+#: datenums/configdialog.cpp:54
+#, kde-format
+msgid "Show both"
+msgstr "Rodyti abu"
+
+#: datenums/datenums.cpp:36
+#, kde-format
+msgid "This plugin shows information on a day's position in the year."
+msgstr "Šis įskiepis rodo informaciją apie dienos poziciją metuose."
+
+#: datenums/datenums.cpp:54
+#, kde-format
+msgid "1 day before the end of the year"
+msgid_plural "%1 days before the end of the year"
+msgstr[0] "%1 diena prieš metų pabaigą"
+msgstr[1] "%1 dienos prieš metų pabaigą"
+msgstr[2] "%1 dienų prieš metų pabaigą"
+msgstr[3] "%1 diena prieš metų pabaigą"
+
+#: datenums/datenums.cpp:59
+#, kde-format
+msgctxt "dayOfYear / daysTillEndOfYear"
+msgid "%1 / %2"
+msgstr "%1 / %2"
+
+#: datenums/datenums.cpp:60
+#, kde-format
+msgid "1 day since the beginning of the year,\n"
+msgid_plural "%1 days since the beginning of the year,\n"
+msgstr[0] "%1 diena nuo metų pradžios,\n"
+msgstr[1] "%1 dienos nuo metų pradžios,\n"
+msgstr[2] "%1 dienų nuo metų pradžios,\n"
+msgstr[3] "%1 diena nuo metų pradžios,\n"
+
+#: datenums/datenums.cpp:61
+#, kde-format
+msgid "1 day until the end of the year"
+msgid_plural "%1 days until the end of the year"
+msgstr[0] "Iki metų pabaigos liko %1 diena"
+msgstr[1] "Iki metų pabaigos liko %1 dienos"
+msgstr[2] "Iki metų pabaigos liko %1 dienų"
+msgstr[3] "Iki metų pabaigos liko %1 diena"
+
+#: datenums/datenums.cpp:102
+#, kde-format
+msgctxt "Week weekOfYear"
+msgid "Week %1"
+msgstr "%1 savaitė "
+
+#: datenums/datenums.cpp:103 datenums/datenums.cpp:113
+#: datenums/datenums.cpp:118
+#, kde-format
+msgid "1 week since the beginning of the year"
+msgid_plural "%1 weeks since the beginning of the year"
+msgstr[0] "Nuo metų pradžios praėjo %1 savaitė"
+msgstr[1] "Nuo metų pradžios praėjo %1 savaitės"
+msgstr[2] "Nuo metų pradžios praėjo %1 savaičių"
+msgstr[3] "Nuo metų pradžios praėjo %1 savaitė"
+
+#: datenums/datenums.cpp:106
+#, kde-format
+msgctxt "weekOfYear (year)"
+msgid "%1 (%2)"
+msgstr "%1 (%2)"
+
+#: datenums/datenums.cpp:107
+#, kde-format
+msgctxt "Week weekOfYear (year)"
+msgid "Week %1 (%2)"
+msgstr "%1 savaitė (%2)"
+
+#: datenums/datenums.cpp:122
+#, kde-format
+msgid "1 week remaining"
+msgid_plural "%1 weeks remaining"
+msgstr[0] "Liko %1 savaitė"
+msgstr[1] "Liko %1 savaitės"
+msgstr[2] "Liko %1 savaičių"
+msgstr[3] "Liko %1 savaitė"
+
+#: datenums/datenums.cpp:123
+#, kde-format
+msgid "1 week until the end of the year"
+msgid_plural "%1 weeks until the end of the year"
+msgstr[0] "Liko %1 savaitė iki metų pabaigos"
+msgstr[1] "Liko %1 savaitės iki metų pabaigos"
+msgstr[2] "Liko %1 savaičių iki metų pabaigos"
+msgstr[3] "Liko %1 savaitė iki metų pabaigos"
+
+#: datenums/datenums.cpp:124
+#, kde-format
+msgctxt "weekOfYear / weeksTillEndOfYear"
+msgid "%1 / %2"
+msgstr "%1 / %2"
+
+#: datenums/datenums.cpp:140
+#, kde-format
+msgctxt ""
+"n weeks since the beginning of the year\n"
+"n weeks until the end of the year"
+msgid ""
+"%1\n"
+"%2"
+msgstr ""
+"%1\n"
+"%2"
+
+#: hebrew/configdialog.cpp:28
+#, fuzzy, kde-format
+#| msgid "Configure Holidays"
+msgctxt "@title:window"
+msgid "Configure Holidays"
+msgstr "Konfigūruoti šventes"
+
+#: hebrew/configdialog.cpp:42
+#, kde-format
+msgid "Use Israeli holidays"
+msgstr "Naudoti Izraelio šventes"
+
+#: hebrew/configdialog.cpp:46
+#, kde-format
+msgid "Show weekly parsha"
+msgstr "Rodyti kassavaitinį „parsha“"
+
+#: hebrew/configdialog.cpp:50
+#, kde-format
+msgid "Show day of Omer"
+msgstr "Rodyti Omer dieną"
+
+#: hebrew/configdialog.cpp:54
+#, kde-format
+msgid "Show Chol HaMoed"
+msgstr "Rodyti Chol HaMoed"
+
+#: hebrew/hebrew.cpp:60
+#, kde-format
+msgctxt ""
+"Change the next two strings if emphasis is done differently in your language."
+msgid ""
+"<qt><p align=\"center\"><i>\n"
+"%1\n"
+"</i></p></qt>"
+msgstr ""
+"<qt><p align=\"center\"><i>\n"
+"%1\n"
+"</i></p></qt>"
+
+#: hebrew/hebrew.cpp:67
+#, kde-format
+msgid "This plugin provides the date in the Jewish calendar."
+msgstr "Šis įskiepis pateikia datą pagal žydų kalendorių."
+
+#: hebrew/holiday.cpp:75
+#, kde-format
+msgctxt ""
+"These are Jewish holidays and mostly do not have translations. They may have "
+"different spellings in your language; otherwise, just translate the sound to "
+"your characters."
+msgid "Sh. HaHodesh"
+msgstr "Sh. HaHodesh"
+
+#: hebrew/holiday.cpp:83
+#, kde-format
+msgid "Erev Pesach"
+msgstr "Erev Pesach"
+
+#: hebrew/holiday.cpp:94
+#, kde-format
+msgid "Sh. HaGadol"
+msgstr "Sh. HaGadol"
+
+#: hebrew/holiday.cpp:102
+#, kde-format
+msgid "Pesach"
+msgstr "Pesach"
+
+#: hebrew/holiday.cpp:113 hebrew/holiday.cpp:307
+#, kde-format
+msgid "Chol Hamoed"
+msgstr "Chol Hamoed"
+
+#: hebrew/holiday.cpp:124 hebrew/holiday.cpp:129 hebrew/holiday.cpp:138
+#, kde-format
+msgid "Yom HaShoah"
+msgstr "Yom HaShoah"
+
+#: hebrew/holiday.cpp:164 hebrew/holiday.cpp:171 hebrew/holiday.cpp:182
+#, kde-format
+msgid "Yom HaAtzmaut"
+msgstr "Yom HaAtzmaut"
+
+#: hebrew/holiday.cpp:166 hebrew/holiday.cpp:180
+#, kde-format
+msgid "Yom HaZikaron"
+msgstr "Yom HaZikaron"
+
+#: hebrew/holiday.cpp:190
+#, kde-format
+msgid "Yom Yerushalayim"
+msgstr "Yom Yerushalayim"
+
+#: hebrew/holiday.cpp:194
+#, kde-format
+msgid "Lag BaOmer"
+msgstr "Lag BaOmer"
+
+#: hebrew/holiday.cpp:220
+#, kde-format
+msgid "Erev Shavuot"
+msgstr "Erev Shavuot"
+
+#: hebrew/holiday.cpp:225
+#, kde-format
+msgid "Shavuot"
+msgstr "Shavuot"
+
+#: hebrew/holiday.cpp:234
+#, kde-format
+msgid "Tzom Tammuz"
+msgstr "Tzom Tammuz"
+
+#: hebrew/holiday.cpp:242
+#, kde-format
+msgid "Sh. Hazon"
+msgstr "Sh. Hazon"
+
+#: hebrew/holiday.cpp:244
+#, kde-format
+msgid "Sh. Nahamu"
+msgstr "Sh. Nahamu"
+
+#: hebrew/holiday.cpp:248
+#, kde-format
+msgid "Tisha B'Av"
+msgstr "Tisha B'Av"
+
+#: hebrew/holiday.cpp:254
+#, kde-format
+msgid "S'lichot"
+msgstr "S'lichot"
+
+#: hebrew/holiday.cpp:256
+#, kde-format
+msgid "Erev R.H."
+msgstr "Erev R.H."
+
+#: hebrew/holiday.cpp:264
+#, kde-format
+msgid "Rosh Hashana"
+msgstr "Rosh Hashana"
+
+#: hebrew/holiday.cpp:268 hebrew/holiday.cpp:283
+#, kde-format
+msgid "Sh. Shuvah"
+msgstr "Sh. Shuvah"
+
+#: hebrew/holiday.cpp:270 hebrew/holiday.cpp:275
+#, kde-format
+msgid "Tzom Gedalia"
+msgstr "Tzom Gedalia"
+
+#: hebrew/holiday.cpp:287
+#, kde-format
+msgid "Erev Y.K."
+msgstr "Erev Y.K."
+
+#: hebrew/holiday.cpp:290
+#, kde-format
+msgid "Yom Kippur"
+msgstr "Yom Kippur"
+
+#: hebrew/holiday.cpp:293
+#, kde-format
+msgid "Erev Sukkot"
+msgstr "Erev Sukkot"
+
+#: hebrew/holiday.cpp:298
+#, kde-format
+msgid "Sukkot"
+msgstr "Sukkot"
+
+#: hebrew/holiday.cpp:311
+#, kde-format
+msgid "Hoshana Rabah"
+msgstr "Hoshana Rabah"
+
+#: hebrew/holiday.cpp:314
+#, kde-format
+msgid "Shmini Atzeret"
+msgstr "Shmini Atzeret"
+
+#: hebrew/holiday.cpp:318
+#, kde-format
+msgid "Simchat Torah"
+msgstr "Simchat Torah"
+
+#: hebrew/holiday.cpp:329
+#, kde-format
+msgid "Erev Hanukah"
+msgstr "Erev Hanukah"
+
+#: hebrew/holiday.cpp:331 hebrew/holiday.cpp:339
+#, kde-format
+msgid "Hanukah"
+msgstr "Hanukah"
+
+#: hebrew/holiday.cpp:342
+#, kde-format
+msgid "Tzom Tevet"
+msgstr "Tzom Tevet"
+
+#: hebrew/holiday.cpp:352 hebrew/holiday.cpp:361 hebrew/holiday.cpp:366
+#: hebrew/holiday.cpp:372
+#, kde-format
+msgid "Sh. Shirah"
+msgstr "Sh. Shirah"
+
+#: hebrew/holiday.cpp:368
+#, kde-format
+msgid "Tu B'Shvat"
+msgstr "Tu B'Shvat"
+
+#: hebrew/holiday.cpp:383 hebrew/holiday.cpp:395 hebrew/holiday.cpp:403
+#, kde-format
+msgid "Sh. Shekalim"
+msgstr "Sh. Shekalim"
+
+#: hebrew/holiday.cpp:392
+#, kde-format
+msgid "Purim Katan"
+msgstr "Purim Katan"
+
+#: hebrew/holiday.cpp:411 hebrew/holiday.cpp:431
+#, kde-format
+msgid "Ta'anit Ester"
+msgstr "Ta'anit Ester"
+
+#: hebrew/holiday.cpp:420 hebrew/holiday.cpp:425
+#, kde-format
+msgid "Sh. Zachor"
+msgstr "Sh. Zachor"
+
+#: hebrew/holiday.cpp:427
+#, kde-format
+msgid "Erev Purim"
+msgstr "Erev Purim"
+
+#: hebrew/holiday.cpp:435
+#, kde-format
+msgid "Purim"
+msgstr "Purim"
+
+#: hebrew/holiday.cpp:439 hebrew/holiday.cpp:444
+#, kde-format
+msgid "Shushan Purim"
+msgstr "Shushan Purim"
+
+#: hebrew/holiday.cpp:455
+#, kde-format
+msgid "Sh. Parah"
+msgstr "Sh. Parah"
+
+#: hebrew/holiday.cpp:465
+#, kde-format
+msgid "Sh. HaHodesh"
+msgstr "Sh. HaHodesh"
+
+#: hebrew/holiday.cpp:481
+#, kde-format
+msgid " Omer"
+msgstr " Omer"
+
+#: hebrew/parsha.cpp:28
+#, kde-format
+msgctxt ""
+"These are weekly readings and do not have translations. They may have "
+"different spellings in your language; otherwise, just translate the sound to "
+"your characters"
+msgid "Bereshit"
+msgstr "Bereshit"
+
+#: hebrew/parsha.cpp:29
+#, kde-format
+msgid "Noach"
+msgstr "Noach"
+
+#: hebrew/parsha.cpp:29
+#, kde-format
+msgid "Lech L'cha"
+msgstr "Lech L'cha"
+
+#: hebrew/parsha.cpp:29
+#, kde-format
+msgid "Vayera"
+msgstr "Vayera"
+
+#: hebrew/parsha.cpp:29
+#, kde-format
+msgid "Chaye Sarah"
+msgstr "Chaye Sarah"
+
+#: hebrew/parsha.cpp:29
+#, kde-format
+msgid "Toldot"
+msgstr "Toldot"
+
+#: hebrew/parsha.cpp:29
+#, kde-format
+msgid "Vayetze"
+msgstr "Vayetze"
+
+#: hebrew/parsha.cpp:29
+#, kde-format
+msgid "Vayishlach"
+msgstr "Vayishlach"
+
+#: hebrew/parsha.cpp:30
+#, kde-format
+msgid "Vayeshev"
+msgstr "Vayeshev"
+
+#: hebrew/parsha.cpp:30
+#, kde-format
+msgid "Miketz"
+msgstr "Miketz"
+
+#: hebrew/parsha.cpp:30
+#, kde-format
+msgid "Vayigash"
+msgstr "Vayigash"
+
+#: hebrew/parsha.cpp:30
+#, kde-format
+msgid "Vayechi"
+msgstr "Vayechi"
+
+#: hebrew/parsha.cpp:30
+#, kde-format
+msgid "Shemot"
+msgstr "Shemot"
+
+#: hebrew/parsha.cpp:30
+#, kde-format
+msgid "Vaera"
+msgstr "Vaera"
+
+#: hebrew/parsha.cpp:30
+#, kde-format
+msgid "Bo"
+msgstr "Bo"
+
+#: hebrew/parsha.cpp:31
+#, kde-format
+msgid "Beshalach"
+msgstr "Beshalach"
+
+#: hebrew/parsha.cpp:31
+#, kde-format
+msgid "Yitro"
+msgstr "Yitro"
+
+#: hebrew/parsha.cpp:31
+#, kde-format
+msgid "Mishpatim"
+msgstr "Mishpatim"
+
+#: hebrew/parsha.cpp:31
+#, kde-format
+msgid "Terumah"
+msgstr "Terumah"
+
+#: hebrew/parsha.cpp:31
+#, kde-format
+msgid "Tetzaveh"
+msgstr "Tetzaveh"
+
+#: hebrew/parsha.cpp:31
+#, kde-format
+msgid "Ki Tisa"
+msgstr "Ki Tisa"
+
+#: hebrew/parsha.cpp:31
+#, kde-format
+msgid "Vayakhel"
+msgstr "Vayakhel"
+
+#: hebrew/parsha.cpp:32
+#, kde-format
+msgid "Pekudei"
+msgstr "Pekudei"
+
+#: hebrew/parsha.cpp:32
+#, kde-format
+msgid "Vayikra"
+msgstr "Vayikra"
+
+#: hebrew/parsha.cpp:32
+#, kde-format
+msgid "Tzav"
+msgstr "Tzav"
+
+#: hebrew/parsha.cpp:32
+#, kde-format
+msgid "Shemini"
+msgstr "Shemini"
+
+#: hebrew/parsha.cpp:32
+#, kde-format
+msgid "Tazria"
+msgstr "Tazria"
+
+#: hebrew/parsha.cpp:32
+#, kde-format
+msgid "Metzora"
+msgstr "Metzora"
+
+#: hebrew/parsha.cpp:32
+#, kde-format
+msgid "Acharei Mot"
+msgstr "Acharei Mot"
+
+#: hebrew/parsha.cpp:33
+#, kde-format
+msgid "Kedoshim"
+msgstr "Kedoshim"
+
+#: hebrew/parsha.cpp:33
+#, kde-format
+msgid "Emor"
+msgstr "Emor"
+
+#: hebrew/parsha.cpp:33
+#, kde-format
+msgid "Behar"
+msgstr "Behar"
+
+#: hebrew/parsha.cpp:33
+#, kde-format
+msgid "Bechukotai"
+msgstr "Bechukotai"
+
+#: hebrew/parsha.cpp:33
+#, kde-format
+msgid "Bemidbar"
+msgstr "Bemidbar"
+
+#: hebrew/parsha.cpp:33
+#, kde-format
+msgid "Naso"
+msgstr "Naso"
+
+#: hebrew/parsha.cpp:33
+#, kde-format
+msgid "Behaalotcha"
+msgstr "Behaalotcha"
+
+#: hebrew/parsha.cpp:34
+#, kde-format
+msgid "Shelach"
+msgstr "Shelach"
+
+#: hebrew/parsha.cpp:34
+#, kde-format
+msgid "Korach"
+msgstr "Korach"
+
+#: hebrew/parsha.cpp:34
+#, kde-format
+msgid "Chukat"
+msgstr "Chukat"
+
+#: hebrew/parsha.cpp:34
+#, kde-format
+msgid "Balak"
+msgstr "Balak"
+
+#: hebrew/parsha.cpp:34
+#, kde-format
+msgid "Pinchas"
+msgstr "Pinchas"
+
+#: hebrew/parsha.cpp:34
+#, kde-format
+msgid "Matot"
+msgstr "Matot"
+
+#: hebrew/parsha.cpp:34
+#, kde-format
+msgid "Masei"
+msgstr "Masei"
+
+#: hebrew/parsha.cpp:35
+#, kde-format
+msgid "Devarim"
+msgstr "Devarim"
+
+#: hebrew/parsha.cpp:35
+#, kde-format
+msgid "Vaetchanan"
+msgstr "Vaetchanan"
+
+#: hebrew/parsha.cpp:35
+#, kde-format
+msgid "Ekev"
+msgstr "Ekev"
+
+#: hebrew/parsha.cpp:35
+#, kde-format
+msgid "Reeh"
+msgstr "Reeh"
+
+#: hebrew/parsha.cpp:35
+#, kde-format
+msgid "Shoftim"
+msgstr "Shoftim"
+
+#: hebrew/parsha.cpp:35
+#, kde-format
+msgid "Ki Tetze"
+msgstr "Ki Tetze"
+
+#: hebrew/parsha.cpp:35
+#, kde-format
+msgid "Ki Tavo"
+msgstr "Ki Tavo"
+
+#: hebrew/parsha.cpp:36
+#, kde-format
+msgid "Nitzavim"
+msgstr "Nitzavim"
+
+#: hebrew/parsha.cpp:36
+#, kde-format
+msgid "Vayelech"
+msgstr "Vayelech"
+
+#: hebrew/parsha.cpp:36
+#, kde-format
+msgid "Haazinu"
+msgstr "Haazinu"
+
+#: lunarphases/lunarphases.cpp:61
+#, kde-format
+msgid ""
+"This plugin displays the day's lunar phase (New, First, Last, Full). "
+"Currently, the phase is computed for noon at UTC; therefore, you should "
+"expect variations by 1 day in either direction."
+msgstr ""
+
+#: picoftheday/configdialog.cpp:28
+#, fuzzy, kde-format
+#| msgid "Configure Picture of the Day"
+msgctxt "@title:window"
+msgid "Configure Picture of the Day"
+msgstr "Konfigūruoti dienos paveikslėlį"
+
+#: picoftheday/configdialog.cpp:42
+#, kde-format
+msgid "Thumbnail Aspect Ratio Mode"
+msgstr "Miniatiūros forma"
+
+#: picoftheday/configdialog.cpp:46
+#, kde-format
+msgid "Ignore aspect ratio"
+msgstr "Ignoruoti formą"
+
+#: picoftheday/configdialog.cpp:48
+#, kde-format
+msgid ""
+"The thumbnail will be scaled freely. The aspect ratio will not be preserved."
+msgstr "Miniatiūra bus laisvai didinama ar mažinama. Forma nebus išsaugota."
+
+#: picoftheday/configdialog.cpp:52
+#, kde-format
+msgid "Keep aspect ratio"
+msgstr "Išlaikyti formą"
+
+#: picoftheday/configdialog.cpp:54
+#, kde-format
+msgid ""
+"The thumbnail will be scaled to a rectangle as large as possible inside a "
+"given rectangle, preserving the aspect ratio."
+msgstr ""
+"Miniatiūros dydis bus pakeistas į didžiausią galimą duoto stačiakampį, "
+"išlaikant proporcijas."
+
+#: picoftheday/configdialog.cpp:59
+#, kde-format
+msgid "Keep aspect ratio by expanding"
+msgstr "Išlaikyti formą išplečiant"
+
+#: picoftheday/configdialog.cpp:61
+#, kde-format
+msgid ""
+"The thumbnail will be scaled to a rectangle as small as possible outside a "
+"given rectangle, preserving the aspect ratio."
+msgstr ""
+"Miniatiūra bus padidinta iki stačiakampio, kuris bus kiek galima mažesnis, "
+"tačiau apimantis nurodytą stačiakampį, išsaugant formą."
+
+#: picoftheday/element.cpp:209
+#, kde-format
+msgid "Wikipedia POTD: %1"
+msgstr "Wikipedia POTD: %1"
+
+#: picoftheday/element.cpp:326
+#, kde-format
+msgid "Picture Page"
+msgstr "Nuotraukos puslapis"
+
+#: picoftheday/element.cpp:326
+#, fuzzy, kde-format
+#| msgid "Loading..."
+msgid "Loading..."
+msgstr "Įkeliama..."
+
+#: picoftheday/element.cpp:332
+#, fuzzy, kde-format
+#| msgid "<qt>Loading <i>Picture of the Day</i>...</qt>"
+msgid "<qt>Loading <i>Picture of the Day</i>...</qt>"
+msgstr "<qt>Įkeliama <i>Dienos nuotrauka</i>...</qt>"
+
+#: picoftheday/picoftheday.cpp:48
+#, kde-format
+msgid "<qt>This plugin provides the Wikipedia <i>Picture of the Day</i>.</qt>"
+msgstr "<qt>Šis įskiepis pateikia Vikipedijos <i>dienos nuotrauką</i>.</qt>"
+
+#: thisdayinhistory/thisdayinhistory.cpp:29
+#, kde-format
+msgid "This plugin provides links to Wikipedia's 'This Day in History' pages."
+msgstr ""
+"Šis įskiepis pateikia nuorodas į Vikipedijos puslapius apie „Šią dieną "
+"istorijoje“."
+
+#: thisdayinhistory/thisdayinhistory.cpp:37
+#, kde-format
+msgid "This day in history"
+msgstr "Ši diena istorijoje"
+
+#: thisdayinhistory/thisdayinhistory.cpp:39
+#: thisdayinhistory/thisdayinhistory.cpp:53
+#, fuzzy, kde-format
+#| msgctxt "Localized Wikipedia website"
+#| msgid "http://en.wikipedia.org/wiki/"
+msgctxt "Localized Wikipedia website"
+msgid "https://en.wikipedia.org/wiki/"
+msgstr "http://en.wikipedia.org/wiki/"
+
+#: thisdayinhistory/thisdayinhistory.cpp:40
+#, kde-format
+msgctxt "Qt date format used by the localized Wikipedia"
+msgid "MMMM_d"
+msgstr "MMMM_d"
+
+#: thisdayinhistory/thisdayinhistory.cpp:51
+#, kde-format
+msgid "This month in history"
+msgstr "Šis mėnuo istorijoje"
+
+#: thisdayinhistory/thisdayinhistory.cpp:54
+#, kde-format
+msgctxt "Qt date format used by the localized Wikipedia"
+msgid "MMMM_yyyy"
+msgstr "MMMM_yyyy"
+
+#~ msgctxt "NAME OF TRANSLATORS"
+#~ msgid "Your names"
+#~ msgstr ""
+#~ "Eugenijus Paulauskas, Laumingis Skriptukas, Donatas Glodenis, Liudas "
+#~ "Ališauskas"
+
+#~ msgctxt "EMAIL OF TRANSLATORS"
+#~ msgid "Your emails"
+#~ msgstr "eugenijus@agvila.lt, om@takas.lt, dgvirtual@akl.lt, liudas@akmc.lt"
+
+#~ msgid "KOrganizer"
+#~ msgstr "KOrganizer"
+
+#~ msgid "A Personal Organizer"
+#~ msgstr "Asmeninės informacijos tvarkytuvė"
+
+#, fuzzy
+#~| msgid ""
+#~| "Copyright © 1997–1999 Preston Brown\n"
+#~| "Copyright © 2000–2004, 2007 Cornelius Schumacher\n"
+#~| "Copyright © 2004–2005 Reinhold Kainhofer\n"
+#~| "Copyright © 2006–2012 Allen Winter"
+#~ msgid ""
+#~ "Copyright © 1997–1999 Preston Brown\n"
+#~ "Copyright © 2000–2004, 2007 Cornelius Schumacher\n"
+#~ "Copyright © 2004–2005 Reinhold Kainhofer\n"
+#~ "Copyright © 2006–2012 Allen Winter\n"
+#~ "Copyright © 2012–2016 KOrganizer authors"
+#~ msgstr ""
+#~ "Autorinės teisės © 1997-1999 Preston Brown\n"
+#~ "Autorinės teisės © 2000-2004, 2007 Cornelius Schumacher\n"
+#~ "Autorinės teisės © 2004-2005 Reinhold Kainhofer\n"
+#~ "Autorinės teisės © 2006–2012 Allen Winter"
+
+#~ msgid "Allen Winter"
+#~ msgstr "Allen Winter"
+
+#~ msgid "Maintainer"
+#~ msgstr "Prižiūrėtojas"
+
+#~ msgid "Reinhold Kainhofer"
+#~ msgstr "Reinhold Kainhofer"
+
+#~ msgid "Former Maintainer"
+#~ msgstr "Ankstesnis prižiūrėtojas"
+
+#~ msgid "Cornelius Schumacher"
+#~ msgstr "Cornelius Schumacher"
+
+#~ msgid "Preston Brown"
+#~ msgstr "Preston Brown"
+
+#~ msgid "Original Author"
+#~ msgstr "Originalo autorius"
+
+#~ msgid "Richard Apodaca"
+#~ msgstr "Richard Apodaca"
+
+#~ msgid "Björn Balazs"
+#~ msgstr "Björn Balazs"
+
+#~ msgid "Jan-Pascal van Best"
+#~ msgstr "Jan-Pascal van Best"
+
+#~ msgid "Bertjan Broeksema"
+#~ msgstr "Bertjan Broeksema"
+
+#~ msgid "Laszlo Boloni"
+#~ msgstr "Laszlo Boloni"
+
+#~ msgid "Barry Benowitz"
+#~ msgstr "Barry Benowitz"
+
+#~ msgid "Christopher Beard"
+#~ msgstr "Christopher Beard"
+
+#~ msgid "Kalle Dalheimer"
+#~ msgstr "Kalle Dalheimer"
+
+#~ msgid "Ian Dawes"
+#~ msgstr "Ian Dawes"
+
+#~ msgid "Thomas Eitzenberger"
+#~ msgstr "Thomas Eitzenberger"
+
+#~ msgid "Neil Hart"
+#~ msgstr "Neil Hart"
+
+#~ msgid "Declan Houlihan"
+#~ msgstr "Declan Houlihan"
+
+#~ msgid "Hans-Jürgen Husel"
+#~ msgstr "Hans-Jürgen Husel"
+
+#~ msgid "Tim Jansen"
+#~ msgstr "Tim Jansen"
+
+#~ msgid "Christian Kirsch"
+#~ msgstr "Christian Kirsch"
+
+#~ msgid "Tobias König"
+#~ msgstr "Tobias König"
+
+#~ msgid "Martin Koller"
+#~ msgstr "Martin Koller"
+
+#~ msgid "Uwe Koloska"
+#~ msgstr "Uwe Koloska"
+
+#~ msgid "Sergio Luis Martins"
+#~ msgstr "Sergio Luis Martins"
+
+#~ msgid "Mike McQuaid"
+#~ msgstr "Mike McQuaid"
+
+#~ msgid "Glen Parker"
+#~ msgstr "Glen Parker"
+
+#~ msgid "Dan Pilone"
+#~ msgstr "Dan Pilone"
+
+#~ msgid "Roman Rohr"
+#~ msgstr "Roman Rohr"
+
+#~ msgid "Rafał Rzepecki"
+#~ msgstr "Rafał Rzepecki"
+
+#~ msgid "Part of work sponsored by Google with Summer of Code 2005"
+#~ msgstr "Dalies darbo sponsorius – projektas Google kodo vasara 2005"
+
+#~ msgid "Don Sanders"
+#~ msgstr "Don Sanders"
+
+#~ msgid "Bram Schoenmakers"
+#~ msgstr "Bram Schoenmakers"
+
+#~ msgid "Günter Schwann"
+#~ msgstr "Günter Schwann"
+
+#~ msgid "Herwin Jan Steehouwer"
+#~ msgstr "Herwin Jan Steehouwer"
+
+#~ msgid "Mario Teijeiro"
+#~ msgstr "Mario Teijeiro"
+
+#~ msgid "Nick Thompson"
+#~ msgstr "Nick Thompson"
+
+#~ msgid "Bo Thorsen"
+#~ msgstr "Bo Thorsen"
+
+#~ msgid "Larry Wright"
+#~ msgstr "Larry Wright"
+
+#~ msgid "Thomas Zander"
+#~ msgstr "Thomas Zander"
+
+#~ msgid "Fester Zigterman"
+#~ msgstr "Fester Zigterman"
+
+#~ msgid ""
+#~ "<qt>This will hide the menu bar completely. You can show it again by "
+#~ "typing %1.</qt>"
+#~ msgstr ""
+#~ "<qt>Tai pilnai paslėps meniu juostą. Norėdami vėl ją parodyti spauskite "
+#~ "%1.</qt>"
+
+#~ msgid "Hide menu bar"
+#~ msgstr "Slėpti meniu juostą"
+
+#~ msgid "Import &Calendar..."
+#~ msgstr "Importuoti &kalendorių..."
+
+#~ msgid "Merge the contents of another iCalendar"
+#~ msgstr "Prijungti kito iCalendar turinį"
+
+#~ msgid ""
+#~ "Select this menu entry if you would like to merge the contents of another "
+#~ "iCalendar into your current calendar."
+#~ msgstr ""
+#~ "Parinkite šį meniu elementą, jei norite prijungti kito iCalendar turinį "
+#~ "prie dabartinio kalendoriaus."
+
+#~ msgid "&Import From UNIX Ical Tool"
+#~ msgstr "&Importuoti iš UNIX Ical įrankio"
+
+#~ msgid "Import a calendar in another format"
+#~ msgstr "Importuoti kito formato kalendorių"
+
+#~ msgid ""
+#~ "Select this menu entry if you would like to import the contents of a non-"
+#~ "iCalendar formatted file into your current calendar."
+#~ msgstr ""
+#~ "Parinkite šį meniu elementą, jei norite importuoti turinį iš ne iCalendar "
+#~ "formato failo į jūsų dabartinį kalendorių."
+
+#~ msgid "Get &Hot New Stuff..."
+#~ msgstr "&Gauti karštų naujienų..."
+
+#~ msgid "Export &Web Page..."
+#~ msgstr "&Eksportuoti žiniatinklio puslapį..."
+
+#~ msgid "Export as &iCalendar..."
+#~ msgstr "Eksportuoti kaip &iCalendar..."
+
+#~ msgid "Export as &vCalendar..."
+#~ msgstr "Eksportuoti kaip &vCalendar..."
+
+#~ msgid "Archive O&ld Entries..."
+#~ msgstr "&Archyvuoti senus įrašus..."
+
+#~ msgid "Pur&ge Completed To-dos"
+#~ msgstr "P&ašalinti užbaigtus darbus"
+
+#~ msgid "&Delete"
+#~ msgstr "&Trinti"
+
+#~ msgid "What's &Next"
+#~ msgstr "Kas &toliau"
+
+#~ msgid "&Month"
+#~ msgstr "&Mėnesis"
+
+#~ msgid "&Agenda"
+#~ msgstr "&Darbotvarkė"
+
+#~ msgid "&Event List"
+#~ msgstr "Į&vykių sąrašas"
+
+#~ msgid "&To-do List"
+#~ msgstr "&Darbų sąrašas"
+
+#~ msgid "&Journal"
+#~ msgstr "Die&nynas"
+
+#~ msgid "Time&line"
+#~ msgstr "Laiko grafikas"
+
+#~ msgid "Time&spent"
+#~ msgstr "&Praleistas laikas"
+
+#~ msgid "&Refresh"
+#~ msgstr "&Atnaujinti"
+
+#~ msgid "F&ilter"
+#~ msgstr "F&iltras"
+
+#~ msgid "In Horizontally"
+#~ msgstr "Padidinti horizontaliai"
+
+#~ msgid "Out Horizontally"
+#~ msgstr "Sumažinti horizontaliai"
+
+#~ msgid "In Vertically"
+#~ msgstr "Padidinti vertikaliai"
+
+#~ msgid "Out Vertically"
+#~ msgstr "Sumažinti vertikaliai"
+
+#~ msgctxt "@action Jump to today"
+#~ msgid "To &Today"
+#~ msgstr "Į &šiandieną"
+
+#~ msgid "Today"
+#~ msgstr "Šiandien"
+
+#~ msgid "Scroll to Today"
+#~ msgstr "Keliauti į šiandien"
+
+#~ msgctxt "scroll backward"
+#~ msgid "&Backward"
+#~ msgstr "&Atgal"
+
+#~ msgctxt "scroll backward"
+#~ msgid "Back"
+#~ msgstr "Atgal"
+
+#~ msgid "Scroll Backward"
+#~ msgstr "Eiti atgal"
+
+#~ msgctxt "scroll forward"
+#~ msgid "&Forward"
+#~ msgstr "&Pirmyn"
+
+#~ msgctxt "scoll forward"
+#~ msgid "Forward"
+#~ msgstr "Pirmyn"
+
+#~ msgid "Scroll Forward"
+#~ msgstr "Eiti pirmyn"
+
+#~ msgid "&Day"
+#~ msgstr "&Diena"
+
+#~ msgid "&Next Day"
+#~ msgid_plural "&Next %1 Days"
+#~ msgstr[0] "Atei&nanti diena"
+#~ msgstr[1] "Atei&nančios %1 dienos"
+#~ msgstr[2] "Atei&nančios %1 dienų"
+#~ msgstr[3] "Atei&nanti %1 diena"
+
+#~ msgid "W&ork Week"
+#~ msgstr "Darb&o savaitė"
+
+#~ msgid "&Week"
+#~ msgstr "Sa&vaitė"
+
+#~ msgid "New E&vent..."
+#~ msgstr "Na&ujas įvykis..."
+
+#~ msgid "Create a new Event"
+#~ msgstr "Sukurti naują įvykį"
+
+#~ msgid "New &To-do..."
+#~ msgstr "Naujas &darbas..."
+
+#~ msgid "Create a new To-do"
+#~ msgstr "Sukurti naują darbą"
+
+#~ msgid "New Su&b-to-do..."
+#~ msgstr "Naujas p&riklausomas darbas..."
+
+#~ msgid "New &Journal..."
+#~ msgstr "Naujas &dienyno įrašas..."
+
+#~ msgid "Create a new Journal"
+#~ msgstr "Sukurti naują dienyną"
+
+#~ msgid "Configure View..."
+#~ msgstr "Konfigūruoti rodinį..."
+
+#~ msgid "Configure"
+#~ msgstr "Konfigūruoti"
+
+#~ msgid "Configure the view"
+#~ msgstr "Konfigūruoti rodinį"
+
+#~ msgid "&Show"
+#~ msgstr "&Rodyti"
+
+#~ msgid "&Edit..."
+#~ msgstr "&Keisti..."
+
+#~ msgid "&Make Sub-to-do Independent"
+#~ msgstr "Padaryti priklausomą darbą &nepriklausomu"
+
+#~ msgid "&Publish Item Information..."
+#~ msgstr "&Skelbti įrašo informaciją..."
+
+#~ msgid "Send &Invitation to Attendees"
+#~ msgstr "Siųsti kvietimą dalyviams"
+
+#~ msgid "Re&quest Update"
+#~ msgstr "&Prašyti atnaujinimo"
+
+#~ msgid "Send &Cancellation to Attendees"
+#~ msgstr "Siųsti dalyviams pranešimą apie &atšaukimą"
+
+#~ msgid "Send Status &Update"
+#~ msgstr "Siųsti būsenos a&tnaujinimą"
+
+#~ msgctxt "counter proposal"
+#~ msgid "Request Chan&ge"
+#~ msgstr "Prašyti pa&keitimo"
+
+#~ msgid "&Mail Free Busy Information..."
+#~ msgstr "Išsiųsti &el. laišku užimtumo informaciją..."
+
+#~ msgid "&Send as iCalendar..."
+#~ msgstr "Siųsti kaip &iCalendar failą..."
+
+#~ msgid "&Upload Free Busy Information"
+#~ msgstr "Išsiųsti &užimtumo informaciją"
+
+#~ msgid "&Address Book"
+#~ msgstr "&Adresų knygelė"
+
+#~ msgid "Show Date Navigator"
+#~ msgstr "Rodyti datos navigatorių"
+
+#~ msgid "Show To-do View"
+#~ msgstr "Rodyti darbų sąrašą"
+
+#~ msgid "Show Item Viewer"
+#~ msgstr "Rodyti pažymėto elemento peržiūrą"
+
+#~ msgid "Show Calendar Manager"
+#~ msgstr "Rodyti kalendoriaus tvarkyklę"
+
+#~ msgid "Configure &Date && Time..."
+#~ msgstr "Konfigūruoti &datą ir laiką..."
+
+#~ msgid "Manage View &Filters..."
+#~ msgstr "Tvarkyti rodinio &filtrus..."
+
+#~ msgid "Manage C&ategories..."
+#~ msgstr "Tvarkyti k&ategorijas..."
+
+#~ msgid "&Configure KOrganizer..."
+#~ msgstr "&Konfigūruoti KOrganizer..."
+
+#~ msgid "New calendar added successfully"
+#~ msgstr "Naujas kalendoriaus pridėtas sėkmingai"
+
+#~ msgid "Could not add a calendar. Error: %1"
+#~ msgstr "Nepavyko pridėti kalendoriaus. Klaida: %1"
+
+#~ msgid ""
+#~ "You have no ical file in your home directory.\n"
+#~ "Import cannot proceed.\n"
+#~ msgstr ""
+#~ "Jūs neturite ical failo savo namų aplanke.\n"
+#~ "Importavimas negali būti pradėtas.\n"
+
+#~ msgid ""
+#~ "KOrganizer encountered some unknown fields while parsing your .calendar "
+#~ "ical file, and had to discard them; please check to see that all your "
+#~ "relevant data was correctly imported."
+#~ msgstr ""
+#~ "Nagrinėjant Jūsų .calendar failą iš ical keletas nežinomų laukų buvo "
+#~ "atmesti. Pasitikrinkite, ar visi svarbūs duomenys buvo teisingai "
+#~ "importuoti."
+
+#~ msgid ""
+#~ "KOrganizer encountered an error parsing your .calendar file from ical; "
+#~ "import has failed."
+#~ msgstr ""
+#~ "Nagrinėjant Jūsų .calendar failą įvyko klaida. Importavimas nepavyko."
+
+#~ msgid ""
+#~ "KOrganizer does not think that your .calendar file is a valid ical "
+#~ "calendar; import has failed."
+#~ msgstr ""
+#~ "Jūsų .calendar failas tikriausiai nėra teisingas ical kalendorius. "
+#~ "Importavimas nepavyko."
+
+#~ msgid "An error occurred: %1"
+#~ msgstr "Įvyko klaida: %1"
+
+#~ msgid ""
+#~ "Your calendar will be saved in iCalendar format. Use 'Export vCalendar' "
+#~ "to save in vCalendar format."
+#~ msgstr ""
+#~ "Jūsų kalendorius bus išsaugotas iCalendar formatu. Naudokite „Eksportuoti "
+#~ "vCalendar“ išsaugoti jį vCalendar formatu."
+
+#~ msgid "Format Conversion"
+#~ msgstr "Formato konvertavimas"
+
+#~ msgid "Proceed"
+#~ msgstr "Vykdyti"
+
+#~ msgid "Cannot upload calendar to '%1'"
+#~ msgstr "Negalima nusiųsti kalendoriaus į „%1“"
+
+#~ msgid "Saved calendar '%1'."
+#~ msgstr "Įrašytas kalendorius „%1“."
+
+#~ msgid "Select path for HTML calendar export"
+#~ msgstr "Parinkite kelią HTML kalendoriaus eksportui"
+
+#~ msgid "Do you want to overwrite file \"%1\"?"
+#~ msgstr "Ar norite perrašyti failą „%1“?"
+
+#~ msgctxt "@info:status"
+#~ msgid "Calendar HTML operation canceled due to output file overwrite"
+#~ msgstr "Kalendoriaus HTML operacija nutraukta dėl išvesties failo perrašymo"
+
+#~ msgid "Unable to save calendar to the file %1."
+#~ msgstr "Negalima išsaugoti kalendoriaus kaip failo %1."
+
+#~ msgid "Error"
+#~ msgstr "Klaida"
+
+#~ msgid ""
+#~ "The calendar has been modified.\n"
+#~ "Do you want to save it?"
+#~ msgstr ""
+#~ "Kalendorius buvo pakeistas.\n"
+#~ "Ar norite tai išsaugoti?"
+
+#~ msgid "*.ics *.vcs|Calendar Files"
+#~ msgstr "*.vcs *.ics|Kalendoriaus failai"
+
+#~ msgid "Could not start control module for date and time format."
+#~ msgstr "Negalima paleisti valdymo modulio datos ir laiko formavimui."
+
+#~ msgid "Could not load calendar %1."
+#~ msgstr "Nepavyko įkelti kalendoriaus %1."
+
+#~ msgid "The downloaded events will be merged into your current calendar."
+#~ msgstr "Atsiųsti įvykiai bus sujungti su dabartiniu kalendoriumi."
+
+#~ msgid "&Show Event"
+#~ msgstr "&Rodyti įvykį"
+
+#~ msgid "&Edit Event..."
+#~ msgstr "R&edaguoti įvykį..."
+
+#~ msgid "&Delete Event"
+#~ msgstr "Paša&linti įvykį"
+
+#~ msgid "&Show To-do"
+#~ msgstr "&Rodyti darbą"
+
+#~ msgid "&Edit To-do..."
+#~ msgstr "R&edaguoti darbą..."
+
+#~ msgid "&Delete To-do"
+#~ msgstr "Paša&linti darbą"
+
+#~ msgid "Attach as &link"
+#~ msgstr "Pridėti kaip &nuorodą"
+
+#~ msgid "Attach &inline"
+#~ msgstr "Pridėti &tekste"
+
+#~ msgid "Attach inline &without attachments"
+#~ msgstr "Pridėti tekste &be priedų"
+
+#~ msgid "C&ancel"
+#~ msgstr "A&tšaukti"
+
+#~ msgid "Removing attachments from an email might invalidate its signature."
+#~ msgstr "Pašalinant priedus nuo el. laiško gali susigadinti parašas."
+
+#~ msgid "Remove Attachments"
+#~ msgstr "Pašalinti priedus"
+
+#~ msgid "Undo: %1"
+#~ msgstr "Atšaukti: %1"
+
+#~ msgid "Undo"
+#~ msgstr "Atšaukti"
+
+#~ msgid "Redo: %1"
+#~ msgstr "Atstatyti: %1"
+
+#~ msgid "Redo"
+#~ msgstr "Pakartoti"
+
+#~ msgid "URL '%1' is invalid."
+#~ msgstr "Adresas „%1“ yra neteisingas."
+
+#~ msgctxt "@title:window"
+#~ msgid "Import Calendar"
+#~ msgstr "Importuoti kalendorių"
+
+#~ msgid "Merge into existing calendar"
+#~ msgstr "Sujungti su esančiu kalendoriumi"
+
+#~ msgid "Add as new calendar"
+#~ msgstr "Pridėti kaip naują kalendorių"
+
+#, fuzzy
+#~| msgid "Search"
+#~ msgctxt ""
+#~ "@info/plain Displayed grayed-out inside the textbox, verb to search"
+#~ msgid "Search"
+#~ msgstr "Ieškoti"
+
+#, fuzzy
+#~| msgid "Start searching"
+#~ msgid "searching..."
+#~ msgstr "Pradėti paiešką"
+
+#~ msgctxt "@title:window"
+#~ msgid "Properties of Calendar Folder %1"
+#~ msgstr "Kalendoriaus aplanko „%1“ savybės"
+
+#~ msgid "&Disable Color"
+#~ msgstr "&Išjungti spalvas"
+
+#~ msgid "&Assign Color..."
+#~ msgstr "&Priskirti spalvą"
+
+#~ msgid "Use as &Default Calendar"
+#~ msgstr "Nau&doti kaip numatytąjį kalendorių"
+
+#~ msgid "Add Calendar"
+#~ msgstr "Pridėti kalendorių"
+
+#~ msgid "Do you really want to delete calendar %1?"
+#~ msgstr "Ar tikrai norite pašalinti kalendorių „%1“?"
+
+#~ msgid "Delete Calendar"
+#~ msgstr "Pašalinti kalendorių"
+
+#~ msgid ""
+#~ "<p><em>No Item Selected</em></p><p>Select an event, to-do or journal "
+#~ "entry to view its details here.</p>"
+#~ msgstr ""
+#~ "<p><em>Nieko nepažymėta</em></p> <p>Pasirinkę įvykį, dienyną ar darbą, "
+#~ "čia matysite jo aprašymą.</p>"
+
+#~ msgid ""
+#~ "View the details of events, journal entries or to-dos selected in "
+#~ "KOrganizer's main view here."
+#~ msgstr ""
+#~ "Čia galite matyti įvykių, dienoraščio įrašų ir darbų, pažymėtų "
+#~ "pagrindiniame KOrganizer rodyme, detales."
+
+#~ msgid ""
+#~ "The time zone setting was changed. Do you want to keep the absolute time "
+#~ "of the items in your calendar, which will show them to be at a different "
+#~ "time than before, or move them to be at the old time also in the new time "
+#~ "zone?"
+#~ msgstr ""
+#~ "Laiko juostos nustatymai pasikeitė. Ar norite savo kalendoriuje išlaikyti "
+#~ "absoliutų laiką, t.y., jie įvykiai ir darbai bus rodomi kitokiu laiku nei "
+#~ "anksčiau, ar norite perkelti juos į anksčiau nustatytą laiką ir naujoje "
+#~ "laiko zonoje (jei įvykis buvo nustatytas 9 val., jis ir bus rodomas 9 "
+#~ "val.)?"
+
+#~ msgid "Keep Absolute Times?"
+#~ msgstr "Išlaikyti absoliučius laikus?"
+
+#~ msgid "Keep Times"
+#~ msgstr "Išlaikyti laikus"
+
+#~ msgid "Move Times"
+#~ msgstr "Perkelti laikus"
+
+#~ msgid "Todo completed: %1 (%2)"
+#~ msgstr "Darbas užbaigtas: %1 (%2)"
+
+#~ msgid "Journal of %1"
+#~ msgstr " %1 dienynas"
+
+#~ msgid ""
+#~ "The item \"%1\" is filtered by your current filter rules, so it will be "
+#~ "hidden and not appear in the view."
+#~ msgstr ""
+#~ "Įvykis „%1“ atitinka dabartines filtro taisykles, taigi bus paslėptas ir "
+#~ "nerodomas šiame rodyme."
+
+#~ msgctxt "@info"
+#~ msgid "Do you really want to permanently remove the item \"%1\"?"
+#~ msgstr "Ar tikrai norite galutinai pašalinti elementą „%1“?"
+
+#~ msgctxt "@title:window"
+#~ msgid "Delete Item?"
+#~ msgstr "Trinti elementą?"
+
+#~ msgid "Paste failed: unable to determine a valid target date."
+#~ msgstr "Įkėlimas nepavyko: nepavyko nustatyti teisingos pradžios datos."
+
+#~ msgid "Make sub-to-dos independent"
+#~ msgstr "Padaryti priklausomus darbus nepriklausomais"
+
+#~ msgid "Toggle Reminder"
+#~ msgstr "Perjungti priminimą"
+
+#~ msgid "Toggle To-do Completed"
+#~ msgstr "Perjungti į pabaigtas užduotis"
+
+#~ msgctxt "@info"
+#~ msgid "\"%1\" was successfully copied to %2."
+#~ msgstr "„%1“ sėkmingai nukopijuota į %2."
+
+#~ msgctxt "@title:window"
+#~ msgid "Copying Succeeded"
+#~ msgstr "Kopijavimas pavyko"
+
+#~ msgctxt "@info"
+#~ msgid "Unable to copy the item \"%1\" to %2."
+#~ msgstr "Negalima nukopijuoti elemento „%1“ į %2."
+
+#~ msgctxt "@title:window"
+#~ msgid "Copying Failed"
+#~ msgstr "Kopijavimas nepavyko"
+
+#~ msgctxt "@info"
+#~ msgid ""
+#~ "Unable to remove the item \"%1\" from %2. However, a copy of this item "
+#~ "has been put into %3."
+#~ msgstr ""
+#~ "Nepavyko pašalinti elemento „%1“ iš %2. Kaip ten bebūtų, elemento kopija "
+#~ "buvo įrašyta į %3."
+
+#~ msgctxt "@title:window"
+#~ msgid "Moving Failed"
+#~ msgstr "Perkėlimas nepavyko"
+
+#~ msgctxt "@info"
+#~ msgid "\"%1\" was successfully moved from %2 to %3."
+#~ msgstr "„%1“ buvo sėkmingai perkeltas iš %2 į %3."
+
+#~ msgctxt "@title:window"
+#~ msgid "Moving Succeeded"
+#~ msgstr "Perkėlimas pavyko"
+
+#~ msgctxt "@info"
+#~ msgid "Unable to add the item \"%1\" into %2. This item has not been moved."
+#~ msgstr "Nepavyko pridėti elemento „%1“ prie %2. Elementas nebuvo perkeltas."
+
+#~ msgid "Do you want to dissociate the occurrence on %1 from the recurrence?"
+#~ msgstr "Ar norite atskirti įvykį %1 nuo pasikartojimų?"
+
+#~ msgid "KOrganizer Confirmation"
+#~ msgstr "KOrganizer patvirtinimas"
+
+#~ msgid "&Dissociate"
+#~ msgstr "&Atskirti"
+
+#~ msgid ""
+#~ "Do you want to dissociate the occurrence on %1 from the recurrence or "
+#~ "also dissociate future ones?"
+#~ msgstr ""
+#~ "Ar norite atskirti tik šį įvykį %1 nuo pasikartojimų ar ir visus būsimus?"
+
+#~ msgid "&Only Dissociate This One"
+#~ msgstr "&Atskirti tik šį pasikartojimą"
+
+#~ msgid "&Also Dissociate Future Ones"
+#~ msgstr "A&tskirti ir ateities pasikartojimus"
+
+#~ msgid "Dissociate future occurrences"
+#~ msgstr "Atskirti ateityje įvyksiančius pasikartojimus"
+
+#~ msgid "Dissociate occurrence"
+#~ msgstr "Atskirti pasikartojimą"
+
+#~ msgid "Dissociating the future occurrences failed."
+#~ msgstr "Ateityje įvyksiančių pasikartojimų atskyrimas nepavyko."
+
+#~ msgid "Dissociating Failed"
+#~ msgstr "Atskyrimas nepavyko"
+
+#~ msgid "Dissociating the occurrence failed."
+#~ msgstr "Pasikartojimo atskyrimas nepavyko."
+
+#, fuzzy
+#~| msgctxt "@title:tab calendar account settings"
+#~| msgid "Calendars"
+#~ msgid "iCalendars (*.ics)"
+#~ msgstr "Kalendoriai"
+
+#~ msgid "Do you want to overwrite %1?"
+#~ msgstr "Ar norite perrašyti %1?"
+
+#~ msgctxt "save failure cause unknown"
+#~ msgid "Reason unknown"
+#~ msgstr "Priežastis nežinoma"
+
+#~ msgctxt "@info"
+#~ msgid "Cannot write iCalendar file %1. %2"
+#~ msgstr "Negalima įrašyti iCalendar failo %1. %2"
+
+#~ msgid "The journal entries cannot be exported to a vCalendar file."
+#~ msgstr "Dienyno įrašų negalima eksportuoti į vCalendar failą."
+
+#~ msgid "Data Loss Warning"
+#~ msgstr "Įspėjimas dėl prarandamų duomenų"
+
+#, fuzzy
+#~| msgctxt "@title:tab calendar account settings"
+#~| msgid "Calendars"
+#~ msgid "vCalendars (*.vcs)"
+#~ msgstr "Kalendoriai"
+
+#~ msgctxt "@info"
+#~ msgid "Cannot write vCalendar file %1. %2"
+#~ msgstr "Negalima įrašyti vCalendar failo %1. %2"
+
+#~ msgid "&Previous Day"
+#~ msgstr "&Ankstesnė diena"
+
+#~ msgid "&Previous Week"
+#~ msgstr "&Ankstesnė savaitė"
+
+#~ msgid "&Next Week"
+#~ msgstr "&Kita savaitė"
+
+#~ msgid "No filter"
+#~ msgstr "Be filtro"
+
+#~ msgid ""
+#~ "The item \"%1\" has sub-to-dos. Do you want to delete just this item and "
+#~ "make all its sub-to-dos independent, or delete the to-do with all its sub-"
+#~ "to-dos?"
+#~ msgstr ""
+#~ "Darbas „%1“ turi jam priklausančių darbų. Ar norite pašalinti tik šį "
+#~ "darbą ir jam priklausančius padaryti nepriklausomais, ar pašalinti šį ir "
+#~ "visus jam priklausančius darbus?"
+
+#~ msgid "Delete Only This"
+#~ msgstr "Pašalinti tik šį"
+
+#~ msgid "Delete All"
+#~ msgstr "Pašalinti visus"
+
+#~ msgid "Delete parent to-do"
+#~ msgstr "Pašalinti aukštesnio lygmens darbą"
+
+#~ msgid "Delete parent to-do and sub-to-dos"
+#~ msgstr "Pašalinti aukštesnio ir žemesnio lygmens darbus"
+
+#~ msgid ""
+#~ "The item \"%1\" is marked read-only and cannot be deleted; it probably "
+#~ "belongs to a read-only calendar."
+#~ msgstr ""
+#~ "Įvykis „%1“ pažymėtas kaip tik skaitomas, todėl negali būti pašalintas. "
+#~ "Jis tikriausiai priklauso tik skaitomam kalendoriui."
+
+#~ msgid "Removing not possible"
+#~ msgstr "Pašalinimas neįmanomas"
+
+#~ msgid ""
+#~ "The calendar item \"%1\" recurs over multiple dates; are you sure you "
+#~ "want to delete it and all its recurrences?"
+#~ msgstr ""
+#~ "Įvykis „%1“ kartojasi keletą datų. Ar tikrai norite pašalinti šį įvyki su "
+#~ "visais jo pasikartojimais?"
+
+#~ msgid "Also Delete &Future"
+#~ msgstr "Pašalinti ir &ateities"
+
+#~ msgid ""
+#~ "The calendar item \"%1\" recurs over multiple dates. Do you want to "
+#~ "delete only the current one on %2, also future occurrences, or all its "
+#~ "occurrences?"
+#~ msgstr ""
+#~ "Įvykis „%1“ kartojasi keletą kartų. Ar norite pašalinti tik dabartinį, "
+#~ "%2, tik ateityje vyksiančius pasikartojimus ar viską?"
+
+#~ msgid ""
+#~ "The calendar item \"%1\" recurs over multiple dates. Do you want to "
+#~ "delete only the current one on %2 or all its occurrences?"
+#~ msgstr ""
+#~ "Įvykis „%1“ kartojasi keletą kartų. Ar norite pašalinti tik dabartinį, "
+#~ "%2, ar viską?"
+
+#~ msgid "Delete C&urrent"
+#~ msgstr "Pašalinti &dabartinį"
+
+#~ msgid "Delete &All"
+#~ msgstr "Pašalinti &visus"
+
+#~ msgid "There are no completed to-dos to purge."
+#~ msgstr "Nėra atliktų darbų, kad juo pašalinti."
+
+#~ msgid "Delete all completed to-dos from checked calendars?"
+#~ msgstr "Pašalinti visus užbaigtus darbus iš pažymėtų kalendorių?"
+
+#~ msgid "Purge To-dos"
+#~ msgstr "Išvalyti darbus"
+
+#~ msgid "Purge"
+#~ msgstr "Išvalyti"
+
+#~ msgctxt "@info"
+#~ msgid "Unable to edit \"%1\" because it is locked by another process."
+#~ msgstr "Negalima redaguoti „%1“, nes jis užrakintas kito proceso."
+
+#~ msgid "Unable to copy the item to %1."
+#~ msgstr "Negalima nukopijuoti įrašo į %1."
+
+#~ msgid "Copying Failed"
+#~ msgstr "Kopijavimas nepavyko"
+
+#~ msgid "Unable to move the item to  %1."
+#~ msgstr "Negalima perkelti įrašo į %1."
+
+#~ msgid "Moving Failed"
+#~ msgstr "Perkėlimas nepavyko"
+
+#~ msgid "0 completed to-dos were purged."
+#~ msgstr "0 atliktų darbų buvo pašalinta."
+
+#~ msgid "%1 completed to-do was purged."
+#~ msgid_plural "%1 completed to-dos were purged."
+#~ msgstr[0] "%1 atliktas darbas buvo pašalintas."
+#~ msgstr[1] "%1 atlikti darbai buvo pašalinti."
+#~ msgstr[2] "%1 atliktų darbų buvo pašalinta."
+#~ msgstr[3] "%1 atliktas darbas buvo pašalintas."
+
+#~ msgid "An error occurred while purging completed to-dos: %1"
+#~ msgstr "Įvyko klaida šalinant atliktus darbus: %1"
+
+#, fuzzy
+#~| msgctxt "general settings for html export"
+#~| msgid "General"
+#~ msgctxt "@title:tab General settings for a folder."
+#~ msgid "General"
+#~ msgstr "Bendra"
+
+#, fuzzy
+#~| msgctxt "filter name"
+#~| msgid "Name:"
+#~ msgctxt "@label:textbox Name of the folder."
+#~ msgid "&Name:"
+#~ msgstr "Pavadinimas:"
+
+#, fuzzy
+#~| msgid "Enter the full name to print for the owner of the calendar."
+#~ msgctxt "@info:whatsthis"
+#~ msgid "Enter a name here to set the name of this folder."
+#~ msgstr "Įveskite pilną kalendoriaus savininko vardą spausdinimui."
+
+#, fuzzy
+#~| msgid ""
+#~| "Check this box if you want to search To-do items that match the search "
+#~| "criteria."
+#~ msgctxt "@info:whatsthis"
+#~ msgid ""
+#~ "Check this box if you do not want to receive reminders from items "
+#~ "associated with this calendar."
+#~ msgstr ""
+#~ "Pažymėkite šį laukelį, jei norite ieškoti Darbų elementų atitinkančių "
+#~ "paieškos kriterijus."
+
+#, fuzzy
+#~| msgid "Calendar's custom icon"
+#~ msgctxt "@option:check"
+#~ msgid "&Use custom icon:"
+#~ msgstr "Kalendoriaus savita ženkliukas"
+
+#, fuzzy
+#~| msgid "Calendar's custom icon"
+#~ msgctxt "@info:tooltip"
+#~ msgid "Set a custom icon"
+#~ msgstr "Kalendoriaus savita ženkliukas"
+
+#, fuzzy
+#~| msgid ""
+#~| "Check this box if you want to show seconds on the current-time line."
+#~ msgctxt "@info:whatsthis"
+#~ msgid "Check this box if you want to set a custom icon for this folder."
+#~ msgstr ""
+#~ "Įjungus šią parinktį dabartinio momento linijoje bus rodomos sekundės."
+
+#~ msgid "&File"
+#~ msgstr "&Failas"
+
+#~ msgid "&Import"
+#~ msgstr "&Importuoti"
+
+#~ msgid "&Export"
+#~ msgstr "&Eksportuoti"
+
+#~ msgid "&Edit"
+#~ msgstr "&Keisti"
+
+#~ msgid "&View"
+#~ msgstr "&Rodymas"
+
+#~ msgid "&Zoom"
+#~ msgstr "&Mastelis"
+
+#~ msgid "&Go"
+#~ msgstr "&Eiti"
+
+#~ msgid "&Actions"
+#~ msgstr "&Veiksmai"
+
+#~ msgid "S&chedule"
+#~ msgstr "&Tvarkaraštis"
+
+#~ msgid "&Settings"
+#~ msgstr "&Nuostatos"
+
+#~ msgid "&Sidebar"
+#~ msgstr "Šoninė &juosta"
+
+#~ msgid "&Help"
+#~ msgstr "&Pagalba"
+
+#~ msgctxt "main toolbar"
+#~ msgid "Main"
+#~ msgstr "Pagrindinis"
+
+#~ msgid "Views"
+#~ msgstr "Peržiūros"
+
+#~ msgid "Schedule"
+#~ msgstr "Tvarkaraščio"
+
+#~ msgid "Filters Toolbar"
+#~ msgstr "Filtrų įrankinės"
+
+#~ msgid "Calendar Colors"
+#~ msgstr "Kalendoriaus spalvos"
+
+#~ msgid ""
+#~ "<qt><p>Select the dates you want to display in KOrganizer's main view "
+#~ "here. Hold the mouse button to select more than one day.</p><p>Press the "
+#~ "top buttons to browse to the next / previous months or years.</p><p>Each "
+#~ "line shows a week. The number in the left column is the number of the "
+#~ "week in the year. Press it to select the whole week.</p></qt>"
+#~ msgstr ""
+#~ "<qt><p>Pažymėkite datas, kurias norite matyti KOrganizer pagrindiniame "
+#~ "rodyme. Laikykite nuspaudę pelės mygtuką jei norite pažymėti daugiau nei "
+#~ "vieną dieną.</p><p>Spauskite viršuje esančius mygtukus jei norite pereiti "
+#~ "prie tolimesnių / ankstesnių mėnesių ar metų.</p><p>Kiekviena eilutė yra "
+#~ "savaitė. Kairiame stulpelyje esantis skaičius yra savaitės numeris "
+#~ "metuose. Norėdami pažymėti visą savaitę, spragtelėkite tą skaičių.</p></"
+#~ "qt>"
+
+#~ msgid "Export Calendar as Web Page"
+#~ msgstr "Eksportuoti kalendorių kaip žiniatinklio puslapį"
+
+#~ msgid "Export"
+#~ msgstr "Eksportuoti"
+
+#~ msgid ""
+#~ "You are about to set all preferences to default values. All custom "
+#~ "modifications will be lost."
+#~ msgstr ""
+#~ "Jūs pasirinkote nustatyti visų parinkčių numatytąsias reikšmes. Visi "
+#~ "pakeitimai bus prarasti."
+
+#~ msgid "Setting Default Preferences"
+#~ msgstr "Nustatomos numatytosios parinktys"
+
+#~ msgid "Reset to Defaults"
+#~ msgstr "Atstatyti numatytąsias"
+
+#~ msgctxt "general settings for html export"
+#~ msgid "General"
+#~ msgstr "Bendra"
+
+#~ msgid "Date Range"
+#~ msgstr "Laikotarpis"
+
+#~ msgid "View Type"
+#~ msgstr "Peržiūros tipas"
+
+#~ msgid "Destination"
+#~ msgstr "Paskirties vieta"
+
+#~ msgid "To-dos"
+#~ msgstr "Darbai"
+
+#~ msgid "Events"
+#~ msgstr "Įvykiai"
+
+#~ msgctxt "@title::window"
+#~ msgid "Edit Calendar Filters"
+#~ msgstr "Redaguoti kalendoriaus filtrus"
+
+#~ msgctxt "@info:whatsthis"
+#~ msgid "Press this button to define a new filter."
+#~ msgstr "Norėdami sukurti naują filtrą, spustelėkite šį mygtuką."
+
+#~ msgctxt "@info:whatsthis"
+#~ msgid "Press this button to remove the currently active filter."
+#~ msgstr "Norėdami pašalinti aktyvų filtrą, spustelėkite šį mygtuką."
+
+#~ msgctxt "@label default filter name"
+#~ msgid "New Filter %1"
+#~ msgstr "Naujas filtras %1"
+
+#~ msgctxt "@info"
+#~ msgid "Do you really want to permanently remove the filter \"%1\"?"
+#~ msgstr "Ar tikrai norite visiškai pašalinti filtrą „%1“?"
+
+#~ msgctxt "@title:window"
+#~ msgid "Delete Filter?"
+#~ msgstr "Pašalinti filtrą?"
+
+#~ msgid "Event Viewer"
+#~ msgstr "Įvykių žiūriklis"
+
+#~ msgid "Edit..."
+#~ msgstr "Redaguoti..."
+
+#~ msgid "Show in Context"
+#~ msgstr "Rodyti kontekste"
+
+#, fuzzy
+#~| msgid "&Cancel"
+#~ msgctxt "@action:discard creating note"
+#~ msgid "Cancel"
+#~ msgstr "&Atšaukti"
+
+#, fuzzy
+#~| msgctxt "@title:tab"
+#~| msgid "Save"
+#~ msgctxt "@action:save note"
+#~ msgid "Save"
+#~ msgstr "Įrašymas"
+
+#, fuzzy
+#~| msgid "Title"
+#~ msgid "Title:"
+#~ msgstr "Pavadinimas"
+
+#, fuzzy
+#~| msgid "Text"
+#~ msgid "Text:"
+#~ msgstr "Tekstas"
+
+#~ msgid "Search Calendar"
+#~ msgstr "Ieškoti kalendoriuje"
+
+#~ msgctxt "search in calendar"
+#~ msgid "&Search"
+#~ msgstr "&Ieškoti"
+
+#~ msgid "Start searching"
+#~ msgstr "Pradėti paiešką"
+
+#~ msgid ""
+#~ "Invalid search expression, cannot perform the search. Please enter a "
+#~ "search expression using the wildcard characters '*' and '?' where needed."
+#~ msgstr ""
+#~ "Neteisinga paieškos išraiška, paieškos atlikti negalima. Kai yra būtina, "
+#~ "įrašykite paieškos išraišką su pakaitos simboliais „*“ ir „?“."
+
+#~ msgid "No items were found that match your search pattern."
+#~ msgstr "Nerasta elementų, atitinkančių Jūsų paieškos išraišką."
+
+#~ msgid "Search Results"
+#~ msgstr "Paieškos rezultatai"
+
+#~ msgid "%1 item"
+#~ msgid_plural "%1 items"
+#~ msgstr[0] "%1 elementas"
+#~ msgstr[1] "%1 elementai"
+#~ msgstr[2] "%1 elementų"
+#~ msgstr[3] "%1 elementas"
+
+#, fuzzy
+#~| msgid "Send &Invitation to Attendees"
+#~ msgctxt "A collection of all declined invidations."
+#~ msgid "Declined Invitations"
+#~ msgstr "Siųsti kvietimą dalyviams"
+
+#, fuzzy
+#~| msgid "Send &Invitation to Attendees"
+#~ msgctxt "A collection of all open invidations."
+#~ msgid "Open Invitations"
+#~ msgstr "Siųsti kvietimą dalyviams"
+
+#~ msgid "Unable to write the output file."
+#~ msgstr "Nepavyksta sukurti išvesties failo."
+
+#~ msgid "Unable to write the temporary file for uploading."
+#~ msgstr "Nepavyksta sukurti laikino failo išsiuntimui."
+
+#~ msgid "Unable to upload the export file."
+#~ msgstr "Nepavyksta išsiųsti eksportuoto failo."
+
+#, fuzzy
+#~| msgid "Web page successfully written to \"%1\""
+#~ msgid "Web page successfully written to \"%1\". Do you want to show it?"
+#~ msgstr "Tinklalapis sėkmingai įrašytas į „%1“"
+
+#~ msgid "Export failed. %1"
+#~ msgstr "Eksportas nepavyko. %1"
+
+#~ msgctxt "@title:window"
+#~ msgid "Export Status"
+#~ msgstr "Eksporto būsena"
+
+#, fuzzy
+#~| msgid "Show Date Number"
+#~ msgid "Show page Web"
+#~ msgstr "Rodyti datos numerį"
+
+#~ msgctxt "@info:status"
+#~ msgid "Automatic Export: %1"
+#~ msgstr "Automatinis eksportas: %1"
+
+#~ msgctxt "@title month and year"
+#~ msgid "%1 %2"
+#~ msgstr "%1 %2"
+
+#~ msgctxt "@title:column event start time"
+#~ msgid "Start Time"
+#~ msgstr "Pradžios laikas"
+
+#~ msgctxt "@title:column event end time"
+#~ msgid "End Time"
+#~ msgstr "Pabaigos laikas"
+
+#~ msgctxt "@title:column event description"
+#~ msgid "Event"
+#~ msgstr "Įvykis"
+
+#~ msgctxt "@title:column event locatin"
+#~ msgid "Location"
+#~ msgstr "Vieta"
+
+#~ msgctxt "@title:column event categories"
+#~ msgid "Categories"
+#~ msgstr "Kategorijos"
+
+#~ msgctxt "@title:column event attendees"
+#~ msgid "Attendees"
+#~ msgstr "Dalyviai"
+
+#~ msgctxt "@title:column"
+#~ msgid "To-do"
+#~ msgstr "Darbas"
+
+#~ msgctxt "@title:column to-do priority"
+#~ msgid "Priority"
+#~ msgstr "Prioritetas"
+
+#~ msgctxt "@title:column to-do percent completed"
+#~ msgid "Completed"
+#~ msgstr "Atlikta"
+
+#~ msgctxt "@title:column to-do due date"
+#~ msgid "Due Date"
+#~ msgstr "Atlikimo terminas"
+
+#~ msgctxt "@title:column to-do location"
+#~ msgid "Location"
+#~ msgstr "Vieta"
+
+#~ msgctxt "@title:column to-do categories"
+#~ msgid "Categories"
+#~ msgstr "Kategorijos"
+
+#~ msgctxt "@title:column to-do attendees"
+#~ msgid "Attendees"
+#~ msgstr "Dalyviai"
+
+#~ msgctxt "@title:column sub-to-dos of the parent to-do"
+#~ msgid "Sub-To-dos of: "
+#~ msgstr "Darbai priklauso darbui: "
+
+#~ msgctxt "@title:column sub-to-dos of the parent to-do"
+#~ msgid "Sub-To-dos"
+#~ msgstr "Pagalbiniai darbai"
+
+#, fuzzy
+#~| msgctxt "@info/plain to-do percent complete"
+#~| msgid "%1 %"
+#~ msgctxt "@info to-do percent complete"
+#~ msgid "%1 %"
+#~ msgstr "%1 %"
+
+#, fuzzy
+#~| msgctxt "@info/plain"
+#~| msgid "This page was created "
+#~ msgctxt "@info"
+#~ msgid "This page was created "
+#~ msgstr "Šį puslapį sukūrė "
+
+#~ msgctxt "@info/plain page creator email link with name"
+#~ msgid "by <link url='mailto:%1'>%2</link> "
+#~ msgstr "<link url='mailto:%1'>%2</link> "
+
+#~ msgctxt "@info/plain page creator email link"
+#~ msgid "by <link url='mailto:%1'>%2</link> "
+#~ msgstr "<link url='mailto:%1'>%2</link> "
+
+#, fuzzy
+#~| msgctxt "@info/plain page creator name only"
+#~| msgid "by %1 "
+#~ msgctxt "@info page creator name only"
+#~ msgid "by %1 "
+#~ msgstr "%1"
+
+#~ msgctxt "@info/plain page credit with name and link"
+#~ msgid "with <link url='%1'>%2</link>"
+#~ msgstr "su <link url='%1'>%2</link>"
+
+#, fuzzy
+#~| msgctxt "@info/plain page credit name only"
+#~| msgid "with %1"
+#~ msgctxt "@info page credit name only"
+#~ msgid "with %1"
+#~ msgstr "su %1"
+
+#, fuzzy
+#~| msgctxt "@info/plain holiday by date and name"
+#~| msgid "%1, %2"
+#~ msgctxt "@info holiday by date and name"
+#~ msgid "%1, %2"
+#~ msgstr "%1, %2"
+
+#~ msgid "Text"
+#~ msgstr "Tekstas"
+
+#~ msgid "Numeric Value"
+#~ msgstr "Skaitinė reikšmė"
+
+#~ msgid "Boolean"
+#~ msgstr "Loginis"
+
+#~ msgid "Selection"
+#~ msgstr "Pažymėjimas"
+
+#~ msgid "Date & Time"
+#~ msgstr "Data ir laikas"
+
+#~ msgid "Date"
+#~ msgstr "Data"
+
+#~ msgid "KCMDesignerfields"
+#~ msgstr "KCMDesignerfields"
+
+#~ msgid "Qt Designer Fields Dialog"
+#~ msgstr "Qt Designer laukų dialogas"
+
+#, fuzzy
+#~| msgid "(c), 2004 Tobias Koenig"
+#~ msgid "(c) 2004 Tobias Koenig"
+#~ msgstr "(c), 2004 Tobias Koenig"
+
+#~ msgid "Tobias Koenig"
+#~ msgstr "Tobias Koenig"
+
+#~ msgid "<qt>Do you really want to delete '<b>%1</b>'?</qt>"
+#~ msgstr "<qt>Ar tikrai norite pašalinti „<b>%1</b>“?</qt>"
+
+#~ msgid "Import Page"
+#~ msgstr "Importuoti puslapį"
+
+#, fuzzy
+#~| msgid "*.ui|Designer Files"
+#~ msgid "Designer Files (*.ui)"
+#~ msgstr "*.ui|Designer failai"
+
+#~ msgid ""
+#~ "<qt><b>Warning:</b> Qt Designer could not be found. It is probably not "
+#~ "installed. You will only be able to import existing designer files.</qt>"
+#~ msgstr ""
+#~ "<qt><b>Perspėjimas:</b> Qt Designer programa nerasta. Greičiausiai ši "
+#~ "programa nėra įdiegta. Galėsite importuoti tik egzistuojančius „designer“ "
+#~ "failus.</qt>"
+
+#~ msgid "Available Pages"
+#~ msgstr "Prieinami puslapiai"
+
+#~ msgid "Preview of Selected Page"
+#~ msgstr "Pažymėto puslapio peržiūra"
+
+#~ msgid ""
+#~ "<qt><p>This section allows you to add your own GUI Elements ('<i>Widgets</"
+#~ "i>') to store your own values into %1. Proceed as described below:</"
+#~ "p><ol><li>Click on '<i>Edit with Qt Designer</i>'</li><li>In the dialog, "
+#~ "select '<i>Widget</i>', then click <i>OK</i></li><li>Add your widgets to "
+#~ "the form</li><li>Save the file in the directory proposed by Qt Designer</"
+#~ "li><li>Close Qt Designer</li></ol><p>In case you already have a designer "
+#~ "file (*.ui) located somewhere on your hard disk, simply choose '<i>Import "
+#~ "Page</i>'</p><p><b>Important:</b> The name of each input widget you place "
+#~ "within the form must start with '<i>X_</i>'; so if you want the widget to "
+#~ "correspond to your custom entry '<i>X-Foo</i>', set the widget's <i>name</"
+#~ "i> property to '<i>X_Foo</i>'.</p><p><b>Important:</b> The widget will "
+#~ "edit custom fields with an application name of %2.  To change the "
+#~ "application name to be edited, set the widget name in Qt Designer.</p></"
+#~ "qt>"
+#~ msgstr ""
+#~ "<qt><p>Šioje skiltyje galite pridėti savo grafinės sąsajos elementus "
+#~ "('<i>valdiklius</i>'), kurie leis įrašyti jūsų reikšmes į %1. Darykite "
+#~ "taip:</p><ol><li>Spauskite '<i>Redaguoti su Qt Designer</i>'</"
+#~ "li><li>Dialoge parinkite '<i>Valdiklis</i>', tada spauskite <i>Gerai</i></"
+#~ "li><li>Pridėkite savo valdiklius į formą</li><li>Įrašykite failą aplanke, "
+#~ "kurį pasiūlys Qt Designer</li><li>Uždarykite Qt Designer</li></ol><p>Jei "
+#~ "jau turite dizainerio failą (*.ui), esantį kažkur jūsų diske, tiesiog "
+#~ "parinkite '<i>Importuoti puslapį</i>'</p><p><b>Svarbu:</b> Kiekvieno jūsų "
+#~ "pridedamo į formą valdiklio pavadinimas turi prasidėti „<i>X_</i>“. Taigi "
+#~ "jei norite valdiklio, atitinkančio jūsų savą įrašą „<i>X-Foo</i>“, "
+#~ "nurodykite valdiklio savybę <i>pavadinimas</i> „<i>X_Foo</i>“.</"
+#~ "p><p><b>Svarbu:</b> Valdiklis keis savus laukus su programa, kuri "
+#~ "vadinasi %2.  Norėdami pakeisti redaguojamos programos pavadinimą, "
+#~ "nustatykite valdiklio pavadinimą naudodami Qt Designer.</p></qt>"
+
+#~ msgid "<a href=\"whatsthis:%1\">How does this work?</a>"
+#~ msgstr "<a href=\"whatsthis:%1\">Kaip tai veikia?</a>"
+
+#~ msgid "Delete Page"
+#~ msgstr "Pašalinti puslapį"
+
+#~ msgid "Import Page..."
+#~ msgstr "Importuoti puslapį..."
+
+#~ msgid "Edit with Qt Designer..."
+#~ msgstr "Redaguoti su Qt Designer..."
+
+#~ msgid "Key:"
+#~ msgstr "Klavišas:"
+
+#~ msgid "Type:"
+#~ msgstr "Tipas:"
+
+#~ msgid "Classname:"
+#~ msgstr "Klasės pavadinimas:"
+
+#~ msgid "Description:"
+#~ msgstr "Aprašymas:"
+
+#~ msgctxt "@item:intext delimiter for joining holiday names"
+#~ msgid ","
+#~ msgstr ","
+
+#~ msgctxt "delimiter for joining holiday names"
+#~ msgid ","
+#~ msgstr ","
+
+#~ msgid "&Move"
+#~ msgstr "&Perkelti"
+
+#~ msgid "&Copy"
+#~ msgstr "&Kopijuoti"
+
+#~ msgid "&Add"
+#~ msgstr "&Pridėti"
+
+#~ msgid "&Cancel"
+#~ msgstr "&Atšaukti"
+
+#~ msgid "&Print..."
+#~ msgstr "&Spausdinti..."
+
+#~ msgid "Print Previe&w..."
+#~ msgstr "Spausdinimo &peržiūra..."
+
+#~ msgctxt "cut this event"
+#~ msgid "C&ut"
+#~ msgstr "&Iškirpti"
+
+#~ msgctxt "copy this event"
+#~ msgid "&Copy"
+#~ msgstr "&Kopijuoti"
+
+#~ msgid "&Paste"
+#~ msgstr "Į&terpti"
+
+#~ msgctxt "delete this incidence"
+#~ msgid "&Delete"
+#~ msgstr "&Trinti"
+
+#, fuzzy
+#~| msgid "Create a new To-do"
+#~ msgid "Create To-do"
+#~ msgstr "Sukurti naują darbą"
+
+#, fuzzy
+#~| msgid "Create a new Event"
+#~ msgid "Create Event"
+#~ msgstr "Sukurti naują įvykį"
+
+#~ msgid "Togg&le To-do Completed"
+#~ msgstr "Per&jungti darbo baigtumo žymą"
+
+#~ msgid "&Toggle Reminder"
+#~ msgstr "&Perjungti priminimą"
+
+#~ msgid "&Dissociate From Recurrence..."
+#~ msgstr "&Atskirti nuo pasikartojimo..."
+
+#~ msgid "Send as iCalendar..."
+#~ msgstr "Siųsti kaip iCalendar..."
+
+#~ msgid "Unable to save %1 \"%2\"."
+#~ msgstr "Nepavyksta įrašyti %1 „%2“."
+
+#, fuzzy
+#~| msgid "Check this box if you want your events shown as a list."
+#~ msgid ""
+#~ "Check this box if you want to see events occurring on this date only."
+#~ msgstr "Pažymėkite šį laukelį, jei norite įvykius matyti kaip sąrašą."
+
+#, fuzzy
+#~| msgid "Today"
+#~ msgid "&Today only"
+#~ msgstr "Šiandien"
+
+#, fuzzy
+#~| msgid "Check this box if you want the event attendees to be exported."
+#~ msgid ""
+#~ "Check this box if you want to see events that start sometime during the "
+#~ "next 31 days."
+#~ msgstr "Pažymėkite šį laukelį, jei norite eksportuoti įvykių dalyvius."
+
+#, fuzzy
+#~| msgid ""
+#~| "Check this box if you want to show seconds on the current-time line."
+#~ msgid ""
+#~ "Check this box if you want to specify the number of days in the future "
+#~ "for upcoming events."
+#~ msgstr ""
+#~ "Įjungus šią parinktį dabartinio momento linijoje bus rodomos sekundės."
+
+#, fuzzy
+#~| msgctxt "@label suffix in the N days spin box"
+#~| msgid " days"
+#~ msgid "1 day"
+#~ msgstr " diena(os/ų)"
+
+#, fuzzy
+#~| msgctxt "@label suffix in the N days spin box"
+#~| msgid " days"
+#~ msgctxt "days to show in summary"
+#~ msgid " days"
+#~ msgstr " diena(os/ų)"
+
+#, fuzzy
+#~| msgid "Show both"
+#~ msgid "Show &birthdays"
+#~ msgstr "Rodyti abu"
+
+#, fuzzy
+#~| msgctxt "@title:group email settings"
+#~| msgid "Email Settings"
+#~ msgid "Groupware Settings"
+#~ msgstr "El. pašto nuostatos"
+
+#, fuzzy
+#~ msgid ""
+#~ "Check this box if you want the summary to show events belonging to your "
+#~ "calendars only."
+#~ msgstr ""
+#~ "Įjungus šią parinktį dabartinio momento linijoje bus rodomos sekundės."
+
+#, fuzzy
+#~| msgid "&Edit Event..."
+#~ msgid "&Edit Appointment..."
+#~ msgstr "R&edaguoti įvykį..."
+
+#, fuzzy
+#~| msgctxt "@title:group"
+#~| msgid "Appointments"
+#~ msgid "&Delete Appointment"
+#~ msgstr "Susitikimai"
+
+#, fuzzy
+#~| msgid "&Edit Event..."
+#~ msgid "Edit Event: \"%1\""
+#~ msgstr "R&edaguoti įvykį..."
+
+#, fuzzy
+#~| msgid "New &Journal..."
+#~ msgctxt "@action:inmenu"
+#~ msgid "New Journal..."
+#~ msgstr "Naujas &dienyno įrašas..."
+
+#, fuzzy
+#~| msgid "Create a new Journal"
+#~ msgctxt "@info:status"
+#~ msgid "Create a new journal"
+#~ msgstr "Sukurti naują dienyną"
+
+#, fuzzy
+#~| msgid "Journal"
+#~ msgctxt "@action:inmenu"
+#~ msgid "Sync Journal"
+#~ msgstr "Dienynas"
+
+#, fuzzy
+#~| msgctxt "@label suffix in the N days spin box"
+#~| msgid " days"
+#~ msgid " day"
+#~ msgid_plural " days"
+#~ msgstr[0] " diena(os/ų)"
+#~ msgstr[1] " diena(os/ų)"
+#~ msgstr[2] " diena(os/ų)"
+#~ msgstr[3] " diena(os/ų)"
+
+#, fuzzy
+#~| msgid "New E&vent..."
+#~ msgctxt "@action:inmenu"
+#~ msgid "New Event..."
+#~ msgstr "Na&ujas įvykis..."
+
+#, fuzzy
+#~| msgid "Create a new Event"
+#~ msgctxt "@info:status"
+#~ msgid "Create a new event"
+#~ msgstr "Sukurti naują įvykį"
+
+#, fuzzy
+#~| msgid "Search Calendar"
+#~ msgctxt "@action:inmenu"
+#~ msgid "Sync Calendar"
+#~ msgstr "Ieškoti kalendoriuje"
+
+#, fuzzy
+#~| msgid "&Settings"
+#~ msgctxt "@item"
+#~ msgid "Meeting"
+#~ msgstr "&Nuostatos"
+
+#, fuzzy
+#~| msgid "Undo: %1"
+#~ msgctxt "@item"
+#~ msgid "Note: %1"
+#~ msgstr "Atšaukti: %1"
+
+#, fuzzy
+#~| msgid "Today"
+#~ msgctxt "the appointment is today"
+#~ msgid "Today"
+#~ msgstr "Šiandien"
+
+#, fuzzy
+#~| msgctxt "@label suffix in the N days spin box"
+#~| msgid " days"
+#~ msgid "in 1 day"
+#~ msgid_plural "in %1 days"
+#~ msgstr[0] " diena(os/ų)"
+#~ msgstr[1] " diena(os/ų)"
+#~ msgstr[2] " diena(os/ų)"
+#~ msgstr[3] " diena(os/ų)"
+
+#, fuzzy
+#~| msgctxt "@label suffix in the N days spin box"
+#~| msgid " days"
+#~ msgid "all day"
+#~ msgstr " diena(os/ų)"
+
+#, fuzzy
+#~| msgid "Redo: %1"
+#~ msgctxt "next occurrence"
+#~ msgid "Next: %1"
+#~ msgstr "Atstatyti: %1"
+
+#, fuzzy
+#~| msgid "New &To-do..."
+#~ msgctxt "@action:inmenu"
+#~ msgid "New To-do..."
+#~ msgstr "Naujas &darbas..."
+
+#, fuzzy
+#~| msgid "Create a new To-do"
+#~ msgctxt "@info:status"
+#~ msgid "Create a new to-do"
+#~ msgstr "Sukurti naują darbą"
+
+#, fuzzy
+#~| msgid "To-do List"
+#~ msgctxt "@action:inmenu"
+#~ msgid "Sync To-do List"
+#~ msgstr "Darbų sąrašas"
+
+#, fuzzy
+#~| msgid "Title for the to-do list"
+#~ msgctxt "@info:status"
+#~ msgid "Synchronize groupware to-do list"
+#~ msgstr "Darbų sąrašo pavadinimas"
+
+#, fuzzy
+#~| msgid "Show To-do View"
+#~ msgid "Show To-dos Due"
+#~ msgstr "Rodyti darbų sąrašą"
+
+#, fuzzy
+#~| msgid "To-do due today color"
+#~ msgid "Show To-dos due today only"
+#~ msgstr "Darbo, kurį reikia šiandien užbaigti, spalva"
+
+#, fuzzy
+#~| msgid ""
+#~| "Check this box if you want to show seconds on the current-time line."
+#~ msgid "Check this box if you want to see To-dos due on this date only."
+#~ msgstr ""
+#~ "Įjungus šią parinktį dabartinio momento linijoje bus rodomos sekundės."
+
+#, fuzzy
+#~| msgid "Scroll forward to the next month"
+#~ msgid "Show To-dos due within the next month"
+#~ msgstr "Eiti pirmyn, į ateinantį mėnesį"
+
+#, fuzzy
+#~| msgid ""
+#~| "Check this box if you want to search To-do items that match the search "
+#~| "criteria."
+#~ msgid ""
+#~ "Check this box if you want to see To-dos that are due sometime during the "
+#~ "next 31 days."
+#~ msgstr ""
+#~ "Pažymėkite šį laukelį, jei norite ieškoti Darbų elementų atitinkančių "
+#~ "paieškos kriterijus."
+
+#, fuzzy
+#~| msgid ""
+#~| "Check this box if you want to show seconds on the current-time line."
+#~ msgid ""
+#~ "Check this box if you want specify the number of days in the future for "
+#~ "pending To-dos."
+#~ msgstr ""
+#~ "Įjungus šią parinktį dabartinio momento linijoje bus rodomos sekundės."
+
+#, fuzzy
+#~| msgid "Hide co&mpleted to-dos"
+#~ msgid "Hide completed To-dos"
+#~ msgstr "Slėpti &baigtus darbus"
+
+#, fuzzy
+#~| msgid ""
+#~| "Check this box if you want to search To-do items that match the search "
+#~| "criteria."
+#~ msgid ""
+#~ "Check this box if you do not want to see To-dos that have already been "
+#~ "completed."
+#~ msgstr ""
+#~ "Pažymėkite šį laukelį, jei norite ieškoti Darbų elementų atitinkančių "
+#~ "paieškos kriterijus."
+
+#, fuzzy
+#~| msgctxt "@title:column to-do percent completed"
+#~| msgid "Completed"
+#~ msgid "&Completed"
+#~ msgstr "Atlikta"
+
+#, fuzzy
+#~| msgid "Include To-dos &without a due date"
+#~ msgid "Hide To-dos without a due date"
+#~ msgstr "Įtraukti darbus &be atlikimo termino"
+
+#, fuzzy
+#~| msgid "Check this box if you do NOT want to export your private items."
+#~ msgid "Check this box if you do not want to see open-ended To-dos."
+#~ msgstr "Pažymėkite šį laukelį, jei NE norite eksportuoti privačių elementų."
+
+#, fuzzy
+#~| msgid "Hide &inactive to-dos"
+#~ msgid "Hide unstarted To-dos"
+#~ msgstr "Slėpti neaktyv&ius darbus"
+
+#, fuzzy
+#~| msgid ""
+#~| "Check this box if you want to search To-do items that match the search "
+#~| "criteria."
+#~ msgid ""
+#~ "Check this box if you do not want to see To-dos with a start date in the "
+#~ "future."
+#~ msgstr ""
+#~ "Pažymėkite šį laukelį, jei norite ieškoti Darbų elementų atitinkančių "
+#~ "paieškos kriterijus."
+
+#, fuzzy
+#~| msgid "Hide &inactive to-dos"
+#~ msgid "Hide in-progress To-dos"
+#~ msgstr "Slėpti neaktyv&ius darbus"
+
+#, fuzzy
+#~| msgid ""
+#~| "Check this box if you want to search To-do items that match the search "
+#~| "criteria."
+#~ msgid ""
+#~ "Check this box if you do not want to see To-dos that have been started "
+#~ "but are not yet completed."
+#~ msgstr ""
+#~ "Pažymėkite šį laukelį, jei norite ieškoti Darbų elementų atitinkančių "
+#~ "paieškos kriterijus."
+
+#, fuzzy
+#~| msgid "Hide co&mpleted to-dos"
+#~ msgid "Hide overdue To-dos"
+#~ msgstr "Slėpti &baigtus darbus"
+
+#, fuzzy
+#~| msgid ""
+#~| "Check this box if you want to search To-do items that match the search "
+#~| "criteria."
+#~ msgid ""
+#~ "Check this box if you do not want to see To-dos that are past their due "
+#~ "date but have not yet been completed."
+#~ msgstr ""
+#~ "Pažymėkite šį laukelį, jei norite ieškoti Darbų elementų atitinkančių "
+#~ "paieškos kriterijus."
+
+#, fuzzy
+#~ msgid ""
+#~ "Check this box if you want the summary to show To-dos belonging to your "
+#~ "calendars only."
+#~ msgstr ""
+#~ "Įjungus šią parinktį dabartinio momento linijoje bus rodomos sekundės."
+
+#, fuzzy
+#~| msgid "&Show To-do"
+#~ msgid "Show &my To-dos only"
+#~ msgstr "&Rodyti darbą"
+
+#, fuzzy
+#~| msgid "Purge To-dos"
+#~ msgid "Pending To-dos"
+#~ msgstr "Išvalyti darbus"
+
+#, fuzzy
+#~| msgid "Today"
+#~ msgctxt "the to-do is due today"
+#~ msgid "Today"
+#~ msgstr "Šiandien"
+
+#, fuzzy
+#~| msgid "Togg&le To-do Completed"
+#~ msgid "&Mark To-do Completed"
+#~ msgstr "Per&jungti darbo baigtumo žymą"
+
+#, fuzzy
+#~| msgid "&Edit To-do..."
+#~ msgid "Edit To-do: \"%1\""
+#~ msgstr "R&edaguoti darbą..."
+
+#, fuzzy
+#~| msgctxt "@title:column to-do percent completed"
+#~| msgid "Completed"
+#~ msgctxt "the to-do is completed"
+#~ msgid "completed"
+#~ msgstr "Atlikta"
+
+#, fuzzy
+#~| msgctxt "@item:intext delimiter for joining holiday names"
+#~| msgid ","
+#~ msgctxt "Separator for status like this: overdue, completed"
+#~ msgid ","
+#~ msgstr ","
+
+#, fuzzy
+#~| msgid ""
+#~| "Check this box if you want to show seconds on the current-time line."
+#~ msgid ""
+#~ "Check this box if you want to see special occasions occurring on this "
+#~ "date only."
+#~ msgstr ""
+#~ "Įjungus šią parinktį dabartinio momento linijoje bus rodomos sekundės."
+
+#, fuzzy
+#~| msgid ""
+#~| "Check this box if you want to show seconds on the current-time line."
+#~ msgid ""
+#~ "Check this box if you want to see special occasions that start sometime "
+#~ "during the next 31 days."
+#~ msgstr ""
+#~ "Įjungus šią parinktį dabartinio momento linijoje bus rodomos sekundės."
+
+#, fuzzy
+#~| msgid ""
+#~| "Check this box if you want the to-do locations to be exported, only if "
+#~| "the to-do has a location."
+#~ msgid ""
+#~ "Check this box if you want to specify the number of days in the future "
+#~ "for upcoming special occasions."
+#~ msgstr ""
+#~ "Pažymėkite šį laukelį, jei norite eksportuoti darbų vietas, tik jie "
+#~ "darbas turi vietą."
+
+#, fuzzy
+#~| msgid "Show days to end of year"
+#~ msgid "Show holidays from your calendar"
+#~ msgstr "Rodyti dienų iki metų galo skaičių"
+
+#, fuzzy
+#~| msgid "Show to-dos"
+#~ msgid "Show &holidays"
+#~ msgstr "Rodyti darbus"
+
+#, fuzzy
+#~| msgid "Show both"
+#~ msgid "Show birth&days"
+#~ msgstr "Rodyti abu"
+
+#, fuzzy
+#~| msgid "Today"
+#~ msgctxt "the special day is today"
+#~ msgid "Today"
+#~ msgstr "Šiandien"
+
+#, fuzzy
+#~| msgctxt "@title:group"
+#~| msgid "Holidays"
+#~ msgid "Holiday"
+#~ msgstr "Šventės"
+
+#, fuzzy
+#~| msgid "Former Maintainer"
+#~ msgid "Current Maintainer"
+#~ msgstr "Ankstesnis prižiūrėtojas"
+
+#~ msgid "Calendar"
+#~ msgstr "Kalendorius"
+
+#~ msgid "New Calendar"
+#~ msgstr "Naujas kalendorius"
+
+#~ msgctxt "the calendar is read-only"
+#~ msgid "read-only"
+#~ msgstr "tik skaitymui"
+
+#~ msgid "Import the specified files as separate calendars"
+#~ msgstr "Importuoti nurodytus failus kaip atskirus kalendorius"
+
+#~ msgid "Merge the specified files into an existing calendar"
+#~ msgstr "Sulieti nurodytus failus į egzistuojantį kalendorių"
+
+#, fuzzy
+#~| msgid ""
+#~| "Calendar files or urls. Unless -i, -o or -m is explicitly specified, the "
+#~| "user will be asked whether to import, merge or open in a separate window."
+#~ msgid ""
+#~ "Calendar files or urls. Unless -i or -m is explicitly specified, the user "
+#~ "will be asked whether to import or merge"
+#~ msgstr ""
+#~ "Kalendoriaus adresai arba URL. Jei nebus nurodyti raktai -i, -o arba -m, "
+#~ "naudotojo bus klausiama, ar kalendorių importuoti, sulieti, ar atverti "
+#~ "atskirame lange."
+
+#~ msgid "Merged calendar"
+#~ msgstr "Sujungtas kalendorius"
+
+#~ msgid "Calendars Side by Side"
+#~ msgstr "Kalendoriai vienas greta kito"
+
+#~ msgid ""
+#~ "Unable to display the work week since there are no work days configured. "
+#~ "Please properly configure at least 1 work day in the Time and Date "
+#~ "preferences."
+#~ msgstr ""
+#~ "Negalima rodyti darbo savaitės, nes nenustatytos darbo dienos. Prašome "
+#~ "tinkamai sukonfigūruoti bent jau vieną darbo dieną laiko ir datos "
+#~ "nustatymuose."
+
+#~ msgctxt "Default export file"
+#~ msgid "calendar.html"
+#~ msgstr "kalendorius.html"
+
+#~ msgctxt "@title:tab personal settings"
+#~ msgid "Personal"
+#~ msgstr "Asmeniniai duomenys"
+
+#~ msgctxt "@title:group email settings"
+#~ msgid "Email Settings"
+#~ msgstr "El. pašto nuostatos"
+
+#~ msgctxt "@title:tab"
+#~ msgid "Save"
+#~ msgstr "Įrašymas"
+
+#~ msgctxt "@title:group"
+#~ msgid "Exporting Calendar"
+#~ msgstr "Eksportuojamas kalendorius"
+
+#~ msgctxt "@title:tab systray settings"
+#~ msgid "System Tray"
+#~ msgstr "Sistemos dėklas"
+
+#~ msgctxt "@title:group"
+#~ msgid "Show/Hide Options"
+#~ msgstr "Rodyti/slėpti"
+
+#~ msgctxt "@info:tooltip"
+#~ msgid ""
+#~ "Enable this setting to show the KOrganizer reminder daemon in your system "
+#~ "tray (recommended)."
+#~ msgstr ""
+#~ "Įgalinkite šią parinktį jei norite, kad KOrganizer priminimų tarnyba būtų "
+#~ "jūsų sistemos dėkle (rekomenduojama)."
+
+#~ msgctxt "@info"
+#~ msgid ""
+#~ "<note>The daemon will continue running even if it is not shown in the "
+#~ "system tray.</note>"
+#~ msgstr ""
+#~ "<note>Tarnyba veiks net ir tuo atveju, jei nebus rodoma sistemos dėkle.</"
+#~ "note>"
+
+#~ msgctxt "@title:tab calendar account settings"
+#~ msgid "Calendars"
+#~ msgstr "Kalendoriai"
+
+#~ msgctxt "@title:tab"
+#~ msgid "Regional"
+#~ msgstr "Regioninės nuostatos"
+
+#~ msgctxt "@title:group"
+#~ msgid "General Time and Date"
+#~ msgstr "Bendrasis laikas ir data"
+
+#~ msgctxt "@title:group"
+#~ msgid "Holidays"
+#~ msgstr "Šventės"
+
+#~ msgctxt "@label"
+#~ msgid "Use holiday region:"
+#~ msgstr "Naudoti švenčių regioną:"
+
+#~ msgctxt "Holday region, region language"
+#~ msgid "%1 (%2)"
+#~ msgstr "%1 (%2)"
+
+#~ msgctxt "No holiday region"
+#~ msgid "None"
+#~ msgstr "Nieko"
+
+#~ msgctxt "@title:group"
+#~ msgid "Working Period"
+#~ msgstr "Darbo laikas"
+
+#~ msgctxt "@info:whatsthis"
+#~ msgid ""
+#~ "Check this box to make KOrganizer mark the working hours for this day of "
+#~ "the week. If this is a work day for you, check this box, or the working "
+#~ "hours will not be marked with color."
+#~ msgstr ""
+#~ "Įjunkite šią parinktį jei norite, kad KOrganizer pažymėtų šios savaitės "
+#~ "dienos darbo laiką. Jei tai yra darbo diena, pažymėkite šį langelį, nes "
+#~ "kitaip darbo valandos nebus pažymėtos spalva."
+
+#~ msgctxt "@title:tab"
+#~ msgid "Default Values"
+#~ msgstr "Numatytosios reikšmės"
+
+#~ msgctxt "@title:group"
+#~ msgid "Appointments"
+#~ msgstr "Susitikimai"
+
+#~ msgctxt "@title:group"
+#~ msgid "Reminders"
+#~ msgstr "Priminimai"
+
+#~ msgctxt "@label"
+#~ msgid "Default reminder time:"
+#~ msgstr "Numatytas priminimo laikas:"
+
+#~ msgctxt "@item:inlistbox reminder units in minutes"
+#~ msgid "minute(s)"
+#~ msgstr "minutė(ės/čių)"
+
+#~ msgctxt "@item:inlistbox reminder time units in hours"
+#~ msgid "hour(s)"
+#~ msgstr "valanda(os/ų)"
+
+#~ msgctxt "@item:inlistbox reminder time units in days"
+#~ msgid "day(s)"
+#~ msgstr "diena(os/ų)"
+
+#~ msgid ""
+#~ "*.ogg *.wav *.mp3 *.wma *.flac *.aiff *.raw *.au *.ra|Audio Files (*.ogg "
+#~ "*.wav *.mp3 *.wma *.flac *.aiff *.raw *.au *.ra)"
+#~ msgstr ""
+#~ "*.ogg *.wav *.mp3 *.wma *.flac *.aiff *.raw *.au *.ra|Garso failai (*.ogg "
+#~ "*.wav *.mp3 *.wma *.flac *.aiff *.raw *.au *.ra)"
+
+#~ msgctxt "@title:tab general settings"
+#~ msgid "General"
+#~ msgstr "Bendrieji"
+
+#~ msgctxt "@title:group"
+#~ msgid "Display Options"
+#~ msgstr "Rodyti parinktis"
+
+#~ msgctxt "@label suffix in the N days spin box"
+#~ msgid " days"
+#~ msgstr " diena(os/ų)"
+
+#~ msgctxt "@title:group"
+#~ msgid "Date Navigator"
+#~ msgstr "Datos navigatorius"
+
+#~ msgctxt "@title:tab"
+#~ msgid "Agenda View"
+#~ msgstr "Darbotvarkės rodinys"
+
+#~ msgctxt "@label suffix in the hour size spin box"
+#~ msgid " pixels"
+#~ msgstr " taškas(ai/ų)"
+
+#~ msgctxt "@title:tab"
+#~ msgid "Month View"
+#~ msgstr "Mėnesio rodinys"
+
+#~ msgctxt "@title:tab"
+#~ msgid "Todo View"
+#~ msgstr "Darbų rodinys"
+
+#~ msgctxt "@title:group"
+#~ msgid "Other Options"
+#~ msgstr "Kitos parinktys"
+
+#~ msgctxt "@title:tab"
+#~ msgid "Colors"
+#~ msgstr "Spalvos"
+
+#~ msgctxt "@title:group"
+#~ msgid "Categories"
+#~ msgstr "Kategorijos"
+
+#~ msgctxt "@info:whatsthis"
+#~ msgid ""
+#~ "Select here the event category you want to modify. You can change the "
+#~ "selected category color using the button below."
+#~ msgstr ""
+#~ "Pažymėkite įvykio, kurį norite modifikuoti, kategoriją. Pažymėtos "
+#~ "kategorijos spalvą galite pakeisti pasinaudodami žemiau esančiu mygtuku."
+
+#~ msgctxt "@info:whatsthis"
+#~ msgid ""
+#~ "Choose here the color of the event category selected using the combo box "
+#~ "above."
+#~ msgstr ""
+#~ "Čia galite pasirinkti įvykio kategorijos, kuri pasirinkta viršuje "
+#~ "esančiame išskleidžiamame sąraše, spalvą."
+
+#~ msgctxt "@title:group"
+#~ msgid "Resources"
+#~ msgstr "Resursai"
+
+#~ msgctxt "@info:whatsthis"
+#~ msgid ""
+#~ "Select the calendar you want to modify. You can change the selected "
+#~ "calendar color using the button below."
+#~ msgstr ""
+#~ "Pažymėkite kalendorių, kurį norite modifikuoti. Pažymėto kalendoriaus "
+#~ "spalvą galite pakeisti žemiau esančiu mygtuku."
+
+#~ msgctxt "@info:whatsthis"
+#~ msgid ""
+#~ "Choose here the color of the calendar selected using the combo box above."
+#~ msgstr ""
+#~ "Čia galite pasirinkti kalendoriaus, kuris pasirinktas viršuje esančiame "
+#~ "išskleidžiamame sąraše, spalvą."
+
+#~ msgctxt "@title:tab"
+#~ msgid "Fonts"
+#~ msgstr "Šriftai"
+
+#~ msgctxt "@label"
+#~ msgid "Event text"
+#~ msgstr "Įvykio tekstas"
+
+#~ msgctxt "@label"
+#~ msgid "Mail transport:"
+#~ msgstr "Pašto programa:"
+
+#~ msgctxt "@title:column plugin name"
+#~ msgid "Name"
+#~ msgstr "Vardas"
+
+#~ msgctxt "@action:button"
+#~ msgid "Configure &Plugin..."
+#~ msgstr "Konfigūruoti &papildinį..."
+
+#~ msgctxt "@info:whatsthis"
+#~ msgid ""
+#~ "This button allows you to configure the plugin that you have selected in "
+#~ "the list above"
+#~ msgstr ""
+#~ "Paspauskite šitą mygtuką norėdami konfigūruoti aukščiau esančiame sąraše "
+#~ "pasirinktą papildinį"
+
+#~ msgctxt "@title:group"
+#~ msgid "Position"
+#~ msgstr "Pozicija"
+
+#~ msgctxt "@option:check"
+#~ msgid "Show at the top of the agenda views"
+#~ msgstr "Rodyti darbotvarkės peržiūros viršuje"
+
+#~ msgctxt "@option:check"
+#~ msgid "Show at the bottom of the agenda views"
+#~ msgstr "Rodyti darbotvarkės peržiūros apačioje"
+
+#~ msgctxt "@title:group"
+#~ msgid "Calendar Decorations"
+#~ msgstr "Kalendoriaus dekoracijos"
+
+#~ msgctxt "@title:group"
+#~ msgid "Other Plugins"
+#~ msgstr "Kiti papildiniai"
+
+#~ msgctxt "@info"
+#~ msgid "Unable to configure this plugin"
+#~ msgstr "Šio papildinio nepavyko konfigūruoti"
+
+#~ msgid "Full name of the calendar owner"
+#~ msgstr "Pilnas kalendoriaus savininko vardas"
+
+#~ msgid "The full name of the calendar owner for the export"
+#~ msgstr "Pilnas kalendoriaus savininko vardas eksportui"
+
+#~ msgid "Enter the full name to print for the owner of the calendar."
+#~ msgstr "Įveskite pilną kalendoriaus savininko vardą spausdinimui."
+
+#~ msgid "Email of the calendar owner"
+#~ msgstr "Kalendoriaus savininko el. pašto adresas"
+
+#~ msgid "The email address of the calendar owner for the export"
+#~ msgstr "Kalendoriaus savininko el. pašto adresas eksportui"
+
+#~ msgid "Enter the email address to print for the owner of the calendar."
+#~ msgstr ""
+#~ "Įveskite pilną kalendoriaus savininko el. pašto adresą spausdinimui."
+
+#~ msgid "Creator application"
+#~ msgstr "Sukūrusi programa"
+
+#~ msgid "Creator application of the calendar"
+#~ msgstr "Kalendorių sukūrusi programa"
+
+#~ msgid "Enter a creator application of the calendar, for example KOrganizer."
+#~ msgstr "Kalendorių sukūrusi programa, pvz. KOrganizer."
+
+#~ msgid "Creator URL"
+#~ msgstr "Kūrėjo URL"
+
+#~ msgid "URL of the creator application of the calendar."
+#~ msgstr "Kalendorių sukūrusios programos URL."
+
+#~ msgid ""
+#~ "Enter the URL of the creator application of the calendar, for example "
+#~ "http://userbase.kde.org/KOrganizer"
+#~ msgstr ""
+#~ "Kalendorių sukūrusios programos URL, pvz. http://userbase.kde.org/"
+#~ "KOrganizer"
+
+#~ msgid "Page Title"
+#~ msgstr "Puslapio antraštė"
+
+#~ msgid "The title of the exported page"
+#~ msgstr "Eksportuoto puslapio pavadinimas"
+
+#~ msgid "Enter a title for the HTML page."
+#~ msgstr "Įveskite pavadinimą HTML puslapiui."
+
+#~ msgid "Date start"
+#~ msgstr "Pradžios data"
+
+#~ msgid "First day of the range to export"
+#~ msgstr "Pirmoji eksportuojamo periodo diena."
+
+#~ msgid "First day of the range that shall be exported to HTML."
+#~ msgstr "Pirmoji data periodo, kuris bus eksportuotas į HTML."
+
+#~ msgid "Date end"
+#~ msgstr "Pabaigos data"
+
+#~ msgid "Last day of the range to export"
+#~ msgstr "Paskutinioji eksportuojamo periodo diena."
+
+#~ msgid "Last day of the range that shall be exported to HTML."
+#~ msgstr "Paskutinioji data periodo, kuris bus eksportuotas į HTML."
+
+#~ msgid "Output filename"
+#~ msgstr "Išvesties failo pavadinimas"
+
+#~ msgid "The file name for the export"
+#~ msgstr "Failo pavadinimas eksportui."
+
+#~ msgid "The output file name for the HTML export."
+#~ msgstr "Išeities failo pavadinimas HTML eksportui."
+
+#~ msgid "Style sheet"
+#~ msgstr "Stiliaus lentelė"
+
+#~ msgid "CSS style sheet to use by the final HTML page"
+#~ msgstr "CSS stiliaus lentelė naudotina galutiniame HTML puslapyje"
+
+#~ msgid ""
+#~ "CSS style sheet to be used by the final HTML page. This string contains "
+#~ "the actual contents of the CSS, not a path to the style sheet."
+#~ msgstr ""
+#~ "CSS stiliaus lentelė, naudotina kuriamame HTML puslapyje. Ši eilutė turi "
+#~ "CSS turinį, o ne kelią iki stiliaus lentelės."
+
+#~ msgid "Exclude private incidences from the export"
+#~ msgstr "Eksportuojant neįtraukti privačių įvykių"
+
+#~ msgid "Exclude private items from the export"
+#~ msgstr "Išskirti privačius elementus iš eksporto"
+
+#~ msgid "Check this box if you do NOT want to export your private items."
+#~ msgstr "Pažymėkite šį laukelį, jei NE norite eksportuoti privačių elementų."
+
+#~ msgid "Exclude confidential incidences from the export"
+#~ msgstr "Eksportuojant neįtraukti konfidencialių įvykių"
+
+#~ msgid "Exclude confidential items from the export"
+#~ msgstr "Išskirti konfidencialius elementus iš eksporto"
+
+#~ msgid "Check this box if you do NOT want to export your confidential items."
+#~ msgstr ""
+#~ "Pažymėkite šį laukelį, jei NE norite eksportuoti konfidencialių elementų."
+
+#~ msgid "Export events as list"
+#~ msgstr "Eksportuoti įvykius kaip sąrašą"
+
+#~ msgid "Export events as a list"
+#~ msgstr "Eksportuoti įvykius kaip sąrašą"
+
+#~ msgid "Check this box if you want your events shown as a list."
+#~ msgstr "Pažymėkite šį laukelį, jei norite įvykius matyti kaip sąrašą."
+
+#~ msgid "Export in month view"
+#~ msgstr "Eksportuoti mėnesio vaizdą"
+
+#~ msgid "Export events in a month view"
+#~ msgstr "Eksportuoti įvykius mėnesio vaizde"
+
+#~ msgid "Check this box if you want your events shown in a month view."
+#~ msgstr ""
+#~ "Pažymėkite šį laukelį, jei norite įvykius matyti kaip mėnesio vaizde."
+
+#~ msgid "Export in week view"
+#~ msgstr "Eksportuoti savaitės vaizdą"
+
+#~ msgid "Export events in a week view"
+#~ msgstr "Eksportuoti įvykius savaitės vaizde"
+
+#~ msgid "Check this box if you want your events shown in a week view."
+#~ msgstr ""
+#~ "Pažymėkite šį laukelį, jei norite įvykius matyti kaip savaitės vaizde."
+
+#~ msgid "Title of the calendar"
+#~ msgstr "Kalendoriaus pavadinimas"
+
+#~ msgid "Title for the event calendar"
+#~ msgstr "Kalendoriaus pavadinimas"
+
+#~ msgid "Enter a string to use for the title of the event calendar."
+#~ msgstr "Įveskite eilutę naudotiną įvykių kalendoriaus antraštei."
+
+#~ msgid "Export location of the events"
+#~ msgstr "Eksportuoti įvykių vietą"
+
+#~ msgid "Include the event locations"
+#~ msgstr "Įtraukti įvykių vietas"
+
+#~ msgid ""
+#~ "Check this box if you want the event locations to be exported, only if "
+#~ "the event has a location."
+#~ msgstr ""
+#~ "Pažymėkite šį laukelį, jei norite eksportuoti įvykių vietas, tik jie "
+#~ "įvykis turi vietą."
+
+#~ msgid "Export categories of the events"
+#~ msgstr "Eksportuoti įvykių kategorijas"
+
+#~ msgid "Include the event categories"
+#~ msgstr "Įtraukti įvykių kategorijas"
+
+#~ msgid "Check this box if you want the event categories to be exported."
+#~ msgstr "Pažymėkite šį laukelį, jei norite eksportuoti įvykių kategorijas."
+
+#~ msgid "Export attendees of the events"
+#~ msgstr "Eksportuoti įvykių dalyvius"
+
+#~ msgid "Include the event attendees"
+#~ msgstr "Įtraukti įvykių dalyvius"
+
+#~ msgid "Check this box if you want the event attendees to be exported."
+#~ msgstr "Pažymėkite šį laukelį, jei norite eksportuoti įvykių dalyvius."
+
+#~ msgid "Export to-do list"
+#~ msgstr "Eksportuoti darbų sąrašą"
+
+#~ msgid "Export the to-do list"
+#~ msgstr "Eksportuoti darbų sąrašą"
+
+#~ msgid ""
+#~ "Check this box if you want your to-do list to also be exported to the "
+#~ "HTML."
+#~ msgstr ""
+#~ "Pažymėkite šį laukelį, jei norite papildomai darbų sąrašą eksportuoti į "
+#~ "HTML."
+
+#~ msgid "Title of the to-do list"
+#~ msgstr "Darbų sąrašo pavadinimas"
+
+#~ msgid "To-do List"
+#~ msgstr "Darbų sąrašas"
+
+#~ msgid "Title for the to-do list"
+#~ msgstr "Darbų sąrašo pavadinimas"
+
+#~ msgid "Enter a string to use for the title of the to-do list."
+#~ msgstr "Įveskite eilutę naudotiną darbų sąrašo antraštei."
+
+#~ msgid "Export due dates of the to-dos"
+#~ msgstr "Eksportuoti darbų atlikimo terminus"
+
+#~ msgid "Include to-do due dates"
+#~ msgstr "Įtraukti darbų atlikimo terminus"
+
+#~ msgid ""
+#~ "Check this box if you want the to-do list due dates to be exported, if "
+#~ "the to-do does have a due date."
+#~ msgstr ""
+#~ "Pažymėkite šį laukelį, jei norite eksportuoti darbų atlikimo terminus, "
+#~ "jei darbas turi atlikimo terminą."
+
+#~ msgid "Export location of the to-dos"
+#~ msgstr "Eksportuoti darbų vietas"
+
+#~ msgid "Include the to-do locations"
+#~ msgstr "Įtraukti darbų vietas"
+
+#~ msgid ""
+#~ "Check this box if you want the to-do locations to be exported, only if "
+#~ "the to-do has a location."
+#~ msgstr ""
+#~ "Pažymėkite šį laukelį, jei norite eksportuoti darbų vietas, tik jie "
+#~ "darbas turi vietą."
+
+#~ msgid "Export categories of the to-dos"
+#~ msgstr "Eksportuoti darbų kategorijas"
+
+#~ msgid "Include the to-do categories"
+#~ msgstr "Įtraukti darbų kategorijas"
+
+#~ msgid "Check this box if you want the to-do categories to be exported."
+#~ msgstr "Pažymėkite šį laukelį, jei norite eksportuoti darbų kategorijas."
+
+#~ msgid "Export attendees of the to-dos"
+#~ msgstr "Eksportuoti darbų dalyvius"
+
+#~ msgid "Include the to-do attendees"
+#~ msgstr "Įtraukti darbų dalyvius"
+
+#~ msgid "Check this box if you want the to-do attendees to be exported."
+#~ msgstr "Pažymėkite šį laukelį, jei norite eksportuoti darbų dalyvius."
+
+#~ msgid "Export journals"
+#~ msgstr "Eksportuoti dienynus"
+
+#~ msgid "Check this box if you want to export journals as well."
+#~ msgstr "Pažymėkite šį laukelį, jei norite eksportuoti ir dienynus."
+
+#~ msgid "Title of the journal list"
+#~ msgstr "Dienyno pavadinimas"
+
+#~ msgid "Journals"
+#~ msgstr "Dienynai"
+
+#~ msgid "Title for the journal list"
+#~ msgstr "Dienyno sąrašo pavadinimas"
+
+#~ msgid "Enter a title for the Journal list, if Journals are exported."
+#~ msgstr "Įveskite dienyno sąrašo pavadinimą, jei dienynai yra eksportuoti."
+
+#~ msgid "Export free/busy list"
+#~ msgstr "Eksportuoti užimtumo sąrašą"
+
+#~ msgid "Check this box if you want to export free/busy information as well."
+#~ msgstr ""
+#~ "Pažymėkite šį laukelį, jei norite eksportuoti ir užimtumo informaciją."
+
+#~ msgid "Title of the free/busy list"
+#~ msgstr "Užimtumo sąrašo pavadinimas"
+
+#~ msgid "Busy times"
+#~ msgstr "Užimtas laikas"
+
+#~ msgid "Title for the free/busy list"
+#~ msgstr "Užimtumo sąrašo pavadinimas"
+
+#~ msgid "Export to HTML periodically"
+#~ msgstr "Periodiškai eksportuoti į HTML"
+
+#~ msgid "Automatically export your calendar to an HTML file"
+#~ msgstr "Automatiškai eksportuoti jūsų kalendorių į HTML failą"
+
+#~ msgid ""
+#~ "Check this box to export the calendar to a HTML-file periodically. By "
+#~ "default, this file will be called calendar.html and placed in the user "
+#~ "home folder. You can change the file location by selecting the \"Export "
+#~ "Web page\" option under the \"Export\" menu."
+#~ msgstr ""
+#~ "Pažymėkite šią parinktį jei norite, kad Jūsų kalendorius būtų periodiškai "
+#~ "eksportuojamas į HTML formato failą. Pagal numatytąjį nustatymą šis "
+#~ "failas vadinsis „calendar.html“ ir bus įrašomas į naudotojo namų aplanką. "
+#~ "Galite pakeisti vietą pasirinkus „Eksportuoti tinklo puslapį“ po "
+#~ "„Eksportuoti“ meniu."
+
+#~ msgid "Export &interval in minutes"
+#~ msgstr "Eksporto &intervalas minutėmis"
+
+#~ msgid "Interval between periodic HTML exports, in minutes"
+#~ msgstr "Intervalas tarp periodinių HTML eksportų minutėmis"
+
+#~ msgid ""
+#~ "Set the interval between automatic exporting of calendar events in "
+#~ "minutes here."
+#~ msgstr ""
+#~ "Čia nurodykite automatinio kalendoriaus įvykių eksportavimo intervalą "
+#~ "minutėmis."
+
+#~ msgid "Confirm deletes"
+#~ msgstr "Perklausti šalinant"
+
+#~ msgid "Always confirm when deleting items"
+#~ msgstr "Visada patvirtinti kai trinami elementai"
+
+#~ msgid "Check this box to display a confirmation dialog when deleting items."
+#~ msgstr ""
+#~ "Įjungus šią parinktį trinant įrašus bus papildomai paklausiama ar tikrai "
+#~ "norite tai daryti."
+
+#~ msgid "New Events, To-dos and Journal Entries Should"
+#~ msgstr "Nauji įvykiai, darbai ir dienyno įrašai:"
+
+#~ msgid "Be added to the standard calendar"
+#~ msgstr "Įrašomi į standartinį kalendorių"
+
+#~ msgid ""
+#~ "Select this option to always record new events, to-dos and journal "
+#~ "entries using the standard calendar."
+#~ msgstr ""
+#~ "Pažymėjus šią parinktį nauji įvykiai, darbai ir žurnalo įrašai visuomet "
+#~ "bus įrašomi standartiniame kalendoriuje."
+
+#~ msgid "Be asked which calendar to use"
+#~ msgstr "Paklausiama, į kurį kalendorių rašyti"
+
+#~ msgid ""
+#~ "Select this option to choose the calendar to be used to record the item "
+#~ "each time you create a new event, to-do or journal entry. This choice is "
+#~ "recommended if you intend to use the shared folders functionality of the "
+#~ "Kolab server or have to manage multiple accounts using Kontact as a KDE "
+#~ "Kolab client. "
+#~ msgstr ""
+#~ "Pažymėkite šią parinktį jei norite nurodyti kalendorių, į kurį bus "
+#~ "įrašomi naujai sukurti įvykiai, darbai ar dienyno įrašai. Ši parinktis "
+#~ "yra rekomenduojama jei ketinate naudotis Kolab serverio dalinimosi "
+#~ "aplankais funkcijomis, arba jei turite tvarkyti keletą paskyrų naudojant "
+#~ "Kontact kaip KDE Kolab klientą."
+
+#~ msgid "Show Reminder Daemon in the System Tray"
+#~ msgstr "Rodyti priminimų tarnybą sistemos dėkle"
+
+#~ msgid ""
+#~ "Check this box to show the KOrganizer reminder daemon in the system tray."
+#~ msgstr ""
+#~ "Įjunkite šią parinktį jei nenorite, kad KOrganizer priminimų tarnyba būtų "
+#~ "rodoma sistemos dėkle."
+
+#~ msgid ""
+#~ "Select your timezone from the list of locations on this drop down box. If "
+#~ "your city is not listed, select one which shares the same timezone. "
+#~ "KOrganizer will automatically adjust for daylight savings."
+#~ msgstr ""
+#~ "Iš vietovių sąrašo pasirinkite laiko zoną. Jei Jūsų miesto sąraše nėra, "
+#~ "pasirinkite miestą, turintį tokią pačią laiko juostą. KOrganizer "
+#~ "automatiškai prisitaikys keičiantis vasaros/žiemos laikui."
+
+#~ msgid "Day begins at"
+#~ msgstr "Diena prasideda"
+
+#~ msgid ""
+#~ "Enter the start time for events here. This time should be the earliest "
+#~ "time that you use for events, as it will be displayed at the top."
+#~ msgstr ""
+#~ "Čia įrašykite standartinį įvykių pradžios laiką. Šis laikas turėtų būti "
+#~ "anksčiausias kokį tik naudojate įvykiams, nes jis bus rodomas viršuje."
+
+#~ msgid "Use holiday region:"
+#~ msgstr "Naudojamas švenčių regionas:"
+
+#~ msgid ""
+#~ "Select from which region you want to use the holidays here. Defined "
+#~ "holidays are shown as non-working days in the date navigator, the agenda "
+#~ "view, etc."
+#~ msgstr ""
+#~ "Čia galite pasirinkti kurio regiono šventes norite naudoti. Nustatytos "
+#~ "šventės bus rodomos kaip nedarbo dienos datos navigatoriuje, "
+#~ "darbotvarkėje ir kitur."
+
+#~ msgid "Daily starting hour"
+#~ msgstr "Dienos pradžia (val.)"
+
+#~ msgid ""
+#~ "Enter the start time for the working hours here. The working hours will "
+#~ "be marked with color by KOrganizer."
+#~ msgstr ""
+#~ "Čia įrašykite darbo valandų pradžios laiką. Darbo valandas KOrganizer "
+#~ "pažymės tam tikra spalva."
+
+#~ msgid "Daily ending hour"
+#~ msgstr "Dienos pabaiga (val.)"
+
+#~ msgid ""
+#~ "Enter the ending time for the working hours here. The working hours will "
+#~ "be marked with color by KOrganizer."
+#~ msgstr ""
+#~ "Čia įrašykite darbo valandų pabaigos laiką. Darbo valandas KOrganizer "
+#~ "pažymės tam tikra spalva."
+
+#~ msgid "Exclude holidays"
+#~ msgstr "Išskyrus šventes"
+
+#~ msgid ""
+#~ "Check this box to prevent KOrganizer from marking the working hours on "
+#~ "holidays."
+#~ msgstr ""
+#~ "Įjunkite šią parinktį jei nenorite, kad KOrganizer žymėtų darbo valandas "
+#~ "švenčių dienomis."
+
+#~ msgid "Color busy days with a different background color"
+#~ msgstr "Užimtas dienas spalvinti kitokia fono spalva"
+
+#~ msgid ""
+#~ "Check this box if you want month view's background to be filled with a "
+#~ "different color on days which have at least one all day event marked as "
+#~ "busy. Also, you can change the background color used for this option on "
+#~ "the Colors configuration page. Look for the \"Busy days background color"
+#~ "\" setting."
+#~ msgstr ""
+#~ "Įjunkite šią parinktį, jei norite, kad mėnesio rodyme dienų, kurios tori "
+#~ "bent vieną visos dienos įvykį, fonas būtų nuspalvintas kitokia spalva. "
+#~ "Naudojamą fono spalvą galite nustatyti spalvų konfigūravimo puslapyje. "
+#~ "Ieškokite „užimtų dienų fono spalvos“ parinkties."
+
+#~ msgid "Enable tooltips for displaying summaries"
+#~ msgstr "Rodyti aiškinamąsias korteles su įvykių santraukomis"
+
+#~ msgid ""
+#~ "Check this box to display summary tooltips when hovering the mouse over "
+#~ "an event or a to-do."
+#~ msgstr ""
+#~ "Įjungus šią parinktį palaikius pelę virš įvykio bus rodoma aiškinamoji "
+#~ "kortelė."
+
+#~ msgid "To-dos use category colors"
+#~ msgstr "Darbams žymėti naudojama kategorijos spalva"
+
+#~ msgid ""
+#~ "Check this box so that to-dos will use category colors and not colors "
+#~ "specific to their due, due today or overdue state"
+#~ msgstr ""
+#~ "Pažymėkite šią parinktį jei norite, kad darbams būtų naudojamos "
+#~ "kategorijų spalvos o ne spalvos, susijusios su jų atlikimo terminu, "
+#~ "atlikimo termino pasibaigimu ar vėlavimu."
+
+#~ msgid "Next x days"
+#~ msgstr "Ateinančios x dienos"
+
+#~ msgid ""
+#~ "Select the number of \"x\" days to be displayed in the next days view. To "
+#~ "access the next \"x\" days view, choose the \"Next X Days\" menu item "
+#~ "from the \"View\" menu."
+#~ msgstr ""
+#~ "Parinkite, kiek dienų rodyti ateinančių dienų peržiūroje. Norėdami "
+#~ "persijungti į ateinančių dienų peržiūrą, parinkite „Ateinančios X dienos“ "
+#~ "iš „Rodymo“ meniu."
+
+#~ msgid "Show this many days at a time in the Next \"x\" days view"
+#~ msgstr "Tiek dienų vienu metu rodyti ateinančių „x“ dienų peržiūroje"
+
+#~ msgid "Show items that recur daily"
+#~ msgstr "Rodyti kasdien pasikartojančius įvykius"
+
+#~ msgid ""
+#~ "Check this box to show the days containing daily recurring events in bold "
+#~ "typeface in the Date Navigator, or uncheck it to give more prominence to "
+#~ "other (non daily recurring) events."
+#~ msgstr ""
+#~ "Pažymėkite šią parinktį jei norite, kad kasdien pasikartojantys įvykiai "
+#~ "būtų atspindimi pusjuodžiu šriftu Datos navigatoriuje, arba panaikinkite "
+#~ "pažymėjimą, jei norite, kad Datos navigatorius geriau atspindėtų kitus "
+#~ "(kasdien nesikartojančius) įvykius."
+
+#~ msgid "Show items that recur weekly"
+#~ msgstr "Rodyti kas savaitę pasikartojančius įvykius"
+
+#~ msgid ""
+#~ "Check this box to show the days containing weekly recurring events in "
+#~ "bold typeface in the Date Navigator, or uncheck it to give more "
+#~ "prominence to other (non weekly recurring) events."
+#~ msgstr ""
+#~ "Pažymėkite šią parinktį jei norite, kad kas savaitę pasikartojantys "
+#~ "įvykiai būtų atspindimi pusjuodžiu šriftu Datos navigatoriuje, arba "
+#~ "panaikinkite pažymėjimą, jei norite, kad Datos navigatorius geriau "
+#~ "atspindėtų kitus (kas savaitę nesikartojančius) įvykius."
+
+#~ msgid "Show to-dos instead of events when in Todo View"
+#~ msgstr "Darbų sąraše rodyti darbus, o ne įvykius"
+
+#~ msgid ""
+#~ "Check this box to show the days containing to-dos in bold typeface in the "
+#~ "Date Navigator when in to-do view."
+#~ msgstr ""
+#~ "Pažymėkite šią parinktį jei norite, kad datų navigatoriuje darbų "
+#~ "turinčios dienos būtų atspindimos pusjuodžiu šriftu."
+
+#~ msgid "Show journals instead of events when in Journal View"
+#~ msgstr "Dienyno peržiūroje rodyti dienyną, o ne įvykius"
+
+#~ msgid ""
+#~ "Check this box to show the days containing journals in bold typeface in "
+#~ "the Date Navigator when in journal view."
+#~ msgstr ""
+#~ "Pažymėkite šią parinktį jei norite, kad datos navigatoriuje dienyno įrašų "
+#~ "turinčios dienos būtų atspindimos pusjuodžiu šriftu."
+
+#~ msgid "Week numbers select a work week when in work week mode"
+#~ msgstr ""
+#~ "Darbo savaičių numeriai darbo savaičių savaičių režime parenka darbo "
+#~ "savaites"
+
+#~ msgid ""
+#~ "Check this box to select a working week when clicking on the Date "
+#~ "Navigator's week numbers, or uncheck it to choose the whole week."
+#~ msgstr ""
+#~ "Įjunkite šią parinktį, jei norite datos navigatoriuje pažymėti darbo "
+#~ "savaitę žymėdami darbo savaitės numerius. Išjunkite parinktį, jei taip "
+#~ "norite pažymėti visą savaitę."
+
+#~ msgid "Hour size"
+#~ msgstr "Valandos dydis"
+
+#~ msgid ""
+#~ "Select the height of the hour rows in the agenda grid, in pixels. "
+#~ "Increasing this value will make each row in the agenda grid taller."
+#~ msgstr ""
+#~ "Parinkite valandų eilučių aukštį darbotvarkėje pikseliais. Didinant šią "
+#~ "reikšmę augs ir kiekviena darbotvarkės eilutė."
+
+#~ msgid "Set the height (in pixels) for an hour in the agenda grid"
+#~ msgstr "Nurodykite valandos aukštį (taškais) darbotvarkės tinklelyje"
+
+#~ msgid "Show icons in agenda view items"
+#~ msgstr "Darbotvarkės rodinio elementuose rodyti ženkliukus"
+
+#~ msgid ""
+#~ "Check this box to display icons (alarm, recursion, etc.) in agenda view "
+#~ "items."
+#~ msgstr ""
+#~ "Įjungus šią nuostatą darbotvarkės įrašuose bus rodomos žadintuvo, "
+#~ "pasikartojimo ir kiti ženkliukai."
+
+#~ msgid "Display icons in agenda view items"
+#~ msgstr "Darbotvarkės rodinio elementuose rodyti ženkliukus"
+
+#~ msgid "Show to-dos"
+#~ msgstr "Rodyti darbus"
+
+#~ msgid "Check this box to display to-dos in the agenda view."
+#~ msgstr "Įjungus šią nuostatą darbotvarkės peržiūroje bus rodomi darbai."
+
+#~ msgid "Display to-dos in the agenda view"
+#~ msgstr "Rodyti darbus darbotvarkės rodinyje"
+
+#~ msgid "Show current-time (Marcus Bains) line"
+#~ msgstr "Rodyti dabartinio laiko (Marcus Bains) liniją"
+
+#~ msgid ""
+#~ "Check this box to display a line in the day or week view indicating the "
+#~ "current-time line (Marcus Bains line)."
+#~ msgstr ""
+#~ "Įjungus šią parinktį dienos ir savaitės peržiūrose atsiras raudona "
+#~ "linija, nurodanti dabartinį laiką (Marko Bains linija)."
+
+#~ msgid "Display the current-time indicator"
+#~ msgstr "Rodyti dabartinio laiko žymeklį."
+
+#~ msgid "Show seconds on the current-time (Marcus Bains) line"
+#~ msgstr "Rodyti sekundes dabartinio laiko (Marko Bains) linijoje"
+
+#~ msgid "Check this box if you want to show seconds on the current-time line."
+#~ msgstr ""
+#~ "Įjungus šią parinktį dabartinio momento linijoje bus rodomos sekundės."
+
+#~ msgid "Display seconds with the current-time indicator"
+#~ msgstr "Dabartinio momento linijoje rodyti sekundes"
+
+#~ msgid "Time range selection in agenda view starts event editor"
+#~ msgstr ""
+#~ "Laiko tarpo pažymėjimas darbotvarkėje automatiškai startuoja įvykio "
+#~ "redaktorių"
+
+#~ msgid ""
+#~ "Check this box to start the event editor automatically when you select a "
+#~ "time range in the daily and weekly view. To select a time range, drag the "
+#~ "mouse from the start time to the end time of the event you are about to "
+#~ "plan."
+#~ msgstr ""
+#~ "Pažymėjus šią parinktį įvykių redaktorius bus paleistas automatiškai "
+#~ "pasirinkus laiko tarpą dienos ar savaitės rodyme. Norėdami pažymėti laiko "
+#~ "tarpą, tempkite pelę nuspaudę mygtuką nuo numatomo įvykio pradžios iki "
+#~ "pabaigos laiko."
+
+#~ msgid "Enable automatic event editor with time range selection"
+#~ msgstr "Įjungti automatinį įvykių redaktorių su laiko ruožų pasirinkimu"
+
+#~ msgid "Color Usage"
+#~ msgstr "Spalvų naudojimas"
+
+#~ msgid "Category inside, calendar outside"
+#~ msgstr "Kategorija viduje, kalendorius išorėje"
+
+#~ msgid ""
+#~ "Draw agenda items in their category color inside and calendar color for "
+#~ "their border"
+#~ msgstr ""
+#~ "Brėžti darbotvarkės elementus naudojant jų kategorijos spalvą vidui ir "
+#~ "kalendoriaus spalvą jų rėmeliui"
+
+#~ msgid "Calendar inside, category outside"
+#~ msgstr "Kalendorius viduje, kategorija "
+
+#~ msgid ""
+#~ "Draw agenda items in their calendar color inside and category color for "
+#~ "their border"
+#~ msgstr ""
+#~ "Brėžti darbotvarkės elementus naudojant jų kalendoriaus spalvą vidui ir "
+#~ "kategorijos spalvą jų rėmeliui"
+
+#~ msgid "Only category"
+#~ msgstr "Tik kategorija"
+
+#~ msgid ""
+#~ "Draw agenda items using their category color for the inside and border"
+#~ msgstr ""
+#~ "Brėžti darbotvarkės elementus naudojant jų kategorijos spalvą vidui ir "
+#~ "rėmeliui"
+
+#~ msgid "Only calendar"
+#~ msgstr "Tik kalendorius"
+
+#~ msgid ""
+#~ "Draw agenda items using their calendar color for the inside and border"
+#~ msgstr ""
+#~ "Brėžti darbotvarkės elementus naudojant jų kalendoriaus spalvą vidui ir "
+#~ "rėmeliui"
+
+#~ msgid ""
+#~ "Check this box if you want agenda's background to be filled with a "
+#~ "different color on days which have at least one all day event marked as "
+#~ "busy. Also, you can change the background color used for this option on "
+#~ "the Colors configuration page. Look for the \"Busy days background color"
+#~ "\" setting."
+#~ msgstr ""
+#~ "Įjunkite šią parinktį, jei norite, kad dienotvarkės rodyme dienų, kurios "
+#~ "tori bent vieną visos dienos įvykį, fonas būtų nuspalvintas kitokia "
+#~ "spalva. Naudojamą fono spalvą galite nustatyti spalvų konfigūravimo "
+#~ "puslapyje. Ieškokite „užimtų dienų fono spalvos“ parinkties."
+
+#~ msgid "Multiple Calendar Display"
+#~ msgstr "Kelių kalendorių rodymas"
+
+#~ msgid "Merge all calendars into one view"
+#~ msgstr "Sulieti visus kalendorius į vieną vaizdą"
+
+#~ msgid "Show all calendars merged together"
+#~ msgstr "Rodyti visus kalendorius sulietus į vieną"
+
+#~ msgid "Show calendars side by side"
+#~ msgstr "Rodyti kalendorius greta"
+
+#~ msgid "Show two calendars side-by-side"
+#~ msgstr "Rodyti du kalendorius vieną greta kito"
+
+#~ msgid "Switch between views with tabs"
+#~ msgstr "Persijungti tarp peržiūrų kortelių pagalba"
+
+#~ msgid "Tab through calendars"
+#~ msgstr "Tab per kalendorius"
+
+#~ msgid "Show icons in month view items"
+#~ msgstr "Rodyti ženkliukus mėnesio rodinio elementuose"
+
+#~ msgid ""
+#~ "Check this box to display icons (alarm, recursion, etc.) in month view "
+#~ "items."
+#~ msgstr ""
+#~ "Pažymėkite šį laukelį, kad rodyti ženkliukus (žadintuvą, rekursiją, pan.) "
+#~ "mėnesio rodinio elementuose."
+
+#~ msgid "Display icons in month view items"
+#~ msgstr "Rodyti ženkliukus mėnesio rodinio elementuose"
+
+#~ msgid "Show time in month view items"
+#~ msgstr "Rodyti laiką mėnesio peržiūros elementuose"
+
+#~ msgid "Check this box to display the time in month view items."
+#~ msgstr ""
+#~ "Pažymėkite šį laukelį, kad rodyti laiką mėnesio rodinio elementuose."
+
+#~ msgid "Display time in month view items"
+#~ msgstr "Rodyti laiką mėnesio rodinio elementuose"
+
+#~ msgid "Check this box to display to-dos in the month view."
+#~ msgstr "Pažymėkite šį laukelį, kad rodyti darbus mėnesio rodinyje."
+
+#~ msgid "Display to-dos in the month view"
+#~ msgstr "Rodyti darbus mėnesio rodinyje"
+
+#~ msgid "Show journals"
+#~ msgstr "Rodyti dienynus..."
+
+#~ msgid "Check this box to display journals in the month view."
+#~ msgstr "Pažymėkite šį laukelį, kad rodyti dienynus mėnesio rodinyje."
+
+#~ msgid "Display journals in the month view"
+#~ msgstr "Rodyti dienynus mėnesio rodinyje"
+
+#~ msgid "Month view uses full window"
+#~ msgstr "Mėnesio peržiūra per visą langą"
+
+#~ msgid ""
+#~ "Check this box to use the full KOrganizer window when displaying the "
+#~ "month view. If this box is checked, you will gain some space for the "
+#~ "monthly view, but other widgets, such as the date navigator, the item "
+#~ "details and the calendars list, will not be displayed."
+#~ msgstr ""
+#~ "Įjungus šią parinktį visas KOrganizer langas bus naudojamas rodant "
+#~ "mėnesio peržiūrą. Pažymėję šią parinktį mėnesio peržiūrai turėsite "
+#~ "daugiau vietos, tačiau kiti valdikliai, tokie, kaip datos navigatorius, "
+#~ "atvejo detalių peržiūra ir resursų sąrašas nebus rodomi."
+
+#~ msgid ""
+#~ "Draw month items in their category color inside and calendar color for "
+#~ "their border"
+#~ msgstr ""
+#~ "Brėžti mėnesio elementus naudojant jų kategorijos spalvą vidui ir "
+#~ "kalendoriaus spalvą jų rėmeliui"
+
+#~ msgid ""
+#~ "Draw month items in their calendar color inside and category color for "
+#~ "their border"
+#~ msgstr ""
+#~ "Brėžti mėnesio elementus naudojant jų kalendoriaus spalvą vidui ir "
+#~ "kategorijos spalvą jų rėmeliui"
+
+#~ msgid ""
+#~ "Draw month items using their category color for the inside and border"
+#~ msgstr ""
+#~ "Brėžti mėnesio elementus naudojant jų kategorijos spalvą vidui ir rėmeliui"
+
+#~ msgid ""
+#~ "Draw month items using their calendar color for the inside and border"
+#~ msgstr ""
+#~ "Brėžti mėnesio elementus naudojant jų kalendoriaus spalvą vidui ir "
+#~ "rėmeliui"
+
+#~ msgid "Always display completed to-dos at the bottom of the list"
+#~ msgstr "Visuomet rodyti užbaigtus darbus sąrašo gale"
+
+#~ msgid "To-do list view uses full window"
+#~ msgstr "Darbų sąrašo rodinys naudoja visą langą"
+
+#~ msgid "Display to-do list in a full KOrganizer window"
+#~ msgstr "Rodyti darbų sąrašą visame KOrganizer lange"
+
+#~ msgid ""
+#~ "Check this box to use the full KOrganizer window when displaying the to-"
+#~ "do list view. If this box is checked, you will gain some space for the to-"
+#~ "do list view, but other widgets, such as the date navigator, the to-do "
+#~ "details and the calendars list, will not be displayed."
+#~ msgstr ""
+#~ "Įjungus šią parinktį visas KOrganizer langas bus naudojamas rodant darbų "
+#~ "sąrašo peržiūrą. Pažymėję šią parinktį darbų peržiūrai turėsite daugiau "
+#~ "vietos, tačiau kiti valdikliai, tokie, kaip datos navigatorius, darbų "
+#~ "informacija ir kalendorių sąrašas nebus rodomi."
+
+#~ msgid "Display to-dos in a flat list"
+#~ msgstr "Rodyti darbus plokščiame sąraše"
+
+#~ msgid "Display to-dos as a flat list instead of a hierarchical tree"
+#~ msgstr "Rodyti darbus plokščiame sąraše vietoje hierarchinio medžio"
+
+#~ msgid ""
+#~ "Check this box if you want to see all your to-dos in a flat list instead "
+#~ "of being arranged in a hierarchical tree."
+#~ msgstr ""
+#~ "Pažymėkite šį laukelį, jei norite matyti visus darbus plokščiame sąraše, "
+#~ "nei išrikiuotus hierarchiniame medyje"
+
+#~ msgid "Record completed to-dos in journal entries"
+#~ msgstr "Įrašyti atliktus darbus dienyno įrašuose"
+
+#~ msgid ""
+#~ "Check this box to record the completion of a to-do in a new entry of your "
+#~ "journal automatically."
+#~ msgstr ""
+#~ "Įjungus šią parinktį į dienyną bus automatiškai rašomi įrašai apie "
+#~ "atliktus darbus."
+
+#~ msgid "Holiday color"
+#~ msgstr "Švenčių spalva"
+
+#~ msgid ""
+#~ "Select the holiday color here. The holiday color will be used for the "
+#~ "holiday name in the month view and the holiday number in the date "
+#~ "navigator."
+#~ msgstr ""
+#~ "Čia pasirinkite spalvą, kuria bus rodomos šventės. Šventės spalva bus "
+#~ "naudojama šventės pavadinimui mėnesio peržiūroje ir šventės datai Datos "
+#~ "navigatoriuje."
+
+#~ msgid "Agenda view background color"
+#~ msgstr "Darbotvarkės rodinio fono spalva"
+
+#~ msgid "Select the agenda view background color here."
+#~ msgstr "Pasirinkite darbotvarkės peržiūros fono spalvą."
+
+#~ msgid "Agenda view current-time line color"
+#~ msgstr "Dienotvarkės rodinio esamo laiko linijos spalva"
+
+#~ msgid "Select a color to use for the current-time (Marcus Bains) line."
+#~ msgstr "Pasirinkite spalvą esamo laiko (Marcus Bains) linijai."
+
+#~ msgid "Use this color for the Agenda View current-time (Marcus Bains) line"
+#~ msgstr ""
+#~ "Naudoti šią spalvą dienotvarkės rodinio esamo laiko (Marcus Bains) linijai"
+
+#~ msgid "Busy days background color"
+#~ msgstr "Užimtų dienų fono spalva"
+
+#~ msgid "Working hours color"
+#~ msgstr "Darbo valandų spalva"
+
+#~ msgid "Select the working hours color for the agenda view here."
+#~ msgstr "Pasirinkite darbo valandų darbotvarkės peržiūroje spalvą."
+
+#~ msgid "To-do due today color"
+#~ msgstr "Darbo, kurį reikia šiandien užbaigti, spalva"
+
+#~ msgid "Select the to-do due today color here."
+#~ msgstr ""
+#~ "Pasirinkite darbo, kurio atlikimo terminas baigiasi šiandien, spalvą"
+
+#~ msgid "To-do overdue color"
+#~ msgstr "Vėluojančio darbo spalva"
+
+#~ msgid "Select the to-do overdue color here."
+#~ msgstr "Pasirinkite vėluojančio darbo spalvą."
+
+#~ msgid "Time bar"
+#~ msgstr "Laiko juostelė"
+
+#~ msgid ""
+#~ "Press this button to configure the time bar font. The time bar is the "
+#~ "widget that shows the hours in the agenda view. This button will open the "
+#~ "\"Select Font\" dialog, allowing you to choose the hour font for the time "
+#~ "bar."
+#~ msgstr ""
+#~ "Spauskite šį mygtuką norėdami konfigūruoti laiko juostos šriftą. Laiko "
+#~ "juosta yra valdiklis, rodantis valandas darbotvarkės peržiūroje. Šis "
+#~ "mygtukas atvers „Šrifto pasirinkimo“ dialogą, leidžiantį pasirinkti "
+#~ "valandoms laiko juostoje rašyti naudojamą šriftą"
+
+#~ msgid "Month view"
+#~ msgstr "Mėnesio rodinys"
+
+#~ msgid ""
+#~ "Press this button to configure the month view font. This button will open "
+#~ "the \"Select Font\" dialog, allowing you to choose the font for the items "
+#~ "in the month view."
+#~ msgstr ""
+#~ "Spauskite šį mygtuką jei norite sukonfigūruoti mėnesio peržiūros šriftą. "
+#~ "Šis mygtukas atvers dialogą „Pasirinkite šriftą“, kuriame galėsite "
+#~ "pasirinkti šriftus įvykiams mėnesio peržiūrai."
+
+#~ msgid "Agenda view"
+#~ msgstr "Darbotvarkės rodinys"
+
+#~ msgid ""
+#~ "Press this button to configure the agenda view font. This button will "
+#~ "open the \"Select Font\" dialog, allowing you to choose the font for the "
+#~ "events in the agenda view."
+#~ msgstr ""
+#~ "Spauskite šį mygtuką norėdami konfigūruoti darbotvarkės vaizdo šriftą. "
+#~ "Šis mygtukas atvers dialogą „Pasirinkite šriftą“, kuriame galėsite "
+#~ "pasirinkti šriftus įvykiams darbotvarkės peržiūrai."
+
+#~ msgid "Current-time line"
+#~ msgstr "Dabartinio laiko linija"
+
+#~ msgid ""
+#~ "Press this button to configure the current-time line font. This button "
+#~ "will open the \"Select Font\" dialog, allowing you to choose the font for "
+#~ "the current-time line in the agenda view."
+#~ msgstr ""
+#~ "Spauskite šį mygtuką norėdami konfigūruoti dabartinio laiko linijos "
+#~ "šriftą. Šis mygtukas atvers „Šrifto pasirinkimo“ dialogą, leidžiantį "
+#~ "pasirinkti valandoms laiko juostoje rašyti naudojamą šriftą"
+
+#~ msgid "Default todo attachment method"
+#~ msgstr "Numatytasis darbų prikabinimo metodas"
+
+#~ msgid "The default way of attaching dropped emails to a task"
+#~ msgstr "Numatytasis numestų el. laiškų prijungimo prie darbo būdas"
+
+#~ msgid "Always ask"
+#~ msgstr "Visada klausti"
+
+#~ msgid "Only attach link to message"
+#~ msgstr "Pridėti tik nuorodą į laišką"
+
+#~ msgid "Attach complete message"
+#~ msgstr "Pridėti visą laišką"
+
+#~ msgid "Highlight color"
+#~ msgstr "Paryškinimo spalva"
+
+#~ msgid ""
+#~ "Select the highlight color here. The highlight color will be used for "
+#~ "marking the currently selected area in your agenda and in the date "
+#~ "navigator."
+#~ msgstr ""
+#~ "Pažymėkite paryškinimo spalvą. Paryškinimo spalva bus naudojama šiuo metu "
+#~ "pažymėtos dalies išskyrimui darbotvarkės rodinyje ir datos navigatoriuje."
+
+#~ msgid "Month view background color"
+#~ msgstr "Mėnesio peržiūros fono spalva"
+
+#~ msgid "Select the Month view background color here."
+#~ msgstr "Pasirinkite mėnesio peržiūros fono spalvą."
+
+#~ msgid ""
+#~ "Select the highlight color here. The highlight color will be used for "
+#~ "marking the currently selected area in your Month and in the date "
+#~ "navigator."
+#~ msgstr ""
+#~ "Čia galite pasirinkti paryškinimo spalvą. Paryškinimo spalva bus "
+#~ "naudojama pažymėto periodo išryškinimui mėnesio peržiūroje ir datos "
+#~ "navigatoriuje."
+
+#~ msgid "Select the working hours background color for the Month view here."
+#~ msgstr "Pasirinkite mėnesio peržiūros darbo valandų darbotvarkėje spalvą."
+
+#~ msgid "Default event color"
+#~ msgstr "Numatytoji įvykio spalva"
+
+#~ msgid ""
+#~ "Select the default event color here. The default event color will be used "
+#~ "for events categories in your Month. Note that you can specify a separate "
+#~ "color for each event category below."
+#~ msgstr ""
+#~ "Čia galite pasirinkti numatytą įvykio spalvą. Numatytoji spalva bus "
+#~ "naudojama įvykių kategorijoms mėnesio peržiūrose. Pažymėtina, kad galite "
+#~ "nurodyti atskirą spalvą kiekvienai įvykių kategorijai."
+
+#~ msgid "Search"
+#~ msgstr "Ieškoti"
+
+#~ msgid "&New"
+#~ msgstr "&Naujas"
+
+#~ msgid "Filter Details"
+#~ msgstr "Filtro detalės"
+
+#~ msgctxt "filter name"
+#~ msgid "Name:"
+#~ msgstr "Pavadinimas:"
+
+#~ msgid ""
+#~ "Select this option if you do not want to show recurring events and to-dos "
+#~ "in your views. Daily and weekly recurring items may take a lot of space, "
+#~ "so it might be handy to hide them."
+#~ msgstr ""
+#~ "Pažymėjus šią parinktį pasikartojantys įvykiai ir darbai nebus rodomi "
+#~ "pagrindinėse peržiūrose. Kasdien ar kas savaitę pasikartojantys atvejai "
+#~ "užima daug vietos, tad juos kartais patogu paslėpti."
+
+#~ msgid "Hide &recurring events and to-dos"
+#~ msgstr "&Slėpti pasikartojančius įvykius ir darbus"
+
+#~ msgid ""
+#~ "If this box is checked, the filter will hide all to-do items from the "
+#~ "list, that have been completed. Optionally, only items that have been "
+#~ "completed a given number of days are hidden."
+#~ msgstr ""
+#~ "Įjungus šią parinktį, filtras paslėps visus darbus, kurie yra jau "
+#~ "atlikti. Taip pat gali būti slepiami darbai, kurie atlikti prieš daugiau "
+#~ "nei nurodyta dienų."
+
+#~ msgid "Hide co&mpleted to-dos"
+#~ msgstr "Slėpti &baigtus darbus"
+
+#~ msgid ""
+#~ "This option will allow you to select which completed to-dos should be "
+#~ "hidden. When you choose <i>Immediately</i>, it will hide the to-do as "
+#~ "soon as you check it. You can increase or decrease the number of days in "
+#~ "the spinbox."
+#~ msgstr ""
+#~ "Ši parinktis leidžia nustatyti, kurie atlikti darbai turėtų būti "
+#~ "slepiami. Pasirinktus <i>Tuoj pat</i>, darbas bus slepiamas vos tik jį "
+#~ "užbaigus. Skaitiklyje galite nustatyti pasirinktą dienų skaičių."
+
+#, fuzzy
+#~| msgid "Days after completion:"
+#~ msgid "Da&ys after completion:"
+#~ msgstr "Dienos po užbaigimo:"
+
+#~ msgid ""
+#~ "Here you can give the number of days a to-do item has to be completed to "
+#~ "be hidden from the to-do list. If you select \"Immediately\", all "
+#~ "completed to-dos will be hidden. If you, for example, choose a value of "
+#~ "1, all to-do items will be hidden, that have been marked finished longer "
+#~ "than 24 hours ago."
+#~ msgstr ""
+#~ "Čia galite nustatyti kiek dienų praėjus nuo darbo užbaigimo tas darbas "
+#~ "bus slepiamas darbų sąraše. Pasirinkus „Tuoj pat“, bus slepiami visi "
+#~ "užbaigti darbai. Pasirinkus, pavyzdžiui, 1, bus slepiami visi darbai, "
+#~ "kurie užbaigti seniau nei prieš 24 valandas."
+
+#~ msgid ""
+#~ "This option hides all to-dos from your list, where the start date has not "
+#~ "been reached. (Note that the start date is not the due date of the to-do "
+#~ "item.)"
+#~ msgstr ""
+#~ "Įjungus šią parinktį bus nerodomi darbai, kurių pradžios data dar "
+#~ "neatėjo. (Atsiminkite, kad pradžios datos reikšmė skiriasi nuo atlikimo "
+#~ "termino datos.)"
+
+#~ msgid "Hide &inactive to-dos"
+#~ msgstr "Slėpti neaktyv&ius darbus"
+
+#~ msgid "Categories"
+#~ msgstr "Kategorijos"
+
+#~ msgid ""
+#~ "When this option is enabled, this filter will show all items which do "
+#~ "<i>not</i> contain the selected categories."
+#~ msgstr ""
+#~ "Įjungus šią parinktį, filtras rodys įvykius, kurie <i>ne</i>priklauso "
+#~ "parinktoms kategorijoms."
+
+#~ msgid "Show all except selected"
+#~ msgstr "Rodyti visus išskyrus pasirinktus"
+
+#~ msgid ""
+#~ "When this option is enabled, this filter will show all items containing "
+#~ "at least the selected items."
+#~ msgstr ""
+#~ "įjungus šią parinktį, filtras rodys įvykius, kurie priklauso bent vienai "
+#~ "iš parinktų kategorijų."
+
+#~ msgid "Show only selected"
+#~ msgstr "Rodyti tik parinktus"
+
+#~ msgid "Change..."
+#~ msgstr "Pakeisti..."
+
+#~ msgid ""
+#~ "This option hides all to-dos from your list which are assigned to someone "
+#~ "else.<br>\n"
+#~ "Only to-dos which have least one attendee will be checked.  If you are "
+#~ "not in the list of attendees the to-do will be hidden."
+#~ msgstr ""
+#~ "Ši parinktis paslepia sąraše visus darbus, kurie priskirti kažkam kitam."
+#~ "<br>\n"
+#~ "Bus patikrinti tik tie darbai, kurie turi bent vieną dalyvį. Jei nesate "
+#~ "dalyvių sąraše, darbas bus paslėptas."
+
+#~ msgid "Hide to-dos not assigned to me"
+#~ msgstr "Slėpti darbus, kurie nėra paskirti man"
+
+#~ msgid "P&ublish"
+#~ msgstr "P&ublikuoti"
+
+#~ msgid ""
+#~ "By publishing Free/Busy information, you allow others to take your "
+#~ "calendar into account when inviting you for a meeting. Only the times you "
+#~ "have already busy are published, not why they are busy."
+#~ msgstr ""
+#~ "Publikuodami savo užimtumo informaciją leidžiate kitiems atsižvelgi į "
+#~ "Jūsų kalendorių kviečiant susitikti. Publikuojami tik laikai, kai esate "
+#~ "užimtas, tačiau ne kodėl esate užimtas."
+
+#~ msgid ""
+#~ "Check this box to upload your Free/Busy information automatically.\n"
+#~ "It is possible to skip this option and mail or upload your Free/Busy "
+#~ "information using the Schedule menu of KOrganizer.\n"
+#~ "Note: If KOrganizer is acting as a KDE Kolab client, this is not "
+#~ "required, as the Kolab2 server taking care of publishing your Free/Busy "
+#~ "information and manages the access to it from other users."
+#~ msgstr ""
+#~ "Pažymėkite šią parinktį jei norite, kad jūsų užimtumo informacija būtų "
+#~ "išsiunčiama automatiškai.\n"
+#~ "Šią parinktį galima praleisti ir užimtumo informaciją išsiųsti paštu arba "
+#~ "išsiųsti į serverį naudojantis KOrganizer meniu „Tvarkaraštis“.\n"
+#~ "Pastaba: jei KOrganizer veikia kaip KDE Kolab klientas, to "
+#~ "nereikalaujama, nes Kolab2 serveris pats pasirūpina Jūsų užimtumo "
+#~ "informacijos publikavimu ir kitų naudotojų supažindinimu su ja."
+
+#~ msgid "Publish your free/&busy information automatically"
+#~ msgstr "Publikuoti &užimtumo informaciją automatiškai"
+
+#~ msgid ""
+#~ "Configure minimum the interval of time in minutes between each upload "
+#~ "here. This configuration is only effective in case you choose to publish "
+#~ "your information automatically."
+#~ msgstr ""
+#~ "Čia galite nustatyti minimalų laiko intervalą minutėmis tarp išsiuntimų. "
+#~ "Ši parinktis reikšminga tik tuo atveju, jei esate nusprendę publikuoti "
+#~ "savo informaciją automatiškai."
+
+#~ msgid "Minimum time between uploads (in minutes):"
+#~ msgstr "Minimalus laikas tarp išsiuntimo (minutėmis):"
+
+#~ msgid ""
+#~ "Configure the number of calendar days you wish to be published and "
+#~ "available to others here."
+#~ msgstr ""
+#~ "Nustatykite, kiek kalendorinių dienų turi būti viešai publikuota iš Jūsų "
+#~ "darbotvarkės."
+
+#~ msgid "Publish"
+#~ msgstr "Publikavimas"
+
+#~ msgid "days of free/busy information"
+#~ msgstr "užimtumo informacijos dienų"
+
+#~ msgid "Server Information"
+#~ msgstr "Serverio informacija"
+
+#~ msgid ""
+#~ "Enter the URL for the server on which your Free/Busy information shall be "
+#~ "published here.\n"
+#~ "Ask the server administrator for this information."
+#~ msgstr ""
+#~ "Čia įrašykite URL serverio, kuriame bus publikuojama Jūsų užimtumo "
+#~ "informacija.\n"
+#~ "Šios informacijos teiraukitės serverio administratoriaus."
+
+#~ msgid "Enter your groupware server login password here."
+#~ msgstr "Čia įveskite savo grupinio darbo serverio prisijungimo slaptažodį."
+
+#~ msgid "Password:"
+#~ msgstr "Slaptažodis:"
+
+#~ msgid ""
+#~ "Enter the login information relative to your account on the server here.\n"
+#~ "\n"
+#~ "A Kolab2 server specificity: Registered your UID (Unique IDentifier). By "
+#~ "default your UID would be your email address on the Kolab2 server but it "
+#~ "may also be different. In the last case enter your UID."
+#~ msgstr ""
+#~ "Čia įrašykite savo paskyros serveryje prisijungimo informaciją.\n"
+#~ "Kolab2 serverio specifika: užregistruokite savo naudotojo ID (unikalų "
+#~ "identifikatorių). Numatytoji parinktis būtų, kad naudotojo ID Kolab2 "
+#~ "serveryje atitinka Jūsų el. pašto adresą, tačiau gali būti ir kitaip. Jei "
+#~ "yra kitaip, įrašykite savo naudotojo ID."
+
+#~ msgctxt "login name on the Kolab server"
+#~ msgid "Username:"
+#~ msgstr "Naudotojo vardas:"
+
+#~ msgid ""
+#~ "Check this box to make KOrganizer remember your password and skip asking "
+#~ "you each time it uploads your Free/Busy information, by storing it in the "
+#~ "configuration file.\n"
+#~ "For security reasons, it is not recommended to store your password in the "
+#~ "configuration file."
+#~ msgstr ""
+#~ "Pažymėkite šią parinktį jei norite, kad KOrganizer prisimintų Jūsų "
+#~ "slaptažodį ir neprašytų kiekvieną kartą jį įvesti išsiunčiant užimtumo "
+#~ "informaciją. Jis bus įrašytas į konfigūracijos failą.\n"
+#~ "Saugumo sumetimais to daryti nerekomenduojama."
+
+#~ msgid "Remember p&assword"
+#~ msgstr "Įsiminti &slaptažodį"
+
+#~ msgid "Server URL:"
+#~ msgstr "Serverio adresas:"
+
+#~ msgid "(No need if using Kolab server version 2)"
+#~ msgstr "(Nereikia, jei naudojate 2 Kolab serverio versiją)"
+
+#~ msgid "&Retrieve"
+#~ msgstr "&Atsisiuntimas"
+
+#~ msgid ""
+#~ "By retrieving Free/Busy information that others have published, you can "
+#~ "take their calendar into account when inviting them to a meeting."
+#~ msgstr ""
+#~ "Atsisiųsdami kitų paskelbtą užimtumo informaciją, galite į ją atsižvelgti "
+#~ "ką nors kviesdami susitikti."
+
+#~ msgid ""
+#~ "Check this box to retrieve other people's Free/Busy information "
+#~ "automatically. Note that you have to fill the correct server information "
+#~ "to make this possible."
+#~ msgstr ""
+#~ "Pažymėkite šį laukelį jei norite automatiškai gauti kitų asmenų užimtumo "
+#~ "informaciją. Pažymėtina, kad tam turėsite teisingai užpildyti serverio "
+#~ "informacijos laukelius."
+
+#~ msgid "Retrieve other people's free/&busy information automatically"
+#~ msgstr "Atsisiųsti &kitų žmonių užimtumo informaciją automatiškai"
+
+#~ msgid ""
+#~ "Set this to retrieve user@domain.ifb instead of user.ifb from the server"
+#~ msgstr ""
+#~ "Norint atsisiųsti iš serverio, nustatykite naudotojas@domenas.ifb vietoj "
+#~ "naudotojas.ifb"
+
+#~ msgid ""
+#~ "Check this box to download a free/busy file in the format \"user@domain."
+#~ "ifb\" (for example joe@company.com.ifb). Otherwise, it will download a "
+#~ "free/busy file in the format user.ifb (for example joe.ifb). Ask the "
+#~ "server Administrator if you are not sure about how to configure this "
+#~ "option."
+#~ msgstr ""
+#~ "Pažymėkite šią parinktį jei norite užimtumo informaciją gauti "
+#~ "„naudotojas@domenas.ifb“ formatu (pvz., vardenis@kompanija.lt.ifb). "
+#~ "Antraip ši informacija bus atsisiunčiama tokiu formatu: naudotojas.ifb "
+#~ "(pvz., vardenis.ifb). Jei nežinote, kaip ir kodėl konfigūruoti šią "
+#~ "parinktį, pasiklauskite serverio administratoriaus."
+
+#~ msgid "Use full email &address for retrieval"
+#~ msgstr "Atsisiuntimui naudoti visą el. pašto adresą"
+
+#~ msgctxt "@info:whatsthis"
+#~ msgid ""
+#~ "Enter the URL for the server on which the Free/Busy information is "
+#~ "published here.\n"
+#~ "Ask the server administrator for this information.\n"
+#~ "Here is a Kolab2 Server URL example:\n"
+#~ "\n"
+#~ "https://kolab2.example.com/freebusy/\n"
+#~ "\n"
+#~ "Alternatively, you can specify a full path to the Free/Busy. For "
+#~ "example: \n"
+#~ "\n"
+#~ "https://kolab2.example.com/freebusy/user.xfb"
+#~ msgstr ""
+#~ "Čia įrašykite URL serverio, kuriame publikuojama užimtumo informacija.\n"
+#~ "Šios informacijos teiraukitės pas serverio administratorių.\n"
+#~ "Štai Kolab2 serverio URL pavyzdys:\n"
+#~ "\n"
+#~ "https://kolab2.pavyzdys.lt/freebusy/\n"
+#~ "\n"
+#~ "Taipogi galite nurodyti ir pilną kelia iki užimtumo informacijos. "
+#~ "Pavyzdžiui:\n"
+#~ "\n"
+#~ "https://kolab2.example.com/freebusy/user.xfb"
+
+#~ msgid "User&name:"
+#~ msgstr "&Naudotojas:"
+
+#~ msgid "Passwor&d:"
+#~ msgstr "Slaptažo&dis:"
+
+#~ msgid "Re&member password"
+#~ msgstr "Prisi&minti slaptažodį"
+
+#~ msgid "&Search for:"
+#~ msgstr "Ko i&eškoti:"
+
+#~ msgid "*"
+#~ msgstr "*"
+
+#~ msgid "Search For"
+#~ msgstr "Ko ieškoti:"
+
+#~ msgid "Search for Events with matching criteria"
+#~ msgstr "Ieškoti įvykių, atitinkančių kriterijus"
+
+#~ msgid ""
+#~ "Check this box if you want to search for Event items that match the "
+#~ "search criteria."
+#~ msgstr ""
+#~ "Pažymėkite šį laukelį, jei norite ieškoti Įvykių elementų atitinkančių "
+#~ "paieškos kriterijus."
+
+#~ msgid "&Events"
+#~ msgstr "Į&vykiai"
+
+#~ msgid "Search for Journals with matching criteria"
+#~ msgstr "Ieškoti dienynų, atitinkančių kriterijus"
+
+#~ msgid ""
+#~ "Check this box if you want to search for Journal items that match the "
+#~ "search criteria."
+#~ msgstr ""
+#~ "Pažymėkite šį laukelį, jei norite ieškoti Dienyno elementų atitinkančių "
+#~ "paieškos kriterijus."
+
+#~ msgid "&Journals"
+#~ msgstr "Dieny&nai"
+
+#~ msgid "Search for To-dos with matching criteria"
+#~ msgstr "Ieškoti darbų, atitinkančių kriterijus"
+
+#~ msgid ""
+#~ "Check this box if you want to search To-do items that match the search "
+#~ "criteria."
+#~ msgstr ""
+#~ "Pažymėkite šį laukelį, jei norite ieškoti Darbų elementų atitinkančių "
+#~ "paieškos kriterijus."
+
+#~ msgid "To-&dos"
+#~ msgstr "&Darbai"
+
+#~ msgid "Search In"
+#~ msgstr "Kur ieškoti:"
+
+#~ msgid "Include item categories in your search"
+#~ msgstr "Įtraukti elementų kategorijas į Jūsų paiešką"
+
+#~ msgid "Cate&gories"
+#~ msgstr "Kate&gorijos"
+
+#~ msgid "Include item locations in your search"
+#~ msgstr "Įtraukti elementų vietas į Jūsų paiešką"
+
+#, fuzzy
+#~ msgid ""
+#~ "Check this box if you want to match item locations against your search "
+#~ "pattern."
+#~ msgstr ""
+#~ "Įjungus šią parinktį dabartinio momento linijoje bus rodomos sekundės."
+
+#~ msgid "Locations"
+#~ msgstr "Vietos"
+
+#~ msgid "Include item descriptions in your search"
+#~ msgstr "Įtraukti elementų aprašymus Jūsų paieškoje"
+
+#, fuzzy
+#~ msgid ""
+#~ "Check this box if you want to match item descriptions against your search "
+#~ "pattern."
+#~ msgstr ""
+#~ "Įjungus šią parinktį dabartinio momento linijoje bus rodomos sekundės."
+
+#~ msgid "Desc&riptions"
+#~ msgstr "Aprašyma&i"
+
+#~ msgid "Include item summaries in your search"
+#~ msgstr "Įtraukti elementų suvestines į Jūsų paiešką"
+
+#, fuzzy
+#~ msgid ""
+#~ "Check this box if you want to match item summaries against your search "
+#~ "pattern."
+#~ msgstr ""
+#~ "Įjungus šią parinktį dabartinio momento linijoje bus rodomos sekundės."
+
+#~ msgid "Su&mmaries"
+#~ msgstr "Reziu&me"
+
+#~ msgid "Attendees"
+#~ msgstr "Dalyviai"
+
+#~ msgid "Fr&om:"
+#~ msgstr "&Nuo:"
+
+#~ msgid "Include items with a starting date on or after this date"
+#~ msgstr "Įtraukti elementus su pradžios data šią ar po šios datos"
+
+#~ msgid "2008-08-18"
+#~ msgstr "2008-08-18"
+
+#~ msgid "&To:"
+#~ msgstr "&Iki:"
+
+#~ msgid "Include items with ending date on or before this date"
+#~ msgstr "Įtraukti elementus su pabaigos data šią ar prieš šią datą"
+
+#~ msgid "Include E&vents within the specified date range"
+#~ msgstr "Įtraukti įvykius nurodytame datos intervale"
+
+#~ msgid "Include To-dos in the search that do not have a due date"
+#~ msgstr "Į paiešką įtraukti ir darbus be atlikimo termino"
+
+#~ msgid ""
+#~ "Check this box to include To-dos without a due date in the search results."
+#~ msgstr ""
+#~ "Įjungus šią nuostatą, darbai be atlikimo termino bus įtraukti į paieškos "
+#~ "rezultatus."
+
+#~ msgid "Include To-dos &without a due date"
+#~ msgstr "Įtraukti darbus &be atlikimo termino"
+
+#, fuzzy
+#~| msgid "Redo: %1"
+#~ msgid "Person: %1"
+#~ msgstr "Atstatyti: %1"
+
+#, fuzzy
+#~| msgid "&Day"
+#~ msgid "Day"
+#~ msgstr "&Diena"
+
+#, fuzzy
+#~| msgid "&Week"
+#~ msgid "Week"
+#~ msgstr "Sa&vaitė"
+
+#, fuzzy
+#~| msgid "&Month"
+#~ msgid "Month"
+#~ msgstr "&Mėnesis"
+
+#, fuzzy
+#~| msgid "&Agenda"
+#~ msgid "Agenda"
+#~ msgstr "&Darbotvarkė"
+
+#~ msgid "Agenda %1"
+#~ msgstr "Darbotvarkė %1"
+
+#~ msgid "Show one calendar per agenda column"
+#~ msgstr "Rodyti vieną kalendorių kiekviename dienotvarkės stulpelyje"
+
+#~ msgid "Use custom calendar setup"
+#~ msgstr "Naudoti savitus kalendoriaus nustatymus"
+
+#~ msgid "Number of columns"
+#~ msgstr "Stulpelių skaičius"
+
+#~ msgid "Title"
+#~ msgstr "Pavadinimas"
+
+#~ msgid "Selected Calendars"
+#~ msgstr "Pažymėti kalendoriai"
+
+#~ msgctxt "start/end week number of line in date picker"
+#~ msgid "%1/%2"
+#~ msgstr "%1/%2"
+
+#~ msgid "Scroll to week number %1"
+#~ msgstr "Keliauti į savaitę Nr. %1"
+
+#~ msgid ""
+#~ "Click here to scroll the display to week number %1 of the currently "
+#~ "displayed year."
+#~ msgstr ""
+#~ "Spauskite čia norėdami pereiti į šiuo metu rodomų metų savaitę Nr. %1."
+
+#~ msgid "%1"
+#~ msgstr "%1"
+
+#~ msgid "A column header of the %1 dates in the month."
+#~ msgstr "%1 datų mėnesyje stulpelio antraštė."
+
+#~ msgid "Calendar's custom icon"
+#~ msgstr "Kalendoriaus savita ženkliukas"
+
+#~ msgid "To-do"
+#~ msgstr "Darbas"
+
+#~ msgid "Journal"
+#~ msgstr "Dienynas"
+
+#~ msgid "Recurring"
+#~ msgstr "Kartojimas"
+
+#~ msgid "Alarm"
+#~ msgstr "Įspėjimas"
+
+#~ msgid "Read Only"
+#~ msgstr "Tik skaitymui"
+
+#~ msgid "Needs Reply"
+#~ msgstr "Reikia atsakyti"
+
+#~ msgid "Attending"
+#~ msgstr "Dalyvauja"
+
+#~ msgid "Maybe Attending"
+#~ msgstr "Galbūt dalyvauja"
+
+#~ msgid "Organizer"
+#~ msgstr "Organizatorius"
+
+#~ msgctxt "@item:inlistbox"
+#~ msgid "Icons to use"
+#~ msgstr "Naudotini ženkliukai"
+
+#~ msgid "Scroll backward to the previous year"
+#~ msgstr "Eiti atgal į ankstesniuosius metus"
+
+#~ msgid ""
+#~ "Click this button to scroll the display to the same approximate day of "
+#~ "the previous year"
+#~ msgstr ""
+#~ "Spauskite šį mygtuką jei norite nukeliauti į tą pačią datą praėjusiais "
+#~ "metais"
+
+#~ msgid "Scroll backward to the previous month"
+#~ msgstr "Eiti atgal į ankstesnį mėnesį"
+
+#~ msgid ""
+#~ "Click this button to scroll the display to the same approximate date of "
+#~ "the previous month"
+#~ msgstr ""
+#~ "Spauskite šį mygtuką norėdami pamatyti maždaug tą pačią dieną mėnesiu "
+#~ "anksčiau"
+
+#~ msgid "Scroll forward to the next month"
+#~ msgstr "Eiti pirmyn, į ateinantį mėnesį"
+
+#~ msgid ""
+#~ "Click this button to scroll the display to the same approximate date of "
+#~ "the next month"
+#~ msgstr ""
+#~ "Spauskite šį mygtuką jei norite nukeliauti į tą maždaug pačią datą "
+#~ "ateinantį mėnesį"
+
+#~ msgid "Scroll forward to the next year"
+#~ msgstr "Eiti pirmyn į ateinančius metus"
+
+#~ msgid ""
+#~ "Click this button to scroll the display to the same approximate day of "
+#~ "the next year"
+#~ msgstr ""
+#~ "Spauskite šį mygtuką jei norite nukeliauti į tą pačią datą ateinančiais "
+#~ "metais"
+
+#~ msgid "Select a month"
+#~ msgstr "Pasirinkite mėnesį"
+
+#~ msgid "Select a year"
+#~ msgstr "Pasirinkite metus"
+
+#~ msgctxt "monthname"
+#~ msgid "%1"
+#~ msgstr "%1"
+
+#~ msgctxt "4 digit year"
+#~ msgid "%1"
+#~ msgstr "%1"
+
+#~ msgid "*.ics|iCalendars"
+#~ msgstr "*.ics|iCalendars failai"
+
+#~ msgid "*.vcs|vCalendars"
+#~ msgstr "*.vcs|VCaldendars failai"
+
+#~ msgid "Enable scrollbars in month view cells"
+#~ msgstr "Naudoti slinkties juostas mėnesio rodinio langeliuose"
+
+#~ msgid ""
+#~ "Check this box to display scrollbars when clicking on a cell in the month "
+#~ "view; they will only appear when needed though."
+#~ msgstr ""
+#~ "Įjungus šią parinktį mėnesio peržiūros langeliuose bus rodomos slinkties "
+#~ "juostos. Antra vertus jos bus rodomos tik tuo atveju, jei tai bus "
+#~ "reikalinga."
+
+#~ msgid ""
+#~ "<p>...that you can select whether the week starts on Monday or on Sunday "
+#~ "in the System Settings? KOrganizer uses this setting. Look at \n"
+#~ "Locale->Country/Region & Languages in the System Settings, or select "
+#~ "<b>Settings</b>,\n"
+#~ "<b>Configure Date & Time...</b> from the menu bar. Select the Calendar "
+#~ "tab.\n"
+#~ "</p>\n"
+#~ msgstr ""
+#~ "<p>...kad Sistemos nustatymuose galima nurodyti, ar savaitė prasideda "
+#~ "pirmadienį, ar sekmadienį? KOrganizer naudos šiuos nustatymus. Sistemos "
+#~ "nustatymuose eikite į \n"
+#~ "„Lokalė“-> „Šalis, regionas ir kalba“ arba KOrganizer meniu parinkite "
+#~ "<b>Nustatymai</b>,\n"
+#~ "<b>Konfigūruoti datą ir laiką...</b>. Tada pasirinkite kortelę "
+#~ "„Kalendorius“.\n"
+#~ "</p>\n"
+
+#~ msgid ""
+#~ "<p>...that you can edit to-dos quickly by right clicking on the property "
+#~ "you wish to change; like the priority, the category or the date?\n"
+#~ "</p>\n"
+#~ msgstr ""
+#~ "<p>...kad darbus galite redaguoti greitai, dešiniu pelės klavišu "
+#~ "spragtelėdami ant dalies, kurią norite pakeisti; pvz., prioritetas, "
+#~ "kategorija ar data?\n"
+#~ "</p>\n"
+
+#~ msgid ""
+#~ "<p>...that your calendar can display birthdays from your address book? It "
+#~ "is even possible to set up reminders for them. To activate this, add the "
+#~ "corresponding 'birthdays' calendar from the Calendar Manager.\n"
+#~ "</p>\n"
+#~ msgstr ""
+#~ "<p>...kad kalendorius gali rodyti gimtadienius iš adresų knygelės? Galima "
+#~ "net nustatyti jiems priminimus. Norėdami matyti gimtadienius, pridėkite "
+#~ "„gimtadienių“ kalendorių Kalendorių Tvarkyklėje.\n"
+#~ "</p>\n"
+
+#, fuzzy
+#~ msgid ""
+#~ "<p>...that you can store your calendar on an FTP server? Use the standard "
+#~ "file dialog to save the calendar to a URL like <b>ftp://"
+#~ "username@ftpserver/filename</b>. You can make your calendar active and "
+#~ "load and save it as if it were local, or add it permanently to your "
+#~ "calendar list, by adding a remote file from the Calendar Manager. Just "
+#~ "make sure that no two KOrganizer applications are working on the same "
+#~ "file, at the same time.\n"
+#~ "</p>\n"
+#~ msgstr ""
+#~ "<p>...kad galite išsaugoti savo kalendorių FTP serveryje? Naudokite "
+#~ "standartinį failo dialogą išsaugoti kalendorių į URL, pvz., <b>ftp://"
+#~ "naudotojas@ftp_serveris/failo_vardas</b>. Galite padaryti savo kalendorių "
+#~ "aktyviu, įkelti jį ir išsaugoti lyg jis būtų vietinis, arba prijungti jį "
+#~ "kaip nuolatinį resursą, naudodami nutolusią failą kaip resursą. Tik "
+#~ "įsitikinkite, kad nebūtų dviejų KOrganizer programų, dirbančių su tuo "
+#~ "pačiu failu tuo pačiu laiku.\n"
+#~ "</p>\n"
+
+#~ msgid ""
+#~ "<p>...that you can create hierarchical to-dos by clicking with the right "
+#~ "mouse button on an existing to-do and selecting <b>New Sub-to-do</b> from "
+#~ "the context menu?\n"
+#~ "</p>\n"
+#~ msgstr ""
+#~ "<p>...kad galite sukurti hierarchinius „darbus“ paspausdami dešinį pelės "
+#~ "klavišą\n"
+#~ "ant esančio „darbo“ ir pasirinkdami „Naujas priklausantis darbas“ iš "
+#~ "parankinio meniu?\n"
+#~ "</p>\n"
+
+#~ msgid ""
+#~ "<p>...that a color can be assigned to each category? Events with a "
+#~ "certain category will be shown in that color. You can assign these in the "
+#~ "section <b>Colors</b> within the dialog which appears after selecting "
+#~ "<b>Settings</b>, <b>Configure KOrganizer...</b> from the menu bar.\n"
+#~ "</p>\n"
+#~ msgstr ""
+#~ "<p>...kad kiekvienai kategorijai gali būti priskirta spalva? Įvykiai, "
+#~ "priskirti tam tikrai kategorijai, bus rodomi nuspalvinti konkrečia "
+#~ "spalva. Spalvas galite nustatyti sekcijoje <b>Spalvos</b> dialoge, kuris "
+#~ "pasirodo meniu juostoje pasirinkus <b>Nustatymai</b>, <b>Konfigūruoti "
+#~ "KOrganizer...</b>.\n"
+#~ "</p>\n"
+
+#~ msgid ""
+#~ "<p>...that you can view and edit a calendar with Konqueror? Just click on "
+#~ "the calendar file to make Konqueror open it.\n"
+#~ "</p>\n"
+#~ msgstr ""
+#~ "<p>...kad kalendorių galite redaguoti tiesiai Konqueror programoje? Tam "
+#~ "tereikia Konqueror lange spragtelėti kalendoriaus failą.\n"
+#~ "</p>\n"
+
+#~ msgid ""
+#~ "<p>...that it is possible to add an attachment to an event or to-do? To "
+#~ "do so, add a link to the <b>Attachments</b> tab within the <b>Edit Event</"
+#~ "b> or <b>Edit To-do</b> dialog.\n"
+#~ "</p>\n"
+#~ msgstr ""
+#~ "<p>...kad prie įvykių ar darbų galima prijungti priedų? Norėdami tai "
+#~ "padaryti, pridėkite nuorodą  dialogo <b>Redaguoti įvykį</b> arba dialogo "
+#~ "<b>Redaguoti darbą</b> kortelėje <b>Priedai</b>.\n"
+#~ "</p>\n"
+
+#~ msgid ""
+#~ "<p>...that you can export your calendar to HTML? Select <b>File</b>, "
+#~ "<b>Export</b>, <b>Export Web Page...</b> from the menu bar to open the "
+#~ "<b>Export calendar as web page</b> dialog.\n"
+#~ "</p>\n"
+#~ msgstr ""
+#~ "<p>...kad galite eksportuoti savo kalendorių į HTML? Pažymėkite meniu "
+#~ "<b>Failas</b>, <b>Eksportuoti</b>, <b>Eksportuoti žiniatinklio puslapį..."
+#~ "</b> ir taip atversite dialogą<b>Eksportuoti kalendorių kaip žiniatinklio "
+#~ "puslapį</b>.\n"
+#~ "</p>\n"
+
+#, fuzzy
+#~| msgid ""
+#~| "<p>...that you can purge completed to-dos in one step? Go to the "
+#~| "<b>File</b> menu and choose <b>Purge Completed</b>.\n"
+#~ msgid ""
+#~ "<p>...that you can purge completed to-dos in one step? Go to the <b>File</"
+#~ "b> menu and choose <b>Purge Completed To-dos</b>.\n"
+#~ "</p>\n"
+#~ msgstr ""
+#~ "<p>...kad galite vienu mostu išvalyti atliktus darbus? Eikite į meniu "
+#~ "<b>Failas</b> ir pasirinkite <b>Išvalyti užbaigtus darbus</b>.\n"
+
+#~ msgid ""
+#~ "<p>...that you can create a new sub-to-do by pasting a to-do while "
+#~ "another one is selected?\n"
+#~ "</p>\n"
+#~ msgstr ""
+#~ "<p>...kad galite sukurti naują šalutinį darbą įterpdami darbą, jei tuo "
+#~ "metu pažymėtas kitas darbas??\n"
+#~ "</p>\n"
+
+#~ msgid "*.html|HTML Files"
+#~ msgstr "*.html|HTML failai"

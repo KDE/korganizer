@@ -1,0 +1,8788 @@
+# translation of korganizer.po to Cymraeg
+# Translation of korganizer.po to Cymraeg
+# Bwrdd Gwaith yn Gymraeg.
+# Copyright (C) 2003, 2004 Free Software Foundation, Inc.
+# www.kyfieithu.co.uk<kyfieithu@dotmon.com>, www.gyfieithu.co.uk<kyfieithu@dotmon.com>, 2003.
+# KGyfieithu <kyfieithu@dotmon.com>, 2003.
+# KD at KGyfieithu <kyfieithu@dotmon.com>, 2004.
+#
+#
+msgid ""
+msgstr ""
+"Project-Id-Version: korganizer\n"
+"Report-Msgid-Bugs-To: https://bugs.kde.org\n"
+"POT-Creation-Date: 2024-06-26 00:40+0000\n"
+"PO-Revision-Date: 2004-02-25 13:53+0000\n"
+"Last-Translator: KD at KGyfieithu <kyfieithu@dotmon.com>\n"
+"Language-Team: Cymraeg <cy@li.org>\n"
+"Language: cy\n"
+"MIME-Version: 1.0\n"
+"Content-Type: text/plain; charset=UTF-8\n"
+"Content-Transfer-Encoding: 8bit\n"
+"X-Generator: KBabel 1.2\n"
+"Plural-Forms: nplurals=2; plural=n != 1;\n"
+
+#: datenums/configdialog.cpp:28
+#, fuzzy, kde-format
+msgctxt "@title:window"
+msgid "Configure Day Numbers"
+msgstr "Ffurfweddu Gwyliau"
+
+#: datenums/configdialog.cpp:43
+#, fuzzy, kde-format
+msgid "Show Date Number"
+msgstr "Dangos diwrnod Omer"
+
+#: datenums/configdialog.cpp:48
+#, fuzzy, kde-format
+msgid "Show day number"
+msgstr "Dangos diwrnod Omer"
+
+#: datenums/configdialog.cpp:51
+#, fuzzy, kde-format
+msgid "Show days to end of year"
+msgstr "Dangos diwrnod Omer"
+
+#: datenums/configdialog.cpp:54
+#, fuzzy, kde-format
+msgid "Show both"
+msgstr "Dangos"
+
+#: datenums/datenums.cpp:36
+#, kde-format
+msgid "This plugin shows information on a day's position in the year."
+msgstr ""
+
+#: datenums/datenums.cpp:54
+#, fuzzy, kde-format
+msgid "1 day before the end of the year"
+msgid_plural "%1 days before the end of the year"
+msgstr[0] "Dangos diwrnod Omer"
+msgstr[1] "Dangos diwrnod Omer"
+
+#: datenums/datenums.cpp:59
+#, kde-format
+msgctxt "dayOfYear / daysTillEndOfYear"
+msgid "%1 / %2"
+msgstr "%1 / %2"
+
+#: datenums/datenums.cpp:60
+#, fuzzy, kde-format
+msgid "1 day since the beginning of the year,\n"
+msgid_plural "%1 days since the beginning of the year,\n"
+msgstr[0] "Dangos diwrnod Omer"
+msgstr[1] "Dangos diwrnod Omer"
+
+#: datenums/datenums.cpp:61
+#, fuzzy, kde-format
+msgid "1 day until the end of the year"
+msgid_plural "%1 days until the end of the year"
+msgstr[0] "Dangos diwrnod Omer"
+msgstr[1] "Dangos diwrnod Omer"
+
+#: datenums/datenums.cpp:102
+#, fuzzy, kde-format
+#| msgid "Week"
+msgctxt "Week weekOfYear"
+msgid "Week %1"
+msgstr "Wythnos"
+
+#: datenums/datenums.cpp:103 datenums/datenums.cpp:113
+#: datenums/datenums.cpp:118
+#, fuzzy, kde-format
+msgid "1 week since the beginning of the year"
+msgid_plural "%1 weeks since the beginning of the year"
+msgstr[0] "Dangos diwrnod Omer"
+msgstr[1] "Dangos diwrnod Omer"
+
+#: datenums/datenums.cpp:106
+#, fuzzy, kde-format
+#| msgctxt "short_weekday date (e.g. Mon 13)"
+#| msgid "%1 %2"
+msgctxt "weekOfYear (year)"
+msgid "%1 (%2)"
+msgstr "%1 %2"
+
+#: datenums/datenums.cpp:107
+#, fuzzy, kde-format
+#| msgctxt "short_weekday date (e.g. Mon 13)"
+#| msgid "%1 %2"
+msgctxt "Week weekOfYear (year)"
+msgid "Week %1 (%2)"
+msgstr "%1 %2"
+
+#: datenums/datenums.cpp:122
+#, kde-format
+msgid "1 week remaining"
+msgid_plural "%1 weeks remaining"
+msgstr[0] ""
+msgstr[1] ""
+
+#: datenums/datenums.cpp:123
+#, fuzzy, kde-format
+msgid "1 week until the end of the year"
+msgid_plural "%1 weeks until the end of the year"
+msgstr[0] "Dangos diwrnod Omer"
+msgstr[1] "Dangos diwrnod Omer"
+
+#: datenums/datenums.cpp:124
+#, fuzzy, kde-format
+#| msgctxt "dayOfYear / daysTillEndOfYear"
+#| msgid "%1 / %2"
+msgctxt "weekOfYear / weeksTillEndOfYear"
+msgid "%1 / %2"
+msgstr "%1 / %2"
+
+#: datenums/datenums.cpp:140
+#, fuzzy, kde-format
+msgctxt ""
+"n weeks since the beginning of the year\n"
+"n weeks until the end of the year"
+msgid ""
+"%1\n"
+"%2"
+msgstr "%1 - %2"
+
+#: hebrew/configdialog.cpp:28
+#, fuzzy, kde-format
+#| msgid "Configure Holidays"
+msgctxt "@title:window"
+msgid "Configure Holidays"
+msgstr "Ffurfweddu Gwyliau"
+
+#: hebrew/configdialog.cpp:42
+#, kde-format
+msgid "Use Israeli holidays"
+msgstr "Defnyddiwch gwyliau Israeli"
+
+#: hebrew/configdialog.cpp:46
+#, kde-format
+msgid "Show weekly parsha"
+msgstr "Dangos parsha wythnosol"
+
+#: hebrew/configdialog.cpp:50
+#, kde-format
+msgid "Show day of Omer"
+msgstr "Dangos diwrnod Omer"
+
+#: hebrew/configdialog.cpp:54
+#, kde-format
+msgid "Show Chol HaMoed"
+msgstr "Dangos Chol HaMoed"
+
+#: hebrew/hebrew.cpp:60
+#, kde-format
+msgctxt ""
+"Change the next two strings if emphasis is done differently in your language."
+msgid ""
+"<qt><p align=\"center\"><i>\n"
+"%1\n"
+"</i></p></qt>"
+msgstr ""
+
+#: hebrew/hebrew.cpp:67
+#, kde-format
+msgid "This plugin provides the date in the Jewish calendar."
+msgstr "Mae'r ategyn yma yn darparu'r dyddiad yn y calendr Iddewig."
+
+#: hebrew/holiday.cpp:75
+#, fuzzy, kde-format
+#| msgid "Sh. HaHodesh"
+msgctxt ""
+"These are Jewish holidays and mostly do not have translations. They may have "
+"different spellings in your language; otherwise, just translate the sound to "
+"your characters."
+msgid "Sh. HaHodesh"
+msgstr "Sh. HaHodesh"
+
+#: hebrew/holiday.cpp:83
+#, kde-format
+msgid "Erev Pesach"
+msgstr "Erev Pesach"
+
+#: hebrew/holiday.cpp:94
+#, kde-format
+msgid "Sh. HaGadol"
+msgstr "Sh. HaGadol"
+
+#: hebrew/holiday.cpp:102
+#, kde-format
+msgid "Pesach"
+msgstr "Pesach"
+
+#: hebrew/holiday.cpp:113 hebrew/holiday.cpp:307
+#, kde-format
+msgid "Chol Hamoed"
+msgstr "Chol Hamoed"
+
+#: hebrew/holiday.cpp:124 hebrew/holiday.cpp:129 hebrew/holiday.cpp:138
+#, kde-format
+msgid "Yom HaShoah"
+msgstr "Yom HaShoah"
+
+#: hebrew/holiday.cpp:164 hebrew/holiday.cpp:171 hebrew/holiday.cpp:182
+#, kde-format
+msgid "Yom HaAtzmaut"
+msgstr "Yom HaAtzmaut"
+
+#: hebrew/holiday.cpp:166 hebrew/holiday.cpp:180
+#, kde-format
+msgid "Yom HaZikaron"
+msgstr "Yom HaZikaron"
+
+#: hebrew/holiday.cpp:190
+#, kde-format
+msgid "Yom Yerushalayim"
+msgstr "Yom Yerushalayim"
+
+#: hebrew/holiday.cpp:194
+#, kde-format
+msgid "Lag BaOmer"
+msgstr "Lag BaOmer"
+
+#: hebrew/holiday.cpp:220
+#, kde-format
+msgid "Erev Shavuot"
+msgstr "Erev Shavuot"
+
+#: hebrew/holiday.cpp:225
+#, kde-format
+msgid "Shavuot"
+msgstr "Shavuot"
+
+#: hebrew/holiday.cpp:234
+#, kde-format
+msgid "Tzom Tammuz"
+msgstr "Tzom Tammuz"
+
+#: hebrew/holiday.cpp:242
+#, kde-format
+msgid "Sh. Hazon"
+msgstr "Sh. Hazon"
+
+#: hebrew/holiday.cpp:244
+#, kde-format
+msgid "Sh. Nahamu"
+msgstr "Sh. Nahamu"
+
+#: hebrew/holiday.cpp:248
+#, kde-format
+msgid "Tisha B'Av"
+msgstr "Tisha B'Av"
+
+#: hebrew/holiday.cpp:254
+#, kde-format
+msgid "S'lichot"
+msgstr "S'lichot"
+
+#: hebrew/holiday.cpp:256
+#, kde-format
+msgid "Erev R.H."
+msgstr "Erev R.H."
+
+#: hebrew/holiday.cpp:264
+#, kde-format
+msgid "Rosh Hashana"
+msgstr "Rosh Hashana"
+
+#: hebrew/holiday.cpp:268 hebrew/holiday.cpp:283
+#, kde-format
+msgid "Sh. Shuvah"
+msgstr "Sh. Shuvah"
+
+#: hebrew/holiday.cpp:270 hebrew/holiday.cpp:275
+#, kde-format
+msgid "Tzom Gedalia"
+msgstr "Tzom Gedalia"
+
+#: hebrew/holiday.cpp:287
+#, kde-format
+msgid "Erev Y.K."
+msgstr "Erev Y.K."
+
+#: hebrew/holiday.cpp:290
+#, kde-format
+msgid "Yom Kippur"
+msgstr "Yom Kippur"
+
+#: hebrew/holiday.cpp:293
+#, kde-format
+msgid "Erev Sukkot"
+msgstr "Erev Sukkot"
+
+#: hebrew/holiday.cpp:298
+#, kde-format
+msgid "Sukkot"
+msgstr "Sukkot"
+
+#: hebrew/holiday.cpp:311
+#, kde-format
+msgid "Hoshana Rabah"
+msgstr "Hoshana Rabah"
+
+#: hebrew/holiday.cpp:314
+#, kde-format
+msgid "Shmini Atzeret"
+msgstr "Shmini Atzeret"
+
+#: hebrew/holiday.cpp:318
+#, kde-format
+msgid "Simchat Torah"
+msgstr "Simchat Torah"
+
+#: hebrew/holiday.cpp:329
+#, kde-format
+msgid "Erev Hanukah"
+msgstr "Erev Hanukah"
+
+#: hebrew/holiday.cpp:331 hebrew/holiday.cpp:339
+#, kde-format
+msgid "Hanukah"
+msgstr "Hanukah"
+
+#: hebrew/holiday.cpp:342
+#, kde-format
+msgid "Tzom Tevet"
+msgstr "Tzom Tevet"
+
+#: hebrew/holiday.cpp:352 hebrew/holiday.cpp:361 hebrew/holiday.cpp:366
+#: hebrew/holiday.cpp:372
+#, kde-format
+msgid "Sh. Shirah"
+msgstr "Sh. Shirah"
+
+#: hebrew/holiday.cpp:368
+#, kde-format
+msgid "Tu B'Shvat"
+msgstr "Tu B'Shvat"
+
+#: hebrew/holiday.cpp:383 hebrew/holiday.cpp:395 hebrew/holiday.cpp:403
+#, kde-format
+msgid "Sh. Shekalim"
+msgstr "Sh. Shekalim"
+
+#: hebrew/holiday.cpp:392
+#, kde-format
+msgid "Purim Katan"
+msgstr "Purim Katan"
+
+#: hebrew/holiday.cpp:411 hebrew/holiday.cpp:431
+#, kde-format
+msgid "Ta'anit Ester"
+msgstr "Ta'anit Ester"
+
+#: hebrew/holiday.cpp:420 hebrew/holiday.cpp:425
+#, kde-format
+msgid "Sh. Zachor"
+msgstr "Sh. Zachor"
+
+#: hebrew/holiday.cpp:427
+#, kde-format
+msgid "Erev Purim"
+msgstr "Erev Purim"
+
+#: hebrew/holiday.cpp:435
+#, kde-format
+msgid "Purim"
+msgstr "Purim"
+
+#: hebrew/holiday.cpp:439 hebrew/holiday.cpp:444
+#, kde-format
+msgid "Shushan Purim"
+msgstr "Shushan Purim"
+
+#: hebrew/holiday.cpp:455
+#, kde-format
+msgid "Sh. Parah"
+msgstr "Sh. Parah"
+
+#: hebrew/holiday.cpp:465
+#, kde-format
+msgid "Sh. HaHodesh"
+msgstr "Sh. HaHodesh"
+
+#: hebrew/holiday.cpp:481
+#, kde-format
+msgid " Omer"
+msgstr " Omer"
+
+#: hebrew/parsha.cpp:28
+#, fuzzy, kde-format
+msgctxt ""
+"These are weekly readings and do not have translations. They may have "
+"different spellings in your language; otherwise, just translate the sound to "
+"your characters"
+msgid "Bereshit"
+msgstr "Bereshit"
+
+#: hebrew/parsha.cpp:29
+#, kde-format
+msgid "Noach"
+msgstr "Noach"
+
+#: hebrew/parsha.cpp:29
+#, kde-format
+msgid "Lech L'cha"
+msgstr "Lech L'cha"
+
+#: hebrew/parsha.cpp:29
+#, kde-format
+msgid "Vayera"
+msgstr "Vayera"
+
+#: hebrew/parsha.cpp:29
+#, kde-format
+msgid "Chaye Sarah"
+msgstr "Chaye Sarah"
+
+#: hebrew/parsha.cpp:29
+#, kde-format
+msgid "Toldot"
+msgstr "Toldot"
+
+#: hebrew/parsha.cpp:29
+#, kde-format
+msgid "Vayetze"
+msgstr "Vayetze"
+
+#: hebrew/parsha.cpp:29
+#, kde-format
+msgid "Vayishlach"
+msgstr "Vayishlach"
+
+#: hebrew/parsha.cpp:30
+#, kde-format
+msgid "Vayeshev"
+msgstr "Vayeshev"
+
+#: hebrew/parsha.cpp:30
+#, kde-format
+msgid "Miketz"
+msgstr "Miketz"
+
+#: hebrew/parsha.cpp:30
+#, kde-format
+msgid "Vayigash"
+msgstr "Vayigash"
+
+#: hebrew/parsha.cpp:30
+#, kde-format
+msgid "Vayechi"
+msgstr "Vayechi"
+
+#: hebrew/parsha.cpp:30
+#, kde-format
+msgid "Shemot"
+msgstr "Shemot"
+
+#: hebrew/parsha.cpp:30
+#, kde-format
+msgid "Vaera"
+msgstr "Vaera"
+
+#: hebrew/parsha.cpp:30
+#, kde-format
+msgid "Bo"
+msgstr "Bo"
+
+#: hebrew/parsha.cpp:31
+#, kde-format
+msgid "Beshalach"
+msgstr "Beshalach"
+
+#: hebrew/parsha.cpp:31
+#, kde-format
+msgid "Yitro"
+msgstr "Yitro"
+
+#: hebrew/parsha.cpp:31
+#, kde-format
+msgid "Mishpatim"
+msgstr "Mishpatim"
+
+#: hebrew/parsha.cpp:31
+#, kde-format
+msgid "Terumah"
+msgstr "Terumah"
+
+#: hebrew/parsha.cpp:31
+#, kde-format
+msgid "Tetzaveh"
+msgstr "Tetzaveh"
+
+#: hebrew/parsha.cpp:31
+#, kde-format
+msgid "Ki Tisa"
+msgstr "Ki Tisa"
+
+#: hebrew/parsha.cpp:31
+#, kde-format
+msgid "Vayakhel"
+msgstr "Vayakhel"
+
+#: hebrew/parsha.cpp:32
+#, kde-format
+msgid "Pekudei"
+msgstr "Pekudei"
+
+#: hebrew/parsha.cpp:32
+#, kde-format
+msgid "Vayikra"
+msgstr "Vayikra"
+
+#: hebrew/parsha.cpp:32
+#, kde-format
+msgid "Tzav"
+msgstr "Tzav"
+
+#: hebrew/parsha.cpp:32
+#, kde-format
+msgid "Shemini"
+msgstr "Shemini"
+
+#: hebrew/parsha.cpp:32
+#, kde-format
+msgid "Tazria"
+msgstr "Tazria"
+
+#: hebrew/parsha.cpp:32
+#, kde-format
+msgid "Metzora"
+msgstr "Metzora"
+
+#: hebrew/parsha.cpp:32
+#, kde-format
+msgid "Acharei Mot"
+msgstr "Acharei Mot"
+
+#: hebrew/parsha.cpp:33
+#, kde-format
+msgid "Kedoshim"
+msgstr "Kedoshim"
+
+#: hebrew/parsha.cpp:33
+#, kde-format
+msgid "Emor"
+msgstr "Emor"
+
+#: hebrew/parsha.cpp:33
+#, kde-format
+msgid "Behar"
+msgstr "Behar"
+
+#: hebrew/parsha.cpp:33
+#, kde-format
+msgid "Bechukotai"
+msgstr "Bechukotai"
+
+#: hebrew/parsha.cpp:33
+#, kde-format
+msgid "Bemidbar"
+msgstr "Bemidbar"
+
+#: hebrew/parsha.cpp:33
+#, kde-format
+msgid "Naso"
+msgstr "Naso"
+
+#: hebrew/parsha.cpp:33
+#, kde-format
+msgid "Behaalotcha"
+msgstr "Behaalotcha"
+
+#: hebrew/parsha.cpp:34
+#, kde-format
+msgid "Shelach"
+msgstr "Shelach"
+
+#: hebrew/parsha.cpp:34
+#, kde-format
+msgid "Korach"
+msgstr "Korach"
+
+#: hebrew/parsha.cpp:34
+#, kde-format
+msgid "Chukat"
+msgstr "Chukat"
+
+#: hebrew/parsha.cpp:34
+#, kde-format
+msgid "Balak"
+msgstr "Balak"
+
+#: hebrew/parsha.cpp:34
+#, kde-format
+msgid "Pinchas"
+msgstr "Pinchas"
+
+#: hebrew/parsha.cpp:34
+#, kde-format
+msgid "Matot"
+msgstr "Matot"
+
+#: hebrew/parsha.cpp:34
+#, kde-format
+msgid "Masei"
+msgstr "Masei"
+
+#: hebrew/parsha.cpp:35
+#, kde-format
+msgid "Devarim"
+msgstr "Devarim"
+
+#: hebrew/parsha.cpp:35
+#, kde-format
+msgid "Vaetchanan"
+msgstr "Vaetchanan"
+
+#: hebrew/parsha.cpp:35
+#, kde-format
+msgid "Ekev"
+msgstr "Ekev"
+
+#: hebrew/parsha.cpp:35
+#, kde-format
+msgid "Reeh"
+msgstr "Reeh"
+
+#: hebrew/parsha.cpp:35
+#, kde-format
+msgid "Shoftim"
+msgstr "Shoftim"
+
+#: hebrew/parsha.cpp:35
+#, kde-format
+msgid "Ki Tetze"
+msgstr "Ki Tetze"
+
+#: hebrew/parsha.cpp:35
+#, kde-format
+msgid "Ki Tavo"
+msgstr "Ki Tavo"
+
+#: hebrew/parsha.cpp:36
+#, kde-format
+msgid "Nitzavim"
+msgstr "Nitzavim"
+
+#: hebrew/parsha.cpp:36
+#, kde-format
+msgid "Vayelech"
+msgstr "Vayelech"
+
+#: hebrew/parsha.cpp:36
+#, kde-format
+msgid "Haazinu"
+msgstr "Haazinu"
+
+#: lunarphases/lunarphases.cpp:61
+#, kde-format
+msgid ""
+"This plugin displays the day's lunar phase (New, First, Last, Full). "
+"Currently, the phase is computed for noon at UTC; therefore, you should "
+"expect variations by 1 day in either direction."
+msgstr ""
+
+#: picoftheday/configdialog.cpp:28
+#, fuzzy, kde-format
+#| msgid "Configure &Date && Time..."
+msgctxt "@title:window"
+msgid "Configure Picture of the Day"
+msgstr "Ffurfweddu &Dyddiad && Amser..."
+
+#: picoftheday/configdialog.cpp:42
+#, kde-format
+msgid "Thumbnail Aspect Ratio Mode"
+msgstr ""
+
+#: picoftheday/configdialog.cpp:46
+#, kde-format
+msgid "Ignore aspect ratio"
+msgstr ""
+
+#: picoftheday/configdialog.cpp:48
+#, kde-format
+msgid ""
+"The thumbnail will be scaled freely. The aspect ratio will not be preserved."
+msgstr ""
+
+#: picoftheday/configdialog.cpp:52
+#, kde-format
+msgid "Keep aspect ratio"
+msgstr ""
+
+#: picoftheday/configdialog.cpp:54
+#, kde-format
+msgid ""
+"The thumbnail will be scaled to a rectangle as large as possible inside a "
+"given rectangle, preserving the aspect ratio."
+msgstr ""
+
+#: picoftheday/configdialog.cpp:59
+#, kde-format
+msgid "Keep aspect ratio by expanding"
+msgstr ""
+
+#: picoftheday/configdialog.cpp:61
+#, kde-format
+msgid ""
+"The thumbnail will be scaled to a rectangle as small as possible outside a "
+"given rectangle, preserving the aspect ratio."
+msgstr ""
+
+#: picoftheday/element.cpp:209
+#, kde-format
+msgid "Wikipedia POTD: %1"
+msgstr ""
+
+#: picoftheday/element.cpp:326
+#, fuzzy, kde-format
+msgid "Picture Page"
+msgstr "Dileu %1"
+
+#: picoftheday/element.cpp:326
+#, fuzzy, kde-format
+#| msgid "Go &Forward"
+msgid "Loading..."
+msgstr "Mynd &Ymlaen"
+
+#: picoftheday/element.cpp:332
+#, fuzzy, kde-format
+#| msgid "This plugin provides the date in the Jewish calendar."
+msgid "<qt>Loading <i>Picture of the Day</i>...</qt>"
+msgstr "Mae'r ategyn yma yn darparu'r dyddiad yn y calendr Iddewig."
+
+#: picoftheday/picoftheday.cpp:48
+#, fuzzy, kde-format
+#| msgid "This plugin provides the date in the Jewish calendar."
+msgid "<qt>This plugin provides the Wikipedia <i>Picture of the Day</i>.</qt>"
+msgstr "Mae'r ategyn yma yn darparu'r dyddiad yn y calendr Iddewig."
+
+#: thisdayinhistory/thisdayinhistory.cpp:29
+#, fuzzy, kde-format
+#| msgid "This plugin provides numbers of days and weeks."
+msgid "This plugin provides links to Wikipedia's 'This Day in History' pages."
+msgstr "Mae'r ategyn yma yn darparu niferau o ddyddiau ac wythnosau."
+
+#: thisdayinhistory/thisdayinhistory.cpp:37
+#, kde-format
+msgid "This day in history"
+msgstr ""
+
+#: thisdayinhistory/thisdayinhistory.cpp:39
+#: thisdayinhistory/thisdayinhistory.cpp:53
+#, kde-format
+msgctxt "Localized Wikipedia website"
+msgid "https://en.wikipedia.org/wiki/"
+msgstr ""
+
+#: thisdayinhistory/thisdayinhistory.cpp:40
+#, kde-format
+msgctxt "Qt date format used by the localized Wikipedia"
+msgid "MMMM_d"
+msgstr ""
+
+#: thisdayinhistory/thisdayinhistory.cpp:51
+#, kde-format
+msgid "This month in history"
+msgstr ""
+
+#: thisdayinhistory/thisdayinhistory.cpp:54
+#, kde-format
+msgctxt "Qt date format used by the localized Wikipedia"
+msgid "MMMM_yyyy"
+msgstr ""
+
+#~ msgctxt "NAME OF TRANSLATORS"
+#~ msgid "Your names"
+#~ msgstr "KGyfieithu"
+
+#~ msgctxt "EMAIL OF TRANSLATORS"
+#~ msgid "Your emails"
+#~ msgstr "kyfieithu@dotmon.com"
+
+#~ msgid "KOrganizer"
+#~ msgstr "KTrefnydd"
+
+#, fuzzy
+#~| msgid "A Personal Organizer for KDE"
+#~ msgid "A Personal Organizer"
+#~ msgstr "Trefnydd Personol ar gyfer KDE"
+
+#~ msgid "Maintainer"
+#~ msgstr "Cynhaliwr"
+
+#, fuzzy
+#~| msgid "Current Maintainer"
+#~ msgid "Former Maintainer"
+#~ msgstr "Cynhaliwr Cyfredol"
+
+#~ msgid "Original Author"
+#~ msgstr "Awdur Gwreiddiol"
+
+#, fuzzy
+#~ msgid "Ian Dawes"
+#~ msgstr "Argraffu wythnos"
+
+#, fuzzy
+#~ msgid "Tim Jansen"
+#~ msgstr "Cylchfa amser:"
+
+#, fuzzy
+#~| msgid "Maintainer"
+#~ msgid "Martin Koller"
+#~ msgstr "Cynhaliwr"
+
+#, fuzzy
+#~| msgid "&Use colors"
+#~ msgid "Uwe Koloska"
+#~ msgstr "&Defnyddio lliwiau"
+
+#, fuzzy
+#~ msgid "Don Sanders"
+#~ msgstr "Atgof"
+
+#, fuzzy
+#~| msgid "Time bar"
+#~ msgid "Hide menu bar"
+#~ msgstr "Bar amser:"
+
+#, fuzzy
+#~ msgid "Import &Calendar..."
+#~ msgstr "Mewnforio Calendr"
+
+#, fuzzy
+#~ msgid "Merge the contents of another iCalendar"
+#~ msgstr "Ychwanegu Atodiad"
+
+#, fuzzy
+#~ msgid "&Import From UNIX Ical Tool"
+#~ msgstr "&Mewnforio o Ical"
+
+#, fuzzy
+#~ msgid "Import a calendar in another format"
+#~ msgstr "Ydych eisiau ychwanegu calendr wrth '%1' i KTrefnydd"
+
+#~ msgid "Get &Hot New Stuff..."
+#~ msgstr "Cael &y Diweddaraf..."
+
+#~ msgid "Export &Web Page..."
+#~ msgstr "Allfori&o Tudalen Wê"
+
+#, fuzzy
+#~ msgid "Export as &iCalendar..."
+#~ msgstr "Mewnforio Calendr"
+
+#, fuzzy
+#~ msgid "Export as &vCalendar..."
+#~ msgstr "Mewnforio Calendr"
+
+#~ msgid "Archive O&ld Entries..."
+#~ msgstr "Archifio &Hen Gofnodion..."
+
+#, fuzzy
+#~ msgid "Pur&ge Completed To-dos"
+#~ msgstr "&Carthiad wedi'i Gwblhau"
+
+#, fuzzy
+#~ msgid "&Delete"
+#~ msgstr "Dileu %1"
+
+#~ msgid "What's &Next"
+#~ msgstr "Beth sy'n &Nesaf"
+
+#~ msgid "&Month"
+#~ msgstr "&Mis"
+
+#, fuzzy
+#~| msgid "Agenda view"
+#~ msgid "&Agenda"
+#~ msgstr "Golwg agenda:"
+
+#, fuzzy
+#~| msgid "&Events"
+#~ msgid "&Event List"
+#~ msgstr "&Digwyddiadau:"
+
+#~ msgid "&To-do List"
+#~ msgstr "&Rhestr I'w-Wneud"
+
+#~ msgid "&Journal"
+#~ msgstr "&Dyddlyfr"
+
+#, fuzzy
+#~ msgid "Time&line"
+#~ msgstr "Cylchfa amser:"
+
+#, fuzzy
+#~ msgid "Time&spent"
+#~ msgstr "&Amrediad Amser"
+
+#~ msgid "&Refresh"
+#~ msgstr "&Ailfywio"
+
+#~ msgid "F&ilter"
+#~ msgstr "&Hidlo"
+
+#, fuzzy
+#~| msgid "day"
+#~ msgctxt "@action Jump to today"
+#~ msgid "To &Today"
+#~ msgstr "dydd"
+
+#, fuzzy
+#~| msgid "day"
+#~ msgid "Today"
+#~ msgstr "dydd"
+
+#, fuzzy
+#~| msgid "Go to &Today"
+#~ msgid "Scroll to Today"
+#~ msgstr "Mynd at &Heddiw"
+
+#, fuzzy
+#~| msgid "Go &Backward"
+#~ msgctxt "scroll backward"
+#~ msgid "&Backward"
+#~ msgstr "Mynd &Yn Ôl"
+
+#, fuzzy
+#~| msgid "Balak"
+#~ msgctxt "scroll backward"
+#~ msgid "Back"
+#~ msgstr "Balak"
+
+#, fuzzy
+#~| msgid "Go &Backward"
+#~ msgid "Scroll Backward"
+#~ msgstr "Mynd &Yn Ôl"
+
+#, fuzzy
+#~| msgid "Go &Forward"
+#~ msgctxt "scroll forward"
+#~ msgid "&Forward"
+#~ msgstr "Mynd &Ymlaen"
+
+#, fuzzy
+#~| msgid "Go &Forward"
+#~ msgctxt "scoll forward"
+#~ msgid "Forward"
+#~ msgstr "Mynd &Ymlaen"
+
+#, fuzzy
+#~| msgid "Go &Forward"
+#~ msgid "Scroll Forward"
+#~ msgstr "Mynd &Ymlaen"
+
+#~ msgid "&Day"
+#~ msgstr "&Dydd"
+
+#, fuzzy
+#~ msgid "&Next Day"
+#~ msgid_plural "&Next %1 Days"
+#~ msgstr[0] "Diwrnod &Nesaf"
+#~ msgstr[1] "%1 o Ddiwrnodau &Nesaf"
+
+#~ msgid "W&ork Week"
+#~ msgstr "W&ythnos Gwaith"
+
+#~ msgid "&Week"
+#~ msgstr "&Wythnos"
+
+#~ msgid "New E&vent..."
+#~ msgstr "D&igwyddiad Newydd..."
+
+#, fuzzy
+#~ msgid "Create a new Event"
+#~ msgstr "Cliciwch i ychwanegu I-Wneud newydd"
+
+#~ msgid "New &To-do..."
+#~ msgstr "&I'w-Gwneud Newydd..."
+
+#, fuzzy
+#~ msgid "Create a new To-do"
+#~ msgstr "Cliciwch i ychwanegu I-Wneud newydd"
+
+#~ msgid "New Su&b-to-do..."
+#~ msgstr "Is-I'w-&Gwneud Newydd..."
+
+#, fuzzy
+#~ msgid "New &Journal..."
+#~ msgstr "&Dyddlyfr"
+
+#, fuzzy
+#~ msgid "Create a new Journal"
+#~ msgstr "Cliciwch i ychwanegu I-Wneud newydd"
+
+#, fuzzy
+#~| msgid "&Configure..."
+#~ msgid "Configure View..."
+#~ msgstr "&Ffurfweddu..."
+
+#, fuzzy
+#~| msgid "&Configure..."
+#~ msgid "Configure"
+#~ msgstr "&Ffurfweddu..."
+
+#~ msgid "&Show"
+#~ msgstr "&Dangos"
+
+#~ msgid "&Edit..."
+#~ msgstr "&Golygu..."
+
+#~ msgid "&Make Sub-to-do Independent"
+#~ msgstr "&Gwneud Is-I'w-Wneud yn Annibynnol"
+
+#, fuzzy
+#~ msgid "Re&quest Update"
+#~ msgstr "Ca&is"
+
+#, fuzzy
+#~ msgid "Send Status &Update"
+#~ msgstr "Dyddiad gorffen:"
+
+#, fuzzy
+#~ msgctxt "counter proposal"
+#~ msgid "Request Chan&ge"
+#~ msgstr "Gwr&thgynnig"
+
+#, fuzzy
+#~ msgid "&Mail Free Busy Information..."
+#~ msgstr "Cyhoeddi Gwybodaeth Rhydd Brysur"
+
+#, fuzzy
+#~| msgid "&iCalendar..."
+#~ msgid "&Send as iCalendar..."
+#~ msgstr "&iCalendr..."
+
+#, fuzzy
+#~ msgid "&Upload Free Busy Information"
+#~ msgstr "Cyhoeddi Gwybodaeth Rhydd Brysur"
+
+#, fuzzy
+#~| msgid "&Addressbook"
+#~ msgid "&Address Book"
+#~ msgstr "&Llyfr Cyfeiriadau"
+
+#, fuzzy
+#~ msgid "Show Date Navigator"
+#~ msgstr "Dangos diwrnod Omer"
+
+#, fuzzy
+#~ msgid "Show To-do View"
+#~ msgstr "Math Golwg"
+
+#, fuzzy
+#~ msgid "Show Item Viewer"
+#~ msgstr "Gwelydd Digwyddiadau"
+
+#, fuzzy
+#~| msgid "Export Calendar as Web Page"
+#~ msgid "Show Calendar Manager"
+#~ msgstr "Allforio Calendr fel Tudalen Wê"
+
+#~ msgid "Configure &Date && Time..."
+#~ msgstr "Ffurfweddu &Dyddiad && Amser..."
+
+#, fuzzy
+#~ msgid "Manage View &Filters..."
+#~ msgstr "Golygu'r &Hidlenni"
+
+#, fuzzy
+#~ msgid "Manage C&ategories..."
+#~ msgstr "Golygu'r C&ategorïau..."
+
+#, fuzzy
+#~ msgid "&Configure KOrganizer..."
+#~ msgstr "Ffurfweddu'r &Ategion"
+
+#, fuzzy
+#~ msgid "New calendar added successfully"
+#~ msgstr "Cyhoeddi eich &gwybodaeth rydd/brysur yn ymysgogol"
+
+#, fuzzy
+#~| msgid "Could not load calendar '%1'."
+#~ msgid "Could not add a calendar. Error: %1"
+#~ msgstr "Wedi methu llwytho calendr '%1'."
+
+#~ msgid ""
+#~ "You have no ical file in your home directory.\n"
+#~ "Import cannot proceed.\n"
+#~ msgstr ""
+#~ "Nid oes gennych ffeil ical yn eich cyfeiriadur cartref.\n"
+#~ " Ni all y mewnforiad fynd ymlaen.\n"
+
+#, fuzzy
+#~ msgid ""
+#~ "KOrganizer encountered some unknown fields while parsing your .calendar "
+#~ "ical file, and had to discard them; please check to see that all your "
+#~ "relevant data was correctly imported."
+#~ msgstr ""
+#~ "Mi wnaeth Ktrefnydd ganfod meysydd anhysbys tra'n dosrannu eich ffeil ."
+#~ "calendar ical, ac mi roedd rhaid eu taflu nhw. Os gwelwch yn dda, "
+#~ "edrychwch i weld os oedd pob darn o ddata pwysig wedi ei fewnforio yn "
+#~ "gywir."
+
+#, fuzzy
+#~ msgid ""
+#~ "KOrganizer encountered an error parsing your .calendar file from ical; "
+#~ "import has failed."
+#~ msgstr ""
+#~ "My wnaeth KTrefnydd ganfod gwall pan yn dosrannu eich ffeil .calendar o "
+#~ "ical. Mae'r mewnforiad wedi methu."
+
+#, fuzzy
+#~ msgid ""
+#~ "KOrganizer does not think that your .calendar file is a valid ical "
+#~ "calendar; import has failed."
+#~ msgstr ""
+#~ "Nid yw KTrefnydd yn meddwl bod eich ffeil .calendar yn galendr ical "
+#~ "dilys. Mae'r mewnforiad wedi methu."
+
+#~ msgid ""
+#~ "Your calendar will be saved in iCalendar format. Use 'Export vCalendar' "
+#~ "to save in vCalendar format."
+#~ msgstr ""
+#~ "Cedwir eich calendr yn fformat iCalendar. Defnyddiwch 'Allforio "
+#~ "vCalendar' i'w gadw mewn fformat vCalendar."
+
+#~ msgid "Format Conversion"
+#~ msgstr "Trosiad Fformat"
+
+#~ msgid "Proceed"
+#~ msgstr "Mynd Ymlaen"
+
+#~ msgid "Cannot upload calendar to '%1'"
+#~ msgstr "Methu llwytho calendr i fyny i '%1'"
+
+#~ msgid "Saved calendar '%1'."
+#~ msgstr "Wedi cadw'r calendr '%1'."
+
+#, fuzzy
+#~| msgid "New Calendar"
+#~ msgid "Select path for HTML calendar export"
+#~ msgstr "Calendr Newydd"
+
+#, fuzzy
+#~ msgid "Do you want to overwrite file \"%1\"?"
+#~ msgstr "<qt>A ydych yn wir eisiau dileu'r adnodd? <b>%1</b>?</qt>"
+
+#, fuzzy
+#~ msgid "Unable to save calendar to the file %1."
+#~ msgstr "Methu cadw'r eitem i-wneud"
+
+#, fuzzy
+#~ msgid "Error"
+#~ msgstr "Dim Gwall"
+
+#~ msgid ""
+#~ "The calendar has been modified.\n"
+#~ "Do you want to save it?"
+#~ msgstr ""
+#~ "Mae'r calendr wedi newid.\n"
+#~ "A ydych chi eisiau ei gadw?"
+
+#, fuzzy
+#~| msgid "*.vcs *.ics|Calendar Files"
+#~ msgid "*.ics *.vcs|Calendar Files"
+#~ msgstr "*.vcs *.ics|Ffeiliau Calendr"
+
+#, fuzzy
+#~ msgid "Could not start control module for date and time format."
+#~ msgstr "Methu dechrau modwl reoli'r fformat dyddiad ac amser."
+
+#, fuzzy
+#~| msgid "Could not load calendar '%1'."
+#~ msgid "Could not load calendar %1."
+#~ msgstr "Wedi methu llwytho calendr '%1'."
+
+#~ msgid "The downloaded events will be merged into your current calendar."
+#~ msgstr ""
+#~ "Mi fydd y disgwyddiadau â lawrlwythwyd yn cael eu cyfuno i'ch calendr "
+#~ "cyfredol."
+
+#~ msgid "&Show Event"
+#~ msgstr "Dango&s Digwyddiad"
+
+#~ msgid "&Edit Event..."
+#~ msgstr "&Golygu Digwyddiad..."
+
+#~ msgid "&Delete Event"
+#~ msgstr "&Dileu Digwyddiad"
+
+#~ msgid "&Show To-do"
+#~ msgstr "Dango&s I'w-Wneud"
+
+#~ msgid "&Edit To-do..."
+#~ msgstr "&Golygu I'w-Wneud"
+
+#~ msgid "&Delete To-do"
+#~ msgstr "&Dileu I'w-Wneud"
+
+#, fuzzy
+#~ msgid "Attach &inline"
+#~ msgstr "Ychwanegu Atodiad"
+
+#, fuzzy
+#~| msgid "Attach&ments"
+#~ msgid "Remove Attachments"
+#~ msgstr "Atodia&dau"
+
+#, fuzzy
+#~| msgid "Undo (%1)"
+#~ msgid "Undo: %1"
+#~ msgstr "Datwneud (%1)"
+
+#, fuzzy
+#~ msgid "Undo"
+#~ msgstr "Datwneud (%1)"
+
+#, fuzzy
+#~| msgid "Redo (%1)"
+#~ msgid "Redo: %1"
+#~ msgstr "Ailwneud (%1)"
+
+#, fuzzy
+#~ msgid "Redo"
+#~ msgstr "Ailwneud (%1)"
+
+#, fuzzy
+#~| msgid "Import Calendar"
+#~ msgctxt "@title:window"
+#~ msgid "Import Calendar"
+#~ msgstr "Mewnforio Calendr"
+
+#, fuzzy
+#~ msgid "Add as new calendar"
+#~ msgstr "Calendr Newydd"
+
+#, fuzzy
+#~ msgctxt ""
+#~ "@info/plain Displayed grayed-out inside the textbox, verb to search"
+#~ msgid "Search"
+#~ msgstr "Chwilio Mewn"
+
+#, fuzzy
+#~| msgid "Go &Forward"
+#~ msgid "searching..."
+#~ msgstr "Mynd &Ymlaen"
+
+#, fuzzy
+#~| msgid "Edit Calendar Filters"
+#~ msgctxt "@title:window"
+#~ msgid "Properties of Calendar Folder %1"
+#~ msgstr "Golygu Hidlennau Calendr"
+
+#, fuzzy
+#~ msgid "&Disable Color"
+#~ msgstr "defnyddio &lliwiau"
+
+#, fuzzy
+#~ msgid "Use as &Default Calendar"
+#~ msgstr "Fformat Calendr Rhagosodedig"
+
+#, fuzzy
+#~ msgid "Remove from list"
+#~ msgstr "Cadw Patrymlun"
+
+#, fuzzy
+#~ msgid "Add Calendar"
+#~ msgstr "Calendr Newydd"
+
+#, fuzzy
+#~ msgid "Do you really want to delete calendar %1?"
+#~ msgstr "<qt>A ydych yn wir eisiau dileu'r adnodd? <b>%1</b>?</qt>"
+
+#, fuzzy
+#~ msgid "Delete Calendar"
+#~ msgstr "Fformat Calendr Rhagosodedig"
+
+#, fuzzy
+#~ msgid "Keep Absolute Times?"
+#~ msgstr "dim amser"
+
+#, fuzzy
+#~ msgid "Keep Times"
+#~ msgstr "dim amser"
+
+#, fuzzy
+#~ msgid "Move Times"
+#~ msgstr "dim amser"
+
+#, fuzzy
+#~ msgid "Todo completed: %1 (%2)"
+#~ msgstr "cyfla&wn ar %1"
+
+#, fuzzy
+#~ msgid "Journal of %1"
+#~ msgstr "&Dyddlyfr"
+
+#, fuzzy
+#~ msgctxt "@info"
+#~ msgid "Do you really want to permanently remove the item \"%1\"?"
+#~ msgstr "<qt>A ydych yn wir eisiau dileu'r adnodd? <b>%1</b>?</qt>"
+
+#, fuzzy
+#~ msgctxt "@title:window"
+#~ msgid "Delete Item?"
+#~ msgstr "Dileu Hen Ddigwyddiadau"
+
+#, fuzzy
+#~| msgid "Please specify a valid start date."
+#~ msgid "Paste failed: unable to determine a valid target date."
+#~ msgstr "Rhowch ddyddiad dechrau dilys os gwelwch yn dda."
+
+#, fuzzy
+#~ msgid "Make sub-to-dos independent"
+#~ msgstr "Gwneud Is-I'w-Wneud yn Annibynnol"
+
+#, fuzzy
+#~ msgid "Toggle Reminder"
+#~ msgstr "&Atgof:"
+
+#, fuzzy
+#~| msgctxt "delete completed to-dos"
+#~| msgid "Pur&ge Completed"
+#~ msgid "Toggle To-do Completed"
+#~ msgstr "&Carthiad wedi'i Gwblhau"
+
+#, fuzzy
+#~ msgctxt "@title:window"
+#~ msgid "Copying Succeeded"
+#~ msgstr "Methodd y gosod."
+
+#, fuzzy
+#~ msgctxt "@info"
+#~ msgid "Unable to copy the item \"%1\" to %2."
+#~ msgstr "Methu cadw'r eitem i-wneud"
+
+#, fuzzy
+#~ msgctxt "@title:window"
+#~ msgid "Copying Failed"
+#~ msgstr "Methodd y gosod."
+
+#, fuzzy
+#~ msgctxt "@title:window"
+#~ msgid "Moving Failed"
+#~ msgstr "Methodd y gosod."
+
+#, fuzzy
+#~ msgctxt "@title:window"
+#~ msgid "Moving Succeeded"
+#~ msgstr "Methodd y gosod."
+
+#, fuzzy
+#~ msgid "Do you want to dissociate the occurrence on %1 from the recurrence?"
+#~ msgstr "Rhestri digwyddiadau'r diwrnod cyfredol"
+
+#~ msgid "KOrganizer Confirmation"
+#~ msgstr "Cadarnhâd KOrganizer"
+
+#, fuzzy
+#~| msgid "T&ime associated"
+#~ msgid "&Dissociate"
+#~ msgstr "A&mser cysylltiedig"
+
+#, fuzzy
+#~ msgid ""
+#~ "Do you want to dissociate the occurrence on %1 from the recurrence or "
+#~ "also dissociate future ones?"
+#~ msgstr "Rhestri digwyddiadau'r diwrnod cyfredol"
+
+#, fuzzy
+#~ msgid "&Only Dissociate This One"
+#~ msgstr "Rhestri digwyddiadau'r diwrnod cyfredol"
+
+#, fuzzy
+#~ msgid "&Also Dissociate Future Ones"
+#~ msgstr "Rhestri digwyddiadau'r diwrnod cyfredol"
+
+#, fuzzy
+#~ msgid "Dissociate future occurrences"
+#~ msgstr "Rhestri digwyddiadau'r diwrnod cyfredol"
+
+#, fuzzy
+#~ msgid "Dissociate occurrence"
+#~ msgstr "Rhestri digwyddiadau'r diwrnod cyfredol"
+
+#, fuzzy
+#~ msgid "Dissociating the future occurrences failed."
+#~ msgstr "Rhestri digwyddiadau'r diwrnod cyfredol"
+
+#, fuzzy
+#~ msgid "Dissociating Failed"
+#~ msgstr "Methodd y gosod."
+
+#, fuzzy
+#~ msgid "Dissociating the occurrence failed."
+#~ msgstr "Rhestri digwyddiadau'r diwrnod cyfredol"
+
+#, fuzzy
+#~| msgid "Calendar"
+#~ msgid "iCalendars (*.ics)"
+#~ msgstr "Calendr"
+
+#, fuzzy
+#~ msgctxt "@info"
+#~ msgid "Cannot write iCalendar file %1. %2"
+#~ msgstr "Methu ysgrifennu'r ffeil archif."
+
+#, fuzzy
+#~| msgid "The journal entries can not be exported to a vCalendar file."
+#~ msgid "The journal entries cannot be exported to a vCalendar file."
+#~ msgstr "Ni ellir allforio cofnodion y dyddlyfr i ffeil vCalendr."
+
+#~ msgid "Data Loss Warning"
+#~ msgstr "Rhybydd Colled Data"
+
+#, fuzzy
+#~| msgid "Calendar"
+#~ msgid "vCalendars (*.vcs)"
+#~ msgstr "Calendr"
+
+#, fuzzy
+#~ msgctxt "@info"
+#~ msgid "Cannot write vCalendar file %1. %2"
+#~ msgstr "Methu ysgrifennu'r ffeil archif."
+
+#~ msgid "&Previous Day"
+#~ msgstr "Dyddiad &Blaenorol"
+
+#~ msgid "&Previous Week"
+#~ msgstr "Wythnos &Blaenorol"
+
+#~ msgid "&Next Week"
+#~ msgstr "Wythnos &Nesaf"
+
+#, fuzzy
+#~ msgid "No filter"
+#~ msgstr "Dangos Hidlen"
+
+#, fuzzy
+#~ msgid "Delete Only This"
+#~ msgstr "Dileu Hen Ddigwyddiadau"
+
+#, fuzzy
+#~ msgid "Delete All"
+#~ msgstr "Dileu'r& cwbl"
+
+#, fuzzy
+#~| msgid "Delete To-do"
+#~ msgid "Delete parent to-do"
+#~ msgstr "Dileu I'w-Wneud"
+
+#, fuzzy
+#~ msgid "Delete parent to-do and sub-to-dos"
+#~ msgstr "Dileu I'w-Wneud"
+
+#, fuzzy
+#~ msgid ""
+#~ "The calendar item \"%1\" recurs over multiple dates; are you sure you "
+#~ "want to delete it and all its recurrences?"
+#~ msgstr ""
+#~ "Mae'r digwyddiad hyn yn ail-ddigwydd dros mwy nag un dyddiad. A ydych "
+#~ "chi'n siŵr eich bod eisiau dileu y digwyddiad a phob un o'i ail-"
+#~ "ddigwyddiadau?"
+
+#, fuzzy
+#~ msgid "Also Delete &Future"
+#~ msgstr "Dileu'r Cyfredol"
+
+#, fuzzy
+#~ msgid ""
+#~ "The calendar item \"%1\" recurs over multiple dates. Do you want to "
+#~ "delete only the current one on %2, also future occurrences, or all its "
+#~ "occurrences?"
+#~ msgstr ""
+#~ "Mae'r digwyddiad hyn an ail-digwydd dros mwy nag un dyddiad.  A ydych "
+#~ "chi'n siŵr eich bod eisiau dileu pob un o'i ail-ddigwyddiadau, neu dim "
+#~ "ond y digwyddiad cyfredol sydd ar %1?"
+
+#, fuzzy
+#~ msgid ""
+#~ "The calendar item \"%1\" recurs over multiple dates. Do you want to "
+#~ "delete only the current one on %2 or all its occurrences?"
+#~ msgstr ""
+#~ "Mae'r digwyddiad hyn an ail-digwydd dros mwy nag un dyddiad.  A ydych "
+#~ "chi'n siŵr eich bod eisiau dileu pob un o'i ail-ddigwyddiadau, neu dim "
+#~ "ond y digwyddiad cyfredol sydd ar %1?"
+
+#~ msgid "Delete C&urrent"
+#~ msgstr "Dileu'r &Cyfredol"
+
+#~ msgid "Delete &All"
+#~ msgstr "Dileu'r &cwbl"
+
+#, fuzzy
+#~ msgid "There are no completed to-dos to purge."
+#~ msgstr "Cuddio i'w-wneudau a gwblhawyd"
+
+#, fuzzy
+#~| msgid "Delete all completed to-dos?"
+#~ msgid "Delete all completed to-dos from checked calendars?"
+#~ msgstr "Dileu pob I'w-Wneud sydd wedi eu gorffen?"
+
+#~ msgid "Purge To-dos"
+#~ msgstr "Carthu I-Wneudau"
+
+#~ msgid "Purge"
+#~ msgstr "Carthu"
+
+#, fuzzy
+#~ msgctxt "@info"
+#~ msgid "Unable to edit \"%1\" because it is locked by another process."
+#~ msgstr "Methu golygu'r nifer.  Cloir gan broses arall."
+
+#, fuzzy
+#~ msgid "Unable to copy the item to %1."
+#~ msgstr "Methu cadw'r eitem i-wneud"
+
+#, fuzzy
+#~ msgid "Copying Failed"
+#~ msgstr "Methodd y gosod."
+
+#, fuzzy
+#~ msgid "Unable to move the item to  %1."
+#~ msgstr "Methu cadw'r eitem i-wneud"
+
+#, fuzzy
+#~ msgid "Moving Failed"
+#~ msgstr "Methodd y gosod."
+
+#, fuzzy
+#~| msgid "Hide co&mpleted to-dos"
+#~ msgid "0 completed to-dos were purged."
+#~ msgstr "Cuddio &i'w-wneudau a gwblhawyd"
+
+#, fuzzy
+#~| msgid "Hide co&mpleted to-dos"
+#~ msgid "%1 completed to-do was purged."
+#~ msgid_plural "%1 completed to-dos were purged."
+#~ msgstr[0] "Cuddio &i'w-wneudau a gwblhawyd"
+#~ msgstr[1] "Cuddio &i'w-wneudau a gwblhawyd"
+
+#, fuzzy
+#~ msgid "An error occurred while purging completed to-dos: %1"
+#~ msgstr "Cuddio i'w-wneudau a gwblhawyd"
+
+#, fuzzy
+#~| msgid "General"
+#~ msgctxt "@title:tab General settings for a folder."
+#~ msgid "General"
+#~ msgstr "Cyffredinol"
+
+#, fuzzy
+#~| msgid "Name:"
+#~ msgctxt "@label:textbox Name of the folder."
+#~ msgid "&Name:"
+#~ msgstr "Enw:"
+
+#, fuzzy
+#~ msgctxt "@info:tooltip"
+#~ msgid "Set the folder name"
+#~ msgstr "Dyddiad gorffen:"
+
+#, fuzzy
+#~ msgctxt "@option:check"
+#~ msgid "Block reminders locally"
+#~ msgstr "Atgof"
+
+#, fuzzy
+#~ msgctxt "@info:tooltip"
+#~ msgid "Ignore reminders from this calendar"
+#~ msgstr "Dileu Hen Ddigwyddiadau"
+
+#, fuzzy
+#~ msgctxt "@info:whatsthis"
+#~ msgid ""
+#~ "Check this box if you do not want to receive reminders from items "
+#~ "associated with this calendar."
+#~ msgstr "Dangos eiliadau ar linell Marcus Bain"
+
+#, fuzzy
+#~| msgid "Calendar"
+#~ msgctxt "@option:check"
+#~ msgid "&Use custom icon:"
+#~ msgstr "Calendr"
+
+#, fuzzy
+#~| msgid "Calendar"
+#~ msgctxt "@info:tooltip"
+#~ msgid "Set a custom icon"
+#~ msgstr "Calendr"
+
+#, fuzzy
+#~ msgctxt "@info:whatsthis"
+#~ msgid "Check this box if you want to set a custom icon for this folder."
+#~ msgstr "Dangos eiliadau ar linell Marcus Bain"
+
+#, fuzzy
+#~ msgid "&File"
+#~ msgstr "&Teitl:"
+
+#~ msgid "&Import"
+#~ msgstr "&Mewnforio"
+
+#~ msgid "&Export"
+#~ msgstr "&Allforio"
+
+#, fuzzy
+#~ msgid "&Edit"
+#~ msgstr "&Golygu..."
+
+#, fuzzy
+#~ msgid "&View"
+#~ msgstr "Golygon"
+
+#, fuzzy
+#~ msgid "&Zoom"
+#~ msgstr "Chwyddo"
+
+#~ msgid "&Go"
+#~ msgstr "&Ewch"
+
+#~ msgid "&Actions"
+#~ msgstr "&Gweithredau"
+
+#~ msgid "S&chedule"
+#~ msgstr "&Trefnlen"
+
+#, fuzzy
+#~ msgid "&Settings"
+#~ msgstr "Cyfarfod"
+
+#, fuzzy
+#~ msgid "&Sidebar"
+#~ msgstr "Bar amser:"
+
+#, fuzzy
+#~| msgid "Main"
+#~ msgctxt "main toolbar"
+#~ msgid "Main"
+#~ msgstr "Prif"
+
+#~ msgid "Views"
+#~ msgstr "Golygon"
+
+#~ msgid "Schedule"
+#~ msgstr "Trefnlen"
+
+#, fuzzy
+#~ msgid "Filters Toolbar"
+#~ msgstr "Barrau Offer"
+
+#, fuzzy
+#~| msgid "Calendar"
+#~ msgid "Calendar Colors"
+#~ msgstr "Calendr"
+
+#~ msgid "Export Calendar as Web Page"
+#~ msgstr "Allforio Calendr fel Tudalen Wê"
+
+#, fuzzy
+#~ msgid "Export"
+#~ msgstr "&Allforio"
+
+#~ msgid ""
+#~ "You are about to set all preferences to default values. All custom "
+#~ "modifications will be lost."
+#~ msgstr ""
+#~ "Rydych ar fin gosod yr holl werthoedd i'r gwerthoedd rhagosod. Collir pob "
+#~ "addasiad."
+
+#~ msgid "Setting Default Preferences"
+#~ msgstr "Gosod Hoffiannau Rhagosod"
+
+#, fuzzy
+#~| msgid "General"
+#~ msgctxt "general settings for html export"
+#~ msgid "General"
+#~ msgstr "Cyffredinol"
+
+#~ msgid "Date Range"
+#~ msgstr "Amrediad Dyddiadau"
+
+#~ msgid "View Type"
+#~ msgstr "Gweld Math"
+
+#~ msgid "Destination"
+#~ msgstr "Cyrchfan"
+
+#, fuzzy
+#~ msgid "To-dos"
+#~ msgstr "I-&Wneudau"
+
+#~ msgid "Events"
+#~ msgstr "Digwyddiadau"
+
+#, fuzzy
+#~| msgid "Edit Calendar Filters"
+#~ msgctxt "@title::window"
+#~ msgid "Edit Calendar Filters"
+#~ msgstr "Golygu Hidlennau Calendr"
+
+#, fuzzy
+#~| msgid "New Filter %1"
+#~ msgctxt "@label default filter name"
+#~ msgid "New Filter %1"
+#~ msgstr "Hidlen newydd %1"
+
+#, fuzzy
+#~ msgctxt "@info"
+#~ msgid "Do you really want to permanently remove the filter \"%1\"?"
+#~ msgstr "<qt>A ydych yn wir eisiau dileu'r adnodd? <b>%1</b>?</qt>"
+
+#, fuzzy
+#~ msgctxt "@title:window"
+#~ msgid "Delete Filter?"
+#~ msgstr "Dileu Hen Ddigwyddiadau"
+
+#~ msgid "Event Viewer"
+#~ msgstr "Gwelydd Digwyddiadau"
+
+#, fuzzy
+#~| msgid "Edit..."
+#~ msgid "Edit..."
+#~ msgstr "Golygu..."
+
+#, fuzzy
+#~ msgid "Show in Context"
+#~ msgstr "Dangos y dewisiad yn unig"
+
+#, fuzzy
+#~ msgctxt "@title:window"
+#~ msgid "Create Note"
+#~ msgstr "Cliciwch i ychwanegu I-Wneud newydd"
+
+#, fuzzy
+#~ msgctxt "@action:discard creating note"
+#~ msgid "Cancel"
+#~ msgstr "&Newid"
+
+#, fuzzy
+#~| msgid "Travel"
+#~ msgctxt "@action:save note"
+#~ msgid "Save"
+#~ msgstr "Teithio"
+
+#, fuzzy
+#~| msgid "&Title:"
+#~ msgid "Title:"
+#~ msgstr "&Teitl:"
+
+#, fuzzy
+#~ msgid "Text:"
+#~ msgstr "Tefet"
+
+#, fuzzy
+#~| msgid "New Calendar"
+#~ msgid "Search Calendar"
+#~ msgstr "Calendr Newydd"
+
+#, fuzzy
+#~ msgctxt "search in calendar"
+#~ msgid "&Search"
+#~ msgstr "Chwilio Mewn"
+
+#~ msgid ""
+#~ "Invalid search expression, cannot perform the search. Please enter a "
+#~ "search expression using the wildcard characters '*' and '?' where needed."
+#~ msgstr ""
+#~ "Mynegiad chilio annilys, methu gwneud y chwiliad.  Mewnosodwch fynegiad "
+#~ "chwilio gan ddefnyddio'r nodau-chwilio '*' a '?' lle bo angen."
+
+#, fuzzy
+#~| msgid "No events were found matching your search expression."
+#~ msgid "No items were found that match your search pattern."
+#~ msgstr "Ni chanfuwyd digwyddiadau sy'n cydweddu eich mynediad chwilio."
+
+#, fuzzy
+#~| msgid "Search In"
+#~ msgid "Search Results"
+#~ msgstr "Chwilio Mewn"
+
+#, fuzzy
+#~ msgid "%1 item"
+#~ msgid_plural "%1 items"
+#~ msgstr[0] "1 munud"
+#~ msgstr[1] "%1 o funudau"
+
+#, fuzzy
+#~ msgctxt "A collection of all declined invidations."
+#~ msgid "Declined Invitations"
+#~ msgstr "Ffurfweddu Adnoddau"
+
+#, fuzzy
+#~ msgctxt "A collection of all open invidations."
+#~ msgid "Open Invitations"
+#~ msgstr "Ffurfweddu Adnoddau"
+
+#, fuzzy
+#~ msgid "Unable to write the output file."
+#~ msgstr "Methu cadw'r eitem i-wneud"
+
+#, fuzzy
+#~ msgid "Unable to upload the export file."
+#~ msgstr "Methu cadw'r eitem i-wneud"
+
+#, fuzzy
+#~| msgid "Set Your Status"
+#~ msgctxt "@title:window"
+#~ msgid "Export Status"
+#~ msgstr "Gosod Eich Cyflwr"
+
+#, fuzzy
+#~ msgid "Show page Web"
+#~ msgstr "Dangos diwrnod Omer"
+
+#, fuzzy
+#~| msgid "Automatic"
+#~ msgctxt "@info:status"
+#~ msgid "Automatic Export: %1"
+#~ msgstr "Ymysgogol"
+
+#, fuzzy
+#~| msgctxt "monthname year"
+#~| msgid "%1 %2"
+#~ msgctxt "@title month and year"
+#~ msgid "%1 %2"
+#~ msgstr "%1 %2"
+
+#, fuzzy
+#~| msgid "Start Time"
+#~ msgctxt "@title:column event start time"
+#~ msgid "Start Time"
+#~ msgstr "Amser Dechrau"
+
+#, fuzzy
+#~| msgid "End Time"
+#~ msgctxt "@title:column event end time"
+#~ msgid "End Time"
+#~ msgstr "Amser Gorffen"
+
+#, fuzzy
+#~| msgid "Events"
+#~ msgctxt "@title:column event description"
+#~ msgid "Event"
+#~ msgstr "Digwyddiadau"
+
+#, fuzzy
+#~ msgctxt "@title:column event locatin"
+#~ msgid "Location"
+#~ msgstr "&Lleoliad:"
+
+#, fuzzy
+#~| msgid "Categories"
+#~ msgctxt "@title:column event categories"
+#~ msgid "Categories"
+#~ msgstr "Categorïau"
+
+#, fuzzy
+#~ msgctxt "@title:column event attendees"
+#~ msgid "Attendees"
+#~ msgstr "Cyfarfotwyr"
+
+#, fuzzy
+#~| msgid "To-do:"
+#~ msgctxt "@title:column"
+#~ msgid "To-do"
+#~ msgstr "I'w-Wneud:"
+
+#, fuzzy
+#~| msgid "Priority"
+#~ msgctxt "@title:column to-do priority"
+#~ msgid "Priority"
+#~ msgstr "Blaenoriaeth"
+
+#, fuzzy
+#~| msgid "Complete"
+#~ msgctxt "@title:column to-do percent completed"
+#~ msgid "Completed"
+#~ msgstr "Cyflawn"
+
+#, fuzzy
+#~| msgid "Due Date"
+#~ msgctxt "@title:column to-do due date"
+#~ msgid "Due Date"
+#~ msgstr "Dyddiad Disgwyliedig"
+
+#, fuzzy
+#~ msgctxt "@title:column to-do location"
+#~ msgid "Location"
+#~ msgstr "&Lleoliad:"
+
+#, fuzzy
+#~| msgid "Categories"
+#~ msgctxt "@title:column to-do categories"
+#~ msgid "Categories"
+#~ msgstr "Categorïau"
+
+#, fuzzy
+#~ msgctxt "@title:column to-do attendees"
+#~ msgid "Attendees"
+#~ msgstr "Cyfarfotwyr"
+
+#, fuzzy
+#~ msgctxt "@title:column sub-to-dos of the parent to-do"
+#~ msgid "Sub-To-dos of: "
+#~ msgstr "I'w-Wneud:"
+
+#, fuzzy
+#~ msgctxt "@title:column sub-to-dos of the parent to-do"
+#~ msgid "Sub-To-dos"
+#~ msgstr "I-&Wneudau"
+
+#, fuzzy
+#~| msgctxt "Percent complete"
+#~| msgid "%1 %"
+#~ msgctxt "@info to-do percent complete"
+#~ msgid "%1 %"
+#~ msgstr "%1 %"
+
+#, fuzzy
+#~| msgid "- %1"
+#~ msgctxt "@info page creator name only"
+#~ msgid "by %1 "
+#~ msgstr "- %1"
+
+#, fuzzy
+#~| msgid "Edit %1"
+#~ msgctxt "@info page credit name only"
+#~ msgid "with %1"
+#~ msgstr "Golygu %1"
+
+#, fuzzy
+#~| msgctxt "monthname year"
+#~| msgid "%1 %2"
+#~ msgctxt "@info holiday by date and name"
+#~ msgid "%1, %2"
+#~ msgstr "%1 %2"
+
+#, fuzzy
+#~ msgid "Text"
+#~ msgstr "Tefet"
+
+#, fuzzy
+#~| msgid "Select Mode"
+#~ msgid "Selection"
+#~ msgstr "Sewid Modd"
+
+#, fuzzy
+#~| msgid "Date && Time"
+#~ msgid "Date & Time"
+#~ msgstr "Dyddiad ac Amser"
+
+#, fuzzy
+#~| msgid "&Date:"
+#~ msgid "Date"
+#~ msgstr "&Dyddiad:"
+
+#, fuzzy
+#~ msgid "<qt>Do you really want to delete '<b>%1</b>'?</qt>"
+#~ msgstr "<qt>A ydych yn wir eisiau dileu'r adnodd? <b>%1</b>?</qt>"
+
+#, fuzzy
+#~| msgid "Import Calendar"
+#~ msgid "Import Page"
+#~ msgstr "Mewnforio Calendr"
+
+#, fuzzy
+#~ msgid "Designer Files (*.ui)"
+#~ msgstr "*.vcs|Ffeiliau vCalendr"
+
+#, fuzzy
+#~ msgid "Import Page..."
+#~ msgstr "Mewnforio Calendr"
+
+#, fuzzy
+#~ msgid "Type:"
+#~ msgstr "Math"
+
+#, fuzzy
+#~| msgid "Username:"
+#~ msgid "Classname:"
+#~ msgstr "Enw defnyddiwr:"
+
+#, fuzzy
+#~ msgid "Description:"
+#~ msgstr "&Disgrifiad"
+
+#, fuzzy
+#~ msgctxt "@item:intext delimiter for joining holiday names"
+#~ msgid ","
+#~ msgstr ","
+
+#, fuzzy
+#~ msgctxt "delimiter for joining holiday names"
+#~ msgid ","
+#~ msgstr ","
+
+#, fuzzy
+#~ msgid "&Move"
+#~ msgstr "&Symud I"
+
+#, fuzzy
+#~ msgid "&Copy"
+#~ msgstr "&Copïo I"
+
+#~ msgid "&Add"
+#~ msgstr "&Ychwanegu..."
+
+#, fuzzy
+#~ msgid "&Cancel"
+#~ msgstr "&Newid"
+
+#, fuzzy
+#~ msgid "&Print..."
+#~ msgstr "&Golygu..."
+
+#, fuzzy
+#~ msgid "Print Previe&w..."
+#~ msgstr "&Golygu..."
+
+#, fuzzy
+#~ msgctxt "cut this event"
+#~ msgid "C&ut"
+#~ msgstr "Chukat"
+
+#, fuzzy
+#~ msgctxt "copy this event"
+#~ msgid "&Copy"
+#~ msgstr "&Copïo I"
+
+#, fuzzy
+#~| msgid "&Date:"
+#~ msgid "&Paste"
+#~ msgstr "&Dyddiad:"
+
+#, fuzzy
+#~ msgctxt "delete this incidence"
+#~ msgid "&Delete"
+#~ msgstr "Dileu %1"
+
+#, fuzzy
+#~ msgid "Create To-do"
+#~ msgstr "Cliciwch i ychwanegu I-Wneud newydd"
+
+#, fuzzy
+#~ msgid "Create Event"
+#~ msgstr "Cliciwch i ychwanegu I-Wneud newydd"
+
+#, fuzzy
+#~ msgid "Create Note"
+#~ msgstr "Cliciwch i ychwanegu I-Wneud newydd"
+
+#, fuzzy
+#~| msgctxt "delete completed to-dos"
+#~| msgid "Pur&ge Completed"
+#~ msgid "Togg&le To-do Completed"
+#~ msgstr "&Carthiad wedi'i Gwblhau"
+
+#, fuzzy
+#~ msgid "&Toggle Reminder"
+#~ msgstr "&Atgof:"
+
+#, fuzzy
+#~ msgid "&Dissociate From Recurrence..."
+#~ msgstr "Rhestri digwyddiadau'r diwrnod cyfredol"
+
+#, fuzzy
+#~| msgid "&iCalendar..."
+#~ msgid "Send as iCalendar..."
+#~ msgstr "&iCalendr..."
+
+#, fuzzy
+#~ msgid "Unable to save %1 \"%2\"."
+#~ msgstr "Methu cadw'r digwyddiad."
+
+#, fuzzy
+#~| msgid "Calendar"
+#~ msgid "Event Summary Configuration"
+#~ msgstr "Calendr"
+
+#, fuzzy
+#~ msgid ""
+#~ "Check this box if you want to see events occurring on this date only."
+#~ msgstr "Dangos eiliadau ar linell Marcus Bain"
+
+#, fuzzy
+#~| msgid "day"
+#~ msgid "&Today only"
+#~ msgstr "dydd"
+
+#, fuzzy
+#~ msgid ""
+#~ "Check this box if you want to see events that start sometime during the "
+#~ "next 31 days."
+#~ msgstr "Dangos eiliadau ar linell Marcus Bain"
+
+#, fuzzy
+#~ msgid "Select the days for showing upcoming events"
+#~ msgstr "Lliw i-wneud sy'n hwyr:"
+
+#, fuzzy
+#~ msgid ""
+#~ "Check this box if you want to specify the number of days in the future "
+#~ "for upcoming events."
+#~ msgstr "Dangos eiliadau ar linell Marcus Bain"
+
+#, fuzzy
+#~ msgid "1 day"
+#~ msgstr "1 Diwrnod"
+
+#, fuzzy
+#~| msgctxt "suffix in the N days spin box"
+#~| msgid " days"
+#~ msgctxt "days to show in summary"
+#~ msgid " days"
+#~ msgstr "o ddiwrnodau"
+
+#, fuzzy
+#~ msgid "Show &birthdays"
+#~ msgstr "Penblwydd"
+
+#, fuzzy
+#~ msgid "Groupware Settings"
+#~ msgstr "Cyfarfod"
+
+#, fuzzy
+#~| msgid "Import Calendar"
+#~ msgid "Show events belonging to my calendars only"
+#~ msgstr "Mewnforio Calendr"
+
+#, fuzzy
+#~ msgid ""
+#~ "Check this box if you want the summary to show events belonging to your "
+#~ "calendars only."
+#~ msgstr "Dangos eiliadau ar linell Marcus Bain"
+
+#, fuzzy
+#~| msgid "Appointment"
+#~ msgid "&Edit Appointment..."
+#~ msgstr "Apwyntiad"
+
+#, fuzzy
+#~| msgid "Appointment"
+#~ msgid "&Delete Appointment"
+#~ msgstr "Apwyntiad"
+
+#, fuzzy
+#~| msgid "Edit Event"
+#~ msgid "Edit Event: \"%1\""
+#~ msgstr "Golygu Digwyddiad"
+
+#, fuzzy
+#~ msgctxt "@action:inmenu"
+#~ msgid "New Journal..."
+#~ msgstr "&Dyddlyfr"
+
+#, fuzzy
+#~ msgctxt "@info:status"
+#~ msgid "Create a new journal"
+#~ msgstr "Cliciwch i ychwanegu I-Wneud newydd"
+
+#, fuzzy
+#~| msgid "&Journal"
+#~ msgctxt "@action:inmenu"
+#~ msgid "Sync Journal"
+#~ msgstr "&Dyddlyfr"
+
+#, fuzzy
+#~ msgctxt "@info:whatsthis"
+#~ msgid "Choose this option to synchronize your groupware journal entries."
+#~ msgstr "Dangos eiliadau ar linell Marcus Bain"
+
+#, fuzzy
+#~ msgid " day"
+#~ msgid_plural " days"
+#~ msgstr[0] "1 Diwrnod"
+#~ msgstr[1] " %1 o Ddiwrnodau"
+
+#, fuzzy
+#~| msgid "New E&vent..."
+#~ msgctxt "@action:inmenu"
+#~ msgid "New Event..."
+#~ msgstr "D&igwyddiad Newydd..."
+
+#, fuzzy
+#~ msgctxt "@info:status"
+#~ msgid "Create a new event"
+#~ msgstr "Cliciwch i ychwanegu I-Wneud newydd"
+
+#, fuzzy
+#~| msgid "New Calendar"
+#~ msgctxt "@action:inmenu"
+#~ msgid "Sync Calendar"
+#~ msgstr "Calendr Newydd"
+
+#, fuzzy
+#~ msgctxt "@info:whatsthis"
+#~ msgid "Choose this option to synchronize your groupware events."
+#~ msgstr "Dangos eiliadau ar linell Marcus Bain"
+
+#, fuzzy
+#~| msgid "Meeting"
+#~ msgctxt "@item"
+#~ msgid "Meeting"
+#~ msgstr "Cyfarfod"
+
+#, fuzzy
+#~| msgid "Undo (%1)"
+#~ msgctxt "@item"
+#~ msgid "Note: %1"
+#~ msgstr "Datwneud (%1)"
+
+#, fuzzy
+#~| msgid "From: %1   To: %2   %3"
+#~ msgctxt "@item"
+#~ msgid ""
+#~ "From: %1\n"
+#~ "To: %2\n"
+#~ "Subject: %3"
+#~ msgstr "O: %1 I: %2 %3"
+
+#, fuzzy
+#~| msgid "KMail"
+#~ msgctxt "@item"
+#~ msgid "Mail: %1"
+#~ msgstr "KMail"
+
+#, fuzzy
+#~| msgid "day"
+#~ msgctxt "the appointment is today"
+#~ msgid "Today"
+#~ msgstr "dydd"
+
+#, fuzzy
+#~ msgid "in 1 day"
+#~ msgid_plural "in %1 days"
+#~ msgstr[0] "1 Diwrnod"
+#~ msgstr[1] " %1 o Ddiwrnodau"
+
+#, fuzzy
+#~ msgctxt "use abbreviation for minute to keep the text short"
+#~ msgid "1 min"
+#~ msgid_plural "%1 mins"
+#~ msgstr[0] "1 munud"
+#~ msgstr[1] "%1 o funudau"
+
+#, fuzzy
+#~ msgid "all day"
+#~ msgstr "1 Diwrnod"
+
+#, fuzzy
+#~| msgid "%1 - %2"
+#~ msgctxt "Time from - to"
+#~ msgid "%1 - %2"
+#~ msgstr "%1 - %2"
+
+#, fuzzy
+#~| msgid "Redo (%1)"
+#~ msgctxt "next occurrence"
+#~ msgid "Next: %1"
+#~ msgstr "Ailwneud (%1)"
+
+#, fuzzy
+#~| msgid "&New To-do..."
+#~ msgctxt "@action:inmenu"
+#~ msgid "New To-do..."
+#~ msgstr "&I'w-Wneud newydd..."
+
+#, fuzzy
+#~ msgctxt "@info:status"
+#~ msgid "Create a new to-do"
+#~ msgstr "Cliciwch i ychwanegu I-Wneud newydd"
+
+#, fuzzy
+#~| msgid "To-do List"
+#~ msgctxt "@action:inmenu"
+#~ msgid "Sync To-do List"
+#~ msgstr "Rhestr I'w-Wneud"
+
+#, fuzzy
+#~ msgctxt "@info:status"
+#~ msgid "Synchronize groupware to-do list"
+#~ msgstr "Canoli wrth Gychwyn"
+
+#, fuzzy
+#~ msgctxt "@info:whatsthis"
+#~ msgid "Choose this option to synchronize your groupware to-do list."
+#~ msgstr "Dangos eiliadau ar linell Marcus Bain"
+
+#, fuzzy
+#~| msgid "Calendar"
+#~ msgid "To-do Summary Configuration"
+#~ msgstr "Calendr"
+
+#, fuzzy
+#~ msgid "Show To-dos Due"
+#~ msgstr "Math Golwg"
+
+#, fuzzy
+#~ msgid "Show To-dos due today only"
+#~ msgstr "Lliw i-wneud sy'n ddisgwyliedig heddiw:"
+
+#, fuzzy
+#~ msgid "Check this box if you want to see To-dos due on this date only."
+#~ msgstr "Dangos eiliadau ar linell Marcus Bain"
+
+#, fuzzy
+#~ msgid "Show To-dos due within the next month"
+#~ msgstr "Eitemau dis&gwyliedig yn yr amrediad:"
+
+#, fuzzy
+#~ msgid ""
+#~ "Check this box if you want to see To-dos that are due sometime during the "
+#~ "next 31 days."
+#~ msgstr "Dangos eiliadau ar linell Marcus Bain"
+
+#, fuzzy
+#~ msgid ""
+#~ "Check this box if you want specify the number of days in the future for "
+#~ "pending To-dos."
+#~ msgstr "Dangos eiliadau ar linell Marcus Bain"
+
+#, fuzzy
+#~| msgid "Hide co&mpleted to-dos"
+#~ msgid "Hide completed To-dos"
+#~ msgstr "Cuddio &i'w-wneudau a gwblhawyd"
+
+#, fuzzy
+#~ msgid ""
+#~ "Check this box if you do not want to see To-dos that have already been "
+#~ "completed."
+#~ msgstr "Dangos eiliadau ar linell Marcus Bain"
+
+#, fuzzy
+#~| msgid "Complete"
+#~ msgid "&Completed"
+#~ msgstr "Cyflawn"
+
+#, fuzzy
+#~ msgid "Hide To-dos without a due date"
+#~ msgstr "Cynnwys i-wneudau &heb ddyddiad disgwyliedig"
+
+#, fuzzy
+#~ msgid "Check this box if you do not want to see open-ended To-dos."
+#~ msgstr "Dangos eiliadau ar linell Marcus Bain"
+
+#, fuzzy
+#~ msgid "Hide unstarted To-dos"
+#~ msgstr "Cuddio i'w-wneudau a gwblhawyd"
+
+#, fuzzy
+#~ msgid ""
+#~ "Check this box if you do not want to see To-dos with a start date in the "
+#~ "future."
+#~ msgstr "Dangos eiliadau ar linell Marcus Bain"
+
+#, fuzzy
+#~ msgid "Hide in-progress To-dos"
+#~ msgstr "Cuddio i'w-wneudau a gwblhawyd"
+
+#, fuzzy
+#~ msgid ""
+#~ "Check this box if you do not want to see To-dos that have been started "
+#~ "but are not yet completed."
+#~ msgstr "Dangos eiliadau ar linell Marcus Bain"
+
+#, fuzzy
+#~| msgid "Hide co&mpleted to-dos"
+#~ msgid "Hide overdue To-dos"
+#~ msgstr "Cuddio &i'w-wneudau a gwblhawyd"
+
+#, fuzzy
+#~ msgid ""
+#~ "Check this box if you do not want to see To-dos that are past their due "
+#~ "date but have not yet been completed."
+#~ msgstr "Dangos eiliadau ar linell Marcus Bain"
+
+#, fuzzy
+#~| msgid "Import Calendar"
+#~ msgid "Show To-dos belonging to my calendars only"
+#~ msgstr "Mewnforio Calendr"
+
+#, fuzzy
+#~ msgid ""
+#~ "Check this box if you want the summary to show To-dos belonging to your "
+#~ "calendars only."
+#~ msgstr "Dangos eiliadau ar linell Marcus Bain"
+
+#, fuzzy
+#~| msgid "&Show To-do"
+#~ msgid "Show &my To-dos only"
+#~ msgstr "Dango&s I'w-Wneud"
+
+#, fuzzy
+#~| msgid "Purge To-dos"
+#~ msgid "Pending To-dos"
+#~ msgstr "Carthu I-Wneudau"
+
+#, fuzzy
+#~| msgid "day"
+#~ msgctxt "the to-do is due today"
+#~ msgid "Today"
+#~ msgstr "dydd"
+
+#, fuzzy
+#~ msgid "1 day ago"
+#~ msgid_plural "%1 days ago"
+#~ msgstr[0] "1 Diwrnod"
+#~ msgstr[1] " %1 o Ddiwrnodau"
+
+#, fuzzy
+#~| msgid "Due"
+#~ msgctxt "the to-do is due"
+#~ msgid "due"
+#~ msgstr "Disgwyliedig"
+
+#, fuzzy
+#~ msgid "No pending to-dos due within the next day"
+#~ msgid_plural "No pending to-dos due within the next %1 days"
+#~ msgstr[0] "Eitemau dis&gwyliedig yn yr amrediad:"
+#~ msgstr[1] "Eitemau dis&gwyliedig yn yr amrediad:"
+
+#, fuzzy
+#~| msgctxt "delete completed to-dos"
+#~| msgid "Pur&ge Completed"
+#~ msgid "&Mark To-do Completed"
+#~ msgstr "&Carthiad wedi'i Gwblhau"
+
+#, fuzzy
+#~| msgid "Edit To-do"
+#~ msgid "Edit To-do: \"%1\""
+#~ msgstr "Golygu I'w-Wneud"
+
+#, fuzzy
+#~ msgctxt "the to-do starts today"
+#~ msgid "starts today"
+#~ msgstr "Dyddiad dechrau:"
+
+#, fuzzy
+#~| msgid "co&mpleted"
+#~ msgctxt "the to-do is completed"
+#~ msgid "completed"
+#~ msgstr "cy&flawn"
+
+#, fuzzy
+#~ msgctxt "Separator for status like this: overdue, completed"
+#~ msgid ","
+#~ msgstr ","
+
+#, fuzzy
+#~| msgid "Calendar"
+#~ msgid "Special Dates Summary Configuration"
+#~ msgstr "Calendr"
+
+#, fuzzy
+#~ msgid ""
+#~ "Check this box if you want to see special occasions occurring on this "
+#~ "date only."
+#~ msgstr "Dangos eiliadau ar linell Marcus Bain"
+
+#, fuzzy
+#~ msgid ""
+#~ "Check this box if you want to see special occasions that start sometime "
+#~ "during the next 31 days."
+#~ msgstr "Dangos eiliadau ar linell Marcus Bain"
+
+#, fuzzy
+#~ msgid ""
+#~ "Check this box if you want to specify the number of days in the future "
+#~ "for upcoming special occasions."
+#~ msgstr "Dangos eiliadau ar linell Marcus Bain"
+
+#, fuzzy
+#~| msgid "Import Calendar"
+#~ msgid "Show birthdays from your calendar"
+#~ msgstr "Mewnforio Calendr"
+
+#, fuzzy
+#~| msgid "Import Calendar"
+#~ msgid "Show holidays from your calendar"
+#~ msgstr "Mewnforio Calendr"
+
+#, fuzzy
+#~ msgid "Show &holidays"
+#~ msgstr "&Dangos amser fel:"
+
+#, fuzzy
+#~| msgid "Special Occasion"
+#~ msgid "Show s&pecial occasions"
+#~ msgstr "Achlysur Arbennig"
+
+#, fuzzy
+#~ msgid "Show birth&days"
+#~ msgstr "Dangos"
+
+#, fuzzy
+#~| msgid "day"
+#~ msgctxt "the special day is today"
+#~ msgid "Today"
+#~ msgstr "dydd"
+
+#, fuzzy
+#~| msgid "Birthday"
+#~ msgid "Birthday"
+#~ msgstr "Penblwydd"
+
+#~ msgid "Holiday"
+#~ msgstr "Gŵyl"
+
+#, fuzzy
+#~| msgid "Special Occasion"
+#~ msgid "Special Occasion"
+#~ msgstr "Achlysur Arbennig"
+
+#, fuzzy
+#~| msgid "Next year"
+#~ msgid "one year"
+#~ msgid_plural "%1 years"
+#~ msgstr[0] "Blwyddyn Nesaf"
+#~ msgstr[1] "Blwyddyn Nesaf"
+
+#, fuzzy
+#~| msgid "Send Email"
+#~ msgid "Send &Mail"
+#~ msgstr "Anfon Ebost"
+
+#, fuzzy
+#~ msgid "View &Contact"
+#~ msgstr "Chwilio Mewn"
+
+#, fuzzy
+#~| msgid "Current Maintainer"
+#~ msgid "Current Maintainer"
+#~ msgstr "Cynhaliwr Cyfredol"
+
+#~ msgid "Calendar"
+#~ msgstr "Calendr"
+
+#~ msgid "New Calendar"
+#~ msgstr "Calendr Newydd"
+
+#, fuzzy
+#~| msgid "read-only"
+#~ msgctxt "the calendar is read-only"
+#~ msgid "read-only"
+#~ msgstr "darllen-yn-unig"
+
+#, fuzzy
+#~ msgid "Import the specified files as separate calendars"
+#~ msgstr "Ychwanegu Atodiad"
+
+#, fuzzy
+#~ msgid "Merge the specified files into an existing calendar"
+#~ msgstr "Ychwanegu Atodiad"
+
+#, fuzzy
+#~| msgid "Merged calendar '%1'."
+#~ msgid "Merged calendar"
+#~ msgstr "Calendr '%1' wedi ei gyfuno."
+
+#~ msgctxt "Default export file"
+#~ msgid "calendar.html"
+#~ msgstr "calendar.html"
+
+#, fuzzy
+#~| msgid "Personal"
+#~ msgctxt "@title:tab personal settings"
+#~ msgid "Personal"
+#~ msgstr "Personol"
+
+#, fuzzy
+#~ msgctxt "@title:group email settings"
+#~ msgid "Email Settings"
+#~ msgstr "Cyfarfod"
+
+#, fuzzy
+#~| msgid "Travel"
+#~ msgctxt "@title:tab"
+#~ msgid "Save"
+#~ msgstr "Teithio"
+
+#, fuzzy
+#~| msgid "Import Calendar"
+#~ msgctxt "@title:group"
+#~ msgid "Exporting Calendar"
+#~ msgstr "Mewnforio Calendr"
+
+#, fuzzy
+#~ msgctxt "@title:group"
+#~ msgid "Show/Hide Options"
+#~ msgstr "Lleoliad:"
+
+#, fuzzy
+#~| msgid "Calendar"
+#~ msgctxt "@title:tab calendar account settings"
+#~ msgid "Calendars"
+#~ msgstr "Calendr"
+
+#, fuzzy
+#~| msgid "Personal"
+#~ msgctxt "@title:tab"
+#~ msgid "Regional"
+#~ msgstr "Personol"
+
+#, fuzzy
+#~| msgid "Holiday"
+#~ msgctxt "@title:group"
+#~ msgid "Holidays"
+#~ msgstr "Gŵyl"
+
+#, fuzzy
+#~| msgctxt "short_weekday date (e.g. Mon 13)"
+#~| msgid "%1 %2"
+#~ msgctxt "Holday region, region language"
+#~ msgid "%1 (%2)"
+#~ msgstr "%1 %2"
+
+#, fuzzy
+#~| msgid "(None)"
+#~ msgctxt "No holiday region"
+#~ msgid "None"
+#~ msgstr "(Dim)"
+
+#, fuzzy
+#~| msgid "Working Hours"
+#~ msgctxt "@title:group"
+#~ msgid "Working Period"
+#~ msgstr "Oriau Gweithio"
+
+#, fuzzy
+#~ msgctxt "@title:tab"
+#~ msgid "Default Values"
+#~ msgstr "Fformat Calendr Rhagosodedig"
+
+#, fuzzy
+#~| msgid "Appointment"
+#~ msgctxt "@title:group"
+#~ msgid "Appointments"
+#~ msgstr "Apwyntiad"
+
+#, fuzzy
+#~| msgid "Reminder"
+#~ msgctxt "@title:group"
+#~ msgid "Reminders"
+#~ msgstr "Atgof"
+
+#, fuzzy
+#~ msgctxt "@label"
+#~ msgid "Default reminder time:"
+#~ msgstr "Amser larwm rhagosodedig:"
+
+#, fuzzy
+#~| msgid "minute(s)"
+#~ msgctxt "@item:inlistbox reminder units in minutes"
+#~ msgid "minute(s)"
+#~ msgstr "munud(au)"
+
+#, fuzzy
+#~| msgid "hour(s)"
+#~ msgctxt "@item:inlistbox reminder time units in hours"
+#~ msgid "hour(s)"
+#~ msgstr "awr(oriau)"
+
+#, fuzzy
+#~| msgid "day(s)"
+#~ msgctxt "@item:inlistbox reminder time units in days"
+#~ msgid "day(s)"
+#~ msgstr "dydd(iau)"
+
+#, fuzzy
+#~| msgid "General"
+#~ msgctxt "@title:tab general settings"
+#~ msgid "General"
+#~ msgstr "Cyffredinol"
+
+#, fuzzy
+#~ msgctxt "@title:group"
+#~ msgid "Display Options"
+#~ msgstr "Dangos"
+
+#, fuzzy
+#~| msgctxt "suffix in the N days spin box"
+#~| msgid " days"
+#~ msgctxt "@label suffix in the N days spin box"
+#~ msgid " days"
+#~ msgstr "o ddiwrnodau"
+
+#, fuzzy
+#~ msgctxt "@title:group"
+#~ msgid "Date Navigator"
+#~ msgstr "Dangos diwrnod Omer"
+
+#, fuzzy
+#~| msgid "Agenda View"
+#~ msgctxt "@title:tab"
+#~ msgid "Agenda View"
+#~ msgstr "Golwg agenda:"
+
+#, fuzzy
+#~| msgid "Month View"
+#~ msgctxt "@title:tab"
+#~ msgid "Month View"
+#~ msgstr "Golwg mis"
+
+#, fuzzy
+#~ msgctxt "@title:tab"
+#~ msgid "Todo View"
+#~ msgstr "Math Golwg"
+
+#, fuzzy
+#~ msgctxt "@title:group"
+#~ msgid "Other Options"
+#~ msgstr "Dis&grifiadau"
+
+#, fuzzy
+#~| msgid "Categories"
+#~ msgctxt "@title:group"
+#~ msgid "Categories"
+#~ msgstr "Categorïau"
+
+#, fuzzy
+#~| msgid "Resources"
+#~ msgctxt "@title:group"
+#~ msgid "Resources"
+#~ msgstr "Adnoddau"
+
+#, fuzzy
+#~| msgid "month(s)"
+#~ msgctxt "@title:tab"
+#~ msgid "Fonts"
+#~ msgstr "mis(oedd)"
+
+#, fuzzy
+#~| msgid "Event text"
+#~ msgctxt "@label"
+#~ msgid "Event text"
+#~ msgstr "Testun Digwyddiad:"
+
+#, fuzzy
+#~| msgid "Name"
+#~ msgctxt "@title:column plugin name"
+#~ msgid "Name"
+#~ msgstr "Enw"
+
+#, fuzzy
+#~ msgctxt "@action:button"
+#~ msgid "Configure &Plugin..."
+#~ msgstr "Ffurfweddu'r &Ategion"
+
+#, fuzzy
+#~| msgid "Destination"
+#~ msgctxt "@title:group"
+#~ msgid "Position"
+#~ msgstr "Cyrchfan"
+
+#, fuzzy
+#~ msgctxt "@option:check"
+#~ msgid "Show at the top of the agenda views"
+#~ msgstr "Dangos y dewisiad yn unig"
+
+#, fuzzy
+#~ msgctxt "@option:check"
+#~ msgid "Show at the bottom of the agenda views"
+#~ msgstr "Dangos y dewisiad yn unig"
+
+#, fuzzy
+#~| msgid "Calendar"
+#~ msgctxt "@title:group"
+#~ msgid "Calendar Decorations"
+#~ msgstr "Calendr"
+
+#, fuzzy
+#~ msgctxt "@title:group"
+#~ msgid "Other Plugins"
+#~ msgstr "Dis&grifiadau"
+
+#, fuzzy
+#~| msgid "Unable to configure this plugin"
+#~ msgctxt "@info"
+#~ msgid "Unable to configure this plugin"
+#~ msgstr "Wedi methu ffurfweddu yr ategyn hwn"
+
+#, fuzzy
+#~ msgid "Full name of the calendar owner"
+#~ msgstr "Rhowch enw ar gyfer y patrymlun:"
+
+#, fuzzy
+#~ msgid "The full name of the calendar owner for the export"
+#~ msgstr "Rhowch enw ar gyfer y patrymlun:"
+
+#, fuzzy
+#~ msgid "The email address of the calendar owner for the export"
+#~ msgstr "Rhowch enw ar gyfer y patrymlun:"
+
+#, fuzzy
+#~ msgid "Creator application of the calendar"
+#~ msgstr "Methu cadw'r eitem i-wneud"
+
+#, fuzzy
+#~ msgid "Enter a creator application of the calendar, for example KOrganizer."
+#~ msgstr "Methu cadw'r eitem i-wneud"
+
+#, fuzzy
+#~| msgid "Server URL:"
+#~ msgid "Creator URL"
+#~ msgstr "URL y gweinydd:"
+
+#, fuzzy
+#~| msgid "&Title:"
+#~ msgid "Page Title"
+#~ msgstr "&Teitl:"
+
+#, fuzzy
+#~ msgid "The title of the exported page"
+#~ msgstr "Amser larwm rhagosodedig:"
+
+#, fuzzy
+#~ msgid "Date start"
+#~ msgstr "Canoli wrth Gychwyn"
+
+#, fuzzy
+#~| msgid "Date Range"
+#~ msgid "Date end"
+#~ msgstr "Amrediad Dyddiadau"
+
+#, fuzzy
+#~| msgid "Exclude holidays"
+#~ msgid "Exclude private items from the export"
+#~ msgstr "Gwahardd gwyliau"
+
+#, fuzzy
+#~ msgid "Check this box if you do NOT want to export your private items."
+#~ msgstr "Dangos eiliadau ar linell Marcus Bain"
+
+#, fuzzy
+#~| msgid "Exclude holidays"
+#~ msgid "Exclude confidential items from the export"
+#~ msgstr "Gwahardd gwyliau"
+
+#, fuzzy
+#~ msgid "Check this box if you do NOT want to export your confidential items."
+#~ msgstr "Dangos eiliadau ar linell Marcus Bain"
+
+#, fuzzy
+#~| msgid "To-do list"
+#~ msgid "Export events as a list"
+#~ msgstr "Rhestr I'w-Wneud"
+
+#, fuzzy
+#~ msgid "Check this box if you want your events shown as a list."
+#~ msgstr "Dangos eiliadau ar linell Marcus Bain"
+
+#, fuzzy
+#~ msgid "Export in month view"
+#~ msgstr "Dangos y dewisiad yn unig"
+
+#, fuzzy
+#~ msgid "Export events in a month view"
+#~ msgstr "Dangos y dewisiad yn unig"
+
+#, fuzzy
+#~ msgid "Check this box if you want your events shown in a month view."
+#~ msgstr "Dangos eiliadau ar linell Marcus Bain"
+
+#, fuzzy
+#~ msgid "Export in week view"
+#~ msgstr "Argraffu fel golwg am&serlen:"
+
+#, fuzzy
+#~ msgid "Export events in a week view"
+#~ msgstr "Argraffu fel golwg am&serlen:"
+
+#, fuzzy
+#~ msgid "Check this box if you want your events shown in a week view."
+#~ msgstr "Dangos eiliadau ar linell Marcus Bain"
+
+#, fuzzy
+#~ msgid "Title of the calendar"
+#~ msgstr "Methu cadw'r eitem i-wneud"
+
+#, fuzzy
+#~ msgid "Title for the event calendar"
+#~ msgstr "Methu cadw'r eitem i-wneud"
+
+#, fuzzy
+#~| msgid "Please select type of the new resource:"
+#~ msgid "Enter a string to use for the title of the event calendar."
+#~ msgstr "Dewiswch fath yr adnodd newydd:"
+
+#, fuzzy
+#~| msgid "Export to HTML with every save"
+#~ msgid "Export location of the events"
+#~ msgstr "Allforio i HTML gyda pob cadwaith"
+
+#, fuzzy
+#~ msgid "Include the event locations"
+#~ msgstr "Gwybodaeth Gweinydd"
+
+#, fuzzy
+#~ msgid ""
+#~ "Check this box if you want the event locations to be exported, only if "
+#~ "the event has a location."
+#~ msgstr "Dangos eiliadau ar linell Marcus Bain"
+
+#, fuzzy
+#~| msgid "Select Cate&gories..."
+#~ msgid "Include the event categories"
+#~ msgstr "Dewis Cate&gorïau..."
+
+#, fuzzy
+#~ msgid "Check this box if you want the event categories to be exported."
+#~ msgstr "Dangos eiliadau ar linell Marcus Bain"
+
+#, fuzzy
+#~ msgid "Include the event attendees"
+#~ msgstr "Canoli wrth Gychwyn"
+
+#, fuzzy
+#~ msgid "Check this box if you want the event attendees to be exported."
+#~ msgstr "Dangos eiliadau ar linell Marcus Bain"
+
+#, fuzzy
+#~| msgid "To-do list"
+#~ msgid "Export to-do list"
+#~ msgstr "Rhestr I'w-Wneud"
+
+#, fuzzy
+#~| msgid "To-do list"
+#~ msgid "Export the to-do list"
+#~ msgstr "Rhestr I'w-Wneud"
+
+#, fuzzy
+#~ msgid ""
+#~ "Check this box if you want your to-do list to also be exported to the "
+#~ "HTML."
+#~ msgstr "Dangos eiliadau ar linell Marcus Bain"
+
+#, fuzzy
+#~ msgid "Title of the to-do list"
+#~ msgstr "Canoli wrth Gychwyn"
+
+#~ msgid "To-do List"
+#~ msgstr "Rhestr I'w-Wneud"
+
+#, fuzzy
+#~ msgid "Title for the to-do list"
+#~ msgstr "Canoli wrth Gychwyn"
+
+#, fuzzy
+#~ msgid "Include to-do due dates"
+#~ msgstr "Cynnwys i-wneudau &heb ddyddiad disgwyliedig"
+
+#, fuzzy
+#~ msgid ""
+#~ "Check this box if you want the to-do list due dates to be exported, if "
+#~ "the to-do does have a due date."
+#~ msgstr "Dangos eiliadau ar linell Marcus Bain"
+
+#, fuzzy
+#~ msgid "Include the to-do locations"
+#~ msgstr "Canoli wrth Gychwyn"
+
+#, fuzzy
+#~ msgid ""
+#~ "Check this box if you want the to-do locations to be exported, only if "
+#~ "the to-do has a location."
+#~ msgstr "Dangos eiliadau ar linell Marcus Bain"
+
+#, fuzzy
+#~| msgid "Select Cate&gories..."
+#~ msgid "Include the to-do categories"
+#~ msgstr "Dewis Cate&gorïau..."
+
+#, fuzzy
+#~ msgid "Check this box if you want the to-do categories to be exported."
+#~ msgstr "Dangos eiliadau ar linell Marcus Bain"
+
+#, fuzzy
+#~ msgid "Include the to-do attendees"
+#~ msgstr "1 munud"
+
+#, fuzzy
+#~ msgid "Check this box if you want the to-do attendees to be exported."
+#~ msgstr "Dangos eiliadau ar linell Marcus Bain"
+
+#, fuzzy
+#~ msgid "Export journals"
+#~ msgstr "&Dyddlyfr"
+
+#, fuzzy
+#~ msgid "Check this box if you want to export journals as well."
+#~ msgstr "Dangos eiliadau ar linell Marcus Bain"
+
+#, fuzzy
+#~ msgid "Title of the journal list"
+#~ msgstr "Dileu Hen Ddigwyddiadau"
+
+#, fuzzy
+#~ msgid "Journals"
+#~ msgstr "&Dyddlyfr"
+
+#, fuzzy
+#~ msgid "Title for the journal list"
+#~ msgstr "Dileu Hen Ddigwyddiadau"
+
+#, fuzzy
+#~ msgid "Export free/busy list"
+#~ msgstr "Nôl gwybo&daeth rydd/brysur pobl eraill"
+
+#, fuzzy
+#~ msgid "Check this box if you want to export free/busy information as well."
+#~ msgstr "Dangos eiliadau ar linell Marcus Bain"
+
+#, fuzzy
+#~ msgid "Title of the free/busy list"
+#~ msgstr "Nôl gwybo&daeth rydd/brysur pobl eraill"
+
+#, fuzzy
+#~ msgid "Busy times"
+#~ msgstr "dim amser"
+
+#, fuzzy
+#~ msgid "Title for the free/busy list"
+#~ msgstr "Nôl gwybo&daeth rydd/brysur pobl eraill"
+
+#, fuzzy
+#~| msgid "Export to HTML with every save"
+#~ msgid "Export to HTML periodically"
+#~ msgstr "Allforio i HTML gyda pob cadwaith"
+
+#, fuzzy
+#~| msgid "Save &interval in minutes"
+#~ msgid "Export &interval in minutes"
+#~ msgstr "Cyfnod &cadw, mewn munudau:"
+
+#~ msgid "Confirm deletes"
+#~ msgstr "Cadarnhau dileuon"
+
+#, fuzzy
+#~| msgid "Be added to the standard resource"
+#~ msgid "Be added to the standard calendar"
+#~ msgstr "Cael eu ychwanegu i'r adnodd safonol"
+
+#, fuzzy
+#~| msgid "Be asked which resource to use"
+#~ msgid "Be asked which calendar to use"
+#~ msgstr "Cael eu gofyn pa adnodd i'w ddefnyddio"
+
+#~ msgid "Day begins at"
+#~ msgstr "Diwrnod yn ddechrau am:"
+
+#~ msgid "Daily starting hour"
+#~ msgstr "Awr ddechrau dyddiol:"
+
+#~ msgid "Daily ending hour"
+#~ msgstr "Awr orffen dyddiol:"
+
+#~ msgid "Exclude holidays"
+#~ msgstr "Gwahardd gwyliau"
+
+#, fuzzy
+#~ msgid "Color busy days with a different background color"
+#~ msgstr "Lliw cefndir y golwg agenda:"
+
+#, fuzzy
+#~| msgid "Enable tooltips displaying summary of events"
+#~ msgid "Enable tooltips for displaying summaries"
+#~ msgstr "Galluogi cynghorion offer sy'n dangos crynodeb y digwyddiadau"
+
+#, fuzzy
+#~ msgid "To-dos use category colors"
+#~ msgstr "Lliw i-wneud sy'n ddisgwyliedig heddiw:"
+
+#, fuzzy
+#~ msgid "Next x days"
+#~ msgstr "Dyddiad &Nesaf"
+
+#, fuzzy
+#~| msgid "Show events that recur daily in date navigator"
+#~ msgid "Show items that recur daily"
+#~ msgstr ""
+#~ "Dangos digwyddiadau sy'n ail-ddigwydd bob dydd yn y llywiwr dyddiadau"
+
+#, fuzzy
+#~| msgid "Show events that recur weekly in date navigator"
+#~ msgid "Show items that recur weekly"
+#~ msgstr ""
+#~ "Dangos digwyddiadau sy'n ail-ddigwydd bob wythnos yn y llywiwr dyddiadau"
+
+#, fuzzy
+#~ msgid "Hour size"
+#~ msgstr "Awr"
+
+#, fuzzy
+#~ msgid "Show icons in agenda view items"
+#~ msgstr "Dangos y dewisiad yn unig"
+
+#, fuzzy
+#~ msgid "Display icons in agenda view items"
+#~ msgstr "Dangos y dewisiad yn unig"
+
+#, fuzzy
+#~| msgid "&Show To-do"
+#~ msgid "Show to-dos"
+#~ msgstr "Dango&s I'w-Wneud"
+
+#, fuzzy
+#~ msgid "Check this box to display to-dos in the agenda view."
+#~ msgstr "Dangos eiliadau ar linell Marcus Bain"
+
+#, fuzzy
+#~ msgid "Display to-dos in the agenda view"
+#~ msgstr "Dangos y dewisiad yn unig"
+
+#, fuzzy
+#~ msgid "Show current-time (Marcus Bains) line"
+#~ msgstr "Dangos amser cyfredol (llinell Marcus Bains)"
+
+#, fuzzy
+#~ msgid "Display the current-time indicator"
+#~ msgstr "Amser cyfarfod rhagosodedig:"
+
+#, fuzzy
+#~ msgid "Show seconds on the current-time (Marcus Bains) line"
+#~ msgstr "Dangos amser cyfredol (llinell Marcus Bains)"
+
+#, fuzzy
+#~ msgid "Check this box if you want to show seconds on the current-time line."
+#~ msgstr "Dangos eiliadau ar linell Marcus Bain"
+
+#, fuzzy
+#~ msgid "Display seconds with the current-time indicator"
+#~ msgstr "Dangos eiliadau ar linell Marcus Bain"
+
+#~ msgid "Time range selection in agenda view starts event editor"
+#~ msgstr ""
+#~ "Mae dewis amrediad amser yng golwg agenda yn dechrau'r golygydd "
+#~ "digwyddiadau"
+
+#, fuzzy
+#~| msgid "Calendar"
+#~ msgid "Calendar inside, category outside"
+#~ msgstr "Calendr"
+
+#, fuzzy
+#~ msgid "Only category"
+#~ msgstr "Categorïau"
+
+#, fuzzy
+#~| msgid "Calendar"
+#~ msgid "Only calendar"
+#~ msgstr "Calendr"
+
+#, fuzzy
+#~| msgid "Active Calendar"
+#~ msgid "Multiple Calendar Display"
+#~ msgstr "Calendr Weithredol"
+
+#, fuzzy
+#~| msgid "Merged calendar '%1'."
+#~ msgid "Tab through calendars"
+#~ msgstr "Calendr '%1' wedi ei gyfuno."
+
+#, fuzzy
+#~ msgid "Show icons in month view items"
+#~ msgstr "Dangos y dewisiad yn unig"
+
+#, fuzzy
+#~| msgid "Enable scrollbars in month view cells"
+#~ msgid "Display icons in month view items"
+#~ msgstr "Galluogi bariau scrolio tu fewn i gellau'r golwg misol"
+
+#, fuzzy
+#~ msgid "Show time in month view items"
+#~ msgstr "Dangos y dewisiad yn unig"
+
+#, fuzzy
+#~| msgid "Enable scrollbars in month view cells"
+#~ msgid "Check this box to display the time in month view items."
+#~ msgstr "Galluogi bariau scrolio tu fewn i gellau'r golwg misol"
+
+#, fuzzy
+#~| msgid "Enable scrollbars in month view cells"
+#~ msgid "Display time in month view items"
+#~ msgstr "Galluogi bariau scrolio tu fewn i gellau'r golwg misol"
+
+#, fuzzy
+#~| msgid "Enable scrollbars in month view cells"
+#~ msgid "Check this box to display to-dos in the month view."
+#~ msgstr "Galluogi bariau scrolio tu fewn i gellau'r golwg misol"
+
+#, fuzzy
+#~| msgid "Enable scrollbars in month view cells"
+#~ msgid "Display to-dos in the month view"
+#~ msgstr "Galluogi bariau scrolio tu fewn i gellau'r golwg misol"
+
+#, fuzzy
+#~ msgid "Show journals"
+#~ msgstr "&Dyddlyfr"
+
+#, fuzzy
+#~| msgid "Enable scrollbars in month view cells"
+#~ msgid "Display journals in the month view"
+#~ msgstr "Galluogi bariau scrolio tu fewn i gellau'r golwg misol"
+
+#~ msgid "Month view uses full window"
+#~ msgstr "Mae'r golwg misol yn defnyddio ffenestr llawn"
+
+#, fuzzy
+#~ msgid "To-do list view uses full window"
+#~ msgstr "Mae golwg I'w-Wneud yn defnyddio ffenestr llawn"
+
+#, fuzzy
+#~ msgid "Display to-do list in a full KOrganizer window"
+#~ msgstr "Mae golwg I'w-Wneud yn defnyddio ffenestr llawn"
+
+#, fuzzy
+#~| msgid "Enable scrollbars in month view cells"
+#~ msgid "Display to-dos in a flat list"
+#~ msgstr "Galluogi bariau scrolio tu fewn i gellau'r golwg misol"
+
+#, fuzzy
+#~ msgid ""
+#~ "Check this box if you want to see all your to-dos in a flat list instead "
+#~ "of being arranged in a hierarchical tree."
+#~ msgstr "Dangos eiliadau ar linell Marcus Bain"
+
+#, fuzzy
+#~ msgid "Record completed to-dos in journal entries"
+#~ msgstr "Cuddio i'w-wneudau a gwblhawyd"
+
+#, fuzzy
+#~ msgid "Holiday color"
+#~ msgstr "Lliw Gwyliau:"
+
+#, fuzzy
+#~ msgid "Agenda view background color"
+#~ msgstr "Lliw cefndir y golwg agenda:"
+
+#, fuzzy
+#~ msgid "Select the agenda view background color here."
+#~ msgstr "Lliw cefndir y golwg agenda:"
+
+#, fuzzy
+#~ msgid "Agenda view current-time line color"
+#~ msgstr "Amser cyfarfod rhagosodedig:"
+
+#, fuzzy
+#~ msgid "Select a color to use for the current-time (Marcus Bains) line."
+#~ msgstr "Dangos amser cyfredol (llinell Marcus Bains)"
+
+#, fuzzy
+#~ msgid "Use this color for the Agenda View current-time (Marcus Bains) line"
+#~ msgstr "Dangos amser cyfredol (llinell Marcus Bains)"
+
+#, fuzzy
+#~ msgid "Busy days background color"
+#~ msgstr "Lliw cefndir y golwg agenda:"
+
+#, fuzzy
+#~ msgid "Working hours color"
+#~ msgstr "Lliw oriau gwaith:"
+
+#, fuzzy
+#~ msgid "Select the working hours color for the agenda view here."
+#~ msgstr "Lliw cefndir y golwg agenda:"
+
+#, fuzzy
+#~ msgid "To-do due today color"
+#~ msgstr "Lliw i-wneud sy'n ddisgwyliedig heddiw:"
+
+#, fuzzy
+#~ msgid "Select the to-do due today color here."
+#~ msgstr "Lliw i-wneud sy'n ddisgwyliedig heddiw:"
+
+#, fuzzy
+#~ msgid "To-do overdue color"
+#~ msgstr "Lliw i-wneud sy'n hwyr:"
+
+#, fuzzy
+#~ msgid "Select the to-do overdue color here."
+#~ msgstr "Lliw i-wneud sy'n hwyr:"
+
+#~ msgid "Time bar"
+#~ msgstr "Bar amser:"
+
+#~ msgid "Month view"
+#~ msgstr "Golwg mis"
+
+#~ msgid "Agenda view"
+#~ msgstr "Golwg agenda:"
+
+#, fuzzy
+#~ msgid "Current-time line"
+#~ msgstr "Cynhaliwr Cyfredol"
+
+#, fuzzy
+#~ msgid "Default todo attachment method"
+#~ msgstr "Amser cyfarfod rhagosodedig:"
+
+#, fuzzy
+#~| msgid "Attach&ments"
+#~ msgid "Attach complete message"
+#~ msgstr "Atodia&dau"
+
+#~ msgid "Highlight color"
+#~ msgstr "Lliw amlygu"
+
+#, fuzzy
+#~ msgid "Month view background color"
+#~ msgstr "Lliw cefndir y golwg agenda:"
+
+#, fuzzy
+#~ msgid "Select the Month view background color here."
+#~ msgstr "Lliw cefndir y golwg agenda:"
+
+#, fuzzy
+#~ msgid "Select the working hours background color for the Month view here."
+#~ msgstr "Lliw cefndir y golwg agenda:"
+
+#, fuzzy
+#~ msgid "Default event color"
+#~ msgstr "Lliw digwyddiad rhagosodedig:"
+
+#, fuzzy
+#~ msgid "Search"
+#~ msgstr "Chwilio Mewn"
+
+#~ msgid "&New"
+#~ msgstr "&Newydd"
+
+#, fuzzy
+#~ msgid "Filter Details"
+#~ msgstr "Hidlen wedi ei galluogi"
+
+#, fuzzy
+#~| msgid "Name:"
+#~ msgctxt "filter name"
+#~ msgid "Name:"
+#~ msgstr "Enw:"
+
+#, fuzzy
+#~ msgid "Hide &recurring events and to-dos"
+#~ msgstr "Cuddio Digwyddiadau sy'n Ail-ddigwydd"
+
+#~ msgid "Hide co&mpleted to-dos"
+#~ msgstr "Cuddio &i'w-wneudau a gwblhawyd"
+
+#, fuzzy
+#~ msgid "Hide &inactive to-dos"
+#~ msgstr "Cuddio i'w-wneudau a gwblhawyd"
+
+#~ msgid "Categories"
+#~ msgstr "Categorïau"
+
+#, fuzzy
+#~ msgid "Show all except selected"
+#~ msgstr "Dangos po&peth ond y dewisiad"
+
+#~ msgid "Show only selected"
+#~ msgstr "Dangos y dewisiad yn unig"
+
+#~ msgid "Change..."
+#~ msgstr "Newid..."
+
+#~ msgid "P&ublish"
+#~ msgstr "Cyh&oeddi"
+
+#~ msgid ""
+#~ "By publishing Free/Busy information, you allow others to take your "
+#~ "calendar into account when inviting you for a meeting. Only the times you "
+#~ "have already busy are published, not why they are busy."
+#~ msgstr ""
+#~ "Os cyhoeddwch wybodaeth Rhydd/Prysur, rydych yn gadael i eraill gymryd "
+#~ "sylw o'ch calendr wrth eich gwahodd i gyfarfod.  Cyhoeddir yn unig yr "
+#~ "amserau pryd yr ydych yn brysur, dim pam y maent yn brysur."
+
+#~ msgid "Publish your free/&busy information automatically"
+#~ msgstr "Cyhoeddi eich &gwybodaeth rydd/brysur yn ymysgogol"
+
+#, fuzzy
+#~ msgid "Minimum time between uploads (in minutes):"
+#~ msgstr "Amser lleiaf &rhwng lanlwythiadau (mewn munudau):"
+
+#~ msgid "Publish"
+#~ msgstr "Cyhoeddi"
+
+#~ msgid "days of free/busy information"
+#~ msgstr "dyddiadau o wybodaeth rhydd/prysur"
+
+#~ msgid "Server Information"
+#~ msgstr "Gwybodaeth Gweinydd"
+
+#~ msgid "Password:"
+#~ msgstr "Cyfrinair:"
+
+#, fuzzy
+#~| msgid "Username:"
+#~ msgctxt "login name on the Kolab server"
+#~ msgid "Username:"
+#~ msgstr "Enw defnyddiwr:"
+
+#~ msgid "Remember p&assword"
+#~ msgstr "Cofio cyfr&inair"
+
+#~ msgid "Server URL:"
+#~ msgstr "URL y gweinydd:"
+
+#~ msgid "&Retrieve"
+#~ msgstr "&Nôl"
+
+#~ msgid ""
+#~ "By retrieving Free/Busy information that others have published, you can "
+#~ "take their calendar into account when inviting them to a meeting."
+#~ msgstr ""
+#~ "Gan nôl gwybodaeth rydd/brysur a gyhoeddwyd gan eraill, gallwch gymryd "
+#~ "sylw o'u calendr wrth eu gwahodd i gyfarfod."
+
+#, fuzzy
+#~ msgid "Retrieve other people's free/&busy information automatically"
+#~ msgstr "Nôl gwybo&daeth rydd/brysur pobl eraill"
+
+#~ msgid "User&name:"
+#~ msgstr "Enw &defnyddiwr:"
+
+#~ msgid "Passwor&d:"
+#~ msgstr "Cyfrina&ir:"
+
+#~ msgid "Re&member password"
+#~ msgstr "Co&fio cyfrinair"
+
+#~ msgid "&Search for:"
+#~ msgstr "&Chwilio am:"
+
+#~ msgid "Search For"
+#~ msgstr "Chwilio am:"
+
+#, fuzzy
+#~ msgid ""
+#~ "Check this box if you want to search for Event items that match the "
+#~ "search criteria."
+#~ msgstr "Dangos eiliadau ar linell Marcus Bain"
+
+#~ msgid "&Events"
+#~ msgstr "&Digwyddiadau:"
+
+#, fuzzy
+#~ msgid ""
+#~ "Check this box if you want to search for Journal items that match the "
+#~ "search criteria."
+#~ msgstr "Dangos eiliadau ar linell Marcus Bain"
+
+#, fuzzy
+#~ msgid "&Journals"
+#~ msgstr "&Dyddlyfr"
+
+#, fuzzy
+#~ msgid ""
+#~ "Check this box if you want to search To-do items that match the search "
+#~ "criteria."
+#~ msgstr "Dangos eiliadau ar linell Marcus Bain"
+
+#, fuzzy
+#~ msgid "To-&dos"
+#~ msgstr "I-&Wneudau"
+
+#~ msgid "Search In"
+#~ msgstr "Chwilio Mewn"
+
+#, fuzzy
+#~ msgid ""
+#~ "Check this box if you want to match item categories against your search "
+#~ "pattern."
+#~ msgstr "Dangos eiliadau ar linell Marcus Bain"
+
+#~ msgid "Cate&gories"
+#~ msgstr "Ca&tegorïau"
+
+#, fuzzy
+#~ msgid ""
+#~ "Check this box if you want to match item locations against your search "
+#~ "pattern."
+#~ msgstr "Dangos eiliadau ar linell Marcus Bain"
+
+#, fuzzy
+#~ msgid "Locations"
+#~ msgstr "&Lleoliad:"
+
+#, fuzzy
+#~| msgid "&Description"
+#~ msgid "Include item descriptions in your search"
+#~ msgstr "&Disgrifiad"
+
+#, fuzzy
+#~ msgid ""
+#~ "Check this box if you want to match item descriptions against your search "
+#~ "pattern."
+#~ msgstr "Dangos eiliadau ar linell Marcus Bain"
+
+#~ msgid "Desc&riptions"
+#~ msgstr "Dis&grifiadau"
+
+#, fuzzy
+#~ msgid ""
+#~ "Check this box if you want to match item summaries against your search "
+#~ "pattern."
+#~ msgstr "Dangos eiliadau ar linell Marcus Bain"
+
+#~ msgid "Su&mmaries"
+#~ msgstr "Cr&ynodebau"
+
+#, fuzzy
+#~ msgid "Attendees"
+#~ msgstr "Cyfarfotwyr"
+
+#~ msgid "Fr&om:"
+#~ msgstr "Od&diwrth:"
+
+#, fuzzy
+#~ msgid "Include items with a starting date on or after this date"
+#~ msgstr "Dileu Hen Ddigwyddiadau"
+
+#~ msgid "&To:"
+#~ msgstr "&I:"
+
+#, fuzzy
+#~ msgid "Include items with ending date on or before this date"
+#~ msgstr "Lliw i-wneud sy'n hwyr:"
+
+#, fuzzy
+#~ msgid "Include To-dos in the search that do not have a due date"
+#~ msgstr "Cynnwys i-wneudau &heb ddyddiad disgwyliedig"
+
+#, fuzzy
+#~ msgid ""
+#~ "Check this box to include To-dos without a due date in the search results."
+#~ msgstr "Dangos eiliadau ar linell Marcus Bain"
+
+#, fuzzy
+#~ msgid "Include To-dos &without a due date"
+#~ msgstr "Cynnwys i-wneudau &heb ddyddiad disgwyliedig"
+
+#, fuzzy
+#~| msgid "Location: "
+#~ msgctxt "Collection: name collectionId"
+#~ msgid "Collection: %1(%2)"
+#~ msgstr "Lleoliad:"
+
+#, fuzzy
+#~ msgid "Person: %1"
+#~ msgstr "Yn Ail-ddigwydd: %1"
+
+#, fuzzy
+#~| msgid "KMail"
+#~ msgid "Mail: %1"
+#~ msgstr "KMail"
+
+#, fuzzy
+#~| msgid "Organizer: %1"
+#~ msgid "Organization Unit: %1"
+#~ msgstr "Trefnydd: %1"
+
+#, fuzzy
+#~| msgid "Delete To-do"
+#~ msgid "Free/Busy calendar from %1"
+#~ msgstr "Dileu I'w-Wneud"
+
+#, fuzzy
+#~| msgid "Day"
+#~ msgid "Day"
+#~ msgstr "Dydd"
+
+#, fuzzy
+#~| msgid "Week"
+#~ msgid "Week"
+#~ msgstr "Wythnos"
+
+#, fuzzy
+#~| msgid "Month"
+#~ msgid "Month"
+#~ msgstr "Mis"
+
+#, fuzzy
+#~| msgid "Agenda view"
+#~ msgid "Agenda"
+#~ msgstr "Golwg agenda:"
+
+#, fuzzy
+#~| msgid "Agenda view"
+#~ msgid "Agenda %1"
+#~ msgstr "Golwg agenda:"
+
+#, fuzzy
+#~| msgid "&Title:"
+#~ msgid "Title"
+#~ msgstr "&Teitl:"
+
+#, fuzzy
+#~| msgid "New Calendar"
+#~ msgid "Selected Calendars"
+#~ msgstr "Calendr Newydd"
+
+#, fuzzy
+#~| msgid "Print week &numbers"
+#~ msgid "Scroll to week number %1"
+#~ msgstr "Argra&ffu rhifau wythnos"
+
+#~ msgid "%1"
+#~ msgstr "%1"
+
+#, fuzzy
+#~| msgid "Calendar"
+#~ msgid "Calendar's custom icon"
+#~ msgstr "Calendr"
+
+#, fuzzy
+#~| msgid "To-do:"
+#~ msgid "To-do"
+#~ msgstr "I'w-Wneud:"
+
+#, fuzzy
+#~| msgid "&Journal"
+#~ msgid "Journal"
+#~ msgstr "&Dyddlyfr"
+
+#, fuzzy
+#~| msgid "Rec&urrence"
+#~ msgid "Recurring"
+#~ msgstr "Ail-dd&igwydd"
+
+#, fuzzy
+#~| msgid "Alarms"
+#~ msgid "Alarm"
+#~ msgstr "Larymau"
+
+#, fuzzy
+#~| msgid "read-only"
+#~ msgid "Read Only"
+#~ msgstr "darllen-yn-unig"
+
+#, fuzzy
+#~| msgid "Ascending"
+#~ msgid "Attending"
+#~ msgstr "Esgynnol"
+
+#, fuzzy
+#~| msgid "KOrganizer"
+#~ msgid "Organizer"
+#~ msgstr "KTrefnydd"
+
+#~ msgid "Select a month"
+#~ msgstr "Dewiswch mis"
+
+#, fuzzy
+#~| msgid "Select a month"
+#~ msgid "Select a year"
+#~ msgstr "Dewiswch mis"
+
+#, fuzzy
+#~| msgid "%1"
+#~ msgctxt "monthname"
+#~ msgid "%1"
+#~ msgstr "%1"
+
+#, fuzzy
+#~| msgid "%1"
+#~ msgctxt "4 digit year"
+#~ msgid "%1"
+#~ msgstr "%1"
+
+#, fuzzy
+#~| msgid "*.ics|ICalendars"
+#~ msgid "*.ics|iCalendars"
+#~ msgstr "*.ics|ICalendrau"
+
+#, fuzzy
+#~ msgid "*.vcs|vCalendars"
+#~ msgstr "*.vcs|VCalendrau"
+
+#~ msgid "Enable scrollbars in month view cells"
+#~ msgstr "Galluogi bariau scrolio tu fewn i gellau'r golwg misol"
+
+#, fuzzy
+#~ msgid ""
+#~ "<p>...that you can select whether the week starts on Monday or on Sunday "
+#~ "in the System Settings? KOrganizer uses this setting. Look at \n"
+#~ "Locale->Country/Region & Languages in the System Settings, or select "
+#~ "<b>Settings</b>,\n"
+#~ "<b>Configure Date & Time...</b> from the menu bar. Select the Calendar "
+#~ "tab.\n"
+#~ "</p>\n"
+#~ msgstr ""
+#~ "<p>...y gallwch ddewis a ddylai'r wythnos ddechrau ar ddydd Llun neu "
+#~ "ddydd Sul yn y Ganolfan Reoli KDE?\n"
+#~ " Mae kTrefnydd yn defnyddio'r gosodiad yma.  Ewch i Personoleiddio -> "
+#~ "Gwlad &\n"
+#~ " Ieithoedd, ar y Tab Amser & Dyddiadau.\n"
+
+#, fuzzy
+#~ msgid ""
+#~ "<p>...that you can store your calendar on an FTP server? Use the standard "
+#~ "file dialog to save the calendar to a URL like <b>ftp://"
+#~ "username@ftpserver/filename</b>. You can make your calendar active and "
+#~ "load and save it as if it were local, or add it permanently to your "
+#~ "calendar list, by adding a remote file from the Calendar Manager. Just "
+#~ "make sure that no two KOrganizer applications are working on the same "
+#~ "file, at the same time.\n"
+#~ "</p>\n"
+#~ msgstr ""
+#~ "<p>...y gallwch storio eich calendr ar weinydd FTP? Defnyddiwch yr ymgom\n"
+#~ " ffeil safonol i gadw'r calendr i  URL fel  <b>ftp://enw-"
+#~ "defnyddiwr@gweinydd-ftp/enw-ffeil</b>.\n"
+#~ " Gallwch wneud eich calendr yn weithredol, a'i llwytho a'i gadw, fel "
+#~ "petae yn leol.\n"
+#~ " Ond sicrhewch nad ydy dau gymhwysiant KTrefnydd yn gweithio ar yr un "
+#~ "ffeil\n"
+#~ " wrth yr un amser.\n"
+
+#, fuzzy
+#~ msgid ""
+#~ "<p>...that you can create hierarchical to-dos by clicking with the right "
+#~ "mouse button on an existing to-do and selecting <b>New Sub-to-do</b> from "
+#~ "the context menu?\n"
+#~ "</p>\n"
+#~ msgstr ""
+#~ "<p>...y gallwch greu I'w-Wneudau hierarchaidd gan glicio efo\n"
+#~ " botwm dde'r lygoden ar I'w-Wneud sy'n bodoli a dewis <b>Is-I'w-Wneud "
+#~ "Newydd</b> oddiar y ddewislen cyd-destun?\n"
+
+#~ msgid "KOrgPlugins"
+#~ msgstr "KOrgPlugins"
+
+#, fuzzy
+#~| msgid "Import Calendar"
+#~ msgid "Import Calendar/Event"
+#~ msgstr "Mewnforio Calendr"
+
+#, fuzzy
+#~ msgid "&Add as new calendar..."
+#~ msgstr "Calendr Newydd"
+
+#, fuzzy
+#~ msgid "&Add as new calendar"
+#~ msgstr "Calendr Newydd"
+
+#~ msgid "*.vcs *.ics|Calendar Files"
+#~ msgstr "*.vcs *.ics|Ffeiliau Calendr"
+
+#, fuzzy
+#~| msgid "New Calendar"
+#~ msgid "Select path for new calendar"
+#~ msgstr "Calendr Newydd"
+
+#~ msgid "Set Your Status"
+#~ msgstr "Gosod Eich Cyflwr"
+
+#~ msgid "Set your status"
+#~ msgstr "Gosod eich cyflwr"
+
+#, fuzzy
+#~| msgid "Add..."
+#~ msgid "A&dd..."
+#~ msgstr "Ychwanegu..."
+
+#, fuzzy
+#~| msgid "&Edit..."
+#~ msgid "&Modify..."
+#~ msgstr "&Golygu..."
+
+#, fuzzy
+#~ msgid "R&emove"
+#~ msgstr "&Gwaredu..."
+
+#, fuzzy
+#~ msgid "Do you want to remove account '%1'?"
+#~ msgstr "<qt>A ydych yn wir eisiau dileu'r adnodd? <b>%1</b>?</qt>"
+
+#, fuzzy
+#~| msgid "Attach&ments"
+#~ msgid "Remove account?"
+#~ msgstr "Atodia&dau"
+
+#~ msgid "Select Addresses"
+#~ msgstr "Dewis Cyfeiriad"
+
+#~ msgid "(EmptyName)"
+#~ msgstr "(EnwGwag)"
+
+#~ msgid "(EmptyEmail)"
+#~ msgstr "(EbostGwag)"
+
+#, fuzzy
+#~ msgid "Add a new recipient"
+#~ msgstr "Cliciwch i ychwanegu I-Wneud newydd"
+
+#, fuzzy
+#~ msgid "&Remove"
+#~ msgstr "&Gwaredu..."
+
+#, fuzzy
+#~| msgid "Select Addressee..."
+#~ msgid "&Select..."
+#~ msgstr "Dewis Derbynnydd..."
+
+#, fuzzy
+#~| msgid "Name:"
+#~ msgctxt "recipient name"
+#~ msgid "Name:"
+#~ msgstr "Enw:"
+
+#, fuzzy
+#~| msgid "Email:"
+#~ msgctxt "recipient email"
+#~ msgid "Email:"
+#~ msgstr "Ebost:"
+
+#, fuzzy
+#~| msgid "Additional email address:"
+#~ msgid "The recipient's email address"
+#~ msgstr "Cyfeiriad ebost ychwanegol:"
+
+#, fuzzy
+#~ msgid "Also &Future Items"
+#~ msgstr "Dileu'r Cyfredol"
+
+#, fuzzy
+#~ msgid "Changing Recurring Item"
+#~ msgstr "Mae hwn yn ddigwyddiad ail-ddigwyddiadol."
+
+#, fuzzy
+#~ msgid "&All Occurrences"
+#~ msgstr "di&gwyddiad(au)"
+
+#, fuzzy
+#~| msgid "KOrganizer Timezone Test"
+#~ msgid "KOrganizer Theming Stub"
+#~ msgstr "Prawf Amserfa KTrefnydd"
+
+#, fuzzy
+#~ msgctxt "@title:group"
+#~ msgid "Print Plugins"
+#~ msgstr "Rhestr digwyddiadau"
+
+#~ msgid "Date && Time Range"
+#~ msgstr "Amrediad Dyddiad ac Amser"
+
+#~ msgid "&Start date:"
+#~ msgstr "Dyddiad &dechrau:"
+
+#~ msgid "&End date:"
+#~ msgstr "Dyddiad &gorffen:"
+
+#, fuzzy
+#~ msgid "Print Incidences of Type"
+#~ msgstr "Golygu Amlder"
+
+#, fuzzy
+#~ msgid "&To-dos"
+#~ msgstr "I-&Wneudau"
+
+#, fuzzy
+#~ msgid "Print Item list"
+#~ msgstr "Rhestr digwyddiadau"
+
+#, fuzzy
+#~ msgid "&All journal entries"
+#~ msgstr "C&ofnodion dyddlyfr"
+
+#, fuzzy
+#~ msgid "Date &range:"
+#~ msgstr "Amrediad Dyddiadau"
+
+#~ msgid "Journal entries"
+#~ msgstr "Cofnodion dyddlyfr"
+
+#, fuzzy
+#~ msgid "Print &journal"
+#~ msgstr "&Dyddlyfr"
+
+#, fuzzy
+#~ msgid "Prints all journals for a given date range"
+#~ msgstr "Argraffu pob digwyddiad diwrnod sengl ar un dudalen"
+
+#, fuzzy
+#~ msgid "Print What's Next"
+#~ msgstr "Beth sy'n &Nesaf"
+
+#, fuzzy
+#~ msgid "Yearly Print Options"
+#~ msgstr "Lleoliad:"
+
+#, fuzzy
+#~ msgid "Print &year:"
+#~ msgstr "Argraf&fu wythnos"
+
+#, fuzzy
+#~ msgid "Display Options"
+#~ msgstr "Dangos"
+
+#, fuzzy
+#~ msgid "Time Boxes"
+#~ msgstr "Cylchfa amser:"
+
+#~ msgctxt "date from - to"
+#~ msgid "%1 - %2"
+#~ msgstr "%1 - %2"
+
+#, fuzzy
+#~ msgctxt ""
+#~ "date from -\n"
+#~ "to"
+#~ msgid ""
+#~ "%1 -\n"
+#~ "%2"
+#~ msgstr "%1 - %2"
+
+#, fuzzy
+#~ msgid "Print &year"
+#~ msgstr "Argraf&fu wythnos"
+
+#, fuzzy
+#~ msgid "Prints a calendar for an entire year"
+#~ msgstr "Argraffu pob digwyddiad diwrnod sengl ar un dudalen"
+
+#~ msgid "Start &time:"
+#~ msgstr "&Amser dechrau:"
+
+#~ msgid "End ti&me:"
+#~ msgstr "A&mser gorffen:"
+
+#~ msgid "E&xtend time range to include all events"
+#~ msgstr "&Estyn yr amrediad amser i gynnwys pob ddigwyddiad"
+
+#, fuzzy
+#~ msgid "Print Layout"
+#~ msgstr "Argraffu& diwrnod"
+
+#, fuzzy
+#~| msgid "Prints all events of one month on one page"
+#~ msgid "Print date range as &Filofax format, all on one page"
+#~ msgstr "Argraffu pob digwyddiad mis sengl ar un dudalen"
+
+#, fuzzy
+#~ msgid "Print as &timetable view, one page per day"
+#~ msgstr "Argraffu fel golwg am&serlen:"
+
+#, fuzzy
+#~ msgid "Print as timetable view, all days on a single page"
+#~ msgstr "Argraffu fel golwg am&serlen:"
+
+#, fuzzy
+#~| msgid "Exclude holidays"
+#~ msgid "Exclude c&onfidential"
+#~ msgstr "Gwahardd gwyliau"
+
+#, fuzzy
+#~| msgid "Exclude holidays"
+#~ msgid "Exclude pri&vate"
+#~ msgstr "Gwahardd gwyliau"
+
+#, fuzzy
+#~ msgid "Include Information"
+#~ msgstr "Gwybodaeth Gweinydd"
+
+#, fuzzy
+#~ msgid "Include to-&dos that are due on the printed day(s)"
+#~ msgstr "Cynnwys i-&wneudau a ddisgwylir ar y dyddiad(au) argraffedig"
+
+#, fuzzy
+#~| msgid "&Description"
+#~ msgid "Include &descriptions"
+#~ msgstr "&Disgrifiad"
+
+#, fuzzy
+#~| msgid "&Description"
+#~ msgid "Print item descriptions"
+#~ msgstr "&Disgrifiad"
+
+#, fuzzy
+#~ msgid "Check this option if you want to see the item descriptions printed."
+#~ msgstr "Dangos eiliadau ar linell Marcus Bain"
+
+#, fuzzy
+#~| msgid "General"
+#~ msgctxt "@title general print settings"
+#~ msgid "General"
+#~ msgstr "Cyffredinol"
+
+#, fuzzy
+#~ msgid "Print items on one line"
+#~ msgstr "Argraffu pob digwyddiad wythnos sengl ar un dudalen"
+
+#, fuzzy
+#~| msgid "S&how time as:"
+#~ msgid "Show note &lines"
+#~ msgstr "&Dangos amser fel:"
+
+#, fuzzy
+#~ msgid "Print &Footer"
+#~ msgstr "Argraf&fu wythnos"
+
+#, fuzzy
+#~ msgid "Print a datetime footer on each page"
+#~ msgstr "Argraffu pob digwyddiad wythnos sengl ar un dudalen"
+
+#, fuzzy
+#~ msgid ""
+#~ "Check this box if you want to print a small footer on each page that "
+#~ "contains the date of the print."
+#~ msgstr "Dangos eiliadau ar linell Marcus Bain"
+
+#, fuzzy
+#~ msgid "Print in color"
+#~ msgstr "Argraffu:"
+
+#~ msgid "&Use colors"
+#~ msgstr "&Defnyddio lliwiau"
+
+#, fuzzy
+#~ msgid "Start date: "
+#~ msgstr "Dyddiad dechrau:"
+
+#, fuzzy
+#~ msgid "End date: "
+#~ msgstr "Dyddiad gorffen:"
+
+#~ msgid "Duration: "
+#~ msgstr "Hyd:"
+
+#, fuzzy
+#~ msgid "1 hour "
+#~ msgid_plural "%1 hours "
+#~ msgstr[0] "1 awr"
+#~ msgstr[1] "%1 o awriau"
+
+#, fuzzy
+#~ msgid "1 minute "
+#~ msgid_plural "%1 minutes "
+#~ msgstr[0] "1 munud"
+#~ msgstr[1] "%1 o funudau"
+
+#, fuzzy
+#~ msgid "No end date"
+#~ msgstr "&Heb ddyddiad gorffen"
+
+#, fuzzy
+#~ msgid "Due date: "
+#~ msgstr "Dyddiad Disgwyliedig"
+
+#, fuzzy
+#~ msgid "No due date"
+#~ msgstr "Dyddiad Disgwyliedig"
+
+#, fuzzy
+#~| msgid "Accept"
+#~ msgctxt "except for listed dates"
+#~ msgid " except"
+#~ msgstr "Derbyn"
+
+#, fuzzy
+#~ msgid "Repeats: "
+#~ msgstr "Ail-adrodd"
+
+#, fuzzy
+#~ msgid "Reminder: "
+#~ msgid_plural "%1 reminders: "
+#~ msgstr[0] "1 munud"
+#~ msgstr[1] "%1 o funudau"
+
+#, fuzzy
+#~ msgid "1 hour"
+#~ msgid_plural "%1 hours"
+#~ msgstr[0] "1 awr"
+#~ msgstr[1] "%1 o awriau"
+
+#, fuzzy
+#~ msgid "Organizer: "
+#~ msgstr "Trefnydd: %1"
+
+#~ msgid "Location: "
+#~ msgstr "Lleoliad:"
+
+#, fuzzy
+#~ msgid "No Subitems"
+#~ msgstr "Dangos Hidlen"
+
+#, fuzzy
+#~| msgid "(None)"
+#~ msgctxt "no status"
+#~ msgid "none"
+#~ msgstr "(Dim)"
+
+#, fuzzy
+#~| msgid "Unknown"
+#~ msgctxt "unknown status"
+#~ msgid "unknown"
+#~ msgstr "Anhysbys"
+
+#, fuzzy
+#~ msgctxt "subitem start date"
+#~ msgid "Start Date: %1\n"
+#~ msgstr "Dyddiad dechrau:"
+
+#, fuzzy
+#~| msgid "Start Time"
+#~ msgctxt "subitem start time"
+#~ msgid "Start Time: %1\n"
+#~ msgstr "Amser Dechrau"
+
+#, fuzzy
+#~ msgctxt "subitem due date"
+#~ msgid "Due Date: %1\n"
+#~ msgstr "Dyddiad Disgwyliedig"
+
+#, fuzzy
+#~ msgctxt "subitem due time"
+#~ msgid "Due Time: %1\n"
+#~ msgstr "Cylchfa amser:"
+
+#, fuzzy
+#~| msgctxt "Percent complete"
+#~| msgid "%1 %"
+#~ msgctxt "subitem counter"
+#~ msgid "%1: "
+#~ msgstr "%1 %"
+
+#, fuzzy
+#~ msgctxt "subitem Status: statusString"
+#~ msgid "Status: %1\n"
+#~ msgstr "Cychwyn: %1"
+
+#, fuzzy
+#~ msgctxt "subitem Secrecy: secrecyString"
+#~ msgid "Secrecy: %1\n"
+#~ msgstr "Crynodeb: %1"
+
+#, fuzzy
+#~| msgid "Attach&ments"
+#~ msgid "No Attachments"
+#~ msgstr "Atodia&dau"
+
+#, fuzzy
+#~ msgid "1 Attachment:"
+#~ msgid_plural "%1 Attachments:"
+#~ msgstr[0] "Atodia&dau"
+#~ msgstr[1] "Atodia&dau"
+
+#, fuzzy
+#~ msgid "No Attendees"
+#~ msgstr "Cy&farfotwyr"
+
+#, fuzzy
+#~ msgid "1 Attendee:"
+#~ msgid_plural "%1 Attendees:"
+#~ msgstr[0] "1 munud"
+#~ msgstr[1] "%1 o funudau"
+
+#, fuzzy
+#~ msgid "Status: %1"
+#~ msgstr "Cychwyn: %1"
+
+#, fuzzy
+#~ msgid "Secrecy: %1"
+#~ msgstr "Crynodeb: %1"
+
+#, fuzzy
+#~ msgid "Categories: "
+#~ msgstr "Categorïau"
+
+#, fuzzy
+#~ msgctxt "date from-to"
+#~ msgid "%1 - %2"
+#~ msgstr "%1 - %2"
+
+#, fuzzy
+#~ msgctxt ""
+#~ "date from-\n"
+#~ "to"
+#~ msgid ""
+#~ "%1 -\n"
+#~ "%2"
+#~ msgstr "%1 - %2"
+
+#, fuzzy
+#~| msgid "Find Events"
+#~ msgid "Today's Events"
+#~ msgstr "Darganfod Digwyddiadau"
+
+#, fuzzy
+#~| msgctxt "monthname year"
+#~| msgid "%1 %2"
+#~ msgctxt "summary, location"
+#~ msgid "%1, %2"
+#~ msgstr "%1 %2"
+
+#, fuzzy
+#~ msgctxt "date from - to (week number)"
+#~ msgid "%1 - %2 (Week %3)"
+#~ msgstr "%1 - %2"
+
+#, fuzzy
+#~ msgctxt ""
+#~ "date from -\n"
+#~ "to (week number)"
+#~ msgid ""
+#~ "%1 -\n"
+#~ "%2 (Week %3)"
+#~ msgstr "%1 - %2"
+
+#, fuzzy
+#~| msgid "&Title:"
+#~ msgctxt "@option sort by title"
+#~ msgid "Title"
+#~ msgstr "&Teitl:"
+
+#, fuzzy
+#~| msgid "Start Date"
+#~ msgctxt "@option sort by start date/time"
+#~ msgid "Start Date"
+#~ msgstr "Dyddiad Dechrau"
+
+#, fuzzy
+#~| msgid "Due Date"
+#~ msgctxt "@option sort by due date/time"
+#~ msgid "Due Date"
+#~ msgstr "Dyddiad Disgwyliedig"
+
+#, fuzzy
+#~| msgid "Priority"
+#~ msgctxt "@option sort by priority"
+#~ msgid "Priority"
+#~ msgstr "Blaenoriaeth"
+
+#, fuzzy
+#~ msgctxt "@option sort by percent completed"
+#~ msgid "Percent Complete"
+#~ msgstr "Cyflawn"
+
+#, fuzzy
+#~| msgid "Ascending"
+#~ msgctxt "@option sort in increasing order"
+#~ msgid "Ascending"
+#~ msgstr "Esgynnol"
+
+#, fuzzy
+#~| msgid "Descending"
+#~ msgctxt "@option sort in descreasing order"
+#~ msgid "Descending"
+#~ msgstr "Disgynnol"
+
+#~ msgid "To-do list"
+#~ msgstr "Rhestr I'w-Wneud"
+
+#~ msgid "Priority"
+#~ msgstr "Blaenoriaeth"
+
+#, fuzzy
+#~| msgid "&Title:"
+#~ msgctxt "@label to-do summary"
+#~ msgid "Title"
+#~ msgstr "&Teitl:"
+
+#, fuzzy
+#~| msgid "Complete"
+#~ msgctxt "@label to-do percentage complete"
+#~ msgid "Complete"
+#~ msgstr "Cyflawn"
+
+#, fuzzy
+#~ msgid "Print &incidence"
+#~ msgstr "Golygu Amlder"
+
+#, fuzzy
+#~ msgid "Prints an incidence on one page"
+#~ msgstr "Argraffu pob digwyddiad wythnos sengl ar un dudalen"
+
+#~ msgid "Print da&y"
+#~ msgstr "Argraffu &diwrnod"
+
+#~ msgid "Prints all events of a single day on one page"
+#~ msgstr "Argraffu pob digwyddiad diwrnod sengl ar un dudalen"
+
+#~ msgid "Print &week"
+#~ msgstr "Argraf&fu wythnos"
+
+#~ msgid "Prints all events of one week on one page"
+#~ msgstr "Argraffu pob digwyddiad wythnos sengl ar un dudalen"
+
+#~ msgid "Print mont&h"
+#~ msgstr "Argraffu m&is"
+
+#~ msgid "Prints all events of one month on one page"
+#~ msgstr "Argraffu pob digwyddiad mis sengl ar un dudalen"
+
+#, fuzzy
+#~ msgid "Print to-&dos"
+#~ msgstr "Argraffu i-wneudau"
+
+#, fuzzy
+#~ msgid "Prints all to-dos in a (tree-like) list"
+#~ msgstr "Argraffu i-wneudau mewn rhestr (tebyg i goeden)"
+
+#, fuzzy
+#~ msgctxt "@title:window"
+#~ msgid "Printing error"
+#~ msgstr "Argraffu:"
+
+#, fuzzy
+#~ msgctxt "@title:window"
+#~ msgid "Print"
+#~ msgstr "Argraffu& diwrnod"
+
+#, fuzzy
+#~| msgid "Print Style"
+#~ msgctxt "@title:group"
+#~ msgid "Print Style"
+#~ msgstr "Arddull Argraffu"
+
+#, fuzzy
+#~| msgid "Page &orientation:"
+#~ msgctxt "@label"
+#~ msgid "Page &orientation:"
+#~ msgstr "Cyf&eiriadaeth y dudalen:"
+
+#, fuzzy
+#~| msgid "Start &time:"
+#~ msgctxt "@info:tooltip"
+#~ msgid "Set the print orientation"
+#~ msgstr "&Amser dechrau:"
+
+#, fuzzy
+#~ msgctxt "@item:inlistbox"
+#~ msgid "Use Default Orientation of Selected Style"
+#~ msgstr "Defnyddio Rhagosodyn yr Ardull Dewisiedig"
+
+#, fuzzy
+#~ msgctxt "@item:inlistbox"
+#~ msgid "Portrait"
+#~ msgstr "Blaenoriaeth"
+
+#, fuzzy
+#~| msgid "Select Cate&gories..."
+#~ msgctxt "@info:tooltip"
+#~ msgid "Select the type of print"
+#~ msgstr "Dewis Cate&gorïau..."
+
+#, fuzzy
+#~| msgid "&Preview"
+#~ msgctxt "@action:button"
+#~ msgid "&Preview"
+#~ msgstr "&Rhagolwg"
+
+#, fuzzy
+#~ msgid "Print incidence details"
+#~ msgstr "Golygu Amlder"
+
+#, fuzzy
+#~ msgid "&Attendees"
+#~ msgstr "Cyfarfotwyr"
+
+#, fuzzy
+#~ msgid "Print the attendees"
+#~ msgstr "1 munud"
+
+#, fuzzy
+#~ msgid ""
+#~ "Check this box if you want the attendees list included on the print-out."
+#~ msgstr "Dangos eiliadau ar linell Marcus Bain"
+
+#, fuzzy
+#~ msgid "&Notes, subitems"
+#~ msgstr "Dangos Hidlen"
+
+#, fuzzy
+#~| msgid "Print week &numbers"
+#~ msgid "Print the notes"
+#~ msgstr "Argra&ffu rhifau wythnos"
+
+#~ msgid "Attach&ments"
+#~ msgstr "Atodia&dau"
+
+#, fuzzy
+#~ msgid "Print the attachments"
+#~ msgstr "Ychwanegu Atodiad"
+
+#, fuzzy
+#~ msgid ""
+#~ "Check this box if you want the attachment information included on the "
+#~ "print-out. The attachments themselves are not printed."
+#~ msgstr "Dangos eiliadau ar linell Marcus Bain"
+
+#~ msgid "&Start month:"
+#~ msgstr "Mis dec&hrau:"
+
+#~ msgid "&End month:"
+#~ msgstr "&Mis gorffen:"
+
+#, fuzzy
+#~| msgid "Exclude holidays"
+#~ msgid "Exclude confidential items"
+#~ msgstr "Gwahardd gwyliau"
+
+#, fuzzy
+#~| msgid "Exclude holidays"
+#~ msgid "Exclude private items"
+#~ msgstr "Gwahardd gwyliau"
+
+#, fuzzy
+#~ msgid ""
+#~ "Check this option if you want to have to-dos on the print, placed by "
+#~ "their due date."
+#~ msgstr "Dangos eiliadau ar linell Marcus Bain"
+
+#, fuzzy
+#~ msgid "Print daily recurring items"
+#~ msgstr "Cuddio Digwyddiadau sy'n Ail-ddigwydd"
+
+#, fuzzy
+#~ msgid "Include daily re&curring to-dos and events"
+#~ msgstr "Cuddio Digwyddiadau sy'n Ail-ddigwydd"
+
+#, fuzzy
+#~ msgid "Print weekly recurring items"
+#~ msgstr "Cuddio Digwyddiadau sy'n Ail-ddigwydd"
+
+#, fuzzy
+#~ msgid "Include weekl&y recurring to-dos and events"
+#~ msgstr "Cuddio Digwyddiadau sy'n Ail-ddigwydd"
+
+#, fuzzy
+#~| msgid "Print week &numbers"
+#~ msgid "Print week numbers"
+#~ msgstr "Argra&ffu rhifau wythnos"
+
+#~ msgid "Print week &numbers"
+#~ msgstr "Argra&ffu rhifau wythnos"
+
+#~ msgid "This printing style does not have any configuration options."
+#~ msgstr "Nid oes dewisiadau ffurfweddu gan yr arddull argraffu yma."
+
+#, fuzzy
+#~| msgctxt "weekday month date"
+#~| msgid "%1 %2 %3"
+#~ msgctxt "starttime - endtime summary"
+#~ msgid "%1-%2 %3"
+#~ msgstr "%1 %2 %3"
+
+#, fuzzy
+#~| msgctxt "weekday month date"
+#~| msgid "%1 %2 %3"
+#~ msgctxt "starttime - endtime summary, location"
+#~ msgid "%1-%2 %3, %4"
+#~ msgstr "%1 %2 %3"
+
+#, fuzzy
+#~ msgctxt "to-do summary (Due: datetime)"
+#~ msgid "%1 (Due: %2)"
+#~ msgstr "Disgwyliedig:"
+
+#, fuzzy
+#~ msgctxt "to-do summary (Due: date)"
+#~ msgid "%1 (Due: %2)"
+#~ msgstr "Disgwyliedig:"
+
+#~ msgid "To-do: %1"
+#~ msgstr "I'w-Wneud: %1"
+
+#~ msgid "%1%"
+#~ msgstr "%1%"
+
+#~ msgctxt "Description - date"
+#~ msgid "%1 - %2"
+#~ msgstr "%1 - %2"
+
+#, fuzzy
+#~ msgid "Name for this to-do list"
+#~ msgstr "Canoli wrth Gychwyn"
+
+#, fuzzy
+#~ msgid "To-dos to Print"
+#~ msgstr "Eitemau i Argraffu"
+
+#, fuzzy
+#~ msgid "Print &all to-dos"
+#~ msgstr "Argraffu po&b eitem i-wneud"
+
+#, fuzzy
+#~ msgid "Print &unfinished to-dos only"
+#~ msgstr "Argraffu ei&temau heb eu gorffen yn unig"
+
+#, fuzzy
+#~ msgid "Print only to-dos due in the &range:"
+#~ msgstr "Eitemau dis&gwyliedig yn yr amrediad:"
+
+#~ msgid "&Priority"
+#~ msgstr "&Blaenoriaeth"
+
+#~ msgid "Due date"
+#~ msgstr "Dyddiad Disgwyliedig"
+
+#, fuzzy
+#~ msgid "Per&centage completed"
+#~ msgstr "Cyflawn"
+
+#, fuzzy
+#~ msgid "Sorting Options"
+#~ msgstr "Lleoliad:"
+
+#, fuzzy
+#~ msgid "Sort field:"
+#~ msgstr "Trefnu ID"
+
+#, fuzzy
+#~ msgid "Sort direction:"
+#~ msgstr "Lleoliad:"
+
+#, fuzzy
+#~ msgid "Co&nnect sub-to-dos with its parent"
+#~ msgstr "Cysylltu is-i-w&neudau efo eu rhiant"
+
+#, fuzzy
+#~ msgid "Strike &out completed to-do summaries"
+#~ msgstr "Cuddio i'w-wneudau a gwblhawyd"
+
+#, fuzzy
+#~ msgid "Starting date for the print"
+#~ msgstr "Dileu Hen Ddigwyddiadau"
+
+#~ msgid "Print as &Filofax page"
+#~ msgstr "Argraffu fel tudalen &Filofax"
+
+#, fuzzy
+#~ msgid "Print as &timetable view"
+#~ msgstr "Argraffu fel golwg am&serlen:"
+
+#, fuzzy
+#~ msgid "Print as split week view"
+#~ msgstr "Argraffu fel golwg am&serlen:"
+
+#, fuzzy
+#~| msgid "Reminder"
+#~ msgctxt "@title:window"
+#~ msgid "Reminders"
+#~ msgstr "Atgof"
+
+#, fuzzy
+#~ msgctxt "@action:button"
+#~ msgid "Dismiss Reminder"
+#~ msgstr "Dangos"
+
+#, fuzzy
+#~ msgctxt "@action:button"
+#~ msgid "Dismiss All"
+#~ msgstr "Dangos"
+
+#, fuzzy
+#~| msgid "Edit..."
+#~ msgctxt "@action:button"
+#~ msgid "Edit..."
+#~ msgstr "Golygu..."
+
+#, fuzzy
+#~| msgid "Suspend"
+#~ msgctxt "@action:button"
+#~ msgid "Suspend"
+#~ msgstr "Seibio"
+
+#, fuzzy
+#~| msgid "&Title:"
+#~ msgctxt "@title:column reminder title"
+#~ msgid "Title"
+#~ msgstr "&Teitl:"
+
+#, fuzzy
+#~| msgid "Date && Time"
+#~ msgctxt "@title:column happens at date/time"
+#~ msgid "Date Time"
+#~ msgstr "Dyddiad ac Amser"
+
+#, fuzzy
+#~ msgctxt "@title:column trigger date/time"
+#~ msgid "Trigger Time"
+#~ msgstr "Amser Disgwyledig"
+
+#, fuzzy
+#~ msgctxt "@info:tooltip"
+#~ msgid "The date/time the reminder was triggered"
+#~ msgstr "Amser larwm rhagosodedig:"
+
+#, fuzzy
+#~ msgctxt "@label:spinbox"
+#~ msgid "Suspend &duration:"
+#~ msgstr "Cyfnod seibio (munudau):"
+
+#, fuzzy
+#~| msgid "minute(s)"
+#~ msgctxt "@item:inlistbox suspend in terms of minutes"
+#~ msgid "minute(s)"
+#~ msgstr "munud(au)"
+
+#, fuzzy
+#~| msgid "hour(s)"
+#~ msgctxt "@item:inlistbox suspend in terms of hours"
+#~ msgid "hour(s)"
+#~ msgstr "awr(oriau)"
+
+#, fuzzy
+#~| msgid "day(s)"
+#~ msgctxt "@item:inlistbox suspend in terms of days"
+#~ msgid "day(s)"
+#~ msgstr "dydd(iau)"
+
+#, fuzzy
+#~| msgid "week(s)"
+#~ msgctxt "@item:inlistbox suspend in terms of weeks"
+#~ msgid "week(s)"
+#~ msgstr "wythnos(au)"
+
+#, fuzzy
+#~| msgid "Edit..."
+#~ msgctxt "@label an elipsis"
+#~ msgid "..."
+#~ msgstr "Golygu..."
+
+#, fuzzy
+#~| msgid "Reminder"
+#~ msgctxt "@title"
+#~ msgid "Reminder"
+#~ msgstr "Atgof"
+
+#, fuzzy
+#~ msgctxt "@title"
+#~ msgid "Reminder: %1"
+#~ msgstr "1 munud"
+
+#, fuzzy
+#~ msgctxt "@info"
+#~ msgid "Could not start KOrganizer so editing is not possible."
+#~ msgstr "&Ffurfweddu KOrganizer..."
+
+#, fuzzy
+#~ msgctxt "@title:window"
+#~ msgid "KOrganizer Reminder Daemon"
+#~ msgstr "Ellyll Larwm KTrefnydd"
+
+#, fuzzy
+#~ msgctxt "@action:inmenu"
+#~ msgid "Suspend All Reminders"
+#~ msgstr "Seibio"
+
+#, fuzzy
+#~ msgctxt "@action:inmenu"
+#~ msgid "Dismiss All Reminders"
+#~ msgstr "Dangos"
+
+#, fuzzy
+#~ msgctxt "@action:inmenu"
+#~ msgid "Enable Reminders"
+#~ msgstr "&Atgof:"
+
+#, fuzzy
+#~ msgctxt "@action:inmenu"
+#~ msgid "Start Reminder Daemon at Login"
+#~ msgstr "Cychwyn y Dibynnydd Larwm wrth Fewngofnodi"
+
+#, fuzzy
+#~ msgctxt "@info:status"
+#~ msgid "There is 1 active reminder."
+#~ msgid_plural "There are %1 active reminders."
+#~ msgstr[0] "Atgof"
+#~ msgstr[1] "Atgof"
+
+#, fuzzy
+#~ msgctxt "@info:status"
+#~ msgid "No active reminders."
+#~ msgstr "Atgof"
+
+#, fuzzy
+#~ msgctxt "@info"
+#~ msgid ""
+#~ "Do you want to quit the KOrganizer reminder daemon?<nl/><note> you will "
+#~ "not get calendar reminders unless the daemon is running.</note>"
+#~ msgstr ""
+#~ "Ydych eisiau cychwyn yr ellyll larwm KTrefnydd wrth fewngofnodi? (Noder "
+#~ "na chewch larymau pan ni rheda'r ellyll.)"
+
+#, fuzzy
+#~ msgctxt "@title:window"
+#~ msgid "Close KOrganizer Reminder Daemon"
+#~ msgstr "Cau Ellyll Larwm KTrefnydd"
+
+#, fuzzy
+#~ msgctxt "@info"
+#~ msgid ""
+#~ "Do you want to start the KOrganizer reminder daemon at login?<nl/><note> "
+#~ "you will not get calendar reminders unless the daemon is running.</note>"
+#~ msgstr ""
+#~ "Ydych eisiau cychwyn yr ellyll larwm KTrefnydd wrth fewngofnodi? (Noder "
+#~ "na chewch larymau pan ni rheda'r ellyll.)"
+
+#, fuzzy
+#~| msgid "Start"
+#~ msgctxt "@action:button start the reminder daemon"
+#~ msgid "Start"
+#~ msgstr "Dechrau"
+
+#, fuzzy
+#~ msgctxt "@action:button do not start the reminder daemon"
+#~ msgid "Do Not Start"
+#~ msgstr "Canoli wrth Gychwyn"
+
+#, fuzzy
+#~ msgid "KOrganizer Reminder Daemon"
+#~ msgstr "Ellyll Larwm KTrefnydd"
+
+#, fuzzy
+#~ msgid "Free Busy Object"
+#~ msgstr "Rhyddhau Gwrthrych Prysur"
+
+#, fuzzy
+#~| msgid "Send Messages"
+#~ msgid "Free Busy Message"
+#~ msgstr "Anfon Negeseuon"
+
+#, fuzzy
+#~ msgctxt "@info"
+#~ msgid "Unable to purge to-dos with uncompleted children."
+#~ msgstr "Methu carthu I-Wneud sydd efo plant ni chwblhawyd."
+
+#~ msgid "Delete To-do"
+#~ msgstr "Dileu I'w-Wneud"
+
+#~ msgid ""
+#~ "KOrganizer successfully imported and merged your .calendar file from ical "
+#~ "into the currently opened calendar."
+#~ msgstr ""
+#~ "Mi wnaeth KTrefnydd fewnforio a chyfuno eich ffeil .calendar o ical i'r "
+#~ "calendr agoredig cyfredol."
+
+#, fuzzy
+#~ msgid "ICal Import Successful with Warning"
+#~ msgstr "Mewnforiad Ical Yn Gywir Ond Gyda Rhybydd"
+
+#, fuzzy
+#~ msgid "New calendar '%1'."
+#~ msgstr "Wedi cadw'r calendr '%1'."
+
+#~ msgid "Could not load calendar '%1'."
+#~ msgstr "Wedi methu llwytho calendr '%1'."
+
+#, fuzzy
+#~ msgid "Filter Applied"
+#~ msgstr "Hidlen wedi ei galluogi"
+
+#, fuzzy
+#~ msgid "Cut Only This"
+#~ msgstr "Dileu Hen Ddigwyddiadau"
+
+#, fuzzy
+#~ msgid "Copy Only This"
+#~ msgstr "Dileu Hen Ddigwyddiadau"
+
+#, fuzzy
+#~| msgid "&Copy To"
+#~ msgid "Copy All"
+#~ msgstr "&Copïo I"
+
+#~ msgid "Delete %1"
+#~ msgstr "Dileu %1"
+
+#~ msgid "Add %1"
+#~ msgstr "Ychwanegu %1"
+
+#~ msgid "Edit %1"
+#~ msgstr "Golygu %1"
+
+#, fuzzy
+#~| msgid "Additional email addresses:"
+#~ msgctxt "@label"
+#~ msgid "Additional email addresses:"
+#~ msgstr "Cyfeiriadau ebost ychwanegol:"
+
+#, fuzzy
+#~| msgid "Additional email address:"
+#~ msgctxt "@label"
+#~ msgid "Additional email address:"
+#~ msgstr "Cyfeiriad ebost ychwanegol:"
+
+#, fuzzy
+#~| msgid "New"
+#~ msgctxt "@action:button add a new email address"
+#~ msgid "New"
+#~ msgstr "Newydd"
+
+#, fuzzy
+#~ msgctxt "@action:button"
+#~ msgid "Remove"
+#~ msgstr "&Gwaredu..."
+
+#, fuzzy
+#~| msgid "(EmptyEmail)"
+#~ msgctxt "@label"
+#~ msgid "(EmptyEmail)"
+#~ msgstr "(EbostGwag)"
+
+#, fuzzy
+#~ msgid "Edit this journal entry"
+#~ msgstr "Dileu Hen Ddigwyddiadau"
+
+#, fuzzy
+#~ msgid "Opens an editor dialog for this journal entry"
+#~ msgstr "Dileu Hen Ddigwyddiadau"
+
+#, fuzzy
+#~ msgid "Delete this journal entry"
+#~ msgstr "Dileu Hen Ddigwyddiadau"
+
+#, fuzzy
+#~ msgid "&Print"
+#~ msgstr "Argraffu& diwrnod"
+
+#, fuzzy
+#~ msgid "Print this journal entry"
+#~ msgstr "Dileu Hen Ddigwyddiadau"
+
+#, fuzzy
+#~ msgid "Opens a print dialog for this journal entry"
+#~ msgstr "Dileu Hen Ddigwyddiadau"
+
+#, fuzzy
+#~| msgid "Time bar"
+#~ msgid "Time Tracker"
+#~ msgstr "Bar amser:"
+
+#~ msgctxt "Date from - to"
+#~ msgid "%1 - %2"
+#~ msgstr "%1 - %2"
+
+#, fuzzy
+#~ msgid "No category"
+#~ msgstr "Categorïau"
+
+#, fuzzy
+#~ msgctxt "number of hours spent"
+#~ msgid "%1 hour"
+#~ msgid_plural "%1 hours"
+#~ msgstr[0] "1 awr"
+#~ msgstr[1] "%1 o awriau"
+
+#, fuzzy
+#~| msgid "Redo (%1)"
+#~ msgctxt "percent of hours spent"
+#~ msgid " (%1%)"
+#~ msgstr "Ailwneud (%1)"
+
+#, fuzzy
+#~ msgctxt "@action:inmenu Unspecified priority"
+#~ msgid "unspecified"
+#~ msgstr "Lleoliad:"
+
+#, fuzzy
+#~ msgctxt "@action:inmenu highest priority"
+#~ msgid "1 (highest)"
+#~ msgstr "1 (Uchaf)"
+
+#, fuzzy
+#~| msgid "2"
+#~ msgctxt "@action:inmenu"
+#~ msgid "2"
+#~ msgstr "2"
+
+#, fuzzy
+#~| msgid "3"
+#~ msgctxt "@action:inmenu"
+#~ msgid "3"
+#~ msgstr "3"
+
+#, fuzzy
+#~| msgid "4"
+#~ msgctxt "@action:inmenu"
+#~ msgid "4"
+#~ msgstr "4"
+
+#, fuzzy
+#~| msgid "6"
+#~ msgctxt "@action:inmenu"
+#~ msgid "6"
+#~ msgstr "6"
+
+#, fuzzy
+#~| msgid "7"
+#~ msgctxt "@action:inmenu"
+#~ msgid "7"
+#~ msgstr "7"
+
+#, fuzzy
+#~| msgid "8"
+#~ msgctxt "@action:inmenu"
+#~ msgid "8"
+#~ msgstr "8"
+
+#, fuzzy
+#~ msgctxt "@action:inmenu lowest priority"
+#~ msgid "9 (lowest)"
+#~ msgstr "5 (Isaf)"
+
+#, fuzzy
+#~| msgid "Naso"
+#~ msgctxt "no, not a recurring to-do"
+#~ msgid "No"
+#~ msgstr "Naso"
+
+#, fuzzy
+#~ msgctxt "delimiter for joining category names"
+#~ msgid ","
+#~ msgstr ","
+
+#~ msgid "Summary"
+#~ msgstr "Crynodeb"
+
+#~ msgid "Recurs"
+#~ msgstr "Yn Ail-ddigwydd"
+
+#, fuzzy
+#~| msgid "Complete"
+#~ msgctxt "@title:column percent complete"
+#~ msgid "Complete"
+#~ msgstr "Cyflawn"
+
+#, fuzzy
+#~ msgid "Due Date/Time"
+#~ msgstr "Amser Disgwyledig"
+
+#, fuzzy
+#~| msgid "&Description"
+#~ msgid "Description"
+#~ msgstr "&Disgrifiad"
+
+#, fuzzy
+#~ msgid "Cannot move to-do to itself or a child of itself."
+#~ msgstr "Methu symyd I'w-Wneud i'w hun, neu i un o'i blant"
+
+#~ msgid "Drop To-do"
+#~ msgstr "Gwaredu I'w-Wneud"
+
+#, fuzzy
+#~ msgctxt "@info:tooltip"
+#~ msgid "Display to-do list in a full window"
+#~ msgstr "Mae golwg I'w-Wneud yn defnyddio ffenestr llawn"
+
+#, fuzzy
+#~| msgid "&Show"
+#~ msgctxt "@action:inmenu show the to-do"
+#~ msgid "&Show"
+#~ msgstr "&Dangos"
+
+#, fuzzy
+#~| msgid "&Edit..."
+#~ msgctxt "@action:inmenu edit the to-do"
+#~ msgid "&Edit..."
+#~ msgstr "&Golygu..."
+
+#, fuzzy
+#~ msgctxt "@action:inmenu print the to-do"
+#~ msgid "&Print..."
+#~ msgstr "&Golygu..."
+
+#, fuzzy
+#~ msgctxt "@action:inmenu print preview the to-do"
+#~ msgid "Print Previe&w..."
+#~ msgstr "&Golygu..."
+
+#, fuzzy
+#~ msgctxt "@action:inmenu delete the to-do"
+#~ msgid "&Delete"
+#~ msgstr "Dileu %1"
+
+#, fuzzy
+#~| msgid "New &To-do..."
+#~ msgctxt "@action:inmenu create a new to-do"
+#~ msgid "New &To-do..."
+#~ msgstr "&I'w-Gwneud Newydd..."
+
+#, fuzzy
+#~| msgid "New Su&b-to-do..."
+#~ msgctxt "@action:inmenu create a new sub-to-do"
+#~ msgid "New Su&b-to-do..."
+#~ msgstr "Is-I'w-&Gwneud Newydd..."
+
+#, fuzzy
+#~ msgctxt "@action:inmenu"
+#~ msgid "&Make this To-do Independent"
+#~ msgstr "&Gwneud Is-I'w-Wneud yn Annibynnol"
+
+#, fuzzy
+#~ msgctxt "@action:inmenu"
+#~ msgid "Make all Sub-to-dos &Independent"
+#~ msgstr "Gwneud Is-I'w-Wneud yn Annibynnol"
+
+#, fuzzy
+#~| msgid "&Copy To"
+#~ msgctxt "@title:menu"
+#~ msgid "&Copy To"
+#~ msgstr "&Copïo I"
+
+#, fuzzy
+#~| msgid "&Move To"
+#~ msgctxt "@title:menu"
+#~ msgid "&Move To"
+#~ msgstr "&Symud I"
+
+#, fuzzy
+#~| msgctxt "delete completed to-dos"
+#~| msgid "Pur&ge Completed"
+#~ msgctxt "@action:inmenu delete completed to-dos"
+#~ msgid "Pur&ge Completed"
+#~ msgstr "&Carthiad wedi'i Gwblhau"
+
+#, fuzzy
+#~ msgctxt "@action:inmenu unspecified priority"
+#~ msgid "unspecified"
+#~ msgstr "Lleoliad:"
+
+#, fuzzy
+#~| msgid "2"
+#~ msgctxt "@action:inmenu priority value=2"
+#~ msgid "2"
+#~ msgstr "2"
+
+#, fuzzy
+#~| msgid "3"
+#~ msgctxt "@action:inmenu priority value=3"
+#~ msgid "3"
+#~ msgstr "3"
+
+#, fuzzy
+#~| msgid "4"
+#~ msgctxt "@action:inmenu priority value=4"
+#~ msgid "4"
+#~ msgstr "4"
+
+#, fuzzy
+#~| msgid "6"
+#~ msgctxt "@action:inmenu priority value=6"
+#~ msgid "6"
+#~ msgstr "6"
+
+#, fuzzy
+#~| msgid "7"
+#~ msgctxt "@action:inmenu priority value=7"
+#~ msgid "7"
+#~ msgstr "7"
+
+#, fuzzy
+#~| msgid "8"
+#~ msgctxt "@action:inmenu priority value=8"
+#~ msgid "8"
+#~ msgstr "8"
+
+#, fuzzy
+#~ msgid "Click to add a new to-do"
+#~ msgstr "Cliciwch i ychwanegu I-Wneud newydd"
+
+#, fuzzy
+#~| msgid "Su&mmaries"
+#~ msgctxt "@label in QuickSearchLine"
+#~ msgid "Search Summaries"
+#~ msgstr "Cr&ynodebau"
+
+#, fuzzy
+#~| msgid "Select Cate&gories..."
+#~ msgctxt "@info:tooltip"
+#~ msgid "Filter on these categories"
+#~ msgstr "Dewis Cate&gorïau..."
+
+#, fuzzy
+#~| msgid "Select Cate&gories..."
+#~ msgctxt "@item:inlistbox"
+#~ msgid "Select Categories"
+#~ msgstr "Dewis Cate&gorïau..."
+
+#, fuzzy
+#~ msgctxt "@item:intext delimiter for joining category names"
+#~ msgid ","
+#~ msgstr ","
+
+#, fuzzy
+#~| msgid "Priority"
+#~ msgctxt "@item:inlistbox"
+#~ msgid "Select Priority"
+#~ msgstr "Blaenoriaeth"
+
+#, fuzzy
+#~ msgctxt "@action:inmenu priority is unspecified"
+#~ msgid "unspecified"
+#~ msgstr "Lleoliad:"
+
+#, fuzzy
+#~ msgctxt "@action:inmenu highest priority"
+#~ msgid "%1 (highest)"
+#~ msgstr "1 (Uchaf)"
+
+#, fuzzy
+#~ msgctxt "@action:inmenu lowest priority"
+#~ msgid "%1 (lowest)"
+#~ msgstr "5 (Isaf)"
+
+#, fuzzy
+#~| msgid "%1"
+#~ msgctxt "@action:inmenu"
+#~ msgid "%1"
+#~ msgstr "%1"
+
+#, fuzzy
+#~ msgctxt "priority is unspecified"
+#~ msgid "unspecified"
+#~ msgstr "Lleoliad:"
+
+#, fuzzy
+#~ msgctxt "highest priority"
+#~ msgid "%1 (highest)"
+#~ msgstr "1 (Uchaf)"
+
+#, fuzzy
+#~ msgctxt "lowest priority"
+#~ msgid "%1 (lowest)"
+#~ msgstr "5 (Isaf)"
+
+#~ msgid "What's Next?"
+#~ msgstr "Beth sydd nesaf?"
+
+#~ msgid "Events:"
+#~ msgstr "Digwyddiadau:"
+
+#~ msgid "To-do:"
+#~ msgstr "I'w-Wneud:"
+
+#~ msgid "Events and to-dos that need a reply:"
+#~ msgstr "Digwyddiadau ac I'w-Gwneud sydd angen ateb:"
+
+#, fuzzy
+#~ msgctxt "date, from - to"
+#~ msgid "%1, %2 - %3"
+#~ msgstr "%1 - %2"
+
+#, fuzzy
+#~ msgctxt "to-do due date"
+#~ msgid "  (Due: %1)"
+#~ msgstr "Disgwyliedig:"
+
+#, fuzzy
+#~| msgid "Month View"
+#~ msgctxt "@option:check Checkbox to display todos not hierarchical"
+#~ msgid "Flat View"
+#~ msgstr "Golwg mis"
+
+#, fuzzy
+#~ msgid "Find Events - KOrganizer"
+#~ msgstr "Darganfod Digwyddiadau"
+
+#, fuzzy
+#~ msgctxt "@info:whatsthis"
+#~ msgid "Clicking this button will fully expand the to-do list tree."
+#~ msgstr "Dangos eiliadau ar linell Marcus Bain"
+
+#, fuzzy
+#~ msgctxt "@info:tooltip"
+#~ msgid "Fully collapse the to-do tree"
+#~ msgstr "1 munud"
+
+#~ msgid "Cannot download calendar from '%1'."
+#~ msgstr "Methu lawrlywtho calendr oddi wrth '%1'."
+
+#~ msgid "Merged calendar '%1'."
+#~ msgstr "Calendr '%1' wedi ei gyfuno."
+
+#~ msgid "Opened calendar '%1'."
+#~ msgstr "Calendr '%1' wedi ei agor."
+
+#, fuzzy
+#~ msgctxt "unspecified priority"
+#~ msgid "unspecified"
+#~ msgstr "Lleoliad:"
+
+#, fuzzy
+#~ msgctxt "highest priority"
+#~ msgid "1 (highest)"
+#~ msgstr "1 (Uchaf)"
+
+#, fuzzy
+#~ msgctxt "lowest priority"
+#~ msgid "9 (lowest)"
+#~ msgstr "5 (Isaf)"
+
+#, fuzzy
+#~ msgctxt "@label in QuickSearchLine"
+#~ msgid "Search"
+#~ msgstr "Chwilio Mewn"
+
+#~ msgid "&Description"
+#~ msgstr "&Disgrifiad"
+
+#, fuzzy
+#~ msgid "Other Options"
+#~ msgstr "Dis&grifiadau"
+
+#, fuzzy
+#~| msgid "Month View"
+#~ msgid "&Month View"
+#~ msgstr "Golwg mis"
+
+#, fuzzy
+#~| msgid "Categories"
+#~ msgid "Edit Categories"
+#~ msgstr "Categorïau"
+
+#, fuzzy
+#~ msgid "New category entry"
+#~ msgstr "Categorïau"
+
+#, fuzzy
+#~| msgid "Select Cate&gories..."
+#~ msgid "Add the entry to the category list"
+#~ msgstr "Dewis Cate&gorïau..."
+
+#, fuzzy
+#~| msgid "&Add"
+#~ msgid "A&dd"
+#~ msgstr "&Ychwanegu..."
+
+#, fuzzy
+#~ msgid "Add &Subcategory"
+#~ msgstr "Categorïau"
+
+#, fuzzy
+#~| msgid "Attach&ments"
+#~ msgid "Remove the selected category"
+#~ msgstr "Atodia&dau"
+
+#, fuzzy
+#~ msgid ""
+#~ "Click this button to remove the selected category from the category list."
+#~ msgstr "Dangos eiliadau ar linell Marcus Bain"
+
+#, fuzzy
+#~| msgid "Categories"
+#~ msgid "Category list"
+#~ msgstr "Categorïau"
+
+#, fuzzy
+#~| msgid "Select Cate&gories..."
+#~ msgid "Default Category"
+#~ msgstr "Dewis Cate&gorïau..."
+
+#, fuzzy
+#~ msgid "New category"
+#~ msgstr "Categorïau"
+
+#, fuzzy
+#~ msgid "New subcategory"
+#~ msgstr "Categorïau"
+
+#, fuzzy
+#~ msgid "Default Email Attachment Method"
+#~ msgstr "Amser cyfarfod rhagosodedig:"
+
+#~ msgid "TestKabc"
+#~ msgstr "ProfiKabc"
+
+#, fuzzy
+#~ msgid "Select the working hours background color for the agenda view here."
+#~ msgstr "Lliw cefndir y golwg agenda:"
+
+#, fuzzy
+#~ msgctxt "@title:window"
+#~ msgid "Archive/Delete Past Events and To-dos"
+#~ msgstr "Archifio/Dileu Hen Gyfarfodydd"
+
+#, fuzzy
+#~| msgid "&Archive"
+#~ msgctxt "@action:button"
+#~ msgid "&Archive"
+#~ msgstr "&Archifio"
+
+#, fuzzy
+#~ msgctxt "@info:whatsthis"
+#~ msgid ""
+#~ "Archiving saves old items into the given file and then deletes them in "
+#~ "the current calendar. If the archive file already exists they will be "
+#~ "added. (<link url=\"whatsthis:In order to add an archive to your "
+#~ "calendar, use the Merge Calendar function. You can view an archive by "
+#~ "opening it in KOrganizer like any other calendar. It is not saved in a "
+#~ "special format, but as vCalendar.\">How to restore</link>)"
+#~ msgstr ""
+#~ "Mae archifio yn cadw hen apwyntiadau i mewn i'r ffeil penodol ac wedyn eu "
+#~ "dileu yn y calendr cyfredol.  Os mae'r ffeil archifio mewn bod yn barod, "
+#~ "ychwanegir.  (<a href=\"whatsthis: Er mwyn ychwnaegu archif i'ch calendr, "
+#~ "defnyddiwch y swyddogaeth &quot;Cyfuno calendr&quot;.  Gallwch weld "
+#~ "archif drwy ei agor yn KTrefnydd fel pob un calendr arall.  Ni chedwir "
+#~ "mewn fformat arbennig, ond fel vCalendar.\">Sut i adfer</a>)"
+
+#, fuzzy
+#~ msgctxt "@option:radio"
+#~ msgid "Archive now items older than:"
+#~ msgstr "&Cyfarfodydd hyn na:"
+
+#, fuzzy
+#~ msgctxt "@info:whatsthis"
+#~ msgid ""
+#~ "The date before which items should be archived. All older events and to-"
+#~ "dos will be saved and deleted, the newer (and events exactly on that "
+#~ "date) will be kept."
+#~ msgstr ""
+#~ "Oed yr apwyntiadau i'w archifo.  Cedwir a dileuir pob apwyntiad hyn, "
+#~ "gadewir y rhai newyddach."
+
+#, fuzzy
+#~ msgctxt "@option:radio"
+#~ msgid "Automaticall&y archive items older than:"
+#~ msgstr "&Cyfarfodydd hyn na:"
+
+#, fuzzy
+#~ msgctxt "@info:whatsthis"
+#~ msgid ""
+#~ "The age of the events and to-dos to archive. All older items will be "
+#~ "saved and deleted, the newer will be kept."
+#~ msgstr ""
+#~ "Oed yr apwyntiadau i'w archifo.  Cedwir a dileuir pob apwyntiad hyn, "
+#~ "gadewir y rhai newyddach."
+
+#, fuzzy
+#~| msgid "Day(s)"
+#~ msgctxt "@item:inlistbox expires in daily units"
+#~ msgid "Day(s)"
+#~ msgstr "Diwrnod(au)"
+
+#, fuzzy
+#~| msgid "Week(s)"
+#~ msgctxt "@item:inlistbox expiration in weekly units"
+#~ msgid "Week(s)"
+#~ msgstr "Wythnos(au)"
+
+#, fuzzy
+#~| msgid "Month(s)"
+#~ msgctxt "@item:inlistbox expiration in monthly units"
+#~ msgid "Month(s)"
+#~ msgstr "Mis(oedd)"
+
+#, fuzzy
+#~| msgid "Archive &file:"
+#~ msgctxt "@label"
+#~ msgid "Archive &file:"
+#~ msgstr "Ffeil A&rchif:"
+
+#, fuzzy
+#~ msgctxt "@label filter for KUrlRequester"
+#~ msgid "*.ics|iCalendar Files"
+#~ msgstr "*.vcs|Ffeiliau vCalendr"
+
+#, fuzzy
+#~ msgctxt "@info:whatsthis"
+#~ msgid ""
+#~ "The path of the archive. The events and to-dos will be added to the "
+#~ "archive file, so any events that are already in the file will not be "
+#~ "modified or deleted. You can later load or merge the file like any other "
+#~ "calendar. It is not saved in a special format, it uses the iCalendar "
+#~ "format."
+#~ msgstr ""
+#~ "Llwybr yr archif.  Ychwanegir yr apwyntiadau i'r ffeil archif, er mwyn "
+#~ "peidio ac addasu neu dileu unrhyw apwyntiad sydd yn y ffeil yn barod.  Yn "
+#~ "nes ymlaen, gallwch lwytho neu gyfuno'r ffeil fel unrhyw calendr arall.   "
+#~ "Ni chedwir mewn fformat arbennig, mae'n defnyddio'r fformat vCalendar."
+
+#, fuzzy
+#~| msgid "&Events"
+#~ msgctxt "@option:check"
+#~ msgid "&Events"
+#~ msgstr "&Digwyddiadau:"
+
+#, fuzzy
+#~ msgctxt "@option:check"
+#~ msgid "&To-dos"
+#~ msgstr "I-&Wneudau"
+
+#, fuzzy
+#~| msgid "&Delete only, do not save"
+#~ msgctxt "@option:check"
+#~ msgid "&Delete only, do not save"
+#~ msgstr "&Dileu yn unig, heb gadw"
+
+#, fuzzy
+#~ msgctxt "@info:whatsthis"
+#~ msgid ""
+#~ "Select this option to delete old events and to-dos without saving them. "
+#~ "It is not possible to recover the events later."
+#~ msgstr ""
+#~ "Dewis y dewisiad yma i ddileu hen apwyntiadau heb eu cadw.  Ni ellir "
+#~ "adfer yr apwyntiadau wedyn."
+
+#, fuzzy
+#~| msgid "The archive file name is not valid.\n"
+#~ msgctxt "@info"
+#~ msgid "The archive file name is not valid."
+#~ msgstr "Nid yw enw'r ffeil archif yn ddilys.\n"
+
+#, fuzzy
+#~ msgid "In days"
+#~ msgstr "Argraffu diwrnod"
+
+#, fuzzy
+#~ msgid "In weeks"
+#~ msgstr "Argraffu wythnos"
+
+#, fuzzy
+#~ msgid "In months"
+#~ msgstr "mis(oedd)"
+
+#, fuzzy
+#~ msgid "Archive events"
+#~ msgstr "Archifio/Dileu Hen Gyfarfodydd"
+
+#, fuzzy
+#~ msgid "Archive to-dos"
+#~ msgstr "Argraffu po&b eitem i-wneud"
+
+#~ msgid "Delete old events"
+#~ msgstr "Dileu Hen Ddigwyddiadau"
+
+#, fuzzy
+#~ msgid "There are no items before %1"
+#~ msgstr "Nid oes digwyddiadau cyn %1"
+
+#, fuzzy
+#~ msgid ""
+#~ "Delete all items before %1 without saving?\n"
+#~ "The following items will be deleted:"
+#~ msgstr ""
+#~ "Dileu pob digwyddiad cyn %1 heb gadw?\n"
+#~ " Mi fydd y digwyddiadau hyn yn cael eu dileu:"
+
+#, fuzzy
+#~ msgid "Delete Old Items"
+#~ msgstr "Dileu Hen Ddigwyddiadau"
+
+#, fuzzy
+#~ msgid "Cannot write archive file %1. %2"
+#~ msgstr "Methu ysgrifennu'r ffeil archif."
+
+#, fuzzy
+#~ msgid "Cannot write archive. %1"
+#~ msgstr "Methu ysgrifennu'r ffeil archif."
+
+#~ msgid "Reminder"
+#~ msgstr "Atgof"
+
+#, fuzzy
+#~| msgid "Start Date"
+#~ msgid "Start Date/Time"
+#~ msgstr "Dyddiad Dechrau"
+
+#, fuzzy
+#~ msgid "End Date/Time"
+#~ msgstr "Amser Disgwyledig"
+
+#, fuzzy
+#~| msgctxt "short_weekday date (e.g. Mon 13)"
+#~| msgid "%1 %2"
+#~ msgid "%2 (1 year)"
+#~ msgid_plural "%2 (%1 years)"
+#~ msgstr[0] "%1 %2"
+#~ msgstr[1] "%1 %2"
+
+#, fuzzy
+#~ msgid "No item selected."
+#~ msgstr "Nid oes darparwr wedi ei dewis."
+
+#~ msgid "Publishing"
+#~ msgstr "Cyhoeddi"
+
+#, fuzzy
+#~ msgid "Unable to publish the item '%1'"
+#~ msgstr "Wedi methu darganfod patrymlun '%1'."
+
+#, fuzzy
+#~| msgid "Go &Forward"
+#~ msgid "Forwarding"
+#~ msgstr "Mynd &Ymlaen"
+
+#, fuzzy
+#~ msgid "Unable to forward the item '%1'"
+#~ msgstr "Wedi methu darganfod patrymlun '%1'."
+
+#, fuzzy
+#~| msgid "Go &Forward"
+#~ msgid "Forwarding Error"
+#~ msgstr "Mynd &Ymlaen"
+
+#, fuzzy
+#~ msgid "The free/busy information was successfully sent."
+#~ msgstr "Cyhoeddi eich &gwybodaeth rydd/brysur yn ymysgogol"
+
+#, fuzzy
+#~ msgid "Sending Free/Busy"
+#~ msgstr "Rhyddhau Gwrthrych Prysur"
+
+#, fuzzy
+#~ msgid "Unable to publish the free/busy data."
+#~ msgstr "Nôl gwybo&daeth rydd/brysur pobl eraill"
+
+#, fuzzy
+#~ msgid "The item has no attendees."
+#~ msgstr "Nid oes cyfarfotwyr gan y ddigwyddiad."
+
+#, fuzzy
+#~| msgid "Go &Forward"
+#~ msgid "Go forward one week"
+#~ msgstr "Mynd &Ymlaen"
+
+#~ msgctxt "monthname year"
+#~ msgid "%1 %2"
+#~ msgstr "%1 %2"
+
+#~ msgctxt "'Month day' for month view cells"
+#~ msgid "%1 %2"
+#~ msgstr "%1 %2"
+
+#, fuzzy
+#~ msgid "All Day"
+#~ msgstr "Dydd"
+
+#~ msgctxt "short_weekday date (e.g. Mon 13)"
+#~ msgid "%1 %2"
+#~ msgstr "%1 %2"
+
+#, fuzzy
+#~ msgid "Attendee added"
+#~ msgstr "Cyfarfotwyr"
+
+#~ msgid "- %1"
+#~ msgstr "- %1"
+
+#, fuzzy
+#~ msgid "Dissociate event from recurrence"
+#~ msgstr "Rhestri digwyddiadau'r diwrnod cyfredol"
+
+#, fuzzy
+#~ msgid "Split future recurrences"
+#~ msgstr "Gall&uogi ail-ddigwydd"
+
+#, fuzzy
+#~ msgid "Timezone:"
+#~ msgstr "Cylchfa amser:"
+
+#, fuzzy
+#~| msgid "Edit Exceptions"
+#~ msgid "&Add Timezones..."
+#~ msgstr "Golygu Eithriadau"
+
+#, fuzzy
+#~ msgid "&Remove Timezone %1"
+#~ msgstr "Cylchfa amser:"
+
+#, fuzzy
+#~ msgid "Timezone: %1"
+#~ msgstr "Cylchfa amser:"
+
+#, fuzzy
+#~ msgid "Country Code: %1"
+#~ msgstr "&Dyddlyfr"
+
+#, fuzzy
+#~ msgid "Timezone"
+#~ msgstr "Cylchfa amser:"
+
+#, fuzzy
+#~| msgid "&iCalendar..."
+#~ msgid "Add Calendar..."
+#~ msgstr "&iCalendr..."
+
+#, fuzzy
+#~ msgid "Reload"
+#~ msgstr "Ai&l-lwytho"
+
+#, fuzzy
+#~ msgid "Properties..."
+#~ msgstr "&Golygu..."
+
+#, fuzzy
+#~| msgid "New Calendar"
+#~ msgid "New Calendar..."
+#~ msgstr "Calendr Newydd"
+
+#~ msgid "Start Time"
+#~ msgstr "Amser Dechrau"
+
+#~ msgid "End Date"
+#~ msgstr "Dyddiad Gorffen"
+
+#~ msgid "End Time"
+#~ msgstr "Amser Gorffen"
+
+#, fuzzy
+#~ msgid "Locking Failed"
+#~ msgstr "Methodd y gosod."
+
+#, fuzzy
+#~ msgid "Enable automatic saving of manually opened calendar files"
+#~ msgstr "Galluogi cadw'r calendr yn ymysgogol"
+
+#, fuzzy
+#~ msgctxt "@title:group"
+#~ msgid "Saving Calendar"
+#~ msgstr "Argraffu Calendr"
+
+#, fuzzy
+#~| msgid "&General"
+#~ msgctxt "@title:tab general to-do settings"
+#~ msgid "&General"
+#~ msgstr "&Cyffredinol"
+
+#, fuzzy
+#~| msgid "New To-do"
+#~ msgctxt "@title:window"
+#~ msgid "New To-do"
+#~ msgstr "I'w-Wneud newydd..."
+
+#, fuzzy
+#~ msgid "Sets the title of this journal."
+#~ msgstr "Dileu Hen Ddigwyddiadau"
+
+#, fuzzy
+#~| msgid "T&itle:"
+#~ msgctxt "journal title"
+#~ msgid "T&itle:"
+#~ msgstr "&Teitl:"
+
+#~ msgid "&Date:"
+#~ msgstr "&Dyddiad:"
+
+#~ msgid "&Time: "
+#~ msgstr "&Amser: "
+
+#~ msgid "Select Cate&gories..."
+#~ msgstr "Dewis Cate&gorïau..."
+
+#, fuzzy
+#~ msgid "Please specify a valid date, for example '%1'."
+#~ msgstr "Rhowch ddyddiad diwedd cywir, er engrhaifft '%1'."
+
+#, fuzzy
+#~| msgid "Please specify a valid due time."
+#~ msgctxt "@info"
+#~ msgid "Please specify a journal title."
+#~ msgstr "Rhowch amser disgwyliedig dilys os gwelwch yn dda."
+
+#, fuzzy
+#~| msgid "General"
+#~ msgctxt "@title general journal settings"
+#~ msgid "General"
+#~ msgstr "Cyffredinol"
+
+#, fuzzy
+#~ msgctxt "@title:window"
+#~ msgid "New Journal"
+#~ msgstr "&Dyddlyfr"
+
+#, fuzzy
+#~| msgid "[Binary data]"
+#~ msgctxt "@label attachment contains binary data"
+#~ msgid "[Binary data]"
+#~ msgstr "[Data deuol]"
+
+#, fuzzy
+#~| msgid "Attach&ments"
+#~ msgctxt "@label"
+#~ msgid "Attachment name"
+#~ msgstr "Atodia&dau"
+
+#, fuzzy
+#~| msgid "Attach&ments"
+#~ msgctxt "@info:tooltip"
+#~ msgid "Give the attachment a name"
+#~ msgstr "Atodia&dau"
+
+#, fuzzy
+#~ msgctxt "@label"
+#~ msgid "Type:"
+#~ msgstr "Math"
+
+#, fuzzy
+#~| msgid "Unknown"
+#~ msgctxt "@label unknown mimetype"
+#~ msgid "Unknown"
+#~ msgstr "Anhysbys"
+
+#, fuzzy
+#~ msgctxt "@option:check"
+#~ msgid "Store attachment inline"
+#~ msgstr "Ychwanegu Atodiad"
+
+#, fuzzy
+#~ msgctxt "@info:tooltip"
+#~ msgid "Store the attachment file inside the calendar"
+#~ msgstr "Ychwanegu Atodiad"
+
+#, fuzzy
+#~ msgctxt "@label"
+#~ msgid "Location:"
+#~ msgstr "&Lleoliad:"
+
+#, fuzzy
+#~ msgctxt "@label"
+#~ msgid "Attachments:"
+#~ msgstr "Atodia&dau"
+
+#, fuzzy
+#~| msgid "Add Attachment"
+#~ msgctxt "@info:tooltip"
+#~ msgid "Add an attachment"
+#~ msgstr "Ychwanegu Atodiad"
+
+#, fuzzy
+#~| msgid "Attach&ments"
+#~ msgctxt "@info:tooltip"
+#~ msgid "Remove the selected attachment"
+#~ msgstr "Atodia&dau"
+
+#, fuzzy
+#~ msgctxt "@action:inmenu remove the attachment"
+#~ msgid "&Remove"
+#~ msgstr "&Gwaredu..."
+
+#, fuzzy
+#~ msgctxt "@action:inmenu show a dialog used to edit the attachment"
+#~ msgid "&Properties..."
+#~ msgstr "&Golygu..."
+
+#, fuzzy
+#~ msgctxt "@action:inmenu"
+#~ msgid "&Link here"
+#~ msgstr "&Copïo I"
+
+#, fuzzy
+#~ msgctxt "@action:inmenu"
+#~ msgid "&Copy here"
+#~ msgstr "&Copïo I"
+
+#, fuzzy
+#~ msgctxt "@action:inmenu"
+#~ msgid "C&ancel"
+#~ msgstr "&Newid"
+
+#, fuzzy
+#~| msgid "Add Attachment"
+#~ msgctxt "@title"
+#~ msgid "Add Attachment"
+#~ msgstr "Ychwanegu Atodiad"
+
+#, fuzzy
+#~ msgctxt "@info"
+#~ msgid "Do you really want to remove the attachment labeled \"%1\"?"
+#~ msgstr "<qt>A ydych yn wir eisiau dileu'r adnodd? <b>%1</b>?</qt>"
+
+#, fuzzy
+#~ msgctxt "@action:button"
+#~ msgid "Manage &Templates..."
+#~ msgstr "Cadw Patrymlun"
+
+#, fuzzy
+#~| msgid "Calendar"
+#~ msgid "Calendar:"
+#~ msgstr "Calendr"
+
+#, fuzzy
+#~| msgid "Edit %1"
+#~ msgctxt "@title:window"
+#~ msgid "Edit %1: %2"
+#~ msgstr "Golygu %1"
+
+#, fuzzy
+#~| msgid "KOrganizer Confirmation"
+#~ msgctxt "@title:window"
+#~ msgid "KOrganizer Confirmation"
+#~ msgstr "Cadarnhâd KOrganizer"
+
+#, fuzzy
+#~| msgid "Atte&ndees"
+#~ msgctxt "@title:tab"
+#~ msgid "Atte&ndees"
+#~ msgstr "Cy&farfotwyr"
+
+#, fuzzy
+#~| msgid "Unable to find template '%1'."
+#~ msgctxt "@info"
+#~ msgid "Unable to find template '%1'."
+#~ msgstr "Wedi methu darganfod patrymlun '%1'."
+
+#, fuzzy
+#~| msgid "Error loading template file '%1'."
+#~ msgctxt "@info"
+#~ msgid "Error loading template file '%1'."
+#~ msgstr "Gwall wrth lwytho'r ffeil batrymlun '%1'"
+
+#, fuzzy
+#~| msgid "Template does not contain a valid event."
+#~ msgctxt "@info"
+#~ msgid "Template does not contain a valid incidence."
+#~ msgstr "Nid yw'r patrymlun yn cynnwys digwyddiad dilys."
+
+#, fuzzy
+#~ msgctxt "@action:button"
+#~ msgid "Create to-do"
+#~ msgstr "Cliciwch i ychwanegu I-Wneud newydd"
+
+#, fuzzy
+#~ msgctxt "@title:window"
+#~ msgid "Counter proposal"
+#~ msgstr "&Dyddlyfr"
+
+#, fuzzy
+#~ msgctxt "@action:button"
+#~ msgid "Counter proposal"
+#~ msgstr "&Dyddlyfr"
+
+#, fuzzy
+#~| msgid "Name"
+#~ msgctxt "@title:column attendee name"
+#~ msgid "Name"
+#~ msgstr "Enw"
+
+#, fuzzy
+#~| msgid "Email"
+#~ msgctxt "@title:column attendee email"
+#~ msgid "Email"
+#~ msgstr "Ebost"
+
+#, fuzzy
+#~| msgid "Role"
+#~ msgctxt "@title:column attendee role"
+#~ msgid "Role"
+#~ msgstr "Rôl"
+
+#, fuzzy
+#~| msgid "Status"
+#~ msgctxt "@title:column attendee status"
+#~ msgid "Status"
+#~ msgstr "Cyflwr"
+
+#, fuzzy
+#~| msgid "RSVP"
+#~ msgctxt "@title:column attendee has RSVPed?"
+#~ msgid "RSVP"
+#~ msgstr "RSVP"
+
+#, fuzzy
+#~ msgctxt "@title:column attendee delegated to"
+#~ msgid "Delegated To"
+#~ msgstr "Dileu %1"
+
+#, fuzzy
+#~| msgid "Delete To-do"
+#~ msgctxt "@title:column attendee delegated from"
+#~ msgid "Delegated From"
+#~ msgstr "Dileu I'w-Wneud"
+
+#, fuzzy
+#~ msgctxt "@title"
+#~ msgid "Invalid Email Address"
+#~ msgstr "Cyfeiriad ebost ychwanegol:"
+
+#, fuzzy
+#~ msgid "Manage %1 Templates"
+#~ msgstr "Cadw Patrymlun"
+
+#~ msgid "Template Name"
+#~ msgstr "Enw Patrymlun"
+
+#, fuzzy
+#~ msgid "Please enter a name for the new template:"
+#~ msgstr "Rhowch enw ar gyfer y patrymlun:"
+
+#, fuzzy
+#~ msgid "New %1 Template"
+#~ msgstr "Cadw Patrymlun"
+
+#, fuzzy
+#~ msgid ""
+#~ "A template with that name already exists, do you want to overwrite it?"
+#~ msgstr "Mae'r ffeil '%1' mewn bod eisoes.  Ydych eisiau ysgrifennu drosto?"
+
+#, fuzzy
+#~ msgid "Duplicate Template Name"
+#~ msgstr "Dewisiwch Enw Patrymlun"
+
+#~ msgid "Overwrite"
+#~ msgstr "Dros-ysgrifennu"
+
+#, fuzzy
+#~ msgid "Are you sure that you want to remove the template <b>%1</b>?"
+#~ msgstr "<qt>A ydych yn wir eisiau dileu'r adnodd? <b>%1</b>?</qt>"
+
+#, fuzzy
+#~ msgid "Remove"
+#~ msgstr "&Gwaredu..."
+
+#, fuzzy
+#~ msgctxt "@label"
+#~ msgid "Identity as organizer:"
+#~ msgstr "Darganfod Digwyddiadau"
+
+#, fuzzy
+#~| msgid "Na&me:"
+#~ msgctxt "@label attendee's name"
+#~ msgid "Na&me:"
+#~ msgstr "En&w:"
+
+#, fuzzy
+#~ msgctxt "@label"
+#~ msgid "Click to add a new attendee"
+#~ msgstr "Cliciwch i ychwanegu I-Wneud newydd"
+
+#, fuzzy
+#~| msgid "Ro&le:"
+#~ msgctxt "@label"
+#~ msgid "Ro&le:"
+#~ msgstr "Rô&l:"
+
+#, fuzzy
+#~ msgctxt "@info:tooltip"
+#~ msgid "Select the attendee participation role"
+#~ msgstr "Lliw cefndir y golwg agenda:"
+
+#, fuzzy
+#~| msgid "Stat&us:"
+#~ msgctxt "@label"
+#~ msgid "Stat&us:"
+#~ msgstr "&Cyflwr:"
+
+#, fuzzy
+#~| msgid "Re&quest response"
+#~ msgctxt "@info:tooltip"
+#~ msgid "Request a response from the attendee"
+#~ msgstr "Go&fyn am ymateb"
+
+#, fuzzy
+#~| msgid "Re&quest response"
+#~ msgctxt "@option:check"
+#~ msgid "Re&quest response"
+#~ msgstr "Go&fyn am ymateb"
+
+#, fuzzy
+#~| msgid "&New"
+#~ msgctxt "@action:button new attendee"
+#~ msgid "&New"
+#~ msgstr "&Newydd"
+
+#, fuzzy
+#~ msgctxt "@info:tooltip"
+#~ msgid "Add an attendee"
+#~ msgstr "1 munud"
+
+#, fuzzy
+#~ msgctxt "@action:button"
+#~ msgid "&Remove"
+#~ msgstr "&Gwaredu..."
+
+#, fuzzy
+#~| msgid "Select Addressee..."
+#~ msgctxt "@action:button"
+#~ msgid "Select Addressee..."
+#~ msgstr "Dewis Derbynnydd..."
+
+#, fuzzy
+#~| msgid "name"
+#~ msgctxt "@item:intext sample attendee email name"
+#~ msgid "name"
+#~ msgstr "enw"
+
+#, fuzzy
+#~ msgctxt "@info:whatsthis"
+#~ msgid "Select the identity to use as the organizer for this incidence."
+#~ msgstr "Lliw i-wneud sy'n hwyr:"
+
+#, fuzzy
+#~ msgctxt "@label"
+#~ msgid "Delegated to %1"
+#~ msgstr "Dileu %1"
+
+#, fuzzy
+#~ msgctxt "@label"
+#~ msgid "Not delegated"
+#~ msgstr "Nid oes darparwr wedi ei dewis."
+
+#, fuzzy
+#~| msgid "1st"
+#~ msgctxt "@item:inlistbox"
+#~ msgid "1st"
+#~ msgstr "1af"
+
+#, fuzzy
+#~| msgid "2nd"
+#~ msgctxt "@item:inlistbox"
+#~ msgid "2nd"
+#~ msgstr "2il"
+
+#, fuzzy
+#~| msgid "3rd"
+#~ msgctxt "@item:inlistbox"
+#~ msgid "3rd"
+#~ msgstr "3ydd"
+
+#, fuzzy
+#~| msgid "4th"
+#~ msgctxt "@item:inlistbox"
+#~ msgid "4th"
+#~ msgstr "4ydd"
+
+#, fuzzy
+#~| msgid "5th"
+#~ msgctxt "@item:inlistbox"
+#~ msgid "5th"
+#~ msgstr "5ed"
+
+#, fuzzy
+#~| msgid "Last"
+#~ msgctxt "@item:inlistbox last week of the month"
+#~ msgid "Last"
+#~ msgstr "Olaf"
+
+#, fuzzy
+#~| msgid "2nd Last"
+#~ msgctxt "@item:inlistbox"
+#~ msgid "2nd Last"
+#~ msgstr "Ail Olaf"
+
+#, fuzzy
+#~| msgid "3rd Last"
+#~ msgctxt "@item:inlistbox"
+#~ msgid "3rd Last"
+#~ msgstr "Trydydd Olaf"
+
+#, fuzzy
+#~| msgid "4th Last"
+#~ msgctxt "@item:inlistbox"
+#~ msgid "4th Last"
+#~ msgstr "Pedwerydd Olaf"
+
+#, fuzzy
+#~| msgid "5th Last"
+#~ msgctxt "@item:inlistbox"
+#~ msgid "5th Last"
+#~ msgstr "Pumed Olaf"
+
+#, fuzzy
+#~| msgid "&Recur every"
+#~ msgctxt "@label"
+#~ msgid "&Recur every"
+#~ msgstr "&Ail-ddigwydd pob"
+
+#, fuzzy
+#~| msgid "day(s)"
+#~ msgctxt "@label recurrence expressed in days"
+#~ msgid "day(s)"
+#~ msgstr "dydd(iau)"
+
+#, fuzzy
+#~| msgid "week(s) on:"
+#~ msgctxt "@label"
+#~ msgid "week(s) on:"
+#~ msgstr "wythnos(au) ar:"
+
+#, fuzzy
+#~| msgid "&Recur on the"
+#~ msgctxt "@info:tooltip"
+#~ msgid "Recur on %1"
+#~ msgstr "&Ail-ddigwydd ar y"
+
+#, fuzzy
+#~| msgid "month(s)"
+#~ msgctxt "@label"
+#~ msgid "month(s)"
+#~ msgstr "mis(oedd)"
+
+#, fuzzy
+#~| msgid "&Recur on the"
+#~ msgctxt "@option:radio"
+#~ msgid "&Recur on the"
+#~ msgstr "&Ail-ddigwydd ar y"
+
+#, fuzzy
+#~| msgid "6th"
+#~ msgctxt "@item:inlistbox"
+#~ msgid "6th"
+#~ msgstr "6ed"
+
+#, fuzzy
+#~| msgid "7th"
+#~ msgctxt "@item:inlistbox"
+#~ msgid "7th"
+#~ msgstr "7fed"
+
+#, fuzzy
+#~| msgid "8th"
+#~ msgctxt "@item:inlistbox"
+#~ msgid "8th"
+#~ msgstr "8fed"
+
+#, fuzzy
+#~| msgid "9th"
+#~ msgctxt "@item:inlistbox"
+#~ msgid "9th"
+#~ msgstr "9fed"
+
+#, fuzzy
+#~| msgid "10th"
+#~ msgctxt "@item:inlistbox"
+#~ msgid "10th"
+#~ msgstr "10fed"
+
+#, fuzzy
+#~| msgid "11th"
+#~ msgctxt "@item:inlistbox"
+#~ msgid "11th"
+#~ msgstr "11eg"
+
+#, fuzzy
+#~| msgid "12th"
+#~ msgctxt "@item:inlistbox"
+#~ msgid "12th"
+#~ msgstr "12fed"
+
+#, fuzzy
+#~| msgid "13th"
+#~ msgctxt "@item:inlistbox"
+#~ msgid "13th"
+#~ msgstr "13eg"
+
+#, fuzzy
+#~| msgid "14th"
+#~ msgctxt "@item:inlistbox"
+#~ msgid "14th"
+#~ msgstr "14eg"
+
+#, fuzzy
+#~| msgid "15th"
+#~ msgctxt "@item:inlistbox"
+#~ msgid "15th"
+#~ msgstr "15fed"
+
+#, fuzzy
+#~| msgid "16th"
+#~ msgctxt "@item:inlistbox"
+#~ msgid "16th"
+#~ msgstr "16eg"
+
+#, fuzzy
+#~| msgid "17th"
+#~ msgctxt "@item:inlistbox"
+#~ msgid "17th"
+#~ msgstr "17eg"
+
+#, fuzzy
+#~| msgid "18th"
+#~ msgctxt "@item:inlistbox"
+#~ msgid "18th"
+#~ msgstr "18fed"
+
+#, fuzzy
+#~| msgid "19th"
+#~ msgctxt "@item:inlistbox"
+#~ msgid "19th"
+#~ msgstr "19eg"
+
+#, fuzzy
+#~| msgid "20th"
+#~ msgctxt "@item:inlistbox"
+#~ msgid "20th"
+#~ msgstr "20fed"
+
+#, fuzzy
+#~| msgid "21st"
+#~ msgctxt "@item:inlistbox"
+#~ msgid "21st"
+#~ msgstr "21ain"
+
+#, fuzzy
+#~| msgid "22nd"
+#~ msgctxt "@item:inlistbox"
+#~ msgid "22nd"
+#~ msgstr "22ain"
+
+#, fuzzy
+#~| msgid "23rd"
+#~ msgctxt "@item:inlistbox"
+#~ msgid "23rd"
+#~ msgstr "23ain"
+
+#, fuzzy
+#~| msgid "24th"
+#~ msgctxt "@item:inlistbox"
+#~ msgid "24th"
+#~ msgstr "24ain"
+
+#, fuzzy
+#~| msgid "25th"
+#~ msgctxt "@item:inlistbox"
+#~ msgid "25th"
+#~ msgstr "25ain"
+
+#, fuzzy
+#~| msgid "26th"
+#~ msgctxt "@item:inlistbox"
+#~ msgid "26th"
+#~ msgstr "26ain"
+
+#, fuzzy
+#~| msgid "27th"
+#~ msgctxt "@item:inlistbox"
+#~ msgid "27th"
+#~ msgstr "27ain"
+
+#, fuzzy
+#~| msgid "28th"
+#~ msgctxt "@item:inlistbox"
+#~ msgid "28th"
+#~ msgstr "28ain"
+
+#, fuzzy
+#~| msgid "29th"
+#~ msgctxt "@item:inlistbox"
+#~ msgid "29th"
+#~ msgstr "29ain"
+
+#, fuzzy
+#~| msgid "30th"
+#~ msgctxt "@item:inlistbox"
+#~ msgid "30th"
+#~ msgstr "30ain"
+
+#, fuzzy
+#~| msgid "31st"
+#~ msgctxt "@item:inlistbox"
+#~ msgid "31st"
+#~ msgstr "31ain"
+
+#, fuzzy
+#~| msgid "Last"
+#~ msgctxt "@item:inlistbox last day of the month"
+#~ msgid "Last"
+#~ msgstr "Olaf"
+
+#, fuzzy
+#~ msgctxt "@item:inlistbox"
+#~ msgid "6th Last"
+#~ msgstr "Pedwerydd Olaf"
+
+#, fuzzy
+#~ msgctxt "@item:inlistbox"
+#~ msgid "7th Last"
+#~ msgstr "Pedwerydd Olaf"
+
+#, fuzzy
+#~ msgctxt "@item:inlistbox"
+#~ msgid "8th Last"
+#~ msgstr "Pedwerydd Olaf"
+
+#, fuzzy
+#~ msgctxt "@item:inlistbox"
+#~ msgid "9th Last"
+#~ msgstr "Pedwerydd Olaf"
+
+#, fuzzy
+#~ msgctxt "@item:inlistbox"
+#~ msgid "10th Last"
+#~ msgstr "Pedwerydd Olaf"
+
+#, fuzzy
+#~ msgctxt "@item:inlistbox"
+#~ msgid "11th Last"
+#~ msgstr "Pedwerydd Olaf"
+
+#, fuzzy
+#~ msgctxt "@item:inlistbox"
+#~ msgid "12th Last"
+#~ msgstr "Pedwerydd Olaf"
+
+#, fuzzy
+#~ msgctxt "@item:inlistbox"
+#~ msgid "13th Last"
+#~ msgstr "Pedwerydd Olaf"
+
+#, fuzzy
+#~ msgctxt "@item:inlistbox"
+#~ msgid "14th Last"
+#~ msgstr "Pedwerydd Olaf"
+
+#, fuzzy
+#~ msgctxt "@item:inlistbox"
+#~ msgid "15th Last"
+#~ msgstr "Pumed Olaf"
+
+#, fuzzy
+#~ msgctxt "@item:inlistbox"
+#~ msgid "16th Last"
+#~ msgstr "Pedwerydd Olaf"
+
+#, fuzzy
+#~ msgctxt "@item:inlistbox"
+#~ msgid "17th Last"
+#~ msgstr "Pedwerydd Olaf"
+
+#, fuzzy
+#~ msgctxt "@item:inlistbox"
+#~ msgid "18th Last"
+#~ msgstr "Pedwerydd Olaf"
+
+#, fuzzy
+#~ msgctxt "@item:inlistbox"
+#~ msgid "19th Last"
+#~ msgstr "Pedwerydd Olaf"
+
+#, fuzzy
+#~ msgctxt "@item:inlistbox"
+#~ msgid "20th Last"
+#~ msgstr "Pedwerydd Olaf"
+
+#, fuzzy
+#~ msgctxt "@item:inlistbox"
+#~ msgid "21st Last"
+#~ msgstr "Ail Olaf"
+
+#, fuzzy
+#~ msgctxt "@item:inlistbox"
+#~ msgid "22nd Last"
+#~ msgstr "Ail Olaf"
+
+#, fuzzy
+#~ msgctxt "@item:inlistbox"
+#~ msgid "23rd Last"
+#~ msgstr "Trydydd Olaf"
+
+#, fuzzy
+#~ msgctxt "@item:inlistbox"
+#~ msgid "24th Last"
+#~ msgstr "Pedwerydd Olaf"
+
+#, fuzzy
+#~ msgctxt "@item:inlistbox"
+#~ msgid "25th Last"
+#~ msgstr "Pumed Olaf"
+
+#, fuzzy
+#~ msgctxt "@item:inlistbox"
+#~ msgid "26th Last"
+#~ msgstr "Pedwerydd Olaf"
+
+#, fuzzy
+#~ msgctxt "@item:inlistbox"
+#~ msgid "27th Last"
+#~ msgstr "Pedwerydd Olaf"
+
+#, fuzzy
+#~ msgctxt "@item:inlistbox"
+#~ msgid "28th Last"
+#~ msgstr "Pedwerydd Olaf"
+
+#, fuzzy
+#~ msgctxt "@item:inlistbox"
+#~ msgid "29th Last"
+#~ msgstr "Pedwerydd Olaf"
+
+#, fuzzy
+#~ msgctxt "@item:inlistbox"
+#~ msgid "30th Last"
+#~ msgstr "Pedwerydd Olaf"
+
+#, fuzzy
+#~ msgctxt "@item:inlistbox"
+#~ msgid "31st Last"
+#~ msgstr "Trydydd Olaf"
+
+#, fuzzy
+#~| msgid "day"
+#~ msgctxt "@label"
+#~ msgid "day"
+#~ msgstr "dydd"
+
+#, fuzzy
+#~| msgid "year(s)"
+#~ msgctxt "@label"
+#~ msgid "year(s)"
+#~ msgstr "blwyddyn (blynyddoedd)"
+
+#, fuzzy
+#~ msgctxt "@option:radio part before XXX of 'Recur on day XXX of month YYY'"
+#~ msgid "&Recur on day "
+#~ msgstr "Ail-ddi&gwydd ar y diwrnod yma"
+
+#, fuzzy
+#~| msgid "&Month"
+#~ msgctxt "@option:radio Part before XXX in 'Recur on NNN. WEEKDAY of MONTH'"
+#~ msgid "&On the"
+#~ msgstr "&Mis"
+
+#, fuzzy
+#~ msgctxt "@option:radio"
+#~ msgid "Recur on &day #"
+#~ msgstr "Ail-ddi&gwydd ar y diwrnod yma"
+
+#, fuzzy
+#~| msgid "E&xceptions"
+#~ msgctxt "@title:group"
+#~ msgid "E&xceptions"
+#~ msgstr "&Eithriadau"
+
+#, fuzzy
+#~| msgid "&Add"
+#~ msgctxt "@action:button"
+#~ msgid "&Add"
+#~ msgstr "&Ychwanegu..."
+
+#, fuzzy
+#~| msgid "&Change"
+#~ msgctxt "@action:button"
+#~ msgid "&Change"
+#~ msgstr "&Newid"
+
+#, fuzzy
+#~ msgctxt "@action:button"
+#~ msgid "&Delete"
+#~ msgstr "Dileu %1"
+
+#, fuzzy
+#~| msgid "Edit Exceptions"
+#~ msgctxt "@title:window"
+#~ msgid "Edit Exceptions"
+#~ msgstr "Golygu Eithriadau"
+
+#, fuzzy
+#~| msgid "Recurrence Range"
+#~ msgctxt "@title:group"
+#~ msgid "Recurrence Range"
+#~ msgstr "Amrediad Ail-ddigwyddiadau"
+
+#, fuzzy
+#~| msgid "Begin on:"
+#~ msgctxt "@label"
+#~ msgid "Begin on:"
+#~ msgstr "Dechrau ar:"
+
+#, fuzzy
+#~| msgid "&No ending date"
+#~ msgctxt "@option radio"
+#~ msgid "&No ending date"
+#~ msgstr "&Heb ddyddiad gorffen"
+
+#, fuzzy
+#~| msgid "End &after"
+#~ msgctxt "@option:radio"
+#~ msgid "End &after"
+#~ msgstr "Gorffen &ar ôl"
+
+#, fuzzy
+#~| msgid "&occurrence(s)"
+#~ msgctxt "@label"
+#~ msgid "&occurrence(s)"
+#~ msgstr "di&gwyddiad(au)"
+
+#, fuzzy
+#~ msgctxt "@option:radio"
+#~ msgid "End &on:"
+#~ msgstr "Gorffen &erbyn:"
+
+#, fuzzy
+#~| msgid "Begins on: %1"
+#~ msgctxt "@label"
+#~ msgid "Begins on: %1"
+#~ msgstr "Yn dechrau ar: %1"
+
+#, fuzzy
+#~| msgid "Edit Recurrence Range"
+#~ msgctxt "@title:window"
+#~ msgid "Edit Recurrence Range"
+#~ msgstr "Golygu Amrediad Ail-ddigwyddiadau"
+
+#, fuzzy
+#~ msgctxt "@title:group"
+#~ msgid "Recurrence Types"
+#~ msgstr "Ail-dd&igwydd"
+
+#, fuzzy
+#~| msgid "&Daily"
+#~ msgctxt "@option:radio recur daily"
+#~ msgid "&Daily"
+#~ msgstr "&Dyddiol"
+
+#, fuzzy
+#~| msgid "&Weekly"
+#~ msgctxt "@option:radio recur weekly"
+#~ msgid "&Weekly"
+#~ msgstr "&Wythnosol"
+
+#, fuzzy
+#~| msgid "&Monthly"
+#~ msgctxt "@option:radio recur monthly"
+#~ msgid "&Monthly"
+#~ msgstr "&Misol"
+
+#, fuzzy
+#~| msgid "&Yearly"
+#~ msgctxt "@option:radio recur yearly"
+#~ msgid "&Yearly"
+#~ msgstr "&Blynyddol"
+
+#, fuzzy
+#~| msgid "&Enable recurrence"
+#~ msgctxt "@option:check"
+#~ msgid "&Enable recurrence"
+#~ msgstr "Gall&uogi ail-ddigwydd"
+
+#, fuzzy
+#~| msgid "Appointment Time "
+#~ msgctxt "@title:group"
+#~ msgid "Appointment Time "
+#~ msgstr "Amser Cyfarfod"
+
+#, fuzzy
+#~ msgctxt "@info:whatsthis"
+#~ msgid "Displays appointment time information."
+#~ msgstr "Amser cyfarfod rhagosodedig:"
+
+#, fuzzy
+#~| msgid "Recurrence Rule"
+#~ msgctxt "@title:group"
+#~ msgid "Recurrence Rule"
+#~ msgstr "Rheol Ail-ddigwydd"
+
+#~ msgid "Date && Time"
+#~ msgstr "Dyddiad ac Amser"
+
+#, fuzzy
+#~| msgid "Sta&rt:"
+#~ msgctxt "@option:check to-do start datetime"
+#~ msgid "Sta&rt:"
+#~ msgstr "De&chrau:"
+
+#, fuzzy
+#~| msgid "&Due:"
+#~ msgctxt "to-do due datetime"
+#~ msgid "&Due:"
+#~ msgstr "D&isgwyliedig:"
+
+#~ msgid "Ti&me associated"
+#~ msgstr "Amser c&ysylltiedig"
+
+#, fuzzy
+#~| msgid "Rec&urrence"
+#~ msgctxt "@label"
+#~ msgid "Recurrence:"
+#~ msgstr "Ail-dd&igwydd"
+
+#~ msgctxt "Percent complete"
+#~ msgid "%1 %"
+#~ msgstr "%1 %"
+
+#, fuzzy
+#~| msgid "co&mpleted"
+#~ msgctxt "to-do completed"
+#~ msgid "co&mpleted"
+#~ msgstr "cy&flawn"
+
+#~ msgid "&Priority:"
+#~ msgstr "&Blaenoriaeth:"
+
+#~ msgid "Please specify a valid due date."
+#~ msgstr "Rhowch ddyddiad disgwyliedig dilys os gwelwch yn dda."
+
+#~ msgid "Please specify a valid due time."
+#~ msgstr "Rhowch amser disgwyliedig dilys os gwelwch yn dda."
+
+#~ msgid "Please specify a valid start date."
+#~ msgstr "Rhowch ddyddiad dechrau dilys os gwelwch yn dda."
+
+#~ msgid "Please specify a valid start time."
+#~ msgstr "Rhowch amser dechrau dilys os gwelwch yn dda."
+
+#~ msgid "The start date cannot be after the due date."
+#~ msgstr "Ni all y dyddiad dechrau bod ar ôl y dyddiad gorffen."
+
+#, fuzzy
+#~| msgid "Start: %1"
+#~ msgctxt "to-do start datetime"
+#~ msgid "Start: %1"
+#~ msgstr "Cychwyn: %1"
+
+#, fuzzy
+#~ msgctxt "to-do due datetime"
+#~ msgid "   Due: %1"
+#~ msgstr "Disgwyliedig:"
+
+#, fuzzy
+#~| msgid "co&mpleted on"
+#~ msgctxt "to-do completed on datetime"
+#~ msgid "co&mpleted on"
+#~ msgstr "cyfla&wn ar"
+
+#, fuzzy
+#~ msgctxt "@info:whatsthis"
+#~ msgid "Sets the Title of this event or to-do."
+#~ msgstr "Dileu Hen Ddigwyddiadau"
+
+#, fuzzy
+#~ msgctxt "@info:tooltip"
+#~ msgid "Set the title"
+#~ msgstr "Amser larwm rhagosodedig:"
+
+#, fuzzy
+#~| msgid "T&itle:"
+#~ msgctxt "@label event or to-do title"
+#~ msgid "T&itle:"
+#~ msgstr "&Teitl:"
+
+#, fuzzy
+#~| msgid "&Location:"
+#~ msgctxt "@label"
+#~ msgid "&Location:"
+#~ msgstr "&Lleoliad:"
+
+#, fuzzy
+#~ msgctxt "@label"
+#~ msgid "Categories:"
+#~ msgstr "Categorïau"
+
+#, fuzzy
+#~| msgid "Select Addressee..."
+#~ msgctxt "@action:button select a category"
+#~ msgid "&Select..."
+#~ msgstr "Dewis Derbynnydd..."
+
+#, fuzzy
+#~| msgid "Acc&ess:"
+#~ msgctxt "@label"
+#~ msgid "Acc&ess:"
+#~ msgstr "Cyrc&hiad:"
+
+#, fuzzy
+#~ msgctxt "@info:tooltip"
+#~ msgid "Set the secrecy level"
+#~ msgstr "Dyddiad dechrau:"
+
+#, fuzzy
+#~ msgctxt "@option:check"
+#~ msgid "Rich text"
+#~ msgstr "Tefet"
+
+#, fuzzy
+#~ msgctxt "@info:tooltip"
+#~ msgid "Toggle Rich Text"
+#~ msgstr "Tefet"
+
+#, fuzzy
+#~| msgid "&Reminder:"
+#~ msgctxt "@option:check"
+#~ msgid "&Reminder:"
+#~ msgstr "&Atgof:"
+
+#, fuzzy
+#~ msgctxt "@info:whatsthis"
+#~ msgid "Activates a reminder for this event or to-do."
+#~ msgstr "Dileu Hen Ddigwyddiadau"
+
+#, fuzzy
+#~ msgctxt "@info:tooltip"
+#~ msgid "Set a reminder"
+#~ msgstr "Atgof"
+
+#, fuzzy
+#~| msgid "Select a month"
+#~ msgctxt "@info:tooltip"
+#~ msgid "Set an alarm"
+#~ msgstr "Dewiswch mis"
+
+#, fuzzy
+#~| msgid "minute(s)"
+#~ msgctxt "@item:inlistbox alarm expressed in minutes"
+#~ msgid "minute(s)"
+#~ msgstr "munud(au)"
+
+#, fuzzy
+#~| msgid "hour(s)"
+#~ msgctxt "@item:inlistbox alarm expressed in hours"
+#~ msgid "hour(s)"
+#~ msgstr "awr(oriau)"
+
+#, fuzzy
+#~| msgid "day(s)"
+#~ msgctxt "@item:inlistbox alarm expressed in days"
+#~ msgid "day(s)"
+#~ msgstr "dydd(iau)"
+
+#, fuzzy
+#~| msgid "Advanced"
+#~ msgctxt "@action:button advanced alarm settings"
+#~ msgid "Advanced..."
+#~ msgstr "Uwch"
+
+#, fuzzy
+#~ msgctxt "@label"
+#~ msgid "1 reminder configured"
+#~ msgid_plural "%1 reminders configured"
+#~ msgstr[0] "Atgof"
+#~ msgstr[1] "Atgof"
+
+#, fuzzy
+#~ msgctxt "@label"
+#~ msgid "1 advanced reminder configured"
+#~ msgstr "Atgof"
+
+#, fuzzy
+#~ msgctxt "@label"
+#~ msgid "No attendees"
+#~ msgstr "Cy&farfotwyr"
+
+#, fuzzy
+#~| msgid "Please specify a valid due time."
+#~ msgctxt "@info"
+#~ msgid "Please specify a title."
+#~ msgstr "Rhowch amser disgwyliedig dilys os gwelwch yn dda."
+
+#, fuzzy
+#~| msgid "Date && Time"
+#~ msgctxt "@title:group"
+#~ msgid "Date && Time"
+#~ msgstr "Dyddiad ac Amser"
+
+#, fuzzy
+#~ msgctxt "@info:whatsthis"
+#~ msgid "Sets options related to the date and time of the event or to-do."
+#~ msgstr "Dileu Hen Ddigwyddiadau"
+
+#, fuzzy
+#~| msgid "&Start:"
+#~ msgctxt "@label event start time"
+#~ msgid "&Start:"
+#~ msgstr "&Dechrau:"
+
+#, fuzzy
+#~ msgctxt "@info:tooltip"
+#~ msgid "Set the start date"
+#~ msgstr "Dyddiad dechrau:"
+
+#, fuzzy
+#~| msgid "Start &time:"
+#~ msgctxt "@info:tooltip"
+#~ msgid "Set the start time"
+#~ msgstr "&Amser dechrau:"
+
+#, fuzzy
+#~ msgctxt "@info:whatsthis"
+#~ msgid "Select the starting time for this event."
+#~ msgstr "Dileu Hen Ddigwyddiadau"
+
+#, fuzzy
+#~| msgid "&End:"
+#~ msgctxt "@label"
+#~ msgid "&End:"
+#~ msgstr "&Gorffen:"
+
+#, fuzzy
+#~ msgctxt "@info:tooltip"
+#~ msgid "Set the end time"
+#~ msgstr "Amser larwm rhagosodedig:"
+
+#, fuzzy
+#~| msgid "T&ime associated"
+#~ msgctxt "@option:check"
+#~ msgid "T&ime associated"
+#~ msgstr "A&mser cysylltiedig"
+
+#, fuzzy
+#~| msgid "S&how time as:"
+#~ msgctxt "@label"
+#~ msgid "S&how time as:"
+#~ msgstr "&Dangos amser fel:"
+
+#, fuzzy
+#~| msgid "Busy"
+#~ msgctxt "@item:inlistbox show event as busy time"
+#~ msgid "Busy"
+#~ msgstr "Prysur"
+
+#, fuzzy
+#~| msgid "Free"
+#~ msgctxt "@item:inlistbox show event as free time"
+#~ msgid "Free"
+#~ msgstr "Rhydd"
+
+#, fuzzy
+#~| msgid "Accept"
+#~ msgctxt "@action:button"
+#~ msgid "Accept"
+#~ msgstr "Derbyn"
+
+#, fuzzy
+#~| msgid "Decline"
+#~ msgctxt "@action:button"
+#~ msgid "Decline"
+#~ msgstr "Gwrthod"
+
+#, fuzzy
+#~| msgid "Duration: "
+#~ msgctxt "@label"
+#~ msgid "Duration: "
+#~ msgstr "Hyd:"
+
+#, fuzzy
+#~ msgctxt "@label"
+#~ msgid "1 Day"
+#~ msgid_plural "%1 Days"
+#~ msgstr[0] "1 Diwrnod"
+#~ msgstr[1] "%1 o Ddiwrnodau"
+
+#, fuzzy
+#~ msgctxt "@label"
+#~ msgid "1 hour"
+#~ msgid_plural "%1 hours"
+#~ msgstr[0] "1 awr"
+#~ msgstr[1] "%1 o awriau"
+
+#, fuzzy
+#~| msgid ", "
+#~ msgctxt "@label"
+#~ msgid ", "
+#~ msgstr ","
+
+#, fuzzy
+#~ msgctxt "@label"
+#~ msgid "1 minute"
+#~ msgid_plural "%1 minutes"
+#~ msgstr[0] "1 munud"
+#~ msgstr[1] "%1 o funudau"
+
+#, fuzzy
+#~| msgid "Please specify a valid start time, for example '%1'."
+#~ msgctxt "@info"
+#~ msgid "Please specify a valid start time, for example '%1'."
+#~ msgstr "Rhowch amser dechrau dilys, er engrhaifft '%1'."
+
+#, fuzzy
+#~| msgid "Please specify a valid end time, for example '%1'."
+#~ msgctxt "@info"
+#~ msgid "Please specify a valid end time, for example '%1'."
+#~ msgstr "Rhowch amser diwedd dilys, er engrhaifft '%1'."
+
+#, fuzzy
+#~| msgid "Please specify a valid start date, for example '%1'."
+#~ msgctxt "@info"
+#~ msgid "Please specify a valid start date, for example '%1'."
+#~ msgstr "Rhowch ddyddiad dechrau dilys, er engrhaifft '%1'."
+
+#, fuzzy
+#~| msgid "Please specify a valid end date, for example '%1'."
+#~ msgctxt "@info"
+#~ msgid "Please specify a valid end date, for example '%1'."
+#~ msgstr "Rhowch ddyddiad diwedd cywir, er engrhaifft '%1'."
+
+#, fuzzy
+#~| msgid ""
+#~| "The event ends before it starts.\n"
+#~| "Please correct dates and times."
+#~ msgctxt "@info"
+#~ msgid ""
+#~ "The event ends before it starts.\n"
+#~ "Please correct dates and times."
+#~ msgstr ""
+#~ "Mae'r digwyddiad yn gorffen cyn iddo ddechrau.\n"
+#~ " Cywirwch y dyddiadau ac amserau."
+
+#, fuzzy
+#~| msgid "Unknown"
+#~ msgctxt "@option unknown alarm type"
+#~ msgid "Unknown"
+#~ msgstr "Anhysbys"
+
+#, fuzzy
+#~ msgctxt "@option popup reminder dialog"
+#~ msgid "Reminder Dialog"
+#~ msgstr "&Atgof:"
+
+#, fuzzy
+#~| msgid "Email"
+#~ msgctxt "@option send email reminder"
+#~ msgid "Email"
+#~ msgstr "Ebost"
+
+#, fuzzy
+#~| msgid "Audio"
+#~ msgctxt "@option play a sound"
+#~ msgid "Audio"
+#~ msgstr "Sain"
+
+#, fuzzy
+#~ msgctxt "@item@intable N days/hours/minutes before/after the start/end"
+#~ msgid "%1 before the start"
+#~ msgstr "Canoli wrth Gychwyn"
+
+#, fuzzy
+#~ msgctxt "@item@intable N days/hours/minutes before/after the start/end"
+#~ msgid "%1 after the start"
+#~ msgstr "Canoli wrth Gychwyn"
+
+#, fuzzy
+#~ msgctxt "@item@intable N days/hours/minutes before/after the start/end"
+#~ msgid "%1 before the end"
+#~ msgstr "Canoli wrth Gychwyn"
+
+#, fuzzy
+#~ msgctxt "@item@intable N days/hours/minutes before/after the start/end"
+#~ msgid "%1 after the end"
+#~ msgstr "Canoli wrth Gychwyn"
+
+#, fuzzy
+#~ msgctxt "@item@intable alarm offset specified in days"
+#~ msgid "1 day"
+#~ msgid_plural "%1 days"
+#~ msgstr[0] "1 Diwrnod"
+#~ msgstr[1] " %1 o Ddiwrnodau"
+
+#, fuzzy
+#~ msgctxt "@item@intable alarm offset specified in hours"
+#~ msgid "1 hour"
+#~ msgid_plural "%1 hours"
+#~ msgstr[0] "1 awr"
+#~ msgstr[1] "%1 o awriau"
+
+#, fuzzy
+#~ msgctxt "@item@intable alarm offset specified in minutes"
+#~ msgid "1 minute"
+#~ msgid_plural "%1 minutes"
+#~ msgstr[0] "1 munud"
+#~ msgstr[1] "%1 o funudau"
+
+#, fuzzy
+#~ msgctxt "@title"
+#~ msgid "Edit Reminders"
+#~ msgstr "&Atgof:"
+
+#, fuzzy
+#~ msgctxt "@item:inlistbox"
+#~ msgid "before the to-do starts"
+#~ msgstr "Canoli wrth Gychwyn"
+
+#, fuzzy
+#~ msgctxt "@item:inlistbox"
+#~ msgid "after the to-do starts"
+#~ msgstr "Canoli wrth Gychwyn"
+
+#, fuzzy
+#~| msgid "&General"
+#~ msgctxt "@title:tab general event settings"
+#~ msgid "&General"
+#~ msgstr "&Cyffredinol"
+
+#, fuzzy
+#~ msgctxt "@title:tab"
+#~ msgid "&Attendees"
+#~ msgstr "Cyfarfotwyr"
+
+#, fuzzy
+#~| msgid "New Event"
+#~ msgctxt "@title:window"
+#~ msgid "New Event"
+#~ msgstr "Digwyddiad Newydd"
+
+#, fuzzy
+#~ msgctxt "@title:window"
+#~ msgid "No Changes"
+#~ msgstr "Ategyn Exchange"
+
+#, fuzzy
+#~ msgctxt "@item"
+#~ msgid "My counter proposal for: %1"
+#~ msgstr "&Dyddlyfr"
+
+#, fuzzy
+#~| msgid "Scale: "
+#~ msgctxt "@label"
+#~ msgid "Scale: "
+#~ msgstr "Graddfa:"
+
+#, fuzzy
+#~| msgid "Hour"
+#~ msgctxt "@item:inlistbox range in hours"
+#~ msgid "Hour"
+#~ msgstr "Awr"
+
+#, fuzzy
+#~| msgid "Center on Start"
+#~ msgctxt "@action:button"
+#~ msgid "Center on Start"
+#~ msgstr "Canoli wrth Gychwyn"
+
+#, fuzzy
+#~| msgid "Pick Date"
+#~ msgctxt "@action:button"
+#~ msgid "Pick Date"
+#~ msgstr "Dewis Dyddiad"
+
+#, fuzzy
+#~ msgctxt "@action:button reload freebusy data"
+#~ msgid "Reload"
+#~ msgstr "Ai&l-lwytho"
+
+#, fuzzy
+#~| msgid "Atte&ndees"
+#~ msgctxt "@title:column attendee name"
+#~ msgid "Attendee"
+#~ msgstr "Cy&farfotwyr"
+
+#, fuzzy
+#~ msgctxt "@info"
+#~ msgid "The meeting already has suitable start/end times."
+#~ msgstr "Mae gan y cyfarfod yma amserau dechrau/gorffen addas yn barod."
+
+#, fuzzy
+#~| msgid "No suitable date found."
+#~ msgctxt "@info"
+#~ msgid "No suitable date found."
+#~ msgstr "Ni chanfuwyd dyddiad addas."
+
+#, fuzzy
+#~| msgid ""
+#~| "Of the %1 participants, %2 have accepted, %3 have tentatively accepted, "
+#~| "and %4 have declined."
+#~ msgctxt "@label"
+#~ msgid ""
+#~ "Of the %1 participants, %2 have accepted, %3 have tentatively accepted, "
+#~ "and %4 have declined."
+#~ msgstr ""
+#~ "O'r %1 o gyfranogwyr, mae %2 wedi derbyn, %3 wedi derbyn yn betrus, a %4 "
+#~ "wedi gwrthod."
+
+#, fuzzy
+#~ msgctxt "@title:window"
+#~ msgid "Invalid Email Address"
+#~ msgstr "Cyfeiriad ebost ychwanegol:"
+
+#, fuzzy
+#~ msgid "Edit Free/Busy Location"
+#~ msgstr "Cyhoeddi Gwybodaeth Rhydd Brysur"
+
+#, fuzzy
+#~ msgid ""
+#~ "Location of Free/Busy information for %1 <placeholder>%2</placeholder>:"
+#~ msgstr "dyddiadau o wybodaeth rhydd/prysur"
+
+#, fuzzy
+#~| msgid "Select Cate&gories..."
+#~ msgid "Select Categories"
+#~ msgstr "Dewis Cate&gorïau..."
+
+#, fuzzy
+#~ msgid "Category"
+#~ msgstr "Categorïau"
+
+#, fuzzy
+#~| msgid "Calendar"
+#~ msgid "&Clear Selection"
+#~ msgstr "Calendr"
+
+#, fuzzy
+#~| msgid "Select Cate&gories..."
+#~ msgid "&Edit Categories..."
+#~ msgstr "Dewis Cate&gorïau..."
+
+#, fuzzy
+#~ msgid "Default appointment time"
+#~ msgstr "Amser cyfarfod rhagosodedig:"
+
+#, fuzzy
+#~ msgid "Default duration of new appointment (HH:MM)"
+#~ msgstr "Hyd rhagosodedig cyfarfod newydd:"
+
+#, fuzzy
+#~ msgid "Enable reminders for new Events"
+#~ msgstr "&Atgof:"
+
+#, fuzzy
+#~ msgid "Enable reminders for new To-dos"
+#~ msgstr "&Atgof:"
+
+#, fuzzy
+#~ msgid "Default reminder time"
+#~ msgstr "Amser larwm rhagosodedig:"
+
+#, fuzzy
+#~ msgid "Default time for reminders"
+#~ msgstr "Amser larwm rhagosodedig:"
+
+#, fuzzy
+#~ msgid "Default time unit for reminders"
+#~ msgstr "Amser larwm rhagosodedig:"
+
+#, fuzzy
+#~ msgid "Time"
+#~ msgstr "Am&ser: "
+
+#, fuzzy
+#~ msgid "Set the reminder trigger time"
+#~ msgstr "Amser larwm rhagosodedig:"
+
+#, fuzzy
+#~ msgid "Select the reminder trigger time unit"
+#~ msgstr "Dileu Hen Ddigwyddiadau"
+
+#, fuzzy
+#~| msgid "minute(s)"
+#~ msgctxt "@item:inlistbox alarm offset expressed in minutes"
+#~ msgid "minute(s)"
+#~ msgstr "munud(au)"
+
+#, fuzzy
+#~| msgid "hour(s)"
+#~ msgctxt "@item:inlistbox alarm offset expressed in hours"
+#~ msgid "hour(s)"
+#~ msgstr "awr(oriau)"
+
+#, fuzzy
+#~| msgid "day(s)"
+#~ msgctxt "@item:inlistbox alarm offset expressed in days"
+#~ msgid "day(s)"
+#~ msgstr "dydd(iau)"
+
+#, fuzzy
+#~ msgid "Select the reminder trigger relative to the start or end time"
+#~ msgstr "Lliw i-wneud sy'n hwyr:"
+
+#, fuzzy
+#~ msgid "before the event starts"
+#~ msgstr "Canoli wrth Gychwyn"
+
+#, fuzzy
+#~ msgid "after the event starts"
+#~ msgstr "Canoli wrth Gychwyn"
+
+#, fuzzy
+#~ msgid "before the event ends"
+#~ msgstr "Canoli wrth Gychwyn"
+
+#, fuzzy
+#~ msgid "&Interval:"
+#~ msgstr "&Cyffredinol"
+
+#, fuzzy
+#~ msgid "Set the reminder to repeat"
+#~ msgstr "Amser larwm rhagosodedig:"
+
+#, fuzzy
+#~ msgid ""
+#~ "Check this if you want to the reminder to recur on a periodic interval."
+#~ msgstr "Dangos eiliadau ar linell Marcus Bain"
+
+#, fuzzy
+#~ msgid "&Repeating:"
+#~ msgstr "Ail-adrodd"
+
+#, fuzzy
+#~ msgctxt "@label:spinbox repeat interval expressed in minutes"
+#~ msgid " Minute(s)"
+#~ msgstr "munud(au)"
+
+#, fuzzy
+#~ msgctxt "repeat every X minutes"
+#~ msgid "every "
+#~ msgstr "bob"
+
+#~ msgid "Type"
+#~ msgstr "Math"
+
+#, fuzzy
+#~ msgid ""
+#~ "Check this option if you want to display optional text in a popup notice "
+#~ "when the reminder triggers."
+#~ msgstr "Dangos eiliadau ar linell Marcus Bain"
+
+#, fuzzy
+#~| msgid "&Daily"
+#~ msgid "&Display"
+#~ msgstr "&Dyddiol"
+
+#, fuzzy
+#~ msgid ""
+#~ "Check this option if you want to play a sound when the reminder triggers."
+#~ msgstr "Dangos eiliadau ar linell Marcus Bain"
+
+#, fuzzy
+#~ msgid "&Sound"
+#~ msgstr "Seibio"
+
+#, fuzzy
+#~ msgid ""
+#~ "Check this option if you want to run an application (or script) when the "
+#~ "reminder triggers."
+#~ msgstr "Dangos eiliadau ar linell Marcus Bain"
+
+#, fuzzy
+#~ msgid "Send email when the reminder is triggered"
+#~ msgstr "Amser larwm rhagosodedig:"
+
+#, fuzzy
+#~ msgid ""
+#~ "Check this option if you want to send an email message when the reminder "
+#~ "triggers."
+#~ msgstr "Dangos eiliadau ar linell Marcus Bain"
+
+#, fuzzy
+#~ msgid "Display &text:"
+#~ msgstr "Dangos"
+
+#, fuzzy
+#~ msgid "Sound &file:"
+#~ msgstr "&Ffeil sain:"
+
+#, fuzzy
+#~ msgid "Ar&guments:"
+#~ msgstr "Ym&resymiadau:"
+
+#, fuzzy
+#~ msgid ""
+#~ "Enter any text you desire for the email message that will be sent when "
+#~ "the alarm triggers."
+#~ msgstr "Dangos eiliadau ar linell Marcus Bain"
+
+#, fuzzy
+#~ msgid ""
+#~ "Enter a list comma-separated addresses to which an email will be sent "
+#~ "when the reminder triggers"
+#~ msgstr "Dangos eiliadau ar linell Marcus Bain"
+
+#, fuzzy
+#~| msgid "Attach&ments"
+#~ msgid "Remove the currently selected reminder"
+#~ msgstr "Atodia&dau"
+
+#, fuzzy
+#~| msgid "Attach&ments"
+#~ msgid "Create a new reminder from the currently selected reminder"
+#~ msgstr "Atodia&dau"
+
+#~ msgid "D&uplicate"
+#~ msgstr "D&yblyg"
+
+#, fuzzy
+#~ msgid "The list of reminders for this event or to-do"
+#~ msgstr "Dileu Hen Ddigwyddiadau"
+
+#, fuzzy
+#~ msgid "Offset"
+#~ msgstr "Atred"
+
+#~ msgid "Repeat"
+#~ msgstr "Ail-adrodd"
+
+#, fuzzy
+#~ msgid "Template Management"
+#~ msgstr "Dewisiwch Enw Patrymlun"
+
+#, fuzzy
+#~ msgid "The list of managed templates"
+#~ msgstr "Cadw Patrymlun"
+
+#, fuzzy
+#~ msgid "&New..."
+#~ msgstr "&Newydd"
+
+#, fuzzy
+#~| msgid "Attach&ments"
+#~ msgid "Remove the currently selected template"
+#~ msgstr "Atodia&dau"
+
+#, fuzzy
+#~| msgid "Business"
+#~ msgctxt "incidence category"
+#~ msgid "Business"
+#~ msgstr "Busnes"
+
+#, fuzzy
+#~| msgid "Phone Call"
+#~ msgctxt "incidence category: phone call"
+#~ msgid "Phone Call"
+#~ msgstr "Galwad Ffôn"
+
+#, fuzzy
+#~| msgid "Education"
+#~ msgctxt "incidence category"
+#~ msgid "Education"
+#~ msgstr "Addysg"
+
+#, fuzzy
+#~| msgid "Holiday"
+#~ msgctxt ""
+#~ "incidence category: official or unofficial observance of religious/"
+#~ "national/cultural/other significance, often accompanied by celebrations "
+#~ "or festivities"
+#~ msgid "Holiday"
+#~ msgstr "Gŵyl"
+
+#, fuzzy
+#~| msgid "Vacation"
+#~ msgctxt ""
+#~ "incidence category: a lengthy time away from work or school, a trip "
+#~ "abroad, or simply a pleasure trip away from home"
+#~ msgid "Vacation"
+#~ msgstr "Gwyliau"
+
+#, fuzzy
+#~| msgid "Personal"
+#~ msgctxt "incidence category"
+#~ msgid "Personal"
+#~ msgstr "Personol"
+
+#, fuzzy
+#~| msgid "Travel"
+#~ msgctxt ""
+#~ "incidence category: typically associated with leaving home for business, "
+#~ "and not pleasure"
+#~ msgid "Travel"
+#~ msgstr "Teithio"
+
+#, fuzzy
+#~| msgid "Calendar"
+#~ msgid "text/calendar"
+#~ msgstr "Calendr"
+
+#, fuzzy
+#~| msgid "Use email settings from Control Center"
+#~ msgid "Use email settings from System Settings"
+#~ msgstr "Defnyddiwch gosodiadau ebost o'r Ganolfan Reoli"
+
+#~ msgid "Send copy to owner when mailing events"
+#~ msgstr "Anfon copi i'r perchennog pan yn postio digwyddiadau"
+
+#, fuzzy
+#~ msgid "URL for publishing free/busy information"
+#~ msgstr "Nôl gwybo&daeth rydd/brysur pobl eraill"
+
+#, fuzzy
+#~ msgid "Username for publishing free/busy information"
+#~ msgstr "Nôl gwybo&daeth rydd/brysur pobl eraill"
+
+#, fuzzy
+#~ msgid "Password for publishing free/busy information"
+#~ msgstr "dyddiadau o wybodaeth rhydd/prysur"
+
+#, fuzzy
+#~ msgid "Enable Automatic Free/Busy Retrieval"
+#~ msgstr "Cadw Gwybodaeth RhyddBrysur yn Ymysgogol"
+
+#, fuzzy
+#~ msgid "Password for retrieving free/busy information"
+#~ msgstr "dyddiadau o wybodaeth rhydd/prysur"
+
+#~ msgid "Full &name"
+#~ msgstr "&Enw llawn:"
+
+#~ msgid "E&mail address"
+#~ msgstr "Cyfeiriad e&bost:"
+
+#, fuzzy
+#~ msgid "Attendees Removed"
+#~ msgstr "Cyfarfotwyr"
+
+#~ msgid "Do Not Send"
+#~ msgstr "Peidio ac anfon"
+
+#, fuzzy
+#~ msgid "Unable to save changes for incidence %1 \"%2\": %3"
+#~ msgstr "Methu cadw'r digwyddiad."
+
+#, fuzzy
+#~ msgid "Unable to delete incidence %1 \"%2\": %3"
+#~ msgstr "Methu cadw'r digwyddiad."
+
+#, fuzzy
+#~ msgid "Unable to save %1 \"%2\": %3"
+#~ msgstr "Methu cadw'r digwyddiad."
+
+#, fuzzy
+#~| msgid "Import Calendar"
+#~ msgid "C&opy to Calendar"
+#~ msgstr "Mewnforio Calendr"
+
+#, fuzzy
+#~| msgid "New Calendar"
+#~ msgid "&Move to Calendar"
+#~ msgstr "Calendr Newydd"
+
+#, fuzzy
+#~| msgid "Import Calendar"
+#~ msgid "Copy Calendar"
+#~ msgid_plural "Copy %1 Calendars"
+#~ msgstr[0] "Mewnforio Calendr"
+#~ msgstr[1] "Mewnforio Calendr"
+
+#, fuzzy
+#~| msgid ""
+#~| "The meeting has been moved to\n"
+#~| "Start: %1\n"
+#~| "End: %2."
+#~ msgctxt "@info"
+#~ msgid ""
+#~ "The meeting has been moved to\n"
+#~ "Start: %1\n"
+#~ "End: %2."
+#~ msgstr ""
+#~ "Symudwyd y cyfarfod i\n"
+#~ "Dechrau: %1\n"
+#~ "Gorffen: %2."
+
+#, fuzzy
+#~| msgid "KOrganizer"
+#~ msgid "Korganizer"
+#~ msgstr "KTrefnydd"
+
+#, fuzzy
+#~| msgid "Could not load calendar '%1'."
+#~ msgid "Could not download calendar %1: %2."
+#~ msgstr "Wedi methu llwytho calendr '%1'."
+
+#, fuzzy
+#~| msgctxt "short_weekday date (e.g. Mon 13)"
+#~| msgid "%1 %2"
+#~ msgid "%1 (%2 years)"
+#~ msgstr "%1 %2"
+
+#, fuzzy
+#~| msgid "&Day "
+#~ msgctxt "@option:radio"
+#~ msgid "&Day "
+#~ msgstr "&Dydd "
+
+#, fuzzy
+#~ msgctxt "@option:radio"
+#~ msgid "Day #"
+#~ msgstr "Dydd"
+
+#, fuzzy
+#~| msgid "Daily"
+#~ msgctxt "@item:inlistbox recur daily"
+#~ msgid "Daily"
+#~ msgstr "Dyddiol"
+
+#, fuzzy
+#~| msgid "Weekly"
+#~ msgctxt "@item:inlistbox recur weekly"
+#~ msgid "Weekly"
+#~ msgstr "Wythnosol"
+
+#, fuzzy
+#~| msgid "Monthly"
+#~ msgctxt "@item:inlistbox recur monthly"
+#~ msgid "Monthly"
+#~ msgstr "Misol"
+
+#, fuzzy
+#~| msgid "Yearly"
+#~ msgctxt "@item:inlistbox recur yearly"
+#~ msgid "Yearly"
+#~ msgstr "Blynyddol"
+
+#, fuzzy
+#~| msgid "Recurrence Range..."
+#~ msgctxt "@action:button"
+#~ msgid "Recurrence Range..."
+#~ msgstr "Amrediad Ail-ddigwydd..."
+
+#, fuzzy
+#~| msgid "Exceptions..."
+#~ msgctxt "@action:button"
+#~ msgid "Exceptions..."
+#~ msgstr "Eithriadau..."
+
+#, fuzzy
+#~| msgid ""
+#~| "You have no ical file in your home directory.\n"
+#~| "Import cannot proceed.\n"
+#~ msgid "No calendars found, event cannot be added."
+#~ msgstr ""
+#~ "Nid oes gennych ffeil ical yn eich cyfeiriadur cartref.\n"
+#~ " Ni all y mewnforiad fynd ymlaen.\n"
+
+#, fuzzy
+#~| msgid "Email"
+#~ msgctxt "@title:column email addresses"
+#~ msgid "Email"
+#~ msgstr "Ebost"
+
+#, fuzzy
+#~ msgid ""
+#~ "<qt><p>The software could not upload your free/busy list to the URL '%1'. "
+#~ "There might be a problem with the access rights, or you specified an "
+#~ "incorrect URL. The system said: <em>%2</em>.</p><p>Please check the URL "
+#~ "or contact your system administrator.</p></qt>"
+#~ msgstr ""
+#~ "<qt>Ni allodd y feddalwedd lanlwytho eich rhestr rhydd/prysur i'r URL "
+#~ "%1.  Efallai mae problem efo'r hawliau cyrchiad, neu rycych wedi penodi "
+#~ "URL anghywir.  Dywedodd y cysawd: <em>%2</em>.<br>Gwiriwch yr URL neu "
+#~ "gysylltwch â'ch gweinyddwr cysawd.</qt>"
+
+#, fuzzy
+#~ msgid "Error message: %1"
+#~ msgstr "Gwall wrth lwytho'r ffeil batrymlun '%1'"
+
+#, fuzzy
+#~| msgid ""
+#~| "This %1 includes other people. Should email be sent out to the attendees?"
+#~ msgid ""
+#~ "The event \"%1\" includes other people.\n"
+#~ "Do you want to email the invitation to the attendees?"
+#~ msgstr ""
+#~ "Mae'r %1 yma yn cynnwys pobl eraill.  A ddylir anfon ebost i'r "
+#~ "cyfarfotwyr?"
+
+#, fuzzy
+#~| msgid ""
+#~| "This %1 includes other people. Should email be sent out to the attendees?"
+#~ msgid ""
+#~ "The todo \"%1\" includes other people.\n"
+#~ "Do you want to email the invitation to the attendees?"
+#~ msgstr ""
+#~ "Mae'r %1 yma yn cynnwys pobl eraill.  A ddylir anfon ebost i'r "
+#~ "cyfarfotwyr?"
+
+#, fuzzy
+#~| msgid ""
+#~| "This %1 includes other people. Should email be sent out to the attendees?"
+#~ msgid ""
+#~ "This %1 includes other people. Should email be sent out to the attendees?"
+#~ msgstr ""
+#~ "Mae'r %1 yma yn cynnwys pobl eraill.  A ddylir anfon ebost i'r "
+#~ "cyfarfotwyr?"
+
+#~ msgid "Group Scheduling Email"
+#~ msgstr "Ebost trefnlennu grŵp"
+
+#~ msgid "Send Email"
+#~ msgstr "Anfon Ebost"
+
+#~ msgid "Do you want to send a status update to the organizer of this task?"
+#~ msgstr "A ydych chi am anfon adnewyddiad cyflwr at drefnydd y dasg hon?"
+
+#, fuzzy
+#~ msgid "Send Update"
+#~ msgstr "Dyddiad gorffen:"
+
+#, fuzzy
+#~ msgid ""
+#~ "Your status as an attendee of this event changed. Do you want to send a "
+#~ "status update to the event organizer?"
+#~ msgstr "A ydych chi am anfon adnewyddiad cyflwr at drefnydd y dasg hon?"
+
+#, fuzzy
+#~ msgid ""
+#~ "You had previously accepted an invitation to this event. Do you want to "
+#~ "send an updated response to the organizer declining the invitation?"
+#~ msgstr "A ydych chi am anfon adnewyddiad cyflwr at drefnydd y dasg hon?"
+
+#, fuzzy
+#~| msgid ""
+#~| "You are not the organizer of this event. Editing it will bring your "
+#~| "calendar out of sync with the organizers calendar. Do you really want to "
+#~| "edit it?"
+#~ msgid ""
+#~ "You are not the organizer of this event. Editing it will bring your "
+#~ "calendar out of sync with the organizer's calendar. Do you really want to "
+#~ "edit it?"
+#~ msgstr ""
+#~ "Nid chi yw trefnydd y digwyddiad hwn. Mi fydd golygu hwn yn achosi i'ch "
+#~ "calendr golli cydweddiad â chalendr y trefnydd. A ydych wir eisiau ei "
+#~ "olygu?"
+
+#, fuzzy
+#~ msgid "Counter proposal: %1"
+#~ msgstr "&Dyddlyfr"
+
+#~ msgid "No running instance of KMail found."
+#~ msgstr "Nid oes enghraifft o KMail eisioes yn rhedeg."
+
+#, fuzzy
+#~ msgctxt "@title:window"
+#~ msgid "Edit Journal: %1"
+#~ msgstr "&Dyddlyfr"
+
+#, fuzzy
+#~ msgctxt "@info"
+#~ msgid "Template does not contain a valid journal."
+#~ msgstr "Nid yw'r patrymlun '%1' yn cynnwys i-wneud dilys."
+
+#~ msgid "&iCalendar..."
+#~ msgstr "&iCalendr..."
+
+#~ msgid "&vCalendar..."
+#~ msgstr "&vCalendr..."
+
+#, fuzzy
+#~| msgid "Saved calendar '%1'."
+#~ msgid "Added calendar for URL '%1'."
+#~ msgstr "Wedi cadw'r calendr '%1'."
+
+#, fuzzy
+#~ msgid "Unable to create calendar '%1'."
+#~ msgstr "Methu cadw'r eitem i-wneud"
+
+#, fuzzy
+#~ msgid "Could not load calendar."
+#~ msgstr "Wedi methu llwytho calendr."
+
+#, fuzzy
+#~ msgid ""
+#~ "The calendar contains unsaved changes. Do you want to save them before "
+#~ "exiting?"
+#~ msgstr ""
+#~ "Mae'r calendr wedi newid.\n"
+#~ "A ydych chi eisiau ei gadw?"
+
+#, fuzzy
+#~ msgid ""
+#~ "Saving of '%1' failed. Check that the calendar is properly configured.\n"
+#~ "Ignore problem and save remaining resources or cancel save?"
+#~ msgstr ""
+#~ "Methodd cadw '%1'.  Gwiriwch bod yr adnodd wedi'i ffurfweddu'n gywir.\n"
+#~ "Anwybyddu'r problem a parhau heb gadw, neu ddiddymu'r cadw?"
+
+#~ msgid "Save Error"
+#~ msgstr "Gwall Cadw"
+
+#, fuzzy
+#~ msgid "Cancel Save"
+#~ msgstr "&Newid"
+
+#~ msgid "Mail Client"
+#~ msgstr "Rhaglen Ebost"
+
+#~ msgid "Sendmail"
+#~ msgstr "Sendmail"
+
+#, fuzzy
+#~| msgid "Edit Calendar Filters"
+#~ msgctxt "@info:tooltip"
+#~ msgid "Edit calendar settings"
+#~ msgstr "Golygu Hidlennau Calendr"
+
+#, fuzzy
+#~| msgid "Merged calendar '%1'."
+#~ msgctxt "@info:tooltip"
+#~ msgid "Remove calendar"
+#~ msgstr "Calendr '%1' wedi ei gyfuno."
+
+#, fuzzy
+#~| msgid "Edit Calendar Filters"
+#~ msgid "Add Calendar Folder"
+#~ msgstr "Golygu Hidlennau Calendr"
+
+#, fuzzy
+#~| msgid "<qt>Unable to create resource of type <b>%1</b>.</qt>"
+#~ msgid "<qt>Unable to create the calendar folder <b>%1</b>.</qt>"
+#~ msgstr "<qt>Wedi methu creu adnodd o'r dath <b>%1</b>.</qt>"
+
+#, fuzzy
+#~| msgid "<qt>Unable to create resource of type <b>%1</b>.</qt>"
+#~ msgid "<qt>Unable to create a calendar of type <b>%1</b>.</qt>"
+#~ msgstr "<qt>Wedi methu creu adnodd o'r dath <b>%1</b>.</qt>"
+
+#, fuzzy
+#~ msgid "%1 calendar"
+#~ msgstr "Calendr Newydd"
+
+#, fuzzy
+#~ msgid "You cannot remove your standard calendar."
+#~ msgstr "Nid ydych chi'n gallu dileu eich adnodd safonol!"
+
+#, fuzzy
+#~ msgid "Please enter a new name for the calendar folder"
+#~ msgstr "Rhowch enw ar gyfer y patrymlun:"
+
+#, fuzzy
+#~| msgid "<qt>Unable to create resource of type <b>%1</b>.</qt>"
+#~ msgid "<qt>Cannot edit the calendar folder <b>%1</b>.</qt>"
+#~ msgstr "<qt>Wedi methu creu adnodd o'r dath <b>%1</b>.</qt>"
+
+#, fuzzy
+#~| msgid "Re&load"
+#~ msgctxt "reload the resource"
+#~ msgid "Re&load"
+#~ msgstr "Ai&l-lwytho"
+
+#, fuzzy
+#~| msgid "Travel"
+#~ msgctxt "save the resource"
+#~ msgid "&Save"
+#~ msgstr "Teithio"
+
+#~ msgid "Show &Info"
+#~ msgstr "&Dangos Gwybodaeth"
+
+#, fuzzy
+#~| msgid "Edit Calendar Filters"
+#~ msgid "&Add Calendar Folder..."
+#~ msgstr "Golygu Hidlennau Calendr"
+
+#, fuzzy
+#~| msgid "General"
+#~ msgctxt "@title:tab general event settings"
+#~ msgid "General"
+#~ msgstr "Cyffredinol"
+
+#, fuzzy
+#~| msgid "Details"
+#~ msgctxt "@title:tab"
+#~ msgid "Details"
+#~ msgstr "Manylion"
+
+#, fuzzy
+#~| msgid "Rec&urrence"
+#~ msgctxt "@title:tab"
+#~ msgid "Rec&urrence"
+#~ msgstr "Ail-dd&igwydd"
+
+#, fuzzy
+#~| msgid "General"
+#~ msgctxt "@title:tab general to-do settings"
+#~ msgid "General"
+#~ msgstr "Cyffredinol"
+
+#, fuzzy
+#~ msgctxt "@info"
+#~ msgid "Template does not contain a valid to-do."
+#~ msgstr "Nid yw'r patrymlun '%1' yn cynnwys i-wneud dilys."
+
+#~ msgid "Active Calendar"
+#~ msgstr "Calendr Weithredol"
+
+#, fuzzy
+#~| msgid "&Reminder:"
+#~ msgctxt "@label"
+#~ msgid "Reminder:"
+#~ msgstr "&Atgof:"
+
+#, fuzzy
+#~| msgid "event"
+#~ msgctxt "incidence type is event"
+#~ msgid "event"
+#~ msgstr "digwyddiad"
+
+#, fuzzy
+#~| msgid "task"
+#~ msgctxt "incidence type is to-do/task"
+#~ msgid "task"
+#~ msgstr "tasg"
+
+#, fuzzy
+#~| msgid "journal entry"
+#~ msgctxt "incidence type is journal"
+#~ msgid "journal entry"
+#~ msgstr "cofnod dyddlyfr"
+
+#, fuzzy
+#~ msgctxt "@title:column reminder date/time"
+#~ msgid "Reminder Time"
+#~ msgstr "Amser Disgwyledig"
+
+#, fuzzy
+#~ msgid "&Timespan"
+#~ msgstr "&Amrediad Amser"
+
+#, fuzzy
+#~ msgid "This plugin provides a Gantt-like Timespan view."
+#~ msgstr "Mae'r ategyn yma yn darparu diagram Gantt fel golwg cywaith."
+
+#, fuzzy
+#~ msgid "Timespan View Plugin"
+#~ msgstr "Golwg Cywaith"
+
+#~ msgid "Zoom In"
+#~ msgstr "Chwyddo"
+
+#~ msgid "Zoom Out"
+#~ msgstr "Pellhau"
+
+#~ msgid "Center View"
+#~ msgstr "Canoli'r Golwg"
+
+#, fuzzy
+#~ msgid "Counter-Event Viewer"
+#~ msgstr "Gwelydd Gwrth-ddigwyddiadau"
+
+#~ msgid "Decline"
+#~ msgstr "Gwrthod"
+
+#~ msgid "Accept"
+#~ msgstr "Derbyn"
+
+#, fuzzy
+#~| msgid "Reminder"
+#~ msgctxt "@title:column reminder date/time"
+#~ msgid "Reminder"
+#~ msgstr "Atgof"
+
+#, fuzzy
+#~| msgid ""
+#~| "You are not the organizer of this event. Deleting it will bring your "
+#~| "calendar out of sync with the organizers calendar. Do you really want to "
+#~| "delete it?"
+#~ msgid ""
+#~ "You are not the organizer of this event, but you were supposed to attend. "
+#~ "Do you really want to delete it and notify the organizer?"
+#~ msgstr ""
+#~ "Nid chi yw trefnydd y digwyddiad hwn. Mi fydd dileu hwn yn achosi i'ch "
+#~ "calendr golli cydweddiad â chalendr y trefnydd. A ydych wir eisiau ei "
+#~ "ddileu?"
+
+#, fuzzy
+#~ msgctxt "@item:inlistbox alarm offset expressed in minutes"
+#~ msgid "Minutes"
+#~ msgstr "5 munud"
+
+#, fuzzy
+#~ msgctxt "@item:inlistbox alarm offset expressed in hours"
+#~ msgid "Hours"
+#~ msgstr "Awr"
+
+#, fuzzy
+#~ msgctxt "@item:inlistbox alarm offset expressed in days"
+#~ msgid "Days"
+#~ msgstr "Dydd"
+
+#, fuzzy
+#~ msgid "Before the Start"
+#~ msgstr "Canoli wrth Gychwyn"
+
+#, fuzzy
+#~ msgid "After the Start"
+#~ msgstr "Canoli wrth Gychwyn"
+
+#, fuzzy
+#~ msgid "Before the End"
+#~ msgstr "Canoli wrth Gychwyn"
+
+#, fuzzy
+#~ msgid "After the End"
+#~ msgstr "Canoli wrth Gychwyn"
+
+#, fuzzy
+#~ msgid "&Display reminder"
+#~ msgstr "Dangos"
+
+#, fuzzy
+#~ msgid "Reminder &text:"
+#~ msgstr "&Atgof:"
+
+#~ msgid "Could not upload file."
+#~ msgstr "Methu llwytho ffeil."
+
+#~ msgid "KOrganizer Timezone Test"
+#~ msgstr "Prawf Amserfa KTrefnydd"
+
+#, fuzzy
+#~ msgctxt "@label"
+#~ msgid "Time zone:"
+#~ msgstr "Cylchfa amser:"
+
+#, fuzzy
+#~| msgid "Unknown"
+#~ msgctxt "@item:inlistbox unknown timezone"
+#~ msgid "Unknown"
+#~ msgstr "Anhysbys"
+
+#, fuzzy
+#~| msgid "[No selection]"
+#~ msgctxt "@item:inlistbox no timezone selected"
+#~ msgid "[No selection]"
+#~ msgstr "[Dim dewisiad]"
+
+#~ msgid "&Journal entries"
+#~ msgstr "C&ofnodion dyddlyfr"
+
+#, fuzzy
+#~ msgid "E&vents have to be completely included"
+#~ msgstr "R&haid i ddigwyddiadau gael eu cynnwys yn gyfangwbl"
+
+#~ msgid "&Find"
+#~ msgstr "&Darganfod"
+
+#, fuzzy
+#~ msgid "The item \"%1\" will be permanently deleted."
+#~ msgstr "My fydd yr eitem hyn yn cael ei ddileu am byth."
+
+#~ msgid "This item will be permanently deleted."
+#~ msgstr "My fydd yr eitem hyn yn cael ei ddileu am byth."
+
+#, fuzzy
+#~ msgid "Delete Confirmation"
+#~ msgstr "Ffurfweddu Adnoddau"
+
+#, fuzzy
+#~ msgctxt "@info"
+#~ msgid "This journal entry will be permanently deleted."
+#~ msgstr "My fydd yr eitem hyn yn cael ei ddileu am byth."
+
+#, fuzzy
+#~| msgid "This item will be permanently deleted."
+#~ msgctxt "@info"
+#~ msgid "This item will be permanently deleted."
+#~ msgstr "My fydd yr eitem hyn yn cael ei ddileu am byth."
+
+#, fuzzy
+#~ msgctxt "@action:button"
+#~ msgid "Delete"
+#~ msgstr "Dileu %1"
+
+#, fuzzy
+#~ msgid "Show Resource View"
+#~ msgstr "Ffurfweddu Adnoddau"
+
+#, fuzzy
+#~| msgid "%1 resource"
+#~ msgid "Add Subresource"
+#~ msgstr "%1 adnodd"
+
+#, fuzzy
+#~ msgid "Please enter a name for the new subresource"
+#~ msgstr "Rhowch enw ar gyfer y patrymlun:"
+
+#, fuzzy
+#~| msgid "<qt>Unable to create resource of type <b>%1</b>.</qt>"
+#~ msgid "<qt>Unable to create subresource <b>%1</b>.</qt>"
+#~ msgstr "<qt>Wedi methu creu adnodd o'r dath <b>%1</b>.</qt>"
+
+#~ msgid "Resource Configuration"
+#~ msgstr "Ffurfweddu Adnoddau"
+
+#~ msgid "%1 resource"
+#~ msgstr "%1 adnodd"
+
+#, fuzzy
+#~| msgid "%1 resource"
+#~ msgid "Rename Subresource"
+#~ msgstr "%1 adnodd"
+
+#, fuzzy
+#~| msgid "%1 resource"
+#~ msgid "&Add Resource..."
+#~ msgstr "%1 adnodd"
+
+#, fuzzy
+#~ msgid "Resource Colors"
+#~ msgstr "%1 adnodd"
+
+#, fuzzy
+#~| msgid "%1 resource"
+#~ msgid "&Add Subresource..."
+#~ msgstr "%1 adnodd"
+
+#, fuzzy
+#~ msgid ""
+#~ "Import the given calendars as new resources into the default calendar"
+#~ msgstr "Mewnforio'r calendr wrth <url> i mewn i'r calendr rhagosod"
+
+#, fuzzy
+#~ msgid "Print &Year:"
+#~ msgstr "Argraf&fu wythnos"
+
+#, fuzzy
+#~ msgid "No (unset) category color"
+#~ msgstr "Lliw i-wneud sy'n ddisgwyliedig heddiw:"
+
+#~ msgid "&Add..."
+#~ msgstr "Ychw&anegu..."
+
+#, fuzzy
+#~ msgctxt "@action:inmenu remove the attachment"
+#~ msgid "&Delete"
+#~ msgstr "Dileu %1"
+
+#, fuzzy
+#~ msgctxt "@info"
+#~ msgid "The item labeled \"%1\" will be permanently deleted."
+#~ msgstr "My fydd yr eitem hyn yn cael ei ddileu am byth."
+
+#~ msgid "Upload &Hot New Stuff..."
+#~ msgstr "Fyny-lw&ytho'r Diweddaraf..."
+
+#, fuzzy
+#~| msgid "Scheduler Mail Client"
+#~ msgctxt "@title"
+#~ msgid "Scheduler Mail Client"
+#~ msgstr "Dibynnydd Ebost y Trefnlennydd "
+
+#, fuzzy
+#~| msgid "Mail client"
+#~ msgctxt "@option:radio"
+#~ msgid "Mail client"
+#~ msgstr "Dibynnydd Ebost"
+
+#~ msgid "Month view uses category colors"
+#~ msgstr "Mae'r golwg misol yn defnyddio lliwiau categorïau"
+
+#, fuzzy
+#~ msgid "Month view uses resource colors"
+#~ msgstr "Mae'r golwg misol yn defnyddio lliwiau categorïau"
+
+#, fuzzy
+#~ msgid ""
+#~ "Check this box to make the month view use the resource colors of an item."
+#~ msgstr "Dangos eiliadau ar linell Marcus Bain"
+
+#, fuzzy
+#~ msgid "Show to-dos in day, week and month views"
+#~ msgstr "Dyddiau i'w dangos yn y golwg X-Diwrnod-Nesaf:"
+
+#, fuzzy
+#~ msgctxt "@item:inlistbox"
+#~ msgid "1 minute"
+#~ msgstr "1 munud"
+
+#, fuzzy
+#~| msgid "5 minutes"
+#~ msgctxt "@item:inlistbox"
+#~ msgid "5 minutes"
+#~ msgstr "5 munud"
+
+#, fuzzy
+#~| msgid "10 minutes"
+#~ msgctxt "@item:inlistbox"
+#~ msgid "10 minutes"
+#~ msgstr "10 munud "
+
+#, fuzzy
+#~| msgid "15 minutes"
+#~ msgctxt "@item:inlistbox"
+#~ msgid "15 minutes"
+#~ msgstr "15 munud"
+
+#, fuzzy
+#~| msgid "30 minutes"
+#~ msgctxt "@item:inlistbox"
+#~ msgid "30 minutes"
+#~ msgstr "30 munud"
+
+#, fuzzy
+#~ msgid "Default Reminder Time"
+#~ msgstr "Amser cyfarfod rhagosodedig:"
+
+#, fuzzy
+#~ msgctxt "@label"
+#~ msgid "The following events or to-dos triggered reminders:"
+#~ msgstr "Taniodd y digwyddiadau dilynnol larymau:"
+
+#, fuzzy
+#~| msgid "Summary"
+#~ msgctxt "@title:column reminder summary"
+#~ msgid "Summary"
+#~ msgstr "Crynodeb"
+
+#, fuzzy
+#~ msgid "Apply Template"
+#~ msgstr "Cadw Patrymlun"
+
+#, fuzzy
+#~| msgid "Please specify a valid start date."
+#~ msgid "Please specify a summary."
+#~ msgstr "Rhowch ddyddiad dechrau dilys os gwelwch yn dda."
+
+#, fuzzy
+#~ msgctxt "Journal for DATE"
+#~ msgid "Journal for %1"
+#~ msgstr "&Dyddlyfr"
+
+#, fuzzy
+#~ msgctxt "@item delimiter for joining category names"
+#~ msgid ","
+#~ msgstr ","
+
+#, fuzzy
+#~ msgctxt "@info delimiter for joining category names"
+#~ msgid ","
+#~ msgstr ","
+
+#, fuzzy
+#~| msgid "Name"
+#~ msgctxt "addressee name"
+#~ msgid "Name"
+#~ msgstr "Enw"
+
+#, fuzzy
+#~| msgid "Email"
+#~ msgctxt "addressee email"
+#~ msgid "Email"
+#~ msgstr "Ebost"
+
+#, fuzzy
+#~| msgid "Name:"
+#~ msgctxt "addressee name"
+#~ msgid "Name:"
+#~ msgstr "Enw:"
+
+#~ msgid "Select &Addressee..."
+#~ msgstr "D&ewis Derbynnydd..."
+
+#, fuzzy
+#~| msgid "&Add..."
+#~ msgctxt "@action:button"
+#~ msgid "&Add..."
+#~ msgstr "Ychw&anegu..."
+
+#, fuzzy
+#~| msgid "%1 - %2"
+#~ msgctxt "Summary - date"
+#~ msgid "%1 - %2"
+#~ msgstr "%1 - %2"
+
+#~ msgid "Filter: "
+#~ msgstr "Hidl: "
+
+#, fuzzy
+#~| msgid "Categories"
+#~ msgid "categories-view"
+#~ msgstr "Categorïau"
+
+#, fuzzy
+#~| msgid "Holiday"
+#~ msgctxt "incidence category"
+#~ msgid "Holiday"
+#~ msgstr "Gŵyl"
+
+#, fuzzy
+#~| msgid "Show only selected"
+#~ msgid "Show timezone selectors"
+#~ msgstr "Dangos y dewisiad yn unig"
+
+#, fuzzy
+#~ msgid "31st Last"
+#~ msgstr "Trydydd Olaf"
+
+#, fuzzy
+#~ msgid "30th Last"
+#~ msgstr "Pedwerydd Olaf"
+
+#, fuzzy
+#~ msgid "29th Last"
+#~ msgstr "Pedwerydd Olaf"
+
+#, fuzzy
+#~ msgid "28th Last"
+#~ msgstr "Pedwerydd Olaf"
+
+#, fuzzy
+#~ msgid "27th Last"
+#~ msgstr "Pedwerydd Olaf"
+
+#, fuzzy
+#~ msgid "26th Last"
+#~ msgstr "Pedwerydd Olaf"
+
+#, fuzzy
+#~ msgid "25th Last"
+#~ msgstr "Pumed Olaf"
+
+#, fuzzy
+#~ msgid "24th Last"
+#~ msgstr "Pedwerydd Olaf"
+
+#, fuzzy
+#~ msgid "23rd Last"
+#~ msgstr "Trydydd Olaf"
+
+#, fuzzy
+#~ msgid "22nd Last"
+#~ msgstr "Ail Olaf"
+
+#, fuzzy
+#~ msgid "21st Last"
+#~ msgstr "Ail Olaf"
+
+#, fuzzy
+#~ msgid "20th Last"
+#~ msgstr "Pedwerydd Olaf"
+
+#, fuzzy
+#~ msgid "19th Last"
+#~ msgstr "Pedwerydd Olaf"
+
+#, fuzzy
+#~ msgid "18th Last"
+#~ msgstr "Pedwerydd Olaf"
+
+#, fuzzy
+#~ msgid "17th Last"
+#~ msgstr "Pedwerydd Olaf"
+
+#, fuzzy
+#~ msgid "16th Last"
+#~ msgstr "Pedwerydd Olaf"
+
+#, fuzzy
+#~ msgid "15th Last"
+#~ msgstr "Pumed Olaf"
+
+#, fuzzy
+#~ msgid "14th Last"
+#~ msgstr "Pedwerydd Olaf"
+
+#, fuzzy
+#~ msgid "13th Last"
+#~ msgstr "Pedwerydd Olaf"
+
+#, fuzzy
+#~ msgid "12th Last"
+#~ msgstr "Pedwerydd Olaf"
+
+#, fuzzy
+#~ msgid "11th Last"
+#~ msgstr "Pedwerydd Olaf"
+
+#, fuzzy
+#~ msgid "10th Last"
+#~ msgstr "Pedwerydd Olaf"
+
+#, fuzzy
+#~ msgid "9th Last"
+#~ msgstr "Pedwerydd Olaf"
+
+#, fuzzy
+#~ msgid "8th Last"
+#~ msgstr "Pedwerydd Olaf"
+
+#, fuzzy
+#~ msgid "7th Last"
+#~ msgstr "Pedwerydd Olaf"
+
+#, fuzzy
+#~ msgid "6th Last"
+#~ msgstr "Pedwerydd Olaf"
+
+#, fuzzy
+#~| msgid "5th Last"
+#~ msgid "5th Last"
+#~ msgstr "Pumed Olaf"
+
+#, fuzzy
+#~| msgid "4th Last"
+#~ msgid "4th Last"
+#~ msgstr "Pedwerydd Olaf"
+
+#, fuzzy
+#~| msgid "3rd Last"
+#~ msgid "3rd Last"
+#~ msgstr "Trydydd Olaf"
+
+#, fuzzy
+#~| msgid "2nd Last"
+#~ msgid "2nd Last"
+#~ msgstr "Ail Olaf"
+
+#, fuzzy
+#~| msgid "Last"
+#~ msgctxt "last day of the month"
+#~ msgid "Last"
+#~ msgstr "Olaf"
+
+#, fuzzy
+#~| msgid "1st"
+#~ msgid "1st"
+#~ msgstr "1af"
+
+#, fuzzy
+#~| msgid "2nd"
+#~ msgid "2nd"
+#~ msgstr "2il"
+
+#, fuzzy
+#~| msgid "3rd"
+#~ msgid "3rd"
+#~ msgstr "3ydd"
+
+#, fuzzy
+#~| msgid "4th"
+#~ msgid "4th"
+#~ msgstr "4ydd"
+
+#, fuzzy
+#~| msgid "5th"
+#~ msgid "5th"
+#~ msgstr "5ed"
+
+#, fuzzy
+#~ msgid "Every day"
+#~ msgid_plural "Every %1 days"
+#~ msgstr[0] "bob"
+#~ msgstr[1] "bob"
+
+#, fuzzy
+#~ msgctxt "Every N WEEK[S] on WEEKDAYNAMELIST"
+#~ msgid "Every week on %2"
+#~ msgid_plural "Every %1 weeks on %2"
+#~ msgstr[0] "%1 - %2"
+#~ msgstr[1] "%1 - %2"
+
+#, fuzzy
+#~ msgctxt "Every N MONTH[S] on day N"
+#~ msgid "Every month on day %2"
+#~ msgid_plural "Every %1 months on day %2"
+#~ msgstr[0] "bob"
+#~ msgstr[1] "bob"
+
+#, fuzzy
+#~ msgctxt "Every N YEAR[S] on day N of MONTHNAME"
+#~ msgid "Every year on day %2 of %3"
+#~ msgid_plural "Every %1 years on day %2 of %3"
+#~ msgstr[0] "%1 - %2"
+#~ msgstr[1] "%1 - %2"
+
+#, fuzzy
+#~| msgid "&occurrence(s)"
+#~ msgid "occurrences"
+#~ msgid_plural "occurrences"
+#~ msgstr[0] "di&gwyddiad(au)"
+#~ msgstr[1] "di&gwyddiad(au)"
+
+#, fuzzy
+#~| msgctxt "monthname year"
+#~| msgid "%1 %2"
+#~ msgctxt "for N %OCCURRENCE[S]"
+#~ msgid "for %1 %2"
+#~ msgstr "%1 %2"
+
+#, fuzzy
+#~ msgid "Attendees:"
+#~ msgstr "Cyfarfotwyr"
+
+#, fuzzy
+#~| msgid "Zoom to Fit"
+#~ msgctxt "@action:button"
+#~ msgid "Zoom to Fit"
+#~ msgstr "Chwyddo i Ffitio"
+
+#, fuzzy
+#~| msgid "Week"
+#~ msgid "week"
+#~ msgid_plural "weeks"
+#~ msgstr[0] "Wythnos"
+#~ msgstr[1] "Wythnos"
+
+#, fuzzy
+#~| msgid "Month"
+#~ msgid "month"
+#~ msgid_plural "months"
+#~ msgstr[0] "Mis"
+#~ msgstr[1] "Mis"
+
+#, fuzzy
+#~| msgid "year(s)"
+#~ msgid "year"
+#~ msgid_plural "years"
+#~ msgstr[0] "blwyddyn (blynyddoedd)"
+#~ msgstr[1] "blwyddyn (blynyddoedd)"
+
+#~ msgid "Cannot write archive to final destination."
+#~ msgstr "Methu ysgrifennu'r ffeil archif i'r gyrchfan olaf. "
+
+#, fuzzy
+#~ msgctxt "Unspecified priority"
+#~ msgid "unspecified"
+#~ msgstr "Lleoliad:"
+
+#, fuzzy
+#~ msgid "1 (highest)"
+#~ msgstr "1 (Uchaf)"
+
+#, fuzzy
+#~ msgid "9 (lowest)"
+#~ msgstr "5 (Isaf)"
+
+#, fuzzy
+#~| msgid "Month View"
+#~ msgid "&New Month View"
+#~ msgstr "Golwg mis"
+
+#, fuzzy
+#~ msgctxt "@info alarm offset specified in days"
+#~ msgid "1 day"
+#~ msgid_plural "%1 days"
+#~ msgstr[0] "1 Diwrnod"
+#~ msgstr[1] " %1 o Ddiwrnodau"
+
+#, fuzzy
+#~ msgctxt "@info alarm offset specified in hours"
+#~ msgid "1 hour"
+#~ msgid_plural "%1 hours"
+#~ msgstr[0] "1 awr"
+#~ msgstr[1] "%1 o awriau"
+
+#, fuzzy
+#~ msgctxt "@info alarm offset specified in minutes"
+#~ msgid "1 minute"
+#~ msgid_plural "%1 minutes"
+#~ msgstr[0] "1 munud"
+#~ msgstr[1] "%1 o funudau"
+
+#, fuzzy
+#~| msgid "Calendar"
+#~ msgid "Calendar: %1"
+#~ msgstr "Calendr"
+
+#, fuzzy
+#~ msgid "Underline text"
+#~ msgstr "&Atgof:"
+
+#, fuzzy
+#~| msgid "Event text"
+#~ msgid "Center text"
+#~ msgstr "Testun Digwyddiad:"
+
+#, fuzzy
+#~ msgctxt "@info:whatsthis"
+#~ msgid "Enter the default reminder time here."
+#~ msgstr "Amser larwm rhagosodedig:"
+
+#, fuzzy
+#~ msgctxt "@action:inmenu"
+#~ msgid "Reminders Enabled"
+#~ msgstr "&Atgof:"
+
+#, fuzzy
+#~| msgid "Reminder"
+#~ msgctxt "@title:window"
+#~ msgid "Reminder"
+#~ msgstr "Atgof"
+
+#, fuzzy
+#~| msgid "Due"
+#~ msgctxt "@title:column reminder due date/time"
+#~ msgid "Due"
+#~ msgstr "Disgwyliedig"
+
+#~ msgid "Sort Id"
+#~ msgstr "Trefnu ID"
+
+#~ msgctxt "delete completed to-dos"
+#~ msgid "&Purge Completed"
+#~ msgstr "&Carthiad wedi'i Gwblhau"
+
+#~ msgid "&Templates..."
+#~ msgstr "&Patrymluniau ..."
+
+#~ msgid "&Remove..."
+#~ msgstr "&Gwaredu..."
+
+#, fuzzy
+#~ msgid "Edit"
+#~ msgstr "Golygu %1"
+
+#, fuzzy
+#~| msgid "day(s)"
+#~ msgctxt "@label"
+#~ msgid "day(s)"
+#~ msgstr "dydd(iau)"
+
+#~ msgid "Owner:"
+#~ msgstr "Perchennog:"
+
+#, fuzzy
+#~| msgid "&New"
+#~ msgctxt "@action:button add a new attendee"
+#~ msgid "&New"
+#~ msgstr "&Newydd"
+
+#, fuzzy
+#~ msgctxt "@action:button remove this attendee"
+#~ msgid "&Remove"
+#~ msgstr "&Gwaredu..."
+
+#, fuzzy
+#~ msgctxt "@action:button"
+#~ msgid "&Properties..."
+#~ msgstr "&Golygu..."
+
+#, fuzzy
+#~| msgid "&Show"
+#~ msgctxt "@action:button"
+#~ msgid "&Show"
+#~ msgstr "&Dangos"
+
+#, fuzzy
+#~ msgid "Agenda view uses resource colors"
+#~ msgstr "Lliw cefndir y golwg agenda:"
+
+#, fuzzy
+#~ msgid ""
+#~ "Check this box to make the agenda view use the resource colors of an item."
+#~ msgstr "Dangos eiliadau ar linell Marcus Bain"
+
+#~ msgid "Role"
+#~ msgstr "Rôl"
+
+#~ msgid "Status"
+#~ msgstr "Cyflwr"
+
+#~ msgid "RSVP"
+#~ msgstr "RSVP"
+
+#~ msgid "<No summary given>"
+#~ msgstr "<Ni roddwyd crynodeb>"
+
+#, fuzzy
+#~ msgctxt "Example: 5 hours (80%)"
+#~ msgid "%1 hours ("
+#~ msgstr "1 awr"
+
+#~ msgid "<undefined>"
+#~ msgstr "<anniffinir>"
+
+#~ msgid "Owner: "
+#~ msgstr "Perchennog:"
+
+#~ msgid "Go to &Today"
+#~ msgstr "Mynd at &Heddiw"
+
+#~ msgid "Print Calendar"
+#~ msgstr "Argraffu Calendr"
+
+#~ msgid "&List"
+#~ msgstr "&Rhestr"
+
+#, fuzzy
+#~| msgid "Center View"
+#~ msgid "&Timeline View"
+#~ msgstr "Canoli'r Golwg"
+
+#, fuzzy
+#~| msgid "Center View"
+#~ msgid "&Timespent View"
+#~ msgstr "Canoli'r Golwg"
+
+#~ msgid "Previous year"
+#~ msgstr "Blwyddyn Cynt"
+
+#~ msgid "Previous month"
+#~ msgstr "Mis Cynt"
+
+#~ msgid "Next month"
+#~ msgstr "Mis Nesaf"
+
+#, fuzzy
+#~ msgid "Co-Maintainer"
+#~ msgstr "Cynhaliwr"
+
+#, fuzzy
+#~| msgid "Go &Forward"
+#~ msgid "Floating"
+#~ msgstr "Mynd &Ymlaen"
+
+#~ msgid "&Title: "
+#~ msgstr "&Teitl: "
+
+#~ msgid "Ti&me: "
+#~ msgstr "Am&ser: "
+
+#, fuzzy
+#~ msgid "Sets the time associated with this journal  entry"
+#~ msgstr "Dileu Hen Ddigwyddiadau"
+
+#, fuzzy
+#~ msgid "[Add Journal Entry]"
+#~ msgstr "&Dyddlyfr"
+
+#, fuzzy
+#~ msgid "Show &Resource Buttons"
+#~ msgstr "Ffurfweddu Adnoddau"
+
+#, fuzzy
+#~ msgid "S&earch:"
+#~ msgstr "Chwilio Mewn"
+
+#, fuzzy
+#~ msgid "CalPrintIncidence_Base"
+#~ msgstr "Argraffu mis"
+
+#, fuzzy
+#~ msgid "CalPrintYear_Base"
+#~ msgstr "Argraffu mis"
+
+#~ msgctxt ""
+#~ "These are Jewish holidays and mostly do not have translations. They may "
+#~ "have different spellings in your language; otherwise, just translate the "
+#~ "sound to your characters"
+#~ msgid "Sh. HaHodesh"
+#~ msgstr "Sh. HaHodesh"
+
+#~ msgid "This plugin provides numbers of days and weeks."
+#~ msgstr "Mae'r ategyn yma yn darparu niferau o ddyddiau ac wythnosau."
+
+#, fuzzy
+#~ msgid ""
+#~ "<p>...that you can synchronize your calendar data with the data on a Palm "
+#~ "Pilot by using <a href=\"http://www.slac.com/pilone/kpilot_home\">KPilot</"
+#~ "a>?\n"
+#~ "</p>\n"
+#~ msgstr ""
+#~ "<p>...y gallwch gydamseru eich data calendr efo'r data ar Palm Pilot\n"
+#~ " gan ddefnyddio <a href=\"http://www.slac.com/pilone/kpilot_home"
+#~ "\">KPilot</a>?\n"
+
+#, fuzzy
+#~ msgid "Reset"
+#~ msgstr "Ail-adrodd"
+
+#~ msgid "Immediately"
+#~ msgstr "Ar Unwaith"
+
+#, fuzzy
+#~ msgid "&Reminder Dialog"
+#~ msgstr "&Atgof:"
+
+#, fuzzy
+#~ msgid "A&udio"
+#~ msgstr "Sain"
+
+#, fuzzy
+#~ msgid "Email &address(es):"
+#~ msgstr "Cyfeiriad e&bost:"
+
+#, fuzzy
+#~ msgid "CalPrintWeek_Base"
+#~ msgstr "Argraffu mis"
+
+#~ msgid "URI"
+#~ msgstr "URI"
+
+#~ msgid "MIME Type"
+#~ msgstr "Math MIME"
+
+#~ msgid "Edit Attachment"
+#~ msgstr "Golygu Atodiad"
+
+#, fuzzy
+#~ msgctxt "date from-"
+#~ msgid ""
+#~ "to\n"
+#~ "%1 -\n"
+#~ "%2"
+#~ msgstr "%1 - %2"
+
+#, fuzzy
+#~ msgctxt "date from -"
+#~ msgid ""
+#~ "to (week number)\n"
+#~ "%1 -\n"
+#~ "%2 (Week %3)"
+#~ msgstr "%1 - %2"
+
+#~ msgid "Project View"
+#~ msgstr "Golwg Cywaith"
+
+#~ msgid "main task"
+#~ msgstr "prif dasg"
+
+#~ msgid "&Project"
+#~ msgstr "&Cywaith"
+
+#~ msgid "This plugin provides a Gantt diagram as project view."
+#~ msgstr "Mae'r ategyn yma yn darparu diagram Gantt fel golwg cywaith."
+
+#, fuzzy
+#~ msgid "Project View Plugin"
+#~ msgstr "Golwg Cywaith"
+
+#, fuzzy
+#~ msgctxt "date from -"
+#~ msgid ""
+#~ "to\n"
+#~ "%1 -\n"
+#~ "%2"
+#~ msgstr "%1 - %2"
+
+#~ msgid "Exchange Plugin"
+#~ msgstr "Ategyn Exchange"
+
+#~ msgid "Exchange server:"
+#~ msgstr "Gweinydd Exchange:"
+
+#~ msgid "Port:"
+#~ msgstr "Porth:"
+
+#~ msgid "User:"
+#~ msgstr "Defnyddiwr:"
+
+#~ msgid "Determine mailbox automatically"
+#~ msgstr "Penodi blwch ebost yn ymysgogol"
+
+#~ msgid "Mailbox URL:"
+#~ msgstr "URL y blwch ebost:"
+
+#~ msgid "Start date:"
+#~ msgstr "Dyddiad dechrau:"
+
+#~ msgid "End date:"
+#~ msgstr "Dyddiad gorffen:"
+
+#~ msgid "&Download..."
+#~ msgstr "&Lawrlwytho ..."
+
+#~ msgid "&Upload Event..."
+#~ msgstr "&Lanlwytho Digwyddiad..."
+
+#~ msgid "De&lete Event"
+#~ msgstr "Di&leu Digwyddiad"
+
+#~ msgid ""
+#~ "This plugin imports and export calendar events from/to a Microsoft "
+#~ "Exchange 2000 Server."
+#~ msgstr ""
+#~ "Mae'r ategyn yma yn mewnforio ac allforio digwyddiadau o/i weinydd "
+#~ "Microsoft Exchange 2000."
+
+#, fuzzy
+#~ msgid "Please select an appointment."
+#~ msgstr "Dewiswch apwyntiad os gwelwch yn dda"
+
+#~ msgid ""
+#~ "Exchange Upload is EXPERIMENTAL, you may lose data on this appointment!"
+#~ msgstr ""
+#~ "Mae lanlywthiad i Exchange yn ARBROFOL, gallwch golli data am yr "
+#~ "apwyntiad hyn!"
+
+#~ msgid "&Upload"
+#~ msgstr "&Lanlwytho"
+
+#~ msgid ""
+#~ "Exchange Delete is EXPERIMENTAL, if this is a recurring event it will "
+#~ "delete all instances!"
+#~ msgstr ""
+#~ "Mae Dileu o Exchange yn ARBROFOL; os mae hwn yn ddigwyddiad ail-"
+#~ "digwyddiadol, bydd pob enghraifft yn cael ei ddileu!"
+
+#~ msgid "The Exchange server could not be reached or returned an error."
+#~ msgstr "Ni ellid cyrchu'r gweinydd Exchange, neu dychwelodd gwall."
+
+#~ msgid "Server response could not be interpreted."
+#~ msgstr "Ni ellid dehongli ymateb y gweinydd."
+
+#~ msgid "Appointment data could not be interpreted."
+#~ msgstr "Ni ellid dehongli data apwyntiadau."
+
+#~ msgid "This should not happen: trying to upload wrong type of event."
+#~ msgstr ""
+#~ "Ni ddylir hwn ddigwydd: ceisio lanlwytho y math angywir o ddigwyddiad."
+
+#~ msgid "An error occurred trying to write an appointment to the server."
+#~ msgstr "Digwyddodd gwall wrth geisio ysgrifennu apwyntiad i'r gweinydd."
+
+#~ msgid "Trying to delete an event that is not present on the server."
+#~ msgstr "Ceisio dileu digwyddiad sy ddim yn bresennol ar y gweinydd."
+
+#~ msgid "Unknown Error"
+#~ msgstr "Gwall Anhysbys"

@@ -1,0 +1,5362 @@
+# translation of korganizer.po to Slovenian
+# Translation of korganizer.po to Slovenian
+# Copyright (C) 2001,2002, 2003, 2004, 2005, 2006 Free Software Foundation, Inc.
+# $Id: korganizer_calendarplugins.po 1683254 2024-06-26 01:12:00Z scripty $
+# $Source$
+#
+# Roman Maurer <roman.maurer@hermes.si>, 2001.
+# Andrej Vernekar <andrej.vernekar@moj.net>, 2002, 2003, 2004, 2005, 2011.
+# Gregor Rakar <gregor.rakar@kiss.si>, 2003, 2004, 2005.
+# SPDX-FileCopyrightText: 2006, 2008, 2009, 2010, 2011, 2012, 2013, 2024 Jure Repinc <jlp@holodeck1.com>
+# Andrej Mernik <andrejm@ubuntu.si>, 2012, 2014, 2015, 2016.
+msgid ""
+msgstr ""
+"Project-Id-Version: korganizer\n"
+"Report-Msgid-Bugs-To: https://bugs.kde.org\n"
+"POT-Creation-Date: 2024-06-26 00:40+0000\n"
+"PO-Revision-Date: 2024-06-18 07:47+0200\n"
+"Last-Translator: Matjaž Jeran <matjaz.jeran@amis.net>\n"
+"Language-Team: Slovenian <lugos-slo@lugos.si>\n"
+"Language: sl\n"
+"MIME-Version: 1.0\n"
+"Content-Type: text/plain; charset=UTF-8\n"
+"Content-Transfer-Encoding: 8bit\n"
+"Plural-Forms: nplurals=4; plural=(n%100==1 ? 1 : n%100==2 ? 2 : n%100==3 || n"
+"%100==4 ? 3 : 0);\n"
+"Translator: Andrej Mernik <andrejm@ubuntu.si>\n"
+"X-Generator: Poedit 3.4.4\n"
+
+#: datenums/configdialog.cpp:28
+#, kde-format
+msgctxt "@title:window"
+msgid "Configure Day Numbers"
+msgstr "Nastavi številke dni"
+
+#: datenums/configdialog.cpp:43
+#, kde-format
+msgid "Show Date Number"
+msgstr "Pokaži številko datuma"
+
+#: datenums/configdialog.cpp:48
+#, kde-format
+msgid "Show day number"
+msgstr "Pokaži številko dneva"
+
+#: datenums/configdialog.cpp:51
+#, kde-format
+msgid "Show days to end of year"
+msgstr "Pokaži dneve do konca leta"
+
+#: datenums/configdialog.cpp:54
+#, kde-format
+msgid "Show both"
+msgstr "Pokaži oboje"
+
+#: datenums/datenums.cpp:36
+#, kde-format
+msgid "This plugin shows information on a day's position in the year."
+msgstr "Ta vstavek prikazuje podatke o položaju dneva v letu."
+
+#: datenums/datenums.cpp:54
+#, kde-format
+msgid "1 day before the end of the year"
+msgid_plural "%1 days before the end of the year"
+msgstr[0] "%1 dni pred koncem leta"
+msgstr[1] "%1 dan pred koncem leta"
+msgstr[2] "%1 dneva pred koncem leta"
+msgstr[3] "%1 dnevi pred koncem leta"
+
+#: datenums/datenums.cpp:59
+#, kde-format
+msgctxt "dayOfYear / daysTillEndOfYear"
+msgid "%1 / %2"
+msgstr "%1 / %2"
+
+#: datenums/datenums.cpp:60
+#, kde-format
+msgid "1 day since the beginning of the year,\n"
+msgid_plural "%1 days since the beginning of the year,\n"
+msgstr[0] "%1 dni od začetka leta,\n"
+msgstr[1] "%1 dan od začetka leta,\n"
+msgstr[2] "%1 dneva od začetka leta,\n"
+msgstr[3] "%1 dni od začetka leta,\n"
+
+#: datenums/datenums.cpp:61
+#, kde-format
+msgid "1 day until the end of the year"
+msgid_plural "%1 days until the end of the year"
+msgstr[0] "%1 dni do konca leta"
+msgstr[1] "%1 dan do konca leta"
+msgstr[2] "%1 dneva do konca leta"
+msgstr[3] "%1 dni do konca leta"
+
+#: datenums/datenums.cpp:102
+#, kde-format
+msgctxt "Week weekOfYear"
+msgid "Week %1"
+msgstr "%1. teden"
+
+#: datenums/datenums.cpp:103 datenums/datenums.cpp:113
+#: datenums/datenums.cpp:118
+#, kde-format
+msgid "1 week since the beginning of the year"
+msgid_plural "%1 weeks since the beginning of the year"
+msgstr[0] "%1 tednov od začetka leta"
+msgstr[1] "%1 teden od začetka leta"
+msgstr[2] "%1 tedna od začetka leta"
+msgstr[3] "%1 tedni od začetka leta"
+
+#: datenums/datenums.cpp:106
+#, kde-format
+msgctxt "weekOfYear (year)"
+msgid "%1 (%2)"
+msgstr "%1 (%2)"
+
+#: datenums/datenums.cpp:107
+#, kde-format
+msgctxt "Week weekOfYear (year)"
+msgid "Week %1 (%2)"
+msgstr "%1. teden (%2)"
+
+#: datenums/datenums.cpp:122
+#, kde-format
+msgid "1 week remaining"
+msgid_plural "%1 weeks remaining"
+msgstr[0] "preostaja %1 tednov"
+msgstr[1] "preostaja %1 teden"
+msgstr[2] "preostajata %1 tedna"
+msgstr[3] "preostajajo %1 tedni"
+
+#: datenums/datenums.cpp:123
+#, kde-format
+msgid "1 week until the end of the year"
+msgid_plural "%1 weeks until the end of the year"
+msgstr[0] "%1 tednov do konca leta"
+msgstr[1] "%1 teden do konca leta"
+msgstr[2] "%1 tedna do konca leta"
+msgstr[3] "%1 tedni do konca leta"
+
+#: datenums/datenums.cpp:124
+#, kde-format
+msgctxt "weekOfYear / weeksTillEndOfYear"
+msgid "%1 / %2"
+msgstr "%1 / %2"
+
+#: datenums/datenums.cpp:140
+#, kde-format
+msgctxt ""
+"n weeks since the beginning of the year\n"
+"n weeks until the end of the year"
+msgid ""
+"%1\n"
+"%2"
+msgstr ""
+"%1\n"
+"%2"
+
+#: hebrew/configdialog.cpp:28
+#, kde-format
+msgctxt "@title:window"
+msgid "Configure Holidays"
+msgstr "Nastavitev praznikov"
+
+#: hebrew/configdialog.cpp:42
+#, kde-format
+msgid "Use Israeli holidays"
+msgstr "Uporabi izraelske praznike"
+
+#: hebrew/configdialog.cpp:46
+#, kde-format
+msgid "Show weekly parsha"
+msgstr "Pokaži tedenski parsha"
+
+#: hebrew/configdialog.cpp:50
+#, kde-format
+msgid "Show day of Omer"
+msgstr "Pokaži dan Omerja"
+
+#: hebrew/configdialog.cpp:54
+#, kde-format
+msgid "Show Chol HaMoed"
+msgstr "Pokaži Chol HaMoed"
+
+#: hebrew/hebrew.cpp:60
+#, kde-format
+msgctxt ""
+"Change the next two strings if emphasis is done differently in your language."
+msgid ""
+"<qt><p align=\"center\"><i>\n"
+"%1\n"
+"</i></p></qt>"
+msgstr ""
+"<qt><p align=\"center\"><i>\n"
+"%1\n"
+"</i></p></qt>"
+
+#: hebrew/hebrew.cpp:67
+#, kde-format
+msgid "This plugin provides the date in the Jewish calendar."
+msgstr "Ta vstavek ponuja datum v židovskem koledarju."
+
+#: hebrew/holiday.cpp:75
+#, kde-format
+msgctxt ""
+"These are Jewish holidays and mostly do not have translations. They may have "
+"different spellings in your language; otherwise, just translate the sound to "
+"your characters."
+msgid "Sh. HaHodesh"
+msgstr "Sh. HaHodesh"
+
+#: hebrew/holiday.cpp:83
+#, kde-format
+msgid "Erev Pesach"
+msgstr "Erev Pesach"
+
+#: hebrew/holiday.cpp:94
+#, kde-format
+msgid "Sh. HaGadol"
+msgstr "Sh. HaGadol"
+
+#: hebrew/holiday.cpp:102
+#, kde-format
+msgid "Pesach"
+msgstr "Pesach"
+
+#: hebrew/holiday.cpp:113 hebrew/holiday.cpp:307
+#, kde-format
+msgid "Chol Hamoed"
+msgstr "Chol Hamoed"
+
+#: hebrew/holiday.cpp:124 hebrew/holiday.cpp:129 hebrew/holiday.cpp:138
+#, kde-format
+msgid "Yom HaShoah"
+msgstr "Yom HaShoah"
+
+#: hebrew/holiday.cpp:164 hebrew/holiday.cpp:171 hebrew/holiday.cpp:182
+#, kde-format
+msgid "Yom HaAtzmaut"
+msgstr "Yom HaAtzmaut"
+
+#: hebrew/holiday.cpp:166 hebrew/holiday.cpp:180
+#, kde-format
+msgid "Yom HaZikaron"
+msgstr "Yom HaZikaron"
+
+#: hebrew/holiday.cpp:190
+#, kde-format
+msgid "Yom Yerushalayim"
+msgstr "Yom Yerushalayim"
+
+#: hebrew/holiday.cpp:194
+#, kde-format
+msgid "Lag BaOmer"
+msgstr "Lag BaOmer"
+
+#: hebrew/holiday.cpp:220
+#, kde-format
+msgid "Erev Shavuot"
+msgstr "Erev Shavuot"
+
+#: hebrew/holiday.cpp:225
+#, kde-format
+msgid "Shavuot"
+msgstr "Shavuot"
+
+#: hebrew/holiday.cpp:234
+#, kde-format
+msgid "Tzom Tammuz"
+msgstr "Tzom Tammuz"
+
+#: hebrew/holiday.cpp:242
+#, kde-format
+msgid "Sh. Hazon"
+msgstr "Sh. Hazon"
+
+#: hebrew/holiday.cpp:244
+#, kde-format
+msgid "Sh. Nahamu"
+msgstr "Sh. Nahamu"
+
+#: hebrew/holiday.cpp:248
+#, kde-format
+msgid "Tisha B'Av"
+msgstr "Tisha B'Av"
+
+#: hebrew/holiday.cpp:254
+#, kde-format
+msgid "S'lichot"
+msgstr "S'lichot"
+
+#: hebrew/holiday.cpp:256
+#, kde-format
+msgid "Erev R.H."
+msgstr "Erev R.H."
+
+#: hebrew/holiday.cpp:264
+#, kde-format
+msgid "Rosh Hashana"
+msgstr "Rosh Hashana"
+
+#: hebrew/holiday.cpp:268 hebrew/holiday.cpp:283
+#, kde-format
+msgid "Sh. Shuvah"
+msgstr "Sh. Shuvah"
+
+#: hebrew/holiday.cpp:270 hebrew/holiday.cpp:275
+#, kde-format
+msgid "Tzom Gedalia"
+msgstr "Tzom Gedalia"
+
+#: hebrew/holiday.cpp:287
+#, kde-format
+msgid "Erev Y.K."
+msgstr "Erev Y.K."
+
+#: hebrew/holiday.cpp:290
+#, kde-format
+msgid "Yom Kippur"
+msgstr "Yom Kippur"
+
+#: hebrew/holiday.cpp:293
+#, kde-format
+msgid "Erev Sukkot"
+msgstr "Erev Sukkot"
+
+#: hebrew/holiday.cpp:298
+#, kde-format
+msgid "Sukkot"
+msgstr "Sukkot"
+
+#: hebrew/holiday.cpp:311
+#, kde-format
+msgid "Hoshana Rabah"
+msgstr "Hoshana Rabah"
+
+#: hebrew/holiday.cpp:314
+#, kde-format
+msgid "Shmini Atzeret"
+msgstr "Shmini Atzeret"
+
+#: hebrew/holiday.cpp:318
+#, kde-format
+msgid "Simchat Torah"
+msgstr "Simchat Torah"
+
+#: hebrew/holiday.cpp:329
+#, kde-format
+msgid "Erev Hanukah"
+msgstr "Erev Hanukah"
+
+#: hebrew/holiday.cpp:331 hebrew/holiday.cpp:339
+#, kde-format
+msgid "Hanukah"
+msgstr "Hanukah"
+
+#: hebrew/holiday.cpp:342
+#, kde-format
+msgid "Tzom Tevet"
+msgstr "Tzom Tevet"
+
+#: hebrew/holiday.cpp:352 hebrew/holiday.cpp:361 hebrew/holiday.cpp:366
+#: hebrew/holiday.cpp:372
+#, kde-format
+msgid "Sh. Shirah"
+msgstr "Sh. Shirah"
+
+#: hebrew/holiday.cpp:368
+#, kde-format
+msgid "Tu B'Shvat"
+msgstr "Tu B'Shvat"
+
+#: hebrew/holiday.cpp:383 hebrew/holiday.cpp:395 hebrew/holiday.cpp:403
+#, kde-format
+msgid "Sh. Shekalim"
+msgstr "Sh. Shekalim"
+
+#: hebrew/holiday.cpp:392
+#, kde-format
+msgid "Purim Katan"
+msgstr "Purim Katan"
+
+#: hebrew/holiday.cpp:411 hebrew/holiday.cpp:431
+#, kde-format
+msgid "Ta'anit Ester"
+msgstr "Ta'anit Ester"
+
+#: hebrew/holiday.cpp:420 hebrew/holiday.cpp:425
+#, kde-format
+msgid "Sh. Zachor"
+msgstr "Sh. Zachor"
+
+#: hebrew/holiday.cpp:427
+#, kde-format
+msgid "Erev Purim"
+msgstr "Erev Purim"
+
+#: hebrew/holiday.cpp:435
+#, kde-format
+msgid "Purim"
+msgstr "Purim"
+
+#: hebrew/holiday.cpp:439 hebrew/holiday.cpp:444
+#, kde-format
+msgid "Shushan Purim"
+msgstr "Shushan Purim"
+
+#: hebrew/holiday.cpp:455
+#, kde-format
+msgid "Sh. Parah"
+msgstr "Sh. Parah"
+
+#: hebrew/holiday.cpp:465
+#, kde-format
+msgid "Sh. HaHodesh"
+msgstr "Sh. HaHodesh"
+
+#: hebrew/holiday.cpp:481
+#, kde-format
+msgid " Omer"
+msgstr " Omer"
+
+#: hebrew/parsha.cpp:28
+#, kde-format
+msgctxt ""
+"These are weekly readings and do not have translations. They may have "
+"different spellings in your language; otherwise, just translate the sound to "
+"your characters"
+msgid "Bereshit"
+msgstr "Bereshit"
+
+#: hebrew/parsha.cpp:29
+#, kde-format
+msgid "Noach"
+msgstr "Noach"
+
+#: hebrew/parsha.cpp:29
+#, kde-format
+msgid "Lech L'cha"
+msgstr "Lech L'cha"
+
+#: hebrew/parsha.cpp:29
+#, kde-format
+msgid "Vayera"
+msgstr "Vayera"
+
+#: hebrew/parsha.cpp:29
+#, kde-format
+msgid "Chaye Sarah"
+msgstr "Chaye Sarah"
+
+#: hebrew/parsha.cpp:29
+#, kde-format
+msgid "Toldot"
+msgstr "Toldot"
+
+#: hebrew/parsha.cpp:29
+#, kde-format
+msgid "Vayetze"
+msgstr "Vayetze"
+
+#: hebrew/parsha.cpp:29
+#, kde-format
+msgid "Vayishlach"
+msgstr "Vayishlach"
+
+#: hebrew/parsha.cpp:30
+#, kde-format
+msgid "Vayeshev"
+msgstr "Vayeshev"
+
+#: hebrew/parsha.cpp:30
+#, kde-format
+msgid "Miketz"
+msgstr "Miketz"
+
+#: hebrew/parsha.cpp:30
+#, kde-format
+msgid "Vayigash"
+msgstr "Vayigash"
+
+#: hebrew/parsha.cpp:30
+#, kde-format
+msgid "Vayechi"
+msgstr "Vayechi"
+
+#: hebrew/parsha.cpp:30
+#, kde-format
+msgid "Shemot"
+msgstr "Shemot"
+
+#: hebrew/parsha.cpp:30
+#, kde-format
+msgid "Vaera"
+msgstr "Vaera"
+
+#: hebrew/parsha.cpp:30
+#, kde-format
+msgid "Bo"
+msgstr "Bo"
+
+#: hebrew/parsha.cpp:31
+#, kde-format
+msgid "Beshalach"
+msgstr "Beshalach"
+
+#: hebrew/parsha.cpp:31
+#, kde-format
+msgid "Yitro"
+msgstr "Yitro"
+
+#: hebrew/parsha.cpp:31
+#, kde-format
+msgid "Mishpatim"
+msgstr "Mishpatim"
+
+#: hebrew/parsha.cpp:31
+#, kde-format
+msgid "Terumah"
+msgstr "Terumah"
+
+#: hebrew/parsha.cpp:31
+#, kde-format
+msgid "Tetzaveh"
+msgstr "Tetzaveh"
+
+#: hebrew/parsha.cpp:31
+#, kde-format
+msgid "Ki Tisa"
+msgstr "Ki Tisa"
+
+#: hebrew/parsha.cpp:31
+#, kde-format
+msgid "Vayakhel"
+msgstr "Vayakhel"
+
+#: hebrew/parsha.cpp:32
+#, kde-format
+msgid "Pekudei"
+msgstr "Pekudei"
+
+#: hebrew/parsha.cpp:32
+#, kde-format
+msgid "Vayikra"
+msgstr "Vayikra"
+
+#: hebrew/parsha.cpp:32
+#, kde-format
+msgid "Tzav"
+msgstr "Tzav"
+
+#: hebrew/parsha.cpp:32
+#, kde-format
+msgid "Shemini"
+msgstr "Shemini"
+
+#: hebrew/parsha.cpp:32
+#, kde-format
+msgid "Tazria"
+msgstr "Tazria"
+
+#: hebrew/parsha.cpp:32
+#, kde-format
+msgid "Metzora"
+msgstr "Metzora"
+
+#: hebrew/parsha.cpp:32
+#, kde-format
+msgid "Acharei Mot"
+msgstr "Acharei Mot"
+
+#: hebrew/parsha.cpp:33
+#, kde-format
+msgid "Kedoshim"
+msgstr "Kedoshim"
+
+#: hebrew/parsha.cpp:33
+#, kde-format
+msgid "Emor"
+msgstr "Emor"
+
+#: hebrew/parsha.cpp:33
+#, kde-format
+msgid "Behar"
+msgstr "Behar"
+
+#: hebrew/parsha.cpp:33
+#, kde-format
+msgid "Bechukotai"
+msgstr "Bechukotai"
+
+#: hebrew/parsha.cpp:33
+#, kde-format
+msgid "Bemidbar"
+msgstr "Bemidbar"
+
+#: hebrew/parsha.cpp:33
+#, kde-format
+msgid "Naso"
+msgstr "Naso"
+
+#: hebrew/parsha.cpp:33
+#, kde-format
+msgid "Behaalotcha"
+msgstr "Behaalotcha"
+
+#: hebrew/parsha.cpp:34
+#, kde-format
+msgid "Shelach"
+msgstr "Shelach"
+
+#: hebrew/parsha.cpp:34
+#, kde-format
+msgid "Korach"
+msgstr "Korach"
+
+#: hebrew/parsha.cpp:34
+#, kde-format
+msgid "Chukat"
+msgstr "Chukat"
+
+#: hebrew/parsha.cpp:34
+#, kde-format
+msgid "Balak"
+msgstr "Balak"
+
+#: hebrew/parsha.cpp:34
+#, kde-format
+msgid "Pinchas"
+msgstr "Pinchas"
+
+#: hebrew/parsha.cpp:34
+#, kde-format
+msgid "Matot"
+msgstr "Matot"
+
+#: hebrew/parsha.cpp:34
+#, kde-format
+msgid "Masei"
+msgstr "Masei"
+
+#: hebrew/parsha.cpp:35
+#, kde-format
+msgid "Devarim"
+msgstr "Devarim"
+
+#: hebrew/parsha.cpp:35
+#, kde-format
+msgid "Vaetchanan"
+msgstr "Vaetchanan"
+
+#: hebrew/parsha.cpp:35
+#, kde-format
+msgid "Ekev"
+msgstr "Ekev"
+
+#: hebrew/parsha.cpp:35
+#, kde-format
+msgid "Reeh"
+msgstr "Reeh"
+
+#: hebrew/parsha.cpp:35
+#, kde-format
+msgid "Shoftim"
+msgstr "Shoftim"
+
+#: hebrew/parsha.cpp:35
+#, kde-format
+msgid "Ki Tetze"
+msgstr "Ki Tetze"
+
+#: hebrew/parsha.cpp:35
+#, kde-format
+msgid "Ki Tavo"
+msgstr "Ki Tavo"
+
+#: hebrew/parsha.cpp:36
+#, kde-format
+msgid "Nitzavim"
+msgstr "Nitzavim"
+
+#: hebrew/parsha.cpp:36
+#, kde-format
+msgid "Vayelech"
+msgstr "Vayelech"
+
+#: hebrew/parsha.cpp:36
+#, kde-format
+msgid "Haazinu"
+msgstr "Haazinu"
+
+#: lunarphases/lunarphases.cpp:61
+#, kde-format
+msgid ""
+"This plugin displays the day's lunar phase (New, First, Last, Full). "
+"Currently, the phase is computed for noon at UTC; therefore, you should "
+"expect variations by 1 day in either direction."
+msgstr ""
+"Ta vtičnik prikazuje lunarno fazo dneva (mlaj, prvi krajec, zadnji krajec, "
+"polno luno). Trenutno je faza izračunana opoldne ob UTC; zato lahko "
+"pričakujete spremembe do 1 dneva v katero koli smer."
+
+#: picoftheday/configdialog.cpp:28
+#, kde-format
+msgctxt "@title:window"
+msgid "Configure Picture of the Day"
+msgstr "Nastavi Izbrano sliko dneva"
+
+#: picoftheday/configdialog.cpp:42
+#, kde-format
+msgid "Thumbnail Aspect Ratio Mode"
+msgstr "Način razmerja sličice"
+
+#: picoftheday/configdialog.cpp:46
+#, kde-format
+msgid "Ignore aspect ratio"
+msgstr "Prezri razmerje"
+
+#: picoftheday/configdialog.cpp:48
+#, kde-format
+msgid ""
+"The thumbnail will be scaled freely. The aspect ratio will not be preserved."
+msgstr "Sličica bo umerjena brez, da bi bilo ohranjeno razmerje."
+
+#: picoftheday/configdialog.cpp:52
+#, kde-format
+msgid "Keep aspect ratio"
+msgstr "Ohrani razmerje"
+
+#: picoftheday/configdialog.cpp:54
+#, kde-format
+msgid ""
+"The thumbnail will be scaled to a rectangle as large as possible inside a "
+"given rectangle, preserving the aspect ratio."
+msgstr ""
+"Sličica bo umerjena v največji mogoči pravokotnik, ki je ves znotraj "
+"okvirja. Razmerje bo pri tem ohranjeno."
+
+#: picoftheday/configdialog.cpp:59
+#, kde-format
+msgid "Keep aspect ratio by expanding"
+msgstr "Ob razširjanju ohrani razmerje"
+
+#: picoftheday/configdialog.cpp:61
+#, kde-format
+msgid ""
+"The thumbnail will be scaled to a rectangle as small as possible outside a "
+"given rectangle, preserving the aspect ratio."
+msgstr ""
+"Sličica bo umerjena v najmanjši mogoči pravokotnik, ki je ves zunaj okvirja. "
+"Razmerje bo pri tem ohranjeno."
+
+#: picoftheday/element.cpp:209
+#, kde-format
+msgid "Wikipedia POTD: %1"
+msgstr "Izbrana slika na Wikipediji: %1"
+
+#: picoftheday/element.cpp:326
+#, kde-format
+msgid "Picture Page"
+msgstr "Stran s sliko"
+
+#: picoftheday/element.cpp:326
+#, fuzzy, kde-format
+#| msgid "Loading…"
+msgid "Loading..."
+msgstr "Nalaganje…"
+
+#: picoftheday/element.cpp:332
+#, fuzzy, kde-format
+#| msgid "<qt>Loading <i>Picture of the Day</i>…</qt>"
+msgid "<qt>Loading <i>Picture of the Day</i>...</qt>"
+msgstr "<qt>Nalaganje <i>Slike dneva</i>…</qt>"
+
+#: picoftheday/picoftheday.cpp:48
+#, kde-format
+msgid "<qt>This plugin provides the Wikipedia <i>Picture of the Day</i>.</qt>"
+msgstr "<qt>Ta vstavek ponuja <i>Izbrano sliko</i> z Wikipedije.</qt>"
+
+#: thisdayinhistory/thisdayinhistory.cpp:29
+#, kde-format
+msgid "This plugin provides links to Wikipedia's 'This Day in History' pages."
+msgstr "Ta vstavek ponuja povezave na Wikipedijino stran »Na današnji dan«."
+
+#: thisdayinhistory/thisdayinhistory.cpp:37
+#, kde-format
+msgid "This day in history"
+msgstr "Na današnji dan"
+
+#: thisdayinhistory/thisdayinhistory.cpp:39
+#: thisdayinhistory/thisdayinhistory.cpp:53
+#, kde-format
+msgctxt "Localized Wikipedia website"
+msgid "https://en.wikipedia.org/wiki/"
+msgstr "https://sl.wikipedia.org/wiki/"
+
+#: thisdayinhistory/thisdayinhistory.cpp:40
+#, kde-format
+msgctxt "Qt date format used by the localized Wikipedia"
+msgid "MMMM_d"
+msgstr "d_MMMM"
+
+#: thisdayinhistory/thisdayinhistory.cpp:51
+#, kde-format
+msgid "This month in history"
+msgstr "Ta mesec v zgodovini"
+
+#: thisdayinhistory/thisdayinhistory.cpp:54
+#, kde-format
+msgctxt "Qt date format used by the localized Wikipedia"
+msgid "MMMM_yyyy"
+msgstr "MMMM_yyyy"
+
+#~ msgctxt "@action:button"
+#~ msgid "Search &Directory Service"
+#~ msgstr "Iskalna storitev imenika"
+
+#~ msgctxt "NAME OF TRANSLATORS"
+#~ msgid "Your names"
+#~ msgstr ""
+#~ "Jure Repinc,Andrej Vernekar,Roman Maurer,Marko Samastur,Gregor Rakar,"
+#~ "Andrej Mernik"
+
+#~ msgctxt "EMAIL OF TRANSLATORS"
+#~ msgid "Your emails"
+#~ msgstr ""
+#~ "jlp@holodeck1.com,andrej.vernekar@gmail.com,roman.maurer@amis.net,"
+#~ "markos@elite.org,gregor.rakar@kiss.si,andrejm@ubuntu.si"
+
+#~ msgid "KOrganizer"
+#~ msgstr "KOrganizer"
+
+#~ msgid "A Personal Organizer"
+#~ msgstr "Osebni organizator"
+
+#~ msgid ""
+#~ "Copyright © 1997–1999 Preston Brown\n"
+#~ "Copyright © 2000–2004, 2007 Cornelius Schumacher\n"
+#~ "Copyright © 2004–2005 Reinhold Kainhofer\n"
+#~ "Copyright © 2006–2012 Allen Winter\n"
+#~ "Copyright © 2012–2016 KOrganizer authors"
+#~ msgstr ""
+#~ "Copyright © 1997–1999 Preston Brown\n"
+#~ "Copyright © 2000–2004, 2007 Cornelius Schumacher\n"
+#~ "Copyright © 2004–2005 Reinhold Kainhofer\n"
+#~ "Copyright © 2006–2012 Allen Winter\n"
+#~ "Copyright © 2012–2016 avtorji Korganizerja"
+
+#~ msgid "Allen Winter"
+#~ msgstr "Allen Winter"
+
+#~ msgid "Maintainer"
+#~ msgstr "Vzdrževalec"
+
+#~ msgid "Reinhold Kainhofer"
+#~ msgstr "Reinhold Kainhofer"
+
+#~ msgid "Former Maintainer"
+#~ msgstr "Prejšnji vzdrževalec"
+
+#~ msgid "Cornelius Schumacher"
+#~ msgstr "Cornelius Schumacher"
+
+#~ msgid "Preston Brown"
+#~ msgstr "Preston Brown"
+
+#~ msgid "Original Author"
+#~ msgstr "Prvotni avtor"
+
+#~ msgid "Laurent Montel"
+#~ msgstr "Laurent Montel"
+
+#~ msgid "Developer"
+#~ msgstr "Razvijalec"
+
+#~ msgid "Richard Apodaca"
+#~ msgstr "Richard Apodaca"
+
+#~ msgid "Björn Balazs"
+#~ msgstr "Björn Balazs"
+
+#~ msgid "Jan-Pascal van Best"
+#~ msgstr "Jan-Pascal van Best"
+
+#~ msgid "Bertjan Broeksema"
+#~ msgstr "Bertjan Broeksema"
+
+#~ msgid "Laszlo Boloni"
+#~ msgstr "Laszlo Boloni"
+
+#~ msgid "Barry Benowitz"
+#~ msgstr "Barry Benowitz"
+
+#~ msgid "Christopher Beard"
+#~ msgstr "Christopher Beard"
+
+#~ msgid "Kalle Dalheimer"
+#~ msgstr "Kalle Dalheimer"
+
+#~ msgid "Ian Dawes"
+#~ msgstr "Ian Dawes"
+
+#~ msgid "Thomas Eitzenberger"
+#~ msgstr "Thomas Eitzenberger"
+
+#~ msgid "Neil Hart"
+#~ msgstr "Neil Hart"
+
+#~ msgid "Declan Houlihan"
+#~ msgstr "Declan Houlihan"
+
+#~ msgid "Hans-Jürgen Husel"
+#~ msgstr "Hans-Jürgen Husel"
+
+#~ msgid "Tim Jansen"
+#~ msgstr "Tim Jansen"
+
+#~ msgid "Christian Kirsch"
+#~ msgstr "Christian Kirsch"
+
+#~ msgid "Tobias König"
+#~ msgstr "Tobias König"
+
+#~ msgid "Martin Koller"
+#~ msgstr "Martin Koller"
+
+#~ msgid "Uwe Koloska"
+#~ msgstr "Uwe Koloska"
+
+#~ msgid "Sergio Luis Martins"
+#~ msgstr "Sergio Luis Martins"
+
+#~ msgid "Mike McQuaid"
+#~ msgstr "Mike McQuaid"
+
+#~ msgid "Glen Parker"
+#~ msgstr "Glen Parker"
+
+#~ msgid "Dan Pilone"
+#~ msgstr "Dan Pilone"
+
+#~ msgid "Roman Rohr"
+#~ msgstr "Roman Rohr"
+
+#~ msgid "Rafał Rzepecki"
+#~ msgstr "Rafał Rzepecki"
+
+#~ msgid "Part of work sponsored by Google with Summer of Code 2005"
+#~ msgstr "Nekaj dela je sponzoriral Google s Summer of Code 2005"
+
+#~ msgid "Don Sanders"
+#~ msgstr "Don Sanders"
+
+#~ msgid "Bram Schoenmakers"
+#~ msgstr "Bram Schoenmakers"
+
+#~ msgid "Günter Schwann"
+#~ msgstr "Günter Schwann"
+
+#~ msgid "Herwin Jan Steehouwer"
+#~ msgstr "Herwin Jan Steehouwer"
+
+#~ msgid "Mario Teijeiro"
+#~ msgstr "Mario Teijeiro"
+
+#~ msgid "Nick Thompson"
+#~ msgstr "Nick Thompson"
+
+#~ msgid "Bo Thorsen"
+#~ msgstr "Bo Thorsen"
+
+#~ msgid "Larry Wright"
+#~ msgstr "Larry Wright"
+
+#~ msgid "Thomas Zander"
+#~ msgstr "Thomas Zander"
+
+#~ msgid "Fester Zigterman"
+#~ msgstr "Fester Zigterman"
+
+#~ msgid ""
+#~ "<qt>This will hide the menu bar completely. You can show it again by "
+#~ "typing %1.</qt>"
+#~ msgstr ""
+#~ "<qt>To bo povsem skrilo menijsko vrstico. Spet jo lahko prikažete s "
+#~ "pritiskom %1.</qt>"
+
+#~ msgid "Hide menu bar"
+#~ msgstr "Skrij menijsko vrstico"
+
+#~ msgid "Import &Calendar..."
+#~ msgstr "Uvozi &koledar ..."
+
+#~ msgid "Merge the contents of another iCalendar"
+#~ msgstr "Združi vsebino iz drugega koledarja iCalendar"
+
+#~ msgid ""
+#~ "Select this menu entry if you would like to merge the contents of another "
+#~ "iCalendar into your current calendar."
+#~ msgstr ""
+#~ "Izberite ta menijski vnos, če želite združiti vsebino iz drugega "
+#~ "koledarja iCalendar z vašim trenutnim koledarjem."
+
+#~ msgid "&Import From UNIX Ical Tool"
+#~ msgstr "Uvoz&i iz UNIX-ovega orodja Ical"
+
+#~ msgid "Import a calendar in another format"
+#~ msgstr "Uvozi drugo vrsto koledarja"
+
+#~ msgid ""
+#~ "Select this menu entry if you would like to import the contents of a non-"
+#~ "iCalendar formatted file into your current calendar."
+#~ msgstr ""
+#~ "Izberite ta menijski vnos, če želite v svoj koledar uvoziti vsebino "
+#~ "datoteke, ki ni vrste iCalendar."
+
+#~ msgid "Get &Hot New Stuff..."
+#~ msgstr "Dobi &vroče novosti ..."
+
+#~ msgid "Export &Web Page..."
+#~ msgstr "Izvozi spl&etno stran ..."
+
+#~ msgid "Export as &iCalendar..."
+#~ msgstr "Izvozi kot &iCalendar ..."
+
+#~ msgid "Export as &vCalendar..."
+#~ msgstr "Izvozi kot &vCalendar ..."
+
+#~ msgid "Archive O&ld Entries..."
+#~ msgstr "Ar&hiviraj stare vnose ..."
+
+#~ msgid "Pur&ge Completed To-dos"
+#~ msgstr "Po&čisti zaključena opravila"
+
+#~ msgid "&Delete"
+#~ msgstr "I&zbriši"
+
+#~ msgid "What's &Next"
+#~ msgstr "Kaj &bo naslednje"
+
+#~ msgid "&Month"
+#~ msgstr "&Mesec"
+
+#~ msgid "&Agenda"
+#~ msgstr "&Dnevni red"
+
+#~ msgid "&Event List"
+#~ msgstr "Seznam do&godkov"
+
+#~ msgid "&To-do List"
+#~ msgstr "Se&znam opravil"
+
+#~ msgid "&Journal"
+#~ msgstr "&Dnevnik"
+
+#~ msgid "Time&line"
+#~ msgstr "Č&asovnica"
+
+#~ msgid "Time&spent"
+#~ msgstr "Pora&bljen čas"
+
+#~ msgid "&Refresh"
+#~ msgstr "&Osveži"
+
+#~ msgid "F&ilter"
+#~ msgstr "F&ilter"
+
+#~ msgid "In Horizontally"
+#~ msgstr "Približaj vodoravno"
+
+#~ msgid "Out Horizontally"
+#~ msgstr "Oddalji vodoravno"
+
+#~ msgid "In Vertically"
+#~ msgstr "Približaj navpično"
+
+#~ msgid "Out Vertically"
+#~ msgstr "Oddalji navpično"
+
+#~ msgctxt "@action Jump to today"
+#~ msgid "To &Today"
+#~ msgstr "Na &današnji dan"
+
+#~ msgid "Today"
+#~ msgstr "Danes"
+
+#~ msgid "Scroll to Today"
+#~ msgstr "Pojdi na današnji dan"
+
+#~ msgctxt "scroll backward"
+#~ msgid "&Backward"
+#~ msgstr "&Nazaj"
+
+#~ msgctxt "scroll backward"
+#~ msgid "Back"
+#~ msgstr "Nazaj"
+
+#~ msgid "Scroll Backward"
+#~ msgstr "Pojdi nazaj"
+
+#~ msgctxt "scroll forward"
+#~ msgid "&Forward"
+#~ msgstr "N&aprej"
+
+#~ msgctxt "scoll forward"
+#~ msgid "Forward"
+#~ msgstr "Naprej"
+
+#~ msgid "Scroll Forward"
+#~ msgstr "Pojdi naprej"
+
+#~ msgid "&Day"
+#~ msgstr "&Dan"
+
+#~ msgid "&Next Day"
+#~ msgid_plural "&Next %1 Days"
+#~ msgstr[0] "&Naslednjih %1 dni"
+#~ msgstr[1] "&Naslednji %1 dan"
+#~ msgstr[2] "&Naslednja %1 dneva"
+#~ msgstr[3] "&Naslednji %1 dnevi"
+
+#~ msgid "W&ork Week"
+#~ msgstr "D&elovni teden"
+
+#~ msgid "&Week"
+#~ msgstr "&Teden"
+
+#~ msgid "New E&vent..."
+#~ msgstr "Nov &dogodek ..."
+
+#~ msgid "Create a new Event"
+#~ msgstr "Ustvari nov dogodek"
+
+#~ msgid "New &To-do..."
+#~ msgstr "Novo &opravilo ..."
+
+#~ msgid "Create a new To-do"
+#~ msgstr "Ustvari novo opravilo"
+
+#~ msgid "New Su&b-to-do..."
+#~ msgstr "Novo po&dopravilo ..."
+
+#~ msgid "New &Journal..."
+#~ msgstr "Nov &dnevnik ..."
+
+#~ msgid "Create a new Journal"
+#~ msgstr "Ustvari nov dnevnik"
+
+#~ msgid "Configure View..."
+#~ msgstr "Nastavi prikaz ..."
+
+#~ msgid "Configure"
+#~ msgstr "Nastavi"
+
+#~ msgid "Configure the view"
+#~ msgstr "Nastavi prikaz"
+
+#~ msgid "&Show"
+#~ msgstr "&Prikaži"
+
+#~ msgid "&Edit..."
+#~ msgstr "Ur&edi ..."
+
+#~ msgid "&Make Sub-to-do Independent"
+#~ msgstr "&Naredi podopravilo samostojno"
+
+#~ msgid "&Publish Item Information..."
+#~ msgstr "&Objavi podatke o predmetu ..."
+
+#~ msgid "Send &Invitation to Attendees"
+#~ msgstr "Udeležencem pošlji po&vabilo"
+
+#~ msgid "Re&quest Update"
+#~ msgstr "Za&htevaj posodobitev"
+
+#~ msgid "Send &Cancellation to Attendees"
+#~ msgstr "Udeležencem pošlji p&reklic"
+
+#~ msgid "Send Status &Update"
+#~ msgstr "Pošlji po&sodobitev stanja"
+
+#~ msgctxt "counter proposal"
+#~ msgid "Request Chan&ge"
+#~ msgstr "Zahtevaj spre&membo"
+
+#~ msgid "&Mail Free Busy Information..."
+#~ msgstr "&Pošlji podatke o prostosti/zaposlenosti ..."
+
+#~ msgid "&Send as iCalendar..."
+#~ msgstr "&Pošlji kot iCalendar ..."
+
+#~ msgid "&Upload Free Busy Information"
+#~ msgstr "&Pošlji podatke o prostosti/zaposlenosti"
+
+#~ msgid "&Address Book"
+#~ msgstr "&Imenik"
+
+#~ msgid "Show Date Navigator"
+#~ msgstr "Pokaži krmarja po datumih"
+
+#~ msgid "Show To-do View"
+#~ msgstr "Pokaži prikaz opravil"
+
+#~ msgid "Show Item Viewer"
+#~ msgstr "Pokaži pregledovalnik predmetov"
+
+#~ msgid "Show Calendar Manager"
+#~ msgstr "Pokaži upravljalnik koledarjev"
+
+#~ msgid "Configure &Date && Time..."
+#~ msgstr "Nastavi &datum in čas ..."
+
+#~ msgid "Manage View &Filters..."
+#~ msgstr "Upravljaj s &filtri prikaza ..."
+
+#~ msgid "Manage C&ategories..."
+#~ msgstr "Upravljaj s &kategorijami ..."
+
+#~ msgid "&Configure KOrganizer..."
+#~ msgstr "&Nastavi KOrganizer ..."
+
+#~ msgid "1 incidence was imported successfully."
+#~ msgid_plural "%1 incidences were imported successfully."
+#~ msgstr[0] "%1 pojavitev je bilo uspešno uvoženih."
+#~ msgstr[1] "%1 pojavitev je bila uspešno uvožena."
+#~ msgstr[2] "%1 pojavitvi sta bili uspešno uvoženi."
+#~ msgstr[3] "%1 pojavitve so bile uspešno uvožene."
+
+#~ msgid "There was an error while merging the calendar: %1"
+#~ msgstr "Med združevanjem koledarjev je prišlo do napake: %1"
+
+#~ msgid "New calendar added successfully"
+#~ msgstr "Novi koledar je bil uspešno dodan"
+
+#~ msgid "Could not add a calendar. Error: %1"
+#~ msgstr "Koledarja ni bilo mogoče dodati. Napaka: %1"
+
+#~ msgid ""
+#~ "You have no ical file in your home directory.\n"
+#~ "Import cannot proceed.\n"
+#~ msgstr ""
+#~ "V domači mapi nimate datoteke ical.\n"
+#~ "Uvoza ni mogoče nadaljevati.\n"
+
+#~ msgid ""
+#~ "KOrganizer encountered some unknown fields while parsing your .calendar "
+#~ "ical file, and had to discard them; please check to see that all your "
+#~ "relevant data was correctly imported."
+#~ msgstr ""
+#~ "KOrganizer je med branjem vaše datoteke .calendar za ical naletel na "
+#~ "nekatera neznana polja in jih je moral zavreči. Preverite, če so bili vsi "
+#~ "pomembni podatki pravilno uvoženi."
+
+#~ msgid ""
+#~ "KOrganizer encountered an error parsing your .calendar file from ical; "
+#~ "import has failed."
+#~ msgstr ""
+#~ "KOrganizer je med razčlenjevanjem datoteke .calendar iz icala naletel na "
+#~ "napako. Uvoz ni uspel."
+
+#~ msgid ""
+#~ "KOrganizer does not think that your .calendar file is a valid ical "
+#~ "calendar; import has failed."
+#~ msgstr ""
+#~ "KOrganizer ne prepozna vaše datoteke .calendar kot veljavne datoteke s "
+#~ "koledarjem za ical. Uvoz ni uspel."
+
+#~ msgid "An error occurred: %1"
+#~ msgstr "Prišlo je do napake: %1"
+
+#~ msgid ""
+#~ "Your calendar will be saved in iCalendar format. Use 'Export vCalendar' "
+#~ "to save in vCalendar format."
+#~ msgstr ""
+#~ "Vaš koledar bo shranjen v obliki iCalendar. Za izvoz v obliki vCalendar "
+#~ "uporabite »Izvozi vCalendar«."
+
+#~ msgid "Format Conversion"
+#~ msgstr "Pretvorba oblike"
+
+#~ msgid "Proceed"
+#~ msgstr "Nadaljuj"
+
+#~ msgid "Cannot upload calendar to '%1'"
+#~ msgstr "Ni mogoče poslati koledarja na »%1«"
+
+#~ msgid "Saved calendar '%1'."
+#~ msgstr "Koledar »%1« je bil shranjen."
+
+#~ msgid ""
+#~ "The HTML calendar export file has not been specified yet.\n"
+#~ "Do you want to set it now?\n"
+#~ "\n"
+#~ "If you answer \"no\" then this export operation will be canceled"
+#~ msgstr ""
+#~ "Datoteke HTML za izvoz koledarja še niste določili.\n"
+#~ "Ali jo želite določiti sedaj?\n"
+#~ "\n"
+#~ "Če odgovorite z »Ne«, bo izvažanje preklicano."
+
+#~ msgctxt "@info:status"
+#~ msgid "Calendar HTML operation canceled due to unspecified output file name"
+#~ msgstr ""
+#~ "Izvažanje koledarja je bilo preklicano, ker niste določili imena izhodne "
+#~ "datoteke."
+
+#~ msgid "Select path for HTML calendar export"
+#~ msgstr "Izberite pot za izvoz koledarja v datoteko HTML"
+
+#~ msgid "HTML Files (*.html)"
+#~ msgstr "Datoteke HTML (*.html)"
+
+#~ msgid "Do you want to overwrite file \"%1\"?"
+#~ msgstr "Ali želite prepisati datoteko »%1«?"
+
+#~ msgctxt "@info:status"
+#~ msgid "Calendar HTML operation canceled due to output file overwrite"
+#~ msgstr ""
+#~ "Izvažanje koledarja je bilo preklicano, ker bi prišlo do prepisa že "
+#~ "obstoječe datoteke."
+
+#~ msgid "Unable to save calendar to the file %1."
+#~ msgstr "Ni mogoče shraniti koledarja v datoteko %1."
+
+#~ msgid "Error"
+#~ msgstr "Napaka"
+
+#~ msgid ""
+#~ "The calendar has been modified.\n"
+#~ "Do you want to save it?"
+#~ msgstr ""
+#~ "Koledar je bil spremenjen.\n"
+#~ "Ali ga želite shraniti?"
+
+#~ msgid "*.ics *.vcs|Calendar Files"
+#~ msgstr "*.ics *.vcs|Koledarske datoteke"
+
+#~ msgid "Could not start control module for date and time format."
+#~ msgstr "Nadzornega modula za obliko datuma in časa ni bilo mogoče zagnati."
+
+#~ msgid "Could not load calendar %1."
+#~ msgstr "Ni bilo mogoče naložiti koledarja »%1«."
+
+#~ msgid "The downloaded events will be merged into your current calendar."
+#~ msgstr "Prejeti dogodki bodo združeni z vašim trenutnim koledarjem."
+
+#~ msgid "&Show Event"
+#~ msgstr "Po&kaži dogodek"
+
+#~ msgid "&Edit Event..."
+#~ msgstr "Ur&edi dogodek..."
+
+#~ msgid "&Delete Event"
+#~ msgstr "I&zbriši dogodek"
+
+#~ msgid "&Show To-do"
+#~ msgstr "Po&kaži opravilo"
+
+#~ msgid "&Edit To-do..."
+#~ msgstr "Ur&edi opravilo ..."
+
+#~ msgid "&Delete To-do"
+#~ msgstr "I&zbriši opravilo"
+
+#~ msgid "Attach as &link"
+#~ msgstr "Priloži kot &povezavo"
+
+#~ msgid "Attach &inline"
+#~ msgstr "Priloži znotrajvrst&ično"
+
+#~ msgid "Attach inline &without attachments"
+#~ msgstr "Priloži znotrajvrstično &brez prilog"
+
+#~ msgid "C&ancel"
+#~ msgstr "&Prekliči"
+
+#~ msgid "Removing attachments from an email might invalidate its signature."
+#~ msgstr "Odstranitev prilog iz e-pošte lahko prekine veljavnost podpisa."
+
+#~ msgid "Remove Attachments"
+#~ msgstr "Odstrani priloge"
+
+#~ msgid "Undo: %1"
+#~ msgstr "Razveljavi: %1"
+
+#~ msgid "Undo"
+#~ msgstr "Razveljavi"
+
+#~ msgid "Redo: %1"
+#~ msgstr "Uveljavi: %1"
+
+#~ msgid "Redo"
+#~ msgstr "Uveljavi"
+
+#~ msgid "URL '%1' is invalid."
+#~ msgstr "URL »%1« ni veljaven."
+
+#~ msgctxt "@info"
+#~ msgid ""
+#~ "<p>Would you like to merge this calendar item into an existing calendar "
+#~ "or use it to create a brand new calendar?</p><p>If you select merge, then "
+#~ "you will be given the opportunity to select the destination calendar.</"
+#~ "p><p>If you select add, then a new calendar will be created for you "
+#~ "automatically.</p>"
+#~ msgstr ""
+#~ "<p>Ali želite ta predmet koledarja združiti v obstoječ koledar ali ga "
+#~ "uporabiti za ustvaritev novega koledarja?</p><p>Če izberete združevanje, "
+#~ "boste lahko izbrali ciljni koledar,</p><p>Če izberete dodajanje, bo "
+#~ "samodejno ustvarjen nov koledar.</p>"
+
+#~ msgctxt "@title:window"
+#~ msgid "Import Calendar"
+#~ msgstr "Uvozi koledar"
+
+#~ msgid "Merge into existing calendar"
+#~ msgstr "Združi z obstoječim koledarjem"
+
+#~ msgid "Add as new calendar"
+#~ msgstr "Dodaj kot nov koledar"
+
+#~ msgctxt ""
+#~ "@info/plain Displayed grayed-out inside the textbox, verb to search"
+#~ msgid "Search"
+#~ msgstr "Poišči"
+
+#~ msgid "searching..."
+#~ msgstr "iskanje ..."
+
+#~ msgctxt "@title:window"
+#~ msgid "Properties of Calendar Folder %1"
+#~ msgstr "Lastnosti koledarske mape %1"
+
+#~ msgid "&Disable Color"
+#~ msgstr "&Onemogoči barve"
+
+#~ msgid "&Assign Color..."
+#~ msgstr "&Dodeli barvo ..."
+
+#~ msgid "Use as &Default Calendar"
+#~ msgstr "Uporabi kot &privzeti koledar"
+
+#~ msgid "Remove from list"
+#~ msgstr "Odstrani iz seznama"
+
+#~ msgid "Add to list permanently"
+#~ msgstr "Dodaj trajno na seznam"
+
+#~ msgid "Serverside Subscription..."
+#~ msgstr "Naročnina na strani strežnika ..."
+
+#~ msgid "Add Calendar"
+#~ msgstr "Dodaj koledar"
+
+#~ msgid "Do you really want to delete calendar %1?"
+#~ msgstr "Ali resnično želite izbrisati koledar %1?"
+
+#~ msgid "Delete Calendar"
+#~ msgstr "Izbriši koledar"
+
+#~ msgid ""
+#~ "<p><em>No Item Selected</em></p><p>Select an event, to-do or journal "
+#~ "entry to view its details here.</p>"
+#~ msgstr ""
+#~ "<p><em>Ni izbranega predmeta</em></p><p>Izberite dogodek, opravilo ali "
+#~ "dnevnik in tu se bodo prikazale podrobnosti.</p>"
+
+#~ msgid ""
+#~ "View the details of events, journal entries or to-dos selected in "
+#~ "KOrganizer's main view here."
+#~ msgstr ""
+#~ "Tu si lahko ogledate podrobnosti dogodkov, vnosov v dnevniku ali opravil, "
+#~ "ki so izbrana v glavnem prikazu."
+
+#~ msgid ""
+#~ "The time zone setting was changed. Do you want to keep the absolute time "
+#~ "of the items in your calendar, which will show them to be at a different "
+#~ "time than before, or move them to be at the old time also in the new time "
+#~ "zone?"
+#~ msgstr ""
+#~ "Spremenila se je nastavitev časovnega pasu. Ali želite obdržati absolutne "
+#~ "čase predmetov na koledarju? Tako bodo predmeti prikazani z drugim časom "
+#~ "kot prej. Ali mogoče želite prestaviti absolutne čase, tako da predmeti "
+#~ "ostanejo prikazani z istim časom kot prej?"
+
+#~ msgid "Keep Absolute Times?"
+#~ msgstr "Ohranim absolutne čase?"
+
+#~ msgid "Keep Times"
+#~ msgstr "Ohrani čase"
+
+#~ msgid "Move Times"
+#~ msgstr "Premakni čase"
+
+#~ msgid "Todo completed: %1 (%2)"
+#~ msgstr "Opravilo zaključeno: %1 (%2)"
+
+#~ msgid "Journal of %1"
+#~ msgstr "Dnevnik piše %1"
+
+#~ msgid ""
+#~ "The item \"%1\" is filtered by your current filter rules, so it will be "
+#~ "hidden and not appear in the view."
+#~ msgstr ""
+#~ "Predmet »%1« je filtriran s trenutnimi filtrirnimi pravili, zato bo skrit "
+#~ "in se ne bo pojavil v tem prikazu."
+
+#~ msgctxt "@info"
+#~ msgid "Do you really want to permanently remove the item \"%1\"?"
+#~ msgstr "Ali res želite trajno odstraniti predmet »%1«?"
+
+#~ msgctxt "@title:window"
+#~ msgid "Delete Item?"
+#~ msgstr "Izbrišem predmet?"
+
+#~ msgid "Paste failed: unable to determine a valid target date."
+#~ msgstr "Lepljenje ni uspelo: ni mogoče določiti veljavnega ciljnega datuma."
+
+#~ msgid "Make sub-to-dos independent"
+#~ msgstr "Napravi podopravila samostojna"
+
+#~ msgid "Toggle Reminder"
+#~ msgstr "Preklopi opomnik"
+
+#~ msgid "Toggle To-do Completed"
+#~ msgstr "Preklopi zaključenost opravila"
+
+#~ msgctxt "@info"
+#~ msgid "\"%1\" was successfully copied to %2."
+#~ msgstr "»%1« je bil uspešno kopiran v %2"
+
+#~ msgctxt "@title:window"
+#~ msgid "Copying Succeeded"
+#~ msgstr "Kopiranje je uspelo"
+
+#~ msgctxt "@info"
+#~ msgid "Unable to copy the item \"%1\" to %2."
+#~ msgstr "Ni mogoče kopirati predmeta »%1« v %2."
+
+#~ msgctxt "@title:window"
+#~ msgid "Copying Failed"
+#~ msgstr "Kopiranje ni uspelo"
+
+#~ msgctxt "@info"
+#~ msgid ""
+#~ "Unable to remove the item \"%1\" from %2. However, a copy of this item "
+#~ "has been put into %3."
+#~ msgstr ""
+#~ "Predmeta »%1« ni mogoče odstraniti iz %2. Kljub temu je bila v %3 "
+#~ "shranjena njegova kopija."
+
+#~ msgctxt "@title:window"
+#~ msgid "Moving Failed"
+#~ msgstr "Premikanje ni uspelo"
+
+#~ msgctxt "@info"
+#~ msgid "\"%1\" was successfully moved from %2 to %3."
+#~ msgstr "»%1« je bil uspešno premaknjen iz %2 v %3."
+
+#~ msgctxt "@title:window"
+#~ msgid "Moving Succeeded"
+#~ msgstr "Premikanje je uspelo"
+
+#~ msgctxt "@info"
+#~ msgid "Unable to add the item \"%1\" into %2. This item has not been moved."
+#~ msgstr "Predmeta »%1« ni mogoče dodati v %2, zato ni bil premaknjen."
+
+#~ msgid "Do you want to dissociate the occurrence on %1 from the recurrence?"
+#~ msgstr "Ali želite razvezati pojavitev na dan %1 od ponovitve?"
+
+#~ msgid "KOrganizer Confirmation"
+#~ msgstr "Potrditev KOrganizerja"
+
+#~ msgid "&Dissociate"
+#~ msgstr "&Razveži"
+
+#~ msgid ""
+#~ "Do you want to dissociate the occurrence on %1 from the recurrence or "
+#~ "also dissociate future ones?"
+#~ msgstr ""
+#~ "Ali želite razvezati pojavitev samo na dan %1 od ponovitve ali tudi "
+#~ "prihodnje?"
+
+#~ msgid "&Only Dissociate This One"
+#~ msgstr "Razveži &samo to"
+
+#~ msgid "&Also Dissociate Future Ones"
+#~ msgstr "Razveži &tudi prihodnje"
+
+#~ msgid "Dissociate future occurrences"
+#~ msgstr "Razveži prihodnje pojavitve"
+
+#~ msgid "Dissociate occurrence"
+#~ msgstr "Razveži pojavitev"
+
+#~ msgid "Dissociating the future occurrences failed."
+#~ msgstr "Razvezovanje prihodnjih pojavitev ni uspelo."
+
+#~ msgid "Dissociating Failed"
+#~ msgstr "Razvezovanje ni uspelo"
+
+#~ msgid "Dissociating the occurrence failed."
+#~ msgstr "Razvezovanje pojavitve ni uspelo."
+
+#~ msgid "iCalendars (*.ics)"
+#~ msgstr "Koledarji iCalendars (*.ics)"
+
+#~ msgid "Do you want to overwrite %1?"
+#~ msgstr "Ali želite prepisati %1?"
+
+#~ msgctxt "save failure cause unknown"
+#~ msgid "Reason unknown"
+#~ msgstr "Vzrok ni znan"
+
+#~ msgctxt "@info"
+#~ msgid "Cannot write iCalendar file %1. %2"
+#~ msgstr "Ni mogoče zapisati datoteke iCalendar %1. %2"
+
+#~ msgid "The journal entries cannot be exported to a vCalendar file."
+#~ msgstr "Vnosov iz dnevnika ni mogoče izvoziti v datoteko oblike vCalendar."
+
+#~ msgid "Data Loss Warning"
+#~ msgstr "Opozorilo o izgubi podatkov"
+
+#~ msgid "vCalendars (*.vcs)"
+#~ msgstr "Koledarji vCalendars (*.vcs)"
+
+#~ msgctxt "@info"
+#~ msgid "Cannot write vCalendar file %1. %2"
+#~ msgstr "Ni mogoče zapisati datoteke vCalendar %1. %2"
+
+#~ msgid "&Previous Day"
+#~ msgstr "&Prejšnji dan"
+
+#~ msgid "&Previous Week"
+#~ msgstr "&Prejšnji teden"
+
+#~ msgid "&Next Week"
+#~ msgstr "&Naslednji teden"
+
+#~ msgid "No filter"
+#~ msgstr "Brez filtra"
+
+#~ msgid ""
+#~ "The item \"%1\" has sub-to-dos. Do you want to delete just this item and "
+#~ "make all its sub-to-dos independent, or delete the to-do with all its sub-"
+#~ "to-dos?"
+#~ msgstr ""
+#~ "Opravilo »%1« ima podopravila. Ali želite izbrisati samo to opravilo in "
+#~ "spremeniti njegova podopravila v samostojna ali pa izbrisati opravilo "
+#~ "skupaj z njegovimi podopravili?"
+
+#~ msgid "Delete Only This"
+#~ msgstr "Izbriši samo to"
+
+#~ msgid "Delete All"
+#~ msgstr "Izbriši vse"
+
+#~ msgid "Delete parent to-do"
+#~ msgstr "Izbriši nadrejeno opravilo"
+
+#~ msgid "Delete parent to-do and sub-to-dos"
+#~ msgstr "Izbriši nadrejeno opravilo in podopravila"
+
+#~ msgid ""
+#~ "The item \"%1\" is marked read-only and cannot be deleted; it probably "
+#~ "belongs to a read-only calendar."
+#~ msgstr ""
+#~ "Predmet »%1« je označen samo za branje in ga ni mogoče izbrisati. "
+#~ "Verjetno pripada koledarju, ki je samo za branje."
+
+#~ msgid "Removing not possible"
+#~ msgstr "Odstranjevanje ni mogoče"
+
+#~ msgid ""
+#~ "The calendar item \"%1\" recurs over multiple dates; are you sure you "
+#~ "want to delete it and all its recurrences?"
+#~ msgstr ""
+#~ "Predmet na koledarju »%1« se ponavlja ob več datumih. Ali ste prepričani, "
+#~ "da želite izbrisati ta predmet in vse njegove ponovitve?"
+
+#~ msgid "Also Delete &Future"
+#~ msgstr "Izbriši tudi pri&hodnje"
+
+#~ msgid ""
+#~ "The calendar item \"%1\" recurs over multiple dates. Do you want to "
+#~ "delete only the current one on %2, also future occurrences, or all its "
+#~ "occurrences?"
+#~ msgstr ""
+#~ "Predmet na koledarju »%1« se ponavlja ob več datumih. Ali želite "
+#~ "izbrisati samo trenutno pojavitev na datum %2, tudi prihodnje pojavitve "
+#~ "ali vse njegove pojavitve?"
+
+#~ msgid ""
+#~ "The calendar item \"%1\" recurs over multiple dates. Do you want to "
+#~ "delete only the current one on %2 or all its occurrences?"
+#~ msgstr ""
+#~ "Predmet na koledarju »%1« se ponavlja ob več datumih. Ali želite "
+#~ "izbrisati samo trenutno pojavitev na datum %2 ali vse njegove pojavitve?"
+
+#~ msgid "Delete C&urrent"
+#~ msgstr "Izbriši &trenutne"
+
+#~ msgid "Delete &All"
+#~ msgstr "Izbriši &vse"
+
+#~ msgid ""
+#~ "All calendars are unchecked in the Calendar Manager. No to-do was purged."
+#~ msgstr ""
+#~ "V upravljalniku koledarjev ni označen noben koledar. Počiščeno ni bilo "
+#~ "nobeno opravilo."
+
+#~ msgid "There are no completed to-dos to purge."
+#~ msgstr "Ne obstaja nobeno zaključeno opravilo, ki bi lahko bilo počiščeno."
+
+#~ msgid "Delete all completed to-dos from checked calendars?"
+#~ msgstr "Ali iz označenih koledarjev izbrišem vsa zaključena opravila?"
+
+#~ msgid "Purge To-dos"
+#~ msgstr "Počisti opravila"
+
+#~ msgid "Purge"
+#~ msgstr "Počisti"
+
+#~ msgctxt "@info"
+#~ msgid "Unable to edit \"%1\" because it is locked by another process."
+#~ msgstr "Ni mogoče urediti »%1«, ker ga je zaklenilo drugo opravilo."
+
+#~ msgid "Unable to copy the item to %1."
+#~ msgstr "Ni mogoče kopirati predmeta v %1."
+
+#~ msgid "Copying Failed"
+#~ msgstr "Kopiranje ni uspelo"
+
+#~ msgid "Unable to move the item to  %1."
+#~ msgstr "Ni mogoče premakniti predmeta v %1."
+
+#~ msgid "Moving Failed"
+#~ msgstr "Premikanje ni uspelo"
+
+#~ msgid "0 completed to-dos were purged."
+#~ msgstr "Počiščeno ni bilo nobeno zaključeno opravilo."
+
+#~ msgid ""
+#~ "%1 to-do was ignored because it has uncompleted or read-only children."
+#~ msgid_plural ""
+#~ "%1 to-dos were ignored because they have uncompleted or read-only "
+#~ "children."
+#~ msgstr[0] ""
+#~ "%1 opravil je bilo prezrtih, ker imajo nezaključena ali pred pisanjem "
+#~ "zaščitena podopravila."
+#~ msgstr[1] ""
+#~ "%1 opravilo je bilo prezrto, ker ima nezaključena ali pred pisanjem "
+#~ "zaščitena podopravila."
+#~ msgstr[2] ""
+#~ "%1 opravili sta bili prezrti, ker imata nezaključena ali pred pisanjem "
+#~ "zaščitena podopravila."
+#~ msgstr[3] ""
+#~ "%1 opravila so bila prezrta, ker imajo nezaključena ali pred pisanjem "
+#~ "zaščitena podopravila."
+
+#~ msgid "%1 completed to-do was purged."
+#~ msgid_plural "%1 completed to-dos were purged."
+#~ msgstr[0] "Počiščenih je bilo %1 zaključenih opravil."
+#~ msgstr[1] "Počiščeno je bilo %1 zaključeno opravilo."
+#~ msgstr[2] "Počiščeni sta bili %1 zaključeni opravili."
+#~ msgstr[3] "Počiščena so bila %1 zaključena opravila."
+
+#~ msgid "An error occurred while purging completed to-dos: %1"
+#~ msgstr "Med čiščenjem zaključenih opravil je prišlo do napake: %1"
+
+#~ msgid ""
+#~ "You created an incidence in a calendar that is currently filtered out.\n"
+#~ "On the left sidebar, enable it in the calendar manager to see the "
+#~ "incidence."
+#~ msgstr ""
+#~ "Pojavitev ste ustvarili v koledarju, ki trenutno ni prikazan. Da bi "
+#~ "videli pojavitev,\n"
+#~ "omogočite koledar v upravljalniku koledarjev v stranski vrstici na levi."
+
+#~ msgid ""
+#~ "You created an incidence in a calendar that is currently filtered out.\n"
+#~ "You can enable it through the calendar manager (Settings->Sidebar->Show "
+#~ "Calendar Manager)"
+#~ msgstr ""
+#~ "Pojavitev ste ustvarili v koledarju, ki trenutno ni prikazan. Koledar "
+#~ "lahko omogočite v upravljalniku koledarjev (Nastavitve → Stranska vrstica "
+#~ "→ Pokaži upravljalnik koledarjev)."
+
+#~ msgctxt "@title:tab General settings for a folder."
+#~ msgid "General"
+#~ msgstr "Splošno"
+
+#~ msgctxt "@label:textbox Name of the folder."
+#~ msgid "&Name:"
+#~ msgstr "I&me:"
+
+#~ msgctxt "@info:tooltip"
+#~ msgid "Set the folder name"
+#~ msgstr "Nastavi ime mape"
+
+#~ msgctxt "@info:whatsthis"
+#~ msgid "Enter a name here to set the name of this folder."
+#~ msgstr "Sem vnesite ime za to mapo."
+
+#~ msgctxt "@option:check"
+#~ msgid "Block reminders locally"
+#~ msgstr "Krajevno blokiraj opomnike"
+
+#~ msgctxt "@info:tooltip"
+#~ msgid "Ignore reminders from this calendar"
+#~ msgstr "Prezri opomnike s tega koledarja"
+
+#~ msgctxt "@info:whatsthis"
+#~ msgid ""
+#~ "Check this box if you do not want to receive reminders from items "
+#~ "associated with this calendar."
+#~ msgstr ""
+#~ "Označite to polje, če ne želite prejemati opomnikov za predmete, ki so "
+#~ "povezani s tem koledarjem."
+
+#~ msgctxt "@option:check"
+#~ msgid "&Use custom icon:"
+#~ msgstr "&Uporabi ikono po meri:"
+
+#~ msgctxt "@info:tooltip"
+#~ msgid "Set a custom icon"
+#~ msgstr "Nastavi ikono po meri"
+
+#~ msgctxt "@info:whatsthis"
+#~ msgid "Check this box if you want to set a custom icon for this folder."
+#~ msgstr "Označite to polje, če želite za to mapo nastaviti ikono po meri."
+
+#~ msgid "&File"
+#~ msgstr "&Datoteka"
+
+#~ msgid "&Import"
+#~ msgstr "Uvoz&i"
+
+#~ msgid "&Export"
+#~ msgstr "I&zvozi"
+
+#~ msgid "&Edit"
+#~ msgstr "Ur&edi"
+
+#~ msgid "&View"
+#~ msgstr "&Pogled"
+
+#~ msgid "&Zoom"
+#~ msgstr "Pribli&žanje"
+
+#~ msgid "&Go"
+#~ msgstr "Po&jdi"
+
+#~ msgid "&Actions"
+#~ msgstr "Dej&anja"
+
+#~ msgid "S&chedule"
+#~ msgstr "&Razpored"
+
+#~ msgid "&Settings"
+#~ msgstr "Na&stavitve"
+
+#~ msgid "&Sidebar"
+#~ msgstr "&Stranska vrstica"
+
+#~ msgid "&Help"
+#~ msgstr "&Pomoč"
+
+#~ msgctxt "main toolbar"
+#~ msgid "Main"
+#~ msgstr "Glavna"
+
+#~ msgid "Views"
+#~ msgstr "Prikazi"
+
+#~ msgid "Schedule"
+#~ msgstr "Razpored"
+
+#~ msgid "Filters Toolbar"
+#~ msgstr "Orodna vrstica filtrov"
+
+#~ msgid "Calendar Colors"
+#~ msgstr "Barve koledarja"
+
+#~ msgid ""
+#~ "<qt><p>Select the dates you want to display in KOrganizer's main view "
+#~ "here. Hold the mouse button to select more than one day.</p><p>Press the "
+#~ "top buttons to browse to the next / previous months or years.</p><p>Each "
+#~ "line shows a week. The number in the left column is the number of the "
+#~ "week in the year. Press it to select the whole week.</p></qt>"
+#~ msgstr ""
+#~ "<qt><p>Tu izberite datume, ki bodo na voljo v KOrganizerjevem glavnem "
+#~ "prikazu. Za izbor več dni držite pritisnjen miškin gumb.</p><p>Za pomik "
+#~ "na naslednji/prejšnji mesec ali leto kliknite na ustrezen gumb na vrhu.</"
+#~ "p><p>Vsaka vrstica prikazuje en teden. Število v levem stolpcu prikazuje "
+#~ "vrstni red tedna v letu. Za izbor celotnega tedna kliknite na to število."
+#~ "</p></qt>"
+
+#~ msgid "Export Calendar as Web Page"
+#~ msgstr "Izvozi koledar kot spletno stran"
+
+#~ msgid "Export"
+#~ msgstr "Izvozi"
+
+#~ msgid ""
+#~ "You are about to set all preferences to default values. All custom "
+#~ "modifications will be lost."
+#~ msgstr ""
+#~ "Vse možnosti boste nastavili na privzete vrednosti. Vse spremembe po meri "
+#~ "bodo izgubljene."
+
+#~ msgid "Setting Default Preferences"
+#~ msgstr "Nastavljanje privzetih možnosti"
+
+#~ msgid "Reset to Defaults"
+#~ msgstr "Ponastavi na privzete vrednosti"
+
+#~ msgctxt "general settings for html export"
+#~ msgid "General"
+#~ msgstr "Splošno"
+
+#~ msgid "Date Range"
+#~ msgstr "Datumsko obdobje"
+
+#~ msgid "View Type"
+#~ msgstr "Vrsta prikaza"
+
+#~ msgid "Destination"
+#~ msgstr "Cilj"
+
+#~ msgid "To-dos"
+#~ msgstr "Opravila"
+
+#~ msgid "Events"
+#~ msgstr "Dogodki"
+
+#~ msgctxt "@title::window"
+#~ msgid "Edit Calendar Filters"
+#~ msgstr "Urejanje koledarskih filtrov"
+
+#~ msgctxt "@info:whatsthis"
+#~ msgid "Press this button to define a new filter."
+#~ msgstr "Pritisnite ta gumb, da določite nov filter."
+
+#~ msgctxt "@info:whatsthis"
+#~ msgid "Press this button to remove the currently active filter."
+#~ msgstr "Pritisnite ta gumb, da odstranite trenutno dejaven filter."
+
+#~ msgctxt "@label default filter name"
+#~ msgid "New Filter %1"
+#~ msgstr "Nov filter %1"
+
+#~ msgctxt "@info"
+#~ msgid "Do you really want to permanently remove the filter \"%1\"?"
+#~ msgstr "Ali resnično želite trajno odstraniti filter »%1«?"
+
+#~ msgctxt "@title:window"
+#~ msgid "Delete Filter?"
+#~ msgstr "Izbrišem filter?"
+
+#~ msgid "Event Viewer"
+#~ msgstr "Pregledovalnik dogodkov"
+
+#~ msgid "Edit..."
+#~ msgstr "Uredi ..."
+
+#~ msgid "Show in Context"
+#~ msgstr "Prikaži v vsebini"
+
+#~ msgctxt "@title:window"
+#~ msgid "Create Note"
+#~ msgstr "Ustvari sporočilce"
+
+#~ msgctxt "@action:discard creating note"
+#~ msgid "Cancel"
+#~ msgstr "Prekliči"
+
+#~ msgctxt "@action:save note"
+#~ msgid "Save"
+#~ msgstr "Shrani"
+
+#~ msgid "Calendar where the new note will be stored."
+#~ msgstr "Koledar, v katerega boste shranili novo sporočilce."
+
+#~ msgid "Title:"
+#~ msgstr "Naslov:"
+
+#~ msgid "Text:"
+#~ msgstr "Besedilo:"
+
+#~ msgid "Search Calendar"
+#~ msgstr "Iskanje po koledarju"
+
+#~ msgctxt "search in calendar"
+#~ msgid "&Search"
+#~ msgstr "Po&išči"
+
+#~ msgid "Start searching"
+#~ msgstr "Začni iskanje"
+
+#~ msgid ""
+#~ "Invalid search expression, cannot perform the search. Please enter a "
+#~ "search expression using the wildcard characters '*' and '?' where needed."
+#~ msgstr ""
+#~ "Neveljavni iskalni izraz, iskanja ni mogoče opraviti.  Vstavite iskalni "
+#~ "izraz z uporabo nadomestnih znakov »*« in »?«, kjer je to potrebno."
+
+#~ msgid "No items were found that match your search pattern."
+#~ msgstr ""
+#~ "Najdenega ni bilo nobenega predmeta, ki bi se ujemal z iskalnim vzorcem."
+
+#~ msgid "Search Results"
+#~ msgstr "Rezultati iskanja"
+
+#~ msgid "%1 item"
+#~ msgid_plural "%1 items"
+#~ msgstr[0] "%1 predmetov"
+#~ msgstr[1] "%1 predmet"
+#~ msgstr[2] "%1 predmeta"
+#~ msgstr[3] "%1 predmeti"
+
+#~ msgctxt "A collection of all declined invidations."
+#~ msgid "Declined Invitations"
+#~ msgstr "Zavrnjena povabila"
+
+#~ msgctxt "A collection of all open invidations."
+#~ msgid "Open Invitations"
+#~ msgstr "Odprta povabila"
+
+#~ msgid "Unable to write the output file."
+#~ msgstr "Ni mogoče zapisati izhodne datoteke."
+
+#~ msgid "Unable to write the temporary file for uploading."
+#~ msgstr "Ni mogoče zapisati začasne datoteke za pošiljanje."
+
+#~ msgid "Unable to upload the export file."
+#~ msgstr "Datoteke izvoza ni mogoče poslati."
+
+#~ msgid "Web page successfully written to \"%1\". Do you want to show it?"
+#~ msgstr ""
+#~ "Spletna stran je bila uspešno zapisana v »%1«. Ali jo želite pokazati?"
+
+#~ msgid "Export failed. %1"
+#~ msgstr "Izvoz ni uspel. %1"
+
+#~ msgctxt "@title:window"
+#~ msgid "Export Status"
+#~ msgstr "Stanje izvoza"
+
+#~ msgid "Show page Web"
+#~ msgstr "Pokaži spletno stran"
+
+#~ msgctxt "@info:status"
+#~ msgid "Automatic Export: %1"
+#~ msgstr "Samodejno izvažanje: %1"
+
+#~ msgctxt "@title month and year"
+#~ msgid "%1 %2"
+#~ msgstr "%1 %2"
+
+#~ msgctxt "@title:column event start time"
+#~ msgid "Start Time"
+#~ msgstr "Čas začetka"
+
+#~ msgctxt "@title:column event end time"
+#~ msgid "End Time"
+#~ msgstr "Čas konca"
+
+#~ msgctxt "@title:column event description"
+#~ msgid "Event"
+#~ msgstr "Dogodek"
+
+#~ msgctxt "@title:column event locatin"
+#~ msgid "Location"
+#~ msgstr "Mesto"
+
+#~ msgctxt "@title:column event categories"
+#~ msgid "Categories"
+#~ msgstr "Kategorije"
+
+#~ msgctxt "@title:column event attendees"
+#~ msgid "Attendees"
+#~ msgstr "Udeleženci"
+
+#~ msgctxt "@title:column"
+#~ msgid "To-do"
+#~ msgstr "Opravilo"
+
+#~ msgctxt "@title:column to-do priority"
+#~ msgid "Priority"
+#~ msgstr "Prednost"
+
+#~ msgctxt "@title:column to-do percent completed"
+#~ msgid "Completed"
+#~ msgstr "Zaključeno"
+
+#~ msgctxt "@title:column to-do due date"
+#~ msgid "Due Date"
+#~ msgstr "Datum zapadlosti"
+
+#~ msgctxt "@title:column to-do location"
+#~ msgid "Location"
+#~ msgstr "Mesto"
+
+#~ msgctxt "@title:column to-do categories"
+#~ msgid "Categories"
+#~ msgstr "Kategorije"
+
+#~ msgctxt "@title:column to-do attendees"
+#~ msgid "Attendees"
+#~ msgstr "Udeleženci"
+
+#~ msgctxt "@title:column sub-to-dos of the parent to-do"
+#~ msgid "Sub-To-dos of: "
+#~ msgstr "Podopravila od: "
+
+#~ msgctxt "@title:column sub-to-dos of the parent to-do"
+#~ msgid "Sub-To-dos"
+#~ msgstr "Podopravila"
+
+#~ msgctxt "@info to-do percent complete"
+#~ msgid "%1 %"
+#~ msgstr "%1 %"
+
+#~ msgctxt "@info"
+#~ msgid "This page was created "
+#~ msgstr "Stran je ustvaril "
+
+#~ msgctxt "@info/plain page creator email link with name"
+#~ msgid "by <link url='mailto:%1'>%2</link> "
+#~ msgstr "<link url='mailto:%1'>%2</link> "
+
+#~ msgctxt "@info/plain page creator email link"
+#~ msgid "by <link url='mailto:%1'>%2</link> "
+#~ msgstr "<link url='mailto:%1'>%2</link> "
+
+#~ msgctxt "@info page creator name only"
+#~ msgid "by %1 "
+#~ msgstr "%1 "
+
+#~ msgctxt "@info/plain page credit with name and link"
+#~ msgid "with <link url='%1'>%2</link>"
+#~ msgstr "z <link url='%1'>%2</link>"
+
+#~ msgctxt "@info page credit name only"
+#~ msgid "with %1"
+#~ msgstr "z %1"
+
+#~ msgctxt "@info holiday by date and name"
+#~ msgid "%1, %2"
+#~ msgstr "%1, %2"
+
+#~ msgid "Text"
+#~ msgstr "Besedilo"
+
+#~ msgid "Numeric Value"
+#~ msgstr "Številčna vrednost"
+
+#~ msgid "Boolean"
+#~ msgstr "Logična vrednost"
+
+#~ msgid "Selection"
+#~ msgstr "Izbira"
+
+#~ msgid "Date & Time"
+#~ msgstr "Datum in čas"
+
+#~ msgid "Date"
+#~ msgstr "Datum"
+
+#~ msgid "KCMDesignerfields"
+#~ msgstr "KCMDesignerfields"
+
+#~ msgid "Qt Designer Fields Dialog"
+#~ msgstr "Pogovorno okno Qt Designerja za polja"
+
+#~ msgid "(c) 2004 Tobias Koenig"
+#~ msgstr "© 2004 Tobias Koenig"
+
+#~ msgid "Tobias Koenig"
+#~ msgstr "Tobias Koenig"
+
+#~ msgid "<qt>Do you really want to delete '<b>%1</b>'?</qt>"
+#~ msgstr "<qt>Ali resnično želite izbrisati »<b>%1</b>«?</qt>"
+
+#~ msgid "Import Page"
+#~ msgstr "Uvozi stran"
+
+#~ msgid "Designer Files (*.ui)"
+#~ msgstr "Datoteke za Qt Designer (*.ui)"
+
+#~ msgid ""
+#~ "<qt><b>Warning:</b> Qt Designer could not be found. It is probably not "
+#~ "installed. You will only be able to import existing designer files.</qt>"
+#~ msgstr ""
+#~ "<qt><b>Opozorilo:</b> Qt Designerja ni bilo mogoče najti. Verjetno ni "
+#~ "nameščen. Lahko boste le uvozili obstoječe datoteke snovalnika.</qt>"
+
+#~ msgid "Available Pages"
+#~ msgstr "Razpoložljive strani"
+
+#~ msgid "Preview of Selected Page"
+#~ msgstr "Predogled izbrane strani"
+
+#~ msgid ""
+#~ "<qt><p>This section allows you to add your own GUI Elements ('<i>Widgets</"
+#~ "i>') to store your own values into %1. Proceed as described below:</"
+#~ "p><ol><li>Click on '<i>Edit with Qt Designer</i>'</li><li>In the dialog, "
+#~ "select '<i>Widget</i>', then click <i>OK</i></li><li>Add your widgets to "
+#~ "the form</li><li>Save the file in the directory proposed by Qt Designer</"
+#~ "li><li>Close Qt Designer</li></ol><p>In case you already have a designer "
+#~ "file (*.ui) located somewhere on your hard disk, simply choose '<i>Import "
+#~ "Page</i>'</p><p><b>Important:</b> The name of each input widget you place "
+#~ "within the form must start with '<i>X_</i>'; so if you want the widget to "
+#~ "correspond to your custom entry '<i>X-Foo</i>', set the widget's <i>name</"
+#~ "i> property to '<i>X_Foo</i>'.</p><p><b>Important:</b> The widget will "
+#~ "edit custom fields with an application name of %2.  To change the "
+#~ "application name to be edited, set the widget name in Qt Designer.</p></"
+#~ "qt>"
+#~ msgstr ""
+#~ "<qt><p>Ta odsek vam omogoča, da dodate lastne predmete uporabniškega "
+#~ "vmesnika (<i>gradnike</i>) za shranjevanje vaših lastnih vrednosti v %1. "
+#~ "Nadaljujte po naslednjem postopku:</p><ol><li>Kliknite na <i>Uredi z Qt "
+#~ "Designerjem</i></li><li>V pogovornem oknu izberite <i>Gradnik</i> in "
+#~ "kliknite <i>V redu</i></li><li>Dodajte svoje gradnike na obrazec</"
+#~ "li><li>Shranite datoteko v mapo, ki jo predlaga Qt Designer</"
+#~ "li><li>Zaprite Qt Designer</li></ol><p>V primeru, da že imate datoteko Qt "
+#~ "Designerja (*.ui) nekje na trdem disku, preprosto izberite <i>Uvozi "
+#~ "stran</i></p><p><b>Pomembno:</b> imena posameznih vnosnih gradnikov, ki "
+#~ "jih postavite na obrazec, se morajo začeti z <i>X_</i>. Npr. če želite, "
+#~ "da gradnik ustreza vnosu <i>X-Nekaj</i>, nastavite lastnost gradnika "
+#~ "<i>name</i> na <i>X_Nekaj</i>.</p><p><b>Pomembno:</b> Gradnik bo polja po "
+#~ "meri urejal z imenom programa %2. Če želite spremeniti ime programa, ki "
+#~ "bo urejan, nastavite ime gradnika v Qt Designerju.</p></qt>"
+
+#~ msgid "<a href=\"whatsthis:%1\">How does this work?</a>"
+#~ msgstr "<a href=\"whatsthis:%1\">Kako to deluje?</a>"
+
+#~ msgid "Delete Page"
+#~ msgstr "Izbriši stran"
+
+#~ msgid "Import Page..."
+#~ msgstr "Uvozi stran ..."
+
+#~ msgid "Edit with Qt Designer..."
+#~ msgstr "Uredi z Qt Designerjem ..."
+
+#~ msgid "Key:"
+#~ msgstr "Ključ:"
+
+#~ msgid "Type:"
+#~ msgstr "Vrsta:"
+
+#~ msgid "Classname:"
+#~ msgstr "Ime razreda:"
+
+#~ msgid "Description:"
+#~ msgstr "Opis:"
+
+#~ msgctxt "@item:intext delimiter for joining holiday names"
+#~ msgid ","
+#~ msgstr ", "
+
+#~ msgctxt "delimiter for joining holiday names"
+#~ msgid ","
+#~ msgstr ","
+
+#~ msgid "&Move"
+#~ msgstr "Pre&makni"
+
+#~ msgid "&Copy"
+#~ msgstr "&Kopiraj"
+
+#~ msgid "&Add"
+#~ msgstr "Dod&aj"
+
+#~ msgid "&Cancel"
+#~ msgstr "&Prekliči"
+
+#~ msgid "&Print..."
+#~ msgstr "Na&tisni ..."
+
+#~ msgid "Print Previe&w..."
+#~ msgstr "Predo&gled tiskanja ..."
+
+#~ msgctxt "cut this event"
+#~ msgid "C&ut"
+#~ msgstr "&Izreži"
+
+#~ msgctxt "copy this event"
+#~ msgid "&Copy"
+#~ msgstr "&Kopiraj"
+
+#~ msgid "&Paste"
+#~ msgstr "Pri&lepi"
+
+#~ msgctxt "delete this incidence"
+#~ msgid "&Delete"
+#~ msgstr "I&zbriši"
+
+#~ msgid "Create To-do"
+#~ msgstr "Ustvari opravilo"
+
+#~ msgid "Create Event"
+#~ msgstr "Ustvari dogodek"
+
+#~ msgid "Create Note"
+#~ msgstr "Ustvari sporočilce"
+
+#~ msgid "Togg&le To-do Completed"
+#~ msgstr "Preklopi &zaključenost opravila"
+
+#~ msgid "&Toggle Reminder"
+#~ msgstr "Preklopi &opomnik"
+
+#~ msgid "&Dissociate From Recurrence..."
+#~ msgstr "Raz&veži od ponovitve ..."
+
+#~ msgid "Send as iCalendar..."
+#~ msgstr "Pošlji kot iCalendar ..."
+
+#~ msgid "Unable to save %1 \"%2\"."
+#~ msgstr "Ni mogoče shraniti %1 »%2«."
+
+#~ msgid "Event Summary Configuration"
+#~ msgstr "Nastavitev povzetka dogodkov"
+
+#~ msgid "Show Upcoming Events Starting"
+#~ msgstr "Pokaži prihajajoče dogodke, ki se začnejo"
+
+#~ msgid "Show events for today only"
+#~ msgstr "Pokaži samo današnje dogodke"
+
+#~ msgid ""
+#~ "Check this box if you want to see events occurring on this date only."
+#~ msgstr ""
+#~ "Označite to polje, če bi radi videli samo dogodke, ki se zgodijo na ta "
+#~ "datum."
+
+#~ msgid "&Today only"
+#~ msgstr "Sa&mo danes"
+
+#~ msgid "Show events starting within the next month"
+#~ msgstr "Pokaži dogodke, ki se začnejo čez manj kot mesec"
+
+#~ msgid ""
+#~ "Check this box if you want to see events that start sometime during the "
+#~ "next 31 days."
+#~ msgstr ""
+#~ "Označite to polje, če bi radi videli dogodke, ki se začnejo v naslednjih "
+#~ "31 dneh."
+
+#~ msgid "Within the next &month (31 days)"
+#~ msgstr "Čez manj kot &mesec (31 dni)"
+
+#~ msgid "Select the days for showing upcoming events"
+#~ msgstr "Izberite dneve za prikazovanje prihajajočih dogodkov"
+
+#~ msgid ""
+#~ "Check this box if you want to specify the number of days in the future "
+#~ "for upcoming events."
+#~ msgstr ""
+#~ "Označite to polje, če želite določiti število dni v prihodnosti za "
+#~ "prihajajoče dogodke."
+
+#~ msgid "Within the &next:"
+#~ msgstr "Znotraj &naslednjih:"
+
+#~ msgid "Set the number of days to show upcoming events"
+#~ msgstr "Nastavite število dni za prikazovanje prihajajočih dogodkov"
+
+#~ msgid ""
+#~ "Use this spinbox to set the number of days to show upcoming events up to "
+#~ "1 year in the future."
+#~ msgstr ""
+#~ "Uporabite to vrtilno polje, da nastavite število dni za prikazovanje "
+#~ "prihajajočih dogodkov, ki so lahko največ eno leto v prihodnosti."
+
+#~ msgid "1 day"
+#~ msgstr "1 dan"
+
+#~ msgctxt "days to show in summary"
+#~ msgid " days"
+#~ msgstr " dni"
+
+#~ msgid "Show These Upcoming Events From Your Calendar"
+#~ msgstr "Pokaži te prihajajoče dogodke s koledarja"
+
+#~ msgid ""
+#~ "Show birthdays from your calendar when also using the Birthday resource"
+#~ msgstr ""
+#~ "Pokaži rojstne dni s koledarja, tudi ko je v uporabi koledar Rojstni dnevi"
+
+#~ msgid ""
+#~ "Enable this option to include birthdays from your calendar in the "
+#~ "upcoming events summary. This option is only available if you are using "
+#~ "the Birthdays resource in your calendar."
+#~ msgstr ""
+#~ "Omogočite to možnost, da v povzetek prihajajočih dogodkov vključite tudi "
+#~ "rojstne dni s koledarja. Ta možnost je na voljo samo, če uporabljate "
+#~ "koledar Rojstni dnevi."
+
+#~ msgid "Show &birthdays"
+#~ msgstr "Pokaži ro&jstne dneve"
+
+#~ msgid ""
+#~ "Shows anniversaries from your calendar when using the Birthdays resource"
+#~ msgstr "Pokaži obletnice s koledarja, ko je v uporabi koledar Rojstni dnevi"
+
+#~ msgid ""
+#~ "Enable this option to include anniversaries from your calendar in the "
+#~ "upcoming events summary. This option is only available if you are using "
+#~ "the Birthdays resource in your calendar."
+#~ msgstr ""
+#~ "Omogočite to možnost, da v povzetek prihajajočih dogodkov vključite tudi "
+#~ "obletnice s koledarja. Ta možnost je na voljo samo, če uporabljate "
+#~ "koledar Rojstni dnevi."
+
+#~ msgid "Show &anniversaries"
+#~ msgstr "Pok&aži obletnice"
+
+#~ msgid "Groupware Settings"
+#~ msgstr "Nastavitve skupinskega dela"
+
+#~ msgid "Show events belonging to my calendars only"
+#~ msgstr "Pokaži samo dogodke z mojih koledarjev"
+
+#~ msgid ""
+#~ "Check this box if you want the summary to show events belonging to your "
+#~ "calendars only."
+#~ msgstr ""
+#~ "Označite to polje, če želite, da bodo v povzetku prikazani samo dogodki z "
+#~ "vaših koledarjev."
+
+#~ msgid "Show &my events only"
+#~ msgstr "Pokaži samo &moje dogodke"
+
+#~ msgid "Upcoming Events"
+#~ msgstr "Prihodnji dogodki"
+
+#~ msgid "No upcoming events starting within the next day"
+#~ msgid_plural "No upcoming events starting within the next %1 days"
+#~ msgstr[0] "V naslednjih %1 dneh se ne začne noben dogodek"
+#~ msgstr[1] "V naslednjem %1 dnevu se ne začne noben dogodek"
+#~ msgstr[2] "V naslednjih %1 dneh se ne začne noben dogodek"
+#~ msgstr[3] "V naslednjih %1 dneh se ne začne noben dogodek"
+
+#~ msgid "&Edit Appointment..."
+#~ msgstr "Ur&edi sestanek ..."
+
+#~ msgid "&Delete Appointment"
+#~ msgstr "I&zbriši sestanek"
+
+#~ msgid "Edit Event: \"%1\""
+#~ msgstr "Uredi dogodek: »%1«"
+
+#~ msgctxt "@action:inmenu"
+#~ msgid "New Journal..."
+#~ msgstr "Nov dnevnik ..."
+
+#~ msgctxt "@info:status"
+#~ msgid "Create a new journal"
+#~ msgstr "Ustvari nov dnevnik"
+
+#~ msgctxt "@info:whatsthis"
+#~ msgid ""
+#~ "You will be presented with a dialog where you can create a new journal "
+#~ "entry."
+#~ msgstr ""
+#~ "Pojavilo se bo pogovorno okno, v katerem boste lahko ustvarili nov vnos "
+#~ "dnevnika."
+
+#~ msgctxt "@action:inmenu"
+#~ msgid "Sync Journal"
+#~ msgstr "Uskladi dnevnik"
+
+#~ msgctxt "@info:status"
+#~ msgid "Synchronize groupware journal"
+#~ msgstr "Uskladi dnevnik za skupinsko delo"
+
+#~ msgctxt "@info:whatsthis"
+#~ msgid "Choose this option to synchronize your groupware journal entries."
+#~ msgstr ""
+#~ "Izberite to možnost, da uskladite vnose v dnevniku za skupinsko delo."
+
+#~ msgid " day"
+#~ msgid_plural " days"
+#~ msgstr[0] " dni"
+#~ msgstr[1] " dan"
+#~ msgstr[2] " dneva"
+#~ msgstr[3] " dnevi"
+
+#~ msgid "Upcoming Events Configuration Dialog"
+#~ msgstr "Nastavitveno okno za prihajajoče dogodke"
+
+#~ msgid ""
+#~ "Copyright © 2003–2004 Tobias Koenig\n"
+#~ "Copyright © 2005–2010 Allen Winter"
+#~ msgstr ""
+#~ "Avtorske pravice © 2003–2004 Tobias Koenig\n"
+#~ "Avtorske pravice © 2005–2010 Allen Winter"
+
+#~ msgid "Pending To-dos Configuration Dialog"
+#~ msgstr "Nastavitveno okno za čakajoča opravila"
+
+#~ msgctxt "@action:inmenu"
+#~ msgid "New Event..."
+#~ msgstr "Nov dogodek ..."
+
+#~ msgctxt "@info:status"
+#~ msgid "Create a new event"
+#~ msgstr "Ustvari nov dogodek"
+
+#~ msgctxt "@info:whatsthis"
+#~ msgid ""
+#~ "You will be presented with a dialog where you can create a new event item."
+#~ msgstr ""
+#~ "Pojavilo se bo pogovorno okno, v katerem boste lahko ustvarili nov "
+#~ "dogodek."
+
+#~ msgctxt "@action:inmenu"
+#~ msgid "Sync Calendar"
+#~ msgstr "Uskladi koledar"
+
+#~ msgctxt "@info:status"
+#~ msgid "Synchronize groupware calendar"
+#~ msgstr "Uskladi koledar za skupinsko delo"
+
+#~ msgctxt "@info:whatsthis"
+#~ msgid "Choose this option to synchronize your groupware events."
+#~ msgstr "Izberite to možnost, da uskladite dogodke za skupinsko delo."
+
+#~ msgctxt "@item"
+#~ msgid "Meeting"
+#~ msgstr "Srečanje"
+
+#~ msgctxt "@item"
+#~ msgid "Note: %1"
+#~ msgstr "Sporočilce: %1"
+
+#~ msgctxt "@info"
+#~ msgid "Dropping multiple mails is not supported."
+#~ msgstr "Spuščanje več e-poštnih sporočil ni podprto."
+
+#~ msgctxt "@item"
+#~ msgid ""
+#~ "From: %1\n"
+#~ "To: %2\n"
+#~ "Subject: %3"
+#~ msgstr ""
+#~ "Od: %1\n"
+#~ "Za: %2\n"
+#~ "Zadeva: %3"
+
+#~ msgctxt "@item"
+#~ msgid "Mail: %1"
+#~ msgstr "Pošta: %1"
+
+#~ msgctxt "the appointment is today"
+#~ msgid "Today"
+#~ msgstr "Danes"
+
+#~ msgctxt "the appointment is tomorrow"
+#~ msgid "Tomorrow"
+#~ msgstr "Jutri"
+
+#~ msgid "in 1 day"
+#~ msgid_plural "in %1 days"
+#~ msgstr[0] "v %1 dneh"
+#~ msgstr[1] "v %1 dnevu"
+#~ msgstr[2] "v %1 dneh"
+#~ msgstr[3] "v %1 dneh"
+
+#~ msgctxt "eg. in 1 hour 2 minutes"
+#~ msgid "in "
+#~ msgstr "v "
+
+#~ msgctxt "use abbreviation for hour to keep the text short"
+#~ msgid "1 hr"
+#~ msgid_plural "%1 hrs"
+#~ msgstr[0] "%1 urah"
+#~ msgstr[1] "%1 uri"
+#~ msgstr[2] "%1 urah"
+#~ msgstr[3] "%1 urah"
+
+#~ msgctxt "use abbreviation for minute to keep the text short"
+#~ msgid "1 min"
+#~ msgid_plural "%1 mins"
+#~ msgstr[0] "%1 min"
+#~ msgstr[1] "%1 min"
+#~ msgstr[2] "%1 min"
+#~ msgstr[3] "%1 min"
+
+#~ msgid "now"
+#~ msgstr "sedaj"
+
+#~ msgid "all day"
+#~ msgstr "Ves dan"
+
+#~ msgctxt "Time from - to"
+#~ msgid "%1 - %2"
+#~ msgstr "%1 - %2"
+
+#~ msgctxt "next occurrence"
+#~ msgid "Next: %1"
+#~ msgstr "Naslednja: %1"
+
+#~ msgctxt "@action:inmenu"
+#~ msgid "New To-do..."
+#~ msgstr "Novo opravilo ..."
+
+#~ msgctxt "@info:status"
+#~ msgid "Create a new to-do"
+#~ msgstr "Ustvari novo opravilo"
+
+#~ msgctxt "@info:whatsthis"
+#~ msgid ""
+#~ "You will be presented with a dialog where you can create a new to-do item."
+#~ msgstr ""
+#~ "Pojavilo se bo pogovorno okno, v katerem boste lahko ustvarili novo "
+#~ "opravilo."
+
+#~ msgctxt "@action:inmenu"
+#~ msgid "Sync To-do List"
+#~ msgstr "Uskladi seznam opravil"
+
+#~ msgctxt "@info:status"
+#~ msgid "Synchronize groupware to-do list"
+#~ msgstr "Uskladi seznam opravil za skupinsko delo"
+
+#~ msgctxt "@info:whatsthis"
+#~ msgid "Choose this option to synchronize your groupware to-do list."
+#~ msgstr "Izberite to možnost, da uskladite seznam opravil za skupinsko delo."
+
+#~ msgid "To-do Summary Configuration"
+#~ msgstr "Nastavitev povzetka opravil"
+
+#~ msgid "Show To-dos Due"
+#~ msgstr "Pokaži zapadlost opravil"
+
+#~ msgid "Show To-dos due today only"
+#~ msgstr "Pokaži samo opravila, ki zapadejo danes"
+
+#~ msgid "Check this box if you want to see To-dos due on this date only."
+#~ msgstr ""
+#~ "Označite to polje, če bi radi videli samo opravila, ki zapadejo na ta "
+#~ "datum."
+
+#~ msgid "Show To-dos due within the next month"
+#~ msgstr "Pokaži opravila, ki zapadejo čez manj kot mesec"
+
+#~ msgid ""
+#~ "Check this box if you want to see To-dos that are due sometime during the "
+#~ "next 31 days."
+#~ msgstr ""
+#~ "Označite to polje, če bi radi videli opravila, ki zapadejo v naslednjih "
+#~ "31 dneh."
+
+#~ msgid "Select the days for showing pending To-dos"
+#~ msgstr "Izberite dneve za prikazovanje čakajočih opravil"
+
+#~ msgid ""
+#~ "Check this box if you want specify the number of days in the future for "
+#~ "pending To-dos."
+#~ msgstr ""
+#~ "Označite to polje, če želite določiti število dni v prihodnosti za "
+#~ "čakajoča opravila."
+
+#~ msgid "Set the number of days to show pending To-dos"
+#~ msgstr "Nastavite število dni za prikazovanje čakajočih opravil"
+
+#~ msgid ""
+#~ "Use this spinbox to set the number of days to show pending To-dos up to 1 "
+#~ "year in the future."
+#~ msgstr ""
+#~ "Uporabite to vrtilno polje, da nastavite število dni za prikazovanje "
+#~ "čakajočih opravil, ki so lahko največ eno leto v prihodnosti."
+
+#~ msgid "Hide Following To-do Types"
+#~ msgstr "Skrij naslednje vrste opravil"
+
+#~ msgid "Hide completed To-dos"
+#~ msgstr "Skrij zaključena opravila"
+
+#~ msgid ""
+#~ "Check this box if you do not want to see To-dos that have already been "
+#~ "completed."
+#~ msgstr ""
+#~ "Označite to polje, če ne želite videti opravil, ki so že bila zaključena."
+
+#~ msgid "&Completed"
+#~ msgstr "&Zaključena"
+
+#~ msgid "Hide To-dos without a due date"
+#~ msgstr "Skrij opravila brez datuma zapadlosti"
+
+#~ msgid "Check this box if you do not want to see open-ended To-dos."
+#~ msgstr ""
+#~ "Označite to polje, če ne želite videti opravil, ki nimajo določenega "
+#~ "konca."
+
+#~ msgid "&Open-ended (no due date)"
+#~ msgstr "&Brez zapadlosti"
+
+#~ msgid "Hide unstarted To-dos"
+#~ msgstr "Skrij nezačeta opravila"
+
+#~ msgid ""
+#~ "Check this box if you do not want to see To-dos with a start date in the "
+#~ "future."
+#~ msgstr ""
+#~ "Označite to polje, če ne želite videti opravil, ki imajo datum začetka v "
+#~ "prihodnosti."
+
+#~ msgid "&Unstarted (start date is in the future)"
+#~ msgstr "&Nezačeta (začetni datum v prihodnosti)"
+
+#~ msgid "Hide in-progress To-dos"
+#~ msgstr "Skrij opravila, ki tečejo"
+
+#~ msgid ""
+#~ "Check this box if you do not want to see To-dos that have been started "
+#~ "but are not yet completed."
+#~ msgstr ""
+#~ "Označite to polje, če ne želite videti opravil, ki so bila začeta, a še "
+#~ "niso zaključena."
+
+#~ msgid "&In-progress (started but not completed)"
+#~ msgstr "&V teku (pričeta, a ne zaključena)"
+
+#~ msgid "Hide overdue To-dos"
+#~ msgstr "Skrij potekla opravila"
+
+#~ msgid ""
+#~ "Check this box if you do not want to see To-dos that are past their due "
+#~ "date but have not yet been completed."
+#~ msgstr ""
+#~ "Označite to polje, če ne želite videti opravil, ki so prek datuma "
+#~ "zapadlosti, a še niso bila zaključena."
+
+#~ msgid "Over&due (not completed and beyond due-date)"
+#~ msgstr "&Potekla (prek datuma zapadlosti, a še ne zaključena)"
+
+#~ msgid "Show To-dos belonging to my calendars only"
+#~ msgstr "Pokaži samo opravila z mojih koledarjev"
+
+#~ msgid ""
+#~ "Check this box if you want the summary to show To-dos belonging to your "
+#~ "calendars only."
+#~ msgstr ""
+#~ "Označite to polje, če želite, da bodo v povzetku prikazana samo opravila "
+#~ "z vaših koledarjev."
+
+#~ msgid "Show &my To-dos only"
+#~ msgstr "Pokaži samo &moja opravila"
+
+#~ msgid "Pending To-dos"
+#~ msgstr "Čakajoča opravila"
+
+#~ msgctxt "the to-do is due today"
+#~ msgid "Today"
+#~ msgstr "Danes"
+
+#~ msgctxt "the to-do is due tomorrow"
+#~ msgid "Tomorrow"
+#~ msgstr "Jutri"
+
+#~ msgid "1 day ago"
+#~ msgid_plural "%1 days ago"
+#~ msgstr[0] "pred %1 dnevi"
+#~ msgstr[1] "pred %1 dnevom"
+#~ msgstr[2] "pred %1 dnevoma"
+#~ msgstr[3] "pred %1 dnevi"
+
+#~ msgctxt "the to-do is due"
+#~ msgid "due"
+#~ msgstr "zapade"
+
+#~ msgid "No pending to-dos due within the next day"
+#~ msgid_plural "No pending to-dos due within the next %1 days"
+#~ msgstr[0] "V naslednjih %1 dneh ne zapade nobeno čakajoče opravilo"
+#~ msgstr[1] "V naslednjem %1 dnevu ne zapade nobeno čakajoče opravilo"
+#~ msgstr[2] "V naslednjih %1 dneh ne zapade nobeno čakajoče opravilo"
+#~ msgstr[3] "V naslednjih %1 dneh ne zapade nobeno čakajoče opravilo"
+
+#~ msgid "&Mark To-do Completed"
+#~ msgstr "&Označi opravilo kot zaključeno"
+
+#~ msgid "Edit To-do: \"%1\""
+#~ msgstr "Uredi opravilo: »%1«"
+
+#~ msgid "open-ended"
+#~ msgstr "brez zapadlosti"
+
+#~ msgctxt "the to-do is overdue"
+#~ msgid "overdue"
+#~ msgstr "zapadlo"
+
+#~ msgctxt "the to-do starts today"
+#~ msgid "starts today"
+#~ msgstr "se začne danes"
+
+#~ msgctxt "the to-do has not been started yet"
+#~ msgid "not-started"
+#~ msgstr "ni začeto"
+
+#~ msgctxt "the to-do is completed"
+#~ msgid "completed"
+#~ msgstr "zaključeno"
+
+#~ msgctxt "the to-do is in-progress"
+#~ msgid "in-progress "
+#~ msgstr "v teku "
+
+#~ msgctxt "Separator for status like this: overdue, completed"
+#~ msgid ","
+#~ msgstr ", "
+
+#~ msgid "Upcoming Special Dates Configuration Dialog"
+#~ msgstr "Nastavitveno okno za posebne prihajajoče datume"
+
+#~ msgid ""
+#~ "Copyright © 2004 Tobias Koenig\n"
+#~ "Copyright © 2004–2010 Allen Winter"
+#~ msgstr ""
+#~ "Avtorske pravice © 2004 Tobias Koenig\n"
+#~ "Avtorske pravice © 2004–2010 Allen Winter"
+
+#~ msgid "Special Dates Summary Configuration"
+#~ msgstr "Nastavitev povzetka posebnih datumov"
+
+#~ msgid "Show Special Dates Starting"
+#~ msgstr "Pokaži posebne datume, ki se začnejo"
+
+#~ msgid "Show special occasions for today only"
+#~ msgstr "Pokaži samo posebne priložnosti za danes"
+
+#~ msgid ""
+#~ "Check this box if you want to see special occasions occurring on this "
+#~ "date only."
+#~ msgstr ""
+#~ "Označite to polje, če bi radi videli samo posebne priložnosti, ki se "
+#~ "zgodijo na ta datum."
+
+#~ msgid "Show special occasions starting within the next month"
+#~ msgstr "Pokaži posebne priložnosti, ki se začnejo čez manj kot mesec"
+
+#~ msgid ""
+#~ "Check this box if you want to see special occasions that start sometime "
+#~ "during the next 31 days."
+#~ msgstr ""
+#~ "Označite to polje, če bi radi videli posebne priložnosti, ki se začnejo v "
+#~ "naslednjih 31 dneh."
+
+#~ msgid "Select the days for showing upcoming special occasions"
+#~ msgstr "Izberite dneve za prikazovanje prihajajočih posebnih priložnosti"
+
+#~ msgid ""
+#~ "Check this box if you want to specify the number of days in the future "
+#~ "for upcoming special occasions."
+#~ msgstr ""
+#~ "Označite to polje, če želite določiti število dni v prihodnosti za "
+#~ "prihajajoče posebne priložnosti."
+
+#~ msgid "Set the number of days to show upcoming special occasions"
+#~ msgstr ""
+#~ "Nastavite število dni za prikazovanje prihajajočih posebnih priložnosti"
+
+#~ msgid ""
+#~ "Use this spinbox to set the number of days to show upcoming special "
+#~ "occasions up to one year in the future."
+#~ msgstr ""
+#~ "Uporabite to vrtilno polje, da nastavite število dni za prikazovanje "
+#~ "prihajajočih posebnih priložnosti, ki so lahko največ eno leto v "
+#~ "prihodnosti."
+
+#~ msgid "Show These Special Dates From Your Calendar"
+#~ msgstr "Pokaži te posebne datume s koledarja"
+
+#~ msgid "Show birthdays from your calendar"
+#~ msgstr "Pokaži rojstne dni z mojega koledarja"
+
+#~ msgid ""
+#~ "Enable this option to include birthdays from your calendar in the "
+#~ "upcoming special occasions summary. Typically, these are events with the "
+#~ "\"Birthday\" category."
+#~ msgstr ""
+#~ "Omogočite to možnost, da v povzetek prihajajočih posebnih priložnosti "
+#~ "vključite tudi rojstne dni s koledarja. Običajno so to dogodki, ki so v "
+#~ "kategoriji »Rojstni dan«."
+
+#~ msgid "Show anniversaries from your calendar"
+#~ msgstr "Pokaži obletnice s koledarja"
+
+#~ msgid ""
+#~ "Enable this option to include anniversaries from your calendar in the "
+#~ "upcoming special occasions summary. Typically, these are events with the "
+#~ "\"Anniversary\" category."
+#~ msgstr ""
+#~ "Omogočite to možnost, da v povzetek prihajajočih posebnih priložnosti "
+#~ "vključite tudi obletnice s koledarja. Običajno so to dogodki, ki so v "
+#~ "kategoriji »Obletnica«."
+
+#~ msgid "Show holidays from your calendar"
+#~ msgstr "Pokaži praznike z mojega koledarja"
+
+#~ msgid ""
+#~ "Enable this option to include holidays from your calendar in the upcoming "
+#~ "special occasions summary. These are events from your configured holiday "
+#~ "region, or events with the \"Holiday\" category."
+#~ msgstr ""
+#~ "Omogočite to možnost, da v povzetek prihajajočih posebnih priložnosti "
+#~ "vključite tudi praznike s koledarja. To so dogodki iz nastavljenega "
+#~ "prazničnega območja, ali pa dogodki v kategoriji »Praznik«."
+
+#~ msgid "Show &holidays"
+#~ msgstr "Pokaži pra&znike"
+
+#~ msgid "Show special occasions from your calendar"
+#~ msgstr "Pokaži posebne priložnosti s koledarja"
+
+#~ msgid ""
+#~ "Enable this option to include events from your calendar with the "
+#~ "\"special occasion\" category."
+#~ msgstr ""
+#~ "Omogočite to možnost, da vključite dogodke s koledarja, ki imajo "
+#~ "kategorijo »posebna priložnost«."
+
+#~ msgid "Show s&pecial occasions"
+#~ msgstr "Pokaži &posebne priložnosti"
+
+#~ msgid "Show These Special Dates From Your Contact List"
+#~ msgstr "Pokaži te posebne datume s seznama stikov"
+
+#~ msgid "Show birthdays from your address book"
+#~ msgstr "Pokaži rojstne dni iz mojega imenika"
+
+#~ msgid ""
+#~ "Enable this option to include birthdays from your address book in the "
+#~ "upcoming special occasions summary."
+#~ msgstr ""
+#~ "Omogočite to možnost, da v povzetek prihajajočih posebnih priložnosti "
+#~ "vključite tudi rojstne dni iz imenika."
+
+#~ msgid "Show birth&days"
+#~ msgstr "Pokaži rojs&tne dneve"
+
+#~ msgid "Show anniversaries from your address book"
+#~ msgstr "Pokaži obletnice iz mojega imenika"
+
+#~ msgid ""
+#~ "Enable this option to include anniversaries from your address book in the "
+#~ "upcoming special occasions summary."
+#~ msgstr ""
+#~ "Omogočite to možnost, da v povzetek prihajajočih posebnih priložnosti "
+#~ "vključite tudi obletnice iz imenika."
+
+#~ msgid "Show anni&versaries"
+#~ msgstr "Pokaži o&bletnice"
+
+#~ msgid "Upcoming Special Dates"
+#~ msgstr "Posebni prihodnji datumi"
+
+#~ msgctxt "the special day is today"
+#~ msgid "Today"
+#~ msgstr "Danes"
+
+#~ msgctxt "the special day is tomorrow"
+#~ msgid "Tomorrow"
+#~ msgstr "Jutri"
+
+#~ msgid "Birthday"
+#~ msgstr "Rojstni dan"
+
+#~ msgid "Anniversary"
+#~ msgstr "Obletnica"
+
+#~ msgid "Holiday"
+#~ msgstr "Praznik"
+
+#~ msgid "Special Occasion"
+#~ msgstr "Posebna priložnost"
+
+#~ msgid "one year"
+#~ msgid_plural "%1 years"
+#~ msgstr[0] "%1 let"
+#~ msgstr[1] "%1 leto"
+#~ msgstr[2] "%1 leti"
+#~ msgstr[3] "%1 leta"
+
+#~ msgid "No special dates within the next 1 day"
+#~ msgid_plural "No special dates pending within the next %1 days"
+#~ msgstr[0] "Naslednjih %1 dni ni posebnih datumov"
+#~ msgstr[1] "Naslednji %1 dan ni posebnih datumov"
+#~ msgstr[2] "Naslednja %1 dni ni posebnih datumov"
+#~ msgstr[3] "Naslednje %1 dni ni posebnih datumov"
+
+#~ msgid "Send &Mail"
+#~ msgstr "Pošl&ji pošto"
+
+#~ msgid "View &Contact"
+#~ msgstr "Poglej sti&k"
+
+#~ msgid "Mail to:\"%1\""
+#~ msgstr "Pošlji e-pošto za: »%1«"
+
+#~ msgid "Special Dates Summary"
+#~ msgstr "Povzetek posebnih datumov"
+
+#~ msgid "Kontact Special Dates Summary"
+#~ msgstr "Povzetek posebnih datumov za Kontact"
+
+#~ msgid ""
+#~ "Copyright © 2003 Tobias Koenig\n"
+#~ "Copyright © 2004–2010 Allen Winter"
+#~ msgstr ""
+#~ "Avtorske pravice © 2003 Tobias Koenig\n"
+#~ "Avtorske pravice © 2004–2010 Allen Winter"
+
+#~ msgid "Current Maintainer"
+#~ msgstr "Trenutni vzdrževalec"
+
+#~ msgid "Calendar"
+#~ msgstr "Koledar"
+
+#~ msgid "New Calendar"
+#~ msgstr "Nov koledar"
+
+#~ msgctxt "the calendar is read-only"
+#~ msgid "read-only"
+#~ msgstr "samo za branje"
+
+#~ msgid "Import the specified files as separate calendars"
+#~ msgstr "Navedene datoteke uvozi kot ločene koledarje"
+
+#~ msgid "Merge the specified files into an existing calendar"
+#~ msgstr "Navedene datoteke združi z obstoječim koledarjem"
+
+#~ msgid ""
+#~ "Calendar files or urls. Unless -i or -m is explicitly specified, the user "
+#~ "will be asked whether to import or merge"
+#~ msgstr ""
+#~ "Koledarske datoteke ali naslovi URL. Če -i ali -m nista izrecno podana, "
+#~ "bo uporabnik vprašan ali želi uvoz ali združitev"
+
+#~ msgid "Merged calendar"
+#~ msgstr "Združen koledar"
+
+#~ msgid "Calendars Side by Side"
+#~ msgstr "Koledar ob koledarju"
+
+#~ msgid ""
+#~ "Unable to display the work week since there are no work days configured. "
+#~ "Please properly configure at least 1 work day in the Time and Date "
+#~ "preferences."
+#~ msgstr ""
+#~ "Delovnega tedna ni mogoče prikazati, ker delovni dnevi niso nastavljeni. "
+#~ "V nastavitvah časa in datuma nastavite vsaj en delovni dan."
+
+#~ msgctxt "Default export file"
+#~ msgid "calendar.html"
+#~ msgstr "koledar.html"
+
+#~ msgctxt "@title:tab personal settings"
+#~ msgid "Personal"
+#~ msgstr "Osebno"
+
+#~ msgctxt "@title:group email settings"
+#~ msgid "Email Settings"
+#~ msgstr "Nastavitve e-pošte"
+
+#~ msgctxt "@title:tab"
+#~ msgid "Save"
+#~ msgstr "Shrani"
+
+#~ msgctxt "@title:group"
+#~ msgid "Exporting Calendar"
+#~ msgstr "Izvažanje koledarja"
+
+#~ msgctxt "@title:tab systray settings"
+#~ msgid "System Tray"
+#~ msgstr "Sistemska vrstica"
+
+#~ msgctxt "@title:group"
+#~ msgid "Show/Hide Options"
+#~ msgstr "Možnosti prikaza"
+
+#~ msgctxt "@info:tooltip"
+#~ msgid ""
+#~ "Enable this setting to show the KOrganizer reminder daemon in your system "
+#~ "tray (recommended)."
+#~ msgstr ""
+#~ "Omogočite to nastavitev, da bo v sistemski vrstici prikazana ikona "
+#~ "KOrganizerjevega ozadnjega programa za opomnike (priporočeno)."
+
+#~ msgctxt "@info"
+#~ msgid ""
+#~ "<note>The daemon will continue running even if it is not shown in the "
+#~ "system tray.</note>"
+#~ msgstr ""
+#~ "<note>Ozadnji program bo tekel četudi ikona v sistemski vrstici ni "
+#~ "prikazana.</note>"
+
+#~ msgctxt "@title:tab calendar account settings"
+#~ msgid "Calendars"
+#~ msgstr "Koledarji"
+
+#~ msgctxt "@title:tab"
+#~ msgid "Regional"
+#~ msgstr "Območno"
+
+#~ msgctxt "@title:group"
+#~ msgid "General Time and Date"
+#~ msgstr "Čas in datum - splošno"
+
+#~ msgctxt "@title:group"
+#~ msgid "Holidays"
+#~ msgstr "Prazniki"
+
+#~ msgctxt "@label"
+#~ msgid "Use holiday region:"
+#~ msgstr "Uporabi praznike za območje:"
+
+#~ msgctxt "Holday region, region language"
+#~ msgid "%1 (%2)"
+#~ msgstr "%1 (%2)"
+
+#~ msgctxt "No holiday region"
+#~ msgid "None"
+#~ msgstr "Brez"
+
+#~ msgctxt "@title:group"
+#~ msgid "Working Period"
+#~ msgstr "Delovno obdobje"
+
+#~ msgctxt "@info:whatsthis"
+#~ msgid ""
+#~ "Check this box to make KOrganizer mark the working hours for this day of "
+#~ "the week. If this is a work day for you, check this box, or the working "
+#~ "hours will not be marked with color."
+#~ msgstr ""
+#~ "Označite to polje, če želite, da KOrganizer označi delovne ure za ta dan "
+#~ "v tednu. Če je to vaš delovni dan, označite to polje. V nasprotnem "
+#~ "primeru delovne ure ne bodo označene s posebno barvo."
+
+#~ msgctxt "@title:tab"
+#~ msgid "Default Values"
+#~ msgstr "Privzete vrednosti"
+
+#~ msgctxt "@title:group"
+#~ msgid "Appointments"
+#~ msgstr "Sestanki"
+
+#~ msgctxt "@title:group"
+#~ msgid "Reminders"
+#~ msgstr "Opomniki"
+
+#~ msgctxt "@label"
+#~ msgid "Default reminder time:"
+#~ msgstr "Privzeti čas opomnika:"
+
+#~ msgctxt "@item:inlistbox reminder units in minutes"
+#~ msgid "minute(s)"
+#~ msgstr "minut"
+
+#~ msgctxt "@item:inlistbox reminder time units in hours"
+#~ msgid "hour(s)"
+#~ msgstr "ur"
+
+#~ msgctxt "@item:inlistbox reminder time units in days"
+#~ msgid "day(s)"
+#~ msgstr "dni"
+
+#~ msgid ""
+#~ "*.ogg *.wav *.mp3 *.wma *.flac *.aiff *.raw *.au *.ra|Audio Files (*.ogg "
+#~ "*.wav *.mp3 *.wma *.flac *.aiff *.raw *.au *.ra)"
+#~ msgstr ""
+#~ "*.ogg *.wav *.mp3 *.wma *.flac *.aiff *.raw *.au *.ra|Zvočne datoteke (*."
+#~ "ogg *.wav *.mp3 *.wma *.flac *.aiff *.raw *.au *.ra)"
+
+#~ msgctxt "@title:tab general settings"
+#~ msgid "General"
+#~ msgstr "Splošno"
+
+#~ msgctxt "@title:group"
+#~ msgid "Display Options"
+#~ msgstr "Možnosti prikaza"
+
+#~ msgctxt "@label suffix in the N days spin box"
+#~ msgid " days"
+#~ msgstr " dni"
+
+#~ msgctxt "@title:group"
+#~ msgid "Date Navigator"
+#~ msgstr "Krmar po datumih"
+
+#~ msgctxt "@title:tab"
+#~ msgid "Agenda View"
+#~ msgstr "Prikaz dnevnega reda"
+
+#~ msgctxt "@label suffix in the hour size spin box"
+#~ msgid " pixels"
+#~ msgstr " sl. točk"
+
+#~ msgctxt "@title:tab"
+#~ msgid "Month View"
+#~ msgstr "Mesečni prikaz"
+
+#~ msgctxt "@title:tab"
+#~ msgid "Todo View"
+#~ msgstr "Prikaz opravil"
+
+#~ msgctxt "@title:group"
+#~ msgid "Other Options"
+#~ msgstr "Druge možnosti"
+
+#~ msgctxt "@title:tab"
+#~ msgid "Colors"
+#~ msgstr "Barve"
+
+#~ msgctxt "@title:group"
+#~ msgid "Categories"
+#~ msgstr "Kategorije"
+
+#~ msgctxt "@info:whatsthis"
+#~ msgid ""
+#~ "Select here the event category you want to modify. You can change the "
+#~ "selected category color using the button below."
+#~ msgstr ""
+#~ "Izberite kategorijo dogodkov, ki jo želite spremeniti. Barvo za izbrano "
+#~ "kategorijo lahko spremenite z uporabo spodnjega gumba."
+
+#~ msgctxt "@info:whatsthis"
+#~ msgid ""
+#~ "Choose here the color of the event category selected using the combo box "
+#~ "above."
+#~ msgstr ""
+#~ "Tu lahko izberete barvo za kategorijo dogodkov, ki je izbrana v zgornjem "
+#~ "spustnem polju."
+
+#~ msgctxt "@title:group"
+#~ msgid "Resources"
+#~ msgstr "Viri"
+
+#~ msgctxt "@info:whatsthis"
+#~ msgid ""
+#~ "Select the calendar you want to modify. You can change the selected "
+#~ "calendar color using the button below."
+#~ msgstr ""
+#~ "Izberite koledar, ki ga želite spremeniti. Barvo izbranega koledarja "
+#~ "lahko spremenite z uporabo spodnjega gumba."
+
+#~ msgctxt "@info:whatsthis"
+#~ msgid ""
+#~ "Choose here the color of the calendar selected using the combo box above."
+#~ msgstr ""
+#~ "Tu lahko izberete barvo za koledar, ki je izbran v zgornjem spustnem "
+#~ "polju."
+
+#~ msgctxt "@title:tab"
+#~ msgid "Fonts"
+#~ msgstr "Pisave"
+
+#~ msgctxt "@label"
+#~ msgid "Event text"
+#~ msgstr "Besedilo dogodka"
+
+#~ msgctxt "@label"
+#~ msgid "Mail transport:"
+#~ msgstr "Prenos pošte:"
+
+#~ msgctxt "@title:column plugin name"
+#~ msgid "Name"
+#~ msgstr "Ime"
+
+#~ msgctxt "@action:button"
+#~ msgid "Configure &Plugin..."
+#~ msgstr "Nastavi &vstavek ..."
+
+#~ msgctxt "@info:whatsthis"
+#~ msgid ""
+#~ "This button allows you to configure the plugin that you have selected in "
+#~ "the list above"
+#~ msgstr ""
+#~ "S tem gumbom lahko nastavite vstavek, ki ste ga izbrali v gornjem seznamu."
+
+#~ msgctxt "@title:group"
+#~ msgid "Position"
+#~ msgstr "Položaj"
+
+#~ msgctxt "@option:check"
+#~ msgid "Show at the top of the agenda views"
+#~ msgstr "Pokaži na vrhu prikazov dnevnega reda"
+
+#~ msgctxt "@option:check"
+#~ msgid "Show at the bottom of the agenda views"
+#~ msgstr "Pokaži na dnu prikazov dnevnega reda"
+
+#~ msgctxt "@title:group"
+#~ msgid "Calendar Decorations"
+#~ msgstr "Okraski koledarja"
+
+#~ msgctxt "@title:group"
+#~ msgid "Other Plugins"
+#~ msgstr "Drugi vstavki"
+
+#~ msgctxt "@info"
+#~ msgid "Unable to configure this plugin"
+#~ msgstr "Tega vstavka ni mogoče nastaviti"
+
+#~ msgid "Full name of the calendar owner"
+#~ msgstr "Polno ime lastnika koledarja"
+
+#~ msgid "The full name of the calendar owner for the export"
+#~ msgstr "Polno ime lastnika koledarja za izvoz"
+
+#~ msgid "Enter the full name to print for the owner of the calendar."
+#~ msgstr "Vnesite polno ime, ki bo izpisano za lastnika koledarja."
+
+#~ msgid "Email of the calendar owner"
+#~ msgstr "E-pošta lastnika koledarja"
+
+#~ msgid "The email address of the calendar owner for the export"
+#~ msgstr "E-poštni naslov lastnika koledarja za izvoz"
+
+#~ msgid "Enter the email address to print for the owner of the calendar."
+#~ msgstr "Vnesite e-poštni naslov, ki bo izpisan za lastnika koledarja."
+
+#~ msgid "Creator application"
+#~ msgstr "Ustvarjalnik"
+
+#~ msgid "Creator application of the calendar"
+#~ msgstr "Program, ki je ustvaril koledar"
+
+#~ msgid "Enter a creator application of the calendar, for example KOrganizer."
+#~ msgstr "Vnesite program, ki je ustvaril koledar, na primer KOrganizer."
+
+#~ msgid "Creator URL"
+#~ msgstr "Naslov URL ustvarjalnika"
+
+#~ msgid "URL of the creator application of the calendar."
+#~ msgstr "Naslov URL programa, ki je ustvaril koledar."
+
+#~ msgid ""
+#~ "Enter the URL of the creator application of the calendar, for example "
+#~ "http://userbase.kde.org/KOrganizer"
+#~ msgstr ""
+#~ "Vnesite naslov URL programa, ki je ustvaril koledar, na primer http://"
+#~ "userbase.kde.org/KOrganizer"
+
+#~ msgid "Page Title"
+#~ msgstr "Naslov strani"
+
+#~ msgid "The title of the exported page"
+#~ msgstr "Naslov izvožene strani"
+
+#~ msgid "Enter a title for the HTML page."
+#~ msgstr "Vnesite naslov strani HTML."
+
+#~ msgid "Date start"
+#~ msgstr "Začetni datum"
+
+#~ msgid "First day of the range to export"
+#~ msgstr "Prvi dan obdobja za izvoz"
+
+#~ msgid "First day of the range that shall be exported to HTML."
+#~ msgstr "Prvi dan obdobja, ki naj bo izvoženo v HTML."
+
+#~ msgid "Date end"
+#~ msgstr "Končni datum"
+
+#~ msgid "Last day of the range to export"
+#~ msgstr "Zadnji dan obdobja za izvoz"
+
+#~ msgid "Last day of the range that shall be exported to HTML."
+#~ msgstr "Zadnji dan obdobja, ki naj bo izvoženo v HTML."
+
+#~ msgid "Output filename"
+#~ msgstr "Izhodna datoteka"
+
+#~ msgid "The file name for the export"
+#~ msgstr "Ime datoteke za izvoz"
+
+#~ msgid "The output file name for the HTML export."
+#~ msgstr "Ime izhodne datoteke za izvoz v HTML."
+
+#~ msgid "Style sheet"
+#~ msgstr "Slogovna predloga"
+
+#~ msgid "CSS style sheet to use by the final HTML page"
+#~ msgstr "Slogovna predloga CSS, ki jo bo uporabljala končna stran HTML"
+
+#~ msgid ""
+#~ "CSS style sheet to be used by the final HTML page. This string contains "
+#~ "the actual contents of the CSS, not a path to the style sheet."
+#~ msgstr ""
+#~ "Slogovna predloga CSS, ki bo uporabljena v končni strani HTML. Ta niz "
+#~ "vsebuje dejansko vsebino predloge CSS, ne pa poti do slogovne predloge."
+
+#~ msgid "Exclude private incidences from the export"
+#~ msgstr "Izloči zasebne pojavitve iz izvoza"
+
+#~ msgid "Exclude private items from the export"
+#~ msgstr "Izloči zasebne predmete iz izvoza"
+
+#~ msgid "Check this box if you do NOT want to export your private items."
+#~ msgstr "Označite to polje, če NE želite izvoziti svojih zasebnih predmetov."
+
+#~ msgid "Exclude confidential incidences from the export"
+#~ msgstr "Izloči zaupne pojavitve iz izvoza"
+
+#~ msgid "Exclude confidential items from the export"
+#~ msgstr "Izloči zaupne predmete iz izvoza"
+
+#~ msgid "Check this box if you do NOT want to export your confidential items."
+#~ msgstr "Označite to polje, če NE želite izvoziti svojih zaupnih predmetov."
+
+#~ msgid "Export events as list"
+#~ msgstr "Izvozi dogodke kot seznam"
+
+#~ msgid "Export events as a list"
+#~ msgstr "Izvozi dogodke kot seznam"
+
+#~ msgid "Check this box if you want your events shown as a list."
+#~ msgstr "Označite to polje, če želite dogodke prikazati v obliki seznama."
+
+#~ msgid "Export in month view"
+#~ msgstr "Izvozi v mesečni prikaz"
+
+#~ msgid "Export events in a month view"
+#~ msgstr "Izvozi dogodke v mesečni prikaz"
+
+#~ msgid "Check this box if you want your events shown in a month view."
+#~ msgstr ""
+#~ "Označite to polje, če želite dogodke prikazati v obliki mesečnega prikaza."
+
+#~ msgid "Export in week view"
+#~ msgstr "Izvozi v tedenski prikaz"
+
+#~ msgid "Export events in a week view"
+#~ msgstr "Izvozi dogodke v tedenski prikaz"
+
+#~ msgid "Check this box if you want your events shown in a week view."
+#~ msgstr ""
+#~ "Označite to polje, če želite dogodke prikazati v obliki tedenskega "
+#~ "prikaza."
+
+#~ msgid "Title of the calendar"
+#~ msgstr "Naslov koledarja"
+
+#~ msgid "Title for the event calendar"
+#~ msgstr "Naslov koledarja dogodkov"
+
+#~ msgid "Enter a string to use for the title of the event calendar."
+#~ msgstr "Vnesite niz, ki bo uporabljen kot naslov koledarja dogodkov."
+
+#~ msgid "Export location of the events"
+#~ msgstr "Izvozi mesto dogodkov"
+
+#~ msgid "Include the event locations"
+#~ msgstr "Vključi mesta dogodkov"
+
+#~ msgid ""
+#~ "Check this box if you want the event locations to be exported, only if "
+#~ "the event has a location."
+#~ msgstr "Označite to polje, če želite izvoziti tudi mesta dogodkov."
+
+#~ msgid "Export categories of the events"
+#~ msgstr "Izvozi kategorije dogodkov"
+
+#~ msgid "Include the event categories"
+#~ msgstr "Vključi kategorije dogodkov"
+
+#~ msgid "Check this box if you want the event categories to be exported."
+#~ msgstr "Označite to polje, če želite izvoziti tudi kategorije dogodkov."
+
+#~ msgid "Export attendees of the events"
+#~ msgstr "Izvozi udeležence dogodkov"
+
+#~ msgid "Include the event attendees"
+#~ msgstr "Vključi udeležence dogodkov"
+
+#~ msgid "Check this box if you want the event attendees to be exported."
+#~ msgstr "Označite to polje, če želite izvoziti tudi udeležence dogodkov."
+
+#~ msgid "Export to-do list"
+#~ msgstr "Izvozi seznam opravil"
+
+#~ msgid "Export the to-do list"
+#~ msgstr "Izvozi seznam opravil"
+
+#~ msgid ""
+#~ "Check this box if you want your to-do list to also be exported to the "
+#~ "HTML."
+#~ msgstr ""
+#~ "Označite to polje, če želite, da se v HTML izvozi tudi seznam opravil."
+
+#~ msgid "Title of the to-do list"
+#~ msgstr "Naslov seznama opravil"
+
+#~ msgid "To-do List"
+#~ msgstr "Seznam opravil"
+
+#~ msgid "Title for the to-do list"
+#~ msgstr "Naslov seznama opravil"
+
+#~ msgid "Enter a string to use for the title of the to-do list."
+#~ msgstr "Vnesite niz, ki bo uporabljen kot naslov seznama opravil."
+
+#~ msgid "Export due dates of the to-dos"
+#~ msgstr "Izvozi datume zapadlosti opravil"
+
+#~ msgid "Include to-do due dates"
+#~ msgstr "Vključi datume zapadlosti opravil"
+
+#~ msgid ""
+#~ "Check this box if you want the to-do list due dates to be exported, if "
+#~ "the to-do does have a due date."
+#~ msgstr ""
+#~ "Označite to polje, če želite izvoziti tudi datume zapadlosti opravil."
+
+#~ msgid "Export location of the to-dos"
+#~ msgstr "Izvozi mesta opravil"
+
+#~ msgid "Include the to-do locations"
+#~ msgstr "Vključi mesta opravil"
+
+#~ msgid ""
+#~ "Check this box if you want the to-do locations to be exported, only if "
+#~ "the to-do has a location."
+#~ msgstr "Označite to polje, če želite izvoziti tudi mesta opravil."
+
+#~ msgid "Export categories of the to-dos"
+#~ msgstr "Izvozi kategorije opravil"
+
+#~ msgid "Include the to-do categories"
+#~ msgstr "Vključi kategorije opravil"
+
+#~ msgid "Check this box if you want the to-do categories to be exported."
+#~ msgstr "Označite to polje, če želite izvoziti tudi kategorije opravil."
+
+#~ msgid "Export attendees of the to-dos"
+#~ msgstr "Izvozi udeležence v opravilih"
+
+#~ msgid "Include the to-do attendees"
+#~ msgstr "Vključi udeležence v opravilih"
+
+#~ msgid "Check this box if you want the to-do attendees to be exported."
+#~ msgstr "Označite to polje, če želite izvoziti tudi udeležence v opravilih."
+
+#~ msgid "Export journals"
+#~ msgstr "Izvozi dnevnike"
+
+#~ msgid "Check this box if you want to export journals as well."
+#~ msgstr "Označite to polje, če želite izvoziti tudi dnevnike."
+
+#~ msgid "Title of the journal list"
+#~ msgstr "Naslov seznama dnevnikov"
+
+#~ msgid "Journals"
+#~ msgstr "Dnevniki"
+
+#~ msgid "Title for the journal list"
+#~ msgstr "Naslov seznama dnevnikov"
+
+#~ msgid "Enter a title for the Journal list, if Journals are exported."
+#~ msgstr "Vnesite naslov za seznam dnevnikov, če so dnevniki izvoženi."
+
+#~ msgid "Export free/busy list"
+#~ msgstr "Izvozi seznam prostosti/zaposlenosti"
+
+#~ msgid "Check this box if you want to export free/busy information as well."
+#~ msgstr ""
+#~ "Označite to polje, če želite izvoziti tudi podatke o prostosti/"
+#~ "zaposlenosti."
+
+#~ msgid "Title of the free/busy list"
+#~ msgstr "Naslov seznama prostosti/zaposlenosti"
+
+#~ msgid "Busy times"
+#~ msgstr "Časi zaposlenosti"
+
+#~ msgid "Title for the free/busy list"
+#~ msgstr "Naslov seznama prostosti/zaposlenosti"
+
+#~ msgid ""
+#~ "Enter a title for the free/busy list, if free/busy times are exported."
+#~ msgstr "Vnesite naslov seznama prostosti/zaposlenosti, če so časi izvoženi."
+
+#~ msgid "Export to HTML periodically"
+#~ msgstr "Redno izvažaj v KHTML"
+
+#~ msgid "Automatically export your calendar to an HTML file"
+#~ msgstr "Samodejno izvozi koledar v datoteko HTML"
+
+#~ msgid ""
+#~ "Check this box to export the calendar to a HTML-file periodically. By "
+#~ "default, this file will be called calendar.html and placed in the user "
+#~ "home folder. You can change the file location by selecting the \"Export "
+#~ "Web page\" option under the \"Export\" menu."
+#~ msgstr ""
+#~ "Označite to polje, da se koledar redno izvaža v datoteko HTML. Privzeto "
+#~ "bo datoteka imenovana koledar.html in shranjena v uporabnikovo domačo "
+#~ "mapo. Mesto datoteke lahko spremenite z izborom možnosti »Izvozi spletno "
+#~ "stran« iz menija »Izvozi«."
+
+#~ msgid "Export &interval in minutes"
+#~ msgstr "Razm&ik med izvažanji v minutah"
+
+#~ msgid "Interval between periodic HTML exports, in minutes"
+#~ msgstr "Čas med rednimi izvažanji datoteke HTML, v minutah"
+
+#~ msgid ""
+#~ "Set the interval between automatic exporting of calendar events in "
+#~ "minutes here."
+#~ msgstr ""
+#~ "Tu nastavite interval (v minutah) med samodejnimi izvozi dogodkov "
+#~ "koledarja."
+
+#~ msgid "Confirm deletes"
+#~ msgstr "Potrdi izbrise"
+
+#~ msgid "Always confirm when deleting items"
+#~ msgstr "Vedno potrdite brisanje predmetov"
+
+#~ msgid "Check this box to display a confirmation dialog when deleting items."
+#~ msgstr ""
+#~ "Označite to polje, da se pred brisanjem predmetov prikaže potrditveno "
+#~ "okno."
+
+#~ msgid "New Events, To-dos and Journal Entries Should"
+#~ msgstr "Novi dogodki, opravila in dnevniški vnosi naj bodo"
+
+#~ msgid "Be added to the standard calendar"
+#~ msgstr "Dodani na standardni koledar"
+
+#~ msgid ""
+#~ "Select this option to always record new events, to-dos and journal "
+#~ "entries using the standard calendar."
+#~ msgstr ""
+#~ "Izberite to možnost, da bo za zapis novih dogodkov, opravil in dnevniških "
+#~ "vnosov vedno uporabljen standardni koledar."
+
+#~ msgid "Be asked which calendar to use"
+#~ msgstr "Želim biti vprašan, kateri koledar naj se uporabi"
+
+#~ msgid ""
+#~ "Select this option to choose the calendar to be used to record the item "
+#~ "each time you create a new event, to-do or journal entry. This choice is "
+#~ "recommended if you intend to use the shared folders functionality of the "
+#~ "Kolab server or have to manage multiple accounts using Kontact as a KDE "
+#~ "Kolab client. "
+#~ msgstr ""
+#~ "Izberite to možnost, da boste ob vsaki ustvaritvi novega dogodka, "
+#~ "opravila ali dnevniškega vnosa za zapis predmeta vprašani o izbiri "
+#~ "koledarja. Ta možnost je priporočena, če nameravate uporabljati deljene "
+#~ "mape strežnika Kolab ali pa s Kontactom, kot odjemalcem za Kolab, "
+#~ "upravljati več računov."
+
+#~ msgid "Show Reminder Daemon in the System Tray"
+#~ msgstr "Pokaži ozadnji program za opomnike v sistemski vrstici"
+
+#~ msgid ""
+#~ "Check this box to show the KOrganizer reminder daemon in the system tray."
+#~ msgstr ""
+#~ "Označite to polje, da bo v sistemski vrstici prikazana ikona "
+#~ "KOrganizerjevega ozadnjega programa za opomnike."
+
+#~ msgid ""
+#~ "Select your timezone from the list of locations on this drop down box. If "
+#~ "your city is not listed, select one which shares the same timezone. "
+#~ "KOrganizer will automatically adjust for daylight savings."
+#~ msgstr ""
+#~ "S spustnega seznama mest izberite svoj časovni pas. Če vašega mesta ni na "
+#~ "seznamu, izberite tistega, ki je v istem časovnem pasu. KOrganizer se bo "
+#~ "samodejno prilagajal glede na veljavnost poletnega časa."
+
+#~ msgid "Day begins at"
+#~ msgstr "Dan se začne ob"
+
+#~ msgid ""
+#~ "Enter the start time for events here. This time should be the earliest "
+#~ "time that you use for events, as it will be displayed at the top."
+#~ msgstr ""
+#~ "Sem vnesite čas začetka za dogodke. Ta čas naj bo najzgodnejši čas, ki ga "
+#~ "še uporabljate za dogodke, saj bo prikazan na vrhu."
+
+#~ msgid "Use holiday region:"
+#~ msgstr "Uporabi praznike za območje:"
+
+#~ msgid ""
+#~ "Select from which region you want to use the holidays here. Defined "
+#~ "holidays are shown as non-working days in the date navigator, the agenda "
+#~ "view, etc."
+#~ msgstr ""
+#~ "Tukaj lahko izberete, praznike katerega območja želite uporabiti. "
+#~ "Določeni prazniki so prikazani kot dela prosti dnevi v krmarju po "
+#~ "datumih, prikazu dnevnega reda itd."
+
+#~ msgid "Daily starting hour"
+#~ msgstr "Ura dnevnega začetka"
+
+#~ msgid ""
+#~ "Enter the start time for the working hours here. The working hours will "
+#~ "be marked with color by KOrganizer."
+#~ msgstr ""
+#~ "Sem vnesite začetni čas za delovne ure. Delovne ure bo KOrganizer označil "
+#~ "z barvo."
+
+#~ msgid "Daily ending hour"
+#~ msgstr "Ura dnevnega konca"
+
+#~ msgid ""
+#~ "Enter the ending time for the working hours here. The working hours will "
+#~ "be marked with color by KOrganizer."
+#~ msgstr ""
+#~ "Sem vnesite končni čas za delovne ure. Delovne ure bo KOrganizer označil "
+#~ "z barvo."
+
+#~ msgid "Exclude holidays"
+#~ msgstr "Izloči praznike"
+
+#~ msgid ""
+#~ "Check this box to prevent KOrganizer from marking the working hours on "
+#~ "holidays."
+#~ msgstr ""
+#~ "Označite to polje, da KOrganizerju na praznike preprečite označevanje "
+#~ "delovnih ur z barvo."
+
+#~ msgid "Color busy days with a different background color"
+#~ msgstr "Dneve, ko sem zaposlen/-a, obarvaj z drugo barvo ozadja"
+
+#~ msgid ""
+#~ "Check this box if you want month view's background to be filled with a "
+#~ "different color on days which have at least one all day event marked as "
+#~ "busy. Also, you can change the background color used for this option on "
+#~ "the Colors configuration page. Look for the \"Busy days background color"
+#~ "\" setting."
+#~ msgstr ""
+#~ "Označite to polje, če želite, da so ozadja dni v mesečnem prikazu, ki "
+#~ "imajo vsaj en celodnevni dogodek, ko sem zaposlen/-a, obarvana z drugo "
+#~ "barvo. Barvo za to možnost lahko spremenite na nastavitveni strani Barve. "
+#~ "Poiščite nastavitev »Barva ozadja dni, ko sem zaposlen/-a«."
+
+#~ msgid "Enable tooltips for displaying summaries"
+#~ msgstr "Omogoči orodne namige za prikaz povzetkov"
+
+#~ msgid ""
+#~ "Check this box to display summary tooltips when hovering the mouse over "
+#~ "an event or a to-do."
+#~ msgstr ""
+#~ "Označite to polje, če želite, da se ob prehodu miškine kazalke čez "
+#~ "dogodek ali opravilo prikaže orodni namig s povzetkom."
+
+#~ msgid "To-dos use category colors"
+#~ msgstr "Opravila uporabljajo barve kategorij"
+
+#~ msgid ""
+#~ "Check this box so that to-dos will use category colors and not colors "
+#~ "specific to their due, due today or overdue state"
+#~ msgstr ""
+#~ "Označite to polje, da bodo opravila uporabljala barve kategorij in ne "
+#~ "barve, ki so odvisne od stopnje zapadlosti."
+
+#~ msgid "Next x days"
+#~ msgstr "Naslednjih nekaj dni"
+
+#~ msgid ""
+#~ "Select the number of \"x\" days to be displayed in the next days view. To "
+#~ "access the next \"x\" days view, choose the \"Next X Days\" menu item "
+#~ "from the \"View\" menu."
+#~ msgstr ""
+#~ "Izberite število dni, ki bodo prikazani v prikazu naslednjih nekaj dni. "
+#~ "Na ta prikaz lahko preklopite z izbiro predmeta »Naslednjih nekaj dni« iz "
+#~ "menija »Pogled«."
+
+#~ msgid "Show this many days at a time in the Next \"x\" days view"
+#~ msgstr "Pokaži toliko dni v prikazu naslednjih nekaj dni"
+
+#~ msgid "Show items that recur daily"
+#~ msgstr "Pokaži vsakodnevne predmete"
+
+#~ msgid ""
+#~ "Check this box to show the days containing daily recurring events in bold "
+#~ "typeface in the Date Navigator, or uncheck it to give more prominence to "
+#~ "other (non daily recurring) events."
+#~ msgstr ""
+#~ "Označite to polje, da bodo v krmarju po datumih dnevi z vsakodnevnimi "
+#~ "predmeti prikazani s krepko pisavo. Odstranite oznako, da bodo drugi (ne "
+#~ "vsakodnevni) predmeti bolj vidni."
+
+#~ msgid "Show items that recur weekly"
+#~ msgstr "Pokaži vsakotedenske predmete"
+
+#~ msgid ""
+#~ "Check this box to show the days containing weekly recurring events in "
+#~ "bold typeface in the Date Navigator, or uncheck it to give more "
+#~ "prominence to other (non weekly recurring) events."
+#~ msgstr ""
+#~ "Označite to polje, da bodo v krmarju po datumih dnevi z vsakotedenskimi "
+#~ "predmeti prikazani s krepko pisavo. Odstranite oznako, da bodo drugi (ne "
+#~ "vsakotedenski) predmeti bolj vidni."
+
+#~ msgid "Show to-dos instead of events when in Todo View"
+#~ msgstr "V prikazu opravil namesto dogodkov pokaži opravila"
+
+#~ msgid ""
+#~ "Check this box to show the days containing to-dos in bold typeface in the "
+#~ "Date Navigator when in to-do view."
+#~ msgstr ""
+#~ "Označite to polje, da bodo v prikazu opravil dnevi z opravili v krmarju "
+#~ "po datumih prikazani s krepko pisavo."
+
+#~ msgid "Show journals instead of events when in Journal View"
+#~ msgstr "V prikazu dnevnikov namesto dogodkov pokaži dnevnike"
+
+#~ msgid ""
+#~ "Check this box to show the days containing journals in bold typeface in "
+#~ "the Date Navigator when in journal view."
+#~ msgstr ""
+#~ "Označite to polje, da bodo v prikazu dnevnikov dnevi z dnevniki v krmarju "
+#~ "po datumih prikazani s krepko pisavo."
+
+#~ msgid "Week numbers select a work week when in work week mode"
+#~ msgstr "Številke tedna v načinu delovnega tedna označijo delovni teden"
+
+#~ msgid ""
+#~ "Check this box to select a working week when clicking on the Date "
+#~ "Navigator's week numbers, or uncheck it to choose the whole week."
+#~ msgstr ""
+#~ "Označite to polje, da se ob kliku na številke tednov v krmarju po datumih "
+#~ "izbere delovni teden. V nasprotnem se izbere celotni teden."
+
+#~ msgid "Hour size"
+#~ msgstr "Velikost ure"
+
+#~ msgid ""
+#~ "Select the height of the hour rows in the agenda grid, in pixels. "
+#~ "Increasing this value will make each row in the agenda grid taller."
+#~ msgstr ""
+#~ "Izberite višino vrstic (v slikovnih točkah) ene ure v mreži z dnevnim "
+#~ "redom. Povečanje te vrednosti bo zvišalo vsako vrstico v mreži z dnevnim "
+#~ "redom."
+
+#~ msgid "Set the height (in pixels) for an hour in the agenda grid"
+#~ msgstr ""
+#~ "Nastavite višino (v slikovnih točkah) ene ure v mreži z dnevnim redom"
+
+#~ msgid "Show icons in agenda view items"
+#~ msgstr "Pokaži ikone v predmetih v prikazu dnevnega reda"
+
+#~ msgid ""
+#~ "Check this box to display icons (alarm, recursion, etc.) in agenda view "
+#~ "items."
+#~ msgstr ""
+#~ "Označite to polje, da bodo v predmetih v prikazu dnevnega reda prikazane "
+#~ "ikone (alarm, ponavljanje, ...)."
+
+#~ msgid "Display icons in agenda view items"
+#~ msgstr "Pokaži ikone v predmetih v prikazu dnevnega reda"
+
+#~ msgid "Show to-dos"
+#~ msgstr "Pokaži opravila"
+
+#~ msgid "Check this box to display to-dos in the agenda view."
+#~ msgstr ""
+#~ "Označite to polje, da bodo v prikazu dnevnega reda prikazana opravila."
+
+#~ msgid "Display to-dos in the agenda view"
+#~ msgstr "Pokaži opravila v prikazu dnevnega reda"
+
+#~ msgid "Show current-time (Marcus Bains) line"
+#~ msgstr "Pokaži črto trenutnega časa (črta Marcusa Bainsa)"
+
+#~ msgid ""
+#~ "Check this box to display a line in the day or week view indicating the "
+#~ "current-time line (Marcus Bains line)."
+#~ msgstr ""
+#~ "Označite to polje, da bo v prikazu dneva ali tedna prikazana črta, ki "
+#~ "nakazuje trenutni čas (to je črta Marcusa Bainsa)."
+
+#~ msgid "Display the current-time indicator"
+#~ msgstr "Pokaži kazalnik trenutnega časa"
+
+#~ msgid "Show seconds on the current-time (Marcus Bains) line"
+#~ msgstr "Na črti trenutnega časa pokaži sekunde"
+
+#~ msgid "Check this box if you want to show seconds on the current-time line."
+#~ msgstr ""
+#~ "Označite to polje, če želite na črti trenutnega časa prikazati sekunde."
+
+#~ msgid "Display seconds with the current-time indicator"
+#~ msgstr "Pokaži sekunde na kazalniku trenutnega časa"
+
+#~ msgid "Time range selection in agenda view starts event editor"
+#~ msgstr ""
+#~ "Izbira časovnega obdobja v prikazu dnevnega reda zažene urejevalnik "
+#~ "dogodkov"
+
+#~ msgid ""
+#~ "Check this box to start the event editor automatically when you select a "
+#~ "time range in the daily and weekly view. To select a time range, drag the "
+#~ "mouse from the start time to the end time of the event you are about to "
+#~ "plan."
+#~ msgstr ""
+#~ "Označite to polje, da izbira časovnega obdobja v dnevnem ali tedenskem "
+#~ "prikazu samodejno zažene urejevalnik dogodkov. Da izberete časovno "
+#~ "obdobje, potegnite miško od začetnega do končnega časa načrtovanega "
+#~ "dogodka."
+
+#~ msgid "Enable automatic event editor with time range selection"
+#~ msgstr "Omogoči samodejni urejevalnik dogodkov ob izbiri časovnega obdobja"
+
+#~ msgid "Color Usage"
+#~ msgstr "Uporaba barv"
+
+#~ msgid "Category inside, calendar outside"
+#~ msgstr "Kategorija znotraj, koledar zunaj"
+
+#~ msgid ""
+#~ "Select the \"Category inside, calendar outside\" option if you would like "
+#~ "to draw calendar items in their associated category color, with the "
+#~ "item's border drawn in the color of its calendar. Please use the Colors "
+#~ "and Fonts configuration page for setting these colors."
+#~ msgstr ""
+#~ "Izberite možnost »Kategorija znotraj, koledar zunaj«, če želite predmete "
+#~ "na koledarju prikazati v barvah povezanih kategorij, z obrobami v barvah "
+#~ "koledarjev. Da nastavite barve, uporabite nastavitveno stran »Barve in "
+#~ "pisave«."
+
+#~ msgid ""
+#~ "Draw agenda items in their category color inside and calendar color for "
+#~ "their border"
+#~ msgstr ""
+#~ "Izriši notranjost predmetov dnevnega reda v barvah kategorije in njihovo "
+#~ "obrobo v barvah koledarjev"
+
+#~ msgid "Calendar inside, category outside"
+#~ msgstr "Koledar znotraj, kategorija zunaj"
+
+#~ msgid ""
+#~ "Select the \"Calendar inside, category outside\" option if you would like "
+#~ "to draw calendar items in their associated calendar color, with the "
+#~ "item's border drawn in the color of its category. Please use the Colors "
+#~ "and Fonts configuration page for setting these colors."
+#~ msgstr ""
+#~ "Izberite možnost »Koledar znotraj, kategorija zunaj«, če želite predmete "
+#~ "na koledarju prikazati v barvah povezanih koledarjev, z obrobami v barvah "
+#~ "kategorij. Da nastavite barve, uporabite nastavitveno stran »Barve in "
+#~ "pisave«."
+
+#~ msgid ""
+#~ "Draw agenda items in their calendar color inside and category color for "
+#~ "their border"
+#~ msgstr ""
+#~ "Izriši notranjost predmetov dnevnega reda v barvah koledarjev in njihovo "
+#~ "obrobo v barvah kategorij"
+
+#~ msgid "Only category"
+#~ msgstr "Samo kategorija"
+
+#~ msgid ""
+#~ "Select the \"Only category\" option if you would like to draw calendar "
+#~ "items (both inside and border) in the color of their associated category. "
+#~ "Please use the Colors and Fonts configuration page for setting these "
+#~ "colors."
+#~ msgstr ""
+#~ "Izberite možnost »Samo kategorija«, če želite predmete na koledarju "
+#~ "(vključno z obrobami) prikazati v barvah povezanih kategorij. Da "
+#~ "nastavite barve, uporabite nastavitveno stran »Barve in pisave«."
+
+#~ msgid ""
+#~ "Draw agenda items using their category color for the inside and border"
+#~ msgstr ""
+#~ "Izriši notranjost in obrobo predmetov dnevnega reda v barvah kategorije"
+
+#~ msgid "Only calendar"
+#~ msgstr "Samo koledar"
+
+#~ msgid ""
+#~ "Select the \"Only calendar\" option if you would like to draw calendar "
+#~ "items (both inside and border) in the color of their calendar. Please use "
+#~ "the Colors and Fonts configuration page for setting these colors."
+#~ msgstr ""
+#~ "Izberite možnost »Samo koledar«, če želite predmete na koledarju "
+#~ "(vključno z obrobami) prikazati v barvah njihovih koledarjev. Da "
+#~ "nastavite barve, uporabite nastavitveno stran »Barve in pisave«."
+
+#~ msgid ""
+#~ "Draw agenda items using their calendar color for the inside and border"
+#~ msgstr ""
+#~ "Izriši notranjost in obrobo predmetov dnevnega reda v barvah njihovih "
+#~ "koledarjev"
+
+#~ msgid ""
+#~ "Check this box if you want agenda's background to be filled with a "
+#~ "different color on days which have at least one all day event marked as "
+#~ "busy. Also, you can change the background color used for this option on "
+#~ "the Colors configuration page. Look for the \"Busy days background color"
+#~ "\" setting."
+#~ msgstr ""
+#~ "Označite to polje, če želite, da so ozadja dni v prikazu dnevnega reda, "
+#~ "ki imajo vsaj en celodnevni dogodek, ko sem zaposlen/-a, obarvana z drugo "
+#~ "barvo. Barvo za to možnost lahko spremenite na nastavitveni strani Barve. "
+#~ "Poiščite nastavitev »Barva ozadja dni, ko sem zaposlen/-a«."
+
+#~ msgid "Multiple Calendar Display"
+#~ msgstr "Prikaz več koledarjev"
+
+#~ msgid "Merge all calendars into one view"
+#~ msgstr "Združi vse koledarje v en prikaz"
+
+#~ msgid ""
+#~ "Select the \"Merge all calendars into one view\" option if you would like "
+#~ "all your calendars to be shown together in one agenda view."
+#~ msgstr ""
+#~ "Izberite možnost »Združi vse koledarje v en prikaz«, če želite vse svoje "
+#~ "koledarje prikazane skupaj v enem prikazu dnevnega reda."
+
+#~ msgid "Show all calendars merged together"
+#~ msgstr "Pokaži vse koledarje združene skupaj"
+
+#~ msgid "Show calendars side by side"
+#~ msgstr "Pokaži koledarja enega ob drugem"
+
+#~ msgid ""
+#~ "Select the \"Show calendars side by side\" option if you would like to "
+#~ "see two calendars at once, in a side-by-side view."
+#~ msgstr ""
+#~ "Če želite videti dva koledarja prikazana enega ob drugem, izberite "
+#~ "možnost »Pokaži koledarja enega ob drugem«."
+
+#~ msgid "Show two calendars side-by-side"
+#~ msgstr "Pokaži dva koledarja enega ob drugem"
+
+#~ msgid "Switch between views with tabs"
+#~ msgstr "Med prikazi preklapljaj s tabulatorjem"
+
+#~ msgid ""
+#~ "Select \"Switch between views with tabs\" if you would like to alternate "
+#~ "between calendars using the tab key."
+#~ msgstr ""
+#~ "Če bi med koledarji radi preklapljali z uporabo tabulatorja, izberite "
+#~ "možnost »Med prikazi preklapljaj s tabulatorjem«."
+
+#~ msgid "Tab through calendars"
+#~ msgstr "Preklapljanje med koledarji s tabulatorjem"
+
+#~ msgid "Show icons in month view items"
+#~ msgstr "V predmetih mesečnega prikaza pokaži ikone"
+
+#~ msgid ""
+#~ "Check this box to display icons (alarm, recursion, etc.) in month view "
+#~ "items."
+#~ msgstr ""
+#~ "Označite to polje, da bodo v predmetih mesečnega prikaza prikazane ikone "
+#~ "(alarm, ponavljanje, ...)."
+
+#~ msgid "Display icons in month view items"
+#~ msgstr "Pokaži ikone v predmetih mesečnega prikaza"
+
+#~ msgid "Show time in month view items"
+#~ msgstr "V predmetih mesečnega prikaza pokaži čas"
+
+#~ msgid "Check this box to display the time in month view items."
+#~ msgstr ""
+#~ "Označite to polje, da bo v predmetih mesečnega prikaza prikazan čas."
+
+#~ msgid "Display time in month view items"
+#~ msgstr "V predmetih mesečnega prikaza prikaži čas"
+
+#~ msgid "Check this box to display to-dos in the month view."
+#~ msgstr "Označite to polje, da bodo v mesečnem prikazu prikazana opravila."
+
+#~ msgid "Display to-dos in the month view"
+#~ msgstr "Pokaži opravila v mesečnem prikazu"
+
+#~ msgid "Show journals"
+#~ msgstr "Pokaži dnevnike"
+
+#~ msgid "Check this box to display journals in the month view."
+#~ msgstr "Označite to polje, da bodo v mesečnem prikazu prikazani dnevniki."
+
+#~ msgid "Display journals in the month view"
+#~ msgstr "Pokaži dnevnike v mesečnem prikazu"
+
+#~ msgid "Month view uses full window"
+#~ msgstr "Mesečni prikaz uporablja celotno okno"
+
+#~ msgid ""
+#~ "Check this box to use the full KOrganizer window when displaying the "
+#~ "month view. If this box is checked, you will gain some space for the "
+#~ "monthly view, but other widgets, such as the date navigator, the item "
+#~ "details and the calendars list, will not be displayed."
+#~ msgstr ""
+#~ "Označite to polje, da bo za mesečni prikaz uporabljeno celotno "
+#~ "KOrganizerjevo okno. Če je to polje označeno, bo za mesečni prikaz na "
+#~ "voljo nekaj več prostora, vendar drugi gradniki (npr. krmar po datumih, "
+#~ "podrobnosti o predmetu in seznam koledarjev) ne bodo prikazani."
+
+#~ msgid ""
+#~ "Select the \"Category inside, calendar outside\" option if you would like "
+#~ "to draw calendar items in their associated category color, with the "
+#~ "item's border drawn in the color of its calendar.  Please use the Colors "
+#~ "and Fonts configuration page for setting these colors."
+#~ msgstr ""
+#~ "Izberite možnost »Kategorija znotraj, koledar zunaj«, če želite predmete "
+#~ "na koledarju prikazati v barvah povezanih kategorij, z obrobami v barvah "
+#~ "koledarjev. Da nastavite barve, uporabite nastavitveno stran »Barve in "
+#~ "pisave«."
+
+#~ msgid ""
+#~ "Draw month items in their category color inside and calendar color for "
+#~ "their border"
+#~ msgstr ""
+#~ "Izriši notranjost predmetov meseca v barvah kategorije in njihovo obrobo "
+#~ "v barvah koledarjev"
+
+#~ msgid ""
+#~ "Select the \"Calendar inside, category outside\" option if you would like "
+#~ "to draw calendar items in their associated calendar color, with the "
+#~ "item's border drawn in the color of its category.  Please use the Colors "
+#~ "and Fonts configuration page for setting these colors."
+#~ msgstr ""
+#~ "Izberite možnost »Koledar znotraj, kategorija zunaj«, če želite predmete "
+#~ "na koledarju prikazati v barvah povezanih koledarjev, z obrobami v barvah "
+#~ "kategorij. Da nastavite barve, uporabite nastavitveno stran »Barve in "
+#~ "pisave«."
+
+#~ msgid ""
+#~ "Draw month items in their calendar color inside and category color for "
+#~ "their border"
+#~ msgstr ""
+#~ "Izriši notranjost predmetov meseca v barvah koledarjev in njihovo obrobo "
+#~ "v barvah kategorij"
+
+#~ msgid ""
+#~ "Select the \"Only category\" option if you would like to draw calendar "
+#~ "items (both inside and border) in the color of their associated "
+#~ "category.  Please use the Colors and Fonts configuration page for setting "
+#~ "these colors."
+#~ msgstr ""
+#~ "Izberite možnost »Samo kategorija«, če želite predmete na koledarju "
+#~ "(vključno z obrobami) prikazati v barvah povezanih kategorij. Da "
+#~ "nastavite barve, uporabite nastavitveno stran »Barve in pisave«."
+
+#~ msgid ""
+#~ "Draw month items using their category color for the inside and border"
+#~ msgstr "Izriši notranjost in obrobo predmetov meseca v barvah kategorije"
+
+#~ msgid ""
+#~ "Select the \"Only calendar\" option if you would like to draw calendar "
+#~ "items (both inside and border) in the color of their calendar.  Please "
+#~ "use the Colors and Fonts configuration page for setting these colors."
+#~ msgstr ""
+#~ "Izberite možnost »Samo koledar«, če želite predmete na koledarju "
+#~ "(vključno z obrobami) prikazati v barvah njihovih koledarjev. Da "
+#~ "nastavite barve, uporabite nastavitveno stran »Barve in pisave«."
+
+#~ msgid ""
+#~ "Draw month items using their calendar color for the inside and border"
+#~ msgstr ""
+#~ "Izriši notranjost in obrobo predmetov meseca v barvah njihovih koledarjev"
+
+#~ msgid "Always display completed to-dos at the bottom of the list"
+#~ msgstr "Zaključena opravila vedno pokaži na koncu seznama"
+
+#~ msgid ""
+#~ "Completed to-dos are displayed at the bottom of the list, regardless of "
+#~ "priority"
+#~ msgstr ""
+#~ "Zaključena opravila so prikazana na koncu seznama ne glede na prednost"
+
+#~ msgid ""
+#~ "Check this box if you want all completed to-dos to be always grouped at "
+#~ "the bottom of the to-do list."
+#~ msgstr ""
+#~ "Označite to polje, če želite, da so zaključena opravila vedno zbrana na "
+#~ "koncu seznama opravil."
+
+#~ msgid "To-do list view uses full window"
+#~ msgstr "Prikaz seznama opravil uporablja celotno okno"
+
+#~ msgid "Display to-do list in a full KOrganizer window"
+#~ msgstr "Pokaži seznam opravil v celotnem oknu programa KOrganizer"
+
+#~ msgid ""
+#~ "Check this box to use the full KOrganizer window when displaying the to-"
+#~ "do list view. If this box is checked, you will gain some space for the to-"
+#~ "do list view, but other widgets, such as the date navigator, the to-do "
+#~ "details and the calendars list, will not be displayed."
+#~ msgstr ""
+#~ "Označite to polje, da bo za prikaz seznama opravil uporabljeno celotno "
+#~ "KOrganizerjevo okno. Če je to polje označeno, bo za prikaz seznama "
+#~ "opravil na voljo nekaj več prostora, vendar drugi gradniki (npr. krmar po "
+#~ "datumih, podrobnosti o opravilu in seznam koledarjev) ne bodo prikazani."
+
+#~ msgid "Display to-dos in a flat list"
+#~ msgstr "Opravila pokaži v navadnem seznamu"
+
+#~ msgid "Display to-dos as a flat list instead of a hierarchical tree"
+#~ msgstr "Opravila namesto kot hierarhično drevo prikaže kot navadni seznam"
+
+#~ msgid ""
+#~ "Check this box if you want to see all your to-dos in a flat list instead "
+#~ "of being arranged in a hierarchical tree."
+#~ msgstr ""
+#~ "Označite to polje, če želite vsa opravila videti v navadnem seznamu in ne "
+#~ "razporejenih v hierarhičnemu drevesu."
+
+#~ msgid "Record completed to-dos in journal entries"
+#~ msgstr "Zaključena opravila zapiši v dnevnik"
+
+#~ msgid ""
+#~ "Check this box to record the completion of a to-do in a new entry of your "
+#~ "journal automatically."
+#~ msgstr ""
+#~ "Označite to polje, da se zaključek opravila samodejno zapiše kot nov vnos "
+#~ "v dnevniku."
+
+#~ msgid "Holiday color"
+#~ msgstr "Barva praznikov"
+
+#~ msgid ""
+#~ "Select the holiday color here. The holiday color will be used for the "
+#~ "holiday name in the month view and the holiday number in the date "
+#~ "navigator."
+#~ msgstr ""
+#~ "Tu izberite barvo praznikov. Barva bo uporabljena za ime praznika v "
+#~ "mesečnem prikazu in številko dneva v krmarju po datumih."
+
+#~ msgid "Agenda view background color"
+#~ msgstr "Barva ozadja prikaza dnevnega reda"
+
+#~ msgid "Select the agenda view background color here."
+#~ msgstr "Tu izberite barvo ozadja prikaza dnevnega reda."
+
+#~ msgid "Agenda view current-time line color"
+#~ msgstr "Barva črte trenutnega časa na prikazu dnevnega reda"
+
+#~ msgid "Select a color to use for the current-time (Marcus Bains) line."
+#~ msgstr ""
+#~ "Izberite barvo, ki bo uporabljena za črto trenutnega časa (črta Marcusa "
+#~ "Bainsa)."
+
+#~ msgid "Use this color for the Agenda View current-time (Marcus Bains) line"
+#~ msgstr ""
+#~ "Uporabi to barvo za črto trenutnega časa (črta Marcusa Bainsa) na prikazu "
+#~ "dnevnega reda"
+
+#~ msgid "Busy days background color"
+#~ msgstr "Barva ozadja dni, ko sem zaposlen/-a"
+
+#~ msgid ""
+#~ "When you have an all day event marked as busy, you can have a different "
+#~ "agenda or month view background color for that day. Select the color here."
+#~ msgstr ""
+#~ "Ko imate celodnevni dogodek, ko ste zaposleni, ima lahko ustrezen dan v "
+#~ "dnevnem redu ali mesečnem prikazu drugo barvo ozadja. Tu lahko izberete "
+#~ "to barvo."
+
+#~ msgid "Working hours color"
+#~ msgstr "Barva delovnih ur"
+
+#~ msgid "Select the working hours color for the agenda view here."
+#~ msgstr "Tu izberite barvo delovnih ur za prikaz dnevnega reda."
+
+#~ msgid "To-do due today color"
+#~ msgstr "Barva opravil, ki zapadejo danes"
+
+#~ msgid "Select the to-do due today color here."
+#~ msgstr "Tu izberite barvo opravil, ki zapadejo danes."
+
+#~ msgid "To-do overdue color"
+#~ msgstr "Barva zapadlih opravil"
+
+#~ msgid "Select the to-do overdue color here."
+#~ msgstr "Tu izberite barvo zapadlih opravil."
+
+#~ msgid "Time bar"
+#~ msgstr "Časovni pas"
+
+#~ msgid ""
+#~ "Press this button to configure the time bar font. The time bar is the "
+#~ "widget that shows the hours in the agenda view. This button will open the "
+#~ "\"Select Font\" dialog, allowing you to choose the hour font for the time "
+#~ "bar."
+#~ msgstr ""
+#~ "Kliknite ta gumb, da nastavite pisavo za časovni pas. Časovni pas je "
+#~ "gradnik, ki v prikazu dnevnega reda prikazuje ure. Ta gumb odpre "
+#~ "pogovorno okno za izbiranje pisave, ki vam omogoči izbrati pisavo ur v "
+#~ "časovnem pasu."
+
+#~ msgid "Month view"
+#~ msgstr "Mesečni prikaz"
+
+#~ msgid ""
+#~ "Press this button to configure the month view font. This button will open "
+#~ "the \"Select Font\" dialog, allowing you to choose the font for the items "
+#~ "in the month view."
+#~ msgstr ""
+#~ "Kliknite ta gumb, da nastavite pisavo za mesečni prikaz. Ta gumb odpre "
+#~ "pogovorno okno za izbiranje pisave, ki vam omogoči izbrati pisavo "
+#~ "predmetov v mesečnem prikazu."
+
+#~ msgid "Agenda view"
+#~ msgstr "Prikaz dnevnega reda"
+
+#~ msgid ""
+#~ "Press this button to configure the agenda view font. This button will "
+#~ "open the \"Select Font\" dialog, allowing you to choose the font for the "
+#~ "events in the agenda view."
+#~ msgstr ""
+#~ "Kliknite ta gumb, da nastavite pisavo za prikaz dnevnega reda. Ta gumb "
+#~ "odpre pogovorno okno za izbiranje pisave, ki vam omogoči izbrati pisavo "
+#~ "dogodkov v prikazu dnevnega reda."
+
+#~ msgid "Current-time line"
+#~ msgstr "Črta trenutnega časa"
+
+#~ msgid ""
+#~ "Press this button to configure the current-time line font. This button "
+#~ "will open the \"Select Font\" dialog, allowing you to choose the font for "
+#~ "the current-time line in the agenda view."
+#~ msgstr ""
+#~ "Kliknite ta gumb, da nastavite pisavo za črto trenutnega časa. Ta gumb "
+#~ "odpre pogovorno okno za izbiranje pisave, ki vam omogoči izbrati pisavo "
+#~ "za črto trenutnega časa v prikazu dnevnega reda."
+
+#~ msgid "Default todo attachment method"
+#~ msgstr "Privzeti način prilaganja opravilom"
+
+#~ msgid "The default way of attaching dropped emails to a task"
+#~ msgstr "Privzeti način za prilaganje spuščenih e-poštnih sporočil opravilom"
+
+#~ msgid "Always ask"
+#~ msgstr "Vedno vprašaj"
+
+#~ msgid "Only attach link to message"
+#~ msgstr "Priloži samo povezavo do sporočila"
+
+#~ msgid "Attach complete message"
+#~ msgstr "Priloži celotno sporočilo"
+
+#~ msgid "Highlight color"
+#~ msgstr "Barva poudarjanja"
+
+#~ msgid ""
+#~ "Select the highlight color here. The highlight color will be used for "
+#~ "marking the currently selected area in your agenda and in the date "
+#~ "navigator."
+#~ msgstr ""
+#~ "Tu izberite barvo poudarjanja. Barva poudarjanja bo uporabljena za "
+#~ "označevanje trenutno izbranega območja v dnevnem redu in v krmarju po "
+#~ "datumih."
+
+#~ msgid "Month view background color"
+#~ msgstr "Barva ozadja mesečnega prikaza"
+
+#~ msgid "Select the Month view background color here."
+#~ msgstr "Tu izberite barvo ozadja mesečnega prikaza."
+
+#~ msgid ""
+#~ "Select the highlight color here. The highlight color will be used for "
+#~ "marking the currently selected area in your Month and in the date "
+#~ "navigator."
+#~ msgstr ""
+#~ "Tu izberite barvo poudarjanja. Barva poudarjanja bo uporabljena za "
+#~ "označevanje trenutno izbranega območja v mesecu in v krmarju po datumih."
+
+#~ msgid "Select the working hours background color for the Month view here."
+#~ msgstr "Tu izberite barvo ozadja delovnih ur za mesečni prikaz."
+
+#~ msgid "Default event color"
+#~ msgstr "Privzeta barva dogodkov"
+
+#~ msgid ""
+#~ "Select the default event color here. The default event color will be used "
+#~ "for events categories in your Month. Note that you can specify a separate "
+#~ "color for each event category below."
+#~ msgstr ""
+#~ "Tu izberite privzeto barvo dogodkov. Privzeta barva dogodkov bo "
+#~ "uporabljena za kategorije dogodkov v mesecu. Zapomnite si, da spodaj "
+#~ "lahko za vsako kategorijo dogodkov določite svojo barvo."
+
+#~ msgid "Search"
+#~ msgstr "Poišči"
+
+#~ msgid "&New"
+#~ msgstr "&Nov"
+
+#~ msgid "Filter Details"
+#~ msgstr "Filtriraj podrobnosti"
+
+#~ msgctxt "filter name"
+#~ msgid "Name:"
+#~ msgstr "Ime:"
+
+#~ msgid ""
+#~ "Select this option if you do not want to show recurring events and to-dos "
+#~ "in your views. Daily and weekly recurring items may take a lot of space, "
+#~ "so it might be handy to hide them."
+#~ msgstr ""
+#~ "Izberite to možnost, če ponavljajočih se dogodkov ali opravil ne želite "
+#~ "videti prikazanih. Stvari, ki se ponavljajo vsak dan ali teden, lahko "
+#~ "zavzamejo veliko prostora in jih je morda smiselno skriti."
+
+#~ msgid "Hide &recurring events and to-dos"
+#~ msgstr "Skrij po&navljajoče se dogodke in opravila"
+
+#~ msgid ""
+#~ "If this box is checked, the filter will hide all to-do items from the "
+#~ "list, that have been completed. Optionally, only items that have been "
+#~ "completed a given number of days are hidden."
+#~ msgstr ""
+#~ "Če je označeno to polje, bo filter skril vsa opravila, ki so bila "
+#~ "zaključena. V nasprotnem so skrita le opravila, ki so bila zaključena "
+#~ "določeno število dni."
+
+#~ msgid "Hide co&mpleted to-dos"
+#~ msgstr "Skrij &zaključena opravila"
+
+#~ msgid ""
+#~ "This option will allow you to select which completed to-dos should be "
+#~ "hidden. When you choose <i>Immediately</i>, it will hide the to-do as "
+#~ "soon as you check it. You can increase or decrease the number of days in "
+#~ "the spinbox."
+#~ msgstr ""
+#~ "Ta možnost vam omogoča izbor zaključenih opravil, ki bodo skrita. Če "
+#~ "izberete <i>Takoj</i>, bodo opravila skrita takoj, ko jih označite kot "
+#~ "zaključena. V vrtilnem polju lahko povečate ali zmanjšate število dni."
+
+#~ msgid "Da&ys after completion:"
+#~ msgstr "&Dni po zaključitvi:"
+
+#~ msgid ""
+#~ "Here you can give the number of days a to-do item has to be completed to "
+#~ "be hidden from the to-do list. If you select \"Immediately\", all "
+#~ "completed to-dos will be hidden. If you, for example, choose a value of "
+#~ "1, all to-do items will be hidden, that have been marked finished longer "
+#~ "than 24 hours ago."
+#~ msgstr ""
+#~ "Tu lahko nastavite, koliko dni mora biti opravilo zaključeno, preden je "
+#~ "skrito s seznama opravil. Če izberete »Takoj«, bodo skrita vsa zaključena "
+#~ "opravila. Če npr. vnesete 1, bodo skrita vsa opravila, ki so bila "
+#~ "označena kot zaključena pred več kot 24 urami."
+
+#~ msgid ""
+#~ "This option hides all to-dos from your list, where the start date has not "
+#~ "been reached. (Note that the start date is not the due date of the to-do "
+#~ "item.)"
+#~ msgstr ""
+#~ "Ta možnost s seznama skrije vsa opravila, za katera še ni bil dosežen "
+#~ "datum začetka. Zapomnite si, da datum začetka ni isto kot datum "
+#~ "zapadlosti."
+
+#~ msgid "Hide &inactive to-dos"
+#~ msgstr "Skrij n&edejavna opravila"
+
+#~ msgid "Categories"
+#~ msgstr "Kategorije"
+
+#~ msgid ""
+#~ "When this option is enabled, this filter will show all items which do "
+#~ "<i>not</i> contain the selected categories."
+#~ msgstr ""
+#~ "Ko je omogočena ta možnost, bo ta filter prikazal vse predmete, ki <i>ne</"
+#~ "i> vsebujejo izbranih kategorij."
+
+#~ msgid "Show all except selected"
+#~ msgstr "Pokaži vse, razen izbranih"
+
+#~ msgid ""
+#~ "When this option is enabled, this filter will show all items containing "
+#~ "at least the selected items."
+#~ msgstr ""
+#~ "Ko je omogočena ta možnost, bo ta filter prikazal vse predmete, ki "
+#~ "vsebujejo vsaj izbrane predmete."
+
+#~ msgid "Show only selected"
+#~ msgstr "Pokaži le izbrane"
+
+#~ msgid "Change..."
+#~ msgstr "Spremeni ..."
+
+#~ msgid ""
+#~ "This option hides all to-dos from your list which are assigned to someone "
+#~ "else.<br>\n"
+#~ "Only to-dos which have least one attendee will be checked.  If you are "
+#~ "not in the list of attendees the to-do will be hidden."
+#~ msgstr ""
+#~ "Ta možnost s seznama skrije vsa opravila, ki so dodeljena nekomu drugemu."
+#~ "<br>\n"
+#~ "Označena bodo opravila, ki imajo vsaj enega udeleženca. Če niste na "
+#~ "seznamu udeležencev, bo opravilo skrito."
+
+#~ msgid "Hide to-dos not assigned to me"
+#~ msgstr "Skrij opravila, ki mi niso dodeljena"
+
+#~ msgid "P&ublish"
+#~ msgstr "O&bjavi"
+
+#~ msgid ""
+#~ "By publishing Free/Busy information, you allow others to take your "
+#~ "calendar into account when inviting you for a meeting. Only the times you "
+#~ "have already busy are published, not why they are busy."
+#~ msgstr ""
+#~ "Z objavo podatkov o prostosti/zaposlenosti, dovoljujete drugim, da pri "
+#~ "vabilih na sestanke upoštevajo vaš koledar. Objavljeni so samo podatki o "
+#~ "tem, kdaj ste zaposleni, ne pa tudi zakaj."
+
+#~ msgid ""
+#~ "Check this box to upload your Free/Busy information automatically.\n"
+#~ "It is possible to skip this option and mail or upload your Free/Busy "
+#~ "information using the Schedule menu of KOrganizer.\n"
+#~ "Note: If KOrganizer is acting as a KDE Kolab client, this is not "
+#~ "required, as the Kolab2 server taking care of publishing your Free/Busy "
+#~ "information and manages the access to it from other users."
+#~ msgstr ""
+#~ "Označite to polje za samodejno pošiljanje podatkov o prostosti/"
+#~ "zaposlenosti.\n"
+#~ "Če možnosti ne omogočite, je pošiljanje podatkov o prostosti/zaposlenosti "
+#~ "mogoče iz menija Razpored.\n"
+#~ "Opomba: Če KOrganizer deluje kot odjemalec za Kolab, to ni potrebno. "
+#~ "Strežnik Kolab 2 sam poskrbi za objavljanje podatkov o prostosti/"
+#~ "zaposlenosti in upravljanje dostopa drugih uporabnikov do podatkov."
+
+#~ msgid "Publish your free/&busy information automatically"
+#~ msgstr "Samodejno o&bjavi podatke o prostosti/zaposlenosti"
+
+#~ msgid ""
+#~ "Configure minimum the interval of time in minutes between each upload "
+#~ "here. This configuration is only effective in case you choose to publish "
+#~ "your information automatically."
+#~ msgstr ""
+#~ "Tu nastavite najkrajši časovni razmik v minutah med posameznimi "
+#~ "pošiljanji. Ta nastavitev velja le, če ste izbrali samodejno objavljanje "
+#~ "podatkov."
+
+#~ msgid "Minimum time between uploads (in minutes):"
+#~ msgstr "Najkrajši čas med nalaganji (v minutah):"
+
+#~ msgid ""
+#~ "Configure the number of calendar days you wish to be published and "
+#~ "available to others here."
+#~ msgstr ""
+#~ "Tu nastavite število koledarskih dni, ki naj bodo objavljeni in na voljo "
+#~ "ostalim uporabnikom."
+
+#~ msgid "Publish"
+#~ msgstr "Objavi"
+
+#~ msgid "days of free/busy information"
+#~ msgstr "Objavi podatke o prostosti/zaposlenosti"
+
+#~ msgid "Server Information"
+#~ msgstr "Podatki o strežniku"
+
+#~ msgid ""
+#~ "Enter the URL for the server on which your Free/Busy information shall be "
+#~ "published here.\n"
+#~ "Ask the server administrator for this information."
+#~ msgstr ""
+#~ "Sem vnesite naslov URL strežnika, na katerem naj bodo objavljeni podatki "
+#~ "o prostosti/zaposlenosti.\n"
+#~ "Za ustrezen podatek vprašajte skrbnika strežnika."
+
+#~ msgid "Enter your groupware server login password here."
+#~ msgstr "Sem vnesite geslo za dostop do strežnika za skupinsko delo."
+
+#~ msgid "Password:"
+#~ msgstr "Geslo:"
+
+#~ msgid ""
+#~ "Enter the login information relative to your account on the server here.\n"
+#~ "\n"
+#~ "A Kolab2 server specificity: Registered your UID (Unique IDentifier). By "
+#~ "default your UID would be your email address on the Kolab2 server but it "
+#~ "may also be different. In the last case enter your UID."
+#~ msgstr ""
+#~ "Sem vnesite prijavne podatke povezane z vašim računom na strežniku.\n"
+#~ "\n"
+#~ "Posebno za strežnik Kolab 2: registrirajte svoj UID (edinstven "
+#~ "določilnik). Privzeto je vaš določilnik vaš e-poštni naslov na strežniku "
+#~ "Kolab 2, vendar je lahko drugačen. V tem primeru vnesite svoj UID."
+
+#~ msgctxt "login name on the Kolab server"
+#~ msgid "Username:"
+#~ msgstr "Uporabniško ime:"
+
+#~ msgid ""
+#~ "Check this box to make KOrganizer remember your password and skip asking "
+#~ "you each time it uploads your Free/Busy information, by storing it in the "
+#~ "configuration file.\n"
+#~ "For security reasons, it is not recommended to store your password in the "
+#~ "configuration file."
+#~ msgstr ""
+#~ "Označite to polje, da si KOrganizer zapomni vaše geslo in neha "
+#~ "povpraševati po njem ob vsakem pošiljanju podatkov o prostosti/"
+#~ "zaposlenosti.\n"
+#~ "Geslo je shranjeno v nastavitveni datoteki, kar iz varnostnih razlogov ni "
+#~ "priporočljivo."
+
+#~ msgid "Remember p&assword"
+#~ msgstr "Zapo&mni si geslo"
+
+#~ msgid "Server URL:"
+#~ msgstr "URL strežnika:"
+
+#~ msgid "(No need if using Kolab server version 2)"
+#~ msgstr "(ni potrebno, če uporabljate strežnik Kolab 2)"
+
+#~ msgid "&Retrieve"
+#~ msgstr "P&ridobi"
+
+#~ msgid ""
+#~ "By retrieving Free/Busy information that others have published, you can "
+#~ "take their calendar into account when inviting them to a meeting."
+#~ msgstr ""
+#~ "S pridobivanjem podatkov o prostosti/zaposlenosti, ki so jih objavili "
+#~ "drugi, lahko pri vabilih na sestanke upoštevate njihov koledar."
+
+#~ msgid ""
+#~ "Check this box to retrieve other people's Free/Busy information "
+#~ "automatically. Note that you have to fill the correct server information "
+#~ "to make this possible."
+#~ msgstr ""
+#~ "Označite to polje, da podatke o prostosti/zaposlenosti drugih ljudi "
+#~ "pridobite samodejno. Zapomnite si, da morate za to vpisati pravilne "
+#~ "podatke o strežniku."
+
+#~ msgid "Retrieve other people's free/&busy information automatically"
+#~ msgstr "Samodejno pridobi podatke o prostosti/&zaposlenosti drugih ljudi"
+
+#~ msgid ""
+#~ "Set this to retrieve user@domain.ifb instead of user.ifb from the server"
+#~ msgstr ""
+#~ "Nastavite to, da s strežnika pridobite uporabnik@domena.ifb namesto "
+#~ "uporabnik.ifb"
+
+#~ msgid ""
+#~ "Check this box to download a free/busy file in the format \"user@domain."
+#~ "ifb\" (for example joe@company.com.ifb). Otherwise, it will download a "
+#~ "free/busy file in the format user.ifb (for example joe.ifb). Ask the "
+#~ "server Administrator if you are not sure about how to configure this "
+#~ "option."
+#~ msgstr ""
+#~ "Označite to polje, da datoteko s podatki o prostosti/zaposlenosti "
+#~ "prejmete v obliki  \"uporabnik@domena.ifb\" (npr. janez@podjetje.si.ifb). "
+#~ "V nasprotnem primeru bo datoteka prenesena v obliki uporabnik.ifb (npr. "
+#~ "janez.ifb). Če niste prepričani, kako nastaviti to možnost, o tem "
+#~ "povprašajte skrbnika strežnika."
+
+#~ msgid "Use full email &address for retrieval"
+#~ msgstr "Upor&abi poln elektronski naslov za pridobivanje"
+
+#~ msgctxt "@info:whatsthis"
+#~ msgid ""
+#~ "Enter the URL for the server on which the Free/Busy information is "
+#~ "published here.\n"
+#~ "Ask the server administrator for this information.\n"
+#~ "Here is a Kolab2 Server URL example:\n"
+#~ "\n"
+#~ "https://kolab2.example.com/freebusy/\n"
+#~ "\n"
+#~ "Alternatively, you can specify a full path to the Free/Busy. For "
+#~ "example: \n"
+#~ "\n"
+#~ "https://kolab2.example.com/freebusy/user.xfb"
+#~ msgstr ""
+#~ "Sem vnesite naslov URL strežnika, na katerem so objavljeni podatki o "
+#~ "prostosti/zaposlenosti.\n"
+#~ "Za podatek povprašajte skrbnika strežnika.\n"
+#~ "To je primer naslova URL strežnika Kolab 2:\n"
+#~ "\n"
+#~ "https://kolab2.primer.si/freebusy/\n"
+#~ "\n"
+#~ "Navedete lahko tudi celotno pot. Na primer:\n"
+#~ "\n"
+#~ "https://kolab2.primer.si/freebusy/uporabnik.xfb"
+
+#~ msgid "User&name:"
+#~ msgstr "Uporab&niško ime:"
+
+#~ msgid "Passwor&d:"
+#~ msgstr "Ge&slo:"
+
+#~ msgid "Re&member password"
+#~ msgstr "Zapo&mni si geslo"
+
+#~ msgid "&Search for:"
+#~ msgstr "Po&išči:"
+
+#~ msgid "Search pattern, use wildcards '*' and '?' as desired."
+#~ msgstr "Iskalni vzorec, po želji uporabite nadomestna znaka »*« in »?«."
+
+#~ msgid ""
+#~ "Enter your search pattern here. Wildcards '*' (matches any string) and "
+#~ "'?' (matches any character) are supported.  For example, to match any "
+#~ "string starting with the letter 'a', use the search pattern a*."
+#~ msgstr ""
+#~ "Sem vnesite iskalni vzorec. Podprta sta nadomestna znaka »*« (ujemanje s "
+#~ "katerimkoli nizom) in »?« (ujemanje s katerimkoli znakom). Na primer: da "
+#~ "se bo ujemal katerikoli niz, ki se začne s črko »a«, uporabite iskalni "
+#~ "vzorec »a*«."
+
+#~ msgid "*"
+#~ msgstr "*"
+
+#~ msgid "Search For"
+#~ msgstr "Poišči"
+
+#~ msgid "Search for Events with matching criteria"
+#~ msgstr "Poišči dogodke, ki se ujemajo s pogoji"
+
+#~ msgid ""
+#~ "Check this box if you want to search for Event items that match the "
+#~ "search criteria."
+#~ msgstr ""
+#~ "Označite to polje, če želite poiskati dogodke, ki se ujemajo z iskalnimi "
+#~ "pogoji."
+
+#~ msgid "&Events"
+#~ msgstr "Do&godki"
+
+#~ msgid "Search for Journals with matching criteria"
+#~ msgstr "Poišči dnevnike, ki se ujemajo s pogoji"
+
+#~ msgid ""
+#~ "Check this box if you want to search for Journal items that match the "
+#~ "search criteria."
+#~ msgstr ""
+#~ "Označite to polje, če želite poiskati dnevnike, ki se ujemajo z iskalnimi "
+#~ "pogoji."
+
+#~ msgid "&Journals"
+#~ msgstr "&Dnevniki"
+
+#~ msgid "Search for To-dos with matching criteria"
+#~ msgstr "Poišči opravila, ki se ujemajo s pogoji"
+
+#~ msgid ""
+#~ "Check this box if you want to search To-do items that match the search "
+#~ "criteria."
+#~ msgstr ""
+#~ "Označite to polje, če želite poiskati opravila, ki se ujemajo z iskalnimi "
+#~ "pogoji."
+
+#~ msgid "To-&dos"
+#~ msgstr "O&pravila"
+
+#~ msgid "Search In"
+#~ msgstr "Išči v"
+
+#~ msgid "Include item categories in your search"
+#~ msgstr "V iskanje vključi kategorije predmetov"
+
+#~ msgid ""
+#~ "Check this box if you want to match item categories against your search "
+#~ "pattern."
+#~ msgstr ""
+#~ "Označite to polje, če želite, da se z iskalnim vzorcem preveri tudi "
+#~ "ujemanje kategorij predmetov."
+
+#~ msgid "Cate&gories"
+#~ msgstr "Kate&gorije"
+
+#~ msgid "Include item locations in your search"
+#~ msgstr "V iskanje vključi mesta predmetov"
+
+#~ msgid ""
+#~ "Check this box if you want to match item locations against your search "
+#~ "pattern."
+#~ msgstr ""
+#~ "Označite to polje, če želite, da se z iskalnim vzorcem preveri tudi "
+#~ "ujemanje mest predmetov."
+
+#~ msgid "Locations"
+#~ msgstr "Mesta"
+
+#~ msgid "Include item descriptions in your search"
+#~ msgstr "V iskanje vključi opise predmetov"
+
+#~ msgid ""
+#~ "Check this box if you want to match item descriptions against your search "
+#~ "pattern."
+#~ msgstr ""
+#~ "Označite to polje, če želite, da se z iskalnim vzorcem preveri tudi "
+#~ "ujemanje opisov predmetov."
+
+#~ msgid "Desc&riptions"
+#~ msgstr "Op&isi"
+
+#~ msgid "Include item summaries in your search"
+#~ msgstr "V iskanje vključi povzetke predmetov"
+
+#~ msgid ""
+#~ "Check this box if you want to match item summaries against your search "
+#~ "pattern."
+#~ msgstr ""
+#~ "Označite to polje, če želite, da se z iskalnim vzorcem preveri tudi "
+#~ "ujemanje povzetkov predmetov."
+
+#~ msgid "Su&mmaries"
+#~ msgstr "Po&vzetki"
+
+#~ msgid "Attendees"
+#~ msgstr "Udeleženci"
+
+#~ msgid "Fr&om:"
+#~ msgstr "&Od:"
+
+#~ msgid "Include items with a starting date on or after this date"
+#~ msgstr "Vključi predmete, ki se začnejo na ta datum ali po njem"
+
+#~ msgid ""
+#~ "Search for items with a starting date on or after the date you specify "
+#~ "here."
+#~ msgstr ""
+#~ "Poišče predmete, ki imajo začetni datum na datum, ali po datumu, ki je "
+#~ "naveden tu."
+
+#~ msgid "2008-08-18"
+#~ msgstr "18.08.2008"
+
+#~ msgid "&To:"
+#~ msgstr "&Za:"
+
+#~ msgid "Include items with ending date on or before this date"
+#~ msgstr "Vključi predmete, ki se končajo na ta datum ali pred njim"
+
+#~ msgid ""
+#~ "Search for items with an ending date on or before the date you specify "
+#~ "here."
+#~ msgstr ""
+#~ "Poišče predmete, ki imajo končni datum na datum, ali pred datumom, ki je "
+#~ "naveden tu."
+
+#~ msgid ""
+#~ "Include Events only if their date range falls into the range specified "
+#~ "above"
+#~ msgstr ""
+#~ "Vključi dogodke samo, če je njihovo časovno obdobje znotraj zgoraj "
+#~ "podanega obdobja"
+
+#~ msgid ""
+#~ "Check this box if you want to include Events that occur within the date "
+#~ "range specified.  Events that do not fall completely within the date "
+#~ "range will be excluded from the search results."
+#~ msgstr ""
+#~ "Označite to polje, če želite vključiti samo dogodke, ki se zgodijo "
+#~ "znotraj podanega časovnega obdobja. Dogodki, ki niso v celoti znotraj "
+#~ "časovnega obdobja, bodo izključeni iz rezultatov iskanja."
+
+#~ msgid "Include E&vents within the specified date range"
+#~ msgstr "Vključi samo do&godke znotraj časovnega obdobja"
+
+#~ msgid "Include To-dos in the search that do not have a due date"
+#~ msgstr "V iskanje vključi opravila, ki nimajo datuma zapadlosti"
+
+#~ msgid ""
+#~ "Check this box to include To-dos without a due date in the search results."
+#~ msgstr ""
+#~ "Označite to polje, da v rezultate iskanja vključite tudi opravila brez "
+#~ "datuma zapadlosti."
+
+#~ msgid "Include To-dos &without a due date"
+#~ msgstr "Vključi opravila &brez datuma zapadlosti"
+
+#~ msgctxt "Collection: name collectionId"
+#~ msgid "Collection: %1(%2)"
+#~ msgstr "Zbirka: %1 (%2)"
+
+#~ msgid "Person: %1"
+#~ msgstr "Oseba: %1"
+
+#~ msgid "Mail: %1"
+#~ msgstr "Pošta: %1"
+
+#~ msgid "Organization Unit: %1"
+#~ msgstr "Organizacijska enota: %1"
+
+#~ msgid "Free/Busy calendar from %1"
+#~ msgstr "Koledar prostosti/zaposlenosti od %1"
+
+#~ msgid "Day"
+#~ msgstr "Dan"
+
+#~ msgid "Week"
+#~ msgstr "Teden"
+
+#~ msgid "Month"
+#~ msgstr "Mesec"
+
+#~ msgid "Agenda"
+#~ msgstr "Dnevni red"
+
+#~ msgid "<"
+#~ msgstr "<"
+
+#~ msgid ">"
+#~ msgstr ">"
+
+#~ msgid "Agenda %1"
+#~ msgstr "Dnevni red %1"
+
+#~ msgid "Configure Side-By-Side View"
+#~ msgstr "Nastavi prikaz enega ob drugem"
+
+#~ msgid "Show one calendar per agenda column"
+#~ msgstr "Pokaži en koledar za vsak stolpec v dnevnem redu"
+
+#~ msgid "Use custom calendar setup"
+#~ msgstr "Uporabi nastavitev koledarjev po meri"
+
+#~ msgid "Number of columns"
+#~ msgstr "Število stolpcev"
+
+#~ msgid "Title"
+#~ msgstr "Naslov"
+
+#~ msgid "Selected Calendars"
+#~ msgstr "Izbrani koledarji"
+
+#~ msgctxt "start/end week number of line in date picker"
+#~ msgid "%1/%2"
+#~ msgstr "%1/%2"
+
+#~ msgid "Scroll to week number %1"
+#~ msgstr "Premakni se na %1. teden"
+
+#~ msgid ""
+#~ "Click here to scroll the display to week number %1 of the currently "
+#~ "displayed year."
+#~ msgstr ""
+#~ "Kliknite sem, da se premaknete na %1. teden v trenutno prikazanem letu."
+
+#~ msgid "%1"
+#~ msgstr "%1"
+
+#~ msgid "A column header of the %1 dates in the month."
+#~ msgstr "Glava stolpca z datumi v mesecu, ki so na dan %1."
+
+#~ msgid "Calendar's custom icon"
+#~ msgstr "Ikona koledarja po meri"
+
+#~ msgid "To-do"
+#~ msgstr "Opravilo"
+
+#~ msgid "Journal"
+#~ msgstr "Dnevnik"
+
+#~ msgid "Recurring"
+#~ msgstr "Ponavljajoče"
+
+#~ msgid "Alarm"
+#~ msgstr "Alarm"
+
+#~ msgid "Read Only"
+#~ msgstr "Samo za branje"
+
+#~ msgid "Needs Reply"
+#~ msgstr "Potrebuje odgovor"
+
+#~ msgid "Attending"
+#~ msgstr "Udeleženec"
+
+#~ msgid "Maybe Attending"
+#~ msgstr "Morebitni udeleženec"
+
+#~ msgid "Organizer"
+#~ msgstr "Organizator"
+
+#~ msgctxt "@item:inlistbox"
+#~ msgid "Icons to use"
+#~ msgstr "Uporabljene ikone"
+
+#~ msgid "Scroll backward to the previous year"
+#~ msgstr "Premakni se na prejšnje leto"
+
+#~ msgid ""
+#~ "Click this button to scroll the display to the same approximate day of "
+#~ "the previous year"
+#~ msgstr ""
+#~ "Kliknite ta gumb, da se premaknete na približno isti dan prejšnjega leta"
+
+#~ msgid "Scroll backward to the previous month"
+#~ msgstr "Premakni se na prejšnji mesec"
+
+#~ msgid ""
+#~ "Click this button to scroll the display to the same approximate date of "
+#~ "the previous month"
+#~ msgstr ""
+#~ "Kliknite ta gumb, da se premaknete na približno isti dan prejšnjega meseca"
+
+#~ msgid "Scroll forward to the next month"
+#~ msgstr "Premakni se na naslednji mesec"
+
+#~ msgid ""
+#~ "Click this button to scroll the display to the same approximate date of "
+#~ "the next month"
+#~ msgstr ""
+#~ "Kliknite ta gumb, da se premaknete na približno isti dan naslednjega "
+#~ "meseca"
+
+#~ msgid "Scroll forward to the next year"
+#~ msgstr "Premakni se na naslednje leto"
+
+#~ msgid ""
+#~ "Click this button to scroll the display to the same approximate day of "
+#~ "the next year"
+#~ msgstr ""
+#~ "Kliknite ta gumb, da se premaknete na približno isti dan naslednjega leta"
+
+#~ msgid "Select a month"
+#~ msgstr "Izberite mesec"
+
+#~ msgid "Select a year"
+#~ msgstr "Izberite leto"
+
+#~ msgctxt "monthname"
+#~ msgid "%1"
+#~ msgstr "%1"
+
+#~ msgctxt "4 digit year"
+#~ msgid "%1"
+#~ msgstr "%1"
+
+#~ msgid "*.ics|iCalendars"
+#~ msgstr "*.ics|Koledarji iCalendar"
+
+#~ msgid "*.vcs|vCalendars"
+#~ msgstr "*.vcs|Koledarji vCalendar"
+
+#~ msgid "Enable scrollbars in month view cells"
+#~ msgstr "Omogoči drsnike v celicah mesečnega prikaza"
+
+#~ msgid ""
+#~ "Check this box to display scrollbars when clicking on a cell in the month "
+#~ "view; they will only appear when needed though."
+#~ msgstr ""
+#~ "Označite to polje, da se bodo prikazali drsniki, ko boste kliknili na "
+#~ "celico v mesečnem prikazu. Prikazani pa bodo samo po potrebi."
+
+#~ msgid ""
+#~ "<p>...that you can select whether the week starts on Monday or on Sunday "
+#~ "in the System Settings? KOrganizer uses this setting. Look at \n"
+#~ "Locale->Country/Region & Languages in the System Settings, or select "
+#~ "<b>Settings</b>,\n"
+#~ "<b>Configure Date & Time...</b> from the menu bar. Select the Calendar "
+#~ "tab.\n"
+#~ "</p>\n"
+#~ msgstr ""
+#~ "<p>... da lahko v Sistemskih nastavitvah izberete, ali se teden začne s "
+#~ "ponedeljkom ali nedeljo in da to nastavitev KOrganizer tudi uporablja? "
+#~ "Oglejte si Krajevne nastavitve → Država/območje in jezik, nato pa "
+#~ "izberite zavihek Datum in čas. Iz KOrganizerja pa lahko izberete meni "
+#~ "<b>Nastavitve</b> in nato <b>Nastavi datum in čas ...</b> ter zavihek "
+#~ "<b>Datum in čas</b>.\n"
+#~ "</p>\n"
+
+#~ msgid ""
+#~ "<p>...that you can edit to-dos quickly by right clicking on the property "
+#~ "you wish to change; like the priority, the category or the date?\n"
+#~ "</p>\n"
+#~ msgstr ""
+#~ "<p>... da lahko hitro uredite opravila z desnim klikom na lastnost, ki jo "
+#~ "želite spremeniti? Spremenite lahko prednost, kategorijo, datum in še "
+#~ "več.\n"
+#~ "</p>\n"
+
+#~ msgid ""
+#~ "<p>...that your calendar can display birthdays from your address book? It "
+#~ "is even possible to set up reminders for them. To activate this, add the "
+#~ "corresponding 'birthdays' calendar from the Calendar Manager.\n"
+#~ "</p>\n"
+#~ msgstr ""
+#~ "<p>... da lahko vaš koledar prikazuje rojstne dni iz vašega imenika? "
+#~ "Mogoče je tudi nastaviti opomnike zanje. Da to omogočite, svojemu "
+#~ "koledarju v upravljalniku koledarjev dodajte ustrezen koledar z rojstnimi "
+#~ "dnevi.\n"
+#~ "</p>\n"
+
+#~ msgid ""
+#~ "<p>...that you can store your calendar on an FTP server? Use the standard "
+#~ "file dialog to save the calendar to a URL like <b>ftp://"
+#~ "username@ftpserver/filename</b>. You can make your calendar active and "
+#~ "load and save it as if it were local, or add it permanently to your "
+#~ "calendar list, by adding a remote file from the Calendar Manager. Just "
+#~ "make sure that no two KOrganizer applications are working on the same "
+#~ "file, at the same time.\n"
+#~ "</p>\n"
+#~ msgstr ""
+#~ "<p>... da lahko svoj koledar shranite na strežniku FTP? Uporabite "
+#~ "običajno pogovorno okno za shranjevanje datoteke in shranite koledar na "
+#~ "naslov URL, kot je <b>ftp://uporabniško_ime@ftp_strežnik/ime_datoteke</"
+#~ "b>. Koledar lahko omogočite, ga nalagate in shranjujete, kot da bi bil "
+#~ "krajeven; ali pa ga trajno dodate na seznam virov, z dodajanjem oddaljene "
+#~ "datoteke v upravljalniku koledarjev. Prepričajte se le, da hkrati ne "
+#~ "tečeta dva programa KOrganizer, ki bi dostopala do iste datoteke.\n"
+#~ "</p>\n"
+
+#~ msgid ""
+#~ "<p>...that you can create hierarchical to-dos by clicking with the right "
+#~ "mouse button on an existing to-do and selecting <b>New Sub-to-do</b> from "
+#~ "the context menu?\n"
+#~ "</p>\n"
+#~ msgstr ""
+#~ "<p>... da lahko ustvarite hierarhična opravila tako, da kliknete z desnim "
+#~ "gumbom miške na obstoječe opravilo in izberete <b>Novo podopravilo</b> iz "
+#~ "vsebinskega menija?\n"
+#~ "</p>\n"
+
+#~ msgid ""
+#~ "<p>...that a color can be assigned to each category? Events with a "
+#~ "certain category will be shown in that color. You can assign these in the "
+#~ "section <b>Colors</b> within the dialog which appears after selecting "
+#~ "<b>Settings</b>, <b>Configure KOrganizer...</b> from the menu bar.\n"
+#~ "</p>\n"
+#~ msgstr ""
+#~ "<p>... da lahko vsaki kategoriji dodelite barvo? Dogodki z določeno "
+#~ "kategorijo bodo prikazani v tej barvi. Te lahko določite v razdelku "
+#~ "<b>Barve</b> znotraj pogovornega okna, ki se pojavi po izbiri menija "
+#~ "<b>Nastavitve</b>, <b>Nastavi KOrganizer ...</b>.\n"
+#~ "</p>\n"
+
+#~ msgid ""
+#~ "<p>...that you can view and edit a calendar with Konqueror? Just click on "
+#~ "the calendar file to make Konqueror open it.\n"
+#~ "</p>\n"
+#~ msgstr ""
+#~ "<p>... da si lahko ogledate in uredite koledar s Konquerorjem? Samo "
+#~ "kliknite na koledarsko datoteko, da jo Konqueror odpre.\n"
+#~ "</p>\n"
+
+#~ msgid ""
+#~ "<p>...that it is possible to add an attachment to an event or to-do? To "
+#~ "do so, add a link to the <b>Attachments</b> tab within the <b>Edit Event</"
+#~ "b> or <b>Edit To-do</b> dialog.\n"
+#~ "</p>\n"
+#~ msgstr ""
+#~ "<p>... da lahko dodate prilogo dogodku ali opravilu? Dodajte povezavo na "
+#~ "zavihku <b>Priloge</b> znotraj pogovornega okna <b>Uredi dogodek</b> ali "
+#~ "<b>Uredi opravilo</b>.\n"
+#~ "</p>\n"
+
+#~ msgid ""
+#~ "<p>...that you can export your calendar to HTML? Select <b>File</b>, "
+#~ "<b>Export</b>, <b>Export Web Page...</b> from the menu bar to open the "
+#~ "<b>Export calendar as web page</b> dialog.\n"
+#~ "</p>\n"
+#~ msgstr ""
+#~ "<p>... da lahko svoj koledar izvozite v zapis HTML? Z menija izberite "
+#~ "<b>Datoteka</b>, <b>Izvozi</b>, <b>Izvozi spletno stran ...</b> in odprlo "
+#~ "se bo pogovorno okno <b>Izvozi koledar kot spletno stran</b>.\n"
+#~ "</p>\n"
+
+#~ msgid ""
+#~ "<p>...that you can purge completed to-dos in one step? Go to the <b>File</"
+#~ "b> menu and choose <b>Purge Completed To-dos</b>.\n"
+#~ "</p>\n"
+#~ msgstr ""
+#~ "<p>... da lahko počistite končane opravke v enem koraku? Pojdite v meni "
+#~ "<b>Datoteka</b> in izberite <b>Počisti zaključena opravila</b>.\n"
+#~ "</p>\n"
+
+#~ msgid ""
+#~ "<p>...that you can create a new sub-to-do by pasting a to-do while "
+#~ "another one is selected?\n"
+#~ "</p>\n"
+#~ msgstr ""
+#~ "<p>... da lahko ustvarite novo podopravilo z lepljenjem opravka med tem, "
+#~ "ko je izbrano neko drugo opravilo?\n"
+#~ "</p>\n"
+
+#~ msgid "*.html|HTML Files"
+#~ msgstr "*.html|Datoteke HTML"
+
+#, fuzzy
+#~| msgctxt "@title:group"
+#~| msgid "Other Plugins"
+#~ msgid "KOrgPlugins"
+#~ msgstr "Drugi vstavki"
+
+#~ msgid "Import Calendar/Event"
+#~ msgstr "Uvozi koledar/dogodek"
+
+#~ msgid "&Add as new calendar..."
+#~ msgstr "Dod&aj kot nov koledar ..."
+
+#~ msgid "&Add as new calendar"
+#~ msgstr "Dod&aj kot nov koledar"
+
+#~ msgid "*.vcs *.ics|Calendar Files"
+#~ msgstr "*.vcs *.ics|Koledarske datoteke"
+
+#~ msgid "Select path for new calendar"
+#~ msgstr "Izberite pot za novi koledar"
+
+#~ msgid "Set Your Status"
+#~ msgstr "Nastavite vaše stanje"
+
+#~ msgid "Set your status"
+#~ msgstr "Nastavite vaše stanje"
+
+#~ msgid "A&dd..."
+#~ msgstr "&Dodaj ..."
+
+#~ msgid "&Modify..."
+#~ msgstr "Spre&meni ..."
+
+#~ msgid "R&emove"
+#~ msgstr "&Odstrani"
+
+#, fuzzy
+#~| msgid "Do you want to overwrite %1?"
+#~ msgid "Do you want to remove account '%1'?"
+#~ msgstr "Ali želite prepisati %1?"
+
+#, fuzzy
+#~| msgid "Remove Attachments"
+#~ msgid "Remove account?"
+#~ msgstr "Odstrani priloge"
+
+#~ msgid "Select Addresses"
+#~ msgstr "Izberite naslove"
+
+#~ msgid "Send email to these recipients"
+#~ msgstr "Pošlji e-pošto tem naslovnikom"
+
+#~ msgid ""
+#~ "Clicking the <b>Ok</b> button will cause an email to be sent to the "
+#~ "recipients you have entered."
+#~ msgstr ""
+#~ "S klikom na gumb <b>V redu</b>boste vnesenim naslovnikom poslali e-pošto."
+
+#~ msgid "Cancel recipient selection and the email"
+#~ msgstr "Prekliči izbiranje naslovnikov in e-pošto"
+
+#~ msgid ""
+#~ "Clicking the <b>Cancel</b> button will cause the email operation to be "
+#~ "terminated."
+#~ msgstr ""
+#~ "S klikom na gumb <b>Prekliči</b> boste preklicali pošiljanje e-pošte."
+
+#~ msgid ""
+#~ "Click the <b>Help</b> button to read more information about Group "
+#~ "Scheduling."
+#~ msgstr ""
+#~ "Kliknite na gumb <b>Pomoč</b>, da si preberete več o skupinskem "
+#~ "razporejanju."
+
+#~ msgid "(EmptyName)"
+#~ msgstr "(Prazno ime)"
+
+#~ msgid "(EmptyEmail)"
+#~ msgstr "(Prazna e-pošta)"
+
+#~ msgid "The list of addressees to receive the invitation"
+#~ msgstr "Seznam naslovov, ki bodo prejeli povabilo"
+
+#~ msgid ""
+#~ "This is a list of all the addresses you have currently selected to "
+#~ "receive the iCalendar invitation."
+#~ msgstr ""
+#~ "To je seznam vseh naslovov, ki ste jih izbrali in bodo prejeli povabilo "
+#~ "iCalendar."
+
+#~ msgid "Add a new recipient"
+#~ msgstr "Dodaj novega prejemnika"
+
+#~ msgid ""
+#~ "Click this button and you will be able to enter a name and email for a "
+#~ "new addressee to add to the recipients list"
+#~ msgstr ""
+#~ "S klikom na ta gumb boste lahko vnesli ime in e-pošto novega naslovnika "
+#~ "za dodajanje na seznam prejemnikov"
+
+#~ msgid "Remove the recipient currently selected"
+#~ msgstr "Odstrani trenutno izbranega prejemnika"
+
+#~ msgid ""
+#~ "Click this button to remove the recipient currently selected from the list"
+#~ msgstr ""
+#~ "Kliknite ta gumb, da odstranite prejemnika, ki je trenutno izbran na "
+#~ "sezamu"
+
+#~ msgid "&Remove"
+#~ msgstr "Odst&rani"
+
+#~ msgid ""
+#~ "Click this button to show another dialog where you will be able to select "
+#~ "a recipient from your address book"
+#~ msgstr ""
+#~ "Kliknite ta gumb, da odprete pogovorno okno, kjer boste lahko iz svojega "
+#~ "imenika izbrali prejemnika"
+
+#~ msgid "&Select..."
+#~ msgstr "&Izberi ..."
+
+#~ msgctxt "recipient name"
+#~ msgid "Name:"
+#~ msgstr "Ime:"
+
+#~ msgid "The recipient's name"
+#~ msgstr "Ime prejemnika"
+
+#~ msgid "This field contains the name of the recipient"
+#~ msgstr "To polje vsebuje ime prejemnika"
+
+#~ msgctxt "recipient email"
+#~ msgid "Email:"
+#~ msgstr "E-pošta:"
+
+#~ msgid "The recipient's email address"
+#~ msgstr "Prejemnikova e-pošta"
+
+#~ msgid "This field contains the email address of the recipient"
+#~ msgstr "To polje vsebuje e-poštni naslov prejemnika"
+
+#~ msgid "Also &Future Items"
+#~ msgstr "Tudi &prihodnje predmete"
+
+#~ msgid ""
+#~ "The item you are trying to change is a recurring item. Should the changes "
+#~ "be applied only to this single occurrence, also to future items, or to "
+#~ "all items in the recurrence?"
+#~ msgstr ""
+#~ "Predmet, ki ga želite spremeniti, se ponavlja. Ali naj se spremembe "
+#~ "uveljavijo samo za trenutno pojavitev, tudi za prihodnje predmete ali vse "
+#~ "predmete v ponovitvi?"
+
+#~ msgid ""
+#~ "The item you are trying to change is a recurring item. Should the changes "
+#~ "be applied only to this single occurrence or to all items in the "
+#~ "recurrence?"
+#~ msgstr ""
+#~ "Predmet, ki ga želite spremeniti, se ponavlja. Ali naj se spremembe "
+#~ "uveljavijo samo za trenutno pojavitev ali vse predmete v ponovitvi?"
+
+#~ msgid "Changing Recurring Item"
+#~ msgstr "Spreminjanje predmeta, ki se ponavlja"
+
+#~ msgid "Only &This Item"
+#~ msgstr "Samo &ta predmet"
+
+#~ msgid "&All Occurrences"
+#~ msgstr "&Vse pojavitve"
+
+#~ msgid "This file is not a KOrganizer theme file."
+#~ msgstr "To ni datoteka s temo za KOrganizer."
+
+#~ msgid "KOrganizer Theming Stub"
+#~ msgstr "KOrganizerjev nastavek za temo"
+
+#~ msgid "DO NOT USE - Stub doing various things with KOrganizer themes"
+#~ msgstr ""
+#~ "NE UPORABLJAJTE - Nastavek, ki počne razne stvari s temami za KOrganizer"
+
+#~ msgid "© 2007 Loïc Corbasson"
+#~ msgstr "© 2007 Loïc Corbasson"
+
+#~ msgid "Theme to use"
+#~ msgstr "Uporabljena tema"

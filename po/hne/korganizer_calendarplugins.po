@@ -1,0 +1,8303 @@
+# translation of korganizer.po to Hindi
+# Copyright (C) YEAR This_file_is_part_of_KDE
+# This file is distributed under the same license as the PACKAGE package.
+#
+# Ravishankar Shrivastava <raviratlami@yahoo.com>, 2008.
+# Ravishankar Shrivastava <raviratlami@aol.in>, 2009.
+msgid ""
+msgstr ""
+"Project-Id-Version: korganizer\n"
+"Report-Msgid-Bugs-To: https://bugs.kde.org\n"
+"POT-Creation-Date: 2024-06-26 00:40+0000\n"
+"PO-Revision-Date: 2009-02-28 20:07+0530\n"
+"Last-Translator: Ravishankar Shrivastava <raviratlami@aol.in>\n"
+"Language-Team: Hindi <kde-i18n-doc@lists.kde.org>\n"
+"Language: hne\n"
+"MIME-Version: 1.0\n"
+"Content-Type: text/plain; charset=UTF-8\n"
+"Content-Transfer-Encoding: 8bit\n"
+"Plural-Forms: nplurals=2; plural=(n!=1);\n"
+"X-Generator: Lokalize 0.2\n"
+
+#: datenums/configdialog.cpp:28
+#, fuzzy, kde-format
+#| msgid "Configure Day Numbers"
+msgctxt "@title:window"
+msgid "Configure Day Numbers"
+msgstr "दिन संख्या मन ल कान्फिगर करव"
+
+#: datenums/configdialog.cpp:43
+#, kde-format
+msgid "Show Date Number"
+msgstr "तारीक नंबर देखाव"
+
+#: datenums/configdialog.cpp:48
+#, kde-format
+msgid "Show day number"
+msgstr "दिन नंबर देखाव"
+
+#: datenums/configdialog.cpp:51
+#, kde-format
+msgid "Show days to end of year"
+msgstr "सालान्त बर दिनों के संख्या देखाव"
+
+#: datenums/configdialog.cpp:54
+#, kde-format
+msgid "Show both"
+msgstr "दोनों देखाव"
+
+#: datenums/datenums.cpp:36
+#, kde-format
+msgid "This plugin shows information on a day's position in the year."
+msgstr "ये प्लगइन साल मं महिना के स्थिति बाबत् जानकारी देखाथे."
+
+#: datenums/datenums.cpp:54
+#, fuzzy, kde-format
+#| msgctxt "N days/hours/minutes before/after the start/end"
+#| msgid "%1 before the end"
+msgid "1 day before the end of the year"
+msgid_plural "%1 days before the end of the year"
+msgstr[0] "%1 आखरी से पहिली"
+msgstr[1] "%1 आखरी से पहिली"
+
+#: datenums/datenums.cpp:59
+#, kde-format
+msgctxt "dayOfYear / daysTillEndOfYear"
+msgid "%1 / %2"
+msgstr "%1 / %2"
+
+#: datenums/datenums.cpp:60
+#, kde-format
+msgid "1 day since the beginning of the year,\n"
+msgid_plural "%1 days since the beginning of the year,\n"
+msgstr[0] ""
+msgstr[1] ""
+
+#: datenums/datenums.cpp:61
+#, fuzzy, kde-format
+#| msgid "Show days to end of year"
+msgid "1 day until the end of the year"
+msgid_plural "%1 days until the end of the year"
+msgstr[0] "सालान्त बर दिनों के संख्या देखाव"
+msgstr[1] "सालान्त बर दिनों के संख्या देखाव"
+
+#: datenums/datenums.cpp:102
+#, kde-format
+msgctxt "Week weekOfYear"
+msgid "Week %1"
+msgstr "हफ्ता %1"
+
+#: datenums/datenums.cpp:103 datenums/datenums.cpp:113
+#: datenums/datenums.cpp:118
+#, kde-format
+msgid "1 week since the beginning of the year"
+msgid_plural "%1 weeks since the beginning of the year"
+msgstr[0] ""
+msgstr[1] ""
+
+#: datenums/datenums.cpp:106
+#, kde-format
+msgctxt "weekOfYear (year)"
+msgid "%1 (%2)"
+msgstr "%1 (%2)"
+
+#: datenums/datenums.cpp:107
+#, kde-format
+msgctxt "Week weekOfYear (year)"
+msgid "Week %1 (%2)"
+msgstr "हफ्ता %1 (%2)"
+
+#: datenums/datenums.cpp:122
+#, kde-format
+msgid "1 week remaining"
+msgid_plural "%1 weeks remaining"
+msgstr[0] ""
+msgstr[1] ""
+
+#: datenums/datenums.cpp:123
+#, kde-format
+msgid "1 week until the end of the year"
+msgid_plural "%1 weeks until the end of the year"
+msgstr[0] ""
+msgstr[1] ""
+
+#: datenums/datenums.cpp:124
+#, kde-format
+msgctxt "weekOfYear / weeksTillEndOfYear"
+msgid "%1 / %2"
+msgstr "%1 / %2"
+
+#: datenums/datenums.cpp:140
+#, kde-format
+msgctxt ""
+"n weeks since the beginning of the year\n"
+"n weeks until the end of the year"
+msgid ""
+"%1\n"
+"%2"
+msgstr ""
+"%1\n"
+"%2"
+
+#: hebrew/configdialog.cpp:28
+#, fuzzy, kde-format
+#| msgid "Configure Holidays"
+msgctxt "@title:window"
+msgid "Configure Holidays"
+msgstr "अवकास कान्फिगर करव"
+
+#: hebrew/configdialog.cpp:42
+#, kde-format
+msgid "Use Israeli holidays"
+msgstr "इजराइली अवकास उपयोग करव"
+
+#: hebrew/configdialog.cpp:46
+#, kde-format
+msgid "Show weekly parsha"
+msgstr "साप्ताहिक पार्सा देखाव"
+
+#: hebrew/configdialog.cpp:50
+#, kde-format
+msgid "Show day of Omer"
+msgstr "ओमर के दिन देखाव"
+
+#: hebrew/configdialog.cpp:54
+#, kde-format
+msgid "Show Chol HaMoed"
+msgstr "च़ल हमाद देखाव"
+
+#: hebrew/hebrew.cpp:60
+#, kde-format
+msgctxt ""
+"Change the next two strings if emphasis is done differently in your language."
+msgid ""
+"<qt><p align=\"center\"><i>\n"
+"%1\n"
+"</i></p></qt>"
+msgstr ""
+"<qt><p align=\"center\"><i>\n"
+"%1\n"
+"</i></p></qt>"
+
+#: hebrew/hebrew.cpp:67
+#, kde-format
+msgid "This plugin provides the date in the Jewish calendar."
+msgstr "ये प्लगइन यहूदी कलेन्डर के तारीक प्रदत्त करथे "
+
+#: hebrew/holiday.cpp:75
+#, kde-format
+msgctxt ""
+"These are Jewish holidays and mostly do not have translations. They may have "
+"different spellings in your language; otherwise, just translate the sound to "
+"your characters."
+msgid "Sh. HaHodesh"
+msgstr "Sh. HaHodesh"
+
+#: hebrew/holiday.cpp:83
+#, kde-format
+msgid "Erev Pesach"
+msgstr "Erev Pesach"
+
+#: hebrew/holiday.cpp:94
+#, kde-format
+msgid "Sh. HaGadol"
+msgstr "Sh. HaGadol"
+
+#: hebrew/holiday.cpp:102
+#, kde-format
+msgid "Pesach"
+msgstr "Pesach"
+
+#: hebrew/holiday.cpp:113 hebrew/holiday.cpp:307
+#, kde-format
+msgid "Chol Hamoed"
+msgstr "Chol Hamoed"
+
+#: hebrew/holiday.cpp:124 hebrew/holiday.cpp:129 hebrew/holiday.cpp:138
+#, kde-format
+msgid "Yom HaShoah"
+msgstr "Yom HaShoah"
+
+#: hebrew/holiday.cpp:164 hebrew/holiday.cpp:171 hebrew/holiday.cpp:182
+#, kde-format
+msgid "Yom HaAtzmaut"
+msgstr "Yom HaAtzmaut"
+
+#: hebrew/holiday.cpp:166 hebrew/holiday.cpp:180
+#, kde-format
+msgid "Yom HaZikaron"
+msgstr "Yom HaZikaron"
+
+#: hebrew/holiday.cpp:190
+#, kde-format
+msgid "Yom Yerushalayim"
+msgstr "Yom Yerushalayim"
+
+#: hebrew/holiday.cpp:194
+#, kde-format
+msgid "Lag BaOmer"
+msgstr "Lag BaOmer"
+
+#: hebrew/holiday.cpp:220
+#, kde-format
+msgid "Erev Shavuot"
+msgstr "Erev Shavuot"
+
+#: hebrew/holiday.cpp:225
+#, kde-format
+msgid "Shavuot"
+msgstr "Shavuot"
+
+#: hebrew/holiday.cpp:234
+#, kde-format
+msgid "Tzom Tammuz"
+msgstr "Tzom Tammuz"
+
+#: hebrew/holiday.cpp:242
+#, kde-format
+msgid "Sh. Hazon"
+msgstr "Sh. Hazon"
+
+#: hebrew/holiday.cpp:244
+#, kde-format
+msgid "Sh. Nahamu"
+msgstr "Sh. Nahamu"
+
+#: hebrew/holiday.cpp:248
+#, kde-format
+msgid "Tisha B'Av"
+msgstr "Tisha B'Av"
+
+#: hebrew/holiday.cpp:254
+#, kde-format
+msgid "S'lichot"
+msgstr "S'lichot"
+
+#: hebrew/holiday.cpp:256
+#, kde-format
+msgid "Erev R.H."
+msgstr "Erev R.H."
+
+#: hebrew/holiday.cpp:264
+#, kde-format
+msgid "Rosh Hashana"
+msgstr "Rosh Hashana"
+
+#: hebrew/holiday.cpp:268 hebrew/holiday.cpp:283
+#, kde-format
+msgid "Sh. Shuvah"
+msgstr "Sh. Shuvah"
+
+#: hebrew/holiday.cpp:270 hebrew/holiday.cpp:275
+#, kde-format
+msgid "Tzom Gedalia"
+msgstr "Tzom Gedalia"
+
+#: hebrew/holiday.cpp:287
+#, kde-format
+msgid "Erev Y.K."
+msgstr "Erev Y.K."
+
+#: hebrew/holiday.cpp:290
+#, kde-format
+msgid "Yom Kippur"
+msgstr "Yom Kippur"
+
+#: hebrew/holiday.cpp:293
+#, kde-format
+msgid "Erev Sukkot"
+msgstr "Erev Sukkot"
+
+#: hebrew/holiday.cpp:298
+#, kde-format
+msgid "Sukkot"
+msgstr "Sukkot"
+
+#: hebrew/holiday.cpp:311
+#, kde-format
+msgid "Hoshana Rabah"
+msgstr "Hoshana Rabah"
+
+#: hebrew/holiday.cpp:314
+#, kde-format
+msgid "Shmini Atzeret"
+msgstr "Shmini Atzeret"
+
+#: hebrew/holiday.cpp:318
+#, kde-format
+msgid "Simchat Torah"
+msgstr "Simchat Torah"
+
+#: hebrew/holiday.cpp:329
+#, kde-format
+msgid "Erev Hanukah"
+msgstr "Erev Hanukah"
+
+#: hebrew/holiday.cpp:331 hebrew/holiday.cpp:339
+#, kde-format
+msgid "Hanukah"
+msgstr "Hanukah"
+
+#: hebrew/holiday.cpp:342
+#, kde-format
+msgid "Tzom Tevet"
+msgstr "Tzom Tevet"
+
+#: hebrew/holiday.cpp:352 hebrew/holiday.cpp:361 hebrew/holiday.cpp:366
+#: hebrew/holiday.cpp:372
+#, kde-format
+msgid "Sh. Shirah"
+msgstr "Sh. Shirah"
+
+#: hebrew/holiday.cpp:368
+#, kde-format
+msgid "Tu B'Shvat"
+msgstr "Tu B'Shvat"
+
+#: hebrew/holiday.cpp:383 hebrew/holiday.cpp:395 hebrew/holiday.cpp:403
+#, kde-format
+msgid "Sh. Shekalim"
+msgstr "Sh. Shekalim"
+
+#: hebrew/holiday.cpp:392
+#, kde-format
+msgid "Purim Katan"
+msgstr "Purim Katan"
+
+#: hebrew/holiday.cpp:411 hebrew/holiday.cpp:431
+#, kde-format
+msgid "Ta'anit Ester"
+msgstr "Ta'anit Ester"
+
+#: hebrew/holiday.cpp:420 hebrew/holiday.cpp:425
+#, kde-format
+msgid "Sh. Zachor"
+msgstr "Sh. Zachor"
+
+#: hebrew/holiday.cpp:427
+#, kde-format
+msgid "Erev Purim"
+msgstr "Erev Purim"
+
+#: hebrew/holiday.cpp:435
+#, kde-format
+msgid "Purim"
+msgstr "Purim"
+
+#: hebrew/holiday.cpp:439 hebrew/holiday.cpp:444
+#, kde-format
+msgid "Shushan Purim"
+msgstr "Shushan Purim"
+
+#: hebrew/holiday.cpp:455
+#, kde-format
+msgid "Sh. Parah"
+msgstr "Sh. Parah"
+
+#: hebrew/holiday.cpp:465
+#, kde-format
+msgid "Sh. HaHodesh"
+msgstr "Sh. HaHodesh"
+
+#: hebrew/holiday.cpp:481
+#, kde-format
+msgid " Omer"
+msgstr " Omer"
+
+#: hebrew/parsha.cpp:28
+#, kde-format
+msgctxt ""
+"These are weekly readings and do not have translations. They may have "
+"different spellings in your language; otherwise, just translate the sound to "
+"your characters"
+msgid "Bereshit"
+msgstr "बेरसिट"
+
+#: hebrew/parsha.cpp:29
+#, kde-format
+msgid "Noach"
+msgstr "Noach"
+
+#: hebrew/parsha.cpp:29
+#, kde-format
+msgid "Lech L'cha"
+msgstr "Lech L'cha"
+
+#: hebrew/parsha.cpp:29
+#, kde-format
+msgid "Vayera"
+msgstr "Vayera"
+
+#: hebrew/parsha.cpp:29
+#, kde-format
+msgid "Chaye Sarah"
+msgstr "Chaye Sarah"
+
+#: hebrew/parsha.cpp:29
+#, kde-format
+msgid "Toldot"
+msgstr "Toldot"
+
+#: hebrew/parsha.cpp:29
+#, kde-format
+msgid "Vayetze"
+msgstr "Vayetze"
+
+#: hebrew/parsha.cpp:29
+#, kde-format
+msgid "Vayishlach"
+msgstr "Vayishlach"
+
+#: hebrew/parsha.cpp:30
+#, kde-format
+msgid "Vayeshev"
+msgstr "Vayeshev"
+
+#: hebrew/parsha.cpp:30
+#, kde-format
+msgid "Miketz"
+msgstr "Miketz"
+
+#: hebrew/parsha.cpp:30
+#, kde-format
+msgid "Vayigash"
+msgstr "Vayigash"
+
+#: hebrew/parsha.cpp:30
+#, kde-format
+msgid "Vayechi"
+msgstr "Vayechi"
+
+#: hebrew/parsha.cpp:30
+#, kde-format
+msgid "Shemot"
+msgstr "Shemot"
+
+#: hebrew/parsha.cpp:30
+#, kde-format
+msgid "Vaera"
+msgstr "Vaera"
+
+#: hebrew/parsha.cpp:30
+#, kde-format
+msgid "Bo"
+msgstr "Bo"
+
+#: hebrew/parsha.cpp:31
+#, kde-format
+msgid "Beshalach"
+msgstr "Beshalach"
+
+#: hebrew/parsha.cpp:31
+#, kde-format
+msgid "Yitro"
+msgstr "Yitro"
+
+#: hebrew/parsha.cpp:31
+#, kde-format
+msgid "Mishpatim"
+msgstr "Mishpatim"
+
+#: hebrew/parsha.cpp:31
+#, kde-format
+msgid "Terumah"
+msgstr "Terumah"
+
+#: hebrew/parsha.cpp:31
+#, kde-format
+msgid "Tetzaveh"
+msgstr "Tetzaveh"
+
+#: hebrew/parsha.cpp:31
+#, kde-format
+msgid "Ki Tisa"
+msgstr "Ki Tisa"
+
+#: hebrew/parsha.cpp:31
+#, kde-format
+msgid "Vayakhel"
+msgstr "Vayakhel"
+
+#: hebrew/parsha.cpp:32
+#, kde-format
+msgid "Pekudei"
+msgstr "Pekudei"
+
+#: hebrew/parsha.cpp:32
+#, kde-format
+msgid "Vayikra"
+msgstr "Vayikra"
+
+#: hebrew/parsha.cpp:32
+#, kde-format
+msgid "Tzav"
+msgstr "Tzav"
+
+#: hebrew/parsha.cpp:32
+#, kde-format
+msgid "Shemini"
+msgstr "Shemini"
+
+#: hebrew/parsha.cpp:32
+#, kde-format
+msgid "Tazria"
+msgstr "Tazria"
+
+#: hebrew/parsha.cpp:32
+#, kde-format
+msgid "Metzora"
+msgstr "Metzora"
+
+#: hebrew/parsha.cpp:32
+#, kde-format
+msgid "Acharei Mot"
+msgstr "Acharei Mot"
+
+#: hebrew/parsha.cpp:33
+#, kde-format
+msgid "Kedoshim"
+msgstr "Kedoshim"
+
+#: hebrew/parsha.cpp:33
+#, kde-format
+msgid "Emor"
+msgstr "Emor"
+
+#: hebrew/parsha.cpp:33
+#, kde-format
+msgid "Behar"
+msgstr "Behar"
+
+#: hebrew/parsha.cpp:33
+#, kde-format
+msgid "Bechukotai"
+msgstr "Bechukotai"
+
+#: hebrew/parsha.cpp:33
+#, kde-format
+msgid "Bemidbar"
+msgstr "Bemidbar"
+
+#: hebrew/parsha.cpp:33
+#, kde-format
+msgid "Naso"
+msgstr "Naso"
+
+#: hebrew/parsha.cpp:33
+#, kde-format
+msgid "Behaalotcha"
+msgstr "Behaalotcha"
+
+#: hebrew/parsha.cpp:34
+#, kde-format
+msgid "Shelach"
+msgstr "Shelach"
+
+#: hebrew/parsha.cpp:34
+#, kde-format
+msgid "Korach"
+msgstr "Korach"
+
+#: hebrew/parsha.cpp:34
+#, kde-format
+msgid "Chukat"
+msgstr "Chukat"
+
+#: hebrew/parsha.cpp:34
+#, kde-format
+msgid "Balak"
+msgstr "Balak"
+
+#: hebrew/parsha.cpp:34
+#, kde-format
+msgid "Pinchas"
+msgstr "Pinchas"
+
+#: hebrew/parsha.cpp:34
+#, kde-format
+msgid "Matot"
+msgstr "Matot"
+
+#: hebrew/parsha.cpp:34
+#, kde-format
+msgid "Masei"
+msgstr "Masei"
+
+#: hebrew/parsha.cpp:35
+#, kde-format
+msgid "Devarim"
+msgstr "Devarim"
+
+#: hebrew/parsha.cpp:35
+#, kde-format
+msgid "Vaetchanan"
+msgstr "Vaetchanan"
+
+#: hebrew/parsha.cpp:35
+#, kde-format
+msgid "Ekev"
+msgstr "Ekev"
+
+#: hebrew/parsha.cpp:35
+#, kde-format
+msgid "Reeh"
+msgstr "Reeh"
+
+#: hebrew/parsha.cpp:35
+#, kde-format
+msgid "Shoftim"
+msgstr "Shoftim"
+
+#: hebrew/parsha.cpp:35
+#, kde-format
+msgid "Ki Tetze"
+msgstr "Ki Tetze"
+
+#: hebrew/parsha.cpp:35
+#, kde-format
+msgid "Ki Tavo"
+msgstr "Ki Tavo"
+
+#: hebrew/parsha.cpp:36
+#, kde-format
+msgid "Nitzavim"
+msgstr "Nitzavim"
+
+#: hebrew/parsha.cpp:36
+#, kde-format
+msgid "Vayelech"
+msgstr "Vayelech"
+
+#: hebrew/parsha.cpp:36
+#, kde-format
+msgid "Haazinu"
+msgstr "Haazinu"
+
+#: lunarphases/lunarphases.cpp:61
+#, kde-format
+msgid ""
+"This plugin displays the day's lunar phase (New, First, Last, Full). "
+"Currently, the phase is computed for noon at UTC; therefore, you should "
+"expect variations by 1 day in either direction."
+msgstr ""
+
+#: picoftheday/configdialog.cpp:28
+#, fuzzy, kde-format
+#| msgid "Configure Picture of the Day"
+msgctxt "@title:window"
+msgid "Configure Picture of the Day"
+msgstr "आज के फोटू कान्फिगर करव"
+
+#: picoftheday/configdialog.cpp:42
+#, kde-format
+msgid "Thumbnail Aspect Ratio Mode"
+msgstr "छोटेफोटू आस्पेक्ट रेसो मोड"
+
+#: picoftheday/configdialog.cpp:46
+#, kde-format
+msgid "Ignore aspect ratio"
+msgstr "आस्पेक्ट रेसो अनदेखा करव"
+
+#: picoftheday/configdialog.cpp:48
+#, kde-format
+msgid ""
+"The thumbnail will be scaled freely. The aspect ratio will not be preserved."
+msgstr "छोटेफोटू ल फ्री रूप से स्केल करे जाही. आस्पेक्ट रेसो ल संरक्छित नइ करे जाही."
+
+#: picoftheday/configdialog.cpp:52
+#, kde-format
+msgid "Keep aspect ratio"
+msgstr "आस्पेक्ट रेसो बनाए रखव"
+
+#: picoftheday/configdialog.cpp:54
+#, kde-format
+msgid ""
+"The thumbnail will be scaled to a rectangle as large as possible inside a "
+"given rectangle, preserving the aspect ratio."
+msgstr ""
+
+#: picoftheday/configdialog.cpp:59
+#, kde-format
+msgid "Keep aspect ratio by expanding"
+msgstr "फैलाकर ओस्पेक्ट रेसो ल बनाए रखव"
+
+#: picoftheday/configdialog.cpp:61
+#, kde-format
+msgid ""
+"The thumbnail will be scaled to a rectangle as small as possible outside a "
+"given rectangle, preserving the aspect ratio."
+msgstr ""
+
+#: picoftheday/element.cpp:209
+#, kde-format
+msgid "Wikipedia POTD: %1"
+msgstr ""
+
+#: picoftheday/element.cpp:326
+#, kde-format
+msgid "Picture Page"
+msgstr "छित्र पेज"
+
+#: picoftheday/element.cpp:326
+#, fuzzy, kde-format
+#| msgid "Loading…"
+msgid "Loading..."
+msgstr "लोड करत हे..."
+
+#: picoftheday/element.cpp:332
+#, fuzzy, kde-format
+#| msgid "<qt>Loading <i>Picture of the Day</i>…</qt>"
+msgid "<qt>Loading <i>Picture of the Day</i>...</qt>"
+msgstr "<qt> <i>आज के चित्र</i> लोड करत हे…</qt>"
+
+#: picoftheday/picoftheday.cpp:48
+#, kde-format
+msgid "<qt>This plugin provides the Wikipedia <i>Picture of the Day</i>.</qt>"
+msgstr "<qt>ये प्लगइन विकिपीडिया <i>आज के चित्र</i> प्रदान करथे.</qt>"
+
+#: thisdayinhistory/thisdayinhistory.cpp:29
+#, kde-format
+msgid "This plugin provides links to Wikipedia's 'This Day in History' pages."
+msgstr "ये प्लगइन विकिपीडिया के 'इतिहास मं आज के दिन' पेज मं संकलीित करथे."
+
+#: thisdayinhistory/thisdayinhistory.cpp:37
+#, kde-format
+msgid "This day in history"
+msgstr "इतिहास मं आज के दिन"
+
+#: thisdayinhistory/thisdayinhistory.cpp:39
+#: thisdayinhistory/thisdayinhistory.cpp:53
+#, fuzzy, kde-format
+#| msgctxt "Localized Wikipedia website"
+#| msgid "http://en.wikipedia.org/wiki/"
+msgctxt "Localized Wikipedia website"
+msgid "https://en.wikipedia.org/wiki/"
+msgstr "http://en.wikipedia.org/wiki/"
+
+#: thisdayinhistory/thisdayinhistory.cpp:40
+#, fuzzy, kde-format
+#| msgctxt "Qt date format used by thelocalized Wikipedia"
+#| msgid "MMMM_d"
+msgctxt "Qt date format used by the localized Wikipedia"
+msgid "MMMM_d"
+msgstr "MMMM_d"
+
+#: thisdayinhistory/thisdayinhistory.cpp:51
+#, kde-format
+msgid "This month in history"
+msgstr "इतिहास मं आज के महिना"
+
+#: thisdayinhistory/thisdayinhistory.cpp:54
+#, kde-format
+msgctxt "Qt date format used by the localized Wikipedia"
+msgid "MMMM_yyyy"
+msgstr "MMMM_yyyy"
+
+#~ msgctxt "NAME OF TRANSLATORS"
+#~ msgid "Your names"
+#~ msgstr "रविसंकर सिरीवास्तव, जी. करूनाकर"
+
+#~ msgctxt "EMAIL OF TRANSLATORS"
+#~ msgid "Your emails"
+#~ msgstr "raviratlami@aol.in,"
+
+#~ msgid "KOrganizer"
+#~ msgstr "के-आर्गेनाइजर"
+
+#~ msgid "A Personal Organizer"
+#~ msgstr "निजी प्रबन्धक"
+
+#, fuzzy
+#~| msgid ""
+#~| "(c) 1997-1999 Preston Brown\n"
+#~| "(c) 2000-2004,2007 Cornelius Schumacher\n"
+#~| "(c) 2004-2005 Reinhold Kainhofer"
+#~ msgid ""
+#~ "Copyright © 1997–1999 Preston Brown\n"
+#~ "Copyright © 2000–2004, 2007 Cornelius Schumacher\n"
+#~ "Copyright © 2004–2005 Reinhold Kainhofer\n"
+#~ "Copyright © 2006–2012 Allen Winter\n"
+#~ "Copyright © 2012–2016 KOrganizer authors"
+#~ msgstr ""
+#~ "(c) 1997-1999 प्रेस्टन ब्राउन\n"
+#~ "(c) 2000-2004, 2007 कार्नेलियस सूमाकर\n"
+#~ "(c) 2004-2005 रीनहोल्ड काइनहोफर"
+
+#~ msgid "Allen Winter"
+#~ msgstr "एलन विंटर"
+
+#~ msgid "Maintainer"
+#~ msgstr "मेंटेनर"
+
+#~ msgid "Reinhold Kainhofer"
+#~ msgstr "रेइनहोल्ड केइनहोफर"
+
+#~ msgid "Former Maintainer"
+#~ msgstr "पहिली के मेंटेनर"
+
+#~ msgid "Cornelius Schumacher"
+#~ msgstr "कार्नेलियस सूमेकर"
+
+#~ msgid "Preston Brown"
+#~ msgstr "प्रेस्टन ब्राउन"
+
+#~ msgid "Original Author"
+#~ msgstr "मूल लेखक"
+
+#~ msgid "Richard Apodaca"
+#~ msgstr "रिचर्ड एपोदाका"
+
+#~ msgid "Jan-Pascal van Best"
+#~ msgstr "जान-पास्कल वान बेस्ट"
+
+#~ msgid "Laszlo Boloni"
+#~ msgstr "लास्जलो बोलोनी"
+
+#~ msgid "Barry Benowitz"
+#~ msgstr "बैरी बेनोविद्ज"
+
+#~ msgid "Christopher Beard"
+#~ msgstr "क्रिस्टोफर बीयर्ड"
+
+#~ msgid "Kalle Dalheimer"
+#~ msgstr "काल दाल्हेमेर"
+
+#~ msgid "Ian Dawes"
+#~ msgstr "इयान दवास"
+
+#~ msgid "Thomas Eitzenberger"
+#~ msgstr "थामस एत्जेनबर्गर"
+
+#~ msgid "Neil Hart"
+#~ msgstr "नील हार्ट"
+
+#~ msgid "Declan Houlihan"
+#~ msgstr "डेक्लेन हालीहान"
+
+#~ msgid "Hans-Jürgen Husel"
+#~ msgstr " हेस-जुरगेन हसेल"
+
+#~ msgid "Tim Jansen"
+#~ msgstr "टिम जानसन"
+
+#~ msgid "Christian Kirsch"
+#~ msgstr "क्रिस्चियन किर्स्च"
+
+#~ msgid "Tobias König"
+#~ msgstr "टाबियस कोएनिग"
+
+#~ msgid "Martin Koller"
+#~ msgstr "मार्टिन कोलर"
+
+#~ msgid "Uwe Koloska"
+#~ msgstr "उवे कोलोस्का"
+
+#~ msgid "Glen Parker"
+#~ msgstr "ग्लेन पार्कर"
+
+#~ msgid "Dan Pilone"
+#~ msgstr "डान पिलोन"
+
+#~ msgid "Roman Rohr"
+#~ msgstr "रोमन रोहर"
+
+#~ msgid "Rafał Rzepecki"
+#~ msgstr "राफल रजेपेकी"
+
+#~ msgid "Part of work sponsored by Google with Summer of Code 2005"
+#~ msgstr "ये मां से कुछ कोड ल गूगल के समर ओफ कोड २००५ से स्पांसर कर दे गे हे"
+
+#~ msgid "Don Sanders"
+#~ msgstr "डान सैंडर्स"
+
+#~ msgid "Bram Schoenmakers"
+#~ msgstr "ब्रैम सियोनमेकर्स"
+
+#~ msgid "Günter Schwann"
+#~ msgstr "गुंतर सवान्न"
+
+#~ msgid "Herwin Jan Steehouwer"
+#~ msgstr "हरविन जान स्टीहावर"
+
+#~ msgid "Mario Teijeiro"
+#~ msgstr "मारियो तेइजेरो"
+
+#~ msgid "Nick Thompson"
+#~ msgstr "निक थाम्पसन"
+
+#~ msgid "Bo Thorsen"
+#~ msgstr "बो थार्सेन"
+
+#~ msgid "Larry Wright"
+#~ msgstr "लैरी राइट"
+
+#~ msgid "Thomas Zander"
+#~ msgstr "थामस जेंडर"
+
+#~ msgid "Fester Zigterman"
+#~ msgstr "फेस्तर जिग्तरमन"
+
+#, fuzzy
+#~| msgid "Time bar"
+#~ msgid "Hide menu bar"
+#~ msgstr "समय पट्टी"
+
+#~ msgid "Import &Calendar..."
+#~ msgstr "कलेन्डर आयात करव... (&C)"
+
+#, fuzzy
+#~ msgid "Merge the contents of another iCalendar"
+#~ msgstr "संलग्नक ल इनलाइन भंडारित करव"
+
+#, fuzzy
+#~| msgid "&Import From UNIX Ical tool"
+#~ msgid "&Import From UNIX Ical Tool"
+#~ msgstr "यूनिक्स आईकैल औजार से आयात करव (&I)"
+
+#, fuzzy
+#~ msgid "Import a calendar in another format"
+#~ msgstr "कलेन्डर ल '%1' मं केआर्गेनाइजर मं आयात करव."
+
+#~ msgid "Get &Hot New Stuff..."
+#~ msgstr "नवा चीज प्राप्त करव... (&H)"
+
+#~ msgid "Export &Web Page..."
+#~ msgstr "वेब पेज के रूप मं निर्यात करव... (&W)"
+
+#, fuzzy
+#~| msgid "Import &Calendar..."
+#~ msgid "Export as &iCalendar..."
+#~ msgstr "कलेन्डर आयात करव... (&C)"
+
+#, fuzzy
+#~| msgid "Import &Calendar..."
+#~ msgid "Export as &vCalendar..."
+#~ msgstr "कलेन्डर आयात करव... (&C)"
+
+#~ msgid "Archive O&ld Entries..."
+#~ msgstr "जुन्ना प्रविस्टि मन ल अभिलेखित करव... (&l)"
+
+#~ msgid "&Delete"
+#~ msgstr "मेटाव (&D)"
+
+#~ msgid "What's &Next"
+#~ msgstr "आगू के (&N)"
+
+#~ msgid "&Month"
+#~ msgstr "महिना (&M)"
+
+#, fuzzy
+#~| msgid "Agenda view"
+#~ msgid "&Agenda"
+#~ msgstr "एजेंडा दृस्य"
+
+#~ msgid "&Event List"
+#~ msgstr "घटना सूची (&E)"
+
+#~ msgid "&To-do List"
+#~ msgstr "काम-सूची सूचियाँ (&T)"
+
+#~ msgid "&Journal"
+#~ msgstr "दैनिकी (&J)"
+
+#~ msgid "Time&line"
+#~ msgstr "टाइम-लाइन (&l)"
+
+#~ msgid "Time&spent"
+#~ msgstr "टाइम लगिस (&s)"
+
+#~ msgid "&Refresh"
+#~ msgstr "ताजा करव (&R)"
+
+#~ msgid "F&ilter"
+#~ msgstr "फिल्टर (&i)"
+
+#~ msgid "In Horizontally"
+#~ msgstr "आड़े मं इन"
+
+#~ msgid "Out Horizontally"
+#~ msgstr "आड़े मं आउट"
+
+#~ msgid "In Vertically"
+#~ msgstr "खड़े मं इन"
+
+#~ msgid "Out Vertically"
+#~ msgstr "खड़े मं आउट"
+
+#~ msgctxt "@action Jump to today"
+#~ msgid "To &Today"
+#~ msgstr "आज मं (&T)"
+
+#~ msgid "Today"
+#~ msgstr "आज"
+
+#~ msgid "Scroll to Today"
+#~ msgstr "आज मं जाव"
+
+#~ msgctxt "scroll backward"
+#~ msgid "&Backward"
+#~ msgstr "पीछू जाव (&B)"
+
+#~ msgctxt "scroll backward"
+#~ msgid "Back"
+#~ msgstr "पीछू"
+
+#~ msgid "Scroll Backward"
+#~ msgstr "पीछू स्क्रोल करव"
+
+#~ msgctxt "scroll forward"
+#~ msgid "&Forward"
+#~ msgstr "आगू भेजव (&F)"
+
+#~ msgctxt "scoll forward"
+#~ msgid "Forward"
+#~ msgstr "आगू भेजना"
+
+#~ msgid "Scroll Forward"
+#~ msgstr "आगू स्क्राल करव"
+
+#~ msgid "&Day"
+#~ msgstr "दिन (&D)"
+
+#~ msgid "&Next Day"
+#~ msgid_plural "&Next %1 Days"
+#~ msgstr[0] "अगला दिन (&N)"
+#~ msgstr[1] "अगला %1 दिन (&N)"
+
+#~ msgid "W&ork Week"
+#~ msgstr "काम हफ्ता (&o)"
+
+#~ msgid "&Week"
+#~ msgstr "हफ्ता (&W)"
+
+#~ msgid "New E&vent..."
+#~ msgstr "नवा घटना... (&v)"
+
+#, fuzzy
+#~| msgid "Create a new To-do"
+#~ msgid "Create a new Event"
+#~ msgstr "नवा कामसूची बनाव"
+
+#~ msgid "New &To-do..."
+#~ msgstr "नवा काम सूची... (&T)"
+
+#~ msgid "Create a new To-do"
+#~ msgstr "नवा कामसूची बनाव"
+
+#~ msgid "New Su&b-to-do..."
+#~ msgstr "नवा उप काम-सूची... (&b)"
+
+#~ msgid "New &Journal..."
+#~ msgstr "नवा दैनिकी... (&J)"
+
+#, fuzzy
+#~| msgid "Create a new To-do"
+#~ msgid "Create a new Journal"
+#~ msgstr "नवा कामसूची बनाव"
+
+#, fuzzy
+#~| msgctxt "@action:button"
+#~| msgid "Configure &Plugin..."
+#~ msgid "Configure View..."
+#~ msgstr "प्लगइन कान्फिगर करव... (&P)"
+
+#, fuzzy
+#~| msgid "Configure Holidays"
+#~ msgid "Configure"
+#~ msgstr "अवकास कान्फिगर करव"
+
+#, fuzzy
+#~| msgid "Configure &Date && Time..."
+#~ msgid "Configure the view"
+#~ msgstr "तारीक अउ समय ल कान्फिगर करव... (&D)"
+
+#~ msgid "&Show"
+#~ msgstr "देखाव (&S)"
+
+#~ msgid "&Edit..."
+#~ msgstr "संपादन... (&E)"
+
+#~ msgid "&Make Sub-to-do Independent"
+#~ msgstr "उप-काम-सूची ल स्वतंत्र बनाव (&M)"
+
+#~ msgid "&Publish Item Information..."
+#~ msgstr "चीज जानकारी प्रकासित करव... (&P)"
+
+#~ msgid "Send &Invitation to Attendees"
+#~ msgstr "उपस्थितों ल निमंत्रन भेजव (&I)"
+
+#~ msgid "Re&quest Update"
+#~ msgstr "अपडेट निवेदित करव (&q)"
+
+#~ msgid "Send &Cancellation to Attendees"
+#~ msgstr "उपस्थितों को खारिज करे के सूचना भेजव"
+
+#~ msgid "Send Status &Update"
+#~ msgstr "स्थिति अपडेट भेजव (&U)"
+
+#~ msgctxt "counter proposal"
+#~ msgid "Request Chan&ge"
+#~ msgstr "बदले के निवेदन देव (&g)"
+
+#~ msgid "&Mail Free Busy Information..."
+#~ msgstr "मिलत/व्यस्त जानकारी ईमेल करव... (&M)"
+
+#~ msgid "&Send as iCalendar..."
+#~ msgstr "आईकलेन्डर के रूप मं भेजव... (&S)"
+
+#~ msgid "&Upload Free Busy Information"
+#~ msgstr "मिलत व्यस्त जानकारी अपलोड करव (&U)"
+
+#, fuzzy
+#~| msgid "&Addressbook"
+#~ msgid "&Address Book"
+#~ msgstr "पता-पुस्तिका (&A)"
+
+#~ msgid "Show Date Navigator"
+#~ msgstr "तारीक नेविगेटर देखाव"
+
+#~ msgid "Show To-do View"
+#~ msgstr "काम सूची देखाव"
+
+#~ msgid "Show Item Viewer"
+#~ msgstr "चीज प्रदर्सक देखाव"
+
+#, fuzzy
+#~| msgid "Export Calendar as Web Page"
+#~ msgid "Show Calendar Manager"
+#~ msgstr "कलेन्डर ल वेब पेज के रूप मं निर्यात करव"
+
+#~ msgid "Configure &Date && Time..."
+#~ msgstr "तारीक अउ समय ल कान्फिगर करव... (&D)"
+
+#~ msgid "Manage View &Filters..."
+#~ msgstr "दृस्य छनइया उपयोग करव... (&F)"
+
+#~ msgid "Manage C&ategories..."
+#~ msgstr "वर्ग के प्रबंधन करव... (&a)"
+
+#, fuzzy
+#~| msgid "&Configure Calendar..."
+#~ msgid "&Configure KOrganizer..."
+#~ msgstr "कलेन्डर कान्फिगर करव... (&C)"
+
+#, fuzzy
+#~| msgid "The item information was successfully sent."
+#~ msgid "New calendar added successfully"
+#~ msgstr "चीज जानकारी सफलतापूर्वक भेज दे गिस."
+
+#, fuzzy
+#~| msgid "Could not load calendar '%1'."
+#~ msgid "Could not add a calendar. Error: %1"
+#~ msgstr "कलेन्डर '%1' ल लोड नइ कर सकिस."
+
+#~ msgid ""
+#~ "You have no ical file in your home directory.\n"
+#~ "Import cannot proceed.\n"
+#~ msgstr ""
+#~ "आप मन के होम डिरेक्टरी तिर कोनो आई-केल फाइल नइ हे.\n"
+#~ "आयात नइ कर सकिस.\n"
+
+#, fuzzy
+#~| msgid "Error Occurred"
+#~ msgid "An error occurred: %1"
+#~ msgstr "गलती होइस"
+
+#~ msgid "Format Conversion"
+#~ msgstr "फार्मेट कन्वर्सन"
+
+#~ msgid "Proceed"
+#~ msgstr "आगू बढ़व"
+
+#~ msgid "Cannot upload calendar to '%1'"
+#~ msgstr " '%1' ल कलेन्डर अपलोड नइ कर सकिस."
+
+#~ msgid "Saved calendar '%1'."
+#~ msgstr "सहेजिस गिस कलेन्डर '%1'."
+
+#, fuzzy
+#~| msgid "New Calendar"
+#~ msgid "Select path for HTML calendar export"
+#~ msgstr "नवा कलेन्डर"
+
+#, fuzzy
+#~| msgid "<qt>Do you really want to remove the resource <b>%1</b>?</qt>"
+#~ msgid "Do you want to overwrite file \"%1\"?"
+#~ msgstr "<qt>का आप मन सचमुच संसाधन <b>%1</b> ल मिटाना चाहथो?</qt>"
+
+#~ msgid "Unable to save calendar to the file %1."
+#~ msgstr "कलेन्डर ल फाइल %1 मं सहेजे मं अक्छम."
+
+#~ msgid "Error"
+#~ msgstr "गलती"
+
+#~ msgid ""
+#~ "The calendar has been modified.\n"
+#~ "Do you want to save it?"
+#~ msgstr ""
+#~ "कलेन्डर सुधार दे गे हे.\n"
+#~ "का आप मन एला सहेजना चाहू?"
+
+#~ msgid "*.ics *.vcs|Calendar Files"
+#~ msgstr "*.vcs *.ics|कलेन्डर फाइल"
+
+#~ msgid "Could not start control module for date and time format."
+#~ msgstr "नियंत्रन माड्यूल ल तारीक अउ समय फारमेट मं चालू नइ कर सकिस."
+
+#, fuzzy
+#~| msgid "Could not load calendar '%1'."
+#~ msgid "Could not load calendar %1."
+#~ msgstr "कलेन्डर '%1' ल लोड नइ कर सकिस."
+
+#~ msgid "The downloaded events will be merged into your current calendar."
+#~ msgstr "आप मन के अभी हाल के कलेन्डर मं डाउनलोड घटना सामिल होही."
+
+#~ msgid "&Show Event"
+#~ msgstr "घटना देखाव (&S)"
+
+#~ msgid "&Edit Event..."
+#~ msgstr "घटना के संपादन करव... (&E)"
+
+#~ msgid "&Delete Event"
+#~ msgstr "घटना मेटाव (&D)"
+
+#~ msgid "&Show To-do"
+#~ msgstr "कामसूची देखाव (&S)"
+
+#~ msgid "&Edit To-do..."
+#~ msgstr "कामसूची संपादित करव... (&E)"
+
+#~ msgid "&Delete To-do"
+#~ msgstr "कामसूची मेटाव (&D)"
+
+#~ msgid "Attach as &link"
+#~ msgstr "संकली के रुप मं संलग्न करव (&l)"
+
+#~ msgid "Attach &inline"
+#~ msgstr "इनलाइन संलग्न करव (&i)"
+
+#~ msgid "Attach inline &without attachments"
+#~ msgstr "संलग्नकों के बिना इनलाइन संलग्न करव (&w)"
+
+#~ msgid "C&ancel"
+#~ msgstr "खारिज करव (&a)"
+
+#~ msgid "Remove Attachments"
+#~ msgstr "संलग्नक निकालव"
+
+#~ msgid "Undo: %1"
+#~ msgstr "पहिली जइसन: %1"
+
+#~ msgid "Undo"
+#~ msgstr "पहिली जइसन"
+
+#, fuzzy
+#~| msgid "Redo (%1)"
+#~ msgid "Redo: %1"
+#~ msgstr "दुहराव (%1)"
+
+#~ msgid "Redo"
+#~ msgstr "दुहराव"
+
+#~ msgid "URL '%1' is invalid."
+#~ msgstr "यूआरएल '%1' अवैध हे."
+
+#, fuzzy
+#~| msgid "Import Calendar"
+#~ msgctxt "@title:window"
+#~ msgid "Import Calendar"
+#~ msgstr "कलेन्डर आयात करव"
+
+#~ msgid "Merge into existing calendar"
+#~ msgstr "अभी हाल के कलेन्डर मं सामिल करव"
+
+#~ msgid "Add as new calendar"
+#~ msgstr "नवा कलेन्डर के रूप मं जोड़व"
+
+#, fuzzy
+#~| msgctxt "@label in QuickSearchLine"
+#~| msgid "Search"
+#~ msgctxt ""
+#~ "@info/plain Displayed grayed-out inside the textbox, verb to search"
+#~ msgid "Search"
+#~ msgstr "खोजव"
+
+#, fuzzy
+#~| msgid "Loading…"
+#~ msgid "searching..."
+#~ msgstr "लोड करत हे..."
+
+#, fuzzy
+#~| msgctxt "@title"
+#~| msgid "Properties for %1"
+#~ msgctxt "@title:window"
+#~ msgid "Properties of Calendar Folder %1"
+#~ msgstr " %1 बर गुन"
+
+#~ msgid "&Disable Color"
+#~ msgstr "रंग अक्छम करव (&D)"
+
+#~ msgid "&Assign Color..."
+#~ msgstr "रंग निरधारित करव... (&A)"
+
+#~ msgid "Use as &Default Calendar"
+#~ msgstr "डिफाल्ट कलेन्डर के रूप मं उपयोग करव (&D)"
+
+#, fuzzy
+#~ msgid "Remove from list"
+#~ msgstr "नवा टैम्प्लेट"
+
+#, fuzzy
+#~| msgid "Add calendar"
+#~ msgid "Add Calendar"
+#~ msgstr "कलेन्डर जोड़व"
+
+#, fuzzy
+#~| msgid "<qt>Do you really want to remove the resource <b>%1</b>?</qt>"
+#~ msgid "Do you really want to delete calendar %1?"
+#~ msgstr "<qt>का आप मन सचमुच संसाधन <b>%1</b> ल मिटाना चाहथो?</qt>"
+
+#, fuzzy
+#~| msgid "Default Calendar"
+#~ msgid "Delete Calendar"
+#~ msgstr "डिफाल्ट कलेन्डर"
+
+#~ msgid "Keep Absolute Times?"
+#~ msgstr "निरपेक्छ (एब्सल्यूट) समय रखे रहें?"
+
+#~ msgid "Keep Times"
+#~ msgstr "समय रखव"
+
+#~ msgid "Move Times"
+#~ msgstr "समय खिसकाव"
+
+#~ msgid "Todo completed: %1 (%2)"
+#~ msgstr "कामसूची पूरा: %1 (%2)"
+
+#~ msgid "Journal of %1"
+#~ msgstr "%1 के दैनिकी"
+
+#, fuzzy
+#~| msgid "<qt>Do you really want to remove the resource <b>%1</b>?</qt>"
+#~ msgctxt "@info"
+#~ msgid "Do you really want to permanently remove the item \"%1\"?"
+#~ msgstr "<qt>का आप मन सचमुच संसाधन <b>%1</b> ल मिटाना चाहथो?</qt>"
+
+#, fuzzy
+#~| msgid "Delete Old Items"
+#~ msgctxt "@title:window"
+#~ msgid "Delete Item?"
+#~ msgstr "जुन्ना चीज मेटाव"
+
+#, fuzzy
+#~| msgid "Please specify a valid start date."
+#~ msgid "Paste failed: unable to determine a valid target date."
+#~ msgstr "किरपा करके, एक वैध चालू तारीक निरधारित करव."
+
+#~ msgid "Make sub-to-dos independent"
+#~ msgstr "उप-काम-सूची ल स्वतंत्र बनाव"
+
+#, fuzzy
+#~| msgid "&Toggle Reminder"
+#~ msgid "Toggle Reminder"
+#~ msgstr "सुरता टागल करव (&T)"
+
+#, fuzzy
+#~ msgid "Toggle To-do Completed"
+#~ msgstr " निकालना पूरा (&g)"
+
+#, fuzzy
+#~| msgid "Copying Failed"
+#~ msgctxt "@title:window"
+#~ msgid "Copying Succeeded"
+#~ msgstr "नकल करना फेल"
+
+#, fuzzy
+#~| msgid "Unable to copy the item to %1."
+#~ msgctxt "@info"
+#~ msgid "Unable to copy the item \"%1\" to %2."
+#~ msgstr "चीज ल %1 मं नकल करे मं अक्छम."
+
+#, fuzzy
+#~| msgid "Copying Failed"
+#~ msgctxt "@title:window"
+#~ msgid "Copying Failed"
+#~ msgstr "नकल करना फेल"
+
+#, fuzzy
+#~| msgid "Moving Failed"
+#~ msgctxt "@title:window"
+#~ msgid "Moving Failed"
+#~ msgstr "खिसकाना फेल"
+
+#, fuzzy
+#~| msgid "Moving Failed"
+#~ msgctxt "@title:window"
+#~ msgid "Moving Succeeded"
+#~ msgstr "खिसकाना फेल"
+
+#, fuzzy
+#~ msgid "Do you want to dissociate the occurrence on %1 from the recurrence?"
+#~ msgstr "पुनरावृत्ति से घटना ल अलग करव"
+
+#~ msgid "KOrganizer Confirmation"
+#~ msgstr "के-आर्गेनाइजर पुस्टिकरन"
+
+#, fuzzy
+#~ msgid "&Dissociate"
+#~ msgstr "सम्बद्ध समय (&i)"
+
+#, fuzzy
+#~ msgid ""
+#~ "Do you want to dissociate the occurrence on %1 from the recurrence or "
+#~ "also dissociate future ones?"
+#~ msgstr "पुनरावृत्ति से घटना ल अलग करव"
+
+#, fuzzy
+#~ msgid "&Only Dissociate This One"
+#~ msgstr "ये घटना से असम्बद्ध करव (&D)"
+
+#, fuzzy
+#~ msgid "&Also Dissociate Future Ones"
+#~ msgstr "भविस्य के पुनरावृत्ति असम्बद्ध करव (&F)"
+
+#~ msgid "Dissociate future occurrences"
+#~ msgstr "भविस्य के पुनरावृत्ति असम्बद्ध करव"
+
+#~ msgid "Dissociate occurrence"
+#~ msgstr "पुनरावृत्ति असंबद्ध करव"
+
+#~ msgid "Dissociating the future occurrences failed."
+#~ msgstr "भविस्य के पुनरावृत्ति असम्बद्ध करना फेल."
+
+#~ msgid "Dissociating Failed"
+#~ msgstr "असम्बद्ध करना फेल"
+
+#~ msgid "Dissociating the occurrence failed."
+#~ msgstr "पुनरावृत्ति असम्बद्ध करे मं फेल."
+
+#, fuzzy
+#~| msgid "Calendars"
+#~ msgid "iCalendars (*.ics)"
+#~ msgstr "कलेन्डर"
+
+#, fuzzy
+#~ msgctxt "@info"
+#~ msgid "Cannot write iCalendar file %1. %2"
+#~ msgstr "अभिलेख फाइल %1 लिख नइ सकिस. %2"
+
+#, fuzzy
+#~| msgid "The journal entries can not be exported to a vCalendar file."
+#~ msgid "The journal entries cannot be exported to a vCalendar file."
+#~ msgstr "दैनिकी प्रविस्टि मन ल वी-कलेन्डर फाइल मं निर्यात नइ कर सकिस."
+
+#~ msgid "Data Loss Warning"
+#~ msgstr "डाटा नुकसान चेतावनी"
+
+#, fuzzy
+#~| msgid "Calendars"
+#~ msgid "vCalendars (*.vcs)"
+#~ msgstr "कलेन्डर"
+
+#, fuzzy
+#~ msgctxt "@info"
+#~ msgid "Cannot write vCalendar file %1. %2"
+#~ msgstr "अभिलेख फाइल %1 लिख नइ सकिस. %2"
+
+#~ msgid "&Previous Day"
+#~ msgstr "पिछला दिन (&P)"
+
+#~ msgid "&Previous Week"
+#~ msgstr "पिछला हफ्ता (&P)"
+
+#~ msgid "&Next Week"
+#~ msgstr "अगला हफ्ता (&N)"
+
+#~ msgid "No filter"
+#~ msgstr "कोई छनइया नइ"
+
+#~ msgid "Delete Only This"
+#~ msgstr "सिरिफ एला ही मेटाव"
+
+#~ msgid "Delete All"
+#~ msgstr "सब्बो मेटाव"
+
+#, fuzzy
+#~| msgid "Delete To-do"
+#~ msgid "Delete parent to-do"
+#~ msgstr "कामसूची मेटाव"
+
+#, fuzzy
+#~| msgid "Deleting sub-to-dos"
+#~ msgid "Delete parent to-do and sub-to-dos"
+#~ msgstr "उप-काम-सूची मिटात हे"
+
+#~ msgid "Removing not possible"
+#~ msgstr "मिटाना संभव नइ"
+
+#, fuzzy
+#~ msgid "Also Delete &Future"
+#~ msgstr "भविस्य मेटाव (&F)"
+
+#~ msgid "Delete C&urrent"
+#~ msgstr "अभी हाल के मेटाव (&u)"
+
+#~ msgid "Delete &All"
+#~ msgstr "सब्बो मेटाव (&A)"
+
+#, fuzzy
+#~| msgid "Strike &out completed to-do summaries"
+#~ msgid "There are no completed to-dos to purge."
+#~ msgstr "पूरा करे कामसूची सारांसों ल काट देव (&o)"
+
+#, fuzzy
+#~| msgid "Delete all completed to-dos?"
+#~ msgid "Delete all completed to-dos from checked calendars?"
+#~ msgstr "सब्बो काम-सूची मेटाव?"
+
+#~ msgid "Purge To-dos"
+#~ msgstr "काम-सूची अलग करव"
+
+#~ msgid "Purge"
+#~ msgstr "मेटाव"
+
+#, fuzzy
+#~| msgid "Unable to modify this to-do, because it cannot be locked."
+#~ msgctxt "@info"
+#~ msgid "Unable to edit \"%1\" because it is locked by another process."
+#~ msgstr "ये काम सूची ल सुधार नइ कर सकिस काबर कि एला तालाबंद नइ कर सकिस."
+
+#~ msgid "Unable to copy the item to %1."
+#~ msgstr "चीज ल %1 मं नकल करे मं अक्छम."
+
+#~ msgid "Copying Failed"
+#~ msgstr "नकल करना फेल"
+
+#~ msgid "Unable to move the item to  %1."
+#~ msgstr "चीज ल %1 मं खिसकाय मं अक्छम."
+
+#~ msgid "Moving Failed"
+#~ msgstr "खिसकाना फेल"
+
+#, fuzzy
+#~| msgid "Hide co&mpleted to-dos"
+#~ msgid "0 completed to-dos were purged."
+#~ msgstr "पूरा काम सूची ल लुकाव (&m)"
+
+#, fuzzy
+#~| msgid "Hide co&mpleted to-dos"
+#~ msgid "%1 completed to-do was purged."
+#~ msgid_plural "%1 completed to-dos were purged."
+#~ msgstr[0] "पूरा काम सूची ल लुकाव (&m)"
+#~ msgstr[1] "पूरा काम सूची ल लुकाव (&m)"
+
+#, fuzzy
+#~| msgid "Purging completed to-dos"
+#~ msgid "An error occurred while purging completed to-dos: %1"
+#~ msgstr "काम-सूची अलग करना पूरा"
+
+#, fuzzy
+#~| msgctxt "@title:tab general settings"
+#~| msgid "General"
+#~ msgctxt "@title:tab General settings for a folder."
+#~ msgid "General"
+#~ msgstr "सामान्य"
+
+#, fuzzy
+#~| msgctxt "filter name"
+#~| msgid "Name:"
+#~ msgctxt "@label:textbox Name of the folder."
+#~ msgid "&Name:"
+#~ msgstr "नांव:"
+
+#, fuzzy
+#~ msgctxt "@info:tooltip"
+#~ msgid "Set the folder name"
+#~ msgstr "अपडेट भेजव"
+
+#, fuzzy
+#~| msgid "No reminders"
+#~ msgctxt "@option:check"
+#~ msgid "Block reminders locally"
+#~ msgstr "कोई सुरता नइ"
+
+#, fuzzy
+#~ msgctxt "@info:tooltip"
+#~ msgid "Ignore reminders from this calendar"
+#~ msgstr "ये घटना या काम बर सुरता सक्रिय करथे."
+
+#, fuzzy
+#~ msgctxt "@info:whatsthis"
+#~ msgid ""
+#~ "Check this box if you do not want to receive reminders from items "
+#~ "associated with this calendar."
+#~ msgstr ""
+#~ "ये तारीक ल एक्सेप्सन के रूप मं एखर घटना या काम बर पुनरावृत्ति नियम मं सामिल करव."
+
+#, fuzzy
+#~| msgid "Calendar"
+#~ msgctxt "@option:check"
+#~ msgid "&Use custom icon:"
+#~ msgstr "कलेन्डर"
+
+#, fuzzy
+#~| msgid "Calendar"
+#~ msgctxt "@info:tooltip"
+#~ msgid "Set a custom icon"
+#~ msgstr "कलेन्डर"
+
+#, fuzzy
+#~ msgctxt "@info:whatsthis"
+#~ msgid "Check this box if you want to set a custom icon for this folder."
+#~ msgstr ""
+#~ "ये तारीक ल एक्सेप्सन के रूप मं एखर घटना या काम बर पुनरावृत्ति नियम मं सामिल करव."
+
+#~ msgid "&File"
+#~ msgstr "फाइल (&F)"
+
+#~ msgid "&Import"
+#~ msgstr "आयात (&I)"
+
+#~ msgid "&Export"
+#~ msgstr "निर्यात (&E)"
+
+#~ msgid "&Edit"
+#~ msgstr "संपादन (&E)"
+
+#~ msgid "&View"
+#~ msgstr "देखव (&V)"
+
+#~ msgid "&Zoom"
+#~ msgstr "जूम (&Z)"
+
+#~ msgid "&Go"
+#~ msgstr "जाव (&G)"
+
+#~ msgid "&Actions"
+#~ msgstr "काम (&A)"
+
+#~ msgid "S&chedule"
+#~ msgstr "समय सारनी (&c)"
+
+#~ msgid "&Settings"
+#~ msgstr "सेटिंग (&S)"
+
+#~ msgid "&Sidebar"
+#~ msgstr "पार्स्व पट्टी (&S)"
+
+#~ msgid "&Help"
+#~ msgstr "मदद (&H)"
+
+#, fuzzy
+#~| msgid "Main"
+#~ msgctxt "main toolbar"
+#~ msgid "Main"
+#~ msgstr "मुख्य"
+
+#~ msgid "Views"
+#~ msgstr "दृस्य"
+
+#~ msgid "Schedule"
+#~ msgstr "कारक्रम"
+
+#~ msgid "Filters Toolbar"
+#~ msgstr "फिल्टर औजार-पट्टी"
+
+#, fuzzy
+#~| msgid "Calendars"
+#~ msgid "Calendar Colors"
+#~ msgstr "कलेन्डर"
+
+#~ msgid "Export Calendar as Web Page"
+#~ msgstr "कलेन्डर ल वेब पेज के रूप मं निर्यात करव"
+
+#~ msgid "Export"
+#~ msgstr "निर्यात"
+
+#~ msgid "Setting Default Preferences"
+#~ msgstr "डिफाल्ट प्राथमिकता मन ल सेट करत हे"
+
+#~ msgid "Reset to Defaults"
+#~ msgstr "डिफाल्ट मं रीसेट करव"
+
+#~ msgctxt "general settings for html export"
+#~ msgid "General"
+#~ msgstr "सामान्य"
+
+#~ msgid "Date Range"
+#~ msgstr "तारीक सीमा"
+
+#~ msgid "View Type"
+#~ msgstr "दृस्य किसिम"
+
+#~ msgid "Destination"
+#~ msgstr "गंतव्य"
+
+#~ msgid "To-dos"
+#~ msgstr "काम-सूची"
+
+#~ msgid "Events"
+#~ msgstr "घटना"
+
+#, fuzzy
+#~| msgid "Edit Calendar Filters"
+#~ msgctxt "@title::window"
+#~ msgid "Edit Calendar Filters"
+#~ msgstr "कलेन्डर फिल्टरों के संपादन करव"
+
+#, fuzzy
+#~| msgid "Press this button to define a new filter."
+#~ msgctxt "@info:whatsthis"
+#~ msgid "Press this button to define a new filter."
+#~ msgstr "एक नवा छनइया परिभासित करे बर ए बटन ल दबाव."
+
+#, fuzzy
+#~| msgid "Press this button to remove the currently active filter."
+#~ msgctxt "@info:whatsthis"
+#~ msgid "Press this button to remove the currently active filter."
+#~ msgstr "अभी हाल के सक्रिय छनइया ल मेटाय बर ए बटन ल दबाव."
+
+#, fuzzy
+#~| msgid "New Filter %1"
+#~ msgctxt "@label default filter name"
+#~ msgid "New Filter %1"
+#~ msgstr "नवा छनइया %1"
+
+#, fuzzy
+#~| msgid "<qt>Do you really want to remove the resource <b>%1</b>?</qt>"
+#~ msgctxt "@info"
+#~ msgid "Do you really want to permanently remove the filter \"%1\"?"
+#~ msgstr "<qt>का आप मन सचमुच संसाधन <b>%1</b> ल मिटाना चाहथो?</qt>"
+
+#, fuzzy
+#~| msgid "Delete Old Items"
+#~ msgctxt "@title:window"
+#~ msgid "Delete Filter?"
+#~ msgstr "जुन्ना चीज मेटाव"
+
+#~ msgid "Event Viewer"
+#~ msgstr "घटना प्रदर्सक"
+
+#~ msgid "Edit..."
+#~ msgstr "संपादन..."
+
+#~ msgid "Show in Context"
+#~ msgstr "संदर्भ मं देखाव"
+
+#, fuzzy
+#~| msgid "Create a new To-do"
+#~ msgctxt "@title:window"
+#~ msgid "Create Note"
+#~ msgstr "नवा कामसूची बनाव"
+
+#, fuzzy
+#~| msgid "&Cancel"
+#~ msgctxt "@action:discard creating note"
+#~ msgid "Cancel"
+#~ msgstr "खारिज करव (&C)"
+
+#, fuzzy
+#~| msgctxt "@title:tab"
+#~| msgid "Save"
+#~ msgctxt "@action:save note"
+#~ msgid "Save"
+#~ msgstr "सहेजव"
+
+#, fuzzy
+#~| msgid "&Title:"
+#~ msgid "Title:"
+#~ msgstr "सीर्सकः (&T)"
+
+#, fuzzy
+#~| msgid "Text"
+#~ msgid "Text:"
+#~ msgstr "पाठ"
+
+#, fuzzy
+#~| msgid "New Calendar"
+#~ msgid "Search Calendar"
+#~ msgstr "नवा कलेन्डर"
+
+#, fuzzy
+#~| msgctxt "@label in QuickSearchLine"
+#~| msgid "Search"
+#~ msgctxt "search in calendar"
+#~ msgid "&Search"
+#~ msgstr "खोजव"
+
+#, fuzzy
+#~| msgid "No events were found matching your search expression."
+#~ msgid "No items were found that match your search pattern."
+#~ msgstr "आप मन के खोजे के एक्सप्रेसन्स से कोनो मिलत जुलत घटना नइ मिलिस."
+
+#, fuzzy
+#~| msgid "Search In"
+#~ msgid "Search Results"
+#~ msgstr "में खोजव"
+
+#, fuzzy
+#~| msgid "1 Subitem:"
+#~| msgid_plural "%1 Subitems:"
+#~ msgid "%1 item"
+#~ msgid_plural "%1 items"
+#~ msgstr[0] "१ सब-आइटम:"
+#~ msgstr[1] "%1 सब-आइटम:"
+
+#, fuzzy
+#~ msgctxt "A collection of all declined invidations."
+#~ msgid "Declined Invitations"
+#~ msgstr "मिटाना पुस्टिकरन"
+
+#, fuzzy
+#~ msgctxt "A collection of all open invidations."
+#~ msgid "Open Invitations"
+#~ msgstr "मिटाना पुस्टिकरन"
+
+#, fuzzy
+#~| msgid "Unable to create the resource."
+#~ msgid "Unable to write the output file."
+#~ msgstr "संसाधन बनाए मं अक्छम."
+
+#, fuzzy
+#~| msgid "Unable to copy the item to %1."
+#~ msgid "Unable to upload the export file."
+#~ msgstr "चीज ल %1 मं नकल करे मं अक्छम."
+
+#, fuzzy
+#~| msgid "Set Your Status"
+#~ msgctxt "@title:window"
+#~ msgid "Export Status"
+#~ msgstr "आप मन के स्थिति सेट करव"
+
+#, fuzzy
+#~| msgid "Show Date Number"
+#~ msgid "Show page Web"
+#~ msgstr "तारीक नंबर देखाव"
+
+#, fuzzy
+#~| msgctxt "@item:inlistbox range is computed automatically"
+#~| msgid "Automatic"
+#~ msgctxt "@info:status"
+#~ msgid "Automatic Export: %1"
+#~ msgstr "अपने अपन"
+
+#, fuzzy
+#~| msgctxt "monthname year"
+#~| msgid "%1 %2"
+#~ msgctxt "@title month and year"
+#~ msgid "%1 %2"
+#~ msgstr "%1 %2"
+
+#, fuzzy
+#~| msgid "Start Time"
+#~ msgctxt "@title:column event start time"
+#~ msgid "Start Time"
+#~ msgstr "सुरू समय"
+
+#, fuzzy
+#~| msgid "End Time"
+#~ msgctxt "@title:column event end time"
+#~ msgid "End Time"
+#~ msgstr "खतम समय"
+
+#, fuzzy
+#~| msgctxt "@action:intoolbar create a new event"
+#~| msgid "Event"
+#~ msgctxt "@title:column event description"
+#~ msgid "Event"
+#~ msgstr "घटना"
+
+#, fuzzy
+#~| msgid "Locations"
+#~ msgctxt "@title:column event locatin"
+#~ msgid "Location"
+#~ msgstr "जगह"
+
+#, fuzzy
+#~| msgid "Categories"
+#~ msgctxt "@title:column event categories"
+#~ msgid "Categories"
+#~ msgstr "स्रेनी"
+
+#, fuzzy
+#~| msgid "&Attendees"
+#~ msgctxt "@title:column event attendees"
+#~ msgid "Attendees"
+#~ msgstr "उपस्थिति (&A)"
+
+#, fuzzy
+#~| msgid "To-do"
+#~ msgctxt "@title:column"
+#~ msgid "To-do"
+#~ msgstr "काम-सूची"
+
+#, fuzzy
+#~| msgid "Priority"
+#~ msgctxt "@title:column to-do priority"
+#~ msgid "Priority"
+#~ msgstr "प्राथमिकता"
+
+#, fuzzy
+#~| msgctxt "@title:column percent complete"
+#~| msgid "Complete"
+#~ msgctxt "@title:column to-do percent completed"
+#~ msgid "Completed"
+#~ msgstr "पूरा"
+
+#, fuzzy
+#~| msgid "Due Date"
+#~ msgctxt "@title:column to-do due date"
+#~ msgid "Due Date"
+#~ msgstr "नियत तारीक"
+
+#, fuzzy
+#~| msgid "Locations"
+#~ msgctxt "@title:column to-do location"
+#~ msgid "Location"
+#~ msgstr "जगह"
+
+#, fuzzy
+#~| msgid "Categories"
+#~ msgctxt "@title:column to-do categories"
+#~ msgid "Categories"
+#~ msgstr "स्रेनी"
+
+#, fuzzy
+#~| msgid "&Attendees"
+#~ msgctxt "@title:column to-do attendees"
+#~ msgid "Attendees"
+#~ msgstr "उपस्थिति (&A)"
+
+#, fuzzy
+#~| msgid "To-dos to Print"
+#~ msgctxt "@title:column sub-to-dos of the parent to-do"
+#~ msgid "Sub-To-dos of: "
+#~ msgstr "छापे बर कामसूची"
+
+#, fuzzy
+#~| msgid "To-dos"
+#~ msgctxt "@title:column sub-to-dos of the parent to-do"
+#~ msgid "Sub-To-dos"
+#~ msgstr "काम-सूची"
+
+#, fuzzy
+#~| msgctxt "Percent complete"
+#~| msgid "%1 %"
+#~ msgctxt "@info to-do percent complete"
+#~ msgid "%1 %"
+#~ msgstr "%1 %"
+
+#, fuzzy
+#~| msgid "- %1"
+#~ msgctxt "@info page creator name only"
+#~ msgid "by %1 "
+#~ msgstr "- %1"
+
+#, fuzzy
+#~| msgid "Edit %1"
+#~ msgctxt "@info page credit name only"
+#~ msgid "with %1"
+#~ msgstr "संपादन %1"
+
+#, fuzzy
+#~ msgctxt "@info holiday by date and name"
+#~ msgid "%1, %2"
+#~ msgstr "%1 %2"
+
+#~ msgid "Text"
+#~ msgstr "पाठ"
+
+#, fuzzy
+#~| msgid "Select a month"
+#~ msgid "Selection"
+#~ msgstr "महिना चुनव"
+
+#, fuzzy
+#~| msgid "Date && Time"
+#~ msgid "Date & Time"
+#~ msgstr "तारीक अउ समय"
+
+#, fuzzy
+#~| msgid "&Date:"
+#~ msgid "Date"
+#~ msgstr "तारीक: (&D)"
+
+#, fuzzy
+#~| msgid "Tobias König"
+#~ msgid "(c) 2004 Tobias Koenig"
+#~ msgstr "टाबियस कोएनिग"
+
+#, fuzzy
+#~| msgid "Tobias König"
+#~ msgid "Tobias Koenig"
+#~ msgstr "टाबियस कोएनिग"
+
+#, fuzzy
+#~| msgid "<qt>Do you really want to remove the resource <b>%1</b>?</qt>"
+#~ msgid "<qt>Do you really want to delete '<b>%1</b>'?</qt>"
+#~ msgstr "<qt>का आप मन सचमुच संसाधन <b>%1</b> ल मिटाना चाहथो?</qt>"
+
+#, fuzzy
+#~| msgid "Import Calendar"
+#~ msgid "Import Page"
+#~ msgstr "कलेन्डर आयात करव"
+
+#, fuzzy
+#~| msgctxt "@label filter for KUrlRequester"
+#~| msgid "*.ics|iCalendar Files"
+#~ msgid "Designer Files (*.ui)"
+#~ msgstr "*.ics|आईकलेन्डर फाइल"
+
+#, fuzzy
+#~| msgid "Delete"
+#~ msgid "Delete Page"
+#~ msgstr "मेटाव"
+
+#, fuzzy
+#~| msgid "Import &Calendar..."
+#~ msgid "Import Page..."
+#~ msgstr "कलेन्डर आयात करव... (&C)"
+
+#, fuzzy
+#~| msgctxt "@label"
+#~| msgid "Type:"
+#~ msgid "Type:"
+#~ msgstr "किसिमः"
+
+#, fuzzy
+#~| msgctxt "login name on the Kolab server"
+#~| msgid "Username:"
+#~ msgid "Classname:"
+#~ msgstr "कमइया नाम:"
+
+#~ msgid "Description:"
+#~ msgstr "वर्ननः"
+
+#, fuzzy
+#~ msgctxt "@item:intext delimiter for joining holiday names"
+#~ msgid ","
+#~ msgstr ","
+
+#~ msgctxt "delimiter for joining holiday names"
+#~ msgid ","
+#~ msgstr ","
+
+#~ msgid "&Move"
+#~ msgstr "खिसकाव (&M) "
+
+#~ msgid "&Copy"
+#~ msgstr "नकल (&C)"
+
+#~ msgid "&Add"
+#~ msgstr "जोड़व (&A)"
+
+#~ msgid "&Cancel"
+#~ msgstr "खारिज करव (&C)"
+
+#~ msgid "&Print..."
+#~ msgstr "छापव...(&P)"
+
+#, fuzzy
+#~ msgid "Print Previe&w..."
+#~ msgstr "छापव...(&P)"
+
+#~ msgctxt "cut this event"
+#~ msgid "C&ut"
+#~ msgstr "काटव (&C)"
+
+#~ msgctxt "copy this event"
+#~ msgid "&Copy"
+#~ msgstr "नकल (&C)"
+
+#~ msgid "&Paste"
+#~ msgstr "चिपकाव (&P)"
+
+#~ msgctxt "delete this incidence"
+#~ msgid "&Delete"
+#~ msgstr "मेटाव (&D)"
+
+#, fuzzy
+#~| msgid "Create a new To-do"
+#~ msgid "Create To-do"
+#~ msgstr "नवा कामसूची बनाव"
+
+#, fuzzy
+#~| msgid "Create a new To-do"
+#~ msgid "Create Event"
+#~ msgstr "नवा कामसूची बनाव"
+
+#, fuzzy
+#~| msgid "Create a new To-do"
+#~ msgid "Create Note"
+#~ msgstr "नवा कामसूची बनाव"
+
+#, fuzzy
+#~ msgid "Togg&le To-do Completed"
+#~ msgstr " निकालना पूरा (&g)"
+
+#~ msgid "&Toggle Reminder"
+#~ msgstr "सुरता टागल करव (&T)"
+
+#, fuzzy
+#~ msgid "&Dissociate From Recurrence..."
+#~ msgstr "पुनरावृत्ति असंबद्ध करव"
+
+#~ msgid "Send as iCalendar..."
+#~ msgstr "जैसा हे वइसनेच भेजव (&S)"
+
+#~ msgid "Unable to save %1 \"%2\"."
+#~ msgstr "सहेजे मं फेल %1 \"%2\"."
+
+#, fuzzy
+#~| msgctxt "@title:group"
+#~| msgid "Calendar Decorations"
+#~ msgid "Event Summary Configuration"
+#~ msgstr "कलेन्डर सजावट"
+
+#, fuzzy
+#~ msgid "Show events for today only"
+#~ msgstr "घटना या काम कहाँ हो ए सेट करथे."
+
+#, fuzzy
+#~ msgid ""
+#~ "Check this box if you want to see events occurring on this date only."
+#~ msgstr ""
+#~ "ये तारीक ल एक्सेप्सन के रूप मं एखर घटना या काम बर पुनरावृत्ति नियम मं सामिल करव."
+
+#, fuzzy
+#~| msgid "Today"
+#~ msgid "&Today only"
+#~ msgstr "आज"
+
+#, fuzzy
+#~ msgid ""
+#~ "Check this box if you want to see events that start sometime during the "
+#~ "next 31 days."
+#~ msgstr ""
+#~ "ये तारीक ल एक्सेप्सन के रूप मं एखर घटना या काम बर पुनरावृत्ति नियम मं सामिल करव."
+
+#, fuzzy
+#~ msgid "Select the days for showing upcoming events"
+#~ msgstr "ये काम बर सेट तारीक सेट करथे."
+
+#, fuzzy
+#~ msgid ""
+#~ "Check this box if you want to specify the number of days in the future "
+#~ "for upcoming events."
+#~ msgstr ""
+#~ "ये तारीक ल एक्सेप्सन के रूप मं एखर घटना या काम बर पुनरावृत्ति नियम मं सामिल करव."
+
+#, fuzzy
+#~| msgid "1 day"
+#~| msgid_plural "%1 days"
+#~ msgid "1 day"
+#~ msgstr "1 दिन"
+
+#, fuzzy
+#~| msgctxt "@label suffix in the N days spin box"
+#~| msgid " days"
+#~ msgctxt "days to show in summary"
+#~ msgid " days"
+#~ msgstr "दिन"
+
+#, fuzzy
+#~| msgid "Birthdays"
+#~ msgid "Show &birthdays"
+#~ msgstr "जन्मदिन"
+
+#, fuzzy
+#~| msgctxt "@title:group email settings"
+#~| msgid "Email Settings"
+#~ msgid "Groupware Settings"
+#~ msgstr "ईमेल सेटिंग"
+
+#, fuzzy
+#~ msgid "Show events belonging to my calendars only"
+#~ msgstr "कलेन्डरों ल आजू-बाजू मं देखाव"
+
+#, fuzzy
+#~ msgid ""
+#~ "Check this box if you want the summary to show events belonging to your "
+#~ "calendars only."
+#~ msgstr ""
+#~ "ये तारीक ल एक्सेप्सन के रूप मं एखर घटना या काम बर पुनरावृत्ति नियम मं सामिल करव."
+
+#, fuzzy
+#~| msgid "Show sub-day events as:"
+#~ msgid "Show &my events only"
+#~ msgstr "उप-तारीक घटना ल ए रूप मं देखाव:"
+
+#, fuzzy
+#~| msgctxt "incidence category: appointment"
+#~| msgid "Appointment"
+#~ msgid "&Edit Appointment..."
+#~ msgstr "नियुक्ति"
+
+#, fuzzy
+#~| msgctxt "incidence category: appointment"
+#~| msgid "Appointment"
+#~ msgid "&Delete Appointment"
+#~ msgstr "नियुक्ति"
+
+#, fuzzy
+#~| msgctxt "@title:window"
+#~| msgid "Edit Event : %1"
+#~ msgid "Edit Event: \"%1\""
+#~ msgstr "घटना के संपादन करव : %1"
+
+#, fuzzy
+#~| msgid "New &Journal..."
+#~ msgctxt "@action:inmenu"
+#~ msgid "New Journal..."
+#~ msgstr "नवा दैनिकी... (&J)"
+
+#, fuzzy
+#~| msgid "Create a new To-do"
+#~ msgctxt "@info:status"
+#~ msgid "Create a new journal"
+#~ msgstr "नवा कामसूची बनाव"
+
+#, fuzzy
+#~| msgid "Journal"
+#~ msgctxt "@action:inmenu"
+#~ msgid "Sync Journal"
+#~ msgstr "दैनिकी"
+
+#, fuzzy
+#~| msgid "1 day"
+#~| msgid_plural "%1 days"
+#~ msgid " day"
+#~ msgid_plural " days"
+#~ msgstr[0] "1 दिन"
+#~ msgstr[1] "%1 दिन"
+
+#, fuzzy
+#~| msgid "New E&vent..."
+#~ msgctxt "@action:inmenu"
+#~ msgid "New Event..."
+#~ msgstr "नवा घटना... (&v)"
+
+#, fuzzy
+#~| msgid "Create a new To-do"
+#~ msgctxt "@info:status"
+#~ msgid "Create a new event"
+#~ msgstr "नवा कामसूची बनाव"
+
+#, fuzzy
+#~| msgid "New Calendar"
+#~ msgctxt "@action:inmenu"
+#~ msgid "Sync Calendar"
+#~ msgstr "नवा कलेन्डर"
+
+#, fuzzy
+#~| msgctxt "incidence category"
+#~| msgid "Meeting"
+#~ msgctxt "@item"
+#~ msgid "Meeting"
+#~ msgstr "बैठक"
+
+#, fuzzy
+#~| msgid "Notes:"
+#~ msgctxt "@item"
+#~ msgid "Note: %1"
+#~ msgstr "टिप्पनियाँ:"
+
+#, fuzzy
+#~| msgid "From: %1   To: %2   %3"
+#~ msgctxt "@item"
+#~ msgid ""
+#~ "From: %1\n"
+#~ "To: %2\n"
+#~ "Subject: %3"
+#~ msgstr "द्वारा: %1   को: %2   %3"
+
+#, fuzzy
+#~| msgid "KMail"
+#~ msgctxt "@item"
+#~ msgid "Mail: %1"
+#~ msgstr "के-मेल"
+
+#, fuzzy
+#~| msgid "Today"
+#~ msgctxt "the appointment is today"
+#~ msgid "Today"
+#~ msgstr "आज"
+
+#, fuzzy
+#~| msgid "1 day"
+#~| msgid_plural "%1 days"
+#~ msgid "in 1 day"
+#~ msgid_plural "in %1 days"
+#~ msgstr[0] "1 दिन"
+#~ msgstr[1] "%1 दिन"
+
+#, fuzzy
+#~| msgid "1 minute"
+#~| msgid_plural "%1 minutes"
+#~ msgctxt "use abbreviation for minute to keep the text short"
+#~ msgid "1 min"
+#~ msgid_plural "%1 mins"
+#~ msgstr[0] "1 मिनट"
+#~ msgstr[1] "%1 मिनट"
+
+#, fuzzy
+#~| msgid "1 day"
+#~| msgid_plural "%1 days"
+#~ msgid "all day"
+#~ msgstr "1 दिन"
+
+#, fuzzy
+#~| msgid "%1 - %2"
+#~ msgctxt "Time from - to"
+#~ msgid "%1 - %2"
+#~ msgstr "%1 - %2"
+
+#, fuzzy
+#~| msgid "Redo (%1)"
+#~ msgctxt "next occurrence"
+#~ msgid "Next: %1"
+#~ msgstr "दुहराव (%1)"
+
+#, fuzzy
+#~| msgid "&New To-do..."
+#~ msgctxt "@action:inmenu"
+#~ msgid "New To-do..."
+#~ msgstr "नवा काम सूची... (&N)"
+
+#, fuzzy
+#~| msgid "Create a new To-do"
+#~ msgctxt "@info:status"
+#~ msgid "Create a new to-do"
+#~ msgstr "नवा कामसूची बनाव"
+
+#, fuzzy
+#~| msgid "To-do List"
+#~ msgctxt "@action:inmenu"
+#~ msgid "Sync To-do List"
+#~ msgstr "काम-सूची सूचियाँ"
+
+#, fuzzy
+#~| msgctxt "@item@intable N days/hours/minutes before/after the start/end"
+#~| msgid "%1 after the start"
+#~ msgctxt "@info:status"
+#~ msgid "Synchronize groupware to-do list"
+#~ msgstr "%1 चालू के बाद"
+
+#, fuzzy
+#~| msgctxt "@title:group"
+#~| msgid "Calendar Decorations"
+#~ msgid "To-do Summary Configuration"
+#~ msgstr "कलेन्डर सजावट"
+
+#, fuzzy
+#~| msgid "Show To-do View"
+#~ msgid "Show To-dos Due"
+#~ msgstr "काम सूची देखाव"
+
+#, fuzzy
+#~| msgid "To-do due today color"
+#~ msgid "Show To-dos due today only"
+#~ msgstr "आज सेट कामसूची के रंग"
+
+#, fuzzy
+#~ msgid "Check this box if you want to see To-dos due on this date only."
+#~ msgstr ""
+#~ "ये तारीक ल एक्सेप्सन के रूप मं एखर घटना या काम बर पुनरावृत्ति नियम मं सामिल करव."
+
+#, fuzzy
+#~| msgid "Print only to-dos due in the &range:"
+#~ msgid "Show To-dos due within the next month"
+#~ msgstr "सिरिफ ओही काम सूची ल छापव जऊन एखर सीमा मं हे: (&r)"
+
+#, fuzzy
+#~ msgid ""
+#~ "Check this box if you want to see To-dos that are due sometime during the "
+#~ "next 31 days."
+#~ msgstr ""
+#~ "ये तारीक ल एक्सेप्सन के रूप मं एखर घटना या काम बर पुनरावृत्ति नियम मं सामिल करव."
+
+#, fuzzy
+#~ msgid ""
+#~ "Check this box if you want specify the number of days in the future for "
+#~ "pending To-dos."
+#~ msgstr ""
+#~ "ये तारीक ल एक्सेप्सन के रूप मं एखर घटना या काम बर पुनरावृत्ति नियम मं सामिल करव."
+
+#, fuzzy
+#~| msgid "Hide co&mpleted to-dos"
+#~ msgid "Hide completed To-dos"
+#~ msgstr "पूरा काम सूची ल लुकाव (&m)"
+
+#, fuzzy
+#~ msgid ""
+#~ "Check this box if you do not want to see To-dos that have already been "
+#~ "completed."
+#~ msgstr ""
+#~ "ये तारीक ल एक्सेप्सन के रूप मं एखर घटना या काम बर पुनरावृत्ति नियम मं सामिल करव."
+
+#, fuzzy
+#~| msgctxt "@title:column percent complete"
+#~| msgid "Complete"
+#~ msgid "&Completed"
+#~ msgstr "पूरा"
+
+#, fuzzy
+#~| msgid "Include to-dos &without due date"
+#~ msgid "Hide To-dos without a due date"
+#~ msgstr "नियत तारीक के बिना कामसूची सामिल करव (&w)"
+
+#, fuzzy
+#~ msgid "Check this box if you do not want to see open-ended To-dos."
+#~ msgstr ""
+#~ "ये तारीक ल एक्सेप्सन के रूप मं एखर घटना या काम बर पुनरावृत्ति नियम मं सामिल करव."
+
+#, fuzzy
+#~| msgid "Hide &inactive to-dos"
+#~ msgid "Hide unstarted To-dos"
+#~ msgstr "अक्रिय काम-सूची ल लुकाव (&i)"
+
+#, fuzzy
+#~ msgid ""
+#~ "Check this box if you do not want to see To-dos with a start date in the "
+#~ "future."
+#~ msgstr ""
+#~ "ये तारीक ल एक्सेप्सन के रूप मं एखर घटना या काम बर पुनरावृत्ति नियम मं सामिल करव."
+
+#, fuzzy
+#~| msgid "Hide &inactive to-dos"
+#~ msgid "Hide in-progress To-dos"
+#~ msgstr "अक्रिय काम-सूची ल लुकाव (&i)"
+
+#, fuzzy
+#~ msgid ""
+#~ "Check this box if you do not want to see To-dos that have been started "
+#~ "but are not yet completed."
+#~ msgstr ""
+#~ "ये तारीक ल एक्सेप्सन के रूप मं एखर घटना या काम बर पुनरावृत्ति नियम मं सामिल करव."
+
+#, fuzzy
+#~| msgid "Hide co&mpleted to-dos"
+#~ msgid "Hide overdue To-dos"
+#~ msgstr "पूरा काम सूची ल लुकाव (&m)"
+
+#, fuzzy
+#~ msgid ""
+#~ "Check this box if you do not want to see To-dos that are past their due "
+#~ "date but have not yet been completed."
+#~ msgstr ""
+#~ "ये तारीक ल एक्सेप्सन के रूप मं एखर घटना या काम बर पुनरावृत्ति नियम मं सामिल करव."
+
+#, fuzzy
+#~ msgid "Show To-dos belonging to my calendars only"
+#~ msgstr "कलेन्डरों ल आजू-बाजू मं देखाव"
+
+#, fuzzy
+#~ msgid ""
+#~ "Check this box if you want the summary to show To-dos belonging to your "
+#~ "calendars only."
+#~ msgstr ""
+#~ "ये तारीक ल एक्सेप्सन के रूप मं एखर घटना या काम बर पुनरावृत्ति नियम मं सामिल करव."
+
+#, fuzzy
+#~| msgid "&Show To-do"
+#~ msgid "Show &my To-dos only"
+#~ msgstr "कामसूची देखाव (&S)"
+
+#, fuzzy
+#~| msgid "Purge To-dos"
+#~ msgid "Pending To-dos"
+#~ msgstr "काम-सूची अलग करव"
+
+#, fuzzy
+#~| msgid "Today"
+#~ msgctxt "the to-do is due today"
+#~ msgid "Today"
+#~ msgstr "आज"
+
+#, fuzzy
+#~| msgid "1 day"
+#~| msgid_plural "%1 days"
+#~ msgid "1 day ago"
+#~ msgid_plural "%1 days ago"
+#~ msgstr[0] "1 दिन"
+#~ msgstr[1] "%1 दिन"
+
+#, fuzzy
+#~| msgctxt "@label to-do due date"
+#~| msgid "Due"
+#~ msgctxt "the to-do is due"
+#~ msgid "due"
+#~ msgstr "नियत तारीक"
+
+#, fuzzy
+#~| msgid "Print only to-dos due in the &range:"
+#~ msgid "No pending to-dos due within the next day"
+#~ msgid_plural "No pending to-dos due within the next %1 days"
+#~ msgstr[0] "सिरिफ ओही काम सूची ल छापव जऊन एखर सीमा मं हे: (&r)"
+#~ msgstr[1] "सिरिफ ओही काम सूची ल छापव जऊन एखर सीमा मं हे: (&r)"
+
+#, fuzzy
+#~ msgid "&Mark To-do Completed"
+#~ msgstr " निकालना पूरा (&g)"
+
+#, fuzzy
+#~ msgid "Edit To-do: \"%1\""
+#~ msgstr "कामसूची संपादित करव"
+
+#, fuzzy
+#~| msgid "No start date"
+#~ msgctxt "the to-do starts today"
+#~ msgid "starts today"
+#~ msgstr "कोई सुरू के तारीक नइ"
+
+#, fuzzy
+#~| msgctxt "percent completed"
+#~| msgid "co&mpleted"
+#~ msgctxt "the to-do is completed"
+#~ msgid "completed"
+#~ msgstr "पूरा (&m)"
+
+#, fuzzy
+#~ msgctxt "Separator for status like this: overdue, completed"
+#~ msgid ","
+#~ msgstr ","
+
+#, fuzzy
+#~| msgctxt "@title:group"
+#~| msgid "Calendar Decorations"
+#~ msgid "Special Dates Summary Configuration"
+#~ msgstr "कलेन्डर सजावट"
+
+#, fuzzy
+#~ msgid ""
+#~ "Check this box if you want to see special occasions occurring on this "
+#~ "date only."
+#~ msgstr "जब चीज मन ल मेटाय जाय तहां पुस्टिकरन गोठ के प्रदर्सन बर एखर डब्बा ल जांचव."
+
+#, fuzzy
+#~ msgid ""
+#~ "Check this box if you want to see special occasions that start sometime "
+#~ "during the next 31 days."
+#~ msgstr ""
+#~ "ये तारीक ल एक्सेप्सन के रूप मं एखर घटना या काम बर पुनरावृत्ति नियम मं सामिल करव."
+
+#, fuzzy
+#~ msgid "Show birthdays from your calendar"
+#~ msgstr "कलेन्डरों ल आजू-बाजू मं देखाव"
+
+#, fuzzy
+#~ msgid "Show holidays from your calendar"
+#~ msgstr "कलेन्डरों ल आजू-बाजू मं देखाव"
+
+#, fuzzy
+#~| msgid "Show holidays as:"
+#~ msgid "Show &holidays"
+#~ msgstr "छुट्टियों ल ए रूप मं देखाव:"
+
+#, fuzzy
+#~| msgctxt ""
+#~| "incidence category: examples: anniversary of historical or personal "
+#~| "event; big date; remembrance, etc"
+#~| msgid "Special Occasion"
+#~ msgid "Show s&pecial occasions"
+#~ msgstr "विसेस अवसर"
+
+#, fuzzy
+#~| msgid "Show both"
+#~ msgid "Show birth&days"
+#~ msgstr "दोनों देखाव"
+
+#, fuzzy
+#~| msgid "Today"
+#~ msgctxt "the special day is today"
+#~ msgid "Today"
+#~ msgstr "आज"
+
+#, fuzzy
+#~| msgctxt "incidence category"
+#~| msgid "Birthday"
+#~ msgid "Birthday"
+#~ msgstr "जन्मदिन"
+
+#~ msgid "Holiday"
+#~ msgstr "अवकास"
+
+#, fuzzy
+#~| msgctxt ""
+#~| "incidence category: examples: anniversary of historical or personal "
+#~| "event; big date; remembrance, etc"
+#~| msgid "Special Occasion"
+#~ msgid "Special Occasion"
+#~ msgstr "विसेस अवसर"
+
+#, fuzzy
+#~| msgid "Next year"
+#~ msgid "one year"
+#~ msgid_plural "%1 years"
+#~ msgstr[0] "अगला साल"
+#~ msgstr[1] "अगला साल"
+
+#, fuzzy
+#~| msgid "Send email"
+#~ msgid "Send &Mail"
+#~ msgstr "ईमेल भेजव"
+
+#, fuzzy
+#~| msgid "Former Maintainer"
+#~ msgid "Current Maintainer"
+#~ msgstr "पहिली के मेंटेनर"
+
+#~ msgid "Calendar"
+#~ msgstr "कलेन्डर"
+
+#~ msgid "New Calendar"
+#~ msgstr "नवा कलेन्डर"
+
+#~ msgctxt "the calendar is read-only"
+#~ msgid "read-only"
+#~ msgstr "सिरिफ पढ़े जा सके"
+
+#, fuzzy
+#~ msgid "Import the specified files as separate calendars"
+#~ msgstr "संलग्नक ल इनलाइन भंडारित करव"
+
+#, fuzzy
+#~| msgid ""
+#~| "Merge the given calendars into the standard calendar (i.e. copy the "
+#~| "events)"
+#~ msgid "Merge the specified files into an existing calendar"
+#~ msgstr "दे गे कलेन्डर ल मानक कलेन्डर मं सामिल करव (जैेसे कि घटना ल नकल करव)"
+
+#~ msgid "Merged calendar"
+#~ msgstr "सामिल कलेन्डर"
+
+#~ msgid "Calendars Side by Side"
+#~ msgstr "आजू बाजू मं कलेन्डर"
+
+#~ msgctxt "Default export file"
+#~ msgid "calendar.html"
+#~ msgstr "calendar.html"
+
+#~ msgctxt "@title:tab personal settings"
+#~ msgid "Personal"
+#~ msgstr "निजी"
+
+#~ msgctxt "@title:group email settings"
+#~ msgid "Email Settings"
+#~ msgstr "ईमेल सेटिंग"
+
+#~ msgctxt "@title:tab"
+#~ msgid "Save"
+#~ msgstr "सहेजव"
+
+#, fuzzy
+#~| msgid "Import Calendar"
+#~ msgctxt "@title:group"
+#~ msgid "Exporting Calendar"
+#~ msgstr "कलेन्डर आयात करव"
+
+#~ msgctxt "@title:group"
+#~ msgid "Show/Hide Options"
+#~ msgstr "विकल्प देखाव/छुपाव"
+
+#, fuzzy
+#~| msgid "Calendars"
+#~ msgctxt "@title:tab calendar account settings"
+#~ msgid "Calendars"
+#~ msgstr "कलेन्डर"
+
+#~ msgctxt "@title:tab"
+#~ msgid "Regional"
+#~ msgstr "छेत्रीय"
+
+#, fuzzy
+#~ msgctxt "@title:group"
+#~ msgid "Holidays"
+#~ msgstr "अवकास"
+
+#~ msgctxt "@label"
+#~ msgid "Use holiday region:"
+#~ msgstr "छुट्टी छेत्र परयोग करव:"
+
+#, fuzzy
+#~| msgctxt "weekOfYear (year)"
+#~| msgid "%1 (%2)"
+#~ msgctxt "Holday region, region language"
+#~ msgid "%1 (%2)"
+#~ msgstr "%1 (%2)"
+
+#, fuzzy
+#~| msgctxt "@item:inlistbox do not use holidays"
+#~| msgid "(None)"
+#~ msgctxt "No holiday region"
+#~ msgid "None"
+#~ msgstr "(कुछ नइ)"
+
+#, fuzzy
+#~| msgctxt "@title:group"
+#~| msgid "Working Hours"
+#~ msgctxt "@title:group"
+#~ msgid "Working Period"
+#~ msgstr "काम घंटे"
+
+#~ msgctxt "@title:tab"
+#~ msgid "Default Values"
+#~ msgstr "डिफाल्ट मूल्य"
+
+#, fuzzy
+#~ msgctxt "@title:group"
+#~ msgid "Appointments"
+#~ msgstr "नियुक्ति"
+
+#, fuzzy
+#~ msgctxt "@title:group"
+#~ msgid "Reminders"
+#~ msgstr "सुरता"
+
+#~ msgctxt "@label"
+#~ msgid "Default reminder time:"
+#~ msgstr "डिफाल्ट सुरता समय:"
+
+#, fuzzy
+#~ msgctxt "@item:inlistbox reminder units in minutes"
+#~ msgid "minute(s)"
+#~ msgstr "मिनट"
+
+#, fuzzy
+#~ msgctxt "@item:inlistbox reminder time units in hours"
+#~ msgid "hour(s)"
+#~ msgstr "घंटा"
+
+#, fuzzy
+#~ msgctxt "@item:inlistbox reminder time units in days"
+#~ msgid "day(s)"
+#~ msgstr "दिन"
+
+#~ msgctxt "@title:tab general settings"
+#~ msgid "General"
+#~ msgstr "सामान्य"
+
+#, fuzzy
+#~ msgctxt "@title:group"
+#~ msgid "Display Options"
+#~ msgstr "प्रदर्सक विकल्प"
+
+#~ msgctxt "@label suffix in the N days spin box"
+#~ msgid " days"
+#~ msgstr "दिन"
+
+#~ msgctxt "@title:group"
+#~ msgid "Date Navigator"
+#~ msgstr "तारीक नेविगेटर"
+
+#~ msgctxt "@title:tab"
+#~ msgid "Agenda View"
+#~ msgstr "एजेंडा दृस्य"
+
+#, fuzzy
+#~ msgctxt "@label suffix in the hour size spin box"
+#~ msgid " pixels"
+#~ msgstr "पिक्सेल"
+
+#~ msgctxt "@title:tab"
+#~ msgid "Month View"
+#~ msgstr "महिना दृस्य"
+
+#~ msgctxt "@title:tab"
+#~ msgid "Todo View"
+#~ msgstr "कामसूची दृस्य"
+
+#, fuzzy
+#~ msgctxt "@title:group"
+#~ msgid "Other Options"
+#~ msgstr "अऊ दूसर विकल्प"
+
+#~ msgctxt "@title:tab"
+#~ msgid "Colors"
+#~ msgstr "रंग"
+
+#~ msgctxt "@title:group"
+#~ msgid "Categories"
+#~ msgstr "स्रेनी"
+
+#~ msgctxt "@title:group"
+#~ msgid "Resources"
+#~ msgstr "संसाधन "
+
+#, fuzzy
+#~ msgctxt "@info:whatsthis"
+#~ msgid ""
+#~ "Choose here the color of the calendar selected using the combo box above."
+#~ msgstr "ऊपर दे गे सूची मं चुने गे उपस्थित के भूमिका संपादित करव."
+
+#~ msgctxt "@title:tab"
+#~ msgid "Fonts"
+#~ msgstr "फोंट"
+
+#~ msgctxt "@label"
+#~ msgid "Event text"
+#~ msgstr "घटना पाठ"
+
+#~ msgctxt "@title:column plugin name"
+#~ msgid "Name"
+#~ msgstr "नांव"
+
+#~ msgctxt "@action:button"
+#~ msgid "Configure &Plugin..."
+#~ msgstr "प्लगइन कान्फिगर करव... (&P)"
+
+#~ msgctxt "@title:group"
+#~ msgid "Position"
+#~ msgstr "स्थिति"
+
+#~ msgctxt "@option:check"
+#~ msgid "Show at the bottom of the agenda views"
+#~ msgstr "एजेंडा दृस्य के तल मं देखाव"
+
+#~ msgctxt "@title:group"
+#~ msgid "Calendar Decorations"
+#~ msgstr "कलेन्डर सजावट"
+
+#~ msgctxt "@title:group"
+#~ msgid "Other Plugins"
+#~ msgstr "अऊ दूसर प्लगइन्स"
+
+#~ msgctxt "@info"
+#~ msgid "Unable to configure this plugin"
+#~ msgstr "ये प्लगइन ल कान्फिगर करे मं अक्छम"
+
+#, fuzzy
+#~| msgid "Please enter a name for the new template:"
+#~ msgid "Full name of the calendar owner"
+#~ msgstr "नवा टैम्प्लेट बर एक नाम भरव:"
+
+#, fuzzy
+#~| msgid "Please enter a name for the new template:"
+#~ msgid "The full name of the calendar owner for the export"
+#~ msgstr "नवा टैम्प्लेट बर एक नाम भरव:"
+
+#, fuzzy
+#~| msgid "Please enter a name for the new template:"
+#~ msgid "The email address of the calendar owner for the export"
+#~ msgstr "नवा टैम्प्लेट बर एक नाम भरव:"
+
+#, fuzzy
+#~| msgid "Unable to create the resource."
+#~ msgid "Creator application of the calendar"
+#~ msgstr "संसाधन बनाए मं अक्छम."
+
+#, fuzzy
+#~| msgid "Unable to create the resource."
+#~ msgid "Enter a creator application of the calendar, for example KOrganizer."
+#~ msgstr "संसाधन बनाए मं अक्छम."
+
+#, fuzzy
+#~| msgid "Server URL:"
+#~ msgid "Creator URL"
+#~ msgstr "सर्वर यूआरएल:"
+
+#, fuzzy
+#~ msgid "Page Title"
+#~ msgstr "सीर्सकः (&T)"
+
+#, fuzzy
+#~ msgid "The title of the exported page"
+#~ msgstr "डिफाल्ट सुरता समय:"
+
+#, fuzzy
+#~| msgctxt "@item@intable N days/hours/minutes before/after the start/end"
+#~| msgid "%1 after the start"
+#~ msgid "Date start"
+#~ msgstr "%1 चालू के बाद"
+
+#, fuzzy
+#~| msgid "Date Range"
+#~ msgid "Date end"
+#~ msgstr "तारीक सीमा"
+
+#, fuzzy
+#~ msgid "Exclude private items from the export"
+#~ msgstr "अवकास सामिल नइ करव"
+
+#, fuzzy
+#~ msgid "Check this box if you do NOT want to export your private items."
+#~ msgstr ""
+#~ "ये तारीक ल एक्सेप्सन के रूप मं एखर घटना या काम बर पुनरावृत्ति नियम मं सामिल करव."
+
+#, fuzzy
+#~ msgid "Exclude confidential items from the export"
+#~ msgstr "अवकास सामिल नइ करव"
+
+#, fuzzy
+#~ msgid "Check this box if you do NOT want to export your confidential items."
+#~ msgstr ""
+#~ "ये तारीक ल एक्सेप्सन के रूप मं एखर घटना या काम बर पुनरावृत्ति नियम मं सामिल करव."
+
+#, fuzzy
+#~| msgid "To-do list"
+#~ msgid "Export events as a list"
+#~ msgstr "काम-सूची सूचियाँ"
+
+#, fuzzy
+#~ msgid "Check this box if you want your events shown as a list."
+#~ msgstr ""
+#~ "ये तारीक ल एक्सेप्सन के रूप मं एखर घटना या काम बर पुनरावृत्ति नियम मं सामिल करव."
+
+#, fuzzy
+#~| msgctxt "@option:check"
+#~| msgid "Show in the month view"
+#~ msgid "Export in month view"
+#~ msgstr "महिना दृस्य मं देखाव"
+
+#, fuzzy
+#~| msgctxt "@option:check"
+#~| msgid "Show in the month view"
+#~ msgid "Export events in a month view"
+#~ msgstr "महिना दृस्य मं देखाव"
+
+#, fuzzy
+#~ msgid "Check this box if you want your events shown in a month view."
+#~ msgstr "जब चीज मन ल मेटाय जाय तहां पुस्टिकरन गोठ के प्रदर्सन बर एखर डब्बा ल जांचव."
+
+#, fuzzy
+#~| msgid "Print as split week view"
+#~ msgid "Export in week view"
+#~ msgstr "विभाजित हफ्ता दृस्य के रूप मं छापव"
+
+#, fuzzy
+#~| msgid "Print as split week view"
+#~ msgid "Export events in a week view"
+#~ msgstr "विभाजित हफ्ता दृस्य के रूप मं छापव"
+
+#, fuzzy
+#~ msgid "Check this box if you want your events shown in a week view."
+#~ msgstr "जब चीज मन ल मेटाय जाय तहां पुस्टिकरन गोठ के प्रदर्सन बर एखर डब्बा ल जांचव."
+
+#, fuzzy
+#~| msgid "Unable to create the resource."
+#~ msgid "Title of the calendar"
+#~ msgstr "संसाधन बनाए मं अक्छम."
+
+#, fuzzy
+#~| msgid "Unable to create the resource."
+#~ msgid "Title for the event calendar"
+#~ msgstr "संसाधन बनाए मं अक्छम."
+
+#, fuzzy
+#~| msgid "Please select type of the new resource:"
+#~ msgid "Enter a string to use for the title of the event calendar."
+#~ msgstr "किरपा करके, नवा रिसोर्स के सैली चुनव:"
+
+#, fuzzy
+#~| msgid "Export to HTML with every save"
+#~ msgid "Export location of the events"
+#~ msgstr "सहेजे जाय मं हर एक बार एचटीएमएल मं निर्यात करव"
+
+#, fuzzy
+#~| msgid "Include Information"
+#~ msgid "Include the event locations"
+#~ msgstr "इनक्लूड जानकारी"
+
+#, fuzzy
+#~ msgid "Include the event categories"
+#~ msgstr "वर्ग चुनव"
+
+#, fuzzy
+#~ msgid "Check this box if you want the event categories to be exported."
+#~ msgstr ""
+#~ "ये तारीक ल एक्सेप्सन के रूप मं एखर घटना या काम बर पुनरावृत्ति नियम मं सामिल करव."
+
+#, fuzzy
+#~| msgctxt "@item@intable N days/hours/minutes before/after the start/end"
+#~| msgid "%1 after the end"
+#~ msgid "Include the event attendees"
+#~ msgstr "%1 आखरी के बाद"
+
+#, fuzzy
+#~ msgid "Check this box if you want the event attendees to be exported."
+#~ msgstr ""
+#~ "ये तारीक ल एक्सेप्सन के रूप मं एखर घटना या काम बर पुनरावृत्ति नियम मं सामिल करव."
+
+#, fuzzy
+#~| msgid "To-do list"
+#~ msgid "Export to-do list"
+#~ msgstr "काम-सूची सूचियाँ"
+
+#, fuzzy
+#~| msgid "To-do list"
+#~ msgid "Export the to-do list"
+#~ msgstr "काम-सूची सूचियाँ"
+
+#, fuzzy
+#~| msgctxt "@item@intable N days/hours/minutes before/after the start/end"
+#~| msgid "%1 after the start"
+#~ msgid "Title of the to-do list"
+#~ msgstr "%1 चालू के बाद"
+
+#~ msgid "To-do List"
+#~ msgstr "काम-सूची सूचियाँ"
+
+#, fuzzy
+#~| msgctxt "@item@intable N days/hours/minutes before/after the start/end"
+#~| msgid "%1 after the start"
+#~ msgid "Title for the to-do list"
+#~ msgstr "%1 चालू के बाद"
+
+#, fuzzy
+#~| msgid "Sets the due date for this to-do."
+#~ msgid "Export due dates of the to-dos"
+#~ msgstr "ये काम बर सेट तारीक सेट करथे."
+
+#, fuzzy
+#~| msgid "Include to-dos &without due date"
+#~ msgid "Include to-do due dates"
+#~ msgstr "नियत तारीक के बिना कामसूची सामिल करव (&w)"
+
+#, fuzzy
+#~| msgctxt "@item@intable N days/hours/minutes before/after the start/end"
+#~| msgid "%1 after the start"
+#~ msgid "Include the to-do locations"
+#~ msgstr "%1 चालू के बाद"
+
+#, fuzzy
+#~ msgid "Include the to-do categories"
+#~ msgstr "वर्ग चुनव"
+
+#, fuzzy
+#~ msgid "Check this box if you want the to-do categories to be exported."
+#~ msgstr ""
+#~ "ये तारीक ल एक्सेप्सन के रूप मं एखर घटना या काम बर पुनरावृत्ति नियम मं सामिल करव."
+
+#, fuzzy
+#~ msgid "Include the to-do attendees"
+#~ msgstr "१ उपस्थित"
+
+#, fuzzy
+#~ msgid "Check this box if you want the to-do attendees to be exported."
+#~ msgstr ""
+#~ "ये तारीक ल एक्सेप्सन के रूप मं एखर घटना या काम बर पुनरावृत्ति नियम मं सामिल करव."
+
+#, fuzzy
+#~ msgid "Export journals"
+#~ msgstr "दैनिकी (&J)"
+
+#, fuzzy
+#~ msgid "Check this box if you want to export journals as well."
+#~ msgstr ""
+#~ "ये तारीक ल एक्सेप्सन के रूप मं एखर घटना या काम बर पुनरावृत्ति नियम मं सामिल करव."
+
+#, fuzzy
+#~| msgid "Sets the title of this journal."
+#~ msgid "Title of the journal list"
+#~ msgstr "ये दैनिकी के सीर्सक सेट करथे."
+
+#, fuzzy
+#~| msgid "&Journals"
+#~ msgid "Journals"
+#~ msgstr "दैनिकी (&J)"
+
+#, fuzzy
+#~| msgid "Sets the title of this journal."
+#~ msgid "Title for the journal list"
+#~ msgstr "ये दैनिकी के सीर्सक सेट करथे."
+
+#, fuzzy
+#~| msgid "Unable to publish the free/busy data."
+#~ msgid "Export free/busy list"
+#~ msgstr "मिलत/व्यस्त डाटा प्रकासित करे मं अक्छम."
+
+#, fuzzy
+#~ msgid "Check this box if you want to export free/busy information as well."
+#~ msgstr ""
+#~ "ये तारीक ल एक्सेप्सन के रूप मं एखर घटना या काम बर पुनरावृत्ति नियम मं सामिल करव."
+
+#, fuzzy
+#~| msgid "Unable to publish the free/busy data."
+#~ msgid "Title of the free/busy list"
+#~ msgstr "मिलत/व्यस्त डाटा प्रकासित करे मं अक्छम."
+
+#, fuzzy
+#~| msgid " time(s)"
+#~ msgid "Busy times"
+#~ msgstr "समय"
+
+#, fuzzy
+#~| msgid "Unable to publish the free/busy data."
+#~ msgid "Title for the free/busy list"
+#~ msgstr "मिलत/व्यस्त डाटा प्रकासित करे मं अक्छम."
+
+#, fuzzy
+#~| msgid "Export to HTML with every save"
+#~ msgid "Export to HTML periodically"
+#~ msgstr "सहेजे जाय मं हर एक बार एचटीएमएल मं निर्यात करव"
+
+#, fuzzy
+#~| msgid "Save &interval in minutes"
+#~ msgid "Export &interval in minutes"
+#~ msgstr "अंतराल सहेजव मिनटों मं (&i)"
+
+#~ msgid "Confirm deletes"
+#~ msgstr "मेटाव के पुस्टि करव"
+
+#, fuzzy
+#~| msgid ""
+#~| "Check this box to display a confirmation dialog when deleting items."
+#~ msgid "Always confirm when deleting items"
+#~ msgstr "जब चीज मन ल मेटाय जाय तहां पुस्टिकरन गोठ के प्रदर्सन बर एखर डब्बा ल जांचव."
+
+#~ msgid "Check this box to display a confirmation dialog when deleting items."
+#~ msgstr "जब चीज मन ल मेटाय जाय तहां पुस्टिकरन गोठ के प्रदर्सन बर एखर डब्बा ल जांचव."
+
+#~ msgid "New Events, To-dos and Journal Entries Should"
+#~ msgstr "नवा घटना, कामसूची अउ दैनिकी प्रविस्टि मन को"
+
+#, fuzzy
+#~| msgid "Be added to the standard resource"
+#~ msgid "Be added to the standard calendar"
+#~ msgstr "मानक संसाधन मं जोड़े जाय"
+
+#, fuzzy
+#~| msgid "Be asked which resource to use"
+#~ msgid "Be asked which calendar to use"
+#~ msgstr "पूछे जाय कि कोन वाले रिसोर्स उपयोग करना हे"
+
+#~ msgid "Day begins at"
+#~ msgstr "दिन आरम्भ होही"
+
+#~ msgid "Use holiday region:"
+#~ msgstr "अवकास छेत्र परयोग करव:"
+
+#~ msgid "Daily starting hour"
+#~ msgstr "प्रतिदिन चालू घंटे"
+
+#~ msgid "Daily ending hour"
+#~ msgstr "प्रतिदिन समापन घंटे"
+
+#~ msgid "Exclude holidays"
+#~ msgstr "अवकास सामिल नइ करव"
+
+#, fuzzy
+#~| msgid "Month view background color"
+#~ msgid "Color busy days with a different background color"
+#~ msgstr "महिना दृस्य पिछोत अंगना रंग"
+
+#~ msgid "Next x days"
+#~ msgstr "अगले x दिन"
+
+#, fuzzy
+#~ msgid "Show items that recur daily"
+#~ msgstr "तारीक नेविगेटर मं प्रतिदिन बारबार आए वाले घटना ल देखाव"
+
+#, fuzzy
+#~ msgid "Show items that recur weekly"
+#~ msgstr "तारीक नेविगेटर मं प्रतिहफ्ता बारबार आए वाले घटना ल देखाव"
+
+#~ msgid "Hour size"
+#~ msgstr "घंटे के आकार"
+
+#, fuzzy
+#~ msgid ""
+#~ "Check this box to display icons (alarm, recursion, etc.) in agenda view "
+#~ "items."
+#~ msgstr "जब चीज मन ल मेटाय जाय तहां पुस्टिकरन गोठ के प्रदर्सन बर एखर डब्बा ल जांचव."
+
+#, fuzzy
+#~ msgid "Show to-dos"
+#~ msgstr "कामसूची देखाव (&S)"
+
+#, fuzzy
+#~ msgid "Check this box to display to-dos in the agenda view."
+#~ msgstr "जब चीज मन ल मेटाय जाय तहां पुस्टिकरन गोठ के प्रदर्सन बर एखर डब्बा ल जांचव."
+
+#, fuzzy
+#~ msgid "Display to-dos in the agenda view"
+#~ msgstr "एजेंडा दृस्य के तल मं देखाव"
+
+#~ msgid "Show current-time (Marcus Bains) line"
+#~ msgstr "अभी हाल के समय देखाव (मार्कस बेन्स) पंक्ति"
+
+#, fuzzy
+#~ msgid "Display the current-time indicator"
+#~ msgstr "भेंट समय के जानकारी देखाथे."
+
+#, fuzzy
+#~ msgid "Show seconds on the current-time (Marcus Bains) line"
+#~ msgstr "अभी हाल के समय देखाव (मार्कस बेन्स) पंक्ति"
+
+#, fuzzy
+#~ msgid "Display seconds with the current-time indicator"
+#~ msgstr "अभी हाल के समय लाइन मं सेकन्ड देखाव"
+
+#~ msgid "Time range selection in agenda view starts event editor"
+#~ msgstr "एजेंडा दृस्य मं समय छेत्र चयन घटना संपादक ल चालू करथे "
+
+#, fuzzy
+#~ msgid "Color Usage"
+#~ msgstr "रंग"
+
+#~ msgid "Only category"
+#~ msgstr "सिरिफ वर्ग"
+
+#~ msgid "Only calendar"
+#~ msgstr "सिरिफ कलेन्डर"
+
+#, fuzzy
+#~ msgid "Multiple Calendar Display"
+#~ msgstr "एजेंडा दृस्य कलेन्डर प्रदर्सन"
+
+#~ msgid "Merge all calendars into one view"
+#~ msgstr "सब्बो कलेन्डरों ल एक दृस्य मं सामिल करव"
+
+#~ msgid "Show calendars side by side"
+#~ msgstr "कलेन्डरों ल आजू-बाजू मं देखाव"
+
+#, fuzzy
+#~ msgid "Show two calendars side-by-side"
+#~ msgstr "कलेन्डरों ल आजू-बाजू मं देखाव"
+
+#~ msgid "Switch between views with tabs"
+#~ msgstr "दृस्य अउ टैब्स के बीच स्विच करव"
+
+#, fuzzy
+#~ msgid "Tab through calendars"
+#~ msgstr "सामिल कलेन्डर"
+
+#, fuzzy
+#~ msgid "Show icons in month view items"
+#~ msgstr "महिना दृस्य मं देखाव"
+
+#, fuzzy
+#~ msgid ""
+#~ "Check this box to display icons (alarm, recursion, etc.) in month view "
+#~ "items."
+#~ msgstr "जब चीज मन ल मेटाय जाय तहां पुस्टिकरन गोठ के प्रदर्सन बर एखर डब्बा ल जांचव."
+
+#, fuzzy
+#~ msgid "Display icons in month view items"
+#~ msgstr "महिना दृस्य कोसिकाओं मं स्क्राल-पट्टी सक्छम करव"
+
+#, fuzzy
+#~ msgid "Show time in month view items"
+#~ msgstr "महिना दृस्य मं देखाव"
+
+#, fuzzy
+#~ msgid "Check this box to display the time in month view items."
+#~ msgstr "जब चीज मन ल मेटाय जाय तहां पुस्टिकरन गोठ के प्रदर्सन बर एखर डब्बा ल जांचव."
+
+#, fuzzy
+#~ msgid "Display time in month view items"
+#~ msgstr "महिना दृस्य कोसिकाओं मं स्क्राल-पट्टी सक्छम करव"
+
+#, fuzzy
+#~ msgid "Check this box to display to-dos in the month view."
+#~ msgstr "जब चीज मन ल मेटाय जाय तहां पुस्टिकरन गोठ के प्रदर्सन बर एखर डब्बा ल जांचव."
+
+#, fuzzy
+#~ msgid "Display to-dos in the month view"
+#~ msgstr "महिना दृस्य मं देखाव"
+
+#, fuzzy
+#~ msgid "Show journals"
+#~ msgstr "दैनिकी (&J)"
+
+#, fuzzy
+#~ msgid "Check this box to display journals in the month view."
+#~ msgstr "जब चीज मन ल मेटाय जाय तहां पुस्टिकरन गोठ के प्रदर्सन बर एखर डब्बा ल जांचव."
+
+#, fuzzy
+#~ msgid "Display journals in the month view"
+#~ msgstr "महिना दृस्य मं देखाव"
+
+#~ msgid "Month view uses full window"
+#~ msgstr "महिना दृस्य पूरा विंडो उपयोग करथे "
+
+#~ msgid "To-do list view uses full window"
+#~ msgstr "काम सूची मं पूरा विंडो परयोग होथे "
+
+#, fuzzy
+#~| msgid "To-do list view uses full window"
+#~ msgid "Display to-do list in a full KOrganizer window"
+#~ msgstr "काम सूची मं पूरा विंडो परयोग होथे "
+
+#, fuzzy
+#~ msgid "Display to-dos in a flat list"
+#~ msgstr "महिना दृस्य मं देखाव"
+
+#~ msgid "Record completed to-dos in journal entries"
+#~ msgstr "दैनिकी प्रविस्टि मन मं काम सूची रेकार्न पूरा"
+
+#~ msgid "Holiday color"
+#~ msgstr "छुट्टी रंग"
+
+#~ msgid "Agenda view background color"
+#~ msgstr "एजेंडा दृस्य पिछोत अंगना रंग"
+
+#~ msgid "Select the agenda view background color here."
+#~ msgstr "एजेंडा दृस्य पिछोत अंगना बर इहां पिछोत अंगना रंग चुनव."
+
+#, fuzzy
+#~ msgid "Agenda view current-time line color"
+#~ msgstr "अभी हाल के समय लाइन मं सेकन्ड देखाव"
+
+#, fuzzy
+#~ msgid "Select a color to use for the current-time (Marcus Bains) line."
+#~ msgstr "अभी हाल के समय देखाव (मार्कस बेन्स) पंक्ति"
+
+#, fuzzy
+#~ msgid "Use this color for the Agenda View current-time (Marcus Bains) line"
+#~ msgstr "अभी हाल के समय देखाव (मार्कस बेन्स) पंक्ति"
+
+#, fuzzy
+#~| msgid "Agenda view background color"
+#~ msgid "Busy days background color"
+#~ msgstr "एजेंडा दृस्य पिछोत अंगना रंग"
+
+#~ msgid "Working hours color"
+#~ msgstr "काम के घंटों के रंग"
+
+#~ msgid "To-do due today color"
+#~ msgstr "आज सेट कामसूची के रंग"
+
+#~ msgid "Select the to-do due today color here."
+#~ msgstr "आज सेट कामसूची के रंग इहां चुनव."
+
+#~ msgid "To-do overdue color"
+#~ msgstr "कामसूची ओवरड्यू रंग"
+
+#~ msgid "Select the to-do overdue color here."
+#~ msgstr "कामसूची ओवरड्यू रंग ल इहां चुनव."
+
+#~ msgid "Time bar"
+#~ msgstr "समय पट्टी"
+
+#~ msgid "Month view"
+#~ msgstr "महिना दृस्य"
+
+#~ msgid "Agenda view"
+#~ msgstr "एजेंडा दृस्य"
+
+#~ msgid "Current-time line"
+#~ msgstr "अभी हाल के समय पंक्ति"
+
+#~ msgid "Default todo attachment method"
+#~ msgstr "डिफाल्ट कामसूची संलग्नक विधि"
+
+#~ msgid "The default way of attaching dropped emails to a task"
+#~ msgstr "कोनो काम मं ईमेल ल संलग्न करे के डिफाल्ट तरीका"
+
+#~ msgid "Always ask"
+#~ msgstr "हमेसा पूछव"
+
+#~ msgid "Only attach link to message"
+#~ msgstr "सिरिफ संदेस के संकली संलग्न करव"
+
+#~ msgid "Attach complete message"
+#~ msgstr "पूरा संदेस संलग्न करव"
+
+#~ msgid "Highlight color"
+#~ msgstr "उभारने के रंग"
+
+#~ msgid "Month view background color"
+#~ msgstr "महिना दृस्य पिछोत अंगना रंग"
+
+#~ msgid "Select the Month view background color here."
+#~ msgstr "महिना दृस्य बर इहां पिछोत अंगना रंग चुनव."
+
+#~ msgid "Select the working hours background color for the Month view here."
+#~ msgstr "मासिक दृस्य बर काम घंटे पिछोत अंगना रंग इहां चुनव."
+
+#~ msgid "Default event color"
+#~ msgstr "डिफाल्ट घटना रंग"
+
+#, fuzzy
+#~| msgctxt "@label in QuickSearchLine"
+#~| msgid "Search"
+#~ msgid "Search"
+#~ msgstr "खोजव"
+
+#~ msgid "&New"
+#~ msgstr "नवा (&N)"
+
+#~ msgid "Filter Details"
+#~ msgstr "फिल्टर विवरन"
+
+#~ msgctxt "filter name"
+#~ msgid "Name:"
+#~ msgstr "नांव:"
+
+#~ msgid "Hide &recurring events and to-dos"
+#~ msgstr "पुनरावृत्ति के घटना अउ कामसूची ल लुकाव (&r)"
+
+#~ msgid "Hide co&mpleted to-dos"
+#~ msgstr "पूरा काम सूची ल लुकाव (&m)"
+
+#, fuzzy
+#~| msgid "Days after completion:"
+#~ msgid "Da&ys after completion:"
+#~ msgstr "पूरा के बाद् दिन:"
+
+#~ msgid "Hide &inactive to-dos"
+#~ msgstr "अक्रिय काम-सूची ल लुकाव (&i)"
+
+#~ msgid "Categories"
+#~ msgstr "स्रेनी"
+
+#~ msgid "Show all except selected"
+#~ msgstr "चुने गे ल छोड़ सब्बो दिखाव"
+
+#~ msgid "Show only selected"
+#~ msgstr "सिरिफ चुने गे देखाव"
+
+#~ msgid "Change..."
+#~ msgstr "बदलव..."
+
+#~ msgid "Hide to-dos not assigned to me"
+#~ msgstr "ओ काम सूची ल लुकाव जऊन मोला आबंटित नहीं हे"
+
+#~ msgid "P&ublish"
+#~ msgstr "प्रकासित करव (&u)"
+
+#~ msgid "Publish your free/&busy information automatically"
+#~ msgstr "आप मन के मुक्त/व्यस्त सूची अपने अपन प्रकासित करव (&b)"
+
+#~ msgid "Minimum time between uploads (in minutes):"
+#~ msgstr "अपलोड के बीच के सबसे कम समय (मिनटों में):"
+
+#~ msgid "Publish"
+#~ msgstr "प्रकासित करव"
+
+#~ msgid "days of free/busy information"
+#~ msgstr "मुक्त/व्यस्त जानकारी के दिन"
+
+#~ msgid "Server Information"
+#~ msgstr "सर्वर जानकारी"
+
+#~ msgid "Enter your groupware server login password here."
+#~ msgstr "इहां अपन ग्रुपवेयर सर्वर लागिन के पासवर्ड भरव."
+
+#~ msgid "Password:"
+#~ msgstr "पासवर्ड: "
+
+#~ msgctxt "login name on the Kolab server"
+#~ msgid "Username:"
+#~ msgstr "कमइया नाम:"
+
+#~ msgid "Remember p&assword"
+#~ msgstr "पासवर्ड याद रखव (&a)"
+
+#~ msgid "Server URL:"
+#~ msgstr "सर्वर यूआरएल:"
+
+#~ msgid "&Retrieve"
+#~ msgstr "वापस निकालव (&R)"
+
+#, fuzzy
+#~| msgid "Retrieve other peoples' free/&busy information automatically"
+#~ msgid "Retrieve other people's free/&busy information automatically"
+#~ msgstr "अऊ दूसर मनखे के मिलत/व्यस्त जानकारी अपने अपन लाव"
+
+#~ msgid "Use full email &address for retrieval"
+#~ msgstr "लाने बर पूरा ईमेल पता परयोग करव (&a)"
+
+#~ msgid "User&name:"
+#~ msgstr "कमइया नामः (&n)"
+
+#~ msgid "Passwor&d:"
+#~ msgstr "पासवर्ड: (&d)"
+
+#~ msgid "Re&member password"
+#~ msgstr "पासवर्ड याद रखव (&m)"
+
+#~ msgid "&Search for:"
+#~ msgstr "बर खोजव: (&S)"
+
+#~ msgid "*"
+#~ msgstr "*"
+
+#~ msgid "Search For"
+#~ msgstr "बर खोजव"
+
+#~ msgid "&Events"
+#~ msgstr "घटना (&E)"
+
+#~ msgid "&Journals"
+#~ msgstr "दैनिकी (&J)"
+
+#~ msgid "To-&dos"
+#~ msgstr "काम-सूची (&d)"
+
+#~ msgid "Search In"
+#~ msgstr "में खोजव"
+
+#~ msgid "Cate&gories"
+#~ msgstr "वर्ग (&g)"
+
+#~ msgid "Locations"
+#~ msgstr "जगह"
+
+#, fuzzy
+#~ msgid "Include item descriptions in your search"
+#~ msgstr "वर्नन (&D)"
+
+#~ msgid "Desc&riptions"
+#~ msgstr "विवरन (&r)"
+
+#~ msgid "Su&mmaries"
+#~ msgstr "सारांस (&m)"
+
+#, fuzzy
+#~| msgid "&Attendees"
+#~ msgid "Attendees"
+#~ msgstr "उपस्थिति (&A)"
+
+#~ msgid "Fr&om:"
+#~ msgstr "द्वारा: (&o)"
+
+#, fuzzy
+#~ msgid "Include items with a starting date on or after this date"
+#~ msgstr "ये काम बर चालू तारीक सेट करथे "
+
+#~ msgid "2008-08-18"
+#~ msgstr "2008-08-18"
+
+#~ msgid "&To:"
+#~ msgstr "कोः (&T)"
+
+#, fuzzy
+#~ msgid "Include items with ending date on or before this date"
+#~ msgstr "ये काम बर सेट तारीक सेट करथे."
+
+#, fuzzy
+#~| msgid "Include to-dos &without due date"
+#~ msgid "Include To-dos in the search that do not have a due date"
+#~ msgstr "नियत तारीक के बिना कामसूची सामिल करव (&w)"
+
+#, fuzzy
+#~ msgid ""
+#~ "Check this box to include To-dos without a due date in the search results."
+#~ msgstr "जब चीज मन ल मेटाय जाय तहां पुस्टिकरन गोठ के प्रदर्सन बर एखर डब्बा ल जांचव."
+
+#, fuzzy
+#~| msgid "Include to-dos &without due date"
+#~ msgid "Include To-dos &without a due date"
+#~ msgstr "नियत तारीक के बिना कामसूची सामिल करव (&w)"
+
+#, fuzzy
+#~| msgctxt "@info:tooltip"
+#~| msgid "Location: %1"
+#~ msgctxt "Collection: name collectionId"
+#~ msgid "Collection: %1(%2)"
+#~ msgstr "जगहः %1"
+
+#~ msgid "Person: %1"
+#~ msgstr "मनखे: %1"
+
+#, fuzzy
+#~| msgid "KMail"
+#~ msgid "Mail: %1"
+#~ msgstr "के-मेल"
+
+#, fuzzy
+#~| msgid "Organizer: %1"
+#~ msgid "Organization Unit: %1"
+#~ msgstr "आर्गेनाइजर: %1"
+
+#, fuzzy
+#~| msgid "Delegated from %1"
+#~ msgid "Free/Busy calendar from %1"
+#~ msgstr "%1 से प्रतिनिधित्व"
+
+#, fuzzy
+#~| msgctxt "@item:inlistbox range in days"
+#~| msgid "Day"
+#~ msgid "Day"
+#~ msgstr "दिन"
+
+#, fuzzy
+#~| msgctxt "@item:inlistbox range in weeks"
+#~| msgid "Week"
+#~ msgid "Week"
+#~ msgstr "हफ्ता"
+
+#, fuzzy
+#~| msgctxt "@item:inlistbox range in months"
+#~| msgid "Month"
+#~ msgid "Month"
+#~ msgstr "महिना"
+
+#, fuzzy
+#~| msgid "Agenda view"
+#~ msgid "Agenda"
+#~ msgstr "एजेंडा दृस्य"
+
+#, fuzzy
+#~| msgid "Agenda view"
+#~ msgid "Agenda %1"
+#~ msgstr "एजेंडा दृस्य"
+
+#, fuzzy
+#~| msgid "Number of &pages:"
+#~ msgid "Number of columns"
+#~ msgstr "पेज मन के संख्या: (&p)"
+
+#, fuzzy
+#~ msgid "Title"
+#~ msgstr "सीर्सकः (&T)"
+
+#, fuzzy
+#~| msgid "New Calendar"
+#~ msgid "Selected Calendars"
+#~ msgstr "नवा कलेन्डर"
+
+#~ msgctxt "start/end week number of line in date picker"
+#~ msgid "%1/%2"
+#~ msgstr "%1/%2"
+
+#~ msgid "%1"
+#~ msgstr "%1"
+
+#, fuzzy
+#~| msgid "Calendar"
+#~ msgid "Calendar's custom icon"
+#~ msgstr "कलेन्डर"
+
+#, fuzzy
+#~| msgid "To-do"
+#~ msgid "To-do"
+#~ msgstr "काम-सूची"
+
+#~ msgid "Journal"
+#~ msgstr "दैनिकी"
+
+#, fuzzy
+#~| msgctxt "@title:window"
+#~| msgid "Recurrence"
+#~ msgid "Recurring"
+#~ msgstr "आवृत्ति"
+
+#, fuzzy
+#~| msgid "Alarms"
+#~ msgid "Alarm"
+#~ msgstr "अलार्म्स"
+
+#, fuzzy
+#~| msgctxt "the calendar is read-only"
+#~| msgid "read-only"
+#~ msgid "Read Only"
+#~ msgstr "सिरिफ पढ़े जा सके"
+
+#, fuzzy
+#~| msgctxt "@option sort in increasing order"
+#~| msgid "Ascending"
+#~ msgid "Attending"
+#~ msgstr "बढ़ते क्रम में"
+
+#, fuzzy
+#~| msgid "KOrganizer"
+#~ msgid "Organizer"
+#~ msgstr "के-आर्गेनाइजर"
+
+#~ msgid "Select a month"
+#~ msgstr "महिना चुनव"
+
+#~ msgid "Select a year"
+#~ msgstr "महिना चुनव"
+
+#~ msgctxt "monthname"
+#~ msgid "%1"
+#~ msgstr "%1"
+
+#~ msgctxt "4 digit year"
+#~ msgid "%1"
+#~ msgstr "%1"
+
+#, fuzzy
+#~ msgid "*.ics|iCalendars"
+#~ msgstr "*.ics|कलेन्डर"
+
+#~ msgid "*.vcs|vCalendars"
+#~ msgstr "*.vcs|वीकलेन्डर्स"
+
+#~ msgid "Enable scrollbars in month view cells"
+#~ msgstr "महिना दृस्य कोसिकाओं मं स्क्राल-पट्टी सक्छम करव"
+
+#~ msgid "KOrgPlugins"
+#~ msgstr "के-ओर्ग-प्लगइन्स"
+
+#, fuzzy
+#~| msgid "Import Calendar"
+#~ msgid "Import Calendar/Event"
+#~ msgstr "कलेन्डर आयात करव"
+
+#, fuzzy
+#~| msgid "Add as new calendar"
+#~ msgid "&Add as new calendar..."
+#~ msgstr "नवा कलेन्डर के रूप मं जोड़व"
+
+#, fuzzy
+#~| msgid "Add as new calendar"
+#~ msgid "&Add as new calendar"
+#~ msgstr "नवा कलेन्डर के रूप मं जोड़व"
+
+#~ msgid "*.vcs *.ics|Calendar Files"
+#~ msgstr "*.vcs *.ics|कलेन्डर फाइल मन ल"
+
+#, fuzzy
+#~| msgid "New Calendar"
+#~ msgid "Select path for new calendar"
+#~ msgstr "नवा कलेन्डर"
+
+#~ msgid "Set Your Status"
+#~ msgstr "आप मन के स्थिति सेट करव"
+
+#~ msgid "Set your status"
+#~ msgstr "आप मन के स्थिति सेट करव"
+
+#, fuzzy
+#~| msgid "&Add..."
+#~ msgid "A&dd..."
+#~ msgstr "जोड़व...(&A)"
+
+#, fuzzy
+#~| msgid "&Edit..."
+#~ msgid "&Modify..."
+#~ msgstr "संपादन... (&E)"
+
+#, fuzzy
+#~ msgid "R&emove"
+#~ msgstr "हटाव"
+
+#, fuzzy
+#~| msgid "<qt>Do you really want to remove the resource <b>%1</b>?</qt>"
+#~ msgid "Do you want to remove account '%1'?"
+#~ msgstr "<qt>का आप मन सचमुच संसाधन <b>%1</b> ल मिटाना चाहथो?</qt>"
+
+#, fuzzy
+#~| msgid "Remove Attachments"
+#~ msgid "Remove account?"
+#~ msgstr "संलग्नक निकालव"
+
+#~ msgid "Select Addresses"
+#~ msgstr "पता चुनव"
+
+#~ msgid "(EmptyName)"
+#~ msgstr "(खाली नाम)"
+
+#~ msgid "(EmptyEmail)"
+#~ msgstr "(खाली ई-मेल)"
+
+#, fuzzy
+#~ msgid "Add a new recipient"
+#~ msgstr "नवा कामसूची बनाव"
+
+#, fuzzy
+#~ msgid ""
+#~ "Click this button to remove the recipient currently selected from the list"
+#~ msgstr "अभी हाल के सक्रिय छनइया ल मेटाय बर ए बटन ल दबाव."
+
+#~ msgid "&Remove"
+#~ msgstr "मेटाव (&R)"
+
+#, fuzzy
+#~ msgid "&Select..."
+#~ msgstr "चुनव... (&S)"
+
+#, fuzzy
+#~ msgctxt "recipient name"
+#~ msgid "Name:"
+#~ msgstr "नांव:"
+
+#, fuzzy
+#~ msgctxt "recipient email"
+#~ msgid "Email:"
+#~ msgstr "ईमेलः"
+
+#, fuzzy
+#~ msgid "The recipient's email address"
+#~ msgstr "अतिरिक्त ईमेल पताः"
+
+#, fuzzy
+#~ msgid "Also &Future Items"
+#~ msgstr "सिरिफ भविस्य के चीज (&F)"
+
+#~ msgid "Changing Recurring Item"
+#~ msgstr "पुनरावृत्ति चीज ल बदलत हे"
+
+#~ msgid "Only &This Item"
+#~ msgstr "सिरिफ चीज (&T)"
+
+#~ msgid "&All Occurrences"
+#~ msgstr "सब्बो पुनरावृत्तियाँ (&A)"
+
+#~ msgid "This file is not a KOrganizer theme file."
+#~ msgstr "ए फाइल केआर्गेनाइजर प्रसंग फाइल नइ हे."
+
+#~ msgid "KOrganizer Theming Stub"
+#~ msgstr "के-आर्गेनाइजर थीमिंग स्टब"
+
+#~ msgid "© 2007 Loïc Corbasson"
+#~ msgstr "(c) 2007 लोइक कोरबासन"
+
+#~ msgid "Theme to use"
+#~ msgstr "प्रसंग जऊन ल उपयोग मं ले हे"
+
+#~ msgctxt "@title:group"
+#~ msgid "Print Plugins"
+#~ msgstr "छपाई प्लगइन्स"
+
+#~ msgid "Date && Time Range"
+#~ msgstr "तारीक && समय सीमा"
+
+#~ msgid "&Start date:"
+#~ msgstr "सुरू तारीक: (&S)"
+
+#~ msgid "&End date:"
+#~ msgstr "खतम तारीक: (&E)"
+
+#~ msgid "Print Incidences of Type"
+#~ msgstr "घटना के किसिमों ल छापव"
+
+#~ msgid "&To-dos"
+#~ msgstr "काम-सूची (&T)"
+
+#, fuzzy
+#~| msgid "Print list"
+#~ msgid "Print Item list"
+#~ msgstr "सूची छापव"
+
+#~ msgid "Prints a list of events and to-dos"
+#~ msgstr "घटना अउ कामसूची के एक सूची छापथे "
+
+#~ msgid "&All journal entries"
+#~ msgstr "सब्बो दैनिकी प्रविस्टि (&A)"
+
+#~ msgid "Date &range:"
+#~ msgstr "तारीक सीमा: (&r)"
+
+#~ msgid "Journal entries"
+#~ msgstr "दैनिकी प्रविस्टि"
+
+#~ msgid "Print &journal"
+#~ msgstr "दैनिकी छापव (&J)"
+
+#~ msgid "Prints all journals for a given date range"
+#~ msgstr "दे गे तारीक सीमा बर सब्बो दैनिकी छापव"
+
+#~ msgid "Print What's Next"
+#~ msgstr "आगू के हे छापव"
+
+#~ msgid "Prints a list of all upcoming events and todos."
+#~ msgstr "आने वाले सब्बो घटना अउ काम-सूचियों ल सूची के रूप मं छापव."
+
+#, fuzzy
+#~| msgid "Yearly print options"
+#~ msgid "Yearly Print Options"
+#~ msgstr "वार्सिक प्रिंट विकल्प"
+
+#, fuzzy
+#~| msgid "Print &year"
+#~ msgid "Print &year:"
+#~ msgstr "साल छापव (&Y)"
+
+#~ msgid "Number of &pages:"
+#~ msgstr "पेज मन के संख्या: (&p)"
+
+#~ msgid "Display Options"
+#~ msgstr "प्रदर्सक विकल्प"
+
+#~ msgid "Time Boxes"
+#~ msgstr "समय बक्से"
+
+#~ msgctxt "date from - to"
+#~ msgid "%1 - %2"
+#~ msgstr "%1 - %2"
+
+#~ msgctxt ""
+#~ "date from -\n"
+#~ "to"
+#~ msgid ""
+#~ "%1 -\n"
+#~ "%2"
+#~ msgstr ""
+#~ "%1 -\n"
+#~ "%2"
+
+#~ msgid "Print &year"
+#~ msgstr "साल छापव (&Y)"
+
+#~ msgid "Prints a calendar for an entire year"
+#~ msgstr "पूरा साल बर एक कलेन्डर छापव"
+
+#, fuzzy
+#~ msgid "2009-01-19"
+#~ msgstr "2008-08-18"
+
+#~ msgid "Start &time:"
+#~ msgstr "सुरू समय: (&t)"
+
+#~ msgid "hh:mm"
+#~ msgstr "घंघं:मिमि"
+
+#~ msgid "End ti&me:"
+#~ msgstr "आखरी समय: (&m)"
+
+#~ msgid "E&xtend time range to include all events"
+#~ msgstr "सब्बो घटना ल सामिल करे बर समय सीमा बढ़ाव (&x)"
+
+#~ msgid "Print Layout"
+#~ msgstr "छपाई खाका"
+
+#, fuzzy
+#~ msgid "Print date range as &Filofax format, all on one page"
+#~ msgstr "एक ही महिना के सब्बो घटना ल एके पेज मं छापव"
+
+#, fuzzy
+#~ msgid "Print as &timetable view, one page per day"
+#~ msgstr "टाइमटेबल दृस्य के रूप मं छापव (&t)"
+
+#, fuzzy
+#~ msgid "Print as timetable view, all days on a single page"
+#~ msgstr "टाइमटेबल दृस्य के रूप मं छापव (&t)"
+
+#, fuzzy
+#~ msgid "Exclude c&onfidential"
+#~ msgstr "अवकास सामिल नइ करव"
+
+#, fuzzy
+#~ msgid "Exclude pri&vate"
+#~ msgstr "अवकास सामिल नइ करव"
+
+#~ msgid "Include Information"
+#~ msgstr "इनक्लूड जानकारी"
+
+#~ msgid "Include to-&dos that are due on the printed day(s)"
+#~ msgstr "कामसूची सामिल करव जऊन कि छपे दिनों मं सेट हे(&d)"
+
+#, fuzzy
+#~ msgid "Include &descriptions"
+#~ msgstr "वर्नन (&D)"
+
+#, fuzzy
+#~ msgid "Print item descriptions"
+#~ msgstr "वर्नन (&D)"
+
+#, fuzzy
+#~| msgctxt "general settings for html export"
+#~| msgid "General"
+#~ msgctxt "@title general print settings"
+#~ msgid "General"
+#~ msgstr "सामान्य"
+
+#, fuzzy
+#~| msgid "Prints an incidence on one page"
+#~ msgid "Print items on one line"
+#~ msgstr "एक पेज मं एक घटना छापव"
+
+#, fuzzy
+#~ msgid "Show note &lines"
+#~ msgstr "समय एखर रुप मं देखाव (&h)"
+
+#, fuzzy
+#~| msgid "Print &year"
+#~ msgid "Print &Footer"
+#~ msgstr "साल छापव (&Y)"
+
+#, fuzzy
+#~| msgid "Prints an incidence on one page"
+#~ msgid "Print a datetime footer on each page"
+#~ msgstr "एक पेज मं एक घटना छापव"
+
+#, fuzzy
+#~| msgid "Printing error"
+#~ msgid "Print in color"
+#~ msgstr "छपाई गलती"
+
+#~ msgid "&Use colors"
+#~ msgstr "रंग उपयोग करव (&U)"
+
+#~ msgid "Start date: "
+#~ msgstr "सुरू तारीक:"
+
+#~ msgid "End date: "
+#~ msgstr "खतम तारीक:"
+
+#~ msgid "Duration: "
+#~ msgstr "अवधिः"
+
+#~ msgid "1 hour "
+#~ msgid_plural "%1 hours "
+#~ msgstr[0] "१ घंटा"
+#~ msgstr[1] "%1 घंटा"
+
+#~ msgid "1 minute "
+#~ msgid_plural "%1 minutes "
+#~ msgstr[0] "1 मिनट"
+#~ msgstr[1] "%1 मिनट्स"
+
+#~ msgid "No end date"
+#~ msgstr "कोई आखरी तारीक नइ"
+
+#~ msgid "Due date: "
+#~ msgstr "नियत तारीक:"
+
+#~ msgid "No due date"
+#~ msgstr "कोई सेट तारीक नइ"
+
+#~ msgctxt "except for listed dates"
+#~ msgid " except"
+#~ msgstr " स्वीकृत"
+
+#~ msgid "Repeats: "
+#~ msgstr "दुहराव:"
+
+#~ msgid "Reminder: "
+#~ msgid_plural "%1 reminders: "
+#~ msgstr[0] "सुरता:"
+#~ msgstr[1] "%1 सुरता"
+
+#~ msgctxt "N days/hours/minutes before/after the start/end"
+#~ msgid "%1 before the start"
+#~ msgstr "%1 चालू होय से पहिली"
+
+#~ msgctxt "N days/hours/minutes before/after the start/end"
+#~ msgid "%1 after the start"
+#~ msgstr "%1 चालू के बाद"
+
+#~ msgctxt "N days/hours/minutes before/after the start/end"
+#~ msgid "%1 after the end"
+#~ msgstr "%1 आखरी के बाद"
+
+#~ msgid "1 hour"
+#~ msgid_plural "%1 hours"
+#~ msgstr[0] "१ घंटा"
+#~ msgstr[1] "%1 घंटे"
+
+#~ msgctxt "Spacer for the joined list of categories"
+#~ msgid ", "
+#~ msgstr ","
+
+#~ msgid "Organizer: "
+#~ msgstr "आर्गेनाइजर:"
+
+#~ msgid "Location: "
+#~ msgstr "जगहः"
+
+#~ msgid "No Subitems"
+#~ msgstr "कोई सब-आइटम नइ"
+
+#~ msgid "1 Subitem:"
+#~ msgid_plural "%1 Subitems:"
+#~ msgstr[0] "१ सब-आइटम:"
+#~ msgstr[1] "%1 सब-आइटम:"
+
+#~ msgctxt "no status"
+#~ msgid "none"
+#~ msgstr "कुछ नइ"
+
+#~ msgctxt "unknown status"
+#~ msgid "unknown"
+#~ msgstr "अग्यात"
+
+#~ msgctxt "subitem start date"
+#~ msgid "Start Date: %1\n"
+#~ msgstr "सुरू तारीक: %1\n"
+
+#~ msgctxt "subitem start time"
+#~ msgid "Start Time: %1\n"
+#~ msgstr "सुरू समय: %1\n"
+
+#~ msgctxt "subitem due date"
+#~ msgid "Due Date: %1\n"
+#~ msgstr "नियत तारीक़: %1\n"
+
+#~ msgctxt "subitem due time"
+#~ msgid "Due Time: %1\n"
+#~ msgstr "नियत समय: %1\n"
+
+#~ msgctxt "subitem counter"
+#~ msgid "%1: "
+#~ msgstr "%1: "
+
+#~ msgctxt "subitem Status: statusString"
+#~ msgid "Status: %1\n"
+#~ msgstr "स्थिति: %1\n"
+
+#~ msgctxt "subitem Priority: N"
+#~ msgid "Priority: <numid>%1</numid>\n"
+#~ msgstr "प्राथमिकता: <numid>%1</numid>\n"
+
+#~ msgctxt "subitem Secrecy: secrecyString"
+#~ msgid "Secrecy: %1\n"
+#~ msgstr "गोपनीयता: %1\n"
+
+#~ msgid "No Attachments"
+#~ msgstr "संलग्नक नइ"
+
+#~ msgid "1 Attachment:"
+#~ msgid_plural "%1 Attachments:"
+#~ msgstr[0] "१ संलग्नक:"
+#~ msgstr[1] "%1 संलग्नक:"
+
+#~ msgctxt "Spacer for list of attachments"
+#~ msgid "  "
+#~ msgstr "  "
+
+#~ msgid "No Attendees"
+#~ msgstr "कोई उपस्थिति नइ"
+
+#~ msgid "1 Attendee:"
+#~ msgid_plural "%1 Attendees:"
+#~ msgstr[0] "1 उपस्थित:"
+#~ msgstr[1] "%1 उपस्थित"
+
+#~ msgctxt ""
+#~ "Formatting of an attendee: 'Name (Role): Status', e.g. 'Reinhold "
+#~ "Kainhofer <reinhold@kainhofer.com> (Participant): Awaiting Response'"
+#~ msgid "%1 (%2): %3"
+#~ msgstr "%1 (%2): %3"
+
+#~ msgid "Status: %1"
+#~ msgstr "स्थिति: %1"
+
+#~ msgid "Secrecy: %1"
+#~ msgstr "गोपनीयता: %1"
+
+#~ msgid "Show as: Busy"
+#~ msgstr "अइसन देखाव: व्यस्त"
+
+#~ msgid "Show as: Free"
+#~ msgstr "अइसन देखाव: मिलत"
+
+#~ msgid "This task is overdue!"
+#~ msgstr "ये काम ओवरड्यू हो गे हे!"
+
+#~ msgid "Settings: "
+#~ msgstr "सेटिंग:"
+
+#~ msgid "Categories: "
+#~ msgstr "स्रेनी:"
+
+#~ msgctxt "date from-to"
+#~ msgid "%1 - %2"
+#~ msgstr "%1 - %2"
+
+#~ msgctxt ""
+#~ "date from-\n"
+#~ "to"
+#~ msgid ""
+#~ "%1 -\n"
+#~ "%2"
+#~ msgstr ""
+#~ "%1 -\n"
+#~ "%2"
+
+#, fuzzy
+#~| msgid "Find Events"
+#~ msgid "Today's Events"
+#~ msgstr "घटना खोजव"
+
+#, fuzzy
+#~ msgctxt "summary, location"
+#~ msgid "%1, %2"
+#~ msgstr "%1 %2"
+
+#~ msgctxt "date from - to (week number)"
+#~ msgid "%1 - %2 (Week %3)"
+#~ msgstr "%1 - %2 (हफ्ता %3)"
+
+#~ msgctxt ""
+#~ "date from -\n"
+#~ "to (week number)"
+#~ msgid ""
+#~ "%1 -\n"
+#~ "%2 (Week %3)"
+#~ msgstr ""
+#~ "%1 -\n"
+#~ "%2 (हफ्ता %3)"
+
+#~ msgctxt "monthname year"
+#~ msgid "%1 <numid>%2</numid>"
+#~ msgstr "%1 <numid>%2</numid>"
+
+#, fuzzy
+#~ msgctxt "@option sort by title"
+#~ msgid "Title"
+#~ msgstr "सीर्सकः (&T)"
+
+#, fuzzy
+#~| msgid "Start Date"
+#~ msgctxt "@option sort by start date/time"
+#~ msgid "Start Date"
+#~ msgstr "सुरू तारीक"
+
+#, fuzzy
+#~| msgid "Due Date"
+#~ msgctxt "@option sort by due date/time"
+#~ msgid "Due Date"
+#~ msgstr "नियत तारीक"
+
+#, fuzzy
+#~| msgid "Priority"
+#~ msgctxt "@option sort by priority"
+#~ msgid "Priority"
+#~ msgstr "प्राथमिकता"
+
+#, fuzzy
+#~| msgid "Percent Complete"
+#~ msgctxt "@option sort by percent completed"
+#~ msgid "Percent Complete"
+#~ msgstr "प्रतिसत पूरा"
+
+#~ msgctxt "@option sort in increasing order"
+#~ msgid "Ascending"
+#~ msgstr "बढ़ते क्रम में"
+
+#~ msgctxt "@option sort in descreasing order"
+#~ msgid "Descending"
+#~ msgstr "घटते क्रम में"
+
+#~ msgid "To-do list"
+#~ msgstr "काम-सूची सूचियाँ"
+
+#~ msgid "Priority"
+#~ msgstr "प्राथमिकता"
+
+#, fuzzy
+#~ msgctxt "@label to-do summary"
+#~ msgid "Title"
+#~ msgstr "सीर्सकः (&T)"
+
+#~ msgctxt "@label to-do percentage complete"
+#~ msgid "Complete"
+#~ msgstr "पूरा"
+
+#~ msgid "Print &incidence"
+#~ msgstr "घटना छापव (&i)"
+
+#~ msgid "Prints an incidence on one page"
+#~ msgstr "एक पेज मं एक घटना छापव"
+
+#~ msgid "Print da&y"
+#~ msgstr "छपाई के दिन (&y)"
+
+#~ msgid "Prints all events of a single day on one page"
+#~ msgstr "एक ही दिन के सब्बो घटना ल एके पेज मं छापव"
+
+#~ msgid "Print &week"
+#~ msgstr "हफ्ता छापव (&w)"
+
+#~ msgid "Prints all events of one week on one page"
+#~ msgstr "एक ही हफ्ता के सब्बो घटना ल एके पेज मं छापव"
+
+#~ msgid "Print mont&h"
+#~ msgstr "महिना छापव (&h)"
+
+#~ msgid "Prints all events of one month on one page"
+#~ msgstr "एक ही महिना के सब्बो घटना ल एके पेज मं छापव"
+
+#~ msgid "Print to-&dos"
+#~ msgstr "काम-सूची छापव (&d)"
+
+#~ msgid "Prints all to-dos in a (tree-like) list"
+#~ msgstr "सब्बो काम सूची ल (ट्री जइसन) एक सूची मं छापव"
+
+#, fuzzy
+#~| msgid "Unable to print, no valid print style was returned."
+#~ msgctxt "@info"
+#~ msgid "Unable to print, an invalid print style was specified."
+#~ msgstr "छापे मं अक्छम. कोनो वैध छपाई सैली लहुटाइस नइ गिस."
+
+#, fuzzy
+#~| msgid "Printing error"
+#~ msgctxt "@title:window"
+#~ msgid "Printing error"
+#~ msgstr "छपाई गलती"
+
+#, fuzzy
+#~| msgid "Print"
+#~ msgctxt "@title:window"
+#~ msgid "Print"
+#~ msgstr "छापव"
+
+#, fuzzy
+#~| msgid "Print Style"
+#~ msgctxt "@title:group"
+#~ msgid "Print Style"
+#~ msgstr "छपाई किसिम"
+
+#, fuzzy
+#~| msgid "Page &orientation:"
+#~ msgctxt "@label"
+#~ msgid "Page &orientation:"
+#~ msgstr "पेज दिसाः (&o)"
+
+#, fuzzy
+#~ msgctxt "@info:tooltip"
+#~ msgid "Set the print orientation"
+#~ msgstr "अपडेट भेजव"
+
+#, fuzzy
+#~| msgid "Use Default Orientation of Selected Style"
+#~ msgctxt "@item:inlistbox"
+#~ msgid "Use Default Orientation of Selected Style"
+#~ msgstr "चुने गे सैली के डिफाल्ट दिसा परयोग करव"
+
+#, fuzzy
+#~| msgid "Use Printer Default"
+#~ msgctxt "@item:inlistbox"
+#~ msgid "Use Printer Default"
+#~ msgstr "प्रिंटर डिफाल्ट उपयोग करव"
+
+#, fuzzy
+#~| msgid "Portrait"
+#~ msgctxt "@item:inlistbox"
+#~ msgid "Portrait"
+#~ msgstr "खड़ा "
+
+#, fuzzy
+#~| msgid "Landscape"
+#~ msgctxt "@item:inlistbox"
+#~ msgid "Landscape"
+#~ msgstr "आड़ा"
+
+#, fuzzy
+#~| msgctxt "@item:inlistbox"
+#~| msgid "Select Categories"
+#~ msgctxt "@info:tooltip"
+#~ msgid "Select the type of print"
+#~ msgstr "वर्ग चुनव"
+
+#, fuzzy
+#~| msgid "&Preview"
+#~ msgctxt "@action:button"
+#~ msgid "&Preview"
+#~ msgstr "प्रिव्यू (&P)"
+
+#~ msgid "Detai&ls (visiblility, secrecy, etc.)"
+#~ msgstr "विवरन (दृस्यता, गोपनीयता, आदि.) (&l)"
+
+#, fuzzy
+#~| msgid "Print &incidence"
+#~ msgid "Print incidence details"
+#~ msgstr "घटना छापव (&i)"
+
+#~ msgid "&Attendees"
+#~ msgstr "उपस्थिति (&A)"
+
+#, fuzzy
+#~ msgid "Print the attendees"
+#~ msgstr "१ उपस्थित"
+
+#, fuzzy
+#~| msgid "&Notes, Subitems"
+#~ msgid "&Notes, subitems"
+#~ msgstr "नोट्स, उप-चीज (&N)"
+
+#, fuzzy
+#~| msgid "Print week &numbers"
+#~ msgid "Print the notes"
+#~ msgstr "हफ्ता नंबर छापव (&n)"
+
+#~ msgid "Attach&ments"
+#~ msgstr "संलग्नक (&m)"
+
+#, fuzzy
+#~| msgctxt "@label"
+#~| msgid "New attachment"
+#~ msgid "Print the attachments"
+#~ msgstr "नवा संलग्नक"
+
+#~ msgid "&Start month:"
+#~ msgstr "सुरू महिना: (&S)"
+
+#~ msgid "&End month:"
+#~ msgstr "आखरी महिना: (&E)"
+
+#, fuzzy
+#~ msgid "Exclude confidential items"
+#~ msgstr "अवकास सामिल नइ करव"
+
+#, fuzzy
+#~ msgid "Exclude private items"
+#~ msgstr "अवकास सामिल नइ करव"
+
+#, fuzzy
+#~| msgid "Print daily re&curring to-dos and events"
+#~ msgid "Print daily recurring items"
+#~ msgstr "नित्य के पुनरावृत्ति कामसूची अउ घटना ल छापव (&c)"
+
+#, fuzzy
+#~| msgid "Print daily re&curring to-dos and events"
+#~ msgid "Include daily re&curring to-dos and events"
+#~ msgstr "नित्य के पुनरावृत्ति कामसूची अउ घटना ल छापव (&c)"
+
+#, fuzzy
+#~| msgid "Print weekl&y recurring to-dos and events"
+#~ msgid "Print weekly recurring items"
+#~ msgstr "साप्ताहिक पुनरावृत्ति कामसूची अउ घटना ल छापव (&y)"
+
+#, fuzzy
+#~| msgid "Print weekl&y recurring to-dos and events"
+#~ msgid "Include weekl&y recurring to-dos and events"
+#~ msgstr "साप्ताहिक पुनरावृत्ति कामसूची अउ घटना ल छापव (&y)"
+
+#, fuzzy
+#~| msgid "Print week &numbers"
+#~ msgid "Print week numbers"
+#~ msgstr "हफ्ता नंबर छापव (&n)"
+
+#~ msgid "Print week &numbers"
+#~ msgstr "हफ्ता नंबर छापव (&n)"
+
+#~ msgid "This printing style does not have any configuration options."
+#~ msgstr "ये छपाई सैली तिर कोनो कान्फिगरेसन विकल्प नइ हे."
+
+#, fuzzy
+#~ msgctxt "print date: formatted-datetime"
+#~ msgid "printed: %1"
+#~ msgstr "पहिली जइसन: %1"
+
+#, fuzzy
+#~ msgctxt "starttime - endtime summary"
+#~ msgid "%1-%2 %3"
+#~ msgstr "%1 %2 %3"
+
+#~ msgctxt "starttime - endtime summary, location"
+#~ msgid "%1-%2 %3, %4"
+#~ msgstr "%1-%2 %3, %4"
+
+#~ msgctxt "weekday, shortmonthname daynumber"
+#~ msgid "%1, %2 <numid>%3</numid>"
+#~ msgstr "%1, %2 <numid>%3</numid>"
+
+#, fuzzy
+#~| msgctxt "to-do due date"
+#~| msgid "  (Due: %1)"
+#~ msgctxt "to-do summary (Due: datetime)"
+#~ msgid "%1 (Due: %2)"
+#~ msgstr " (नियत: %1)"
+
+#, fuzzy
+#~| msgctxt "to-do due date"
+#~| msgid "  (Due: %1)"
+#~ msgctxt "to-do summary (Due: date)"
+#~ msgid "%1 (Due: %2)"
+#~ msgstr " (नियत: %1)"
+
+#~ msgid "To-do: %1"
+#~ msgstr "काम-सूची: %1"
+
+#~ msgid "%1%"
+#~ msgstr "%1%"
+
+#~ msgctxt "Description - date"
+#~ msgid "%1 - %2"
+#~ msgstr "%1 - %2"
+
+#~ msgctxt "Date range: Month dayStart - dayEnd"
+#~ msgid "%1 %2 - %3"
+#~ msgstr "%1 %2 - %3"
+
+#~ msgctxt "Date range: monthStart dayStart - monthEnd dayEnd"
+#~ msgid "%1 %2 - %3 %4"
+#~ msgstr "%1 %2 - %3 %4"
+
+#, fuzzy
+#~| msgctxt "@item@intable N days/hours/minutes before/after the start/end"
+#~| msgid "%1 after the start"
+#~ msgid "Name for this to-do list"
+#~ msgstr "%1 चालू के बाद"
+
+#~ msgid "To-dos to Print"
+#~ msgstr "छापे बर कामसूची"
+
+#~ msgid "Print &all to-dos"
+#~ msgstr "सब्बो काम-सूची छापव"
+
+#~ msgid "Print &unfinished to-dos only"
+#~ msgstr "अधूरा कामसूचियों ल ही छापव (&u)"
+
+#~ msgid "Print only to-dos due in the &range:"
+#~ msgstr "सिरिफ ओही काम सूची ल छापव जऊन एखर सीमा मं हे: (&r)"
+
+#~ msgid "&Priority"
+#~ msgstr "प्राथमिकता (&P)"
+
+#~ msgid "Due date"
+#~ msgstr "नियत तारीक"
+
+#~ msgid "Per&centage completed"
+#~ msgstr "प्रतिसत पूरा (&c)"
+
+#~ msgid "Sorting Options"
+#~ msgstr "छंटाई के विकल्प"
+
+#~ msgid "Sort field:"
+#~ msgstr "छांटने के फील्ड:"
+
+#~ msgid "Sort direction:"
+#~ msgstr "छांटने के दिसा:"
+
+#~ msgid "Co&nnect sub-to-dos with its parent"
+#~ msgstr "उप-काम-सूची ल ए अभिभावक से जोड़व (&n)"
+
+#~ msgid "Strike &out completed to-do summaries"
+#~ msgstr "पूरा करे कामसूची सारांसों ल काट देव (&o)"
+
+#, fuzzy
+#~ msgid "Starting date for the print"
+#~ msgstr "ये काम बर चालू तारीक सेट करथे "
+
+#~ msgid "Print as &Filofax page"
+#~ msgstr "फायरफाक्स पेज के रूप मं छापव (&F)"
+
+#~ msgid "Print as &timetable view"
+#~ msgstr "टाइमटेबल दृस्य के रूप मं छापव (&t)"
+
+#~ msgid "Print as split week view"
+#~ msgstr "विभाजित हफ्ता दृस्य के रूप मं छापव"
+
+#~ msgctxt "@title:window"
+#~ msgid "Reminders"
+#~ msgstr "सुरता"
+
+#, fuzzy
+#~| msgctxt "@action:inmenu"
+#~| msgid "Dismiss All Reminders"
+#~ msgctxt "@action:button"
+#~ msgid "Dismiss Reminder"
+#~ msgstr "सब्बो सुरता खारिज करव"
+
+#, fuzzy
+#~| msgctxt "@action:button"
+#~| msgid "Dismiss all"
+#~ msgctxt "@action:button"
+#~ msgid "Dismiss All"
+#~ msgstr "सब्बो खारिज करव"
+
+#~ msgctxt "@action:button"
+#~ msgid "Edit..."
+#~ msgstr "संपादन..."
+
+#~ msgctxt "@action:button"
+#~ msgid "Suspend"
+#~ msgstr "निलम्बित"
+
+#, fuzzy
+#~ msgctxt "@title:column reminder title"
+#~ msgid "Title"
+#~ msgstr "सीर्सकः (&T)"
+
+#, fuzzy
+#~| msgid "Date && Time"
+#~ msgctxt "@title:column happens at date/time"
+#~ msgid "Date Time"
+#~ msgstr "तारीक अउ समय"
+
+#, fuzzy
+#~| msgctxt "@title:column trigger date/time"
+#~| msgid "Trigger Date/Time"
+#~ msgctxt "@title:column trigger date/time"
+#~ msgid "Trigger Time"
+#~ msgstr "ट्रिगर तारीक/समय"
+
+#, fuzzy
+#~ msgctxt "@info:tooltip"
+#~ msgid "The date/time the reminder was triggered"
+#~ msgstr "घटना या काम कहाँ हो ए सेट करथे."
+
+#~ msgctxt "@label:spinbox"
+#~ msgid "Suspend &duration:"
+#~ msgstr "निलम्बित अंतराल: (&d)"
+
+#~ msgctxt "@item:inlistbox suspend in terms of minutes"
+#~ msgid "minute(s)"
+#~ msgstr "मिनट"
+
+#~ msgctxt "@item:inlistbox suspend in terms of hours"
+#~ msgid "hour(s)"
+#~ msgstr "घंटा"
+
+#~ msgctxt "@item:inlistbox suspend in terms of days"
+#~ msgid "day(s)"
+#~ msgstr "दिन"
+
+#~ msgctxt "@item:inlistbox suspend in terms of weeks"
+#~ msgid "week(s)"
+#~ msgstr "हफ्ता"
+
+#, fuzzy
+#~| msgid "Edit..."
+#~ msgctxt "@label an elipsis"
+#~ msgid "..."
+#~ msgstr "संपादन..."
+
+#, fuzzy
+#~| msgid "Reminder"
+#~ msgctxt "@title"
+#~ msgid "Reminder"
+#~ msgstr "सुरता"
+
+#, fuzzy
+#~| msgid "Reminder: "
+#~| msgid_plural "%1 reminders: "
+#~ msgctxt "@title"
+#~ msgid "Reminder: %1"
+#~ msgstr "सुरता:"
+
+#, fuzzy
+#~| msgctxt "@info"
+#~| msgid "Could not start KOrganizer."
+#~ msgctxt "@info"
+#~ msgid "Could not start KOrganizer so editing is not possible."
+#~ msgstr "केओर्गनाइजर चालू नइ कर सकिस."
+
+#~ msgctxt "@title:window"
+#~ msgid "KOrganizer Reminder Daemon"
+#~ msgstr "के-आर्गेनाइजर रीमाइंडर डेमन"
+
+#~ msgctxt "@action:inmenu"
+#~ msgid "Suspend All Reminders"
+#~ msgstr "सब्बो सुरता निलंबित करव"
+
+#~ msgctxt "@action:inmenu"
+#~ msgid "Dismiss All Reminders"
+#~ msgstr "सब्बो सुरता खारिज करव"
+
+#~ msgctxt "@action:inmenu"
+#~ msgid "Enable Reminders"
+#~ msgstr "सुरता सक्छम करव"
+
+#~ msgctxt "@action:inmenu"
+#~ msgid "Start Reminder Daemon at Login"
+#~ msgstr "सुरता डेमन लागिन मं चालू हो"
+
+#, fuzzy
+#~| msgctxt "@info:tooltip"
+#~| msgid "No active reminders."
+#~ msgctxt "@info:status"
+#~ msgid "There is 1 active reminder."
+#~ msgid_plural "There are %1 active reminders."
+#~ msgstr[0] "कोई सक्रिय सुरता नइ."
+#~ msgstr[1] "कोई सक्रिय सुरता नइ."
+
+#, fuzzy
+#~| msgctxt "@info:tooltip"
+#~| msgid "No active reminders."
+#~ msgctxt "@info:status"
+#~ msgid "No active reminders."
+#~ msgstr "कोई सक्रिय सुरता नइ."
+
+#~ msgctxt "@title:window"
+#~ msgid "Close KOrganizer Reminder Daemon"
+#~ msgstr "के-आर्गेनाइजर रीमाइंडर डेमन बन्द करव"
+
+#~ msgctxt "@action:button start the reminder daemon"
+#~ msgid "Start"
+#~ msgstr "सुरू"
+
+#~ msgctxt "@action:button do not start the reminder daemon"
+#~ msgid "Do Not Start"
+#~ msgstr "चालू नइ करव"
+
+#~ msgid "KOrganizer Reminder Daemon"
+#~ msgstr "के-आर्गेनाइजर रीमाइंडर डेमन"
+
+#~ msgid "(c) 2003 Cornelius Schumacher"
+#~ msgstr "(c) 2003 कार्नेलियस सूमेकर"
+
+#, fuzzy
+#~ msgid "Free Busy Object"
+#~ msgstr "मिलत/व्यस्त (&F)"
+
+#, fuzzy
+#~| msgid "Free/Busy Publish Username"
+#~ msgid "Free Busy Message"
+#~ msgstr "मिलत/व्यस्त प्रकासिन कमइयानाम"
+
+#, fuzzy
+#~| msgid "Unable to purge to-dos with uncompleted children."
+#~ msgctxt "@info"
+#~ msgid "Unable to purge to-dos with uncompleted children."
+#~ msgstr "कामसूची ल अधूरा सिसु के साथ अलग करे मं अक्छम."
+
+#~ msgid "Delete To-do"
+#~ msgstr "कामसूची मेटाव"
+
+#~ msgid "ICal Import Successful with Warning"
+#~ msgstr "चेतावनी के साथ आईकैल आयात सफल"
+
+#~ msgid "New calendar '%1'."
+#~ msgstr "नवा कलेन्डर '%1'."
+
+#~ msgid "Could not load calendar '%1'."
+#~ msgstr "कलेन्डर '%1' ल लोड नइ कर सकिस."
+
+#, fuzzy
+#~| msgid "Open the given calendars in a new window"
+#~ msgid "Open the specified files as calendars in a new window"
+#~ msgstr "दे गे कलेन्डर ल नवा विंडो मं खोलव"
+
+#~ msgid "Filter Applied"
+#~ msgstr "फिल्टर लागू करिस"
+
+#, fuzzy
+#~| msgid "Delete Only This"
+#~ msgid "Cut Only This"
+#~ msgstr "सिरिफ एला ही मेटाव"
+
+#, fuzzy
+#~| msgid "Delete Only This"
+#~ msgid "Copy Only This"
+#~ msgstr "सिरिफ एला ही मेटाव"
+
+#, fuzzy
+#~| msgid "&Copy To"
+#~ msgid "Copy All"
+#~ msgstr "नकल इहां रखव (&C)"
+
+#~ msgid "Delete %1"
+#~ msgstr "मेटाव %1"
+
+#~ msgid "Add %1"
+#~ msgstr "जोड़व %1"
+
+#~ msgid "Edit %1"
+#~ msgstr "संपादन %1"
+
+#~ msgctxt "@label"
+#~ msgid "Additional email addresses:"
+#~ msgstr "अतिरिक्त ईमेल पताः"
+
+#~ msgctxt "@label"
+#~ msgid "Additional email address:"
+#~ msgstr "अतिरिक्त ईमेल पताः"
+
+#~ msgctxt "@action:button add a new email address"
+#~ msgid "New"
+#~ msgstr "नवा"
+
+#~ msgctxt "@action:button"
+#~ msgid "Remove"
+#~ msgstr "हटाव"
+
+#~ msgctxt "@label"
+#~ msgid "(EmptyEmail)"
+#~ msgstr "(खाली ई-मेल)"
+
+#~ msgid "Edit this journal entry"
+#~ msgstr "ये दैनिकी प्रविस्टि ल संपादित करव"
+
+#~ msgid "Opens an editor dialog for this journal entry"
+#~ msgstr "ये दैनिकी प्रविस्टि बर संपादन गोठ खोलथे "
+
+#~ msgid "Delete this journal entry"
+#~ msgstr "ये दैनिकी प्रविस्टि मन ल मेटाव"
+
+#~ msgid "&Print"
+#~ msgstr " छापव (&P)"
+
+#~ msgid "Print this journal entry"
+#~ msgstr "ये दैनिकी प्रविस्टि ल छापव"
+
+#~ msgid "Opens a print dialog for this journal entry"
+#~ msgstr "ये दैनिकी प्रविस्टि बर छपाई गोठ खोलथे "
+
+#~ msgid "Time Tracker"
+#~ msgstr "टाइम ट्रेकर"
+
+#~ msgctxt "Date from - to"
+#~ msgid "%1 - %2"
+#~ msgstr "%1 - %2"
+
+#~ msgid "No category"
+#~ msgstr "कोई वर्ग नइ"
+
+#~ msgctxt "number of hours spent"
+#~ msgid "%1 hour"
+#~ msgid_plural "%1 hours"
+#~ msgstr[0] "%1 घंटा"
+#~ msgstr[1] "%1 घंटे"
+
+#~ msgctxt "percent of hours spent"
+#~ msgid " (%1%)"
+#~ msgstr "(%1%)"
+
+#~ msgctxt "@action:inmenu Unspecified priority"
+#~ msgid "unspecified"
+#~ msgstr "अविसिस्ट"
+
+#~ msgctxt "@action:inmenu highest priority"
+#~ msgid "1 (highest)"
+#~ msgstr "१ (सबसे जादा)"
+
+#~ msgctxt "@action:inmenu"
+#~ msgid "2"
+#~ msgstr "2"
+
+#~ msgctxt "@action:inmenu"
+#~ msgid "3"
+#~ msgstr "3"
+
+#~ msgctxt "@action:inmenu"
+#~ msgid "4"
+#~ msgstr "4"
+
+#~ msgctxt "@action:inmenu medium priority"
+#~ msgid "5 (medium)"
+#~ msgstr "५ (मध्यम)"
+
+#~ msgctxt "@action:inmenu"
+#~ msgid "6"
+#~ msgstr "6"
+
+#~ msgctxt "@action:inmenu"
+#~ msgid "7"
+#~ msgstr "7"
+
+#~ msgctxt "@action:inmenu"
+#~ msgid "8"
+#~ msgstr "8"
+
+#~ msgctxt "@action:inmenu lowest priority"
+#~ msgid "9 (lowest)"
+#~ msgstr "९ (सबसे कम)"
+
+#~ msgctxt "yes, recurring to-do"
+#~ msgid "Yes"
+#~ msgstr "हाँ"
+
+#~ msgctxt "no, not a recurring to-do"
+#~ msgid "No"
+#~ msgstr "नइ"
+
+#~ msgctxt "delimiter for joining category names"
+#~ msgid ","
+#~ msgstr ","
+
+#~ msgid "Summary"
+#~ msgstr "सारांस"
+
+#~ msgid "Recurs"
+#~ msgstr "बारंबार"
+
+#~ msgctxt "@title:column percent complete"
+#~ msgid "Complete"
+#~ msgstr "पूरा"
+
+#~ msgid "Due Date/Time"
+#~ msgstr "नियत तारीक/समय"
+
+#~ msgid "Description"
+#~ msgstr "वर्नन (&D)"
+
+#~ msgid "Cannot move to-do to itself or a child of itself."
+#~ msgstr "कामसूची ल खुद मं या एखर सिसु मं खिसकाय नइ जा सके."
+
+#~ msgid "Drop To-do"
+#~ msgstr "कामसूची ड्राप करव"
+
+#, fuzzy
+#~| msgid "To-do list view uses full window"
+#~ msgctxt "@info:tooltip"
+#~ msgid "Display to-do list in a full window"
+#~ msgstr "काम सूची मं पूरा विंडो परयोग होथे "
+
+#, fuzzy
+#~| msgid "&Show"
+#~ msgctxt "@action:inmenu show the to-do"
+#~ msgid "&Show"
+#~ msgstr "देखाव (&S)"
+
+#, fuzzy
+#~| msgid "&Edit..."
+#~ msgctxt "@action:inmenu edit the to-do"
+#~ msgid "&Edit..."
+#~ msgstr "संपादन... (&E)"
+
+#, fuzzy
+#~| msgid "&Print..."
+#~ msgctxt "@action:inmenu print the to-do"
+#~ msgid "&Print..."
+#~ msgstr "छापव...(&P)"
+
+#, fuzzy
+#~ msgctxt "@action:inmenu print preview the to-do"
+#~ msgid "Print Previe&w..."
+#~ msgstr "छापव...(&P)"
+
+#, fuzzy
+#~| msgid "&Delete"
+#~ msgctxt "@action:inmenu delete the to-do"
+#~ msgid "&Delete"
+#~ msgstr "मेटाव (&D)"
+
+#, fuzzy
+#~| msgid "New &To-do..."
+#~ msgctxt "@action:inmenu create a new to-do"
+#~ msgid "New &To-do..."
+#~ msgstr "नवा काम सूची... (&T)"
+
+#, fuzzy
+#~| msgid "New Su&b-to-do..."
+#~ msgctxt "@action:inmenu create a new sub-to-do"
+#~ msgid "New Su&b-to-do..."
+#~ msgstr "नवा उप काम-सूची... (&b)"
+
+#, fuzzy
+#~| msgid "&Make this To-do Independent"
+#~ msgctxt "@action:inmenu"
+#~ msgid "&Make this To-do Independent"
+#~ msgstr "ये कामसूची ल स्वतंत्र बनाव (&M)"
+
+#, fuzzy
+#~| msgid "Make all Sub-to-dos &Independent"
+#~ msgctxt "@action:inmenu"
+#~ msgid "Make all Sub-to-dos &Independent"
+#~ msgstr "सब्बो उप-काम-सूची ल स्वतंत्र बनाव (&I)"
+
+#, fuzzy
+#~| msgid "&Copy To"
+#~ msgctxt "@title:menu"
+#~ msgid "&Copy To"
+#~ msgstr "नकल इहां रखव (&C)"
+
+#, fuzzy
+#~| msgid "&Move To"
+#~ msgctxt "@title:menu"
+#~ msgid "&Move To"
+#~ msgstr "इहां खिसकाव (&M)"
+
+#, fuzzy
+#~| msgctxt "delete completed to-dos"
+#~| msgid "Pur&ge Completed"
+#~ msgctxt "@action:inmenu delete completed to-dos"
+#~ msgid "Pur&ge Completed"
+#~ msgstr " निकालना पूरा (&g)"
+
+#, fuzzy
+#~| msgctxt "@action:inmenu Unspecified priority"
+#~| msgid "unspecified"
+#~ msgctxt "@action:inmenu unspecified priority"
+#~ msgid "unspecified"
+#~ msgstr "अविसिस्ट"
+
+#, fuzzy
+#~| msgid "2"
+#~ msgctxt "@action:inmenu priority value=2"
+#~ msgid "2"
+#~ msgstr "2"
+
+#, fuzzy
+#~| msgid "3"
+#~ msgctxt "@action:inmenu priority value=3"
+#~ msgid "3"
+#~ msgstr "3"
+
+#, fuzzy
+#~| msgid "4"
+#~ msgctxt "@action:inmenu priority value=4"
+#~ msgid "4"
+#~ msgstr "4"
+
+#, fuzzy
+#~| msgid "6"
+#~ msgctxt "@action:inmenu priority value=6"
+#~ msgid "6"
+#~ msgstr "6"
+
+#, fuzzy
+#~| msgid "7"
+#~ msgctxt "@action:inmenu priority value=7"
+#~ msgid "7"
+#~ msgstr "7"
+
+#, fuzzy
+#~| msgid "8"
+#~ msgctxt "@action:inmenu priority value=8"
+#~ msgid "8"
+#~ msgstr "8"
+
+#~ msgid "Click to add a new to-do"
+#~ msgstr "नवा कामसूची जोड़े बर किलिक करव"
+
+#, fuzzy
+#~| msgid "Su&mmaries"
+#~ msgctxt "@label in QuickSearchLine"
+#~ msgid "Search Summaries"
+#~ msgstr "सारांस (&m)"
+
+#, fuzzy
+#~ msgctxt "@info:tooltip"
+#~ msgid "Filter on these categories"
+#~ msgstr "वर्ग चुनव"
+
+#~ msgctxt "@item:inlistbox"
+#~ msgid "Select Categories"
+#~ msgstr "वर्ग चुनव"
+
+#, fuzzy
+#~ msgctxt "@item:intext delimiter for joining category names"
+#~ msgid ","
+#~ msgstr ","
+
+#, fuzzy
+#~| msgid "Priority"
+#~ msgctxt "@item:inlistbox"
+#~ msgid "Select Priority"
+#~ msgstr "प्राथमिकता"
+
+#, fuzzy
+#~| msgctxt "@action:inmenu Unspecified priority"
+#~| msgid "unspecified"
+#~ msgctxt "@action:inmenu priority is unspecified"
+#~ msgid "unspecified"
+#~ msgstr "अविसिस्ट"
+
+#, fuzzy
+#~| msgctxt "@action:inmenu highest priority"
+#~| msgid "1 (highest)"
+#~ msgctxt "@action:inmenu highest priority"
+#~ msgid "%1 (highest)"
+#~ msgstr "१ (सबसे जादा)"
+
+#, fuzzy
+#~| msgctxt "@action:inmenu medium priority"
+#~| msgid "5 (medium)"
+#~ msgctxt "@action:inmenu medium priority"
+#~ msgid "%1 (medium)"
+#~ msgstr "५ (मध्यम)"
+
+#, fuzzy
+#~| msgctxt "@action:inmenu lowest priority"
+#~| msgid "9 (lowest)"
+#~ msgctxt "@action:inmenu lowest priority"
+#~ msgid "%1 (lowest)"
+#~ msgstr "९ (सबसे कम)"
+
+#, fuzzy
+#~| msgid "%1"
+#~ msgctxt "@action:inmenu"
+#~ msgid "%1"
+#~ msgstr "%1"
+
+#, fuzzy
+#~| msgctxt "@action:inmenu Unspecified priority"
+#~| msgid "unspecified"
+#~ msgctxt "priority is unspecified"
+#~ msgid "unspecified"
+#~ msgstr "अविसिस्ट"
+
+#, fuzzy
+#~| msgctxt "highest priority"
+#~| msgid "1 (highest)"
+#~ msgctxt "highest priority"
+#~ msgid "%1 (highest)"
+#~ msgstr "१ (सबसे जादा)"
+
+#, fuzzy
+#~| msgctxt "medium priority"
+#~| msgid "5 (medium)"
+#~ msgctxt "medium priority"
+#~ msgid "%1 (medium)"
+#~ msgstr "५ (मध्यम)"
+
+#, fuzzy
+#~| msgctxt "lowest priority"
+#~| msgid "9 (lowest)"
+#~ msgctxt "lowest priority"
+#~ msgid "%1 (lowest)"
+#~ msgstr "९ (सबसे कम)"
+
+#~ msgid "What's Next?"
+#~ msgstr "आगू क्या?"
+
+#~ msgid "Events:"
+#~ msgstr "घटना:"
+
+#~ msgid "To-do:"
+#~ msgstr "काम-सूची:"
+
+#~ msgid "Events and to-dos that need a reply:"
+#~ msgstr "घटना अउ काम-सूची जऊन ल जवाब के जरूरत हे:"
+
+#~ msgctxt "date, from - to"
+#~ msgid "%1, %2 - %3"
+#~ msgstr "%1, %2 - %3"
+
+#~ msgctxt "to-do due date"
+#~ msgid "  (Due: %1)"
+#~ msgstr " (नियत: %1)"
+
+#, fuzzy
+#~| msgctxt "Checkbox to display todos not hirarchical"
+#~| msgid "Flat View"
+#~ msgctxt "@option:check Checkbox to display todos not hierarchical"
+#~ msgid "Flat View"
+#~ msgstr "फ्लेट दृस्य"
+
+#~ msgid "Find Events - KOrganizer"
+#~ msgstr "घटना खोजव के-आर्गेनाइजर"
+
+#, fuzzy
+#~ msgctxt "@info:whatsthis"
+#~ msgid "Clicking this button will fully expand the to-do list tree."
+#~ msgstr "एक नवा छनइया परिभासित करे बर ए बटन ल दबाव."
+
+#, fuzzy
+#~ msgctxt "@info:tooltip"
+#~ msgid "Fully collapse the to-do tree"
+#~ msgstr "१ उपस्थित"
+
+#~ msgid "Cannot download calendar from '%1'."
+#~ msgstr " '%1' से कलेन्डर डाउनलोड नइ कर सकिस."
+
+#~ msgid "Merged calendar '%1'."
+#~ msgstr "सामिल कलेन्डर '%1'."
+
+#~ msgid "Opened calendar '%1'."
+#~ msgstr "खुले कलेन्डर '%1'."
+
+#~ msgctxt "unspecified priority"
+#~ msgid "unspecified"
+#~ msgstr "अविसिस्ट"
+
+#~ msgctxt "highest priority"
+#~ msgid "1 (highest)"
+#~ msgstr "१ (सबसे जादा)"
+
+#~ msgctxt "medium priority"
+#~ msgid "5 (medium)"
+#~ msgstr "५ (मध्यम)"
+
+#~ msgctxt "lowest priority"
+#~ msgid "9 (lowest)"
+#~ msgstr "९ (सबसे कम)"
+
+#~ msgctxt "@label in QuickSearchLine"
+#~ msgid "Search"
+#~ msgstr "खोजव"
+
+#~ msgid "&Description"
+#~ msgstr "वर्नन (&D)"
+
+#~ msgid "Other Options"
+#~ msgstr "अऊ दूसर विकल्प"
+
+#, fuzzy
+#~| msgctxt "@title:tab"
+#~| msgid "Month View"
+#~ msgid "&Month View"
+#~ msgstr "महिना दृस्य"
+
+#, fuzzy
+#~| msgid "Categories"
+#~ msgid "Edit Categories"
+#~ msgstr "स्रेनी"
+
+#, fuzzy
+#~| msgid "No category"
+#~ msgid "New category entry"
+#~ msgstr "कोई वर्ग नइ"
+
+#, fuzzy
+#~ msgid "Add the entry to the category list"
+#~ msgstr "वर्ग चुनव"
+
+#, fuzzy
+#~| msgid "&Add"
+#~ msgid "A&dd"
+#~ msgstr "जोड़व (&A)"
+
+#, fuzzy
+#~ msgid ""
+#~ "Click this button to insert the entry as a subcategory of the currently "
+#~ "selected category."
+#~ msgstr "अभी हाल के सक्रिय छनइया ल मेटाय बर ए बटन ल दबाव."
+
+#, fuzzy
+#~| msgid "No category"
+#~ msgid "Add &Subcategory"
+#~ msgstr "कोई वर्ग नइ"
+
+#, fuzzy
+#~ msgid "Remove the selected category"
+#~ msgstr "ऊपर दे गे सूची मं चुने गे उपस्थित ल मेटाथे."
+
+#, fuzzy
+#~ msgid ""
+#~ "Click this button to remove the selected category from the category list."
+#~ msgstr "अभी हाल के सक्रिय छनइया ल मेटाय बर ए बटन ल दबाव."
+
+#, fuzzy
+#~| msgid "Categories"
+#~ msgid "Category list"
+#~ msgstr "स्रेनी"
+
+#, fuzzy
+#~| msgctxt "@item:inlistbox"
+#~| msgid "Select Categories"
+#~ msgid "Default Category"
+#~ msgstr "वर्ग चुनव"
+
+#, fuzzy
+#~| msgid "No category"
+#~ msgid "New category"
+#~ msgstr "कोई वर्ग नइ"
+
+#, fuzzy
+#~| msgid "No category"
+#~ msgid "New subcategory"
+#~ msgstr "कोई वर्ग नइ"
+
+#~ msgid "Default Email Attachment Method"
+#~ msgstr "डिफाल्ट ई-मेल संलग्नक विधि"
+
+#~ msgid "The default way of attaching dropped emails to an event"
+#~ msgstr "कोनो घटना मं ईमेल ल संलग्न करे के डिफाल्ट तरीका"
+
+#~ msgid "Attach message without attachments"
+#~ msgstr "संदेस मन ल बिना संलग्नकों के संलग्न करव"
+
+#~ msgid "TestKabc"
+#~ msgstr "टेस्टकेएबीसी"
+
+#~ msgid "Select the working hours background color for the agenda view here."
+#~ msgstr "एजेंडा दृस्य बर काम घंटे बर पिछोत अंगना रंग इहां चुनव."
+
+#~ msgctxt "@title:window"
+#~ msgid "Archive/Delete Past Events and To-dos"
+#~ msgstr "पिछला घटना अउ काम-सूची ल अभिलेखित करव/मेटाव"
+
+#~ msgctxt "@action:button"
+#~ msgid "&Archive"
+#~ msgstr "अभिलेखागार (&A)"
+
+#~ msgctxt "@option:radio"
+#~ msgid "Archive now items older than:"
+#~ msgstr "एखर से अधिक जुन्ना चीज मन ल अभिलेखित करव:"
+
+#~ msgctxt "@option:radio"
+#~ msgid "Automaticall&y archive items older than:"
+#~ msgstr "एखर से अधिक जुन्ना चीज मन ल अपने अपन अभिलेखित करव: (&y)"
+
+#~ msgctxt "@item:inlistbox expires in daily units"
+#~ msgid "Day(s)"
+#~ msgstr "दिन"
+
+#~ msgctxt "@item:inlistbox expiration in weekly units"
+#~ msgid "Week(s)"
+#~ msgstr "हफ्ता"
+
+#~ msgctxt "@item:inlistbox expiration in monthly units"
+#~ msgid "Month(s)"
+#~ msgstr "महिना"
+
+#~ msgctxt "@label"
+#~ msgid "Archive &file:"
+#~ msgstr "अभिलेख फाइलः (&f)"
+
+#~ msgctxt "@label filter for KUrlRequester"
+#~ msgid "*.ics|iCalendar Files"
+#~ msgstr "*.ics|आईकलेन्डर फाइल"
+
+#~ msgctxt "@title:group"
+#~ msgid "Type of Items to Archive"
+#~ msgstr "अभिलेखन बर चीज मन के किसिम"
+
+#~ msgctxt "@option:check"
+#~ msgid "&Events"
+#~ msgstr "घटना (&E)"
+
+#~ msgctxt "@option:check"
+#~ msgid "&To-dos"
+#~ msgstr "काम-सूची (&T)"
+
+#~ msgctxt "@option:check"
+#~ msgid "&Delete only, do not save"
+#~ msgstr "सिरिफ मेटाव, सहेजव नइ (&D)"
+
+#~ msgctxt "@info"
+#~ msgid "The archive file name is not valid."
+#~ msgstr "अभिलेख फाइल के नाम वैध नइ हे."
+
+#~ msgid "Regularly archive events"
+#~ msgstr "घटना ल नियमित अभिलेखित करव"
+
+#~ msgid "The unit in which the expiry time is expressed."
+#~ msgstr "इकाई जेमां एक्सपायरी समय बताय जाथे."
+
+#~ msgid "In days"
+#~ msgstr "दिनों में"
+
+#~ msgid "In weeks"
+#~ msgstr "हफ्ता में"
+
+#~ msgid "In months"
+#~ msgstr "महिना में"
+
+#~ msgid "URL of the file where old events should be archived"
+#~ msgstr "फाइल के यूआरएल जहाँ जुन्ना घटना अभिलेखित करे जाही"
+
+#~ msgid "Archive events"
+#~ msgstr "घटना अभिलेखित करव"
+
+#~ msgid "Archive to-dos"
+#~ msgstr "काम-सूची अभिलेखित करव"
+
+#~ msgid "What to do when archiving"
+#~ msgstr "जब अभिलेखित करे जाही तहां का करव"
+
+#~ msgid "Delete old events"
+#~ msgstr "जुन्ना घटना मेटाव"
+
+#~ msgid "Archive old events to a separate file"
+#~ msgstr "जुन्ना घटना ल अलग फाइल मं अभिलेखित करव"
+
+#~ msgid "There are no items before %1"
+#~ msgstr "%1 के सामने कोनो अवयव नइ हे"
+
+#~ msgid "Delete Old Items"
+#~ msgstr "जुन्ना चीज मेटाव"
+
+#~ msgid "Cannot write archive file %1. %2"
+#~ msgstr "अभिलेख फाइल %1 लिख नइ सकिस. %2"
+
+#~ msgid "Cannot write archive. %1"
+#~ msgstr "अभिलेख फाइल %1 लिख नइ सकिस."
+
+#~ msgid "Reminder"
+#~ msgstr "सुरता"
+
+#, fuzzy
+#~| msgid "Start Date"
+#~ msgid "Start Date/Time"
+#~ msgstr "सुरू तारीक"
+
+#, fuzzy
+#~| msgid "Due Date/Time"
+#~ msgid "End Date/Time"
+#~ msgstr "नियत तारीक/समय"
+
+#, fuzzy
+#~| msgctxt "weekOfYear (year)"
+#~| msgid "%1 (%2)"
+#~ msgid "%2 (1 year)"
+#~ msgid_plural "%2 (%1 years)"
+#~ msgstr[0] "%1 (%2)"
+#~ msgstr[1] "%1 (%2)"
+
+#~ msgid "No item selected."
+#~ msgstr "कोई चीज नइ चुने गे."
+
+#~ msgid "Publishing"
+#~ msgstr "प्रकासन"
+
+#~ msgid "Unable to publish the item '%1'"
+#~ msgstr "चीज '%1' ल प्रकासित करे मं अक्छम"
+
+#~ msgid "Forwarding"
+#~ msgstr "आगू भेजना"
+
+#~ msgid "Unable to forward the item '%1'"
+#~ msgstr "चीज '%1' ल अग्रेसित करे मं अक्छम"
+
+#, fuzzy
+#~| msgid "Forwarding"
+#~ msgid "Forwarding Error"
+#~ msgstr "आगू भेजना"
+
+#~ msgid "The free/busy information was successfully sent."
+#~ msgstr "मिलत/व्यस्त जानकारी सफलता से प्रेसित."
+
+#~ msgid "Sending Free/Busy"
+#~ msgstr "मिलत/व्यस्त भेजत हे"
+
+#~ msgid "Unable to publish the free/busy data."
+#~ msgstr "मिलत/व्यस्त डाटा प्रकासित करे मं अक्छम."
+
+#~ msgid "The item has no attendees."
+#~ msgstr "ये चीज तिर कोनो उपस्थिति नइ हे."
+
+#~ msgid ""
+#~ "The groupware message for item '%1' was successfully sent.\n"
+#~ "Method: %2"
+#~ msgstr ""
+#~ "इकाई '%1' बर ग्रुपवेयर संदेस सफलतापूर्वक भेजिस.\n"
+#~ "विधि: %2"
+
+#~ msgctxt ""
+#~ "Groupware message sending failed. %2 is request/reply/add/cancel/counter/"
+#~ "etc."
+#~ msgid ""
+#~ "Unable to send the item '%1'.\n"
+#~ "Method: %2"
+#~ msgstr ""
+#~ "चीज '%1' भेजे मं अक्छम.\n"
+#~ "विधि: %2"
+
+#~ msgid "Go back one month"
+#~ msgstr "एक महिना पीछू जाव"
+
+#~ msgid "Go back one week"
+#~ msgstr "एक हफ़्ता पीछू जाव"
+
+#~ msgid "Go forward one week"
+#~ msgstr "एक हफ़्ता आगू जाव"
+
+#~ msgid "Go forward one month"
+#~ msgstr "एक महिना आगू जाव"
+
+#~ msgctxt "monthname year"
+#~ msgid "%1 %2"
+#~ msgstr "%1 %2"
+
+#~ msgctxt "'Month day' for month view cells"
+#~ msgid "%1 %2"
+#~ msgstr "%1 %2"
+
+#~ msgid ""
+#~ "Unable to add the exception item to the calendar. No change will be done."
+#~ msgstr "कलेन्डर मं एक्सेप्सन चीज जोड़े मं अक्छम. कोनो बदलाव नइ होही."
+
+#~ msgid "All Day"
+#~ msgstr "पूरा दिन"
+
+#~ msgctxt "short_weekday date (e.g. Mon 13)"
+#~ msgid "%1 %2"
+#~ msgstr "%1 %2"
+
+#~ msgid "Unable to modify this to-do, because it cannot be locked."
+#~ msgstr "ये काम सूची ल सुधार नइ कर सकिस काबर कि एला तालाबंद नइ कर सकिस."
+
+#~ msgid "Attendee \"%1\" added to the calendar item \"%2\""
+#~ msgstr " \"%1\" उपस्थित ल कलेन्डर इकाई \"%2\" मं जोड़ दे गिस"
+
+#~ msgid "Attendee added"
+#~ msgstr "उपस्थित जोड़े गए"
+
+#~ msgid "- %1"
+#~ msgstr "- %1"
+
+#~ msgid "Dissociate event from recurrence"
+#~ msgstr "पुनरावृत्ति से घटना ल अलग करव"
+
+#~ msgid "Split future recurrences"
+#~ msgstr "भविस्य के पुनरावृत्तियों ल विभाजित करव"
+
+#~ msgid "<placeholder>undefined</placeholder>"
+#~ msgstr "<placeholder>अपरिभासित</placeholder>"
+
+#~ msgid "Timezone:"
+#~ msgstr "समय छेत्रः"
+
+#, fuzzy
+#~| msgid "&Edit Timezones..."
+#~ msgid "&Add Timezones..."
+#~ msgstr "समय छेत्र संपादित करव... (&E)"
+
+#, fuzzy
+#~| msgid "&Remove %1 Timezone"
+#~ msgid "&Remove Timezone %1"
+#~ msgstr "समय छेत्र %1 मेटाव (&R)"
+
+#~ msgid "Timezone: %1"
+#~ msgstr "समय छेत्रः %1"
+
+#~ msgid "Timezone"
+#~ msgstr "समयछेत्र"
+
+#, fuzzy
+#~| msgid "&iCalendar..."
+#~ msgid "Add Calendar..."
+#~ msgstr "आई-कलेन्डर... (iC)"
+
+#, fuzzy
+#~| msgctxt "@action:button reload freebusy data"
+#~| msgid "Reload"
+#~ msgid "Reload"
+#~ msgstr "री-लोड"
+
+#, fuzzy
+#~| msgctxt "@action:inmenu show a dialog used to edit the attachment"
+#~| msgid "&Properties..."
+#~ msgid "Properties..."
+#~ msgstr "गुन...(&P)"
+
+#, fuzzy
+#~| msgid "New Calendar"
+#~ msgid "New Calendar..."
+#~ msgstr "नवा कलेन्डर"
+
+#~ msgid "Start Time"
+#~ msgstr "सुरू समय"
+
+#~ msgid "End Date"
+#~ msgstr "खतम तारीक"
+
+#~ msgid "End Time"
+#~ msgstr "खतम समय"
+
+#~ msgid "Locking Failed"
+#~ msgstr "ताला लगाना फेल"
+
+#~ msgid "Open in separate window"
+#~ msgstr "अलग विंडो मं खोलव"
+
+#~ msgid "Enable automatic saving of manually opened calendar files"
+#~ msgstr "हस्तचालित खोले गे कलेन्डर फाइल मन ल अपने अपन सहेजना सक्छम करव"
+
+#~ msgctxt "@title:group"
+#~ msgid "Saving Calendar"
+#~ msgstr "कलेन्डर सहेजत हे"
+
+#~ msgctxt "@title:tab general to-do settings"
+#~ msgid "&General"
+#~ msgstr "सामान्य (&G)"
+
+#~ msgctxt "@title:window"
+#~ msgid "New To-do"
+#~ msgstr "नवा काम सूची"
+
+#~ msgid "Sets the title of this journal."
+#~ msgstr "ये दैनिकी के सीर्सक सेट करथे."
+
+#~ msgctxt "journal title"
+#~ msgid "T&itle:"
+#~ msgstr "सीर्सकः (&i)"
+
+#~ msgid "&Date:"
+#~ msgstr "तारीक: (&D)"
+
+#~ msgid "&Time: "
+#~ msgstr "समय: (&T)"
+
+#~ msgid "Allows you to select the categories that this journal belongs to."
+#~ msgstr "ये दैनिकी के स्रेनियों ल जेखर से ए सम्बन्धित हे चुने देथे."
+
+#~ msgid "Select Cate&gories..."
+#~ msgstr "वर्ग चुनव... (&g)"
+
+#~ msgid "Please specify a valid date, for example '%1'."
+#~ msgstr "किरपा करके, एक वैध तारीक निरधारित करव, उदाहरन बर- '%1'."
+
+#, fuzzy
+#~ msgctxt "@info"
+#~ msgid "Please specify a journal title."
+#~ msgstr "किरपा करके, एक वैध सेट समय निरधारित करव."
+
+#~ msgctxt "@title general journal settings"
+#~ msgid "General"
+#~ msgstr "सामान्य"
+
+#, fuzzy
+#~ msgctxt "@title:window"
+#~ msgid "New Journal"
+#~ msgstr "नवा दैनिकी... (&J)"
+
+#~ msgctxt "@label attachment contains binary data"
+#~ msgid "[Binary data]"
+#~ msgstr "[द्विचर डाटा]"
+
+#~ msgctxt "@label"
+#~ msgid "Attachment name"
+#~ msgstr "संलग्नक के नाम"
+
+#, fuzzy
+#~ msgctxt "@info:tooltip"
+#~ msgid "Give the attachment a name"
+#~ msgstr "संलग्नक के नाम"
+
+#~ msgctxt "@label"
+#~ msgid "Type:"
+#~ msgstr "किसिमः"
+
+#~ msgctxt "@label unknown mimetype"
+#~ msgid "Unknown"
+#~ msgstr "अग्यात"
+
+#~ msgctxt "@option:check"
+#~ msgid "Store attachment inline"
+#~ msgstr "संलग्नक ल इनलाइन भंडारित करव"
+
+#~ msgctxt "@label"
+#~ msgid "Location:"
+#~ msgstr "जगहः"
+
+#~ msgctxt "@label"
+#~ msgid "Size:"
+#~ msgstr "आकारः"
+
+#~ msgctxt "@label"
+#~ msgid "Attachments:"
+#~ msgstr "संलग्नक:"
+
+#, fuzzy
+#~ msgctxt "@info:tooltip"
+#~ msgid "Add an attachment"
+#~ msgstr "संलग्नक जोड़व"
+
+#, fuzzy
+#~ msgctxt "@info:whatsthis"
+#~ msgid ""
+#~ "Shows a dialog used to select an attachment to add to this event or to-do "
+#~ "as link or as inline data."
+#~ msgstr "ये घटना या काम जेखर से सम्बन्धित हे ओखर स्रेनी आप मन ल चुने देथे."
+
+#, fuzzy
+#~ msgctxt "@info:tooltip"
+#~ msgid "Remove the selected attachment"
+#~ msgstr "संलग्नक निकालव"
+
+#, fuzzy
+#~ msgctxt "@info:whatsthis"
+#~ msgid ""
+#~ "Removes the attachment selected in the list above from this event or to-"
+#~ "do."
+#~ msgstr "ऊपर दे गे सूची मं चुने गे उपस्थित ल मेटाथे."
+
+#~ msgctxt "@action:inmenu open the attachment in a viewer"
+#~ msgid "&Open"
+#~ msgstr "खोलव (&O)"
+
+#, fuzzy
+#~| msgid "&Remove"
+#~ msgctxt "@action:inmenu remove the attachment"
+#~ msgid "&Remove"
+#~ msgstr "मेटाव (&R)"
+
+#~ msgctxt "@action:inmenu show a dialog used to edit the attachment"
+#~ msgid "&Properties..."
+#~ msgstr "गुन...(&P)"
+
+#~ msgctxt "@action:inmenu"
+#~ msgid "&Link here"
+#~ msgstr "इहां संकली करव (&L)"
+
+#~ msgctxt "@action:inmenu"
+#~ msgid "&Copy here"
+#~ msgstr "इहां नकल करव (&C)"
+
+#~ msgctxt "@action:inmenu"
+#~ msgid "C&ancel"
+#~ msgstr "खारिज करव (&a)"
+
+#~ msgctxt "@title"
+#~ msgid "Add Attachment"
+#~ msgstr "संलग्नक जोड़व"
+
+#, fuzzy
+#~| msgid "<qt>Do you really want to remove the resource <b>%1</b>?</qt>"
+#~ msgctxt "@info"
+#~ msgid "Do you really want to remove the attachment labeled \"%1\"?"
+#~ msgstr "<qt>का आप मन सचमुच संसाधन <b>%1</b> ल मिटाना चाहथो?</qt>"
+
+#, fuzzy
+#~ msgctxt "@action:button"
+#~ msgid "Manage &Templates..."
+#~ msgstr "टैम्पलेट्स के प्रबंधन करव (&T)"
+
+#, fuzzy
+#~| msgid "Calendar"
+#~ msgid "Calendar:"
+#~ msgstr "कलेन्डर"
+
+#, fuzzy
+#~| msgid "Edit %1"
+#~ msgctxt "@title:window"
+#~ msgid "Edit %1: %2"
+#~ msgstr "संपादन %1"
+
+#~ msgctxt "@title:window"
+#~ msgid "KOrganizer Confirmation"
+#~ msgstr "के-आर्गेनाइजर पुस्टिकरन"
+
+#, fuzzy
+#~ msgctxt "@title:tab"
+#~ msgid "Atte&ndees"
+#~ msgstr "उपस्थिति (&n)"
+
+#, fuzzy
+#~ msgctxt "@info:whatsthis"
+#~ msgid ""
+#~ "The Attendees tab allows you to Add or Remove Attendees to/from this "
+#~ "event or to-do."
+#~ msgstr "उपस्थित टैब आप मन ल ए घटना या काम मं उपस्थित ल जोड़े हटाय देथे."
+
+#, fuzzy
+#~ msgctxt "@info"
+#~ msgid "Unable to find template '%1'."
+#~ msgstr "टैम्प्लेट '%1' खोजे मं अक्छम."
+
+#, fuzzy
+#~ msgctxt "@info"
+#~ msgid "Error loading template file '%1'."
+#~ msgstr "टैम्प्लेट फाइल '%1' लोड करे मं गलती."
+
+#, fuzzy
+#~| msgctxt "@info"
+#~| msgid "Template does not contain a valid event."
+#~ msgctxt "@info"
+#~ msgid "Template does not contain a valid incidence."
+#~ msgstr "टैम्प्लेट एक वैध घटना नइ रखथे."
+
+#, fuzzy
+#~| msgid "Create a new To-do"
+#~ msgctxt "@action:button"
+#~ msgid "Create to-do"
+#~ msgstr "नवा कामसूची बनाव"
+
+#~ msgctxt "@title:column attendee name"
+#~ msgid "Name"
+#~ msgstr "नांव"
+
+#~ msgctxt "@title:column attendee email"
+#~ msgid "Email"
+#~ msgstr "ईमेल"
+
+#~ msgctxt "@title:column attendee role"
+#~ msgid "Role"
+#~ msgstr "भूमिका"
+
+#~ msgctxt "@title:column attendee status"
+#~ msgid "Status"
+#~ msgstr "स्थिति"
+
+#~ msgctxt "@title:column attendee has RSVPed?"
+#~ msgid "RSVP"
+#~ msgstr "आरएसवीपी"
+
+#~ msgctxt "@title:column attendee delegated to"
+#~ msgid "Delegated To"
+#~ msgstr "पर प्रतिनिधित्व"
+
+#~ msgctxt "@title:column attendee delegated from"
+#~ msgid "Delegated From"
+#~ msgstr "से प्रतिनिधित्व"
+
+#~ msgctxt "@title"
+#~ msgid "Invalid Email Address"
+#~ msgstr "अवैध ई-मेल पता"
+
+#, fuzzy
+#~ msgid "Manage %1 Templates"
+#~ msgstr "टैम्पलेट्स के प्रबंधन करव"
+
+#~ msgid "Template Name"
+#~ msgstr "टैम्प्लेट नाम"
+
+#~ msgid "Please enter a name for the new template:"
+#~ msgstr "नवा टैम्प्लेट बर एक नाम भरव:"
+
+#, fuzzy
+#~ msgid "New %1 Template"
+#~ msgstr "नवा टैम्प्लेट"
+
+#~ msgid ""
+#~ "A template with that name already exists, do you want to overwrite it?"
+#~ msgstr "ये नाम के टैम्प्लेट पहिली से ही मौजूद हे. का आप मन एला मेटाय के लिखना चाहथो?"
+
+#~ msgid "Duplicate Template Name"
+#~ msgstr "दोहरा टैम्पलेट नाम"
+
+#~ msgid "Overwrite"
+#~ msgstr "मेटाय के लिखव"
+
+#, fuzzy
+#~ msgid "Are you sure that you want to remove the template <b>%1</b>?"
+#~ msgstr "<qt>का आप मन सचमुच संसाधन <b>%1</b> ल मिटाना चाहथो?</qt>"
+
+#, fuzzy
+#~ msgid "Remove"
+#~ msgstr "हटाव"
+
+#, fuzzy
+#~| msgid "Identity as organizer:"
+#~ msgctxt "@label"
+#~ msgid "Identity as organizer:"
+#~ msgstr "आर्गेनाइजर के रूप मं पहिचान:"
+
+#, fuzzy
+#~ msgctxt "@info:whatsthis"
+#~ msgid ""
+#~ "Edits the name of the attendee selected in the list above, or adds a new "
+#~ "attendee if there are no attendees in the list."
+#~ msgstr "ऊपर दे गे सूची मं चुने गे उपस्थित के अभी हाल के उपस्थिति स्थिति संपादित करथे."
+
+#~ msgctxt "@label attendee's name"
+#~ msgid "Na&me:"
+#~ msgstr "नांव: (&m)"
+
+#, fuzzy
+#~| msgid "Click to add a new attendee"
+#~ msgctxt "@label"
+#~ msgid "Click to add a new attendee"
+#~ msgstr "नवा उपस्थिति जोड़े बर इहां किलिक करव."
+
+#, fuzzy
+#~ msgctxt "@info:whatsthis"
+#~ msgid "Edits the role of the attendee selected in the list above."
+#~ msgstr "ऊपर दे गे सूची मं चुने गे उपस्थित के भूमिका संपादित करव."
+
+#, fuzzy
+#~| msgid "Ro&le:"
+#~ msgctxt "@label"
+#~ msgid "Ro&le:"
+#~ msgstr "भूमिकाः (&l)"
+
+#, fuzzy
+#~ msgctxt "@info:tooltip"
+#~ msgid "Select the attendee participation role"
+#~ msgstr "एजेंडा दृस्य पिछोत अंगना बर इहां पिछोत अंगना रंग चुनव."
+
+#, fuzzy
+#~ msgctxt "@info:whatsthis"
+#~ msgid ""
+#~ "Edits the current attendance status of the attendee selected in the list "
+#~ "above."
+#~ msgstr "ऊपर दे गे सूची मं चुने गे उपस्थित के अभी हाल के उपस्थिति स्थिति संपादित करथे."
+
+#, fuzzy
+#~| msgid "Stat&us:"
+#~ msgctxt "@label"
+#~ msgid "Stat&us:"
+#~ msgstr "स्थितिः (&u)"
+
+#, fuzzy
+#~ msgctxt "@info:tooltip"
+#~ msgid "Request a response from the attendee"
+#~ msgstr "प्रतिकिरिया निवेदित करव (&q)"
+
+#, fuzzy
+#~ msgctxt "@info:whatsthis"
+#~ msgid ""
+#~ "Edits whether to send an email to the attendee selected in the list above "
+#~ "to request a response concerning attendance."
+#~ msgstr "ऊपर दे गे सूची मं चुने गे उपस्थित के अभी हाल के उपस्थिति स्थिति संपादित करथे."
+
+#, fuzzy
+#~| msgid "Re&quest response"
+#~ msgctxt "@option:check"
+#~ msgid "Re&quest response"
+#~ msgstr "प्रतिकिरिया निवेदित करव (&q)"
+
+#~ msgctxt "@action:button new attendee"
+#~ msgid "&New"
+#~ msgstr "नवा (&N)"
+
+#, fuzzy
+#~ msgctxt "@info:tooltip"
+#~ msgid "Add an attendee"
+#~ msgstr "१ उपस्थित"
+
+#~ msgctxt "@action:button"
+#~ msgid "&Remove"
+#~ msgstr "मेटाव (&R)"
+
+#, fuzzy
+#~ msgctxt "@info:tooltip"
+#~ msgid "Remove the selected attendee"
+#~ msgstr "ऊपर दे गे सूची मं चुने गे उपस्थित ल मेटाथे."
+
+#, fuzzy
+#~ msgctxt "@info:whatsthis"
+#~ msgid "Removes the attendee selected in the list above."
+#~ msgstr "ऊपर दे गे सूची मं चुने गे उपस्थित ल मेटाथे."
+
+#, fuzzy
+#~| msgid "Select Addressee..."
+#~ msgctxt "@action:button"
+#~ msgid "Select Addressee..."
+#~ msgstr "पावइया चुनव..."
+
+#, fuzzy
+#~| msgctxt "sample attendee name"
+#~| msgid "Firstname Lastname"
+#~ msgctxt "@item:intext sample attendee name"
+#~ msgid "Firstname Lastname"
+#~ msgstr "नांव जात"
+
+#, fuzzy
+#~| msgctxt "sample attendee email name"
+#~| msgid "name"
+#~ msgctxt "@item:intext sample attendee email name"
+#~ msgid "name"
+#~ msgstr "नांव"
+
+#, fuzzy
+#~ msgctxt "@info:whatsthis"
+#~ msgid "Select the identity to use as the organizer for this incidence."
+#~ msgstr "ये काम बर सेट तारीक सेट करथे."
+
+#, fuzzy
+#~| msgid "Delegated to %1"
+#~ msgctxt "@label"
+#~ msgid "Delegated to %1"
+#~ msgstr "%1 मं प्रतिनिधित्व"
+
+#, fuzzy
+#~| msgid "No item selected."
+#~ msgctxt "@label"
+#~ msgid "Not delegated"
+#~ msgstr "कोई चीज नइ चुने गे."
+
+#~ msgctxt "@item:inlistbox"
+#~ msgid "1st"
+#~ msgstr "1हिली"
+
+#~ msgctxt "@item:inlistbox"
+#~ msgid "2nd"
+#~ msgstr "2रा"
+
+#~ msgctxt "@item:inlistbox"
+#~ msgid "3rd"
+#~ msgstr "3रा"
+
+#~ msgctxt "@item:inlistbox"
+#~ msgid "4th"
+#~ msgstr "4था"
+
+#~ msgctxt "@item:inlistbox"
+#~ msgid "5th"
+#~ msgstr "5वां"
+
+#~ msgctxt "@item:inlistbox last week of the month"
+#~ msgid "Last"
+#~ msgstr "आखरी"
+
+#~ msgctxt "@item:inlistbox"
+#~ msgid "2nd Last"
+#~ msgstr "2रा आखरी"
+
+#~ msgctxt "@item:inlistbox"
+#~ msgid "3rd Last"
+#~ msgstr "3रा आखरी"
+
+#~ msgctxt "@item:inlistbox"
+#~ msgid "4th Last"
+#~ msgstr "4था आखरी"
+
+#~ msgctxt "@item:inlistbox"
+#~ msgid "5th Last"
+#~ msgstr "5वां आखरी"
+
+#~ msgctxt "@info:whatsthis"
+#~ msgid "The weekday on which this event or to-do should recur."
+#~ msgstr "कामदिवस जऊन मं ए घटना या काम होना हे."
+
+#~ msgctxt "@info:whatsthis"
+#~ msgid "The month during which this event or to-do should recur."
+#~ msgstr "महिना जेमां ए घटना या काम होना हे."
+
+#~ msgctxt "@info:whatsthis"
+#~ msgid "Sets how often this event or to-do should recur."
+#~ msgstr "सेट करथे कि कतेक बार ए घटना या काम हो."
+
+#~ msgctxt "@label"
+#~ msgid "&Recur every"
+#~ msgstr "बारंबार करव हर (&R)"
+
+#~ msgctxt "@label recurrence expressed in days"
+#~ msgid "day(s)"
+#~ msgstr "दिन"
+
+#~ msgctxt "@label"
+#~ msgid "week(s) on:"
+#~ msgstr "पर हफ्ता:"
+
+#~ msgctxt "@label"
+#~ msgid "month(s)"
+#~ msgstr "महिना"
+
+#~ msgctxt "@item:inlistbox"
+#~ msgid "6th"
+#~ msgstr "6ठा"
+
+#~ msgctxt "@item:inlistbox"
+#~ msgid "7th"
+#~ msgstr "7वां"
+
+#~ msgctxt "@item:inlistbox"
+#~ msgid "8th"
+#~ msgstr "8वां"
+
+#~ msgctxt "@item:inlistbox"
+#~ msgid "9th"
+#~ msgstr "9वां"
+
+#~ msgctxt "@item:inlistbox"
+#~ msgid "10th"
+#~ msgstr "10वां"
+
+#~ msgctxt "@item:inlistbox"
+#~ msgid "11th"
+#~ msgstr "11वां"
+
+#~ msgctxt "@item:inlistbox"
+#~ msgid "12th"
+#~ msgstr "12वां"
+
+#~ msgctxt "@item:inlistbox"
+#~ msgid "13th"
+#~ msgstr "13वां"
+
+#~ msgctxt "@item:inlistbox"
+#~ msgid "14th"
+#~ msgstr "14वां"
+
+#~ msgctxt "@item:inlistbox"
+#~ msgid "15th"
+#~ msgstr "15वां"
+
+#~ msgctxt "@item:inlistbox"
+#~ msgid "16th"
+#~ msgstr "16वां"
+
+#~ msgctxt "@item:inlistbox"
+#~ msgid "17th"
+#~ msgstr "17वां"
+
+#~ msgctxt "@item:inlistbox"
+#~ msgid "18th"
+#~ msgstr "18वां"
+
+#~ msgctxt "@item:inlistbox"
+#~ msgid "19th"
+#~ msgstr "19वां"
+
+#~ msgctxt "@item:inlistbox"
+#~ msgid "20th"
+#~ msgstr "20वां"
+
+#~ msgctxt "@item:inlistbox"
+#~ msgid "21st"
+#~ msgstr "21वां"
+
+#~ msgctxt "@item:inlistbox"
+#~ msgid "22nd"
+#~ msgstr "22वां"
+
+#~ msgctxt "@item:inlistbox"
+#~ msgid "23rd"
+#~ msgstr "23वां"
+
+#~ msgctxt "@item:inlistbox"
+#~ msgid "24th"
+#~ msgstr "24वां"
+
+#~ msgctxt "@item:inlistbox"
+#~ msgid "25th"
+#~ msgstr "25वां"
+
+#~ msgctxt "@item:inlistbox"
+#~ msgid "26th"
+#~ msgstr "26वां"
+
+#~ msgctxt "@item:inlistbox"
+#~ msgid "27th"
+#~ msgstr "27वां"
+
+#~ msgctxt "@item:inlistbox"
+#~ msgid "28th"
+#~ msgstr "28वां"
+
+#~ msgctxt "@item:inlistbox"
+#~ msgid "29th"
+#~ msgstr "29वां"
+
+#~ msgctxt "@item:inlistbox"
+#~ msgid "30th"
+#~ msgstr "30वां"
+
+#~ msgctxt "@item:inlistbox"
+#~ msgid "31st"
+#~ msgstr "31वां"
+
+#~ msgctxt "@item:inlistbox last day of the month"
+#~ msgid "Last"
+#~ msgstr "आखरी"
+
+#~ msgctxt "@item:inlistbox"
+#~ msgid "6th Last"
+#~ msgstr "6वां आखरी"
+
+#~ msgctxt "@item:inlistbox"
+#~ msgid "7th Last"
+#~ msgstr "7वां आखरी"
+
+#~ msgctxt "@item:inlistbox"
+#~ msgid "8th Last"
+#~ msgstr "8वां आखरी"
+
+#~ msgctxt "@item:inlistbox"
+#~ msgid "9th Last"
+#~ msgstr "9वां आखरी"
+
+#~ msgctxt "@item:inlistbox"
+#~ msgid "10th Last"
+#~ msgstr "10वां आखरी"
+
+#~ msgctxt "@item:inlistbox"
+#~ msgid "11th Last"
+#~ msgstr "11वां आखरी"
+
+#~ msgctxt "@item:inlistbox"
+#~ msgid "12th Last"
+#~ msgstr "12वां आखरी"
+
+#~ msgctxt "@item:inlistbox"
+#~ msgid "13th Last"
+#~ msgstr "13वां आखरी"
+
+#~ msgctxt "@item:inlistbox"
+#~ msgid "14th Last"
+#~ msgstr "14वां आखरी"
+
+#~ msgctxt "@item:inlistbox"
+#~ msgid "15th Last"
+#~ msgstr "15वां आखरी"
+
+#~ msgctxt "@item:inlistbox"
+#~ msgid "16th Last"
+#~ msgstr "16वां आखरी"
+
+#~ msgctxt "@item:inlistbox"
+#~ msgid "17th Last"
+#~ msgstr "17वां आखरी"
+
+#~ msgctxt "@item:inlistbox"
+#~ msgid "18th Last"
+#~ msgstr "18वां आखरी"
+
+#~ msgctxt "@item:inlistbox"
+#~ msgid "19th Last"
+#~ msgstr "19वां आखरी"
+
+#~ msgctxt "@item:inlistbox"
+#~ msgid "20th Last"
+#~ msgstr "20वां आखरी"
+
+#~ msgctxt "@item:inlistbox"
+#~ msgid "21st Last"
+#~ msgstr "21वां आखरी"
+
+#~ msgctxt "@item:inlistbox"
+#~ msgid "22nd Last"
+#~ msgstr "22वां आखरी"
+
+#~ msgctxt "@item:inlistbox"
+#~ msgid "23rd Last"
+#~ msgstr "23वां आखरी"
+
+#~ msgctxt "@item:inlistbox"
+#~ msgid "24th Last"
+#~ msgstr "24वां आखरी"
+
+#~ msgctxt "@item:inlistbox"
+#~ msgid "25th Last"
+#~ msgstr "25वां आखरी"
+
+#~ msgctxt "@item:inlistbox"
+#~ msgid "26th Last"
+#~ msgstr "26वां आखरी"
+
+#~ msgctxt "@item:inlistbox"
+#~ msgid "27th Last"
+#~ msgstr "27वां आखरी"
+
+#~ msgctxt "@item:inlistbox"
+#~ msgid "28th Last"
+#~ msgstr "28वां आखरी"
+
+#~ msgctxt "@item:inlistbox"
+#~ msgid "29th Last"
+#~ msgstr "29वां आखरी"
+
+#~ msgctxt "@item:inlistbox"
+#~ msgid "30th Last"
+#~ msgstr "30वां आखरी"
+
+#~ msgctxt "@item:inlistbox"
+#~ msgid "31st Last"
+#~ msgstr "31वां आखरी"
+
+#~ msgctxt "@label"
+#~ msgid "day"
+#~ msgstr "दिन"
+
+#~ msgctxt "@label"
+#~ msgid "year(s)"
+#~ msgstr "साल"
+
+#~ msgctxt "@option:radio part before XXX of 'Recur on day XXX of month YYY'"
+#~ msgid "&Recur on day "
+#~ msgstr "ये दिन फिर से हो (&R)"
+
+#~ msgctxt "@label part between XXX and YYY of 'Recur on day XXX of month YYY'"
+#~ msgid " &of "
+#~ msgstr "का (&o) "
+
+#~ msgctxt "@option:radio Part before XXX in 'Recur on NNN. WEEKDAY of MONTH'"
+#~ msgid "&On the"
+#~ msgstr "पर (&O)"
+
+#~ msgctxt ""
+#~ "@label part between WEEKDAY and MONTH in 'Recur on NNN. WEEKDAY of MONTH'"
+#~ msgid " o&f "
+#~ msgstr "का (&f)"
+
+#~ msgctxt "@option:radio"
+#~ msgid "Recur on &day #"
+#~ msgstr "ये दिन हो (&d) #"
+
+#~ msgctxt "@label part after NNN of 'Recur on day #NNN of the year'"
+#~ msgid " of the &year"
+#~ msgstr "ये साल के (&Y)"
+
+#~ msgctxt "@title:group"
+#~ msgid "E&xceptions"
+#~ msgstr "अपवाद (&x)"
+
+#~ msgctxt "@info:whatsthis"
+#~ msgid ""
+#~ "A date that should be considered an exception to the recurrence rules for "
+#~ "this event or to-do."
+#~ msgstr ""
+#~ "ये तारीक ल एक्सेप्सन के रूप मं एखर घटना या काम बर पुनरावृत्ति नियम मं सामिल करव."
+
+#~ msgctxt "@action:button"
+#~ msgid "&Add"
+#~ msgstr "जोड़व (&A)"
+
+#~ msgctxt "@info:whatsthis"
+#~ msgid ""
+#~ "Add this date as an exception to the recurrence rules for this event or "
+#~ "to-do."
+#~ msgstr ""
+#~ "ये तारीक ल एक्सेप्सन के रूप मं एखर घटना या काम बर पुनरावृत्ति नियम मं सामिल करव."
+
+#~ msgctxt "@action:button"
+#~ msgid "&Change"
+#~ msgstr "बदलव (&C)"
+
+#~ msgctxt "@info:whatsthis"
+#~ msgid "Replace the currently selected date with this date."
+#~ msgstr "अभी हाल के चुने गे तारीक ल ए तारीक से बदलव."
+
+#~ msgctxt "@action:button"
+#~ msgid "&Delete"
+#~ msgstr "मेटाव (&D)"
+
+#~ msgctxt "@title:window"
+#~ msgid "Edit Exceptions"
+#~ msgstr "एक्सेप्सन्स के संपादन करव"
+
+#~ msgctxt "@title:group"
+#~ msgid "Recurrence Range"
+#~ msgstr "आवृत्ति सीमा"
+
+#~ msgctxt "@label"
+#~ msgid "Begin on:"
+#~ msgstr "को आरम्भः"
+
+#~ msgctxt "@option radio"
+#~ msgid "&No ending date"
+#~ msgstr "कोई आखरी तारीक नइ (&N)"
+
+#~ msgctxt "@info:whatsthis"
+#~ msgid "Sets the event or to-do to recur forever."
+#~ msgstr "घटना या काम ल हमेसा होत रहन बर सेट करथे."
+
+#~ msgctxt "@option:radio"
+#~ msgid "End &after"
+#~ msgstr "के बाद आखरी (&a)"
+
+#~ msgctxt "@label"
+#~ msgid "&occurrence(s)"
+#~ msgstr "घटना-उपस्थिति (&o)"
+
+#~ msgctxt "@option:radio"
+#~ msgid "End &on:"
+#~ msgstr "पर खतम: (&o)"
+
+#~ msgctxt "@label"
+#~ msgid "Begins on: %1"
+#~ msgstr "को आरम्भ: %1"
+
+#~ msgctxt "@title:window"
+#~ msgid "Edit Recurrence Range"
+#~ msgstr "आवृत्ति सीमा के संपादन करव"
+
+#, fuzzy
+#~ msgctxt "@title:group"
+#~ msgid "Recurrence Types"
+#~ msgstr "पुनरावृत्ति किसम"
+
+#~ msgctxt "@option:radio recur daily"
+#~ msgid "&Daily"
+#~ msgstr "प्रतिदिन (&D)"
+
+#~ msgctxt "@option:radio recur weekly"
+#~ msgid "&Weekly"
+#~ msgstr "साप्ताहिक (&W)"
+
+#~ msgctxt "@option:radio recur monthly"
+#~ msgid "&Monthly"
+#~ msgstr "मासिक (&M)"
+
+#~ msgctxt "@option:radio recur yearly"
+#~ msgid "&Yearly"
+#~ msgstr "वार्सिक (&Y)"
+
+#~ msgctxt "@option:check"
+#~ msgid "&Enable recurrence"
+#~ msgstr "आवृत्ति सक्छम करव (&E)"
+
+#~ msgctxt "@title:group"
+#~ msgid "Appointment Time "
+#~ msgstr "नियोजित भेंट समय"
+
+#~ msgctxt "@info:whatsthis"
+#~ msgid "Displays appointment time information."
+#~ msgstr "भेंट समय के जानकारी देखाथे."
+
+#~ msgctxt "@title:group"
+#~ msgid "Recurrence Rule"
+#~ msgstr "आवृत्ति नियम"
+
+#~ msgctxt "@info"
+#~ msgid ""
+#~ "The end date '%1' of the recurrence must be after the start date '%2' of "
+#~ "the event."
+#~ msgstr ""
+#~ "पुनरावृत्ति के घटना के आखरी तारीक '%1' एखर चालू तारीक '%2' के बाद होना चाही."
+
+#~ msgid "Date && Time"
+#~ msgstr "तारीक अउ समय"
+
+#~ msgid "Select the timezone for this event. It will also affect recurrences"
+#~ msgstr "ये घटना बर समयछेत्र चुनव. ए पुनरावृत्ति ल घलोक प्रभावित करथे."
+
+#~ msgid "Sets the start date for this to-do"
+#~ msgstr "ये काम बर चालू तारीक सेट करथे "
+
+#~ msgctxt "@option:check to-do start datetime"
+#~ msgid "Sta&rt:"
+#~ msgstr "सुरूः (&r)"
+
+#~ msgid "Sets the start time for this to-do."
+#~ msgstr "ये काम बर चालू समय सेट करथे."
+
+#~ msgid "Sets the due date for this to-do."
+#~ msgstr "ये काम बर सेट तारीक सेट करथे."
+
+#~ msgctxt "to-do due datetime"
+#~ msgid "&Due:"
+#~ msgstr "नियतः (&D)"
+
+#~ msgid "Sets the due time for this to-do."
+#~ msgstr "ये काम बर सेट तारीक सेट करथे."
+
+#~ msgid "Ti&me associated"
+#~ msgstr "सम्बद्ध समय (&m)"
+
+#, fuzzy
+#~| msgctxt "@title:window"
+#~| msgid "Recurrence"
+#~ msgctxt "@label"
+#~ msgid "Recurrence:"
+#~ msgstr "आवृत्ति"
+
+#~ msgid "Sets the current completion status of this to-do as a percentage."
+#~ msgstr "ये काम के अभी हाल के पूरा स्थिति ल प्रतिसत के रुप मं सेट करथे."
+
+#~ msgctxt "Percent complete"
+#~ msgid "%1 %"
+#~ msgstr "%1 %"
+
+#~ msgctxt "to-do completed"
+#~ msgid "co&mpleted"
+#~ msgstr "पूरा (&m)"
+
+#~ msgid "&Priority:"
+#~ msgstr "प्राथमिकताः (&P)"
+
+#~ msgid "Please specify a valid due date."
+#~ msgstr "किरपा करके, एक वैध सेट तारीक निरधारित करव."
+
+#~ msgid "Please specify a valid due time."
+#~ msgstr "किरपा करके, एक वैध सेट समय निरधारित करव."
+
+#~ msgid "Please specify a valid start date."
+#~ msgstr "किरपा करके, एक वैध चालू तारीक निरधारित करव."
+
+#~ msgid "Please specify a valid start time."
+#~ msgstr "किरपा करके, एक वैध चालू समय निरधारित करव."
+
+#~ msgid "The start date cannot be after the due date."
+#~ msgstr "सुरू तारीक सेट तारीक के बाद के नइ हो सकथे."
+
+#~ msgctxt "to-do start datetime"
+#~ msgid "Start: %1"
+#~ msgstr "सुरू: %1"
+
+#~ msgctxt "to-do due datetime"
+#~ msgid "   Due: %1"
+#~ msgstr "  नियत: %1"
+
+#~ msgctxt "to-do completed on datetime"
+#~ msgid "co&mpleted on"
+#~ msgstr "पर पूरा (&m)"
+
+#, fuzzy
+#~ msgctxt "@info:whatsthis"
+#~ msgid "Sets the Title of this event or to-do."
+#~ msgstr "ये घटना या कामसूची के सीर्सक ल सेट करथे."
+
+#, fuzzy
+#~ msgctxt "@label event or to-do title"
+#~ msgid "T&itle:"
+#~ msgstr "सीर्सकः (&i)"
+
+#, fuzzy
+#~ msgctxt "@info:whatsthis"
+#~ msgid "Sets where the event or to-do will take place."
+#~ msgstr "घटना या काम कहाँ हो ए सेट करथे."
+
+#, fuzzy
+#~ msgctxt "@label"
+#~ msgid "&Location:"
+#~ msgstr "जगहः (&L)"
+
+#~ msgctxt "@info:whatsthis"
+#~ msgid ""
+#~ "Allows you to select the categories that this event or to-do belongs to."
+#~ msgstr "ये घटना या काम जेखर से सम्बन्धित हे ओखर स्रेनी आप मन ल चुने देथे."
+
+#, fuzzy
+#~ msgctxt "@label"
+#~ msgid "Categories:"
+#~ msgstr "स्रेनी:"
+
+#~ msgctxt "@action:button select a category"
+#~ msgid "&Select..."
+#~ msgstr "चुनव... (&S)"
+
+#, fuzzy
+#~ msgctxt "@label"
+#~ msgid "Acc&ess:"
+#~ msgstr "पहुंचः (&e)"
+
+#, fuzzy
+#~ msgctxt "@option:check"
+#~ msgid "Rich text"
+#~ msgstr "रिच पाठ"
+
+#, fuzzy
+#~ msgctxt "@info:tooltip"
+#~ msgid "Toggle Rich Text"
+#~ msgstr "रिच पाठ टागल करव"
+
+#, fuzzy
+#~ msgctxt "@option:check"
+#~ msgid "&Reminder:"
+#~ msgstr "स्मरनः (&R)"
+
+#, fuzzy
+#~ msgctxt "@info:whatsthis"
+#~ msgid "Activates a reminder for this event or to-do."
+#~ msgstr "ये घटना या काम बर सुरता सक्रिय करथे."
+
+#, fuzzy
+#~ msgctxt "@info:tooltip"
+#~ msgid "Set a reminder"
+#~ msgstr "कोई सुरता नइ"
+
+#, fuzzy
+#~ msgctxt "@info:whatsthis"
+#~ msgid ""
+#~ "Sets how long before the event occurs the reminder will be triggered."
+#~ msgstr "घटना या काम कहाँ हो ए सेट करथे."
+
+#, fuzzy
+#~ msgctxt "@info:tooltip"
+#~ msgid "Set an alarm"
+#~ msgstr "महिना चुनव"
+
+#~ msgctxt "@item:inlistbox alarm expressed in minutes"
+#~ msgid "minute(s)"
+#~ msgstr "मिनट"
+
+#~ msgctxt "@item:inlistbox alarm expressed in hours"
+#~ msgid "hour(s)"
+#~ msgstr "घंटा"
+
+#~ msgctxt "@item:inlistbox alarm expressed in days"
+#~ msgid "day(s)"
+#~ msgstr "दिन"
+
+#, fuzzy
+#~ msgctxt "@action:button advanced alarm settings"
+#~ msgid "Advanced..."
+#~ msgstr "विस्तृत..."
+
+#, fuzzy
+#~ msgctxt "@info:whatsthis"
+#~ msgid "Push this button to create an advanced alarm for this event or to-do"
+#~ msgstr ""
+#~ "ये तारीक ल एक्सेप्सन के रूप मं एखर घटना या काम बर पुनरावृत्ति नियम मं सामिल करव."
+
+#, fuzzy
+#~ msgctxt "@label"
+#~ msgid "1 reminder configured"
+#~ msgid_plural "%1 reminders configured"
+#~ msgstr[0] "१ उन्नत सुरता कान्फिगर करिस"
+#~ msgstr[1] "१ उन्नत सुरता कान्फिगर करिस"
+
+#, fuzzy
+#~ msgctxt "@label"
+#~ msgid "1 advanced reminder configured"
+#~ msgstr "१ उन्नत सुरता कान्फिगर करिस"
+
+#, fuzzy
+#~ msgctxt "@label"
+#~ msgid "No attendees"
+#~ msgstr "कोई उपस्थिति नइ"
+
+#, fuzzy
+#~ msgctxt "@info"
+#~ msgid "Please specify a title."
+#~ msgstr "किरपा करके, एक वैध सेट तारीक निरधारित करव."
+
+#, fuzzy
+#~| msgid "Date && Time"
+#~ msgctxt "@title:group"
+#~ msgid "Date && Time"
+#~ msgstr "तारीक अउ समय"
+
+#, fuzzy
+#~| msgid "Sets options related to the date and time of the event or to-do."
+#~ msgctxt "@info:whatsthis"
+#~ msgid "Sets options related to the date and time of the event or to-do."
+#~ msgstr "तारीक अउ समय के घटनाोओं या कामसूची से संबंधित विकल्प मन लट करथे."
+
+#~ msgctxt "@label event start time"
+#~ msgid "&Start:"
+#~ msgstr "सुरूः (&S)"
+
+#, fuzzy
+#~ msgctxt "@info:tooltip"
+#~ msgid "Set the start date"
+#~ msgstr "कोई सुरू के तारीक नइ"
+
+#, fuzzy
+#~ msgctxt "@info:tooltip"
+#~ msgid "Set the start time"
+#~ msgstr "ये काम बर चालू समय सेट करथे."
+
+#, fuzzy
+#~ msgctxt "@info:whatsthis"
+#~ msgid "Select the starting time for this event."
+#~ msgstr "ये काम बर चालू समय सेट करथे."
+
+#, fuzzy
+#~ msgctxt "@info:whatsthis"
+#~ msgid "Select the timezone for this event. It will also affect recurrences"
+#~ msgstr "ये घटना बर समयछेत्र चुनव. ए पुनरावृत्ति ल घलोक प्रभावित करथे."
+
+#, fuzzy
+#~ msgctxt "@info:tooltip"
+#~ msgid "Select the timezone for the start date/time"
+#~ msgstr "ये घटना बर समयछेत्र चुनव. ए पुनरावृत्ति ल घलोक प्रभावित करथे."
+
+#, fuzzy
+#~ msgctxt "@info:tooltip"
+#~ msgid "Select the timezone for the end date/time"
+#~ msgstr "ये घटना बर समयछेत्र चुनव. ए पुनरावृत्ति ल घलोक प्रभावित करथे."
+
+#, fuzzy
+#~| msgid "&End:"
+#~ msgctxt "@label"
+#~ msgid "&End:"
+#~ msgstr "आखरीः (&E)"
+
+#, fuzzy
+#~ msgctxt "@info:tooltip"
+#~ msgid "Set the end time"
+#~ msgstr "सुरता समय इहां भरव."
+
+#, fuzzy
+#~| msgid "T&ime associated"
+#~ msgctxt "@option:check"
+#~ msgid "T&ime associated"
+#~ msgstr "सम्बद्ध समय (&i)"
+
+#, fuzzy
+#~| msgid "S&how time as:"
+#~ msgctxt "@label"
+#~ msgid "S&how time as:"
+#~ msgstr "समय एखर रुप मं देखाव (&h)"
+
+#, fuzzy
+#~ msgctxt "@info:whatsthis"
+#~ msgid "Sets how this time will appear on your Free/Busy information."
+#~ msgstr "सेट करथे  कि कइसन ए समय आप मन के मिलत/व्यस्त जानकारी मं प्रदर्सित हो."
+
+#, fuzzy
+#~| msgctxt "show event as busy time"
+#~| msgid "Busy"
+#~ msgctxt "@item:inlistbox show event as busy time"
+#~ msgid "Busy"
+#~ msgstr "व्यस्त"
+
+#, fuzzy
+#~| msgctxt "show event as free time"
+#~| msgid "Free"
+#~ msgctxt "@item:inlistbox show event as free time"
+#~ msgid "Free"
+#~ msgstr "मुक्त"
+
+#, fuzzy
+#~| msgid "Accept"
+#~ msgctxt "@action:button"
+#~ msgid "Accept"
+#~ msgstr "स्वीकृत"
+
+#, fuzzy
+#~| msgid "Decline"
+#~ msgctxt "@action:button"
+#~ msgid "Decline"
+#~ msgstr "अस्वीकार"
+
+#, fuzzy
+#~ msgctxt "@info:whatsthis"
+#~ msgid "Click this button to decline the invitation."
+#~ msgstr "एक नवा छनइया परिभासित करे बर ए बटन ल दबाव."
+
+#, fuzzy
+#~| msgid "Duration: "
+#~ msgctxt "@label"
+#~ msgid "Duration: "
+#~ msgstr "अवधिः"
+
+#, fuzzy
+#~| msgid "1 Day"
+#~| msgid_plural "%1 Days"
+#~ msgctxt "@label"
+#~ msgid "1 Day"
+#~ msgid_plural "%1 Days"
+#~ msgstr[0] "1 दिन"
+#~ msgstr[1] "%1 दिन"
+
+#, fuzzy
+#~| msgid "1 hour"
+#~| msgid_plural "%1 hours"
+#~ msgctxt "@label"
+#~ msgid "1 hour"
+#~ msgid_plural "%1 hours"
+#~ msgstr[0] "१ घंटा"
+#~ msgstr[1] "%1 घंटे"
+
+#, fuzzy
+#~| msgid ", "
+#~ msgctxt "@label"
+#~ msgid ", "
+#~ msgstr ","
+
+#, fuzzy
+#~| msgid "1 minute"
+#~| msgid_plural "%1 minutes"
+#~ msgctxt "@label"
+#~ msgid "1 minute"
+#~ msgid_plural "%1 minutes"
+#~ msgstr[0] "1 मिनट"
+#~ msgstr[1] "%1 मिनट"
+
+#, fuzzy
+#~| msgid "Please specify a valid start time, for example '%1'."
+#~ msgctxt "@info"
+#~ msgid "Please specify a valid start time, for example '%1'."
+#~ msgstr "किरपा करके, एक वैध चालू समय निरधारित करव, उदाहरन बर- '%1'."
+
+#, fuzzy
+#~| msgid "Please specify a valid end time, for example '%1'."
+#~ msgctxt "@info"
+#~ msgid "Please specify a valid end time, for example '%1'."
+#~ msgstr "किरपा करके, एक वैध समापन समय निरधारित करव, उदाहरन बर- '%1'."
+
+#, fuzzy
+#~| msgid "Please specify a valid start date, for example '%1'."
+#~ msgctxt "@info"
+#~ msgid "Please specify a valid start date, for example '%1'."
+#~ msgstr "किरपा करके, एक वैध चालू तारीक निरधारित करव, उदाहरन बर- '%1'."
+
+#, fuzzy
+#~| msgid "Please specify a valid end date, for example '%1'."
+#~ msgctxt "@info"
+#~ msgid "Please specify a valid end date, for example '%1'."
+#~ msgstr "किरपा करके, एक वैध समापन तारीक निरधारित करव, उदाहरन बर- '%1'."
+
+#, fuzzy
+#~| msgid ""
+#~| "The event ends before it starts.\n"
+#~| "Please correct dates and times."
+#~ msgctxt "@info"
+#~ msgid ""
+#~ "The event ends before it starts.\n"
+#~ "Please correct dates and times."
+#~ msgstr ""
+#~ "घटना चालू होए से पहिली ही बन्द होवत हे.\n"
+#~ "किरपा करके, तारीक अउ समय सुधारव."
+
+#~ msgctxt "@option unknown alarm type"
+#~ msgid "Unknown"
+#~ msgstr "अग्यात"
+
+#~ msgctxt "@option popup reminder dialog"
+#~ msgid "Reminder Dialog"
+#~ msgstr "सुरता गोठ"
+
+#~ msgctxt "@option run application or script"
+#~ msgid "Application/Script"
+#~ msgstr "अनुपरयोग/स्क्रिप्ट"
+
+#~ msgctxt "@option send email reminder"
+#~ msgid "Email"
+#~ msgstr "ईमेल"
+
+#~ msgctxt "@option play a sound"
+#~ msgid "Audio"
+#~ msgstr "आडियो"
+
+#~ msgctxt "@item@intable N days/hours/minutes before/after the start/end"
+#~ msgid "%1 before the start"
+#~ msgstr "%1 चालू से पहिली"
+
+#~ msgctxt "@item@intable N days/hours/minutes before/after the start/end"
+#~ msgid "%1 after the start"
+#~ msgstr "%1 चालू के बाद"
+
+#~ msgctxt "@item@intable N days/hours/minutes before/after the start/end"
+#~ msgid "%1 before the end"
+#~ msgstr "%1 आखरी से पहिली"
+
+#~ msgctxt "@item@intable N days/hours/minutes before/after the start/end"
+#~ msgid "%1 after the end"
+#~ msgstr "%1 आखरी के बाद"
+
+#~ msgctxt "@item@intable alarm offset specified in days"
+#~ msgid "1 day"
+#~ msgid_plural "%1 days"
+#~ msgstr[0] "1 दिन"
+#~ msgstr[1] "%1 दिन"
+
+#~ msgctxt "@item@intable alarm offset specified in hours"
+#~ msgid "1 hour"
+#~ msgid_plural "%1 hours"
+#~ msgstr[0] "1 घंटा"
+#~ msgstr[1] "%1 घंटे"
+
+#~ msgctxt "@item@intable alarm offset specified in minutes"
+#~ msgid "1 minute"
+#~ msgid_plural "%1 minutes"
+#~ msgstr[0] "1 मिनट"
+#~ msgstr[1] "%1 मिनट"
+
+#~ msgctxt "@item@intable yes, the alarm repeats"
+#~ msgid "Yes"
+#~ msgstr "हाँ"
+
+#~ msgctxt "@title"
+#~ msgid "Edit Reminders"
+#~ msgstr "सुरता संपादित करव"
+
+#, fuzzy
+#~| msgctxt "@item@intable N days/hours/minutes before/after the start/end"
+#~| msgid "%1 before the start"
+#~ msgctxt "@item:inlistbox"
+#~ msgid "before the to-do starts"
+#~ msgstr "%1 चालू से पहिली"
+
+#, fuzzy
+#~| msgctxt "@item@intable N days/hours/minutes before/after the start/end"
+#~| msgid "%1 after the start"
+#~ msgctxt "@item:inlistbox"
+#~ msgid "after the to-do starts"
+#~ msgstr "%1 चालू के बाद"
+
+#, fuzzy
+#~ msgctxt "@info:tooltip"
+#~ msgid "Select the reminder trigger relative to the start or due time"
+#~ msgstr "ये घटना बर समयछेत्र चुनव. ए पुनरावृत्ति ल घलोक प्रभावित करथे."
+
+#~ msgctxt "@title:tab general event settings"
+#~ msgid "&General"
+#~ msgstr "सामान्य (&G)"
+
+#~ msgctxt "@title:tab"
+#~ msgid "&Attendees"
+#~ msgstr "उपस्थिति (&A)"
+
+#~ msgctxt "@title:window"
+#~ msgid "New Event"
+#~ msgstr "नवा घटना"
+
+#, fuzzy
+#~| msgid "No changes"
+#~ msgctxt "@title:window"
+#~ msgid "No Changes"
+#~ msgstr "कोई बदलाव नइ"
+
+#~ msgctxt "@label"
+#~ msgid "Scale: "
+#~ msgstr "स्केलः"
+
+#~ msgctxt "@item:inlistbox range in hours"
+#~ msgid "Hour"
+#~ msgstr "घंटा"
+
+#~ msgctxt "@action:button"
+#~ msgid "Center on Start"
+#~ msgstr "चालू होए मं बीच में"
+
+#, fuzzy
+#~ msgctxt "@info:tooltip"
+#~ msgid "Center the Gantt chart on the event start date and time"
+#~ msgstr "ग्नेट चार्ट ल चालू होत समय मं अउ एखर घटना के दिन मं बीच मं करथे."
+
+#, fuzzy
+#~ msgctxt "@info:whatsthis"
+#~ msgid ""
+#~ "Click this button to center the Gantt chart on the start time and day of "
+#~ "this event."
+#~ msgstr "ग्नेट चार्ट ल चालू होत समय मं अउ एखर घटना के दिन मं बीच मं करथे."
+
+#~ msgctxt "@action:button"
+#~ msgid "Pick Date"
+#~ msgstr "तारीक चुनव"
+
+#~ msgctxt "@action:button reload freebusy data"
+#~ msgid "Reload"
+#~ msgstr "री-लोड"
+
+#~ msgctxt "@title:column attendee name"
+#~ msgid "Attendee"
+#~ msgstr "उपस्थित"
+
+#~ msgctxt "@info"
+#~ msgid "The meeting already has suitable start/end times."
+#~ msgstr "भेंट मं पहिली ही सुरू/आखरी समय हे."
+
+#~ msgctxt "@info"
+#~ msgid "No suitable date found."
+#~ msgstr "कोई यथोचित तारीक नइ मिलिस."
+
+#~ msgctxt "@label"
+#~ msgid ""
+#~ "Of the %1 participants, %2 have accepted, %3 have tentatively accepted, "
+#~ "and %4 have declined."
+#~ msgstr ""
+#~ "कुल %1 हिस्सा लेने वालों मं से, %2 स्वीकार करे गिस, %3 ल अंतरिम रूप से स्वीकारे गिस, अउ "
+#~ "%4 ल मना करिस."
+
+#~ msgctxt "@title:window"
+#~ msgid "Invalid Email Address"
+#~ msgstr "अवैध ई-मेल पता"
+
+#~ msgid "Edit Free/Busy Location"
+#~ msgstr "मिलत/व्यस्त जगह संपादित करव"
+
+#~ msgid ""
+#~ "Location of Free/Busy information for %1 <placeholder>%2</placeholder>:"
+#~ msgstr "%1 <placeholder>%2</placeholder>: बर मिलत/व्यस्त जानकारी के जगह:"
+
+#, fuzzy
+#~| msgctxt "@item:inlistbox"
+#~| msgid "Select Categories"
+#~ msgid "Select Categories"
+#~ msgstr "वर्ग चुनव"
+
+#, fuzzy
+#~| msgid "Any category"
+#~ msgid "Category"
+#~ msgstr "सब्बो वर्ग"
+
+#, fuzzy
+#~| msgctxt "@title:group"
+#~| msgid "Calendar Decorations"
+#~ msgid "&Clear Selection"
+#~ msgstr "कलेन्डर सजावट"
+
+#, fuzzy
+#~| msgid "Select Cate&gories..."
+#~ msgid "&Edit Categories..."
+#~ msgstr "वर्ग चुनव... (&g)"
+
+#~ msgid "Default appointment time"
+#~ msgstr "डिफाल्ट नियोजित भेंट समय"
+
+#~ msgid "Default duration of new appointment (HH:MM)"
+#~ msgstr "नवा नियोजित भेट के डिफाल्ट अवधि (घंघ:मिमि)"
+
+#, fuzzy
+#~| msgctxt "@action:inmenu"
+#~| msgid "Enable Reminders"
+#~ msgid "Enable reminders for new Events"
+#~ msgstr "सुरता सक्छम करव"
+
+#, fuzzy
+#~| msgctxt "@action:inmenu"
+#~| msgid "Enable Reminders"
+#~ msgid "Enable reminders for new To-dos"
+#~ msgstr "सुरता सक्छम करव"
+
+#, fuzzy
+#~ msgid "Default reminder time"
+#~ msgstr "डिफाल्ट सुरता समय:"
+
+#, fuzzy
+#~ msgid "Default time for reminders"
+#~ msgstr "डिफाल्ट सुरता समय:"
+
+#, fuzzy
+#~ msgid "Default time unit for reminders"
+#~ msgstr "डिफाल्ट सुरता समय:"
+
+#~ msgid "Time"
+#~ msgstr "समय"
+
+#, fuzzy
+#~ msgid "Set the reminder trigger time"
+#~ msgstr "सुरता समय इहां भरव."
+
+#, fuzzy
+#~ msgid "Select the reminder trigger time unit"
+#~ msgstr "ये काम बर चालू समय सेट करथे."
+
+#, fuzzy
+#~ msgctxt "@item:inlistbox alarm offset expressed in minutes"
+#~ msgid "minute(s)"
+#~ msgstr "मिनट"
+
+#, fuzzy
+#~ msgctxt "@item:inlistbox alarm offset expressed in hours"
+#~ msgid "hour(s)"
+#~ msgstr "घंटा"
+
+#, fuzzy
+#~| msgctxt "@label recurrence expressed in days"
+#~| msgid "day(s)"
+#~ msgctxt "@item:inlistbox alarm offset expressed in days"
+#~ msgid "day(s)"
+#~ msgstr "दिन"
+
+#, fuzzy
+#~ msgid "Select the reminder trigger relative to the start or end time"
+#~ msgstr "ये घटना बर समयछेत्र चुनव. ए पुनरावृत्ति ल घलोक प्रभावित करथे."
+
+#, fuzzy
+#~| msgctxt "@item@intable N days/hours/minutes before/after the start/end"
+#~| msgid "%1 before the start"
+#~ msgid "before the event starts"
+#~ msgstr "%1 चालू से पहिली"
+
+#, fuzzy
+#~| msgctxt "@item@intable N days/hours/minutes before/after the start/end"
+#~| msgid "%1 after the start"
+#~ msgid "after the event starts"
+#~ msgstr "%1 चालू के बाद"
+
+#, fuzzy
+#~| msgctxt "@item@intable N days/hours/minutes before/after the start/end"
+#~| msgid "%1 before the end"
+#~ msgid "before the event ends"
+#~ msgstr "%1 आखरी से पहिली"
+
+#~ msgid "&How often:"
+#~ msgstr "कितनी मर्तबा: (&H)"
+
+#, fuzzy
+#~| msgctxt "@info:whatsthis"
+#~| msgid "Sets how often this event or to-do should recur."
+#~ msgid "Select how often the reminder should repeat"
+#~ msgstr "सेट करथे कि कतेक बार ए घटना या काम हो."
+
+#~ msgid "&Interval:"
+#~ msgstr "अंतरालः (&I)"
+
+#~ msgid "&Repeating:"
+#~ msgstr "दोहराया: (&R)"
+
+#, fuzzy
+#~ msgid "Select the time between reminder repeats"
+#~ msgstr "ये घटना बर समयछेत्र चुनव. ए पुनरावृत्ति ल घलोक प्रभावित करथे."
+
+#~ msgctxt "@label:spinbox repeat interval expressed in minutes"
+#~ msgid " Minute(s)"
+#~ msgstr "मिनट"
+
+#~ msgctxt "repeat every X minutes"
+#~ msgid "every "
+#~ msgstr "हर एक"
+
+#~ msgid "Type"
+#~ msgstr "किसिम"
+
+#, fuzzy
+#~| msgctxt "@option:radio recur daily"
+#~| msgid "&Daily"
+#~ msgid "&Display"
+#~ msgstr "प्रतिदिन (&D)"
+
+#~ msgid "&Sound"
+#~ msgstr "अवाज (&S)"
+
+#~ msgid "Application / script"
+#~ msgstr "अनुपरयोग / स्क्रिप्ट"
+
+#, fuzzy
+#~ msgid "Send email when the reminder is triggered"
+#~ msgstr "घटना या काम कहाँ हो ए सेट करथे."
+
+#, fuzzy
+#~| msgid "Display Options"
+#~ msgid "Display &text:"
+#~ msgstr "प्रदर्सक विकल्प"
+
+#~ msgid "Sound &file:"
+#~ msgstr "अवाज फाइलः (&f)"
+
+#~ msgid "audio/x-wav audio/x-mp3 application/ogg"
+#~ msgstr "आडियो/x-wav आडियो/x-mp3 अनुपरयोग/ogg"
+
+#~ msgid "&Application / Script:"
+#~ msgstr "अनुपरयोग / स्क्रिप्ट: (&A)"
+
+#~ msgid "*.*|All files"
+#~ msgstr "*.*|सब्बो फाइल मन ल"
+
+#~ msgid "Ar&guments:"
+#~ msgstr "आर्गुमेंट्सः (&g)"
+
+#~ msgid "&Text of the message:"
+#~ msgstr "संदेस के पाठ: (&T)"
+
+#, fuzzy
+#~ msgid "Remove the currently selected reminder"
+#~ msgstr "अभी हाल के चुने गे तारीक ल ए तारीक से बदलव."
+
+#, fuzzy
+#~ msgid "Create a new reminder from the currently selected reminder"
+#~ msgstr "अभी हाल के चुने गे तारीक ल ए तारीक से बदलव."
+
+#~ msgid "D&uplicate"
+#~ msgstr "अनुकृति (&u)"
+
+#, fuzzy
+#~ msgid "The list of reminders for this event or to-do"
+#~ msgstr "ये घटना या काम बर सुरता सक्रिय करथे."
+
+#, fuzzy
+#~| msgctxt "@info:whatsthis"
+#~| msgid ""
+#~| "Add this date as an exception to the recurrence rules for this event or "
+#~| "to-do."
+#~ msgid ""
+#~ "This area displays a list of all the reminders you have specified for "
+#~ "this event or to-do."
+#~ msgstr ""
+#~ "ये तारीक ल एक्सेप्सन के रूप मं एखर घटना या काम बर पुनरावृत्ति नियम मं सामिल करव."
+
+#~ msgid "Offset"
+#~ msgstr "आफसेट"
+
+#~ msgid "Repeat"
+#~ msgstr "दुहराव"
+
+#~ msgid "Template Management"
+#~ msgstr "टैम्प्लेट प्रबंधन"
+
+#, fuzzy
+#~ msgid "The list of managed templates"
+#~ msgstr "टैम्पलेट्स के प्रबंधन करव"
+
+#~ msgid "&New..."
+#~ msgstr "नवा... (&N)"
+
+#, fuzzy
+#~ msgid "Remove the currently selected template"
+#~ msgstr "अभी हाल के चुने गे तारीक ल ए तारीक से बदलव."
+
+#~ msgctxt "incidence category"
+#~ msgid "Business"
+#~ msgstr "व्यवसाय"
+
+#~ msgctxt "incidence category: phone call"
+#~ msgid "Phone Call"
+#~ msgstr "फोन काल"
+
+#~ msgctxt "incidence category"
+#~ msgid "Education"
+#~ msgstr "सिक्छा"
+
+#~ msgctxt ""
+#~ "incidence category: official or unofficial observance of religious/"
+#~ "national/cultural/other significance, often accompanied by celebrations "
+#~ "or festivities"
+#~ msgid "Holiday"
+#~ msgstr "छुट्टी"
+
+#~ msgctxt ""
+#~ "incidence category: a lengthy time away from work or school, a trip "
+#~ "abroad, or simply a pleasure trip away from home"
+#~ msgid "Vacation"
+#~ msgstr "छुट्टी पर"
+
+#~ msgctxt "incidence category"
+#~ msgid "Personal"
+#~ msgstr "निजी"
+
+#~ msgctxt ""
+#~ "incidence category: typically associated with leaving home for business, "
+#~ "and not pleasure"
+#~ msgid "Travel"
+#~ msgstr "यात्रा"
+
+#~ msgctxt "incidence category"
+#~ msgid "Miscellaneous"
+#~ msgstr "विविध"
+
+#, fuzzy
+#~| msgid "Calendar"
+#~ msgid "text/calendar"
+#~ msgstr "कलेन्डर"
+
+#~ msgid "Use email settings from System Settings"
+#~ msgstr "नियंत्रन केंद्र से ई-मेल सेटिंग उपयोग करव"
+
+#~ msgid "Use Groupware communication"
+#~ msgstr "ग्रुपवेयर संचार उपयोग करव"
+
+#~ msgid "Send copy to owner when mailing events"
+#~ msgstr "जब घटना डाक से भेजी जाव तहां मालिक ल एक प्रति भेजी जाए"
+
+#~ msgid "Free/Busy Publish URL"
+#~ msgstr "मिलत/व्यस्त प्रकासन यूआरएल"
+
+#~ msgid "URL for publishing free/busy information"
+#~ msgstr "मिलत/व्यस्त जानकारी प्रकासित करे बर यूआरएल"
+
+#~ msgid "Username for publishing free/busy information"
+#~ msgstr "मिलत/व्यस्त जानकारी प्रकासित करे बर कमइया नाम"
+
+#~ msgid "Free/Busy Publish Password"
+#~ msgstr "मिलत/व्यस्त प्रकासन पासवर्ड"
+
+#~ msgid "Password for publishing free/busy information"
+#~ msgstr "मिलत/व्यस्त जानकारी प्रकासित करे बर पासवर्ड"
+
+#~ msgid "Enable Automatic Free/Busy Retrieval"
+#~ msgstr "अपने अपन मिलत/व्यस्त प्राप्त करना सक्छम करव"
+
+#~ msgid "Use full email address for retrieval"
+#~ msgstr "प्राप्त करे बर पूरा ईमेल पता उपयोग करव"
+
+#~ msgid "Free/Busy Retrieval URL"
+#~ msgstr "मिलत/व्यस्त प्राप्त करे के यूआरएल"
+
+#~ msgid "Free/Busy Retrieval Username"
+#~ msgstr "मिलत/व्यस्त प्राप्त करे के कमइया नाम"
+
+#~ msgid "Free/Busy Retrieval Password"
+#~ msgstr "मिलत/व्यस्त प्राप्त करे के पासवर्ड"
+
+#~ msgid "Password for retrieving free/busy information"
+#~ msgstr "मिलत/व्यस्त प्राप्त करे बर पासवर्ड"
+
+#~ msgid "Full &name"
+#~ msgstr "पूरा नाम (&n)"
+
+#~ msgid "E&mail address"
+#~ msgstr "ई-मेल पता (&m)"
+
+#~ msgid "Attendees Removed"
+#~ msgstr "उपस्थित मेटाइस"
+
+#~ msgid "Send Messages"
+#~ msgstr "संदेस भेजव"
+
+#~ msgid "Do Not Send"
+#~ msgstr "भेजव नइ"
+
+#, fuzzy
+#~| msgid "Unable to save %1 \"%2\"."
+#~ msgid "Unable to save changes for incidence %1 \"%2\": %3"
+#~ msgstr "सहेजे मं फेल %1 \"%2\"."
+
+#, fuzzy
+#~| msgid "Unable to save %1 \"%2\"."
+#~ msgid "Unable to delete incidence %1 \"%2\": %3"
+#~ msgstr "सहेजे मं फेल %1 \"%2\"."
+
+#, fuzzy
+#~| msgid "Unable to save %1 \"%2\"."
+#~ msgid "Unable to save %1 \"%2\": %3"
+#~ msgstr "सहेजे मं फेल %1 \"%2\"."
+
+#, fuzzy
+#~| msgid "Import Calendar"
+#~ msgid "C&opy to Calendar"
+#~ msgstr "कलेन्डर आयात करव"
+
+#, fuzzy
+#~| msgid "New Calendar"
+#~ msgid "&Move to Calendar"
+#~ msgstr "नवा कलेन्डर"
+
+#, fuzzy
+#~| msgid "Import Calendar"
+#~ msgid "Copy Calendar"
+#~ msgid_plural "Copy %1 Calendars"
+#~ msgstr[0] "कलेन्डर आयात करव"
+#~ msgstr[1] "कलेन्डर आयात करव"
+
+#~ msgctxt "@info"
+#~ msgid ""
+#~ "The meeting has been moved to\n"
+#~ "Start: %1\n"
+#~ "End: %2."
+#~ msgstr ""
+#~ "नियोजित भेंट खिसकाय गे हे इहां\n"
+#~ "सुरू: %1\n"
+#~ "समापन: %2."
+
+#, fuzzy
+#~| msgid "KOrganizer"
+#~ msgid "Korganizer"
+#~ msgstr "के-आर्गेनाइजर"
+
+#, fuzzy
+#~| msgid "Could not load calendar '%1'."
+#~ msgid "Could not download calendar %1: %2."
+#~ msgstr "कलेन्डर '%1' ल लोड नइ कर सकिस."
+
+#, fuzzy
+#~| msgctxt "weekOfYear (year)"
+#~| msgid "%1 (%2)"
+#~ msgid "%1 (%2 years)"
+#~ msgstr "%1 (%2)"
+
+#~ msgctxt "@option:radio"
+#~ msgid "&Day "
+#~ msgstr "दिन (&D)"
+
+#~ msgctxt ""
+#~ "@option:radio Part before XXX in 'Recur on NNN. WEEKDAY of MONTH', short "
+#~ "version"
+#~ msgid "&On"
+#~ msgstr "पर (&O)"
+
+#~ msgctxt "@option:radio"
+#~ msgid "Day #"
+#~ msgstr "दिन #"
+
+#~ msgctxt ""
+#~ "@label part after NNN of 'Recur on day #NNN of the year', short version"
+#~ msgid " of the year"
+#~ msgstr " ए साल"
+
+#~ msgctxt "@info:whatsthis"
+#~ msgid "Sets the type of recurrence this event or to-do should have."
+#~ msgstr "ये घटना या काम के पुनरावृत्ति के किसिम ल सेट करथे."
+
+#~ msgctxt "@item:inlistbox recur daily"
+#~ msgid "Daily"
+#~ msgstr "प्रतिदिन"
+
+#~ msgctxt "@item:inlistbox recur weekly"
+#~ msgid "Weekly"
+#~ msgstr "साप्ताहिक"
+
+#~ msgctxt "@item:inlistbox recur monthly"
+#~ msgid "Monthly"
+#~ msgstr "मासिक"
+
+#~ msgctxt "@item:inlistbox recur yearly"
+#~ msgid "Yearly"
+#~ msgstr "वार्सिक"
+
+#~ msgctxt "@action:button"
+#~ msgid "Recurrence Range..."
+#~ msgstr "आवृत्ति सीमा..."
+
+#~ msgctxt "@action:button"
+#~ msgid "Exceptions..."
+#~ msgstr "एक्सेप्सन्स..."
+
+#, fuzzy
+#~| msgid ""
+#~| "You have no ical file in your home directory.\n"
+#~| "Import cannot proceed.\n"
+#~ msgid "No calendars found, event cannot be added."
+#~ msgstr ""
+#~ "आप मन के होम डिरेक्टरी तिर कोनो आई-केल फाइल नइ हे.\n"
+#~ "आयात नइ कर सकिस.\n"
+
+#~ msgctxt "@title:column email addresses"
+#~ msgid "Email"
+#~ msgstr "ईमेल"
+
+#~ msgid "No Free/Busy Upload URL"
+#~ msgstr "कोई मुक्त/व्यस्त अपलोड यूआरएल नइ हे"
+
+#~ msgid "<qt>The target URL '%1' provided is invalid.</qt>"
+#~ msgstr "<qt>दे गे लक्छ्य यूआरएल '%1' अवैध हे.</qt>"
+
+#~ msgid "Invalid URL"
+#~ msgstr "अवैध यूआरएल"
+
+#~ msgid "Error message: %1"
+#~ msgstr "गलती संदेस: %1"
+
+#~ msgid "Error while processing an invitation or update."
+#~ msgstr "आयात या अपडेट के काम के समय गलती."
+
+#, fuzzy
+#~| msgid ""
+#~| "This %1 includes other people. Should email be sent out to the attendees?"
+#~ msgid ""
+#~ "The event \"%1\" includes other people.\n"
+#~ "Do you want to email the invitation to the attendees?"
+#~ msgstr "ये %1 अउ मनखे ल घलोक मिलाथे. के उपस्थिति ल ई-मेल भेजिस जाना चाही?"
+
+#, fuzzy
+#~| msgid ""
+#~| "This %1 includes other people. Should email be sent out to the attendees?"
+#~ msgid ""
+#~ "The todo \"%1\" includes other people.\n"
+#~ "Do you want to email the invitation to the attendees?"
+#~ msgstr "ये %1 अउ मनखे ल घलोक मिलाथे. के उपस्थिति ल ई-मेल भेजिस जाना चाही?"
+
+#, fuzzy
+#~| msgid ""
+#~| "This %1 includes other people. Should email be sent out to the attendees?"
+#~ msgid ""
+#~ "This %1 includes other people. Should email be sent out to the attendees?"
+#~ msgstr "ये %1 अउ मनखे ल घलोक मिलाथे. के उपस्थिति ल ई-मेल भेजिस जाना चाही?"
+
+#~ msgid "Group Scheduling Email"
+#~ msgstr "समूह समय-सारनी ई-मेल"
+
+#~ msgid "Send Email"
+#~ msgstr "ईमेल भेजव"
+
+#~ msgid "Do you want to send a status update to the organizer of this task?"
+#~ msgstr "ये काम के आर्गेनाइजर का आप मन अपडेट स्थिति भेजना चाहू?"
+
+#~ msgid "Send Update"
+#~ msgstr "अपडेट भेजव"
+
+#, fuzzy
+#~| msgid "Do you want to send a status update to the organizer of this task?"
+#~ msgid ""
+#~ "Your status as an attendee of this event changed. Do you want to send a "
+#~ "status update to the event organizer?"
+#~ msgstr "ये काम के आर्गेनाइजर का आप मन अपडेट स्थिति भेजना चाहू?"
+
+#~ msgid "No running instance of KMail found."
+#~ msgstr "के-मेल के कोनो चलता इंस्टैंस नइ मिलिस."
+
+#, fuzzy
+#~ msgctxt "@title:window"
+#~ msgid "Edit Journal: %1"
+#~ msgstr "दैनिकी प्रविस्टि संपादित करव"
+
+#, fuzzy
+#~ msgctxt "@info"
+#~ msgid "Template does not contain a valid journal."
+#~ msgstr "टैम्प्लेट एक वैध दैनिकी नइ हे."
+
+#~ msgid "&iCalendar..."
+#~ msgstr "आई-कलेन्डर... (iC)"
+
+#~ msgid "&vCalendar..."
+#~ msgstr "वी-केलैन्डर... (&v)"
+
+#, fuzzy
+#~| msgid "Added calendar resource for URL '%1'."
+#~ msgid "Added calendar for URL '%1'."
+#~ msgstr "यूआरएल '%1' बर कलेन्डर संसाधन जोड़ दे गिस."
+
+#, fuzzy
+#~| msgid "Unable to create calendar resource '%1'."
+#~ msgid "Unable to create calendar '%1'."
+#~ msgstr "कलेन्डर संसाधन '%1' बनाए मं अक्छम."
+
+#~ msgid "Could not load calendar."
+#~ msgstr "कलेन्डर ल लोड नइ कर सकिस."
+
+#~ msgid ""
+#~ "The calendar contains unsaved changes. Do you want to save them before "
+#~ "exiting?"
+#~ msgstr ""
+#~ "कलेन्डर मं बिन सहेजे गे बदलाव हे. बाहिर जाय से पहिली आप मन का ओला सहेजना चाहू?"
+
+#~ msgid "Unable to save the calendar. Do you still want to close this window?"
+#~ msgstr "कलेन्डर ल सहेजे मं अक्छम. का आप मन एखर विंडो ल अभी घलोक बन्द करना चाहू?"
+
+#~ msgid "Unable to exit. Saving still in progress."
+#~ msgstr "बाहिर जाय मं अक्छम. सहेजना अभी घलोक प्रगति मं हे."
+
+#~ msgid "Save Error"
+#~ msgstr "सहेजे मं गलती"
+
+#, fuzzy
+#~ msgid "Cancel Save"
+#~ msgstr "खारिज करव (&C)"
+
+#~ msgid "Mail Client"
+#~ msgstr "डाकिया"
+
+#~ msgid "Sendmail"
+#~ msgstr "सेंडमेल"
+
+#~ msgid "&OK"
+#~ msgstr "ठीक (&O)"
+
+#, fuzzy
+#~| msgid "Edit calendar settings"
+#~ msgctxt "@info:tooltip"
+#~ msgid "Edit calendar settings"
+#~ msgstr "कलेन्डर सेटिंग संपादन करव"
+
+#, fuzzy
+#~ msgctxt "@info:whatsthis"
+#~ msgid ""
+#~ "Press this button to edit the calendar currently selected in the list "
+#~ "above."
+#~ msgstr "अभी हाल के सक्रिय छनइया ल मेटाय बर ए बटन ल दबाव."
+
+#, fuzzy
+#~| msgid "Remove calendar"
+#~ msgctxt "@info:tooltip"
+#~ msgid "Remove calendar"
+#~ msgstr "कलेन्डर मेटाव"
+
+#, fuzzy
+#~ msgctxt "@info:whatsthis"
+#~ msgid ""
+#~ "Press this button to delete the calendar currently selected in the list "
+#~ "above."
+#~ msgstr "अभी हाल के सक्रिय छनइया ल मेटाय बर ए बटन ल दबाव."
+
+#, fuzzy
+#~| msgid "Edit Calendar Filters"
+#~ msgid "Add Calendar Folder"
+#~ msgstr "कलेन्डर फिल्टरों के संपादन करव"
+
+#, fuzzy
+#~| msgid "<qt>Unable to create resource of type <b>%1</b>.</qt>"
+#~ msgid "<qt>Unable to create the calendar folder <b>%1</b>.</qt>"
+#~ msgstr "<qt>रिसोर्स किसिम <b>%1</b> बनाए मं अक्छम.</qt>"
+
+#, fuzzy
+#~| msgid "<qt>Unable to create resource of type <b>%1</b>.</qt>"
+#~ msgid "<qt>Unable to create a calendar of type <b>%1</b>.</qt>"
+#~ msgstr "<qt>रिसोर्स किसिम <b>%1</b> बनाए मं अक्छम.</qt>"
+
+#, fuzzy
+#~| msgid "Add calendar"
+#~ msgid "%1 calendar"
+#~ msgstr "कलेन्डर जोड़व"
+
+#, fuzzy
+#~| msgid "You cannot remove your standard resource."
+#~ msgid "You cannot remove your standard calendar."
+#~ msgstr "आप अपन मानक रिसोर्स ल हटा नइ सकहू."
+
+#, fuzzy
+#~| msgid "Edit Calendar Filters"
+#~ msgid "Rename Calendar Folder"
+#~ msgstr "कलेन्डर फिल्टरों के संपादन करव"
+
+#, fuzzy
+#~ msgid "Please enter a new name for the calendar folder"
+#~ msgstr "नवा टैम्प्लेट बर एक नाम भरव:"
+
+#, fuzzy
+#~ msgid "<qt>Cannot edit the calendar folder <b>%1</b>.</qt>"
+#~ msgstr "<qt>सब-रिसोर्स किसिम <b>%1</b> बनाए मं अक्छम.</qt>"
+
+#~ msgctxt "reload the resource"
+#~ msgid "Re&load"
+#~ msgstr "फिर से लोड करव (&l)"
+
+#~ msgctxt "save the resource"
+#~ msgid "&Save"
+#~ msgstr "सहेजव (&S)"
+
+#~ msgid "Show &Info"
+#~ msgstr "जानकारी देखाव (&I)"
+
+#, fuzzy
+#~| msgid "Edit Calendar Filters"
+#~ msgid "&Add Calendar Folder..."
+#~ msgstr "कलेन्डर फिल्टरों के संपादन करव"
+
+#~ msgctxt "@title:tab general event settings"
+#~ msgid "General"
+#~ msgstr "सामान्य"
+
+#~ msgctxt "@title:tab"
+#~ msgid "Details"
+#~ msgstr "विवरन"
+
+#~ msgctxt "@title:tab"
+#~ msgid "Rec&urrence"
+#~ msgstr "आवृत्ति (&u)"
+
+#~ msgctxt "@title:tab general to-do settings"
+#~ msgid "General"
+#~ msgstr "सामान्य"
+
+#~ msgctxt "@info"
+#~ msgid "Template does not contain a valid to-do."
+#~ msgstr "टैम्प्लेट मं वैध काम सूची नइ हे"
+
+#~ msgid "Active Calendar"
+#~ msgstr "सक्रिय कलेन्डर"
+
+#, fuzzy
+#~| msgid "Reminder:"
+#~ msgctxt "@label"
+#~ msgid "Reminder:"
+#~ msgstr "स्मरनः"
+
+#~ msgctxt "incidence type is event"
+#~ msgid "event"
+#~ msgstr "घटना"
+
+#~ msgctxt "incidence type is to-do/task"
+#~ msgid "task"
+#~ msgstr "काम"
+
+#~ msgctxt "incidence type is journal"
+#~ msgid "journal entry"
+#~ msgstr "दैनिकी प्रविस्टि"
+
+#, fuzzy
+#~| msgctxt "@title:column reminder date/time"
+#~| msgid "Reminder Date/Time"
+#~ msgctxt "@title:column reminder date/time"
+#~ msgid "Reminder Time"
+#~ msgstr "सुरता तारीक/समय"
+
+#~ msgid "&Timespan"
+#~ msgstr "टाइमस्पान (&T)"
+
+#~ msgid "This plugin provides a Gantt-like Timespan view."
+#~ msgstr "ये प्लगइन गेंट जइसन टाइमस्पान दृस्य प्रदान करथे."
+
+#~ msgid "Timespan View Plugin"
+#~ msgstr "टाइमस्पान दृस्य प्लगइन"
+
+#~ msgid "Zoom In"
+#~ msgstr "जूम इन"
+
+#~ msgid "Zoom Out"
+#~ msgstr "जूम आउट"
+
+#~ msgid "Center View"
+#~ msgstr "केंद्रित दृस्य"
+
+#~ msgid "Counter-Event Viewer"
+#~ msgstr "प्रति-घटना प्रदर्सक"
+
+#~ msgid "Decline"
+#~ msgstr "अस्वीकार"
+
+#~ msgid "Accept"
+#~ msgstr "स्वीकृत"
+
+#, fuzzy
+#~ msgctxt "@title:column reminder date/time"
+#~ msgid "Reminder"
+#~ msgstr "सुरता"
+
+#~ msgctxt "@action:button"
+#~ msgid "Dismiss"
+#~ msgstr "खारिज करव"
+
+#~ msgctxt "@item:inlistbox alarm offset expressed in minutes"
+#~ msgid "Minutes"
+#~ msgstr "मिनट्स"
+
+#~ msgctxt "@item:inlistbox alarm offset expressed in hours"
+#~ msgid "Hours"
+#~ msgstr "घंटे"
+
+#~ msgctxt "@item:inlistbox alarm offset expressed in days"
+#~ msgid "Days"
+#~ msgstr "दिन"
+
+#~ msgid "Before the Start"
+#~ msgstr "सुरू करे से पहिली"
+
+#~ msgid "After the Start"
+#~ msgstr "सुरू करे के बाद"
+
+#~ msgid "Before the End"
+#~ msgstr "आखरी से पहिली"
+
+#~ msgid "After the End"
+#~ msgstr "आखरी के बाद"
+
+#~ msgid "&Display reminder"
+#~ msgstr "सुरता देखाव (&D)"
+
+#~ msgid "Reminder &text:"
+#~ msgstr "सुरता पाठ: (&t)"
+
+#~ msgid "Could not upload file."
+#~ msgstr "फाइल अपलोड नइ कर सकिस."
+
+#~ msgid "KOrganizer Timezone Test"
+#~ msgstr "के-आर्गेनाइजर समयछेत्र जांच"
+
+#~ msgctxt "@label"
+#~ msgid "Time zone:"
+#~ msgstr "समय छेत्र:"
+
+#~ msgctxt "@item:inlistbox unknown timezone"
+#~ msgid "Unknown"
+#~ msgstr "अग्यात"
+
+#~ msgctxt "@item:inlistbox no timezone selected"
+#~ msgid "[No selection]"
+#~ msgstr "[कोई चयन नइ]"
+
+#~ msgid "&Journal entries"
+#~ msgstr "दैनिकी प्रविस्टि (&J)"
+
+#~ msgid "E&vents have to be completely included"
+#~ msgstr "घटना ल पूरा जइसन से सामिल करना जरूरी हे (&v)"
+
+#~ msgid "&Find"
+#~ msgstr "खोजव (&F)"
+
+#~ msgid "The item \"%1\" will be permanently deleted."
+#~ msgstr "चीज \"%1\" ल स्थायी रूप से मिटा दे जाही."
+
+#~ msgid "This item will be permanently deleted."
+#~ msgstr "ये चीज ल स्थायी रूप से मिटा दे गिस."
+
+#~ msgid "Delete Confirmation"
+#~ msgstr "मिटाना पुस्टिकरन"
+
+#, fuzzy
+#~ msgctxt "@info"
+#~ msgid "This journal entry will be permanently deleted."
+#~ msgstr "ये दैनिकी प्रविस्टि आप मन के हार्ड डिस्क से हमेसा बर मिटा दे जाही."
+
+#~ msgctxt "@info"
+#~ msgid "This item will be permanently deleted."
+#~ msgstr "ये चीज ल स्थायी रूप से मिटा दे जाही."
+
+#~ msgctxt "@action:button"
+#~ msgid "Delete"
+#~ msgstr "मेटाव"
+
+#~ msgid "Show Resource View"
+#~ msgstr "स्रोत दृस्य देखाव"
+
+#~ msgid "Add Subresource"
+#~ msgstr "सब-रिसोर्स जोड़व"
+
+#~ msgid "<qt>Unable to create subresource <b>%1</b>.</qt>"
+#~ msgstr "<qt>सब-रिसोर्स किसिम <b>%1</b> बनाए मं अक्छम.</qt>"
+
+#~ msgid "Resource Configuration"
+#~ msgstr "रिसोर्स कान्फिगरेसन"
+
+#~ msgid "%1 resource"
+#~ msgstr "रिसोर्स %1 "
+
+#, fuzzy
+#~ msgid "Rename Subresource"
+#~ msgstr "सब-रिसोर्स जोड़व"
+
+#, fuzzy
+#~| msgid "Add Subresource"
+#~ msgid "&Add Resource..."
+#~ msgstr "सब-रिसोर्स जोड़व"
+
+#~ msgid "Resource Colors"
+#~ msgstr "संसाधन रंग"
+
+#, fuzzy
+#~| msgid "Add Subresource"
+#~ msgid "&Add Subresource..."
+#~ msgstr "सब-रिसोर्स जोड़व"
+
+#~ msgid "Print &Year:"
+#~ msgstr "छपाई साल: (&Y)"
+
+#, fuzzy
+#~ msgid "No (unset) category color"
+#~ msgstr "महिना दृस्य वर्ग रंग उपयोग करथे "
+
+#~ msgctxt "@action:inmenu remove the attachment"
+#~ msgid "&Delete"
+#~ msgstr "मेटाव (&D)"
+
+#~ msgctxt "@info"
+#~ msgid "The item labeled \"%1\" will be permanently deleted."
+#~ msgstr "चीज जऊन मं लेबल \"%1\" हे हमेसा बर मेटाय जाही."
+
+#~| msgctxt "delimiter for joining holiday names"
+#~| msgid ","
+#~ msgctxt "@info delimiter for joining category names"
+#~ msgid ","
+#~ msgstr ","
+
+#~ msgctxt "@item:inlistbox"
+#~ msgid "1 minute"
+#~ msgstr "1 मिनट"
+
+#~ msgctxt "@item:inlistbox"
+#~ msgid "5 minutes"
+#~ msgstr "5 मिनट्स"
+
+#~ msgctxt "@item:inlistbox"
+#~ msgid "10 minutes"
+#~ msgstr "10  मिनट्स"
+
+#~ msgctxt "@item:inlistbox"
+#~ msgid "15 minutes"
+#~ msgstr "15 मिनट्स"
+
+#~ msgctxt "@item:inlistbox"
+#~ msgid "30 minutes"
+#~ msgstr "30  मिनट्स"
+
+#~ msgctxt "@title"
+#~ msgid "Scheduler Mail Client"
+#~ msgstr "डाकिया सेड्यूलर"
+
+#~ msgctxt "@option:radio"
+#~ msgid "Mail client"
+#~ msgstr "डाकिया"
+
+#~| msgid "Journal of %1"
+#~ msgctxt "Journal for DATE"
+#~ msgid "Journal for %1"
+#~ msgstr "%1 के दैनिकी"
+
+#~| msgid "The following events triggered reminders:"
+#~ msgctxt "@label"
+#~ msgid "The following events or to-dos triggered reminders:"
+#~ msgstr "निम्न घटना या काम सूची ह सुरता ल ट्रिगर करही:"
+
+#~| msgid "Summary"
+#~ msgctxt "@title:column reminder summary"
+#~ msgid "Summary"
+#~ msgstr "सारांस"
+
+#~ msgid "Upload &Hot New Stuff..."
+#~ msgstr "नवा ताजा चीज मन ल अपलोड करव... (&H)"
+
+#~ msgid "Filter: "
+#~ msgstr "फिल्टर:"
+
+#~ msgid "Default Reminder Time"
+#~ msgstr "डिफाल्ट सुरता समय"
+
+#~ msgid "Show to-dos in day, week and month views"
+#~ msgstr "काम सूची दिन, हफ्ता अउ महिना दृस्य मं देखाव"
+
+#~ msgid "Month view uses resource colors"
+#~ msgstr "महिना दृस्य मं संसाधन रंग परयोग होथे "
+
+#~| msgid "Name"
+#~ msgctxt "addressee name"
+#~ msgid "Name"
+#~ msgstr "नांव"
+
+#~| msgid "Email"
+#~ msgctxt "addressee email"
+#~ msgid "Email"
+#~ msgstr "ईमेल"
+
+#~| msgid "Name:"
+#~ msgctxt "addressee name"
+#~ msgid "Name:"
+#~ msgstr "नांव:"
+
+#~ msgid "Select &Addressee..."
+#~ msgstr "पाने वाला चुनव... (&A)"
+
+#~ msgid "Apply Template"
+#~ msgstr "टैम्प्लेट लगाव"
+
+#~ msgid "2008-07-14"
+#~ msgstr "2008-07-14"
+
+#~ msgctxt "@action:button"
+#~ msgid "&Add..."
+#~ msgstr "जोड़व...(&A)"
+
+#, fuzzy
+#~| msgid "Holiday"
+#~ msgctxt "incidence category"
+#~ msgid "Holiday"
+#~ msgstr "अवकास"
+
+#, fuzzy
+#~| msgid "Show only selected"
+#~ msgid "Show timezone selectors"
+#~ msgstr "सिरिफ चुने गे देखाव"
+
+#, fuzzy
+#~ msgid "31st Last"
+#~ msgstr "31वां आखरी"
+
+#, fuzzy
+#~ msgid "30th Last"
+#~ msgstr "30वां आखरी"
+
+#, fuzzy
+#~ msgid "29th Last"
+#~ msgstr "29वां आखरी"
+
+#, fuzzy
+#~ msgid "28th Last"
+#~ msgstr "28वां आखरी"
+
+#, fuzzy
+#~ msgid "27th Last"
+#~ msgstr "27वां आखरी"
+
+#, fuzzy
+#~ msgid "26th Last"
+#~ msgstr "26वां आखरी"
+
+#, fuzzy
+#~ msgid "25th Last"
+#~ msgstr "25वां आखरी"
+
+#, fuzzy
+#~ msgid "24th Last"
+#~ msgstr "24वां आखरी"
+
+#, fuzzy
+#~ msgid "23rd Last"
+#~ msgstr "23वां आखरी"
+
+#, fuzzy
+#~ msgid "22nd Last"
+#~ msgstr "22वां आखरी"
+
+#, fuzzy
+#~ msgid "21st Last"
+#~ msgstr "21वां आखरी"
+
+#, fuzzy
+#~ msgid "20th Last"
+#~ msgstr "20वां आखरी"
+
+#, fuzzy
+#~ msgid "19th Last"
+#~ msgstr "19वां आखरी"
+
+#, fuzzy
+#~ msgid "18th Last"
+#~ msgstr "18वां आखरी"
+
+#, fuzzy
+#~ msgid "17th Last"
+#~ msgstr "17वां आखरी"
+
+#, fuzzy
+#~ msgid "16th Last"
+#~ msgstr "16वां आखरी"
+
+#, fuzzy
+#~ msgid "15th Last"
+#~ msgstr "15वां आखरी"
+
+#, fuzzy
+#~ msgid "14th Last"
+#~ msgstr "14वां आखरी"
+
+#, fuzzy
+#~ msgid "13th Last"
+#~ msgstr "13वां आखरी"
+
+#, fuzzy
+#~ msgid "12th Last"
+#~ msgstr "12वां आखरी"
+
+#, fuzzy
+#~ msgid "11th Last"
+#~ msgstr "11वां आखरी"
+
+#, fuzzy
+#~ msgid "10th Last"
+#~ msgstr "10वां आखरी"
+
+#, fuzzy
+#~ msgid "9th Last"
+#~ msgstr "9वां आखरी"
+
+#, fuzzy
+#~ msgid "8th Last"
+#~ msgstr "8वां आखरी"
+
+#, fuzzy
+#~ msgid "7th Last"
+#~ msgstr "7वां आखरी"
+
+#, fuzzy
+#~ msgid "6th Last"
+#~ msgstr "6वाँ आखरी"
+
+#, fuzzy
+#~ msgid "5th Last"
+#~ msgstr "5वाँ आखरी"
+
+#, fuzzy
+#~ msgid "4th Last"
+#~ msgstr "4था आखरी"
+
+#, fuzzy
+#~ msgid "3rd Last"
+#~ msgstr "3रा आखरी"
+
+#, fuzzy
+#~ msgid "2nd Last"
+#~ msgstr "2रा आखरी"
+
+#, fuzzy
+#~ msgctxt "last day of the month"
+#~ msgid "Last"
+#~ msgstr "आखरी"
+
+#, fuzzy
+#~ msgid "1st"
+#~ msgstr "1हला"
+
+#, fuzzy
+#~ msgid "2nd"
+#~ msgstr "2रा"
+
+#, fuzzy
+#~ msgid "3rd"
+#~ msgstr "3रा"
+
+#, fuzzy
+#~ msgid "4th"
+#~ msgstr "4था"
+
+#, fuzzy
+#~ msgid "5th"
+#~ msgstr "5वाँ"
+
+#, fuzzy
+#~| msgid "every "
+#~ msgid "Every day"
+#~ msgid_plural "Every %1 days"
+#~ msgstr[0] "हर एक"
+#~ msgstr[1] "हर एक"
+
+#, fuzzy
+#~| msgctxt "Date range: Month dayStart - dayEnd"
+#~| msgid "%1 %2 - %3"
+#~ msgctxt "Every N WEEK[S] on WEEKDAYNAMELIST"
+#~ msgid "Every week on %2"
+#~ msgid_plural "Every %1 weeks on %2"
+#~ msgstr[0] "%1 %2 - %3"
+#~ msgstr[1] "%1 %2 - %3"
+
+#, fuzzy
+#~| msgctxt "Date range: monthStart dayStart - monthEnd dayEnd"
+#~| msgid "%1 %2 - %3 %4"
+#~ msgctxt "Every N MONTH[S] on the [2nd|3rd|...] WEEKDAYNAME"
+#~ msgid "Every month on the %2 %3"
+#~ msgid_plural "Every %1 months on the %2 %3"
+#~ msgstr[0] "%1 %2 - %3 %4"
+#~ msgstr[1] "%1 %2 - %3 %4"
+
+#, fuzzy
+#~| msgctxt "Date range: monthStart dayStart - monthEnd dayEnd"
+#~| msgid "%1 %2 - %3 %4"
+#~ msgctxt "Every N MONTH[S] on the [2nd|3rd|...] day"
+#~ msgid "Every month on the %2 day"
+#~ msgid_plural "Every %1 months on the %2 day"
+#~ msgstr[0] "%1 %2 - %3 %4"
+#~ msgstr[1] "%1 %2 - %3 %4"
+
+#, fuzzy
+#~| msgid "every "
+#~ msgctxt "Every N MONTH[S] on day N"
+#~ msgid "Every month on day %2"
+#~ msgid_plural "Every %1 months on day %2"
+#~ msgstr[0] "हर एक"
+#~ msgstr[1] "हर एक"
+
+#, fuzzy
+#~| msgctxt "Date range: Month dayStart - dayEnd"
+#~| msgid "%1 %2 - %3"
+#~ msgctxt "Every N YEAR[S] on day N of MONTHNAME"
+#~ msgid "Every year on day %2 of %3"
+#~ msgid_plural "Every %1 years on day %2 of %3"
+#~ msgstr[0] "%1 %2 - %3"
+#~ msgstr[1] "%1 %2 - %3"
+
+#, fuzzy
+#~| msgctxt "Date range: monthStart dayStart - monthEnd dayEnd"
+#~| msgid "%1 %2 - %3 %4"
+#~ msgctxt "Every N YEAR[S] on the [2nd|3rd|...] WEEKDAYNAME of MONTHNAME"
+#~ msgid "Every year on the %2 %3 of %4"
+#~ msgid_plural "Every %1 years on the %2 %3 of %4"
+#~ msgstr[0] "%1 %2 - %3 %4"
+#~ msgstr[1] "%1 %2 - %3 %4"
+
+#, fuzzy
+#~ msgid "occurrences"
+#~ msgid_plural "occurrences"
+#~ msgstr[0] "घटना-उपस्थिति (&o)"
+#~ msgstr[1] "घटना-उपस्थिति (&o)"
+
+#, fuzzy
+#~| msgctxt "monthname year"
+#~| msgid "%1 %2"
+#~ msgctxt "for N %OCCURRENCE[S]"
+#~ msgid "for %1 %2"
+#~ msgstr "%1 %2"
+
+#~ msgid "Attendees:"
+#~ msgstr "उपस्थिति:"
+
+#, fuzzy
+#~ msgctxt "@action:button"
+#~ msgid "Zoom to Fit"
+#~ msgstr "फिट बैठने तक जूम करव"
+
+#, fuzzy
+#~ msgctxt "@info:whatsthis"
+#~ msgid ""
+#~ "Zooms the Gantt chart so that you can see the entire duration of the "
+#~ "event on it."
+#~ msgstr "नेट चार्ट ल चालू समय मं अउ एखर घटना के दिन मं मध्य मं करथे ."
+
+#, fuzzy
+#~ msgid "week"
+#~ msgid_plural "weeks"
+#~ msgstr[0] "हफ्ता"
+#~ msgstr[1] "हफ्ता"
+
+#, fuzzy
+#~ msgid "month"
+#~ msgid_plural "months"
+#~ msgstr[0] "महिना"
+#~ msgstr[1] "महिना"
+
+#, fuzzy
+#~ msgid "year"
+#~ msgid_plural "years"
+#~ msgstr[0] "साल"
+#~ msgstr[1] "साल"
+
+#~ msgid "2006-09-28"
+#~ msgstr "2006-09-28"
+
+#, fuzzy
+#~ msgctxt "@info:whatsthis"
+#~ msgid "Day of the week on which this event or to-do should recur."
+#~ msgstr "हफ्ता के दिन जेमां ए घटना या काम हो."
+
+#~ msgid "Cannot write archive to final destination."
+#~ msgstr "अभिलेख फाइल ल आखरी गंतव्य मं नइ लिख सकिस."
+
+#, fuzzy
+#~| msgctxt "Unspecified priority"
+#~| msgid "unspecified"
+#~ msgctxt "Unspecified priority"
+#~ msgid "unspecified"
+#~ msgstr "अविसिस्ट"
+
+#, fuzzy
+#~ msgid "1 (highest)"
+#~ msgstr "१ (सबसे जादा)"
+
+#, fuzzy
+#~ msgid "5 (medium)"
+#~ msgstr "५ (मध्यम)"
+
+#, fuzzy
+#~ msgid "9 (lowest)"
+#~ msgstr "९ (सबसे कम)"
+
+#, fuzzy
+#~ msgid "&New Month View"
+#~ msgstr "महिना दृस्य"
+
+#, fuzzy
+#~ msgctxt "@info alarm offset specified in days"
+#~ msgid "1 day"
+#~ msgid_plural "%1 days"
+#~ msgstr[0] "1 दिन"
+#~ msgstr[1] "1 दिन"
+
+#, fuzzy
+#~ msgctxt "@info alarm offset specified in minutes"
+#~ msgid "1 minute"
+#~ msgid_plural "%1 minutes"
+#~ msgstr[0] "1 मिनट"
+#~ msgstr[1] "1 मिनट"
+
+#, fuzzy
+#~| msgid "Calendar"
+#~ msgid "Calendar: %1"
+#~ msgstr "कलेन्डर"
+
+#, fuzzy
+#~ msgid "Underline text"
+#~ msgstr "सुरता पाठ: (&t)"
+
+#, fuzzy
+#~ msgid "Center text"
+#~ msgstr "घटना पाठ"
+
+#, fuzzy
+#~ msgctxt "@info:whatsthis"
+#~ msgid "Enter the default reminder time here."
+#~ msgstr "डिफाल्ट सुरता समय इहां भरव."
+
+#~ msgid "Use split list views in full-size todo list"
+#~ msgstr "पूरााकार कामसूची मं विभाजित सूची दृस्य परयोग करव"
+
+#, fuzzy
+#~| msgid "Reminders Enabled"
+#~ msgctxt "@action:inmenu"
+#~ msgid "Reminders Enabled"
+#~ msgstr "सुरता सक्छम हे"
+
+#, fuzzy
+#~| msgid "Reminder"
+#~ msgctxt "@title:window"
+#~ msgid "Reminder"
+#~ msgstr "सुरता"
+
+#, fuzzy
+#~| msgid "Due"
+#~ msgctxt "@title:column reminder due date/time"
+#~ msgid "Due"
+#~ msgstr "बाकी"
+
+#~ msgid "Sort Id"
+#~ msgstr "आईडी जमाव"
+
+#~ msgid "Unable to change to-do's parent, because the to-do cannot be locked."
+#~ msgstr ""
+#~ "कामसूची के अभिभावक ल बदल नइ सकिस काबर कि कामसूची ल तालाबंद नइ किया जा सके."
+
+#~ msgid ""
+#~ "Unable to add attendees to the to-do, because the to-do cannot be locked."
+#~ msgstr ""
+#~ "कामसूची मं उपस्थितों ल सामिल करे मं अक्छम, काबर कि कामसूची तालाबंद नइ करे जा सके."
+
+#~ msgctxt "delete completed to-dos"
+#~ msgid "&Purge Completed"
+#~ msgstr "निकालना पूरा (&P)"
+
+#~ msgid "<qt><b>Tasks I have to work on:</b></qt>"
+#~ msgstr "<qt><b>काम जेमां मोला काम करना हे:</b></qt>"
+
+#~ msgid "<qt><b>Tasks I want others to work on:</b></qt>"
+#~ msgstr "<qt><b>काम जेमां मं चाहता हूँ कि अउ काम करव:</b></qt>"
+
+#~ msgid "<qt><b>Other tasks I am watching:</b></qt>"
+#~ msgstr "<qt><b>अऊ दूसर काम जऊन मं देख रहा हूँ:</b></qt>"
+
+#~ msgid "--"
+#~ msgstr "--"
+
+#~ msgid "&Templates..."
+#~ msgstr "टैम्प्लेट्स... (&T)"
+
+#~ msgid "&Remove..."
+#~ msgstr "मेटाव... (&R)"
+
+#~ msgid "Edit"
+#~ msgstr "संपादन"
+
+#, fuzzy
+#~ msgctxt "@label"
+#~ msgid "day(s)"
+#~ msgstr "दिन"
+
+#~ msgid "Owner:"
+#~ msgstr "मालिक:"
+
+#, fuzzy
+#~ msgctxt "@action:button add a new attendee"
+#~ msgid "&New"
+#~ msgstr "नवा (&N)"
+
+#, fuzzy
+#~ msgctxt "@action:button remove this attendee"
+#~ msgid "&Remove"
+#~ msgstr "मेटाव (&R)"
+
+#, fuzzy
+#~ msgctxt "@action:button"
+#~ msgid "&Properties..."
+#~ msgstr "गुन...(&P)"
+
+#, fuzzy
+#~ msgctxt "@action:button"
+#~ msgid "&Show"
+#~ msgstr "देखाव (&S)"
+
+#~ msgid "Agenda view uses resource colors"
+#~ msgstr "एजेंडा दृस्य मं संसाधन रंग परयोग होथे "
+
+#~ msgid "Use HTML"
+#~ msgstr "एचटीएमएल उपयोग करव"
+
+#~ msgid "Owner: "
+#~ msgstr "मालिक:"
+
+#~ msgid "<No summary given>"
+#~ msgstr "<कोई सारांस नइ दे हे>"
+
+#~ msgid "Calendar display timezone:"
+#~ msgstr "कलेन्डर प्रदर्सन समयछेत्र:"
+
+#~ msgid "Previous year"
+#~ msgstr "पिछला साल "
+
+#~ msgid "Previous month"
+#~ msgstr "पिछला महिना"
+
+#~ msgid "Next month"
+#~ msgstr "अगला महिना"
+
+#~ msgid "&List"
+#~ msgstr "सूची (&L)"
+
+#~ msgid "&Timeline View"
+#~ msgstr "टाइमलाए दृस्य (&T)"
+
+#~ msgid "&Timespent View"
+#~ msgstr "टाइमस्पैंट दृस्य (&T)"
+
+#~ msgid "Co-Maintainer"
+#~ msgstr "को-मेंटेनर,"
+
+#~ msgid "Print Calendar"
+#~ msgstr "कलेन्डर छापव"
+
+#~ msgid "<undefined>"
+#~ msgstr "<अपरिभासित >"

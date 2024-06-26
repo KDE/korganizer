@@ -1,0 +1,1580 @@
+# Albanian translation for kdepim
+# Copyright (c) 2009 Rosetta Contributors and Canonical Ltd 2009
+# This file is distributed under the same license as the kdepim package.
+# FIRST AUTHOR <EMAIL@ADDRESS>, 2009.
+#
+msgid ""
+msgstr ""
+"Project-Id-Version: kdepim\n"
+"Report-Msgid-Bugs-To: https://bugs.kde.org\n"
+"POT-Creation-Date: 2024-06-26 00:40+0000\n"
+"PO-Revision-Date: 2009-06-08 01:08+0000\n"
+"Last-Translator: Vilson Gjeci <vilsongjeci@gmail.com>\n"
+"Language-Team: Albanian <sq@li.org>\n"
+"Language: sq\n"
+"MIME-Version: 1.0\n"
+"Content-Type: text/plain; charset=UTF-8\n"
+"Content-Transfer-Encoding: 8bit\n"
+"Plural-Forms: nplurals=2; plural=n != 1;\n"
+"X-Launchpad-Export-Date: 2011-04-22 06:36+0000\n"
+"X-Generator: Launchpad (build 12883)\n"
+
+#: datenums/configdialog.cpp:28
+#, fuzzy, kde-format
+#| msgctxt "@title:group"
+#| msgid "Holidays"
+msgctxt "@title:window"
+msgid "Configure Day Numbers"
+msgstr "Pushimet"
+
+#: datenums/configdialog.cpp:43
+#, kde-format
+msgid "Show Date Number"
+msgstr ""
+
+#: datenums/configdialog.cpp:48
+#, kde-format
+msgid "Show day number"
+msgstr ""
+
+#: datenums/configdialog.cpp:51
+#, kde-format
+msgid "Show days to end of year"
+msgstr ""
+
+#: datenums/configdialog.cpp:54
+#, fuzzy, kde-format
+#| msgid "Birthdays"
+msgid "Show both"
+msgstr "Ditëlindjet"
+
+#: datenums/datenums.cpp:36
+#, kde-format
+msgid "This plugin shows information on a day's position in the year."
+msgstr ""
+
+#: datenums/datenums.cpp:54
+#, kde-format
+msgid "1 day before the end of the year"
+msgid_plural "%1 days before the end of the year"
+msgstr[0] ""
+msgstr[1] ""
+
+#: datenums/datenums.cpp:59
+#, kde-format
+msgctxt "dayOfYear / daysTillEndOfYear"
+msgid "%1 / %2"
+msgstr ""
+
+#: datenums/datenums.cpp:60
+#, kde-format
+msgid "1 day since the beginning of the year,\n"
+msgid_plural "%1 days since the beginning of the year,\n"
+msgstr[0] ""
+msgstr[1] ""
+
+#: datenums/datenums.cpp:61
+#, kde-format
+msgid "1 day until the end of the year"
+msgid_plural "%1 days until the end of the year"
+msgstr[0] ""
+msgstr[1] ""
+
+#: datenums/datenums.cpp:102
+#, fuzzy, kde-format
+#| msgctxt "@item:inlistbox expiration in weekly units"
+#| msgid "Week(s)"
+msgctxt "Week weekOfYear"
+msgid "Week %1"
+msgstr "Javë(t)"
+
+#: datenums/datenums.cpp:103 datenums/datenums.cpp:113
+#: datenums/datenums.cpp:118
+#, kde-format
+msgid "1 week since the beginning of the year"
+msgid_plural "%1 weeks since the beginning of the year"
+msgstr[0] ""
+msgstr[1] ""
+
+#: datenums/datenums.cpp:106
+#, fuzzy, kde-format
+#| msgctxt "start/end week number of line in date picker"
+#| msgid "%1/%2"
+msgctxt "weekOfYear (year)"
+msgid "%1 (%2)"
+msgstr "%1/%2"
+
+#: datenums/datenums.cpp:107
+#, fuzzy, kde-format
+#| msgctxt "start/end week number of line in date picker"
+#| msgid "%1/%2"
+msgctxt "Week weekOfYear (year)"
+msgid "Week %1 (%2)"
+msgstr "%1/%2"
+
+#: datenums/datenums.cpp:122
+#, kde-format
+msgid "1 week remaining"
+msgid_plural "%1 weeks remaining"
+msgstr[0] ""
+msgstr[1] ""
+
+#: datenums/datenums.cpp:123
+#, kde-format
+msgid "1 week until the end of the year"
+msgid_plural "%1 weeks until the end of the year"
+msgstr[0] ""
+msgstr[1] ""
+
+#: datenums/datenums.cpp:124
+#, kde-format
+msgctxt "weekOfYear / weeksTillEndOfYear"
+msgid "%1 / %2"
+msgstr ""
+
+#: datenums/datenums.cpp:140
+#, kde-format
+msgctxt ""
+"n weeks since the beginning of the year\n"
+"n weeks until the end of the year"
+msgid ""
+"%1\n"
+"%2"
+msgstr ""
+
+#: hebrew/configdialog.cpp:28
+#, fuzzy, kde-format
+#| msgctxt "@title:group"
+#| msgid "Holidays"
+msgctxt "@title:window"
+msgid "Configure Holidays"
+msgstr "Pushimet"
+
+#: hebrew/configdialog.cpp:42
+#, kde-format
+msgid "Use Israeli holidays"
+msgstr ""
+
+#: hebrew/configdialog.cpp:46
+#, kde-format
+msgid "Show weekly parsha"
+msgstr ""
+
+#: hebrew/configdialog.cpp:50
+#, kde-format
+msgid "Show day of Omer"
+msgstr ""
+
+#: hebrew/configdialog.cpp:54
+#, fuzzy, kde-format
+#| msgctxt "@title:group"
+#| msgid "Holidays"
+msgid "Show Chol HaMoed"
+msgstr "Pushimet"
+
+#: hebrew/hebrew.cpp:60
+#, kde-format
+msgctxt ""
+"Change the next two strings if emphasis is done differently in your language."
+msgid ""
+"<qt><p align=\"center\"><i>\n"
+"%1\n"
+"</i></p></qt>"
+msgstr ""
+
+#: hebrew/hebrew.cpp:67
+#, kde-format
+msgid "This plugin provides the date in the Jewish calendar."
+msgstr ""
+
+#: hebrew/holiday.cpp:75
+#, kde-format
+msgctxt ""
+"These are Jewish holidays and mostly do not have translations. They may have "
+"different spellings in your language; otherwise, just translate the sound to "
+"your characters."
+msgid "Sh. HaHodesh"
+msgstr ""
+
+#: hebrew/holiday.cpp:83
+#, kde-format
+msgid "Erev Pesach"
+msgstr ""
+
+#: hebrew/holiday.cpp:94
+#, kde-format
+msgid "Sh. HaGadol"
+msgstr ""
+
+#: hebrew/holiday.cpp:102
+#, kde-format
+msgid "Pesach"
+msgstr ""
+
+#: hebrew/holiday.cpp:113 hebrew/holiday.cpp:307
+#, kde-format
+msgid "Chol Hamoed"
+msgstr ""
+
+#: hebrew/holiday.cpp:124 hebrew/holiday.cpp:129 hebrew/holiday.cpp:138
+#, kde-format
+msgid "Yom HaShoah"
+msgstr ""
+
+#: hebrew/holiday.cpp:164 hebrew/holiday.cpp:171 hebrew/holiday.cpp:182
+#, kde-format
+msgid "Yom HaAtzmaut"
+msgstr ""
+
+#: hebrew/holiday.cpp:166 hebrew/holiday.cpp:180
+#, kde-format
+msgid "Yom HaZikaron"
+msgstr ""
+
+#: hebrew/holiday.cpp:190
+#, kde-format
+msgid "Yom Yerushalayim"
+msgstr ""
+
+#: hebrew/holiday.cpp:194
+#, kde-format
+msgid "Lag BaOmer"
+msgstr ""
+
+#: hebrew/holiday.cpp:220
+#, kde-format
+msgid "Erev Shavuot"
+msgstr ""
+
+#: hebrew/holiday.cpp:225
+#, kde-format
+msgid "Shavuot"
+msgstr ""
+
+#: hebrew/holiday.cpp:234
+#, kde-format
+msgid "Tzom Tammuz"
+msgstr ""
+
+#: hebrew/holiday.cpp:242
+#, kde-format
+msgid "Sh. Hazon"
+msgstr ""
+
+#: hebrew/holiday.cpp:244
+#, kde-format
+msgid "Sh. Nahamu"
+msgstr ""
+
+#: hebrew/holiday.cpp:248
+#, kde-format
+msgid "Tisha B'Av"
+msgstr ""
+
+#: hebrew/holiday.cpp:254
+#, kde-format
+msgid "S'lichot"
+msgstr ""
+
+#: hebrew/holiday.cpp:256
+#, kde-format
+msgid "Erev R.H."
+msgstr ""
+
+#: hebrew/holiday.cpp:264
+#, kde-format
+msgid "Rosh Hashana"
+msgstr ""
+
+#: hebrew/holiday.cpp:268 hebrew/holiday.cpp:283
+#, kde-format
+msgid "Sh. Shuvah"
+msgstr ""
+
+#: hebrew/holiday.cpp:270 hebrew/holiday.cpp:275
+#, kde-format
+msgid "Tzom Gedalia"
+msgstr ""
+
+#: hebrew/holiday.cpp:287
+#, kde-format
+msgid "Erev Y.K."
+msgstr ""
+
+#: hebrew/holiday.cpp:290
+#, kde-format
+msgid "Yom Kippur"
+msgstr ""
+
+#: hebrew/holiday.cpp:293
+#, kde-format
+msgid "Erev Sukkot"
+msgstr ""
+
+#: hebrew/holiday.cpp:298
+#, kde-format
+msgid "Sukkot"
+msgstr ""
+
+#: hebrew/holiday.cpp:311
+#, kde-format
+msgid "Hoshana Rabah"
+msgstr ""
+
+#: hebrew/holiday.cpp:314
+#, kde-format
+msgid "Shmini Atzeret"
+msgstr ""
+
+#: hebrew/holiday.cpp:318
+#, kde-format
+msgid "Simchat Torah"
+msgstr ""
+
+#: hebrew/holiday.cpp:329
+#, kde-format
+msgid "Erev Hanukah"
+msgstr ""
+
+#: hebrew/holiday.cpp:331 hebrew/holiday.cpp:339
+#, kde-format
+msgid "Hanukah"
+msgstr ""
+
+#: hebrew/holiday.cpp:342
+#, kde-format
+msgid "Tzom Tevet"
+msgstr ""
+
+#: hebrew/holiday.cpp:352 hebrew/holiday.cpp:361 hebrew/holiday.cpp:366
+#: hebrew/holiday.cpp:372
+#, kde-format
+msgid "Sh. Shirah"
+msgstr ""
+
+#: hebrew/holiday.cpp:368
+#, kde-format
+msgid "Tu B'Shvat"
+msgstr ""
+
+#: hebrew/holiday.cpp:383 hebrew/holiday.cpp:395 hebrew/holiday.cpp:403
+#, kde-format
+msgid "Sh. Shekalim"
+msgstr ""
+
+#: hebrew/holiday.cpp:392
+#, kde-format
+msgid "Purim Katan"
+msgstr ""
+
+#: hebrew/holiday.cpp:411 hebrew/holiday.cpp:431
+#, kde-format
+msgid "Ta'anit Ester"
+msgstr ""
+
+#: hebrew/holiday.cpp:420 hebrew/holiday.cpp:425
+#, kde-format
+msgid "Sh. Zachor"
+msgstr ""
+
+#: hebrew/holiday.cpp:427
+#, kde-format
+msgid "Erev Purim"
+msgstr ""
+
+#: hebrew/holiday.cpp:435
+#, kde-format
+msgid "Purim"
+msgstr ""
+
+#: hebrew/holiday.cpp:439 hebrew/holiday.cpp:444
+#, kde-format
+msgid "Shushan Purim"
+msgstr ""
+
+#: hebrew/holiday.cpp:455
+#, kde-format
+msgid "Sh. Parah"
+msgstr ""
+
+#: hebrew/holiday.cpp:465
+#, kde-format
+msgid "Sh. HaHodesh"
+msgstr ""
+
+#: hebrew/holiday.cpp:481
+#, kde-format
+msgid " Omer"
+msgstr ""
+
+#: hebrew/parsha.cpp:28
+#, fuzzy, kde-format
+#| msgid "&Refresh"
+msgctxt ""
+"These are weekly readings and do not have translations. They may have "
+"different spellings in your language; otherwise, just translate the sound to "
+"your characters"
+msgid "Bereshit"
+msgstr "&Rifresko"
+
+#: hebrew/parsha.cpp:29
+#, kde-format
+msgid "Noach"
+msgstr ""
+
+#: hebrew/parsha.cpp:29
+#, kde-format
+msgid "Lech L'cha"
+msgstr ""
+
+#: hebrew/parsha.cpp:29
+#, kde-format
+msgid "Vayera"
+msgstr ""
+
+#: hebrew/parsha.cpp:29
+#, kde-format
+msgid "Chaye Sarah"
+msgstr ""
+
+#: hebrew/parsha.cpp:29
+#, kde-format
+msgid "Toldot"
+msgstr ""
+
+#: hebrew/parsha.cpp:29
+#, kde-format
+msgid "Vayetze"
+msgstr ""
+
+#: hebrew/parsha.cpp:29
+#, kde-format
+msgid "Vayishlach"
+msgstr ""
+
+#: hebrew/parsha.cpp:30
+#, kde-format
+msgid "Vayeshev"
+msgstr ""
+
+#: hebrew/parsha.cpp:30
+#, kde-format
+msgid "Miketz"
+msgstr ""
+
+#: hebrew/parsha.cpp:30
+#, kde-format
+msgid "Vayigash"
+msgstr ""
+
+#: hebrew/parsha.cpp:30
+#, kde-format
+msgid "Vayechi"
+msgstr ""
+
+#: hebrew/parsha.cpp:30
+#, kde-format
+msgid "Shemot"
+msgstr ""
+
+#: hebrew/parsha.cpp:30
+#, kde-format
+msgid "Vaera"
+msgstr ""
+
+#: hebrew/parsha.cpp:30
+#, kde-format
+msgid "Bo"
+msgstr ""
+
+#: hebrew/parsha.cpp:31
+#, kde-format
+msgid "Beshalach"
+msgstr ""
+
+#: hebrew/parsha.cpp:31
+#, kde-format
+msgid "Yitro"
+msgstr ""
+
+#: hebrew/parsha.cpp:31
+#, kde-format
+msgid "Mishpatim"
+msgstr ""
+
+#: hebrew/parsha.cpp:31
+#, kde-format
+msgid "Terumah"
+msgstr ""
+
+#: hebrew/parsha.cpp:31
+#, kde-format
+msgid "Tetzaveh"
+msgstr ""
+
+#: hebrew/parsha.cpp:31
+#, kde-format
+msgid "Ki Tisa"
+msgstr ""
+
+#: hebrew/parsha.cpp:31
+#, kde-format
+msgid "Vayakhel"
+msgstr ""
+
+#: hebrew/parsha.cpp:32
+#, kde-format
+msgid "Pekudei"
+msgstr ""
+
+#: hebrew/parsha.cpp:32
+#, kde-format
+msgid "Vayikra"
+msgstr ""
+
+#: hebrew/parsha.cpp:32
+#, kde-format
+msgid "Tzav"
+msgstr ""
+
+#: hebrew/parsha.cpp:32
+#, kde-format
+msgid "Shemini"
+msgstr ""
+
+#: hebrew/parsha.cpp:32
+#, kde-format
+msgid "Tazria"
+msgstr ""
+
+#: hebrew/parsha.cpp:32
+#, kde-format
+msgid "Metzora"
+msgstr ""
+
+#: hebrew/parsha.cpp:32
+#, kde-format
+msgid "Acharei Mot"
+msgstr ""
+
+#: hebrew/parsha.cpp:33
+#, kde-format
+msgid "Kedoshim"
+msgstr ""
+
+#: hebrew/parsha.cpp:33
+#, kde-format
+msgid "Emor"
+msgstr ""
+
+#: hebrew/parsha.cpp:33
+#, kde-format
+msgid "Behar"
+msgstr ""
+
+#: hebrew/parsha.cpp:33
+#, kde-format
+msgid "Bechukotai"
+msgstr ""
+
+#: hebrew/parsha.cpp:33
+#, kde-format
+msgid "Bemidbar"
+msgstr ""
+
+#: hebrew/parsha.cpp:33
+#, kde-format
+msgid "Naso"
+msgstr ""
+
+#: hebrew/parsha.cpp:33
+#, kde-format
+msgid "Behaalotcha"
+msgstr ""
+
+#: hebrew/parsha.cpp:34
+#, kde-format
+msgid "Shelach"
+msgstr ""
+
+#: hebrew/parsha.cpp:34
+#, kde-format
+msgid "Korach"
+msgstr ""
+
+#: hebrew/parsha.cpp:34
+#, kde-format
+msgid "Chukat"
+msgstr ""
+
+#: hebrew/parsha.cpp:34
+#, kde-format
+msgid "Balak"
+msgstr ""
+
+#: hebrew/parsha.cpp:34
+#, kde-format
+msgid "Pinchas"
+msgstr ""
+
+#: hebrew/parsha.cpp:34
+#, kde-format
+msgid "Matot"
+msgstr ""
+
+#: hebrew/parsha.cpp:34
+#, kde-format
+msgid "Masei"
+msgstr ""
+
+#: hebrew/parsha.cpp:35
+#, kde-format
+msgid "Devarim"
+msgstr ""
+
+#: hebrew/parsha.cpp:35
+#, kde-format
+msgid "Vaetchanan"
+msgstr ""
+
+#: hebrew/parsha.cpp:35
+#, kde-format
+msgid "Ekev"
+msgstr ""
+
+#: hebrew/parsha.cpp:35
+#, kde-format
+msgid "Reeh"
+msgstr ""
+
+#: hebrew/parsha.cpp:35
+#, kde-format
+msgid "Shoftim"
+msgstr ""
+
+#: hebrew/parsha.cpp:35
+#, kde-format
+msgid "Ki Tetze"
+msgstr ""
+
+#: hebrew/parsha.cpp:35
+#, kde-format
+msgid "Ki Tavo"
+msgstr ""
+
+#: hebrew/parsha.cpp:36
+#, kde-format
+msgid "Nitzavim"
+msgstr ""
+
+#: hebrew/parsha.cpp:36
+#, kde-format
+msgid "Vayelech"
+msgstr ""
+
+#: hebrew/parsha.cpp:36
+#, kde-format
+msgid "Haazinu"
+msgstr ""
+
+#: lunarphases/lunarphases.cpp:61
+#, kde-format
+msgid ""
+"This plugin displays the day's lunar phase (New, First, Last, Full). "
+"Currently, the phase is computed for noon at UTC; therefore, you should "
+"expect variations by 1 day in either direction."
+msgstr ""
+
+#: picoftheday/configdialog.cpp:28
+#, kde-format
+msgctxt "@title:window"
+msgid "Configure Picture of the Day"
+msgstr ""
+
+#: picoftheday/configdialog.cpp:42
+#, kde-format
+msgid "Thumbnail Aspect Ratio Mode"
+msgstr ""
+
+#: picoftheday/configdialog.cpp:46
+#, kde-format
+msgid "Ignore aspect ratio"
+msgstr ""
+
+#: picoftheday/configdialog.cpp:48
+#, kde-format
+msgid ""
+"The thumbnail will be scaled freely. The aspect ratio will not be preserved."
+msgstr ""
+
+#: picoftheday/configdialog.cpp:52
+#, kde-format
+msgid "Keep aspect ratio"
+msgstr ""
+
+#: picoftheday/configdialog.cpp:54
+#, kde-format
+msgid ""
+"The thumbnail will be scaled to a rectangle as large as possible inside a "
+"given rectangle, preserving the aspect ratio."
+msgstr ""
+
+#: picoftheday/configdialog.cpp:59
+#, kde-format
+msgid "Keep aspect ratio by expanding"
+msgstr ""
+
+#: picoftheday/configdialog.cpp:61
+#, kde-format
+msgid ""
+"The thumbnail will be scaled to a rectangle as small as possible outside a "
+"given rectangle, preserving the aspect ratio."
+msgstr ""
+
+#: picoftheday/element.cpp:209
+#, kde-format
+msgid "Wikipedia POTD: %1"
+msgstr ""
+
+#: picoftheday/element.cpp:326
+#, fuzzy, kde-format
+#| msgid "&Delete"
+msgid "Picture Page"
+msgstr "&Fshije"
+
+#: picoftheday/element.cpp:326
+#, kde-format
+msgid "Loading..."
+msgstr ""
+
+#: picoftheday/element.cpp:332
+#, kde-format
+msgid "<qt>Loading <i>Picture of the Day</i>...</qt>"
+msgstr ""
+
+#: picoftheday/picoftheday.cpp:48
+#, kde-format
+msgid "<qt>This plugin provides the Wikipedia <i>Picture of the Day</i>.</qt>"
+msgstr ""
+
+#: thisdayinhistory/thisdayinhistory.cpp:29
+#, kde-format
+msgid "This plugin provides links to Wikipedia's 'This Day in History' pages."
+msgstr ""
+
+#: thisdayinhistory/thisdayinhistory.cpp:37
+#, kde-format
+msgid "This day in history"
+msgstr ""
+
+#: thisdayinhistory/thisdayinhistory.cpp:39
+#: thisdayinhistory/thisdayinhistory.cpp:53
+#, kde-format
+msgctxt "Localized Wikipedia website"
+msgid "https://en.wikipedia.org/wiki/"
+msgstr ""
+
+#: thisdayinhistory/thisdayinhistory.cpp:40
+#, kde-format
+msgctxt "Qt date format used by the localized Wikipedia"
+msgid "MMMM_d"
+msgstr ""
+
+#: thisdayinhistory/thisdayinhistory.cpp:51
+#, kde-format
+msgid "This month in history"
+msgstr ""
+
+#: thisdayinhistory/thisdayinhistory.cpp:54
+#, kde-format
+msgctxt "Qt date format used by the localized Wikipedia"
+msgid "MMMM_yyyy"
+msgstr ""
+
+#~ msgctxt "NAME OF TRANSLATORS"
+#~ msgid "Your names"
+#~ msgstr "KDE Shqip, Launchpad Contributions: Vilson Gjeci"
+
+#~ msgctxt "EMAIL OF TRANSLATORS"
+#~ msgid "Your emails"
+#~ msgstr "kde-shqip@yahoogroups.com,vilsongjeci@gmail.com"
+
+#~ msgid "KOrganizer"
+#~ msgstr "KOrganizer"
+
+#, fuzzy
+#~| msgid ""
+#~| "(c) 1997-1999 Preston Brown\n"
+#~| "(c) 2000-2004,2007 Cornelius Schumacher\n"
+#~| "(c) 2004-2005 Reinhold Kainhofer"
+#~ msgid ""
+#~ "Copyright © 1997–1999 Preston Brown\n"
+#~ "Copyright © 2000–2004, 2007 Cornelius Schumacher\n"
+#~ "Copyright © 2004–2005 Reinhold Kainhofer\n"
+#~ "Copyright © 2006–2012 Allen Winter\n"
+#~ "Copyright © 2012–2016 KOrganizer authors"
+#~ msgstr ""
+#~ "(c) 1997-1999 Preston Brown\n"
+#~ "(c) 2000-2004,2007 Cornelius Schumacher\n"
+#~ "(c) 2004-2005 Reinhold Kainhofer"
+
+#~ msgid "Allen Winter"
+#~ msgstr "Allen Winter"
+
+#~ msgid "Reinhold Kainhofer"
+#~ msgstr "Reinhold Kainhofer"
+
+#~ msgid "Former Maintainer"
+#~ msgstr "Ish Mirëmbajtës"
+
+#~ msgid "Cornelius Schumacher"
+#~ msgstr "Cornelius Schumacher"
+
+#~ msgid "Preston Brown"
+#~ msgstr "Preston Brown"
+
+#~ msgid "Original Author"
+#~ msgstr "Autori Origjinal"
+
+#~ msgid "Richard Apodaca"
+#~ msgstr "Richard Apodaca"
+
+#~ msgid "Jan-Pascal van Best"
+#~ msgstr "Jan-Pascal van Best"
+
+#~ msgid "Laszlo Boloni"
+#~ msgstr "Laszlo Boloni"
+
+#~ msgid "Barry Benowitz"
+#~ msgstr "Barry Benowitz"
+
+#~ msgid "Christopher Beard"
+#~ msgstr "Christopher Beard"
+
+#~ msgid "Kalle Dalheimer"
+#~ msgstr "Kalle Dalheimer"
+
+#~ msgid "Ian Dawes"
+#~ msgstr "Ian Dawes"
+
+#~ msgid "Thomas Eitzenberger"
+#~ msgstr "Thomas Eitzenberger"
+
+#~ msgid "Neil Hart"
+#~ msgstr "Neil Hart"
+
+#~ msgid "Declan Houlihan"
+#~ msgstr "Declan Houlihan"
+
+#~ msgid "Hans-Jürgen Husel"
+#~ msgstr "Hans-Jürgen Husel"
+
+#~ msgid "Tim Jansen"
+#~ msgstr "Tim Jansen"
+
+#~ msgid "Christian Kirsch"
+#~ msgstr "Christian Kirsch"
+
+#~ msgid "Tobias König"
+#~ msgstr "Tobias König"
+
+#~ msgid "Martin Koller"
+#~ msgstr "Martin Koller"
+
+#~ msgid "Uwe Koloska"
+#~ msgstr "Uwe Koloska"
+
+#~ msgid "Glen Parker"
+#~ msgstr "Glen Parker"
+
+#~ msgid "Dan Pilone"
+#~ msgstr "Dan Pilone"
+
+#~ msgid "Roman Rohr"
+#~ msgstr "Roman Rohr"
+
+#~ msgid "Rafał Rzepecki"
+#~ msgstr "Rafał Rzepecki"
+
+#~ msgid "Don Sanders"
+#~ msgstr "Don Sanders"
+
+#~ msgid "Bram Schoenmakers"
+#~ msgstr "Bram Schoenmakers"
+
+#~ msgid "Günter Schwann"
+#~ msgstr "Günter Schwann"
+
+#~ msgid "Herwin Jan Steehouwer"
+#~ msgstr "Herwin Jan Steehouwer"
+
+#~ msgid "Mario Teijeiro"
+#~ msgstr "Mario Teijeiro"
+
+#~ msgid "Nick Thompson"
+#~ msgstr "Nick Thompson"
+
+#~ msgid "Bo Thorsen"
+#~ msgstr "Bo Thorsen"
+
+#~ msgid "Larry Wright"
+#~ msgstr "Larry Wright"
+
+#~ msgid "Thomas Zander"
+#~ msgstr "Thomas Zander"
+
+#~ msgid "Fester Zigterman"
+#~ msgstr "Fester Zigterman"
+
+#~ msgid "&Delete"
+#~ msgstr "&Fshije"
+
+#~ msgid "&Month"
+#~ msgstr "&Muaji"
+
+#~ msgid "F&ilter"
+#~ msgstr "F&iltri"
+
+#~ msgid "In Horizontally"
+#~ msgstr "Në Horizontalisht"
+
+#~ msgid "Today"
+#~ msgstr "Sot"
+
+#~ msgctxt "scroll backward"
+#~ msgid "Back"
+#~ msgstr "Mbrapsht"
+
+#~ msgctxt "scroll forward"
+#~ msgid "&Forward"
+#~ msgstr "&Përpara"
+
+#~ msgctxt "scoll forward"
+#~ msgid "Forward"
+#~ msgstr "Përpara"
+
+#, fuzzy
+#~| msgctxt "scoll forward"
+#~| msgid "Forward"
+#~ msgid "Scroll Forward"
+#~ msgstr "Përpara"
+
+#~ msgid "&Day"
+#~ msgstr "&Dita"
+
+#~ msgid "&Show"
+#~ msgstr "&Shfaqe"
+
+#~ msgid "&Edit..."
+#~ msgstr "&Modifiko..."
+
+#~ msgid "Proceed"
+#~ msgstr "Proçedo"
+
+#~ msgid "Error"
+#~ msgstr "Gabim"
+
+#~ msgid "C&ancel"
+#~ msgstr "A&nullo"
+
+#~ msgid "Remove Attachments"
+#~ msgstr "Hiqi të Bashkangjiturit"
+
+#~ msgid "Undo: %1"
+#~ msgstr "Zhbëji: %1"
+
+#~ msgid "Undo"
+#~ msgstr "Zhbëj"
+
+#, fuzzy
+#~| msgid "Redo (%1)"
+#~ msgid "Redo: %1"
+#~ msgstr "Ribëj (%1)"
+
+#~ msgid "Redo"
+#~ msgstr "Ribëj"
+
+#, fuzzy
+#~| msgid "Default Calendar"
+#~ msgctxt "@title:window"
+#~ msgid "Import Calendar"
+#~ msgstr "Kalendari i Parazgjedhur"
+
+#, fuzzy
+#~| msgid "Default Calendar"
+#~ msgid "Add Calendar"
+#~ msgstr "Kalendari i Parazgjedhur"
+
+#, fuzzy
+#~| msgid "Default Calendar"
+#~ msgid "Delete Calendar"
+#~ msgstr "Kalendari i Parazgjedhur"
+
+#, fuzzy
+#~| msgid "Default Calendar"
+#~ msgid "iCalendars (*.ics)"
+#~ msgstr "Kalendari i Parazgjedhur"
+
+#, fuzzy
+#~| msgid "Default Calendar"
+#~ msgid "vCalendars (*.vcs)"
+#~ msgstr "Kalendari i Parazgjedhur"
+
+#, fuzzy
+#~| msgid "Default Calendar"
+#~ msgid "Delete parent to-do"
+#~ msgstr "Kalendari i Parazgjedhur"
+
+#, fuzzy
+#~| msgctxt "@title:tab general settings"
+#~| msgid "General"
+#~ msgctxt "@title:tab General settings for a folder."
+#~ msgid "General"
+#~ msgstr "Të Përgjithshme"
+
+#, fuzzy
+#~| msgctxt "@title:column plugin name"
+#~| msgid "Name"
+#~ msgctxt "@label:textbox Name of the folder."
+#~ msgid "&Name:"
+#~ msgstr "Emri"
+
+#, fuzzy
+#~| msgid "C&ancel"
+#~ msgctxt "@action:discard creating note"
+#~ msgid "Cancel"
+#~ msgstr "A&nullo"
+
+#, fuzzy
+#~| msgctxt "@title:tab"
+#~| msgid "Save"
+#~ msgctxt "@action:save note"
+#~ msgid "Save"
+#~ msgstr "Ruaje"
+
+#, fuzzy
+#~| msgid "Redo (%1)"
+#~ msgid "Text:"
+#~ msgstr "Ribëj (%1)"
+
+#, fuzzy
+#~| msgctxt "@item@intable alarm offset specified in minutes"
+#~| msgid "1 minute"
+#~| msgid_plural "%1 minutes"
+#~ msgid "%1 item"
+#~ msgid_plural "%1 items"
+#~ msgstr[0] "1 minutë"
+#~ msgstr[1] "%1 minuta"
+
+#, fuzzy
+#~| msgctxt "start/end week number of line in date picker"
+#~| msgid "%1/%2"
+#~ msgctxt "@title month and year"
+#~ msgid "%1 %2"
+#~ msgstr "%1/%2"
+
+#, fuzzy
+#~| msgctxt "@action:intoolbar create a new event"
+#~| msgid "Event"
+#~ msgctxt "@title:column event description"
+#~ msgid "Event"
+#~ msgstr "Ndodhia"
+
+#, fuzzy
+#~| msgctxt "@title:group"
+#~| msgid "Position"
+#~ msgctxt "@title:column event locatin"
+#~ msgid "Location"
+#~ msgstr "Pozicioni"
+
+#, fuzzy
+#~| msgctxt "@title:group"
+#~| msgid "Categories"
+#~ msgctxt "@title:column event categories"
+#~ msgid "Categories"
+#~ msgstr "Kategoritë"
+
+#, fuzzy
+#~| msgid "Today"
+#~ msgctxt "@title:column"
+#~ msgid "To-do"
+#~ msgstr "Sot"
+
+#, fuzzy
+#~| msgctxt "@title:group"
+#~| msgid "Position"
+#~ msgctxt "@title:column to-do location"
+#~ msgid "Location"
+#~ msgstr "Pozicioni"
+
+#, fuzzy
+#~| msgctxt "@title:group"
+#~| msgid "Categories"
+#~ msgctxt "@title:column to-do categories"
+#~ msgid "Categories"
+#~ msgstr "Kategoritë"
+
+#, fuzzy
+#~| msgid "%1"
+#~ msgctxt "@info to-do percent complete"
+#~ msgid "%1 %"
+#~ msgstr "%1"
+
+#, fuzzy
+#~| msgctxt "start/end week number of line in date picker"
+#~| msgid "%1/%2"
+#~ msgctxt "@info holiday by date and name"
+#~ msgid "%1, %2"
+#~ msgstr "%1/%2"
+
+#, fuzzy
+#~| msgid "Tobias König"
+#~ msgid "(c) 2004 Tobias Koenig"
+#~ msgstr "Tobias König"
+
+#, fuzzy
+#~| msgid "Tobias König"
+#~ msgid "Tobias Koenig"
+#~ msgstr "Tobias König"
+
+#~ msgctxt "@item:intext delimiter for joining holiday names"
+#~ msgid ","
+#~ msgstr ","
+
+#, fuzzy
+#~| msgid "Default Calendar"
+#~ msgid "Create To-do"
+#~ msgstr "Kalendari i Parazgjedhur"
+
+#, fuzzy
+#~| msgid "Do Not Send"
+#~ msgid "Create Event"
+#~ msgstr "Mos e Dërgo"
+
+#, fuzzy
+#~| msgid "Today"
+#~ msgid "&Today only"
+#~ msgstr "Sot"
+
+#, fuzzy
+#~| msgctxt "@item@intable alarm offset specified in days"
+#~| msgid "1 day"
+#~| msgid_plural "%1 days"
+#~ msgid "1 day"
+#~ msgstr "1 ditë"
+
+#, fuzzy
+#~| msgctxt "@label suffix in the N days spin box"
+#~| msgid " days"
+#~ msgctxt "days to show in summary"
+#~ msgid " days"
+#~ msgstr " ditë"
+
+#, fuzzy
+#~| msgid "Birthdays"
+#~ msgid "Show &birthdays"
+#~ msgstr "Ditëlindjet"
+
+#, fuzzy
+#~| msgctxt "@title:group email settings"
+#~| msgid "Email Settings"
+#~ msgid "Groupware Settings"
+#~ msgstr "Parametrat e Email"
+
+#, fuzzy
+#~| msgctxt "@title:group"
+#~| msgid "Appointments"
+#~ msgid "&Edit Appointment..."
+#~ msgstr "Takime"
+
+#, fuzzy
+#~| msgctxt "@title:group"
+#~| msgid "Appointments"
+#~ msgid "&Delete Appointment"
+#~ msgstr "Takime"
+
+#, fuzzy
+#~| msgid "Journal"
+#~ msgctxt "@action:inmenu"
+#~ msgid "New Journal..."
+#~ msgstr "Gazeta"
+
+#, fuzzy
+#~| msgid "Journal"
+#~ msgctxt "@action:inmenu"
+#~ msgid "Sync Journal"
+#~ msgstr "Gazeta"
+
+#, fuzzy
+#~| msgctxt "@label suffix in the N days spin box"
+#~| msgid " days"
+#~ msgid " day"
+#~ msgid_plural " days"
+#~ msgstr[0] " ditë"
+#~ msgstr[1] " ditë"
+
+#, fuzzy
+#~| msgid "Default Calendar"
+#~ msgctxt "@action:inmenu"
+#~ msgid "Sync Calendar"
+#~ msgstr "Kalendari i Parazgjedhur"
+
+#, fuzzy
+#~| msgid "Undo: %1"
+#~ msgctxt "@item"
+#~ msgid "Note: %1"
+#~ msgstr "Zhbëji: %1"
+
+#, fuzzy
+#~| msgid "Today"
+#~ msgctxt "the appointment is today"
+#~ msgid "Today"
+#~ msgstr "Sot"
+
+#, fuzzy
+#~| msgctxt "@item@intable alarm offset specified in days"
+#~| msgid "1 day"
+#~| msgid_plural "%1 days"
+#~ msgid "in 1 day"
+#~ msgid_plural "in %1 days"
+#~ msgstr[0] "1 ditë"
+#~ msgstr[1] "%1 ditë"
+
+#, fuzzy
+#~| msgctxt "@label suffix in the N days spin box"
+#~| msgid " days"
+#~ msgid "all day"
+#~ msgstr " ditë"
+
+#, fuzzy
+#~| msgid "Redo (%1)"
+#~ msgctxt "next occurrence"
+#~ msgid "Next: %1"
+#~ msgstr "Ribëj (%1)"
+
+#, fuzzy
+#~| msgid "Default Calendar"
+#~ msgctxt "@info:status"
+#~ msgid "Create a new to-do"
+#~ msgstr "Kalendari i Parazgjedhur"
+
+#, fuzzy
+#~| msgid "Today"
+#~ msgctxt "the to-do is due today"
+#~ msgid "Today"
+#~ msgstr "Sot"
+
+#, fuzzy
+#~| msgctxt "@item@intable alarm offset specified in days"
+#~| msgid "1 day"
+#~| msgid_plural "%1 days"
+#~ msgid "1 day ago"
+#~ msgid_plural "%1 days ago"
+#~ msgstr[0] "1 ditë"
+#~ msgstr[1] "%1 ditë"
+
+#, fuzzy
+#~| msgctxt "@item:intext delimiter for joining holiday names"
+#~| msgid ","
+#~ msgctxt "Separator for status like this: overdue, completed"
+#~ msgid ","
+#~ msgstr ","
+
+#, fuzzy
+#~| msgid "Today"
+#~ msgctxt "the special day is today"
+#~ msgid "Today"
+#~ msgstr "Sot"
+
+#, fuzzy
+#~| msgid "Birthdays"
+#~ msgid "Birthday"
+#~ msgstr "Ditëlindjet"
+
+#, fuzzy
+#~| msgctxt "@title:group"
+#~| msgid "Holidays"
+#~ msgid "Holiday"
+#~ msgstr "Pushimet"
+
+#, fuzzy
+#~| msgid "Send Email"
+#~ msgid "Send &Mail"
+#~ msgstr "Dërgo Email"
+
+#, fuzzy
+#~| msgid "Former Maintainer"
+#~ msgid "Current Maintainer"
+#~ msgstr "Ish Mirëmbajtës"
+
+#~ msgctxt "@title:tab personal settings"
+#~ msgid "Personal"
+#~ msgstr "Personale"
+
+#~ msgctxt "@title:group email settings"
+#~ msgid "Email Settings"
+#~ msgstr "Parametrat e Email"
+
+#~ msgctxt "@title:tab"
+#~ msgid "Save"
+#~ msgstr "Ruaje"
+
+#, fuzzy
+#~| msgid "Default Calendar"
+#~ msgctxt "@title:tab calendar account settings"
+#~ msgid "Calendars"
+#~ msgstr "Kalendari i Parazgjedhur"
+
+#~ msgctxt "@title:tab"
+#~ msgid "Regional"
+#~ msgstr "Krahinore"
+
+#~ msgctxt "@title:group"
+#~ msgid "General Time and Date"
+#~ msgstr "Koha dhe Data e Përgjithshme"
+
+#, fuzzy
+#~| msgctxt "@item:inlistbox do not use holidays"
+#~| msgid "(None)"
+#~ msgctxt "No holiday region"
+#~ msgid "None"
+#~ msgstr "(Asnjë)"
+
+#~ msgctxt "@title:group"
+#~ msgid "Appointments"
+#~ msgstr "Takime"
+
+#~ msgctxt "@title:tab general settings"
+#~ msgid "General"
+#~ msgstr "Të Përgjithshme"
+
+#~ msgctxt "@title:group"
+#~ msgid "Display Options"
+#~ msgstr "Mundësi Pamjeje"
+
+#~ msgctxt "@label suffix in the N days spin box"
+#~ msgid " days"
+#~ msgstr " ditë"
+
+#~ msgctxt "@title:tab"
+#~ msgid "Month View"
+#~ msgstr "Paraqitja mujore"
+
+#~ msgctxt "@title:tab"
+#~ msgid "Colors"
+#~ msgstr "Ngjyrat"
+
+#~ msgctxt "@title:group"
+#~ msgid "Categories"
+#~ msgstr "Kategoritë"
+
+#~ msgctxt "@title:group"
+#~ msgid "Resources"
+#~ msgstr "Rezervat"
+
+#~ msgctxt "@title:tab"
+#~ msgid "Fonts"
+#~ msgstr "Gërmat"
+
+#~ msgctxt "@title:column plugin name"
+#~ msgid "Name"
+#~ msgstr "Emri"
+
+#~ msgctxt "@title:group"
+#~ msgid "Position"
+#~ msgstr "Pozicioni"
+
+#, fuzzy
+#~| msgid "Do Not Send"
+#~ msgid "Date end"
+#~ msgstr "Mos e Dërgo"
+
+#, fuzzy
+#~| msgid "Journal"
+#~ msgid "Journals"
+#~ msgstr "Gazeta"
+
+#, fuzzy
+#~| msgid "Redo (%1)"
+#~ msgid "Person: %1"
+#~ msgstr "Ribëj (%1)"
+
+#, fuzzy
+#~| msgid "&Day"
+#~ msgid "Day"
+#~ msgstr "&Dita"
+
+#, fuzzy
+#~| msgid "&Month"
+#~ msgid "Month"
+#~ msgstr "&Muaji"
+
+#, fuzzy
+#~| msgid "Default Calendar"
+#~ msgid "Selected Calendars"
+#~ msgstr "Kalendari i Parazgjedhur"
+
+#~ msgctxt "start/end week number of line in date picker"
+#~ msgid "%1/%2"
+#~ msgstr "%1/%2"
+
+#~ msgid "%1"
+#~ msgstr "%1"
+
+#~ msgid "Journal"
+#~ msgstr "Gazeta"
+
+#, fuzzy
+#~| msgid "KOrganizer"
+#~ msgid "Organizer"
+#~ msgstr "KOrganizer"
+
+#, fuzzy
+#~| msgid "&Edit..."
+#~ msgid "A&dd..."
+#~ msgstr "&Modifiko..."
+
+#, fuzzy
+#~| msgid "&Edit..."
+#~ msgid "&Modify..."
+#~ msgstr "&Modifiko..."
+
+#, fuzzy
+#~| msgctxt "@action:button"
+#~| msgid "Remove"
+#~ msgid "R&emove"
+#~ msgstr "Hiqe"
+
+#, fuzzy
+#~| msgid "Remove Attachments"
+#~ msgid "Remove account?"
+#~ msgstr "Hiqi të Bashkangjiturit"
+
+#, fuzzy
+#~| msgctxt "@title:tab general settings"
+#~| msgid "General"
+#~ msgctxt "@title general print settings"
+#~ msgid "General"
+#~ msgstr "Të Përgjithshme"
+
+#, fuzzy
+#~| msgid "Remove Attachments"
+#~ msgid "Print the attachments"
+#~ msgstr "Hiqi të Bashkangjiturit"
+
+#~ msgctxt "@action:button add a new email address"
+#~ msgid "New"
+#~ msgstr "I Ri"
+
+#~ msgctxt "@action:button"
+#~ msgid "Remove"
+#~ msgstr "Hiqe"
+
+#, fuzzy
+#~| msgid "&Show"
+#~ msgctxt "@action:inmenu show the to-do"
+#~ msgid "&Show"
+#~ msgstr "&Shfaqe"
+
+#, fuzzy
+#~| msgid "&Edit..."
+#~ msgctxt "@action:inmenu edit the to-do"
+#~ msgid "&Edit..."
+#~ msgstr "&Modifiko..."
+
+#, fuzzy
+#~| msgid "&Edit..."
+#~ msgctxt "@action:inmenu print the to-do"
+#~ msgid "&Print..."
+#~ msgstr "&Modifiko..."
+
+#, fuzzy
+#~| msgid "&Delete"
+#~ msgctxt "@action:inmenu delete the to-do"
+#~ msgid "&Delete"
+#~ msgstr "&Fshije"
+
+#, fuzzy
+#~| msgid "%1"
+#~ msgctxt "@action:inmenu"
+#~ msgid "%1"
+#~ msgstr "%1"
+
+#, fuzzy
+#~| msgctxt "@title:tab"
+#~| msgid "Month View"
+#~ msgctxt "@option:check Checkbox to display todos not hierarchical"
+#~ msgid "Flat View"
+#~ msgstr "Paraqitja mujore"
+
+#, fuzzy
+#~| msgctxt "@title:tab"
+#~| msgid "Month View"
+#~ msgid "&Month View"
+#~ msgstr "Paraqitja mujore"
+
+#~ msgid "Save Error"
+#~ msgstr "Gabim në Ruajtje"
+
+#~ msgid "Mike Arthur"
+#~ msgstr "Mike Arthur"
+
+#~ msgctxt "@title:tab"
+#~ msgid "Details"
+#~ msgstr "Detajet"
+
+#~ msgctxt "@title:tab general to-do settings"
+#~ msgid "General"
+#~ msgstr "Të Përgjithshme"
+
+#~ msgctxt "@title:tab general to-do settings"
+#~ msgid "&General"
+#~ msgstr "&Të Përgjithshme"
+
+#~ msgid "Overwrite"
+#~ msgstr "Mbishkruaje"
+
+#~ msgctxt "@option unknown alarm type"
+#~ msgid "Unknown"
+#~ msgstr "I Panjohur"
+
+#~ msgctxt "@option send email reminder"
+#~ msgid "Email"
+#~ msgstr "Email"
+
+#~ msgctxt "@option play a sound"
+#~ msgid "Audio"
+#~ msgstr "Audio"
+
+#~ msgctxt "@item@intable N days/hours/minutes before/after the start/end"
+#~ msgid "%1 after the end"
+#~ msgstr "%1 pas fundit"
+
+#~ msgctxt "@item@intable alarm offset specified in hours"
+#~ msgid "1 hour"
+#~ msgid_plural "%1 hours"
+#~ msgstr[0] "1 orë"
+#~ msgstr[1] "%1 orë"
+
+#~ msgctxt "@item@intable yes, the alarm repeats"
+#~ msgid "Yes"
+#~ msgstr "Po"
+
+#~ msgid "Timezone:"
+#~ msgstr "Zona orare:"
+
+#~ msgctxt "@action:button"
+#~ msgid "&Archive"
+#~ msgstr "&Arkivi"
+
+#~ msgctxt "@item:inlistbox expires in daily units"
+#~ msgid "Day(s)"
+#~ msgstr "Ditë(t)"
+
+#~ msgctxt "@item:inlistbox expiration in monthly units"
+#~ msgid "Month(s)"
+#~ msgstr "Muaj(t)"
+
+#~ msgctxt "@title:column email addresses"
+#~ msgid "Email"
+#~ msgstr "Email"

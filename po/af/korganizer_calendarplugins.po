@@ -1,0 +1,7665 @@
+# WEB-Translator generated file. UTF-8 test:äëïöü
+# Copyright (C) 2001 Free Software Foundation, Inc.
+# Frikkie Thirion <frix@expertron.co.za>, 2001,2002.
+#
+msgid ""
+msgstr ""
+"Project-Id-Version: korganizer VERSION\n"
+"Report-Msgid-Bugs-To: https://bugs.kde.org\n"
+"POT-Creation-Date: 2024-06-26 00:40+0000\n"
+"PO-Revision-Date: 2002-11-07 11:37+0200\n"
+"Last-Translator: WEB-Translator <http://kde.af.org.za>\n"
+"Language-Team: AFRIKAANS <AF@lia.org.za>\n"
+"Language: af\n"
+"MIME-Version: 1.0\n"
+"Content-Type: text/plain; charset=UTF-8\n"
+"Content-Transfer-Encoding: 8bit\n"
+"Plural-Forms: nplurals=2; plural=n != 1;\n"
+
+#: datenums/configdialog.cpp:28
+#, fuzzy, kde-format
+msgctxt "@title:window"
+msgid "Configure Day Numbers"
+msgstr "Konfigureer Vakansies"
+
+#: datenums/configdialog.cpp:43
+#, fuzzy, kde-format
+msgid "Show Date Number"
+msgstr "Vertoon tyd as:"
+
+#: datenums/configdialog.cpp:48
+#, fuzzy, kde-format
+msgid "Show day number"
+msgstr "Vertoon tyd as:"
+
+#: datenums/configdialog.cpp:51
+#, fuzzy, kde-format
+msgid "Show days to end of year"
+msgstr "Vertoon tyd as:"
+
+#: datenums/configdialog.cpp:54
+#, fuzzy, kde-format
+msgid "Show both"
+msgstr "Vertoon"
+
+#: datenums/datenums.cpp:36
+#, kde-format
+msgid "This plugin shows information on a day's position in the year."
+msgstr ""
+
+#: datenums/datenums.cpp:54
+#, fuzzy, kde-format
+msgid "1 day before the end of the year"
+msgid_plural "%1 days before the end of the year"
+msgstr[0] "Stel Jou Status"
+msgstr[1] "Stel Jou Status"
+
+#: datenums/datenums.cpp:59
+#, fuzzy, kde-format
+msgctxt "dayOfYear / daysTillEndOfYear"
+msgid "%1 / %2"
+msgstr "%1 %"
+
+#: datenums/datenums.cpp:60
+#, kde-format
+msgid "1 day since the beginning of the year,\n"
+msgid_plural "%1 days since the beginning of the year,\n"
+msgstr[0] ""
+msgstr[1] ""
+
+#: datenums/datenums.cpp:61
+#, kde-format
+msgid "1 day until the end of the year"
+msgid_plural "%1 days until the end of the year"
+msgstr[0] ""
+msgstr[1] ""
+
+#: datenums/datenums.cpp:102
+#, fuzzy, kde-format
+#| msgid "Week"
+msgctxt "Week weekOfYear"
+msgid "Week %1"
+msgstr "Week"
+
+#: datenums/datenums.cpp:103 datenums/datenums.cpp:113
+#: datenums/datenums.cpp:118
+#, kde-format
+msgid "1 week since the beginning of the year"
+msgid_plural "%1 weeks since the beginning of the year"
+msgstr[0] ""
+msgstr[1] ""
+
+#: datenums/datenums.cpp:106
+#, fuzzy, kde-format
+#| msgctxt "short_weekday date (e.g. Mon 13)"
+#| msgid "%1 %2"
+msgctxt "weekOfYear (year)"
+msgid "%1 (%2)"
+msgstr "%1 %2"
+
+#: datenums/datenums.cpp:107
+#, fuzzy, kde-format
+#| msgctxt "short_weekday date (e.g. Mon 13)"
+#| msgid "%1 %2"
+msgctxt "Week weekOfYear (year)"
+msgid "Week %1 (%2)"
+msgstr "%1 %2"
+
+#: datenums/datenums.cpp:122
+#, kde-format
+msgid "1 week remaining"
+msgid_plural "%1 weeks remaining"
+msgstr[0] ""
+msgstr[1] ""
+
+#: datenums/datenums.cpp:123
+#, kde-format
+msgid "1 week until the end of the year"
+msgid_plural "%1 weeks until the end of the year"
+msgstr[0] ""
+msgstr[1] ""
+
+#: datenums/datenums.cpp:124
+#, fuzzy, kde-format
+msgctxt "weekOfYear / weeksTillEndOfYear"
+msgid "%1 / %2"
+msgstr "%1 %"
+
+#: datenums/datenums.cpp:140
+#, fuzzy, kde-format
+msgctxt ""
+"n weeks since the beginning of the year\n"
+"n weeks until the end of the year"
+msgid ""
+"%1\n"
+"%2"
+msgstr "%1 %"
+
+#: hebrew/configdialog.cpp:28
+#, fuzzy, kde-format
+#| msgid "Configure Holidays"
+msgctxt "@title:window"
+msgid "Configure Holidays"
+msgstr "Konfigureer Vakansies"
+
+#: hebrew/configdialog.cpp:42
+#, fuzzy, kde-format
+msgid "Use Israeli holidays"
+msgstr "Asseblief kies 'n vakansie stel:"
+
+#: hebrew/configdialog.cpp:46
+#, kde-format
+msgid "Show weekly parsha"
+msgstr ""
+
+#: hebrew/configdialog.cpp:50
+#, fuzzy, kde-format
+msgid "Show day of Omer"
+msgstr "Vertoon tyd as:"
+
+#: hebrew/configdialog.cpp:54
+#, fuzzy, kde-format
+msgid "Show Chol HaMoed"
+msgstr "Vertoon tyd as:"
+
+#: hebrew/hebrew.cpp:60
+#, kde-format
+msgctxt ""
+"Change the next two strings if emphasis is done differently in your language."
+msgid ""
+"<qt><p align=\"center\"><i>\n"
+"%1\n"
+"</i></p></qt>"
+msgstr ""
+
+#: hebrew/hebrew.cpp:67
+#, fuzzy, kde-format
+msgid "This plugin provides the date in the Jewish calendar."
+msgstr "Hierdie inplak verskaf uitvoer van van kalenders as web bladsye."
+
+#: hebrew/holiday.cpp:75
+#, kde-format
+msgctxt ""
+"These are Jewish holidays and mostly do not have translations. They may have "
+"different spellings in your language; otherwise, just translate the sound to "
+"your characters."
+msgid "Sh. HaHodesh"
+msgstr ""
+
+#: hebrew/holiday.cpp:83
+#, fuzzy, kde-format
+msgid "Erev Pesach"
+msgstr "Soektog In"
+
+#: hebrew/holiday.cpp:94
+#, kde-format
+msgid "Sh. HaGadol"
+msgstr ""
+
+#: hebrew/holiday.cpp:102
+#, fuzzy, kde-format
+msgid "Pesach"
+msgstr "Soektog In"
+
+#: hebrew/holiday.cpp:113 hebrew/holiday.cpp:307
+#, kde-format
+msgid "Chol Hamoed"
+msgstr ""
+
+#: hebrew/holiday.cpp:124 hebrew/holiday.cpp:129 hebrew/holiday.cpp:138
+#, kde-format
+msgid "Yom HaShoah"
+msgstr ""
+
+#: hebrew/holiday.cpp:164 hebrew/holiday.cpp:171 hebrew/holiday.cpp:182
+#, kde-format
+msgid "Yom HaAtzmaut"
+msgstr ""
+
+#: hebrew/holiday.cpp:166 hebrew/holiday.cpp:180
+#, kde-format
+msgid "Yom HaZikaron"
+msgstr ""
+
+#: hebrew/holiday.cpp:190
+#, kde-format
+msgid "Yom Yerushalayim"
+msgstr ""
+
+#: hebrew/holiday.cpp:194
+#, kde-format
+msgid "Lag BaOmer"
+msgstr ""
+
+#: hebrew/holiday.cpp:220
+#, fuzzy, kde-format
+msgid "Erev Shavuot"
+msgstr "Sa"
+
+#: hebrew/holiday.cpp:225
+#, fuzzy, kde-format
+msgid "Shavuot"
+msgstr "Sa"
+
+#: hebrew/holiday.cpp:234
+#, kde-format
+msgid "Tzom Tammuz"
+msgstr ""
+
+#: hebrew/holiday.cpp:242
+#, fuzzy, kde-format
+msgid "Sh. Hazon"
+msgstr "Soektog vir:"
+
+#: hebrew/holiday.cpp:244
+#, fuzzy, kde-format
+msgid "Sh. Nahamu"
+msgstr "Soektog vir:"
+
+#: hebrew/holiday.cpp:248
+#, kde-format
+msgid "Tisha B'Av"
+msgstr ""
+
+#: hebrew/holiday.cpp:254
+#, kde-format
+msgid "S'lichot"
+msgstr ""
+
+#: hebrew/holiday.cpp:256
+#, kde-format
+msgid "Erev R.H."
+msgstr ""
+
+#: hebrew/holiday.cpp:264
+#, kde-format
+msgid "Rosh Hashana"
+msgstr ""
+
+#: hebrew/holiday.cpp:268 hebrew/holiday.cpp:283
+#, fuzzy, kde-format
+msgid "Sh. Shuvah"
+msgstr "Soektog vir:"
+
+#: hebrew/holiday.cpp:270 hebrew/holiday.cpp:275
+#, kde-format
+msgid "Tzom Gedalia"
+msgstr ""
+
+#: hebrew/holiday.cpp:287
+#, kde-format
+msgid "Erev Y.K."
+msgstr ""
+
+#: hebrew/holiday.cpp:290
+#, kde-format
+msgid "Yom Kippur"
+msgstr ""
+
+#: hebrew/holiday.cpp:293
+#, fuzzy, kde-format
+msgid "Erev Sukkot"
+msgstr "Sa"
+
+#: hebrew/holiday.cpp:298
+#, fuzzy, kde-format
+msgid "Sukkot"
+msgstr "Sa"
+
+#: hebrew/holiday.cpp:311
+#, kde-format
+msgid "Hoshana Rabah"
+msgstr ""
+
+#: hebrew/holiday.cpp:314
+#, kde-format
+msgid "Shmini Atzeret"
+msgstr ""
+
+#: hebrew/holiday.cpp:318
+#, kde-format
+msgid "Simchat Torah"
+msgstr ""
+
+#: hebrew/holiday.cpp:329
+#, kde-format
+msgid "Erev Hanukah"
+msgstr ""
+
+#: hebrew/holiday.cpp:331 hebrew/holiday.cpp:339
+#, kde-format
+msgid "Hanukah"
+msgstr ""
+
+#: hebrew/holiday.cpp:342
+#, fuzzy, kde-format
+msgid "Tzom Tevet"
+msgstr "Moet nooit"
+
+#: hebrew/holiday.cpp:352 hebrew/holiday.cpp:361 hebrew/holiday.cpp:366
+#: hebrew/holiday.cpp:372
+#, fuzzy, kde-format
+msgid "Sh. Shirah"
+msgstr "Soektog vir:"
+
+#: hebrew/holiday.cpp:368
+#, fuzzy, kde-format
+msgid "Tu B'Shvat"
+msgstr "Sa"
+
+#: hebrew/holiday.cpp:383 hebrew/holiday.cpp:395 hebrew/holiday.cpp:403
+#, kde-format
+msgid "Sh. Shekalim"
+msgstr ""
+
+#: hebrew/holiday.cpp:392
+#, fuzzy, kde-format
+msgid "Purim Katan"
+msgstr "Maak skoon"
+
+#: hebrew/holiday.cpp:411 hebrew/holiday.cpp:431
+#, kde-format
+msgid "Ta'anit Ester"
+msgstr ""
+
+#: hebrew/holiday.cpp:420 hebrew/holiday.cpp:425
+#, fuzzy, kde-format
+msgid "Sh. Zachor"
+msgstr "Soektog vir:"
+
+#: hebrew/holiday.cpp:427
+#, fuzzy, kde-format
+msgid "Erev Purim"
+msgstr "Maak skoon"
+
+#: hebrew/holiday.cpp:435
+#, fuzzy, kde-format
+msgid "Purim"
+msgstr "Maak skoon"
+
+#: hebrew/holiday.cpp:439 hebrew/holiday.cpp:444
+#, kde-format
+msgid "Shushan Purim"
+msgstr ""
+
+#: hebrew/holiday.cpp:455
+#, fuzzy, kde-format
+msgid "Sh. Parah"
+msgstr "Soektog vir:"
+
+#: hebrew/holiday.cpp:465
+#, kde-format
+msgid "Sh. HaHodesh"
+msgstr ""
+
+#: hebrew/holiday.cpp:481
+#, kde-format
+msgid " Omer"
+msgstr ""
+
+#: hebrew/parsha.cpp:28
+#, fuzzy, kde-format
+msgctxt ""
+"These are weekly readings and do not have translations. They may have "
+"different spellings in your language; otherwise, just translate the sound to "
+"your characters"
+msgid "Bereshit"
+msgstr "Verfris"
+
+#: hebrew/parsha.cpp:29
+#, fuzzy, kde-format
+msgid "Noach"
+msgstr "Maart"
+
+#: hebrew/parsha.cpp:29
+#, kde-format
+msgid "Lech L'cha"
+msgstr ""
+
+#: hebrew/parsha.cpp:29
+#, kde-format
+msgid "Vayera"
+msgstr ""
+
+#: hebrew/parsha.cpp:29
+#, kde-format
+msgid "Chaye Sarah"
+msgstr ""
+
+#: hebrew/parsha.cpp:29
+#, fuzzy, kde-format
+msgid "Toldot"
+msgstr "To-do"
+
+#: hebrew/parsha.cpp:29
+#, kde-format
+msgid "Vayetze"
+msgstr ""
+
+#: hebrew/parsha.cpp:29
+#, fuzzy, kde-format
+msgid "Vayishlach"
+msgstr "Soektog In"
+
+#: hebrew/parsha.cpp:30
+#, kde-format
+msgid "Vayeshev"
+msgstr ""
+
+#: hebrew/parsha.cpp:30
+#, fuzzy, kde-format
+msgid "Miketz"
+msgstr "Metode"
+
+#: hebrew/parsha.cpp:30
+#, kde-format
+msgid "Vayigash"
+msgstr ""
+
+#: hebrew/parsha.cpp:30
+#, kde-format
+msgid "Vayechi"
+msgstr ""
+
+#: hebrew/parsha.cpp:30
+#, fuzzy, kde-format
+msgid "Shemot"
+msgstr "Vertoon"
+
+#: hebrew/parsha.cpp:30
+#, kde-format
+msgid "Vaera"
+msgstr ""
+
+#: hebrew/parsha.cpp:30
+#, kde-format
+msgid "Bo"
+msgstr ""
+
+#: hebrew/parsha.cpp:31
+#, fuzzy, kde-format
+msgid "Beshalach"
+msgstr "Soektog In"
+
+#: hebrew/parsha.cpp:31
+#, kde-format
+msgid "Yitro"
+msgstr ""
+
+#: hebrew/parsha.cpp:31
+#, kde-format
+msgid "Mishpatim"
+msgstr ""
+
+#: hebrew/parsha.cpp:31
+#, kde-format
+msgid "Terumah"
+msgstr ""
+
+#: hebrew/parsha.cpp:31
+#, fuzzy, kde-format
+msgid "Tetzaveh"
+msgstr "Moet nooit"
+
+#: hebrew/parsha.cpp:31
+#, kde-format
+msgid "Ki Tisa"
+msgstr ""
+
+#: hebrew/parsha.cpp:31
+#, kde-format
+msgid "Vayakhel"
+msgstr ""
+
+#: hebrew/parsha.cpp:32
+#, kde-format
+msgid "Pekudei"
+msgstr ""
+
+#: hebrew/parsha.cpp:32
+#, kde-format
+msgid "Vayikra"
+msgstr ""
+
+#: hebrew/parsha.cpp:32
+#, fuzzy, kde-format
+msgid "Tzav"
+msgstr "Reis"
+
+#: hebrew/parsha.cpp:32
+#, fuzzy, kde-format
+msgid "Shemini"
+msgstr "Vertoon"
+
+#: hebrew/parsha.cpp:32
+#, fuzzy, kde-format
+msgid "Tazria"
+msgstr "Reis"
+
+#: hebrew/parsha.cpp:32
+#, fuzzy, kde-format
+msgid "Metzora"
+msgstr "Metode"
+
+#: hebrew/parsha.cpp:32
+#, kde-format
+msgid "Acharei Mot"
+msgstr ""
+
+#: hebrew/parsha.cpp:33
+#, kde-format
+msgid "Kedoshim"
+msgstr ""
+
+#: hebrew/parsha.cpp:33
+#, kde-format
+msgid "Emor"
+msgstr ""
+
+#: hebrew/parsha.cpp:33
+#, kde-format
+msgid "Behar"
+msgstr ""
+
+#: hebrew/parsha.cpp:33
+#, kde-format
+msgid "Bechukotai"
+msgstr ""
+
+#: hebrew/parsha.cpp:33
+#, fuzzy, kde-format
+msgid "Bemidbar"
+msgstr "Herhindering:"
+
+#: hebrew/parsha.cpp:33
+#, kde-format
+msgid "Naso"
+msgstr ""
+
+#: hebrew/parsha.cpp:33
+#, kde-format
+msgid "Behaalotcha"
+msgstr ""
+
+#: hebrew/parsha.cpp:34
+#, fuzzy, kde-format
+msgid "Shelach"
+msgstr "Soektog In"
+
+#: hebrew/parsha.cpp:34
+#, fuzzy, kde-format
+msgid "Korach"
+msgstr "Maart"
+
+#: hebrew/parsha.cpp:34
+#, kde-format
+msgid "Chukat"
+msgstr ""
+
+#: hebrew/parsha.cpp:34
+#, kde-format
+msgid "Balak"
+msgstr ""
+
+#: hebrew/parsha.cpp:34
+#, kde-format
+msgid "Pinchas"
+msgstr ""
+
+#: hebrew/parsha.cpp:34
+#, fuzzy, kde-format
+msgid "Matot"
+msgstr "Maand"
+
+#: hebrew/parsha.cpp:34
+#, fuzzy, kde-format
+msgid "Masei"
+msgstr "Hoof"
+
+#: hebrew/parsha.cpp:35
+#, kde-format
+msgid "Devarim"
+msgstr ""
+
+#: hebrew/parsha.cpp:35
+#, kde-format
+msgid "Vaetchanan"
+msgstr ""
+
+#: hebrew/parsha.cpp:35
+#, kde-format
+msgid "Ekev"
+msgstr ""
+
+#: hebrew/parsha.cpp:35
+#, fuzzy, kde-format
+msgid "Reeh"
+msgstr "Verfris"
+
+#: hebrew/parsha.cpp:35
+#, fuzzy, kde-format
+msgid "Shoftim"
+msgstr "Vertoon"
+
+#: hebrew/parsha.cpp:35
+#, fuzzy, kde-format
+msgid "Ki Tetze"
+msgstr "Moet nooit"
+
+#: hebrew/parsha.cpp:35
+#, kde-format
+msgid "Ki Tavo"
+msgstr ""
+
+#: hebrew/parsha.cpp:36
+#, kde-format
+msgid "Nitzavim"
+msgstr ""
+
+#: hebrew/parsha.cpp:36
+#, kde-format
+msgid "Vayelech"
+msgstr ""
+
+#: hebrew/parsha.cpp:36
+#, kde-format
+msgid "Haazinu"
+msgstr ""
+
+#: lunarphases/lunarphases.cpp:61
+#, kde-format
+msgid ""
+"This plugin displays the day's lunar phase (New, First, Last, Full). "
+"Currently, the phase is computed for noon at UTC; therefore, you should "
+"expect variations by 1 day in either direction."
+msgstr ""
+
+#: picoftheday/configdialog.cpp:28
+#, fuzzy, kde-format
+#| msgid "Configure &Date && Time..."
+msgctxt "@title:window"
+msgid "Configure Picture of the Day"
+msgstr "Konfigureer Datum && Tyd..."
+
+#: picoftheday/configdialog.cpp:42
+#, kde-format
+msgid "Thumbnail Aspect Ratio Mode"
+msgstr ""
+
+#: picoftheday/configdialog.cpp:46
+#, kde-format
+msgid "Ignore aspect ratio"
+msgstr ""
+
+#: picoftheday/configdialog.cpp:48
+#, kde-format
+msgid ""
+"The thumbnail will be scaled freely. The aspect ratio will not be preserved."
+msgstr ""
+
+#: picoftheday/configdialog.cpp:52
+#, kde-format
+msgid "Keep aspect ratio"
+msgstr ""
+
+#: picoftheday/configdialog.cpp:54
+#, kde-format
+msgid ""
+"The thumbnail will be scaled to a rectangle as large as possible inside a "
+"given rectangle, preserving the aspect ratio."
+msgstr ""
+
+#: picoftheday/configdialog.cpp:59
+#, kde-format
+msgid "Keep aspect ratio by expanding"
+msgstr ""
+
+#: picoftheday/configdialog.cpp:61
+#, kde-format
+msgid ""
+"The thumbnail will be scaled to a rectangle as small as possible outside a "
+"given rectangle, preserving the aspect ratio."
+msgstr ""
+
+#: picoftheday/element.cpp:209
+#, kde-format
+msgid "Wikipedia POTD: %1"
+msgstr ""
+
+#: picoftheday/element.cpp:326
+#, fuzzy, kde-format
+msgid "Picture Page"
+msgstr "Uitvee Gebeurtenis"
+
+#: picoftheday/element.cpp:326
+#, fuzzy, kde-format
+#| msgid "Go &Forward"
+msgid "Loading..."
+msgstr "Gaan Vorentoe"
+
+#: picoftheday/element.cpp:332
+#, fuzzy, kde-format
+msgid "<qt>Loading <i>Picture of the Day</i>...</qt>"
+msgstr "Hierdie inplak verskaf uitvoer van van kalenders as web bladsye."
+
+#: picoftheday/picoftheday.cpp:48
+#, fuzzy, kde-format
+msgid "<qt>This plugin provides the Wikipedia <i>Picture of the Day</i>.</qt>"
+msgstr "Hierdie inplak verskaf uitvoer van van kalenders as web bladsye."
+
+#: thisdayinhistory/thisdayinhistory.cpp:29
+#, fuzzy, kde-format
+#| msgid "This plugin provides numbers of days and weeks."
+msgid "This plugin provides links to Wikipedia's 'This Day in History' pages."
+msgstr "Hierdie inplak verskaf nommers van dae en weke."
+
+#: thisdayinhistory/thisdayinhistory.cpp:37
+#, kde-format
+msgid "This day in history"
+msgstr ""
+
+#: thisdayinhistory/thisdayinhistory.cpp:39
+#: thisdayinhistory/thisdayinhistory.cpp:53
+#, kde-format
+msgctxt "Localized Wikipedia website"
+msgid "https://en.wikipedia.org/wiki/"
+msgstr ""
+
+#: thisdayinhistory/thisdayinhistory.cpp:40
+#, kde-format
+msgctxt "Qt date format used by the localized Wikipedia"
+msgid "MMMM_d"
+msgstr ""
+
+#: thisdayinhistory/thisdayinhistory.cpp:51
+#, kde-format
+msgid "This month in history"
+msgstr ""
+
+#: thisdayinhistory/thisdayinhistory.cpp:54
+#, kde-format
+msgctxt "Qt date format used by the localized Wikipedia"
+msgid "MMMM_yyyy"
+msgstr ""
+
+#~ msgctxt "NAME OF TRANSLATORS"
+#~ msgid "Your names"
+#~ msgstr "WEB-Vertaler (http://kde.af.org.za)"
+
+#~ msgctxt "EMAIL OF TRANSLATORS"
+#~ msgid "Your emails"
+#~ msgstr "frix@expertron.co.za"
+
+#~ msgid "KOrganizer"
+#~ msgstr "Korganizer"
+
+#, fuzzy
+#~| msgid "A Personal Organizer for KDE"
+#~ msgid "A Personal Organizer"
+#~ msgstr "'n Persoonlike Organiseerder vir Kde"
+
+#, fuzzy
+#~ msgid "Maintainer"
+#~ msgstr "Huidige Onderhouer"
+
+#, fuzzy
+#~| msgid "Current Maintainer"
+#~ msgid "Former Maintainer"
+#~ msgstr "Huidige Onderhouer"
+
+#~ msgid "Original Author"
+#~ msgstr "Oorspronklike Outeur"
+
+#, fuzzy
+#~ msgid "Ian Dawes"
+#~ msgstr "week(s) op:"
+
+#, fuzzy
+#~ msgid "Tim Jansen"
+#~ msgstr "Tydsone:"
+
+#, fuzzy
+#~ msgid "Martin Koller"
+#~ msgstr "Huidige Onderhouer"
+
+#, fuzzy
+#~ msgid "Don Sanders"
+#~ msgstr "Herhindering:"
+
+#, fuzzy
+#~ msgid "Hide menu bar"
+#~ msgstr "Tyd kolom:"
+
+#, fuzzy
+#~ msgid "Import &Calendar..."
+#~ msgstr "Ikalender"
+
+#, fuzzy
+#~ msgid "Merge the contents of another iCalendar"
+#~ msgstr "Redigeer Gebeurtenis"
+
+#, fuzzy
+#~ msgid "&Import From UNIX Ical Tool"
+#~ msgstr "In voer Van Ical"
+
+#, fuzzy
+#~ msgid "Get &Hot New Stuff..."
+#~ msgstr "Kry Warm Nuwe Goed..."
+
+#, fuzzy
+#~ msgid "Export &Web Page..."
+#~ msgstr "Voer uit Web Bladsy.."
+
+#, fuzzy
+#~ msgid "Export as &iCalendar..."
+#~ msgstr "Ikalender"
+
+#, fuzzy
+#~ msgid "Export as &vCalendar..."
+#~ msgstr "Ikalender"
+
+#, fuzzy
+#~ msgid "Archive O&ld Entries..."
+#~ msgstr "Argief Ou Inskrywings..."
+
+#, fuzzy
+#~ msgid "Pur&ge Completed To-dos"
+#~ msgstr "Maak skoon Klaar"
+
+#, fuzzy
+#~ msgid "&Delete"
+#~ msgstr "Uitvee Gebeurtenis"
+
+#~ msgid "What's &Next"
+#~ msgstr "Wat is Volgende"
+
+#~ msgid "&Month"
+#~ msgstr "Maand"
+
+#, fuzzy
+#~ msgid "&Agenda"
+#~ msgstr "Agenda besigtig:"
+
+#, fuzzy
+#~ msgid "&Event List"
+#~ msgstr "Aktiwiteite:"
+
+#, fuzzy
+#~ msgid "&To-do List"
+#~ msgstr "To-Do Lys"
+
+#~ msgid "&Journal"
+#~ msgstr "Joernaal"
+
+#, fuzzy
+#~ msgid "Time&line"
+#~ msgstr "Tydsone:"
+
+#, fuzzy
+#~ msgid "Time&spent"
+#~ msgstr "Tyd Bestek"
+
+#, fuzzy
+#~ msgid "&Refresh"
+#~ msgstr "Verfris"
+
+#, fuzzy
+#~ msgid "F&ilter"
+#~ msgstr "Vertoon Filter"
+
+#, fuzzy
+#~| msgid "day"
+#~ msgctxt "@action Jump to today"
+#~ msgid "To &Today"
+#~ msgstr "dag"
+
+#, fuzzy
+#~| msgid "day"
+#~ msgid "Today"
+#~ msgstr "dag"
+
+#, fuzzy
+#~| msgid "Go to &Today"
+#~ msgid "Scroll to Today"
+#~ msgstr "Gaan na Vandag"
+
+#, fuzzy
+#~| msgid "Go &Backward"
+#~ msgctxt "scroll backward"
+#~ msgid "&Backward"
+#~ msgstr "Gaan Terugwaarts"
+
+#, fuzzy
+#~| msgid "Go &Backward"
+#~ msgctxt "scroll backward"
+#~ msgid "Back"
+#~ msgstr "Gaan Terugwaarts"
+
+#, fuzzy
+#~| msgid "Go &Backward"
+#~ msgid "Scroll Backward"
+#~ msgstr "Gaan Terugwaarts"
+
+#, fuzzy
+#~| msgid "Go &Forward"
+#~ msgctxt "scroll forward"
+#~ msgid "&Forward"
+#~ msgstr "Gaan Vorentoe"
+
+#, fuzzy
+#~| msgid "Go &Forward"
+#~ msgctxt "scoll forward"
+#~ msgid "Forward"
+#~ msgstr "Gaan Vorentoe"
+
+#, fuzzy
+#~| msgid "Go &Forward"
+#~ msgid "Scroll Forward"
+#~ msgstr "Gaan Vorentoe"
+
+#~ msgid "&Day"
+#~ msgstr "Dag"
+
+#, fuzzy
+#~ msgid "&Next Day"
+#~ msgid_plural "&Next %1 Days"
+#~ msgstr[0] "Volgende Dag"
+#~ msgstr[1] "Volgende %1 Dae"
+
+#~ msgid "W&ork Week"
+#~ msgstr "Werk Week"
+
+#~ msgid "&Week"
+#~ msgstr "Week"
+
+#~ msgid "New E&vent..."
+#~ msgstr "Nuwe Gebeurtenis..."
+
+#, fuzzy
+#~ msgid "Create a new Event"
+#~ msgstr "Uitvee To-Do"
+
+#, fuzzy
+#~ msgid "New &To-do..."
+#~ msgstr "Nuwe To-Do..."
+
+#, fuzzy
+#~ msgid "Create a new To-do"
+#~ msgstr "Uitvee To-Do"
+
+#, fuzzy
+#~ msgid "New Su&b-to-do..."
+#~ msgstr "Nuwe Sub-To-Do..."
+
+#, fuzzy
+#~ msgid "New &Journal..."
+#~ msgstr "Joernaal"
+
+#, fuzzy
+#~ msgid "Create a new Journal"
+#~ msgstr "Uitvee To-Do"
+
+#, fuzzy
+#~ msgid "Configure View..."
+#~ msgstr "Konfigureer..."
+
+#, fuzzy
+#~ msgid "Configure"
+#~ msgstr "Konfigureer..."
+
+#~ msgid "&Show"
+#~ msgstr "Vertoon"
+
+#~ msgid "&Edit..."
+#~ msgstr "Redigeer..."
+
+#, fuzzy
+#~ msgid "&Make Sub-to-do Independent"
+#~ msgstr "Maak Sub-To-Do Onafhanklike"
+
+#, fuzzy
+#~ msgid "Re&quest Update"
+#~ msgstr "Versoek"
+
+#, fuzzy
+#~ msgid "Send Status &Update"
+#~ msgstr "Einde datum"
+
+#, fuzzy
+#~ msgctxt "counter proposal"
+#~ msgid "Request Chan&ge"
+#~ msgstr "Teller"
+
+#, fuzzy
+#~ msgid "&Mail Free Busy Information..."
+#~ msgstr "Publiseer Vry Besig Informasie"
+
+#, fuzzy
+#~ msgid "&Send as iCalendar..."
+#~ msgstr "Ikalender..."
+
+#, fuzzy
+#~ msgid "&Upload Free Busy Information"
+#~ msgstr "Publiseer Vry Besig Informasie"
+
+#, fuzzy
+#~ msgid "&Address Book"
+#~ msgstr "Adresboek"
+
+#, fuzzy
+#~ msgid "Show Date Navigator"
+#~ msgstr "Vertoon tyd as:"
+
+#, fuzzy
+#~ msgid "Show To-do View"
+#~ msgstr "To-do lys"
+
+#, fuzzy
+#~ msgid "Show Item Viewer"
+#~ msgstr "Gebeurtenis Aansig"
+
+#, fuzzy
+#~| msgid "Export Calendar as Web Page"
+#~ msgid "Show Calendar Manager"
+#~ msgstr "Voer uit Kalender as Web Bladsy"
+
+#~ msgid "Configure &Date && Time..."
+#~ msgstr "Konfigureer Datum && Tyd..."
+
+#, fuzzy
+#~ msgid "Manage View &Filters..."
+#~ msgstr "Redigeer Filters..."
+
+#, fuzzy
+#~ msgid "Manage C&ategories..."
+#~ msgstr "Redigeer Katagoriee..."
+
+#, fuzzy
+#~ msgid "&Configure KOrganizer..."
+#~ msgstr "Konfigureer Inprop modules..."
+
+#, fuzzy
+#~ msgid "New calendar added successfully"
+#~ msgstr "Publiseer Vry Besig Informasie"
+
+#, fuzzy
+#~ msgid "Could not add a calendar. Error: %1"
+#~ msgstr "Kon nie las kalender '%1'.\n"
+
+#~ msgid ""
+#~ "You have no ical file in your home directory.\n"
+#~ "Import cannot proceed.\n"
+#~ msgstr ""
+#~ "Jy het nee ical lêer in jou huis gids.\n"
+#~ "In voer kan nie gaan voort.\n"
+
+#, fuzzy
+#~ msgid ""
+#~ "KOrganizer encountered some unknown fields while parsing your .calendar "
+#~ "ical file, and had to discard them; please check to see that all your "
+#~ "relevant data was correctly imported."
+#~ msgstr ""
+#~ "Korganizer raakgeloop sommige onbekende velde terwyl verwerking jou ."
+#~ "kalender ical lêer, en moes na gooi weg hulle. Asseblief bevestig na sien "
+#~ "wat alle jou relevante data was korrek ingevoer."
+
+#, fuzzy
+#~ msgid ""
+#~ "KOrganizer encountered an error parsing your .calendar file from ical; "
+#~ "import has failed."
+#~ msgstr ""
+#~ "Korganizer raakgeloop 'n fout verwerking jou .kalender lêer van ical. In "
+#~ "voer het gevaal."
+
+#, fuzzy
+#~ msgid ""
+#~ "KOrganizer does not think that your .calendar file is a valid ical "
+#~ "calendar; import has failed."
+#~ msgstr ""
+#~ "Korganizer raakgeloop 'n fout verwerking jou .kalender lêer van ical. In "
+#~ "voer het gevaal."
+
+#~ msgid ""
+#~ "Your calendar will be saved in iCalendar format. Use 'Export vCalendar' "
+#~ "to save in vCalendar format."
+#~ msgstr ""
+#~ "Jou kalender sal wees gestoor in Ikalender formaat. Gebruik 'Export "
+#~ "Vcalendar' na stoor in Vcalendar formaat."
+
+#~ msgid "Format Conversion"
+#~ msgstr "Formaat Omskakeling"
+
+#~ msgid "Proceed"
+#~ msgstr "Gaan voort"
+
+#~ msgid "Cannot upload calendar to '%1'"
+#~ msgstr "Kan nie oplaai kalender na '%1'"
+
+#~ msgid "Saved calendar '%1'."
+#~ msgstr "Gestoor kalender '%1'."
+
+#, fuzzy
+#~| msgid "New Calendar"
+#~ msgid "Select path for HTML calendar export"
+#~ msgstr "Nuwe Kalender"
+
+#, fuzzy
+#~ msgid "Do you want to overwrite file \"%1\"?"
+#~ msgstr "Nie moontlik na skep lêer na oplaai"
+
+#, fuzzy
+#~ msgid "Unable to save calendar to the file %1."
+#~ msgstr "Nie moontlik na handvatsel afgeleë kalender.\n"
+
+#~ msgid ""
+#~ "The calendar has been modified.\n"
+#~ "Do you want to save it?"
+#~ msgstr ""
+#~ "Die kalender het al veranderde.\n"
+#~ "Doen jy wil hê na stoor dit?"
+
+#, fuzzy
+#~ msgid "*.ics *.vcs|Calendar Files"
+#~ msgstr "*.vcs *.ics|Kalender lêers"
+
+#, fuzzy
+#~ msgid "Could not load calendar %1."
+#~ msgstr "Kon nie las kalender '%1'.\n"
+
+#~ msgid "The downloaded events will be merged into your current calendar."
+#~ msgstr ""
+#~ "Die afgelaai aktiwiteite sal wees saamgevlans binnein jou huidige "
+#~ "kalender."
+
+#~ msgid "&Show Event"
+#~ msgstr "Vertoon Gebeurtenis"
+
+#~ msgid "&Edit Event..."
+#~ msgstr "Redigeer Gebeurtenis..."
+
+#~ msgid "&Delete Event"
+#~ msgstr "Uitvee Gebeurtenis"
+
+#, fuzzy
+#~ msgid "&Show To-do"
+#~ msgstr "Vertoon To-Do"
+
+#, fuzzy
+#~ msgid "&Edit To-do..."
+#~ msgstr "Redigeer To-Do..."
+
+#, fuzzy
+#~ msgid "&Delete To-do"
+#~ msgstr "Uitvee To-Do"
+
+#, fuzzy
+#~ msgid "Attach &inline"
+#~ msgstr "Redigeer Gebeurtenis"
+
+#, fuzzy
+#~ msgid "Remove Attachments"
+#~ msgstr "Bywoners"
+
+#, fuzzy
+#~ msgid "Undo: %1"
+#~ msgstr "To-Do: %1"
+
+#, fuzzy
+#~ msgid "Redo: %1"
+#~ msgstr "To-Do: %1"
+
+#, fuzzy
+#~ msgctxt "@title:window"
+#~ msgid "Import Calendar"
+#~ msgstr "Ikalender"
+
+#, fuzzy
+#~ msgid "Add as new calendar"
+#~ msgstr "Nuwe Kalender"
+
+#, fuzzy
+#~ msgctxt ""
+#~ "@info/plain Displayed grayed-out inside the textbox, verb to search"
+#~ msgid "Search"
+#~ msgstr "Soektog In"
+
+#, fuzzy
+#~| msgid "Go &Forward"
+#~ msgid "searching..."
+#~ msgstr "Gaan Vorentoe"
+
+#, fuzzy
+#~| msgid "Edit Calendar Filters"
+#~ msgctxt "@title:window"
+#~ msgid "Properties of Calendar Folder %1"
+#~ msgstr "Redigeer Kalender Filters"
+
+#, fuzzy
+#~ msgid "&Disable Color"
+#~ msgstr "Ikalender"
+
+#, fuzzy
+#~ msgid "Use as &Default Calendar"
+#~ msgstr "Verstek Kalender Formaat"
+
+#, fuzzy
+#~ msgid "Remove from list"
+#~ msgstr "Stoor Werkvoorbeeld"
+
+#, fuzzy
+#~ msgid "Add Calendar"
+#~ msgstr "Nuwe Kalender"
+
+#, fuzzy
+#~ msgid "Do you really want to delete calendar %1?"
+#~ msgstr "Nie moontlik na skep lêer na oplaai"
+
+#, fuzzy
+#~ msgid "Delete Calendar"
+#~ msgstr "Verstek Kalender Formaat"
+
+#, fuzzy
+#~ msgid "Keep Absolute Times?"
+#~ msgstr "nee tyd"
+
+#, fuzzy
+#~ msgid "Keep Times"
+#~ msgstr "nee tyd"
+
+#, fuzzy
+#~ msgid "Move Times"
+#~ msgstr "nee tyd"
+
+#, fuzzy
+#~ msgid "Todo completed: %1 (%2)"
+#~ msgstr "klaar op %1"
+
+#, fuzzy
+#~ msgid "Journal of %1"
+#~ msgstr "Joernaal"
+
+#, fuzzy
+#~ msgctxt "@info"
+#~ msgid "Do you really want to permanently remove the item \"%1\"?"
+#~ msgstr "Nie moontlik na skep lêer na oplaai"
+
+#, fuzzy
+#~ msgctxt "@title:window"
+#~ msgid "Delete Item?"
+#~ msgstr "Uitvee ou aktiwiteite"
+
+#, fuzzy
+#~| msgid "Please specify a valid start date."
+#~ msgid "Paste failed: unable to determine a valid target date."
+#~ msgstr "Asseblief spesifiseer 'n geldige begin datum."
+
+#, fuzzy
+#~ msgid "Make sub-to-dos independent"
+#~ msgstr "Maak Sub-To-Do Onafhanklike"
+
+#, fuzzy
+#~ msgid "Toggle Reminder"
+#~ msgstr "Herhindering:"
+
+#, fuzzy
+#~ msgid "Toggle To-do Completed"
+#~ msgstr "Maak skoon Klaar"
+
+#, fuzzy
+#~ msgctxt "@title:window"
+#~ msgid "Copying Succeeded"
+#~ msgstr "Bestemming"
+
+#, fuzzy
+#~ msgctxt "@info"
+#~ msgid "Unable to copy the item \"%1\" to %2."
+#~ msgstr "Nie moontlik na handvatsel afgeleë kalender.\n"
+
+#, fuzzy
+#~ msgctxt "@title:window"
+#~ msgid "Copying Failed"
+#~ msgstr "Bestemming"
+
+#, fuzzy
+#~ msgctxt "@title:window"
+#~ msgid "Moving Failed"
+#~ msgstr "Bestemming"
+
+#, fuzzy
+#~ msgctxt "@title:window"
+#~ msgid "Moving Succeeded"
+#~ msgstr "Bestemming"
+
+#, fuzzy
+#~ msgid "Do you want to dissociate the occurrence on %1 from the recurrence?"
+#~ msgstr "Lys die aktiwiteite vir die huidige dag"
+
+#~ msgid "KOrganizer Confirmation"
+#~ msgstr "Korganizer Bevestiging"
+
+#, fuzzy
+#~ msgid "&Dissociate"
+#~ msgstr "Tyd geassosieer"
+
+#, fuzzy
+#~ msgid ""
+#~ "Do you want to dissociate the occurrence on %1 from the recurrence or "
+#~ "also dissociate future ones?"
+#~ msgstr "Lys die aktiwiteite vir die huidige dag"
+
+#, fuzzy
+#~ msgid "&Only Dissociate This One"
+#~ msgstr "Lys die aktiwiteite vir die huidige dag"
+
+#, fuzzy
+#~ msgid "&Also Dissociate Future Ones"
+#~ msgstr "Lys die aktiwiteite vir die huidige dag"
+
+#, fuzzy
+#~ msgid "Dissociate future occurrences"
+#~ msgstr "Lys die aktiwiteite vir die huidige dag"
+
+#, fuzzy
+#~ msgid "Dissociate occurrence"
+#~ msgstr "Lys die aktiwiteite vir die huidige dag"
+
+#, fuzzy
+#~ msgid "Dissociating the future occurrences failed."
+#~ msgstr "Lys die aktiwiteite vir die huidige dag"
+
+#, fuzzy
+#~ msgid "Dissociating Failed"
+#~ msgstr "Bestemming"
+
+#, fuzzy
+#~ msgid "Dissociating the occurrence failed."
+#~ msgstr "Lys die aktiwiteite vir die huidige dag"
+
+#, fuzzy
+#~ msgid "iCalendars (*.ics)"
+#~ msgstr "Ikalender"
+
+#, fuzzy
+#~ msgctxt "@info"
+#~ msgid "Cannot write iCalendar file %1. %2"
+#~ msgstr "Kan nie skryf argief lêer."
+
+#, fuzzy
+#~| msgid "The journal entries can not be exported to a vCalendar file."
+#~ msgid "The journal entries cannot be exported to a vCalendar file."
+#~ msgstr ""
+#~ "Die joernaal inskrywings kan nie wees uitgevoer word na 'n Vcalendar lêer."
+
+#~ msgid "Data Loss Warning"
+#~ msgstr "Data Verlies Waarskuwing"
+
+#, fuzzy
+#~ msgid "vCalendars (*.vcs)"
+#~ msgstr "Ikalender"
+
+#, fuzzy
+#~ msgctxt "@info"
+#~ msgid "Cannot write vCalendar file %1. %2"
+#~ msgstr "Kan nie skryf argief lêer."
+
+#~ msgid "&Previous Day"
+#~ msgstr "Vorige Dag"
+
+#~ msgid "&Previous Week"
+#~ msgstr "Vorige Week"
+
+#~ msgid "&Next Week"
+#~ msgstr "Volgende Week"
+
+#, fuzzy
+#~ msgid "No filter"
+#~ msgstr "Vertoon Filter"
+
+#, fuzzy
+#~ msgid "Delete Only This"
+#~ msgstr "Uitvee ou aktiwiteite"
+
+#, fuzzy
+#~ msgid "Delete All"
+#~ msgstr "Uitvee Gebeurtenis"
+
+#, fuzzy
+#~ msgid "Delete parent to-do"
+#~ msgstr "Uitvee To-Do"
+
+#, fuzzy
+#~ msgid "Delete parent to-do and sub-to-dos"
+#~ msgstr "Uitvee To-Do"
+
+#, fuzzy
+#~ msgid ""
+#~ "The calendar item \"%1\" recurs over multiple dates; are you sure you "
+#~ "want to delete it and all its recurrences?"
+#~ msgstr ""
+#~ "Hierdie gebeurtenis herhaal bo veelvuldige datums. Word jy seker jy wil "
+#~ "hê na uitvee Hierdie gebeurtenis en alle sy herhalings?"
+
+#, fuzzy
+#~ msgid "Also Delete &Future"
+#~ msgstr "Uitvee Huidige"
+
+#, fuzzy
+#~ msgid ""
+#~ "The calendar item \"%1\" recurs over multiple dates. Do you want to "
+#~ "delete only the current one on %2, also future occurrences, or all its "
+#~ "occurrences?"
+#~ msgstr ""
+#~ "Hierdie gebeurtenis herhaal bo veelvuldige datums. Word jy seker jy wil "
+#~ "hê na uitvee Hierdie gebeurtenis en alle sy herhalings?"
+
+#, fuzzy
+#~ msgid ""
+#~ "The calendar item \"%1\" recurs over multiple dates. Do you want to "
+#~ "delete only the current one on %2 or all its occurrences?"
+#~ msgstr ""
+#~ "Hierdie gebeurtenis herhaal bo veelvuldige datums. Word jy seker jy wil "
+#~ "hê na uitvee Hierdie gebeurtenis en alle sy herhalings?"
+
+#, fuzzy
+#~ msgid "Delete C&urrent"
+#~ msgstr "Uitvee Huidige"
+
+#, fuzzy
+#~ msgid "Delete &All"
+#~ msgstr "Uitvee Gebeurtenis"
+
+#, fuzzy
+#~ msgid "There are no completed to-dos to purge."
+#~ msgstr "Steek weg klaar to-dos"
+
+#, fuzzy
+#~ msgid "Delete all completed to-dos from checked calendars?"
+#~ msgstr "Uitvee alle klaar To-Dos?"
+
+#, fuzzy
+#~ msgid "Purge To-dos"
+#~ msgstr "Maak skoon To-Dos"
+
+#~ msgid "Purge"
+#~ msgstr "Maak skoon"
+
+#, fuzzy
+#~ msgid "Unable to copy the item to %1."
+#~ msgstr "Nie moontlik na handvatsel afgeleë kalender.\n"
+
+#, fuzzy
+#~ msgid "Copying Failed"
+#~ msgstr "Bestemming"
+
+#, fuzzy
+#~ msgid "Unable to move the item to  %1."
+#~ msgstr "Nie moontlik na handvatsel afgeleë kalender.\n"
+
+#, fuzzy
+#~ msgid "Moving Failed"
+#~ msgstr "Bestemming"
+
+#, fuzzy
+#~ msgid "0 completed to-dos were purged."
+#~ msgstr "Steek weg klaar to-dos"
+
+#, fuzzy
+#~ msgid "%1 completed to-do was purged."
+#~ msgid_plural "%1 completed to-dos were purged."
+#~ msgstr[0] "Steek weg klaar to-dos"
+#~ msgstr[1] "Steek weg klaar to-dos"
+
+#, fuzzy
+#~ msgid "An error occurred while purging completed to-dos: %1"
+#~ msgstr "Steek weg klaar to-dos"
+
+#, fuzzy
+#~| msgid "General"
+#~ msgctxt "@title:tab General settings for a folder."
+#~ msgid "General"
+#~ msgstr "Algemeen"
+
+#, fuzzy
+#~| msgid "Name:"
+#~ msgctxt "@label:textbox Name of the folder."
+#~ msgid "&Name:"
+#~ msgstr "Naam:"
+
+#, fuzzy
+#~ msgctxt "@info:tooltip"
+#~ msgid "Set the folder name"
+#~ msgstr "Einde datum"
+
+#, fuzzy
+#~ msgctxt "@option:check"
+#~ msgid "Block reminders locally"
+#~ msgstr "Herhindering:"
+
+#, fuzzy
+#~ msgctxt "@info:tooltip"
+#~ msgid "Ignore reminders from this calendar"
+#~ msgstr "Uitvee ou aktiwiteite"
+
+#, fuzzy
+#~| msgid "Enable scrollbars in month view cells"
+#~ msgctxt "@info:whatsthis"
+#~ msgid ""
+#~ "Check this box if you do not want to receive reminders from items "
+#~ "associated with this calendar."
+#~ msgstr "Aktiveer rolbalk in maand besigtig selle"
+
+#, fuzzy
+#~ msgctxt "@option:check"
+#~ msgid "&Use custom icon:"
+#~ msgstr "Ikalender"
+
+#, fuzzy
+#~ msgctxt "@info:tooltip"
+#~ msgid "Set a custom icon"
+#~ msgstr "Ikalender"
+
+#, fuzzy
+#~| msgid "Enable scrollbars in month view cells"
+#~ msgctxt "@info:whatsthis"
+#~ msgid "Check this box if you want to set a custom icon for this folder."
+#~ msgstr "Aktiveer rolbalk in maand besigtig selle"
+
+#, fuzzy
+#~ msgid "&File"
+#~ msgstr "Titel"
+
+#, fuzzy
+#~ msgid "&Edit"
+#~ msgstr "Redigeer..."
+
+#, fuzzy
+#~ msgid "&View"
+#~ msgstr "Aansigte"
+
+#, fuzzy
+#~ msgid "&Zoom"
+#~ msgstr "Zoem In"
+
+#~ msgid "&Actions"
+#~ msgstr "Aksies"
+
+#~ msgid "S&chedule"
+#~ msgstr "Skeduleer"
+
+#, fuzzy
+#~ msgid "&Settings"
+#~ msgstr "Ontmoeting"
+
+#, fuzzy
+#~ msgid "&Sidebar"
+#~ msgstr "Tyd kolom:"
+
+#, fuzzy
+#~| msgid "Main"
+#~ msgctxt "main toolbar"
+#~ msgid "Main"
+#~ msgstr "Hoof"
+
+#~ msgid "Views"
+#~ msgstr "Aansigte"
+
+#~ msgid "Schedule"
+#~ msgstr "Skeduleer"
+
+#, fuzzy
+#~ msgid "Filters Toolbar"
+#~ msgstr "Vertoon %1 Nutsbalk"
+
+#, fuzzy
+#~ msgid "Calendar Colors"
+#~ msgstr "Ikalender"
+
+#~ msgid "Export Calendar as Web Page"
+#~ msgstr "Voer uit Kalender as Web Bladsy"
+
+#, fuzzy
+#~| msgid "General"
+#~ msgctxt "general settings for html export"
+#~ msgid "General"
+#~ msgstr "Algemeen"
+
+#~ msgid "Date Range"
+#~ msgstr "Datum Omvang"
+
+#~ msgid "View Type"
+#~ msgstr "Besigtig Tipe"
+
+#~ msgid "Destination"
+#~ msgstr "Bestemming"
+
+#, fuzzy
+#~ msgid "To-dos"
+#~ msgstr "To-do"
+
+#, fuzzy
+#~ msgid "Events"
+#~ msgstr "Aktiwiteite:"
+
+#, fuzzy
+#~| msgid "Edit Calendar Filters"
+#~ msgctxt "@title::window"
+#~ msgid "Edit Calendar Filters"
+#~ msgstr "Redigeer Kalender Filters"
+
+#, fuzzy
+#~ msgctxt "@label default filter name"
+#~ msgid "New Filter %1"
+#~ msgstr "Voeg by Filter"
+
+#, fuzzy
+#~ msgctxt "@info"
+#~ msgid "Do you really want to permanently remove the filter \"%1\"?"
+#~ msgstr "Nie moontlik na skep lêer na oplaai"
+
+#, fuzzy
+#~ msgctxt "@title:window"
+#~ msgid "Delete Filter?"
+#~ msgstr "Uitvee ou aktiwiteite"
+
+#~ msgid "Event Viewer"
+#~ msgstr "Gebeurtenis Aansig"
+
+#, fuzzy
+#~| msgid "Edit..."
+#~ msgid "Edit..."
+#~ msgstr "Redigeer..."
+
+#, fuzzy
+#~ msgid "Show in Context"
+#~ msgstr "Vertoon slegs gekose"
+
+#, fuzzy
+#~ msgctxt "@title:window"
+#~ msgid "Create Note"
+#~ msgstr "Uitvee To-Do"
+
+#, fuzzy
+#~| msgid "Travel"
+#~ msgctxt "@action:save note"
+#~ msgid "Save"
+#~ msgstr "Reis"
+
+#, fuzzy
+#~ msgid "Title:"
+#~ msgstr "Titel"
+
+#, fuzzy
+#~ msgid "Text:"
+#~ msgstr "Moet nooit"
+
+#, fuzzy
+#~| msgid "New Calendar"
+#~ msgid "Search Calendar"
+#~ msgstr "Nuwe Kalender"
+
+#, fuzzy
+#~ msgctxt "search in calendar"
+#~ msgid "&Search"
+#~ msgstr "Soektog In"
+
+#~ msgid ""
+#~ "Invalid search expression, cannot perform the search. Please enter a "
+#~ "search expression using the wildcard characters '*' and '?' where needed."
+#~ msgstr ""
+#~ "Ongeldige soektog uitdrukking, kan nie aan te bring die soektog. "
+#~ "Asseblief invoer 'n soektog uitdrukking te gebruik die willekeurige "
+#~ "karakter karakters '*' en '?' waar benodig."
+
+#, fuzzy
+#~| msgid "No events were found matching your search expression."
+#~ msgid "No items were found that match your search pattern."
+#~ msgstr "Nee aktiwiteite was gevind ooreenstemmende jou soektog uitdrukking."
+
+#, fuzzy
+#~| msgid "Search In"
+#~ msgid "Search Results"
+#~ msgstr "Soektog In"
+
+#, fuzzy
+#~ msgid "%1 item"
+#~ msgid_plural "%1 items"
+#~ msgstr[0] "1 minuut"
+#~ msgstr[1] "%1 minute"
+
+#, fuzzy
+#~ msgctxt "A collection of all declined invidations."
+#~ msgid "Declined Invitations"
+#~ msgstr "Korganizer Bevestiging"
+
+#, fuzzy
+#~ msgctxt "A collection of all open invidations."
+#~ msgid "Open Invitations"
+#~ msgstr "Korganizer Bevestiging"
+
+#, fuzzy
+#~ msgid "Unable to write the output file."
+#~ msgstr "Nie moontlik na handvatsel afgeleë kalender.\n"
+
+#, fuzzy
+#~ msgid "Unable to upload the export file."
+#~ msgstr "Nie moontlik na handvatsel afgeleë kalender.\n"
+
+#, fuzzy
+#~| msgid "Set Your Status"
+#~ msgctxt "@title:window"
+#~ msgid "Export Status"
+#~ msgstr "Stel Jou Status"
+
+#, fuzzy
+#~ msgid "Show page Web"
+#~ msgstr "Vertoon tyd as:"
+
+#, fuzzy
+#~ msgctxt "@info:status"
+#~ msgid "Automatic Export: %1"
+#~ msgstr "Groep Automatisering"
+
+#, fuzzy
+#~ msgctxt "@title month and year"
+#~ msgid "%1 %2"
+#~ msgstr "%1 %2"
+
+#, fuzzy
+#~| msgid "Start Time"
+#~ msgctxt "@title:column event start time"
+#~ msgid "Start Time"
+#~ msgstr "Begin Tyd"
+
+#, fuzzy
+#~| msgid "End Time"
+#~ msgctxt "@title:column event end time"
+#~ msgid "End Time"
+#~ msgstr "Einde Tyd"
+
+#, fuzzy
+#~ msgctxt "@title:column event description"
+#~ msgid "Event"
+#~ msgstr "Aktiwiteite:"
+
+#, fuzzy
+#~ msgctxt "@title:column event locatin"
+#~ msgid "Location"
+#~ msgstr "Ligging:"
+
+#, fuzzy
+#~| msgid "Categories"
+#~ msgctxt "@title:column event categories"
+#~ msgid "Categories"
+#~ msgstr "Katagoriee"
+
+#, fuzzy
+#~ msgctxt "@title:column event attendees"
+#~ msgid "Attendees"
+#~ msgstr "Bywoners"
+
+#, fuzzy
+#~ msgctxt "@title:column"
+#~ msgid "To-do"
+#~ msgstr "To-Do:"
+
+#, fuzzy
+#~| msgid "Priority"
+#~ msgctxt "@title:column to-do priority"
+#~ msgid "Priority"
+#~ msgstr "Prioriteit"
+
+#, fuzzy
+#~| msgid "Complete"
+#~ msgctxt "@title:column to-do percent completed"
+#~ msgid "Completed"
+#~ msgstr "Volledige"
+
+#, fuzzy
+#~ msgctxt "@title:column to-do due date"
+#~ msgid "Due Date"
+#~ msgstr "As gevolg datums"
+
+#, fuzzy
+#~ msgctxt "@title:column to-do location"
+#~ msgid "Location"
+#~ msgstr "Ligging:"
+
+#, fuzzy
+#~| msgid "Categories"
+#~ msgctxt "@title:column to-do categories"
+#~ msgid "Categories"
+#~ msgstr "Katagoriee"
+
+#, fuzzy
+#~ msgctxt "@title:column to-do attendees"
+#~ msgid "Attendees"
+#~ msgstr "Bywoners"
+
+#, fuzzy
+#~ msgctxt "@title:column sub-to-dos of the parent to-do"
+#~ msgid "Sub-To-dos of: "
+#~ msgstr "To-Do:"
+
+#, fuzzy
+#~ msgctxt "@title:column sub-to-dos of the parent to-do"
+#~ msgid "Sub-To-dos"
+#~ msgstr "To-do"
+
+#, fuzzy
+#~ msgctxt "@info to-do percent complete"
+#~ msgid "%1 %"
+#~ msgstr "%1 %2"
+
+#, fuzzy
+#~ msgctxt "@info page creator name only"
+#~ msgid "by %1 "
+#~ msgstr "To-Do: %1"
+
+#, fuzzy
+#~ msgctxt "@info page credit name only"
+#~ msgid "with %1"
+#~ msgstr "Einde Tyd: %1"
+
+#, fuzzy
+#~ msgctxt "@info holiday by date and name"
+#~ msgid "%1, %2"
+#~ msgstr "%1 %2"
+
+#, fuzzy
+#~ msgid "Text"
+#~ msgstr "Moet nooit"
+
+#, fuzzy
+#~| msgid "Select Mode"
+#~ msgid "Selection"
+#~ msgstr "Kies Modus"
+
+#, fuzzy
+#~| msgid "Date && Time"
+#~ msgid "Date & Time"
+#~ msgstr "Datum && Tyd"
+
+#, fuzzy
+#~ msgid "Date"
+#~ msgstr "As gevolg:"
+
+#, fuzzy
+#~ msgid "<qt>Do you really want to delete '<b>%1</b>'?</qt>"
+#~ msgstr "Nie moontlik na skep lêer na oplaai"
+
+#, fuzzy
+#~ msgid "Import Page"
+#~ msgstr "Ikalender"
+
+#, fuzzy
+#~ msgid "Designer Files (*.ui)"
+#~ msgstr "*.vcs|Vcalendar Lêers"
+
+#, fuzzy
+#~ msgid "Import Page..."
+#~ msgstr "Ikalender"
+
+#, fuzzy
+#~ msgid "Type:"
+#~ msgstr "Besigtig Tipe"
+
+#, fuzzy
+#~ msgid "Classname:"
+#~ msgstr "Gebruiker"
+
+#, fuzzy
+#~ msgid "Description:"
+#~ msgstr "Beskrywings"
+
+#, fuzzy
+#~ msgctxt "@item:intext delimiter for joining holiday names"
+#~ msgid ","
+#~ msgstr ", "
+
+#, fuzzy
+#~ msgctxt "delimiter for joining holiday names"
+#~ msgid ","
+#~ msgstr ", "
+
+#, fuzzy
+#~ msgid "&Add"
+#~ msgstr "Voeg by Filter..."
+
+#, fuzzy
+#~ msgid "&Print..."
+#~ msgstr "Redigeer..."
+
+#, fuzzy
+#~ msgid "Print Previe&w..."
+#~ msgstr "Redigeer..."
+
+#, fuzzy
+#~ msgid "&Paste"
+#~ msgstr "As gevolg:"
+
+#, fuzzy
+#~ msgctxt "delete this incidence"
+#~ msgid "&Delete"
+#~ msgstr "Uitvee Gebeurtenis"
+
+#, fuzzy
+#~ msgid "Create To-do"
+#~ msgstr "Uitvee To-Do"
+
+#, fuzzy
+#~ msgid "Create Event"
+#~ msgstr "Uitvee To-Do"
+
+#, fuzzy
+#~ msgid "Create Note"
+#~ msgstr "Uitvee To-Do"
+
+#, fuzzy
+#~ msgid "Togg&le To-do Completed"
+#~ msgstr "Maak skoon Klaar"
+
+#, fuzzy
+#~ msgid "&Toggle Reminder"
+#~ msgstr "Herhindering:"
+
+#, fuzzy
+#~ msgid "&Dissociate From Recurrence..."
+#~ msgstr "Lys die aktiwiteite vir die huidige dag"
+
+#, fuzzy
+#~ msgid "Send as iCalendar..."
+#~ msgstr "Ikalender..."
+
+#, fuzzy
+#~ msgid "Unable to save %1 \"%2\"."
+#~ msgstr "Nie moontlik na handvatsel afgeleë kalender.\n"
+
+#, fuzzy
+#~ msgid "Event Summary Configuration"
+#~ msgstr "Ikalender"
+
+#, fuzzy
+#~| msgid "Enable scrollbars in month view cells"
+#~ msgid ""
+#~ "Check this box if you want to see events occurring on this date only."
+#~ msgstr "Aktiveer rolbalk in maand besigtig selle"
+
+#, fuzzy
+#~| msgid "day"
+#~ msgid "&Today only"
+#~ msgstr "dag"
+
+#, fuzzy
+#~| msgid "Enable scrollbars in month view cells"
+#~ msgid ""
+#~ "Check this box if you want to see events that start sometime during the "
+#~ "next 31 days."
+#~ msgstr "Aktiveer rolbalk in maand besigtig selle"
+
+#, fuzzy
+#~ msgid "Select the days for showing upcoming events"
+#~ msgstr "Te-doen as gevolg vandag kleur:"
+
+#, fuzzy
+#~ msgid "1 day"
+#~ msgstr "1 Dag"
+
+#, fuzzy
+#~ msgctxt "days to show in summary"
+#~ msgid " days"
+#~ msgstr "Ikalender"
+
+#, fuzzy
+#~ msgid "Show &birthdays"
+#~ msgstr "Verjaardag"
+
+#, fuzzy
+#~ msgid "Groupware Settings"
+#~ msgstr "Ontmoeting"
+
+#, fuzzy
+#~ msgid "Show events belonging to my calendars only"
+#~ msgstr "Ikalender"
+
+#, fuzzy
+#~| msgid "Enable scrollbars in month view cells"
+#~ msgid ""
+#~ "Check this box if you want the summary to show events belonging to your "
+#~ "calendars only."
+#~ msgstr "Aktiveer rolbalk in maand besigtig selle"
+
+#, fuzzy
+#~| msgid "Appointment"
+#~ msgid "&Edit Appointment..."
+#~ msgstr "Afspraak"
+
+#, fuzzy
+#~| msgid "Appointment"
+#~ msgid "&Delete Appointment"
+#~ msgstr "Afspraak"
+
+#, fuzzy
+#~| msgid "Edit Event"
+#~ msgid "Edit Event: \"%1\""
+#~ msgstr "Redigeer Gebeurtenis"
+
+#, fuzzy
+#~ msgctxt "@action:inmenu"
+#~ msgid "New Journal..."
+#~ msgstr "Joernaal"
+
+#, fuzzy
+#~ msgctxt "@info:status"
+#~ msgid "Create a new journal"
+#~ msgstr "Uitvee To-Do"
+
+#, fuzzy
+#~| msgid "&Journal"
+#~ msgctxt "@action:inmenu"
+#~ msgid "Sync Journal"
+#~ msgstr "Joernaal"
+
+#, fuzzy
+#~ msgid " day"
+#~ msgid_plural " days"
+#~ msgstr[0] "1 Dag"
+#~ msgstr[1] "%1 Dae"
+
+#, fuzzy
+#~| msgid "New E&vent..."
+#~ msgctxt "@action:inmenu"
+#~ msgid "New Event..."
+#~ msgstr "Nuwe Gebeurtenis..."
+
+#, fuzzy
+#~ msgctxt "@info:status"
+#~ msgid "Create a new event"
+#~ msgstr "Uitvee To-Do"
+
+#, fuzzy
+#~| msgid "New Calendar"
+#~ msgctxt "@action:inmenu"
+#~ msgid "Sync Calendar"
+#~ msgstr "Nuwe Kalender"
+
+#, fuzzy
+#~| msgid "Meeting"
+#~ msgctxt "@item"
+#~ msgid "Meeting"
+#~ msgstr "Ontmoeting"
+
+#, fuzzy
+#~ msgctxt "@item"
+#~ msgid "Note: %1"
+#~ msgstr "To-Do: %1"
+
+#, fuzzy
+#~| msgid "From: %1   To: %2   %3"
+#~ msgctxt "@item"
+#~ msgid ""
+#~ "From: %1\n"
+#~ "To: %2\n"
+#~ "Subject: %3"
+#~ msgstr "Van: %1   Na: %2   %3"
+
+#, fuzzy
+#~| msgid "KMail"
+#~ msgctxt "@item"
+#~ msgid "Mail: %1"
+#~ msgstr "Kpos"
+
+#, fuzzy
+#~| msgid "day"
+#~ msgctxt "the appointment is today"
+#~ msgid "Today"
+#~ msgstr "dag"
+
+#, fuzzy
+#~ msgid "in 1 day"
+#~ msgid_plural "in %1 days"
+#~ msgstr[0] "1 Dag"
+#~ msgstr[1] "%1 Dae"
+
+#, fuzzy
+#~ msgctxt "use abbreviation for minute to keep the text short"
+#~ msgid "1 min"
+#~ msgid_plural "%1 mins"
+#~ msgstr[0] "1 minuut"
+#~ msgstr[1] "%1 minute"
+
+#, fuzzy
+#~ msgid "all day"
+#~ msgstr "1 Dag"
+
+#, fuzzy
+#~ msgctxt "Time from - to"
+#~ msgid "%1 - %2"
+#~ msgstr "%1 %"
+
+#, fuzzy
+#~ msgctxt "next occurrence"
+#~ msgid "Next: %1"
+#~ msgstr "To-Do: %1"
+
+#, fuzzy
+#~ msgctxt "@action:inmenu"
+#~ msgid "New To-do..."
+#~ msgstr "Nuwe To-Do..."
+
+#, fuzzy
+#~ msgctxt "@info:status"
+#~ msgid "Create a new to-do"
+#~ msgstr "Uitvee To-Do"
+
+#, fuzzy
+#~ msgctxt "@action:inmenu"
+#~ msgid "Sync To-do List"
+#~ msgstr "To-Do Lys"
+
+#, fuzzy
+#~ msgctxt "@info:status"
+#~ msgid "Synchronize groupware to-do list"
+#~ msgstr "Stel Jou Status"
+
+#, fuzzy
+#~ msgid "To-do Summary Configuration"
+#~ msgstr "Ikalender"
+
+#, fuzzy
+#~ msgid "Show To-dos Due"
+#~ msgstr "To-do lys"
+
+#, fuzzy
+#~ msgid "Show To-dos due today only"
+#~ msgstr "Te-doen as gevolg vandag kleur:"
+
+#, fuzzy
+#~| msgid "Enable scrollbars in month view cells"
+#~ msgid "Check this box if you want to see To-dos due on this date only."
+#~ msgstr "Aktiveer rolbalk in maand besigtig selle"
+
+#, fuzzy
+#~| msgid "Enable scrollbars in month view cells"
+#~ msgid ""
+#~ "Check this box if you want to see To-dos that are due sometime during the "
+#~ "next 31 days."
+#~ msgstr "Aktiveer rolbalk in maand besigtig selle"
+
+#, fuzzy
+#~| msgid "Enable scrollbars in month view cells"
+#~ msgid ""
+#~ "Check this box if you want specify the number of days in the future for "
+#~ "pending To-dos."
+#~ msgstr "Aktiveer rolbalk in maand besigtig selle"
+
+#, fuzzy
+#~ msgid "Hide completed To-dos"
+#~ msgstr "Steek weg klaar to-dos"
+
+#, fuzzy
+#~| msgid "Enable scrollbars in month view cells"
+#~ msgid ""
+#~ "Check this box if you do not want to see To-dos that have already been "
+#~ "completed."
+#~ msgstr "Aktiveer rolbalk in maand besigtig selle"
+
+#, fuzzy
+#~| msgid "Complete"
+#~ msgid "&Completed"
+#~ msgstr "Volledige"
+
+#, fuzzy
+#~| msgid "Enable scrollbars in month view cells"
+#~ msgid "Check this box if you do not want to see open-ended To-dos."
+#~ msgstr "Aktiveer rolbalk in maand besigtig selle"
+
+#, fuzzy
+#~ msgid "Hide unstarted To-dos"
+#~ msgstr "Steek weg klaar to-dos"
+
+#, fuzzy
+#~| msgid "Enable scrollbars in month view cells"
+#~ msgid ""
+#~ "Check this box if you do not want to see To-dos with a start date in the "
+#~ "future."
+#~ msgstr "Aktiveer rolbalk in maand besigtig selle"
+
+#, fuzzy
+#~ msgid "Hide in-progress To-dos"
+#~ msgstr "Steek weg klaar to-dos"
+
+#, fuzzy
+#~| msgid "Enable scrollbars in month view cells"
+#~ msgid ""
+#~ "Check this box if you do not want to see To-dos that have been started "
+#~ "but are not yet completed."
+#~ msgstr "Aktiveer rolbalk in maand besigtig selle"
+
+#, fuzzy
+#~ msgid "Hide overdue To-dos"
+#~ msgstr "Steek weg klaar to-dos"
+
+#, fuzzy
+#~| msgid "Enable scrollbars in month view cells"
+#~ msgid ""
+#~ "Check this box if you do not want to see To-dos that are past their due "
+#~ "date but have not yet been completed."
+#~ msgstr "Aktiveer rolbalk in maand besigtig selle"
+
+#, fuzzy
+#~ msgid "Show To-dos belonging to my calendars only"
+#~ msgstr "Ikalender"
+
+#, fuzzy
+#~| msgid "Enable scrollbars in month view cells"
+#~ msgid ""
+#~ "Check this box if you want the summary to show To-dos belonging to your "
+#~ "calendars only."
+#~ msgstr "Aktiveer rolbalk in maand besigtig selle"
+
+#, fuzzy
+#~ msgid "Show &my To-dos only"
+#~ msgstr "Vertoon To-Do"
+
+#, fuzzy
+#~ msgid "Pending To-dos"
+#~ msgstr "Maak skoon To-Dos"
+
+#, fuzzy
+#~| msgid "day"
+#~ msgctxt "the to-do is due today"
+#~ msgid "Today"
+#~ msgstr "dag"
+
+#, fuzzy
+#~ msgid "1 day ago"
+#~ msgid_plural "%1 days ago"
+#~ msgstr[0] "1 Dag"
+#~ msgstr[1] "%1 Dae"
+
+#, fuzzy
+#~| msgid "Due"
+#~ msgctxt "the to-do is due"
+#~ msgid "due"
+#~ msgstr "As gevolg"
+
+#, fuzzy
+#~ msgid "&Mark To-do Completed"
+#~ msgstr "Maak skoon Klaar"
+
+#, fuzzy
+#~ msgid "Edit To-do: \"%1\""
+#~ msgstr "Redigeer To-Do"
+
+#, fuzzy
+#~ msgctxt "the to-do starts today"
+#~ msgid "starts today"
+#~ msgstr "Begin datum"
+
+#, fuzzy
+#~ msgctxt "the to-do is completed"
+#~ msgid "completed"
+#~ msgstr "klaar"
+
+#, fuzzy
+#~ msgctxt "Separator for status like this: overdue, completed"
+#~ msgid ","
+#~ msgstr ", "
+
+#, fuzzy
+#~ msgid "Special Dates Summary Configuration"
+#~ msgstr "Ikalender"
+
+#, fuzzy
+#~| msgid "Enable scrollbars in month view cells"
+#~ msgid ""
+#~ "Check this box if you want to see special occasions occurring on this "
+#~ "date only."
+#~ msgstr "Aktiveer rolbalk in maand besigtig selle"
+
+#, fuzzy
+#~ msgid "Show birthdays from your calendar"
+#~ msgstr "Ikalender"
+
+#, fuzzy
+#~ msgid "Show holidays from your calendar"
+#~ msgstr "Ikalender"
+
+#, fuzzy
+#~| msgid "Special Occasion"
+#~ msgid "Show s&pecial occasions"
+#~ msgstr "Spesiaal Geleendheid"
+
+#, fuzzy
+#~ msgid "Show birth&days"
+#~ msgstr "Vertoon"
+
+#, fuzzy
+#~| msgid "day"
+#~ msgctxt "the special day is today"
+#~ msgid "Today"
+#~ msgstr "dag"
+
+#, fuzzy
+#~| msgid "Birthday"
+#~ msgid "Birthday"
+#~ msgstr "Verjaardag"
+
+#~ msgid "Holiday"
+#~ msgstr "Vakansie"
+
+#, fuzzy
+#~| msgid "Special Occasion"
+#~ msgid "Special Occasion"
+#~ msgstr "Spesiaal Geleendheid"
+
+#, fuzzy
+#~ msgid "one year"
+#~ msgid_plural "%1 years"
+#~ msgstr[0] "Volgende Jaar"
+#~ msgstr[1] "Volgende Jaar"
+
+#, fuzzy
+#~ msgid "Send &Mail"
+#~ msgstr "Stuur pos"
+
+#, fuzzy
+#~ msgid "View &Contact"
+#~ msgstr "Soektog In"
+
+#, fuzzy
+#~| msgid "Current Maintainer"
+#~ msgid "Current Maintainer"
+#~ msgstr "Huidige Onderhouer"
+
+#, fuzzy
+#~ msgid "Calendar"
+#~ msgstr "Ikalender"
+
+#~ msgid "New Calendar"
+#~ msgstr "Nuwe Kalender"
+
+#, fuzzy
+#~| msgid "read-only"
+#~ msgctxt "the calendar is read-only"
+#~ msgid "read-only"
+#~ msgstr "lees-alleen"
+
+#, fuzzy
+#~ msgid "Import the specified files as separate calendars"
+#~ msgstr "Redigeer Gebeurtenis"
+
+#, fuzzy
+#~ msgid "Merge the specified files into an existing calendar"
+#~ msgstr "Redigeer Gebeurtenis"
+
+#, fuzzy
+#~| msgid "Merged calendar '%1'."
+#~ msgid "Merged calendar"
+#~ msgstr "Saamgevlans kalender '%1'."
+
+#~ msgctxt "Default export file"
+#~ msgid "calendar.html"
+#~ msgstr "kalender.html"
+
+#, fuzzy
+#~| msgid "Personal"
+#~ msgctxt "@title:tab personal settings"
+#~ msgid "Personal"
+#~ msgstr "Persoonlike"
+
+#, fuzzy
+#~ msgctxt "@title:group email settings"
+#~ msgid "Email Settings"
+#~ msgstr "Ontmoeting"
+
+#, fuzzy
+#~| msgid "Travel"
+#~ msgctxt "@title:tab"
+#~ msgid "Save"
+#~ msgstr "Reis"
+
+#, fuzzy
+#~ msgctxt "@title:group"
+#~ msgid "Exporting Calendar"
+#~ msgstr "Ikalender"
+
+#, fuzzy
+#~ msgctxt "@title:group"
+#~ msgid "Show/Hide Options"
+#~ msgstr "Ligging:"
+
+#, fuzzy
+#~ msgctxt "@title:tab calendar account settings"
+#~ msgid "Calendars"
+#~ msgstr "Ikalender"
+
+#, fuzzy
+#~| msgid "Personal"
+#~ msgctxt "@title:tab"
+#~ msgid "Regional"
+#~ msgstr "Persoonlike"
+
+#, fuzzy
+#~| msgid "Holiday"
+#~ msgctxt "@title:group"
+#~ msgid "Holidays"
+#~ msgstr "Vakansie"
+
+#, fuzzy
+#~| msgctxt "short_weekday date (e.g. Mon 13)"
+#~| msgid "%1 %2"
+#~ msgctxt "Holday region, region language"
+#~ msgid "%1 (%2)"
+#~ msgstr "%1 %2"
+
+#, fuzzy
+#~| msgid "Working Hours"
+#~ msgctxt "@title:group"
+#~ msgid "Working Period"
+#~ msgstr "Werksaam Ure"
+
+#, fuzzy
+#~ msgctxt "@title:tab"
+#~ msgid "Default Values"
+#~ msgstr "Verstek Kalender Formaat"
+
+#, fuzzy
+#~| msgid "Appointment"
+#~ msgctxt "@title:group"
+#~ msgid "Appointments"
+#~ msgstr "Afspraak"
+
+#, fuzzy
+#~ msgctxt "@title:group"
+#~ msgid "Reminders"
+#~ msgstr "Herhindering:"
+
+#, fuzzy
+#~ msgctxt "@label"
+#~ msgid "Default reminder time:"
+#~ msgstr "Verstek alarm tyd:"
+
+#, fuzzy
+#~| msgid "minute(s)"
+#~ msgctxt "@item:inlistbox reminder units in minutes"
+#~ msgid "minute(s)"
+#~ msgstr "minuut(s)"
+
+#, fuzzy
+#~| msgid "hour(s)"
+#~ msgctxt "@item:inlistbox reminder time units in hours"
+#~ msgid "hour(s)"
+#~ msgstr "uur(s)"
+
+#, fuzzy
+#~| msgid "day(s)"
+#~ msgctxt "@item:inlistbox reminder time units in days"
+#~ msgid "day(s)"
+#~ msgstr "dag(s)"
+
+#, fuzzy
+#~| msgid "General"
+#~ msgctxt "@title:tab general settings"
+#~ msgid "General"
+#~ msgstr "Algemeen"
+
+#, fuzzy
+#~ msgctxt "@title:group"
+#~ msgid "Display Options"
+#~ msgstr "Daagliks"
+
+#, fuzzy
+#~ msgctxt "@label suffix in the N days spin box"
+#~ msgid " days"
+#~ msgstr "Ikalender"
+
+#, fuzzy
+#~ msgctxt "@title:group"
+#~ msgid "Date Navigator"
+#~ msgstr "Vertoon tyd as:"
+
+#, fuzzy
+#~ msgctxt "@title:tab"
+#~ msgid "Agenda View"
+#~ msgstr "Agenda besigtig:"
+
+#, fuzzy
+#~ msgctxt "@title:tab"
+#~ msgid "Month View"
+#~ msgstr "Maand besigtig:"
+
+#, fuzzy
+#~ msgctxt "@title:tab"
+#~ msgid "Todo View"
+#~ msgstr "To-do lys"
+
+#, fuzzy
+#~ msgctxt "@title:group"
+#~ msgid "Other Options"
+#~ msgstr "Beskrywings"
+
+#, fuzzy
+#~| msgid "Categories"
+#~ msgctxt "@title:group"
+#~ msgid "Categories"
+#~ msgstr "Katagoriee"
+
+#, fuzzy
+#~ msgctxt "@title:group"
+#~ msgid "Resources"
+#~ msgstr "Herhaal"
+
+#, fuzzy
+#~| msgid "month(s)"
+#~ msgctxt "@title:tab"
+#~ msgid "Fonts"
+#~ msgstr "maand(s)"
+
+#, fuzzy
+#~| msgid "Event text"
+#~ msgctxt "@label"
+#~ msgid "Event text"
+#~ msgstr "Gebeurtenis teks"
+
+#, fuzzy
+#~| msgid "Name"
+#~ msgctxt "@title:column plugin name"
+#~ msgid "Name"
+#~ msgstr "Naam"
+
+#, fuzzy
+#~ msgctxt "@action:button"
+#~ msgid "Configure &Plugin..."
+#~ msgstr "Konfigureer Inprop modules..."
+
+#, fuzzy
+#~| msgid "Destination"
+#~ msgctxt "@title:group"
+#~ msgid "Position"
+#~ msgstr "Bestemming"
+
+#, fuzzy
+#~ msgctxt "@option:check"
+#~ msgid "Show at the top of the agenda views"
+#~ msgstr "Vertoon slegs gekose"
+
+#, fuzzy
+#~ msgctxt "@option:check"
+#~ msgid "Show at the bottom of the agenda views"
+#~ msgstr "Vertoon slegs gekose"
+
+#, fuzzy
+#~ msgctxt "@title:group"
+#~ msgid "Calendar Decorations"
+#~ msgstr "Ikalender"
+
+#, fuzzy
+#~ msgctxt "@title:group"
+#~ msgid "Other Plugins"
+#~ msgstr "Beskrywings"
+
+#, fuzzy
+#~| msgid "Unable to configure this plugin"
+#~ msgctxt "@info"
+#~ msgid "Unable to configure this plugin"
+#~ msgstr "Nie moontlik na konfigureer hierdie inplak"
+
+#, fuzzy
+#~| msgid "Edit Calendar Filters"
+#~ msgid "Full name of the calendar owner"
+#~ msgstr "Redigeer Kalender Filters"
+
+#, fuzzy
+#~| msgid "Edit Calendar Filters"
+#~ msgid "The full name of the calendar owner for the export"
+#~ msgstr "Redigeer Kalender Filters"
+
+#, fuzzy
+#~| msgid "Edit Calendar Filters"
+#~ msgid "The email address of the calendar owner for the export"
+#~ msgstr "Redigeer Kalender Filters"
+
+#, fuzzy
+#~ msgid "Creator application of the calendar"
+#~ msgstr "Nie moontlik na handvatsel afgeleë kalender.\n"
+
+#, fuzzy
+#~ msgid "Enter a creator application of the calendar, for example KOrganizer."
+#~ msgstr "Nie moontlik na handvatsel afgeleë kalender.\n"
+
+#, fuzzy
+#~ msgid "Creator URL"
+#~ msgstr "Voorskou Url:"
+
+#, fuzzy
+#~ msgid "Page Title"
+#~ msgstr "Titel"
+
+#, fuzzy
+#~ msgid "The title of the exported page"
+#~ msgstr "Verstek alarm tyd:"
+
+#, fuzzy
+#~ msgid "Date start"
+#~ msgstr "Stel Jou Status"
+
+#, fuzzy
+#~| msgid "Date Range"
+#~ msgid "Date end"
+#~ msgstr "Datum Omvang"
+
+#, fuzzy
+#~| msgid "Exclude holidays"
+#~ msgid "Exclude private items from the export"
+#~ msgstr "Sluit uit vakansies"
+
+#, fuzzy
+#~| msgid "Exclude holidays"
+#~ msgid "Exclude confidential items from the export"
+#~ msgstr "Sluit uit vakansies"
+
+#, fuzzy
+#~| msgid "To-do list"
+#~ msgid "Export events as a list"
+#~ msgstr "To-do lys"
+
+#, fuzzy
+#~ msgid "Export in month view"
+#~ msgstr "Vertoon slegs gekose"
+
+#, fuzzy
+#~ msgid "Export events in a month view"
+#~ msgstr "Vertoon slegs gekose"
+
+#, fuzzy
+#~| msgid "Enable scrollbars in month view cells"
+#~ msgid "Check this box if you want your events shown in a month view."
+#~ msgstr "Aktiveer rolbalk in maand besigtig selle"
+
+#, fuzzy
+#~ msgid "Export events in a week view"
+#~ msgstr "Vertoon slegs gekose"
+
+#, fuzzy
+#~ msgid "Title of the calendar"
+#~ msgstr "Nie moontlik na handvatsel afgeleë kalender.\n"
+
+#, fuzzy
+#~ msgid "Title for the event calendar"
+#~ msgstr "Nie moontlik na handvatsel afgeleë kalender.\n"
+
+#, fuzzy
+#~| msgid "Export to HTML with every save"
+#~ msgid "Export location of the events"
+#~ msgstr "Voer uit na Html met elke stoor"
+
+#, fuzzy
+#~ msgid "Include the event locations"
+#~ msgstr "Publiseer Vry Besig Informasie"
+
+#, fuzzy
+#~ msgid "Include the event categories"
+#~ msgstr "Katagoriee..."
+
+#, fuzzy
+#~ msgid "Include the event attendees"
+#~ msgstr "Stel Jou Status"
+
+#, fuzzy
+#~| msgid "To-do list"
+#~ msgid "Export to-do list"
+#~ msgstr "To-do lys"
+
+#, fuzzy
+#~| msgid "To-do list"
+#~ msgid "Export the to-do list"
+#~ msgstr "To-do lys"
+
+#, fuzzy
+#~ msgid "Title of the to-do list"
+#~ msgstr "Stel Jou Status"
+
+#, fuzzy
+#~ msgid "To-do List"
+#~ msgstr "To-Do Lys"
+
+#, fuzzy
+#~ msgid "Title for the to-do list"
+#~ msgstr "Stel Jou Status"
+
+#, fuzzy
+#~ msgid "Include the to-do locations"
+#~ msgstr "Stel Jou Status"
+
+#, fuzzy
+#~ msgid "Include the to-do categories"
+#~ msgstr "Katagoriee..."
+
+#, fuzzy
+#~ msgid "Include the to-do attendees"
+#~ msgstr "1 minuut"
+
+#, fuzzy
+#~| msgid "Enable scrollbars in month view cells"
+#~ msgid "Check this box if you want the to-do attendees to be exported."
+#~ msgstr "Aktiveer rolbalk in maand besigtig selle"
+
+#, fuzzy
+#~ msgid "Export journals"
+#~ msgstr "Joernaal"
+
+#, fuzzy
+#~ msgid "Title of the journal list"
+#~ msgstr "Uitvee ou aktiwiteite"
+
+#, fuzzy
+#~ msgid "Journals"
+#~ msgstr "Joernaal"
+
+#, fuzzy
+#~ msgid "Title for the journal list"
+#~ msgstr "Uitvee ou aktiwiteite"
+
+#, fuzzy
+#~ msgid "Export free/busy list"
+#~ msgstr "Publiseer Vry Besig Informasie"
+
+#, fuzzy
+#~ msgid "Title of the free/busy list"
+#~ msgstr "Publiseer Vry Besig Informasie"
+
+#, fuzzy
+#~ msgid "Busy times"
+#~ msgstr "nee tyd"
+
+#, fuzzy
+#~ msgid "Title for the free/busy list"
+#~ msgstr "Publiseer Vry Besig Informasie"
+
+#, fuzzy
+#~| msgid "Export to HTML with every save"
+#~ msgid "Export to HTML periodically"
+#~ msgstr "Voer uit na Html met elke stoor"
+
+#, fuzzy
+#~ msgid "Export &interval in minutes"
+#~ msgstr "Stoor interval in minute:"
+
+#, fuzzy
+#~ msgid "Confirm deletes"
+#~ msgstr "Bevestig deletes"
+
+#, fuzzy
+#~ msgid "Day begins at"
+#~ msgstr "Dag beginne na:"
+
+#, fuzzy
+#~ msgid "Daily starting hour"
+#~ msgstr "Daagliks beginne uur:"
+
+#, fuzzy
+#~ msgid "Daily ending hour"
+#~ msgstr "Daagliks wat eindig uur:"
+
+#~ msgid "Exclude holidays"
+#~ msgstr "Sluit uit vakansies"
+
+#, fuzzy
+#~ msgid "Color busy days with a different background color"
+#~ msgstr "Agenda besigtig agtergrond kleur:"
+
+#, fuzzy
+#~| msgid "Enable tooltips displaying summary of events"
+#~ msgid "Enable tooltips for displaying summaries"
+#~ msgstr "Aktiveer sleutel-leidraad vertooning opsomming van aktiwiteite"
+
+#, fuzzy
+#~ msgid "To-dos use category colors"
+#~ msgstr "Te-doen as gevolg vandag kleur:"
+
+#, fuzzy
+#~ msgid "Next x days"
+#~ msgstr "Volgende X Dae"
+
+#, fuzzy
+#~| msgid "Show events that recur daily in date navigator"
+#~ msgid "Show items that recur daily"
+#~ msgstr "Vertoon aktiwiteite wat herhaal daagliks in datum navigeerder"
+
+#, fuzzy
+#~| msgid "Show events that recur weekly in date navigator"
+#~ msgid "Show items that recur weekly"
+#~ msgstr "Vertoon aktiwiteite wat herhaal weekliks in datum navigeerder"
+
+#, fuzzy
+#~ msgid "Hour size"
+#~ msgstr "Vakansie"
+
+#, fuzzy
+#~ msgid "Show icons in agenda view items"
+#~ msgstr "Vertoon slegs gekose"
+
+#, fuzzy
+#~ msgid "Display icons in agenda view items"
+#~ msgstr "Vertoon slegs gekose"
+
+#, fuzzy
+#~ msgid "Show to-dos"
+#~ msgstr "Vertoon To-Do"
+
+#, fuzzy
+#~ msgid "Display to-dos in the agenda view"
+#~ msgstr "Vertoon slegs gekose"
+
+#, fuzzy
+#~ msgid "Display the current-time indicator"
+#~ msgstr "Verstek afspraak tyd:"
+
+#, fuzzy
+#~ msgid "Show seconds on the current-time (Marcus Bains) line"
+#~ msgstr "Huidige Onderhouer"
+
+#, fuzzy
+#~ msgid "Display seconds with the current-time indicator"
+#~ msgstr "Huidige Onderhouer"
+
+#, fuzzy
+#~ msgid "Calendar inside, category outside"
+#~ msgstr "Ikalender"
+
+#, fuzzy
+#~ msgid "Only category"
+#~ msgstr "Katagoriee"
+
+#, fuzzy
+#~ msgid "Only calendar"
+#~ msgstr "Ikalender"
+
+#, fuzzy
+#~ msgid "Multiple Calendar Display"
+#~ msgstr "Aktiveer Kalender"
+
+#, fuzzy
+#~| msgid "Merged calendar '%1'."
+#~ msgid "Tab through calendars"
+#~ msgstr "Saamgevlans kalender '%1'."
+
+#, fuzzy
+#~ msgid "Show icons in month view items"
+#~ msgstr "Vertoon slegs gekose"
+
+#, fuzzy
+#~| msgid "Enable scrollbars in month view cells"
+#~ msgid "Display icons in month view items"
+#~ msgstr "Aktiveer rolbalk in maand besigtig selle"
+
+#, fuzzy
+#~ msgid "Show time in month view items"
+#~ msgstr "Vertoon slegs gekose"
+
+#, fuzzy
+#~| msgid "Enable scrollbars in month view cells"
+#~ msgid "Check this box to display the time in month view items."
+#~ msgstr "Aktiveer rolbalk in maand besigtig selle"
+
+#, fuzzy
+#~| msgid "Enable scrollbars in month view cells"
+#~ msgid "Display time in month view items"
+#~ msgstr "Aktiveer rolbalk in maand besigtig selle"
+
+#, fuzzy
+#~| msgid "Enable scrollbars in month view cells"
+#~ msgid "Check this box to display to-dos in the month view."
+#~ msgstr "Aktiveer rolbalk in maand besigtig selle"
+
+#, fuzzy
+#~| msgid "Enable scrollbars in month view cells"
+#~ msgid "Display to-dos in the month view"
+#~ msgstr "Aktiveer rolbalk in maand besigtig selle"
+
+#, fuzzy
+#~ msgid "Show journals"
+#~ msgstr "Joernaal"
+
+#, fuzzy
+#~| msgid "Enable scrollbars in month view cells"
+#~ msgid "Display journals in the month view"
+#~ msgstr "Aktiveer rolbalk in maand besigtig selle"
+
+#~ msgid "Month view uses full window"
+#~ msgstr "Maand besigtig gebruik volgrote venster"
+
+#, fuzzy
+#~ msgid "To-do list view uses full window"
+#~ msgstr "To-do besigtig gebruik volgrote venster"
+
+#, fuzzy
+#~ msgid "Display to-do list in a full KOrganizer window"
+#~ msgstr "To-do besigtig gebruik volgrote venster"
+
+#, fuzzy
+#~| msgid "Enable scrollbars in month view cells"
+#~ msgid "Display to-dos in a flat list"
+#~ msgstr "Aktiveer rolbalk in maand besigtig selle"
+
+#, fuzzy
+#~ msgid "Record completed to-dos in journal entries"
+#~ msgstr "Steek weg klaar to-dos"
+
+#, fuzzy
+#~ msgid "Holiday color"
+#~ msgstr "Vakansie kleur:"
+
+#, fuzzy
+#~ msgid "Agenda view background color"
+#~ msgstr "Agenda besigtig agtergrond kleur:"
+
+#, fuzzy
+#~ msgid "Select the agenda view background color here."
+#~ msgstr "Agenda besigtig agtergrond kleur:"
+
+#, fuzzy
+#~ msgid "Agenda view current-time line color"
+#~ msgstr "Verstek afspraak tyd:"
+
+#, fuzzy
+#~ msgid "Select a color to use for the current-time (Marcus Bains) line."
+#~ msgstr "Huidige Onderhouer"
+
+#, fuzzy
+#~ msgid "Use this color for the Agenda View current-time (Marcus Bains) line"
+#~ msgstr "Huidige Onderhouer"
+
+#, fuzzy
+#~ msgid "Busy days background color"
+#~ msgstr "Agenda besigtig agtergrond kleur:"
+
+#, fuzzy
+#~ msgid "Working hours color"
+#~ msgstr "Werksaam ure kleur:"
+
+#, fuzzy
+#~ msgid "Select the working hours color for the agenda view here."
+#~ msgstr "Agenda besigtig agtergrond kleur:"
+
+#, fuzzy
+#~ msgid "To-do due today color"
+#~ msgstr "Te-doen as gevolg vandag kleur:"
+
+#, fuzzy
+#~ msgid "Select the to-do due today color here."
+#~ msgstr "Te-doen as gevolg vandag kleur:"
+
+#, fuzzy
+#~ msgid "To-do overdue color"
+#~ msgstr "Te-doen as gevolg vandag kleur:"
+
+#, fuzzy
+#~ msgid "Select the to-do overdue color here."
+#~ msgstr "Te-doen as gevolg vandag kleur:"
+
+#, fuzzy
+#~ msgid "Time bar"
+#~ msgstr "Tyd kolom:"
+
+#, fuzzy
+#~ msgid "Month view"
+#~ msgstr "Maand besigtig:"
+
+#, fuzzy
+#~ msgid "Agenda view"
+#~ msgstr "Agenda besigtig:"
+
+#, fuzzy
+#~ msgid "Current-time line"
+#~ msgstr "Huidige Onderhouer"
+
+#, fuzzy
+#~ msgid "Default todo attachment method"
+#~ msgstr "Verstek afspraak tyd:"
+
+#, fuzzy
+#~ msgid "Attach complete message"
+#~ msgstr "Bywoners"
+
+#, fuzzy
+#~ msgid "Highlight color"
+#~ msgstr "Verlig kleur:"
+
+#, fuzzy
+#~ msgid "Month view background color"
+#~ msgstr "Agenda besigtig agtergrond kleur:"
+
+#, fuzzy
+#~ msgid "Select the Month view background color here."
+#~ msgstr "Agenda besigtig agtergrond kleur:"
+
+#, fuzzy
+#~ msgid "Select the working hours background color for the Month view here."
+#~ msgstr "Agenda besigtig agtergrond kleur:"
+
+#, fuzzy
+#~ msgid "Default event color"
+#~ msgstr "Verstek gebeurtenis kleur:"
+
+#, fuzzy
+#~ msgid "Search"
+#~ msgstr "Soektog In"
+
+#~ msgid "&New"
+#~ msgstr "Nuwe"
+
+#, fuzzy
+#~ msgid "Filter Details"
+#~ msgstr "Filter geaktiveer"
+
+#, fuzzy
+#~| msgid "Name:"
+#~ msgctxt "filter name"
+#~ msgid "Name:"
+#~ msgstr "Naam:"
+
+#, fuzzy
+#~ msgid "Hide &recurring events and to-dos"
+#~ msgstr "Steek weg herhalende aktiwiteite"
+
+#, fuzzy
+#~ msgid "Hide co&mpleted to-dos"
+#~ msgstr "Steek weg klaar to-dos"
+
+#, fuzzy
+#~ msgid "Hide &inactive to-dos"
+#~ msgstr "Steek weg klaar to-dos"
+
+#~ msgid "Categories"
+#~ msgstr "Katagoriee"
+
+#, fuzzy
+#~ msgid "Show all except selected"
+#~ msgstr "Vertoon alle maar gekose"
+
+#, fuzzy
+#~ msgid "Show only selected"
+#~ msgstr "Vertoon slegs gekose"
+
+#, fuzzy
+#~ msgid "Change..."
+#~ msgstr "Konfigureer..."
+
+#, fuzzy
+#~ msgid "P&ublish"
+#~ msgstr "Publiseer..."
+
+#, fuzzy
+#~ msgid "Publish your free/&busy information automatically"
+#~ msgstr "Publiseer Vry Besig Informasie"
+
+#, fuzzy
+#~ msgid "Publish"
+#~ msgstr "Publiseer..."
+
+#, fuzzy
+#~ msgid "days of free/busy information"
+#~ msgstr "Publiseer Vry Besig Informasie"
+
+#, fuzzy
+#~ msgid "Server Information"
+#~ msgstr "Publiseer Vry Besig Informasie"
+
+#, fuzzy
+#~ msgid "Password:"
+#~ msgstr "Wagwoord"
+
+#, fuzzy
+#~ msgctxt "login name on the Kolab server"
+#~ msgid "Username:"
+#~ msgstr "Gebruiker"
+
+#, fuzzy
+#~ msgid "Server URL:"
+#~ msgstr "Voorskou Url:"
+
+#, fuzzy
+#~ msgid "&Retrieve"
+#~ msgstr "Herhaal elke"
+
+#, fuzzy
+#~ msgid "Retrieve other people's free/&busy information automatically"
+#~ msgstr "Publiseer Vry Besig Informasie"
+
+#, fuzzy
+#~ msgid "User&name:"
+#~ msgstr "Gebruiker"
+
+#, fuzzy
+#~ msgid "Passwor&d:"
+#~ msgstr "Wagwoord"
+
+#, fuzzy
+#~ msgid "&Search for:"
+#~ msgstr "Soektog vir:"
+
+#, fuzzy
+#~ msgid "Search For"
+#~ msgstr "Soektog vir:"
+
+#, fuzzy
+#~ msgid "&Events"
+#~ msgstr "Aktiwiteite:"
+
+#, fuzzy
+#~ msgid "&Journals"
+#~ msgstr "Joernaal"
+
+#, fuzzy
+#~ msgid "To-&dos"
+#~ msgstr "To-do"
+
+#~ msgid "Search In"
+#~ msgstr "Soektog In"
+
+#, fuzzy
+#~ msgid "Cate&gories"
+#~ msgstr "Katagoriee"
+
+#, fuzzy
+#~ msgid "Locations"
+#~ msgstr "Ligging:"
+
+#, fuzzy
+#~ msgid "Include item descriptions in your search"
+#~ msgstr "Beskrywings"
+
+#, fuzzy
+#~ msgid "Desc&riptions"
+#~ msgstr "Beskrywings"
+
+#, fuzzy
+#~ msgid "Su&mmaries"
+#~ msgstr "Opsommings"
+
+#, fuzzy
+#~ msgid "Attendees"
+#~ msgstr "Bywoners"
+
+#, fuzzy
+#~ msgid "Fr&om:"
+#~ msgstr "Van:"
+
+#, fuzzy
+#~ msgid "Include items with a starting date on or after this date"
+#~ msgstr "Uitvee ou aktiwiteite"
+
+#, fuzzy
+#~ msgid "&To:"
+#~ msgstr "Na:"
+
+#, fuzzy
+#~ msgid "Include items with ending date on or before this date"
+#~ msgstr "Te-doen as gevolg vandag kleur:"
+
+#, fuzzy
+#~| msgid "Enable scrollbars in month view cells"
+#~ msgid ""
+#~ "Check this box to include To-dos without a due date in the search results."
+#~ msgstr "Aktiveer rolbalk in maand besigtig selle"
+
+#, fuzzy
+#~| msgid "Location: "
+#~ msgctxt "Collection: name collectionId"
+#~ msgid "Collection: %1(%2)"
+#~ msgstr "Ligging: "
+
+#, fuzzy
+#~ msgid "Person: %1"
+#~ msgstr "Herhaal: %1"
+
+#, fuzzy
+#~| msgid "KMail"
+#~ msgid "Mail: %1"
+#~ msgstr "Kpos"
+
+#, fuzzy
+#~| msgid "Organizer: %1"
+#~ msgid "Organization Unit: %1"
+#~ msgstr "Organiseerder: %1"
+
+#, fuzzy
+#~ msgid "Free/Busy calendar from %1"
+#~ msgstr "Uitvee To-Do"
+
+#, fuzzy
+#~| msgid "Day"
+#~ msgid "Day"
+#~ msgstr "Dag"
+
+#, fuzzy
+#~| msgid "Week"
+#~ msgid "Week"
+#~ msgstr "Week"
+
+#, fuzzy
+#~| msgid "Month"
+#~ msgid "Month"
+#~ msgstr "Maand"
+
+#, fuzzy
+#~ msgid "Agenda"
+#~ msgstr "Agenda besigtig:"
+
+#, fuzzy
+#~ msgid "Agenda %1"
+#~ msgstr "Agenda besigtig:"
+
+#, fuzzy
+#~ msgid "Title"
+#~ msgstr "Titel"
+
+#, fuzzy
+#~| msgid "New Calendar"
+#~ msgid "Selected Calendars"
+#~ msgstr "Nuwe Kalender"
+
+#, fuzzy
+#~ msgid "Scroll to week number %1"
+#~ msgstr "Besig om te druk"
+
+#, fuzzy
+#~ msgid "%1"
+#~ msgstr "%1 %"
+
+#, fuzzy
+#~ msgid "Calendar's custom icon"
+#~ msgstr "Ikalender"
+
+#, fuzzy
+#~ msgid "To-do"
+#~ msgstr "To-Do:"
+
+#, fuzzy
+#~| msgid "&Journal"
+#~ msgid "Journal"
+#~ msgstr "Joernaal"
+
+#, fuzzy
+#~ msgid "Recurring"
+#~ msgstr "Herhaling"
+
+#, fuzzy
+#~ msgid "Alarm"
+#~ msgstr "Alarm"
+
+#, fuzzy
+#~| msgid "read-only"
+#~ msgid "Read Only"
+#~ msgstr "lees-alleen"
+
+#, fuzzy
+#~ msgid "Attending"
+#~ msgstr "Ontmoeting"
+
+#, fuzzy
+#~| msgid "KOrganizer"
+#~ msgid "Organizer"
+#~ msgstr "Korganizer"
+
+#, fuzzy
+#~ msgid "Select a month"
+#~ msgstr "Kies Modus"
+
+#, fuzzy
+#~ msgid "Select a year"
+#~ msgstr "Kies Modus"
+
+#, fuzzy
+#~ msgctxt "monthname"
+#~ msgid "%1"
+#~ msgstr "%1 %"
+
+#, fuzzy
+#~ msgctxt "4 digit year"
+#~ msgid "%1"
+#~ msgstr "%1 %"
+
+#, fuzzy
+#~| msgid "*.ics|ICalendars"
+#~ msgid "*.ics|iCalendars"
+#~ msgstr "*.ics|Ikalenders"
+
+#, fuzzy
+#~ msgid "*.vcs|vCalendars"
+#~ msgstr "*.ics|Ikalenders"
+
+#~ msgid "Enable scrollbars in month view cells"
+#~ msgstr "Aktiveer rolbalk in maand besigtig selle"
+
+#, fuzzy
+#~ msgid ""
+#~ "<p>...that you can select whether the week starts on Monday or on Sunday "
+#~ "in the System Settings? KOrganizer uses this setting. Look at \n"
+#~ "Locale->Country/Region & Languages in the System Settings, or select "
+#~ "<b>Settings</b>,\n"
+#~ "<b>Configure Date & Time...</b> from the menu bar. Select the Calendar "
+#~ "tab.\n"
+#~ "</p>\n"
+#~ msgstr ""
+#~ "<p>...wat jy kan kies hetsy die week beginne op Maandag of op Sondag in "
+#~ "die Kde\n"
+#~ "Kontrole Sentrum? Korganizer gebruik hierdie opset. Kyk na "
+#~ "Verpersoonliking -> Land \n"
+#~ "Tale, op die Tyd & Datums oortjie.\n"
+
+#, fuzzy
+#~ msgid ""
+#~ "<p>...that you can create hierarchical to-dos by clicking with the right "
+#~ "mouse button on an existing to-do and selecting <b>New Sub-to-do</b> from "
+#~ "the context menu?\n"
+#~ "</p>\n"
+#~ msgstr ""
+#~ "<p>...wat jy kan skep hiërargiese To-Dos deur te kliek met die regterkant "
+#~ "muis\n"
+#~ "knoppie op 'n bestaande To-Do en deur te kies \"Nuwe Sub-To-Do\" van die "
+#~ "konteks kieslys?\n"
+
+#, fuzzy
+#~ msgid "KOrgPlugins"
+#~ msgstr "Beskrywings"
+
+#, fuzzy
+#~ msgid "Import Calendar/Event"
+#~ msgstr "Ikalender"
+
+#, fuzzy
+#~ msgid "&Add as new calendar..."
+#~ msgstr "Nuwe Kalender"
+
+#, fuzzy
+#~ msgid "&Add as new calendar"
+#~ msgstr "Nuwe Kalender"
+
+#, fuzzy
+#~ msgid "*.vcs *.ics|Calendar Files"
+#~ msgstr "*.vcs *.ics|Kalender lêers"
+
+#, fuzzy
+#~| msgid "New Calendar"
+#~ msgid "Select path for new calendar"
+#~ msgstr "Nuwe Kalender"
+
+#~ msgid "Set Your Status"
+#~ msgstr "Stel Jou Status"
+
+#~ msgid "Set your status"
+#~ msgstr "Stel jou status"
+
+#, fuzzy
+#~ msgid "A&dd..."
+#~ msgstr "Voeg by Filter..."
+
+#, fuzzy
+#~| msgid "&Edit..."
+#~ msgid "&Modify..."
+#~ msgstr "Redigeer..."
+
+#, fuzzy
+#~ msgid "R&emove"
+#~ msgstr "Werkvoorbeeld..."
+
+#, fuzzy
+#~ msgid "Do you want to remove account '%1'?"
+#~ msgstr "Nie moontlik na skep lêer na oplaai"
+
+#, fuzzy
+#~ msgid "Remove account?"
+#~ msgstr "Bywoners"
+
+#~ msgid "Select Addresses"
+#~ msgstr "Kies Adresse"
+
+#, fuzzy
+#~ msgid "Add a new recipient"
+#~ msgstr "Uitvee To-Do"
+
+#, fuzzy
+#~ msgid "&Remove"
+#~ msgstr "Werkvoorbeeld..."
+
+#, fuzzy
+#~ msgid "&Select..."
+#~ msgstr "Kies Adresse"
+
+#, fuzzy
+#~| msgid "Name:"
+#~ msgctxt "recipient name"
+#~ msgid "Name:"
+#~ msgstr "Naam:"
+
+#, fuzzy
+#~| msgid "Email:"
+#~ msgctxt "recipient email"
+#~ msgid "Email:"
+#~ msgstr "E-pos:"
+
+#, fuzzy
+#~| msgid "Additional email address:"
+#~ msgid "The recipient's email address"
+#~ msgstr "Aditionele e-pos adres:"
+
+#, fuzzy
+#~ msgid "Also &Future Items"
+#~ msgstr "Uitvee Huidige"
+
+#, fuzzy
+#~ msgid "Changing Recurring Item"
+#~ msgstr "Hierdie is 'n herhalende gebeurtenis."
+
+#, fuzzy
+#~ msgid "&All Occurrences"
+#~ msgstr "voorkoms(s)"
+
+#, fuzzy
+#~| msgid "KOrganizer Timezone Test"
+#~ msgid "KOrganizer Theming Stub"
+#~ msgstr "Korganizer Tydsone Toets"
+
+#, fuzzy
+#~ msgctxt "@title:group"
+#~ msgid "Print Plugins"
+#~ msgstr "Gebeurtenis lys"
+
+#, fuzzy
+#~ msgid "Date && Time Range"
+#~ msgstr "Datum && Tyd"
+
+#, fuzzy
+#~ msgid "&Start date:"
+#~ msgstr "Begin datum"
+
+#, fuzzy
+#~ msgid "&End date:"
+#~ msgstr "Einde datum"
+
+#, fuzzy
+#~ msgid "&To-dos"
+#~ msgstr "To-do"
+
+#, fuzzy
+#~ msgid "Print Item list"
+#~ msgstr "Gebeurtenis lys"
+
+#, fuzzy
+#~ msgid "&All journal entries"
+#~ msgstr "Joernaal"
+
+#, fuzzy
+#~ msgid "Date &range:"
+#~ msgstr "Datum Omvang"
+
+#, fuzzy
+#~ msgid "Journal entries"
+#~ msgstr "Joernaal"
+
+#, fuzzy
+#~ msgid "Print &journal"
+#~ msgstr "Joernaal"
+
+#, fuzzy
+#~ msgid "Print What's Next"
+#~ msgstr "Wat is Volgende"
+
+#, fuzzy
+#~ msgid "Yearly Print Options"
+#~ msgstr "Ligging:"
+
+#, fuzzy
+#~ msgid "Print &year:"
+#~ msgstr "Besig om te druk"
+
+#, fuzzy
+#~ msgid "Display Options"
+#~ msgstr "Daagliks"
+
+#, fuzzy
+#~ msgid "Time Boxes"
+#~ msgstr "Tydsone:"
+
+#, fuzzy
+#~ msgctxt ""
+#~ "date from -\n"
+#~ "to"
+#~ msgid ""
+#~ "%1 -\n"
+#~ "%2"
+#~ msgstr "%1 %"
+
+#, fuzzy
+#~ msgid "Print &year"
+#~ msgstr "Besig om te druk"
+
+#, fuzzy
+#~ msgid "Start &time:"
+#~ msgstr "Begin Tyd"
+
+#, fuzzy
+#~ msgid "End ti&me:"
+#~ msgstr "Einde Tyd"
+
+#, fuzzy
+#~ msgid "Print Layout"
+#~ msgstr "Ikalender"
+
+#, fuzzy
+#~| msgid "Exclude holidays"
+#~ msgid "Exclude c&onfidential"
+#~ msgstr "Sluit uit vakansies"
+
+#, fuzzy
+#~| msgid "Exclude holidays"
+#~ msgid "Exclude pri&vate"
+#~ msgstr "Sluit uit vakansies"
+
+#, fuzzy
+#~ msgid "Include Information"
+#~ msgstr "Publiseer Vry Besig Informasie"
+
+#, fuzzy
+#~ msgid "Include &descriptions"
+#~ msgstr "Beskrywings"
+
+#, fuzzy
+#~ msgid "Print item descriptions"
+#~ msgstr "Beskrywings"
+
+#, fuzzy
+#~| msgid "General"
+#~ msgctxt "@title general print settings"
+#~ msgid "General"
+#~ msgstr "Algemeen"
+
+#, fuzzy
+#~ msgid "Show note &lines"
+#~ msgstr "Vertoon tyd as:"
+
+#, fuzzy
+#~ msgid "Print &Footer"
+#~ msgstr "Besig om te druk"
+
+#, fuzzy
+#~ msgid "Print in color"
+#~ msgstr "Besig om te druk"
+
+#, fuzzy
+#~ msgid "Start date: "
+#~ msgstr "Begin datum"
+
+#, fuzzy
+#~ msgid "End date: "
+#~ msgstr "Einde datum"
+
+#~ msgid "Duration: "
+#~ msgstr "Duur: "
+
+#, fuzzy
+#~ msgid "1 hour "
+#~ msgid_plural "%1 hours "
+#~ msgstr[0] "1 uur"
+#~ msgstr[1] "%1 ure"
+
+#, fuzzy
+#~ msgid "1 minute "
+#~ msgid_plural "%1 minutes "
+#~ msgstr[0] "1 minuut"
+#~ msgstr[1] "%1 minute"
+
+#, fuzzy
+#~ msgid "No end date"
+#~ msgstr "Nee wat eindig datum"
+
+#, fuzzy
+#~ msgid "Due date: "
+#~ msgstr "As gevolg datums"
+
+#, fuzzy
+#~ msgid "No due date"
+#~ msgstr "As gevolg datums"
+
+#, fuzzy
+#~| msgid "Accept"
+#~ msgctxt "except for listed dates"
+#~ msgid " except"
+#~ msgstr "Aanvaar"
+
+#, fuzzy
+#~ msgid "Repeats: "
+#~ msgstr "Moet nooit"
+
+#, fuzzy
+#~ msgid "Reminder: "
+#~ msgid_plural "%1 reminders: "
+#~ msgstr[0] "1 minuut"
+#~ msgstr[1] "%1 minute"
+
+#, fuzzy
+#~ msgid "1 hour"
+#~ msgid_plural "%1 hours"
+#~ msgstr[0] "1 uur"
+#~ msgstr[1] "%1 ure"
+
+#, fuzzy
+#~ msgid "Organizer: "
+#~ msgstr "Organiseerder: %1"
+
+#~ msgid "Location: "
+#~ msgstr "Ligging: "
+
+#, fuzzy
+#~ msgid "No Subitems"
+#~ msgstr "Vertoon Filter"
+
+#, fuzzy
+#~ msgctxt "subitem start date"
+#~ msgid "Start Date: %1\n"
+#~ msgstr "Begin datum"
+
+#, fuzzy
+#~| msgid "Start Time"
+#~ msgctxt "subitem start time"
+#~ msgid "Start Time: %1\n"
+#~ msgstr "Begin Tyd"
+
+#, fuzzy
+#~ msgctxt "subitem due date"
+#~ msgid "Due Date: %1\n"
+#~ msgstr "As gevolg datums"
+
+#, fuzzy
+#~ msgctxt "subitem due time"
+#~ msgid "Due Time: %1\n"
+#~ msgstr "Tydsone:"
+
+#, fuzzy
+#~ msgctxt "subitem counter"
+#~ msgid "%1: "
+#~ msgstr "%1 %"
+
+#, fuzzy
+#~ msgctxt "subitem Status: statusString"
+#~ msgid "Status: %1\n"
+#~ msgstr "Begin:"
+
+#, fuzzy
+#~ msgctxt "subitem Secrecy: secrecyString"
+#~ msgid "Secrecy: %1\n"
+#~ msgstr "Opsomming: %1"
+
+#, fuzzy
+#~ msgid "No Attachments"
+#~ msgstr "Bywoners"
+
+#, fuzzy
+#~ msgid "1 Attachment:"
+#~ msgid_plural "%1 Attachments:"
+#~ msgstr[0] "Bywoners"
+#~ msgstr[1] "Bywoners"
+
+#, fuzzy
+#~ msgid "No Attendees"
+#~ msgstr "Bywoners"
+
+#, fuzzy
+#~ msgid "1 Attendee:"
+#~ msgid_plural "%1 Attendees:"
+#~ msgstr[0] "1 minuut"
+#~ msgstr[1] "%1 minute"
+
+#, fuzzy
+#~ msgid "Status: %1"
+#~ msgstr "Begin:"
+
+#, fuzzy
+#~ msgid "Secrecy: %1"
+#~ msgstr "Opsomming: %1"
+
+#, fuzzy
+#~ msgid "Categories: "
+#~ msgstr "Katagoriee"
+
+#, fuzzy
+#~ msgctxt "date from-to"
+#~ msgid "%1 - %2"
+#~ msgstr "%1 %2"
+
+#, fuzzy
+#~ msgctxt ""
+#~ "date from-\n"
+#~ "to"
+#~ msgid ""
+#~ "%1 -\n"
+#~ "%2"
+#~ msgstr "%1 %"
+
+#, fuzzy
+#~| msgid "Find Events"
+#~ msgid "Today's Events"
+#~ msgstr "Soek Aktiwiteite"
+
+#, fuzzy
+#~ msgctxt "summary, location"
+#~ msgid "%1, %2"
+#~ msgstr "%1 %2"
+
+#, fuzzy
+#~ msgctxt "date from - to (week number)"
+#~ msgid "%1 - %2 (Week %3)"
+#~ msgstr "%1 %2"
+
+#, fuzzy
+#~ msgctxt ""
+#~ "date from -\n"
+#~ "to (week number)"
+#~ msgid ""
+#~ "%1 -\n"
+#~ "%2 (Week %3)"
+#~ msgstr "%1 %2"
+
+#, fuzzy
+#~ msgctxt "@option sort by title"
+#~ msgid "Title"
+#~ msgstr "Titel"
+
+#, fuzzy
+#~| msgid "Start Date"
+#~ msgctxt "@option sort by start date/time"
+#~ msgid "Start Date"
+#~ msgstr "Begin Datum"
+
+#, fuzzy
+#~ msgctxt "@option sort by due date/time"
+#~ msgid "Due Date"
+#~ msgstr "As gevolg datums"
+
+#, fuzzy
+#~| msgid "Priority"
+#~ msgctxt "@option sort by priority"
+#~ msgid "Priority"
+#~ msgstr "Prioriteit"
+
+#, fuzzy
+#~ msgctxt "@option sort by percent completed"
+#~ msgid "Percent Complete"
+#~ msgstr "Volledige"
+
+#, fuzzy
+#~ msgctxt "@option sort in increasing order"
+#~ msgid "Ascending"
+#~ msgstr "Ontmoeting"
+
+#, fuzzy
+#~ msgctxt "@option sort in descreasing order"
+#~ msgid "Descending"
+#~ msgstr "Ontmoeting"
+
+#~ msgid "To-do list"
+#~ msgstr "To-do lys"
+
+#~ msgid "Priority"
+#~ msgstr "Prioriteit"
+
+#, fuzzy
+#~ msgctxt "@label to-do summary"
+#~ msgid "Title"
+#~ msgstr "Titel"
+
+#, fuzzy
+#~| msgid "Complete"
+#~ msgctxt "@label to-do percentage complete"
+#~ msgid "Complete"
+#~ msgstr "Volledige"
+
+#, fuzzy
+#~ msgid "Print &incidence"
+#~ msgstr "Besig om te druk"
+
+#, fuzzy
+#~ msgid "Print da&y"
+#~ msgstr "Ikalender"
+
+#, fuzzy
+#~ msgid "Print &week"
+#~ msgstr "Besig om te druk"
+
+#, fuzzy
+#~ msgid "Print mont&h"
+#~ msgstr "Vorige Maand"
+
+#, fuzzy
+#~ msgid "Print to-&dos"
+#~ msgstr "(nee tedoenne)\n"
+
+#, fuzzy
+#~ msgid "Prints all to-dos in a (tree-like) list"
+#~ msgstr "(nee tedoenne)\n"
+
+#, fuzzy
+#~ msgctxt "@title:window"
+#~ msgid "Printing error"
+#~ msgstr "Besig om te druk"
+
+#, fuzzy
+#~ msgctxt "@title:window"
+#~ msgid "Print"
+#~ msgstr "Ikalender"
+
+#, fuzzy
+#~ msgctxt "@title:group"
+#~ msgid "Print Style"
+#~ msgstr "Gebeurtenis lys"
+
+#, fuzzy
+#~ msgctxt "@label"
+#~ msgid "Page &orientation:"
+#~ msgstr "Ligging:"
+
+#, fuzzy
+#~ msgctxt "@info:tooltip"
+#~ msgid "Set the print orientation"
+#~ msgstr "Begin Tyd"
+
+#, fuzzy
+#~ msgctxt "@item:inlistbox"
+#~ msgid "Use Default Orientation of Selected Style"
+#~ msgstr "Gebruik e-pos instellings van Kontrole Sentrum"
+
+#, fuzzy
+#~ msgctxt "@item:inlistbox"
+#~ msgid "Portrait"
+#~ msgstr "Prioriteit"
+
+#, fuzzy
+#~ msgctxt "@info:tooltip"
+#~ msgid "Select the type of print"
+#~ msgstr "Katagoriee..."
+
+#, fuzzy
+#~| msgid "&Preview"
+#~ msgctxt "@action:button"
+#~ msgid "&Preview"
+#~ msgstr "Voorskou"
+
+#, fuzzy
+#~ msgid "Print incidence details"
+#~ msgstr "Besig om te druk"
+
+#, fuzzy
+#~ msgid "&Attendees"
+#~ msgstr "Bywoners"
+
+#, fuzzy
+#~ msgid "Print the attendees"
+#~ msgstr "1 minuut"
+
+#, fuzzy
+#~ msgid "&Notes, subitems"
+#~ msgstr "Vertoon Filter"
+
+#, fuzzy
+#~ msgid "Print the notes"
+#~ msgstr "Besig om te druk"
+
+#, fuzzy
+#~ msgid "Attach&ments"
+#~ msgstr "Bywoners"
+
+#, fuzzy
+#~ msgid "Print the attachments"
+#~ msgstr "Redigeer Gebeurtenis"
+
+#, fuzzy
+#~ msgid "&Start month:"
+#~ msgstr "Begin:"
+
+#, fuzzy
+#~ msgid "&End month:"
+#~ msgstr "Einde:"
+
+#, fuzzy
+#~| msgid "Exclude holidays"
+#~ msgid "Exclude confidential items"
+#~ msgstr "Sluit uit vakansies"
+
+#, fuzzy
+#~| msgid "Exclude holidays"
+#~ msgid "Exclude private items"
+#~ msgstr "Sluit uit vakansies"
+
+#, fuzzy
+#~ msgid "Print daily recurring items"
+#~ msgstr "Steek weg herhalende aktiwiteite"
+
+#, fuzzy
+#~ msgid "Include daily re&curring to-dos and events"
+#~ msgstr "Steek weg herhalende aktiwiteite"
+
+#, fuzzy
+#~ msgid "Print weekly recurring items"
+#~ msgstr "Steek weg herhalende aktiwiteite"
+
+#, fuzzy
+#~ msgid "Include weekl&y recurring to-dos and events"
+#~ msgstr "Steek weg herhalende aktiwiteite"
+
+#, fuzzy
+#~ msgid "Print week numbers"
+#~ msgstr "Besig om te druk"
+
+#, fuzzy
+#~ msgid "Print week &numbers"
+#~ msgstr "Besig om te druk"
+
+#, fuzzy
+#~ msgctxt "starttime - endtime summary"
+#~ msgid "%1-%2 %3"
+#~ msgstr "%1 %2"
+
+#, fuzzy
+#~ msgctxt "starttime - endtime summary, location"
+#~ msgid "%1-%2 %3, %4"
+#~ msgstr "%1 %2"
+
+#, fuzzy
+#~ msgctxt "to-do summary (Due: datetime)"
+#~ msgid "%1 (Due: %2)"
+#~ msgstr "As gevolg:"
+
+#, fuzzy
+#~ msgctxt "to-do summary (Due: date)"
+#~ msgid "%1 (Due: %2)"
+#~ msgstr "As gevolg:"
+
+#, fuzzy
+#~ msgid "To-do: %1"
+#~ msgstr "To-Do: %1"
+
+#, fuzzy
+#~ msgid "%1%"
+#~ msgstr "%1 %"
+
+#, fuzzy
+#~ msgctxt "Description - date"
+#~ msgid "%1 - %2"
+#~ msgstr "%1 %"
+
+#, fuzzy
+#~ msgid "Name for this to-do list"
+#~ msgstr "Stel Jou Status"
+
+#, fuzzy
+#~ msgid "To-dos to Print"
+#~ msgstr "To-do lys"
+
+#, fuzzy
+#~ msgid "Print &all to-dos"
+#~ msgstr "(nee tedoenne)\n"
+
+#, fuzzy
+#~ msgid "&Priority"
+#~ msgstr "Prioriteit:"
+
+#, fuzzy
+#~ msgid "Due date"
+#~ msgstr "As gevolg datums"
+
+#, fuzzy
+#~ msgid "Per&centage completed"
+#~ msgstr "Volledige"
+
+#, fuzzy
+#~ msgid "Sorting Options"
+#~ msgstr "Ligging:"
+
+#, fuzzy
+#~ msgid "Sort field:"
+#~ msgstr "Sorteer Id"
+
+#, fuzzy
+#~ msgid "Sort direction:"
+#~ msgstr "Ligging:"
+
+#, fuzzy
+#~ msgid "Strike &out completed to-do summaries"
+#~ msgstr "Steek weg klaar to-dos"
+
+#, fuzzy
+#~ msgid "Starting date for the print"
+#~ msgstr "Uitvee ou aktiwiteite"
+
+#, fuzzy
+#~ msgctxt "@title:window"
+#~ msgid "Reminders"
+#~ msgstr "Herhindering:"
+
+#, fuzzy
+#~ msgctxt "@action:button"
+#~ msgid "Dismiss Reminder"
+#~ msgstr "Daagliks"
+
+#, fuzzy
+#~ msgctxt "@action:button"
+#~ msgid "Dismiss All"
+#~ msgstr "Daagliks"
+
+#, fuzzy
+#~| msgid "Edit..."
+#~ msgctxt "@action:button"
+#~ msgid "Edit..."
+#~ msgstr "Redigeer..."
+
+#, fuzzy
+#~ msgctxt "@action:button"
+#~ msgid "Suspend"
+#~ msgstr "Sun"
+
+#, fuzzy
+#~ msgctxt "@title:column reminder title"
+#~ msgid "Title"
+#~ msgstr "Titel"
+
+#, fuzzy
+#~| msgid "Date && Time"
+#~ msgctxt "@title:column happens at date/time"
+#~ msgid "Date Time"
+#~ msgstr "Datum && Tyd"
+
+#, fuzzy
+#~ msgctxt "@title:column trigger date/time"
+#~ msgid "Trigger Time"
+#~ msgstr "As gevolg Tyd"
+
+#, fuzzy
+#~ msgctxt "@info:tooltip"
+#~ msgid "The date/time the reminder was triggered"
+#~ msgstr "Verstek alarm tyd:"
+
+#, fuzzy
+#~ msgctxt "@label:spinbox"
+#~ msgid "Suspend &duration:"
+#~ msgstr "Stoor interval in minute:"
+
+#, fuzzy
+#~| msgid "minute(s)"
+#~ msgctxt "@item:inlistbox suspend in terms of minutes"
+#~ msgid "minute(s)"
+#~ msgstr "minuut(s)"
+
+#, fuzzy
+#~| msgid "hour(s)"
+#~ msgctxt "@item:inlistbox suspend in terms of hours"
+#~ msgid "hour(s)"
+#~ msgstr "uur(s)"
+
+#, fuzzy
+#~| msgid "day(s)"
+#~ msgctxt "@item:inlistbox suspend in terms of days"
+#~ msgid "day(s)"
+#~ msgstr "dag(s)"
+
+#, fuzzy
+#~ msgctxt "@item:inlistbox suspend in terms of weeks"
+#~ msgid "week(s)"
+#~ msgstr "week(s) op:"
+
+#, fuzzy
+#~| msgid "Edit..."
+#~ msgctxt "@label an elipsis"
+#~ msgid "..."
+#~ msgstr "Redigeer..."
+
+#, fuzzy
+#~ msgctxt "@title"
+#~ msgid "Reminder"
+#~ msgstr "Herhindering:"
+
+#, fuzzy
+#~ msgctxt "@title"
+#~ msgid "Reminder: %1"
+#~ msgstr "1 minuut"
+
+#, fuzzy
+#~ msgctxt "@info"
+#~ msgid "Could not start KOrganizer so editing is not possible."
+#~ msgstr "Kon nie las kalender '%1'.\n"
+
+#, fuzzy
+#~ msgctxt "@title:window"
+#~ msgid "KOrganizer Reminder Daemon"
+#~ msgstr "Korganizer Bevestiging"
+
+#, fuzzy
+#~ msgctxt "@action:inmenu"
+#~ msgid "Suspend All Reminders"
+#~ msgstr "Sun"
+
+#, fuzzy
+#~ msgctxt "@action:inmenu"
+#~ msgid "Dismiss All Reminders"
+#~ msgstr "Daagliks"
+
+#, fuzzy
+#~ msgctxt "@action:inmenu"
+#~ msgid "Enable Reminders"
+#~ msgstr "Herhindering:"
+
+#, fuzzy
+#~ msgctxt "@action:inmenu"
+#~ msgid "Start Reminder Daemon at Login"
+#~ msgstr "Korganizer Kalender"
+
+#, fuzzy
+#~ msgctxt "@info:status"
+#~ msgid "There is 1 active reminder."
+#~ msgid_plural "There are %1 active reminders."
+#~ msgstr[0] "Herhindering:"
+#~ msgstr[1] "Herhindering:"
+
+#, fuzzy
+#~ msgctxt "@info:status"
+#~ msgid "No active reminders."
+#~ msgstr "Herhindering:"
+
+#, fuzzy
+#~ msgctxt "@title:window"
+#~ msgid "Close KOrganizer Reminder Daemon"
+#~ msgstr "Korganizer Bevestiging"
+
+#, fuzzy
+#~ msgctxt "@action:button start the reminder daemon"
+#~ msgid "Start"
+#~ msgstr "Begin:"
+
+#, fuzzy
+#~ msgctxt "@action:button do not start the reminder daemon"
+#~ msgid "Do Not Start"
+#~ msgstr "Maand besigtig:"
+
+#, fuzzy
+#~ msgid "KOrganizer Reminder Daemon"
+#~ msgstr "Korganizer Bevestiging"
+
+#, fuzzy
+#~ msgid "Free Busy Object"
+#~ msgstr "Vry Besig Voorwerp"
+
+#, fuzzy
+#~ msgid "Free Busy Message"
+#~ msgstr "Stuur Boodskappe"
+
+#, fuzzy
+#~ msgctxt "@info"
+#~ msgid "Unable to purge to-dos with uncompleted children."
+#~ msgstr "Kan nie uitvee To-Do wat het kinders."
+
+#, fuzzy
+#~ msgid "Delete To-do"
+#~ msgstr "Uitvee To-Do"
+
+#, fuzzy
+#~ msgid ""
+#~ "KOrganizer successfully imported and merged your .calendar file from ical "
+#~ "into the currently opened calendar."
+#~ msgstr ""
+#~ "Korganizer suksesvol ingevoer en saamgevlans jou .kalender lêer van ical "
+#~ "binnein die huidiglik geöpende kalender."
+
+#, fuzzy
+#~ msgid "ICal Import Successful with Warning"
+#~ msgstr "Ical In voer Suksesvol Met Waarskuwing"
+
+#, fuzzy
+#~ msgid "New calendar '%1'."
+#~ msgstr "Gestoor kalender '%1'."
+
+#, fuzzy
+#~ msgid "Could not load calendar '%1'."
+#~ msgstr "Kon nie las kalender '%1'.\n"
+
+#, fuzzy
+#~ msgid "Filter Applied"
+#~ msgstr "Filter geaktiveer"
+
+#, fuzzy
+#~ msgid "Cut Only This"
+#~ msgstr "Uitvee ou aktiwiteite"
+
+#, fuzzy
+#~ msgid "Copy Only This"
+#~ msgstr "Uitvee ou aktiwiteite"
+
+#, fuzzy
+#~ msgid "Delete %1"
+#~ msgstr "Uitvee Gebeurtenis"
+
+#, fuzzy
+#~ msgid "Add %1"
+#~ msgstr "Voeg by Filter..."
+
+#, fuzzy
+#~ msgid "Edit %1"
+#~ msgstr "Einde Tyd: %1"
+
+#, fuzzy
+#~| msgid "Additional email addresses:"
+#~ msgctxt "@label"
+#~ msgid "Additional email addresses:"
+#~ msgstr "Aditionele e-pos adresse:"
+
+#, fuzzy
+#~| msgid "Additional email address:"
+#~ msgctxt "@label"
+#~ msgid "Additional email address:"
+#~ msgstr "Aditionele e-pos adres:"
+
+#, fuzzy
+#~| msgid "New"
+#~ msgctxt "@action:button add a new email address"
+#~ msgid "New"
+#~ msgstr "Nuwe"
+
+#, fuzzy
+#~ msgctxt "@action:button"
+#~ msgid "Remove"
+#~ msgstr "Werkvoorbeeld..."
+
+#, fuzzy
+#~ msgid "Edit this journal entry"
+#~ msgstr "Uitvee ou aktiwiteite"
+
+#, fuzzy
+#~ msgid "Opens an editor dialog for this journal entry"
+#~ msgstr "Uitvee ou aktiwiteite"
+
+#, fuzzy
+#~ msgid "Delete this journal entry"
+#~ msgstr "Uitvee ou aktiwiteite"
+
+#, fuzzy
+#~ msgid "&Print"
+#~ msgstr "Ikalender"
+
+#, fuzzy
+#~ msgid "Print this journal entry"
+#~ msgstr "Uitvee ou aktiwiteite"
+
+#, fuzzy
+#~ msgid "Opens a print dialog for this journal entry"
+#~ msgstr "Uitvee ou aktiwiteite"
+
+#, fuzzy
+#~ msgid "Time Tracker"
+#~ msgstr "Tyd kolom:"
+
+#, fuzzy
+#~ msgid "No category"
+#~ msgstr "Katagoriee"
+
+#, fuzzy
+#~ msgctxt "number of hours spent"
+#~ msgid "%1 hour"
+#~ msgid_plural "%1 hours"
+#~ msgstr[0] "1 uur"
+#~ msgstr[1] "%1 ure"
+
+#, fuzzy
+#~ msgctxt "percent of hours spent"
+#~ msgid " (%1%)"
+#~ msgstr "%1 %"
+
+#, fuzzy
+#~ msgctxt "@action:inmenu Unspecified priority"
+#~ msgid "unspecified"
+#~ msgstr "Ligging: "
+
+#, fuzzy
+#~ msgctxt "@action:inmenu highest priority"
+#~ msgid "1 (highest)"
+#~ msgstr "1 (Hoogste)"
+
+#, fuzzy
+#~| msgid "2"
+#~ msgctxt "@action:inmenu"
+#~ msgid "2"
+#~ msgstr "2"
+
+#, fuzzy
+#~| msgid "3"
+#~ msgctxt "@action:inmenu"
+#~ msgid "3"
+#~ msgstr "3"
+
+#, fuzzy
+#~| msgid "4"
+#~ msgctxt "@action:inmenu"
+#~ msgid "4"
+#~ msgstr "4"
+
+#, fuzzy
+#~ msgctxt "@action:inmenu lowest priority"
+#~ msgid "9 (lowest)"
+#~ msgstr "5 (laagste)"
+
+#, fuzzy
+#~ msgctxt "delimiter for joining category names"
+#~ msgid ","
+#~ msgstr ", "
+
+#~ msgid "Summary"
+#~ msgstr "Opsomming"
+
+#~ msgid "Recurs"
+#~ msgstr "Herhaal"
+
+#, fuzzy
+#~| msgid "Complete"
+#~ msgctxt "@title:column percent complete"
+#~ msgid "Complete"
+#~ msgstr "Volledige"
+
+#, fuzzy
+#~ msgid "Due Date/Time"
+#~ msgstr "As gevolg Tyd"
+
+#, fuzzy
+#~ msgid "Description"
+#~ msgstr "Beskrywings"
+
+#, fuzzy
+#~ msgid "Cannot move to-do to itself or a child of itself."
+#~ msgstr "Kan nie beweeg na-Do na self van 'n kind van self"
+
+#, fuzzy
+#~ msgid "Drop To-do"
+#~ msgstr "Laat val To-Do"
+
+#, fuzzy
+#~ msgctxt "@info:tooltip"
+#~ msgid "Display to-do list in a full window"
+#~ msgstr "To-do besigtig gebruik volgrote venster"
+
+#, fuzzy
+#~| msgid "&Show"
+#~ msgctxt "@action:inmenu show the to-do"
+#~ msgid "&Show"
+#~ msgstr "Vertoon"
+
+#, fuzzy
+#~| msgid "&Edit..."
+#~ msgctxt "@action:inmenu edit the to-do"
+#~ msgid "&Edit..."
+#~ msgstr "Redigeer..."
+
+#, fuzzy
+#~ msgctxt "@action:inmenu print the to-do"
+#~ msgid "&Print..."
+#~ msgstr "Redigeer..."
+
+#, fuzzy
+#~ msgctxt "@action:inmenu print preview the to-do"
+#~ msgid "Print Previe&w..."
+#~ msgstr "Redigeer..."
+
+#, fuzzy
+#~ msgctxt "@action:inmenu delete the to-do"
+#~ msgid "&Delete"
+#~ msgstr "Uitvee Gebeurtenis"
+
+#, fuzzy
+#~ msgctxt "@action:inmenu create a new to-do"
+#~ msgid "New &To-do..."
+#~ msgstr "Nuwe To-Do..."
+
+#, fuzzy
+#~ msgctxt "@action:inmenu create a new sub-to-do"
+#~ msgid "New Su&b-to-do..."
+#~ msgstr "Nuwe Sub-To-Do..."
+
+#, fuzzy
+#~ msgctxt "@action:inmenu"
+#~ msgid "&Make this To-do Independent"
+#~ msgstr "Maak Sub-To-Do Onafhanklike"
+
+#, fuzzy
+#~ msgctxt "@action:inmenu"
+#~ msgid "Make all Sub-to-dos &Independent"
+#~ msgstr "Maak Sub-To-Do Onafhanklike"
+
+#, fuzzy
+#~ msgctxt "@title:menu"
+#~ msgid "&Move To"
+#~ msgstr "nee tyd"
+
+#, fuzzy
+#~ msgctxt "@action:inmenu delete completed to-dos"
+#~ msgid "Pur&ge Completed"
+#~ msgstr "Maak skoon Klaar"
+
+#, fuzzy
+#~ msgctxt "@action:inmenu unspecified priority"
+#~ msgid "unspecified"
+#~ msgstr "Ligging: "
+
+#, fuzzy
+#~| msgid "2"
+#~ msgctxt "@action:inmenu priority value=2"
+#~ msgid "2"
+#~ msgstr "2"
+
+#, fuzzy
+#~| msgid "3"
+#~ msgctxt "@action:inmenu priority value=3"
+#~ msgid "3"
+#~ msgstr "3"
+
+#, fuzzy
+#~| msgid "4"
+#~ msgctxt "@action:inmenu priority value=4"
+#~ msgid "4"
+#~ msgstr "4"
+
+#, fuzzy
+#~ msgctxt "@label in QuickSearchLine"
+#~ msgid "Search Summaries"
+#~ msgstr "Opsommings"
+
+#, fuzzy
+#~ msgctxt "@info:tooltip"
+#~ msgid "Filter on these categories"
+#~ msgstr "Katagoriee..."
+
+#, fuzzy
+#~ msgctxt "@item:inlistbox"
+#~ msgid "Select Categories"
+#~ msgstr "Katagoriee..."
+
+#, fuzzy
+#~ msgctxt "@item:intext delimiter for joining category names"
+#~ msgid ","
+#~ msgstr ", "
+
+#, fuzzy
+#~| msgid "Priority"
+#~ msgctxt "@item:inlistbox"
+#~ msgid "Select Priority"
+#~ msgstr "Prioriteit"
+
+#, fuzzy
+#~ msgctxt "@action:inmenu priority is unspecified"
+#~ msgid "unspecified"
+#~ msgstr "Ligging: "
+
+#, fuzzy
+#~ msgctxt "@action:inmenu highest priority"
+#~ msgid "%1 (highest)"
+#~ msgstr "1 (Hoogste)"
+
+#, fuzzy
+#~ msgctxt "@action:inmenu lowest priority"
+#~ msgid "%1 (lowest)"
+#~ msgstr "5 (laagste)"
+
+#, fuzzy
+#~ msgctxt "@action:inmenu"
+#~ msgid "%1"
+#~ msgstr "%1 %"
+
+#, fuzzy
+#~ msgctxt "priority is unspecified"
+#~ msgid "unspecified"
+#~ msgstr "Ligging: "
+
+#, fuzzy
+#~ msgctxt "highest priority"
+#~ msgid "%1 (highest)"
+#~ msgstr "1 (Hoogste)"
+
+#, fuzzy
+#~ msgctxt "lowest priority"
+#~ msgid "%1 (lowest)"
+#~ msgstr "5 (laagste)"
+
+#, fuzzy
+#~ msgid "What's Next?"
+#~ msgstr "Wat is Volgende"
+
+#~ msgid "Events:"
+#~ msgstr "Aktiwiteite:"
+
+#, fuzzy
+#~ msgid "To-do:"
+#~ msgstr "To-Do:"
+
+#, fuzzy
+#~ msgid "Events and to-dos that need a reply:"
+#~ msgstr "Aktiwiteite en To-Dos wat benodig 'n antwoord:"
+
+#, fuzzy
+#~ msgctxt "date, from - to"
+#~ msgid "%1, %2 - %3"
+#~ msgstr "%1 %2"
+
+#, fuzzy
+#~ msgctxt "to-do due date"
+#~ msgid "  (Due: %1)"
+#~ msgstr "As gevolg:"
+
+#, fuzzy
+#~ msgctxt "@option:check Checkbox to display todos not hierarchical"
+#~ msgid "Flat View"
+#~ msgstr "Maand besigtig:"
+
+#, fuzzy
+#~ msgid "Find Events - KOrganizer"
+#~ msgstr "Soek Aktiwiteite"
+
+#, fuzzy
+#~ msgctxt "@info:tooltip"
+#~ msgid "Fully collapse the to-do tree"
+#~ msgstr "1 minuut"
+
+#~ msgid "Cannot download calendar from '%1'."
+#~ msgstr "Kan nie aflaai kalender van '%1'."
+
+#~ msgid "Merged calendar '%1'."
+#~ msgstr "Saamgevlans kalender '%1'."
+
+#~ msgid "Opened calendar '%1'."
+#~ msgstr "Geöpende kalender '%1'."
+
+#, fuzzy
+#~ msgctxt "unspecified priority"
+#~ msgid "unspecified"
+#~ msgstr "Ligging: "
+
+#, fuzzy
+#~ msgctxt "highest priority"
+#~ msgid "1 (highest)"
+#~ msgstr "1 (Hoogste)"
+
+#, fuzzy
+#~ msgctxt "lowest priority"
+#~ msgid "9 (lowest)"
+#~ msgstr "5 (laagste)"
+
+#, fuzzy
+#~ msgctxt "@label in QuickSearchLine"
+#~ msgid "Search"
+#~ msgstr "Soektog In"
+
+#, fuzzy
+#~ msgid "&Description"
+#~ msgstr "Beskrywings"
+
+#, fuzzy
+#~ msgid "Other Options"
+#~ msgstr "Beskrywings"
+
+#, fuzzy
+#~ msgid "&Month View"
+#~ msgstr "Maand besigtig:"
+
+#, fuzzy
+#~| msgid "Categories"
+#~ msgid "Edit Categories"
+#~ msgstr "Katagoriee"
+
+#, fuzzy
+#~ msgid "New category entry"
+#~ msgstr "Katagoriee"
+
+#, fuzzy
+#~ msgid "Add the entry to the category list"
+#~ msgstr "Katagoriee..."
+
+#, fuzzy
+#~ msgid "A&dd"
+#~ msgstr "Voeg by Filter..."
+
+#, fuzzy
+#~ msgid "Add &Subcategory"
+#~ msgstr "Katagoriee"
+
+#, fuzzy
+#~ msgid "Remove the selected category"
+#~ msgstr "Bywoners"
+
+#, fuzzy
+#~| msgid "Categories"
+#~ msgid "Category list"
+#~ msgstr "Katagoriee"
+
+#, fuzzy
+#~ msgid "Default Category"
+#~ msgstr "Katagoriee..."
+
+#, fuzzy
+#~ msgid "New category"
+#~ msgstr "Katagoriee"
+
+#, fuzzy
+#~ msgid "New subcategory"
+#~ msgstr "Katagoriee"
+
+#, fuzzy
+#~ msgid "Default Email Attachment Method"
+#~ msgstr "Verstek afspraak tyd:"
+
+#, fuzzy
+#~ msgid "Select the working hours background color for the agenda view here."
+#~ msgstr "Agenda besigtig agtergrond kleur:"
+
+#, fuzzy
+#~ msgctxt "@title:window"
+#~ msgid "Archive/Delete Past Events and To-dos"
+#~ msgstr "Argief/Uitvee Na Afsprake"
+
+#, fuzzy
+#~ msgctxt "@action:button"
+#~ msgid "&Archive"
+#~ msgstr "Argief"
+
+#, fuzzy
+#~ msgctxt "@option:radio"
+#~ msgid "Archive now items older than:"
+#~ msgstr "Afsprake ouer as:"
+
+#, fuzzy
+#~ msgctxt "@option:radio"
+#~ msgid "Automaticall&y archive items older than:"
+#~ msgstr "Afsprake ouer as:"
+
+#, fuzzy
+#~ msgctxt "@item:inlistbox expires in daily units"
+#~ msgid "Day(s)"
+#~ msgstr "dag(s)"
+
+#, fuzzy
+#~ msgctxt "@item:inlistbox expiration in weekly units"
+#~ msgid "Week(s)"
+#~ msgstr "week(s) op:"
+
+#, fuzzy
+#~ msgctxt "@item:inlistbox expiration in monthly units"
+#~ msgid "Month(s)"
+#~ msgstr "maand(s)"
+
+#, fuzzy
+#~ msgctxt "@label"
+#~ msgid "Archive &file:"
+#~ msgstr "Argief lêer:"
+
+#, fuzzy
+#~ msgctxt "@label filter for KUrlRequester"
+#~ msgid "*.ics|iCalendar Files"
+#~ msgstr "*.vcs|Vcalendar Lêers"
+
+#, fuzzy
+#~ msgctxt "@option:check"
+#~ msgid "&Events"
+#~ msgstr "Aktiwiteite:"
+
+#, fuzzy
+#~ msgctxt "@option:check"
+#~ msgid "&To-dos"
+#~ msgstr "To-do"
+
+#, fuzzy
+#~ msgctxt "@option:check"
+#~ msgid "&Delete only, do not save"
+#~ msgstr "Uitvee ou aktiwiteite"
+
+#, fuzzy
+#~| msgid "The archive file name is not valid.\n"
+#~ msgctxt "@info"
+#~ msgid "The archive file name is not valid."
+#~ msgstr "Die argief lêer naam is nie geldige.\n"
+
+#, fuzzy
+#~ msgid "Regularly archive events"
+#~ msgstr "Herhalende gebeurtenis"
+
+#, fuzzy
+#~ msgid "In days"
+#~ msgstr "Ikalender"
+
+#, fuzzy
+#~ msgid "In weeks"
+#~ msgstr "week(s) op:"
+
+#, fuzzy
+#~ msgid "In months"
+#~ msgstr "maand(s)"
+
+#, fuzzy
+#~ msgid "Archive events"
+#~ msgstr "Herhalende gebeurtenis"
+
+#, fuzzy
+#~ msgid "Archive to-dos"
+#~ msgstr "(nee tedoenne)\n"
+
+#~ msgid "Delete old events"
+#~ msgstr "Uitvee ou aktiwiteite"
+
+#, fuzzy
+#~ msgid "There are no items before %1"
+#~ msgstr "Daar word nee aktiwiteite voor %1"
+
+#, fuzzy
+#~ msgid ""
+#~ "Delete all items before %1 without saving?\n"
+#~ "The following items will be deleted:"
+#~ msgstr ""
+#~ "Uitvee alle aktiwiteite voor %1?\n"
+#~ "Die volgende aktiwiteite sal wees uitgevee:"
+
+#, fuzzy
+#~ msgid "Delete Old Items"
+#~ msgstr "Uitvee ou aktiwiteite"
+
+#, fuzzy
+#~ msgid "Cannot write archive file %1. %2"
+#~ msgstr "Kan nie skryf argief lêer."
+
+#, fuzzy
+#~ msgid "Cannot write archive. %1"
+#~ msgstr "Kan nie skryf argief lêer."
+
+#, fuzzy
+#~ msgid "Reminder"
+#~ msgstr "Herhindering:"
+
+#, fuzzy
+#~| msgid "Start Date"
+#~ msgid "Start Date/Time"
+#~ msgstr "Begin Datum"
+
+#, fuzzy
+#~ msgid "End Date/Time"
+#~ msgstr "As gevolg Tyd"
+
+#, fuzzy
+#~| msgctxt "short_weekday date (e.g. Mon 13)"
+#~| msgid "%1 %2"
+#~ msgid "%2 (1 year)"
+#~ msgid_plural "%2 (%1 years)"
+#~ msgstr[0] "%1 %2"
+#~ msgstr[1] "%1 %2"
+
+#, fuzzy
+#~ msgid "No item selected."
+#~ msgstr "Nee verskaffer gekose."
+
+#, fuzzy
+#~ msgid "Publishing"
+#~ msgstr "Publiseer..."
+
+#, fuzzy
+#~ msgid "Unable to publish the item '%1'"
+#~ msgstr "Nie moontlik na soek werkvoorbeeld '%1'."
+
+#, fuzzy
+#~| msgid "Go &Forward"
+#~ msgid "Forwarding"
+#~ msgstr "Gaan Vorentoe"
+
+#, fuzzy
+#~ msgid "Unable to forward the item '%1'"
+#~ msgstr "Nie moontlik na soek werkvoorbeeld '%1'."
+
+#, fuzzy
+#~| msgid "Go &Forward"
+#~ msgid "Forwarding Error"
+#~ msgstr "Gaan Vorentoe"
+
+#, fuzzy
+#~ msgid "The free/busy information was successfully sent."
+#~ msgstr "Publiseer Vry Besig Informasie"
+
+#, fuzzy
+#~ msgid "Sending Free/Busy"
+#~ msgstr "Vry Besig Voorwerp"
+
+#, fuzzy
+#~ msgid "Unable to publish the free/busy data."
+#~ msgstr "Publiseer Vry Besig Informasie"
+
+#, fuzzy
+#~ msgid "The item has no attendees."
+#~ msgstr "Die gebeurtenis het nee bywoners."
+
+#, fuzzy
+#~| msgid "Go &Forward"
+#~ msgid "Go forward one week"
+#~ msgstr "Gaan Vorentoe"
+
+#, fuzzy
+#~ msgctxt "monthname year"
+#~ msgid "%1 %2"
+#~ msgstr "%1 %2"
+
+#, fuzzy
+#~ msgid "All Day"
+#~ msgstr "Dag"
+
+#~ msgctxt "short_weekday date (e.g. Mon 13)"
+#~ msgid "%1 %2"
+#~ msgstr "%1 %2"
+
+#, fuzzy
+#~ msgid "Attendee added"
+#~ msgstr "Bywoners"
+
+#, fuzzy
+#~ msgid "- %1"
+#~ msgstr "To-Do: %1"
+
+#, fuzzy
+#~ msgid "Dissociate event from recurrence"
+#~ msgstr "Lys die aktiwiteite vir die huidige dag"
+
+#, fuzzy
+#~ msgid "Split future recurrences"
+#~ msgstr "Herhaling"
+
+#, fuzzy
+#~ msgid "Timezone:"
+#~ msgstr "Tydsone:"
+
+#, fuzzy
+#~ msgid "&Add Timezones..."
+#~ msgstr "Uitsonderings"
+
+#, fuzzy
+#~ msgid "&Remove Timezone %1"
+#~ msgstr "Tydsone:"
+
+#, fuzzy
+#~ msgid "Timezone: %1"
+#~ msgstr "Tydsone:"
+
+#, fuzzy
+#~ msgid "Country Code: %1"
+#~ msgstr "Joernaal"
+
+#, fuzzy
+#~ msgid "Timezone"
+#~ msgstr "Tydsone:"
+
+#, fuzzy
+#~ msgid "Add Calendar..."
+#~ msgstr "Ikalender..."
+
+#, fuzzy
+#~ msgid "Reload"
+#~ msgstr "Oplaai"
+
+#, fuzzy
+#~ msgid "Properties..."
+#~ msgstr "Redigeer..."
+
+#, fuzzy
+#~| msgid "New Calendar"
+#~ msgid "New Calendar..."
+#~ msgstr "Nuwe Kalender"
+
+#~ msgid "Start Time"
+#~ msgstr "Begin Tyd"
+
+#~ msgid "End Date"
+#~ msgstr "Einde Datum"
+
+#~ msgid "End Time"
+#~ msgstr "Einde Tyd"
+
+#, fuzzy
+#~ msgid "Locking Failed"
+#~ msgstr "Bestemming"
+
+#, fuzzy
+#~ msgid "Enable automatic saving of manually opened calendar files"
+#~ msgstr "Aktiveer automaties stooring van kalender"
+
+#, fuzzy
+#~ msgctxt "@title:group"
+#~ msgid "Saving Calendar"
+#~ msgstr "Ikalender"
+
+#, fuzzy
+#~ msgctxt "@title:tab general to-do settings"
+#~ msgid "&General"
+#~ msgstr "Algemeen"
+
+#, fuzzy
+#~ msgctxt "@title:window"
+#~ msgid "New To-do"
+#~ msgstr "Nuwe To-Do"
+
+#, fuzzy
+#~ msgid "Sets the title of this journal."
+#~ msgstr "Uitvee ou aktiwiteite"
+
+#, fuzzy
+#~ msgctxt "journal title"
+#~ msgid "T&itle:"
+#~ msgstr "Titel"
+
+#, fuzzy
+#~ msgid "&Date:"
+#~ msgstr "As gevolg:"
+
+#, fuzzy
+#~ msgid "&Time: "
+#~ msgstr "Tyd: "
+
+#, fuzzy
+#~ msgid "Select Cate&gories..."
+#~ msgstr "Katagoriee..."
+
+#, fuzzy
+#~ msgid "Please specify a valid date, for example '%1'."
+#~ msgstr "Asseblief spesifiseer 'n geldige einde datum."
+
+#, fuzzy
+#~| msgid "Please specify a valid due time."
+#~ msgctxt "@info"
+#~ msgid "Please specify a journal title."
+#~ msgstr "Asseblief spesifiseer 'n geldige as gevolg tyd."
+
+#, fuzzy
+#~| msgid "General"
+#~ msgctxt "@title general journal settings"
+#~ msgid "General"
+#~ msgstr "Algemeen"
+
+#, fuzzy
+#~ msgctxt "@title:window"
+#~ msgid "New Journal"
+#~ msgstr "Joernaal"
+
+#, fuzzy
+#~ msgctxt "@label"
+#~ msgid "Attachment name"
+#~ msgstr "Bywoners"
+
+#, fuzzy
+#~ msgctxt "@info:tooltip"
+#~ msgid "Give the attachment a name"
+#~ msgstr "Bywoners"
+
+#, fuzzy
+#~ msgctxt "@label"
+#~ msgid "Type:"
+#~ msgstr "Besigtig Tipe"
+
+#, fuzzy
+#~ msgctxt "@option:check"
+#~ msgid "Store attachment inline"
+#~ msgstr "Redigeer Gebeurtenis"
+
+#, fuzzy
+#~ msgctxt "@info:tooltip"
+#~ msgid "Store the attachment file inside the calendar"
+#~ msgstr "Redigeer Gebeurtenis"
+
+#, fuzzy
+#~ msgctxt "@label"
+#~ msgid "Location:"
+#~ msgstr "Ligging:"
+
+#, fuzzy
+#~ msgctxt "@label"
+#~ msgid "Attachments:"
+#~ msgstr "Bywoners"
+
+#, fuzzy
+#~ msgctxt "@info:tooltip"
+#~ msgid "Add an attachment"
+#~ msgstr "Redigeer Gebeurtenis"
+
+#, fuzzy
+#~ msgctxt "@info:tooltip"
+#~ msgid "Remove the selected attachment"
+#~ msgstr "Bywoners"
+
+#, fuzzy
+#~ msgctxt "@action:inmenu remove the attachment"
+#~ msgid "&Remove"
+#~ msgstr "Werkvoorbeeld..."
+
+#, fuzzy
+#~ msgctxt "@action:inmenu show a dialog used to edit the attachment"
+#~ msgid "&Properties..."
+#~ msgstr "Redigeer..."
+
+#, fuzzy
+#~ msgctxt "@title"
+#~ msgid "Add Attachment"
+#~ msgstr "Redigeer Gebeurtenis"
+
+#, fuzzy
+#~ msgctxt "@info"
+#~ msgid "Do you really want to remove the attachment labeled \"%1\"?"
+#~ msgstr "Nie moontlik na skep lêer na oplaai"
+
+#, fuzzy
+#~ msgctxt "@action:button"
+#~ msgid "Manage &Templates..."
+#~ msgstr "Stoor Werkvoorbeeld"
+
+#, fuzzy
+#~ msgid "Calendar:"
+#~ msgstr "Ikalender"
+
+#, fuzzy
+#~ msgctxt "@title:window"
+#~ msgid "Edit %1: %2"
+#~ msgstr "Einde Tyd: %1"
+
+#, fuzzy
+#~| msgid "KOrganizer Confirmation"
+#~ msgctxt "@title:window"
+#~ msgid "KOrganizer Confirmation"
+#~ msgstr "Korganizer Bevestiging"
+
+#, fuzzy
+#~ msgctxt "@title:tab"
+#~ msgid "Atte&ndees"
+#~ msgstr "Bywoners"
+
+#, fuzzy
+#~| msgid "Unable to find template '%1'."
+#~ msgctxt "@info"
+#~ msgid "Unable to find template '%1'."
+#~ msgstr "Nie moontlik na soek werkvoorbeeld '%1'."
+
+#, fuzzy
+#~| msgid "Error loading template file '%1'."
+#~ msgctxt "@info"
+#~ msgid "Error loading template file '%1'."
+#~ msgstr "Fout laaiïng van werkvoorbeeld lêer '%1'."
+
+#, fuzzy
+#~ msgctxt "@info"
+#~ msgid "Template does not contain a valid incidence."
+#~ msgstr "Werkvoorbeeld doen nie bevat 'n geldige Gebeurtenis."
+
+#, fuzzy
+#~ msgctxt "@action:button"
+#~ msgid "Create to-do"
+#~ msgstr "Uitvee To-Do"
+
+#, fuzzy
+#~ msgctxt "@title:window"
+#~ msgid "Counter proposal"
+#~ msgstr "Joernaal"
+
+#, fuzzy
+#~ msgctxt "@action:button"
+#~ msgid "Counter proposal"
+#~ msgstr "Joernaal"
+
+#, fuzzy
+#~| msgid "Name"
+#~ msgctxt "@title:column attendee name"
+#~ msgid "Name"
+#~ msgstr "Naam"
+
+#, fuzzy
+#~| msgid "Email"
+#~ msgctxt "@title:column attendee email"
+#~ msgid "Email"
+#~ msgstr "E-pos"
+
+#, fuzzy
+#~| msgid "Role"
+#~ msgctxt "@title:column attendee role"
+#~ msgid "Role"
+#~ msgstr "Rol"
+
+#, fuzzy
+#~| msgid "Status"
+#~ msgctxt "@title:column attendee status"
+#~ msgid "Status"
+#~ msgstr "Status"
+
+#, fuzzy
+#~| msgid "RSVP"
+#~ msgctxt "@title:column attendee has RSVPed?"
+#~ msgid "RSVP"
+#~ msgstr "Rsvp"
+
+#, fuzzy
+#~ msgctxt "@title:column attendee delegated to"
+#~ msgid "Delegated To"
+#~ msgstr "Uitvee Gebeurtenis"
+
+#, fuzzy
+#~ msgctxt "@title:column attendee delegated from"
+#~ msgid "Delegated From"
+#~ msgstr "Uitvee To-Do"
+
+#, fuzzy
+#~ msgctxt "@title"
+#~ msgid "Invalid Email Address"
+#~ msgstr "Aditionele e-pos adres:"
+
+#, fuzzy
+#~ msgid "Manage %1 Templates"
+#~ msgstr "Stoor Werkvoorbeeld"
+
+#, fuzzy
+#~ msgid "Template Name"
+#~ msgstr "Kies Werkvoorbeeld Naam"
+
+#, fuzzy
+#~ msgid "New %1 Template"
+#~ msgstr "Stoor Werkvoorbeeld"
+
+#, fuzzy
+#~ msgid ""
+#~ "A template with that name already exists, do you want to overwrite it?"
+#~ msgstr ""
+#~ "Die kalender het al veranderde.\n"
+#~ "Doen jy wil hê na stoor dit?"
+
+#, fuzzy
+#~ msgid "Duplicate Template Name"
+#~ msgstr "Kies Werkvoorbeeld Naam"
+
+#, fuzzy
+#~ msgid "Are you sure that you want to remove the template <b>%1</b>?"
+#~ msgstr "Nie moontlik na skep lêer na oplaai"
+
+#, fuzzy
+#~ msgid "Remove"
+#~ msgstr "Werkvoorbeeld..."
+
+#, fuzzy
+#~ msgctxt "@label"
+#~ msgid "Identity as organizer:"
+#~ msgstr "Soek Aktiwiteite"
+
+#, fuzzy
+#~ msgctxt "@label attendee's name"
+#~ msgid "Na&me:"
+#~ msgstr "Naam:"
+
+#, fuzzy
+#~ msgctxt "@label"
+#~ msgid "Click to add a new attendee"
+#~ msgstr "1 minuut"
+
+#, fuzzy
+#~ msgctxt "@label"
+#~ msgid "Ro&le:"
+#~ msgstr "Rol:"
+
+#, fuzzy
+#~ msgctxt "@info:tooltip"
+#~ msgid "Select the attendee participation role"
+#~ msgstr "Agenda besigtig agtergrond kleur:"
+
+#, fuzzy
+#~ msgctxt "@label"
+#~ msgid "Stat&us:"
+#~ msgstr "Status:"
+
+#, fuzzy
+#~ msgctxt "@info:tooltip"
+#~ msgid "Request a response from the attendee"
+#~ msgstr "Versoek antwoord"
+
+#, fuzzy
+#~ msgctxt "@option:check"
+#~ msgid "Re&quest response"
+#~ msgstr "Versoek antwoord"
+
+#, fuzzy
+#~| msgid "&New"
+#~ msgctxt "@action:button new attendee"
+#~ msgid "&New"
+#~ msgstr "Nuwe"
+
+#, fuzzy
+#~ msgctxt "@info:tooltip"
+#~ msgid "Add an attendee"
+#~ msgstr "1 minuut"
+
+#, fuzzy
+#~ msgctxt "@action:button"
+#~ msgid "&Remove"
+#~ msgstr "Werkvoorbeeld..."
+
+#, fuzzy
+#~ msgctxt "@action:button"
+#~ msgid "Select Addressee..."
+#~ msgstr "Kies Adresse"
+
+#, fuzzy
+#~ msgctxt "@item:intext sample attendee email name"
+#~ msgid "name"
+#~ msgstr "Naam"
+
+#, fuzzy
+#~ msgctxt "@info:whatsthis"
+#~ msgid "Select the identity to use as the organizer for this incidence."
+#~ msgstr "Te-doen as gevolg vandag kleur:"
+
+#, fuzzy
+#~ msgctxt "@label"
+#~ msgid "Delegated to %1"
+#~ msgstr "Uitvee Gebeurtenis"
+
+#, fuzzy
+#~ msgctxt "@label"
+#~ msgid "Not delegated"
+#~ msgstr "Nee verskaffer gekose."
+
+#, fuzzy
+#~| msgid "1st"
+#~ msgctxt "@item:inlistbox"
+#~ msgid "1st"
+#~ msgstr "1st"
+
+#, fuzzy
+#~| msgid "2nd"
+#~ msgctxt "@item:inlistbox"
+#~ msgid "2nd"
+#~ msgstr "2nd"
+
+#, fuzzy
+#~| msgid "3rd"
+#~ msgctxt "@item:inlistbox"
+#~ msgid "3rd"
+#~ msgstr "3de"
+
+#, fuzzy
+#~| msgid "4th"
+#~ msgctxt "@item:inlistbox"
+#~ msgid "4th"
+#~ msgstr "4de"
+
+#, fuzzy
+#~| msgid "5th"
+#~ msgctxt "@item:inlistbox"
+#~ msgid "5th"
+#~ msgstr "5de"
+
+#, fuzzy
+#~ msgctxt "@item:inlistbox last week of the month"
+#~ msgid "Last"
+#~ msgstr "Lys"
+
+#, fuzzy
+#~ msgctxt "@item:inlistbox"
+#~ msgid "2nd Last"
+#~ msgstr "Einde Datum"
+
+#, fuzzy
+#~ msgctxt "@item:inlistbox"
+#~ msgid "3rd Last"
+#~ msgstr "Einde Datum"
+
+#, fuzzy
+#~ msgctxt "@item:inlistbox"
+#~ msgid "4th Last"
+#~ msgstr "Lys"
+
+#, fuzzy
+#~ msgctxt "@item:inlistbox"
+#~ msgid "5th Last"
+#~ msgstr "Lys"
+
+#, fuzzy
+#~ msgctxt "@label"
+#~ msgid "&Recur every"
+#~ msgstr "Herhaal elke"
+
+#, fuzzy
+#~| msgid "day(s)"
+#~ msgctxt "@label recurrence expressed in days"
+#~ msgid "day(s)"
+#~ msgstr "dag(s)"
+
+#, fuzzy
+#~| msgid "week(s) on:"
+#~ msgctxt "@label"
+#~ msgid "week(s) on:"
+#~ msgstr "week(s) op:"
+
+#, fuzzy
+#~ msgctxt "@info:tooltip"
+#~ msgid "Recur on %1"
+#~ msgstr "Herhaal op die"
+
+#, fuzzy
+#~| msgid "month(s)"
+#~ msgctxt "@label"
+#~ msgid "month(s)"
+#~ msgstr "maand(s)"
+
+#, fuzzy
+#~ msgctxt "@option:radio"
+#~ msgid "&Recur on the"
+#~ msgstr "Herhaal op die"
+
+#, fuzzy
+#~| msgid "6th"
+#~ msgctxt "@item:inlistbox"
+#~ msgid "6th"
+#~ msgstr "6de"
+
+#, fuzzy
+#~| msgid "7th"
+#~ msgctxt "@item:inlistbox"
+#~ msgid "7th"
+#~ msgstr "7de"
+
+#, fuzzy
+#~| msgid "8th"
+#~ msgctxt "@item:inlistbox"
+#~ msgid "8th"
+#~ msgstr "8de"
+
+#, fuzzy
+#~| msgid "9th"
+#~ msgctxt "@item:inlistbox"
+#~ msgid "9th"
+#~ msgstr "9de"
+
+#, fuzzy
+#~| msgid "10th"
+#~ msgctxt "@item:inlistbox"
+#~ msgid "10th"
+#~ msgstr "10de"
+
+#, fuzzy
+#~| msgid "11th"
+#~ msgctxt "@item:inlistbox"
+#~ msgid "11th"
+#~ msgstr "11de"
+
+#, fuzzy
+#~| msgid "12th"
+#~ msgctxt "@item:inlistbox"
+#~ msgid "12th"
+#~ msgstr "12ste"
+
+#, fuzzy
+#~| msgid "13th"
+#~ msgctxt "@item:inlistbox"
+#~ msgid "13th"
+#~ msgstr "13de"
+
+#, fuzzy
+#~| msgid "14th"
+#~ msgctxt "@item:inlistbox"
+#~ msgid "14th"
+#~ msgstr "14de"
+
+#, fuzzy
+#~| msgid "15th"
+#~ msgctxt "@item:inlistbox"
+#~ msgid "15th"
+#~ msgstr "15de"
+
+#, fuzzy
+#~| msgid "16th"
+#~ msgctxt "@item:inlistbox"
+#~ msgid "16th"
+#~ msgstr "16de"
+
+#, fuzzy
+#~| msgid "17th"
+#~ msgctxt "@item:inlistbox"
+#~ msgid "17th"
+#~ msgstr "17de"
+
+#, fuzzy
+#~| msgid "18th"
+#~ msgctxt "@item:inlistbox"
+#~ msgid "18th"
+#~ msgstr "18de"
+
+#, fuzzy
+#~| msgid "19th"
+#~ msgctxt "@item:inlistbox"
+#~ msgid "19th"
+#~ msgstr "19de"
+
+#, fuzzy
+#~| msgid "20th"
+#~ msgctxt "@item:inlistbox"
+#~ msgid "20th"
+#~ msgstr "20ste"
+
+#, fuzzy
+#~| msgid "21st"
+#~ msgctxt "@item:inlistbox"
+#~ msgid "21st"
+#~ msgstr "21ste"
+
+#, fuzzy
+#~| msgid "22nd"
+#~ msgctxt "@item:inlistbox"
+#~ msgid "22nd"
+#~ msgstr "22ste"
+
+#, fuzzy
+#~| msgid "23rd"
+#~ msgctxt "@item:inlistbox"
+#~ msgid "23rd"
+#~ msgstr "23ste"
+
+#, fuzzy
+#~| msgid "24th"
+#~ msgctxt "@item:inlistbox"
+#~ msgid "24th"
+#~ msgstr "24ste"
+
+#, fuzzy
+#~| msgid "25th"
+#~ msgctxt "@item:inlistbox"
+#~ msgid "25th"
+#~ msgstr "25ste"
+
+#, fuzzy
+#~| msgid "26th"
+#~ msgctxt "@item:inlistbox"
+#~ msgid "26th"
+#~ msgstr "26ste"
+
+#, fuzzy
+#~| msgid "27th"
+#~ msgctxt "@item:inlistbox"
+#~ msgid "27th"
+#~ msgstr "27ste"
+
+#, fuzzy
+#~| msgid "28th"
+#~ msgctxt "@item:inlistbox"
+#~ msgid "28th"
+#~ msgstr "28ste"
+
+#, fuzzy
+#~| msgid "29th"
+#~ msgctxt "@item:inlistbox"
+#~ msgid "29th"
+#~ msgstr "29ste"
+
+#, fuzzy
+#~| msgid "30th"
+#~ msgctxt "@item:inlistbox"
+#~ msgid "30th"
+#~ msgstr "30ste"
+
+#, fuzzy
+#~| msgid "31st"
+#~ msgctxt "@item:inlistbox"
+#~ msgid "31st"
+#~ msgstr "31ste"
+
+#, fuzzy
+#~ msgctxt "@item:inlistbox last day of the month"
+#~ msgid "Last"
+#~ msgstr "Lys"
+
+#, fuzzy
+#~ msgctxt "@item:inlistbox"
+#~ msgid "6th Last"
+#~ msgstr "Lys"
+
+#, fuzzy
+#~ msgctxt "@item:inlistbox"
+#~ msgid "7th Last"
+#~ msgstr "Lys"
+
+#, fuzzy
+#~ msgctxt "@item:inlistbox"
+#~ msgid "8th Last"
+#~ msgstr "Lys"
+
+#, fuzzy
+#~ msgctxt "@item:inlistbox"
+#~ msgid "9th Last"
+#~ msgstr "Lys"
+
+#, fuzzy
+#~ msgctxt "@item:inlistbox"
+#~ msgid "10th Last"
+#~ msgstr "Lys"
+
+#, fuzzy
+#~ msgctxt "@item:inlistbox"
+#~ msgid "11th Last"
+#~ msgstr "Lys"
+
+#, fuzzy
+#~ msgctxt "@item:inlistbox"
+#~ msgid "12th Last"
+#~ msgstr "Lys"
+
+#, fuzzy
+#~ msgctxt "@item:inlistbox"
+#~ msgid "13th Last"
+#~ msgstr "Lys"
+
+#, fuzzy
+#~ msgctxt "@item:inlistbox"
+#~ msgid "14th Last"
+#~ msgstr "Lys"
+
+#, fuzzy
+#~ msgctxt "@item:inlistbox"
+#~ msgid "15th Last"
+#~ msgstr "Lys"
+
+#, fuzzy
+#~ msgctxt "@item:inlistbox"
+#~ msgid "16th Last"
+#~ msgstr "Lys"
+
+#, fuzzy
+#~ msgctxt "@item:inlistbox"
+#~ msgid "17th Last"
+#~ msgstr "Lys"
+
+#, fuzzy
+#~ msgctxt "@item:inlistbox"
+#~ msgid "18th Last"
+#~ msgstr "Lys"
+
+#, fuzzy
+#~ msgctxt "@item:inlistbox"
+#~ msgid "19th Last"
+#~ msgstr "Lys"
+
+#, fuzzy
+#~ msgctxt "@item:inlistbox"
+#~ msgid "20th Last"
+#~ msgstr "Lys"
+
+#, fuzzy
+#~ msgctxt "@item:inlistbox"
+#~ msgid "21st Last"
+#~ msgstr "Einde Datum"
+
+#, fuzzy
+#~ msgctxt "@item:inlistbox"
+#~ msgid "22nd Last"
+#~ msgstr "Einde Datum"
+
+#, fuzzy
+#~ msgctxt "@item:inlistbox"
+#~ msgid "23rd Last"
+#~ msgstr "Einde Datum"
+
+#, fuzzy
+#~ msgctxt "@item:inlistbox"
+#~ msgid "24th Last"
+#~ msgstr "Lys"
+
+#, fuzzy
+#~ msgctxt "@item:inlistbox"
+#~ msgid "25th Last"
+#~ msgstr "Lys"
+
+#, fuzzy
+#~ msgctxt "@item:inlistbox"
+#~ msgid "26th Last"
+#~ msgstr "Lys"
+
+#, fuzzy
+#~ msgctxt "@item:inlistbox"
+#~ msgid "27th Last"
+#~ msgstr "Lys"
+
+#, fuzzy
+#~ msgctxt "@item:inlistbox"
+#~ msgid "28th Last"
+#~ msgstr "Lys"
+
+#, fuzzy
+#~ msgctxt "@item:inlistbox"
+#~ msgid "29th Last"
+#~ msgstr "Lys"
+
+#, fuzzy
+#~ msgctxt "@item:inlistbox"
+#~ msgid "30th Last"
+#~ msgstr "Lys"
+
+#, fuzzy
+#~ msgctxt "@item:inlistbox"
+#~ msgid "31st Last"
+#~ msgstr "Einde Datum"
+
+#, fuzzy
+#~| msgid "day"
+#~ msgctxt "@label"
+#~ msgid "day"
+#~ msgstr "dag"
+
+#, fuzzy
+#~| msgid "year(s)"
+#~ msgctxt "@label"
+#~ msgid "year(s)"
+#~ msgstr "jaar(s)"
+
+#, fuzzy
+#~ msgctxt "@option:radio part before XXX of 'Recur on day XXX of month YYY'"
+#~ msgid "&Recur on day "
+#~ msgstr "Herhaal op hierdie dag"
+
+#, fuzzy
+#~| msgid "&Month"
+#~ msgctxt "@option:radio Part before XXX in 'Recur on NNN. WEEKDAY of MONTH'"
+#~ msgid "&On the"
+#~ msgstr "Maand"
+
+#, fuzzy
+#~ msgctxt "@option:radio"
+#~ msgid "Recur on &day #"
+#~ msgstr "Herhaal op hierdie dag"
+
+#, fuzzy
+#~ msgctxt "@title:group"
+#~ msgid "E&xceptions"
+#~ msgstr "Uitsonderings"
+
+#, fuzzy
+#~ msgctxt "@action:button"
+#~ msgid "&Add"
+#~ msgstr "Voeg by Filter..."
+
+#, fuzzy
+#~ msgctxt "@action:button"
+#~ msgid "&Change"
+#~ msgstr "Konfigureer..."
+
+#, fuzzy
+#~ msgctxt "@action:button"
+#~ msgid "&Delete"
+#~ msgstr "Uitvee Gebeurtenis"
+
+#, fuzzy
+#~ msgctxt "@title:window"
+#~ msgid "Edit Exceptions"
+#~ msgstr "Uitsonderings"
+
+#, fuzzy
+#~| msgid "Recurrence Range"
+#~ msgctxt "@title:group"
+#~ msgid "Recurrence Range"
+#~ msgstr "Herhaling Omvang"
+
+#, fuzzy
+#~| msgid "Begin on:"
+#~ msgctxt "@label"
+#~ msgid "Begin on:"
+#~ msgstr "Begin op:"
+
+#, fuzzy
+#~ msgctxt "@option radio"
+#~ msgid "&No ending date"
+#~ msgstr "Nee wat eindig datum"
+
+#, fuzzy
+#~ msgctxt "@option:radio"
+#~ msgid "End &after"
+#~ msgstr "Einde na"
+
+#, fuzzy
+#~ msgctxt "@label"
+#~ msgid "&occurrence(s)"
+#~ msgstr "voorkoms(s)"
+
+#, fuzzy
+#~ msgctxt "@option:radio"
+#~ msgid "End &on:"
+#~ msgstr "Einde deur:"
+
+#, fuzzy
+#~| msgid "Begins on: %1"
+#~ msgctxt "@label"
+#~ msgid "Begins on: %1"
+#~ msgstr "Beginne op: %1"
+
+#, fuzzy
+#~ msgctxt "@title:window"
+#~ msgid "Edit Recurrence Range"
+#~ msgstr "Herhaling Omvang"
+
+#, fuzzy
+#~ msgctxt "@title:group"
+#~ msgid "Recurrence Types"
+#~ msgstr "Herhaling"
+
+#, fuzzy
+#~ msgctxt "@option:radio recur daily"
+#~ msgid "&Daily"
+#~ msgstr "Daagliks"
+
+#, fuzzy
+#~ msgctxt "@option:radio recur weekly"
+#~ msgid "&Weekly"
+#~ msgstr "Weekliks"
+
+#, fuzzy
+#~ msgctxt "@option:radio recur monthly"
+#~ msgid "&Monthly"
+#~ msgstr "Maandelikse"
+
+#, fuzzy
+#~ msgctxt "@option:radio recur yearly"
+#~ msgid "&Yearly"
+#~ msgstr "Jaarliks"
+
+#, fuzzy
+#~ msgctxt "@option:check"
+#~ msgid "&Enable recurrence"
+#~ msgstr "Herhaling"
+
+#, fuzzy
+#~| msgid "Appointment Time "
+#~ msgctxt "@title:group"
+#~ msgid "Appointment Time "
+#~ msgstr "Afspraak Tyd "
+
+#, fuzzy
+#~ msgctxt "@info:whatsthis"
+#~ msgid "Displays appointment time information."
+#~ msgstr "Verstek afspraak tyd:"
+
+#, fuzzy
+#~| msgid "Recurrence Rule"
+#~ msgctxt "@title:group"
+#~ msgid "Recurrence Rule"
+#~ msgstr "Herhaling Reël"
+
+#~ msgid "Date && Time"
+#~ msgstr "Datum && Tyd"
+
+#, fuzzy
+#~ msgctxt "@option:check to-do start datetime"
+#~ msgid "Sta&rt:"
+#~ msgstr "Begin:"
+
+#, fuzzy
+#~ msgctxt "to-do due datetime"
+#~ msgid "&Due:"
+#~ msgstr "As gevolg:"
+
+#, fuzzy
+#~ msgid "Ti&me associated"
+#~ msgstr "Tyd geassosieer"
+
+#, fuzzy
+#~ msgctxt "@label"
+#~ msgid "Recurrence:"
+#~ msgstr "Herhaling"
+
+#, fuzzy
+#~ msgctxt "to-do completed"
+#~ msgid "co&mpleted"
+#~ msgstr "klaar"
+
+#, fuzzy
+#~ msgid "&Priority:"
+#~ msgstr "Prioriteit:"
+
+#~ msgid "Please specify a valid due date."
+#~ msgstr "Asseblief spesifiseer 'n geldige as gevolg datum."
+
+#~ msgid "Please specify a valid due time."
+#~ msgstr "Asseblief spesifiseer 'n geldige as gevolg tyd."
+
+#~ msgid "Please specify a valid start date."
+#~ msgstr "Asseblief spesifiseer 'n geldige begin datum."
+
+#~ msgid "Please specify a valid start time."
+#~ msgstr "Asseblief spesifiseer 'n geldige begin tyd."
+
+#~ msgid "The start date cannot be after the due date."
+#~ msgstr "Die begin datum kan nie wees na Die as gevolg datum."
+
+#, fuzzy
+#~ msgctxt "to-do start datetime"
+#~ msgid "Start: %1"
+#~ msgstr "Begin:"
+
+#, fuzzy
+#~ msgctxt "to-do due datetime"
+#~ msgid "   Due: %1"
+#~ msgstr "As gevolg:"
+
+#, fuzzy
+#~ msgctxt "to-do completed on datetime"
+#~ msgid "co&mpleted on"
+#~ msgstr "klaar op %1"
+
+#, fuzzy
+#~ msgctxt "@info:whatsthis"
+#~ msgid "Sets the Title of this event or to-do."
+#~ msgstr "Uitvee ou aktiwiteite"
+
+#, fuzzy
+#~ msgctxt "@info:tooltip"
+#~ msgid "Set the title"
+#~ msgstr "Verstek alarm tyd:"
+
+#, fuzzy
+#~ msgctxt "@label event or to-do title"
+#~ msgid "T&itle:"
+#~ msgstr "Titel"
+
+#, fuzzy
+#~ msgctxt "@label"
+#~ msgid "&Location:"
+#~ msgstr "Ligging:"
+
+#, fuzzy
+#~ msgctxt "@label"
+#~ msgid "Categories:"
+#~ msgstr "Katagoriee"
+
+#, fuzzy
+#~ msgctxt "@action:button select a category"
+#~ msgid "&Select..."
+#~ msgstr "Kies Adresse"
+
+#, fuzzy
+#~ msgctxt "@label"
+#~ msgid "Acc&ess:"
+#~ msgstr "Toegang verkry:"
+
+#, fuzzy
+#~ msgctxt "@info:tooltip"
+#~ msgid "Set the secrecy level"
+#~ msgstr "Begin datum"
+
+#, fuzzy
+#~ msgctxt "@option:check"
+#~ msgid "Rich text"
+#~ msgstr "Moet nooit"
+
+#, fuzzy
+#~ msgctxt "@info:tooltip"
+#~ msgid "Toggle Rich Text"
+#~ msgstr "Moet nooit"
+
+#, fuzzy
+#~ msgctxt "@option:check"
+#~ msgid "&Reminder:"
+#~ msgstr "Herhindering:"
+
+#, fuzzy
+#~ msgctxt "@info:whatsthis"
+#~ msgid "Activates a reminder for this event or to-do."
+#~ msgstr "Uitvee ou aktiwiteite"
+
+#, fuzzy
+#~ msgctxt "@info:tooltip"
+#~ msgid "Set a reminder"
+#~ msgstr "Herhindering:"
+
+#, fuzzy
+#~ msgctxt "@info:tooltip"
+#~ msgid "Set an alarm"
+#~ msgstr "Kies Modus"
+
+#, fuzzy
+#~| msgid "minute(s)"
+#~ msgctxt "@item:inlistbox alarm expressed in minutes"
+#~ msgid "minute(s)"
+#~ msgstr "minuut(s)"
+
+#, fuzzy
+#~| msgid "hour(s)"
+#~ msgctxt "@item:inlistbox alarm expressed in hours"
+#~ msgid "hour(s)"
+#~ msgstr "uur(s)"
+
+#, fuzzy
+#~| msgid "day(s)"
+#~ msgctxt "@item:inlistbox alarm expressed in days"
+#~ msgid "day(s)"
+#~ msgstr "dag(s)"
+
+#, fuzzy
+#~ msgctxt "@action:button advanced alarm settings"
+#~ msgid "Advanced..."
+#~ msgstr "Gevorderde"
+
+#, fuzzy
+#~ msgctxt "@label"
+#~ msgid "1 reminder configured"
+#~ msgid_plural "%1 reminders configured"
+#~ msgstr[0] "Herhindering:"
+#~ msgstr[1] "Herhindering:"
+
+#, fuzzy
+#~ msgctxt "@label"
+#~ msgid "1 advanced reminder configured"
+#~ msgstr "Herhindering:"
+
+#, fuzzy
+#~ msgctxt "@label"
+#~ msgid "No attendees"
+#~ msgstr "Bywoners"
+
+#, fuzzy
+#~| msgid "Please specify a valid due time."
+#~ msgctxt "@info"
+#~ msgid "Please specify a title."
+#~ msgstr "Asseblief spesifiseer 'n geldige as gevolg tyd."
+
+#, fuzzy
+#~| msgid "Date && Time"
+#~ msgctxt "@title:group"
+#~ msgid "Date && Time"
+#~ msgstr "Datum && Tyd"
+
+#, fuzzy
+#~ msgctxt "@info:whatsthis"
+#~ msgid "Sets options related to the date and time of the event or to-do."
+#~ msgstr "Uitvee ou aktiwiteite"
+
+#, fuzzy
+#~ msgctxt "@label event start time"
+#~ msgid "&Start:"
+#~ msgstr "Begin:"
+
+#, fuzzy
+#~ msgctxt "@info:tooltip"
+#~ msgid "Set the start date"
+#~ msgstr "Begin datum"
+
+#, fuzzy
+#~ msgctxt "@info:tooltip"
+#~ msgid "Set the start time"
+#~ msgstr "Begin Tyd"
+
+#, fuzzy
+#~ msgctxt "@info:whatsthis"
+#~ msgid "Select the starting time for this event."
+#~ msgstr "Uitvee ou aktiwiteite"
+
+#, fuzzy
+#~ msgctxt "@label"
+#~ msgid "&End:"
+#~ msgstr "Einde:"
+
+#, fuzzy
+#~ msgctxt "@info:tooltip"
+#~ msgid "Set the end time"
+#~ msgstr "Verstek alarm tyd:"
+
+#, fuzzy
+#~ msgctxt "@option:check"
+#~ msgid "T&ime associated"
+#~ msgstr "Tyd geassosieer"
+
+#, fuzzy
+#~ msgctxt "@label"
+#~ msgid "S&how time as:"
+#~ msgstr "Vertoon tyd as:"
+
+#, fuzzy
+#~| msgid "Busy"
+#~ msgctxt "@item:inlistbox show event as busy time"
+#~ msgid "Busy"
+#~ msgstr "Besig"
+
+#, fuzzy
+#~| msgid "Free"
+#~ msgctxt "@item:inlistbox show event as free time"
+#~ msgid "Free"
+#~ msgstr "Vry"
+
+#, fuzzy
+#~| msgid "Accept"
+#~ msgctxt "@action:button"
+#~ msgid "Accept"
+#~ msgstr "Aanvaar"
+
+#, fuzzy
+#~| msgid "Decline"
+#~ msgctxt "@action:button"
+#~ msgid "Decline"
+#~ msgstr "Wys van die hand"
+
+#, fuzzy
+#~| msgid "Duration: "
+#~ msgctxt "@label"
+#~ msgid "Duration: "
+#~ msgstr "Duur: "
+
+#, fuzzy
+#~ msgctxt "@label"
+#~ msgid "1 Day"
+#~ msgid_plural "%1 Days"
+#~ msgstr[0] "1 Dag"
+#~ msgstr[1] "%1 Dae"
+
+#, fuzzy
+#~ msgctxt "@label"
+#~ msgid "1 hour"
+#~ msgid_plural "%1 hours"
+#~ msgstr[0] "1 uur"
+#~ msgstr[1] "%1 ure"
+
+#, fuzzy
+#~| msgid ", "
+#~ msgctxt "@label"
+#~ msgid ", "
+#~ msgstr ", "
+
+#, fuzzy
+#~ msgctxt "@label"
+#~ msgid "1 minute"
+#~ msgid_plural "%1 minutes"
+#~ msgstr[0] "1 minuut"
+#~ msgstr[1] "%1 minute"
+
+#, fuzzy
+#~ msgctxt "@info"
+#~ msgid "Please specify a valid start time, for example '%1'."
+#~ msgstr "Asseblief spesifiseer 'n geldige begin tyd."
+
+#, fuzzy
+#~ msgctxt "@info"
+#~ msgid "Please specify a valid end time, for example '%1'."
+#~ msgstr "Asseblief spesifiseer 'n geldige einde tyd."
+
+#, fuzzy
+#~ msgctxt "@info"
+#~ msgid "Please specify a valid start date, for example '%1'."
+#~ msgstr "Asseblief spesifiseer 'n geldige begin datum."
+
+#, fuzzy
+#~ msgctxt "@info"
+#~ msgid "Please specify a valid end date, for example '%1'."
+#~ msgstr "Asseblief spesifiseer 'n geldige einde datum."
+
+#, fuzzy
+#~| msgid ""
+#~| "The event ends before it starts.\n"
+#~| "Please correct dates and times."
+#~ msgctxt "@info"
+#~ msgid ""
+#~ "The event ends before it starts.\n"
+#~ "Please correct dates and times."
+#~ msgstr ""
+#~ "Die gebeurtenis einde voor dit beginne.\n"
+#~ "Asseblief korrek datums en  times ."
+
+#, fuzzy
+#~ msgctxt "@option popup reminder dialog"
+#~ msgid "Reminder Dialog"
+#~ msgstr "Herhindering:"
+
+#, fuzzy
+#~| msgid "Email"
+#~ msgctxt "@option send email reminder"
+#~ msgid "Email"
+#~ msgstr "E-pos"
+
+#, fuzzy
+#~ msgctxt "@item@intable N days/hours/minutes before/after the start/end"
+#~ msgid "%1 before the start"
+#~ msgstr "Stel Jou Status"
+
+#, fuzzy
+#~ msgctxt "@item@intable N days/hours/minutes before/after the start/end"
+#~ msgid "%1 after the start"
+#~ msgstr "Stel Jou Status"
+
+#, fuzzy
+#~ msgctxt "@item@intable N days/hours/minutes before/after the start/end"
+#~ msgid "%1 after the end"
+#~ msgstr "Stel Jou Status"
+
+#, fuzzy
+#~ msgctxt "@item@intable alarm offset specified in days"
+#~ msgid "1 day"
+#~ msgid_plural "%1 days"
+#~ msgstr[0] "1 Dag"
+#~ msgstr[1] "%1 Dae"
+
+#, fuzzy
+#~ msgctxt "@item@intable alarm offset specified in hours"
+#~ msgid "1 hour"
+#~ msgid_plural "%1 hours"
+#~ msgstr[0] "1 uur"
+#~ msgstr[1] "%1 ure"
+
+#, fuzzy
+#~ msgctxt "@item@intable alarm offset specified in minutes"
+#~ msgid "1 minute"
+#~ msgid_plural "%1 minutes"
+#~ msgstr[0] "1 minuut"
+#~ msgstr[1] "%1 minute"
+
+#, fuzzy
+#~ msgctxt "@title"
+#~ msgid "Edit Reminders"
+#~ msgstr "Herhindering:"
+
+#, fuzzy
+#~ msgctxt "@item:inlistbox"
+#~ msgid "before the to-do starts"
+#~ msgstr "Stel Jou Status"
+
+#, fuzzy
+#~ msgctxt "@item:inlistbox"
+#~ msgid "after the to-do starts"
+#~ msgstr "Stel Jou Status"
+
+#, fuzzy
+#~ msgctxt "@title:tab general event settings"
+#~ msgid "&General"
+#~ msgstr "Algemeen"
+
+#, fuzzy
+#~ msgctxt "@title:tab"
+#~ msgid "&Attendees"
+#~ msgstr "Bywoners"
+
+#, fuzzy
+#~ msgctxt "@title:window"
+#~ msgid "New Event"
+#~ msgstr "Nuwe Gebeurtenis..."
+
+#, fuzzy
+#~ msgctxt "@title:window"
+#~ msgid "No Changes"
+#~ msgstr "Ruil uit Inplak"
+
+#, fuzzy
+#~ msgctxt "@item"
+#~ msgid "My counter proposal for: %1"
+#~ msgstr "Joernaal"
+
+#, fuzzy
+#~ msgctxt "@label"
+#~ msgid "Scale: "
+#~ msgstr "As gevolg:"
+
+#, fuzzy
+#~ msgctxt "@item:inlistbox range in hours"
+#~ msgid "Hour"
+#~ msgstr "Vakansie"
+
+#, fuzzy
+#~ msgctxt "@action:button"
+#~ msgid "Center on Start"
+#~ msgstr "Stel Jou Status"
+
+#, fuzzy
+#~ msgctxt "@action:button"
+#~ msgid "Pick Date"
+#~ msgstr "Tyd & Datum"
+
+#, fuzzy
+#~ msgctxt "@action:button reload freebusy data"
+#~ msgid "Reload"
+#~ msgstr "Oplaai"
+
+#, fuzzy
+#~ msgctxt "@title:column attendee name"
+#~ msgid "Attendee"
+#~ msgstr "Bywoners"
+
+#, fuzzy
+#~ msgctxt "@info"
+#~ msgid "No suitable date found."
+#~ msgstr "Begin datum"
+
+#, fuzzy
+#~ msgctxt "@title:window"
+#~ msgid "Invalid Email Address"
+#~ msgstr "Aditionele e-pos adres:"
+
+#, fuzzy
+#~ msgid "Edit Free/Busy Location"
+#~ msgstr "Publiseer Vry Besig Informasie"
+
+#, fuzzy
+#~ msgid ""
+#~ "Location of Free/Busy information for %1 <placeholder>%2</placeholder>:"
+#~ msgstr "Publiseer Vry Besig Informasie"
+
+#, fuzzy
+#~ msgid "Select Categories"
+#~ msgstr "Katagoriee..."
+
+#, fuzzy
+#~ msgid "Category"
+#~ msgstr "Katagoriee"
+
+#, fuzzy
+#~ msgid "&Clear Selection"
+#~ msgstr "Ikalender"
+
+#, fuzzy
+#~ msgid "&Edit Categories..."
+#~ msgstr "Katagoriee..."
+
+#, fuzzy
+#~ msgid "Default appointment time"
+#~ msgstr "Verstek afspraak tyd:"
+
+#, fuzzy
+#~ msgid "Default duration of new appointment (HH:MM)"
+#~ msgstr "Verstek duur van nuwe afspraak:"
+
+#, fuzzy
+#~ msgid "Enable reminders for new Events"
+#~ msgstr "Herhindering:"
+
+#, fuzzy
+#~ msgid "Enable reminders for new To-dos"
+#~ msgstr "Herhindering:"
+
+#, fuzzy
+#~ msgid "Default reminder time"
+#~ msgstr "Verstek alarm tyd:"
+
+#, fuzzy
+#~ msgid "Default time for reminders"
+#~ msgstr "Verstek alarm tyd:"
+
+#, fuzzy
+#~ msgid "Default time unit for reminders"
+#~ msgstr "Verstek alarm tyd:"
+
+#, fuzzy
+#~ msgid "Time"
+#~ msgstr "Tyd: "
+
+#, fuzzy
+#~ msgid "Set the reminder trigger time"
+#~ msgstr "Verstek alarm tyd:"
+
+#, fuzzy
+#~ msgid "Select the reminder trigger time unit"
+#~ msgstr "Uitvee ou aktiwiteite"
+
+#, fuzzy
+#~| msgid "minute(s)"
+#~ msgctxt "@item:inlistbox alarm offset expressed in minutes"
+#~ msgid "minute(s)"
+#~ msgstr "minuut(s)"
+
+#, fuzzy
+#~| msgid "hour(s)"
+#~ msgctxt "@item:inlistbox alarm offset expressed in hours"
+#~ msgid "hour(s)"
+#~ msgstr "uur(s)"
+
+#, fuzzy
+#~| msgid "day(s)"
+#~ msgctxt "@item:inlistbox alarm offset expressed in days"
+#~ msgid "day(s)"
+#~ msgstr "dag(s)"
+
+#, fuzzy
+#~ msgid "Select the reminder trigger relative to the start or end time"
+#~ msgstr "Te-doen as gevolg vandag kleur:"
+
+#, fuzzy
+#~ msgid "before the event starts"
+#~ msgstr "Stel Jou Status"
+
+#, fuzzy
+#~ msgid "after the event starts"
+#~ msgstr "Stel Jou Status"
+
+#, fuzzy
+#~ msgid "before the event ends"
+#~ msgstr "Stel Jou Status"
+
+#, fuzzy
+#~ msgid "&Interval:"
+#~ msgstr "Algemeen"
+
+#, fuzzy
+#~ msgid "Set the reminder to repeat"
+#~ msgstr "Verstek alarm tyd:"
+
+#, fuzzy
+#~ msgid "&Repeating:"
+#~ msgstr "Moet nooit"
+
+#, fuzzy
+#~ msgctxt "@label:spinbox repeat interval expressed in minutes"
+#~ msgid " Minute(s)"
+#~ msgstr "minuut(s)"
+
+#, fuzzy
+#~ msgctxt "repeat every X minutes"
+#~ msgid "every "
+#~ msgstr "elke"
+
+#, fuzzy
+#~ msgid "Type"
+#~ msgstr "Besigtig Tipe"
+
+#, fuzzy
+#~ msgid "&Display"
+#~ msgstr "Daagliks"
+
+#, fuzzy
+#~ msgid "&Sound"
+#~ msgstr "Sun"
+
+#, fuzzy
+#~ msgid "Send email when the reminder is triggered"
+#~ msgstr "Verstek alarm tyd:"
+
+#, fuzzy
+#~ msgid "Display &text:"
+#~ msgstr "Daagliks"
+
+#, fuzzy
+#~ msgid "Sound &file:"
+#~ msgstr "Argief lêer:"
+
+#, fuzzy
+#~ msgid "Ar&guments:"
+#~ msgstr "Bywoners"
+
+#, fuzzy
+#~ msgid "Remove the currently selected reminder"
+#~ msgstr "Bywoners"
+
+#, fuzzy
+#~ msgid "Create a new reminder from the currently selected reminder"
+#~ msgstr "Bywoners"
+
+#, fuzzy
+#~ msgid "The list of reminders for this event or to-do"
+#~ msgstr "Uitvee ou aktiwiteite"
+
+#, fuzzy
+#~ msgid "Repeat"
+#~ msgstr "Moet nooit"
+
+#, fuzzy
+#~ msgid "Template Management"
+#~ msgstr "Kies Werkvoorbeeld Naam"
+
+#, fuzzy
+#~ msgid "The list of managed templates"
+#~ msgstr "Stoor Werkvoorbeeld"
+
+#, fuzzy
+#~ msgid "&New..."
+#~ msgstr "Nuwe"
+
+#, fuzzy
+#~ msgid "Remove the currently selected template"
+#~ msgstr "Bywoners"
+
+#, fuzzy
+#~| msgid "Business"
+#~ msgctxt "incidence category"
+#~ msgid "Business"
+#~ msgstr "Besigheid"
+
+#, fuzzy
+#~| msgid "Phone Call"
+#~ msgctxt "incidence category: phone call"
+#~ msgid "Phone Call"
+#~ msgstr "Foon Roep"
+
+#, fuzzy
+#~| msgid "Education"
+#~ msgctxt "incidence category"
+#~ msgid "Education"
+#~ msgstr "Opvoeding"
+
+#, fuzzy
+#~| msgid "Holiday"
+#~ msgctxt ""
+#~ "incidence category: official or unofficial observance of religious/"
+#~ "national/cultural/other significance, often accompanied by celebrations "
+#~ "or festivities"
+#~ msgid "Holiday"
+#~ msgstr "Vakansie"
+
+#, fuzzy
+#~| msgid "Vacation"
+#~ msgctxt ""
+#~ "incidence category: a lengthy time away from work or school, a trip "
+#~ "abroad, or simply a pleasure trip away from home"
+#~ msgid "Vacation"
+#~ msgstr "Vakansie"
+
+#, fuzzy
+#~| msgid "Personal"
+#~ msgctxt "incidence category"
+#~ msgid "Personal"
+#~ msgstr "Persoonlike"
+
+#, fuzzy
+#~| msgid "Travel"
+#~ msgctxt ""
+#~ "incidence category: typically associated with leaving home for business, "
+#~ "and not pleasure"
+#~ msgid "Travel"
+#~ msgstr "Reis"
+
+#, fuzzy
+#~ msgid "text/calendar"
+#~ msgstr "Ikalender"
+
+#, fuzzy
+#~ msgid "Use email settings from System Settings"
+#~ msgstr "Gebruik e-pos instellings van Kontrole Sentrum"
+
+#~ msgid "Send copy to owner when mailing events"
+#~ msgstr "Stuur kopie na eienaar wanneer pos aktiwiteite"
+
+#, fuzzy
+#~ msgid "URL for publishing free/busy information"
+#~ msgstr "Publiseer Vry Besig Informasie"
+
+#, fuzzy
+#~ msgid "Username for publishing free/busy information"
+#~ msgstr "Publiseer Vry Besig Informasie"
+
+#, fuzzy
+#~ msgid "Password for publishing free/busy information"
+#~ msgstr "Publiseer Vry Besig Informasie"
+
+#, fuzzy
+#~ msgid "Password for retrieving free/busy information"
+#~ msgstr "Publiseer Vry Besig Informasie"
+
+#, fuzzy
+#~ msgid "Full &name"
+#~ msgstr "Volgrote naam:"
+
+#, fuzzy
+#~ msgid "E&mail address"
+#~ msgstr "E-pos adres:"
+
+#, fuzzy
+#~ msgid "Attendees Removed"
+#~ msgstr "Bywoners"
+
+#, fuzzy
+#~ msgid "Do Not Send"
+#~ msgstr "Maand besigtig:"
+
+#, fuzzy
+#~ msgid "Unable to save changes for incidence %1 \"%2\": %3"
+#~ msgstr "Nie moontlik na handvatsel afgeleë kalender.\n"
+
+#, fuzzy
+#~ msgid "Unable to delete incidence %1 \"%2\": %3"
+#~ msgstr "Nie moontlik na handvatsel afgeleë kalender.\n"
+
+#, fuzzy
+#~ msgid "Unable to save %1 \"%2\": %3"
+#~ msgstr "Nie moontlik na handvatsel afgeleë kalender.\n"
+
+#, fuzzy
+#~ msgid "C&opy to Calendar"
+#~ msgstr "Ikalender"
+
+#, fuzzy
+#~| msgid "New Calendar"
+#~ msgid "&Move to Calendar"
+#~ msgstr "Nuwe Kalender"
+
+#, fuzzy
+#~ msgid "Copy Calendar"
+#~ msgid_plural "Copy %1 Calendars"
+#~ msgstr[0] "Ikalender"
+#~ msgstr[1] "Ikalender"
+
+#, fuzzy
+#~| msgid "KOrganizer"
+#~ msgid "Korganizer"
+#~ msgstr "Korganizer"
+
+#, fuzzy
+#~ msgid "Could not download calendar %1: %2."
+#~ msgstr "Kon nie las kalender '%1'.\n"
+
+#, fuzzy
+#~| msgctxt "short_weekday date (e.g. Mon 13)"
+#~| msgid "%1 %2"
+#~ msgid "%1 (%2 years)"
+#~ msgstr "%1 %2"
+
+#, fuzzy
+#~ msgctxt "@option:radio"
+#~ msgid "&Day "
+#~ msgstr "Dag"
+
+#, fuzzy
+#~ msgctxt "@option:radio"
+#~ msgid "Day #"
+#~ msgstr "Dag"
+
+#, fuzzy
+#~| msgid "Daily"
+#~ msgctxt "@item:inlistbox recur daily"
+#~ msgid "Daily"
+#~ msgstr "Daagliks"
+
+#, fuzzy
+#~| msgid "Weekly"
+#~ msgctxt "@item:inlistbox recur weekly"
+#~ msgid "Weekly"
+#~ msgstr "Weekliks"
+
+#, fuzzy
+#~| msgid "Monthly"
+#~ msgctxt "@item:inlistbox recur monthly"
+#~ msgid "Monthly"
+#~ msgstr "Maandelikse"
+
+#, fuzzy
+#~| msgid "Yearly"
+#~ msgctxt "@item:inlistbox recur yearly"
+#~ msgid "Yearly"
+#~ msgstr "Jaarliks"
+
+#, fuzzy
+#~ msgctxt "@action:button"
+#~ msgid "Recurrence Range..."
+#~ msgstr "Herhaling Omvang"
+
+#, fuzzy
+#~ msgctxt "@action:button"
+#~ msgid "Exceptions..."
+#~ msgstr "Uitsonderings"
+
+#, fuzzy
+#~| msgid ""
+#~| "You have no ical file in your home directory.\n"
+#~| "Import cannot proceed.\n"
+#~ msgid "No calendars found, event cannot be added."
+#~ msgstr ""
+#~ "Jy het nee ical lêer in jou huis gids.\n"
+#~ "In voer kan nie gaan voort.\n"
+
+#, fuzzy
+#~| msgid "Email"
+#~ msgctxt "@title:column email addresses"
+#~ msgid "Email"
+#~ msgstr "E-pos"
+
+#, fuzzy
+#~ msgid "Error message: %1"
+#~ msgstr "Fout laaiïng van werkvoorbeeld lêer '%1'."
+
+#, fuzzy
+#~ msgid "Group Scheduling Email"
+#~ msgstr "Groep Skedulering"
+
+#, fuzzy
+#~ msgid "Send Email"
+#~ msgstr "Stuur pos"
+
+#, fuzzy
+#~ msgid "Send Update"
+#~ msgstr "Einde datum"
+
+#, fuzzy
+#~ msgid "Counter proposal: %1"
+#~ msgstr "Joernaal"
+
+#~ msgid "No running instance of KMail found."
+#~ msgstr "Nee wat loop voorbeeld van Kpos gevind."
+
+#, fuzzy
+#~ msgctxt "@title:window"
+#~ msgid "Edit Journal: %1"
+#~ msgstr "Joernaal"
+
+#, fuzzy
+#~ msgctxt "@info"
+#~ msgid "Template does not contain a valid journal."
+#~ msgstr "Werkvoorbeeld '%1' doen nie bevat 'n geldige Te-doen."
+
+#, fuzzy
+#~ msgid "&iCalendar..."
+#~ msgstr "Ikalender..."
+
+#, fuzzy
+#~ msgid "&vCalendar..."
+#~ msgstr "Vcalendar..."
+
+#, fuzzy
+#~| msgid "Saved calendar '%1'."
+#~ msgid "Added calendar for URL '%1'."
+#~ msgstr "Gestoor kalender '%1'."
+
+#, fuzzy
+#~ msgid "Unable to create calendar '%1'."
+#~ msgstr "Nie moontlik na handvatsel afgeleë kalender.\n"
+
+#, fuzzy
+#~ msgid "Could not load calendar."
+#~ msgstr "Kon nie las kalender '%1'.\n"
+
+#, fuzzy
+#~ msgid ""
+#~ "The calendar contains unsaved changes. Do you want to save them before "
+#~ "exiting?"
+#~ msgstr ""
+#~ "Die kalender het al veranderde.\n"
+#~ "Doen jy wil hê na stoor dit?"
+
+#~ msgid "Mail Client"
+#~ msgstr "Pos Kliënt"
+
+#~ msgid "Sendmail"
+#~ msgstr "Stuur pos"
+
+#, fuzzy
+#~| msgid "Edit Calendar Filters"
+#~ msgctxt "@info:tooltip"
+#~ msgid "Edit calendar settings"
+#~ msgstr "Redigeer Kalender Filters"
+
+#, fuzzy
+#~| msgid "Merged calendar '%1'."
+#~ msgctxt "@info:tooltip"
+#~ msgid "Remove calendar"
+#~ msgstr "Saamgevlans kalender '%1'."
+
+#, fuzzy
+#~ msgid "<qt>Unable to create the calendar folder <b>%1</b>.</qt>"
+#~ msgstr "Nie moontlik na skep lêer na oplaai"
+
+#, fuzzy
+#~ msgid "<qt>Unable to create a calendar of type <b>%1</b>.</qt>"
+#~ msgstr "Nie moontlik na skep lêer na oplaai"
+
+#, fuzzy
+#~ msgid "%1 calendar"
+#~ msgstr "Nuwe Kalender"
+
+#, fuzzy
+#~ msgid "You cannot remove your standard calendar."
+#~ msgstr "Kon nie las kalender '%1'.\n"
+
+#, fuzzy
+#~ msgid "<qt>Cannot edit the calendar folder <b>%1</b>.</qt>"
+#~ msgstr "Nie moontlik na skep lêer na oplaai"
+
+#, fuzzy
+#~ msgctxt "reload the resource"
+#~ msgid "Re&load"
+#~ msgstr "Oplaai"
+
+#, fuzzy
+#~| msgid "Travel"
+#~ msgctxt "save the resource"
+#~ msgid "&Save"
+#~ msgstr "Reis"
+
+#, fuzzy
+#~ msgid "Show &Info"
+#~ msgstr "Oplaai Inligting..."
+
+#, fuzzy
+#~| msgid "Edit Calendar Filters"
+#~ msgid "&Add Calendar Folder..."
+#~ msgstr "Redigeer Kalender Filters"
+
+#, fuzzy
+#~| msgid "General"
+#~ msgctxt "@title:tab general event settings"
+#~ msgid "General"
+#~ msgstr "Algemeen"
+
+#, fuzzy
+#~| msgid "Details"
+#~ msgctxt "@title:tab"
+#~ msgid "Details"
+#~ msgstr "Details"
+
+#, fuzzy
+#~ msgctxt "@title:tab"
+#~ msgid "Rec&urrence"
+#~ msgstr "Herhaling"
+
+#, fuzzy
+#~| msgid "General"
+#~ msgctxt "@title:tab general to-do settings"
+#~ msgid "General"
+#~ msgstr "Algemeen"
+
+#, fuzzy
+#~ msgctxt "@info"
+#~ msgid "Template does not contain a valid to-do."
+#~ msgstr "Werkvoorbeeld '%1' doen nie bevat 'n geldige Te-doen."
+
+#, fuzzy
+#~ msgid "Active Calendar"
+#~ msgstr "Aktiveer Kalender"
+
+#, fuzzy
+#~ msgctxt "@label"
+#~ msgid "Reminder:"
+#~ msgstr "Herhindering:"
+
+#, fuzzy
+#~ msgctxt "incidence type is event"
+#~ msgid "event"
+#~ msgstr "Gebeurtenis"
+
+#, fuzzy
+#~ msgctxt "incidence type is to-do/task"
+#~ msgid "task"
+#~ msgstr "Opdrag"
+
+#, fuzzy
+#~ msgctxt "incidence type is journal"
+#~ msgid "journal entry"
+#~ msgstr "Joernaal"
+
+#, fuzzy
+#~ msgctxt "@title:column reminder date/time"
+#~ msgid "Reminder Time"
+#~ msgstr "As gevolg Tyd"
+
+#, fuzzy
+#~ msgid "&Timespan"
+#~ msgstr "Tyd Bestek"
+
+#, fuzzy
+#~ msgid "This plugin provides a Gantt-like Timespan view."
+#~ msgstr "Hierdie inplak verskaf uitvoer van van kalenders as web bladsye."
+
+#, fuzzy
+#~ msgid "Timespan View Plugin"
+#~ msgstr "Projek Besigtig"
+
+#~ msgid "Zoom In"
+#~ msgstr "Zoem In"
+
+#~ msgid "Zoom Out"
+#~ msgstr "Zoem Uit"
+
+#~ msgid "Center View"
+#~ msgstr "Sentrum Besigtig"
+
+#, fuzzy
+#~ msgid "Counter-Event Viewer"
+#~ msgstr "Counter-event Aansig"
+
+#~ msgid "Decline"
+#~ msgstr "Wys van die hand"
+
+#~ msgid "Accept"
+#~ msgstr "Aanvaar"
+
+#, fuzzy
+#~ msgctxt "@title:column reminder date/time"
+#~ msgid "Reminder"
+#~ msgstr "Herhindering:"
+
+#, fuzzy
+#~ msgctxt "@item:inlistbox alarm offset expressed in minutes"
+#~ msgid "Minutes"
+#~ msgstr "5 minute"
+
+#, fuzzy
+#~ msgctxt "@item:inlistbox alarm offset expressed in hours"
+#~ msgid "Hours"
+#~ msgstr "Vakansie"
+
+#, fuzzy
+#~ msgctxt "@item:inlistbox alarm offset expressed in days"
+#~ msgid "Days"
+#~ msgstr "Dag"
+
+#, fuzzy
+#~ msgid "Before the Start"
+#~ msgstr "Stel Jou Status"
+
+#, fuzzy
+#~ msgid "After the Start"
+#~ msgstr "Stel Jou Status"
+
+#, fuzzy
+#~ msgid "Before the End"
+#~ msgstr "Stel Jou Status"
+
+#, fuzzy
+#~ msgid "After the End"
+#~ msgstr "Stel Jou Status"
+
+#, fuzzy
+#~ msgid "&Display reminder"
+#~ msgstr "Daagliks"
+
+#, fuzzy
+#~ msgid "Reminder &text:"
+#~ msgstr "Herhindering:"
+
+#, fuzzy
+#~ msgid "Could not upload file."
+#~ msgstr "Kon nie las kalender '%1'.\n"
+
+#~ msgid "KOrganizer Timezone Test"
+#~ msgstr "Korganizer Tydsone Toets"
+
+#, fuzzy
+#~ msgctxt "@label"
+#~ msgid "Time zone:"
+#~ msgstr "Tydsone:"
+
+#, fuzzy
+#~| msgid "[No selection]"
+#~ msgctxt "@item:inlistbox no timezone selected"
+#~ msgid "[No selection]"
+#~ msgstr "[Nee keuse]"
+
+#, fuzzy
+#~ msgid "&Journal entries"
+#~ msgstr "Joernaal"
+
+#, fuzzy
+#~ msgid "E&vents have to be completely included"
+#~ msgstr "Aktiwiteite het na wees heeltemal ingesluite"
+
+#~ msgid "&Find"
+#~ msgstr "Soek"
+
+#, fuzzy
+#~ msgid "The item \"%1\" will be permanently deleted."
+#~ msgstr "Hierdie item sal wees permanent uitgevee."
+
+#~ msgid "This item will be permanently deleted."
+#~ msgstr "Hierdie item sal wees permanent uitgevee."
+
+#, fuzzy
+#~ msgid "Delete Confirmation"
+#~ msgstr "Korganizer Bevestiging"
+
+#, fuzzy
+#~ msgctxt "@info"
+#~ msgid "This journal entry will be permanently deleted."
+#~ msgstr "Hierdie item sal wees permanent uitgevee."
+
+#, fuzzy
+#~| msgid "This item will be permanently deleted."
+#~ msgctxt "@info"
+#~ msgid "This item will be permanently deleted."
+#~ msgstr "Hierdie item sal wees permanent uitgevee."
+
+#, fuzzy
+#~ msgctxt "@action:button"
+#~ msgid "Delete"
+#~ msgstr "Uitvee Gebeurtenis"
+
+#, fuzzy
+#~ msgid "Show Resource View"
+#~ msgstr "Korganizer Bevestiging"
+
+#, fuzzy
+#~ msgid "<qt>Unable to create subresource <b>%1</b>.</qt>"
+#~ msgstr "Nie moontlik na skep lêer na oplaai"
+
+#, fuzzy
+#~ msgid "Resource Configuration"
+#~ msgstr "Korganizer Bevestiging"
+
+#, fuzzy
+#~ msgid "&Add Resource..."
+#~ msgstr "Herhaal"
+
+#, fuzzy
+#~ msgid "Resource Colors"
+#~ msgstr "Herhaal"
+
+#, fuzzy
+#~ msgid "Print &Year:"
+#~ msgstr "Besig om te druk"
+
+#, fuzzy
+#~ msgid "No (unset) category color"
+#~ msgstr "Te-doen as gevolg vandag kleur:"
+
+#, fuzzy
+#~ msgid "&Add..."
+#~ msgstr "Voeg by Filter..."
+
+#, fuzzy
+#~ msgctxt "@action:inmenu remove the attachment"
+#~ msgid "&Delete"
+#~ msgstr "Uitvee Gebeurtenis"
+
+#, fuzzy
+#~ msgctxt "@info"
+#~ msgid "The item labeled \"%1\" will be permanently deleted."
+#~ msgstr "Hierdie item sal wees permanent uitgevee."
+
+#, fuzzy
+#~ msgid "Upload &Hot New Stuff..."
+#~ msgstr "Oplaai Warm Nuwe Goed..."
+
+#, fuzzy
+#~| msgid "Scheduler Mail Client"
+#~ msgctxt "@title"
+#~ msgid "Scheduler Mail Client"
+#~ msgstr "Skeduleerder Pos Kliënt"
+
+#, fuzzy
+#~| msgid "Mail client"
+#~ msgctxt "@option:radio"
+#~ msgid "Mail client"
+#~ msgstr "Pos kliënt"
+
+#~ msgid "Month view uses category colors"
+#~ msgstr "Maand besigtig gebruik kategorie kleure"
+
+#, fuzzy
+#~ msgid "Month view uses resource colors"
+#~ msgstr "Maand besigtig gebruik kategorie kleure"
+
+#, fuzzy
+#~ msgid "Show to-dos in day, week and month views"
+#~ msgstr "Dae na vertoon in Next-X-Dae besigtig:"
+
+#, fuzzy
+#~ msgctxt "@item:inlistbox"
+#~ msgid "1 minute"
+#~ msgstr "1 minuut"
+
+#, fuzzy
+#~| msgid "5 minutes"
+#~ msgctxt "@item:inlistbox"
+#~ msgid "5 minutes"
+#~ msgstr "5 minute"
+
+#, fuzzy
+#~| msgid "10 minutes"
+#~ msgctxt "@item:inlistbox"
+#~ msgid "10 minutes"
+#~ msgstr "10 minute"
+
+#, fuzzy
+#~| msgid "15 minutes"
+#~ msgctxt "@item:inlistbox"
+#~ msgid "15 minutes"
+#~ msgstr "15 minute"
+
+#, fuzzy
+#~| msgid "30 minutes"
+#~ msgctxt "@item:inlistbox"
+#~ msgid "30 minutes"
+#~ msgstr "30 minute"
+
+#, fuzzy
+#~ msgid "Default Reminder Time"
+#~ msgstr "Verstek afspraak tyd:"
+
+#, fuzzy
+#~| msgid "Summary"
+#~ msgctxt "@title:column reminder summary"
+#~ msgid "Summary"
+#~ msgstr "Opsomming"
+
+#, fuzzy
+#~ msgid "Apply Template"
+#~ msgstr "Stoor Werkvoorbeeld"
+
+#, fuzzy
+#~| msgid "Please specify a valid start date."
+#~ msgid "Please specify a summary."
+#~ msgstr "Asseblief spesifiseer 'n geldige begin datum."
+
+#, fuzzy
+#~ msgctxt "Journal for DATE"
+#~ msgid "Journal for %1"
+#~ msgstr "Joernaal"
+
+#, fuzzy
+#~ msgctxt "@item delimiter for joining category names"
+#~ msgid ","
+#~ msgstr ", "
+
+#, fuzzy
+#~ msgctxt "@info delimiter for joining category names"
+#~ msgid ","
+#~ msgstr ", "
+
+#, fuzzy
+#~| msgid "Name"
+#~ msgctxt "addressee name"
+#~ msgid "Name"
+#~ msgstr "Naam"
+
+#, fuzzy
+#~| msgid "Email"
+#~ msgctxt "addressee email"
+#~ msgid "Email"
+#~ msgstr "E-pos"
+
+#, fuzzy
+#~| msgid "Name:"
+#~ msgctxt "addressee name"
+#~ msgid "Name:"
+#~ msgstr "Naam:"
+
+#, fuzzy
+#~ msgid "Select &Addressee..."
+#~ msgstr "Kies Adresse"
+
+#, fuzzy
+#~ msgctxt "@action:button"
+#~ msgid "&Add..."
+#~ msgstr "Voeg by Filter..."
+
+#, fuzzy
+#~ msgctxt "Summary - date"
+#~ msgid "%1 - %2"
+#~ msgstr "%1 %"
+
+#, fuzzy
+#~ msgid "Filter: "
+#~ msgstr "Voeg by Filter"
+
+#, fuzzy
+#~| msgid "Categories"
+#~ msgid "categories-view"
+#~ msgstr "Katagoriee"
+
+#, fuzzy
+#~| msgid "Holiday"
+#~ msgctxt "incidence category"
+#~ msgid "Holiday"
+#~ msgstr "Vakansie"
+
+#, fuzzy
+#~ msgid "Show timezone selectors"
+#~ msgstr "Vertoon slegs gekose"
+
+#, fuzzy
+#~ msgid "31st Last"
+#~ msgstr "Einde Datum"
+
+#, fuzzy
+#~ msgid "30th Last"
+#~ msgstr "Lys"
+
+#, fuzzy
+#~ msgid "29th Last"
+#~ msgstr "Lys"
+
+#, fuzzy
+#~ msgid "28th Last"
+#~ msgstr "Lys"
+
+#, fuzzy
+#~ msgid "27th Last"
+#~ msgstr "Lys"
+
+#, fuzzy
+#~ msgid "26th Last"
+#~ msgstr "Lys"
+
+#, fuzzy
+#~ msgid "25th Last"
+#~ msgstr "Lys"
+
+#, fuzzy
+#~ msgid "24th Last"
+#~ msgstr "Lys"
+
+#, fuzzy
+#~ msgid "23rd Last"
+#~ msgstr "Einde Datum"
+
+#, fuzzy
+#~ msgid "22nd Last"
+#~ msgstr "Einde Datum"
+
+#, fuzzy
+#~ msgid "21st Last"
+#~ msgstr "Einde Datum"
+
+#, fuzzy
+#~ msgid "20th Last"
+#~ msgstr "Lys"
+
+#, fuzzy
+#~ msgid "19th Last"
+#~ msgstr "Lys"
+
+#, fuzzy
+#~ msgid "18th Last"
+#~ msgstr "Lys"
+
+#, fuzzy
+#~ msgid "17th Last"
+#~ msgstr "Lys"
+
+#, fuzzy
+#~ msgid "16th Last"
+#~ msgstr "Lys"
+
+#, fuzzy
+#~ msgid "15th Last"
+#~ msgstr "Lys"
+
+#, fuzzy
+#~ msgid "14th Last"
+#~ msgstr "Lys"
+
+#, fuzzy
+#~ msgid "13th Last"
+#~ msgstr "Lys"
+
+#, fuzzy
+#~ msgid "12th Last"
+#~ msgstr "Lys"
+
+#, fuzzy
+#~ msgid "11th Last"
+#~ msgstr "Lys"
+
+#, fuzzy
+#~ msgid "10th Last"
+#~ msgstr "Lys"
+
+#, fuzzy
+#~ msgid "9th Last"
+#~ msgstr "Lys"
+
+#, fuzzy
+#~ msgid "8th Last"
+#~ msgstr "Lys"
+
+#, fuzzy
+#~ msgid "7th Last"
+#~ msgstr "Lys"
+
+#, fuzzy
+#~ msgid "6th Last"
+#~ msgstr "Lys"
+
+#, fuzzy
+#~ msgid "5th Last"
+#~ msgstr "Lys"
+
+#, fuzzy
+#~ msgid "4th Last"
+#~ msgstr "Lys"
+
+#, fuzzy
+#~ msgid "3rd Last"
+#~ msgstr "Einde Datum"
+
+#, fuzzy
+#~ msgid "2nd Last"
+#~ msgstr "Einde Datum"
+
+#, fuzzy
+#~ msgctxt "last day of the month"
+#~ msgid "Last"
+#~ msgstr "Lys"
+
+#, fuzzy
+#~| msgid "1st"
+#~ msgid "1st"
+#~ msgstr "1st"
+
+#, fuzzy
+#~| msgid "2nd"
+#~ msgid "2nd"
+#~ msgstr "2nd"
+
+#, fuzzy
+#~| msgid "3rd"
+#~ msgid "3rd"
+#~ msgstr "3de"
+
+#, fuzzy
+#~| msgid "4th"
+#~ msgid "4th"
+#~ msgstr "4de"
+
+#, fuzzy
+#~| msgid "5th"
+#~ msgid "5th"
+#~ msgstr "5de"
+
+#, fuzzy
+#~ msgid "Every day"
+#~ msgid_plural "Every %1 days"
+#~ msgstr[0] "elke"
+#~ msgstr[1] "elke"
+
+#, fuzzy
+#~ msgctxt "Every N WEEK[S] on WEEKDAYNAMELIST"
+#~ msgid "Every week on %2"
+#~ msgid_plural "Every %1 weeks on %2"
+#~ msgstr[0] "%1 %2"
+#~ msgstr[1] "%1 %2"
+
+#, fuzzy
+#~ msgctxt "Every N MONTH[S] on day N"
+#~ msgid "Every month on day %2"
+#~ msgid_plural "Every %1 months on day %2"
+#~ msgstr[0] "elke"
+#~ msgstr[1] "elke"
+
+#, fuzzy
+#~ msgctxt "Every N YEAR[S] on day N of MONTHNAME"
+#~ msgid "Every year on day %2 of %3"
+#~ msgid_plural "Every %1 years on day %2 of %3"
+#~ msgstr[0] "%1 %2"
+#~ msgstr[1] "%1 %2"
+
+#, fuzzy
+#~ msgid "occurrences"
+#~ msgid_plural "occurrences"
+#~ msgstr[0] "voorkoms(s)"
+#~ msgstr[1] "voorkoms(s)"
+
+#, fuzzy
+#~ msgctxt "for N %OCCURRENCE[S]"
+#~ msgid "for %1 %2"
+#~ msgstr "%1 %2"
+
+#, fuzzy
+#~ msgid "Attendees:"
+#~ msgstr "Bywoners"
+
+#, fuzzy
+#~ msgctxt "@action:button"
+#~ msgid "Zoom to Fit"
+#~ msgstr "Zoem Uit"
+
+#, fuzzy
+#~| msgid "Week"
+#~ msgid "week"
+#~ msgid_plural "weeks"
+#~ msgstr[0] "Week"
+#~ msgstr[1] "Week"
+
+#, fuzzy
+#~| msgid "Month"
+#~ msgid "month"
+#~ msgid_plural "months"
+#~ msgstr[0] "Maand"
+#~ msgstr[1] "Maand"
+
+#, fuzzy
+#~| msgid "year(s)"
+#~ msgid "year"
+#~ msgid_plural "years"
+#~ msgstr[0] "jaar(s)"
+#~ msgstr[1] "jaar(s)"
+
+#~ msgid "Cannot write archive to final destination."
+#~ msgstr "Kan nie skryf argief na finale bestemming."
+
+#, fuzzy
+#~ msgctxt "Unspecified priority"
+#~ msgid "unspecified"
+#~ msgstr "Ligging: "
+
+#, fuzzy
+#~ msgid "1 (highest)"
+#~ msgstr "1 (Hoogste)"
+
+#, fuzzy
+#~ msgid "9 (lowest)"
+#~ msgstr "5 (laagste)"
+
+#, fuzzy
+#~ msgid "&New Month View"
+#~ msgstr "Maand besigtig:"
+
+#, fuzzy
+#~ msgctxt "@info alarm offset specified in days"
+#~ msgid "1 day"
+#~ msgid_plural "%1 days"
+#~ msgstr[0] "1 Dag"
+#~ msgstr[1] "%1 Dae"
+
+#, fuzzy
+#~ msgctxt "@info alarm offset specified in hours"
+#~ msgid "1 hour"
+#~ msgid_plural "%1 hours"
+#~ msgstr[0] "1 uur"
+#~ msgstr[1] "%1 ure"
+
+#, fuzzy
+#~ msgctxt "@info alarm offset specified in minutes"
+#~ msgid "1 minute"
+#~ msgid_plural "%1 minutes"
+#~ msgstr[0] "1 minuut"
+#~ msgstr[1] "%1 minute"
+
+#, fuzzy
+#~ msgid "Calendar: %1"
+#~ msgstr "Ikalender"
+
+#, fuzzy
+#~ msgid "Underline text"
+#~ msgstr "Herhindering:"
+
+#, fuzzy
+#~| msgid "Event text"
+#~ msgid "Center text"
+#~ msgstr "Gebeurtenis teks"
+
+#, fuzzy
+#~ msgctxt "@info:whatsthis"
+#~ msgid "Enter the default reminder time here."
+#~ msgstr "Verstek alarm tyd:"
+
+#, fuzzy
+#~ msgctxt "@action:inmenu"
+#~ msgid "Reminders Enabled"
+#~ msgstr "Herhindering:"
+
+#, fuzzy
+#~ msgctxt "@title:window"
+#~ msgid "Reminder"
+#~ msgstr "Herhindering:"
+
+#, fuzzy
+#~| msgid "Due"
+#~ msgctxt "@title:column reminder due date/time"
+#~ msgid "Due"
+#~ msgstr "As gevolg"
+
+#~ msgid "Sort Id"
+#~ msgstr "Sorteer Id"
+
+#, fuzzy
+#~ msgctxt "delete completed to-dos"
+#~ msgid "&Purge Completed"
+#~ msgstr "Maak skoon Klaar"
+
+#, fuzzy
+#~ msgid "&Templates..."
+#~ msgstr "Las Werkvoorbeeld"
+
+#, fuzzy
+#~ msgid "&Remove..."
+#~ msgstr "Werkvoorbeeld..."
+
+#, fuzzy
+#~ msgid "Edit"
+#~ msgstr "Einde Tyd: %1"
+
+#, fuzzy
+#~| msgid "day(s)"
+#~ msgctxt "@label"
+#~ msgid "day(s)"
+#~ msgstr "dag(s)"
+
+#~ msgid "Owner:"
+#~ msgstr "Eienaar:"
+
+#, fuzzy
+#~| msgid "&New"
+#~ msgctxt "@action:button add a new attendee"
+#~ msgid "&New"
+#~ msgstr "Nuwe"
+
+#, fuzzy
+#~ msgctxt "@action:button remove this attendee"
+#~ msgid "&Remove"
+#~ msgstr "Werkvoorbeeld..."
+
+#, fuzzy
+#~ msgctxt "@action:button"
+#~ msgid "&Properties..."
+#~ msgstr "Redigeer..."
+
+#, fuzzy
+#~| msgid "&Show"
+#~ msgctxt "@action:button"
+#~ msgid "&Show"
+#~ msgstr "Vertoon"
+
+#, fuzzy
+#~ msgid "Agenda view uses resource colors"
+#~ msgstr "Agenda besigtig agtergrond kleur:"
+
+#~ msgid "Role"
+#~ msgstr "Rol"
+
+#~ msgid "Status"
+#~ msgstr "Status"
+
+#~ msgid "RSVP"
+#~ msgstr "Rsvp"
+
+#, fuzzy
+#~ msgctxt "Example: 5 hours (80%)"
+#~ msgid "%1 hours ("
+#~ msgstr "1 uur"
+
+#~ msgid "Owner: "
+#~ msgstr "Eienaar: "
+
+#~ msgid "Go to &Today"
+#~ msgstr "Gaan na Vandag"
+
+#, fuzzy
+#~ msgid "Print Calendar"
+#~ msgstr "Ikalender"
+
+#~ msgid "&List"
+#~ msgstr "Lys"
+
+#, fuzzy
+#~| msgid "Center View"
+#~ msgid "&Timeline View"
+#~ msgstr "Sentrum Besigtig"
+
+#, fuzzy
+#~| msgid "Center View"
+#~ msgid "&Timespent View"
+#~ msgstr "Sentrum Besigtig"
+
+#, fuzzy
+#~ msgid "Previous year"
+#~ msgstr "Vorige Jaar"
+
+#, fuzzy
+#~ msgid "Previous month"
+#~ msgstr "Vorige Maand"
+
+#, fuzzy
+#~ msgid "Next month"
+#~ msgstr "Volgende Maand"
+
+#, fuzzy
+#~ msgid "Co-Maintainer"
+#~ msgstr "Huidige Onderhouer"
+
+#, fuzzy
+#~| msgid "Go &Forward"
+#~ msgid "Floating"
+#~ msgstr "Gaan Vorentoe"
+
+#, fuzzy
+#~ msgid "&Title: "
+#~ msgstr "Titel"
+
+#, fuzzy
+#~ msgid "Ti&me: "
+#~ msgstr "Tyd: "
+
+#, fuzzy
+#~ msgid "Sets the time associated with this journal  entry"
+#~ msgstr "Uitvee ou aktiwiteite"
+
+#, fuzzy
+#~ msgid "[Add Journal Entry]"
+#~ msgstr "Joernaal"
+
+#, fuzzy
+#~ msgid "Show &Resource Buttons"
+#~ msgstr "Korganizer Bevestiging"
+
+#, fuzzy
+#~ msgid "S&earch:"
+#~ msgstr "Soektog In"
+
+#, fuzzy
+#~ msgid "CalPrintIncidence_Base"
+#~ msgstr "Vorige Maand"
+
+#, fuzzy
+#~ msgid "CalPrintYear_Base"
+#~ msgstr "Vorige Maand"
+
+#~ msgid "This plugin provides numbers of days and weeks."
+#~ msgstr "Hierdie inplak verskaf nommers van dae en weke."
+
+#, fuzzy
+#~ msgid ""
+#~ "<p>...that you can synchronize your calendar data with the data on a Palm "
+#~ "Pilot by using <a href=\"http://www.slac.com/pilone/kpilot_home\">KPilot</"
+#~ "a>?\n"
+#~ "</p>\n"
+#~ msgstr ""
+#~ "<p>...wat jy kan sinkroniseer jou kalender data met die data op 'n Palm "
+#~ "Pilot\n"
+#~ "deur te gebruik <'n href=\"http://www.slac.com/pilone/kpilot_home"
+#~ "\">Kpilot</'n>?\n"
+
+#, fuzzy
+#~ msgid "Reset"
+#~ msgstr "Moet nooit"
+
+#, fuzzy
+#~ msgid "&Reminder Dialog"
+#~ msgstr "Herhindering:"
+
+#, fuzzy
+#~ msgid "Email &address(es):"
+#~ msgstr "E-pos adres:"
+
+#, fuzzy
+#~ msgid "CalPrintWeek_Base"
+#~ msgstr "Vorige Maand"
+
+#, fuzzy
+#~ msgid "Edit Attachment"
+#~ msgstr "Redigeer Gebeurtenis"
+
+#, fuzzy
+#~ msgctxt "date from-"
+#~ msgid ""
+#~ "to\n"
+#~ "%1 -\n"
+#~ "%2"
+#~ msgstr "%1 %2"
+
+#, fuzzy
+#~ msgctxt "date from -"
+#~ msgid ""
+#~ "to (week number)\n"
+#~ "%1 -\n"
+#~ "%2 (Week %3)"
+#~ msgstr "%1 %2"
+
+#~ msgid "Project View"
+#~ msgstr "Projek Besigtig"
+
+#~ msgid "main task"
+#~ msgstr "hoof opdrag"
+
+#, fuzzy
+#~ msgid "&Project"
+#~ msgstr "Projek"
+
+#, fuzzy
+#~ msgid "This plugin provides a Gantt diagram as project view."
+#~ msgstr "Hierdie inplak verskaf uitvoer van van kalenders as web bladsye."
+
+#, fuzzy
+#~ msgid "Project View Plugin"
+#~ msgstr "Projek Besigtig"
+
+#, fuzzy
+#~ msgctxt "date from -"
+#~ msgid ""
+#~ "to\n"
+#~ "%1 -\n"
+#~ "%2"
+#~ msgstr "%1 %2"
+
+#~ msgid "Exchange Plugin"
+#~ msgstr "Ruil uit Inplak"
+
+#, fuzzy
+#~ msgid "Exchange server:"
+#~ msgstr "Ruil uit bediener"
+
+#, fuzzy
+#~ msgid "Port:"
+#~ msgstr "Prioriteit:"
+
+#, fuzzy
+#~ msgid "User:"
+#~ msgstr "Gebruiker"
+
+#, fuzzy
+#~ msgid "Mailbox URL:"
+#~ msgstr "Kpos"
+
+#, fuzzy
+#~ msgid "Start date:"
+#~ msgstr "Begin datum"
+
+#, fuzzy
+#~ msgid "End date:"
+#~ msgstr "Einde datum"
+
+#, fuzzy
+#~ msgid "&Download..."
+#~ msgstr "Aflaai..."
+
+#, fuzzy
+#~ msgid "&Upload Event..."
+#~ msgstr "Oplaai Gebeurtenis..."
+
+#, fuzzy
+#~ msgid "De&lete Event"
+#~ msgstr "Uitvee Gebeurtenis"
+
+#~ msgid ""
+#~ "This plugin imports and export calendar events from/to a Microsoft "
+#~ "Exchange 2000 Server."
+#~ msgstr ""
+#~ "Hierdie inplak invoer en voer uit kalender aktiwiteite van/na 'n "
+#~ "Microsoft Ruil uit 2000 Bediener."
+
+#, fuzzy
+#~ msgid "Please select an appointment."
+#~ msgstr "Asseblief kies 'n afspraak"
+
+#, fuzzy
+#~ msgid "&Upload"
+#~ msgstr "Oplaai"

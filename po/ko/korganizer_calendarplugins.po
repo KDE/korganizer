@@ -1,0 +1,4876 @@
+# Translation of Korganizer-kde4 to Korean.
+# Copyright (C) 2008 This_file_is_part_of_KDE
+# This file is distributed under the same license as the kdepim package.
+# Myong-sung Kim <xfuncrushx@gmail.com>, 2008.
+# Shinjo Park <kde@peremen.name>, 2009, 2015, 2017, 2018, 2019, 2020.
+#
+msgid ""
+msgstr ""
+"Project-Id-Version: Korganizer\n"
+"Report-Msgid-Bugs-To: https://bugs.kde.org\n"
+"POT-Creation-Date: 2024-06-26 00:40+0000\n"
+"PO-Revision-Date: 2020-10-04 18:19+0200\n"
+"Last-Translator: Shinjo Park <kde@peremen.name>\n"
+"Language-Team: Korean <kde-kr@kde.org>\n"
+"Language: ko\n"
+"MIME-Version: 1.0\n"
+"Content-Type: text/plain; charset=UTF-8\n"
+"Content-Transfer-Encoding: 8bit\n"
+"Plural-Forms: nplurals=1; plural=0;\n"
+"X-Generator: Lokalize 19.12.3\n"
+
+#: datenums/configdialog.cpp:28
+#, kde-format
+msgctxt "@title:window"
+msgid "Configure Day Numbers"
+msgstr "날짜 번호 설정"
+
+#: datenums/configdialog.cpp:43
+#, kde-format
+msgid "Show Date Number"
+msgstr "날짜 번호 표시"
+
+#: datenums/configdialog.cpp:48
+#, kde-format
+msgid "Show day number"
+msgstr "날짜 번호 표시"
+
+#: datenums/configdialog.cpp:51
+#, kde-format
+msgid "Show days to end of year"
+msgstr "연도 끝까지 남은 날짜 표시"
+
+#: datenums/configdialog.cpp:54
+#, kde-format
+msgid "Show both"
+msgstr "둘 다 표시"
+
+#: datenums/datenums.cpp:36
+#, kde-format
+msgid "This plugin shows information on a day's position in the year."
+msgstr "이 플러그인은 해당 연도 내 날짜의 위치를 표시합니다."
+
+#: datenums/datenums.cpp:54
+#, kde-format
+msgid "1 day before the end of the year"
+msgid_plural "%1 days before the end of the year"
+msgstr[0] "연도 끝 %1일 전"
+
+#: datenums/datenums.cpp:59
+#, kde-format
+msgctxt "dayOfYear / daysTillEndOfYear"
+msgid "%1 / %2"
+msgstr "%1 / %2"
+
+#: datenums/datenums.cpp:60
+#, kde-format
+msgid "1 day since the beginning of the year,\n"
+msgid_plural "%1 days since the beginning of the year,\n"
+msgstr[0] "연도 시작 %1일 후,\n"
+
+#: datenums/datenums.cpp:61
+#, kde-format
+msgid "1 day until the end of the year"
+msgid_plural "%1 days until the end of the year"
+msgstr[0] "연도 끝 %1일 전"
+
+#: datenums/datenums.cpp:102
+#, kde-format
+msgctxt "Week weekOfYear"
+msgid "Week %1"
+msgstr "제 %1주"
+
+#: datenums/datenums.cpp:103 datenums/datenums.cpp:113
+#: datenums/datenums.cpp:118
+#, kde-format
+msgid "1 week since the beginning of the year"
+msgid_plural "%1 weeks since the beginning of the year"
+msgstr[0] "연도 시작 %1주 후"
+
+#: datenums/datenums.cpp:106
+#, kde-format
+msgctxt "weekOfYear (year)"
+msgid "%1 (%2)"
+msgstr "(%2) %1"
+
+#: datenums/datenums.cpp:107
+#, kde-format
+msgctxt "Week weekOfYear (year)"
+msgid "Week %1 (%2)"
+msgstr "(%2) 제 %1주"
+
+#: datenums/datenums.cpp:122
+#, kde-format
+msgid "1 week remaining"
+msgid_plural "%1 weeks remaining"
+msgstr[0] "%1주 남음"
+
+#: datenums/datenums.cpp:123
+#, kde-format
+msgid "1 week until the end of the year"
+msgid_plural "%1 weeks until the end of the year"
+msgstr[0] "연도 끝 %1주 전"
+
+#: datenums/datenums.cpp:124
+#, kde-format
+msgctxt "weekOfYear / weeksTillEndOfYear"
+msgid "%1 / %2"
+msgstr "%1 / %2"
+
+#: datenums/datenums.cpp:140
+#, kde-format
+msgctxt ""
+"n weeks since the beginning of the year\n"
+"n weeks until the end of the year"
+msgid ""
+"%1\n"
+"%2"
+msgstr ""
+"%1\n"
+"%2"
+
+#: hebrew/configdialog.cpp:28
+#, kde-format
+msgctxt "@title:window"
+msgid "Configure Holidays"
+msgstr "공휴일 설정"
+
+#: hebrew/configdialog.cpp:42
+#, kde-format
+msgid "Use Israeli holidays"
+msgstr "이스라엘 공휴일 사용"
+
+#: hebrew/configdialog.cpp:46
+#, kde-format
+msgid "Show weekly parsha"
+msgstr "주별 토라 위치 표시"
+
+#: hebrew/configdialog.cpp:50
+#, kde-format
+msgid "Show day of Omer"
+msgstr "오메르일 표시"
+
+#: hebrew/configdialog.cpp:54
+#, kde-format
+msgid "Show Chol HaMoed"
+msgstr "콜 하모에드 표시"
+
+#: hebrew/hebrew.cpp:60
+#, kde-format
+msgctxt ""
+"Change the next two strings if emphasis is done differently in your language."
+msgid ""
+"<qt><p align=\"center\"><i>\n"
+"%1\n"
+"</i></p></qt>"
+msgstr ""
+"<qt><p align=\"center\"><i>\n"
+"%1\n"
+"</i></p></qt>"
+
+#: hebrew/hebrew.cpp:67
+#, kde-format
+msgid "This plugin provides the date in the Jewish calendar."
+msgstr "이 플러그인은 유대인 달력의 날짜를 제공합니다."
+
+#: hebrew/holiday.cpp:75
+#, kde-format
+msgctxt ""
+"These are Jewish holidays and mostly do not have translations. They may have "
+"different spellings in your language; otherwise, just translate the sound to "
+"your characters."
+msgid "Sh. HaHodesh"
+msgstr "Sh. HaHodesh"
+
+#: hebrew/holiday.cpp:83
+#, kde-format
+msgid "Erev Pesach"
+msgstr "Erev Pesach"
+
+#: hebrew/holiday.cpp:94
+#, kde-format
+msgid "Sh. HaGadol"
+msgstr "Sh. HaGadol"
+
+#: hebrew/holiday.cpp:102
+#, kde-format
+msgid "Pesach"
+msgstr "Pesach"
+
+#: hebrew/holiday.cpp:113 hebrew/holiday.cpp:307
+#, kde-format
+msgid "Chol Hamoed"
+msgstr "Chol Hamoed"
+
+#: hebrew/holiday.cpp:124 hebrew/holiday.cpp:129 hebrew/holiday.cpp:138
+#, kde-format
+msgid "Yom HaShoah"
+msgstr "Yom HaShoah"
+
+#: hebrew/holiday.cpp:164 hebrew/holiday.cpp:171 hebrew/holiday.cpp:182
+#, kde-format
+msgid "Yom HaAtzmaut"
+msgstr "Yom HaAtzmaut"
+
+#: hebrew/holiday.cpp:166 hebrew/holiday.cpp:180
+#, kde-format
+msgid "Yom HaZikaron"
+msgstr "Yom HaZikaron"
+
+#: hebrew/holiday.cpp:190
+#, kde-format
+msgid "Yom Yerushalayim"
+msgstr "Yom Yerushalayim"
+
+#: hebrew/holiday.cpp:194
+#, kde-format
+msgid "Lag BaOmer"
+msgstr "Lag BaOmer"
+
+#: hebrew/holiday.cpp:220
+#, kde-format
+msgid "Erev Shavuot"
+msgstr "Erev Shavuot"
+
+#: hebrew/holiday.cpp:225
+#, kde-format
+msgid "Shavuot"
+msgstr "Shavuot"
+
+#: hebrew/holiday.cpp:234
+#, kde-format
+msgid "Tzom Tammuz"
+msgstr "Tzom Tammuz"
+
+#: hebrew/holiday.cpp:242
+#, kde-format
+msgid "Sh. Hazon"
+msgstr "Sh. Hazon"
+
+#: hebrew/holiday.cpp:244
+#, kde-format
+msgid "Sh. Nahamu"
+msgstr "Sh. Nahamu"
+
+#: hebrew/holiday.cpp:248
+#, kde-format
+msgid "Tisha B'Av"
+msgstr "Tisha B'Av"
+
+#: hebrew/holiday.cpp:254
+#, kde-format
+msgid "S'lichot"
+msgstr "S'lichot"
+
+#: hebrew/holiday.cpp:256
+#, kde-format
+msgid "Erev R.H."
+msgstr "Erev R.H."
+
+#: hebrew/holiday.cpp:264
+#, kde-format
+msgid "Rosh Hashana"
+msgstr "Rosh Hashana"
+
+#: hebrew/holiday.cpp:268 hebrew/holiday.cpp:283
+#, kde-format
+msgid "Sh. Shuvah"
+msgstr "Sh. Shuvah"
+
+#: hebrew/holiday.cpp:270 hebrew/holiday.cpp:275
+#, kde-format
+msgid "Tzom Gedalia"
+msgstr "Tzom Gedalia"
+
+#: hebrew/holiday.cpp:287
+#, kde-format
+msgid "Erev Y.K."
+msgstr "Erev Y.K."
+
+#: hebrew/holiday.cpp:290
+#, kde-format
+msgid "Yom Kippur"
+msgstr "Yom Kippur"
+
+#: hebrew/holiday.cpp:293
+#, kde-format
+msgid "Erev Sukkot"
+msgstr "Erev Sukkot"
+
+#: hebrew/holiday.cpp:298
+#, kde-format
+msgid "Sukkot"
+msgstr "Sukkot"
+
+#: hebrew/holiday.cpp:311
+#, kde-format
+msgid "Hoshana Rabah"
+msgstr "Hoshana Rabah"
+
+#: hebrew/holiday.cpp:314
+#, kde-format
+msgid "Shmini Atzeret"
+msgstr "Shmini Atzeret"
+
+#: hebrew/holiday.cpp:318
+#, kde-format
+msgid "Simchat Torah"
+msgstr "Simchat Torah"
+
+#: hebrew/holiday.cpp:329
+#, kde-format
+msgid "Erev Hanukah"
+msgstr "Erev Hanukah"
+
+#: hebrew/holiday.cpp:331 hebrew/holiday.cpp:339
+#, kde-format
+msgid "Hanukah"
+msgstr "Hanukah"
+
+#: hebrew/holiday.cpp:342
+#, kde-format
+msgid "Tzom Tevet"
+msgstr "Tzom Tevet"
+
+#: hebrew/holiday.cpp:352 hebrew/holiday.cpp:361 hebrew/holiday.cpp:366
+#: hebrew/holiday.cpp:372
+#, kde-format
+msgid "Sh. Shirah"
+msgstr "Sh. Shirah"
+
+#: hebrew/holiday.cpp:368
+#, kde-format
+msgid "Tu B'Shvat"
+msgstr "Tu B'Shvat"
+
+#: hebrew/holiday.cpp:383 hebrew/holiday.cpp:395 hebrew/holiday.cpp:403
+#, kde-format
+msgid "Sh. Shekalim"
+msgstr "Sh. Shekalim"
+
+#: hebrew/holiday.cpp:392
+#, kde-format
+msgid "Purim Katan"
+msgstr "Purim Katan"
+
+#: hebrew/holiday.cpp:411 hebrew/holiday.cpp:431
+#, kde-format
+msgid "Ta'anit Ester"
+msgstr "Ta'anit Ester"
+
+#: hebrew/holiday.cpp:420 hebrew/holiday.cpp:425
+#, kde-format
+msgid "Sh. Zachor"
+msgstr "Sh. Zachor"
+
+#: hebrew/holiday.cpp:427
+#, kde-format
+msgid "Erev Purim"
+msgstr "Erev Purim"
+
+#: hebrew/holiday.cpp:435
+#, kde-format
+msgid "Purim"
+msgstr "Purim"
+
+#: hebrew/holiday.cpp:439 hebrew/holiday.cpp:444
+#, kde-format
+msgid "Shushan Purim"
+msgstr "Shushan Purim"
+
+#: hebrew/holiday.cpp:455
+#, kde-format
+msgid "Sh. Parah"
+msgstr "Sh. Parah"
+
+#: hebrew/holiday.cpp:465
+#, kde-format
+msgid "Sh. HaHodesh"
+msgstr "Sh. HaHodesh"
+
+#: hebrew/holiday.cpp:481
+#, kde-format
+msgid " Omer"
+msgstr " Omer"
+
+#: hebrew/parsha.cpp:28
+#, kde-format
+msgctxt ""
+"These are weekly readings and do not have translations. They may have "
+"different spellings in your language; otherwise, just translate the sound to "
+"your characters"
+msgid "Bereshit"
+msgstr "Bereshit"
+
+#: hebrew/parsha.cpp:29
+#, kde-format
+msgid "Noach"
+msgstr "Noach"
+
+#: hebrew/parsha.cpp:29
+#, kde-format
+msgid "Lech L'cha"
+msgstr "Lech L'cha"
+
+#: hebrew/parsha.cpp:29
+#, kde-format
+msgid "Vayera"
+msgstr "Vayera"
+
+#: hebrew/parsha.cpp:29
+#, kde-format
+msgid "Chaye Sarah"
+msgstr "Chaye Sarah"
+
+#: hebrew/parsha.cpp:29
+#, kde-format
+msgid "Toldot"
+msgstr "Toldot"
+
+#: hebrew/parsha.cpp:29
+#, kde-format
+msgid "Vayetze"
+msgstr "Vayetze"
+
+#: hebrew/parsha.cpp:29
+#, kde-format
+msgid "Vayishlach"
+msgstr "Vayishlach"
+
+#: hebrew/parsha.cpp:30
+#, kde-format
+msgid "Vayeshev"
+msgstr "Vayeshev"
+
+#: hebrew/parsha.cpp:30
+#, kde-format
+msgid "Miketz"
+msgstr "Miketz"
+
+#: hebrew/parsha.cpp:30
+#, kde-format
+msgid "Vayigash"
+msgstr "Vayigash"
+
+#: hebrew/parsha.cpp:30
+#, kde-format
+msgid "Vayechi"
+msgstr "Vayechi"
+
+#: hebrew/parsha.cpp:30
+#, kde-format
+msgid "Shemot"
+msgstr "Shemot"
+
+#: hebrew/parsha.cpp:30
+#, kde-format
+msgid "Vaera"
+msgstr "Vaera"
+
+#: hebrew/parsha.cpp:30
+#, kde-format
+msgid "Bo"
+msgstr "Bo"
+
+#: hebrew/parsha.cpp:31
+#, kde-format
+msgid "Beshalach"
+msgstr "Beshalach"
+
+#: hebrew/parsha.cpp:31
+#, kde-format
+msgid "Yitro"
+msgstr "Yitro"
+
+#: hebrew/parsha.cpp:31
+#, kde-format
+msgid "Mishpatim"
+msgstr "Mishpatim"
+
+#: hebrew/parsha.cpp:31
+#, kde-format
+msgid "Terumah"
+msgstr "Terumah"
+
+#: hebrew/parsha.cpp:31
+#, kde-format
+msgid "Tetzaveh"
+msgstr "Tetzaveh"
+
+#: hebrew/parsha.cpp:31
+#, kde-format
+msgid "Ki Tisa"
+msgstr "Ki Tisa"
+
+#: hebrew/parsha.cpp:31
+#, kde-format
+msgid "Vayakhel"
+msgstr "Vayakhel"
+
+#: hebrew/parsha.cpp:32
+#, kde-format
+msgid "Pekudei"
+msgstr "Pekudei"
+
+#: hebrew/parsha.cpp:32
+#, kde-format
+msgid "Vayikra"
+msgstr "Vayikra"
+
+#: hebrew/parsha.cpp:32
+#, kde-format
+msgid "Tzav"
+msgstr "Tzav"
+
+#: hebrew/parsha.cpp:32
+#, kde-format
+msgid "Shemini"
+msgstr "Shemini"
+
+#: hebrew/parsha.cpp:32
+#, kde-format
+msgid "Tazria"
+msgstr "Tazria"
+
+#: hebrew/parsha.cpp:32
+#, kde-format
+msgid "Metzora"
+msgstr "Metzora"
+
+#: hebrew/parsha.cpp:32
+#, kde-format
+msgid "Acharei Mot"
+msgstr "Acharei Mot"
+
+#: hebrew/parsha.cpp:33
+#, kde-format
+msgid "Kedoshim"
+msgstr "Kedoshim"
+
+#: hebrew/parsha.cpp:33
+#, kde-format
+msgid "Emor"
+msgstr "Emor"
+
+#: hebrew/parsha.cpp:33
+#, kde-format
+msgid "Behar"
+msgstr "Behar"
+
+#: hebrew/parsha.cpp:33
+#, kde-format
+msgid "Bechukotai"
+msgstr "Bechukotai"
+
+#: hebrew/parsha.cpp:33
+#, kde-format
+msgid "Bemidbar"
+msgstr "Bemidbar"
+
+#: hebrew/parsha.cpp:33
+#, kde-format
+msgid "Naso"
+msgstr "Naso"
+
+#: hebrew/parsha.cpp:33
+#, kde-format
+msgid "Behaalotcha"
+msgstr "Behaalotcha"
+
+#: hebrew/parsha.cpp:34
+#, kde-format
+msgid "Shelach"
+msgstr "Shelach"
+
+#: hebrew/parsha.cpp:34
+#, kde-format
+msgid "Korach"
+msgstr "Korach"
+
+#: hebrew/parsha.cpp:34
+#, kde-format
+msgid "Chukat"
+msgstr "Chukat"
+
+#: hebrew/parsha.cpp:34
+#, kde-format
+msgid "Balak"
+msgstr "Balak"
+
+#: hebrew/parsha.cpp:34
+#, kde-format
+msgid "Pinchas"
+msgstr "Pinchas"
+
+#: hebrew/parsha.cpp:34
+#, kde-format
+msgid "Matot"
+msgstr "Matot"
+
+#: hebrew/parsha.cpp:34
+#, kde-format
+msgid "Masei"
+msgstr "Masei"
+
+#: hebrew/parsha.cpp:35
+#, kde-format
+msgid "Devarim"
+msgstr "Devarim"
+
+#: hebrew/parsha.cpp:35
+#, kde-format
+msgid "Vaetchanan"
+msgstr "Vaetchanan"
+
+#: hebrew/parsha.cpp:35
+#, kde-format
+msgid "Ekev"
+msgstr "Ekev"
+
+#: hebrew/parsha.cpp:35
+#, kde-format
+msgid "Reeh"
+msgstr "Reeh"
+
+#: hebrew/parsha.cpp:35
+#, kde-format
+msgid "Shoftim"
+msgstr "Shoftim"
+
+#: hebrew/parsha.cpp:35
+#, kde-format
+msgid "Ki Tetze"
+msgstr "Ki Tetze"
+
+#: hebrew/parsha.cpp:35
+#, kde-format
+msgid "Ki Tavo"
+msgstr "Ki Tavo"
+
+#: hebrew/parsha.cpp:36
+#, kde-format
+msgid "Nitzavim"
+msgstr "Nitzavim"
+
+#: hebrew/parsha.cpp:36
+#, kde-format
+msgid "Vayelech"
+msgstr "Vayelech"
+
+#: hebrew/parsha.cpp:36
+#, kde-format
+msgid "Haazinu"
+msgstr "Haazinu"
+
+#: lunarphases/lunarphases.cpp:61
+#, kde-format
+msgid ""
+"This plugin displays the day's lunar phase (New, First, Last, Full). "
+"Currently, the phase is computed for noon at UTC; therefore, you should "
+"expect variations by 1 day in either direction."
+msgstr ""
+"이 플러그인은 달의 위상을 표시합니다(상현달, 하현달, 보름달, 그믐달). 현재 달"
+"의 위상은 UTC 정오 기준으로 계산되므로 1일 정도 오차가 생길 수도 있습니다."
+
+#: picoftheday/configdialog.cpp:28
+#, kde-format
+msgctxt "@title:window"
+msgid "Configure Picture of the Day"
+msgstr "오늘의 그림 설정"
+
+#: picoftheday/configdialog.cpp:42
+#, kde-format
+msgid "Thumbnail Aspect Ratio Mode"
+msgstr "섬네일 비율 모드"
+
+#: picoftheday/configdialog.cpp:46
+#, kde-format
+msgid "Ignore aspect ratio"
+msgstr "비율 무시"
+
+#: picoftheday/configdialog.cpp:48
+#, kde-format
+msgid ""
+"The thumbnail will be scaled freely. The aspect ratio will not be preserved."
+msgstr "섬네일 크기를 자유롭게 조정합니다. 비율을 보존하지 않습니다."
+
+#: picoftheday/configdialog.cpp:52
+#, kde-format
+msgid "Keep aspect ratio"
+msgstr "비율 유지하기"
+
+#: picoftheday/configdialog.cpp:54
+#, kde-format
+msgid ""
+"The thumbnail will be scaled to a rectangle as large as possible inside a "
+"given rectangle, preserving the aspect ratio."
+msgstr ""
+"섬네일의 비율을 유지하면서 주어진 사각형 안에 최대한의 크기로 조정합니다."
+
+#: picoftheday/configdialog.cpp:59
+#, kde-format
+msgid "Keep aspect ratio by expanding"
+msgstr "확장하여 비율 유지"
+
+#: picoftheday/configdialog.cpp:61
+#, kde-format
+msgid ""
+"The thumbnail will be scaled to a rectangle as small as possible outside a "
+"given rectangle, preserving the aspect ratio."
+msgstr ""
+"섬네일의 비율을 유지하면서 주어진 사각형 안에 최소한의 크기로 조정합니다."
+
+#: picoftheday/element.cpp:209
+#, kde-format
+msgid "Wikipedia POTD: %1"
+msgstr "위키백과 오늘의 그림: %1"
+
+#: picoftheday/element.cpp:326
+#, kde-format
+msgid "Picture Page"
+msgstr "그림 페이지"
+
+#: picoftheday/element.cpp:326
+#, fuzzy, kde-format
+#| msgid "Loading..."
+msgid "Loading..."
+msgstr "불러오는 중..."
+
+#: picoftheday/element.cpp:332
+#, fuzzy, kde-format
+#| msgid "<qt>Loading <i>Picture of the Day</i>...</qt>"
+msgid "<qt>Loading <i>Picture of the Day</i>...</qt>"
+msgstr "<qt><i>오늘의 그림</i> 불러오는 중...</qt>"
+
+#: picoftheday/picoftheday.cpp:48
+#, kde-format
+msgid "<qt>This plugin provides the Wikipedia <i>Picture of the Day</i>.</qt>"
+msgstr "<qt>이 플러그인은 위키백과의 <i>오늘의 그림</i>을 제공합니다.</qt>"
+
+#: thisdayinhistory/thisdayinhistory.cpp:29
+#, kde-format
+msgid "This plugin provides links to Wikipedia's 'This Day in History' pages."
+msgstr ""
+"이 플러그인은 위키백과의 '오늘의 역사' 페이지로 가는 링크를 제공합니다."
+
+#: thisdayinhistory/thisdayinhistory.cpp:37
+#, kde-format
+msgid "This day in history"
+msgstr "오늘의 역사"
+
+#: thisdayinhistory/thisdayinhistory.cpp:39
+#: thisdayinhistory/thisdayinhistory.cpp:53
+#, kde-format
+msgctxt "Localized Wikipedia website"
+msgid "https://en.wikipedia.org/wiki/"
+msgstr "https://ko.wikipedia.org/wiki/"
+
+#: thisdayinhistory/thisdayinhistory.cpp:40
+#, kde-format
+msgctxt "Qt date format used by the localized Wikipedia"
+msgid "MMMM_d"
+msgstr "MMMM_d일"
+
+#: thisdayinhistory/thisdayinhistory.cpp:51
+#, kde-format
+msgid "This month in history"
+msgstr "이번 달의 역사"
+
+#: thisdayinhistory/thisdayinhistory.cpp:54
+#, kde-format
+msgctxt "Qt date format used by the localized Wikipedia"
+msgid "MMMM_yyyy"
+msgstr "yyyy년_MMMM"
+
+#, fuzzy
+#~| msgid "Search &Directory Service"
+#~ msgctxt "@action:button"
+#~ msgid "Search &Directory Service"
+#~ msgstr "디렉터리 서비스 검색(&D)"
+
+#~ msgctxt "NAME OF TRANSLATORS"
+#~ msgid "Your names"
+#~ msgstr "김명성"
+
+#~ msgctxt "EMAIL OF TRANSLATORS"
+#~ msgid "Your emails"
+#~ msgstr "xfuncrushx@gmail.com"
+
+#~ msgid "KOrganizer"
+#~ msgstr "KOrganizer"
+
+#, fuzzy
+#~| msgid ""
+#~| "(c) 1997-1999 Preston Brown\n"
+#~| "(c) 2000-2004,2007 Cornelius Schumacher\n"
+#~| "(c) 2004-2005 Reinhold Kainhofer"
+#~ msgid ""
+#~ "Copyright © 1997–1999 Preston Brown\n"
+#~ "Copyright © 2000–2004, 2007 Cornelius Schumacher\n"
+#~ "Copyright © 2004–2005 Reinhold Kainhofer\n"
+#~ "Copyright © 2006–2012 Allen Winter\n"
+#~ "Copyright © 2012–2016 KOrganizer authors"
+#~ msgstr ""
+#~ "(c) 1997-1999 Preston Brown\n"
+#~ "(c) 2000-2004,2007 Cornelius Schumacher\n"
+#~ "(c) 2004-2005 Reinhold Kainhofer"
+
+#~ msgid "Allen Winter"
+#~ msgstr "Allen Winter"
+
+#~ msgid "Maintainer"
+#~ msgstr "관리자"
+
+#~ msgid "Reinhold Kainhofer"
+#~ msgstr "Reinhold Kainhofer"
+
+#~ msgid "Former Maintainer"
+#~ msgstr "이전 관리자"
+
+#~ msgid "Cornelius Schumacher"
+#~ msgstr "Cornelius Schumacher"
+
+#~ msgid "Preston Brown"
+#~ msgstr "Preston Brown"
+
+#~ msgid "Original Author"
+#~ msgstr "원 작성자"
+
+#~ msgid "Richard Apodaca"
+#~ msgstr "Richard Apodaca"
+
+#~ msgid "Jan-Pascal van Best"
+#~ msgstr "Jan-Pascal van Best"
+
+#~ msgid "Laszlo Boloni"
+#~ msgstr "Laszlo Boloni"
+
+#~ msgid "Barry Benowitz"
+#~ msgstr "Barry Benowitz"
+
+#~ msgid "Christopher Beard"
+#~ msgstr "Christopher Beard"
+
+#~ msgid "Kalle Dalheimer"
+#~ msgstr "Kalle Dalheimer"
+
+#~ msgid "Ian Dawes"
+#~ msgstr "Ian Dawes"
+
+#~ msgid "Thomas Eitzenberger"
+#~ msgstr "Thomas Eitzenberger"
+
+#~ msgid "Neil Hart"
+#~ msgstr "Neil Hart"
+
+#~ msgid "Declan Houlihan"
+#~ msgstr "Declan Houlihan"
+
+#~ msgid "Hans-Jürgen Husel"
+#~ msgstr "Hans-Jürgen Husel"
+
+#~ msgid "Tim Jansen"
+#~ msgstr "Tim Jansen"
+
+#~ msgid "Christian Kirsch"
+#~ msgstr "Christian Kirsch"
+
+#~ msgid "Tobias König"
+#~ msgstr "Tobias König"
+
+#~ msgid "Martin Koller"
+#~ msgstr "Martin Koller"
+
+#~ msgid "Uwe Koloska"
+#~ msgstr "Uwe Koloska"
+
+#~ msgid "Glen Parker"
+#~ msgstr "Glen Parker"
+
+#~ msgid "Dan Pilone"
+#~ msgstr "Dan Pilone"
+
+#~ msgid "Roman Rohr"
+#~ msgstr "Roman Rohr"
+
+#~ msgid "Rafał Rzepecki"
+#~ msgstr "Rafał Rzepecki"
+
+#~ msgid "Don Sanders"
+#~ msgstr "Don Sanders"
+
+#~ msgid "Bram Schoenmakers"
+#~ msgstr "Bram Schoenmakers"
+
+#~ msgid "Günter Schwann"
+#~ msgstr "Günter Schwann"
+
+#~ msgid "Herwin Jan Steehouwer"
+#~ msgstr "Herwin Jan Steehouwer"
+
+#~ msgid "Mario Teijeiro"
+#~ msgstr "Mario Teijeiro"
+
+#~ msgid "Nick Thompson"
+#~ msgstr "Nick Thompson"
+
+#~ msgid "Bo Thorsen"
+#~ msgstr "Bo Thorsen"
+
+#~ msgid "Larry Wright"
+#~ msgstr "Larry Wright"
+
+#~ msgid "Thomas Zander"
+#~ msgstr "Thomas Zander"
+
+#~ msgid "Fester Zigterman"
+#~ msgstr "Fester Zigterman"
+
+#, fuzzy
+#~| msgid "Time bar"
+#~ msgid "Hide menu bar"
+#~ msgstr "시간 표시선"
+
+#~ msgid "Import &Calendar..."
+#~ msgstr "달력 가져오기(&C)..."
+
+#, fuzzy
+#~| msgctxt "@option:check"
+#~| msgid "Store attachment inline"
+#~ msgid "Merge the contents of another iCalendar"
+#~ msgstr "링크가 아닌 실제 파일을 보관하기"
+
+#, fuzzy
+#~| msgid "&Import From UNIX Ical tool"
+#~ msgid "&Import From UNIX Ical Tool"
+#~ msgstr "UNIX Ical tool에서 가져오기(&I)"
+
+#, fuzzy
+#~| msgid "Import calendar at '%1' into KOrganizer."
+#~ msgid "Import a calendar in another format"
+#~ msgstr "'%1'에 위치한 달력을 KOrganizer로 가져옵니다."
+
+#~ msgid "Export &Web Page..."
+#~ msgstr "웹 페이지로 내보내기(&W)..."
+
+#, fuzzy
+#~| msgid "Import &Calendar..."
+#~ msgid "Export as &iCalendar..."
+#~ msgstr "달력 가져오기(&C)..."
+
+#, fuzzy
+#~| msgid "Import &Calendar..."
+#~ msgid "Export as &vCalendar..."
+#~ msgstr "달력 가져오기(&C)..."
+
+#~ msgid "Archive O&ld Entries..."
+#~ msgstr "오래된 항목 보관(&L)..."
+
+#~ msgid "Pur&ge Completed To-dos"
+#~ msgstr "완료한 업무 정리(&G)"
+
+#~ msgid "&Delete"
+#~ msgstr "삭제(&D)"
+
+#~ msgid "What's &Next"
+#~ msgstr "다음 일정(&N)"
+
+#~ msgid "&Month"
+#~ msgstr "월(&M)"
+
+#, fuzzy
+#~| msgid "Agenda view"
+#~ msgid "&Agenda"
+#~ msgstr "의사 일정 보기"
+
+#~ msgid "&Event List"
+#~ msgstr "행사 목록(&E)"
+
+#~ msgid "&To-do List"
+#~ msgstr "업무 목록(&T)"
+
+#~ msgid "&Journal"
+#~ msgstr "일지(&J)"
+
+#~ msgid "Time&line"
+#~ msgstr "타임라인(&L)"
+
+#~ msgid "Time&spent"
+#~ msgstr "소요 시간(&S)"
+
+#~ msgid "&Refresh"
+#~ msgstr "새로 고침(&R)"
+
+#~ msgid "F&ilter"
+#~ msgstr "필터(&F)"
+
+#, fuzzy
+#~| msgctxt "@action Jump to today"
+#~| msgid "To &today"
+#~ msgctxt "@action Jump to today"
+#~ msgid "To &Today"
+#~ msgstr "오늘로 이동"
+
+#~ msgctxt "scroll backward"
+#~ msgid "&Backward"
+#~ msgstr "뒤로(&B)"
+
+#, fuzzy
+#~| msgctxt "scroll backward"
+#~| msgid "&Backward"
+#~ msgid "Scroll Backward"
+#~ msgstr "뒤로(&B)"
+
+#~ msgctxt "scroll forward"
+#~ msgid "&Forward"
+#~ msgstr "앞으로(&F)"
+
+#, fuzzy
+#~| msgctxt "scroll forward"
+#~| msgid "&Forward"
+#~ msgid "Scroll Forward"
+#~ msgstr "앞으로(&F)"
+
+#~ msgid "&Day"
+#~ msgstr "일(&D)"
+
+#~ msgid "W&ork Week"
+#~ msgstr "평일(&O)"
+
+#~ msgid "&Week"
+#~ msgstr "주(&W)"
+
+#~ msgid "New E&vent..."
+#~ msgstr "새 행사(&V)..."
+
+#~ msgid "Create a new Event"
+#~ msgstr "새 행사 만들기"
+
+#~ msgid "New &To-do..."
+#~ msgstr "새 업무"
+
+#~ msgid "Create a new To-do"
+#~ msgstr "새 업무 만들기"
+
+#~ msgid "New Su&b-to-do..."
+#~ msgstr "세부 업무 만들기(&B)..."
+
+#~ msgid "New &Journal..."
+#~ msgstr "새 일지(&J)..."
+
+#~ msgid "Create a new Journal"
+#~ msgstr "새 일지 만들기"
+
+#, fuzzy
+#~| msgctxt "@action:button"
+#~| msgid "Configure &Plugin..."
+#~ msgid "Configure View..."
+#~ msgstr "플러그인 설정(&P)..."
+
+#, fuzzy
+#~| msgid "Configure Holidays"
+#~ msgid "Configure"
+#~ msgstr "공휴일 설정"
+
+#~ msgid "&Show"
+#~ msgstr "보기(&S)"
+
+#~ msgid "&Edit..."
+#~ msgstr "편집(&E)..."
+
+#~ msgid "&Make Sub-to-do Independent"
+#~ msgstr "세부 업무 따로 떼어내기"
+
+#~ msgid "&Publish Item Information..."
+#~ msgstr "항목 정보 발행(&P)..."
+
+#~ msgid "Send &Invitation to Attendees"
+#~ msgstr "참석자에게 안내장 보내기(&I)"
+
+#~ msgid "Send &Cancellation to Attendees"
+#~ msgstr "참석자에게 취소장 보내기(&C)"
+
+#~ msgid "&Mail Free Busy Information..."
+#~ msgstr "일정 정보 메일 보내기(&M)..."
+
+#~ msgid "&Send as iCalendar..."
+#~ msgstr "iCalendar로 보내기(&S)..."
+
+#~ msgid "&Upload Free Busy Information"
+#~ msgstr "일정 정보 올리기(&U)"
+
+#, fuzzy
+#~| msgid "&Addressbook"
+#~ msgid "&Address Book"
+#~ msgstr "주소록(&A)"
+
+#~ msgid "Configure &Date && Time..."
+#~ msgstr "시간 && 날짜 설정(&D)..."
+
+#~ msgid "Manage View &Filters..."
+#~ msgstr "필터 관리(&F)..."
+
+#~ msgid "Manage C&ategories..."
+#~ msgstr "분류 관리(&A)..."
+
+#, fuzzy
+#~| msgid "&Configure Calendar..."
+#~ msgid "&Configure KOrganizer..."
+#~ msgstr "달력 설정(&C)..."
+
+#, fuzzy
+#~| msgid "The item information was successfully sent."
+#~ msgid "New calendar added successfully"
+#~ msgstr "해당 항목에 대한 정보가 성공적으로 발송되었습니다."
+
+#, fuzzy
+#~| msgid "Could not load calendar '%1'."
+#~ msgid "Could not add a calendar. Error: %1"
+#~ msgstr "'%1' 달력을 불러올 수 없습니다."
+
+#~ msgid ""
+#~ "You have no ical file in your home directory.\n"
+#~ "Import cannot proceed.\n"
+#~ msgstr ""
+#~ "홈 디렉터리에 ical 파일이 없습니다.\n"
+#~ "가져오기를 진행할 수 없습니다.\n"
+
+#, fuzzy
+#~| msgid "New Calendar"
+#~ msgid "Select path for HTML calendar export"
+#~ msgstr "새 달력"
+
+#, fuzzy
+#~ msgid "Do you want to overwrite file \"%1\"?"
+#~ msgstr "<qt><b>%1</b> 달력을 삭제하시겠습니까?</qt>"
+
+#~ msgid "Error"
+#~ msgstr "오류"
+
+#, fuzzy
+#~ msgid "*.ics *.vcs|Calendar Files"
+#~ msgstr "*.vcs *.ics|Calendar Files"
+
+#, fuzzy
+#~| msgid "Could not load calendar '%1'."
+#~ msgid "Could not load calendar %1."
+#~ msgstr "'%1' 달력을 불러올 수 없습니다."
+
+#~ msgid "&Show Event"
+#~ msgstr "행사 보기(&S)"
+
+#~ msgid "&Edit Event..."
+#~ msgstr "행사 편집(&E)..."
+
+#~ msgid "&Delete Event"
+#~ msgstr "행사 삭제(&D)"
+
+#~ msgid "&Show To-do"
+#~ msgstr "업무 보기(&S)"
+
+#~ msgid "&Edit To-do..."
+#~ msgstr "업무 편집(&E)..."
+
+#~ msgid "&Delete To-do"
+#~ msgstr "업무 삭제(&D)"
+
+#~ msgid "C&ancel"
+#~ msgstr "취소(&A)"
+
+#~ msgid "Undo: %1"
+#~ msgstr "실행 취소: %1"
+
+#~ msgid "Undo"
+#~ msgstr "실행 취소"
+
+#, fuzzy
+#~| msgid "Redo (%1)"
+#~ msgid "Redo: %1"
+#~ msgstr "다시 실행 (%1)"
+
+#~ msgid "Redo"
+#~ msgstr "다시 실행"
+
+#~ msgid "URL '%1' is invalid."
+#~ msgstr "다음 URL '%1'(은)는 유효하지 않습니다."
+
+#, fuzzy
+#~| msgid "Import Calendar"
+#~ msgctxt "@title:window"
+#~ msgid "Import Calendar"
+#~ msgstr "달력 가져오기"
+
+#~ msgid "Merge into existing calendar"
+#~ msgstr "기존의 달력과 합치기"
+
+#~ msgid "Add as new calendar"
+#~ msgstr "새 달력으로 추가"
+
+#, fuzzy
+#~| msgid "Search"
+#~ msgctxt ""
+#~ "@info/plain Displayed grayed-out inside the textbox, verb to search"
+#~ msgid "Search"
+#~ msgstr "찾기"
+
+#, fuzzy
+#~| msgid "Start searching"
+#~ msgid "searching..."
+#~ msgstr "찾기 시작"
+
+#, fuzzy
+#~| msgctxt "@title"
+#~| msgid "Properties for %1"
+#~ msgctxt "@title:window"
+#~ msgid "Properties of Calendar Folder %1"
+#~ msgstr "%1의 속성"
+
+#~ msgid "&Disable Color"
+#~ msgstr "사용하지 않음(&D)"
+
+#~ msgid "&Assign Color..."
+#~ msgstr "색 지정(&A)..."
+
+#~ msgid "Use as &Default Calendar"
+#~ msgstr "기본 달력으로 사용하기"
+
+#, fuzzy
+#~ msgid "Add Calendar"
+#~ msgstr "새 달력으로 추가"
+
+#, fuzzy
+#~ msgid "Do you really want to delete calendar %1?"
+#~ msgstr "<qt><b>%1</b> 달력을 삭제하시겠습니까?</qt>"
+
+#, fuzzy
+#~| msgid "Default Calendar"
+#~ msgid "Delete Calendar"
+#~ msgstr "기본 달력"
+
+#~ msgid ""
+#~ "<p><em>No Item Selected</em></p><p>Select an event, to-do or journal "
+#~ "entry to view its details here.</p>"
+#~ msgstr ""
+#~ "<p><em>선택한 항목 없음</em></p><p>선택한 행사나 업무, 일지의 자세한 내용"
+#~ "을 여기에서 확인할 수 있습니다.</p>"
+
+#~ msgid "Todo completed: %1 (%2)"
+#~ msgstr "업무 완료: %1 (%2)"
+
+#, fuzzy
+#~ msgctxt "@info"
+#~ msgid "Do you really want to permanently remove the item \"%1\"?"
+#~ msgstr "<qt><b>%1</b> 달력을 삭제하시겠습니까?</qt>"
+
+#, fuzzy
+#~| msgid "Delete Old Items"
+#~ msgctxt "@title:window"
+#~ msgid "Delete Item?"
+#~ msgstr "오래된 항목 삭제"
+
+#~ msgid "Make sub-to-dos independent"
+#~ msgstr "세부 업무 따로 떼어내기"
+
+#, fuzzy
+#~| msgid "&Toggle Reminder"
+#~ msgid "Toggle Reminder"
+#~ msgstr "알림 설정/해제(&T)"
+
+#, fuzzy
+#~| msgctxt "delete completed to-dos"
+#~| msgid "Pur&ge Completed"
+#~ msgid "Toggle To-do Completed"
+#~ msgstr "완료 항목 정리"
+
+#, fuzzy
+#~| msgid "Copying Failed"
+#~ msgctxt "@title:window"
+#~ msgid "Copying Succeeded"
+#~ msgstr "복사 실패"
+
+#, fuzzy
+#~| msgid "Unable to move the item to  %1."
+#~ msgctxt "@info"
+#~ msgid "Unable to copy the item \"%1\" to %2."
+#~ msgstr "%1 항목을 이동할 수 없습니다."
+
+#, fuzzy
+#~| msgid "Copying Failed"
+#~ msgctxt "@title:window"
+#~ msgid "Copying Failed"
+#~ msgstr "복사 실패"
+
+#, fuzzy
+#~| msgid "Moving Failed"
+#~ msgctxt "@title:window"
+#~ msgid "Moving Failed"
+#~ msgstr "이동 실패"
+
+#, fuzzy
+#~| msgid "Moving Failed"
+#~ msgctxt "@title:window"
+#~ msgid "Moving Succeeded"
+#~ msgstr "이동 실패"
+
+#~ msgid "KOrganizer Confirmation"
+#~ msgstr "KOrganizer 확인"
+
+#, fuzzy
+#~| msgid "T&ime associated"
+#~ msgid "&Dissociate"
+#~ msgstr "시간 관련(&I)"
+
+#, fuzzy
+#~| msgid "Calendars"
+#~ msgid "iCalendars (*.ics)"
+#~ msgstr "달력"
+
+#, fuzzy
+#~| msgid "Cannot write archive file %1."
+#~ msgctxt "@info"
+#~ msgid "Cannot write iCalendar file %1. %2"
+#~ msgstr "보관 파일 %1에 저장할 수 없습니다."
+
+#, fuzzy
+#~| msgid "Calendars"
+#~ msgid "vCalendars (*.vcs)"
+#~ msgstr "달력"
+
+#, fuzzy
+#~| msgid "Cannot write archive file %1."
+#~ msgctxt "@info"
+#~ msgid "Cannot write vCalendar file %1. %2"
+#~ msgstr "보관 파일 %1에 저장할 수 없습니다."
+
+#~ msgid "&Previous Day"
+#~ msgstr "전날(&P)"
+
+#~ msgid "&Previous Week"
+#~ msgstr "지난 주(&P)"
+
+#~ msgid "&Next Week"
+#~ msgstr "다음 주(&N)"
+
+#~ msgid "No filter"
+#~ msgstr "필터 없음"
+
+#~ msgid ""
+#~ "The item \"%1\" has sub-to-dos. Do you want to delete just this item and "
+#~ "make all its sub-to-dos independent, or delete the to-do with all its sub-"
+#~ "to-dos?"
+#~ msgstr ""
+#~ "\"%1\" 항목에 세부 업무가 포함되어 있습니다. 세부 업무를 따로 떼어내어 이 "
+#~ "업무만을 삭제하거나, 세부 업무를 포함하여 한꺼번에 삭제할 수 있습니다."
+
+#~ msgid "Delete Only This"
+#~ msgstr "이것만 삭제"
+
+#~ msgid "Delete All"
+#~ msgstr "모두 삭제"
+
+#, fuzzy
+#~| msgid "Delete To-do"
+#~ msgid "Delete parent to-do"
+#~ msgstr "업무 삭제"
+
+#, fuzzy
+#~| msgid "Deleting sub-to-dos"
+#~ msgid "Delete parent to-do and sub-to-dos"
+#~ msgstr "세부 업무 삭제"
+
+#, fuzzy
+#~| msgid ""
+#~| "The item \"%1\" is marked read-only and cannot be deleted; it probably "
+#~| "belongs to a read-only calendar resource."
+#~ msgid ""
+#~ "The item \"%1\" is marked read-only and cannot be deleted; it probably "
+#~ "belongs to a read-only calendar."
+#~ msgstr ""
+#~ "\"%1\"은(는) 읽기 전용이기 때문에 삭제할 수 없습니다; 이것은 읽기 전용 달"
+#~ "력에 속해 있기 때문입니다."
+
+#~ msgid "Removing not possible"
+#~ msgstr "삭제 불가능"
+
+#~ msgid ""
+#~ "The calendar item \"%1\" recurs over multiple dates; are you sure you "
+#~ "want to delete it and all its recurrences?"
+#~ msgstr ""
+#~ "\"%1\"은(는) 여러 일에 걸쳐 반복하고 있습니다; 반복된 일을 포함하여 모두 "
+#~ "삭제하시겠습니까?"
+
+#, fuzzy
+#~| msgid "Delete &Future"
+#~ msgid "Also Delete &Future"
+#~ msgstr "미래의 모든 항목 삭제(&F)"
+
+#, fuzzy
+#~| msgid ""
+#~| "The calendar item \"%1\" recurs over multiple dates. Do you want to "
+#~| "delete only the current one on %2, only all future recurrences, or all "
+#~| "its recurrences?"
+#~ msgid ""
+#~ "The calendar item \"%1\" recurs over multiple dates. Do you want to "
+#~ "delete only the current one on %2, also future occurrences, or all its "
+#~ "occurrences?"
+#~ msgstr ""
+#~ "\"%1\"은(는) 여러 일에 걸쳐 반복하고 있습니다. %2에 있는 항목만 삭제하거"
+#~ "나 미래의 모든 항목만을 삭제할 수 있습니다. 또는 모든 항목을 삭제할 수도 "
+#~ "있습니다."
+
+#, fuzzy
+#~| msgid ""
+#~| "The calendar item \"%1\" recurs over multiple dates. Do you want to "
+#~| "delete only the current one on %2, only all future recurrences, or all "
+#~| "its recurrences?"
+#~ msgid ""
+#~ "The calendar item \"%1\" recurs over multiple dates. Do you want to "
+#~ "delete only the current one on %2 or all its occurrences?"
+#~ msgstr ""
+#~ "\"%1\"은(는) 여러 일에 걸쳐 반복하고 있습니다. %2에 있는 항목만 삭제하거"
+#~ "나 미래의 모든 항목만을 삭제할 수 있습니다. 또는 모든 항목을 삭제할 수도 "
+#~ "있습니다."
+
+#~ msgid "Delete C&urrent"
+#~ msgstr "현재 항목만 삭제(&U)"
+
+#~ msgid "Delete &All"
+#~ msgstr "모두 삭제(&A)"
+
+#, fuzzy
+#~| msgid "Strike &out completed to-do summaries"
+#~ msgid "There are no completed to-dos to purge."
+#~ msgstr "완료된 업무 표시"
+
+#, fuzzy
+#~| msgid "Delete all completed to-dos?"
+#~ msgid "Delete all completed to-dos from checked calendars?"
+#~ msgstr "완료된 업무를 삭제하시겠습니까?"
+
+#~ msgid "Purge To-dos"
+#~ msgstr "업무 정리하기"
+
+#~ msgid "Purge"
+#~ msgstr "정리하기"
+
+#~ msgid "Copying Failed"
+#~ msgstr "복사 실패"
+
+#~ msgid "Unable to move the item to  %1."
+#~ msgstr "%1 항목을 이동할 수 없습니다."
+
+#~ msgid "Moving Failed"
+#~ msgstr "이동 실패"
+
+#, fuzzy
+#~| msgid "Hide co&mpleted to-dos"
+#~ msgid "0 completed to-dos were purged."
+#~ msgstr "완료된 업무 숨기기(&M)"
+
+#, fuzzy
+#~| msgid "Hide co&mpleted to-dos"
+#~ msgid "%1 completed to-do was purged."
+#~ msgid_plural "%1 completed to-dos were purged."
+#~ msgstr[0] "완료된 업무 숨기기(&M)"
+
+#, fuzzy
+#~| msgid "Purging completed to-dos"
+#~ msgid "An error occurred while purging completed to-dos: %1"
+#~ msgstr "완료된 업무 정리 중"
+
+#, fuzzy
+#~| msgctxt "general settings for html export"
+#~| msgid "General"
+#~ msgctxt "@title:tab General settings for a folder."
+#~ msgid "General"
+#~ msgstr "일반"
+
+#, fuzzy
+#~| msgctxt "filter name"
+#~| msgid "Name:"
+#~ msgctxt "@label:textbox Name of the folder."
+#~ msgid "&Name:"
+#~ msgstr "이름:"
+
+#, fuzzy
+#~| msgid "No reminders"
+#~ msgctxt "@option:check"
+#~ msgid "Block reminders locally"
+#~ msgstr "알림 없음"
+
+#, fuzzy
+#~| msgid "Activates a reminder for this event or to-do."
+#~ msgctxt "@info:tooltip"
+#~ msgid "Ignore reminders from this calendar"
+#~ msgstr "행사나 업무의 알림을 활성화합니다."
+
+#, fuzzy
+#~| msgctxt "@info:whatsthis"
+#~| msgid ""
+#~| "A date that should be considered an exception to the recurrence rules "
+#~| "for this event or to-do."
+#~ msgctxt "@info:whatsthis"
+#~ msgid ""
+#~ "Check this box if you do not want to receive reminders from items "
+#~ "associated with this calendar."
+#~ msgstr "행사나 업무의 반복 규칙에서 제외할 날짜를 설정합니다."
+
+#, fuzzy
+#~| msgctxt "@title:group"
+#~| msgid "Calendar Decorations"
+#~ msgctxt "@option:check"
+#~ msgid "&Use custom icon:"
+#~ msgstr "달력 장식"
+
+#, fuzzy
+#~| msgctxt "@title:group"
+#~| msgid "Calendar Decorations"
+#~ msgctxt "@info:tooltip"
+#~ msgid "Set a custom icon"
+#~ msgstr "달력 장식"
+
+#, fuzzy
+#~| msgctxt "@info:whatsthis"
+#~| msgid ""
+#~| "A date that should be considered an exception to the recurrence rules "
+#~| "for this event or to-do."
+#~ msgctxt "@info:whatsthis"
+#~ msgid "Check this box if you want to set a custom icon for this folder."
+#~ msgstr "행사나 업무의 반복 규칙에서 제외할 날짜를 설정합니다."
+
+#~ msgid "&File"
+#~ msgstr "파일(&F)"
+
+#~ msgid "&Import"
+#~ msgstr "가져오기(&I)"
+
+#~ msgid "&Export"
+#~ msgstr "내보내기(&E)"
+
+#~ msgid "&Edit"
+#~ msgstr "편집(&E)"
+
+#~ msgid "&View"
+#~ msgstr "보기(&V)"
+
+#~ msgid "&Zoom"
+#~ msgstr "확대/축소(&Z)"
+
+#~ msgid "&Go"
+#~ msgstr "이동(&G)"
+
+#~ msgid "&Actions"
+#~ msgstr "동작(&A)"
+
+#~ msgid "S&chedule"
+#~ msgstr "일정(&C)"
+
+#~ msgid "&Settings"
+#~ msgstr "설정(&S)"
+
+#~ msgid "&Sidebar"
+#~ msgstr "사이드바(&S)"
+
+#~ msgid "&Help"
+#~ msgstr "도움말(&H)"
+
+#, fuzzy
+#~| msgid "Main"
+#~ msgctxt "main toolbar"
+#~ msgid "Main"
+#~ msgstr "주 도구 모음"
+
+#~ msgid "Views"
+#~ msgstr "보기"
+
+#~ msgid "Schedule"
+#~ msgstr "일정"
+
+#~ msgid "Filters Toolbar"
+#~ msgstr "필터"
+
+#, fuzzy
+#~| msgid "Calendars"
+#~ msgid "Calendar Colors"
+#~ msgstr "달력"
+
+#~ msgid "Export Calendar as Web Page"
+#~ msgstr "웹 페이지로 달력 내보내기"
+
+#~ msgid "Export"
+#~ msgstr "내보내기"
+
+#~ msgctxt "general settings for html export"
+#~ msgid "General"
+#~ msgstr "일반"
+
+#~ msgid "Date Range"
+#~ msgstr "날짜 범위"
+
+#~ msgid "View Type"
+#~ msgstr "보기 유형"
+
+#~ msgid "To-dos"
+#~ msgstr "업무"
+
+#~ msgid "Events"
+#~ msgstr "행사"
+
+#, fuzzy
+#~| msgid "Edit Calendar Filters"
+#~ msgctxt "@title::window"
+#~ msgid "Edit Calendar Filters"
+#~ msgstr "달력 필터 편집"
+
+#, fuzzy
+#~| msgid "Press this button to define a new filter."
+#~ msgctxt "@info:whatsthis"
+#~ msgid "Press this button to define a new filter."
+#~ msgstr "새 필터를 정의하시려면 이 버튼을 누르세요."
+
+#, fuzzy
+#~| msgid "Press this button to remove the currently active filter."
+#~ msgctxt "@info:whatsthis"
+#~ msgid "Press this button to remove the currently active filter."
+#~ msgstr "현재 선택된 필터를 삭제하시려면 이 버튼을 누르세요."
+
+#, fuzzy
+#~| msgid "New Filter %1"
+#~ msgctxt "@label default filter name"
+#~ msgid "New Filter %1"
+#~ msgstr "새 필터 %1"
+
+#, fuzzy
+#~ msgctxt "@info"
+#~ msgid "Do you really want to permanently remove the filter \"%1\"?"
+#~ msgstr "<qt><b>%1</b> 달력을 삭제하시겠습니까?</qt>"
+
+#, fuzzy
+#~| msgid "Delete Old Items"
+#~ msgctxt "@title:window"
+#~ msgid "Delete Filter?"
+#~ msgstr "오래된 항목 삭제"
+
+#~ msgid "Event Viewer"
+#~ msgstr "행사 보기"
+
+#~ msgid "Edit..."
+#~ msgstr "편집..."
+
+#, fuzzy
+#~| msgid "&Cancel"
+#~ msgctxt "@action:discard creating note"
+#~ msgid "Cancel"
+#~ msgstr "취소(&C)"
+
+#, fuzzy
+#~| msgctxt "@title:tab"
+#~| msgid "Save"
+#~ msgctxt "@action:save note"
+#~ msgid "Save"
+#~ msgstr "저장"
+
+#, fuzzy
+#~| msgid "&Title:"
+#~ msgid "Title:"
+#~ msgstr "제목(&T):"
+
+#, fuzzy
+#~| msgid "Redo (%1)"
+#~ msgid "Text:"
+#~ msgstr "다시 실행 (%1)"
+
+#~ msgid "Search Calendar"
+#~ msgstr "달력 찾기"
+
+#~ msgctxt "search in calendar"
+#~ msgid "&Search"
+#~ msgstr "찾기(&S)"
+
+#~ msgid "Start searching"
+#~ msgstr "찾기 시작"
+
+#, fuzzy
+#~| msgid "No events were found matching your search expression."
+#~ msgid "No items were found that match your search pattern."
+#~ msgstr "검색 조건과 일치하는 행사를 찾을 수 없습니다."
+
+#~ msgid "Search Results"
+#~ msgstr "찾은 결과"
+
+#, fuzzy
+#~| msgid "1 minute"
+#~| msgid_plural "%1 minutes"
+#~ msgid "%1 item"
+#~ msgid_plural "%1 items"
+#~ msgstr[0] "%1분"
+
+#, fuzzy
+#~| msgid "Send &Invitation to Attendees"
+#~ msgctxt "A collection of all declined invidations."
+#~ msgid "Declined Invitations"
+#~ msgstr "참석자에게 안내장 보내기(&I)"
+
+#, fuzzy
+#~| msgid "Send &Invitation to Attendees"
+#~ msgctxt "A collection of all open invidations."
+#~ msgid "Open Invitations"
+#~ msgstr "참석자에게 안내장 보내기(&I)"
+
+#, fuzzy
+#~| msgid "<qt>Unable to create resource of type <b>%1</b>.</qt>"
+#~ msgid "Unable to write the output file."
+#~ msgstr "<qt><b>%1</b> 유형의 달력을 만들 수 없습니다.</qt>"
+
+#, fuzzy
+#~| msgid "Unable to move the item to  %1."
+#~ msgid "Unable to upload the export file."
+#~ msgstr "%1 항목을 이동할 수 없습니다."
+
+#, fuzzy
+#~| msgid "Export"
+#~ msgctxt "@title:window"
+#~ msgid "Export Status"
+#~ msgstr "내보내기"
+
+#, fuzzy
+#~| msgctxt "@item:inlistbox range is computed automatically"
+#~| msgid "Automatic"
+#~ msgctxt "@info:status"
+#~ msgid "Automatic Export: %1"
+#~ msgstr "자동"
+
+#, fuzzy
+#~| msgctxt "monthname year"
+#~| msgid "%1 %2"
+#~ msgctxt "@title month and year"
+#~ msgid "%1 %2"
+#~ msgstr "%1 %2"
+
+#, fuzzy
+#~| msgid "Start Time"
+#~ msgctxt "@title:column event start time"
+#~ msgid "Start Time"
+#~ msgstr "시작 시간"
+
+#, fuzzy
+#~| msgid "End Time"
+#~ msgctxt "@title:column event end time"
+#~ msgid "End Time"
+#~ msgstr "종료 시간"
+
+#, fuzzy
+#~| msgctxt "@action:intoolbar create a new event"
+#~| msgid "Event"
+#~ msgctxt "@title:column event description"
+#~ msgid "Event"
+#~ msgstr "행사"
+
+#, fuzzy
+#~| msgctxt "@label"
+#~| msgid "Location:"
+#~ msgctxt "@title:column event locatin"
+#~ msgid "Location"
+#~ msgstr "위치:"
+
+#, fuzzy
+#~| msgid "Categories"
+#~ msgctxt "@title:column event categories"
+#~ msgid "Categories"
+#~ msgstr "분류"
+
+#, fuzzy
+#~| msgid "&Attendees"
+#~ msgctxt "@title:column event attendees"
+#~ msgid "Attendees"
+#~ msgstr "참석자(&A)"
+
+#, fuzzy
+#~| msgid "To-do"
+#~ msgctxt "@title:column"
+#~ msgid "To-do"
+#~ msgstr "업무"
+
+#, fuzzy
+#~| msgid "Priority"
+#~ msgctxt "@title:column to-do priority"
+#~ msgid "Priority"
+#~ msgstr "우선순위"
+
+#, fuzzy
+#~| msgctxt "@title:column percent complete"
+#~| msgid "Complete"
+#~ msgctxt "@title:column to-do percent completed"
+#~ msgid "Completed"
+#~ msgstr "완료"
+
+#, fuzzy
+#~| msgid "Due Date"
+#~ msgctxt "@title:column to-do due date"
+#~ msgid "Due Date"
+#~ msgstr "기한일"
+
+#, fuzzy
+#~| msgctxt "@label"
+#~| msgid "Location:"
+#~ msgctxt "@title:column to-do location"
+#~ msgid "Location"
+#~ msgstr "위치:"
+
+#, fuzzy
+#~| msgid "Categories"
+#~ msgctxt "@title:column to-do categories"
+#~ msgid "Categories"
+#~ msgstr "분류"
+
+#, fuzzy
+#~| msgid "&Attendees"
+#~ msgctxt "@title:column to-do attendees"
+#~ msgid "Attendees"
+#~ msgstr "참석자(&A)"
+
+#, fuzzy
+#~| msgid "To-dos to Print"
+#~ msgctxt "@title:column sub-to-dos of the parent to-do"
+#~ msgid "Sub-To-dos of: "
+#~ msgstr "출력할 업무"
+
+#, fuzzy
+#~| msgid "To-dos"
+#~ msgctxt "@title:column sub-to-dos of the parent to-do"
+#~ msgid "Sub-To-dos"
+#~ msgstr "업무"
+
+#, fuzzy
+#~| msgctxt "Percent complete"
+#~| msgid "%1 %"
+#~ msgctxt "@info to-do percent complete"
+#~ msgid "%1 %"
+#~ msgstr "%1 %"
+
+#, fuzzy
+#~| msgid "- %1"
+#~ msgctxt "@info page creator name only"
+#~ msgid "by %1 "
+#~ msgstr "- %1"
+
+#, fuzzy
+#~| msgid "Edit %1"
+#~ msgctxt "@info page credit name only"
+#~ msgid "with %1"
+#~ msgstr "%1 편집"
+
+#, fuzzy
+#~| msgctxt "monthname year"
+#~| msgid "%1 %2"
+#~ msgctxt "@info holiday by date and name"
+#~ msgid "%1, %2"
+#~ msgstr "%1 %2"
+
+#, fuzzy
+#~| msgid "Select a month"
+#~ msgid "Selection"
+#~ msgstr "달 선택"
+
+#, fuzzy
+#~| msgid "Date && Time"
+#~ msgid "Date & Time"
+#~ msgstr "날짜 && 시간"
+
+#, fuzzy
+#~| msgid "&Date:"
+#~ msgid "Date"
+#~ msgstr "날짜(&D):"
+
+#, fuzzy
+#~| msgid "Tobias König"
+#~ msgid "(c) 2004 Tobias Koenig"
+#~ msgstr "Tobias König"
+
+#, fuzzy
+#~| msgid "Tobias König"
+#~ msgid "Tobias Koenig"
+#~ msgstr "Tobias König"
+
+#, fuzzy
+#~ msgid "<qt>Do you really want to delete '<b>%1</b>'?</qt>"
+#~ msgstr "<qt><b>%1</b> 달력을 삭제하시겠습니까?</qt>"
+
+#, fuzzy
+#~| msgid "Import Calendar"
+#~ msgid "Import Page"
+#~ msgstr "달력 가져오기"
+
+#, fuzzy
+#~ msgid "Designer Files (*.ui)"
+#~ msgstr "*.ics|iCalendar Files"
+
+#, fuzzy
+#~| msgid "Import &Calendar..."
+#~ msgid "Import Page..."
+#~ msgstr "달력 가져오기(&C)..."
+
+#, fuzzy
+#~| msgctxt "@label"
+#~| msgid "Type:"
+#~ msgid "Type:"
+#~ msgstr "유형:"
+
+#, fuzzy
+#~| msgctxt "login name on the Kolab server"
+#~| msgid "Username:"
+#~ msgid "Classname:"
+#~ msgstr "사용자 이름:"
+
+#~ msgid "Description:"
+#~ msgstr "설명:"
+
+#, fuzzy
+#~| msgctxt "delimiter for joining holiday names"
+#~| msgid ","
+#~ msgctxt "@item:intext delimiter for joining holiday names"
+#~ msgid ","
+#~ msgstr "."
+
+#~ msgctxt "delimiter for joining holiday names"
+#~ msgid ","
+#~ msgstr "."
+
+#~ msgid "&Move"
+#~ msgstr "이동(&M)"
+
+#~ msgid "&Copy"
+#~ msgstr "복사(&C)"
+
+#~ msgid "&Add"
+#~ msgstr "추가(&A)"
+
+#~ msgid "&Cancel"
+#~ msgstr "취소(&C)"
+
+#~ msgid "&Print..."
+#~ msgstr "출력(&P)..."
+
+#, fuzzy
+#~| msgid "&Print..."
+#~ msgid "Print Previe&w..."
+#~ msgstr "출력(&P)..."
+
+#~ msgctxt "cut this event"
+#~ msgid "C&ut"
+#~ msgstr "잘라내기(&U)"
+
+#~ msgctxt "copy this event"
+#~ msgid "&Copy"
+#~ msgstr "복사(&C)"
+
+#~ msgid "&Paste"
+#~ msgstr "붙여넣기(&P)"
+
+#~ msgctxt "delete this incidence"
+#~ msgid "&Delete"
+#~ msgstr "삭제(&D)"
+
+#, fuzzy
+#~| msgid "Create a new To-do"
+#~ msgid "Create To-do"
+#~ msgstr "새 업무 만들기"
+
+#, fuzzy
+#~| msgid "Create a new Event"
+#~ msgid "Create Event"
+#~ msgstr "새 행사 만들기"
+
+#, fuzzy
+#~| msgctxt "delete completed to-dos"
+#~| msgid "Pur&ge Completed"
+#~ msgid "Togg&le To-do Completed"
+#~ msgstr "완료 항목 정리"
+
+#~ msgid "&Toggle Reminder"
+#~ msgstr "알림 설정/해제(&T)"
+
+#, fuzzy
+#~| msgctxt "@option:check"
+#~| msgid "&Enable recurrence"
+#~ msgid "&Dissociate From Recurrence..."
+#~ msgstr "반복 활성화(&E)"
+
+#~ msgid "Send as iCalendar..."
+#~ msgstr "iCalendar로 보내기..."
+
+#~ msgid "Unable to save %1 \"%2\"."
+#~ msgstr "\"%2\" %1를 저장할 수 없습니다."
+
+#, fuzzy
+#~| msgid "Sets where the event or to-do will take place."
+#~ msgid "Show events for today only"
+#~ msgstr "행사나 업무가 일어날 장소를 설정합니다."
+
+#, fuzzy
+#~| msgctxt "@info:whatsthis"
+#~| msgid ""
+#~| "A date that should be considered an exception to the recurrence rules "
+#~| "for this event or to-do."
+#~ msgid ""
+#~ "Check this box if you want to see events occurring on this date only."
+#~ msgstr "행사나 업무의 반복 규칙에서 제외할 날짜를 설정합니다."
+
+#, fuzzy
+#~| msgctxt "@info:whatsthis"
+#~| msgid ""
+#~| "A date that should be considered an exception to the recurrence rules "
+#~| "for this event or to-do."
+#~ msgid ""
+#~ "Check this box if you want to see events that start sometime during the "
+#~ "next 31 days."
+#~ msgstr "행사나 업무의 반복 규칙에서 제외할 날짜를 설정합니다."
+
+#, fuzzy
+#~| msgctxt "@info:whatsthis"
+#~| msgid ""
+#~| "A date that should be considered an exception to the recurrence rules "
+#~| "for this event or to-do."
+#~ msgid ""
+#~ "Check this box if you want to specify the number of days in the future "
+#~ "for upcoming events."
+#~ msgstr "행사나 업무의 반복 규칙에서 제외할 날짜를 설정합니다."
+
+#, fuzzy
+#~| msgid "1 day"
+#~| msgid_plural "%1 days"
+#~ msgid "1 day"
+#~ msgstr "%1일"
+
+#, fuzzy
+#~| msgctxt "@label suffix in the N days spin box"
+#~| msgid " days"
+#~ msgctxt "days to show in summary"
+#~ msgid " days"
+#~ msgstr " 일"
+
+#, fuzzy
+#~| msgid "&Show To-do"
+#~ msgid "Show &birthdays"
+#~ msgstr "업무 보기(&S)"
+
+#, fuzzy
+#~| msgctxt "@title:group email settings"
+#~| msgid "Email Settings"
+#~ msgid "Groupware Settings"
+#~ msgstr "이메일 설정"
+
+#, fuzzy
+#~| msgid "Import Calendar"
+#~ msgid "Show events belonging to my calendars only"
+#~ msgstr "달력 가져오기"
+
+#, fuzzy
+#~| msgctxt "@info:whatsthis"
+#~| msgid ""
+#~| "A date that should be considered an exception to the recurrence rules "
+#~| "for this event or to-do."
+#~ msgid ""
+#~ "Check this box if you want the summary to show events belonging to your "
+#~ "calendars only."
+#~ msgstr "행사나 업무의 반복 규칙에서 제외할 날짜를 설정합니다."
+
+#, fuzzy
+#~| msgid "&Edit Event..."
+#~ msgid "&Edit Appointment..."
+#~ msgstr "행사 편집(&E)..."
+
+#, fuzzy
+#~| msgctxt "incidence category: appointment"
+#~| msgid "Appointment"
+#~ msgid "&Delete Appointment"
+#~ msgstr "약속"
+
+#, fuzzy
+#~| msgid "&Edit Event..."
+#~ msgid "Edit Event: \"%1\""
+#~ msgstr "행사 편집(&E)..."
+
+#, fuzzy
+#~| msgid "New &Journal..."
+#~ msgctxt "@action:inmenu"
+#~ msgid "New Journal..."
+#~ msgstr "새 일지(&J)..."
+
+#, fuzzy
+#~| msgid "Create a new Journal"
+#~ msgctxt "@info:status"
+#~ msgid "Create a new journal"
+#~ msgstr "새 일지 만들기"
+
+#, fuzzy
+#~| msgid "Journal"
+#~ msgctxt "@action:inmenu"
+#~ msgid "Sync Journal"
+#~ msgstr "일지"
+
+#, fuzzy
+#~| msgid "1 day"
+#~| msgid_plural "%1 days"
+#~ msgid " day"
+#~ msgid_plural " days"
+#~ msgstr[0] "%1일"
+
+#, fuzzy
+#~| msgid "New E&vent..."
+#~ msgctxt "@action:inmenu"
+#~ msgid "New Event..."
+#~ msgstr "새 행사(&V)..."
+
+#, fuzzy
+#~| msgid "Create a new Event"
+#~ msgctxt "@info:status"
+#~ msgid "Create a new event"
+#~ msgstr "새 행사 만들기"
+
+#, fuzzy
+#~| msgid "Search Calendar"
+#~ msgctxt "@action:inmenu"
+#~ msgid "Sync Calendar"
+#~ msgstr "달력 찾기"
+
+#, fuzzy
+#~| msgid "&Settings"
+#~ msgctxt "@item"
+#~ msgid "Meeting"
+#~ msgstr "설정(&S)"
+
+#, fuzzy
+#~| msgid "Undo: %1"
+#~ msgctxt "@item"
+#~ msgid "Note: %1"
+#~ msgstr "실행 취소: %1"
+
+#, fuzzy
+#~| msgctxt "@action Jump to today"
+#~| msgid "To &today"
+#~ msgctxt "the appointment is today"
+#~ msgid "Today"
+#~ msgstr "오늘로 이동"
+
+#, fuzzy
+#~| msgid "1 day"
+#~| msgid_plural "%1 days"
+#~ msgid "in 1 day"
+#~ msgid_plural "in %1 days"
+#~ msgstr[0] "%1일"
+
+#, fuzzy
+#~| msgid "1 minute"
+#~| msgid_plural "%1 minutes"
+#~ msgctxt "use abbreviation for minute to keep the text short"
+#~ msgid "1 min"
+#~ msgid_plural "%1 mins"
+#~ msgstr[0] "%1분"
+
+#, fuzzy
+#~| msgid "1 day"
+#~| msgid_plural "%1 days"
+#~ msgid "all day"
+#~ msgstr "%1일"
+
+#, fuzzy
+#~| msgctxt "date from - to"
+#~| msgid "%1 - %2"
+#~ msgctxt "Time from - to"
+#~ msgid "%1 - %2"
+#~ msgstr "%1 - %2"
+
+#, fuzzy
+#~| msgid "Redo (%1)"
+#~ msgctxt "next occurrence"
+#~ msgid "Next: %1"
+#~ msgstr "다시 실행 (%1)"
+
+#, fuzzy
+#~| msgid "New &To-do..."
+#~ msgctxt "@action:inmenu"
+#~ msgid "New To-do..."
+#~ msgstr "새 업무"
+
+#, fuzzy
+#~| msgid "Create a new To-do"
+#~ msgctxt "@info:status"
+#~ msgid "Create a new to-do"
+#~ msgstr "새 업무 만들기"
+
+#, fuzzy
+#~| msgid "To-do List"
+#~ msgctxt "@action:inmenu"
+#~ msgid "Sync To-do List"
+#~ msgstr "업무 목록"
+
+#, fuzzy
+#~ msgctxt "@info:status"
+#~ msgid "Synchronize groupware to-do list"
+#~ msgstr "시작 %1 후"
+
+#, fuzzy
+#~| msgid "&Show To-do"
+#~ msgid "Show To-dos Due"
+#~ msgstr "업무 보기(&S)"
+
+#, fuzzy
+#~| msgid "To-do due today color"
+#~ msgid "Show To-dos due today only"
+#~ msgstr "오늘까지 해야할 업무의 색"
+
+#, fuzzy
+#~| msgctxt "@info:whatsthis"
+#~| msgid ""
+#~| "A date that should be considered an exception to the recurrence rules "
+#~| "for this event or to-do."
+#~ msgid "Check this box if you want to see To-dos due on this date only."
+#~ msgstr "행사나 업무의 반복 규칙에서 제외할 날짜를 설정합니다."
+
+#, fuzzy
+#~| msgid "Print only to-dos due in the &range:"
+#~ msgid "Show To-dos due within the next month"
+#~ msgstr "다음 범위에 기한이 포함되는 업무만 출력(&R)"
+
+#, fuzzy
+#~| msgctxt "@info:whatsthis"
+#~| msgid ""
+#~| "A date that should be considered an exception to the recurrence rules "
+#~| "for this event or to-do."
+#~ msgid ""
+#~ "Check this box if you want to see To-dos that are due sometime during the "
+#~ "next 31 days."
+#~ msgstr "행사나 업무의 반복 규칙에서 제외할 날짜를 설정합니다."
+
+#, fuzzy
+#~| msgctxt "@info:whatsthis"
+#~| msgid ""
+#~| "A date that should be considered an exception to the recurrence rules "
+#~| "for this event or to-do."
+#~ msgid ""
+#~ "Check this box if you want specify the number of days in the future for "
+#~ "pending To-dos."
+#~ msgstr "행사나 업무의 반복 규칙에서 제외할 날짜를 설정합니다."
+
+#, fuzzy
+#~| msgid "Hide co&mpleted to-dos"
+#~ msgid "Hide completed To-dos"
+#~ msgstr "완료된 업무 숨기기(&M)"
+
+#, fuzzy
+#~| msgctxt "@info:whatsthis"
+#~| msgid ""
+#~| "A date that should be considered an exception to the recurrence rules "
+#~| "for this event or to-do."
+#~ msgid ""
+#~ "Check this box if you do not want to see To-dos that have already been "
+#~ "completed."
+#~ msgstr "행사나 업무의 반복 규칙에서 제외할 날짜를 설정합니다."
+
+#, fuzzy
+#~| msgctxt "@title:column percent complete"
+#~| msgid "Complete"
+#~ msgid "&Completed"
+#~ msgstr "완료"
+
+#, fuzzy
+#~| msgid "Hide to-dos not assigned to me"
+#~ msgid "Hide To-dos without a due date"
+#~ msgstr "나에게 할당되지 않은 업무 숨기기"
+
+#, fuzzy
+#~| msgctxt "@info:whatsthis"
+#~| msgid ""
+#~| "A date that should be considered an exception to the recurrence rules "
+#~| "for this event or to-do."
+#~ msgid "Check this box if you do not want to see open-ended To-dos."
+#~ msgstr "행사나 업무의 반복 규칙에서 제외할 날짜를 설정합니다."
+
+#, fuzzy
+#~| msgid "Hide &inactive to-dos"
+#~ msgid "Hide unstarted To-dos"
+#~ msgstr "시작하지 않은 업무 숨기기(&I)"
+
+#, fuzzy
+#~| msgctxt "@info:whatsthis"
+#~| msgid ""
+#~| "A date that should be considered an exception to the recurrence rules "
+#~| "for this event or to-do."
+#~ msgid ""
+#~ "Check this box if you do not want to see To-dos with a start date in the "
+#~ "future."
+#~ msgstr "행사나 업무의 반복 규칙에서 제외할 날짜를 설정합니다."
+
+#, fuzzy
+#~| msgid "Hide &inactive to-dos"
+#~ msgid "Hide in-progress To-dos"
+#~ msgstr "시작하지 않은 업무 숨기기(&I)"
+
+#, fuzzy
+#~| msgctxt "@info:whatsthis"
+#~| msgid ""
+#~| "A date that should be considered an exception to the recurrence rules "
+#~| "for this event or to-do."
+#~ msgid ""
+#~ "Check this box if you do not want to see To-dos that have been started "
+#~ "but are not yet completed."
+#~ msgstr "행사나 업무의 반복 규칙에서 제외할 날짜를 설정합니다."
+
+#, fuzzy
+#~| msgid "Hide co&mpleted to-dos"
+#~ msgid "Hide overdue To-dos"
+#~ msgstr "완료된 업무 숨기기(&M)"
+
+#, fuzzy
+#~| msgctxt "@info:whatsthis"
+#~| msgid ""
+#~| "A date that should be considered an exception to the recurrence rules "
+#~| "for this event or to-do."
+#~ msgid ""
+#~ "Check this box if you do not want to see To-dos that are past their due "
+#~ "date but have not yet been completed."
+#~ msgstr "행사나 업무의 반복 규칙에서 제외할 날짜를 설정합니다."
+
+#, fuzzy
+#~| msgid "Import Calendar"
+#~ msgid "Show To-dos belonging to my calendars only"
+#~ msgstr "달력 가져오기"
+
+#, fuzzy
+#~| msgctxt "@info:whatsthis"
+#~| msgid ""
+#~| "A date that should be considered an exception to the recurrence rules "
+#~| "for this event or to-do."
+#~ msgid ""
+#~ "Check this box if you want the summary to show To-dos belonging to your "
+#~ "calendars only."
+#~ msgstr "행사나 업무의 반복 규칙에서 제외할 날짜를 설정합니다."
+
+#, fuzzy
+#~| msgid "&Show To-do"
+#~ msgid "Show &my To-dos only"
+#~ msgstr "업무 보기(&S)"
+
+#, fuzzy
+#~| msgid "Purge To-dos"
+#~ msgid "Pending To-dos"
+#~ msgstr "업무 정리하기"
+
+#, fuzzy
+#~| msgctxt "@action Jump to today"
+#~| msgid "To &today"
+#~ msgctxt "the to-do is due today"
+#~ msgid "Today"
+#~ msgstr "오늘로 이동"
+
+#, fuzzy
+#~| msgid "1 day"
+#~| msgid_plural "%1 days"
+#~ msgid "1 day ago"
+#~ msgid_plural "%1 days ago"
+#~ msgstr[0] "%1일"
+
+#, fuzzy
+#~| msgctxt "@label to-do due date"
+#~| msgid "Due"
+#~ msgctxt "the to-do is due"
+#~ msgid "due"
+#~ msgstr "기한"
+
+#, fuzzy
+#~| msgid "Print only to-dos due in the &range:"
+#~ msgid "No pending to-dos due within the next day"
+#~ msgid_plural "No pending to-dos due within the next %1 days"
+#~ msgstr[0] "다음 범위에 기한이 포함되는 업무만 출력(&R)"
+
+#, fuzzy
+#~| msgctxt "delete completed to-dos"
+#~| msgid "Pur&ge Completed"
+#~ msgid "&Mark To-do Completed"
+#~ msgstr "완료 항목 정리"
+
+#, fuzzy
+#~| msgid "To-do: %1"
+#~ msgid "Edit To-do: \"%1\""
+#~ msgstr "업무: %1"
+
+#, fuzzy
+#~| msgid "No start date"
+#~ msgctxt "the to-do starts today"
+#~ msgid "starts today"
+#~ msgstr "시작일 없음"
+
+#, fuzzy
+#~| msgctxt "@title:column percent complete"
+#~| msgid "Complete"
+#~ msgctxt "the to-do is completed"
+#~ msgid "completed"
+#~ msgstr "완료"
+
+#, fuzzy
+#~| msgctxt "delimiter for joining holiday names"
+#~| msgid ","
+#~ msgctxt "Separator for status like this: overdue, completed"
+#~ msgid ","
+#~ msgstr "."
+
+#, fuzzy
+#~| msgid ""
+#~| "Check this box to display a confirmation dialog when deleting items."
+#~ msgid ""
+#~ "Check this box if you want to see special occasions occurring on this "
+#~ "date only."
+#~ msgstr "이 박스를 체크하면 항목 삭제 시 확인창을 보여줍니다."
+
+#, fuzzy
+#~| msgctxt "@info:whatsthis"
+#~| msgid ""
+#~| "A date that should be considered an exception to the recurrence rules "
+#~| "for this event or to-do."
+#~ msgid ""
+#~ "Check this box if you want to see special occasions that start sometime "
+#~ "during the next 31 days."
+#~ msgstr "행사나 업무의 반복 규칙에서 제외할 날짜를 설정합니다."
+
+#, fuzzy
+#~| msgid "Import Calendar"
+#~ msgid "Show birthdays from your calendar"
+#~ msgstr "달력 가져오기"
+
+#, fuzzy
+#~| msgid "&Show To-do"
+#~ msgid "Show &holidays"
+#~ msgstr "업무 보기(&S)"
+
+#, fuzzy
+#~| msgctxt "@action Jump to today"
+#~| msgid "To &today"
+#~ msgctxt "the special day is today"
+#~ msgid "Today"
+#~ msgstr "오늘로 이동"
+
+#~ msgid "Holiday"
+#~ msgstr "공휴일"
+
+#, fuzzy
+#~| msgid "Print Style"
+#~ msgid "one year"
+#~ msgid_plural "%1 years"
+#~ msgstr[0] "출력 양식"
+
+#, fuzzy
+#~| msgid "Former Maintainer"
+#~ msgid "Current Maintainer"
+#~ msgstr "이전 관리자"
+
+#~ msgid "Calendar"
+#~ msgstr "달력"
+
+#~ msgid "New Calendar"
+#~ msgstr "새 달력"
+
+#~ msgctxt "the calendar is read-only"
+#~ msgid "read-only"
+#~ msgstr "읽기 전용"
+
+#, fuzzy
+#~| msgctxt "@option:check"
+#~| msgid "Store attachment inline"
+#~ msgid "Import the specified files as separate calendars"
+#~ msgstr "링크가 아닌 실제 파일을 보관하기"
+
+#, fuzzy
+#~| msgctxt "@option:check"
+#~| msgid "Store attachment inline"
+#~ msgid "Merge the specified files into an existing calendar"
+#~ msgstr "링크가 아닌 실제 파일을 보관하기"
+
+#~ msgctxt "Default export file"
+#~ msgid "calendar.html"
+#~ msgstr "calendar.html"
+
+#~ msgctxt "@title:tab personal settings"
+#~ msgid "Personal"
+#~ msgstr "개인"
+
+#~ msgctxt "@title:group email settings"
+#~ msgid "Email Settings"
+#~ msgstr "이메일 설정"
+
+#~ msgctxt "@title:tab"
+#~ msgid "Save"
+#~ msgstr "저장"
+
+#, fuzzy
+#~| msgid "Import Calendar"
+#~ msgctxt "@title:group"
+#~ msgid "Exporting Calendar"
+#~ msgstr "달력 가져오기"
+
+#~ msgctxt "@title:tab systray settings"
+#~ msgid "System Tray"
+#~ msgstr "시스템 트레이"
+
+#~ msgctxt "@title:group"
+#~ msgid "Show/Hide Options"
+#~ msgstr "표시/숨김 옵션"
+
+#~ msgctxt "@info"
+#~ msgid ""
+#~ "<note>The daemon will continue running even if it is not shown in the "
+#~ "system tray.</note>"
+#~ msgstr ""
+#~ "<note>알림 데몬은 시스템 트레이에 나타나지 않아도 계속 실행될 것입니다.</"
+#~ "note>"
+
+#, fuzzy
+#~| msgid "Calendars"
+#~ msgctxt "@title:tab calendar account settings"
+#~ msgid "Calendars"
+#~ msgstr "달력"
+
+#~ msgctxt "@title:tab"
+#~ msgid "Regional"
+#~ msgstr "지역"
+
+#, fuzzy
+#~| msgid "Holiday"
+#~ msgctxt "@title:group"
+#~ msgid "Holidays"
+#~ msgstr "공휴일"
+
+#~ msgctxt "@label"
+#~ msgid "Use holiday region:"
+#~ msgstr "지역 공휴일 사용:"
+
+#~ msgctxt "No holiday region"
+#~ msgid "None"
+#~ msgstr "없음"
+
+#, fuzzy
+#~| msgctxt "@title:group"
+#~| msgid "Working Hours"
+#~ msgctxt "@title:group"
+#~ msgid "Working Period"
+#~ msgstr "근무 시간"
+
+#~ msgctxt "@title:tab"
+#~ msgid "Default Values"
+#~ msgstr "기본값"
+
+#, fuzzy
+#~| msgctxt "incidence category: appointment"
+#~| msgid "Appointment"
+#~ msgctxt "@title:group"
+#~ msgid "Appointments"
+#~ msgstr "약속"
+
+#, fuzzy
+#~| msgctxt "@title:window"
+#~| msgid "Reminders"
+#~ msgctxt "@title:group"
+#~ msgid "Reminders"
+#~ msgstr "알림"
+
+#~ msgctxt "@label"
+#~ msgid "Default reminder time:"
+#~ msgstr "기본 알림 시간:"
+
+#, fuzzy
+#~| msgctxt "@item:inlistbox alarm expressed in minutes"
+#~| msgid "minute(s)"
+#~ msgctxt "@item:inlistbox reminder units in minutes"
+#~ msgid "minute(s)"
+#~ msgstr "분"
+
+#, fuzzy
+#~| msgctxt "@item:inlistbox alarm expressed in hours"
+#~| msgid "hour(s)"
+#~ msgctxt "@item:inlistbox reminder time units in hours"
+#~ msgid "hour(s)"
+#~ msgstr "시간"
+
+#, fuzzy
+#~| msgctxt "@label recurrence expressed in days"
+#~| msgid "day(s)"
+#~ msgctxt "@item:inlistbox reminder time units in days"
+#~ msgid "day(s)"
+#~ msgstr "일마다"
+
+#~ msgctxt "@title:tab general settings"
+#~ msgid "General"
+#~ msgstr "일반"
+
+#, fuzzy
+#~| msgid "&Display reminder"
+#~ msgctxt "@title:group"
+#~ msgid "Display Options"
+#~ msgstr "알림 표시(&D)"
+
+#~ msgctxt "@label suffix in the N days spin box"
+#~ msgid " days"
+#~ msgstr " 일"
+
+#~ msgctxt "@title:tab"
+#~ msgid "Agenda View"
+#~ msgstr "의사 일정 보기"
+
+#, fuzzy
+#~| msgctxt "@label suffix in the hour size spin box"
+#~| msgid " pixel"
+#~ msgctxt "@label suffix in the hour size spin box"
+#~ msgid " pixels"
+#~ msgstr "픽셀"
+
+#~ msgctxt "@title:tab"
+#~ msgid "Month View"
+#~ msgstr "월 보기"
+
+#~ msgctxt "@title:tab"
+#~ msgid "Todo View"
+#~ msgstr "업무 보기"
+
+#, fuzzy
+#~| msgid "Other Options"
+#~ msgctxt "@title:group"
+#~ msgid "Other Options"
+#~ msgstr "다른 옵션"
+
+#~ msgctxt "@title:tab"
+#~ msgid "Colors"
+#~ msgstr "색상"
+
+#~ msgctxt "@title:group"
+#~ msgid "Categories"
+#~ msgstr "분류"
+
+#~ msgctxt "@info:whatsthis"
+#~ msgid ""
+#~ "Choose here the color of the event category selected using the combo box "
+#~ "above."
+#~ msgstr "콤보 박스에서 선택한 행사 분류의 색을 선택하세요."
+
+#~ msgctxt "@title:group"
+#~ msgid "Resources"
+#~ msgstr "달력"
+
+#, fuzzy
+#~| msgctxt "@info:whatsthis"
+#~| msgid ""
+#~| "Choose here the color of the resource selected using the combo box above."
+#~ msgctxt "@info:whatsthis"
+#~ msgid ""
+#~ "Choose here the color of the calendar selected using the combo box above."
+#~ msgstr "콤보 박스에서 선택한 달력의 색을 선택하세요."
+
+#~ msgctxt "@title:tab"
+#~ msgid "Fonts"
+#~ msgstr "글꼴"
+
+#~ msgctxt "@title:column plugin name"
+#~ msgid "Name"
+#~ msgstr "이름"
+
+#~ msgctxt "@action:button"
+#~ msgid "Configure &Plugin..."
+#~ msgstr "플러그인 설정(&P)..."
+
+#~ msgctxt "@title:group"
+#~ msgid "Position"
+#~ msgstr "위치"
+
+#~ msgctxt "@option:check"
+#~ msgid "Show at the top of the agenda views"
+#~ msgstr "의사 일정 보기 시 화면의 상단에 표시"
+
+#~ msgctxt "@option:check"
+#~ msgid "Show at the bottom of the agenda views"
+#~ msgstr "의사 일정 보기 시 화면의 하단에 표시"
+
+#~ msgctxt "@title:group"
+#~ msgid "Calendar Decorations"
+#~ msgstr "달력 장식"
+
+#~ msgctxt "@title:group"
+#~ msgid "Other Plugins"
+#~ msgstr "다른 플러그인"
+
+#~ msgctxt "@info"
+#~ msgid "Unable to configure this plugin"
+#~ msgstr "이 플러그인을 설정할 수 없습니다."
+
+#, fuzzy
+#~| msgid "Please enter a name for the new template:"
+#~ msgid "Full name of the calendar owner"
+#~ msgstr "새 템플릿의 이름을 입력하세요:"
+
+#, fuzzy
+#~| msgid "Please enter a name for the new template:"
+#~ msgid "The full name of the calendar owner for the export"
+#~ msgstr "새 템플릿의 이름을 입력하세요:"
+
+#, fuzzy
+#~| msgid "Please enter a name for the new template:"
+#~ msgid "The email address of the calendar owner for the export"
+#~ msgstr "새 템플릿의 이름을 입력하세요:"
+
+#, fuzzy
+#~| msgid "<qt>Unable to create resource of type <b>%1</b>.</qt>"
+#~ msgid "Creator application of the calendar"
+#~ msgstr "<qt><b>%1</b> 유형의 달력을 만들 수 없습니다.</qt>"
+
+#, fuzzy
+#~| msgid "<qt>Unable to create resource of type <b>%1</b>.</qt>"
+#~ msgid "Enter a creator application of the calendar, for example KOrganizer."
+#~ msgstr "<qt><b>%1</b> 유형의 달력을 만들 수 없습니다.</qt>"
+
+#, fuzzy
+#~| msgid "Server URL:"
+#~ msgid "Creator URL"
+#~ msgstr "서버 주소:"
+
+#, fuzzy
+#~| msgid "&Title:"
+#~ msgid "Page Title"
+#~ msgstr "제목(&T):"
+
+#, fuzzy
+#~| msgctxt "@label"
+#~| msgid "Default reminder time:"
+#~ msgid "The title of the exported page"
+#~ msgstr "기본 알림 시간:"
+
+#, fuzzy
+#~ msgid "Date start"
+#~ msgstr "시작 %1 후"
+
+#, fuzzy
+#~| msgid "Date Range"
+#~ msgid "Date end"
+#~ msgstr "날짜 범위"
+
+#, fuzzy
+#~| msgid "Exclude holidays"
+#~ msgid "Exclude private items from the export"
+#~ msgstr "공휴일 제외하기"
+
+#, fuzzy
+#~| msgctxt "@info:whatsthis"
+#~| msgid ""
+#~| "A date that should be considered an exception to the recurrence rules "
+#~| "for this event or to-do."
+#~ msgid "Check this box if you do NOT want to export your private items."
+#~ msgstr "행사나 업무의 반복 규칙에서 제외할 날짜를 설정합니다."
+
+#, fuzzy
+#~| msgid "Exclude holidays"
+#~ msgid "Exclude confidential items from the export"
+#~ msgstr "공휴일 제외하기"
+
+#, fuzzy
+#~| msgctxt "@info:whatsthis"
+#~| msgid ""
+#~| "A date that should be considered an exception to the recurrence rules "
+#~| "for this event or to-do."
+#~ msgid "Check this box if you do NOT want to export your confidential items."
+#~ msgstr "행사나 업무의 반복 규칙에서 제외할 날짜를 설정합니다."
+
+#, fuzzy
+#~| msgid "To-do list"
+#~ msgid "Export events as a list"
+#~ msgstr "업무 목록"
+
+#, fuzzy
+#~| msgctxt "@info:whatsthis"
+#~| msgid ""
+#~| "A date that should be considered an exception to the recurrence rules "
+#~| "for this event or to-do."
+#~ msgid "Check this box if you want your events shown as a list."
+#~ msgstr "행사나 업무의 반복 규칙에서 제외할 날짜를 설정합니다."
+
+#, fuzzy
+#~| msgctxt "@option:check"
+#~| msgid "Show in the month view"
+#~ msgid "Export in month view"
+#~ msgstr "월 보기 시 표시"
+
+#, fuzzy
+#~| msgctxt "@option:check"
+#~| msgid "Show in the month view"
+#~ msgid "Export events in a month view"
+#~ msgstr "월 보기 시 표시"
+
+#, fuzzy
+#~| msgid ""
+#~| "Check this box to display a confirmation dialog when deleting items."
+#~ msgid "Check this box if you want your events shown in a month view."
+#~ msgstr "이 박스를 체크하면 항목 삭제 시 확인창을 보여줍니다."
+
+#, fuzzy
+#~| msgctxt "@option:check"
+#~| msgid "Show in the month view"
+#~ msgid "Export events in a week view"
+#~ msgstr "월 보기 시 표시"
+
+#, fuzzy
+#~| msgid ""
+#~| "Check this box to display a confirmation dialog when deleting items."
+#~ msgid "Check this box if you want your events shown in a week view."
+#~ msgstr "이 박스를 체크하면 항목 삭제 시 확인창을 보여줍니다."
+
+#, fuzzy
+#~| msgid "<qt>Unable to create resource of type <b>%1</b>.</qt>"
+#~ msgid "Title of the calendar"
+#~ msgstr "<qt><b>%1</b> 유형의 달력을 만들 수 없습니다.</qt>"
+
+#, fuzzy
+#~| msgid "<qt>Unable to create resource of type <b>%1</b>.</qt>"
+#~ msgid "Title for the event calendar"
+#~ msgstr "<qt><b>%1</b> 유형의 달력을 만들 수 없습니다.</qt>"
+
+#, fuzzy
+#~| msgid "Please select type of the new resource:"
+#~ msgid "Enter a string to use for the title of the event calendar."
+#~ msgstr "새 달력의 유형을 선택하세요."
+
+#, fuzzy
+#~| msgid "Export to HTML with every save"
+#~ msgid "Export location of the events"
+#~ msgstr "저장할 때마다 HTML로 내보내기"
+
+#, fuzzy
+#~| msgid "Include Information"
+#~ msgid "Include the event locations"
+#~ msgstr "포함할 정보"
+
+#, fuzzy
+#~| msgctxt "@item:inlistbox"
+#~| msgid "Select Categories"
+#~ msgid "Include the event categories"
+#~ msgstr "분류 선택"
+
+#, fuzzy
+#~| msgctxt "@info:whatsthis"
+#~| msgid ""
+#~| "A date that should be considered an exception to the recurrence rules "
+#~| "for this event or to-do."
+#~ msgid "Check this box if you want the event categories to be exported."
+#~ msgstr "행사나 업무의 반복 규칙에서 제외할 날짜를 설정합니다."
+
+#, fuzzy
+#~ msgid "Include the event attendees"
+#~ msgstr "종료 %1 후"
+
+#, fuzzy
+#~| msgctxt "@info:whatsthis"
+#~| msgid ""
+#~| "A date that should be considered an exception to the recurrence rules "
+#~| "for this event or to-do."
+#~ msgid "Check this box if you want the event attendees to be exported."
+#~ msgstr "행사나 업무의 반복 규칙에서 제외할 날짜를 설정합니다."
+
+#, fuzzy
+#~| msgid "To-do list"
+#~ msgid "Export to-do list"
+#~ msgstr "업무 목록"
+
+#, fuzzy
+#~| msgid "To-do list"
+#~ msgid "Export the to-do list"
+#~ msgstr "업무 목록"
+
+#, fuzzy
+#~ msgid "Title of the to-do list"
+#~ msgstr "시작 %1 후"
+
+#~ msgid "To-do List"
+#~ msgstr "업무 목록"
+
+#, fuzzy
+#~ msgid "Title for the to-do list"
+#~ msgstr "시작 %1 후"
+
+#, fuzzy
+#~ msgid "Include the to-do locations"
+#~ msgstr "시작 %1 후"
+
+#, fuzzy
+#~| msgctxt "@item:inlistbox"
+#~| msgid "Select Categories"
+#~ msgid "Include the to-do categories"
+#~ msgstr "분류 선택"
+
+#, fuzzy
+#~| msgctxt "@info:whatsthis"
+#~| msgid ""
+#~| "A date that should be considered an exception to the recurrence rules "
+#~| "for this event or to-do."
+#~ msgid "Check this box if you want the to-do categories to be exported."
+#~ msgstr "행사나 업무의 반복 규칙에서 제외할 날짜를 설정합니다."
+
+#, fuzzy
+#~| msgid "One attendee"
+#~| msgid_plural "%1 attendees"
+#~ msgid "Include the to-do attendees"
+#~ msgstr "참석자 %1명"
+
+#, fuzzy
+#~| msgctxt "@info:whatsthis"
+#~| msgid ""
+#~| "A date that should be considered an exception to the recurrence rules "
+#~| "for this event or to-do."
+#~ msgid "Check this box if you want the to-do attendees to be exported."
+#~ msgstr "행사나 업무의 반복 규칙에서 제외할 날짜를 설정합니다."
+
+#, fuzzy
+#~| msgid "New &Journal..."
+#~ msgid "Export journals"
+#~ msgstr "새 일지(&J)..."
+
+#, fuzzy
+#~| msgctxt "@info:whatsthis"
+#~| msgid ""
+#~| "A date that should be considered an exception to the recurrence rules "
+#~| "for this event or to-do."
+#~ msgid "Check this box if you want to export journals as well."
+#~ msgstr "행사나 업무의 반복 규칙에서 제외할 날짜를 설정합니다."
+
+#, fuzzy
+#~| msgid "Sets the title of this journal."
+#~ msgid "Title of the journal list"
+#~ msgstr "일지의 이름을 설정합니다."
+
+#, fuzzy
+#~| msgid "&Journals"
+#~ msgid "Journals"
+#~ msgstr "일지(&J)"
+
+#, fuzzy
+#~| msgid "Sets the title of this journal."
+#~ msgid "Title for the journal list"
+#~ msgstr "일지의 이름을 설정합니다."
+
+#, fuzzy
+#~| msgid "Unable to publish the free/busy data."
+#~ msgid "Export free/busy list"
+#~ msgstr "일정 정보를 발행할 수 없습니다."
+
+#, fuzzy
+#~| msgctxt "@info:whatsthis"
+#~| msgid ""
+#~| "A date that should be considered an exception to the recurrence rules "
+#~| "for this event or to-do."
+#~ msgid "Check this box if you want to export free/busy information as well."
+#~ msgstr "행사나 업무의 반복 규칙에서 제외할 날짜를 설정합니다."
+
+#, fuzzy
+#~| msgid "Unable to publish the free/busy data."
+#~ msgid "Title of the free/busy list"
+#~ msgstr "일정 정보를 발행할 수 없습니다."
+
+#, fuzzy
+#~| msgid " time(s)"
+#~ msgid "Busy times"
+#~ msgstr "번"
+
+#, fuzzy
+#~| msgid "Unable to publish the free/busy data."
+#~ msgid "Title for the free/busy list"
+#~ msgstr "일정 정보를 발행할 수 없습니다."
+
+#, fuzzy
+#~| msgid "Export to HTML with every save"
+#~ msgid "Export to HTML periodically"
+#~ msgstr "저장할 때마다 HTML로 내보내기"
+
+#, fuzzy
+#~| msgid ""
+#~| "Check this box to export the calendar to a HTML-file every time you save "
+#~| "it. By default, this file will be called calendar.html and placed in the "
+#~| "user home folder."
+#~ msgid ""
+#~ "Check this box to export the calendar to a HTML-file periodically. By "
+#~ "default, this file will be called calendar.html and placed in the user "
+#~ "home folder. You can change the file location by selecting the \"Export "
+#~ "Web page\" option under the \"Export\" menu."
+#~ msgstr ""
+#~ "달력을 저장할 때마다 HTML 파일로 내보내시려면 이 박스를 체크하세요. 기본적"
+#~ "으로 사용자 홈 폴더의 calendar.html 파일에 저장됩니다."
+
+#, fuzzy
+#~| msgid "Save &interval in minutes"
+#~ msgid "Export &interval in minutes"
+#~ msgstr "저장 시간 간격 (분)"
+
+#~ msgid "Confirm deletes"
+#~ msgstr "삭제 확인"
+
+#, fuzzy
+#~| msgid ""
+#~| "Check this box to display a confirmation dialog when deleting items."
+#~ msgid "Always confirm when deleting items"
+#~ msgstr "이 박스를 체크하면 항목 삭제 시 확인창을 보여줍니다."
+
+#~ msgid "Check this box to display a confirmation dialog when deleting items."
+#~ msgstr "이 박스를 체크하면 항목 삭제 시 확인창을 보여줍니다."
+
+#~ msgid "New Events, To-dos and Journal Entries Should"
+#~ msgstr "행사, 업무, 일지의 추가 위치"
+
+#, fuzzy
+#~| msgid "Be added to the standard resource"
+#~ msgid "Be added to the standard calendar"
+#~ msgstr "기본 달력에 추가"
+
+#, fuzzy
+#~| msgid ""
+#~| "Select this option to always record new events, to-dos and journal "
+#~| "entries using the standard resource."
+#~ msgid ""
+#~ "Select this option to always record new events, to-dos and journal "
+#~ "entries using the standard calendar."
+#~ msgstr ""
+#~ "새 행사와 업무, 일지를 항상 기본 달력에 저장하시려면 이 옵션을 선택하세요."
+
+#, fuzzy
+#~| msgid "Be asked which resource to use"
+#~ msgid "Be asked which calendar to use"
+#~ msgstr "추가할 달력 물어보기"
+
+#~ msgid "Show Reminder Daemon in the System Tray"
+#~ msgstr "시스템 트레이에 알림 데몬 표시"
+
+#~ msgid ""
+#~ "Check this box to show the KOrganizer reminder daemon in the system tray."
+#~ msgstr ""
+#~ "이 박스를 체크하면 KOrganizer 알림 데몬을 시스템 트레이에 표시할 수 있습니"
+#~ "다."
+
+#~ msgid "Day begins at"
+#~ msgstr "주간 시작 시간"
+
+#~ msgid "Use holiday region:"
+#~ msgstr "지역 공휴일 사용:"
+
+#~ msgid "Daily starting hour"
+#~ msgstr "근무 시작 시간"
+
+#~ msgid "Daily ending hour"
+#~ msgstr "근무 종료 시간"
+
+#~ msgid "Exclude holidays"
+#~ msgstr "공휴일 제외하기"
+
+#~ msgid ""
+#~ "Check this box to prevent KOrganizer from marking the working hours on "
+#~ "holidays."
+#~ msgstr ""
+#~ "이 박스를 체크하면 공휴일이 근무 시간으로 표시되는 것을 방지할 수 있습니"
+#~ "다."
+
+#~ msgid "Enable tooltips for displaying summaries"
+#~ msgstr "요약 표시 툴팁 활성화"
+
+#~ msgid "To-dos use category colors"
+#~ msgstr "업무에 분류 색 적용"
+
+#~ msgid "Next x days"
+#~ msgstr "다음 x 일"
+
+#~ msgid "Hour size"
+#~ msgstr "시간 크기"
+
+#, fuzzy
+#~| msgid "Colors used in agenda view"
+#~ msgid "Show icons in agenda view items"
+#~ msgstr "의사 일정 보기에 사용되는 색"
+
+#, fuzzy
+#~| msgid ""
+#~| "Check this box to display a confirmation dialog when deleting items."
+#~ msgid ""
+#~ "Check this box to display icons (alarm, recursion, etc.) in agenda view "
+#~ "items."
+#~ msgstr "이 박스를 체크하면 항목 삭제 시 확인창을 보여줍니다."
+
+#, fuzzy
+#~| msgid "Colors used in agenda view"
+#~ msgid "Display icons in agenda view items"
+#~ msgstr "의사 일정 보기에 사용되는 색"
+
+#, fuzzy
+#~| msgid "&Show To-do"
+#~ msgid "Show to-dos"
+#~ msgstr "업무 보기(&S)"
+
+#, fuzzy
+#~| msgid ""
+#~| "Check this box to display a confirmation dialog when deleting items."
+#~ msgid "Check this box to display to-dos in the agenda view."
+#~ msgstr "이 박스를 체크하면 항목 삭제 시 확인창을 보여줍니다."
+
+#, fuzzy
+#~| msgid "Colors used in agenda view"
+#~ msgid "Display to-dos in the agenda view"
+#~ msgstr "의사 일정 보기에 사용되는 색"
+
+#~ msgid "Show current-time (Marcus Bains) line"
+#~ msgstr "현재 시간 표시선 보기"
+
+#, fuzzy
+#~| msgctxt "@info:whatsthis"
+#~| msgid "Displays appointment time information."
+#~ msgid "Display the current-time indicator"
+#~ msgstr "예약 시간에 대한 정보를 표시합니다."
+
+#, fuzzy
+#~| msgid "Show current-time (Marcus Bains) line"
+#~ msgid "Show seconds on the current-time (Marcus Bains) line"
+#~ msgstr "현재 시간 표시선 보기"
+
+#, fuzzy
+#~| msgid "Show seconds on current-time line"
+#~ msgid "Display seconds with the current-time indicator"
+#~ msgstr "현재 시간 표시선에 초시 표시"
+
+#~ msgid "Time range selection in agenda view starts event editor"
+#~ msgstr "의사 일정 보기에서 시간 범위를 선택할 경우 행사 편집 시작"
+
+#, fuzzy
+#~| msgctxt "@title:tab"
+#~| msgid "Colors"
+#~ msgid "Color Usage"
+#~ msgstr "색"
+
+#, fuzzy
+#~| msgctxt "@option:check"
+#~| msgid "Show in the month view"
+#~ msgid "Show icons in month view items"
+#~ msgstr "월 보기 시 표시"
+
+#, fuzzy
+#~| msgid ""
+#~| "Check this box to display a confirmation dialog when deleting items."
+#~ msgid ""
+#~ "Check this box to display icons (alarm, recursion, etc.) in month view "
+#~ "items."
+#~ msgstr "이 박스를 체크하면 항목 삭제 시 확인창을 보여줍니다."
+
+#, fuzzy
+#~| msgctxt "@option:check"
+#~| msgid "Show in the month view"
+#~ msgid "Show time in month view items"
+#~ msgstr "월 보기 시 표시"
+
+#, fuzzy
+#~| msgid ""
+#~| "Check this box to display a confirmation dialog when deleting items."
+#~ msgid "Check this box to display the time in month view items."
+#~ msgstr "이 박스를 체크하면 항목 삭제 시 확인창을 보여줍니다."
+
+#, fuzzy
+#~| msgid "Colors used in agenda view"
+#~ msgid "Display time in month view items"
+#~ msgstr "의사 일정 보기에 사용되는 색"
+
+#, fuzzy
+#~| msgid ""
+#~| "Check this box to display a confirmation dialog when deleting items."
+#~ msgid "Check this box to display to-dos in the month view."
+#~ msgstr "이 박스를 체크하면 항목 삭제 시 확인창을 보여줍니다."
+
+#, fuzzy
+#~| msgctxt "@option:check"
+#~| msgid "Show in the month view"
+#~ msgid "Display to-dos in the month view"
+#~ msgstr "월 보기 시 표시"
+
+#, fuzzy
+#~| msgid "New &Journal..."
+#~ msgid "Show journals"
+#~ msgstr "새 일지(&J)..."
+
+#, fuzzy
+#~| msgid ""
+#~| "Check this box to display a confirmation dialog when deleting items."
+#~ msgid "Check this box to display journals in the month view."
+#~ msgstr "이 박스를 체크하면 항목 삭제 시 확인창을 보여줍니다."
+
+#, fuzzy
+#~| msgctxt "@option:check"
+#~| msgid "Show in the month view"
+#~ msgid "Display journals in the month view"
+#~ msgstr "월 보기 시 표시"
+
+#~ msgid "Always display completed to-dos at the bottom of the list"
+#~ msgstr "완료된 업무는 목록의 하단에 표시"
+
+#~ msgid "To-do list view uses full window"
+#~ msgstr "업무 목록 보기 시 윈도우 전체 사용"
+
+#, fuzzy
+#~| msgid "To-do list view uses full window"
+#~ msgid "Display to-do list in a full KOrganizer window"
+#~ msgstr "업무 목록 보기 시 윈도우 전체 사용"
+
+#, fuzzy
+#~| msgctxt "@option:check"
+#~| msgid "Show in the month view"
+#~ msgid "Display to-dos in a flat list"
+#~ msgstr "월 보기 시 표시"
+
+#~ msgid "Record completed to-dos in journal entries"
+#~ msgstr "업무 완료 시 일지에 기록"
+
+#~ msgid "Holiday color"
+#~ msgstr "공휴일 색"
+
+#~ msgid "Agenda view background color"
+#~ msgstr "의사 일정 보기 배경색"
+
+#~ msgid "Select the agenda view background color here."
+#~ msgstr "의사 일정 보기의 배경색을 선택하세요."
+
+#, fuzzy
+#~| msgctxt "@info:whatsthis"
+#~| msgid "Displays appointment time information."
+#~ msgid "Agenda view current-time line color"
+#~ msgstr "예약 시간에 대한 정보를 표시합니다."
+
+#, fuzzy
+#~| msgid "Show current-time (Marcus Bains) line"
+#~ msgid "Select a color to use for the current-time (Marcus Bains) line."
+#~ msgstr "현재 시간 표시선 보기"
+
+#, fuzzy
+#~| msgid "Show current-time (Marcus Bains) line"
+#~ msgid "Use this color for the Agenda View current-time (Marcus Bains) line"
+#~ msgstr "현재 시간 표시선 보기"
+
+#, fuzzy
+#~| msgid "Agenda view background color"
+#~ msgid "Busy days background color"
+#~ msgstr "의사 일정 보기 배경색"
+
+#~ msgid "Working hours color"
+#~ msgstr "근무 시간 색"
+
+#~ msgid "Select the working hours color for the agenda view here."
+#~ msgstr "의사 일정 보기 시 근무 시간의 색을 선택하세요."
+
+#~ msgid "To-do due today color"
+#~ msgstr "오늘까지 해야할 업무의 색"
+
+#~ msgid "Select the to-do due today color here."
+#~ msgstr "오늘까지 처리해야 할 업무의 색을 선택하세요."
+
+#~ msgid "To-do overdue color"
+#~ msgstr "기한이 지난 업무 색"
+
+#~ msgid "Select the to-do overdue color here."
+#~ msgstr "기한이 지난 업무의 색을 선택하세요."
+
+#~ msgid "Time bar"
+#~ msgstr "시간 표시선"
+
+#~ msgid "Agenda view"
+#~ msgstr "의사 일정 보기"
+
+#~ msgid "Always ask"
+#~ msgstr "항상 확인"
+
+#~ msgid "Highlight color"
+#~ msgstr "하이라이트 색"
+
+#~ msgid "Default event color"
+#~ msgstr "행사의 기본 색"
+
+#~ msgid "Search"
+#~ msgstr "찾기"
+
+#~ msgid "&New"
+#~ msgstr "새로 만들기(&N)"
+
+#~ msgid "Filter Details"
+#~ msgstr "필터 세부 사항"
+
+#~ msgctxt "filter name"
+#~ msgid "Name:"
+#~ msgstr "이름:"
+
+#~ msgid "Hide &recurring events and to-dos"
+#~ msgstr "반복 행사와 업무 숨기기(&R)"
+
+#~ msgid "Hide co&mpleted to-dos"
+#~ msgstr "완료된 업무 숨기기(&M)"
+
+#, fuzzy
+#~| msgid "Days after completion:"
+#~ msgid "Da&ys after completion:"
+#~ msgstr "완료 후 지난 일수:"
+
+#~ msgid ""
+#~ "This option hides all to-dos from your list, where the start date has not "
+#~ "been reached. (Note that the start date is not the due date of the to-do "
+#~ "item.)"
+#~ msgstr ""
+#~ "이 옵션은 시작일이 되지 않은 모든 업무를 숨기게 되어 있습니다. (시작일은 "
+#~ "업무의 기한일이 아닌 것을 주의하시기 바랍니다.)"
+
+#~ msgid "Hide &inactive to-dos"
+#~ msgstr "시작하지 않은 업무 숨기기(&I)"
+
+#~ msgid "Categories"
+#~ msgstr "분류"
+
+#~ msgid ""
+#~ "When this option is enabled, this filter will show all items which do "
+#~ "<i>not</i> contain the selected categories."
+#~ msgstr ""
+#~ "이 옵션이 활성화된 경우에는 선택된 분류를 포함하지 <i>않은</i> 항목만 볼 "
+#~ "수 있습니다."
+
+#~ msgid "Show all except selected"
+#~ msgstr "선택한 분류 제외해서 보기"
+
+#~ msgid ""
+#~ "When this option is enabled, this filter will show all items containing "
+#~ "at least the selected items."
+#~ msgstr ""
+#~ "이 옵션이 활성화된 경우에는 선택된 분류를 포함하는 항목을 볼 수 있습니다."
+
+#~ msgid "Show only selected"
+#~ msgstr "선택된 것만 보기"
+
+#~ msgid "Change..."
+#~ msgstr "변경..."
+
+#~ msgid "Hide to-dos not assigned to me"
+#~ msgstr "나에게 할당되지 않은 업무 숨기기"
+
+#~ msgid "P&ublish"
+#~ msgstr "발행(&U)"
+
+#~ msgid "Publish your free/&busy information automatically"
+#~ msgstr "일정 정보 자동 발행"
+
+#~ msgid "Publish"
+#~ msgstr "발행:"
+
+#~ msgid "days of free/busy information"
+#~ msgstr "일간의 일정 정보"
+
+#~ msgid "Server Information"
+#~ msgstr "서버 정보"
+
+#~ msgid "Password:"
+#~ msgstr "암호:"
+
+#~ msgctxt "login name on the Kolab server"
+#~ msgid "Username:"
+#~ msgstr "사용자 이름:"
+
+#~ msgid "Remember p&assword"
+#~ msgstr "암호 기억하기(&A)"
+
+#~ msgid "Server URL:"
+#~ msgstr "서버 주소:"
+
+#, fuzzy
+#~| msgid "Publish your free/&busy information automatically"
+#~ msgid "Retrieve other people's free/&busy information automatically"
+#~ msgstr "일정 정보 자동 발행"
+
+#~ msgid "User&name:"
+#~ msgstr "사용자 이름(&N):"
+
+#~ msgid "Passwor&d:"
+#~ msgstr "암호(&D):"
+
+#~ msgid "Re&member password"
+#~ msgstr "암호 기억하기(&M)"
+
+#~ msgid "&Search for:"
+#~ msgstr "찾을 단어(&S):"
+
+#~ msgid "*"
+#~ msgstr "*"
+
+#~ msgid "Search For"
+#~ msgstr "검색 대상"
+
+#~ msgid "&Events"
+#~ msgstr "행사(&E)"
+
+#~ msgid "&Journals"
+#~ msgstr "일지(&J)"
+
+#~ msgid "To-&dos"
+#~ msgstr "업무(&D)"
+
+#~ msgid "Search In"
+#~ msgstr "다음에서 찾기"
+
+#~ msgid "Cate&gories"
+#~ msgstr "분류(&G)"
+
+#, fuzzy
+#~| msgctxt "@label"
+#~| msgid "Location:"
+#~ msgid "Locations"
+#~ msgstr "위치:"
+
+#, fuzzy
+#~| msgid "&Description"
+#~ msgid "Include item descriptions in your search"
+#~ msgstr "설명(&D)"
+
+#~ msgid "Desc&riptions"
+#~ msgstr "설명(&R)"
+
+#~ msgid "Su&mmaries"
+#~ msgstr "요약(&M)"
+
+#, fuzzy
+#~| msgid "&Attendees"
+#~ msgid "Attendees"
+#~ msgstr "참석자(&A)"
+
+#~ msgid "Fr&om:"
+#~ msgstr "시작일(&O):"
+
+#, fuzzy
+#~| msgid "Sets the Title of this event or to-do."
+#~ msgid "Include items with a starting date on or after this date"
+#~ msgstr "행사나 업무의 제목을 설정합니다."
+
+#, fuzzy
+#~ msgid "2008-08-18"
+#~ msgstr "2008-01-14"
+
+#~ msgid "&To:"
+#~ msgstr "종료일(&T):"
+
+#, fuzzy
+#~| msgid "Sets the Title of this event or to-do."
+#~ msgid "Include items with ending date on or before this date"
+#~ msgstr "행사나 업무의 제목을 설정합니다."
+
+#, fuzzy
+#~| msgid ""
+#~| "Check this box to display a confirmation dialog when deleting items."
+#~ msgid ""
+#~ "Check this box to include To-dos without a due date in the search results."
+#~ msgstr "이 박스를 체크하면 항목 삭제 시 확인창을 보여줍니다."
+
+#~ msgid "Person: %1"
+#~ msgstr "개인: %1"
+
+#, fuzzy
+#~| msgid "&Day"
+#~ msgid "Day"
+#~ msgstr "일(&D)"
+
+#, fuzzy
+#~| msgid "&Month"
+#~ msgid "Month"
+#~ msgstr "월(&M)"
+
+#, fuzzy
+#~| msgid "Agenda view"
+#~ msgid "Agenda"
+#~ msgstr "의사 일정 보기"
+
+#, fuzzy
+#~| msgid "Agenda view"
+#~ msgid "Agenda %1"
+#~ msgstr "의사 일정 보기"
+
+#, fuzzy
+#~| msgid "&Title:"
+#~ msgid "Title"
+#~ msgstr "제목(&T):"
+
+#, fuzzy
+#~| msgid "New Calendar"
+#~ msgid "Selected Calendars"
+#~ msgstr "새 달력"
+
+#~ msgctxt "start/end week number of line in date picker"
+#~ msgid "%1/%2"
+#~ msgstr "%1/%2"
+
+#, fuzzy
+#~| msgid "Print week &numbers"
+#~ msgid "Scroll to week number %1"
+#~ msgstr "주차 표시(&N)"
+
+#, fuzzy
+#~| msgid "%1%"
+#~ msgid "%1"
+#~ msgstr "%1%"
+
+#, fuzzy
+#~| msgctxt "@title:group"
+#~| msgid "Calendar Decorations"
+#~ msgid "Calendar's custom icon"
+#~ msgstr "달력 장식"
+
+#, fuzzy
+#~| msgid "To-do"
+#~ msgid "To-do"
+#~ msgstr "업무"
+
+#~ msgid "Journal"
+#~ msgstr "일지"
+
+#, fuzzy
+#~| msgctxt "@title:window"
+#~| msgid "Recurrence"
+#~ msgid "Recurring"
+#~ msgstr "반복"
+
+#, fuzzy
+#~| msgctxt "the calendar is read-only"
+#~| msgid "read-only"
+#~ msgid "Read Only"
+#~ msgstr "읽기 전용"
+
+#, fuzzy
+#~| msgctxt "@option sort in increasing order"
+#~| msgid "Ascending"
+#~ msgid "Attending"
+#~ msgstr "오름차순"
+
+#, fuzzy
+#~| msgid "KOrganizer"
+#~ msgid "Organizer"
+#~ msgstr "KOrganizer"
+
+#~ msgid "Select a month"
+#~ msgstr "달 선택"
+
+#, fuzzy
+#~| msgid "Select a month"
+#~ msgid "Select a year"
+#~ msgstr "달 선택"
+
+#, fuzzy
+#~| msgid "%1%"
+#~ msgctxt "monthname"
+#~ msgid "%1"
+#~ msgstr "%1%"
+
+#, fuzzy
+#~| msgid "%1%"
+#~ msgctxt "4 digit year"
+#~ msgid "%1"
+#~ msgstr "%1%"
+
+#, fuzzy
+#~ msgid "*.ics|iCalendars"
+#~ msgstr "*.ics|ICalendars"
+
+#, fuzzy
+#~ msgid "*.vcs|vCalendars"
+#~ msgstr "*.vcs|vCalendars"
+
+#, fuzzy
+#~| msgid ""
+#~| "<p>...that you can import birthdays from your address book? There is a "
+#~| "resource available which connects the birthdays to your calendar; it is "
+#~| "even possible to set a reminder for each event.\n"
+#~| "</p>\n"
+#~ msgid ""
+#~ "<p>...that your calendar can display birthdays from your address book? It "
+#~ "is even possible to set up reminders for them. To activate this, add the "
+#~ "corresponding 'birthdays' calendar from the Calendar Manager.\n"
+#~ "</p>\n"
+#~ msgstr ""
+#~ "<p>주소록에서 생일을 가져와 달력에 추가할 수도 있습니다. 또한 각각에 대해 "
+#~ "알림을 설정하는 것도 가능합니다.\n"
+#~ "</p>\n"
+
+#~ msgid ""
+#~ "<p>...that you can view and edit a calendar with Konqueror? Just click on "
+#~ "the calendar file to make Konqueror open it.\n"
+#~ "</p>\n"
+#~ msgstr ""
+#~ "<p>달력 파일을 Konqueror에서 열면 해당 달력을 확인하고 편집할 수 있습니"
+#~ "다.\n"
+#~ "</p>\n"
+
+#~ msgid ""
+#~ "<p>...that you can export your calendar to HTML? Select <b>File</b>, "
+#~ "<b>Export</b>, <b>Export Web Page...</b> from the menu bar to open the "
+#~ "<b>Export calendar as web page</b> dialog.\n"
+#~ "</p>\n"
+#~ msgstr ""
+#~ "<p>메뉴의 <b>파일</b>, <b>내보내기</b>, <b>웹 페이지로 내보내기...</b>를 "
+#~ "선택한 후, <b>웹 페이지로 달력 내보내기</b> 창에서 달력을 HTML 파일로 내보"
+#~ "낼 수 있습니다.\n"
+#~ "</p>\n"
+
+#, fuzzy
+#~| msgid ""
+#~| "<p>...that you can purge completed to-dos in one step? Go to the "
+#~| "<b>File</b> menu and choose <b>Purge Completed</b>.\n"
+#~ msgid ""
+#~ "<p>...that you can purge completed to-dos in one step? Go to the <b>File</"
+#~ "b> menu and choose <b>Purge Completed To-dos</b>.\n"
+#~ "</p>\n"
+#~ msgstr ""
+#~ "<b>파일</b> 메뉴의 <b>완료한 업무 정리</b>를 선택하면 완료한 업무를 한 번"
+#~ "에 정리할 수 있습니다.\n"
+
+#, fuzzy
+#~| msgctxt "@title:group"
+#~| msgid "Other Plugins"
+#~ msgid "KOrgPlugins"
+#~ msgstr "다른 플러그인"
+
+#, fuzzy
+#~| msgid "Import Calendar"
+#~ msgid "Import Calendar/Event"
+#~ msgstr "달력 가져오기"
+
+#, fuzzy
+#~| msgid "Add as new calendar"
+#~ msgid "&Add as new calendar..."
+#~ msgstr "새 달력으로 추가"
+
+#, fuzzy
+#~| msgid "Add as new calendar"
+#~ msgid "&Add as new calendar"
+#~ msgstr "새 달력으로 추가"
+
+#, fuzzy
+#~ msgid "*.vcs *.ics|Calendar Files"
+#~ msgstr "*.vcs *.ics|Calendar Files"
+
+#, fuzzy
+#~| msgid "New Calendar"
+#~ msgid "Select path for new calendar"
+#~ msgstr "새 달력"
+
+#, fuzzy
+#~| msgid "&Add..."
+#~ msgid "A&dd..."
+#~ msgstr "추가(&A)..."
+
+#, fuzzy
+#~| msgid "&Edit..."
+#~ msgid "&Modify..."
+#~ msgstr "편집(&E)..."
+
+#, fuzzy
+#~| msgctxt "@action:button"
+#~| msgid "Remove"
+#~ msgid "R&emove"
+#~ msgstr "삭제"
+
+#, fuzzy
+#~ msgid "Do you want to remove account '%1'?"
+#~ msgstr "<qt><b>%1</b> 달력을 삭제하시겠습니까?</qt>"
+
+#~ msgid "Select Addresses"
+#~ msgstr "주소 선택"
+
+#~ msgid "(EmptyName)"
+#~ msgstr "(이름)"
+
+#~ msgid "(EmptyEmail)"
+#~ msgstr "(이메일 주소)"
+
+#, fuzzy
+#~| msgid "Press this button to define a new filter."
+#~ msgid "The list of addressees to receive the invitation"
+#~ msgstr "새 필터를 정의하시려면 이 버튼을 누르세요."
+
+#, fuzzy
+#~| msgid "Create a new Event"
+#~ msgid "Add a new recipient"
+#~ msgstr "새 행사 만들기"
+
+#, fuzzy
+#~| msgid "Press this button to remove the currently active filter."
+#~ msgid ""
+#~ "Click this button to remove the recipient currently selected from the list"
+#~ msgstr "현재 선택된 필터를 삭제하시려면 이 버튼을 누르세요."
+
+#~ msgid "&Remove"
+#~ msgstr "삭제(&R)"
+
+#, fuzzy
+#~| msgctxt "@action:button select a category"
+#~| msgid "&Select..."
+#~ msgid "&Select..."
+#~ msgstr "선택(&S)..."
+
+#, fuzzy
+#~| msgctxt "filter name"
+#~| msgid "Name:"
+#~ msgctxt "recipient name"
+#~ msgid "Name:"
+#~ msgstr "이름:"
+
+#, fuzzy
+#~| msgctxt "addressee email"
+#~| msgid "Email:"
+#~ msgctxt "recipient email"
+#~ msgid "Email:"
+#~ msgstr "이메일:"
+
+#, fuzzy
+#~| msgctxt "@label"
+#~| msgid "Additional email address:"
+#~ msgid "The recipient's email address"
+#~ msgstr "추가 이메일 주소:"
+
+#, fuzzy
+#~| msgid "Delete &Future"
+#~ msgid "Also &Future Items"
+#~ msgstr "미래의 모든 항목 삭제(&F)"
+
+#~ msgid "This file is not a KOrganizer theme file."
+#~ msgstr "이 파일은 KOrganizer의 테마 파일이 아닙니다."
+
+#~ msgid "© 2007 Loïc Corbasson"
+#~ msgstr "© 2007 Loïc Corbasson"
+
+#~ msgctxt "@title:group"
+#~ msgid "Print Plugins"
+#~ msgstr "출력 플러그인"
+
+#~ msgid "Date && Time Range"
+#~ msgstr "날짜 && 시간 범위"
+
+#~ msgid "&Start date:"
+#~ msgstr "시작일(&S):"
+
+#~ msgid "&End date:"
+#~ msgstr " 종료일(&E):"
+
+#~ msgid "&To-dos"
+#~ msgstr "업무(&T)"
+
+#, fuzzy
+#~| msgid "Print week &numbers"
+#~ msgid "Print Item list"
+#~ msgstr "주차 표시(&N)"
+
+#~ msgid "&All journal entries"
+#~ msgstr "모든 일지(&A)"
+
+#~ msgid "Date &range:"
+#~ msgstr "날짜 범위(&R):"
+
+#, fuzzy
+#~| msgid "Sorting Options"
+#~ msgid "Yearly Print Options"
+#~ msgstr "정렬 옵션"
+
+#~ msgctxt ""
+#~ "date from -\n"
+#~ "to"
+#~ msgid ""
+#~ "%1 -\n"
+#~ "%2"
+#~ msgstr ""
+#~ "%1 -\n"
+#~ "%2"
+
+#, fuzzy
+#~ msgid "2009-01-19"
+#~ msgstr "2008-01-14"
+
+#~ msgid "Start &time:"
+#~ msgstr "시작 시간(&T):"
+
+#~ msgid "hh:mm"
+#~ msgstr "hh:mm"
+
+#~ msgid "End ti&me:"
+#~ msgstr "종료 시간(&M)"
+
+#, fuzzy
+#~| msgid "Exclude holidays"
+#~ msgid "Exclude c&onfidential"
+#~ msgstr "공휴일 제외하기"
+
+#, fuzzy
+#~| msgid "Exclude holidays"
+#~ msgid "Exclude pri&vate"
+#~ msgstr "공휴일 제외하기"
+
+#~ msgid "Include Information"
+#~ msgstr "포함할 정보"
+
+#, fuzzy
+#~| msgid "&Description"
+#~ msgid "Include &descriptions"
+#~ msgstr "설명(&D)"
+
+#, fuzzy
+#~| msgid "&Description"
+#~ msgid "Print item descriptions"
+#~ msgstr "설명(&D)"
+
+#, fuzzy
+#~| msgctxt "general settings for html export"
+#~| msgid "General"
+#~ msgctxt "@title general print settings"
+#~ msgid "General"
+#~ msgstr "일반"
+
+#, fuzzy
+#~| msgid "S&how time as:"
+#~ msgid "Show note &lines"
+#~ msgstr "일정 정보 표시:"
+
+#, fuzzy
+#~| msgid "Print Style"
+#~ msgid "Print &Footer"
+#~ msgstr "출력 양식"
+
+#, fuzzy
+#~| msgid "Working hours color"
+#~ msgid "Print in color"
+#~ msgstr "근무 시간 색"
+
+#~ msgid "Start date: "
+#~ msgstr "시작일: "
+
+#~ msgid "End date: "
+#~ msgstr "종료일: "
+
+#~ msgid "Duration: "
+#~ msgstr "기간: "
+
+#~ msgid "1 hour "
+#~ msgid_plural "%1 hours "
+#~ msgstr[0] "%1시간"
+
+#~ msgid "1 minute "
+#~ msgid_plural "%1 minutes "
+#~ msgstr[0] "%1분"
+
+#~ msgid "No end date"
+#~ msgstr "종료일 없음"
+
+#~ msgid "Due date: "
+#~ msgstr "기한일: "
+
+#~ msgid "No due date"
+#~ msgstr "기한일 없음"
+
+#, fuzzy
+#~| msgid "Accept"
+#~ msgctxt "except for listed dates"
+#~ msgid " except"
+#~ msgstr "수락"
+
+#~ msgid "Repeats: "
+#~ msgstr "반복: "
+
+#~ msgctxt "N days/hours/minutes before/after the start/end"
+#~ msgid "%1 before the start"
+#~ msgstr "시작 %1 전"
+
+#~ msgctxt "N days/hours/minutes before/after the start/end"
+#~ msgid "%1 after the start"
+#~ msgstr "시작 %1 후"
+
+#~ msgctxt "N days/hours/minutes before/after the start/end"
+#~ msgid "%1 after the end"
+#~ msgstr "종료 %1 후"
+
+#~ msgid "1 hour"
+#~ msgid_plural "%1 hours"
+#~ msgstr[0] "%1시간"
+
+#~ msgctxt "Spacer for the joined list of categories"
+#~ msgid ", "
+#~ msgstr ", "
+
+#~ msgid "Organizer: "
+#~ msgstr "주최자: "
+
+#~ msgid "Location: "
+#~ msgstr "위치: "
+
+#, fuzzy
+#~| msgid "No filter"
+#~ msgid "No Subitems"
+#~ msgstr "필터 없음"
+
+#, fuzzy
+#~| msgctxt "@item:inlistbox do not use holidays"
+#~| msgid "(None)"
+#~ msgctxt "no status"
+#~ msgid "none"
+#~ msgstr "(없음)"
+
+#, fuzzy
+#~| msgctxt "@item:inlistbox unknown timezone"
+#~| msgid "Unknown"
+#~ msgctxt "unknown status"
+#~ msgid "unknown"
+#~ msgstr "알 수 없음"
+
+#, fuzzy
+#~| msgid "Start date: "
+#~ msgctxt "subitem start date"
+#~ msgid "Start Date: %1\n"
+#~ msgstr "시작일: "
+
+#, fuzzy
+#~| msgid "Start Time"
+#~ msgctxt "subitem start time"
+#~ msgid "Start Time: %1\n"
+#~ msgstr "시작 시간"
+
+#, fuzzy
+#~| msgid "Due date: "
+#~ msgctxt "subitem due date"
+#~ msgid "Due Date: %1\n"
+#~ msgstr "기한일: "
+
+#, fuzzy
+#~| msgid "Timezone: %1"
+#~ msgctxt "subitem due time"
+#~ msgid "Due Time: %1\n"
+#~ msgstr "시간대: %1"
+
+#, fuzzy
+#~| msgctxt "Percent complete"
+#~| msgid "%1 %"
+#~ msgctxt "subitem counter"
+#~ msgid "%1: "
+#~ msgstr "%1 %"
+
+#, fuzzy
+#~| msgid "Status: %1"
+#~ msgctxt "subitem Status: statusString"
+#~ msgid "Status: %1\n"
+#~ msgstr "상태: %1"
+
+#, fuzzy
+#~| msgid "Attach&ments"
+#~ msgid "No Attachments"
+#~ msgstr "첨부 파일(&M)"
+
+#, fuzzy
+#~| msgctxt "@label"
+#~| msgid "Attachments:"
+#~ msgid "1 Attachment:"
+#~ msgid_plural "%1 Attachments:"
+#~ msgstr[0] "첨부 파일:"
+
+#~ msgid "No Attendees"
+#~ msgstr "참석자 없음"
+
+#~ msgid "1 Attendee:"
+#~ msgid_plural "%1 Attendees:"
+#~ msgstr[0] "참석자 %1명:"
+
+#~ msgctxt ""
+#~ "Formatting of an attendee: 'Name (Role): Status', e.g. 'Reinhold "
+#~ "Kainhofer <reinhold@kainhofer.com> (Participant): Awaiting Response'"
+#~ msgid "%1 (%2): %3"
+#~ msgstr "%1 (%2): %3"
+
+#~ msgid "Status: %1"
+#~ msgstr "상태: %1"
+
+#~ msgid "Show as: Busy"
+#~ msgstr "일정 정보 표시: 바쁨"
+
+#~ msgid "This task is overdue!"
+#~ msgstr "기한일을 넘긴 과제입니다!"
+
+#~ msgid "Settings: "
+#~ msgstr "설정:"
+
+#~ msgid "Categories: "
+#~ msgstr "분류:"
+
+#~ msgctxt "date from-to"
+#~ msgid "%1 - %2"
+#~ msgstr "%1 - %2"
+
+#~ msgctxt ""
+#~ "date from-\n"
+#~ "to"
+#~ msgid ""
+#~ "%1 -\n"
+#~ "%2"
+#~ msgstr ""
+#~ "%1 -\n"
+#~ "%2"
+
+#, fuzzy
+#~| msgid "Find Events"
+#~ msgid "Today's Events"
+#~ msgstr "행사 찾기"
+
+#, fuzzy
+#~| msgctxt "monthname year"
+#~| msgid "%1 %2"
+#~ msgctxt "summary, location"
+#~ msgid "%1, %2"
+#~ msgstr "%1 %2"
+
+#, fuzzy
+#~| msgid "&Title:"
+#~ msgctxt "@option sort by title"
+#~ msgid "Title"
+#~ msgstr "제목(&T):"
+
+#, fuzzy
+#~| msgid "Start Date"
+#~ msgctxt "@option sort by start date/time"
+#~ msgid "Start Date"
+#~ msgstr "시작 날짜"
+
+#, fuzzy
+#~| msgid "Due Date"
+#~ msgctxt "@option sort by due date/time"
+#~ msgid "Due Date"
+#~ msgstr "기한일"
+
+#, fuzzy
+#~| msgid "Priority"
+#~ msgctxt "@option sort by priority"
+#~ msgid "Priority"
+#~ msgstr "우선순위"
+
+#, fuzzy
+#~| msgid "Percent Complete"
+#~ msgctxt "@option sort by percent completed"
+#~ msgid "Percent Complete"
+#~ msgstr "완료 비율"
+
+#~ msgctxt "@option sort in increasing order"
+#~ msgid "Ascending"
+#~ msgstr "오름차순"
+
+#~ msgctxt "@option sort in descreasing order"
+#~ msgid "Descending"
+#~ msgstr "내림차순"
+
+#~ msgid "To-do list"
+#~ msgstr "업무 목록"
+
+#~ msgid "Priority"
+#~ msgstr "우선순위"
+
+#, fuzzy
+#~| msgid "&Title:"
+#~ msgctxt "@label to-do summary"
+#~ msgid "Title"
+#~ msgstr "제목(&T):"
+
+#~ msgctxt "@label to-do percentage complete"
+#~ msgid "Complete"
+#~ msgstr "완료"
+
+#~ msgid "Print mont&h"
+#~ msgstr "달 출력(&H)"
+
+#~ msgid "Print to-&dos"
+#~ msgstr "업무 출력(&D)"
+
+#, fuzzy
+#~| msgid "Print Style"
+#~ msgctxt "@title:window"
+#~ msgid "Printing error"
+#~ msgstr "출력 양식"
+
+#, fuzzy
+#~| msgid "&Print"
+#~ msgctxt "@title:window"
+#~ msgid "Print"
+#~ msgstr "출력(&P)"
+
+#, fuzzy
+#~| msgid "Print Style"
+#~ msgctxt "@title:group"
+#~ msgid "Print Style"
+#~ msgstr "출력 양식"
+
+#, fuzzy
+#~| msgid "Page &orientation:"
+#~ msgctxt "@label"
+#~ msgid "Page &orientation:"
+#~ msgstr "페이지 방향(&O)"
+
+#, fuzzy
+#~| msgid "Start &time:"
+#~ msgctxt "@info:tooltip"
+#~ msgid "Set the print orientation"
+#~ msgstr "시작 시간(&T):"
+
+#, fuzzy
+#~| msgid "Use Default Orientation of Selected Style"
+#~ msgctxt "@item:inlistbox"
+#~ msgid "Use Default Orientation of Selected Style"
+#~ msgstr "선택한 양식의 기본 방향 사용"
+
+#, fuzzy
+#~| msgid "Use Printer Default"
+#~ msgctxt "@item:inlistbox"
+#~ msgid "Use Printer Default"
+#~ msgstr "프린터 기본 설정 사용"
+
+#, fuzzy
+#~| msgctxt "@item:inlistbox"
+#~| msgid "Select Categories"
+#~ msgctxt "@info:tooltip"
+#~ msgid "Select the type of print"
+#~ msgstr "분류 선택"
+
+#, fuzzy
+#~| msgid "&Preview"
+#~ msgctxt "@action:button"
+#~ msgid "&Preview"
+#~ msgstr "미리 보기(&P)"
+
+#~ msgid "&Attendees"
+#~ msgstr "참석자(&A)"
+
+#, fuzzy
+#~| msgid "One attendee"
+#~| msgid_plural "%1 attendees"
+#~ msgid "Print the attendees"
+#~ msgstr "참석자 %1명"
+
+#, fuzzy
+#~| msgid "No filter"
+#~ msgid "&Notes, subitems"
+#~ msgstr "필터 없음"
+
+#, fuzzy
+#~| msgid "Print week &numbers"
+#~ msgid "Print the notes"
+#~ msgstr "주차 표시(&N)"
+
+#~ msgid "Attach&ments"
+#~ msgstr "첨부 파일(&M)"
+
+#, fuzzy
+#~| msgctxt "@label"
+#~| msgid "New attachment"
+#~ msgid "Print the attachments"
+#~ msgstr "새 첨부 파일"
+
+#~ msgid "&Start month:"
+#~ msgstr "시작 달(&S):"
+
+#~ msgid "&End month:"
+#~ msgstr "종료 달(&E):"
+
+#, fuzzy
+#~| msgid "Exclude holidays"
+#~ msgid "Exclude confidential items"
+#~ msgstr "공휴일 제외하기"
+
+#, fuzzy
+#~| msgid "Exclude holidays"
+#~ msgid "Exclude private items"
+#~ msgstr "공휴일 제외하기"
+
+#, fuzzy
+#~| msgid "Hide &recurring events and to-dos"
+#~ msgid "Include weekl&y recurring to-dos and events"
+#~ msgstr "반복 행사와 업무 숨기기(&R)"
+
+#, fuzzy
+#~| msgid "Print week &numbers"
+#~ msgid "Print week numbers"
+#~ msgstr "주차 표시(&N)"
+
+#~ msgid "Print week &numbers"
+#~ msgstr "주차 표시(&N)"
+
+#, fuzzy
+#~| msgctxt "weekday month date"
+#~| msgid "%1 %2 %3"
+#~ msgctxt "starttime - endtime summary"
+#~ msgid "%1-%2 %3"
+#~ msgstr "%1 %2 %3"
+
+#, fuzzy
+#~| msgctxt "Date range: monthStart dayStart - monthEnd dayEnd"
+#~| msgid "%1 %2 - %3 %4"
+#~ msgctxt "starttime - endtime summary, location"
+#~ msgid "%1-%2 %3, %4"
+#~ msgstr "%1 %2 - %3 %4"
+
+#, fuzzy
+#~| msgctxt "to-do due date"
+#~| msgid "  (Due: %1)"
+#~ msgctxt "to-do summary (Due: datetime)"
+#~ msgid "%1 (Due: %2)"
+#~ msgstr "  (기한: %1)"
+
+#, fuzzy
+#~| msgctxt "to-do due date"
+#~| msgid "  (Due: %1)"
+#~ msgctxt "to-do summary (Due: date)"
+#~ msgid "%1 (Due: %2)"
+#~ msgstr "  (기한: %1)"
+
+#~ msgid "%1%"
+#~ msgstr "%1%"
+
+#~ msgctxt "Description - date"
+#~ msgid "%1 - %2"
+#~ msgstr "%1 - %2"
+
+#~ msgctxt "Date range: Month dayStart - dayEnd"
+#~ msgid "%1 %2 - %3"
+#~ msgstr "%1 %2 - %3"
+
+#~ msgctxt "Date range: monthStart dayStart - monthEnd dayEnd"
+#~ msgid "%1 %2 - %3 %4"
+#~ msgstr "%1 %2 - %3 %4"
+
+#~ msgid ""
+#~ "<html><head><meta name=\"qrichtext\" content=\"1\" /><style type=\"text/"
+#~ "css\">\n"
+#~ "p, li { white-space: pre-wrap; }\n"
+#~ "</style></head><body style=\" font-family:'Sans Serif'; font-size:9pt; "
+#~ "font-weight:400; font-style:normal;\">\n"
+#~ "<p style=\" margin-top:0px; margin-bottom:0px; margin-left:0px; margin-"
+#~ "right:0px; -qt-block-indent:0; text-indent:0px;\"><span style=\" font-"
+#~ "weight:600;\">Print to-dos options:</span></p></body></html>"
+#~ msgstr ""
+#~ "<html><head><meta name=\"qrichtext\" content=\"1\" /><style type=\"text/"
+#~ "css\">\n"
+#~ "p, li { white-space: pre-wrap; }\n"
+#~ "</style></head><body style=\" font-family:'Sans Serif'; font-size:9pt; "
+#~ "font-weight:400; font-style:normal;\">\n"
+#~ "<p style=\" margin-top:0px; margin-bottom:0px; margin-left:0px; margin-"
+#~ "right:0px; -qt-block-indent:0; text-indent:0px;\"><span style=\" font-"
+#~ "weight:600;\">업무 출력 옵션:</span></p></body></html>"
+
+#, fuzzy
+#~ msgid "Name for this to-do list"
+#~ msgstr "시작 %1 후"
+
+#~ msgid "To-dos to Print"
+#~ msgstr "출력할 업무"
+
+#~ msgid "Print &all to-dos"
+#~ msgstr "모든 업무 출력(&A)"
+
+#~ msgid "Print &unfinished to-dos only"
+#~ msgstr "완료하지 않은 업무만 출력(&U)"
+
+#~ msgid "Print only to-dos due in the &range:"
+#~ msgstr "다음 범위에 기한이 포함되는 업무만 출력(&R)"
+
+#~ msgid "&Priority"
+#~ msgstr "우선순위(&P)"
+
+#~ msgid "Due date"
+#~ msgstr "기한일"
+
+#~ msgid "Per&centage completed"
+#~ msgstr "완료 비율(&C)"
+
+#~ msgid "Sorting Options"
+#~ msgstr "정렬 옵션"
+
+#~ msgid "Sort field:"
+#~ msgstr "정렬 기준:"
+
+#~ msgid "Sort direction:"
+#~ msgstr "정렬 방법:"
+
+#~ msgid "Co&nnect sub-to-dos with its parent"
+#~ msgstr "업무와 세부 업무 연결"
+
+#~ msgid "Strike &out completed to-do summaries"
+#~ msgstr "완료된 업무 표시"
+
+#, fuzzy
+#~| msgid "Sets the Title of this event or to-do."
+#~ msgid "Starting date for the print"
+#~ msgstr "행사나 업무의 제목을 설정합니다."
+
+#~ msgid ""
+#~ "All events which start later than the given time will not be printed."
+#~ msgstr "주어진 시간보다 늦게 시작하는 행사는 출력하지 않습니다."
+
+#~ msgid ""
+#~ "All events which start earlier than the given time will not be printed."
+#~ msgstr "주어진 시간보다 일찍 시작하는 행사는 출력하지 않습니다."
+
+#~ msgctxt "@title:window"
+#~ msgid "Reminders"
+#~ msgstr "알림"
+
+#, fuzzy
+#~| msgid "Reminder"
+#~ msgctxt "@action:button"
+#~ msgid "Dismiss Reminder"
+#~ msgstr "알림"
+
+#~ msgctxt "@action:button"
+#~ msgid "Edit..."
+#~ msgstr "편집..."
+
+#, fuzzy
+#~| msgid "&Title:"
+#~ msgctxt "@title:column reminder title"
+#~ msgid "Title"
+#~ msgstr "제목(&T):"
+
+#, fuzzy
+#~| msgid "Date && Time"
+#~ msgctxt "@title:column happens at date/time"
+#~ msgid "Date Time"
+#~ msgstr "날짜 && 시간"
+
+#, fuzzy
+#~| msgid "Sets where the event or to-do will take place."
+#~ msgctxt "@info:tooltip"
+#~ msgid "The date/time the reminder was triggered"
+#~ msgstr "행사나 업무가 일어날 장소를 설정합니다."
+
+#~ msgctxt "@info default incidence details string"
+#~ msgid ""
+#~ "<emphasis>Select an event or to-do from the list above to view its "
+#~ "details here.</emphasis>"
+#~ msgstr ""
+#~ "<emphasis>위 목록에서 행사나 업무를 선택하면 세부 사항을 볼 수 있습니다.</"
+#~ "emphasis>"
+
+#~ msgctxt "@item:inlistbox suspend in terms of minutes"
+#~ msgid "minute(s)"
+#~ msgstr "분"
+
+#~ msgctxt "@item:inlistbox suspend in terms of hours"
+#~ msgid "hour(s)"
+#~ msgstr "시간"
+
+#~ msgctxt "@item:inlistbox suspend in terms of days"
+#~ msgid "day(s)"
+#~ msgstr "일"
+
+#~ msgctxt "@item:inlistbox suspend in terms of weeks"
+#~ msgid "week(s)"
+#~ msgstr "주"
+
+#, fuzzy
+#~| msgid "Edit..."
+#~ msgctxt "@label an elipsis"
+#~ msgid "..."
+#~ msgstr "편집..."
+
+#, fuzzy
+#~| msgid "Reminder"
+#~ msgctxt "@title"
+#~ msgid "Reminder"
+#~ msgstr "알림"
+
+#, fuzzy
+#~| msgid "Reminder:"
+#~ msgctxt "@title"
+#~ msgid "Reminder: %1"
+#~ msgstr "알림:"
+
+#, fuzzy
+#~| msgctxt "@info"
+#~| msgid "Could not start KOrganizer."
+#~ msgctxt "@info"
+#~ msgid "Could not start KOrganizer so editing is not possible."
+#~ msgstr "KOrganizer를 시작할 수 없습니다."
+
+#~ msgctxt "@title:window"
+#~ msgid "KOrganizer Reminder Daemon"
+#~ msgstr "KOrganizer 알림 데몬"
+
+#~ msgctxt "@info"
+#~ msgid "Cannot load system tray icon."
+#~ msgstr "시스템 트레이 아이콘을 불러올 수 없습니다."
+
+#~ msgctxt "@action:inmenu"
+#~ msgid "Enable Reminders"
+#~ msgstr "알림 활성화"
+
+#~ msgctxt "@action:inmenu"
+#~ msgid "Start Reminder Daemon at Login"
+#~ msgstr "로그인 시 알림 데몬 시작"
+
+#, fuzzy
+#~| msgctxt "@info:tooltip"
+#~| msgid "There is 1 active reminder."
+#~| msgid_plural "There are %1 active reminders."
+#~ msgctxt "@info:status"
+#~ msgid "There is 1 active reminder."
+#~ msgid_plural "There are %1 active reminders."
+#~ msgstr[0] "활성화된 알림 %1개가 있습니다."
+
+#, fuzzy
+#~| msgctxt "@info:tooltip"
+#~| msgid "No active reminders."
+#~ msgctxt "@info:status"
+#~ msgid "No active reminders."
+#~ msgstr "활성화된 알림이 없습니다."
+
+#, fuzzy
+#~ msgctxt "@info"
+#~ msgid ""
+#~ "Do you want to quit the KOrganizer reminder daemon?<nl/><note> you will "
+#~ "not get calendar reminders unless the daemon is running.</note>"
+#~ msgstr ""
+#~ "로그인 시 KOrganizer 알림 데몬을 시작하겠습니까? (데몬을 실행하지 않으면 "
+#~ "알림 기능을 사용할 수 없습니다.)"
+
+#~ msgctxt "@title:window"
+#~ msgid "Close KOrganizer Reminder Daemon"
+#~ msgstr "KOrganizer 알림 데몬 닫기"
+
+#, fuzzy
+#~| msgctxt "@info"
+#~| msgid ""
+#~| "Do you want to start the KOrganizer reminder daemon at login (note that "
+#~| "you will not get reminders whilst the daemon is not running)?"
+#~ msgctxt "@info"
+#~ msgid ""
+#~ "Do you want to start the KOrganizer reminder daemon at login?<nl/><note> "
+#~ "you will not get calendar reminders unless the daemon is running.</note>"
+#~ msgstr ""
+#~ "로그인 시 KOrganizer 알림 데몬을 시작하겠습니까? (데몬을 실행하지 않으면 "
+#~ "알림 기능을 사용할 수 없습니다.)"
+
+#~ msgctxt "@action:button start the reminder daemon"
+#~ msgid "Start"
+#~ msgstr "시작"
+
+#~ msgctxt "@action:button do not start the reminder daemon"
+#~ msgid "Do Not Start"
+#~ msgstr "시작하지 않음"
+
+#~ msgid "KOrganizer Reminder Daemon"
+#~ msgstr "KOrganizer 알림 데몬"
+
+#~ msgid "(c) 2003 Cornelius Schumacher"
+#~ msgstr "(c) 2003 Cornelius Schumacher"
+
+#~ msgid "Janitorial Staff"
+#~ msgstr "유지 보수 관리"
+
+#, fuzzy
+#~| msgid "Unable to purge to-dos with uncompleted children."
+#~ msgctxt "@info"
+#~ msgid "Unable to purge to-dos with uncompleted children."
+#~ msgstr "완료하지 않은 세부 업무가 있어 업무를 정리할 수 없습니다."
+
+#~ msgid "Delete To-do"
+#~ msgstr "업무 삭제"
+
+#~ msgid "Could not load calendar '%1'."
+#~ msgstr "'%1' 달력을 불러올 수 없습니다."
+
+#, fuzzy
+#~| msgid ""
+#~| "The item \"%1\" has sub-to-dos. Do you want to delete just this item and "
+#~| "make all its sub-to-dos independent, or delete the to-do with all its "
+#~| "sub-to-dos?"
+#~ msgid ""
+#~ "The item \"%1\" has sub-to-dos. Do you want to cut just this item and "
+#~ "make all its sub-to-dos independent, or cut the to-do with all its sub-to-"
+#~ "dos?"
+#~ msgstr ""
+#~ "\"%1\" 항목에 세부 업무가 포함되어 있습니다. 세부 업무를 따로 떼어내어 이 "
+#~ "업무만을 삭제하거나, 세부 업무를 포함하여 한꺼번에 삭제할 수 있습니다."
+
+#, fuzzy
+#~| msgid "Delete Only This"
+#~ msgid "Cut Only This"
+#~ msgstr "이것만 삭제"
+
+#, fuzzy
+#~| msgid ""
+#~| "The item \"%1\" has sub-to-dos. Do you want to delete just this item and "
+#~| "make all its sub-to-dos independent, or delete the to-do with all its "
+#~| "sub-to-dos?"
+#~ msgid ""
+#~ "The item \"%1\" has sub-to-dos. Do you want to copy just this item or "
+#~ "copy the to-do with all its sub-to-dos?"
+#~ msgstr ""
+#~ "\"%1\" 항목에 세부 업무가 포함되어 있습니다. 세부 업무를 따로 떼어내어 이 "
+#~ "업무만을 삭제하거나, 세부 업무를 포함하여 한꺼번에 삭제할 수 있습니다."
+
+#, fuzzy
+#~| msgid "Delete Only This"
+#~ msgid "Copy Only This"
+#~ msgstr "이것만 삭제"
+
+#, fuzzy
+#~| msgid "&Copy To"
+#~ msgid "Copy All"
+#~ msgstr "다음으로 복사(&C)"
+
+#~ msgid "Delete %1"
+#~ msgstr "%1 삭제"
+
+#~ msgid "Add %1"
+#~ msgstr "%1 추가"
+
+#~ msgid "Edit %1"
+#~ msgstr "%1 편집"
+
+#~ msgctxt "@label"
+#~ msgid "Additional email addresses:"
+#~ msgstr "추가 이메일 주소:"
+
+#~ msgctxt "@label"
+#~ msgid "Additional email address:"
+#~ msgstr "추가 이메일 주소:"
+
+#~ msgctxt "@action:button add a new email address"
+#~ msgid "New"
+#~ msgstr "새로 만들기"
+
+#~ msgctxt "@action:button"
+#~ msgid "Remove"
+#~ msgstr "삭제"
+
+#~ msgctxt "@label"
+#~ msgid "(EmptyEmail)"
+#~ msgstr "(이메일주소)"
+
+#~ msgid "Edit this journal entry"
+#~ msgstr "일지를 편집합니다"
+
+#~ msgid "Delete this journal entry"
+#~ msgstr "일지를 삭제합니다"
+
+#~ msgid "&Print"
+#~ msgstr "출력(&P)"
+
+#~ msgid "Print this journal entry"
+#~ msgstr "일지를 출력합니다"
+
+#~ msgid "Time Tracker"
+#~ msgstr "시간 추적기"
+
+#~ msgctxt "Date from - to"
+#~ msgid "%1 - %2"
+#~ msgstr "%1 - %2"
+
+#~ msgctxt "number of hours spent"
+#~ msgid "%1 hour"
+#~ msgid_plural "%1 hours"
+#~ msgstr[0] "%1시간"
+
+#~ msgctxt "percent of hours spent"
+#~ msgid " (%1%)"
+#~ msgstr " (%1%)"
+
+#~ msgctxt "@action:inmenu Unspecified priority"
+#~ msgid "unspecified"
+#~ msgstr "지정하지 않음"
+
+#~ msgctxt "@action:inmenu highest priority"
+#~ msgid "1 (highest)"
+#~ msgstr "1 (가장 높음)"
+
+#~ msgctxt "@action:inmenu"
+#~ msgid "2"
+#~ msgstr "2"
+
+#~ msgctxt "@action:inmenu"
+#~ msgid "3"
+#~ msgstr "3"
+
+#~ msgctxt "@action:inmenu"
+#~ msgid "4"
+#~ msgstr "4"
+
+#~ msgctxt "@action:inmenu medium priority"
+#~ msgid "5 (medium)"
+#~ msgstr "5 (중간)"
+
+#~ msgctxt "@action:inmenu"
+#~ msgid "6"
+#~ msgstr "6"
+
+#~ msgctxt "@action:inmenu"
+#~ msgid "7"
+#~ msgstr "7"
+
+#~ msgctxt "@action:inmenu"
+#~ msgid "8"
+#~ msgstr "8"
+
+#~ msgctxt "@action:inmenu lowest priority"
+#~ msgid "9 (lowest)"
+#~ msgstr "9 (가장 낮음)"
+
+#~ msgctxt "yes, recurring to-do"
+#~ msgid "Yes"
+#~ msgstr "예"
+
+#~ msgctxt "no, not a recurring to-do"
+#~ msgid "No"
+#~ msgstr "아니오"
+
+#~ msgctxt "delimiter for joining category names"
+#~ msgid ","
+#~ msgstr ","
+
+#~ msgid "Summary"
+#~ msgstr "요약"
+
+#~ msgid "Recurs"
+#~ msgstr "반복"
+
+#~ msgctxt "@title:column percent complete"
+#~ msgid "Complete"
+#~ msgstr "완료"
+
+#~ msgid "Due Date/Time"
+#~ msgstr "기한"
+
+#~ msgid "Description"
+#~ msgstr "설명"
+
+#, fuzzy
+#~| msgid "To-do list view uses full window"
+#~ msgctxt "@info:tooltip"
+#~ msgid "Display to-do list in a full window"
+#~ msgstr "업무 목록 보기 시 윈도우 전체 사용"
+
+#, fuzzy
+#~| msgid "&Show"
+#~ msgctxt "@action:inmenu show the to-do"
+#~ msgid "&Show"
+#~ msgstr "보기(&S)"
+
+#, fuzzy
+#~| msgid "&Edit..."
+#~ msgctxt "@action:inmenu edit the to-do"
+#~ msgid "&Edit..."
+#~ msgstr "편집(&E)..."
+
+#, fuzzy
+#~| msgid "&Print..."
+#~ msgctxt "@action:inmenu print the to-do"
+#~ msgid "&Print..."
+#~ msgstr "출력(&P)..."
+
+#, fuzzy
+#~| msgid "&Print..."
+#~ msgctxt "@action:inmenu print preview the to-do"
+#~ msgid "Print Previe&w..."
+#~ msgstr "출력(&P)..."
+
+#, fuzzy
+#~| msgid "&Delete"
+#~ msgctxt "@action:inmenu delete the to-do"
+#~ msgid "&Delete"
+#~ msgstr "삭제(&D)"
+
+#, fuzzy
+#~| msgid "New &To-do..."
+#~ msgctxt "@action:inmenu create a new to-do"
+#~ msgid "New &To-do..."
+#~ msgstr "새 업무"
+
+#, fuzzy
+#~| msgid "New Su&b-to-do..."
+#~ msgctxt "@action:inmenu create a new sub-to-do"
+#~ msgid "New Su&b-to-do..."
+#~ msgstr "세부 업무 만들기(&B)..."
+
+#, fuzzy
+#~| msgid "&Make this To-do Independent"
+#~ msgctxt "@action:inmenu"
+#~ msgid "&Make this To-do Independent"
+#~ msgstr "이 업무 따로 떼어내기(&M)"
+
+#, fuzzy
+#~| msgid "Make all Sub-to-dos &Independent"
+#~ msgctxt "@action:inmenu"
+#~ msgid "Make all Sub-to-dos &Independent"
+#~ msgstr "모든 세부 업무 따로 떼어내기"
+
+#, fuzzy
+#~| msgid "&Copy To"
+#~ msgctxt "@title:menu"
+#~ msgid "&Copy To"
+#~ msgstr "다음으로 복사(&C)"
+
+#, fuzzy
+#~ msgctxt "@title:menu"
+#~ msgid "&Move To"
+#~ msgstr "이동(&M)"
+
+#, fuzzy
+#~| msgctxt "delete completed to-dos"
+#~| msgid "Pur&ge Completed"
+#~ msgctxt "@action:inmenu delete completed to-dos"
+#~ msgid "Pur&ge Completed"
+#~ msgstr "완료 항목 정리"
+
+#, fuzzy
+#~| msgctxt "@action:inmenu Unspecified priority"
+#~| msgid "unspecified"
+#~ msgctxt "@action:inmenu unspecified priority"
+#~ msgid "unspecified"
+#~ msgstr "지정하지 않음"
+
+#, fuzzy
+#~| msgid "2"
+#~ msgctxt "@action:inmenu priority value=2"
+#~ msgid "2"
+#~ msgstr "2"
+
+#, fuzzy
+#~| msgid "3"
+#~ msgctxt "@action:inmenu priority value=3"
+#~ msgid "3"
+#~ msgstr "3"
+
+#, fuzzy
+#~| msgid "4"
+#~ msgctxt "@action:inmenu priority value=4"
+#~ msgid "4"
+#~ msgstr "4"
+
+#, fuzzy
+#~| msgid "6"
+#~ msgctxt "@action:inmenu priority value=6"
+#~ msgid "6"
+#~ msgstr "6"
+
+#, fuzzy
+#~| msgid "7"
+#~ msgctxt "@action:inmenu priority value=7"
+#~ msgid "7"
+#~ msgstr "7"
+
+#, fuzzy
+#~| msgid "8"
+#~ msgctxt "@action:inmenu priority value=8"
+#~ msgid "8"
+#~ msgstr "8"
+
+#~ msgid "Click to add a new to-do"
+#~ msgstr "새 업무를 추가합니다."
+
+#, fuzzy
+#~| msgid "Su&mmaries"
+#~ msgctxt "@label in QuickSearchLine"
+#~ msgid "Search Summaries"
+#~ msgstr "요약(&M)"
+
+#, fuzzy
+#~| msgctxt "@item:inlistbox"
+#~| msgid "Select Categories"
+#~ msgctxt "@info:tooltip"
+#~ msgid "Filter on these categories"
+#~ msgstr "분류 선택"
+
+#~ msgctxt "@item:inlistbox"
+#~ msgid "Select Categories"
+#~ msgstr "분류 선택"
+
+#, fuzzy
+#~| msgctxt "delimiter for joining holiday names"
+#~| msgid ","
+#~ msgctxt "@item:intext delimiter for joining category names"
+#~ msgid ","
+#~ msgstr "."
+
+#, fuzzy
+#~| msgid "Priority"
+#~ msgctxt "@item:inlistbox"
+#~ msgid "Select Priority"
+#~ msgstr "우선순위"
+
+#, fuzzy
+#~| msgctxt "@action:inmenu Unspecified priority"
+#~| msgid "unspecified"
+#~ msgctxt "@action:inmenu priority is unspecified"
+#~ msgid "unspecified"
+#~ msgstr "지정하지 않음"
+
+#, fuzzy
+#~| msgctxt "@action:inmenu highest priority"
+#~| msgid "1 (highest)"
+#~ msgctxt "@action:inmenu highest priority"
+#~ msgid "%1 (highest)"
+#~ msgstr "1 (가장 높음)"
+
+#, fuzzy
+#~| msgctxt "@action:inmenu medium priority"
+#~| msgid "5 (medium)"
+#~ msgctxt "@action:inmenu medium priority"
+#~ msgid "%1 (medium)"
+#~ msgstr "5 (중간)"
+
+#, fuzzy
+#~| msgctxt "@action:inmenu lowest priority"
+#~| msgid "9 (lowest)"
+#~ msgctxt "@action:inmenu lowest priority"
+#~ msgid "%1 (lowest)"
+#~ msgstr "9 (가장 낮음)"
+
+#, fuzzy
+#~| msgid "%1%"
+#~ msgctxt "@action:inmenu"
+#~ msgid "%1"
+#~ msgstr "%1%"
+
+#, fuzzy
+#~| msgctxt "@action:inmenu Unspecified priority"
+#~| msgid "unspecified"
+#~ msgctxt "priority is unspecified"
+#~ msgid "unspecified"
+#~ msgstr "지정하지 않음"
+
+#, fuzzy
+#~| msgctxt "highest priority"
+#~| msgid "1 (highest)"
+#~ msgctxt "highest priority"
+#~ msgid "%1 (highest)"
+#~ msgstr "1 (가장 높음)"
+
+#, fuzzy
+#~| msgctxt "medium priority"
+#~| msgid "5 (medium)"
+#~ msgctxt "medium priority"
+#~ msgid "%1 (medium)"
+#~ msgstr "5 (중간)"
+
+#, fuzzy
+#~| msgctxt "lowest priority"
+#~| msgid "9 (lowest)"
+#~ msgctxt "lowest priority"
+#~ msgid "%1 (lowest)"
+#~ msgstr "9 (가장 낮음)"
+
+#~ msgid "What's Next?"
+#~ msgstr "다음 일정입니다."
+
+#~ msgid "Events:"
+#~ msgstr "행사:"
+
+#~ msgid "To-do:"
+#~ msgstr "업무:"
+
+#~ msgctxt "date, from - to"
+#~ msgid "%1, %2 - %3"
+#~ msgstr "%1, %2 - %3"
+
+#~ msgctxt "to-do due date"
+#~ msgid "  (Due: %1)"
+#~ msgstr "  (기한: %1)"

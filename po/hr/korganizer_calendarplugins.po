@@ -1,0 +1,8110 @@
+# Translation of korganizer to Croatian
+#
+# Marko Dimjasevic <marko@dimjasevic.net>, 2011.
+msgid ""
+msgstr ""
+"Project-Id-Version: korganizer 0\n"
+"Report-Msgid-Bugs-To: https://bugs.kde.org\n"
+"POT-Creation-Date: 2024-06-26 00:40+0000\n"
+"PO-Revision-Date: 2011-02-27 12:20+0100\n"
+"Last-Translator: Marko Dimjasevic <marko@dimjasevic.net>\n"
+"Language-Team: Croatian <kde-croatia-list@lists.sourceforge.net>\n"
+"Language: hr\n"
+"MIME-Version: 1.0\n"
+"Content-Type: text/plain; charset=UTF-8\n"
+"Content-Transfer-Encoding: 8bit\n"
+"Plural-Forms: nplurals=3; plural=(n%10==1 && n%100!=11 ? 0 : n%10>=2 && n"
+"%10<=4 && (n%100<10 || n%100>=20) ? 1 : 2);\n"
+"X-Generator: Lokalize 1.2\n"
+"X-Environment: kde\n"
+"X-Accelerator-Marker: &\n"
+"X-Text-Markup: kde4\n"
+
+#: datenums/configdialog.cpp:28
+#, fuzzy, kde-format
+msgctxt "@title:window"
+msgid "Configure Day Numbers"
+msgstr "Podesi praznike"
+
+#: datenums/configdialog.cpp:43
+#, fuzzy, kde-format
+msgid "Show Date Number"
+msgstr "Pregled događaja"
+
+#: datenums/configdialog.cpp:48
+#, fuzzy, kde-format
+msgid "Show day number"
+msgstr "Pokaži dan Omera"
+
+#: datenums/configdialog.cpp:51
+#, fuzzy, kde-format
+msgid "Show days to end of year"
+msgstr "Pokaži dan Omera"
+
+#: datenums/configdialog.cpp:54
+#, fuzzy, kde-format
+msgid "Show both"
+msgstr "Pokaži"
+
+#: datenums/datenums.cpp:36
+#, kde-format
+msgid "This plugin shows information on a day's position in the year."
+msgstr ""
+
+#: datenums/datenums.cpp:54
+#, fuzzy, kde-format
+msgid "1 day before the end of the year"
+msgid_plural "%1 days before the end of the year"
+msgstr[0] "Centriraj na početku"
+msgstr[1] "Centriraj na početku"
+msgstr[2] "Centriraj na početku"
+
+#: datenums/datenums.cpp:59
+#, fuzzy, kde-format
+#| msgid "%1 - %2"
+msgctxt "dayOfYear / daysTillEndOfYear"
+msgid "%1 / %2"
+msgstr "%1 - %2"
+
+#: datenums/datenums.cpp:60
+#, kde-format
+msgid "1 day since the beginning of the year,\n"
+msgid_plural "%1 days since the beginning of the year,\n"
+msgstr[0] ""
+msgstr[1] ""
+msgstr[2] ""
+
+#: datenums/datenums.cpp:61
+#, kde-format
+msgid "1 day until the end of the year"
+msgid_plural "%1 days until the end of the year"
+msgstr[0] ""
+msgstr[1] ""
+msgstr[2] ""
+
+#: datenums/datenums.cpp:102
+#, fuzzy, kde-format
+#| msgid "Week"
+msgctxt "Week weekOfYear"
+msgid "Week %1"
+msgstr "Tjedan"
+
+#: datenums/datenums.cpp:103 datenums/datenums.cpp:113
+#: datenums/datenums.cpp:118
+#, kde-format
+msgid "1 week since the beginning of the year"
+msgid_plural "%1 weeks since the beginning of the year"
+msgstr[0] ""
+msgstr[1] ""
+msgstr[2] ""
+
+#: datenums/datenums.cpp:106
+#, fuzzy, kde-format
+msgctxt "weekOfYear (year)"
+msgid "%1 (%2)"
+msgstr "%1 %2"
+
+#: datenums/datenums.cpp:107
+#, fuzzy, kde-format
+msgctxt "Week weekOfYear (year)"
+msgid "Week %1 (%2)"
+msgstr "%1 %2"
+
+#: datenums/datenums.cpp:122
+#, kde-format
+msgid "1 week remaining"
+msgid_plural "%1 weeks remaining"
+msgstr[0] ""
+msgstr[1] ""
+msgstr[2] ""
+
+#: datenums/datenums.cpp:123
+#, kde-format
+msgid "1 week until the end of the year"
+msgid_plural "%1 weeks until the end of the year"
+msgstr[0] ""
+msgstr[1] ""
+msgstr[2] ""
+
+#: datenums/datenums.cpp:124
+#, fuzzy, kde-format
+#| msgid "%1 - %2"
+msgctxt "weekOfYear / weeksTillEndOfYear"
+msgid "%1 / %2"
+msgstr "%1 - %2"
+
+#: datenums/datenums.cpp:140
+#, fuzzy, kde-format
+msgctxt ""
+"n weeks since the beginning of the year\n"
+"n weeks until the end of the year"
+msgid ""
+"%1\n"
+"%2"
+msgstr "%1 - %2"
+
+#: hebrew/configdialog.cpp:28
+#, fuzzy, kde-format
+msgctxt "@title:window"
+msgid "Configure Holidays"
+msgstr "Podesi praznike"
+
+#: hebrew/configdialog.cpp:42
+#, fuzzy, kde-format
+msgid "Use Israeli holidays"
+msgstr "Koristi izraelske praznike"
+
+#: hebrew/configdialog.cpp:46
+#, fuzzy, kde-format
+msgid "Show weekly parsha"
+msgstr "Pokaži nedeljnu parshu"
+
+#: hebrew/configdialog.cpp:50
+#, fuzzy, kde-format
+msgid "Show day of Omer"
+msgstr "Pokaži dan Omera"
+
+#: hebrew/configdialog.cpp:54
+#, fuzzy, kde-format
+msgid "Show Chol HaMoed"
+msgstr "Pokaži Kol Ha-moed"
+
+#: hebrew/hebrew.cpp:60
+#, kde-format
+msgctxt ""
+"Change the next two strings if emphasis is done differently in your language."
+msgid ""
+"<qt><p align=\"center\"><i>\n"
+"%1\n"
+"</i></p></qt>"
+msgstr ""
+
+#: hebrew/hebrew.cpp:67
+#, fuzzy, kde-format
+msgid "This plugin provides the date in the Jewish calendar."
+msgstr "Ovaj umetak pruža datume u jevrejskom kalendaru."
+
+#: hebrew/holiday.cpp:75
+#, fuzzy, kde-format
+msgctxt ""
+"These are Jewish holidays and mostly do not have translations. They may have "
+"different spellings in your language; otherwise, just translate the sound to "
+"your characters."
+msgid "Sh. HaHodesh"
+msgstr "Sh. Ha-hodeš"
+
+#: hebrew/holiday.cpp:83
+#, fuzzy, kde-format
+msgid "Erev Pesach"
+msgstr "Erev Pesač"
+
+#: hebrew/holiday.cpp:94
+#, fuzzy, kde-format
+msgid "Sh. HaGadol"
+msgstr "Sh. Ha-gadol"
+
+#: hebrew/holiday.cpp:102
+#, fuzzy, kde-format
+msgid "Pesach"
+msgstr "Pesač"
+
+#: hebrew/holiday.cpp:113 hebrew/holiday.cpp:307
+#, fuzzy, kde-format
+msgid "Chol Hamoed"
+msgstr "Kol Ha-moed"
+
+#: hebrew/holiday.cpp:124 hebrew/holiday.cpp:129 hebrew/holiday.cpp:138
+#, fuzzy, kde-format
+msgid "Yom HaShoah"
+msgstr "Jom Ha-šoa"
+
+#: hebrew/holiday.cpp:164 hebrew/holiday.cpp:171 hebrew/holiday.cpp:182
+#, fuzzy, kde-format
+msgid "Yom HaAtzmaut"
+msgstr "Jom Ha-acmaut"
+
+#: hebrew/holiday.cpp:166 hebrew/holiday.cpp:180
+#, fuzzy, kde-format
+msgid "Yom HaZikaron"
+msgstr "Jom Ha-zikaron"
+
+#: hebrew/holiday.cpp:190
+#, fuzzy, kde-format
+msgid "Yom Yerushalayim"
+msgstr "Jom Jerusalem"
+
+#: hebrew/holiday.cpp:194
+#, fuzzy, kde-format
+msgid "Lag BaOmer"
+msgstr "Lag Ba-omer"
+
+#: hebrew/holiday.cpp:220
+#, fuzzy, kde-format
+msgid "Erev Shavuot"
+msgstr "Erev Šavuot"
+
+#: hebrew/holiday.cpp:225
+#, fuzzy, kde-format
+msgid "Shavuot"
+msgstr "Šavuot"
+
+#: hebrew/holiday.cpp:234
+#, fuzzy, kde-format
+msgid "Tzom Tammuz"
+msgstr "Com Tamuz"
+
+#: hebrew/holiday.cpp:242
+#, fuzzy, kde-format
+msgid "Sh. Hazon"
+msgstr "Sh. Hazon"
+
+#: hebrew/holiday.cpp:244
+#, fuzzy, kde-format
+msgid "Sh. Nahamu"
+msgstr "Sh. Nahamu"
+
+#: hebrew/holiday.cpp:248
+#, fuzzy, kde-format
+msgid "Tisha B'Av"
+msgstr "Tisha B'Av"
+
+#: hebrew/holiday.cpp:254
+#, fuzzy, kde-format
+msgid "S'lichot"
+msgstr "S'lihot"
+
+#: hebrew/holiday.cpp:256
+#, fuzzy, kde-format
+msgid "Erev R.H."
+msgstr "Erev R.H."
+
+#: hebrew/holiday.cpp:264
+#, fuzzy, kde-format
+msgid "Rosh Hashana"
+msgstr "Rosh Hašana"
+
+#: hebrew/holiday.cpp:268 hebrew/holiday.cpp:283
+#, fuzzy, kde-format
+msgid "Sh. Shuvah"
+msgstr "Sdž. Šuva"
+
+#: hebrew/holiday.cpp:270 hebrew/holiday.cpp:275
+#, fuzzy, kde-format
+msgid "Tzom Gedalia"
+msgstr "Com Gadelija"
+
+#: hebrew/holiday.cpp:287
+#, fuzzy, kde-format
+msgid "Erev Y.K."
+msgstr "Erev J.K."
+
+#: hebrew/holiday.cpp:290
+#, fuzzy, kde-format
+msgid "Yom Kippur"
+msgstr "Jom Kipur"
+
+#: hebrew/holiday.cpp:293
+#, fuzzy, kde-format
+msgid "Erev Sukkot"
+msgstr "Erev Sukot"
+
+#: hebrew/holiday.cpp:298
+#, fuzzy, kde-format
+msgid "Sukkot"
+msgstr "Sukot"
+
+#: hebrew/holiday.cpp:311
+#, fuzzy, kde-format
+msgid "Hoshana Rabah"
+msgstr "Hošana Raba"
+
+#: hebrew/holiday.cpp:314
+#, fuzzy, kde-format
+msgid "Shmini Atzeret"
+msgstr "Šmini Aceret"
+
+#: hebrew/holiday.cpp:318
+#, fuzzy, kde-format
+msgid "Simchat Torah"
+msgstr "Simčat Tora"
+
+#: hebrew/holiday.cpp:329
+#, fuzzy, kde-format
+msgid "Erev Hanukah"
+msgstr "Erev Hanuka"
+
+#: hebrew/holiday.cpp:331 hebrew/holiday.cpp:339
+#, fuzzy, kde-format
+msgid "Hanukah"
+msgstr "Hanuka"
+
+#: hebrew/holiday.cpp:342
+#, fuzzy, kde-format
+msgid "Tzom Tevet"
+msgstr "Com Tevet"
+
+#: hebrew/holiday.cpp:352 hebrew/holiday.cpp:361 hebrew/holiday.cpp:366
+#: hebrew/holiday.cpp:372
+#, fuzzy, kde-format
+msgid "Sh. Shirah"
+msgstr "Sh. Šira"
+
+#: hebrew/holiday.cpp:368
+#, fuzzy, kde-format
+msgid "Tu B'Shvat"
+msgstr "Tu B'švat"
+
+#: hebrew/holiday.cpp:383 hebrew/holiday.cpp:395 hebrew/holiday.cpp:403
+#, fuzzy, kde-format
+msgid "Sh. Shekalim"
+msgstr "Sh. Šekalim"
+
+#: hebrew/holiday.cpp:392
+#, fuzzy, kde-format
+msgid "Purim Katan"
+msgstr "Purim Katan"
+
+#: hebrew/holiday.cpp:411 hebrew/holiday.cpp:431
+#, fuzzy, kde-format
+msgid "Ta'anit Ester"
+msgstr "Ta'anit Ester"
+
+#: hebrew/holiday.cpp:420 hebrew/holiday.cpp:425
+#, fuzzy, kde-format
+msgid "Sh. Zachor"
+msgstr "Sh. Zakhor"
+
+#: hebrew/holiday.cpp:427
+#, fuzzy, kde-format
+msgid "Erev Purim"
+msgstr "Erev Purim"
+
+#: hebrew/holiday.cpp:435
+#, fuzzy, kde-format
+msgid "Purim"
+msgstr "Purim"
+
+#: hebrew/holiday.cpp:439 hebrew/holiday.cpp:444
+#, fuzzy, kde-format
+msgid "Shushan Purim"
+msgstr "Šušan Purim"
+
+#: hebrew/holiday.cpp:455
+#, fuzzy, kde-format
+msgid "Sh. Parah"
+msgstr "Sh. Para"
+
+#: hebrew/holiday.cpp:465
+#, fuzzy, kde-format
+msgid "Sh. HaHodesh"
+msgstr "Sh. Ha-hodeš"
+
+#: hebrew/holiday.cpp:481
+#, fuzzy, kde-format
+msgid " Omer"
+msgstr " Omer"
+
+#: hebrew/parsha.cpp:28
+#, fuzzy, kde-format
+msgctxt ""
+"These are weekly readings and do not have translations. They may have "
+"different spellings in your language; otherwise, just translate the sound to "
+"your characters"
+msgid "Bereshit"
+msgstr "Osvježi"
+
+#: hebrew/parsha.cpp:29
+#, fuzzy, kde-format
+msgid "Noach"
+msgstr "Noa"
+
+#: hebrew/parsha.cpp:29
+#, fuzzy, kde-format
+msgid "Lech L'cha"
+msgstr "Leh L'ča"
+
+#: hebrew/parsha.cpp:29
+#, fuzzy, kde-format
+msgid "Vayera"
+msgstr "Vajera"
+
+#: hebrew/parsha.cpp:29
+#, fuzzy, kde-format
+msgid "Chaye Sarah"
+msgstr "Čae Sara"
+
+#: hebrew/parsha.cpp:29
+#, fuzzy, kde-format
+msgid "Toldot"
+msgstr "Toldot"
+
+#: hebrew/parsha.cpp:29
+#, fuzzy, kde-format
+msgid "Vayetze"
+msgstr "Vajce"
+
+#: hebrew/parsha.cpp:29
+#, fuzzy, kde-format
+msgid "Vayishlach"
+msgstr "Vajišlah"
+
+#: hebrew/parsha.cpp:30
+#, fuzzy, kde-format
+msgid "Vayeshev"
+msgstr "Vajašev"
+
+#: hebrew/parsha.cpp:30
+#, fuzzy, kde-format
+msgid "Miketz"
+msgstr "Mikec"
+
+#: hebrew/parsha.cpp:30
+#, fuzzy, kde-format
+msgid "Vayigash"
+msgstr "Vajigaš"
+
+#: hebrew/parsha.cpp:30
+#, fuzzy, kde-format
+msgid "Vayechi"
+msgstr "Vaječi"
+
+#: hebrew/parsha.cpp:30
+#, fuzzy, kde-format
+msgid "Shemot"
+msgstr "Šemot"
+
+#: hebrew/parsha.cpp:30
+#, fuzzy, kde-format
+msgid "Vaera"
+msgstr "Vaera"
+
+#: hebrew/parsha.cpp:30
+#, fuzzy, kde-format
+msgid "Bo"
+msgstr "Bo"
+
+#: hebrew/parsha.cpp:31
+#, fuzzy, kde-format
+msgid "Beshalach"
+msgstr "Bešalač"
+
+#: hebrew/parsha.cpp:31
+#, fuzzy, kde-format
+msgid "Yitro"
+msgstr "Jitro"
+
+#: hebrew/parsha.cpp:31
+#, fuzzy, kde-format
+msgid "Mishpatim"
+msgstr "Mišpatim"
+
+#: hebrew/parsha.cpp:31
+#, fuzzy, kde-format
+msgid "Terumah"
+msgstr "Terumah"
+
+#: hebrew/parsha.cpp:31
+#, fuzzy, kde-format
+msgid "Tetzaveh"
+msgstr "Tecaveh"
+
+#: hebrew/parsha.cpp:31
+#, fuzzy, kde-format
+msgid "Ki Tisa"
+msgstr "Ki Tisa"
+
+#: hebrew/parsha.cpp:31
+#, fuzzy, kde-format
+msgid "Vayakhel"
+msgstr "Vajakhel"
+
+#: hebrew/parsha.cpp:32
+#, fuzzy, kde-format
+msgid "Pekudei"
+msgstr "Pekudei"
+
+#: hebrew/parsha.cpp:32
+#, fuzzy, kde-format
+msgid "Vayikra"
+msgstr "Vajikra"
+
+#: hebrew/parsha.cpp:32
+#, fuzzy, kde-format
+msgid "Tzav"
+msgstr "Cav"
+
+#: hebrew/parsha.cpp:32
+#, fuzzy, kde-format
+msgid "Shemini"
+msgstr "Šemini"
+
+#: hebrew/parsha.cpp:32
+#, fuzzy, kde-format
+msgid "Tazria"
+msgstr "Tazrija"
+
+#: hebrew/parsha.cpp:32
+#, fuzzy, kde-format
+msgid "Metzora"
+msgstr "Mecora"
+
+#: hebrew/parsha.cpp:32
+#, kde-format
+msgid "Acharei Mot"
+msgstr "Acharei Mot"
+
+#: hebrew/parsha.cpp:33
+#, fuzzy, kde-format
+msgid "Kedoshim"
+msgstr "Kedošim"
+
+#: hebrew/parsha.cpp:33
+#, fuzzy, kde-format
+msgid "Emor"
+msgstr "Emor"
+
+#: hebrew/parsha.cpp:33
+#, fuzzy, kde-format
+msgid "Behar"
+msgstr "Behar"
+
+#: hebrew/parsha.cpp:33
+#, fuzzy, kde-format
+msgid "Bechukotai"
+msgstr "Bečukotaj"
+
+#: hebrew/parsha.cpp:33
+#, fuzzy, kde-format
+msgid "Bemidbar"
+msgstr "Bemidbar"
+
+#: hebrew/parsha.cpp:33
+#, fuzzy, kde-format
+msgid "Naso"
+msgstr "Naso"
+
+#: hebrew/parsha.cpp:33
+#, fuzzy, kde-format
+msgid "Behaalotcha"
+msgstr "Behaloča"
+
+#: hebrew/parsha.cpp:34
+#, fuzzy, kde-format
+msgid "Shelach"
+msgstr "Šelač"
+
+#: hebrew/parsha.cpp:34
+#, fuzzy, kde-format
+msgid "Korach"
+msgstr "Korač"
+
+#: hebrew/parsha.cpp:34
+#, fuzzy, kde-format
+msgid "Chukat"
+msgstr "Čukati"
+
+#: hebrew/parsha.cpp:34
+#, fuzzy, kde-format
+msgid "Balak"
+msgstr "Balak"
+
+#: hebrew/parsha.cpp:34
+#, fuzzy, kde-format
+msgid "Pinchas"
+msgstr "Pinčas"
+
+#: hebrew/parsha.cpp:34
+#, fuzzy, kde-format
+msgid "Matot"
+msgstr "Matot"
+
+#: hebrew/parsha.cpp:34
+#, fuzzy, kde-format
+msgid "Masei"
+msgstr "Masej"
+
+#: hebrew/parsha.cpp:35
+#, fuzzy, kde-format
+msgid "Devarim"
+msgstr "Devarim"
+
+#: hebrew/parsha.cpp:35
+#, fuzzy, kde-format
+msgid "Vaetchanan"
+msgstr "Vetčanan"
+
+#: hebrew/parsha.cpp:35
+#, fuzzy, kde-format
+msgid "Ekev"
+msgstr "Ekev"
+
+#: hebrew/parsha.cpp:35
+#, fuzzy, kde-format
+msgid "Reeh"
+msgstr "Rih"
+
+#: hebrew/parsha.cpp:35
+#, fuzzy, kde-format
+msgid "Shoftim"
+msgstr "Šoftim"
+
+#: hebrew/parsha.cpp:35
+#, fuzzy, kde-format
+msgid "Ki Tetze"
+msgstr "Ki Tece"
+
+#: hebrew/parsha.cpp:35
+#, fuzzy, kde-format
+msgid "Ki Tavo"
+msgstr "Ki Tavo"
+
+#: hebrew/parsha.cpp:36
+#, fuzzy, kde-format
+msgid "Nitzavim"
+msgstr "Nicavim"
+
+#: hebrew/parsha.cpp:36
+#, fuzzy, kde-format
+msgid "Vayelech"
+msgstr "Vajeleč"
+
+#: hebrew/parsha.cpp:36
+#, fuzzy, kde-format
+msgid "Haazinu"
+msgstr "Hazinu"
+
+#: lunarphases/lunarphases.cpp:61
+#, kde-format
+msgid ""
+"This plugin displays the day's lunar phase (New, First, Last, Full). "
+"Currently, the phase is computed for noon at UTC; therefore, you should "
+"expect variations by 1 day in either direction."
+msgstr ""
+
+#: picoftheday/configdialog.cpp:28
+#, fuzzy, kde-format
+msgctxt "@title:window"
+msgid "Configure Picture of the Day"
+msgstr "Podesi &datum i vrijeme..."
+
+#: picoftheday/configdialog.cpp:42
+#, kde-format
+msgid "Thumbnail Aspect Ratio Mode"
+msgstr ""
+
+#: picoftheday/configdialog.cpp:46
+#, kde-format
+msgid "Ignore aspect ratio"
+msgstr ""
+
+#: picoftheday/configdialog.cpp:48
+#, kde-format
+msgid ""
+"The thumbnail will be scaled freely. The aspect ratio will not be preserved."
+msgstr ""
+
+#: picoftheday/configdialog.cpp:52
+#, kde-format
+msgid "Keep aspect ratio"
+msgstr ""
+
+#: picoftheday/configdialog.cpp:54
+#, kde-format
+msgid ""
+"The thumbnail will be scaled to a rectangle as large as possible inside a "
+"given rectangle, preserving the aspect ratio."
+msgstr ""
+
+#: picoftheday/configdialog.cpp:59
+#, kde-format
+msgid "Keep aspect ratio by expanding"
+msgstr ""
+
+#: picoftheday/configdialog.cpp:61
+#, kde-format
+msgid ""
+"The thumbnail will be scaled to a rectangle as small as possible outside a "
+"given rectangle, preserving the aspect ratio."
+msgstr ""
+
+#: picoftheday/element.cpp:209
+#, kde-format
+msgid "Wikipedia POTD: %1"
+msgstr ""
+
+#: picoftheday/element.cpp:326
+#, fuzzy, kde-format
+msgid "Picture Page"
+msgstr "Obriši %1"
+
+#: picoftheday/element.cpp:326
+#, fuzzy, kde-format
+#| msgid "Go &Forward"
+msgid "Loading..."
+msgstr "&Idi naprijed"
+
+#: picoftheday/element.cpp:332
+#, fuzzy, kde-format
+msgid "<qt>Loading <i>Picture of the Day</i>...</qt>"
+msgstr "Ovaj umetak pruža datume u jevrejskom kalendaru."
+
+#: picoftheday/picoftheday.cpp:48
+#, fuzzy, kde-format
+msgid "<qt>This plugin provides the Wikipedia <i>Picture of the Day</i>.</qt>"
+msgstr "Ovaj umetak pruža datume u jevrejskom kalendaru."
+
+#: thisdayinhistory/thisdayinhistory.cpp:29
+#, fuzzy, kde-format
+msgid "This plugin provides links to Wikipedia's 'This Day in History' pages."
+msgstr "Ovaj umetak pruža brojeve dana i nedelja."
+
+#: thisdayinhistory/thisdayinhistory.cpp:37
+#, kde-format
+msgid "This day in history"
+msgstr ""
+
+#: thisdayinhistory/thisdayinhistory.cpp:39
+#: thisdayinhistory/thisdayinhistory.cpp:53
+#, kde-format
+msgctxt "Localized Wikipedia website"
+msgid "https://en.wikipedia.org/wiki/"
+msgstr ""
+
+#: thisdayinhistory/thisdayinhistory.cpp:40
+#, kde-format
+msgctxt "Qt date format used by the localized Wikipedia"
+msgid "MMMM_d"
+msgstr ""
+
+#: thisdayinhistory/thisdayinhistory.cpp:51
+#, kde-format
+msgid "This month in history"
+msgstr ""
+
+#: thisdayinhistory/thisdayinhistory.cpp:54
+#, kde-format
+msgctxt "Qt date format used by the localized Wikipedia"
+msgid "MMMM_yyyy"
+msgstr ""
+
+#~ msgctxt "NAME OF TRANSLATORS"
+#~ msgid "Your names"
+#~ msgstr "Marko Dimjašević"
+
+#~ msgctxt "EMAIL OF TRANSLATORS"
+#~ msgid "Your emails"
+#~ msgstr "marko@dimjasevic.net"
+
+#~ msgid "KOrganizer"
+#~ msgstr "KOrganizer"
+
+#, fuzzy
+#~ msgid "A Personal Organizer"
+#~ msgstr "Osobni organizator za KDE"
+
+#, fuzzy
+#~ msgid "Maintainer"
+#~ msgstr "Koordinator"
+
+#, fuzzy
+#~| msgid "Current Maintainer"
+#~ msgid "Former Maintainer"
+#~ msgstr "Trenutni koordinator"
+
+#~ msgid "Original Author"
+#~ msgstr "Orginalni Autor"
+
+#, fuzzy
+#~ msgid "Ian Dawes"
+#~ msgstr "tjedan(a)"
+
+#, fuzzy
+#~ msgid "Tim Jansen"
+#~ msgstr "Vremenska zona:"
+
+#, fuzzy
+#~| msgid "Maintainer"
+#~ msgid "Martin Koller"
+#~ msgstr "Koordinator"
+
+#, fuzzy
+#~ msgid "Uwe Koloska"
+#~ msgstr "&Koristi boje"
+
+#, fuzzy
+#~ msgid "Don Sanders"
+#~ msgstr "&Podsjetnik:"
+
+#, fuzzy
+#~ msgid "Hide menu bar"
+#~ msgstr "Vremenska zona:"
+
+#, fuzzy
+#~ msgid "Import &Calendar..."
+#~ msgstr "Uvezi kalendar"
+
+#, fuzzy
+#~ msgid "Merge the contents of another iCalendar"
+#~ msgstr "Dodaj Privitak"
+
+#, fuzzy
+#~ msgid "&Import From UNIX Ical Tool"
+#~ msgstr "&Uvezi iz icala"
+
+#, fuzzy
+#~ msgid "Import a calendar in another format"
+#~ msgstr "Želite li dodati kalendar sa „%1“ u KOrganizer?"
+
+#, fuzzy
+#~ msgid "Get &Hot New Stuff..."
+#~ msgstr "Dobavi vruće nove stvari..."
+
+#, fuzzy
+#~ msgid "Export &Web Page..."
+#~ msgstr "Izvezi kao web stranu..."
+
+#, fuzzy
+#~ msgid "Export as &iCalendar..."
+#~ msgstr "Uvezi kalendar"
+
+#, fuzzy
+#~ msgid "Export as &vCalendar..."
+#~ msgstr "Uvezi kalendar"
+
+#, fuzzy
+#~ msgid "Archive O&ld Entries..."
+#~ msgstr "Arhiviraj stare zapise"
+
+#, fuzzy
+#~ msgid "Pur&ge Completed To-dos"
+#~ msgstr "Obriši završene"
+
+#, fuzzy
+#~ msgid "&Delete"
+#~ msgstr "Obriši %1"
+
+#, fuzzy
+#~ msgid "What's &Next"
+#~ msgstr "Šta je &sljedeće?"
+
+#~ msgid "&Month"
+#~ msgstr "&Mjesec"
+
+#, fuzzy
+#~ msgid "&Agenda"
+#~ msgstr "Pregled događaja"
+
+#, fuzzy
+#~| msgid "&Events"
+#~ msgid "&Event List"
+#~ msgstr "&Događaji"
+
+#, fuzzy
+#~ msgid "&To-do List"
+#~ msgstr "&Popis poslova"
+
+#~ msgid "&Journal"
+#~ msgstr "&Dnevnik"
+
+#, fuzzy
+#~ msgid "Time&line"
+#~ msgstr "Vremenska zona:"
+
+#, fuzzy
+#~ msgid "Time&spent"
+#~ msgstr "Vremenski &raspon"
+
+#, fuzzy
+#~ msgid "&Refresh"
+#~ msgstr "Osvježi"
+
+#, fuzzy
+#~ msgid "F&ilter"
+#~ msgstr "Pokaži filter"
+
+#, fuzzy
+#~| msgid "day"
+#~ msgctxt "@action Jump to today"
+#~ msgid "To &Today"
+#~ msgstr "dan"
+
+#, fuzzy
+#~| msgid "day"
+#~ msgid "Today"
+#~ msgstr "dan"
+
+#, fuzzy
+#~| msgid "Go to &Today"
+#~ msgid "Scroll to Today"
+#~ msgstr "&Danas"
+
+#, fuzzy
+#~ msgctxt "scroll backward"
+#~ msgid "&Backward"
+#~ msgstr "Idi &nazad"
+
+#, fuzzy
+#~ msgctxt "scroll backward"
+#~ msgid "Back"
+#~ msgstr "Balak"
+
+#, fuzzy
+#~ msgid "Scroll Backward"
+#~ msgstr "Idi &nazad"
+
+#, fuzzy
+#~| msgid "Go &Forward"
+#~ msgctxt "scroll forward"
+#~ msgid "&Forward"
+#~ msgstr "&Idi naprijed"
+
+#, fuzzy
+#~| msgid "Go &Forward"
+#~ msgctxt "scoll forward"
+#~ msgid "Forward"
+#~ msgstr "&Idi naprijed"
+
+#, fuzzy
+#~| msgid "Go &Forward"
+#~ msgid "Scroll Forward"
+#~ msgstr "&Idi naprijed"
+
+#~ msgid "&Day"
+#~ msgstr "&Dan"
+
+#, fuzzy
+#~ msgid "&Next Day"
+#~ msgid_plural "&Next %1 Days"
+#~ msgstr[0] "&Sljedeći dan"
+
+#~ msgid "W&ork Week"
+#~ msgstr "R&adni tjedan"
+
+#~ msgid "&Week"
+#~ msgstr "&Tjedan"
+
+#, fuzzy
+#~ msgid "New E&vent..."
+#~ msgstr "No&vi događaj..."
+
+#, fuzzy
+#~ msgid "Create a new Event"
+#~ msgstr "Kliknite da biste dodali novi zadatak"
+
+#, fuzzy
+#~ msgid "New &To-do..."
+#~ msgstr "&Novi popis poslova..."
+
+#, fuzzy
+#~ msgid "Create a new To-do"
+#~ msgstr "Kliknite da biste dodali novi zadatak"
+
+#, fuzzy
+#~ msgid "New Su&b-to-do..."
+#~ msgstr "Novi &podzadatak..."
+
+#, fuzzy
+#~ msgid "New &Journal..."
+#~ msgstr "&Dnevnik"
+
+#, fuzzy
+#~ msgid "Create a new Journal"
+#~ msgstr "Kliknite da biste dodali novi zadatak"
+
+#, fuzzy
+#~ msgid "Configure View..."
+#~ msgstr "Podešavanje..."
+
+#, fuzzy
+#~ msgid "Configure"
+#~ msgstr "Podešavanje..."
+
+#~ msgid "&Show"
+#~ msgstr "Pri&kaži"
+
+#~ msgid "&Edit..."
+#~ msgstr "&Uredi …"
+
+#, fuzzy
+#~ msgid "&Make Sub-to-do Independent"
+#~ msgstr "&Učini podzadatak nezavisnim"
+
+#, fuzzy
+#~ msgid "Re&quest Update"
+#~ msgstr "Zahtjev"
+
+#, fuzzy
+#~ msgid "Send Status &Update"
+#~ msgstr "Završni datum:"
+
+#, fuzzy
+#~ msgctxt "counter proposal"
+#~ msgid "Request Chan&ge"
+#~ msgstr "Protivprijedlog"
+
+#, fuzzy
+#~ msgid "&Mail Free Busy Information..."
+#~ msgstr "Osobne informacije"
+
+#, fuzzy
+#~ msgid "&Send as iCalendar..."
+#~ msgstr "&Umetni postojeći kalendar..."
+
+#, fuzzy
+#~ msgid "&Upload Free Busy Information"
+#~ msgstr "Osobne informacije"
+
+#, fuzzy
+#~ msgid "&Address Book"
+#~ msgstr "Adresar"
+
+#, fuzzy
+#~ msgid "Show To-do View"
+#~ msgstr "Vrsta prikaza"
+
+#, fuzzy
+#~ msgid "Show Calendar Manager"
+#~ msgstr "Izvezi kalendar kao veb-stranu"
+
+#, fuzzy
+#~ msgid "Configure &Date && Time..."
+#~ msgstr "Podesi &datum i vrijeme..."
+
+#, fuzzy
+#~ msgid "Manage View &Filters..."
+#~ msgstr "&Kategorije..."
+
+#, fuzzy
+#~ msgid "Manage C&ategories..."
+#~ msgstr "Uredi k&ategorije..."
+
+#, fuzzy
+#~ msgid "&Configure KOrganizer..."
+#~ msgstr "Podesi &dodatke..."
+
+#, fuzzy
+#~ msgid "Could not add a calendar. Error: %1"
+#~ msgstr "Ne mogu učitati kalendar '%1'.\n"
+
+#, fuzzy
+#~ msgid ""
+#~ "You have no ical file in your home directory.\n"
+#~ "Import cannot proceed.\n"
+#~ msgstr ""
+#~ "Nemate ical datoteka u vašem korisničkom direktoriju.\n"
+#~ "Uvoz ne može da se nastavi.\n"
+
+#, fuzzy
+#~ msgid ""
+#~ "Your calendar will be saved in iCalendar format. Use 'Export vCalendar' "
+#~ "to save in vCalendar format."
+#~ msgstr ""
+#~ "Vaš kalendar će biti snimljen u formatu iCalendar-a. Koristite „Izvezi "
+#~ "vCalendar“ ako želite da ga snimite u formatu vCalendar-a."
+
+#, fuzzy
+#~ msgid "Format Conversion"
+#~ msgstr "Koninačica formata"
+
+#~ msgid "Proceed"
+#~ msgstr "Proslijedi"
+
+#~ msgid "Cannot upload calendar to '%1'"
+#~ msgstr "Ne mogu učitati kalendar '%1'."
+
+#, fuzzy
+#~ msgid "Saved calendar '%1'."
+#~ msgstr "Snimio sam kalendar „%1“."
+
+#, fuzzy
+#~| msgid "New Calendar"
+#~ msgid "Select path for HTML calendar export"
+#~ msgstr "Novi kalendar"
+
+#, fuzzy
+#~ msgid "Do you want to overwrite file \"%1\"?"
+#~ msgstr "<qt>Želite li zaista da obrišete resurs <b>%1</b>?</qt>"
+
+#, fuzzy
+#~ msgid "Unable to save calendar to the file %1."
+#~ msgstr "Št&ampaj sve stavke zadataka"
+
+#, fuzzy
+#~ msgid "Error"
+#~ msgstr "Bez grešaka"
+
+#~ msgid ""
+#~ "The calendar has been modified.\n"
+#~ "Do you want to save it?"
+#~ msgstr ""
+#~ "Ovaj kalendar je mijenjan.\n"
+#~ "Želite li ga spremiti?"
+
+#, fuzzy
+#~ msgid "*.ics *.vcs|Calendar Files"
+#~ msgstr "*.vcs *.ics|Kalendarski datoteke"
+
+#, fuzzy
+#~ msgid "Could not load calendar %1."
+#~ msgstr "Ne mogu učitati kalendar '%1'.\n"
+
+#, fuzzy
+#~ msgid "The downloaded events will be merged into your current calendar."
+#~ msgstr "Preuzeti događaji biti će stopljeni sa vašim trenutnim kalendarom."
+
+#, fuzzy
+#~ msgid "&Show Event"
+#~ msgstr "&Pokaži događaj"
+
+#, fuzzy
+#~ msgid "&Edit Event..."
+#~ msgstr "&Uredi događaj..."
+
+#, fuzzy
+#~ msgid "&Delete Event"
+#~ msgstr "&Obriši događaj"
+
+#, fuzzy
+#~ msgid "&Show To-do"
+#~ msgstr "&Pokaži zadatak"
+
+#, fuzzy
+#~ msgid "&Edit To-do..."
+#~ msgstr "&Uredi zadatak..."
+
+#, fuzzy
+#~ msgid "&Delete To-do"
+#~ msgstr "&Obriši popis poslova"
+
+#, fuzzy
+#~ msgid "Attach &inline"
+#~ msgstr "Dodaj Privitak"
+
+#, fuzzy
+#~ msgid "Remove Attachments"
+#~ msgstr "Privici"
+
+#, fuzzy
+#~ msgid "Undo: %1"
+#~ msgstr "Poništi (%1)"
+
+#, fuzzy
+#~ msgid "Undo"
+#~ msgstr "Poništi (%1)"
+
+#, fuzzy
+#~ msgid "Redo: %1"
+#~ msgstr "Ponovi (%1)"
+
+#, fuzzy
+#~ msgid "Redo"
+#~ msgstr "Ponovi (%1)"
+
+#, fuzzy
+#~ msgctxt "@title:window"
+#~ msgid "Import Calendar"
+#~ msgstr "Uvezi kalendar"
+
+#, fuzzy
+#~ msgid "Add as new calendar"
+#~ msgstr "Novi kalendar"
+
+#, fuzzy
+#~ msgctxt ""
+#~ "@info/plain Displayed grayed-out inside the textbox, verb to search"
+#~ msgid "Search"
+#~ msgstr "Traži u"
+
+#, fuzzy
+#~| msgid "Go &Forward"
+#~ msgid "searching..."
+#~ msgstr "&Idi naprijed"
+
+#, fuzzy
+#~ msgctxt "@title:window"
+#~ msgid "Properties of Calendar Folder %1"
+#~ msgstr "Uredi filtere kalendara"
+
+#, fuzzy
+#~ msgid "&Disable Color"
+#~ msgstr "Koristi &boje"
+
+#, fuzzy
+#~ msgid "Use as &Default Calendar"
+#~ msgstr "Novi kalendar"
+
+#, fuzzy
+#~ msgid "Remove from list"
+#~ msgstr "Spremi predložak"
+
+#, fuzzy
+#~ msgid "Add Calendar"
+#~ msgstr "Novi kalendar"
+
+#, fuzzy
+#~ msgid "Do you really want to delete calendar %1?"
+#~ msgstr "<qt>Želite li zaista da obrišete resurs <b>%1</b>?</qt>"
+
+#, fuzzy
+#~| msgid "New Calendar"
+#~ msgid "Delete Calendar"
+#~ msgstr "Novi kalendar"
+
+#, fuzzy
+#~ msgid "Keep Absolute Times?"
+#~ msgstr "bez vremena"
+
+#, fuzzy
+#~ msgid "Keep Times"
+#~ msgstr "bez vremena"
+
+#, fuzzy
+#~ msgid "Move Times"
+#~ msgstr "bez vremena"
+
+#, fuzzy
+#~ msgid "Todo completed: %1 (%2)"
+#~ msgstr "&Završeno"
+
+#, fuzzy
+#~ msgid "Journal of %1"
+#~ msgstr "&Dnevnik"
+
+#, fuzzy
+#~ msgctxt "@info"
+#~ msgid "Do you really want to permanently remove the item \"%1\"?"
+#~ msgstr "<qt>Želite li zaista da obrišete resurs <b>%1</b>?</qt>"
+
+#, fuzzy
+#~ msgctxt "@title:window"
+#~ msgid "Delete Item?"
+#~ msgstr "Obriši stare događaje"
+
+#, fuzzy
+#~ msgid "Paste failed: unable to determine a valid target date."
+#~ msgstr "Navedite ispravan datum početka."
+
+#, fuzzy
+#~ msgid "Make sub-to-dos independent"
+#~ msgstr "Učini podzadatak nezavisnim"
+
+#, fuzzy
+#~ msgid "Toggle Reminder"
+#~ msgstr "&Podsjetnik:"
+
+#, fuzzy
+#~ msgid "Toggle To-do Completed"
+#~ msgstr "Obriši završene"
+
+#, fuzzy
+#~ msgctxt "@title:window"
+#~ msgid "Copying Succeeded"
+#~ msgstr "Instalacija nije uspjela."
+
+#, fuzzy
+#~ msgctxt "@info"
+#~ msgid "Unable to copy the item \"%1\" to %2."
+#~ msgstr "Št&ampaj sve stavke zadataka"
+
+#, fuzzy
+#~ msgctxt "@title:window"
+#~ msgid "Copying Failed"
+#~ msgstr "Instalacija nije uspjela."
+
+#, fuzzy
+#~ msgctxt "@title:window"
+#~ msgid "Moving Failed"
+#~ msgstr "Instalacija nije uspjela."
+
+#, fuzzy
+#~ msgctxt "@title:window"
+#~ msgid "Moving Succeeded"
+#~ msgstr "Instalacija nije uspjela."
+
+#~ msgid "KOrganizer Confirmation"
+#~ msgstr "Korganizer: Potvrda"
+
+#, fuzzy
+#~ msgid "&Dissociate"
+#~ msgstr "P&ridruženo vrijeme"
+
+#, fuzzy
+#~ msgid "&Only Dissociate This One"
+#~ msgstr "&Uključi ponavljanje"
+
+#, fuzzy
+#~ msgid "&Also Dissociate Future Ones"
+#~ msgstr "&Uključi ponavljanje"
+
+#, fuzzy
+#~ msgid "Dissociate future occurrences"
+#~ msgstr "&Uključi ponavljanje"
+
+#, fuzzy
+#~ msgid "Dissociate occurrence"
+#~ msgstr "&Uključi ponavljanje"
+
+#, fuzzy
+#~ msgid "Dissociating the future occurrences failed."
+#~ msgstr "&Uključi ponavljanje"
+
+#, fuzzy
+#~ msgid "Dissociating Failed"
+#~ msgstr "Instalacija nije uspjela."
+
+#, fuzzy
+#~ msgid "Dissociating the occurrence failed."
+#~ msgstr "&Uključi ponavljanje"
+
+#, fuzzy
+#~| msgid "Calendar"
+#~ msgid "iCalendars (*.ics)"
+#~ msgstr "Kalendar"
+
+#, fuzzy
+#~ msgctxt "@info"
+#~ msgid "Cannot write iCalendar file %1. %2"
+#~ msgstr "Ne mogu da zapišem arhivski datoteka."
+
+#, fuzzy
+#~ msgid "The journal entries cannot be exported to a vCalendar file."
+#~ msgstr "Stavke dnevnika ne mogu da se izvezu u vCalendar-ski datoteka."
+
+#, fuzzy
+#~ msgid "Data Loss Warning"
+#~ msgstr "Upozorenje na gubitak podataka"
+
+#, fuzzy
+#~| msgid "Calendar"
+#~ msgid "vCalendars (*.vcs)"
+#~ msgstr "Kalendar"
+
+#, fuzzy
+#~ msgctxt "@info"
+#~ msgid "Cannot write vCalendar file %1. %2"
+#~ msgstr "Ne mogu da zapišem arhivski datoteka."
+
+#~ msgid "&Previous Day"
+#~ msgstr "&Prethodni dan"
+
+#, fuzzy
+#~ msgid "&Previous Week"
+#~ msgstr "&Prethodna sedmica"
+
+#, fuzzy
+#~ msgid "&Next Week"
+#~ msgstr "&Sljedeća sedmica"
+
+#, fuzzy
+#~ msgid "No filter"
+#~ msgstr "Pokaži filter"
+
+#, fuzzy
+#~ msgid "Delete Only This"
+#~ msgstr "Obriši stare događaje"
+
+#, fuzzy
+#~ msgid "Delete All"
+#~ msgstr "Obriši %1"
+
+#, fuzzy
+#~ msgid "Delete parent to-do"
+#~ msgstr "Obriši popis poslova"
+
+#, fuzzy
+#~ msgid "Delete parent to-do and sub-to-dos"
+#~ msgstr "Obriši popis poslova"
+
+#, fuzzy
+#~ msgid ""
+#~ "The calendar item \"%1\" recurs over multiple dates; are you sure you "
+#~ "want to delete it and all its recurrences?"
+#~ msgstr ""
+#~ "Ovaj događaj se ponavlja više datuma. Želite li zaista da obrišete ovaj "
+#~ "događaj sa svim njegovim ponavljanjima?"
+
+#, fuzzy
+#~ msgid "Also Delete &Future"
+#~ msgstr "Obriši trenutne"
+
+#, fuzzy
+#~ msgid ""
+#~ "The calendar item \"%1\" recurs over multiple dates. Do you want to "
+#~ "delete only the current one on %2, also future occurrences, or all its "
+#~ "occurrences?"
+#~ msgstr ""
+#~ "Ovaj događaj se ponavlja više datuma. Želite da obrišete sva njegova "
+#~ "ponavljanja, ili samo trenutne (%1)?"
+
+#, fuzzy
+#~ msgid ""
+#~ "The calendar item \"%1\" recurs over multiple dates. Do you want to "
+#~ "delete only the current one on %2 or all its occurrences?"
+#~ msgstr ""
+#~ "Ovaj događaj se ponavlja više datuma. Želite da obrišete sva njegova "
+#~ "ponavljanja, ili samo trenutne (%1)?"
+
+#, fuzzy
+#~ msgid "Delete C&urrent"
+#~ msgstr "Obriši trenutne"
+
+#, fuzzy
+#~ msgid "Delete &All"
+#~ msgstr "Obriši %1"
+
+#, fuzzy
+#~ msgid "There are no completed to-dos to purge."
+#~ msgstr "Sakrij završene zadatke"
+
+#, fuzzy
+#~ msgid "Delete all completed to-dos from checked calendars?"
+#~ msgstr "Da li da obrišem sve završene zadatke?"
+
+#, fuzzy
+#~ msgid "Purge To-dos"
+#~ msgstr "Pročisti zadatke"
+
+#, fuzzy
+#~ msgid "Purge"
+#~ msgstr "Pročisti"
+
+#, fuzzy
+#~ msgctxt "@info"
+#~ msgid "Unable to edit \"%1\" because it is locked by another process."
+#~ msgstr "Ne mogu da uredim incidenciju. Drugi proces ju je zaključao."
+
+#, fuzzy
+#~ msgid "Unable to copy the item to %1."
+#~ msgstr "Št&ampaj sve stavke zadataka"
+
+#, fuzzy
+#~ msgid "Copying Failed"
+#~ msgstr "Instalacija nije uspjela."
+
+#, fuzzy
+#~ msgid "Unable to move the item to  %1."
+#~ msgstr "Št&ampaj sve stavke zadataka"
+
+#, fuzzy
+#~ msgid "Moving Failed"
+#~ msgstr "Instalacija nije uspjela."
+
+#, fuzzy
+#~ msgid "0 completed to-dos were purged."
+#~ msgstr "Sakrij završene zadatke"
+
+#, fuzzy
+#~ msgid "%1 completed to-do was purged."
+#~ msgid_plural "%1 completed to-dos were purged."
+#~ msgstr[0] "Sakrij završene zadatke"
+#~ msgstr[1] "Sakrij završene zadatke"
+#~ msgstr[2] "Sakrij završene zadatke"
+
+#, fuzzy
+#~ msgid "An error occurred while purging completed to-dos: %1"
+#~ msgstr "Sakrij završene zadatke"
+
+#, fuzzy
+#~| msgid "General"
+#~ msgctxt "@title:tab General settings for a folder."
+#~ msgid "General"
+#~ msgstr "Općenito"
+
+#, fuzzy
+#~| msgid "Name:"
+#~ msgctxt "@label:textbox Name of the folder."
+#~ msgid "&Name:"
+#~ msgstr "Ime:"
+
+#, fuzzy
+#~ msgctxt "@info:tooltip"
+#~ msgid "Set the folder name"
+#~ msgstr "Završni datum:"
+
+#, fuzzy
+#~ msgctxt "@option:check"
+#~ msgid "Block reminders locally"
+#~ msgstr "&Podsjetnik:"
+
+#, fuzzy
+#~ msgctxt "@info:tooltip"
+#~ msgid "Ignore reminders from this calendar"
+#~ msgstr "Obriši stare događaje"
+
+#, fuzzy
+#~ msgctxt "@info:whatsthis"
+#~ msgid ""
+#~ "Check this box if you do not want to receive reminders from items "
+#~ "associated with this calendar."
+#~ msgstr "Pokaži sekunde na liniji Markusa Bejnsa"
+
+#, fuzzy
+#~| msgid "Calendar"
+#~ msgctxt "@option:check"
+#~ msgid "&Use custom icon:"
+#~ msgstr "Kalendar"
+
+#, fuzzy
+#~| msgid "Calendar"
+#~ msgctxt "@info:tooltip"
+#~ msgid "Set a custom icon"
+#~ msgstr "Kalendar"
+
+#, fuzzy
+#~ msgctxt "@info:whatsthis"
+#~ msgid "Check this box if you want to set a custom icon for this folder."
+#~ msgstr "Pokaži sekunde na liniji Markusa Bejnsa"
+
+#, fuzzy
+#~ msgid "&File"
+#~ msgstr "&Naslov:"
+
+#, fuzzy
+#~ msgid "&Edit"
+#~ msgstr "&Uredi..."
+
+#, fuzzy
+#~ msgid "&View"
+#~ msgstr "Pogledi"
+
+#, fuzzy
+#~ msgid "&Zoom"
+#~ msgstr "Povećaj"
+
+#~ msgid "&Go"
+#~ msgstr "&Idi"
+
+#~ msgid "&Actions"
+#~ msgstr "&Akcije"
+
+#~ msgid "S&chedule"
+#~ msgstr "&Raspored"
+
+#, fuzzy
+#~ msgid "&Settings"
+#~ msgstr "Sastanak"
+
+#, fuzzy
+#~ msgid "&Sidebar"
+#~ msgstr "Vremenska zona:"
+
+#, fuzzy
+#~| msgid "Main"
+#~ msgctxt "main toolbar"
+#~ msgid "Main"
+#~ msgstr "Glavni"
+
+#~ msgid "Views"
+#~ msgstr "Pogledi"
+
+#~ msgid "Schedule"
+#~ msgstr "Raspored"
+
+#, fuzzy
+#~| msgid "Calendar"
+#~ msgid "Calendar Colors"
+#~ msgstr "Kalendar"
+
+#, fuzzy
+#~ msgid "Export Calendar as Web Page"
+#~ msgstr "Izvezi kalendar kao veb-stranu"
+
+#, fuzzy
+#~ msgid "Export"
+#~ msgstr "Emor"
+
+#, fuzzy
+#~| msgid "General"
+#~ msgctxt "general settings for html export"
+#~ msgid "General"
+#~ msgstr "Općenito"
+
+#~ msgid "Date Range"
+#~ msgstr "Raspon datuma"
+
+#~ msgid "View Type"
+#~ msgstr "Vrsta pogleda"
+
+#~ msgid "Destination"
+#~ msgstr "Odredište"
+
+#, fuzzy
+#~ msgid "To-dos"
+#~ msgstr "Za&daci"
+
+#, fuzzy
+#~ msgid "Events"
+#~ msgstr "&Događaji"
+
+#, fuzzy
+#~ msgctxt "@title::window"
+#~ msgid "Edit Calendar Filters"
+#~ msgstr "Uredi filtere kalendara"
+
+#, fuzzy
+#~ msgctxt "@label default filter name"
+#~ msgid "New Filter %1"
+#~ msgstr "Dodaj filter"
+
+#, fuzzy
+#~ msgctxt "@info"
+#~ msgid "Do you really want to permanently remove the filter \"%1\"?"
+#~ msgstr "<qt>Želite li zaista da obrišete resurs <b>%1</b>?</qt>"
+
+#, fuzzy
+#~ msgctxt "@title:window"
+#~ msgid "Delete Filter?"
+#~ msgstr "Obriši stare događaje"
+
+#~ msgid "Event Viewer"
+#~ msgstr "Pregled događaja"
+
+#, fuzzy
+#~| msgid "Edit..."
+#~ msgid "Edit..."
+#~ msgstr "Uredi..."
+
+#, fuzzy
+#~ msgid "Show in Context"
+#~ msgstr "Pokaži samo odabrane"
+
+#, fuzzy
+#~ msgctxt "@title:window"
+#~ msgid "Create Note"
+#~ msgstr "Kliknite da biste dodali novi zadatak"
+
+#, fuzzy
+#~ msgctxt "@action:discard creating note"
+#~ msgid "Cancel"
+#~ msgstr "&Promjeni"
+
+#, fuzzy
+#~| msgid "Travel"
+#~ msgctxt "@action:save note"
+#~ msgid "Save"
+#~ msgstr "Putovanje"
+
+#, fuzzy
+#~ msgid "Title:"
+#~ msgstr "&Naslov:"
+
+#, fuzzy
+#~ msgid "Text:"
+#~ msgstr "Ponovi (%1)"
+
+#, fuzzy
+#~| msgid "New Calendar"
+#~ msgid "Search Calendar"
+#~ msgstr "Novi kalendar"
+
+#, fuzzy
+#~ msgctxt "search in calendar"
+#~ msgid "&Search"
+#~ msgstr "Traži u"
+
+#, fuzzy
+#~ msgid ""
+#~ "Invalid search expression, cannot perform the search. Please enter a "
+#~ "search expression using the wildcard characters '*' and '?' where needed."
+#~ msgstr ""
+#~ "Neispravan izraz za pretraživanje, pretraga ne može da se obavi. Unesite "
+#~ "izraz za pretraživanje koristeći džoker znake „*“ i „?“ gdje je potrebno."
+
+#, fuzzy
+#~ msgid "No items were found that match your search pattern."
+#~ msgstr ""
+#~ "Nije pronađen nijedan događaj koji se poklapa sa vašim izrazom za "
+#~ "pretraživanje."
+
+#, fuzzy
+#~ msgid "Search Results"
+#~ msgstr "Traži u"
+
+#, fuzzy
+#~ msgid "%1 item"
+#~ msgid_plural "%1 items"
+#~ msgstr[0] "%1 minut"
+#~ msgstr[1] "%1 minuta"
+#~ msgstr[2] "%1 minuta"
+
+#, fuzzy
+#~| msgid "Destination"
+#~ msgctxt "A collection of all declined invidations."
+#~ msgid "Declined Invitations"
+#~ msgstr "Odredište"
+
+#, fuzzy
+#~| msgid "Destination"
+#~ msgctxt "A collection of all open invidations."
+#~ msgid "Open Invitations"
+#~ msgstr "Odredište"
+
+#, fuzzy
+#~ msgid "Unable to write the output file."
+#~ msgstr "Št&ampaj sve stavke zadataka"
+
+#, fuzzy
+#~ msgid "Unable to upload the export file."
+#~ msgstr "Št&ampaj sve stavke zadataka"
+
+#, fuzzy
+#~ msgctxt "@title:window"
+#~ msgid "Export Status"
+#~ msgstr "Postavite vaš status"
+
+#, fuzzy
+#~| msgid "Automatic"
+#~ msgctxt "@info:status"
+#~ msgid "Automatic Export: %1"
+#~ msgstr "Automatski"
+
+#, fuzzy
+#~ msgctxt "@title month and year"
+#~ msgid "%1 %2"
+#~ msgstr "%1 %2"
+
+#, fuzzy
+#~| msgid "Start Time"
+#~ msgctxt "@title:column event start time"
+#~ msgid "Start Time"
+#~ msgstr "Početno vrijeme"
+
+#, fuzzy
+#~| msgid "End Time"
+#~ msgctxt "@title:column event end time"
+#~ msgid "End Time"
+#~ msgstr "Vrijeme završetka"
+
+#, fuzzy
+#~ msgctxt "@title:column event description"
+#~ msgid "Event"
+#~ msgstr "&Događaji"
+
+#, fuzzy
+#~ msgctxt "@title:column event locatin"
+#~ msgid "Location"
+#~ msgstr "&Lokacija:"
+
+#, fuzzy
+#~| msgid "Categories"
+#~ msgctxt "@title:column event categories"
+#~ msgid "Categories"
+#~ msgstr "Kategorije"
+
+#, fuzzy
+#~ msgctxt "@title:column event attendees"
+#~ msgid "Attendees"
+#~ msgstr "Sudionici"
+
+#, fuzzy
+#~ msgctxt "@title:column"
+#~ msgid "To-do"
+#~ msgstr "Zadatak:"
+
+#, fuzzy
+#~| msgid "Priority"
+#~ msgctxt "@title:column to-do priority"
+#~ msgid "Priority"
+#~ msgstr "Prioritet"
+
+#, fuzzy
+#~| msgid "Complete"
+#~ msgctxt "@title:column to-do percent completed"
+#~ msgid "Completed"
+#~ msgstr "Završi"
+
+#, fuzzy
+#~ msgctxt "@title:column to-do due date"
+#~ msgid "Due Date"
+#~ msgstr "Datumi krajnjih rokova"
+
+#, fuzzy
+#~ msgctxt "@title:column to-do location"
+#~ msgid "Location"
+#~ msgstr "&Lokacija:"
+
+#, fuzzy
+#~| msgid "Categories"
+#~ msgctxt "@title:column to-do categories"
+#~ msgid "Categories"
+#~ msgstr "Kategorije"
+
+#, fuzzy
+#~ msgctxt "@title:column to-do attendees"
+#~ msgid "Attendees"
+#~ msgstr "Sudionici"
+
+#, fuzzy
+#~ msgctxt "@title:column sub-to-dos of the parent to-do"
+#~ msgid "Sub-To-dos of: "
+#~ msgstr "Zadatak:"
+
+#, fuzzy
+#~ msgctxt "@title:column sub-to-dos of the parent to-do"
+#~ msgid "Sub-To-dos"
+#~ msgstr "Za&daci"
+
+#, fuzzy
+#~ msgctxt "@info to-do percent complete"
+#~ msgid "%1 %"
+#~ msgstr "%1 %2"
+
+#, fuzzy
+#~| msgid "- %1"
+#~ msgctxt "@info page creator name only"
+#~ msgid "by %1 "
+#~ msgstr "- %1"
+
+#, fuzzy
+#~ msgctxt "@info page credit name only"
+#~ msgid "with %1"
+#~ msgstr "Kraj:"
+
+#, fuzzy
+#~ msgctxt "@info holiday by date and name"
+#~ msgid "%1, %2"
+#~ msgstr "%1 %2"
+
+#, fuzzy
+#~| msgid "Select Mode"
+#~ msgid "Selection"
+#~ msgstr "Izaberite boju"
+
+#, fuzzy
+#~| msgid "Date && Time"
+#~ msgid "Date & Time"
+#~ msgstr "Vrijeme krajnjeg roka"
+
+#, fuzzy
+#~ msgid "Date"
+#~ msgstr "&Krajnji rok:"
+
+#, fuzzy
+#~ msgid "<qt>Do you really want to delete '<b>%1</b>'?</qt>"
+#~ msgstr "<qt>Želite li zaista da obrišete resurs <b>%1</b>?</qt>"
+
+#, fuzzy
+#~ msgid "Import Page"
+#~ msgstr "Uvezi kalendar"
+
+#, fuzzy
+#~ msgid "Designer Files (*.ui)"
+#~ msgstr "*.vcs|vCalendar-ski datoteke"
+
+#, fuzzy
+#~ msgid "Import Page..."
+#~ msgstr "Uvezi kalendar"
+
+#, fuzzy
+#~ msgid "Type:"
+#~ msgstr "Vrijeme krajnjeg roka"
+
+#, fuzzy
+#~ msgid "Classname:"
+#~ msgstr "Ime korisnika:"
+
+#, fuzzy
+#~ msgid "Description:"
+#~ msgstr "Opis:"
+
+#, fuzzy
+#~ msgctxt "@item:intext delimiter for joining holiday names"
+#~ msgid ","
+#~ msgstr ", "
+
+#, fuzzy
+#~ msgctxt "delimiter for joining holiday names"
+#~ msgid ","
+#~ msgstr ", "
+
+#~ msgid "&Add"
+#~ msgstr "&Dodaj"
+
+#, fuzzy
+#~ msgid "&Cancel"
+#~ msgstr "&Promjeni"
+
+#, fuzzy
+#~ msgid "&Print..."
+#~ msgstr "&Uredi..."
+
+#, fuzzy
+#~ msgid "Print Previe&w..."
+#~ msgstr "&Uredi..."
+
+#, fuzzy
+#~ msgctxt "cut this event"
+#~ msgid "C&ut"
+#~ msgstr "Čukati"
+
+#, fuzzy
+#~ msgid "&Paste"
+#~ msgstr "&Krajnji rok:"
+
+#, fuzzy
+#~ msgctxt "delete this incidence"
+#~ msgid "&Delete"
+#~ msgstr "Obriši %1"
+
+#, fuzzy
+#~ msgid "Create To-do"
+#~ msgstr "Kliknite da biste dodali novi zadatak"
+
+#, fuzzy
+#~ msgid "Create Event"
+#~ msgstr "Kliknite da biste dodali novi zadatak"
+
+#, fuzzy
+#~ msgid "Create Note"
+#~ msgstr "Kliknite da biste dodali novi zadatak"
+
+#, fuzzy
+#~ msgid "Togg&le To-do Completed"
+#~ msgstr "Obriši završene"
+
+#, fuzzy
+#~ msgid "&Toggle Reminder"
+#~ msgstr "&Podsjetnik:"
+
+#, fuzzy
+#~ msgid "&Dissociate From Recurrence..."
+#~ msgstr "&Uključi ponavljanje"
+
+#, fuzzy
+#~ msgid "Send as iCalendar..."
+#~ msgstr "&Umetni postojeći kalendar..."
+
+#, fuzzy
+#~ msgid "Unable to save %1 \"%2\"."
+#~ msgstr "Št&ampaj sve stavke zadataka"
+
+#, fuzzy
+#~| msgid "Calendar"
+#~ msgid "Event Summary Configuration"
+#~ msgstr "Kalendar"
+
+#, fuzzy
+#~ msgid ""
+#~ "Check this box if you want to see events occurring on this date only."
+#~ msgstr "Pokaži sekunde na liniji Markusa Bejnsa"
+
+#, fuzzy
+#~| msgid "day"
+#~ msgid "&Today only"
+#~ msgstr "dan"
+
+#, fuzzy
+#~ msgid ""
+#~ "Check this box if you want to see events that start sometime during the "
+#~ "next 31 days."
+#~ msgstr "Pokaži sekunde na liniji Markusa Bejnsa"
+
+#, fuzzy
+#~ msgid "Select the days for showing upcoming events"
+#~ msgstr "Boja zadataka koji su probili krajnji rok:"
+
+#, fuzzy
+#~ msgid ""
+#~ "Check this box if you want to specify the number of days in the future "
+#~ "for upcoming events."
+#~ msgstr "Pokaži sekunde na liniji Markusa Bejnsa"
+
+#, fuzzy
+#~ msgid "1 day"
+#~ msgstr "%1 dan"
+
+#, fuzzy
+#~ msgctxt "days to show in summary"
+#~ msgid " days"
+#~ msgstr "Štampaj dan"
+
+#, fuzzy
+#~ msgid "Show &birthdays"
+#~ msgstr "Rođendan"
+
+#, fuzzy
+#~ msgid "Groupware Settings"
+#~ msgstr "Sastanak"
+
+#, fuzzy
+#~ msgid "Show events belonging to my calendars only"
+#~ msgstr "Uvezi kalendar"
+
+#, fuzzy
+#~ msgid ""
+#~ "Check this box if you want the summary to show events belonging to your "
+#~ "calendars only."
+#~ msgstr "Pokaži sekunde na liniji Markusa Bejnsa"
+
+#, fuzzy
+#~| msgid "Appointment"
+#~ msgid "&Edit Appointment..."
+#~ msgstr "Obveza"
+
+#, fuzzy
+#~| msgid "Appointment"
+#~ msgid "&Delete Appointment"
+#~ msgstr "Obveza"
+
+#, fuzzy
+#~| msgid "Edit Event"
+#~ msgid "Edit Event: \"%1\""
+#~ msgstr "Promijeni događaj"
+
+#, fuzzy
+#~ msgctxt "@action:inmenu"
+#~ msgid "New Journal..."
+#~ msgstr "&Dnevnik"
+
+#, fuzzy
+#~ msgctxt "@info:status"
+#~ msgid "Create a new journal"
+#~ msgstr "Kliknite da biste dodali novi zadatak"
+
+#, fuzzy
+#~| msgid "&Journal"
+#~ msgctxt "@action:inmenu"
+#~ msgid "Sync Journal"
+#~ msgstr "&Dnevnik"
+
+#, fuzzy
+#~ msgctxt "@info:whatsthis"
+#~ msgid "Choose this option to synchronize your groupware journal entries."
+#~ msgstr "Pokaži sekunde na liniji Markusa Bejnsa"
+
+#, fuzzy
+#~ msgid " day"
+#~ msgid_plural " days"
+#~ msgstr[0] "%1 dan"
+#~ msgstr[1] "%1 dana"
+#~ msgstr[2] "%1 dana"
+
+#, fuzzy
+#~ msgctxt "@action:inmenu"
+#~ msgid "New Event..."
+#~ msgstr "No&vi događaj..."
+
+#, fuzzy
+#~ msgctxt "@info:status"
+#~ msgid "Create a new event"
+#~ msgstr "Kliknite da biste dodali novi zadatak"
+
+#, fuzzy
+#~| msgid "New Calendar"
+#~ msgctxt "@action:inmenu"
+#~ msgid "Sync Calendar"
+#~ msgstr "Novi kalendar"
+
+#, fuzzy
+#~ msgctxt "@info:whatsthis"
+#~ msgid "Choose this option to synchronize your groupware events."
+#~ msgstr "Pokaži sekunde na liniji Markusa Bejnsa"
+
+#, fuzzy
+#~| msgid "Meeting"
+#~ msgctxt "@item"
+#~ msgid "Meeting"
+#~ msgstr "Sastanak"
+
+#, fuzzy
+#~ msgctxt "@item"
+#~ msgid "Note: %1"
+#~ msgstr "Poništi (%1)"
+
+#, fuzzy
+#~ msgctxt "@item"
+#~ msgid ""
+#~ "From: %1\n"
+#~ "To: %2\n"
+#~ "Subject: %3"
+#~ msgstr "Od: %1   do: %2   %3"
+
+#, fuzzy
+#~| msgid "KMail"
+#~ msgctxt "@item"
+#~ msgid "Mail: %1"
+#~ msgstr "KMail"
+
+#, fuzzy
+#~| msgid "day"
+#~ msgctxt "the appointment is today"
+#~ msgid "Today"
+#~ msgstr "dan"
+
+#, fuzzy
+#~ msgid "in 1 day"
+#~ msgid_plural "in %1 days"
+#~ msgstr[0] "%1 dan"
+#~ msgstr[1] "%1 dana"
+#~ msgstr[2] "%1 dana"
+
+#, fuzzy
+#~ msgctxt "use abbreviation for minute to keep the text short"
+#~ msgid "1 min"
+#~ msgid_plural "%1 mins"
+#~ msgstr[0] "%1 minut"
+#~ msgstr[1] "%1 minuta"
+#~ msgstr[2] "%1 minuta"
+
+#, fuzzy
+#~ msgid "all day"
+#~ msgstr "%1 dan"
+
+#, fuzzy
+#~| msgid "%1 - %2"
+#~ msgctxt "Time from - to"
+#~ msgid "%1 - %2"
+#~ msgstr "%1 – %2"
+
+#, fuzzy
+#~ msgctxt "next occurrence"
+#~ msgid "Next: %1"
+#~ msgstr "Ponovi (%1)"
+
+#, fuzzy
+#~ msgctxt "@action:inmenu"
+#~ msgid "New To-do..."
+#~ msgstr "Novi popis poslova..."
+
+#, fuzzy
+#~ msgctxt "@info:status"
+#~ msgid "Create a new to-do"
+#~ msgstr "Kliknite da biste dodali novi zadatak"
+
+#, fuzzy
+#~ msgctxt "@action:inmenu"
+#~ msgid "Sync To-do List"
+#~ msgstr "&Popis poslova"
+
+#, fuzzy
+#~ msgctxt "@info:status"
+#~ msgid "Synchronize groupware to-do list"
+#~ msgstr "Centriraj na početku"
+
+#, fuzzy
+#~ msgctxt "@info:whatsthis"
+#~ msgid "Choose this option to synchronize your groupware to-do list."
+#~ msgstr "Pokaži sekunde na liniji Markusa Bejnsa"
+
+#, fuzzy
+#~| msgid "Calendar"
+#~ msgid "To-do Summary Configuration"
+#~ msgstr "Kalendar"
+
+#, fuzzy
+#~ msgid "Show To-dos Due"
+#~ msgstr "Vrsta prikaza"
+
+#, fuzzy
+#~ msgid "Show To-dos due today only"
+#~ msgstr "Boja zadataka čiji krajnji rok ističe danas:"
+
+#, fuzzy
+#~ msgid "Check this box if you want to see To-dos due on this date only."
+#~ msgstr "Pokaži sekunde na liniji Markusa Bejnsa"
+
+#, fuzzy
+#~ msgid ""
+#~ "Check this box if you want to see To-dos that are due sometime during the "
+#~ "next 31 days."
+#~ msgstr "Pokaži sekunde na liniji Markusa Bejnsa"
+
+#, fuzzy
+#~ msgid ""
+#~ "Check this box if you want specify the number of days in the future for "
+#~ "pending To-dos."
+#~ msgstr "Pokaži sekunde na liniji Markusa Bejnsa"
+
+#, fuzzy
+#~ msgid "Hide completed To-dos"
+#~ msgstr "Sakrij završene zadatke"
+
+#, fuzzy
+#~ msgid ""
+#~ "Check this box if you do not want to see To-dos that have already been "
+#~ "completed."
+#~ msgstr "Pokaži sekunde na liniji Markusa Bejnsa"
+
+#, fuzzy
+#~| msgid "Complete"
+#~ msgid "&Completed"
+#~ msgstr "Završi"
+
+#, fuzzy
+#~ msgid "Hide To-dos without a due date"
+#~ msgstr "Uključi i zadatke bez &krajnjeg roka"
+
+#, fuzzy
+#~ msgid "Check this box if you do not want to see open-ended To-dos."
+#~ msgstr "Pokaži sekunde na liniji Markusa Bejnsa"
+
+#, fuzzy
+#~ msgid "Hide unstarted To-dos"
+#~ msgstr "Sakrij završene zadatke"
+
+#, fuzzy
+#~ msgid ""
+#~ "Check this box if you do not want to see To-dos with a start date in the "
+#~ "future."
+#~ msgstr "Pokaži sekunde na liniji Markusa Bejnsa"
+
+#, fuzzy
+#~ msgid "Hide in-progress To-dos"
+#~ msgstr "Sakrij završene zadatke"
+
+#, fuzzy
+#~ msgid ""
+#~ "Check this box if you do not want to see To-dos that have been started "
+#~ "but are not yet completed."
+#~ msgstr "Pokaži sekunde na liniji Markusa Bejnsa"
+
+#, fuzzy
+#~ msgid "Hide overdue To-dos"
+#~ msgstr "Sakrij završene zadatke"
+
+#, fuzzy
+#~ msgid ""
+#~ "Check this box if you do not want to see To-dos that are past their due "
+#~ "date but have not yet been completed."
+#~ msgstr "Pokaži sekunde na liniji Markusa Bejnsa"
+
+#, fuzzy
+#~ msgid "Show To-dos belonging to my calendars only"
+#~ msgstr "Uvezi kalendar"
+
+#, fuzzy
+#~ msgid ""
+#~ "Check this box if you want the summary to show To-dos belonging to your "
+#~ "calendars only."
+#~ msgstr "Pokaži sekunde na liniji Markusa Bejnsa"
+
+#, fuzzy
+#~ msgid "Show &my To-dos only"
+#~ msgstr "&Pokaži zadatak"
+
+#, fuzzy
+#~ msgid "Pending To-dos"
+#~ msgstr "Pročisti zadatke"
+
+#, fuzzy
+#~| msgid "day"
+#~ msgctxt "the to-do is due today"
+#~ msgid "Today"
+#~ msgstr "dan"
+
+#, fuzzy
+#~ msgid "1 day ago"
+#~ msgid_plural "%1 days ago"
+#~ msgstr[0] "%1 dan"
+#~ msgstr[1] "%1 dana"
+#~ msgstr[2] "%1 dana"
+
+#, fuzzy
+#~| msgid "Due"
+#~ msgctxt "the to-do is due"
+#~ msgid "due"
+#~ msgstr "Krajnji rok"
+
+#, fuzzy
+#~ msgid "&Mark To-do Completed"
+#~ msgstr "Obriši završene"
+
+#, fuzzy
+#~ msgid "Edit To-do: \"%1\""
+#~ msgstr "Promijeni popis poslova"
+
+#, fuzzy
+#~ msgctxt "the to-do starts today"
+#~ msgid "starts today"
+#~ msgstr "Početni datum:"
+
+#, fuzzy
+#~| msgid "co&mpleted"
+#~ msgctxt "the to-do is completed"
+#~ msgid "completed"
+#~ msgstr "&završeno"
+
+#, fuzzy
+#~ msgctxt "Separator for status like this: overdue, completed"
+#~ msgid ","
+#~ msgstr ", "
+
+#, fuzzy
+#~| msgid "Calendar"
+#~ msgid "Special Dates Summary Configuration"
+#~ msgstr "Kalendar"
+
+#, fuzzy
+#~ msgid ""
+#~ "Check this box if you want to see special occasions occurring on this "
+#~ "date only."
+#~ msgstr "Pokaži sekunde na liniji Markusa Bejnsa"
+
+#, fuzzy
+#~ msgid ""
+#~ "Check this box if you want to see special occasions that start sometime "
+#~ "during the next 31 days."
+#~ msgstr "Pokaži sekunde na liniji Markusa Bejnsa"
+
+#, fuzzy
+#~ msgid ""
+#~ "Check this box if you want to specify the number of days in the future "
+#~ "for upcoming special occasions."
+#~ msgstr "Pokaži sekunde na liniji Markusa Bejnsa"
+
+#, fuzzy
+#~ msgid "Show birthdays from your calendar"
+#~ msgstr "Uvezi kalendar"
+
+#, fuzzy
+#~ msgid "Show holidays from your calendar"
+#~ msgstr "Uvezi kalendar"
+
+#, fuzzy
+#~ msgid "Show &holidays"
+#~ msgstr "&Pokaži vrijeme kao:"
+
+#, fuzzy
+#~| msgid "Special Occasion"
+#~ msgid "Show s&pecial occasions"
+#~ msgstr "Posebna prilika"
+
+#, fuzzy
+#~ msgid "Show birth&days"
+#~ msgstr "Pokaži"
+
+#, fuzzy
+#~| msgid "day"
+#~ msgctxt "the special day is today"
+#~ msgid "Today"
+#~ msgstr "dan"
+
+#, fuzzy
+#~| msgid "Birthday"
+#~ msgid "Birthday"
+#~ msgstr "Rođendan"
+
+#~ msgid "Holiday"
+#~ msgstr "Praznik"
+
+#, fuzzy
+#~| msgid "Special Occasion"
+#~ msgid "Special Occasion"
+#~ msgstr "Posebna prilika"
+
+#, fuzzy
+#~| msgid "Next year"
+#~ msgid "one year"
+#~ msgid_plural "%1 years"
+#~ msgstr[0] "Sljedeća godina"
+#~ msgstr[1] "Sljedeća godina"
+#~ msgstr[2] "Sljedeća godina"
+
+#, fuzzy
+#~ msgid "Send &Mail"
+#~ msgstr "Sendmail"
+
+#, fuzzy
+#~ msgid "View &Contact"
+#~ msgstr "Traži u"
+
+#, fuzzy
+#~| msgid "Current Maintainer"
+#~ msgid "Current Maintainer"
+#~ msgstr "Trenutni koordinator"
+
+#~ msgid "Calendar"
+#~ msgstr "Kalendar"
+
+#~ msgid "New Calendar"
+#~ msgstr "Novi kalendar"
+
+#, fuzzy
+#~| msgid "read-only"
+#~ msgctxt "the calendar is read-only"
+#~ msgid "read-only"
+#~ msgstr "samo za čitanje"
+
+#, fuzzy
+#~ msgid "Import the specified files as separate calendars"
+#~ msgstr "Dodaj Privitak"
+
+#, fuzzy
+#~ msgid "Merge the specified files into an existing calendar"
+#~ msgstr "Dodaj Privitak"
+
+#, fuzzy
+#~ msgid "Merged calendar"
+#~ msgstr "Stopio sam kalendar „%1“."
+
+#, fuzzy
+#~ msgctxt "Default export file"
+#~ msgid "calendar.html"
+#~ msgstr "calendar.html"
+
+#, fuzzy
+#~| msgid "Personal"
+#~ msgctxt "@title:tab personal settings"
+#~ msgid "Personal"
+#~ msgstr "Osobni podaci"
+
+#, fuzzy
+#~ msgctxt "@title:group email settings"
+#~ msgid "Email Settings"
+#~ msgstr "Sastanak"
+
+#, fuzzy
+#~| msgid "Travel"
+#~ msgctxt "@title:tab"
+#~ msgid "Save"
+#~ msgstr "Putovanje"
+
+#, fuzzy
+#~ msgctxt "@title:group"
+#~ msgid "Exporting Calendar"
+#~ msgstr "Uvezi kalendar"
+
+#, fuzzy
+#~ msgctxt "@title:group"
+#~ msgid "Show/Hide Options"
+#~ msgstr "&Opisi"
+
+#, fuzzy
+#~| msgid "Calendar"
+#~ msgctxt "@title:tab calendar account settings"
+#~ msgid "Calendars"
+#~ msgstr "Kalendar"
+
+#, fuzzy
+#~| msgid "Personal"
+#~ msgctxt "@title:tab"
+#~ msgid "Regional"
+#~ msgstr "Osobni podaci"
+
+#, fuzzy
+#~| msgid "Holiday"
+#~ msgctxt "@title:group"
+#~ msgid "Holidays"
+#~ msgstr "Praznik"
+
+#, fuzzy
+#~ msgctxt "Holday region, region language"
+#~ msgid "%1 (%2)"
+#~ msgstr "%1 %2"
+
+#, fuzzy
+#~ msgctxt "No holiday region"
+#~ msgid "None"
+#~ msgstr "Naso"
+
+#, fuzzy
+#~ msgctxt "@title:group"
+#~ msgid "Working Period"
+#~ msgstr "Radni časovi"
+
+#, fuzzy
+#~ msgctxt "@title:tab"
+#~ msgid "Default Values"
+#~ msgstr "Uobičajena boja događaja:"
+
+#, fuzzy
+#~| msgid "Appointment"
+#~ msgctxt "@title:group"
+#~ msgid "Appointments"
+#~ msgstr "Obveza"
+
+#, fuzzy
+#~ msgctxt "@title:group"
+#~ msgid "Reminders"
+#~ msgstr "&Podsjetnik:"
+
+#, fuzzy
+#~ msgctxt "@label"
+#~ msgid "Default reminder time:"
+#~ msgstr "Uobičajeno vrijeme alarma:"
+
+#, fuzzy
+#~| msgid "minute(s)"
+#~ msgctxt "@item:inlistbox reminder units in minutes"
+#~ msgid "minute(s)"
+#~ msgstr "minuta(e)"
+
+#, fuzzy
+#~| msgid "hour(s)"
+#~ msgctxt "@item:inlistbox reminder time units in hours"
+#~ msgid "hour(s)"
+#~ msgstr "sat(i)"
+
+#, fuzzy
+#~| msgid "day(s)"
+#~ msgctxt "@item:inlistbox reminder time units in days"
+#~ msgid "day(s)"
+#~ msgstr "dan(a)"
+
+#, fuzzy
+#~| msgid "General"
+#~ msgctxt "@title:tab general settings"
+#~ msgid "General"
+#~ msgstr "Općenito"
+
+#, fuzzy
+#~ msgctxt "@title:group"
+#~ msgid "Display Options"
+#~ msgstr "Dnevno"
+
+#, fuzzy
+#~ msgctxt "@label suffix in the N days spin box"
+#~ msgid " days"
+#~ msgstr "Štampaj dan"
+
+#, fuzzy
+#~ msgctxt "@title:tab"
+#~ msgid "Agenda View"
+#~ msgstr "Pregled događaja"
+
+#, fuzzy
+#~ msgctxt "@title:tab"
+#~ msgid "Month View"
+#~ msgstr "Pregled mjeseca"
+
+#, fuzzy
+#~ msgctxt "@title:tab"
+#~ msgid "Todo View"
+#~ msgstr "Vrsta prikaza"
+
+#, fuzzy
+#~ msgctxt "@title:group"
+#~ msgid "Other Options"
+#~ msgstr "&Opisi"
+
+#, fuzzy
+#~| msgid "Categories"
+#~ msgctxt "@title:group"
+#~ msgid "Categories"
+#~ msgstr "Kategorije"
+
+#, fuzzy
+#~ msgctxt "@title:group"
+#~ msgid "Resources"
+#~ msgstr "%1 resurs"
+
+#, fuzzy
+#~| msgid "month(s)"
+#~ msgctxt "@title:tab"
+#~ msgid "Fonts"
+#~ msgstr "mjesec(i)"
+
+#, fuzzy
+#~ msgctxt "@label"
+#~ msgid "Event text"
+#~ msgstr "Tekst događaja"
+
+#, fuzzy
+#~| msgid "Name"
+#~ msgctxt "@title:column plugin name"
+#~ msgid "Name"
+#~ msgstr "Ime"
+
+#, fuzzy
+#~ msgctxt "@action:button"
+#~ msgid "Configure &Plugin..."
+#~ msgstr "Podesi &dodatke..."
+
+#, fuzzy
+#~| msgid "Destination"
+#~ msgctxt "@title:group"
+#~ msgid "Position"
+#~ msgstr "Odredište"
+
+#, fuzzy
+#~ msgctxt "@option:check"
+#~ msgid "Show at the top of the agenda views"
+#~ msgstr "Pokaži samo odabrane"
+
+#, fuzzy
+#~ msgctxt "@option:check"
+#~ msgid "Show at the bottom of the agenda views"
+#~ msgstr "Pokaži samo odabrane"
+
+#, fuzzy
+#~| msgid "Calendar"
+#~ msgctxt "@title:group"
+#~ msgid "Calendar Decorations"
+#~ msgstr "Kalendar"
+
+#, fuzzy
+#~ msgctxt "@title:group"
+#~ msgid "Other Plugins"
+#~ msgstr "&Opisi"
+
+#, fuzzy
+#~ msgctxt "@info"
+#~ msgid "Unable to configure this plugin"
+#~ msgstr "Ne mogu da podesim ovaj umetak"
+
+#, fuzzy
+#~ msgid "Full name of the calendar owner"
+#~ msgstr "Ime rukovodioca"
+
+#, fuzzy
+#~ msgid "The full name of the calendar owner for the export"
+#~ msgstr "Ime rukovodioca"
+
+#, fuzzy
+#~ msgid "The email address of the calendar owner for the export"
+#~ msgstr "Ime rukovodioca"
+
+#, fuzzy
+#~ msgid "Creator application of the calendar"
+#~ msgstr "Št&ampaj sve stavke zadataka"
+
+#, fuzzy
+#~ msgid "Enter a creator application of the calendar, for example KOrganizer."
+#~ msgstr "Št&ampaj sve stavke zadataka"
+
+#, fuzzy
+#~ msgid "Creator URL"
+#~ msgstr "Adresa poslužitelja:"
+
+#, fuzzy
+#~ msgid "Page Title"
+#~ msgstr "&Naslov:"
+
+#, fuzzy
+#~ msgid "The title of the exported page"
+#~ msgstr "Št&ampaj sve stavke zadataka"
+
+#, fuzzy
+#~ msgid "Date start"
+#~ msgstr "Centriraj na početku"
+
+#, fuzzy
+#~| msgid "Date Range"
+#~ msgid "Date end"
+#~ msgstr "Raspon datuma"
+
+#, fuzzy
+#~ msgid "Check this box if you do NOT want to export your private items."
+#~ msgstr "Pokaži sekunde na liniji Markusa Bejnsa"
+
+#, fuzzy
+#~ msgid "Exclude confidential items from the export"
+#~ msgstr "Izuzmi praznike"
+
+#, fuzzy
+#~ msgid "Check this box if you do NOT want to export your confidential items."
+#~ msgstr "Pokaži sekunde na liniji Markusa Bejnsa"
+
+#, fuzzy
+#~ msgid "Export events as a list"
+#~ msgstr "Lista zadataka"
+
+#, fuzzy
+#~ msgid "Check this box if you want your events shown as a list."
+#~ msgstr "Pokaži sekunde na liniji Markusa Bejnsa"
+
+#, fuzzy
+#~ msgid "Export in month view"
+#~ msgstr "Pokaži samo odabrane"
+
+#, fuzzy
+#~ msgid "Export events in a month view"
+#~ msgstr "Pokaži samo odabrane"
+
+#, fuzzy
+#~ msgid "Check this box if you want your events shown in a month view."
+#~ msgstr "Pokaži sekunde na liniji Markusa Bejnsa"
+
+#, fuzzy
+#~ msgid "Export in week view"
+#~ msgstr "Štampaj kao prikaz &vremenskog rasporeda:"
+
+#, fuzzy
+#~ msgid "Export events in a week view"
+#~ msgstr "Štampaj kao prikaz &vremenskog rasporeda:"
+
+#, fuzzy
+#~ msgid "Check this box if you want your events shown in a week view."
+#~ msgstr "Pokaži sekunde na liniji Markusa Bejnsa"
+
+#, fuzzy
+#~ msgid "Title of the calendar"
+#~ msgstr "Št&ampaj sve stavke zadataka"
+
+#, fuzzy
+#~ msgid "Title for the event calendar"
+#~ msgstr "Št&ampaj sve stavke zadataka"
+
+#, fuzzy
+#~| msgid "Please select type of the new resource:"
+#~ msgid "Enter a string to use for the title of the event calendar."
+#~ msgstr "Molim odaberite tip novog resursa:"
+
+#, fuzzy
+#~ msgid "Export location of the events"
+#~ msgstr "Izvezi u HTML pri svakom spremanju"
+
+#, fuzzy
+#~ msgid "Include the event locations"
+#~ msgstr "Informacije o poslužitelju"
+
+#, fuzzy
+#~ msgid ""
+#~ "Check this box if you want the event locations to be exported, only if "
+#~ "the event has a location."
+#~ msgstr "Pokaži sekunde na liniji Markusa Bejnsa"
+
+#, fuzzy
+#~| msgid "Select Cate&gories..."
+#~ msgid "Include the event categories"
+#~ msgstr "&Izabrane kategorije..."
+
+#, fuzzy
+#~ msgid "Check this box if you want the event categories to be exported."
+#~ msgstr "Pokaži sekunde na liniji Markusa Bejnsa"
+
+#, fuzzy
+#~ msgid "Include the event attendees"
+#~ msgstr "Centriraj na početku"
+
+#, fuzzy
+#~ msgid "Check this box if you want the event attendees to be exported."
+#~ msgstr "Pokaži sekunde na liniji Markusa Bejnsa"
+
+#, fuzzy
+#~ msgid "Export to-do list"
+#~ msgstr "Lista zadataka"
+
+#, fuzzy
+#~ msgid "Export the to-do list"
+#~ msgstr "Lista zadataka"
+
+#, fuzzy
+#~ msgid ""
+#~ "Check this box if you want your to-do list to also be exported to the "
+#~ "HTML."
+#~ msgstr "Pokaži sekunde na liniji Markusa Bejnsa"
+
+#, fuzzy
+#~ msgid "Title of the to-do list"
+#~ msgstr "Centriraj na početku"
+
+#, fuzzy
+#~ msgid "To-do List"
+#~ msgstr "&Popis poslova"
+
+#, fuzzy
+#~ msgid "Title for the to-do list"
+#~ msgstr "Centriraj na početku"
+
+#, fuzzy
+#~ msgid "Include to-do due dates"
+#~ msgstr "Uključi i zadatke bez &krajnjeg roka"
+
+#, fuzzy
+#~ msgid ""
+#~ "Check this box if you want the to-do list due dates to be exported, if "
+#~ "the to-do does have a due date."
+#~ msgstr "Pokaži sekunde na liniji Markusa Bejnsa"
+
+#, fuzzy
+#~| msgid "Start &time:"
+#~ msgid "Include the to-do locations"
+#~ msgstr "&Vrijeme početka:"
+
+#, fuzzy
+#~ msgid ""
+#~ "Check this box if you want the to-do locations to be exported, only if "
+#~ "the to-do has a location."
+#~ msgstr "Pokaži sekunde na liniji Markusa Bejnsa"
+
+#, fuzzy
+#~| msgid "Select Cate&gories..."
+#~ msgid "Include the to-do categories"
+#~ msgstr "&Izabrane kategorije..."
+
+#, fuzzy
+#~ msgid "Check this box if you want the to-do categories to be exported."
+#~ msgstr "Pokaži sekunde na liniji Markusa Bejnsa"
+
+#, fuzzy
+#~ msgid "Include the to-do attendees"
+#~ msgstr "Centriraj na početku"
+
+#, fuzzy
+#~ msgid "Check this box if you want the to-do attendees to be exported."
+#~ msgstr "Pokaži sekunde na liniji Markusa Bejnsa"
+
+#, fuzzy
+#~ msgid "Export journals"
+#~ msgstr "&Dnevnik"
+
+#, fuzzy
+#~ msgid "Check this box if you want to export journals as well."
+#~ msgstr "Pokaži sekunde na liniji Markusa Bejnsa"
+
+#, fuzzy
+#~ msgid "Title of the journal list"
+#~ msgstr "Obriši stare događaje"
+
+#, fuzzy
+#~ msgid "Journals"
+#~ msgstr "&Dnevnik"
+
+#, fuzzy
+#~ msgid "Title for the journal list"
+#~ msgstr "Obriši stare događaje"
+
+#, fuzzy
+#~ msgid "Export free/busy list"
+#~ msgstr "Osobne informacije"
+
+#, fuzzy
+#~ msgid "Check this box if you want to export free/busy information as well."
+#~ msgstr "Pokaži sekunde na liniji Markusa Bejnsa"
+
+#, fuzzy
+#~ msgid "Title of the free/busy list"
+#~ msgstr "Osobne informacije"
+
+#, fuzzy
+#~ msgid "Busy times"
+#~ msgstr "bez vremena"
+
+#, fuzzy
+#~ msgid "Title for the free/busy list"
+#~ msgstr "Osobne informacije"
+
+#, fuzzy
+#~ msgid "Export to HTML periodically"
+#~ msgstr "Izvezi u HTML pri svakom spremanju"
+
+#, fuzzy
+#~ msgid "Export &interval in minutes"
+#~ msgstr "&Interval spremanja u minutima:"
+
+#, fuzzy
+#~ msgid "Confirm deletes"
+#~ msgstr "Potvrdi brisanja"
+
+#, fuzzy
+#~ msgid "Be added to the standard calendar"
+#~ msgstr "dodati standardnom resursu"
+
+#, fuzzy
+#~ msgid "Be asked which calendar to use"
+#~ msgstr "upitani koji će resurs koristiti"
+
+#, fuzzy
+#~ msgid "Day begins at"
+#~ msgstr "Dan počinje u"
+
+#, fuzzy
+#~ msgid "Daily starting hour"
+#~ msgstr "Dnevni čas početka"
+
+#, fuzzy
+#~ msgid "Daily ending hour"
+#~ msgstr "Dnevni čas kraja"
+
+#, fuzzy
+#~ msgid "Exclude holidays"
+#~ msgstr "Izuzmi praznike"
+
+#, fuzzy
+#~ msgid "Color busy days with a different background color"
+#~ msgstr "Pozadina kalendara"
+
+#, fuzzy
+#~ msgid "Enable tooltips for displaying summaries"
+#~ msgstr "Uključi oblačiće koji prikazuju sažetke događaja"
+
+#, fuzzy
+#~ msgid "To-dos use category colors"
+#~ msgstr "Boja zadataka čiji krajnji rok ističe danas:"
+
+#, fuzzy
+#~ msgid "Next x days"
+#~ msgstr "&Sljedeći dan"
+
+#, fuzzy
+#~ msgid "Show items that recur daily"
+#~ msgstr "Pokaži u navigatoru datuma događaje koji se dnevno ponavljaju"
+
+#, fuzzy
+#~ msgid "Show items that recur weekly"
+#~ msgstr "Pokaži u navigatoru datuma događaje koji sedmično ponavljaju"
+
+#, fuzzy
+#~ msgid "Hour size"
+#~ msgstr "Sat"
+
+#, fuzzy
+#~ msgid "Show icons in agenda view items"
+#~ msgstr "Pokaži samo odabrane"
+
+#, fuzzy
+#~ msgid "Display icons in agenda view items"
+#~ msgstr "Pokaži samo odabrane"
+
+#, fuzzy
+#~ msgid "Show to-dos"
+#~ msgstr "&Pokaži zadatak"
+
+#, fuzzy
+#~ msgid "Check this box to display to-dos in the agenda view."
+#~ msgstr "Pokaži sekunde na liniji Markusa Bejnsa"
+
+#, fuzzy
+#~ msgid "Display to-dos in the agenda view"
+#~ msgstr "Pokaži samo odabrane"
+
+#, fuzzy
+#~ msgid "Show current-time (Marcus Bains) line"
+#~ msgstr "Pokaži trenutno vrijeme (linija Markusa Bejnsa)"
+
+#, fuzzy
+#~ msgid "Display the current-time indicator"
+#~ msgstr "Uobičajeno vrijeme zakazanog termina:"
+
+#, fuzzy
+#~ msgid "Show seconds on the current-time (Marcus Bains) line"
+#~ msgstr "Pokaži trenutno vrijeme (linija Markusa Bejnsa)"
+
+#, fuzzy
+#~ msgid "Check this box if you want to show seconds on the current-time line."
+#~ msgstr "Pokaži sekunde na liniji Markusa Bejnsa"
+
+#, fuzzy
+#~ msgid "Display seconds with the current-time indicator"
+#~ msgstr "Pokaži sekunde na liniji Markusa Bejnsa"
+
+#, fuzzy
+#~ msgid "Time range selection in agenda view starts event editor"
+#~ msgstr ""
+#~ "Odabir vremenskog perioda u prikazu rokovnika pokreće uređivač događaja."
+
+#, fuzzy
+#~| msgid "Calendar"
+#~ msgid "Calendar inside, category outside"
+#~ msgstr "Kalendar"
+
+#, fuzzy
+#~ msgid "Only category"
+#~ msgstr "Kategorije"
+
+#, fuzzy
+#~| msgid "Calendar"
+#~ msgid "Only calendar"
+#~ msgstr "Kalendar"
+
+#, fuzzy
+#~| msgid "Active Calendar"
+#~ msgid "Multiple Calendar Display"
+#~ msgstr "Automatski spremi kalendar"
+
+#, fuzzy
+#~ msgid "Tab through calendars"
+#~ msgstr "Stopio sam kalendar „%1“."
+
+#, fuzzy
+#~ msgid "Show icons in month view items"
+#~ msgstr "Pokaži samo odabrane"
+
+#, fuzzy
+#~ msgid "Display icons in month view items"
+#~ msgstr "Aktiviraj klizače u ćelijama prikaza mjeseca"
+
+#, fuzzy
+#~ msgid "Show time in month view items"
+#~ msgstr "Pokaži samo odabrane"
+
+#, fuzzy
+#~ msgid "Check this box to display the time in month view items."
+#~ msgstr "Aktiviraj klizače u ćelijama prikaza mjeseca"
+
+#, fuzzy
+#~ msgid "Display time in month view items"
+#~ msgstr "Aktiviraj klizače u ćelijama prikaza mjeseca"
+
+#, fuzzy
+#~ msgid "Check this box to display to-dos in the month view."
+#~ msgstr "Aktiviraj klizače u ćelijama prikaza mjeseca"
+
+#, fuzzy
+#~ msgid "Display to-dos in the month view"
+#~ msgstr "Aktiviraj klizače u ćelijama prikaza mjeseca"
+
+#, fuzzy
+#~ msgid "Show journals"
+#~ msgstr "&Dnevnik"
+
+#, fuzzy
+#~ msgid "Display journals in the month view"
+#~ msgstr "Aktiviraj klizače u ćelijama prikaza mjeseca"
+
+#, fuzzy
+#~ msgid "Month view uses full window"
+#~ msgstr "Prikaz mjeseca koristi cijeli prozor"
+
+#, fuzzy
+#~ msgid "To-do list view uses full window"
+#~ msgstr "Prikaz zadataka zauzima cijeli prozor"
+
+#, fuzzy
+#~ msgid "Display to-do list in a full KOrganizer window"
+#~ msgstr "Prikaz zadataka zauzima cijeli prozor"
+
+#, fuzzy
+#~ msgid "Display to-dos in a flat list"
+#~ msgstr "Aktiviraj klizače u ćelijama prikaza mjeseca"
+
+#, fuzzy
+#~ msgid ""
+#~ "Check this box if you want to see all your to-dos in a flat list instead "
+#~ "of being arranged in a hierarchical tree."
+#~ msgstr "Pokaži sekunde na liniji Markusa Bejnsa"
+
+#, fuzzy
+#~ msgid "Record completed to-dos in journal entries"
+#~ msgstr "Sakrij završene zadatke"
+
+#, fuzzy
+#~ msgid "Holiday color"
+#~ msgstr "Boja praznika:"
+
+#, fuzzy
+#~ msgid "Agenda view background color"
+#~ msgstr "Pozadina kalendara"
+
+#, fuzzy
+#~ msgid "Select the agenda view background color here."
+#~ msgstr "Pozadina kalendara"
+
+#, fuzzy
+#~ msgid "Agenda view current-time line color"
+#~ msgstr "Uobičajeno vrijeme zakazanog termina:"
+
+#, fuzzy
+#~ msgid "Select a color to use for the current-time (Marcus Bains) line."
+#~ msgstr "Pokaži trenutno vrijeme (linija Markusa Bejnsa)"
+
+#, fuzzy
+#~ msgid "Use this color for the Agenda View current-time (Marcus Bains) line"
+#~ msgstr "Pokaži trenutno vrijeme (linija Markusa Bejnsa)"
+
+#, fuzzy
+#~ msgid "Busy days background color"
+#~ msgstr "Pozadina kalendara"
+
+#, fuzzy
+#~ msgid "Working hours color"
+#~ msgstr "Boja radnih časova:"
+
+#, fuzzy
+#~ msgid "Select the working hours color for the agenda view here."
+#~ msgstr "Pozadina kalendara"
+
+#, fuzzy
+#~ msgid "To-do due today color"
+#~ msgstr "Boja zadataka čiji krajnji rok ističe danas:"
+
+#, fuzzy
+#~ msgid "Select the to-do due today color here."
+#~ msgstr "Boja zadataka čiji krajnji rok ističe danas:"
+
+#, fuzzy
+#~ msgid "To-do overdue color"
+#~ msgstr "Boja zadataka koji su probili krajnji rok:"
+
+#, fuzzy
+#~ msgid "Select the to-do overdue color here."
+#~ msgstr "Boja zadataka koji su probili krajnji rok:"
+
+#, fuzzy
+#~ msgid "Time bar"
+#~ msgstr "Vremenska zona:"
+
+#, fuzzy
+#~ msgid "Month view"
+#~ msgstr "Pregled mjeseca"
+
+#, fuzzy
+#~ msgid "Agenda view"
+#~ msgstr "Pregled događaja"
+
+#, fuzzy
+#~ msgid "Current-time line"
+#~ msgstr "Trenutni koordinator"
+
+#, fuzzy
+#~ msgid "Default todo attachment method"
+#~ msgstr "Uobičajeno vrijeme zakazanog termina:"
+
+#, fuzzy
+#~ msgid "Attach complete message"
+#~ msgstr "Privici"
+
+#, fuzzy
+#~ msgid "Highlight color"
+#~ msgstr "Boja osvjetljavanja"
+
+#, fuzzy
+#~ msgid "Month view background color"
+#~ msgstr "Pozadina kalendara"
+
+#, fuzzy
+#~ msgid "Select the Month view background color here."
+#~ msgstr "Pozadina kalendara"
+
+#, fuzzy
+#~ msgid "Select the working hours background color for the Month view here."
+#~ msgstr "Pozadina kalendara"
+
+#, fuzzy
+#~ msgid "Default event color"
+#~ msgstr "Uobičajena boja događaja:"
+
+#, fuzzy
+#~ msgid "Search"
+#~ msgstr "Traži u"
+
+#~ msgid "&New"
+#~ msgstr "&Novi"
+
+#, fuzzy
+#~ msgid "Filter Details"
+#~ msgstr "Filter je uključen"
+
+#, fuzzy
+#~| msgid "Name:"
+#~ msgctxt "filter name"
+#~ msgid "Name:"
+#~ msgstr "Ime:"
+
+#, fuzzy
+#~ msgid "Hide &recurring events and to-dos"
+#~ msgstr "Sakrij ponavljajuće događaje"
+
+#, fuzzy
+#~ msgid "Hide co&mpleted to-dos"
+#~ msgstr "Sakrij završene zadatke"
+
+#, fuzzy
+#~ msgid "Hide &inactive to-dos"
+#~ msgstr "Sakrij završene zadatke"
+
+#~ msgid "Categories"
+#~ msgstr "Kategorije"
+
+#, fuzzy
+#~ msgid "Show all except selected"
+#~ msgstr "Pokaži sve osim odabranih"
+
+#, fuzzy
+#~ msgid "Show only selected"
+#~ msgstr "Pokaži samo odabrane"
+
+#, fuzzy
+#~ msgid "Change..."
+#~ msgstr "&Promjeni"
+
+#, fuzzy
+#~ msgid "P&ublish"
+#~ msgstr "&Objavi"
+
+#, fuzzy
+#~ msgid ""
+#~ "By publishing Free/Busy information, you allow others to take your "
+#~ "calendar into account when inviting you for a meeting. Only the times you "
+#~ "have already busy are published, not why they are busy."
+#~ msgstr ""
+#~ "Objavljujući informaciju slobodno/zauzeto, omogućavate drugima da uzmu u "
+#~ "obzir vaš kalendar kada vas pozivaju na sastanak. Objavljuju se samo "
+#~ "vremena u koja ste zauzeti, a ne i zašto ste zauzeti."
+
+#, fuzzy
+#~ msgid "Publish your free/&busy information automatically"
+#~ msgstr "&Automatski objavi moju slobodno/zauzeto popis"
+
+#, fuzzy
+#~ msgid "days of free/busy information"
+#~ msgstr "dana slobodno/zauzeto informacija"
+
+#~ msgid "Server Information"
+#~ msgstr "Informacije o poslužitelju"
+
+#~ msgid "Password:"
+#~ msgstr "Lozinka:"
+
+#, fuzzy
+#~ msgctxt "login name on the Kolab server"
+#~ msgid "Username:"
+#~ msgstr "Ime korisnika:"
+
+#, fuzzy
+#~ msgid "Remember p&assword"
+#~ msgstr "&Zapamti lozinku"
+
+#, fuzzy
+#~ msgid "Server URL:"
+#~ msgstr "Adresa poslužitelja:"
+
+#, fuzzy
+#~ msgid "&Retrieve"
+#~ msgstr "&Dobavi"
+
+#, fuzzy
+#~ msgid ""
+#~ "By retrieving Free/Busy information that others have published, you can "
+#~ "take their calendar into account when inviting them to a meeting."
+#~ msgstr ""
+#~ "Dobavljanjem slobodno/zauzeto informacija koje su drugi objavili, možete "
+#~ "uzeti u obzir njihove kalendare kada ih pozivate na sastanak."
+
+#, fuzzy
+#~ msgid "Retrieve other people's free/&busy information automatically"
+#~ msgstr "Osobne informacije"
+
+#, fuzzy
+#~ msgid "User&name:"
+#~ msgstr "Ime korisnika:"
+
+#, fuzzy
+#~ msgid "Passwor&d:"
+#~ msgstr "Lozinka:"
+
+#~ msgid "Re&member password"
+#~ msgstr "&Zapamti lozinku"
+
+#~ msgid "&Search for:"
+#~ msgstr "Traži:"
+
+#, fuzzy
+#~ msgid "Search For"
+#~ msgstr "Potraži"
+
+#, fuzzy
+#~ msgid ""
+#~ "Check this box if you want to search for Event items that match the "
+#~ "search criteria."
+#~ msgstr "Pokaži sekunde na liniji Markusa Bejnsa"
+
+#~ msgid "&Events"
+#~ msgstr "&Događaji"
+
+#, fuzzy
+#~ msgid ""
+#~ "Check this box if you want to search for Journal items that match the "
+#~ "search criteria."
+#~ msgstr "Pokaži sekunde na liniji Markusa Bejnsa"
+
+#, fuzzy
+#~ msgid "&Journals"
+#~ msgstr "&Dnevnik"
+
+#, fuzzy
+#~ msgid ""
+#~ "Check this box if you want to search To-do items that match the search "
+#~ "criteria."
+#~ msgstr "Pokaži sekunde na liniji Markusa Bejnsa"
+
+#, fuzzy
+#~ msgid "To-&dos"
+#~ msgstr "Za&daci"
+
+#, fuzzy
+#~ msgid "Search In"
+#~ msgstr "Traži u"
+
+#, fuzzy
+#~ msgid ""
+#~ "Check this box if you want to match item categories against your search "
+#~ "pattern."
+#~ msgstr "Pokaži sekunde na liniji Markusa Bejnsa"
+
+#~ msgid "Cate&gories"
+#~ msgstr "&Kategorije"
+
+#, fuzzy
+#~ msgid ""
+#~ "Check this box if you want to match item locations against your search "
+#~ "pattern."
+#~ msgstr "Pokaži sekunde na liniji Markusa Bejnsa"
+
+#, fuzzy
+#~ msgid "Locations"
+#~ msgstr "&Lokacija:"
+
+#, fuzzy
+#~ msgid "Include item descriptions in your search"
+#~ msgstr "Opis:"
+
+#, fuzzy
+#~ msgid ""
+#~ "Check this box if you want to match item descriptions against your search "
+#~ "pattern."
+#~ msgstr "Pokaži sekunde na liniji Markusa Bejnsa"
+
+#~ msgid "Desc&riptions"
+#~ msgstr "&Opisi"
+
+#, fuzzy
+#~ msgid ""
+#~ "Check this box if you want to match item summaries against your search "
+#~ "pattern."
+#~ msgstr "Pokaži sekunde na liniji Markusa Bejnsa"
+
+#~ msgid "Su&mmaries"
+#~ msgstr "&Sažeci"
+
+#, fuzzy
+#~ msgid "Attendees"
+#~ msgstr "Sudionici"
+
+#, fuzzy
+#~ msgid "Include items with a starting date on or after this date"
+#~ msgstr "Obriši stare događaje"
+
+#~ msgid "&To:"
+#~ msgstr "&Za:"
+
+#, fuzzy
+#~ msgid "Include items with ending date on or before this date"
+#~ msgstr "Boja zadataka koji su probili krajnji rok:"
+
+#, fuzzy
+#~ msgid "Include To-dos in the search that do not have a due date"
+#~ msgstr "Uključi i zadatke bez &krajnjeg roka"
+
+#, fuzzy
+#~ msgid ""
+#~ "Check this box to include To-dos without a due date in the search results."
+#~ msgstr "Pokaži sekunde na liniji Markusa Bejnsa"
+
+#, fuzzy
+#~ msgid "Include To-dos &without a due date"
+#~ msgstr "Uključi i zadatke bez &krajnjeg roka"
+
+#, fuzzy
+#~| msgid "Location: "
+#~ msgctxt "Collection: name collectionId"
+#~ msgid "Collection: %1(%2)"
+#~ msgstr "Odmor:"
+
+#, fuzzy
+#~ msgid "Person: %1"
+#~ msgstr "Ponavlja"
+
+#, fuzzy
+#~| msgid "KMail"
+#~ msgid "Mail: %1"
+#~ msgstr "KMail"
+
+#, fuzzy
+#~ msgid "Organization Unit: %1"
+#~ msgstr "Organizator"
+
+#, fuzzy
+#~ msgid "Free/Busy calendar from %1"
+#~ msgstr "Obriši popis poslova"
+
+#, fuzzy
+#~| msgid "Day"
+#~ msgid "Day"
+#~ msgstr "Dan"
+
+#, fuzzy
+#~| msgid "Week"
+#~ msgid "Week"
+#~ msgstr "Tjedan"
+
+#, fuzzy
+#~| msgid "Month"
+#~ msgid "Month"
+#~ msgstr "Mjesec"
+
+#, fuzzy
+#~ msgid "Agenda"
+#~ msgstr "Pregled događaja"
+
+#, fuzzy
+#~ msgid "Agenda %1"
+#~ msgstr "Pregled događaja"
+
+#, fuzzy
+#~ msgid "Title"
+#~ msgstr "&Naslov:"
+
+#, fuzzy
+#~| msgid "New Calendar"
+#~ msgid "Selected Calendars"
+#~ msgstr "Novi kalendar"
+
+#, fuzzy
+#~ msgid "Scroll to week number %1"
+#~ msgstr "Štampaj brojeve &nedelja"
+
+#, fuzzy
+#~ msgid "%1"
+#~ msgstr "- %1"
+
+#, fuzzy
+#~| msgid "Calendar"
+#~ msgid "Calendar's custom icon"
+#~ msgstr "Kalendar"
+
+#, fuzzy
+#~ msgid "To-do"
+#~ msgstr "Zadatak:"
+
+#, fuzzy
+#~| msgid "&Journal"
+#~ msgid "Journal"
+#~ msgstr "&Dnevnik"
+
+#, fuzzy
+#~| msgid "Rec&urrence"
+#~ msgid "Recurring"
+#~ msgstr "&Ponavljanje"
+
+#, fuzzy
+#~ msgid "Alarm"
+#~ msgstr "Alarm"
+
+#, fuzzy
+#~| msgid "read-only"
+#~ msgid "Read Only"
+#~ msgstr "samo za čitanje"
+
+#, fuzzy
+#~| msgid "Atte&ndees"
+#~ msgid "Attending"
+#~ msgstr "&Sudionici"
+
+#, fuzzy
+#~| msgid "KOrganizer"
+#~ msgid "Organizer"
+#~ msgstr "KOrganizer"
+
+#, fuzzy
+#~ msgid "Select a month"
+#~ msgstr "Odaberite mjesec"
+
+#, fuzzy
+#~ msgid "Select a year"
+#~ msgstr "Odaberite mjesec"
+
+#, fuzzy
+#~ msgctxt "monthname"
+#~ msgid "%1"
+#~ msgstr "- %1"
+
+#, fuzzy
+#~ msgctxt "4 digit year"
+#~ msgid "%1"
+#~ msgstr "- %1"
+
+#, fuzzy
+#~ msgid "*.ics|iCalendars"
+#~ msgstr "*.ics|ICalendar-i"
+
+#, fuzzy
+#~ msgid "*.vcs|vCalendars"
+#~ msgstr "&Umetni postojeći kalendar"
+
+#, fuzzy
+#~ msgid "Enable scrollbars in month view cells"
+#~ msgstr "Aktiviraj klizače u ćelijama prikaza mjeseca"
+
+#, fuzzy
+#~ msgid ""
+#~ "<p>...that you can create hierarchical to-dos by clicking with the right "
+#~ "mouse button on an existing to-do and selecting <b>New Sub-to-do</b> from "
+#~ "the context menu?\n"
+#~ "</p>\n"
+#~ msgstr ""
+#~ "<p>...da možete napraviti hijerarhijske zadatke, desnim klikom na "
+#~ "postojeći\n"
+#~ "zadatak i odabirom opcije <b>Novi podzadatak</b> u kontekstnom "
+#~ "izborniku?\n"
+
+#, fuzzy
+#~ msgid "KOrgPlugins"
+#~ msgstr "KOrgPlugins"
+
+#, fuzzy
+#~ msgid "Import Calendar/Event"
+#~ msgstr "Uvezi kalendar"
+
+#, fuzzy
+#~ msgid "&Add as new calendar..."
+#~ msgstr "Novi kalendar"
+
+#, fuzzy
+#~ msgid "&Add as new calendar"
+#~ msgstr "Novi kalendar"
+
+#, fuzzy
+#~ msgid "*.vcs *.ics|Calendar Files"
+#~ msgstr "*.vcs *.ics|Kalendarski datoteke"
+
+#, fuzzy
+#~| msgid "New Calendar"
+#~ msgid "Select path for new calendar"
+#~ msgstr "Novi kalendar"
+
+#, fuzzy
+#~ msgid "Set Your Status"
+#~ msgstr "Postavite vaš status"
+
+#, fuzzy
+#~ msgid "Set your status"
+#~ msgstr "Postavite vaš status"
+
+#, fuzzy
+#~| msgid "Add..."
+#~ msgid "A&dd..."
+#~ msgstr "Dodaj..."
+
+#, fuzzy
+#~| msgid "&Edit..."
+#~ msgid "&Modify..."
+#~ msgstr "&Uredi …"
+
+#, fuzzy
+#~ msgid "R&emove"
+#~ msgstr "Uloga"
+
+#, fuzzy
+#~ msgid "Do you want to remove account '%1'?"
+#~ msgstr "<qt>Želite li zaista da obrišete resurs <b>%1</b>?</qt>"
+
+#, fuzzy
+#~ msgid "Remove account?"
+#~ msgstr "Privici"
+
+#~ msgid "Select Addresses"
+#~ msgstr "Izaberite adrese"
+
+#, fuzzy
+#~ msgid "(EmptyName)"
+#~ msgstr "(bez imena)"
+
+#, fuzzy
+#~ msgid "(EmptyEmail)"
+#~ msgstr "(bez e-adrese)"
+
+#, fuzzy
+#~ msgid "Add a new recipient"
+#~ msgstr "Kliknite da biste dodali novi zadatak"
+
+#, fuzzy
+#~ msgid "&Remove"
+#~ msgstr "&Dobavi"
+
+#, fuzzy
+#~| msgid "Select Addressee..."
+#~ msgid "&Select..."
+#~ msgstr "Odaberite primatelja..."
+
+#, fuzzy
+#~| msgid "Name:"
+#~ msgctxt "recipient name"
+#~ msgid "Name:"
+#~ msgstr "Ime:"
+
+#, fuzzy
+#~| msgid "Email:"
+#~ msgctxt "recipient email"
+#~ msgid "Email:"
+#~ msgstr "E-pošta:"
+
+#, fuzzy
+#~| msgid "Additional email address:"
+#~ msgid "The recipient's email address"
+#~ msgstr "Dodatna email adresa:"
+
+#~ msgid "Delete %1"
+#~ msgstr "Izbriši %1"
+
+#, fuzzy
+#~ msgid "Add %1"
+#~ msgstr "&Dodaj"
+
+#, fuzzy
+#~ msgid "Edit %1"
+#~ msgstr "Kraj:"
+
+#, fuzzy
+#~ msgid "&Month View"
+#~ msgstr "Pregled mjeseca"
+
+#, fuzzy
+#~ msgid ""
+#~ "KOrganizer successfully imported and merged your .calendar file from ical "
+#~ "into the currently opened calendar."
+#~ msgstr ""
+#~ "KOrganizer je uspješno uvezao i stopio vaš .calendar datoteka iz ical-a "
+#~ "sa trenutno otvorenim kalendarom."
+
+#, fuzzy
+#~ msgid "ICal Import Successful with Warning"
+#~ msgstr "Uspešan uvoz iz ICal-a, ali sa upozorenjem"
+
+#, fuzzy
+#~ msgid "New calendar '%1'."
+#~ msgstr "Snimio sam kalendar „%1“."
+
+#~ msgid "Cannot download calendar from '%1'."
+#~ msgstr "Ne mogu učitati kalendar '%1'."
+
+#, fuzzy
+#~ msgid "Merged calendar '%1'."
+#~ msgstr "Stopio sam kalendar „%1“."
+
+#, fuzzy
+#~ msgid "Opened calendar '%1'."
+#~ msgstr "Otvorio sam kalendar „%1“."
+
+#, fuzzy
+#~| msgid "Additional email addresses:"
+#~ msgctxt "@label"
+#~ msgid "Additional email addresses:"
+#~ msgstr "Dodatne email adrese:"
+
+#, fuzzy
+#~| msgid "Additional email address:"
+#~ msgctxt "@label"
+#~ msgid "Additional email address:"
+#~ msgstr "Dodatna email adresa:"
+
+#, fuzzy
+#~| msgid "New"
+#~ msgctxt "@action:button add a new email address"
+#~ msgid "New"
+#~ msgstr "Novi"
+
+#, fuzzy
+#~ msgctxt "@action:button"
+#~ msgid "Remove"
+#~ msgstr "Uloga"
+
+#, fuzzy
+#~ msgctxt "@label"
+#~ msgid "(EmptyEmail)"
+#~ msgstr "(bez e-adrese)"
+
+#, fuzzy
+#~ msgctxt "@title:group"
+#~ msgid "Print Plugins"
+#~ msgstr "Lista događaja"
+
+#, fuzzy
+#~ msgid "Also &Future Items"
+#~ msgstr "Obriši trenutne"
+
+#, fuzzy
+#~ msgid "Changing Recurring Item"
+#~ msgstr "Obveza se ponavlja"
+
+#, fuzzy
+#~ msgid "&All Occurrences"
+#~ msgstr "&ponavljanje(a)"
+
+#~ msgid "KOrganizer Reminder Daemon"
+#~ msgstr "Podsjetnik KOrganizer"
+
+#, fuzzy
+#~ msgctxt "@title:window"
+#~ msgid "Reminders"
+#~ msgstr "&Podsjetnik:"
+
+#, fuzzy
+#~ msgctxt "@action:button"
+#~ msgid "Dismiss Reminder"
+#~ msgstr "Dnevno"
+
+#, fuzzy
+#~ msgctxt "@action:button"
+#~ msgid "Dismiss All"
+#~ msgstr "Dnevno"
+
+#, fuzzy
+#~| msgid "Edit..."
+#~ msgctxt "@action:button"
+#~ msgid "Edit..."
+#~ msgstr "Uredi..."
+
+#, fuzzy
+#~| msgid "Suspend"
+#~ msgctxt "@action:button"
+#~ msgid "Suspend"
+#~ msgstr "Odgodi"
+
+#, fuzzy
+#~ msgctxt "@title:column reminder title"
+#~ msgid "Title"
+#~ msgstr "&Naslov:"
+
+#, fuzzy
+#~| msgid "Date && Time"
+#~ msgctxt "@title:column happens at date/time"
+#~ msgid "Date Time"
+#~ msgstr "Vrijeme krajnjeg roka"
+
+#, fuzzy
+#~ msgctxt "@title:column trigger date/time"
+#~ msgid "Trigger Time"
+#~ msgstr "Vrijeme krajnjeg roka"
+
+#, fuzzy
+#~ msgctxt "@info:tooltip"
+#~ msgid "The date/time the reminder was triggered"
+#~ msgstr "Uobičajeno vrijeme alarma:"
+
+#, fuzzy
+#~ msgctxt "@label:spinbox"
+#~ msgid "Suspend &duration:"
+#~ msgstr "Trajanje odgode (u minutama):"
+
+#, fuzzy
+#~| msgid "minute(s)"
+#~ msgctxt "@item:inlistbox suspend in terms of minutes"
+#~ msgid "minute(s)"
+#~ msgstr "minuta(e)"
+
+#, fuzzy
+#~| msgid "hour(s)"
+#~ msgctxt "@item:inlistbox suspend in terms of hours"
+#~ msgid "hour(s)"
+#~ msgstr "sat(i)"
+
+#, fuzzy
+#~| msgid "day(s)"
+#~ msgctxt "@item:inlistbox suspend in terms of days"
+#~ msgid "day(s)"
+#~ msgstr "dan(a)"
+
+#, fuzzy
+#~| msgid "week(s)"
+#~ msgctxt "@item:inlistbox suspend in terms of weeks"
+#~ msgid "week(s)"
+#~ msgstr "tjedan(a)"
+
+#, fuzzy
+#~| msgid "Edit..."
+#~ msgctxt "@label an elipsis"
+#~ msgid "..."
+#~ msgstr "Uredi..."
+
+#, fuzzy
+#~ msgctxt "@title"
+#~ msgid "Reminder"
+#~ msgstr "&Podsjetnik:"
+
+#, fuzzy
+#~ msgctxt "@title"
+#~ msgid "Reminder: %1"
+#~ msgstr "%1 minut"
+
+#, fuzzy
+#~ msgctxt "@info"
+#~ msgid "Could not start KOrganizer so editing is not possible."
+#~ msgstr "&Podesi KOrganizer..."
+
+#~ msgctxt "@title:window"
+#~ msgid "KOrganizer Reminder Daemon"
+#~ msgstr "Podsjetnik KOrganizer"
+
+#, fuzzy
+#~ msgctxt "@action:inmenu"
+#~ msgid "Suspend All Reminders"
+#~ msgstr "Odgodi"
+
+#, fuzzy
+#~ msgctxt "@action:inmenu"
+#~ msgid "Dismiss All Reminders"
+#~ msgstr "Dnevno"
+
+#, fuzzy
+#~ msgctxt "@action:inmenu"
+#~ msgid "Enable Reminders"
+#~ msgstr "Podsjetnik"
+
+#, fuzzy
+#~ msgctxt "@action:inmenu"
+#~ msgid "Start Reminder Daemon at Login"
+#~ msgstr "Pokreni alarmnog klijenta po prijavljivanju"
+
+#, fuzzy
+#~ msgctxt "@info:status"
+#~ msgid "There is 1 active reminder."
+#~ msgid_plural "There are %1 active reminders."
+#~ msgstr[0] "&Podsjetnik:"
+#~ msgstr[1] "&Podsjetnik:"
+#~ msgstr[2] "&Podsjetnik:"
+
+#, fuzzy
+#~ msgctxt "@info:status"
+#~ msgid "No active reminders."
+#~ msgstr "&Podsjetnik:"
+
+#, fuzzy
+#~ msgctxt "@title:window"
+#~ msgid "Close KOrganizer Reminder Daemon"
+#~ msgstr "Zatvori KOrganizer-ovog alarmnog demona"
+
+#, fuzzy
+#~ msgctxt "@action:button start the reminder daemon"
+#~ msgid "Start"
+#~ msgstr "&Započni:"
+
+#, fuzzy
+#~ msgctxt "@action:button do not start the reminder daemon"
+#~ msgid "Do Not Start"
+#~ msgstr "Centriraj na početku"
+
+#, fuzzy
+#~ msgid "Date && Time Range"
+#~ msgstr "Opseg datuma i vremena"
+
+#, fuzzy
+#~ msgid "&All journal entries"
+#~ msgstr "&Stavke dnevnika"
+
+#, fuzzy
+#~ msgid "Date &range:"
+#~ msgstr "Raspon datuma"
+
+#~ msgid "&Start date:"
+#~ msgstr "&Početni datum:"
+
+#~ msgid "&End date:"
+#~ msgstr "&Završni datum:"
+
+#, fuzzy
+#~ msgid "&To-dos"
+#~ msgstr "Za&daci"
+
+#, fuzzy
+#~ msgid "Yearly Print Options"
+#~ msgstr "&Opisi"
+
+#, fuzzy
+#~ msgid "Print &year:"
+#~ msgstr "Štampaj nedelju"
+
+#, fuzzy
+#~ msgid "Display Options"
+#~ msgstr "Dnevno"
+
+#, fuzzy
+#~ msgid "Time Boxes"
+#~ msgstr "Vremenska zona:"
+
+#~ msgid "Start &time:"
+#~ msgstr "&Vrijeme početka:"
+
+#~ msgid "End ti&me:"
+#~ msgstr "&Završno vrijeme:"
+
+#, fuzzy
+#~ msgid "E&xtend time range to include all events"
+#~ msgstr "Pro&duži vremenski opseg da uključi sve događaje"
+
+#, fuzzy
+#~ msgid "Print Layout"
+#~ msgstr "Štampaj dan"
+
+#, fuzzy
+#~ msgid "Print date range as &Filofax format, all on one page"
+#~ msgstr "Štampa sve događaje za jedan mjesec na jednoj stranici"
+
+#, fuzzy
+#~ msgid "Print as &timetable view, one page per day"
+#~ msgstr "Štampaj kao prikaz &vremenskog rasporeda:"
+
+#, fuzzy
+#~ msgid "Print as timetable view, all days on a single page"
+#~ msgstr "Štampaj kao prikaz &vremenskog rasporeda:"
+
+#, fuzzy
+#~ msgid "Exclude pri&vate"
+#~ msgstr "Izuzmi praznike"
+
+#, fuzzy
+#~ msgid "Include to-&dos that are due on the printed day(s)"
+#~ msgstr ""
+#~ "Uključi i popis za&dataka koje bi trebalo da završite odispisnog(ih) dana"
+
+#, fuzzy
+#~ msgid "Include &descriptions"
+#~ msgstr "Opis:"
+
+#, fuzzy
+#~| msgid "S&how time as:"
+#~ msgid "Show note &lines"
+#~ msgstr "&Pokaži vrijeme kao:"
+
+#, fuzzy
+#~ msgid "&Use colors"
+#~ msgstr "&Koristi boje"
+
+#, fuzzy
+#~ msgid "&Attendees"
+#~ msgstr "Sudionici"
+
+#, fuzzy
+#~ msgid "&Notes, subitems"
+#~ msgstr "Pokaži filter"
+
+#, fuzzy
+#~ msgid "Attach&ments"
+#~ msgstr "Privici"
+
+#, fuzzy
+#~ msgid "&Start month:"
+#~ msgstr "&Početni mjesec:"
+
+#, fuzzy
+#~ msgid "&End month:"
+#~ msgstr "Krajnji mjesec:"
+
+#, fuzzy
+#~ msgid "Print week &numbers"
+#~ msgstr "Štampaj brojeve &nedelja"
+
+#, fuzzy
+#~ msgid "Print daily re&curring to-dos and events"
+#~ msgstr "Sakrij ponavljajuće događaje"
+
+#, fuzzy
+#~ msgid "Print weekl&y recurring to-dos and events"
+#~ msgstr "Sakrij ponavljajuće događaje"
+
+#, fuzzy
+#~ msgid "To-dos to Print"
+#~ msgstr "Stavke za ispis"
+
+#, fuzzy
+#~ msgid "Print &all to-dos"
+#~ msgstr "Št&ampaj sve stavke zadataka"
+
+#, fuzzy
+#~ msgid "Print &unfinished to-dos only"
+#~ msgstr "Štampaj samo &nezavršene stavke"
+
+#, fuzzy
+#~ msgid "Print only to-dos due in the &range:"
+#~ msgstr "Štampaj samo stavke čiji je krajnji rok u pe&riodu:"
+
+#, fuzzy
+#~ msgid "&Description"
+#~ msgstr "Opis:"
+
+#, fuzzy
+#~ msgid "&Priority"
+#~ msgstr "&Prioritet:"
+
+#, fuzzy
+#~ msgid "Due date"
+#~ msgstr "Datumi krajnjih rokova"
+
+#, fuzzy
+#~ msgid "Per&centage completed"
+#~ msgstr "Završi"
+
+#, fuzzy
+#~ msgid "Other Options"
+#~ msgstr "&Opisi"
+
+#, fuzzy
+#~ msgid "Co&nnect sub-to-dos with its parent"
+#~ msgstr "Poveži &podzadatke sa njihovim roditeljem"
+
+#, fuzzy
+#~ msgid "Sort field:"
+#~ msgstr "Id. sortiranja"
+
+#, fuzzy
+#~ msgid "Sort direction:"
+#~ msgstr "Id. sortiranja"
+
+#, fuzzy
+#~ msgid "Print as &Filofax page"
+#~ msgstr "Štampaj &kao Filofax stranicu"
+
+#, fuzzy
+#~ msgid "Print as &timetable view"
+#~ msgstr "Štampaj kao prikaz &vremenskog rasporeda:"
+
+#, fuzzy
+#~ msgid "Print as split week view"
+#~ msgstr "Štampaj kao prikaz &vremenskog rasporeda:"
+
+#, fuzzy
+#~ msgid "Find Events - KOrganizer"
+#~ msgstr "Pronađi događaje"
+
+#, fuzzy
+#~ msgid "Journal entries"
+#~ msgstr "&Stavke dnevnika"
+
+#, fuzzy
+#~ msgid "Print &journal"
+#~ msgstr "&Dnevnik"
+
+#, fuzzy
+#~ msgid "Prints all journals for a given date range"
+#~ msgstr "Štampa sve događaje za jedan dan na jednoj stranici"
+
+#, fuzzy
+#~ msgid "Print list"
+#~ msgstr "Lista događaja"
+
+#, fuzzy
+#~ msgid "Print What's Next"
+#~ msgstr "Šta je &sljedeće?"
+
+#, fuzzy
+#~ msgid "Print &year"
+#~ msgstr "Štampaj nedelju"
+
+#, fuzzy
+#~ msgid "Prints a calendar for an entire year"
+#~ msgstr "Štampa sve događaje za jedan dan na jednoj stranici"
+
+#, fuzzy
+#~ msgctxt "date from - to"
+#~ msgid "%1 - %2"
+#~ msgstr "%1 - %2"
+
+#, fuzzy
+#~ msgctxt ""
+#~ "date from -\n"
+#~ "to"
+#~ msgid ""
+#~ "%1 -\n"
+#~ "%2"
+#~ msgstr "%1 - %2"
+
+#, fuzzy
+#~ msgid "Print &incidence"
+#~ msgstr "Štampaj nedelju"
+
+#, fuzzy
+#~ msgid "Prints an incidence on one page"
+#~ msgstr "Štampa sve događaje za jednu nedelju na jednoj stranici"
+
+#, fuzzy
+#~ msgid "Print da&y"
+#~ msgstr "Štampaj dan"
+
+#, fuzzy
+#~ msgid "Prints all events of a single day on one page"
+#~ msgstr "Štampa sve događaje za jedan dan na jednoj stranici"
+
+#, fuzzy
+#~ msgid "Print &week"
+#~ msgstr "Štampaj nedelju"
+
+#, fuzzy
+#~ msgid "Prints all events of one week on one page"
+#~ msgstr "Štampa sve događaje za jednu nedelju na jednoj stranici"
+
+#, fuzzy
+#~ msgid "Print mont&h"
+#~ msgstr "Štampaj mjesec"
+
+#, fuzzy
+#~ msgid "Prints all events of one month on one page"
+#~ msgstr "Štampa sve događaje za jedan mjesec na jednoj stranici"
+
+#, fuzzy
+#~ msgid "Print to-&dos"
+#~ msgstr "Štampaj „za uraditi“ popis"
+
+#, fuzzy
+#~ msgid "Prints all to-dos in a (tree-like) list"
+#~ msgstr "Štampa sve stavke „za uraditi“ liste u obliku stabla."
+
+#, fuzzy
+#~ msgid "Start date: "
+#~ msgstr "Početni datum:"
+
+#, fuzzy
+#~ msgid "End date: "
+#~ msgstr "Završni datum:"
+
+#~ msgid "Duration: "
+#~ msgstr "Trajanje: "
+
+#, fuzzy
+#~ msgid "1 hour "
+#~ msgid_plural "%1 hours "
+#~ msgstr[0] "%1 čas"
+#~ msgstr[1] "%1 časa"
+#~ msgstr[2] "%1 časova"
+
+#, fuzzy
+#~ msgid "1 minute "
+#~ msgid_plural "%1 minutes "
+#~ msgstr[0] "%1 minut"
+#~ msgstr[1] "%1 minuta"
+#~ msgstr[2] "%1 minuta"
+
+#, fuzzy
+#~ msgid "No end date"
+#~ msgstr "&Nema datuma kraja"
+
+#, fuzzy
+#~ msgid "Due date: "
+#~ msgstr "Datumi krajnjih rokova"
+
+#, fuzzy
+#~ msgid "No due date"
+#~ msgstr "Datumi krajnjih rokova"
+
+#, fuzzy
+#~| msgid "Accept"
+#~ msgctxt "except for listed dates"
+#~ msgid " except"
+#~ msgstr "Prihvati"
+
+#, fuzzy
+#~ msgid "Repeats: "
+#~ msgstr "Vrati &izvorno"
+
+#, fuzzy
+#~ msgid "Reminder: "
+#~ msgid_plural "%1 reminders: "
+#~ msgstr[0] "%1 minut"
+#~ msgstr[1] "%1 minuta"
+#~ msgstr[2] "%1 minuta"
+
+#, fuzzy
+#~ msgid "1 hour"
+#~ msgid_plural "%1 hours"
+#~ msgstr[0] "%1 čas"
+#~ msgstr[1] "%1 časa"
+#~ msgstr[2] "%1 časova"
+
+#, fuzzy
+#~ msgid "Organizer: "
+#~ msgstr "Organizator"
+
+#~ msgid "Location: "
+#~ msgstr "Odmor:"
+
+#, fuzzy
+#~ msgid "No Subitems"
+#~ msgstr "Pokaži filter"
+
+#, fuzzy
+#~ msgctxt "no status"
+#~ msgid "none"
+#~ msgstr "Naso"
+
+#, fuzzy
+#~| msgid "Unknown"
+#~ msgctxt "unknown status"
+#~ msgid "unknown"
+#~ msgstr "Napoznato"
+
+#, fuzzy
+#~ msgctxt "subitem start date"
+#~ msgid "Start Date: %1\n"
+#~ msgstr "Početni datum:"
+
+#, fuzzy
+#~| msgid "Start Time"
+#~ msgctxt "subitem start time"
+#~ msgid "Start Time: %1\n"
+#~ msgstr "Početno vrijeme"
+
+#, fuzzy
+#~ msgctxt "subitem due date"
+#~ msgid "Due Date: %1\n"
+#~ msgstr "Datumi krajnjih rokova"
+
+#, fuzzy
+#~ msgctxt "subitem due time"
+#~ msgid "Due Time: %1\n"
+#~ msgstr "Vremenska zona:"
+
+#, fuzzy
+#~ msgctxt "subitem counter"
+#~ msgid "%1: "
+#~ msgstr "- %1"
+
+#, fuzzy
+#~ msgctxt "subitem Status: statusString"
+#~ msgid "Status: %1\n"
+#~ msgstr "Početni datum"
+
+#, fuzzy
+#~ msgctxt "subitem Secrecy: secrecyString"
+#~ msgid "Secrecy: %1\n"
+#~ msgstr "Sažetak:"
+
+#, fuzzy
+#~ msgid "No Attachments"
+#~ msgstr "Privici"
+
+#, fuzzy
+#~ msgid "1 Attachment:"
+#~ msgid_plural "%1 Attachments:"
+#~ msgstr[0] "Privici"
+#~ msgstr[1] "Privici"
+#~ msgstr[2] "Privici"
+
+#, fuzzy
+#~ msgid "No Attendees"
+#~ msgstr "&Sudionici"
+
+#, fuzzy
+#~ msgid "1 Attendee:"
+#~ msgid_plural "%1 Attendees:"
+#~ msgstr[0] "%1 minut"
+#~ msgstr[1] "%1 minuta"
+#~ msgstr[2] "%1 minuta"
+
+#, fuzzy
+#~ msgid "Status: %1"
+#~ msgstr "Početni datum"
+
+#, fuzzy
+#~ msgid "Secrecy: %1"
+#~ msgstr "Sažetak:"
+
+#, fuzzy
+#~ msgid "Categories: "
+#~ msgstr "Kategorije"
+
+#, fuzzy
+#~ msgctxt "date from-to"
+#~ msgid "%1 - %2"
+#~ msgstr "%1 - %2"
+
+#, fuzzy
+#~ msgctxt ""
+#~ "date from-\n"
+#~ "to"
+#~ msgid ""
+#~ "%1 -\n"
+#~ "%2"
+#~ msgstr "%1 - %2"
+
+#, fuzzy
+#~ msgid "Today's Events"
+#~ msgstr "Pronađi događaje"
+
+#, fuzzy
+#~ msgctxt "summary, location"
+#~ msgid "%1, %2"
+#~ msgstr "%1 %2"
+
+#, fuzzy
+#~ msgctxt "date from - to (week number)"
+#~ msgid "%1 - %2 (Week %3)"
+#~ msgstr "%1 - %2"
+
+#, fuzzy
+#~ msgctxt ""
+#~ "date from -\n"
+#~ "to (week number)"
+#~ msgid ""
+#~ "%1 -\n"
+#~ "%2 (Week %3)"
+#~ msgstr "%1 - %2"
+
+#, fuzzy
+#~ msgctxt "@option sort by title"
+#~ msgid "Title"
+#~ msgstr "&Naslov:"
+
+#, fuzzy
+#~| msgid "Start Date"
+#~ msgctxt "@option sort by start date/time"
+#~ msgid "Start Date"
+#~ msgstr "Početni datum"
+
+#, fuzzy
+#~ msgctxt "@option sort by due date/time"
+#~ msgid "Due Date"
+#~ msgstr "Datumi krajnjih rokova"
+
+#, fuzzy
+#~| msgid "Priority"
+#~ msgctxt "@option sort by priority"
+#~ msgid "Priority"
+#~ msgstr "Prioritet"
+
+#, fuzzy
+#~ msgctxt "@option sort by percent completed"
+#~ msgid "Percent Complete"
+#~ msgstr "Završi"
+
+#, fuzzy
+#~ msgid "To-do list"
+#~ msgstr "Lista zadataka"
+
+#~ msgid "Priority"
+#~ msgstr "Prioritet"
+
+#, fuzzy
+#~ msgctxt "@label to-do summary"
+#~ msgid "Title"
+#~ msgstr "&Naslov:"
+
+#, fuzzy
+#~| msgid "Complete"
+#~ msgctxt "@label to-do percentage complete"
+#~ msgid "Complete"
+#~ msgstr "Završi"
+
+#, fuzzy
+#~ msgid "Print"
+#~ msgstr "Štampaj dan"
+
+#, fuzzy
+#~ msgid "Print Style"
+#~ msgstr "Lista događaja"
+
+#, fuzzy
+#~ msgid "Page &orientation:"
+#~ msgstr "&Orijentacija stranice:"
+
+#, fuzzy
+#~ msgid "Use Default Orientation of Selected Style"
+#~ msgstr "Koristi uobičajene postavke za odabrani stil"
+
+#, fuzzy
+#~ msgid "Portrait"
+#~ msgstr "Prioritet"
+
+#~ msgid "&Preview"
+#~ msgstr "&Pregled"
+
+#, fuzzy
+#~ msgid "This printing style does not have any configuration options."
+#~ msgstr "Ovaj stil štampe nema ni jednu podesivu opciju."
+
+#, fuzzy
+#~ msgctxt "starttime - endtime summary"
+#~ msgid "%1-%2 %3"
+#~ msgstr "%1 %3 %2"
+
+#, fuzzy
+#~ msgctxt "starttime - endtime summary, location"
+#~ msgid "%1-%2 %3, %4"
+#~ msgstr "%1 %3 %2"
+
+#, fuzzy
+#~ msgctxt "to-do summary (Due: datetime)"
+#~ msgid "%1 (Due: %2)"
+#~ msgstr "Vrijeme krajnjeg roka"
+
+#, fuzzy
+#~ msgctxt "to-do summary (Due: date)"
+#~ msgid "%1 (Due: %2)"
+#~ msgstr "Vrijeme krajnjeg roka"
+
+#, fuzzy
+#~ msgid "To-do: %1"
+#~ msgstr "Popis poslova: %1"
+
+#, fuzzy
+#~ msgid "%1%"
+#~ msgstr "- %1"
+
+#, fuzzy
+#~| msgid "%1 - %2"
+#~ msgctxt "Description - date"
+#~ msgid "%1 - %2"
+#~ msgstr "%1 - %2"
+
+#, fuzzy
+#~ msgid "KOrganizer Theming Stub"
+#~ msgstr "KOrganizer-ova proba vremenske zone"
+
+#, fuzzy
+#~ msgid "Edit this journal entry"
+#~ msgstr "Obriši stare događaje"
+
+#, fuzzy
+#~ msgid "Opens an editor dialog for this journal entry"
+#~ msgstr "Obriši stare događaje"
+
+#, fuzzy
+#~ msgid "Delete this journal entry"
+#~ msgstr "Obriši stare događaje"
+
+#, fuzzy
+#~ msgid "&Print"
+#~ msgstr "Štampaj dan"
+
+#, fuzzy
+#~ msgid "Print this journal entry"
+#~ msgstr "Obriši stare događaje"
+
+#, fuzzy
+#~ msgid "Opens a print dialog for this journal entry"
+#~ msgstr "Obriši stare događaje"
+
+#, fuzzy
+#~ msgid "Time Tracker"
+#~ msgstr "Vremenska zona:"
+
+#, fuzzy
+#~ msgctxt "Date from - to"
+#~ msgid "%1 - %2"
+#~ msgstr "%1 - %2"
+
+#, fuzzy
+#~ msgid "No category"
+#~ msgstr "Kategorije"
+
+#, fuzzy
+#~ msgctxt "number of hours spent"
+#~ msgid "%1 hour"
+#~ msgid_plural "%1 hours"
+#~ msgstr[0] "%1 čas"
+#~ msgstr[1] "%1 časa"
+#~ msgstr[2] "%1 časova"
+
+#, fuzzy
+#~ msgctxt "percent of hours spent"
+#~ msgid " (%1%)"
+#~ msgstr "Ponovi (%1)"
+
+#, fuzzy
+#~ msgctxt "@action:inmenu Unspecified priority"
+#~ msgid "unspecified"
+#~ msgstr "<nedefinirano>"
+
+#, fuzzy
+#~ msgctxt "@action:inmenu highest priority"
+#~ msgid "1 (highest)"
+#~ msgstr "1 (najviši)"
+
+#, fuzzy
+#~| msgid "2"
+#~ msgctxt "@action:inmenu"
+#~ msgid "2"
+#~ msgstr "2"
+
+#, fuzzy
+#~| msgid "3"
+#~ msgctxt "@action:inmenu"
+#~ msgid "3"
+#~ msgstr "3"
+
+#, fuzzy
+#~| msgid "4"
+#~ msgctxt "@action:inmenu"
+#~ msgid "4"
+#~ msgstr "4"
+
+#, fuzzy
+#~ msgctxt "@action:inmenu lowest priority"
+#~ msgid "9 (lowest)"
+#~ msgstr "5 (najniži)"
+
+#, fuzzy
+#~ msgid "Click to add a new to-do"
+#~ msgstr "Kliknite da biste dodali novi zadatak"
+
+#, fuzzy
+#~ msgctxt "Checkbox to display todos not hirarchical"
+#~ msgid "Flat View"
+#~ msgstr "Pregled mjeseca"
+
+#, fuzzy
+#~ msgid "&Make this To-do Independent"
+#~ msgstr "&Učini podzadatak nezavisnim"
+
+#, fuzzy
+#~ msgid "Make all Sub-to-dos &Independent"
+#~ msgstr "Učini podzadatak nezavisnim"
+
+#, fuzzy
+#~ msgid "&Move To"
+#~ msgstr "bez vremena"
+
+#, fuzzy
+#~ msgctxt "delete completed to-dos"
+#~ msgid "Pur&ge Completed"
+#~ msgstr "Obriši završene"
+
+#, fuzzy
+#~ msgctxt "unspecified priority"
+#~ msgid "unspecified"
+#~ msgstr "<nedefinirano>"
+
+#, fuzzy
+#~ msgctxt "highest priority"
+#~ msgid "1 (highest)"
+#~ msgstr "1 (najviši)"
+
+#~ msgid "2"
+#~ msgstr "2"
+
+#~ msgid "3"
+#~ msgstr "3"
+
+#~ msgid "4"
+#~ msgstr "4"
+
+#, fuzzy
+#~ msgctxt "lowest priority"
+#~ msgid "9 (lowest)"
+#~ msgstr "5 (najniži)"
+
+#, fuzzy
+#~ msgctxt "@label in QuickSearchLine"
+#~ msgid "Search"
+#~ msgstr "Traži u"
+
+#, fuzzy
+#~| msgid "Select Cate&gories..."
+#~ msgctxt "@item:inlistbox"
+#~ msgid "Select Categories"
+#~ msgstr "&Izabrane kategorije..."
+
+#, fuzzy
+#~ msgctxt "@item:intext delimiter for joining category names"
+#~ msgid ","
+#~ msgstr ", "
+
+#, fuzzy
+#~ msgctxt "no, not a recurring to-do"
+#~ msgid "No"
+#~ msgstr "Naso"
+
+#, fuzzy
+#~ msgctxt "delimiter for joining category names"
+#~ msgid ","
+#~ msgstr ", "
+
+#~ msgid "Summary"
+#~ msgstr "Sažetak"
+
+#~ msgid "Recurs"
+#~ msgstr "Ponavlja"
+
+#, fuzzy
+#~| msgid "Complete"
+#~ msgctxt "@title:column percent complete"
+#~ msgid "Complete"
+#~ msgstr "Završi"
+
+#, fuzzy
+#~ msgid "Due Date/Time"
+#~ msgstr "Vrijeme krajnjeg roka"
+
+#, fuzzy
+#~ msgid "Description"
+#~ msgstr "Opis:"
+
+#, fuzzy
+#~ msgid "Cannot move to-do to itself or a child of itself."
+#~ msgstr ""
+#~ "Zadatak ne može da se premjesti na samog sebe ili na svoj podzadatak."
+
+#, fuzzy
+#~ msgid "Drop To-do"
+#~ msgstr "Odustani od zadatka"
+
+#, fuzzy
+#~ msgid "What's Next?"
+#~ msgstr "Šta je &sljedeće?"
+
+#~ msgid "Events:"
+#~ msgstr "Nova obveza"
+
+#, fuzzy
+#~ msgid "To-do:"
+#~ msgstr "Zadatak:"
+
+#, fuzzy
+#~ msgid "Events and to-dos that need a reply:"
+#~ msgstr "Događaji i zadaci na koje je potrebno odgovoriti:"
+
+#, fuzzy
+#~ msgctxt "date, from - to"
+#~ msgid "%1, %2 - %3"
+#~ msgstr "%1 - %2"
+
+#, fuzzy
+#~ msgctxt "to-do due date"
+#~ msgid "  (Due: %1)"
+#~ msgstr "Vrijeme krajnjeg roka"
+
+#, fuzzy
+#~ msgid "Could not load calendar '%1'."
+#~ msgstr "Ne mogu učitati kalendar '%1'.\n"
+
+#, fuzzy
+#~ msgid "Filter Applied"
+#~ msgstr "Filter je uključen"
+
+#, fuzzy
+#~ msgid "Cut Only This"
+#~ msgstr "Obriši stare događaje"
+
+#, fuzzy
+#~ msgid "Copy Only This"
+#~ msgstr "Obriši stare događaje"
+
+#, fuzzy
+#~ msgctxt "@info"
+#~ msgid "Unable to purge to-dos with uncompleted children."
+#~ msgstr "Ne mogu da obrišem zadatke koji sadrže nezavršene podzadatke."
+
+#, fuzzy
+#~| msgid "Categories"
+#~ msgid "Edit Categories"
+#~ msgstr "Kategorije"
+
+#, fuzzy
+#~ msgid "New category entry"
+#~ msgstr "Kategorije"
+
+#, fuzzy
+#~| msgid "Select Cate&gories..."
+#~ msgid "Add the entry to the category list"
+#~ msgstr "&Izabrane kategorije..."
+
+#, fuzzy
+#~ msgid "Click this button to insert the entry into the category list."
+#~ msgstr "Pokaži sekunde na liniji Markusa Bejnsa"
+
+#, fuzzy
+#~| msgid "&Add"
+#~ msgid "A&dd"
+#~ msgstr "&Dodaj"
+
+#, fuzzy
+#~ msgid "Add &Subcategory"
+#~ msgstr "Kategorije"
+
+#, fuzzy
+#~ msgid "Remove the selected category"
+#~ msgstr "Privici"
+
+#, fuzzy
+#~ msgid ""
+#~ "Click this button to remove the selected category from the category list."
+#~ msgstr "Pokaži sekunde na liniji Markusa Bejnsa"
+
+#, fuzzy
+#~| msgid "Categories"
+#~ msgid "Category list"
+#~ msgstr "Kategorije"
+
+#, fuzzy
+#~| msgid "Select Cate&gories..."
+#~ msgid "Default Category"
+#~ msgstr "&Izabrane kategorije..."
+
+#, fuzzy
+#~ msgid "New category"
+#~ msgstr "Kategorije"
+
+#, fuzzy
+#~ msgid "New subcategory"
+#~ msgstr "Kategorije"
+
+#, fuzzy
+#~ msgid "Default Email Attachment Method"
+#~ msgstr "Uobičajeno vrijeme zakazanog termina:"
+
+#~ msgid "TestKabc"
+#~ msgstr "Provjeri Kabc"
+
+#, fuzzy
+#~ msgid "Select the working hours background color for the agenda view here."
+#~ msgstr "Pozadina kalendara"
+
+#, fuzzy
+#~ msgctxt "@title:window"
+#~ msgid "Archive/Delete Past Events and To-dos"
+#~ msgstr "Arhiviraj/Obriši stare sastanke"
+
+#, fuzzy
+#~| msgid "&Archive"
+#~ msgctxt "@action:button"
+#~ msgid "&Archive"
+#~ msgstr "&Arhiva"
+
+#, fuzzy
+#~ msgctxt "@info:whatsthis"
+#~ msgid ""
+#~ "Archiving saves old items into the given file and then deletes them in "
+#~ "the current calendar. If the archive file already exists they will be "
+#~ "added. (<link url=\"whatsthis:In order to add an archive to your "
+#~ "calendar, use the Merge Calendar function. You can view an archive by "
+#~ "opening it in KOrganizer like any other calendar. It is not saved in a "
+#~ "special format, but as vCalendar.\">How to restore</link>)"
+#~ msgstr ""
+#~ "Arhiviranjem se stari zakazani termini upisuju u navedeni datoteka, a "
+#~ "zatim se brišu iz trenutneg kalendara. Ako arhivski datoteka već postoji, "
+#~ "termini mu se dodaju. (<a href=\"whatsthis:Da biste dodali arhivu vašem "
+#~ "kalendaru, koristite funkciju &quot;Stopi kalendar&quot;. Arhivu možete "
+#~ "pogledati njenim otvaranjem u KOrganizer-u kao i bilo koji drugi "
+#~ "kalendar. Ne snima se u nekom posebnom formatu, već kao vCalendar.\">Kako "
+#~ "da povratite sastanke</a>)"
+
+#, fuzzy
+#~ msgctxt "@option:radio"
+#~ msgid "Archive now items older than:"
+#~ msgstr "&Sastanci stariji od:"
+
+#, fuzzy
+#~ msgctxt "@info:whatsthis"
+#~ msgid ""
+#~ "The date before which items should be archived. All older events and to-"
+#~ "dos will be saved and deleted, the newer (and events exactly on that "
+#~ "date) will be kept."
+#~ msgstr ""
+#~ "Starost zakazanih termina za arhiviranje. Svi stariji termini biti će "
+#~ "snimljeni u arhivu i obrisani, a noviji će biti zadržani."
+
+#, fuzzy
+#~ msgctxt "@option:radio"
+#~ msgid "Automaticall&y archive items older than:"
+#~ msgstr "&Sastanci stariji od:"
+
+#, fuzzy
+#~ msgctxt "@info:whatsthis"
+#~ msgid ""
+#~ "The age of the events and to-dos to archive. All older items will be "
+#~ "saved and deleted, the newer will be kept."
+#~ msgstr ""
+#~ "Starost zakazanih termina za arhiviranje. Svi stariji termini biti će "
+#~ "snimljeni u arhivu i obrisani, a noviji će biti zadržani."
+
+#, fuzzy
+#~ msgctxt "@item:inlistbox expires in daily units"
+#~ msgid "Day(s)"
+#~ msgstr "dan(a)"
+
+#, fuzzy
+#~ msgctxt "@item:inlistbox expiration in weekly units"
+#~ msgid "Week(s)"
+#~ msgstr "tjedan(a)"
+
+#, fuzzy
+#~ msgctxt "@item:inlistbox expiration in monthly units"
+#~ msgid "Month(s)"
+#~ msgstr "mjesec(i)"
+
+#, fuzzy
+#~| msgid "Archive &file:"
+#~ msgctxt "@label"
+#~ msgid "Archive &file:"
+#~ msgstr "&Arhiviraj datoteku:"
+
+#, fuzzy
+#~ msgctxt "@label filter for KUrlRequester"
+#~ msgid "*.ics|iCalendar Files"
+#~ msgstr "*.vcs|vCalendar-ski datoteke"
+
+#, fuzzy
+#~ msgctxt "@info:whatsthis"
+#~ msgid ""
+#~ "The path of the archive. The events and to-dos will be added to the "
+#~ "archive file, so any events that are already in the file will not be "
+#~ "modified or deleted. You can later load or merge the file like any other "
+#~ "calendar. It is not saved in a special format, it uses the iCalendar "
+#~ "format."
+#~ msgstr ""
+#~ "Putanja do arhive. Zakazani termini će biti dodavani u arhivski datoteka "
+#~ "tako da oni termini koji su već prisutni u datoteku neće biti mijenjani "
+#~ "ili brisani. Kasnije možete učitati ili stopiti datoteka kao bilo koji "
+#~ "drugi kalendar. Ne snima se u nekom posebnom formatu, već koristi "
+#~ "vCalendar-ski."
+
+#, fuzzy
+#~| msgid "&Events"
+#~ msgctxt "@option:check"
+#~ msgid "&Events"
+#~ msgstr "&Događaji"
+
+#, fuzzy
+#~ msgctxt "@option:check"
+#~ msgid "&To-dos"
+#~ msgstr "Za&daci"
+
+#, fuzzy
+#~ msgctxt "@option:check"
+#~ msgid "&Delete only, do not save"
+#~ msgstr "Samo &obriši, ne snimaj u arhivu"
+
+#, fuzzy
+#~ msgctxt "@info"
+#~ msgid "The archive file name is not valid."
+#~ msgstr "Ime arhivskog datotekaa nije ispravno.\n"
+
+#, fuzzy
+#~ msgid "In days"
+#~ msgstr "Štampaj dan"
+
+#, fuzzy
+#~ msgid "In weeks"
+#~ msgstr "tjedan(a)"
+
+#, fuzzy
+#~ msgid "In months"
+#~ msgstr "mjesec(i)"
+
+#, fuzzy
+#~ msgid "Archive events"
+#~ msgstr "Arhiviraj/Obriši stare sastanke"
+
+#, fuzzy
+#~ msgid "Archive to-dos"
+#~ msgstr "Št&ampaj sve stavke zadataka"
+
+#, fuzzy
+#~ msgid "Delete old events"
+#~ msgstr "Obriši stare događaje"
+
+#, fuzzy
+#~ msgid "There are no items before %1"
+#~ msgstr "Nema događajâ prije %1"
+
+#, fuzzy
+#~ msgid ""
+#~ "Delete all items before %1 without saving?\n"
+#~ "The following items will be deleted:"
+#~ msgstr ""
+#~ "Da li da obrišem sve događaje prije %1 bez spremanja?\n"
+#~ "Sljedeći događaji će biti obrisani:"
+
+#, fuzzy
+#~ msgid "Delete Old Items"
+#~ msgstr "Obriši stare događaje"
+
+#, fuzzy
+#~ msgid "Cannot write archive file %1. %2"
+#~ msgstr "Ne mogu da zapišem arhivski datoteka."
+
+#, fuzzy
+#~ msgid "Cannot write archive. %1"
+#~ msgstr "Ne mogu da zapišem arhivski datoteka."
+
+#, fuzzy
+#~ msgid "Reminder"
+#~ msgstr "&Podsjetnik:"
+
+#, fuzzy
+#~| msgid "Start Date"
+#~ msgid "Start Date/Time"
+#~ msgstr "Početni datum"
+
+#, fuzzy
+#~ msgid "End Date/Time"
+#~ msgstr "Vrijeme krajnjeg roka"
+
+#, fuzzy
+#~ msgid "No item selected."
+#~ msgstr "Nema odabranih provajdera."
+
+#, fuzzy
+#~ msgid "Publishing"
+#~ msgstr "&Objavi"
+
+#, fuzzy
+#~ msgid "Unable to publish the item '%1'"
+#~ msgstr "Ne mogu da nađem šablon „%1“."
+
+#, fuzzy
+#~| msgid "Go &Forward"
+#~ msgid "Forwarding"
+#~ msgstr "&Idi naprijed"
+
+#, fuzzy
+#~ msgid "Unable to forward the item '%1'"
+#~ msgstr "Ne mogu da nađem šablon „%1“."
+
+#, fuzzy
+#~| msgid "Go &Forward"
+#~ msgid "Forwarding Error"
+#~ msgstr "&Idi naprijed"
+
+#, fuzzy
+#~ msgid "The free/busy information was successfully sent."
+#~ msgstr "&Automatski objavi moju slobodno/zauzeto popis"
+
+#, fuzzy
+#~ msgid "Sending Free/Busy"
+#~ msgstr "Osobne informacije"
+
+#, fuzzy
+#~ msgid "Unable to publish the free/busy data."
+#~ msgstr "Osobne informacije"
+
+#, fuzzy
+#~ msgid "The item has no attendees."
+#~ msgstr "Događaj nema nikog prisutnog."
+
+#, fuzzy
+#~ msgid ""
+#~ "The groupware message for item '%1' was successfully sent.\n"
+#~ "Method: %2"
+#~ msgstr "&Automatski objavi moju slobodno/zauzeto popis"
+
+#, fuzzy
+#~| msgid "Go &Forward"
+#~ msgid "Go forward one week"
+#~ msgstr "&Idi naprijed"
+
+#, fuzzy
+#~ msgctxt "monthname year"
+#~ msgid "%1 %2"
+#~ msgstr "%1 %2"
+
+#, fuzzy
+#~ msgid "All Day"
+#~ msgstr "Dan"
+
+#, fuzzy
+#~ msgctxt "short_weekday date (e.g. Mon 13)"
+#~ msgid "%1 %2"
+#~ msgstr "%1 %2"
+
+#, fuzzy
+#~ msgid "Attendee added"
+#~ msgstr "Sudionici"
+
+#~ msgid "- %1"
+#~ msgstr "- %1"
+
+#, fuzzy
+#~ msgid "Split future recurrences"
+#~ msgstr "&Uključi ponavljanje"
+
+#, fuzzy
+#~ msgid "Timezone:"
+#~ msgstr "Vremenska zona:"
+
+#, fuzzy
+#~ msgid "&Add Timezones..."
+#~ msgstr "Uredi izuzetke"
+
+#, fuzzy
+#~ msgid "&Remove Timezone %1"
+#~ msgstr "Vremenska zona:"
+
+#, fuzzy
+#~ msgid "Timezone: %1"
+#~ msgstr "Vremenska zona:"
+
+#, fuzzy
+#~ msgid "Country Code: %1"
+#~ msgstr "&Dnevnik"
+
+#, fuzzy
+#~ msgid "Timezone"
+#~ msgstr "Vremenska zona:"
+
+#, fuzzy
+#~ msgid "Add Calendar..."
+#~ msgstr "&Umetni postojeći kalendar..."
+
+#, fuzzy
+#~ msgid "Reload"
+#~ msgstr "Otprema"
+
+#, fuzzy
+#~ msgid "Properties..."
+#~ msgstr "&Uredi..."
+
+#, fuzzy
+#~| msgid "New Calendar"
+#~ msgid "New Calendar..."
+#~ msgstr "Novi kalendar"
+
+#~ msgid "Start Time"
+#~ msgstr "Početno vrijeme"
+
+#~ msgid "End Date"
+#~ msgstr "Završni datum"
+
+#~ msgid "End Time"
+#~ msgstr "Vrijeme završetka"
+
+#, fuzzy
+#~ msgid "Locking Failed"
+#~ msgstr "Instalacija nije uspjela."
+
+#, fuzzy
+#~ msgid "Enable automatic saving of manually opened calendar files"
+#~ msgstr "Aktiviraj automatsko spremanje kalendara"
+
+#, fuzzy
+#~ msgctxt "@title:group"
+#~ msgid "Saving Calendar"
+#~ msgstr "Štampaj kalendar"
+
+#, fuzzy
+#~| msgid "&General"
+#~ msgctxt "@title:tab general to-do settings"
+#~ msgid "&General"
+#~ msgstr "&Općenito"
+
+#, fuzzy
+#~ msgctxt "@title:window"
+#~ msgid "New To-do"
+#~ msgstr "Novi popis poslova..."
+
+#, fuzzy
+#~ msgid "Sets the title of this journal."
+#~ msgstr "Obriši stare događaje"
+
+#, fuzzy
+#~| msgid "T&itle:"
+#~ msgctxt "journal title"
+#~ msgid "T&itle:"
+#~ msgstr "&Naslov:"
+
+#, fuzzy
+#~ msgid "&Date:"
+#~ msgstr "&Krajnji rok:"
+
+#, fuzzy
+#~ msgid "&Time: "
+#~ msgstr "Vrijeme krajnjeg roka"
+
+#~ msgid "Select Cate&gories..."
+#~ msgstr "&Izabrane kategorije …"
+
+#, fuzzy
+#~ msgid "Please specify a valid date, for example '%1'."
+#~ msgstr "Navedite ispravan datum kraja, na primjer „%1“."
+
+#, fuzzy
+#~ msgctxt "@info"
+#~ msgid "Please specify a journal title."
+#~ msgstr "Navedite ispravno vrijeme krajnjeg roka."
+
+#, fuzzy
+#~| msgid "General"
+#~ msgctxt "@title general journal settings"
+#~ msgid "General"
+#~ msgstr "Općenito"
+
+#, fuzzy
+#~ msgctxt "@title:window"
+#~ msgid "New Journal"
+#~ msgstr "&Dnevnik"
+
+#, fuzzy
+#~ msgctxt "@label attachment contains binary data"
+#~ msgid "[Binary data]"
+#~ msgstr "[Binarni podaci]"
+
+#, fuzzy
+#~ msgctxt "@label"
+#~ msgid "Attachment name"
+#~ msgstr "Privici"
+
+#, fuzzy
+#~ msgctxt "@info:tooltip"
+#~ msgid "Give the attachment a name"
+#~ msgstr "Privici"
+
+#, fuzzy
+#~ msgctxt "@label"
+#~ msgid "Type:"
+#~ msgstr "Vrijeme krajnjeg roka"
+
+#, fuzzy
+#~| msgid "Unknown"
+#~ msgctxt "@label unknown mimetype"
+#~ msgid "Unknown"
+#~ msgstr "Napoznato"
+
+#, fuzzy
+#~ msgctxt "@option:check"
+#~ msgid "Store attachment inline"
+#~ msgstr "Dodaj Privitak"
+
+#, fuzzy
+#~ msgctxt "@info:tooltip"
+#~ msgid "Store the attachment file inside the calendar"
+#~ msgstr "Dodaj Privitak"
+
+#, fuzzy
+#~ msgctxt "@label"
+#~ msgid "Location:"
+#~ msgstr "&Lokacija:"
+
+#, fuzzy
+#~ msgctxt "@label"
+#~ msgid "New attachment"
+#~ msgstr "Dodaj Privitak"
+
+#, fuzzy
+#~ msgctxt "@label"
+#~ msgid "Attachments:"
+#~ msgstr "Privici"
+
+#, fuzzy
+#~| msgid "Add Attachment"
+#~ msgctxt "@info:tooltip"
+#~ msgid "Add an attachment"
+#~ msgstr "Dodaj Privitak"
+
+#, fuzzy
+#~ msgctxt "@info:tooltip"
+#~ msgid "Remove the selected attachment"
+#~ msgstr "Privici"
+
+#, fuzzy
+#~ msgctxt "@action:inmenu remove the attachment"
+#~ msgid "&Remove"
+#~ msgstr "&Dobavi"
+
+#, fuzzy
+#~ msgctxt "@action:inmenu show a dialog used to edit the attachment"
+#~ msgid "&Properties..."
+#~ msgstr "&Uredi..."
+
+#, fuzzy
+#~ msgctxt "@action:inmenu"
+#~ msgid "C&ancel"
+#~ msgstr "&Promjeni"
+
+#, fuzzy
+#~| msgid "Add Attachment"
+#~ msgctxt "@title"
+#~ msgid "Add Attachment"
+#~ msgstr "Dodaj Privitak"
+
+#, fuzzy
+#~ msgctxt "@info"
+#~ msgid "Do you really want to remove the attachment labeled \"%1\"?"
+#~ msgstr "<qt>Želite li zaista da obrišete resurs <b>%1</b>?</qt>"
+
+#, fuzzy
+#~ msgctxt "@action:button"
+#~ msgid "Manage &Templates..."
+#~ msgstr "Spremi predložak"
+
+#, fuzzy
+#~| msgid "Calendar"
+#~ msgid "Calendar:"
+#~ msgstr "Kalendar"
+
+#, fuzzy
+#~ msgctxt "@title:window"
+#~ msgid "Edit %1: %2"
+#~ msgstr "Kraj:"
+
+#, fuzzy
+#~| msgid "KOrganizer Confirmation"
+#~ msgctxt "@title:window"
+#~ msgid "KOrganizer Confirmation"
+#~ msgstr "Korganizer: Potvrda"
+
+#, fuzzy
+#~| msgid "Atte&ndees"
+#~ msgctxt "@title:tab"
+#~ msgid "Atte&ndees"
+#~ msgstr "&Sudionici"
+
+#, fuzzy
+#~ msgctxt "@info"
+#~ msgid "Unable to find template '%1'."
+#~ msgstr "Ne mogu da nađem šablon „%1“."
+
+#, fuzzy
+#~ msgctxt "@info"
+#~ msgid "Error loading template file '%1'."
+#~ msgstr "Greška pri učitavanju datotekaa „%1“."
+
+#, fuzzy
+#~ msgctxt "@info"
+#~ msgid "Template does not contain a valid incidence."
+#~ msgstr "Šablon ne sadrži ispravan događaj."
+
+#, fuzzy
+#~ msgctxt "@action:button"
+#~ msgid "Create to-do"
+#~ msgstr "Kliknite da biste dodali novi zadatak"
+
+#, fuzzy
+#~ msgctxt "@title:window"
+#~ msgid "Counter proposal"
+#~ msgstr "&Dnevnik"
+
+#, fuzzy
+#~ msgctxt "@action:button"
+#~ msgid "Counter proposal"
+#~ msgstr "&Dnevnik"
+
+#, fuzzy
+#~| msgid "Name"
+#~ msgctxt "@title:column attendee name"
+#~ msgid "Name"
+#~ msgstr "Ime"
+
+#, fuzzy
+#~| msgid "Email"
+#~ msgctxt "@title:column attendee email"
+#~ msgid "Email"
+#~ msgstr "E-pošta"
+
+#, fuzzy
+#~| msgid "Role"
+#~ msgctxt "@title:column attendee role"
+#~ msgid "Role"
+#~ msgstr "Uloga"
+
+#, fuzzy
+#~| msgid "Status"
+#~ msgctxt "@title:column attendee status"
+#~ msgid "Status"
+#~ msgstr "Status"
+
+#, fuzzy
+#~| msgid "RSVP"
+#~ msgctxt "@title:column attendee has RSVPed?"
+#~ msgid "RSVP"
+#~ msgstr "RSVP"
+
+#, fuzzy
+#~ msgctxt "@title:column attendee delegated to"
+#~ msgid "Delegated To"
+#~ msgstr "Obriši %1"
+
+#, fuzzy
+#~ msgctxt "@title:column attendee delegated from"
+#~ msgid "Delegated From"
+#~ msgstr "Obriši popis poslova"
+
+#, fuzzy
+#~ msgctxt "@title"
+#~ msgid "Invalid Email Address"
+#~ msgstr "Dodatna email adresa:"
+
+#, fuzzy
+#~ msgid "Manage %1 Templates"
+#~ msgstr "Spremi predložak"
+
+#, fuzzy
+#~ msgid "Template Name"
+#~ msgstr "Spremi predložak"
+
+#, fuzzy
+#~ msgid "Please enter a name for the new template:"
+#~ msgstr "Ime rukovodioca"
+
+#, fuzzy
+#~ msgid "New %1 Template"
+#~ msgstr "Spremi predložak"
+
+#, fuzzy
+#~ msgid ""
+#~ "A template with that name already exists, do you want to overwrite it?"
+#~ msgstr "Datoteka „%1“ već postoji. Želite li da ga pregazite?"
+
+#, fuzzy
+#~ msgid "Duplicate Template Name"
+#~ msgstr "Spremi predložak"
+
+#~ msgid "Overwrite"
+#~ msgstr "Prebriši"
+
+#, fuzzy
+#~ msgid "Are you sure that you want to remove the template <b>%1</b>?"
+#~ msgstr "<qt>Želite li zaista da obrišete resurs <b>%1</b>?</qt>"
+
+#, fuzzy
+#~ msgid "Remove"
+#~ msgstr "Uloga"
+
+#, fuzzy
+#~ msgctxt "@label"
+#~ msgid "Identity as organizer:"
+#~ msgstr "Pronađi događaje"
+
+#, fuzzy
+#~| msgid "Na&me:"
+#~ msgctxt "@label attendee's name"
+#~ msgid "Na&me:"
+#~ msgstr "Ime:"
+
+#, fuzzy
+#~ msgctxt "@label"
+#~ msgid "Click to add a new attendee"
+#~ msgstr "Kliknite da biste dodali novi zadatak"
+
+#, fuzzy
+#~| msgid "Ro&le:"
+#~ msgctxt "@label"
+#~ msgid "Ro&le:"
+#~ msgstr "&Uloga:"
+
+#, fuzzy
+#~ msgctxt "@info:tooltip"
+#~ msgid "Select the attendee participation role"
+#~ msgstr "Pozadina kalendara"
+
+#, fuzzy
+#~| msgid "Stat&us:"
+#~ msgctxt "@label"
+#~ msgid "Stat&us:"
+#~ msgstr "&Stanje:"
+
+#, fuzzy
+#~ msgctxt "@info:tooltip"
+#~ msgid "Request a response from the attendee"
+#~ msgstr "&Zahtjevaj odgovor"
+
+#, fuzzy
+#~ msgctxt "@option:check"
+#~ msgid "Re&quest response"
+#~ msgstr "&Zahtjevaj odgovor"
+
+#, fuzzy
+#~| msgid "&New"
+#~ msgctxt "@action:button new attendee"
+#~ msgid "&New"
+#~ msgstr "&Novi"
+
+#, fuzzy
+#~ msgctxt "@info:tooltip"
+#~ msgid "Add an attendee"
+#~ msgstr "%1 minut"
+
+#, fuzzy
+#~ msgctxt "@action:button"
+#~ msgid "&Remove"
+#~ msgstr "&Dobavi"
+
+#, fuzzy
+#~| msgid "Select Addressee..."
+#~ msgctxt "@action:button"
+#~ msgid "Select Addressee..."
+#~ msgstr "Odaberite primatelja..."
+
+#, fuzzy
+#~ msgctxt "@item:intext sample attendee email name"
+#~ msgid "name"
+#~ msgstr "Ime"
+
+#, fuzzy
+#~| msgid "Select Cate&gories..."
+#~ msgctxt "@info:tooltip"
+#~ msgid "Select the organizer"
+#~ msgstr "&Izabrane kategorije..."
+
+#, fuzzy
+#~ msgctxt "@info:whatsthis"
+#~ msgid "Select the identity to use as the organizer for this incidence."
+#~ msgstr "Boja zadataka koji su probili krajnji rok:"
+
+#, fuzzy
+#~ msgctxt "@label"
+#~ msgid "Delegated to %1"
+#~ msgstr "Obriši %1"
+
+#, fuzzy
+#~ msgctxt "@label"
+#~ msgid "Not delegated"
+#~ msgstr "Nema odabranih provajdera."
+
+#, fuzzy
+#~| msgid "1st"
+#~ msgctxt "@item:inlistbox"
+#~ msgid "1st"
+#~ msgstr "1."
+
+#, fuzzy
+#~| msgid "2nd"
+#~ msgctxt "@item:inlistbox"
+#~ msgid "2nd"
+#~ msgstr "2."
+
+#, fuzzy
+#~| msgid "3rd"
+#~ msgctxt "@item:inlistbox"
+#~ msgid "3rd"
+#~ msgstr "3."
+
+#, fuzzy
+#~| msgid "4th"
+#~ msgctxt "@item:inlistbox"
+#~ msgid "4th"
+#~ msgstr "4."
+
+#, fuzzy
+#~| msgid "5th"
+#~ msgctxt "@item:inlistbox"
+#~ msgid "5th"
+#~ msgstr "5."
+
+#, fuzzy
+#~| msgid "Last"
+#~ msgctxt "@item:inlistbox last week of the month"
+#~ msgid "Last"
+#~ msgstr "Zadnji"
+
+#, fuzzy
+#~| msgid "2nd Last"
+#~ msgctxt "@item:inlistbox"
+#~ msgid "2nd Last"
+#~ msgstr "Završni datum"
+
+#, fuzzy
+#~| msgid "3rd Last"
+#~ msgctxt "@item:inlistbox"
+#~ msgid "3rd Last"
+#~ msgstr "treći prije posljednjeg"
+
+#, fuzzy
+#~| msgid "4th Last"
+#~ msgctxt "@item:inlistbox"
+#~ msgid "4th Last"
+#~ msgstr "četvrti prije posljednjeg"
+
+#, fuzzy
+#~| msgid "5th Last"
+#~ msgctxt "@item:inlistbox"
+#~ msgid "5th Last"
+#~ msgstr "peti prije posljednjeg"
+
+#, fuzzy
+#~| msgid "&Recur every"
+#~ msgctxt "@label"
+#~ msgid "&Recur every"
+#~ msgstr "&Ponovi svaka"
+
+#, fuzzy
+#~| msgid "day(s)"
+#~ msgctxt "@label recurrence expressed in days"
+#~ msgid "day(s)"
+#~ msgstr "dan(a)"
+
+#, fuzzy
+#~| msgid "week(s) on:"
+#~ msgctxt "@label"
+#~ msgid "week(s) on:"
+#~ msgstr "tjedan(a) na dan(e):"
+
+#, fuzzy
+#~| msgid "&Recur on the"
+#~ msgctxt "@info:tooltip"
+#~ msgid "Recur on %1"
+#~ msgstr "&Ponovi"
+
+#, fuzzy
+#~| msgid "month(s)"
+#~ msgctxt "@label"
+#~ msgid "month(s)"
+#~ msgstr "mjesec(i)"
+
+#, fuzzy
+#~| msgid "&Recur on the"
+#~ msgctxt "@option:radio"
+#~ msgid "&Recur on the"
+#~ msgstr "&Ponovi"
+
+#, fuzzy
+#~| msgid "6th"
+#~ msgctxt "@item:inlistbox"
+#~ msgid "6th"
+#~ msgstr "6."
+
+#, fuzzy
+#~| msgid "7th"
+#~ msgctxt "@item:inlistbox"
+#~ msgid "7th"
+#~ msgstr "7."
+
+#, fuzzy
+#~| msgid "8th"
+#~ msgctxt "@item:inlistbox"
+#~ msgid "8th"
+#~ msgstr "8."
+
+#, fuzzy
+#~| msgid "9th"
+#~ msgctxt "@item:inlistbox"
+#~ msgid "9th"
+#~ msgstr "9."
+
+#, fuzzy
+#~| msgid "10th"
+#~ msgctxt "@item:inlistbox"
+#~ msgid "10th"
+#~ msgstr "10."
+
+#, fuzzy
+#~| msgid "11th"
+#~ msgctxt "@item:inlistbox"
+#~ msgid "11th"
+#~ msgstr "11."
+
+#, fuzzy
+#~| msgid "12th"
+#~ msgctxt "@item:inlistbox"
+#~ msgid "12th"
+#~ msgstr "12."
+
+#, fuzzy
+#~| msgid "13th"
+#~ msgctxt "@item:inlistbox"
+#~ msgid "13th"
+#~ msgstr "13."
+
+#, fuzzy
+#~| msgid "14th"
+#~ msgctxt "@item:inlistbox"
+#~ msgid "14th"
+#~ msgstr "14og"
+
+#, fuzzy
+#~| msgid "15th"
+#~ msgctxt "@item:inlistbox"
+#~ msgid "15th"
+#~ msgstr "15og"
+
+#, fuzzy
+#~| msgid "16th"
+#~ msgctxt "@item:inlistbox"
+#~ msgid "16th"
+#~ msgstr "16."
+
+#, fuzzy
+#~| msgid "17th"
+#~ msgctxt "@item:inlistbox"
+#~ msgid "17th"
+#~ msgstr "17."
+
+#, fuzzy
+#~| msgid "18th"
+#~ msgctxt "@item:inlistbox"
+#~ msgid "18th"
+#~ msgstr "18."
+
+#, fuzzy
+#~| msgid "19th"
+#~ msgctxt "@item:inlistbox"
+#~ msgid "19th"
+#~ msgstr "19."
+
+#, fuzzy
+#~| msgid "20th"
+#~ msgctxt "@item:inlistbox"
+#~ msgid "20th"
+#~ msgstr "20og"
+
+#, fuzzy
+#~| msgid "21st"
+#~ msgctxt "@item:inlistbox"
+#~ msgid "21st"
+#~ msgstr "21og"
+
+#, fuzzy
+#~| msgid "22nd"
+#~ msgctxt "@item:inlistbox"
+#~ msgid "22nd"
+#~ msgstr "22."
+
+#, fuzzy
+#~| msgid "23rd"
+#~ msgctxt "@item:inlistbox"
+#~ msgid "23rd"
+#~ msgstr "23."
+
+#, fuzzy
+#~| msgid "24th"
+#~ msgctxt "@item:inlistbox"
+#~ msgid "24th"
+#~ msgstr "24."
+
+#, fuzzy
+#~| msgid "25th"
+#~ msgctxt "@item:inlistbox"
+#~ msgid "25th"
+#~ msgstr "25."
+
+#, fuzzy
+#~| msgid "26th"
+#~ msgctxt "@item:inlistbox"
+#~ msgid "26th"
+#~ msgstr "26."
+
+#, fuzzy
+#~| msgid "27th"
+#~ msgctxt "@item:inlistbox"
+#~ msgid "27th"
+#~ msgstr "27."
+
+#, fuzzy
+#~| msgid "28th"
+#~ msgctxt "@item:inlistbox"
+#~ msgid "28th"
+#~ msgstr "28."
+
+#, fuzzy
+#~| msgid "29th"
+#~ msgctxt "@item:inlistbox"
+#~ msgid "29th"
+#~ msgstr "29."
+
+#, fuzzy
+#~| msgid "30th"
+#~ msgctxt "@item:inlistbox"
+#~ msgid "30th"
+#~ msgstr "30."
+
+#, fuzzy
+#~| msgid "31st"
+#~ msgctxt "@item:inlistbox"
+#~ msgid "31st"
+#~ msgstr "31."
+
+#, fuzzy
+#~| msgid "Last"
+#~ msgctxt "@item:inlistbox last day of the month"
+#~ msgid "Last"
+#~ msgstr "Zadnji"
+
+#, fuzzy
+#~ msgctxt "@item:inlistbox"
+#~ msgid "6th Last"
+#~ msgstr "četvrti prije posljednjeg"
+
+#, fuzzy
+#~ msgctxt "@item:inlistbox"
+#~ msgid "7th Last"
+#~ msgstr "četvrti prije posljednjeg"
+
+#, fuzzy
+#~ msgctxt "@item:inlistbox"
+#~ msgid "8th Last"
+#~ msgstr "četvrti prije posljednjeg"
+
+#, fuzzy
+#~ msgctxt "@item:inlistbox"
+#~ msgid "9th Last"
+#~ msgstr "četvrti prije posljednjeg"
+
+#, fuzzy
+#~ msgctxt "@item:inlistbox"
+#~ msgid "10th Last"
+#~ msgstr "četvrti prije posljednjeg"
+
+#, fuzzy
+#~ msgctxt "@item:inlistbox"
+#~ msgid "11th Last"
+#~ msgstr "četvrti prije posljednjeg"
+
+#, fuzzy
+#~ msgctxt "@item:inlistbox"
+#~ msgid "12th Last"
+#~ msgstr "četvrti prije posljednjeg"
+
+#, fuzzy
+#~ msgctxt "@item:inlistbox"
+#~ msgid "13th Last"
+#~ msgstr "četvrti prije posljednjeg"
+
+#, fuzzy
+#~ msgctxt "@item:inlistbox"
+#~ msgid "14th Last"
+#~ msgstr "četvrti prije posljednjeg"
+
+#, fuzzy
+#~ msgctxt "@item:inlistbox"
+#~ msgid "15th Last"
+#~ msgstr "peti prije posljednjeg"
+
+#, fuzzy
+#~ msgctxt "@item:inlistbox"
+#~ msgid "16th Last"
+#~ msgstr "četvrti prije posljednjeg"
+
+#, fuzzy
+#~ msgctxt "@item:inlistbox"
+#~ msgid "17th Last"
+#~ msgstr "četvrti prije posljednjeg"
+
+#, fuzzy
+#~ msgctxt "@item:inlistbox"
+#~ msgid "18th Last"
+#~ msgstr "četvrti prije posljednjeg"
+
+#, fuzzy
+#~ msgctxt "@item:inlistbox"
+#~ msgid "19th Last"
+#~ msgstr "četvrti prije posljednjeg"
+
+#, fuzzy
+#~ msgctxt "@item:inlistbox"
+#~ msgid "20th Last"
+#~ msgstr "četvrti prije posljednjeg"
+
+#, fuzzy
+#~ msgctxt "@item:inlistbox"
+#~ msgid "21st Last"
+#~ msgstr "Završni datum"
+
+#, fuzzy
+#~ msgctxt "@item:inlistbox"
+#~ msgid "22nd Last"
+#~ msgstr "Završni datum"
+
+#, fuzzy
+#~ msgctxt "@item:inlistbox"
+#~ msgid "23rd Last"
+#~ msgstr "treći prije posljednjeg"
+
+#, fuzzy
+#~ msgctxt "@item:inlistbox"
+#~ msgid "24th Last"
+#~ msgstr "četvrti prije posljednjeg"
+
+#, fuzzy
+#~ msgctxt "@item:inlistbox"
+#~ msgid "25th Last"
+#~ msgstr "peti prije posljednjeg"
+
+#, fuzzy
+#~ msgctxt "@item:inlistbox"
+#~ msgid "26th Last"
+#~ msgstr "četvrti prije posljednjeg"
+
+#, fuzzy
+#~ msgctxt "@item:inlistbox"
+#~ msgid "27th Last"
+#~ msgstr "četvrti prije posljednjeg"
+
+#, fuzzy
+#~ msgctxt "@item:inlistbox"
+#~ msgid "28th Last"
+#~ msgstr "četvrti prije posljednjeg"
+
+#, fuzzy
+#~ msgctxt "@item:inlistbox"
+#~ msgid "29th Last"
+#~ msgstr "četvrti prije posljednjeg"
+
+#, fuzzy
+#~ msgctxt "@item:inlistbox"
+#~ msgid "30th Last"
+#~ msgstr "četvrti prije posljednjeg"
+
+#, fuzzy
+#~ msgctxt "@item:inlistbox"
+#~ msgid "31st Last"
+#~ msgstr "treći prije posljednjeg"
+
+#, fuzzy
+#~| msgid "day"
+#~ msgctxt "@label"
+#~ msgid "day"
+#~ msgstr "dan"
+
+#, fuzzy
+#~| msgid "year(s)"
+#~ msgctxt "@label"
+#~ msgid "year(s)"
+#~ msgstr "godina(e)"
+
+#, fuzzy
+#~ msgctxt "@option:radio part before XXX of 'Recur on day XXX of month YYY'"
+#~ msgid "&Recur on day "
+#~ msgstr "&Ponovi na ovaj dan"
+
+#, fuzzy
+#~| msgid "&Month"
+#~ msgctxt "@option:radio Part before XXX in 'Recur on NNN. WEEKDAY of MONTH'"
+#~ msgid "&On the"
+#~ msgstr "&Mjesec"
+
+#, fuzzy
+#~ msgctxt "@option:radio"
+#~ msgid "Recur on &day #"
+#~ msgstr "&Ponovi na ovaj dan"
+
+#, fuzzy
+#~| msgid "E&xceptions"
+#~ msgctxt "@title:group"
+#~ msgid "E&xceptions"
+#~ msgstr "Izuzetci"
+
+#, fuzzy
+#~| msgid "&Add"
+#~ msgctxt "@action:button"
+#~ msgid "&Add"
+#~ msgstr "&Dodaj"
+
+#, fuzzy
+#~| msgid "&Change"
+#~ msgctxt "@action:button"
+#~ msgid "&Change"
+#~ msgstr "&Promjeni"
+
+#, fuzzy
+#~ msgctxt "@action:button"
+#~ msgid "&Delete"
+#~ msgstr "Obriši %1"
+
+#, fuzzy
+#~ msgctxt "@title:window"
+#~ msgid "Edit Exceptions"
+#~ msgstr "Uredi izuzetke"
+
+#, fuzzy
+#~| msgid "Recurrence Range"
+#~ msgctxt "@title:group"
+#~ msgid "Recurrence Range"
+#~ msgstr "Raspon ponavljanja"
+
+#, fuzzy
+#~| msgid "Begin on:"
+#~ msgctxt "@label"
+#~ msgid "Begin on:"
+#~ msgstr "Počni od:"
+
+#, fuzzy
+#~ msgctxt "@option radio"
+#~ msgid "&No ending date"
+#~ msgstr "&Nema datuma kraja"
+
+#, fuzzy
+#~| msgid "End &after"
+#~ msgctxt "@option:radio"
+#~ msgid "End &after"
+#~ msgstr "&Završi nakon"
+
+#, fuzzy
+#~| msgid "&occurrence(s)"
+#~ msgctxt "@label"
+#~ msgid "&occurrence(s)"
+#~ msgstr "&ponavljanje(a)"
+
+#, fuzzy
+#~ msgctxt "@option:radio"
+#~ msgid "End &on:"
+#~ msgstr "&Završi do:"
+
+#, fuzzy
+#~ msgctxt "@label"
+#~ msgid "Begins on: %1"
+#~ msgstr "Počni:"
+
+#, fuzzy
+#~ msgctxt "@title:window"
+#~ msgid "Edit Recurrence Range"
+#~ msgstr "Uredi opseg ponavljanja"
+
+#, fuzzy
+#~ msgctxt "@title:group"
+#~ msgid "Recurrence Types"
+#~ msgstr "&Ponavljanje"
+
+#, fuzzy
+#~| msgid "&Daily"
+#~ msgctxt "@option:radio recur daily"
+#~ msgid "&Daily"
+#~ msgstr "&Dnevno"
+
+#, fuzzy
+#~| msgid "&Weekly"
+#~ msgctxt "@option:radio recur weekly"
+#~ msgid "&Weekly"
+#~ msgstr "&Tjedno"
+
+#, fuzzy
+#~| msgid "&Monthly"
+#~ msgctxt "@option:radio recur monthly"
+#~ msgid "&Monthly"
+#~ msgstr "&Mjesečno"
+
+#, fuzzy
+#~| msgid "&Yearly"
+#~ msgctxt "@option:radio recur yearly"
+#~ msgid "&Yearly"
+#~ msgstr "&Godišnje"
+
+#, fuzzy
+#~ msgctxt "@option:check"
+#~ msgid "&Enable recurrence"
+#~ msgstr "&Uključi ponavljanje"
+
+#, fuzzy
+#~| msgid "Appointment Time "
+#~ msgctxt "@title:group"
+#~ msgid "Appointment Time "
+#~ msgstr "Vrijeme obveze"
+
+#, fuzzy
+#~ msgctxt "@info:whatsthis"
+#~ msgid "Displays appointment time information."
+#~ msgstr "Uobičajeno vrijeme zakazanog termina:"
+
+#, fuzzy
+#~| msgid "Recurrence Rule"
+#~ msgctxt "@title:group"
+#~ msgid "Recurrence Rule"
+#~ msgstr "Pravilo ponavljanja"
+
+#~ msgid "Date && Time"
+#~ msgstr "Vrijeme krajnjeg roka"
+
+#, fuzzy
+#~| msgid "Sta&rt:"
+#~ msgctxt "@option:check to-do start datetime"
+#~ msgid "Sta&rt:"
+#~ msgstr "&Započni:"
+
+#, fuzzy
+#~| msgid "&Due:"
+#~ msgctxt "to-do due datetime"
+#~ msgid "&Due:"
+#~ msgstr "&Krajnji rok:"
+
+#, fuzzy
+#~ msgid "Ti&me associated"
+#~ msgstr "P&ridruženo vrijeme"
+
+#, fuzzy
+#~| msgid "Rec&urrence"
+#~ msgctxt "@label"
+#~ msgid "Recurrence:"
+#~ msgstr "&Ponavljanje"
+
+#, fuzzy
+#~| msgid "co&mpleted"
+#~ msgctxt "to-do completed"
+#~ msgid "co&mpleted"
+#~ msgstr "&završeno"
+
+#~ msgid "&Priority:"
+#~ msgstr "&Prioritet:"
+
+#, fuzzy
+#~ msgid "Please specify a valid due date."
+#~ msgstr "Navedite ispravan datum krajnjeg roka."
+
+#, fuzzy
+#~ msgid "Please specify a valid due time."
+#~ msgstr "Navedite ispravno vrijeme krajnjeg roka."
+
+#, fuzzy
+#~ msgid "Please specify a valid start date."
+#~ msgstr "Navedite ispravan datum početka."
+
+#, fuzzy
+#~ msgid "Please specify a valid start time."
+#~ msgstr "Navedite ispravno vrijeme početka."
+
+#, fuzzy
+#~ msgid "The start date cannot be after the due date."
+#~ msgstr "Datum početka ne može prethoditi datumu krajnjeg roka."
+
+#, fuzzy
+#~ msgctxt "to-do start datetime"
+#~ msgid "Start: %1"
+#~ msgstr "Početni datum"
+
+#, fuzzy
+#~ msgctxt "to-do due datetime"
+#~ msgid "   Due: %1"
+#~ msgstr "Vrijeme krajnjeg roka"
+
+#, fuzzy
+#~ msgctxt "to-do completed on datetime"
+#~ msgid "co&mpleted on"
+#~ msgstr "&Završeno"
+
+#, fuzzy
+#~ msgctxt "@info:whatsthis"
+#~ msgid "Sets the Title of this event or to-do."
+#~ msgstr "Obriši stare događaje"
+
+#, fuzzy
+#~ msgctxt "@info:tooltip"
+#~ msgid "Set the title"
+#~ msgstr "Uobičajeno vrijeme alarma:"
+
+#, fuzzy
+#~| msgid "T&itle:"
+#~ msgctxt "@label event or to-do title"
+#~ msgid "T&itle:"
+#~ msgstr "&Naslov:"
+
+#, fuzzy
+#~| msgid "&Location:"
+#~ msgctxt "@label"
+#~ msgid "&Location:"
+#~ msgstr "&Lokacija:"
+
+#, fuzzy
+#~ msgctxt "@label"
+#~ msgid "Categories:"
+#~ msgstr "Kategorije"
+
+#, fuzzy
+#~| msgid "Select Addressee..."
+#~ msgctxt "@action:button select a category"
+#~ msgid "&Select..."
+#~ msgstr "Odaberite primatelja..."
+
+#, fuzzy
+#~| msgid "Acc&ess:"
+#~ msgctxt "@label"
+#~ msgid "Acc&ess:"
+#~ msgstr "&Potvrdio/la"
+
+#, fuzzy
+#~ msgctxt "@info:tooltip"
+#~ msgid "Set the secrecy level"
+#~ msgstr "Početni datum:"
+
+#, fuzzy
+#~ msgctxt "@option:check"
+#~ msgid "Rich text"
+#~ msgstr "&Podsjetnik:"
+
+#, fuzzy
+#~ msgctxt "@info:tooltip"
+#~ msgid "Toggle Rich Text"
+#~ msgstr "&Podsjetnik:"
+
+#, fuzzy
+#~| msgid "&Reminder:"
+#~ msgctxt "@option:check"
+#~ msgid "&Reminder:"
+#~ msgstr "&Podsjetnik:"
+
+#, fuzzy
+#~ msgctxt "@info:whatsthis"
+#~ msgid "Activates a reminder for this event or to-do."
+#~ msgstr "Obriši stare događaje"
+
+#, fuzzy
+#~ msgctxt "@info:tooltip"
+#~ msgid "Set a reminder"
+#~ msgstr "&Podsjetnik:"
+
+#, fuzzy
+#~ msgctxt "@info:tooltip"
+#~ msgid "Set an alarm"
+#~ msgstr "Odaberite mjesec"
+
+#, fuzzy
+#~| msgid "minute(s)"
+#~ msgctxt "@item:inlistbox alarm expressed in minutes"
+#~ msgid "minute(s)"
+#~ msgstr "minuta(e)"
+
+#, fuzzy
+#~| msgid "hour(s)"
+#~ msgctxt "@item:inlistbox alarm expressed in hours"
+#~ msgid "hour(s)"
+#~ msgstr "sat(i)"
+
+#, fuzzy
+#~| msgid "day(s)"
+#~ msgctxt "@item:inlistbox alarm expressed in days"
+#~ msgid "day(s)"
+#~ msgstr "dan(a)"
+
+#, fuzzy
+#~ msgctxt "@action:button advanced alarm settings"
+#~ msgid "Advanced..."
+#~ msgstr "&Napredno"
+
+#, fuzzy
+#~ msgctxt "@label"
+#~ msgid "1 reminder configured"
+#~ msgid_plural "%1 reminders configured"
+#~ msgstr[0] "&Podsjetnik:"
+#~ msgstr[1] "&Podsjetnik:"
+
+#, fuzzy
+#~ msgctxt "@label"
+#~ msgid "1 advanced reminder configured"
+#~ msgstr "&Podsjetnik:"
+
+#, fuzzy
+#~ msgctxt "@label"
+#~ msgid "No attendees"
+#~ msgstr "&Sudionici"
+
+#, fuzzy
+#~ msgctxt "@label"
+#~ msgid "One attendee"
+#~ msgid_plural "%1 attendees"
+#~ msgstr[0] "%1 minut"
+#~ msgstr[1] "%1 minuta"
+#~ msgstr[2] "%1 minuta"
+
+#, fuzzy
+#~ msgctxt "@info"
+#~ msgid "Please specify a title."
+#~ msgstr "Navedite ispravno vrijeme krajnjeg roka."
+
+#, fuzzy
+#~| msgid "Date && Time"
+#~ msgctxt "@title:group"
+#~ msgid "Date && Time"
+#~ msgstr "Vrijeme krajnjeg roka"
+
+#, fuzzy
+#~ msgctxt "@info:whatsthis"
+#~ msgid "Sets options related to the date and time of the event or to-do."
+#~ msgstr "Obriši stare događaje"
+
+#, fuzzy
+#~| msgid "&Start:"
+#~ msgctxt "@label event start time"
+#~ msgid "&Start:"
+#~ msgstr "Započni:"
+
+#, fuzzy
+#~ msgctxt "@info:tooltip"
+#~ msgid "Set the start date"
+#~ msgstr "Početni datum:"
+
+#, fuzzy
+#~ msgctxt "@info:whatsthis"
+#~ msgid "Select the starting date for this event."
+#~ msgstr "Obriši stare događaje"
+
+#, fuzzy
+#~| msgid "Start &time:"
+#~ msgctxt "@info:tooltip"
+#~ msgid "Set the start time"
+#~ msgstr "&Vrijeme početka:"
+
+#, fuzzy
+#~ msgctxt "@info:whatsthis"
+#~ msgid "Select the starting time for this event."
+#~ msgstr "Obriši stare događaje"
+
+#, fuzzy
+#~| msgid "&End:"
+#~ msgctxt "@label"
+#~ msgid "&End:"
+#~ msgstr "&Kraj:"
+
+#, fuzzy
+#~ msgctxt "@info:tooltip"
+#~ msgid "Set the end time"
+#~ msgstr "Uobičajeno vrijeme alarma:"
+
+#, fuzzy
+#~ msgctxt "@option:check"
+#~ msgid "T&ime associated"
+#~ msgstr "P&ridruženo vrijeme"
+
+#, fuzzy
+#~| msgid "S&how time as:"
+#~ msgctxt "@label"
+#~ msgid "S&how time as:"
+#~ msgstr "&Pokaži vrijeme kao:"
+
+#, fuzzy
+#~| msgid "Busy"
+#~ msgctxt "@item:inlistbox show event as busy time"
+#~ msgid "Busy"
+#~ msgstr "Zauzeto"
+
+#, fuzzy
+#~| msgid "Free"
+#~ msgctxt "@item:inlistbox show event as free time"
+#~ msgid "Free"
+#~ msgstr "Slobodno"
+
+#, fuzzy
+#~| msgid "Accept"
+#~ msgctxt "@action:button"
+#~ msgid "Accept"
+#~ msgstr "Prihvati"
+
+#, fuzzy
+#~| msgid "Decline"
+#~ msgctxt "@action:button"
+#~ msgid "Decline"
+#~ msgstr "Odbijanje"
+
+#, fuzzy
+#~| msgid "Duration: "
+#~ msgctxt "@label"
+#~ msgid "Duration: "
+#~ msgstr "Trajanje: "
+
+#, fuzzy
+#~ msgctxt "@label"
+#~ msgid "1 Day"
+#~ msgid_plural "%1 Days"
+#~ msgstr[0] "%1 dan"
+#~ msgstr[1] "%1 dana"
+#~ msgstr[2] "%1 dana"
+
+#, fuzzy
+#~ msgctxt "@label"
+#~ msgid "1 hour"
+#~ msgid_plural "%1 hours"
+#~ msgstr[0] "%1 čas"
+#~ msgstr[1] "%1 časa"
+#~ msgstr[2] "%1 časova"
+
+#, fuzzy
+#~| msgid ", "
+#~ msgctxt "@label"
+#~ msgid ", "
+#~ msgstr ", "
+
+#, fuzzy
+#~ msgctxt "@label"
+#~ msgid "1 minute"
+#~ msgid_plural "%1 minutes"
+#~ msgstr[0] "%1 minut"
+#~ msgstr[1] "%1 minuta"
+#~ msgstr[2] "%1 minuta"
+
+#, fuzzy
+#~ msgctxt "@info"
+#~ msgid "Please specify a valid start time, for example '%1'."
+#~ msgstr "Navedite ispravno vrijeme početka, na primjer „%1“."
+
+#, fuzzy
+#~ msgctxt "@info"
+#~ msgid "Please specify a valid end time, for example '%1'."
+#~ msgstr "Navedite ispravno vrijeme kraja, na primjer „%1“."
+
+#, fuzzy
+#~ msgctxt "@info"
+#~ msgid "Please specify a valid start date, for example '%1'."
+#~ msgstr "Navedite ispravan datum početka, na primjer „%1“."
+
+#, fuzzy
+#~ msgctxt "@info"
+#~ msgid "Please specify a valid end date, for example '%1'."
+#~ msgstr "Navedite ispravan datum kraja, na primjer „%1“."
+
+#, fuzzy
+#~ msgctxt "@info"
+#~ msgid ""
+#~ "The event ends before it starts.\n"
+#~ "Please correct dates and times."
+#~ msgstr ""
+#~ "Događaj se završava prije nego što počinje.\n"
+#~ "Isradite datume i vremena."
+
+#, fuzzy
+#~| msgid "Unknown"
+#~ msgctxt "@option unknown alarm type"
+#~ msgid "Unknown"
+#~ msgstr "Napoznato"
+
+#, fuzzy
+#~ msgctxt "@option popup reminder dialog"
+#~ msgid "Reminder Dialog"
+#~ msgstr "Podsjetnik"
+
+#, fuzzy
+#~| msgid "Email"
+#~ msgctxt "@option send email reminder"
+#~ msgid "Email"
+#~ msgstr "E-pošta"
+
+#, fuzzy
+#~ msgctxt "@item@intable N days/hours/minutes before/after the start/end"
+#~ msgid "%1 before the start"
+#~ msgstr "Centriraj na početku"
+
+#, fuzzy
+#~ msgctxt "@item@intable N days/hours/minutes before/after the start/end"
+#~ msgid "%1 after the start"
+#~ msgstr "Centriraj na početku"
+
+#, fuzzy
+#~ msgctxt "@item@intable N days/hours/minutes before/after the start/end"
+#~ msgid "%1 after the end"
+#~ msgstr "Centriraj na početku"
+
+#, fuzzy
+#~ msgctxt "@item@intable alarm offset specified in days"
+#~ msgid "1 day"
+#~ msgid_plural "%1 days"
+#~ msgstr[0] "%1 dan"
+#~ msgstr[1] "%1 dana"
+#~ msgstr[2] "%1 dana"
+
+#, fuzzy
+#~ msgctxt "@item@intable alarm offset specified in hours"
+#~ msgid "1 hour"
+#~ msgid_plural "%1 hours"
+#~ msgstr[0] "%1 čas"
+#~ msgstr[1] "%1 časa"
+#~ msgstr[2] "%1 časova"
+
+#, fuzzy
+#~ msgctxt "@item@intable alarm offset specified in minutes"
+#~ msgid "1 minute"
+#~ msgid_plural "%1 minutes"
+#~ msgstr[0] "%1 minut"
+#~ msgstr[1] "%1 minuta"
+#~ msgstr[2] "%1 minuta"
+
+#, fuzzy
+#~ msgctxt "@title"
+#~ msgid "Edit Reminders"
+#~ msgstr "Podsjetnik"
+
+#, fuzzy
+#~ msgctxt "@item:inlistbox"
+#~ msgid "before the to-do starts"
+#~ msgstr "Centriraj na početku"
+
+#, fuzzy
+#~| msgid "&General"
+#~ msgctxt "@title:tab general event settings"
+#~ msgid "&General"
+#~ msgstr "&Općenito"
+
+#, fuzzy
+#~ msgctxt "@title:tab"
+#~ msgid "&Attendees"
+#~ msgstr "Sudionici"
+
+#, fuzzy
+#~ msgctxt "@title:window"
+#~ msgid "New Event"
+#~ msgstr "No&vi događaj..."
+
+#, fuzzy
+#~ msgctxt "@title:window"
+#~ msgid "No Changes"
+#~ msgstr "Umetak za razmenu"
+
+#, fuzzy
+#~ msgctxt "@item"
+#~ msgid "My counter proposal for: %1"
+#~ msgstr "&Dnevnik"
+
+#, fuzzy
+#~| msgid "Scale: "
+#~ msgctxt "@label"
+#~ msgid "Scale: "
+#~ msgstr "Skala:"
+
+#, fuzzy
+#~| msgid "Hour"
+#~ msgctxt "@item:inlistbox range in hours"
+#~ msgid "Hour"
+#~ msgstr "Sat"
+
+#, fuzzy
+#~ msgctxt "@action:button"
+#~ msgid "Center on Start"
+#~ msgstr "Centriraj na početku"
+
+#, fuzzy
+#~ msgctxt "@action:button"
+#~ msgid "Pick Date"
+#~ msgstr "Odaberi datum"
+
+#, fuzzy
+#~ msgctxt "@action:button reload freebusy data"
+#~ msgid "Reload"
+#~ msgstr "Otprema"
+
+#, fuzzy
+#~ msgctxt "@info"
+#~ msgid "The meeting already has suitable start/end times."
+#~ msgstr "Sastanak ima već odgovarajuća vremena početka i kraja."
+
+#, fuzzy
+#~ msgctxt "@info"
+#~ msgid "No suitable date found."
+#~ msgstr "Nije pronađen odgovarajući datum."
+
+#, fuzzy
+#~ msgctxt "@title:window"
+#~ msgid "Invalid Email Address"
+#~ msgstr "Dodatna email adresa:"
+
+#, fuzzy
+#~ msgid "Edit Free/Busy Location"
+#~ msgstr "Osobne informacije"
+
+#, fuzzy
+#~ msgid ""
+#~ "Location of Free/Busy information for %1 <placeholder>%2</placeholder>:"
+#~ msgstr "Osobne informacije"
+
+#, fuzzy
+#~| msgid "Select Cate&gories..."
+#~ msgid "Select Categories"
+#~ msgstr "&Izabrane kategorije..."
+
+#, fuzzy
+#~ msgid "Category"
+#~ msgstr "Kategorije"
+
+#, fuzzy
+#~| msgid "Calendar"
+#~ msgid "&Clear Selection"
+#~ msgstr "Kalendar"
+
+#, fuzzy
+#~| msgid "Select Cate&gories..."
+#~ msgid "&Edit Categories..."
+#~ msgstr "&Izabrane kategorije …"
+
+#, fuzzy
+#~ msgid "Default appointment time"
+#~ msgstr "Uobičajeno vrijeme zakazanog termina:"
+
+#, fuzzy
+#~ msgid "Default duration of new appointment (HH:MM)"
+#~ msgstr "Uobičajeno trajanje novog zakazanog termina:"
+
+#, fuzzy
+#~ msgid "Enable reminders for new Events"
+#~ msgstr "Podsjetnik"
+
+#, fuzzy
+#~ msgid "Enable reminders for new To-dos"
+#~ msgstr "Podsjetnik"
+
+#, fuzzy
+#~ msgid "Default reminder time"
+#~ msgstr "Uobičajeno vrijeme alarma:"
+
+#, fuzzy
+#~ msgid "Default time for reminders"
+#~ msgstr "Uobičajeno vrijeme alarma:"
+
+#, fuzzy
+#~ msgid "Default time unit for reminders"
+#~ msgstr "Uobičajeno vrijeme alarma:"
+
+#, fuzzy
+#~ msgid "Time"
+#~ msgstr "Vrijeme krajnjeg roka"
+
+#, fuzzy
+#~ msgid "Set the reminder trigger time"
+#~ msgstr "Uobičajeno vrijeme alarma:"
+
+#, fuzzy
+#~ msgid "Select the reminder trigger time unit"
+#~ msgstr "Obriši stare događaje"
+
+#, fuzzy
+#~| msgid "minute(s)"
+#~ msgctxt "@item:inlistbox alarm offset expressed in minutes"
+#~ msgid "minute(s)"
+#~ msgstr "minuta(e)"
+
+#, fuzzy
+#~| msgid "hour(s)"
+#~ msgctxt "@item:inlistbox alarm offset expressed in hours"
+#~ msgid "hour(s)"
+#~ msgstr "sat(i)"
+
+#, fuzzy
+#~| msgid "day(s)"
+#~ msgctxt "@item:inlistbox alarm offset expressed in days"
+#~ msgid "day(s)"
+#~ msgstr "dan(a)"
+
+#, fuzzy
+#~ msgid "Select the reminder trigger relative to the start or end time"
+#~ msgstr "Boja zadataka koji su probili krajnji rok:"
+
+#, fuzzy
+#~ msgid "before the event starts"
+#~ msgstr "Centriraj na početku"
+
+#, fuzzy
+#~ msgid "after the event starts"
+#~ msgstr "Centriraj na početku"
+
+#, fuzzy
+#~ msgid "before the event ends"
+#~ msgstr "Centriraj na početku"
+
+#, fuzzy
+#~ msgid "&Interval:"
+#~ msgstr "&Općenito"
+
+#, fuzzy
+#~ msgid "Set the reminder to repeat"
+#~ msgstr "Uobičajeno vrijeme alarma:"
+
+#, fuzzy
+#~ msgid ""
+#~ "Check this if you want to the reminder to recur on a periodic interval."
+#~ msgstr "Pokaži sekunde na liniji Markusa Bejnsa"
+
+#, fuzzy
+#~ msgid "&Repeating:"
+#~ msgstr "Vrati &izvorno"
+
+#, fuzzy
+#~ msgctxt "@label:spinbox repeat interval expressed in minutes"
+#~ msgid " Minute(s)"
+#~ msgstr "minuta(e)"
+
+#, fuzzy
+#~ msgctxt "repeat every X minutes"
+#~ msgid "every "
+#~ msgstr "svakih"
+
+#, fuzzy
+#~ msgid "Type"
+#~ msgstr "Vrijeme krajnjeg roka"
+
+#, fuzzy
+#~ msgid ""
+#~ "Check this option if you want to display optional text in a popup notice "
+#~ "when the reminder triggers."
+#~ msgstr "Pokaži sekunde na liniji Markusa Bejnsa"
+
+#, fuzzy
+#~| msgid "&Daily"
+#~ msgid "&Display"
+#~ msgstr "&Dnevno"
+
+#, fuzzy
+#~ msgid ""
+#~ "Check this option if you want to play a sound when the reminder triggers."
+#~ msgstr "Pokaži sekunde na liniji Markusa Bejnsa"
+
+#, fuzzy
+#~ msgid "&Sound"
+#~ msgstr "Odgodi"
+
+#, fuzzy
+#~ msgid ""
+#~ "Check this option if you want to run an application (or script) when the "
+#~ "reminder triggers."
+#~ msgstr "Pokaži sekunde na liniji Markusa Bejnsa"
+
+#, fuzzy
+#~ msgid "Send email when the reminder is triggered"
+#~ msgstr "Uobičajeno vrijeme alarma:"
+
+#, fuzzy
+#~ msgid ""
+#~ "Check this option if you want to send an email message when the reminder "
+#~ "triggers."
+#~ msgstr "Pokaži sekunde na liniji Markusa Bejnsa"
+
+#, fuzzy
+#~ msgid "Display &text:"
+#~ msgstr "Dnevno"
+
+#, fuzzy
+#~ msgid "Sound &file:"
+#~ msgstr "&Arhiviraj datoteku:"
+
+#, fuzzy
+#~ msgid "Ar&guments:"
+#~ msgstr "Privici"
+
+#, fuzzy
+#~ msgid ""
+#~ "Enter any text you desire for the email message that will be sent when "
+#~ "the alarm triggers."
+#~ msgstr "Pokaži sekunde na liniji Markusa Bejnsa"
+
+#, fuzzy
+#~ msgid ""
+#~ "Enter a list comma-separated addresses to which an email will be sent "
+#~ "when the reminder triggers"
+#~ msgstr "Pokaži sekunde na liniji Markusa Bejnsa"
+
+#, fuzzy
+#~ msgid "Remove the currently selected reminder"
+#~ msgstr "Privici"
+
+#, fuzzy
+#~ msgid "Create a new reminder from the currently selected reminder"
+#~ msgstr "Privici"
+
+#, fuzzy
+#~ msgid "The list of reminders for this event or to-do"
+#~ msgstr "Obriši stare događaje"
+
+#, fuzzy
+#~ msgid "Repeat"
+#~ msgstr "Vrati &izvorno"
+
+#, fuzzy
+#~ msgid "The list of managed templates"
+#~ msgstr "Spremi predložak"
+
+#, fuzzy
+#~ msgid "&New..."
+#~ msgstr "&Novi"
+
+#, fuzzy
+#~ msgid "Remove the currently selected template"
+#~ msgstr "Privici"
+
+#, fuzzy
+#~| msgid "Business"
+#~ msgctxt "incidence category"
+#~ msgid "Business"
+#~ msgstr "Posao"
+
+#, fuzzy
+#~| msgid "Phone Call"
+#~ msgctxt "incidence category: phone call"
+#~ msgid "Phone Call"
+#~ msgstr "Telefonski Razgovor"
+
+#, fuzzy
+#~| msgid "Education"
+#~ msgctxt "incidence category"
+#~ msgid "Education"
+#~ msgstr "Obrazovanje"
+
+#, fuzzy
+#~| msgid "Holiday"
+#~ msgctxt ""
+#~ "incidence category: official or unofficial observance of religious/"
+#~ "national/cultural/other significance, often accompanied by celebrations "
+#~ "or festivities"
+#~ msgid "Holiday"
+#~ msgstr "Praznik"
+
+#, fuzzy
+#~| msgid "Vacation"
+#~ msgctxt ""
+#~ "incidence category: a lengthy time away from work or school, a trip "
+#~ "abroad, or simply a pleasure trip away from home"
+#~ msgid "Vacation"
+#~ msgstr "Odmor"
+
+#, fuzzy
+#~| msgid "Personal"
+#~ msgctxt "incidence category"
+#~ msgid "Personal"
+#~ msgstr "Osobni podaci"
+
+#, fuzzy
+#~| msgid "Travel"
+#~ msgctxt ""
+#~ "incidence category: typically associated with leaving home for business, "
+#~ "and not pleasure"
+#~ msgid "Travel"
+#~ msgstr "Putovanje"
+
+#, fuzzy
+#~| msgid "Calendar"
+#~ msgid "text/calendar"
+#~ msgstr "Kalendar"
+
+#, fuzzy
+#~ msgid "Use email settings from System Settings"
+#~ msgstr "Koristi e-poštanske postavke iz kontrolnog centra"
+
+#, fuzzy
+#~ msgid "Send copy to owner when mailing events"
+#~ msgstr "Pošalji kopiju vlasniku pri slanju događaja poštom"
+
+#, fuzzy
+#~ msgid "URL for publishing free/busy information"
+#~ msgstr "Osobne informacije"
+
+#, fuzzy
+#~ msgid "Username for publishing free/busy information"
+#~ msgstr "Osobne informacije"
+
+#, fuzzy
+#~ msgid "Password for publishing free/busy information"
+#~ msgstr "Osobne informacije"
+
+#, fuzzy
+#~ msgid "Password for retrieving free/busy information"
+#~ msgstr "Osobne informacije"
+
+#, fuzzy
+#~ msgid "Full &name"
+#~ msgstr "&Puno ime:"
+
+#, fuzzy
+#~ msgid "E&mail address"
+#~ msgstr "E-mail &adresa:"
+
+#, fuzzy
+#~ msgid "Attendees Removed"
+#~ msgstr "Sudionici"
+
+#, fuzzy
+#~ msgid "Send Messages"
+#~ msgstr "&Pošalji poruke"
+
+#, fuzzy
+#~ msgid "Do Not Send"
+#~ msgstr "Centriraj na početku"
+
+#, fuzzy
+#~ msgid "Unable to save changes for incidence %1 \"%2\": %3"
+#~ msgstr "Št&ampaj sve stavke zadataka"
+
+#, fuzzy
+#~ msgid "Unable to delete incidence %1 \"%2\": %3"
+#~ msgstr "Št&ampaj sve stavke zadataka"
+
+#, fuzzy
+#~ msgid "Unable to save %1 \"%2\": %3"
+#~ msgstr "Št&ampaj sve stavke zadataka"
+
+#, fuzzy
+#~ msgid "C&opy to Calendar"
+#~ msgstr "Uvezi kalendar"
+
+#, fuzzy
+#~| msgid "New Calendar"
+#~ msgid "&Move to Calendar"
+#~ msgstr "Novi kalendar"
+
+#, fuzzy
+#~ msgid "Copy Calendar"
+#~ msgid_plural "Copy %1 Calendars"
+#~ msgstr[0] "Uvezi kalendar"
+#~ msgstr[1] "Uvezi kalendar"
+#~ msgstr[2] "Uvezi kalendar"
+
+#, fuzzy
+#~ msgctxt "@info"
+#~ msgid ""
+#~ "The meeting has been moved to\n"
+#~ "Start: %1\n"
+#~ "End: %2."
+#~ msgstr ""
+#~ "Sastanak je premješten za\n"
+#~ "Pošetak: %1\n"
+#~ "Kraj: %2."
+
+#, fuzzy
+#~| msgid "KOrganizer"
+#~ msgid "Korganizer"
+#~ msgstr "KOrganizer"
+
+#, fuzzy
+#~ msgid "Could not download calendar %1: %2."
+#~ msgstr "Ne mogu učitati kalendar '%1'.\n"
+
+#, fuzzy
+#~ msgid "%1 (%2 years)"
+#~ msgstr "%1 %2"
+
+#, fuzzy
+#~ msgctxt "@option:radio"
+#~ msgid "&Day "
+#~ msgstr "&Dan"
+
+#, fuzzy
+#~ msgctxt "@option:radio"
+#~ msgid "Day #"
+#~ msgstr "Dan"
+
+#, fuzzy
+#~| msgid "Daily"
+#~ msgctxt "@item:inlistbox recur daily"
+#~ msgid "Daily"
+#~ msgstr "Dnevno"
+
+#, fuzzy
+#~| msgid "Weekly"
+#~ msgctxt "@item:inlistbox recur weekly"
+#~ msgid "Weekly"
+#~ msgstr "Tjedno"
+
+#, fuzzy
+#~| msgid "Monthly"
+#~ msgctxt "@item:inlistbox recur monthly"
+#~ msgid "Monthly"
+#~ msgstr "Mjesečno"
+
+#, fuzzy
+#~| msgid "Yearly"
+#~ msgctxt "@item:inlistbox recur yearly"
+#~ msgid "Yearly"
+#~ msgstr "Godišnje"
+
+#, fuzzy
+#~| msgid "Recurrence Range..."
+#~ msgctxt "@action:button"
+#~ msgid "Recurrence Range..."
+#~ msgstr "Raspon ponavljanja..."
+
+#, fuzzy
+#~| msgid "Exceptions..."
+#~ msgctxt "@action:button"
+#~ msgid "Exceptions..."
+#~ msgstr "Iznimke..."
+
+#, fuzzy
+#~ msgid "No calendars found, event cannot be added."
+#~ msgstr ""
+#~ "Nemate ical datoteka u vašem korisničkom direktoriju.\n"
+#~ "Uvoz ne može da se nastavi.\n"
+
+#, fuzzy
+#~| msgid "Email"
+#~ msgctxt "@title:column email addresses"
+#~ msgid "Email"
+#~ msgstr "E-pošta"
+
+#, fuzzy
+#~ msgid "Error message: %1"
+#~ msgstr "Greška pri učitavanju datotekaa „%1“."
+
+#, fuzzy
+#~ msgid ""
+#~ "The event \"%1\" includes other people.\n"
+#~ "Do you want to email the invitation to the attendees?"
+#~ msgstr ""
+#~ "Ovaj %1 uključuje druge ljude. Treba li da se pošalje e-poruka planiranim "
+#~ "prisutnima?"
+
+#, fuzzy
+#~ msgid ""
+#~ "The todo \"%1\" includes other people.\n"
+#~ "Do you want to email the invitation to the attendees?"
+#~ msgstr ""
+#~ "Ovaj %1 uključuje druge ljude. Treba li da se pošalje e-poruka planiranim "
+#~ "prisutnima?"
+
+#, fuzzy
+#~ msgid ""
+#~ "This %1 includes other people. Should email be sent out to the attendees?"
+#~ msgstr ""
+#~ "Ovaj %1 uključuje druge ljude. Treba li da se pošalje e-poruka planiranim "
+#~ "prisutnima?"
+
+#, fuzzy
+#~ msgid "Group Scheduling Email"
+#~ msgstr "E-poruka za grupno zakazivanje"
+
+#, fuzzy
+#~ msgid "Send Email"
+#~ msgstr "Sendmail"
+
+#, fuzzy
+#~ msgid "Do you want to send a status update to the organizer of this task?"
+#~ msgstr "Želite li da pošaljete promijenu statusa organizatoru ovog zadatka?"
+
+#, fuzzy
+#~ msgid "Send Update"
+#~ msgstr "Završni datum:"
+
+#, fuzzy
+#~ msgid ""
+#~ "Your status as an attendee of this event changed. Do you want to send a "
+#~ "status update to the event organizer?"
+#~ msgstr "Želite li da pošaljete promijenu statusa organizatoru ovog zadatka?"
+
+#, fuzzy
+#~ msgid ""
+#~ "You had previously accepted an invitation to this event. Do you want to "
+#~ "send an updated response to the organizer declining the invitation?"
+#~ msgstr "Želite li da pošaljete promijenu statusa organizatoru ovog zadatka?"
+
+#, fuzzy
+#~ msgid ""
+#~ "You are not the organizer of this event. Editing it will bring your "
+#~ "calendar out of sync with the organizer's calendar. Do you really want to "
+#~ "edit it?"
+#~ msgstr ""
+#~ "Vi niste organizator ovog događaja. Ako ga promijenite, vaš kalendar više "
+#~ "neće biti sinhronizovan sa organizatorovim. Želite li zaista da ga "
+#~ "uređujete?"
+
+#, fuzzy
+#~ msgid "Counter proposal: %1"
+#~ msgstr "&Dnevnik"
+
+#, fuzzy
+#~ msgid "No running instance of KMail found."
+#~ msgstr "Nema pokrenutih instanci KMail-a."
+
+#, fuzzy
+#~ msgctxt "@title:window"
+#~ msgid "Edit Journal: %1"
+#~ msgstr "&Dnevnik"
+
+#, fuzzy
+#~ msgctxt "@info"
+#~ msgid "Template does not contain a valid journal."
+#~ msgstr "Šablon „%1“ ne sadrži ispravan zadatak."
+
+#, fuzzy
+#~ msgid "&iCalendar..."
+#~ msgstr "&Umetni postojeći kalendar..."
+
+#, fuzzy
+#~ msgid "&vCalendar..."
+#~ msgstr "&Umetni postojeći kalendar..."
+
+#, fuzzy
+#~ msgid "Added calendar for URL '%1'."
+#~ msgstr "Snimio sam kalendar „%1“."
+
+#, fuzzy
+#~ msgid "Unable to create calendar '%1'."
+#~ msgstr "Št&ampaj sve stavke zadataka"
+
+#, fuzzy
+#~ msgid ""
+#~ "The calendar contains unsaved changes. Do you want to save them before "
+#~ "exiting?"
+#~ msgstr ""
+#~ "Ovaj kalendar je mijenjan.\n"
+#~ "Želite li ga spremiti?"
+
+#~ msgid "Save Error"
+#~ msgstr "Spremi pogrešku"
+
+#, fuzzy
+#~ msgid "Cancel Save"
+#~ msgstr "&Promjeni"
+
+#~ msgid "Mail Client"
+#~ msgstr "Klijent za poštu"
+
+#~ msgid "Sendmail"
+#~ msgstr "Sendmail"
+
+#, fuzzy
+#~ msgctxt "@info:tooltip"
+#~ msgid "Edit calendar settings"
+#~ msgstr "Uredi filtere kalendara"
+
+#, fuzzy
+#~ msgctxt "@info:tooltip"
+#~ msgid "Remove calendar"
+#~ msgstr "Stopio sam kalendar „%1“."
+
+#, fuzzy
+#~ msgid "Add Calendar Folder"
+#~ msgstr "Uredi filtere kalendara"
+
+#, fuzzy
+#~ msgid "<qt>Unable to create the calendar folder <b>%1</b>.</qt>"
+#~ msgstr "<qt>Ne mogu napraviti resursni datoteka tipa <b>%1</b>.</qt>"
+
+#, fuzzy
+#~ msgid "<qt>Unable to create a calendar of type <b>%1</b>.</qt>"
+#~ msgstr "<qt>Ne mogu napraviti resursni datoteka tipa <b>%1</b>.</qt>"
+
+#, fuzzy
+#~ msgid "%1 calendar"
+#~ msgstr "Novi kalendar"
+
+#, fuzzy
+#~ msgid "You cannot remove your standard calendar."
+#~ msgstr "dodati standardnom resursu"
+
+#, fuzzy
+#~ msgid "Please enter a new name for the calendar folder"
+#~ msgstr "Ime rukovodioca"
+
+#, fuzzy
+#~ msgid "<qt>Cannot edit the calendar folder <b>%1</b>.</qt>"
+#~ msgstr "<qt>Ne mogu napraviti resursni datoteka tipa <b>%1</b>.</qt>"
+
+#, fuzzy
+#~ msgctxt "reload the resource"
+#~ msgid "Re&load"
+#~ msgstr "Otprema"
+
+#, fuzzy
+#~| msgid "Travel"
+#~ msgctxt "save the resource"
+#~ msgid "&Save"
+#~ msgstr "Putovanje"
+
+#, fuzzy
+#~ msgid "Show &Info"
+#~ msgstr "Okači info..."
+
+#, fuzzy
+#~ msgid "&Add Calendar Folder..."
+#~ msgstr "Uredi filtere kalendara"
+
+#, fuzzy
+#~| msgid "General"
+#~ msgctxt "@title:tab general event settings"
+#~ msgid "General"
+#~ msgstr "Općenito"
+
+#, fuzzy
+#~| msgid "Details"
+#~ msgctxt "@title:tab"
+#~ msgid "Details"
+#~ msgstr "Detalji"
+
+#, fuzzy
+#~| msgid "Rec&urrence"
+#~ msgctxt "@title:tab"
+#~ msgid "Rec&urrence"
+#~ msgstr "&Ponavljanje"
+
+#, fuzzy
+#~| msgid "General"
+#~ msgctxt "@title:tab general to-do settings"
+#~ msgid "General"
+#~ msgstr "Općenito"
+
+#, fuzzy
+#~ msgctxt "@info"
+#~ msgid "Template does not contain a valid to-do."
+#~ msgstr "Šablon „%1“ ne sadrži ispravan zadatak."
+
+#~ msgid "Active Calendar"
+#~ msgstr "Automatski spremi kalendar"
+
+#, fuzzy
+#~| msgid "&Reminder:"
+#~ msgctxt "@label"
+#~ msgid "Reminder:"
+#~ msgstr "&Podsjetnik:"
+
+#, fuzzy
+#~ msgctxt "incidence type is event"
+#~ msgid "event"
+#~ msgstr "događaj"
+
+#, fuzzy
+#~| msgid "task"
+#~ msgctxt "incidence type is to-do/task"
+#~ msgid "task"
+#~ msgstr "zadatak"
+
+#, fuzzy
+#~ msgctxt "incidence type is journal"
+#~ msgid "journal entry"
+#~ msgstr "unos u dnevniku"
+
+#, fuzzy
+#~ msgid "Counter-Event Viewer"
+#~ msgstr "Prikazivač protivdogađaja"
+
+#~ msgid "Decline"
+#~ msgstr "Odbijanje"
+
+#~ msgid "Accept"
+#~ msgstr "Prihvati"
+
+#, fuzzy
+#~ msgctxt "@title:column reminder date/time"
+#~ msgid "Reminder"
+#~ msgstr "&Podsjetnik:"
+
+#, fuzzy
+#~ msgid "&Timespan"
+#~ msgstr "Vremenski &raspon"
+
+#, fuzzy
+#~ msgid "This plugin provides a Gantt-like Timespan view."
+#~ msgstr "Ovaj umetak pruža Gantov dijagram kao prikaz projekta."
+
+#, fuzzy
+#~ msgid "Timespan View Plugin"
+#~ msgstr "Pogled projekta"
+
+#~ msgid "Zoom In"
+#~ msgstr "Povećaj"
+
+#~ msgid "Zoom Out"
+#~ msgstr "Umanji"
+
+#~ msgid "Center View"
+#~ msgstr "Centriraj pregled"
+
+#, fuzzy
+#~ msgid ""
+#~ "You are not the organizer of this event, but you were supposed to attend. "
+#~ "Do you really want to delete it and notify the organizer?"
+#~ msgstr ""
+#~ "Vi niste organizator ovog događaja. Ako ga obrišete, vaš kalendar više "
+#~ "neće biti sinhronizovan sa organizatorovim. Želite li zaista da ga "
+#~ "obrišete?"
+
+#, fuzzy
+#~ msgctxt "@item:inlistbox alarm offset expressed in minutes"
+#~ msgid "Minutes"
+#~ msgstr "5 minuta"
+
+#, fuzzy
+#~ msgctxt "@item:inlistbox alarm offset expressed in hours"
+#~ msgid "Hours"
+#~ msgstr "Sat"
+
+#, fuzzy
+#~ msgctxt "@item:inlistbox alarm offset expressed in days"
+#~ msgid "Days"
+#~ msgstr "Dan"
+
+#, fuzzy
+#~ msgid "Before the Start"
+#~ msgstr "Centriraj na početku"
+
+#, fuzzy
+#~ msgid "After the Start"
+#~ msgstr "Centriraj na početku"
+
+#, fuzzy
+#~ msgid "Before the End"
+#~ msgstr "Centriraj na početku"
+
+#, fuzzy
+#~ msgid "After the End"
+#~ msgstr "Centriraj na početku"
+
+#, fuzzy
+#~ msgid "&Display reminder"
+#~ msgstr "Dnevno"
+
+#, fuzzy
+#~ msgid "Reminder &text:"
+#~ msgstr "Podsjetnik"
+
+#, fuzzy
+#~ msgid "Could not upload file."
+#~ msgstr "Ne mogu da okačim datoteka."
+
+#, fuzzy
+#~ msgid "KOrganizer Timezone Test"
+#~ msgstr "KOrganizer-ova proba vremenske zone"
+
+#, fuzzy
+#~ msgctxt "@label"
+#~ msgid "Time zone:"
+#~ msgstr "Vremenska zona:"
+
+#, fuzzy
+#~| msgid "Unknown"
+#~ msgctxt "@item:inlistbox unknown timezone"
+#~ msgid "Unknown"
+#~ msgstr "Napoznato"
+
+#, fuzzy
+#~| msgid "[No selection]"
+#~ msgctxt "@item:inlistbox no timezone selected"
+#~ msgid "[No selection]"
+#~ msgstr "[Neodabrano]"
+
+#~ msgid "&Journal entries"
+#~ msgstr "&Stavke dnevnika"
+
+#~ msgid "&Find"
+#~ msgstr "&Traži"
+
+#, fuzzy
+#~ msgid "The item \"%1\" will be permanently deleted."
+#~ msgstr "Sljedeća stavka će biti trajno izbrisana"
+
+#~ msgid "This item will be permanently deleted."
+#~ msgstr "Sljedeća stavka će biti trajno izbrisana"
+
+#, fuzzy
+#~ msgctxt "@info"
+#~ msgid "This journal entry will be permanently deleted."
+#~ msgstr "Sljedeća stavka će biti trajno izbrisana"
+
+#, fuzzy
+#~| msgid "This item will be permanently deleted."
+#~ msgctxt "@info"
+#~ msgid "This item will be permanently deleted."
+#~ msgstr "Sljedeća stavka će biti trajno izbrisana"
+
+#, fuzzy
+#~ msgctxt "@action:button"
+#~ msgid "Delete"
+#~ msgstr "Obriši %1"
+
+#, fuzzy
+#~ msgid "Show Resource View"
+#~ msgstr "Resursne postavke"
+
+#, fuzzy
+#~| msgid "%1 resource"
+#~ msgid "Add Subresource"
+#~ msgstr "%1 resurs"
+
+#, fuzzy
+#~ msgid "Please enter a name for the new subresource"
+#~ msgstr "Ime rukovodioca"
+
+#, fuzzy
+#~ msgid "<qt>Unable to create subresource <b>%1</b>.</qt>"
+#~ msgstr "<qt>Ne mogu napraviti resursni datoteka tipa <b>%1</b>.</qt>"
+
+#~ msgid "Resource Configuration"
+#~ msgstr "Resursne postavke"
+
+#~ msgid "%1 resource"
+#~ msgstr "%1 resurs"
+
+#, fuzzy
+#~| msgid "%1 resource"
+#~ msgid "Rename Subresource"
+#~ msgstr "%1 resurs"
+
+#, fuzzy
+#~| msgid "%1 resource"
+#~ msgid "&Add Resource..."
+#~ msgstr "%1 resurs"
+
+#, fuzzy
+#~ msgid "Resource Colors"
+#~ msgstr "%1 resurs"
+
+#, fuzzy
+#~| msgid "%1 resource"
+#~ msgid "&Add Subresource..."
+#~ msgstr "%1 resurs"
+
+#, fuzzy
+#~ msgid ""
+#~ "Import the given calendars as new resources into the default calendar"
+#~ msgstr "Uvezi kalendar sa <url> u uobičajeni kalendar"
+
+#, fuzzy
+#~ msgid "Print &Year:"
+#~ msgstr "Štampaj nedelju"
+
+#, fuzzy
+#~ msgid "No (unset) category color"
+#~ msgstr "Boja zadataka čiji krajnji rok ističe danas:"
+
+#, fuzzy
+#~ msgid "&Add..."
+#~ msgstr "Dodaj..."
+
+#, fuzzy
+#~ msgctxt "@action:inmenu remove the attachment"
+#~ msgid "&Delete"
+#~ msgstr "Obriši %1"
+
+#, fuzzy
+#~ msgctxt "@info"
+#~ msgid "The item labeled \"%1\" will be permanently deleted."
+#~ msgstr "Sljedeća stavka će biti trajno izbrisana"
+
+#, fuzzy
+#~ msgid "Upload &Hot New Stuff..."
+#~ msgstr "Okači vruće nove stvari..."
+
+#, fuzzy
+#~ msgctxt "@title"
+#~ msgid "Scheduler Mail Client"
+#~ msgstr "Poštanski program zakazivača"
+
+#, fuzzy
+#~ msgctxt "@option:radio"
+#~ msgid "Mail client"
+#~ msgstr "Poštanski program"
+
+#, fuzzy
+#~ msgid "Month view uses category colors"
+#~ msgstr "Prikaz mjeseca koristi boje kategorija"
+
+#, fuzzy
+#~ msgid "Month view uses resource colors"
+#~ msgstr "Prikaz mjeseca koristi boje kategorija"
+
+#, fuzzy
+#~ msgid ""
+#~ "Check this box to make the month view use the resource colors of an item."
+#~ msgstr "Pokaži sekunde na liniji Markusa Bejnsa"
+
+#, fuzzy
+#~ msgid "Show to-dos in day, week and month views"
+#~ msgstr "Dani za prikazivanje u pogledu Sljedećih-n-dana: "
+
+#, fuzzy
+#~ msgctxt "@item:inlistbox"
+#~ msgid "1 minute"
+#~ msgstr "%1 minut"
+
+#, fuzzy
+#~| msgid "5 minutes"
+#~ msgctxt "@item:inlistbox"
+#~ msgid "5 minutes"
+#~ msgstr "5 minuta"
+
+#, fuzzy
+#~| msgid "10 minutes"
+#~ msgctxt "@item:inlistbox"
+#~ msgid "10 minutes"
+#~ msgstr "10 minuta"
+
+#, fuzzy
+#~| msgid "15 minutes"
+#~ msgctxt "@item:inlistbox"
+#~ msgid "15 minutes"
+#~ msgstr "15 minuta"
+
+#, fuzzy
+#~| msgid "30 minutes"
+#~ msgctxt "@item:inlistbox"
+#~ msgid "30 minutes"
+#~ msgstr "30 minuta"
+
+#, fuzzy
+#~ msgid "Default Reminder Time"
+#~ msgstr "Uobičajeno vrijeme zakazanog termina:"
+
+#, fuzzy
+#~ msgctxt "@label"
+#~ msgid "The following events or to-dos triggered reminders:"
+#~ msgstr "Sljedeći događaji su uključili alarme:"
+
+#, fuzzy
+#~| msgid "Summary"
+#~ msgctxt "@title:column reminder summary"
+#~ msgid "Summary"
+#~ msgstr "Sažetak"
+
+#, fuzzy
+#~ msgid "Apply Template"
+#~ msgstr "Spremi predložak"
+
+#, fuzzy
+#~ msgid "Please specify a summary."
+#~ msgstr "Navedite ispravan datum početka."
+
+#, fuzzy
+#~ msgctxt "Journal for DATE"
+#~ msgid "Journal for %1"
+#~ msgstr "&Dnevnik"
+
+#, fuzzy
+#~ msgctxt "@item delimiter for joining category names"
+#~ msgid ","
+#~ msgstr ", "
+
+#, fuzzy
+#~ msgctxt "@info delimiter for joining category names"
+#~ msgid ","
+#~ msgstr ", "
+
+#, fuzzy
+#~| msgid "Name"
+#~ msgctxt "addressee name"
+#~ msgid "Name"
+#~ msgstr "Ime"
+
+#, fuzzy
+#~| msgid "Email"
+#~ msgctxt "addressee email"
+#~ msgid "Email"
+#~ msgstr "E-pošta"
+
+#, fuzzy
+#~| msgid "Name:"
+#~ msgctxt "addressee name"
+#~ msgid "Name:"
+#~ msgstr "Ime:"
+
+#~ msgid "Select &Addressee..."
+#~ msgstr "&Odaberite primatelja..."
+
+#, fuzzy
+#~ msgctxt "@action:button"
+#~ msgid "&Add..."
+#~ msgstr "Dodaj..."
+
+#, fuzzy
+#~| msgid "%1 - %2"
+#~ msgctxt "Summary - date"
+#~ msgid "%1 - %2"
+#~ msgstr "%1 - %2"
+
+#, fuzzy
+#~ msgid "Filter: "
+#~ msgstr "Dodaj filter"
+
+#, fuzzy
+#~| msgid "Categories"
+#~ msgid "categories-view"
+#~ msgstr "Kategorije"
+
+#, fuzzy
+#~| msgid "Holiday"
+#~ msgctxt "incidence category"
+#~ msgid "Holiday"
+#~ msgstr "Praznik"
+
+#, fuzzy
+#~ msgid "Show timezone selectors"
+#~ msgstr "Pokaži samo odabrane"
+
+#, fuzzy
+#~ msgid "31st Last"
+#~ msgstr "treći prije posljednjeg"
+
+#, fuzzy
+#~ msgid "30th Last"
+#~ msgstr "četvrti prije posljednjeg"
+
+#, fuzzy
+#~ msgid "29th Last"
+#~ msgstr "četvrti prije posljednjeg"
+
+#, fuzzy
+#~ msgid "28th Last"
+#~ msgstr "četvrti prije posljednjeg"
+
+#, fuzzy
+#~ msgid "27th Last"
+#~ msgstr "četvrti prije posljednjeg"
+
+#, fuzzy
+#~ msgid "26th Last"
+#~ msgstr "četvrti prije posljednjeg"
+
+#, fuzzy
+#~ msgid "25th Last"
+#~ msgstr "peti prije posljednjeg"
+
+#, fuzzy
+#~ msgid "24th Last"
+#~ msgstr "četvrti prije posljednjeg"
+
+#, fuzzy
+#~ msgid "23rd Last"
+#~ msgstr "treći prije posljednjeg"
+
+#, fuzzy
+#~ msgid "22nd Last"
+#~ msgstr "Završni datum"
+
+#, fuzzy
+#~ msgid "21st Last"
+#~ msgstr "Završni datum"
+
+#, fuzzy
+#~ msgid "20th Last"
+#~ msgstr "četvrti prije posljednjeg"
+
+#, fuzzy
+#~ msgid "19th Last"
+#~ msgstr "četvrti prije posljednjeg"
+
+#, fuzzy
+#~ msgid "18th Last"
+#~ msgstr "četvrti prije posljednjeg"
+
+#, fuzzy
+#~ msgid "17th Last"
+#~ msgstr "četvrti prije posljednjeg"
+
+#, fuzzy
+#~ msgid "16th Last"
+#~ msgstr "četvrti prije posljednjeg"
+
+#, fuzzy
+#~ msgid "15th Last"
+#~ msgstr "peti prije posljednjeg"
+
+#, fuzzy
+#~ msgid "14th Last"
+#~ msgstr "četvrti prije posljednjeg"
+
+#, fuzzy
+#~ msgid "13th Last"
+#~ msgstr "četvrti prije posljednjeg"
+
+#, fuzzy
+#~ msgid "12th Last"
+#~ msgstr "četvrti prije posljednjeg"
+
+#, fuzzy
+#~ msgid "11th Last"
+#~ msgstr "četvrti prije posljednjeg"
+
+#, fuzzy
+#~ msgid "10th Last"
+#~ msgstr "četvrti prije posljednjeg"
+
+#, fuzzy
+#~ msgid "9th Last"
+#~ msgstr "četvrti prije posljednjeg"
+
+#, fuzzy
+#~ msgid "8th Last"
+#~ msgstr "četvrti prije posljednjeg"
+
+#, fuzzy
+#~ msgid "7th Last"
+#~ msgstr "četvrti prije posljednjeg"
+
+#, fuzzy
+#~ msgid "6th Last"
+#~ msgstr "četvrti prije posljednjeg"
+
+#, fuzzy
+#~| msgid "5th Last"
+#~ msgid "5th Last"
+#~ msgstr "peti prije posljednjeg"
+
+#, fuzzy
+#~| msgid "4th Last"
+#~ msgid "4th Last"
+#~ msgstr "četvrti prije posljednjeg"
+
+#, fuzzy
+#~| msgid "3rd Last"
+#~ msgid "3rd Last"
+#~ msgstr "treći prije posljednjeg"
+
+#, fuzzy
+#~| msgid "2nd Last"
+#~ msgid "2nd Last"
+#~ msgstr "Završni datum"
+
+#, fuzzy
+#~| msgid "Last"
+#~ msgctxt "last day of the month"
+#~ msgid "Last"
+#~ msgstr "Zadnji"
+
+#, fuzzy
+#~| msgid "1st"
+#~ msgid "1st"
+#~ msgstr "1."
+
+#, fuzzy
+#~| msgid "2nd"
+#~ msgid "2nd"
+#~ msgstr "2."
+
+#, fuzzy
+#~| msgid "3rd"
+#~ msgid "3rd"
+#~ msgstr "3."
+
+#, fuzzy
+#~| msgid "4th"
+#~ msgid "4th"
+#~ msgstr "4."
+
+#, fuzzy
+#~| msgid "5th"
+#~ msgid "5th"
+#~ msgstr "5."
+
+#, fuzzy
+#~ msgid "Every day"
+#~ msgid_plural "Every %1 days"
+#~ msgstr[0] "svakih"
+#~ msgstr[1] "svakih"
+#~ msgstr[2] "svakih"
+
+#, fuzzy
+#~ msgctxt "Every N WEEK[S] on WEEKDAYNAMELIST"
+#~ msgid "Every week on %2"
+#~ msgid_plural "Every %1 weeks on %2"
+#~ msgstr[0] "%1 - %2"
+#~ msgstr[1] "%1 - %2"
+#~ msgstr[2] "%1 - %2"
+
+#, fuzzy
+#~ msgctxt "Every N MONTH[S] on day N"
+#~ msgid "Every month on day %2"
+#~ msgid_plural "Every %1 months on day %2"
+#~ msgstr[0] "svakih"
+#~ msgstr[1] "svakih"
+#~ msgstr[2] "svakih"
+
+#, fuzzy
+#~ msgctxt "Every N YEAR[S] on day N of MONTHNAME"
+#~ msgid "Every year on day %2 of %3"
+#~ msgid_plural "Every %1 years on day %2 of %3"
+#~ msgstr[0] "%1 - %2"
+#~ msgstr[1] "%1 - %2"
+#~ msgstr[2] "%1 - %2"
+
+#, fuzzy
+#~| msgid "&occurrence(s)"
+#~ msgid "occurrences"
+#~ msgid_plural "occurrences"
+#~ msgstr[0] "&ponavljanje(a)"
+#~ msgstr[1] "&ponavljanje(a)"
+#~ msgstr[2] "&ponavljanje(a)"
+
+#, fuzzy
+#~ msgctxt "for N %OCCURRENCE[S]"
+#~ msgid "for %1 %2"
+#~ msgstr "%1 %2"
+
+#, fuzzy
+#~ msgid "Attendees:"
+#~ msgstr "Sudionici"
+
+#, fuzzy
+#~| msgid "Zoom to Fit"
+#~ msgctxt "@action:button"
+#~ msgid "Zoom to Fit"
+#~ msgstr "Uvećaj za prilagodbu"
+
+#, fuzzy
+#~| msgid "Week"
+#~ msgid "week"
+#~ msgid_plural "weeks"
+#~ msgstr[0] "Tjedan"
+#~ msgstr[1] "Tjedan"
+#~ msgstr[2] "Tjedan"
+
+#, fuzzy
+#~| msgid "Month"
+#~ msgid "month"
+#~ msgid_plural "months"
+#~ msgstr[0] "Mjesec"
+#~ msgstr[1] "Mjesec"
+#~ msgstr[2] "Mjesec"
+
+#, fuzzy
+#~| msgid "year(s)"
+#~ msgid "year"
+#~ msgid_plural "years"
+#~ msgstr[0] "godina(e)"
+#~ msgstr[1] "godina(e)"
+#~ msgstr[2] "godina(e)"
+
+#, fuzzy
+#~ msgid "Cannot write archive to final destination."
+#~ msgstr "Ne mogu da zapišem arhivski datoteka na krajnje odredište."
+
+#, fuzzy
+#~ msgctxt "Unspecified priority"
+#~ msgid "unspecified"
+#~ msgstr "<nedefinirano>"
+
+#, fuzzy
+#~ msgid "1 (highest)"
+#~ msgstr "1 (najviši)"
+
+#, fuzzy
+#~ msgid "9 (lowest)"
+#~ msgstr "5 (najniži)"
+
+#, fuzzy
+#~ msgid "&New Month View"
+#~ msgstr "Pregled mjeseca"
+
+#, fuzzy
+#~ msgctxt "@info alarm offset specified in days"
+#~ msgid "1 day"
+#~ msgid_plural "%1 days"
+#~ msgstr[0] "%1 dan"
+#~ msgstr[1] "%1 dana"
+#~ msgstr[2] "%1 dana"
+
+#, fuzzy
+#~ msgctxt "@info alarm offset specified in hours"
+#~ msgid "1 hour"
+#~ msgid_plural "%1 hours"
+#~ msgstr[0] "%1 čas"
+#~ msgstr[1] "%1 časa"
+#~ msgstr[2] "%1 časova"
+
+#, fuzzy
+#~ msgctxt "@info alarm offset specified in minutes"
+#~ msgid "1 minute"
+#~ msgid_plural "%1 minutes"
+#~ msgstr[0] "%1 minut"
+#~ msgstr[1] "%1 minuta"
+#~ msgstr[2] "%1 minuta"
+
+#, fuzzy
+#~| msgid "Calendar"
+#~ msgid "Calendar: %1"
+#~ msgstr "Kalendar"
+
+#, fuzzy
+#~ msgid "Underline text"
+#~ msgstr "Podsjetnik"
+
+#, fuzzy
+#~ msgid "Center text"
+#~ msgstr "Tekst događaja"
+
+#, fuzzy
+#~ msgctxt "@info:whatsthis"
+#~ msgid "Enter the default reminder time here."
+#~ msgstr "Uobičajeno vrijeme alarma:"
+
+#, fuzzy
+#~ msgctxt "@action:inmenu"
+#~ msgid "Reminders Enabled"
+#~ msgstr "Podsjetnik"
+
+#, fuzzy
+#~ msgctxt "@title:window"
+#~ msgid "Reminder"
+#~ msgstr "&Podsjetnik:"
+
+#, fuzzy
+#~| msgid "Due"
+#~ msgctxt "@title:column reminder due date/time"
+#~ msgid "Due"
+#~ msgstr "Krajnji rok"
+
+#, fuzzy
+#~ msgid "Sort Id"
+#~ msgstr "Id. sortiranja"
+
+#, fuzzy
+#~ msgctxt "delete completed to-dos"
+#~ msgid "&Purge Completed"
+#~ msgstr "Obriši završene"
+
+#, fuzzy
+#~ msgid "&Templates..."
+#~ msgstr "Uči&taj šablon..."
+
+#, fuzzy
+#~ msgid "Edit"
+#~ msgstr "Kraj:"
+
+#, fuzzy
+#~| msgid "day(s)"
+#~ msgctxt "@label"
+#~ msgid "day(s)"
+#~ msgstr "dan(a)"
+
+#~ msgid "Owner:"
+#~ msgstr "Vlasnik:"
+
+#, fuzzy
+#~| msgid "&New"
+#~ msgctxt "@action:button add a new attendee"
+#~ msgid "&New"
+#~ msgstr "&Novi"
+
+#, fuzzy
+#~ msgctxt "@action:button remove this attendee"
+#~ msgid "&Remove"
+#~ msgstr "&Dobavi"
+
+#, fuzzy
+#~ msgctxt "@action:button"
+#~ msgid "&Properties..."
+#~ msgstr "&Uredi..."
+
+#, fuzzy
+#~| msgid "&Show"
+#~ msgctxt "@action:button"
+#~ msgid "&Show"
+#~ msgstr "Pri&kaži"
+
+#, fuzzy
+#~ msgctxt "@title:tab"
+#~ msgid "&Free/Busy"
+#~ msgstr "Osobne informacije"
+
+#, fuzzy
+#~ msgid "Agenda view uses resource colors"
+#~ msgstr "Pozadina kalendara"
+
+#, fuzzy
+#~ msgid ""
+#~ "Check this box to make the agenda view use the resource colors of an item."
+#~ msgstr "Pokaži sekunde na liniji Markusa Bejnsa"
+
+#~ msgid "Role"
+#~ msgstr "Uloga"
+
+#~ msgid "Status"
+#~ msgstr "Status"
+
+#~ msgid "RSVP"
+#~ msgstr "RSVP"
+
+#, fuzzy
+#~ msgid "<No summary given>"
+#~ msgstr "<Sažetak nije dat>"
+
+#, fuzzy
+#~ msgctxt "Example: 5 hours (80%)"
+#~ msgid "%1 hours ("
+#~ msgstr "%1 čas"
+
+#, fuzzy
+#~ msgid "<undefined>"
+#~ msgstr "<nedefinirano>"
+
+#~ msgid "Owner: "
+#~ msgstr "Vlasnik: "
+
+#~ msgid "Go to &Today"
+#~ msgstr "&Danas"
+
+#, fuzzy
+#~ msgid "Print Calendar"
+#~ msgstr "Štampaj kalendar"
+
+#~ msgid "&List"
+#~ msgstr "&Popis"
+
+#, fuzzy
+#~| msgid "Center View"
+#~ msgid "&Timeline View"
+#~ msgstr "Centriraj pregled"
+
+#, fuzzy
+#~| msgid "Center View"
+#~ msgid "&Timespent View"
+#~ msgstr "Centriraj pregled"
+
+#~ msgid "Previous year"
+#~ msgstr "Prethodna godina"
+
+#~ msgid "Previous month"
+#~ msgstr "Prethodni mjesec"
+
+#~ msgid "Next month"
+#~ msgstr "Sljedeći mjesec"
+
+#, fuzzy
+#~ msgid "Co-Maintainer"
+#~ msgstr "Koordinator"
+
+#, fuzzy
+#~| msgid "Go &Forward"
+#~ msgid "Floating"
+#~ msgstr "&Idi naprijed"
+
+#, fuzzy
+#~ msgid "&Title: "
+#~ msgstr "&Naslov:"
+
+#, fuzzy
+#~ msgid "Ti&me: "
+#~ msgstr "Vrijeme krajnjeg roka"
+
+#, fuzzy
+#~ msgid "Sets the time associated with this journal  entry"
+#~ msgstr "Obriši stare događaje"
+
+#, fuzzy
+#~ msgid "[Add Journal Entry]"
+#~ msgstr "&Dnevnik"
+
+#, fuzzy
+#~ msgid "Show &Resource Buttons"
+#~ msgstr "Resursne postavke"
+
+#, fuzzy
+#~ msgid "S&earch:"
+#~ msgstr "Traži u"
+
+#, fuzzy
+#~ msgid "CalPrintIncidence_Base"
+#~ msgstr "Štampaj mjesec"
+
+#, fuzzy
+#~ msgid "CalPrintYear_Base"
+#~ msgstr "Štampaj mjesec"
+
+#, fuzzy
+#~ msgid "This plugin provides numbers of days and weeks."
+#~ msgstr "Ovaj umetak pruža brojeve dana i nedelja."
+
+#, fuzzy
+#~ msgid ""
+#~ "<p>...that you can synchronize your calendar data with the data on a Palm "
+#~ "Pilot by using <a href=\"http://www.slac.com/pilone/kpilot_home\">KPilot</"
+#~ "a>?\n"
+#~ "</p>\n"
+#~ msgstr ""
+#~ "<p>...da možete sinhronizovati vaše kalendarske podatke sa podacima na "
+#~ "Palm Pilot-u\n"
+#~ "koristeći <a href=\"http://www.slac.com/pilone/kpilot_home\">KPilot-a</"
+#~ "a>?\n"
+
+#, fuzzy
+#~ msgid "Reset"
+#~ msgstr "Vrati &izvorno"
+
+#, fuzzy
+#~ msgid "&Reminder Dialog"
+#~ msgstr "Podsjetnik"
+
+#, fuzzy
+#~ msgid "Email &address(es):"
+#~ msgstr "E-mail &adresa:"
+
+#, fuzzy
+#~ msgid "CalPrintWeek_Base"
+#~ msgstr "Štampaj mjesec"
+
+#~ msgid "URI"
+#~ msgstr "URL"
+
+#~ msgid "MIME Type"
+#~ msgstr "MIME tip"
+
+#, fuzzy
+#~ msgid "Edit Attachment"
+#~ msgstr "Uredi prilog"
+
+#, fuzzy
+#~ msgctxt "date from-"
+#~ msgid ""
+#~ "to\n"
+#~ "%1 -\n"
+#~ "%2"
+#~ msgstr "%1 - %2"
+
+#, fuzzy
+#~ msgctxt "date from -"
+#~ msgid ""
+#~ "to (week number)\n"
+#~ "%1 -\n"
+#~ "%2 (Week %3)"
+#~ msgstr "%1 - %2"
+
+#~ msgid "Project View"
+#~ msgstr "Pogled projekta"
+
+#, fuzzy
+#~ msgid "main task"
+#~ msgstr "glavni zadatak"
+
+#, fuzzy
+#~ msgid "&Project"
+#~ msgstr "Projekt"
+
+#, fuzzy
+#~ msgid "This plugin provides a Gantt diagram as project view."
+#~ msgstr "Ovaj umetak pruža Gantov dijagram kao prikaz projekta."
+
+#, fuzzy
+#~ msgid "Project View Plugin"
+#~ msgstr "Pogled projekta"
+
+#, fuzzy
+#~ msgctxt "date from -"
+#~ msgid ""
+#~ "to\n"
+#~ "%1 -\n"
+#~ "%2"
+#~ msgstr "%1 - %2"
+
+#, fuzzy
+#~ msgid "Exchange Plugin"
+#~ msgstr "Umetak za razmenu"
+
+#, fuzzy
+#~ msgid "Exchange server:"
+#~ msgstr "Exchange poslužitelj:"
+
+#~ msgid "Port:"
+#~ msgstr "Port:"
+
+#~ msgid "User:"
+#~ msgstr "Korisnik:"
+
+#, fuzzy
+#~ msgid "Determine mailbox automatically"
+#~ msgstr "Automatski odredi poštansko sanduče"
+
+#, fuzzy
+#~ msgid "Mailbox URL:"
+#~ msgstr "URL poštanskog sandučeta:"
+
+#~ msgid "Start date:"
+#~ msgstr "Početni datum:"
+
+#~ msgid "End date:"
+#~ msgstr "Završni datum:"
+
+#, fuzzy
+#~ msgid "&Download..."
+#~ msgstr "Preuzimanje..."
+
+#, fuzzy
+#~ msgid "&Upload Event..."
+#~ msgstr "Okači događaj..."
+
+#, fuzzy
+#~ msgid "De&lete Event"
+#~ msgstr "Obriši događaj..."
+
+#, fuzzy
+#~ msgid ""
+#~ "This plugin imports and export calendar events from/to a Microsoft "
+#~ "Exchange 2000 Server."
+#~ msgstr ""
+#~ "Ovaj umetak uvozi i izvozi kalendarske događaje iz/u Microsoft Exchange "
+#~ "2000 Poslužitelj."
+
+#, fuzzy
+#~ msgid "Please select an appointment."
+#~ msgstr "Odaberite zakazani termin."
+
+#, fuzzy
+#~ msgid ""
+#~ "Exchange Upload is EXPERIMENTAL, you may lose data on this appointment!"
+#~ msgstr ""
+#~ "Exchange kačenje je EKSPERIMENTALNO, možete izgubiti podatke o ovom "
+#~ "zakazanom terminu!"
+
+#, fuzzy
+#~ msgid "&Upload"
+#~ msgstr "Otprema"
+
+#, fuzzy
+#~ msgid ""
+#~ "Exchange Delete is EXPERIMENTAL, if this is a recurring event it will "
+#~ "delete all instances!"
+#~ msgstr ""
+#~ "Exchange brisanje je EKSPERIMENTALNO, ako je ovo ponavljajući događaj "
+#~ "biti će izbrisane sve instance!"
+
+#, fuzzy
+#~ msgid "The Exchange server could not be reached or returned an error."
+#~ msgstr "Exchange poslužitelj nije mogao da se dosegne ili je vratio grešku."
+
+#, fuzzy
+#~ msgid "Server response could not be interpreted."
+#~ msgstr "Odgovor poslužitelja nije mogao da se protumači."
+
+#, fuzzy
+#~ msgid "Appointment data could not be interpreted."
+#~ msgstr "Podaci o zakazanom terminu nisu mogli da se protumače."
+
+#, fuzzy
+#~ msgid "This should not happen: trying to upload wrong type of event."
+#~ msgstr ""
+#~ "Ovo ne bi trebalo da se desi: pokušano je kačenje pogrešne vrste događaja."
+
+#, fuzzy
+#~ msgid "An error occurred trying to write an appointment to the server."
+#~ msgstr ""
+#~ "Došlo je do greške pri pokušaju da se zapiše zakazani termin na "
+#~ "poslužitelj."
+
+#, fuzzy
+#~ msgid "Trying to delete an event that is not present on the server."
+#~ msgstr "Pokušano je brisanje događaja koji nije prisutan na poslužitelju."
+
+#~ msgid "Unknown Error"
+#~ msgstr "Nepoznata greška"

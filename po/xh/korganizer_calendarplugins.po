@@ -1,0 +1,8110 @@
+# translation of korganizer.po to
+# translation of korganizer.po to Xhosa
+# translation of korganizer.po to
+# translation of korganizer.po to
+# translation of korganizer.po to
+# translation of korganizer.po to
+# translation of korganizer.po to
+# K Desktop Environment - kdepim
+# Copyright (C) 2001 translate.org.za
+# Antoinette Dekeni <antoinette@transalate.org.za>, 2001.
+# Lwandle Mgidlana <lwandle@translate.org.za>, 2002
+# Thelma Lungcuzo <thelma@translate.org.za>, 2002
+#
+msgid ""
+msgstr ""
+"Project-Id-Version: korganizer\n"
+"Report-Msgid-Bugs-To: https://bugs.kde.org\n"
+"POT-Creation-Date: 2024-06-26 00:40+0000\n"
+"PO-Revision-Date: 2002-11-09 12:52+0200\n"
+"Last-Translator: Thelma Lungcuzo <thelma@translate.org.za>\n"
+"Language-Team: Xhosa <xhosa@translate.org.za>\n"
+"Language: xh\n"
+"MIME-Version: 1.0\n"
+"Content-Type: text/plain; charset=UTF-8\n"
+"Content-Transfer-Encoding: 8bit\n"
+"X-Generator: KBabel 1.0beta2\n"
+"Plural-Forms: nplurals=2; plural=n != 1;\n"
+
+#: datenums/configdialog.cpp:28
+#, fuzzy, kde-format
+msgctxt "@title:window"
+msgid "Configure Day Numbers"
+msgstr "Qwalasela Iholide"
+
+#: datenums/configdialog.cpp:43
+#, fuzzy, kde-format
+msgid "Show Date Number"
+msgstr "Bonisa ixesha njenge:"
+
+#: datenums/configdialog.cpp:48
+#, fuzzy, kde-format
+msgid "Show day number"
+msgstr "Bonisa ixesha njenge:"
+
+#: datenums/configdialog.cpp:51
+#, fuzzy, kde-format
+msgid "Show days to end of year"
+msgstr "Bonisa ixesha njenge:"
+
+#: datenums/configdialog.cpp:54
+#, fuzzy, kde-format
+msgid "Show both"
+msgstr "Bonisa"
+
+#: datenums/datenums.cpp:36
+#, kde-format
+msgid "This plugin shows information on a day's position in the year."
+msgstr ""
+
+#: datenums/datenums.cpp:54
+#, fuzzy, kde-format
+msgid "1 day before the end of the year"
+msgid_plural "%1 days before the end of the year"
+msgstr[0] "Cwangcisa Izimo Zakho"
+msgstr[1] "Cwangcisa Izimo Zakho"
+
+#: datenums/datenums.cpp:59
+#, fuzzy, kde-format
+msgctxt "dayOfYear / daysTillEndOfYear"
+msgid "%1 / %2"
+msgstr "%1 %"
+
+#: datenums/datenums.cpp:60
+#, kde-format
+msgid "1 day since the beginning of the year,\n"
+msgid_plural "%1 days since the beginning of the year,\n"
+msgstr[0] ""
+msgstr[1] ""
+
+#: datenums/datenums.cpp:61
+#, kde-format
+msgid "1 day until the end of the year"
+msgid_plural "%1 days until the end of the year"
+msgstr[0] ""
+msgstr[1] ""
+
+#: datenums/datenums.cpp:102
+#, fuzzy, kde-format
+#| msgid "Week"
+msgctxt "Week weekOfYear"
+msgid "Week %1"
+msgstr "Iveki"
+
+#: datenums/datenums.cpp:103 datenums/datenums.cpp:113
+#: datenums/datenums.cpp:118
+#, kde-format
+msgid "1 week since the beginning of the year"
+msgid_plural "%1 weeks since the beginning of the year"
+msgstr[0] ""
+msgstr[1] ""
+
+#: datenums/datenums.cpp:106
+#, fuzzy, kde-format
+#| msgctxt "short_weekday date (e.g. Mon 13)"
+#| msgid "%1 %2"
+msgctxt "weekOfYear (year)"
+msgid "%1 (%2)"
+msgstr "%1 %2"
+
+#: datenums/datenums.cpp:107
+#, fuzzy, kde-format
+#| msgctxt "short_weekday date (e.g. Mon 13)"
+#| msgid "%1 %2"
+msgctxt "Week weekOfYear (year)"
+msgid "Week %1 (%2)"
+msgstr "%1 %2"
+
+#: datenums/datenums.cpp:122
+#, kde-format
+msgid "1 week remaining"
+msgid_plural "%1 weeks remaining"
+msgstr[0] ""
+msgstr[1] ""
+
+#: datenums/datenums.cpp:123
+#, kde-format
+msgid "1 week until the end of the year"
+msgid_plural "%1 weeks until the end of the year"
+msgstr[0] ""
+msgstr[1] ""
+
+#: datenums/datenums.cpp:124
+#, fuzzy, kde-format
+msgctxt "weekOfYear / weeksTillEndOfYear"
+msgid "%1 / %2"
+msgstr "%1 %"
+
+#: datenums/datenums.cpp:140
+#, fuzzy, kde-format
+msgctxt ""
+"n weeks since the beginning of the year\n"
+"n weeks until the end of the year"
+msgid ""
+"%1\n"
+"%2"
+msgstr "%1 %"
+
+#: hebrew/configdialog.cpp:28
+#, fuzzy, kde-format
+#| msgid "Configure Holidays"
+msgctxt "@title:window"
+msgid "Configure Holidays"
+msgstr "Qwalasela Iholide"
+
+#: hebrew/configdialog.cpp:42
+#, fuzzy, kde-format
+msgid "Use Israeli holidays"
+msgstr "Nceda khetha iqela leholide:"
+
+#: hebrew/configdialog.cpp:46
+#, kde-format
+msgid "Show weekly parsha"
+msgstr ""
+
+#: hebrew/configdialog.cpp:50
+#, fuzzy, kde-format
+msgid "Show day of Omer"
+msgstr "Bonisa ixesha njenge:"
+
+#: hebrew/configdialog.cpp:54
+#, fuzzy, kde-format
+msgid "Show Chol HaMoed"
+msgstr "Bonisa ixesha njenge:"
+
+#: hebrew/hebrew.cpp:60
+#, kde-format
+msgctxt ""
+"Change the next two strings if emphasis is done differently in your language."
+msgid ""
+"<qt><p align=\"center\"><i>\n"
+"%1\n"
+"</i></p></qt>"
+msgstr ""
+
+#: hebrew/hebrew.cpp:67
+#, fuzzy, kde-format
+msgid "This plugin provides the date in the Jewish calendar."
+msgstr "Rhweba ngaphandle ikhalenda njenga maphepha e web."
+
+#: hebrew/holiday.cpp:75
+#, kde-format
+msgctxt ""
+"These are Jewish holidays and mostly do not have translations. They may have "
+"different spellings in your language; otherwise, just translate the sound to "
+"your characters."
+msgid "Sh. HaHodesh"
+msgstr ""
+
+#: hebrew/holiday.cpp:83
+#, fuzzy, kde-format
+msgid "Erev Pesach"
+msgstr "Phendla Kwi"
+
+#: hebrew/holiday.cpp:94
+#, kde-format
+msgid "Sh. HaGadol"
+msgstr ""
+
+#: hebrew/holiday.cpp:102
+#, fuzzy, kde-format
+msgid "Pesach"
+msgstr "Phendla Kwi"
+
+#: hebrew/holiday.cpp:113 hebrew/holiday.cpp:307
+#, kde-format
+msgid "Chol Hamoed"
+msgstr ""
+
+#: hebrew/holiday.cpp:124 hebrew/holiday.cpp:129 hebrew/holiday.cpp:138
+#, kde-format
+msgid "Yom HaShoah"
+msgstr ""
+
+#: hebrew/holiday.cpp:164 hebrew/holiday.cpp:171 hebrew/holiday.cpp:182
+#, kde-format
+msgid "Yom HaAtzmaut"
+msgstr ""
+
+#: hebrew/holiday.cpp:166 hebrew/holiday.cpp:180
+#, kde-format
+msgid "Yom HaZikaron"
+msgstr ""
+
+#: hebrew/holiday.cpp:190
+#, kde-format
+msgid "Yom Yerushalayim"
+msgstr ""
+
+#: hebrew/holiday.cpp:194
+#, kde-format
+msgid "Lag BaOmer"
+msgstr ""
+
+#: hebrew/holiday.cpp:220
+#, fuzzy, kde-format
+msgid "Erev Shavuot"
+msgstr "Mgqi"
+
+#: hebrew/holiday.cpp:225
+#, fuzzy, kde-format
+msgid "Shavuot"
+msgstr "Mgqi"
+
+#: hebrew/holiday.cpp:234
+#, kde-format
+msgid "Tzom Tammuz"
+msgstr ""
+
+#: hebrew/holiday.cpp:242
+#, fuzzy, kde-format
+msgid "Sh. Hazon"
+msgstr "Phendlela i:"
+
+#: hebrew/holiday.cpp:244
+#, fuzzy, kde-format
+msgid "Sh. Nahamu"
+msgstr "Phendlela i:"
+
+#: hebrew/holiday.cpp:248
+#, kde-format
+msgid "Tisha B'Av"
+msgstr ""
+
+#: hebrew/holiday.cpp:254
+#, kde-format
+msgid "S'lichot"
+msgstr ""
+
+#: hebrew/holiday.cpp:256
+#, kde-format
+msgid "Erev R.H."
+msgstr ""
+
+#: hebrew/holiday.cpp:264
+#, kde-format
+msgid "Rosh Hashana"
+msgstr ""
+
+#: hebrew/holiday.cpp:268 hebrew/holiday.cpp:283
+#, fuzzy, kde-format
+msgid "Sh. Shuvah"
+msgstr "Phendlela i:"
+
+#: hebrew/holiday.cpp:270 hebrew/holiday.cpp:275
+#, kde-format
+msgid "Tzom Gedalia"
+msgstr ""
+
+#: hebrew/holiday.cpp:287
+#, kde-format
+msgid "Erev Y.K."
+msgstr ""
+
+#: hebrew/holiday.cpp:290
+#, kde-format
+msgid "Yom Kippur"
+msgstr ""
+
+#: hebrew/holiday.cpp:293
+#, fuzzy, kde-format
+msgid "Erev Sukkot"
+msgstr "Mgqi"
+
+#: hebrew/holiday.cpp:298
+#, fuzzy, kde-format
+msgid "Sukkot"
+msgstr "Mgqi"
+
+#: hebrew/holiday.cpp:311
+#, kde-format
+msgid "Hoshana Rabah"
+msgstr ""
+
+#: hebrew/holiday.cpp:314
+#, kde-format
+msgid "Shmini Atzeret"
+msgstr ""
+
+#: hebrew/holiday.cpp:318
+#, kde-format
+msgid "Simchat Torah"
+msgstr ""
+
+#: hebrew/holiday.cpp:329
+#, kde-format
+msgid "Erev Hanukah"
+msgstr ""
+
+#: hebrew/holiday.cpp:331 hebrew/holiday.cpp:339
+#, kde-format
+msgid "Hanukah"
+msgstr ""
+
+#: hebrew/holiday.cpp:342
+#, fuzzy, kde-format
+msgid "Tzom Tevet"
+msgstr "Uvavanyo"
+
+#: hebrew/holiday.cpp:352 hebrew/holiday.cpp:361 hebrew/holiday.cpp:366
+#: hebrew/holiday.cpp:372
+#, fuzzy, kde-format
+msgid "Sh. Shirah"
+msgstr "Phendlela i:"
+
+#: hebrew/holiday.cpp:368
+#, fuzzy, kde-format
+msgid "Tu B'Shvat"
+msgstr "Mgqi"
+
+#: hebrew/holiday.cpp:383 hebrew/holiday.cpp:395 hebrew/holiday.cpp:403
+#, kde-format
+msgid "Sh. Shekalim"
+msgstr ""
+
+#: hebrew/holiday.cpp:392
+#, fuzzy, kde-format
+msgid "Purim Katan"
+msgstr "Coca"
+
+#: hebrew/holiday.cpp:411 hebrew/holiday.cpp:431
+#, kde-format
+msgid "Ta'anit Ester"
+msgstr ""
+
+#: hebrew/holiday.cpp:420 hebrew/holiday.cpp:425
+#, fuzzy, kde-format
+msgid "Sh. Zachor"
+msgstr "Phendlela i:"
+
+#: hebrew/holiday.cpp:427
+#, fuzzy, kde-format
+msgid "Erev Purim"
+msgstr "Coca"
+
+#: hebrew/holiday.cpp:435
+#, fuzzy, kde-format
+msgid "Purim"
+msgstr "Coca"
+
+#: hebrew/holiday.cpp:439 hebrew/holiday.cpp:444
+#, kde-format
+msgid "Shushan Purim"
+msgstr ""
+
+#: hebrew/holiday.cpp:455
+#, fuzzy, kde-format
+msgid "Sh. Parah"
+msgstr "Phendlela i:"
+
+#: hebrew/holiday.cpp:465
+#, kde-format
+msgid "Sh. HaHodesh"
+msgstr ""
+
+#: hebrew/holiday.cpp:481
+#, kde-format
+msgid " Omer"
+msgstr ""
+
+#: hebrew/parsha.cpp:28
+#, fuzzy, kde-format
+msgctxt ""
+"These are weekly readings and do not have translations. They may have "
+"different spellings in your language; otherwise, just translate the sound to "
+"your characters"
+msgid "Bereshit"
+msgstr "Hlaziya"
+
+#: hebrew/parsha.cpp:29
+#, fuzzy, kde-format
+msgid "Noach"
+msgstr "Matshi"
+
+#: hebrew/parsha.cpp:29
+#, kde-format
+msgid "Lech L'cha"
+msgstr ""
+
+#: hebrew/parsha.cpp:29
+#, kde-format
+msgid "Vayera"
+msgstr ""
+
+#: hebrew/parsha.cpp:29
+#, kde-format
+msgid "Chaye Sarah"
+msgstr ""
+
+#: hebrew/parsha.cpp:29
+#, fuzzy, kde-format
+msgid "Toldot"
+msgstr "Eza-kwenziwa"
+
+#: hebrew/parsha.cpp:29
+#, kde-format
+msgid "Vayetze"
+msgstr ""
+
+#: hebrew/parsha.cpp:29
+#, fuzzy, kde-format
+msgid "Vayishlach"
+msgstr "Phendla Kwi"
+
+#: hebrew/parsha.cpp:30
+#, kde-format
+msgid "Vayeshev"
+msgstr ""
+
+#: hebrew/parsha.cpp:30
+#, fuzzy, kde-format
+msgid "Miketz"
+msgstr "Indlela yokwenza"
+
+#: hebrew/parsha.cpp:30
+#, kde-format
+msgid "Vayigash"
+msgstr ""
+
+#: hebrew/parsha.cpp:30
+#, kde-format
+msgid "Vayechi"
+msgstr ""
+
+#: hebrew/parsha.cpp:30
+#, fuzzy, kde-format
+msgid "Shemot"
+msgstr "Bonisa"
+
+#: hebrew/parsha.cpp:30
+#, kde-format
+msgid "Vaera"
+msgstr ""
+
+#: hebrew/parsha.cpp:30
+#, kde-format
+msgid "Bo"
+msgstr ""
+
+#: hebrew/parsha.cpp:31
+#, fuzzy, kde-format
+msgid "Beshalach"
+msgstr "Phendla Kwi"
+
+#: hebrew/parsha.cpp:31
+#, kde-format
+msgid "Yitro"
+msgstr ""
+
+#: hebrew/parsha.cpp:31
+#, kde-format
+msgid "Mishpatim"
+msgstr ""
+
+#: hebrew/parsha.cpp:31
+#, kde-format
+msgid "Terumah"
+msgstr ""
+
+#: hebrew/parsha.cpp:31
+#, fuzzy, kde-format
+msgid "Tetzaveh"
+msgstr "Uvavanyo"
+
+#: hebrew/parsha.cpp:31
+#, kde-format
+msgid "Ki Tisa"
+msgstr ""
+
+#: hebrew/parsha.cpp:31
+#, kde-format
+msgid "Vayakhel"
+msgstr ""
+
+#: hebrew/parsha.cpp:32
+#, kde-format
+msgid "Pekudei"
+msgstr ""
+
+#: hebrew/parsha.cpp:32
+#, kde-format
+msgid "Vayikra"
+msgstr ""
+
+#: hebrew/parsha.cpp:32
+#, fuzzy, kde-format
+msgid "Tzav"
+msgstr "Ukuhamba"
+
+#: hebrew/parsha.cpp:32
+#, fuzzy, kde-format
+msgid "Shemini"
+msgstr "Bonisa"
+
+#: hebrew/parsha.cpp:32
+#, fuzzy, kde-format
+msgid "Tazria"
+msgstr "Ukuhamba"
+
+#: hebrew/parsha.cpp:32
+#, fuzzy, kde-format
+msgid "Metzora"
+msgstr "Indlela yokwenza"
+
+#: hebrew/parsha.cpp:32
+#, kde-format
+msgid "Acharei Mot"
+msgstr ""
+
+#: hebrew/parsha.cpp:33
+#, kde-format
+msgid "Kedoshim"
+msgstr ""
+
+#: hebrew/parsha.cpp:33
+#, kde-format
+msgid "Emor"
+msgstr ""
+
+#: hebrew/parsha.cpp:33
+#, kde-format
+msgid "Behar"
+msgstr ""
+
+#: hebrew/parsha.cpp:33
+#, kde-format
+msgid "Bechukotai"
+msgstr ""
+
+#: hebrew/parsha.cpp:33
+#, fuzzy, kde-format
+msgid "Bemidbar"
+msgstr "Umkhumbuzi:"
+
+#: hebrew/parsha.cpp:33
+#, kde-format
+msgid "Naso"
+msgstr ""
+
+#: hebrew/parsha.cpp:33
+#, kde-format
+msgid "Behaalotcha"
+msgstr ""
+
+#: hebrew/parsha.cpp:34
+#, fuzzy, kde-format
+msgid "Shelach"
+msgstr "Phendla Kwi"
+
+#: hebrew/parsha.cpp:34
+#, fuzzy, kde-format
+msgid "Korach"
+msgstr "Matshi"
+
+#: hebrew/parsha.cpp:34
+#, kde-format
+msgid "Chukat"
+msgstr ""
+
+#: hebrew/parsha.cpp:34
+#, kde-format
+msgid "Balak"
+msgstr ""
+
+#: hebrew/parsha.cpp:34
+#, kde-format
+msgid "Pinchas"
+msgstr ""
+
+#: hebrew/parsha.cpp:34
+#, fuzzy, kde-format
+msgid "Matot"
+msgstr "Inyanga"
+
+#: hebrew/parsha.cpp:34
+#, fuzzy, kde-format
+msgid "Masei"
+msgstr "Undoqo"
+
+#: hebrew/parsha.cpp:35
+#, kde-format
+msgid "Devarim"
+msgstr ""
+
+#: hebrew/parsha.cpp:35
+#, kde-format
+msgid "Vaetchanan"
+msgstr ""
+
+#: hebrew/parsha.cpp:35
+#, kde-format
+msgid "Ekev"
+msgstr ""
+
+#: hebrew/parsha.cpp:35
+#, fuzzy, kde-format
+msgid "Reeh"
+msgstr "Hlaziya"
+
+#: hebrew/parsha.cpp:35
+#, fuzzy, kde-format
+msgid "Shoftim"
+msgstr "Bonisa"
+
+#: hebrew/parsha.cpp:35
+#, fuzzy, kde-format
+msgid "Ki Tetze"
+msgstr "Uvavanyo"
+
+#: hebrew/parsha.cpp:35
+#, kde-format
+msgid "Ki Tavo"
+msgstr ""
+
+#: hebrew/parsha.cpp:36
+#, kde-format
+msgid "Nitzavim"
+msgstr ""
+
+#: hebrew/parsha.cpp:36
+#, kde-format
+msgid "Vayelech"
+msgstr ""
+
+#: hebrew/parsha.cpp:36
+#, kde-format
+msgid "Haazinu"
+msgstr ""
+
+#: lunarphases/lunarphases.cpp:61
+#, kde-format
+msgid ""
+"This plugin displays the day's lunar phase (New, First, Last, Full). "
+"Currently, the phase is computed for noon at UTC; therefore, you should "
+"expect variations by 1 day in either direction."
+msgstr ""
+
+#: picoftheday/configdialog.cpp:28
+#, fuzzy, kde-format
+#| msgid "Configure &Date && Time..."
+msgctxt "@title:window"
+msgid "Configure Picture of the Day"
+msgstr "Qwalasela &Umhla && Ixesha..."
+
+#: picoftheday/configdialog.cpp:42
+#, kde-format
+msgid "Thumbnail Aspect Ratio Mode"
+msgstr ""
+
+#: picoftheday/configdialog.cpp:46
+#, kde-format
+msgid "Ignore aspect ratio"
+msgstr ""
+
+#: picoftheday/configdialog.cpp:48
+#, kde-format
+msgid ""
+"The thumbnail will be scaled freely. The aspect ratio will not be preserved."
+msgstr ""
+
+#: picoftheday/configdialog.cpp:52
+#, kde-format
+msgid "Keep aspect ratio"
+msgstr ""
+
+#: picoftheday/configdialog.cpp:54
+#, kde-format
+msgid ""
+"The thumbnail will be scaled to a rectangle as large as possible inside a "
+"given rectangle, preserving the aspect ratio."
+msgstr ""
+
+#: picoftheday/configdialog.cpp:59
+#, kde-format
+msgid "Keep aspect ratio by expanding"
+msgstr ""
+
+#: picoftheday/configdialog.cpp:61
+#, kde-format
+msgid ""
+"The thumbnail will be scaled to a rectangle as small as possible outside a "
+"given rectangle, preserving the aspect ratio."
+msgstr ""
+
+#: picoftheday/element.cpp:209
+#, kde-format
+msgid "Wikipedia POTD: %1"
+msgstr ""
+
+#: picoftheday/element.cpp:326
+#, fuzzy, kde-format
+msgid "Picture Page"
+msgstr "Cima..."
+
+#: picoftheday/element.cpp:326
+#, fuzzy, kde-format
+#| msgid "Go &Forward"
+msgid "Loading..."
+msgstr "Yiya &Phambili"
+
+#: picoftheday/element.cpp:332
+#, fuzzy, kde-format
+msgid "<qt>Loading <i>Picture of the Day</i>...</qt>"
+msgstr "Rhweba ngaphandle ikhalenda njenga maphepha e web."
+
+#: picoftheday/picoftheday.cpp:48
+#, fuzzy, kde-format
+msgid "<qt>This plugin provides the Wikipedia <i>Picture of the Day</i>.</qt>"
+msgstr "Rhweba ngaphandle ikhalenda njenga maphepha e web."
+
+#: thisdayinhistory/thisdayinhistory.cpp:29
+#, fuzzy, kde-format
+#| msgid "This plugin provides numbers of days and weeks."
+msgid "This plugin provides links to Wikipedia's 'This Day in History' pages."
+msgstr "Le plugin inikeza ngamanani lentsuku neeveki."
+
+#: thisdayinhistory/thisdayinhistory.cpp:37
+#, kde-format
+msgid "This day in history"
+msgstr ""
+
+#: thisdayinhistory/thisdayinhistory.cpp:39
+#: thisdayinhistory/thisdayinhistory.cpp:53
+#, kde-format
+msgctxt "Localized Wikipedia website"
+msgid "https://en.wikipedia.org/wiki/"
+msgstr ""
+
+#: thisdayinhistory/thisdayinhistory.cpp:40
+#, kde-format
+msgctxt "Qt date format used by the localized Wikipedia"
+msgid "MMMM_d"
+msgstr ""
+
+#: thisdayinhistory/thisdayinhistory.cpp:51
+#, kde-format
+msgid "This month in history"
+msgstr ""
+
+#: thisdayinhistory/thisdayinhistory.cpp:54
+#, kde-format
+msgctxt "Qt date format used by the localized Wikipedia"
+msgid "MMMM_yyyy"
+msgstr ""
+
+#~ msgctxt "NAME OF TRANSLATORS"
+#~ msgid "Your names"
+#~ msgstr "Thelma Lungcuzo"
+
+#~ msgctxt "EMAIL OF TRANSLATORS"
+#~ msgid "Your emails"
+#~ msgstr "thelma@translate.org.za"
+
+#~ msgid "KOrganizer"
+#~ msgstr "KOrganizer"
+
+#, fuzzy
+#~| msgid "A Personal Organizer for KDE"
+#~ msgid "A Personal Organizer"
+#~ msgstr "Umququzeleli Wobuqu we KDE"
+
+#, fuzzy
+#~ msgid "Maintainer"
+#~ msgstr "Umlondolozi Wangoku"
+
+#, fuzzy
+#~| msgid "Current Maintainer"
+#~ msgid "Former Maintainer"
+#~ msgstr "Umlondolozi Wangoku"
+
+#~ msgid "Original Author"
+#~ msgstr "Ubhali Woqobo"
+
+#, fuzzy
+#~ msgid "Ian Dawes"
+#~ msgstr "iveki(ii) kwi:"
+
+#, fuzzy
+#~ msgid "Tim Jansen"
+#~ msgstr "Ummandla wexesha:"
+
+#, fuzzy
+#~ msgid "Martin Koller"
+#~ msgstr "Umlondolozi Wangoku"
+
+#, fuzzy
+#~ msgid "Uwe Koloska"
+#~ msgstr "Khetha umbala"
+
+#, fuzzy
+#~ msgid "Don Sanders"
+#~ msgstr "Umkhumbuzi:"
+
+#, fuzzy
+#~ msgid "Hide menu bar"
+#~ msgstr "Ibar yexesha:"
+
+#, fuzzy
+#~ msgid "Import &Calendar..."
+#~ msgstr "i Khalenda"
+
+#, fuzzy
+#~ msgid "Merge the contents of another iCalendar"
+#~ msgstr "Hlela isiganeko"
+
+#, fuzzy
+#~ msgid "&Import From UNIX Ical Tool"
+#~ msgstr "&Rhweba ngaphakathi kwi Ical"
+
+#, fuzzy
+#~ msgid "Get &Hot New Stuff..."
+#~ msgstr "Fumana Izinto Ezintsha Ezitshisayo..."
+
+#, fuzzy
+#~ msgid "Export &Web Page..."
+#~ msgstr "Khuphela Iphepha le Web..."
+
+#, fuzzy
+#~ msgid "Export as &iCalendar..."
+#~ msgstr "i Khalenda"
+
+#, fuzzy
+#~ msgid "Export as &vCalendar..."
+#~ msgstr "i Khalenda"
+
+#, fuzzy
+#~ msgid "Archive O&ld Entries..."
+#~ msgstr "Gcina Amangeno Amadala..."
+
+#, fuzzy
+#~ msgid "Pur&ge Completed To-dos"
+#~ msgstr ""
+#~ "cima ngokugqityiwe Ku-Dos\n"
+#~ "Hlenga-hlengisa Okugqityiweyo"
+
+#, fuzzy
+#~ msgid "&Delete"
+#~ msgstr "Cima..."
+
+#~ msgid "What's &Next"
+#~ msgstr "Yintoni &Elandelayo"
+
+#~ msgid "&Month"
+#~ msgstr "&Inyanga"
+
+#, fuzzy
+#~ msgid "&Agenda"
+#~ msgstr "Imboniselo yokuzakuxoxwa:"
+
+#, fuzzy
+#~ msgid "&Event List"
+#~ msgstr "Iziganeko:"
+
+#, fuzzy
+#~ msgid "&To-do List"
+#~ msgstr "&Ukwe-Nza Uluhlu"
+
+#~ msgid "&Journal"
+#~ msgstr "&Incwadi egcina ii akhawuti"
+
+#, fuzzy
+#~ msgid "Time&line"
+#~ msgstr "Ummandla wexesha:"
+
+#, fuzzy
+#~ msgid "Time&spent"
+#~ msgstr "&Ixesha Lokuphila"
+
+#, fuzzy
+#~ msgid "&Refresh"
+#~ msgstr "Hlaziya"
+
+#, fuzzy
+#~ msgid "F&ilter"
+#~ msgstr "Bonisa Icebo lokucoca ulwelo"
+
+#, fuzzy
+#~| msgid "day"
+#~ msgctxt "@action Jump to today"
+#~ msgid "To &Today"
+#~ msgstr "umhla"
+
+#, fuzzy
+#~| msgid "day"
+#~ msgid "Today"
+#~ msgstr "umhla"
+
+#, fuzzy
+#~| msgid "Go to &Today"
+#~ msgid "Scroll to Today"
+#~ msgstr "Yiya ku &Namhlanje"
+
+#, fuzzy
+#~| msgid "Go &Backward"
+#~ msgctxt "scroll backward"
+#~ msgid "&Backward"
+#~ msgstr "Yiya &Ngasemva"
+
+#, fuzzy
+#~| msgid "Go &Backward"
+#~ msgctxt "scroll backward"
+#~ msgid "Back"
+#~ msgstr "Yiya &Ngasemva"
+
+#, fuzzy
+#~| msgid "Go &Backward"
+#~ msgid "Scroll Backward"
+#~ msgstr "Yiya &Ngasemva"
+
+#, fuzzy
+#~| msgid "Go &Forward"
+#~ msgctxt "scroll forward"
+#~ msgid "&Forward"
+#~ msgstr "Yiya &Phambili"
+
+#, fuzzy
+#~| msgid "Go &Forward"
+#~ msgctxt "scoll forward"
+#~ msgid "Forward"
+#~ msgstr "Yiya &Phambili"
+
+#, fuzzy
+#~| msgid "Go &Forward"
+#~ msgid "Scroll Forward"
+#~ msgstr "Yiya &Phambili"
+
+#~ msgid "&Day"
+#~ msgstr "&Imini"
+
+#, fuzzy
+#~ msgid "&Next Day"
+#~ msgid_plural "&Next %1 Days"
+#~ msgstr[0] "&Umhla Olandelayo"
+#~ msgstr[1] "&Imihla %1 Elandelayo"
+
+#~ msgid "W&ork Week"
+#~ msgstr "Iveki Yo&msebenzi"
+
+#~ msgid "&Week"
+#~ msgstr "&Iveki"
+
+#~ msgid "New E&vent..."
+#~ msgstr "Isi&ganeko Esitsha..."
+
+#, fuzzy
+#~ msgid "Create a new Event"
+#~ msgstr "Cima Ukwe-Nza"
+
+#, fuzzy
+#~ msgid "New &To-do..."
+#~ msgstr "Okutsha &Ukwe-nza..."
+
+#, fuzzy
+#~ msgid "Create a new To-do"
+#~ msgstr "Cima Ukwe-Nza"
+
+#, fuzzy
+#~ msgid "New Su&b-to-do..."
+#~ msgstr "Entsha Es&ezantsi-Ukwe-Nza..."
+
+#, fuzzy
+#~ msgid "New &Journal..."
+#~ msgstr "&Incwadi egcina ii akhawuti"
+
+#, fuzzy
+#~ msgid "Create a new Journal"
+#~ msgstr "Cima Ukwe-Nza"
+
+#, fuzzy
+#~ msgid "Configure View..."
+#~ msgstr "Qwalasela..."
+
+#, fuzzy
+#~ msgid "Configure"
+#~ msgstr "Qwalasela..."
+
+#~ msgid "&Show"
+#~ msgstr "&Bonisa"
+
+#~ msgid "&Edit..."
+#~ msgstr "&Hlela..."
+
+#, fuzzy
+#~ msgid "&Make Sub-to-do Independent"
+#~ msgstr "&Yenza Ulwenzo- Olusezantsi Oluzimeleyo"
+
+#, fuzzy
+#~ msgid "Re&quest Update"
+#~ msgstr "Cela"
+
+#, fuzzy
+#~ msgid "Send Status &Update"
+#~ msgstr "Umhla wesiphelo:"
+
+#, fuzzy
+#~ msgctxt "counter proposal"
+#~ msgid "Request Chan&ge"
+#~ msgstr "Isibali"
+
+#, fuzzy
+#~ msgid "&Mail Free Busy Information..."
+#~ msgstr "Papasha Iinkcukacha ye Free Busy"
+
+#, fuzzy
+#~ msgid "&Send as iCalendar..."
+#~ msgstr "iKhalenda..."
+
+#, fuzzy
+#~ msgid "&Upload Free Busy Information"
+#~ msgstr "Papasha Iinkcukacha ye Free Busy"
+
+#, fuzzy
+#~ msgid "&Address Book"
+#~ msgstr "Incwadi yedilesi"
+
+#, fuzzy
+#~ msgid "Show Date Navigator"
+#~ msgstr "Bonisa ixesha njenge:"
+
+#, fuzzy
+#~ msgid "Show To-do View"
+#~ msgstr "Ukwe-nza uluhlu"
+
+#, fuzzy
+#~ msgid "Show Item Viewer"
+#~ msgstr "Umboniseli Wesiganeko"
+
+#, fuzzy
+#~| msgid "Export Calendar as Web Page"
+#~ msgid "Show Calendar Manager"
+#~ msgstr "Rhweba Ngaphandle Ikhalenda Njengephepha Le Web"
+
+#~ msgid "Configure &Date && Time..."
+#~ msgstr "Qwalasela &Umhla && Ixesha..."
+
+#, fuzzy
+#~ msgid "Manage View &Filters..."
+#~ msgstr "Hlela &Amacebo okucoca ulwelo..."
+
+#, fuzzy
+#~ msgid "Manage C&ategories..."
+#~ msgstr "Hlela I&intlobo..."
+
+#, fuzzy
+#~ msgid "&Configure KOrganizer..."
+#~ msgstr "Qwalasela &I Plagin..."
+
+#, fuzzy
+#~ msgid "New calendar added successfully"
+#~ msgstr "Papasha Iinkcukacha ye Free Busy"
+
+#, fuzzy
+#~ msgid "Could not add a calendar. Error: %1"
+#~ msgstr "Ayikwazanga ukulayisha ikhalenda '%1'.\n"
+
+#~ msgid ""
+#~ "You have no ical file in your home directory.\n"
+#~ "Import cannot proceed.\n"
+#~ msgstr ""
+#~ "Awunafayile ye Ical kulawulo lwakho lasekhaya.\n"
+#~ "Urhwebo lwangaphakathi alunakuqhubeka.\n"
+
+#, fuzzy
+#~ msgid ""
+#~ "KOrganizer encountered some unknown fields while parsing your .calendar "
+#~ "ical file, and had to discard them; please check to see that all your "
+#~ "relevant data was correctly imported."
+#~ msgstr ""
+#~ "I KOrganizer idibene neminye imihlaba engaziwayo ngexesha icukuceza "
+#~ "ikhalenda ye ical achaza eyakho ifayile ye Ical, kwaye zimele zibekwe "
+#~ "ecaleni.  Nceda khangela ukubona ukuba zonke idata zakho zirhwetywe "
+#~ "kakuhle."
+
+#, fuzzy
+#~ msgid ""
+#~ "KOrganizer encountered an error parsing your .calendar file from ical; "
+#~ "import has failed."
+#~ msgstr ""
+#~ "KOrganizer idibene nempazamo ecukuceza eyakho ifayile ye .khalenda "
+#~ "ukusuka kwi Ical. Urhwebo ngaphakathi aluphumelelanga."
+
+#, fuzzy
+#~ msgid ""
+#~ "KOrganizer does not think that your .calendar file is a valid ical "
+#~ "calendar; import has failed."
+#~ msgstr ""
+#~ "KOrganizer ayicingi ukuba eyakho ifayile ye .khalenda yikhalendar ye Ical "
+#~ "Urhwebo ngaphakathi lwahlulekile."
+
+#~ msgid ""
+#~ "Your calendar will be saved in iCalendar format. Use 'Export vCalendar' "
+#~ "to save in vCalendar format."
+#~ msgstr ""
+#~ "Ikhalenda yakho izakugcinwa kwifomati ye Khalenda.Sebenzisa 'Rhwebo "
+#~ "ngaphandle I vCalendar' ukugcina kwifomati ye vCalendar."
+
+#~ msgid "Format Conversion"
+#~ msgstr "Uguqulelo Lwefomati"
+
+#~ msgid "Proceed"
+#~ msgstr "Iqhubekile"
+
+#~ msgid "Cannot upload calendar to '%1'"
+#~ msgstr "Ayinakulayisha ngaphezulu ikhalenda kwi '%1'"
+
+#~ msgid "Saved calendar '%1'."
+#~ msgstr "Ikhalenda egciniweyo '%1'."
+
+#, fuzzy
+#~| msgid "New Calendar"
+#~ msgid "Select path for HTML calendar export"
+#~ msgstr "Icalendar Entsha"
+
+#, fuzzy
+#~ msgid "Do you want to overwrite file \"%1\"?"
+#~ msgstr "Ayikwazi ukwenza ifayile ezakulayishwa phezulu"
+
+#, fuzzy
+#~ msgid "Unable to save calendar to the file %1."
+#~ msgstr "Ayikwazi ukuphatha ikhalenda ebekwe kude.\n"
+
+#, fuzzy
+#~ msgid "Error"
+#~ msgstr "Akukho Mposiso"
+
+#~ msgid ""
+#~ "The calendar has been modified.\n"
+#~ "Do you want to save it?"
+#~ msgstr ""
+#~ "Ikhalenda sele iguquliwe kancinane.\n"
+#~ "Ufuna ukuyigcina?"
+
+#, fuzzy
+#~ msgid "*.ics *.vcs|Calendar Files"
+#~ msgstr "*.vcs *.ics|IiKhalenda zeefayile"
+
+#, fuzzy
+#~ msgid "Could not start control module for date and time format."
+#~ msgstr "Ayikwazanga kuqala umnqongo wolawulo lwefomati yomhla nexesha."
+
+#, fuzzy
+#~ msgid "Could not load calendar %1."
+#~ msgstr "Ayikwazanga ukulayisha ikhalenda '%1'.\n"
+
+#~ msgid "The downloaded events will be merged into your current calendar."
+#~ msgstr "Iziganeko ezilayishwe ezantsi zizakudibaniswa kwi khalenda yangoku."
+
+#~ msgid "&Show Event"
+#~ msgstr "&Bonisa Isiganeko"
+
+#~ msgid "&Edit Event..."
+#~ msgstr "&Hlela Isiganeko..."
+
+#~ msgid "&Delete Event"
+#~ msgstr "&Cima Isiganeko"
+
+#, fuzzy
+#~ msgid "&Show To-do"
+#~ msgstr "&Bonisa Eza-Kwenziwa"
+
+#, fuzzy
+#~ msgid "&Edit To-do..."
+#~ msgstr "&Hlela Eza-Kwenziwa..."
+
+#, fuzzy
+#~ msgid "&Delete To-do"
+#~ msgstr "&Cima Eza-Kweziwa"
+
+#, fuzzy
+#~ msgid "Attach &inline"
+#~ msgstr "Hlela isiganeko"
+
+#, fuzzy
+#~ msgid "Remove Attachments"
+#~ msgstr "Abathathi nxaxheba"
+
+#, fuzzy
+#~ msgid "Undo: %1"
+#~ msgstr "Ukwe-nza: %1"
+
+#, fuzzy
+#~ msgid "Redo: %1"
+#~ msgstr "Ukwe-nza: %1"
+
+#, fuzzy
+#~ msgctxt "@title:window"
+#~ msgid "Import Calendar"
+#~ msgstr "i Khalenda"
+
+#, fuzzy
+#~ msgid "Add as new calendar"
+#~ msgstr "Icalendar Entsha"
+
+#, fuzzy
+#~ msgctxt ""
+#~ "@info/plain Displayed grayed-out inside the textbox, verb to search"
+#~ msgid "Search"
+#~ msgstr "Phendla Kwi"
+
+#, fuzzy
+#~| msgid "Go &Forward"
+#~ msgid "searching..."
+#~ msgstr "Yiya &Phambili"
+
+#, fuzzy
+#~| msgid "Edit Calendar Filters"
+#~ msgctxt "@title:window"
+#~ msgid "Properties of Calendar Folder %1"
+#~ msgstr "Hlela Amacebo okucoca ulwelo e Khalenda"
+
+#, fuzzy
+#~ msgid "&Disable Color"
+#~ msgstr "Khetha umbala"
+
+#, fuzzy
+#~ msgid "Use as &Default Calendar"
+#~ msgstr "Ifomati ye Khalenda Engagqibekanga"
+
+#, fuzzy
+#~ msgid "Remove from list"
+#~ msgstr "Gcina i Template"
+
+#, fuzzy
+#~ msgid "Add Calendar"
+#~ msgstr "Icalendar Entsha"
+
+#, fuzzy
+#~ msgid "Do you really want to delete calendar %1?"
+#~ msgstr "Ayikwazi ukwenza ifayile ezakulayishwa phezulu"
+
+#, fuzzy
+#~ msgid "Delete Calendar"
+#~ msgstr "Ifomati ye Khalenda Engagqibekanga"
+
+#, fuzzy
+#~ msgid "Keep Absolute Times?"
+#~ msgstr "akukho xesha"
+
+#, fuzzy
+#~ msgid "Keep Times"
+#~ msgstr "akukho xesha"
+
+#, fuzzy
+#~ msgid "Move Times"
+#~ msgstr "akukho xesha"
+
+#, fuzzy
+#~ msgid "Todo completed: %1 (%2)"
+#~ msgstr "igqitywe kwi %1"
+
+#, fuzzy
+#~ msgid "Journal of %1"
+#~ msgstr "&Incwadi egcina ii akhawuti"
+
+#, fuzzy
+#~ msgctxt "@info"
+#~ msgid "Do you really want to permanently remove the item \"%1\"?"
+#~ msgstr "Ayikwazi ukwenza ifayile ezakulayishwa phezulu"
+
+#, fuzzy
+#~ msgctxt "@title:window"
+#~ msgid "Delete Item?"
+#~ msgstr "Cima iziganeko ezindala"
+
+#, fuzzy
+#~| msgid "Please specify a valid start date."
+#~ msgid "Paste failed: unable to determine a valid target date."
+#~ msgstr "Nceda khankanya umhla wesiqalo osebenzayo."
+
+#, fuzzy
+#~ msgid "Make sub-to-dos independent"
+#~ msgstr "&Yenza Ulwenzo- Olusezantsi Oluzimeleyo"
+
+#, fuzzy
+#~ msgid "Toggle Reminder"
+#~ msgstr "Umkhumbuzi:"
+
+#, fuzzy
+#~ msgid "Toggle To-do Completed"
+#~ msgstr ""
+#~ "cima ngokugqityiwe Ku-Dos\n"
+#~ "Hlenga-hlengisa Okugqityiweyo"
+
+#, fuzzy
+#~ msgctxt "@title:window"
+#~ msgid "Copying Succeeded"
+#~ msgstr "Indawo ephelela kuyo"
+
+#, fuzzy
+#~ msgctxt "@info"
+#~ msgid "Unable to copy the item \"%1\" to %2."
+#~ msgstr "Ayikwazi ukuphatha ikhalenda ebekwe kude.\n"
+
+#, fuzzy
+#~ msgctxt "@title:window"
+#~ msgid "Copying Failed"
+#~ msgstr "Indawo ephelela kuyo"
+
+#, fuzzy
+#~ msgctxt "@title:window"
+#~ msgid "Moving Failed"
+#~ msgstr "Indawo ephelela kuyo"
+
+#, fuzzy
+#~ msgctxt "@title:window"
+#~ msgid "Moving Succeeded"
+#~ msgstr "Indawo ephelela kuyo"
+
+#, fuzzy
+#~ msgid "Do you want to dissociate the occurrence on %1 from the recurrence?"
+#~ msgstr "Dwelisa iziganeko zemini yangoku"
+
+#~ msgid "KOrganizer Confirmation"
+#~ msgstr "Uqinisekiso lwe KOrganizer"
+
+#, fuzzy
+#~ msgid "&Dissociate"
+#~ msgstr "Ixesha lihlanganisiwe"
+
+#, fuzzy
+#~ msgid ""
+#~ "Do you want to dissociate the occurrence on %1 from the recurrence or "
+#~ "also dissociate future ones?"
+#~ msgstr "Dwelisa iziganeko zemini yangoku"
+
+#, fuzzy
+#~ msgid "&Only Dissociate This One"
+#~ msgstr "Dwelisa iziganeko zemini yangoku"
+
+#, fuzzy
+#~ msgid "&Also Dissociate Future Ones"
+#~ msgstr "Dwelisa iziganeko zemini yangoku"
+
+#, fuzzy
+#~ msgid "Dissociate future occurrences"
+#~ msgstr "Dwelisa iziganeko zemini yangoku"
+
+#, fuzzy
+#~ msgid "Dissociate occurrence"
+#~ msgstr "Dwelisa iziganeko zemini yangoku"
+
+#, fuzzy
+#~ msgid "Dissociating the future occurrences failed."
+#~ msgstr "Dwelisa iziganeko zemini yangoku"
+
+#, fuzzy
+#~ msgid "Dissociating Failed"
+#~ msgstr "Indawo ephelela kuyo"
+
+#, fuzzy
+#~ msgid "Dissociating the occurrence failed."
+#~ msgstr "Dwelisa iziganeko zemini yangoku"
+
+#, fuzzy
+#~ msgid "iCalendars (*.ics)"
+#~ msgstr "i Khalenda"
+
+#, fuzzy
+#~ msgctxt "@info"
+#~ msgid "Cannot write iCalendar file %1. %2"
+#~ msgstr "Ayinakubhala ifayile yendawo yokugcina efihlakeleyo."
+
+#, fuzzy
+#~| msgid "The journal entries can not be exported to a vCalendar file."
+#~ msgid "The journal entries cannot be exported to a vCalendar file."
+#~ msgstr "Amangeno endaba akanakurhwetywa ngaphandle kwifayile ye vCalendar."
+
+#~ msgid "Data Loss Warning"
+#~ msgstr "Isilumkiso Solahleko Lwe data"
+
+#, fuzzy
+#~ msgid "vCalendars (*.vcs)"
+#~ msgstr "i Khalenda"
+
+#, fuzzy
+#~ msgctxt "@info"
+#~ msgid "Cannot write vCalendar file %1. %2"
+#~ msgstr "Ayinakubhala ifayile yendawo yokugcina efihlakeleyo."
+
+#~ msgid "&Previous Day"
+#~ msgstr "&Imini Edlulileyo"
+
+#~ msgid "&Previous Week"
+#~ msgstr "&Iveki Edlulileyo"
+
+#~ msgid "&Next Week"
+#~ msgstr "&Iveki Elandelayo"
+
+#, fuzzy
+#~ msgid "No filter"
+#~ msgstr "Bonisa Icebo lokucoca ulwelo"
+
+#, fuzzy
+#~ msgid "Delete Only This"
+#~ msgstr "Cima iziganeko ezindala"
+
+#, fuzzy
+#~ msgid "Delete All"
+#~ msgstr "Cima..."
+
+#, fuzzy
+#~ msgid "Delete parent to-do"
+#~ msgstr "Cima Ukwe-Nza"
+
+#, fuzzy
+#~ msgid "Delete parent to-do and sub-to-dos"
+#~ msgstr "Cima Ukwe-Nza"
+
+#, fuzzy
+#~ msgid ""
+#~ "The calendar item \"%1\" recurs over multiple dates; are you sure you "
+#~ "want to delete it and all its recurrences?"
+#~ msgstr ""
+#~ "Esi siganeko siyaphinda ukwenzeka ngaphaya kwemihla emininzi.Uqinisekile "
+#~ "ukuba ufuna ukucima esi siganeko kunye nazo zonke izinto eziphindezenzeka "
+#~ "zayo?"
+
+#, fuzzy
+#~ msgid "Also Delete &Future"
+#~ msgstr "Cima Kwangoku"
+
+#, fuzzy
+#~ msgid ""
+#~ "The calendar item \"%1\" recurs over multiple dates. Do you want to "
+#~ "delete only the current one on %2, also future occurrences, or all its "
+#~ "occurrences?"
+#~ msgstr ""
+#~ "Esi siganeko siyaphinda ukwenzeka ngaphaya kwemihla emininzi.Uqinisekile "
+#~ "ukuba ufuna ukucima esi siganeko kunye nazo zonke izinto eziphindezenzeka "
+#~ "zayo?"
+
+#, fuzzy
+#~ msgid ""
+#~ "The calendar item \"%1\" recurs over multiple dates. Do you want to "
+#~ "delete only the current one on %2 or all its occurrences?"
+#~ msgstr ""
+#~ "Esi siganeko siyaphinda ukwenzeka ngaphaya kwemihla emininzi.Uqinisekile "
+#~ "ukuba ufuna ukucima esi siganeko kunye nazo zonke izinto eziphindezenzeka "
+#~ "zayo?"
+
+#, fuzzy
+#~ msgid "Delete C&urrent"
+#~ msgstr "Cima Kwangoku"
+
+#, fuzzy
+#~ msgid "Delete &All"
+#~ msgstr "Cima..."
+
+#, fuzzy
+#~ msgid "There are no completed to-dos to purge."
+#~ msgstr "Fihla ukwe-nza okugqityiweyo"
+
+#, fuzzy
+#~ msgid "Delete all completed to-dos from checked calendars?"
+#~ msgstr "Cima zonke ezigqityiweyo Ku-Dos?"
+
+#, fuzzy
+#~ msgid "Purge To-dos"
+#~ msgstr "Coca Ku-Dos"
+
+#~ msgid "Purge"
+#~ msgstr "Coca"
+
+#, fuzzy
+#~ msgid "Unable to copy the item to %1."
+#~ msgstr "Ayikwazi ukuphatha ikhalenda ebekwe kude.\n"
+
+#, fuzzy
+#~ msgid "Copying Failed"
+#~ msgstr "Indawo ephelela kuyo"
+
+#, fuzzy
+#~ msgid "Unable to move the item to  %1."
+#~ msgstr "Ayikwazi ukuphatha ikhalenda ebekwe kude.\n"
+
+#, fuzzy
+#~ msgid "Moving Failed"
+#~ msgstr "Indawo ephelela kuyo"
+
+#, fuzzy
+#~ msgid "0 completed to-dos were purged."
+#~ msgstr "Fihla ukwe-nza okugqityiweyo"
+
+#, fuzzy
+#~ msgid "%1 completed to-do was purged."
+#~ msgid_plural "%1 completed to-dos were purged."
+#~ msgstr[0] "Fihla ukwe-nza okugqityiweyo"
+#~ msgstr[1] "Fihla ukwe-nza okugqityiweyo"
+
+#, fuzzy
+#~ msgid "An error occurred while purging completed to-dos: %1"
+#~ msgstr "Fihla ukwe-nza okugqityiweyo"
+
+#, fuzzy
+#~| msgid "General"
+#~ msgctxt "@title:tab General settings for a folder."
+#~ msgid "General"
+#~ msgstr "Ngokubanzi"
+
+#, fuzzy
+#~| msgid "Name:"
+#~ msgctxt "@label:textbox Name of the folder."
+#~ msgid "&Name:"
+#~ msgstr "Igama:"
+
+#, fuzzy
+#~ msgctxt "@info:tooltip"
+#~ msgid "Set the folder name"
+#~ msgstr "Umhla wesiphelo:"
+
+#, fuzzy
+#~ msgctxt "@option:check"
+#~ msgid "Block reminders locally"
+#~ msgstr "Umkhumbuzi:"
+
+#, fuzzy
+#~ msgctxt "@info:tooltip"
+#~ msgid "Ignore reminders from this calendar"
+#~ msgstr "Cima iziganeko ezindala"
+
+#, fuzzy
+#~ msgctxt "@info:whatsthis"
+#~ msgid ""
+#~ "Check this box if you do not want to receive reminders from items "
+#~ "associated with this calendar."
+#~ msgstr "Bonisa imizuzwana kwilayini ye Marcus Bains"
+
+#, fuzzy
+#~ msgctxt "@option:check"
+#~ msgid "&Use custom icon:"
+#~ msgstr "i Khalenda"
+
+#, fuzzy
+#~ msgctxt "@info:tooltip"
+#~ msgid "Set a custom icon"
+#~ msgstr "i Khalenda"
+
+#, fuzzy
+#~ msgctxt "@info:whatsthis"
+#~ msgid "Check this box if you want to set a custom icon for this folder."
+#~ msgstr "Bonisa imizuzwana kwilayini ye Marcus Bains"
+
+#, fuzzy
+#~ msgid "&File"
+#~ msgstr "Iwonga"
+
+#, fuzzy
+#~ msgid "&Import"
+#~ msgstr "Rhweba ngaphakathi"
+
+#, fuzzy
+#~ msgid "&Edit"
+#~ msgstr "&Hlela..."
+
+#, fuzzy
+#~ msgid "&View"
+#~ msgstr "Iimboniselo"
+
+#, fuzzy
+#~ msgid "&Zoom"
+#~ msgstr "Sondeza Ngaphakathi"
+
+#~ msgid "&Actions"
+#~ msgstr "&Iintshukumo"
+
+#~ msgid "S&chedule"
+#~ msgstr "Cwa&ngcisa"
+
+#, fuzzy
+#~ msgid "&Settings"
+#~ msgstr "Idibana"
+
+#, fuzzy
+#~ msgid "&Sidebar"
+#~ msgstr "Ibar yexesha:"
+
+#, fuzzy
+#~| msgid "Main"
+#~ msgctxt "main toolbar"
+#~ msgid "Main"
+#~ msgstr "Undoqo"
+
+#~ msgid "Views"
+#~ msgstr "Iimboniselo"
+
+#~ msgid "Schedule"
+#~ msgstr "Cwangcisa"
+
+#, fuzzy
+#~ msgid "Filters Toolbar"
+#~ msgstr "Bonisa Isixhobo sebar %1"
+
+#, fuzzy
+#~ msgid "Calendar Colors"
+#~ msgstr "i Khalenda"
+
+#~ msgid "Export Calendar as Web Page"
+#~ msgstr "Rhweba Ngaphandle Ikhalenda Njengephepha Le Web"
+
+#, fuzzy
+#~ msgid "Export"
+#~ msgstr "Rhweba ngaphakathi"
+
+#~ msgid ""
+#~ "You are about to set all preferences to default values. All custom "
+#~ "modifications will be lost."
+#~ msgstr ""
+#~ "Umalunga nokucwangcisa zonke ezikhethwayo kumaxabiso angagqibekanga. "
+#~ "Zonke iinguqulelo kancinane zesiko zizakulahleka."
+
+#~ msgid "Setting Default Preferences"
+#~ msgstr "Icwangcisa Ezikhethwayo Ezingagqibekanga"
+
+#, fuzzy
+#~| msgid "General"
+#~ msgctxt "general settings for html export"
+#~ msgid "General"
+#~ msgstr "Ngokubanzi"
+
+#~ msgid "Date Range"
+#~ msgstr "Umqolo Womhla"
+
+#~ msgid "View Type"
+#~ msgstr "Udidi Lwemboniselo"
+
+#~ msgid "Destination"
+#~ msgstr "Indawo ephelela kuyo"
+
+#, fuzzy
+#~ msgid "To-dos"
+#~ msgstr "Eza-kwenziwa"
+
+#, fuzzy
+#~ msgid "Events"
+#~ msgstr "Iziganeko:"
+
+#, fuzzy
+#~| msgid "Edit Calendar Filters"
+#~ msgctxt "@title::window"
+#~ msgid "Edit Calendar Filters"
+#~ msgstr "Hlela Amacebo okucoca ulwelo e Khalenda"
+
+#, fuzzy
+#~ msgctxt "@label default filter name"
+#~ msgid "New Filter %1"
+#~ msgstr "Yongeza Icebo lokucoca ulwelo"
+
+#, fuzzy
+#~ msgctxt "@info"
+#~ msgid "Do you really want to permanently remove the filter \"%1\"?"
+#~ msgstr "Ayikwazi ukwenza ifayile ezakulayishwa phezulu"
+
+#, fuzzy
+#~ msgctxt "@title:window"
+#~ msgid "Delete Filter?"
+#~ msgstr "Cima iziganeko ezindala"
+
+#~ msgid "Event Viewer"
+#~ msgstr "Umboniseli Wesiganeko"
+
+#, fuzzy
+#~| msgid "Edit..."
+#~ msgid "Edit..."
+#~ msgstr "Hlela..."
+
+#, fuzzy
+#~ msgid "Show in Context"
+#~ msgstr "Bonisa okukhethiweyo kuphela"
+
+#, fuzzy
+#~ msgctxt "@title:window"
+#~ msgid "Create Note"
+#~ msgstr "Cima Ukwe-Nza"
+
+#, fuzzy
+#~| msgid "Travel"
+#~ msgctxt "@action:save note"
+#~ msgid "Save"
+#~ msgstr "Ukuhamba"
+
+#, fuzzy
+#~ msgid "Title:"
+#~ msgstr "Iwonga"
+
+#, fuzzy
+#~ msgid "Text:"
+#~ msgstr "Uvavanyo"
+
+#, fuzzy
+#~| msgid "New Calendar"
+#~ msgid "Search Calendar"
+#~ msgstr "Icalendar Entsha"
+
+#, fuzzy
+#~ msgctxt "search in calendar"
+#~ msgid "&Search"
+#~ msgstr "Phendla Kwi"
+
+#~ msgid ""
+#~ "Invalid search expression, cannot perform the search. Please enter a "
+#~ "search expression using the wildcard characters '*' and '?' where needed."
+#~ msgstr ""
+#~ "Uchazo lophendlo olungasebenziyo, alunakusebenza uphendlo. Nceda ngenisa "
+#~ "uchazo lophendlo usebenzisa abasebenzi be wildcard '*' ne '?' apho "
+#~ "kuyimfuneko."
+
+#, fuzzy
+#~| msgid "No events were found matching your search expression."
+#~ msgid "No items were found that match your search pattern."
+#~ msgstr ""
+#~ "Akukho ziganeko zifunyenweyo zithelekiseka nochazo lwakho lophendlo."
+
+#, fuzzy
+#~| msgid "Search In"
+#~ msgid "Search Results"
+#~ msgstr "Phendla Kwi"
+
+#, fuzzy
+#~ msgid "%1 item"
+#~ msgid_plural "%1 items"
+#~ msgstr[0] " 1 umzuzu"
+#~ msgstr[1] "%1 imizuzu"
+
+#, fuzzy
+#~ msgctxt "A collection of all declined invidations."
+#~ msgid "Declined Invitations"
+#~ msgstr "Uqinisekiso lwe KOrganizer"
+
+#, fuzzy
+#~ msgctxt "A collection of all open invidations."
+#~ msgid "Open Invitations"
+#~ msgstr "Uqinisekiso lwe KOrganizer"
+
+#, fuzzy
+#~ msgid "Unable to write the output file."
+#~ msgstr "Ayikwazi ukuphatha ikhalenda ebekwe kude.\n"
+
+#, fuzzy
+#~ msgid "Unable to upload the export file."
+#~ msgstr "Ayikwazi ukuphatha ikhalenda ebekwe kude.\n"
+
+#, fuzzy
+#~| msgid "Set Your Status"
+#~ msgctxt "@title:window"
+#~ msgid "Export Status"
+#~ msgstr "Cwangcisa Izimo Zakho"
+
+#, fuzzy
+#~ msgid "Show page Web"
+#~ msgstr "Bonisa ixesha njenge:"
+
+#, fuzzy
+#~ msgctxt "@info:status"
+#~ msgid "Automatic Export: %1"
+#~ msgstr "Iqela Elizenzekelayo"
+
+#, fuzzy
+#~ msgctxt "@title month and year"
+#~ msgid "%1 %2"
+#~ msgstr ""
+#~ "inyanga_unyaka\n"
+#~ "%1 %2"
+
+#, fuzzy
+#~| msgid "Start Time"
+#~ msgctxt "@title:column event start time"
+#~ msgid "Start Time"
+#~ msgstr "Ixesha Lokuqala"
+
+#, fuzzy
+#~| msgid "End Time"
+#~ msgctxt "@title:column event end time"
+#~ msgid "End Time"
+#~ msgstr "Ixesha Lokuphela"
+
+#, fuzzy
+#~ msgctxt "@title:column event description"
+#~ msgid "Event"
+#~ msgstr "Iziganeko:"
+
+#, fuzzy
+#~ msgctxt "@title:column event locatin"
+#~ msgid "Location"
+#~ msgstr "Indawo ekuyo:"
+
+#, fuzzy
+#~| msgid "Categories"
+#~ msgctxt "@title:column event categories"
+#~ msgid "Categories"
+#~ msgstr "Iintlobo"
+
+#, fuzzy
+#~ msgctxt "@title:column event attendees"
+#~ msgid "Attendees"
+#~ msgstr "Abathathi nxaxheba"
+
+#, fuzzy
+#~ msgctxt "@title:column"
+#~ msgid "To-do"
+#~ msgstr "Ukwe-Nza:"
+
+#, fuzzy
+#~| msgid "Priority"
+#~ msgctxt "@title:column to-do priority"
+#~ msgid "Priority"
+#~ msgstr "Eyokuqala"
+
+#, fuzzy
+#~| msgid "Complete"
+#~ msgctxt "@title:column to-do percent completed"
+#~ msgid "Completed"
+#~ msgstr "Gqibezela"
+
+#, fuzzy
+#~ msgctxt "@title:column to-do due date"
+#~ msgid "Due Date"
+#~ msgstr "Imihla elindelekileyo"
+
+#, fuzzy
+#~ msgctxt "@title:column to-do location"
+#~ msgid "Location"
+#~ msgstr "Indawo ekuyo:"
+
+#, fuzzy
+#~| msgid "Categories"
+#~ msgctxt "@title:column to-do categories"
+#~ msgid "Categories"
+#~ msgstr "Iintlobo"
+
+#, fuzzy
+#~ msgctxt "@title:column to-do attendees"
+#~ msgid "Attendees"
+#~ msgstr "Abathathi nxaxheba"
+
+#, fuzzy
+#~ msgctxt "@title:column sub-to-dos of the parent to-do"
+#~ msgid "Sub-To-dos of: "
+#~ msgstr "Ukwe-Nza:"
+
+#, fuzzy
+#~ msgctxt "@title:column sub-to-dos of the parent to-do"
+#~ msgid "Sub-To-dos"
+#~ msgstr "Eza-kwenziwa"
+
+#, fuzzy
+#~ msgctxt "@info to-do percent complete"
+#~ msgid "%1 %"
+#~ msgstr ""
+#~ "inyanga_unyaka\n"
+#~ "%1 %2"
+
+#, fuzzy
+#~ msgctxt "@info page creator name only"
+#~ msgid "by %1 "
+#~ msgstr "Ukwe-nza: %1"
+
+#, fuzzy
+#~ msgctxt "@info page credit name only"
+#~ msgid "with %1"
+#~ msgstr "Ixesha Lesiphelo: %1"
+
+#, fuzzy
+#~ msgctxt "@info holiday by date and name"
+#~ msgid "%1, %2"
+#~ msgstr ""
+#~ "inyanga_unyaka\n"
+#~ "%1 %2"
+
+#, fuzzy
+#~ msgid "Text"
+#~ msgstr "Uvavanyo"
+
+#, fuzzy
+#~| msgid "Select Mode"
+#~ msgid "Selection"
+#~ msgstr "Khetha Indlela"
+
+#, fuzzy
+#~| msgid "Date && Time"
+#~ msgid "Date & Time"
+#~ msgstr "Umhla && Ixesha"
+
+#, fuzzy
+#~ msgid "Date"
+#~ msgstr "Lindeleka:"
+
+#, fuzzy
+#~ msgid "<qt>Do you really want to delete '<b>%1</b>'?</qt>"
+#~ msgstr "Ayikwazi ukwenza ifayile ezakulayishwa phezulu"
+
+#, fuzzy
+#~ msgid "Import Page"
+#~ msgstr "i Khalenda"
+
+#, fuzzy
+#~ msgid "Designer Files (*.ui)"
+#~ msgstr "*.vcs|vIifayile ze Khalenda"
+
+#, fuzzy
+#~ msgid "Import Page..."
+#~ msgstr "i Khalenda"
+
+#, fuzzy
+#~ msgid "Type:"
+#~ msgstr "Udidi Lwemboniselo"
+
+#, fuzzy
+#~ msgid "Classname:"
+#~ msgstr "Igama lakho"
+
+#, fuzzy
+#~ msgid "Description:"
+#~ msgstr "Iinkcazelo"
+
+#, fuzzy
+#~ msgctxt "@item:intext delimiter for joining holiday names"
+#~ msgid ","
+#~ msgstr ", "
+
+#, fuzzy
+#~ msgctxt "delimiter for joining holiday names"
+#~ msgid ","
+#~ msgstr ", "
+
+#, fuzzy
+#~ msgid "&Add"
+#~ msgstr "D&ibanisa"
+
+#, fuzzy
+#~ msgid "&Print..."
+#~ msgstr "&Hlela..."
+
+#, fuzzy
+#~ msgid "Print Previe&w..."
+#~ msgstr "&Hlela..."
+
+#, fuzzy
+#~ msgid "&Paste"
+#~ msgstr "Lindeleka:"
+
+#, fuzzy
+#~ msgctxt "delete this incidence"
+#~ msgid "&Delete"
+#~ msgstr "Cima..."
+
+#, fuzzy
+#~ msgid "Create To-do"
+#~ msgstr "Cima Ukwe-Nza"
+
+#, fuzzy
+#~ msgid "Create Event"
+#~ msgstr "Cima Ukwe-Nza"
+
+#, fuzzy
+#~ msgid "Create Note"
+#~ msgstr "Cima Ukwe-Nza"
+
+#, fuzzy
+#~ msgid "Togg&le To-do Completed"
+#~ msgstr ""
+#~ "cima ngokugqityiwe Ku-Dos\n"
+#~ "Hlenga-hlengisa Okugqityiweyo"
+
+#, fuzzy
+#~ msgid "&Toggle Reminder"
+#~ msgstr "Umkhumbuzi:"
+
+#, fuzzy
+#~ msgid "&Dissociate From Recurrence..."
+#~ msgstr "Dwelisa iziganeko zemini yangoku"
+
+#, fuzzy
+#~ msgid "Send as iCalendar..."
+#~ msgstr "iKhalenda..."
+
+#, fuzzy
+#~ msgid "Unable to save %1 \"%2\"."
+#~ msgstr "Ayikwazi ukuphatha ikhalenda ebekwe kude.\n"
+
+#, fuzzy
+#~ msgid "Event Summary Configuration"
+#~ msgstr "i Khalenda"
+
+#, fuzzy
+#~ msgid ""
+#~ "Check this box if you want to see events occurring on this date only."
+#~ msgstr "Bonisa imizuzwana kwilayini ye Marcus Bains"
+
+#, fuzzy
+#~| msgid "day"
+#~ msgid "&Today only"
+#~ msgstr "umhla"
+
+#, fuzzy
+#~ msgid ""
+#~ "Check this box if you want to see events that start sometime during the "
+#~ "next 31 days."
+#~ msgstr "Bonisa imizuzwana kwilayini ye Marcus Bains"
+
+#, fuzzy
+#~ msgid "Select the days for showing upcoming events"
+#~ msgstr "Ukwenza umbala ogqithelwe lixesha:"
+
+#, fuzzy
+#~ msgid ""
+#~ "Check this box if you want to specify the number of days in the future "
+#~ "for upcoming events."
+#~ msgstr "Bonisa imizuzwana kwilayini ye Marcus Bains"
+
+#, fuzzy
+#~ msgid "1 day"
+#~ msgstr " 1 Umhla"
+
+#, fuzzy
+#~ msgctxt "days to show in summary"
+#~ msgid " days"
+#~ msgstr "i Khalenda"
+
+#, fuzzy
+#~ msgid "Show &birthdays"
+#~ msgstr "Umhla wokuzalwa"
+
+#, fuzzy
+#~ msgid "Groupware Settings"
+#~ msgstr "Idibana"
+
+#, fuzzy
+#~ msgid "Show events belonging to my calendars only"
+#~ msgstr "i Khalenda"
+
+#, fuzzy
+#~ msgid ""
+#~ "Check this box if you want the summary to show events belonging to your "
+#~ "calendars only."
+#~ msgstr "Bonisa imizuzwana kwilayini ye Marcus Bains"
+
+#, fuzzy
+#~| msgid "Appointment"
+#~ msgid "&Edit Appointment..."
+#~ msgstr "Ixesha ledinga"
+
+#, fuzzy
+#~| msgid "Appointment"
+#~ msgid "&Delete Appointment"
+#~ msgstr "Ixesha ledinga"
+
+#, fuzzy
+#~| msgid "Edit Event"
+#~ msgid "Edit Event: \"%1\""
+#~ msgstr "Hlela isiganeko"
+
+#, fuzzy
+#~ msgctxt "@action:inmenu"
+#~ msgid "New Journal..."
+#~ msgstr "&Incwadi egcina ii akhawuti"
+
+#, fuzzy
+#~ msgctxt "@info:status"
+#~ msgid "Create a new journal"
+#~ msgstr "Cima Ukwe-Nza"
+
+#, fuzzy
+#~| msgid "&Journal"
+#~ msgctxt "@action:inmenu"
+#~ msgid "Sync Journal"
+#~ msgstr "&Incwadi egcina ii akhawuti"
+
+#, fuzzy
+#~ msgctxt "@info:whatsthis"
+#~ msgid "Choose this option to synchronize your groupware journal entries."
+#~ msgstr "Bonisa imizuzwana kwilayini ye Marcus Bains"
+
+#, fuzzy
+#~ msgid " day"
+#~ msgid_plural " days"
+#~ msgstr[0] " 1 Umhla"
+#~ msgstr[1] "%1 Imihla"
+
+#, fuzzy
+#~| msgid "New E&vent..."
+#~ msgctxt "@action:inmenu"
+#~ msgid "New Event..."
+#~ msgstr "Isi&ganeko Esitsha..."
+
+#, fuzzy
+#~ msgctxt "@info:status"
+#~ msgid "Create a new event"
+#~ msgstr "Cima Ukwe-Nza"
+
+#, fuzzy
+#~| msgid "New Calendar"
+#~ msgctxt "@action:inmenu"
+#~ msgid "Sync Calendar"
+#~ msgstr "Icalendar Entsha"
+
+#, fuzzy
+#~ msgctxt "@info:whatsthis"
+#~ msgid "Choose this option to synchronize your groupware events."
+#~ msgstr "Bonisa imizuzwana kwilayini ye Marcus Bains"
+
+#, fuzzy
+#~| msgid "Meeting"
+#~ msgctxt "@item"
+#~ msgid "Meeting"
+#~ msgstr "Idibana"
+
+#, fuzzy
+#~ msgctxt "@item"
+#~ msgid "Note: %1"
+#~ msgstr "Ukwe-nza: %1"
+
+#, fuzzy
+#~| msgid "From: %1   To: %2   %3"
+#~ msgctxt "@item"
+#~ msgid ""
+#~ "From: %1\n"
+#~ "To: %2\n"
+#~ "Subject: %3"
+#~ msgstr "Ukusuka ku: %1   Ukuya ku: %2   %3"
+
+#, fuzzy
+#~| msgid "KMail"
+#~ msgctxt "@item"
+#~ msgid "Mail: %1"
+#~ msgstr "KMail"
+
+#, fuzzy
+#~| msgid "day"
+#~ msgctxt "the appointment is today"
+#~ msgid "Today"
+#~ msgstr "umhla"
+
+#, fuzzy
+#~ msgid "in 1 day"
+#~ msgid_plural "in %1 days"
+#~ msgstr[0] " 1 Umhla"
+#~ msgstr[1] "%1 Imihla"
+
+#, fuzzy
+#~ msgctxt "use abbreviation for minute to keep the text short"
+#~ msgid "1 min"
+#~ msgid_plural "%1 mins"
+#~ msgstr[0] " 1 umzuzu"
+#~ msgstr[1] "%1 imizuzu"
+
+#, fuzzy
+#~ msgid "all day"
+#~ msgstr " 1 Umhla"
+
+#, fuzzy
+#~ msgctxt "Time from - to"
+#~ msgid "%1 - %2"
+#~ msgstr "%1 %"
+
+#, fuzzy
+#~ msgctxt "next occurrence"
+#~ msgid "Next: %1"
+#~ msgstr "Ukwe-nza: %1"
+
+#, fuzzy
+#~ msgctxt "@action:inmenu"
+#~ msgid "New To-do..."
+#~ msgstr "Ukwe-nza Okutsha..."
+
+#, fuzzy
+#~ msgctxt "@info:status"
+#~ msgid "Create a new to-do"
+#~ msgstr "Cima Ukwe-Nza"
+
+#, fuzzy
+#~ msgctxt "@action:inmenu"
+#~ msgid "Sync To-do List"
+#~ msgstr "&Ukwe-Nza Uluhlu"
+
+#, fuzzy
+#~ msgctxt "@info:status"
+#~ msgid "Synchronize groupware to-do list"
+#~ msgstr "Cwangcisa Izimo Zakho"
+
+#, fuzzy
+#~ msgctxt "@info:whatsthis"
+#~ msgid "Choose this option to synchronize your groupware to-do list."
+#~ msgstr "Bonisa imizuzwana kwilayini ye Marcus Bains"
+
+#, fuzzy
+#~ msgid "To-do Summary Configuration"
+#~ msgstr "i Khalenda"
+
+#, fuzzy
+#~ msgid "Show To-dos Due"
+#~ msgstr "Ukwe-nza uluhlu"
+
+#, fuzzy
+#~ msgid "Show To-dos due today only"
+#~ msgstr "Ukwenza umbala olindeleke namhlanje:"
+
+#, fuzzy
+#~ msgid "Check this box if you want to see To-dos due on this date only."
+#~ msgstr "Bonisa imizuzwana kwilayini ye Marcus Bains"
+
+#, fuzzy
+#~ msgid ""
+#~ "Check this box if you want to see To-dos that are due sometime during the "
+#~ "next 31 days."
+#~ msgstr "Bonisa imizuzwana kwilayini ye Marcus Bains"
+
+#, fuzzy
+#~ msgid ""
+#~ "Check this box if you want specify the number of days in the future for "
+#~ "pending To-dos."
+#~ msgstr "Bonisa imizuzwana kwilayini ye Marcus Bains"
+
+#, fuzzy
+#~ msgid "Hide completed To-dos"
+#~ msgstr "Fihla ukwe-nza okugqityiweyo"
+
+#, fuzzy
+#~ msgid ""
+#~ "Check this box if you do not want to see To-dos that have already been "
+#~ "completed."
+#~ msgstr "Bonisa imizuzwana kwilayini ye Marcus Bains"
+
+#, fuzzy
+#~| msgid "Complete"
+#~ msgid "&Completed"
+#~ msgstr "Gqibezela"
+
+#, fuzzy
+#~ msgid "Check this box if you do not want to see open-ended To-dos."
+#~ msgstr "Bonisa imizuzwana kwilayini ye Marcus Bains"
+
+#, fuzzy
+#~ msgid "Hide unstarted To-dos"
+#~ msgstr "Fihla ukwe-nza okugqityiweyo"
+
+#, fuzzy
+#~ msgid ""
+#~ "Check this box if you do not want to see To-dos with a start date in the "
+#~ "future."
+#~ msgstr "Bonisa imizuzwana kwilayini ye Marcus Bains"
+
+#, fuzzy
+#~ msgid "Hide in-progress To-dos"
+#~ msgstr "Fihla ukwe-nza okugqityiweyo"
+
+#, fuzzy
+#~ msgid ""
+#~ "Check this box if you do not want to see To-dos that have been started "
+#~ "but are not yet completed."
+#~ msgstr "Bonisa imizuzwana kwilayini ye Marcus Bains"
+
+#, fuzzy
+#~ msgid "Hide overdue To-dos"
+#~ msgstr "Fihla ukwe-nza okugqityiweyo"
+
+#, fuzzy
+#~ msgid ""
+#~ "Check this box if you do not want to see To-dos that are past their due "
+#~ "date but have not yet been completed."
+#~ msgstr "Bonisa imizuzwana kwilayini ye Marcus Bains"
+
+#, fuzzy
+#~ msgid "Show To-dos belonging to my calendars only"
+#~ msgstr "i Khalenda"
+
+#, fuzzy
+#~ msgid ""
+#~ "Check this box if you want the summary to show To-dos belonging to your "
+#~ "calendars only."
+#~ msgstr "Bonisa imizuzwana kwilayini ye Marcus Bains"
+
+#, fuzzy
+#~ msgid "Show &my To-dos only"
+#~ msgstr "&Bonisa Eza-Kwenziwa"
+
+#, fuzzy
+#~ msgid "Pending To-dos"
+#~ msgstr "Coca Ku-Dos"
+
+#, fuzzy
+#~| msgid "day"
+#~ msgctxt "the to-do is due today"
+#~ msgid "Today"
+#~ msgstr "umhla"
+
+#, fuzzy
+#~ msgid "1 day ago"
+#~ msgid_plural "%1 days ago"
+#~ msgstr[0] " 1 Umhla"
+#~ msgstr[1] "%1 Imihla"
+
+#, fuzzy
+#~| msgid "Due"
+#~ msgctxt "the to-do is due"
+#~ msgid "due"
+#~ msgstr "Lindeleka"
+
+#, fuzzy
+#~ msgid "&Mark To-do Completed"
+#~ msgstr ""
+#~ "cima ngokugqityiwe Ku-Dos\n"
+#~ "Hlenga-hlengisa Okugqityiweyo"
+
+#, fuzzy
+#~ msgid "Edit To-do: \"%1\""
+#~ msgstr "Hlela ukwe-nza"
+
+#, fuzzy
+#~ msgctxt "the to-do starts today"
+#~ msgid "starts today"
+#~ msgstr "Umhla wokuqala:"
+
+#, fuzzy
+#~ msgctxt "the to-do is completed"
+#~ msgid "completed"
+#~ msgstr "igqityiwe"
+
+#, fuzzy
+#~ msgctxt "Separator for status like this: overdue, completed"
+#~ msgid ","
+#~ msgstr ", "
+
+#, fuzzy
+#~ msgid "Special Dates Summary Configuration"
+#~ msgstr "i Khalenda"
+
+#, fuzzy
+#~ msgid ""
+#~ "Check this box if you want to see special occasions occurring on this "
+#~ "date only."
+#~ msgstr "Bonisa imizuzwana kwilayini ye Marcus Bains"
+
+#, fuzzy
+#~ msgid ""
+#~ "Check this box if you want to see special occasions that start sometime "
+#~ "during the next 31 days."
+#~ msgstr "Bonisa imizuzwana kwilayini ye Marcus Bains"
+
+#, fuzzy
+#~ msgid ""
+#~ "Check this box if you want to specify the number of days in the future "
+#~ "for upcoming special occasions."
+#~ msgstr "Bonisa imizuzwana kwilayini ye Marcus Bains"
+
+#, fuzzy
+#~ msgid "Show birthdays from your calendar"
+#~ msgstr "i Khalenda"
+
+#, fuzzy
+#~ msgid "Show holidays from your calendar"
+#~ msgstr "i Khalenda"
+
+#, fuzzy
+#~| msgid "Special Occasion"
+#~ msgid "Show s&pecial occasions"
+#~ msgstr "Isiganeko Esikhethekileyo"
+
+#, fuzzy
+#~ msgid "Show birth&days"
+#~ msgstr "Bonisa"
+
+#, fuzzy
+#~| msgid "day"
+#~ msgctxt "the special day is today"
+#~ msgid "Today"
+#~ msgstr "umhla"
+
+#, fuzzy
+#~| msgid "Birthday"
+#~ msgid "Birthday"
+#~ msgstr "Umhla wokuzalwa"
+
+#~ msgid "Holiday"
+#~ msgstr "Iholide"
+
+#, fuzzy
+#~| msgid "Special Occasion"
+#~ msgid "Special Occasion"
+#~ msgstr "Isiganeko Esikhethekileyo"
+
+#, fuzzy
+#~ msgid "one year"
+#~ msgid_plural "%1 years"
+#~ msgstr[0] "Unyaka Olandelayo"
+#~ msgstr[1] "Unyaka Olandelayo"
+
+#, fuzzy
+#~ msgid "Send &Mail"
+#~ msgstr "Thumela iposi"
+
+#, fuzzy
+#~ msgid "View &Contact"
+#~ msgstr "Phendla Kwi"
+
+#, fuzzy
+#~| msgid "Current Maintainer"
+#~ msgid "Current Maintainer"
+#~ msgstr "Umlondolozi Wangoku"
+
+#, fuzzy
+#~ msgid "Calendar"
+#~ msgstr "i Khalenda"
+
+#~ msgid "New Calendar"
+#~ msgstr "Icalendar Entsha"
+
+#, fuzzy
+#~| msgid "read-only"
+#~ msgctxt "the calendar is read-only"
+#~ msgid "read-only"
+#~ msgstr "funda-kuphela"
+
+#, fuzzy
+#~ msgid "Import the specified files as separate calendars"
+#~ msgstr "Hlela isiganeko"
+
+#, fuzzy
+#~ msgid "Merge the specified files into an existing calendar"
+#~ msgstr "Hlela isiganeko"
+
+#, fuzzy
+#~| msgid "Merged calendar '%1'."
+#~ msgid "Merged calendar"
+#~ msgstr "Ihlanganise ikhalenda '%1'."
+
+#~ msgctxt "Default export file"
+#~ msgid "calendar.html"
+#~ msgstr ""
+#~ ": Ifayile yorhwebo lwangaphandle engagqibekanga\n"
+#~ "calendar.html"
+
+#, fuzzy
+#~| msgid "Personal"
+#~ msgctxt "@title:tab personal settings"
+#~ msgid "Personal"
+#~ msgstr "Ubuqu"
+
+#, fuzzy
+#~ msgctxt "@title:group email settings"
+#~ msgid "Email Settings"
+#~ msgstr "Idibana"
+
+#, fuzzy
+#~| msgid "Travel"
+#~ msgctxt "@title:tab"
+#~ msgid "Save"
+#~ msgstr "Ukuhamba"
+
+#, fuzzy
+#~ msgctxt "@title:group"
+#~ msgid "Exporting Calendar"
+#~ msgstr "i Khalenda"
+
+#, fuzzy
+#~ msgctxt "@title:group"
+#~ msgid "Show/Hide Options"
+#~ msgstr "Indawo ekuyo:"
+
+#, fuzzy
+#~ msgctxt "@title:tab calendar account settings"
+#~ msgid "Calendars"
+#~ msgstr "i Khalenda"
+
+#, fuzzy
+#~| msgid "Personal"
+#~ msgctxt "@title:tab"
+#~ msgid "Regional"
+#~ msgstr "Ubuqu"
+
+#, fuzzy
+#~| msgid "Holiday"
+#~ msgctxt "@title:group"
+#~ msgid "Holidays"
+#~ msgstr "Iholide"
+
+#, fuzzy
+#~| msgctxt "short_weekday date (e.g. Mon 13)"
+#~| msgid "%1 %2"
+#~ msgctxt "Holday region, region language"
+#~ msgid "%1 (%2)"
+#~ msgstr "%1 %2"
+
+#, fuzzy
+#~| msgid "Working Hours"
+#~ msgctxt "@title:group"
+#~ msgid "Working Period"
+#~ msgstr "Iiyure Zokusebenza"
+
+#, fuzzy
+#~ msgctxt "@title:tab"
+#~ msgid "Default Values"
+#~ msgstr "Ifomati ye Khalenda Engagqibekanga"
+
+#, fuzzy
+#~| msgid "Appointment"
+#~ msgctxt "@title:group"
+#~ msgid "Appointments"
+#~ msgstr "Ixesha ledinga"
+
+#, fuzzy
+#~ msgctxt "@title:group"
+#~ msgid "Reminders"
+#~ msgstr "Umkhumbuzi:"
+
+#, fuzzy
+#~ msgctxt "@label"
+#~ msgid "Default reminder time:"
+#~ msgstr "Ixesha le alarm engagqibekanga:"
+
+#, fuzzy
+#~| msgid "minute(s)"
+#~ msgctxt "@item:inlistbox reminder units in minutes"
+#~ msgid "minute(s)"
+#~ msgstr "umzuzu(imi)"
+
+#, fuzzy
+#~| msgid "hour(s)"
+#~ msgctxt "@item:inlistbox reminder time units in hours"
+#~ msgid "hour(s)"
+#~ msgstr "iyure(ii)"
+
+#, fuzzy
+#~| msgid "day(s)"
+#~ msgctxt "@item:inlistbox reminder time units in days"
+#~ msgid "day(s)"
+#~ msgstr "imini(ii)"
+
+#, fuzzy
+#~| msgid "General"
+#~ msgctxt "@title:tab general settings"
+#~ msgid "General"
+#~ msgstr "Ngokubanzi"
+
+#, fuzzy
+#~ msgctxt "@title:group"
+#~ msgid "Display Options"
+#~ msgstr "Yonke imihla"
+
+#, fuzzy
+#~ msgctxt "@label suffix in the N days spin box"
+#~ msgid " days"
+#~ msgstr "i Khalenda"
+
+#, fuzzy
+#~ msgctxt "@title:group"
+#~ msgid "Date Navigator"
+#~ msgstr "Bonisa ixesha njenge:"
+
+#, fuzzy
+#~ msgctxt "@title:tab"
+#~ msgid "Agenda View"
+#~ msgstr "Imboniselo yokuzakuxoxwa:"
+
+#, fuzzy
+#~ msgctxt "@title:tab"
+#~ msgid "Month View"
+#~ msgstr "Imboniselo yenyanga:"
+
+#, fuzzy
+#~ msgctxt "@title:tab"
+#~ msgid "Todo View"
+#~ msgstr "Ukwe-nza uluhlu"
+
+#, fuzzy
+#~ msgctxt "@title:group"
+#~ msgid "Other Options"
+#~ msgstr "Iinkcazelo"
+
+#, fuzzy
+#~| msgid "Categories"
+#~ msgctxt "@title:group"
+#~ msgid "Categories"
+#~ msgstr "Iintlobo"
+
+#, fuzzy
+#~ msgctxt "@title:group"
+#~ msgid "Resources"
+#~ msgstr "%1 iyure"
+
+#, fuzzy
+#~| msgid "month(s)"
+#~ msgctxt "@title:tab"
+#~ msgid "Fonts"
+#~ msgstr "inyanga(ii)"
+
+#, fuzzy
+#~| msgid "Event text"
+#~ msgctxt "@label"
+#~ msgid "Event text"
+#~ msgstr "Isiganeko sombhalo"
+
+#, fuzzy
+#~| msgid "Name"
+#~ msgctxt "@title:column plugin name"
+#~ msgid "Name"
+#~ msgstr "Igama"
+
+#, fuzzy
+#~ msgctxt "@action:button"
+#~ msgid "Configure &Plugin..."
+#~ msgstr "Qwalasela &I Plagin..."
+
+#, fuzzy
+#~| msgid "Destination"
+#~ msgctxt "@title:group"
+#~ msgid "Position"
+#~ msgstr "Indawo ephelela kuyo"
+
+#, fuzzy
+#~ msgctxt "@option:check"
+#~ msgid "Show at the top of the agenda views"
+#~ msgstr "Bonisa okukhethiweyo kuphela"
+
+#, fuzzy
+#~ msgctxt "@option:check"
+#~ msgid "Show at the bottom of the agenda views"
+#~ msgstr "Bonisa okukhethiweyo kuphela"
+
+#, fuzzy
+#~ msgctxt "@title:group"
+#~ msgid "Calendar Decorations"
+#~ msgstr "i Khalenda"
+
+#, fuzzy
+#~ msgctxt "@title:group"
+#~ msgid "Other Plugins"
+#~ msgstr "Iinkcazelo"
+
+#, fuzzy
+#~| msgid "Unable to configure this plugin"
+#~ msgctxt "@info"
+#~ msgid "Unable to configure this plugin"
+#~ msgstr "Ayikwazi ukuqwalasela leplugin"
+
+#, fuzzy
+#~| msgid "Edit Calendar Filters"
+#~ msgid "Full name of the calendar owner"
+#~ msgstr "Hlela Amacebo okucoca ulwelo e Khalenda"
+
+#, fuzzy
+#~| msgid "Edit Calendar Filters"
+#~ msgid "The full name of the calendar owner for the export"
+#~ msgstr "Hlela Amacebo okucoca ulwelo e Khalenda"
+
+#, fuzzy
+#~| msgid "Edit Calendar Filters"
+#~ msgid "The email address of the calendar owner for the export"
+#~ msgstr "Hlela Amacebo okucoca ulwelo e Khalenda"
+
+#, fuzzy
+#~ msgid "Creator application of the calendar"
+#~ msgstr "Ayikwazi ukuphatha ikhalenda ebekwe kude.\n"
+
+#, fuzzy
+#~ msgid "Enter a creator application of the calendar, for example KOrganizer."
+#~ msgstr "Ayikwazi ukuphatha ikhalenda ebekwe kude.\n"
+
+#, fuzzy
+#~ msgid "Creator URL"
+#~ msgstr "Imboniso yangaphambili ye URL:"
+
+#, fuzzy
+#~ msgid "Page Title"
+#~ msgstr "Iwonga"
+
+#, fuzzy
+#~ msgid "The title of the exported page"
+#~ msgstr "Ixesha le alarm engagqibekanga:"
+
+#, fuzzy
+#~ msgid "Date start"
+#~ msgstr "Cwangcisa Izimo Zakho"
+
+#, fuzzy
+#~| msgid "Date Range"
+#~ msgid "Date end"
+#~ msgstr "Umqolo Womhla"
+
+#, fuzzy
+#~| msgid "Exclude holidays"
+#~ msgid "Exclude private items from the export"
+#~ msgstr "Beka ecaleni iiholide"
+
+#, fuzzy
+#~ msgid "Check this box if you do NOT want to export your private items."
+#~ msgstr "Bonisa imizuzwana kwilayini ye Marcus Bains"
+
+#, fuzzy
+#~| msgid "Exclude holidays"
+#~ msgid "Exclude confidential items from the export"
+#~ msgstr "Beka ecaleni iiholide"
+
+#, fuzzy
+#~ msgid "Check this box if you do NOT want to export your confidential items."
+#~ msgstr "Bonisa imizuzwana kwilayini ye Marcus Bains"
+
+#, fuzzy
+#~| msgid "To-do list"
+#~ msgid "Export events as a list"
+#~ msgstr "Uluhlu lwezinto-ezizakwenziwa"
+
+#, fuzzy
+#~ msgid "Check this box if you want your events shown as a list."
+#~ msgstr "Bonisa imizuzwana kwilayini ye Marcus Bains"
+
+#, fuzzy
+#~ msgid "Export in month view"
+#~ msgstr "Bonisa okukhethiweyo kuphela"
+
+#, fuzzy
+#~ msgid "Export events in a month view"
+#~ msgstr "Bonisa okukhethiweyo kuphela"
+
+#, fuzzy
+#~ msgid "Check this box if you want your events shown in a month view."
+#~ msgstr "Bonisa imizuzwana kwilayini ye Marcus Bains"
+
+#, fuzzy
+#~ msgid "Export events in a week view"
+#~ msgstr "Bonisa okukhethiweyo kuphela"
+
+#, fuzzy
+#~ msgid "Check this box if you want your events shown in a week view."
+#~ msgstr "Bonisa imizuzwana kwilayini ye Marcus Bains"
+
+#, fuzzy
+#~ msgid "Title of the calendar"
+#~ msgstr "Ayikwazi ukuphatha ikhalenda ebekwe kude.\n"
+
+#, fuzzy
+#~ msgid "Title for the event calendar"
+#~ msgstr "Ayikwazi ukuphatha ikhalenda ebekwe kude.\n"
+
+#, fuzzy
+#~| msgid "Export to HTML with every save"
+#~ msgid "Export location of the events"
+#~ msgstr "Rhweba ngaphandle kwi HTML kugcino ngalunye"
+
+#, fuzzy
+#~ msgid "Include the event locations"
+#~ msgstr "Thumela Ngokuzenzekelayo Iinkcukacha ze FreeBusy"
+
+#, fuzzy
+#~ msgid ""
+#~ "Check this box if you want the event locations to be exported, only if "
+#~ "the event has a location."
+#~ msgstr "Bonisa imizuzwana kwilayini ye Marcus Bains"
+
+#, fuzzy
+#~ msgid "Include the event categories"
+#~ msgstr "Khetha iintlobo"
+
+#, fuzzy
+#~ msgid "Check this box if you want the event categories to be exported."
+#~ msgstr "Bonisa imizuzwana kwilayini ye Marcus Bains"
+
+#, fuzzy
+#~ msgid "Include the event attendees"
+#~ msgstr "Cwangcisa Izimo Zakho"
+
+#, fuzzy
+#~ msgid "Check this box if you want the event attendees to be exported."
+#~ msgstr "Bonisa imizuzwana kwilayini ye Marcus Bains"
+
+#, fuzzy
+#~| msgid "To-do list"
+#~ msgid "Export to-do list"
+#~ msgstr "Uluhlu lwezinto-ezizakwenziwa"
+
+#, fuzzy
+#~| msgid "To-do list"
+#~ msgid "Export the to-do list"
+#~ msgstr "Uluhlu lwezinto-ezizakwenziwa"
+
+#, fuzzy
+#~ msgid ""
+#~ "Check this box if you want your to-do list to also be exported to the "
+#~ "HTML."
+#~ msgstr "Bonisa imizuzwana kwilayini ye Marcus Bains"
+
+#, fuzzy
+#~ msgid "Title of the to-do list"
+#~ msgstr "Cwangcisa Izimo Zakho"
+
+#, fuzzy
+#~ msgid "To-do List"
+#~ msgstr "&Ukwe-Nza Uluhlu"
+
+#, fuzzy
+#~ msgid "Title for the to-do list"
+#~ msgstr "Cwangcisa Izimo Zakho"
+
+#, fuzzy
+#~ msgid ""
+#~ "Check this box if you want the to-do list due dates to be exported, if "
+#~ "the to-do does have a due date."
+#~ msgstr "Bonisa imizuzwana kwilayini ye Marcus Bains"
+
+#, fuzzy
+#~ msgid "Include the to-do locations"
+#~ msgstr "Cwangcisa Izimo Zakho"
+
+#, fuzzy
+#~ msgid ""
+#~ "Check this box if you want the to-do locations to be exported, only if "
+#~ "the to-do has a location."
+#~ msgstr "Bonisa imizuzwana kwilayini ye Marcus Bains"
+
+#, fuzzy
+#~ msgid "Include the to-do categories"
+#~ msgstr "Khetha iintlobo"
+
+#, fuzzy
+#~ msgid "Check this box if you want the to-do categories to be exported."
+#~ msgstr "Bonisa imizuzwana kwilayini ye Marcus Bains"
+
+#, fuzzy
+#~ msgid "Include the to-do attendees"
+#~ msgstr " 1 umzuzu"
+
+#, fuzzy
+#~ msgid "Check this box if you want the to-do attendees to be exported."
+#~ msgstr "Bonisa imizuzwana kwilayini ye Marcus Bains"
+
+#, fuzzy
+#~ msgid "Export journals"
+#~ msgstr "&Incwadi egcina ii akhawuti"
+
+#, fuzzy
+#~ msgid "Check this box if you want to export journals as well."
+#~ msgstr "Bonisa imizuzwana kwilayini ye Marcus Bains"
+
+#, fuzzy
+#~ msgid "Title of the journal list"
+#~ msgstr "Cima iziganeko ezindala"
+
+#, fuzzy
+#~ msgid "Journals"
+#~ msgstr "&Incwadi egcina ii akhawuti"
+
+#, fuzzy
+#~ msgid "Title for the journal list"
+#~ msgstr "Cima iziganeko ezindala"
+
+#, fuzzy
+#~ msgid "Export free/busy list"
+#~ msgstr "Papasha Iinkcukacha ye Free Busy"
+
+#, fuzzy
+#~ msgid "Check this box if you want to export free/busy information as well."
+#~ msgstr "Bonisa imizuzwana kwilayini ye Marcus Bains"
+
+#, fuzzy
+#~ msgid "Title of the free/busy list"
+#~ msgstr "Papasha Iinkcukacha ye Free Busy"
+
+#, fuzzy
+#~ msgid "Busy times"
+#~ msgstr "akukho xesha"
+
+#, fuzzy
+#~ msgid "Title for the free/busy list"
+#~ msgstr "Papasha Iinkcukacha ye Free Busy"
+
+#, fuzzy
+#~| msgid "Export to HTML with every save"
+#~ msgid "Export to HTML periodically"
+#~ msgstr "Rhweba ngaphandle kwi HTML kugcino ngalunye"
+
+#, fuzzy
+#~ msgid "Export &interval in minutes"
+#~ msgstr "Gcina &ithuba lokuphumla kwimizuzu:"
+
+#, fuzzy
+#~ msgid "Confirm deletes"
+#~ msgstr "Qinisekisa &ucimo"
+
+#, fuzzy
+#~ msgid "Day begins at"
+#~ msgstr "Imini iqala ngo:"
+
+#, fuzzy
+#~ msgid "Daily starting hour"
+#~ msgstr "Iyure ekuqalwa ngayo mihla yonke:"
+
+#, fuzzy
+#~ msgid "Daily ending hour"
+#~ msgstr "Iyure ekugqitywa ngayo mihla yonke:"
+
+#~ msgid "Exclude holidays"
+#~ msgstr "Beka ecaleni iiholide"
+
+#, fuzzy
+#~ msgid "Color busy days with a different background color"
+#~ msgstr "Umbala wendawo yangasemva wemboniselo wezakuxoxwa:"
+
+#, fuzzy
+#~| msgid "Enable tooltips displaying summary of events"
+#~ msgid "Enable tooltips for displaying summaries"
+#~ msgstr "Yenza iincam zesixhobo ezibonisa isishwankathelo seziganeko"
+
+#, fuzzy
+#~ msgid "To-dos use category colors"
+#~ msgstr "Ukwenza umbala olindeleke namhlanje:"
+
+#, fuzzy
+#~ msgid "Next x days"
+#~ msgstr "&Imini X Elandelayo"
+
+#, fuzzy
+#~| msgid "Show events that recur daily in date navigator"
+#~ msgid "Show items that recur daily"
+#~ msgstr "Bonisa iziganeko eziphindwa yonke imihla kumhla we navigator"
+
+#, fuzzy
+#~| msgid "Show events that recur weekly in date navigator"
+#~ msgid "Show items that recur weekly"
+#~ msgstr "Bonisa iziganeko eziphindwa ngeveki kumhla we navigator"
+
+#, fuzzy
+#~ msgid "Hour size"
+#~ msgstr "Iholide"
+
+#, fuzzy
+#~ msgid "Show icons in agenda view items"
+#~ msgstr "Bonisa okukhethiweyo kuphela"
+
+#, fuzzy
+#~ msgid "Display icons in agenda view items"
+#~ msgstr "Bonisa okukhethiweyo kuphela"
+
+#, fuzzy
+#~ msgid "Show to-dos"
+#~ msgstr "&Bonisa Eza-Kwenziwa"
+
+#, fuzzy
+#~ msgid "Check this box to display to-dos in the agenda view."
+#~ msgstr "Bonisa imizuzwana kwilayini ye Marcus Bains"
+
+#, fuzzy
+#~ msgid "Display to-dos in the agenda view"
+#~ msgstr "Bonisa okukhethiweyo kuphela"
+
+#, fuzzy
+#~ msgid "Show current-time (Marcus Bains) line"
+#~ msgstr "Bonisa ilayine ye Marcus Bains"
+
+#, fuzzy
+#~ msgid "Display the current-time indicator"
+#~ msgstr "Ixesha ledinga elingagqibekanga:"
+
+#, fuzzy
+#~ msgid "Show seconds on the current-time (Marcus Bains) line"
+#~ msgstr "Bonisa ilayine ye Marcus Bains"
+
+#, fuzzy
+#~ msgid "Check this box if you want to show seconds on the current-time line."
+#~ msgstr "Bonisa imizuzwana kwilayini ye Marcus Bains"
+
+#, fuzzy
+#~ msgid "Display seconds with the current-time indicator"
+#~ msgstr "Bonisa imizuzwana kwilayini ye Marcus Bains"
+
+#, fuzzy
+#~ msgid "Calendar inside, category outside"
+#~ msgstr "i Khalenda"
+
+#, fuzzy
+#~ msgid "Only category"
+#~ msgstr "Iintlobo"
+
+#, fuzzy
+#~ msgid "Only calendar"
+#~ msgstr "i Khalenda"
+
+#, fuzzy
+#~ msgid "Multiple Calendar Display"
+#~ msgstr "Sebenzisa Ikhalenda"
+
+#, fuzzy
+#~| msgid "Merged calendar '%1'."
+#~ msgid "Tab through calendars"
+#~ msgstr "Ihlanganise ikhalenda '%1'."
+
+#, fuzzy
+#~ msgid "Show icons in month view items"
+#~ msgstr "Bonisa okukhethiweyo kuphela"
+
+#, fuzzy
+#~| msgid "Enable scrollbars in month view cells"
+#~ msgid "Display icons in month view items"
+#~ msgstr "Yenza iibar zorolo kwiseli zemboniselo yenyanga"
+
+#, fuzzy
+#~ msgid "Show time in month view items"
+#~ msgstr "Bonisa okukhethiweyo kuphela"
+
+#, fuzzy
+#~| msgid "Enable scrollbars in month view cells"
+#~ msgid "Check this box to display the time in month view items."
+#~ msgstr "Yenza iibar zorolo kwiseli zemboniselo yenyanga"
+
+#, fuzzy
+#~| msgid "Enable scrollbars in month view cells"
+#~ msgid "Display time in month view items"
+#~ msgstr "Yenza iibar zorolo kwiseli zemboniselo yenyanga"
+
+#, fuzzy
+#~| msgid "Enable scrollbars in month view cells"
+#~ msgid "Check this box to display to-dos in the month view."
+#~ msgstr "Yenza iibar zorolo kwiseli zemboniselo yenyanga"
+
+#, fuzzy
+#~| msgid "Enable scrollbars in month view cells"
+#~ msgid "Display to-dos in the month view"
+#~ msgstr "Yenza iibar zorolo kwiseli zemboniselo yenyanga"
+
+#, fuzzy
+#~ msgid "Show journals"
+#~ msgstr "&Incwadi egcina ii akhawuti"
+
+#, fuzzy
+#~| msgid "Enable scrollbars in month view cells"
+#~ msgid "Display journals in the month view"
+#~ msgstr "Yenza iibar zorolo kwiseli zemboniselo yenyanga"
+
+#~ msgid "Month view uses full window"
+#~ msgstr "Imboniselo yenyanga isebenzisa i window epheleleyo"
+
+#, fuzzy
+#~ msgid "To-do list view uses full window"
+#~ msgstr "Ukwe-nza imboniselo isebenzisa i window egcweleyo"
+
+#, fuzzy
+#~ msgid "Display to-do list in a full KOrganizer window"
+#~ msgstr "Ukwe-nza imboniselo isebenzisa i window egcweleyo"
+
+#, fuzzy
+#~| msgid "Enable scrollbars in month view cells"
+#~ msgid "Display to-dos in a flat list"
+#~ msgstr "Yenza iibar zorolo kwiseli zemboniselo yenyanga"
+
+#, fuzzy
+#~ msgid ""
+#~ "Check this box if you want to see all your to-dos in a flat list instead "
+#~ "of being arranged in a hierarchical tree."
+#~ msgstr "Bonisa imizuzwana kwilayini ye Marcus Bains"
+
+#, fuzzy
+#~ msgid "Record completed to-dos in journal entries"
+#~ msgstr "Fihla ukwe-nza okugqityiweyo"
+
+#, fuzzy
+#~ msgid "Holiday color"
+#~ msgstr "Umbala weholide:"
+
+#, fuzzy
+#~ msgid "Agenda view background color"
+#~ msgstr "Umbala wendawo yangasemva wemboniselo wezakuxoxwa:"
+
+#, fuzzy
+#~ msgid "Select the agenda view background color here."
+#~ msgstr "Umbala wendawo yangasemva wemboniselo wezakuxoxwa:"
+
+#, fuzzy
+#~ msgid "Agenda view current-time line color"
+#~ msgstr "Ixesha ledinga elingagqibekanga:"
+
+#, fuzzy
+#~ msgid "Select a color to use for the current-time (Marcus Bains) line."
+#~ msgstr "Bonisa ilayine ye Marcus Bains"
+
+#, fuzzy
+#~ msgid "Use this color for the Agenda View current-time (Marcus Bains) line"
+#~ msgstr "Bonisa ilayine ye Marcus Bains"
+
+#, fuzzy
+#~ msgid "Busy days background color"
+#~ msgstr "Umbala wendawo yangasemva wemboniselo wezakuxoxwa:"
+
+#, fuzzy
+#~ msgid "Working hours color"
+#~ msgstr "Umbala weeyure ezisebenzayo:"
+
+#, fuzzy
+#~ msgid "Select the working hours color for the agenda view here."
+#~ msgstr "Umbala wendawo yangasemva wemboniselo wezakuxoxwa:"
+
+#, fuzzy
+#~ msgid "To-do due today color"
+#~ msgstr "Ukwenza umbala olindeleke namhlanje:"
+
+#, fuzzy
+#~ msgid "Select the to-do due today color here."
+#~ msgstr "Ukwenza umbala olindeleke namhlanje:"
+
+#, fuzzy
+#~ msgid "To-do overdue color"
+#~ msgstr "Ukwenza umbala ogqithelwe lixesha:"
+
+#, fuzzy
+#~ msgid "Select the to-do overdue color here."
+#~ msgstr "Ukwenza umbala ogqithelwe lixesha:"
+
+#, fuzzy
+#~ msgid "Time bar"
+#~ msgstr "Ibar yexesha:"
+
+#, fuzzy
+#~ msgid "Month view"
+#~ msgstr "Imboniselo yenyanga:"
+
+#, fuzzy
+#~ msgid "Agenda view"
+#~ msgstr "Imboniselo yokuzakuxoxwa:"
+
+#, fuzzy
+#~ msgid "Current-time line"
+#~ msgstr "Umlondolozi Wangoku"
+
+#, fuzzy
+#~ msgid "Default todo attachment method"
+#~ msgstr "Ixesha ledinga elingagqibekanga:"
+
+#, fuzzy
+#~ msgid "Attach complete message"
+#~ msgstr "Abathathi nxaxheba"
+
+#, fuzzy
+#~ msgid "Highlight color"
+#~ msgstr "Phawula umbala:"
+
+#, fuzzy
+#~ msgid "Month view background color"
+#~ msgstr "Umbala wendawo yangasemva wemboniselo wezakuxoxwa:"
+
+#, fuzzy
+#~ msgid "Select the Month view background color here."
+#~ msgstr "Umbala wendawo yangasemva wemboniselo wezakuxoxwa:"
+
+#, fuzzy
+#~ msgid "Select the working hours background color for the Month view here."
+#~ msgstr "Umbala wendawo yangasemva wemboniselo wezakuxoxwa:"
+
+#, fuzzy
+#~ msgid "Default event color"
+#~ msgstr "Umbala wesiganeko esingagqibekanga:"
+
+#, fuzzy
+#~ msgid "Search"
+#~ msgstr "Phendla Kwi"
+
+#~ msgid "&New"
+#~ msgstr "E&ntsha"
+
+#, fuzzy
+#~ msgid "Filter Details"
+#~ msgstr "Icebo lokucoca lenziwe"
+
+#, fuzzy
+#~| msgid "Name:"
+#~ msgctxt "filter name"
+#~ msgid "Name:"
+#~ msgstr "Igama:"
+
+#, fuzzy
+#~ msgid "Hide &recurring events and to-dos"
+#~ msgstr "Fihla iziganeko eziphindwayo"
+
+#, fuzzy
+#~ msgid "Hide co&mpleted to-dos"
+#~ msgstr "Fihla ukwe-nza okugqityiweyo"
+
+#, fuzzy
+#~ msgid "Hide &inactive to-dos"
+#~ msgstr "Fihla ukwe-nza okugqityiweyo"
+
+#~ msgid "Categories"
+#~ msgstr "Iintlobo"
+
+#, fuzzy
+#~ msgid "Show all except selected"
+#~ msgstr "Bonisa konke kodwa okukhethiweyo"
+
+#, fuzzy
+#~ msgid "Show only selected"
+#~ msgstr "Bonisa okukhethiweyo kuphela"
+
+#, fuzzy
+#~ msgid "Change..."
+#~ msgstr "Qwalasela..."
+
+#, fuzzy
+#~ msgid "P&ublish"
+#~ msgstr "Papasha"
+
+#, fuzzy
+#~ msgid "Publish your free/&busy information automatically"
+#~ msgstr "Papasha Iinkcukacha ye Free Busy"
+
+#, fuzzy
+#~ msgid "Publish"
+#~ msgstr "Papasha"
+
+#, fuzzy
+#~ msgid "days of free/busy information"
+#~ msgstr "Papasha Iinkcukacha ye Free Busy"
+
+#, fuzzy
+#~ msgid "Server Information"
+#~ msgstr "Thumela Ngokuzenzekelayo Iinkcukacha ze FreeBusy"
+
+#~ msgid "Password:"
+#~ msgstr "Igama lokugqitha: "
+
+#, fuzzy
+#~ msgctxt "login name on the Kolab server"
+#~ msgid "Username:"
+#~ msgstr "Igama lakho"
+
+#, fuzzy
+#~ msgid "Server URL:"
+#~ msgstr "Imboniso yangaphambili ye URL:"
+
+#, fuzzy
+#~ msgid "&Retrieve"
+#~ msgstr "Phinda qho nge"
+
+#, fuzzy
+#~ msgid "Retrieve other people's free/&busy information automatically"
+#~ msgstr "Papasha Iinkcukacha ye Free Busy"
+
+#, fuzzy
+#~ msgid "User&name:"
+#~ msgstr "Igama lakho"
+
+#, fuzzy
+#~ msgid "Passwor&d:"
+#~ msgstr "Igama lokugqitha: "
+
+#, fuzzy
+#~ msgid "&Search for:"
+#~ msgstr "Phendlela i:"
+
+#, fuzzy
+#~ msgid "Search For"
+#~ msgstr "Phendlela i:"
+
+#, fuzzy
+#~ msgid ""
+#~ "Check this box if you want to search for Event items that match the "
+#~ "search criteria."
+#~ msgstr "Bonisa imizuzwana kwilayini ye Marcus Bains"
+
+#, fuzzy
+#~ msgid "&Events"
+#~ msgstr "Iziganeko:"
+
+#, fuzzy
+#~ msgid ""
+#~ "Check this box if you want to search for Journal items that match the "
+#~ "search criteria."
+#~ msgstr "Bonisa imizuzwana kwilayini ye Marcus Bains"
+
+#, fuzzy
+#~ msgid "&Journals"
+#~ msgstr "&Incwadi egcina ii akhawuti"
+
+#, fuzzy
+#~ msgid ""
+#~ "Check this box if you want to search To-do items that match the search "
+#~ "criteria."
+#~ msgstr "Bonisa imizuzwana kwilayini ye Marcus Bains"
+
+#, fuzzy
+#~ msgid "To-&dos"
+#~ msgstr "Eza-kwenziwa"
+
+#~ msgid "Search In"
+#~ msgstr "Phendla Kwi"
+
+#, fuzzy
+#~ msgid ""
+#~ "Check this box if you want to match item categories against your search "
+#~ "pattern."
+#~ msgstr "Bonisa imizuzwana kwilayini ye Marcus Bains"
+
+#, fuzzy
+#~ msgid "Cate&gories"
+#~ msgstr "Iintlobo"
+
+#, fuzzy
+#~ msgid ""
+#~ "Check this box if you want to match item locations against your search "
+#~ "pattern."
+#~ msgstr "Bonisa imizuzwana kwilayini ye Marcus Bains"
+
+#, fuzzy
+#~ msgid "Locations"
+#~ msgstr "Indawo ekuyo:"
+
+#, fuzzy
+#~ msgid "Include item descriptions in your search"
+#~ msgstr "Iinkcazelo"
+
+#, fuzzy
+#~ msgid ""
+#~ "Check this box if you want to match item descriptions against your search "
+#~ "pattern."
+#~ msgstr "Bonisa imizuzwana kwilayini ye Marcus Bains"
+
+#, fuzzy
+#~ msgid "Desc&riptions"
+#~ msgstr "Iinkcazelo"
+
+#, fuzzy
+#~ msgid ""
+#~ "Check this box if you want to match item summaries against your search "
+#~ "pattern."
+#~ msgstr "Bonisa imizuzwana kwilayini ye Marcus Bains"
+
+#, fuzzy
+#~ msgid "Su&mmaries"
+#~ msgstr "Izishwankathelo"
+
+#, fuzzy
+#~ msgid "Attendees"
+#~ msgstr "Abathathi nxaxheba"
+
+#, fuzzy
+#~ msgid "Fr&om:"
+#~ msgstr "Ivela ku:"
+
+#, fuzzy
+#~ msgid "Include items with a starting date on or after this date"
+#~ msgstr "Cima iziganeko ezindala"
+
+#, fuzzy
+#~ msgid "&To:"
+#~ msgstr "Iya ku:"
+
+#, fuzzy
+#~ msgid "Include items with ending date on or before this date"
+#~ msgstr "Ukwenza umbala ogqithelwe lixesha:"
+
+#, fuzzy
+#~ msgid ""
+#~ "Check this box to include To-dos without a due date in the search results."
+#~ msgstr "Bonisa imizuzwana kwilayini ye Marcus Bains"
+
+#, fuzzy
+#~| msgid "Location: "
+#~ msgctxt "Collection: name collectionId"
+#~ msgid "Collection: %1(%2)"
+#~ msgstr "Indawo ekuyo:"
+
+#, fuzzy
+#~ msgid "Person: %1"
+#~ msgstr "Iyaphinda: %1"
+
+#, fuzzy
+#~| msgid "KMail"
+#~ msgid "Mail: %1"
+#~ msgstr "KMail"
+
+#, fuzzy
+#~| msgid "Organizer: %1"
+#~ msgid "Organization Unit: %1"
+#~ msgstr "Umququzeleli: %1"
+
+#, fuzzy
+#~ msgid "Free/Busy calendar from %1"
+#~ msgstr "Cima Ukwe-Nza"
+
+#, fuzzy
+#~| msgid "Day"
+#~ msgid "Day"
+#~ msgstr "Imini"
+
+#, fuzzy
+#~| msgid "Week"
+#~ msgid "Week"
+#~ msgstr "Iveki"
+
+#, fuzzy
+#~| msgid "Month"
+#~ msgid "Month"
+#~ msgstr "Inyanga"
+
+#, fuzzy
+#~ msgid "Agenda"
+#~ msgstr "Imboniselo yokuzakuxoxwa:"
+
+#, fuzzy
+#~ msgid "Agenda %1"
+#~ msgstr "Imboniselo yokuzakuxoxwa:"
+
+#, fuzzy
+#~ msgid "Title"
+#~ msgstr "Iwonga"
+
+#, fuzzy
+#~| msgid "New Calendar"
+#~ msgid "Selected Calendars"
+#~ msgstr "Icalendar Entsha"
+
+#, fuzzy
+#~ msgid "Scroll to week number %1"
+#~ msgstr "Iyashicilela"
+
+#, fuzzy
+#~ msgid "%1"
+#~ msgstr "%1 %"
+
+#, fuzzy
+#~ msgid "Calendar's custom icon"
+#~ msgstr "i Khalenda"
+
+#, fuzzy
+#~ msgid "To-do"
+#~ msgstr "Ukwe-Nza:"
+
+#, fuzzy
+#~| msgid "&Journal"
+#~ msgid "Journal"
+#~ msgstr "&Incwadi egcina ii akhawuti"
+
+#, fuzzy
+#~ msgid "Recurring"
+#~ msgstr "Impinda"
+
+#, fuzzy
+#~ msgid "Alarm"
+#~ msgstr "i Alamu"
+
+#, fuzzy
+#~| msgid "read-only"
+#~ msgid "Read Only"
+#~ msgstr "funda-kuphela"
+
+#, fuzzy
+#~ msgid "Attending"
+#~ msgstr "Idibana"
+
+#, fuzzy
+#~| msgid "KOrganizer"
+#~ msgid "Organizer"
+#~ msgstr "KOrganizer"
+
+#, fuzzy
+#~ msgid "Select a month"
+#~ msgstr "Khetha Indlela"
+
+#, fuzzy
+#~ msgid "Select a year"
+#~ msgstr "Khetha Indlela"
+
+#, fuzzy
+#~ msgctxt "monthname"
+#~ msgid "%1"
+#~ msgstr "%1 %"
+
+#, fuzzy
+#~ msgctxt "4 digit year"
+#~ msgid "%1"
+#~ msgstr "%1 %"
+
+#, fuzzy
+#~| msgid "*.ics|ICalendars"
+#~ msgid "*.ics|iCalendars"
+#~ msgstr "*.ics|ICalendars"
+
+#, fuzzy
+#~ msgid "*.vcs|vCalendars"
+#~ msgstr "*.vcs|VCaldendars"
+
+#~ msgid "Enable scrollbars in month view cells"
+#~ msgstr "Yenza iibar zorolo kwiseli zemboniselo yenyanga"
+
+#, fuzzy
+#~ msgid ""
+#~ "<p>...that you can select whether the week starts on Monday or on Sunday "
+#~ "in the System Settings? KOrganizer uses this setting. Look at \n"
+#~ "Locale->Country/Region & Languages in the System Settings, or select "
+#~ "<b>Settings</b>,\n"
+#~ "<b>Configure Date & Time...</b> from the menu bar. Select the Calendar "
+#~ "tab.\n"
+#~ "</p>\n"
+#~ msgstr ""
+#~ "<p>...ukuze ukhethe ukuba iveki iqala Ngomvulo okanye Ngecawe kwi KDE\n"
+#~ "Umbindi Wolawulo? KOrganizer isebenzisa esisicwangciso. Jonga Kwezo buqu -"
+#~ "> Ilizwe&\n"
+#~ "Iilwimi, Kwixesha & Nemihla tab.\n"
+
+#, fuzzy
+#~ msgid ""
+#~ "<p>...that you can store your calendar on an FTP server? Use the standard "
+#~ "file dialog to save the calendar to a URL like <b>ftp://"
+#~ "username@ftpserver/filename</b>. You can make your calendar active and "
+#~ "load and save it as if it were local, or add it permanently to your "
+#~ "calendar list, by adding a remote file from the Calendar Manager. Just "
+#~ "make sure that no two KOrganizer applications are working on the same "
+#~ "file, at the same time.\n"
+#~ "</p>\n"
+#~ msgstr ""
+#~ "<p>...ukuba uyakwazi ukugcini ikhalenda yakho kumncedi we FTP? Sebenzisa "
+#~ "ifayile esezansti\n"
+#~ "incoko yababini izakugcina ikhalenda kwi URL njenge \"ftp://"
+#~ "username@ftpserver/ igama lefayile\".\n"
+#~ "Ungayenza ikhalenda yakho isebenze kwaye ilayishe ze igcine "
+#~ "njengokungathi yeyobulali.\n"
+#~ "Qinisekisa nje ukuba akukho zimbini izicelo ze KOrganizer ezizakusebenza "
+#~ "kwifayile enye nge\n"
+#~ "xesha elinye.\n"
+
+#, fuzzy
+#~ msgid ""
+#~ "<p>...that you can create hierarchical to-dos by clicking with the right "
+#~ "mouse button on an existing to-do and selecting <b>New Sub-to-do</b> from "
+#~ "the context menu?\n"
+#~ "</p>\n"
+#~ msgstr ""
+#~ "<p>...uba ungenza uhlengiso Ku-Dos ngoku nqakraza nge qhosha le mouse "
+#~ "ekunene\n"
+#~ "Kwe-Nza noku khetha \"Ukwe-Nza Okutsha Okusezantsi\" ukusuka emxholweni "
+#~ "we menu?\n"
+
+#~ msgid "KOrgPlugins"
+#~ msgstr "KOrgPlugins"
+
+#, fuzzy
+#~ msgid "Import Calendar/Event"
+#~ msgstr "i Khalenda"
+
+#, fuzzy
+#~ msgid "&Add as new calendar..."
+#~ msgstr "Icalendar Entsha"
+
+#, fuzzy
+#~ msgid "&Add as new calendar"
+#~ msgstr "Icalendar Entsha"
+
+#, fuzzy
+#~ msgid "*.vcs *.ics|Calendar Files"
+#~ msgstr "*.vcs *.ics|IiKhalenda zeefayile"
+
+#, fuzzy
+#~| msgid "New Calendar"
+#~ msgid "Select path for new calendar"
+#~ msgstr "Icalendar Entsha"
+
+#~ msgid "Set Your Status"
+#~ msgstr "Cwangcisa Izimo Zakho"
+
+#~ msgid "Set your status"
+#~ msgstr "Cwangcisa izimo zakho"
+
+#, fuzzy
+#~ msgid "A&dd..."
+#~ msgstr "Yongeza Icebo lokucoca ulwelo..."
+
+#, fuzzy
+#~| msgid "&Edit..."
+#~ msgid "&Modify..."
+#~ msgstr "&Hlela..."
+
+#, fuzzy
+#~ msgid "R&emove"
+#~ msgstr "Template..."
+
+#, fuzzy
+#~ msgid "Do you want to remove account '%1'?"
+#~ msgstr "Ayikwazi ukwenza ifayile ezakulayishwa phezulu"
+
+#, fuzzy
+#~ msgid "Remove account?"
+#~ msgstr "Abathathi nxaxheba"
+
+#~ msgid "Select Addresses"
+#~ msgstr "Khetha Iidilesi"
+
+#~ msgid "(EmptyName)"
+#~ msgstr "(IgamaElingenanto)"
+
+#~ msgid "(EmptyEmail)"
+#~ msgstr "(Qongqotha i Email)"
+
+#, fuzzy
+#~ msgid "Add a new recipient"
+#~ msgstr "Cima Ukwe-Nza"
+
+#, fuzzy
+#~ msgid "&Remove"
+#~ msgstr "Template..."
+
+#, fuzzy
+#~ msgid "&Select..."
+#~ msgstr "Khetha Iidilesi"
+
+#, fuzzy
+#~| msgid "Name:"
+#~ msgctxt "recipient name"
+#~ msgid "Name:"
+#~ msgstr "Igama:"
+
+#, fuzzy
+#~| msgid "Email:"
+#~ msgctxt "recipient email"
+#~ msgid "Email:"
+#~ msgstr "Email:"
+
+#, fuzzy
+#~| msgid "Additional email address:"
+#~ msgid "The recipient's email address"
+#~ msgstr "Idilesi ye email eyongeziweyo:"
+
+#, fuzzy
+#~ msgid "Also &Future Items"
+#~ msgstr "Cima Kwangoku"
+
+#, fuzzy
+#~ msgid "Changing Recurring Item"
+#~ msgstr "Esi sisiganeko esiphindwayo."
+
+#, fuzzy
+#~ msgid "&All Occurrences"
+#~ msgstr "isenzeko(iz)"
+
+#, fuzzy
+#~| msgid "KOrganizer Timezone Test"
+#~ msgid "KOrganizer Theming Stub"
+#~ msgstr "KOrganizer Uvavanyo Lommandla wexesha"
+
+#, fuzzy
+#~ msgctxt "@title:group"
+#~ msgid "Print Plugins"
+#~ msgstr "Uluhlu lwesiganeko"
+
+#, fuzzy
+#~ msgid "Date && Time Range"
+#~ msgstr "Umhla && Ixesha"
+
+#, fuzzy
+#~ msgid "&Start date:"
+#~ msgstr "Umhla wokuqala:"
+
+#, fuzzy
+#~ msgid "&End date:"
+#~ msgstr "Umhla wesiphelo:"
+
+#, fuzzy
+#~ msgid "&To-dos"
+#~ msgstr "Eza-kwenziwa"
+
+#, fuzzy
+#~ msgid "Print Item list"
+#~ msgstr "Uluhlu lwesiganeko"
+
+#, fuzzy
+#~ msgid "&All journal entries"
+#~ msgstr "&Incwadi egcina ii akhawuti"
+
+#, fuzzy
+#~ msgid "Date &range:"
+#~ msgstr "Umqolo Womhla"
+
+#, fuzzy
+#~ msgid "Journal entries"
+#~ msgstr "&Incwadi egcina ii akhawuti"
+
+#, fuzzy
+#~ msgid "Print &journal"
+#~ msgstr "&Incwadi egcina ii akhawuti"
+
+#, fuzzy
+#~ msgid "Print What's Next"
+#~ msgstr "Yintoni &Elandelayo"
+
+#, fuzzy
+#~ msgid "Yearly Print Options"
+#~ msgstr "Indawo ekuyo:"
+
+#, fuzzy
+#~ msgid "Print &year:"
+#~ msgstr "Iyashicilela"
+
+#, fuzzy
+#~ msgid "Display Options"
+#~ msgstr "Yonke imihla"
+
+#, fuzzy
+#~ msgid "Time Boxes"
+#~ msgstr "Ummandla wexesha:"
+
+#, fuzzy
+#~ msgctxt ""
+#~ "date from -\n"
+#~ "to"
+#~ msgid ""
+#~ "%1 -\n"
+#~ "%2"
+#~ msgstr "%1 %"
+
+#, fuzzy
+#~ msgid "Print &year"
+#~ msgstr "Iyashicilela"
+
+#, fuzzy
+#~ msgid "Start &time:"
+#~ msgstr "Ixesha Lokuqala"
+
+#, fuzzy
+#~ msgid "End ti&me:"
+#~ msgstr "Ixesha Lokuphela"
+
+#, fuzzy
+#~ msgid "Print Layout"
+#~ msgstr "i Khalenda"
+
+#, fuzzy
+#~| msgid "Exclude holidays"
+#~ msgid "Exclude c&onfidential"
+#~ msgstr "Beka ecaleni iiholide"
+
+#, fuzzy
+#~| msgid "Exclude holidays"
+#~ msgid "Exclude pri&vate"
+#~ msgstr "Beka ecaleni iiholide"
+
+#, fuzzy
+#~ msgid "Include Information"
+#~ msgstr "Thumela Ngokuzenzekelayo Iinkcukacha ze FreeBusy"
+
+#, fuzzy
+#~ msgid "Include &descriptions"
+#~ msgstr "Iinkcazelo"
+
+#, fuzzy
+#~ msgid "Print item descriptions"
+#~ msgstr "Iinkcazelo"
+
+#, fuzzy
+#~ msgid "Check this option if you want to see the item descriptions printed."
+#~ msgstr "Bonisa imizuzwana kwilayini ye Marcus Bains"
+
+#, fuzzy
+#~| msgid "General"
+#~ msgctxt "@title general print settings"
+#~ msgid "General"
+#~ msgstr "Ngokubanzi"
+
+#, fuzzy
+#~ msgid "Show note &lines"
+#~ msgstr "Bonisa ixesha njenge:"
+
+#, fuzzy
+#~ msgid "Print &Footer"
+#~ msgstr "Iyashicilela"
+
+#, fuzzy
+#~ msgid ""
+#~ "Check this box if you want to print a small footer on each page that "
+#~ "contains the date of the print."
+#~ msgstr "Bonisa imizuzwana kwilayini ye Marcus Bains"
+
+#, fuzzy
+#~ msgid "Print in color"
+#~ msgstr "Iyashicilela"
+
+#, fuzzy
+#~ msgid "&Use colors"
+#~ msgstr "Khetha umbala"
+
+#, fuzzy
+#~ msgid "Start date: "
+#~ msgstr "Umhla wokuqala:"
+
+#, fuzzy
+#~ msgid "End date: "
+#~ msgstr "Umhla wesiphelo:"
+
+#~ msgid "Duration: "
+#~ msgstr "Ixesha elithathayo: "
+
+#, fuzzy
+#~ msgid "1 hour "
+#~ msgid_plural "%1 hours "
+#~ msgstr[0] "1 hour"
+#~ msgstr[1] "%1 iiyure"
+
+#, fuzzy
+#~ msgid "1 minute "
+#~ msgid_plural "%1 minutes "
+#~ msgstr[0] " 1 umzuzu"
+#~ msgstr[1] "%1 imizuzu"
+
+#, fuzzy
+#~ msgid "No end date"
+#~ msgstr "Akukho mhla wasiphelo"
+
+#, fuzzy
+#~ msgid "Due date: "
+#~ msgstr "Imihla elindelekileyo"
+
+#, fuzzy
+#~ msgid "No due date"
+#~ msgstr "Imihla elindelekileyo"
+
+#, fuzzy
+#~| msgid "Accept"
+#~ msgctxt "except for listed dates"
+#~ msgid " except"
+#~ msgstr "Yamkela"
+
+#, fuzzy
+#~ msgid "Repeats: "
+#~ msgstr "Soze"
+
+#, fuzzy
+#~ msgid "Reminder: "
+#~ msgid_plural "%1 reminders: "
+#~ msgstr[0] " 1 umzuzu"
+#~ msgstr[1] "%1 imizuzu"
+
+#, fuzzy
+#~ msgid "1 hour"
+#~ msgid_plural "%1 hours"
+#~ msgstr[0] "1 hour"
+#~ msgstr[1] "%1 iiyure"
+
+#, fuzzy
+#~ msgid "Organizer: "
+#~ msgstr "Umququzeleli: %1"
+
+#~ msgid "Location: "
+#~ msgstr "Indawo ekuyo:"
+
+#, fuzzy
+#~ msgid "No Subitems"
+#~ msgstr "Bonisa Icebo lokucoca ulwelo"
+
+#, fuzzy
+#~| msgid "Unknown"
+#~ msgctxt "unknown status"
+#~ msgid "unknown"
+#~ msgstr "Ayaziwa"
+
+#, fuzzy
+#~ msgctxt "subitem start date"
+#~ msgid "Start Date: %1\n"
+#~ msgstr "Umhla wokuqala:"
+
+#, fuzzy
+#~| msgid "Start Time"
+#~ msgctxt "subitem start time"
+#~ msgid "Start Time: %1\n"
+#~ msgstr "Ixesha Lokuqala"
+
+#, fuzzy
+#~ msgctxt "subitem due date"
+#~ msgid "Due Date: %1\n"
+#~ msgstr "Imihla elindelekileyo"
+
+#, fuzzy
+#~ msgctxt "subitem due time"
+#~ msgid "Due Time: %1\n"
+#~ msgstr "Ummandla wexesha:"
+
+#, fuzzy
+#~ msgctxt "subitem counter"
+#~ msgid "%1: "
+#~ msgstr "%1 %"
+
+#, fuzzy
+#~ msgctxt "subitem Status: statusString"
+#~ msgid "Status: %1\n"
+#~ msgstr "Qala:"
+
+#, fuzzy
+#~ msgctxt "subitem Secrecy: secrecyString"
+#~ msgid "Secrecy: %1\n"
+#~ msgstr "Isishwankathelo: %1"
+
+#, fuzzy
+#~ msgid "No Attachments"
+#~ msgstr "Abathathi nxaxheba"
+
+#, fuzzy
+#~ msgid "1 Attachment:"
+#~ msgid_plural "%1 Attachments:"
+#~ msgstr[0] "Abathathi nxaxheba"
+#~ msgstr[1] "Abathathi nxaxheba"
+
+#, fuzzy
+#~ msgid "No Attendees"
+#~ msgstr "Abathathi nxaxheba"
+
+#, fuzzy
+#~ msgid "1 Attendee:"
+#~ msgid_plural "%1 Attendees:"
+#~ msgstr[0] " 1 umzuzu"
+#~ msgstr[1] "%1 imizuzu"
+
+#, fuzzy
+#~ msgid "Status: %1"
+#~ msgstr "Qala:"
+
+#, fuzzy
+#~ msgid "Secrecy: %1"
+#~ msgstr "Isishwankathelo: %1"
+
+#, fuzzy
+#~ msgid "Categories: "
+#~ msgstr "Iintlobo"
+
+#, fuzzy
+#~ msgctxt "date from-to"
+#~ msgid "%1 - %2"
+#~ msgstr ""
+#~ "inyanga_unyaka\n"
+#~ "%1 %2"
+
+#, fuzzy
+#~ msgctxt ""
+#~ "date from-\n"
+#~ "to"
+#~ msgid ""
+#~ "%1 -\n"
+#~ "%2"
+#~ msgstr "%1 %"
+
+#, fuzzy
+#~| msgid "Find Events"
+#~ msgid "Today's Events"
+#~ msgstr "Fumana Iziganeko"
+
+#, fuzzy
+#~ msgctxt "summary, location"
+#~ msgid "%1, %2"
+#~ msgstr ""
+#~ "inyanga_unyaka\n"
+#~ "%1 %2"
+
+#, fuzzy
+#~ msgctxt "date from - to (week number)"
+#~ msgid "%1 - %2 (Week %3)"
+#~ msgstr ""
+#~ "inyanga_unyaka\n"
+#~ "%1 %2"
+
+#, fuzzy
+#~ msgctxt ""
+#~ "date from -\n"
+#~ "to (week number)"
+#~ msgid ""
+#~ "%1 -\n"
+#~ "%2 (Week %3)"
+#~ msgstr ""
+#~ "inyanga_unyaka\n"
+#~ "%1 %2"
+
+#, fuzzy
+#~ msgctxt "@option sort by title"
+#~ msgid "Title"
+#~ msgstr "Iwonga"
+
+#, fuzzy
+#~| msgid "Start Date"
+#~ msgctxt "@option sort by start date/time"
+#~ msgid "Start Date"
+#~ msgstr "Umhla Wesiqalo"
+
+#, fuzzy
+#~ msgctxt "@option sort by due date/time"
+#~ msgid "Due Date"
+#~ msgstr "Imihla elindelekileyo"
+
+#, fuzzy
+#~| msgid "Priority"
+#~ msgctxt "@option sort by priority"
+#~ msgid "Priority"
+#~ msgstr "Eyokuqala"
+
+#, fuzzy
+#~ msgctxt "@option sort by percent completed"
+#~ msgid "Percent Complete"
+#~ msgstr "Cacisa okugqityiweyo"
+
+#, fuzzy
+#~ msgctxt "@option sort in increasing order"
+#~ msgid "Ascending"
+#~ msgstr "Idibana"
+
+#, fuzzy
+#~ msgctxt "@option sort in descreasing order"
+#~ msgid "Descending"
+#~ msgstr "Idibana"
+
+#~ msgid "To-do list"
+#~ msgstr "Uluhlu lwezinto-ezizakwenziwa"
+
+#~ msgid "Priority"
+#~ msgstr "Eyokuqala"
+
+#, fuzzy
+#~ msgctxt "@label to-do summary"
+#~ msgid "Title"
+#~ msgstr "Iwonga"
+
+#, fuzzy
+#~| msgid "Complete"
+#~ msgctxt "@label to-do percentage complete"
+#~ msgid "Complete"
+#~ msgstr "Gqibezela"
+
+#, fuzzy
+#~ msgid "Print &incidence"
+#~ msgstr "Iyashicilela"
+
+#, fuzzy
+#~ msgid "Print da&y"
+#~ msgstr "i Khalenda"
+
+#, fuzzy
+#~ msgid "Print &week"
+#~ msgstr "Iyashicilela"
+
+#, fuzzy
+#~ msgid "Print mont&h"
+#~ msgstr "Inyanga Edlulileyo"
+
+#, fuzzy
+#~ msgid "Print to-&dos"
+#~ msgstr "(akukho zinto ezizakwenziwa)\n"
+
+#, fuzzy
+#~ msgid "Prints all to-dos in a (tree-like) list"
+#~ msgstr "(akukho zinto ezizakwenziwa)\n"
+
+#, fuzzy
+#~ msgctxt "@title:window"
+#~ msgid "Printing error"
+#~ msgstr "Iyashicilela"
+
+#, fuzzy
+#~ msgctxt "@title:window"
+#~ msgid "Print"
+#~ msgstr "i Khalenda"
+
+#, fuzzy
+#~ msgctxt "@title:group"
+#~ msgid "Print Style"
+#~ msgstr "Uluhlu lwesiganeko"
+
+#, fuzzy
+#~ msgctxt "@label"
+#~ msgid "Page &orientation:"
+#~ msgstr "Indawo ekuyo:"
+
+#, fuzzy
+#~ msgctxt "@info:tooltip"
+#~ msgid "Set the print orientation"
+#~ msgstr "Ixesha Lokuqala"
+
+#, fuzzy
+#~ msgctxt "@item:inlistbox"
+#~ msgid "Use Default Orientation of Selected Style"
+#~ msgstr "Sebenzisa izicwangciso ze Email ezisuka kuMbindi woLawulo"
+
+#, fuzzy
+#~ msgctxt "@item:inlistbox"
+#~ msgid "Portrait"
+#~ msgstr "Eyokuqala"
+
+#, fuzzy
+#~ msgctxt "@info:tooltip"
+#~ msgid "Select the type of print"
+#~ msgstr "Khetha iintlobo"
+
+#, fuzzy
+#~| msgid "&Preview"
+#~ msgctxt "@action:button"
+#~ msgid "&Preview"
+#~ msgstr "&Imboniso yangaphambili"
+
+#, fuzzy
+#~ msgid "Print incidence details"
+#~ msgstr "Iyashicilela"
+
+#, fuzzy
+#~ msgid "&Attendees"
+#~ msgstr "Abathathi nxaxheba"
+
+#, fuzzy
+#~ msgid "Print the attendees"
+#~ msgstr " 1 umzuzu"
+
+#, fuzzy
+#~ msgid ""
+#~ "Check this box if you want the attendees list included on the print-out."
+#~ msgstr "Bonisa imizuzwana kwilayini ye Marcus Bains"
+
+#, fuzzy
+#~ msgid "&Notes, subitems"
+#~ msgstr "Bonisa Icebo lokucoca ulwelo"
+
+#, fuzzy
+#~ msgid "Print the notes"
+#~ msgstr "Iyashicilela"
+
+#, fuzzy
+#~ msgid "Attach&ments"
+#~ msgstr "Abathathi nxaxheba"
+
+#, fuzzy
+#~ msgid "Print the attachments"
+#~ msgstr "Hlela isiganeko"
+
+#, fuzzy
+#~ msgid ""
+#~ "Check this box if you want the attachment information included on the "
+#~ "print-out. The attachments themselves are not printed."
+#~ msgstr "Bonisa imizuzwana kwilayini ye Marcus Bains"
+
+#, fuzzy
+#~ msgid "&Start month:"
+#~ msgstr "Qala:"
+
+#, fuzzy
+#~ msgid "&End month:"
+#~ msgstr "Isiphelo:"
+
+#, fuzzy
+#~| msgid "Exclude holidays"
+#~ msgid "Exclude confidential items"
+#~ msgstr "Beka ecaleni iiholide"
+
+#, fuzzy
+#~| msgid "Exclude holidays"
+#~ msgid "Exclude private items"
+#~ msgstr "Beka ecaleni iiholide"
+
+#, fuzzy
+#~ msgid ""
+#~ "Check this option if you want to have to-dos on the print, placed by "
+#~ "their due date."
+#~ msgstr "Bonisa imizuzwana kwilayini ye Marcus Bains"
+
+#, fuzzy
+#~ msgid "Print daily recurring items"
+#~ msgstr "Fihla iziganeko eziphindwayo"
+
+#, fuzzy
+#~ msgid "Include daily re&curring to-dos and events"
+#~ msgstr "Fihla iziganeko eziphindwayo"
+
+#, fuzzy
+#~ msgid "Print weekly recurring items"
+#~ msgstr "Fihla iziganeko eziphindwayo"
+
+#, fuzzy
+#~ msgid "Include weekl&y recurring to-dos and events"
+#~ msgstr "Fihla iziganeko eziphindwayo"
+
+#, fuzzy
+#~ msgid "Print week numbers"
+#~ msgstr "Iyashicilela"
+
+#, fuzzy
+#~ msgid "Print week &numbers"
+#~ msgstr "Iyashicilela"
+
+#, fuzzy
+#~ msgctxt "starttime - endtime summary"
+#~ msgid "%1-%2 %3"
+#~ msgstr ""
+#~ "inyanga_unyaka\n"
+#~ "%1 %2"
+
+#, fuzzy
+#~ msgctxt "starttime - endtime summary, location"
+#~ msgid "%1-%2 %3, %4"
+#~ msgstr ""
+#~ "inyanga_unyaka\n"
+#~ "%1 %2"
+
+#, fuzzy
+#~ msgctxt "to-do summary (Due: datetime)"
+#~ msgid "%1 (Due: %2)"
+#~ msgstr "Lindeleka:"
+
+#, fuzzy
+#~ msgctxt "to-do summary (Due: date)"
+#~ msgid "%1 (Due: %2)"
+#~ msgstr "Lindeleka:"
+
+#, fuzzy
+#~ msgid "To-do: %1"
+#~ msgstr "Ukwe-nza: %1"
+
+#, fuzzy
+#~ msgid "%1%"
+#~ msgstr "%1 %"
+
+#, fuzzy
+#~ msgctxt "Description - date"
+#~ msgid "%1 - %2"
+#~ msgstr "%1 %"
+
+#, fuzzy
+#~ msgid "Name for this to-do list"
+#~ msgstr "Cwangcisa Izimo Zakho"
+
+#, fuzzy
+#~ msgid "To-dos to Print"
+#~ msgstr "Uluhlu lwezinto-ezizakwenziwa"
+
+#, fuzzy
+#~ msgid "Print &all to-dos"
+#~ msgstr "(akukho zinto ezizakwenziwa)\n"
+
+#, fuzzy
+#~ msgid "&Priority"
+#~ msgstr "Eyokuqala:"
+
+#, fuzzy
+#~ msgid "Due date"
+#~ msgstr "Imihla elindelekileyo"
+
+#, fuzzy
+#~ msgid "Per&centage completed"
+#~ msgstr "Cacisa okugqityiweyo"
+
+#, fuzzy
+#~ msgid "Sorting Options"
+#~ msgstr "Indawo ekuyo:"
+
+#, fuzzy
+#~ msgid "Sort field:"
+#~ msgstr "Lungisa ngendlela i Id"
+
+#, fuzzy
+#~ msgid "Sort direction:"
+#~ msgstr "Indawo ekuyo:"
+
+#, fuzzy
+#~ msgid "Strike &out completed to-do summaries"
+#~ msgstr "Fihla ukwe-nza okugqityiweyo"
+
+#, fuzzy
+#~ msgid "Starting date for the print"
+#~ msgstr "Cima iziganeko ezindala"
+
+#, fuzzy
+#~ msgctxt "@title:window"
+#~ msgid "Reminders"
+#~ msgstr "Umkhumbuzi:"
+
+#, fuzzy
+#~ msgctxt "@action:button"
+#~ msgid "Dismiss Reminder"
+#~ msgstr "Yonke imihla"
+
+#, fuzzy
+#~ msgctxt "@action:button"
+#~ msgid "Dismiss All"
+#~ msgstr "Yonke imihla"
+
+#, fuzzy
+#~| msgid "Edit..."
+#~ msgctxt "@action:button"
+#~ msgid "Edit..."
+#~ msgstr "Hlela..."
+
+#, fuzzy
+#~ msgctxt "@action:button"
+#~ msgid "Suspend"
+#~ msgstr "Ngecawe"
+
+#, fuzzy
+#~ msgctxt "@title:column reminder title"
+#~ msgid "Title"
+#~ msgstr "Iwonga"
+
+#, fuzzy
+#~| msgid "Date && Time"
+#~ msgctxt "@title:column happens at date/time"
+#~ msgid "Date Time"
+#~ msgstr "Umhla && Ixesha"
+
+#, fuzzy
+#~ msgctxt "@title:column trigger date/time"
+#~ msgid "Trigger Time"
+#~ msgstr "Ixesha Elilindelekileyo"
+
+#, fuzzy
+#~ msgctxt "@info:tooltip"
+#~ msgid "The date/time the reminder was triggered"
+#~ msgstr "Ixesha le alarm engagqibekanga:"
+
+#, fuzzy
+#~ msgctxt "@label:spinbox"
+#~ msgid "Suspend &duration:"
+#~ msgstr "Gcina isithuba esifutshane kwimizuzu:"
+
+#, fuzzy
+#~| msgid "minute(s)"
+#~ msgctxt "@item:inlistbox suspend in terms of minutes"
+#~ msgid "minute(s)"
+#~ msgstr "umzuzu(imi)"
+
+#, fuzzy
+#~| msgid "hour(s)"
+#~ msgctxt "@item:inlistbox suspend in terms of hours"
+#~ msgid "hour(s)"
+#~ msgstr "iyure(ii)"
+
+#, fuzzy
+#~| msgid "day(s)"
+#~ msgctxt "@item:inlistbox suspend in terms of days"
+#~ msgid "day(s)"
+#~ msgstr "imini(ii)"
+
+#, fuzzy
+#~ msgctxt "@item:inlistbox suspend in terms of weeks"
+#~ msgid "week(s)"
+#~ msgstr "iveki(ii) kwi:"
+
+#, fuzzy
+#~| msgid "Edit..."
+#~ msgctxt "@label an elipsis"
+#~ msgid "..."
+#~ msgstr "Hlela..."
+
+#, fuzzy
+#~ msgctxt "@title"
+#~ msgid "Reminder"
+#~ msgstr "Umkhumbuzi:"
+
+#, fuzzy
+#~ msgctxt "@title"
+#~ msgid "Reminder: %1"
+#~ msgstr " 1 umzuzu"
+
+#, fuzzy
+#~ msgctxt "@info"
+#~ msgid "Could not start KOrganizer so editing is not possible."
+#~ msgstr "Ayinakuqala %1."
+
+#, fuzzy
+#~ msgctxt "@title:window"
+#~ msgid "KOrganizer Reminder Daemon"
+#~ msgstr "Uqinisekiso lwe KOrganizer"
+
+#, fuzzy
+#~ msgctxt "@action:inmenu"
+#~ msgid "Suspend All Reminders"
+#~ msgstr "Ngecawe"
+
+#, fuzzy
+#~ msgctxt "@action:inmenu"
+#~ msgid "Dismiss All Reminders"
+#~ msgstr "Yonke imihla"
+
+#, fuzzy
+#~ msgctxt "@action:inmenu"
+#~ msgid "Enable Reminders"
+#~ msgstr "Umkhumbuzi:"
+
+#, fuzzy
+#~ msgctxt "@action:inmenu"
+#~ msgid "Start Reminder Daemon at Login"
+#~ msgstr "Ikhalenda ye KOrganizer"
+
+#, fuzzy
+#~ msgctxt "@info:status"
+#~ msgid "There is 1 active reminder."
+#~ msgid_plural "There are %1 active reminders."
+#~ msgstr[0] "Umkhumbuzi:"
+#~ msgstr[1] "Umkhumbuzi:"
+
+#, fuzzy
+#~ msgctxt "@info:status"
+#~ msgid "No active reminders."
+#~ msgstr "Umkhumbuzi:"
+
+#, fuzzy
+#~ msgctxt "@title:window"
+#~ msgid "Close KOrganizer Reminder Daemon"
+#~ msgstr "Uqinisekiso lwe KOrganizer"
+
+#, fuzzy
+#~ msgctxt "@action:button start the reminder daemon"
+#~ msgid "Start"
+#~ msgstr "Qala:"
+
+#, fuzzy
+#~ msgctxt "@action:button do not start the reminder daemon"
+#~ msgid "Do Not Start"
+#~ msgstr "Imboniselo yenyanga:"
+
+#, fuzzy
+#~ msgid "KOrganizer Reminder Daemon"
+#~ msgstr "Uqinisekiso lwe KOrganizer"
+
+#, fuzzy
+#~ msgid "Free Busy Object"
+#~ msgstr "Into ye Free Busy"
+
+#, fuzzy
+#~ msgid "Free Busy Message"
+#~ msgstr "Thumela Imiyalezo"
+
+#, fuzzy
+#~ msgctxt "@info"
+#~ msgid "Unable to purge to-dos with uncompleted children."
+#~ msgstr "Ayinakucoca Ukwe-Nza ezinabantwana abangagqitywanga."
+
+#, fuzzy
+#~ msgid "Delete To-do"
+#~ msgstr "Cima Ukwe-Nza"
+
+#, fuzzy
+#~ msgid ""
+#~ "KOrganizer successfully imported and merged your .calendar file from ical "
+#~ "into the currently opened calendar."
+#~ msgstr ""
+#~ "KOrganizer urhwebe ngaphakathi ngempumelelo kwaye walungisa eyakho "
+#~ "ifayile yekhalenda kwi khalenda ekhoyo evulekileyo."
+
+#, fuzzy
+#~ msgid "ICal Import Successful with Warning"
+#~ msgstr "I Ical Irhweba ngaphakathi Ngempumelelo Isilumkiso"
+
+#, fuzzy
+#~ msgid "New calendar '%1'."
+#~ msgstr "Ikhalenda egciniweyo '%1'."
+
+#, fuzzy
+#~ msgid "Could not load calendar '%1'."
+#~ msgstr "Ayikwazanga ukulayisha ikhalenda '%1'.\n"
+
+#, fuzzy
+#~ msgid "Filter Applied"
+#~ msgstr "Icebo lokucoca lenziwe"
+
+#, fuzzy
+#~ msgid "Cut Only This"
+#~ msgstr "Cima iziganeko ezindala"
+
+#, fuzzy
+#~ msgid "Copy Only This"
+#~ msgstr "Cima iziganeko ezindala"
+
+#, fuzzy
+#~ msgid "Delete %1"
+#~ msgstr "Cima..."
+
+#, fuzzy
+#~ msgid "Add %1"
+#~ msgstr "D&ibanisa"
+
+#, fuzzy
+#~ msgid "Edit %1"
+#~ msgstr "Ixesha Lesiphelo: %1"
+
+#, fuzzy
+#~| msgid "Additional email addresses:"
+#~ msgctxt "@label"
+#~ msgid "Additional email addresses:"
+#~ msgstr "Idilesi ye email eyongeziweyo:"
+
+#, fuzzy
+#~| msgid "Additional email address:"
+#~ msgctxt "@label"
+#~ msgid "Additional email address:"
+#~ msgstr "Idilesi ye email eyongeziweyo:"
+
+#, fuzzy
+#~| msgid "New"
+#~ msgctxt "@action:button add a new email address"
+#~ msgid "New"
+#~ msgstr "Entsha"
+
+#, fuzzy
+#~ msgctxt "@action:button"
+#~ msgid "Remove"
+#~ msgstr "Template..."
+
+#, fuzzy
+#~| msgid "(EmptyEmail)"
+#~ msgctxt "@label"
+#~ msgid "(EmptyEmail)"
+#~ msgstr "(Qongqotha i Email)"
+
+#, fuzzy
+#~ msgid "Edit this journal entry"
+#~ msgstr "Cima iziganeko ezindala"
+
+#, fuzzy
+#~ msgid "Opens an editor dialog for this journal entry"
+#~ msgstr "Cima iziganeko ezindala"
+
+#, fuzzy
+#~ msgid "Delete this journal entry"
+#~ msgstr "Cima iziganeko ezindala"
+
+#, fuzzy
+#~ msgid "&Print"
+#~ msgstr "i Khalenda"
+
+#, fuzzy
+#~ msgid "Print this journal entry"
+#~ msgstr "Cima iziganeko ezindala"
+
+#, fuzzy
+#~ msgid "Opens a print dialog for this journal entry"
+#~ msgstr "Cima iziganeko ezindala"
+
+#, fuzzy
+#~ msgid "Time Tracker"
+#~ msgstr "Ibar yexesha:"
+
+#, fuzzy
+#~ msgid "No category"
+#~ msgstr "Iintlobo"
+
+#, fuzzy
+#~ msgctxt "number of hours spent"
+#~ msgid "%1 hour"
+#~ msgid_plural "%1 hours"
+#~ msgstr[0] "1 hour"
+#~ msgstr[1] "%1 iiyure"
+
+#, fuzzy
+#~ msgctxt "percent of hours spent"
+#~ msgid " (%1%)"
+#~ msgstr "%1 %"
+
+#, fuzzy
+#~ msgctxt "@action:inmenu Unspecified priority"
+#~ msgid "unspecified"
+#~ msgstr "Indawo ekuyo:"
+
+#, fuzzy
+#~ msgctxt "@action:inmenu highest priority"
+#~ msgid "1 (highest)"
+#~ msgstr "1 (Ephezulu)"
+
+#, fuzzy
+#~| msgid "2"
+#~ msgctxt "@action:inmenu"
+#~ msgid "2"
+#~ msgstr "2"
+
+#, fuzzy
+#~| msgid "3"
+#~ msgctxt "@action:inmenu"
+#~ msgid "3"
+#~ msgstr "3"
+
+#, fuzzy
+#~| msgid "4"
+#~ msgctxt "@action:inmenu"
+#~ msgid "4"
+#~ msgstr "4"
+
+#, fuzzy
+#~ msgctxt "@action:inmenu lowest priority"
+#~ msgid "9 (lowest)"
+#~ msgstr "5 (esezantsi)"
+
+#, fuzzy
+#~ msgctxt "delimiter for joining category names"
+#~ msgid ","
+#~ msgstr ", "
+
+#~ msgid "Summary"
+#~ msgstr "Isishwankathelo"
+
+#~ msgid "Recurs"
+#~ msgstr "Iyaphinda"
+
+#, fuzzy
+#~| msgid "Complete"
+#~ msgctxt "@title:column percent complete"
+#~ msgid "Complete"
+#~ msgstr "Gqibezela"
+
+#, fuzzy
+#~ msgid "Due Date/Time"
+#~ msgstr "Ixesha Elilindelekileyo"
+
+#, fuzzy
+#~ msgid "Description"
+#~ msgstr "Iinkcazelo"
+
+#, fuzzy
+#~ msgid "Cannot move to-do to itself or a child of itself."
+#~ msgstr "Ayinakususa Ukwenza kuyo okanye kumntwana wayo"
+
+#, fuzzy
+#~ msgid "Drop To-do"
+#~ msgstr "Shiya Ukwenza"
+
+#, fuzzy
+#~ msgctxt "@info:tooltip"
+#~ msgid "Display to-do list in a full window"
+#~ msgstr "Ukwe-nza imboniselo isebenzisa i window egcweleyo"
+
+#, fuzzy
+#~| msgid "&Show"
+#~ msgctxt "@action:inmenu show the to-do"
+#~ msgid "&Show"
+#~ msgstr "&Bonisa"
+
+#, fuzzy
+#~| msgid "&Edit..."
+#~ msgctxt "@action:inmenu edit the to-do"
+#~ msgid "&Edit..."
+#~ msgstr "&Hlela..."
+
+#, fuzzy
+#~ msgctxt "@action:inmenu print the to-do"
+#~ msgid "&Print..."
+#~ msgstr "&Hlela..."
+
+#, fuzzy
+#~ msgctxt "@action:inmenu print preview the to-do"
+#~ msgid "Print Previe&w..."
+#~ msgstr "&Hlela..."
+
+#, fuzzy
+#~ msgctxt "@action:inmenu delete the to-do"
+#~ msgid "&Delete"
+#~ msgstr "Cima..."
+
+#, fuzzy
+#~ msgctxt "@action:inmenu create a new to-do"
+#~ msgid "New &To-do..."
+#~ msgstr "Okutsha &Ukwe-nza..."
+
+#, fuzzy
+#~ msgctxt "@action:inmenu create a new sub-to-do"
+#~ msgid "New Su&b-to-do..."
+#~ msgstr "Entsha Es&ezantsi-Ukwe-Nza..."
+
+#, fuzzy
+#~ msgctxt "@action:inmenu"
+#~ msgid "&Make this To-do Independent"
+#~ msgstr "&Yenza Ulwenzo- Olusezantsi Oluzimeleyo"
+
+#, fuzzy
+#~ msgctxt "@action:inmenu"
+#~ msgid "Make all Sub-to-dos &Independent"
+#~ msgstr "&Yenza Ulwenzo- Olusezantsi Oluzimeleyo"
+
+#, fuzzy
+#~ msgctxt "@title:menu"
+#~ msgid "&Move To"
+#~ msgstr "akukho xesha"
+
+#, fuzzy
+#~ msgctxt "@action:inmenu delete completed to-dos"
+#~ msgid "Pur&ge Completed"
+#~ msgstr ""
+#~ "cima ngokugqityiwe Ku-Dos\n"
+#~ "Hlenga-hlengisa Okugqityiweyo"
+
+#, fuzzy
+#~ msgctxt "@action:inmenu unspecified priority"
+#~ msgid "unspecified"
+#~ msgstr "Indawo ekuyo:"
+
+#, fuzzy
+#~| msgid "2"
+#~ msgctxt "@action:inmenu priority value=2"
+#~ msgid "2"
+#~ msgstr "2"
+
+#, fuzzy
+#~| msgid "3"
+#~ msgctxt "@action:inmenu priority value=3"
+#~ msgid "3"
+#~ msgstr "3"
+
+#, fuzzy
+#~| msgid "4"
+#~ msgctxt "@action:inmenu priority value=4"
+#~ msgid "4"
+#~ msgstr "4"
+
+#, fuzzy
+#~ msgctxt "@label in QuickSearchLine"
+#~ msgid "Search Summaries"
+#~ msgstr "Izishwankathelo"
+
+#, fuzzy
+#~ msgctxt "@info:tooltip"
+#~ msgid "Filter on these categories"
+#~ msgstr "Khetha iintlobo"
+
+#, fuzzy
+#~ msgctxt "@item:inlistbox"
+#~ msgid "Select Categories"
+#~ msgstr "Khetha iintlobo"
+
+#, fuzzy
+#~ msgctxt "@item:intext delimiter for joining category names"
+#~ msgid ","
+#~ msgstr ", "
+
+#, fuzzy
+#~| msgid "Priority"
+#~ msgctxt "@item:inlistbox"
+#~ msgid "Select Priority"
+#~ msgstr "Eyokuqala"
+
+#, fuzzy
+#~ msgctxt "@action:inmenu priority is unspecified"
+#~ msgid "unspecified"
+#~ msgstr "Indawo ekuyo:"
+
+#, fuzzy
+#~ msgctxt "@action:inmenu highest priority"
+#~ msgid "%1 (highest)"
+#~ msgstr "1 (Ephezulu)"
+
+#, fuzzy
+#~ msgctxt "@action:inmenu lowest priority"
+#~ msgid "%1 (lowest)"
+#~ msgstr "5 (esezantsi)"
+
+#, fuzzy
+#~ msgctxt "@action:inmenu"
+#~ msgid "%1"
+#~ msgstr "%1 %"
+
+#, fuzzy
+#~ msgctxt "priority is unspecified"
+#~ msgid "unspecified"
+#~ msgstr "Indawo ekuyo:"
+
+#, fuzzy
+#~ msgctxt "highest priority"
+#~ msgid "%1 (highest)"
+#~ msgstr "1 (Ephezulu)"
+
+#, fuzzy
+#~ msgctxt "lowest priority"
+#~ msgid "%1 (lowest)"
+#~ msgstr "5 (esezantsi)"
+
+#, fuzzy
+#~ msgid "What's Next?"
+#~ msgstr "Yintoni &Elandelayo"
+
+#~ msgid "Events:"
+#~ msgstr "Iziganeko:"
+
+#, fuzzy
+#~ msgid "To-do:"
+#~ msgstr "Ukwe-Nza:"
+
+#, fuzzy
+#~ msgid "Events and to-dos that need a reply:"
+#~ msgstr "Iziganeko Nezi Ku-Dos ezifuna impendulo:"
+
+#, fuzzy
+#~ msgctxt "date, from - to"
+#~ msgid "%1, %2 - %3"
+#~ msgstr ""
+#~ "inyanga_unyaka\n"
+#~ "%1 %2"
+
+#, fuzzy
+#~ msgctxt "to-do due date"
+#~ msgid "  (Due: %1)"
+#~ msgstr "Lindeleka:"
+
+#, fuzzy
+#~ msgctxt "@option:check Checkbox to display todos not hierarchical"
+#~ msgid "Flat View"
+#~ msgstr "Imboniselo yenyanga:"
+
+#, fuzzy
+#~ msgid "Find Events - KOrganizer"
+#~ msgstr "Fumana Iziganeko"
+
+#, fuzzy
+#~ msgctxt "@info:whatsthis"
+#~ msgid "Clicking this button will fully expand the to-do list tree."
+#~ msgstr "Bonisa imizuzwana kwilayini ye Marcus Bains"
+
+#, fuzzy
+#~ msgctxt "@info:tooltip"
+#~ msgid "Fully collapse the to-do tree"
+#~ msgstr " 1 umzuzu"
+
+#~ msgid "Cannot download calendar from '%1'."
+#~ msgstr "Ayikukwazi ukulayisha ezantsi ikhalenda esuka ku '%1'."
+
+#~ msgid "Merged calendar '%1'."
+#~ msgstr "Ihlanganise ikhalenda '%1'."
+
+#~ msgid "Opened calendar '%1'."
+#~ msgstr "Ikhalenda evuliweyo '%1'."
+
+#, fuzzy
+#~ msgctxt "unspecified priority"
+#~ msgid "unspecified"
+#~ msgstr "Indawo ekuyo:"
+
+#, fuzzy
+#~ msgctxt "highest priority"
+#~ msgid "1 (highest)"
+#~ msgstr "1 (Ephezulu)"
+
+#, fuzzy
+#~ msgctxt "lowest priority"
+#~ msgid "9 (lowest)"
+#~ msgstr "5 (esezantsi)"
+
+#, fuzzy
+#~ msgctxt "@label in QuickSearchLine"
+#~ msgid "Search"
+#~ msgstr "Phendla Kwi"
+
+#, fuzzy
+#~ msgid "&Description"
+#~ msgstr "Iinkcazelo"
+
+#, fuzzy
+#~ msgid "Other Options"
+#~ msgstr "Iinkcazelo"
+
+#, fuzzy
+#~ msgid "&Month View"
+#~ msgstr "Imboniselo yenyanga:"
+
+#, fuzzy
+#~| msgid "Categories"
+#~ msgid "Edit Categories"
+#~ msgstr "Iintlobo"
+
+#, fuzzy
+#~ msgid "New category entry"
+#~ msgstr "Iintlobo"
+
+#, fuzzy
+#~ msgid "Add the entry to the category list"
+#~ msgstr "Khetha iintlobo"
+
+#, fuzzy
+#~ msgid "A&dd"
+#~ msgstr "D&ibanisa"
+
+#, fuzzy
+#~ msgid "Add &Subcategory"
+#~ msgstr "Iintlobo"
+
+#, fuzzy
+#~ msgid "Remove the selected category"
+#~ msgstr "Abathathi nxaxheba"
+
+#, fuzzy
+#~ msgid ""
+#~ "Click this button to remove the selected category from the category list."
+#~ msgstr "Bonisa imizuzwana kwilayini ye Marcus Bains"
+
+#, fuzzy
+#~| msgid "Categories"
+#~ msgid "Category list"
+#~ msgstr "Iintlobo"
+
+#, fuzzy
+#~ msgid "Default Category"
+#~ msgstr "Khetha iintlobo"
+
+#, fuzzy
+#~ msgid "New category"
+#~ msgstr "Iintlobo"
+
+#, fuzzy
+#~ msgid "New subcategory"
+#~ msgstr "Iintlobo"
+
+#, fuzzy
+#~ msgid "Default Email Attachment Method"
+#~ msgstr "Ixesha ledinga elingagqibekanga:"
+
+#, fuzzy
+#~ msgid "Select the working hours background color for the agenda view here."
+#~ msgstr "Umbala wendawo yangasemva wemboniselo wezakuxoxwa:"
+
+#, fuzzy
+#~ msgctxt "@title:window"
+#~ msgid "Archive/Delete Past Events and To-dos"
+#~ msgstr "Indawo yokugcina efihlakeleyo/Cima amadinga Adlulileyo"
+
+#, fuzzy
+#~ msgctxt "@action:button"
+#~ msgid "&Archive"
+#~ msgstr "Indawo yokugcina efihlakeleyo"
+
+#, fuzzy
+#~ msgctxt "@option:radio"
+#~ msgid "Archive now items older than:"
+#~ msgstr "Amadinga amadala kune:"
+
+#, fuzzy
+#~ msgctxt "@option:radio"
+#~ msgid "Automaticall&y archive items older than:"
+#~ msgstr "Amadinga amadala kune:"
+
+#, fuzzy
+#~ msgctxt "@item:inlistbox expires in daily units"
+#~ msgid "Day(s)"
+#~ msgstr "imini(ii)"
+
+#, fuzzy
+#~ msgctxt "@item:inlistbox expiration in weekly units"
+#~ msgid "Week(s)"
+#~ msgstr "iveki(ii) kwi:"
+
+#, fuzzy
+#~ msgctxt "@item:inlistbox expiration in monthly units"
+#~ msgid "Month(s)"
+#~ msgstr "inyanga(ii)"
+
+#, fuzzy
+#~ msgctxt "@label"
+#~ msgid "Archive &file:"
+#~ msgstr "Ifayile yendawo yokugcina ngokufihlakeleyo:"
+
+#, fuzzy
+#~ msgctxt "@label filter for KUrlRequester"
+#~ msgid "*.ics|iCalendar Files"
+#~ msgstr "*.vcs|vIifayile ze Khalenda"
+
+#, fuzzy
+#~ msgctxt "@option:check"
+#~ msgid "&Events"
+#~ msgstr "Iziganeko:"
+
+#, fuzzy
+#~ msgctxt "@option:check"
+#~ msgid "&To-dos"
+#~ msgstr "Eza-kwenziwa"
+
+#, fuzzy
+#~ msgctxt "@option:check"
+#~ msgid "&Delete only, do not save"
+#~ msgstr "Cima iziganeko ezindala"
+
+#, fuzzy
+#~| msgid "The archive file name is not valid.\n"
+#~ msgctxt "@info"
+#~ msgid "The archive file name is not valid."
+#~ msgstr "Igama lefayile yendawo yokugcina efihlakeleyo ayisebenzi.\n"
+
+#, fuzzy
+#~ msgid "Regularly archive events"
+#~ msgstr "Isiganeko esiphinde senzeka"
+
+#, fuzzy
+#~ msgid "In days"
+#~ msgstr "i Khalenda"
+
+#, fuzzy
+#~ msgid "In weeks"
+#~ msgstr "iveki(ii) kwi:"
+
+#, fuzzy
+#~ msgid "In months"
+#~ msgstr "inyanga(ii)"
+
+#, fuzzy
+#~ msgid "Archive events"
+#~ msgstr "Isiganeko esiphinde senzeka"
+
+#, fuzzy
+#~ msgid "Archive to-dos"
+#~ msgstr "(akukho zinto ezizakwenziwa)\n"
+
+#~ msgid "Delete old events"
+#~ msgstr "Cima iziganeko ezindala"
+
+#, fuzzy
+#~ msgid "There are no items before %1"
+#~ msgstr "Akukho ziganeko phambi ko %1"
+
+#, fuzzy
+#~ msgid ""
+#~ "Delete all items before %1 without saving?\n"
+#~ "The following items will be deleted:"
+#~ msgstr ""
+#~ "Cima zonke iziganeko phambi ko %1?\n"
+#~ "Iziganeko ezilandelayo zizakucinywa:"
+
+#, fuzzy
+#~ msgid "Delete Old Items"
+#~ msgstr "Cima iziganeko ezindala"
+
+#, fuzzy
+#~ msgid "Cannot write archive file %1. %2"
+#~ msgstr "Ayinakubhala ifayile yendawo yokugcina efihlakeleyo."
+
+#, fuzzy
+#~ msgid "Cannot write archive. %1"
+#~ msgstr "Ayinakubhala ifayile yendawo yokugcina efihlakeleyo."
+
+#, fuzzy
+#~ msgid "Reminder"
+#~ msgstr "Umkhumbuzi:"
+
+#, fuzzy
+#~| msgid "Start Date"
+#~ msgid "Start Date/Time"
+#~ msgstr "Umhla Wesiqalo"
+
+#, fuzzy
+#~ msgid "End Date/Time"
+#~ msgstr "Ixesha Elilindelekileyo"
+
+#, fuzzy
+#~| msgctxt "short_weekday date (e.g. Mon 13)"
+#~| msgid "%1 %2"
+#~ msgid "%2 (1 year)"
+#~ msgid_plural "%2 (%1 years)"
+#~ msgstr[0] "%1 %2"
+#~ msgstr[1] "%1 %2"
+
+#, fuzzy
+#~ msgid "No item selected."
+#~ msgstr "Akukho mnikezeli okhethiweyo."
+
+#, fuzzy
+#~ msgid "Publishing"
+#~ msgstr "Papasha"
+
+#, fuzzy
+#~ msgid "Unable to publish the item '%1'"
+#~ msgstr "Ayikwazi ukulayisha i template '%1'."
+
+#, fuzzy
+#~| msgid "Go &Forward"
+#~ msgid "Forwarding"
+#~ msgstr "Yiya &Phambili"
+
+#, fuzzy
+#~ msgid "Unable to forward the item '%1'"
+#~ msgstr "Ayikwazi ukulayisha i template '%1'."
+
+#, fuzzy
+#~| msgid "Go &Forward"
+#~ msgid "Forwarding Error"
+#~ msgstr "Yiya &Phambili"
+
+#, fuzzy
+#~ msgid "The free/busy information was successfully sent."
+#~ msgstr "Papasha Iinkcukacha ye Free Busy"
+
+#, fuzzy
+#~ msgid "Sending Free/Busy"
+#~ msgstr "Into ye Free Busy"
+
+#, fuzzy
+#~ msgid "Unable to publish the free/busy data."
+#~ msgstr "Papasha Iinkcukacha ye Free Busy"
+
+#, fuzzy
+#~ msgid "The item has no attendees."
+#~ msgstr "Isiganeko asinabathathi nxaxheba."
+
+#, fuzzy
+#~| msgid "Go &Forward"
+#~ msgid "Go forward one week"
+#~ msgstr "Yiya &Phambili"
+
+#, fuzzy
+#~ msgctxt "monthname year"
+#~ msgid "%1 %2"
+#~ msgstr ""
+#~ "inyanga_unyaka\n"
+#~ "%1 %2"
+
+#, fuzzy
+#~ msgid "All Day"
+#~ msgstr "Imini"
+
+#~ msgctxt "short_weekday date (e.g. Mon 13)"
+#~ msgid "%1 %2"
+#~ msgstr "%1 %2"
+
+#, fuzzy
+#~ msgid "Attendee added"
+#~ msgstr "Abathathi nxaxheba"
+
+#, fuzzy
+#~ msgid "- %1"
+#~ msgstr "Ukwe-nza: %1"
+
+#, fuzzy
+#~ msgid "Dissociate event from recurrence"
+#~ msgstr "Dwelisa iziganeko zemini yangoku"
+
+#, fuzzy
+#~ msgid "Split future recurrences"
+#~ msgstr "Impinda"
+
+#, fuzzy
+#~ msgid "Timezone:"
+#~ msgstr "Ummandla wexesha:"
+
+#, fuzzy
+#~ msgid "&Add Timezones..."
+#~ msgstr "Ezizodwa"
+
+#, fuzzy
+#~ msgid "&Remove Timezone %1"
+#~ msgstr "Ummandla wexesha:"
+
+#, fuzzy
+#~ msgid "Timezone: %1"
+#~ msgstr "Ummandla wexesha:"
+
+#, fuzzy
+#~ msgid "Country Code: %1"
+#~ msgstr "&Incwadi egcina ii akhawuti"
+
+#, fuzzy
+#~ msgid "Timezone"
+#~ msgstr "Ummandla wexesha:"
+
+#, fuzzy
+#~ msgid "Add Calendar..."
+#~ msgstr "iKhalenda..."
+
+#, fuzzy
+#~ msgid "Reload"
+#~ msgstr "Layisha phezulu"
+
+#, fuzzy
+#~ msgid "Properties..."
+#~ msgstr "&Hlela..."
+
+#, fuzzy
+#~| msgid "New Calendar"
+#~ msgid "New Calendar..."
+#~ msgstr "Icalendar Entsha"
+
+#~ msgid "Start Time"
+#~ msgstr "Ixesha Lokuqala"
+
+#~ msgid "End Date"
+#~ msgstr "Umhla Wesiphelo"
+
+#~ msgid "End Time"
+#~ msgstr "Ixesha Lokuphela"
+
+#, fuzzy
+#~ msgid "Locking Failed"
+#~ msgstr "Indawo ephelela kuyo"
+
+#, fuzzy
+#~ msgid "Enable automatic saving of manually opened calendar files"
+#~ msgstr "Yenza ugcino oluzenzekelayo le khalenda"
+
+#, fuzzy
+#~ msgctxt "@title:group"
+#~ msgid "Saving Calendar"
+#~ msgstr "i Khalenda"
+
+#, fuzzy
+#~ msgctxt "@title:tab general to-do settings"
+#~ msgid "&General"
+#~ msgstr "Ngokubanzi"
+
+#, fuzzy
+#~ msgctxt "@title:window"
+#~ msgid "New To-do"
+#~ msgstr "Ukwe-Nza Okutsha"
+
+#, fuzzy
+#~ msgid "Sets the title of this journal."
+#~ msgstr "Cima iziganeko ezindala"
+
+#, fuzzy
+#~ msgctxt "journal title"
+#~ msgid "T&itle:"
+#~ msgstr "Iwonga"
+
+#, fuzzy
+#~ msgid "&Date:"
+#~ msgstr "Lindeleka:"
+
+#, fuzzy
+#~ msgid "&Time: "
+#~ msgstr "Ixesha: "
+
+#, fuzzy
+#~ msgid "Select Cate&gories..."
+#~ msgstr "Khetha iintlobo"
+
+#, fuzzy
+#~ msgid "Please specify a valid date, for example '%1'."
+#~ msgstr "Nceda khankanya umhla wesiphelo osebenzayo."
+
+#, fuzzy
+#~| msgid "Please specify a valid due time."
+#~ msgctxt "@info"
+#~ msgid "Please specify a journal title."
+#~ msgstr "Nceda khankanya ixesha elilindelekileyo elisebenzayo."
+
+#, fuzzy
+#~| msgid "General"
+#~ msgctxt "@title general journal settings"
+#~ msgid "General"
+#~ msgstr "Ngokubanzi"
+
+#, fuzzy
+#~ msgctxt "@title:window"
+#~ msgid "New Journal"
+#~ msgstr "&Incwadi egcina ii akhawuti"
+
+#, fuzzy
+#~ msgctxt "@label"
+#~ msgid "Attachment name"
+#~ msgstr "Abathathi nxaxheba"
+
+#, fuzzy
+#~ msgctxt "@info:tooltip"
+#~ msgid "Give the attachment a name"
+#~ msgstr "Abathathi nxaxheba"
+
+#, fuzzy
+#~ msgctxt "@label"
+#~ msgid "Type:"
+#~ msgstr "Udidi Lwemboniselo"
+
+#, fuzzy
+#~| msgid "Unknown"
+#~ msgctxt "@label unknown mimetype"
+#~ msgid "Unknown"
+#~ msgstr "Ayaziwa"
+
+#, fuzzy
+#~ msgctxt "@option:check"
+#~ msgid "Store attachment inline"
+#~ msgstr "Hlela isiganeko"
+
+#, fuzzy
+#~ msgctxt "@info:tooltip"
+#~ msgid "Store the attachment file inside the calendar"
+#~ msgstr "Hlela isiganeko"
+
+#, fuzzy
+#~ msgctxt "@label"
+#~ msgid "Location:"
+#~ msgstr "Indawo ekuyo:"
+
+#, fuzzy
+#~ msgctxt "@label"
+#~ msgid "Attachments:"
+#~ msgstr "Abathathi nxaxheba"
+
+#, fuzzy
+#~ msgctxt "@info:tooltip"
+#~ msgid "Add an attachment"
+#~ msgstr "Hlela isiganeko"
+
+#, fuzzy
+#~ msgctxt "@info:tooltip"
+#~ msgid "Remove the selected attachment"
+#~ msgstr "Abathathi nxaxheba"
+
+#, fuzzy
+#~ msgctxt "@action:inmenu remove the attachment"
+#~ msgid "&Remove"
+#~ msgstr "Template..."
+
+#, fuzzy
+#~ msgctxt "@action:inmenu show a dialog used to edit the attachment"
+#~ msgid "&Properties..."
+#~ msgstr "&Hlela..."
+
+#, fuzzy
+#~ msgctxt "@title"
+#~ msgid "Add Attachment"
+#~ msgstr "Hlela isiganeko"
+
+#, fuzzy
+#~ msgctxt "@info"
+#~ msgid "Do you really want to remove the attachment labeled \"%1\"?"
+#~ msgstr "Ayikwazi ukwenza ifayile ezakulayishwa phezulu"
+
+#, fuzzy
+#~ msgctxt "@action:button"
+#~ msgid "Manage &Templates..."
+#~ msgstr "Gcina i Template"
+
+#, fuzzy
+#~ msgid "Calendar:"
+#~ msgstr "i Khalenda"
+
+#, fuzzy
+#~ msgctxt "@title:window"
+#~ msgid "Edit %1: %2"
+#~ msgstr "Ixesha Lesiphelo: %1"
+
+#, fuzzy
+#~| msgid "KOrganizer Confirmation"
+#~ msgctxt "@title:window"
+#~ msgid "KOrganizer Confirmation"
+#~ msgstr "Uqinisekiso lwe KOrganizer"
+
+#, fuzzy
+#~ msgctxt "@title:tab"
+#~ msgid "Atte&ndees"
+#~ msgstr "Abathathi nxaxheba"
+
+#, fuzzy
+#~| msgid "Unable to find template '%1'."
+#~ msgctxt "@info"
+#~ msgid "Unable to find template '%1'."
+#~ msgstr "Ayikwazi ukulayisha i template '%1'."
+
+#, fuzzy
+#~| msgid "Error loading template file '%1'."
+#~ msgctxt "@info"
+#~ msgid "Error loading template file '%1'."
+#~ msgstr "Imposiso ekulayisheni ifayile ye template '%1'."
+
+#, fuzzy
+#~ msgctxt "@info"
+#~ msgid "Template does not contain a valid incidence."
+#~ msgstr "I Template ayiqulathanga Isiganeko esisebenzayo."
+
+#, fuzzy
+#~ msgctxt "@action:button"
+#~ msgid "Create to-do"
+#~ msgstr "Cima Ukwe-Nza"
+
+#, fuzzy
+#~ msgctxt "@title:window"
+#~ msgid "Counter proposal"
+#~ msgstr "&Incwadi egcina ii akhawuti"
+
+#, fuzzy
+#~ msgctxt "@action:button"
+#~ msgid "Counter proposal"
+#~ msgstr "&Incwadi egcina ii akhawuti"
+
+#, fuzzy
+#~| msgid "Name"
+#~ msgctxt "@title:column attendee name"
+#~ msgid "Name"
+#~ msgstr "Igama"
+
+#, fuzzy
+#~| msgid "Email"
+#~ msgctxt "@title:column attendee email"
+#~ msgid "Email"
+#~ msgstr "Email"
+
+#, fuzzy
+#~| msgid "Role"
+#~ msgctxt "@title:column attendee role"
+#~ msgid "Role"
+#~ msgstr "Umsebenzi"
+
+#, fuzzy
+#~| msgid "Status"
+#~ msgctxt "@title:column attendee status"
+#~ msgid "Status"
+#~ msgstr "Isimo"
+
+#, fuzzy
+#~| msgid "RSVP"
+#~ msgctxt "@title:column attendee has RSVPed?"
+#~ msgid "RSVP"
+#~ msgstr "RSVP"
+
+#, fuzzy
+#~ msgctxt "@title:column attendee delegated to"
+#~ msgid "Delegated To"
+#~ msgstr "Cima..."
+
+#, fuzzy
+#~ msgctxt "@title:column attendee delegated from"
+#~ msgid "Delegated From"
+#~ msgstr "Cima Ukwe-Nza"
+
+#, fuzzy
+#~ msgctxt "@title"
+#~ msgid "Invalid Email Address"
+#~ msgstr "Idilesi ye email eyongeziweyo:"
+
+#, fuzzy
+#~ msgid "Manage %1 Templates"
+#~ msgstr "Gcina i Template"
+
+#, fuzzy
+#~ msgid "Template Name"
+#~ msgstr "Khetha Igama le Template"
+
+#, fuzzy
+#~ msgid "New %1 Template"
+#~ msgstr "Gcina i Template"
+
+#, fuzzy
+#~ msgid ""
+#~ "A template with that name already exists, do you want to overwrite it?"
+#~ msgstr ""
+#~ "Ikhalenda sele iguquliwe kancinane.\n"
+#~ "Ufuna ukuyigcina?"
+
+#, fuzzy
+#~ msgid "Duplicate Template Name"
+#~ msgstr "Khetha Igama le Template"
+
+#, fuzzy
+#~ msgid "Are you sure that you want to remove the template <b>%1</b>?"
+#~ msgstr "Ayikwazi ukwenza ifayile ezakulayishwa phezulu"
+
+#, fuzzy
+#~ msgid "Remove"
+#~ msgstr "Template..."
+
+#, fuzzy
+#~ msgctxt "@label"
+#~ msgid "Identity as organizer:"
+#~ msgstr "Fumana Iziganeko"
+
+#, fuzzy
+#~ msgctxt "@label attendee's name"
+#~ msgid "Na&me:"
+#~ msgstr "Igama:"
+
+#, fuzzy
+#~ msgctxt "@label"
+#~ msgid "Click to add a new attendee"
+#~ msgstr " 1 umzuzu"
+
+#, fuzzy
+#~ msgctxt "@label"
+#~ msgid "Ro&le:"
+#~ msgstr "Umsebenzi:"
+
+#, fuzzy
+#~ msgctxt "@info:tooltip"
+#~ msgid "Select the attendee participation role"
+#~ msgstr "Umbala wendawo yangasemva wemboniselo wezakuxoxwa:"
+
+#, fuzzy
+#~ msgctxt "@label"
+#~ msgid "Stat&us:"
+#~ msgstr "Isimo:"
+
+#, fuzzy
+#~ msgctxt "@info:tooltip"
+#~ msgid "Request a response from the attendee"
+#~ msgstr "Impendulo yesicelo"
+
+#, fuzzy
+#~ msgctxt "@option:check"
+#~ msgid "Re&quest response"
+#~ msgstr "Impendulo yesicelo"
+
+#, fuzzy
+#~| msgid "&New"
+#~ msgctxt "@action:button new attendee"
+#~ msgid "&New"
+#~ msgstr "E&ntsha"
+
+#, fuzzy
+#~ msgctxt "@info:tooltip"
+#~ msgid "Add an attendee"
+#~ msgstr " 1 umzuzu"
+
+#, fuzzy
+#~ msgctxt "@action:button"
+#~ msgid "&Remove"
+#~ msgstr "Template..."
+
+#, fuzzy
+#~ msgctxt "@action:button"
+#~ msgid "Select Addressee..."
+#~ msgstr "Khetha Iidilesi"
+
+#, fuzzy
+#~ msgctxt "@item:intext sample attendee email name"
+#~ msgid "name"
+#~ msgstr "Igama"
+
+#, fuzzy
+#~ msgctxt "@info:whatsthis"
+#~ msgid "Select the identity to use as the organizer for this incidence."
+#~ msgstr "Ukwenza umbala ogqithelwe lixesha:"
+
+#, fuzzy
+#~ msgctxt "@label"
+#~ msgid "Delegated to %1"
+#~ msgstr "Cima..."
+
+#, fuzzy
+#~ msgctxt "@label"
+#~ msgid "Not delegated"
+#~ msgstr "Akukho mnikezeli okhethiweyo."
+
+#, fuzzy
+#~| msgid "1st"
+#~ msgctxt "@item:inlistbox"
+#~ msgid "1st"
+#~ msgstr "nge 1"
+
+#, fuzzy
+#~| msgid "2nd"
+#~ msgctxt "@item:inlistbox"
+#~ msgid "2nd"
+#~ msgstr "Nge 2"
+
+#, fuzzy
+#~| msgid "3rd"
+#~ msgctxt "@item:inlistbox"
+#~ msgid "3rd"
+#~ msgstr "Nge 3"
+
+#, fuzzy
+#~| msgid "4th"
+#~ msgctxt "@item:inlistbox"
+#~ msgid "4th"
+#~ msgstr "Nge 4"
+
+#, fuzzy
+#~| msgid "5th"
+#~ msgctxt "@item:inlistbox"
+#~ msgid "5th"
+#~ msgstr "Nge 5"
+
+#, fuzzy
+#~ msgctxt "@item:inlistbox last week of the month"
+#~ msgid "Last"
+#~ msgstr "&Uluhlu"
+
+#, fuzzy
+#~ msgctxt "@item:inlistbox"
+#~ msgid "2nd Last"
+#~ msgstr "Umhla Wesiphelo"
+
+#, fuzzy
+#~ msgctxt "@item:inlistbox"
+#~ msgid "3rd Last"
+#~ msgstr "Umhla Wesiphelo"
+
+#, fuzzy
+#~ msgctxt "@item:inlistbox"
+#~ msgid "4th Last"
+#~ msgstr "&Uluhlu"
+
+#, fuzzy
+#~ msgctxt "@item:inlistbox"
+#~ msgid "5th Last"
+#~ msgstr "&Uluhlu"
+
+#, fuzzy
+#~ msgctxt "@label"
+#~ msgid "&Recur every"
+#~ msgstr "Phinda qho nge"
+
+#, fuzzy
+#~| msgid "day(s)"
+#~ msgctxt "@label recurrence expressed in days"
+#~ msgid "day(s)"
+#~ msgstr "imini(ii)"
+
+#, fuzzy
+#~| msgid "week(s) on:"
+#~ msgctxt "@label"
+#~ msgid "week(s) on:"
+#~ msgstr "iveki(ii) kwi:"
+
+#, fuzzy
+#~ msgctxt "@info:tooltip"
+#~ msgid "Recur on %1"
+#~ msgstr "Phinda kwi"
+
+#, fuzzy
+#~| msgid "month(s)"
+#~ msgctxt "@label"
+#~ msgid "month(s)"
+#~ msgstr "inyanga(ii)"
+
+#, fuzzy
+#~ msgctxt "@option:radio"
+#~ msgid "&Recur on the"
+#~ msgstr "Phinda kwi"
+
+#, fuzzy
+#~| msgid "6th"
+#~ msgctxt "@item:inlistbox"
+#~ msgid "6th"
+#~ msgstr "Nge 6"
+
+#, fuzzy
+#~| msgid "7th"
+#~ msgctxt "@item:inlistbox"
+#~ msgid "7th"
+#~ msgstr "Nge 7"
+
+#, fuzzy
+#~| msgid "8th"
+#~ msgctxt "@item:inlistbox"
+#~ msgid "8th"
+#~ msgstr "Nge 8"
+
+#, fuzzy
+#~| msgid "9th"
+#~ msgctxt "@item:inlistbox"
+#~ msgid "9th"
+#~ msgstr "Nge 9"
+
+#, fuzzy
+#~| msgid "10th"
+#~ msgctxt "@item:inlistbox"
+#~ msgid "10th"
+#~ msgstr "Nge 10"
+
+#, fuzzy
+#~| msgid "11th"
+#~ msgctxt "@item:inlistbox"
+#~ msgid "11th"
+#~ msgstr "Nge 11"
+
+#, fuzzy
+#~| msgid "12th"
+#~ msgctxt "@item:inlistbox"
+#~ msgid "12th"
+#~ msgstr "Nge 12"
+
+#, fuzzy
+#~| msgid "13th"
+#~ msgctxt "@item:inlistbox"
+#~ msgid "13th"
+#~ msgstr "Nge 13"
+
+#, fuzzy
+#~| msgid "14th"
+#~ msgctxt "@item:inlistbox"
+#~ msgid "14th"
+#~ msgstr "Nge 14"
+
+#, fuzzy
+#~| msgid "15th"
+#~ msgctxt "@item:inlistbox"
+#~ msgid "15th"
+#~ msgstr "Nge15"
+
+#, fuzzy
+#~| msgid "16th"
+#~ msgctxt "@item:inlistbox"
+#~ msgid "16th"
+#~ msgstr "Nge16"
+
+#, fuzzy
+#~| msgid "17th"
+#~ msgctxt "@item:inlistbox"
+#~ msgid "17th"
+#~ msgstr "Nge 17"
+
+#, fuzzy
+#~| msgid "18th"
+#~ msgctxt "@item:inlistbox"
+#~ msgid "18th"
+#~ msgstr "Nge 18"
+
+#, fuzzy
+#~| msgid "19th"
+#~ msgctxt "@item:inlistbox"
+#~ msgid "19th"
+#~ msgstr "Nge 19"
+
+#, fuzzy
+#~| msgid "20th"
+#~ msgctxt "@item:inlistbox"
+#~ msgid "20th"
+#~ msgstr "Nge 20"
+
+#, fuzzy
+#~| msgid "21st"
+#~ msgctxt "@item:inlistbox"
+#~ msgid "21st"
+#~ msgstr "Nge 21"
+
+#, fuzzy
+#~| msgid "22nd"
+#~ msgctxt "@item:inlistbox"
+#~ msgid "22nd"
+#~ msgstr "Nge 22"
+
+#, fuzzy
+#~| msgid "23rd"
+#~ msgctxt "@item:inlistbox"
+#~ msgid "23rd"
+#~ msgstr "Nge 23"
+
+#, fuzzy
+#~| msgid "24th"
+#~ msgctxt "@item:inlistbox"
+#~ msgid "24th"
+#~ msgstr "Nge 24"
+
+#, fuzzy
+#~| msgid "25th"
+#~ msgctxt "@item:inlistbox"
+#~ msgid "25th"
+#~ msgstr "Nge 25"
+
+#, fuzzy
+#~| msgid "26th"
+#~ msgctxt "@item:inlistbox"
+#~ msgid "26th"
+#~ msgstr "Nge 26"
+
+#, fuzzy
+#~| msgid "27th"
+#~ msgctxt "@item:inlistbox"
+#~ msgid "27th"
+#~ msgstr "Nge 27"
+
+#, fuzzy
+#~| msgid "28th"
+#~ msgctxt "@item:inlistbox"
+#~ msgid "28th"
+#~ msgstr "Nge 28"
+
+#, fuzzy
+#~| msgid "29th"
+#~ msgctxt "@item:inlistbox"
+#~ msgid "29th"
+#~ msgstr "Nge 29"
+
+#, fuzzy
+#~| msgid "30th"
+#~ msgctxt "@item:inlistbox"
+#~ msgid "30th"
+#~ msgstr "Nge 30"
+
+#, fuzzy
+#~| msgid "31st"
+#~ msgctxt "@item:inlistbox"
+#~ msgid "31st"
+#~ msgstr "Nge 31"
+
+#, fuzzy
+#~ msgctxt "@item:inlistbox last day of the month"
+#~ msgid "Last"
+#~ msgstr "&Uluhlu"
+
+#, fuzzy
+#~ msgctxt "@item:inlistbox"
+#~ msgid "6th Last"
+#~ msgstr "&Uluhlu"
+
+#, fuzzy
+#~ msgctxt "@item:inlistbox"
+#~ msgid "7th Last"
+#~ msgstr "&Uluhlu"
+
+#, fuzzy
+#~ msgctxt "@item:inlistbox"
+#~ msgid "8th Last"
+#~ msgstr "&Uluhlu"
+
+#, fuzzy
+#~ msgctxt "@item:inlistbox"
+#~ msgid "9th Last"
+#~ msgstr "&Uluhlu"
+
+#, fuzzy
+#~ msgctxt "@item:inlistbox"
+#~ msgid "10th Last"
+#~ msgstr "&Uluhlu"
+
+#, fuzzy
+#~ msgctxt "@item:inlistbox"
+#~ msgid "11th Last"
+#~ msgstr "&Uluhlu"
+
+#, fuzzy
+#~ msgctxt "@item:inlistbox"
+#~ msgid "12th Last"
+#~ msgstr "&Uluhlu"
+
+#, fuzzy
+#~ msgctxt "@item:inlistbox"
+#~ msgid "13th Last"
+#~ msgstr "&Uluhlu"
+
+#, fuzzy
+#~ msgctxt "@item:inlistbox"
+#~ msgid "14th Last"
+#~ msgstr "&Uluhlu"
+
+#, fuzzy
+#~ msgctxt "@item:inlistbox"
+#~ msgid "15th Last"
+#~ msgstr "&Uluhlu"
+
+#, fuzzy
+#~ msgctxt "@item:inlistbox"
+#~ msgid "16th Last"
+#~ msgstr "&Uluhlu"
+
+#, fuzzy
+#~ msgctxt "@item:inlistbox"
+#~ msgid "17th Last"
+#~ msgstr "&Uluhlu"
+
+#, fuzzy
+#~ msgctxt "@item:inlistbox"
+#~ msgid "18th Last"
+#~ msgstr "&Uluhlu"
+
+#, fuzzy
+#~ msgctxt "@item:inlistbox"
+#~ msgid "19th Last"
+#~ msgstr "&Uluhlu"
+
+#, fuzzy
+#~ msgctxt "@item:inlistbox"
+#~ msgid "20th Last"
+#~ msgstr "&Uluhlu"
+
+#, fuzzy
+#~ msgctxt "@item:inlistbox"
+#~ msgid "21st Last"
+#~ msgstr "Umhla Wesiphelo"
+
+#, fuzzy
+#~ msgctxt "@item:inlistbox"
+#~ msgid "22nd Last"
+#~ msgstr "Umhla Wesiphelo"
+
+#, fuzzy
+#~ msgctxt "@item:inlistbox"
+#~ msgid "23rd Last"
+#~ msgstr "Umhla Wesiphelo"
+
+#, fuzzy
+#~ msgctxt "@item:inlistbox"
+#~ msgid "24th Last"
+#~ msgstr "&Uluhlu"
+
+#, fuzzy
+#~ msgctxt "@item:inlistbox"
+#~ msgid "25th Last"
+#~ msgstr "&Uluhlu"
+
+#, fuzzy
+#~ msgctxt "@item:inlistbox"
+#~ msgid "26th Last"
+#~ msgstr "&Uluhlu"
+
+#, fuzzy
+#~ msgctxt "@item:inlistbox"
+#~ msgid "27th Last"
+#~ msgstr "&Uluhlu"
+
+#, fuzzy
+#~ msgctxt "@item:inlistbox"
+#~ msgid "28th Last"
+#~ msgstr "&Uluhlu"
+
+#, fuzzy
+#~ msgctxt "@item:inlistbox"
+#~ msgid "29th Last"
+#~ msgstr "&Uluhlu"
+
+#, fuzzy
+#~ msgctxt "@item:inlistbox"
+#~ msgid "30th Last"
+#~ msgstr "&Uluhlu"
+
+#, fuzzy
+#~ msgctxt "@item:inlistbox"
+#~ msgid "31st Last"
+#~ msgstr "Umhla Wesiphelo"
+
+#, fuzzy
+#~| msgid "day"
+#~ msgctxt "@label"
+#~ msgid "day"
+#~ msgstr "umhla"
+
+#, fuzzy
+#~| msgid "year(s)"
+#~ msgctxt "@label"
+#~ msgid "year(s)"
+#~ msgstr "unyaka(imi)"
+
+#, fuzzy
+#~ msgctxt "@option:radio part before XXX of 'Recur on day XXX of month YYY'"
+#~ msgid "&Recur on day "
+#~ msgstr "Phinda kule mini"
+
+#, fuzzy
+#~| msgid "&Month"
+#~ msgctxt "@option:radio Part before XXX in 'Recur on NNN. WEEKDAY of MONTH'"
+#~ msgid "&On the"
+#~ msgstr "&Inyanga"
+
+#, fuzzy
+#~ msgctxt "@option:radio"
+#~ msgid "Recur on &day #"
+#~ msgstr "Phinda kule mini"
+
+#, fuzzy
+#~ msgctxt "@title:group"
+#~ msgid "E&xceptions"
+#~ msgstr "Ezizodwa"
+
+#, fuzzy
+#~ msgctxt "@action:button"
+#~ msgid "&Add"
+#~ msgstr "D&ibanisa"
+
+#, fuzzy
+#~ msgctxt "@action:button"
+#~ msgid "&Change"
+#~ msgstr "Qwalasela..."
+
+#, fuzzy
+#~ msgctxt "@action:button"
+#~ msgid "&Delete"
+#~ msgstr "Cima..."
+
+#, fuzzy
+#~ msgctxt "@title:window"
+#~ msgid "Edit Exceptions"
+#~ msgstr "Ezizodwa"
+
+#, fuzzy
+#~| msgid "Recurrence Range"
+#~ msgctxt "@title:group"
+#~ msgid "Recurrence Range"
+#~ msgstr "Umqolo Ophindwayo"
+
+#, fuzzy
+#~| msgid "Begin on:"
+#~ msgctxt "@label"
+#~ msgid "Begin on:"
+#~ msgstr "Qala kwi:"
+
+#, fuzzy
+#~ msgctxt "@option radio"
+#~ msgid "&No ending date"
+#~ msgstr "Akukho mhla wasiphelo"
+
+#, fuzzy
+#~ msgctxt "@option:radio"
+#~ msgid "End &after"
+#~ msgstr "Phelisa emva"
+
+#, fuzzy
+#~ msgctxt "@label"
+#~ msgid "&occurrence(s)"
+#~ msgstr "isenzeko(iz)"
+
+#, fuzzy
+#~ msgctxt "@option:radio"
+#~ msgid "End &on:"
+#~ msgstr "Phelisa nge:"
+
+#, fuzzy
+#~| msgid "Begins on: %1"
+#~ msgctxt "@label"
+#~ msgid "Begins on: %1"
+#~ msgstr "Iqala kwi: %1"
+
+#, fuzzy
+#~ msgctxt "@title:window"
+#~ msgid "Edit Recurrence Range"
+#~ msgstr "Umqolo Ophindwayo"
+
+#, fuzzy
+#~ msgctxt "@title:group"
+#~ msgid "Recurrence Types"
+#~ msgstr "Impinda"
+
+#, fuzzy
+#~ msgctxt "@option:radio recur daily"
+#~ msgid "&Daily"
+#~ msgstr "Yonke imihla"
+
+#, fuzzy
+#~ msgctxt "@option:radio recur weekly"
+#~ msgid "&Weekly"
+#~ msgstr "Veki zonke"
+
+#, fuzzy
+#~ msgctxt "@option:radio recur monthly"
+#~ msgid "&Monthly"
+#~ msgstr "Nyanga zonke"
+
+#, fuzzy
+#~ msgctxt "@option:radio recur yearly"
+#~ msgid "&Yearly"
+#~ msgstr "Minyaka Yonke"
+
+#, fuzzy
+#~ msgctxt "@option:check"
+#~ msgid "&Enable recurrence"
+#~ msgstr "Impinda"
+
+#, fuzzy
+#~| msgid "Appointment Time "
+#~ msgctxt "@title:group"
+#~ msgid "Appointment Time "
+#~ msgstr "Ixesha Ledinga "
+
+#, fuzzy
+#~ msgctxt "@info:whatsthis"
+#~ msgid "Displays appointment time information."
+#~ msgstr "Ixesha ledinga elingagqibekanga:"
+
+#, fuzzy
+#~| msgid "Recurrence Rule"
+#~ msgctxt "@title:group"
+#~ msgid "Recurrence Rule"
+#~ msgstr "Umthetho Ophindwayo"
+
+#~ msgid "Date && Time"
+#~ msgstr "Umhla && Ixesha"
+
+#, fuzzy
+#~ msgctxt "@option:check to-do start datetime"
+#~ msgid "Sta&rt:"
+#~ msgstr "Qala:"
+
+#, fuzzy
+#~ msgctxt "to-do due datetime"
+#~ msgid "&Due:"
+#~ msgstr "Lindeleka:"
+
+#, fuzzy
+#~ msgid "Ti&me associated"
+#~ msgstr "Ixesha lihlanganisiwe"
+
+#, fuzzy
+#~ msgctxt "@label"
+#~ msgid "Recurrence:"
+#~ msgstr "Impinda"
+
+#, fuzzy
+#~ msgctxt "to-do completed"
+#~ msgid "co&mpleted"
+#~ msgstr "igqityiwe"
+
+#, fuzzy
+#~ msgid "&Priority:"
+#~ msgstr "Eyokuqala:"
+
+#~ msgid "Please specify a valid due date."
+#~ msgstr "Nceda khankanya umhla olindelekileyo osebenzayo."
+
+#~ msgid "Please specify a valid due time."
+#~ msgstr "Nceda khankanya ixesha elilindelekileyo elisebenzayo."
+
+#~ msgid "Please specify a valid start date."
+#~ msgstr "Nceda khankanya umhla wesiqalo osebenzayo."
+
+#~ msgid "Please specify a valid start time."
+#~ msgstr "Nceda khankanya ixesha lokuqala elisebenzayo."
+
+#~ msgid "The start date cannot be after the due date."
+#~ msgstr "Umhla wesiqalo awunakuba semva komhla olindelekileyo."
+
+#, fuzzy
+#~ msgctxt "to-do start datetime"
+#~ msgid "Start: %1"
+#~ msgstr "Qala:"
+
+#, fuzzy
+#~ msgctxt "to-do due datetime"
+#~ msgid "   Due: %1"
+#~ msgstr "Lindeleka:"
+
+#, fuzzy
+#~ msgctxt "to-do completed on datetime"
+#~ msgid "co&mpleted on"
+#~ msgstr "igqitywe kwi %1"
+
+#, fuzzy
+#~ msgctxt "@info:whatsthis"
+#~ msgid "Sets the Title of this event or to-do."
+#~ msgstr "Cima iziganeko ezindala"
+
+#, fuzzy
+#~ msgctxt "@info:tooltip"
+#~ msgid "Set the title"
+#~ msgstr "Ixesha le alarm engagqibekanga:"
+
+#, fuzzy
+#~ msgctxt "@label event or to-do title"
+#~ msgid "T&itle:"
+#~ msgstr "Iwonga"
+
+#, fuzzy
+#~ msgctxt "@label"
+#~ msgid "&Location:"
+#~ msgstr "Indawo ekuyo:"
+
+#, fuzzy
+#~ msgctxt "@label"
+#~ msgid "Categories:"
+#~ msgstr "Iintlobo"
+
+#, fuzzy
+#~ msgctxt "@action:button select a category"
+#~ msgid "&Select..."
+#~ msgstr "Khetha Iidilesi"
+
+#, fuzzy
+#~ msgctxt "@label"
+#~ msgid "Acc&ess:"
+#~ msgstr "Indlela yokungena:"
+
+#, fuzzy
+#~ msgctxt "@info:tooltip"
+#~ msgid "Set the secrecy level"
+#~ msgstr "Umhla wokuqala:"
+
+#, fuzzy
+#~ msgctxt "@option:check"
+#~ msgid "Rich text"
+#~ msgstr "Uvavanyo"
+
+#, fuzzy
+#~ msgctxt "@info:tooltip"
+#~ msgid "Toggle Rich Text"
+#~ msgstr "Uvavanyo"
+
+#, fuzzy
+#~ msgctxt "@option:check"
+#~ msgid "&Reminder:"
+#~ msgstr "Umkhumbuzi:"
+
+#, fuzzy
+#~ msgctxt "@info:whatsthis"
+#~ msgid "Activates a reminder for this event or to-do."
+#~ msgstr "Cima iziganeko ezindala"
+
+#, fuzzy
+#~ msgctxt "@info:tooltip"
+#~ msgid "Set a reminder"
+#~ msgstr "Umkhumbuzi:"
+
+#, fuzzy
+#~ msgctxt "@info:tooltip"
+#~ msgid "Set an alarm"
+#~ msgstr "Khetha Indlela"
+
+#, fuzzy
+#~| msgid "minute(s)"
+#~ msgctxt "@item:inlistbox alarm expressed in minutes"
+#~ msgid "minute(s)"
+#~ msgstr "umzuzu(imi)"
+
+#, fuzzy
+#~| msgid "hour(s)"
+#~ msgctxt "@item:inlistbox alarm expressed in hours"
+#~ msgid "hour(s)"
+#~ msgstr "iyure(ii)"
+
+#, fuzzy
+#~| msgid "day(s)"
+#~ msgctxt "@item:inlistbox alarm expressed in days"
+#~ msgid "day(s)"
+#~ msgstr "imini(ii)"
+
+#, fuzzy
+#~ msgctxt "@action:button advanced alarm settings"
+#~ msgid "Advanced..."
+#~ msgstr "Kwanga phambili"
+
+#, fuzzy
+#~ msgctxt "@label"
+#~ msgid "1 reminder configured"
+#~ msgid_plural "%1 reminders configured"
+#~ msgstr[0] "Umkhumbuzi:"
+#~ msgstr[1] "Umkhumbuzi:"
+
+#, fuzzy
+#~ msgctxt "@label"
+#~ msgid "1 advanced reminder configured"
+#~ msgstr "Umkhumbuzi:"
+
+#, fuzzy
+#~ msgctxt "@label"
+#~ msgid "No attendees"
+#~ msgstr "Abathathi nxaxheba"
+
+#, fuzzy
+#~| msgid "Please specify a valid due time."
+#~ msgctxt "@info"
+#~ msgid "Please specify a title."
+#~ msgstr "Nceda khankanya ixesha elilindelekileyo elisebenzayo."
+
+#, fuzzy
+#~| msgid "Date && Time"
+#~ msgctxt "@title:group"
+#~ msgid "Date && Time"
+#~ msgstr "Umhla && Ixesha"
+
+#, fuzzy
+#~ msgctxt "@info:whatsthis"
+#~ msgid "Sets options related to the date and time of the event or to-do."
+#~ msgstr "Cima iziganeko ezindala"
+
+#, fuzzy
+#~ msgctxt "@label event start time"
+#~ msgid "&Start:"
+#~ msgstr "Qala:"
+
+#, fuzzy
+#~ msgctxt "@info:tooltip"
+#~ msgid "Set the start date"
+#~ msgstr "Umhla wokuqala:"
+
+#, fuzzy
+#~ msgctxt "@info:tooltip"
+#~ msgid "Set the start time"
+#~ msgstr "Ixesha Lokuqala"
+
+#, fuzzy
+#~ msgctxt "@info:whatsthis"
+#~ msgid "Select the starting time for this event."
+#~ msgstr "Cima iziganeko ezindala"
+
+#, fuzzy
+#~ msgctxt "@label"
+#~ msgid "&End:"
+#~ msgstr "Isiphelo:"
+
+#, fuzzy
+#~ msgctxt "@info:tooltip"
+#~ msgid "Set the end time"
+#~ msgstr "Ixesha le alarm engagqibekanga:"
+
+#, fuzzy
+#~ msgctxt "@option:check"
+#~ msgid "T&ime associated"
+#~ msgstr "Ixesha lihlanganisiwe"
+
+#, fuzzy
+#~ msgctxt "@label"
+#~ msgid "S&how time as:"
+#~ msgstr "Bonisa ixesha njenge:"
+
+#, fuzzy
+#~| msgid "Busy"
+#~ msgctxt "@item:inlistbox show event as busy time"
+#~ msgid "Busy"
+#~ msgstr "Ixakekile"
+
+#, fuzzy
+#~| msgid "Free"
+#~ msgctxt "@item:inlistbox show event as free time"
+#~ msgid "Free"
+#~ msgstr "Ayenzi nto"
+
+#, fuzzy
+#~| msgid "Accept"
+#~ msgctxt "@action:button"
+#~ msgid "Accept"
+#~ msgstr "Yamkela"
+
+#, fuzzy
+#~| msgid "Decline"
+#~ msgctxt "@action:button"
+#~ msgid "Decline"
+#~ msgstr "Yalile ukwamkela"
+
+#, fuzzy
+#~| msgid "Duration: "
+#~ msgctxt "@label"
+#~ msgid "Duration: "
+#~ msgstr "Ixesha elithathayo: "
+
+#, fuzzy
+#~ msgctxt "@label"
+#~ msgid "1 Day"
+#~ msgid_plural "%1 Days"
+#~ msgstr[0] " 1 Umhla"
+#~ msgstr[1] "%1 Imihla"
+
+#, fuzzy
+#~ msgctxt "@label"
+#~ msgid "1 hour"
+#~ msgid_plural "%1 hours"
+#~ msgstr[0] "1 hour"
+#~ msgstr[1] "%1 iiyure"
+
+#, fuzzy
+#~| msgid ", "
+#~ msgctxt "@label"
+#~ msgid ", "
+#~ msgstr ", "
+
+#, fuzzy
+#~ msgctxt "@label"
+#~ msgid "1 minute"
+#~ msgid_plural "%1 minutes"
+#~ msgstr[0] " 1 umzuzu"
+#~ msgstr[1] "%1 imizuzu"
+
+#, fuzzy
+#~ msgctxt "@info"
+#~ msgid "Please specify a valid start time, for example '%1'."
+#~ msgstr "Nceda khankanya ixesha lokuqala elisebenzayo."
+
+#, fuzzy
+#~ msgctxt "@info"
+#~ msgid "Please specify a valid end time, for example '%1'."
+#~ msgstr "Nceda khankanya ixesha lokuphela elisebenzayo."
+
+#, fuzzy
+#~ msgctxt "@info"
+#~ msgid "Please specify a valid start date, for example '%1'."
+#~ msgstr "Nceda khankanya umhla wesiqalo osebenzayo."
+
+#, fuzzy
+#~ msgctxt "@info"
+#~ msgid "Please specify a valid end date, for example '%1'."
+#~ msgstr "Nceda khankanya umhla wesiphelo osebenzayo."
+
+#, fuzzy
+#~| msgid ""
+#~| "The event ends before it starts.\n"
+#~| "Please correct dates and times."
+#~ msgctxt "@info"
+#~ msgid ""
+#~ "The event ends before it starts.\n"
+#~ "Please correct dates and times."
+#~ msgstr ""
+#~ "Isiganeko siphela phambi kokuba iqale.\n"
+#~ "Nceda lungisa imihla namaxesha."
+
+#, fuzzy
+#~| msgid "Unknown"
+#~ msgctxt "@option unknown alarm type"
+#~ msgid "Unknown"
+#~ msgstr "Ayaziwa"
+
+#, fuzzy
+#~ msgctxt "@option popup reminder dialog"
+#~ msgid "Reminder Dialog"
+#~ msgstr "Umkhumbuzi:"
+
+#, fuzzy
+#~| msgid "Email"
+#~ msgctxt "@option send email reminder"
+#~ msgid "Email"
+#~ msgstr "Email"
+
+#, fuzzy
+#~ msgctxt "@item@intable N days/hours/minutes before/after the start/end"
+#~ msgid "%1 before the start"
+#~ msgstr "Cwangcisa Izimo Zakho"
+
+#, fuzzy
+#~ msgctxt "@item@intable N days/hours/minutes before/after the start/end"
+#~ msgid "%1 after the start"
+#~ msgstr "Cwangcisa Izimo Zakho"
+
+#, fuzzy
+#~ msgctxt "@item@intable N days/hours/minutes before/after the start/end"
+#~ msgid "%1 after the end"
+#~ msgstr "Cwangcisa Izimo Zakho"
+
+#, fuzzy
+#~ msgctxt "@item@intable alarm offset specified in days"
+#~ msgid "1 day"
+#~ msgid_plural "%1 days"
+#~ msgstr[0] " 1 Umhla"
+#~ msgstr[1] "%1 Imihla"
+
+#, fuzzy
+#~ msgctxt "@item@intable alarm offset specified in hours"
+#~ msgid "1 hour"
+#~ msgid_plural "%1 hours"
+#~ msgstr[0] "1 hour"
+#~ msgstr[1] "%1 iiyure"
+
+#, fuzzy
+#~ msgctxt "@item@intable alarm offset specified in minutes"
+#~ msgid "1 minute"
+#~ msgid_plural "%1 minutes"
+#~ msgstr[0] " 1 umzuzu"
+#~ msgstr[1] "%1 imizuzu"
+
+#, fuzzy
+#~ msgctxt "@title"
+#~ msgid "Edit Reminders"
+#~ msgstr "Umkhumbuzi:"
+
+#, fuzzy
+#~ msgctxt "@item:inlistbox"
+#~ msgid "before the to-do starts"
+#~ msgstr "Cwangcisa Izimo Zakho"
+
+#, fuzzy
+#~ msgctxt "@item:inlistbox"
+#~ msgid "after the to-do starts"
+#~ msgstr "Cwangcisa Izimo Zakho"
+
+#, fuzzy
+#~ msgctxt "@title:tab general event settings"
+#~ msgid "&General"
+#~ msgstr "Ngokubanzi"
+
+#, fuzzy
+#~ msgctxt "@title:tab"
+#~ msgid "&Attendees"
+#~ msgstr "Abathathi nxaxheba"
+
+#, fuzzy
+#~ msgctxt "@title:window"
+#~ msgid "New Event"
+#~ msgstr "Isi&ganeko Esitsha..."
+
+#, fuzzy
+#~ msgctxt "@title:window"
+#~ msgid "No Changes"
+#~ msgstr "Tshintshisa Iplugin "
+
+#, fuzzy
+#~ msgctxt "@item"
+#~ msgid "My counter proposal for: %1"
+#~ msgstr "&Incwadi egcina ii akhawuti"
+
+#, fuzzy
+#~ msgctxt "@label"
+#~ msgid "Scale: "
+#~ msgstr "Lindeleka:"
+
+#, fuzzy
+#~ msgctxt "@item:inlistbox range in hours"
+#~ msgid "Hour"
+#~ msgstr "Iholide"
+
+#, fuzzy
+#~ msgctxt "@action:button"
+#~ msgid "Center on Start"
+#~ msgstr "Cwangcisa Izimo Zakho"
+
+#, fuzzy
+#~ msgctxt "@action:button"
+#~ msgid "Pick Date"
+#~ msgstr "Ixesha & Umhla"
+
+#, fuzzy
+#~ msgctxt "@action:button reload freebusy data"
+#~ msgid "Reload"
+#~ msgstr "Layisha phezulu"
+
+#, fuzzy
+#~ msgctxt "@title:column attendee name"
+#~ msgid "Attendee"
+#~ msgstr "Abathathi nxaxheba"
+
+#, fuzzy
+#~ msgctxt "@info"
+#~ msgid "No suitable date found."
+#~ msgstr "Umhla wokuqala:"
+
+#, fuzzy
+#~ msgctxt "@title:window"
+#~ msgid "Invalid Email Address"
+#~ msgstr "Idilesi ye email eyongeziweyo:"
+
+#, fuzzy
+#~ msgid "Edit Free/Busy Location"
+#~ msgstr "Papasha Iinkcukacha ye Free Busy"
+
+#, fuzzy
+#~ msgid ""
+#~ "Location of Free/Busy information for %1 <placeholder>%2</placeholder>:"
+#~ msgstr "Papasha Iinkcukacha ye Free Busy"
+
+#, fuzzy
+#~ msgid "Select Categories"
+#~ msgstr "Khetha iintlobo"
+
+#, fuzzy
+#~ msgid "Category"
+#~ msgstr "Iintlobo"
+
+#, fuzzy
+#~ msgid "&Clear Selection"
+#~ msgstr "i Khalenda"
+
+#, fuzzy
+#~ msgid "&Edit Categories..."
+#~ msgstr "Khetha iintlobo"
+
+#, fuzzy
+#~ msgid "Default appointment time"
+#~ msgstr "Ixesha ledinga elingagqibekanga:"
+
+#, fuzzy
+#~ msgid "Default duration of new appointment (HH:MM)"
+#~ msgstr "Ixesha elithathayo elingagqibekanga ledinga elitsha:"
+
+#, fuzzy
+#~ msgid "Enable reminders for new Events"
+#~ msgstr "Umkhumbuzi:"
+
+#, fuzzy
+#~ msgid "Enable reminders for new To-dos"
+#~ msgstr "Umkhumbuzi:"
+
+#, fuzzy
+#~ msgid "Default reminder time"
+#~ msgstr "Ixesha le alarm engagqibekanga:"
+
+#, fuzzy
+#~ msgid "Default time for reminders"
+#~ msgstr "Ixesha le alarm engagqibekanga:"
+
+#, fuzzy
+#~ msgid "Default time unit for reminders"
+#~ msgstr "Ixesha le alarm engagqibekanga:"
+
+#, fuzzy
+#~ msgid "Time"
+#~ msgstr "Ixesha: "
+
+#, fuzzy
+#~ msgid "Set the reminder trigger time"
+#~ msgstr "Ixesha le alarm engagqibekanga:"
+
+#, fuzzy
+#~ msgid "Select the reminder trigger time unit"
+#~ msgstr "Cima iziganeko ezindala"
+
+#, fuzzy
+#~| msgid "minute(s)"
+#~ msgctxt "@item:inlistbox alarm offset expressed in minutes"
+#~ msgid "minute(s)"
+#~ msgstr "umzuzu(imi)"
+
+#, fuzzy
+#~| msgid "hour(s)"
+#~ msgctxt "@item:inlistbox alarm offset expressed in hours"
+#~ msgid "hour(s)"
+#~ msgstr "iyure(ii)"
+
+#, fuzzy
+#~| msgid "day(s)"
+#~ msgctxt "@item:inlistbox alarm offset expressed in days"
+#~ msgid "day(s)"
+#~ msgstr "imini(ii)"
+
+#, fuzzy
+#~ msgid "Select the reminder trigger relative to the start or end time"
+#~ msgstr "Ukwenza umbala ogqithelwe lixesha:"
+
+#, fuzzy
+#~ msgid "before the event starts"
+#~ msgstr "Cwangcisa Izimo Zakho"
+
+#, fuzzy
+#~ msgid "after the event starts"
+#~ msgstr "Cwangcisa Izimo Zakho"
+
+#, fuzzy
+#~ msgid "before the event ends"
+#~ msgstr "Cwangcisa Izimo Zakho"
+
+#, fuzzy
+#~ msgid "&Interval:"
+#~ msgstr "Ngokubanzi"
+
+#, fuzzy
+#~ msgid "Set the reminder to repeat"
+#~ msgstr "Ixesha le alarm engagqibekanga:"
+
+#, fuzzy
+#~ msgid ""
+#~ "Check this if you want to the reminder to recur on a periodic interval."
+#~ msgstr "Bonisa imizuzwana kwilayini ye Marcus Bains"
+
+#, fuzzy
+#~ msgid "&Repeating:"
+#~ msgstr "Soze"
+
+#, fuzzy
+#~ msgctxt "@label:spinbox repeat interval expressed in minutes"
+#~ msgid " Minute(s)"
+#~ msgstr "umzuzu(imi)"
+
+#, fuzzy
+#~ msgctxt "repeat every X minutes"
+#~ msgid "every "
+#~ msgstr "qho nge"
+
+#, fuzzy
+#~ msgid "Type"
+#~ msgstr "Udidi Lwemboniselo"
+
+#, fuzzy
+#~ msgid ""
+#~ "Check this option if you want to display optional text in a popup notice "
+#~ "when the reminder triggers."
+#~ msgstr "Bonisa imizuzwana kwilayini ye Marcus Bains"
+
+#, fuzzy
+#~ msgid "&Display"
+#~ msgstr "Yonke imihla"
+
+#, fuzzy
+#~ msgid ""
+#~ "Check this option if you want to play a sound when the reminder triggers."
+#~ msgstr "Bonisa imizuzwana kwilayini ye Marcus Bains"
+
+#, fuzzy
+#~ msgid "&Sound"
+#~ msgstr "Ngecawe"
+
+#, fuzzy
+#~ msgid ""
+#~ "Check this option if you want to run an application (or script) when the "
+#~ "reminder triggers."
+#~ msgstr "Bonisa imizuzwana kwilayini ye Marcus Bains"
+
+#, fuzzy
+#~ msgid "Send email when the reminder is triggered"
+#~ msgstr "Ixesha le alarm engagqibekanga:"
+
+#, fuzzy
+#~ msgid ""
+#~ "Check this option if you want to send an email message when the reminder "
+#~ "triggers."
+#~ msgstr "Bonisa imizuzwana kwilayini ye Marcus Bains"
+
+#, fuzzy
+#~ msgid "Display &text:"
+#~ msgstr "Yonke imihla"
+
+#, fuzzy
+#~ msgid "Sound &file:"
+#~ msgstr "Ifayile yendawo yokugcina ngokufihlakeleyo:"
+
+#, fuzzy
+#~ msgid "Ar&guments:"
+#~ msgstr "Abathathi nxaxheba"
+
+#, fuzzy
+#~ msgid ""
+#~ "Enter any text you desire for the email message that will be sent when "
+#~ "the alarm triggers."
+#~ msgstr "Bonisa imizuzwana kwilayini ye Marcus Bains"
+
+#, fuzzy
+#~ msgid ""
+#~ "Enter a list comma-separated addresses to which an email will be sent "
+#~ "when the reminder triggers"
+#~ msgstr "Bonisa imizuzwana kwilayini ye Marcus Bains"
+
+#, fuzzy
+#~ msgid "Remove the currently selected reminder"
+#~ msgstr "Abathathi nxaxheba"
+
+#, fuzzy
+#~ msgid "Create a new reminder from the currently selected reminder"
+#~ msgstr "Abathathi nxaxheba"
+
+#, fuzzy
+#~ msgid "The list of reminders for this event or to-do"
+#~ msgstr "Cima iziganeko ezindala"
+
+#, fuzzy
+#~ msgid "Repeat"
+#~ msgstr "Soze"
+
+#, fuzzy
+#~ msgid "Template Management"
+#~ msgstr "Khetha Igama le Template"
+
+#, fuzzy
+#~ msgid "The list of managed templates"
+#~ msgstr "Gcina i Template"
+
+#, fuzzy
+#~ msgid "&New..."
+#~ msgstr "E&ntsha"
+
+#, fuzzy
+#~ msgid "Remove the currently selected template"
+#~ msgstr "Abathathi nxaxheba"
+
+#, fuzzy
+#~| msgid "Business"
+#~ msgctxt "incidence category"
+#~ msgid "Business"
+#~ msgstr "Ishishini"
+
+#, fuzzy
+#~| msgid "Phone Call"
+#~ msgctxt "incidence category: phone call"
+#~ msgid "Phone Call"
+#~ msgstr "Ubizo lwefowuni"
+
+#, fuzzy
+#~| msgid "Education"
+#~ msgctxt "incidence category"
+#~ msgid "Education"
+#~ msgstr "Imfundo"
+
+#, fuzzy
+#~| msgid "Holiday"
+#~ msgctxt ""
+#~ "incidence category: official or unofficial observance of religious/"
+#~ "national/cultural/other significance, often accompanied by celebrations "
+#~ "or festivities"
+#~ msgid "Holiday"
+#~ msgstr "Iholide"
+
+#, fuzzy
+#~| msgid "Vacation"
+#~ msgctxt ""
+#~ "incidence category: a lengthy time away from work or school, a trip "
+#~ "abroad, or simply a pleasure trip away from home"
+#~ msgid "Vacation"
+#~ msgstr "Ixesha leholide"
+
+#, fuzzy
+#~| msgid "Personal"
+#~ msgctxt "incidence category"
+#~ msgid "Personal"
+#~ msgstr "Ubuqu"
+
+#, fuzzy
+#~| msgid "Travel"
+#~ msgctxt ""
+#~ "incidence category: typically associated with leaving home for business, "
+#~ "and not pleasure"
+#~ msgid "Travel"
+#~ msgstr "Ukuhamba"
+
+#, fuzzy
+#~ msgid "text/calendar"
+#~ msgstr "i Khalenda"
+
+#, fuzzy
+#~ msgid "Use email settings from System Settings"
+#~ msgstr "&Sebenzisa izicwangciso ze email ezisuka Kumbindi Wolawulo"
+
+#~ msgid "Send copy to owner when mailing events"
+#~ msgstr "Thumela ukhuphelo kumniniyo xa uposa iziganeko"
+
+#, fuzzy
+#~ msgid "URL for publishing free/busy information"
+#~ msgstr "Papasha Iinkcukacha ye Free Busy"
+
+#, fuzzy
+#~ msgid "Username for publishing free/busy information"
+#~ msgstr "Papasha Iinkcukacha ye Free Busy"
+
+#, fuzzy
+#~ msgid "Password for publishing free/busy information"
+#~ msgstr "Papasha Iinkcukacha ye Free Busy"
+
+#, fuzzy
+#~ msgid "Enable Automatic Free/Busy Retrieval"
+#~ msgstr "Gcina Ngokuzenzekelayo Iimpendulo ze FreeBusy"
+
+#, fuzzy
+#~ msgid "Free/Busy Retrieval URL"
+#~ msgstr "Gcina Ngokuzenzekelayo Iimpendulo ze FreeBusy"
+
+#, fuzzy
+#~ msgid "Free/Busy Retrieval Username"
+#~ msgstr "Gcina Ngokuzenzekelayo Iimpendulo ze FreeBusy"
+
+#, fuzzy
+#~ msgid "Password for retrieving free/busy information"
+#~ msgstr "Papasha Iinkcukacha ye Free Busy"
+
+#, fuzzy
+#~ msgid "Full &name"
+#~ msgstr "Igama &elipheleleyo:"
+
+#, fuzzy
+#~ msgid "E&mail address"
+#~ msgstr "I&dilesi ye email:"
+
+#, fuzzy
+#~ msgid "Attendees Removed"
+#~ msgstr "Abathathi nxaxheba"
+
+#, fuzzy
+#~ msgid "Do Not Send"
+#~ msgstr "Imboniselo yenyanga:"
+
+#, fuzzy
+#~ msgid "Unable to save changes for incidence %1 \"%2\": %3"
+#~ msgstr "Ayikwazi ukuphatha ikhalenda ebekwe kude.\n"
+
+#, fuzzy
+#~ msgid "Unable to delete incidence %1 \"%2\": %3"
+#~ msgstr "Ayikwazi ukuphatha ikhalenda ebekwe kude.\n"
+
+#, fuzzy
+#~ msgid "Unable to save %1 \"%2\": %3"
+#~ msgstr "Ayikwazi ukuphatha ikhalenda ebekwe kude.\n"
+
+#, fuzzy
+#~ msgid "C&opy to Calendar"
+#~ msgstr "i Khalenda"
+
+#, fuzzy
+#~| msgid "New Calendar"
+#~ msgid "&Move to Calendar"
+#~ msgstr "Icalendar Entsha"
+
+#, fuzzy
+#~ msgid "Copy Calendar"
+#~ msgid_plural "Copy %1 Calendars"
+#~ msgstr[0] "i Khalenda"
+#~ msgstr[1] "i Khalenda"
+
+#, fuzzy
+#~| msgid "KOrganizer"
+#~ msgid "Korganizer"
+#~ msgstr "KOrganizer"
+
+#, fuzzy
+#~ msgid "Could not download calendar %1: %2."
+#~ msgstr "Ayikwazanga ukulayisha ikhalenda '%1'.\n"
+
+#, fuzzy
+#~| msgctxt "short_weekday date (e.g. Mon 13)"
+#~| msgid "%1 %2"
+#~ msgid "%1 (%2 years)"
+#~ msgstr "%1 %2"
+
+#, fuzzy
+#~ msgctxt "@option:radio"
+#~ msgid "&Day "
+#~ msgstr "&Imini"
+
+#, fuzzy
+#~ msgctxt "@option:radio"
+#~ msgid "Day #"
+#~ msgstr "Imini"
+
+#, fuzzy
+#~| msgid "Daily"
+#~ msgctxt "@item:inlistbox recur daily"
+#~ msgid "Daily"
+#~ msgstr "Yonke imihla"
+
+#, fuzzy
+#~| msgid "Weekly"
+#~ msgctxt "@item:inlistbox recur weekly"
+#~ msgid "Weekly"
+#~ msgstr "Veki zonke"
+
+#, fuzzy
+#~| msgid "Monthly"
+#~ msgctxt "@item:inlistbox recur monthly"
+#~ msgid "Monthly"
+#~ msgstr "Nyanga zonke"
+
+#, fuzzy
+#~| msgid "Yearly"
+#~ msgctxt "@item:inlistbox recur yearly"
+#~ msgid "Yearly"
+#~ msgstr "Minyaka Yonke"
+
+#, fuzzy
+#~ msgctxt "@action:button"
+#~ msgid "Recurrence Range..."
+#~ msgstr "Umqolo Ophindwayo"
+
+#, fuzzy
+#~ msgctxt "@action:button"
+#~ msgid "Exceptions..."
+#~ msgstr "Ezizodwa"
+
+#, fuzzy
+#~| msgid ""
+#~| "You have no ical file in your home directory.\n"
+#~| "Import cannot proceed.\n"
+#~ msgid "No calendars found, event cannot be added."
+#~ msgstr ""
+#~ "Awunafayile ye Ical kulawulo lwakho lasekhaya.\n"
+#~ "Urhwebo lwangaphakathi alunakuqhubeka.\n"
+
+#, fuzzy
+#~| msgid "Email"
+#~ msgctxt "@title:column email addresses"
+#~ msgid "Email"
+#~ msgstr "Email"
+
+#, fuzzy
+#~ msgid "No Free/Busy Upload URL"
+#~ msgstr "Gcina Ngokuzenzekelayo Iimpendulo ze FreeBusy"
+
+#, fuzzy
+#~ msgid "Error message: %1"
+#~ msgstr "Imposiso ekulayisheni ifayile ye template '%1'."
+
+#, fuzzy
+#~ msgid "Group Scheduling Email"
+#~ msgstr "Ucwangciso Lweqela"
+
+#, fuzzy
+#~ msgid "Send Email"
+#~ msgstr "Thumela iposi"
+
+#, fuzzy
+#~ msgid "Send Update"
+#~ msgstr "Umhla wesiphelo:"
+
+#, fuzzy
+#~ msgid "Counter proposal: %1"
+#~ msgstr "&Incwadi egcina ii akhawuti"
+
+#~ msgid "No running instance of KMail found."
+#~ msgstr "Akukho sebenziso lwangoku lwe KMail efumanekileyo."
+
+#, fuzzy
+#~ msgctxt "@title:window"
+#~ msgid "Edit Journal: %1"
+#~ msgstr "&Incwadi egcina ii akhawuti"
+
+#, fuzzy
+#~ msgctxt "@info"
+#~ msgid "Template does not contain a valid journal."
+#~ msgstr "Template '%1' ayiqulathanga esebenzyo EzaKwenziwa."
+
+#, fuzzy
+#~ msgid "&iCalendar..."
+#~ msgstr "iKhalenda..."
+
+#, fuzzy
+#~ msgid "&vCalendar..."
+#~ msgstr "vCalendar..."
+
+#, fuzzy
+#~| msgid "Saved calendar '%1'."
+#~ msgid "Added calendar for URL '%1'."
+#~ msgstr "Ikhalenda egciniweyo '%1'."
+
+#, fuzzy
+#~ msgid "Unable to create calendar '%1'."
+#~ msgstr "Ayikwazi ukuphatha ikhalenda ebekwe kude.\n"
+
+#, fuzzy
+#~ msgid "Could not load calendar."
+#~ msgstr "Ayikwazanga ukulayisha ikhalenda."
+
+#, fuzzy
+#~ msgid ""
+#~ "The calendar contains unsaved changes. Do you want to save them before "
+#~ "exiting?"
+#~ msgstr ""
+#~ "Ikhalenda sele iguquliwe kancinane.\n"
+#~ "Ufuna ukuyigcina?"
+
+#, fuzzy
+#~ msgid "Save Error"
+#~ msgstr "Akukho Mposiso"
+
+#~ msgid "Mail Client"
+#~ msgstr "Umxhasi Weposi"
+
+#~ msgid "Sendmail"
+#~ msgstr "Thumela iposi"
+
+#, fuzzy
+#~| msgid "Edit Calendar Filters"
+#~ msgctxt "@info:tooltip"
+#~ msgid "Edit calendar settings"
+#~ msgstr "Hlela Amacebo okucoca ulwelo e Khalenda"
+
+#, fuzzy
+#~| msgid "Merged calendar '%1'."
+#~ msgctxt "@info:tooltip"
+#~ msgid "Remove calendar"
+#~ msgstr "Ihlanganise ikhalenda '%1'."
+
+#, fuzzy
+#~ msgid "<qt>Unable to create the calendar folder <b>%1</b>.</qt>"
+#~ msgstr "Ayikwazi ukwenza ifayile ezakulayishwa phezulu"
+
+#, fuzzy
+#~ msgid "<qt>Unable to create a calendar of type <b>%1</b>.</qt>"
+#~ msgstr "Ayikwazi ukwenza ifayile ezakulayishwa phezulu"
+
+#, fuzzy
+#~ msgid "%1 calendar"
+#~ msgstr "Icalendar Entsha"
+
+#, fuzzy
+#~ msgid "You cannot remove your standard calendar."
+#~ msgstr "Ayikwazanga ukulayisha ikhalenda."
+
+#, fuzzy
+#~ msgid "<qt>Cannot edit the calendar folder <b>%1</b>.</qt>"
+#~ msgstr "Ayikwazi ukwenza ifayile ezakulayishwa phezulu"
+
+#, fuzzy
+#~ msgctxt "reload the resource"
+#~ msgid "Re&load"
+#~ msgstr "Layisha phezulu"
+
+#, fuzzy
+#~| msgid "Travel"
+#~ msgctxt "save the resource"
+#~ msgid "&Save"
+#~ msgstr "Ukuhamba"
+
+#, fuzzy
+#~ msgid "Show &Info"
+#~ msgstr "Bonisa..."
+
+#, fuzzy
+#~| msgid "Edit Calendar Filters"
+#~ msgid "&Add Calendar Folder..."
+#~ msgstr "Hlela Amacebo okucoca ulwelo e Khalenda"
+
+#, fuzzy
+#~| msgid "General"
+#~ msgctxt "@title:tab general event settings"
+#~ msgid "General"
+#~ msgstr "Ngokubanzi"
+
+#, fuzzy
+#~| msgid "Details"
+#~ msgctxt "@title:tab"
+#~ msgid "Details"
+#~ msgstr "Iinkcukacha"
+
+#, fuzzy
+#~ msgctxt "@title:tab"
+#~ msgid "Rec&urrence"
+#~ msgstr "Impinda"
+
+#, fuzzy
+#~| msgid "General"
+#~ msgctxt "@title:tab general to-do settings"
+#~ msgid "General"
+#~ msgstr "Ngokubanzi"
+
+#, fuzzy
+#~ msgctxt "@info"
+#~ msgid "Template does not contain a valid to-do."
+#~ msgstr "Template '%1' ayiqulathanga esebenzyo EzaKwenziwa."
+
+#, fuzzy
+#~ msgid "Active Calendar"
+#~ msgstr "Sebenzisa Ikhalenda"
+
+#, fuzzy
+#~ msgctxt "@label"
+#~ msgid "Reminder:"
+#~ msgstr "Umkhumbuzi:"
+
+#, fuzzy
+#~ msgctxt "incidence type is event"
+#~ msgid "event"
+#~ msgstr "Isiganeko"
+
+#, fuzzy
+#~ msgctxt "incidence type is to-do/task"
+#~ msgid "task"
+#~ msgstr "Umsebenzi"
+
+#, fuzzy
+#~ msgctxt "incidence type is journal"
+#~ msgid "journal entry"
+#~ msgstr "&Incwadi egcina ii akhawuti"
+
+#, fuzzy
+#~ msgctxt "@title:column reminder date/time"
+#~ msgid "Reminder Time"
+#~ msgstr "Ixesha Elilindelekileyo"
+
+#, fuzzy
+#~ msgid "&Timespan"
+#~ msgstr "&Ixesha Lokuphila"
+
+#, fuzzy
+#~ msgid "This plugin provides a Gantt-like Timespan view."
+#~ msgstr "Le plugin inikezela ngomfanekiso we Gantt njenge project."
+
+#, fuzzy
+#~ msgid "Timespan View Plugin"
+#~ msgstr "Imboniselo ye Projekti"
+
+#~ msgid "Zoom In"
+#~ msgstr "Sondeza Ngaphakathi"
+
+#~ msgid "Zoom Out"
+#~ msgstr "Sondeza Ngaphandle"
+
+#~ msgid "Center View"
+#~ msgstr "Umboniso Wasembindini"
+
+#, fuzzy
+#~ msgid "Counter-Event Viewer"
+#~ msgstr "Umboniseli Wesiganeko-Sombali"
+
+#~ msgid "Decline"
+#~ msgstr "Yalile ukwamkela"
+
+#~ msgid "Accept"
+#~ msgstr "Yamkela"
+
+#, fuzzy
+#~ msgctxt "@title:column reminder date/time"
+#~ msgid "Reminder"
+#~ msgstr "Umkhumbuzi:"
+
+#, fuzzy
+#~ msgctxt "@item:inlistbox alarm offset expressed in minutes"
+#~ msgid "Minutes"
+#~ msgstr "5 Imizuzu"
+
+#, fuzzy
+#~ msgctxt "@item:inlistbox alarm offset expressed in hours"
+#~ msgid "Hours"
+#~ msgstr "Iholide"
+
+#, fuzzy
+#~ msgctxt "@item:inlistbox alarm offset expressed in days"
+#~ msgid "Days"
+#~ msgstr "Imini"
+
+#, fuzzy
+#~ msgid "Before the Start"
+#~ msgstr "Cwangcisa Izimo Zakho"
+
+#, fuzzy
+#~ msgid "After the Start"
+#~ msgstr "Cwangcisa Izimo Zakho"
+
+#, fuzzy
+#~ msgid "Before the End"
+#~ msgstr "Cwangcisa Izimo Zakho"
+
+#, fuzzy
+#~ msgid "After the End"
+#~ msgstr "Cwangcisa Izimo Zakho"
+
+#, fuzzy
+#~ msgid "&Display reminder"
+#~ msgstr "Yonke imihla"
+
+#, fuzzy
+#~ msgid "Reminder &text:"
+#~ msgstr "Umkhumbuzi:"
+
+#, fuzzy
+#~ msgid "Could not upload file."
+#~ msgstr "Ayikwazanga ukulayisha ikhalenda."
+
+#~ msgid "KOrganizer Timezone Test"
+#~ msgstr "KOrganizer Uvavanyo Lommandla wexesha"
+
+#, fuzzy
+#~ msgctxt "@label"
+#~ msgid "Time zone:"
+#~ msgstr "Ummandla wexesha:"
+
+#, fuzzy
+#~| msgid "Unknown"
+#~ msgctxt "@item:inlistbox unknown timezone"
+#~ msgid "Unknown"
+#~ msgstr "Ayaziwa"
+
+#, fuzzy
+#~| msgid "[No selection]"
+#~ msgctxt "@item:inlistbox no timezone selected"
+#~ msgid "[No selection]"
+#~ msgstr "[Akukho lukhetho]"
+
+#, fuzzy
+#~ msgid "&Journal entries"
+#~ msgstr "&Incwadi egcina ii akhawuti"
+
+#, fuzzy
+#~ msgid "E&vents have to be completely included"
+#~ msgstr "Iziganeko zizakuqukwa ngokupheleleyo"
+
+#~ msgid "&Find"
+#~ msgstr "&Fumana"
+
+#, fuzzy
+#~ msgid "The item \"%1\" will be permanently deleted."
+#~ msgstr "Le nto izakucinywa ngokupheleleyo."
+
+#~ msgid "This item will be permanently deleted."
+#~ msgstr "Le nto izakucinywa ngokupheleleyo."
+
+#, fuzzy
+#~ msgid "Delete Confirmation"
+#~ msgstr "Uqinisekiso lwe KOrganizer"
+
+#, fuzzy
+#~ msgctxt "@info"
+#~ msgid "This journal entry will be permanently deleted."
+#~ msgstr "Le nto izakucinywa ngokupheleleyo."
+
+#, fuzzy
+#~| msgid "This item will be permanently deleted."
+#~ msgctxt "@info"
+#~ msgid "This item will be permanently deleted."
+#~ msgstr "Le nto izakucinywa ngokupheleleyo."
+
+#, fuzzy
+#~ msgctxt "@action:button"
+#~ msgid "Delete"
+#~ msgstr "Cima..."
+
+#, fuzzy
+#~ msgid "Show Resource View"
+#~ msgstr "Uqinisekiso lwe KOrganizer"
+
+#, fuzzy
+#~ msgid "Add Subresource"
+#~ msgstr "%1 iyure"
+
+#, fuzzy
+#~ msgid "<qt>Unable to create subresource <b>%1</b>.</qt>"
+#~ msgstr "Ayikwazi ukwenza ifayile ezakulayishwa phezulu"
+
+#, fuzzy
+#~ msgid "Resource Configuration"
+#~ msgstr "Uqinisekiso lwe KOrganizer"
+
+#, fuzzy
+#~ msgid "%1 resource"
+#~ msgstr "%1 iyure"
+
+#, fuzzy
+#~ msgid "Rename Subresource"
+#~ msgstr "%1 iyure"
+
+#, fuzzy
+#~ msgid "&Add Resource..."
+#~ msgstr "%1 iyure"
+
+#, fuzzy
+#~ msgid "Resource Colors"
+#~ msgstr "%1 iyure"
+
+#, fuzzy
+#~ msgid "&Add Subresource..."
+#~ msgstr "%1 iyure"
+
+#, fuzzy
+#~ msgid "Print &Year:"
+#~ msgstr "Iyashicilela"
+
+#, fuzzy
+#~ msgid "No (unset) category color"
+#~ msgstr "Ukwenza umbala olindeleke namhlanje:"
+
+#, fuzzy
+#~ msgid "&Add..."
+#~ msgstr "Yongeza Icebo lokucoca ulwelo..."
+
+#, fuzzy
+#~ msgctxt "@action:inmenu remove the attachment"
+#~ msgid "&Delete"
+#~ msgstr "Cima..."
+
+#, fuzzy
+#~ msgctxt "@info"
+#~ msgid "The item labeled \"%1\" will be permanently deleted."
+#~ msgstr "Le nto izakucinywa ngokupheleleyo."
+
+#, fuzzy
+#~ msgid "Upload &Hot New Stuff..."
+#~ msgstr "Layisha phezulu Izinto Ezintsha Ezitshisayo..."
+
+#, fuzzy
+#~| msgid "Scheduler Mail Client"
+#~ msgctxt "@title"
+#~ msgid "Scheduler Mail Client"
+#~ msgstr "Umcwangcisi Womxhasi Weposi"
+
+#, fuzzy
+#~| msgid "Mail client"
+#~ msgctxt "@option:radio"
+#~ msgid "Mail client"
+#~ msgstr "Umxhasi weposi"
+
+#~ msgid "Month view uses category colors"
+#~ msgstr "Imboniselo yenyanga isebenzisa uhlobo lwemibala"
+
+#, fuzzy
+#~ msgid "Month view uses resource colors"
+#~ msgstr "Imboniselo yenyanga isebenzisa uhlobo lwemibala"
+
+#, fuzzy
+#~ msgid ""
+#~ "Check this box to make the month view use the resource colors of an item."
+#~ msgstr "Bonisa imizuzwana kwilayini ye Marcus Bains"
+
+#, fuzzy
+#~ msgid "Show to-dos in day, week and month views"
+#~ msgstr "Imihla yokubonisa kwi Mihla ka-X-Elandelayo ebonisiweyo:"
+
+#, fuzzy
+#~ msgctxt "@item:inlistbox"
+#~ msgid "1 minute"
+#~ msgstr " 1 umzuzu"
+
+#, fuzzy
+#~| msgid "5 minutes"
+#~ msgctxt "@item:inlistbox"
+#~ msgid "5 minutes"
+#~ msgstr "5 Imizuzu"
+
+#, fuzzy
+#~| msgid "10 minutes"
+#~ msgctxt "@item:inlistbox"
+#~ msgid "10 minutes"
+#~ msgstr "10 Imizuzu"
+
+#, fuzzy
+#~| msgid "15 minutes"
+#~ msgctxt "@item:inlistbox"
+#~ msgid "15 minutes"
+#~ msgstr "15 Imizuzu"
+
+#, fuzzy
+#~| msgid "30 minutes"
+#~ msgctxt "@item:inlistbox"
+#~ msgid "30 minutes"
+#~ msgstr "30 imizuzu "
+
+#, fuzzy
+#~ msgid "Default Reminder Time"
+#~ msgstr "Ixesha ledinga elingagqibekanga:"
+
+#, fuzzy
+#~| msgid "Summary"
+#~ msgctxt "@title:column reminder summary"
+#~ msgid "Summary"
+#~ msgstr "Isishwankathelo"
+
+#, fuzzy
+#~ msgid "Apply Template"
+#~ msgstr "Gcina i Template"
+
+#, fuzzy
+#~| msgid "Please specify a valid start date."
+#~ msgid "Please specify a summary."
+#~ msgstr "Nceda khankanya umhla wesiqalo osebenzayo."
+
+#, fuzzy
+#~ msgctxt "Journal for DATE"
+#~ msgid "Journal for %1"
+#~ msgstr "&Incwadi egcina ii akhawuti"
+
+#, fuzzy
+#~ msgctxt "@item delimiter for joining category names"
+#~ msgid ","
+#~ msgstr ", "
+
+#, fuzzy
+#~ msgctxt "@info delimiter for joining category names"
+#~ msgid ","
+#~ msgstr ", "
+
+#, fuzzy
+#~| msgid "Name"
+#~ msgctxt "addressee name"
+#~ msgid "Name"
+#~ msgstr "Igama"
+
+#, fuzzy
+#~| msgid "Email"
+#~ msgctxt "addressee email"
+#~ msgid "Email"
+#~ msgstr "Email"
+
+#, fuzzy
+#~| msgid "Name:"
+#~ msgctxt "addressee name"
+#~ msgid "Name:"
+#~ msgstr "Igama:"
+
+#, fuzzy
+#~ msgid "Select &Addressee..."
+#~ msgstr "Khetha Iidilesi"
+
+#, fuzzy
+#~ msgctxt "@action:button"
+#~ msgid "&Add..."
+#~ msgstr "Yongeza Icebo lokucoca ulwelo..."
+
+#, fuzzy
+#~ msgctxt "Summary - date"
+#~ msgid "%1 - %2"
+#~ msgstr "%1 %"
+
+#, fuzzy
+#~ msgid "Filter: "
+#~ msgstr "Yongeza Icebo lokucoca ulwelo"
+
+#, fuzzy
+#~| msgid "Categories"
+#~ msgid "categories-view"
+#~ msgstr "Iintlobo"
+
+#, fuzzy
+#~| msgid "Holiday"
+#~ msgctxt "incidence category"
+#~ msgid "Holiday"
+#~ msgstr "Iholide"
+
+#, fuzzy
+#~ msgid "Show timezone selectors"
+#~ msgstr "Bonisa okukhethiweyo kuphela"
+
+#, fuzzy
+#~ msgid "31st Last"
+#~ msgstr "Umhla Wesiphelo"
+
+#, fuzzy
+#~ msgid "30th Last"
+#~ msgstr "&Uluhlu"
+
+#, fuzzy
+#~ msgid "29th Last"
+#~ msgstr "&Uluhlu"
+
+#, fuzzy
+#~ msgid "28th Last"
+#~ msgstr "&Uluhlu"
+
+#, fuzzy
+#~ msgid "27th Last"
+#~ msgstr "&Uluhlu"
+
+#, fuzzy
+#~ msgid "26th Last"
+#~ msgstr "&Uluhlu"
+
+#, fuzzy
+#~ msgid "25th Last"
+#~ msgstr "&Uluhlu"
+
+#, fuzzy
+#~ msgid "24th Last"
+#~ msgstr "&Uluhlu"
+
+#, fuzzy
+#~ msgid "23rd Last"
+#~ msgstr "Umhla Wesiphelo"
+
+#, fuzzy
+#~ msgid "22nd Last"
+#~ msgstr "Umhla Wesiphelo"
+
+#, fuzzy
+#~ msgid "21st Last"
+#~ msgstr "Umhla Wesiphelo"
+
+#, fuzzy
+#~ msgid "20th Last"
+#~ msgstr "&Uluhlu"
+
+#, fuzzy
+#~ msgid "19th Last"
+#~ msgstr "&Uluhlu"
+
+#, fuzzy
+#~ msgid "18th Last"
+#~ msgstr "&Uluhlu"
+
+#, fuzzy
+#~ msgid "17th Last"
+#~ msgstr "&Uluhlu"
+
+#, fuzzy
+#~ msgid "16th Last"
+#~ msgstr "&Uluhlu"
+
+#, fuzzy
+#~ msgid "15th Last"
+#~ msgstr "&Uluhlu"
+
+#, fuzzy
+#~ msgid "14th Last"
+#~ msgstr "&Uluhlu"
+
+#, fuzzy
+#~ msgid "13th Last"
+#~ msgstr "&Uluhlu"
+
+#, fuzzy
+#~ msgid "12th Last"
+#~ msgstr "&Uluhlu"
+
+#, fuzzy
+#~ msgid "11th Last"
+#~ msgstr "&Uluhlu"
+
+#, fuzzy
+#~ msgid "10th Last"
+#~ msgstr "&Uluhlu"
+
+#, fuzzy
+#~ msgid "9th Last"
+#~ msgstr "&Uluhlu"
+
+#, fuzzy
+#~ msgid "8th Last"
+#~ msgstr "&Uluhlu"
+
+#, fuzzy
+#~ msgid "7th Last"
+#~ msgstr "&Uluhlu"
+
+#, fuzzy
+#~ msgid "6th Last"
+#~ msgstr "&Uluhlu"
+
+#, fuzzy
+#~ msgid "5th Last"
+#~ msgstr "&Uluhlu"
+
+#, fuzzy
+#~ msgid "4th Last"
+#~ msgstr "&Uluhlu"
+
+#, fuzzy
+#~ msgid "3rd Last"
+#~ msgstr "Umhla Wesiphelo"
+
+#, fuzzy
+#~ msgid "2nd Last"
+#~ msgstr "Umhla Wesiphelo"
+
+#, fuzzy
+#~ msgctxt "last day of the month"
+#~ msgid "Last"
+#~ msgstr "&Uluhlu"
+
+#, fuzzy
+#~| msgid "1st"
+#~ msgid "1st"
+#~ msgstr "nge 1"
+
+#, fuzzy
+#~| msgid "2nd"
+#~ msgid "2nd"
+#~ msgstr "Nge 2"
+
+#, fuzzy
+#~| msgid "3rd"
+#~ msgid "3rd"
+#~ msgstr "Nge 3"
+
+#, fuzzy
+#~| msgid "4th"
+#~ msgid "4th"
+#~ msgstr "Nge 4"
+
+#, fuzzy
+#~| msgid "5th"
+#~ msgid "5th"
+#~ msgstr "Nge 5"
+
+#, fuzzy
+#~ msgid "Every day"
+#~ msgid_plural "Every %1 days"
+#~ msgstr[0] "qho nge"
+#~ msgstr[1] "qho nge"
+
+#, fuzzy
+#~ msgctxt "Every N WEEK[S] on WEEKDAYNAMELIST"
+#~ msgid "Every week on %2"
+#~ msgid_plural "Every %1 weeks on %2"
+#~ msgstr[0] ""
+#~ "inyanga_unyaka\n"
+#~ "%1 %2"
+#~ msgstr[1] ""
+#~ "inyanga_unyaka\n"
+#~ "%1 %2"
+
+#, fuzzy
+#~ msgctxt "Every N MONTH[S] on day N"
+#~ msgid "Every month on day %2"
+#~ msgid_plural "Every %1 months on day %2"
+#~ msgstr[0] "qho nge"
+#~ msgstr[1] "qho nge"
+
+#, fuzzy
+#~ msgctxt "Every N YEAR[S] on day N of MONTHNAME"
+#~ msgid "Every year on day %2 of %3"
+#~ msgid_plural "Every %1 years on day %2 of %3"
+#~ msgstr[0] ""
+#~ "inyanga_unyaka\n"
+#~ "%1 %2"
+#~ msgstr[1] ""
+#~ "inyanga_unyaka\n"
+#~ "%1 %2"
+
+#, fuzzy
+#~ msgid "occurrences"
+#~ msgid_plural "occurrences"
+#~ msgstr[0] "isenzeko(iz)"
+#~ msgstr[1] "isenzeko(iz)"
+
+#, fuzzy
+#~ msgctxt "for N %OCCURRENCE[S]"
+#~ msgid "for %1 %2"
+#~ msgstr ""
+#~ "inyanga_unyaka\n"
+#~ "%1 %2"
+
+#, fuzzy
+#~ msgid "Attendees:"
+#~ msgstr "Abathathi nxaxheba"
+
+#, fuzzy
+#~ msgctxt "@action:button"
+#~ msgid "Zoom to Fit"
+#~ msgstr "Sondeza Ngaphandle"
+
+#, fuzzy
+#~| msgid "Week"
+#~ msgid "week"
+#~ msgid_plural "weeks"
+#~ msgstr[0] "Iveki"
+#~ msgstr[1] "Iveki"
+
+#, fuzzy
+#~| msgid "Month"
+#~ msgid "month"
+#~ msgid_plural "months"
+#~ msgstr[0] "Inyanga"
+#~ msgstr[1] "Inyanga"
+
+#, fuzzy
+#~| msgid "year(s)"
+#~ msgid "year"
+#~ msgid_plural "years"
+#~ msgstr[0] "unyaka(imi)"
+#~ msgstr[1] "unyaka(imi)"
+
+#~ msgid "Cannot write archive to final destination."
+#~ msgstr ""
+#~ "Ayinakubhala indawo yokugcina efihlakeleyo kwindawo ephelelakuyo "
+#~ "yokugqibela."
+
+#, fuzzy
+#~ msgctxt "Unspecified priority"
+#~ msgid "unspecified"
+#~ msgstr "Indawo ekuyo:"
+
+#, fuzzy
+#~ msgid "1 (highest)"
+#~ msgstr "1 (Ephezulu)"
+
+#, fuzzy
+#~ msgid "9 (lowest)"
+#~ msgstr "5 (esezantsi)"
+
+#, fuzzy
+#~ msgid "&New Month View"
+#~ msgstr "Imboniselo yenyanga:"
+
+#, fuzzy
+#~ msgctxt "@info alarm offset specified in days"
+#~ msgid "1 day"
+#~ msgid_plural "%1 days"
+#~ msgstr[0] " 1 Umhla"
+#~ msgstr[1] "%1 Imihla"
+
+#, fuzzy
+#~ msgctxt "@info alarm offset specified in hours"
+#~ msgid "1 hour"
+#~ msgid_plural "%1 hours"
+#~ msgstr[0] "1 hour"
+#~ msgstr[1] "%1 iiyure"
+
+#, fuzzy
+#~ msgctxt "@info alarm offset specified in minutes"
+#~ msgid "1 minute"
+#~ msgid_plural "%1 minutes"
+#~ msgstr[0] " 1 umzuzu"
+#~ msgstr[1] "%1 imizuzu"
+
+#, fuzzy
+#~ msgid "Calendar: %1"
+#~ msgstr "i Khalenda"
+
+#, fuzzy
+#~ msgid "Underline text"
+#~ msgstr "Umkhumbuzi:"
+
+#, fuzzy
+#~| msgid "Event text"
+#~ msgid "Center text"
+#~ msgstr "Isiganeko sombhalo"
+
+#, fuzzy
+#~ msgctxt "@info:whatsthis"
+#~ msgid "Enter the default reminder time here."
+#~ msgstr "Ixesha le alarm engagqibekanga:"
+
+#, fuzzy
+#~ msgctxt "@action:inmenu"
+#~ msgid "Reminders Enabled"
+#~ msgstr "Umkhumbuzi:"
+
+#, fuzzy
+#~ msgctxt "@title:window"
+#~ msgid "Reminder"
+#~ msgstr "Umkhumbuzi:"
+
+#, fuzzy
+#~| msgid "Due"
+#~ msgctxt "@title:column reminder due date/time"
+#~ msgid "Due"
+#~ msgstr "Lindeleka"
+
+#~ msgid "Sort Id"
+#~ msgstr "Lungisa ngendlela i Id"
+
+#, fuzzy
+#~ msgctxt "delete completed to-dos"
+#~ msgid "&Purge Completed"
+#~ msgstr ""
+#~ "cima ngokugqityiwe Ku-Dos\n"
+#~ "Hlenga-hlengisa Okugqityiweyo"
+
+#, fuzzy
+#~ msgid "&Templates..."
+#~ msgstr "Layisha i Template"
+
+#, fuzzy
+#~ msgid "&Remove..."
+#~ msgstr "Template..."
+
+#, fuzzy
+#~ msgid "Edit"
+#~ msgstr "Ixesha Lesiphelo: %1"
+
+#, fuzzy
+#~| msgid "day(s)"
+#~ msgctxt "@label"
+#~ msgid "day(s)"
+#~ msgstr "imini(ii)"
+
+#~ msgid "Owner:"
+#~ msgstr "Umniniyo:"
+
+#, fuzzy
+#~| msgid "&New"
+#~ msgctxt "@action:button add a new attendee"
+#~ msgid "&New"
+#~ msgstr "E&ntsha"
+
+#, fuzzy
+#~ msgctxt "@action:button remove this attendee"
+#~ msgid "&Remove"
+#~ msgstr "Template..."
+
+#, fuzzy
+#~ msgctxt "@action:button"
+#~ msgid "&Properties..."
+#~ msgstr "&Hlela..."
+
+#, fuzzy
+#~| msgid "&Show"
+#~ msgctxt "@action:button"
+#~ msgid "&Show"
+#~ msgstr "&Bonisa"
+
+#, fuzzy
+#~ msgid "Agenda view uses resource colors"
+#~ msgstr "Umbala wendawo yangasemva wemboniselo wezakuxoxwa:"
+
+#, fuzzy
+#~ msgid ""
+#~ "Check this box to make the agenda view use the resource colors of an item."
+#~ msgstr "Bonisa imizuzwana kwilayini ye Marcus Bains"
+
+#~ msgid "Role"
+#~ msgstr "Umsebenzi"
+
+#~ msgid "Status"
+#~ msgstr "Isimo"
+
+#~ msgid "RSVP"
+#~ msgstr "RSVP"
+
+#, fuzzy
+#~ msgctxt "Example: 5 hours (80%)"
+#~ msgid "%1 hours ("
+#~ msgstr "1 hour"
+
+#~ msgid "Owner: "
+#~ msgstr "Umniniyo: "
+
+#~ msgid "Go to &Today"
+#~ msgstr "Yiya ku &Namhlanje"
+
+#, fuzzy
+#~ msgid "Print Calendar"
+#~ msgstr "i Khalenda"
+
+#~ msgid "&List"
+#~ msgstr "&Uluhlu"
+
+#, fuzzy
+#~| msgid "Center View"
+#~ msgid "&Timeline View"
+#~ msgstr "Umboniso Wasembindini"
+
+#, fuzzy
+#~| msgid "Center View"
+#~ msgid "&Timespent View"
+#~ msgstr "Umboniso Wasembindini"
+
+#, fuzzy
+#~ msgid "Previous year"
+#~ msgstr "Unyaka Odlulileyo"
+
+#, fuzzy
+#~ msgid "Previous month"
+#~ msgstr "Inyanga Edlulileyo"
+
+#, fuzzy
+#~ msgid "Next month"
+#~ msgstr "Inyanga Elandelayo"
+
+#, fuzzy
+#~ msgid "Co-Maintainer"
+#~ msgstr "Umlondolozi Wangoku"
+
+#, fuzzy
+#~| msgid "Go &Forward"
+#~ msgid "Floating"
+#~ msgstr "Yiya &Phambili"
+
+#, fuzzy
+#~ msgid "&Title: "
+#~ msgstr "Iwonga"
+
+#, fuzzy
+#~ msgid "Ti&me: "
+#~ msgstr "Ixesha: "
+
+#, fuzzy
+#~ msgid "Sets the time associated with this journal  entry"
+#~ msgstr "Cima iziganeko ezindala"
+
+#, fuzzy
+#~ msgid "[Add Journal Entry]"
+#~ msgstr "&Incwadi egcina ii akhawuti"
+
+#, fuzzy
+#~ msgid "Show &Resource Buttons"
+#~ msgstr "Uqinisekiso lwe KOrganizer"
+
+#, fuzzy
+#~ msgid "S&earch:"
+#~ msgstr "Phendla Kwi"
+
+#, fuzzy
+#~ msgid "CalPrintIncidence_Base"
+#~ msgstr "Inyanga Edlulileyo"
+
+#, fuzzy
+#~ msgid "CalPrintYear_Base"
+#~ msgstr "Inyanga Edlulileyo"
+
+#~ msgid "This plugin provides numbers of days and weeks."
+#~ msgstr "Le plugin inikeza ngamanani lentsuku neeveki."
+
+#, fuzzy
+#~ msgid ""
+#~ "<p>...that you can synchronize your calendar data with the data on a Palm "
+#~ "Pilot by using <a href=\"http://www.slac.com/pilone/kpilot_home\">KPilot</"
+#~ "a>?\n"
+#~ "</p>\n"
+#~ msgstr ""
+#~ "<p>...ukuze ihambelane ngaxesha nye nekhalenda yakho ye data nge data "
+#~ "ekwi Palm Pilot\n"
+#~ "ngokusebenzisa <a href=\"http://www.slac.com/pilone/kpilot_home\">KPilot</"
+#~ "a>?\n"
+
+#, fuzzy
+#~ msgid "Reset"
+#~ msgstr "Soze"
+
+#, fuzzy
+#~ msgid "&Reminder Dialog"
+#~ msgstr "Umkhumbuzi:"
+
+#, fuzzy
+#~ msgid "Email &address(es):"
+#~ msgstr "I&dilesi ye email:"
+
+#, fuzzy
+#~ msgid "CalPrintWeek_Base"
+#~ msgstr "Inyanga Edlulileyo"
+
+#, fuzzy
+#~ msgid "Edit Attachment"
+#~ msgstr "Hlela isiganeko"
+
+#, fuzzy
+#~ msgctxt "date from-"
+#~ msgid ""
+#~ "to\n"
+#~ "%1 -\n"
+#~ "%2"
+#~ msgstr ""
+#~ "inyanga_unyaka\n"
+#~ "%1 %2"
+
+#, fuzzy
+#~ msgctxt "date from -"
+#~ msgid ""
+#~ "to (week number)\n"
+#~ "%1 -\n"
+#~ "%2 (Week %3)"
+#~ msgstr ""
+#~ "inyanga_unyaka\n"
+#~ "%1 %2"
+
+#~ msgid "Project View"
+#~ msgstr "Imboniselo ye Projekti"
+
+#~ msgid "main task"
+#~ msgstr "owona msebenzi"
+
+#, fuzzy
+#~ msgid "&Project"
+#~ msgstr "Iprojekti"
+
+#~ msgid "This plugin provides a Gantt diagram as project view."
+#~ msgstr "Le plugin inikezela ngomfanekiso we Gantt njenge project."
+
+#, fuzzy
+#~ msgid "Project View Plugin"
+#~ msgstr "Imboniselo ye Projekti"
+
+#, fuzzy
+#~ msgctxt "date from -"
+#~ msgid ""
+#~ "to\n"
+#~ "%1 -\n"
+#~ "%2"
+#~ msgstr ""
+#~ "inyanga_unyaka\n"
+#~ "%1 %2"
+
+#~ msgid "Exchange Plugin"
+#~ msgstr "Tshintshisa Iplugin "
+
+#~ msgid "Exchange server:"
+#~ msgstr "Tshintshisa umncedisi:"
+
+#, fuzzy
+#~ msgid "Port:"
+#~ msgstr "Eyokuqala:"
+
+#~ msgid "User:"
+#~ msgstr "Umsebenzisi:"
+
+#, fuzzy
+#~ msgid "Mailbox URL:"
+#~ msgstr "KMail"
+
+#~ msgid "Start date:"
+#~ msgstr "Umhla wokuqala:"
+
+#~ msgid "End date:"
+#~ msgstr "Umhla wesiphelo:"
+
+#, fuzzy
+#~ msgid "&Download..."
+#~ msgstr "Layishela ezantsi..."
+
+#, fuzzy
+#~ msgid "&Upload Event..."
+#~ msgstr "Layisha phezulu Isiganeko..."
+
+#, fuzzy
+#~ msgid "De&lete Event"
+#~ msgstr "Cima Isiganeko"
+
+#~ msgid ""
+#~ "This plugin imports and export calendar events from/to a Microsoft "
+#~ "Exchange 2000 Server."
+#~ msgstr ""
+#~ "Le plugin irhweba ngaphakathi ze irhwebe ngaphandle iziganeko ukusuka/"
+#~ "ukuyakwi Microsoft Exchange 20000 Server."
+
+#, fuzzy
+#~ msgid "Please select an appointment."
+#~ msgstr "Nceda khetha idinga"
+
+#~ msgid ""
+#~ "Exchange Upload is EXPERIMENTAL, you may lose data on this appointment!"
+#~ msgstr ""
+#~ "Ulayisho phezulu Lotshintsho LUVAVANYO, ungalahlekelwa yi data kweli "
+#~ "dinga! "
+
+#, fuzzy
+#~ msgid "&Upload"
+#~ msgstr "Layisha phezulu"
+
+#~ msgid ""
+#~ "Exchange Delete is EXPERIMENTAL, if this is a recurring event it will "
+#~ "delete all instances!"
+#~ msgstr ""
+#~ "Utshintsho Lokucima LUVAVANYO, ukuba esi sisiganeko esiphindayo ukwenzeka "
+#~ "siza kucima zonke iindawo! "
+
+#~ msgid "The Exchange server could not be reached or returned an error."
+#~ msgstr ""
+#~ "Akukho mncedisi Wokutshintshisana onokufumaneka okanye onokubuyisela "
+#~ "imposiso."
+
+#~ msgid "Server response could not be interpreted."
+#~ msgstr "Impendulo yomncedisi ayinakuphazanyiswa."
+
+#~ msgid "Appointment data could not be interpreted."
+#~ msgstr "I data yedinga ayinaku phazanyiswa."
+
+#~ msgid "This should not happen: trying to upload wrong type of event."
+#~ msgstr ""
+#~ "Le ayimelanga yenzeke: izama ukulayisha udidi lwesiganeko olungalunganga."
+
+#, fuzzy
+#~ msgid "An error occurred trying to write an appointment to the server."
+#~ msgstr "Imposiso eyenzekileyo izama ukubhala idinga kumncedisi."
+
+#~ msgid "Trying to delete an event that is not present on the server."
+#~ msgstr "Izama ukucima isiganeko esingekhoyo kumncedisi."
+
+#~ msgid "Unknown Error"
+#~ msgstr "Imposiso Engaziwa"
