@@ -1,7 +1,26 @@
 {
     "KPlugin": {
         "Description": "This plugin shows the day's lunar phase (New, First, Last, Full)",
-        "Name": "Lunar Phases Plugin for Calendars"
+        "Description[bg]": "Тази приставка показва лунната фаза на деня (Нова, Първа, Последна, Пълна)",
+        "Description[ca]": "Aquest connector mostra la fase lunar del dia (nova, creixent, plena, minvant)",
+        "Description[ia]": "Iste plugin monstra le die del phase lunar (Nove, Prime, Ultime, Plen)",
+        "Description[it]": "Questa estensione mostra la fase lunare del giorno (nuova, primo quarto, ultimo quarto, piena)",
+        "Description[ka]": "ეს დამატება დღის მთვარის ფაზას გაჩვენებთ (ახალი, პირველი, ბოლო, სრული)",
+        "Description[sl]": "Ta vtičnik prikazuje lunino meno tega dne (mlaj, prvi krajec, zadnji krajec, polno luno)",
+        "Description[tr]": "Bu eklenti günün Ay evresini gösterir (Yeniay, İlkdördün, Sondördün, Dolunay)",
+        "Description[uk]": "Цей додаток показує фазу місяця (новий, перша чверть, остання чверть, повня)",
+        "Description[x-test]": "xxThis plugin shows the day's lunar phase (New, First, Last, Full)xx",
+        "Name": "Lunar Phases Plugin for Calendars",
+        "Name[bg]": "Календарна приставка за лунните фази",
+        "Name[ca]": "Connector de fases lunars per als calendaris",
+        "Name[cs]": "Modul pro lunární fáze v kalendáři",
+        "Name[ia]": "Plug-in pro de phases lunar per calendarios",
+        "Name[it]": "Estensione Fasi lunari per i calendari",
+        "Name[ka]": "მთვარის ფაზების დამატება კალენდრებისთვის",
+        "Name[sl]": "Vstavek lunine mene za koledarje",
+        "Name[tr]": "Takvimler için Ay’ın Evreleri Eklentisi",
+        "Name[uk]": "Додаток фаз місяця для календарів",
+        "Name[x-test]": "xxLunar Phases Plugin for Calendarsxx"
     },
     "X-KDE-KOrganizer-HasSettings": false,
     "X-KDE-PluginInterfaceVersion": 2
