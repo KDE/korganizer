@@ -750,16 +750,14 @@ msgid "Picture Page"
 msgstr "Pagina immagine"
 
 #: picoftheday/element.cpp:326
-#, fuzzy, kde-format
-#| msgid "Loading…"
+#, kde-format
 msgid "Loading..."
-msgstr "Caricamento…"
+msgstr "Caricamento..."
 
 #: picoftheday/element.cpp:332
-#, fuzzy, kde-format
-#| msgid "<qt>Loading <i>Picture of the Day</i>…</qt>"
+#, kde-format
 msgid "<qt>Loading <i>Picture of the Day</i>...</qt>"
-msgstr "<qt>Sto caricando l'<i>Immagine del giorno</i>…</qt>"
+msgstr "<qt>Sto caricando l'<i>Immagine del giorno</i>...</qt>"
 
 #: picoftheday/picoftheday.cpp:48
 #, kde-format

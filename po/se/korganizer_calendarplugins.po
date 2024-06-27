@@ -1,4 +1,4 @@
-# Translation of korganizer_plugins to Northern Sami
+# Translation of korganizer_calendarplugins to Northern Sami
 #
 # Børre Gaup <boerre@skolelinux.no>, 2003, 2004, 2005, 2006.
 msgid ""

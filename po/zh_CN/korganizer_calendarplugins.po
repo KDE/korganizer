@@ -14,8 +14,9 @@ msgstr ""
 "X-Crowdin-Project: kdeorg\n"
 "X-Crowdin-Project-ID: 269464\n"
 "X-Crowdin-Language: zh-CN\n"
-"X-Crowdin-File: /kf6-trunk/messages/kdepim-addons/korganizer_plugins.pot\n"
-"X-Crowdin-File-ID: 45765\n"
+"X-Crowdin-File: /kf6-trunk/messages/korganizer/korganizer_calendarplugins."
+"pot\n"
+"X-Crowdin-File-ID: 54402\n"
 
 #: datenums/configdialog.cpp:28
 #, kde-format
@@ -733,11 +734,9 @@ msgid "Loading..."
 msgstr ""
 
 #: picoftheday/element.cpp:332
-#, fuzzy, kde-format
-#| msgid ""
-#| "<qt>This plugin provides the Wikipedia <i>Picture of the Day</i>.</qt>"
+#, kde-format
 msgid "<qt>Loading <i>Picture of the Day</i>...</qt>"
-msgstr "<qt>这个插件提供了维基百科<i>每日图片</i>功能。</qt>"
+msgstr ""
 
 #: picoftheday/picoftheday.cpp:48
 #, kde-format
@@ -777,7 +776,3 @@ msgstr "历史上的本月"
 msgctxt "Qt date format used by the localized Wikipedia"
 msgid "MMMM_yyyy"
 msgstr "yyyy_MMMM"
-
-#~ msgctxt "@action:button"
-#~ msgid "Search &Directory Service"
-#~ msgstr "目录搜索服务(&D)"

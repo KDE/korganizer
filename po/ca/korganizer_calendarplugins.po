@@ -1,4 +1,4 @@
-# Translation of korganizer_plugins.po to Catalan
+# Translation of korganizer_calendarplugins.po to Catalan
 # Copyright (C) 2000-2024 This_file_is_part_of_KDE
 #
 # Softcatalà <info@softcatala.org>, 2000.
@@ -11,10 +11,10 @@
 # Antoni Bella Pérez <antonibella5@yahoo.com>, 2011, 2013, 2014, 2015, 2016, 2018, 2019.
 msgid ""
 msgstr ""
-"Project-Id-Version: kdepim-addons\n"
+"Project-Id-Version: korganizer\n"
 "Report-Msgid-Bugs-To: https://bugs.kde.org\n"
 "POT-Creation-Date: 2024-06-26 00:40+0000\n"
-"PO-Revision-Date: 2024-06-18 16:53+0200\n"
+"PO-Revision-Date: 2024-06-26 10:28+0200\n"
 "Last-Translator: Josep M. Ferrer <txemaq@gmail.com>\n"
 "Language-Team: Catalan <kde-i18n-ca@kde.org>\n"
 "Language: ca\n"
@@ -747,16 +747,14 @@ msgid "Picture Page"
 msgstr "Pàgina de la imatge"
 
 #: picoftheday/element.cpp:326
-#, fuzzy, kde-format
-#| msgid "Loading…"
+#, kde-format
 msgid "Loading..."
-msgstr "S'està carregant…"
+msgstr "S'està carregant..."
 
 #: picoftheday/element.cpp:332
-#, fuzzy, kde-format
-#| msgid "<qt>Loading <i>Picture of the Day</i>…</qt>"
+#, kde-format
 msgid "<qt>Loading <i>Picture of the Day</i>...</qt>"
-msgstr "<qt>S'està carregant la <i>imatge del dia</i>…</qt>"
+msgstr "<qt>S'està carregant la <i>imatge del dia</i>...</qt>"
 
 #: picoftheday/picoftheday.cpp:48
 #, kde-format

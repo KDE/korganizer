@@ -1,4 +1,4 @@
-# Translation of korganizer_plugins to Norwegian Nynorsk
+# Translation of korganizer_calendarplugins to Norwegian Nynorsk
 #
 # Gaute Hvoslef Kvalnes <gaute@verdsveven.com>, 2000, 2002, 2003, 2005.
 # Håvard Korsvoll <korsvoll@skulelinux.no>, 2003, 2004.
@@ -747,14 +747,12 @@ msgid "Picture Page"
 msgstr "Biletside"
 
 #: picoftheday/element.cpp:326
-#, fuzzy, kde-format
-#| msgid "Loading..."
+#, kde-format
 msgid "Loading..."
 msgstr "Lastar …"
 
 #: picoftheday/element.cpp:332
-#, fuzzy, kde-format
-#| msgid "<qt>Loading <i>Picture of the Day</i>...</qt>"
+#, kde-format
 msgid "<qt>Loading <i>Picture of the Day</i>...</qt>"
 msgstr "<qt>Lastar inn <i>dagens bilete</i> …</qt>"
 

@@ -3,7 +3,7 @@
 # Vít Pelčák <vit@pelcak.org>, 2010, 2011, 2012, 2013, 2014, 2015, 2016, 2019, 2020.
 # Lukáš Tinkl <ltinkl@redhat.com>, 2010, 2011.
 # Tomáš Chvátal <tomas.chvatal@gmail.com>, 2012, 2013.
-# SPDX-FileCopyrightText: 2024 Vit Pelcak <vpelcak@suse.cz>
+# SPDX-FileCopyrightText: 2024 Vit Pelcak <vit@pelcak.org>
 #
 msgid ""
 msgstr ""
@@ -740,16 +740,14 @@ msgid "Picture Page"
 msgstr "Stránka s obrázkem"
 
 #: picoftheday/element.cpp:326
-#, fuzzy, kde-format
-#| msgid "Loading…"
+#, kde-format
 msgid "Loading..."
-msgstr "Probíhá načítání…"
+msgstr "Probíhá načítání..."
 
 #: picoftheday/element.cpp:332
-#, fuzzy, kde-format
-#| msgid "<qt>Loading <i>Picture of the Day</i>…</qt>"
+#, kde-format
 msgid "<qt>Loading <i>Picture of the Day</i>...</qt>"
-msgstr "<qt>Načítám<i>Obrázek Dne</i>…</qt>"
+msgstr "<qt>Načítám<i>Obrázek Dne</i>...</qt>"
 
 #: picoftheday/picoftheday.cpp:48
 #, kde-format
@@ -789,7 +787,3 @@ msgstr "Tento měsíc v historii"
 msgctxt "Qt date format used by the localized Wikipedia"
 msgid "MMMM_yyyy"
 msgstr "MMMM_yyyy"
-
-#~ msgctxt "@action:button"
-#~ msgid "Search &Directory Service"
-#~ msgstr "Prohledat a&dresářovou službu"

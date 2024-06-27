@@ -1,4 +1,4 @@
-# Translation of korganizer_plugins to Norwegian Bokmål
+# Translation of korganizer_calendarplugins to Norwegian Bokmål
 #
 # Hans Petter Bieker <bieker@kde.org>, 1998.
 # Knut Yrvin <knut.yrvin@gmail.com>, 2002, 2003, 2005.
@@ -748,14 +748,12 @@ msgid "Picture Page"
 msgstr "Bildeside"
 
 #: picoftheday/element.cpp:326
-#, fuzzy, kde-format
-#| msgid "Loading..."
+#, kde-format
 msgid "Loading..."
 msgstr "Laster …"
 
 #: picoftheday/element.cpp:332
-#, fuzzy, kde-format
-#| msgid "<qt>Loading <i>Picture of the Day</i>...</qt>"
+#, kde-format
 msgid "<qt>Loading <i>Picture of the Day</i>...</qt>"
 msgstr "<qt>Laster inn <i>Dagens bilde</i>…</qt>"
 
