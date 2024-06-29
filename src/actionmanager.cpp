@@ -879,7 +879,6 @@ void ActionManager::restoreCollectionViewSetting()
 
 void ActionManager::writeSettings()
 {
-    qDebug();
     KSharedConfig::Ptr config = KSharedConfig::openConfig();
     KConfigGroup group = config->group(QStringLiteral("Settings"));
     mCalendarView->writeSettings();
