@@ -9,7 +9,7 @@ msgstr ""
 "Project-Id-Version: korganizer\n"
 "Report-Msgid-Bugs-To: https://bugs.kde.org\n"
 "POT-Creation-Date: 2024-06-26 00:40+0000\n"
-"PO-Revision-Date: 2024-06-19 22:33+0200\n"
+"PO-Revision-Date: 2024-06-28 16:51+0200\n"
 "Last-Translator: Oliver Kellogg <olivermkellogg@gmail.com>\n"
 "Language-Team: esperanto <kde-i18n-eo@kde.org>\n"
 "Language: eo\n"
@@ -740,16 +740,14 @@ msgid "Picture Page"
 msgstr "Bildopaĝoj"
 
 #: picoftheday/element.cpp:326
-#, fuzzy, kde-format
-#| msgid "Loading…"
+#, kde-format
 msgid "Loading..."
-msgstr "Ŝargante…"
+msgstr "Ŝargante..."
 
 #: picoftheday/element.cpp:332
-#, fuzzy, kde-format
-#| msgid "<qt>Loading <i>Picture of the Day</i>…</qt>"
+#, kde-format
 msgid "<qt>Loading <i>Picture of the Day</i>...</qt>"
-msgstr "<qt>Ŝargante <i>Bildon de la Tago</i>…</qt>"
+msgstr "<qt>Ŝargante <i>Bildon de la Tago</i>...</qt>"
 
 #: picoftheday/picoftheday.cpp:48
 #, kde-format
@@ -791,7 +789,3 @@ msgstr "Ĉi monato en historio"
 msgctxt "Qt date format used by the localized Wikipedia"
 msgid "MMMM_yyyy"
 msgstr "MMMM_jjjj"
-
-#~ msgctxt "@action:button"
-#~ msgid "Search &Directory Service"
-#~ msgstr "Serĉi &Dosierujo-Servon"
