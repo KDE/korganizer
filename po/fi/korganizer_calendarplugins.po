@@ -749,14 +749,12 @@ msgid "Picture Page"
 msgstr "Kuvasivu"
 
 #: picoftheday/element.cpp:326
-#, fuzzy, kde-format
-#| msgid "Loading..."
+#, kde-format
 msgid "Loading..."
 msgstr "Ladataan…"
 
 #: picoftheday/element.cpp:332
-#, fuzzy, kde-format
-#| msgid "<qt>Loading <i>Picture of the Day</i>...</qt>"
+#, kde-format
 msgid "<qt>Loading <i>Picture of the Day</i>...</qt>"
 msgstr "<qt>Ladataan <i>Päivän kuvaa</i>…</qt>"
 

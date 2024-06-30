@@ -17,7 +17,7 @@ msgid ""
 msgstr ""
 "Project-Id-Version: korganizer\n"
 "Report-Msgid-Bugs-To: https://bugs.kde.org\n"
-"POT-Creation-Date: 2024-06-18 00:40+0000\n"
+"POT-Creation-Date: 2024-06-30 00:39+0000\n"
 "PO-Revision-Date: 2024-06-18 08:08+0300\n"
 "Last-Translator: Yaron Shahrabani <sh.yaron@gmail.com>\n"
 "Language-Team: צוות התרגום של KDE ישראל\n"
@@ -487,8 +487,8 @@ msgstr ""
 "מאפשר להסיר את כל המטלות שהושלמו מאוסף לוחות השנה שלך. זאת פעולה בלתי הפיכה!"
 
 #. i18n: ectx: property (text), widget (QPushButton, mDeleteButton)
-#: actionmanager.cpp:368 actionmanager.cpp:623 actionmanager.cpp:1308
-#: actionmanager.cpp:1345 ui/filteredit_base.ui:56
+#: actionmanager.cpp:368 actionmanager.cpp:623 actionmanager.cpp:1307
+#: actionmanager.cpp:1344 ui/filteredit_base.ui:56
 #, kde-format
 msgid "&Delete"
 msgstr "מ&חיקה"
@@ -858,7 +858,7 @@ msgstr "גלילה קדימה ביום, שבוע, חודש או שנה, כתלו
 msgid "&Day"
 msgstr "&יום"
 
-#: actionmanager.cpp:553 actionmanager.cpp:1065
+#: actionmanager.cpp:553 actionmanager.cpp:1064
 #, kde-format
 msgid "&Next Day"
 msgid_plural "&Next %1 Days"
@@ -986,12 +986,12 @@ msgid ""
 "current calendar view."
 msgstr "פתיחת חלון הגדרות שמאפשר לך לשנות את הגדרות תצוגת לוח השנה הנוכחית."
 
-#: actionmanager.cpp:615 actionmanager.cpp:1302 actionmanager.cpp:1343
+#: actionmanager.cpp:615 actionmanager.cpp:1301 actionmanager.cpp:1342
 #, kde-format
 msgid "&Show"
 msgstr "ה&צגה"
 
-#: actionmanager.cpp:619 actionmanager.cpp:1305 actionmanager.cpp:1344
+#: actionmanager.cpp:619 actionmanager.cpp:1304 actionmanager.cpp:1343
 #, kde-format
 msgid "&Edit…"
 msgstr "&עריכה…"
@@ -1127,136 +1127,136 @@ msgstr "לוח שנה חדש נוסף בהצלחה"
 msgid "Could not add a calendar. Error: %1"
 msgstr "לא ניתן להוסיף לוח שנה. שגיאה: %1"
 
-#: actionmanager.cpp:918
+#: actionmanager.cpp:917
 #, kde-format
 msgctxt "@title:window"
 msgid "Select Calendar File to Open"
 msgstr "בחירת קובץ לוח שנה לפתיחה"
 
-#: actionmanager.cpp:946
+#: actionmanager.cpp:945
 #, kde-format
 msgctxt "@title:window"
 msgid "Select Calendar File to Import"
 msgstr "בחירת קובץ לוח שנה לייבוא"
 
-#: actionmanager.cpp:977
+#: actionmanager.cpp:976
 #, kde-format
 msgid "An error occurred: %1"
 msgstr "אירעה שגיאה: %1"
 
-#: actionmanager.cpp:995
+#: actionmanager.cpp:994
 #, kde-format
 msgid "Cannot upload calendar to '%1'"
 msgstr "לא ניתן להעלות את לוח השנה אל ‚%1’"
 
-#: actionmanager.cpp:1001
+#: actionmanager.cpp:1000
 #, kde-format
 msgid "Saved calendar '%1'."
 msgstr "לוח השנה ‚%1’ נשמר."
 
-#: actionmanager.cpp:1039
+#: actionmanager.cpp:1038
 #, kde-format
 msgid "Unable to save calendar to the file %1."
 msgstr "אי אפשר לשמור לוח שנה לקובץ %1."
 
-#: actionmanager.cpp:1039
+#: actionmanager.cpp:1038
 #, kde-format
 msgctxt "@title:window"
 msgid "Error"
 msgstr "שגיאה"
 
-#: actionmanager.cpp:1084
+#: actionmanager.cpp:1083
 #, kde-format
 msgid "Could not start control module for date and time format."
 msgstr "לא ניתן להפעיל את מודול הבקרה של תבנית התאריך והשעה."
 
-#: actionmanager.cpp:1263
+#: actionmanager.cpp:1262
 #, kde-format
 msgid "&Show Event"
 msgstr "ה&צגת אירוע"
 
-#: actionmanager.cpp:1266
+#: actionmanager.cpp:1265
 #, kde-format
 msgid "&Edit Event…"
 msgstr "&עריכת אירוע…"
 
-#: actionmanager.cpp:1269
+#: actionmanager.cpp:1268
 #, kde-format
 msgid "&Delete Event"
 msgstr "&מחיקת אירוע"
 
-#: actionmanager.cpp:1277
+#: actionmanager.cpp:1276
 #, kde-format
 msgid "&Show To-do"
 msgstr "ה&צגת מטלה"
 
-#: actionmanager.cpp:1280 kontactplugin/korganizer/todosummarywidget.cpp:321
+#: actionmanager.cpp:1279 kontactplugin/korganizer/todosummarywidget.cpp:321
 #, kde-format
 msgid "&Edit To-do…"
 msgstr "&עריכת מטלה…"
 
-#: actionmanager.cpp:1283 kontactplugin/korganizer/todosummarywidget.cpp:323
+#: actionmanager.cpp:1282 kontactplugin/korganizer/todosummarywidget.cpp:323
 #, kde-format
 msgid "&Delete To-do"
 msgstr "מ&חיקת מטלה"
 
-#: actionmanager.cpp:1421 actionmanager.cpp:1527
+#: actionmanager.cpp:1420 actionmanager.cpp:1526
 #, kde-format
 msgid "Attach as &link"
 msgstr "צירוף כ&קישור"
 
-#: actionmanager.cpp:1422 actionmanager.cpp:1528
+#: actionmanager.cpp:1421 actionmanager.cpp:1527
 #, kde-format
 msgid "Attach &inline"
 msgstr "הוספה כ&חלק מההודעה"
 
-#: actionmanager.cpp:1423
+#: actionmanager.cpp:1422
 #, kde-format
 msgid "Attach inline &without attachments"
 msgstr "צירוף כ&חלק מההודעה בלי לצרף כקובץ"
 
-#: actionmanager.cpp:1425 actionmanager.cpp:1530
+#: actionmanager.cpp:1424 actionmanager.cpp:1529
 #, kde-format
 msgid "C&ancel"
 msgstr "&ביטול"
 
-#: actionmanager.cpp:1463
+#: actionmanager.cpp:1462
 #, kde-format
 msgid "Removing attachments from an email might invalidate its signature."
 msgstr "הסרת קבצים מצורפים מהודעת דוא״ל עלולה לפגוע בחתימה שלה"
 
-#: actionmanager.cpp:1464
+#: actionmanager.cpp:1463
 #, kde-format
 msgctxt "@title:window"
 msgid "Remove Attachments"
 msgstr "הסרת קבצים מצורפים"
 
-#: actionmanager.cpp:1615
+#: actionmanager.cpp:1614
 #, kde-format
 msgid "Undo: %1"
 msgstr "החזרה: %1"
 
-#: actionmanager.cpp:1618 actionmanager.cpp:1634
+#: actionmanager.cpp:1617 actionmanager.cpp:1633
 #, kde-format
 msgid "Undo"
 msgstr "החזרה"
 
-#: actionmanager.cpp:1628
+#: actionmanager.cpp:1627
 #, kde-format
 msgid "Redo: %1"
 msgstr "ביצוע חוזר: %1"
 
-#: actionmanager.cpp:1631
+#: actionmanager.cpp:1630
 #, kde-format
 msgid "Redo"
 msgstr "ביצוע חוזר"
 
-#: actionmanager.cpp:1645
+#: actionmanager.cpp:1644
 #, kde-format
 msgid "URL '%1' is invalid."
 msgstr "הכתובת ‚%1’ שגויה."
 
-#: actionmanager.cpp:1650
+#: actionmanager.cpp:1649
 #, kde-format
 msgctxt "@info"
 msgid ""
@@ -1270,19 +1270,19 @@ msgstr ""
 "בחירה במיזוג, תופיע אפשרות לבחור את יעד לוח השנה.</p><p>בחירה בהוספה תיצור "
 "עבורך לוח שנה חדש אוטומטית.</p>"
 
-#: actionmanager.cpp:1658
+#: actionmanager.cpp:1657
 #, kde-format
 msgctxt "@title:window"
 msgid "Import Calendar"
 msgstr "ייבוא לוח שנה"
 
-#: actionmanager.cpp:1659
+#: actionmanager.cpp:1658
 #, kde-format
 msgctxt "@action:button"
 msgid "Merge into existing calendar"
 msgstr "מיזוג ללוח שנה קיים"
 
-#: actionmanager.cpp:1660
+#: actionmanager.cpp:1659
 #, kde-format
 msgctxt "@action:button"
 msgid "Add as new calendar"

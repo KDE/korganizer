@@ -17,7 +17,7 @@ msgid ""
 msgstr ""
 "Project-Id-Version: korganizer\n"
 "Report-Msgid-Bugs-To: https://bugs.kde.org\n"
-"POT-Creation-Date: 2024-06-18 00:40+0000\n"
+"POT-Creation-Date: 2024-06-30 00:39+0000\n"
 "PO-Revision-Date: 2024-06-20 21:45+0530\n"
 "Last-Translator: Kishore G <kishore96@gmail.com>\n"
 "Language-Team: Tamil <kde-i18n-doc@kde.org>\n"
@@ -474,8 +474,8 @@ msgid ""
 msgstr ""
 
 #. i18n: ectx: property (text), widget (QPushButton, mDeleteButton)
-#: actionmanager.cpp:368 actionmanager.cpp:623 actionmanager.cpp:1308
-#: actionmanager.cpp:1345 ui/filteredit_base.ui:56
+#: actionmanager.cpp:368 actionmanager.cpp:623 actionmanager.cpp:1307
+#: actionmanager.cpp:1344 ui/filteredit_base.ui:56
 #, kde-format
 msgid "&Delete"
 msgstr "&நீக்கு"
@@ -832,7 +832,7 @@ msgstr ""
 msgid "&Day"
 msgstr "&நாள்"
 
-#: actionmanager.cpp:553 actionmanager.cpp:1065
+#: actionmanager.cpp:553 actionmanager.cpp:1064
 #, kde-format
 msgid "&Next Day"
 msgid_plural "&Next %1 Days"
@@ -963,12 +963,12 @@ msgid ""
 "current calendar view."
 msgstr ""
 
-#: actionmanager.cpp:615 actionmanager.cpp:1302 actionmanager.cpp:1343
+#: actionmanager.cpp:615 actionmanager.cpp:1301 actionmanager.cpp:1342
 #, kde-format
 msgid "&Show"
 msgstr "&காட்டு"
 
-#: actionmanager.cpp:619 actionmanager.cpp:1305 actionmanager.cpp:1344
+#: actionmanager.cpp:619 actionmanager.cpp:1304 actionmanager.cpp:1343
 #, kde-format
 msgid "&Edit…"
 msgstr "&திருத்து…"
@@ -1106,137 +1106,137 @@ msgstr "புதிய நாள்காட்டி வெற்றிகர�
 msgid "Could not add a calendar. Error: %1"
 msgstr "நாள்காட்டியை சேர்க்க முடியவில்லை. சிக்கல்: %1"
 
-#: actionmanager.cpp:918
+#: actionmanager.cpp:917
 #, kde-format
 msgctxt "@title:window"
 msgid "Select Calendar File to Open"
 msgstr "திறக்க வேண்டிய நாள்காட்டி கோப்பைத் தேர்ந்தெடுக்கவும்"
 
-#: actionmanager.cpp:946
+#: actionmanager.cpp:945
 #, kde-format
 msgctxt "@title:window"
 msgid "Select Calendar File to Import"
 msgstr "இறக்குமதி செய்ய வேண்டிய நாள்காட்டி கோப்பைத் தேர்ந்தெடுக்கவும்"
 
-#: actionmanager.cpp:977
+#: actionmanager.cpp:976
 #, kde-format
 msgid "An error occurred: %1"
 msgstr "சிக்கல் ஏற்பட்டது: %1"
 
-#: actionmanager.cpp:995
+#: actionmanager.cpp:994
 #, kde-format
 msgid "Cannot upload calendar to '%1'"
 msgstr "நாள்காட்டியை '%1' க்கு ஏற்ற முடியாது"
 
-#: actionmanager.cpp:1001
+#: actionmanager.cpp:1000
 #, kde-format
 msgid "Saved calendar '%1'."
 msgstr "சேமிக்கப்பட்ட நாள்காட்டி '%1'"
 
-#: actionmanager.cpp:1039
+#: actionmanager.cpp:1038
 #, kde-format
 msgid "Unable to save calendar to the file %1."
 msgstr "%1 எனும் கோப்பிற்கு நாள்காட்டியை சேமிக்க முடியவில்லை."
 
-#: actionmanager.cpp:1039
+#: actionmanager.cpp:1038
 #, kde-format
 msgctxt "@title:window"
 msgid "Error"
 msgstr "சிக்கல்"
 
-#: actionmanager.cpp:1084
+#: actionmanager.cpp:1083
 #, kde-format
 msgid "Could not start control module for date and time format."
 msgstr "கட்டுப்பாட்டு பகுதியை தேதி மற்றும் நேர வடிவில் ஆரம்பிக்க இயலாது"
 
-#: actionmanager.cpp:1263
+#: actionmanager.cpp:1262
 #, kde-format
 msgid "&Show Event"
 msgstr "நிகழ்வை காட்டு"
 
-#: actionmanager.cpp:1266
+#: actionmanager.cpp:1265
 #, kde-format
 msgid "&Edit Event…"
 msgstr "&நிகழ்வை திருத்து…"
 
-#: actionmanager.cpp:1269
+#: actionmanager.cpp:1268
 #, kde-format
 msgid "&Delete Event"
 msgstr "நிகழ்வை நீக்கு"
 
-#: actionmanager.cpp:1277
+#: actionmanager.cpp:1276
 #, kde-format
 msgid "&Show To-do"
 msgstr "&செய்யவேண்டியதை காட்டு"
 
-#: actionmanager.cpp:1280 kontactplugin/korganizer/todosummarywidget.cpp:321
+#: actionmanager.cpp:1279 kontactplugin/korganizer/todosummarywidget.cpp:321
 #, kde-format
 msgid "&Edit To-do…"
 msgstr "&செய்யவேண்டியதை திருத்து…"
 
-#: actionmanager.cpp:1283 kontactplugin/korganizer/todosummarywidget.cpp:323
+#: actionmanager.cpp:1282 kontactplugin/korganizer/todosummarywidget.cpp:323
 #, kde-format
 msgid "&Delete To-do"
 msgstr "&செய்யவேண்டியதை நீக்கு"
 
-#: actionmanager.cpp:1421 actionmanager.cpp:1527
+#: actionmanager.cpp:1420 actionmanager.cpp:1526
 #, kde-format
 msgid "Attach as &link"
 msgstr "&இணைப்பாக இணை"
 
-#: actionmanager.cpp:1422 actionmanager.cpp:1528
+#: actionmanager.cpp:1421 actionmanager.cpp:1527
 #, kde-format
 msgid "Attach &inline"
 msgstr "&உரையிலேயே இணை"
 
-#: actionmanager.cpp:1423
+#: actionmanager.cpp:1422
 #, kde-format
 msgid "Attach inline &without attachments"
 msgstr "உ&டனிணைப்புகள் இல்லாமல் உரையிலேயே இணை"
 
-#: actionmanager.cpp:1425 actionmanager.cpp:1530
+#: actionmanager.cpp:1424 actionmanager.cpp:1529
 #, kde-format
 msgid "C&ancel"
 msgstr "&ரத்து செய்"
 
-#: actionmanager.cpp:1463
+#: actionmanager.cpp:1462
 #, kde-format
 msgid "Removing attachments from an email might invalidate its signature."
 msgstr ""
 "அஞ்சலிலிருந்து உடனிணைப்புகளை நீக்குவது, அதன் கையொப்பத்தை செல்லுபடியாகாமல் செய்யலாம்."
 
-#: actionmanager.cpp:1464
+#: actionmanager.cpp:1463
 #, kde-format
 msgctxt "@title:window"
 msgid "Remove Attachments"
 msgstr "உடனிணைப்புகளை நீக்குவது"
 
-#: actionmanager.cpp:1615
+#: actionmanager.cpp:1614
 #, kde-format
 msgid "Undo: %1"
 msgstr "செயல்நீக்கு: %1"
 
-#: actionmanager.cpp:1618 actionmanager.cpp:1634
+#: actionmanager.cpp:1617 actionmanager.cpp:1633
 #, kde-format
 msgid "Undo"
 msgstr "செயல்நீக்கு"
 
-#: actionmanager.cpp:1628
+#: actionmanager.cpp:1627
 #, kde-format
 msgid "Redo: %1"
 msgstr "மீளச்செய்: %1"
 
-#: actionmanager.cpp:1631
+#: actionmanager.cpp:1630
 #, kde-format
 msgid "Redo"
 msgstr "மீளச்செய்"
 
-#: actionmanager.cpp:1645
+#: actionmanager.cpp:1644
 #, kde-format
 msgid "URL '%1' is invalid."
 msgstr "URL '%1'முறையற்றது"
 
-#: actionmanager.cpp:1650
+#: actionmanager.cpp:1649
 #, kde-format
 msgctxt "@info"
 msgid ""
@@ -1247,19 +1247,19 @@ msgid ""
 "p>"
 msgstr ""
 
-#: actionmanager.cpp:1658
+#: actionmanager.cpp:1657
 #, kde-format
 msgctxt "@title:window"
 msgid "Import Calendar"
 msgstr "நாள்காட்டியை இறக்குமதி செய்வது"
 
-#: actionmanager.cpp:1659
+#: actionmanager.cpp:1658
 #, kde-format
 msgctxt "@action:button"
 msgid "Merge into existing calendar"
 msgstr "ஏற்கனவேயுள்ள நாள்காட்டியுடன் ஒன்றுசேர்"
 
-#: actionmanager.cpp:1660
+#: actionmanager.cpp:1659
 #, kde-format
 msgctxt "@action:button"
 msgid "Add as new calendar"

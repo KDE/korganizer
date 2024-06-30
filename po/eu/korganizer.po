@@ -13,7 +13,7 @@ msgid ""
 msgstr ""
 "Project-Id-Version: korganizer\n"
 "Report-Msgid-Bugs-To: https://bugs.kde.org\n"
-"POT-Creation-Date: 2024-06-18 00:40+0000\n"
+"POT-Creation-Date: 2024-06-30 00:39+0000\n"
 "PO-Revision-Date: 2024-05-22 21:09+0200\n"
 "Last-Translator: Iñigo Salvador Azurmendi <xalba@ni.eus>\n"
 "Language-Team: Basque <kde-i18n-eu@kde.org>\n"
@@ -487,8 +487,8 @@ msgstr ""
 "dizu. Ekintza hau ezin da desegin!"
 
 #. i18n: ectx: property (text), widget (QPushButton, mDeleteButton)
-#: actionmanager.cpp:368 actionmanager.cpp:623 actionmanager.cpp:1308
-#: actionmanager.cpp:1345 ui/filteredit_base.ui:56
+#: actionmanager.cpp:368 actionmanager.cpp:623 actionmanager.cpp:1307
+#: actionmanager.cpp:1344 ui/filteredit_base.ui:56
 #, kde-format
 msgid "&Delete"
 msgstr "Eza&batu"
@@ -870,7 +870,7 @@ msgstr ""
 msgid "&Day"
 msgstr "E&guna"
 
-#: actionmanager.cpp:553 actionmanager.cpp:1065
+#: actionmanager.cpp:553 actionmanager.cpp:1064
 #, kde-format
 msgid "&Next Day"
 msgid_plural "&Next %1 Days"
@@ -1004,12 +1004,12 @@ msgstr ""
 "Uneko egutegi ikuspegiko ezarpenak aldatzeko aukera ematen dizun "
 "konfiguratzeko elkarrizketa bat irekitzen du."
 
-#: actionmanager.cpp:615 actionmanager.cpp:1302 actionmanager.cpp:1343
+#: actionmanager.cpp:615 actionmanager.cpp:1301 actionmanager.cpp:1342
 #, kde-format
 msgid "&Show"
 msgstr "&Erakutsi"
 
-#: actionmanager.cpp:619 actionmanager.cpp:1305 actionmanager.cpp:1344
+#: actionmanager.cpp:619 actionmanager.cpp:1304 actionmanager.cpp:1343
 #, kde-format
 msgid "&Edit…"
 msgstr "&Editatu..."
@@ -1143,136 +1143,136 @@ msgstr "Egutegi berria ondo gehitu da"
 msgid "Could not add a calendar. Error: %1"
 msgstr "Ezin izan du egutegi  bat gehitu. Errorea: %1"
 
-#: actionmanager.cpp:918
+#: actionmanager.cpp:917
 #, kde-format
 msgctxt "@title:window"
 msgid "Select Calendar File to Open"
 msgstr "Hautatu ireki beharreko egutegi-fitxategia"
 
-#: actionmanager.cpp:946
+#: actionmanager.cpp:945
 #, kde-format
 msgctxt "@title:window"
 msgid "Select Calendar File to Import"
 msgstr "Hautatu inportatu beharreko egutegia"
 
-#: actionmanager.cpp:977
+#: actionmanager.cpp:976
 #, kde-format
 msgid "An error occurred: %1"
 msgstr "Errore bat gertatu da: %1"
 
-#: actionmanager.cpp:995
+#: actionmanager.cpp:994
 #, kde-format
 msgid "Cannot upload calendar to '%1'"
 msgstr "Ezin du egutegia '%1-(e)ra zamatu"
 
-#: actionmanager.cpp:1001
+#: actionmanager.cpp:1000
 #, kde-format
 msgid "Saved calendar '%1'."
 msgstr "'%1' egutegia gorde da."
 
-#: actionmanager.cpp:1039
+#: actionmanager.cpp:1038
 #, kde-format
 msgid "Unable to save calendar to the file %1."
 msgstr "Ez da egutegia %1 fitxategian gordetzeko gai."
 
-#: actionmanager.cpp:1039
+#: actionmanager.cpp:1038
 #, kde-format
 msgctxt "@title:window"
 msgid "Error"
 msgstr "Errorea"
 
-#: actionmanager.cpp:1084
+#: actionmanager.cpp:1083
 #, kde-format
 msgid "Could not start control module for date and time format."
 msgstr "Ezin izan du data eta ordu formatuen kontrol modulua abiatu."
 
-#: actionmanager.cpp:1263
+#: actionmanager.cpp:1262
 #, kde-format
 msgid "&Show Event"
 msgstr "Erakut&si ekitaldia"
 
-#: actionmanager.cpp:1266
+#: actionmanager.cpp:1265
 #, kde-format
 msgid "&Edit Event…"
 msgstr "&Editatu ekitaldia..."
 
-#: actionmanager.cpp:1269
+#: actionmanager.cpp:1268
 #, kde-format
 msgid "&Delete Event"
 msgstr "&Ezabatu ekitaldia"
 
-#: actionmanager.cpp:1277
+#: actionmanager.cpp:1276
 #, kde-format
 msgid "&Show To-do"
 msgstr "&Erakutsi zeregina"
 
-#: actionmanager.cpp:1280 kontactplugin/korganizer/todosummarywidget.cpp:321
+#: actionmanager.cpp:1279 kontactplugin/korganizer/todosummarywidget.cpp:321
 #, kde-format
 msgid "&Edit To-do…"
 msgstr "&Editatu zeregina..."
 
-#: actionmanager.cpp:1283 kontactplugin/korganizer/todosummarywidget.cpp:323
+#: actionmanager.cpp:1282 kontactplugin/korganizer/todosummarywidget.cpp:323
 #, kde-format
 msgid "&Delete To-do"
 msgstr "&Ezabatu zeregina"
 
-#: actionmanager.cpp:1421 actionmanager.cpp:1527
+#: actionmanager.cpp:1420 actionmanager.cpp:1526
 #, kde-format
 msgid "Attach as &link"
 msgstr "Erantsi este&ka gisa"
 
-#: actionmanager.cpp:1422 actionmanager.cpp:1528
+#: actionmanager.cpp:1421 actionmanager.cpp:1527
 #, kde-format
 msgid "Attach &inline"
 msgstr "Erantsi &lerro barruan"
 
-#: actionmanager.cpp:1423
+#: actionmanager.cpp:1422
 #, kde-format
 msgid "Attach inline &without attachments"
 msgstr "Erantsi lerro barruan estekarik ga&be"
 
-#: actionmanager.cpp:1425 actionmanager.cpp:1530
+#: actionmanager.cpp:1424 actionmanager.cpp:1529
 #, kde-format
 msgid "C&ancel"
 msgstr "&Utzi"
 
-#: actionmanager.cpp:1463
+#: actionmanager.cpp:1462
 #, kde-format
 msgid "Removing attachments from an email might invalidate its signature."
 msgstr "E-posta batetik eranskinak kentzeak bere sinadura baliogabetu dezake."
 
-#: actionmanager.cpp:1464
+#: actionmanager.cpp:1463
 #, kde-format
 msgctxt "@title:window"
 msgid "Remove Attachments"
 msgstr "Kendu eranskinak"
 
-#: actionmanager.cpp:1615
+#: actionmanager.cpp:1614
 #, kde-format
 msgid "Undo: %1"
 msgstr "Desegin: %1"
 
-#: actionmanager.cpp:1618 actionmanager.cpp:1634
+#: actionmanager.cpp:1617 actionmanager.cpp:1633
 #, kde-format
 msgid "Undo"
 msgstr "Desegin"
 
-#: actionmanager.cpp:1628
+#: actionmanager.cpp:1627
 #, kde-format
 msgid "Redo: %1"
 msgstr "Berregin: %1"
 
-#: actionmanager.cpp:1631
+#: actionmanager.cpp:1630
 #, kde-format
 msgid "Redo"
 msgstr "Berregin"
 
-#: actionmanager.cpp:1645
+#: actionmanager.cpp:1644
 #, kde-format
 msgid "URL '%1' is invalid."
 msgstr "'%1' URLa baliogabea da."
 
-#: actionmanager.cpp:1650
+#: actionmanager.cpp:1649
 #, kde-format
 msgctxt "@info"
 msgid ""
@@ -1287,19 +1287,19 @@ msgstr ""
 "baduzu, helburuko egutegia hautatzeko aukera emango zaizu.</p><p>Gehitzea "
 "hautatzen baduzu, automatikoki, zuretzako egutegi berri bat sortuko da.</p>"
 
-#: actionmanager.cpp:1658
+#: actionmanager.cpp:1657
 #, kde-format
 msgctxt "@title:window"
 msgid "Import Calendar"
 msgstr "Inportatu egutegia"
 
-#: actionmanager.cpp:1659
+#: actionmanager.cpp:1658
 #, kde-format
 msgctxt "@action:button"
 msgid "Merge into existing calendar"
 msgstr "Bateratu dagoen egutegian"
 
-#: actionmanager.cpp:1660
+#: actionmanager.cpp:1659
 #, kde-format
 msgctxt "@action:button"
 msgid "Add as new calendar"
