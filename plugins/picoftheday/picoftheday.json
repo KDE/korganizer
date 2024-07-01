@@ -6,6 +6,7 @@
         "Description[cs]": "Tento modul poskytuje Wikipedia Obrázek dne",
         "Description[eo]": "Ĉi tiu kromprogramo provizas la Vikipedian Bildon de la Tago",
         "Description[es]": "Este complemento proporciona la imagen del día de la Wikipedia",
+        "Description[fr]": "Ce module externe fournit l'image du jour de Wikipédia",
         "Description[he]": "התוסף הזה מספק את התמונה היומית מוויקיפדיה",
         "Description[ia]": "Iste plug-in provide le pictura del die de Wikipedia",
         "Description[it]": "Questa estensione fornisce la «Foto del giorno» di Wikipedia",
@@ -15,6 +16,7 @@
         "Description[tr]": "Bu eklenti, Vikipedi “Günün Resmi”ni sağlar",
         "Description[uk]": "За допомогою цього додатка можна отримувати «Зображення дня» з Вікіпедії.",
         "Description[x-test]": "xxThis plugin provides the Wikipedia Picture of the Dayxx",
+        "Description[zh_TW]": "這個外掛程式提供維基百科的「本日圖片」",
         "Name": "Wikipedia Picture Of the Day Plugin for Calendars",
         "Name[bg]": "Уикипедия Приставка за деня за календари",
         "Name[bs]": "Dodatak Wikipedia Slika dana za Kalendare",
@@ -27,6 +29,7 @@
         "Name[es]": "Complemento «Imagen del día» de la Wikipedia para calendarios",
         "Name[et]": "Wikipedia päevapildi plugin kalendritele",
         "Name[fa]": "عکس ویکی پدیا از وصله روز برای تقویمها",
+        "Name[fr]": "Module externe « Image du jour » de Wikipédia pour les calendriers",
         "Name[he]": "תוסף התמונה היומית מוויקיפדיה ללוחות שנה",
         "Name[hu]": "Naptárbővítmény a Wikipedia „A nap képe” funkciójához",
         "Name[ia]": "Plug-in del pictura del die de Wikipedia pro calendarios",
@@ -46,10 +49,12 @@
         "Name[sk]": "Modul Obrázok dňa Wikipédie pre kalendáre",
         "Name[sl]": "Vstavek »Izbrana slika« iz Wikipedije za koledarje",
         "Name[sv]": "Insticksprogram för kalendrar med 'Dagens bild' från Wikipedia",
+        "Name[ta]": "விக்கிப்பீடியாவின் இன்றைய படத்தைக் காட்டும் நாள்காட்டி செருகுநிரல்",
         "Name[tr]": "Takvimler için Vikipedi “Günün Resmi” Eklentisi",
         "Name[uk]": "Додаток дат для календарів (зображення дня з Wikipedia)",
         "Name[wa]": "Tchôke-divins imådje do djoû Wikipedia po les calindrîs",
-        "Name[x-test]": "xxWikipedia Picture Of the Day Plugin for Calendarsxx"
+        "Name[x-test]": "xxWikipedia Picture Of the Day Plugin for Calendarsxx",
+        "Name[zh_TW]": "行事曆用的維基百科「本日圖片」外掛程式"
     },
     "X-KDE-KOrganizer-HasSettings": true,
     "X-KDE-PluginInterfaceVersion": 2

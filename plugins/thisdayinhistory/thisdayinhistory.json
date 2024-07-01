@@ -6,6 +6,7 @@
         "Description[cs]": "Tento zásuvný modul poskytuje odkazy na stránku Wikipedie nazvanou \"Tento den v minulosti\"",
         "Description[eo]": "Ĉi tiu kromprogramo provizas ligilojn al la paĝoj 'This Day in History' de Vikipedio",
         "Description[es]": "Este complemento proporciona enlaces a las páginas «Este día en la historia» de la Wikipedia",
+        "Description[fr]": "Ce module externe fournit des liens vers les pages « Ce jour dans l'histoire » de Wikipédia",
         "Description[he]": "התוסף הזה מספק קישור לעמודי ‚היום בהיסטוריה’ בוויקיפדיה",
         "Description[ia]": "Iste plug-in provide ligamines al paginas de Wikipedia super 'Iste die in le historia'",
         "Description[it]": "Questa estensione fornisce collegamenti alle pagine «Questo giorno nella storia» di Wikipedia",
@@ -15,6 +16,7 @@
         "Description[tr]": "Bu eklenti, Vikipedi’nin “Tarihte Bugün” sayfalarına bağlantılar sağlar",
         "Description[uk]": "За допомогою цього додатка створюються посилання на сторінки Вікіпедії «Цей день у історії».",
         "Description[x-test]": "xxThis plugin provides links to Wikipedia's 'This Day in History' pagesxx",
+        "Description[zh_TW]": "這個外掛程式提供到維基百科「歷史上的今天」頁面的連結",
         "Name": "Wikipedia 'This Day in History' Plugin",
         "Name[bg]": "Приставка „Този ​​ден в историята“ на Уикипедия",
         "Name[bs]": "Wikipedia 'Ovaj Dan u Historiji' Dodatak",
@@ -26,6 +28,7 @@
         "Name[eo]": "Kromprogramo por Vikipedia 'This Day in History'",
         "Name[es]": "Complemento «Este día en la historia» de la Wikipedia",
         "Name[et]": "Wikipedia 'täna ajaloos' plugin",
+        "Name[fr]": "Module externe « Ce jour dans l'histoire » de Wikipédia",
         "Name[he]": "תוסף ‚היום בהיסטוריה’ של ויקיפדיה",
         "Name[hu]": "Wikipedia-bővítmény - „Történelmi események ezen a napon”",
         "Name[ia]": "Plug-in pro 'Iste die in le historia' de Wikipedia",
@@ -46,10 +49,12 @@
         "Name[sk]": "Plugin Wikipédia 'Tento deň v histórii'",
         "Name[sl]": "Vstavek za Wikipedijin »Na današnji dan«",
         "Name[sv]": "Insticksprogram med 'Den här dagen i historien' från Wikipedia",
+        "Name[ta]": "விக்கிப்பீடியாவின் 'வரலாற்றில் இந்நாள்' செருகுநிரல்",
         "Name[tr]": "Vikipedi “Tarihte Bugün” Eklentisi",
         "Name[uk]": "Додаток сторінки Вікіпедії «Цей день в історії»",
         "Name[wa]": "Tchôke-divins « Ci djoû ci e l' Istwere » del Wikipedia",
-        "Name[x-test]": "xxWikipedia 'This Day in History' Pluginxx"
+        "Name[x-test]": "xxWikipedia 'This Day in History' Pluginxx",
+        "Name[zh_TW]": "維基百科「歷史上的今天」外掛程式"
     },
     "X-KDE-KOrganizer-HasSettings": false,
     "X-KDE-PluginInterfaceVersion": 2
