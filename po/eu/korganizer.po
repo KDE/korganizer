@@ -14,14 +14,14 @@ msgstr ""
 "Project-Id-Version: korganizer\n"
 "Report-Msgid-Bugs-To: https://bugs.kde.org\n"
 "POT-Creation-Date: 2024-04-12 00:38+0000\n"
-"PO-Revision-Date: 2024-05-22 21:03+0200\n"
+"PO-Revision-Date: 2024-07-11 12:52+0200\n"
 "Last-Translator: Iñigo Salvador Azurmendi <xalba@ni.eus>\n"
 "Language-Team: Basque <kde-i18n-eu@kde.org>\n"
 "Language: eu\n"
 "MIME-Version: 1.0\n"
 "Content-Type: text/plain; charset=UTF-8\n"
 "Content-Transfer-Encoding: 8bit\n"
-"X-Generator: Lokalize 24.02.2\n"
+"X-Generator: Lokalize 24.05.2\n"
 "Plural-Forms: nplurals=2; plural=(n != 1);\n"
 
 #, kde-format
@@ -3241,7 +3241,7 @@ msgstr ""
 #, kde-format
 msgid "Lists the available options for user feedback"
 msgstr ""
-"Erabiltzaileen erreakzioak bidaltzeko aukera erabilgarriak zerrendatzen ditu"
+"Erabiltzailearen atzera-elikaduraren aukera erabilgarriak zerrendatzen ditu"
 
 #: koviewmanager.cpp:427
 #, kde-format
