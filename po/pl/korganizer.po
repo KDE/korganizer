@@ -1,5 +1,5 @@
 # translation of korganizer.po to
-# Version: $Revision: 1683559 $
+# Version: $Revision: 1684772 $
 # SPDX-FileCopyrightText: 2011, 2012, 2013, 2014, 2015, 2016, 2017, 2018, 2019, 2020, 2021, 2022, 2023, 2024 Łukasz Wojniłowicz <lukasz.wojnilowicz@gmail.com>
 # translated by Krzysztof Jasiutowicz <kpjas@priv.onet.pl>
 # Krzysztof Lichota <lichota@mimuw.edu.pl>, 2002, 2005, 2006.
@@ -14,7 +14,7 @@ msgstr ""
 "Project-Id-Version: korganizer\n"
 "Report-Msgid-Bugs-To: https://bugs.kde.org\n"
 "POT-Creation-Date: 2024-06-30 00:39+0000\n"
-"PO-Revision-Date: 2024-06-16 10:07+0200\n"
+"PO-Revision-Date: 2024-07-14 13:07+0200\n"
 "Last-Translator: Łukasz Wojniłowicz <lukasz.wojnilowicz@gmail.com>\n"
 "Language-Team: Polish <kde-i18n-doc@kde.org>\n"
 "Language: pl\n"
@@ -3682,8 +3682,7 @@ msgid "Other Options"
 msgstr "Inne ustawienia"
 
 #: prefs/kprefsdialog.cpp:234
-#, fuzzy, kde-format
-#| msgid "Choose…"
+#, kde-format
 msgctxt "@action:button"
 msgid "Choose…"
 msgstr "Wybierz…"
