@@ -7,7 +7,7 @@ msgid ""
 msgstr ""
 "Project-Id-Version: korganizer\n"
 "Report-Msgid-Bugs-To: https://bugs.kde.org\n"
-"POT-Creation-Date: 2024-06-30 00:39+0000\n"
+"POT-Creation-Date: 2024-07-22 00:40+0000\n"
 "PO-Revision-Date: 2007-02-28 14:24+0100\n"
 "Last-Translator: Bozidar Proevski <bobibobi@freemail.com.mk>\n"
 "Language-Team: Macedonian <mkde-l10n@lists.sourceforge.net>\n"
@@ -2523,8 +2523,8 @@ msgid ""
 msgstr ""
 
 #: kontactplugin/korganizer/kcmapptsummary.cpp:71
-#: kontactplugin/korganizer/kcmtodosummary.cpp:63
-#: kontactplugin/specialdates/kcmsdsummary.cpp:64
+#: kontactplugin/korganizer/kcmtodosummary.cpp:54
+#: kontactplugin/specialdates/kcmsdsummary.cpp:54
 #, fuzzy, kde-format
 #| msgid "1 day"
 #| msgid_plural "%1 days"
@@ -3454,7 +3454,7 @@ msgctxt "@title:group email settings"
 msgid "Email Settings"
 msgstr "Состанок"
 
-#: prefs/koprefsdialogmain.cpp:62 prefs/koprefsdialogtime.cpp:193
+#: prefs/koprefsdialogmain.cpp:62 prefs/koprefsdialogtime.cpp:189
 #, fuzzy, kde-format
 #| msgid "Reminder"
 msgctxt "@title:group"
@@ -3588,91 +3588,91 @@ msgstr ""
 "ден од неделата. Ако е ова работен ден за вас обележете го ова поле или "
 "работното време нема да биде означено со боја."
 
-#: prefs/koprefsdialogtime.cpp:144
+#: prefs/koprefsdialogtime.cpp:140
 #, kde-format
 msgctxt "@item:inlistbox"
 msgid "Monday"
 msgstr ""
 
-#: prefs/koprefsdialogtime.cpp:144
+#: prefs/koprefsdialogtime.cpp:140
 #, kde-format
 msgctxt "@item:inlistbox"
 msgid "Tuesday"
 msgstr ""
 
-#: prefs/koprefsdialogtime.cpp:144
+#: prefs/koprefsdialogtime.cpp:140
 #, kde-format
 msgctxt "@item:inlistbox"
 msgid "Wednesday"
 msgstr ""
 
-#: prefs/koprefsdialogtime.cpp:145
+#: prefs/koprefsdialogtime.cpp:141
 #, kde-format
 msgctxt "@item:inlistbox"
 msgid "Thursday"
 msgstr ""
 
-#: prefs/koprefsdialogtime.cpp:145
+#: prefs/koprefsdialogtime.cpp:141
 #, fuzzy, kde-format
 #| msgid "Holiday"
 msgctxt "@item:inlistbox"
 msgid "Friday"
 msgstr "Празник"
 
-#: prefs/koprefsdialogtime.cpp:145
+#: prefs/koprefsdialogtime.cpp:141
 #, kde-format
 msgctxt "@item:inlistbox"
 msgid "Saturday"
 msgstr ""
 
-#: prefs/koprefsdialogtime.cpp:146
+#: prefs/koprefsdialogtime.cpp:142
 #, kde-format
 msgctxt "@item:inlistbox"
 msgid "Sunday"
 msgstr ""
 
-#: prefs/koprefsdialogtime.cpp:175
+#: prefs/koprefsdialogtime.cpp:171
 #, fuzzy, kde-format
 #| msgid "Default Calendar"
 msgctxt "@title:tab"
 msgid "Default Values"
 msgstr "Стандарден календар"
 
-#: prefs/koprefsdialogtime.cpp:178
+#: prefs/koprefsdialogtime.cpp:174
 #, fuzzy, kde-format
 msgctxt "@title:group"
 msgid "Appointments"
 msgstr "Закажан состанок"
 
-#: prefs/koprefsdialogtime.cpp:198
+#: prefs/koprefsdialogtime.cpp:194
 #, fuzzy, kde-format
 #| msgid "Default reminder time:"
 msgctxt "@label"
 msgid "Default reminder time:"
 msgstr "Стандардно време на потсетување:"
 
-#: prefs/koprefsdialogtime.cpp:211
+#: prefs/koprefsdialogtime.cpp:207
 #, fuzzy, kde-format
 #| msgid "minute(s)"
 msgctxt "@item:inlistbox reminder units in minutes"
 msgid "minute(s)"
 msgstr "минути"
 
-#: prefs/koprefsdialogtime.cpp:212
+#: prefs/koprefsdialogtime.cpp:208
 #, fuzzy, kde-format
 #| msgid "hour(s)"
 msgctxt "@item:inlistbox reminder time units in hours"
 msgid "hour(s)"
 msgstr "часови"
 
-#: prefs/koprefsdialogtime.cpp:213
+#: prefs/koprefsdialogtime.cpp:209
 #, fuzzy, kde-format
 #| msgid "day(s)"
 msgctxt "@item:inlistbox reminder time units in days"
 msgid "day(s)"
 msgstr "дена"
 
-#: prefs/koprefsdialogtime.cpp:223
+#: prefs/koprefsdialogtime.cpp:219
 #, kde-format
 msgid "Audio Files (*.ogg *.wav *.mp3 *.wma *.flac *.aiff *.raw *.au *.ra)"
 msgstr ""

@@ -20,7 +20,7 @@ msgid ""
 msgstr ""
 "Project-Id-Version: kdepim-kde4\n"
 "Report-Msgid-Bugs-To: https://bugs.kde.org\n"
-"POT-Creation-Date: 2024-06-30 00:39+0000\n"
+"POT-Creation-Date: 2024-07-22 00:40+0000\n"
 "PO-Revision-Date: 2024-06-18 12:58+0300\n"
 "Last-Translator: Emir SARI <emir_sari@icloud.com>\n"
 "Language-Team: Turkish <kde-l10n-tr@kde.org>\n"
@@ -2514,8 +2514,8 @@ msgstr ""
 "Yeni bir günce girdisi ekleyebileceğiniz bir iletişim kutusu sunulacak."
 
 #: kontactplugin/korganizer/kcmapptsummary.cpp:71
-#: kontactplugin/korganizer/kcmtodosummary.cpp:63
-#: kontactplugin/specialdates/kcmsdsummary.cpp:64
+#: kontactplugin/korganizer/kcmtodosummary.cpp:54
+#: kontactplugin/specialdates/kcmsdsummary.cpp:54
 #, kde-format
 msgid " day"
 msgid_plural " days"
@@ -3431,7 +3431,7 @@ msgctxt "@title:group email settings"
 msgid "Email Settings"
 msgstr "E-posta Ayarları"
 
-#: prefs/koprefsdialogmain.cpp:62 prefs/koprefsdialogtime.cpp:193
+#: prefs/koprefsdialogmain.cpp:62 prefs/koprefsdialogtime.cpp:189
 #, kde-format
 msgctxt "@title:group"
 msgid "Reminders"
@@ -3546,85 +3546,85 @@ msgstr ""
 "kutuyu işaretleyin. Eğer bu sizin bir çalışma gününüzse kutuyu imleyin; aksi "
 "takdirde çalışma saatleri renkle imlenmeyecektir."
 
-#: prefs/koprefsdialogtime.cpp:144
+#: prefs/koprefsdialogtime.cpp:140
 #, kde-format
 msgctxt "@item:inlistbox"
 msgid "Monday"
 msgstr "Pazartesi"
 
-#: prefs/koprefsdialogtime.cpp:144
+#: prefs/koprefsdialogtime.cpp:140
 #, kde-format
 msgctxt "@item:inlistbox"
 msgid "Tuesday"
 msgstr "Salı"
 
-#: prefs/koprefsdialogtime.cpp:144
+#: prefs/koprefsdialogtime.cpp:140
 #, kde-format
 msgctxt "@item:inlistbox"
 msgid "Wednesday"
 msgstr "Çarşamba"
 
-#: prefs/koprefsdialogtime.cpp:145
+#: prefs/koprefsdialogtime.cpp:141
 #, kde-format
 msgctxt "@item:inlistbox"
 msgid "Thursday"
 msgstr "Perşembe"
 
-#: prefs/koprefsdialogtime.cpp:145
+#: prefs/koprefsdialogtime.cpp:141
 #, kde-format
 msgctxt "@item:inlistbox"
 msgid "Friday"
 msgstr "Cuma"
 
-#: prefs/koprefsdialogtime.cpp:145
+#: prefs/koprefsdialogtime.cpp:141
 #, kde-format
 msgctxt "@item:inlistbox"
 msgid "Saturday"
 msgstr "Cumartesi"
 
-#: prefs/koprefsdialogtime.cpp:146
+#: prefs/koprefsdialogtime.cpp:142
 #, kde-format
 msgctxt "@item:inlistbox"
 msgid "Sunday"
 msgstr "Pazar"
 
-#: prefs/koprefsdialogtime.cpp:175
+#: prefs/koprefsdialogtime.cpp:171
 #, kde-format
 msgctxt "@title:tab"
 msgid "Default Values"
 msgstr "Öntanımlı Değerler"
 
-#: prefs/koprefsdialogtime.cpp:178
+#: prefs/koprefsdialogtime.cpp:174
 #, kde-format
 msgctxt "@title:group"
 msgid "Appointments"
 msgstr "Randevular"
 
-#: prefs/koprefsdialogtime.cpp:198
+#: prefs/koprefsdialogtime.cpp:194
 #, kde-format
 msgctxt "@label"
 msgid "Default reminder time:"
 msgstr "Öntanımlı anımsatma zamanı:"
 
-#: prefs/koprefsdialogtime.cpp:211
+#: prefs/koprefsdialogtime.cpp:207
 #, kde-format
 msgctxt "@item:inlistbox reminder units in minutes"
 msgid "minute(s)"
 msgstr "dakika"
 
-#: prefs/koprefsdialogtime.cpp:212
+#: prefs/koprefsdialogtime.cpp:208
 #, kde-format
 msgctxt "@item:inlistbox reminder time units in hours"
 msgid "hour(s)"
 msgstr "saat"
 
-#: prefs/koprefsdialogtime.cpp:213
+#: prefs/koprefsdialogtime.cpp:209
 #, kde-format
 msgctxt "@item:inlistbox reminder time units in days"
 msgid "day(s)"
 msgstr "gün"
 
-#: prefs/koprefsdialogtime.cpp:223
+#: prefs/koprefsdialogtime.cpp:219
 #, kde-format
 msgid "Audio Files (*.ogg *.wav *.mp3 *.wma *.flac *.aiff *.raw *.au *.ra)"
 msgstr "Ses Dosyaları (*.ogg *.wav *.mp3 *.wma *.flac *.aiff *.raw *.au *.ra)"
