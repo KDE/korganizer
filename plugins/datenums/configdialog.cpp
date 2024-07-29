@@ -45,13 +45,13 @@ ConfigDialog::ConfigDialog(QWidget *parent)
     topLayout->addWidget(dayNumBox);
     auto groupLayout = new QVBoxLayout(dayNumBox);
 
-    auto btn = new QRadioButton(i18n("Show day number"), dayNumBox);
+    auto btn = new QRadioButton(i18nc("@option:radio", "Show day number"), dayNumBox);
     mDayNumGroup->addButton(btn, int(Datenums::DayOfYear));
     groupLayout->addWidget(btn);
-    btn = new QRadioButton(i18n("Show days to end of year"), dayNumBox);
+    btn = new QRadioButton(i18nc("@option:radio", "Show days to end of year"), dayNumBox);
     mDayNumGroup->addButton(btn, int(Datenums::DaysRemaining));
     groupLayout->addWidget(btn);
-    btn = new QRadioButton(i18n("Show both"), dayNumBox);
+    btn = new QRadioButton(i18nc("@option:radio", "Show both"), dayNumBox);
     mDayNumGroup->addButton(btn, int(Datenums::DayOfYear | Datenums::DaysRemaining));
     groupLayout->addWidget(btn);
 
