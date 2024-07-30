@@ -8,7 +8,7 @@ msgid ""
 msgstr ""
 "Project-Id-Version: korganizer\n"
 "Report-Msgid-Bugs-To: https://bugs.kde.org\n"
-"POT-Creation-Date: 2024-06-26 00:40+0000\n"
+"POT-Creation-Date: 2024-07-30 00:42+0000\n"
 "PO-Revision-Date: 2012-01-13 10:32+0330\n"
 "Last-Translator: Mohammad Reza Mirdamadi <mohi@ubuntu.ir>\n"
 "Language-Team: Farsi (Persian) <>\n"
@@ -32,17 +32,23 @@ msgid "Show Date Number"
 msgstr "نمایش عدد تاریخ"
 
 #: datenums/configdialog.cpp:48
-#, kde-format
+#, fuzzy, kde-format
+#| msgid "Show day number"
+msgctxt "@option:radio"
 msgid "Show day number"
 msgstr "نمایش عدد روز"
 
 #: datenums/configdialog.cpp:51
-#, kde-format
+#, fuzzy, kde-format
+#| msgid "Show days to end of year"
+msgctxt "@option:radio"
 msgid "Show days to end of year"
 msgstr "نمایش روزهای آخر سال"
 
 #: datenums/configdialog.cpp:54
-#, kde-format
+#, fuzzy, kde-format
+#| msgid "Show both"
+msgctxt "@option:radio"
 msgid "Show both"
 msgstr "نمایش هر دو"
 
@@ -698,6 +704,7 @@ msgstr ""
 
 #: picoftheday/configdialog.cpp:46
 #, kde-format
+msgctxt "@option:radio"
 msgid "Ignore aspect ratio"
 msgstr ""
 
@@ -709,6 +716,7 @@ msgstr ""
 
 #: picoftheday/configdialog.cpp:52
 #, kde-format
+msgctxt "@option:radio"
 msgid "Keep aspect ratio"
 msgstr ""
 
@@ -721,6 +729,7 @@ msgstr ""
 
 #: picoftheday/configdialog.cpp:59
 #, kde-format
+msgctxt "@option:radio"
 msgid "Keep aspect ratio by expanding"
 msgstr ""
 

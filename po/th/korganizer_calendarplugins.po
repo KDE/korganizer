@@ -6,7 +6,7 @@ msgid ""
 msgstr ""
 "Project-Id-Version: korganizer\n"
 "Report-Msgid-Bugs-To: https://bugs.kde.org\n"
-"POT-Creation-Date: 2024-06-26 00:40+0000\n"
+"POT-Creation-Date: 2024-07-30 00:42+0000\n"
 "PO-Revision-Date: 2008-07-21 16:18+0700\n"
 "Last-Translator: Thanomsub Noppaburana <donga.nb@gmail.com>\n"
 "Language-Team: Thai <thai-l10n@googlegroups.com>\n"
@@ -30,17 +30,23 @@ msgid "Show Date Number"
 msgstr "แสดงจำนวนวัน"
 
 #: datenums/configdialog.cpp:48
-#, kde-format
+#, fuzzy, kde-format
+#| msgid "Show day number"
+msgctxt "@option:radio"
 msgid "Show day number"
 msgstr "แสดงจำนวนวัน"
 
 #: datenums/configdialog.cpp:51
-#, kde-format
+#, fuzzy, kde-format
+#| msgid "Show days to end of year"
+msgctxt "@option:radio"
 msgid "Show days to end of year"
 msgstr "แสดงจำนวนวันถึงสิ้นปี"
 
 #: datenums/configdialog.cpp:54
-#, kde-format
+#, fuzzy, kde-format
+#| msgid "Show both"
+msgctxt "@option:radio"
 msgid "Show both"
 msgstr "แสดงทั้งคู่"
 
@@ -686,7 +692,9 @@ msgid "Thumbnail Aspect Ratio Mode"
 msgstr "โหมดของสัดส่วนภาพ"
 
 #: picoftheday/configdialog.cpp:46
-#, kde-format
+#, fuzzy, kde-format
+#| msgid "Ignore aspect ratio"
+msgctxt "@option:radio"
 msgid "Ignore aspect ratio"
 msgstr "ไม่สนใจสัดส่วนภาพ"
 
@@ -697,7 +705,9 @@ msgid ""
 msgstr "ภาพตัวอย่างจะถูกปรับขนาดอย่างอิสระ โดยจะไม่มีการรักษาสัดส่วนภาพ"
 
 #: picoftheday/configdialog.cpp:52
-#, kde-format
+#, fuzzy, kde-format
+#| msgid "Keep aspect ratio"
+msgctxt "@option:radio"
 msgid "Keep aspect ratio"
 msgstr "รักษาสัดส่วนภาพ"
 
@@ -711,7 +721,9 @@ msgstr ""
 "โดยยังคงสัดส่วนภาพเอาไว้ด้วย"
 
 #: picoftheday/configdialog.cpp:59
-#, kde-format
+#, fuzzy, kde-format
+#| msgid "Keep aspect ratio by expanding"
+msgctxt "@option:radio"
 msgid "Keep aspect ratio by expanding"
 msgstr "รักษาสัดส่วนภาพเมื่อมีการขยาย"
 

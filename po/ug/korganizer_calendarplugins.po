@@ -7,7 +7,7 @@ msgid ""
 msgstr ""
 "Project-Id-Version: korganizer\n"
 "Report-Msgid-Bugs-To: https://bugs.kde.org\n"
-"POT-Creation-Date: 2024-06-26 00:40+0000\n"
+"POT-Creation-Date: 2024-07-30 00:42+0000\n"
 "PO-Revision-Date: 2013-09-08 07:05+0900\n"
 "Last-Translator: Gheyret Kenji <gheyret@gmail.com>\n"
 "Language-Team: Uyghur Computer Science Association <UKIJ@yahoogroups.com>\n"
@@ -32,17 +32,22 @@ msgstr ""
 #: datenums/configdialog.cpp:48
 #, fuzzy, kde-format
 #| msgid "Show to-dos"
+msgctxt "@option:radio"
 msgid "Show day number"
 msgstr "قىلىدىغان ئىشلار(to-dos)نى كۆرسەت"
 
 #: datenums/configdialog.cpp:51
-#, kde-format
+#, fuzzy, kde-format
+#| msgctxt "N days/hours/minutes before/after the start/end"
+#| msgid "%1 before the end"
+msgctxt "@option:radio"
 msgid "Show days to end of year"
-msgstr ""
+msgstr "تاماملىنىشتىن بۇرۇن %1"
 
 #: datenums/configdialog.cpp:54
 #, fuzzy, kde-format
 #| msgid "Show to-dos"
+msgctxt "@option:radio"
 msgid "Show both"
 msgstr "قىلىدىغان ئىشلار(to-dos)نى كۆرسەت"
 
@@ -690,6 +695,7 @@ msgstr ""
 #: picoftheday/configdialog.cpp:46
 #, fuzzy, kde-format
 #| msgid "Keep aspect ratio"
+msgctxt "@option:radio"
 msgid "Ignore aspect ratio"
 msgstr "ئېگىزلىك-كەڭلىك نىسبىتىنى ساقلاپ قال"
 
@@ -700,7 +706,9 @@ msgid ""
 msgstr ""
 
 #: picoftheday/configdialog.cpp:52
-#, kde-format
+#, fuzzy, kde-format
+#| msgid "Keep aspect ratio"
+msgctxt "@option:radio"
 msgid "Keep aspect ratio"
 msgstr "ئېگىزلىك-كەڭلىك نىسبىتىنى ساقلاپ قال"
 
@@ -714,6 +722,7 @@ msgstr ""
 #: picoftheday/configdialog.cpp:59
 #, fuzzy, kde-format
 #| msgid "Keep aspect ratio"
+msgctxt "@option:radio"
 msgid "Keep aspect ratio by expanding"
 msgstr "ئېگىزلىك-كەڭلىك نىسبىتىنى ساقلاپ قال"
 

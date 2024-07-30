@@ -16,7 +16,7 @@ msgid ""
 msgstr ""
 "Project-Id-Version: korganizer\n"
 "Report-Msgid-Bugs-To: https://bugs.kde.org\n"
-"POT-Creation-Date: 2024-06-26 00:40+0000\n"
+"POT-Creation-Date: 2024-07-30 00:42+0000\n"
 "PO-Revision-Date: 2020-01-01 13:11+0200\n"
 "Last-Translator: Tommi Nieminen <translator@legisign.org>\n"
 "Language-Team: Finnish <kde-i18n-doc@kde.org>\n"
@@ -40,17 +40,23 @@ msgid "Show Date Number"
 msgstr "Näytä päivän numero"
 
 #: datenums/configdialog.cpp:48
-#, kde-format
+#, fuzzy, kde-format
+#| msgid "Show day number"
+msgctxt "@option:radio"
 msgid "Show day number"
 msgstr "Näytä päivän numero"
 
 #: datenums/configdialog.cpp:51
-#, kde-format
+#, fuzzy, kde-format
+#| msgid "Show days to end of year"
+msgctxt "@option:radio"
 msgid "Show days to end of year"
 msgstr "Näytä päivät vuoden loppuun"
 
 #: datenums/configdialog.cpp:54
-#, kde-format
+#, fuzzy, kde-format
+#| msgid "Show both"
+msgctxt "@option:radio"
 msgid "Show both"
 msgstr "Näytä kummatkin"
 
@@ -700,7 +706,9 @@ msgid "Thumbnail Aspect Ratio Mode"
 msgstr "Esikatselun kuvasuhde"
 
 #: picoftheday/configdialog.cpp:46
-#, kde-format
+#, fuzzy, kde-format
+#| msgid "Ignore aspect ratio"
+msgctxt "@option:radio"
 msgid "Ignore aspect ratio"
 msgstr "Jätä kuvasuhde huomiotta"
 
@@ -711,7 +719,9 @@ msgid ""
 msgstr "Esikatselukuva skaalataan vapaasti. Kuvasuhdetta ei säilytetä."
 
 #: picoftheday/configdialog.cpp:52
-#, kde-format
+#, fuzzy, kde-format
+#| msgid "Keep aspect ratio"
+msgctxt "@option:radio"
 msgid "Keep aspect ratio"
 msgstr "Säilytä kuvasuhde."
 
@@ -725,7 +735,9 @@ msgstr ""
 "säilytetään."
 
 #: picoftheday/configdialog.cpp:59
-#, kde-format
+#, fuzzy, kde-format
+#| msgid "Keep aspect ratio by expanding"
+msgctxt "@option:radio"
 msgid "Keep aspect ratio by expanding"
 msgstr "Säilytä kuvasuhde laajentamlla."
 

@@ -7,7 +7,7 @@ msgid ""
 msgstr ""
 "Project-Id-Version: \n"
 "Report-Msgid-Bugs-To: https://bugs.kde.org\n"
-"POT-Creation-Date: 2024-06-26 00:40+0000\n"
+"POT-Creation-Date: 2024-07-30 00:42+0000\n"
 "PO-Revision-Date: 2024-06-27 02:51+0200\n"
 "Last-Translator: Eloy Cuadra <ecuadra@eloihr.net>\n"
 "Language-Team: Spanish <kde-l10n-es@kde.org>\n"
@@ -30,17 +30,23 @@ msgid "Show Date Number"
 msgstr "Mostrar números de fecha"
 
 #: datenums/configdialog.cpp:48
-#, kde-format
+#, fuzzy, kde-format
+#| msgid "Show day number"
+msgctxt "@option:radio"
 msgid "Show day number"
 msgstr "Mostrar número de día"
 
 #: datenums/configdialog.cpp:51
-#, kde-format
+#, fuzzy, kde-format
+#| msgid "Show days to end of year"
+msgctxt "@option:radio"
 msgid "Show days to end of year"
 msgstr "Mostrar días para el final de año"
 
 #: datenums/configdialog.cpp:54
-#, kde-format
+#, fuzzy, kde-format
+#| msgid "Show both"
+msgctxt "@option:radio"
 msgid "Show both"
 msgstr "Mostrar ambos"
 
@@ -691,7 +697,9 @@ msgid "Thumbnail Aspect Ratio Mode"
 msgstr "Modo de proporción de la miniatura"
 
 #: picoftheday/configdialog.cpp:46
-#, kde-format
+#, fuzzy, kde-format
+#| msgid "Ignore aspect ratio"
+msgctxt "@option:radio"
 msgid "Ignore aspect ratio"
 msgstr "Ignorar proporción"
 
@@ -703,7 +711,9 @@ msgstr ""
 "La miniatura será escalada libremente. La proporción no será preservada."
 
 #: picoftheday/configdialog.cpp:52
-#, kde-format
+#, fuzzy, kde-format
+#| msgid "Keep aspect ratio"
+msgctxt "@option:radio"
 msgid "Keep aspect ratio"
 msgstr "Mantener la proporción"
 
@@ -717,7 +727,9 @@ msgstr ""
 "dentro de un rectángulo dado, preservando la proporción."
 
 #: picoftheday/configdialog.cpp:59
-#, kde-format
+#, fuzzy, kde-format
+#| msgid "Keep aspect ratio by expanding"
+msgctxt "@option:radio"
 msgid "Keep aspect ratio by expanding"
 msgstr "Mantener la proporción expandiendo"
 

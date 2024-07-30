@@ -10,7 +10,7 @@ msgid ""
 msgstr ""
 "Project-Id-Version: korganizer\n"
 "Report-Msgid-Bugs-To: https://bugs.kde.org\n"
-"POT-Creation-Date: 2024-06-26 00:40+0000\n"
+"POT-Creation-Date: 2024-07-30 00:42+0000\n"
 "PO-Revision-Date: 2024-02-02 21:30+0200\n"
 "Last-Translator: Mindaugas Baranauskas <opensuse.lietuviu.kalba@gmail.com>\n"
 "Language-Team: lt <kde-i18n-lt@kde.org>\n"
@@ -35,17 +35,23 @@ msgid "Show Date Number"
 msgstr "Rodyti datos numerį"
 
 #: datenums/configdialog.cpp:48
-#, kde-format
+#, fuzzy, kde-format
+#| msgid "Show day number"
+msgctxt "@option:radio"
 msgid "Show day number"
 msgstr "Rodyti dienos numerį"
 
 #: datenums/configdialog.cpp:51
-#, kde-format
+#, fuzzy, kde-format
+#| msgid "Show days to end of year"
+msgctxt "@option:radio"
 msgid "Show days to end of year"
 msgstr "Rodyti dienų iki metų galo skaičių"
 
 #: datenums/configdialog.cpp:54
-#, kde-format
+#, fuzzy, kde-format
+#| msgid "Show both"
+msgctxt "@option:radio"
 msgid "Show both"
 msgstr "Rodyti abu"
 
@@ -706,7 +712,9 @@ msgid "Thumbnail Aspect Ratio Mode"
 msgstr "Miniatiūros forma"
 
 #: picoftheday/configdialog.cpp:46
-#, kde-format
+#, fuzzy, kde-format
+#| msgid "Ignore aspect ratio"
+msgctxt "@option:radio"
 msgid "Ignore aspect ratio"
 msgstr "Ignoruoti formą"
 
@@ -717,7 +725,9 @@ msgid ""
 msgstr "Miniatiūra bus laisvai didinama ar mažinama. Forma nebus išsaugota."
 
 #: picoftheday/configdialog.cpp:52
-#, kde-format
+#, fuzzy, kde-format
+#| msgid "Keep aspect ratio"
+msgctxt "@option:radio"
 msgid "Keep aspect ratio"
 msgstr "Išlaikyti formą"
 
@@ -731,7 +741,9 @@ msgstr ""
 "išlaikant proporcijas."
 
 #: picoftheday/configdialog.cpp:59
-#, kde-format
+#, fuzzy, kde-format
+#| msgid "Keep aspect ratio by expanding"
+msgctxt "@option:radio"
 msgid "Keep aspect ratio by expanding"
 msgstr "Išlaikyti formą išplečiant"
 

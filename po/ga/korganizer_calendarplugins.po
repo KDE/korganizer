@@ -6,7 +6,7 @@ msgid ""
 msgstr ""
 "Project-Id-Version: kdepim/korganizer.po\n"
 "Report-Msgid-Bugs-To: https://bugs.kde.org\n"
-"POT-Creation-Date: 2024-06-26 00:40+0000\n"
+"POT-Creation-Date: 2024-07-30 00:42+0000\n"
 "PO-Revision-Date: 2004-12-03 14:52-0500\n"
 "Last-Translator: Kevin Scannell <kscanne@gmail.com>\n"
 "Language-Team: Irish <gaeilge-gnulinux@lists.sourceforge.net>\n"
@@ -30,17 +30,23 @@ msgid "Show Date Number"
 msgstr "Taispeáin Uimhir an Lae"
 
 #: datenums/configdialog.cpp:48
-#, kde-format
+#, fuzzy, kde-format
+#| msgid "Show day number"
+msgctxt "@option:radio"
 msgid "Show day number"
 msgstr "Taispeáin uimhir an lae"
 
 #: datenums/configdialog.cpp:51
-#, kde-format
+#, fuzzy, kde-format
+#| msgid "Show days to end of year"
+msgctxt "@option:radio"
 msgid "Show days to end of year"
 msgstr "Taispeáin laethanta go dtí deireadh na bliana"
 
 #: datenums/configdialog.cpp:54
-#, kde-format
+#, fuzzy, kde-format
+#| msgid "Show both"
+msgctxt "@option:radio"
 msgid "Show both"
 msgstr "Taispeáin araon"
 
@@ -710,6 +716,7 @@ msgstr ""
 #: picoftheday/configdialog.cpp:46
 #, fuzzy, kde-format
 #| msgid "Keep aspect ratio"
+msgctxt "@option:radio"
 msgid "Ignore aspect ratio"
 msgstr "Caomhnaigh an cóimheas treoíochta"
 
@@ -720,7 +727,9 @@ msgid ""
 msgstr ""
 
 #: picoftheday/configdialog.cpp:52
-#, kde-format
+#, fuzzy, kde-format
+#| msgid "Keep aspect ratio"
+msgctxt "@option:radio"
 msgid "Keep aspect ratio"
 msgstr "Caomhnaigh an cóimheas treoíochta"
 
@@ -734,6 +743,7 @@ msgstr ""
 #: picoftheday/configdialog.cpp:59
 #, fuzzy, kde-format
 #| msgid "Keep aspect ratio"
+msgctxt "@option:radio"
 msgid "Keep aspect ratio by expanding"
 msgstr "Caomhnaigh an cóimheas treoíochta"
 

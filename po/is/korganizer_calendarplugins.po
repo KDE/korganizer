@@ -13,7 +13,7 @@ msgid ""
 msgstr ""
 "Project-Id-Version: korganizer\n"
 "Report-Msgid-Bugs-To: https://bugs.kde.org\n"
-"POT-Creation-Date: 2024-06-26 00:40+0000\n"
+"POT-Creation-Date: 2024-07-30 00:42+0000\n"
 "PO-Revision-Date: 2009-07-28 20:21+0000\n"
 "Last-Translator: Sveinn í Felli <sveinki@nett.is>\n"
 "Language-Team: Icelandic <kde-isl@molar.is>\n"
@@ -39,17 +39,23 @@ msgid "Show Date Number"
 msgstr "Sýna dagsetningarnúmer"
 
 #: datenums/configdialog.cpp:48
-#, kde-format
+#, fuzzy, kde-format
+#| msgid "Show day number"
+msgctxt "@option:radio"
 msgid "Show day number"
 msgstr "Sýna dagnúmer"
 
 #: datenums/configdialog.cpp:51
-#, kde-format
+#, fuzzy, kde-format
+#| msgid "Show days to end of year"
+msgctxt "@option:radio"
 msgid "Show days to end of year"
 msgstr "Sýna daga að lokum árs"
 
 #: datenums/configdialog.cpp:54
-#, kde-format
+#, fuzzy, kde-format
+#| msgid "Show both"
+msgctxt "@option:radio"
 msgid "Show both"
 msgstr "Sýna bæði"
 
@@ -708,6 +714,7 @@ msgstr ""
 
 #: picoftheday/configdialog.cpp:46
 #, fuzzy, kde-format
+msgctxt "@option:radio"
 msgid "Ignore aspect ratio"
 msgstr "Halda sömu hlutföllum"
 
@@ -719,6 +726,7 @@ msgstr ""
 
 #: picoftheday/configdialog.cpp:52
 #, fuzzy, kde-format
+msgctxt "@option:radio"
 msgid "Keep aspect ratio"
 msgstr "Halda sömu hlutföllum"
 
@@ -731,6 +739,7 @@ msgstr ""
 
 #: picoftheday/configdialog.cpp:59
 #, fuzzy, kde-format
+msgctxt "@option:radio"
 msgid "Keep aspect ratio by expanding"
 msgstr "Halda sömu hlutföllum"
 

@@ -7,7 +7,7 @@ msgid ""
 msgstr ""
 "Project-Id-Version: korganizer\n"
 "Report-Msgid-Bugs-To: https://bugs.kde.org\n"
-"POT-Creation-Date: 2024-06-26 00:40+0000\n"
+"POT-Creation-Date: 2024-07-30 00:42+0000\n"
 "PO-Revision-Date: 2010-09-24 16:28+0530\n"
 "Last-Translator: Rajesh Ranjan <rajesh672@gmail.com>\n"
 "Language-Team: Maithili <bhashaghar@googlegroups.com>\n"
@@ -33,16 +33,19 @@ msgstr ""
 
 #: datenums/configdialog.cpp:48
 #, kde-format
+msgctxt "@option:radio"
 msgid "Show day number"
 msgstr ""
 
 #: datenums/configdialog.cpp:51
 #, kde-format
+msgctxt "@option:radio"
 msgid "Show days to end of year"
 msgstr ""
 
 #: datenums/configdialog.cpp:54
 #, kde-format
+msgctxt "@option:radio"
 msgid "Show both"
 msgstr ""
 
@@ -693,6 +696,7 @@ msgstr ""
 #: picoftheday/configdialog.cpp:46
 #, fuzzy, kde-format
 #| msgid "Keep aspect ratio"
+msgctxt "@option:radio"
 msgid "Ignore aspect ratio"
 msgstr "पहलू अनुपात बनाए राखू"
 
@@ -703,7 +707,9 @@ msgid ""
 msgstr ""
 
 #: picoftheday/configdialog.cpp:52
-#, kde-format
+#, fuzzy, kde-format
+#| msgid "Keep aspect ratio"
+msgctxt "@option:radio"
 msgid "Keep aspect ratio"
 msgstr "पहलू अनुपात बनाए राखू"
 
@@ -717,6 +723,7 @@ msgstr ""
 #: picoftheday/configdialog.cpp:59
 #, fuzzy, kde-format
 #| msgid "Keep aspect ratio"
+msgctxt "@option:radio"
 msgid "Keep aspect ratio by expanding"
 msgstr "पहलू अनुपात बनाए राखू"
 

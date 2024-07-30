@@ -17,7 +17,7 @@ msgid ""
 msgstr ""
 "Project-Id-Version: korganizer\n"
 "Report-Msgid-Bugs-To: https://bugs.kde.org\n"
-"POT-Creation-Date: 2024-06-26 00:40+0000\n"
+"POT-Creation-Date: 2024-07-30 00:42+0000\n"
 "PO-Revision-Date: 2024-05-12 11:35+0530\n"
 "Last-Translator: Kishore G <kishore96@gmail.com>\n"
 "Language-Team: Tamil <kde-i18n-doc@kde.org>\n"
@@ -40,17 +40,23 @@ msgid "Show Date Number"
 msgstr "தேதி எண்ணை காட்டு"
 
 #: datenums/configdialog.cpp:48
-#, kde-format
+#, fuzzy, kde-format
+#| msgid "Show day number"
+msgctxt "@option:radio"
 msgid "Show day number"
 msgstr "நாள் எண்ணை காட்டு"
 
 #: datenums/configdialog.cpp:51
-#, kde-format
+#, fuzzy, kde-format
+#| msgid "Show days to end of year"
+msgctxt "@option:radio"
 msgid "Show days to end of year"
 msgstr "வருடம் முடியும் வரை உள்ள நாட்களை காட்டு"
 
 #: datenums/configdialog.cpp:54
-#, kde-format
+#, fuzzy, kde-format
+#| msgid "Show both"
+msgctxt "@option:radio"
 msgid "Show both"
 msgstr "இரண்டையும் காட்டு"
 
@@ -700,7 +706,9 @@ msgid "Thumbnail Aspect Ratio Mode"
 msgstr "சிறுபடத்தின் உருவ விகிதம் அமையும் முறை"
 
 #: picoftheday/configdialog.cpp:46
-#, kde-format
+#, fuzzy, kde-format
+#| msgid "Ignore aspect ratio"
+msgctxt "@option:radio"
 msgid "Ignore aspect ratio"
 msgstr "உருவ விகிதத்தை பொருட்படுத்தாதே"
 
@@ -711,7 +719,9 @@ msgid ""
 msgstr "சிறுபடத்தின் அளவு தேவைக்கேற்ப மாற்றப்படும். உருவ விகிதம் மாறலாம்."
 
 #: picoftheday/configdialog.cpp:52
-#, kde-format
+#, fuzzy, kde-format
+#| msgid "Keep aspect ratio"
+msgctxt "@option:radio"
 msgid "Keep aspect ratio"
 msgstr "உருவ விகித‍த்தை வைத்திரு"
 
@@ -723,7 +733,9 @@ msgid ""
 msgstr "உருவ விகிதத்தை மாற்றாமல், முடிந்த அளவுக்கு பெரிதாக்கி சிறுபடத்தை காட்டும்"
 
 #: picoftheday/configdialog.cpp:59
-#, kde-format
+#, fuzzy, kde-format
+#| msgid "Keep aspect ratio by expanding"
+msgctxt "@option:radio"
 msgid "Keep aspect ratio by expanding"
 msgstr "பெருக்கி உருவ விகித‍த்தை வைத்திரு"
 

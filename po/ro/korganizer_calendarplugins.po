@@ -5,7 +5,7 @@ msgid ""
 msgstr ""
 "Project-Id-Version: kdepim-addons\n"
 "Report-Msgid-Bugs-To: https://bugs.kde.org\n"
-"POT-Creation-Date: 2024-06-26 00:40+0000\n"
+"POT-Creation-Date: 2024-07-30 00:42+0000\n"
 "PO-Revision-Date: 2013-02-16 10:43+0200\n"
 "Last-Translator: Sergiu Bivol <sergiu@cip.md>\n"
 "Language-Team: Romanian <kde-i18n-ro@kde.org>\n"
@@ -29,17 +29,20 @@ msgstr "Vizualizor evenimente"
 
 #: datenums/configdialog.cpp:48
 #, fuzzy, kde-format
+msgctxt "@option:radio"
 msgid "Show day number"
 msgstr "Exportă calendar ca pagină de web"
 
 #: datenums/configdialog.cpp:51
 #, fuzzy, kde-format
 #| msgid "Import Calendar"
+msgctxt "@option:radio"
 msgid "Show days to end of year"
 msgstr "Importă calendar"
 
 #: datenums/configdialog.cpp:54
 #, fuzzy, kde-format
+msgctxt "@option:radio"
 msgid "Show both"
 msgstr "&Afișează"
 
@@ -705,6 +708,7 @@ msgstr ""
 
 #: picoftheday/configdialog.cpp:46
 #, kde-format
+msgctxt "@option:radio"
 msgid "Ignore aspect ratio"
 msgstr ""
 
@@ -716,6 +720,7 @@ msgstr ""
 
 #: picoftheday/configdialog.cpp:52
 #, kde-format
+msgctxt "@option:radio"
 msgid "Keep aspect ratio"
 msgstr ""
 
@@ -728,6 +733,7 @@ msgstr ""
 
 #: picoftheday/configdialog.cpp:59
 #, kde-format
+msgctxt "@option:radio"
 msgid "Keep aspect ratio by expanding"
 msgstr ""
 
