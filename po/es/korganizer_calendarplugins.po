@@ -8,7 +8,7 @@ msgstr ""
 "Project-Id-Version: \n"
 "Report-Msgid-Bugs-To: https://bugs.kde.org\n"
 "POT-Creation-Date: 2024-06-26 00:40+0000\n"
-"PO-Revision-Date: 2024-06-27 02:51+0200\n"
+"PO-Revision-Date: 2024-07-30 16:46+0200\n"
 "Last-Translator: Eloy Cuadra <ecuadra@eloihr.net>\n"
 "Language-Team: Spanish <kde-l10n-es@kde.org>\n"
 "Language: es\n"
@@ -16,7 +16,7 @@ msgstr ""
 "Content-Type: text/plain; charset=UTF-8\n"
 "Content-Transfer-Encoding: 8bit\n"
 "Plural-Forms: nplurals=2; plural=n != 1;\n"
-"X-Generator: Lokalize 24.05.1\n"
+"X-Generator: Lokalize 24.05.2\n"
 
 #: datenums/configdialog.cpp:28
 #, kde-format
@@ -32,12 +32,12 @@ msgstr "Mostrar números de fecha"
 #: datenums/configdialog.cpp:48
 #, kde-format
 msgid "Show day number"
-msgstr "Mostrar número de día"
+msgstr "Mostrar número del día"
 
 #: datenums/configdialog.cpp:51
 #, kde-format
 msgid "Show days to end of year"
-msgstr "Mostrar días para el final de año"
+msgstr "Mostrar días hasta el final de año"
 
 #: datenums/configdialog.cpp:54
 #, kde-format
@@ -693,7 +693,7 @@ msgstr "Modo de proporción de la miniatura"
 #: picoftheday/configdialog.cpp:46
 #, kde-format
 msgid "Ignore aspect ratio"
-msgstr "Ignorar proporción"
+msgstr "Ignorar las proporciones"
 
 #: picoftheday/configdialog.cpp:48
 #, kde-format
@@ -705,7 +705,7 @@ msgstr ""
 #: picoftheday/configdialog.cpp:52
 #, kde-format
 msgid "Keep aspect ratio"
-msgstr "Mantener la proporción"
+msgstr "Mantener las proporciones"
 
 #: picoftheday/configdialog.cpp:54
 #, kde-format
