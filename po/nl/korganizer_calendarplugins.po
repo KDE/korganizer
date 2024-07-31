@@ -7,7 +7,7 @@ msgstr ""
 "Project-Id-Version: \n"
 "Report-Msgid-Bugs-To: https://bugs.kde.org\n"
 "POT-Creation-Date: 2024-07-30 00:42+0000\n"
-"PO-Revision-Date: 2024-06-26 10:30+0200\n"
+"PO-Revision-Date: 2024-07-30 13:08+0200\n"
 "Last-Translator: Freek de Kruijf <freekdekruijf@kde.nl>\n"
 "Language-Team: \n"
 "Language: nl\n"
@@ -15,7 +15,7 @@ msgstr ""
 "Content-Type: text/plain; charset=UTF-8\n"
 "Content-Transfer-Encoding: 8bit\n"
 "Plural-Forms: nplurals=2; plural=n != 1;\n"
-"X-Generator: Lokalize 24.05.1\n"
+"X-Generator: Lokalize 24.05.2\n"
 
 #: datenums/configdialog.cpp:28
 #, kde-format
@@ -29,22 +29,19 @@ msgid "Show Date Number"
 msgstr "Datumnummer tonen"
 
 #: datenums/configdialog.cpp:48
-#, fuzzy, kde-format
-#| msgid "Show day number"
+#, kde-format
 msgctxt "@option:radio"
 msgid "Show day number"
 msgstr "Dagnummer tonen"
 
 #: datenums/configdialog.cpp:51
-#, fuzzy, kde-format
-#| msgid "Show days to end of year"
+#, kde-format
 msgctxt "@option:radio"
 msgid "Show days to end of year"
 msgstr "Aantal dagen tot het einde van het jaar tonen"
 
 #: datenums/configdialog.cpp:54
-#, fuzzy, kde-format
-#| msgid "Show both"
+#, kde-format
 msgctxt "@option:radio"
 msgid "Show both"
 msgstr "Beide tonen"
@@ -696,8 +693,7 @@ msgid "Thumbnail Aspect Ratio Mode"
 msgstr "Modus lengte/breedte-verhouding van miniatuur"
 
 #: picoftheday/configdialog.cpp:46
-#, fuzzy, kde-format
-#| msgid "Ignore aspect ratio"
+#, kde-format
 msgctxt "@option:radio"
 msgid "Ignore aspect ratio"
 msgstr "Lengte/breedte-verhouding negeren"
@@ -711,8 +707,7 @@ msgstr ""
 "verhouding wordt niet behouden."
 
 #: picoftheday/configdialog.cpp:52
-#, fuzzy, kde-format
-#| msgid "Keep aspect ratio"
+#, kde-format
 msgctxt "@option:radio"
 msgid "Keep aspect ratio"
 msgstr "Beeldverhouding behouden"
@@ -728,8 +723,7 @@ msgstr ""
 "blijft."
 
 #: picoftheday/configdialog.cpp:59
-#, fuzzy, kde-format
-#| msgid "Keep aspect ratio by expanding"
+#, kde-format
 msgctxt "@option:radio"
 msgid "Keep aspect ratio by expanding"
 msgstr "Aspectverhouding handhaven bij vergroten"

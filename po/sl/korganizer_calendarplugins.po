@@ -1,7 +1,7 @@
 # translation of korganizer.po to Slovenian
 # Translation of korganizer.po to Slovenian
 # Copyright (C) 2001,2002, 2003, 2004, 2005, 2006 Free Software Foundation, Inc.
-# $Id: korganizer_calendarplugins.po 1685899 2024-07-30 01:16:11Z scripty $
+# $Id: korganizer_calendarplugins.po 1685977 2024-07-31 01:15:53Z scripty $
 # $Source$
 #
 # Roman Maurer <roman.maurer@hermes.si>, 2001.
@@ -15,7 +15,7 @@ msgstr ""
 "Project-Id-Version: korganizer\n"
 "Report-Msgid-Bugs-To: https://bugs.kde.org\n"
 "POT-Creation-Date: 2024-07-30 00:42+0000\n"
-"PO-Revision-Date: 2024-06-27 08:47+0200\n"
+"PO-Revision-Date: 2024-07-30 09:44+0200\n"
 "Last-Translator: Matjaž Jeran <matjaz.jeran@amis.net>\n"
 "Language-Team: Slovenian <lugos-slo@lugos.si>\n"
 "Language: sl\n"
@@ -25,7 +25,7 @@ msgstr ""
 "Plural-Forms: nplurals=4; plural=(n%100==1 ? 1 : n%100==2 ? 2 : n%100==3 || n"
 "%100==4 ? 3 : 0);\n"
 "Translator: Andrej Mernik <andrejm@ubuntu.si>\n"
-"X-Generator: Lokalize 24.05.0\n"
+"X-Generator: Poedit 3.4.4\n"
 
 #: datenums/configdialog.cpp:28
 #, kde-format
@@ -39,22 +39,19 @@ msgid "Show Date Number"
 msgstr "Pokaži številko datuma"
 
 #: datenums/configdialog.cpp:48
-#, fuzzy, kde-format
-#| msgid "Show day number"
+#, kde-format
 msgctxt "@option:radio"
 msgid "Show day number"
 msgstr "Pokaži številko dneva"
 
 #: datenums/configdialog.cpp:51
-#, fuzzy, kde-format
-#| msgid "Show days to end of year"
+#, kde-format
 msgctxt "@option:radio"
 msgid "Show days to end of year"
 msgstr "Pokaži dneve do konca leta"
 
 #: datenums/configdialog.cpp:54
-#, fuzzy, kde-format
-#| msgid "Show both"
+#, kde-format
 msgctxt "@option:radio"
 msgid "Show both"
 msgstr "Pokaži oboje"
@@ -717,11 +714,10 @@ msgid "Thumbnail Aspect Ratio Mode"
 msgstr "Način razmerja sličice"
 
 #: picoftheday/configdialog.cpp:46
-#, fuzzy, kde-format
-#| msgid "Ignore aspect ratio"
+#, kde-format
 msgctxt "@option:radio"
 msgid "Ignore aspect ratio"
-msgstr "Prezri razmerje"
+msgstr "Prezri razmerje stranic"
 
 #: picoftheday/configdialog.cpp:48
 #, kde-format
@@ -730,11 +726,10 @@ msgid ""
 msgstr "Sličica bo umerjena brez, da bi bilo ohranjeno razmerje."
 
 #: picoftheday/configdialog.cpp:52
-#, fuzzy, kde-format
-#| msgid "Keep aspect ratio"
+#, kde-format
 msgctxt "@option:radio"
 msgid "Keep aspect ratio"
-msgstr "Ohrani razmerje"
+msgstr "Ohrani razmerje stranic"
 
 #: picoftheday/configdialog.cpp:54
 #, kde-format
@@ -746,11 +741,10 @@ msgstr ""
 "okvirja. Razmerje bo pri tem ohranjeno."
 
 #: picoftheday/configdialog.cpp:59
-#, fuzzy, kde-format
-#| msgid "Keep aspect ratio by expanding"
+#, kde-format
 msgctxt "@option:radio"
 msgid "Keep aspect ratio by expanding"
-msgstr "Ob razširjanju ohrani razmerje"
+msgstr "Ohranjaj razmerje stranic z razširjanjem"
 
 #: picoftheday/configdialog.cpp:61
 #, kde-format

@@ -7,7 +7,7 @@ msgstr ""
 "Project-Id-Version: \n"
 "Report-Msgid-Bugs-To: https://bugs.kde.org\n"
 "POT-Creation-Date: 2024-07-30 00:42+0000\n"
-"PO-Revision-Date: 2024-07-02 21:34+0200\n"
+"PO-Revision-Date: 2024-07-30 07:01+0200\n"
 "Last-Translator: Stefan Asserhäll <stefan.asserhall@gmail.com>\n"
 "Language-Team: Swedish <kde-i18n-doc@kde.org>\n"
 "Language: sv\n"
@@ -15,7 +15,7 @@ msgstr ""
 "Content-Type: text/plain; charset=UTF-8\n"
 "Content-Transfer-Encoding: 8bit\n"
 "Plural-Forms: nplurals=2; plural=n != 1;\n"
-"X-Generator: Lokalize 23.08.5\n"
+"X-Generator: Lokalize 24.05.2\n"
 
 #: datenums/configdialog.cpp:28
 #, kde-format
@@ -29,22 +29,19 @@ msgid "Show Date Number"
 msgstr "Visa datumnummer"
 
 #: datenums/configdialog.cpp:48
-#, fuzzy, kde-format
-#| msgid "Show day number"
+#, kde-format
 msgctxt "@option:radio"
 msgid "Show day number"
 msgstr "Visa dagnummer"
 
 #: datenums/configdialog.cpp:51
-#, fuzzy, kde-format
-#| msgid "Show days to end of year"
+#, kde-format
 msgctxt "@option:radio"
 msgid "Show days to end of year"
 msgstr "Visa dagar till årets slut"
 
 #: datenums/configdialog.cpp:54
-#, fuzzy, kde-format
-#| msgid "Show both"
+#, kde-format
 msgctxt "@option:radio"
 msgid "Show both"
 msgstr "Visa båda"
@@ -696,8 +693,7 @@ msgid "Thumbnail Aspect Ratio Mode"
 msgstr "Läge för miniatyrbildens proportion"
 
 #: picoftheday/configdialog.cpp:46
-#, fuzzy, kde-format
-#| msgid "Ignore aspect ratio"
+#, kde-format
 msgctxt "@option:radio"
 msgid "Ignore aspect ratio"
 msgstr "Ignorera proportion"
@@ -709,8 +705,7 @@ msgid ""
 msgstr "Miniatyrbilden skalas fritt. Proportionen bevaras inte."
 
 #: picoftheday/configdialog.cpp:52
-#, fuzzy, kde-format
-#| msgid "Keep aspect ratio"
+#, kde-format
 msgctxt "@option:radio"
 msgid "Keep aspect ratio"
 msgstr "Behåll proportion"
@@ -725,8 +720,7 @@ msgstr ""
 "givna rektangeln, med bevarande av proportion."
 
 #: picoftheday/configdialog.cpp:59
-#, fuzzy, kde-format
-#| msgid "Keep aspect ratio by expanding"
+#, kde-format
 msgctxt "@option:radio"
 msgid "Keep aspect ratio by expanding"
 msgstr "Behåll proportion genom att expandera"

@@ -16,7 +16,7 @@ msgstr ""
 "Project-Id-Version: korganizer\n"
 "Report-Msgid-Bugs-To: https://bugs.kde.org\n"
 "POT-Creation-Date: 2024-07-30 00:42+0000\n"
-"PO-Revision-Date: 2024-06-18 19:53+0200\n"
+"PO-Revision-Date: 2024-07-30 17:26+0200\n"
 "Last-Translator: Adrián Chaves (Gallaecio) <adrian@chaves.io>\n"
 "Language-Team: Proxecto Trasno (proxecto@trasno.gal)\n"
 "Language: gl\n"
@@ -24,7 +24,7 @@ msgstr ""
 "Content-Type: text/plain; charset=UTF-8\n"
 "Content-Transfer-Encoding: 8bit\n"
 "Plural-Forms: nplurals=2; plural=n != 1;\n"
-"X-Generator: Lokalize 24.05.0\n"
+"X-Generator: Lokalize 24.05.2\n"
 
 #: datenums/configdialog.cpp:28
 #, kde-format
@@ -38,25 +38,22 @@ msgid "Show Date Number"
 msgstr "Amosar a data numérica"
 
 #: datenums/configdialog.cpp:48
-#, fuzzy, kde-format
-#| msgid "Show day number"
+#, kde-format
 msgctxt "@option:radio"
 msgid "Show day number"
-msgstr "Amosar o día do mes"
+msgstr "Amosar o día do mes."
 
 #: datenums/configdialog.cpp:51
-#, fuzzy, kde-format
-#| msgid "Show days to end of year"
+#, kde-format
 msgctxt "@option:radio"
 msgid "Show days to end of year"
-msgstr "Amosar os restantes días do ano"
+msgstr "Amosar os restantes días do ano."
 
 #: datenums/configdialog.cpp:54
-#, fuzzy, kde-format
-#| msgid "Show both"
+#, kde-format
 msgctxt "@option:radio"
 msgid "Show both"
-msgstr "Amosar ambos os dous"
+msgstr "Amosar ambos os dous."
 
 #: datenums/datenums.cpp:36
 #, kde-format
@@ -705,11 +702,10 @@ msgid "Thumbnail Aspect Ratio Mode"
 msgstr "Modo de proporción da miniatura"
 
 #: picoftheday/configdialog.cpp:46
-#, fuzzy, kde-format
-#| msgid "Ignore aspect ratio"
+#, kde-format
 msgctxt "@option:radio"
 msgid "Ignore aspect ratio"
-msgstr "Ignorar a proporción"
+msgstr "Ignorar a proporción."
 
 #: picoftheday/configdialog.cpp:48
 #, kde-format
@@ -719,11 +715,10 @@ msgstr ""
 "A miniatura cambiarase de dimensións libremente. Non se mantén a proporción."
 
 #: picoftheday/configdialog.cpp:52
-#, fuzzy, kde-format
-#| msgid "Keep aspect ratio"
+#, kde-format
 msgctxt "@option:radio"
 msgid "Keep aspect ratio"
-msgstr "Manter a proporción"
+msgstr "Manter a proporción."
 
 #: picoftheday/configdialog.cpp:54
 #, kde-format
@@ -735,11 +730,10 @@ msgstr ""
 "como for posíbel dentro dun rectángulo dado e mantendo a proporción."
 
 #: picoftheday/configdialog.cpp:59
-#, fuzzy, kde-format
-#| msgid "Keep aspect ratio by expanding"
+#, kde-format
 msgctxt "@option:radio"
 msgid "Keep aspect ratio by expanding"
-msgstr "Manter a proporción aumentando"
+msgstr "Manter a proporción aumentando."
 
 #: picoftheday/configdialog.cpp:61
 #, kde-format

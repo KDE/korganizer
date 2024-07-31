@@ -9,7 +9,7 @@ msgstr ""
 "Project-Id-Version: korganizer\n"
 "Report-Msgid-Bugs-To: https://bugs.kde.org\n"
 "POT-Creation-Date: 2024-07-30 00:42+0000\n"
-"PO-Revision-Date: 2024-06-28 16:51+0200\n"
+"PO-Revision-Date: 2024-07-30 21:06+0200\n"
 "Last-Translator: Oliver Kellogg <olivermkellogg@gmail.com>\n"
 "Language-Team: esperanto <kde-i18n-eo@kde.org>\n"
 "Language: eo\n"
@@ -31,22 +31,19 @@ msgid "Show Date Number"
 msgstr "Montri Datonombron"
 
 #: datenums/configdialog.cpp:48
-#, fuzzy, kde-format
-#| msgid "Show day number"
+#, kde-format
 msgctxt "@option:radio"
 msgid "Show day number"
 msgstr "Montri tagnombron"
 
 #: datenums/configdialog.cpp:51
-#, fuzzy, kde-format
-#| msgid "Show days to end of year"
+#, kde-format
 msgctxt "@option:radio"
 msgid "Show days to end of year"
 msgstr "Montri tagojn ĝis jarfino"
 
 #: datenums/configdialog.cpp:54
-#, fuzzy, kde-format
-#| msgid "Show both"
+#, kde-format
 msgctxt "@option:radio"
 msgid "Show both"
 msgstr "Montri ambaŭ"
@@ -697,8 +694,7 @@ msgid "Thumbnail Aspect Ratio Mode"
 msgstr "Bildetformata Reĝimo"
 
 #: picoftheday/configdialog.cpp:46
-#, fuzzy, kde-format
-#| msgid "Ignore aspect ratio"
+#, kde-format
 msgctxt "@option:radio"
 msgid "Ignore aspect ratio"
 msgstr "Ignori Bildproporcion"
@@ -710,8 +706,7 @@ msgid ""
 msgstr "La bildeto estos skalita libere. La proporcio ne estos konservita."
 
 #: picoftheday/configdialog.cpp:52
-#, fuzzy, kde-format
-#| msgid "Keep aspect ratio"
+#, kde-format
 msgctxt "@option:radio"
 msgid "Keep aspect ratio"
 msgstr "Konservi bildproporcion"
@@ -726,8 +721,7 @@ msgstr ""
 "rektangulo, konservante la bildformaton."
 
 #: picoftheday/configdialog.cpp:59
-#, fuzzy, kde-format
-#| msgid "Keep aspect ratio by expanding"
+#, kde-format
 msgctxt "@option:radio"
 msgid "Keep aspect ratio by expanding"
 msgstr "Konservi bildproporcion per vastigado"

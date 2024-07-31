@@ -8,7 +8,7 @@ msgstr ""
 "Project-Id-Version: kdepim-addons\n"
 "Report-Msgid-Bugs-To: https://bugs.kde.org\n"
 "POT-Creation-Date: 2024-07-30 00:42+0000\n"
-"PO-Revision-Date: 2024-06-26 05:43+0200\n"
+"PO-Revision-Date: 2024-07-30 06:41+0200\n"
 "Last-Translator: Temuri Doghonadze <temuri.doghonadze@gmail.com>\n"
 "Language-Team: Georgian <kde-i18n-doc@kde.org>\n"
 "Language: ka\n"
@@ -30,22 +30,19 @@ msgid "Show Date Number"
 msgstr "თარიღის რიცხვის ჩვენება"
 
 #: datenums/configdialog.cpp:48
-#, fuzzy, kde-format
-#| msgid "Show day number"
+#, kde-format
 msgctxt "@option:radio"
 msgid "Show day number"
 msgstr "დღის რიცხვის ჩვენება"
 
 #: datenums/configdialog.cpp:51
-#, fuzzy, kde-format
-#| msgid "Show days to end of year"
+#, kde-format
 msgctxt "@option:radio"
 msgid "Show days to end of year"
 msgstr "წლის ბოლომდე დარჩენილი დღეების ჩვენება"
 
 #: datenums/configdialog.cpp:54
-#, fuzzy, kde-format
-#| msgid "Show both"
+#, kde-format
 msgctxt "@option:radio"
 msgid "Show both"
 msgstr "ორივეს ჩვენება"
@@ -696,8 +693,7 @@ msgid "Thumbnail Aspect Ratio Mode"
 msgstr "მინიატურის ფარდობის რეჟიმი"
 
 #: picoftheday/configdialog.cpp:46
-#, fuzzy, kde-format
-#| msgid "Ignore aspect ratio"
+#, kde-format
 msgctxt "@option:radio"
 msgid "Ignore aspect ratio"
 msgstr "ასპექტის ფარდობის იგნორი"
@@ -711,8 +707,7 @@ msgstr ""
 "იქნება."
 
 #: picoftheday/configdialog.cpp:52
-#, fuzzy, kde-format
-#| msgid "Keep aspect ratio"
+#, kde-format
 msgctxt "@option:radio"
 msgid "Keep aspect ratio"
 msgstr "საწყისი ფარდობის შენარჩუნება"
@@ -727,8 +722,7 @@ msgstr ""
 "რამხელაც ეს შესაძლებელია, ასპექტის ფარდობის შენარჩუნებით."
 
 #: picoftheday/configdialog.cpp:59
-#, fuzzy, kde-format
-#| msgid "Keep aspect ratio by expanding"
+#, kde-format
 msgctxt "@option:radio"
 msgid "Keep aspect ratio by expanding"
 msgstr "ასპექტის ფარდობის შენარჩუნება მათი გაფართოების გზით"

@@ -37,22 +37,19 @@ msgid "Show Date Number"
 msgstr "Mostra el número de data"
 
 #: datenums/configdialog.cpp:48
-#, fuzzy, kde-format
-#| msgid "Show day number"
+#, kde-format
 msgctxt "@option:radio"
 msgid "Show day number"
 msgstr "Mostra el número de dia"
 
 #: datenums/configdialog.cpp:51
-#, fuzzy, kde-format
-#| msgid "Show days to end of year"
+#, kde-format
 msgctxt "@option:radio"
 msgid "Show days to end of year"
 msgstr "Mostra els dies fins a final d'any"
 
 #: datenums/configdialog.cpp:54
-#, fuzzy, kde-format
-#| msgid "Show both"
+#, kde-format
 msgctxt "@option:radio"
 msgid "Show both"
 msgstr "Mostra'ls tots dos"
@@ -703,8 +700,7 @@ msgid "Thumbnail Aspect Ratio Mode"
 msgstr "Mode de relació d'aspecte de les miniatures"
 
 #: picoftheday/configdialog.cpp:46
-#, fuzzy, kde-format
-#| msgid "Ignore aspect ratio"
+#, kde-format
 msgctxt "@option:radio"
 msgid "Ignore aspect ratio"
 msgstr "Ignora la relació d'aspecte"
@@ -717,8 +713,7 @@ msgstr ""
 "La miniatura s'escalarà lliurement. No es mantindrà la relació d'aspecte."
 
 #: picoftheday/configdialog.cpp:52
-#, fuzzy, kde-format
-#| msgid "Keep aspect ratio"
+#, kde-format
 msgctxt "@option:radio"
 msgid "Keep aspect ratio"
 msgstr "Mantén la relació d'aspecte"
@@ -733,8 +728,7 @@ msgstr ""
 "rectangle donat, mantenint la relació d'aspecte."
 
 #: picoftheday/configdialog.cpp:59
-#, fuzzy, kde-format
-#| msgid "Keep aspect ratio by expanding"
+#, kde-format
 msgctxt "@option:radio"
 msgid "Keep aspect ratio by expanding"
 msgstr "Mantén la relació d'aspecte per expansió"
