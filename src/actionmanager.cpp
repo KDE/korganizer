@@ -130,7 +130,7 @@ void ActionManager::toggleMenubar(bool dontShowWarning)
                                          i18n("<qt>This will hide the menu bar completely."
                                               " You can show it again by typing %1.</qt>",
                                               accel),
-                                         i18n("Hide menu bar"),
+                                         i18nc("@title:window", "Hide menu bar"),
                                          QStringLiteral("HideMenuBarWarning"));
             }
             mMenuBar->hide();
