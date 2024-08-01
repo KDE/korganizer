@@ -661,11 +661,11 @@
 
 <step
 ><para
->Després, si voleu editar o eliminar un recurs, seleccioneu-lo sobre el <guilabel
+>Després, si voleu editar o suprimir un recurs, seleccioneu-lo sobre el <guilabel
 >Gestor de calendari</guilabel
 > a la barra lateral i premeu <guibutton
->Elimina el calendari</guibutton
-> per a esborrar-lo o <guibutton
+>Suprimeix el calendari</guibutton
+> per a suprimir-lo o <guibutton
 >Propietats del calendari...</guibutton
 > per a modificar-lo.</para
 ></step>
@@ -1344,7 +1344,7 @@ choose the <menuchoice
 > el resum, <guimenuitem
 >Edita...</guimenuitem
 > els detalls de la tasca pendent, <guimenuitem
->Elimina</guimenuitem
+>Suprimeix</guimenuitem
 > la tasca pendent o crear una <guimenuitem
 >Subtasca pendent nova...</guimenuitem
 >. Per exemple, podríeu crear una tasca pendent molt gran com construir una casa, i crear subtasques pendents com escollir el lloc adequat per a construir, contractar un arquitecte, contractar als treballadors i, finalment celebrar una festa per als amics.</para>
@@ -1424,7 +1424,7 @@ choose the <menuchoice
 >. Podeu assignar més d'una etiqueta per a cada element.</para>
 
 <para
->Per a crear, eliminar o editar etiquetes, escolliu l'element de menú <menuchoice
+>Per a crear, suprimir o editar etiquetes, escolliu l'element de menú <menuchoice
 > <guimenu
 >Arranjament</guimenu
 ><guimenuitem
@@ -1450,7 +1450,7 @@ choose the <menuchoice
 >. Si assigneu etiquetes, les podreu utilitzar per a crear filtres.</para>
 
 <para
->Per a crear, eliminar i editar filtres, escolliu l'element de menú <menuchoice
+>Per a crear, suprimir i editar filtres, escolliu l'element de menú <menuchoice
 > <guimenu
 >Arranjament</guimenu
 ><guimenuitem
@@ -1458,7 +1458,7 @@ choose the <menuchoice
 > </menuchoice
 > per a obrir el diàleg <guilabel
 >Edició dels filtres de calendari</guilabel
->. Utilitzant aquest diàleg podreu crear, eliminar i editar els filtres que afectaran els elements que mostrarà el &korganizer;.</para>
+>. Utilitzant aquest diàleg podreu crear, suprimir i editar els filtres que afectaran els elements que mostrarà el &korganizer;.</para>
 
 <!--TODO: Add detailed description of the dialog. Is it stable yet?-->
 
@@ -1698,7 +1698,7 @@ choose the <menuchoice
 >...</guibutton
 > per a mostrar totes les etiquetes disponibles. Marqueu les caselles d'etiqueta per a assignar-les a l'esdeveniment.</para>
 <para
->Podeu afegir, modificar o eliminar una etiqueta en el diàleg <guilabel
+>Podeu afegir, modificar o suprimir una etiqueta en el diàleg <guilabel
 >Gestió de les etiquetes</guilabel
 >. Obriu aquest diàleg amb <menuchoice
 ><guimenu
@@ -2048,7 +2048,7 @@ choose the <menuchoice
 ></term>
 <listitem
 ><para
->Elimina l'adjunt seleccionat.</para
+>Suprimeix l'adjunt seleccionat.</para
 ></listitem>
 </varlistentry>
 
@@ -5049,7 +5049,7 @@ format="PNG"/></imageobject
 > <guimenu
 >Accions</guimenu
 > <guimenuitem
->Elimina</guimenuitem
+>Suprimeix</guimenuitem
 > </menuchoice
 ></term>
 <listitem
@@ -5311,7 +5311,7 @@ format="PNG"/></imageobject
 >Escolliu aquest element de menú per a obrir el diàleg <guilabel
 >Edició dels filtres</guilabel
 ></action
->. Utilitzant aquest diàleg podreu crear, eliminar i editar filtres que afecten els elements que són mostrats pel &korganizer;.</para
+>. Utilitzant aquest diàleg podreu crear, suprimir i editar filtres que afecten els elements que són mostrats pel &korganizer;.</para
 ></listitem>
 </varlistentry>
 
@@ -5330,7 +5330,7 @@ format="PNG"/></imageobject
 >Escolliu aquest element de menú per a obrir el diàleg <guilabel
 >Gestió de les etiquetes</guilabel
 ></action
->. Utilitzant aquest diàleg podreu crear, eliminar i editar les etiquetes dels elements de calendari. Les etiquetes s'usen per a organitzar els vostres esdeveniments i tasques pendents en grups relacionats.</para
+>. Utilitzant aquest diàleg podreu crear, suprimir i editar les etiquetes dels elements de calendari. Les etiquetes s'usen per a organitzar els vostres esdeveniments i tasques pendents en grups relacionats.</para
 ></listitem>
 </varlistentry>
 
