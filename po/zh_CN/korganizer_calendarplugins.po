@@ -32,17 +32,17 @@ msgstr "显示日编号"
 #: datenums/configdialog.cpp:48
 #, kde-format
 msgid "Show day number"
-msgstr "显示日编号"
+msgstr ""
 
 #: datenums/configdialog.cpp:51
 #, kde-format
 msgid "Show days to end of year"
-msgstr "显示至每年的结束"
+msgstr ""
 
 #: datenums/configdialog.cpp:54
 #, kde-format
 msgid "Show both"
-msgstr "全部显示"
+msgstr ""
 
 #: datenums/datenums.cpp:36
 #, kde-format
@@ -685,7 +685,7 @@ msgstr "缩略图纵横比"
 #: picoftheday/configdialog.cpp:46
 #, kde-format
 msgid "Ignore aspect ratio"
-msgstr "忽略纵横比"
+msgstr ""
 
 #: picoftheday/configdialog.cpp:48
 #, kde-format
@@ -696,7 +696,7 @@ msgstr "所略图将被自由缩放，不考虑纵横比。"
 #: picoftheday/configdialog.cpp:52
 #, kde-format
 msgid "Keep aspect ratio"
-msgstr "保持纵横比"
+msgstr ""
 
 #: picoftheday/configdialog.cpp:54
 #, kde-format
@@ -708,7 +708,7 @@ msgstr "缩略图将在指定的矩形范围里被尽可能维持形状地放大
 #: picoftheday/configdialog.cpp:59
 #, kde-format
 msgid "Keep aspect ratio by expanding"
-msgstr "展开时保留纵横比"
+msgstr ""
 
 #: picoftheday/configdialog.cpp:61
 #, kde-format
