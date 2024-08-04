@@ -1,5 +1,5 @@
 # translation of korganizer.po to
-# Version: $Revision: 1685899 $
+# Version: $Revision: 1686246 $
 # SPDX-FileCopyrightText: 2011, 2012, 2013, 2014, 2015, 2016, 2018, 2019, 2020, 2024 Łukasz Wojniłowicz <lukasz.wojnilowicz@gmail.com>
 # translated by Krzysztof Jasiutowicz <kpjas@priv.onet.pl>
 # Krzysztof Lichota <lichota@mimuw.edu.pl>, 2002, 2005, 2006.
@@ -14,7 +14,7 @@ msgstr ""
 "Project-Id-Version: korganizer\n"
 "Report-Msgid-Bugs-To: https://bugs.kde.org\n"
 "POT-Creation-Date: 2024-07-30 00:42+0000\n"
-"PO-Revision-Date: 2024-07-14 13:05+0200\n"
+"PO-Revision-Date: 2024-08-03 11:54+0200\n"
 "Last-Translator: Łukasz Wojniłowicz <lukasz.wojnilowicz@gmail.com>\n"
 "Language-Team: Polish <kde-i18n-doc@kde.org>\n"
 "Language: pl\n"
@@ -37,22 +37,19 @@ msgid "Show Date Number"
 msgstr "Pokaż numer dnia"
 
 #: datenums/configdialog.cpp:48
-#, fuzzy, kde-format
-#| msgid "Show day number"
+#, kde-format
 msgctxt "@option:radio"
 msgid "Show day number"
 msgstr "Pokaż numer dnia"
 
 #: datenums/configdialog.cpp:51
-#, fuzzy, kde-format
-#| msgid "Show days to end of year"
+#, kde-format
 msgctxt "@option:radio"
 msgid "Show days to end of year"
 msgstr "Pokaż dni do końca roku"
 
 #: datenums/configdialog.cpp:54
-#, fuzzy, kde-format
-#| msgid "Show both"
+#, kde-format
 msgctxt "@option:radio"
 msgid "Show both"
 msgstr "Pokaż oba"
@@ -706,14 +703,13 @@ msgstr "Ustawienia obrazu dnia"
 #: picoftheday/configdialog.cpp:42
 #, kde-format
 msgid "Thumbnail Aspect Ratio Mode"
-msgstr "Proporcje miniaturki"
+msgstr "Tryb kształtu miniatury"
 
 #: picoftheday/configdialog.cpp:46
-#, fuzzy, kde-format
-#| msgid "Ignore aspect ratio"
+#, kde-format
 msgctxt "@option:radio"
 msgid "Ignore aspect ratio"
-msgstr "Ignoruj proporcje"
+msgstr "Nie zważaj na kształt"
 
 #: picoftheday/configdialog.cpp:48
 #, kde-format
@@ -722,11 +718,10 @@ msgid ""
 msgstr "Miniaturka będzie skalowana bez zwracania uwagi na proporcje."
 
 #: picoftheday/configdialog.cpp:52
-#, fuzzy, kde-format
-#| msgid "Keep aspect ratio"
+#, kde-format
 msgctxt "@option:radio"
 msgid "Keep aspect ratio"
-msgstr "Zachowaj proporcje"
+msgstr "Zachowaj kształt"
 
 #: picoftheday/configdialog.cpp:54
 #, kde-format
@@ -734,15 +729,14 @@ msgid ""
 "The thumbnail will be scaled to a rectangle as large as possible inside a "
 "given rectangle, preserving the aspect ratio."
 msgstr ""
-"Miniaturka będzie przeskalowana do prostokąta tak dużego jak to możliwe "
-"wewnątrz danego prostokąta zachowując proporcje."
+"Miniatura będzie przeskalowana do prostokąta tak dużego jak to możliwe "
+"wewnątrz danego prostokąta, zachowując swój kształt."
 
 #: picoftheday/configdialog.cpp:59
-#, fuzzy, kde-format
-#| msgid "Keep aspect ratio by expanding"
+#, kde-format
 msgctxt "@option:radio"
 msgid "Keep aspect ratio by expanding"
-msgstr "Zachowaj proporcje przy zwiększaniu"
+msgstr "Zachowaj kształt przy zwiększaniu"
 
 #: picoftheday/configdialog.cpp:61
 #, kde-format
@@ -750,8 +744,8 @@ msgid ""
 "The thumbnail will be scaled to a rectangle as small as possible outside a "
 "given rectangle, preserving the aspect ratio."
 msgstr ""
-"Miniaturka zostanie przeskalowana do prostokąta tak małego jak to możliwe na "
-"zewnątrz danego prostokąta zachowując proporcje."
+"Miniatura zostanie przeskalowana do prostokąta tak małego jak to możliwe na "
+"zewnątrz danego prostokąta, zachowując swój kształt."
 
 #: picoftheday/element.cpp:209
 #, kde-format
