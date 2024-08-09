@@ -37,7 +37,6 @@ int main(int argc, char **argv)
     KIconTheme::initTheme();
 #endif
     KOrganizerApp app(argc, &argv);
-    KCrash::initialize();
 #if HAVE_STYLE_MANAGER
     KStyleManager::initStyle();
 #else // !HAVE_STYLE_MANAGER
@@ -49,6 +48,7 @@ int main(int argc, char **argv)
 
     KOrg::AboutData aboutData;
     app.setAboutData(aboutData);
+    KCrash::initialize();
 
     QCommandLineParser *cmdArgs = app.cmdArgs();
     korganizer_options(cmdArgs);
