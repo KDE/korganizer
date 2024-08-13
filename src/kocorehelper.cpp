@@ -8,8 +8,6 @@
 
 #include "kocorehelper.h"
 
-#include <CalendarSupport/KCalPrefs>
-
 #include <Akonadi/TagCache>
 
 #include <KLocalizedString>
