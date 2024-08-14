@@ -1,7 +1,7 @@
 # translation of korganizer.po to Slovenian
 # Translation of korganizer.po to Slovenian
 # Copyright (C) 2001,2002, 2003, 2004, 2005, 2006 Free Software Foundation, Inc.
-# $Id: korganizer.po 1686204 2024-08-03 01:13:58Z scripty $
+# $Id: korganizer.po 1687688 2024-08-14 01:14:00Z scripty $
 # $Source$
 #
 # Roman Maurer <roman.maurer@hermes.si>, 2001.
@@ -14,7 +14,7 @@ msgid ""
 msgstr ""
 "Project-Id-Version: korganizer\n"
 "Report-Msgid-Bugs-To: https://bugs.kde.org\n"
-"POT-Creation-Date: 2024-08-02 00:41+0000\n"
+"POT-Creation-Date: 2024-08-14 00:40+0000\n"
 "PO-Revision-Date: 2024-08-02 06:01+0200\n"
 "Last-Translator: Matjaž Jeran <matjaz.jeran@amis.net>\n"
 "Language-Team: Slovenian <lugos-slo@lugos.si>\n"
@@ -2114,7 +2114,7 @@ msgid ""
 "Failed to retrieve incidence from Akonadi: requested incidence doesn't exist."
 msgstr "Ni uspelo pridobiti vnosov iz Akonadija: zahtevan vnos ne obstaja."
 
-#: kocorehelper.cpp:30
+#: kocorehelper.cpp:28
 #, kde-format
 msgctxt "@item:intext delimiter for joining holiday names"
 msgid ","

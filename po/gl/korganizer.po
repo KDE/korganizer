@@ -15,7 +15,7 @@ msgid ""
 msgstr ""
 "Project-Id-Version: korganizer\n"
 "Report-Msgid-Bugs-To: https://bugs.kde.org\n"
-"POT-Creation-Date: 2024-08-02 00:41+0000\n"
+"POT-Creation-Date: 2024-08-14 00:40+0000\n"
 "PO-Revision-Date: 2024-08-03 12:18+0200\n"
 "Last-Translator: Adrián Chaves (Gallaecio) <adrian@chaves.io>\n"
 "Language-Team: Proxecto Trasno (proxecto@trasno.gal)\n"
@@ -2092,7 +2092,7 @@ msgstr ""
 "Non foi posíbel obter a incidencia de Akonadi: a incidencia solicitada non "
 "existe."
 
-#: kocorehelper.cpp:30
+#: kocorehelper.cpp:28
 #, kde-format
 msgctxt "@item:intext delimiter for joining holiday names"
 msgid ","
