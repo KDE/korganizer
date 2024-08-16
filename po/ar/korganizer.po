@@ -12,7 +12,7 @@ msgstr ""
 "Project-Id-Version: korganizer\n"
 "Report-Msgid-Bugs-To: https://bugs.kde.org\n"
 "POT-Creation-Date: 2024-06-30 00:39+0000\n"
-"PO-Revision-Date: 2024-05-16 14:04+0400\n"
+"PO-Revision-Date: 2024-08-15 11:54+0400\n"
 "Last-Translator: Zayed Al-Saidi <zayed.alsaidi@gmail.com>\n"
 "Language-Team: ar\n"
 "Language: ar\n"
@@ -21,6 +21,7 @@ msgstr ""
 "Content-Transfer-Encoding: 8bit\n"
 "Plural-Forms: nplurals=6; plural=n==0 ? 0 : n==1 ? 1 : n==2 ? 2 : n%100>=3 "
 "&& n%100<=10 ? 3 : n%100>=11 && n%100<=99 ? 4 : 5;\n"
+"X-Generator: Lokalize 23.08.5\n"
 
 #, kde-format
 msgctxt "NAME OF TRANSLATORS"
@@ -3260,15 +3261,13 @@ msgid "Calendar"
 msgstr "التقويم"
 
 #: korganizer_options.h:18
-#, fuzzy, kde-format
-#| msgid "Import the specified files as separate calendars"
+#, kde-format
 msgctxt "@info:shell"
 msgid "Import the specified files as separate calendars"
 msgstr "استورِد الملفات المحدّدة كتقاويم منفصلة"
 
 #: korganizer_options.h:20
-#, fuzzy, kde-format
-#| msgid "Merge the specified files into an existing calendar"
+#, kde-format
 msgctxt "@info:shell"
 msgid "Merge the specified files into an existing calendar"
 msgstr "ادمج الملفات المحدّدة بأحد التقاويم الموجودة"
@@ -3288,8 +3287,7 @@ msgid ""
 msgstr ""
 
 #: korganizer_options.h:29
-#, fuzzy, kde-format
-#| msgid "Lists the available options for user feedback"
+#, kde-format
 msgctxt "@info:shell"
 msgid "Lists the available options for user feedback"
 msgstr "يسرد الخيارات المتاحة لمشاركة بياناتك"
@@ -5601,8 +5599,7 @@ msgid "%1/%2"
 msgstr "‏%1/‏%2"
 
 #: widgets/kdatenavigator.cpp:174
-#, fuzzy, kde-format
-#| msgid "Scroll to week number %1"
+#, kde-format
 msgctxt "@info:tooltip"
 msgid "Scroll to week number %1"
 msgstr "انتقل إلى الأسبوع رقم %1"
@@ -5731,15 +5728,13 @@ msgid ""
 msgstr ""
 
 #: widgets/navigatorbar.cpp:54
-#, fuzzy, kde-format
-#| msgid "Select a month"
+#, kde-format
 msgctxt "@info:tooltip"
 msgid "Select a month"
 msgstr "اختر شهرًا"
 
 #: widgets/navigatorbar.cpp:60
-#, fuzzy, kde-format
-#| msgid "Select a year"
+#, kde-format
 msgctxt "@info:tooltip"
 msgid "Select a year"
 msgstr "اختر سنة"
