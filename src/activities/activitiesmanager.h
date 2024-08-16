@@ -6,13 +6,13 @@
 
 #pragma once
 #include "korganizerprivate_export.h"
-#include <QObject>
+#include <PimCommonActivities/ActivitiesBaseManager>
 namespace KActivities
 {
 class Consumer;
 }
 class AccountActivities;
-class KORGANIZERPRIVATE_EXPORT ActivitiesManager : public QObject
+class KORGANIZERPRIVATE_EXPORT ActivitiesManager : public PimCommonActivities::ActivitiesBaseManager
 {
     Q_OBJECT
 public:
@@ -21,16 +21,10 @@ public:
     explicit ActivitiesManager(QObject *parent = nullptr);
     ~ActivitiesManager() override;
 
-    [[nodiscard]] bool enabled() const;
+    [[nodiscard]] bool enabled() const override;
     void setEnabled(bool newEnabled);
 
-    [[nodiscard]] bool isInCurrentActivity(const QStringList &lst) const;
-    [[nodiscard]] QString currentActivity() const;
-
     AccountActivities *accountActivities() const;
-
-Q_SIGNALS:
-    void activitiesChanged();
 
 private:
     KActivities::Consumer *const mActivitiesConsumer;

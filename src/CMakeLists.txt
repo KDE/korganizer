@@ -275,7 +275,7 @@ set(korganizerprivate_LIB_SRCS
     korganizer_options.h
    )
 
-if(TARGET Plasma::Activities)
+if(HAVE_ACTIVITY_SUPPORT)
     set(korganizerprivate_LIB_SRCS ${korganizerprivate_LIB_SRCS}
         activities/activitiesmanager.h
         activities/activitiesmanager.cpp
@@ -365,8 +365,8 @@ target_link_libraries(korganizerprivate
     ${korganizer_userfeedback_LIB}
    )
 
-if(TARGET Plasma::Activities)
-    target_link_libraries(korganizerprivate PRIVATE Plasma::Activities)
+if(HAVE_ACTIVITY_SUPPORT)
+    target_link_libraries(korganizerprivate PRIVATE KPim6::PimCommonActivities)
 endif()
 
 

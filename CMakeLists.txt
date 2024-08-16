@@ -86,25 +86,6 @@ find_package(KF6UserFeedback ${KF_MIN_VERSION} CONFIG)
 
 set_package_properties(KF6UserFeedback PROPERTIES DESCRIPTION "User Feedback lib" TYPE OPTIONAL PURPOSE "Allow to send Telemetry Information (optional).")
 
-option(OPTION_USE_PLASMA_ACTIVITIES "Activate plasma activities (experimental)" OFF)
-if(OPTION_USE_PLASMA_ACTIVITIES)
-    if(NOT WIN32 AND NOT APPLE)
-       set(OPTION_USE_PLASMA_ACTIVITIES true)
-    else()
-       set(OPTION_USE_PLASMA_ACTIVITIES false)
-    endif()
-endif()
-if(OPTION_USE_PLASMA_ACTIVITIES)
-    if(NOT WIN32 AND NOT APPLE)
-       find_package(PlasmaActivities "6.1.0")
-    endif()
-endif()
-
-if(TARGET Plasma::Activities)
-    set(HAVE_ACTIVITY_SUPPORT TRUE)
-endif()
-
-
 if(TARGET KF6::UserFeedbackWidgets)
     add_definitions(-DWITH_KUSERFEEDBACK)
 endif()
@@ -136,6 +117,31 @@ find_package(KPim6Libkdepim ${LIBKDEPIM_LIB_VERSION} CONFIG REQUIRED)
 find_package(KPim6IncidenceEditor ${LIBINCIDENCEEDITOR_LIB_VERSION} CONFIG REQUIRED)
 find_package(KPim6CalendarSupport ${CALENDARSUPPORT_LIB_VERSION} CONFIG REQUIRED)
 find_package(KPim6EventViews ${EVENTVIEW_LIB_VERSION} CONFIG REQUIRED)
+find_package(KPim6PimCommonActivities ${PIMCOMMON_LIB_VERSION} CONFIG)
+
+if(TARGET KPim6::PimCommonActivities)
+    option(OPTION_USE_PLASMA_ACTIVITIES "Activate plasma activities (experimental)" OFF)
+    if(OPTION_USE_PLASMA_ACTIVITIES)
+        if(NOT WIN32 AND NOT APPLE)
+            set(OPTION_USE_PLASMA_ACTIVITIES true)
+        else()
+            set(OPTION_USE_PLASMA_ACTIVITIES false)
+        endif()
+    endif()
+    if(OPTION_USE_PLASMA_ACTIVITIES)
+        if(NOT WIN32 AND NOT APPLE)
+            find_package(PlasmaActivities "6.1.0")
+            set_package_properties(PlasmaActivities PROPERTIES DESCRIPTION
+                "Allow to compile with plasma activities"
+                TYPE OPTIONAL
+            )
+        endif()
+
+        if(TARGET Plasma::Activities)
+            set(HAVE_ACTIVITY_SUPPORT TRUE)
+        endif()
+    endif()
+endif()
 
 if(NOT APPLE)
   find_package(X11)
