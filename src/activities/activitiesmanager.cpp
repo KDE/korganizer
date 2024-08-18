@@ -6,7 +6,6 @@
 
 #include "activitiesmanager.h"
 #include "accountactivities.h"
-#include "korganizer_activities_debug.h"
 
 #include <PlasmaActivities/Consumer>
 
