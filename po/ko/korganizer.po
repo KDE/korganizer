@@ -9,7 +9,7 @@ msgstr ""
 "Project-Id-Version: Korganizer\n"
 "Report-Msgid-Bugs-To: https://bugs.kde.org\n"
 "POT-Creation-Date: 2024-08-14 00:40+0000\n"
-"PO-Revision-Date: 2024-02-09 23:54+0100\n"
+"PO-Revision-Date: 2024-08-19 23:53+0200\n"
 "Last-Translator: Shinjo Park <kde@peremen.name>\n"
 "Language-Team: Korean <kde-kr@kde.org>\n"
 "Language: ko\n"
@@ -17,7 +17,7 @@ msgstr ""
 "Content-Type: text/plain; charset=UTF-8\n"
 "Content-Transfer-Encoding: 8bit\n"
 "Plural-Forms: nplurals=1; plural=0;\n"
-"X-Generator: Lokalize 23.08.1\n"
+"X-Generator: Lokalize 23.08.5\n"
 
 #, kde-format
 msgctxt "NAME OF TRANSLATORS"
@@ -58,8 +58,7 @@ msgstr ""
 "Copyright © 2012–2024 KOrganizer authors"
 
 #: aboutdata.cpp:30 kontactplugin/specialdates/specialdates_plugin.cpp:42
-#, fuzzy, kde-format
-#| msgid "Allen Winter"
+#, kde-format
 msgctxt "@info:credit"
 msgid "Allen Winter"
 msgstr "Allen Winter"
@@ -70,8 +69,7 @@ msgid "Maintainer"
 msgstr "관리자"
 
 #: aboutdata.cpp:31
-#, fuzzy, kde-format
-#| msgid "Reinhold Kainhofer"
+#, kde-format
 msgctxt "@info:credit"
 msgid "Reinhold Kainhofer"
 msgstr "Reinhold Kainhofer"
@@ -82,15 +80,13 @@ msgid "Former Maintainer"
 msgstr "이전 관리자"
 
 #: aboutdata.cpp:32
-#, fuzzy, kde-format
-#| msgid "Cornelius Schumacher"
+#, kde-format
 msgctxt "@info:credit"
 msgid "Cornelius Schumacher"
 msgstr "Cornelius Schumacher"
 
 #: aboutdata.cpp:33
-#, fuzzy, kde-format
-#| msgid "Preston Brown"
+#, kde-format
 msgctxt "@info:credit"
 msgid "Preston Brown"
 msgstr "Preston Brown"
@@ -101,8 +97,7 @@ msgid "Original Author"
 msgstr "원 작성자"
 
 #: aboutdata.cpp:34
-#, fuzzy, kde-format
-#| msgid "Laurent Montel"
+#, kde-format
 msgctxt "@info:credit"
 msgid "Laurent Montel"
 msgstr "Laurent Montel"
@@ -113,169 +108,145 @@ msgid "Developer"
 msgstr "개발자"
 
 #: aboutdata.cpp:35
-#, fuzzy, kde-format
-#| msgid "Richard Apodaca"
+#, kde-format
 msgctxt "@info:credit"
 msgid "Richard Apodaca"
 msgstr "Richard Apodaca"
 
 #: aboutdata.cpp:36
-#, fuzzy, kde-format
-#| msgid "Björn Balazs"
+#, kde-format
 msgctxt "@info:credit"
 msgid "Björn Balazs"
 msgstr "Björn Balazs"
 
 #: aboutdata.cpp:37
-#, fuzzy, kde-format
-#| msgid "Jan-Pascal van Best"
+#, kde-format
 msgctxt "@info:credit"
 msgid "Jan-Pascal van Best"
 msgstr "Jan-Pascal van Best"
 
 #: aboutdata.cpp:38
-#, fuzzy, kde-format
-#| msgid "Bertjan Broeksema"
+#, kde-format
 msgctxt "@info:credit"
 msgid "Bertjan Broeksema"
 msgstr "Bertjan Broeksema"
 
 #: aboutdata.cpp:39
-#, fuzzy, kde-format
-#| msgid "Laszlo Boloni"
+#, kde-format
 msgctxt "@info:credit"
 msgid "Laszlo Boloni"
 msgstr "Laszlo Boloni"
 
 #: aboutdata.cpp:40
-#, fuzzy, kde-format
-#| msgid "Barry Benowitz"
+#, kde-format
 msgctxt "@info:credit"
 msgid "Barry Benowitz"
 msgstr "Barry Benowitz"
 
 #: aboutdata.cpp:41
-#, fuzzy, kde-format
-#| msgid "Christopher Beard"
+#, kde-format
 msgctxt "@info:credit"
 msgid "Christopher Beard"
 msgstr "Christopher Beard"
 
 #: aboutdata.cpp:42
-#, fuzzy, kde-format
-#| msgid "Kalle Dalheimer"
+#, kde-format
 msgctxt "@info:credit"
 msgid "Kalle Dalheimer"
 msgstr "Kalle Dalheimer"
 
 #: aboutdata.cpp:43
-#, fuzzy, kde-format
-#| msgid "Ian Dawes"
+#, kde-format
 msgctxt "@info:credit"
 msgid "Ian Dawes"
 msgstr "Ian Dawes"
 
 #: aboutdata.cpp:44
-#, fuzzy, kde-format
-#| msgid "Thomas Eitzenberger"
+#, kde-format
 msgctxt "@info:credit"
 msgid "Thomas Eitzenberger"
 msgstr "Thomas Eitzenberger"
 
 #: aboutdata.cpp:45
-#, fuzzy, kde-format
-#| msgid "Neil Hart"
+#, kde-format
 msgctxt "@info:credit"
 msgid "Neil Hart"
 msgstr "Neil Hart"
 
 #: aboutdata.cpp:46
-#, fuzzy, kde-format
-#| msgid "Declan Houlihan"
+#, kde-format
 msgctxt "@info:credit"
 msgid "Declan Houlihan"
 msgstr "Declan Houlihan"
 
 #: aboutdata.cpp:47
-#, fuzzy, kde-format
-#| msgid "Hans-Jürgen Husel"
+#, kde-format
 msgctxt "@info:credit"
 msgid "Hans-Jürgen Husel"
 msgstr "Hans-Jürgen Husel"
 
 #: aboutdata.cpp:48
-#, fuzzy, kde-format
-#| msgid "Tim Jansen"
+#, kde-format
 msgctxt "@info:credit"
 msgid "Tim Jansen"
 msgstr "Tim Jansen"
 
 #: aboutdata.cpp:49
-#, fuzzy, kde-format
-#| msgid "Christian Kirsch"
+#, kde-format
 msgctxt "@info:credit"
 msgid "Christian Kirsch"
 msgstr "Christian Kirsch"
 
 #: aboutdata.cpp:50
-#, fuzzy, kde-format
-#| msgid "Tobias König"
+#, kde-format
 msgctxt "@info:credit"
 msgid "Tobias König"
 msgstr "Tobias König"
 
 #: aboutdata.cpp:51
-#, fuzzy, kde-format
-#| msgid "Martin Koller"
+#, kde-format
 msgctxt "@info:credit"
 msgid "Martin Koller"
 msgstr "Martin Koller"
 
 #: aboutdata.cpp:52
-#, fuzzy, kde-format
-#| msgid "Uwe Koloska"
+#, kde-format
 msgctxt "@info:credit"
 msgid "Uwe Koloska"
 msgstr "Uwe Koloska"
 
 #: aboutdata.cpp:53
-#, fuzzy, kde-format
-#| msgid "Sergio Luis Martins"
+#, kde-format
 msgctxt "@info:credit"
 msgid "Sergio Luis Martins"
 msgstr "Sergio Luis Martins"
 
 #: aboutdata.cpp:54
-#, fuzzy, kde-format
-#| msgid "Mike McQuaid"
+#, kde-format
 msgctxt "@info:credit"
 msgid "Mike McQuaid"
 msgstr "Mike McQuaid"
 
 #: aboutdata.cpp:55
-#, fuzzy, kde-format
-#| msgid "Glen Parker"
+#, kde-format
 msgctxt "@info:credit"
 msgid "Glen Parker"
 msgstr "Glen Parker"
 
 #: aboutdata.cpp:56
-#, fuzzy, kde-format
-#| msgid "Dan Pilone"
+#, kde-format
 msgctxt "@info:credit"
 msgid "Dan Pilone"
 msgstr "Dan Pilone"
 
 #: aboutdata.cpp:57
-#, fuzzy, kde-format
-#| msgid "Roman Rohr"
+#, kde-format
 msgctxt "@info:credit"
 msgid "Roman Rohr"
 msgstr "Roman Rohr"
 
 #: aboutdata.cpp:58
-#, fuzzy, kde-format
-#| msgid "Rafał Rzepecki"
+#, kde-format
 msgctxt "@info:credit"
 msgid "Rafał Rzepecki"
 msgstr "Rafał Rzepecki"
@@ -286,71 +257,61 @@ msgid "Part of work sponsored by Google with Summer of Code 2005"
 msgstr "Google Summer of Code 2005로 일부 작업 지원"
 
 #: aboutdata.cpp:59
-#, fuzzy, kde-format
-#| msgid "Don Sanders"
+#, kde-format
 msgctxt "@info:credit"
 msgid "Don Sanders"
 msgstr "Don Sanders"
 
 #: aboutdata.cpp:60
-#, fuzzy, kde-format
-#| msgid "Bram Schoenmakers"
+#, kde-format
 msgctxt "@info:credit"
 msgid "Bram Schoenmakers"
 msgstr "Bram Schoenmakers"
 
 #: aboutdata.cpp:61
-#, fuzzy, kde-format
-#| msgid "Günter Schwann"
+#, kde-format
 msgctxt "@info:credit"
 msgid "Günter Schwann"
 msgstr "Günter Schwann"
 
 #: aboutdata.cpp:62
-#, fuzzy, kde-format
-#| msgid "Herwin Jan Steehouwer"
+#, kde-format
 msgctxt "@info:credit"
 msgid "Herwin Jan Steehouwer"
 msgstr "Herwin Jan Steehouwer"
 
 #: aboutdata.cpp:63
-#, fuzzy, kde-format
-#| msgid "Mario Teijeiro"
+#, kde-format
 msgctxt "@info:credit"
 msgid "Mario Teijeiro"
 msgstr "Mario Teijeiro"
 
 #: aboutdata.cpp:64
-#, fuzzy, kde-format
-#| msgid "Nick Thompson"
+#, kde-format
 msgctxt "@info:credit"
 msgid "Nick Thompson"
 msgstr "Nick Thompson"
 
 #: aboutdata.cpp:65
-#, fuzzy, kde-format
-#| msgid "Bo Thorsen"
+#, kde-format
 msgctxt "@info:credit"
 msgid "Bo Thorsen"
 msgstr "Bo Thorsen"
 
 #: aboutdata.cpp:66
-#, fuzzy, kde-format
-#| msgid "Larry Wright"
+#, kde-format
 msgctxt "@info:credit"
 msgid "Larry Wright"
 msgstr "Larry Wright"
 
 #: aboutdata.cpp:67
-#, fuzzy, kde-format
-#| msgid "Thomas Zander"
+#, kde-format
 msgctxt "@info:credit"
 msgid "Thomas Zander"
 msgstr "Thomas Zander"
 
 #: aboutdata.cpp:68
-#, fuzzy, kde-format
-#| msgid "Fester Zigterman"
+#, kde-format
 msgctxt "@info:credit"
 msgid "Fester Zigterman"
 msgstr "Fester Zigterman"
@@ -364,19 +325,16 @@ msgstr ""
 "<qt>메뉴 표시줄을 완전히 숨깁니다. %1 키를 눌러서 다시 볼 수 있습니다.</qt>"
 
 #: actionmanager.cpp:133
-#, fuzzy, kde-format
-#| msgid "Hide menu bar"
+#, kde-format
 msgctxt "@title:window"
 msgid "Hide menu bar"
 msgstr "메뉴 표시줄 숨기기"
 
 #: actionmanager.cpp:244
-#, fuzzy, kde-format
-#| msgctxt "@title:window"
-#| msgid "Import Calendar"
+#, kde-format
 msgctxt "@action"
 msgid "Import &Calendar…"
-msgstr "캘린더 가져오기"
+msgstr "캘린더 가져오기(&C)…"
 
 #: actionmanager.cpp:245
 #, kde-format
@@ -401,10 +359,9 @@ msgstr ""
 "하십시오."
 
 #: actionmanager.cpp:254
-#, fuzzy, kde-format
-#| msgid "Get New Calendars..."
+#, kde-format
 msgid "Get New Calendars…"
-msgstr "새 캘린더 가져오기..."
+msgstr "새 캘린더 가져오기…"
 
 #: actionmanager.cpp:255
 #, kde-format
@@ -439,11 +396,10 @@ msgid "The downloaded events will be merged into your current calendar."
 msgstr "다운로드한 이벤트를 현재 캘린더에 합칩니다."
 
 #: actionmanager.cpp:306
-#, fuzzy, kde-format
-#| msgid "Export as &iCalendar..."
+#, kde-format
 msgctxt "@action"
 msgid "Export as &iCalendar…"
-msgstr "iCalendar로 내보내기(&I)..."
+msgstr "iCalendar로 내보내기(&I)…"
 
 #: actionmanager.cpp:307
 #, kde-format
@@ -465,11 +421,10 @@ msgid ""
 msgstr "전체 캘린더 모음집을 단일 iCalendar 파일로 내보냅니다."
 
 #: actionmanager.cpp:315
-#, fuzzy, kde-format
-#| msgid "Archive O&ld Incidences..."
+#, kde-format
 msgctxt "@action"
 msgid "Archive O&ld Incidences…"
-msgstr "오래된 반복 항목 정리(&L)..."
+msgstr "오래된 반복 항목 정리(&L)…"
 
 #: actionmanager.cpp:316
 #, kde-format
@@ -495,8 +450,7 @@ msgstr ""
 "화 상자를 엽니다. 기존 캘린더 모음집에서 삭제됩니다."
 
 #: actionmanager.cpp:327
-#, fuzzy, kde-format
-#| msgid "Pur&ge Completed To-dos"
+#, kde-format
 msgctxt "@action"
 msgid "Pur&ge Completed To-dos"
 msgstr "완료한 할 일 정리(&G)"
@@ -720,8 +674,7 @@ msgstr ""
 "니다. 각각 캘린더는 다른 선으로 표시됩니다."
 
 #: actionmanager.cpp:461
-#, fuzzy, kde-format
-#| msgid "&Refresh"
+#, kde-format
 msgctxt "@action"
 msgid "&Refresh"
 msgstr "새로 고침(&R)"
@@ -911,10 +864,9 @@ msgid "&Week"
 msgstr "주(&W)"
 
 #: actionmanager.cpp:567 kodaymatrix.cpp:484
-#, fuzzy, kde-format
-#| msgid "New E&vent..."
+#, kde-format
 msgid "New E&vent…"
-msgstr "새 이벤트(&V)..."
+msgstr "새 이벤트(&V)…"
 
 #: actionmanager.cpp:568
 #, kde-format
@@ -939,10 +891,9 @@ msgstr ""
 "수 있습니다."
 
 #: actionmanager.cpp:577 kodaymatrix.cpp:485
-#, fuzzy, kde-format
-#| msgid "New &To-do..."
+#, kde-format
 msgid "New &To-do…"
-msgstr "새 할 일(&T)..."
+msgstr "새 할 일(&T)…"
 
 #: actionmanager.cpp:578
 #, kde-format
@@ -967,17 +918,15 @@ msgstr ""
 "수 있습니다."
 
 #: actionmanager.cpp:588
-#, fuzzy, kde-format
-#| msgid "New Su&b-to-do..."
+#, kde-format
 msgctxt "@action"
 msgid "New Su&b-to-do…"
-msgstr "하위 할 일 만들기(&B)..."
+msgstr "새 하위 할 일(&B)…"
 
 #: actionmanager.cpp:596 kodaymatrix.cpp:486
-#, fuzzy, kde-format
-#| msgid "New &Journal..."
+#, kde-format
 msgid "New &Journal…"
-msgstr "새 저널(&J)..."
+msgstr "새 저널(&J)…"
 
 #: actionmanager.cpp:597
 #, kde-format
@@ -998,10 +947,9 @@ msgid "Starts a dialog that allows you to create a new Journal entry."
 msgstr "새 저널 항목을 만들 수 있는 대화 상자를 엽니다."
 
 #: actionmanager.cpp:604
-#, fuzzy, kde-format
-#| msgid "Configure View..."
+#, kde-format
 msgid "Configure View…"
-msgstr "보기 설정..."
+msgstr "보기 설정…"
 
 #: actionmanager.cpp:605
 #, kde-format
@@ -1034,14 +982,12 @@ msgid "&Show"
 msgstr "표시(&S)"
 
 #: actionmanager.cpp:619 actionmanager.cpp:1304 actionmanager.cpp:1343
-#, fuzzy, kde-format
-#| msgid "&Edit"
+#, kde-format
 msgid "&Edit…"
-msgstr "편집(&E)"
+msgstr "편집(&E)…"
 
 #: actionmanager.cpp:628
-#, fuzzy, kde-format
-#| msgid "&Make Sub-to-do Independent"
+#, kde-format
 msgctxt "@action"
 msgid "&Make Sub-to-do Independent"
 msgstr "하위 할 일을 독립 항목으로 만들기(&M)"
@@ -1051,10 +997,9 @@ msgstr "하위 할 일을 독립 항목으로 만들기(&M)"
 #. mACollection, "activate_alarm" );
 #. ************************* SCHEDULE MENU *******************************
 #: actionmanager.cpp:640
-#, fuzzy, kde-format
-#| msgid "&Publish Item Information..."
+#, kde-format
 msgid "&Publish Item Information…"
-msgstr "항목 정보 게시(&P)..."
+msgstr "항목 정보 게시(&P)…"
 
 #: actionmanager.cpp:647
 #, kde-format
@@ -1062,15 +1007,13 @@ msgid "Send &Invitation to Attendees"
 msgstr "참석자에게 초대장 전송(&I)"
 
 #: actionmanager.cpp:655
-#, fuzzy, kde-format
-#| msgid "Re&quest Update"
+#, kde-format
 msgctxt "@action"
 msgid "Re&quest Update"
 msgstr "업데이트 요청(&Q)"
 
 #: actionmanager.cpp:663
-#, fuzzy, kde-format
-#| msgid "Send &Cancellation to Attendees"
+#, kde-format
 msgctxt "@action"
 msgid "Send &Cancellation to Attendees"
 msgstr "참석자에게 취소 안내 전송(&C)"
@@ -1087,21 +1030,18 @@ msgid "Request Chan&ge"
 msgstr "변경 요청(&G)"
 
 #: actionmanager.cpp:687
-#, fuzzy, kde-format
-#| msgid "&Mail Free Busy Information..."
+#, kde-format
 msgctxt "@action"
 msgid "&Mail Free Busy Information…"
-msgstr "바쁨/한가함 정보 메일 보내기(&M)..."
+msgstr "바쁨/한가함 정보 메일 보내기(&M)…"
 
 #: actionmanager.cpp:692
-#, fuzzy, kde-format
-#| msgid "&Send as iCalendar..."
+#, kde-format
 msgid "&Send as iCalendar…"
-msgstr "iCalendar로 전송(&S)..."
+msgstr "iCalendar로 전송(&S)…"
 
 #: actionmanager.cpp:699
-#, fuzzy, kde-format
-#| msgid "&Upload Free Busy Information"
+#, kde-format
 msgctxt "@action"
 msgid "&Upload Free Busy Information"
 msgstr "바쁨/한가함 정보 업로드(&U)"
@@ -1132,30 +1072,26 @@ msgid "Show Calendar Manager"
 msgstr "캘린더 관리자 표시"
 
 #: actionmanager.cpp:750
-#, fuzzy, kde-format
-#| msgid "Configure &Date && Time..."
+#, kde-format
 msgctxt "@action"
 msgid "Configure &Date && Time…"
-msgstr "날짜와 시간 설정(&D)..."
+msgstr "날짜와 시간 설정(&D)…"
 
 #: actionmanager.cpp:754
-#, fuzzy, kde-format
-#| msgid "Manage View &Filters..."
+#, kde-format
 msgid "Manage View &Filters…"
-msgstr "보기 필터 관리(&F)..."
+msgstr "보기 필터 관리(&F)…"
 
 #: actionmanager.cpp:758
-#, fuzzy, kde-format
-#| msgid "Manage T&ags..."
+#, kde-format
 msgctxt "@action"
 msgid "Manage T&ags…"
-msgstr "태그 관리(&A)..."
+msgstr "태그 관리(&A)…"
 
 #: actionmanager.cpp:766
-#, fuzzy, kde-format
-#| msgid "&Configure KOrganizer..."
+#, kde-format
 msgid "&Configure KOrganizer…"
-msgstr "KOrganizer 설정(&C)..."
+msgstr "KOrganizer 설정(&C)…"
 
 #: actionmanager.cpp:844
 #, kde-format
@@ -1227,10 +1163,9 @@ msgid "&Show Event"
 msgstr "이벤트 표시(&S)"
 
 #: actionmanager.cpp:1265
-#, fuzzy, kde-format
-#| msgid "&Edit Event..."
+#, kde-format
 msgid "&Edit Event…"
-msgstr "이벤트 편집(&E)..."
+msgstr "이벤트 편집(&E)…"
 
 #: actionmanager.cpp:1268
 #, kde-format
@@ -1243,10 +1178,9 @@ msgid "&Show To-do"
 msgstr "할 일 표시(&S)"
 
 #: actionmanager.cpp:1279 kontactplugin/korganizer/todosummarywidget.cpp:321
-#, fuzzy, kde-format
-#| msgid "&Edit To-do..."
+#, kde-format
 msgid "&Edit To-do…"
-msgstr "할 일 편집(&E)..."
+msgstr "할 일 편집(&E)…"
 
 #: actionmanager.cpp:1282 kontactplugin/korganizer/todosummarywidget.cpp:323
 #, kde-format
@@ -1330,15 +1264,13 @@ msgid "Import Calendar"
 msgstr "캘린더 가져오기"
 
 #: actionmanager.cpp:1658
-#, fuzzy, kde-format
-#| msgid "Merge into existing calendar"
+#, kde-format
 msgctxt "@action:button"
 msgid "Merge into existing calendar"
 msgstr "기존 캘린더에 합치기"
 
 #: actionmanager.cpp:1659
-#, fuzzy, kde-format
-#| msgid "Add as new calendar"
+#, kde-format
 msgctxt "@action:button"
 msgid "Add as new calendar"
 msgstr "새 캘린더로 추가"
@@ -1368,12 +1300,10 @@ msgid "Lets you search for a keyword in your calendars"
 msgstr "캘린더에서 키워드로 검색"
 
 #: akonadicollectionview.cpp:411
-#, fuzzy, kde-format
-#| msgctxt "Displayed grayed-out inside the textbox, verb to search"
-#| msgid "Search"
+#, kde-format
 msgctxt "@info/plain Displayed grayed-out inside the textbox, verb to search"
 msgid "Search…"
-msgstr "검색"
+msgstr "검색…"
 
 #: akonadicollectionview.cpp:495 manageshowcollectionproperties.cpp:76
 #, kde-format
@@ -1382,12 +1312,10 @@ msgid "Properties of Calendar Folder %1"
 msgstr "%1 캘린더 폴더 속성"
 
 #: akonadicollectionview.cpp:507
-#, fuzzy, kde-format
-#| msgctxt "@action:inmenu"
-#| msgid "&Set Folder Color..."
+#, kde-format
 msgctxt "@action:inmenu"
 msgid "&Set Folder Color…"
-msgstr "폴더 색상 설정(&S)..."
+msgstr "폴더 색상 설정(&S)…"
 
 #: akonadicollectionview.cpp:513
 #, kde-format
@@ -1396,12 +1324,10 @@ msgid "Set as &Default Folder"
 msgstr "기본 폴더로 설정(&D)"
 
 #: akonadicollectionview.cpp:518
-#, fuzzy, kde-format
-#| msgctxt "@action:inmenu"
-#| msgid "Serverside Subscription..."
+#, kde-format
 msgctxt "@action:inmenu"
 msgid "Serverside Subscription…"
-msgstr "서버 측 구독..."
+msgstr "서버 측 구독…"
 
 #: akonadicollectionview.cpp:563
 #, kde-format
@@ -1572,8 +1498,7 @@ msgid "KOrganizer Confirmation"
 msgstr "KOrganizer 확인"
 
 #: calendarview.cpp:1614
-#, fuzzy, kde-format
-#| msgid "&Dissociate"
+#, kde-format
 msgctxt "@action:button"
 msgid "&Dissociate"
 msgstr "분리(&D)"
@@ -1588,15 +1513,13 @@ msgstr ""
 "겠습니까?"
 
 #: calendarview.cpp:1626
-#, fuzzy, kde-format
-#| msgid "&Only Dissociate This One"
+#, kde-format
 msgctxt "@action:button"
 msgid "&Only Dissociate This One"
 msgstr "이 항목만 분리(&O)"
 
 #: calendarview.cpp:1627
-#, fuzzy, kde-format
-#| msgid "&Also Dissociate Future Ones"
+#, kde-format
 msgctxt "@action:button"
 msgid "&Also Dissociate Future Ones"
 msgstr "미래 항목도 분리(&A)"
@@ -1672,15 +1595,13 @@ msgstr ""
 "시겠습니까?"
 
 #: calendarview.cpp:2294
-#, fuzzy, kde-format
-#| msgid "Delete Only This"
+#, kde-format
 msgctxt "@action:button"
 msgid "Delete Only This"
 msgstr "이것만 삭제"
 
 #: calendarview.cpp:2295 calendarview.cpp:2353
-#, fuzzy, kde-format
-#| msgid "Delete All"
+#, kde-format
 msgctxt "@action:button"
 msgid "Delete All"
 msgstr "모두 삭제"
@@ -1776,11 +1697,10 @@ msgid "Purge To-dos"
 msgstr "할 일 비우기"
 
 #: calendarview.cpp:2465
-#, fuzzy, kde-format
-#| msgid "Purge"
+#, kde-format
 msgctxt "@action:button"
 msgid "Purge"
-msgstr "비우기"
+msgstr "깨끗이 삭제"
 
 #: calendarview.cpp:2476
 #, kde-format
@@ -2060,15 +1980,13 @@ msgid "Event Viewer"
 msgstr "이벤트 뷰어"
 
 #: dialog/koeventviewerdialog.cpp:40
-#, fuzzy, kde-format
-#| msgid "&Edit"
+#, kde-format
 msgctxt "@action:button"
 msgid "Edit…"
-msgstr "편집(&E)"
+msgstr "편집…"
 
 #: dialog/koeventviewerdialog.cpp:41
-#, fuzzy, kde-format
-#| msgid "Show in Context"
+#, kde-format
 msgctxt "@action:button"
 msgid "Show in Context"
 msgstr "콘텍스트에서 표시"
@@ -2176,11 +2094,10 @@ msgid "&Show"
 msgstr "표시(&S)"
 
 #: koeventpopupmenu.cpp:45
-#, fuzzy, kde-format
-#| msgid "&Edit"
+#, kde-format
 msgctxt "@action:inmenu"
 msgid "&Edit…"
-msgstr "편집(&E)"
+msgstr "편집(&E)…"
 
 #: koeventpopupmenu.cpp:47
 #, kde-format
@@ -2189,19 +2106,16 @@ msgid "&Delete"
 msgstr "삭제(&D)"
 
 #: koeventpopupmenu.cpp:51
-#, fuzzy, kde-format
-#| msgid "&Print"
+#, kde-format
 msgctxt "@action:inmenu"
 msgid "&Print…"
-msgstr "출력(&P)"
+msgstr "인쇄(&P)…"
 
 #: koeventpopupmenu.cpp:53
-#, fuzzy, kde-format
-#| msgctxt "@action:inmenu"
-#| msgid "Print Previe&w..."
+#, kde-format
 msgctxt "@action:inmenu"
 msgid "Print Previe&w…"
-msgstr "인쇄 미리 보기(&W)..."
+msgstr "인쇄 미리 보기(&W)…"
 
 #: koeventpopupmenu.cpp:74
 #, kde-format
@@ -2258,20 +2172,16 @@ msgid "&Toggle Reminder"
 msgstr "알림 전환(&T)"
 
 #: koeventpopupmenu.cpp:129
-#, fuzzy, kde-format
-#| msgctxt "@action:inmenu"
-#| msgid "&Dissociate From Recurrence..."
+#, kde-format
 msgctxt "@action:inmenu"
 msgid "&Dissociate From Recurrence…"
-msgstr "반복에서 분리(&D)..."
+msgstr "반복에서 분리(&D)…"
 
 #: koeventpopupmenu.cpp:137
-#, fuzzy, kde-format
-#| msgctxt "@action:inmenu"
-#| msgid "Send as iCalendar..."
+#, kde-format
 msgctxt "@action:inmenu"
 msgid "Send as iCalendar…"
-msgstr "iCalendar로 전송..."
+msgstr "iCalendar로 전송…"
 
 #: koeventpopupmenu.cpp:187
 #, kde-format
@@ -2502,10 +2412,9 @@ msgid_plural "No upcoming events starting within the next %1 days"
 msgstr[0] "%1일 내에 시작하는 이벤트 없음"
 
 #: kontactplugin/korganizer/apptsummarywidget.cpp:240
-#, fuzzy, kde-format
-#| msgid "&Edit Appointment..."
+#, kde-format
 msgid "&Edit Appointment…"
-msgstr "약속 편집(&E)..."
+msgstr "약속 편집(&E)…"
 
 #: kontactplugin/korganizer/apptsummarywidget.cpp:242
 #, kde-format
@@ -2518,12 +2427,10 @@ msgid "Edit Event: \"%1\""
 msgstr "이벤트 편집: \"%1\""
 
 #: kontactplugin/korganizer/journalplugin.cpp:28
-#, fuzzy, kde-format
-#| msgctxt "@action:inmenu"
-#| msgid "New Journal..."
+#, kde-format
 msgctxt "@action:inmenu"
 msgid "New Journal…"
-msgstr "새 저널..."
+msgstr "새 저널…"
 
 #: kontactplugin/korganizer/journalplugin.cpp:31
 #, kde-format
@@ -2547,12 +2454,10 @@ msgid_plural " days"
 msgstr[0] "일"
 
 #: kontactplugin/korganizer/korganizerplugin.cpp:44
-#, fuzzy, kde-format
-#| msgctxt "@action:inmenu"
-#| msgid "New Event..."
+#, kde-format
 msgctxt "@action:inmenu"
 msgid "New Event…"
-msgstr "새 이벤트..."
+msgstr "새 이벤트…"
 
 #: kontactplugin/korganizer/korganizerplugin.cpp:47
 #, kde-format
@@ -2659,12 +2564,10 @@ msgid "Next: %1"
 msgstr "다음: %1"
 
 #: kontactplugin/korganizer/todoplugin.cpp:40
-#, fuzzy, kde-format
-#| msgctxt "@action:inmenu"
-#| msgid "New To-do..."
+#, kde-format
 msgctxt "@action:inmenu"
 msgid "New To-do…"
-msgstr "새 할 일..."
+msgstr "새 할 일…"
 
 #: kontactplugin/korganizer/todoplugin.cpp:43
 #, kde-format
@@ -3265,8 +3168,7 @@ msgid "Current Maintainer"
 msgstr "현재 관리자"
 
 #: kontactplugin/specialdates/specialdates_plugin.cpp:43
-#, fuzzy, kde-format
-#| msgid "Tobias Koenig"
+#, kde-format
 msgctxt "@info:credit"
 msgid "Tobias Koenig"
 msgstr "Tobias Koenig"
@@ -3288,31 +3190,25 @@ msgid "Calendar"
 msgstr "캘린더"
 
 #: korganizer_options.h:18
-#, fuzzy, kde-format
-#| msgid "Import the specified files as separate calendars"
+#, kde-format
 msgctxt "@info:shell"
 msgid "Import the specified files as separate calendars"
 msgstr "지정한 파일을 개별 캘린더로 가져오기"
 
 #: korganizer_options.h:20
-#, fuzzy, kde-format
-#| msgid "Merge the specified files into an existing calendar"
+#, kde-format
 msgctxt "@info:shell"
 msgid "Merge the specified files into an existing calendar"
 msgstr "지정한 파일을 기존 캘린더에 합치기"
 
 #: korganizer_options.h:21
-#, fuzzy, kde-format
-#| msgid "Display the specified incidence (by URL)"
+#, kde-format
 msgctxt "@info:shell"
 msgid "Display the specified incidence (by URL)"
 msgstr "지정한 항목 표시(URL로)"
 
 #: korganizer_options.h:25
-#, fuzzy, kde-format
-#| msgid ""
-#| "Calendar files or urls. Unless -i or -m is explicitly specified, the user "
-#| "will be asked whether to import or merge"
+#, kde-format
 msgctxt "@info:shell"
 msgid ""
 "Calendar files or urls. Unless -i or -m is explicitly specified, the user "
@@ -3322,8 +3218,7 @@ msgstr ""
 "게 가져오거나 합칠지 여부를 물어봅니다."
 
 #: korganizer_options.h:29
-#, fuzzy, kde-format
-#| msgid "Lists the available options for user feedback"
+#, kde-format
 msgctxt "@info:shell"
 msgid "Lists the available options for user feedback"
 msgstr "사용자 피드백 옵션을 표시합니다"
@@ -3684,11 +3579,10 @@ msgid "Other Options"
 msgstr "기타 옵션"
 
 #: prefs/kprefsdialog.cpp:234
-#, fuzzy, kde-format
-#| msgid "Choose..."
+#, kde-format
 msgctxt "@action:button"
 msgid "Choose…"
-msgstr "선택..."
+msgstr "선택…"
 
 #: prefs/kprefsdialog.cpp:765
 #, kde-format
@@ -3710,8 +3604,7 @@ msgid "Setting Default Preferences"
 msgstr "기본 설정 변경"
 
 #: prefs/kprefsdialog.cpp:870
-#, fuzzy, kde-format
-#| msgid "Reset to Defaults"
+#, kde-format
 msgctxt "@action:button"
 msgid "Reset to Defaults"
 msgstr "기본값 복원"
@@ -4979,10 +4872,9 @@ msgstr "선택한 항목만 표시"
 
 #. i18n: ectx: property (text), widget (QPushButton, mCatEditButton)
 #: ui/filteredit_base.ui:301
-#, fuzzy, kde-format
-#| msgid "Change..."
+#, kde-format
 msgid "Change…"
-msgstr "바꾸기..."
+msgstr "바꾸기…"
 
 #. i18n: ectx: property (whatsThis), widget (QCheckBox, mHideTodosNotAssignedToMeCheck)
 #: ui/filteredit_base.ui:315
@@ -5705,8 +5597,7 @@ msgid "%1/%2"
 msgstr "%1/%2"
 
 #: widgets/kdatenavigator.cpp:174
-#, fuzzy, kde-format
-#| msgid "Scroll to week number %1"
+#, kde-format
 msgctxt "@info:tooltip"
 msgid "Scroll to week number %1"
 msgstr "제%1주로 스크롤"
@@ -5719,8 +5610,7 @@ msgid ""
 msgstr "여기를 클릭하면 현재 연도의 제%1주로 스크롤합니다."
 
 #: widgets/kdatenavigator.cpp:222
-#, fuzzy, kde-format
-#| msgid "%1"
+#, kde-format
 msgctxt "@info:tooltip"
 msgid "%1"
 msgstr "%1"
@@ -5835,15 +5725,13 @@ msgid ""
 msgstr "이 단추를 클릭하면 내년의 동등한 날짜로 스크롤합니다"
 
 #: widgets/navigatorbar.cpp:54
-#, fuzzy, kde-format
-#| msgid "Select a month"
+#, kde-format
 msgctxt "@info:tooltip"
 msgid "Select a month"
 msgstr "달 선택"
 
 #: widgets/navigatorbar.cpp:60
-#, fuzzy, kde-format
-#| msgid "Select a year"
+#, kde-format
 msgctxt "@info:tooltip"
 msgid "Select a year"
 msgstr "연도 선택"
