@@ -218,7 +218,6 @@ private:
 
 AkonadiCollectionViewFactory::AkonadiCollectionViewFactory(CalendarView *view)
     : mView(view)
-    , mAkonadiCollectionView(nullptr)
 {
 }
 
