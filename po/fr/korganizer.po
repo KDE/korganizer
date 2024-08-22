@@ -25,7 +25,7 @@ msgstr ""
 "Project-Id-Version: korganizer\n"
 "Report-Msgid-Bugs-To: https://bugs.kde.org\n"
 "POT-Creation-Date: 2024-06-30 00:39+0000\n"
-"PO-Revision-Date: 2024-06-20 18:30+0200\n"
+"PO-Revision-Date: 2024-08-16 14:07+0200\n"
 "Last-Translator: Xavier Besnard <xavier.besnard@kde.org>\n"
 "Language-Team: French <French <kde-francophone@kde.org>>\n"
 "Language: fr\n"
@@ -1632,7 +1632,7 @@ msgstr "La dissociation de l'évènement a échoué."
 #: calendarview.cpp:1818
 #, kde-format
 msgid "iCalendars (*.ics)"
-msgstr "iCalendars (*.ics)"
+msgstr "iCalendar (*.ics)"
 
 #: calendarview.cpp:1827
 #, kde-format
@@ -1655,7 +1655,7 @@ msgstr "Raison inconnue"
 #, kde-format
 msgctxt "@info"
 msgid "Cannot write iCalendar file %1. %2"
-msgstr "Impossible d'écrire le fichier iCalendar %1. %2"
+msgstr "Impossible d'écrire le fichier « iCalendar » %1. %2"
 
 #: calendarview.cpp:1945 calendarview.cpp:1990
 #, kde-format
