@@ -306,7 +306,6 @@ public:
     explicit CollectionFilter(QObject *parent = nullptr)
         : QSortFilterProxyModel(parent)
     {
-        setDynamicSortFilter(true);
     }
 
 protected:
@@ -412,7 +411,6 @@ AkonadiCollectionView::AkonadiCollectionView(CalendarView *view, bool hasContext
 
     auto colorProxy = new ColorProxyModel(this);
     colorProxy->setObjectName(QLatin1StringView("Show calendar colors"));
-    colorProxy->setDynamicSortFilter(true);
     mBaseModel = colorProxy;
 
     auto calendarDelegateModel = new CalendarDelegateModel(this);
@@ -430,7 +428,6 @@ AkonadiCollectionView::AkonadiCollectionView(CalendarView *view, bool hasContext
     auto filterTreeViewModel = new QSortFilterProxyModel(this);
     filterTreeViewModel->setFilterCaseSensitivity(Qt::CaseInsensitive);
     filterTreeViewModel->setRecursiveFilteringEnabled(true);
-    filterTreeViewModel->setDynamicSortFilter(true);
     filterTreeViewModel->setSourceModel(searchProxy);
     connect(searchCol, &QLineEdit::textChanged, filterTreeViewModel, &QSortFilterProxyModel::setFilterWildcard);
 

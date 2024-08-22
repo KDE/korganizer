@@ -433,7 +433,6 @@ void MultiAgendaViewConfigDialogPrivate::setUpColumns(int n)
             listModel.appendRow(item);
 
             auto sortProxy = new QSortFilterProxyModel;
-            sortProxy->setDynamicSortFilter(true);
             sortProxy->setSourceModel(baseModel);
             sortProxy->setObjectName(QStringLiteral("MultiAgendaColumnSetupProxyModel-%1").arg(i));
 
