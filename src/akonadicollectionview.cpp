@@ -426,6 +426,7 @@ AkonadiCollectionView::AkonadiCollectionView(CalendarView *view, bool hasContext
     searchProxy->setObjectName(QLatin1StringView("searchProxy"));
 
     auto filterTreeViewModel = new QSortFilterProxyModel(this);
+    // TODO add activities support
     filterTreeViewModel->setFilterCaseSensitivity(Qt::CaseInsensitive);
     filterTreeViewModel->setRecursiveFilteringEnabled(true);
     filterTreeViewModel->setSourceModel(searchProxy);
