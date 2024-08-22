@@ -14,3 +14,5 @@ CollectionSortFilterProxyModel::CollectionSortFilterProxyModel(QObject *parent)
 }
 
 CollectionSortFilterProxyModel::~CollectionSortFilterProxyModel() = default;
+
+#include "moc_collectionsortfilterproxymodel.cpp"
