@@ -11,6 +11,7 @@
 */
 
 #include "akonadicollectionview.h"
+#include "collectionsortfilterproxymodel.h"
 #include "kocore.h"
 #include "koglobals.h"
 #include "kohelper.h"
@@ -425,7 +426,7 @@ AkonadiCollectionView::AkonadiCollectionView(CalendarView *view, bool hasContext
     searchProxy->setSourceModel(collectionFilter);
     searchProxy->setObjectName(QLatin1StringView("searchProxy"));
 
-    auto filterTreeViewModel = new QSortFilterProxyModel(this);
+    auto filterTreeViewModel = new CollectionSortFilterProxyModel(this);
     // TODO add activities support
     filterTreeViewModel->setFilterCaseSensitivity(Qt::CaseInsensitive);
     filterTreeViewModel->setRecursiveFilteringEnabled(true);
