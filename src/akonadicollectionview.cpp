@@ -12,6 +12,7 @@
 
 #include "akonadicollectionview.h"
 #include "collectionsortfilterproxymodel.h"
+#include "config-korganizer.h"
 #include "kocore.h"
 #include "koglobals.h"
 #include "kohelper.h"
@@ -54,7 +55,10 @@
 #include <QLineEdit>
 #include <QStackedWidget>
 #include <QVBoxLayout>
-
+#if HAVE_ACTIVITY_SUPPORT
+#include "activities/accountactivities.h"
+#include "activities/activitiesmanager.h"
+#endif
 static Akonadi::EntityTreeModel *findEtm(QAbstractItemModel *model)
 {
     QAbstractProxyModel *proxyModel = nullptr;
@@ -427,6 +431,9 @@ AkonadiCollectionView::AkonadiCollectionView(CalendarView *view, bool hasContext
     searchProxy->setObjectName(QLatin1StringView("searchProxy"));
 
     auto filterTreeViewModel = new CollectionSortFilterProxyModel(this);
+#if HAVE_ACTIVITY_SUPPORT
+    filterTreeViewModel->setAccountActivities(ActivitiesManager::self()->accountActivities());
+#endif
     // TODO add activities support
     filterTreeViewModel->setFilterCaseSensitivity(Qt::CaseInsensitive);
     filterTreeViewModel->setRecursiveFilteringEnabled(true);
