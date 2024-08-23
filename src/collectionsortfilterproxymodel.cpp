@@ -23,8 +23,8 @@ bool CollectionSortFilterProxyModel::filterAcceptsRow(int source_row, const QMod
 {
     if (mAccountActivities) {
         const QModelIndex modelIndex = sourceModel()->index(source_row, 0, source_parent);
+        Q_ASSERT(modelIndex.isValid());
 
-        // TODO verify
         const auto collection = sourceModel()->data(modelIndex, Akonadi::EntityTreeModel::CollectionRole).value<Akonadi::Collection>();
         const Akonadi::AgentInstance instance = Akonadi::AgentManager::self()->instance(collection.resource());
         if (instance.activitiesEnabled()) {
