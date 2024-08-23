@@ -41,9 +41,9 @@ public:
     [[nodiscard]] QPushButton *editButton() const;
 
 private:
-    void editIncidence();
-    void showIncidenceContext();
-    void delayedDestruct();
+    KORGANIZERPRIVATE_NO_EXPORT void editIncidence();
+    KORGANIZERPRIVATE_NO_EXPORT void showIncidenceContext();
+    KORGANIZERPRIVATE_NO_EXPORT void delayedDestruct();
     CalendarSupport::IncidenceViewer *mEventViewer = nullptr;
     QPushButton *const mUser1Button;
 };

@@ -293,14 +293,14 @@ private Q_SLOTS:
 
 private:
     class ActionStringsVisitor;
-    void restoreCollectionViewSetting();
+    KORGANIZERPRIVATE_NO_EXPORT void restoreCollectionViewSetting();
     /** Create all the actions. */
-    void initActions();
-    void enableIncidenceActions(bool enable);
-    void updateHamburgerMenu();
-    Akonadi::ETMCalendar::Ptr calendar() const;
+    KORGANIZERPRIVATE_NO_EXPORT void initActions();
+    KORGANIZERPRIVATE_NO_EXPORT void enableIncidenceActions(bool enable);
+    KORGANIZERPRIVATE_NO_EXPORT void updateHamburgerMenu();
+    KORGANIZERPRIVATE_NO_EXPORT Akonadi::ETMCalendar::Ptr calendar() const;
 
-    Akonadi::Collection selectedCollection() const;
+    KORGANIZERPRIVATE_NO_EXPORT Akonadi::Collection selectedCollection() const;
 
     QUrl mURL; // URL of calendar file
     QString mFile; // Local name of calendar file

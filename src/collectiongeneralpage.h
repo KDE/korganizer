@@ -32,7 +32,7 @@ public:
     void save(Akonadi::Collection &collection) override;
 
 private:
-    void init(const Akonadi::Collection &collection);
+    KORGANIZERPRIVATE_NO_EXPORT void init(const Akonadi::Collection &collection);
     QCheckBox *mBlockAlarmsCheckBox = nullptr;
     QLineEdit *mNameEdit = nullptr;
     QCheckBox *mIconCheckBox = nullptr;
