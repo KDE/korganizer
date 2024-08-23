@@ -17,7 +17,7 @@ msgid ""
 msgstr ""
 "Project-Id-Version: korganizer\n"
 "Report-Msgid-Bugs-To: https://bugs.kde.org\n"
-"POT-Creation-Date: 2024-08-14 00:40+0000\n"
+"POT-Creation-Date: 2024-08-23 00:40+0000\n"
 "PO-Revision-Date: 2024-06-20 21:45+0530\n"
 "Last-Translator: Kishore G <kishore96@gmail.com>\n"
 "Language-Team: Tamil <kde-i18n-doc@kde.org>\n"
@@ -1279,73 +1279,73 @@ msgctxt "@item this is the default calendar"
 msgid "%1 (Default)"
 msgstr "%1 (இயல்பிருப்பு)"
 
-#: akonadicollectionview.cpp:405
+#: akonadicollectionview.cpp:404
 #, kde-format
 msgctxt "@info:tooltip"
 msgid "Set search keyword"
 msgstr "தேடுவதற்கான சொல்லை அமை"
 
-#: akonadicollectionview.cpp:406
+#: akonadicollectionview.cpp:405
 #, kde-format
 msgctxt "@info:whatsthis"
 msgid "Lets you search for a keyword in your calendars"
 msgstr "உங்கள் நாள்காட்டிகளில் ஓர் சொல்லைத் தேட விடும்"
 
-#: akonadicollectionview.cpp:411
+#: akonadicollectionview.cpp:410
 #, kde-format
 msgctxt "@info/plain Displayed grayed-out inside the textbox, verb to search"
 msgid "Search…"
 msgstr "தேடு…"
 
-#: akonadicollectionview.cpp:495 manageshowcollectionproperties.cpp:76
+#: akonadicollectionview.cpp:493 manageshowcollectionproperties.cpp:76
 #, kde-format
 msgctxt "@title:window"
 msgid "Properties of Calendar Folder %1"
 msgstr "%1 நாள்காட்டி அடைவின் பண்புகள்"
 
-#: akonadicollectionview.cpp:507
+#: akonadicollectionview.cpp:505
 #, kde-format
 msgctxt "@action:inmenu"
 msgid "&Set Folder Color…"
 msgstr "&அடைவின் நிறத்தை அமை…"
 
-#: akonadicollectionview.cpp:513
+#: akonadicollectionview.cpp:511
 #, kde-format
 msgctxt "@action:inmenu"
 msgid "Set as &Default Folder"
 msgstr "&இயல்பிருப்பு அடைவாக அமை"
 
-#: akonadicollectionview.cpp:518
+#: akonadicollectionview.cpp:516
 #, kde-format
 msgctxt "@action:inmenu"
 msgid "Serverside Subscription…"
 msgstr ""
 
-#: akonadicollectionview.cpp:563
+#: akonadicollectionview.cpp:561
 #, kde-format
 msgctxt "@info"
 msgid "Do you really want replace your current default calendar with \"%1\"?"
 msgstr "தற்போதையதற்கு பதிலாக \"%1\" தனை உங்கள் இயல்பிருப்பு நாள்காட்டியாக அமைக்கலாமா?"
 
-#: akonadicollectionview.cpp:564
+#: akonadicollectionview.cpp:562
 #, kde-format
 msgctxt "@title:window"
 msgid "Replace Default Calendar?"
 msgstr "இயல்பிருப்பு நாள்காட்டியாக இதை அமைக்கலாமா?"
 
-#: akonadicollectionview.cpp:701
+#: akonadicollectionview.cpp:699
 #, kde-format
 msgctxt "@title:window"
 msgid "Add Calendar"
 msgstr "நாள்காட்டியை சேர்ப்பது"
 
-#: akonadicollectionview.cpp:743
+#: akonadicollectionview.cpp:741
 #, kde-format
 msgctxt "@info"
 msgid "Do you really want to delete calendar %1?"
 msgstr "%1 எனும் நாள்காட்டியை உறுதியாக நீக்க வேண்டுமா?"
 
-#: akonadicollectionview.cpp:744
+#: akonadicollectionview.cpp:742
 #, kde-format
 msgctxt "@title:window"
 msgid "Delete Calendar"

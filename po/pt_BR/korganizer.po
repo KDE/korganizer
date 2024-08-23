@@ -17,7 +17,7 @@ msgid ""
 msgstr ""
 "Project-Id-Version: korganizer\n"
 "Report-Msgid-Bugs-To: https://bugs.kde.org\n"
-"POT-Creation-Date: 2024-08-14 00:40+0000\n"
+"POT-Creation-Date: 2024-08-23 00:40+0000\n"
 "PO-Revision-Date: 2024-01-11 20:40-0300\n"
 "Last-Translator: Luiz Fernando Ranghetti <elchevive@opensuse.org>\n"
 "Language-Team: Brazilian Portuguese <kde-i18n-pt_BR@kde.org>\n"
@@ -1392,19 +1392,19 @@ msgctxt "@item this is the default calendar"
 msgid "%1 (Default)"
 msgstr "%1 (padrão)"
 
-#: akonadicollectionview.cpp:405
+#: akonadicollectionview.cpp:404
 #, kde-format
 msgctxt "@info:tooltip"
 msgid "Set search keyword"
 msgstr "Definir a palavra-chave da pesquisa"
 
-#: akonadicollectionview.cpp:406
+#: akonadicollectionview.cpp:405
 #, kde-format
 msgctxt "@info:whatsthis"
 msgid "Lets you search for a keyword in your calendars"
 msgstr "Permite a você pesquisar por uma palavra-chave em seus calendários"
 
-#: akonadicollectionview.cpp:411
+#: akonadicollectionview.cpp:410
 #, fuzzy, kde-format
 #| msgctxt "Displayed grayed-out inside the textbox, verb to search"
 #| msgid "Search"
@@ -1412,13 +1412,13 @@ msgctxt "@info/plain Displayed grayed-out inside the textbox, verb to search"
 msgid "Search…"
 msgstr "Pesquisar"
 
-#: akonadicollectionview.cpp:495 manageshowcollectionproperties.cpp:76
+#: akonadicollectionview.cpp:493 manageshowcollectionproperties.cpp:76
 #, kde-format
 msgctxt "@title:window"
 msgid "Properties of Calendar Folder %1"
 msgstr "Propriedades da pasta de calendários %1"
 
-#: akonadicollectionview.cpp:507
+#: akonadicollectionview.cpp:505
 #, fuzzy, kde-format
 #| msgctxt "@action:inmenu"
 #| msgid "&Set Folder Color..."
@@ -1426,13 +1426,13 @@ msgctxt "@action:inmenu"
 msgid "&Set Folder Color…"
 msgstr "&Definir cor da pasta..."
 
-#: akonadicollectionview.cpp:513
+#: akonadicollectionview.cpp:511
 #, kde-format
 msgctxt "@action:inmenu"
 msgid "Set as &Default Folder"
 msgstr "Definir como pasta pa&drão"
 
-#: akonadicollectionview.cpp:518
+#: akonadicollectionview.cpp:516
 #, fuzzy, kde-format
 #| msgctxt "@action:inmenu"
 #| msgid "Serverside Subscription..."
@@ -1440,32 +1440,32 @@ msgctxt "@action:inmenu"
 msgid "Serverside Subscription…"
 msgstr "Inscrição no servidor..."
 
-#: akonadicollectionview.cpp:563
+#: akonadicollectionview.cpp:561
 #, kde-format
 msgctxt "@info"
 msgid "Do you really want replace your current default calendar with \"%1\"?"
 msgstr ""
 "Deseja realmente substituir seu calendário padrão atualmente por \"%1\"?"
 
-#: akonadicollectionview.cpp:564
+#: akonadicollectionview.cpp:562
 #, kde-format
 msgctxt "@title:window"
 msgid "Replace Default Calendar?"
 msgstr "Substituir calendário padrão?"
 
-#: akonadicollectionview.cpp:701
+#: akonadicollectionview.cpp:699
 #, kde-format
 msgctxt "@title:window"
 msgid "Add Calendar"
 msgstr "Adicionar calendário"
 
-#: akonadicollectionview.cpp:743
+#: akonadicollectionview.cpp:741
 #, kde-format
 msgctxt "@info"
 msgid "Do you really want to delete calendar %1?"
 msgstr "Deseja realmente excluir o calendário %1?"
 
-#: akonadicollectionview.cpp:744
+#: akonadicollectionview.cpp:742
 #, kde-format
 msgctxt "@title:window"
 msgid "Delete Calendar"

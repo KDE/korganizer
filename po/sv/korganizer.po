@@ -10,7 +10,7 @@ msgid ""
 msgstr ""
 "Project-Id-Version: korganizer\n"
 "Report-Msgid-Bugs-To: https://bugs.kde.org\n"
-"POT-Creation-Date: 2024-08-14 00:40+0000\n"
+"POT-Creation-Date: 2024-08-23 00:40+0000\n"
 "PO-Revision-Date: 2024-08-02 08:00+0200\n"
 "Last-Translator: Stefan Asserhäll <stefan.asserhall@gmail.com>\n"
 "Language-Team: Swedish <kde-i18n-doc@kde.org>\n"
@@ -1306,73 +1306,73 @@ msgctxt "@item this is the default calendar"
 msgid "%1 (Default)"
 msgstr "%1 (standard)"
 
-#: akonadicollectionview.cpp:405
+#: akonadicollectionview.cpp:404
 #, kde-format
 msgctxt "@info:tooltip"
 msgid "Set search keyword"
 msgstr "Ange söknyckelord"
 
-#: akonadicollectionview.cpp:406
+#: akonadicollectionview.cpp:405
 #, kde-format
 msgctxt "@info:whatsthis"
 msgid "Lets you search for a keyword in your calendars"
 msgstr "Låter dig söka efter ett nyckelord i dina kalendrar"
 
-#: akonadicollectionview.cpp:411
+#: akonadicollectionview.cpp:410
 #, kde-format
 msgctxt "@info/plain Displayed grayed-out inside the textbox, verb to search"
 msgid "Search…"
 msgstr "Sök…"
 
-#: akonadicollectionview.cpp:495 manageshowcollectionproperties.cpp:76
+#: akonadicollectionview.cpp:493 manageshowcollectionproperties.cpp:76
 #, kde-format
 msgctxt "@title:window"
 msgid "Properties of Calendar Folder %1"
 msgstr "Egenskaper för kalenderkatalog %1"
 
-#: akonadicollectionview.cpp:507
+#: akonadicollectionview.cpp:505
 #, kde-format
 msgctxt "@action:inmenu"
 msgid "&Set Folder Color…"
 msgstr "&Ange katalogfärg…"
 
-#: akonadicollectionview.cpp:513
+#: akonadicollectionview.cpp:511
 #, kde-format
 msgctxt "@action:inmenu"
 msgid "Set as &Default Folder"
 msgstr "Använd som stan&dardkatalog"
 
-#: akonadicollectionview.cpp:518
+#: akonadicollectionview.cpp:516
 #, kde-format
 msgctxt "@action:inmenu"
 msgid "Serverside Subscription…"
 msgstr "Prenumeration på serversidan…"
 
-#: akonadicollectionview.cpp:563
+#: akonadicollectionview.cpp:561
 #, kde-format
 msgctxt "@info"
 msgid "Do you really want replace your current default calendar with \"%1\"?"
 msgstr "Vill du verkligen ersätta den nuvarande standardkalendern med \"%1\"?"
 
-#: akonadicollectionview.cpp:564
+#: akonadicollectionview.cpp:562
 #, kde-format
 msgctxt "@title:window"
 msgid "Replace Default Calendar?"
 msgstr "Ersätt standardkalender?"
 
-#: akonadicollectionview.cpp:701
+#: akonadicollectionview.cpp:699
 #, kde-format
 msgctxt "@title:window"
 msgid "Add Calendar"
 msgstr "Lägg till kalender"
 
-#: akonadicollectionview.cpp:743
+#: akonadicollectionview.cpp:741
 #, kde-format
 msgctxt "@info"
 msgid "Do you really want to delete calendar %1?"
 msgstr "Vill du verkligen ta bort kalendern <b>%1</b>?"
 
-#: akonadicollectionview.cpp:744
+#: akonadicollectionview.cpp:742
 #, kde-format
 msgctxt "@title:window"
 msgid "Delete Calendar"

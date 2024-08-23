@@ -7,7 +7,7 @@ msgid ""
 msgstr ""
 "Project-Id-Version: korganizer\n"
 "Report-Msgid-Bugs-To: https://bugs.kde.org\n"
-"POT-Creation-Date: 2024-08-14 00:40+0000\n"
+"POT-Creation-Date: 2024-08-23 00:40+0000\n"
 "PO-Revision-Date: 2006-12-17 13:34+0000\n"
 "Last-Translator: Mashrab Kuvatov <kmashrab@uni-bremen.de>\n"
 "Language-Team: Uzbek <floss-uz-l10n@googlegroups.com>\n"
@@ -1323,79 +1323,79 @@ msgctxt "@item this is the default calendar"
 msgid "%1 (Default)"
 msgstr "Андоза &календар сифатида фойдаланиш"
 
-#: akonadicollectionview.cpp:405
+#: akonadicollectionview.cpp:404
 #, kde-format
 msgctxt "@info:tooltip"
 msgid "Set search keyword"
 msgstr ""
 
-#: akonadicollectionview.cpp:406
+#: akonadicollectionview.cpp:405
 #, kde-format
 msgctxt "@info:whatsthis"
 msgid "Lets you search for a keyword in your calendars"
 msgstr ""
 
-#: akonadicollectionview.cpp:411
+#: akonadicollectionview.cpp:410
 #, fuzzy, kde-format
 msgctxt "@info/plain Displayed grayed-out inside the textbox, verb to search"
 msgid "Search…"
 msgstr "&Боши:"
 
-#: akonadicollectionview.cpp:495 manageshowcollectionproperties.cpp:76
+#: akonadicollectionview.cpp:493 manageshowcollectionproperties.cpp:76
 #, fuzzy, kde-format
 #| msgid "Edit Calendar Filters"
 msgctxt "@title:window"
 msgid "Properties of Calendar Folder %1"
 msgstr "Календар филтерларини таҳрирлаш"
 
-#: akonadicollectionview.cpp:507
+#: akonadicollectionview.cpp:505
 #, kde-format
 msgctxt "@action:inmenu"
 msgid "&Set Folder Color…"
 msgstr ""
 
-#: akonadicollectionview.cpp:513
+#: akonadicollectionview.cpp:511
 #, fuzzy, kde-format
 #| msgid "Use as &Default Calendar"
 msgctxt "@action:inmenu"
 msgid "Set as &Default Folder"
 msgstr "Андоза &календар сифатида фойдаланиш"
 
-#: akonadicollectionview.cpp:518
+#: akonadicollectionview.cpp:516
 #, kde-format
 msgctxt "@action:inmenu"
 msgid "Serverside Subscription…"
 msgstr ""
 
-#: akonadicollectionview.cpp:563
+#: akonadicollectionview.cpp:561
 #, fuzzy, kde-format
 #| msgid "Could not load calendar '%1'."
 msgctxt "@info"
 msgid "Do you really want replace your current default calendar with \"%1\"?"
 msgstr "'%1' календарини юклаб бўлмади."
 
-#: akonadicollectionview.cpp:564
+#: akonadicollectionview.cpp:562
 #, fuzzy, kde-format
 #| msgid "Use as &Default Calendar"
 msgctxt "@title:window"
 msgid "Replace Default Calendar?"
 msgstr "Андоза &календар сифатида фойдаланиш"
 
-#: akonadicollectionview.cpp:701
+#: akonadicollectionview.cpp:699
 #, fuzzy, kde-format
 #| msgid "Add as new calendar"
 msgctxt "@title:window"
 msgid "Add Calendar"
 msgstr "Янги календар сифатида қўшиш"
 
-#: akonadicollectionview.cpp:743
+#: akonadicollectionview.cpp:741
 #, fuzzy, kde-format
 #| msgid "Could not load calendar '%1'."
 msgctxt "@info"
 msgid "Do you really want to delete calendar %1?"
 msgstr "'%1' календарини юклаб бўлмади."
 
-#: akonadicollectionview.cpp:744
+#: akonadicollectionview.cpp:742
 #, fuzzy, kde-format
 #| msgid "Default Calendar"
 msgctxt "@title:window"

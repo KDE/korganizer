@@ -19,7 +19,7 @@ msgid ""
 msgstr ""
 "Project-Id-Version: korganizer\n"
 "Report-Msgid-Bugs-To: https://bugs.kde.org\n"
-"POT-Creation-Date: 2024-08-14 00:40+0000\n"
+"POT-Creation-Date: 2024-08-23 00:40+0000\n"
 "PO-Revision-Date: 2007-03-28 20:53+0200\n"
 "Last-Translator: Rinse de Vries <rinsedevries@kde.nl>\n"
 "Language-Team: Frysk <kde-i18n-fry@kde.org>\n"
@@ -1377,81 +1377,81 @@ msgctxt "@item this is the default calendar"
 msgid "%1 (Default)"
 msgstr "As stan&dert aginda brûke"
 
-#: akonadicollectionview.cpp:405
+#: akonadicollectionview.cpp:404
 #, fuzzy, kde-format
 #| msgid "Search For"
 msgctxt "@info:tooltip"
 msgid "Set search keyword"
 msgstr "Sykje nei"
 
-#: akonadicollectionview.cpp:406
+#: akonadicollectionview.cpp:405
 #, kde-format
 msgctxt "@info:whatsthis"
 msgid "Lets you search for a keyword in your calendars"
 msgstr ""
 
-#: akonadicollectionview.cpp:411
+#: akonadicollectionview.cpp:410
 #, fuzzy, kde-format
 #| msgid "Search In"
 msgctxt "@info/plain Displayed grayed-out inside the textbox, verb to search"
 msgid "Search…"
 msgstr "Sykje yn"
 
-#: akonadicollectionview.cpp:495 manageshowcollectionproperties.cpp:76
+#: akonadicollectionview.cpp:493 manageshowcollectionproperties.cpp:76
 #, fuzzy, kde-format
 #| msgid "Edit Calendar Filters"
 msgctxt "@title:window"
 msgid "Properties of Calendar Folder %1"
 msgstr "Agindafilters bewurkje"
 
-#: akonadicollectionview.cpp:507
+#: akonadicollectionview.cpp:505
 #, kde-format
 msgctxt "@action:inmenu"
 msgid "&Set Folder Color…"
 msgstr ""
 
-#: akonadicollectionview.cpp:513
+#: akonadicollectionview.cpp:511
 #, fuzzy, kde-format
 #| msgid "Use as &Default Calendar"
 msgctxt "@action:inmenu"
 msgid "Set as &Default Folder"
 msgstr "As stan&dert aginda brûke"
 
-#: akonadicollectionview.cpp:518
+#: akonadicollectionview.cpp:516
 #, kde-format
 msgctxt "@action:inmenu"
 msgid "Serverside Subscription…"
 msgstr ""
 
-#: akonadicollectionview.cpp:563
+#: akonadicollectionview.cpp:561
 #, fuzzy, kde-format
 #| msgid "<qt>Do you really want to delete the resource <b>%1</b>?</qt>"
 msgctxt "@info"
 msgid "Do you really want replace your current default calendar with \"%1\"?"
 msgstr "<qt>Wolle jo werklik de gegevensboarne <b>%1</b> wiskje?</qt>"
 
-#: akonadicollectionview.cpp:564
+#: akonadicollectionview.cpp:562
 #, fuzzy, kde-format
 #| msgid "Use as &Default Calendar"
 msgctxt "@title:window"
 msgid "Replace Default Calendar?"
 msgstr "As stan&dert aginda brûke"
 
-#: akonadicollectionview.cpp:701
+#: akonadicollectionview.cpp:699
 #, fuzzy, kde-format
 #| msgid "Add as new calendar"
 msgctxt "@title:window"
 msgid "Add Calendar"
 msgstr "Taheakje as nije agenda"
 
-#: akonadicollectionview.cpp:743
+#: akonadicollectionview.cpp:741
 #, fuzzy, kde-format
 #| msgid "<qt>Do you really want to delete the resource <b>%1</b>?</qt>"
 msgctxt "@info"
 msgid "Do you really want to delete calendar %1?"
 msgstr "<qt>Wolle jo werklik de gegevensboarne <b>%1</b> wiskje?</qt>"
 
-#: akonadicollectionview.cpp:744
+#: akonadicollectionview.cpp:742
 #, fuzzy, kde-format
 #| msgid "Default Calendar"
 msgctxt "@title:window"
