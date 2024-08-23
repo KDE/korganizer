@@ -47,7 +47,7 @@ public:
     explicit KODialogManager(CalendarView *);
     ~KODialogManager() override;
 
-    IncidenceEditorNG::IncidenceDialog *createDialog(const Akonadi::Item &item);
+    [[nodiscard]] IncidenceEditorNG::IncidenceDialog *createDialog(const Akonadi::Item &item);
 
     void updateSearchDialog();
 

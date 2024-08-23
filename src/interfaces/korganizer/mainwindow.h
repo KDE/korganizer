@@ -83,7 +83,7 @@ public:
     virtual void setTitle() = 0;
 
     void setHasDocument(bool d);
-    bool hasDocument() const;
+    [[nodiscard]] bool hasDocument() const;
 
 private:
     bool mDocument = true;
