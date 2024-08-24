@@ -8,7 +8,7 @@ msgid ""
 msgstr ""
 "Project-Id-Version: korganizer\n"
 "Report-Msgid-Bugs-To: https://bugs.kde.org\n"
-"POT-Creation-Date: 2024-08-23 00:40+0000\n"
+"POT-Creation-Date: 2024-08-24 00:40+0000\n"
 "PO-Revision-Date: 2020-05-11 16:37+0300\n"
 "Last-Translator: Marek Laane <qiilaq69@gmail.com>\n"
 "Language-Team: Estonian <kde-et@lists.linux.ee>\n"
@@ -1381,7 +1381,7 @@ msgctxt "@action:button"
 msgid "Add as new calendar"
 msgstr "Lisa uue kalendrina"
 
-#: akonadicollectionview.cpp:285
+#: akonadicollectionview.cpp:289
 #, fuzzy, kde-format
 #| msgctxt "@action:inmenu lowest priority"
 #| msgid "%1 (lowest)"
@@ -1389,25 +1389,25 @@ msgctxt "@item this is the default calendar"
 msgid "%1 (Offline)"
 msgstr "%1 (madalaim)"
 
-#: akonadicollectionview.cpp:288
+#: akonadicollectionview.cpp:292
 #, kde-format
 msgctxt "@item this is the default calendar"
 msgid "%1 (Default)"
 msgstr "%1 (vaikimisi)"
 
-#: akonadicollectionview.cpp:404
+#: akonadicollectionview.cpp:408
 #, kde-format
 msgctxt "@info:tooltip"
 msgid "Set search keyword"
 msgstr "Otsingusõna määramine"
 
-#: akonadicollectionview.cpp:405
+#: akonadicollectionview.cpp:409
 #, kde-format
 msgctxt "@info:whatsthis"
 msgid "Lets you search for a keyword in your calendars"
 msgstr "Kalendris otsimise võimaldamine otsingusõna järgi"
 
-#: akonadicollectionview.cpp:410
+#: akonadicollectionview.cpp:414
 #, fuzzy, kde-format
 #| msgctxt "Displayed grayed-out inside the textbox, verb to search"
 #| msgid "Search"
@@ -1415,13 +1415,13 @@ msgctxt "@info/plain Displayed grayed-out inside the textbox, verb to search"
 msgid "Search…"
 msgstr "Otsing"
 
-#: akonadicollectionview.cpp:493 manageshowcollectionproperties.cpp:76
+#: akonadicollectionview.cpp:500 manageshowcollectionproperties.cpp:76
 #, kde-format
 msgctxt "@title:window"
 msgid "Properties of Calendar Folder %1"
 msgstr "Kalendrikausta %1 omadused"
 
-#: akonadicollectionview.cpp:505
+#: akonadicollectionview.cpp:512
 #, fuzzy, kde-format
 #| msgctxt "@action:inmenu"
 #| msgid "&Set Folder Color..."
@@ -1429,13 +1429,13 @@ msgctxt "@action:inmenu"
 msgid "&Set Folder Color…"
 msgstr "&Määra kausta värv ..."
 
-#: akonadicollectionview.cpp:511
+#: akonadicollectionview.cpp:518
 #, kde-format
 msgctxt "@action:inmenu"
 msgid "Set as &Default Folder"
 msgstr "Määra &vaikekaustaks"
 
-#: akonadicollectionview.cpp:516
+#: akonadicollectionview.cpp:523
 #, fuzzy, kde-format
 #| msgctxt "@action:inmenu"
 #| msgid "Serverside Subscription..."
@@ -1443,31 +1443,31 @@ msgctxt "@action:inmenu"
 msgid "Serverside Subscription…"
 msgstr "Serveripoolne tellimine ..."
 
-#: akonadicollectionview.cpp:561
+#: akonadicollectionview.cpp:568
 #, kde-format
 msgctxt "@info"
 msgid "Do you really want replace your current default calendar with \"%1\"?"
 msgstr "Kas tõesti asendada praegune vaikimisi kalender kalendriga \"%1\"?"
 
-#: akonadicollectionview.cpp:562
+#: akonadicollectionview.cpp:569
 #, kde-format
 msgctxt "@title:window"
 msgid "Replace Default Calendar?"
 msgstr "Kas asendada vaikekalender?"
 
-#: akonadicollectionview.cpp:699
+#: akonadicollectionview.cpp:706
 #, kde-format
 msgctxt "@title:window"
 msgid "Add Calendar"
 msgstr "Kalendri lisamine"
 
-#: akonadicollectionview.cpp:741
+#: akonadicollectionview.cpp:748
 #, kde-format
 msgctxt "@info"
 msgid "Do you really want to delete calendar %1?"
 msgstr "Kas tõesti kustutada kalender %1?"
 
-#: akonadicollectionview.cpp:742
+#: akonadicollectionview.cpp:749
 #, kde-format
 msgctxt "@title:window"
 msgid "Delete Calendar"

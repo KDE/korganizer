@@ -10,7 +10,7 @@ msgid ""
 msgstr ""
 "Project-Id-Version: korganizer\n"
 "Report-Msgid-Bugs-To: https://bugs.kde.org\n"
-"POT-Creation-Date: 2024-08-23 00:40+0000\n"
+"POT-Creation-Date: 2024-08-24 00:40+0000\n"
 "PO-Revision-Date: 2019-09-27 23:59+0500\n"
 "Last-Translator: Victor Ibragimov <victor.ibragimov@gmail.com>\n"
 "Language-Team: English <kde-i18n-doc@kde.org>\n"
@@ -1295,88 +1295,88 @@ msgctxt "@action:button"
 msgid "Add as new calendar"
 msgstr "Иловаи тақвим"
 
-#: akonadicollectionview.cpp:285
+#: akonadicollectionview.cpp:289
 #, fuzzy, kde-format
 msgctxt "@item this is the default calendar"
 msgid "%1 (Offline)"
 msgstr "5 (пастарин)"
 
-#: akonadicollectionview.cpp:288
+#: akonadicollectionview.cpp:292
 #, fuzzy, kde-format
 msgctxt "@item this is the default calendar"
 msgid "%1 (Default)"
 msgstr "Тақвими пешфарзӣ"
 
-#: akonadicollectionview.cpp:404
+#: akonadicollectionview.cpp:408
 #, fuzzy, kde-format
 #| msgid "Search For"
 msgctxt "@info:tooltip"
 msgid "Set search keyword"
 msgstr "Ҷустуҷӯ"
 
-#: akonadicollectionview.cpp:405
+#: akonadicollectionview.cpp:409
 #, kde-format
 msgctxt "@info:whatsthis"
 msgid "Lets you search for a keyword in your calendars"
 msgstr ""
 
-#: akonadicollectionview.cpp:410
+#: akonadicollectionview.cpp:414
 #, fuzzy, kde-format
 msgctxt "@info/plain Displayed grayed-out inside the textbox, verb to search"
 msgid "Search…"
 msgstr "Кофтан дар"
 
-#: akonadicollectionview.cpp:493 manageshowcollectionproperties.cpp:76
+#: akonadicollectionview.cpp:500 manageshowcollectionproperties.cpp:76
 #, fuzzy, kde-format
 #| msgid "Edit Calendar Filters"
 msgctxt "@title:window"
 msgid "Properties of Calendar Folder %1"
 msgstr "Муҳаррири филтрҳои тақвим"
 
-#: akonadicollectionview.cpp:505
+#: akonadicollectionview.cpp:512
 #, kde-format
 msgctxt "@action:inmenu"
 msgid "&Set Folder Color…"
 msgstr ""
 
-#: akonadicollectionview.cpp:511
+#: akonadicollectionview.cpp:518
 #, fuzzy, kde-format
 msgctxt "@action:inmenu"
 msgid "Set as &Default Folder"
 msgstr "Тақвими пешфарзӣ"
 
-#: akonadicollectionview.cpp:516
+#: akonadicollectionview.cpp:523
 #, kde-format
 msgctxt "@action:inmenu"
 msgid "Serverside Subscription…"
 msgstr ""
 
-#: akonadicollectionview.cpp:561
+#: akonadicollectionview.cpp:568
 #, fuzzy, kde-format
 msgctxt "@info"
 msgid "Do you really want replace your current default calendar with \"%1\"?"
 msgstr "<qt>Шумо дар ҳақиқат меҳоҳед манбаъи <b>%1</b>-ро ҳузф кунед?</qt>"
 
-#: akonadicollectionview.cpp:562
+#: akonadicollectionview.cpp:569
 #, fuzzy, kde-format
 msgctxt "@title:window"
 msgid "Replace Default Calendar?"
 msgstr "Тақвими пешфарзӣ"
 
-#: akonadicollectionview.cpp:699
+#: akonadicollectionview.cpp:706
 #, fuzzy, kde-format
 #| msgid "Add as new calendar"
 msgctxt "@title:window"
 msgid "Add Calendar"
 msgstr "Иловаи тақвим"
 
-#: akonadicollectionview.cpp:741
+#: akonadicollectionview.cpp:748
 #, fuzzy, kde-format
 msgctxt "@info"
 msgid "Do you really want to delete calendar %1?"
 msgstr "<qt>Шумо дар ҳақиқат меҳоҳед манбаъи <b>%1</b>-ро ҳузф кунед?</qt>"
 
-#: akonadicollectionview.cpp:742
+#: akonadicollectionview.cpp:749
 #, fuzzy, kde-format
 #| msgid "Default Calendar"
 msgctxt "@title:window"

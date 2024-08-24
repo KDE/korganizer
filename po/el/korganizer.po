@@ -15,7 +15,7 @@ msgid ""
 msgstr ""
 "Project-Id-Version: korganizer\n"
 "Report-Msgid-Bugs-To: https://bugs.kde.org\n"
-"POT-Creation-Date: 2024-08-23 00:40+0000\n"
+"POT-Creation-Date: 2024-08-24 00:40+0000\n"
 "PO-Revision-Date: 2021-11-06 10:56+0200\n"
 "Last-Translator: Stelios <sstavra@gmail.com>\n"
 "Language-Team: Greek <kde-i18n-el@kde.org>\n"
@@ -1396,31 +1396,31 @@ msgctxt "@action:button"
 msgid "Add as new calendar"
 msgstr "Προσθήκη σαν νέο ημερολόγιο"
 
-#: akonadicollectionview.cpp:285
+#: akonadicollectionview.cpp:289
 #, kde-format
 msgctxt "@item this is the default calendar"
 msgid "%1 (Offline)"
 msgstr "%1 (εκτός σύνδεσης)"
 
-#: akonadicollectionview.cpp:288
+#: akonadicollectionview.cpp:292
 #, kde-format
 msgctxt "@item this is the default calendar"
 msgid "%1 (Default)"
 msgstr "%1 (προκαθορισμένο)"
 
-#: akonadicollectionview.cpp:404
+#: akonadicollectionview.cpp:408
 #, kde-format
 msgctxt "@info:tooltip"
 msgid "Set search keyword"
 msgstr "Καθορισμός λέξης αναζήτησης"
 
-#: akonadicollectionview.cpp:405
+#: akonadicollectionview.cpp:409
 #, kde-format
 msgctxt "@info:whatsthis"
 msgid "Lets you search for a keyword in your calendars"
 msgstr "Σας επιτρέπει να αναζητήσετε μια λέξη-κλειδί στα ημερολόγιά σας"
 
-#: akonadicollectionview.cpp:410
+#: akonadicollectionview.cpp:414
 #, fuzzy, kde-format
 #| msgctxt "Displayed grayed-out inside the textbox, verb to search"
 #| msgid "Search"
@@ -1428,13 +1428,13 @@ msgctxt "@info/plain Displayed grayed-out inside the textbox, verb to search"
 msgid "Search…"
 msgstr "Αναζήτηση"
 
-#: akonadicollectionview.cpp:493 manageshowcollectionproperties.cpp:76
+#: akonadicollectionview.cpp:500 manageshowcollectionproperties.cpp:76
 #, kde-format
 msgctxt "@title:window"
 msgid "Properties of Calendar Folder %1"
 msgstr "Ιδιότητες του φακέλου ημερολογίου %1"
 
-#: akonadicollectionview.cpp:505
+#: akonadicollectionview.cpp:512
 #, fuzzy, kde-format
 #| msgctxt "@action:inmenu"
 #| msgid "&Set Folder Color..."
@@ -1442,13 +1442,13 @@ msgctxt "@action:inmenu"
 msgid "&Set Folder Color…"
 msgstr "Ρύθμι&ση χρώματος φακέλου..."
 
-#: akonadicollectionview.cpp:511
+#: akonadicollectionview.cpp:518
 #, kde-format
 msgctxt "@action:inmenu"
 msgid "Set as &Default Folder"
 msgstr "Ρύθμιση ως προ&καθορισμένος φάκελος"
 
-#: akonadicollectionview.cpp:516
+#: akonadicollectionview.cpp:523
 #, fuzzy, kde-format
 #| msgctxt "@action:inmenu"
 #| msgid "Serverside Subscription..."
@@ -1456,7 +1456,7 @@ msgctxt "@action:inmenu"
 msgid "Serverside Subscription…"
 msgstr "Εγγραφή σε εξυπηρετητή..."
 
-#: akonadicollectionview.cpp:561
+#: akonadicollectionview.cpp:568
 #, kde-format
 msgctxt "@info"
 msgid "Do you really want replace your current default calendar with \"%1\"?"
@@ -1464,25 +1464,25 @@ msgstr ""
 "Θέλετε πράγματι την αντικατάσταση του τρέχοντος προκαθορισμένου ημερολογίου "
 "με το «%1»;"
 
-#: akonadicollectionview.cpp:562
+#: akonadicollectionview.cpp:569
 #, kde-format
 msgctxt "@title:window"
 msgid "Replace Default Calendar?"
 msgstr "Να αντικατασταθεί το προκαθορισμένο ημερολόγιο;"
 
-#: akonadicollectionview.cpp:699
+#: akonadicollectionview.cpp:706
 #, kde-format
 msgctxt "@title:window"
 msgid "Add Calendar"
 msgstr "Προσθήκη ημερολογίου"
 
-#: akonadicollectionview.cpp:741
+#: akonadicollectionview.cpp:748
 #, kde-format
 msgctxt "@info"
 msgid "Do you really want to delete calendar %1?"
 msgstr "Επιθυμείτε πραγματικά τη διαγραφή του ημερολογίου %1;"
 
-#: akonadicollectionview.cpp:742
+#: akonadicollectionview.cpp:749
 #, kde-format
 msgctxt "@title:window"
 msgid "Delete Calendar"

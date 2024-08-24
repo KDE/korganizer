@@ -14,7 +14,7 @@ msgid ""
 msgstr ""
 "Project-Id-Version: korganizer\n"
 "Report-Msgid-Bugs-To: https://bugs.kde.org\n"
-"POT-Creation-Date: 2024-08-23 00:40+0000\n"
+"POT-Creation-Date: 2024-08-24 00:40+0000\n"
 "PO-Revision-Date: 2024-08-09 03:47+0900\n"
 "Last-Translator: Kisaragi Hiu <mail@kisaragi-hiu.com>\n"
 "Language-Team: Traditional Chinese <zh-l10n@lists.slat.org>\n"
@@ -1278,85 +1278,85 @@ msgctxt "@action:button"
 msgid "Add as new calendar"
 msgstr "新增為新行事曆"
 
-#: akonadicollectionview.cpp:285
+#: akonadicollectionview.cpp:289
 #, kde-format
 msgctxt "@item this is the default calendar"
 msgid "%1 (Offline)"
 msgstr "%1（離線）"
 
-#: akonadicollectionview.cpp:288
+#: akonadicollectionview.cpp:292
 #, kde-format
 msgctxt "@item this is the default calendar"
 msgid "%1 (Default)"
 msgstr "%1（預設）"
 
-#: akonadicollectionview.cpp:404
+#: akonadicollectionview.cpp:408
 #, kde-format
 msgctxt "@info:tooltip"
 msgid "Set search keyword"
 msgstr "設定搜尋關鍵字"
 
-#: akonadicollectionview.cpp:405
+#: akonadicollectionview.cpp:409
 #, kde-format
 msgctxt "@info:whatsthis"
 msgid "Lets you search for a keyword in your calendars"
 msgstr "讓您在您的行事曆中搜尋關鍵字"
 
-#: akonadicollectionview.cpp:410
+#: akonadicollectionview.cpp:414
 #, kde-format
 msgctxt "@info/plain Displayed grayed-out inside the textbox, verb to search"
 msgid "Search…"
 msgstr "搜尋…"
 
-#: akonadicollectionview.cpp:493 manageshowcollectionproperties.cpp:76
+#: akonadicollectionview.cpp:500 manageshowcollectionproperties.cpp:76
 #, kde-format
 msgctxt "@title:window"
 msgid "Properties of Calendar Folder %1"
 msgstr "行事曆資料夾 %1 的內容"
 
-#: akonadicollectionview.cpp:505
+#: akonadicollectionview.cpp:512
 #, kde-format
 msgctxt "@action:inmenu"
 msgid "&Set Folder Color…"
 msgstr "設定資料夾顏色(&S)…"
 
-#: akonadicollectionview.cpp:511
+#: akonadicollectionview.cpp:518
 #, kde-format
 msgctxt "@action:inmenu"
 msgid "Set as &Default Folder"
 msgstr "設為預設資料夾(&D)"
 
-#: akonadicollectionview.cpp:516
+#: akonadicollectionview.cpp:523
 #, kde-format
 msgctxt "@action:inmenu"
 msgid "Serverside Subscription…"
 msgstr "伺服器端訂閱…"
 
-#: akonadicollectionview.cpp:561
+#: akonadicollectionview.cpp:568
 #, kde-format
 msgctxt "@info"
 msgid "Do you really want replace your current default calendar with \"%1\"?"
 msgstr "您確定要將您的預設行事曆替換為 \"%1\" 嗎？"
 
-#: akonadicollectionview.cpp:562
+#: akonadicollectionview.cpp:569
 #, kde-format
 msgctxt "@title:window"
 msgid "Replace Default Calendar?"
 msgstr "替換預設行事曆？"
 
-#: akonadicollectionview.cpp:699
+#: akonadicollectionview.cpp:706
 #, kde-format
 msgctxt "@title:window"
 msgid "Add Calendar"
 msgstr "新增行事曆"
 
-#: akonadicollectionview.cpp:741
+#: akonadicollectionview.cpp:748
 #, kde-format
 msgctxt "@info"
 msgid "Do you really want to delete calendar %1?"
 msgstr "您確定要刪除行事曆 %1 嗎？"
 
-#: akonadicollectionview.cpp:742
+#: akonadicollectionview.cpp:749
 #, kde-format
 msgctxt "@title:window"
 msgid "Delete Calendar"

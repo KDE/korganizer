@@ -7,7 +7,7 @@ msgid ""
 msgstr ""
 "Project-Id-Version: korganizer\n"
 "Report-Msgid-Bugs-To: https://bugs.kde.org\n"
-"POT-Creation-Date: 2024-08-23 00:40+0000\n"
+"POT-Creation-Date: 2024-08-24 00:40+0000\n"
 "PO-Revision-Date: 2010-09-24 16:28+0530\n"
 "Last-Translator: Rajesh Ranjan <rajesh672@gmail.com>\n"
 "Language-Team: Maithili <bhashaghar@googlegroups.com>\n"
@@ -1295,90 +1295,90 @@ msgctxt "@action:button"
 msgid "Add as new calendar"
 msgstr "कैलेंडर"
 
-#: akonadicollectionview.cpp:285
+#: akonadicollectionview.cpp:289
 #, kde-format
 msgctxt "@item this is the default calendar"
 msgid "%1 (Offline)"
 msgstr ""
 
-#: akonadicollectionview.cpp:288
+#: akonadicollectionview.cpp:292
 #, fuzzy, kde-format
 #| msgid "Calendar"
 msgctxt "@item this is the default calendar"
 msgid "%1 (Default)"
 msgstr "कैलेंडर"
 
-#: akonadicollectionview.cpp:404
+#: akonadicollectionview.cpp:408
 #, kde-format
 msgctxt "@info:tooltip"
 msgid "Set search keyword"
 msgstr ""
 
-#: akonadicollectionview.cpp:405
+#: akonadicollectionview.cpp:409
 #, kde-format
 msgctxt "@info:whatsthis"
 msgid "Lets you search for a keyword in your calendars"
 msgstr ""
 
-#: akonadicollectionview.cpp:410
+#: akonadicollectionview.cpp:414
 #, fuzzy, kde-format
 #| msgid "Search"
 msgctxt "@info/plain Displayed grayed-out inside the textbox, verb to search"
 msgid "Search…"
 msgstr "खोजू"
 
-#: akonadicollectionview.cpp:493 manageshowcollectionproperties.cpp:76
+#: akonadicollectionview.cpp:500 manageshowcollectionproperties.cpp:76
 #, kde-format
 msgctxt "@title:window"
 msgid "Properties of Calendar Folder %1"
 msgstr ""
 
-#: akonadicollectionview.cpp:505
+#: akonadicollectionview.cpp:512
 #, kde-format
 msgctxt "@action:inmenu"
 msgid "&Set Folder Color…"
 msgstr ""
 
-#: akonadicollectionview.cpp:511
+#: akonadicollectionview.cpp:518
 #, fuzzy, kde-format
 #| msgid "Calendar"
 msgctxt "@action:inmenu"
 msgid "Set as &Default Folder"
 msgstr "कैलेंडर"
 
-#: akonadicollectionview.cpp:516
+#: akonadicollectionview.cpp:523
 #, kde-format
 msgctxt "@action:inmenu"
 msgid "Serverside Subscription…"
 msgstr ""
 
-#: akonadicollectionview.cpp:561
+#: akonadicollectionview.cpp:568
 #, kde-format
 msgctxt "@info"
 msgid "Do you really want replace your current default calendar with \"%1\"?"
 msgstr ""
 
-#: akonadicollectionview.cpp:562
+#: akonadicollectionview.cpp:569
 #, fuzzy, kde-format
 #| msgid "Calendar"
 msgctxt "@title:window"
 msgid "Replace Default Calendar?"
 msgstr "कैलेंडर"
 
-#: akonadicollectionview.cpp:699
+#: akonadicollectionview.cpp:706
 #, fuzzy, kde-format
 #| msgid "Calendar"
 msgctxt "@title:window"
 msgid "Add Calendar"
 msgstr "कैलेंडर"
 
-#: akonadicollectionview.cpp:741
+#: akonadicollectionview.cpp:748
 #, kde-format
 msgctxt "@info"
 msgid "Do you really want to delete calendar %1?"
 msgstr ""
 
-#: akonadicollectionview.cpp:742
+#: akonadicollectionview.cpp:749
 #, fuzzy, kde-format
 #| msgid "New Calendar"
 msgctxt "@title:window"
