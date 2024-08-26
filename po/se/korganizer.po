@@ -93,7 +93,6 @@ msgstr "Álgovuolggalaš čálli"
 
 #: aboutdata.cpp:34
 #, fuzzy, kde-format
-#| msgid "Laurent Montel"
 msgctxt "@info:credit"
 msgid "Laurent Montel"
 msgstr "Laurent Montel"
@@ -327,7 +326,6 @@ msgstr ""
 
 #: actionmanager.cpp:244
 #, fuzzy, kde-format
-#| msgid "New Calendar"
 msgctxt "@action"
 msgid "Import &Calendar…"
 msgstr "Ođđa kaleandar"
@@ -354,7 +352,6 @@ msgstr ""
 
 #: actionmanager.cpp:254
 #, fuzzy, kde-format
-#| msgid "New Calendar"
 msgid "Get New Calendars…"
 msgstr "Ođđa kaleandar"
 
@@ -390,7 +387,6 @@ msgstr "Vižžojuvvon dáhpáhusat bárgiduvvojit du kaleandáriin."
 
 #: actionmanager.cpp:306
 #, fuzzy, kde-format
-#| msgid "New Calendar"
 msgctxt "@action"
 msgid "Export as &iCalendar…"
 msgstr "Ođđa kaleandar"
@@ -840,7 +836,6 @@ msgstr "&Vahkku"
 
 #: actionmanager.cpp:567 kodaymatrix.cpp:484
 #, fuzzy, kde-format
-#| msgid "New E&vent..."
 msgid "New E&vent…"
 msgstr "Ođđa &dáhpahus …"
 
@@ -866,8 +861,6 @@ msgstr ""
 
 #: actionmanager.cpp:577 kodaymatrix.cpp:485
 #, fuzzy, kde-format
-#| msgctxt "@action:inmenu"
-#| msgid "New To-do..."
 msgid "New &To-do…"
 msgstr "Ođđa gáldu …"
 
@@ -893,16 +886,12 @@ msgstr ""
 
 #: actionmanager.cpp:588
 #, fuzzy, kde-format
-#| msgctxt "@action:inmenu"
-#| msgid "New To-do..."
 msgctxt "@action"
 msgid "New Su&b-to-do…"
 msgstr "Ođđa gáldu …"
 
 #: actionmanager.cpp:596 kodaymatrix.cpp:486
 #, fuzzy, kde-format
-#| msgctxt "@action:inmenu"
-#| msgid "New Journal..."
 msgid "New &Journal…"
 msgstr "Ođđa oktavuohta …"
 
@@ -926,7 +915,6 @@ msgstr ""
 
 #: actionmanager.cpp:604
 #, fuzzy, kde-format
-#| msgid "Configure"
 msgid "Configure View…"
 msgstr "Heivet"
 
@@ -962,7 +950,6 @@ msgstr "Čá&jet"
 
 #: actionmanager.cpp:619 actionmanager.cpp:1304 actionmanager.cpp:1343
 #, fuzzy, kde-format
-#| msgid "&Edit..."
 msgid "&Edit…"
 msgstr "&Doaimmat …"
 
@@ -1017,7 +1004,6 @@ msgstr ""
 
 #: actionmanager.cpp:692
 #, fuzzy, kde-format
-#| msgid "New Calendar"
 msgid "&Send as iCalendar…"
 msgstr "Ođđa kaleandar"
 
@@ -1054,7 +1040,6 @@ msgstr ""
 
 #: actionmanager.cpp:750
 #, fuzzy, kde-format
-#| msgid "Configure &Date && Time..."
 msgctxt "@action"
 msgid "Configure &Date && Time…"
 msgstr "Heivet &dáhtona ja áiggi …"
@@ -1147,7 +1132,6 @@ msgstr "Čáj&et dáhpahusa"
 
 #: actionmanager.cpp:1265
 #, fuzzy, kde-format
-#| msgid "&Edit Event..."
 msgid "&Edit Event…"
 msgstr "&Doaimmat dáhpahusa …"
 
@@ -1246,14 +1230,12 @@ msgstr ""
 
 #: actionmanager.cpp:1658
 #, fuzzy, kde-format
-#| msgid "Merge into existing calendar"
 msgctxt "@action:button"
 msgid "Merge into existing calendar"
 msgstr "Bárgit kaleandarii mii juo gávdno"
 
 #: actionmanager.cpp:1659
 #, fuzzy, kde-format
-#| msgid "Add as new calendar"
 msgctxt "@action:button"
 msgid "Add as new calendar"
 msgstr "Lasit ođđa kaleandaran"
@@ -1573,7 +1555,6 @@ msgstr ""
 
 #: calendarview.cpp:2295 calendarview.cpp:2353
 #, fuzzy, kde-format
-#| msgid "&Delete Event"
 msgctxt "@action:button"
 msgid "Delete All"
 msgstr "&Sihko dáhpahusa"
@@ -1660,7 +1641,6 @@ msgstr ""
 
 #: calendarview.cpp:2465
 #, fuzzy, kde-format
-#| msgid "Purge"
 msgctxt "@action:button"
 msgid "Purge"
 msgstr "Sihko"
@@ -1934,7 +1914,6 @@ msgstr ""
 
 #: dialog/koeventviewerdialog.cpp:40
 #, fuzzy, kde-format
-#| msgid "&Edit..."
 msgctxt "@action:button"
 msgid "Edit…"
 msgstr "&Doaimmat …"
@@ -2048,7 +2027,6 @@ msgstr ""
 
 #: koeventpopupmenu.cpp:45
 #, fuzzy, kde-format
-#| msgid "&Edit..."
 msgctxt "@action:inmenu"
 msgid "&Edit…"
 msgstr "&Doaimmat …"
@@ -2133,7 +2111,6 @@ msgstr ""
 
 #: koeventpopupmenu.cpp:137
 #, fuzzy, kde-format
-#| msgid "New Calendar"
 msgctxt "@action:inmenu"
 msgid "Send as iCalendar…"
 msgstr "Ođđa kaleandar"
@@ -2376,8 +2353,6 @@ msgstr ""
 
 #: kontactplugin/korganizer/journalplugin.cpp:28
 #, fuzzy, kde-format
-#| msgctxt "@action:inmenu"
-#| msgid "New Journal..."
 msgctxt "@action:inmenu"
 msgid "New Journal…"
 msgstr "Ođđa oktavuohta …"
@@ -2406,7 +2381,6 @@ msgstr[1] ""
 
 #: kontactplugin/korganizer/korganizerplugin.cpp:44
 #, fuzzy, kde-format
-#| msgid "New E&vent..."
 msgctxt "@action:inmenu"
 msgid "New Event…"
 msgstr "Ođđa &dáhpahus …"
@@ -2520,8 +2494,6 @@ msgstr ""
 
 #: kontactplugin/korganizer/todoplugin.cpp:40
 #, fuzzy, kde-format
-#| msgctxt "@action:inmenu"
-#| msgid "New To-do..."
 msgctxt "@action:inmenu"
 msgid "New To-do…"
 msgstr "Ođđa gáldu …"
@@ -3138,7 +3110,6 @@ msgstr ""
 
 #: korganizer_options.h:20
 #, fuzzy, kde-format
-#| msgid "Merge into existing calendar"
 msgctxt "@info:shell"
 msgid "Merge the specified files into an existing calendar"
 msgstr "Bárgit kaleandarii mii juo gávdno"
@@ -5500,14 +5471,12 @@ msgstr ""
 
 #: widgets/navigatorbar.cpp:54
 #, fuzzy, kde-format
-#| msgid "Select a month"
 msgctxt "@info:tooltip"
 msgid "Select a month"
 msgstr "Vállje mánu"
 
 #: widgets/navigatorbar.cpp:60
 #, fuzzy, kde-format
-#| msgid "Select a month"
 msgctxt "@info:tooltip"
 msgid "Select a year"
 msgstr "Vállje mánu"

@@ -35,21 +35,18 @@ msgstr "Vis datonummer"
 
 #: datenums/configdialog.cpp:48
 #, fuzzy, kde-format
-#| msgid "Show day number"
 msgctxt "@option:radio"
 msgid "Show day number"
 msgstr "Vis dagnummer"
 
 #: datenums/configdialog.cpp:51
 #, fuzzy, kde-format
-#| msgid "Show days to end of year"
 msgctxt "@option:radio"
 msgid "Show days to end of year"
 msgstr "Vis kor mange dagar til slutten av året"
 
 #: datenums/configdialog.cpp:54
 #, fuzzy, kde-format
-#| msgid "Show both"
 msgctxt "@option:radio"
 msgid "Show both"
 msgstr "Vis begge delar"
@@ -701,7 +698,6 @@ msgstr "Modus for storleiksforhold på miniatyrbilde"
 
 #: picoftheday/configdialog.cpp:46
 #, fuzzy, kde-format
-#| msgid "Ignore aspect ratio"
 msgctxt "@option:radio"
 msgid "Ignore aspect ratio"
 msgstr "Ignorer storleiksforhold"
@@ -716,7 +712,6 @@ msgstr ""
 
 #: picoftheday/configdialog.cpp:52
 #, fuzzy, kde-format
-#| msgid "Keep aspect ratio"
 msgctxt "@option:radio"
 msgid "Keep aspect ratio"
 msgstr "Ta vare på storleiksforhold"
@@ -733,7 +728,6 @@ msgstr ""
 
 #: picoftheday/configdialog.cpp:59
 #, fuzzy, kde-format
-#| msgid "Keep aspect ratio by expanding"
 msgctxt "@option:radio"
 msgid "Keep aspect ratio by expanding"
 msgstr "Ta vare på storleiksforhold ved å utvida."
