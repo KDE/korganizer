@@ -8,9 +8,6 @@
 #include "koeventpopupmenu.h"
 
 #include <Akonadi/CollectionCalendar>
-#include <Akonadi/NoteUtils>
-
-#include <CalendarSupport/NoteEditDialog>
 
 #include <IncidenceEditor/IncidenceDialog>
 #include <IncidenceEditor/IncidenceEditor-Ng>
@@ -128,82 +125,6 @@ void KoEventPopupMenuTest::createTodoFromEvent()
     QCOMPARE(todo->summary(), summary);
 }
 
-void KoEventPopupMenuTest::createNoteFromEvent()
-{
-    auto calendar = Akonadi::CollectionCalendar::Ptr::create(Akonadi::Collection());
-    KOEventPopupMenu menu;
-
-    KCalendarCore::Event::Ptr event(new KCalendarCore::Event());
-    Akonadi::Item item;
-    item.setMimeType(KCalendarCore::Event::eventMimeType());
-    item.setPayload<KCalendarCore::Event::Ptr>(event);
-
-    QDateTime start;
-    QDateTime end;
-    QString summary(QStringLiteral("A test"));
-    QString description(QStringLiteral("A long description"));
-    start = QDateTime::fromSecsSinceEpoch(1402593346);
-    end = QDateTime::fromSecsSinceEpoch(1403593346);
-    event->setDtStart(start);
-    event->setDtEnd(end);
-    event->setSummary(summary);
-    event->setDescription(description, true);
-
-    menu.showIncidencePopup(calendar, item, QDate());
-    auto createnoteforevent = menu.findChild<QAction *>(QStringLiteral("createnoteforevent"));
-    auto noteedit = menu.findChild<CalendarSupport::NoteEditDialog *>();
-    QVERIFY(!noteedit);
-    createnoteforevent->trigger();
-    noteedit = menu.findChild<CalendarSupport::NoteEditDialog *>();
-    QVERIFY(noteedit);
-    Akonadi::NoteUtils::NoteMessageWrapper note(noteedit->note());
-    QCOMPARE(note.title(), summary);
-    QCOMPARE(note.text(), description);
-    QCOMPARE(note.textFormat(), Qt::RichText);
-    QCOMPARE(note.attachments().count(), 1);
-    QCOMPARE(note.attachments().at(0).mimetype(), KCalendarCore::Event::eventMimeType());
-    QCOMPARE(note.attachments().at(0).url(), (QUrl)item.url());
-    QCOMPARE(note.attachments().at(0).data(), QByteArray());
-}
-
-void KoEventPopupMenuTest::createNoteFromTodo()
-{
-    auto calendar = Akonadi::CollectionCalendar::Ptr::create(Akonadi::Collection());
-    KOEventPopupMenu menu;
-
-    KCalendarCore::Todo::Ptr todo(new KCalendarCore::Todo());
-    Akonadi::Item item;
-    item.setMimeType(KCalendarCore::Todo::todoMimeType());
-    item.setPayload<KCalendarCore::Todo::Ptr>(todo);
-
-    QDateTime start;
-    QDateTime end;
-    QString summary(QStringLiteral("a test"));
-    QString description(QStringLiteral("A long description"));
-    start = QDateTime::fromSecsSinceEpoch(1402593346);
-    end = QDateTime::fromSecsSinceEpoch(1403593346);
-    todo->setDtStart(start);
-    todo->setDtDue(end);
-    todo->setSummary(summary);
-    todo->setDescription(description);
-
-    menu.showIncidencePopup(calendar, item, QDate());
-    auto createnotefortodo = menu.findChild<QAction *>(QStringLiteral("createnotefortodo"));
-
-    auto noteedit = menu.findChild<CalendarSupport::NoteEditDialog *>();
-    QVERIFY(!noteedit);
-    createnotefortodo->trigger();
-    noteedit = menu.findChild<CalendarSupport::NoteEditDialog *>();
-    QVERIFY(noteedit);
-    Akonadi::NoteUtils::NoteMessageWrapper note(noteedit->note());
-    QCOMPARE(note.title(), summary);
-    QCOMPARE(note.text(), description);
-    QCOMPARE(note.attachments().count(), 1);
-    QCOMPARE(note.attachments().at(0).mimetype(), KCalendarCore::Todo::todoMimeType());
-    QCOMPARE(note.attachments().at(0).url(), (QUrl)item.url());
-    QCOMPARE(note.attachments().at(0).data(), QByteArray());
-}
-
 void KoEventPopupMenuTest::defaultMenuEventVisible()
 {
     auto calendar = Akonadi::CollectionCalendar::Ptr::create(Akonadi::Collection());
@@ -216,13 +137,9 @@ void KoEventPopupMenuTest::defaultMenuEventVisible()
 
     menu.showIncidencePopup(calendar, item, QDate());
     auto createevent = menu.findChild<QAction *>(QStringLiteral("createevent"));
-    auto createnoteforevent = menu.findChild<QAction *>(QStringLiteral("createnoteforevent"));
     auto createtodo = menu.findChild<QAction *>(QStringLiteral("createtodo"));
-    auto createnotefortodo = menu.findChild<QAction *>(QStringLiteral("createnotefortodo"));
     QVERIFY(!createevent->isVisible());
-    QVERIFY(createnoteforevent->isVisible());
     QVERIFY(createtodo->isVisible());
-    QVERIFY(!createnotefortodo->isVisible());
 }
 
 void KoEventPopupMenuTest::defaultMenuTodoVisible()
@@ -238,13 +155,9 @@ void KoEventPopupMenuTest::defaultMenuTodoVisible()
 
     menu.showIncidencePopup(calendar, item, QDate());
     auto createevent = menu.findChild<QAction *>(QStringLiteral("createevent"));
-    auto createnoteforevent = menu.findChild<QAction *>(QStringLiteral("createnoteforevent"));
     auto createtodo = menu.findChild<QAction *>(QStringLiteral("createtodo"));
-    auto createnotefortodo = menu.findChild<QAction *>(QStringLiteral("createnotefortodo"));
     QVERIFY(createevent->isVisible());
-    QVERIFY(!createnoteforevent->isVisible());
     QVERIFY(!createtodo->isVisible());
-    QVERIFY(createnotefortodo->isVisible());
 }
 
 QTEST_MAIN(KoEventPopupMenuTest)

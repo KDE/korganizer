@@ -81,10 +81,6 @@ KOTodoView::KOTodoView(bool sidebarView, QWidget *parent)
             static_cast<void (EventViews::TodoView::*)(const Akonadi::Item &)>(&EventViews::TodoView ::createEvent),
             eventPopup,
             static_cast<void (KOEventPopupMenu::*)(const Akonadi::Item &)>(&KOEventPopupMenu::createEvent));
-    connect(mView,
-            static_cast<void (EventViews::TodoView::*)(const Akonadi::Item &)>(&EventViews::TodoView ::createNote),
-            eventPopup,
-            static_cast<void (KOEventPopupMenu::*)(const Akonadi::Item &)>(&KOEventPopupMenu::createNote));
 }
 
 KOTodoView::~KOTodoView() = default;

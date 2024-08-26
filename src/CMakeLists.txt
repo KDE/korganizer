@@ -348,7 +348,6 @@ target_link_libraries(korganizerprivate
     korganizer_interfaces
     KPim6::AkonadiCore
     KPim6::AkonadiCalendar
-    KPim6::AkonadiNotes
     KF6::Contacts
     KF6::CalendarCore
     KPim6::CalendarUtils

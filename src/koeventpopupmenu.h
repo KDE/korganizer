@@ -49,7 +49,6 @@ public Q_SLOTS:
     void showIncidencePopup(const Akonadi::CollectionCalendar::Ptr &calendar, const Akonadi::Item &, const QDate &);
 
     void createEvent(const Akonadi::Item &item);
-    void createNote(const Akonadi::Item &item);
 
 protected Q_SLOTS:
     void popupShow();
@@ -66,10 +65,6 @@ protected Q_SLOTS:
     void forward();
     void createTodo();
     void createEvent();
-    void createNote();
-
-    void slotCreateNote(const Akonadi::Item &noteItem, const Akonadi::Collection &collection);
-    void slotCreateNewNoteJobFinished(KJob *);
 
 Q_SIGNALS:
     void configChanged();

@@ -36,7 +36,6 @@ set(koeventpopupmenutest_LIBS Qt::Test
   KPim6::AkonadiWidgets
   KPim6::AkonadiCore
   KPim6::AkonadiCalendar
-  KPim6::AkonadiNotes
   KF6::CalendarCore
   KPim6::IncidenceEditor
   KPim6::CalendarSupport

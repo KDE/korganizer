@@ -12,10 +12,8 @@
 
 #include <Akonadi/CalendarUtils>
 #include <Akonadi/ItemCreateJob>
-#include <Akonadi/NoteUtils>
 
 #include <CalendarSupport/CalPrinter>
-#include <CalendarSupport/NoteEditDialog>
 #include <CalendarSupport/Utils>
 
 #include <KCalendarCore/CalFormat>
@@ -84,12 +82,6 @@ void KOEventPopupMenu::appendEventOnlyItems()
     mEventOnlyItems.append(
         addAction(QIcon::fromTheme(QStringLiteral("task-new")), i18nc("@action:inmenu", "Create To-do from Event"), this, &KOEventPopupMenu::createTodo));
     mEventOnlyItems.last()->setObjectName(QLatin1StringView("createtodo")); // id used by unit test
-
-    mEventOnlyItems.append(addAction(QIcon::fromTheme(QStringLiteral("view-pim-notes")),
-                                     i18nc("@action:inmenu", "Create Note for Event"),
-                                     this,
-                                     qOverload<>(&KOEventPopupMenu::createNote)));
-    mEventOnlyItems.last()->setObjectName(QLatin1StringView("createnoteforevent")); // id used by unit test
 }
 
 void KOEventPopupMenu::appendTodoOnlyItems()
@@ -106,12 +98,6 @@ void KOEventPopupMenu::appendTodoOnlyItems()
                                     this,
                                     qOverload<>(&KOEventPopupMenu::createEvent)));
     mTodoOnlyItems.last()->setObjectName(QLatin1StringView("createevent")); // id used by unit test
-
-    mTodoOnlyItems.append(addAction(QIcon::fromTheme(QStringLiteral("view-pim-notes")),
-                                    i18nc("@action:inmenu", "Create Note for To-do"),
-                                    this,
-                                    qOverload<>(&KOEventPopupMenu::createNote)));
-    mTodoOnlyItems.last()->setObjectName(QLatin1StringView("createnotefortodo")); // id used by unit test
 }
 
 void KOEventPopupMenu::appendReminderOnlyItems()
@@ -345,49 +331,6 @@ void KOEventPopupMenu::createEvent()
         dlg->setObjectName(QLatin1StringView("incidencedialog"));
         dlg->load(newEventItem);
         dlg->open();
-    }
-}
-
-void KOEventPopupMenu::createNote(const Akonadi::Item &item)
-{
-    mCurrentIncidence = item;
-    createNote();
-}
-
-void KOEventPopupMenu::createNote()
-{
-    // Must be a Incidence
-    if (CalendarSupport::hasIncidence(mCurrentIncidence)) {
-        KCalendarCore::Incidence::Ptr incidence(Akonadi::CalendarUtils::incidence(mCurrentIncidence));
-        Akonadi::NoteUtils::NoteMessageWrapper note;
-        note.setTitle(incidence->summary());
-        note.setText(incidence->description(), incidence->descriptionIsRich() ? Qt::RichText : Qt::PlainText);
-        note.setFrom(QCoreApplication::applicationName() + QCoreApplication::applicationVersion());
-        note.setLastModifiedDate(QDateTime::currentDateTimeUtc());
-        Akonadi::NoteUtils::Attachment attachment(mCurrentIncidence.url(), mCurrentIncidence.mimeType());
-        note.attachments().append(attachment);
-        Akonadi::Item newNoteItem;
-        newNoteItem.setMimeType(Akonadi::NoteUtils::noteMimeType());
-        newNoteItem.setPayload(note.message());
-
-        auto noteedit = new CalendarSupport::NoteEditDialog(this);
-        connect(noteedit, &CalendarSupport::NoteEditDialog::createNote, this, &KOEventPopupMenu::slotCreateNote);
-        noteedit->load(newNoteItem);
-        noteedit->show();
-    }
-}
-
-void KOEventPopupMenu::slotCreateNote(const Akonadi::Item &noteItem, const Akonadi::Collection &collection)
-{
-    auto createJob = new Akonadi::ItemCreateJob(noteItem, collection, this);
-    connect(createJob, &Akonadi::ItemCreateJob::result, this, &KOEventPopupMenu::slotCreateNewNoteJobFinished);
-    createJob->start();
-}
-
-void KOEventPopupMenu::slotCreateNewNoteJobFinished(KJob *job)
-{
-    if (job->error()) {
-        qCDebug(KORGANIZER_LOG) << "Error during create new Note " << job->errorString();
     }
 }
 

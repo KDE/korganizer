@@ -9,7 +9,6 @@ Dependencies:
     'pim/akonadi' : '@same'
     'pim/akonadi-calendar' : '@same'
     'pim/akonadi-contacts' : '@same'
-    'pim/akonadi-notes' : '@same'
     'pim/calendarsupport' : '@same'
     'pim/eventviews' : '@same'
     'pim/incidenceeditor' : '@same'

@@ -25,8 +25,6 @@ private Q_SLOTS:
     void createTodoFromEvent();
     void createEventFromEvent();
     void createTodoFromTodo();
-    void createNoteFromEvent();
-    void createNoteFromTodo();
     void defaultMenuEventVisible();
     void defaultMenuTodoVisible();
 };
