@@ -7,7 +7,7 @@ msgid ""
 msgstr ""
 "Project-Id-Version: KDE 4.3\n"
 "Report-Msgid-Bugs-To: https://bugs.kde.org\n"
-"POT-Creation-Date: 2024-08-24 00:40+0000\n"
+"POT-Creation-Date: 2024-08-27 00:40+0000\n"
 "PO-Revision-Date: 2024-08-06 22:24+0200\n"
 "Last-Translator: Kristof Kiszel <ulysses@fsf.hu>\n"
 "Language-Team: Hungarian <kde-l10n-hu@kde.org>\n"
@@ -2153,40 +2153,40 @@ msgstr "&Hozzáadás"
 msgid "&Cancel"
 msgstr "&Mégsem"
 
-#: koeventpopupmenu.cpp:43
+#: koeventpopupmenu.cpp:41
 #, kde-format
 msgctxt "@action:inmenu"
 msgid "&Show"
 msgstr "&Megjelenítés"
 
-#: koeventpopupmenu.cpp:45
+#: koeventpopupmenu.cpp:43
 #, fuzzy, kde-format
 #| msgid "&Edit"
 msgctxt "@action:inmenu"
 msgid "&Edit…"
 msgstr "Sz&erkesztés"
 
-#: koeventpopupmenu.cpp:47
+#: koeventpopupmenu.cpp:45
 #, kde-format
 msgctxt "@action:inmenu delete this incidence"
 msgid "&Delete"
 msgstr "&Törlés"
 
-#: koeventpopupmenu.cpp:51
+#: koeventpopupmenu.cpp:49
 #, fuzzy, kde-format
 #| msgid "&Print"
 msgctxt "@action:inmenu"
 msgid "&Print…"
 msgstr "&Nyomtatás"
 
-#: koeventpopupmenu.cpp:53
+#: koeventpopupmenu.cpp:51
 #, fuzzy, kde-format
 #| msgid "Print Previe&w..."
 msgctxt "@action:inmenu"
 msgid "Print Previe&w…"
 msgstr "N&yomtatási előnézet..."
 
-#: koeventpopupmenu.cpp:74
+#: koeventpopupmenu.cpp:72
 #, fuzzy, kde-format
 #| msgctxt "cut this event"
 #| msgid "C&ut"
@@ -2194,83 +2194,69 @@ msgctxt "@action:inmenu cut this incidence"
 msgid "C&ut"
 msgstr "Ki&vágás"
 
-#: koeventpopupmenu.cpp:76
+#: koeventpopupmenu.cpp:74
 #, kde-format
 msgctxt "@action:inmenu copy this incidence"
 msgid "&Copy"
 msgstr "Má&solás"
 
-#: koeventpopupmenu.cpp:77
+#: koeventpopupmenu.cpp:75
 #, fuzzy, kde-format
 #| msgid "&Paste"
 msgctxt "@action:inmenu"
 msgid "&Paste"
 msgstr "&Beillesztés"
 
-#: koeventpopupmenu.cpp:85
+#: koeventpopupmenu.cpp:83
 #, fuzzy, kde-format
 #| msgid "Create a new To-do"
 msgctxt "@action:inmenu"
 msgid "Create To-do from Event"
 msgstr "Új feladat"
 
-#: koeventpopupmenu.cpp:89
-#, fuzzy, kde-format
-#| msgid "Create a new Event"
-msgctxt "@action:inmenu"
-msgid "Create Note for Event"
-msgstr "Új esemény"
-
-#: koeventpopupmenu.cpp:100
+#: koeventpopupmenu.cpp:92
 #, fuzzy, kde-format
 #| msgid "Togg&le To-do Completed"
 msgctxt "@action:inmenu"
 msgid "Togg&le To-do Completed"
 msgstr "Be&fejezettség ki-be"
 
-#: koeventpopupmenu.cpp:105
+#: koeventpopupmenu.cpp:97
 #, fuzzy, kde-format
 #| msgid "Create a new Event"
 msgctxt "@action:inmenu"
 msgid "Create Event from To-do"
 msgstr "Új esemény"
 
-#: koeventpopupmenu.cpp:111
-#, fuzzy, kde-format
-#| msgid "Create a new To-do"
-msgctxt "@action:inmenu"
-msgid "Create Note for To-do"
-msgstr "Új feladat"
-
-#: koeventpopupmenu.cpp:122
+#: koeventpopupmenu.cpp:108
 #, fuzzy, kde-format
 #| msgid "&Toggle Reminder"
 msgctxt "@action:inmenu"
 msgid "&Toggle Reminder"
 msgstr "Emléke&ztető ki-be"
 
-#: koeventpopupmenu.cpp:129
+#: koeventpopupmenu.cpp:115
 #, fuzzy, kde-format
 #| msgid "&Dissociate From Recurrence..."
 msgctxt "@action:inmenu"
 msgid "&Dissociate From Recurrence…"
 msgstr "&Leválasztás a többi előfordulásról…"
 
-#: koeventpopupmenu.cpp:137
+#: koeventpopupmenu.cpp:123
 #, fuzzy, kde-format
 #| msgid "&Send as iCalendar..."
 msgctxt "@action:inmenu"
 msgid "Send as iCalendar…"
 msgstr "&iCalendar-bejegyzésként..."
 
-#: koeventpopupmenu.cpp:187
+#: koeventpopupmenu.cpp:173
 #, fuzzy, kde-format
 #| msgid "&Toggle Reminder"
 msgctxt "@action:inmenu"
 msgid "&Toggle Reminder Off"
 msgstr "Emléke&ztető ki-be"
 
-#: koeventpopupmenu.cpp:188
+#: koeventpopupmenu.cpp:174
 #, fuzzy, kde-format
 #| msgid "&Toggle Reminder"
 msgctxt "@action:inmenu"
@@ -6158,6 +6144,18 @@ msgstr "%1"
 msgctxt "4 digit year"
 msgid "%1"
 msgstr "%1"
+
+#, fuzzy
+#~| msgid "Create a new Event"
+#~ msgctxt "@action:inmenu"
+#~ msgid "Create Note for Event"
+#~ msgstr "Új esemény"
+
+#, fuzzy
+#~| msgid "Create a new To-do"
+#~ msgctxt "@action:inmenu"
+#~ msgid "Create Note for To-do"
+#~ msgstr "Új feladat"
 
 #~ msgid "Import &Calendar..."
 #~ msgstr "Naptár imp&ortálása..."

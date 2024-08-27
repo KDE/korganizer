@@ -11,7 +11,7 @@ msgid ""
 msgstr ""
 "Project-Id-Version: korganizer\n"
 "Report-Msgid-Bugs-To: https://bugs.kde.org\n"
-"POT-Creation-Date: 2024-08-24 00:40+0000\n"
+"POT-Creation-Date: 2024-08-27 00:40+0000\n"
 "PO-Revision-Date: 2024-08-02 09:23+0300\n"
 "Last-Translator: Yuri Chornoivan <yurchor@ukr.net>\n"
 "Language-Team: Ukrainian <trans-uk@lists.fedoraproject.org>\n"
@@ -2149,109 +2149,97 @@ msgstr "&Додати"
 msgid "&Cancel"
 msgstr "&Скасувати"
 
-#: koeventpopupmenu.cpp:43
+#: koeventpopupmenu.cpp:41
 #, kde-format
 msgctxt "@action:inmenu"
 msgid "&Show"
 msgstr "&Показати"
 
-#: koeventpopupmenu.cpp:45
+#: koeventpopupmenu.cpp:43
 #, kde-format
 msgctxt "@action:inmenu"
 msgid "&Edit…"
 msgstr "З&мінити…"
 
-#: koeventpopupmenu.cpp:47
+#: koeventpopupmenu.cpp:45
 #, kde-format
 msgctxt "@action:inmenu delete this incidence"
 msgid "&Delete"
 msgstr "&Вилучити"
 
-#: koeventpopupmenu.cpp:51
+#: koeventpopupmenu.cpp:49
 #, kde-format
 msgctxt "@action:inmenu"
 msgid "&Print…"
 msgstr "На&друкувати…"
 
-#: koeventpopupmenu.cpp:53
+#: koeventpopupmenu.cpp:51
 #, kde-format
 msgctxt "@action:inmenu"
 msgid "Print Previe&w…"
 msgstr "Перег&ляд друку…"
 
-#: koeventpopupmenu.cpp:74
+#: koeventpopupmenu.cpp:72
 #, kde-format
 msgctxt "@action:inmenu cut this incidence"
 msgid "C&ut"
 msgstr "В&ирізати"
 
-#: koeventpopupmenu.cpp:76
+#: koeventpopupmenu.cpp:74
 #, kde-format
 msgctxt "@action:inmenu copy this incidence"
 msgid "&Copy"
 msgstr "&Копіювати"
 
-#: koeventpopupmenu.cpp:77
+#: koeventpopupmenu.cpp:75
 #, kde-format
 msgctxt "@action:inmenu"
 msgid "&Paste"
 msgstr "&Вставити"
 
-#: koeventpopupmenu.cpp:85
+#: koeventpopupmenu.cpp:83
 #, kde-format
 msgctxt "@action:inmenu"
 msgid "Create To-do from Event"
 msgstr "Створити з події запис завдання"
 
-#: koeventpopupmenu.cpp:89
-#, kde-format
-msgctxt "@action:inmenu"
-msgid "Create Note for Event"
-msgstr "Створити з події нотатку"
-
-#: koeventpopupmenu.cpp:100
+#: koeventpopupmenu.cpp:92
 #, kde-format
 msgctxt "@action:inmenu"
 msgid "Togg&le To-do Completed"
 msgstr "Перем&кнути завершеність завдання"
 
-#: koeventpopupmenu.cpp:105
+#: koeventpopupmenu.cpp:97
 #, kde-format
 msgctxt "@action:inmenu"
 msgid "Create Event from To-do"
 msgstr "Створити з завдання запис події"
 
-#: koeventpopupmenu.cpp:111
-#, kde-format
-msgctxt "@action:inmenu"
-msgid "Create Note for To-do"
-msgstr "Створити нотатку для завдання"
-
-#: koeventpopupmenu.cpp:122
+#: koeventpopupmenu.cpp:108
 #, kde-format
 msgctxt "@action:inmenu"
 msgid "&Toggle Reminder"
 msgstr "&Перемкнути нагадування"
 
-#: koeventpopupmenu.cpp:129
+#: koeventpopupmenu.cpp:115
 #, kde-format
 msgctxt "@action:inmenu"
 msgid "&Dissociate From Recurrence…"
 msgstr "Ві&дділити з повторення…"
 
-#: koeventpopupmenu.cpp:137
+#: koeventpopupmenu.cpp:123
 #, kde-format
 msgctxt "@action:inmenu"
 msgid "Send as iCalendar…"
 msgstr "Надіслати як iCalendar…"
 
-#: koeventpopupmenu.cpp:187
+#: koeventpopupmenu.cpp:173
 #, kde-format
 msgctxt "@action:inmenu"
 msgid "&Toggle Reminder Off"
 msgstr "Ви&мкнути нагадування"
 
-#: koeventpopupmenu.cpp:188
+#: koeventpopupmenu.cpp:174
 #, kde-format
 msgctxt "@action:inmenu"
 msgid "&Toggle Reminder On"
@@ -5988,6 +5976,14 @@ msgstr "%1"
 msgctxt "4 digit year"
 msgid "%1"
 msgstr "%1"
+
+#~ msgctxt "@action:inmenu"
+#~ msgid "Create Note for Event"
+#~ msgstr "Створити з події нотатку"
+
+#~ msgctxt "@action:inmenu"
+#~ msgid "Create Note for To-do"
+#~ msgstr "Створити нотатку для завдання"
 
 #~ msgid "Import &Calendar..."
 #~ msgstr "Імпортувати &календар…"

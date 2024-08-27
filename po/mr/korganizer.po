@@ -6,7 +6,7 @@ msgid ""
 msgstr ""
 "Project-Id-Version: \n"
 "Report-Msgid-Bugs-To: https://bugs.kde.org\n"
-"POT-Creation-Date: 2024-08-24 00:40+0000\n"
+"POT-Creation-Date: 2024-08-27 00:40+0000\n"
 "PO-Revision-Date: 2013-04-15 10:39+0530\n"
 "Last-Translator: Chetan Khona <chetan@kompkin.com>\n"
 "Language-Team: Marathi <kde-i18n-doc@kde.org>\n"
@@ -2258,42 +2258,42 @@ msgstr "जोडा (&A)"
 msgid "&Cancel"
 msgstr "रद्द करा (&C)"
 
-#: koeventpopupmenu.cpp:43
+#: koeventpopupmenu.cpp:41
 #, fuzzy, kde-format
 #| msgid "&Show"
 msgctxt "@action:inmenu"
 msgid "&Show"
 msgstr "दर्शवा (&S)"
 
-#: koeventpopupmenu.cpp:45
+#: koeventpopupmenu.cpp:43
 #, fuzzy, kde-format
 #| msgid "&Edit"
 msgctxt "@action:inmenu"
 msgid "&Edit…"
 msgstr "संपादन (&E)"
 
-#: koeventpopupmenu.cpp:47
+#: koeventpopupmenu.cpp:45
 #, fuzzy, kde-format
 #| msgid "&Delete"
 msgctxt "@action:inmenu delete this incidence"
 msgid "&Delete"
 msgstr "काढून टाका (&D)"
 
-#: koeventpopupmenu.cpp:51
+#: koeventpopupmenu.cpp:49
 #, fuzzy, kde-format
 #| msgid "&Print"
 msgctxt "@action:inmenu"
 msgid "&Print…"
 msgstr "छापा (&P)"
 
-#: koeventpopupmenu.cpp:53
+#: koeventpopupmenu.cpp:51
 #, fuzzy, kde-format
 #| msgid "Print Previe&w..."
 msgctxt "@action:inmenu"
 msgid "Print Previe&w…"
 msgstr "छपाई पूर्वावलोकन (&W)..."
 
-#: koeventpopupmenu.cpp:74
+#: koeventpopupmenu.cpp:72
 #, fuzzy, kde-format
 #| msgctxt "cut this event"
 #| msgid "C&ut"
@@ -2301,84 +2301,70 @@ msgctxt "@action:inmenu cut this incidence"
 msgid "C&ut"
 msgstr "कापा (&U)"
 
-#: koeventpopupmenu.cpp:76
+#: koeventpopupmenu.cpp:74
 #, fuzzy, kde-format
 #| msgid "&Copy"
 msgctxt "@action:inmenu copy this incidence"
 msgid "&Copy"
 msgstr "प्रत करा (&C)"
 
-#: koeventpopupmenu.cpp:77
+#: koeventpopupmenu.cpp:75
 #, fuzzy, kde-format
 #| msgid "&Paste"
 msgctxt "@action:inmenu"
 msgid "&Paste"
 msgstr "चिकटवा (&P)"
 
-#: koeventpopupmenu.cpp:85
+#: koeventpopupmenu.cpp:83
 #, fuzzy, kde-format
 #| msgid "Create a new To-do"
 msgctxt "@action:inmenu"
 msgid "Create To-do from Event"
 msgstr "नवीन करण्यासाठी तयार करा"
 
-#: koeventpopupmenu.cpp:89
-#, fuzzy, kde-format
-#| msgid "Create a new Event"
-msgctxt "@action:inmenu"
-msgid "Create Note for Event"
-msgstr "नवीन कार्यक्रम तयार करा"
-
-#: koeventpopupmenu.cpp:100
+#: koeventpopupmenu.cpp:92
 #, fuzzy, kde-format
 #| msgid "Togg&le To-do Completed"
 msgctxt "@action:inmenu"
 msgid "Togg&le To-do Completed"
 msgstr "करायच्या कामांचे एकत्रीकरण पूर्ण झाले (&L)"
 
-#: koeventpopupmenu.cpp:105
+#: koeventpopupmenu.cpp:97
 #, fuzzy, kde-format
 #| msgid "Create a new Event"
 msgctxt "@action:inmenu"
 msgid "Create Event from To-do"
 msgstr "नवीन कार्यक्रम तयार करा"
 
-#: koeventpopupmenu.cpp:111
-#, fuzzy, kde-format
-#| msgid "Create a new To-do"
-msgctxt "@action:inmenu"
-msgid "Create Note for To-do"
-msgstr "नवीन करण्यासाठी तयार करा"
-
-#: koeventpopupmenu.cpp:122
+#: koeventpopupmenu.cpp:108
 #, fuzzy, kde-format
 #| msgid "&Toggle Reminder"
 msgctxt "@action:inmenu"
 msgid "&Toggle Reminder"
 msgstr "स्मरणपत्रांचे एकत्रीकरण (&T)"
 
-#: koeventpopupmenu.cpp:129
+#: koeventpopupmenu.cpp:115
 #, fuzzy, kde-format
 #| msgid "&Dissociate From Recurrence..."
 msgctxt "@action:inmenu"
 msgid "&Dissociate From Recurrence…"
 msgstr "पुनारावृत्तीपासून अलग करा..."
 
-#: koeventpopupmenu.cpp:137
+#: koeventpopupmenu.cpp:123
 #, fuzzy, kde-format
 #| msgid "&Send as iCalendar..."
 msgctxt "@action:inmenu"
 msgid "Send as iCalendar…"
 msgstr "iदिनदर्शिका म्हणून पाठवा (&S)..."
 
-#: koeventpopupmenu.cpp:187
+#: koeventpopupmenu.cpp:173
 #, fuzzy, kde-format
 #| msgid "&Toggle Reminder"
 msgctxt "@action:inmenu"
 msgid "&Toggle Reminder Off"
 msgstr "स्मरणपत्रांचे एकत्रीकरण (&T)"
 
-#: koeventpopupmenu.cpp:188
+#: koeventpopupmenu.cpp:174
 #, fuzzy, kde-format
 #| msgid "&Toggle Reminder"
 msgctxt "@action:inmenu"
@@ -6240,6 +6226,18 @@ msgstr "%1"
 msgctxt "4 digit year"
 msgid "%1"
 msgstr "%1"
+
+#, fuzzy
+#~| msgid "Create a new Event"
+#~ msgctxt "@action:inmenu"
+#~ msgid "Create Note for Event"
+#~ msgstr "नवीन कार्यक्रम तयार करा"
+
+#, fuzzy
+#~| msgid "Create a new To-do"
+#~ msgctxt "@action:inmenu"
+#~ msgid "Create Note for To-do"
+#~ msgstr "नवीन करण्यासाठी तयार करा"
 
 #~ msgid "Import &Calendar..."
 #~ msgstr "दिनदर्शिका आयात करा (&C)..."

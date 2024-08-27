@@ -5,7 +5,7 @@ msgid ""
 msgstr ""
 "Project-Id-Version: korganizer 0\n"
 "Report-Msgid-Bugs-To: https://bugs.kde.org\n"
-"POT-Creation-Date: 2024-08-24 00:40+0000\n"
+"POT-Creation-Date: 2024-08-27 00:40+0000\n"
 "PO-Revision-Date: 2011-02-27 12:20+0100\n"
 "Last-Translator: Marko Dimjasevic <marko@dimjasevic.net>\n"
 "Language-Team: Croatian <kde-croatia-list@lists.sourceforge.net>\n"
@@ -2059,110 +2059,98 @@ msgstr "&Dodaj"
 msgid "&Cancel"
 msgstr "&Promjeni"
 
-#: koeventpopupmenu.cpp:43
+#: koeventpopupmenu.cpp:41
 #, fuzzy, kde-format
 #| msgid "&Show"
 msgctxt "@action:inmenu"
 msgid "&Show"
 msgstr "Pri&kaži"
 
-#: koeventpopupmenu.cpp:45
+#: koeventpopupmenu.cpp:43
 #, fuzzy, kde-format
 msgctxt "@action:inmenu"
 msgid "&Edit…"
 msgstr "&Uredi..."
 
-#: koeventpopupmenu.cpp:47
+#: koeventpopupmenu.cpp:45
 #, fuzzy, kde-format
 msgctxt "@action:inmenu delete this incidence"
 msgid "&Delete"
 msgstr "Obriši %1"
 
-#: koeventpopupmenu.cpp:51
+#: koeventpopupmenu.cpp:49
 #, fuzzy, kde-format
 msgctxt "@action:inmenu"
 msgid "&Print…"
 msgstr "Štampaj dan"
 
-#: koeventpopupmenu.cpp:53
+#: koeventpopupmenu.cpp:51
 #, fuzzy, kde-format
 msgctxt "@action:inmenu"
 msgid "Print Previe&w…"
 msgstr "&Uredi..."
 
-#: koeventpopupmenu.cpp:74
+#: koeventpopupmenu.cpp:72
 #, fuzzy, kde-format
 msgctxt "@action:inmenu cut this incidence"
 msgid "C&ut"
 msgstr "Čukati"
 
-#: koeventpopupmenu.cpp:76
+#: koeventpopupmenu.cpp:74
 #, kde-format
 msgctxt "@action:inmenu copy this incidence"
 msgid "&Copy"
 msgstr ""
 
-#: koeventpopupmenu.cpp:77
+#: koeventpopupmenu.cpp:75
 #, fuzzy, kde-format
 msgctxt "@action:inmenu"
 msgid "&Paste"
 msgstr "&Krajnji rok:"
 
-#: koeventpopupmenu.cpp:85
+#: koeventpopupmenu.cpp:83
 #, fuzzy, kde-format
 msgctxt "@action:inmenu"
 msgid "Create To-do from Event"
 msgstr "Kliknite da biste dodali novi zadatak"
 
-#: koeventpopupmenu.cpp:89
-#, fuzzy, kde-format
-msgctxt "@action:inmenu"
-msgid "Create Note for Event"
-msgstr "Kliknite da biste dodali novi zadatak"
-
-#: koeventpopupmenu.cpp:100
+#: koeventpopupmenu.cpp:92
 #, fuzzy, kde-format
 msgctxt "@action:inmenu"
 msgid "Togg&le To-do Completed"
 msgstr "Obriši završene"
 
-#: koeventpopupmenu.cpp:105
+#: koeventpopupmenu.cpp:97
 #, fuzzy, kde-format
 msgctxt "@action:inmenu"
 msgid "Create Event from To-do"
 msgstr "Kliknite da biste dodali novi zadatak"
 
-#: koeventpopupmenu.cpp:111
-#, fuzzy, kde-format
-msgctxt "@action:inmenu"
-msgid "Create Note for To-do"
-msgstr "Kliknite da biste dodali novi zadatak"
-
-#: koeventpopupmenu.cpp:122
+#: koeventpopupmenu.cpp:108
 #, fuzzy, kde-format
 msgctxt "@action:inmenu"
 msgid "&Toggle Reminder"
 msgstr "&Podsjetnik:"
 
-#: koeventpopupmenu.cpp:129
+#: koeventpopupmenu.cpp:115
 #, fuzzy, kde-format
 msgctxt "@action:inmenu"
 msgid "&Dissociate From Recurrence…"
 msgstr "&Uključi ponavljanje"
 
-#: koeventpopupmenu.cpp:137
+#: koeventpopupmenu.cpp:123
 #, fuzzy, kde-format
 msgctxt "@action:inmenu"
 msgid "Send as iCalendar…"
 msgstr "&Umetni postojeći kalendar..."
 
-#: koeventpopupmenu.cpp:187
+#: koeventpopupmenu.cpp:173
 #, fuzzy, kde-format
 msgctxt "@action:inmenu"
 msgid "&Toggle Reminder Off"
 msgstr "&Podsjetnik:"
 
-#: koeventpopupmenu.cpp:188
+#: koeventpopupmenu.cpp:174
 #, fuzzy, kde-format
 msgctxt "@action:inmenu"
 msgid "&Toggle Reminder On"
@@ -5590,6 +5578,16 @@ msgstr "- %1"
 msgctxt "4 digit year"
 msgid "%1"
 msgstr "- %1"
+
+#, fuzzy
+#~ msgctxt "@action:inmenu"
+#~ msgid "Create Note for Event"
+#~ msgstr "Kliknite da biste dodali novi zadatak"
+
+#, fuzzy
+#~ msgctxt "@action:inmenu"
+#~ msgid "Create Note for To-do"
+#~ msgstr "Kliknite da biste dodali novi zadatak"
 
 #, fuzzy
 #~ msgid "Import &Calendar..."

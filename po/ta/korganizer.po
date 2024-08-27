@@ -17,7 +17,7 @@ msgid ""
 msgstr ""
 "Project-Id-Version: korganizer\n"
 "Report-Msgid-Bugs-To: https://bugs.kde.org\n"
-"POT-Creation-Date: 2024-08-24 00:40+0000\n"
+"POT-Creation-Date: 2024-08-27 00:40+0000\n"
 "PO-Revision-Date: 2024-06-20 21:45+0530\n"
 "Last-Translator: Kishore G <kishore96@gmail.com>\n"
 "Language-Team: Tamil <kde-i18n-doc@kde.org>\n"
@@ -2098,115 +2098,101 @@ msgstr "&சேர்"
 msgid "&Cancel"
 msgstr "மாற்றம்"
 
-#: koeventpopupmenu.cpp:43
+#: koeventpopupmenu.cpp:41
 #, fuzzy, kde-format
 #| msgid "&Show"
 msgctxt "@action:inmenu"
 msgid "&Show"
 msgstr "&காட்டு"
 
-#: koeventpopupmenu.cpp:45
+#: koeventpopupmenu.cpp:43
 #, kde-format
 msgctxt "@action:inmenu"
 msgid "&Edit…"
 msgstr "&திருத்து…"
 
-#: koeventpopupmenu.cpp:47
+#: koeventpopupmenu.cpp:45
 #, fuzzy, kde-format
 msgctxt "@action:inmenu delete this incidence"
 msgid "&Delete"
 msgstr "%1னை அழி"
 
-#: koeventpopupmenu.cpp:51
+#: koeventpopupmenu.cpp:49
 #, kde-format
 msgctxt "@action:inmenu"
 msgid "&Print…"
 msgstr "&அச்சிடு…"
 
-#: koeventpopupmenu.cpp:53
+#: koeventpopupmenu.cpp:51
 #, kde-format
 msgctxt "@action:inmenu"
 msgid "Print Previe&w…"
 msgstr "அ&ச்சு முன்னோட்டம்…"
 
-#: koeventpopupmenu.cpp:74
+#: koeventpopupmenu.cpp:72
 #, fuzzy, kde-format
 msgctxt "@action:inmenu cut this incidence"
 msgid "C&ut"
 msgstr "ஷூகட்"
 
-#: koeventpopupmenu.cpp:76
+#: koeventpopupmenu.cpp:74
 #, fuzzy, kde-format
 msgctxt "@action:inmenu copy this incidence"
 msgid "&Copy"
 msgstr "நகலிட"
 
-#: koeventpopupmenu.cpp:77
+#: koeventpopupmenu.cpp:75
 #, fuzzy, kde-format
 #| msgid "&Date:"
 msgctxt "@action:inmenu"
 msgid "&Paste"
 msgstr "தேதி"
 
-#: koeventpopupmenu.cpp:85
+#: koeventpopupmenu.cpp:83
 #, fuzzy, kde-format
 #| msgid "Click to add a new to-do"
 msgctxt "@action:inmenu"
 msgid "Create To-do from Event"
 msgstr "புதிய செயலை இணைக்க சொடுக்கு"
 
-#: koeventpopupmenu.cpp:89
-#, fuzzy, kde-format
-#| msgid "Click to add a new to-do"
-msgctxt "@action:inmenu"
-msgid "Create Note for Event"
-msgstr "புதிய செயலை இணைக்க சொடுக்கு"
-
-#: koeventpopupmenu.cpp:100
+#: koeventpopupmenu.cpp:92
 #, fuzzy, kde-format
 msgctxt "@action:inmenu"
 msgid "Togg&le To-do Completed"
 msgstr "முடித்தவற்றை முற்றிலும் நீக்கு"
 
-#: koeventpopupmenu.cpp:105
+#: koeventpopupmenu.cpp:97
 #, fuzzy, kde-format
 #| msgid "Click to add a new to-do"
 msgctxt "@action:inmenu"
 msgid "Create Event from To-do"
 msgstr "புதிய செயலை இணைக்க சொடுக்கு"
 
-#: koeventpopupmenu.cpp:111
-#, fuzzy, kde-format
-#| msgid "Click to add a new to-do"
-msgctxt "@action:inmenu"
-msgid "Create Note for To-do"
-msgstr "புதிய செயலை இணைக்க சொடுக்கு"
-
-#: koeventpopupmenu.cpp:122
+#: koeventpopupmenu.cpp:108
 #, fuzzy, kde-format
 msgctxt "@action:inmenu"
 msgid "&Toggle Reminder"
 msgstr "&நினைவுக்குறிப்பு"
 
-#: koeventpopupmenu.cpp:129
+#: koeventpopupmenu.cpp:115
 #, kde-format
 msgctxt "@action:inmenu"
 msgid "&Dissociate From Recurrence…"
 msgstr "&மறுநிகழ்விலிருந்து நிகழ்வை பிரி…"
 
-#: koeventpopupmenu.cpp:137
+#: koeventpopupmenu.cpp:123
 #, kde-format
 msgctxt "@action:inmenu"
 msgid "Send as iCalendar…"
 msgstr "iCalendar ஆக அனுப்பு..."
 
-#: koeventpopupmenu.cpp:187
+#: koeventpopupmenu.cpp:173
 #, fuzzy, kde-format
 msgctxt "@action:inmenu"
 msgid "&Toggle Reminder Off"
 msgstr "&நினைவுக்குறிப்பு"
 
-#: koeventpopupmenu.cpp:188
+#: koeventpopupmenu.cpp:174
 #, fuzzy, kde-format
 msgctxt "@action:inmenu"
 msgid "&Toggle Reminder On"
@@ -5721,6 +5707,18 @@ msgstr "%1"
 msgctxt "4 digit year"
 msgid "%1"
 msgstr "%1"
+
+#, fuzzy
+#~| msgid "Click to add a new to-do"
+#~ msgctxt "@action:inmenu"
+#~ msgid "Create Note for Event"
+#~ msgstr "புதிய செயலை இணைக்க சொடுக்கு"
+
+#, fuzzy
+#~| msgid "Click to add a new to-do"
+#~ msgctxt "@action:inmenu"
+#~ msgid "Create Note for To-do"
+#~ msgstr "புதிய செயலை இணைக்க சொடுக்கு"
 
 #~ msgid "Import &Calendar..."
 #~ msgstr "நாள்காட்டியை இ&றக்குமதி செய்..."

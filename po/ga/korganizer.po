@@ -6,7 +6,7 @@ msgid ""
 msgstr ""
 "Project-Id-Version: kdepim/korganizer.po\n"
 "Report-Msgid-Bugs-To: https://bugs.kde.org\n"
-"POT-Creation-Date: 2024-08-24 00:40+0000\n"
+"POT-Creation-Date: 2024-08-27 00:40+0000\n"
 "PO-Revision-Date: 2004-12-03 14:52-0500\n"
 "Last-Translator: Kevin Scannell <kscanne@gmail.com>\n"
 "Language-Team: Irish <gaeilge-gnulinux@lists.sourceforge.net>\n"
@@ -2202,42 +2202,42 @@ msgstr "C&uir Leis"
 msgid "&Cancel"
 msgstr "&Cealaigh"
 
-#: koeventpopupmenu.cpp:43
+#: koeventpopupmenu.cpp:41
 #, fuzzy, kde-format
 #| msgid "&Show"
 msgctxt "@action:inmenu"
 msgid "&Show"
 msgstr "&Taispeáin"
 
-#: koeventpopupmenu.cpp:45
+#: koeventpopupmenu.cpp:43
 #, fuzzy, kde-format
 #| msgid "&Edit"
 msgctxt "@action:inmenu"
 msgid "&Edit…"
 msgstr "&Eagar"
 
-#: koeventpopupmenu.cpp:47
+#: koeventpopupmenu.cpp:45
 #, fuzzy, kde-format
 #| msgid "&Delete"
 msgctxt "@action:inmenu delete this incidence"
 msgid "&Delete"
 msgstr "&Scrios"
 
-#: koeventpopupmenu.cpp:51
+#: koeventpopupmenu.cpp:49
 #, fuzzy, kde-format
 #| msgid "&Print"
 msgctxt "@action:inmenu"
 msgid "&Print…"
 msgstr "&Priontáil"
 
-#: koeventpopupmenu.cpp:53
+#: koeventpopupmenu.cpp:51
 #, fuzzy, kde-format
 #| msgid "Print Previe&w..."
 msgctxt "@action:inmenu"
 msgid "Print Previe&w…"
 msgstr "&Réamhamharc Priontála..."
 
-#: koeventpopupmenu.cpp:74
+#: koeventpopupmenu.cpp:72
 #, fuzzy, kde-format
 #| msgctxt "cut this event"
 #| msgid "C&ut"
@@ -2245,35 +2245,28 @@ msgctxt "@action:inmenu cut this incidence"
 msgid "C&ut"
 msgstr "&Gearr"
 
-#: koeventpopupmenu.cpp:76
+#: koeventpopupmenu.cpp:74
 #, fuzzy, kde-format
 #| msgid "&Copy"
 msgctxt "@action:inmenu copy this incidence"
 msgid "&Copy"
 msgstr "&Cóipeáil"
 
-#: koeventpopupmenu.cpp:77
+#: koeventpopupmenu.cpp:75
 #, fuzzy, kde-format
 #| msgid "&Paste"
 msgctxt "@action:inmenu"
 msgid "&Paste"
 msgstr "&Greamaigh"
 
-#: koeventpopupmenu.cpp:85
+#: koeventpopupmenu.cpp:83
 #, fuzzy, kde-format
 #| msgid "Create a new To-do"
 msgctxt "@action:inmenu"
 msgid "Create To-do from Event"
 msgstr "Cruthaigh Tasc nua"
 
-#: koeventpopupmenu.cpp:89
-#, fuzzy, kde-format
-#| msgid "Create a new Event"
-msgctxt "@action:inmenu"
-msgid "Create Note for Event"
-msgstr "Cruthaigh Imeacht nua"
-
-#: koeventpopupmenu.cpp:100
+#: koeventpopupmenu.cpp:92
 #, fuzzy, kde-format
 #| msgctxt "@action:inmenu delete completed to-dos"
 #| msgid "Pur&ge Completed"
@@ -2281,48 +2274,41 @@ msgctxt "@action:inmenu"
 msgid "Togg&le To-do Completed"
 msgstr "Pur&gú Críochnaithe"
 
-#: koeventpopupmenu.cpp:105
+#: koeventpopupmenu.cpp:97
 #, fuzzy, kde-format
 #| msgid "Create a new Event"
 msgctxt "@action:inmenu"
 msgid "Create Event from To-do"
 msgstr "Cruthaigh Imeacht nua"
 
-#: koeventpopupmenu.cpp:111
-#, fuzzy, kde-format
-#| msgid "Create a new To-do"
-msgctxt "@action:inmenu"
-msgid "Create Note for To-do"
-msgstr "Cruthaigh Tasc nua"
-
-#: koeventpopupmenu.cpp:122
+#: koeventpopupmenu.cpp:108
 #, fuzzy, kde-format
 #| msgid "&Toggle Reminder"
 msgctxt "@action:inmenu"
 msgid "&Toggle Reminder"
 msgstr "&Scoránaigh Meabhrúchán"
 
-#: koeventpopupmenu.cpp:129
+#: koeventpopupmenu.cpp:115
 #, kde-format
 msgctxt "@action:inmenu"
 msgid "&Dissociate From Recurrence…"
 msgstr ""
 
-#: koeventpopupmenu.cpp:137
+#: koeventpopupmenu.cpp:123
 #, fuzzy, kde-format
 #| msgid "&Send as iCalendar..."
 msgctxt "@action:inmenu"
 msgid "Send as iCalendar…"
 msgstr "&Seol mar iCalendar..."
 
-#: koeventpopupmenu.cpp:187
+#: koeventpopupmenu.cpp:173
 #, fuzzy, kde-format
 #| msgid "&Toggle Reminder"
 msgctxt "@action:inmenu"
 msgid "&Toggle Reminder Off"
 msgstr "&Scoránaigh Meabhrúchán"
 
-#: koeventpopupmenu.cpp:188
+#: koeventpopupmenu.cpp:174
 #, fuzzy, kde-format
 #| msgid "&Toggle Reminder"
 msgctxt "@action:inmenu"
@@ -5845,6 +5831,18 @@ msgstr "%1"
 msgctxt "4 digit year"
 msgid "%1"
 msgstr "%1"
+
+#, fuzzy
+#~| msgid "Create a new Event"
+#~ msgctxt "@action:inmenu"
+#~ msgid "Create Note for Event"
+#~ msgstr "Cruthaigh Imeacht nua"
+
+#, fuzzy
+#~| msgid "Create a new To-do"
+#~ msgctxt "@action:inmenu"
+#~ msgid "Create Note for To-do"
+#~ msgstr "Cruthaigh Tasc nua"
 
 #~ msgid "Import &Calendar..."
 #~ msgstr "Iompórtáil &Féilire..."
