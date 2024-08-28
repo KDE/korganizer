@@ -8,6 +8,7 @@
         "Description[ca]": "Configura les pàgines personalitzades",
         "Description[cs]": "Nastavení vlastních stránek",
         "Description[de]": "Einstellungen für benutzerdefinierte Seiten",
+        "Description[en_GB]": "Configure the Custom Pages",
         "Description[eo]": "Agordi la proprajn paĝojn",
         "Description[es]": "Configurar las páginas personalizadas",
         "Description[eu]": "Konfiguratu Neurrira ipintzeko orriak",
@@ -47,6 +48,7 @@
         "Name[da]": "Brugervalgte sider",
         "Name[de]": "Benutzerdefinierte Seiten",
         "Name[el]": "Προσαρμοσμένες σελίδες",
+        "Name[en_GB]": "Custom Pages",
         "Name[eo]": "Propraj Paĝoj",
         "Name[es]": "Páginas personalizadas",
         "Name[et]": "Omaloodud leheküljed",
@@ -99,7 +101,8 @@
         "Name[uk]": "Нетипові сторінки",
         "Name[wa]": "Pådjes da vosse",
         "Name[x-test]": "xxCustom Pagesxx",
-        "Name[zh_CN]": "定制页"
+        "Name[zh_CN]": "定制页",
+        "Name[zh_TW]": "Custom Pages"
     },
     "X-DocPath": "korganizer/config.html#config-custom-pages",
     "X-KDE-Weight": 800
