@@ -17,7 +17,7 @@ msgid ""
 msgstr ""
 "Project-Id-Version: korganizer\n"
 "Report-Msgid-Bugs-To: https://bugs.kde.org\n"
-"POT-Creation-Date: 2024-08-27 00:40+0000\n"
+"POT-Creation-Date: 2024-09-01 00:39+0000\n"
 "PO-Revision-Date: 2024-08-02 07:49+0300\n"
 "Last-Translator: Yaron Shahrabani <sh.yaron@gmail.com>\n"
 "Language-Team: צוות התרגום של KDE ישראל\n"
@@ -326,7 +326,7 @@ msgctxt "@info:credit"
 msgid "Fester Zigterman"
 msgstr "פסטר ציגטרמן"
 
-#: actionmanager.cpp:130
+#: actionmanager.cpp:131
 #, kde-format
 msgid ""
 "<qt>This will hide the menu bar completely. You can show it again by typing "
@@ -335,31 +335,31 @@ msgstr ""
 "<qt> ההגדרה הזאת תסתיר את שורת התפריטים לגמרי. ניתן להציג אותה שוב על ידי "
 "הרצת הפקודה %1. </qt>"
 
-#: actionmanager.cpp:133
+#: actionmanager.cpp:134
 #, kde-format
 msgctxt "@title:window"
 msgid "Hide menu bar"
 msgstr "הסתרת סרגל תפריטים"
 
-#: actionmanager.cpp:244
+#: actionmanager.cpp:245
 #, kde-format
 msgctxt "@action"
 msgid "Import &Calendar…"
 msgstr "יי&בוא לוח שנה…"
 
-#: actionmanager.cpp:245
+#: actionmanager.cpp:246
 #, kde-format
 msgctxt "@info:status"
 msgid "Import a calendar"
 msgstr "ייבוא לוח שנה"
 
-#: actionmanager.cpp:246
+#: actionmanager.cpp:247
 #, kde-format
 msgctxt "@info:tooltip"
 msgid "Import an iCalendar or vCalendar file"
 msgstr "ייבוא קובץ iCalendar או vCalendar"
 
-#: actionmanager.cpp:248
+#: actionmanager.cpp:249
 #, kde-format
 msgctxt "@info:whatsthis"
 msgid ""
@@ -369,24 +369,24 @@ msgstr ""
 "יש לבחור ברשומת התפריט הזאת כדי לייבא תוכן של קובץ iCalendar או vCalendar "
 "לאוסף לוחות השנה הנוכחי שלך."
 
-#: actionmanager.cpp:254
+#: actionmanager.cpp:255
 #, kde-format
 msgid "Get New Calendars…"
 msgstr "הורדת לוחות שנה חדשים…"
 
-#: actionmanager.cpp:255
+#: actionmanager.cpp:256
 #, kde-format
 msgctxt "@info:status"
 msgid "Load a calendar from \"Get Hot New Stuff\""
 msgstr "טעינת לוח שנה מ„הורדת דברים חדשים לוהטים”"
 
-#: actionmanager.cpp:256
+#: actionmanager.cpp:257
 #, kde-format
 msgctxt "@info:tooltip"
 msgid "Search \"Get Hot New Stuff\" for calendars to import"
 msgstr "חיפוש לוחות שנה לייבוא ב„הורדת דברים חדשים לוהטים”"
 
-#: actionmanager.cpp:258
+#: actionmanager.cpp:259
 #, kde-format
 msgctxt "@info:whatsthis"
 msgid ""
@@ -396,60 +396,60 @@ msgstr ""
 "רשומת תפריט זאת פותחת את חלונית „הורדת דברים חדשים לוהטים” שמאפשר לך לחפש "
 "ולייבא לוחות שנה משעשעים ושימושיים שנתרמו על ידי הקהילה."
 
-#: actionmanager.cpp:279
+#: actionmanager.cpp:280
 #, kde-format
 msgid "Could not load calendar %1."
 msgstr "לא ניתן לטעון את לוח השנה „%1”."
 
-#: actionmanager.cpp:289
+#: actionmanager.cpp:290
 #, kde-format
 msgid "The downloaded events will be merged into your current calendar."
 msgstr "האירועים שהורדו ימוזגו לתוך לוח השנה הנוכחי שלך."
 
-#: actionmanager.cpp:306
+#: actionmanager.cpp:307
 #, kde-format
 msgctxt "@action"
 msgid "Export as &iCalendar…"
 msgstr "יי&צוא כ־iCalendar…"
 
-#: actionmanager.cpp:307
+#: actionmanager.cpp:308
 #, kde-format
 msgctxt "@info:status"
 msgid "Export calendar to file"
 msgstr "ייצוא לוח שנה לקובץ"
 
-#: actionmanager.cpp:308
+#: actionmanager.cpp:309
 #, kde-format
 msgctxt "@info:tooltip"
 msgid "Export your calendar to an iCalendar file"
 msgstr "ייצוא לוח השנה שלך לקובץ iCalendar"
 
-#: actionmanager.cpp:309
+#: actionmanager.cpp:310
 #, kde-format
 msgctxt "@info:whatsthis"
 msgid ""
 "Allows you to export your entire calendar collection to one iCalendar file."
 msgstr "מאפשר לך לייצר את כל אוסף לוחות השנה שלך לקובץ iCalendat יחיד."
 
-#: actionmanager.cpp:315
+#: actionmanager.cpp:316
 #, kde-format
 msgctxt "@action"
 msgid "Archive O&ld Incidences…"
 msgstr "העברת מאורעות ישנים ל&ארכיון…"
 
-#: actionmanager.cpp:316
+#: actionmanager.cpp:317
 #, kde-format
 msgctxt "@info:status"
 msgid "Archive events and to-dos to a file"
 msgstr "העברת אירועים ומטלות לקובץ ארכיון"
 
-#: actionmanager.cpp:317
+#: actionmanager.cpp:318
 #, kde-format
 msgctxt "@info:tooltip"
 msgid "Archive old events and to-dos to an iCalendar file"
 msgstr "העברת אירועים ומטלות ישנים לקובץ iCalendar כארכיון"
 
-#: actionmanager.cpp:319
+#: actionmanager.cpp:320
 #, kde-format
 msgctxt "@info:whatsthis"
 msgid ""
@@ -460,25 +460,25 @@ msgstr ""
 "רשומת היומן הזאת פותחת חלונית שמאפשרת לך לבחור אירועים ומטלות ישנים שניתן "
 "להעביר לארכיון בקובץ iCalendar. הם יוסרו מאוסף לוחות השנה הקיים שלך."
 
-#: actionmanager.cpp:327
+#: actionmanager.cpp:328
 #, kde-format
 msgctxt "@action"
 msgid "Pur&ge Completed To-dos"
 msgstr "ניפוי מטלות &שהושלמו"
 
-#: actionmanager.cpp:328
+#: actionmanager.cpp:329
 #, kde-format
 msgctxt "@info:status"
 msgid "Purge completed to-dos"
 msgstr "ניפוי מטלות שהושלמו"
 
-#: actionmanager.cpp:329
+#: actionmanager.cpp:330
 #, kde-format
 msgctxt "@info:tooltip"
 msgid "Remove completed to-dos from your calendar"
 msgstr "הסרת מטלות שהושלמו מלוח השנה שלך"
 
-#: actionmanager.cpp:331
+#: actionmanager.cpp:332
 #, kde-format
 msgctxt "@info:whatsthis"
 msgid ""
@@ -488,30 +488,30 @@ msgstr ""
 "מאפשר להסיר את כל המטלות שהושלמו מאוסף לוחות השנה שלך. זאת פעולה בלתי הפיכה!"
 
 #. i18n: ectx: property (text), widget (QPushButton, mDeleteButton)
-#: actionmanager.cpp:368 actionmanager.cpp:623 actionmanager.cpp:1307
-#: actionmanager.cpp:1344 ui/filteredit_base.ui:56
+#: actionmanager.cpp:369 actionmanager.cpp:624 actionmanager.cpp:1312
+#: actionmanager.cpp:1349 ui/filteredit_base.ui:56
 #, kde-format
 msgid "&Delete"
 msgstr "מ&חיקה"
 
-#: actionmanager.cpp:385
+#: actionmanager.cpp:386
 #, kde-format
 msgid "What's &Next"
 msgstr "מה בהמ&שך"
 
-#: actionmanager.cpp:386
+#: actionmanager.cpp:387
 #, kde-format
 msgctxt "@info:status"
 msgid "What's Next View"
 msgstr "תצוגת מה הלאה"
 
-#: actionmanager.cpp:387
+#: actionmanager.cpp:388
 #, kde-format
 msgctxt "@info:tooltip"
 msgid "Switch to the What's Next View"
 msgstr "מעבר לתצוגת מה הלאה"
 
-#: actionmanager.cpp:389
+#: actionmanager.cpp:390
 #, kde-format
 msgctxt "@info:whatsthis"
 msgid ""
@@ -524,24 +524,24 @@ msgstr ""
 "לקריאה מהירה. כל המטלות הפתוחות תוצגנה, אך רק האירועים מהימים שנבחרו "
 "בתאריכון בסרגל הצד יופיעו."
 
-#: actionmanager.cpp:397
+#: actionmanager.cpp:398
 #, kde-format
 msgid "&Month"
 msgstr "&חודש"
 
-#: actionmanager.cpp:398
+#: actionmanager.cpp:399
 #, kde-format
 msgctxt "@info:status"
 msgid "Month View"
 msgstr "תצוגת חודש"
 
-#: actionmanager.cpp:399
+#: actionmanager.cpp:400
 #, kde-format
 msgctxt "@info:tooltip"
 msgid "Switch to the Month View"
 msgstr "מעבר לתצוגת חודש"
 
-#: actionmanager.cpp:401
+#: actionmanager.cpp:402
 #, kde-format
 msgctxt "@info:whatsthis"
 msgid ""
@@ -551,24 +551,24 @@ msgstr ""
 "מעבר לתצוגת חודש, שמציגה את כל האירועים והמטלות שעומדות להסתיים בפריסת לוח "
 "שנה חודשית ידועה."
 
-#: actionmanager.cpp:407
+#: actionmanager.cpp:408
 #, kde-format
 msgid "&Agenda"
 msgstr "&סדר יום"
 
-#: actionmanager.cpp:408
+#: actionmanager.cpp:409
 #, kde-format
 msgctxt "@info:status"
 msgid "Agenda View"
 msgstr "תצוגת סדר יום"
 
-#: actionmanager.cpp:409
+#: actionmanager.cpp:410
 #, kde-format
 msgctxt "@info:tooltip"
 msgid "Switch to the Agenda View"
 msgstr "החלפה לתצוגת סדר יום"
 
-#: actionmanager.cpp:411
+#: actionmanager.cpp:412
 #, kde-format
 msgctxt "@info:whatsthis"
 msgid ""
@@ -580,24 +580,24 @@ msgstr ""
 "יומיים, לפי סדר ציר הזמן. אפשר גם לצפות באורכו של כל אירוע בטבלת הזמנים של "
 "היום."
 
-#: actionmanager.cpp:418
+#: actionmanager.cpp:419
 #, kde-format
 msgid "&Event List"
 msgstr "רשימת &אירועים"
 
-#: actionmanager.cpp:419
+#: actionmanager.cpp:420
 #, kde-format
 msgctxt "@info:status"
 msgid "List View"
 msgstr "תצוגת רשימה"
 
-#: actionmanager.cpp:420
+#: actionmanager.cpp:421
 #, kde-format
 msgctxt "@info:tooltip"
 msgid "Switch to the List View"
 msgstr "מעבר לתצוגת הרשימה"
 
-#: actionmanager.cpp:422
+#: actionmanager.cpp:423
 #, kde-format
 msgctxt "@info:whatsthis"
 msgid ""
@@ -607,24 +607,24 @@ msgstr ""
 "מעבר לתצוגת הרשימה, שמציגה את כל המטלות, האירועים ורשומות היומן שלך לתאריכים "
 "שנבחרו בתאריכון כרשימה."
 
-#: actionmanager.cpp:428
+#: actionmanager.cpp:429
 #, kde-format
 msgid "&To-do List"
 msgstr "רשימת מ&טלות"
 
-#: actionmanager.cpp:429
+#: actionmanager.cpp:430
 #, kde-format
 msgctxt "@info:status"
 msgid "To-do List View"
 msgstr "תצוגת רשימת מטלות"
 
-#: actionmanager.cpp:430
+#: actionmanager.cpp:431
 #, kde-format
 msgctxt "@info:tooltip"
 msgid "Switch to the To-do List View"
 msgstr "מעבר לתצוגת רשימת מטלות"
 
-#: actionmanager.cpp:432
+#: actionmanager.cpp:433
 #, kde-format
 msgctxt "@info:whatsthis"
 msgid ""
@@ -632,24 +632,24 @@ msgid ""
 "tasks that need to be done."
 msgstr "מעבר לתצוגת המטלות, שמספקת מקום למעקב אחר מה שיש לבצע."
 
-#: actionmanager.cpp:438
+#: actionmanager.cpp:439
 #, kde-format
 msgid "&Journal"
 msgstr "יומ&ן"
 
-#: actionmanager.cpp:439
+#: actionmanager.cpp:440
 #, kde-format
 msgctxt "@info:status"
 msgid "Journal View"
 msgstr "תצוגת יומן"
 
-#: actionmanager.cpp:440
+#: actionmanager.cpp:441
 #, kde-format
 msgctxt "@info:tooltip"
 msgid "Switch to the Journal View"
 msgstr "עובר לתצוגת היומן"
 
-#: actionmanager.cpp:442
+#: actionmanager.cpp:443
 #, kde-format
 msgctxt "@info:whatsthis"
 msgid ""
@@ -658,24 +658,24 @@ msgid ""
 msgstr ""
 "מעבר לתצוגת יומן, שמספקת מקום לתעד את נקודת המבט, התחושות והחוויות שלך."
 
-#: actionmanager.cpp:448
+#: actionmanager.cpp:449
 #, kde-format
 msgid "Time&line"
 msgstr "&ציר זמן"
 
-#: actionmanager.cpp:449
+#: actionmanager.cpp:450
 #, kde-format
 msgctxt "@info:status"
 msgid "Timeline View"
 msgstr "תצוגת ציר זמן"
 
-#: actionmanager.cpp:450
+#: actionmanager.cpp:451
 #, kde-format
 msgctxt "@info:tooltip"
 msgid "Switch to the Timeline View"
 msgstr "מעבר לתצוגת ציר זמן"
 
-#: actionmanager.cpp:452
+#: actionmanager.cpp:453
 #, kde-format
 msgctxt "@info:whatsthis"
 msgid ""
@@ -685,25 +685,25 @@ msgstr ""
 "מעבר לתצוגת ציר הזמן, שמציגה את כל האירועים בפרק זמן מסוים בתצוגת גאנט. כל "
 "לוח שנה מוצג בשורה נפרדת."
 
-#: actionmanager.cpp:461
+#: actionmanager.cpp:462
 #, kde-format
 msgctxt "@action"
 msgid "&Refresh"
 msgstr "&רענון"
 
-#: actionmanager.cpp:462
+#: actionmanager.cpp:463
 #, kde-format
 msgctxt "@info:status"
 msgid "Refresh"
 msgstr "רענון"
 
-#: actionmanager.cpp:463
+#: actionmanager.cpp:464
 #, kde-format
 msgctxt "@info:tooltip"
 msgid "Refresh the display"
 msgstr "רענון התצוגה"
 
-#: actionmanager.cpp:465
+#: actionmanager.cpp:466
 #, kde-format
 msgctxt "@info:whatsthis"
 msgid ""
@@ -713,24 +713,24 @@ msgstr ""
 "הפעולה הזאת תרענן את תצוגת לוח השנה הנוכחית. היא לא מסנכרנת או מעדכנת תיקיות "
 "לוח שנה כלשהן."
 
-#: actionmanager.cpp:474
+#: actionmanager.cpp:475
 #, kde-format
 msgid "F&ilter"
 msgstr "מ&סנן"
 
-#: actionmanager.cpp:475
+#: actionmanager.cpp:476
 #, kde-format
 msgctxt "@info:status"
 msgid "Filter incidences"
 msgstr "סינון מאורעות"
 
-#: actionmanager.cpp:476
+#: actionmanager.cpp:477
 #, kde-format
 msgctxt "@info:tooltip"
 msgid "Filter incidences from the calendar"
 msgstr "סינון מאורעות מלוח השנה"
 
-#: actionmanager.cpp:478
+#: actionmanager.cpp:479
 #, kde-format
 msgctxt "@info:whatsthis"
 msgid ""
@@ -740,81 +740,81 @@ msgstr ""
 "הרצת מסנני תצוגה שהוגדרו על ידי המשתמש על אוסף לוחות השנה. קודם צריך ליצור "
 "מסננים. יש לפנות לאפשרות „ניהול מסנני תצוגה” בתפריט ההגדרות."
 
-#: actionmanager.cpp:490
+#: actionmanager.cpp:491
 #, kde-format
 msgid "In Horizontally"
 msgstr "התקרבות אופקית"
 
-#: actionmanager.cpp:495
+#: actionmanager.cpp:496
 #, kde-format
 msgid "Out Horizontally"
 msgstr "התרחקות אופקית"
 
-#: actionmanager.cpp:500
+#: actionmanager.cpp:501
 #, kde-format
 msgid "In Vertically"
 msgstr "התקרבות אנכית"
 
-#: actionmanager.cpp:505
+#: actionmanager.cpp:506
 #, kde-format
 msgid "Out Vertically"
 msgstr "התרחקות אנכית"
 
-#: actionmanager.cpp:514
+#: actionmanager.cpp:515
 #, kde-format
 msgctxt "@action Jump to today"
 msgid "To &Today"
 msgstr "&להיום"
 
 #. i18n: ectx: property (text), widget (QPushButton, mTodayBtn)
-#: actionmanager.cpp:515 views/collectionview/quickview.ui:94
+#: actionmanager.cpp:516 views/collectionview/quickview.ui:94
 #, kde-format
 msgid "Today"
 msgstr "היום"
 
-#: actionmanager.cpp:516
+#: actionmanager.cpp:517
 #, kde-format
 msgctxt "@info:status"
 msgid "Scroll to Today"
 msgstr "גלילה להיום"
 
-#: actionmanager.cpp:517
+#: actionmanager.cpp:518
 #, kde-format
 msgctxt "@info:tooltip"
 msgid "Scroll the view to today"
 msgstr "גלילת התצוגה להיום"
 
-#: actionmanager.cpp:518
+#: actionmanager.cpp:519
 #, kde-format
 msgctxt "@info:whatsthis"
 msgid "Scrolls the current view to the today's date."
 msgstr "גלילת התצוגה הנוכחית לתאריך של היום."
 
-#: actionmanager.cpp:523
+#: actionmanager.cpp:524
 #, kde-format
 msgctxt "scroll backward"
 msgid "&Backward"
 msgstr "&אחורה"
 
-#: actionmanager.cpp:524
+#: actionmanager.cpp:525
 #, kde-format
 msgctxt "scroll backward"
 msgid "Back"
 msgstr "חזרה"
 
-#: actionmanager.cpp:525
+#: actionmanager.cpp:526
 #, kde-format
 msgctxt "@info:status"
 msgid "Scroll Backward"
 msgstr "גלילה אחורה"
 
-#: actionmanager.cpp:526
+#: actionmanager.cpp:527
 #, kde-format
 msgctxt "@info:tooltip"
 msgid "Scroll the view backward"
 msgstr "גלילת התצוגה אחורה"
 
-#: actionmanager.cpp:528
+#: actionmanager.cpp:529
 #, kde-format
 msgctxt "@info:whatsthis"
 msgid ""
@@ -822,31 +822,31 @@ msgid ""
 "calendar view."
 msgstr "גלילה אחורה ביום, שבוע, חודש או שנה, כתלות בתצוגת לוח השנה הנוכחית."
 
-#: actionmanager.cpp:534
+#: actionmanager.cpp:535
 #, kde-format
 msgctxt "scroll forward"
 msgid "&Forward"
 msgstr "&קדימה"
 
-#: actionmanager.cpp:535
+#: actionmanager.cpp:536
 #, kde-format
 msgctxt "scroll forward"
 msgid "Forward"
 msgstr "קדימה"
 
-#: actionmanager.cpp:536
+#: actionmanager.cpp:537
 #, kde-format
 msgctxt "@info:status"
 msgid "Scroll Forward"
 msgstr "גלילה קדימה"
 
-#: actionmanager.cpp:537
+#: actionmanager.cpp:538
 #, kde-format
 msgctxt "@info:tooltip"
 msgid "Scroll the view forward"
 msgstr "גלילת התצוגה קדימה"
 
-#: actionmanager.cpp:539
+#: actionmanager.cpp:540
 #, kde-format
 msgctxt "@info:whatsthis"
 msgid ""
@@ -854,12 +854,12 @@ msgid ""
 "calendar view."
 msgstr "גלילה קדימה ביום, שבוע, חודש או שנה, כתלות בתצוגת לוח השנה הנוכחית."
 
-#: actionmanager.cpp:544
+#: actionmanager.cpp:545
 #, kde-format
 msgid "&Day"
 msgstr "&יום"
 
-#: actionmanager.cpp:553 actionmanager.cpp:1064
+#: actionmanager.cpp:554 actionmanager.cpp:1069
 #, kde-format
 msgid "&Next Day"
 msgid_plural "&Next %1 Days"
@@ -868,34 +868,34 @@ msgstr[1] "היומיים ה&באים"
 msgstr[2] "%1 הימים ה&באים"
 msgstr[3] "%1 הימים ה&באים"
 
-#: actionmanager.cpp:555
+#: actionmanager.cpp:556
 #, kde-format
 msgid "W&ork Week"
 msgstr "שבוע &עבודה"
 
-#: actionmanager.cpp:560
+#: actionmanager.cpp:561
 #, kde-format
 msgid "&Week"
 msgstr "&שבוע"
 
-#: actionmanager.cpp:567 kodaymatrix.cpp:484
+#: actionmanager.cpp:568 kodaymatrix.cpp:484
 #, kde-format
 msgid "New E&vent…"
 msgstr "&אירוע חדש…"
 
-#: actionmanager.cpp:568
+#: actionmanager.cpp:569
 #, kde-format
 msgctxt "@info:status"
 msgid "Create a new Event"
 msgstr "יצירת אירוע חדש"
 
-#: actionmanager.cpp:569
+#: actionmanager.cpp:570
 #, kde-format
 msgctxt "@info:tooltip"
 msgid "Create a new Event"
 msgstr "יצירת אירוע חדש"
 
-#: actionmanager.cpp:571
+#: actionmanager.cpp:572
 #, kde-format
 msgctxt "@info:whatsthis"
 msgid ""
@@ -903,24 +903,24 @@ msgid ""
 "attendees, recurrences and much more."
 msgstr "פתיחת חלונית שמאפשרת ליצור אירוע חדש עם תזכורות, משתתפים, חזרות ועוד."
 
-#: actionmanager.cpp:577 kodaymatrix.cpp:485
+#: actionmanager.cpp:578 kodaymatrix.cpp:485
 #, kde-format
 msgid "New &To-do…"
 msgstr "מטלה &חדשה…"
 
-#: actionmanager.cpp:578
+#: actionmanager.cpp:579
 #, kde-format
 msgctxt "@info:status"
 msgid "Create a new To-do"
 msgstr "יצירת ערוץ חדש"
 
-#: actionmanager.cpp:579
+#: actionmanager.cpp:580
 #, kde-format
 msgctxt "@info:tooltip"
 msgid "Create a new To-do"
 msgstr "יצירת מטלה חדשה"
 
-#: actionmanager.cpp:581
+#: actionmanager.cpp:582
 #, kde-format
 msgctxt "@info:whatsthis"
 msgid ""
@@ -928,58 +928,58 @@ msgid ""
 "attendees, recurrences and much more."
 msgstr "פתיחת חלונית שמאפשרת ליצור מטלה חדשה עם תזכורות, משתתפים, חזרות ועוד."
 
-#: actionmanager.cpp:588
+#: actionmanager.cpp:589
 #, kde-format
 msgctxt "@action"
 msgid "New Su&b-to-do…"
 msgstr "מ&טלת משנה חדשה…"
 
-#: actionmanager.cpp:596 kodaymatrix.cpp:486
+#: actionmanager.cpp:597 kodaymatrix.cpp:486
 #, kde-format
 msgid "New &Journal…"
 msgstr "יומ&ן חדש…"
 
-#: actionmanager.cpp:597
-#, kde-format
-msgctxt "@info:status"
-msgid "Create a new Journal"
-msgstr "יצירת יומן חדש"
-
 #: actionmanager.cpp:598
 #, kde-format
-msgctxt "@info:tooltip"
+msgctxt "@info:status"
 msgid "Create a new Journal"
 msgstr "יצירת יומן חדש"
 
 #: actionmanager.cpp:599
 #, kde-format
+msgctxt "@info:tooltip"
+msgid "Create a new Journal"
+msgstr "יצירת יומן חדש"
+
+#: actionmanager.cpp:600
+#, kde-format
 msgctxt "@info:whatsthis"
 msgid "Starts a dialog that allows you to create a new Journal entry."
 msgstr "פתיחת חלונית שמאפשרת ליצור רושמת יומן חדשה."
 
-#: actionmanager.cpp:604
+#: actionmanager.cpp:605
 #, kde-format
 msgid "Configure View…"
 msgstr "הגדרת תצוגה…"
 
-#: actionmanager.cpp:605
+#: actionmanager.cpp:606
 #, kde-format
 msgid "Configure"
 msgstr "הגדרה"
 
-#: actionmanager.cpp:606
+#: actionmanager.cpp:607
 #, kde-format
 msgctxt "@info:status"
 msgid "Configure the view"
 msgstr "הגדרת התצוגה"
 
-#: actionmanager.cpp:607
+#: actionmanager.cpp:608
 #, kde-format
 msgctxt "@info:tooltip"
 msgid "Configure the current view"
 msgstr "הגדרת התצוגה הנוכחית"
 
-#: actionmanager.cpp:609
+#: actionmanager.cpp:610
 #, kde-format
 msgctxt "@info:whatsthis"
 msgid ""
@@ -987,17 +987,17 @@ msgid ""
 "current calendar view."
 msgstr "פתיחת חלון הגדרות שמאפשר לך לשנות את הגדרות תצוגת לוח השנה הנוכחית."
 
-#: actionmanager.cpp:615 actionmanager.cpp:1301 actionmanager.cpp:1342
+#: actionmanager.cpp:616 actionmanager.cpp:1306 actionmanager.cpp:1347
 #, kde-format
 msgid "&Show"
 msgstr "ה&צגה"
 
-#: actionmanager.cpp:619 actionmanager.cpp:1304 actionmanager.cpp:1343
+#: actionmanager.cpp:620 actionmanager.cpp:1309 actionmanager.cpp:1348
 #, kde-format
 msgid "&Edit…"
 msgstr "&עריכה…"
 
-#: actionmanager.cpp:628
+#: actionmanager.cpp:629
 #, kde-format
 msgctxt "@action"
 msgid "&Make Sub-to-do Independent"
@@ -1007,104 +1007,104 @@ msgstr "ה&סבת מטלת משנה לעצמאית"
 #. mCalendarView, SLOT(toggleAlarm()),
 #. mACollection, "activate_alarm" );
 #. ************************* SCHEDULE MENU *******************************
-#: actionmanager.cpp:640
+#: actionmanager.cpp:641
 #, kde-format
 msgid "&Publish Item Information…"
 msgstr "&פרסום מידע על פריט…"
 
-#: actionmanager.cpp:647
+#: actionmanager.cpp:648
 #, kde-format
 msgid "Send &Invitation to Attendees"
 msgstr "שליחת מי&דע למשתתפים"
 
-#: actionmanager.cpp:655
+#: actionmanager.cpp:656
 #, kde-format
 msgctxt "@action"
 msgid "Re&quest Update"
 msgstr "&בקשת עדכון"
 
-#: actionmanager.cpp:663
+#: actionmanager.cpp:664
 #, kde-format
 msgctxt "@action"
 msgid "Send &Cancellation to Attendees"
 msgstr "שליחת &ביטול לנוכחים"
 
-#: actionmanager.cpp:671
+#: actionmanager.cpp:672
 #, kde-format
 msgid "Send Status &Update"
 msgstr "שליחת &עדכון מצב"
 
-#: actionmanager.cpp:679
+#: actionmanager.cpp:680
 #, kde-format
 msgctxt "counter proposal"
 msgid "Request Chan&ge"
 msgstr "בקשת &שינוי"
 
-#: actionmanager.cpp:687
+#: actionmanager.cpp:688
 #, kde-format
 msgctxt "@action"
 msgid "&Mail Free Busy Information…"
 msgstr "שליחת פרטי פנוי/עסוק ב&דוא״ל…"
 
-#: actionmanager.cpp:692
+#: actionmanager.cpp:693
 #, kde-format
 msgid "&Send as iCalendar…"
 msgstr "&שליחה כ־iCalendar…"
 
-#: actionmanager.cpp:699
+#: actionmanager.cpp:700
 #, kde-format
 msgctxt "@action"
 msgid "&Upload Free Busy Information"
 msgstr "ה&עלאת פרטי פנוי/עסוק"
 
-#: actionmanager.cpp:705
+#: actionmanager.cpp:706
 #, kde-format
 msgid "&Address Book"
 msgstr "&פנקס כתובות"
 
-#: actionmanager.cpp:713
+#: actionmanager.cpp:714
 #, kde-format
 msgid "Show Date Navigator"
 msgstr "הצגת תאריכון"
 
-#: actionmanager.cpp:717
+#: actionmanager.cpp:718
 #, kde-format
 msgid "Show To-do View"
 msgstr "תצוגת מטלות"
 
-#: actionmanager.cpp:721
+#: actionmanager.cpp:722
 #, kde-format
 msgid "Show Item Viewer"
 msgstr "תצוגת פריטים"
 
-#: actionmanager.cpp:737
+#: actionmanager.cpp:738
 #, kde-format
 msgid "Show Calendar Manager"
 msgstr "הצגת מנהל לוחות שנה"
 
-#: actionmanager.cpp:750
+#: actionmanager.cpp:751
 #, kde-format
 msgctxt "@action"
 msgid "Configure &Date && Time…"
 msgstr "הגדרת &תאריך ושעה…"
 
-#: actionmanager.cpp:754
+#: actionmanager.cpp:755
 #, kde-format
 msgid "Manage View &Filters…"
 msgstr "ניהול מס&נני תצוגה…"
 
-#: actionmanager.cpp:758
+#: actionmanager.cpp:759
 #, kde-format
 msgctxt "@action"
 msgid "Manage T&ags…"
 msgstr "ניהול ת&גיות…"
 
-#: actionmanager.cpp:766
+#: actionmanager.cpp:771
 #, kde-format
 msgid "&Configure KOrganizer…"
 msgstr "ה&גדרת KOrganizer…"
 
-#: actionmanager.cpp:844
+#: actionmanager.cpp:849
 #, kde-format
 msgid "1 incidence was imported successfully."
 msgid_plural "%1 incidences were imported successfully."
@@ -1113,151 +1113,151 @@ msgstr[1] "שני מאורעות יובאו בהצלחה."
 msgstr[2] "%1 מאורעות יובאו בהצלחה."
 msgstr[3] "%1 מאורעות יובאו בהצלחה."
 
-#: actionmanager.cpp:847
+#: actionmanager.cpp:852
 #, kde-format
 msgid "There was an error while merging the calendar: %1"
 msgstr "אירעה שגיאה במיזוג לוח השנה: %1"
 
-#: actionmanager.cpp:858
+#: actionmanager.cpp:863
 #, kde-format
 msgid "New calendar added successfully"
 msgstr "לוח שנה חדש נוסף בהצלחה"
 
-#: actionmanager.cpp:860
+#: actionmanager.cpp:865
 #, kde-format
 msgid "Could not add a calendar. Error: %1"
 msgstr "לא ניתן להוסיף לוח שנה. שגיאה: %1"
 
-#: actionmanager.cpp:917
+#: actionmanager.cpp:922
 #, kde-format
 msgctxt "@title:window"
 msgid "Select Calendar File to Open"
 msgstr "בחירת קובץ לוח שנה לפתיחה"
 
-#: actionmanager.cpp:945
+#: actionmanager.cpp:950
 #, kde-format
 msgctxt "@title:window"
 msgid "Select Calendar File to Import"
 msgstr "בחירת קובץ לוח שנה לייבוא"
 
-#: actionmanager.cpp:976
+#: actionmanager.cpp:981
 #, kde-format
 msgid "An error occurred: %1"
 msgstr "אירעה שגיאה: %1"
 
-#: actionmanager.cpp:994
+#: actionmanager.cpp:999
 #, kde-format
 msgid "Cannot upload calendar to '%1'"
 msgstr "לא ניתן להעלות את לוח השנה אל ‚%1’"
 
-#: actionmanager.cpp:1000
+#: actionmanager.cpp:1005
 #, kde-format
 msgid "Saved calendar '%1'."
 msgstr "לוח השנה ‚%1’ נשמר."
 
-#: actionmanager.cpp:1038
+#: actionmanager.cpp:1043
 #, kde-format
 msgid "Unable to save calendar to the file %1."
 msgstr "אי אפשר לשמור לוח שנה לקובץ %1."
 
-#: actionmanager.cpp:1038
+#: actionmanager.cpp:1043
 #, kde-format
 msgctxt "@title:window"
 msgid "Error"
 msgstr "שגיאה"
 
-#: actionmanager.cpp:1083
+#: actionmanager.cpp:1088
 #, kde-format
 msgid "Could not start control module for date and time format."
 msgstr "לא ניתן להפעיל את מודול הבקרה של תבנית התאריך והשעה."
 
-#: actionmanager.cpp:1262
+#: actionmanager.cpp:1267
 #, kde-format
 msgid "&Show Event"
 msgstr "ה&צגת אירוע"
 
-#: actionmanager.cpp:1265
+#: actionmanager.cpp:1270
 #, kde-format
 msgid "&Edit Event…"
 msgstr "&עריכת אירוע…"
 
-#: actionmanager.cpp:1268
+#: actionmanager.cpp:1273
 #, kde-format
 msgid "&Delete Event"
 msgstr "&מחיקת אירוע"
 
-#: actionmanager.cpp:1276
+#: actionmanager.cpp:1281
 #, kde-format
 msgid "&Show To-do"
 msgstr "ה&צגת מטלה"
 
-#: actionmanager.cpp:1279 kontactplugin/korganizer/todosummarywidget.cpp:321
+#: actionmanager.cpp:1284 kontactplugin/korganizer/todosummarywidget.cpp:321
 #, kde-format
 msgid "&Edit To-do…"
 msgstr "&עריכת מטלה…"
 
-#: actionmanager.cpp:1282 kontactplugin/korganizer/todosummarywidget.cpp:323
+#: actionmanager.cpp:1287 kontactplugin/korganizer/todosummarywidget.cpp:323
 #, kde-format
 msgid "&Delete To-do"
 msgstr "מ&חיקת מטלה"
 
-#: actionmanager.cpp:1420 actionmanager.cpp:1526
+#: actionmanager.cpp:1425 actionmanager.cpp:1531
 #, kde-format
 msgid "Attach as &link"
 msgstr "צירוף כ&קישור"
 
-#: actionmanager.cpp:1421 actionmanager.cpp:1527
+#: actionmanager.cpp:1426 actionmanager.cpp:1532
 #, kde-format
 msgid "Attach &inline"
 msgstr "הוספה כ&חלק מההודעה"
 
-#: actionmanager.cpp:1422
+#: actionmanager.cpp:1427
 #, kde-format
 msgid "Attach inline &without attachments"
 msgstr "צירוף כ&חלק מההודעה בלי לצרף כקובץ"
 
-#: actionmanager.cpp:1424 actionmanager.cpp:1529
+#: actionmanager.cpp:1429 actionmanager.cpp:1534
 #, kde-format
 msgid "C&ancel"
 msgstr "&ביטול"
 
-#: actionmanager.cpp:1462
+#: actionmanager.cpp:1467
 #, kde-format
 msgid "Removing attachments from an email might invalidate its signature."
 msgstr "הסרת קבצים מצורפים מהודעת דוא״ל עלולה לפגוע בחתימה שלה"
 
-#: actionmanager.cpp:1463
+#: actionmanager.cpp:1468
 #, kde-format
 msgctxt "@title:window"
 msgid "Remove Attachments"
 msgstr "הסרת קבצים מצורפים"
 
-#: actionmanager.cpp:1614
+#: actionmanager.cpp:1619
 #, kde-format
 msgid "Undo: %1"
 msgstr "החזרה: %1"
 
-#: actionmanager.cpp:1617 actionmanager.cpp:1633
+#: actionmanager.cpp:1622 actionmanager.cpp:1638
 #, kde-format
 msgid "Undo"
 msgstr "החזרה"
 
-#: actionmanager.cpp:1627
+#: actionmanager.cpp:1632
 #, kde-format
 msgid "Redo: %1"
 msgstr "ביצוע חוזר: %1"
 
-#: actionmanager.cpp:1630
+#: actionmanager.cpp:1635
 #, kde-format
 msgid "Redo"
 msgstr "ביצוע חוזר"
 
-#: actionmanager.cpp:1644
+#: actionmanager.cpp:1649
 #, kde-format
 msgid "URL '%1' is invalid."
 msgstr "הכתובת ‚%1’ שגויה."
 
-#: actionmanager.cpp:1649
+#: actionmanager.cpp:1654
 #, kde-format
 msgctxt "@info"
 msgid ""
@@ -1271,19 +1271,19 @@ msgstr ""
 "בחירה במיזוג, תופיע אפשרות לבחור את יעד לוח השנה.</p><p>בחירה בהוספה תיצור "
 "עבורך לוח שנה חדש אוטומטית.</p>"
 
-#: actionmanager.cpp:1657
+#: actionmanager.cpp:1662
 #, kde-format
 msgctxt "@title:window"
 msgid "Import Calendar"
 msgstr "ייבוא לוח שנה"
 
-#: actionmanager.cpp:1658
+#: actionmanager.cpp:1663
 #, kde-format
 msgctxt "@action:button"
 msgid "Merge into existing calendar"
 msgstr "מיזוג ללוח שנה קיים"
 
-#: actionmanager.cpp:1659
+#: actionmanager.cpp:1664
 #, kde-format
 msgctxt "@action:button"
 msgid "Add as new calendar"
