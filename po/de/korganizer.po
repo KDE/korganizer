@@ -2735,7 +2735,7 @@ msgstr "%1 - %2"
 #, kde-format
 msgctxt "next occurrence"
 msgid "Next: %1"
-msgstr "Weiter: %1"
+msgstr "Danach: %1"
 
 #: kontactplugin/korganizer/todoplugin.cpp:40
 #, fuzzy, kde-format
@@ -3746,7 +3746,7 @@ msgstr "Tag(e)"
 #: prefs/koprefsdialogtime.cpp:219
 #, kde-format
 msgid "Audio Files (*.ogg *.wav *.mp3 *.wma *.flac *.aiff *.raw *.au *.ra)"
-msgstr "Audio-Dateien (*.ogg *.wav *.mp3 *.wma *.flac *.aiff *.raw *.au *.ra)"
+msgstr "Audiodateien (*.ogg *.wav *.mp3 *.wma *.flac *.aiff *.raw *.au *.ra)"
 
 #: prefs/koprefsdialogviews.cpp:44
 #, kde-format
