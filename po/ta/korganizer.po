@@ -18,7 +18,7 @@ msgstr ""
 "Project-Id-Version: korganizer\n"
 "Report-Msgid-Bugs-To: https://bugs.kde.org\n"
 "POT-Creation-Date: 2024-06-30 00:39+0000\n"
-"PO-Revision-Date: 2024-06-20 21:45+0530\n"
+"PO-Revision-Date: 2024-09-08 12:42+0200\n"
 "Last-Translator: Kishore G <kishore96@gmail.com>\n"
 "Language-Team: Tamil <kde-i18n-doc@kde.org>\n"
 "Language: ta\n"
@@ -26,7 +26,7 @@ msgstr ""
 "Content-Type: text/plain; charset=UTF-8\n"
 "Content-Transfer-Encoding: 8bit\n"
 "Plural-Forms: nplurals=2; plural=n != 1;\n"
-"X-Generator: Lokalize 24.05.1\n"
+"X-Generator: Lokalize 24.08.0\n"
 
 #, kde-format
 msgctxt "NAME OF TRANSLATORS"
@@ -1045,22 +1045,19 @@ msgid "Show Date Navigator"
 msgstr "தேதி எண்ணைக் காட்டுக"
 
 #: actionmanager.cpp:717
-#, fuzzy, kde-format
+#, kde-format
 msgid "Show To-do View"
-msgstr "காட்சியின் வகை"
+msgstr "செய்யவேண்டியவை காட்சிமுறையை காட்டு"
 
 #: actionmanager.cpp:721
-#, fuzzy, kde-format
+#, kde-format
 msgid "Show Item Viewer"
-msgstr "நிகழ்வை காண்பவர்"
+msgstr "நிகழ்வு காட்டியை காட்டு"
 
 #: actionmanager.cpp:737
-#, fuzzy, kde-format
-#| msgid "Export Calendar as Web Page"
+#, kde-format
 msgid "Show Calendar Manager"
-msgstr ""
-"நாள்காட்டியை இணைய பக்கமாக ஏற்றுமதி "
-"செய்                                                                             "
+msgstr "நாள்காட்டி மேலாளியை காட்டு"
 
 #: actionmanager.cpp:750
 #, kde-format
