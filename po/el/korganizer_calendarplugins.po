@@ -23,12 +23,11 @@ msgstr ""
 "MIME-Version: 1.0\n"
 "Content-Type: text/plain; charset=UTF-8\n"
 "Content-Transfer-Encoding: 8bit\n"
-"X-Generator: Lokalize 1.5\n"
 "Plural-Forms: nplurals=2; plural=n != 1;\n"
+"X-Generator: Lokalize 1.5\n"
 
 #: datenums/configdialog.cpp:28
-#, fuzzy, kde-format
-#| msgid "Configure Day Numbers"
+#, kde-format
 msgctxt "@title:window"
 msgid "Configure Day Numbers"
 msgstr "Διαμόρφωση των αριθμών ημερών"
@@ -39,22 +38,19 @@ msgid "Show Date Number"
 msgstr "Εμφάνιση του αριθμού ημερομηνίας"
 
 #: datenums/configdialog.cpp:48
-#, fuzzy, kde-format
-#| msgid "Show day number"
+#, kde-format
 msgctxt "@option:radio"
 msgid "Show day number"
 msgstr "Εμφάνιση του αριθμού ημέρας"
 
 #: datenums/configdialog.cpp:51
-#, fuzzy, kde-format
-#| msgid "Show days to end of year"
+#, kde-format
 msgctxt "@option:radio"
 msgid "Show days to end of year"
 msgstr "Εμφάνιση των ημερών μέχρι το τέλος του έτους"
 
 #: datenums/configdialog.cpp:54
-#, fuzzy, kde-format
-#| msgid "Show both"
+#, kde-format
 msgctxt "@option:radio"
 msgid "Show both"
 msgstr "Εμφάνιση και των δύο"
@@ -152,8 +148,7 @@ msgstr ""
 "%2"
 
 #: hebrew/configdialog.cpp:28
-#, fuzzy, kde-format
-#| msgid "Configure Holidays"
+#, kde-format
 msgctxt "@title:window"
 msgid "Configure Holidays"
 msgstr "Διαμόρφωση αργιών"
@@ -694,8 +689,7 @@ msgid ""
 msgstr ""
 
 #: picoftheday/configdialog.cpp:28
-#, fuzzy, kde-format
-#| msgid "Configure Picture of the Day"
+#, kde-format
 msgctxt "@title:window"
 msgid "Configure Picture of the Day"
 msgstr "Διαμόρφωση εικόνας της ημέρας"
@@ -706,8 +700,7 @@ msgid "Thumbnail Aspect Ratio Mode"
 msgstr "Λειτουργία αναλογίας διαστάσεων επισκόπησης"
 
 #: picoftheday/configdialog.cpp:46
-#, fuzzy, kde-format
-#| msgid "Ignore aspect ratio"
+#, kde-format
 msgctxt "@option:radio"
 msgid "Ignore aspect ratio"
 msgstr "Αγνόηση αναλογίας διαστάσεων"
@@ -721,8 +714,7 @@ msgstr ""
 "διατηρηθεί."
 
 #: picoftheday/configdialog.cpp:52
-#, fuzzy, kde-format
-#| msgid "Keep aspect ratio"
+#, kde-format
 msgctxt "@option:radio"
 msgid "Keep aspect ratio"
 msgstr "Διατήρηση αναλογίας διαστάσεων"
@@ -737,8 +729,7 @@ msgstr ""
 "μέσα σε δοσμένο ορθογώνιο, διατηρώντας την αναλογία διαστάσεων."
 
 #: picoftheday/configdialog.cpp:59
-#, fuzzy, kde-format
-#| msgid "Keep aspect ratio by expanding"
+#, kde-format
 msgctxt "@option:radio"
 msgid "Keep aspect ratio by expanding"
 msgstr "Διατήρηση αναλογίας διαστάσεων με επέκταση"
@@ -763,14 +754,12 @@ msgid "Picture Page"
 msgstr "Σελίδα εικόνας"
 
 #: picoftheday/element.cpp:326
-#, fuzzy, kde-format
-#| msgid "Loading..."
+#, kde-format
 msgid "Loading..."
 msgstr "Φόρτωση..."
 
 #: picoftheday/element.cpp:332
-#, fuzzy, kde-format
-#| msgid "<qt>Loading <i>Picture of the Day</i>...</qt>"
+#, kde-format
 msgid "<qt>Loading <i>Picture of the Day</i>...</qt>"
 msgstr "<qt>Φόρτωση της <i>Εικόνας της ημέρας</i>…</qt>"
 
@@ -1525,7 +1514,8 @@ msgstr "ΜΜΜΜ_εεεε"
 #~ msgid "Toggle Reminder"
 #~ msgstr "Εναλλαγή υπενθύμισης"
 
-# Στο ημερολόγιο, δεξί κλικ, εναλλαγή μιας εργασίας σε ολοκληρωμένη, και αν είναι ήδη ολοκληρωμένη την σημειώνει προς υλοποίηση.
+# Στο ημερολόγιο, δεξί κλικ, εναλλαγή μιας εργασίας σε ολοκληρωμένη, και αν
+# είναι ήδη ολοκληρωμένη την σημειώνει προς υλοποίηση.
 #~ msgid "Toggle To-do Completed"
 #~ msgstr "Εναλλαγή ολοκλήρωσης για τις προς υλοποίηση εργασίες"
 
@@ -2407,7 +2397,8 @@ msgstr "ΜΜΜΜ_εεεε"
 #~ msgid "Create Note"
 #~ msgstr "Δημιουργία μιας νέας εργασίας προς υλοποίηση"
 
-# Στο ημερολόγιο, δεξί κλικ, εναλλαγή μιας εργασίας σε ολοκληρωμένη, και αν είναι ήδη ολοκληρωμένη την σημειώνει προς υλοποίηση.
+# Στο ημερολόγιο, δεξί κλικ, εναλλαγή μιας εργασίας σε ολοκληρωμένη, και αν
+# είναι ήδη ολοκληρωμένη την σημειώνει προς υλοποίηση.
 #~ msgid "Togg&le To-do Completed"
 #~ msgstr "&Εναλλαγή ολοκλήρωσης εργασίας"
 
@@ -2883,7 +2874,8 @@ msgstr "ΜΜΜΜ_εεεε"
 #~ "Να εκτυπωθούν προς υλοποίηση εργασίες που λήγουν στο καθορισμένο χρονικό "
 #~ "διάστημα"
 
-# Στο ημερολόγιο, δεξί κλικ, εναλλαγή μιας εργασίας σε ολοκληρωμένη, και αν είναι ήδη ολοκληρωμένη την σημειώνει προς υλοποίηση.
+# Στο ημερολόγιο, δεξί κλικ, εναλλαγή μιας εργασίας σε ολοκληρωμένη, και αν
+# είναι ήδη ολοκληρωμένη την σημειώνει προς υλοποίηση.
 #, fuzzy
 #~| msgid "Togg&le To-do Completed"
 #~ msgid "&Mark To-do Completed"
