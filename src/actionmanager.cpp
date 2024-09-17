@@ -16,7 +16,6 @@
 #include "calendaradaptor.h"
 #include "calendarinterfaceadaptor.h"
 #include "calendarview.h"
-#include "kcolorscheme_version.h"
 #include "kocore.h"
 #include "kodialogmanager.h"
 #include "koglobals.h"
