@@ -2200,7 +2200,7 @@ msgstr "Εκτύ&πωση…"
 #, kde-format
 msgctxt "@action:inmenu"
 msgid "Print Previe&w…"
-msgstr "Προεπισκόπηση εκτύπωση&ς…"
+msgstr "&Προεπισκόπηση εκτύπωσης…"
 
 #: koeventpopupmenu.cpp:72
 #, kde-format
@@ -5803,7 +5803,7 @@ msgstr ""
 #, kde-format
 msgid "Include all to-dos &within the specified date range"
 msgstr ""
-"Να συμπεριληφθούν όλε&ς οι μελλοντικές εργασίες που βρίσκονται στο "
+"Να συμπεριλη&φθούν όλες οι μελλοντικές εργασίες που βρίσκονται στο "
 "καθορισμένο χρονικό διάστημα"
 
 #. i18n: ectx: property (text), widget (QPushButton, mDayBtn)
