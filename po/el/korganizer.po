@@ -11,20 +11,21 @@
 # Dimitrios Glentadakis <dglent@gmail.com>, 2011, 2012, 2014.
 # Stelios <sstavra@gmail.com>, 2012, 2020, 2021.
 # Dimitris Kardarakos <dimkard@gmail.com>, 2014.
+# SPDX-FileCopyrightText: 2024 Antonis Geralis <capoiosct@gmail.com>
 msgid ""
 msgstr ""
 "Project-Id-Version: korganizer\n"
 "Report-Msgid-Bugs-To: https://bugs.kde.org\n"
 "POT-Creation-Date: 2024-09-18 00:40+0000\n"
-"PO-Revision-Date: 2021-11-06 10:56+0200\n"
-"Last-Translator: Stelios <sstavra@gmail.com>\n"
+"PO-Revision-Date: 2024-09-20 09:25+0300\n"
+"Last-Translator: Antonis Geralis <capoiosct@gmail.com>\n"
 "Language-Team: Greek <kde-i18n-el@kde.org>\n"
 "Language: el\n"
 "MIME-Version: 1.0\n"
 "Content-Type: text/plain; charset=UTF-8\n"
 "Content-Transfer-Encoding: 8bit\n"
 "Plural-Forms: nplurals=2; plural=n != 1;\n"
-"X-Generator: Lokalize 20.04.2\n"
+"X-Generator: Lokalize 24.08.1\n"
 
 #, kde-format
 msgctxt "NAME OF TRANSLATORS"
@@ -1344,7 +1345,7 @@ msgstr "Καθορισμός λέξης αναζήτησης"
 #, kde-format
 msgctxt "@info:whatsthis"
 msgid "Lets you search for a keyword in your calendars"
-msgstr "Σας επιτρέπει να αναζητήσετε μια λέξη-κλειδί στα ημερολόγιά σας"
+msgstr "Σας επιτρέπει να αναζητήσετε μια λέξη-κλειδί στα ημερολόγια σας"
 
 #: akonadicollectionview.cpp:414
 #, kde-format
@@ -1549,7 +1550,7 @@ msgstr ""
 msgid "Do you want to dissociate the occurrence on %1 from the recurrence?"
 msgstr ""
 "Επιθυμείτε τον διαχωρισμό της εμφάνισης στις %1 από την συχνότητα της "
-"επανάληψής της;"
+"επανάληψης της;"
 
 #: calendarview.cpp:1613 calendarview.cpp:1625 calendarview.cpp:2293
 #, kde-format
@@ -1708,7 +1709,7 @@ msgid ""
 "only the current one on %2, also future occurrences, or all its occurrences?"
 msgstr ""
 "Το αντικείμενο ημερολογίου \"%1\" επαναλαμβάνεται σε πολλές ημερομηνίες. "
-"Επιθυμείτε την διαγραφή μόνο της τρέχουσας επανάληψής του την %2, και τις "
+"Επιθυμείτε την διαγραφή μόνο της τρέχουσας επανάληψης του την %2, και τις "
 "μελλοντικές επαναλήψεις, ή όλες τις επαναλήψεις του;"
 
 #: calendarview.cpp:2371
@@ -1718,7 +1719,7 @@ msgid ""
 "only the current one on %2 or all its occurrences?"
 msgstr ""
 "Το αντικείμενο ημερολογίου \"%1\" επαναλαμβάνεται σε πολλές ημερομηνίες. "
-"Επιθυμείτε την διαγραφή μόνο της τρέχουσας επανάληψής του την %2, ή όλες τις "
+"Επιθυμείτε την διαγραφή μόνο της τρέχουσας επανάληψης του την %2, ή όλες τις "
 "επαναλήψεις του;"
 
 #: calendarview.cpp:2383
@@ -2467,7 +2468,7 @@ msgstr "Ρυθμίσεις Groupware"
 #: kontactplugin/specialdates/sdsummaryconfig_base.ui:250
 #, kde-format
 msgid "Show events belonging to my calendars only"
-msgstr "Εμφάνιση γεγονότων που ανήκουν μόνο στα ημερολόγιά μου"
+msgstr "Εμφάνιση γεγονότων που ανήκουν μόνο στα ημερολόγια μου"
 
 #. i18n: ectx: property (whatsThis), widget (QCheckBox, mShowMineOnly)
 #: kontactplugin/korganizer/apptsummaryconfig_base.ui:166
@@ -2478,7 +2479,7 @@ msgid ""
 "calendars only."
 msgstr ""
 "Ενεργοποιήστε αυτήν την επιλογή αν θέλετε η περίληψη να εμφανίζει γεγονότα "
-"που ανήκουν στα ημερολόγιά σας μόνο."
+"που ανήκουν στα ημερολόγια σας μόνο."
 
 #. i18n: ectx: property (text), widget (QCheckBox, mShowMineOnly)
 #: kontactplugin/korganizer/apptsummaryconfig_base.ui:169
