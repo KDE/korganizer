@@ -1,0 +1,5736 @@
+<?xml version="1.0" ?>
+<!DOCTYPE book PUBLIC "-//KDE//DTD DocBook XML V4.5-Based Variant V1.1//EN"
+ "dtd/kdedbx45.dtd" [
+  <!ENTITY % addindex "IGNORE">
+  <!ENTITY % Slovenian "INCLUDE">
+]>
+
+<book id="korganizer" lang="&language;">
+
+<bookinfo>
+
+<title
+>&korganizer; Priročnik</title>
+
+<authorgroup>
+
+<author
+><firstname
+>Carlos</firstname
+> <othername
+>Leonhard</othername
+> <surname
+>Woelz</surname
+> <affiliation
+><address
+><email
+>carloswoelz@imap-mail.com</email
+></address
+></affiliation>
+</author>
+
+<author
+>&Milos.Prudek; &Milos.Prudek.mail; </author>
+
+<author
+>&Paul.E.Ahlquist.Jr; &Paul.E.Ahlquist.Jr.mail; </author>
+
+<author
+><firstname
+>J&uuml;rgen</firstname
+> <surname
+>Nagel</surname
+> <affiliation
+><address
+><email
+>juergen.nagel@student.fh-reutlingen.de</email
+></address
+></affiliation>
+</author>
+
+<author
+>&Michel.Boyer; &Michel.Boyer.mail; </author>
+
+<othercredit role="developer"
+><firstname
+>Reinhold</firstname
+> <surname
+>Kainhofer</surname
+> <affiliation
+><address
+><email
+>reinhold@kainhofer.com</email
+></address
+></affiliation>
+<contrib
+>Razvijalec</contrib>
+</othercredit>
+
+<othercredit role="developer"
+><firstname
+>Cornelius</firstname
+> <surname
+>Schumacher</surname
+> <affiliation
+><address
+>&Cornelius.Schumacher.mail;</address
+></affiliation>
+<contrib
+>Razvijalec</contrib>
+</othercredit>
+
+<othercredit role="developer"
+><firstname
+>Preston</firstname
+> <surname
+>Brown</surname
+> <affiliation
+><address
+>&Preston.Brown.mail;</address
+></affiliation>
+<contrib
+>Razvijalec</contrib>
+</othercredit>
+
+<othercredit role="reviewer"
+><firstname
+>Lauri</firstname
+> <surname
+>Watts</surname
+> <affiliation
+><address
+>&Lauri.Watts.mail;</address
+></affiliation>
+<contrib
+>Recenzent</contrib>
+</othercredit>
+
+<othercredit role="translator"
+><firstname
+>Matjaž</firstname
+><surname
+>Jeran</surname
+><affiliation
+><address
+><email
+>matjaz.jeran@amis.net</email
+></address
+></affiliation
+><contrib
+>Prevod</contrib
+></othercredit
+> 
+</authorgroup>
+
+
+
+<copyright>
+<year
+>2000</year
+><holder
+>&Milos.Prudek;</holder>
+</copyright>
+
+<copyright>
+<year
+>2001</year>
+<holder
+>&Paul.E.Ahlquist.Jr;</holder>
+</copyright>
+
+<copyright>
+<year
+>2004</year>
+<holder
+>J&uuml;rgen Nagel</holder>
+</copyright>
+
+<copyright>
+<year
+>2005</year>
+<holder
+>Carlos Leonhard Woelz</holder>
+</copyright>
+
+<legalnotice
+>&FDLNotice;</legalnotice>
+
+<date
+>08.12.2016</date>
+<releaseinfo
+>5.4.40 (Applications 16.12)</releaseinfo>
+
+<abstract
+><para
+>&korganizer; je enostaven za uporabo upravitelj osebnih podatkov (<acronym
+>PIM</acronym
+>). Pišete lahko vnose v dnevnik, načrtujete sestanke, dogodke in opravila &korganizer; vas bo spomnil na čakajoče naloge in vam pomagal obdržati vaš časovni plan. </para
+></abstract>
+
+<keywordset>
+<keyword
+>KDE</keyword>
+<keyword
+>KOrganizer</keyword>
+<keyword
+>kdepim</keyword>
+<keyword
+>vodja</keyword>
+<keyword
+>čas</keyword>
+<keyword
+>razpored</keyword>
+<keyword
+>opomnik</keyword>
+<keyword
+>imenovanje</keyword>
+<keyword
+>dogodek</keyword>
+<keyword
+>revija</keyword>
+<keyword
+>opravilo</keyword>
+</keywordset>
+
+</bookinfo>
+
+<chapter id="introduction"
+><!--updated to 5.4.40-->
+<title
+>Uvod</title>
+
+<para
+>&korganizer; je intuitiven in enostaven za uporabo upravitelj osebnih podatkov(<abbrev
+>PIM</abbrev
+>). Načrtujete lahko sestanke, dogodke, ustvarite opravilain pišete vnose v dnevnik. &korganizer; vas bo spomnil na čakajoče naloge,zabeleži svoje dogodke, izkušnje in razmišljanja ter vam pomaga ohranjati svojčasovni plan.</para>
+
+<para
+>Toda &korganizer; ni samo vaš osebni koledar, lahko vam pomagakomunicirati tudi s svojimi sodelavci in prijatelji. Z &korganizer; lahkopovabite kogarkoli z e-poštnim naslovom na dogodek in obdelate odgovore, delitekoledar (z uporabo strežnika skupinske programske opreme ali preprosto datoteke prek omrežja) in delite dogodke (npr. urnik prvenstva ali konference), z uporabookvirja pridobivanja novih stvari. &korganizer; temelji na odprtih standardih,in deluje s številnimi različnimi strežniki za skupinsko razporejanje, kar vam omogočanadzor nad vašimi informacijami in svobodo izbire najboljših rešitev. </para>
+
+<para
+>&korganizer; je tudi koledar, dnevnik in komponenta opravil &kontact;a, ki vam ponuja integrirano rešitev za vašo komunikacijo in potrebe upravljanja informacij: e-pošta, beležke, upravljanje stikov, bralnik novic in bralnik virov novic. Tudi če ga ne uporabljate znotraj &kontact;, je &korganizer; integriran z drugimi &kde; <acronym
+>PIM</acronym
+> aplikacijami. Na na primer, lahko ga konfigurirate tako, da prikazuje rojstne dneve iz &kaddressbook; v vašem dnevnem redu, uporabite &kmail; za pošiljanje in prejemanje povabil, &etc;</para>
+
+<para
+>Glavne značilnosti &korganizer;:</para>
+<para
+><itemizedlist>
+<listitem
+><para
+>Ustvarite opravila, načrtujte dogodke in pišete vnose v dnevnik.</para
+></listitem>
+<listitem
+><para
+>Organizirajte svoje dogodke in opravila tako, da združite povezane elemente z oznakami.</para
+></listitem>
+<listitem
+><para
+>Označite oznake z barvami.</para
+></listitem>
+<listitem
+><para
+>Odprete več koledarjev ter si jih nemoteno ogledujete in urejate.</para
+></listitem>
+<listitem
+><para
+>Prerazporedite dogodke tako, da jih povlečete in spustite.</para
+></listitem>
+<listitem
+><para
+>Preprosto ustvarite ponavljajoče se dogodke.</para
+></listitem>
+<listitem
+><para
+>Organizirajte ali se udeležite dogodkov z zmožnostmi skupinskega razporejanja.</para
+></listitem>
+<listitem
+><para
+>Izbirajte med več podprtimi strežniki skupinske programske opreme.</para
+></listitem>
+<listitem
+><para
+>Izvorna podpora za vCalendar in iCalendar (odprti standardi).</para
+></listitem>
+<listitem
+><para
+>Združevanje in uvoz koledarjev.</para
+></listitem>
+<listitem
+><para
+>Povleci in spusti med odprtimi koledarji.</para
+></listitem>
+<listitem
+><para
+>Vdelava sodelovanja s &konqueror;.</para
+></listitem>
+<listitem
+><para
+>Prilagodljive zbirke ikon.</para
+></listitem>
+<listitem
+><para
+>Povleci in spusti orodne plošče.</para
+></listitem>
+<listitem
+><para
+>Veliko več...</para
+></listitem>
+</itemizedlist
+></para>
+
+
+<para
+>Zdaj pa opravite <link linkend="five-minute-course"
+>petminutni hitri tečaj</link
+> &korganizer;, ali pa se poglobite v <link linkend="managing-data"
+>dokumentacijo</link
+>!</para>
+
+</chapter>
+
+<chapter id="five-minute-course"
+><!--updated to 5.4.40-->
+<title
+>Petminutni hitri tečaj &korganizer;</title>
+<subtitle
+>(za izkušene in za nepotrpežljive)</subtitle>
+
+<para
+>V stiski s časom? Začnimo s hitrim praktičnim pregledom &korganizer;!</para>
+
+<para
+>Če ste že kdaj delali s programom za osebne podatke, boste kmalu doma z &korganizer;. Vnesete lahko nove dogodke, prestavite obstoječe dogodke, dodelite oznake vašim dogodkom, pripravite nove oznake, vnesete in spreminjate sezname udeležencev in njihovih vlog, samodejno pošiljate vabila na dogodke po e-pošti in izmenjujete podatke z drugimi &korganizer; koledarju, ustvarite opravila in pišete vnose v dnevnik.</para>
+
+<para
+>Ta tečaj predvideva, da znate delati z &kde; in da raje raziskujte sami. Samo osnovne zmožnosti &korganizer; so zajete tukaj.</para>
+
+<sect1 id="course-entering-events">
+<title
+>Vnašanje dogodkov</title>
+
+<procedure>
+<step
+><para
+>Kliknite <inlinemediaobject
+><imageobject
+> <imagedata fileref="view-calendar-agenda.png" format="PNG"/></imageobject
+> </inlinemediaobject
+><guibutton
+>Agenda</guibutton
+> gumb v orodni vrstici ali izberite meni <menuchoice
+><guimenu
+>Pogled</guimenu
+> <guimenuitem
+>Agenda</guimenuitem
+></menuchoice
+> To bo prikazalo <link linkend="agenda-view"
+><guilabel
+>Pogled Agende</guilabel
+> </link
+>.</para
+></step>
+
+<step
+><para
+>Kliknite na želeni datum v <link linkend="glossary" endterm="gloss-date-navigator"
+>krmilniku datumov</link
+>. </para
+></step>
+
+<step
+><para
+>Izberite besedilno območje poleg želene ure na glavni plošči, ki odraža čas dogodka. Dvokliknite to območje ali preprosto začnite tipkati povzetek dogodka, da odprete pogovorno okno <guilabel
+>Nov dogodek</guilabel
+>.</para
+></step>
+
+<step
+><para
+><link linkend="entering-data-events"
+>Vnesite podrobnosti dogodka</link
+>. Uporabitešest zavihkov na dnu okna za premikanje po pogovornem oknu in dostop do vseh  značilnosti dogodka.</para
+></step>
+
+<step
+><para
+>Pritisnite <guibutton
+>V redu</guibutton
+> , da shranite dogodek.</para
+></step>
+</procedure>
+</sect1>
+
+<sect1 id="course-entering-todos">
+<title
+>Vnašanje opravil</title>
+
+<procedure>
+<step
+><para
+>Izberite element menija <xref linkend="menu-actions-new-todo"/>, da odpretePogovorno okno <guilabel
+>Novo opravilo</guilabel
+>.</para
+></step>
+
+<step
+><para
+><link linkend="entering-data-to-do"
+>Vnesite podrobnosti o opravilih</link
+>. Uporabapet zavihkov na dnu okna za premikanje po pogovornem oknu indostop do vseh značilnosti dogodka.</para
+></step>
+
+<step
+><para
+>Pritisnite <guibutton
+>V redu</guibutton
+>, da shranite opravilo.</para
+></step>
+</procedure>
+
+</sect1>
+
+<sect1 id="course-entering-journals">
+<title
+>Dodajanje vnosov v dnevnik</title>
+
+<procedure>
+
+<step
+><para
+>Izberite <inlinemediaobject
+><imageobject
+> <imagedata fileref="journal-new.png" format="PNG"/></imageobject
+> </inlinemediaobject
+><menuchoice
+><guimenu
+>Pogled</guimenu
+> <guimenuitem
+>Dnevnik</guimenuitem
+></menuchoice
+> točko menija, da odprete <link linkend="journal-view"
+><guilabel
+>Dnevnik</guilabel
+> glavni pogled</link
+>.</para
+></step>
+
+<step
+><para
+>Izberite element menija <menuchoice
+><guimenu
+>Dejanja</guimenu
+> <guimenuitem
+>Nov dnevnik</guimenuitem
+></menuchoice
+>.</para
+></step>
+
+<step
+><para
+>Vnesite povzetek in besedilo v dnevnik.</para
+></step>
+
+</procedure>
+
+</sect1>
+
+<sect1 id="course-rescheduling-events">
+<title
+>Prerazporeditev dogodkov</title>
+
+<para
+>Prerazporeditev dogodkov je preprosta operacija povleci in spusti:</para>
+
+<procedure>
+<step
+><para
+>Uporaba krmilnika datumov <link linkend="glossary" endterm="gloss-date-navigator"
+>Navigator</link
+> da greste na datum dogodka, ki ga želite prestaviti.</para
+></step>
+
+<step
+><para
+>Izbrati morate ustrezen <link linkend="reference-menus-view"
+>pogled</link
+> pred začetkom te operacije. Samo <link linkend="agenda-view"
+><guilabel
+>Pogled dnevnega reda</guilabel
+> </link
+> (dan, delovni teden in tedenski pogledi) prikazujejo posamezne ure in so primerni za natančno prerazporejanje časovno omejenih dogodkov (sestanke), medtem ko pogled meseca prikazuje samo dneve. Zato je mesečni pogled najbolj primeren za dolgoročne dogodke, kot so prazniki.</para
+></step>
+
+<step
+><para
+>Za prikaz tedenskega pregleda  izberite pogled Agenda, pritisnite<inlinemediaobject
+><imageobject
+> <imagedata fileref="view-calendar-week.png" format="PNG"/></imageobject
+> </inlinemediaobject
+><guibutton
+>Teden</guibutton
+> gumb orodne vrstice ali izberite <menuchoice
+><guimenu
+>Pojdi</guimenu
+> <guimenuitem
+>Teden</guimenuitem
+></menuchoice
+> točko menija. </para
+></step>
+
+<step
+><para
+>Povlecite in spustite dogodek na novo lokacijo datuma in ure.</para
+></step>
+
+</procedure>
+
+<para
+>Če želite natančneje prestaviti termin, dvokliknite dogodek in spremenitezačetni in končni čas z uporabo spustnih menijev, ki dan razdelijo načetrt ure. Če to ni dovolj natančno, lahko vnesete želeni čas neposredno.</para>
+
+</sect1>
+
+<sect1 id="course-rescheduling-todos">
+<title
+>Prerazporejanje ali urejanje opravil</title>
+
+<para
+>Izbrati morate primerni <link linkend="reference-menus-view"
+>pogled</link
+> pred začetkom te operacije. Samo pogled <link linkend="todo-view"
+><inlinemediaobject
+><imageobject
+> <imagedata fileref="view-calendar-tasks.png" format="PNG"/></imageobject
+> </inlinemediaobject
+><guilabel
+>seznam opravil</guilabel
+></link
+> in <link linkend="description-view"
+>stranska komponenta operavi </link
+> prikazujejo opravila, ki še niso potekla.</para>
+
+<para
+>Za prikaz pogleda seznama opravil pritisnite <inlinemediaobject
+><imageobject
+><imagedata fileref="view-calendar-tasks.png" format="PNG"/></imageobject
+> </inlinemediaobject
+><guibutton
+>pogled seznama opravil</guibutton
+>orodni vrstici ali izberite element menija <menuchoice
+><guimenu
+>Pogled</guimenu
+> <guimenuitem
+>Seznam opravil</guimenuitem
+></menuchoice
+>. </para>
+
+<para
+>Če želite prestaviti opravilo, ga kliknite z desno miškino tipko. To bo prikazalo kontekstni meni. Izberite elemente menija <guimenuitem
+>Kopiraj v</guimenuitem
+> ali <guimenuitem
+>Premakni v</guimenuitem
+>  in zdaj izberite nov datum iz koledarja, ki se je pojavil. Opravilo je zdaj kopirano ali premaknjeno na izbrani datum.Druga možnost je, da glavna plošča vsebuje pogled <guilabel
+>Seznam opravil</guilabel
+>, z desno miškino tipko kliknite stolpec <guilabel
+>Datum/čas</guilabel
+>. Takoj se bo prikazal koledar in vam bo omogočil nastavitev nov datum poteka.</para>
+
+<para
+>Če želite <link linkend="entering-data-to-do"
+>urediti opravilo</link
+>, ga kliknite z desno miškino tipko in izberite menijsko postavko <guimenuitem
+>Uredi...</guimenuitem
+>.</para>
+
+</sect1>
+
+<sect1 id="course-conclusion">
+<title
+>Zaključek</title>
+
+<para
+>Ta petminutni tečaj je zajemal samo osnovno delovanje &korganizer;. Zdaj bi morali nadaljevati in prebrati preostanek tega priročnika, da boste v celoti sprostili moč zmožnosti &korganizer;ja. Ampak, če se vam ne da, bi morali vsaj preskočiti do <link linkend="faq"
+>&FAQ;</link
+>.</para>
+
+</sect1>
+
+</chapter>
+
+<chapter id="managing-data"
+><!--updated to 5.4.40-->
+<title
+>Uvoz, izvoz in upravljanje koledarjev</title>
+
+<para
+>&korganizer; lahko shranjuje (in pridobiva) dogodke, vnose v dnevnik in opravilaz različnimi metodami in na različne lokacije. Vsaka od teh lokacij se imenuje <firstterm
+>vir koledarja</firstterm
+>. </para>
+
+<para
+>&korganizer; podpira koledarske datoteke, ki izvirno temeljijo na standardih, kot je iCalendar in vCalendar (dodajte jih kot nove vire), vendar lahko uvozite podatke (in združite) v obstoječi vir in odprete datoteko v tudi novem oknu. Uvažanje datotek v formatu, ki ga je uporabljal stari <application
+>ical</application
+> je tudi podprto.</para>
+
+<para
+>Podatke lahko izvozite kot datoteko iCalendar ali vCalendar. Te datoteke sopodpira večina aplikacij za razporejanje. </para>
+
+<para
+>V tem poglavju bomo razložili, kako upravljati svoj koledar z uporabovirov, dejanj uvoza in izvoza ter sheme pridobivanja novih stvari.</para>
+
+<sect1 id="managing-resources">
+<title
+>Viri koledarja</title>
+
+<para
+>&korganizer; uporablja lokalno datoteko kot privzeti vir. Ampak to ni vaša edina možnost: obstaja več drugih virov, ki jih lahko dodate: strežniki skupinske programske opreme, vnosi v dnevnike kot blogi, omrežne datoteke itd. Če uporabljate več kot en vir, lahko  &korganizer; <link linkend="config-main-general-personal"
+>konfigurirate tako, da uporabite privzeti vir ali vprašate, kateri vir želite uporabiti</link
+> pri shranjevanju novih dogodkov, opravil ali vnosov v dnevnik. &korganizer; bo neopazno združil elemente iz dveh ali več virov v <link linkend="description-view"
+>poglede</link
+>. </para>
+
+<para
+>Privzeti vir je dobra izbira za številne primere uporabe, vendar boste morda želeli za uporabo drugega vira, še posebej, če uporabljate podprt strežnik skupinske programske opreme. Vprašajte skrbnika strežnika za potrebne informacije za konfiguriranje vira skupinske programske opreme, vključno z objavo informacij o prostem/zasedenem času in pridobivanje. Dostop do informacij o zasedenosti omogoča organizatorju dogodka, daupošteva koledar udeleženca, ko ga dodate v seznam udeležencev dogodka.</para>
+
+<note
+><para
+>Poleg shranjevanja koledarja strežniki skupinske programske opreme običajno ponujajo stike, pošto in <link linkend="glossary" endterm="gloss-freebusy"
+>shranjevanje informacij  o prost/zaseden času</link
+>. Zato so nekateri viri, o katerih se tukaj razpravlja morda povezana z drugimi viri iz &kmail; in &kaddressbook; (pošta in kontaktne komponente &kontact;), ali na <link linkend="config-main-free-busy"
+>nastavitve prost/zaseden v glavni konfiguraciji</link
+>.</para>
+<para
+>Upoštevajte, da &korganizer; komunikacijo o <link linkend="group-scheduling"
+>skupnem razporejanju</link
+> temelji na e-poštnem standardu enakovrednih članov. To pomeni, da za uporabo ne potrebujete strežnika za skupinsko programsko opremo!</para
+></note>
+
+<screenshot id="screenshot-resources">
+<screeninfo
+>Posnetek zaslona pogovornega okna za dodajanje koledarjev &korganizer;</screeninfo>
+<mediaobject>
+<imageobject
+><imagedata fileref="korganizer-resource.png" format="PNG"/></imageobject>
+<textobject
+><phrase
+>Posnetek zaslona pogovornega okna za dodajanje koledarjev v &korganizer;</phrase
+></textobject>
+<caption
+><para
+>Posnetek zaslona pogovornega okna za dodajanje koledarjev v &korganizer;</para
+></caption>
+</mediaobject>
+</screenshot>
+
+<procedure id="procedure-add-resource">
+<title
+>Dodajanje novega vira v &korganizer;</title>
+
+<step
+><para
+>Odprite pogovorno okno z nastavitvami &korganizer; z <menuchoice
+><guimenu
+>Nastavitve</guimenu
+> <guimenuitem
+>Konfiguriraj &korganizer;...</guimenuitem
+></menuchoice
+> in izberite zavihek <guilabel
+>Koledarji</guilabel
+> na strani <guilabel
+>Splošno</guilabel
+>. </para>
+<para
+>Lahko pa odprete kontekstni meni v <guilabel
+>Upravljalniku koledarja</guilabel
+> stranska vrstica z &RMB; kliknite in izberite <guilabel
+>Dodaj koledar...</guilabel
+></para
+></step>
+<step
+><para
+>Če <guilabel
+>Upravljalnik koledarja</guilabel
+> ni prikazan nastranski vrstici izberite <menuchoice
+><guimenu
+>Nastavitve</guimenu
+><guisubmenu
+>stranska vrstica</guisubmenu
+> <guimenuitem
+>Prikaži element menija upravljalnika koledarja</guimenuitem
+></menuchoice
+> za prikaz.</para
+></step>
+
+<step
+><para
+>Pritisnite gumb <guibutton
+>Dodaj ...</guibutton
+>, da dodate nove vire vseznam razpoložljivih virov.</para
+></step>
+
+<step
+><para
+>Izberite vir, da ga omogočite.</para
+></step>
+
+<step
+><para
+>Če želite pozneje urediti ali izbrisati vir, ga izberite na stranska vrstici <guilabel
+>Upravljalnik koledarja</guilabel
+> in pritisnite <guibutton
+>Izbriši koledar</guibutton
+>, da ga izbrišete, ali <guibutton
+>Lastnosti koledarja...</guibutton
+>, da ga spremenite.</para
+></step>
+
+</procedure>
+<para
+>Med obstoječimi viri lahko v &korganizer; najdete:</para>
+
+<variablelist>
+
+<varlistentry>
+<term
+><guilabel
+>Rojstni dnevi &amp; obletnice</guilabel
+></term>
+<listitem
+><para
+>Omogoča dostop do rojstnih dni in datumov obletnic stikov v vašem imeniku kot koledarskih dogodkov.</para
+></listitem>
+</varlistentry>
+
+<varlistentry>
+<term
+><guilabel
+>Vir skupinske programske opreme DAV</guilabel
+></term>
+<listitem
+><para
+>Vir za upravljanje koledarjev in imenikov DAV (CalDAV, GroupDAV).</para
+></listitem>
+</varlistentry>
+
+<varlistentry>
+<term
+><guilabel
+>Google koledarji in opravila</guilabel
+></term>
+<listitem
+><para
+>Dostopajte do svojih Google koledarjev in opravil.</para
+></listitem>
+</varlistentry>
+
+<varlistentry>
+<term
+><guilabel
+>koledarska datoteka iCal</guilabel
+></term>
+<listitem
+><para
+>Naloži podatke iz datoteke iCal.</para
+></listitem>
+</varlistentry>
+
+<varlistentry>
+<term
+><guilabel
+>mapa koledarja iCal</guilabel
+></term>
+<listitem
+><para
+>Omogoča dostop do elementov koledarja, od katerih je vsak shranjen v eni datoteki v danem imeniku.</para
+></listitem>
+</varlistentry>
+
+<varlistentry>
+<term
+><guilabel
+>Koledarska datoteka KAlarm</guilabel
+></term>
+<listitem
+><para
+>Naloži podatke iz koledarske datoteke KAlarm.</para
+></listitem>
+</varlistentry>
+
+<varlistentry>
+<term
+><guilabel
+>Imenik koledarjev KAlarm</guilabel
+></term>
+<listitem
+><para
+>Naloži podatke iz lokalne mape KAlarm.</para
+></listitem>
+</varlistentry>
+
+<varlistentry>
+<term
+><guilabel
+>Strežnik Kolab Groupware</guilabel
+></term>
+<listitem
+><para
+>Omogoča dostop do map Kolab groupware in e-pošte na strežniku Kolab IMAP.</para
+></listitem>
+</varlistentry>
+
+<varlistentry>
+<term
+><guilabel
+>Open-Xchange Groupware Server</guilabel
+></term>
+<listitem
+><para
+>Omogoča dostop do sestankov, nalog in stikov strežnika skupinske programske opreme Open-Xchange.</para
+></listitem>
+</varlistentry>
+
+</variablelist>
+
+</sect1>
+
+<sect1 id="managing-import-export">
+<title
+>Uvoz, izvoz in vzdrževanje koledarjev</title>
+
+<para
+>Medtem ko so lokalne datoteke le eden izmed mnogih drugih virov, ki jih lahko uporablja &korganizer;, so najpriročnejši način za skupno rabo koledarjev, shranjevanje kopij ali uvoz elementov iz vašega starega koledarskega programa.Medtem ko so lokalne datoteke le eden izmed mnogih drugih virov, ki jih lahko uporablja &korganizer;, so najpriročnejši način za skupno rabo koledarjev, shranjevanje kopij ali uvoz elementov iz vašega starega koledarskega programa.</para>
+
+<sect2 id="managing-import">
+<title
+>Uvoz koledarjev</title>
+
+<para
+>Če imate datoteko iCalendar ali vCalendar in bi jo radi uvozili, izberite <menuchoice
+><guimenu
+>Datoteka</guimenu
+> <guisubmenu
+>Uvozi</guisubmenu
+><guimenuitem
+>Uvozi koledar...</guimenuitem
+> </menuchoice
+> element menija. &korganizer; vas bo vprašal, ali želite <guilabel
+>Dodaj kot nov koledar</guilabel
+>, ki doda koledarsko datoteko kot nov lokalni datotečni vir ali <guilabel
+>Združi v obstoječi koledar</guilabel
+>, ki spoji elemente koledarja v obstoječi vir.</para>
+
+<para
+>Pravi čas za to bi bil, če bi na primer po e-pošti prejeli vCalendar z nekaj vnosi ali če nameravate svoj koledar uvoziti iz druge aplikacije. V slednjem primeru morate najprej uporabiti to aplikacijo za izvoz koledarskih podatkov v eni od zgornjih oblik zapisa ali uporabiti orodje za pretvorbo iz izvorne oblike zapisa aplikacije.</para>
+
+<!--Get Hot New Stuff
+store.kde.org KOrganizer Calendars-->
+</sect2>
+
+<sect2 id="managing-export">
+<title
+>Izvoz koledarjev</title>
+
+<para
+>Podatke lahko izvozite kot datoteko iCalendar, ki jo podpira večina aplikacij za razporejanje. &korganizer; bo izvozil vse elemente koledarja iz omogočenih (označenih) virov, ki <link linkend="filters-view"
+>niso izločeni</link
+> (te elemente imenujemo <quote
+>aktivni</quote
+> elementi). Z drugimi besedami, če ne vidite koledarskega elementa, ga ne bo v izvoženi datoteki. Če želite filtrirati neželene elemente, preden jih izvozite, lahko ustvarite <link linkend="filters-view"
+>filtre</link
+>. Filtri so še učinkovitejši, če svoje dogodke in opravila razvrstite z <link linkend="categories-view"
+>oznakami</link
+>. Če želite omogočiti ali onemogočiti vire, potrdite ali počistite polje vira v stranski vrstici <link linkend="managing-resources"
+><guilabel
+>Upravitelj koledarja</guilabel
+> </link
+>.</para>
+
+<para
+>Če želite izvoziti vse svoje <quote
+>aktivne</quote
+> dogodke, opravila in vnose v dnevnik (ne glede na to, kateremu viru pripadajo) kot novo datoteko iCalendar, izberite <menuchoice
+><guimenu
+>Datoteka</guimenu
+><guisubmenu 
+>Izvozi</guisubmenu
+> <guimenuitem
+>Izvozi kot iCalendar ...</guimenuitem
+></menuchoice
+> element menija. Odpre se pogovorno okno <guilabel
+>Shrani kot</guilabel
+>. Vnesite ime datoteke in lokacijo za novo datoteko, da dokončate dejanje izvoza.</para>
+
+</sect2>
+
+<sect2 id="managing-purge-archive">
+<title
+>Vzdrževanje vaših koledarjev</title>
+
+
+<para
+>Sodobni računalniki imajo dovolj prostora za shranjevanje. Vendar, če sinhronizirate &korganizer; koledar z napravo z omejenim pomnilnikom, kot je naprava Palm, se vam bo zdelo arhiviranje koristno. Delovanje &korganizer; se lahko tudi poslabša, ko je veliko dogodkov. Če želite arhivirati stare predmete, sledite spodnjemu postopku:</para>
+
+<procedure>
+<step
+><para
+>Izberite menijsko postavko <menuchoice
+><guimenu
+>Datoteka</guimenu
+><guimenuitem
+>Arhiviraj stare primere ...</guimenuitem
+></menuchoice
+>.</para
+></step>
+<step
+><para
+>Izpolnite datum v polje <guilabel
+>Arhiviraj zdaj elemente, starejše od</guilabel
+> ali uporabite gradnik za koledar, da izberete datum. Lahko pa samodejno arhivirate vse elemente, starejše od določenega časovnega obdobja.</para
+></step>
+<step
+><para
+>Če ste izbrali arhiviranje, morate podati tudi ime datoteke za arhiv v polju <guilabel
+>Arhivska datoteka</guilabel
+>. Če želite znova uporabiti starejšo arhivsko datoteko, pritisnite gumb <guilabel
+>Odpri pogovorno okno datoteke</guilabel
+> in poiščite obstoječi arhiv. Vnosi bodo dodani v datoteko, tako da noben element, ki je že v datoteki, ne bo spremenjen.</para
+></step>
+</procedure>
+
+<para
+>Arhiviranje bo ohranilo vse stare elemente v datoteki, vključno z dokončanimi opravili. Če pa dokončanih opravil sploh ne želite obdržati, izberite menijski element <menuchoice
+><guimenu
+>Datoteka</guimenu
+><guimenuitem
+>Počisti dokončana opravila</guimenuitem
+> </menuchoice
+>, da odstranite vsa dokončana opravila iz vaših aktivnih virov. Če želite obdržati dokončana opravila, vendar si jih ne želite ogledati na seznamih opravil, jih <link linkend="filters-view"
+>filtrirajte</link
+>, namesto da bi jih izbrisali. </para>
+
+</sect2>
+
+</sect1>
+<!-- only import ??-->
+<sect1 id="managing-get-hot-new-stuff">
+<title
+>Prenos z uporabo Get Hot New Stuff</title>
+
+<!--para
+>If you have a calendar containing events of public interest, such as
+a conference or championship schedule, you can upload it (or check if there
+is something worth downloading) using the
+<ulink url="http://ghns.berlios.de/"
+>get hot new stuff framework</ulink
+>.
+</para-->
+
+<para
+>Če želite odpreti pogovorno okno <guilabel
+>Get Hot New Stuff</guilabel
+>, ki ponuja seznam koledarjev za prenos, izberite <menuchoice
+><guimenu
+>Datoteka</guimenu
+><guisubmenu
+>Uvoz</guisubmenu
+> <guimenuitem
+>Pridobi Hot New Stuff ...</guimenuitem
+></menuchoice
+> element menija. Če izberete enega od koledarjev, se prikaže pogovorno okno s seznamom dogodkov iz koledarjev. Če želite združiti prikazane dogodke z vašim privzetim virom, pritisnite <guilabel
+>Združi</guilabel
+>.</para>
+
+<!--para>
+To open the <guilabel
+>Upload Hot New Stuff</guilabel
+> dialog, which allow you
+to export calendars containing events which may be useful to other people, such
+as a conference program, a list of holidays, special events, &etc;,
+choose the <menuchoice
+><guimenu
+>File</guimenu
+><guisubmenu
+>Export</guisubmenu>
+<guimenuitem
+>Upload Hot New Stuff...</guimenuitem
+></menuchoice
+>.</para>
+
+<para
+>Before uploading the events, make sure you have
+<link linkend="filters-view"
+>filtered out</link
+> all unrelated data.</para-->
+
+</sect1>
+
+</chapter>
+
+<chapter id="chapter-views-and-filters"
+><!-- updated to 5.4.40-->
+
+<title
+>Pogledi in filtri</title>
+
+<para
+>Medtem ko koledarji (viri) lahko vsebujejo dogodke, opravila in/ali vnose v dnevnik, so ti predmeti po naravi zelo različni. Opravila morda nimajo povezanega datuma, zato pogled urnika zanje ni primeren. Dnevniški zapisi so zbirka vaših razmišljanj, dogodkov ali izkušenj. Potrebujejo svoj način pogleda, saj niso povezani s seznamom prihajajočih dogodkov ali seznamom opravil &etc;</para>
+
+<para
+>Za rešitev izziva prikaza vaših informacij na uporaben in intuitiven način je &korganizer; ponuja različne poglede, filtre in možnosti iskanja. Oznake lahko dodelite tudi povezanim dogodkom in opravilom, kar vam bo pomagalo, da si jih ogledate pozneje z uporabo filtrov ali barv.</para>
+
+<sect1 id="description-view">
+<title
+>&korganizer; Pogledi</title>
+
+<para
+>V tem razdelku opisujemo različne načine pogleda in predstavljamo pregled, kako brskati po svojih osebnih podatkih z &korganizer;.</para>
+
+<para
+>&korganizer; okno lahko razdelimo na dve glavni področji: glavno okno in stransko vrstico. V glavnem oknu so prikazani glavni pogledi, stranska vrstica pa Krmar po datumih, Pogled opravil, Pregledovalnik elementov in Pogled upravitelja koledarja. Če želite prikazati ali skriti komponente stranske vrstice, označite ali počistite menijske elemente v podmeniju <menuchoice
+><guimenu
+>Nastavitve</guimenu
+> <guisubmenu
+>Stranska vrstica</guisubmenu
+></menuchoice
+>.</para>
+
+<para
+>Navigator po datumih je na voljo za brskanje in izbiro datumov. Današnji datum bo označen z majhnim okvirčkom, datumi, ki imajo načrtovane dogodke, bodo krepki (dnevni ali tedenski ponavljajoči se dogodki morda ne bodo označeni kot krepki, <link linkend="config-main-views"
+>odvisno od konfiguracije pogleda </link
+>), prazniki pa bodo obarvani rdeče. Če želite skočiti na datum, preprosto kliknite nanj. Držite miško, da izberete več sosednjih datumov hkrati. Pogledi <guilabel
+>Kaj je naslednje</guilabel
+>, <guilabel
+>Seznam</guilabel
+>, <guilabel
+>Dnevni red</guilabel
+> in <guilabel
+>Dnevnik</guilabel
+> bodo prikazali samo dogodke, opravila ali elemente dnevnika iz datume, izbrane v Krmarju po datumih. Pogled <guilabel
+>Mesec</guilabel
+> bo prikazal dogodke ali opravila iz prvega meseca, ki so prikazani v Krmarju po datumih (izbrani dnevi v mesecu ne bodo spremenili pogleda meseca, spremeni se le mesec).</para>
+
+<para
+>Komponenta stranske vrstice pogleda opravil navaja vaša opravila, tako kot <link linkend="todo-view"
+>pogled opravil</link
+>. Uporabno je, če želite med uporabo drugih pogledov videti svoja opravila.</para>
+
+<para
+>Komponenta stranske vrstice pregledovalnika predmetov prikazuje podrobnosti o trenutno izbranih dogodkih, opravilih ali vnosih v dnevnik.</para>
+
+<para
+>Na koncu vam komponenta stranske vrstice Pregledovalnik upravitelja koledarja omogoča, da omogočite ali onemogočite vire na seznamu, tako da potrdite ali počistite polje za vir, in upravljate svoje vire. Za več informacij preverite <xref linkend="managing-resources"/>.</para>
+
+<para
+>Po pogledu koledarja lahko tudi brskate tako, da izberete <menuchoice
+><guimenu
+>Pojdi</guimenu
+> <guimenuitem
+>Nazaj</guimenuitem
+></menuchoice
+> menijski element (ali pritisnete <inlinemediaobject
+><imageobject
+><imagedata fileref=" go-previous.png" format="PNG"/></imageobject
+></inlinemediaobject
+>gumb orodne vrstice), ki se pomakne na prejšnji dan, teden, mesec ali leto, pri čemer izberete element menija<menuchoice
+><guimenu
+> Pojdi</guimenu
+><guimenuitem
+>Naprej</guimenuitem
+></menuchoice
+> (ali pritisk <inlinemediaobject
+><imageobject
+> <imagedata fileref="go-next.png" format="PNG"/></imageobject
+> </inlinemediaobject 
+>gumb orodne vrstice), ki se pomakne na naslednji dan, teden, mesec ali leto (odvisno od pogleda), ali izbiro <menuchoice
+><guimenu
+>Pojdi</guimenu
+><guimenuitem
+>Na danes</guimenuitem
+> </menuchoice 
+> menijski element (ali pritisk <inlinemediaobject
+><imageobject
+> <imagedata fileref="go-jump-today.png" format="PNG"/></imageobject
+> </inlinemediaobject
+>gumb orodne vrstice), ki bo vključeval trenutno dan v trenutnem pogledu.</para>
+
+<sect2 id="whatsnext-view">
+<title
+>Kaj je naslednje Pogled</title>
+
+<para
+>Ta pogled prikazuje dogodke in opravila v preprosti obliki, ki jo lahko hitro preberete. Prikazana bodo vsa odprta opravila, prikazani pa bodo samo dogodki iz dni, izbranih v stranski vrstici <guilabel
+>Datumski navigator</guilabel
+>. Dogodki in opravila so prikazani po eno na vrstico.</para>
+
+<para
+>Preklopite na pogled Kaj je naslednje tako, da izberete menijsko postavko <menuchoice
+><guimenu
+>Pogled</guimenu
+> <guimenuitem
+>Kaj je naslednje</guimenuitem
+></menuchoice
+>.</para>
+
+</sect2>
+
+<sect2 id="list-view">
+<title
+>Pogled seznama dogodkov</title>
+<para
+>Ta pogled prikazuje vsa vaša opravila, dogodke in vnose v dnevnik za datume, izbrane v Krmarju po datumih, kot seznam. Odprta opravila, ki niso zapadla na izbrane datume, niso prikazana. Ta pogled je primeren za prikaz številnih različnih predmetov na strnjen način. Uporabno je tudi, če so vaši dogodki razporejeni v daljšem časovnem obdobju, ki ne bi bilo v celoti prikazano na zaslonu, če uporabljate enega od drugih pogledov.</para>
+
+<para
+>Postavke so prikazane po ena na vrstico. Stolpci prikazujejo, ali je opomnik nastavljen (ikona zvonca, prikazana v njem, pomeni, da je opomnik nastavljen), če se ponavlja večkrat (ikona s preslednimi puščicami pomeni ponavljajoči se dogodek), informacije o začetnem in končnem času. Če miško premaknete nad element, se prikaže opis orodja s podrobnimi informacijami o predmetu.</para>
+
+<para
+>Preklopite prikaz na pogled seznama tako, da izberete menijsko postavko <menuchoice
+><guimenu
+>Pogled</guimenu
+> <guimenuitem
+>Seznam dogodkov</guimenuitem
+></menuchoice
+>.</para>
+
+
+</sect2>
+
+<sect2 id="agenda-view">
+<title
+>Pogled dnevnega reda</title>
+
+<!--TODO: add agenda view options, color of resources and tags-->
+
+<para
+>Pogled dnevnega reda prikazuje vaše dogodke ali dolžnosti za en ali več dni, razvrščene kronološko. V dnevnem urniku lahko vidite tudi dolžino posameznega dogodka. Če želite omogočiti pogled dnevnega reda, izberite menijski element <menuchoice
+><guimenu
+>Pogled</guimenu
+> <guimenuitem
+>Dnevni red</guimenuitem
+></menuchoice
+> ali pritisnite <inlinemediaobject
+><imageobject
+><imagedata fileref="view-calendar- agenda.png" format="PNG"/></imageobject
+></inlinemediaobject
+>gumb orodne vrstice.</para>
+<para
+>Pogledi <guilabel
+>Dan</guilabel
+>, <guilabel
+>Delovni teden</guilabel
+> in <guilabel
+>Teden</guilabel
+> so različice pogleda Dnevni red. Pravzaprav lahko kadar koli nastavite dneve, prikazane v pogledu Dnevni red, tako da jih izberete v Krmarju po datumih.</para>
+<!--check bell + chasing-arrows icon here-->
+<para
+>Čas je označen s časovno vrstico na levi strani pogleda. Drsni trak na desni je na voljo, ko celega dneva ni mogoče prikazati na enem zaslonu (kar je običajno). Vsak pravokotnik v pogledu predstavlja posamezen dogodek ali opravilo za ta čas ter prikazuje začetni in končni čas ter povzetek. Ikona <guiicon
+>zvonec</guiicon
+> je prikazana, če je nastavljen opomnik, in ikona <guiicon
+>puščice za lov</guiicon
+> je prikazana, če se opomnik ponovi večkrat. Če miško premaknete nad koledarsko postavko, se prikaže opis orodja s podrobnimi informacijami o tem elementu. Če želite narediti &korganizer; pokažite rdečo črto, ki označuje trenutni čas na trenutni dan (črta Marcus Bains), označite polje <guilabel
+>Prikaži vrstico trenutnega časa (Marcus Bains)</guilabel
+> v <link linkend="config-main-views"
+>&korganizer; ogled konfiguracije</link
+>.</para>
+
+<para
+>Vsakemu dogodku lahko spremenite velikost z miško. Preprosto premaknite kazalec miške blizu zgornjega ali spodnjega roba dogodka in povlecite rob navzgor ali navzdol. Tako lahko vizualno spremenite začetni in končni čas vašega dogodka. To deluje tudi v pogledu Teden in Delovni teden. Z drugimi besedami, z miško je mogoče spremeniti začetni in končni čas tako, da samo premaknete zgornjo ali spodnjo mejo dogodka na nov čas.</para>
+
+<para
+>Vsak dogodek lahko prestavite z miško. Premaknite kazalec miške nad dogodek in ga povlecite na novo časovno lokacijo. To deluje tudi v pogledu Teden in Delovni teden. Dogodke lahko premaknete na druge, trenutno nevidne datume. Kazalec miške premaknite nad dogodek in ga povlecite v Krmar po datumih.</para>
+
+<para
+>Vsak dogodek lahko prestavite z miško. Premaknite kazalec miške nad dogodek in ga povlecite na novo časovno lokacijo. To deluje tudi v pogledu Teden in Delovni teden. Dogodke lahko premaknete na druge, trenutno nevidne datume. Kazalec miške premaknite nad dogodek in ga povlecite v Krmar po datumih.</para>
+
+<tip
+><para
+>Obstajata dve uporabni bližnjici za dodajanje dogodkov: <itemizedlist>
+<listitem
+><para
+>Dvakrat kliknite poljubno odprto časovno območje in &korganizer; bo samodejno ustvaril dogodek s privzetim trajanjem (ki ga je mogoče prilagoditi v pogovornem oknu z nastavitvami). Povzetek lahko dodate takoj. Dogodki se <quote
+>zaskočijo</quote
+> v polurnih korakih in zaokrožijo na najbližje pol ure od mesta, kjer ste kliknili.</para
+></listitem>
+<listitem
+><para
+>Izberite poljubno odprto časovno območje in ga dvakrat kliknite ali začnite pisati povzetek dogodka. &korganizer; samodejno nastavi trajanje in začetni čas, kot je določeno v izbirnem območju v pogledu dnevnega reda.</para
+></listitem>
+</itemizedlist>
+</para
+></tip>
+
+<para
+>Za lažje organiziranje dnevnega reda barva dogodkov odraža njihove oznake in glede na <link linkend="config-main-views"
+>&korganizer; pogled konfiguracije</link
+>, lahko odraža tudi njegov <link linkend="managing-resources"
+>vir</link
+>. Torej, če dodelite <link linkend="categories-view"
+>oznake dogodkom</link
+> in <link linkend="config-main-colors"
+>različne barve oznakam</link
+>, boste lahko hitro prepoznati vrsto dogodka po njegovi barvi. </para>
+
+<para
+>Pogled dnevnega reda lahko prikaže dogodke iz vseh vaših koledarjev, združenih v en pogled, ali prikaže pogled na koledar. Oba pogleda sta na voljo prek zavihkov in ju lahko <link linkend="config-main-views"
+>prilagodite v pogovornem oknu z nastavitvami</link
+>. </para>
+
+<sect3 id="day-view">
+<title
+>Dnevni pogled</title>
+
+<para
+>Ta pogled predstavlja <link linkend="agenda-view"
+>pogled dnevnega reda</link
+> za en dan.</para>
+
+<para
+>Zaslon preklopite na dnevni pogled tako, da izberete menijski element <menuchoice
+><guimenu
+>Pojdi</guimenu
+> <guimenuitem
+>Dan</guimenuitem
+></menuchoice
+> ali pritisnete <inlinemediaobject
+><imageobject
+><imagedata fileref="go -jump-today.png" format="PNG"/></imageobject
+></inlinemediaobject
+><guilabel
+>Dan</guilabel
+> gumb v orodni vrstici.</para>
+
+</sect3>
+
+<sect3 id="next-x-days-view">
+<title
+>Pogled naslednjih X dni</title>
+
+<para
+>Ta pogled predstavlja <link linkend="agenda-view"
+>pogled dnevnega reda</link
+> za naslednje dni, začenši z današnjim dnem. Spremenite lahko število dni, ki bodo prikazani v <link linkend="config-main-views"
+>&korganizer; ogled konfiguracije</link
+>. Privzeta vrednost je 3.</para>
+
+<para
+>Preklopite prikaz na pogled naslednjih dni tako, da izberete menijsko postavko <menuchoice
+><guimenu
+>Pojdi</guimenu
+> <guimenuitem
+>Naslednjih X dni</guimenuitem
+></menuchoice
+> (X predstavlja število dni, običajno 3) .</para>
+
+</sect3>
+
+
+<sect3 id="week-view">
+<title
+>Tedenski pogled</title>
+
+<para
+>Tedenski pogled ponuja pogled, podoben dnevnemu pogledu. Dogodki za sedem dni so prikazani drug poleg drugega.</para>
+
+<para
+>Zaslon preklopite na tedenski pogled tako, da izberete menijsko postavko <menuchoice
+><guimenu
+>Pojdi</guimenu
+> <guimenuitem
+>Teden</guimenuitem
+></menuchoice
+> ali pritisnete <inlinemediaobject
+><imageobject
+><imagedata fileref="view -calendar-week.png" format="PNG"/></imageobject
+></inlinemediaobject
+><guilabel
+>Teden</guilabel
+> gumb v orodni vrstici.</para>
+
+</sect3>
+
+<sect3 id="workweek-view">
+<title
+>Pogled delovnega tedna</title>
+
+<para
+>To je enako kot tedenski pogled, le da prikazuje samo delovne dni v tednu.</para>
+
+<para
+>Preklopite zaslon na pogled delovnega tedna tako, da izberete element menija <menuchoice
+><guimenu
+>Pojdi</guimenu
+> <guimenuitem
+>Delovni teden</guimenuitem
+></menuchoice
+>.</para>
+
+</sect3>
+
+</sect2>
+
+
+<sect2 id="month-view">
+<title
+>Mesečni pogled</title>
+
+<!--TODO: add month view options-->
+
+<para
+>Mesečni pogled prikazuje vse dogodke in dolžnosti za tekoči mesec v znani postavitvi mesečnega koledarja. Vsaka celica v pogledu predstavlja dan in vsak dan vsebuje vse dogodke, ki se lahko prilegajo v ponujeno območje (maksimiranje okna vam bo omogočilo ogled več sestankov). Informacije o stanju ponavljanja in opomnika so označene z ikonami <guiicon
+>zvonec</guiicon
+> in <guiicon
+>puščice za lov</guiicon
+>, tako kot v drugih pogledih.</para>
+
+<para
+>Krmarite po pogledu meseca s puščicami Krmarja po datumih ali z elementi in gumbi orodne vrstice v meniju <guilabel
+>Pojdi</guilabel
+>. Ker vidno območje dnevne celice morda ne vsebuje vseh dogodkov in opravil, lahko s tipkovnico brskate po elementih ali pa uporabite drsne trakove, da si ogledate vse dogodke in opravila tega dne.</para>
+
+<para
+>Z miško se pomaknite nad kateri koli element koledarja, da se prikaže opis orodja s podrobnostmi o elementu. Dvakrat kliknite prazno območje, da ustvarite dogodek, dvakrat kliknite kateri koli element koledarja, da ga uredite.</para>
+
+<para
+>Za lažje organiziranje podatkov lahko barva dogodkov odraža njihove oznake in njihov <link linkend="managing-resources"
+>vir</link
+>, odvisno od <link linkend="config-main-views"
+> &korganizer; ogled konfiguracije</link
+>. Torej, če dodelite <link linkend="categories-view"
+>oznake dogodkom</link
+> in <link linkend="config-main-colors"
+>različne barve oznakam</link
+>, lahko prepoznate vrsto dogodek (ali vir) po barvi. </para>
+
+<para
+>Zaslon preklopite na mesečni pogled tako, da izberete menijski element <menuchoice
+><guimenu
+>Pogled</guimenu
+> <guimenuitem
+>Mesečni pogled</guimenuitem
+></menuchoice
+> ali pritisnete <inlinemediaobject
+><imageobject
+><imagedata fileref=" view-calendar-month.png" format="PNG"/></imageobject
+></inlinemediaobject
+><guilabel
+>Mesec</guilabel
+> gumb v orodni vrstici.</para>
+
+</sect2>
+
+<!-- Timeline View-->
+
+<sect2 id="timeline-view">
+<title
+>Pogled časovnice</title>
+
+<para
+>Pogled časovne osi prikazuje vse dogodke za izbrano časovno obdobje v gantotečnem pogledu. Vsak koledar je prikazan v ločeni vrstici. </para>
+
+<para
+>Z miško se pomaknite nad kateri koli element koledarja, da se prikaže opis orodja s podrobnostmi o elementu. Dvakrat kliknite prazno območje, da ustvarite dogodek, dvakrat kliknite kateri koli element koledarja, da ga uredite.</para>
+
+</sect2>
+
+<sect2 id="todo-view">
+<title
+>Seznam opravil</title>
+
+<para
+>Seznam opravkov ponuja mesto, kjer si lahko zapisujete hitre (ali dolgoročne) zapiske o stvareh, ki jih je treba narediti. Komponenta stranske vrstice pogleda opravil se prikaže tik pod navigatorjem po datumih. Lahko ga prikažete tudi na glavni plošči, če kliknete <inlinemediaobject
+><imageobject
+> <imagedata fileref="view-calendar-tasks.png" format="PNG"/></imageobject
+> </inlinemediaobject
+><guilabel
+> Ogled seznama opravil</guilabel
+> gumb orodne vrstice ali če izberete menijsko postavko <menuchoice
+><guimenu
+>Pogled</guimenu
+><guimenuitem
+>Seznam opravil</guimenuitem
+></menuchoice
+>.</para>
+
+<para
+>Opravilu lahko določite <quote
+>datum</quote
+>, z drugimi besedami, datum, ko naj bo opravilo končano.</para>
+
+<para
+>Opravilom lahko dodelite tudi prioritete in prikazana bodo razvrščena po prednostnem vrstnem redu. Nižje kot je število, višja je prioriteta, le da je nič (0) definirana kot <quote
+>brez prioritete.</quote
+></para>
+
+<para
+>Če želite vnesti nov vnos opravil, z desno tipko miške kliknite komponento stranske vrstice pogleda opravil ali pogled seznama opravil in izberite element menija <guimenuitem
+>Novo opravilo</guimenuitem
+>. Če z desno miškino tipko kliknete že obstoječe opravilo, boste imeli več možnosti: <guimenuitem
+>Pokaži</guimenuitem
+> povzetek, <guimenuitem
+>Uredi ...</guimenuitem
+> podrobnosti opravila, <guimenuitem
+> Izbrišite</guimenuitem
+> opravilo v celoti ali pa ustvarite <guimenuitem
+>Novo podopravilo ...</guimenuitem
+> Ustvarite lahko na primer veliko opravilo, kot je gradnja hiše, in naredite pod -opravila, kot je izbira pravega gradbišča, najem arhitekta, najem delavcev in končno organizacija zabave za vaše prijatelje.</para>
+
+<para
+>Ko izberete <guimenuitem
+>Novo opravilo ...</guimenuitem
+>, se prikaže pogovorno okno, ki vam omogoča vnos vseh potrebnih <link linkend="entering-data-to-do"
+>informacij</link
+>.</para>
+
+<para
+>Kliknite katero koli opravilo na seznamu, da ga označite. Če kliknete polje z debelo črto na levi strani opisa opravila, boste spremenili status <quote
+>dokončano</quote
+> opravila. Če dvakrat kliknete opis opravila, boste lahko uredili vse njegove podrobnosti.</para>
+
+<para
+>Izberete lahko tudi <link linkend="managing-purge-archive"
+>Čiščenje končano</link
+> v meniju miškinega gumba <mousebutton
+>desna</mousebutton
+>, da izbrišete vsa opravila, ki ste jih označili kot dokončana.</para>
+
+<para
+>Opravila lahko tudi povlečete z miško, da preuredite hierarhijo ali izmenjate opravila z drugimi okni koledarja. Preberete lahko tudi <link linkend="other-features-drag-and-drop"
+>pregled</link
+> vseh razpoložljivih operacij povleci in spusti.</para>
+</sect2>
+
+<sect2 id="journal-view">
+<title
+>Pogled dnevnika</title>
+<para
+>Pogled Dnevnik ponuja prostor za beleženje vaših razmišljanj, dogodkov ali izkušenj. Pogled dnevnika lahko prikažete na glavni plošči, če pritisnete <inlinemediaobject
+><imageobject
+> <imagedata fileref="journal-new.png" format="PNG"/></imageobject
+> </inlinemediaobject
+><guilabel
+>dnevnik Gumb orodne vrstice Pogled</guilabel
+> ali če izberete menijsko postavko <menuchoice
+><guimenu
+>Pogled</guimenu
+><guimenuitem
+>Dnevnik</guimenuitem
+> </menuchoice
+>.</para>
+
+<para
+>Ko kliknete povezavo <guilabel
+>Nov dnevnik ...</guilabel
+> (ali gumb <guibutton
+>Nov dnevnik ...</guibutton
+>), bo ustvarjen nov vnos v dnevnik. Če želite urediti vnos v dnevnik, samo kliknite besedilno polje in ga uredite! Če želite odstraniti vnos v dnevnik, pritisnite gumb <inlinemediaobject
+> <imageobject
+><imagedata fileref="edit-delete.png" format="PNG"/> </imageobject
+></inlinemediaobject
+>izbriši v pogledu dnevnika.</para>
+
+</sect2>
+
+</sect1>
+
+<sect1 id="categories-view">
+<title
+>Oznake</title>
+
+<!--TODO: Add screenshot?-->
+
+<para
+>Za lažje organiziranje vnosov v sorodnih skupinah lahko dodelite oznake dogodkom, opravilom in vnosom v dnevnik. Če dodelite oznake, jih lahko pozneje uporabite pri iskanju, filtriranju in prikazovanju dogodkov in opravil.</para>
+
+<para
+>Za dodeljevanje oznak pri urejanju ali ustvarjanju novih <link linkend="entering-data-events-general"
+>dogodkov</link
+> ali <link linkend="entering-data-to-do-general"
+>opravil</link 
+> kliknite gumb <guibutton
+>...</guibutton
+> na zavihku <guilabel
+>Splošno</guilabel
+>. Vsakemu elementu lahko dodelite več kot eno oznako.</para>
+
+<para
+>Če želite ustvariti in izbrisati oznake, izberite menijski element <menuchoice
+> <guimenu
+>Nastavitve</guimenu
+><guimenuitem
+>Upravljanje oznak ...</guimenuitem
+> </menuchoice
+>, da odprete pogovorno okno <guilabel
+>Upravljanje oznak</guilabel
+> . Če <link linkend="config-main-colors"
+>oznakam dodelite različne barve</link
+>, boste lahko hitro prepoznali vrsto dogodka po barvi, bodisi v pogledu dnevnega reda bodisi v pogledu meseca ( odvisno od <link linkend="config-main-views"
+>konfiguracije pogleda &korganizer;</link
+>). </para>
+
+</sect1>
+
+<sect1 id="filters-view">
+<title
+>Filtri</title>
+
+<para
+>Za pomoč pri ogledu, iskanju in izvozu podatkov lahko ustvarite in uporabite filtre za svoje koledarje. Če si na primer ne želite ogledati dokončanih opravil, jih lahko filtrirate, namesto da bi jih <link linkend="managing-purge-archive"
+>počistili</link
+>. Če dodelite oznake, jih lahko uporabite za ustvarjanje filtrov.</para>
+
+<para
+>Če želite ustvariti, izbrisati in urediti filtre, izberite menijski element <menuchoice
+> <guimenu
+>Nastavitve</guimenu
+><guimenuitem
+>Upravljanje filtrov pogleda ...</guimenuitem
+> </menuchoice
+>, da odprete <guilabel
+>Urejanje filtrov koledarja</guilabel
+> pogovorno okno. V tem pogovornem oknu lahko ustvarjate, brišete in urejate filtre, ki bodo vplivali na elemente, ki jih bo prikazal &korganizer;.</para>
+
+<!--TODO: Add detailed description of the dialog. Is it stable yet?-->
+
+<para
+>Podmeni <menuchoice
+><guimenu
+>Pogled</guimenu
+> <guisubmenu
+>Filter</guisubmenu
+></menuchoice
+> in spustni meni orodne vrstice filtrov ponujata dostop do vseh razpoložljivih filtrov, ustvarjenih z uporabo <link linkend="menu-settings-edit-filters"
+><guilabel
+>Pogovorno okno Uredi filtre koledarja</guilabel
+></link
+>. Za vklop in izklop prikaza orodne vrstice filtrov izberite <menuchoice
+><guimenu
+>Nastavitve</guimenu
+> <guisubmenu
+>Prikazane orodne vrstice</guisubmenu
+><guimenuitem
+>Orodno vrstico filtrov</guimenuitem
+></menuchoice
+>. Če ne želite uporabiti nobenega filtra, izberite <guilabel
+>Brez filtra</guilabel
+>.</para>
+
+<para
+>Filtri so uporabni pri <link linkend="managing-export"
+>izvažanju koledarja</link
+>. Če uporabite filter, bodo izvoženi samo filtrirani (vidni) elementi. Poleg tega so filtri učinkovitejši, ko so elementi že razvrščeni in organizirani v <link linkend="categories-view"
+>oznakah</link
+>, saj lahko enostavno ustvarite filtre na podlagi oznak.</para>
+
+</sect1>
+
+<sect1 id="search-view">
+<title
+>Iskanje</title>
+
+<para
+>Izberite menijski element <menuchoice
+><guimenu
+>Uredi</guimenu
+> <guimenuitem
+>Najdi</guimenuitem
+></menuchoice
+> ali pritisnite <keycombo action="simul"
+>&Ctrl;<keycap
+>F</keycap
+> </keycombo
+> bližnjica za iskanje dogodkov, opravil ali vnosov v dnevnik po njihovih povzetkih, opisih in/ali oznakah. Dejanje iskanja bo preiskalo samo navedena polja.</para>
+
+<tip
+><para
+>Če se ne spomnite natančnega povzetka, lahko uporabite nadomestne znake. Če ne poznate niti enega znaka povzetka, namesto manjkajočega znaka vnesite <userinput
+>?</userinput
+>. Če ne poznate več znakov, uporabite <userinput
+>*</userinput
+>. Če na primer veste, da ima dogodek ali opravilo <emphasis
+>sestanek</emphasis
+> na začetku in <emphasis
+>izdelek</emphasis
+> za njim, bi napisali <userinput
+>sestanek*izdelek</userinput
+> v Najdi pogovorno okno. &korganizer; bo našel vnose, kot so <quote
+>Opravila: dogovorite sestanek o novem izdelku</quote
+>, <quote
+>Sestanek za razpravo o stari liniji izdelkov</quote
+> in podobno. Velike črke so prezrte.</para
+></tip>
+
+<para
+>Rezultat operacije Najdi je seznam dogodkov, vnosov v dnevnik in/ali opravil z določeno ključno besedo. Značilnosti iskalnega seznama so enake kot <link linkend="list-view"
+>Pogled seznama</link
+>.</para>
+
+<para
+>Ta nastali seznam je aktiven. Če želite prikazati ali urediti podrobnosti dogodka ali opravila, lahko dvokliknete vrstico. Več informacij o teh podrobnostih najdete v <xref linkend="entering-data-events"/> in <xref linkend="entering-data-to-do"/>.</para>
+
+</sect1>
+
+</chapter>
+
+<chapter id="entering-data"
+>  <!--updated to 5.4.40-->
+
+<title
+>Vnos podatkov</title>
+
+<sect1 id="entering-data-events">
+<title
+>Dogodki</title>
+
+<para
+>Dogodki so prihodnji ali pretekli sestanki, kot so poslovni sestanki, osebni jubileji in obiski kina. Dogodek lahko traja tudi več dni, na primer prazniki.</para>
+
+<para
+>Vstop v nov dogodek je zelo enostaven. Preprosto izberite element menija <menuchoice
+><guimenu
+>Dejanja</guimenu
+><guimenuitem
+>Nov dogodek ...</guimenuitem
+></menuchoice
+>. Prikaže se okno s šestimi zavihki na dnu.</para>
+
+<para
+>Če želite, lahko uporabite drugačen način za ustvarjanje novega dogodka:</para>
+
+<procedure>
+<step
+><para
+>Uporabite Navigator po datumu, da se pomaknete na datum dogodka.</para
+></step>
+
+<step
+><para
+>Preklopite na pogled <guilabel
+>Dnevni red</guilabel
+> in kliknite ikono želenega pogleda v <guimenu
+>Orodni vrstici Pogled</guimenu
+> ali izberite želeni pogled v meniju <guimenu
+>Pojdi</guimenu
+>. Ker se vaš dogodek začne ob določeni uri, bi morali izbrati <link linkend="reference-menus-view"
+>pogled</link
+>, ki prikazuje ure v dnevu. Izberete lahko pogled <guimenuitem
+>Dan</guimenuitem
+>, pogled <guimenuitem
+>Delovni teden</guimenuitem
+> ali pogled <guimenuitem
+>Teden</guimenuitem
+>. Pogled <guimenuitem
+>Mesec</guimenuitem
+> je bolj primeren za opravila, opisana spodaj.</para
+></step>
+
+<step
+><para
+>Na glavni plošči dvakrat kliknite čas in datum začetka dogodka. </para
+></step>
+
+<step
+><para
+>Prikaže se pogovorno okno s šestimi zavihki na dnu okna. Vnesite svoje podatke, kot je opisano spodaj.</para
+></step>
+</procedure>
+
+<screenshot id="screenshot-event-general">
+<screeninfo
+>Posnetek zaslona &korganizer; pogovornega okna za urejanje dogodka</screeninfo>
+<mediaobject>
+<imageobject
+><imagedata fileref="event-general.png" format="PNG"/></imageobject>
+<textobject
+><phrase
+>Posnetek zaslona pogovornega okna za urejanje dogodka &korganizer;</phrase
+></textobject>
+<caption
+><para
+>Posnetek zaslona pogovornega okna za urejanje dogodka &korganizer;</para
+></caption>
+</mediaobject>
+</screenshot>
+
+<para
+>To je natančen opis polj in gradnikov posameznih oken dogodkov. Ni treba izpolniti vseh polj; nekatere lahko pustimo prazne. Preberite razdelek <link linkend="entering-data-required-fields"
+>Zahtevana polja</link
+> za podrobne informacije. In če se raje učite z zgledom, je v razdelku <link linkend="examples-entering-event"
+>Dogodek vstopa</link
+> na voljo. </para>
+
+<variablelist>
+<varlistentry>
+<term
+><guilabel
+>Povzetek:</guilabel
+></term>
+<listitem
+><para
+>Vnesite kratek opis dogodka v polje <guilabel
+>Povzetek</guilabel
+>. Ta opis je besedilo, prikazano na &korganizer; glavna plošča.</para
+></listitem>
+</varlistentry>
+
+<varlistentry>
+<term
+><guilabel
+>Lokacija:</guilabel
+></term>
+<listitem
+><para
+>Vnesite kratek opis <guilabel
+>lokacije</guilabel
+>, kjer bo dogodek potekal.</para
+></listitem>
+</varlistentry>
+
+<varlistentry>
+<term
+><guilabel
+>Začetek</guilabel
+> in <guilabel
+>Konec</guilabel
+></term>
+<listitem
+><para
+>&korganizer; predlagani začetni in končni datum vašega dogodka. Dogodki se bodo predvidoma začeli in končali na isti datum. Spremenite te datume po želji. Datume vnesite neposredno ali uporabite <link linkend="glossary" endterm="gloss-calendar-widget"
+> Pripomočki za koledar</link
+>. Izberite čas med četrturnimi intervali ali vnesite želeni čas neposredno v časovna polja. Ta polja so na voljo le, če polje <guilabel
+>Ves dan</guilabel
+> ni potrjeno.</para
+></listitem>
+</varlistentry>
+
+</variablelist>
+
+<sect2 id="entering-data-events-general">
+<title
+>Zavihek Splošno</title>
+
+<variablelist>
+<varlistentry>
+<term
+>Podrobnosti:</term>
+<listitem
+><para
+>V velik pravokotnik brez naslova vnesite dolg opis dogodka. Tukaj lahko napišete kolikor želite podrobnosti. Na primer, če je dogodek, recimo, načrtovano generalno popravilo vašega avtomobila, lahko navedete vse predmete, ki jih je treba popraviti. Kasneje lahko ta seznam natisnete in ga predate serviserju. Če je dogodek nakupovanje, morate navesti blago, ki ga morate kupiti. Natisnite dogodek in ga odnesite s seboj v trgovino.</para
+></listitem>
+</varlistentry>
+
+<varlistentry>
+<term
+><guilabel
+>Oznake</guilabel
+></term>
+<listitem
+><para
+>Koledarskemu elementu lahko dodelite več <link linkend="categories-view"
+>oznak</link
+>. Kliknite gumb <guibutton
+>...</guibutton
+>, da prikažete vse razpoložljive oznake. Potrdite polja za oznake, da dogodku dodelite ustrezne oznake.</para>
+<para
+>Prav tako lahko dodate novo oznako, spremenite oznako ali izbrišete oznako v pogovornem oknu <guilabel
+>Upravljanje oznak</guilabel
+>. Odprite to pogovorno okno z <menuchoice
+> <guimenu
+>Nastavitve</guimenu
+> <guimenuitem
+>Upravljanje oznak</guimenuitem
+></menuchoice
+>.</para>
+
+<tip
+><para
+>Vaša jezikovna lekcija v službi lahko sodi med poslovne in izobraževalne oznake, obletnica poroke pa med osebne ali posebne priložnosti - izbira je vaša.</para
+></tip>
+</listitem>
+</varlistentry>
+
+<varlistentry>
+<term
+><guilabel
+>Dostop:</guilabel
+></term>
+<listitem
+><para
+>Izberite <guilabel
+>Javno</guilabel
+>, <guilabel
+>Zasebno</guilabel
+> ali <guilabel
+>Zaupno</guilabel
+>, da dogodek ostane zaseben ali zaupen. Trenutno ta izbira pravilno nastavi atribut <quote
+>CLASS</quote
+> dogodkov na <quote
+>PUBLIC</quote
+>, <quote
+>PRIVATE</quote
+> ali <quote
+>CONFIDENTIAL</quote
+>. Toda ali se te nastavitve res uporabljajo za omejevanje dostopa do informacij, je odvisno od implementacije strežnika odjemalca in/ali programske opreme skupine.</para>
+<warning
+><para
+>Trenutno &korganizer; <emphasis
+>bo</emphasis
+> prikazal predmete, ki so v lasti drugih ljudi in so označeni kot zaupni. Drugi odjemalci jih lahko obravnavajo drugače, vendar bodite previdni pri objavljanju zasebnih ali zaupnih dogodkov: iCalendar je format besedilne datoteke in ga je mogoče brati s katerim koli urejevalnikom besedil (če ima nekdo dostop za branje do njih). Torej, če želite, da so predmeti zares zaupni, poskrbite, da boste uporabili vir, do katerega imate dostop samo vi.</para
+></warning
+></listitem>
+</varlistentry>
+
+</variablelist>
+
+</sect2>
+
+<sect2 id="entering-data-events-attendees">
+<title
+>Udeleženci Zavihek</title>
+
+<para
+>V tem zavihku izberite ljudi, ki jih želite povabiti na svoj dogodek.</para>
+
+<screenshot id="screenshot-event-attendees">
+<screeninfo
+>Posnetek zaslona pogovornega okna &korganizer; za urejanje dogodka – zavihek Udeleženci</screeninfo>
+<mediaobject>
+<imageobject
+><imagedata fileref="event-attendees.png" format="PNG"/></imageobject>
+<textobject
+><phrase
+>Posnetek zaslona pogovornega okna &korganizer; za urejanje dogodka – zavihek Udeleženci</phrase
+></textobject>
+<caption
+><para
+>Posnetek zaslona pogovornega okna &korganizer; za urejanje dogodka – zavihek Udeleženci</para
+></caption>
+</mediaobject>
+</screenshot>
+
+<variablelist>
+<varlistentry>
+<term
+><guilabel
+>Organizator srečanja:</guilabel
+></term>
+<listitem
+><para
+>Nastavi identiteto, ki ustreza organizatorju tega opravila ali dogodka. Če &korganizer; je konfiguriran za pošiljanje e-poštnih sporočil z vabili, bo pri pošiljanju teh e-poštnih sporočil uporabljena identiteta, izbrana v tem kombiniranem polju. Privzeto identiteto lahko nastavite v razdelku <guilabel
+>Osebno</guilabel
+> v &korganizer; konfiguracijo. Poleg tega se identitete zbirajo iz vašega &kmail; nastavitve in iz imenika.</para
+></listitem>
+</varlistentry>
+
+<varlistentry>
+<term
+>Seznam udeležencev</term>
+<listitem
+><para
+>Seznam na sredini zavihka prikazuje udeležence, izbrane za ta dogodek, in vam omogoča, da dodate udeležence z vnosom imena in e-poštnega naslova, jih uredite ali odstranite.</para>
+<para
+>Če so udeleženci v vašem imeniku, vam ni treba zapomniti ali vnesti njegovega e-poštnega naslova, da ga dodate na seznam udeležencev. Preprosto kliknite gumb <guibutton
+>Izberi naslovnika ...</guibutton
+> in s seznama izberite udeleženca(-e). Upoštevajte, da je to standardni &kde; imenik, ki ga uporablja tudi &kmail; in ga lahko pokličete tudi kot ločeno aplikacijo (&kaddressbook;).</para>
+</listitem>
+</varlistentry>
+
+<varlistentry>
+<term
+>Udeleženci</term>
+<listitem
+><para
+>V spustnem meniju na levi strani vnosa izberite vlogo udeleženca (udeleženec, neobvezni udeleženec, opazovalec, predsednik). Vloga je preprost opomnik o tem, kakšno vlogo ima udeleženec v tem dogodku. </para
+></listitem>
+</varlistentry>
+
+<varlistentry>
+<term
+>Stanje</term>
+<listitem
+><para
+>V spustnem meniju na desni strani vnosa izberite status udeleženca (Potrebno je ukrepanje, Sprejeto, Zavrnjeno, Pogojno, Pooblaščeno). Če uporabljate urnik programske opreme skupine in zahtevate odgovore svojih udeležencev, se bo status udeleženca posodobil, ko boste prejeli odgovore. Če ne zahtevate odgovorov, boste morali status posodobiti ročno.</para
+></listitem>
+</varlistentry>
+
+<varlistentry>
+<term
+>Zahtevaj odgovor</term>
+<listitem
+><para
+>V spustnem polju izberite <guilabel
+>Zahtevaj odgovor</guilabel
+>, če naj se ta udeleženec odzove na vaš načrt urnika. Posledično bo udeleženec prejel e-pošto z informacijami o urniku dogodka. Na seznamu s podrobnostmi se bo pojavila majhna ovojnica, ki to označuje. Ta funkcija je še posebej uporabna, ko je omogočeno razporejanje skupinske programske opreme, saj se status udeleženca samodejno posodobi.</para
+></listitem>
+</varlistentry>
+
+ <!-- Participiants: no conflicts Reschedule button
+ What is that? How does it work?-->
+
+</variablelist>
+
+</sect2>
+
+<!--Fixme Resources tab missing -->
+
+<sect2 id="entering-data-events-reminder">
+<title
+>Zavihek opomnik</title>
+<variablelist>
+<varlistentry>
+<term
+>Opomin</term>
+<listitem
+><para
+>V spustnem polju izberite privzeti opomnik in pritisnite <guibutton
+>Dodaj</guibutton
+>, če &korganizer; vas mora spomniti na dogodek.</para>
+<para
+>Uporabite gumb <guibutton
+>Konfiguriraj</guibutton
+>, da odprete pogovorno okno <guilabel
+>Uredi obstoječi opomnik</guilabel
+>. V tem pogovornem oknu lahko izberete, koliko minut, ur ali dni pred ali po začetku ali koncu dogodkov želite biti opomnjeni, lahko nastavite ponavljajoče se intervale za svoje opomnike in ustvarite posebne opomnike, ki prikazujejo besedilo ali predvajajo zvoke.</para>
+</listitem>
+</varlistentry>
+
+</variablelist>
+
+</sect2>
+
+<sect2 id="entering-data-events-recurrence">
+<title
+>Zavihek Ponavljanje</title>
+
+<para
+>Nekateri dogodki potekajo redno. Njihov natančen urnik lahko določite tukaj.</para>
+
+<screenshot id="screenshot-event-recurrence">
+<screeninfo
+>Posnetek zaslona pogovornega okna &korganizer; za urejanje dogodka – zavihek Ponavljanje</screeninfo>
+<mediaobject>
+<imageobject
+><imagedata fileref="event-recurrence.png" format="PNG"/></imageobject>
+<textobject
+><phrase
+>Posnetek zaslona pogovornega okna &korganizer; za urejanje dogodka – zavihek Ponavljanje</phrase
+></textobject>
+<caption
+><para
+>Posnetek zaslona pogovornega okna &korganizer; za urejanje dogodka – zavihek Ponavljanje</para
+></caption>
+</mediaobject>
+</screenshot>
+
+<note
+><para
+>Če želite aktivirati nastavitve, začnite z izbiro pravila ponavljanja na desni strani <guilabel
+>Ponavljanja</guilabel
+> v spustnem polju. Če je izbrana možnost <guilabel
+>Nikoli</guilabel
+>, na tem zavihku ne morete narediti nobenih sprememb.</para
+></note>
+
+<sect3 id="recurrence-recurrence-rule">
+<title
+>Pravilo ponavljanja</title>
+
+<para
+>Izberite, ali želite ta dogodek ponavljati dnevno, tedensko, mesečno ali letno. Podrobnejše možnosti so naslednje:</para>
+
+<variablelist>
+<varlistentry>
+<term
+><guilabel
+>Dnevno</guilabel
+></term>
+<listitem
+><para
+>Določite, ali se dogodek zgodi vsak dan (1), vsak drugi dan (2) in tako naprej.</para
+></listitem>
+</varlistentry>
+
+<varlistentry>
+<term
+><guilabel
+>Tedensko</guilabel
+></term>
+<listitem
+><para
+>Določite, ali se dogodek zgodi vsak teden (1), vsak drugi teden (2) in tako naprej. Določite tudi dneve (nedelja ... ponedeljek), na katere se dogodek zgodi. </para
+></listitem>
+</varlistentry>
+
+<varlistentry>
+<term
+><guilabel
+>Mesečno</guilabel
+></term>
+<listitem
+><para
+>Dogodek lahko nastavite na isti dan v mesecu ali v določenem tednu na določen dan v tednu. Izbirati morate med tema dvema možnostma. Privzeto je &korganizer; predpostavlja, da želite ponoviti na isti koledarski dan v mesecu (na primer 15. Prav tako lahko prilagodite obdobje, tako da lahko ponavljate mesečno, trimesečno in tako naprej.</para
+></listitem>
+</varlistentry>
+
+<varlistentry>
+<term
+><guilabel
+>Letno</guilabel
+></term>
+<listitem>
+<para
+>To je podobno Mesečnemu. Izbrati morate, ali želite navesti koledarski dan v letu (&eg; 250. dan v letu) v določenem tednu na določen dan v tednu v mesecu (&eg; 2. torek v marec) ali dan v mesecu v določenem mesecu v letu. Privzeto je &korganizer; predvideva, da mislite na dan v mesecu. Obdobje lahko prilagodite tako, da odraža dogodke, ki se zgodijo dvakrat letno, vsaka štiri leta itd.</para>
+</listitem>
+</varlistentry>
+</variablelist>
+</sect3>
+
+<sect3 id="recurrence-recurrence-range">
+<title
+>Razpon ponavljanja</title>
+
+<para
+>Privzeto se dogodki, ki se ponavljajo, ponavljajo vedno; ponavljanju ni <quote
+>konca</quote
+>. To je lahko zaželeno ali ne, tako da lahko prekinete ponavljanje z izbiro končnega datuma ali več ponovitev.</para>
+
+</sect3>
+
+<sect3 id="recurrence-exceptions">
+<title
+>Izjeme</title>
+
+<para
+>Morda imate nastavljeno zelo dobro pravilo ponavljanja, vendar se zavedajte, da obstaja nekaj izjem. Če na primer nastavite urnik predavanj na fakulteti, boste morda želeli narediti izjeme za počitnice in podobno. V tem območju lahko dodajate, spreminjate in brišete datume s seznama izjem (&ie; časi, ko dogodek <emphasis
+>ne bo načrtovan</emphasis
+>, tudi če se pravilo ponavljanja ujema). Izberite datum z izbirnikom datuma in pritisnite <guibutton
+>Dodaj</guibutton
+>, da ga vključite. Če želite datume odstraniti, jih označite v polju na desni strani in kliknite <guibutton
+>Izbriši</guibutton
+>.</para>
+
+</sect3>
+</sect2>
+
+<sect2 id="entering-data-events-attachments">
+<title
+>Priponke</title>
+
+<para
+>Dogodki in opravila lahko vsebujejo priloge. Priloge lahko shranite kot povezave ali v vrstici. Če želite dodati prilogo, pritisnite gumb <guibutton
+>Dodaj</guibutton
+>.</para>
+
+<screenshot id="screenshot-event-attachments">
+<screeninfo
+>Posnetek zaslona pogovornega okna &korganizer; za urejanje dogodka – zavihek Priloge</screeninfo>
+<mediaobject>
+<imageobject
+><imagedata fileref="event-attachments.png" format="PNG"/></imageobject>
+<textobject
+><phrase
+>Posnetek zaslona pogovornega okna &korganizer; za urejanje dogodka – zavihek Priloge</phrase
+></textobject>
+<caption
+><para
+>Posnetek zaslona pogovornega okna za urejanje dogodka &korganizer; - zavihek Priloge</para
+></caption>
+</mediaobject>
+</screenshot>
+
+<para
+>Če izberete <guilabel
+>Shrani prilogo v vrstici</guilabel
+>, bo priloga shranjena v vašem koledarju, kar lahko zavzame veliko prostora, odvisno od velikosti priloge. Če ta možnost ni označena, bo shranjena samo povezava, ki kaže na prilogo. Ne uporabljajte povezave za priloge, ki se pogosto spreminjajo ali se lahko premaknejo (ali odstranijo) s trenutne lokacije.</para>
+
+<para
+>Za delo s prilogami so na voljo naslednja dejanja v kontekstnem meniju:</para>
+
+<variablelist>
+
+<varlistentry>
+<term
+><guimenuitem
+>Odprto</guimenuitem
+></term>
+<listitem
+><para
+>Prikaži izbrano prilogo s povezano aplikacijo.</para
+></listitem>
+</varlistentry>
+
+<varlistentry>
+<term
+><guimenuitem
+>Shrani kot...</guimenuitem
+></term>
+<listitem
+><para
+>Omogoča shranjevanje obstoječe priloge z drugim imenom.</para
+></listitem>
+</varlistentry>
+
+<varlistentry>
+<term
+><guimenuitem
+>Kopiraj</guimenuitem
+>, <guimenuitem
+>Izreži</guimenuitem
+> in <guimenuitem
+>Prilepi</guimenuitem
+></term>
+<listitem
+><para
+>Omogoča kopiranje, rezanje in lepljenje v in iz odložišča.</para
+></listitem>
+</varlistentry>
+
+<varlistentry>
+<term
+><guimenuitem
+>Odstrani</guimenuitem
+></term>
+<listitem
+><para
+>Izbriše izbrano prilogo.</para
+></listitem>
+</varlistentry>
+
+<varlistentry>
+<term
+><guimenuitem
+>Lastnosti...</guimenuitem
+></term>
+<listitem
+><para
+>Omogoča spreminjanje obstoječe priloge.</para
+></listitem>
+</varlistentry>
+
+</variablelist>
+
+</sect2>
+
+<!--FIXME works with certain type of calendars e.g. google calendar ?-->
+<sect2 id="entering-data-events-freebusy">
+<title
+>Prost/zaseden</title>
+
+<para
+>Ko na svoj dogodek dodajate udeležence, morate vedeti, ali so v tem času zasedeni ali prosti. Če udeleženci dajo na voljo podatke o prostem/zasedenem, si lahko tukaj ogledate njihov urnik, preden pošljete povabila.</para>
+
+<para
+>To prikazuje grafikon prostih/zasedenih urnikov na desni, kjer vsaka vrstica predstavlja enega od udeležencev, navedenih na levi. Označena območja na grafikonu predstavljajo čas, ki so ga že zavzeli drugi dogodki, neoznačena območja predstavljajo čas brez drugih dogodkov. Dogodek lahko premaknete na drugo časovno točko tako, da ga povlečete z miško, ali pa mu spremenite velikost tako, da z miško premaknete robove označenega območja.</para>
+
+<para
+>Informacije o prostem/zasedenem so na voljo le, če udeleženec objavi svoj urnik o prostem/zasedenem in če &korganizer; je pravilno konfiguriran, da ga pridobi. Za več informacij o konfiguraciji &korganizer; za objavo in pridobitev informacij o prostem/zasedenem času preverite <xref linkend="config"/>. Če dvakrat kliknete vnos udeleženca na seznamu, boste lahko vnesli lokacijo njegovih informacij o prostem/zasedenem. </para>
+
+<variablelist>
+
+<varlistentry>
+<term
+><guilabel
+>Lestvica</guilabel
+></term>
+<listitem
+><para
+>Nastavi stopnjo povečave na grafikonu urnika. <guilabel
+>Ura</guilabel
+> prikazuje obseg nekaj ur, <guilabel
+>Dan</guilabel
+> prikazuje obseg nekaj dni, <guilabel
+>Teden</guilabel
+> prikazuje obseg nekaj mesecev in <guilabel 
+>Mesec</guilabel
+> prikazuje obseg nekaj mesecev, medtem ko <guilabel
+>Samodejno</guilabel
+> izbere obseg, ki je najbolj primeren za trenutni dogodek ali opravilo.</para
+></listitem>
+</varlistentry>
+
+<varlistentry>
+<term
+><guibutton
+>Center na začetku</guibutton
+></term>
+<listitem
+><para
+>Pritisnite ta gumb, da grafikon prostega/zasedenega urnika centrirate na začetni čas in dan tega dogodka.</para
+></listitem>
+</varlistentry>
+
+<varlistentry>
+<term
+><guibutton
+>Izberi datum</guibutton
+></term>
+<listitem
+><para
+>Pritisnite ta gumb, da samodejno premaknete dogodek na datum in uro, ko so vsi udeleženci prosti.</para
+></listitem>
+</varlistentry>
+
+<varlistentry>
+<term
+><guibutton
+>Ponovno naloži</guibutton
+></term>
+<listitem
+><para
+>Pritisnite ta gumb, da ponovno naložite podatke o prostem/zasedenem za vse udeležence z ustreznih strežnikov.</para
+></listitem>
+</varlistentry>
+
+</variablelist>
+
+<para
+>Ko želite potrditi, preklicati ali razveljaviti vnesene podatke, izberite med akcijskimi gumbi <guibutton
+>V redu</guibutton
+>, <guibutton
+>Uporabi</guibutton
+> in <guibutton
+>Prekliči</guibutton
+>.</para>
+
+</sect2>
+
+<sect2 id="entering-data-events-template-buttons">
+<title
+>Upravljanje predlog</title>
+
+<para
+>Gumb <guibutton
+>Upravljanje predlog</guibutton
+> odpre pogovorno okno, ki vam omogoča, da trenutni dogodek shranite kot predlogo, tako da lahko znova uporabite vnesene podatke za prihodnje dogodke. Kot primer lahko shranite predlogo za sestanek, ki poteka na isti lokaciji in z istimi ljudmi.</para>
+<para
+>Z gumbom <guibutton
+>Uporabi</guibutton
+> lahko uporabite obstoječo predlogo za svoj dogodek. Z nadaljevanjem primera v prejšnjem odstavku lahko določite dnevni red sestanka.</para>
+
+</sect2>
+
+</sect1>
+
+<sect1 id="entering-data-to-do">
+<title
+>Opravila</title>
+
+<para
+>Seznam opravil je kraj, kjer si lahko zapisujete opombe o stvareh, ki jih morate narediti. Opravila so opravila, ki so lahko načrtovana ali ne. Obstajajo kratkoročna in dolgoročna opravila. Na primer, v enem tednu bi morali iti k frizerju, v enem letu pa prodati svoj stari avto. Verjetno ne želite, da se opomnik sproži ob določenem času, želite le imeti seznam stvari, ki jih morate narediti, in datume, ko morajo biti končane najpozneje (datum zapadlosti).</para>
+
+<para
+>Če želite vnesti novo opravilo, izberite <menuchoice
+><guimenu
+>Dejanja</guimenu
+><guimenuitem
+>Novo opravilo ...</guimenuitem
+></menuchoice
+>. Prikaže se okno s petimi zavihki na dnu.</para>
+
+<sect2 id="entering-data-to-do-general">
+<title
+>Zavihek Splošno</title>
+
+<screenshot id="screenshot-todo-general">
+<screeninfo
+>Posnetek zaslona &korganizer; pogovornega okna za urejanje opravil</screeninfo>
+<mediaobject>
+<imageobject
+><imagedata fileref="todo-general.png" format="PNG"/></imageobject>
+<textobject
+><phrase
+>Zaslonski posnetek &korganizer; urejevanje seznama opravil</phrase
+></textobject>
+<caption
+><para
+>Posnetek zaslona &korganizer; pogovornega okna za urejanje opravil</para
+></caption>
+</mediaobject>
+</screenshot>
+
+<para
+>Ta zavihek ima veliko skupnih možnosti s pogovornim oknom <guilabel
+>Urejanje dogodkov</guilabel
+>, vendar ima nekaj dodatnih elementov za opravila:</para>
+
+<variablelist>
+<varlistentry>
+<term
+><guilabel
+>Dokončanje</guilabel
+></term>
+<listitem
+><para
+>To je odstotek dokončanega spustnega menija, ki je bil prvotno nastavljen na 0 % dokončanega. Kasneje lahko navedete svoj napredek tako, da prilagodite odstotek dokončanega v korakih po 10 %.</para
+></listitem>
+</varlistentry>
+
+<varlistentry>
+<term
+><guilabel
+>Prioriteta</guilabel
+></term>
+<listitem
+><para
+>Svojim opravilom dodelite prednost. Ta spustni meni ponuja prioritete od ena do devet, pri čemer je ena najvišja. Sprva so opravila nastavljena na prednost pet (srednja).</para
+></listitem>
+</varlistentry>
+</variablelist>
+
+</sect2>
+
+</sect1>
+
+<sect1 id="entering-data-required-fields">
+
+<title
+>Zahtevana polja</title>
+
+<para
+>To je pregled, katera polja so obvezna in katera so lahko prazna pri vnosu dogodkov in opravil:</para>
+
+<itemizedlist>
+<listitem
+><para
+>Izpolniti morate polje <guilabel
+>Povzetek</guilabel
+>.</para
+></listitem>
+<listitem
+><para
+>Zavihek <guilabel
+>Splošno</guilabel
+> lahko pustite popolnoma prazen.</para
+></listitem>
+<listitem
+><para
+>Če nastavite <guilabel 
+>Opomnik</guilabel 
+>, morate določiti tudi čas in zvok, ki naj se predvaja, ali program, ki se izvaja.</para
+></listitem>
+<listitem
+><para
+>Zavihek <guilabel
+>Udeleženci</guilabel
+> lahko ostane popolnoma prazen.</para
+></listitem>
+<listitem
+><para
+>Zavihek <guilabel
+>Ponovitev</guilabel
+> mora biti izpolnjen le, če izberete dnevno, tedensko, mesečno ali letno ponovitev. </para
+></listitem>
+<listitem
+><para
+>Pogovorno okno <guilabel
+>Priloge</guilabel
+> lahko pustite popolnoma prazno.</para
+></listitem>
+</itemizedlist>
+</sect1>
+</chapter>
+
+<chapter id="group-scheduling"
+>   <!--updated to 5.4.40-->
+<title
+>Skupinsko razporejanje</title>
+
+<para
+>Funkcionalnost skupinskega urnika &korganizer; vam omogoča, da organizirate sestanke, sestanke in elemente opravil v skupni rabi, zahtevate odgovore od udeležencev in objavljate elemente. Če ste povabljeni na dogodek ali opravilo, lahko nanj odgovorite in navedete, ali se ga boste lahko udeležili, ali pošljete nasprotni predlog z drugačnimi dogovori, na primer z drugačnim časom ali lokacijo. Prav tako lahko objavite svoj urnik prostega/zasedenega, da ljudi obvestite, kdaj ste na voljo, in zahtevate iste informacije od drugih.</para>
+
+<para
+>Trenutno &korganizer; načrtuje dogodke in opravila z uporabo e-pošte za prenos podatkov v shemi, ki temelji na standardih, protokol IMIP za skupinsko razporejanje. Ker je IMIP standard, ga uporabljajo tudi številni drugi odjemalci. Na primer &Microsoft;<application
+>Outlook</application
+>, Lotus <application
+>Notes</application
+> in Novell <application
+>Evolution</application
+>. To pomeni, da lahko z enim od teh odjemalcev delite dogodke z drugimi uporabniki. &korganizer; je integriran z &kmail; za prejemanje, obdelavo in pošiljanje dogodkov, odzivov na dogodke, posodobitev, odpovedi &etc; Na primer, ko prejmete povabilo v &kmail; in se odločite, da ga sprejmete, s klikom na povezavo <guilabel
+>sprejmi</guilabel
+> v telesu pošte, se dogodek doda v vaš koledar in odgovor organizatorju dogodka se pošlje samodejno.</para>
+
+
+<!--TODO: check if to-dos work or not.-->
+<!--TODO: check what happens if you counter without this option on.-->
+
+<para
+>Če potrdite polje <guilabel
+>Uporabi skupinsko komunikacijo</guilabel
+> v <link linkend="config-main-groupscheduling"
+>&korganizer; konfiguracija skupinskega razporejanja</link
+>, &korganizer; bo namesto vas poskrbel za komunikacijo skupinskega razporejanja. Z drugimi besedami, redko vam bo treba neposredno uporabiti meni <guimenu
+>Urnik</guimenu
+> za izvajanje dejanj načrtovanja. Če na primer <link linkend="entering-data-events"
+>ustvarite dogodek ali opravilo</link
+> z udeleženci, &korganizer; vas bo vprašal, ali želite poslati povabila udeležencem, tako da vam ne bo treba uporabiti menijske postavke <menuchoice
+> <guimenu
+>Urnik</guimenu
+><guimenuitem
+>Pošlji povabilo udeležencem</guimenuitem
+> </menuchoice
+> pozneje. Poleg tega, če spremenite svoj status udeleženca dogodka, na katerega ste bili povabljeni, vas bo vprašal, ali želite svoje posodobljeno stanje poslati organizatorju dogodka, tako da vam ne bo treba uporabiti <menuchoice
+> <guimenu
+>Urnik </guimenu
+><guimenuitem
+>Pošlji posodobitev stanja</guimenuitem
+> </menuchoice
+> element menija pozneje.</para>
+
+
+
+<sect1 id="publish">
+<title
+>Objava dogodka, opravila ali vnosa v dnevnik</title>
+
+<para
+>Če preprosto želite poslati dogodek, opravilo ali vnos v dnevnik, izberite element menija <menuchoice
+><guimenu
+>Razpored</guimenu
+><guimenuitem
+>Objavi informacije o predmetu ...</guimenuitem
+></menuchoice
+>, ko element je izbran. Nato se prikaže pogovorno okno, ki vas vpraša za e-poštne naslove, na katere boste prejeli dogodek ali opravilo. Predmet bo poslan po e-pošti v formatu iCalendar.</para>
+
+<para
+>Upoštevajte, da lahko to dejanje uporabite za pošiljanje katerega koli predmeta po e-pošti komur koli, ne le udeležencem predmeta. Pravzaprav lahko objavite element brez udeležencev, saj objava ne zahteva odgovora udeležencev.</para>
+
+<para
+>Primer: igrate v skupini in občasno koncertirate v živo. Če želite svoje oboževalce obveščati o koncertih, vzdržujete poštni seznam. Če uporabljate &korganizer; če želite organizirati svoje koncertne datume, lahko preprosto izberete element menija <menuchoice
+><guimenu
+>Razpored</guimenu
+> <guimenuitem
+>Objavi informacije o predmetu ...</guimenuitem
+></menuchoice
+> in vnesete naslov poštnega seznama in dogodek bo poslan. Naročniki na poštni seznam, ki uporabljajo &korganizer; da se datum koncerta samodejno vstavi v njihov koledar. </para>
+
+<para
+>Objava dogodka, kot je opisano zgoraj, bo prejemnika le obvestila o dogodku, ne pa ji dala možnosti, da zaprosi za udeležbo. Uporabite <menuchoice
+><guimenu
+>Urnik</guimenu
+><guimenuitem
+>Pošlji kot iCalendar ...</guimenuitem
+></menuchoice
+>, če želite ponuditi to možnost namesto tega. </para>
+
+</sect1>
+
+
+<sect1 id="as-organizer">
+<title
+>Deluje kot organizator pri skupinskem razporejanju</title>
+
+<para
+>Ko ustvarite <link linkend="entering-data-events"
+>dogodek</link
+> ali <link linkend="entering-data-to-do"
+>opravilo</link
+> in <link linkend="entering-data-events-attendees"
+>dodajte udeležence</link
+>, nastopate kot organizator dogodka. Če želite dodati udeležence, uporabite <link linkend="entering-data-events-attendees"
+> zavihek udeleženec</link
+> v <guilabel
+>Urejanje dogodka</guilabel
+> ali <guilabel
+>Urejanje opravil</guilabel 
+> dialog. V <link linkend="agenda-view"
+>pogledu dnevnega reda</link
+> majhna ikona <inlinemediaobject
+> <imageobject
+> <imagedata fileref="organizer.png" format="PNG"/> </imageobject
+> <textobject 
+> <phrase
+>Ikona organizatorja</phrase
+> </textobject
+> </inlinemediaobject
+> je postavljena v dogodek, če ste organizator dogodka s skupinskim razporedom.</para>
+
+<para
+>Organizator je odgovoren za pošiljanje vabil, zbiranje odgovorov udeležencev in za ažurnost podatkov o dogodku ali opravilih za vse udeležene osebe.</para>
+
+<sect2 id="request">
+<title
+>Pošiljanje povabil in obdelava odgovorov</title>
+
+<para
+>Če želite organizirati dogodek ali opravilo, <link linkend="entering-data-events"
+>ga ustvarite</link
+> v &korganizer; in dodajte vse ljudi, ki bi se morali udeležiti, z uporabo zavihka udeležencev. &korganizer; lahko pošlje vabila udeležencem, bodisi samodejno (odvisno od <link linkend="config-main-groupscheduling"
+>&korganizer; konfiguracije skupinskega razporejanja</link
+>) ali tako, da izbere dogodek ali opravilo in izbere <menuchoice
+> <guimenu
+>Razpored</guimenu
+><guimenuitem
+>Pošlji povabilo udeležencem</guimenuitem
+></menuchoice
+> element menija. Udeleženci prejmejo e-pošto z vsemi relevantnimi informacijami za dogodek ali opravilo. Na predlog sestanka se lahko odzovejo tako, da ga sprejmejo ali zavrnejo ali dajo nasprotni predlog. Vabilo lahko tudi prenesejo ali posredujejo. Vse te informacije vam ponovno pošljemo po e-pošti in, če ste konfigurirali &kmail; ustrezno se odgovori udeležencev samodejno vstavijo v vaš koledar. Če obstajajo dodatni udeleženci, ki želijo sodelovati (npr. s sprejetjem posredovanega povabila), boste pozvani, da sprejmete nove udeležence. </para>
+
+</sect2>
+
+<sect2 id="cancel">
+<title
+>Preklic dogodka ali opravila</title>
+
+<para
+>Če želite odpovedati dogodek ali opravilo, morate biti organizator. Če ste označili polje <guilabel
+>Uporabi skupinsko komunikacijo</guilabel
+> v <link linkend="config-main-groupscheduling"
+>&korganizer; konfiguracija skupinskega razporejanja</link
+>, samo izbrišite element in &korganizer; vas bo prosil, da pošljete preklic. Če ne, preprosto izberite element in izberite menijsko postavko <menuchoice
+><guimenu
+>Razpored</guimenu
+> <guimenuitem
+>Pošlji preklic udeležencem</guimenuitem
+></menuchoice
+>.</para>
+
+<para
+>To dejanje bo poslalo sporočilo o preklicu vsem udeležencem, tako da lahko odstranijo element tudi iz svojih koledarjev.</para>
+</sect2>
+</sect1>
+
+
+<sect1 id="as-attendee">
+<title
+>Deluje kot udeleženec</title>
+
+<para
+>Ko prejmete e-poštno sporočilo s povabilom in ga sprejmete, se dogodek ali opravilo doda v vaš koledar. Če gre za dogodek, majhna ikona <inlinemediaobject
+> <imageobject
+> <imagedata fileref="meeting-attending.png" format="PNG"/> </imageobject
+> <textobject
+> <phrase
+>Ikona udeleženca</phrase
+> </textobject
+> </inlinemediaobject
+> je postavljen v dogodek v <link linkend="agenda-view"
+>pogledu dnevnega reda</link
+>.</para>
+
+<sect2 id="reply">
+<title
+>Odgovor na povabilo</title>
+
+<para
+>Če imate povabilo v &kmail; Prejeto lahko pritisnete <guibutton
+>Zavrni</guibutton
+>, da prezrete zahtevo, ali pritisnete <guibutton
+>Sprejmi</guibutton
+> ali <guibutton
+>Sprejmi pogoj</guibutton
+>. Zadnji dve dejanji bosta element vstavili v vaš koledar. V vsakem primeru &kmail; bo vaš odgovor samodejno poslal organizatorju.</para>
+
+<para
+>Povabilo lahko tudi <guibutton
+>pooblastite</guibutton
+> ali <guibutton
+>posredujete</guibutton
+>. Pri delegiranju lahko predlagate drugo osebo kot pooblaščenca. Z <guibutton
+>Posreduj</guibutton
+> lahko povabilo posredujete eni ali več osebam, ki še niso povabljene. Ko sprejemnik delegacije ali posrednik sprejme povabilo, bo organizator pozvan, da odobri novega udeleženca.</para>
+
+<para
+>Če ste si iz kakršnega koli razloga premislili, uredite svoje stanje na <link linkend="entering-data-events-attendees"
+>zavihku udeležencev</link
+> predmeta. Če ste označili polje <guilabel
+>Uporabi skupinsko komunikacijo</guilabel
+> v <link linkend="config-main-groupscheduling"
+>&korganizer; konfiguracija skupinskega razporejanja</link
+>, &korganizer; vas bo prosil, da pošljete e-poštno sporočilo s posodobitvijo statusa udeleženca. Če ne, izberite element menija <menuchoice
+> <guimenu
+>Razpored</guimenu
+><guimenuitem
+>Pošlji posodobitev stanja</guimenuitem
+> </menuchoice
+>, da pošljete posodobitev stanja. </para>
+</sect2>
+
+<sect2 id="counter">
+<title
+>Pošiljanje alternativnega predloga</title>
+
+
+<para
+>Če niste zadovoljni z nekaterimi značilnostmi dogodka ali opravila, na katerega ste bili povabljeni, in želite poslati nasprotni predlog organizatorju (na primer alternativna lokacija ali čas), preprosto uredite element in ga pošljite nazaj kot vaš predlog, tako da izberete postavko in izberete menijsko postavko <menuchoice
+> <guimenu
+>Urnik</guimenu
+><guimenuitem
+>Zahtevaj spremembo</guimenuitem
+> </menuchoice
+>.</para>
+
+<para
+>Organizator dogodka bo vašo ponudbo prejel po elektronski pošti in jo bo lahko sprejel ali zavrnil.</para>
+</sect2>
+
+<sect2 id="refresh">
+
+<title
+>Zahtevanje najnovejše različice dogodka ali opravila</title>
+
+<para
+>Če želite zahtevati najnovejšo različico dogodka ali opravila, izberite element in izberite menijsko postavko <menuchoice
+><guimenu
+>Urnik</guimenu
+> <guimenuitem
+>Zahtevaj posodobitev</guimenuitem
+></menuchoice
+>. Organizator vam mora nato poslati nazaj najnovejšo različico predmeta.</para>
+
+</sect2>
+</sect1>
+
+<sect1 id="free-busy">
+<title
+>Brezplačne informacije o zasedenosti</title>
+
+<para
+>Informacije o prostem/zasedenem času predstavljajo razpored razpoložljivosti. S predstavitvijo intervalov, ko ima nekdo že predhodne obveznosti, se lahko drugi izognejo dogovarjanju za te termine. Upoštevajte, da so objavljeni samo časi, ne pa dogodki, razlogi ali udeleženci.</para>
+
+<para
+>&korganizer; podpira objavljanje in pridobivanje informacij o prostem/zasedenem, ročno ali samodejno.</para>
+
+<para
+>Če želite podatke o prosti/zasedenosti poslati po e-pošti, izberite menijsko postavko <menuchoice
+><guimenu
+>Urnik</guimenu
+> <guimenuitem
+>Pošlji informacije o prosti/zasedenosti ...</guimenuitem
+></menuchoice
+>. V pogovorno okno vnesite e-poštne naslove, na katere želite poslati podatke, in pritisnite <guilabel
+>V redu</guilabel
+>.</para>
+
+<para
+>Strežniki skupinske opreme imajo običajno standardno lokacijo za nalaganje vaših informacij o zasedenosti, tako da lahko drugi uporabniki dostopajo do vaših podatkov, vi pa lahko dostopate do urnika zasedenosti drugih uporabnikov. Konfigurirate lahko &korganizer; za samodejno nalaganje in prenašanje informacij o zasedenosti z uporabo <link linkend="config-main-free-busy"
+>nastavitev prostega zasedenosti</link
+> v &korganizer; <guilabel
+>Konfiguriraj</guilabel
+> pogovorno okno.</para>
+
+<para
+>Za nalaganje informacij o prostem/zasedenem strežniku, nastavljenem v &korganizer; nastavitve, izberite menijsko postavko <menuchoice
+><guimenu
+>Urnik</guimenu
+> <guimenuitem
+>Naloži informacije o prosti zasedenosti</guimenuitem
+></menuchoice
+>.</para>
+
+</sect1>
+
+<sect1 id="examples">
+<title
+>Primeri</title>
+
+<sect2 id="examples-entering-event">
+<title
+>Vstop v nov skupinski dogodek</title>
+
+<para
+>V tem primeru boste vnesli dogodek. Za <emphasis
+>naslednji ponedeljek</emphasis
+> se morate dogovoriti za sestanek glede lansiranja vašega novega izdelka. Vaša šefica <emphasis
+>Joan Holden</emphasis
+> bo predsednica dogodka <emphasis
+>lastnik</emphasis
+>, vi, Jack Smith, pa boste <emphasis
+>organizator</emphasis
+> dogodka. Prisotna bosta še dva <emphasis
+>udeleženca</emphasis
+> (udeleženca): <emphasis
+>Peter Krzinski</emphasis
+> in <emphasis
+>Kirsten Friese</emphasis
+>. Joan vam je dala program srečanja. Sestanek se bo začel ob <emphasis
+>12h</emphasis
+> in končal ob <emphasis
+>13h</emphasis
+>. Isti termin bi moral biti načrtovan <emphasis
+>(ponavlja se)</emphasis
+> vsak ponedeljek. </para>
+
+<procedure>
+<step
+><para
+>Z uporabo Krmarja po datumih pojdite na naslednji ponedeljek.</para
+></step>
+
+<step
+><para
+>Izberite <menuchoice
+><guimenu
+>Dejanja</guimenu
+><guimenuitem
+>Nov dogodek ...</guimenuitem
+></menuchoice
+> ali izberite območje med <emphasis
+>12. uro</emphasis
+> in koncem ob <emphasis
+> 13h</emphasis
+> in začnite tipkati povzetek dogodka.</para
+></step>
+
+<step
+><para
+>Vnesite ustrezen povzetek. Pomembno je izbrati pravi kratek opis, saj se pojavlja marsikje. Predlagamo, da vnesete <userinput
+>Dogodek lansiranja izdelka</userinput
+>.</para
+></step>
+
+<step
+><para
+>V največje pravokotno območje vnesite podroben program dogodka. Zaradi tega preprostega primera vnesite <userinput
+>Uvod, Načrt, Zaključek</userinput
+> v tri ločene vrstice.</para
+></step>
+
+<step
+><para
+>Pojdite na zavihek <guilabel
+>Opomnik</guilabel
+>. Nastavite čas opomnika na 15 minut, ravno toliko, da skuhate skodelico čaja pred začetkom sestanka.</para
+></step>
+
+<step
+><para
+>Pojdite na zavihek <guilabel
+>Splošno</guilabel
+>. V pogovornem oknu <guilabel
+>Upravljanje oznak</guilabel
+> izberite <guilabel
+>Sestanek</guilabel
+>.</para
+></step>
+
+<step
+><para
+>Pojdite na zavihek <guilabel
+>Ponavljanje</guilabel
+> in izberite <guilabel
+>Tedenska</guilabel
+> ponavljanja.</para>
+<note
+><para
+>Večina dela je bila namesto vas opravljena samodejno. &korganizer; privzeto se ponavlja tedensko. Upoštevajte tudi, da je izbrano <guilabel
+>Konča se:</guilabel
+> <guilabel
+>nikoli</guilabel
+>. To pomeni, da se bo ta dogodek ponavljal vsak ponedeljek (začenši seveda s ponedeljkom, 30. avgusta 2010) do konca časa (to je, dokler ga ne izbrišete).</para
+></note
+></step>
+
+<step
+><para
+>Ker je tukaj vse v redu, kliknite zavihek <guilabel
+>Udeleženci</guilabel
+>.</para
+></step>
+
+<step
+><para
+>Na zavihku <guilabel
+>Udeleženci</guilabel
+> storite naslednje:</para>
+<substeps>
+
+<step
+><para
+>Videli boste, da ste organizator dogodka.</para
+></step>
+
+<step
+><para
+>V prvo vnosno polje vnesite e-pošto v obliki <userinput
+>Ime &#060;e-pošta&#062;</userinput
+>. V našem primeru vnesite <userinput
+>Joan Holden &#060;jholden@thiscompany.com&#062;</userinput
+>. <tip
+><para
+>Če so udeleženci že v vašem &kde; imenik, namesto da vnašate imena in e-poštne naslove, lahko pritisnete gumb <guibutton
+>Izberi udeležence...</guibutton
+>, da jih dodate.</para
+></tip
+></para
+></step>
+
+<step
+><para
+>Izberite <emphasis
+>Predsednika</emphasis
+> kot vlogo.</para
+></step>
+
+<step
+><para
+>V naslednje polje za vnos vnesite <userinput
+>Peter Krzinski &#060;pkrzinski@thiscompany.com&#062;</userinput
+>.</para
+></step>
+
+<step
+><para
+>V naslednje polje za vnos vnesite <userinput
+>Kirsten Friese &#060;kfriese@thiscompany.com&#062;</userinput
+>. </para
+></step>
+
+</substeps>
+</step>
+
+<step
+><para
+>Če ste konfigurirali &korganizer; če želite uporabljati skupinsko komunikacijo, boste pozvani, ali želite poslati e-pošto udeležencem s podrobnostmi o dogodku in zahtevo za odgovor, če polje <guilabel
+>Zahtevaj odgovor</guilabel
+> od <guilabel
+>Udeleženci</guilabel
+> zavihek je označen. Sicer pa lahko povabila pošljete tako, da izberete menijsko postavko <menuchoice
+><guimenu
+>Razpored</guimenu
+> <guimenuitem
+>Pošlji povabilo udeležencem</guimenuitem
+></menuchoice
+>.</para
+></step>
+
+<step
+><para
+>Preglejte nastavitev dogodka s klikom na zavihke. Če ste zadovoljni, kliknite <guibutton
+>V redu</guibutton
+>.</para
+></step>
+</procedure>
+
+<para
+>Čestitamo, načrtovali ste svoj prvi dogodek!</para>
+</sect2>
+
+</sect1>
+
+</chapter>
+
+<chapter id="config"
+>  <!--updated to 5.4.40, missing General System Tray + Calendars-->
+<title
+>&korganizer; Konfiguracija</title>
+
+<para
+>Če želite spremeniti videz in delovanje &korganizer;, izberite menijsko postavko <menuchoice
+><guimenu
+>Nastavitve</guimenu
+><guimenuitem
+>Konfiguriraj &korganizer;...</guimenuitem
+></menuchoice
+>. Več informacij o vseh konfiguracijskih možnostih in možnostih najdete v <xref linkend="config-main"/>.</para>
+
+<para
+>Če želite prilagoditi nabor orodij, ki so na voljo v vrstici, izberite menijski element <menuchoice
+><guimenu
+>Nastavitve</guimenu
+><guimenuitem
+>Konfiguriraj orodne vrstice ... </guimenuitem
+></menuchoice
+> in preberite razdelek <ulink url="help:/fundamentals/config.html#toolbars"
+>Prilagajanje orodnih vrstic</ulink
+> v &kde; Osnove.</para>
+
+<para
+>Informacije o lokalizaciji, kot so formati datuma in časa, je mogoče konfigurirati v &systemsettings; znotraj modulov <guilabel
+>Jezik</guilabel
+> in <guilabel
+>Oblike</guilabel
+>. Do teh nadzornih modulov lahko dostopate znotraj &korganizer;: samo izberite <menuchoice
+><guimenu
+> Nastavitve</guimenu
+><guimenuitem
+>Konfiguriraj datum &amp; Čas ...</guimenuitem
+></menuchoice
+> menijski element. &korganizer; je treba znova zagnati zaradi sprememb v &systemsettings; da začne veljati.</para>
+
+<para
+>Če želite konfigurirati, kje &korganizer; shranjuje in pridobiva dogodke v koledarju, vnose v dnevnik in opravila (v lokalnih datotekah, strežnikih skupinske programske opreme &etc;), preverite <xref linkend="managing-resources"/>.</para>
+
+<sect1 id="config-main">
+<title
+>&korganizer; Glavna konfiguracija</title>
+
+<para
+>Pogovorno okno z možnostmi vam omogoča, da konfigurirate več različnih področij &korganizer;.</para>
+
+<sect2 id="config-main-general">
+<title
+>Splošna stran</title>
+
+<sect3 id="config-main-general-personal">
+<title
+>Osebni zavihek</title>
+
+<para
+>Osebne možnosti se nanašajo na vašo osebno identiteto in druge stvari, ki ne spadajo v nobeno drugo splošno kategorijo.</para>
+
+<variablelist>
+
+<varlistentry>
+<term
+><guilabel
+>Polno ime</guilabel
+></term>
+<listitem
+><para
+><guilabel
+>Polno ime</guilabel
+> je prvotno nastavljeno na <quote
+>Anonimno</quote
+> z e-poštnim naslovom <quote
+>nobody@nowhere</quote
+>. Svoje ime lahko spremenite tako, da ga neposredno vnesete tukaj. To ime bo privzeto prikazano kot <guilabel
+>Organizator</guilabel
+> v opravilih in dogodkih.</para
+></listitem>
+</varlistentry>
+
+<varlistentry>
+<term
+><guilabel
+>E-poštni naslov</guilabel
+></term>
+<listitem
+><para
+><guilabel
+>E-poštni naslov</guilabel
+> bo uporabljen za identifikacijo lastnika koledarja. Ko druga oseba odpre vaš koledar ali dogodke, jih ne bo mogla spreminjati, ker bo samo za branje.</para
+></listitem>
+</varlistentry>
+
+<varlistentry>
+<term
+><guilabel
+>Privzeta metoda e-poštne priloge</guilabel
+></term>
+<listitem
+><para
+>Ta možnost vam omogoča, da izberete način, kako je e-poštno sporočilo priloženo dogodku. E-poštno sporočilo lahko priložite kot celotno e-poštno sporočilo s prilogami, e-poštno sporočilo brez prilog ali samo povezavo do e-poštnega sporočila.</para>
+<para
+>Upoštevajte, da lahko pripenjanje e-poštnega sporočila brez prilog razveljavi njegov podpis. </para
+></listitem>
+</varlistentry>
+</variablelist>
+
+</sect3>
+
+<sect3 id="config-main-general-save">
+<title
+>Shrani zavihek</title>
+
+<variablelist>
+
+<varlistentry>
+<term
+><guilabel
+>Potrdi brisanje</guilabel
+></term>
+<listitem
+><para
+>Ko potrdite polje <guilabel
+>Potrdi brisanje</guilabel
+>, &korganizer; vas bo prosil za potrditev vsakega izbrisa. Če to ni označeno, &korganizer; ne bo vprašal pred brisanjem dogodkov.</para
+></listitem>
+</varlistentry>
+
+<varlistentry>
+<term
+><guilabel
+>Novi dogodki, opravila in vnosi v dnevnik bi morali</guilabel
+></term>
+<listitem
+><para
+>Ta možnost vam omogoča izbiro med dodajanjem novih elementov v privzeti koledar ali ustvarjanjem &korganizer; vas vpraša, kateri koledar je treba uporabiti za shranjevanje vsakega novega elementa.</para>
+<para
+>Specifičnost strežnika Kolab2: Priporočljivo je, da izberete <guilabel
+>Vprašanje, kateri koledar naj uporabi</guilabel
+>, če nameravate uporabiti funkcijo skupne mape strežnika <guilabel
+>Kolab</guilabel
+>. To vam bo omogočilo nadzor nad tem, katere informacije so na voljo samo vam in katere informacije so objavljene v mapah v skupni rabi.</para>
+</listitem>
+</varlistentry>
+
+</variablelist>
+
+</sect3>
+
+<!-- System Tray tab missing-->
+
+<!-- Calendars tab missing-->
+
+</sect2>
+
+<sect2 id="config-main-time-and-date">
+<title
+>Čas in datum</title>
+
+<sect3 id="config-main-time-and-date-regional">
+<title
+>Regionalni zavihek</title>
+
+<variablelist>
+
+<varlistentry>
+<term
+><guilabel
+>Dan se začne ob</guilabel
+></term>
+<listitem
+><para
+>Na spustnem seznamu izberite uro, ko začnete dan. Lahko je čas, ko običajno vstanete, ali čas, ko začnete delati. Ta nastavitev vam ne preprečuje dodajanja ali ogledovanja elementov pred tem časom, le nastavi čas, ki bo privzeto prikazan na vrhu pogleda koledarja. Uporabite drsni trak za prikaz prejšnjih ali poznejših dogodkov v pogledu dnevnega reda.</para
+></listitem>
+</varlistentry>
+
+<varlistentry>
+<term
+><guilabel
+>Prazniki</guilabel
+></term>
+<listitem
+><para
+>Na spustnem seznamu izberite svojo državo ali, če je ni na seznamu, izberite <guilabel
+>(Brez)</guilabel
+>. Če je izbrana vaša država, &korganizer; prepozna in prikaže svoje pomembne datume in praznike v pogledu koledarja.</para
+></listitem>
+</varlistentry>
+
+<varlistentry>
+<term
+><guilabel
+>Delovno obdobje</guilabel
+></term>
+<listitem
+><para
+>Z možnostma <guilabel
+>Dnevna začetna ura</guilabel
+> in <guilabel
+>Dnevna končna ura</guilabel
+> lahko določite, kdaj se vaš delovni dan začne in kdaj konča. &korganizer; loči delovni čas tako, da ga označi z drugo barvo od prostih ur, praznikov in prostih dni.</para>
+<para
+>Poleg tega imate poleg vsakega dne v tednu potrditvena polja. Preverite dneve v tednu, ki so za vas delovni dnevi, da označite delovni čas v teh dneh. Preverjanje <guilabel
+>Izključi praznike</guilabel
+> prepreči &korganizer; od označevanja delovnega časa za praznike v regiji, določeni v zgornjem spustnem meniju <guilabel
+>Uporabi počitniško regijo</guilabel
+>.</para>
+</listitem>
+</varlistentry>
+
+<varlistentry>
+<term
+><guilabel
+>Tedenski začetni dan</guilabel
+></term>
+<listitem
+><para
+>Izberite prvi dan vsakega tedna. Običajno lahko to prezrete, ker je nastavljeno v vašem jeziku.</para
+></listitem>
+</varlistentry>
+
+</variablelist>
+</sect3>
+
+<sect3 id="config-main-time-and-date-default">
+<title
+>Zavihek Privzete vrednosti</title>
+
+<variablelist>
+<varlistentry>
+<term
+><guilabel
+>Privzeti čas sestanka</guilabel
+></term>
+<listitem
+><para
+>Na spustnem seznamu izberite privzeti začetni čas za dogodke. Ko izberete <link linkend="menu-actions-new-event"
+>Nov dogodek</link
+> v <link linkend="entering-data-events"
+>meniju dejanj</link
+> ali ustvarite dogodek v na drug način, tako da &korganizer; ne more uganiti, kdaj želite, da se vaš dogodek začne, &korganizer; bo to uro postavil v urejevalnik začetnega časa kot privzeto vrednost.</para
+></listitem>
+</varlistentry>
+
+<varlistentry>
+<term
+><guilabel
+>Privzeto trajanje novega sestanka (HH:MM):</guilabel
+></term>
+<listitem
+><para
+>Z vrtilnim poljem izberite privzeto trajanje dogodkov. Ko izberete <link linkend="menu-actions-new-event"
+>Nov dogodek</link
+> v <link linkend="entering-data-events"
+>meniju dejanj</link
+> ali ustvarite dogodek v na drug način, tako da &korganizer; ne more uganiti njegovega trajanja, &korganizer; bo to uporabil kot privzeto vrednost. </para
+></listitem>
+</varlistentry>
+
+<varlistentry>
+<term
+><guilabel
+>Opomniki</guilabel
+></term>
+<listitem
+><para
+>Izberite <guilabel
+>Privzeti čas opomnika</guilabel
+>, da določite, kako dolgo pred načrtovanim časom dejanskega dogodka se bo opomnik aktiviral.</para>
+<para
+>Nastavite datoteko, ki bo uporabljena kot privzeta zvočna datoteka za nove opomnike. Vedno lahko določite drugo datoteko v naprednem opomniku, ki je dostopen iz urejevalnikov dogodkov ali opravil.</para>
+<para
+>Potrdite naslednji dve polji, če želite omogočiti opomnike za vse novo ustvarjene dogodke ali opravila. Opomnike lahko kadar koli izklopite v pogovornih oknih urejevalnika.</para>
+</listitem>
+</varlistentry>
+
+</variablelist>
+</sect3>
+</sect2>
+
+<sect2 id="config-main-views">
+<title
+>Ogledi</title>
+
+<para
+>Te možnosti vam omogočajo konfiguracijo &korganizer; pogledi:</para>
+
+<sect3 id="config-main-views-general">
+<title
+>Zavihek Splošno</title>
+<variablelist>
+<varlistentry>
+<term
+><guilabel
+>Naslednjih x dni:</guilabel
+></term>
+<listitem
+><para
+>Ta možnost vam omogoča, da spremenite število dni, ki jih prikaže menijska postavka <guimenu
+>Naslednjih x dni</guimenu
+> v meniju <guimenu
+>Pojdi</guimenu
+>.</para
+></listitem>
+</varlistentry>
+
+<varlistentry>
+<term
+><guilabel
+>Omogoči opise orodij za prikaz povzetkov</guilabel
+></term>
+<listitem
+><para
+>Če je vaš povzetek za dogodek daljši, kot bi ustrezal trenutnemu pogledu, preostali znaki niso prikazani. Označite <guilabel
+>Omogoči opise orodij za prikaz povzetkov</guilabel
+>, če želite, da se prikaže celoten povzetek, ko miškin kazalec za nekaj sekund podržite nad sestankom.</para
+></listitem>
+</varlistentry>
+
+<varlistentry>
+<term
+><guilabel
+>Opravila uporabljajo barve oznak</guilabel
+></term>
+<listitem
+><para
+>Označite to polje, da bodo opravila uporabljala barve oznak in ne barv, ki so značilne za njihov rok, rok danes ali zapadlost.</para
+></listitem>
+</varlistentry>
+
+</variablelist>
+
+<para
+>Možnosti <link linkend="description-view"
+>Navigatorja po datumih</link
+>:</para>
+
+<variablelist>
+
+<varlistentry>
+<term
+><guilabel
+>Pokaži elemente, ki se ponavljajo vsak dan</guilabel
+></term>
+<listitem
+><para
+>Če je polje <guilabel
+>Pokaži elemente, ki se ponavljajo vsak dan</guilabel
+> označeno, so dnevi, ki vsebujejo vsakodnevne ponavljajoče se dogodke, prikazani s krepko pisavo v Krmarju po datumih.</para
+></listitem>
+</varlistentry>
+
+<varlistentry>
+<term
+><guilabel
+>Prikaži elemente, ki se ponavljajo tedensko</guilabel
+></term>
+<listitem
+><para
+>Če je polje <guilabel
+>Prikaži elemente, ki se tedensko ponavljajo</guilabel
+> označeno, so dnevi, ki vsebujejo tedensko ponavljajoče se dogodke, prikazani s krepko pisavo v Krmarju po datumih.</para
+></listitem>
+</varlistentry>
+
+<varlistentry>
+<term
+><guilabel
+>Pokaži opravila namesto dogodkov v pogledu opravil</guilabel
+></term>
+<listitem
+><para
+>Potrdite to polje, če želite prikazati dneve, ki vsebujejo opravila, s krepko pisavo v Krmarju po datumih, ko ste v pogledu opravil.</para
+></listitem>
+</varlistentry>
+
+<varlistentry>
+<term
+><guilabel
+>Pokaži dnevnike namesto dogodkov v pogledu dnevnika</guilabel
+></term>
+<listitem
+><para
+>Označite to polje, če želite prikazati dneve, ki vsebujejo dnevnike, s krepko pisavo v Krmarju po datumih, ko ste v pogledu dnevnika.</para
+></listitem>
+</varlistentry>
+
+<varlistentry>
+<term
+><guilabel
+>Številke tednov izberejo delovni teden v načinu delovnega tedna</guilabel
+></term>
+<listitem
+><para
+>Če je polje <guilabel
+>Številke tednov izberejo delovni teden v načinu delovnega tedna</guilabel
+> potrjeno, boste s klikom na številke tednov ob strani Krmarja po datumih krmarili po delovnih tednih namesto po običajnih 7-dnevnih tednih.</para
+></listitem>
+</varlistentry>
+
+</variablelist>
+</sect3>
+
+<sect3 id="config-main-views-agenda">
+<title
+>Zavihek Pogled dnevnega reda</title>
+
+<para
+>Možnosti <link linkend="agenda-view"
+>Pogleda dnevnega reda</link
+>:</para>
+
+<variablelist>
+
+<varlistentry>
+<term
+><guilabel
+>Velikost ure:</guilabel
+></term>
+<listitem
+><para
+>S tem lahko nadzirate višino vrstic v pogledu dnevnega reda.</para
+></listitem>
+</varlistentry>
+
+<varlistentry>
+<term
+><guilabel
+>Pokaži ikone v točkah pogleda dnevnega reda</guilabel
+></term>
+<listitem
+><para
+>Označite to polje, če želite prikazati ikone (opomnik, rekurzija &etc;) v elementih pogleda dnevnega reda</para
+></listitem>
+</varlistentry>
+
+<varlistentry>
+<term
+><guilabel
+>Prikaži opravila</guilabel
+></term>
+<listitem
+><para
+>To potrditveno polje preklopi prikaz opravil v pogledih dan, teden in mesec v pogledu dnevnega reda. Če imate preveč opravil, ki imajo povezan rok, jih boste morda želeli izklopiti, da se izognete neredu.</para
+></listitem>
+</varlistentry>
+
+<varlistentry>
+<term
+><guilabel
+>Pokaži vrstico trenutnega časa (Marcus Bains)</guilabel
+></term>
+<listitem
+><para
+>To potrditveno polje vklopi ali izklopi rdečo črto v pogledu dneva ali tedna, ki označuje trenutni čas (črta Marcusa Bainsa). V tej vrstici je prikazano, koliko časa je ostalo &eg; dokler ne pride do sestanka.</para
+></listitem>
+</varlistentry>
+
+<varlistentry>
+<term
+><guilabel
+>Prikaži sekunde v vrstici trenutnega časa (Marcus Bains)</guilabel
+></term>
+<listitem
+><para
+>To potrditveno polje vklopi ali izklopi sekunde na vrstici trenutnega časa (vrstica Marcusa Bainsa).</para
+></listitem>
+</varlistentry>
+
+<varlistentry>
+<term
+><guilabel
+>Izbira časovnega obsega v pogledu dnevnega reda zažene urejevalnik dogodkov</guilabel
+></term>
+<listitem
+><para
+>Označite to polje, če želite samodejno zagnati urejevalnik dogodkov, ko izberete časovno obdobje v dnevnem in tedenskem pogledu. Če želite izbrati časovni razpon, povlecite miško od začetnega do končnega časa dogodka, ki ga nameravate načrtovati.</para
+></listitem>
+</varlistentry>
+<!--FIXME Icons to use dropdown box missing-->
+<varlistentry>
+<term
+><guilabel
+>Uporaba barve</guilabel
+></term>
+<listitem>
+<para
+>Izberite možnost <guilabel
+>Oznaka znotraj, koledar zunaj</guilabel
+>, če želite narisati koledarske elemente v pripadajoči barvi oznake, z obrobo elementa, narisano v barvi njegovega koledarja.</para>
+
+<para
+>Izberite možnost <guilabel
+>Koledar znotraj, oznaka zunaj</guilabel
+>, če želite narisati elemente koledarja v pripadajoči barvi koledarja, pri čemer je obroba elementa narisana v barvi njegove oznake.</para>
+
+<para
+>Izberite možnost <guilabel
+>Samo oznaka</guilabel
+>, če želite narisati elemente koledarja (znotraj in rob) v barvi njihove povezane oznake.</para>
+
+<para
+>Izberite možnost <guilabel
+>Samo koledar</guilabel
+>, če želite elemente koledarja (tako znotraj kot obrobe) narisati v barvi njihovega koledarja.</para>
+
+<para
+>Za nastavitev teh barv uporabite konfiguracijsko stran <link linkend="config-main-colors"
+>Barve in pisave</link
+>.</para>
+</listitem>
+</varlistentry>
+
+<varlistentry>
+<term
+><guilabel
+>Obarvajte naporne dni z drugačno barvo ozadja</guilabel
+></term>
+<listitem
+><para
+>Označite to polje, če želite, da se ozadje pogleda dnevnega reda zapolni z drugo barvo ob dnevih, ko je vsaj en celodnevni dogodek označen kot zaseden.</para>
+<para
+>Prosimo, poglejte v območje za konfiguracijo barv, da izberete barvo ozadja zasedenega pogleda dnevnega reda po vaši izbiri.</para
+></listitem>
+</varlistentry>
+
+<varlistentry>
+<term
+><guilabel
+>Prikaz več koledarjev</guilabel
+></term>
+<listitem
+><para
+>Izberite, ali naj bodo vsi koledarji združeni v en pogled dnevnega reda, ali naj bo vsak koledar prikazan v svojem pogledu dnevnega reda ali naj bo vsak pogled na voljo prek zavihkov. Vzporedni pogled lahko prilagodite z <guimenuitem
+>Konfiguriraj pogled</guimenuitem
+> v kontekstnem meniju. </para
+></listitem>
+</varlistentry>
+
+</variablelist>
+</sect3>
+
+<sect3 id="config-main-views-month">
+<title
+>Zavihek Mesečni pogled</title>
+
+<para
+>Možnosti <link linkend="month-view"
+>Mesečni pogled</link
+>:</para>
+
+<variablelist>
+
+<varlistentry>
+<term
+><guilabel
+>Možnosti zaslona</guilabel
+></term>
+<listitem
+><para
+>Uporabite prva štiri potrditvena polja za prikaz časa, ikon (opomnik, rekurzija &etc;), opravil ali dnevnikov v mesečnem pogledu.</para
+></listitem>
+</varlistentry>
+<!--FIXME Icons to use dropdown box missing-->
+
+<varlistentry>
+<term
+><guilabel
+>Obarvajte naporne dni z drugačno barvo ozadja</guilabel
+></term>
+<listitem
+><para
+>Označite to polje, če želite, da je ozadje mesečnega pogleda zapolnjeno z drugo barvo ob dnevih, ko je vsaj en celodnevni dogodek označen kot zaseden.</para>
+<para
+>Poglejte v konfiguracijsko območje Barve, da izberete barvo ozadja pogleda Dnevni/Mesečni po vaši izbiri.</para
+></listitem>
+</varlistentry>
+
+<varlistentry>
+<term
+><guilabel
+>Uporaba barve</guilabel
+></term>
+<listitem>
+<para
+>Konfigurirajte barve za pogled meseca kot v <link linkend="config-main-views-agenda"
+>pogledu dnevnega reda</link
+>.</para
+></listitem>
+</varlistentry>
+
+</variablelist>
+</sect3>
+
+<sect3 id="config-main-views-todo">
+<title
+>Zavihek Pogled Todo</title>
+
+<para
+><link linkend="todo-view"
+>Ogled opravil</link
+> možnosti:</para>
+
+<variablelist>
+
+<varlistentry>
+<term
+><guilabel
+>Vedno prikaži dokončana opravila na dnu seznama</guilabel
+></term>
+<listitem
+><para
+>Če omogočite to možnost, bodo vsa dokončana opravila vedno združena na dnu seznama opravil.</para
+></listitem>
+</varlistentry>
+
+<varlistentry>
+<term
+><guilabel
+>Zabeležite dokončana opravila v vnose v dnevnik</guilabel
+></term>
+<listitem
+><para
+>Če označite to polje, &korganizer; samodejno doda vnos v dnevnik za vsako opravljeno opravilo.</para
+></listitem>
+</varlistentry>
+
+</variablelist>
+</sect3>
+</sect2>
+
+<sect2 id="config-main-colors-fonts">
+<title
+>Barve in pisave</title>
+
+<sect3 id="config-main-colors">
+<title
+>Barve</title>
+
+<para
+>Izberite barvo, ki se uporablja za praznike, za poudarjanje in za posebne oznake dogodkov. Za vsako oznako lahko izberete drugo barvo. Seveda lahko preveč barv povzroči zmedo, zato uporabite zdrav razum. Uporaba barve je odvisna tudi od <link linkend="config-main-views"
+>nastavitev pogleda.</link
+></para>
+
+<variablelist>
+
+<varlistentry>
+<term
+><guilabel
+>Praznična barva</guilabel
+></term>
+<listitem
+><para
+>Ta gumb odpre pogovorno okno <guilabel
+>Izberi barvo</guilabel
+>, v katerem lahko izberete praznično barvo. Barva praznika bo uporabljena za ime praznika v pogledu meseca in datum praznika v Krmarju po datumih.</para
+></listitem>
+</varlistentry>
+
+<varlistentry>
+<term
+><guilabel
+>Barva ozadja pogleda dnevnega reda</guilabel
+></term>
+<listitem
+><para
+>Ta gumb odpre pogovorno okno <guilabel
+>Izberi barvo</guilabel
+>, v katerem lahko izberete barvo ozadja pogleda dnevnega reda.</para
+></listitem>
+</varlistentry>
+
+<varlistentry>
+<term
+><guilabel
+>Barva ozadja za obremenjene dni</guilabel
+></term>
+<listitem
+><para
+>Ta gumb odpre pogovorno okno <guilabel
+>Izberi barvo</guilabel
+>, v katerem lahko izberete barvo zasedenega ozadja dnevnega reda ali pogleda meseca. Ta barva se uporablja le, če je v katerem koli od teh pogledov nastavljena možnost za risanje dni z veliko prometa z drugo barvo.</para
+></listitem>
+</varlistentry>
+
+<varlistentry>
+<term
+><guilabel
+>Barva vrstice trenutnega časa pogleda dnevnega reda</guilabel
+></term>
+<listitem
+><para
+>Ta gumb odpre pogovorno okno <guilabel
+>Izberi barvo</guilabel
+>, v katerem lahko izberete barvo za vrstico trenutnega časa (Marcus Bains).</para
+></listitem>
+</varlistentry>
+
+<varlistentry>
+<term
+><guilabel
+>Barva delovnega časa</guilabel
+></term>
+<listitem
+><para
+>Ta gumb odpre pogovorno okno <guilabel
+>Izberi barvo</guilabel
+>, v katerem lahko izberete barvo ozadja delovnega časa v pogledu dnevnega reda.</para
+></listitem>
+</varlistentry>
+
+<varlistentry>
+<term
+><guilabel
+>Opravila danes, barva</guilabel
+></term>
+<listitem
+><para
+>Ta gumb odpre pogovorno okno <guilabel
+>Izberi barvo</guilabel
+>, v katerem lahko izberete barvo opravila, ki je treba opraviti danes.</para
+></listitem>
+</varlistentry>
+
+<varlistentry>
+<term
+><guilabel
+>Barva zapadlih opravil</guilabel
+></term>
+<listitem
+><para
+>Ta gumb odpre pogovorno okno <guilabel
+>Izberite barvo</guilabel
+>, v katerem lahko izberete barvo zamujenega opravila.</para
+></listitem>
+</varlistentry>
+
+<varlistentry>
+<term
+><guilabel
+>Oznake</guilabel
+></term>
+<listitem
+><para
+>Ta skupina vam omogoča, da vsaki oznaki dodelite barvo. Na spustnem seznamu izberite oznako in pritisnite gumb, da odprete pogovorno okno <guilabel
+>Izberi barvo</guilabel
+>, v katerem lahko izberete barvo za to oznako. <link linkend="config-main-views"
+>Odvisno od nastavitev pogleda</link
+> bo ta barva uporabljena za označevanje dogodkov in opravil, ki nosijo to oznako v pogledih Dnevni red in Meseci.</para
+></listitem>
+</varlistentry>
+
+<varlistentry>
+<term
+><guilabel
+>Viri</guilabel
+></term>
+<listitem
+><para
+>Ta skupina vam omogoča, da vsakemu viru dodelite barvo. Na spustnem seznamu izberite vir in pritisnite gumb, da odprete pogovorno okno <guilabel
+>Izberi barvo</guilabel
+>, v katerem lahko izberete barvo za ta vir. <link linkend="config-main-views"
+>Odvisno od nastavitev pogleda</link
+> bo ta barva uporabljena za označevanje dogodkov in opravil, ki so shranjeni s tem virom v pogledih Dnevni red in Meseci.</para
+></listitem>
+</varlistentry>
+
+</variablelist>
+
+</sect3>
+
+<sect3 id="config-main-fonts">
+<title
+>Zavihek Pisave</title>
+
+<variablelist>
+
+<varlistentry>
+<term
+><guilabel
+>Časovna vrstica</guilabel
+></term>
+<listitem
+><para
+>Pritisnite ta gumb, da izberete pisavo, slog pisave in velikost za časovno vrstico.</para
+></listitem>
+</varlistentry>
+
+<varlistentry>
+<term
+><guilabel
+>Mesečni pogled</guilabel
+></term>
+<listitem
+><para
+>Pritisnite ta gumb, da izberete pisavo, slog pisave in velikost za pogled meseca.</para
+></listitem>
+</varlistentry>
+
+<varlistentry>
+<term
+><guilabel
+>Pogled dnevnega reda</guilabel
+></term>
+<listitem
+><para
+>Pritisnite ta gumb, da izberete pisavo, slog pisave in velikost za pogled Dnevni red (pogledi Dan, Teden in Delovni teden).</para
+></listitem>
+</varlistentry>
+
+<varlistentry>
+<term
+><guilabel
+>Črta trenutnega časa</guilabel
+></term>
+<listitem
+><para
+>Pritisnite ta gumb, da izberete pisavo, slog pisave in velikost za vrstico Marcusa Bainsa (barvna črta v pogledu dnevnega reda, ki označuje trenutni čas).</para
+></listitem>
+</varlistentry>
+
+</variablelist>
+
+</sect3>
+
+</sect2>
+
+<sect2 id="config-main-groupscheduling">
+<title
+>Skupinsko razporejanje</title>
+
+<variablelist>
+
+<varlistentry>
+<term
+><guilabel
+>Uporabi skupinsko komunikacijo</guilabel
+></term>
+<listitem
+><para
+>Označite to polje za samodejno pošiljanje e-pošte pri ustvarjanju, posodabljanju ali brisanju dogodkov ali opravil, ki vključujejo druge. To e-poštno sporočilo je lahko povabilo udeležencem dogodka, ki ste ga ustvarili, odpoved dogodka, ki ste ga ustvarili, odgovor ali posodobitev stanja vašega povabila, zahteva za spremembo dogodka &etc; Označite to možnost, če želite uporabljati funkcionalnost skupinske programske opreme (&eg;. Konfiguriranje &kontact; kot odjemalca &kde; <guilabel
+>Kolab</guilabel
+>).</para
+></listitem>
+</varlistentry>
+
+<varlistentry>
+<term
+><guilabel
+>Pošlji kopijo lastniku pri pošiljanju dogodkov</guilabel
+></term>
+<listitem
+><para
+>Ko označite polje <guilabel
+>Pošlji kopijo lastniku pri pošiljanju dogodkov</guilabel
+>, boste prejeli kopijo vseh e-poštnih sporočil, ki jih &korganizer; pošlje na vašo zahtevo udeležencem dogodka.</para
+></listitem>
+</varlistentry>
+
+<varlistentry>
+<term
+><guilabel
+>Prevoz pošte</guilabel
+></term>
+<listitem
+><para
+>Tukaj lahko izberete vrsto prevoza pošte, ki jo želite uporabiti. Uporabite lahko &kmail; ali &Sendmail; ukaz (ki mora biti nameščen v vašem sistemu, da deluje).</para
+></listitem>
+</varlistentry>
+
+</variablelist>
+
+</sect2>
+
+<sect2 id="config-main-free-busy">
+<title
+>Prost/zaseden</title>
+
+<para
+>Informacije o prostem/zasedenem času predstavljajo razpored razpoložljivosti. S predstavitvijo intervalov, ko ima nekdo že predhodne obveznosti, se lahko drugi izognejo dogovarjanju za te termine. Upoštevajte, da so objavljeni samo časi, ne pa dogodki, razlogi ali udeleženci.</para>
+
+<para
+>&korganizer; podpira objavljanje in pridobivanje informacij o prostem/zasedenem, ročno ali samodejno.</para>
+
+<sect3 id="config-main-free-busy-publish">
+<title
+>Objavi</title>
+<para
+>Z objavo podatkov o prostem/zasedenem drugem omogočite, da vaš urnik upoštevajo, ko vas povabijo na dogodek.</para>
+
+<variablelist>
+
+<varlistentry>
+<term
+><guilabel
+>Samodejno objavi informacije o prostem/zasedenem</guilabel
+></term>
+<listitem
+><para
+>Omogočite to možnost, če želite, da se vaši podatki o prostem/zasedenem nalagajo samodejno. Upoštevajte, da lahko preskočite to možnost in izberete pošiljanje ali nalaganje informacij o prostem/zasedenem prek menija <guilabel
+>Urnik</guilabel
+> v &korganizer;.</para>
+
+<para
+>Če je vaša aplikacija nastavljena za delo kot <guilabel
+>&kde; Odjemalec Kolab</guilabel
+>, to ni potrebno. Strežnik <guilabel
+>Kolab2</guilabel
+> lahko poskrbi za objavo vaših informacij o prosti/zasedenosti in upravlja dostop drugih uporabnikov do njih.</para>
+</listitem>
+</varlistentry>
+
+<varlistentry>
+<term
+><guilabel
+>Minimalni čas med nalaganji (v minutah)</guilabel
+></term>
+<listitem
+><para
+>Če se odločite za samodejno objavo svojih podatkov, lahko konfigurirate časovni interval v minutah med vsakim nalaganjem.</para>
+</listitem>
+</varlistentry>
+
+<varlistentry>
+<term
+><guilabel
+>Objavi (privzeto 60) dni informacij o prostem/zasedenem</guilabel
+></term>
+<listitem
+><para
+>Konfigurirajte število koledarskih dni, za katere želite, da so objavljeni in na voljo drugim</para
+></listitem>
+</varlistentry>
+
+<varlistentry>
+<term
+><guilabel
+>Strežnik &URL;</guilabel
+></term>
+<listitem
+><para
+>Vnesite &URL; za strežnik, na katerem bodo objavljeni vaši podatki o prostem/zasedenem stanju. Za te informacije vprašajte skrbnika strežnika.</para>
+<para
+>Primer strežnika Kolab2: <userinput
+>webdavs://kolab2.com/freebusy/joe@kolab2.com.ifb</userinput
+> </para
+></listitem>
+</varlistentry>
+
+<varlistentry>
+<term
+><guilabel
+>Uporabniško ime</guilabel
+></term>
+<listitem
+><para
+>Vnesite podatke za prijavo v zvezi z vašim računom na strežniku</para>
+<para
+>Specifičnost strežnika Kolab2: vaš registrirani UID (enolični IDentifier) bi bil privzeto podoben vašemu e-poštnemu naslovu na strežniku Kolab2, vendar je lahko drugačen. V tem primeru vnesite svoj UID. Vprašajte skrbnika strežnika o svojem UID-ju, če ga ne poznate.</para
+></listitem>
+</varlistentry>
+
+<varlistentry>
+<term
+><guilabel
+>Geslo</guilabel
+></term>
+<listitem
+><para
+>Tukaj vnesite svoje geslo (geslo za prijavo v strežnik).</para
+></listitem>
+</varlistentry>
+
+<varlistentry>
+<term
+><guilabel
+>Zapomni si geslo</guilabel
+></term>
+<listitem
+><para
+>Označite to možnost, če želite &korganizer; da si zapomni vaše geslo in vas ne sprašuje vsakič, ko naloži podatke o prosti/zasedenosti.</para>
+<warning
+><para
+>Iz varnostnih razlogov ni priporočljivo shranjevati gesla v konfiguracijski datoteki.</para
+></warning
+></listitem>
+</varlistentry>
+
+</variablelist>
+
+</sect3>
+
+<sect3 id="config-main-free-busy-retrieve">
+<title
+>Pridobi</title>
+
+<para
+>Če pridobite informacije o prosti/zasedenosti drugih oseb, lahko upoštevate njihov urnik zasedenosti, ko jih povabite na dogodek.</para>
+
+<variablelist>
+
+<varlistentry>
+<term
+><guilabel
+>Samodejno pridobi informacije o zasedenosti drugih oseb</guilabel
+></term>
+<listitem
+><para
+>Avtomatizirajte postopek za pridobivanje časa prostih/zasedenih drugih uporabnikov. Izpolnite spodnji razdelek s podatki o strežniku, da omogočite to možnost.</para
+></listitem>
+</varlistentry>
+
+<varlistentry>
+<term
+><guilabel
+>Uporabi polni e-poštni naslov za iskanje</guilabel
+></term>
+<listitem
+><para
+>Ta nastavitev vam omogoča, da spremenite ime datoteke, ki bo pridobljena s strežnika. Če označite to možnost, bo prenesel datoteko o prostem/zasedenem stanju, imenovano <userinput
+>user@domain.ifb</userinput
+>, sicer bo pridobil <userinput
+>user.ifb</userinput
+>. Vprašajte skrbnika strežnika, če niste prepričani, kako konfigurirati to možnost.</para>
+<para
+><guilabel
+>Posebnost strežnika Kolab2:</guilabel
+> Če konfigurirate &korganizer; kot komponenta datoteke <guilabel
+>&kde; Odjemalec Kolab (&kontact;/Kolab)</guilabel
+> to možnost morate označiti.</para
+></listitem>
+</varlistentry>
+
+<varlistentry>
+<term
+><guilabel
+>Strežnik &URL;</guilabel
+></term>
+<listitem
+><para
+>Vnesite &URL; za strežnik, s katerega bodo pridobljeni vaši podatki o prostem/zasedenem stanju. Za te informacije vprašajte skrbnika strežnika.</para>
+<para
+><guilabel
+>Primer strežnika Kolab2: </guilabel
+><userinput
+>webdavs://kolab2.com/freebusy/</userinput
+> </para
+></listitem>
+</varlistentry>
+
+<varlistentry>
+<term
+><guilabel
+>Uporabniško ime</guilabel
+></term>
+<listitem
+><para
+>Vnesite podatke za prijavo v zvezi z vašim računom na strežniku.</para>
+</listitem>
+</varlistentry>
+
+<varlistentry>
+<term
+><guilabel
+>Geslo</guilabel
+></term>
+<listitem
+><para
+>Tukaj vnesite svoje geslo (geslo za prijavo v strežnik). </para
+></listitem>
+</varlistentry>
+
+<varlistentry>
+<term
+><guilabel
+>Zapomni si geslo</guilabel
+></term>
+<listitem
+><para
+>Označite to možnost, če želite &korganizer; da si zapomni vaše geslo in vas ne vpraša vsakič, ko pridobi datoteke o prostem/zasedenem.</para>
+<warning
+><para
+>Iz varnostnih razlogov ni priporočljivo shranjevati gesla v konfiguracijski datoteki.</para
+></warning>
+</listitem>
+</varlistentry>
+
+</variablelist>
+</sect3>
+</sect2>
+
+<sect2 id="config-main-plugins">
+<title
+>Vtičniki</title>
+
+<para
+>Za več informacij o konfiguraciji vtičnikov glejte <xref linkend="plugins-chapter"/></para>
+
+</sect2>
+
+<sect2 id="config-custom-pages">
+<title
+>Strani po meri</title>
+
+<para
+>Ta stran vam omogoča dodajanje lastnega &GUI; Elementi za shranjevanje lastnih vrednosti v &korganizer;.</para>
+<para
+>Ustvarite svoje elemente, kot je opisano v <guilabel
+>Kako to deluje?</guilabel
+></para>
+
+</sect2>
+</sect1>
+
+</chapter>
+
+<chapter id="plugins-chapter"
+><!--updated to 5.4.40-->
+
+<title
+>Vtičniki</title>
+
+<para
+>&korganizer; nudi možnost razširitve aplikacije z vtičniki. </para>
+
+<para
+>Vtičnike je mogoče konfigurirati pod &korganizer; glavno konfiguracijsko pogovorno okno. Izberite <menuchoice
+><guimenu
+>Nastavitve</guimenu
+><guimenuitem
+> Konfiguriraj &korganizer;</guimenuitem
+></menuchoice
+> in kliknite ikono <guilabel
+>Vtičniki</guilabel
+> v stranski vrstici seznama ikon v pogovornem oknu. </para>
+
+<sect1 id="plugins-chapter-availableplugins">
+<title
+>Razpoložljivi vtičniki</title>
+
+<sect2 id="date-numbers-plugin">
+<title
+>Vtičnik datumskih številk za koledarje</title>
+<para
+>Ta vtičnik doda številko dneva v letu v pogled dnevnega reda. Na primer, 1. februar je dan številka 32. </para>
+</sect2>
+
+<sect2 id="wikipedia-thisday-plugin">
+<title
+>Vtičnik Wikipedia 'Ta dan v zgodovini'</title>
+<para
+>Ta vtičnik ponuja povezave do strani Wikipedije <quote
+>Ta dan v zgodovini</quote
+>. </para>
+</sect2>
+
+<sect2 id="wikipedia-pictureoftheday-plugin">
+<title
+>Vtičnik Wikipedia Slika dneva za koledarje</title>
+<para
+>Ta vtičnik ponuja Wikipedijino <quote
+>Sliko dneva</quote
+>. </para>
+</sect2>
+
+<sect2 id="jewish-calendar-plugin">
+<title
+>Vtičnik Judovski koledar</title>
+<para
+>Ta vtičnik ponuja datume judovskega koledarja poleg datumov gregorijanskega koledarja. V konfiguracijskem pogovornem oknu vtičnika lahko izberete, ali želite prikazati izraelske praznike, tedensko paršo, dan Omerja in/ali Chol HaMoeda. </para>
+</sect2>
+
+</sect1>
+
+</chapter>
+
+<chapter id="reference">
+<title
+>Referenca</title>
+
+<sect1 id="reference-menus"
+><!--updated to 5.4.40, Send as iCalendar-->
+<title
+>Meniji</title>
+
+<para
+>Ko &korganizer; se začne glavni &korganizer; pojavi se okno. Okno ima več komponent: menijsko vrstico, orodno vrstico, mesečni koledar, glavno ploščo s trenutnim <quote
+>pogledom</quote
+> dogodkov in seznam opravil.</para>
+
+<para
+>Meniji omogočajo dostop do vseh običajnih operacij, ki jih je mogoče izvajati s koledarjem, vključno s shranjevanjem, nalaganjem, dodajanjem in brisanjem dogodkov, opravili in vnosi v dnevnik, tiskanjem in drugim.</para>
+
+<para
+>Upoštevajte, da pri uporabi &korganizer; kot komponenta koledarja &kontact;, se meniji razlikujejo od samostojne aplikacije.</para>
+
+<sect2 id="reference-menus-file">
+<title
+>Datoteka</title>
+
+<para
+>Meni <guimenu
+>Datoteka</guimenu
+> omogoča dostop do funkcij, ki vključujejo celoten koledar.</para>
+
+<variablelist>
+
+<varlistentry id="menu-file-open">
+<term
+><inlinemediaobject
+><imageobject
+><imagedata fileref="document-open.png"
+ format="PNG"/></imageobject
+></inlinemediaobject
+><menuchoice
+><shortcut
+> <keycombo action="simul"
+>&Ctrl;<keycap
+>O</keycap
+></keycombo
+> </shortcut
+> <guimenu
+> Datoteka</guimenu
+> <guimenuitem
+>Odpri</guimenuitem
+></menuchoice>
+</term>
+<listitem
+><para
+><action
+>Odpre pogovorno okno datoteke, v katerem lahko izberete novo datoteko vCalendar ali iCalendar za nalaganje.</action
+> Če ste spremenili trenutni koledar, boste imeli možnost, da jih shranite, preden naložite novega.</para>
+<para
+>Za več informacij o tem glejte <xref linkend="managing-import-export"/>.</para>
+</listitem>
+</varlistentry>
+
+<varlistentry id="menu-file-print">
+<term
+><inlinemediaobject
+><imageobject
+><imagedata fileref="document-print.png"
+ format="PNG"/></imageobject
+></inlinemediaobject
+><menuchoice
+><shortcut
+> <keycombo action="simul"
+>&Ctrl;<keycap
+>P</keycap
+></keycombo
+> </shortcut
+> <guimenu
+> Datoteka</guimenu
+> <guimenuitem
+>Natisni</guimenuitem
+></menuchoice>
+</term>
+<listitem
+><para
+>Izberite <guimenuitem
+>Natisni</guimenuitem
+> ali kliknite ikono <guilabel
+>Natisni</guilabel
+>, da <action
+>natisnete trenutni koledar</action
+>. Določite lahko obseg datumov za tiskanje (bodisi ročno ali s pripomočkom za koledar) in slog tiskanja (dan, teden, mesec ali opravila in dnevnik).</para
+></listitem>
+</varlistentry>
+
+<varlistentry id="menu-file-print-preview">
+<term
+><inlinemediaobject
+><imageobject>
+<imagedata fileref="document-print-preview.png"
+format="PNG"/></imageobject
+></inlinemediaobject
+><menuchoice
+><guimenu
+> Datoteka</guimenu
+><guimenuitem
+>Predogled tiskanja</guimenuitem
+><guimenu
+> Datoteka</guimenu
+><guimenuitem
+>Predogled tiskanja</guimenuitem
+></menuchoice>
+</term>
+<listitem
+><para
+>Če izberete <guimenuitem
+>Predogled tiskanja</guimenuitem
+> ali kliknete ikono <guiicon
+>Predogled tiskanja</guiicon
+>, <action
+>bo trenutni koledar natisnjen na vašem zaslonu, namesto na vašem tiskalniku</action
+>. S to funkcijo preverite, ali bo izpis pravilen, preden začnete tiskati.</para>
+<para
+>Določite lahko obseg datumov, ki jih želite natisniti (ročno ali s pripomočkom za koledar) in vrsto pogleda (dan, teden, mesec ali opravilo).</para>
+</listitem>
+</varlistentry>
+
+<varlistentry id="menu-file-import-calendar">
+<term
+><menuchoice
+><guimenu
+>Datoteka</guimenu
+> <guisubmenu
+>Uvoz</guisubmenu
+> <guimenuitem
+>Uvoz koledar</guimenuitem
+> </menuchoice
+></term>
+<listitem
+><para
+>Če imate nekje drugo datoteko iCalendar ali vCalendar in bi želeli <action
+>združiti njeno vsebino v svoj koledar, dodati kot nov vir ali jo odpreti v novem oknu</action
+>, izberite ta menijski element. Pravi čas za to bi bil, če bi na primer po e-pošti prejeli vCalendar z nekaj vnosi.</para>
+<para
+>Za več informacij o tem dejanju glejte <xref linkend="managing-import"/>.</para>
+</listitem>
+</varlistentry>
+
+<varlistentry id="menu-file-import-ghns">
+<term
+><menuchoice
+><guimenu
+>Datoteka</guimenu
+> <guisubmenu
+>Uvoz</guisubmenu
+> <guimenuitem
+>Pridobite vroče nove stvari ...</guimenuitem
+> </menuchoice
+></term>
+<listitem
+><para
+>To dejanje bo odprlo pogovorno okno <guilabel
+>Pridobi vroče nove stvari</guilabel
+>, ki ponuja seznam koledarjev za prenos. Te dogodke lahko dodate v svoj koledar.</para>
+<para
+>Za več informacij o tem dejanju glejte <xref linkend="managing-get-hot-new-stuff"/>.</para>
+</listitem>
+</varlistentry>
+
+<varlistentry id="menu-file-export-icalendar">
+<term
+><menuchoice
+><guimenu
+>Datoteka</guimenu
+> <guisubmenu
+>Uvozi</guisubmenu
+> <guimenuitem
+>Izvozi kot iCalendar</guimenuitem
+> </menuchoice
+></term>
+<listitem
+><para
+>To dejanje bo izvozilo vse vaše aktivne dogodke, opravila in vnose v dnevnik (ne glede na to, kateremu viru pripadajo) kot novo datoteko iCalendar.</para>
+<para
+>Za več informacij o tem dejanju glejte <xref linkend="managing-export"/>.</para>
+</listitem>
+</varlistentry>
+
+<!--not in 4.6.0
+varlistentry id="menu-file-export-ghns">
+<term
+><menuchoice>
+<guimenu
+>File</guimenu>
+<guisubmenu
+>Export</guisubmenu>
+<guimenuitem
+>Upload Hot New Stuff...</guimenuitem>
+</menuchoice
+></term>
+<listitem
+><para
+>This action will open the <guilabel
+>Upload Hot New Stuff</guilabel>
+dialog, which allow you to export calendars containing events which may be
+useful to other people, such as a conference program, a list of holidays,
+special events, &etc;</para>
+<para
+>For more information about this action, please refer to
+<xref linkend="managing-get-hot-new-stuff"/>.</para>
+</listitem>
+</varlistentry-->
+
+<varlistentry id="menu-file-archive-old">
+<term
+><menuchoice
+><guimenu
+>Datoteka</guimenu
+> <guimenuitem
+>Arhiviraj stare primere ...</guimenuitem
+> </menuchoice
+></term>
+<listitem
+><para
+><action
+>Od časa do časa bi morali izbrisati svoje stare dogodke.</action
+></para>
+<para
+>Za več informacij o tem dejanju glejte <xref linkend="managing-purge-archive"/>.</para>
+</listitem>
+</varlistentry>
+
+<varlistentry id="menu-file-purge">
+<term
+><menuchoice
+><guimenu
+>Datoteka</guimenu
+> <guimenuitem
+>Čiščenje dokončanih opravil</guimenuitem
+> </menuchoice
+></term>
+<listitem
+><para
+>To dejanje bo odstranilo vsa dokončana opravila iz vašega aktivnega koledarja.</para>
+<para
+>Za več informacij o tem dejanju glejte <xref linkend="managing-purge-archive"/>.</para>
+</listitem
+></varlistentry>
+
+<varlistentry id="menu-file-quit">
+<term
+><inlinemediaobject
+><imageobject
+><imagedata
+ fileref="application-exit.png"/></imageobject
+></inlinemediaobject
+><menuchoice
+><shortcut
+> <keycombo action="simul"
+>&Ctrl;<keycap
+>Q</keycap
+></keycombo
+> </shortcut
+> <guimenu
+>Datoteka</guimenu
+> <guimenuitem
+>Zapri</guimenuitem
+> </menuchoice>
+</term>
+<listitem
+><para
+>Ko izberete <guimenuitem
+>Zapri</guimenuitem
+> ali kliknete ikono <guiicon
+>Zapri</guiicon
+>, <action
+>zapre trenutno okno koledarja in vas pozove, da shranite, če je bil trenutni koledar spremenjen, vendar še ni shranjen. </action
+></para>
+<para
+>To ne vpliva na druga okna koledarja, ki se lahko odprejo. Zapreti morate vsako okno koledarja posebej.</para
+> </listitem>
+</varlistentry>
+</variablelist>
+
+</sect2>
+
+<sect2 id="reference-menus-edit">
+<title
+>Uredi</title>
+
+<para
+>Z menijem <guilabel
+>Uredi</guilabel
+> lahko urejate in iščete dogodke in opravila.</para>
+
+<para
+>Menijski elementi <guimenuitem
+>Izreži</guimenuitem
+>, <guimenuitem
+>Kopiraj</guimenuitem
+> in <guimenuitem
+>Prilepi</guimenuitem
+> se obnašajo na enak način kot v drugih &kde; aplikacije. Z menijsko postavko <guimenuitem
+>Najdi</guimenuitem
+> lahko poiščete dogodke in opravila v trenutnem koledarju.</para>
+
+<variablelist>
+
+<varlistentry id="menu-edit-undo">
+<term
+><inlinemediaobject
+><imageobject
+><imagedata fileref="edit-undo.png"
+ format="PNG"/></imageobject
+></inlinemediaobject
+><menuchoice
+><shortcut
+> <keycombo action="simul"
+>&Ctrl;<keycap
+>Z</keycap
+></keycombo
+> </shortcut
+> <guimenu
+> Uredi</guimenu
+> <guimenuitem
+>Razveljavi</guimenuitem
+> </menuchoice>
+</term>
+<listitem
+><para
+><action
+>Razveljavi zadnje dejanje</action
+>, ali z drugimi besedami, vrnite koledar v stanje, v katerem je bil neposredno pred zadnjim dejanjem.</para
+></listitem>
+</varlistentry>
+
+<varlistentry id="menu-edit-redo">
+<term
+><inlinemediaobject
+><imageobject
+><imagedata fileref="edit-redo.png"
+ format="PNG"/></imageobject
+></inlinemediaobject
+><menuchoice
+><shortcut
+> <keycombo action="simul"
+>&Ctrl;&Shift;<keycap
+>Z</keycap
+></keycombo
+> </shortcut
+> <guimenu
+> Uredi</guimenu
+> <guimenuitem
+>Ponovi</guimenuitem
+> </menuchoice>
+</term>
+<listitem
+><para
+><action
+>Ponovi zadnje dejanje</action
+>, ali z drugimi besedami, vrnite koledar v stanje, v katerem je bil tik pred zadnjo razveljavitvijo.</para
+></listitem>
+</varlistentry>
+
+<varlistentry id="menu-edit-cut">
+<term
+><inlinemediaobject
+><imageobject
+><imagedata fileref="edit-cut.png"
+ format="PNG"/></imageobject
+></inlinemediaobject
+><menuchoice
+><shortcut
+> <keycombo action="simul"
+>&Ctrl;<keycap
+>X</keycap
+></keycombo
+> </shortcut
+> <guimenu
+> Uredi</guimenu
+> <guimenuitem
+>Izreži</guimenuitem
+> </menuchoice>
+</term>
+<listitem
+><para
+><action
+>Izreže trenutno izbrane dogodke v odložišče in jih odstrani iz koledarja.</action
+></para
+></listitem>
+</varlistentry>
+
+<varlistentry id="menu-edit-copy">
+<term
+><inlinemediaobject
+><imageobject
+><imagedata fileref="edit-copy.png"
+ format="PNG"/></imageobject
+></inlinemediaobject
+><menuchoice
+><shortcut
+> <keycombo action="simul"
+>&Ctrl;<keycap
+>C</keycap
+></keycombo
+> </shortcut
+> <guimenu
+> Uredi</guimenu
+> <guimenuitem
+>Kopiraj</guimenuitem
+></menuchoice>
+</term>
+<listitem
+><para
+><action
+>Kopira trenutno izbrane elemente v odložišče, vendar jih pusti nedotaknjene.</action
+></para
+></listitem>
+</varlistentry>
+
+<varlistentry id="menu-edit-paste">
+<term
+><inlinemediaobject
+><imageobject
+><imagedata fileref="edit-paste.png"
+ format="PNG"/></imageobject
+></inlinemediaobject
+><menuchoice
+><shortcut
+> <keycombo action="simul"
+>&Ctrl;<keycap
+>V</keycap
+></keycombo
+> </shortcut
+> <guimenu
+> Uredi</guimenu
+> <guimenuitem
+>Prilepi</guimenuitem
+></menuchoice>
+</term>
+<listitem
+><para
+><guimenuitem
+>Prilepi</guimenuitem
+> <action
+>vstavi vsebino odložišča v vaš koledar</action
+>. Odložišče mora vsebovati veljaven element vCalendar ali iCalendar, ki ga zagotovi predhodna operacija Izreži/Kopiraj ali izbor izven &korganizer;ja. Če vsebine odložišča ni mogoče razumeti, boste opozorjeni.</para>
+<tip
+><para
+>Vendar pa lahko varno uporabite  <keycombo action="simul"
+>&Ctrl; <keycap
+>C</keycap
+></keycombo
+> in tipkovne bližnjice <keycombo action="simul"
+>&Ctrl; <keycap
+>V</keycap
+></keycombo
+> za kopiranje besedilnih podatkov iz katere koli zunanje aplikacije v &korganizer; Okno Uredi dogodek in obratno. </para
+></tip
+></listitem>
+</varlistentry>
+
+<varlistentry id="menu-edit-delete">
+<term
+><inlinemediaobject
+><imageobject
+><imagedata fileref="edit-delete.png"
+ format="PNG"/></imageobject
+></inlinemediaobject
+><menuchoice
+><guimenu
+> Uredi</guimenu
+> <guimenuitem
+>Izbriši</guimenuitem
+> </menuchoice>
+</term>
+<listitem
+><para
+><action
+>Izbrišite trenutno izbrane elemente in jih tako odstranite iz svojega koledarja.</action
+></para
+></listitem>
+</varlistentry>
+
+<varlistentry id="menu-edit-find">
+<term
+><inlinemediaobject
+><imageobject
+><imagedata fileref="edit-find.png"
+ format="PNG"/></imageobject
+></inlinemediaobject
+><menuchoice
+><shortcut
+> <keycombo action="simul"
+>&Ctrl;<keycap
+>F</keycap
+></keycombo
+> </shortcut
+> <guimenu
+> Uredi</guimenu
+> <guimenuitem
+>Najdi</guimenuitem
+> </menuchoice>
+</term>
+<listitem
+><para
+>Izberite <guimenuitem
+>Najdi</guimenuitem
+> v <guimenu
+>Uredi</guimenu
+> ali kliknite ikono <guiicon
+>Najdi</guiicon
+>, da <action
+>poiščete dogodke, opravila in vnose v dnevnik glede na njihov povzetek, opis in/ali oznake</action
+>.</para>
+<para
+>Za več informacij o tem dejanju glejte <xref linkend="search-view"/>.</para>
+</listitem>
+</varlistentry>
+</variablelist>
+
+</sect2>
+
+<sect2 id="reference-menus-view">
+<title
+>Ogled</title>
+
+<para
+>Na voljo je več različnih <quote
+>pogledov</quote
+> za prikaz vaših dogodkov, opravil in vnosov v dnevnik. &korganizer; je dovolj pameten, da si med sejami zapomni, kateri je bil zadnji aktivni pogled, in ob naslednjem zagonu bo prikazal ta pogled.</para>
+
+<para
+>Na splošno bo vsak pogled nudil način prikaza vaših vnosov v dnevnik, opravil in dogodkov, omejenih na določeno časovno obdobje ali slog prikaza. Kliknite poljuben element, da ga izberete za nadaljnje dejanje. <mousebutton
+>Desni gumb</mousebutton
+> kliknite element, da se prikaže meni z možnostmi, kot so <guimenuitem
+>Uredi</guimenuitem
+>, <guimenuitem
+>Izbriši</guimenuitem
+> itd. Za izvajanje podobnih operacij lahko uporabite tudi meni <guimenu
+>Dejanje</guimenu
+>.</para>
+
+<variablelist>
+
+<varlistentry id="menu-view-agenda">
+<term
+><inlinemediaobject
+><imageobject
+><imagedata fileref="view-calendar-agenda.png"
+ format="PNG"/></imageobject
+></inlinemediaobject
+><menuchoice
+><guimenu
+>Pogled</guimenu
+> <guimenuitem
+>Dnevni red</guimenuitem
+> </menuchoice
+></term>
+<listitem
+><para
+><action
+>Preklop zaslona na pogled dnevnega reda.</action>
+</para>
+<para
+>Za več informacij o tem dejanju glejte <xref linkend="agenda-view"/>.</para>
+</listitem>
+</varlistentry>
+
+<varlistentry id="menu-view-month">
+<term
+><inlinemediaobject
+><imageobject
+><imagedata fileref="view-calendar-month.png"
+ format="PNG"/></imageobject
+></inlinemediaobject
+><menuchoice
+><guimenu
+>Pogled</guimenu
+> <guimenuitem
+>Mesečni pogled</guimenuitem
+> </menuchoice
+></term>
+<listitem
+><para
+><action
+>Preklopite zaslon na pogled meseca.</action>
+</para>
+<para
+>Za več informacij o tem dejanju glejte <xref linkend="month-view"/>.</para>
+</listitem>
+</varlistentry>
+
+<varlistentry id="menu-view-timeline">
+<term
+><inlinemediaobject
+><imageobject
+><imagedata fileref="view-calendar-timeline.png"
+ format="PNG"/></imageobject
+></inlinemediaobject
+><menuchoice
+><guimenu
+>Pogled</guimenu
+> <guimenuitem
+>Časovnica</guimenuitem
+> </menuchoice
+></term>
+<listitem
+><para
+><action
+>Preklopi zaslon na pogled časovnice.</action>
+</para>
+<para
+>Za več informacij o tem dejanju glejte <xref linkend="timeline-view"/>.</para>
+</listitem>
+</varlistentry>
+
+<varlistentry id="menu-view-todo">
+<term
+> <inlinemediaobject
+><imageobject
+><imagedata
+ fileref="view-calendar-tasks.png"
+format="PNG"/></imageobject
+></inlinemediaobject
+><menuchoice
+><guimenu
+>Pogled</guimenu
+> <guimenuitem
+>Seznam opravil</guimenuitem
+></menuchoice>
+ </term>
+<listitem
+><para
+><action
+>Preklopite zaslon na pogled seznama opravil.</action
+></para>
+<para
+>Za več informacij o tem dejanju glejte <xref linkend="todo-view"/>.</para>
+</listitem>
+</varlistentry>
+
+<varlistentry id="menu-view-list">
+<term
+><inlinemediaobject
+><imageobject
+><imagedata fileref="view-calendar-list.png"
+ format="PNG"/></imageobject
+></inlinemediaobject
+><menuchoice
+><guimenu
+> Pogled</guimenu
+><guimenuitem
+>Seznam dogodkov</guimenuitem
+></menuchoice>
+</term>
+<listitem
+><para
+><action
+>Preklopi prikaz na pogled seznama.</action
+></para>
+<para
+>Za več informacij o tem dejanju glejte <xref linkend="list-view"/>.</para>
+</listitem>
+</varlistentry>
+
+<varlistentry id="menu-view-whatsnext">
+<term
+><inlinemediaobject
+><imageobject
+><imagedata fileref="view-calendar-upcoming-events.png"
+ format="PNG"/></imageobject
+></inlinemediaobject
+><menuchoice
+><guimenu
+> Pogled</guimenu
+><guimenuitem
+>Kaj je naslednje</guimenuitem
+></menuchoice>
+</term>
+<listitem
+><para
+><action
+>Preklopi zaslon na pogled kaj je naslednje.</action
+></para>
+<para
+>Ta pogled prikazuje vaše naslednje dogodke in opravila. Dogodki in opravila so prikazani po eno na vrstico.</para>
+<para
+>Za več informacij o tem dejanju glejte <xref linkend="whatsnext-view"/>.</para>
+</listitem>
+</varlistentry>
+
+<varlistentry id="menu-view-journal">
+<term
+><inlinemediaobject
+><imageobject
+><imagedata
+ fileref="journal-new.png"
+format="PNG"/></imageobject
+></inlinemediaobject
+><menuchoice
+><guimenu
+>Ogled</guimenu
+> <guimenuitem
+>Dnevnik</guimenuitem
+> </menuchoice>
+</term>
+<listitem
+><para
+><action
+>Preklop zaslona na pogled dnevnika.</action
+></para>
+<para
+>Za več informacij o tem dejanju glejte <xref linkend="journal-view"/>.</para
+></listitem>
+</varlistentry>
+
+<varlistentry id="menu-view-update">
+<term
+><menuchoice
+><guimenu
+>Pogled</guimenu
+> <guimenuitem
+>Osveži</guimenuitem
+> </menuchoice
+></term>
+<listitem
+><para>
+<action
+>Posodobi ali osveži trenutno prikazani pogled.</action>
+</para
+></listitem>
+</varlistentry>
+
+<varlistentry id="menu-view-zoom">
+<term
+><menuchoice
+><guimenu
+>Pogled</guimenu
+><guisubmenu
+>Povečava</guisubmenu
+></menuchoice
+></term>
+<listitem
+><para
+><action
+>Uporabite ta podmeni, da prilagodite trenutni pogled za prikaz več ali manj podatkov.Uporabite ta podmeni za prilagoditev trenutnega pogleda za prikaz več ali manj podatkov.</action
+></para>
+<para
+>V pogledu dnevnega reda (pogled dneva(-ov) ali tedna) lahko uporabite dejanja povečave, da prikažete več ali manj dni (<menuchoice
+><guisubmenu
+>Povečava</guisubmenu
+> <guimenuitem
+>Vodoravno</guimenuitem
+></menuchoice 
+> in <menuchoice
+> <guisubmenu
+>Pomanjšaj</guisubmenu
+><guimenuitem
+>Pomanjšaj vodoravno</guimenuitem
+></menuchoice
+>) ali več ali manj ur v dnevu (<menuchoice
+><guisubmenu
+>Povečaj</guisubmenu
+> <guimenuitem 
+>Navpično</guimenuitem
+></menuchoice
+> in <menuchoice
+><guisubmenu
+>Povečaj</guisubmenu
+><guimenuitem
+>Navpično pomanjšaj</guimenuitem
+> </menuchoice
+>).</para
+></listitem>
+</varlistentry>
+
+<varlistentry id="menu-view-filter">
+<term
+><menuchoice
+><guimenu
+>Pogled</guimenu
+> <guisubmenu
+>Filter</guisubmenu
+> </menuchoice
+></term>
+<listitem
+><para
+>Ta podmeni ponuja dostop do filtrov, ki so že ustvarjeni s pogovornim oknom <link linkend="menu-settings-edit-filters"
+><guilabel
+>Urejanje filtrov koledarja</guilabel
+></link
+>. <action
+>V tem podmeniju izberite filter, ki bo uporabljen v &korganizer; ogled</action
+>. Če ne želite uporabiti filtra, izberite <guilabel
+>Brez filtra</guilabel
+>.</para
+></listitem>
+</varlistentry>
+
+</variablelist>
+
+</sect2>
+
+<sect2 id="reference-menus-go">
+<title
+>Pojdi</title>
+
+<para
+>Za več informacij o brskanju &korganizer; ogledov, glejte <xref linkend="description-view"/>.</para>
+
+<variablelist>
+<varlistentry id="menu-go-previous-day">
+<term
+><inlinemediaobject
+><imageobject
+><imagedata fileref="go-previous.png"
+format="PNG"/></imageobject
+></inlinemediaobject
+><menuchoice
+><guimenu
+> Pojdi</guimenu
+><guimenuitem
+>Nazaj</guimenuitem
+></menuchoice>
+</term>
+<listitem
+><para
+><action
+>Pojdi na prejšnji dan, teden ali mesec, odvisno od pogleda.</action
+></para
+></listitem>
+</varlistentry>
+
+<varlistentry id="menu-go-next-day">
+<term
+><inlinemediaobject
+><imageobject
+><imagedata fileref="go-next.png"
+ format="PNG"/></imageobject
+></inlinemediaobject
+><menuchoice
+><guimenu
+> Pojdi</guimenu
+><guimenuitem
+>Naprej</guimenuitem
+></menuchoice>
+</term>
+<listitem
+><para
+><action
+>Pojdite na naslednji dan, teden ali mesec, odvisno od pogleda.</action
+></para
+></listitem>
+</varlistentry>
+
+<varlistentry id="menu-go-goto-today">
+<term
+><inlinemediaobject
+><imageobject
+><imagedata fileref="go-jump-today.png"
+format="PNG"/></imageobject
+></inlinemediaobject
+><menuchoice
+><guimenu
+> Pojdi</guimenu
+><guimenuitem
+>Na danes</guimenuitem
+></menuchoice>
+</term>
+<listitem
+><para
+><action
+>Pojdite na časovno obdobje, ki vključuje trenutni dan.</action
+></para
+></listitem>
+</varlistentry>
+
+<varlistentry id="menu-view-day">
+<term
+><inlinemediaobject
+><imageobject
+><imagedata fileref="go-jump-today.png"
+ format="PNG"/></imageobject
+></inlinemediaobject
+><menuchoice
+><guimenu
+> Pojdi</guimenu
+><guimenuitem
+>Dan</guimenuitem
+></menuchoice>
+</term>
+<listitem
+><para
+><action
+>Preklop zaslona na dnevni pogled.</action
+></para>
+<para
+>Za več informacij o tem dejanju glejte <xref linkend="agenda-view"/>.</para>
+</listitem>
+</varlistentry>
+
+<varlistentry id="menu-view-xdays">
+<term
+><inlinemediaobject
+><imageobject
+><imagedata fileref="view-calendar-upcoming-days.png"
+ format="PNG"/></imageobject
+></inlinemediaobject
+><menuchoice
+><guimenu
+> Pojdi</guimenu
+><guimenuitem
+>Naslednjih x dni</guimenuitem
+></menuchoice>
+</term>
+<listitem
+><para
+><action
+>Preklopite zaslon na pogled Naslednji x dan, kjer je x določen v &korganizer; glavna konfiguracija.</action
+></para>
+<para
+>Za več informacij o tem dejanju glejte <xref linkend="agenda-view"/>.</para>
+</listitem>
+</varlistentry>
+
+<varlistentry id="menu-view-workweek">
+<term
+><inlinemediaobject
+><imageobject
+><imagedata
+ fileref="view-calendar-workweek.png"
+format="PNG"/></imageobject
+></inlinemediaobject
+><menuchoice
+><guimenu
+>Pojdi</guimenu
+><guimenuitem
+>Delovni teden</guimenuitem
+></menuchoice>
+</term>
+<listitem
+><para
+><action
+>Preklopite zaslon na pogled Delovni teden.</action
+></para>
+<para
+>To je enako kot tedenski pogled, le da so prikazani samo delovni dnevi v tednu.</para>
+<para
+>Za več informacij o tem dejanju glejte <xref linkend="agenda-view"/>.</para>
+</listitem>
+</varlistentry>
+
+<varlistentry id="menu-view-week">
+<term
+><inlinemediaobject
+><imageobject
+><imagedata fileref="view-calendar-week.png"
+ format="PNG"/></imageobject
+></inlinemediaobject
+><menuchoice
+><guimenu
+> Pojdi</guimenu
+> <guimenuitem
+>Teden</guimenuitem
+></menuchoice>
+</term>
+<listitem
+><para
+><action
+>Preklopite zaslon na tedenski pogled.</action
+></para>
+<para
+>Tedenski pogled ponuja pogled, podoben dnevnemu pogledu. Dogodki za sedem dni so prikazani drug poleg drugega. Vse funkcije, ki so na voljo za dnevni pogled, so na voljo tudi v tedenskem pogledu.</para>
+<para
+>Za več informacij o tem dejanju glejte <xref linkend="agenda-view"/>.</para
+></listitem>
+</varlistentry>
+
+</variablelist>
+
+</sect2>
+
+<sect2 id="reference-menus-actions">
+<title
+>Dejanja</title>
+
+<variablelist>
+<varlistentry id="menu-actions-new-event">
+<term
+><inlinemediaobject
+><imageobject
+><imagedata fileref="appointment-new.png"
+format="PNG"/></imageobject
+></inlinemediaobject
+><menuchoice
+><guimenu
+>Dejanja</guimenu
+> <guimenuitem
+>Nov dogodek...</guimenuitem
+> </menuchoice>
+</term>
+<listitem
+><para
+>Izberite <guilabel
+>Nov dogodek ...</guilabel
+>, da <action
+>ustvarite nov dogodek</action
+>.</para>
+<para
+>Podroben opis okna dogodkov lahko dobite v razdelku <link linkend="entering-data-events"
+>Vnos dogodkov</link
+>.</para
+></listitem>
+</varlistentry>
+
+<varlistentry id="menu-actions-new-todo">
+<term
+><inlinemediaobject
+><imageobject
+><imagedata fileref="view-task.png"
+format="PNG"/></imageobject
+></inlinemediaobject
+><menuchoice
+><guimenu
+>Dejanja</guimenu
+> <guimenuitem
+>Novo opravilo ...</guimenuitem
+><guimenu
+>Dejanja</guimenu
+> <guimenuitem
+>Novo opravilo ...</guimenuitem
+> </menuchoice>
+</term>
+<listitem
+><para
+>Izberite <guilabel
+>Novo opravilo ...</guilabel
+>, da <action
+>ustvarite novo opravilo</action
+>. Sprva opravilo nima roka, vendar ga lahko določite.</para>
+<para
+>Podroben opis okna opravil najdete v <link linkend="entering-data-to-do"
+>razdelku Vnos opravil</link
+>.</para
+></listitem>
+</varlistentry>
+
+<varlistentry id="menu-actions-new-subtodo">
+<term
+><menuchoice
+><guimenu
+>Dejanja</guimenu
+> <guimenuitem
+>Novo podopravilo ...</guimenuitem
+><guimenu
+>Dejanja</guimenu
+> <guimenuitem
+>Novo podopravilo ...</guimenuitem
+> </menuchoice
+></term>
+<listitem
+><para
+>Izberite <guilabel
+>Novo pod-opravilo ...</guilabel
+>, da <action
+>začnete pisati novo pod-opravilo. Trenutno izbrano opravilo bo nadrejeno podopravilu</action
+>. Sprva opravilo nima roka, vendar ga lahko določite.</para>
+<para
+>Podroben opis okna opravil najdete v razdelku <link linkend="entering-data-to-do"
+>Vnos opravil</link
+>.</para
+></listitem>
+</varlistentry>
+
+<varlistentry id="menu-actions-new-journal">
+<term
+><inlinemediaobject
+><imageobject
+><imagedata fileref="journal-new.png"
+format="PNG"/></imageobject
+></inlinemediaobject
+><menuchoice
+><guimenu
+>Dejanja</guimenu
+> <guimenuitem
+>Nov dnevnik...</guimenuitem
+> </menuchoice
+></term>
+<listitem
+><para
+>Izberite <guilabel
+>Nov dnevnik ...</guilabel
+>, da <action
+>začnete pisati nov vnos v dnevnik</action
+>.</para
+></listitem>
+</varlistentry>
+
+<varlistentry id="menu-actions-show-event">
+<term
+><menuchoice
+><guimenu
+>Dejanja</guimenu
+> <guimenuitem
+>Pokaži</guimenuitem
+> </menuchoice
+></term>
+<listitem
+><para
+>Izberite <guilabel
+>Pokaži</guilabel
+>, da <action
+>odprete pogovorno okno, ki prikazuje podrobnosti trenutno izbranega vnosa v dnevnik, dogodka ali opravila.</action
+></para
+></listitem>
+</varlistentry>
+
+<varlistentry id="menu-actions-edit-event">
+<term
+><menuchoice
+><guimenu
+>Dejanja</guimenu
+> <guimenuitem
+>Uredi ...</guimenuitem
+> </menuchoice
+></term>
+<listitem
+><para
+>Izberite <guilabel
+>Uredi ...</guilabel
+> za <action
+>urejanje trenutno izbranega vnosa v dnevnik, dogodka ali opravila.</action
+></para
+></listitem>
+</varlistentry>
+
+<varlistentry id="menu-actions-delete-event">
+<term
+><menuchoice
+><shortcut
+> &Del; </shortcut
+> <guimenu
+>Dejanja</guimenu
+> <guimenuitem
+>Izbriši</guimenuitem
+> </menuchoice
+></term>
+<listitem
+><para
+>Izberite <guilabel
+>Izbriši</guilabel
+>, če želite <action
+>odstraniti trenutno izbrani vnos v dnevnik, dogodek ali opravilo.</action
+></para
+></listitem>
+</varlistentry>
+
+<varlistentry id="menu-actions-make-subtodo-independent">
+<term
+><menuchoice
+><guimenu
+>Dejanja</guimenu
+> <guimenuitem
+>Naredi podopravila neodvisna</guimenuitem
+> </menuchoice
+></term>
+<listitem
+><para
+>Izberite <guilabel
+>Naredi podopravilo neodvisno</guilabel
+>, da trenutno izbrani element podopravila ločite od njegovega nadrejenega in ga naredite kot neodvisen element opravila.</para
+></listitem>
+</varlistentry>
+
+</variablelist>
+
+</sect2>
+
+<sect2 id="reference-menus-schedule">
+<title
+>Razpored</title>
+
+<variablelist>
+
+<varlistentry id="menu-schedule-publish">
+<term
+><menuchoice
+><guimenu
+>Razpored</guimenu
+> <guimenuitem
+>Objavi informacije o artiklu ...</guimenuitem
+> </menuchoice
+></term>
+<listitem
+><para
+>Po e-pošti pošljite izbrani dogodek, opravilo ali vnos v dnevnik v obliki iCalendar.</para>
+<para
+>Za več informacij o tem dejanju glejte <xref linkend="publish"/>.</para
+></listitem>
+</varlistentry>
+
+<varlistentry id="menu-schedule-request">
+<term
+><menuchoice
+><guimenu
+>Razpored</guimenu
+> <guimenuitem
+>Pošlji povabilo udeležencem</guimenuitem
+> </menuchoice
+></term>
+<listitem
+><para
+>Izbrano opravilo ali dogodek pošljite udeležencem in po potrebi od njih zahtevajte odgovor.</para>
+<para
+>Za več informacij o tem dejanju glejte <xref linkend="request"/>.</para
+></listitem>
+</varlistentry>
+
+<varlistentry id="menu-schedule-reply">
+<term
+><menuchoice
+><guimenu
+>Razpored</guimenu
+> <guimenuitem
+>Pošlji posodobitev stanja</guimenuitem
+> </menuchoice
+></term>
+<listitem
+><para
+>Če ste spremenili svoj status kot udeleženec, izberite to postavko menija, da pošljete svoje posodobljeno stanje (sprejeto, pogojno &etc;) organizatorju predmeta.</para>
+<para
+>Za več informacij o tem dejanju glejte <xref linkend="reply"/>.</para
+></listitem>
+</varlistentry>
+
+<varlistentry id="menu-schedule-cancel">
+<term
+><menuchoice
+><guimenu
+>Razpored</guimenu
+> <guimenuitem
+>Pošlji preklic udeležencem</guimenuitem
+> </menuchoice
+></term>
+<listitem
+><para
+>Če nameravate preklicati dogodek ali opravilo, ga izberite in izberite ta element menija, da obvestite udeležence o preklicu.</para>
+<para
+>Za več informacij o tem dejanju glejte <xref linkend="cancel"/>.</para
+></listitem>
+</varlistentry>
+
+<varlistentry id="menu-schedule-refresh">
+<term
+><menuchoice
+><guimenu
+>Razpored</guimenu
+> <guimenuitem
+>Zahtevaj posodobitev</guimenuitem
+><guimenu
+>Razpored</guimenu
+> <guimenuitem
+>Zahtevaj posodobitev</guimenuitem
+> </menuchoice
+></term>
+<listitem
+><para
+>Od organizatorja zahtevajte najnovejšo različico izbranega dogodka ali opravila.</para>
+<para
+>Za več informacij o tem dejanju glejte <xref linkend="refresh"/>.</para
+></listitem>
+</varlistentry>
+
+<varlistentry id="menu-schedule-counter">
+<term
+><menuchoice
+><guimenu
+>Razpored</guimenu
+> <guimenuitem
+>Zahtevaj spremembo</guimenuitem
+><guimenu
+>Razpored</guimenu
+> <guimenuitem
+>Zahtevaj spremembo</guimenuitem
+> </menuchoice
+></term>
+<listitem
+><para
+>Pošljite alternativni predlog organizatorju izbranega dogodka ali opravila. </para>
+<para
+>Za več informacij o tem dejanju glejte <xref linkend="counter"/>.</para
+></listitem>
+</varlistentry>
+
+<!--varlistentry id="menu-schedule-mail-icalendar">
+<term
+><menuchoice>
+<guimenu
+>Schedule</guimenu>
+<guimenuitem
+>Send as iCalendar...</guimenuitem>
+</menuchoice
+></term>
+<listitem
+><para
+>.</para>
+<para
+>For more information about this action, please refer to
+<xref linkend="????"/>.</para
+></listitem>
+</varlistentry-->
+
+<varlistentry id="menu-schedule-mail-freebusy">
+<term
+><menuchoice
+><guimenu
+>Urnik</guimenu
+> <guimenuitem
+>Informacije o prosti zasedenosti po pošti ...</guimenuitem
+> </menuchoice
+></term>
+<listitem
+><para
+>Po e-pošti pošljite informacije o zasedenosti na enega ali več e-poštnih naslovov.Po e-pošti pošljite podatke o zasedenosti na enega ali več e-poštnih naslovov.</para>
+<para
+>Za več informacij o tem dejanju glejte <xref linkend="free-busy"/>.</para
+></listitem>
+</varlistentry>
+
+<varlistentry id="menu-schedule-upload-freebusy">
+<term
+><menuchoice
+><guimenu
+>Urnik</guimenu
+> <guimenuitem
+>Nalaganje informacij o prosti zasedenosti</guimenuitem
+> </menuchoice
+></term>
+<listitem
+><para
+>Naložite informacije o prosti zasedenosti na strežnik skupinske programske opreme. Drugi uporabniki bodo nato lahko pridobili informacije.</para>
+<para
+>Za več informacij o tem dejanju glejte <xref linkend="free-busy"/>.</para
+></listitem>
+</varlistentry>
+
+</variablelist>
+
+</sect2>
+
+<sect2 id="reference-menus-settings-help">
+<title
+>Nastavitve in pomoč</title>
+
+<para
+>Poleg običajnega &kde; meniji, opisani v poglavju <ulink url="help:/fundamentals/menus.html"
+>Meni</ulink
+> v &kde; Osnovna dokumentacija &korganizer; ima te vnose menija Nastavitve in Pomoč, specifične za aplikacijo: </para>
+
+<variablelist>
+
+<varlistentry id="menu-settings-sidebar">
+<term
+><menuchoice
+><guimenu
+>Nastavitve</guimenu
+> <guisubmenu
+>Stranska vrstica</guisubmenu
+><guimenu
+>Nastavitve</guimenu
+> <guisubmenu
+>Stranska vrstica</guisubmenu
+> </menuchoice
+></term>
+<listitem
+><para
+><action
+>Kliknite elemente menija v tem podmeniju, da prikažete ali skrijete &korganizer; komponente stranske vrstice</action
+>. Upoštevajte, da je stranska vrstica vidna le, če <link linkend="config-main-views"
+>trenutni pogled ne uporablja celotnega okna.</link
+></para
+></listitem>
+</varlistentry>
+
+<varlistentry id="menu-settings-configure-date-time">
+<term
+><menuchoice
+><guimenu
+>Nastavitve</guimenu
+> <guimenuitem
+>Konfiguriraj datum &amp; Čas ...</guimenuitem
+> </menuchoice
+></term>
+<listitem
+><para
+><action
+>Kliknite ta element menija, da nastavite oblike zapisa datuma in časa namizja</action
+>. Upoštevajte, da si to nastavitev delijo druge namizne aplikacije.</para
+></listitem>
+</varlistentry>
+
+<varlistentry id="menu-settings-edit-filters">
+<term
+><menuchoice
+><guimenu
+>Nastavitve</guimenu
+> <guisubmenu
+>Upravljanje filtrov pogleda ...</guisubmenu
+> </menuchoice
+></term>
+<listitem
+><para
+><action
+>Izberite ta element menija, da odprete pogovorno okno <guilabel
+>Urejanje filtrov</guilabel
+></action
+>. V tem pogovornem oknu lahko ustvarjate, brišete in urejate filtre, ki bodo vplivali na elemente, ki jih bo prikazal &korganizer;.</para
+></listitem>
+</varlistentry>
+
+<varlistentry id="menu-settings-edit-categories">
+<term
+><menuchoice
+><guimenu
+>Nastavitve</guimenu
+> <guimenuitem
+>Upravljanje oznak ...</guimenuitem
+><guimenu
+>Nastavitve</guimenu
+> <guimenuitem
+>Upravljanje oznak ...</guimenuitem
+> </menuchoice
+></term>
+<listitem
+><para
+><action
+>Izberite ta element menija, da odprete pogovorno okno <guilabel
+>Upravljanje oznak</guilabel
+></action
+>. V tem pogovornem oknu lahko ustvarjate, brišete in urejate oznake koledarskih elementov. Oznake se uporabljajo za organiziranje vaših dogodkov in opravil v povezanih skupinah.</para
+></listitem>
+</varlistentry>
+
+</variablelist>
+
+</sect2>
+
+</sect1>
+
+</chapter>
+
+<chapter id="other-features"
+>  <!--updated to 5.4.40-->
+<title
+>Druge funkcije</title>
+
+<para
+>V tem poglavju boste spoznali druge uporabne funkcije &korganizer;: kakšne trike lahko naredite z enim klikom miške.</para>
+
+<sect1 id="other-features-commandline-options">
+<title
+>Ukazna vrstica</title>
+
+<para
+>Lep program za dostop do &kde; koledar iz ukazne vrstice je konsolekalendar.</para>
+
+</sect1>
+
+<sect1 id="other-features-drag-and-drop">
+<title
+>Operacije povleci in spusti</title>
+
+<para
+>&korganizer; lahko enostavno nadzorujete z miško. Podprte operacije povleci in spusti so podrobno opisane spodaj.</para>
+
+<itemizedlist>
+<listitem
+><para
+>Vsakemu dogodku lahko spremenite velikost z miško. Preprosto premaknite kazalec miške blizu zgornjega ali spodnjega roba dogodka in povlecite rob navzgor ali navzdol. Tako lahko vizualno spremenite začetni in končni čas vašega termina. To deluje v pogledih Dan, Teden in Delovni teden.</para
+></listitem>
+<listitem
+><para
+>Vsak dogodek lahko prestavite z miško. Premaknite kazalec miške nad dogodek in ga povlecite na novo časovno lokacijo. To deluje v pogledih Dan, Teden in Delovni teden.</para
+></listitem>
+<listitem
+><para
+>Dogodke lahko kopirate na druge, trenutno nevidne datume. Kazalec miške premaknite nad dogodek in ga povlecite v Krmar po datumih na levi strani trenutnega koledarja ali v Krmar po datumih drugega koledarja.</para>
+<tip
+><para
+>Vendar ne morete povleči iz pogleda dnevnega reda v enem koledarju v pogled dnevnega reda v drugem koledarju.</para
+></tip
+></listitem>
+<listitem
+><para
+>Orodne vrstice lahko povlečete po zaslonu. Premaknite kazalec miške nad ročaj orodne vrstice in ga povlecite na novo mesto na zaslonu.</para
+></listitem>
+</itemizedlist>
+
+</sect1>
+
+</chapter>
+
+<chapter id="faq">
+<title
+>Vprašanja in odgovori</title
+> <!-- link to userbase faq? -->
+
+<qandaset id="faq-questions">
+<qandaentry>
+<question>
+<para
+>Ali lahko uporabim prosti čas z &korganizer;?</para>
+</question>
+<answer
+><para
+>Da, sledite navodilom v <link linkend="config-main-free-busy"
+>Prost/zaseden</link
+>.</para>
+</answer>
+</qandaentry>
+</qandaset>
+
+</chapter>
+
+<chapter id="credits">
+<title
+>Zasluge in licenca</title>
+
+<para
+>&korganizer;</para>
+
+<para
+>Avtorske pravice za program 2000-2010, &kde; Razvijalci</para>
+
+<para
+>Sodelavci:</para>
+
+<itemizedlist>
+  <listitem
+><para
+>Allen Winter <email
+>winter@kde.org</email
+></para>
+</listitem>
+<listitem
+><para
+>Reinhold Kainhofer <email
+>reinhold@kainhofer.com</email
+></para>
+</listitem>
+<listitem
+><para
+>&Cornelius.Schumacher; &Cornelius.Schumacher.mail;</para>
+</listitem>
+<listitem
+><para
+>&Preston.Brown; &Preston.Brown.mail;</para>
+</listitem>
+</itemizedlist>
+
+<para
+>Dokumentacija avtorsko zaščitena 2000 &Milos.Prudek;</para>
+<para
+>Avtorske pravice za dokumentacijo 2001 Paul E. Ahlquist, Jr <email
+>&Paul.E.Ahlquist.Jr.mail;</email
+></para>
+<para
+>Avtorske pravice za dokumentacijo 2004 J&uuml;rgen Nagel <email
+>juergen.nagel@student.fh-reutlingen.de</email
+></para>
+<para
+>Avtorske pravice za dokumentacijo 2005 Carlos Leonhard Woelz <email
+>carloswoelz@imap-mail.com</email
+></para>
+
+<para
+>Prevod: Matjaž Jeran<email
+>matjaz.jeran@amis.net</email
+></para
+> &underFDL; &underGPL; </chapter>
+
+<glossary id="glossary">
+<title
+>Glosar</title>
+
+<glossentry id="gloss-calendar-widget">
+<glossterm
+>Koledarski pripomočki</glossterm>
+<glossdef>
+
+<para
+>Orodje za izbiro datuma znotraj določenih vnosnih oken, kot je okno za urejanje dogodkov. Prikaže se kot majhen gumb na desni strani datumskega polja. Ko kliknete gumb, se prikaže mesečni koledar. S puščicami se pomaknite na želeni datum ali kliknite ime meseca ali številko leta, da se pomaknete neposredno na želeni mesec ali leto.</para>
+
+</glossdef>
+</glossentry>
+
+<glossentry id="gloss-date-navigator">
+<glossterm
+>Datumski navigator</glossterm>
+<glossdef>
+
+<para
+>Koledar, ki je v zgornjem levem kotu &korganizer; okno. To je glavni način za krmarjenje med datumi in izbiro med njimi. Ikone z eno puščico se premikajo naprej in nazaj v času v korakih po mesec, medtem ko dvojne puščice omogočajo premikanje za eno leto naenkrat. Današnji datum bo označen z majhnim okvirčkom. Datumi, na katere so načrtovani dogodki, bodo označeni krepko. Če želite izbrati datum, ga preprosto kliknite. Pridržite &Ctrl; in kliknite na datume, če želite izbrati več sosednjih datumov hkrati. Datumi bodo prikazani na glavni plošči.</para>
+
+<para
+>Ponavljajoči se dogodki niso vedno prikazani. V Krmarju po datumih lahko preprečite prikaz ponavljajočih se sestankov. Več informacij najdete v <link linkend="config-main-views"
+>poglavju Pogledi</link
+>.</para>
+
+</glossdef>
+</glossentry>
+
+<glossentry id="gloss-due-date">
+<glossterm
+>Datum zapadlosti</glossterm>
+<glossdef>
+
+<para
+>Rok je preprosto datum, ko mora biti vaše opravilo končano. Če je vaša naloga na primer vrniti knjige v knjižnico do 16. novembra, se ta datum imenuje <quote
+>rok za opravke</quote
+></para>
+
+</glossdef>
+</glossentry>
+
+<!--<glossentry id="gloss-group-scheduling">
+<glossterm
+>Group scheduling features</glossterm>
+<glossdef>
+
+<para
+>These features are planned for the future versions of &korganizer;. Group
+scheduling will facilitate member roles (attendee, owner, organizer), time
+conflict resolution, event reminder distribution, response collection and
+evaluation. In other words, you will be able to appoint attendees, invite them
+automatically, and see who accepted or refused attending the appointment.</para>
+
+<para
+>Currently, group scheduling features are not working. However, hooks exist
+in the calendar data structures for these features. <guilabel
+>Private</guilabel>
+check box, <guilabel
+>Require response</guilabel
+> check box and
+<guilabel
+>E-mail</guilabel
+> field will then be fully employed. These controls
+are described in more detail in <link linkend="entering-data"
+>Entering
+Data</link
+> chapter, in the <link
+linkend="entering-data-events-attendees"
+>Attendees section</link
+> of Windows
+reference, and in the <link linkend="config-main-personal"
+>Personal
+Preferences</link
+> section.</para>
+
+</glossdef>
+</glossentry>
+-->
+<glossentry id="gloss-main-panel">
+<glossterm
+>Glavna plošča</glossterm>
+<glossdef>
+<para
+>Običajno največji del zaslona, desno od Krmarja po datumih. Prikaže pogled dneva, delovnih dni, tedna ali meseca, pogled seznama ali pogled seznama opravil.</para>
+<para
+>Desni gumb miške lahko uporabite samo v pogledu seznama in pogledu seznama opravil. Prikaže lokalni meni. Levi gumb miške lahko uporabite v katerem koli pogledu.</para>
+</glossdef>
+</glossentry>
+
+<glossentry id="gloss-freebusy">
+<glossterm
+>Prosto/zasedeno</glossterm>
+<glossdef>
+<para
+>Informacije o prostem/zasedenem so nabor časovnih intervalov zasedenosti. S predstavitvijo intervalov, ko ima nekdo že predhodne obveznosti, se lahko drugi izognejo dogovarjanju za te termine. Upoštevajte, da so objavljeni le časi, ne pa naslovi dogodkov, opisi ali udeleženci. Z drugimi besedami, informacija o prostem/zasedenem je razpored razpoložljivosti.</para>
+<para
+>Ko dodajate udeležence na svoj dogodek, morate vedeti, ali so ob določenem času zasedeni ali prosti, preden pošljete povabila. Če udeleženci dajo na voljo podatke o prostem/zasedenem, &korganizer; lahko pridobi te informacije in jih prikaže na zavihku <guilabel
+>Prost/zaseden</guilabel
+> pogovornega okna <guilabel
+>Urejanje dogodka</guilabel
+>.</para>
+</glossdef>
+</glossentry>
+
+<!--FIXME: remove this or transform in glossary items
+
+<sect1 id="course-event-types">
+<title
+>Calendar Item Types</title>
+
+<para
+>There are three types of items:</para>
+
+<itemizedlist>
+<listitem
+><para
+>Events start and finish at distinct date. You can also specify
+distinct start and finish times, but you do not have to. While business
+meetings, personal anniversaries and cinema visits are examples of carefully
+planned events with exact time scheduling, a holiday is an event that takes
+several days and thus there is no need to specify exact start and finish
+times.</para
+></listitem>
+
+<listitem
+><para
+>To-do's must take place no later than a
+certain date, but they can also take place sooner.</para
+></listitem>
+</itemizedlist>
+
+<para
+>Naturally, what began as a To-do may later require exact timing.
+Say it is July 1 and you need to go to a hairdresser within a week.
+On July 3 you talk to your hairdresser and agree on an exact time. Thus the
+original To-do becomes similar to an appointment. </para>
+
+<para
+>&korganizer; makes adding exact time to a To-do very easy. If you
+check the <guilabel
+>Due</guilabel
+> check box and/or the <guilabel
+>Start</guilabel>
+check box you can specify the appropriate dates, when you check the
+<guilabel
+>Time associated</guilabel
+> check box and fill in the associated times, your
+To-do becomes very similar to an event.</para>
+
+</sect1>
+
+-->
+
+</glossary>
+
+&documentation.index;
+
+</book>
+<!--
+Local Variables:
+mode: sgml
+sgml-minimize-attributes:nil
+sgml-general-insert-case:lower
+sgml-indent-step:0
+sgml-indent-data:nil
+End:
+
+// vim:ts=2:sw=2:tw=78:noet
+-->
