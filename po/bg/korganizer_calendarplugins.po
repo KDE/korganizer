@@ -798,8 +798,3 @@ msgstr "Този месец в историята"
 msgctxt "Qt date format used by the localized Wikipedia"
 msgid "MMMM_yyyy"
 msgstr "MMMM_yyyy"
-
-#~| msgid "Search &Directory Service"
-#~ msgctxt "@action:button"
-#~ msgid "Search &Directory Service"
-#~ msgstr "Търсене &Directory Service"
