@@ -650,4 +650,11 @@
     </entry>
     <!-- END:   These entries are the same for the Month and month views, please keep them in sync -->
   </group>
+
+ <group name="Activities">
+   <entry name="EnabledActivities" type="Bool">
+     <default>false</default>
+   </entry>
+ </group>
+
 </kcfg>
