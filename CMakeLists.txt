@@ -156,7 +156,7 @@ configure_file(korganizer-version.h.in ${CMAKE_CURRENT_BINARY_DIR}/korganizer-ve
 
 add_definitions(-DQT_NO_CONTEXTLESS_CONNECT)
 ecm_set_disabled_deprecation_versions(QT 6.7.2
-     KF 6.7.0
+     KF 6.8.0
 )
 
 option(USE_UNITY_CMAKE_SUPPORT "Use UNITY cmake support (speedup compile time)" OFF)
