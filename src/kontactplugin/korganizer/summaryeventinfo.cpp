@@ -175,7 +175,7 @@ SummaryEventInfo::List SummaryEventInfo::eventsForRange(QDate start, QDate end, 
                 if (!ev->recurs()) {
                     secs = currentDateTime.secsTo(ev->dtStart());
                 } else {
-                    QDateTime kdt(start, QTime(0, 0, 0), Qt::LocalTime);
+                    QDateTime kdt(start, QTime(0, 0, 0), QTimeZone::LocalTime);
                     kdt = kdt.addSecs(-1);
                     const auto next = ev->recurrence()->getNextDateTime(kdt);
                     secs = currentDateTime.secsTo(next);

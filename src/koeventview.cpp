@@ -182,7 +182,7 @@ bool KOEventView::usesCompletedTodoPixmap(const Akonadi::Item &aitem, const QDat
             time = todo->dtDue().toLocalTime().time();
         }
 
-        QDateTime itemDateTime(date, time, Qt::LocalTime);
+        QDateTime itemDateTime(date, time, QTimeZone::LocalTime);
 
         return itemDateTime < todo->dtDue(false).toLocalTime();
     } else {

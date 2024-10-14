@@ -293,8 +293,8 @@ void KODayMatrix::updateTodos()
                 if (t->recurs() && !(recurType == KCalendarCore::Recurrence::rDaily && !KOPrefs::instance()->mDailyRecur)
                     && !(recurType == KCalendarCore::Recurrence::rWeekly && !KOPrefs::instance()->mWeeklyRecur)) {
                     // It's a recurring todo, find out in which days it occurs
-                    const auto timeDateList =
-                        t->recurrence()->timesInInterval(QDateTime(mDays[0], {}, Qt::LocalTime), QDateTime(mDays[NUMDAYS - 1], {}, Qt::LocalTime));
+                    const auto timeDateList = t->recurrence()->timesInInterval(QDateTime(mDays[0], {}, QTimeZone::LocalTime),
+                                                                               QDateTime(mDays[NUMDAYS - 1], {}, QTimeZone::LocalTime));
 
                     for (const QDateTime &dt : timeDateList) {
                         d = dt.toLocalTime().date();
@@ -347,14 +347,14 @@ void KODayMatrix::updateEvents()
 
                 if (isRecurrent) {
                     // Its a recurring event, find out in which days it occurs
-                    timeDateList =
-                        event->recurrence()->timesInInterval(QDateTime(mDays[0], {}, Qt::LocalTime), QDateTime(mDays[NUMDAYS - 1], {}, Qt::LocalTime));
+                    timeDateList = event->recurrence()->timesInInterval(QDateTime(mDays[0], {}, QTimeZone::LocalTime),
+                                                                        QDateTime(mDays[NUMDAYS - 1], {}, QTimeZone::LocalTime));
                 } else {
                     if (dtStart.date() >= mDays[0]) {
                         timeDateList.append(dtStart);
                     } else {
                         // The event starts in another month (not visible))
-                        timeDateList.append(QDateTime(mDays[0], {}, Qt::LocalTime));
+                        timeDateList.append(QDateTime(mDays[0], {}, QTimeZone::LocalTime));
                     }
                 }
 
