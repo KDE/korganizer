@@ -8,8 +8,9 @@
 */
 
 #pragma once
+#include "config-korganizer.h"
 #include "kprefsdialog.h"
-
+class QCheckBox;
 class KOPrefsDialogMain : public Korganizer::KPrefsModule
 {
     Q_OBJECT
@@ -22,4 +23,7 @@ protected:
 private:
     void toggleEmailSettings(bool on);
     QWidget *mUserEmailSettings = nullptr;
+#if HAVE_ACTIVITY_SUPPORT
+    QCheckBox *mActivities = nullptr;
+#endif
 };

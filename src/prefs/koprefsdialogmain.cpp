@@ -8,7 +8,7 @@
 */
 
 #include "koprefsdialogmain.h"
-#include "config-korganizer.h"
+
 #include "koprefs.h"
 #include <KPluginFactory>
 #include <QFormLayout>
@@ -93,7 +93,15 @@ KOPrefsDialogMain::KOPrefsDialogMain(QObject *parent, const KPluginMetaData &dat
     manageAccountWidget->setCapabilityFilter(QStringList() << QStringLiteral("Resource"));
 
 #if HAVE_ACTIVITY_SUPPORT
-    // TODO activities
+    auto activitiesFrame = new QFrame(widget());
+    tabWidget->addTab(activitiesFrame, QIcon::fromTheme(QStringLiteral("activities")), i18nc("@title:tab activities settings", "Activities"));
+
+    auto activitiesFrameLayout = new QVBoxLayout;
+    activitiesFrame->setLayout(activitiesFrameLayout);
+
+    mActivities = new QCheckBox(i18n("Enabled"), widget());
+    activitiesFrameLayout->addWidget(mActivities);
+    activitiesFrameLayout->addStretch(1);
 #endif
 
     load();
