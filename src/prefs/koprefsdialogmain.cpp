@@ -8,6 +8,7 @@
 */
 
 #include "koprefsdialogmain.h"
+#include "config-korganizer.h"
 #include "koprefs.h"
 #include <KPluginFactory>
 #include <QFormLayout>
@@ -90,6 +91,10 @@ KOPrefsDialogMain::KOPrefsDialogMain(QObject *parent, const KPluginMetaData &dat
     manageAccountWidget->setMimeTypeFilter(QStringList() << QStringLiteral("text/calendar"));
     // show only resources, no agents
     manageAccountWidget->setCapabilityFilter(QStringList() << QStringLiteral("Resource"));
+
+#if HAVE_ACTIVITY_SUPPORT
+    // TODO activities
+#endif
 
     load();
 }
