@@ -188,7 +188,7 @@ void KOEventPopupMenu::showIncidencePopup(const Akonadi::CollectionCalendar::Ptr
         (*it)->setEnabled(hasChangeRights);
     }
     if (incidence->recurs()) {
-        const QDateTime thisDateTime(qd, {}, Qt::LocalTime);
+        const QDateTime thisDateTime(qd, {}, QTimeZone::LocalTime);
         const bool isLastOccurrence = !incidence->recurrence()->getNextDateTime(thisDateTime).isValid();
         const bool isFirstOccurrence = !incidence->recurrence()->getPreviousDateTime(thisDateTime).isValid();
         if (mDissociateOccurrences) {
