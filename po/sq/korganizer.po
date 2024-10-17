@@ -7,7 +7,7 @@ msgid ""
 msgstr ""
 "Project-Id-Version: kdepim\n"
 "Report-Msgid-Bugs-To: https://bugs.kde.org\n"
-"POT-Creation-Date: 2024-09-18 00:40+0000\n"
+"POT-Creation-Date: 2024-10-17 00:41+0000\n"
 "PO-Revision-Date: 2009-06-08 01:08+0000\n"
 "Last-Translator: Vilson Gjeci <vilsongjeci@gmail.com>\n"
 "Language-Team: Albanian <sq@li.org>\n"
@@ -3356,43 +3356,54 @@ msgctxt "@label"
 msgid "Mail transport:"
 msgstr ""
 
-#: prefs/koprefsdialogmain.cpp:42
+#: prefs/koprefsdialogmain.cpp:43
 #, kde-format
 msgctxt "@title:tab personal settings"
 msgid "Personal"
 msgstr "Personale"
 
-#: prefs/koprefsdialogmain.cpp:48
+#: prefs/koprefsdialogmain.cpp:49
 #, kde-format
 msgctxt "@title:group email settings"
 msgid "Email Settings"
 msgstr "Parametrat e Email"
 
-#: prefs/koprefsdialogmain.cpp:62 prefs/koprefsdialogtime.cpp:189
+#: prefs/koprefsdialogmain.cpp:63 prefs/koprefsdialogtime.cpp:189
 #, kde-format
 msgctxt "@title:group"
 msgid "Reminders"
 msgstr ""
 
-#: prefs/koprefsdialogmain.cpp:71
+#: prefs/koprefsdialogmain.cpp:72
 #, kde-format
 msgctxt "@title:tab"
 msgid "Save"
 msgstr "Ruaje"
 
-#: prefs/koprefsdialogmain.cpp:83
+#: prefs/koprefsdialogmain.cpp:84
 #, fuzzy, kde-format
 #| msgid "Default Calendar"
 msgctxt "@title:tab calendar account settings"
 msgid "Calendars"
 msgstr "Kalendari i Parazgjedhur"
 
-#: prefs/koprefsdialogmain.cpp:87
+#: prefs/koprefsdialogmain.cpp:88
 #, fuzzy, kde-format
 #| msgid "Default Calendar"
 msgctxt "@title"
 msgid "Calendar Accounts"
 msgstr "Kalendari i Parazgjedhur"
+
+#: prefs/koprefsdialogmain.cpp:97
+#, kde-format
+msgctxt "@title:tab activities settings"
+msgid "Activities"
+msgstr ""
+
+#: prefs/koprefsdialogmain.cpp:102
+#, kde-format
+msgid "Enabled"
+msgstr ""
 
 #: prefs/koprefsdialogplugins.cpp:61
 #, kde-format

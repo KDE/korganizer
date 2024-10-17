@@ -9,7 +9,7 @@ msgid ""
 msgstr ""
 "Project-Id-Version: korganizer\n"
 "Report-Msgid-Bugs-To: https://bugs.kde.org\n"
-"POT-Creation-Date: 2024-09-18 00:40+0000\n"
+"POT-Creation-Date: 2024-10-17 00:41+0000\n"
 "PO-Revision-Date: 2010-01-22 22:15+0200\n"
 "Last-Translator: Viesturs Zarins <viesturs.zarins@mii.lu.lv>\n"
 "Language-Team: Latvian <locale@laka.lv>\n"
@@ -3674,44 +3674,57 @@ msgctxt "@label"
 msgid "Mail transport:"
 msgstr ""
 
-#: prefs/koprefsdialogmain.cpp:42
+#: prefs/koprefsdialogmain.cpp:43
 #, kde-format
 msgctxt "@title:tab personal settings"
 msgid "Personal"
 msgstr "Personīgi"
 
-#: prefs/koprefsdialogmain.cpp:48
+#: prefs/koprefsdialogmain.cpp:49
 #, kde-format
 msgctxt "@title:group email settings"
 msgid "Email Settings"
 msgstr "E-pasta iestatījumi"
 
-#: prefs/koprefsdialogmain.cpp:62 prefs/koprefsdialogtime.cpp:189
+#: prefs/koprefsdialogmain.cpp:63 prefs/koprefsdialogtime.cpp:189
 #, kde-format
 msgctxt "@title:group"
 msgid "Reminders"
 msgstr "Atgādinājumi"
 
-#: prefs/koprefsdialogmain.cpp:71
+#: prefs/koprefsdialogmain.cpp:72
 #, kde-format
 msgctxt "@title:tab"
 msgid "Save"
 msgstr "Saglabāt"
 
-#: prefs/koprefsdialogmain.cpp:83
+#: prefs/koprefsdialogmain.cpp:84
 #, fuzzy, kde-format
 #| msgid "Calendars"
 msgctxt "@title:tab calendar account settings"
 msgid "Calendars"
 msgstr "Kalendāri"
 
-#: prefs/koprefsdialogmain.cpp:87
+#: prefs/koprefsdialogmain.cpp:88
 #, fuzzy, kde-format
 #| msgctxt "@title:group"
 #| msgid "Calendar Decorations"
 msgctxt "@title"
 msgid "Calendar Accounts"
 msgstr "Kalendāra dekorācijas"
+
+#: prefs/koprefsdialogmain.cpp:97
+#, kde-format
+msgctxt "@title:tab activities settings"
+msgid "Activities"
+msgstr ""
+
+#: prefs/koprefsdialogmain.cpp:102
+#, fuzzy, kde-format
+#| msgctxt "@action:inmenu"
+#| msgid "Enable Reminders"
+msgid "Enabled"
+msgstr "Ieslēgt atgādinājumus"
 
 #: prefs/koprefsdialogplugins.cpp:61
 #, kde-format
@@ -9379,10 +9392,6 @@ msgstr "%1"
 #~ msgctxt "@action:inmenu"
 #~ msgid "Dismiss All Reminders"
 #~ msgstr "Noņemt visus atgādinājumus"
-
-#~ msgctxt "@action:inmenu"
-#~ msgid "Enable Reminders"
-#~ msgstr "Ieslēgt atgādinājumus"
 
 #~ msgctxt "@action:inmenu"
 #~ msgid "Start Reminder Daemon at Login"

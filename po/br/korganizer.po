@@ -4,7 +4,7 @@ msgid ""
 msgstr ""
 "Project-Id-Version: kdepim/korganizer.po\n"
 "Report-Msgid-Bugs-To: https://bugs.kde.org\n"
-"POT-Creation-Date: 2024-09-18 00:40+0000\n"
+"POT-Creation-Date: 2024-10-17 00:41+0000\n"
 "PO-Revision-Date: 2004-09-20 15:44+0200\n"
 "Last-Translator: Thierry Vignaud <tvignaud@mandriva.com>\n"
 "Language-Team: Breton <LL@li.org>\n"
@@ -3395,46 +3395,57 @@ msgctxt "@label"
 msgid "Mail transport:"
 msgstr ""
 
-#: prefs/koprefsdialogmain.cpp:42
+#: prefs/koprefsdialogmain.cpp:43
 #, fuzzy, kde-format
 #| msgid "Personal"
 msgctxt "@title:tab personal settings"
 msgid "Personal"
 msgstr "Diouzhoc'h :"
 
-#: prefs/koprefsdialogmain.cpp:48
+#: prefs/koprefsdialogmain.cpp:49
 #, fuzzy, kde-format
 #| msgid "&Settings"
 msgctxt "@title:group email settings"
 msgid "Email Settings"
 msgstr "&Kefluniadur"
 
-#: prefs/koprefsdialogmain.cpp:62 prefs/koprefsdialogtime.cpp:189
+#: prefs/koprefsdialogmain.cpp:63 prefs/koprefsdialogtime.cpp:189
 #, fuzzy, kde-format
 msgctxt "@title:group"
 msgid "Reminders"
 msgstr "Bemidbar"
 
-#: prefs/koprefsdialogmain.cpp:71
+#: prefs/koprefsdialogmain.cpp:72
 #, fuzzy, kde-format
 #| msgid "&Save"
 msgctxt "@title:tab"
 msgid "Save"
 msgstr "&Enrollañ"
 
-#: prefs/koprefsdialogmain.cpp:83
+#: prefs/koprefsdialogmain.cpp:84
 #, fuzzy, kde-format
 #| msgid "Calendar"
 msgctxt "@title:tab calendar account settings"
 msgid "Calendars"
 msgstr "Deiziadur"
 
-#: prefs/koprefsdialogmain.cpp:87
+#: prefs/koprefsdialogmain.cpp:88
 #, fuzzy, kde-format
 #| msgid "Calendar"
 msgctxt "@title"
 msgid "Calendar Accounts"
 msgstr "Deiziadur"
+
+#: prefs/koprefsdialogmain.cpp:97
+#, kde-format
+msgctxt "@title:tab activities settings"
+msgid "Activities"
+msgstr ""
+
+#: prefs/koprefsdialogmain.cpp:102
+#, fuzzy, kde-format
+msgid "Enabled"
+msgstr "Aozañ siloù an deiziadur"
 
 #: prefs/koprefsdialogplugins.cpp:61
 #, fuzzy, kde-format
@@ -7574,11 +7585,6 @@ msgstr "%1"
 #~ msgctxt "@action:inmenu"
 #~ msgid "Dismiss All Reminders"
 #~ msgstr "Dilezel ar re holl"
-
-#, fuzzy
-#~ msgctxt "@action:inmenu"
-#~ msgid "Enable Reminders"
-#~ msgstr "Aozañ siloù an deiziadur"
 
 #, fuzzy
 #~ msgctxt "@action:inmenu"

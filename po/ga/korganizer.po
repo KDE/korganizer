@@ -6,7 +6,7 @@ msgid ""
 msgstr ""
 "Project-Id-Version: kdepim/korganizer.po\n"
 "Report-Msgid-Bugs-To: https://bugs.kde.org\n"
-"POT-Creation-Date: 2024-09-18 00:40+0000\n"
+"POT-Creation-Date: 2024-10-17 00:41+0000\n"
 "PO-Revision-Date: 2004-12-03 14:52-0500\n"
 "Last-Translator: Kevin Scannell <kscanne@gmail.com>\n"
 "Language-Team: Irish <gaeilge-gnulinux@lists.sourceforge.net>\n"
@@ -3527,43 +3527,56 @@ msgctxt "@label"
 msgid "Mail transport:"
 msgstr ""
 
-#: prefs/koprefsdialogmain.cpp:42
+#: prefs/koprefsdialogmain.cpp:43
 #, kde-format
 msgctxt "@title:tab personal settings"
 msgid "Personal"
 msgstr "Pearsanta"
 
-#: prefs/koprefsdialogmain.cpp:48
+#: prefs/koprefsdialogmain.cpp:49
 #, kde-format
 msgctxt "@title:group email settings"
 msgid "Email Settings"
 msgstr "Socruithe Ríomhphoist"
 
-#: prefs/koprefsdialogmain.cpp:62 prefs/koprefsdialogtime.cpp:189
+#: prefs/koprefsdialogmain.cpp:63 prefs/koprefsdialogtime.cpp:189
 #, kde-format
 msgctxt "@title:group"
 msgid "Reminders"
 msgstr "Meabhrúcháin"
 
-#: prefs/koprefsdialogmain.cpp:71
+#: prefs/koprefsdialogmain.cpp:72
 #, kde-format
 msgctxt "@title:tab"
 msgid "Save"
 msgstr "Sábháil"
 
-#: prefs/koprefsdialogmain.cpp:83
+#: prefs/koprefsdialogmain.cpp:84
 #, kde-format
 msgctxt "@title:tab calendar account settings"
 msgid "Calendars"
 msgstr "Féilirí"
 
-#: prefs/koprefsdialogmain.cpp:87
+#: prefs/koprefsdialogmain.cpp:88
 #, fuzzy, kde-format
 #| msgctxt "@title:group"
 #| msgid "Calendar Decorations"
 msgctxt "@title"
 msgid "Calendar Accounts"
 msgstr "Maisíochtaí Féilire"
+
+#: prefs/koprefsdialogmain.cpp:97
+#, kde-format
+msgctxt "@title:tab activities settings"
+msgid "Activities"
+msgstr ""
+
+#: prefs/koprefsdialogmain.cpp:102
+#, fuzzy, kde-format
+#| msgctxt "@action:inmenu"
+#| msgid "Enable Reminders"
+msgid "Enabled"
+msgstr "Cumasaigh Meabhrúcháin"
 
 #: prefs/koprefsdialogplugins.cpp:61
 #, kde-format
@@ -7587,10 +7600,6 @@ msgstr "%1"
 #~ msgctxt "@action:inmenu"
 #~ msgid "Dismiss All Reminders"
 #~ msgstr "Ruaig Gach Meabhrúchán"
-
-#~ msgctxt "@action:inmenu"
-#~ msgid "Enable Reminders"
-#~ msgstr "Cumasaigh Meabhrúcháin"
 
 #~ msgctxt "@action:inmenu"
 #~ msgid "Start Reminder Daemon at Login"

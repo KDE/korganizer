@@ -5,7 +5,7 @@ msgid ""
 msgstr ""
 "Project-Id-Version: korganizer-1.1.1\n"
 "Report-Msgid-Bugs-To: https://bugs.kde.org\n"
-"POT-Creation-Date: 2024-09-18 00:40+0000\n"
+"POT-Creation-Date: 2024-10-17 00:41+0000\n"
 "PO-Revision-Date: 2022-02-06 19:07+0000\n"
 "Last-Translator: Sergiu Bivol <sergiu@cip.md>\n"
 "Language-Team: Romanian\n"
@@ -3424,43 +3424,54 @@ msgctxt "@label"
 msgid "Mail transport:"
 msgstr ""
 
-#: prefs/koprefsdialogmain.cpp:42
+#: prefs/koprefsdialogmain.cpp:43
 #, kde-format
 msgctxt "@title:tab personal settings"
 msgid "Personal"
 msgstr "Personal"
 
-#: prefs/koprefsdialogmain.cpp:48
+#: prefs/koprefsdialogmain.cpp:49
 #, kde-format
 msgctxt "@title:group email settings"
 msgid "Email Settings"
 msgstr "Configurări poștă"
 
-#: prefs/koprefsdialogmain.cpp:62 prefs/koprefsdialogtime.cpp:189
+#: prefs/koprefsdialogmain.cpp:63 prefs/koprefsdialogtime.cpp:189
 #, fuzzy, kde-format
 msgctxt "@title:group"
 msgid "Reminders"
 msgstr "Amintire:"
 
-#: prefs/koprefsdialogmain.cpp:71
+#: prefs/koprefsdialogmain.cpp:72
 #, kde-format
 msgctxt "@title:tab"
 msgid "Save"
 msgstr "Salvează"
 
-#: prefs/koprefsdialogmain.cpp:83
+#: prefs/koprefsdialogmain.cpp:84
 #, fuzzy, kde-format
 msgctxt "@title:tab calendar account settings"
 msgid "Calendars"
 msgstr "iCalendar"
 
-#: prefs/koprefsdialogmain.cpp:87
+#: prefs/koprefsdialogmain.cpp:88
 #, fuzzy, kde-format
 #| msgctxt "@title:group"
 #| msgid "Calendar Decorations"
 msgctxt "@title"
 msgid "Calendar Accounts"
 msgstr "Decorații calendar"
+
+#: prefs/koprefsdialogmain.cpp:97
+#, kde-format
+msgctxt "@title:tab activities settings"
+msgid "Activities"
+msgstr ""
+
+#: prefs/koprefsdialogmain.cpp:102
+#, fuzzy, kde-format
+msgid "Enabled"
+msgstr "Amintire:"
 
 #: prefs/koprefsdialogplugins.cpp:61
 #, kde-format
@@ -7596,11 +7607,6 @@ msgstr "De făcut: %1"
 #~ msgctxt "@action:inmenu"
 #~ msgid "Dismiss All Reminders"
 #~ msgstr "Zilnic"
-
-#, fuzzy
-#~ msgctxt "@action:inmenu"
-#~ msgid "Enable Reminders"
-#~ msgstr "Amintire:"
 
 #, fuzzy
 #~ msgctxt "@action:inmenu"

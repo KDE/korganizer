@@ -13,7 +13,7 @@ msgid ""
 msgstr ""
 "Project-Id-Version: korganizer\n"
 "Report-Msgid-Bugs-To: https://bugs.kde.org\n"
-"POT-Creation-Date: 2024-09-18 00:40+0000\n"
+"POT-Creation-Date: 2024-10-17 00:41+0000\n"
 "PO-Revision-Date: 2024-08-05 23:33+0200\n"
 "Last-Translator: Iñigo Salvador Azurmendi <xalba@ni.eus>\n"
 "Language-Team: Basque <kde-i18n-eu@kde.org>\n"
@@ -3394,41 +3394,53 @@ msgctxt "@label"
 msgid "Mail transport:"
 msgstr "Postaren garraioa:"
 
-#: prefs/koprefsdialogmain.cpp:42
+#: prefs/koprefsdialogmain.cpp:43
 #, kde-format
 msgctxt "@title:tab personal settings"
 msgid "Personal"
 msgstr "Pertsonala"
 
-#: prefs/koprefsdialogmain.cpp:48
+#: prefs/koprefsdialogmain.cpp:49
 #, kde-format
 msgctxt "@title:group email settings"
 msgid "Email Settings"
 msgstr "E-postaren ezarpenak"
 
-#: prefs/koprefsdialogmain.cpp:62 prefs/koprefsdialogtime.cpp:189
+#: prefs/koprefsdialogmain.cpp:63 prefs/koprefsdialogtime.cpp:189
 #, kde-format
 msgctxt "@title:group"
 msgid "Reminders"
 msgstr "Oroigarriak"
 
-#: prefs/koprefsdialogmain.cpp:71
+#: prefs/koprefsdialogmain.cpp:72
 #, kde-format
 msgctxt "@title:tab"
 msgid "Save"
 msgstr "Gorde"
 
-#: prefs/koprefsdialogmain.cpp:83
+#: prefs/koprefsdialogmain.cpp:84
 #, kde-format
 msgctxt "@title:tab calendar account settings"
 msgid "Calendars"
 msgstr "Egutegiak"
 
-#: prefs/koprefsdialogmain.cpp:87
+#: prefs/koprefsdialogmain.cpp:88
 #, kde-format
 msgctxt "@title"
 msgid "Calendar Accounts"
 msgstr "Egutegi kontuak"
+
+#: prefs/koprefsdialogmain.cpp:97
+#, kde-format
+msgctxt "@title:tab activities settings"
+msgid "Activities"
+msgstr ""
+
+#: prefs/koprefsdialogmain.cpp:102
+#, fuzzy, kde-format
+#| msgid "Edit Reminders"
+msgid "Enabled"
+msgstr "Editatu &oroigarriak"
 
 #: prefs/koprefsdialogplugins.cpp:61
 #, kde-format
@@ -8910,12 +8922,6 @@ msgstr "%1"
 #~ msgctxt "@action:inmenu"
 #~ msgid "Dismiss All Reminders"
 #~ msgstr "Baztertu guztiak"
-
-#, fuzzy
-#~| msgid "Edit Reminders"
-#~ msgctxt "@action:inmenu"
-#~ msgid "Enable Reminders"
-#~ msgstr "Editatu &oroigarriak"
 
 #, fuzzy
 #~| msgid "Start Reminder Daemon at Login"

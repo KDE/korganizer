@@ -8,7 +8,7 @@ msgid ""
 msgstr ""
 "Project-Id-Version: korganizer\n"
 "Report-Msgid-Bugs-To: https://bugs.kde.org\n"
-"POT-Creation-Date: 2024-09-18 00:40+0000\n"
+"POT-Creation-Date: 2024-10-17 00:41+0000\n"
 "PO-Revision-Date: 2012-01-13 10:32+0330\n"
 "Last-Translator: Mohammad Reza Mirdamadi <mohi@ubuntu.ir>\n"
 "Language-Team: Farsi (Persian) <>\n"
@@ -3582,47 +3582,59 @@ msgctxt "@label"
 msgid "Mail transport:"
 msgstr ""
 
-#: prefs/koprefsdialogmain.cpp:42
+#: prefs/koprefsdialogmain.cpp:43
 #, fuzzy, kde-format
 #| msgid "Personal"
 msgctxt "@title:tab personal settings"
 msgid "Personal"
 msgstr "شخصی"
 
-#: prefs/koprefsdialogmain.cpp:48
+#: prefs/koprefsdialogmain.cpp:49
 #, fuzzy, kde-format
 #| msgid "Email settings"
 msgctxt "@title:group email settings"
 msgid "Email Settings"
 msgstr "تنظیمات رایانامه"
 
-#: prefs/koprefsdialogmain.cpp:62 prefs/koprefsdialogtime.cpp:189
+#: prefs/koprefsdialogmain.cpp:63 prefs/koprefsdialogtime.cpp:189
 #, fuzzy, kde-format
 #| msgid "Reminder"
 msgctxt "@title:group"
 msgid "Reminders"
 msgstr "یادآوری"
 
-#: prefs/koprefsdialogmain.cpp:71
+#: prefs/koprefsdialogmain.cpp:72
 #, fuzzy, kde-format
 #| msgid "Save"
 msgctxt "@title:tab"
 msgid "Save"
 msgstr "ذخیره"
 
-#: prefs/koprefsdialogmain.cpp:83
+#: prefs/koprefsdialogmain.cpp:84
 #, fuzzy, kde-format
 #| msgid "Calendars"
 msgctxt "@title:tab calendar account settings"
 msgid "Calendars"
 msgstr "تقویمها"
 
-#: prefs/koprefsdialogmain.cpp:87
+#: prefs/koprefsdialogmain.cpp:88
 #, fuzzy, kde-format
 #| msgid "Calendars"
 msgctxt "@title"
 msgid "Calendar Accounts"
 msgstr "تقویمها"
+
+#: prefs/koprefsdialogmain.cpp:97
+#, kde-format
+msgctxt "@title:tab activities settings"
+msgid "Activities"
+msgstr ""
+
+#: prefs/koprefsdialogmain.cpp:102
+#, fuzzy, kde-format
+#| msgid "Edit Reminders"
+msgid "Enabled"
+msgstr "ویرایش یادآوریها"
 
 #: prefs/koprefsdialogplugins.cpp:61
 #, fuzzy, kde-format
@@ -8846,12 +8858,6 @@ msgstr "%1٪"
 #~ msgctxt "@action:inmenu"
 #~ msgid "Dismiss All Reminders"
 #~ msgstr "معاف کردن همه"
-
-#, fuzzy
-#~| msgid "Edit Reminders"
-#~ msgctxt "@action:inmenu"
-#~ msgid "Enable Reminders"
-#~ msgstr "ویرایش یادآوریها"
 
 #, fuzzy
 #~| msgid "Start Reminder Daemon at Login"
