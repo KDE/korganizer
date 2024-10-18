@@ -47,6 +47,10 @@ include(ECMQtDeclareLoggingCategory)
 include(ECMDeprecationSettings)
 include(ECMFeatureSummary)
 
+include(ECMCheckOutboundLicense)
+ecm_check_outbound_license(LICENSES GPL-2.0-only FILES ${ALL_CLANG_FORMAT_SOURCE_FILES})
+
+
 
 set(AKONADI_CONTACT_VERSION "6.2.40")
 set(IDENTITYMANAGEMENT_LIB_VERSION "6.2.40")
