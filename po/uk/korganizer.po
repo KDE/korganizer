@@ -12,7 +12,7 @@ msgstr ""
 "Project-Id-Version: korganizer\n"
 "Report-Msgid-Bugs-To: https://bugs.kde.org\n"
 "POT-Creation-Date: 2024-10-17 00:41+0000\n"
-"PO-Revision-Date: 2024-08-02 09:23+0300\n"
+"PO-Revision-Date: 2024-10-17 15:21+0300\n"
 "Last-Translator: Yuri Chornoivan <yurchor@ukr.net>\n"
 "Language-Team: Ukrainian <trans-uk@lists.fedoraproject.org>\n"
 "Language: uk\n"
@@ -3474,12 +3474,12 @@ msgstr "Облікові записи календаря"
 #, kde-format
 msgctxt "@title:tab activities settings"
 msgid "Activities"
-msgstr ""
+msgstr "Простори дій"
 
 #: prefs/koprefsdialogmain.cpp:102
 #, kde-format
 msgid "Enabled"
-msgstr ""
+msgstr "Увімкнено"
 
 #: prefs/koprefsdialogplugins.cpp:61
 #, kde-format

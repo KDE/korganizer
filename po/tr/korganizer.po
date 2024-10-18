@@ -21,7 +21,7 @@ msgstr ""
 "Project-Id-Version: kdepim-kde4\n"
 "Report-Msgid-Bugs-To: https://bugs.kde.org\n"
 "POT-Creation-Date: 2024-10-17 00:41+0000\n"
-"PO-Revision-Date: 2024-08-02 14:13+0300\n"
+"PO-Revision-Date: 2024-10-18 02:01+0300\n"
 "Last-Translator: Emir SARI <emir_sari@icloud.com>\n"
 "Language-Team: Turkish <kde-l10n-tr@kde.org>\n"
 "Language: tr\n"
@@ -3448,12 +3448,12 @@ msgstr "Takvim Hesapları"
 #, kde-format
 msgctxt "@title:tab activities settings"
 msgid "Activities"
-msgstr ""
+msgstr "Etkinlikler"
 
 #: prefs/koprefsdialogmain.cpp:102
 #, kde-format
 msgid "Enabled"
-msgstr ""
+msgstr "Etkin"
 
 #: prefs/koprefsdialogplugins.cpp:61
 #, kde-format
