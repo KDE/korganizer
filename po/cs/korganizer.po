@@ -3323,7 +3323,7 @@ msgstr ""
 #: prefs/koprefsdialogmain.cpp:102
 #, kde-format
 msgid "Enabled"
-msgstr ""
+msgstr "Povoleno"
 
 #: prefs/koprefsdialogplugins.cpp:61
 #, kde-format
