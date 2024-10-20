@@ -11,14 +11,14 @@ msgstr ""
 "Project-Id-Version: korganizer\n"
 "Report-Msgid-Bugs-To: https://bugs.kde.org\n"
 "POT-Creation-Date: 2024-10-17 00:41+0000\n"
-"PO-Revision-Date: 2024-08-02 08:00+0200\n"
+"PO-Revision-Date: 2024-10-19 16:14+0200\n"
 "Last-Translator: Stefan Asserhäll <stefan.asserhall@gmail.com>\n"
 "Language-Team: Swedish <kde-i18n-doc@kde.org>\n"
 "Language: sv\n"
 "MIME-Version: 1.0\n"
 "Content-Type: text/plain; charset=UTF-8\n"
 "Content-Transfer-Encoding: 8bit\n"
-"X-Generator: Lokalize 24.05.2\n"
+"X-Generator: Lokalize 24.08.2\n"
 "Plural-Forms: nplurals=2; plural=n != 1;\n"
 
 #, kde-format
@@ -3404,14 +3404,12 @@ msgstr "Kalenderkonton"
 #, kde-format
 msgctxt "@title:tab activities settings"
 msgid "Activities"
-msgstr ""
+msgstr "Aktiviteter"
 
 #: prefs/koprefsdialogmain.cpp:102
-#, fuzzy, kde-format
-#| msgctxt "@action:inmenu"
-#| msgid "Enable Reminders"
+#, kde-format
 msgid "Enabled"
-msgstr "Aktivera påminnelser"
+msgstr "Aktiverade"
 
 #: prefs/koprefsdialogplugins.cpp:61
 #, kde-format

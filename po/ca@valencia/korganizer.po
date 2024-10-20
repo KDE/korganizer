@@ -15,14 +15,14 @@ msgstr ""
 "Project-Id-Version: korganizer\n"
 "Report-Msgid-Bugs-To: https://bugs.kde.org\n"
 "POT-Creation-Date: 2024-10-17 00:41+0000\n"
-"PO-Revision-Date: 2024-08-02 12:44+0200\n"
+"PO-Revision-Date: 2024-10-17 15:16+0200\n"
 "Last-Translator: Josep M. Ferrer <txemaq@gmail.com>\n"
 "Language-Team: Catalan <kde-i18n-ca@kde.org>\n"
 "Language: ca@valencia\n"
 "MIME-Version: 1.0\n"
 "Content-Type: text/plain; charset=UTF-8\n"
 "Content-Transfer-Encoding: 8bit\n"
-"X-Generator: Lokalize 24.05.2\n"
+"X-Generator: Lokalize 24.08.2\n"
 "Plural-Forms: nplurals=2; plural=n != 1;\n"
 "X-Accelerator-Marker: &\n"
 
@@ -3455,12 +3455,12 @@ msgstr "Comptes del calendari"
 #, kde-format
 msgctxt "@title:tab activities settings"
 msgid "Activities"
-msgstr ""
+msgstr "Activitats"
 
 #: prefs/koprefsdialogmain.cpp:102
 #, kde-format
 msgid "Enabled"
-msgstr ""
+msgstr "Activat"
 
 #: prefs/koprefsdialogplugins.cpp:61
 #, kde-format
@@ -6017,11 +6017,3 @@ msgstr "%1"
 msgctxt "4 digit year"
 msgid "%1"
 msgstr "%1"
-
-#~ msgctxt "@action:inmenu"
-#~ msgid "Create Note for Event"
-#~ msgstr "Crea una nota a partir de l'esdeveniment"
-
-#~ msgctxt "@action:inmenu"
-#~ msgid "Create Note for To-do"
-#~ msgstr "Crea una nota a partir de la tasca pendent"

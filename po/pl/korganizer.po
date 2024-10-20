@@ -1,5 +1,5 @@
 # translation of korganizer.po to
-# Version: $Revision: 1693035 $
+# Version: $Revision: 1693190 $
 # SPDX-FileCopyrightText: 2011, 2012, 2013, 2014, 2015, 2016, 2017, 2018, 2019, 2020, 2021, 2022, 2023, 2024 Łukasz Wojniłowicz <lukasz.wojnilowicz@gmail.com>
 # translated by Krzysztof Jasiutowicz <kpjas@priv.onet.pl>
 # Krzysztof Lichota <lichota@mimuw.edu.pl>, 2002, 2005, 2006.
@@ -14,7 +14,7 @@ msgstr ""
 "Project-Id-Version: korganizer\n"
 "Report-Msgid-Bugs-To: https://bugs.kde.org\n"
 "POT-Creation-Date: 2024-10-17 00:41+0000\n"
-"PO-Revision-Date: 2024-08-03 11:55+0200\n"
+"PO-Revision-Date: 2024-10-19 12:38+0200\n"
 "Last-Translator: Łukasz Wojniłowicz <lukasz.wojnilowicz@gmail.com>\n"
 "Language-Team: Polish <kde-i18n-doc@kde.org>\n"
 "Language: pl\n"
@@ -3444,14 +3444,12 @@ msgstr "Konta kalendarzy"
 #, kde-format
 msgctxt "@title:tab activities settings"
 msgid "Activities"
-msgstr ""
+msgstr "Aktywności"
 
 #: prefs/koprefsdialogmain.cpp:102
-#, fuzzy, kde-format
-#| msgctxt "@action:inmenu"
-#| msgid "Enable Reminders"
+#, kde-format
 msgid "Enabled"
-msgstr "Włącz przypomnienia"
+msgstr "Włączone"
 
 #: prefs/koprefsdialogplugins.cpp:61
 #, kde-format
