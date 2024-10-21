@@ -18,7 +18,7 @@ msgstr ""
 "Project-Id-Version: korganizer\n"
 "Report-Msgid-Bugs-To: https://bugs.kde.org\n"
 "POT-Creation-Date: 2024-06-26 00:40+0000\n"
-"PO-Revision-Date: 2024-05-12 11:35+0530\n"
+"PO-Revision-Date: 2024-10-20 16:22+0530\n"
 "Last-Translator: Kishore G <kishore96@gmail.com>\n"
 "Language-Team: Tamil <kde-i18n-doc@kde.org>\n"
 "Language: ta\n"
@@ -26,7 +26,7 @@ msgstr ""
 "Content-Type: text/plain; charset=UTF-8\n"
 "Content-Transfer-Encoding: 8bit\n"
 "Plural-Forms: nplurals=2; plural=n != 1;\n"
-"X-Generator: Lokalize 24.02.2\n"
+"X-Generator: Lokalize 24.08.2\n"
 
 #: datenums/configdialog.cpp:28
 #, kde-format
@@ -153,7 +153,7 @@ msgstr "விடுமுறைகளை அமை"
 #: hebrew/configdialog.cpp:42
 #, kde-format
 msgid "Use Israeli holidays"
-msgstr ""
+msgstr "இஸ்ரேலிய விடுமுறைகளைப் பயன்படுத்து"
 
 #: hebrew/configdialog.cpp:46
 #, kde-format
@@ -747,14 +747,12 @@ msgid "Picture Page"
 msgstr "படத்திற்கான பக்கம்"
 
 #: picoftheday/element.cpp:326
-#, fuzzy, kde-format
-#| msgid "Loading…"
+#, kde-format
 msgid "Loading..."
 msgstr "ஏற்றுகிறது…"
 
 #: picoftheday/element.cpp:332
-#, fuzzy, kde-format
-#| msgid "<qt>Loading <i>Picture of the Day</i>…</qt>"
+#, kde-format
 msgid "<qt>Loading <i>Picture of the Day</i>...</qt>"
 msgstr "<qt><i>இன்றைய படம்</i> ஏற்றப்படுகிறது…</qt>"
 
