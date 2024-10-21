@@ -8,7 +8,7 @@ msgstr ""
 "Project-Id-Version: \n"
 "Report-Msgid-Bugs-To: https://bugs.kde.org\n"
 "POT-Creation-Date: 2024-10-17 00:41+0000\n"
-"PO-Revision-Date: 2024-08-02 09:22+0200\n"
+"PO-Revision-Date: 2024-10-20 18:35+0200\n"
 "Last-Translator: giovanni <g.sora@tiscali.it>\n"
 "Language-Team: Interlingua <kde-i18n-doc@kde.org>\n"
 "Language: ia\n"
@@ -3438,14 +3438,12 @@ msgstr "Contos de calendario"
 #, kde-format
 msgctxt "@title:tab activities settings"
 msgid "Activities"
-msgstr ""
+msgstr "Activitates"
 
 #: prefs/koprefsdialogmain.cpp:102
-#, fuzzy, kde-format
-#| msgctxt "@action:inmenu"
-#| msgid "Enable Reminders"
+#, kde-format
 msgid "Enabled"
-msgstr "Habilita mementos"
+msgstr "Habilitate"
 
 #: prefs/koprefsdialogplugins.cpp:61
 #, kde-format

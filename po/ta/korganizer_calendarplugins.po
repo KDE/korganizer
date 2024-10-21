@@ -18,7 +18,7 @@ msgstr ""
 "Project-Id-Version: korganizer\n"
 "Report-Msgid-Bugs-To: https://bugs.kde.org\n"
 "POT-Creation-Date: 2024-07-30 00:42+0000\n"
-"PO-Revision-Date: 2024-05-12 11:35+0530\n"
+"PO-Revision-Date: 2024-10-20 16:22+0530\n"
 "Last-Translator: Kishore G <kishore96@gmail.com>\n"
 "Language-Team: Tamil <kde-i18n-doc@kde.org>\n"
 "Language: ta\n"
@@ -26,7 +26,7 @@ msgstr ""
 "Content-Type: text/plain; charset=UTF-8\n"
 "Content-Transfer-Encoding: 8bit\n"
 "Plural-Forms: nplurals=2; plural=n != 1;\n"
-"X-Generator: Lokalize 24.02.2\n"
+"X-Generator: Lokalize 24.08.2\n"
 
 #: datenums/configdialog.cpp:28
 #, kde-format
@@ -40,22 +40,19 @@ msgid "Show Date Number"
 msgstr "தேதி எண்ணை காட்டு"
 
 #: datenums/configdialog.cpp:48
-#, fuzzy, kde-format
-#| msgid "Show day number"
+#, kde-format
 msgctxt "@option:radio"
 msgid "Show day number"
 msgstr "நாள் எண்ணை காட்டு"
 
 #: datenums/configdialog.cpp:51
-#, fuzzy, kde-format
-#| msgid "Show days to end of year"
+#, kde-format
 msgctxt "@option:radio"
 msgid "Show days to end of year"
-msgstr "வருடம் முடியும் வரை உள்ள நாட்களை காட்டு"
+msgstr "வருடம் முடியும் வரை எத்தனை நாட்களென காட்டு"
 
 #: datenums/configdialog.cpp:54
-#, fuzzy, kde-format
-#| msgid "Show both"
+#, kde-format
 msgctxt "@option:radio"
 msgid "Show both"
 msgstr "இரண்டையும் காட்டு"
@@ -159,7 +156,7 @@ msgstr "விடுமுறைகளை அமை"
 #: hebrew/configdialog.cpp:42
 #, kde-format
 msgid "Use Israeli holidays"
-msgstr ""
+msgstr "இஸ்ரேலிய விடுமுறைகளைப் பயன்படுத்து"
 
 #: hebrew/configdialog.cpp:46
 #, kde-format
@@ -706,8 +703,7 @@ msgid "Thumbnail Aspect Ratio Mode"
 msgstr "சிறுபடத்தின் உருவ விகிதம் அமையும் முறை"
 
 #: picoftheday/configdialog.cpp:46
-#, fuzzy, kde-format
-#| msgid "Ignore aspect ratio"
+#, kde-format
 msgctxt "@option:radio"
 msgid "Ignore aspect ratio"
 msgstr "உருவ விகிதத்தை பொருட்படுத்தாதே"
@@ -719,8 +715,7 @@ msgid ""
 msgstr "சிறுபடத்தின் அளவு தேவைக்கேற்ப மாற்றப்படும். உருவ விகிதம் மாறலாம்."
 
 #: picoftheday/configdialog.cpp:52
-#, fuzzy, kde-format
-#| msgid "Keep aspect ratio"
+#, kde-format
 msgctxt "@option:radio"
 msgid "Keep aspect ratio"
 msgstr "உருவ விகித‍த்தை வைத்திரு"
@@ -733,8 +728,7 @@ msgid ""
 msgstr "உருவ விகிதத்தை மாற்றாமல், முடிந்த அளவுக்கு பெரிதாக்கி சிறுபடத்தை காட்டும்"
 
 #: picoftheday/configdialog.cpp:59
-#, fuzzy, kde-format
-#| msgid "Keep aspect ratio by expanding"
+#, kde-format
 msgctxt "@option:radio"
 msgid "Keep aspect ratio by expanding"
 msgstr "பெருக்கி உருவ விகித‍த்தை வைத்திரு"
@@ -759,14 +753,12 @@ msgid "Picture Page"
 msgstr "படத்திற்கான பக்கம்"
 
 #: picoftheday/element.cpp:326
-#, fuzzy, kde-format
-#| msgid "Loading…"
+#, kde-format
 msgid "Loading..."
 msgstr "ஏற்றுகிறது…"
 
 #: picoftheday/element.cpp:332
-#, fuzzy, kde-format
-#| msgid "<qt>Loading <i>Picture of the Day</i>…</qt>"
+#, kde-format
 msgid "<qt>Loading <i>Picture of the Day</i>...</qt>"
 msgstr "<qt><i>இன்றைய படம்</i> ஏற்றப்படுகிறது…</qt>"
 
