@@ -113,7 +113,9 @@ void KOPrefsDialogMain::usrWriteConfig()
 {
     Korganizer::KPrefsModule::usrWriteConfig();
     IncidenceEditorNG::IncidenceEditorSettings::self()->save();
+#if HAVE_ACTIVITY_SUPPORT
     KOPrefs::instance()->setEnabledActivities(mActivities->isChecked());
+#endif
 }
 
 void KOPrefsDialogMain::toggleEmailSettings(bool on)
