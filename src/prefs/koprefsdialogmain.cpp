@@ -102,6 +102,8 @@ KOPrefsDialogMain::KOPrefsDialogMain(QObject *parent, const KPluginMetaData &dat
     mActivities = new QCheckBox(i18n("Enabled"), widget());
     activitiesFrameLayout->addWidget(mActivities);
     activitiesFrameLayout->addStretch(1);
+    mActivities->setChecked(KOPrefs::instance()->enabledActivities());
+    connect(mActivities, &QCheckBox::clicked, this, &KOPrefsDialogMain::slotWidChanged);
 #endif
 
     load();
@@ -111,6 +113,7 @@ void KOPrefsDialogMain::usrWriteConfig()
 {
     Korganizer::KPrefsModule::usrWriteConfig();
     IncidenceEditorNG::IncidenceEditorSettings::self()->save();
+    KOPrefs::instance()->setEnabledActivities(mActivities->isChecked());
 }
 
 void KOPrefsDialogMain::toggleEmailSettings(bool on)
