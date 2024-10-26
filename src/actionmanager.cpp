@@ -759,11 +759,7 @@ void ActionManager::initActions()
     mACollection->addAction(QStringLiteral("edit_categories"), action);
     connect(action, &QAction::triggered, mCalendarView->dialogManager(), &KODialogManager::showCategoryEditDialog);
 
-#if KCOLORSCHEME_VERSION < QT_VERSION_CHECK(6, 6, 0)
-    auto manager = new KColorSchemeManager(this);
-#else
     auto manager = KColorSchemeManager::instance();
-#endif
     mACollection->addAction(QStringLiteral("colorscheme_menu"), KColorSchemeMenu::createMenu(manager, this));
 
     if (mIsPart) {
