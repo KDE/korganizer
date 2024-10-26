@@ -60,9 +60,18 @@ BirthdaySearchJob::BirthdaySearchJob(QObject *parent, int daysInAdvance)
     ItemSearchJob::setQuery(query);
 }
 
-enum SDIncidenceType { IncidenceTypeContact, IncidenceTypeEvent };
+enum SDIncidenceType {
+    IncidenceTypeContact,
+    IncidenceTypeEvent
+};
 
-enum SDCategory { CategoryBirthday, CategoryAnniversary, CategoryHoliday, CategorySeasonal, CategoryOther };
+enum SDCategory {
+    CategoryBirthday,
+    CategoryAnniversary,
+    CategoryHoliday,
+    CategorySeasonal,
+    CategoryOther
+};
 
 class SDEntry
 {

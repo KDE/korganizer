@@ -32,7 +32,11 @@ public:
       as FollowDay but also adjusts the month that is
       visible and emits monthPassed() when the month changes.
     */
-    enum RolloverType { None, FollowDay, FollowMonth };
+    enum RolloverType {
+        None,
+        FollowDay,
+        FollowMonth
+    };
     void enableRollover(RolloverType);
 
 Q_SIGNALS:

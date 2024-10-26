@@ -562,7 +562,11 @@ void KODayMatrix::mouseMoveEvent(QMouseEvent *e)
 //-----------------------------------------------------------------------------
 // Drag and Drop handling -- based on the Troll Tech dirview example
 
-enum { DRAG_COPY = 0, DRAG_MOVE = 1, DRAG_CANCEL = 2 };
+enum {
+    DRAG_COPY = 0,
+    DRAG_MOVE = 1,
+    DRAG_CANCEL = 2
+};
 
 void KODayMatrix::dragEnterEvent(QDragEnterEvent *e)
 {

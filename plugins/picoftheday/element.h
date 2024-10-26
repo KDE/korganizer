@@ -62,7 +62,10 @@ private:
     void getThumbImage(const QUrl &thumbUrl);
 
     // POTD pages once decided about should get an edit-protected variant, but not all have that
-    enum PageProtectionState { ProtectedPage, UnprotectedPage };
+    enum PageProtectionState {
+        ProtectedPage,
+        UnprotectedPage
+    };
     KIO::SimpleJob *createImagesJsonQueryJob(PageProtectionState pageProtectionState);
 
     struct QueryItem {

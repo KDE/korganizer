@@ -81,5 +81,7 @@ private:
 
     KCalendarCore::DateList mSelectedDates;
 
-    enum { MAX_SELECTABLE_DAYS = 50 };
+    enum {
+        MAX_SELECTABLE_DAYS = 50
+    };
 };
