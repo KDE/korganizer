@@ -6,7 +6,7 @@ msgid ""
 msgstr ""
 "Project-Id-Version: korganizer\n"
 "Report-Msgid-Bugs-To: https://bugs.kde.org\n"
-"POT-Creation-Date: 2024-10-17 00:41+0000\n"
+"POT-Creation-Date: 2024-10-27 00:41+0000\n"
 "PO-Revision-Date: 2013-09-30 02:22+0600\n"
 "Last-Translator: Sairan Kikkarin <sairan@computer.org>\n"
 "Language-Team: Kazakh <kde-i18n-doc@kde.org>\n"
@@ -536,8 +536,8 @@ msgid ""
 msgstr ""
 
 #. i18n: ectx: property (text), widget (QPushButton, mDeleteButton)
-#: actionmanager.cpp:368 actionmanager.cpp:623 actionmanager.cpp:1311
-#: actionmanager.cpp:1348 ui/filteredit_base.ui:56
+#: actionmanager.cpp:368 actionmanager.cpp:623 actionmanager.cpp:1307
+#: actionmanager.cpp:1344 ui/filteredit_base.ui:56
 #, kde-format
 msgid "&Delete"
 msgstr "Ө&шіру"
@@ -919,7 +919,7 @@ msgstr ""
 msgid "&Day"
 msgstr "&Күн"
 
-#: actionmanager.cpp:553 actionmanager.cpp:1068
+#: actionmanager.cpp:553 actionmanager.cpp:1064
 #, kde-format
 msgid "&Next Day"
 msgid_plural "&Next %1 Days"
@@ -1057,12 +1057,12 @@ msgid ""
 "current calendar view."
 msgstr ""
 
-#: actionmanager.cpp:615 actionmanager.cpp:1305 actionmanager.cpp:1346
+#: actionmanager.cpp:615 actionmanager.cpp:1301 actionmanager.cpp:1342
 #, kde-format
 msgid "&Show"
 msgstr "&Көрсету"
 
-#: actionmanager.cpp:619 actionmanager.cpp:1308 actionmanager.cpp:1347
+#: actionmanager.cpp:619 actionmanager.cpp:1304 actionmanager.cpp:1343
 #, fuzzy, kde-format
 #| msgid "&Edit"
 msgid "&Edit…"
@@ -1180,34 +1180,34 @@ msgctxt "@action"
 msgid "Manage T&ags…"
 msgstr "Са&наттары..."
 
-#: actionmanager.cpp:770
+#: actionmanager.cpp:766
 #, fuzzy, kde-format
 #| msgid "&Configure KOrganizer..."
 msgid "&Configure KOrganizer…"
 msgstr "KOrganizer &баптауы..."
 
-#: actionmanager.cpp:848
+#: actionmanager.cpp:844
 #, kde-format
 msgid "1 incidence was imported successfully."
 msgid_plural "%1 incidences were imported successfully."
 msgstr[0] "%1 оқиға сәтті импортталды."
 
-#: actionmanager.cpp:851
+#: actionmanager.cpp:847
 #, kde-format
 msgid "There was an error while merging the calendar: %1"
 msgstr "Мынау күнтізбені біріктіру кезінде қате пайда болды: %1"
 
-#: actionmanager.cpp:862
+#: actionmanager.cpp:858
 #, kde-format
 msgid "New calendar added successfully"
 msgstr "Жаңа күнтізбесі сәтті қосылды"
 
-#: actionmanager.cpp:864
+#: actionmanager.cpp:860
 #, kde-format
 msgid "Could not add a calendar. Error: %1"
 msgstr "Күнтізбесі қосылмады. Қатесі: %1"
 
-#: actionmanager.cpp:921
+#: actionmanager.cpp:917
 #, fuzzy, kde-format
 #| msgctxt "@title::window"
 #| msgid "Edit Calendar Filters"
@@ -1215,7 +1215,7 @@ msgctxt "@title:window"
 msgid "Select Calendar File to Open"
 msgstr "Күнтізбе сүзгісін өзгерту"
 
-#: actionmanager.cpp:949
+#: actionmanager.cpp:945
 #, fuzzy, kde-format
 #| msgctxt "@title::window"
 #| msgid "Edit Calendar Filters"
@@ -1223,128 +1223,128 @@ msgctxt "@title:window"
 msgid "Select Calendar File to Import"
 msgstr "Күнтізбе сүзгісін өзгерту"
 
-#: actionmanager.cpp:980
+#: actionmanager.cpp:976
 #, kde-format
 msgid "An error occurred: %1"
 msgstr "Қате орын алды: %1"
 
-#: actionmanager.cpp:998
+#: actionmanager.cpp:994
 #, kde-format
 msgid "Cannot upload calendar to '%1'"
 msgstr "'%1' дегенге күнтізбе жүктелмеді"
 
-#: actionmanager.cpp:1004
+#: actionmanager.cpp:1000
 #, kde-format
 msgid "Saved calendar '%1'."
 msgstr "'%1' күнтізбесі сақталды."
 
-#: actionmanager.cpp:1042
+#: actionmanager.cpp:1038
 #, kde-format
 msgid "Unable to save calendar to the file %1."
 msgstr "Күнтізбе %1 файлына сақталмады."
 
-#: actionmanager.cpp:1042
+#: actionmanager.cpp:1038
 #, fuzzy, kde-format
 #| msgid "Error"
 msgctxt "@title:window"
 msgid "Error"
 msgstr "Қате"
 
-#: actionmanager.cpp:1087
+#: actionmanager.cpp:1083
 #, kde-format
 msgid "Could not start control module for date and time format."
 msgstr "Күн мен уақыт пішімін басқару модулі жегілмеді."
 
-#: actionmanager.cpp:1266
+#: actionmanager.cpp:1262
 #, kde-format
 msgid "&Show Event"
 msgstr "Оқиғаны &көрсету"
 
-#: actionmanager.cpp:1269
+#: actionmanager.cpp:1265
 #, fuzzy, kde-format
 #| msgid "&Edit Event..."
 msgid "&Edit Event…"
 msgstr "Оқиғаны &өзгерту..."
 
-#: actionmanager.cpp:1272
+#: actionmanager.cpp:1268
 #, kde-format
 msgid "&Delete Event"
 msgstr "Оқиғаны ө&шіру"
 
-#: actionmanager.cpp:1280
+#: actionmanager.cpp:1276
 #, kde-format
 msgid "&Show To-do"
 msgstr "Істі &көрсету"
 
-#: actionmanager.cpp:1283 kontactplugin/korganizer/todosummarywidget.cpp:321
+#: actionmanager.cpp:1279 kontactplugin/korganizer/todosummarywidget.cpp:321
 #, fuzzy, kde-format
 #| msgid "&Edit To-do..."
 msgid "&Edit To-do…"
 msgstr "Істі &өзгерту"
 
-#: actionmanager.cpp:1286 kontactplugin/korganizer/todosummarywidget.cpp:323
+#: actionmanager.cpp:1282 kontactplugin/korganizer/todosummarywidget.cpp:323
 #, kde-format
 msgid "&Delete To-do"
 msgstr "Істі ө&шіру"
 
-#: actionmanager.cpp:1424 actionmanager.cpp:1530
+#: actionmanager.cpp:1420 actionmanager.cpp:1526
 #, kde-format
 msgid "Attach as &link"
 msgstr "&Сілтеме түрінде тіркемелеу"
 
-#: actionmanager.cpp:1425 actionmanager.cpp:1531
+#: actionmanager.cpp:1421 actionmanager.cpp:1527
 #, kde-format
 msgid "Attach &inline"
 msgstr "Б&етіне тіркемелеу"
 
-#: actionmanager.cpp:1426
+#: actionmanager.cpp:1422
 #, kde-format
 msgid "Attach inline &without attachments"
 msgstr "Тіркемеле&мей, бетіне енгізу"
 
-#: actionmanager.cpp:1428 actionmanager.cpp:1533
+#: actionmanager.cpp:1424 actionmanager.cpp:1529
 #, kde-format
 msgid "C&ancel"
 msgstr "&Айну"
 
-#: actionmanager.cpp:1466
+#: actionmanager.cpp:1462
 #, kde-format
 msgid "Removing attachments from an email might invalidate its signature."
 msgstr "Эл.поштанның тіркемесін өшірген оның цифрлық қолтаңбасын бұзуы мүмкін."
 
-#: actionmanager.cpp:1467
+#: actionmanager.cpp:1463
 #, fuzzy, kde-format
 #| msgid "Remove Attachments"
 msgctxt "@title:window"
 msgid "Remove Attachments"
 msgstr "Тіркемелерді өшіру"
 
-#: actionmanager.cpp:1618
+#: actionmanager.cpp:1614
 #, kde-format
 msgid "Undo: %1"
 msgstr "(%1) дегеннен қайту"
 
-#: actionmanager.cpp:1621 actionmanager.cpp:1637
+#: actionmanager.cpp:1617 actionmanager.cpp:1633
 #, kde-format
 msgid "Undo"
 msgstr "Істен қайту"
 
-#: actionmanager.cpp:1631
+#: actionmanager.cpp:1627
 #, kde-format
 msgid "Redo: %1"
 msgstr "%1 дегенді қайталау"
 
-#: actionmanager.cpp:1634
+#: actionmanager.cpp:1630
 #, kde-format
 msgid "Redo"
 msgstr "Қайтудан айну"
 
-#: actionmanager.cpp:1648
+#: actionmanager.cpp:1644
 #, kde-format
 msgid "URL '%1' is invalid."
 msgstr "'%1' URL-і жарамсыз."
 
-#: actionmanager.cpp:1653
+#: actionmanager.cpp:1649
 #, kde-format
 msgctxt "@info"
 msgid ""
@@ -1360,20 +1360,20 @@ msgstr ""
 "the destination calendar.</p><p>If you select add, then a new calendar will "
 "be created for you automatically.</p>"
 
-#: actionmanager.cpp:1661
+#: actionmanager.cpp:1657
 #, kde-format
 msgctxt "@title:window"
 msgid "Import Calendar"
 msgstr "Күнтізбені импорттау"
 
-#: actionmanager.cpp:1662
+#: actionmanager.cpp:1658
 #, fuzzy, kde-format
 #| msgid "Merge into existing calendar"
 msgctxt "@action:button"
 msgid "Merge into existing calendar"
 msgstr "Бар күнтізбемен біріктіру"
 
-#: actionmanager.cpp:1663
+#: actionmanager.cpp:1659
 #, fuzzy, kde-format
 #| msgid "Add as new calendar"
 msgctxt "@action:button"
@@ -2227,22 +2227,22 @@ msgctxt "delimiter for joining holiday names"
 msgid ","
 msgstr ","
 
-#: kodaymatrix.cpp:630
+#: kodaymatrix.cpp:634
 #, kde-format
 msgid "&Move"
 msgstr "&Жылжыту"
 
-#: kodaymatrix.cpp:632
+#: kodaymatrix.cpp:636
 #, kde-format
 msgid "&Copy"
 msgstr "&Көшіріп алу"
 
-#: kodaymatrix.cpp:635
+#: kodaymatrix.cpp:639
 #, kde-format
 msgid "&Add"
 msgstr "Қ&осу"
 
-#: kodaymatrix.cpp:639
+#: kodaymatrix.cpp:643
 #, kde-format
 msgid "&Cancel"
 msgstr "Қ&айту"
@@ -2705,7 +2705,7 @@ msgstr ""
 
 #: kontactplugin/korganizer/summaryeventinfo.cpp:171
 #: kontactplugin/korganizer/todosummarywidget.cpp:214
-#: kontactplugin/specialdates/sdsummarywidget.cpp:487
+#: kontactplugin/specialdates/sdsummarywidget.cpp:496
 #, fuzzy, kde-format
 #| msgid "1 day"
 #| msgid_plural "%1 days"
@@ -2736,7 +2736,7 @@ msgid_plural "%1 mins"
 msgstr[0] "%1 минут"
 
 #: kontactplugin/korganizer/summaryeventinfo.cpp:200
-#: kontactplugin/specialdates/sdsummarywidget.cpp:485
+#: kontactplugin/specialdates/sdsummarywidget.cpp:494
 #, kde-format
 msgid "now"
 msgstr ""
@@ -3325,77 +3325,77 @@ msgstr ""
 msgid "Show anni&versaries"
 msgstr ""
 
-#: kontactplugin/specialdates/sdsummarywidget.cpp:97
+#: kontactplugin/specialdates/sdsummarywidget.cpp:106
 #, kde-format
 msgid "Upcoming Special Dates"
 msgstr ""
 
-#: kontactplugin/specialdates/sdsummarywidget.cpp:450
+#: kontactplugin/specialdates/sdsummarywidget.cpp:459
 #, fuzzy, kde-format
 #| msgid "Today"
 msgctxt "the special day is today"
 msgid "Today"
 msgstr "Бүгін"
 
-#: kontactplugin/specialdates/sdsummarywidget.cpp:452
+#: kontactplugin/specialdates/sdsummarywidget.cpp:461
 #, kde-format
 msgctxt "the special day is tomorrow"
 msgid "Tomorrow"
 msgstr ""
 
-#: kontactplugin/specialdates/sdsummarywidget.cpp:498
+#: kontactplugin/specialdates/sdsummarywidget.cpp:507
 #, fuzzy, kde-format
 #| msgid "Birthday"
 msgid "Birthday"
 msgstr "Туған күн"
 
-#: kontactplugin/specialdates/sdsummarywidget.cpp:501
+#: kontactplugin/specialdates/sdsummarywidget.cpp:510
 #, kde-format
 msgid "Anniversary"
 msgstr ""
 
-#: kontactplugin/specialdates/sdsummarywidget.cpp:504
+#: kontactplugin/specialdates/sdsummarywidget.cpp:513
 #, kde-format
 msgid "Holiday"
 msgstr "Демалыс"
 
-#: kontactplugin/specialdates/sdsummarywidget.cpp:507
+#: kontactplugin/specialdates/sdsummarywidget.cpp:516
 #, kde-format
 msgid "Change of Seasons"
 msgstr ""
 
-#: kontactplugin/specialdates/sdsummarywidget.cpp:510
+#: kontactplugin/specialdates/sdsummarywidget.cpp:519
 #, fuzzy, kde-format
 #| msgid "Special Occasion"
 msgid "Special Occasion"
 msgstr "Ерекше жағдай"
 
-#: kontactplugin/specialdates/sdsummarywidget.cpp:552
+#: kontactplugin/specialdates/sdsummarywidget.cpp:561
 #, fuzzy, kde-format
 #| msgid "Next year"
 msgid "one year"
 msgid_plural "%1 years"
 msgstr[0] "Келесі жыл"
 
-#: kontactplugin/specialdates/sdsummarywidget.cpp:562
+#: kontactplugin/specialdates/sdsummarywidget.cpp:571
 #, kde-format
 msgid "No special dates within the next 1 day"
 msgid_plural "No special dates pending within the next %1 days"
 msgstr[0] ""
 
-#: kontactplugin/specialdates/sdsummarywidget.cpp:656
+#: kontactplugin/specialdates/sdsummarywidget.cpp:665
 #, fuzzy, kde-format
 #| msgid "Send Email"
 msgid "Send &Mail"
 msgstr "Эл.поштаны жіберу"
 
-#: kontactplugin/specialdates/sdsummarywidget.cpp:657
+#: kontactplugin/specialdates/sdsummarywidget.cpp:666
 #, fuzzy, kde-format
 #| msgid "View Columns"
 msgid "View &Contact"
 msgstr "Бағандар көрінісі"
 
-#: kontactplugin/specialdates/sdsummarywidget.cpp:672
+#: kontactplugin/specialdates/sdsummarywidget.cpp:681
 #, kde-format
 msgid "Mail to:\"%1\""
 msgstr ""

@@ -6,7 +6,7 @@ msgid ""
 msgstr ""
 "Project-Id-Version: \n"
 "Report-Msgid-Bugs-To: https://bugs.kde.org\n"
-"POT-Creation-Date: 2024-10-17 00:41+0000\n"
+"POT-Creation-Date: 2024-10-27 00:41+0000\n"
 "PO-Revision-Date: 2013-04-15 10:39+0530\n"
 "Last-Translator: Chetan Khona <chetan@kompkin.com>\n"
 "Language-Team: Marathi <kde-i18n-doc@kde.org>\n"
@@ -537,8 +537,8 @@ msgid ""
 msgstr ""
 
 #. i18n: ectx: property (text), widget (QPushButton, mDeleteButton)
-#: actionmanager.cpp:368 actionmanager.cpp:623 actionmanager.cpp:1311
-#: actionmanager.cpp:1348 ui/filteredit_base.ui:56
+#: actionmanager.cpp:368 actionmanager.cpp:623 actionmanager.cpp:1307
+#: actionmanager.cpp:1344 ui/filteredit_base.ui:56
 #, kde-format
 msgid "&Delete"
 msgstr "काढून टाका (&D)"
@@ -919,7 +919,7 @@ msgstr ""
 msgid "&Day"
 msgstr "दिवस (&D)"
 
-#: actionmanager.cpp:553 actionmanager.cpp:1068
+#: actionmanager.cpp:553 actionmanager.cpp:1064
 #, kde-format
 msgid "&Next Day"
 msgid_plural "&Next %1 Days"
@@ -1058,12 +1058,12 @@ msgid ""
 "current calendar view."
 msgstr ""
 
-#: actionmanager.cpp:615 actionmanager.cpp:1305 actionmanager.cpp:1346
+#: actionmanager.cpp:615 actionmanager.cpp:1301 actionmanager.cpp:1342
 #, kde-format
 msgid "&Show"
 msgstr "दर्शवा (&S)"
 
-#: actionmanager.cpp:619 actionmanager.cpp:1308 actionmanager.cpp:1347
+#: actionmanager.cpp:619 actionmanager.cpp:1304 actionmanager.cpp:1343
 #, fuzzy, kde-format
 #| msgid "&Edit"
 msgid "&Edit…"
@@ -1181,37 +1181,37 @@ msgctxt "@action"
 msgid "Manage T&ags…"
 msgstr "विभागाचे व्यवस्थापन (&A)..."
 
-#: actionmanager.cpp:770
+#: actionmanager.cpp:766
 #, fuzzy, kde-format
 #| msgid "&Configure KOrganizer..."
 msgid "&Configure KOrganizer…"
 msgstr "के-ऑर्गनायझर प्लगइन संयोजीत करा (&C)..."
 
-#: actionmanager.cpp:848
+#: actionmanager.cpp:844
 #, kde-format
 msgid "1 incidence was imported successfully."
 msgid_plural "%1 incidences were imported successfully."
 msgstr[0] ""
 msgstr[1] ""
 
-#: actionmanager.cpp:851
+#: actionmanager.cpp:847
 #, kde-format
 msgid "There was an error while merging the calendar: %1"
 msgstr ""
 
-#: actionmanager.cpp:862
+#: actionmanager.cpp:858
 #, fuzzy, kde-format
 #| msgid "Calendar Item successfully merged"
 msgid "New calendar added successfully"
 msgstr "दिनदर्शिकेतील/दर्शिकेतील घटक यशस्वीरीत्या विलीन झाले"
 
-#: actionmanager.cpp:864
+#: actionmanager.cpp:860
 #, fuzzy, kde-format
 #| msgid "Could not load calendar %1."
 msgid "Could not add a calendar. Error: %1"
 msgstr "दिनदर्शिका %1 भारीत करू शकलो नाही."
 
-#: actionmanager.cpp:921
+#: actionmanager.cpp:917
 #, fuzzy, kde-format
 #| msgctxt "@title::window"
 #| msgid "Edit Calendar Filters"
@@ -1219,7 +1219,7 @@ msgctxt "@title:window"
 msgid "Select Calendar File to Open"
 msgstr "दिनदर्शिकेच्या गाळण्या संपादित करा"
 
-#: actionmanager.cpp:949
+#: actionmanager.cpp:945
 #, fuzzy, kde-format
 #| msgctxt "@title::window"
 #| msgid "Edit Calendar Filters"
@@ -1227,128 +1227,128 @@ msgctxt "@title:window"
 msgid "Select Calendar File to Import"
 msgstr "दिनदर्शिकेच्या गाळण्या संपादित करा"
 
-#: actionmanager.cpp:980
+#: actionmanager.cpp:976
 #, kde-format
 msgid "An error occurred: %1"
 msgstr ""
 
-#: actionmanager.cpp:998
+#: actionmanager.cpp:994
 #, kde-format
 msgid "Cannot upload calendar to '%1'"
 msgstr "दिनदर्शिका '%1' कडे संक्रमित करू शकलो नाही"
 
-#: actionmanager.cpp:1004
+#: actionmanager.cpp:1000
 #, kde-format
 msgid "Saved calendar '%1'."
 msgstr "दिनदर्शिका संग्रहित केली'%1'"
 
-#: actionmanager.cpp:1042
+#: actionmanager.cpp:1038
 #, kde-format
 msgid "Unable to save calendar to the file %1."
 msgstr "दिनदर्शिका फाईल %1 मध्ये संग्रहित करू शकत नाही."
 
-#: actionmanager.cpp:1042
+#: actionmanager.cpp:1038
 #, fuzzy, kde-format
 #| msgid "Error"
 msgctxt "@title:window"
 msgid "Error"
 msgstr "त्रुटी"
 
-#: actionmanager.cpp:1087
+#: actionmanager.cpp:1083
 #, kde-format
 msgid "Could not start control module for date and time format."
 msgstr "तारीख आणि वेळ मांडणी/रचनेसाठीचा संयोजन विभाग/नियामक सुरु करू शकलो नाही."
 
-#: actionmanager.cpp:1266
+#: actionmanager.cpp:1262
 #, kde-format
 msgid "&Show Event"
 msgstr "घटना दर्शवा (&S)"
 
-#: actionmanager.cpp:1269
+#: actionmanager.cpp:1265
 #, fuzzy, kde-format
 #| msgid "&Edit Event..."
 msgid "&Edit Event…"
 msgstr "घटना संपादन करा (&E)..."
 
-#: actionmanager.cpp:1272
+#: actionmanager.cpp:1268
 #, kde-format
 msgid "&Delete Event"
 msgstr "घटना काढून टाका (&D)"
 
-#: actionmanager.cpp:1280
+#: actionmanager.cpp:1276
 #, kde-format
 msgid "&Show To-do"
 msgstr "कार्य दर्शवा (&S)"
 
-#: actionmanager.cpp:1283 kontactplugin/korganizer/todosummarywidget.cpp:321
+#: actionmanager.cpp:1279 kontactplugin/korganizer/todosummarywidget.cpp:321
 #, fuzzy, kde-format
 #| msgid "&Edit To-do..."
 msgid "&Edit To-do…"
 msgstr "कार्य संपादन करा (&E)..."
 
-#: actionmanager.cpp:1286 kontactplugin/korganizer/todosummarywidget.cpp:323
+#: actionmanager.cpp:1282 kontactplugin/korganizer/todosummarywidget.cpp:323
 #, kde-format
 msgid "&Delete To-do"
 msgstr "कार्य काढून टाका (&D)"
 
-#: actionmanager.cpp:1424 actionmanager.cpp:1530
+#: actionmanager.cpp:1420 actionmanager.cpp:1526
 #, kde-format
 msgid "Attach as &link"
 msgstr "संलग्न साखळी म्हणून जोडा (&L)"
 
-#: actionmanager.cpp:1425 actionmanager.cpp:1531
+#: actionmanager.cpp:1421 actionmanager.cpp:1527
 #, kde-format
 msgid "Attach &inline"
 msgstr "इनलाईन जोडा (&I)"
 
-#: actionmanager.cpp:1426
+#: actionmanager.cpp:1422
 #, kde-format
 msgid "Attach inline &without attachments"
 msgstr "पुरवणीशिवाय इनलाईन जोडा (&W)"
 
-#: actionmanager.cpp:1428 actionmanager.cpp:1533
+#: actionmanager.cpp:1424 actionmanager.cpp:1529
 #, kde-format
 msgid "C&ancel"
 msgstr "रद्द करा (&A)"
 
-#: actionmanager.cpp:1466
+#: actionmanager.cpp:1462
 #, kde-format
 msgid "Removing attachments from an email might invalidate its signature."
 msgstr "इमेलमधून पुरवण्या/जोडपत्रे काढून टाकल्यास त्यावरील सही अवैध होण्याची शक्यता आहे."
 
-#: actionmanager.cpp:1467
+#: actionmanager.cpp:1463
 #, fuzzy, kde-format
 #| msgid "Remove Attachments"
 msgctxt "@title:window"
 msgid "Remove Attachments"
 msgstr "पुरवण्या/जोडपत्रे काढून टाका"
 
-#: actionmanager.cpp:1618
+#: actionmanager.cpp:1614
 #, kde-format
 msgid "Undo: %1"
 msgstr "पूर्ववत करा : %1"
 
-#: actionmanager.cpp:1621 actionmanager.cpp:1637
+#: actionmanager.cpp:1617 actionmanager.cpp:1633
 #, kde-format
 msgid "Undo"
 msgstr "पूर्ववत करा"
 
-#: actionmanager.cpp:1631
+#: actionmanager.cpp:1627
 #, kde-format
 msgid "Redo: %1"
 msgstr "पुन्हा करा : %1"
 
-#: actionmanager.cpp:1634
+#: actionmanager.cpp:1630
 #, kde-format
 msgid "Redo"
 msgstr "पुन्हा करा"
 
-#: actionmanager.cpp:1648
+#: actionmanager.cpp:1644
 #, kde-format
 msgid "URL '%1' is invalid."
 msgstr "'%1' हा एकात्म/वैश्विक साधन शोधक अवैध आहे."
 
-#: actionmanager.cpp:1653
+#: actionmanager.cpp:1649
 #, kde-format
 msgctxt "@info"
 msgid ""
@@ -1364,20 +1364,20 @@ msgstr ""
 "संधी मिळेल.</p><p>जर वाढवा/मिळवा ही कृती निवडली, तर तुमच्यासाठी नवीन दिनदर्शिका "
 "स्वयंचलित पद्धतीने तयार केली जाईल.</p>"
 
-#: actionmanager.cpp:1661
+#: actionmanager.cpp:1657
 #, kde-format
 msgctxt "@title:window"
 msgid "Import Calendar"
 msgstr "दिनदर्शिका आयात करा..."
 
-#: actionmanager.cpp:1662
+#: actionmanager.cpp:1658
 #, fuzzy, kde-format
 #| msgid "Merge into existing calendar"
 msgctxt "@action:button"
 msgid "Merge into existing calendar"
 msgstr "सध्याच्या दिनदर्शिकेत विलीन/सम्मिलीत करा"
 
-#: actionmanager.cpp:1663
+#: actionmanager.cpp:1659
 #, fuzzy, kde-format
 #| msgid "Add as new calendar"
 msgctxt "@action:button"
@@ -2238,22 +2238,22 @@ msgctxt "delimiter for joining holiday names"
 msgid ","
 msgstr ","
 
-#: kodaymatrix.cpp:630
+#: kodaymatrix.cpp:634
 #, kde-format
 msgid "&Move"
 msgstr "हलवा (&M)"
 
-#: kodaymatrix.cpp:632
+#: kodaymatrix.cpp:636
 #, kde-format
 msgid "&Copy"
 msgstr "प्रत करा (&C)"
 
-#: kodaymatrix.cpp:635
+#: kodaymatrix.cpp:639
 #, kde-format
 msgid "&Add"
 msgstr "जोडा (&A)"
 
-#: kodaymatrix.cpp:639
+#: kodaymatrix.cpp:643
 #, kde-format
 msgid "&Cancel"
 msgstr "रद्द करा (&C)"
@@ -2717,7 +2717,7 @@ msgstr ""
 
 #: kontactplugin/korganizer/summaryeventinfo.cpp:171
 #: kontactplugin/korganizer/todosummarywidget.cpp:214
-#: kontactplugin/specialdates/sdsummarywidget.cpp:487
+#: kontactplugin/specialdates/sdsummarywidget.cpp:496
 #, fuzzy, kde-format
 #| msgid "1 day"
 #| msgid_plural "%1 days"
@@ -2751,7 +2751,7 @@ msgstr[0] "1 मिनिट"
 msgstr[1] "%1 मिनिटे"
 
 #: kontactplugin/korganizer/summaryeventinfo.cpp:200
-#: kontactplugin/specialdates/sdsummarywidget.cpp:485
+#: kontactplugin/specialdates/sdsummarywidget.cpp:494
 #, kde-format
 msgid "now"
 msgstr ""
@@ -3343,50 +3343,50 @@ msgstr ""
 msgid "Show anni&versaries"
 msgstr ""
 
-#: kontactplugin/specialdates/sdsummarywidget.cpp:97
+#: kontactplugin/specialdates/sdsummarywidget.cpp:106
 #, kde-format
 msgid "Upcoming Special Dates"
 msgstr ""
 
-#: kontactplugin/specialdates/sdsummarywidget.cpp:450
+#: kontactplugin/specialdates/sdsummarywidget.cpp:459
 #, fuzzy, kde-format
 #| msgid "Today"
 msgctxt "the special day is today"
 msgid "Today"
 msgstr "आज"
 
-#: kontactplugin/specialdates/sdsummarywidget.cpp:452
+#: kontactplugin/specialdates/sdsummarywidget.cpp:461
 #, kde-format
 msgctxt "the special day is tomorrow"
 msgid "Tomorrow"
 msgstr ""
 
-#: kontactplugin/specialdates/sdsummarywidget.cpp:498
+#: kontactplugin/specialdates/sdsummarywidget.cpp:507
 #, kde-format
 msgid "Birthday"
 msgstr ""
 
-#: kontactplugin/specialdates/sdsummarywidget.cpp:501
+#: kontactplugin/specialdates/sdsummarywidget.cpp:510
 #, kde-format
 msgid "Anniversary"
 msgstr ""
 
-#: kontactplugin/specialdates/sdsummarywidget.cpp:504
+#: kontactplugin/specialdates/sdsummarywidget.cpp:513
 #, kde-format
 msgid "Holiday"
 msgstr "सुट्टी"
 
-#: kontactplugin/specialdates/sdsummarywidget.cpp:507
+#: kontactplugin/specialdates/sdsummarywidget.cpp:516
 #, kde-format
 msgid "Change of Seasons"
 msgstr ""
 
-#: kontactplugin/specialdates/sdsummarywidget.cpp:510
+#: kontactplugin/specialdates/sdsummarywidget.cpp:519
 #, kde-format
 msgid "Special Occasion"
 msgstr ""
 
-#: kontactplugin/specialdates/sdsummarywidget.cpp:552
+#: kontactplugin/specialdates/sdsummarywidget.cpp:561
 #, fuzzy, kde-format
 #| msgid "Print &year"
 msgid "one year"
@@ -3394,25 +3394,25 @@ msgid_plural "%1 years"
 msgstr[0] "वर्ष छापा (&Y)"
 msgstr[1] "वर्ष छापा (&Y)"
 
-#: kontactplugin/specialdates/sdsummarywidget.cpp:562
+#: kontactplugin/specialdates/sdsummarywidget.cpp:571
 #, kde-format
 msgid "No special dates within the next 1 day"
 msgid_plural "No special dates pending within the next %1 days"
 msgstr[0] ""
 msgstr[1] ""
 
-#: kontactplugin/specialdates/sdsummarywidget.cpp:656
+#: kontactplugin/specialdates/sdsummarywidget.cpp:665
 #, kde-format
 msgid "Send &Mail"
 msgstr ""
 
-#: kontactplugin/specialdates/sdsummarywidget.cpp:657
+#: kontactplugin/specialdates/sdsummarywidget.cpp:666
 #, fuzzy, kde-format
 #| msgid "View Columns"
 msgid "View &Contact"
 msgstr "रकाने दर्शवा/पहा"
 
-#: kontactplugin/specialdates/sdsummarywidget.cpp:672
+#: kontactplugin/specialdates/sdsummarywidget.cpp:681
 #, kde-format
 msgid "Mail to:\"%1\""
 msgstr ""

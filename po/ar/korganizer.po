@@ -11,7 +11,7 @@ msgid ""
 msgstr ""
 "Project-Id-Version: korganizer\n"
 "Report-Msgid-Bugs-To: https://bugs.kde.org\n"
-"POT-Creation-Date: 2024-10-17 00:41+0000\n"
+"POT-Creation-Date: 2024-10-27 00:41+0000\n"
 "PO-Revision-Date: 2024-08-15 11:54+0400\n"
 "Last-Translator: Zayed Al-Saidi <zayed.alsaidi@gmail.com>\n"
 "Language-Team: ar\n"
@@ -481,8 +481,8 @@ msgid ""
 msgstr ""
 
 #. i18n: ectx: property (text), widget (QPushButton, mDeleteButton)
-#: actionmanager.cpp:368 actionmanager.cpp:623 actionmanager.cpp:1311
-#: actionmanager.cpp:1348 ui/filteredit_base.ui:56
+#: actionmanager.cpp:368 actionmanager.cpp:623 actionmanager.cpp:1307
+#: actionmanager.cpp:1344 ui/filteredit_base.ui:56
 #, kde-format
 msgid "&Delete"
 msgstr "ا&حذف"
@@ -840,7 +840,7 @@ msgstr ""
 msgid "&Day"
 msgstr "اليو&م"
 
-#: actionmanager.cpp:553 actionmanager.cpp:1068
+#: actionmanager.cpp:553 actionmanager.cpp:1064
 #, kde-format
 msgid "&Next Day"
 msgid_plural "&Next %1 Days"
@@ -974,12 +974,12 @@ msgid ""
 "current calendar view."
 msgstr ""
 
-#: actionmanager.cpp:615 actionmanager.cpp:1305 actionmanager.cpp:1346
+#: actionmanager.cpp:615 actionmanager.cpp:1301 actionmanager.cpp:1342
 #, kde-format
 msgid "&Show"
 msgstr "ا&عرض"
 
-#: actionmanager.cpp:619 actionmanager.cpp:1308 actionmanager.cpp:1347
+#: actionmanager.cpp:619 actionmanager.cpp:1304 actionmanager.cpp:1343
 #, kde-format
 msgid "&Edit…"
 msgstr "&حرّر…"
@@ -1086,12 +1086,12 @@ msgctxt "@action"
 msgid "Manage T&ags…"
 msgstr "أدِر ال&وسوم…"
 
-#: actionmanager.cpp:770
+#: actionmanager.cpp:766
 #, kde-format
 msgid "&Configure KOrganizer…"
 msgstr "ا&ضبط «منظّمك»…"
 
-#: actionmanager.cpp:848
+#: actionmanager.cpp:844
 #, kde-format
 msgid "1 incidence was imported successfully."
 msgid_plural "%1 incidences were imported successfully."
@@ -1102,151 +1102,151 @@ msgstr[3] "نجح استيراد %1 حدوثات."
 msgstr[4] "نجح استيراد %1 حدوثًا."
 msgstr[5] "نجح استيراد %1 حدوث."
 
-#: actionmanager.cpp:851
+#: actionmanager.cpp:847
 #, kde-format
 msgid "There was an error while merging the calendar: %1"
 msgstr "حدث خطأ أثناء دمج التقويم: %1"
 
-#: actionmanager.cpp:862
+#: actionmanager.cpp:858
 #, kde-format
 msgid "New calendar added successfully"
 msgstr "نجحت إضافة التقويم الجديد"
 
-#: actionmanager.cpp:864
+#: actionmanager.cpp:860
 #, kde-format
 msgid "Could not add a calendar. Error: %1"
 msgstr "تعذّرت إضافة التقويم. الخطأ: %1"
 
-#: actionmanager.cpp:921
+#: actionmanager.cpp:917
 #, kde-format
 msgctxt "@title:window"
 msgid "Select Calendar File to Open"
 msgstr "اختر ملف تقويم لفتحه"
 
-#: actionmanager.cpp:949
+#: actionmanager.cpp:945
 #, kde-format
 msgctxt "@title:window"
 msgid "Select Calendar File to Import"
 msgstr "اختر ملف تقويم لاستيراده"
 
-#: actionmanager.cpp:980
+#: actionmanager.cpp:976
 #, kde-format
 msgid "An error occurred: %1"
 msgstr "حدث خطأ: %1"
 
-#: actionmanager.cpp:998
+#: actionmanager.cpp:994
 #, kde-format
 msgid "Cannot upload calendar to '%1'"
 msgstr "تعذّر رفع التقويم إلى ”%1“"
 
-#: actionmanager.cpp:1004
+#: actionmanager.cpp:1000
 #, kde-format
 msgid "Saved calendar '%1'."
 msgstr "حُفظ التقويم ”%1“."
 
-#: actionmanager.cpp:1042
+#: actionmanager.cpp:1038
 #, kde-format
 msgid "Unable to save calendar to the file %1."
 msgstr "تعذّر حفظ التقويم في الملف %1."
 
-#: actionmanager.cpp:1042
+#: actionmanager.cpp:1038
 #, kde-format
 msgctxt "@title:window"
 msgid "Error"
 msgstr "خطأ"
 
-#: actionmanager.cpp:1087
+#: actionmanager.cpp:1083
 #, kde-format
 msgid "Could not start control module for date and time format."
 msgstr "تعذّر بدء وحدة التحكّم لتنسيق التاريخ والوقت."
 
-#: actionmanager.cpp:1266
+#: actionmanager.cpp:1262
 #, kde-format
 msgid "&Show Event"
 msgstr "ا&عرض الحدث"
 
-#: actionmanager.cpp:1269
+#: actionmanager.cpp:1265
 #, kde-format
 msgid "&Edit Event…"
 msgstr "&حرّر الحدث…"
 
-#: actionmanager.cpp:1272
+#: actionmanager.cpp:1268
 #, kde-format
 msgid "&Delete Event"
 msgstr "ا&حذف الحدث"
 
-#: actionmanager.cpp:1280
+#: actionmanager.cpp:1276
 #, kde-format
 msgid "&Show To-do"
 msgstr "ا&عرض المهمّة"
 
-#: actionmanager.cpp:1283 kontactplugin/korganizer/todosummarywidget.cpp:321
+#: actionmanager.cpp:1279 kontactplugin/korganizer/todosummarywidget.cpp:321
 #, kde-format
 msgid "&Edit To-do…"
 msgstr "&حرّر المهمّة…"
 
-#: actionmanager.cpp:1286 kontactplugin/korganizer/todosummarywidget.cpp:323
+#: actionmanager.cpp:1282 kontactplugin/korganizer/todosummarywidget.cpp:323
 #, kde-format
 msgid "&Delete To-do"
 msgstr "ا&حذف المهمّة"
 
-#: actionmanager.cpp:1424 actionmanager.cpp:1530
+#: actionmanager.cpp:1420 actionmanager.cpp:1526
 #, kde-format
 msgid "Attach as &link"
 msgstr "أرفِق كراب&ط"
 
-#: actionmanager.cpp:1425 actionmanager.cpp:1531
+#: actionmanager.cpp:1421 actionmanager.cpp:1527
 #, kde-format
 msgid "Attach &inline"
 msgstr "أرفِق &ضمن السياق"
 
-#: actionmanager.cpp:1426
+#: actionmanager.cpp:1422
 #, kde-format
 msgid "Attach inline &without attachments"
 msgstr "أرفِق ضمن السياق &دون مرفقات"
 
-#: actionmanager.cpp:1428 actionmanager.cpp:1533
+#: actionmanager.cpp:1424 actionmanager.cpp:1529
 #, kde-format
 msgid "C&ancel"
 msgstr "أ&لغِ"
 
-#: actionmanager.cpp:1466
+#: actionmanager.cpp:1462
 #, kde-format
 msgid "Removing attachments from an email might invalidate its signature."
 msgstr "يمكن أن تؤدي إزالة المرفقات من أحد رسائل البريد إلى إبطال التوقيع."
 
-#: actionmanager.cpp:1467
+#: actionmanager.cpp:1463
 #, kde-format
 msgctxt "@title:window"
 msgid "Remove Attachments"
 msgstr "إزالة المرفقات"
 
-#: actionmanager.cpp:1618
+#: actionmanager.cpp:1614
 #, kde-format
 msgid "Undo: %1"
 msgstr "تراجَع عن: %1"
 
-#: actionmanager.cpp:1621 actionmanager.cpp:1637
+#: actionmanager.cpp:1617 actionmanager.cpp:1633
 #, kde-format
 msgid "Undo"
 msgstr "تراجَع"
 
-#: actionmanager.cpp:1631
+#: actionmanager.cpp:1627
 #, kde-format
 msgid "Redo: %1"
 msgstr "أعِد: %1"
 
-#: actionmanager.cpp:1634
+#: actionmanager.cpp:1630
 #, kde-format
 msgid "Redo"
 msgstr "أعِد"
 
-#: actionmanager.cpp:1648
+#: actionmanager.cpp:1644
 #, kde-format
 msgid "URL '%1' is invalid."
 msgstr "المسار ”%1“ غير صالح."
 
-#: actionmanager.cpp:1653
+#: actionmanager.cpp:1649
 #, kde-format
 msgctxt "@info"
 msgid ""
@@ -1260,19 +1260,19 @@ msgstr ""
 "</p><p>إن اخترت الدمج فسيُطلب منك اختيار التقويم المقصد.</p><p>إن اخترت "
 "الإضافة فسيُنشأ تقويم لك آليًا.</p>"
 
-#: actionmanager.cpp:1661
+#: actionmanager.cpp:1657
 #, kde-format
 msgctxt "@title:window"
 msgid "Import Calendar"
 msgstr "استيراد التقويم"
 
-#: actionmanager.cpp:1662
+#: actionmanager.cpp:1658
 #, kde-format
 msgctxt "@action:button"
 msgid "Merge into existing calendar"
 msgstr "ادمج بالتقويم الموجود"
 
-#: actionmanager.cpp:1663
+#: actionmanager.cpp:1659
 #, kde-format
 msgctxt "@action:button"
 msgid "Add as new calendar"
@@ -2092,22 +2092,22 @@ msgctxt "delimiter for joining holiday names"
 msgid ","
 msgstr "، و"
 
-#: kodaymatrix.cpp:630
+#: kodaymatrix.cpp:634
 #, kde-format
 msgid "&Move"
 msgstr "ا&نقل"
 
-#: kodaymatrix.cpp:632
+#: kodaymatrix.cpp:636
 #, kde-format
 msgid "&Copy"
 msgstr "ا&نسخ"
 
-#: kodaymatrix.cpp:635
+#: kodaymatrix.cpp:639
 #, kde-format
 msgid "&Add"
 msgstr "أ&ضِف"
 
-#: kodaymatrix.cpp:639
+#: kodaymatrix.cpp:643
 #, kde-format
 msgid "&Cancel"
 msgstr "أل&غِ"
@@ -2542,7 +2542,7 @@ msgstr "الغد"
 
 #: kontactplugin/korganizer/summaryeventinfo.cpp:171
 #: kontactplugin/korganizer/todosummarywidget.cpp:214
-#: kontactplugin/specialdates/sdsummarywidget.cpp:487
+#: kontactplugin/specialdates/sdsummarywidget.cpp:496
 #, kde-format
 msgid "in 1 day"
 msgid_plural "in %1 days"
@@ -2584,7 +2584,7 @@ msgstr[4] "%1 دق"
 msgstr[5] "%1 دق"
 
 #: kontactplugin/korganizer/summaryeventinfo.cpp:200
-#: kontactplugin/specialdates/sdsummarywidget.cpp:485
+#: kontactplugin/specialdates/sdsummarywidget.cpp:494
 #, kde-format
 msgid "now"
 msgstr "الآن"
@@ -3124,49 +3124,49 @@ msgstr ""
 msgid "Show anni&versaries"
 msgstr "اعرض ال&سنويّات"
 
-#: kontactplugin/specialdates/sdsummarywidget.cpp:97
+#: kontactplugin/specialdates/sdsummarywidget.cpp:106
 #, kde-format
 msgid "Upcoming Special Dates"
 msgstr "التواريخ الخاصّة القادمة"
 
-#: kontactplugin/specialdates/sdsummarywidget.cpp:450
+#: kontactplugin/specialdates/sdsummarywidget.cpp:459
 #, kde-format
 msgctxt "the special day is today"
 msgid "Today"
 msgstr "اليوم"
 
-#: kontactplugin/specialdates/sdsummarywidget.cpp:452
+#: kontactplugin/specialdates/sdsummarywidget.cpp:461
 #, kde-format
 msgctxt "the special day is tomorrow"
 msgid "Tomorrow"
 msgstr "الغد"
 
-#: kontactplugin/specialdates/sdsummarywidget.cpp:498
+#: kontactplugin/specialdates/sdsummarywidget.cpp:507
 #, kde-format
 msgid "Birthday"
 msgstr "عيد ميلاد"
 
-#: kontactplugin/specialdates/sdsummarywidget.cpp:501
+#: kontactplugin/specialdates/sdsummarywidget.cpp:510
 #, kde-format
 msgid "Anniversary"
 msgstr "السّنويّة"
 
-#: kontactplugin/specialdates/sdsummarywidget.cpp:504
+#: kontactplugin/specialdates/sdsummarywidget.cpp:513
 #, kde-format
 msgid "Holiday"
 msgstr "عطلة"
 
-#: kontactplugin/specialdates/sdsummarywidget.cpp:507
+#: kontactplugin/specialdates/sdsummarywidget.cpp:516
 #, kde-format
 msgid "Change of Seasons"
 msgstr "غيّر المواسم"
 
-#: kontactplugin/specialdates/sdsummarywidget.cpp:510
+#: kontactplugin/specialdates/sdsummarywidget.cpp:519
 #, kde-format
 msgid "Special Occasion"
 msgstr "مناسبة خاصّة"
 
-#: kontactplugin/specialdates/sdsummarywidget.cpp:552
+#: kontactplugin/specialdates/sdsummarywidget.cpp:561
 #, kde-format
 msgid "one year"
 msgid_plural "%1 years"
@@ -3177,7 +3177,7 @@ msgstr[3] "%1 أعوام"
 msgstr[4] "%1 عامًا"
 msgstr[5] "%1 عام"
 
-#: kontactplugin/specialdates/sdsummarywidget.cpp:562
+#: kontactplugin/specialdates/sdsummarywidget.cpp:571
 #, kde-format
 msgid "No special dates within the next 1 day"
 msgid_plural "No special dates pending within the next %1 days"
@@ -3188,17 +3188,17 @@ msgstr[3] "لا تواريخ خاصّة خلال ال‍ %1 أيام القاد�
 msgstr[4] "لا تواريخ خاصّة خلال ال‍ %1 يومًا القادمة"
 msgstr[5] "لا تواريخ خاصّة خلال ال‍ %1 يوم القادمة"
 
-#: kontactplugin/specialdates/sdsummarywidget.cpp:656
+#: kontactplugin/specialdates/sdsummarywidget.cpp:665
 #, kde-format
 msgid "Send &Mail"
 msgstr "أرسِل &بريدًا"
 
-#: kontactplugin/specialdates/sdsummarywidget.cpp:657
+#: kontactplugin/specialdates/sdsummarywidget.cpp:666
 #, kde-format
 msgid "View &Contact"
 msgstr "اعرض المترا&سل"
 
-#: kontactplugin/specialdates/sdsummarywidget.cpp:672
+#: kontactplugin/specialdates/sdsummarywidget.cpp:681
 #, kde-format
 msgid "Mail to:\"%1\""
 msgstr "رسالة إلى: ”%1“"
