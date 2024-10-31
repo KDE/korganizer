@@ -228,14 +228,14 @@ void ActionManager::initActions()
     //~~~~~~~~~~~~~~~~~~~~~~~ LOADING / SAVING ~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~
     if (mIsPart) {
         if (mMainWindow->hasDocument()) {
-            mACollection->addAction(KStandardAction::Open, QStringLiteral("korganizer_open"), this, qOverload<>(&ActionManager::file_open));
+            mACollection->addAction(KStandardActions::Open, QStringLiteral("korganizer_open"), this, qOverload<>(&ActionManager::file_open));
         }
-        mACollection->addAction(KStandardAction::Print, QStringLiteral("korganizer_print"), mCalendarView, &CalendarView::print);
-        mACollection->addAction(KStandardAction::PrintPreview, QStringLiteral("korganizer_print_preview"), mCalendarView, &CalendarView::printPreview);
+        mACollection->addAction(KStandardActions::Print, QStringLiteral("korganizer_print"), mCalendarView, &CalendarView::print);
+        mACollection->addAction(KStandardActions::PrintPreview, QStringLiteral("korganizer_print_preview"), mCalendarView, &CalendarView::printPreview);
     } else {
-        KStandardAction::open(this, qOverload<>(&ActionManager::file_open), mACollection);
-        KStandardAction::print(mCalendarView, &CalendarView::print, mACollection);
-        KStandardAction::printPreview(mCalendarView, &CalendarView::printPreview, mACollection);
+        KStandardActions::open(this, qOverload<>(&ActionManager::file_open), mACollection);
+        KStandardActions::print(mCalendarView, &CalendarView::print, mACollection);
+        KStandardActions::printPreview(mCalendarView, &CalendarView::printPreview, mACollection);
     }
 
     //~~~~~~~~~~~~~~~~~~~~~~~~ IMPORT / EXPORT ~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~
@@ -339,26 +339,26 @@ void ActionManager::initActions()
     Akonadi::History *history = mCalendarView->history();
     if (mIsPart) {
         // edit menu
-        mCutAction = mACollection->addAction(KStandardAction::Cut, QStringLiteral("korganizer_cut"), mCalendarView, &CalendarView::edit_cut);
-        mCopyAction = mACollection->addAction(KStandardAction::Copy, QStringLiteral("korganizer_copy"), mCalendarView, &CalendarView::edit_copy);
-        pasteAction = mACollection->addAction(KStandardAction::Paste, QStringLiteral("korganizer_paste"), mCalendarView, &CalendarView::edit_paste);
-        mUndoAction = mACollection->addAction(KStandardAction::Undo, QStringLiteral("korganizer_undo"), this, [history]() {
+        mCutAction = mACollection->addAction(KStandardActions::Cut, QStringLiteral("korganizer_cut"), mCalendarView, &CalendarView::edit_cut);
+        mCopyAction = mACollection->addAction(KStandardActions::Copy, QStringLiteral("korganizer_copy"), mCalendarView, &CalendarView::edit_copy);
+        pasteAction = mACollection->addAction(KStandardActions::Paste, QStringLiteral("korganizer_paste"), mCalendarView, &CalendarView::edit_paste);
+        mUndoAction = mACollection->addAction(KStandardActions::Undo, QStringLiteral("korganizer_undo"), this, [history]() {
             history->undo();
         });
-        mRedoAction = mACollection->addAction(KStandardAction::Redo, QStringLiteral("korganizer_redo"), this, [history]() {
+        mRedoAction = mACollection->addAction(KStandardActions::Redo, QStringLiteral("korganizer_redo"), this, [history]() {
             history->redo();
         });
     } else {
-        mCutAction = KStandardAction::cut(mCalendarView, &CalendarView::edit_cut, mACollection);
-        mCopyAction = KStandardAction::copy(mCalendarView, &CalendarView::edit_copy, mACollection);
-        pasteAction = KStandardAction::paste(mCalendarView, &CalendarView::edit_paste, mACollection);
-        mUndoAction = KStandardAction::undo(
+        mCutAction = KStandardActions::cut(mCalendarView, &CalendarView::edit_cut, mACollection);
+        mCopyAction = KStandardActions::copy(mCalendarView, &CalendarView::edit_copy, mACollection);
+        pasteAction = KStandardActions::paste(mCalendarView, &CalendarView::edit_paste, mACollection);
+        mUndoAction = KStandardActions::undo(
             this,
             [history]() {
                 history->undo();
             },
             mACollection);
-        mRedoAction = KStandardAction::redo(
+        mRedoAction = KStandardActions::redo(
             this,
             [history]() {
                 history->redo();
@@ -369,9 +369,9 @@ void ActionManager::initActions()
     mACollection->addAction(QStringLiteral("edit_delete"), mDeleteAction);
     connect(mDeleteAction, &QAction::triggered, mCalendarView, &CalendarView::appointment_delete);
     if (mIsPart) {
-        mACollection->addAction(KStandardAction::Find, QStringLiteral("korganizer_find"), mCalendarView->dialogManager(), &KODialogManager::showSearchDialog);
+        mACollection->addAction(KStandardActions::Find, QStringLiteral("korganizer_find"), mCalendarView->dialogManager(), &KODialogManager::showSearchDialog);
     } else {
-        KStandardAction::find(mCalendarView->dialogManager(), &KODialogManager::showSearchDialog, mACollection);
+        KStandardActions::find(mCalendarView->dialogManager(), &KODialogManager::showSearchDialog, mACollection);
     }
     pasteAction->setEnabled(false);
     mUndoAction->setEnabled(false);
@@ -766,10 +766,10 @@ void ActionManager::initActions()
         action = new QAction(QIcon::fromTheme(QStringLiteral("configure")), i18n("&Configure KOrganizer…"), this);
         mACollection->addAction(QStringLiteral("korganizer_configure"), action);
         connect(action, &QAction::triggered, mCalendarView, &CalendarView::edit_options);
-        mACollection->addAction(KStandardAction::KeyBindings, QStringLiteral("korganizer_configure_shortcuts"), this, &ActionManager::keyBindings);
+        mACollection->addAction(KStandardActions::KeyBindings, QStringLiteral("korganizer_configure_shortcuts"), this, &ActionManager::keyBindings);
     } else {
-        KStandardAction::preferences(mCalendarView, &CalendarView::edit_options, mACollection);
-        KStandardAction::keyBindings(this, &ActionManager::keyBindings, mACollection);
+        KStandardActions::preferences(mCalendarView, &CalendarView::edit_options, mACollection);
+        KStandardActions::keyBindings(this, &ActionManager::keyBindings, mACollection);
     }
     if (mMenuBar) {
         mHamburgerMenu = KStandardAction::hamburgerMenu(nullptr, nullptr, mACollection);
@@ -792,9 +792,9 @@ void ActionManager::updateHamburgerMenu()
 
     menu->addAction(mACollection->action(QStringLiteral("conf_datetime")));
     menu->addSeparator();
-    menu->addAction(mACollection->action(KStandardAction::name(KStandardAction::Print)));
+    menu->addAction(mACollection->action(KStandardActions::name(KStandardActions::Print)));
     menu->addSeparator();
-    menu->addAction(mACollection->action(KStandardAction::name(KStandardAction::Quit)));
+    menu->addAction(mACollection->action(KStandardActions::name(KStandardActions::Quit)));
     mHamburgerMenu->setMenu(menu);
 }
 

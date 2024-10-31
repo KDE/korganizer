@@ -175,9 +175,9 @@ void KOrganizer::initActions()
     setStandardToolBarMenuEnabled(true);
     createStandardStatusBarAction();
 
-    KStandardAction::keyBindings(this, &KOrganizer::slotEditKeys, actionCollection());
-    KStandardAction::configureToolbars(this, &KOrganizer::configureToolbars, actionCollection());
-    KStandardAction::quit(this, &KOrganizer::close, actionCollection());
+    KStandardActions::keyBindings(this, &KOrganizer::slotEditKeys, actionCollection());
+    KStandardActions::configureToolbars(this, &KOrganizer::configureToolbars, actionCollection());
+    KStandardActions::quit(this, &KOrganizer::close, actionCollection());
 
     setXMLFile(QStringLiteral("korganizerui.rc"), true);
     createGUI(nullptr);
