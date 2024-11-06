@@ -75,7 +75,6 @@ set(EVENTVIEW_LIB_VERSION "6.2.40")
 # Find KF6 package
 find_package(KF6I18n ${KF_MIN_VERSION} CONFIG REQUIRED)
 find_package(KF6Config ${KF_MIN_VERSION} CONFIG REQUIRED)
-find_package(KF6ConfigWidgets ${KF_MIN_VERSION} CONFIG REQUIRED)
 find_package(KF6CoreAddons ${KF_MIN_VERSION} CONFIG REQUIRED)
 find_package(KF6Crash ${KF_MIN_VERSION} REQUIRED)
 find_package(KF6IconThemes ${KF_MIN_VERSION} REQUIRED)
