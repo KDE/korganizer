@@ -167,6 +167,7 @@ target_link_libraries(korganizer_core
     KPim6::CalendarSupport
     KPim6::EventViews
     KPim6::IdentityManagementCore
+    Qt::DBus
    )
 
 target_include_directories(korganizer_core PUBLIC
