@@ -4,7 +4,7 @@ msgstr ""
 "Project-Id-Version: korganizer\n"
 "Report-Msgid-Bugs-To: https://bugs.kde.org\n"
 "POT-Creation-Date: 2024-06-30 00:39+0000\n"
-"PO-Revision-Date: 2024-11-06 23:58+0100\n"
+"PO-Revision-Date: 2024-11-07 18:52+0100\n"
 "Last-Translator: Mincho Kondarev <mkondarev@yahoo.de>\n"
 "Language-Team: Bulgarian <kde-i18n-doc@kde.org>\n"
 "Language: bg\n"
@@ -732,8 +732,8 @@ msgid ""
 "created first. See \"Manage View Filters\" option in the Settings menu."
 msgstr ""
 "Изпълнява дефинирани от потребителя филтри за изглед в колекцията от "
-"календари. Първо трябва да бъдат създадени филтри. Вижте опцията \" "
-"Управление на филтри за изглед \"в менюто Настройки."
+"календари. Първо трябва да бъдат създадени филтри. Вижте опцията "
+"\"Управление на филтри за изглед\" в менюто Настройки."
 
 #: actionmanager.cpp:490
 #, kde-format
@@ -3039,8 +3039,8 @@ msgid ""
 "tag."
 msgstr ""
 "Активирайте тази опция, за да включите рождените дни от календара си в "
-"предстоящата специални поводи. Обикновено това са събития с \" \"Рожден ден"
-"\" етикет."
+"предстоящата специални поводи. Обикновено това са събития с етикет \"Рожден "
+"ден\"."
 
 #. i18n: ectx: property (toolTip), widget (QCheckBox, mShowAnniversariesFromCalBox)
 #: kontactplugin/specialdates/sdsummaryconfig_base.ui:152
@@ -3896,9 +3896,9 @@ msgid ""
 "access the next \"x\" days view, choose the \"Next X Days\" menu item from "
 "the \"View\" menu."
 msgstr ""
-"Изберете броя на \" x \"дни, които да се показват в изгледа за следващите "
-"дни. За достъп до следващия изглед на \" x \"дни, изберете елемента от "
-"менюто \" Next X Days \"от \" View \" меню."
+"Изберете броя на \"x\" дни, които да се показват в изгледа за следващите "
+"дни. За достъп до следващия изглед на \"x\"дни, изберете елемента от менюто "
+"\"Следващи X дни\" от \"Изглед\"."
 
 #. i18n: ectx: tooltip, entry, group (General View)
 #: settings/korganizer.kcfg:87
@@ -4286,9 +4286,8 @@ msgid ""
 "Select the \"Merge all calendars into one view\" option if you would like "
 "all your calendars to be shown together in one agenda view."
 msgstr ""
-"Изберете опцията \" Обединяване на всички календари в един изглед \", ако "
-"искате всичките ви календари да се показват заедно в един изглед на дневен "
-"ред."
+"Изберете опцията „Обединяване на всички календари в един изглед“, ако искате "
+"всичките ви календари да се показват заедно в един изглед на дневен ред."
 
 #. i18n: ectx: tooltip, entry (AgendaViewCalendarDisplay), group (Agenda View)
 #: settings/korganizer.kcfg:205
@@ -4309,8 +4308,8 @@ msgid ""
 "Select the \"Show calendars side by side\" option if you would like to see "
 "two calendars at once, in a side-by-side view."
 msgstr ""
-"Изберете опцията \" Показване на календари един до друг \", ако искате да "
-"видите два календара наведнъж, в изглед един до друг."
+"Изберете опцията „Показване на календари един до друг“, ако искате да видите "
+"два календара наведнъж, в изглед един до друг."
 
 #. i18n: ectx: tooltip, entry (AgendaViewCalendarDisplay), group (Agenda View)
 #: settings/korganizer.kcfg:210
