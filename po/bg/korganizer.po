@@ -4,7 +4,7 @@ msgstr ""
 "Project-Id-Version: korganizer\n"
 "Report-Msgid-Bugs-To: https://bugs.kde.org\n"
 "POT-Creation-Date: 2024-10-27 00:41+0000\n"
-"PO-Revision-Date: 2024-10-26 19:03+0200\n"
+"PO-Revision-Date: 2024-11-09 20:09+0100\n"
 "Last-Translator: Mincho Kondarev <mkondarev@yahoo.de>\n"
 "Language-Team: Bulgarian <kde-i18n-doc@kde.org>\n"
 "Language: bg\n"
@@ -12,7 +12,7 @@ msgstr ""
 "Content-Type: text/plain; charset=UTF-8\n"
 "Content-Transfer-Encoding: 8bit\n"
 "Plural-Forms: nplurals=2; plural=n != 1;\n"
-"X-Generator: Lokalize 24.11.70\n"
+"X-Generator: Lokalize 24.08.2\n"
 
 #, kde-format
 msgctxt "NAME OF TRANSLATORS"
@@ -1152,17 +1152,17 @@ msgstr "Възникна грешка: %1"
 #: actionmanager.cpp:994
 #, kde-format
 msgid "Cannot upload calendar to '%1'"
-msgstr "Грешка при качването на календара в \"%1\""
+msgstr "Грешка при качването на календара в „%1“"
 
 #: actionmanager.cpp:1000
 #, kde-format
 msgid "Saved calendar '%1'."
-msgstr "Календарът \"%1\" е записан."
+msgstr "Календарът „%1“ е записан."
 
 #: actionmanager.cpp:1038
 #, kde-format
 msgid "Unable to save calendar to the file %1."
-msgstr "Календарът не може да бъде записан във файла \"%1\"."
+msgstr "Календарът не може да бъде записан във файла „%1“."
 
 #: actionmanager.cpp:1038
 #, kde-format
@@ -1260,7 +1260,7 @@ msgstr "Повтаряне"
 #: actionmanager.cpp:1644
 #, kde-format
 msgid "URL '%1' is invalid."
-msgstr "Адресът \"%1\" е неправилен."
+msgstr "Адресът „%1“ е неправилен."
 
 #: actionmanager.cpp:1649
 #, kde-format
@@ -1415,8 +1415,8 @@ msgid ""
 "The item \"%1\" is filtered by your current filter rules, so it will be "
 "hidden and not appear in the view."
 msgstr ""
-"Събитието \"%1\" е филтрирано от текущия филтър, така че ще бъде скрито и "
-"няма да се показва."
+"Събитието „%1“ е филтрирано от текущия филтър, така че ще бъде скрито и няма "
+"да се показва."
 
 #: calendarview.cpp:791
 #, kde-format
@@ -1613,7 +1613,7 @@ msgid ""
 "make all its sub-to-dos independent, or delete the to-do with all its sub-to-"
 "dos?"
 msgstr ""
-"Задачата \"%1\" има подзадачи. Искате ли да бъде изтрита само задачата и "
+"Задачата „%1“ има подзадачи. Искате ли да бъде изтрита само задачата и "
 "всичките нейни подзадачи да станат независими или да бъде изтрита задачата "
 "заедно с всичките и подзадачи?"
 
@@ -1649,8 +1649,8 @@ msgid ""
 "The calendar item \"%1\" recurs over multiple dates; are you sure you want "
 "to delete it and all its recurrences?"
 msgstr ""
-"Събитието \"%1\" се повтаря на много дати. Сигурни ли сте, че искате "
-"събитието и всичките негови повторения да бъдат изтрити?"
+"Събитието „%1“ се повтаря на много дати. Сигурни ли сте, че искате събитието "
+"и всичките негови повторения да бъдат изтрити?"
 
 #: calendarview.cpp:2352 calendarview.cpp:2382
 #, kde-format
@@ -1693,7 +1693,7 @@ msgstr "Изтриване на &всички"
 #: calendarview.cpp:2416 calendarview.cpp:2423
 #, kde-format
 msgid "Delete \"%1\""
-msgstr "Изтриване \"%1\""
+msgstr "Изтриване „%1“"
 
 #: calendarview.cpp:2453
 #, kde-format
@@ -2223,7 +2223,7 @@ msgstr "&Включване на напомнянето включено"
 #: kohelper.cpp:52
 #, kde-format
 msgid "Unable to save %1 \"%2\"."
-msgstr "Неуспешен запис на %1 \"%2\"."
+msgstr "Неуспешен запис на %1 „%2“."
 
 #. i18n: ectx: property (windowTitle), widget (QWidget, ApptSummaryConfig_Base)
 #: kontactplugin/korganizer/apptsummaryconfig_base.ui:8
