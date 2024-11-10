@@ -14,9 +14,9 @@ msgstr ""
 "X-Crowdin-Project: kdeorg\n"
 "X-Crowdin-Project-ID: 269464\n"
 "X-Crowdin-Language: zh-CN\n"
-"X-Crowdin-File: /kf6-trunk/messages/korganizer/korganizer_calendarplugins."
+"X-Crowdin-File: /kf6-stable/messages/korganizer/korganizer_calendarplugins."
 "pot\n"
-"X-Crowdin-File-ID: 54402\n"
+"X-Crowdin-File-ID: 54772\n"
 
 #: datenums/configdialog.cpp:28
 #, kde-format
