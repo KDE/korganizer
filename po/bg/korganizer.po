@@ -4,7 +4,7 @@ msgstr ""
 "Project-Id-Version: korganizer\n"
 "Report-Msgid-Bugs-To: https://bugs.kde.org\n"
 "POT-Creation-Date: 2024-10-27 00:41+0000\n"
-"PO-Revision-Date: 2024-11-09 20:09+0100\n"
+"PO-Revision-Date: 2024-11-10 12:36+0100\n"
 "Last-Translator: Mincho Kondarev <mkondarev@yahoo.de>\n"
 "Language-Team: Bulgarian <kde-i18n-doc@kde.org>\n"
 "Language: bg\n"
@@ -12,7 +12,7 @@ msgstr ""
 "Content-Type: text/plain; charset=UTF-8\n"
 "Content-Transfer-Encoding: 8bit\n"
 "Plural-Forms: nplurals=2; plural=n != 1;\n"
-"X-Generator: Lokalize 24.08.2\n"
+"X-Generator: Lokalize 24.11.70\n"
 
 #, kde-format
 msgctxt "NAME OF TRANSLATORS"
@@ -4467,7 +4467,7 @@ msgid ""
 msgstr ""
 "Изберете опцията \"Само етикет“, ако искате  елементите на календара (както "
 "вътрешната част, така и рамката) да се показват с цвета на свързания им "
-"етикет. Моля, използвайтестраницата за конфигуриране на цветовете и "
+"етикет. Моля, използвайте страницата за конфигуриране на цветовете и "
 "шрифтовете за настройка на тези цветове."
 
 #. i18n: ectx: tooltip, entry, group (Month View)
@@ -4885,7 +4885,7 @@ msgid ""
 msgstr ""
 "Изберете цвета на събитието по подразбиране тук. Цветът на събитието по "
 "подразбиране ще бъде използван за събития в месеца. Обърнете внимание, че "
-"можете да посочите отделен цвят завсеки етикет на събитие по -долу."
+"можете да посочите отделен цвят за всеки етикет на събитие по -долу."
 
 #. i18n: ectx: property (placeholderText), widget (KListWidgetSearchLine, searchline)
 #: ui/filteredit_base.ui:35
@@ -5655,8 +5655,8 @@ msgid ""
 "Display events only if their start date and end date are both in the date "
 "range specified."
 msgstr ""
-"Показване на събития само ако началната и крайната им дата са едновременно "
-"впосочения период."
+"Показване на събития само ако началната и крайната им дата са едновременно в "
+"посочения период."
 
 #. i18n: ectx: property (whatsThis), widget (QCheckBox, inclusiveCheck)
 #: ui/searchdialog_base.ui:299
