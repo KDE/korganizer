@@ -11,10 +11,10 @@
 
   SPDX-License-Identifier: GPL-2.0-or-later WITH Qt-Commercial-exception-1.0
 */
-
 #include "korganizer.h"
 #include "actionmanager.h"
 #include "calendarview.h"
+#include "config-korganizer.h"
 #include "impl/korganizerifaceimpl.h"
 #include "kocore.h"
 #include "plugininterface/korganizerplugininterface.h"
@@ -34,7 +34,7 @@
 #include <QLabel>
 #include <QStatusBar>
 #include <QVBoxLayout>
-#ifdef WITH_KUSERFEEDBACK
+#if KORGANIZER_WITH_KUSERFEEDBACK
 #include "userfeedback/userfeedbackmanager.h"
 
 #include <KUserFeedback/NotificationPopup>
@@ -69,7 +69,7 @@ KOrganizer::KOrganizer()
     mActionManager = new ActionManager(this, mCalendarView, this, this, false, menuBar(), toolBar());
     (void)new KOrganizerIfaceImpl(mActionManager, this, QStringLiteral("IfaceImpl"));
 
-#ifdef WITH_KUSERFEEDBACK
+#if KORGANIZER_WITH_KUSERFEEDBACK
     auto userFeedBackNotificationPopup = new KUserFeedback::NotificationPopup(this);
     userFeedBackNotificationPopup->setFeedbackProvider(UserFeedBackManager::self()->userFeedbackProvider());
 #endif

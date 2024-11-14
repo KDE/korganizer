@@ -92,7 +92,7 @@ find_package(KF6UserFeedback ${KF_MIN_VERSION} CONFIG)
 set_package_properties(KF6UserFeedback PROPERTIES DESCRIPTION "User Feedback lib" TYPE OPTIONAL PURPOSE "Allow to send Telemetry Information (optional).")
 
 if(TARGET KF6::UserFeedbackWidgets)
-    add_definitions(-DWITH_KUSERFEEDBACK)
+   set(KORGANIZER_WITH_KUSERFEEDBACK true)
 endif()
 
 find_package(KF6DocTools ${KF_MIN_VERSION})

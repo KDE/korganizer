@@ -8,7 +8,7 @@
 */
 
 #pragma once
-
+#include "config-korganizer.h"
 #include <KLocalizedString>
 #include <QCommandLineParser>
 
@@ -25,7 +25,7 @@ static void korganizer_options(QCommandLineParser *parser)
                                         "Calendar files or urls. Unless -i or -m is explicitly specified, "
                                         "the user will be asked whether to import or merge"),
                                   QStringLiteral("[calendar…]"));
-#ifdef WITH_KUSERFEEDBACK
+#if KORGANIZER_WITH_KUSERFEEDBACK
     parser->addOption(QCommandLineOption(QStringLiteral("feedback"), i18nc("@info:shell", "Lists the available options for user feedback")));
 #endif
 }

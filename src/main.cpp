@@ -17,7 +17,7 @@
 #include <KCrash>
 #include <KLocalizedString>
 
-#ifdef WITH_KUSERFEEDBACK
+#if KORGANIZER_WITH_KUSERFEEDBACK
 #include "userfeedback/korganizeruserfeedbackprovider.h"
 #endif
 
@@ -58,7 +58,7 @@ int main(int argc, char **argv)
     aboutData.processCommandLine(cmdArgs);
     QApplication::setWindowIcon(QIcon::fromTheme(QStringLiteral("korganizer")));
 
-#ifdef WITH_KUSERFEEDBACK
+#if KORGANIZER_WITH_KUSERFEEDBACK
     if (cmdArgs->isSet(QStringLiteral("feedback"))) {
         auto userFeedBackProvider = new KOrganizerUserFeedbackProvider(nullptr);
         QTextStream(stdout) << userFeedBackProvider->describeDataSources() << '\n';

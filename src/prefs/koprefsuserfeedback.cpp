@@ -12,7 +12,7 @@
 #include <KLocalizedString>
 #include <KPluginFactory>
 #include <QVBoxLayout>
-#ifdef WITH_KUSERFEEDBACK
+#if KORGANIZER_WITH_KUSERFEEDBACK
 #include "userfeedback/userfeedbackmanager.h"
 
 #include <KUserFeedback/FeedbackConfigWidget>

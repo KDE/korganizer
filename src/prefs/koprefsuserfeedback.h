@@ -8,9 +8,10 @@
 */
 
 #pragma once
+#include "config-korganizer.h"
 #include <KCModule>
 
-#ifdef WITH_KUSERFEEDBACK
+#if KORGANIZER_WITH_KUSERFEEDBACK
 namespace KUserFeedback
 {
 class FeedbackConfigWidget;
