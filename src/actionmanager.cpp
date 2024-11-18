@@ -747,10 +747,11 @@ void ActionManager::initActions()
     mShowMenuBarAction->setChecked(KOPrefs::instance()->showMenuBar());
     toggleMenubar(true);
 
+#if !defined(Q_OS_WIN) && !defined(Q_OS_MACOS)
     action = new QAction(i18nc("@action", "Configure &Date && Time…"), this);
     mACollection->addAction(QStringLiteral("conf_datetime"), action);
     connect(action, &QAction::triggered, this, &ActionManager::configureDateTime);
-
+#endif
     action = new QAction(QIcon::fromTheme(QStringLiteral("view-filter")), i18n("Manage View &Filters…"), this);
     mACollection->addAction(QStringLiteral("edit_filters"), action);
     connect(action, &QAction::triggered, mCalendarView, &CalendarView::editFilters);
