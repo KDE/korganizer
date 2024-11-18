@@ -29,18 +29,19 @@ KOPrefsUserFeedBack::KOPrefsUserFeedBack(QObject *parent, const KPluginMetaData 
     connect(mUserFeedbackWidget, &KUserFeedback::FeedbackConfigWidget::configurationChanged, this, &KOPrefsUserFeedBack::markAsChanged);
 
     layout->addWidget(mUserFeedbackWidget);
-    mUserFeedbackWidget->setFeedbackProvider(UserFeedBackManager::self()->userFeedbackProvider());
 }
 
 void KOPrefsUserFeedBack::load()
 {
     mUserFeedbackWidget->setFeedbackProvider(UserFeedBackManager::self()->userFeedbackProvider());
+    setNeedsSave(false);
 }
 
 void KOPrefsUserFeedBack::save()
 {
     UserFeedBackManager::self()->userFeedbackProvider()->setTelemetryMode(mUserFeedbackWidget->telemetryMode());
     UserFeedBackManager::self()->userFeedbackProvider()->setSurveyInterval(mUserFeedbackWidget->surveyInterval());
+    setNeedsSave(false);
 }
 
 #include "koprefsuserfeedback.moc"
