@@ -16,7 +16,7 @@ msgid ""
 msgstr ""
 "Project-Id-Version: korganizer\n"
 "Report-Msgid-Bugs-To: https://bugs.kde.org\n"
-"POT-Creation-Date: 2024-10-27 00:41+0000\n"
+"POT-Creation-Date: 2024-11-19 00:41+0000\n"
 "PO-Revision-Date: 2024-09-20 09:25+0300\n"
 "Last-Translator: Antonis Geralis <capoiosct@gmail.com>\n"
 "Language-Team: Greek <kde-i18n-el@kde.org>\n"
@@ -499,8 +499,8 @@ msgstr ""
 "ημερολογίων σας. Αυτή η ενέργεια δεν αναιρείται!"
 
 #. i18n: ectx: property (text), widget (QPushButton, mDeleteButton)
-#: actionmanager.cpp:368 actionmanager.cpp:623 actionmanager.cpp:1307
-#: actionmanager.cpp:1344 ui/filteredit_base.ui:56
+#: actionmanager.cpp:368 actionmanager.cpp:623 actionmanager.cpp:1308
+#: actionmanager.cpp:1345 ui/filteredit_base.ui:56
 #, kde-format
 msgid "&Delete"
 msgstr "&Διαγραφή"
@@ -882,7 +882,7 @@ msgstr ""
 msgid "&Day"
 msgstr "&Ημέρα"
 
-#: actionmanager.cpp:553 actionmanager.cpp:1064
+#: actionmanager.cpp:553 actionmanager.cpp:1065
 #, kde-format
 msgid "&Next Day"
 msgid_plural "&Next %1 Days"
@@ -1016,12 +1016,12 @@ msgstr ""
 "Ξεκινάει ένα διάλογο διαμόρφωσης που σας επιτρέπει να αλλάζετε τις ρυθμίσεις "
 "για την τρέχουσα προβολή ημερολογίου."
 
-#: actionmanager.cpp:615 actionmanager.cpp:1301 actionmanager.cpp:1342
+#: actionmanager.cpp:615 actionmanager.cpp:1302 actionmanager.cpp:1343
 #, kde-format
 msgid "&Show"
 msgstr "&Εμφάνιση"
 
-#: actionmanager.cpp:619 actionmanager.cpp:1304 actionmanager.cpp:1343
+#: actionmanager.cpp:619 actionmanager.cpp:1305 actionmanager.cpp:1344
 #, kde-format
 msgid "&Edit…"
 msgstr "&Επεξεργασία…"
@@ -1112,184 +1112,184 @@ msgstr "Εμφάνιση προβολής αντικειμένων"
 msgid "Show Calendar Manager"
 msgstr "Εμφάνιση διαχειριστή ημερολογίων"
 
-#: actionmanager.cpp:750
+#: actionmanager.cpp:751
 #, kde-format
 msgctxt "@action"
 msgid "Configure &Date && Time…"
 msgstr "Διαμόρφωση &ημερομηνίας && ώρας…"
 
-#: actionmanager.cpp:754
+#: actionmanager.cpp:755
 #, kde-format
 msgid "Manage View &Filters…"
 msgstr "Διαχείριση &φίλτρων προβολής…"
 
-#: actionmanager.cpp:758
+#: actionmanager.cpp:759
 #, kde-format
 msgctxt "@action"
 msgid "Manage T&ags…"
 msgstr "Διαχείριση ετι&κετών…"
 
-#: actionmanager.cpp:766
+#: actionmanager.cpp:767
 #, kde-format
 msgid "&Configure KOrganizer…"
 msgstr "&Διαμόρφωση KOrganizer…"
 
-#: actionmanager.cpp:844
+#: actionmanager.cpp:845
 #, kde-format
 msgid "1 incidence was imported successfully."
 msgid_plural "%1 incidences were imported successfully."
 msgstr[0] "1 συμβάν εισάχθηκε επιτυχώς."
 msgstr[1] "%1 συμβάντα εισάχθηκαν επιτυχώς."
 
-#: actionmanager.cpp:847
+#: actionmanager.cpp:848
 #, kde-format
 msgid "There was an error while merging the calendar: %1"
 msgstr "Παρουσιάστηκε σφάλμα κατά τη συγχώνευση του ημερολογίου: %1"
 
-#: actionmanager.cpp:858
+#: actionmanager.cpp:859
 #, kde-format
 msgid "New calendar added successfully"
 msgstr "Το νέο ημερολόγιο προστέθηκε επιτυχώς"
 
-#: actionmanager.cpp:860
+#: actionmanager.cpp:861
 #, kde-format
 msgid "Could not add a calendar. Error: %1"
 msgstr "Αδυναμία προσθήκης ημερολογίου. Σφάλμα: %1"
 
-#: actionmanager.cpp:917
+#: actionmanager.cpp:918
 #, kde-format
 msgctxt "@title:window"
 msgid "Select Calendar File to Open"
 msgstr "Επιλογή αρχείου ημερολογίου για άνοιγμα"
 
-#: actionmanager.cpp:945
+#: actionmanager.cpp:946
 #, kde-format
 msgctxt "@title:window"
 msgid "Select Calendar File to Import"
 msgstr "Επιλογή αρχείου ημερολογίου για εισαγωγή"
 
-#: actionmanager.cpp:976
+#: actionmanager.cpp:977
 #, kde-format
 msgid "An error occurred: %1"
 msgstr "Παρουσιάστηκε σφάλμα: %1"
 
-#: actionmanager.cpp:994
+#: actionmanager.cpp:995
 #, kde-format
 msgid "Cannot upload calendar to '%1'"
 msgstr "Δε ήταν δυνατή η αποστολή του ημερολογίου στο '%1'"
 
-#: actionmanager.cpp:1000
+#: actionmanager.cpp:1001
 #, kde-format
 msgid "Saved calendar '%1'."
 msgstr "Αποθήκευση ημερολογίου '%1'."
 
-#: actionmanager.cpp:1038
+#: actionmanager.cpp:1039
 #, kde-format
 msgid "Unable to save calendar to the file %1."
 msgstr "Αδύνατη η αποθήκευση του ημερολογίου στο αρχείο %1."
 
-#: actionmanager.cpp:1038
+#: actionmanager.cpp:1039
 #, kde-format
 msgctxt "@title:window"
 msgid "Error"
 msgstr "Σφάλμα"
 
-#: actionmanager.cpp:1083
+#: actionmanager.cpp:1084
 #, kde-format
 msgid "Could not start control module for date and time format."
 msgstr ""
 "Δεν ήταν δυνατή η εκκίνηση του αρθρώματος ελέγχου για τη μορφή ημερομηνίας "
 "και ώρας."
 
-#: actionmanager.cpp:1262
+#: actionmanager.cpp:1263
 #, kde-format
 msgid "&Show Event"
 msgstr "&Εμφάνιση γεγονότος"
 
-#: actionmanager.cpp:1265
+#: actionmanager.cpp:1266
 #, kde-format
 msgid "&Edit Event…"
 msgstr "&Επεξεργασία γεγονότος…"
 
-#: actionmanager.cpp:1268
+#: actionmanager.cpp:1269
 #, kde-format
 msgid "&Delete Event"
 msgstr "&Διαγραφή γεγονότος"
 
-#: actionmanager.cpp:1276
+#: actionmanager.cpp:1277
 #, kde-format
 msgid "&Show To-do"
 msgstr "&Εμφάνιση της προς υλοποίηση εργασίας"
 
-#: actionmanager.cpp:1279 kontactplugin/korganizer/todosummarywidget.cpp:321
+#: actionmanager.cpp:1280 kontactplugin/korganizer/todosummarywidget.cpp:321
 #, kde-format
 msgid "&Edit To-do…"
 msgstr "&Επεξεργασία της προς υλοποίηση εργασίας…"
 
-#: actionmanager.cpp:1282 kontactplugin/korganizer/todosummarywidget.cpp:323
+#: actionmanager.cpp:1283 kontactplugin/korganizer/todosummarywidget.cpp:323
 #, kde-format
 msgid "&Delete To-do"
 msgstr "&Διαγραφή της προς υλοποίηση εργασίας"
 
-#: actionmanager.cpp:1420 actionmanager.cpp:1526
+#: actionmanager.cpp:1421 actionmanager.cpp:1527
 #, kde-format
 msgid "Attach as &link"
 msgstr "Επισύναψη ως &δεσμό"
 
-#: actionmanager.cpp:1421 actionmanager.cpp:1527
+#: actionmanager.cpp:1422 actionmanager.cpp:1528
 #, kde-format
 msgid "Attach &inline"
 msgstr "Επισύναψη &εμβόλιμα"
 
-#: actionmanager.cpp:1422
+#: actionmanager.cpp:1423
 #, kde-format
 msgid "Attach inline &without attachments"
 msgstr "Επισύναψη εμβόλιμα &χωρίς συνημμένα"
 
-#: actionmanager.cpp:1424 actionmanager.cpp:1529
+#: actionmanager.cpp:1425 actionmanager.cpp:1530
 #, kde-format
 msgid "C&ancel"
 msgstr "&Ακύρωση"
 
-#: actionmanager.cpp:1462
+#: actionmanager.cpp:1463
 #, kde-format
 msgid "Removing attachments from an email might invalidate its signature."
 msgstr ""
 "Η αφαίρεση των συνημμένων από αλληλογραφία μπορεί να ακυρώσει την υπογραφή "
 "της."
 
-#: actionmanager.cpp:1463
+#: actionmanager.cpp:1464
 #, kde-format
 msgctxt "@title:window"
 msgid "Remove Attachments"
 msgstr "Αφαίρεση συνημμένων"
 
-#: actionmanager.cpp:1614
+#: actionmanager.cpp:1615
 #, kde-format
 msgid "Undo: %1"
 msgstr "Αναίρεση: %1"
 
-#: actionmanager.cpp:1617 actionmanager.cpp:1633
+#: actionmanager.cpp:1618 actionmanager.cpp:1634
 #, kde-format
 msgid "Undo"
 msgstr "Αναίρεση"
 
-#: actionmanager.cpp:1627
+#: actionmanager.cpp:1628
 #, kde-format
 msgid "Redo: %1"
 msgstr "Επανάληψη %1"
 
-#: actionmanager.cpp:1630
+#: actionmanager.cpp:1631
 #, kde-format
 msgid "Redo"
 msgstr "Επανάληψη"
 
-#: actionmanager.cpp:1644
+#: actionmanager.cpp:1645
 #, kde-format
 msgid "URL '%1' is invalid."
 msgstr "Το URL '%1' δεν είναι έγκυρο."
 
-#: actionmanager.cpp:1649
+#: actionmanager.cpp:1650
 #, kde-format
 msgctxt "@info"
 msgid ""
@@ -1305,19 +1305,19 @@ msgstr ""
 "προορισμού.</p><p>Αν επιλέξετε προσθήκη, ένα νέο ημερολόγιο θα δημιουργηθεί "
 "αυτόματα για εσάς.</p>"
 
-#: actionmanager.cpp:1657
+#: actionmanager.cpp:1658
 #, kde-format
 msgctxt "@title:window"
 msgid "Import Calendar"
 msgstr "Εισαγωγή ημερολογίου"
 
-#: actionmanager.cpp:1658
+#: actionmanager.cpp:1659
 #, kde-format
 msgctxt "@action:button"
 msgid "Merge into existing calendar"
 msgstr "Συγχώνευση σε υπάρχον ημερολόγιο"
 
-#: actionmanager.cpp:1659
+#: actionmanager.cpp:1660
 #, kde-format
 msgctxt "@action:button"
 msgid "Add as new calendar"

@@ -14,7 +14,7 @@ msgid ""
 msgstr ""
 "Project-Id-Version: korganizer\n"
 "Report-Msgid-Bugs-To: https://bugs.kde.org\n"
-"POT-Creation-Date: 2024-10-27 00:41+0000\n"
+"POT-Creation-Date: 2024-11-19 00:41+0000\n"
 "PO-Revision-Date: 2024-10-19 20:00+0900\n"
 "Last-Translator: Kisaragi Hiu <mail@kisaragi-hiu.com>\n"
 "Language-Team: Traditional Chinese <zh-l10n@lists.slat.org>\n"
@@ -483,8 +483,8 @@ msgid ""
 msgstr "讓您從行事曆收藏中移除所有已完成的待辦事項。這個動作無法復原！"
 
 #. i18n: ectx: property (text), widget (QPushButton, mDeleteButton)
-#: actionmanager.cpp:368 actionmanager.cpp:623 actionmanager.cpp:1307
-#: actionmanager.cpp:1344 ui/filteredit_base.ui:56
+#: actionmanager.cpp:368 actionmanager.cpp:623 actionmanager.cpp:1308
+#: actionmanager.cpp:1345 ui/filteredit_base.ui:56
 #, kde-format
 msgid "&Delete"
 msgstr "刪除(&D)"
@@ -850,7 +850,7 @@ msgstr "根據目前行事曆檢視，往未來捲動一天、一週、一個月
 msgid "&Day"
 msgstr "日覽表(&D)"
 
-#: actionmanager.cpp:553 actionmanager.cpp:1064
+#: actionmanager.cpp:553 actionmanager.cpp:1065
 #, kde-format
 msgid "&Next Day"
 msgid_plural "&Next %1 Days"
@@ -979,12 +979,12 @@ msgid ""
 "current calendar view."
 msgstr "會開啟一個設定對話框，讓您調整目前行事曆檢視的設定。"
 
-#: actionmanager.cpp:615 actionmanager.cpp:1301 actionmanager.cpp:1342
+#: actionmanager.cpp:615 actionmanager.cpp:1302 actionmanager.cpp:1343
 #, kde-format
 msgid "&Show"
 msgstr "顯示(&S)"
 
-#: actionmanager.cpp:619 actionmanager.cpp:1304 actionmanager.cpp:1343
+#: actionmanager.cpp:619 actionmanager.cpp:1305 actionmanager.cpp:1344
 #, kde-format
 msgid "&Edit…"
 msgstr "編輯(&E)…"
@@ -1074,179 +1074,179 @@ msgstr "顯示項目檢視器"
 msgid "Show Calendar Manager"
 msgstr "顯示行事曆管理程式"
 
-#: actionmanager.cpp:750
+#: actionmanager.cpp:751
 #, kde-format
 msgctxt "@action"
 msgid "Configure &Date && Time…"
 msgstr "設定日期和時間(&D)…"
 
-#: actionmanager.cpp:754
+#: actionmanager.cpp:755
 #, kde-format
 msgid "Manage View &Filters…"
 msgstr "管理檢視過濾器(&F)…"
 
-#: actionmanager.cpp:758
+#: actionmanager.cpp:759
 #, kde-format
 msgctxt "@action"
 msgid "Manage T&ags…"
 msgstr "管理標籤(&A)…"
 
-#: actionmanager.cpp:766
+#: actionmanager.cpp:767
 #, kde-format
 msgid "&Configure KOrganizer…"
 msgstr "設定 KOrganizer(&C)…"
 
-#: actionmanager.cpp:844
+#: actionmanager.cpp:845
 #, kde-format
 msgid "1 incidence was imported successfully."
 msgid_plural "%1 incidences were imported successfully."
 msgstr[0] "已成功匯入 %1 個事件。"
 
-#: actionmanager.cpp:847
+#: actionmanager.cpp:848
 #, kde-format
 msgid "There was an error while merging the calendar: %1"
 msgstr "合併行事曆時發生錯誤：%1"
 
-#: actionmanager.cpp:858
+#: actionmanager.cpp:859
 #, kde-format
 msgid "New calendar added successfully"
 msgstr "新行事曆已成功加入"
 
-#: actionmanager.cpp:860
+#: actionmanager.cpp:861
 #, kde-format
 msgid "Could not add a calendar. Error: %1"
 msgstr "無法新增行事曆。錯誤：%1"
 
-#: actionmanager.cpp:917
+#: actionmanager.cpp:918
 #, kde-format
 msgctxt "@title:window"
 msgid "Select Calendar File to Open"
 msgstr "選擇要開啟的行事曆檔案"
 
-#: actionmanager.cpp:945
+#: actionmanager.cpp:946
 #, kde-format
 msgctxt "@title:window"
 msgid "Select Calendar File to Import"
 msgstr "選擇要匯入的行事曆檔案"
 
-#: actionmanager.cpp:976
+#: actionmanager.cpp:977
 #, kde-format
 msgid "An error occurred: %1"
 msgstr "發生錯誤：%1"
 
-#: actionmanager.cpp:994
+#: actionmanager.cpp:995
 #, kde-format
 msgid "Cannot upload calendar to '%1'"
 msgstr "無法上傳行事曆到 %1"
 
-#: actionmanager.cpp:1000
+#: actionmanager.cpp:1001
 #, kde-format
 msgid "Saved calendar '%1'."
 msgstr "行事曆已儲存於 %1。"
 
-#: actionmanager.cpp:1038
+#: actionmanager.cpp:1039
 #, kde-format
 msgid "Unable to save calendar to the file %1."
 msgstr "無法儲存行事曆到檔案 %1。"
 
-#: actionmanager.cpp:1038
+#: actionmanager.cpp:1039
 #, kde-format
 msgctxt "@title:window"
 msgid "Error"
 msgstr "錯誤"
 
-#: actionmanager.cpp:1083
+#: actionmanager.cpp:1084
 #, kde-format
 msgid "Could not start control module for date and time format."
 msgstr "無法啟動日期與時間格式的控制模組。"
 
-#: actionmanager.cpp:1262
+#: actionmanager.cpp:1263
 #, kde-format
 msgid "&Show Event"
 msgstr "顯示事件(&S)"
 
-#: actionmanager.cpp:1265
+#: actionmanager.cpp:1266
 #, kde-format
 msgid "&Edit Event…"
 msgstr "編輯事件(&E)…"
 
-#: actionmanager.cpp:1268
+#: actionmanager.cpp:1269
 #, kde-format
 msgid "&Delete Event"
 msgstr "刪除事件…(&D)"
 
-#: actionmanager.cpp:1276
+#: actionmanager.cpp:1277
 #, kde-format
 msgid "&Show To-do"
 msgstr "顯示待辦事項(&S)"
 
-#: actionmanager.cpp:1279 kontactplugin/korganizer/todosummarywidget.cpp:321
+#: actionmanager.cpp:1280 kontactplugin/korganizer/todosummarywidget.cpp:321
 #, kde-format
 msgid "&Edit To-do…"
 msgstr "編輯待辦事項(&E)…"
 
-#: actionmanager.cpp:1282 kontactplugin/korganizer/todosummarywidget.cpp:323
+#: actionmanager.cpp:1283 kontactplugin/korganizer/todosummarywidget.cpp:323
 #, kde-format
 msgid "&Delete To-do"
 msgstr "刪除待辦事項(&D)"
 
-#: actionmanager.cpp:1420 actionmanager.cpp:1526
+#: actionmanager.cpp:1421 actionmanager.cpp:1527
 #, kde-format
 msgid "Attach as &link"
 msgstr "以連結附加(&L)"
 
-#: actionmanager.cpp:1421 actionmanager.cpp:1527
+#: actionmanager.cpp:1422 actionmanager.cpp:1528
 #, kde-format
 msgid "Attach &inline"
 msgstr "以內含檔附加(&I)"
 
-#: actionmanager.cpp:1422
+#: actionmanager.cpp:1423
 #, kde-format
 msgid "Attach inline &without attachments"
 msgstr "以內含但不附檔方式附加(&W)"
 
-#: actionmanager.cpp:1424 actionmanager.cpp:1529
+#: actionmanager.cpp:1425 actionmanager.cpp:1530
 #, kde-format
 msgid "C&ancel"
 msgstr "取消(&A)"
 
-#: actionmanager.cpp:1462
+#: actionmanager.cpp:1463
 #, kde-format
 msgid "Removing attachments from an email might invalidate its signature."
 msgstr "從電子郵件中移除附加檔可能會造成它的簽章檢查錯誤。"
 
-#: actionmanager.cpp:1463
+#: actionmanager.cpp:1464
 #, kde-format
 msgctxt "@title:window"
 msgid "Remove Attachments"
 msgstr "移除附檔"
 
-#: actionmanager.cpp:1614
+#: actionmanager.cpp:1615
 #, kde-format
 msgid "Undo: %1"
 msgstr "復原：%1"
 
-#: actionmanager.cpp:1617 actionmanager.cpp:1633
+#: actionmanager.cpp:1618 actionmanager.cpp:1634
 #, kde-format
 msgid "Undo"
 msgstr "復原"
 
-#: actionmanager.cpp:1627
+#: actionmanager.cpp:1628
 #, kde-format
 msgid "Redo: %1"
 msgstr "重做：%1"
 
-#: actionmanager.cpp:1630
+#: actionmanager.cpp:1631
 #, kde-format
 msgid "Redo"
 msgstr "重做"
 
-#: actionmanager.cpp:1644
+#: actionmanager.cpp:1645
 #, kde-format
 msgid "URL '%1' is invalid."
 msgstr "無效的網址：%1。"
 
-#: actionmanager.cpp:1649
+#: actionmanager.cpp:1650
 #, kde-format
 msgctxt "@info"
 msgid ""
@@ -1260,19 +1260,19 @@ msgstr ""
 "p><p>如果您選擇合併，則會讓您選擇要合併的行事曆。</p><p>如果您選擇新增，則會"
 "自動為您建立一個新的行事曆。</p>"
 
-#: actionmanager.cpp:1657
+#: actionmanager.cpp:1658
 #, kde-format
 msgctxt "@title:window"
 msgid "Import Calendar"
 msgstr "匯入行事曆"
 
-#: actionmanager.cpp:1658
+#: actionmanager.cpp:1659
 #, kde-format
 msgctxt "@action:button"
 msgid "Merge into existing calendar"
 msgstr "合併到已存在的行事曆"
 
-#: actionmanager.cpp:1659
+#: actionmanager.cpp:1660
 #, kde-format
 msgctxt "@action:button"
 msgid "Add as new calendar"

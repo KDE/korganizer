@@ -5,7 +5,7 @@ msgid ""
 msgstr ""
 "Project-Id-Version: korganizer\n"
 "Report-Msgid-Bugs-To: https://bugs.kde.org\n"
-"POT-Creation-Date: 2024-10-27 00:41+0000\n"
+"POT-Creation-Date: 2024-11-19 00:41+0000\n"
 "PO-Revision-Date: 2006-01-10 20:33+0100\n"
 "Last-Translator: Børre Gaup <boerre@skolelinux.no>\n"
 "Language-Team: Northern Sami <l10n-no@lister.huftis.org>\n"
@@ -464,8 +464,8 @@ msgid ""
 msgstr ""
 
 #. i18n: ectx: property (text), widget (QPushButton, mDeleteButton)
-#: actionmanager.cpp:368 actionmanager.cpp:623 actionmanager.cpp:1307
-#: actionmanager.cpp:1344 ui/filteredit_base.ui:56
+#: actionmanager.cpp:368 actionmanager.cpp:623 actionmanager.cpp:1308
+#: actionmanager.cpp:1345 ui/filteredit_base.ui:56
 #, kde-format
 msgid "&Delete"
 msgstr ""
@@ -818,7 +818,7 @@ msgstr ""
 msgid "&Day"
 msgstr "&Beaivi"
 
-#: actionmanager.cpp:553 actionmanager.cpp:1064
+#: actionmanager.cpp:553 actionmanager.cpp:1065
 #, kde-format
 msgid "&Next Day"
 msgid_plural "&Next %1 Days"
@@ -943,12 +943,12 @@ msgid ""
 "current calendar view."
 msgstr ""
 
-#: actionmanager.cpp:615 actionmanager.cpp:1301 actionmanager.cpp:1342
+#: actionmanager.cpp:615 actionmanager.cpp:1302 actionmanager.cpp:1343
 #, kde-format
 msgid "&Show"
 msgstr "Čá&jet"
 
-#: actionmanager.cpp:619 actionmanager.cpp:1304 actionmanager.cpp:1343
+#: actionmanager.cpp:619 actionmanager.cpp:1305 actionmanager.cpp:1344
 #, fuzzy, kde-format
 msgid "&Edit…"
 msgstr "&Doaimmat …"
@@ -1038,180 +1038,180 @@ msgstr ""
 msgid "Show Calendar Manager"
 msgstr ""
 
-#: actionmanager.cpp:750
+#: actionmanager.cpp:751
 #, fuzzy, kde-format
 msgctxt "@action"
 msgid "Configure &Date && Time…"
 msgstr "Heivet &dáhtona ja áiggi …"
 
-#: actionmanager.cpp:754
+#: actionmanager.cpp:755
 #, kde-format
 msgid "Manage View &Filters…"
 msgstr ""
 
-#: actionmanager.cpp:758
+#: actionmanager.cpp:759
 #, kde-format
 msgctxt "@action"
 msgid "Manage T&ags…"
 msgstr ""
 
-#: actionmanager.cpp:766
+#: actionmanager.cpp:767
 #, kde-format
 msgid "&Configure KOrganizer…"
 msgstr ""
 
-#: actionmanager.cpp:844
+#: actionmanager.cpp:845
 #, kde-format
 msgid "1 incidence was imported successfully."
 msgid_plural "%1 incidences were imported successfully."
 msgstr[0] ""
 msgstr[1] ""
 
-#: actionmanager.cpp:847
+#: actionmanager.cpp:848
 #, kde-format
 msgid "There was an error while merging the calendar: %1"
 msgstr ""
 
-#: actionmanager.cpp:858
+#: actionmanager.cpp:859
 #, kde-format
 msgid "New calendar added successfully"
 msgstr ""
 
-#: actionmanager.cpp:860
+#: actionmanager.cpp:861
 #, kde-format
 msgid "Could not add a calendar. Error: %1"
 msgstr ""
 
-#: actionmanager.cpp:917
+#: actionmanager.cpp:918
 #, kde-format
 msgctxt "@title:window"
 msgid "Select Calendar File to Open"
 msgstr ""
 
-#: actionmanager.cpp:945
+#: actionmanager.cpp:946
 #, kde-format
 msgctxt "@title:window"
 msgid "Select Calendar File to Import"
 msgstr ""
 
-#: actionmanager.cpp:976
+#: actionmanager.cpp:977
 #, kde-format
 msgid "An error occurred: %1"
 msgstr ""
 
-#: actionmanager.cpp:994
+#: actionmanager.cpp:995
 #, kde-format
 msgid "Cannot upload calendar to '%1'"
 msgstr "Ii sáhte sáddet kaleandara «%1» čujuhussii"
 
-#: actionmanager.cpp:1000
+#: actionmanager.cpp:1001
 #, kde-format
 msgid "Saved calendar '%1'."
 msgstr "Vurkii kaleandar «%1»."
 
-#: actionmanager.cpp:1038
+#: actionmanager.cpp:1039
 #, kde-format
 msgid "Unable to save calendar to the file %1."
 msgstr ""
 
-#: actionmanager.cpp:1038
+#: actionmanager.cpp:1039
 #, kde-format
 msgctxt "@title:window"
 msgid "Error"
 msgstr ""
 
-#: actionmanager.cpp:1083
+#: actionmanager.cpp:1084
 #, kde-format
 msgid "Could not start control module for date and time format."
 msgstr "Ii sáhttán álggahit dáhton- ja áigeformáhta stivrenmoduvlla."
 
-#: actionmanager.cpp:1262
+#: actionmanager.cpp:1263
 #, kde-format
 msgid "&Show Event"
 msgstr "Čáj&et dáhpahusa"
 
-#: actionmanager.cpp:1265
+#: actionmanager.cpp:1266
 #, fuzzy, kde-format
 msgid "&Edit Event…"
 msgstr "&Doaimmat dáhpahusa …"
 
-#: actionmanager.cpp:1268
+#: actionmanager.cpp:1269
 #, kde-format
 msgid "&Delete Event"
 msgstr "&Sihko dáhpahusa"
 
-#: actionmanager.cpp:1276
+#: actionmanager.cpp:1277
 #, kde-format
 msgid "&Show To-do"
 msgstr ""
 
-#: actionmanager.cpp:1279 kontactplugin/korganizer/todosummarywidget.cpp:321
+#: actionmanager.cpp:1280 kontactplugin/korganizer/todosummarywidget.cpp:321
 #, kde-format
 msgid "&Edit To-do…"
 msgstr ""
 
-#: actionmanager.cpp:1282 kontactplugin/korganizer/todosummarywidget.cpp:323
+#: actionmanager.cpp:1283 kontactplugin/korganizer/todosummarywidget.cpp:323
 #, kde-format
 msgid "&Delete To-do"
 msgstr ""
 
-#: actionmanager.cpp:1420 actionmanager.cpp:1526
+#: actionmanager.cpp:1421 actionmanager.cpp:1527
 #, kde-format
 msgid "Attach as &link"
 msgstr ""
 
-#: actionmanager.cpp:1421 actionmanager.cpp:1527
+#: actionmanager.cpp:1422 actionmanager.cpp:1528
 #, kde-format
 msgid "Attach &inline"
 msgstr ""
 
-#: actionmanager.cpp:1422
+#: actionmanager.cpp:1423
 #, kde-format
 msgid "Attach inline &without attachments"
 msgstr ""
 
-#: actionmanager.cpp:1424 actionmanager.cpp:1529
+#: actionmanager.cpp:1425 actionmanager.cpp:1530
 #, kde-format
 msgid "C&ancel"
 msgstr ""
 
-#: actionmanager.cpp:1462
+#: actionmanager.cpp:1463
 #, kde-format
 msgid "Removing attachments from an email might invalidate its signature."
 msgstr ""
 
-#: actionmanager.cpp:1463
+#: actionmanager.cpp:1464
 #, kde-format
 msgctxt "@title:window"
 msgid "Remove Attachments"
 msgstr ""
 
-#: actionmanager.cpp:1614
+#: actionmanager.cpp:1615
 #, kde-format
 msgid "Undo: %1"
 msgstr ""
 
-#: actionmanager.cpp:1617 actionmanager.cpp:1633
+#: actionmanager.cpp:1618 actionmanager.cpp:1634
 #, kde-format
 msgid "Undo"
 msgstr ""
 
-#: actionmanager.cpp:1627
+#: actionmanager.cpp:1628
 #, kde-format
 msgid "Redo: %1"
 msgstr "Daga ođđasit: %1"
 
-#: actionmanager.cpp:1630
+#: actionmanager.cpp:1631
 #, kde-format
 msgid "Redo"
 msgstr ""
 
-#: actionmanager.cpp:1644
+#: actionmanager.cpp:1645
 #, kde-format
 msgid "URL '%1' is invalid."
 msgstr "URL:a «%1» gustomeahttun."
 
-#: actionmanager.cpp:1649
+#: actionmanager.cpp:1650
 #, kde-format
 msgctxt "@info"
 msgid ""
@@ -1222,19 +1222,19 @@ msgid ""
 "p>"
 msgstr ""
 
-#: actionmanager.cpp:1657
+#: actionmanager.cpp:1658
 #, kde-format
 msgctxt "@title:window"
 msgid "Import Calendar"
 msgstr ""
 
-#: actionmanager.cpp:1658
+#: actionmanager.cpp:1659
 #, fuzzy, kde-format
 msgctxt "@action:button"
 msgid "Merge into existing calendar"
 msgstr "Bárgit kaleandarii mii juo gávdno"
 
-#: actionmanager.cpp:1659
+#: actionmanager.cpp:1660
 #, fuzzy, kde-format
 msgctxt "@action:button"
 msgid "Add as new calendar"
