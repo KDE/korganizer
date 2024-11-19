@@ -974,7 +974,7 @@ bool ActionManager::importURL(const QUrl &url, bool merge)
     } else {
         // empty error message means user canceled.
         if (!importer->errorMessage().isEmpty()) {
-            mCalendarView->showMessage(i18n("An error occurred: %1", importer->errorMessage()), KMessageWidget::Error);
+            mCalendarView->showMessage(i18n("An error occurred: %1 (url: %2)", importer->errorMessage(), url.path()), KMessageWidget::Error);
         }
     }
 
