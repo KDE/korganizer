@@ -6,7 +6,7 @@ msgid ""
 msgstr ""
 "Project-Id-Version: \n"
 "Report-Msgid-Bugs-To: https://bugs.kde.org\n"
-"POT-Creation-Date: 2024-11-19 00:41+0000\n"
+"POT-Creation-Date: 2024-11-20 00:40+0000\n"
 "PO-Revision-Date: 2013-04-15 10:39+0530\n"
 "Last-Translator: Chetan Khona <chetan@kompkin.com>\n"
 "Language-Team: Marathi <kde-i18n-doc@kde.org>\n"
@@ -1228,9 +1228,10 @@ msgid "Select Calendar File to Import"
 msgstr "दिनदर्शिकेच्या गाळण्या संपादित करा"
 
 #: actionmanager.cpp:977
-#, kde-format
-msgid "An error occurred: %1"
-msgstr ""
+#, fuzzy, kde-format
+#| msgid "Purging completed to-dos"
+msgid "An error occurred: %1 (url: %2)"
+msgstr "पूर्ण झालेली कामे पुसत आहे"
 
 #: actionmanager.cpp:995
 #, kde-format

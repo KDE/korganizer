@@ -10,7 +10,7 @@ msgid ""
 msgstr ""
 "Project-Id-Version: korganizer\n"
 "Report-Msgid-Bugs-To: https://bugs.kde.org\n"
-"POT-Creation-Date: 2024-11-19 00:41+0000\n"
+"POT-Creation-Date: 2024-11-20 00:40+0000\n"
 "PO-Revision-Date: 2019-11-05 20:02+0100\n"
 "Last-Translator: Matej Mrenica <matejm98mthw@gmail.com>\n"
 "Language-Team: Slovak <kde-i18n-doc@kde.org>\n"
@@ -1229,8 +1229,9 @@ msgid "Select Calendar File to Import"
 msgstr "Vyberte súbor kalendára na import"
 
 #: actionmanager.cpp:977
-#, kde-format
-msgid "An error occurred: %1"
+#, fuzzy, kde-format
+#| msgid "An error occurred: %1"
+msgid "An error occurred: %1 (url: %2)"
 msgstr "Vyskytla sa chyba: %1"
 
 #: actionmanager.cpp:995

@@ -17,7 +17,7 @@ msgid ""
 msgstr ""
 "Project-Id-Version: korganizer\n"
 "Report-Msgid-Bugs-To: https://bugs.kde.org\n"
-"POT-Creation-Date: 2024-11-19 00:41+0000\n"
+"POT-Creation-Date: 2024-11-20 00:40+0000\n"
 "PO-Revision-Date: 2024-09-08 12:42+0200\n"
 "Last-Translator: Kishore G <kishore96@gmail.com>\n"
 "Language-Team: Tamil <kde-i18n-doc@kde.org>\n"
@@ -1118,8 +1118,9 @@ msgid "Select Calendar File to Import"
 msgstr "இறக்குமதி செய்ய வேண்டிய நாள்காட்டி கோப்பைத் தேர்ந்தெடுக்கவும்"
 
 #: actionmanager.cpp:977
-#, kde-format
-msgid "An error occurred: %1"
+#, fuzzy, kde-format
+#| msgid "An error occurred: %1"
+msgid "An error occurred: %1 (url: %2)"
 msgstr "சிக்கல் ஏற்பட்டது: %1"
 
 #: actionmanager.cpp:995

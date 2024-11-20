@@ -5,7 +5,7 @@ msgid ""
 msgstr ""
 "Project-Id-Version: korganizer-1.1.1\n"
 "Report-Msgid-Bugs-To: https://bugs.kde.org\n"
-"POT-Creation-Date: 2024-11-19 00:41+0000\n"
+"POT-Creation-Date: 2024-11-20 00:40+0000\n"
 "PO-Revision-Date: 2022-02-06 19:07+0000\n"
 "Last-Translator: Sergiu Bivol <sergiu@cip.md>\n"
 "Language-Team: Romanian\n"
@@ -1173,9 +1173,9 @@ msgid "Select Calendar File to Import"
 msgstr "Editează filtre calendar"
 
 #: actionmanager.cpp:977
-#, kde-format
-msgid "An error occurred: %1"
-msgstr ""
+#, fuzzy, kde-format
+msgid "An error occurred: %1 (url: %2)"
+msgstr "Șterg toate lucrările completate?"
 
 #: actionmanager.cpp:995
 #, fuzzy, kde-format

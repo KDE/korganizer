@@ -7,7 +7,7 @@ msgid ""
 msgstr ""
 "Project-Id-Version: korganizer\n"
 "Report-Msgid-Bugs-To: https://bugs.kde.org\n"
-"POT-Creation-Date: 2024-11-19 00:41+0000\n"
+"POT-Creation-Date: 2024-11-20 00:40+0000\n"
 "PO-Revision-Date: 2010-09-24 16:28+0530\n"
 "Last-Translator: Rajesh Ranjan <rajesh672@gmail.com>\n"
 "Language-Team: Maithili <bhashaghar@googlegroups.com>\n"
@@ -1146,7 +1146,7 @@ msgstr ""
 
 #: actionmanager.cpp:977
 #, kde-format
-msgid "An error occurred: %1"
+msgid "An error occurred: %1 (url: %2)"
 msgstr ""
 
 #: actionmanager.cpp:995

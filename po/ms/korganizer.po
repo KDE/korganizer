@@ -5,7 +5,7 @@ msgid ""
 msgstr ""
 "Project-Id-Version: Mimos\n"
 "Report-Msgid-Bugs-To: https://bugs.kde.org\n"
-"POT-Creation-Date: 2024-11-19 00:41+0000\n"
+"POT-Creation-Date: 2024-11-20 00:40+0000\n"
 "PO-Revision-Date: 2005-11-26 19:59+0800\n"
 "Last-Translator: MIMOS <opensource@mimos.my>\n"
 "Language-Team: Malay <kedidiemas@yahoogroups.com>\n"
@@ -1162,7 +1162,7 @@ msgstr "Edit Penapis Kalendar"
 #: actionmanager.cpp:977
 #, fuzzy, kde-format
 #| msgid "Error Occurred"
-msgid "An error occurred: %1"
+msgid "An error occurred: %1 (url: %2)"
 msgstr "Ralat Berlaku"
 
 #: actionmanager.cpp:995

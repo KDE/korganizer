@@ -6,7 +6,7 @@ msgid ""
 msgstr ""
 "Project-Id-Version: korganizer\n"
 "Report-Msgid-Bugs-To: https://bugs.kde.org\n"
-"POT-Creation-Date: 2024-11-19 00:41+0000\n"
+"POT-Creation-Date: 2024-11-20 00:40+0000\n"
 "PO-Revision-Date: 2023-05-29 22:20+0400\n"
 "Last-Translator: Kheyyam <xxmn77@gmail.com>\n"
 "Language-Team: Azerbaijani <kde-i18n-doc@kde.org>\n"
@@ -1216,8 +1216,9 @@ msgid "Select Calendar File to Import"
 msgstr "İdxal üçün təqvim faylını seçin"
 
 #: actionmanager.cpp:977
-#, kde-format
-msgid "An error occurred: %1"
+#, fuzzy, kde-format
+#| msgid "An error occurred: %1"
+msgid "An error occurred: %1 (url: %2)"
 msgstr "Xəta baş verdi: %1"
 
 #: actionmanager.cpp:995

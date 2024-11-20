@@ -8,7 +8,7 @@ msgid ""
 msgstr ""
 "Project-Id-Version: korganizer\n"
 "Report-Msgid-Bugs-To: https://bugs.kde.org\n"
-"POT-Creation-Date: 2024-11-19 00:41+0000\n"
+"POT-Creation-Date: 2024-11-20 00:40+0000\n"
 "PO-Revision-Date: 2021-07-10 10:57+0530\n"
 "Last-Translator: Raghavendra Kamath <raghu@raghukamath.com>\n"
 "Language-Team: kde-hindi\n"
@@ -1187,7 +1187,7 @@ msgstr "कैलेन्डर फ़िल्टरों का संपा
 #: actionmanager.cpp:977
 #, fuzzy, kde-format
 #| msgid "Error Occurred"
-msgid "An error occurred: %1"
+msgid "An error occurred: %1 (url: %2)"
 msgstr "त्रुटि हुई"
 
 #: actionmanager.cpp:995

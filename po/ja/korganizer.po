@@ -10,7 +10,7 @@ msgid ""
 msgstr ""
 "Project-Id-Version: korganizer\n"
 "Report-Msgid-Bugs-To: https://bugs.kde.org\n"
-"POT-Creation-Date: 2024-11-19 00:41+0000\n"
+"POT-Creation-Date: 2024-11-20 00:40+0000\n"
 "PO-Revision-Date: 2012-01-28 16:07-0800\n"
 "Last-Translator: Fumiaki Okushi <okushi@kde.gr.jp>\n"
 "Language-Team: Japanese <kde-jp@kde.org>\n"
@@ -1213,9 +1213,10 @@ msgid "Select Calendar File to Import"
 msgstr "カレンダーフィルタの編集"
 
 #: actionmanager.cpp:977
-#, kde-format
-msgid "An error occurred: %1"
-msgstr ""
+#, fuzzy, kde-format
+#| msgid "Purging completed to-dos"
+msgid "An error occurred: %1 (url: %2)"
+msgstr "完了済み To-Do を一括削除"
 
 #: actionmanager.cpp:995
 #, kde-format

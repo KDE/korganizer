@@ -7,7 +7,7 @@ msgid ""
 msgstr ""
 "Project-Id-Version: korganizer\n"
 "Report-Msgid-Bugs-To: https://bugs.kde.org\n"
-"POT-Creation-Date: 2024-11-19 00:41+0000\n"
+"POT-Creation-Date: 2024-11-20 00:40+0000\n"
 "PO-Revision-Date: 2007-02-28 14:24+0100\n"
 "Last-Translator: Bozidar Proevski <bobibobi@freemail.com.mk>\n"
 "Language-Team: Macedonian <mkde-l10n@lists.sourceforge.net>\n"
@@ -1164,7 +1164,7 @@ msgstr "Уредете филтри за календарот"
 #: actionmanager.cpp:977
 #, fuzzy, kde-format
 #| msgid "Error Occurred"
-msgid "An error occurred: %1"
+msgid "An error occurred: %1 (url: %2)"
 msgstr "Се случи грешка"
 
 #: actionmanager.cpp:995

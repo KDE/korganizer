@@ -19,7 +19,7 @@ msgid ""
 msgstr ""
 "Project-Id-Version: korganizer\n"
 "Report-Msgid-Bugs-To: https://bugs.kde.org\n"
-"POT-Creation-Date: 2024-11-19 00:41+0000\n"
+"POT-Creation-Date: 2024-11-20 00:40+0000\n"
 "PO-Revision-Date: 2007-03-28 20:53+0200\n"
 "Last-Translator: Rinse de Vries <rinsedevries@kde.nl>\n"
 "Language-Team: Frysk <kde-i18n-fry@kde.org>\n"
@@ -1206,7 +1206,7 @@ msgstr "Agindafilters bewurkje"
 #: actionmanager.cpp:977
 #, fuzzy, kde-format
 #| msgid "Error Occurred"
-msgid "An error occurred: %1"
+msgid "An error occurred: %1 (url: %2)"
 msgstr "Der gie wat mis"
 
 #: actionmanager.cpp:995
