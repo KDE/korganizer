@@ -14,14 +14,14 @@ msgstr ""
 "Project-Id-Version: korganizer\n"
 "Report-Msgid-Bugs-To: https://bugs.kde.org\n"
 "POT-Creation-Date: 2024-11-20 00:40+0000\n"
-"PO-Revision-Date: 2024-10-27 06:01+0100\n"
+"PO-Revision-Date: 2024-11-21 21:59+0100\n"
 "Last-Translator: Iñigo Salvador Azurmendi <xalba@ni.eus>\n"
 "Language-Team: Basque <kde-i18n-eu@kde.org>\n"
 "Language: eu\n"
 "MIME-Version: 1.0\n"
 "Content-Type: text/plain; charset=UTF-8\n"
 "Content-Transfer-Encoding: 8bit\n"
-"X-Generator: Lokalize 24.08.2\n"
+"X-Generator: Lokalize 24.08.3\n"
 "Plural-Forms: nplurals=2; plural=(n != 1);\n"
 
 #, kde-format
@@ -1157,10 +1157,9 @@ msgid "Select Calendar File to Import"
 msgstr "Hautatu inportatu beharreko egutegia"
 
 #: actionmanager.cpp:977
-#, fuzzy, kde-format
-#| msgid "An error occurred: %1"
+#, kde-format
 msgid "An error occurred: %1 (url: %2)"
-msgstr "Errore bat gertatu da: %1"
+msgstr "Errore bat gertatu da: %1 (URLa: %2)"
 
 #: actionmanager.cpp:995
 #, kde-format

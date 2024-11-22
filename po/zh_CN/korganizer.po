@@ -1108,10 +1108,9 @@ msgid "Select Calendar File to Import"
 msgstr "选择要导入的日历文件"
 
 #: actionmanager.cpp:977
-#, fuzzy, kde-format
-#| msgid "An error occurred: %1"
+#, kde-format
 msgid "An error occurred: %1 (url: %2)"
-msgstr "出错：%1"
+msgstr ""
 
 #: actionmanager.cpp:995
 #, kde-format
