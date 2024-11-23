@@ -25,7 +25,7 @@ msgstr ""
 "Project-Id-Version: korganizer\n"
 "Report-Msgid-Bugs-To: https://bugs.kde.org\n"
 "POT-Creation-Date: 2024-11-20 00:40+0000\n"
-"PO-Revision-Date: 2024-10-18 08:23+0200\n"
+"PO-Revision-Date: 2024-11-21 09:07+0100\n"
 "Last-Translator: Xavier Besnard <xavier.besnard@kde.org>\n"
 "Language-Team: French <French <kde-francophone@kde.org>>\n"
 "Language: fr\n"
@@ -35,7 +35,7 @@ msgstr ""
 "Plural-Forms: nplurals=2; plural=(n > 1);\n"
 "X-Accelerator-Marker: &\n"
 "X-Environment: kde\n"
-"X-Generator: Lokalize 23.08.5\n"
+"X-Generator: Lokalize 24.08.3\n"
 "X-Text-Markup: kde4\n"
 
 #, kde-format
@@ -1189,10 +1189,9 @@ msgid "Select Calendar File to Import"
 msgstr "Sélectionnez le fichier d'agenda à importer"
 
 #: actionmanager.cpp:977
-#, fuzzy, kde-format
-#| msgid "An error occurred: %1"
+#, kde-format
 msgid "An error occurred: %1 (url: %2)"
-msgstr "Une erreur s'est produite : %1"
+msgstr "Une erreur s'est produite : %1 (URL : %2)"
 
 #: actionmanager.cpp:995
 #, kde-format
