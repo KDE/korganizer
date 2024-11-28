@@ -13,19 +13,20 @@
 # Alexander Lakhin <exclusion@gmail.com>, 2013.
 # Alexander Yavorsky <kekcuha@gmail.com>, 2020.
 # Мария Шикунова <translation-team@basealt.ru>, 2022.
+# SPDX-FileCopyrightText: 2024 Olesya Gerasimenko <translation-team@basealt.ru>
 msgid ""
 msgstr ""
 "Project-Id-Version: korganizer\n"
 "Report-Msgid-Bugs-To: https://bugs.kde.org\n"
 "POT-Creation-Date: 2024-07-30 00:42+0000\n"
-"PO-Revision-Date: 2022-02-21 14:41+0300\n"
-"Last-Translator: Мария Шикунова <translation-team@basealt.ru>\n"
-"Language-Team: Russian <kde-russian@lists.kde.ru>\n"
+"PO-Revision-Date: 2024-11-27 16:50+0300\n"
+"Last-Translator: Olesya Gerasimenko <translation-team@basealt.ru>\n"
+"Language-Team: Basealt Translation Team\n"
 "Language: ru\n"
 "MIME-Version: 1.0\n"
 "Content-Type: text/plain; charset=UTF-8\n"
 "Content-Transfer-Encoding: 8bit\n"
-"X-Generator: Lokalize 21.08.3\n"
+"X-Generator: Lokalize 23.08.5\n"
 "Plural-Forms: nplurals=4; plural=n==1 ? 3 : n%10==1 && n%100!=11 ? 0 : n"
 "%10>=2 && n%10<=4 && (n%100<10 || n%100>=20) ? 1 : 2;\n"
 "X-Environment: kde\n"
@@ -36,33 +37,30 @@ msgstr ""
 #, kde-format
 msgctxt "@title:window"
 msgid "Configure Day Numbers"
-msgstr "Настройка дат"
+msgstr "Номера дней"
 
 #: datenums/configdialog.cpp:43
 #, kde-format
 msgid "Show Date Number"
-msgstr "Показывать номер дня"
+msgstr "Показывать день в году"
 
 #: datenums/configdialog.cpp:48
-#, fuzzy, kde-format
-#| msgid "Show day number"
+#, kde-format
 msgctxt "@option:radio"
 msgid "Show day number"
 msgstr "Показывать номер дня"
 
 #: datenums/configdialog.cpp:51
-#, fuzzy, kde-format
-#| msgid "Show days to end of year"
+#, kde-format
 msgctxt "@option:radio"
 msgid "Show days to end of year"
 msgstr "Показывать количество дней до конца года"
 
 #: datenums/configdialog.cpp:54
-#, fuzzy, kde-format
-#| msgid "Show both"
+#, kde-format
 msgctxt "@option:radio"
 msgid "Show both"
-msgstr "Показать оба"
+msgstr "Показывать и то, и другое"
 
 #: datenums/datenums.cpp:36
 #, kde-format
@@ -706,15 +704,15 @@ msgid ""
 "Currently, the phase is computed for noon at UTC; therefore, you should "
 "expect variations by 1 day in either direction."
 msgstr ""
-"Этот модуль отображает фазу лунного дня (Новая Луна, Первая четверть, Третья "
-"четверть, Полнолуние). В настоящее время фаза вычисляется для полудня по "
-"UTC; вероятны отличия на один день в любом направлении."
+"Этот модуль отображает фазу лунного дня (новолуние, первая четверть, "
+"последняя четверть, полнолуние). В настоящее время фаза вычисляется для "
+"полудня по UTC; вероятны отличия на один день в любом направлении."
 
 #: picoftheday/configdialog.cpp:28
 #, kde-format
 msgctxt "@title:window"
 msgid "Configure Picture of the Day"
-msgstr "Настройка Изображение дня"
+msgstr "Изображение дня"
 
 #: picoftheday/configdialog.cpp:42
 #, kde-format
@@ -722,8 +720,7 @@ msgid "Thumbnail Aspect Ratio Mode"
 msgstr "Соотношение сторон миниатюры"
 
 #: picoftheday/configdialog.cpp:46
-#, fuzzy, kde-format
-#| msgid "Ignore aspect ratio"
+#, kde-format
 msgctxt "@option:radio"
 msgid "Ignore aspect ratio"
 msgstr "Игнорировать соотношение сторон"
@@ -735,8 +732,7 @@ msgid ""
 msgstr "Миниатюра будет масштабирована без сохранения пропорций."
 
 #: picoftheday/configdialog.cpp:52
-#, fuzzy, kde-format
-#| msgid "Keep aspect ratio"
+#, kde-format
 msgctxt "@option:radio"
 msgid "Keep aspect ratio"
 msgstr "Сохранять &пропорции"
@@ -751,8 +747,7 @@ msgstr ""
 "прямоугольника при сохранении пропорций"
 
 #: picoftheday/configdialog.cpp:59
-#, fuzzy, kde-format
-#| msgid "Keep aspect ratio by expanding"
+#, kde-format
 msgctxt "@option:radio"
 msgid "Keep aspect ratio by expanding"
 msgstr "Сохранять соотношение сторон при увеличении"
@@ -769,7 +764,7 @@ msgstr ""
 #: picoftheday/element.cpp:209
 #, kde-format
 msgid "Wikipedia POTD: %1"
-msgstr "Изображение дня в Википедии: %1"
+msgstr "«Изображение дня» из Википедии: %1"
 
 #: picoftheday/element.cpp:326
 #, kde-format
@@ -777,32 +772,29 @@ msgid "Picture Page"
 msgstr "Страница картинки"
 
 #: picoftheday/element.cpp:326
-#, fuzzy, kde-format
-#| msgid "Loading..."
+#, kde-format
 msgid "Loading..."
-msgstr "Загрузка..."
+msgstr "Загрузка…"
 
 #: picoftheday/element.cpp:332
-#, fuzzy, kde-format
-#| msgid "<qt>Loading <i>Picture of the Day</i>...</qt>"
+#, kde-format
 msgid "<qt>Loading <i>Picture of the Day</i>...</qt>"
-msgstr "<qt>Загрузка <i>изображения дня</i>...</qt>"
+msgstr "<qt>Загрузка <i>изображения дня</i>…</qt>"
 
 #: picoftheday/picoftheday.cpp:48
 #, kde-format
 msgid "<qt>This plugin provides the Wikipedia <i>Picture of the Day</i>.</qt>"
-msgstr "<qt>Этот модуль показывает <i>Изображение дня</i> из Википедии</qt>"
+msgstr "<qt>Этот модуль предоставляет <i>изображение дня</i> из Википедии</qt>"
 
 #: thisdayinhistory/thisdayinhistory.cpp:29
 #, kde-format
 msgid "This plugin provides links to Wikipedia's 'This Day in History' pages."
-msgstr ""
-"Этот модуль предоставляет ссылки на страницы Википедии «Этот день в истории»."
+msgstr "Этот модуль предоставляет ссылки на страницы Википедии «В этот день»."
 
 #: thisdayinhistory/thisdayinhistory.cpp:37
 #, kde-format
 msgid "This day in history"
-msgstr "Этот день в истории"
+msgstr "В этот день"
 
 #: thisdayinhistory/thisdayinhistory.cpp:39
 #: thisdayinhistory/thisdayinhistory.cpp:53
@@ -820,7 +812,7 @@ msgstr "MMMM_d"
 #: thisdayinhistory/thisdayinhistory.cpp:51
 #, kde-format
 msgid "This month in history"
-msgstr "Этот месяц в истории"
+msgstr "В этот месяц"
 
 #: thisdayinhistory/thisdayinhistory.cpp:54
 #, kde-format
