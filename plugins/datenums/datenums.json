@@ -20,6 +20,7 @@
         "Description[ko]": "일정 보기를 사용할 때 해당 연도의 날짜 번호를 모든 날짜 위에 표시합니다. 예를 들어 2월 1일은 그 해의 32번째 날입니다.",
         "Description[nl]": "Deze plug-in zorgt ervoor dat het dagnummer boven de agendaweergave wordt geplaatst. Bijvoorbeeld, bij 1 februari hoort dagnummer 32.",
         "Description[pl]": "Dla każdego dnia wtyczka ta pokazuje jego numer dnia w roku na górze widoku rozkładu dnia. Na przykład, 1. luty to 32 dzień w roku.",
+        "Description[ru]": "Этот модуль показывает номер дня в году для каждой даты. Например, для 1 февраля будет показан номер 32.",
         "Description[sl]": "Za vsak dan ta vstavek prikazuje številko dneva v letu na vrhu prikaza dnevnega reda. Npr., 1. februar je 32. dan v letu.",
         "Description[sv]": "Insticksprogrammet visar dagens nummer under året för varje dag längst upp i agendavyn. Till exempel är 1:a februari den 32:e dagen under året.",
         "Description[tr]": "Bu eklenti her gün için ajanda görünümünün en üstünde yılın gün numarasını gösterir. Örneğin 1 Şubat, yılın 32. günüdür.",
