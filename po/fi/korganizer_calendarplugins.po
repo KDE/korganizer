@@ -4,20 +4,20 @@
 # Author: Jessej
 # Author: Lliehu
 # Author: Niklas Laxström
+# SPDX-FileCopyrightText: 2009, 2011, 2012, 2013, 2018, 2019, 2020, 2024 Tommi Nieminen <translator@legisign.org>
 # Kim Enkovaara <kim.enkovaara@iki.fi>, 2003, 2006.
 # Teemu Rytilahti <teemu.rytilahti@d5k.net>, 2003, 2005.
 # Teemu Rytilahti <teemu.rytilahti@kde-fi.org>, 2003, 2008.
 # Tapio Kautto <eleknader@phnet.fi>, 2004.
 # Ilpo Kantonen <ilpo@iki.fi>, 2005, 2006.
 # Mikko Piippo <piippo@cc.helsinki.fi>, 2007, 2008.
-# Tommi Nieminen <translator@legisign.org>, 2009, 2011, 2012, 2013, 2018, 2019, 2020.
 # Lasse Liehu <lasse.liehu@gmail.com>, 2010, 2011, 2012, 2013, 2014, 2015, 2016.
 msgid ""
 msgstr ""
 "Project-Id-Version: korganizer\n"
 "Report-Msgid-Bugs-To: https://bugs.kde.org\n"
 "POT-Creation-Date: 2024-07-30 00:42+0000\n"
-"PO-Revision-Date: 2020-01-01 13:11+0200\n"
+"PO-Revision-Date: 2024-10-21 19:55+0300\n"
 "Last-Translator: Tommi Nieminen <translator@legisign.org>\n"
 "Language-Team: Finnish <kde-i18n-doc@kde.org>\n"
 "Language: fi\n"
@@ -25,8 +25,7 @@ msgstr ""
 "Content-Type: text/plain; charset=UTF-8\n"
 "Content-Transfer-Encoding: 8bit\n"
 "Plural-Forms: nplurals=2; plural=(n != 1);\n"
-"X-POT-Import-Date: 2013-01-13 20:43:22+0000\n"
-"X-Generator: Lokalize 18.12.3\n"
+"X-Generator: Lokalize 23.08.5\n"
 
 #: datenums/configdialog.cpp:28
 #, kde-format
@@ -40,22 +39,19 @@ msgid "Show Date Number"
 msgstr "Näytä päivän numero"
 
 #: datenums/configdialog.cpp:48
-#, fuzzy, kde-format
-#| msgid "Show day number"
+#, kde-format
 msgctxt "@option:radio"
 msgid "Show day number"
 msgstr "Näytä päivän numero"
 
 #: datenums/configdialog.cpp:51
-#, fuzzy, kde-format
-#| msgid "Show days to end of year"
+#, kde-format
 msgctxt "@option:radio"
 msgid "Show days to end of year"
 msgstr "Näytä päivät vuoden loppuun"
 
 #: datenums/configdialog.cpp:54
-#, fuzzy, kde-format
-#| msgid "Show both"
+#, kde-format
 msgctxt "@option:radio"
 msgid "Show both"
 msgstr "Näytä kummatkin"
@@ -706,11 +702,10 @@ msgid "Thumbnail Aspect Ratio Mode"
 msgstr "Esikatselun kuvasuhde"
 
 #: picoftheday/configdialog.cpp:46
-#, fuzzy, kde-format
-#| msgid "Ignore aspect ratio"
+#, kde-format
 msgctxt "@option:radio"
 msgid "Ignore aspect ratio"
-msgstr "Jätä kuvasuhde huomiotta"
+msgstr "Sivuuta kuvasuhde"
 
 #: picoftheday/configdialog.cpp:48
 #, kde-format
@@ -719,11 +714,10 @@ msgid ""
 msgstr "Esikatselukuva skaalataan vapaasti. Kuvasuhdetta ei säilytetä."
 
 #: picoftheday/configdialog.cpp:52
-#, fuzzy, kde-format
-#| msgid "Keep aspect ratio"
+#, kde-format
 msgctxt "@option:radio"
 msgid "Keep aspect ratio"
-msgstr "Säilytä kuvasuhde."
+msgstr "Säilytä kuvasuhde"
 
 #: picoftheday/configdialog.cpp:54
 #, kde-format
@@ -735,11 +729,10 @@ msgstr ""
 "säilytetään."
 
 #: picoftheday/configdialog.cpp:59
-#, fuzzy, kde-format
-#| msgid "Keep aspect ratio by expanding"
+#, kde-format
 msgctxt "@option:radio"
 msgid "Keep aspect ratio by expanding"
-msgstr "Säilytä kuvasuhde laajentamlla."
+msgstr "Säilytä kuvasuhde laajentamalla"
 
 #: picoftheday/configdialog.cpp:61
 #, kde-format
