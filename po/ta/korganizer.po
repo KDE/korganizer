@@ -18,7 +18,7 @@ msgstr ""
 "Project-Id-Version: korganizer\n"
 "Report-Msgid-Bugs-To: https://bugs.kde.org\n"
 "POT-Creation-Date: 2024-10-27 00:41+0000\n"
-"PO-Revision-Date: 2024-09-08 12:42+0200\n"
+"PO-Revision-Date: 2024-12-08 14:46+0530\n"
 "Last-Translator: Kishore G <kishore96@gmail.com>\n"
 "Language-Team: Tamil <kde-i18n-doc@kde.org>\n"
 "Language: ta\n"
@@ -26,7 +26,7 @@ msgstr ""
 "Content-Type: text/plain; charset=UTF-8\n"
 "Content-Transfer-Encoding: 8bit\n"
 "Plural-Forms: nplurals=2; plural=n != 1;\n"
-"X-Generator: Lokalize 24.08.0\n"
+"X-Generator: Lokalize 24.08.3\n"
 
 #, kde-format
 msgctxt "NAME OF TRANSLATORS"
@@ -766,13 +766,13 @@ msgstr "தற்போது தேர்ந்தெடுக்கப்ப�
 #, kde-format
 msgctxt "scroll backward"
 msgid "&Backward"
-msgstr "&பின்னே"
+msgstr "&முன்னே"
 
 #: actionmanager.cpp:524
 #, kde-format
 msgctxt "scroll backward"
 msgid "Back"
-msgstr "பின்னே"
+msgstr "முன்னே"
 
 #: actionmanager.cpp:525
 #, kde-format
@@ -799,13 +799,13 @@ msgstr ""
 #, kde-format
 msgctxt "scroll forward"
 msgid "&Forward"
-msgstr "&முன்னே"
+msgstr "&பின்னே"
 
 #: actionmanager.cpp:535
 #, kde-format
 msgctxt "scroll forward"
 msgid "Forward"
-msgstr "முன்னே"
+msgstr "பின்னே"
 
 #: actionmanager.cpp:536
 #, fuzzy, kde-format
