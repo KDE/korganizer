@@ -9,7 +9,7 @@ msgstr ""
 "Project-Id-Version: Korganizer\n"
 "Report-Msgid-Bugs-To: https://bugs.kde.org\n"
 "POT-Creation-Date: 2024-10-27 00:41+0000\n"
-"PO-Revision-Date: 2024-08-19 23:53+0200\n"
+"PO-Revision-Date: 2024-12-10 01:02+0100\n"
 "Last-Translator: Shinjo Park <kde@peremen.name>\n"
 "Language-Team: Korean <kde-kr@kde.org>\n"
 "Language: ko\n"
@@ -3341,14 +3341,12 @@ msgstr "캘린더 계정"
 #, kde-format
 msgctxt "@title:tab activities settings"
 msgid "Activities"
-msgstr ""
+msgstr "활동"
 
 #: prefs/koprefsdialogmain.cpp:102
-#, fuzzy, kde-format
-#| msgctxt "@action:inmenu"
-#| msgid "Enable Reminders"
+#, kde-format
 msgid "Enabled"
-msgstr "알림 활성화"
+msgstr "활성화됨"
 
 #: prefs/koprefsdialogplugins.cpp:61
 #, kde-format
