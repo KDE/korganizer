@@ -1,0 +1,5760 @@
+# Sanskrit translations for korganizer package.
+# Copyright (C) 2024 This file is copyright:
+# This file is distributed under the same license as the korganizer package.
+# Kali <EMAIL@ADDRESS>, 2024.
+#
+msgid ""
+msgstr ""
+"Project-Id-Version: korganizer\n"
+"Report-Msgid-Bugs-To: https://bugs.kde.org\n"
+"POT-Creation-Date: 2024-11-20 00:40+0000\n"
+"PO-Revision-Date: 2024-12-13 19:09+0530\n"
+"Last-Translator: Kali <EMAIL@ADDRESS>\n"
+"Language-Team: Sanskrit\n"
+"Language: sa\n"
+"MIME-Version: 1.0\n"
+"Content-Type: text/plain; charset=UTF-8\n"
+"Content-Transfer-Encoding: 8bit\n"
+"Plural-Forms: nplurals=2; plural=(n>2);\n"
+
+#, kde-format
+msgctxt "NAME OF TRANSLATORS"
+msgid "Your names"
+msgstr ""
+
+#, kde-format
+msgctxt "EMAIL OF TRANSLATORS"
+msgid "Your emails"
+msgstr ""
+
+#: aboutdata.cpp:18 kontactplugin/korganizer/journalplugin.cpp:26
+#: kontactplugin/korganizer/korganizerplugin.cpp:42
+#: kontactplugin/korganizer/todoplugin.cpp:38
+#: kontactplugin/specialdates/specialdates_plugin.cpp:23 korganizer_part.cpp:56
+#, kde-format
+msgid "KOrganizer"
+msgstr "KOorganizer"
+
+#: aboutdata.cpp:20
+#, kde-format
+msgid "A Personal Organizer"
+msgstr "एकः व्यक्तिगतः आयोजकः"
+
+#: aboutdata.cpp:22
+#, kde-format
+msgid ""
+"Copyright © 1997–1999 Preston Brown\n"
+"Copyright © 2000–2004, 2007 Cornelius Schumacher\n"
+"Copyright © 2004–2005 Reinhold Kainhofer\n"
+"Copyright © 2006–2012 Allen Winter\n"
+"Copyright © 2012–2024 KOrganizer authors"
+msgstr ""
+"प्रतिलिपि अधिकार © 1997–1999 प्रेस्टन ब्राउन\n"
+"प्रतिलिपि अधिकार © 2000–2004, 2007 कॉर्नेलियस शुमाकर\n"
+"प्रतिलिपि अधिकार © 2004–2005 Reinhold Kainhofer\n"
+"प्रतिलिपि अधिकार © 2006–2012 एलेन् विन्टर\n"
+"प्रतिलिपि अधिकार © 2012–2024 KOrganizer authors"
+
+#: aboutdata.cpp:30 kontactplugin/specialdates/specialdates_plugin.cpp:42
+#, kde-format
+msgctxt "@info:credit"
+msgid "Allen Winter"
+msgstr ""
+
+#: aboutdata.cpp:30
+#, kde-format
+msgid "Maintainer"
+msgstr "परिपालकः"
+
+#: aboutdata.cpp:31
+#, kde-format
+msgctxt "@info:credit"
+msgid "Reinhold Kainhofer"
+msgstr ""
+
+#: aboutdata.cpp:31 aboutdata.cpp:32
+#, kde-format
+msgid "Former Maintainer"
+msgstr "पूर्व रखरखावकर्ता"
+
+#: aboutdata.cpp:32
+#, kde-format
+msgctxt "@info:credit"
+msgid "Cornelius Schumacher"
+msgstr ""
+
+#: aboutdata.cpp:33
+#, kde-format
+msgctxt "@info:credit"
+msgid "Preston Brown"
+msgstr ""
+
+#: aboutdata.cpp:33
+#, kde-format
+msgid "Original Author"
+msgstr "मूल लेखक"
+
+#: aboutdata.cpp:34
+#, kde-format
+msgctxt "@info:credit"
+msgid "Laurent Montel"
+msgstr ""
+
+#: aboutdata.cpp:34
+#, kde-format
+msgid "Developer"
+msgstr "विकासकः"
+
+#: aboutdata.cpp:35
+#, kde-format
+msgctxt "@info:credit"
+msgid "Richard Apodaca"
+msgstr ""
+
+#: aboutdata.cpp:36
+#, kde-format
+msgctxt "@info:credit"
+msgid "Björn Balazs"
+msgstr ""
+
+#: aboutdata.cpp:37
+#, kde-format
+msgctxt "@info:credit"
+msgid "Jan-Pascal van Best"
+msgstr ""
+
+#: aboutdata.cpp:38
+#, kde-format
+msgctxt "@info:credit"
+msgid "Bertjan Broeksema"
+msgstr ""
+
+#: aboutdata.cpp:39
+#, kde-format
+msgctxt "@info:credit"
+msgid "Laszlo Boloni"
+msgstr ""
+
+#: aboutdata.cpp:40
+#, kde-format
+msgctxt "@info:credit"
+msgid "Barry Benowitz"
+msgstr ""
+
+#: aboutdata.cpp:41
+#, kde-format
+msgctxt "@info:credit"
+msgid "Christopher Beard"
+msgstr ""
+
+#: aboutdata.cpp:42
+#, kde-format
+msgctxt "@info:credit"
+msgid "Kalle Dalheimer"
+msgstr ""
+
+#: aboutdata.cpp:43
+#, kde-format
+msgctxt "@info:credit"
+msgid "Ian Dawes"
+msgstr ""
+
+#: aboutdata.cpp:44
+#, kde-format
+msgctxt "@info:credit"
+msgid "Thomas Eitzenberger"
+msgstr ""
+
+#: aboutdata.cpp:45
+#, kde-format
+msgctxt "@info:credit"
+msgid "Neil Hart"
+msgstr ""
+
+#: aboutdata.cpp:46
+#, kde-format
+msgctxt "@info:credit"
+msgid "Declan Houlihan"
+msgstr ""
+
+#: aboutdata.cpp:47
+#, kde-format
+msgctxt "@info:credit"
+msgid "Hans-Jürgen Husel"
+msgstr ""
+
+#: aboutdata.cpp:48
+#, kde-format
+msgctxt "@info:credit"
+msgid "Tim Jansen"
+msgstr ""
+
+#: aboutdata.cpp:49
+#, kde-format
+msgctxt "@info:credit"
+msgid "Christian Kirsch"
+msgstr ""
+
+#: aboutdata.cpp:50
+#, kde-format
+msgctxt "@info:credit"
+msgid "Tobias König"
+msgstr ""
+
+#: aboutdata.cpp:51
+#, kde-format
+msgctxt "@info:credit"
+msgid "Martin Koller"
+msgstr ""
+
+#: aboutdata.cpp:52
+#, kde-format
+msgctxt "@info:credit"
+msgid "Uwe Koloska"
+msgstr ""
+
+#: aboutdata.cpp:53
+#, kde-format
+msgctxt "@info:credit"
+msgid "Sergio Luis Martins"
+msgstr ""
+
+#: aboutdata.cpp:54
+#, kde-format
+msgctxt "@info:credit"
+msgid "Mike McQuaid"
+msgstr ""
+
+#: aboutdata.cpp:55
+#, kde-format
+msgctxt "@info:credit"
+msgid "Glen Parker"
+msgstr ""
+
+#: aboutdata.cpp:56
+#, kde-format
+msgctxt "@info:credit"
+msgid "Dan Pilone"
+msgstr ""
+
+#: aboutdata.cpp:57
+#, kde-format
+msgctxt "@info:credit"
+msgid "Roman Rohr"
+msgstr ""
+
+#: aboutdata.cpp:58
+#, kde-format
+msgctxt "@info:credit"
+msgid "Rafał Rzepecki"
+msgstr ""
+
+#: aboutdata.cpp:58
+#, kde-format
+msgid "Part of work sponsored by Google with Summer of Code 2005"
+msgstr "गूगलेन प्रायोजितस्य कार्यस्य भागः समर आफ् कोड् २००५ इत्यनेन सह"
+
+#: aboutdata.cpp:59
+#, kde-format
+msgctxt "@info:credit"
+msgid "Don Sanders"
+msgstr ""
+
+#: aboutdata.cpp:60
+#, kde-format
+msgctxt "@info:credit"
+msgid "Bram Schoenmakers"
+msgstr ""
+
+#: aboutdata.cpp:61
+#, kde-format
+msgctxt "@info:credit"
+msgid "Günter Schwann"
+msgstr ""
+
+#: aboutdata.cpp:62
+#, kde-format
+msgctxt "@info:credit"
+msgid "Herwin Jan Steehouwer"
+msgstr ""
+
+#: aboutdata.cpp:63
+#, kde-format
+msgctxt "@info:credit"
+msgid "Mario Teijeiro"
+msgstr ""
+
+#: aboutdata.cpp:64
+#, kde-format
+msgctxt "@info:credit"
+msgid "Nick Thompson"
+msgstr ""
+
+#: aboutdata.cpp:65
+#, kde-format
+msgctxt "@info:credit"
+msgid "Bo Thorsen"
+msgstr ""
+
+#: aboutdata.cpp:66
+#, kde-format
+msgctxt "@info:credit"
+msgid "Larry Wright"
+msgstr ""
+
+#: aboutdata.cpp:67
+#, kde-format
+msgctxt "@info:credit"
+msgid "Thomas Zander"
+msgstr ""
+
+#: aboutdata.cpp:68
+#, kde-format
+msgctxt "@info:credit"
+msgid "Fester Zigterman"
+msgstr ""
+
+#: actionmanager.cpp:130
+#, kde-format
+msgid ""
+"<qt>This will hide the menu bar completely. You can show it again by typing "
+"%1.</qt>"
+msgstr ""
+"<qt>एतेन मेनू-पट्टिका पूर्णतया गोप्यते । %1.</qt> इति टङ्कयित्वा पुनः दर्शयितुं शक्नुवन्ति"
+
+#: actionmanager.cpp:133
+#, kde-format
+msgctxt "@title:window"
+msgid "Hide menu bar"
+msgstr ""
+
+#: actionmanager.cpp:244
+#, kde-format
+msgctxt "@action"
+msgid "Import &Calendar…"
+msgstr ""
+
+#: actionmanager.cpp:245
+#, kde-format
+msgctxt "@info:status"
+msgid "Import a calendar"
+msgstr ""
+
+#: actionmanager.cpp:246
+#, kde-format
+msgctxt "@info:tooltip"
+msgid "Import an iCalendar or vCalendar file"
+msgstr ""
+
+#: actionmanager.cpp:248
+#, kde-format
+msgctxt "@info:whatsthis"
+msgid ""
+"Select this menu entry if you would like to import the contents of an "
+"iCalendar or vCalendar file into your current calendar collection."
+msgstr ""
+
+#: actionmanager.cpp:254
+#, kde-format
+msgid "Get New Calendars…"
+msgstr "नवीनं पञ्चाङ्गं प्राप्नुवन्तु..."
+
+#: actionmanager.cpp:255
+#, kde-format
+msgctxt "@info:status"
+msgid "Load a calendar from \"Get Hot New Stuff\""
+msgstr ""
+
+#: actionmanager.cpp:256
+#, kde-format
+msgctxt "@info:tooltip"
+msgid "Search \"Get Hot New Stuff\" for calendars to import"
+msgstr ""
+
+#: actionmanager.cpp:258
+#, kde-format
+msgctxt "@info:whatsthis"
+msgid ""
+"This menu entry opens the \"Get Hot New Stuff\" dialog that allows you to "
+"search and import fun and useful calendars donated to the community."
+msgstr ""
+
+#: actionmanager.cpp:279
+#, kde-format
+msgid "Could not load calendar %1."
+msgstr "%1 पञ्चाङ्गं लोड् कर्तुं न शक्तम् ।"
+
+#: actionmanager.cpp:289
+#, kde-format
+msgid "The downloaded events will be merged into your current calendar."
+msgstr "डाउनलोड् कृताः घटनाः भवतः वर्तमानपञ्चाङ्गे विलीनाः भविष्यन्ति ।"
+
+#: actionmanager.cpp:306
+#, kde-format
+msgctxt "@action"
+msgid "Export as &iCalendar…"
+msgstr ""
+
+#: actionmanager.cpp:307
+#, kde-format
+msgctxt "@info:status"
+msgid "Export calendar to file"
+msgstr ""
+
+#: actionmanager.cpp:308
+#, kde-format
+msgctxt "@info:tooltip"
+msgid "Export your calendar to an iCalendar file"
+msgstr ""
+
+#: actionmanager.cpp:309
+#, kde-format
+msgctxt "@info:whatsthis"
+msgid ""
+"Allows you to export your entire calendar collection to one iCalendar file."
+msgstr ""
+
+#: actionmanager.cpp:315
+#, kde-format
+msgctxt "@action"
+msgid "Archive O&ld Incidences…"
+msgstr ""
+
+#: actionmanager.cpp:316
+#, kde-format
+msgctxt "@info:status"
+msgid "Archive events and to-dos to a file"
+msgstr ""
+
+#: actionmanager.cpp:317
+#, kde-format
+msgctxt "@info:tooltip"
+msgid "Archive old events and to-dos to an iCalendar file"
+msgstr ""
+
+#: actionmanager.cpp:319
+#, kde-format
+msgctxt "@info:whatsthis"
+msgid ""
+"This menu entry opens a dialog that allows you to select old events and to-"
+"dos that you can archive into an iCalendar file.  They will be removed from "
+"your existing calendar collection."
+msgstr ""
+
+#: actionmanager.cpp:327
+#, kde-format
+msgctxt "@action"
+msgid "Pur&ge Completed To-dos"
+msgstr ""
+
+#: actionmanager.cpp:328
+#, kde-format
+msgctxt "@info:status"
+msgid "Purge completed to-dos"
+msgstr ""
+
+#: actionmanager.cpp:329
+#, kde-format
+msgctxt "@info:tooltip"
+msgid "Remove completed to-dos from your calendar"
+msgstr ""
+
+#: actionmanager.cpp:331
+#, kde-format
+msgctxt "@info:whatsthis"
+msgid ""
+"Allows you to remove all completed to-dos from your calendar collection. "
+"This action cannot be undone!"
+msgstr ""
+
+#. i18n: ectx: property (text), widget (QPushButton, mDeleteButton)
+#: actionmanager.cpp:368 actionmanager.cpp:623 actionmanager.cpp:1308
+#: actionmanager.cpp:1345 ui/filteredit_base.ui:56
+#, kde-format
+msgid "&Delete"
+msgstr "&लुप्"
+
+#: actionmanager.cpp:385
+#, kde-format
+msgid "What's &Next"
+msgstr "किम् &अनन्तरं"
+
+#: actionmanager.cpp:386
+#, kde-format
+msgctxt "@info:status"
+msgid "What's Next View"
+msgstr ""
+
+#: actionmanager.cpp:387
+#, kde-format
+msgctxt "@info:tooltip"
+msgid "Switch to the What's Next View"
+msgstr ""
+
+#: actionmanager.cpp:389
+#, kde-format
+msgctxt "@info:whatsthis"
+msgid ""
+"Switches to the \"What's Next\" View, which shows your events and to-dos "
+"that are \"coming soon\" in a short list for quick reading.  All open to-dos "
+"will be displayed, but only the events from the days selected in the Date "
+"Navigator sidebar will be shown."
+msgstr ""
+
+#: actionmanager.cpp:397
+#, kde-format
+msgid "&Month"
+msgstr "&माह"
+
+#: actionmanager.cpp:398
+#, kde-format
+msgctxt "@info:status"
+msgid "Month View"
+msgstr ""
+
+#: actionmanager.cpp:399
+#, kde-format
+msgctxt "@info:tooltip"
+msgid "Switch to the Month View"
+msgstr ""
+
+#: actionmanager.cpp:401
+#, kde-format
+msgctxt "@info:whatsthis"
+msgid ""
+"Switches to the Month View, which shows all the events and due to-dos in a "
+"familiar monthly calendar layout."
+msgstr ""
+
+#: actionmanager.cpp:407
+#, kde-format
+msgid "&Agenda"
+msgstr "&कार्यक्रम"
+
+#: actionmanager.cpp:408
+#, kde-format
+msgctxt "@info:status"
+msgid "Agenda View"
+msgstr ""
+
+#: actionmanager.cpp:409
+#, kde-format
+msgctxt "@info:tooltip"
+msgid "Switch to the Agenda View"
+msgstr ""
+
+#: actionmanager.cpp:411
+#, kde-format
+msgctxt "@info:whatsthis"
+msgid ""
+"Switches to the Agenda View, which presents your events or due to-dos for "
+"one or more days, sorted chronologically.  You can also see the length of "
+"each event in the day timetable."
+msgstr ""
+
+#: actionmanager.cpp:418
+#, kde-format
+msgid "&Event List"
+msgstr "&घटनासूची"
+
+#: actionmanager.cpp:419
+#, kde-format
+msgctxt "@info:status"
+msgid "List View"
+msgstr ""
+
+#: actionmanager.cpp:420
+#, kde-format
+msgctxt "@info:tooltip"
+msgid "Switch to the List View"
+msgstr ""
+
+#: actionmanager.cpp:422
+#, kde-format
+msgctxt "@info:whatsthis"
+msgid ""
+"Switches to the List View, which displays all your to-dos, events and "
+"journal entries for the dates selected in the Date Navigator as a list."
+msgstr ""
+
+#: actionmanager.cpp:428
+#, kde-format
+msgid "&To-do List"
+msgstr "&कार्यसूची"
+
+#: actionmanager.cpp:429
+#, kde-format
+msgctxt "@info:status"
+msgid "To-do List View"
+msgstr ""
+
+#: actionmanager.cpp:430
+#, kde-format
+msgctxt "@info:tooltip"
+msgid "Switch to the To-do List View"
+msgstr ""
+
+#: actionmanager.cpp:432
+#, kde-format
+msgctxt "@info:whatsthis"
+msgid ""
+"Switches to the To-do List view, which provides a place for you to track "
+"tasks that need to be done."
+msgstr ""
+
+#: actionmanager.cpp:438
+#, kde-format
+msgid "&Journal"
+msgstr "&पत्रिका"
+
+#: actionmanager.cpp:439
+#, kde-format
+msgctxt "@info:status"
+msgid "Journal View"
+msgstr ""
+
+#: actionmanager.cpp:440
+#, kde-format
+msgctxt "@info:tooltip"
+msgid "Switch to the Journal View"
+msgstr ""
+
+#: actionmanager.cpp:442
+#, kde-format
+msgctxt "@info:whatsthis"
+msgid ""
+"Switches to the Journal View, which provides a place for you to record your "
+"reflections, occurrences or experiences."
+msgstr ""
+
+#: actionmanager.cpp:448
+#, kde-format
+msgid "Time&line"
+msgstr "काल&रेखा"
+
+#: actionmanager.cpp:449
+#, kde-format
+msgctxt "@info:status"
+msgid "Timeline View"
+msgstr ""
+
+#: actionmanager.cpp:450
+#, kde-format
+msgctxt "@info:tooltip"
+msgid "Switch to the Timeline View"
+msgstr ""
+
+#: actionmanager.cpp:452
+#, kde-format
+msgctxt "@info:whatsthis"
+msgid ""
+"Switches to the Timeline View, which shows all events for the selected "
+"timespan in a Gantt view. Each calendar is displayed in a separate line."
+msgstr ""
+
+#: actionmanager.cpp:461
+#, kde-format
+msgctxt "@action"
+msgid "&Refresh"
+msgstr ""
+
+#: actionmanager.cpp:462
+#, kde-format
+msgctxt "@info:status"
+msgid "Refresh"
+msgstr ""
+
+#: actionmanager.cpp:463
+#, kde-format
+msgctxt "@info:tooltip"
+msgid "Refresh the display"
+msgstr ""
+
+#: actionmanager.cpp:465
+#, kde-format
+msgctxt "@info:whatsthis"
+msgid ""
+"This action will refresh and redraw the current calendar view. It does not "
+"sync or update any calendar folders."
+msgstr ""
+
+#: actionmanager.cpp:474
+#, kde-format
+msgid "F&ilter"
+msgstr "f&ilter"
+
+#: actionmanager.cpp:475
+#, kde-format
+msgctxt "@info:status"
+msgid "Filter incidences"
+msgstr ""
+
+#: actionmanager.cpp:476
+#, kde-format
+msgctxt "@info:tooltip"
+msgid "Filter incidences from the calendar"
+msgstr ""
+
+#: actionmanager.cpp:478
+#, kde-format
+msgctxt "@info:whatsthis"
+msgid ""
+"Runs user-defined view filters on the calendar collection. Filters must be "
+"created first. See \"Manage View Filters\" option in the Settings menu."
+msgstr ""
+
+#: actionmanager.cpp:490
+#, kde-format
+msgid "In Horizontally"
+msgstr "In क्षैतिजरूपेण"
+
+#: actionmanager.cpp:495
+#, kde-format
+msgid "Out Horizontally"
+msgstr "क्षैतिजरूपेण बहिः"
+
+#: actionmanager.cpp:500
+#, kde-format
+msgid "In Vertically"
+msgstr "In लम्बवत्"
+
+#: actionmanager.cpp:505
+#, kde-format
+msgid "Out Vertically"
+msgstr "Out Vertically इति"
+
+#: actionmanager.cpp:514
+#, kde-format
+msgctxt "@action Jump to today"
+msgid "To &Today"
+msgstr ""
+
+#. i18n: ectx: property (text), widget (QPushButton, mTodayBtn)
+#: actionmanager.cpp:515 views/collectionview/quickview.ui:94
+#, kde-format
+msgid "Today"
+msgstr "अद्य"
+
+#: actionmanager.cpp:516
+#, kde-format
+msgctxt "@info:status"
+msgid "Scroll to Today"
+msgstr ""
+
+#: actionmanager.cpp:517
+#, kde-format
+msgctxt "@info:tooltip"
+msgid "Scroll the view to today"
+msgstr ""
+
+#: actionmanager.cpp:518
+#, kde-format
+msgctxt "@info:whatsthis"
+msgid "Scrolls the current view to the today's date."
+msgstr ""
+
+#: actionmanager.cpp:523
+#, kde-format
+msgctxt "scroll backward"
+msgid "&Backward"
+msgstr ""
+
+#: actionmanager.cpp:524
+#, kde-format
+msgctxt "scroll backward"
+msgid "Back"
+msgstr ""
+
+#: actionmanager.cpp:525
+#, kde-format
+msgctxt "@info:status"
+msgid "Scroll Backward"
+msgstr ""
+
+#: actionmanager.cpp:526
+#, kde-format
+msgctxt "@info:tooltip"
+msgid "Scroll the view backward"
+msgstr ""
+
+#: actionmanager.cpp:528
+#, kde-format
+msgctxt "@info:whatsthis"
+msgid ""
+"Scrolls backward by a day, week, month or year, depending on the current "
+"calendar view."
+msgstr ""
+
+#: actionmanager.cpp:534
+#, kde-format
+msgctxt "scroll forward"
+msgid "&Forward"
+msgstr ""
+
+#: actionmanager.cpp:535
+#, kde-format
+msgctxt "scroll forward"
+msgid "Forward"
+msgstr ""
+
+#: actionmanager.cpp:536
+#, kde-format
+msgctxt "@info:status"
+msgid "Scroll Forward"
+msgstr ""
+
+#: actionmanager.cpp:537
+#, kde-format
+msgctxt "@info:tooltip"
+msgid "Scroll the view forward"
+msgstr ""
+
+#: actionmanager.cpp:539
+#, kde-format
+msgctxt "@info:whatsthis"
+msgid ""
+"Scrolls forward by a day, week, month or year, depending on the current "
+"calendar view."
+msgstr ""
+
+#: actionmanager.cpp:544
+#, kde-format
+msgid "&Day"
+msgstr "&दिनं"
+
+#: actionmanager.cpp:553 actionmanager.cpp:1065
+#, kde-format
+msgid "&Next Day"
+msgid_plural "&Next %1 Days"
+msgstr[0] ""
+msgstr[1] ""
+
+#: actionmanager.cpp:555
+#, kde-format
+msgid "W&ork Week"
+msgstr "W&ork सप्ताहः"
+
+#: actionmanager.cpp:560
+#, kde-format
+msgid "&Week"
+msgstr "&सप्ताहः"
+
+#: actionmanager.cpp:567 kodaymatrix.cpp:484
+#, kde-format
+msgid "New E&vent…"
+msgstr "नवीन ई&वेण्ट्..."
+
+#: actionmanager.cpp:568
+#, kde-format
+msgctxt "@info:status"
+msgid "Create a new Event"
+msgstr ""
+
+#: actionmanager.cpp:569
+#, kde-format
+msgctxt "@info:tooltip"
+msgid "Create a new Event"
+msgstr ""
+
+#: actionmanager.cpp:571
+#, kde-format
+msgctxt "@info:whatsthis"
+msgid ""
+"Starts a dialog that allows you to create a new Event with reminders, "
+"attendees, recurrences and much more."
+msgstr ""
+
+#: actionmanager.cpp:577 kodaymatrix.cpp:485
+#, kde-format
+msgid "New &To-do…"
+msgstr "नवीन &To-do..."
+
+#: actionmanager.cpp:578
+#, kde-format
+msgctxt "@info:status"
+msgid "Create a new To-do"
+msgstr ""
+
+#: actionmanager.cpp:579
+#, kde-format
+msgctxt "@info:tooltip"
+msgid "Create a new To-do"
+msgstr ""
+
+#: actionmanager.cpp:581
+#, kde-format
+msgctxt "@info:whatsthis"
+msgid ""
+"Starts a dialog that allows you to create a new To-do with reminders, "
+"attendees, recurrences and much more."
+msgstr ""
+
+#: actionmanager.cpp:588
+#, kde-format
+msgctxt "@action"
+msgid "New Su&b-to-do…"
+msgstr ""
+
+#: actionmanager.cpp:596 kodaymatrix.cpp:486
+#, kde-format
+msgid "New &Journal…"
+msgstr "समाचार एवं पत्रिका..."
+
+#: actionmanager.cpp:597
+#, kde-format
+msgctxt "@info:status"
+msgid "Create a new Journal"
+msgstr ""
+
+#: actionmanager.cpp:598
+#, kde-format
+msgctxt "@info:tooltip"
+msgid "Create a new Journal"
+msgstr ""
+
+#: actionmanager.cpp:599
+#, kde-format
+msgctxt "@info:whatsthis"
+msgid "Starts a dialog that allows you to create a new Journal entry."
+msgstr ""
+
+#: actionmanager.cpp:604
+#, kde-format
+msgid "Configure View…"
+msgstr "दृश्यं विन्यस्तं कुर्वन्तु..."
+
+#: actionmanager.cpp:605
+#, kde-format
+msgid "Configure"
+msgstr "विन्यस्तं कुर्वन्तु"
+
+#: actionmanager.cpp:606
+#, kde-format
+msgctxt "@info:status"
+msgid "Configure the view"
+msgstr ""
+
+#: actionmanager.cpp:607
+#, kde-format
+msgctxt "@info:tooltip"
+msgid "Configure the current view"
+msgstr ""
+
+#: actionmanager.cpp:609
+#, kde-format
+msgctxt "@info:whatsthis"
+msgid ""
+"Starts a configuration dialog that allows you to change the settings for the "
+"current calendar view."
+msgstr ""
+
+#: actionmanager.cpp:615 actionmanager.cpp:1302 actionmanager.cpp:1343
+#, kde-format
+msgid "&Show"
+msgstr "&दर्शयतु"
+
+#: actionmanager.cpp:619 actionmanager.cpp:1305 actionmanager.cpp:1344
+#, kde-format
+msgid "&Edit…"
+msgstr "&सम्पादन…"
+
+#: actionmanager.cpp:628
+#, kde-format
+msgctxt "@action"
+msgid "&Make Sub-to-do Independent"
+msgstr ""
+
+#. i18n( "&Activate Reminder" ), 0,
+#. mCalendarView, SLOT(toggleAlarm()),
+#. mACollection, "activate_alarm" );
+#. ************************* SCHEDULE MENU *******************************
+#: actionmanager.cpp:640
+#, kde-format
+msgid "&Publish Item Information…"
+msgstr "&प्रकाशन मद सूचना..."
+
+#: actionmanager.cpp:647
+#, kde-format
+msgid "Send &Invitation to Attendees"
+msgstr "उपस्थितजनानाम् &आमन्त्रणं प्रेषयन्तु"
+
+#: actionmanager.cpp:655
+#, kde-format
+msgctxt "@action"
+msgid "Re&quest Update"
+msgstr ""
+
+#: actionmanager.cpp:663
+#, kde-format
+msgctxt "@action"
+msgid "Send &Cancellation to Attendees"
+msgstr ""
+
+#: actionmanager.cpp:671
+#, kde-format
+msgid "Send Status &Update"
+msgstr "स्थितिः &Update प्रेषयन्तु"
+
+#: actionmanager.cpp:679
+#, kde-format
+msgctxt "counter proposal"
+msgid "Request Chan&ge"
+msgstr ""
+
+#: actionmanager.cpp:687
+#, kde-format
+msgctxt "@action"
+msgid "&Mail Free Busy Information…"
+msgstr ""
+
+#: actionmanager.cpp:692
+#, kde-format
+msgid "&Send as iCalendar…"
+msgstr "&iCalendar इति रूपेण प्रेषयन्तु..."
+
+#: actionmanager.cpp:699
+#, kde-format
+msgctxt "@action"
+msgid "&Upload Free Busy Information"
+msgstr ""
+
+#: actionmanager.cpp:705
+#, kde-format
+msgid "&Address Book"
+msgstr "&पता पुस्तक"
+
+#: actionmanager.cpp:713
+#, kde-format
+msgid "Show Date Navigator"
+msgstr "तिथि नेविगेटरं दर्शयतु"
+
+#: actionmanager.cpp:717
+#, kde-format
+msgid "Show To-do View"
+msgstr "कर्तव्यदृश्यं दर्शयतु"
+
+#: actionmanager.cpp:721
+#, kde-format
+msgid "Show Item Viewer"
+msgstr "मददर्शकं दर्शयतु"
+
+#: actionmanager.cpp:737
+#, kde-format
+msgid "Show Calendar Manager"
+msgstr "पञ्चाङ्गप्रबन्धकं दर्शयतु"
+
+#: actionmanager.cpp:751
+#, kde-format
+msgctxt "@action"
+msgid "Configure &Date && Time…"
+msgstr ""
+
+#: actionmanager.cpp:755
+#, kde-format
+msgid "Manage View &Filters…"
+msgstr "दृश्यं प्रबन्धयन्तु &Filters..."
+
+#: actionmanager.cpp:759
+#, kde-format
+msgctxt "@action"
+msgid "Manage T&ags…"
+msgstr ""
+
+#: actionmanager.cpp:767
+#, kde-format
+msgid "&Configure KOrganizer…"
+msgstr "&KOrganizer विन्यस्तं कुर्वन्तु..."
+
+#: actionmanager.cpp:845
+#, kde-format
+msgid "1 incidence was imported successfully."
+msgid_plural "%1 incidences were imported successfully."
+msgstr[0] ""
+msgstr[1] ""
+
+#: actionmanager.cpp:848
+#, kde-format
+msgid "There was an error while merging the calendar: %1"
+msgstr "पञ्चाङ्गस्य विलयकाले त्रुटिः अभवत्: %1"
+
+#: actionmanager.cpp:859
+#, kde-format
+msgid "New calendar added successfully"
+msgstr "नूतनं पञ्चाङ्गं सफलतया योजितम्"
+
+#: actionmanager.cpp:861
+#, kde-format
+msgid "Could not add a calendar. Error: %1"
+msgstr "पञ्चाङ्गं योजयितुं न शक्तवान्। त्रुटिः %1"
+
+#: actionmanager.cpp:918
+#, kde-format
+msgctxt "@title:window"
+msgid "Select Calendar File to Open"
+msgstr ""
+
+#: actionmanager.cpp:946
+#, kde-format
+msgctxt "@title:window"
+msgid "Select Calendar File to Import"
+msgstr ""
+
+#: actionmanager.cpp:977
+#, kde-format
+msgid "An error occurred: %1 (url: %2)"
+msgstr "त्रुटिः अभवत्: %1 (url: %2)"
+
+#: actionmanager.cpp:995
+#, kde-format
+msgid "Cannot upload calendar to '%1'"
+msgstr "'%1' इत्यत्र पञ्चाङ्गं अपलोड् कर्तुं न शक्यते ।"
+
+#: actionmanager.cpp:1001
+#, kde-format
+msgid "Saved calendar '%1'."
+msgstr "'%1' इति पञ्चाङ्गं रक्षितम् ।"
+
+#: actionmanager.cpp:1039
+#, kde-format
+msgid "Unable to save calendar to the file %1."
+msgstr "%1 सञ्चिकायां पञ्चाङ्गं रक्षितुं असमर्थः ।"
+
+#: actionmanager.cpp:1039
+#, kde-format
+msgctxt "@title:window"
+msgid "Error"
+msgstr ""
+
+#: actionmanager.cpp:1084
+#, kde-format
+msgid "Could not start control module for date and time format."
+msgstr "तिथिसमयस्वरूपस्य कृते नियन्त्रणमॉड्यूल् आरभ्यतुं न शक्तवान् ।"
+
+#: actionmanager.cpp:1263
+#, kde-format
+msgid "&Show Event"
+msgstr "&शो इवेण्ट्"
+
+#: actionmanager.cpp:1266
+#, kde-format
+msgid "&Edit Event…"
+msgstr "&Edit इवेण्ट्..."
+
+#: actionmanager.cpp:1269
+#, kde-format
+msgid "&Delete Event"
+msgstr "&Delete Event"
+
+#: actionmanager.cpp:1277
+#, kde-format
+msgid "&Show To-do"
+msgstr "&Show To-do इति"
+
+#: actionmanager.cpp:1280 kontactplugin/korganizer/todosummarywidget.cpp:321
+#, kde-format
+msgid "&Edit To-do…"
+msgstr "&Edit To-do..."
+
+#: actionmanager.cpp:1283 kontactplugin/korganizer/todosummarywidget.cpp:323
+#, kde-format
+msgid "&Delete To-do"
+msgstr "&Delete To-do इति"
+
+#: actionmanager.cpp:1421 actionmanager.cpp:1527
+#, kde-format
+msgid "Attach as &link"
+msgstr "&link इति संलग्नं कुर्वन्तु"
+
+#: actionmanager.cpp:1422 actionmanager.cpp:1528
+#, kde-format
+msgid "Attach &inline"
+msgstr "संलग्नं &inline"
+
+#: actionmanager.cpp:1423
+#, kde-format
+msgid "Attach inline &without attachments"
+msgstr "अन्तर्रेखा &संलग्नतां विना संलग्नं कुर्वन्तु"
+
+#: actionmanager.cpp:1425 actionmanager.cpp:1530
+#, kde-format
+msgid "C&ancel"
+msgstr "निरसयतु"
+
+#: actionmanager.cpp:1463
+#, kde-format
+msgid "Removing attachments from an email might invalidate its signature."
+msgstr "ईमेलतः संलग्नकानि निष्कास्य तस्य हस्ताक्षरं अमान्यं भवितुम् अर्हति ।"
+
+#: actionmanager.cpp:1464
+#, kde-format
+msgctxt "@title:window"
+msgid "Remove Attachments"
+msgstr ""
+
+#: actionmanager.cpp:1615
+#, kde-format
+msgid "Undo: %1"
+msgstr "पूर्ववतं कुर्वन्तु: %1"
+
+#: actionmanager.cpp:1618 actionmanager.cpp:1634
+#, kde-format
+msgid "Undo"
+msgstr "पूर्ववत"
+
+#: actionmanager.cpp:1628
+#, kde-format
+msgid "Redo: %1"
+msgstr "पुनः करोतु: %1"
+
+#: actionmanager.cpp:1631
+#, kde-format
+msgid "Redo"
+msgstr "पुनः करो"
+
+#: actionmanager.cpp:1645
+#, kde-format
+msgid "URL '%1' is invalid."
+msgstr "URL '%1' अमान्यम् अस्ति ।"
+
+#: actionmanager.cpp:1650
+#, kde-format
+msgctxt "@info"
+msgid ""
+"<p>Would you like to merge this calendar item into an existing calendar or "
+"use it to create a brand new calendar?</p><p>If you select merge, then you "
+"will be given the opportunity to select the destination calendar.</p><p>If "
+"you select add, then a new calendar will be created for you automatically.</"
+"p>"
+msgstr ""
+
+#: actionmanager.cpp:1658
+#, kde-format
+msgctxt "@title:window"
+msgid "Import Calendar"
+msgstr ""
+
+#: actionmanager.cpp:1659
+#, kde-format
+msgctxt "@action:button"
+msgid "Merge into existing calendar"
+msgstr ""
+
+#: actionmanager.cpp:1660
+#, kde-format
+msgctxt "@action:button"
+msgid "Add as new calendar"
+msgstr ""
+
+#: akonadicollectionview.cpp:289
+#, kde-format
+msgctxt "@item this is the default calendar"
+msgid "%1 (Offline)"
+msgstr ""
+
+#: akonadicollectionview.cpp:292
+#, kde-format
+msgctxt "@item this is the default calendar"
+msgid "%1 (Default)"
+msgstr ""
+
+#: akonadicollectionview.cpp:408
+#, kde-format
+msgctxt "@info:tooltip"
+msgid "Set search keyword"
+msgstr ""
+
+#: akonadicollectionview.cpp:409
+#, kde-format
+msgctxt "@info:whatsthis"
+msgid "Lets you search for a keyword in your calendars"
+msgstr ""
+
+#: akonadicollectionview.cpp:414
+#, kde-format
+msgctxt "@info/plain Displayed grayed-out inside the textbox, verb to search"
+msgid "Search…"
+msgstr ""
+
+#: akonadicollectionview.cpp:500 manageshowcollectionproperties.cpp:76
+#, kde-format
+msgctxt "@title:window"
+msgid "Properties of Calendar Folder %1"
+msgstr ""
+
+#: akonadicollectionview.cpp:512
+#, kde-format
+msgctxt "@action:inmenu"
+msgid "&Set Folder Color…"
+msgstr ""
+
+#: akonadicollectionview.cpp:518
+#, kde-format
+msgctxt "@action:inmenu"
+msgid "Set as &Default Folder"
+msgstr ""
+
+#: akonadicollectionview.cpp:523
+#, kde-format
+msgctxt "@action:inmenu"
+msgid "Serverside Subscription…"
+msgstr ""
+
+#: akonadicollectionview.cpp:568
+#, kde-format
+msgctxt "@info"
+msgid "Do you really want replace your current default calendar with \"%1\"?"
+msgstr ""
+
+#: akonadicollectionview.cpp:569
+#, kde-format
+msgctxt "@title:window"
+msgid "Replace Default Calendar?"
+msgstr ""
+
+#: akonadicollectionview.cpp:706
+#, kde-format
+msgctxt "@title:window"
+msgid "Add Calendar"
+msgstr ""
+
+#: akonadicollectionview.cpp:748
+#, kde-format
+msgctxt "@info"
+msgid "Do you really want to delete calendar %1?"
+msgstr ""
+
+#: akonadicollectionview.cpp:749
+#, kde-format
+msgctxt "@title:window"
+msgid "Delete Calendar"
+msgstr ""
+
+#: calendarview.cpp:249
+#, kde-format
+msgid ""
+"<p><em>No Item Selected</em></p><p>Select an event, to-do or journal entry "
+"to view its details here.</p>"
+msgstr ""
+"<p><em>कोऽपि द्रव्यः चयनितः नास्ति</em></p><p> अत्र तस्य विवरणं द्रष्टुं घटनां, कर्तव्यं "
+"वा पत्रिकाप्रविष्टिं चिनोतु ।</p>"
+
+#: calendarview.cpp:255
+#, kde-format
+msgid ""
+"View the details of events, journal entries or to-dos selected in "
+"KOrganizer's main view here."
+msgstr ""
+"KOrganizer इत्यस्य मुख्यदृश्ये चयनितानां घटनानां, पत्रिकाप्रविष्टीनां वा कार्याणां विवरणं "
+"अत्र पश्यन्तु ।"
+
+#: calendarview.cpp:664
+#, kde-format
+msgid "Todo completed: %1 (%2)"
+msgstr "सर्वं सम्पन्नम् : %1 (%2)"
+
+#: calendarview.cpp:673
+#, kde-format
+msgid "Journal of %1"
+msgstr "%1 के जर्नल"
+
+#: calendarview.cpp:722
+#, kde-format
+msgid ""
+"The item \"%1\" is filtered by your current filter rules, so it will be "
+"hidden and not appear in the view."
+msgstr ""
+"\"%1\" इति द्रव्यं भवतः वर्तमान-छिद्रक-नियमेन फ़िल्टर कृतम् अस्ति, अतः तत् गुप्तं भविष्यति, "
+"दृश्ये न दृश्यते च ।"
+
+#: calendarview.cpp:791
+#, kde-format
+msgctxt "@info"
+msgid "Do you really want to permanently remove the item \"%1\"?"
+msgstr ""
+
+#: calendarview.cpp:792
+#, kde-format
+msgctxt "@title:window"
+msgid "Delete Item?"
+msgstr ""
+
+#: calendarview.cpp:867
+#, kde-format
+msgid "Paste failed: unable to determine a valid target date."
+msgstr "पेस्ट् विफलम्: वैधलक्ष्यतिथिं निर्धारयितुं असमर्थम्।"
+
+#: calendarview.cpp:1297
+#, kde-format
+msgid "Make sub-to-dos independent"
+msgstr "उप-कर्तृकं स्वतन्त्रं कुरुत"
+
+#: calendarview.cpp:1354
+#, kde-format
+msgid "Toggle Reminder"
+msgstr "स्मरणं टॉगल कुर्वन्तु"
+
+#: calendarview.cpp:1386 calendarview.cpp:1438
+#, kde-format
+msgid "Toggle To-do Completed"
+msgstr "Toggle To-do सम्पन्नम्"
+
+#: calendarview.cpp:1490
+#, kde-format
+msgctxt "@info"
+msgid "\"%1\" was successfully copied to %2."
+msgstr ""
+
+#: calendarview.cpp:1491
+#, kde-format
+msgctxt "@title:window"
+msgid "Copying Succeeded"
+msgstr ""
+
+#: calendarview.cpp:1495
+#, kde-format
+msgctxt "@info"
+msgid "Unable to copy the item \"%1\" to %2."
+msgstr ""
+
+#: calendarview.cpp:1496 calendarview.cpp:2488
+#, kde-format
+msgctxt "@title:window"
+msgid "Copying Failed"
+msgstr ""
+
+#: calendarview.cpp:1555
+#, kde-format
+msgctxt "@info"
+msgid ""
+"Unable to remove the item \"%1\" from the original calendar. However, a copy "
+"of this item has been put into %2"
+msgstr ""
+
+#: calendarview.cpp:1559 calendarview.cpp:1575 calendarview.cpp:2523
+#, kde-format
+msgctxt "@title:window"
+msgid "Moving Failed"
+msgstr ""
+
+#: calendarview.cpp:1564
+#, kde-format
+msgctxt "@info"
+msgid "\"%1\" was successfully moved from %2 to %3."
+msgstr ""
+
+#: calendarview.cpp:1565
+#, kde-format
+msgctxt "@title:window"
+msgid "Moving Succeeded"
+msgstr ""
+
+#: calendarview.cpp:1571
+#, kde-format
+msgctxt "@info"
+msgid "Unable to add the item \"%1\" into %2. This item has not been moved."
+msgstr ""
+
+#: calendarview.cpp:1609
+#, kde-format
+msgid "Do you want to dissociate the occurrence on %1 from the recurrence?"
+msgstr "किं भवान् %1 इत्यत्र घटनां पुनरावृत्तितः विच्छेदयितुम् इच्छति?"
+
+#: calendarview.cpp:1613 calendarview.cpp:1625 calendarview.cpp:2293
+#, kde-format
+msgctxt "@title:window"
+msgid "KOrganizer Confirmation"
+msgstr "KOrganizer पुष्टिकरण"
+
+#: calendarview.cpp:1614
+#, kde-format
+msgctxt "@action:button"
+msgid "&Dissociate"
+msgstr ""
+
+#: calendarview.cpp:1620
+#, kde-format
+msgid ""
+"Do you want to dissociate the occurrence on %1 from the recurrence or also "
+"dissociate future ones?"
+msgstr ""
+"किं भवन्तः %1 इत्यत्र घटनां पुनरावृत्तितः विच्छेदयितुम् इच्छन्ति अथवा भविष्यत् अपि विच्छेदयितुम् "
+"इच्छन्ति?"
+
+#: calendarview.cpp:1626
+#, kde-format
+msgctxt "@action:button"
+msgid "&Only Dissociate This One"
+msgstr ""
+
+#: calendarview.cpp:1627
+#, kde-format
+msgctxt "@action:button"
+msgid "&Also Dissociate Future Ones"
+msgstr ""
+
+#: calendarview.cpp:1645
+#, kde-format
+msgid "Dissociate future occurrences"
+msgstr "भविष्यत्घटनानां विच्छेदनं कुर्वन्तु"
+
+#: calendarview.cpp:1647
+#, kde-format
+msgid "Dissociate occurrence"
+msgstr "घटनां विसर्जयतु"
+
+#: calendarview.cpp:1654
+#, kde-format
+msgid "Dissociating the future occurrences failed."
+msgstr "भविष्यत्घटनानां विच्छेदनं असफलम् अभवत् ।"
+
+#: calendarview.cpp:1654 calendarview.cpp:1656
+#, kde-format
+msgctxt "@title:window"
+msgid "Dissociating Failed"
+msgstr ""
+
+#: calendarview.cpp:1656
+#, kde-format
+msgid "Dissociating the occurrence failed."
+msgstr "घटनायाः विच्छेदनं असफलम् अभवत् ।"
+
+#: calendarview.cpp:1818
+#, kde-format
+msgid "iCalendars (*.ics)"
+msgstr "iCalendars (*.ics) ९."
+
+#: calendarview.cpp:1827
+#, kde-format
+msgid "Do you want to overwrite %1?"
+msgstr "%1 इत्यस्य अधिलेखनं कर्तुम् इच्छति वा?"
+
+#: calendarview.cpp:1828
+#, kde-format
+msgctxt "@title:window"
+msgid "Export Calendar"
+msgstr ""
+
+#: calendarview.cpp:1842
+#, kde-format
+msgctxt "save failure cause unknown"
+msgid "Reason unknown"
+msgstr ""
+
+#: calendarview.cpp:1844
+#, kde-format
+msgctxt "@info"
+msgid "Cannot write iCalendar file %1. %2"
+msgstr ""
+
+#: calendarview.cpp:1945 calendarview.cpp:1990
+#, kde-format
+msgid "No filter"
+msgstr "न फ़िल्टर"
+
+#: calendarview.cpp:2288
+#, kde-format
+msgid ""
+"The item \"%1\" has sub-to-dos. Do you want to delete just this item and "
+"make all its sub-to-dos independent, or delete the to-do with all its sub-to-"
+"dos?"
+msgstr ""
+"\"%1\" इत्यस्य द्रव्यस्य उप-कार्यं भवति । किं भवान् केवलम् एतत् द्रव्यं विलोपयितुम् इच्छति तथा "
+"च तस्य सर्वाणि उप-कार्य-कार्यं स्वतन्त्रं कर्तुम् इच्छति, अथवा तस्य सर्वैः उप-कार्यैः सह कर्तव्यं "
+"विलोपयितुम् इच्छति?"
+
+#: calendarview.cpp:2294
+#, kde-format
+msgctxt "@action:button"
+msgid "Delete Only This"
+msgstr ""
+
+#: calendarview.cpp:2295 calendarview.cpp:2353
+#, kde-format
+msgctxt "@action:button"
+msgid "Delete All"
+msgstr ""
+
+#: calendarview.cpp:2326
+#, kde-format
+msgid ""
+"The item \"%1\" is marked read-only and cannot be deleted; it probably "
+"belongs to a read-only calendar."
+msgstr ""
+"\"%1\" इति द्रव्यं केवलं पठनीयं चिह्नितम् अस्ति, तत् विलोपयितुं न शक्यते; सम्भवतः केवलं "
+"पठनीयपञ्चाङ्गस्य अस्ति ।"
+
+#: calendarview.cpp:2330
+#, kde-format
+msgid "Removing not possible"
+msgstr "निष्कासनं न सम्भवति"
+
+#: calendarview.cpp:2348
+#, kde-format
+msgid ""
+"The calendar item \"%1\" recurs over multiple dates; are you sure you want "
+"to delete it and all its recurrences?"
+msgstr ""
+"पञ्चाङ्गवस्तु \"%1\" बहुतिथिषु पुनरावृत्तिः भवति; किं भवन्तः निश्चितरूपेण तत् तस्य सर्वाणि "
+"पुनरावृत्तयः च विलोपयितुम् इच्छन्ति?"
+
+#: calendarview.cpp:2352 calendarview.cpp:2382
+#, kde-format
+msgid "KOrganizer Confirmation"
+msgstr "KOrganizer पुष्टिकरण"
+
+#: calendarview.cpp:2360
+#, kde-format
+msgid "Also Delete &Future"
+msgstr "Also Delete &Future इति अपि"
+
+#: calendarview.cpp:2364
+#, kde-format
+msgid ""
+"The calendar item \"%1\" recurs over multiple dates. Do you want to delete "
+"only the current one on %2, also future occurrences, or all its occurrences?"
+msgstr ""
+"पञ्चाङ्गवस्तु \"%1\" बहुतिथिषु पुनरावृत्तिः भवति । किं भवान् केवलं %2 इत्यत्र वर्तमानं, "
+"भविष्यत्घटनानि अपि, अथवा तस्य सर्वाणि घटनानि विलोपयितुम् इच्छति?"
+
+#: calendarview.cpp:2371
+#, kde-format
+msgid ""
+"The calendar item \"%1\" recurs over multiple dates. Do you want to delete "
+"only the current one on %2 or all its occurrences?"
+msgstr ""
+"पञ्चाङ्गवस्तु \"%1\" बहुतिथिषु पुनरावृत्तिः भवति । किं भवान् केवलं %2 इत्यत्र वर्तमानं वा तस्य "
+"सर्वाणि घटनानि विलोपयितुम् इच्छति?"
+
+#: calendarview.cpp:2383
+#, kde-format
+msgid "Delete C&urrent"
+msgstr "वर्तमानं विलोपयन्तु"
+
+#: calendarview.cpp:2385
+#, kde-format
+msgid "Delete &All"
+msgstr "विलोपयन्तु &सर्वम्"
+
+#: calendarview.cpp:2416 calendarview.cpp:2423
+#, kde-format
+msgid "Delete \"%1\""
+msgstr "\"%1\" विलोपयतु।"
+
+#: calendarview.cpp:2453
+#, kde-format
+msgid ""
+"All calendars are unchecked in the Calendar Manager. No to-do was purged."
+msgstr ""
+"पञ्चाङ्गप्रबन्धके सर्वाणि पञ्चाङ्गानि अनिरीक्षितानि सन्ति । न कोऽपि कर्तव्यः शुद्धः अभवत् ।"
+
+#: calendarview.cpp:2458 calendarview.cpp:2741
+#, kde-format
+msgid "There are no completed to-dos to purge."
+msgstr "शुद्धिकरणार्थं सम्पूर्णाः कार्याणि न सन्ति।"
+
+#: calendarview.cpp:2463
+#, kde-format
+msgid "Delete all completed to-dos from checked calendars?"
+msgstr "चेक्ड् कैलेण्डर् तः सर्वाणि सम्पन्नानि कार्याणि विलोपयन्तु?"
+
+#: calendarview.cpp:2464
+#, kde-format
+msgctxt "@title:window"
+msgid "Purge To-dos"
+msgstr ""
+
+#: calendarview.cpp:2465
+#, kde-format
+msgctxt "@action:button"
+msgid "Purge"
+msgstr ""
+
+#: calendarview.cpp:2476
+#, kde-format
+msgctxt "@info"
+msgid "Unable to edit \"%1\" because it is locked by another process."
+msgstr ""
+
+#: calendarview.cpp:2488
+#, kde-format
+msgid "Unable to copy the item to %1."
+msgstr "%1 इत्यत्र द्रव्यस्य प्रतिलिपिं कर्तुं असमर्थः ।"
+
+#: calendarview.cpp:2523
+#, kde-format
+msgid "Unable to move the item to  %1."
+msgstr "%1 - मध्ये द्रव्यं स्थानान्तरयितुं असमर्थः ।"
+
+#: calendarview.cpp:2734
+#, kde-format
+msgid "0 completed to-dos were purged."
+msgstr "० सम्पन्नं टू-डोस् शुद्धं कृतम् ।"
+
+#: calendarview.cpp:2735 calendarview.cpp:2745
+#, kde-format
+msgid "%1 to-do was ignored because it has uncompleted or read-only children."
+msgid_plural ""
+"%1 to-dos were ignored because they have uncompleted or read-only children."
+msgstr[0] ""
+msgstr[1] ""
+
+#: calendarview.cpp:2739 calendarview.cpp:2744
+#, kde-format
+msgid "%1 completed to-do was purged."
+msgid_plural "%1 completed to-dos were purged."
+msgstr[0] ""
+msgstr[1] ""
+
+#: calendarview.cpp:2750
+#, kde-format
+msgid "An error occurred while purging completed to-dos: %1"
+msgstr "सम्पूर्णं कार्यं शुद्धं कुर्वन् त्रुटिः अभवत्: %1"
+
+#: calendarview.cpp:2804
+#, kde-format
+msgid ""
+"You created an incidence in a calendar that is currently filtered out.\n"
+"On the left sidebar, enable it in the calendar manager to see the incidence."
+msgstr ""
+"भवान् एकस्मिन् पञ्चाङ्गे एकं घटनां निर्मितवान् यत् सम्प्रति छानितम् अस्ति ।\n"
+"वामपार्श्वपट्टिकायां, पञ्चाङ्गप्रबन्धके घटनां द्रष्टुं सक्षमं कुर्वन्तु ।"
+
+#: calendarview.cpp:2808
+#, kde-format
+msgid ""
+"You created an incidence in a calendar that is currently filtered out.\n"
+"You can enable it through the calendar manager (Settings->Sidebar->Show "
+"Calendar Manager)"
+msgstr ""
+"भवान् एकस्मिन् पञ्चाङ्गे एकं घटनां निर्मितवान् यत् सम्प्रति छानितम् अस्ति ।\n"
+"भवान् पञ्चाङ्गप्रबन्धकस्य (सेटिंग्स्->पार्श्वपट्टिका->पञ्चाङ्गप्रबन्धकस्य दर्शयतु) माध्यमेन सक्षमं "
+"कर्तुं शक्नोति ।"
+
+#: collectiongeneralpage.cpp:37
+#, kde-format
+msgctxt "@title:tab General settings for a folder."
+msgid "General"
+msgstr ""
+
+#: collectiongeneralpage.cpp:45
+#, kde-format
+msgctxt "@info:tooltip"
+msgid "Set the folder name"
+msgstr ""
+
+#: collectiongeneralpage.cpp:46
+#, kde-format
+msgctxt "@info:whatsthis"
+msgid "Enter a name here to set the name of this folder."
+msgstr ""
+
+#: collectiongeneralpage.cpp:47
+#, kde-format
+msgctxt "@label:textbox Name of the folder."
+msgid "&Name:"
+msgstr ""
+
+#: collectiongeneralpage.cpp:50
+#, kde-format
+msgctxt "@option:check"
+msgid "Block reminders locally"
+msgstr ""
+
+#: collectiongeneralpage.cpp:51
+#, kde-format
+msgctxt "@info:tooltip"
+msgid "Ignore reminders from this calendar"
+msgstr ""
+
+#: collectiongeneralpage.cpp:53
+#, kde-format
+msgctxt "@info:whatsthis"
+msgid ""
+"Check this box if you do not want to receive reminders from items associated "
+"with this calendar."
+msgstr ""
+
+#: collectiongeneralpage.cpp:58
+#, kde-format
+msgctxt "@option:check"
+msgid "&Use custom icon:"
+msgstr ""
+
+#: collectiongeneralpage.cpp:59
+#, kde-format
+msgctxt "@info:tooltip"
+msgid "Set a custom icon"
+msgstr ""
+
+#: collectiongeneralpage.cpp:60
+#, kde-format
+msgctxt "@info:whatsthis"
+msgid "Check this box if you want to set a custom icon for this folder."
+msgstr ""
+
+#. i18n: ectx: Menu (file)
+#: data/korganizer_part.rc:4 data/korganizerui.rc:4
+#, kde-format
+msgid "&File"
+msgstr "&संचिका"
+
+#. i18n: ectx: Menu (import)
+#: data/korganizer_part.rc:11 data/korganizerui.rc:5
+#, kde-format
+msgid "&Import"
+msgstr "&आयात"
+
+#. i18n: ectx: Menu (export)
+#: data/korganizer_part.rc:18 data/korganizerui.rc:12
+#, kde-format
+msgid "&Export"
+msgstr "&निर्यात"
+
+#. i18n: ectx: Menu (edit)
+#: data/korganizer_part.rc:30 data/korganizerui.rc:23
+#, kde-format
+msgid "&Edit"
+msgstr "&सम्पादन"
+
+#. i18n: ectx: Menu (view)
+#: data/korganizer_part.rc:42 data/korganizerui.rc:28
+#, kde-format
+msgid "&View"
+msgstr "&दृश्यं"
+
+#. i18n: ectx: Menu (zoom)
+#: data/korganizer_part.rc:58 data/korganizerui.rc:44
+#, kde-format
+msgid "&Zoom"
+msgstr "&ज़ूम"
+
+#. i18n: ectx: Menu (go)
+#: data/korganizer_part.rc:66 data/korganizerui.rc:52
+#, kde-format
+msgid "&Go"
+msgstr "&गच्छ"
+
+#. i18n: ectx: Menu (actions)
+#: data/korganizer_part.rc:78 data/korganizerui.rc:65
+#, kde-format
+msgid "&Actions"
+msgstr "&कर्माणि"
+
+#. i18n: ectx: Menu (schedule)
+#: data/korganizer_part.rc:93 data/korganizerui.rc:81
+#, kde-format
+msgid "S&chedule"
+msgstr "S&schedule इति"
+
+#. i18n: ectx: Menu (settings)
+#: data/korganizer_part.rc:105 data/korganizerui.rc:93
+#, kde-format
+msgid "&Settings"
+msgstr "&सेटिंग्स"
+
+#. i18n: ectx: Menu (sidebar)
+#: data/korganizer_part.rc:106 data/korganizerui.rc:95
+#, kde-format
+msgid "&Sidebar"
+msgstr "&पार्श्वपट्टिका"
+
+#. i18n: ectx: Menu (help)
+#: data/korganizer_part.rc:124 data/korganizerui.rc:109
+#, kde-format
+msgid "&Help"
+msgstr "&साहाय्यम्‌"
+
+#. i18n: ectx: ToolBar (mainToolBar)
+#: data/korganizer_part.rc:129 data/korganizerui.rc:114
+#, kde-format
+msgctxt "main toolbar"
+msgid "Main"
+msgstr ""
+
+#. i18n: ectx: ToolBar (korganizer_toolbar)
+#: data/korganizer_part.rc:144 data/korganizerui.rc:129
+#, kde-format
+msgid "Views"
+msgstr "दृश्यम्"
+
+#. i18n: ectx: ToolBar (schedule_toolbar)
+#: data/korganizer_part.rc:154 data/korganizerui.rc:139
+#, kde-format
+msgid "Schedule"
+msgstr "कार्यक्रमः"
+
+#. i18n: ectx: ToolBar (filter_toolbar)
+#: data/korganizer_part.rc:160 data/korganizerui.rc:146
+#, kde-format
+msgid "Filters Toolbar"
+msgstr "Filters Toolbar इति"
+
+#: datenavigatorcontainer.cpp:28
+#, kde-format
+msgid ""
+"<qt><p>Select the dates you want to display in KOrganizer's main view here. "
+"Hold the mouse button to select more than one day.</p><p>Press the top "
+"buttons to browse to the next / previous months or years.</p><p>Each line "
+"shows a week. The number in the left column is the number of the week in the "
+"year. Press it to select the whole week.</p></qt>"
+msgstr ""
+"<qt><p>अत्र KOrganizer इत्यस्य मुख्यदृश्ये यत् तिथयः प्रदर्शयितुम् इच्छति तत् चिनोतु । "
+"एकस्मात् अधिकं दिवसं चयनं कर्तुं मूषकस्य बटनं धारयन्तु ।</p><p> अग्रिम / पूर्वमासान् वा "
+"वर्षाणि वा ब्राउज् कर्तुं उपरि बटन् नुदन्तु ।</p><p> प्रत्येकं पङ्क्तिः एकं सप्ताहं दर्शयति। "
+"वामस्तम्भे यः संख्या अस्ति सः वर्षे सप्ताहस्य संख्या अस्ति । सम्पूर्णसप्ताहं चयनं कर्तुं तत् नुदन्तु।</"
+"p></qt>"
+
+#: dialog/filtereditdialog.cpp:31
+#, kde-format
+msgctxt "@title::window"
+msgid "Edit Calendar Filters"
+msgstr ""
+
+#: dialog/filtereditdialog.cpp:87
+#, kde-format
+msgctxt "@info:whatsthis"
+msgid "Press this button to define a new filter."
+msgstr ""
+
+#: dialog/filtereditdialog.cpp:88
+#, kde-format
+msgctxt "@info:whatsthis"
+msgid "Press this button to remove the currently active filter."
+msgstr ""
+
+#: dialog/filtereditdialog.cpp:219
+#, kde-format
+msgctxt "@label default filter name"
+msgid "New Filter %1"
+msgstr ""
+
+#: dialog/filtereditdialog.cpp:242
+#, kde-format
+msgctxt "@info"
+msgid "Do you really want to permanently remove the filter \"%1\"?"
+msgstr ""
+
+#: dialog/filtereditdialog.cpp:243
+#, kde-format
+msgctxt "@title:window"
+msgid "Delete Filter?"
+msgstr ""
+
+#: dialog/koeventviewerdialog.cpp:32
+#, kde-format
+msgctxt "@title:window"
+msgid "Event Viewer"
+msgstr ""
+
+#: dialog/koeventviewerdialog.cpp:40
+#, kde-format
+msgctxt "@action:button"
+msgid "Edit…"
+msgstr ""
+
+#: dialog/koeventviewerdialog.cpp:41
+#, kde-format
+msgctxt "@action:button"
+msgid "Show in Context"
+msgstr ""
+
+#: dialog/searchdialog.cpp:40
+#, kde-format
+msgctxt "@title:window"
+msgid "Find in Calendars"
+msgstr ""
+
+#: dialog/searchdialog.cpp:73
+#, kde-format
+msgctxt "@action:button search in calendar"
+msgid "&Search"
+msgstr ""
+
+#: dialog/searchdialog.cpp:75
+#, kde-format
+msgctxt "@info:tooltip"
+msgid "Start the search"
+msgstr ""
+
+#: dialog/searchdialog.cpp:76
+#, kde-format
+msgctxt "@info:whatsthis"
+msgid "Press this button to start the search."
+msgstr ""
+
+#: dialog/searchdialog.cpp:145
+#, kde-format
+msgctxt "@info"
+msgid ""
+"Invalid search expression, cannot perform the search. Please enter a search "
+"expression using the wildcard characters '*' and '?' where needed."
+msgstr ""
+
+#: dialog/searchdialog.cpp:157
+#, kde-format
+msgctxt "@info"
+msgid "No items were found that match your search pattern."
+msgstr ""
+
+#: dialog/searchdialog.cpp:158
+#, kde-format
+msgctxt "@title:window"
+msgid "Search Results"
+msgstr ""
+
+#: dialog/searchdialog.cpp:173
+#, kde-format
+msgctxt "@label"
+msgid "%1 match"
+msgid_plural "%1 matches"
+msgstr[0] ""
+msgstr[1] ""
+
+#: koapp.cpp:63
+#, kde-format
+msgid "Failed to retrieve incidence from Akonadi"
+msgstr "अकोनाडीतः घटनां पुनः प्राप्तुं असफलः"
+
+#: koapp.cpp:68
+#, kde-format
+msgid ""
+"Failed to retrieve incidence from Akonadi: requested incidence doesn't exist."
+msgstr "अकोनाडीतः घटनां पुनः प्राप्तुं असफलम्: अनुरोधिता घटना नास्ति।"
+
+#: kocorehelper.cpp:28
+#, kde-format
+msgctxt "@item:intext delimiter for joining holiday names"
+msgid ","
+msgstr ""
+
+#: kodaymatrix.cpp:226
+#, kde-format
+msgctxt "delimiter for joining holiday names"
+msgid ","
+msgstr ""
+
+#: kodaymatrix.cpp:634
+#, kde-format
+msgid "&Move"
+msgstr "&चलनम्"
+
+#: kodaymatrix.cpp:636
+#, kde-format
+msgid "&Copy"
+msgstr "&प्रतिलिपि"
+
+#: kodaymatrix.cpp:639
+#, kde-format
+msgid "&Add"
+msgstr "&संयोजयति"
+
+#: kodaymatrix.cpp:643
+#, kde-format
+msgid "&Cancel"
+msgstr "&निरसयतु"
+
+#: koeventpopupmenu.cpp:41
+#, kde-format
+msgctxt "@action:inmenu"
+msgid "&Show"
+msgstr "&दर्शयतु"
+
+#: koeventpopupmenu.cpp:43
+#, kde-format
+msgctxt "@action:inmenu"
+msgid "&Edit…"
+msgstr "&सम्पादन…"
+
+#: koeventpopupmenu.cpp:45
+#, kde-format
+msgctxt "@action:inmenu delete this incidence"
+msgid "&Delete"
+msgstr "&लुप्"
+
+#: koeventpopupmenu.cpp:49
+#, kde-format
+msgctxt "@action:inmenu"
+msgid "&Print…"
+msgstr ""
+
+#: koeventpopupmenu.cpp:51
+#, kde-format
+msgctxt "@action:inmenu"
+msgid "Print Previe&w…"
+msgstr ""
+
+#: koeventpopupmenu.cpp:72
+#, kde-format
+msgctxt "@action:inmenu cut this incidence"
+msgid "C&ut"
+msgstr ""
+
+#: koeventpopupmenu.cpp:74
+#, kde-format
+msgctxt "@action:inmenu copy this incidence"
+msgid "&Copy"
+msgstr "&प्रतिलिपि"
+
+#: koeventpopupmenu.cpp:75
+#, kde-format
+msgctxt "@action:inmenu"
+msgid "&Paste"
+msgstr ""
+
+#: koeventpopupmenu.cpp:83
+#, kde-format
+msgctxt "@action:inmenu"
+msgid "Create To-do from Event"
+msgstr ""
+
+#: koeventpopupmenu.cpp:92
+#, kde-format
+msgctxt "@action:inmenu"
+msgid "Togg&le To-do Completed"
+msgstr ""
+
+#: koeventpopupmenu.cpp:97
+#, kde-format
+msgctxt "@action:inmenu"
+msgid "Create Event from To-do"
+msgstr ""
+
+#: koeventpopupmenu.cpp:108
+#, kde-format
+msgctxt "@action:inmenu"
+msgid "&Toggle Reminder"
+msgstr ""
+
+#: koeventpopupmenu.cpp:115
+#, kde-format
+msgctxt "@action:inmenu"
+msgid "&Dissociate From Recurrence…"
+msgstr ""
+
+#: koeventpopupmenu.cpp:123
+#, kde-format
+msgctxt "@action:inmenu"
+msgid "Send as iCalendar…"
+msgstr ""
+
+#: koeventpopupmenu.cpp:173
+#, kde-format
+msgctxt "@action:inmenu"
+msgid "&Toggle Reminder Off"
+msgstr ""
+
+#: koeventpopupmenu.cpp:174
+#, kde-format
+msgctxt "@action:inmenu"
+msgid "&Toggle Reminder On"
+msgstr ""
+
+#: kohelper.cpp:52
+#, kde-format
+msgid "Unable to save %1 \"%2\"."
+msgstr "%1 \"%2\" रक्षितुं असमर्थः ।"
+
+#. i18n: ectx: property (windowTitle), widget (QWidget, ApptSummaryConfig_Base)
+#: kontactplugin/korganizer/apptsummaryconfig_base.ui:8
+#, kde-format
+msgid "Event Summary Configuration"
+msgstr "घटना सारांश विन्यास"
+
+#. i18n: ectx: property (title), widget (QGroupBox, mDaysButtonGroup)
+#: kontactplugin/korganizer/apptsummaryconfig_base.ui:14
+#, kde-format
+msgid "Show Upcoming Events Starting"
+msgstr "आगामिघटनानि आरभ्य दर्शयतु"
+
+#. i18n: ectx: property (toolTip), widget (QRadioButton, mDateTodayButton)
+#: kontactplugin/korganizer/apptsummaryconfig_base.ui:20
+#, kde-format
+msgid "Show events for today only"
+msgstr "अद्यत्वे एव घटनाः दर्शयन्तु"
+
+#. i18n: ectx: property (whatsThis), widget (QRadioButton, mDateTodayButton)
+#: kontactplugin/korganizer/apptsummaryconfig_base.ui:23
+#, kde-format
+msgid "Check this box if you want to see events occurring on this date only."
+msgstr ""
+"यदि भवान् केवलम् अस्मिन् तिथौ घटमानानि घटनानि द्रष्टुम् इच्छति तर्हि एतत् पेटीम् चिनोतु ।"
+
+#. i18n: ectx: property (text), widget (QRadioButton, mDateTodayButton)
+#: kontactplugin/korganizer/apptsummaryconfig_base.ui:26
+#: kontactplugin/korganizer/todosummaryconfig_base.ui:34
+#: kontactplugin/specialdates/sdsummaryconfig_base.ui:34
+#, kde-format
+msgid "&Today only"
+msgstr "&अद्य एव"
+
+#. i18n: ectx: property (toolTip), widget (QRadioButton, mDateMonthButton)
+#: kontactplugin/korganizer/apptsummaryconfig_base.ui:36
+#, kde-format
+msgid "Show events starting within the next month"
+msgstr "अग्रिममासस्य अन्तः आरभ्यमाणानि घटनानि दर्शयन्तु"
+
+#. i18n: ectx: property (whatsThis), widget (QRadioButton, mDateMonthButton)
+#: kontactplugin/korganizer/apptsummaryconfig_base.ui:39
+#, kde-format
+msgid ""
+"Check this box if you want to see events that start sometime during the next "
+"31 days."
+msgstr ""
+"यदि भवान् आगामिषु ३१ दिवसेषु कदाचित् आरभ्यमाणानि घटनानि द्रष्टुम् इच्छति तर्हि एतत् पेटीं "
+"चिनोतु ।"
+
+#. i18n: ectx: property (text), widget (QRadioButton, mDateMonthButton)
+#: kontactplugin/korganizer/apptsummaryconfig_base.ui:42
+#: kontactplugin/korganizer/todosummaryconfig_base.ui:50
+#: kontactplugin/specialdates/sdsummaryconfig_base.ui:50
+#, kde-format
+msgid "Within the next &month (31 days)"
+msgstr "अग्रिम &मासस्य अन्तः (३१ दिवसाः) २."
+
+#. i18n: ectx: property (toolTip), widget (QRadioButton, mDateRangeButton)
+#: kontactplugin/korganizer/apptsummaryconfig_base.ui:57
+#, kde-format
+msgid "Select the days for showing upcoming events"
+msgstr "आगामिनि आयोजनानि दर्शयितुं दिवसान् चिनोतु"
+
+#. i18n: ectx: property (whatsThis), widget (QRadioButton, mDateRangeButton)
+#: kontactplugin/korganizer/apptsummaryconfig_base.ui:60
+#, kde-format
+msgid ""
+"Check this box if you want to specify the number of days in the future for "
+"upcoming events."
+msgstr ""
+"यदि भवान् आगामिघटनानां कृते भविष्ये दिवससङ्ख्यां निर्दिष्टुं इच्छति तर्हि एतत् पेटीम् "
+"चिह्नितव्यम् ।"
+
+#. i18n: ectx: property (text), widget (QRadioButton, mDateRangeButton)
+#: kontactplugin/korganizer/apptsummaryconfig_base.ui:63
+#: kontactplugin/korganizer/todosummaryconfig_base.ui:74
+#: kontactplugin/specialdates/sdsummaryconfig_base.ui:71
+#, kde-format
+msgid "Within the &next:"
+msgstr "अन्तः &next:"
+
+#. i18n: ectx: property (toolTip), widget (QSpinBox, mCustomDays)
+#: kontactplugin/korganizer/apptsummaryconfig_base.ui:76
+#, kde-format
+msgid "Set the number of days to show upcoming events"
+msgstr "आगामिनि घटनानि दर्शयितुं दिवससङ्ख्यां सेट् कुर्वन्तु"
+
+#. i18n: ectx: property (whatsThis), widget (QSpinBox, mCustomDays)
+#: kontactplugin/korganizer/apptsummaryconfig_base.ui:79
+#, kde-format
+msgid ""
+"Use this spinbox to set the number of days to show upcoming events up to 1 "
+"year in the future."
+msgstr ""
+"भविष्ये १ वर्षपर्यन्तं आगामिघटनानां दर्शयितुं दिवसानां संख्यां निर्धारयितुं एतस्य स्पिनबॉक्सस्य "
+"उपयोगं कुर्वन्तु ।"
+
+#. i18n: ectx: property (specialValueText), widget (QSpinBox, mCustomDays)
+#: kontactplugin/korganizer/apptsummaryconfig_base.ui:82
+#: kontactplugin/korganizer/todosummaryconfig_base.ui:93
+#: kontactplugin/specialdates/sdsummaryconfig_base.ui:90
+#, kde-format
+msgid "1 day"
+msgstr "१ दिवसे"
+
+#. i18n: ectx: property (suffix), widget (QSpinBox, mCustomDays)
+#: kontactplugin/korganizer/apptsummaryconfig_base.ui:85
+#: kontactplugin/korganizer/todosummaryconfig_base.ui:96
+#: kontactplugin/specialdates/sdsummaryconfig_base.ui:93
+#, kde-format
+msgctxt "days to show in summary"
+msgid " days"
+msgstr ""
+
+#. i18n: ectx: property (title), widget (QGroupBox, mShowButtonGroup)
+#: kontactplugin/korganizer/apptsummaryconfig_base.ui:122
+#, kde-format
+msgid "Show These Upcoming Events From Your Calendar"
+msgstr "एतानि आगामिनि घटनानि स्वस्य पञ्चाङ्गात् दर्शयन्तु"
+
+#. i18n: ectx: property (toolTip), widget (QCheckBox, mShowBirthdaysFromCal)
+#: kontactplugin/korganizer/apptsummaryconfig_base.ui:128
+#, kde-format
+msgid "Show birthdays from your calendar when also using the Birthday resource"
+msgstr "जन्मदिनस्य संसाधनस्य अपि उपयोगं कुर्वन् भवतः पञ्चाङ्गात् जन्मदिनानि दर्शयतु"
+
+#. i18n: ectx: property (whatsThis), widget (QCheckBox, mShowBirthdaysFromCal)
+#: kontactplugin/korganizer/apptsummaryconfig_base.ui:131
+#, kde-format
+msgid ""
+"Enable this option to include birthdays from your calendar in the upcoming "
+"events summary. This option is only available if you are using the Birthdays "
+"resource in your calendar."
+msgstr ""
+"आगामिघटनानां सारांशे भवतः पञ्चाङ्गात् जन्मदिनानि समाविष्टुं एतत् विकल्पं सक्षमं कुर्वन्तु । एषः "
+"विकल्पः केवलं तदा एव उपलभ्यते यदा भवान् स्वस्य पञ्चाङ्गे Birthdays संसाधनस्य उपयोगं करोति ।"
+
+#. i18n: ectx: property (text), widget (QCheckBox, mShowBirthdaysFromCal)
+#. i18n: ectx: property (text), widget (QCheckBox, mShowBirthdaysFromCalBox)
+#: kontactplugin/korganizer/apptsummaryconfig_base.ui:134
+#: kontactplugin/specialdates/sdsummaryconfig_base.ui:142
+#, kde-format
+msgid "Show &birthdays"
+msgstr "&जन्मदिनानि दर्शयतु"
+
+#. i18n: ectx: property (toolTip), widget (QCheckBox, mShowAnniversariesFromCal)
+#: kontactplugin/korganizer/apptsummaryconfig_base.ui:141
+#, kde-format
+msgid ""
+"Shows anniversaries from your calendar when using the Birthdays resource"
+msgstr "जन्मदिनसंसाधनस्य उपयोगं कुर्वन् भवतः पञ्चाङ्गात् वार्षिकोत्सवः दर्शयति"
+
+#. i18n: ectx: property (whatsThis), widget (QCheckBox, mShowAnniversariesFromCal)
+#: kontactplugin/korganizer/apptsummaryconfig_base.ui:144
+#, kde-format
+msgid ""
+"Enable this option to include anniversaries from your calendar in the "
+"upcoming events summary. This option is only available if you are using the "
+"Birthdays resource in your calendar."
+msgstr ""
+"आगामिघटनानां सारांशे भवतः पञ्चाङ्गात् वार्षिकोत्सवः समाविष्टुं एतत् विकल्पं सक्षमं कुर्वन्तु । "
+"एषः विकल्पः केवलं तदा एव उपलभ्यते यदा भवान् स्वस्य पञ्चाङ्गे Birthdays संसाधनस्य उपयोगं "
+"करोति ।"
+
+#. i18n: ectx: property (text), widget (QCheckBox, mShowAnniversariesFromCal)
+#. i18n: ectx: property (text), widget (QCheckBox, mShowAnniversariesFromCalBox)
+#: kontactplugin/korganizer/apptsummaryconfig_base.ui:147
+#: kontactplugin/specialdates/sdsummaryconfig_base.ui:158
+#, kde-format
+msgid "Show &anniversaries"
+msgstr "& वार्षिकोत्सवं दर्शयतु"
+
+#. i18n: ectx: property (title), widget (QGroupBox, groupBox)
+#. i18n: ectx: property (title), widget (QGroupBox, mGroupwareGroup)
+#: kontactplugin/korganizer/apptsummaryconfig_base.ui:157
+#: kontactplugin/korganizer/todosummaryconfig_base.ui:216
+#: kontactplugin/specialdates/sdsummaryconfig_base.ui:244
+#, kde-format
+msgid "Groupware Settings"
+msgstr "समूहवेयर सेटिंग्स्"
+
+#. i18n: ectx: property (toolTip), widget (QCheckBox, mShowMineOnly)
+#: kontactplugin/korganizer/apptsummaryconfig_base.ui:163
+#: kontactplugin/specialdates/sdsummaryconfig_base.ui:250
+#, kde-format
+msgid "Show events belonging to my calendars only"
+msgstr "केवलं मम पञ्चाङ्गानां घटनाः दर्शयतु"
+
+#. i18n: ectx: property (whatsThis), widget (QCheckBox, mShowMineOnly)
+#: kontactplugin/korganizer/apptsummaryconfig_base.ui:166
+#: kontactplugin/specialdates/sdsummaryconfig_base.ui:253
+#, kde-format
+msgid ""
+"Check this box if you want the summary to show events belonging to your "
+"calendars only."
+msgstr ""
+"यदि भवान् इच्छति यत् सारांशः केवलं भवतः पञ्चाङ्गानां घटनाः दर्शयतु इति तर्हि एतत् पेटीम् "
+"चिह्नयन्तु ।"
+
+#. i18n: ectx: property (text), widget (QCheckBox, mShowMineOnly)
+#: kontactplugin/korganizer/apptsummaryconfig_base.ui:169
+#: kontactplugin/specialdates/sdsummaryconfig_base.ui:256
+#, kde-format
+msgid "Show &my events only"
+msgstr "केवलं &मम घटनाः दर्शयतु"
+
+#: kontactplugin/korganizer/apptsummarywidget.cpp:46
+#, kde-format
+msgid "Upcoming Events"
+msgstr "आगामी घटनाः"
+
+#: kontactplugin/korganizer/apptsummarywidget.cpp:207
+#, kde-format
+msgid "No upcoming events starting within the next day"
+msgid_plural "No upcoming events starting within the next %1 days"
+msgstr[0] ""
+msgstr[1] ""
+
+#: kontactplugin/korganizer/apptsummarywidget.cpp:240
+#, kde-format
+msgid "&Edit Appointment…"
+msgstr "&नियुक्ति सम्पादयतु..."
+
+#: kontactplugin/korganizer/apptsummarywidget.cpp:242
+#, kde-format
+msgid "&Delete Appointment"
+msgstr "&नियुक्ति हटाना"
+
+#: kontactplugin/korganizer/apptsummarywidget.cpp:261
+#, kde-format
+msgid "Edit Event: \"%1\""
+msgstr "सम्पादन घटना: \"%1\"।"
+
+#: kontactplugin/korganizer/journalplugin.cpp:28
+#, kde-format
+msgctxt "@action:inmenu"
+msgid "New Journal…"
+msgstr ""
+
+#: kontactplugin/korganizer/journalplugin.cpp:31
+#, kde-format
+msgctxt "@info:status"
+msgid "Create a new journal"
+msgstr ""
+
+#: kontactplugin/korganizer/journalplugin.cpp:36
+#, kde-format
+msgctxt "@info:whatsthis"
+msgid ""
+"You will be presented with a dialog where you can create a new journal entry."
+msgstr ""
+
+#: kontactplugin/korganizer/kcmapptsummary.cpp:71
+#: kontactplugin/korganizer/kcmtodosummary.cpp:54
+#: kontactplugin/specialdates/kcmsdsummary.cpp:54
+#, kde-format
+msgid " day"
+msgid_plural " days"
+msgstr[0] ""
+msgstr[1] ""
+
+#: kontactplugin/korganizer/korganizerplugin.cpp:44
+#, kde-format
+msgctxt "@action:inmenu"
+msgid "New Event…"
+msgstr ""
+
+#: kontactplugin/korganizer/korganizerplugin.cpp:47
+#, kde-format
+msgctxt "@info:status"
+msgid "Create a new event"
+msgstr ""
+
+#: kontactplugin/korganizer/korganizerplugin.cpp:51
+#, kde-format
+msgctxt "@info:whatsthis"
+msgid ""
+"You will be presented with a dialog where you can create a new event item."
+msgstr ""
+
+#: kontactplugin/korganizer/korganizerplugin.cpp:146
+#: kontactplugin/korganizer/todoplugin.cpp:145
+#, kde-format
+msgctxt "@item"
+msgid "Meeting"
+msgstr ""
+
+#: kontactplugin/korganizer/korganizerplugin.cpp:160
+#: kontactplugin/korganizer/todoplugin.cpp:159
+#, kde-format
+msgctxt "@item"
+msgid "Note: %1"
+msgstr ""
+
+#: kontactplugin/korganizer/korganizerplugin.cpp:189
+#: kontactplugin/korganizer/todoplugin.cpp:188
+#, kde-format
+msgctxt "Event from email summary"
+msgid "Mail: %1"
+msgstr ""
+
+#: kontactplugin/korganizer/korganizerplugin.cpp:191
+#: kontactplugin/korganizer/todoplugin.cpp:190
+#, kde-format
+msgctxt "Event from email content"
+msgid "<b>From:</b> %1<br /><b>To:</b> %2<br /><b>Subject:</b> %3"
+msgstr ""
+
+#: kontactplugin/korganizer/summaryeventinfo.cpp:136
+#, kde-format
+msgctxt "the appointment is today"
+msgid "Today"
+msgstr "अद्य"
+
+#: kontactplugin/korganizer/summaryeventinfo.cpp:139
+#, kde-format
+msgctxt "the appointment is tomorrow"
+msgid "Tomorrow"
+msgstr ""
+
+#: kontactplugin/korganizer/summaryeventinfo.cpp:171
+#: kontactplugin/korganizer/todosummarywidget.cpp:214
+#: kontactplugin/specialdates/sdsummarywidget.cpp:496
+#, kde-format
+msgid "in 1 day"
+msgid_plural "in %1 days"
+msgstr[0] ""
+msgstr[1] ""
+
+#: kontactplugin/korganizer/summaryeventinfo.cpp:184
+#, kde-format
+msgctxt "eg. in 1 hour 2 minutes"
+msgid "in "
+msgstr ""
+
+#: kontactplugin/korganizer/summaryeventinfo.cpp:187
+#, kde-format
+msgctxt "use abbreviation for hour to keep the text short"
+msgid "1 hr"
+msgid_plural "%1 hrs"
+msgstr[0] ""
+msgstr[1] ""
+
+#: kontactplugin/korganizer/summaryeventinfo.cpp:193
+#, kde-format
+msgctxt "use abbreviation for minute to keep the text short"
+msgid "1 min"
+msgid_plural "%1 mins"
+msgstr[0] ""
+msgstr[1] ""
+
+#: kontactplugin/korganizer/summaryeventinfo.cpp:200
+#: kontactplugin/specialdates/sdsummarywidget.cpp:494
+#, kde-format
+msgid "now"
+msgstr "अधुना"
+
+#: kontactplugin/korganizer/summaryeventinfo.cpp:203
+#, kde-format
+msgid "all day"
+msgstr "सर्वं दिवसम्"
+
+#: kontactplugin/korganizer/summaryeventinfo.cpp:243
+#, kde-format
+msgctxt "Time from - to"
+msgid "%1 - %2"
+msgstr ""
+
+#: kontactplugin/korganizer/summaryeventinfo.cpp:259
+#, kde-format
+msgctxt "next occurrence"
+msgid "Next: %1"
+msgstr ""
+
+#: kontactplugin/korganizer/todoplugin.cpp:40
+#, kde-format
+msgctxt "@action:inmenu"
+msgid "New To-do…"
+msgstr ""
+
+#: kontactplugin/korganizer/todoplugin.cpp:43
+#, kde-format
+msgctxt "@info:status"
+msgid "Create a new to-do"
+msgstr ""
+
+#: kontactplugin/korganizer/todoplugin.cpp:47
+#, kde-format
+msgctxt "@info:whatsthis"
+msgid ""
+"You will be presented with a dialog where you can create a new to-do item."
+msgstr ""
+
+#. i18n: ectx: property (windowTitle), widget (QWidget, TodoSummaryConfig_Base)
+#: kontactplugin/korganizer/todosummaryconfig_base.ui:16
+#, kde-format
+msgid "To-do Summary Configuration"
+msgstr "कर्तव्यं सारांशविन्यासः"
+
+#. i18n: ectx: property (title), widget (QGroupBox, mDaysGroup)
+#: kontactplugin/korganizer/todosummaryconfig_base.ui:22
+#, kde-format
+msgid "Show To-dos Due"
+msgstr "To-dos Due इति दर्शयतु"
+
+#. i18n: ectx: property (toolTip), widget (QRadioButton, mDateTodayButton)
+#: kontactplugin/korganizer/todosummaryconfig_base.ui:28
+#, kde-format
+msgid "Show To-dos due today only"
+msgstr "अद्य एव To-dos due इति दर्शयतु"
+
+#. i18n: ectx: property (whatsThis), widget (QRadioButton, mDateTodayButton)
+#: kontactplugin/korganizer/todosummaryconfig_base.ui:31
+#, kde-format
+msgid "Check this box if you want to see To-dos due on this date only."
+msgstr "यदि भवान् केवलम् अस्मिन् तिथौ To-dos due द्रष्टुम् इच्छति तर्हि एतत् पेटीम् चिनोतु ।"
+
+#. i18n: ectx: property (toolTip), widget (QRadioButton, mDateMonthButton)
+#: kontactplugin/korganizer/todosummaryconfig_base.ui:44
+#, kde-format
+msgid "Show To-dos due within the next month"
+msgstr "आगामिमासस्य अन्तः To-dos due इति दर्शयतु"
+
+#. i18n: ectx: property (whatsThis), widget (QRadioButton, mDateMonthButton)
+#: kontactplugin/korganizer/todosummaryconfig_base.ui:47
+#, kde-format
+msgid ""
+"Check this box if you want to see To-dos that are due sometime during the "
+"next 31 days."
+msgstr ""
+"यदि भवान् आगामिषु ३१ दिवसेषु कदाचित् भवितव्यं To-dos द्रष्टुम् इच्छति तर्हि एतत् पेटीम् "
+"चिह्नितव्यम् ।"
+
+#. i18n: ectx: property (toolTip), widget (QRadioButton, mDateRangeButton)
+#: kontactplugin/korganizer/todosummaryconfig_base.ui:65
+#, kde-format
+msgid "Select the days for showing pending To-dos"
+msgstr "लम्बित To-dos दर्शयितुं दिवसान् चिनोतु"
+
+#. i18n: ectx: property (whatsThis), widget (QRadioButton, mDateRangeButton)
+#: kontactplugin/korganizer/todosummaryconfig_base.ui:71
+#, kde-format
+msgid ""
+"Check this box if you want specify the number of days in the future for "
+"pending To-dos."
+msgstr ""
+"यदि भवान् भविष्ये लम्बित-To-dos कृते दिवसानां संख्यां निर्दिष्टुं इच्छति तर्हि एतत् पेटीम् "
+"चिनोतु ।"
+
+#. i18n: ectx: property (toolTip), widget (QSpinBox, mCustomDays)
+#: kontactplugin/korganizer/todosummaryconfig_base.ui:87
+#, kde-format
+msgid "Set the number of days to show pending To-dos"
+msgstr "लम्बित To-dos दर्शयितुं दिवसानां संख्यां सेट् कुर्वन्तु"
+
+#. i18n: ectx: property (whatsThis), widget (QSpinBox, mCustomDays)
+#: kontactplugin/korganizer/todosummaryconfig_base.ui:90
+#, kde-format
+msgid ""
+"Use this spinbox to set the number of days to show pending To-dos up to 1 "
+"year in the future."
+msgstr ""
+"भविष्ये १ वर्षपर्यन्तं लम्बित-To-dos दर्शयितुं दिवसानां संख्यां सेट् कर्तुं एतस्य स्पिनबॉक्सस्य "
+"उपयोगं कुर्वन्तु ।"
+
+#. i18n: ectx: property (title), widget (QGroupBox, mHideGroup)
+#: kontactplugin/korganizer/todosummaryconfig_base.ui:133
+#, kde-format
+msgid "Hide Following To-do Types"
+msgstr "निम्नलिखित To-do Types गोपयन्तु"
+
+#. i18n: ectx: property (toolTip), widget (QCheckBox, mHideCompletedBox)
+#: kontactplugin/korganizer/todosummaryconfig_base.ui:139
+#, kde-format
+msgid "Hide completed To-dos"
+msgstr "सम्पन्नं To-dos गोपयन्तु"
+
+#. i18n: ectx: property (whatsThis), widget (QCheckBox, mHideCompletedBox)
+#: kontactplugin/korganizer/todosummaryconfig_base.ui:142
+#, kde-format
+msgid ""
+"Check this box if you do not want to see To-dos that have already been "
+"completed."
+msgstr "यदि भवान् पूर्वमेव सम्पन्नं To-dos द्रष्टुम् न इच्छति तर्हि एतत् पेटीम् चिह्नितव्यम् ।"
+
+#. i18n: ectx: property (text), widget (QCheckBox, mHideCompletedBox)
+#: kontactplugin/korganizer/todosummaryconfig_base.ui:145
+#, kde-format
+msgid "&Completed"
+msgstr "&सम्पन्न"
+
+#. i18n: ectx: property (toolTip), widget (QCheckBox, mHideOpenEndedBox)
+#: kontactplugin/korganizer/todosummaryconfig_base.ui:155
+#, kde-format
+msgid "Hide To-dos without a due date"
+msgstr "नियततिथिं विना To-dos गोपयन्तु"
+
+#. i18n: ectx: property (whatsThis), widget (QCheckBox, mHideOpenEndedBox)
+#: kontactplugin/korganizer/todosummaryconfig_base.ui:158
+#, kde-format
+msgid "Check this box if you do not want to see open-ended To-dos."
+msgstr "यदि भवान् मुक्त-अन्तं To-dos द्रष्टुम् इच्छति तर्हि एतत् पेटीम् चिह्नितव्यम् ।"
+
+#. i18n: ectx: property (text), widget (QCheckBox, mHideOpenEndedBox)
+#: kontactplugin/korganizer/todosummaryconfig_base.ui:161
+#, kde-format
+msgid "&Open-ended (no due date)"
+msgstr "&Open-ended (कोऽपि नियततिथिः नास्ति)"
+
+#. i18n: ectx: property (toolTip), widget (QCheckBox, mHideUnstartedBox)
+#: kontactplugin/korganizer/todosummaryconfig_base.ui:171
+#, kde-format
+msgid "Hide unstarted To-dos"
+msgstr "अप्रारम्भं To-dos गोपयन्तु"
+
+#. i18n: ectx: property (whatsThis), widget (QCheckBox, mHideUnstartedBox)
+#: kontactplugin/korganizer/todosummaryconfig_base.ui:174
+#, kde-format
+msgid ""
+"Check this box if you do not want to see To-dos with a start date in the "
+"future."
+msgstr ""
+"यदि भवान् भविष्ये आरम्भदिनाङ्केन सह To-dos द्रष्टुम् इच्छति न तर्हि एतत् पेटीम् चिनोतु ।"
+
+#. i18n: ectx: property (text), widget (QCheckBox, mHideUnstartedBox)
+#: kontactplugin/korganizer/todosummaryconfig_base.ui:177
+#, kde-format
+msgid "&Unstarted (start date is in the future)"
+msgstr "&अप्रारम्भः (प्रारम्भतिथिः भविष्ये अस्ति)"
+
+#. i18n: ectx: property (toolTip), widget (QCheckBox, mHideInProgressBox)
+#: kontactplugin/korganizer/todosummaryconfig_base.ui:184
+#, kde-format
+msgid "Hide in-progress To-dos"
+msgstr "प्रगतिशीलं गोपयन्तु To-dos"
+
+#. i18n: ectx: property (whatsThis), widget (QCheckBox, mHideInProgressBox)
+#: kontactplugin/korganizer/todosummaryconfig_base.ui:187
+#, kde-format
+msgid ""
+"Check this box if you do not want to see To-dos that have been started but "
+"are not yet completed."
+msgstr ""
+"यदि भवान् To-dos द्रष्टुम् इच्छति ये आरब्धाः परन्तु अद्यापि न सम्पन्नाः सन्ति तर्हि एतत् "
+"पेटीम् चिनोतु ।"
+
+#. i18n: ectx: property (text), widget (QCheckBox, mHideInProgressBox)
+#: kontactplugin/korganizer/todosummaryconfig_base.ui:190
+#, kde-format
+msgid "&In-progress (started but not completed)"
+msgstr "&प्रगतिस्थः (प्रारम्भः किन्तु न सम्पन्नः)"
+
+#. i18n: ectx: property (toolTip), widget (QCheckBox, mHideOverdueBox)
+#: kontactplugin/korganizer/todosummaryconfig_base.ui:197
+#, kde-format
+msgid "Hide overdue To-dos"
+msgstr "अतिदेयम् To-dos गोपयन्तु"
+
+#. i18n: ectx: property (whatsThis), widget (QCheckBox, mHideOverdueBox)
+#: kontactplugin/korganizer/todosummaryconfig_base.ui:203
+#, kde-format
+msgid ""
+"Check this box if you do not want to see To-dos that are past their due date "
+"but have not yet been completed."
+msgstr ""
+"यदि भवान् To-dos द्रष्टुम् इच्छति यत् तेषां नियततिथिः अतिक्रान्ताः परन्तु अद्यापि न "
+"सम्पन्नाः सन्ति तर्हि एतत् पेटीम् चिनोतु ।"
+
+#. i18n: ectx: property (text), widget (QCheckBox, mHideOverdueBox)
+#: kontactplugin/korganizer/todosummaryconfig_base.ui:206
+#, kde-format
+msgid "Over&due (not completed and beyond due-date)"
+msgstr "अति&देय (न सम्पन्नं नियततिथितः परं च)"
+
+#. i18n: ectx: property (toolTip), widget (QCheckBox, mShowMineOnly)
+#: kontactplugin/korganizer/todosummaryconfig_base.ui:222
+#, kde-format
+msgid "Show To-dos belonging to my calendars only"
+msgstr "केवलं मम पञ्चाङ्गानां To-dos दर्शयतु"
+
+#. i18n: ectx: property (whatsThis), widget (QCheckBox, mShowMineOnly)
+#: kontactplugin/korganizer/todosummaryconfig_base.ui:225
+#, kde-format
+msgid ""
+"Check this box if you want the summary to show To-dos belonging to your "
+"calendars only."
+msgstr ""
+"यदि भवान् इच्छति यत् सारांशः केवलं भवतः पञ्चाङ्गानां To-dos दर्शयतु इति तर्हि एतत् पेटीम् "
+"चिह्नितव्यम् ।"
+
+#. i18n: ectx: property (text), widget (QCheckBox, mShowMineOnly)
+#: kontactplugin/korganizer/todosummaryconfig_base.ui:228
+#, kde-format
+msgid "Show &my To-dos only"
+msgstr "केवलं &my To-dos दर्शयतु"
+
+#: kontactplugin/korganizer/todosummarywidget.cpp:42
+#, kde-format
+msgid "Pending To-dos"
+msgstr "लम्बित टू-डोस"
+
+#: kontactplugin/korganizer/todosummarywidget.cpp:180
+#, kde-format
+msgctxt "the to-do is due today"
+msgid "Today"
+msgstr "अद्य"
+
+#: kontactplugin/korganizer/todosummarywidget.cpp:182
+#, kde-format
+msgctxt "the to-do is due tomorrow"
+msgid "Tomorrow"
+msgstr ""
+
+#: kontactplugin/korganizer/todosummarywidget.cpp:188
+#, kde-format
+msgctxt "1. weekday, 2. time"
+msgid "%1 %2"
+msgstr ""
+
+#: kontactplugin/korganizer/todosummarywidget.cpp:216
+#, kde-format
+msgid "1 day ago"
+msgid_plural "%1 days ago"
+msgstr[0] ""
+msgstr[1] ""
+
+#: kontactplugin/korganizer/todosummarywidget.cpp:218
+#, kde-format
+msgctxt "the to-do is due"
+msgid "due"
+msgstr ""
+
+#: kontactplugin/korganizer/todosummarywidget.cpp:271
+#, kde-format
+msgid "No pending to-dos due within the next day"
+msgid_plural "No pending to-dos due within the next %1 days"
+msgstr[0] ""
+msgstr[1] ""
+
+#: kontactplugin/korganizer/todosummarywidget.cpp:329
+#, kde-format
+msgid "&Mark To-do Completed"
+msgstr "&मार्क टू-डू सम्पन्न"
+
+#: kontactplugin/korganizer/todosummarywidget.cpp:349
+#, kde-format
+msgid "Edit To-do: \"%1\""
+msgstr "सम्पादनं कर्तव्यम्: \"%1\""
+
+#: kontactplugin/korganizer/todosummarywidget.cpp:369
+#, kde-format
+msgid "open-ended"
+msgstr "मुक्तान्तः"
+
+#: kontactplugin/korganizer/todosummarywidget.cpp:371
+#, kde-format
+msgctxt "the to-do is overdue"
+msgid "overdue"
+msgstr ""
+
+#: kontactplugin/korganizer/todosummarywidget.cpp:373
+#, kde-format
+msgctxt "the to-do starts today"
+msgid "starts today"
+msgstr ""
+
+#: kontactplugin/korganizer/todosummarywidget.cpp:377
+#, kde-format
+msgctxt "the to-do has not been started yet"
+msgid "not-started"
+msgstr ""
+
+#: kontactplugin/korganizer/todosummarywidget.cpp:379
+#, kde-format
+msgctxt "the to-do is completed"
+msgid "completed"
+msgstr ""
+
+#: kontactplugin/korganizer/todosummarywidget.cpp:381
+#, kde-format
+msgctxt "the to-do is in-progress"
+msgid "in-progress "
+msgstr ""
+
+#: kontactplugin/korganizer/todosummarywidget.cpp:386
+#, kde-format
+msgctxt "Separator for status like this: overdue, completed"
+msgid ","
+msgstr ""
+
+#. i18n: ectx: property (windowTitle), widget (QWidget, SDSummaryConfig_Base)
+#: kontactplugin/specialdates/sdsummaryconfig_base.ui:16
+#, kde-format
+msgid "Special Dates Summary Configuration"
+msgstr "विशेषतिथयः सारांशविन्यासः"
+
+#. i18n: ectx: property (title), widget (QGroupBox, mDaysGroup)
+#: kontactplugin/specialdates/sdsummaryconfig_base.ui:22
+#, kde-format
+msgid "Show Special Dates Starting"
+msgstr "प्रारम्भिकानि विशेषाणि तिथयः दर्शयन्तु"
+
+#. i18n: ectx: property (toolTip), widget (QRadioButton, mDateTodayButton)
+#: kontactplugin/specialdates/sdsummaryconfig_base.ui:28
+#, kde-format
+msgid "Show special occasions for today only"
+msgstr "अद्यत्वे एव विशेषान् अवसरान् दर्शयतु"
+
+#. i18n: ectx: property (whatsThis), widget (QRadioButton, mDateTodayButton)
+#: kontactplugin/specialdates/sdsummaryconfig_base.ui:31
+#, kde-format
+msgid ""
+"Check this box if you want to see special occasions occurring on this date "
+"only."
+msgstr ""
+"यदि भवान् केवलम् अस्मिन् तिथौ घटमानानि विशेषाणि अवसरानि द्रष्टुम् इच्छति तर्हि एतत् पेटीं "
+"चिनोतु ।"
+
+#. i18n: ectx: property (toolTip), widget (QRadioButton, mDateMonthButton)
+#: kontactplugin/specialdates/sdsummaryconfig_base.ui:44
+#, kde-format
+msgid "Show special occasions starting within the next month"
+msgstr "आगामिमासस्य अन्तः आरभ्य विशेषान् अवसरान् दर्शयतु"
+
+#. i18n: ectx: property (whatsThis), widget (QRadioButton, mDateMonthButton)
+#: kontactplugin/specialdates/sdsummaryconfig_base.ui:47
+#, kde-format
+msgid ""
+"Check this box if you want to see special occasions that start sometime "
+"during the next 31 days."
+msgstr ""
+"यदि भवान् आगामिषु ३१ दिवसेषु कदाचित् आरभ्यमाणान् विशेषान् अवसरान् द्रष्टुम् इच्छति तर्हि एतत् "
+"पेटीम् चिह्नितव्यम् ।"
+
+#. i18n: ectx: property (toolTip), widget (QRadioButton, mDateRangeButton)
+#: kontactplugin/specialdates/sdsummaryconfig_base.ui:65
+#, kde-format
+msgid "Select the days for showing upcoming special occasions"
+msgstr "आगामिनां विशेषाणां अवसरानां प्रदर्शनार्थं दिवसान् चिनुत"
+
+#. i18n: ectx: property (whatsThis), widget (QRadioButton, mDateRangeButton)
+#: kontactplugin/specialdates/sdsummaryconfig_base.ui:68
+#, kde-format
+msgid ""
+"Check this box if you want to specify the number of days in the future for "
+"upcoming special occasions."
+msgstr ""
+"यदि भवान् आगामिनां विशेषाणां अवसरानां कृते भविष्ये दिवसानां संख्यां निर्दिष्टुं इच्छति तर्हि "
+"एतत् पेटीं चिनोतु ।"
+
+#. i18n: ectx: property (toolTip), widget (QSpinBox, mCustomDays)
+#: kontactplugin/specialdates/sdsummaryconfig_base.ui:84
+#, kde-format
+msgid "Set the number of days to show upcoming special occasions"
+msgstr "आगामिनां विशेषाणां अवसरानां प्रदर्शनार्थं दिवसानां संख्यां निर्धारयन्तु"
+
+#. i18n: ectx: property (whatsThis), widget (QSpinBox, mCustomDays)
+#: kontactplugin/specialdates/sdsummaryconfig_base.ui:87
+#, kde-format
+msgid ""
+"Use this spinbox to set the number of days to show upcoming special "
+"occasions up to one year in the future."
+msgstr ""
+"भविष्ये एकवर्षपर्यन्तं आगामिविशेषान् अवसरान् दर्शयितुं दिवसानां संख्यां निर्धारयितुं एतस्य "
+"स्पिनबॉक्सस्य उपयोगं कुर्वन्तु ।"
+
+#. i18n: ectx: property (title), widget (QGroupBox, mShowFromCalGroup)
+#: kontactplugin/specialdates/sdsummaryconfig_base.ui:130
+#, kde-format
+msgid "Show These Special Dates From Your Calendar"
+msgstr "एतानि विशेषाणि तिथयः स्वस्य पञ्चाङ्गात् दर्शयन्तु"
+
+#. i18n: ectx: property (toolTip), widget (QCheckBox, mShowBirthdaysFromCalBox)
+#: kontactplugin/specialdates/sdsummaryconfig_base.ui:136
+#, kde-format
+msgid "Show birthdays from your calendar"
+msgstr "भवतः पञ्चाङ्गात् जन्मदिनानि दर्शयतु"
+
+#. i18n: ectx: property (whatsThis), widget (QCheckBox, mShowBirthdaysFromCalBox)
+#: kontactplugin/specialdates/sdsummaryconfig_base.ui:139
+#, kde-format
+msgid ""
+"Enable this option to include birthdays from your calendar in the upcoming "
+"special occasions summary. Typically, these are events with the \"Birthday\" "
+"tag."
+msgstr ""
+"आगामिविशेषावसरणसारांशे भवतः पञ्चाङ्गात् जन्मदिनानि समाविष्टुं एतत् विकल्पं सक्षमं कुर्वन्तु। "
+"सामान्यतया एते \"जन्मदिनम्\" इति टैग् इत्यनेन सह आयोजनानि सन्ति ।"
+
+#. i18n: ectx: property (toolTip), widget (QCheckBox, mShowAnniversariesFromCalBox)
+#: kontactplugin/specialdates/sdsummaryconfig_base.ui:152
+#, kde-format
+msgid "Show anniversaries from your calendar"
+msgstr "स्वस्य पञ्चाङ्गात् वार्षिकोत्सवः दर्शयतु"
+
+#. i18n: ectx: property (whatsThis), widget (QCheckBox, mShowAnniversariesFromCalBox)
+#: kontactplugin/specialdates/sdsummaryconfig_base.ui:155
+#, kde-format
+msgid ""
+"Enable this option to include anniversaries from your calendar in the "
+"upcoming special occasions summary. Typically, these are events with the "
+"\"Anniversary\" tag."
+msgstr ""
+"आगामिविशेषानुष्ठानसारांशे भवतः पञ्चाङ्गात् वार्षिकोत्सवः समाविष्टुं एतत् विकल्पं सक्षमं कुर्वन्तु "
+"। सामान्यतया एते \"वार्षिकी\" टैग् इत्यनेन सह घटनाः सन्ति ।"
+
+#. i18n: ectx: property (toolTip), widget (QCheckBox, mShowHolidaysFromCalBox)
+#: kontactplugin/specialdates/sdsummaryconfig_base.ui:168
+#, kde-format
+msgid "Show holidays from your calendar"
+msgstr "अवकाशदिनानि स्वस्य पञ्चाङ्गात् दर्शयतु"
+
+#. i18n: ectx: property (whatsThis), widget (QCheckBox, mShowHolidaysFromCalBox)
+#: kontactplugin/specialdates/sdsummaryconfig_base.ui:171
+#, kde-format
+msgid ""
+"Enable this option to include holidays from your calendar in the upcoming "
+"special occasions summary. These are events from your configured holiday "
+"region, or events with the \"Holiday\" tag."
+msgstr ""
+"आगामिविशेषानुष्ठानसारांशे स्वस्य पञ्चाङ्गात् अवकाशदिनानि समाविष्टुं एतत् विकल्पं सक्षमं कुर्वन्तु। "
+"एतानि भवतः विन्यस्तस्य अवकाशप्रदेशस्य घटनाः सन्ति, अथवा \"अवकाशदिवसः\" टैग् इत्यनेन सह "
+"घटनाः सन्ति ।"
+
+#. i18n: ectx: property (text), widget (QCheckBox, mShowHolidaysFromCalBox)
+#: kontactplugin/specialdates/sdsummaryconfig_base.ui:174
+#, kde-format
+msgid "Show &holidays"
+msgstr "&अवकाशान् दर्शयतु"
+
+#. i18n: ectx: property (toolTip), widget (QCheckBox, mShowSpecialsFromCalBox)
+#: kontactplugin/specialdates/sdsummaryconfig_base.ui:184
+#, kde-format
+msgid "Show special occasions from your calendar"
+msgstr "स्वस्य पञ्चाङ्गात् विशेषान् अवसरान् दर्शयतु"
+
+#. i18n: ectx: property (whatsThis), widget (QCheckBox, mShowSpecialsFromCalBox)
+#: kontactplugin/specialdates/sdsummaryconfig_base.ui:187
+#, kde-format
+msgid ""
+"Enable this option to include events from your calendar with the \"special "
+"occasion\" tag."
+msgstr ""
+"\"विशेष अवसर\" टैग् इत्यनेन स्वस्य पञ्चाङ्गात् घटनाः समाविष्टुं एतत् विकल्पं सक्षमं कुर्वन्तु ।"
+
+#. i18n: ectx: property (text), widget (QCheckBox, mShowSpecialsFromCalBox)
+#: kontactplugin/specialdates/sdsummaryconfig_base.ui:190
+#, kde-format
+msgid "Show s&pecial occasions"
+msgstr "s&विशेष अवसरान् दर्शयतु"
+
+#. i18n: ectx: property (title), widget (QGroupBox, mShowFromKABButtonGroup)
+#: kontactplugin/specialdates/sdsummaryconfig_base.ui:203
+#, kde-format
+msgid "Show These Special Dates From Your Contact List"
+msgstr "एतानि विशेषतिथयः स्वस्य सम्पर्कसूचिकातः दर्शयन्तु"
+
+#. i18n: ectx: property (toolTip), widget (QCheckBox, mShowBirthdaysFromKABBox)
+#: kontactplugin/specialdates/sdsummaryconfig_base.ui:209
+#, kde-format
+msgid "Show birthdays from your address book"
+msgstr "भवतः पतापुस्तकात् जन्मदिनानि दर्शयतु"
+
+#. i18n: ectx: property (whatsThis), widget (QCheckBox, mShowBirthdaysFromKABBox)
+#: kontactplugin/specialdates/sdsummaryconfig_base.ui:212
+#, kde-format
+msgid ""
+"Enable this option to include birthdays from your address book in the "
+"upcoming special occasions summary."
+msgstr ""
+"आगामिविशेषावसरणसारांशे स्वस्य पतापुस्तकात् जन्मदिनानि समाविष्टुं एतत् विकल्पं सक्षमं कुर्वन्तु।"
+
+#. i18n: ectx: property (text), widget (QCheckBox, mShowBirthdaysFromKABBox)
+#: kontactplugin/specialdates/sdsummaryconfig_base.ui:215
+#, kde-format
+msgid "Show birth&days"
+msgstr "जन्म&दिनानि दर्शयतु"
+
+#. i18n: ectx: property (toolTip), widget (QCheckBox, mShowAnniversariesFromKABBox)
+#: kontactplugin/specialdates/sdsummaryconfig_base.ui:225
+#, kde-format
+msgid "Show anniversaries from your address book"
+msgstr "स्वस्य पतापुस्तकात् वार्षिकोत्सवः दर्शयतु"
+
+#. i18n: ectx: property (whatsThis), widget (QCheckBox, mShowAnniversariesFromKABBox)
+#: kontactplugin/specialdates/sdsummaryconfig_base.ui:228
+#, kde-format
+msgid ""
+"Enable this option to include anniversaries from your address book in the "
+"upcoming special occasions summary."
+msgstr ""
+"आगामिनि विशेषानुष्ठानसारांशे स्वस्य पतापुस्तकात् वार्षिकोत्सवः समाविष्टुं एतत् विकल्पं सक्षमं "
+"कुर्वन्तु।"
+
+#. i18n: ectx: property (text), widget (QCheckBox, mShowAnniversariesFromKABBox)
+#: kontactplugin/specialdates/sdsummaryconfig_base.ui:231
+#, kde-format
+msgid "Show anni&versaries"
+msgstr "वार्षिकोत्सवं दर्शयतु"
+
+#: kontactplugin/specialdates/sdsummarywidget.cpp:106
+#, kde-format
+msgid "Upcoming Special Dates"
+msgstr "आगामी विशेष तिथयः"
+
+#: kontactplugin/specialdates/sdsummarywidget.cpp:459
+#, kde-format
+msgctxt "the special day is today"
+msgid "Today"
+msgstr "अद्य"
+
+#: kontactplugin/specialdates/sdsummarywidget.cpp:461
+#, kde-format
+msgctxt "the special day is tomorrow"
+msgid "Tomorrow"
+msgstr ""
+
+#: kontactplugin/specialdates/sdsummarywidget.cpp:507
+#, kde-format
+msgid "Birthday"
+msgstr "जन्मदिवस"
+
+#: kontactplugin/specialdates/sdsummarywidget.cpp:510
+#, kde-format
+msgid "Anniversary"
+msgstr "वार्षिकी"
+
+#: kontactplugin/specialdates/sdsummarywidget.cpp:513
+#, kde-format
+msgid "Holiday"
+msgstr "अवकाशदिनं"
+
+#: kontactplugin/specialdates/sdsummarywidget.cpp:516
+#, kde-format
+msgid "Change of Seasons"
+msgstr "ऋतुपरिवर्तनम्"
+
+#: kontactplugin/specialdates/sdsummarywidget.cpp:519
+#, kde-format
+msgid "Special Occasion"
+msgstr "विशेषः अवसरः"
+
+#: kontactplugin/specialdates/sdsummarywidget.cpp:561
+#, kde-format
+msgid "one year"
+msgid_plural "%1 years"
+msgstr[0] ""
+msgstr[1] ""
+
+#: kontactplugin/specialdates/sdsummarywidget.cpp:571
+#, kde-format
+msgid "No special dates within the next 1 day"
+msgid_plural "No special dates pending within the next %1 days"
+msgstr[0] ""
+msgstr[1] ""
+
+#: kontactplugin/specialdates/sdsummarywidget.cpp:665
+#, kde-format
+msgid "Send &Mail"
+msgstr "&मेल प्रेषयतु"
+
+#: kontactplugin/specialdates/sdsummarywidget.cpp:666
+#, kde-format
+msgid "View &Contact"
+msgstr "देखें & सम्पर्क करें"
+
+#: kontactplugin/specialdates/sdsummarywidget.cpp:681
+#, kde-format
+msgid "Mail to:\"%1\""
+msgstr "मेल :\"%1\" ."
+
+#: kontactplugin/specialdates/specialdates_plugin.cpp:36
+#, kde-format
+msgid "Special Dates Summary"
+msgstr "विशेष तिथयः सारांशः"
+
+#: kontactplugin/specialdates/specialdates_plugin.cpp:38
+#, kde-format
+msgid "Kontact Special Dates Summary"
+msgstr "सम्पर्क विशेष तिथि सारांश"
+
+#: kontactplugin/specialdates/specialdates_plugin.cpp:40
+#, kde-format
+msgid ""
+"Copyright © 2003 Tobias Koenig\n"
+"Copyright © 2004–2010 Allen Winter"
+msgstr ""
+"प्रतिलिपि अधिकार © 2003 Tobias Koenig\n"
+"प्रतिलिपि अधिकार © 2004–2010 एलेन् विन्टर"
+
+#: kontactplugin/specialdates/specialdates_plugin.cpp:42
+#, kde-format
+msgid "Current Maintainer"
+msgstr "वर्तमान परिपालक"
+
+#: kontactplugin/specialdates/specialdates_plugin.cpp:43
+#, kde-format
+msgctxt "@info:credit"
+msgid "Tobias Koenig"
+msgstr ""
+
+#: korganizer.cpp:284
+#, kde-format
+msgid "New Calendar"
+msgstr "नवीन पञ्चाङ्ग"
+
+#: korganizer.cpp:288
+#, kde-format
+msgctxt "the calendar is read-only"
+msgid "read-only"
+msgstr ""
+
+#: korganizer.cpp:291
+#, kde-format
+msgid "Calendar"
+msgstr "पञ्चाङ्गम्"
+
+#: korganizer_options.h:18
+#, kde-format
+msgctxt "@info:shell"
+msgid "Import the specified files as separate calendars"
+msgstr ""
+
+#: korganizer_options.h:20
+#, kde-format
+msgctxt "@info:shell"
+msgid "Merge the specified files into an existing calendar"
+msgstr ""
+
+#: korganizer_options.h:21
+#, kde-format
+msgctxt "@info:shell"
+msgid "Display the specified incidence (by URL)"
+msgstr ""
+
+#: korganizer_options.h:25
+#, kde-format
+msgctxt "@info:shell"
+msgid ""
+"Calendar files or urls. Unless -i or -m is explicitly specified, the user "
+"will be asked whether to import or merge"
+msgstr ""
+
+#: korganizer_options.h:29
+#, kde-format
+msgctxt "@info:shell"
+msgid "Lists the available options for user feedback"
+msgstr ""
+
+#: koviewmanager.cpp:427
+#, kde-format
+msgid "Merged calendar"
+msgstr "विलीनं पञ्चाङ्गम्"
+
+#: koviewmanager.cpp:442
+#, kde-format
+msgid "Calendars Side by Side"
+msgstr "पञ्चाङ्गाः पार्श्वे पार्श्वे"
+
+#: koviewmanager.cpp:475
+#, kde-format
+msgid ""
+"Unable to display the work week since there are no work days configured. "
+"Please properly configure at least 1 work day in the Time and Date "
+"preferences."
+msgstr ""
+"कार्यदिनानि विन्यस्ताः नास्ति इति कारणतः कार्यसप्ताहं प्रदर्शयितुं असमर्थः । कृपया समय-"
+"तिथि-प्राथमिकतासु न्यूनातिन्यूनं १ कार्यदिनं सम्यक् विन्यस्यताम् ।"
+
+#: prefs/koprefsdialogcolorsandfonts.cpp:43
+#, kde-format
+msgctxt "@title:tab"
+msgid "Colors"
+msgstr ""
+
+#: prefs/koprefsdialogcolorsandfonts.cpp:93
+#, kde-format
+msgctxt "@title:group"
+msgid "Tags"
+msgstr "टैग्स"
+
+#: prefs/koprefsdialogcolorsandfonts.cpp:107
+#, kde-format
+msgctxt "@info:whatsthis"
+msgid ""
+"Select the tag you want to modify. You can change the selected tag's color "
+"using the adjacent color button."
+msgstr ""
+
+#: prefs/koprefsdialogcolorsandfonts.cpp:115
+#, kde-format
+msgctxt "@info:whatsthis"
+msgid "Choose the color of the tag selected in the adjacent combo box."
+msgstr ""
+
+#: prefs/koprefsdialogcolorsandfonts.cpp:123
+#, kde-format
+msgctxt "@title:group"
+msgid "Resources"
+msgstr ""
+
+#: prefs/koprefsdialogcolorsandfonts.cpp:134
+#, kde-format
+msgctxt "@info:whatsthis"
+msgid ""
+"Select the calendar you want to modify. You can change the selected calendar "
+"color using the button below."
+msgstr ""
+
+#: prefs/koprefsdialogcolorsandfonts.cpp:142
+#, kde-format
+msgctxt "@info:whatsthis"
+msgid ""
+"Choose here the color of the calendar selected using the combo box above."
+msgstr ""
+
+#: prefs/koprefsdialogcolorsandfonts.cpp:150
+#, kde-format
+msgctxt "@title:tab"
+msgid "Fonts"
+msgstr ""
+
+#: prefs/koprefsdialogcolorsandfonts.cpp:163
+#: prefs/koprefsdialogcolorsandfonts.cpp:169
+#, kde-format
+msgctxt "@label"
+msgid "Event text"
+msgstr ""
+
+#: prefs/koprefsdialoggroupscheduling.cpp:42
+#, kde-format
+msgctxt "@label"
+msgid "Mail transport:"
+msgstr ""
+
+#: prefs/koprefsdialogmain.cpp:43
+#, kde-format
+msgctxt "@title:tab personal settings"
+msgid "Personal"
+msgstr ""
+
+#: prefs/koprefsdialogmain.cpp:49
+#, kde-format
+msgctxt "@title:group email settings"
+msgid "Email Settings"
+msgstr ""
+
+#: prefs/koprefsdialogmain.cpp:63 prefs/koprefsdialogtime.cpp:189
+#, kde-format
+msgctxt "@title:group"
+msgid "Reminders"
+msgstr ""
+
+#: prefs/koprefsdialogmain.cpp:72
+#, kde-format
+msgctxt "@title:tab"
+msgid "Save"
+msgstr ""
+
+#: prefs/koprefsdialogmain.cpp:84
+#, kde-format
+msgctxt "@title:tab calendar account settings"
+msgid "Calendars"
+msgstr ""
+
+#: prefs/koprefsdialogmain.cpp:88
+#, kde-format
+msgctxt "@title"
+msgid "Calendar Accounts"
+msgstr ""
+
+#: prefs/koprefsdialogmain.cpp:97
+#, kde-format
+msgctxt "@title:tab activities settings"
+msgid "Activities"
+msgstr ""
+
+#: prefs/koprefsdialogmain.cpp:102
+#, kde-format
+msgid "Enabled"
+msgstr "सक्षमम्"
+
+#: prefs/koprefsdialogplugins.cpp:61
+#, kde-format
+msgctxt "@title:group"
+msgid "Position"
+msgstr ""
+
+#. i18nc( "@option:check", "Show in the month view" ), mPositioningGroupBox );
+#: prefs/koprefsdialogplugins.cpp:88
+#, kde-format
+msgctxt "@option:check"
+msgid "Show at the top of the agenda views"
+msgstr ""
+
+#: prefs/koprefsdialogplugins.cpp:89
+#, kde-format
+msgctxt "@option:check"
+msgid "Show at the bottom of the agenda views"
+msgstr ""
+
+#: prefs/koprefsdialogplugins.cpp:122
+#, kde-format
+msgctxt "@title:group"
+msgid "Calendar Decorations"
+msgstr ""
+
+#: prefs/koprefsdialogplugins.cpp:142
+#, kde-format
+msgctxt "@action"
+msgid "Configure"
+msgstr "विन्यस्तं कुर्वन्तु"
+
+#: prefs/koprefsdialogplugins.cpp:201
+#, kde-format
+msgctxt "@info"
+msgid "Unable to configure this plugin"
+msgstr ""
+
+#: prefs/koprefsdialogtime.cpp:43
+#, kde-format
+msgctxt "@title:tab"
+msgid "Regional"
+msgstr ""
+
+#: prefs/koprefsdialogtime.cpp:47
+#, kde-format
+msgctxt "@title:group"
+msgid "General Time and Date"
+msgstr ""
+
+#: prefs/koprefsdialogtime.cpp:56
+#, kde-format
+msgctxt "@title:group"
+msgid "Holidays"
+msgstr ""
+
+#: prefs/koprefsdialogtime.cpp:67
+#, kde-format
+msgctxt "@label"
+msgid "Use holiday region:"
+msgstr ""
+
+#: prefs/koprefsdialogtime.cpp:90
+#, kde-format
+msgctxt "@item:inlistbox Holiday region, region language"
+msgid "%1 (%2)"
+msgstr ""
+
+#: prefs/koprefsdialogtime.cpp:99
+#, kde-format
+msgctxt "@item:inlistbox"
+msgid "Select Holiday Regions"
+msgstr ""
+
+#: prefs/koprefsdialogtime.cpp:111
+#, kde-format
+msgctxt "@title:group"
+msgid "Working Period"
+msgstr ""
+
+#: prefs/koprefsdialogtime.cpp:126
+#, kde-format
+msgctxt "@info:whatsthis"
+msgid ""
+"Check this box to make KOrganizer mark the working hours for this day of the "
+"week. If this is a work day for you, check this box, or the working hours "
+"will not be marked with color."
+msgstr ""
+
+#: prefs/koprefsdialogtime.cpp:140
+#, kde-format
+msgctxt "@item:inlistbox"
+msgid "Monday"
+msgstr ""
+
+#: prefs/koprefsdialogtime.cpp:140
+#, kde-format
+msgctxt "@item:inlistbox"
+msgid "Tuesday"
+msgstr ""
+
+#: prefs/koprefsdialogtime.cpp:140
+#, kde-format
+msgctxt "@item:inlistbox"
+msgid "Wednesday"
+msgstr ""
+
+#: prefs/koprefsdialogtime.cpp:141
+#, kde-format
+msgctxt "@item:inlistbox"
+msgid "Thursday"
+msgstr ""
+
+#: prefs/koprefsdialogtime.cpp:141
+#, kde-format
+msgctxt "@item:inlistbox"
+msgid "Friday"
+msgstr ""
+
+#: prefs/koprefsdialogtime.cpp:141
+#, kde-format
+msgctxt "@item:inlistbox"
+msgid "Saturday"
+msgstr ""
+
+#: prefs/koprefsdialogtime.cpp:142
+#, kde-format
+msgctxt "@item:inlistbox"
+msgid "Sunday"
+msgstr ""
+
+#: prefs/koprefsdialogtime.cpp:171
+#, kde-format
+msgctxt "@title:tab"
+msgid "Default Values"
+msgstr ""
+
+#: prefs/koprefsdialogtime.cpp:174
+#, kde-format
+msgctxt "@title:group"
+msgid "Appointments"
+msgstr ""
+
+#: prefs/koprefsdialogtime.cpp:194
+#, kde-format
+msgctxt "@label"
+msgid "Default reminder time:"
+msgstr ""
+
+#: prefs/koprefsdialogtime.cpp:207
+#, kde-format
+msgctxt "@item:inlistbox reminder units in minutes"
+msgid "minute(s)"
+msgstr ""
+
+#: prefs/koprefsdialogtime.cpp:208
+#, kde-format
+msgctxt "@item:inlistbox reminder time units in hours"
+msgid "hour(s)"
+msgstr ""
+
+#: prefs/koprefsdialogtime.cpp:209
+#, kde-format
+msgctxt "@item:inlistbox reminder time units in days"
+msgid "day(s)"
+msgstr ""
+
+#: prefs/koprefsdialogtime.cpp:219
+#, kde-format
+msgid "Audio Files (*.ogg *.wav *.mp3 *.wma *.flac *.aiff *.raw *.au *.ra)"
+msgstr "ऑडियो सञ्चिकाः (*.ogg *.wav *.mp3 *.wma *.flac *.aiff *.raw *.au *.ra)"
+
+#: prefs/koprefsdialogviews.cpp:44
+#, kde-format
+msgctxt "@title:tab general settings"
+msgid "General"
+msgstr ""
+
+#: prefs/koprefsdialogviews.cpp:50 prefs/koprefsdialogviews.cpp:87
+#: prefs/koprefsdialogviews.cpp:131 prefs/koprefsdialogviews.cpp:158
+#, kde-format
+msgctxt "@title:group"
+msgid "Display Options"
+msgstr ""
+
+#: prefs/koprefsdialogviews.cpp:56
+#, kde-format
+msgctxt "@label suffix in the N days spin box"
+msgid " days"
+msgstr ""
+
+#: prefs/koprefsdialogviews.cpp:69
+#, kde-format
+msgctxt "@title:group"
+msgid "Date Navigator"
+msgstr ""
+
+#: prefs/koprefsdialogviews.cpp:81
+#, kde-format
+msgctxt "@title:tab"
+msgid "Agenda View"
+msgstr ""
+
+#: prefs/koprefsdialogviews.cpp:93
+#, kde-format
+msgctxt "@label suffix in the hour size spin box"
+msgid " pixels"
+msgstr ""
+
+#: prefs/koprefsdialogviews.cpp:125
+#, kde-format
+msgctxt "@title:tab"
+msgid "Month View"
+msgstr ""
+
+#: prefs/koprefsdialogviews.cpp:152
+#, kde-format
+msgctxt "@title:tab"
+msgid "Todo View"
+msgstr ""
+
+#: prefs/koprefsdialogviews.cpp:165
+#, kde-format
+msgctxt "@title:group"
+msgid "Other Options"
+msgstr ""
+
+#: prefs/kprefsdialog.cpp:234
+#, kde-format
+msgctxt "@action:button"
+msgid "Choose…"
+msgstr ""
+
+#: prefs/kprefsdialog.cpp:765
+#, kde-format
+msgctxt "@title:window"
+msgid "Preferences"
+msgstr ""
+
+#: prefs/kprefsdialog.cpp:867
+#, kde-format
+msgid ""
+"You are about to set all preferences to default values. All custom "
+"modifications will be lost."
+msgstr ""
+"भवान् सर्वाणि प्राधान्यानि पूर्वनिर्धारितमूल्यानि सेट् कर्तुं प्रवृत्तः अस्ति । सर्वाणि कस्टम् "
+"परिवर्तनानि नष्टानि भविष्यन्ति।"
+
+#: prefs/kprefsdialog.cpp:869
+#, kde-format
+msgctxt "@title:window"
+msgid "Setting Default Preferences"
+msgstr ""
+
+#: prefs/kprefsdialog.cpp:870
+#, kde-format
+msgctxt "@action:button"
+msgid "Reset to Defaults"
+msgstr ""
+
+#. i18n: ectx: label, entry (Confirm), group (Save Settings)
+#: settings/korganizer.kcfg:15
+#, kde-format
+msgid "Confirm deletes"
+msgstr "विलोपनं पुष्टिं कुर्वन्तु"
+
+#. i18n: ectx: tooltip, entry (Confirm), group (Save Settings)
+#: settings/korganizer.kcfg:16
+#, kde-format
+msgid "Always confirm when deleting items"
+msgstr "वस्तूनि विलोपयन्ते सति सर्वदा पुष्टिं कुर्वन्तु"
+
+#. i18n: ectx: whatsthis, entry (Confirm), group (Save Settings)
+#: settings/korganizer.kcfg:17
+#, kde-format
+msgid "Check this box to display a confirmation dialog when deleting items."
+msgstr "वस्तूनि विलोपयन्ते सति पुष्टिकरणसंवादं प्रदर्शयितुं एतत् पेटीं चिनोतु ।"
+
+#. i18n: ectx: label, entry (Destination), group (Save Settings)
+#: settings/korganizer.kcfg:22
+#, kde-format
+msgid "New Events, To-dos and Journal Entries Should"
+msgstr "नवीनघटनानि, कार्याणि, पत्रिकाप्रविष्टयः च भवितुमर्हन्ति"
+
+#. i18n: ectx: label, entry (Destination), group (Save Settings)
+#: settings/korganizer.kcfg:25
+#, kde-format
+msgid "Be added to the default calendar"
+msgstr "पूर्वनिर्धारितपञ्चाङ्गे योजितं भवतु"
+
+#. i18n: ectx: whatsthis, entry (Destination), group (Save Settings)
+#: settings/korganizer.kcfg:26
+#, kde-format
+msgid ""
+"Select this option to always record new events, to-dos and journal entries "
+"using the current default calendar."
+msgstr ""
+"वर्तमानपूर्वनिर्धारितपञ्चाङ्गस्य उपयोगेन सदैव नूतनाः घटनाः, कार्याणि, पत्रिकाप्रविष्टयः च "
+"अभिलेखयितुं एतत् विकल्पं चिनोतु ।"
+
+#. i18n: ectx: label, entry (Destination), group (Save Settings)
+#: settings/korganizer.kcfg:29
+#, kde-format
+msgid "Be asked which calendar to use"
+msgstr "कस्य पञ्चाङ्गस्य उपयोगः कर्तव्यः इति पृच्छन्तु"
+
+#. i18n: ectx: whatsthis, entry (Destination), group (Save Settings)
+#: settings/korganizer.kcfg:30
+#, kde-format
+msgid ""
+"Select this option to choose the calendar to be used to record the item each "
+"time you create a new event, to-do or journal entry. This choice is "
+"recommended if you intend to use the shared folders functionality of the "
+"Kolab server or have to manage multiple accounts using Kontact as a KDE "
+"Kolab client. "
+msgstr ""
+"प्रत्येकं नूतनं घटनां, कर्तव्यं वा पत्रिकाप्रविष्टिं निर्माय द्रव्यस्य अभिलेखनार्थं उपयुज्यमानं "
+"पञ्चाङ्गं चिन्वन्तु इति विकल्पं चिनोतु । यदि भवान् Kolab सर्वरस्य साझापुटकार्यक्षमतां उपयोक्तुं "
+"इच्छति अथवा Kontact इत्यस्य उपयोगेन KDE Kolab क्लायन्ट् इत्यस्य रूपेण बहुलेखानां प्रबन्धनं "
+"कर्तुं इच्छति तर्हि एषः विकल्पः अनुशंसितः अस्ति । "
+
+#. i18n: ectx: whatsthis, entry (TimeZoneId), group (Time &amp; Date)
+#: settings/korganizer.kcfg:40
+#, kde-format
+msgid ""
+"Select your timezone from the list of locations on this drop down box. If "
+"your city is not listed, select one which shares the same timezone. "
+"KOrganizer will automatically adjust for daylight savings."
+msgstr ""
+"अस्मिन् ड्रॉप् डाउन बॉक्स् मध्ये स्थानसूचिकातः स्वस्य समयक्षेत्रं चिनोतु । यदि भवतः नगरं सूचीकृतं "
+"नास्ति तर्हि एकं चिनुत यत् समानसमयक्षेत्रं साझां करोति । KOrganizer स्वयमेव दिवसप्रकाशस्य "
+"बचतार्थं समायोजयिष्यति।"
+
+#. i18n: ectx: label, entry (WeekStartDay), group (Time &amp; Date)
+#: settings/korganizer.kcfg:44
+#, kde-format
+msgid "Weekly start day:"
+msgstr "साप्ताहिकः आरम्भदिवसः : १."
+
+#. i18n: ectx: tooltip, entry (WeekStartDay), group (Time &amp; Date)
+#: settings/korganizer.kcfg:45
+#, kde-format
+msgid "Select the first day of each week"
+msgstr "प्रत्येकस्य सप्ताहस्य प्रथमदिनं चिनुत"
+
+#. i18n: ectx: whatsthis, entry (WeekStartDay), group (Time &amp; Date)
+#: settings/korganizer.kcfg:46
+#, kde-format
+msgid ""
+"Select the first day of each week. Normally, you can ignore this since it is "
+"set in your locale."
+msgstr ""
+"प्रत्येकस्य सप्ताहस्य प्रथमदिनं चिनुत। सामान्यतया, भवान् एतत् उपेक्षितुं शक्नोति यतः एतत् भवतः "
+"स्थानीये सेट् अस्ति ।"
+
+#. i18n: ectx: label, entry (WorkingHoursStart), group (Time &amp; Date)
+#: settings/korganizer.kcfg:51
+#, kde-format
+msgid "Daily starting hour"
+msgstr "नित्यं प्रारम्भघण्टा"
+
+#. i18n: ectx: whatsthis, entry (WorkingHoursStart), group (Time &amp; Date)
+#: settings/korganizer.kcfg:52
+#, kde-format
+msgid ""
+"Enter the start time for the working hours here. The working hours will be "
+"marked with color by KOrganizer."
+msgstr ""
+"कार्यसमयानां आरम्भसमयम् अत्र प्रविशन्तु । कार्यसमयाः KOrganizer द्वारा वर्णेन चिह्निताः "
+"भविष्यन्ति।"
+
+#. i18n: ectx: label, entry (WorkingHoursEnd), group (Time &amp; Date)
+#: settings/korganizer.kcfg:57
+#, kde-format
+msgid "Daily ending hour"
+msgstr "दैनिक समाप्तिघण्टा"
+
+#. i18n: ectx: whatsthis, entry (WorkingHoursEnd), group (Time &amp; Date)
+#: settings/korganizer.kcfg:58
+#, kde-format
+msgid ""
+"Enter the ending time for the working hours here. The working hours will be "
+"marked with color by KOrganizer."
+msgstr ""
+"कार्यसमयानां समाप्तिसमयम् अत्र प्रविशतु । कार्यसमयाः KOrganizer द्वारा वर्णेन चिह्निताः "
+"भविष्यन्ति।"
+
+#. i18n: ectx: label, entry (ColorMonthBusyDaysEnabled), group (Time &amp; Date)
+#. i18n: ectx: label, entry (ColorBusyDaysEnabled), group (Agenda View)
+#: settings/korganizer.kcfg:63 settings/korganizer.kcfg:195
+#, kde-format
+msgid "Color busy days with a different background color"
+msgstr "व्यस्तदिनानि भिन्नपृष्ठभूमिवर्णेन रङ्गयन्तु"
+
+#. i18n: ectx: whatsthis, entry (ColorMonthBusyDaysEnabled), group (Time &amp; Date)
+#: settings/korganizer.kcfg:64
+#, kde-format
+msgid ""
+"Check this box if you want month view's background to be filled with a "
+"different color on days which have at least one all day event marked as "
+"busy. Also, you can change the background color used for this option on the "
+"Colors configuration page. Look for the \"Busy days background color\" "
+"setting."
+msgstr ""
+"यदि भवान् इच्छति यत् मासदृश्यस्य पृष्ठभूमिः तेषु दिनेषु भिन्नवर्णेन पूरिता भवेत् येषु न्यूनातिन्यूनं "
+"एकः सर्वदिवसीयः घटना व्यस्तः इति चिह्नितः भवति तर्हि एतत् पेटीम् अवलोकयन्तु । अपि च, "
+"भवान् Colors विन्यासपृष्ठे अस्य विकल्पस्य कृते प्रयुक्तं पृष्ठभूमिवर्णं परिवर्तयितुं शक्नोति । "
+"\"Busy days background color\" इति सेटिङ्ग् अन्वेष्टुम् ।"
+
+#. i18n: ectx: label, entry, group (General View)
+#: settings/korganizer.kcfg:73
+#, kde-format
+msgid "Enable tooltips for displaying summaries"
+msgstr "सारांशप्रदर्शनार्थं साधनसूचनाः सक्षमाः कुर्वन्तु"
+
+#. i18n: ectx: whatsthis, entry, group (General View)
+#: settings/korganizer.kcfg:74
+#, kde-format
+msgid ""
+"Check this box to display summary tooltips when hovering the mouse over an "
+"event or a to-do."
+msgstr ""
+"घटनायाः अथवा कार्यस्य उपरि मूषकं भ्रमति समये सारांशसाधनसूचनानि प्रदर्शयितुं एतत् पेटी "
+"चिनोतु ।"
+
+#. i18n: ectx: label, entry, group (General View)
+#: settings/korganizer.kcfg:79
+#, kde-format
+msgid "To-dos use tag colors"
+msgstr "टू-डोस् टैग्-रङ्गानाम् उपयोगं कुर्वन्ति"
+
+#. i18n: ectx: whatsthis, entry, group (General View)
+#: settings/korganizer.kcfg:80
+#, kde-format
+msgid ""
+"Check this box so that to-dos will use tag colors and not colors specific to "
+"their due, due today or overdue state"
+msgstr ""
+"एतत् पेटीम् अवलोकयन्तु येन टू-डोस् टैग्-रङ्गानाम् उपयोगं करिष्यति न तु तेषां देय-विशिष्ट-"
+"वर्णानां, अद्य देय-अथवा अतिदेय-स्थितेः"
+
+#. i18n: ectx: label, entry, group (General View)
+#: settings/korganizer.kcfg:85
+#, kde-format
+msgid "Next x days"
+msgstr "अग्रिमः x दिवसाः"
+
+#. i18n: ectx: whatsthis, entry, group (General View)
+#: settings/korganizer.kcfg:86
+#, kde-format
+msgid ""
+"Select the number of \"x\" days to be displayed in the next days view. To "
+"access the next \"x\" days view, choose the \"Next X Days\" menu item from "
+"the \"View\" menu."
+msgstr ""
+"अग्रिमदिनदृश्ये प्रदर्शयितुं \"x\" दिवसानां संख्यां चिनोतु । अग्रिम \"x\" दिवसदृश्यं प्राप्तुं "
+"\"View\" मेनूतः \"Next X Days\" मेन्यू मदं चिनोतु ।"
+
+#. i18n: ectx: tooltip, entry, group (General View)
+#: settings/korganizer.kcfg:87
+#, kde-format
+msgid "Show this many days at a time in the Next \"x\" days view"
+msgstr "एतत् अग्रिम \"x\" दिवसदृश्ये एकस्मिन् समये बहुदिनानि दर्शयतु"
+
+#. i18n: ectx: label, entry (DailyRecur), group (General View)
+#: settings/korganizer.kcfg:92
+#, kde-format
+msgid "Show items that recur daily"
+msgstr "प्रतिदिनं पुनरावृत्तिः भवति इति वस्तूनि दर्शयतु"
+
+#. i18n: ectx: whatsthis, entry (DailyRecur), group (General View)
+#: settings/korganizer.kcfg:93
+#, kde-format
+msgid ""
+"Check this box to show the days containing daily recurring events in bold "
+"typeface in the Date Navigator, or uncheck it to give more prominence to "
+"other (non daily recurring) events."
+msgstr ""
+"Date Navigator मध्ये दैनिक-पुनरावृत्ति-घटना-युक्तानि दिवसानि बोल्ड-टाइपफेस्-इत्यनेन "
+"दर्शयितुं एतत् पेटीम् अङ्कयन्तु, अथवा अन्येभ्यः (अदैनिक-पुनरावृत्ति-घटनाभ्यः) अधिकं प्रमुखतां दातुं "
+"तत् अनचेक् कुर्वन्तु"
+
+#. i18n: ectx: label, entry (WeeklyRecur), group (General View)
+#: settings/korganizer.kcfg:98
+#, kde-format
+msgid "Show items that recur weekly"
+msgstr "साप्ताहिकरूपेण पुनरावृत्तियुक्तानि वस्तूनि दर्शयन्तु"
+
+#. i18n: ectx: whatsthis, entry (WeeklyRecur), group (General View)
+#: settings/korganizer.kcfg:99
+#, kde-format
+msgid ""
+"Check this box to show the days containing weekly recurring events in bold "
+"typeface in the Date Navigator, or uncheck it to give more prominence to "
+"other (non weekly recurring) events."
+msgstr ""
+"Date Navigator मध्ये साप्ताहिक-पुनरावृत्ति-घटना-युक्तानि दिवसानि बोल्ड-टाइपफेस्-इत्यनेन "
+"दर्शयितुं एतत् पेटीम् अङ्कयन्तु, अथवा अन्येभ्यः (असाप्ताहिक-पुनरावृत्ति-घटनाभ्यः) अधिकं प्रमुखतां "
+"दातुं तत् अनचेक् कुर्वन्तु"
+
+#. i18n: ectx: label, entry (HighlightTodos), group (General View)
+#: settings/korganizer.kcfg:104
+#, kde-format
+msgid "Show to-dos instead of events when in Todo View"
+msgstr "Todo View मध्ये यदा घटनानां स्थाने to-dos दर्शयतु"
+
+#. i18n: ectx: whatsthis, entry (HighlightTodos), group (General View)
+#: settings/korganizer.kcfg:105
+#, kde-format
+msgid ""
+"Check this box to show the days containing to-dos in bold typeface in the "
+"Date Navigator when in to-do view."
+msgstr ""
+"कर्तव्यदृश्ये सति Date Navigator मध्ये to-dos युक्तानि दिवसानि बोल्ड टाइपफेस् मध्ये दर्शयितुं "
+"एतत् पेटी चिनोतु ।"
+
+#. i18n: ectx: label, entry (HighlightJournals), group (General View)
+#: settings/korganizer.kcfg:110
+#, kde-format
+msgid "Show journals instead of events when in Journal View"
+msgstr "जर्नल् दृश्ये सति घटनानां स्थाने पत्रिकाः दर्शयन्तु"
+
+#. i18n: ectx: whatsthis, entry (HighlightJournals), group (General View)
+#: settings/korganizer.kcfg:111
+#, kde-format
+msgid ""
+"Check this box to show the days containing journals in bold typeface in the "
+"Date Navigator when in journal view."
+msgstr ""
+"पत्रिकादृश्ये सति Date Navigator मध्ये बोल्ड टाइपफेस् मध्ये जर्नल्स् युक्तानि दिवसानि दर्शयितुं "
+"एतत् पेटी चिनोतु ।"
+
+#. i18n: ectx: label, entry (WeekNumbersShowWork), group (General View)
+#: settings/korganizer.kcfg:116
+#, kde-format
+msgid "Week numbers select a work week when in work week mode"
+msgstr "सप्ताहसङ्ख्याः कार्यसप्ताहस्य मोडे सति कार्यसप्ताहं चिनोति"
+
+#. i18n: ectx: whatsthis, entry (WeekNumbersShowWork), group (General View)
+#: settings/korganizer.kcfg:117
+#, kde-format
+msgid ""
+"Check this box to select a working week when clicking on the Date "
+"Navigator's week numbers, or uncheck it to choose the whole week."
+msgstr ""
+"Date Navigator इत्यस्य सप्ताहसङ्ख्यासु क्लिक् कुर्वन् कार्यसप्ताहं चयनं कर्तुं एतत् पेटीम् चिनोतु, "
+"अथवा सम्पूर्णसप्ताहं चयनं कर्तुं तत् अनचेक् कुर्वन्तु ।"
+
+#. i18n: ectx: label, entry, group (Agenda View)
+#: settings/korganizer.kcfg:125
+#, kde-format
+msgid "Hour size"
+msgstr "घण्टायाः आकारः"
+
+#. i18n: ectx: whatsthis, entry, group (Agenda View)
+#: settings/korganizer.kcfg:126
+#, kde-format
+msgid ""
+"Select the height of the hour rows in the agenda grid, in pixels. Increasing "
+"this value will make each row in the agenda grid taller."
+msgstr ""
+"एजेण्डा जालपुटे घण्टापङ्क्तयः ऊर्ध्वतां चिनोतु, पिक्सेलरूपेण । एतत् मूल्यं वर्धयित्वा एजेण्डा जालस्य "
+"प्रत्येकं पङ्क्तिः लम्बा भविष्यति ।"
+
+#. i18n: ectx: tooltip, entry, group (Agenda View)
+#: settings/korganizer.kcfg:127
+#, kde-format
+msgid "Set the height (in pixels) for an hour in the agenda grid"
+msgstr "एजेण्डा जालपुटे एकघण्टापर्यन्तं ऊर्ध्वतां (पिक्सेलरूपेण) सेट् कुर्वन्तु"
+
+#. i18n: ectx: label, entry (EnableAgendaItemIcons), group (Agenda View)
+#: settings/korganizer.kcfg:134
+#, kde-format
+msgid "Show icons in agenda view items"
+msgstr "एजेण्डा दृश्य-वस्तूनाम् चिह्नानि दर्शयन्तु"
+
+#. i18n: ectx: whatsthis, entry (EnableAgendaItemIcons), group (Agenda View)
+#: settings/korganizer.kcfg:135
+#, kde-format
+msgid ""
+"Check this box to display icons (alarm, recursion, etc.) in agenda view "
+"items."
+msgstr ""
+"एजेण्डा दृश्य-वस्तूनाम् चिह्नानि (अलार्म, पुनरावृत्तिः इत्यादयः) प्रदर्शयितुं एतत् पेटीम् चिनोतु ।"
+
+#. i18n: ectx: tooltip, entry (EnableAgendaItemIcons), group (Agenda View)
+#: settings/korganizer.kcfg:136
+#, kde-format
+msgid "Display icons in agenda view items"
+msgstr "एजेण्डा दृश्य-वस्तूनाम् चिह्नानि प्रदर्शयन्तु"
+
+#. i18n: ectx: label, entry (ShowTodosAgendaView), group (Agenda View)
+#. i18n: ectx: label, entry (ShowTodosMonthView), group (Month View)
+#: settings/korganizer.kcfg:141 settings/korganizer.kcfg:239
+#, kde-format
+msgid "Show to-dos"
+msgstr "कार्याणि दर्शयतु"
+
+#. i18n: ectx: whatsthis, entry (ShowTodosAgendaView), group (Agenda View)
+#: settings/korganizer.kcfg:142
+#, kde-format
+msgid "Check this box to display to-dos in the agenda view."
+msgstr "एजेण्डा दृश्ये to-dos प्रदर्शयितुं एतत् पेटी चिनोतु ।"
+
+#. i18n: ectx: tooltip, entry (ShowTodosAgendaView), group (Agenda View)
+#: settings/korganizer.kcfg:143
+#, kde-format
+msgid "Display to-dos in the agenda view"
+msgstr "एजेण्डा दृश्ये कार्याणि प्रदर्शयन्तु"
+
+#. i18n: ectx: label, entry (MarcusBainsEnabled), group (Agenda View)
+#: settings/korganizer.kcfg:148
+#, kde-format
+msgid "Show current-time (Marcus Bains) line"
+msgstr "वर्तमान-समय (Marcus Bains) रेखां दर्शयतु"
+
+#. i18n: ectx: whatsthis, entry (MarcusBainsEnabled), group (Agenda View)
+#: settings/korganizer.kcfg:149
+#, kde-format
+msgid ""
+"Check this box to display a line in the day or week view indicating the "
+"current-time line (Marcus Bains line)."
+msgstr ""
+"वर्तमान-समयरेखां (Marcus Bains रेखा) सूचयन्त्याः दिवसस्य अथवा सप्ताहस्य दृश्ये एकां रेखां "
+"प्रदर्शयितुं एतत् पेटीम् चिनोतु ।"
+
+#. i18n: ectx: tooltip, entry (MarcusBainsEnabled), group (Agenda View)
+#: settings/korganizer.kcfg:150
+#, kde-format
+msgid "Display the current-time indicator"
+msgstr "वर्तमान-समय-सूचकं प्रदर्शयन्तु"
+
+#. i18n: ectx: label, entry (MarcusBainsShowSeconds), group (Agenda View)
+#: settings/korganizer.kcfg:155
+#, kde-format
+msgid "Show seconds on the current-time (Marcus Bains) line"
+msgstr "वर्तमान-समय (Marcus Bains) रेखायां सेकण्ड् दर्शयतु"
+
+#. i18n: ectx: whatsthis, entry (MarcusBainsShowSeconds), group (Agenda View)
+#: settings/korganizer.kcfg:156
+#, kde-format
+msgid "Check this box if you want to show seconds on the current-time line."
+msgstr "यदि भवान् वर्तमान-समयरेखायां सेकण्ड् दर्शयितुम् इच्छति तर्हि एतत् पेटीम् चिनोतु ।"
+
+#. i18n: ectx: tooltip, entry (MarcusBainsShowSeconds), group (Agenda View)
+#: settings/korganizer.kcfg:157
+#, kde-format
+msgid "Display seconds with the current-time indicator"
+msgstr "वर्तमान-समयसूचकेन सह सेकण्ड् प्रदर्शयन्तु"
+
+#. i18n: ectx: label, entry (SelectionStartsEditor), group (Agenda View)
+#: settings/korganizer.kcfg:162
+#, kde-format
+msgid "Time range selection in agenda view starts event editor"
+msgstr "एजेण्डा दृश्ये समयपरिधिचयनं इवेण्ट् एडिटरं आरभ्यते"
+
+#. i18n: ectx: whatsthis, entry (SelectionStartsEditor), group (Agenda View)
+#: settings/korganizer.kcfg:163
+#, kde-format
+msgid ""
+"Check this box to start the event editor automatically when you select a "
+"time range in the daily and weekly view. To select a time range, drag the "
+"mouse from the start time to the end time of the event you are about to plan."
+msgstr ""
+"यदा भवान् दैनिक-साप्ताहिक-दृश्ये समय-परिधिं चिनोति तदा स्वयमेव घटना-सम्पादकं आरभ्यतुं एतत् "
+"पेटीं चिनोतु । समयपरिधिं चिन्वितुं, भवन्तः योजनां कर्तुं प्रवृत्तस्य घटनायाः आरम्भसमयात् "
+"अन्त्यसमयपर्यन्तं मूषकं कर्षयन्तु ।"
+
+#. i18n: ectx: tooltip, entry (SelectionStartsEditor), group (Agenda View)
+#: settings/korganizer.kcfg:164
+#, kde-format
+msgid "Enable automatic event editor with time range selection"
+msgstr "समयपरिधिचयनेन सह स्वचालितघटनसम्पादकं सक्षमं कुर्वन्तु"
+
+#. i18n: ectx: label, entry, group (Agenda View)
+#. i18n: ectx: label, entry, group (Month View)
+#: settings/korganizer.kcfg:169 settings/korganizer.kcfg:259
+#, kde-format
+msgid "Color Usage"
+msgstr "रङ्गप्रयोगः"
+
+#. i18n: ectx: label, entry, group (Agenda View)
+#. i18n: ectx: label, entry, group (Month View)
+#: settings/korganizer.kcfg:172 settings/korganizer.kcfg:262
+#, kde-format
+msgid "Tag inside, calendar outside"
+msgstr "अन्तः टैगं कुर्वन्तु, बहिः पञ्चाङ्गं कुर्वन्तु"
+
+#. i18n: ectx: whatsthis, entry, group (Agenda View)
+#. i18n: ectx: whatsthis, entry, group (Month View)
+#: settings/korganizer.kcfg:173 settings/korganizer.kcfg:263
+#, kde-format
+msgid ""
+"Select the \"Tag inside, calendar outside\" option if you would like to draw "
+"calendar items using their associated tag color, with the item's border "
+"drawn in the color of its calendar.  Please use the Colors and Fonts "
+"configuration page for setting these colors."
+msgstr ""
+"यदि भवान् पञ्चाङ्गवस्तूनाम् सम्बद्धानां टैगवर्णस्य उपयोगेन आकर्षयितुम् इच्छति तर्हि \"Tag "
+"inside, calendar outside\" विकल्पं चिनोतु, यत्र द्रव्यस्य सीमा तस्य पञ्चाङ्गस्य वर्णेन "
+"आकृष्टा भवति  एतेषां वर्णानाम् सेट् कृते कृपया Colors and Fonts विन्यासपृष्ठस्य उपयोगं कुर्वन्तु "
+"।"
+
+#. i18n: ectx: tooltip, entry, group (Agenda View)
+#: settings/korganizer.kcfg:174
+#, kde-format
+msgid ""
+"Draw agenda items with their tag color inside and calendar color for their "
+"border"
+msgstr "एजेण्डा-वस्तूनाम् अन्तः तेषां टैग्-वर्णेन सह, तेषां सीमायाः कृते कैलेण्डर्-वर्णेन च आकर्षयन्तु"
+
+#. i18n: ectx: label, entry, group (Agenda View)
+#. i18n: ectx: label, entry, group (Month View)
+#: settings/korganizer.kcfg:177 settings/korganizer.kcfg:267
+#, kde-format
+msgid "Calendar inside, tag outside"
+msgstr "अन्तः पञ्चाङ्गं, बहिः टैगं कुर्वन्तु"
+
+#. i18n: ectx: whatsthis, entry, group (Agenda View)
+#. i18n: ectx: whatsthis, entry, group (Month View)
+#: settings/korganizer.kcfg:178 settings/korganizer.kcfg:268
+#, kde-format
+msgid ""
+"Select the \"Calendar inside, tag outside\" option if you would like to draw "
+"calendar items using their associated calendar color, with the item's border "
+"drawn in the color of its tag.  Please use the Colors and Fonts "
+"configuration page for setting these colors."
+msgstr ""
+"यदि भवान् पञ्चाङ्गवस्तूनाम् सम्बद्धपञ्चाङ्गवर्णस्य उपयोगेन आकर्षयितुम् इच्छति तर्हि \"Calendar "
+"inside, tag outside\" विकल्पं चिनोतु, यत्र द्रव्यस्य सीमा तस्य टैगस्य वर्णेन आकृष्टा भवति  "
+"एतेषां वर्णानाम् सेट् कृते कृपया Colors and Fonts विन्यासपृष्ठस्य उपयोगं कुर्वन्तु ।"
+
+#. i18n: ectx: tooltip, entry, group (Agenda View)
+#: settings/korganizer.kcfg:179
+#, kde-format
+msgid ""
+"Draw agenda items with their calendar color inside and tag color for their "
+"border"
+msgstr ""
+"एजेण्डा-वस्तूनि अन्तः तेषां कैलेण्डर-वर्णेन सह आकर्षयन्तु, तेषां सीमायाः कृते वर्णं टैग् कुर्वन्तु"
+
+#. i18n: ectx: label, entry, group (Agenda View)
+#. i18n: ectx: label, entry, group (Month View)
+#: settings/korganizer.kcfg:182 settings/korganizer.kcfg:272
+#, kde-format
+msgid "Only tag"
+msgstr "केवलं टैगं कुर्वन्तु"
+
+#. i18n: ectx: whatsthis, entry, group (Agenda View)
+#: settings/korganizer.kcfg:183
+#, kde-format
+msgid ""
+"Select the \"Only tag\" option if you would like to draw calendar items "
+"(both inside and border) using the color of their associated tag.  Please "
+"use the Colors and Fonts configuration page for setting these colors."
+msgstr ""
+"यदि भवान् तेषां सम्बद्धस्य टैगस्य वर्णस्य उपयोगेन कैलेण्डर-वस्तूनि (अन्तः सीमा च) आकर्षितुं "
+"इच्छति तर्हि \"Only tag\" विकल्पं चिनोतु ।  एतेषां वर्णानाम् सेट् कृते कृपया Colors and "
+"Fonts विन्यासपृष्ठस्य उपयोगं कुर्वन्तु ।"
+
+#. i18n: ectx: tooltip, entry, group (Agenda View)
+#: settings/korganizer.kcfg:184
+#, kde-format
+msgid "Draw agenda items using their tag color for the inside and border"
+msgstr "अन्तः सीमायाः च कृते तेषां टैग्-वर्णस्य उपयोगेन एजेण्डा-वस्तूनि आकर्षयन्तु"
+
+#. i18n: ectx: label, entry, group (Agenda View)
+#. i18n: ectx: label, entry, group (Month View)
+#: settings/korganizer.kcfg:187 settings/korganizer.kcfg:277
+#, kde-format
+msgid "Only calendar"
+msgstr "केवलं पञ्चाङ्गम्"
+
+#. i18n: ectx: whatsthis, entry, group (Agenda View)
+#: settings/korganizer.kcfg:188
+#, kde-format
+msgid ""
+"Select the \"Only calendar\" option if you would like to draw calendar items "
+"(both inside and border) using the color of their calendar. Please use the "
+"Colors and Fonts configuration page for setting these colors."
+msgstr ""
+"यदि भवान् पञ्चाङ्गस्य वस्तूनि (अन्तः सीमा च) तेषां पञ्चाङ्गस्य वर्णस्य उपयोगेन आकर्षितुं इच्छति "
+"तर्हि \"Only calendar\" विकल्पं चिनोतु । एतेषां वर्णानाम् सेट् कृते कृपया Colors and "
+"Fonts विन्यासपृष्ठस्य उपयोगं कुर्वन्तु ।"
+
+#. i18n: ectx: tooltip, entry, group (Agenda View)
+#: settings/korganizer.kcfg:189
+#, kde-format
+msgid "Draw agenda items using their calendar color for the inside and border"
+msgstr "अन्तः सीमायाः च कृते तेषां पञ्चाङ्गवर्णस्य उपयोगेन एजेण्डा-वस्तूनि आकर्षयन्तु"
+
+#. i18n: ectx: whatsthis, entry (ColorBusyDaysEnabled), group (Agenda View)
+#: settings/korganizer.kcfg:196
+#, kde-format
+msgid ""
+"Check this box if you want agenda's background to be filled with a different "
+"color on days which have at least one all day event marked as busy. Also, "
+"you can change the background color used for this option on the Colors "
+"configuration page. Look for the \"Busy days background color\" setting."
+msgstr ""
+"यदि भवान् इच्छति यत् कार्यसूचनायाः पृष्ठभूमिः तेषु दिनेषु भिन्नवर्णेन पूरिता भवेत् येषु "
+"न्यूनातिन्यूनं एकः सर्वदिवसीयः कार्यक्रमः व्यस्तः इति चिह्नितः भवति तर्हि एतत् पेटीम् "
+"अवलोकयन्तु । अपि च, भवान् Colors विन्यासपृष्ठे अस्य विकल्पस्य कृते प्रयुक्तं पृष्ठभूमिवर्णं "
+"परिवर्तयितुं शक्नोति । \"Busy days background color\" इति सेटिङ्ग् अन्वेष्टुम् ।"
+
+#. i18n: ectx: label, entry (AgendaViewCalendarDisplay), group (Agenda View)
+#: settings/korganizer.kcfg:200
+#, kde-format
+msgid "Multiple Calendar Display"
+msgstr "बहुविधं पञ्चाङ्गप्रदर्शनम्"
+
+#. i18n: ectx: label, entry (AgendaViewCalendarDisplay), group (Agenda View)
+#: settings/korganizer.kcfg:203
+#, kde-format
+msgid "Merge all calendars into one view"
+msgstr "सर्वाणि पञ्चाङ्गानि एकस्मिन् दृश्ये विलीनयन्तु"
+
+#. i18n: ectx: whatsthis, entry (AgendaViewCalendarDisplay), group (Agenda View)
+#: settings/korganizer.kcfg:204
+#, kde-format
+msgid ""
+"Select the \"Merge all calendars into one view\" option if you would like "
+"all your calendars to be shown together in one agenda view."
+msgstr ""
+"यदि भवान् इच्छति यत् भवतां सर्वाणि पञ्चाङ्गानि एकस्मिन् कार्यसूचने एकत्र दर्शितानि भवेयुः "
+"तर्हि \"सर्वं पञ्चाङ्गं एकस्मिन् दृश्ये विलीनयन्तु\" इति विकल्पं चिनोतु ।"
+
+#. i18n: ectx: tooltip, entry (AgendaViewCalendarDisplay), group (Agenda View)
+#: settings/korganizer.kcfg:205
+#, kde-format
+msgid "Show all calendars merged together"
+msgstr "सर्वाणि पञ्चाङ्गानि एकत्र विलीनानि दर्शयन्तु"
+
+#. i18n: ectx: label, entry (AgendaViewCalendarDisplay), group (Agenda View)
+#: settings/korganizer.kcfg:208
+#, kde-format
+msgid "Show calendars side by side"
+msgstr "पञ्चाङ्गानि पार्श्वे पार्श्वे दर्शयन्तु"
+
+#. i18n: ectx: whatsthis, entry (AgendaViewCalendarDisplay), group (Agenda View)
+#: settings/korganizer.kcfg:209
+#, kde-format
+msgid ""
+"Select the \"Show calendars side by side\" option if you would like to see "
+"two calendars at once, in a side-by-side view."
+msgstr ""
+"यदि भवान् एकदा एव द्वौ पञ्चाङ्गौ द्रष्टुम् इच्छति तर्हि \"Show caendars side by side\" "
+"विकल्पं चिनोतु, पार्श्वे पार्श्वे दृश्ये ।"
+
+#. i18n: ectx: tooltip, entry (AgendaViewCalendarDisplay), group (Agenda View)
+#: settings/korganizer.kcfg:210
+#, kde-format
+msgid "Show two calendars side-by-side"
+msgstr "द्वौ पञ्चाङ्गौ पार्श्वे पार्श्वे दर्शयतु"
+
+#. i18n: ectx: label, entry (AgendaViewCalendarDisplay), group (Agenda View)
+#: settings/korganizer.kcfg:213
+#, kde-format
+msgid "Switch between views with tabs"
+msgstr "ट्याब्-सहितं दृश्यानां मध्ये स्विच् कुर्वन्तु"
+
+#. i18n: ectx: whatsthis, entry (AgendaViewCalendarDisplay), group (Agenda View)
+#: settings/korganizer.kcfg:214
+#, kde-format
+msgid ""
+"Select \"Switch between views with tabs\" if you would like to alternate "
+"between calendars using the tab key."
+msgstr ""
+"यदि भवान् ट्याब् कीलस्य उपयोगेन पञ्चाङ्गानां मध्ये क्रमेण परिवर्तनं कर्तुम् इच्छति तर्हि \"ट्याब् "
+"सह दृश्यानां मध्ये परिवर्तनं कुर्वन्तु\" इति चिनोतु ।"
+
+#. i18n: ectx: tooltip, entry (AgendaViewCalendarDisplay), group (Agenda View)
+#: settings/korganizer.kcfg:215
+#, kde-format
+msgid "Tab through calendars"
+msgstr "पञ्चाङ्गानां माध्यमेन ट्याब्"
+
+#. i18n: ectx: label, entry (EnableMonthItemIcons), group (Month View)
+#: settings/korganizer.kcfg:225
+#, kde-format
+msgid "Show icons in month view items"
+msgstr "मासदृश्यवस्तूनाम् चिह्नानि दर्शयतु"
+
+#. i18n: ectx: whatsthis, entry (EnableMonthItemIcons), group (Month View)
+#: settings/korganizer.kcfg:226
+#, kde-format
+msgid ""
+"Check this box to display icons (alarm, recursion, etc.) in month view items."
+msgstr ""
+"मासदृश्यवस्तूनाम् चिह्नानि (अलार्म, पुनरावृत्तिः इत्यादयः) प्रदर्शयितुं एतत् पेटी चिनोतु ।"
+
+#. i18n: ectx: tooltip, entry (EnableMonthItemIcons), group (Month View)
+#: settings/korganizer.kcfg:227
+#, kde-format
+msgid "Display icons in month view items"
+msgstr "मासदृश्यवस्तूनाम् चिह्नानि प्रदर्शयन्तु"
+
+#. i18n: ectx: label, entry (ShowTimeInMonthView), group (Month View)
+#: settings/korganizer.kcfg:232
+#, kde-format
+msgid "Show time in month view items"
+msgstr "मासदृश्यवस्तूनाम् समयं दर्शयतु"
+
+#. i18n: ectx: whatsthis, entry (ShowTimeInMonthView), group (Month View)
+#: settings/korganizer.kcfg:233
+#, kde-format
+msgid "Check this box to display the time in month view items."
+msgstr "मासदृश्यवस्तूनाम् समयं प्रदर्शयितुं एतत् पेटीम् चिनोतु ।"
+
+#. i18n: ectx: tooltip, entry (ShowTimeInMonthView), group (Month View)
+#: settings/korganizer.kcfg:234
+#, kde-format
+msgid "Display time in month view items"
+msgstr "मासदृश्यवस्तूनाम् समयं प्रदर्शयन्तु"
+
+#. i18n: ectx: whatsthis, entry (ShowTodosMonthView), group (Month View)
+#: settings/korganizer.kcfg:240
+#, kde-format
+msgid "Check this box to display to-dos in the month view."
+msgstr "मासदृश्ये कार्याणि प्रदर्शयितुं एतत् पेटीं चिनोतु ।"
+
+#. i18n: ectx: tooltip, entry (ShowTodosMonthView), group (Month View)
+#: settings/korganizer.kcfg:241
+#, kde-format
+msgid "Display to-dos in the month view"
+msgstr "मासदृश्ये कार्याणि प्रदर्शयन्तु"
+
+#. i18n: ectx: label, entry (ShowJournalsMonthView), group (Month View)
+#: settings/korganizer.kcfg:246
+#, kde-format
+msgid "Show journals"
+msgstr "पत्रिकाः दर्शयन्तु"
+
+#. i18n: ectx: whatsthis, entry (ShowJournalsMonthView), group (Month View)
+#: settings/korganizer.kcfg:247
+#, kde-format
+msgid "Check this box to display journals in the month view."
+msgstr "मासदृश्ये पत्रिकाः प्रदर्शयितुं एतत् पेटीम् चिनोतु ।"
+
+#. i18n: ectx: tooltip, entry (ShowJournalsMonthView), group (Month View)
+#: settings/korganizer.kcfg:248
+#, kde-format
+msgid "Display journals in the month view"
+msgstr "मासदृश्ये पत्रिकाः प्रदर्शयन्तु"
+
+#. i18n: ectx: label, entry, group (Month View)
+#: settings/korganizer.kcfg:253
+#, kde-format
+msgid "Month view uses full window"
+msgstr "मासदृश्यं पूर्णविण्डो इत्यस्य उपयोगं करोति"
+
+#. i18n: ectx: whatsthis, entry, group (Month View)
+#: settings/korganizer.kcfg:254
+#, kde-format
+msgid ""
+"Check this box to use the full KOrganizer window when displaying the month "
+"view. If this box is checked, you will gain some space for the monthly view, "
+"but other widgets, such as the date navigator, the item details and the "
+"calendars list, will not be displayed."
+msgstr ""
+"मासदृश्यं प्रदर्शयति समये पूर्णं KOrganizer विण्डो उपयोक्तुं एतत् पेटी चिनोतु । यदि एतत् पेटी "
+"चिह्नितं भवति तर्हि भवान् मासिकदृश्यस्य कृते किञ्चित् स्थानं प्राप्स्यति, परन्तु अन्ये विजेट्, यथा "
+"तिथिमार्गदर्शकः, द्रव्यविवरणं, पञ्चाङ्गसूची च न प्रदर्शिताः भविष्यन्ति"
+
+#. i18n: ectx: tooltip, entry, group (Month View)
+#: settings/korganizer.kcfg:264
+#, kde-format
+msgid ""
+"Draw month items with their tag color inside and calendar color for their "
+"border"
+msgstr "मासस्य वस्तूनि अन्तः तेषां टैग् वर्णेन सह, तेषां सीमायाः कृते पञ्चाङ्गवर्णेन च आकर्षयन्तु"
+
+#. i18n: ectx: tooltip, entry, group (Month View)
+#: settings/korganizer.kcfg:269
+#, kde-format
+msgid ""
+"Draw month items with their calendar color inside and tag color for their "
+"border"
+msgstr ""
+"मासस्य वस्तूनि अन्तः तेषां पञ्चाङ्गवर्णेन सह आकर्षयन्तु तथा च तेषां सीमायाः कृते वर्णं टैग् कुर्वन्तु"
+
+#. i18n: ectx: whatsthis, entry, group (Month View)
+#: settings/korganizer.kcfg:273
+#, kde-format
+msgid ""
+"Select the \"Only tag\" option if you would like to draw calendar items "
+"(both inside and border) in the color of their associated tag.  Please use "
+"the Colors and Fonts configuration page for setting these colors."
+msgstr ""
+"यदि भवान् पञ्चाङ्गस्य वस्तूनि (अन्तः सीमा च) तेषां सम्बद्धस्य टैग् इत्यस्य वर्णेन आकर्षितुं इच्छति "
+"तर्हि \"Only tag\" विकल्पं चिनोतु ।  एतेषां वर्णानाम् सेट् कृते कृपया Colors and Fonts "
+"विन्यासपृष्ठस्य उपयोगं कुर्वन्तु ।"
+
+#. i18n: ectx: tooltip, entry, group (Month View)
+#: settings/korganizer.kcfg:274
+#, kde-format
+msgid "Draw month items using their tag color for the inside and border"
+msgstr "अन्तः सीमायाः च कृते तेषां टैग् वर्णस्य उपयोगेन मासस्य वस्तूनि आकर्षयन्तु"
+
+#. i18n: ectx: whatsthis, entry, group (Month View)
+#: settings/korganizer.kcfg:278
+#, kde-format
+msgid ""
+"Select the \"Only calendar\" option if you would like to draw calendar items "
+"(both inside and border) in the color of their calendar.  Please use the "
+"Colors and Fonts configuration page for setting these colors."
+msgstr ""
+"यदि भवान् पञ्चाङ्गस्य वस्तूनि (अन्तः सीमा च) तेषां पञ्चाङ्गस्य वर्णेन आकर्षितुं इच्छति तर्हि "
+"\"Only calendar\" विकल्पं चिनोतु ।  एतेषां वर्णानाम् सेट् कृते कृपया Colors and Fonts "
+"विन्यासपृष्ठस्य उपयोगं कुर्वन्तु ।"
+
+#. i18n: ectx: tooltip, entry, group (Month View)
+#: settings/korganizer.kcfg:279
+#, kde-format
+msgid "Draw month items using their calendar color for the inside and border"
+msgstr "अन्तः सीमायाः च कृते तेषां पञ्चाङ्गवर्णस्य उपयोगेन मासस्य वस्तूनि आकर्षयन्तु"
+
+#. i18n: ectx: label, entry, group (Todo View)
+#: settings/korganizer.kcfg:289
+#, kde-format
+msgid "Always display completed to-dos at the bottom of the list"
+msgstr "सूचीयाः अधः सर्वदा सम्पन्नं कार्याणि प्रदर्शयन्तु"
+
+#. i18n: ectx: tooltip, entry, group (Todo View)
+#: settings/korganizer.kcfg:290
+#, kde-format
+msgid ""
+"Completed to-dos are displayed at the bottom of the list, regardless of "
+"priority"
+msgstr "प्राथमिकताम् अपेक्ष्य पूर्णानि कार्याणि सूचीयाः अधः प्रदर्शितानि भवन्ति"
+
+#. i18n: ectx: whatsthis, entry, group (Todo View)
+#: settings/korganizer.kcfg:291
+#, kde-format
+msgid ""
+"Check this box if you want all completed to-dos to be always grouped at the "
+"bottom of the to-do list."
+msgstr ""
+"यदि भवान् इच्छति यत् सर्वाणि पूर्णानि कार्याणि सर्वदा कार्यसूचिकायाः अधः समूहीकृतानि "
+"भवेयुः तर्हि एतत् पेटीम् चिनोतु ।"
+
+#. i18n: ectx: label, entry, group (Todo View)
+#: settings/korganizer.kcfg:296
+#, kde-format
+msgid "To-do list view uses full window"
+msgstr "कार्यसूचीदृश्यं पूर्णविण्डो इत्यस्य उपयोगं करोति"
+
+#. i18n: ectx: tooltip, entry, group (Todo View)
+#: settings/korganizer.kcfg:297
+#, kde-format
+msgid "Display to-do list in a full KOrganizer window"
+msgstr "पूर्णे KOrganizer विण्डो मध्ये कार्यसूचीं प्रदर्शयन्तु"
+
+#. i18n: ectx: whatsthis, entry, group (Todo View)
+#: settings/korganizer.kcfg:298
+#, kde-format
+msgid ""
+"Check this box to use the full KOrganizer window when displaying the to-do "
+"list view. If this box is checked, you will gain some space for the to-do "
+"list view, but other widgets, such as the date navigator, the to-do details "
+"and the calendars list, will not be displayed."
+msgstr ""
+"कार्यसूचीदृश्यं प्रदर्शयति समये पूर्णं KOrganizer विण्डो उपयोक्तुं एतत् पेटी चिनोतु । यदि एतत् "
+"पेटी चिह्नितं भवति तर्हि भवन्तः कार्यसूचीदृश्यस्य कृते किञ्चित् स्थानं प्राप्नुयुः, परन्तु अन्ये "
+"विजेट्, यथा तिथिमार्गदर्शकः, कार्यविवरणं, पञ्चाङ्गसूची च न प्रदर्शिताः भविष्यन्ति"
+
+#. i18n: ectx: label, entry, group (Todo View)
+#: settings/korganizer.kcfg:303
+#, kde-format
+msgid "Display to-dos in a flat list"
+msgstr "सपाटसूचौ कार्याणि प्रदर्शयन्तु"
+
+#. i18n: ectx: tooltip, entry, group (Todo View)
+#: settings/korganizer.kcfg:304
+#, kde-format
+msgid "Display to-dos as a flat list instead of a hierarchical tree"
+msgstr "श्रेणीबद्धवृक्षस्य स्थाने समतलसूचीरूपेण कार्याणि प्रदर्शयन्तु"
+
+#. i18n: ectx: whatsthis, entry, group (Todo View)
+#: settings/korganizer.kcfg:305
+#, kde-format
+msgid ""
+"Check this box if you want to see all your to-dos in a flat list instead of "
+"being arranged in a hierarchical tree."
+msgstr ""
+"यदि भवान् स्वस्य सर्वाणि कार्याणि श्रेणीबद्धवृक्षे व्यवस्थापितस्य स्थाने समतलसूचौ द्रष्टुम् इच्छति "
+"तर्हि एतत् पेटीं चिनोतु ।"
+
+#. i18n: ectx: label, entry, group (Todo View)
+#: settings/korganizer.kcfg:310
+#, kde-format
+msgid "Record completed to-dos in journal entries"
+msgstr "पत्रिकाप्रविष्टिषु सम्पन्नं कार्याणि अभिलेखयन्तु"
+
+#. i18n: ectx: whatsthis, entry, group (Todo View)
+#: settings/korganizer.kcfg:311
+#, kde-format
+msgid ""
+"Check this box to record the completion of a to-do in a new entry of your "
+"journal automatically."
+msgstr ""
+"स्वस्य पत्रिकायाः नूतनप्रविष्टौ कार्यस्य समाप्तिम् स्वयमेव अभिलेखयितुं एतत् पेटीम् चिह्नयन्तु ।"
+
+#. i18n: ectx: label, entry, group (Colors)
+#. i18n: ectx: label, entry, group (Theming)
+#. i18n: ectx: label, entry, group (Theme/Month view)
+#: settings/korganizer.kcfg:319 settings/korganizer.kcfg:536
+#: settings/korganizer.kcfg:645
+#, kde-format
+msgid "Holiday color"
+msgstr "अवकाशस्य वर्णः"
+
+#. i18n: ectx: whatsthis, entry, group (Colors)
+#. i18n: ectx: whatsthis, entry, group (Theming)
+#. i18n: ectx: whatsthis, entry, group (Theme/Month view)
+#: settings/korganizer.kcfg:320 settings/korganizer.kcfg:537
+#: settings/korganizer.kcfg:646
+#, kde-format
+msgid ""
+"Select the holiday color here. The holiday color will be used for the "
+"holiday name in the month view and the holiday number in the date navigator."
+msgstr ""
+"अत्र अवकाशस्य वर्णं चिनोतु। मासदृश्ये अवकाशदिवसस्य नामस्य कृते, तिथिसञ्चारकस्य "
+"अवकाशसङ्ख्यायाः च कृते अवकाशस्य वर्णस्य उपयोगः भविष्यति ।"
+
+#. i18n: ectx: label, entry (AgendaBgColor), group (Colors)
+#. i18n: ectx: label, entry, group (Theming)
+#: settings/korganizer.kcfg:325 settings/korganizer.kcfg:465
+#, kde-format
+msgid "Agenda view background color"
+msgstr "एजेण्डा दृश्य पृष्ठभूमि रंग"
+
+#. i18n: ectx: whatsthis, entry (AgendaBgColor), group (Colors)
+#. i18n: ectx: whatsthis, entry, group (Theming)
+#: settings/korganizer.kcfg:326 settings/korganizer.kcfg:466
+#, kde-format
+msgid "Select the agenda view background color here."
+msgstr "अत्र एजेण्डा दृश्यस्य पृष्ठभूमिवर्णं चिनोतु ।"
+
+#. i18n: ectx: label, entry, group (Colors)
+#: settings/korganizer.kcfg:331
+#, kde-format
+msgid "Agenda view current-time line color"
+msgstr "एजेण्डा दृश्य वर्तमान-समयरेखा वर्ण"
+
+#. i18n: ectx: whatsthis, entry, group (Colors)
+#: settings/korganizer.kcfg:332
+#, kde-format
+msgid "Select a color to use for the current-time (Marcus Bains) line."
+msgstr "वर्तमान-समयस्य (Marcus Bains) रेखायाः कृते उपयोक्तुं वर्णं चिनोतु ।"
+
+#. i18n: ectx: tooltip, entry, group (Colors)
+#: settings/korganizer.kcfg:333
+#, kde-format
+msgid "Use this color for the Agenda View current-time (Marcus Bains) line"
+msgstr "Agenda View वर्तमान-समयस्य (Marcus Bains) रेखायाः कृते एतत् वर्णं उपयुज्यताम्"
+
+#. i18n: ectx: label, entry (ViewBgBusyColor), group (Colors)
+#: settings/korganizer.kcfg:338
+#, kde-format
+msgid "Busy days background color"
+msgstr "व्यस्त दिवस पृष्ठभूमि रंग"
+
+#. i18n: ectx: whatsthis, entry (ViewBgBusyColor), group (Colors)
+#: settings/korganizer.kcfg:339
+#, kde-format
+msgid ""
+"When you have an all day event marked as busy, you can have a different "
+"agenda or month view background color for that day. Select the color here."
+msgstr ""
+"यदा भवतः व्यस्तः इति चिह्नितः सर्वदिवसीयः कार्यक्रमः भवति तदा भवतः तस्य दिवसस्य कृते "
+"भिन्नः एजेण्डा अथवा मासदृश्यपृष्ठभूमिवर्णः भवितुम् अर्हति । अत्र वर्णं चिनोतु ।"
+
+#. i18n: ectx: label, entry, group (Colors)
+#. i18n: ectx: label, entry, group (Theme/Month view)
+#: settings/korganizer.kcfg:344 settings/korganizer.kcfg:565
+#, kde-format
+msgid "Working hours color"
+msgstr "कार्यसमय वर्ण"
+
+#. i18n: ectx: whatsthis, entry, group (Colors)
+#: settings/korganizer.kcfg:345
+#, kde-format
+msgid "Select the working hours color for the agenda view here."
+msgstr "अत्र कार्यसूचनादृश्यस्य कृते कार्यसमयवर्णं चिनोतु ।"
+
+#. i18n: ectx: label, entry (TodoDueTodayColor), group (Colors)
+#. i18n: ectx: label, entry, group (Theme/Month view)
+#: settings/korganizer.kcfg:350 settings/korganizer.kcfg:616
+#, kde-format
+msgid "To-do due today color"
+msgstr "टू-डू ड्यू अद्य वर्ण"
+
+#. i18n: ectx: whatsthis, entry (TodoDueTodayColor), group (Colors)
+#. i18n: ectx: whatsthis, entry, group (Theme/Month view)
+#: settings/korganizer.kcfg:351 settings/korganizer.kcfg:617
+#, kde-format
+msgid "Select the to-do due today color here."
+msgstr "अत्र to-do due today इति वर्णं चिनोतु ।"
+
+#. i18n: ectx: label, entry (TodoOverdueColor), group (Colors)
+#. i18n: ectx: label, entry, group (Theme/Month view)
+#: settings/korganizer.kcfg:356 settings/korganizer.kcfg:630
+#, kde-format
+msgid "To-do overdue color"
+msgstr "टू-डू अतिदेय वर्ण"
+
+#. i18n: ectx: whatsthis, entry (TodoOverdueColor), group (Colors)
+#. i18n: ectx: whatsthis, entry, group (Theme/Month view)
+#: settings/korganizer.kcfg:357 settings/korganizer.kcfg:631
+#, kde-format
+msgid "Select the to-do overdue color here."
+msgstr "अत्र to-do overdue वर्णं चिनोतु ।"
+
+#. i18n: ectx: label, entry, group (Fonts)
+#: settings/korganizer.kcfg:365
+#, kde-format
+msgid "Time bar"
+msgstr "कालपट्टिका"
+
+#. i18n: ectx: whatsthis, entry, group (Fonts)
+#: settings/korganizer.kcfg:366
+#, kde-format
+msgid ""
+"Press this button to configure the time bar font. The time bar is the widget "
+"that shows the hours in the agenda view. This button will open the \"Select "
+"Font\" dialog, allowing you to choose the hour font for the time bar."
+msgstr ""
+"समयपट्टिकायाः फन्ट् विन्यस्तुं एतत् बटन् नुदन्तु । समयपट्टिका सः विजेट् अस्ति यः एजेण्डा दृश्ये "
+"घण्टाः दर्शयति । एतत् बटन् \"Select Font\" इति संवादं उद्घाटयिष्यति, येन भवन्तः "
+"समयपट्टिकायाः कृते घण्टायाः फॉन्ट् चयनं कर्तुं शक्नुवन्ति ।"
+
+#. i18n: ectx: label, entry, group (Fonts)
+#: settings/korganizer.kcfg:370
+#, kde-format
+msgid "Month view"
+msgstr "मासदृश्यम्"
+
+#. i18n: ectx: whatsthis, entry, group (Fonts)
+#: settings/korganizer.kcfg:371
+#, kde-format
+msgid ""
+"Press this button to configure the month view font. This button will open "
+"the \"Select Font\" dialog, allowing you to choose the font for the items in "
+"the month view."
+msgstr ""
+"मासदृश्यस्य फन्ट् विन्यस्तुं एतत् बटन् नुदन्तु । एतत् बटन् \"Select Font\" संवादं उद्घाटयिष्यति, "
+"येन भवान् मासदृश्ये द्रव्याणां कृते font चयनं कर्तुं शक्नोति ।"
+
+#. i18n: ectx: label, entry, group (Fonts)
+#: settings/korganizer.kcfg:375
+#, kde-format
+msgid "Agenda view"
+msgstr "कार्यसूची दृश्यम्"
+
+#. i18n: ectx: whatsthis, entry, group (Fonts)
+#: settings/korganizer.kcfg:376
+#, kde-format
+msgid ""
+"Press this button to configure the agenda view font. This button will open "
+"the \"Select Font\" dialog, allowing you to choose the font for the events "
+"in the agenda view."
+msgstr ""
+"एजेण्डा व्यू फॉन्ट् विन्यस्तुं एतत् बटन् नुदन्तु । एतत् बटन् \"Select Font\" इति संवादं "
+"उद्घाटयिष्यति, येन भवन्तः एजेण्डा दृश्ये घटनानां कृते font चयनं कर्तुं शक्नुवन्ति ।"
+
+#. i18n: ectx: label, entry, group (Fonts)
+#: settings/korganizer.kcfg:380
+#, kde-format
+msgid "Current-time line"
+msgstr "वर्तमान-समयरेखा"
+
+#. i18n: ectx: whatsthis, entry, group (Fonts)
+#: settings/korganizer.kcfg:381
+#, kde-format
+msgid ""
+"Press this button to configure the current-time line font. This button will "
+"open the \"Select Font\" dialog, allowing you to choose the font for the "
+"current-time line in the agenda view."
+msgstr ""
+"वर्तमान-समय-रेखा-अङ्कं विन्यस्तुं एतत् बटन् नुदन्तु । एतत् बटन् \"Select Font\" संवादं "
+"उद्घाटयिष्यति, येन भवन्तः एजेण्डा-दृश्ये वर्तमान-समय-रेखायाः कृते फॉन्ट् चयनं कर्तुं शक्नुवन्ति ।"
+
+#. i18n: ectx: label, entry (DefaultTodoAttachMethod), group (Hidden Options)
+#: settings/korganizer.kcfg:405
+#, kde-format
+msgid "Default todo attachment method"
+msgstr "पूर्वनिर्धारित todo आसक्तिविधिः"
+
+#. i18n: ectx: whatsthis, entry (DefaultTodoAttachMethod), group (Hidden Options)
+#: settings/korganizer.kcfg:406
+#, kde-format
+msgid "The default way of attaching dropped emails to a task"
+msgstr "कार्ये पातित-ईमेल-सम्बद्धानां पूर्वनिर्धारितः मार्गः"
+
+#. i18n: ectx: label, entry (DefaultTodoAttachMethod), group (Hidden Options)
+#: settings/korganizer.kcfg:409
+#, kde-format
+msgid "Always ask"
+msgstr "सदा पृच्छतु"
+
+#. i18n: ectx: label, entry (DefaultTodoAttachMethod), group (Hidden Options)
+#: settings/korganizer.kcfg:412
+#, kde-format
+msgid "Only attach link to message"
+msgstr "केवलं सन्देशस्य लिङ्कं संलग्नं कुर्वन्तु"
+
+#. i18n: ectx: label, entry (DefaultTodoAttachMethod), group (Hidden Options)
+#: settings/korganizer.kcfg:415
+#, kde-format
+msgid "Attach complete message"
+msgstr "सम्पूर्ण सन्देश संलग्न करें"
+
+#. i18n: ectx: label, entry, group (Theming)
+#. i18n: ectx: label, entry, group (Theme/Month view)
+#: settings/korganizer.kcfg:472 settings/korganizer.kcfg:560
+#, kde-format
+msgid "Highlight color"
+msgstr "वर्णं प्रकाशयन्तु"
+
+#. i18n: ectx: whatsthis, entry, group (Theming)
+#: settings/korganizer.kcfg:473
+#, kde-format
+msgid ""
+"Select the highlight color here. The highlight color will be used for "
+"marking the currently selected area in your agenda and in the date navigator."
+msgstr ""
+"अत्र हाइलाइट् वर्णं चिनोतु । भवतः कार्यसूचौ तथा च तिथिमार्गदर्शके वर्तमानचयनितक्षेत्रस्य "
+"चिह्नार्थं हाइलाइट् वर्णस्य उपयोगः भविष्यति ।"
+
+#. i18n: ectx: label, entry, group (Theming)
+#: settings/korganizer.kcfg:541
+#, kde-format
+msgid "Use system color"
+msgstr "प्रणालीवर्णस्य उपयोगं कुर्वन्तु"
+
+#. i18n: ectx: whatsthis, entry, group (Theming)
+#: settings/korganizer.kcfg:542
+#, kde-format
+msgid ""
+"Use system color instead of user defined color. If enabled will ignore all "
+"other color settings"
+msgstr ""
+"उपयोक्तृनिर्धारितवर्णस्य स्थाने प्रणालीवर्णस्य उपयोगं कुर्वन्तु । यदि सक्षमं भवति तर्हि अन्येषां "
+"सर्वेषां वर्णसेटिंग्स् अवहेलयिष्यति"
+
+#. i18n: ectx: label, entry, group (Theme/Month view)
+#: settings/korganizer.kcfg:553
+#, kde-format
+msgid "Month view background color"
+msgstr "मास दृश्य पृष्ठभूमि रंग"
+
+#. i18n: ectx: whatsthis, entry, group (Theme/Month view)
+#: settings/korganizer.kcfg:554
+#, kde-format
+msgid "Select the Month view background color here."
+msgstr "अत्र Month view background color इति चिनोतु ।"
+
+#. i18n: ectx: whatsthis, entry, group (Theme/Month view)
+#: settings/korganizer.kcfg:561
+#, kde-format
+msgid ""
+"Select the highlight color here. The highlight color will be used for "
+"marking the currently selected area in your Month and in the date navigator."
+msgstr ""
+"अत्र हाइलाइट् वर्णं चिनोतु । भवतः मासे वर्तमानचयनितक्षेत्रस्य चिह्नार्थं तथा च "
+"तिथिमार्गदर्शके हाइलाइट् वर्णस्य उपयोगः भविष्यति ।"
+
+#. i18n: ectx: whatsthis, entry, group (Theme/Month view)
+#: settings/korganizer.kcfg:566
+#, kde-format
+msgid "Select the working hours background color for the Month view here."
+msgstr "अत्र Month दृश्यस्य कृते कार्यसमयपृष्ठभूमिवर्णं चिनोतु ।"
+
+#. i18n: ectx: label, entry, group (Theme/Month view)
+#: settings/korganizer.kcfg:588
+#, kde-format
+msgid "Default event color"
+msgstr "पूर्वनिर्धारित घटना वर्ण"
+
+#. i18n: ectx: whatsthis, entry, group (Theme/Month view)
+#: settings/korganizer.kcfg:589
+#, kde-format
+msgid ""
+"Select the default event color here. The default event color will be used "
+"for events in your Month. Note that you can specify a separate color for "
+"each event tag below."
+msgstr ""
+"अत्र पूर्वनिर्धारितं घटनावर्णं चिनोतु । भवतः मासे इवेण्ट्-कृते पूर्वनिर्धारितः इवेण्ट्-रङ्गः "
+"उपयुज्यते । ध्यानं कुर्वन्तु यत् अधः प्रत्येकस्य इवेण्ट् टैग् कृते पृथक् वर्णं निर्दिष्टुं शक्नुवन्ति ।"
+
+#. i18n: ectx: property (placeholderText), widget (KListWidgetSearchLine, searchline)
+#: ui/filteredit_base.ui:35
+#, kde-format
+msgctxt "Displayed grayed-out inside the textbox, verb to search"
+msgid "Search"
+msgstr ""
+
+#. i18n: ectx: property (text), widget (QPushButton, mNewButton)
+#: ui/filteredit_base.ui:49
+#, kde-format
+msgid "&New"
+msgstr "&नूतनम्‌"
+
+#. i18n: ectx: property (title), widget (QGroupBox, mDetailsFrame)
+#: ui/filteredit_base.ui:67
+#, kde-format
+msgid "Filter Details"
+msgstr "फ़िल्टर विवरण"
+
+#. i18n: ectx: property (text), widget (QLabel, textLabel1)
+#: ui/filteredit_base.ui:105
+#, kde-format
+msgctxt "filter name"
+msgid "Name:"
+msgstr ""
+
+#. i18n: ectx: property (whatsThis), widget (QCheckBox, mRecurringCheck)
+#: ui/filteredit_base.ui:121
+#, kde-format
+msgid ""
+"Select this option if you do not want to show recurring events and to-dos in "
+"your views. Daily and weekly recurring items may take a lot of space, so it "
+"might be handy to hide them."
+msgstr ""
+"यदि भवान् स्वदृश्येषु पुनरावर्तनीयानि घटनानि कार्याणि च दर्शयितुम् न इच्छति तर्हि एतत् "
+"विकल्पं चिनोतु । दैनिकं साप्ताहिकं च पुनरावृत्तिवस्तूनि बहु स्थानं गृह्णन्ति, अतः तान् गोपनं सुलभं "
+"भवेत् ।"
+
+#. i18n: ectx: property (text), widget (QCheckBox, mRecurringCheck)
+#: ui/filteredit_base.ui:124
+#, kde-format
+msgid "Hide &recurring events and to-dos"
+msgstr "&पुनरावर्तनीयानि घटनानि कार्याणि च गोपयन्तु"
+
+#. i18n: ectx: property (whatsThis), widget (QCheckBox, mCompletedCheck)
+#: ui/filteredit_base.ui:131
+#, kde-format
+msgid ""
+"If this box is checked, the filter will hide all to-do items from the list, "
+"that have been completed. Optionally, only items that have been completed a "
+"given number of days are hidden."
+msgstr ""
+"यदि एतत् पेटी चेक् कृतं भवति तर्हि फ़िल्टर सूचीतः सर्वाणि कार्याणि गोपयिष्यति, ये सम्पन्नानि "
+"सन्ति । वैकल्पिकरूपेण केवलं तानि वस्तूनि निगूढानि भवन्ति ये दत्तदिनसङ्ख्यायां सम्पन्नाः सन्ति ।"
+
+#. i18n: ectx: property (text), widget (QCheckBox, mCompletedCheck)
+#: ui/filteredit_base.ui:134
+#, kde-format
+msgid "Hide co&mpleted to-dos"
+msgstr "पूर्णं कृतं कार्याणि गोपयन्तु"
+
+#. i18n: ectx: property (whatsThis), widget (QLabel, mCompletedTimeSpanLabel)
+#: ui/filteredit_base.ui:177
+#, kde-format
+msgid ""
+"This option will allow you to select which completed to-dos should be "
+"hidden. When you choose <i>Immediately</i>, it will hide the to-do as soon "
+"as you check it. You can increase or decrease the number of days in the "
+"spinbox."
+msgstr ""
+"एषः विकल्पः भवन्तं चिन्वितुं शक्नोति यत् कोऽपि पूर्णः कार्यः गोपनीयः इति । यदा भवान् "
+"<i>Immediate इति</i> चिनोति तदा भवता परीक्षितमात्रेण कर्तव्यं गोपयिष्यति । स्पिनबॉक्स "
+"मध्ये दिवसानां संख्यां वर्धयितुं न्यूनीकर्तुं वा शक्नुवन्ति ।"
+
+#. i18n: ectx: property (text), widget (QLabel, mCompletedTimeSpanLabel)
+#: ui/filteredit_base.ui:180
+#, kde-format
+msgid "Da&ys after completion:"
+msgstr "समाप्तेः अनन्तरं Da&ys : १."
+
+#. i18n: ectx: property (whatsThis), widget (QSpinBox, mCompletedTimeSpan)
+#: ui/filteredit_base.ui:193
+#, kde-format
+msgid ""
+"Here you can give the number of days a to-do item has to be completed to be "
+"hidden from the to-do list. If you select \"Immediately\", all completed to-"
+"dos will be hidden. If you, for example, choose a value of 1, all to-do "
+"items will be hidden, that have been marked finished longer than 24 hours "
+"ago."
+msgstr ""
+"अत्र भवन्तः कार्यसूचिकातः गोपनीयं कर्तव्यं कियत् दिवसं पूर्णं कर्तव्यं इति दातुं शक्नुवन्ति । यदि "
+"भवान् \"तत्क्षणम्\" इति चिनोति तर्हि सर्वाणि पूर्णानि कार्याणि गोपनीयानि भविष्यन्ति । "
+"यदि भवान्, उदाहरणार्थं, 1 इत्यस्य मूल्यं चिनोति, तर्हि सर्वाणि कार्यवस्तूनि निगूढाः "
+"भविष्यन्ति, ये 24 घण्टापूर्वं अधिककालं यावत् समाप्ताः इति चिह्निताः सन्ति ।"
+
+#. i18n: ectx: property (whatsThis), widget (QCheckBox, mHideInactiveTodosCheck)
+#: ui/filteredit_base.ui:218
+#, kde-format
+msgid ""
+"This option hides all to-dos from your list, where the start date has not "
+"been reached. (Note that the start date is not the due date of the to-do "
+"item.)"
+msgstr ""
+"एषः विकल्पः भवतः सूचीतः सर्वाणि कार्याणि गोपयति, यत्र आरम्भतिथिः न प्राप्ता । "
+"(ध्यायन्तु यत् आरम्भतिथिः कर्तव्यस्य द्रव्यस्य नियततिथिः नास्ति ।)"
+
+#. i18n: ectx: property (text), widget (QCheckBox, mHideInactiveTodosCheck)
+#: ui/filteredit_base.ui:221
+#, kde-format
+msgid "Hide &inactive to-dos"
+msgstr "&निष्क्रिय कार्याणि गोपयन्तु"
+
+#. i18n: ectx: property (title), widget (QGroupBox, mCategoriesButtonGroup)
+#: ui/filteredit_base.ui:228
+#, kde-format
+msgid "Tags"
+msgstr "टैग्स"
+
+#. i18n: ectx: property (whatsThis), widget (QRadioButton, mCatHideCheck)
+#: ui/filteredit_base.ui:272
+#, kde-format
+msgid ""
+"When this option is chosen, this filter will show all items which do <i>not</"
+"i> contain any of the selected tags."
+msgstr ""
+"यदा एषः विकल्पः चयनितः भवति तदा एतत् फ़िल्टर सर्वाणि वस्तूनि दर्शयिष्यति येषु चयनित-टैग्-"
+"मध्ये कश्चन अपि <i>नास्ति</i> ।"
+
+#. i18n: ectx: property (text), widget (QRadioButton, mCatHideCheck)
+#: ui/filteredit_base.ui:275
+#, kde-format
+msgid "Show all except selected"
+msgstr "चयनितं विहाय सर्वाणि दर्शयतु"
+
+#. i18n: ectx: property (whatsThis), widget (QRadioButton, mCatShowCheck)
+#: ui/filteredit_base.ui:288
+#, kde-format
+msgid ""
+"When this option is chosen, this filter will show all items containing any "
+"of the selected tags."
+msgstr ""
+"यदा एषः विकल्पः चितः भवति तदा एतत् फ़िल्टर चयनित-टैग्-मध्ये किमपि युक्तानि सर्वाणि "
+"वस्तूनि दर्शयिष्यति ।"
+
+#. i18n: ectx: property (text), widget (QRadioButton, mCatShowCheck)
+#: ui/filteredit_base.ui:291
+#, kde-format
+msgid "Show only selected"
+msgstr "केवलं चयनितं दर्शयतु"
+
+#. i18n: ectx: property (text), widget (QPushButton, mCatEditButton)
+#: ui/filteredit_base.ui:301
+#, kde-format
+msgid "Change…"
+msgstr "परिवर्तय…"
+
+#. i18n: ectx: property (whatsThis), widget (QCheckBox, mHideTodosNotAssignedToMeCheck)
+#: ui/filteredit_base.ui:315
+#, kde-format
+msgid ""
+"This option hides all to-dos from your list which are assigned to someone "
+"else.<br>\n"
+"Only to-dos which have least one attendee will be checked.  If you are not "
+"in the list of attendees the to-do will be hidden."
+msgstr ""
+"एषः विकल्पः भवतः सूचीतः सर्वाणि कार्याणि गोपयति ये अन्यस्मै नियुक्ताः सन्ति ।<br> केवलं "
+"तेषु कार्याणि परीक्षितानि भविष्यन्ति येषु न्यूनातिन्यूनम् एकः उपस्थितः भवति। यदि भवान् "
+"उपस्थितानां सूचीयां नास्ति तर्हि कर्तव्यं गोपनीयं भविष्यति।"
+
+#. i18n: ectx: property (text), widget (QCheckBox, mHideTodosNotAssignedToMeCheck)
+#: ui/filteredit_base.ui:318
+#, kde-format
+msgid "Hide to-dos not assigned to me"
+msgstr "मम कृते न नियुक्ताः कार्याणि गोपयन्तु"
+
+#. i18n: ectx: attribute (title), widget (QWidget, tabPublish)
+#: ui/kogroupwareprefspage.ui:39
+#, kde-format
+msgid "P&ublish"
+msgstr "P&ublish"
+
+#. i18n: ectx: property (text), widget (QLabel, TextLabel1)
+#: ui/kogroupwareprefspage.ui:60
+#, kde-format
+msgid ""
+"By publishing Free/Busy information, you allow others to take your calendar "
+"into account when inviting you for a meeting. Only the times you have "
+"already busy are published, not why they are busy."
+msgstr ""
+"Free/Busy सूचनां प्रकाशयित्वा भवन्तः अन्येषां कृते भवतः पञ्चाङ्गस्य गणनां कर्तुं शक्नुवन्ति यदा "
+"भवन्तं सभायाः आमन्त्रणं करोति। भवता पूर्वमेव व्यस्ताः समयाः एव प्रकाशिताः, न तु किमर्थं "
+"व्यस्ताः इति।"
+
+#. i18n: ectx: property (whatsThis), widget (QCheckBox, publishEnable)
+#: ui/kogroupwareprefspage.ui:72
+#, kde-format
+msgid ""
+"Check this box to upload your Free/Busy information automatically.\n"
+"It is possible to skip this option and mail or upload your Free/Busy "
+"information using the Schedule menu of KOrganizer.\n"
+"Note: If KOrganizer is acting as a KDE Kolab client, this is not required, "
+"as the Kolab2 server taking care of publishing your Free/Busy information "
+"and manages the access to it from other users."
+msgstr ""
+"स्वस्य Free/Busy सूचनां स्वयमेव अपलोड् कर्तुं एतत् पेटी चिनोतु।\n"
+"एतत् विकल्पं त्यक्त्वा KOrganizer इत्यस्य Schedule मेन्यू इत्यस्य उपयोगेन स्वस्य Free/Busy "
+"सूचनां मेल वा अपलोड् कर्तुं शक्यते ।\n"
+"नोट्: यदि KOrganizer KDE Kolab क्लायन्ट् इत्यस्य रूपेण कार्यं करोति तर्हि एतस्य आवश्यकता "
+"नास्ति, यतः Kolab2 सर्वरः भवतः Free/Busy सूचनां प्रकाशयितुं पालनं करोति अन्येभ्यः "
+"उपयोक्तृभ्यः तस्याः अभिगमनं प्रबन्धयति च"
+
+#. i18n: ectx: property (text), widget (QCheckBox, publishEnable)
+#: ui/kogroupwareprefspage.ui:75
+#, kde-format
+msgid "Publish your free/&busy information automatically"
+msgstr "स्वयमेव स्वस्य निःशुल्क/&व्यस्तसूचना प्रकाशयन्तु"
+
+#. i18n: ectx: property (whatsThis), widget (QLabel, publishDelayLabel)
+#. i18n: ectx: property (whatsThis), widget (QSpinBox, publishDelay)
+#: ui/kogroupwareprefspage.ui:99 ui/kogroupwareprefspage.ui:112
+#, kde-format
+msgid ""
+"Configure minimum the interval of time in minutes between each upload here. "
+"This configuration is only effective in case you choose to publish your "
+"information automatically."
+msgstr ""
+"अत्र प्रत्येकं अपलोड् मध्ये न्यूनतमं समयान्तरं निमेषेषु विन्यस्यताम् । एतत् विन्यासः केवलं तस्मिन् "
+"सन्दर्भे प्रभावी भवति यदा भवान् स्वसूचनाः स्वयमेव प्रकाशयितुं चयनं करोति ।"
+
+#. i18n: ectx: property (text), widget (QLabel, publishDelayLabel)
+#: ui/kogroupwareprefspage.ui:102
+#, kde-format
+msgid "Minimum time between uploads (in minutes):"
+msgstr "अपलोड् मध्ये न्यूनतमः समयः (निमेषेषु) :"
+
+#. i18n: ectx: property (whatsThis), widget (QLabel, TextLabel3)
+#. i18n: ectx: property (whatsThis), widget (QSpinBox, publishDays)
+#. i18n: ectx: property (whatsThis), widget (QLabel, TextLabel4)
+#: ui/kogroupwareprefspage.ui:141 ui/kogroupwareprefspage.ui:154
+#: ui/kogroupwareprefspage.ui:170
+#, kde-format
+msgid ""
+"Configure the number of calendar days you wish to be published and available "
+"to others here."
+msgstr ""
+"भवन्तः यत् पञ्चाङ्गदिनानां संख्यां प्रकाशयितुम् इच्छन्ति, अन्येभ्यः अपि अत्र उपलभ्यन्ते इति "
+"विन्यस्यन्तु ।"
+
+#. i18n: ectx: property (text), widget (QLabel, TextLabel3)
+#: ui/kogroupwareprefspage.ui:144
+#, kde-format
+msgid "Publish"
+msgstr "प्रकाशित"
+
+#. i18n: ectx: property (text), widget (QLabel, TextLabel4)
+#: ui/kogroupwareprefspage.ui:173
+#, kde-format
+msgid "days of free/busy information"
+msgstr "निःशुल्क/व्यस्तसूचनायाः दिवसाः"
+
+#. i18n: ectx: property (title), widget (QGroupBox, ButtonGroup2)
+#. i18n: ectx: property (title), widget (QGroupBox, ButtonGroup2_2)
+#: ui/kogroupwareprefspage.ui:198 ui/kogroupwareprefspage.ui:395
+#, kde-format
+msgid "Server Information"
+msgstr "सर्वर सूचना"
+
+#. i18n: ectx: property (whatsThis), widget (QLineEdit, publishUrl)
+#. i18n: ectx: property (whatsThis), widget (QLabel, TextLabel7)
+#: ui/kogroupwareprefspage.ui:226 ui/kogroupwareprefspage.ui:298
+#, kde-format
+msgid ""
+"Enter the URL for the server on which your Free/Busy information shall be "
+"published here.\n"
+"Ask the server administrator for this information."
+msgstr ""
+"यस्मिन् सर्वरे भवतः Free/Busy सूचना अत्र प्रकाशिता भविष्यति तस्य URL प्रविशन्तु ।\n"
+"एतां सूचनां सर्वर-प्रशासकं पृच्छन्तु ।"
+
+#. i18n: ectx: property (whatsThis), widget (QLineEdit, publishPassword)
+#. i18n: ectx: property (whatsThis), widget (QLabel, textLabel2)
+#. i18n: ectx: property (whatsThis), widget (QLineEdit, retrievePassword)
+#. i18n: ectx: property (whatsThis), widget (QLabel, textLabel4)
+#: ui/kogroupwareprefspage.ui:233 ui/kogroupwareprefspage.ui:243
+#: ui/kogroupwareprefspage.ui:416 ui/kogroupwareprefspage.ui:489
+#, kde-format
+msgid "Enter your groupware server login password here."
+msgstr "अत्र स्वस्य groupware server login password प्रविष्टं कुर्वन्तु ।"
+
+#. i18n: ectx: property (text), widget (QLabel, textLabel2)
+#: ui/kogroupwareprefspage.ui:246
+#, kde-format
+msgid "Password:"
+msgstr "समाभाष्:"
+
+#. i18n: ectx: property (whatsThis), widget (QLabel, TextLabel6)
+#. i18n: ectx: property (whatsThis), widget (QLineEdit, publishUser)
+#. i18n: ectx: property (whatsThis), widget (QLineEdit, retrieveUser)
+#. i18n: ectx: property (whatsThis), widget (QLabel, textLabel3)
+#: ui/kogroupwareprefspage.ui:258 ui/kogroupwareprefspage.ui:279
+#: ui/kogroupwareprefspage.ui:428 ui/kogroupwareprefspage.ui:476
+#, kde-format
+msgid ""
+"Enter the login information relative to your account on the server here.\n"
+"\n"
+"A Kolab2 server specificity: Registered your UID (Unique IDentifier). By "
+"default your UID would be your email address on the Kolab2 server but it may "
+"also be different. In the last case enter your UID."
+msgstr ""
+"अत्र सर्वरे स्वस्य खातेः सापेक्षं प्रवेशसूचना प्रविशन्तु ।\n"
+"\n"
+"एकः Kolab2 सर्वरविशिष्टता: भवतः UID (Unique IDentifier) पञ्जीकृतवान् । "
+"पूर्वनिर्धारितरूपेण भवतः UID Kolab2 सर्वरे भवतः ईमेल-सङ्केतः भविष्यति परन्तु तत् भिन्नमपि "
+"भवितुम् अर्हति । अन्तिमे सन्दर्भे स्वस्य UID प्रविष्टं कुर्वन्तु ।"
+
+#. i18n: ectx: property (text), widget (QLabel, TextLabel6)
+#: ui/kogroupwareprefspage.ui:261
+#, kde-format
+msgctxt "login name on the Kolab server"
+msgid "Username:"
+msgstr ""
+
+#. i18n: ectx: property (whatsThis), widget (QCheckBox, publishSavePassword)
+#. i18n: ectx: property (whatsThis), widget (QCheckBox, retrieveSavePassword)
+#: ui/kogroupwareprefspage.ui:287 ui/kogroupwareprefspage.ui:509
+#, kde-format
+msgid ""
+"Check this box to make KOrganizer remember your password and skip asking you "
+"each time it uploads your Free/Busy information, by storing it in the "
+"configuration file.\n"
+"For security reasons, it is not recommended to store your password in the "
+"configuration file."
+msgstr ""
+"KOrganizer भवतः गुप्तशब्दं स्मर्तुं शक्नोति तथा च प्रत्येकं समये भवतः Free/Busy सूचनां अपलोड् "
+"करोति चेत्, विन्याससञ्चिकायां संग्रह्य, भवन्तं पृच्छितुं त्यक्तुम् एतत् पेटीं चिनोतु ।\n"
+"सुरक्षाकारणात् विन्याससञ्चिकायां भवतः गुप्तशब्दस्य संग्रहणं न अनुशंसितम् ।"
+
+#. i18n: ectx: property (text), widget (QCheckBox, publishSavePassword)
+#: ui/kogroupwareprefspage.ui:290
+#, kde-format
+msgid "Remember p&assword"
+msgstr "स्मरणं प&अस्शब्दम्"
+
+#. i18n: ectx: property (text), widget (QLabel, TextLabel7)
+#. i18n: ectx: property (text), widget (QLabel, TextLabel7_2)
+#: ui/kogroupwareprefspage.ui:301 ui/kogroupwareprefspage.ui:464
+#, kde-format
+msgid "Server URL:"
+msgstr "सर्वर URL: 1.1."
+
+#. i18n: ectx: property (text), widget (QLabel, label)
+#: ui/kogroupwareprefspage.ui:311
+#, kde-format
+msgid "(No need if using Kolab server version 2)"
+msgstr "(कोलाब् सर्वर संस्करणं २ उपयुज्यते चेत् आवश्यकता नास्ति)"
+
+#. i18n: ectx: attribute (title), widget (QWidget, tabRetrieve)
+#: ui/kogroupwareprefspage.ui:338
+#, kde-format
+msgid "&Retrieve"
+msgstr "&पुनर्प्राप्त कुरु"
+
+#. i18n: ectx: property (text), widget (QLabel, TextLabel2)
+#: ui/kogroupwareprefspage.ui:359
+#, kde-format
+msgid ""
+"By retrieving Free/Busy information that others have published, you can take "
+"their calendar into account when inviting them to a meeting."
+msgstr ""
+"अन्येषां प्रकाशितानां Free/Busy सूचनानां पुनः प्राप्तिः कृत्वा, भवान् तान् सभायां आमन्त्रयन् "
+"तेषां पञ्चाङ्गं गृहीतुं शक्नोति।"
+
+#. i18n: ectx: property (whatsThis), widget (QCheckBox, retrieveEnable)
+#: ui/kogroupwareprefspage.ui:369
+#, kde-format
+msgid ""
+"Check this box to retrieve other people's Free/Busy information "
+"automatically. Note that you have to fill the correct server information to "
+"make this possible."
+msgstr ""
+"अन्येषां Free/Busy सूचनां स्वयमेव प्राप्तुं एतत् पेटीं चिनोतु। ध्यानं कुर्वन्तु यत् एतत् सम्भवं कर्तुं "
+"भवद्भिः सम्यक् सर्वर-सूचनाः पूरणीयाः ।"
+
+#. i18n: ectx: property (text), widget (QCheckBox, retrieveEnable)
+#: ui/kogroupwareprefspage.ui:372
+#, kde-format
+msgid "Retrieve other people's free/&busy information automatically"
+msgstr "अन्येषां निःशुल्क/&व्यस्तसूचनाः स्वयमेव पुनः प्राप्तुम्"
+
+#. i18n: ectx: property (toolTip), widget (QCheckBox, fullDomainRetrieval)
+#: ui/kogroupwareprefspage.ui:382
+#, kde-format
+msgid ""
+"Set this to retrieve user@domain.ifb instead of user.ifb from the server"
+msgstr ""
+"सर्वरतः user.ifb इत्यस्य स्थाने user@domain.ifb इत्येतत् पुनः प्राप्तुं एतत् सेट् कुर्वन्तु"
+
+#. i18n: ectx: property (whatsThis), widget (QCheckBox, fullDomainRetrieval)
+#: ui/kogroupwareprefspage.ui:385
+#, kde-format
+msgid ""
+"Check this box to download a free/busy file in the format \"user@domain.ifb"
+"\" (for example joe@company.com.ifb). Otherwise, it will download a free/"
+"busy file in the format user.ifb (for example joe.ifb). Ask the server "
+"Administrator if you are not sure about how to configure this option."
+msgstr ""
+"\"user@domain.ifb\" (उदाहरणार्थं joe@company.com.ifb) प्रारूपेण निःशुल्क/व्यस्तसञ्चिकां "
+"डाउनलोड् कर्तुं एतत् पेटीं चिनोतु । अन्यथा, user.ifb (उदाहरणार्थं joe.ifb) इति प्रारूपेण "
+"मुक्त/व्यस्तसञ्चिकां डाउनलोड् करिष्यति । यदि भवान् एतत् विकल्पं कथं विन्यस्तं कर्तव्यमिति "
+"निश्चितः नास्ति वा इति सर्वर प्रशासकं पृच्छतु ।"
+
+#. i18n: ectx: property (text), widget (QCheckBox, fullDomainRetrieval)
+#: ui/kogroupwareprefspage.ui:388
+#, kde-format
+msgid "Use full email &address for retrieval"
+msgstr "पुनर्प्राप्त्यर्थं पूर्णं ईमेल &पतेः उपयुज्यताम्"
+
+#. i18n: ectx: property (whatsThis), widget (QLineEdit, retrieveUrl)
+#. i18n: ectx: property (whatsThis), widget (QLabel, TextLabel7_2)
+#: ui/kogroupwareprefspage.ui:446 ui/kogroupwareprefspage.ui:461
+#, kde-format
+msgctxt "@info:whatsthis"
+msgid ""
+"Enter the URL for the server on which the Free/Busy information is published "
+"here.\n"
+"Ask the server administrator for this information.\n"
+"Here is a Kolab2 Server URL example:\n"
+"\n"
+"https://kolab2.example.com/freebusy/\n"
+"\n"
+"Alternatively, you can specify a full path to the Free/Busy. For example: \n"
+"\n"
+"https://kolab2.example.com/freebusy/user.xfb"
+msgstr ""
+
+#. i18n: ectx: property (text), widget (QLabel, textLabel3)
+#: ui/kogroupwareprefspage.ui:479
+#, kde-format
+msgid "User&name:"
+msgstr "उपयोक्तृ&नाम: १."
+
+#. i18n: ectx: property (text), widget (QLabel, textLabel4)
+#: ui/kogroupwareprefspage.ui:492
+#, kde-format
+msgid "Passwor&d:"
+msgstr "समाभाष्:"
+
+#. i18n: ectx: property (text), widget (QCheckBox, retrieveSavePassword)
+#: ui/kogroupwareprefspage.ui:512
+#, kde-format
+msgid "Re&member password"
+msgstr "गुप्तशब्दं पुनः&स्मरन्तु"
+
+#. i18n: ectx: property (text), widget (QLabel, searchLabel)
+#: ui/searchdialog_base.ui:36
+#, kde-format
+msgid "&Search for:"
+msgstr "&अन्वेषणं कुर्वन्तु:"
+
+#. i18n: ectx: property (toolTip), widget (QLineEdit, searchEdit)
+#: ui/searchdialog_base.ui:49
+#, kde-format
+msgid "Search pattern. Use wildcards “*” and “?” as desired."
+msgstr "अन्वेषणप्रतिमान। “*” तथा “?” यथेष्टम् ।"
+
+#. i18n: ectx: property (whatsThis), widget (QLineEdit, searchEdit)
+#: ui/searchdialog_base.ui:52
+#, kde-format
+msgid ""
+"Examine various fields to see if they contain the search pattern: The "
+"pattern “meet” would match “kick-off meeting”. Wildcards “*” (matches any "
+"number of characters) and “?” (matches any single character) are supported.  "
+"For example, the search pattern “meet*boss” matches “Meeting with boss”. The "
+"pattern “c?t” would match “cat”, “cot”, and so on."
+msgstr ""
+"विभिन्नक्षेत्राणि परीक्ष्य पश्यन्तु यत् तेषु अन्वेषणप्रतिमानं भवति वा: प्रतिमानं “meet” “kick-"
+"off meeting” इत्यनेन सह मेलनं करिष्यति । वाइल्डकार्ड्स् “*” (किमपि संख्यायां वर्णानाम् "
+"अनुरूपं भवति) तथा “?” (किमपि एकस्य वर्णस्य मेलनं करोति) समर्थिताः सन्ति ।  यथा, "
+"“meet*boss” इति अन्वेषणप्रतिमानं “Meeting with boss” इति मेलनं करोति । “c?t” इति "
+"प्रतिमानं “cat”, “cot”, इत्यादिभिः सह मेलनं करिष्यति स्म ।"
+
+#. i18n: ectx: property (text), widget (QLineEdit, searchEdit)
+#: ui/searchdialog_base.ui:55
+#, kde-format
+msgid "*"
+msgstr "* २."
+
+#. i18n: ectx: property (title), widget (QGroupBox, searchTypeGroup)
+#: ui/searchdialog_base.ui:67
+#, kde-format
+msgid "Search For"
+msgstr "Search For इति"
+
+#. i18n: ectx: property (toolTip), widget (QCheckBox, eventsCheck)
+#: ui/searchdialog_base.ui:73
+#, kde-format
+msgid "Search for events with matching criteria."
+msgstr "मेलमापदण्डयुक्तानि घटनानि अन्वेष्टुम्।"
+
+#. i18n: ectx: property (whatsThis), widget (QCheckBox, eventsCheck)
+#: ui/searchdialog_base.ui:76
+#, kde-format
+msgid ""
+"Check this box if you want to search for events that match the search "
+"pattern and have start dates or end dates in the given date range."
+msgstr ""
+"यदि भवान् अन्वेषणप्रतिमानेन सह मेलनं कुर्वन्तः घटनाः अन्वेष्टुम् इच्छति तथा च "
+"दत्ततिथिपरिधिमध्ये आरम्भतिथयः अथवा समाप्तितिथिः सन्ति तर्हि एतत् पेटीं चिनोतु ।"
+
+#. i18n: ectx: property (text), widget (QCheckBox, eventsCheck)
+#: ui/searchdialog_base.ui:79
+#, kde-format
+msgid "&Events"
+msgstr "&घटना"
+
+#. i18n: ectx: property (toolTip), widget (QCheckBox, journalsCheck)
+#: ui/searchdialog_base.ui:89
+#, kde-format
+msgid "Search for journal entries with matching criteria."
+msgstr "मेलमापदण्डैः सह पत्रिकाप्रविष्टयः अन्वेष्टुम्।"
+
+#. i18n: ectx: property (whatsThis), widget (QCheckBox, journalsCheck)
+#: ui/searchdialog_base.ui:92
+#, kde-format
+msgid ""
+"Check this box if you want to search for journal entries that match the "
+"search pattern and have start dates in the given date range."
+msgstr ""
+"यदि भवान् अन्वेषणप्रतिमानेन सह मेलनं कुर्वन्ति तथा च दत्ततिथिपरिधिमध्ये आरम्भतिथयः सन्ति "
+"इति पत्रिकाप्रविष्टयः अन्वेष्टुम् इच्छति तर्हि एतत् पेटीम् चिह्नयन्तु ।"
+
+#. i18n: ectx: property (text), widget (QCheckBox, journalsCheck)
+#: ui/searchdialog_base.ui:95
+#, kde-format
+msgid "&Journals"
+msgstr "&पत्रिका"
+
+#. i18n: ectx: property (toolTip), widget (QCheckBox, todosCheck)
+#: ui/searchdialog_base.ui:102
+#, kde-format
+msgid "Search for to-dos with matching criteria."
+msgstr "मेलमापदण्डैः सह कार्याणि अन्वेष्टुम्।"
+
+#. i18n: ectx: property (whatsThis), widget (QCheckBox, todosCheck)
+#: ui/searchdialog_base.ui:105
+#, kde-format
+msgid ""
+"Check this box if you want to search for to-dos that match the search "
+"pattern and have due dates in the given date range."
+msgstr ""
+"यदि भवान् अन्वेषणप्रतिमानेन सह मेलनं कुर्वन्तः कार्याणि अन्वेष्टुम् इच्छति तथा च "
+"दत्ततिथिपरिधिषु नियततिथयः सन्ति तर्हि एतत् पेटीम् चिनोतु ।"
+
+#. i18n: ectx: property (text), widget (QCheckBox, todosCheck)
+#: ui/searchdialog_base.ui:108
+#, kde-format
+msgid "To-&dos"
+msgstr "To-&dos इति"
+
+#. i18n: ectx: property (title), widget (QGroupBox, searchGroup)
+#: ui/searchdialog_base.ui:121
+#, kde-format
+msgid "Search In"
+msgstr "Search In"
+
+#. i18n: ectx: property (toolTip), widget (QCheckBox, categoryCheck)
+#: ui/searchdialog_base.ui:127
+#, kde-format
+msgid "Include tags in your search."
+msgstr "भवतः अन्वेषणे टैग्स् समावेशयन्तु।"
+
+#. i18n: ectx: property (whatsThis), widget (QCheckBox, categoryCheck)
+#: ui/searchdialog_base.ui:130
+#, kde-format
+msgid "Check this box if you want to match tags against your search pattern."
+msgstr ""
+"यदि भवान् स्वस्य अन्वेषणप्रतिमानस्य विरुद्धं टैग्स् मेलयितुम् इच्छति तर्हि एतत् पेटीम् चिनोतु ।"
+
+#. i18n: ectx: property (text), widget (QCheckBox, categoryCheck)
+#: ui/searchdialog_base.ui:133
+#, kde-format
+msgid "Ta&gs"
+msgstr "ता&ग"
+
+#. i18n: ectx: property (toolTip), widget (QCheckBox, locationCheck)
+#: ui/searchdialog_base.ui:140
+#, kde-format
+msgid "Include locations in your search."
+msgstr "अन्वेषणे स्थानानि समावेशयन्तु।"
+
+#. i18n: ectx: property (whatsThis), widget (QCheckBox, locationCheck)
+#: ui/searchdialog_base.ui:143
+#, kde-format
+msgid ""
+"Check this box if you want to match locations against your search pattern."
+msgstr ""
+"यदि भवान् स्वस्य अन्वेषणप्रतिमानस्य विरुद्धं स्थानानि मेलयितुम् इच्छति तर्हि एतत् पेटीम् "
+"चिह्नितव्यम् ।"
+
+#. i18n: ectx: property (text), widget (QCheckBox, locationCheck)
+#: ui/searchdialog_base.ui:146
+#, kde-format
+msgid "Locations"
+msgstr "स्थानानि"
+
+#. i18n: ectx: property (toolTip), widget (QCheckBox, descriptionCheck)
+#: ui/searchdialog_base.ui:153
+#, kde-format
+msgid "Include descriptions in your search."
+msgstr "भवतः अन्वेषणे वर्णनानि समावेशयन्तु।"
+
+#. i18n: ectx: property (whatsThis), widget (QCheckBox, descriptionCheck)
+#: ui/searchdialog_base.ui:156
+#, kde-format
+msgid ""
+"Check this box if you want to match descriptions against your search pattern."
+msgstr ""
+"यदि भवान् स्वस्य अन्वेषणप्रतिमानस्य विरुद्धं वर्णनानां मेलनं कर्तुम् इच्छति तर्हि एतत् पेटीं चिनोतु "
+"।"
+
+#. i18n: ectx: property (text), widget (QCheckBox, descriptionCheck)
+#: ui/searchdialog_base.ui:159
+#, kde-format
+msgid "Desc&riptions"
+msgstr "Dec&riptions"
+
+#. i18n: ectx: property (toolTip), widget (QCheckBox, summaryCheck)
+#: ui/searchdialog_base.ui:166
+#, kde-format
+msgid "Include summaries in your search."
+msgstr "अन्वेषणे सारांशान् समावेशयन्तु।"
+
+#. i18n: ectx: property (whatsThis), widget (QCheckBox, summaryCheck)
+#: ui/searchdialog_base.ui:169
+#, kde-format
+msgid ""
+"Check this box if you want to match summaries against your search pattern."
+msgstr ""
+"यदि भवान् स्वस्य अन्वेषणप्रतिमानस्य विरुद्धं सारांशं मेलयितुम् इच्छति तर्हि एतत् पेटीं चिनोतु ।"
+
+#. i18n: ectx: property (text), widget (QCheckBox, summaryCheck)
+#: ui/searchdialog_base.ui:172
+#, kde-format
+msgid "Su&mmaries"
+msgstr "सारांश&मारीः"
+
+#. i18n: ectx: property (toolTip), widget (QCheckBox, attendeeCheck)
+#: ui/searchdialog_base.ui:182
+#, kde-format
+msgid "Include attendees in your search."
+msgstr "भवतः अन्वेषणे उपस्थितान् समावेशयन्तु।"
+
+#. i18n: ectx: property (whatsThis), widget (QCheckBox, attendeeCheck)
+#: ui/searchdialog_base.ui:185
+#, kde-format
+msgid ""
+"Check this box if you want to match attendees against your search pattern."
+msgstr ""
+"यदि भवान् स्वस्य अन्वेषणप्रतिमानेन सह उपस्थितानां मेलनं कर्तुम् इच्छति तर्हि एतत् पेटीं चिनोतु ।"
+
+#. i18n: ectx: property (text), widget (QCheckBox, attendeeCheck)
+#: ui/searchdialog_base.ui:188
+#, kde-format
+msgid "Attendees"
+msgstr "उपस्थिताः"
+
+#. i18n: ectx: property (title), widget (QGroupBox, dateRangeGroup)
+#: ui/searchdialog_base.ui:198
+#, kde-format
+msgid "Date Range"
+msgstr "तिथिपरिधि"
+
+#. i18n: ectx: property (toolTip), widget (QCheckBox, dateRangeCheckbox)
+#: ui/searchdialog_base.ui:204
+#, kde-format
+msgid "When checked, the search will be limited to the specified date range."
+msgstr "परीक्षिते सति अन्वेषणं निर्दिष्टतिथिपरिधिपर्यन्तं सीमितं भविष्यति ।"
+
+#. i18n: ectx: property (whatsThis), widget (QCheckBox, dateRangeCheckbox)
+#: ui/searchdialog_base.ui:207
+#, kde-format
+msgid ""
+"Check this box to search for events within a specified date range. If the "
+"box is unchecked, all events will be searched."
+msgstr ""
+"निर्दिष्टतिथिपरिधिमध्ये घटनाः अन्वेष्टुं एतत् पेटीं चिनोतु । यदि पेटी अचेक् कृता अस्ति तर्हि "
+"सर्वाणि घटनानि अन्वेषितानि भविष्यन्ति ।"
+
+#. i18n: ectx: property (text), widget (QCheckBox, dateRangeCheckbox)
+#: ui/searchdialog_base.ui:210
+#, kde-format
+msgid "Limit search to specified date range"
+msgstr "अन्वेषणं निर्दिष्टतिथिपरिधिपर्यन्तं सीमितं कुर्वन्तु"
+
+#. i18n: ectx: property (text), widget (QLabel, startDateLabel)
+#: ui/searchdialog_base.ui:222
+#, kde-format
+msgid "Fr&om:"
+msgstr "From&about: १."
+
+#. i18n: ectx: property (toolTip), widget (KDateComboBox, startDate)
+#: ui/searchdialog_base.ui:241
+#, kde-format
+msgid "The starting date of the period to search."
+msgstr "अन्वेषणार्थं कालस्य आरम्भतिथिः ।"
+
+#. i18n: ectx: property (whatsThis), widget (KDateComboBox, startDate)
+#: ui/searchdialog_base.ui:244
+#, kde-format
+msgid "Search for items in the time period starting at the date given here."
+msgstr "अत्र दत्ततिथितः आरभ्य कालखण्डे वस्तूनि अन्वेष्टुम्।"
+
+#. i18n: ectx: property (text), item, widget (KDateComboBox, startDate)
+#. i18n: ectx: property (text), item, widget (KDateComboBox, endDate)
+#: ui/searchdialog_base.ui:248 ui/searchdialog_base.ui:286
+#, kde-format
+msgid "2008-08-18"
+msgstr "२००८-०८-१८"
+
+#. i18n: ectx: property (text), widget (QLabel, endDateLabel)
+#: ui/searchdialog_base.ui:260
+#, kde-format
+msgid "&To:"
+msgstr "&इत्यस्मै:"
+
+#. i18n: ectx: property (toolTip), widget (KDateComboBox, endDate)
+#: ui/searchdialog_base.ui:279
+#, kde-format
+msgid "The ending date of the period to search."
+msgstr "अन्वेषणार्थं कालस्य समाप्तितिथिः ।"
+
+#. i18n: ectx: property (whatsThis), widget (KDateComboBox, endDate)
+#: ui/searchdialog_base.ui:282
+#, kde-format
+msgid "Search for items in the time period ending at the date given here."
+msgstr "अत्र दत्तदिनाङ्के समाप्तसमयावधिषु वस्तूनि अन्वेष्टुम् ।"
+
+#. i18n: ectx: property (toolTip), widget (QCheckBox, inclusiveCheck)
+#: ui/searchdialog_base.ui:296
+#, kde-format
+msgid ""
+"Display events only if their start date and end date are both in the date "
+"range specified."
+msgstr ""
+"घटनाः केवलं तदा एव प्रदर्शयन्तु यदा तेषां आरम्भतिथिः समाप्तितिथिः च उभौ "
+"निर्दिष्टतिथिपरिधिषु स्तः ।"
+
+#. i18n: ectx: property (whatsThis), widget (QCheckBox, inclusiveCheck)
+#: ui/searchdialog_base.ui:299
+#, kde-format
+msgid ""
+"Check this box if you only want to find events that occur entirely within "
+"the date range specified.  Events that start during the date range but end "
+"after it, or end during the date range but start before it, will be excluded "
+"from the search results."
+msgstr ""
+"यदि भवान् केवलं निर्दिष्टतिथिपरिधिमध्ये पूर्णतया घटमानानि घटनानि अन्वेष्टुम् इच्छति तर्हि "
+"एतत् पेटीम् चिनोतु ।  ये घटनाः तिथिपरिधिमध्ये आरभ्यन्ते परन्तु तदनन्तरं समाप्ताः भवन्ति, "
+"अथवा तिथिपरिधिमध्ये समाप्ताः परन्तु तस्मात् पूर्वं आरभ्यन्ते, ते अन्वेषणपरिणामेभ्यः बहिष्कृताः "
+"भविष्यन्ति ।"
+
+#. i18n: ectx: property (text), widget (QCheckBox, inclusiveCheck)
+#: ui/searchdialog_base.ui:302
+#, kde-format
+msgid "Exclude e&vents that extend outside the specified date range"
+msgstr "निर्दिष्टतिथिपरिधितः बहिः विस्तृताः e&vents बहिष्कृताः"
+
+#. i18n: ectx: property (toolTip), widget (QCheckBox, includeUndatedTodos)
+#: ui/searchdialog_base.ui:309
+#, kde-format
+msgid ""
+"Include to-dos that have a start date, due date,  or completion date in the "
+"date range specified, or have neither a start date nor an end date."
+msgstr ""
+"निर्दिष्टतिथिपरिधिषु आरम्भतिथिः, नियततिथिः, समाप्तितिथिः वा सन्ति, अथवा "
+"प्रारम्भतिथिः न च समाप्ततिथिः सन्ति, तेषां कार्याणि समाविष्टानि कुर्वन्तु ।"
+
+#. i18n: ectx: property (whatsThis), widget (QCheckBox, includeUndatedTodos)
+#: ui/searchdialog_base.ui:312
+#, kde-format
+msgid ""
+"Check this box to search for to-dos that have a start date, due date, or "
+"completion date in the date range specified, or have neither a start date "
+"nor an end date.  If the box is unchecked, only to-dos that have a due date "
+"in the date range will be displayed."
+msgstr ""
+"निर्दिष्टतिथिपरिधिषु आरम्भतिथिः, नियततिथिः, समाप्तितिथिः वा सन्ति, अथवा आरम्भतिथिः "
+"न च समाप्ततिथिः नास्ति इति कार्याणि अन्वेष्टुं एतत् पेटी चिनोतु  यदि पेटी अचेक् कृता अस्ति "
+"तर्हि केवलं to-dos इति प्रदर्शितं भविष्यति येषां तिथिपरिधिषु नियततिथिः भवति ।"
+
+#. i18n: ectx: property (text), widget (QCheckBox, includeUndatedTodos)
+#: ui/searchdialog_base.ui:315
+#, kde-format
+msgid "Include all to-dos &within the specified date range"
+msgstr "निर्दिष्टतिथिपरिधिमध्ये सर्वाणि कार्याणि & समाविष्टानि कुर्वन्तु"
+
+#. i18n: ectx: property (text), widget (QPushButton, mDayBtn)
+#: views/collectionview/quickview.ui:34
+#, kde-format
+msgid "Day"
+msgstr "दिनं"
+
+#. i18n: ectx: property (text), widget (QPushButton, mWeekBtn)
+#: views/collectionview/quickview.ui:41
+#, kde-format
+msgid "Week"
+msgstr "सप्ताहः"
+
+#. i18n: ectx: property (text), widget (QPushButton, mMothBtn)
+#: views/collectionview/quickview.ui:51
+#, kde-format
+msgid "Month"
+msgstr "माह"
+
+#. i18n: ectx: property (text), widget (QPushButton, mAgendaBtn)
+#: views/collectionview/quickview.ui:61
+#, kde-format
+msgid "Agenda"
+msgstr "कार्यसूची"
+
+#. i18n: ectx: property (text), widget (QPushButton, mPreviousBtn)
+#: views/collectionview/quickview.ui:84
+#, kde-format
+msgid "<"
+msgstr "<"
+
+#. i18n: ectx: property (text), widget (QPushButton, mNextBtn)
+#: views/collectionview/quickview.ui:104
+#, kde-format
+msgid ">"
+msgstr ">"
+
+#: views/multiagendaview/multiagendaview.cpp:37
+#, kde-format
+msgid "Agenda %1"
+msgstr "कार्यसूची %1"
+
+#: views/multiagendaview/multiagendaview.cpp:340
+#, kde-format
+msgctxt "@title:window"
+msgid "Configure Side-By-Side View"
+msgstr ""
+
+#. i18n: ectx: property (text), widget (QRadioButton, useDefaultRB)
+#: views/multiagendaview/multiagendaviewconfigwidget.ui:17
+#, kde-format
+msgid "Show one calendar per agenda column"
+msgstr "प्रति कार्यसूचीस्तम्भं एकं पञ्चाङ्गं दर्शयतु"
+
+#. i18n: ectx: property (text), widget (QRadioButton, useCustomRB)
+#: views/multiagendaview/multiagendaviewconfigwidget.ui:27
+#, kde-format
+msgid "Use custom calendar setup"
+msgstr "कस्टम् कैलेण्डर् सेटअपस्य उपयोगं कुर्वन्तु"
+
+#. i18n: ectx: property (text), widget (QLabel, columnNumberLabel)
+#: views/multiagendaview/multiagendaviewconfigwidget.ui:36
+#, kde-format
+msgid "Number of columns"
+msgstr "स्तम्भानां संख्या"
+
+#. i18n: ectx: property (text), widget (QLabel, titleLabel)
+#: views/multiagendaview/multiagendaviewconfigwidget.ui:84
+#, kde-format
+msgctxt "Agenda title"
+msgid "Title"
+msgstr ""
+
+#. i18n: ectx: property (text), widget (QLabel, selectedCalendarsLabel)
+#: views/multiagendaview/multiagendaviewconfigwidget.ui:102
+#, kde-format
+msgid "Selected Calendars"
+msgstr "चयनित पञ्चाङ्ग"
+
+#: widgets/kdatenavigator.cpp:169
+#, kde-format
+msgctxt "start/end week number of line in date picker"
+msgid "%1/%2"
+msgstr ""
+
+#: widgets/kdatenavigator.cpp:174
+#, kde-format
+msgctxt "@info:tooltip"
+msgid "Scroll to week number %1"
+msgstr ""
+
+#: widgets/kdatenavigator.cpp:176
+#, kde-format
+msgid ""
+"Click here to scroll the display to week number %1 of the currently "
+"displayed year."
+msgstr ""
+"वर्तमानप्रदर्शितवर्षस्य %1 सप्ताहसङ्ख्यां प्रति प्रदर्शनं स्क्रॉल कर्तुं अत्र क्लिक् कुर्वन्तु ।"
+
+#: widgets/kdatenavigator.cpp:222
+#, kde-format
+msgctxt "@info:tooltip"
+msgid "%1"
+msgstr ""
+
+#: widgets/kdatenavigator.cpp:223
+#, kde-format
+msgid "A column header of the %1 dates in the month."
+msgstr "मासे %1 तिथयः स्तम्भशीर्षकं ।"
+
+#: widgets/kitemiconcheckcombo.cpp:16
+#, kde-format
+msgid "Calendar's custom icon"
+msgstr "पञ्चाङ्गस्य कस्टम् चिह्नम्"
+
+#: widgets/kitemiconcheckcombo.cpp:17
+#, kde-format
+msgid "To-do"
+msgstr "कर्तव्यम्"
+
+#: widgets/kitemiconcheckcombo.cpp:18
+#, kde-format
+msgid "Journal"
+msgstr "जर्नल"
+
+#: widgets/kitemiconcheckcombo.cpp:19
+#, kde-format
+msgid "Recurring"
+msgstr "पुनरावृत्तिः"
+
+#: widgets/kitemiconcheckcombo.cpp:20
+#, kde-format
+msgid "Alarm"
+msgstr "आपत्सङ्केत"
+
+#: widgets/kitemiconcheckcombo.cpp:21
+#, kde-format
+msgid "Read Only"
+msgstr "केवलं पठनीयम्"
+
+#: widgets/kitemiconcheckcombo.cpp:22
+#, kde-format
+msgid "Needs Reply"
+msgstr "उत्तरस्य आवश्यकता अस्ति"
+
+#: widgets/kitemiconcheckcombo.cpp:23
+#, kde-format
+msgid "Attending"
+msgstr "उपस्थितः"
+
+#: widgets/kitemiconcheckcombo.cpp:24
+#, kde-format
+msgid "Maybe Attending"
+msgstr "कदाचित् Attending इति"
+
+#: widgets/kitemiconcheckcombo.cpp:25
+#, kde-format
+msgid "Organizer"
+msgstr "आयोजक"
+
+#: widgets/kitemiconcheckcombo.cpp:34
+#, kde-format
+msgctxt "@item:inlistbox"
+msgid "Icons to use"
+msgstr ""
+
+#: widgets/navigatorbar.cpp:31
+#, kde-format
+msgid "Scroll backward to the previous year"
+msgstr "पूर्ववर्षं प्रति पृष्ठतः स्क्रॉलं कुर्वन्तु"
+
+#: widgets/navigatorbar.cpp:32
+#, kde-format
+msgid ""
+"Click this button to scroll the display to the same approximate day of the "
+"previous year"
+msgstr "पूर्ववर्षस्य समानं अनुमानितदिने प्रदर्शनं स्क्रॉल कर्तुं एतत् बटन् नुदन्तु"
+
+#: widgets/navigatorbar.cpp:36
+#, kde-format
+msgid "Scroll backward to the previous month"
+msgstr "पूर्वमासं प्रति पृष्ठतः स्क्रॉलं कुर्वन्तु"
+
+#: widgets/navigatorbar.cpp:37
+#, kde-format
+msgid ""
+"Click this button to scroll the display to the same approximate date of the "
+"previous month"
+msgstr "पूर्वमासस्य समाना अनुमानिततिथिं प्रति प्रदर्शनं स्क्रॉल कर्तुं एतत् बटन् नुदन्तु"
+
+#: widgets/navigatorbar.cpp:41
+#, kde-format
+msgid "Scroll forward to the next month"
+msgstr "अग्रिममासं प्रति अग्रे स्क्रॉलं कुर्वन्तु"
+
+#: widgets/navigatorbar.cpp:42
+#, kde-format
+msgid ""
+"Click this button to scroll the display to the same approximate date of the "
+"next month"
+msgstr "आगामिमासस्य समाना अनुमानिततिथिं प्रति प्रदर्शनं स्क्रॉल कर्तुं एतत् बटन् नुदन्तु"
+
+#: widgets/navigatorbar.cpp:46
+#, kde-format
+msgid "Scroll forward to the next year"
+msgstr "अग्रिमवर्षं प्रति अग्रे स्क्रॉलं कुर्वन्तु"
+
+#: widgets/navigatorbar.cpp:47
+#, kde-format
+msgid ""
+"Click this button to scroll the display to the same approximate day of the "
+"next year"
+msgstr "आगामिवर्षस्य तस्मिन् एव अनुमानितदिने प्रदर्शनं स्क्रॉल कर्तुं एतत् बटन् नुदन्तु"
+
+#: widgets/navigatorbar.cpp:54
+#, kde-format
+msgctxt "@info:tooltip"
+msgid "Select a month"
+msgstr ""
+
+#: widgets/navigatorbar.cpp:60
+#, kde-format
+msgctxt "@info:tooltip"
+msgid "Select a year"
+msgstr ""
+
+#: widgets/navigatorbar.cpp:109
+#, kde-format
+msgctxt "monthname"
+msgid "%1"
+msgstr ""
+
+#: widgets/navigatorbar.cpp:110
+#, kde-format
+msgctxt "4 digit year"
+msgid "%1"
+msgstr ""
