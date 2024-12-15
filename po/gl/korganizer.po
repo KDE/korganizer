@@ -16,7 +16,7 @@ msgstr ""
 "Project-Id-Version: korganizer\n"
 "Report-Msgid-Bugs-To: https://bugs.kde.org\n"
 "POT-Creation-Date: 2024-10-27 00:41+0000\n"
-"PO-Revision-Date: 2024-12-13 09:34+0100\n"
+"PO-Revision-Date: 2024-12-14 11:31+0100\n"
 "Last-Translator: Adrián Chaves (Gallaecio) <adrian@chaves.io>\n"
 "Language-Team: Proxecto Trasno (proxecto@trasno.gal)\n"
 "Language: gl\n"
@@ -3910,8 +3910,8 @@ msgid ""
 "other (non daily recurring) events."
 msgstr ""
 "Marque isto para amosar os días contendo as repeticións diarias de eventos "
-"en formato recalcado no navegador de datas, ou desactive isto para darlle "
-"máis relevancia a outros eventos (de repetición non diaria)."
+"en formato recalcado no navegador de datas, ou desmárqueo para darlle máis "
+"relevancia a outros eventos (de repetición non diaria)."
 
 #. i18n: ectx: label, entry (WeeklyRecur), group (General View)
 #: settings/korganizer.kcfg:98
@@ -3928,8 +3928,8 @@ msgid ""
 "other (non weekly recurring) events."
 msgstr ""
 "Marque isto para amosar os días contendo as repeticións semanais de eventos "
-"en formato recalcado no navegador de datas, ou desactive isto para darlle "
-"máis relevancia a outros eventos (de repetición non semanal)."
+"en formato recalcado no navegador de datas, ou desmárqueo para darlle máis "
+"relevancia a outros eventos (de repetición non semanal)."
 
 #. i18n: ectx: label, entry (HighlightTodos), group (General View)
 #: settings/korganizer.kcfg:104
