@@ -16,7 +16,7 @@ msgstr ""
 "Project-Id-Version: korganizer\n"
 "Report-Msgid-Bugs-To: https://bugs.kde.org\n"
 "POT-Creation-Date: 2024-11-20 00:40+0000\n"
-"PO-Revision-Date: 2024-12-14 11:31+0100\n"
+"PO-Revision-Date: 2024-12-15 23:39+0100\n"
 "Last-Translator: Adrián Chaves (Gallaecio) <adrian@chaves.io>\n"
 "Language-Team: Proxecto Trasno (proxecto@trasno.gal)\n"
 "Language: gl\n"
@@ -24,7 +24,7 @@ msgstr ""
 "Content-Type: text/plain; charset=UTF-8\n"
 "Content-Transfer-Encoding: 8bit\n"
 "Plural-Forms: nplurals=2; plural=n != 1;\n"
-"X-Generator: Lokalize 24.08.3\n"
+"X-Generator: Lokalize 24.12.0\n"
 
 #, kde-format
 msgctxt "NAME OF TRANSLATORS"
@@ -4341,7 +4341,7 @@ msgstr ""
 #: settings/korganizer.kcfg:227
 #, kde-format
 msgid "Display icons in month view items"
-msgstr "Activar as iconas dos elementos da vista mensual"
+msgstr "Amosar as iconas dos elementos da vista mensual."
 
 #. i18n: ectx: label, entry (ShowTimeInMonthView), group (Month View)
 #: settings/korganizer.kcfg:232
@@ -4407,9 +4407,9 @@ msgid ""
 "calendars list, will not be displayed."
 msgstr ""
 "Marque esta opción para usar a xanela completa de KOrganizer cando se amose "
-"a vista mensual. Se se activa isto, gañará un pouco de espazo na vista "
-"mensual, pero outros trebellos, como no navegador de datas, os detalles dos "
-"elementos e a lista de calendarios, non se amosarán."
+"a vista mensual. Se marca isto, gañará un pouco de espazo na vista mensual, "
+"pero outros trebellos, como no navegador de datas, os detalles dos elementos "
+"e a lista de calendarios, non se amosarán."
 
 #. i18n: ectx: tooltip, entry, group (Month View)
 #: settings/korganizer.kcfg:264
@@ -4515,9 +4515,9 @@ msgid ""
 "and the calendars list, will not be displayed."
 msgstr ""
 "Marque esta opción para usar a xanela completa de KOrganizer cando se amose "
-"a lista de tarefas. Se se activa isto, gañará algo de espazo na vista da "
-"lista de tarefas, pero outros trebellos, como o navegador de datas, os "
-"detalles das tarefas e a lista de calendarios, non se amosarán."
+"a lista de tarefas. Se marca isto, gañará algo de espazo na vista da lista "
+"de tarefas, pero outros trebellos, como o navegador de datas, os detalles "
+"das tarefas e a lista de calendarios, non se amosarán."
 
 #. i18n: ectx: label, entry, group (Todo View)
 #: settings/korganizer.kcfg:303
