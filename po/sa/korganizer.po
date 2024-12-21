@@ -9,7 +9,7 @@ msgstr ""
 "Project-Id-Version: korganizer\n"
 "Report-Msgid-Bugs-To: https://bugs.kde.org\n"
 "POT-Creation-Date: 2024-11-20 00:40+0000\n"
-"PO-Revision-Date: 2024-12-14 01:48+0530\n"
+"PO-Revision-Date: 2024-12-20 22:01+0530\n"
 "Last-Translator: kali <skkalwar999@gmail.com>\n"
 "Language-Team: Sanskrit <kde-i18n-doc@kde.org>\n"
 "Language: sa\n"
@@ -1288,7 +1288,7 @@ msgstr "नूतनं पञ्चाङ्गरूपेण योजयन�
 #, kde-format
 msgctxt "@item this is the default calendar"
 msgid "%1 (Offline)"
-msgstr "%1 (अफलाइन) २."
+msgstr "%1 (अफलाइन)"
 
 #: akonadicollectionview.cpp:292
 #, kde-format
@@ -1564,7 +1564,7 @@ msgstr "घटनायाः विच्छेदनं असफलम् अ
 #: calendarview.cpp:1818
 #, kde-format
 msgid "iCalendars (*.ics)"
-msgstr "iCalendars (*.ics) ९."
+msgstr "iCalendars (*.ics)"
 
 #: calendarview.cpp:1827
 #, kde-format
@@ -2073,13 +2073,13 @@ msgstr "अकोनाडीतः घटनां पुनः प्राप
 #, kde-format
 msgctxt "@item:intext delimiter for joining holiday names"
 msgid ","
-msgstr ", ९."
+msgstr ","
 
 #: kodaymatrix.cpp:226
 #, kde-format
 msgctxt "delimiter for joining holiday names"
 msgid ","
-msgstr ", ९."
+msgstr ","
 
 #: kodaymatrix.cpp:634
 #, kde-format
@@ -2257,7 +2257,7 @@ msgstr ""
 #: kontactplugin/specialdates/sdsummaryconfig_base.ui:50
 #, kde-format
 msgid "Within the next &month (31 days)"
-msgstr "अग्रिम &मासस्य अन्तः (३१ दिवसाः) २."
+msgstr "अग्रिम &मासस्य अन्तः (३१ दिवसाः)"
 
 #. i18n: ectx: property (toolTip), widget (QRadioButton, mDateRangeButton)
 #: kontactplugin/korganizer/apptsummaryconfig_base.ui:57
@@ -2891,7 +2891,7 @@ msgstr "प्रगतिशीलः "
 #, kde-format
 msgctxt "Separator for status like this: overdue, completed"
 msgid ","
-msgstr ", ९."
+msgstr ","
 
 #. i18n: ectx: property (windowTitle), widget (QWidget, SDSummaryConfig_Base)
 #: kontactplugin/specialdates/sdsummaryconfig_base.ui:16
@@ -3342,7 +3342,7 @@ msgstr "घटना पाठः"
 #, kde-format
 msgctxt "@label"
 msgid "Mail transport:"
-msgstr "मेल परिवहनम् : १."
+msgstr "मेल परिवहनम् :"
 
 #: prefs/koprefsdialogmain.cpp:43
 #, kde-format
@@ -3450,13 +3450,13 @@ msgstr "अवकाशदिनानि"
 #, kde-format
 msgctxt "@label"
 msgid "Use holiday region:"
-msgstr "अवकाशप्रदेशस्य उपयोगं कुर्वन्तु : १."
+msgstr "अवकाशप्रदेशस्य उपयोगं कुर्वन्तु :"
 
 #: prefs/koprefsdialogtime.cpp:90
 #, kde-format
 msgctxt "@item:inlistbox Holiday region, region language"
 msgid "%1 (%2)"
-msgstr "%1 (%2) २."
+msgstr "%1 (%2)"
 
 #: prefs/koprefsdialogtime.cpp:99
 #, kde-format
@@ -3540,7 +3540,7 @@ msgstr "नियुक्तयः"
 #, kde-format
 msgctxt "@label"
 msgid "Default reminder time:"
-msgstr "पूर्वनिर्धारितः स्मरणसमयः : १."
+msgstr "पूर्वनिर्धारितः स्मरणसमयः :"
 
 #: prefs/koprefsdialogtime.cpp:207
 #, kde-format
@@ -3558,7 +3558,7 @@ msgstr "घण्टानः)"
 #, kde-format
 msgctxt "@item:inlistbox reminder time units in days"
 msgid "day(s)"
-msgstr "दिवस(दिनम्) २."
+msgstr "दिवस(दिनम्)"
 
 #: prefs/koprefsdialogtime.cpp:219
 #, kde-format
@@ -3730,7 +3730,7 @@ msgstr ""
 #: settings/korganizer.kcfg:44
 #, kde-format
 msgid "Weekly start day:"
-msgstr "साप्ताहिकः आरम्भदिवसः : १."
+msgstr "साप्ताहिकः आरम्भदिवसः :"
 
 #. i18n: ectx: tooltip, entry (WeekStartDay), group (Time &amp; Date)
 #: settings/korganizer.kcfg:45
@@ -4862,7 +4862,7 @@ msgstr ""
 #: ui/filteredit_base.ui:180
 #, kde-format
 msgid "Da&ys after completion:"
-msgstr "समाप्तेः अनन्तरं Da&ys : १."
+msgstr "समाप्तेः अनन्तरं Da&ys :"
 
 #. i18n: ectx: property (whatsThis), widget (QSpinBox, mCompletedTimeSpan)
 #: ui/filteredit_base.ui:193
@@ -5104,7 +5104,7 @@ msgstr ""
 #, kde-format
 msgctxt "login name on the Kolab server"
 msgid "Username:"
-msgstr "उपयोक्तृनाम : १."
+msgstr "उपयोक्तृनाम :"
 
 #. i18n: ectx: property (whatsThis), widget (QCheckBox, publishSavePassword)
 #. i18n: ectx: property (whatsThis), widget (QCheckBox, retrieveSavePassword)
@@ -5232,7 +5232,7 @@ msgstr ""
 #: ui/kogroupwareprefspage.ui:479
 #, kde-format
 msgid "User&name:"
-msgstr "उपयोक्तृ&नाम: १."
+msgstr "उपयोक्तृ&नाम:"
 
 #. i18n: ectx: property (text), widget (QLabel, textLabel4)
 #: ui/kogroupwareprefspage.ui:492
@@ -5278,7 +5278,7 @@ msgstr ""
 #: ui/searchdialog_base.ui:55
 #, kde-format
 msgid "*"
-msgstr "* २."
+msgstr "*"
 
 #. i18n: ectx: property (title), widget (QGroupBox, searchTypeGroup)
 #: ui/searchdialog_base.ui:67
@@ -5491,7 +5491,7 @@ msgstr "अन्वेषणं निर्दिष्टतिथिपर�
 #: ui/searchdialog_base.ui:222
 #, kde-format
 msgid "Fr&om:"
-msgstr "From&about: १."
+msgstr "From&about:"
 
 #. i18n: ectx: property (toolTip), widget (KDateComboBox, startDate)
 #: ui/searchdialog_base.ui:241

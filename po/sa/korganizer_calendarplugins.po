@@ -9,7 +9,7 @@ msgstr ""
 "Project-Id-Version: korganizer\n"
 "Report-Msgid-Bugs-To: https://bugs.kde.org\n"
 "POT-Creation-Date: 2024-07-30 00:42+0000\n"
-"PO-Revision-Date: 2024-12-14 01:42+0530\n"
+"PO-Revision-Date: 2024-12-20 12:26+0530\n"
 "Last-Translator: kali <skkalwar999@gmail.com>\n"
 "Language-Team: Sanskrit <kde-i18n-doc@kde.org>\n"
 "Language: sa\n"
@@ -98,13 +98,13 @@ msgstr[1] "वर्षस्य आरम्भात् %1 सप्ताह�
 #, kde-format
 msgctxt "weekOfYear (year)"
 msgid "%1 (%2)"
-msgstr "%1 (%2) २."
+msgstr "%1 (%2)"
 
 #: datenums/datenums.cpp:107
 #, kde-format
 msgctxt "Week weekOfYear (year)"
 msgid "Week %1 (%2)"
-msgstr "सप्ताह %1 (%2) २."
+msgstr "सप्ताह %1 (%2)"
 
 #: datenums/datenums.cpp:122
 #, kde-format
