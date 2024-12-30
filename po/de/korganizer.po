@@ -18,7 +18,7 @@ msgstr ""
 "Project-Id-Version: korganizer\n"
 "Report-Msgid-Bugs-To: https://bugs.kde.org\n"
 "POT-Creation-Date: 2024-11-20 00:40+0000\n"
-"PO-Revision-Date: 2024-09-07 00:51+0200\n"
+"PO-Revision-Date: 2024-12-29 19:04+0100\n"
 "Last-Translator: Johannes Obermayr <johannesobermayr@gmx.de>\n"
 "Language-Team: German <kde-i18n-de@kde.org>\n"
 "Language: de\n"
@@ -26,7 +26,7 @@ msgstr ""
 "Content-Type: text/plain; charset=UTF-8\n"
 "Content-Transfer-Encoding: 8bit\n"
 "Plural-Forms: nplurals=2; plural=(n != 1);\n"
-"X-Generator: Lokalize 24.11.70\n"
+"X-Generator: Lokalize 25.03.70\n"
 
 #, kde-format
 msgctxt "NAME OF TRANSLATORS"
@@ -1161,10 +1161,9 @@ msgid "Select Calendar File to Import"
 msgstr "Wählen Sie eine Kalenderdatei zum Import"
 
 #: actionmanager.cpp:977
-#, fuzzy, kde-format
-#| msgid "An error occurred: %1"
+#, kde-format
 msgid "An error occurred: %1 (url: %2)"
-msgstr "Es ist ein Fehler aufgetreten: %1"
+msgstr "Es ist ein Fehler aufgetreten: %1 (Adresse: %2)"
 
 #: actionmanager.cpp:995
 #, kde-format
@@ -3470,14 +3469,12 @@ msgstr "Kalender-Zugänge"
 #, kde-format
 msgctxt "@title:tab activities settings"
 msgid "Activities"
-msgstr ""
+msgstr "Aktivitäten"
 
 #: prefs/koprefsdialogmain.cpp:102
-#, fuzzy, kde-format
-#| msgctxt "@action:inmenu"
-#| msgid "Enable Reminders"
+#, kde-format
 msgid "Enabled"
-msgstr "Erinnerungen aktivieren"
+msgstr "Aktiviert"
 
 #: prefs/koprefsdialogplugins.cpp:61
 #, kde-format
