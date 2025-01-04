@@ -2,7 +2,7 @@
 # This file is distributed under the same license as the PACKAGE package.
 #
 # Translators:
-# SPDX-FileCopyrightText: 2022, 2023, 2024 Emir SARI <emir_sari@icloud.com>
+# SPDX-FileCopyrightText: 2022, 2023, 2024, 2025 Emir SARI <emir_sari@icloud.com>
 # Adem Alp Yıldız <ademalp@kde.org.tr>, 2005.
 # Engin Çağatay <engincagatay@yahoo.com>, 2005.
 # Görkem Çetin <gorkem@kde.org>, 2002-2004.
@@ -21,7 +21,7 @@ msgstr ""
 "Project-Id-Version: kdepim-kde4\n"
 "Report-Msgid-Bugs-To: https://bugs.kde.org\n"
 "POT-Creation-Date: 2025-01-03 00:42+0000\n"
-"PO-Revision-Date: 2024-11-21 20:42+0300\n"
+"PO-Revision-Date: 2025-01-03 20:34+0300\n"
 "Last-Translator: Emir SARI <emir_sari@icloud.com>\n"
 "Language-Team: Turkish <kde-l10n-tr@kde.org>\n"
 "Language: tr\n"
@@ -59,13 +59,7 @@ msgid "A Personal Organizer"
 msgstr "Bir Kişisel Yönetim Sistemi"
 
 #: aboutdata.cpp:22
-#, fuzzy, kde-format
-#| msgid ""
-#| "Copyright © 1997–1999 Preston Brown\n"
-#| "Copyright © 2000–2004, 2007 Cornelius Schumacher\n"
-#| "Copyright © 2004–2005 Reinhold Kainhofer\n"
-#| "Copyright © 2006–2012 Allen Winter\n"
-#| "Copyright © 2012–2024 KOrganizer authors"
+#, kde-format
 msgid ""
 "Copyright © 1997–1999 Preston Brown\n"
 "Copyright © 2000–2004, 2007 Cornelius Schumacher\n"
@@ -73,11 +67,11 @@ msgid ""
 "Copyright © 2006–2012 Allen Winter\n"
 "Copyright © 2012–2025 KOrganizer authors"
 msgstr ""
-"Telif hakkı © 1997–1999 Preston Brown\n"
-"Telif hakkı © 2000–2004, 2007 Cornelius Schumacher\n"
-"Telif hakkı © 2004–2005 Reinhold Kainhofer\n"
-"Telif hakkı © 2006–2012 Allen Winter\n"
-"Telif hakkı © 2012–2024 K Organizatör yazarları"
+"© 1997–1999 Preston Brown\n"
+"© 2000–2004, 2007 Cornelius Schumacher\n"
+"© 2004–2005 Reinhold Kainhofer\n"
+"© 2006–2012 Allen Winter\n"
+"© 2012–2025 K Organizatör yazarları"
 
 #: aboutdata.cpp:30 kontactplugin/specialdates/specialdates_plugin.cpp:42
 #, kde-format

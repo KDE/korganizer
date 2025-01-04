@@ -1,7 +1,6 @@
 # Translation of korganizer.po to Catalan
-# Copyright (C) 2000-2024 This_file_is_part_of_KDE
+# Copyright (C) 2000-2025 This_file_is_part_of_KDE
 #
-# SPDX-FileCopyrightText: 2006, 2007, 2008, 2009, 2010, 2011, 2012, 2013, 2014, 2015, 2017, 2018, 2020, 2021, 2022, 2023, 2024 Josep M. Ferrer <txemaq@gmail.com>
 # Softcatalà <info@softcatala.org>, 2000.
 # Albert Cervera Areny <albertca@jazzfree.com>, 2003.
 # Ivan Lloro Boada <antispam@wanadoo.es>, 2004.
@@ -9,12 +8,13 @@
 # Albert Astals Cid <aacid@kde.org>, 2004, 2005, 2006.
 # Manuel Tortosa Moreno <manutortosa@gmail.com>, 2009, 2010, 2011.
 # Antoni Bella Pérez <antonibella5@yahoo.com>, 2011, 2013, 2014, 2015, 2016, 2017, 2018, 2019, 2020, 2022.
+# Josep M. Ferrer <txemaq@gmail.com>, 2006, 2007, 2008, 2009, 2010, 2011, 2012, 2013, 2014, 2015, 2017, 2018, 2020, 2021, 2022, 2023, 2024, 2025.
 msgid ""
 msgstr ""
 "Project-Id-Version: korganizer\n"
 "Report-Msgid-Bugs-To: https://bugs.kde.org\n"
 "POT-Creation-Date: 2025-01-03 00:42+0000\n"
-"PO-Revision-Date: 2024-11-20 10:56+0100\n"
+"PO-Revision-Date: 2025-01-03 10:09+0100\n"
 "Last-Translator: Josep M. Ferrer <txemaq@gmail.com>\n"
 "Language-Team: Catalan <kde-i18n-ca@kde.org>\n"
 "Language: ca\n"
@@ -53,13 +53,7 @@ msgid "A Personal Organizer"
 msgstr "Un organitzador personal"
 
 #: aboutdata.cpp:22
-#, fuzzy, kde-format
-#| msgid ""
-#| "Copyright © 1997–1999 Preston Brown\n"
-#| "Copyright © 2000–2004, 2007 Cornelius Schumacher\n"
-#| "Copyright © 2004–2005 Reinhold Kainhofer\n"
-#| "Copyright © 2006–2012 Allen Winter\n"
-#| "Copyright © 2012–2024 KOrganizer authors"
+#, kde-format
 msgid ""
 "Copyright © 1997–1999 Preston Brown\n"
 "Copyright © 2000–2004, 2007 Cornelius Schumacher\n"
@@ -71,7 +65,7 @@ msgstr ""
 "Copyright © 2000–2004, 2007 Cornelius Schumacher\n"
 "Copyright © 2004–2005 Reinhold Kainhofer\n"
 "Copyright © 2006–2012 Allen Winter\n"
-"Copyright © 2012–2024, els autors del KOrganizer"
+"Copyright © 2012–2025, els autors del KOrganizer"
 
 #: aboutdata.cpp:30 kontactplugin/specialdates/specialdates_plugin.cpp:42
 #, kde-format
@@ -6030,158 +6024,3 @@ msgstr "%1"
 msgctxt "4 digit year"
 msgid "%1"
 msgstr "%1"
-
-#~ msgctxt "@action:inmenu"
-#~ msgid "Create Note for Event"
-#~ msgstr "Crea una nota a partir de l'esdeveniment"
-
-#~ msgctxt "@action:inmenu"
-#~ msgid "Create Note for To-do"
-#~ msgstr "Crea una nota a partir de la tasca pendent"
-
-#~ msgid "Import &Calendar..."
-#~ msgstr "Importa un &calendari..."
-
-#~ msgid "&Edit..."
-#~ msgstr "&Edita..."
-
-#~ msgctxt ""
-#~ "@info/plain Displayed grayed-out inside the textbox, verb to search"
-#~ msgid "Search..."
-#~ msgstr "Cerca..."
-
-#~ msgid "Edit..."
-#~ msgstr "Edita..."
-
-#~ msgctxt "@action:inmenu"
-#~ msgid "&Edit..."
-#~ msgstr "&Edita..."
-
-#~ msgid "Day begins at"
-#~ msgstr "El dia comença a les"
-
-#~ msgid ""
-#~ "Enter the start time for events here. This time should be the earliest "
-#~ "time that you use for events, as it will be displayed at the top."
-#~ msgstr ""
-#~ "Introduïu aquí l'hora d'inici per als esdeveniments. Aquesta hora hauria "
-#~ "de ser l'hora més matinera que useu per als esdeveniments, ja que es "
-#~ "mostrarà a dalt de tot."
-
-#~ msgid "Use holiday regions:"
-#~ msgstr "Usa les regions de dies festius:"
-
-#~ msgid ""
-#~ "Select which regions you want to use the holidays here. Defined holidays "
-#~ "are shown as non-working days in the date navigator, the agenda view, etc."
-#~ msgstr ""
-#~ "Seleccioneu de quines regions voleu usar els festius. Els festius "
-#~ "definits es mostren com a dies no laborables al navegador de dates, la "
-#~ "vista d'agenda, etc."
-
-#~ msgid "Exclude holidays"
-#~ msgstr "Exclou els festius"
-
-#~ msgid ""
-#~ "Check this box to prevent KOrganizer from marking the working hours on "
-#~ "holidays."
-#~ msgstr ""
-#~ "Activeu aquesta casella per a evitar que el KOrganizer marqui com a hores "
-#~ "laborables als dies festius."
-
-#~ msgid "Text"
-#~ msgstr "Text"
-
-#~ msgid "Numeric Value"
-#~ msgstr "Valor numèric"
-
-#~ msgid "Boolean"
-#~ msgstr "Booleà"
-
-#~ msgid "Selection"
-#~ msgstr "Selecció"
-
-#~ msgid "Date & Time"
-#~ msgstr "Data i hora"
-
-#~ msgid "Date"
-#~ msgstr "Data"
-
-#~ msgid "<qt>Do you really want to delete '<b>%1</b>'?</qt>"
-#~ msgstr "<qt>Realment voleu suprimir «<b>%1</b>»?</qt>"
-
-#~ msgid "Import Page"
-#~ msgstr "Importa una pàgina"
-
-#~ msgid "Designer Files"
-#~ msgstr "Fitxers del Designer"
-
-#~ msgid ""
-#~ "<qt><b>Warning:</b> Qt Designer could not be found. It is probably not "
-#~ "installed. You will only be able to import existing designer files.</qt>"
-#~ msgstr ""
-#~ "<qt><b>Avís:</b> No s'ha pogut trobar el Qt Designer. Probablement no "
-#~ "està instal·lat. No podreu importar els fitxers existents del «designer»."
-#~ "</qt>"
-
-#~ msgid "Available Pages"
-#~ msgstr "Pàgines disponibles"
-
-#~ msgid "Preview of Selected Page"
-#~ msgstr "Vista prèvia de la pàgina seleccionada"
-
-#~ msgid ""
-#~ "<qt><p>This section allows you to add your own GUI Elements ('<i>Widgets</"
-#~ "i>') to store your own values into %1. Proceed as described below:</"
-#~ "p><ol><li>Click on '<i>Edit with Qt Designer</i>'</li><li>In the dialog, "
-#~ "select '<i>Widget</i>', then click <i>OK</i></li><li>Add your widgets to "
-#~ "the form</li><li>Save the file in the directory proposed by Qt Designer</"
-#~ "li><li>Close Qt Designer</li></ol><p>In case you already have a designer "
-#~ "file (*.ui) located somewhere on your hard disk, simply choose '<i>Import "
-#~ "Page</i>'</p><p><b>Important:</b> The name of each input widget you place "
-#~ "within the form must start with '<i>X_</i>'; so if you want the widget to "
-#~ "correspond to your custom entry '<i>X-Foo</i>', set the widget's <i>name</"
-#~ "i> property to '<i>X_Foo</i>'.</p><p><b>Important:</b> The widget will "
-#~ "edit custom fields with an application name of %2.  To change the "
-#~ "application name to be edited, set the widget name in Qt Designer.</p></"
-#~ "qt>"
-#~ msgstr ""
-#~ "<qt><p>Aquesta secció permet afegir els vostres propis elements de l'IGU "
-#~ "(«<i>Ginys</i>») per a desar els valors personals a %1. Procediu tal com "
-#~ "es descriu tot seguit:</p><ol><li>Feu clic a «<i>Edició amb el Qt "
-#~ "Designer</i>»</li><li>Al diàleg, seleccioneu «<i>Giny</i>», després feu "
-#~ "clic a <i>Bé</i></li><li>Afegiu els vostres ginys al formulari</"
-#~ "li><li>Deseu el fitxer al directori proposat pel Qt Designer</"
-#~ "li><li>Tanqueu el Qt Designer</li></ol><p>Si ja teniu un fitxer designer "
-#~ "(*.ui) ubicat en algun lloc del disc dur, simplement escolliu «<i>Importa "
-#~ "pàgina</i>»</p><p><b>Important:</b> el nom de cada giny d'entrada que "
-#~ "situeu al formulari ha de començar amb «<i>X_</i>»; així que si voleu que "
-#~ "el giny correspongui al vostre camp d'entrada personalitzat «<i>X-Foo</"
-#~ "i>», establiu la propietat del <i>nom</i> del giny a «<i>X_Foo</i>».</"
-#~ "p><p><b>Important:</b> el giny editarà els camps personalitzats amb el "
-#~ "nom d'aplicació %2. Per a canviar el nom d'aplicació editora, establiu el "
-#~ "nom del giny al Qt Designer.</p></qt>"
-
-#~ msgid "<a href=\"whatsthis:%1\">How does this work?</a>"
-#~ msgstr "<a href=\"whatsthis:%1\">Com funciona això?</a>"
-
-#~ msgid "Delete Page"
-#~ msgstr "Suprimeix la pàgina"
-
-#~ msgid "Import Page..."
-#~ msgstr "Importa una pàgina..."
-
-#~ msgid "Edit with Qt Designer..."
-#~ msgstr "Edita amb el Qt Designer..."
-
-#~ msgid "Key:"
-#~ msgstr "Clau:"
-
-#~ msgid "Type:"
-#~ msgstr "Tipus:"
-
-#~ msgid "Classname:"
-#~ msgstr "Nom de la classe:"
-
-#~ msgid "Description:"
-#~ msgstr "Descripció:"
