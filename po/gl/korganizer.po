@@ -9,14 +9,14 @@
 # Xosé <xosecalvo@gmail.com>, 2009, 2012, 2013.
 # Marce Villarino <mvillarino@kde-espana.es>, 2012, 2013, 2014.
 # Adrian Chaves Fernandez <adriyetichaves@gmail.com>, 2013, 2015, 2016, 2017.
-# SPDX-FileCopyrightText: 2023, 2024 Adrián Chaves (Gallaecio)
+# SPDX-FileCopyrightText: 2023, 2024, 2025 Adrián Chaves (Gallaecio)
 #
 msgid ""
 msgstr ""
 "Project-Id-Version: korganizer\n"
 "Report-Msgid-Bugs-To: https://bugs.kde.org\n"
 "POT-Creation-Date: 2025-01-03 00:42+0000\n"
-"PO-Revision-Date: 2024-12-17 22:36+0100\n"
+"PO-Revision-Date: 2025-01-04 15:10+0100\n"
 "Last-Translator: Adrián Chaves (Gallaecio) <adrian@chaves.io>\n"
 "Language-Team: Proxecto Trasno (proxecto@trasno.gal)\n"
 "Language: gl\n"
@@ -50,13 +50,7 @@ msgid "A Personal Organizer"
 msgstr "Un organizador persoal"
 
 #: aboutdata.cpp:22
-#, fuzzy, kde-format
-#| msgid ""
-#| "Copyright © 1997–1999 Preston Brown\n"
-#| "Copyright © 2000–2004, 2007 Cornelius Schumacher\n"
-#| "Copyright © 2004–2005 Reinhold Kainhofer\n"
-#| "Copyright © 2006–2012 Allen Winter\n"
-#| "Copyright © 2012–2024 KOrganizer authors"
+#, kde-format
 msgid ""
 "Copyright © 1997–1999 Preston Brown\n"
 "Copyright © 2000–2004, 2007 Cornelius Schumacher\n"
@@ -68,7 +62,7 @@ msgstr ""
 "© 2000–2004, 2007 Cornelius Schumacher\n"
 "© 2004–2005 Reinhold Kainhofer\n"
 "© 2006–2012 Allen Winter\n"
-"© 2012–2024 Autores de KOrganizer"
+"© 2012–2025 Xente autora de KOrganizer"
 
 #: aboutdata.cpp:30 kontactplugin/specialdates/specialdates_plugin.cpp:42
 #, kde-format
