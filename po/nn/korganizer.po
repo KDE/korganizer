@@ -1106,7 +1106,6 @@ msgstr ""
 
 #: actionmanager.cpp:977
 #, fuzzy, kde-format
-#| msgid "An error occurred: %1"
 msgid "An error occurred: %1 (url: %2)"
 msgstr "Det oppstod ein feil: %1"
 
