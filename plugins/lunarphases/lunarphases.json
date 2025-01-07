@@ -1,6 +1,7 @@
 {
     "KPlugin": {
         "Description": "This plugin shows the day's lunar phase (New, First, Last, Full)",
+        "Description[ar]": "تعرض هذا المحلق أيام مراحل القمر (جديد، الأول، الأخير، مكتمل)",
         "Description[bg]": "Тази приставка показва лунната фаза на деня (Нова, Първа, Последна, Пълна)",
         "Description[ca@valencia]": "Este connector mostra la fase lunar del dia (nova, creixent, plena, minvant)",
         "Description[ca]": "Aquest connector mostra la fase lunar del dia (nova, creixent, plena, minvant)",
@@ -28,6 +29,7 @@
         "Description[x-test]": "xxThis plugin shows the day's lunar phase (New, First, Last, Full)xx",
         "Description[zh_TW]": "這個外掛程式會顯示當天的月相（新月、上弦月、下弦月、滿月）",
         "Name": "Lunar Phases Plugin for Calendars",
+        "Name[ar]": "ملحق مراحل القمر للتقويم",
         "Name[bg]": "Календарна приставка за лунните фази",
         "Name[ca@valencia]": "Connector de fases lunars per als calendaris",
         "Name[ca]": "Connector de fases lunars per als calendaris",
