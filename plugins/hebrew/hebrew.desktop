@@ -2,6 +2,7 @@
 X-KDE-Library=korg_hebrew
 Name=Jewish Calendar Plugin
 Name[af]=Joodse kalender inprop module
+Name[ar]=ملحق التّقويم اليهوديّ
 Name[bg]=Приставка за юдейски календар
 Name[br]=Lugent deiziadur yudev
 Name[bs]=Dodatak za Jevrejski Kalendar
@@ -53,6 +54,7 @@ Name[wa]=Tchôke-divins calindrî djwif
 Name[x-test]=xxJewish Calendar Pluginxx
 Name[zh_TW]=猶太行事曆外掛程式
 Comment=Shows all dates in KOrganizer also in the Jewish calendar system.
+Comment[ar]=يعرض كلّ التّواريخ في «منظّمك» بنظام التّقويم اليهوديّ.
 Comment[bg]=Показване на всички дати в KOrganizer също и във формат на юдейския календар.
 Comment[bs]=Prikazuje sve datume u KOrganizatoru kao i u Jevrejskom kalendaskom sistemu.
 Comment[ca]=Mostra totes les dates en el KOrganizer també en el sistema del calendari jueu.
