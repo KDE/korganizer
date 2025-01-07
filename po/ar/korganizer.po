@@ -6,13 +6,13 @@
 # محمد سعد  Mohamed SAAD <metehyi@free.fr>, 2006.
 # Youssef Chahibi <chahibi@gmail.com>, 2007.
 # Safa Alfulaij <safa1996alfulaij@gmail.com>, 2017, 2018.
-# SPDX-FileCopyrightText: 2022, 2024 Zayed Al-Saidi <zayed.alsaidi@gmail.com>
+# SPDX-FileCopyrightText: 2022, 2024, 2025 Zayed Al-Saidi <zayed.alsaidi@gmail.com>
 msgid ""
 msgstr ""
 "Project-Id-Version: korganizer\n"
 "Report-Msgid-Bugs-To: https://bugs.kde.org\n"
 "POT-Creation-Date: 2024-10-27 00:41+0000\n"
-"PO-Revision-Date: 2024-08-15 11:54+0400\n"
+"PO-Revision-Date: 2025-01-06 20:16+0400\n"
 "Last-Translator: Zayed Al-Saidi <zayed.alsaidi@gmail.com>\n"
 "Language-Team: ar\n"
 "Language: ar\n"
@@ -346,24 +346,20 @@ msgid "Import a calendar"
 msgstr "استيراد التقويم"
 
 #: actionmanager.cpp:246
-#, fuzzy, kde-format
-#| msgid "Import a calendar in another format"
+#, kde-format
 msgctxt "@info:tooltip"
 msgid "Import an iCalendar or vCalendar file"
-msgstr "استورد تقويمًا بنسق آخر"
+msgstr "استيراد ملف iCalendar أو vCalendar"
 
 #: actionmanager.cpp:248
-#, fuzzy, kde-format
-#| msgid ""
-#| "Select this menu entry if you would like to merge the contents of another "
-#| "iCalendar into your current calendar."
+#, kde-format
 msgctxt "@info:whatsthis"
 msgid ""
 "Select this menu entry if you would like to import the contents of an "
 "iCalendar or vCalendar file into your current calendar collection."
 msgstr ""
-"اختر مدخلة القوائم هذه إن أردت دمج محتويات iCalendar آخر في التقويم الحالي "
-"لديك."
+"حدد إدخال القائمة هذا إذا كنت ترغب في استيراد محتويات ملف iCalendar أو "
+"vCalendar إلى مجموعة التقويم الحالية الخاصة بك."
 
 #: actionmanager.cpp:254
 #, kde-format
@@ -374,13 +370,13 @@ msgstr "احصل على تقويم جديد…"
 #, kde-format
 msgctxt "@info:status"
 msgid "Load a calendar from \"Get Hot New Stuff\""
-msgstr ""
+msgstr "تحميل تقويم من \"الحصول على أشياء جديدة مثيرة\""
 
 #: actionmanager.cpp:256
 #, kde-format
 msgctxt "@info:tooltip"
 msgid "Search \"Get Hot New Stuff\" for calendars to import"
-msgstr ""
+msgstr "ابحث في \"الحصول على أشياء جديدة رائعة\" لاستيراد التقويمات"
 
 #: actionmanager.cpp:258
 #, kde-format
@@ -389,6 +385,8 @@ msgid ""
 "This menu entry opens the \"Get Hot New Stuff\" dialog that allows you to "
 "search and import fun and useful calendars donated to the community."
 msgstr ""
+"مدخلة القائمة هذه تفتح مربع الحوار \"الحصول على أشياء جديدة رائعة\" الذي "
+"يسمح لك بالبحث واستيراد التقويمات الممتعة والمفيدة التي تبرع بها للمجتمع."
 
 #: actionmanager.cpp:279
 #, kde-format
@@ -416,14 +414,14 @@ msgstr "صدر تقويم إلى ملف"
 #, kde-format
 msgctxt "@info:tooltip"
 msgid "Export your calendar to an iCalendar file"
-msgstr ""
+msgstr "صدر تقويمك إلى ملف iCalendar"
 
 #: actionmanager.cpp:309
 #, kde-format
 msgctxt "@info:whatsthis"
 msgid ""
 "Allows you to export your entire calendar collection to one iCalendar file."
-msgstr ""
+msgstr "يسمح لك بتصدير مجموعة التقويم بأكملها إلى ملف iCalendar واحد."
 
 #: actionmanager.cpp:315
 #, kde-format
@@ -432,17 +430,16 @@ msgid "Archive O&ld Incidences…"
 msgstr "أرشِف الحدوثات الق&ديمة…"
 
 #: actionmanager.cpp:316
-#, fuzzy, kde-format
+#, kde-format
 msgctxt "@info:status"
 msgid "Archive events and to-dos to a file"
-msgstr "الأرشيف احذف الماضي أحداث و إلى"
+msgstr "أرشفة الأحداث والمهام في ملف"
 
 #: actionmanager.cpp:317
-#, fuzzy, kde-format
-#| msgid "Archive old events to a separate file"
+#, kde-format
 msgctxt "@info:tooltip"
 msgid "Archive old events and to-dos to an iCalendar file"
-msgstr "أرشفة الأحداث القديمة في ملف منعزل"
+msgstr "أرشفة الأحداث القديمة والمهام في ملف iCalendar"
 
 #: actionmanager.cpp:319
 #, kde-format
@@ -452,6 +449,8 @@ msgid ""
 "dos that you can archive into an iCalendar file.  They will be removed from "
 "your existing calendar collection."
 msgstr ""
+"مدخلة القائمة هذه تفتح مربع حوار يسمح لك بتحديد الأحداث والمهام القديمة التي "
+"يمكنك أرشفتها في ملف iCalendar."
 
 #: actionmanager.cpp:327
 #, kde-format
@@ -466,11 +465,10 @@ msgid "Purge completed to-dos"
 msgstr "تخلّص من المهام المكتملة"
 
 #: actionmanager.cpp:329
-#, fuzzy, kde-format
-#| msgid "Delete all completed to-dos from checked calendars?"
+#, kde-format
 msgctxt "@info:tooltip"
 msgid "Remove completed to-dos from your calendar"
-msgstr "أأحذف المهام المكتملة من التقاويم المؤشّر عليها؟"
+msgstr "أزل المهام المكتملة من تقويمك"
 
 #: actionmanager.cpp:331
 #, kde-format
@@ -478,7 +476,7 @@ msgctxt "@info:whatsthis"
 msgid ""
 "Allows you to remove all completed to-dos from your calendar collection. "
 "This action cannot be undone!"
-msgstr ""
+msgstr "يسمح لك بإزالة جميع المهام المكتملة من مجموعة التقويم الخاصة بك."
 
 #. i18n: ectx: property (text), widget (QPushButton, mDeleteButton)
 #: actionmanager.cpp:368 actionmanager.cpp:623 actionmanager.cpp:1307
@@ -502,7 +500,7 @@ msgstr "عرض ما هو التالي ؟"
 #, kde-format
 msgctxt "@info:tooltip"
 msgid "Switch to the What's Next View"
-msgstr ""
+msgstr "بدّل إلى عرض \"ما التالي\""
 
 #: actionmanager.cpp:389
 #, kde-format
@@ -513,6 +511,8 @@ msgid ""
 "will be displayed, but only the events from the days selected in the Date "
 "Navigator sidebar will be shown."
 msgstr ""
+"التبديل إلى عرض \"ما هو التالي\" الذي يعرض الأحداث والمهام \"قريبًا\" في "
+"قائمة قصيرة للقراءة السريعة.  "
 
 #: actionmanager.cpp:397
 #, kde-format
@@ -526,11 +526,10 @@ msgid "Month View"
 msgstr "منظور الشهر"
 
 #: actionmanager.cpp:399
-#, fuzzy, kde-format
-#| msgid "Month View"
+#, kde-format
 msgctxt "@info:tooltip"
 msgid "Switch to the Month View"
-msgstr "عرض الشهر"
+msgstr "بدّل إلى عرض الشهر"
 
 #: actionmanager.cpp:401
 #, kde-format
@@ -539,6 +538,8 @@ msgid ""
 "Switches to the Month View, which shows all the events and due to-dos in a "
 "familiar monthly calendar layout."
 msgstr ""
+"التبديل إلى عرض الشهر، الذي يعرض جميع الأحداث والمهام المستحقة في تخطيط "
+"تقويم شهري مألوف."
 
 #: actionmanager.cpp:407
 #, kde-format
@@ -552,12 +553,10 @@ msgid "Agenda View"
 msgstr "منظور جدول الأعمال"
 
 #: actionmanager.cpp:409
-#, fuzzy, kde-format
-#| msgctxt "@option:check"
-#| msgid "Show at the top of the agenda views"
+#, kde-format
 msgctxt "@info:tooltip"
 msgid "Switch to the Agenda View"
-msgstr "اعرض أعلى مناظير جداول الأعمال"
+msgstr "بدّل إلى عرض جدول الأعمال"
 
 #: actionmanager.cpp:411
 #, kde-format
@@ -567,6 +566,8 @@ msgid ""
 "one or more days, sorted chronologically.  You can also see the length of "
 "each event in the day timetable."
 msgstr ""
+"التبديل إلى عرض جدول الأعمال، الذي يعرض أحداثك أو المهام المستحقة ليوم واحد "
+"أو أكثر، مرتبة ترتيبًا زمنيًا.  "
 
 #: actionmanager.cpp:418
 #, kde-format
@@ -592,6 +593,8 @@ msgid ""
 "Switches to the List View, which displays all your to-dos, events and "
 "journal entries for the dates selected in the Date Navigator as a list."
 msgstr ""
+"التبديل إلى طريقة عرض القائمة، التي تعرض جميع المهام والأحداث وإدخالات دفتر "
+"اليومية للتواريخ المحددة في \"مستكشف التاريخ\" كقائمة."
 
 #: actionmanager.cpp:428
 #, kde-format
@@ -605,10 +608,10 @@ msgid "To-do List View"
 msgstr "عرض المهام"
 
 #: actionmanager.cpp:430
-#, fuzzy, kde-format
+#, kde-format
 msgctxt "@info:tooltip"
 msgid "Switch to the To-do List View"
-msgstr "بعد تشغيل"
+msgstr "بدّل إلى عرض قائمة المهام"
 
 #: actionmanager.cpp:432
 #, kde-format
@@ -617,6 +620,8 @@ msgid ""
 "Switches to the To-do List view, which provides a place for you to track "
 "tasks that need to be done."
 msgstr ""
+"التبديل إلى عرض قائمة المهام، الذي يوفر لك مكانًا لتتبع المهام التي يتعين "
+"عليك إنجازها."
 
 #: actionmanager.cpp:438
 #, kde-format
@@ -630,10 +635,10 @@ msgid "Journal View"
 msgstr "عرض دفتر اليومية"
 
 #: actionmanager.cpp:440
-#, fuzzy, kde-format
+#, kde-format
 msgctxt "@info:tooltip"
 msgid "Switch to the Journal View"
-msgstr "المجموعات عنوان من اليومية."
+msgstr "بدّل إلى طريقة عرض دفتر اليومية"
 
 #: actionmanager.cpp:442
 #, kde-format
@@ -642,6 +647,8 @@ msgid ""
 "Switches to the Journal View, which provides a place for you to record your "
 "reflections, occurrences or experiences."
 msgstr ""
+"التبديل إلى عرض دفتر اليومية، الذي يوفر لك مكانًا لتسجيل أفكارك أو أحداثك أو "
+"تجاربك."
 
 #: actionmanager.cpp:448
 #, kde-format
@@ -658,7 +665,7 @@ msgstr "عرض الخط الزمني"
 #, kde-format
 msgctxt "@info:tooltip"
 msgid "Switch to the Timeline View"
-msgstr ""
+msgstr "بدّل إلى عرض \"الخط الزمني\""
 
 #: actionmanager.cpp:452
 #, kde-format
@@ -667,6 +674,8 @@ msgid ""
 "Switches to the Timeline View, which shows all events for the selected "
 "timespan in a Gantt view. Each calendar is displayed in a separate line."
 msgstr ""
+"التبديل إلى طريقة عرض الخط الزمني، والتي تعرض كافة الأحداث للفترة الزمنية "
+"المحددة في طريقة عرض جانت. "
 
 #: actionmanager.cpp:461
 #, kde-format
@@ -692,7 +701,7 @@ msgctxt "@info:whatsthis"
 msgid ""
 "This action will refresh and redraw the current calendar view. It does not "
 "sync or update any calendar folders."
-msgstr ""
+msgstr "هذا الإجراء سوف يقوم بتحديث وإعادة رسم عرض التقويم الحالي. "
 
 #: actionmanager.cpp:474
 #, kde-format
@@ -717,7 +726,7 @@ msgctxt "@info:whatsthis"
 msgid ""
 "Runs user-defined view filters on the calendar collection. Filters must be "
 "created first. See \"Manage View Filters\" option in the Settings menu."
-msgstr ""
+msgstr "تشغيل مرشحات العرض المعرفة من قبل المستخدم على مجموعة التقويم. "
 
 # This and next 4: [Zoom] in/out
 #: actionmanager.cpp:490
@@ -765,11 +774,10 @@ msgid "Scroll the view to today"
 msgstr "مرّر نحو عرض اليوم"
 
 #: actionmanager.cpp:518
-#, fuzzy, kde-format
-#| msgid "Replace the currently selected date with this date."
+#, kde-format
 msgctxt "@info:whatsthis"
 msgid "Scrolls the current view to the today's date."
-msgstr "إستبدل التاريخ المحدد حالياً بهذا التاريخ."
+msgstr "تمرير العرض الحالي إلى تاريخ اليوم."
 
 #: actionmanager.cpp:523
 #, kde-format
@@ -802,6 +810,8 @@ msgid ""
 "Scrolls backward by a day, week, month or year, depending on the current "
 "calendar view."
 msgstr ""
+"التمرير للخلف بمقدار يوم أو أسبوع أو شهر أو سنة، اعتمادًا على عرض التقويم "
+"الحالي."
 
 #: actionmanager.cpp:534
 #, kde-format
@@ -834,6 +844,7 @@ msgid ""
 "Scrolls forward by a day, week, month or year, depending on the current "
 "calendar view."
 msgstr ""
+"التمرير للأمام بيوم أو أسبوع أو شهر أو سنة، اعتمادًا على عرض التقويم الحالي."
 
 #: actionmanager.cpp:544
 #, kde-format
@@ -885,6 +896,8 @@ msgid ""
 "Starts a dialog that allows you to create a new Event with reminders, "
 "attendees, recurrences and much more."
 msgstr ""
+"بدء مربع حوار يسمح لك بإنشاء حدث جديد مع التذكيرات والحضور والتكرارات وغير "
+"ذلك الكثير."
 
 #: actionmanager.cpp:577 kodaymatrix.cpp:485
 #, kde-format
@@ -910,6 +923,8 @@ msgid ""
 "Starts a dialog that allows you to create a new To-do with reminders, "
 "attendees, recurrences and much more."
 msgstr ""
+"بدء مربع حوار يسمح لك بإنشاء مهمة جديدة تتضمن التذكيرات والحاضرين والتكرارات "
+"وغير ذلك الكثير."
 
 #: actionmanager.cpp:588
 #, kde-format
@@ -935,14 +950,10 @@ msgid "Create a new Journal"
 msgstr "أنشئ يوميّة جديدة"
 
 #: actionmanager.cpp:599
-#, fuzzy, kde-format
-#| msgctxt "@info:whatsthis"
-#| msgid ""
-#| "You will be presented with a dialog where you can create a new journal "
-#| "entry."
+#, kde-format
 msgctxt "@info:whatsthis"
 msgid "Starts a dialog that allows you to create a new Journal entry."
-msgstr "سيُعرض حواريّ يمكنك منه إنشاء مدخلة يوميّة جديدة."
+msgstr "بدء مربع حوار يسمح لك بإنشاء إدخال دفتر يومية جديد."
 
 #: actionmanager.cpp:604
 #, kde-format
@@ -972,7 +983,7 @@ msgctxt "@info:whatsthis"
 msgid ""
 "Starts a configuration dialog that allows you to change the settings for the "
 "current calendar view."
-msgstr ""
+msgstr "بدء مربع حوار الضبط الذي يسمح لك بتغيير إعدادات عرض التقويم الحالي."
 
 #: actionmanager.cpp:615 actionmanager.cpp:1301 actionmanager.cpp:1342
 #, kde-format
@@ -1300,7 +1311,7 @@ msgstr "عين كلمة البحث"
 #, kde-format
 msgctxt "@info:whatsthis"
 msgid "Lets you search for a keyword in your calendars"
-msgstr ""
+msgstr "يتيح لك البحث عن كلمة أساسية في تقويمك"
 
 #: akonadicollectionview.cpp:414
 #, kde-format
@@ -1321,11 +1332,10 @@ msgid "&Set Folder Color…"
 msgstr "ا&ضبط لون المجلد…"
 
 #: akonadicollectionview.cpp:518
-#, fuzzy, kde-format
-#| msgid "Use as &Default Calendar"
+#, kde-format
 msgctxt "@action:inmenu"
 msgid "Set as &Default Folder"
-msgstr "است&خدمه كالتقويم المبدئي"
+msgstr "تعيين كمجلد &مبدئي"
 
 #: akonadicollectionview.cpp:523
 #, kde-format
@@ -1334,18 +1344,16 @@ msgid "Serverside Subscription…"
 msgstr "الاشتراك من جانب الخادوم…"
 
 #: akonadicollectionview.cpp:568
-#, fuzzy, kde-format
-#| msgid "Do you really want to delete calendar %1?"
+#, kde-format
 msgctxt "@info"
 msgid "Do you really want replace your current default calendar with \"%1\"?"
-msgstr "أمتأكّد من حذف التقويم %1؟"
+msgstr "هل تريد حقًا استبدال التقويم المبدئي الحالي لديك بـ \"%1\"؟"
 
 #: akonadicollectionview.cpp:569
-#, fuzzy, kde-format
-#| msgid "Use as &Default Calendar"
+#, kde-format
 msgctxt "@title:window"
 msgid "Replace Default Calendar?"
-msgstr "است&خدمه كالتقويم المبدئي"
+msgstr "هل تريد استبدال التقويم المبدئي؟"
 
 #: akonadicollectionview.cpp:706
 #, kde-format
@@ -1459,16 +1467,14 @@ msgid "Copying Failed"
 msgstr "فشل النسخ"
 
 #: calendarview.cpp:1555
-#, fuzzy, kde-format
-#| msgctxt "@info"
-#| msgid ""
-#| "Unable to remove the item \"%1\" from %2. However, a copy of this item "
-#| "has been put into %3."
+#, kde-format
 msgctxt "@info"
 msgid ""
 "Unable to remove the item \"%1\" from the original calendar. However, a copy "
 "of this item has been put into %2"
-msgstr "تعذّرت إزالة العنصر ”%1“ من %2. بأي حال فقد وُضعت نسخة عنه في %3."
+msgstr ""
+"تعذر إزالة العنصر \"%1\" من التقويم الأصلي. ومع ذلك،وُضع نسخة من هذا العنصر "
+"في %2"
 
 #: calendarview.cpp:1559 calendarview.cpp:1575 calendarview.cpp:2523
 #, kde-format
@@ -1646,13 +1652,13 @@ msgid "Also Delete &Future"
 msgstr "احذف الحدوثات المس&تقبلية أيضًا"
 
 #: calendarview.cpp:2364
-#, fuzzy, kde-format
+#, kde-format
 msgid ""
 "The calendar item \"%1\" recurs over multiple dates. Do you want to delete "
 "only the current one on %2, also future occurrences, or all its occurrences?"
 msgstr ""
-"يتكرّر عنصر التقاويم ”%1“ في عدد من التواريخ. أتريد حذف الحالي في %2 فقط، أو "
-"حذفه مع حدوثاته المستقبلية، أو حذف كل الحدوثات؟"
+"يتكرر عنصر التقويم \"%1\" في تواريخ متعددة. هل تريد حذف العنصر الحالي فقط في "
+"%2، أم أيضًا الأحداث المستقبلية، أم كل أحداثه؟"
 
 #: calendarview.cpp:2371
 #, kde-format
@@ -2043,11 +2049,10 @@ msgstr ""
 "”*“ و”?“ عند الحاجة."
 
 #: dialog/searchdialog.cpp:157
-#, fuzzy, kde-format
-#| msgid "No items were found that match your search pattern."
+#, kde-format
 msgctxt "@info"
 msgid "No items were found that match your search pattern."
-msgstr "لم يُعثر على عناصر تطابق نمط البحث."
+msgstr "لم يعثر على عناصر تطابق نمط بحثك."
 
 #: dialog/searchdialog.cpp:158
 #, kde-format
@@ -2068,17 +2073,15 @@ msgstr[4] "%1 تطابقًا"
 msgstr[5] "%1 تطابق"
 
 #: koapp.cpp:63
-#, fuzzy, kde-format
-#| msgctxt "@info:tooltip"
-#| msgid "Ignore reminders from this calendar"
+#, kde-format
 msgid "Failed to retrieve incidence from Akonadi"
-msgstr "تجاهل التذكيرات من هذا التقويم"
+msgstr "فشل في استرداد الإصابة من أكونادي"
 
 #: koapp.cpp:68
 #, kde-format
 msgid ""
 "Failed to retrieve incidence from Akonadi: requested incidence doesn't exist."
-msgstr ""
+msgstr "فشل في استرداد الحدث من أكونداي: الحدث المطلوب غير موجود."
 
 #: kocorehelper.cpp:28
 #, kde-format
@@ -2173,45 +2176,40 @@ msgid "Togg&le To-do Completed"
 msgstr "&علّم المَهمّة على أنها اكتملت"
 
 #: koeventpopupmenu.cpp:97
-#, fuzzy, kde-format
-#| msgid "Create Event"
+#, kde-format
 msgctxt "@action:inmenu"
 msgid "Create Event from To-do"
-msgstr "أنشِئ حدثًا"
+msgstr "أنشئ حدث من المهام"
 
 #: koeventpopupmenu.cpp:108
-#, fuzzy, kde-format
-#| msgid "&Reminder:"
+#, kde-format
 msgctxt "@action:inmenu"
 msgid "&Toggle Reminder"
-msgstr "مبدل التذكير"
+msgstr "&بدّل التذكير"
 
 #: koeventpopupmenu.cpp:115
-#, fuzzy, kde-format
-#| msgid "&Dissociate From Recurrence..."
+#, kde-format
 msgctxt "@action:inmenu"
 msgid "&Dissociate From Recurrence…"
-msgstr "ا&فصل من التكرار…"
+msgstr "ا&فصل عن التكرار…"
 
 #: koeventpopupmenu.cpp:123
-#, fuzzy, kde-format
-#| msgctxt "@action:inmenu"
-#| msgid "Send as iCalendar..."
+#, kde-format
 msgctxt "@action:inmenu"
 msgid "Send as iCalendar…"
-msgstr "أر&سِل بنسق iCalendar…"
+msgstr "إرسال كـ iCalendar…"
 
 #: koeventpopupmenu.cpp:173
-#, fuzzy, kde-format
+#, kde-format
 msgctxt "@action:inmenu"
 msgid "&Toggle Reminder Off"
-msgstr "حرر المنبهات"
+msgstr "أو&قف تشغيل التذكير"
 
 #: koeventpopupmenu.cpp:174
-#, fuzzy, kde-format
+#, kde-format
 msgctxt "@action:inmenu"
 msgid "&Toggle Reminder On"
-msgstr "حرر المنبهات"
+msgstr "&شغل التذكير"
 
 #: kohelper.cpp:52
 #, kde-format
@@ -2309,6 +2307,8 @@ msgid ""
 "Use this spinbox to set the number of days to show upcoming events up to 1 "
 "year in the future."
 msgstr ""
+"استخدم هذا المربع الدوار لتعيين عدد الأيام لعرض الأحداث القادمة حتى عام واحد "
+"في المستقبل."
 
 #. i18n: ectx: property (specialValueText), widget (QSpinBox, mCustomDays)
 #: kontactplugin/korganizer/apptsummaryconfig_base.ui:82
@@ -2340,9 +2340,9 @@ msgstr "اعرض الأحداث القادمة هذه من تقويمك"
 
 #. i18n: ectx: property (toolTip), widget (QCheckBox, mShowBirthdaysFromCal)
 #: kontactplugin/korganizer/apptsummaryconfig_base.ui:128
-#, fuzzy, kde-format
+#, kde-format
 msgid "Show birthdays from your calendar when also using the Birthday resource"
-msgstr "اعرض أعياد الميلاد من تقويمك عند استخدام مورد أعياد الميلاد أيضًا"
+msgstr "أظهر أعياد الميلاد من تقويمك عند استخدام مورد عيد الميلاد أيضًا"
 
 #. i18n: ectx: property (whatsThis), widget (QCheckBox, mShowBirthdaysFromCal)
 #: kontactplugin/korganizer/apptsummaryconfig_base.ui:131
@@ -2352,6 +2352,7 @@ msgid ""
 "events summary. This option is only available if you are using the Birthdays "
 "resource in your calendar."
 msgstr ""
+"مكّن هذا الخيار لتضمين أعياد الميلاد من تقويمك في ملخص الأحداث القادمة. "
 
 #. i18n: ectx: property (text), widget (QCheckBox, mShowBirthdaysFromCal)
 #. i18n: ectx: property (text), widget (QCheckBox, mShowBirthdaysFromCalBox)
@@ -2366,7 +2367,7 @@ msgstr "اعرض أعيا&د الميلاد"
 #, kde-format
 msgid ""
 "Shows anniversaries from your calendar when using the Birthdays resource"
-msgstr ""
+msgstr "إظهار المناسبات السنوية من تقويمك عند استخدام مورد أعياد الميلاد"
 
 #. i18n: ectx: property (whatsThis), widget (QCheckBox, mShowAnniversariesFromCal)
 #: kontactplugin/korganizer/apptsummaryconfig_base.ui:144
@@ -2376,6 +2377,7 @@ msgid ""
 "upcoming events summary. This option is only available if you are using the "
 "Birthdays resource in your calendar."
 msgstr ""
+"مكّن هذا الخيار لتضمين المناسبات السنوية من تقويمك في ملخص الأحداث القادمة. "
 
 #. i18n: ectx: property (text), widget (QCheckBox, mShowAnniversariesFromCal)
 #. i18n: ectx: property (text), widget (QCheckBox, mShowAnniversariesFromCalBox)
@@ -2397,19 +2399,20 @@ msgstr "إعدادات برمجيات التعاونية"
 #. i18n: ectx: property (toolTip), widget (QCheckBox, mShowMineOnly)
 #: kontactplugin/korganizer/apptsummaryconfig_base.ui:163
 #: kontactplugin/specialdates/sdsummaryconfig_base.ui:250
-#, fuzzy, kde-format
+#, kde-format
 msgid "Show events belonging to my calendars only"
-msgstr "اعرض الأحداث "
+msgstr "أظهر الأحداث التي تنتمي إلى تقويماتك فقط"
 
 #. i18n: ectx: property (whatsThis), widget (QCheckBox, mShowMineOnly)
 #: kontactplugin/korganizer/apptsummaryconfig_base.ui:166
 #: kontactplugin/specialdates/sdsummaryconfig_base.ui:253
-#, fuzzy, kde-format
+#, kde-format
 msgid ""
 "Check this box if you want the summary to show events belonging to your "
 "calendars only."
 msgstr ""
-"أشّر على هذا المربّع إن أردت للملخّص بأن يعرض الأحداث التي تخصّ تقاويمك فحسب."
+"حدد هذا المربع إذا كنت تريد أن يعرض الملخص الأحداث التي تنتمي إلى تقويماتك "
+"فقط."
 
 #. i18n: ectx: property (text), widget (QCheckBox, mShowMineOnly)
 #: kontactplugin/korganizer/apptsummaryconfig_base.ui:169
@@ -2526,7 +2529,7 @@ msgstr "البريد: %1"
 #, kde-format
 msgctxt "Event from email content"
 msgid "<b>From:</b> %1<br /><b>To:</b> %2<br /><b>Subject:</b> %3"
-msgstr ""
+msgstr "<b>من:</b> %1<br /> <b>إلى:</b> %2<br /> <b>الموضوع:</b> %3"
 
 #: kontactplugin/korganizer/summaryeventinfo.cpp:136
 #, kde-format
@@ -2639,10 +2642,9 @@ msgstr "عرض استحقاقات المهام"
 
 #. i18n: ectx: property (toolTip), widget (QRadioButton, mDateTodayButton)
 #: kontactplugin/korganizer/todosummaryconfig_base.ui:28
-#, fuzzy, kde-format
-#| msgid "To-do due today color"
+#, kde-format
 msgid "Show To-dos due today only"
-msgstr "اعرض استحقاقات مهام اليوم فقط"
+msgstr "أظهر المهام المستحقة اليوم فقط"
 
 #. i18n: ectx: property (whatsThis), widget (QRadioButton, mDateTodayButton)
 #: kontactplugin/korganizer/todosummaryconfig_base.ui:31
@@ -2658,19 +2660,19 @@ msgstr "اعرض المهام المستحقّة خلال الشهر القاد�
 
 #. i18n: ectx: property (whatsThis), widget (QRadioButton, mDateMonthButton)
 #: kontactplugin/korganizer/todosummaryconfig_base.ui:47
-#, fuzzy, kde-format
+#, kde-format
 msgid ""
 "Check this box if you want to see To-dos that are due sometime during the "
 "next 31 days."
 msgstr ""
-"أشّر على هذا المربّع إن أردت رؤية المهام المستحقّة في يوم من الأيام الإحدى "
-"والثلاثين القادمة."
+"حدد هذا المربع إذا كنت تريد رؤية المهام المستحقة في وقت ما خلال الـ 31 يومًا "
+"القادمة."
 
 #. i18n: ectx: property (toolTip), widget (QRadioButton, mDateRangeButton)
 #: kontactplugin/korganizer/todosummaryconfig_base.ui:65
 #, kde-format
 msgid "Select the days for showing pending To-dos"
-msgstr ""
+msgstr "حدد الأيام لإظهار المهام المعلقة"
 
 #. i18n: ectx: property (whatsThis), widget (QRadioButton, mDateRangeButton)
 #: kontactplugin/korganizer/todosummaryconfig_base.ui:71
@@ -2679,12 +2681,13 @@ msgid ""
 "Check this box if you want specify the number of days in the future for "
 "pending To-dos."
 msgstr ""
+"حدد هذا المربع إذا كنت تريد تحديد عدد الأيام في المستقبل للمهام المعلقة."
 
 #. i18n: ectx: property (toolTip), widget (QSpinBox, mCustomDays)
 #: kontactplugin/korganizer/todosummaryconfig_base.ui:87
 #, kde-format
 msgid "Set the number of days to show pending To-dos"
-msgstr ""
+msgstr "عيّن عدد الأيام لإظهار المهام المعلقة"
 
 #. i18n: ectx: property (whatsThis), widget (QSpinBox, mCustomDays)
 #: kontactplugin/korganizer/todosummaryconfig_base.ui:90
@@ -2693,6 +2696,8 @@ msgid ""
 "Use this spinbox to set the number of days to show pending To-dos up to 1 "
 "year in the future."
 msgstr ""
+"استخدم هذا المربع لتعيين عدد الأيام لإظهار المهام المعلقة حتى عام واحد في "
+"المستقبل."
 
 #. i18n: ectx: property (title), widget (QGroupBox, mHideGroup)
 #: kontactplugin/korganizer/todosummaryconfig_base.ui:133
@@ -2712,7 +2717,7 @@ msgstr "أخفِ المهام المكتملة"
 msgid ""
 "Check this box if you do not want to see To-dos that have already been "
 "completed."
-msgstr ""
+msgstr "حدد هذا المربع إذا كنت لا تريد رؤية المهام التي أكملت فعلًا."
 
 #. i18n: ectx: property (text), widget (QCheckBox, mHideCompletedBox)
 #: kontactplugin/korganizer/todosummaryconfig_base.ui:145
@@ -2730,13 +2735,13 @@ msgstr "أخفِ المهام التي لا تاريخ استحقاق لها"
 #: kontactplugin/korganizer/todosummaryconfig_base.ui:158
 #, kde-format
 msgid "Check this box if you do not want to see open-ended To-dos."
-msgstr ""
+msgstr "أشر على هذا المربع إذا كنت لا تريد رؤية المهام ذات النهايات المفتوحة."
 
 #. i18n: ectx: property (text), widget (QCheckBox, mHideOpenEndedBox)
 #: kontactplugin/korganizer/todosummaryconfig_base.ui:161
 #, kde-format
 msgid "&Open-ended (no due date)"
-msgstr ""
+msgstr "&مفتوحة (لا يوجد تاريخ استحقاق)"
 
 #. i18n: ectx: property (toolTip), widget (QCheckBox, mHideUnstartedBox)
 #: kontactplugin/korganizer/todosummaryconfig_base.ui:171
@@ -2751,6 +2756,7 @@ msgid ""
 "Check this box if you do not want to see To-dos with a start date in the "
 "future."
 msgstr ""
+"حدد هذا المربع إذا كنت لا تريد رؤية المهام التي لها تاريخ بداية في المستقبل."
 
 #. i18n: ectx: property (text), widget (QCheckBox, mHideUnstartedBox)
 #: kontactplugin/korganizer/todosummaryconfig_base.ui:177
@@ -2771,6 +2777,7 @@ msgid ""
 "Check this box if you do not want to see To-dos that have been started but "
 "are not yet completed."
 msgstr ""
+"حدد هذا المربع إذا كنت لا تريد رؤية المهام التي بدأت ولكن لم تكتمل بعد."
 
 #. i18n: ectx: property (text), widget (QCheckBox, mHideInProgressBox)
 #: kontactplugin/korganizer/todosummaryconfig_base.ui:190
@@ -2791,26 +2798,30 @@ msgid ""
 "Check this box if you do not want to see To-dos that are past their due date "
 "but have not yet been completed."
 msgstr ""
+"حدد هذا المربع إذا كنت لا تريد رؤية المهام التي تجاوزت تاريخ استحقاقها ولكن "
+"لم تكتمل بعد."
 
 #. i18n: ectx: property (text), widget (QCheckBox, mHideOverdueBox)
 #: kontactplugin/korganizer/todosummaryconfig_base.ui:206
-#, fuzzy, kde-format
+#, kde-format
 msgid "Over&due (not completed and beyond due-date)"
-msgstr "التي تأ&خّرت (لم تكتمل و"
+msgstr "&متأخر (غير مكتمل وتجاوز تاريخ الاستحقاق)"
 
 #. i18n: ectx: property (toolTip), widget (QCheckBox, mShowMineOnly)
 #: kontactplugin/korganizer/todosummaryconfig_base.ui:222
-#, fuzzy, kde-format
+#, kde-format
 msgid "Show To-dos belonging to my calendars only"
-msgstr "اعرض المهام الخاصّة"
+msgstr "أظهر المهام التي تنتمي إلى تقويماتي فقط"
 
 #. i18n: ectx: property (whatsThis), widget (QCheckBox, mShowMineOnly)
 #: kontactplugin/korganizer/todosummaryconfig_base.ui:225
-#, fuzzy, kde-format
+#, kde-format
 msgid ""
 "Check this box if you want the summary to show To-dos belonging to your "
 "calendars only."
-msgstr "أشّر على هذا المربّع إن أردت أن يعرض الملخّص المهام الخاصّة بتقاويمك فحسب."
+msgstr ""
+"حدد هذا المربع إذا كنت تريد أن يعرض الملخص المهام التي تنتمي إلى تقويماتك "
+"فقط."
 
 #. i18n: ectx: property (text), widget (QCheckBox, mShowMineOnly)
 #: kontactplugin/korganizer/todosummaryconfig_base.ui:228
@@ -2923,9 +2934,9 @@ msgstr "، "
 
 #. i18n: ectx: property (windowTitle), widget (QWidget, SDSummaryConfig_Base)
 #: kontactplugin/specialdates/sdsummaryconfig_base.ui:16
-#, fuzzy, kde-format
+#, kde-format
 msgid "Special Dates Summary Configuration"
-msgstr "حواريّ ملخّص التواريخ الخاصّة"
+msgstr "ملخص ضبط التواريخ الخاصة"
 
 #. i18n: ectx: property (title), widget (QGroupBox, mDaysGroup)
 #: kontactplugin/specialdates/sdsummaryconfig_base.ui:22
@@ -2993,6 +3004,8 @@ msgid ""
 "Use this spinbox to set the number of days to show upcoming special "
 "occasions up to one year in the future."
 msgstr ""
+"استخدم هذا المربع الدوار لتعيين عدد الأيام لإظهار المناسبات الخاصة القادمة "
+"لمدة تصل إلى عام واحد في المستقبل."
 
 #. i18n: ectx: property (title), widget (QGroupBox, mShowFromCalGroup)
 #: kontactplugin/specialdates/sdsummaryconfig_base.ui:130
@@ -3008,12 +3021,14 @@ msgstr "اعرض أعياد الميلاد من تقويمك"
 
 #. i18n: ectx: property (whatsThis), widget (QCheckBox, mShowBirthdaysFromCalBox)
 #: kontactplugin/specialdates/sdsummaryconfig_base.ui:139
-#, fuzzy, kde-format
+#, kde-format
 msgid ""
 "Enable this option to include birthdays from your calendar in the upcoming "
 "special occasions summary. Typically, these are events with the \"Birthday\" "
 "tag."
-msgstr "أشّر على هذا المربّع"
+msgstr ""
+"مكّن هذا الخيار لتضمين أعياد الميلاد من تقويمك في ملخص المناسبات الخاصة "
+"القادمة. عادةً، تكون هذه الأحداث تحمل علامة \"عيد الميلاد\"."
 
 #. i18n: ectx: property (toolTip), widget (QCheckBox, mShowAnniversariesFromCalBox)
 #: kontactplugin/specialdates/sdsummaryconfig_base.ui:152
@@ -3023,12 +3038,14 @@ msgstr "اعرض السنويّات من تقويمك"
 
 #. i18n: ectx: property (whatsThis), widget (QCheckBox, mShowAnniversariesFromCalBox)
 #: kontactplugin/specialdates/sdsummaryconfig_base.ui:155
-#, fuzzy, kde-format
+#, kde-format
 msgid ""
 "Enable this option to include anniversaries from your calendar in the "
 "upcoming special occasions summary. Typically, these are events with the "
 "\"Anniversary\" tag."
-msgstr "أشّر على هذا المربّع"
+msgstr ""
+"مكّن هذا الخيار لتضمين المناسبات السنوية من تقويمك في ملخص المناسبات الخاصة "
+"القادمة. "
 
 #. i18n: ectx: property (toolTip), widget (QCheckBox, mShowHolidaysFromCalBox)
 #: kontactplugin/specialdates/sdsummaryconfig_base.ui:168
@@ -3038,12 +3055,15 @@ msgstr "اعرض العُطل من تقويمك"
 
 #. i18n: ectx: property (whatsThis), widget (QCheckBox, mShowHolidaysFromCalBox)
 #: kontactplugin/specialdates/sdsummaryconfig_base.ui:171
-#, fuzzy, kde-format
+#, kde-format
 msgid ""
 "Enable this option to include holidays from your calendar in the upcoming "
 "special occasions summary. These are events from your configured holiday "
 "region, or events with the \"Holiday\" tag."
-msgstr "أشّر على هذا المربّع"
+msgstr ""
+"مكّن هذا الخيار لتضمين العطلات من تقويمك في ملخص المناسبات الخاصة القادمة. "
+"هذه هي الأحداث من منطقة العطلات التي قمت بضبطها، أو الأحداث التي تحمل علامة "
+"\"عطلة\"."
 
 #. i18n: ectx: property (text), widget (QCheckBox, mShowHolidaysFromCalBox)
 #: kontactplugin/specialdates/sdsummaryconfig_base.ui:174
@@ -3059,22 +3079,17 @@ msgstr "اعرض المناسبات الخاصّة من تقويمك"
 
 #. i18n: ectx: property (whatsThis), widget (QCheckBox, mShowSpecialsFromCalBox)
 #: kontactplugin/specialdates/sdsummaryconfig_base.ui:187
-#, fuzzy, kde-format
-#| msgid ""
-#| "Enable this option to include anniversaries from your address book in the "
-#| "upcoming special occasions summary."
+#, kde-format
 msgid ""
 "Enable this option to include events from your calendar with the \"special "
 "occasion\" tag."
-msgstr ""
-"أشّر على هذا المربّع لتضمين السنويّات في دفتر العناوين في ملخّص المناسبات الخاصّة "
-"القادمة."
+msgstr "مكّن هذا الخيار لتضمين الأحداث من تقويمك مع علامة \"مناسبة خاصة\"."
 
 #. i18n: ectx: property (text), widget (QCheckBox, mShowSpecialsFromCalBox)
 #: kontactplugin/specialdates/sdsummaryconfig_base.ui:190
 #, kde-format
 msgid "Show s&pecial occasions"
-msgstr ""
+msgstr "اعرض المناسبات ال&خاصّة"
 
 #. i18n: ectx: property (title), widget (QGroupBox, mShowFromKABButtonGroup)
 #: kontactplugin/specialdates/sdsummaryconfig_base.ui:203
@@ -3095,6 +3110,8 @@ msgid ""
 "Enable this option to include birthdays from your address book in the "
 "upcoming special occasions summary."
 msgstr ""
+"مكّن هذا الخيار لتضمين أعياد الميلاد من دفتر العناوين الخاص بك في ملخص "
+"المناسبات الخاصة القادمة."
 
 #. i18n: ectx: property (text), widget (QCheckBox, mShowBirthdaysFromKABBox)
 #: kontactplugin/specialdates/sdsummaryconfig_base.ui:215
@@ -3265,7 +3282,7 @@ msgstr "ادمج الملفات المحدّدة بأحد التقاويم ال�
 #, kde-format
 msgctxt "@info:shell"
 msgid "Display the specified incidence (by URL)"
-msgstr ""
+msgstr "عرض الحدوث المحدد (حسب العنوان URL)"
 
 #: korganizer_options.h:25
 #, kde-format
@@ -3274,6 +3291,8 @@ msgid ""
 "Calendar files or urls. Unless -i or -m is explicitly specified, the user "
 "will be asked whether to import or merge"
 msgstr ""
+"ملفات التقويم أو عناوين URL. ما لم يحدد -i أو -m صراحةً، سيسأل المستخدم عما "
+"إذا كان يريد الاستيراد أو الدمج"
 
 #: korganizer_options.h:29
 #, kde-format
@@ -3298,6 +3317,8 @@ msgid ""
 "Please properly configure at least 1 work day in the Time and Date "
 "preferences."
 msgstr ""
+"لا يمكن عرض أسبوع العمل نظرًا لعدم وجود أيام عمل مُهيأة.يرجى تكوين يوم عمل "
+"واحد على الأقل بشكل صحيح في تفضيلات الوقت والتاريخ."
 
 #: prefs/koprefsdialogcolorsandfonts.cpp:43
 #, kde-format
@@ -3312,27 +3333,20 @@ msgid "Tags"
 msgstr "الوسوم"
 
 #: prefs/koprefsdialogcolorsandfonts.cpp:107
-#, fuzzy, kde-format
-#| msgctxt "@info:whatsthis"
-#| msgid ""
-#| "Select the calendar you want to modify. You can change the selected "
-#| "calendar color using the button below."
+#, kde-format
 msgctxt "@info:whatsthis"
 msgid ""
 "Select the tag you want to modify. You can change the selected tag's color "
 "using the adjacent color button."
 msgstr ""
-"اختر التقويم الذي تريد تعديله. يمكنك تغيير لون التقويم المنتقى مستخدمًا الزر "
-"أدناه."
+"حدد العلامة التي تريد تعديلها. يمكنك تغيير لون العلامة المحددة باستخدام زر "
+"اللون المجاور."
 
 #: prefs/koprefsdialogcolorsandfonts.cpp:115
-#, fuzzy, kde-format
-#| msgctxt "@info:whatsthis"
-#| msgid ""
-#| "Choose here the color of the calendar selected using the combo box above."
+#, kde-format
 msgctxt "@info:whatsthis"
 msgid "Choose the color of the tag selected in the adjacent combo box."
-msgstr "اختر لون التقويم المنتقى مستخدمًا القائمة المنسدلة أعلاه."
+msgstr "اختر لون العلامة المحددة في المربع المنسدل المجاور."
 
 #: prefs/koprefsdialogcolorsandfonts.cpp:123
 #, kde-format
@@ -3416,12 +3430,12 @@ msgstr "حسابات التقاويم"
 #, kde-format
 msgctxt "@title:tab activities settings"
 msgid "Activities"
-msgstr ""
+msgstr "الأنشطة"
 
 #: prefs/koprefsdialogmain.cpp:102
 #, kde-format
 msgid "Enabled"
-msgstr ""
+msgstr "ممكن"
 
 #: prefs/koprefsdialogplugins.cpp:61
 #, kde-format
@@ -3510,6 +3524,7 @@ msgid ""
 "week. If this is a work day for you, check this box, or the working hours "
 "will not be marked with color."
 msgstr ""
+"ضع علامة في هذا المربع لجعل منظمك يحدد ساعات العمل لهذا اليوم من الأسبوع. "
 
 #: prefs/koprefsdialogtime.cpp:140
 #, kde-format
@@ -3590,14 +3605,9 @@ msgid "day(s)"
 msgstr "من الأيام"
 
 #: prefs/koprefsdialogtime.cpp:219
-#, fuzzy, kde-format
-#| msgid ""
-#| "*.ogg *.wav *.mp3 *.wma *.flac *.aiff *.raw *.au *.ra|Audio Files (*.ogg "
-#| "*.wav *.mp3 *.wma *.flac *.aiff *.raw *.au *.ra)"
+#, kde-format
 msgid "Audio Files (*.ogg *.wav *.mp3 *.wma *.flac *.aiff *.raw *.au *.ra)"
-msgstr ""
-"*.ogg *.wav *.mp3 *.wma *.flac *.aiff *.raw *.au *.ra|الملفات الصوتية (*.ogg "
-"*.wav *.mp3 *.wma *.flac *.aiff *.raw *.au *.ra)"
+msgstr "ملفات الصوت (*.ogg *.wav *.mp3 *.wma *.flac *.aiff *.raw *.au *.ra)"
 
 #: prefs/koprefsdialogviews.cpp:44
 #, kde-format
@@ -3655,8 +3665,7 @@ msgid "Other Options"
 msgstr "خيارات أخرى"
 
 #: prefs/kprefsdialog.cpp:234
-#, fuzzy, kde-format
-#| msgid "Choose…"
+#, kde-format
 msgctxt "@action:button"
 msgid "Choose…"
 msgstr "اختر…"
@@ -3668,19 +3677,19 @@ msgid "Preferences"
 msgstr "تفضيلات"
 
 #: prefs/kprefsdialog.cpp:867
-#, fuzzy, kde-format
+#, kde-format
 msgid ""
 "You are about to set all preferences to default values. All custom "
 "modifications will be lost."
 msgstr ""
-"أنت على وشك تعيين كلّ التَّفضيلات للقِيَم الإفتراضيَّة. و سيسبب ذلك خسارة كلّ "
-"التَّغييرات."
+"أنت على وشك تعيين جميع التفضيلات إلى القيم المبدئية. ستفقد جميع التعديلات "
+"المخصصة."
 
 #: prefs/kprefsdialog.cpp:869
-#, fuzzy, kde-format
+#, kde-format
 msgctxt "@title:window"
 msgid "Setting Default Preferences"
-msgstr "جاري تعيين التَّفضيلات الافتراضيَّة"
+msgstr "ضبط التفضيلات الافتراضية"
 
 #: prefs/kprefsdialog.cpp:870
 #, kde-format
@@ -3714,23 +3723,19 @@ msgstr "الأحداث والمهام ومدخلات اليوميّة الجدي
 
 #. i18n: ectx: label, entry (Destination), group (Save Settings)
 #: settings/korganizer.kcfg:25
-#, fuzzy, kde-format
-#| msgid "Be added to the standard calendar"
+#, kde-format
 msgid "Be added to the default calendar"
-msgstr "ستُضاف إلى التقويم القياسي"
+msgstr "ستُضاف إلى التقويم المبدئي"
 
 #. i18n: ectx: whatsthis, entry (Destination), group (Save Settings)
 #: settings/korganizer.kcfg:26
-#, fuzzy, kde-format
-#| msgid ""
-#| "Select this option to always record new events, to-dos and journal "
-#| "entries using the standard calendar."
+#, kde-format
 msgid ""
 "Select this option to always record new events, to-dos and journal entries "
 "using the current default calendar."
 msgstr ""
-"أشّر على هذا المربّع لتسجيل الأحداث والمهام ومدخلات اليوميّة الجديدة باستخدام "
-"التقويم المبدئي."
+"حدد هذا الخيار لتسجيل الأحداث الجديدة والمهام وقيود اليومية دائمًا باستخدام "
+"التقويم الافتراضي الحالي."
 
 #. i18n: ectx: label, entry (Destination), group (Save Settings)
 #: settings/korganizer.kcfg:29
@@ -3748,18 +3753,22 @@ msgid ""
 "Kolab server or have to manage multiple accounts using Kontact as a KDE "
 "Kolab client. "
 msgstr ""
+"حدد هذا الخيار لاختيار التقويم الذي سيستخدم لتسجيل العنصر في كل مرة تقوم "
+"فيها بإنشاء حدث جديد أو مهمة أو إدخال يومية. يوصى بهذا الخيار إذا كنت تنوي "
+"استخدام وظيفة المجلدات المشتركة لخادم Kolab أو إذا كان عليك إدارة حسابات "
+"متعددة باستخدام \"متراسلك\" كعميل كيدي Kolab."
 
 #. i18n: ectx: whatsthis, entry (TimeZoneId), group (Time &amp; Date)
 #: settings/korganizer.kcfg:40
-#, fuzzy, kde-format
+#, kde-format
 msgid ""
 "Select your timezone from the list of locations on this drop down box. If "
 "your city is not listed, select one which shares the same timezone. "
 "KOrganizer will automatically adjust for daylight savings."
 msgstr ""
 "اختر منطقتك الزمنية من قائمة المواقع في هذه القائمة المنسدلة. إن لم تكن "
-"مدينتك موجودة، فاختر مدينة لها نفس المنطقة الزمنية لمدينتك. سيُضبط «منظّمك» "
-"آليًا "
+"مدينتك موجودة، فاختر مدينة لها نفس المنطقة الزمنية لمدينتك. سيضبط «منظّمك» "
+"التوقيت الصيفي. آليًا."
 
 #. i18n: ectx: label, entry (WeekStartDay), group (Time &amp; Date)
 #: settings/korganizer.kcfg:44
@@ -3838,11 +3847,13 @@ msgstr "فعّل التلميحات لعرض الملخّصات"
 
 #. i18n: ectx: whatsthis, entry, group (General View)
 #: settings/korganizer.kcfg:74
-#, fuzzy, kde-format
+#, kde-format
 msgid ""
 "Check this box to display summary tooltips when hovering the mouse over an "
 "event or a to-do."
-msgstr "أشّر على هذا المربّع لعرض "
+msgstr ""
+"أشّر على هذا المربع لعرض تلميحات أدوات التلخيص عند تحريك الفأرة فوق حدث أو "
+"مهمة."
 
 #. i18n: ectx: label, entry, group (General View)
 #: settings/korganizer.kcfg:79
@@ -3852,11 +3863,13 @@ msgstr "تستخدم المهام ألوان الوسوم"
 
 #. i18n: ectx: whatsthis, entry, group (General View)
 #: settings/korganizer.kcfg:80
-#, fuzzy, kde-format
+#, kde-format
 msgid ""
 "Check this box so that to-dos will use tag colors and not colors specific to "
 "their due, due today or overdue state"
-msgstr "أشّر على هذا المربّع لتستخدم كل المهام ألوان الفئة "
+msgstr ""
+"حدد هذا المربع بحيث تستخدم المهام ألوان العلامة وليس الألوان الخاصة بالمستحق "
+"أو المستحق اليوم أو حالة التأخير"
 
 #. i18n: ectx: label, entry, group (General View)
 #: settings/korganizer.kcfg:85
@@ -3895,6 +3908,9 @@ msgid ""
 "typeface in the Date Navigator, or uncheck it to give more prominence to "
 "other (non daily recurring) events."
 msgstr ""
+"أشر على هذا المربع لإظهار الأيام التي تحتوي على أحداث يومية متكررة بخط عريض "
+"في متصفح التاريخ، أو ألغ التأشير عليه لإعطاء أهمية أكبر للأحداث الأخرى (غير "
+"المتكررة اليومية)."
 
 #. i18n: ectx: label, entry (WeeklyRecur), group (General View)
 #: settings/korganizer.kcfg:98
@@ -3910,12 +3926,15 @@ msgid ""
 "typeface in the Date Navigator, or uncheck it to give more prominence to "
 "other (non weekly recurring) events."
 msgstr ""
+"أشر على هذا المربع لإظهار الأيام التي تحتوي على أحداث أسبوعية متكررة بخط "
+"غامق في متصفح التاريخ، أو ألغ تحديده لإعطاء أهمية أكبر للأحداث الأخرى (غير "
+"المتكررة الأسبوعية)."
 
 #. i18n: ectx: label, entry (HighlightTodos), group (General View)
 #: settings/korganizer.kcfg:104
-#, fuzzy, kde-format
+#, kde-format
 msgid "Show to-dos instead of events when in Todo View"
-msgstr "اعرض المهام بدل الأحداث في منظور المهام"
+msgstr "اعرض المهام بدلاً من الأحداث عندما تكون في عرض المهام"
 
 #. i18n: ectx: whatsthis, entry (HighlightTodos), group (General View)
 #: settings/korganizer.kcfg:105
@@ -3924,6 +3943,8 @@ msgid ""
 "Check this box to show the days containing to-dos in bold typeface in the "
 "Date Navigator when in to-do view."
 msgstr ""
+"أشر على هذا المربع لإظهار الأيام التي تحتوي على المهام بخط عريض في متصفح "
+"التاريخ عندما تكون في عرض المهام."
 
 #. i18n: ectx: label, entry (HighlightJournals), group (General View)
 #: settings/korganizer.kcfg:110
@@ -3933,19 +3954,19 @@ msgstr "اعرض اليوميّات بدل الأحداث في منظور الي
 
 #. i18n: ectx: whatsthis, entry (HighlightJournals), group (General View)
 #: settings/korganizer.kcfg:111
-#, fuzzy, kde-format
+#, kde-format
 msgid ""
 "Check this box to show the days containing journals in bold typeface in the "
 "Date Navigator when in journal view."
 msgstr ""
-"أشّر على هذا المربّع لعرض الأيام التي فيها يوميّات بخط ثخين في متصفّح التواريخ "
-"إن كنت في منظور اليوميّة."
+"أشّر على هذا المربع لإظهار الأيام التي تحتوي على دفاتر يومية بخط غامق في "
+"\"متصفح التاريخ\" أثناء عرض دفتر اليومية."
 
 #. i18n: ectx: label, entry (WeekNumbersShowWork), group (General View)
 #: settings/korganizer.kcfg:116
 #, kde-format
 msgid "Week numbers select a work week when in work week mode"
-msgstr ""
+msgstr "أرقام الأسبوع تحدد أسبوع العمل عندما تكون في وضع أسبوع العمل"
 
 #. i18n: ectx: whatsthis, entry (WeekNumbersShowWork), group (General View)
 #: settings/korganizer.kcfg:117
@@ -3954,6 +3975,8 @@ msgid ""
 "Check this box to select a working week when clicking on the Date "
 "Navigator's week numbers, or uncheck it to choose the whole week."
 msgstr ""
+"أشر على هذا المربع لتحديد أسبوع عمل عند النقر على أرقام الأسبوع الخاصة "
+"بمستكشف التاريخ، أو ألغ تحديده لاختيار الأسبوع بأكمله."
 
 #. i18n: ectx: label, entry, group (Agenda View)
 #: settings/korganizer.kcfg:125
@@ -3975,7 +3998,7 @@ msgstr ""
 #: settings/korganizer.kcfg:127
 #, kde-format
 msgid "Set the height (in pixels) for an hour in the agenda grid"
-msgstr ""
+msgstr "اضبط الارتفاع (بالبكسل) لوحدة ساعة في شبكة جدول الأعمال"
 
 #. i18n: ectx: label, entry (EnableAgendaItemIcons), group (Agenda View)
 #: settings/korganizer.kcfg:134
@@ -4026,13 +4049,13 @@ msgstr "اعرض خط الوقت الحالي (ماركوس بينز)"
 
 #. i18n: ectx: whatsthis, entry (MarcusBainsEnabled), group (Agenda View)
 #: settings/korganizer.kcfg:149
-#, fuzzy, kde-format
+#, kde-format
 msgid ""
 "Check this box to display a line in the day or week view indicating the "
 "current-time line (Marcus Bains line)."
 msgstr ""
-"أشّر على هذا المربّع لعرض خط في منظور اليوم أو الشهر يُشير إلى خط الوقت الحالي "
-"(خط ماركوس بينز)."
+"أشّر على هذا المربع لعرض خط في عرض اليوم أو الأسبوع يشير إلى خط الوقت الحالي "
+"(خط ماركوس باينز)."
 
 #. i18n: ectx: tooltip, entry (MarcusBainsEnabled), group (Agenda View)
 #: settings/korganizer.kcfg:150
@@ -4062,7 +4085,7 @@ msgstr "اعرض الثواني مع مؤشّر الوقت الحالي"
 #: settings/korganizer.kcfg:162
 #, kde-format
 msgid "Time range selection in agenda view starts event editor"
-msgstr ""
+msgstr "تحديد النطاق الزمني في عرض جدول الأعمال يبدأ محرر الأحداث"
 
 #. i18n: ectx: whatsthis, entry (SelectionStartsEditor), group (Agenda View)
 #: settings/korganizer.kcfg:163
@@ -4072,12 +4095,15 @@ msgid ""
 "time range in the daily and weekly view. To select a time range, drag the "
 "mouse from the start time to the end time of the event you are about to plan."
 msgstr ""
+"حدد هذا المربع لبدء تشغيل محرر الأحداث تلقائيًا عند تحديد نطاق زمني في العرض "
+"اليومي والأسبوعي. لتحديد نطاق زمني، اسحب الفأرة من وقت البدء إلى وقت "
+"الانتهاء للحدث الذي تخطط له."
 
 #. i18n: ectx: tooltip, entry (SelectionStartsEditor), group (Agenda View)
 #: settings/korganizer.kcfg:164
 #, kde-format
 msgid "Enable automatic event editor with time range selection"
-msgstr ""
+msgstr "مكّن محرر الأحداث التلقائي مع تحديد النطاق الزمني"
 
 #. i18n: ectx: label, entry, group (Agenda View)
 #. i18n: ectx: label, entry, group (Month View)
@@ -4091,20 +4117,21 @@ msgstr "استخدام الألوان"
 #: settings/korganizer.kcfg:172 settings/korganizer.kcfg:262
 #, kde-format
 msgid "Tag inside, calendar outside"
-msgstr ""
+msgstr "الوسم بالداخل، تقويم بالخارج"
 
 #. i18n: ectx: whatsthis, entry, group (Agenda View)
 #. i18n: ectx: whatsthis, entry, group (Month View)
 #: settings/korganizer.kcfg:173 settings/korganizer.kcfg:263
-#, fuzzy, kde-format
+#, kde-format
 msgid ""
 "Select the \"Tag inside, calendar outside\" option if you would like to draw "
 "calendar items using their associated tag color, with the item's border "
 "drawn in the color of its calendar.  Please use the Colors and Fonts "
 "configuration page for setting these colors."
 msgstr ""
-"أشّر على خيار ”التقويم فحسب“ إن أردت رسم عناصر التقويم (الداخلية والحدود "
-"كذلك) بلون التقويم"
+"حدد خيار \"الوسم بالداخل والتقويم بالخارج\" إذا كنت ترغب في رسم عناصر "
+"التقويم باستخدام لون الوسم المرتبط بها، مع رسم حدود العنصر بلون تقويمك. يُرجى "
+"استخدام صفحة ضبط الألوان والخطوط لتعيين هذه الألوان."
 
 #. i18n: ectx: tooltip, entry, group (Agenda View)
 #: settings/korganizer.kcfg:174
@@ -4112,28 +4139,27 @@ msgstr ""
 msgid ""
 "Draw agenda items with their tag color inside and calendar color for their "
 "border"
-msgstr ""
+msgstr "رسم بنود جدول الأعمال بلون علامتها الداخلية ولون التقويم لحدودها"
 
 #. i18n: ectx: label, entry, group (Agenda View)
 #. i18n: ectx: label, entry, group (Month View)
 #: settings/korganizer.kcfg:177 settings/korganizer.kcfg:267
-#, fuzzy, kde-format
-#| msgid "Calendars Side by Side"
+#, kde-format
 msgid "Calendar inside, tag outside"
-msgstr "التقاويم جنبًا إلى جنب"
+msgstr "تقويم بالداخل، علامة بالخارج"
 
 #. i18n: ectx: whatsthis, entry, group (Agenda View)
 #. i18n: ectx: whatsthis, entry, group (Month View)
 #: settings/korganizer.kcfg:178 settings/korganizer.kcfg:268
-#, fuzzy, kde-format
+#, kde-format
 msgid ""
 "Select the \"Calendar inside, tag outside\" option if you would like to draw "
 "calendar items using their associated calendar color, with the item's border "
 "drawn in the color of its tag.  Please use the Colors and Fonts "
 "configuration page for setting these colors."
 msgstr ""
-"أشّر على خيار ”التقويم فحسب“ إن أردت رسم عناصر التقويم (الداخلية والحدود "
-"كذلك) بلون التقويم"
+"حدد خيار \"التقويم بالداخل، علامة بالخارج\" إذا كنت ترغب في رسم عناصر "
+"التقويم باستخدام لون التقويم المرتبط بها، مع رسم حدود العنصر بلون علامته.  "
 
 #. i18n: ectx: tooltip, entry, group (Agenda View)
 #: settings/korganizer.kcfg:179
@@ -4142,6 +4168,8 @@ msgid ""
 "Draw agenda items with their calendar color inside and tag color for their "
 "border"
 msgstr ""
+"ارسم بنود جدول الأعمال بلون التقويم الخاص بها بالداخل وحدد اللون الخاص "
+"بحدودها"
 
 #. i18n: ectx: label, entry, group (Agenda View)
 #. i18n: ectx: label, entry, group (Month View)
@@ -4152,20 +4180,20 @@ msgstr "الوسوم فقط"
 
 #. i18n: ectx: whatsthis, entry, group (Agenda View)
 #: settings/korganizer.kcfg:183
-#, fuzzy, kde-format
+#, kde-format
 msgid ""
 "Select the \"Only tag\" option if you would like to draw calendar items "
 "(both inside and border) using the color of their associated tag.  Please "
 "use the Colors and Fonts configuration page for setting these colors."
 msgstr ""
-"أشّر على خيار ”التقويم فحسب“ إن أردت رسم عناصر التقويم (الداخلية والحدود "
-"كذلك) بلون التقويم"
+"حدد خيار \"العلامة فقط\" إذا كنت ترغب في رسم عناصر التقويم (سواء الداخلية أو "
+"الحدودية) باستخدام لون العلامة المرتبطة بها.  "
 
 #. i18n: ectx: tooltip, entry, group (Agenda View)
 #: settings/korganizer.kcfg:184
 #, kde-format
 msgid "Draw agenda items using their tag color for the inside and border"
-msgstr ""
+msgstr "ارسم بنود جدول الأعمال باستخدام لون العلامة الخاص بها للداخل والحدود"
 
 #. i18n: ectx: label, entry, group (Agenda View)
 #. i18n: ectx: label, entry, group (Month View)
@@ -4176,20 +4204,20 @@ msgstr "التقويم فحسب"
 
 #. i18n: ectx: whatsthis, entry, group (Agenda View)
 #: settings/korganizer.kcfg:188
-#, fuzzy, kde-format
+#, kde-format
 msgid ""
 "Select the \"Only calendar\" option if you would like to draw calendar items "
 "(both inside and border) using the color of their calendar. Please use the "
 "Colors and Fonts configuration page for setting these colors."
 msgstr ""
-"أشّر على خيار ”التقويم فحسب“ إن أردت رسم عناصر التقويم (الداخلية والحدود "
-"كذلك) بلون التقويم"
+"حدد خيار \"التقويم فقط\" إذا كنت تريد رسم عناصر التقويم (سواء الداخلية أو "
+"الحدودية) باستخدام لون التقويم الخاص بها. "
 
 #. i18n: ectx: tooltip, entry, group (Agenda View)
 #: settings/korganizer.kcfg:189
 #, kde-format
 msgid "Draw agenda items using their calendar color for the inside and border"
-msgstr ""
+msgstr "ارسم بنود جدول الأعمال باستخدام لون التقويم الخاص بها للداخل والحدود"
 
 #. i18n: ectx: whatsthis, entry (ColorBusyDaysEnabled), group (Agenda View)
 #: settings/korganizer.kcfg:196
@@ -4224,12 +4252,14 @@ msgid ""
 "Select the \"Merge all calendars into one view\" option if you would like "
 "all your calendars to be shown together in one agenda view."
 msgstr ""
+"حدد خيار \"دمج كافة التقويمات في عرض واحد\" إذا كنت تريد أن تعرض جميع "
+"التقويمات الخاصة بك معًا في عرض جدول أعمال واحد."
 
 #. i18n: ectx: tooltip, entry (AgendaViewCalendarDisplay), group (Agenda View)
 #: settings/korganizer.kcfg:205
 #, kde-format
 msgid "Show all calendars merged together"
-msgstr ""
+msgstr "أظهر كافة التقويمات المدمجة معًا"
 
 #. i18n: ectx: label, entry (AgendaViewCalendarDisplay), group (Agenda View)
 #: settings/korganizer.kcfg:208
@@ -4239,13 +4269,13 @@ msgstr "اعرض التقاويم جنبًا إلى جنب"
 
 #. i18n: ectx: whatsthis, entry (AgendaViewCalendarDisplay), group (Agenda View)
 #: settings/korganizer.kcfg:209
-#, fuzzy, kde-format
+#, kde-format
 msgid ""
 "Select the \"Show calendars side by side\" option if you would like to see "
 "two calendars at once, in a side-by-side view."
 msgstr ""
-"أشّر على خيار ”اعرض التقاويم جنبًا إلى جنب“ إن أردت رؤية تقويمين اثنين في آن "
-"واحد في منظور "
+"حدد خيار \"إظهار التقويمات جنبًا إلى جنب\" إذا كنت ترغب في رؤية تقويمين في "
+"وقت واحد، في عرض جنبًا إلى جنب."
 
 #. i18n: ectx: tooltip, entry (AgendaViewCalendarDisplay), group (Agenda View)
 #: settings/korganizer.kcfg:210
@@ -4352,15 +4382,16 @@ msgstr "يستخدم منظور الشهر النافذة كاملة"
 
 #. i18n: ectx: whatsthis, entry, group (Month View)
 #: settings/korganizer.kcfg:254
-#, fuzzy, kde-format
+#, kde-format
 msgid ""
 "Check this box to use the full KOrganizer window when displaying the month "
 "view. If this box is checked, you will gain some space for the monthly view, "
 "but other widgets, such as the date navigator, the item details and the "
 "calendars list, will not be displayed."
 msgstr ""
-"أشّر على هذا المربّع لاستخدام نافذة «منظّمك» كاملة عند عرض منظور الشهر. إن كان "
-"المربّع مؤشّرًا عليه فست"
+"حدد هذا المربع لاستخدام نافذة منظمك بالكامل عند عرض عرض الشهر. إذا حُدد هذا "
+"المربع، فستحصل على بعض المساحة لعرض الشهر، ولكن لن يعرض عناصر واجهة المستخدم "
+"الأخرى، مثل متصفح التاريخ وتفاصيل العناصر وقائمة التقويمات."
 
 #. i18n: ectx: tooltip, entry, group (Month View)
 #: settings/korganizer.kcfg:264
@@ -4368,7 +4399,7 @@ msgstr ""
 msgid ""
 "Draw month items with their tag color inside and calendar color for their "
 "border"
-msgstr ""
+msgstr "ارسم عناصر الشهر بلون علامتها الداخلية ولون التقويم لحدودها"
 
 #. i18n: ectx: tooltip, entry, group (Month View)
 #: settings/korganizer.kcfg:269
@@ -4376,24 +4407,24 @@ msgstr ""
 msgid ""
 "Draw month items with their calendar color inside and tag color for their "
 "border"
-msgstr ""
+msgstr "ارسم عناصر الشهر بلون التقويم الخاص بها بالداخل وحدد لون حدودها"
 
 #. i18n: ectx: whatsthis, entry, group (Month View)
 #: settings/korganizer.kcfg:273
-#, fuzzy, kde-format
+#, kde-format
 msgid ""
 "Select the \"Only tag\" option if you would like to draw calendar items "
 "(both inside and border) in the color of their associated tag.  Please use "
 "the Colors and Fonts configuration page for setting these colors."
 msgstr ""
-"أشّر على خيار ”التقويم فحسب“ إن أردت رسم عناصر التقويم (الداخلية والحدود "
-"كذلك) بلون التقويم"
+"حدد خيار \"العلامة فقط\" إذا كنت ترغب في رسم عناصر التقويم (سواء الداخلية أو "
+"الحدودية) بلون العلامة المرتبطة بها."
 
 #. i18n: ectx: tooltip, entry, group (Month View)
 #: settings/korganizer.kcfg:274
 #, kde-format
 msgid "Draw month items using their tag color for the inside and border"
-msgstr ""
+msgstr "ارسم عناصر الشهر باستخدام لون العلامة الخاص بها للداخل والحدود"
 
 #. i18n: ectx: whatsthis, entry, group (Month View)
 #: settings/korganizer.kcfg:278
@@ -4403,18 +4434,21 @@ msgid ""
 "(both inside and border) in the color of their calendar.  Please use the "
 "Colors and Fonts configuration page for setting these colors."
 msgstr ""
+"حدد خيار \"التقويم فقط\" إذا كنت ترغب في رسم عناصر التقويم (داخليًا وحدوديًا) "
+"بلون التقويم الخاص بها. يُرجى استخدام صفحة تكوين الألوان والخطوط لتعيين هذه "
+"الألوان."
 
 #. i18n: ectx: tooltip, entry, group (Month View)
 #: settings/korganizer.kcfg:279
 #, kde-format
 msgid "Draw month items using their calendar color for the inside and border"
-msgstr ""
+msgstr "ارسم عناصر الشهر باستخدام لون التقويم الخاص بها للداخل والحدود"
 
 #. i18n: ectx: label, entry, group (Todo View)
 #: settings/korganizer.kcfg:289
 #, kde-format
 msgid "Always display completed to-dos at the bottom of the list"
-msgstr ""
+msgstr "عرض المهام المكتملة دائمًا في أسفل القائمة"
 
 #. i18n: ectx: tooltip, entry, group (Todo View)
 #: settings/korganizer.kcfg:290
@@ -4422,7 +4456,7 @@ msgstr ""
 msgid ""
 "Completed to-dos are displayed at the bottom of the list, regardless of "
 "priority"
-msgstr ""
+msgstr "عرض المهام المكتملة في أسفل القائمة، بغض النظر عن الأولوية"
 
 #. i18n: ectx: whatsthis, entry, group (Todo View)
 #: settings/korganizer.kcfg:291
@@ -4431,6 +4465,8 @@ msgid ""
 "Check this box if you want all completed to-dos to be always grouped at the "
 "bottom of the to-do list."
 msgstr ""
+"أشّر على هذا المربع إذا كنت تريد تجميع كافة المهام المكتملة دائمًا في أسفل "
+"قائمة المهام."
 
 #. i18n: ectx: label, entry, group (Todo View)
 #: settings/korganizer.kcfg:296
@@ -4442,7 +4478,7 @@ msgstr "تستخدم قائمة المَهام كامل النافذة"
 #: settings/korganizer.kcfg:297
 #, kde-format
 msgid "Display to-do list in a full KOrganizer window"
-msgstr ""
+msgstr "اعرض قائمة المهام في نافذة منظمك الكاملة"
 
 #. i18n: ectx: whatsthis, entry, group (Todo View)
 #: settings/korganizer.kcfg:298
@@ -4453,6 +4489,9 @@ msgid ""
 "list view, but other widgets, such as the date navigator, the to-do details "
 "and the calendars list, will not be displayed."
 msgstr ""
+"حدد هذا المربع لاستخدام نافذة منظمك بالكامل عند عرض عرض قائمة المهام. إذا "
+"حدد هذا المربع، فستحصل على بعض المساحة لعرض قائمة المهام، ولكن لن يعرض عناصر "
+"واجهة المستخدم الأخرى، مثل متصفح التاريخ وتفاصيل المهام وقائمة التقويمات."
 
 #. i18n: ectx: label, entry, group (Todo View)
 #: settings/korganizer.kcfg:303
@@ -4464,7 +4503,7 @@ msgstr "اعرض قائمة المهام كقائمة مسطحة"
 #: settings/korganizer.kcfg:304
 #, kde-format
 msgid "Display to-dos as a flat list instead of a hierarchical tree"
-msgstr ""
+msgstr "عرض المهام كقائمة مسطحة بدلاً من شجرة هرمية"
 
 #. i18n: ectx: whatsthis, entry, group (Todo View)
 #: settings/korganizer.kcfg:305
@@ -4473,12 +4512,14 @@ msgid ""
 "Check this box if you want to see all your to-dos in a flat list instead of "
 "being arranged in a hierarchical tree."
 msgstr ""
+"أشّر على هذا المربع إذا كنت تريد رؤية كافة مهامك في قائمة مسطحة بدلاً من "
+"ترتيبها في شجرة هرمية."
 
 #. i18n: ectx: label, entry, group (Todo View)
 #: settings/korganizer.kcfg:310
 #, kde-format
 msgid "Record completed to-dos in journal entries"
-msgstr ""
+msgstr "سجّل المهام المكتملة في إدخالات دفتر اليومية"
 
 #. i18n: ectx: whatsthis, entry, group (Todo View)
 #: settings/korganizer.kcfg:311
@@ -4487,6 +4528,8 @@ msgid ""
 "Check this box to record the completion of a to-do in a new entry of your "
 "journal automatically."
 msgstr ""
+"أشّر على هذا المربع لتسجيل إكمال مهمة ما في إدخال جديد في دفتر يومياتك "
+"تلقائيًا."
 
 #. i18n: ectx: label, entry, group (Colors)
 #. i18n: ectx: label, entry, group (Theming)
@@ -4528,7 +4571,7 @@ msgstr "اختر من هنا لون خلفية منظور جدول الأعما�
 #: settings/korganizer.kcfg:331
 #, kde-format
 msgid "Agenda view current-time line color"
-msgstr ""
+msgstr "لون خط عرض جدول الأعمال في الوقت الحالي"
 
 #. i18n: ectx: whatsthis, entry, group (Colors)
 #: settings/korganizer.kcfg:332
@@ -4555,6 +4598,8 @@ msgid ""
 "When you have an all day event marked as busy, you can have a different "
 "agenda or month view background color for that day. Select the color here."
 msgstr ""
+"عندما يكون لديك حدث طوال اليوم وُضعت علامة عليه على أنه مشغول، يمكنك الحصول "
+"على لون خلفية مختلف لجدول الأعمال أو عرض الشهر لهذا اليوم."
 
 #. i18n: ectx: label, entry, group (Colors)
 #. i18n: ectx: label, entry, group (Theme/Month view)
@@ -4662,7 +4707,7 @@ msgid ""
 "Press this button to configure the current-time line font. This button will "
 "open the \"Select Font\" dialog, allowing you to choose the font for the "
 "current-time line in the agenda view."
-msgstr ""
+msgstr "اضغط على هذا الزر لتكوين خط خط الوقت الحالي. "
 
 #. i18n: ectx: label, entry (DefaultTodoAttachMethod), group (Hidden Options)
 #: settings/korganizer.kcfg:405
@@ -4723,7 +4768,7 @@ msgstr "استخدم لون النظام"
 msgid ""
 "Use system color instead of user defined color. If enabled will ignore all "
 "other color settings"
-msgstr ""
+msgstr "استخدام لون النظام بدلا من اللون المحدد من قبل المستخدم. "
 
 #. i18n: ectx: label, entry, group (Theme/Month view)
 #: settings/korganizer.kcfg:553
@@ -4739,19 +4784,19 @@ msgstr "اختر من هنا لون خلفية منظور الشهر."
 
 #. i18n: ectx: whatsthis, entry, group (Theme/Month view)
 #: settings/korganizer.kcfg:561
-#, fuzzy, kde-format
+#, kde-format
 msgid ""
 "Select the highlight color here. The highlight color will be used for "
 "marking the currently selected area in your Month and in the date navigator."
 msgstr ""
-"اختر من هنا  لون الإبراز. سيُستخدم لون الإبراز لتعليم المناطق المحدّدة حاليًا "
-"في الشهر ومتصفّح التواريخ."
+"حدد لون التمييز هنا. سيستخدم لون التمييز لتمييز المنطقة المحددة حاليًا في "
+"الشهر وفي متصفح التاريخ."
 
 #. i18n: ectx: whatsthis, entry, group (Theme/Month view)
 #: settings/korganizer.kcfg:566
 #, kde-format
 msgid "Select the working hours background color for the Month view here."
-msgstr ""
+msgstr "حدد لون خلفية ساعات العمل لعرض الشهر هنا."
 
 #. i18n: ectx: label, entry, group (Theme/Month view)
 #: settings/korganizer.kcfg:588
@@ -4761,14 +4806,14 @@ msgstr "لون الأحداث المبدئي"
 
 #. i18n: ectx: whatsthis, entry, group (Theme/Month view)
 #: settings/korganizer.kcfg:589
-#, fuzzy, kde-format
+#, kde-format
 msgid ""
 "Select the default event color here. The default event color will be used "
 "for events in your Month. Note that you can specify a separate color for "
 "each event tag below."
 msgstr ""
-"انتقِ افتراضي الحدث اللّون الـ افتراضي الحدث اللّون مُستخدَم لـ فئات بوصة ملاحظة "
-"تحديد a اللّون لـ الحدث التصنيف أسفل."
+"حدد لون الحدث الافتراضي هنا. سيستخدم لون الحدث الافتراضي للأحداث في شهرك. "
+"لاحظ أنه يمكنك تحديد لون منفصل لكل علامة حدث أدناه."
 
 #. i18n: ectx: property (placeholderText), widget (KListWidgetSearchLine, searchline)
 #: ui/filteredit_base.ui:35
@@ -4816,14 +4861,14 @@ msgstr "أخفِ الأحداث والمهام المت&كرّرة"
 
 #. i18n: ectx: property (whatsThis), widget (QCheckBox, mCompletedCheck)
 #: ui/filteredit_base.ui:131
-#, fuzzy, kde-format
+#, kde-format
 msgid ""
 "If this box is checked, the filter will hide all to-do items from the list, "
 "that have been completed. Optionally, only items that have been completed a "
 "given number of days are hidden."
 msgstr ""
-"إن أُشّر على هذا المربّع فسيُخفي المرشّح كل عناصر المهام التي اكتملت من القائمة. "
-"يمكنك"
+"إذا حدد هذا المربع، سيقوم المرشح بإخفاء كافة عناصر المهام من القائمة، التي "
+"أُكملت."
 
 #. i18n: ectx: property (text), widget (QCheckBox, mCompletedCheck)
 #: ui/filteredit_base.ui:134
@@ -4840,12 +4885,15 @@ msgid ""
 "as you check it. You can increase or decrease the number of days in the "
 "spinbox."
 msgstr ""
+"سيسمح لك هذا الخيار بتحديد المهام المكتملة التي يجب إخفاؤها. عند اختيار "
+"<i>فورًا</i>، ستخفى المهمة بمجرد تحديدها. يمكنك زيادة أو تقليل عدد الأيام في "
+"مربع التكرار."
 
 #. i18n: ectx: property (text), widget (QLabel, mCompletedTimeSpanLabel)
 #: ui/filteredit_base.ui:180
 #, kde-format
 msgid "Da&ys after completion:"
-msgstr ""
+msgstr "أيام بعد الا&نتهاء:"
 
 #. i18n: ectx: property (whatsThis), widget (QSpinBox, mCompletedTimeSpan)
 #: ui/filteredit_base.ui:193
@@ -4857,15 +4905,23 @@ msgid ""
 "items will be hidden, that have been marked finished longer than 24 hours "
 "ago."
 msgstr ""
+"هنا يمكنك تحديد عدد الأيام التي يجب إكمال عنصر من عناصر المهام المطلوب "
+"إجراؤها لإخفائه من قائمة المهام المطلوب إجراؤها. إذا حددت \"فورًا\"، فستخفى "
+"جميع عناصر المهام المطلوب إجراؤها. على سبيل المثال، إذا اخترت قيمة 1، فستخفى "
+"جميع عناصر المهام المطلوب إجراؤها، والتي وضع علامة \"اكتملت\" عليها منذ أكثر "
+"من 24 ساعة."
 
 #. i18n: ectx: property (whatsThis), widget (QCheckBox, mHideInactiveTodosCheck)
 #: ui/filteredit_base.ui:218
-#, fuzzy, kde-format
+#, kde-format
 msgid ""
 "This option hides all to-dos from your list, where the start date has not "
 "been reached. (Note that the start date is not the due date of the to-do "
 "item.)"
-msgstr "يُخفي هذا الخيار كل المهام من القائمة"
+msgstr ""
+"يخفي هذا الخيار جميع المهام المطلوب تنفيذها من قائمتك ما لم يصل إلى تاريخ "
+"البدء. (لاحظ أن تاريخ البدء ليس هو تاريخ استحقاق عنصر المهمة المطلوب "
+"تنفيذها.)"
 
 #. i18n: ectx: property (text), widget (QCheckBox, mHideInactiveTodosCheck)
 #: ui/filteredit_base.ui:221
@@ -4886,6 +4942,8 @@ msgid ""
 "When this option is chosen, this filter will show all items which do <i>not</"
 "i> contain any of the selected tags."
 msgstr ""
+"عند تحديد هذا الخيار، سيعرض هذا المرشح جميع العناصر التي <i>لا</i> تحتوي على "
+"أي من العلامات المحددة."
 
 #. i18n: ectx: property (text), widget (QRadioButton, mCatHideCheck)
 #: ui/filteredit_base.ui:275
@@ -4900,6 +4958,8 @@ msgid ""
 "When this option is chosen, this filter will show all items containing any "
 "of the selected tags."
 msgstr ""
+"عند تحديد هذا الاختيار، سوف يقوم هذا المرشح بعرض كافة العناصر التي تحتوي على "
+"أي من العلامات المحددة."
 
 #. i18n: ectx: property (text), widget (QRadioButton, mCatShowCheck)
 #: ui/filteredit_base.ui:291
@@ -4922,12 +4982,15 @@ msgid ""
 "Only to-dos which have least one attendee will be checked.  If you are not "
 "in the list of attendees the to-do will be hidden."
 msgstr ""
+"يخفي هذا الخيار جميع المهام التي عُينت لشخص آخر من قائمتك.<br>\n"
+"سيُتحقق فقط من المهام التي تحتوي على مشارك واحد على الأقل. إذا لم تكن في "
+"قائمة الحاضرين، فستخفى المهمة."
 
 #. i18n: ectx: property (text), widget (QCheckBox, mHideTodosNotAssignedToMeCheck)
 #: ui/filteredit_base.ui:318
-#, fuzzy, kde-format
+#, kde-format
 msgid "Hide to-dos not assigned to me"
-msgstr "أخفِ المهام "
+msgstr "أخفِ المهام لم تسند لي"
 
 #. i18n: ectx: attribute (title), widget (QWidget, tabPublish)
 #: ui/kogroupwareprefspage.ui:39
@@ -4937,16 +5000,19 @@ msgstr "ا&نشر"
 
 #. i18n: ectx: property (text), widget (QLabel, TextLabel1)
 #: ui/kogroupwareprefspage.ui:60
-#, fuzzy, kde-format
+#, kde-format
 msgid ""
 "By publishing Free/Busy information, you allow others to take your calendar "
 "into account when inviting you for a meeting. Only the times you have "
 "already busy are published, not why they are busy."
-msgstr "نشرك معلومات متفرّغ/مشغول يتيح للآخرين أخذ "
+msgstr ""
+"من خلال نشر معلومات \"متوفر/مشغول\"، فإنك تسمح للآخرين بأخذ تقويمك في "
+"الاعتبار عند دعوتك لحضور اجتماع. تُنشر الأوقات التي تكون مشغولاً فيها فقط، "
+"وليس سبب انشغالهم."
 
 #. i18n: ectx: property (whatsThis), widget (QCheckBox, publishEnable)
 #: ui/kogroupwareprefspage.ui:72
-#, fuzzy, kde-format
+#, kde-format
 msgid ""
 "Check this box to upload your Free/Busy information automatically.\n"
 "It is possible to skip this option and mail or upload your Free/Busy "
@@ -4955,10 +5021,12 @@ msgid ""
 "as the Kolab2 server taking care of publishing your Free/Busy information "
 "and manages the access to it from other users."
 msgstr ""
-"أشّر على هذا المربّع لرفع معلومات متفرّغ/مشغول آليًا.\n"
-"من الممكن تخطّي هذا الخيار وإرسال معلومات متفرّغ/مشغول بالبريد أو رفعها "
-"مستخدمًا قائمة ”جدولة“ في «منظّمك».\n"
-"لاحظ: إن كان «منظّمك» "
+"حدد هذا المربع لتحميل معلوماتك المتوفرة/المشغولة تلقائيًا.\n"
+"من الممكن تخطي هذا الخيار وإرسال معلوماتك المتوفرة/المشغولة عبر البريد "
+"الإلكتروني أو تحميلها باستخدام قائمة \"الجدول\" في منظمك.\n"
+"ملاحظة: إذا كان منظمك يعمل كعميل كيدي Kolab، فهذا ليس ضروريًا، حيث يتولى خادم "
+"Kolab2 نشر معلوماتك المتوفرة/المشغولة ويدير الوصول إليها من المستخدمين "
+"الآخرين."
 
 #. i18n: ectx: property (text), widget (QCheckBox, publishEnable)
 #: ui/kogroupwareprefspage.ui:75
@@ -4975,12 +5043,14 @@ msgid ""
 "This configuration is only effective in case you choose to publish your "
 "information automatically."
 msgstr ""
+"اضبط الحد الأدنى للفاصل الزمني بالدقائق بين كل تحميل هنا. لا يكون هذا الضبط "
+"فعالاً إلا في حالة اختيارك نشر معلوماتك تلقائيًا."
 
 #. i18n: ectx: property (text), widget (QLabel, publishDelayLabel)
 #: ui/kogroupwareprefspage.ui:102
 #, kde-format
 msgid "Minimum time between uploads (in minutes):"
-msgstr ""
+msgstr "الحد الأدنى للوقت بين عمليات الرفع (بالدقائق):"
 
 #. i18n: ectx: property (whatsThis), widget (QLabel, TextLabel3)
 #. i18n: ectx: property (whatsThis), widget (QSpinBox, publishDays)
@@ -4991,7 +5061,7 @@ msgstr ""
 msgid ""
 "Configure the number of calendar days you wish to be published and available "
 "to others here."
-msgstr ""
+msgstr "اضبط عدد أيام التقويم التي ترغب في نشرها وإتاحتها للآخرين هنا."
 
 #. i18n: ectx: property (text), widget (QLabel, TextLabel3)
 #: ui/kogroupwareprefspage.ui:144
@@ -5003,7 +5073,7 @@ msgstr "انشر"
 #: ui/kogroupwareprefspage.ui:173
 #, kde-format
 msgid "days of free/busy information"
-msgstr ""
+msgstr "أيام معلومات متوفر/مشغول"
 
 #. i18n: ectx: property (title), widget (QGroupBox, ButtonGroup2)
 #. i18n: ectx: property (title), widget (QGroupBox, ButtonGroup2_2)
@@ -5021,6 +5091,8 @@ msgid ""
 "published here.\n"
 "Ask the server administrator for this information."
 msgstr ""
+"أدخل عنوان URL الخاص بالخادم الذي سينشر معلومات متوفر/مشغول عليه هنا.\n"
+"اطلب من مسؤول الخادم هذه المعلومات."
 
 #. i18n: ectx: property (whatsThis), widget (QLineEdit, publishPassword)
 #. i18n: ectx: property (whatsThis), widget (QLabel, textLabel2)
@@ -5030,7 +5102,7 @@ msgstr ""
 #: ui/kogroupwareprefspage.ui:416 ui/kogroupwareprefspage.ui:489
 #, kde-format
 msgid "Enter your groupware server login password here."
-msgstr ""
+msgstr "أدخل كلمة سر الولوج لخادم البرامج الجماعية هنا."
 
 #. i18n: ectx: property (text), widget (QLabel, textLabel2)
 #: ui/kogroupwareprefspage.ui:246
@@ -5052,6 +5124,11 @@ msgid ""
 "default your UID would be your email address on the Kolab2 server but it may "
 "also be different. In the last case enter your UID."
 msgstr ""
+"أدخل معلومات الولوج المتعلقة بحسابك على الخادم هنا.\n"
+"\n"
+"خصوصية خادم Kolab2: قمت بتسجيل معرفك الفريد (UID). بشكل مبدئي سيكون معرفك "
+"الفريد هو عنوان بريدك الإلكتروني على خادم Kolab2، ولكن قد يكون مختلفًا أيضًا. "
+"في الحالة الأخيرة، أدخل معرفك الفريد."
 
 #. i18n: ectx: property (text), widget (QLabel, TextLabel6)
 #: ui/kogroupwareprefspage.ui:261
@@ -5071,6 +5148,9 @@ msgid ""
 "For security reasons, it is not recommended to store your password in the "
 "configuration file."
 msgstr ""
+"أشّر على هذا المربع لجعل منظمك يتذكر كلمة سرك ويتخطى سؤالك في كل مرة يقوم "
+"فيها بتحميل معلومات متوفر/مشغول الخاصة بك، عن طريق تخزينها في ملف الضبط.\n"
+" لأسباب أمنية، لا يوصى بتخزين كلمة سرك في ملف الضبط"
 
 #. i18n: ectx: property (text), widget (QCheckBox, publishSavePassword)
 #: ui/kogroupwareprefspage.ui:290
@@ -5087,9 +5167,9 @@ msgstr "مسار الخادوم:"
 
 #. i18n: ectx: property (text), widget (QLabel, label)
 #: ui/kogroupwareprefspage.ui:311
-#, fuzzy, kde-format
+#, kde-format
 msgid "(No need if using Kolab server version 2)"
-msgstr "(لا حاجة لها إن كنت تستخدم الإصدارة 2 من خادوم Kolab)"
+msgstr "(لا حاجة في حالة استخدام خادم Kolab الإصدار 2)"
 
 #. i18n: ectx: attribute (title), widget (QWidget, tabRetrieve)
 #: ui/kogroupwareprefspage.ui:338
@@ -5115,6 +5195,8 @@ msgid ""
 "automatically. Note that you have to fill the correct server information to "
 "make this possible."
 msgstr ""
+"أشّر على هذا المربع لاسترداد معلومات متوفر/مشغول الخاصة بالأشخاص الآخرين "
+"تلقائيًا. لاحظ أنه يتعين عليك ملء معلومات الخادم الصحيحة لجعل هذا ممكنًا."
 
 #. i18n: ectx: property (text), widget (QCheckBox, retrieveEnable)
 #: ui/kogroupwareprefspage.ui:372
@@ -5127,7 +5209,7 @@ msgstr "اجلب معلومات مت&فرّغ/مشغول لبقية الأشخا
 #, kde-format
 msgid ""
 "Set this to retrieve user@domain.ifb instead of user.ifb from the server"
-msgstr ""
+msgstr "عيّن هذا لاسترداد user@domain.ifb بدلاً من user.ifb من الخادم"
 
 #. i18n: ectx: property (whatsThis), widget (QCheckBox, fullDomainRetrieval)
 #: ui/kogroupwareprefspage.ui:385
@@ -5138,6 +5220,10 @@ msgid ""
 "busy file in the format user.ifb (for example joe.ifb). Ask the server "
 "Administrator if you are not sure about how to configure this option."
 msgstr ""
+"حدد هذا المربع لتنزيل ملف \"متاح/مشغول\" بتنسيق \"user@domain.ifb\" (على "
+"سبيل المثال joe@company.com.ifb). وإلا، فسينزل ملف \"متاح/مشغول\" بتنسيق "
+"user.ifb (على سبيل المثال joe.ifb). اسأل مسؤول الخادم إذا لم تكن متأكدًا من "
+"كيفية ضبط هذا الخيار."
 
 #. i18n: ectx: property (text), widget (QCheckBox, fullDomainRetrieval)
 #: ui/kogroupwareprefspage.ui:388
@@ -5162,6 +5248,16 @@ msgid ""
 "\n"
 "https://kolab2.example.com/freebusy/user.xfb"
 msgstr ""
+"أدخل عنوان URL للخادم الذي يتم نشر معلومات \"متوفر/مشغول\" عليه هنا.\n"
+"اطلب من مسؤول الخادم هذه المعلومات.\n"
+"فيما يلي مثال لعنوان URL لخادم Kolab2:\n"
+"\n"
+"https://kolab2.example.com/freebusy/\n"
+"\n"
+"بدلاً من ذلك، يمكنك تحديد مسار كامل لمعلومات \"متوفر/مشغول\". على سبيل "
+"المثال: \n"
+"\n"
+"https://kolab2.example.com/freebusy/user.xfb"
 
 #. i18n: ectx: property (text), widget (QLabel, textLabel3)
 #: ui/kogroupwareprefspage.ui:479
@@ -5189,10 +5285,9 @@ msgstr "ابحث &عن:"
 
 #. i18n: ectx: property (toolTip), widget (QLineEdit, searchEdit)
 #: ui/searchdialog_base.ui:49
-#, fuzzy, kde-format
-#| msgid "Search pattern, use wildcards '*' and '?' as desired."
+#, kde-format
 msgid "Search pattern. Use wildcards “*” and “?” as desired."
-msgstr "نمط البحث، استخدم محارف البدل ”*“ و”?“ حسب الحاجة."
+msgstr "نمط البحث. استخدم الأحرف البدل \"*\" و\"؟\" حسب رغبتك."
 
 #. i18n: ectx: property (whatsThis), widget (QLineEdit, searchEdit)
 #: ui/searchdialog_base.ui:52
@@ -5204,6 +5299,11 @@ msgid ""
 "For example, the search pattern “meet*boss” matches “Meeting with boss”. The "
 "pattern “c?t” would match “cat”, “cot”, and so on."
 msgstr ""
+"افحص الحقول المختلفة لترى ما إذا كانت تحتوي على نمط البحث: النمط \"meet\" "
+"يطابق \"kick-off meeting\". الأحرف البدل \"*\"  مدعومة (تتطابق مع أي عدد من "
+"الأحرف) وعلامة \"?\" (تتطابق مع أي حرف واحد). على سبيل المثال، يطابق نمط "
+"البحث \"meet*boss\" \"Meeting with boss\". يطابق النمط \"c?t\" \"cat\" و\"cot"
+"\" وما إلى ذلك."
 
 #. i18n: ectx: property (text), widget (QLineEdit, searchEdit)
 #: ui/searchdialog_base.ui:55
@@ -5219,22 +5319,19 @@ msgstr "ابحث عن"
 
 #. i18n: ectx: property (toolTip), widget (QCheckBox, eventsCheck)
 #: ui/searchdialog_base.ui:73
-#, fuzzy, kde-format
-#| msgid "Search for Events with matching criteria"
+#, kde-format
 msgid "Search for events with matching criteria."
-msgstr "ابحث عن الأحداث المطابقة لمعيار البحث"
+msgstr "البحث عن الأحداث ذات المعايير المطابقة."
 
 #. i18n: ectx: property (whatsThis), widget (QCheckBox, eventsCheck)
 #: ui/searchdialog_base.ui:76
-#, fuzzy, kde-format
-#| msgid ""
-#| "Check this box if you want to search for Event items that match the "
-#| "search criteria."
+#, kde-format
 msgid ""
 "Check this box if you want to search for events that match the search "
 "pattern and have start dates or end dates in the given date range."
 msgstr ""
-"أشّر على هذا المربّع إن أردت البحث عن عناصر الأحداث المطابقة لمعايير البحث."
+"ضع علامة في هذا المربع إذا كنت تريد البحث عن الأحداث التي تطابق نمط البحث "
+"ولها تواريخ البدء أو تواريخ الانتهاء في نطاق التاريخ المحدد."
 
 #. i18n: ectx: property (text), widget (QCheckBox, eventsCheck)
 #: ui/searchdialog_base.ui:79
@@ -5244,22 +5341,19 @@ msgstr "الأ&حداث"
 
 #. i18n: ectx: property (toolTip), widget (QCheckBox, journalsCheck)
 #: ui/searchdialog_base.ui:89
-#, fuzzy, kde-format
-#| msgid "Search for Journals with matching criteria"
+#, kde-format
 msgid "Search for journal entries with matching criteria."
-msgstr "ابحث عن اليوميّات المطابقة لمعيار البحث"
+msgstr "ابحث عن قيود اليومية ذات المعايير المطابقة."
 
 #. i18n: ectx: property (whatsThis), widget (QCheckBox, journalsCheck)
 #: ui/searchdialog_base.ui:92
-#, fuzzy, kde-format
-#| msgid ""
-#| "Check this box if you want to search for Journal items that match the "
-#| "search criteria."
+#, kde-format
 msgid ""
 "Check this box if you want to search for journal entries that match the "
 "search pattern and have start dates in the given date range."
 msgstr ""
-"أشّر على هذا المربّع إن أردت البحث عن عناصر اليوميّات المطابقة لمعايير البحث."
+"أشّر على هذا المربع إذا كنت تريد البحث عن إدخالات دفتر اليومية التي تطابق نمط "
+"البحث ولها تواريخ بدء في نطاق التاريخ المحدد."
 
 #. i18n: ectx: property (text), widget (QCheckBox, journalsCheck)
 #: ui/searchdialog_base.ui:95
@@ -5269,22 +5363,19 @@ msgstr "اليو&ميّات"
 
 #. i18n: ectx: property (toolTip), widget (QCheckBox, todosCheck)
 #: ui/searchdialog_base.ui:102
-#, fuzzy, kde-format
-#| msgid "Search for To-dos with matching criteria"
+#, kde-format
 msgid "Search for to-dos with matching criteria."
-msgstr "ابحث عن المهام المطابقة لمعيار البحث"
+msgstr "ابحث عن المهام ذات المعايير المطابقة."
 
 #. i18n: ectx: property (whatsThis), widget (QCheckBox, todosCheck)
 #: ui/searchdialog_base.ui:105
-#, fuzzy, kde-format
-#| msgid ""
-#| "Check this box if you want to search To-do items that match the search "
-#| "criteria."
+#, kde-format
 msgid ""
 "Check this box if you want to search for to-dos that match the search "
 "pattern and have due dates in the given date range."
 msgstr ""
-"أشّر على هذا المربّع إن أردت البحث عن عناصر المهام المطابقة لمعايير البحث."
+"أشّر على هذا المربع إذا كنت تريد البحث عن المهام التي تطابق نمط البحث ولها "
+"تواريخ استحقاق في نطاق التاريخ المحدد."
 
 #. i18n: ectx: property (text), widget (QCheckBox, todosCheck)
 #: ui/searchdialog_base.ui:108
@@ -5300,16 +5391,15 @@ msgstr "ابحث في"
 
 #. i18n: ectx: property (toolTip), widget (QCheckBox, categoryCheck)
 #: ui/searchdialog_base.ui:127
-#, fuzzy, kde-format
-#| msgid "Include item categories in your search"
+#, kde-format
 msgid "Include tags in your search."
-msgstr "ضمّن فئات العناصر في البحث"
+msgstr "ضمّن الوسوم في بحثك."
 
 #. i18n: ectx: property (whatsThis), widget (QCheckBox, categoryCheck)
 #: ui/searchdialog_base.ui:130
-#, fuzzy, kde-format
+#, kde-format
 msgid "Check this box if you want to match tags against your search pattern."
-msgstr "أشّر على هذا المربّع إن أردت مطابقة الفئات "
+msgstr "أشّر على هذا المربع إذا كنت تريد تضمين العلامات مع نمط بحثك."
 
 #. i18n: ectx: property (text), widget (QCheckBox, categoryCheck)
 #: ui/searchdialog_base.ui:133
@@ -5319,17 +5409,16 @@ msgstr "الو&سوم"
 
 #. i18n: ectx: property (toolTip), widget (QCheckBox, locationCheck)
 #: ui/searchdialog_base.ui:140
-#, fuzzy, kde-format
-#| msgid "Include item locations in your search"
+#, kde-format
 msgid "Include locations in your search."
-msgstr "ضمّن مواقع العناصر في البحث"
+msgstr "ضمّن المواقع في بحثك."
 
 #. i18n: ectx: property (whatsThis), widget (QCheckBox, locationCheck)
 #: ui/searchdialog_base.ui:143
-#, fuzzy, kde-format
+#, kde-format
 msgid ""
 "Check this box if you want to match locations against your search pattern."
-msgstr "أشّر على هذا المربّع إن أردت مطابقة الفئات "
+msgstr "أشّر على هذا المربع إذا كنت تريد تضمين المواقع مع نمط بحثك."
 
 #. i18n: ectx: property (text), widget (QCheckBox, locationCheck)
 #: ui/searchdialog_base.ui:146
@@ -5339,17 +5428,16 @@ msgstr "المواقع"
 
 #. i18n: ectx: property (toolTip), widget (QCheckBox, descriptionCheck)
 #: ui/searchdialog_base.ui:153
-#, fuzzy, kde-format
-#| msgid "Include item descriptions in your search"
+#, kde-format
 msgid "Include descriptions in your search."
-msgstr "ضمّن أوصاف العناصر في البحث"
+msgstr "ضمّن الأوصاف في بحثك."
 
 #. i18n: ectx: property (whatsThis), widget (QCheckBox, descriptionCheck)
 #: ui/searchdialog_base.ui:156
-#, fuzzy, kde-format
+#, kde-format
 msgid ""
 "Check this box if you want to match descriptions against your search pattern."
-msgstr "أشّر على هذا المربّع إن أردت مطابقة الفئات "
+msgstr "أشّر على هذا المربع إذا كنت تريد تضمين الأوصاف مع نمط بحثك."
 
 #. i18n: ectx: property (text), widget (QCheckBox, descriptionCheck)
 #: ui/searchdialog_base.ui:159
@@ -5359,17 +5447,16 @@ msgstr "الأوصا&ف"
 
 #. i18n: ectx: property (toolTip), widget (QCheckBox, summaryCheck)
 #: ui/searchdialog_base.ui:166
-#, fuzzy, kde-format
-#| msgid "Include item summaries in your search"
+#, kde-format
 msgid "Include summaries in your search."
-msgstr "ضمّن ملخّصات العناصر في البحث"
+msgstr "ضمّن الملخّصات في بحثك."
 
 #. i18n: ectx: property (whatsThis), widget (QCheckBox, summaryCheck)
 #: ui/searchdialog_base.ui:169
-#, fuzzy, kde-format
+#, kde-format
 msgid ""
 "Check this box if you want to match summaries against your search pattern."
-msgstr "أشّر على هذا المربّع إن أردت مطابقة الفئات "
+msgstr "أشّر على هذا المربع إذا كنت تريد تضمين الملخّصات مع نمط بحثك."
 
 #. i18n: ectx: property (text), widget (QCheckBox, summaryCheck)
 #: ui/searchdialog_base.ui:172
@@ -5379,17 +5466,16 @@ msgstr "المل&خّصات"
 
 #. i18n: ectx: property (toolTip), widget (QCheckBox, attendeeCheck)
 #: ui/searchdialog_base.ui:182
-#, fuzzy, kde-format
-#| msgid "Include item attendees in your search"
+#, kde-format
 msgid "Include attendees in your search."
-msgstr "ضمّن حاضري العناصر في البحث"
+msgstr "ضمّن الحضور في بحثك."
 
 #. i18n: ectx: property (whatsThis), widget (QCheckBox, attendeeCheck)
 #: ui/searchdialog_base.ui:185
-#, fuzzy, kde-format
+#, kde-format
 msgid ""
 "Check this box if you want to match attendees against your search pattern."
-msgstr "أشّر على هذا المربّع إن أردت مطابقة الفئات "
+msgstr "أشّر على هذا المربّع إن أردت تضمين الحضور في أنماط بحثك."
 
 #. i18n: ectx: property (text), widget (QCheckBox, attendeeCheck)
 #: ui/searchdialog_base.ui:188
@@ -5405,9 +5491,9 @@ msgstr "مدى التّاريخ"
 
 #. i18n: ectx: property (toolTip), widget (QCheckBox, dateRangeCheckbox)
 #: ui/searchdialog_base.ui:204
-#, fuzzy, kde-format
+#, kde-format
 msgid "When checked, the search will be limited to the specified date range."
-msgstr "ضمّن الأحدا&ث التي لها مجال تاريخ محدّد"
+msgstr "عند التحديد، سيقتصر البحث على نطاق التاريخ المحدد."
 
 #. i18n: ectx: property (whatsThis), widget (QCheckBox, dateRangeCheckbox)
 #: ui/searchdialog_base.ui:207
@@ -5416,12 +5502,14 @@ msgid ""
 "Check this box to search for events within a specified date range. If the "
 "box is unchecked, all events will be searched."
 msgstr ""
+"حدد هذا المربع للبحث عن الأحداث ضمن نطاق تاريخي محدد. إذا لم يحدد المربع، "
+"فسيتم البحث عن جميع الأحداث."
 
 #. i18n: ectx: property (text), widget (QCheckBox, dateRangeCheckbox)
 #: ui/searchdialog_base.ui:210
 #, kde-format
 msgid "Limit search to specified date range"
-msgstr ""
+msgstr "قصر البحث على نطاق التاريخ المحدد"
 
 #. i18n: ectx: property (text), widget (QLabel, startDateLabel)
 #: ui/searchdialog_base.ui:222
@@ -5431,15 +5519,15 @@ msgstr "م&ن:"
 
 #. i18n: ectx: property (toolTip), widget (KDateComboBox, startDate)
 #: ui/searchdialog_base.ui:241
-#, fuzzy, kde-format
+#, kde-format
 msgid "The starting date of the period to search."
-msgstr "يعيين تاريخ البداية لهذا الواجب"
+msgstr "تاريخ بداية الفترة المراد البحث فيها."
 
 #. i18n: ectx: property (whatsThis), widget (KDateComboBox, startDate)
 #: ui/searchdialog_base.ui:244
-#, fuzzy, kde-format
+#, kde-format
 msgid "Search for items in the time period starting at the date given here."
-msgstr "ابحث عن العناصر التي لها تاريخ بدء في ه"
+msgstr "ابحث عن العناصر في الفترة الزمنية بدءًا من التاريخ المذكور هنا."
 
 #. i18n: ectx: property (text), item, widget (KDateComboBox, startDate)
 #. i18n: ectx: property (text), item, widget (KDateComboBox, endDate)
@@ -5458,13 +5546,13 @@ msgstr "إ&لى:"
 #: ui/searchdialog_base.ui:279
 #, kde-format
 msgid "The ending date of the period to search."
-msgstr ""
+msgstr "تاريخ انتهاء الفترة المراد البحث فيها."
 
 #. i18n: ectx: property (whatsThis), widget (KDateComboBox, endDate)
 #: ui/searchdialog_base.ui:282
-#, fuzzy, kde-format
+#, kde-format
 msgid "Search for items in the time period ending at the date given here."
-msgstr "ابحث عن العناصر التي لها تاريخ بدء في ه"
+msgstr "ابحث عن العناصر في الفترة الزمنية المنتهية في التاريخ المذكور هنا."
 
 #. i18n: ectx: property (toolTip), widget (QCheckBox, inclusiveCheck)
 #: ui/searchdialog_base.ui:296
@@ -5473,6 +5561,8 @@ msgid ""
 "Display events only if their start date and end date are both in the date "
 "range specified."
 msgstr ""
+"اعرض الأحداث فقط إذا كان تاريخ البدء وتاريخ الانتهاء كلاهما في نطاق التاريخ "
+"المحدد."
 
 #. i18n: ectx: property (whatsThis), widget (QCheckBox, inclusiveCheck)
 #: ui/searchdialog_base.ui:299
@@ -5483,12 +5573,15 @@ msgid ""
 "after it, or end during the date range but start before it, will be excluded "
 "from the search results."
 msgstr ""
+"حدد هذا المربع إذا كنت تريد فقط العثور على الأحداث التي تحدث بالكامل ضمن "
+"نطاق التاريخ المحدد. ستستبعد الأحداث التي تبدأ خلال نطاق التاريخ ولكنها "
+"تنتهي بعده، أو تنتهي خلال نطاق التاريخ ولكنها تبدأ قبله، من نتائج البحث."
 
 #. i18n: ectx: property (text), widget (QCheckBox, inclusiveCheck)
 #: ui/searchdialog_base.ui:302
-#, fuzzy, kde-format
+#, kde-format
 msgid "Exclude e&vents that extend outside the specified date range"
-msgstr "ضمّن الأحدا&ث التي لها مجال تاريخ محدّد"
+msgstr "ا&ستبعد الأحداث التي تمتد خارج نطاق التاريخ المحدد"
 
 #. i18n: ectx: property (toolTip), widget (QCheckBox, includeUndatedTodos)
 #: ui/searchdialog_base.ui:309
@@ -5497,6 +5590,8 @@ msgid ""
 "Include to-dos that have a start date, due date,  or completion date in the "
 "date range specified, or have neither a start date nor an end date."
 msgstr ""
+"ضمّن المهام التي لها تاريخ بدء أو تاريخ استحقاق أو تاريخ اكتمال ضمن نطاق "
+"التاريخ المحدد، أو التي ليس لها تاريخ بدء ولا تاريخ انتهاء."
 
 #. i18n: ectx: property (whatsThis), widget (QCheckBox, includeUndatedTodos)
 #: ui/searchdialog_base.ui:312
@@ -5507,12 +5602,15 @@ msgid ""
 "nor an end date.  If the box is unchecked, only to-dos that have a due date "
 "in the date range will be displayed."
 msgstr ""
+"حدد هذا المربع للبحث عن المهام التي لها تاريخ بدء أو تاريخ استحقاق أو تاريخ "
+"اكتمال في نطاق التاريخ المحدد، أو التي ليس لها تاريخ بدء أو تاريخ انتهاء. "
+"إذا لم تحدد المربع، فستعرض المهام التي لها تاريخ استحقاق في نطاق التاريخ فقط."
 
 #. i18n: ectx: property (text), widget (QCheckBox, includeUndatedTodos)
 #: ui/searchdialog_base.ui:315
-#, fuzzy, kde-format
+#, kde-format
 msgid "Include all to-dos &within the specified date range"
-msgstr "ضمّن الأحدا&ث التي لها مجال تاريخ محدّد"
+msgstr "&ضمن جميع المهام التي يجب إنجازها ضمن نطاق التاريخ المحدد"
 
 #. i18n: ectx: property (text), widget (QPushButton, mDayBtn)
 #: views/collectionview/quickview.ui:34
@@ -5565,7 +5663,7 @@ msgstr "اضبط عرض جنبًا إلى جنب"
 #: views/multiagendaview/multiagendaviewconfigwidget.ui:17
 #, kde-format
 msgid "Show one calendar per agenda column"
-msgstr ""
+msgstr "اعرض تقويم واحد لكل عمود جدول أعمال"
 
 #. i18n: ectx: property (text), widget (QRadioButton, useCustomRB)
 #: views/multiagendaview/multiagendaviewconfigwidget.ui:27
@@ -5612,8 +5710,7 @@ msgid ""
 msgstr "انقر هنا للانتقال وعرض الأسبوع رقم %1 من السنة المعروضة حاليًا."
 
 #: widgets/kdatenavigator.cpp:222
-#, fuzzy, kde-format
-#| msgid "%1"
+#, kde-format
 msgctxt "@info:tooltip"
 msgid "%1"
 msgstr "%1"
@@ -5682,50 +5779,50 @@ msgstr "الأيقونات لاستخدامها"
 #: widgets/navigatorbar.cpp:31
 #, kde-format
 msgid "Scroll backward to the previous year"
-msgstr ""
+msgstr "مرر للخلف إلى العام السابق"
 
 #: widgets/navigatorbar.cpp:32
 #, kde-format
 msgid ""
 "Click this button to scroll the display to the same approximate day of the "
 "previous year"
-msgstr ""
+msgstr "انقر فوق هذا الزر لتمرير العرض إلى نفس اليوم التقريبي من العام السابق"
 
 #: widgets/navigatorbar.cpp:36
 #, kde-format
 msgid "Scroll backward to the previous month"
-msgstr ""
+msgstr "مرر للخلف إلى الشهر السابق"
 
 #: widgets/navigatorbar.cpp:37
 #, kde-format
 msgid ""
 "Click this button to scroll the display to the same approximate date of the "
 "previous month"
-msgstr ""
+msgstr "انقر فوق هذا الزر لتمرير العرض إلى نفس التاريخ التقريبي للشهر السابق"
 
 #: widgets/navigatorbar.cpp:41
 #, kde-format
 msgid "Scroll forward to the next month"
-msgstr ""
+msgstr "مرر للأمام إلى الشهر التالي"
 
 #: widgets/navigatorbar.cpp:42
 #, kde-format
 msgid ""
 "Click this button to scroll the display to the same approximate date of the "
 "next month"
-msgstr ""
+msgstr "انقر فوق هذا الزر لتمرير العرض إلى نفس التاريخ التقريبي للشهر التالي"
 
 #: widgets/navigatorbar.cpp:46
 #, kde-format
 msgid "Scroll forward to the next year"
-msgstr ""
+msgstr "مرر للأمام إلى العام التالي"
 
 #: widgets/navigatorbar.cpp:47
 #, kde-format
 msgid ""
 "Click this button to scroll the display to the same approximate day of the "
 "next year"
-msgstr ""
+msgstr "انقر فوق هذا الزر لتمرير العرض إلى نفس اليوم التقريبي من العام التالي"
 
 #: widgets/navigatorbar.cpp:54
 #, kde-format
