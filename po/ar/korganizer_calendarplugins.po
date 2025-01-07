@@ -5,13 +5,13 @@
 # Munzir Taha <munzir@kacst.edu.sa>, 2004.
 # محمد سعد  Mohamed SAAD <metehyi@free.fr>, 2006.
 # Youssef Chahibi <chahibi@gmail.com>, 2007.
-# SPDX-FileCopyrightText: 2022, 2024 Zayed Al-Saidi <zayed.alsaidi@gmail.com>
+# SPDX-FileCopyrightText: 2022, 2024, 2025 Zayed Al-Saidi <zayed.alsaidi@gmail.com>
 msgid ""
 msgstr ""
 "Project-Id-Version: korganizer\n"
 "Report-Msgid-Bugs-To: https://bugs.kde.org\n"
 "POT-Creation-Date: 2024-07-30 00:42+0000\n"
-"PO-Revision-Date: 2024-05-16 13:31+0400\n"
+"PO-Revision-Date: 2025-01-06 20:37+0400\n"
 "Last-Translator: Zayed Al-Saidi <zayed.alsaidi@gmail.com>\n"
 "Language-Team: ar\n"
 "Language: ar\n"
@@ -20,6 +20,7 @@ msgstr ""
 "Content-Transfer-Encoding: 8bit\n"
 "Plural-Forms: nplurals=6; plural=n==0 ? 0 : n==1 ? 1 : n==2 ? 2 : n%100>=3 "
 "&& n%100<=10 ? 3 : n%100>=11 && n%100<=99 ? 4 : 5;\n"
+"X-Generator: Lokalize 23.08.5\n"
 
 #: datenums/configdialog.cpp:28
 #, kde-format
@@ -33,25 +34,22 @@ msgid "Show Date Number"
 msgstr "أعرض رقم التاريخ"
 
 #: datenums/configdialog.cpp:48
-#, fuzzy, kde-format
-#| msgid "Show day number"
+#, kde-format
 msgctxt "@option:radio"
 msgid "Show day number"
-msgstr "أعرض رقم اليوم"
+msgstr "اعرض رقم اليوم"
 
 #: datenums/configdialog.cpp:51
-#, fuzzy, kde-format
-#| msgid "Show days to end of year"
+#, kde-format
 msgctxt "@option:radio"
 msgid "Show days to end of year"
-msgstr "أعرض الأيام إلى نهاية السنة"
+msgstr "اعرض الأيام إلى نهاية السنة"
 
 #: datenums/configdialog.cpp:54
-#, fuzzy, kde-format
-#| msgid "Show both"
+#, kde-format
 msgctxt "@option:radio"
 msgid "Show both"
-msgstr "أعرض الإثنين"
+msgstr "اعرض الإثنين"
 
 #: datenums/datenums.cpp:36
 #, kde-format
@@ -181,17 +179,17 @@ msgstr "إستعمل الأعياد الإسرائيلية"
 #: hebrew/configdialog.cpp:46
 #, kde-format
 msgid "Show weekly parsha"
-msgstr "إظهار parsha الأسبوعيّ"
+msgstr "اعرض البارشا الأسبوعية"
 
 #: hebrew/configdialog.cpp:50
 #, kde-format
 msgid "Show day of Omer"
-msgstr "إظهار يوم Omer"
+msgstr "اعرض يوم عمر"
 
 #: hebrew/configdialog.cpp:54
 #, kde-format
 msgid "Show Chol HaMoed"
-msgstr "إظهار Chol HaMoed"
+msgstr "أظهر تشول هامويد"
 
 #: hebrew/hebrew.cpp:60
 #, kde-format
@@ -218,27 +216,27 @@ msgctxt ""
 "different spellings in your language; otherwise, just translate the sound to "
 "your characters."
 msgid "Sh. HaHodesh"
-msgstr "Sh. HaHodesh"
+msgstr "ش. هاخودش"
 
 #: hebrew/holiday.cpp:83
 #, kde-format
 msgid "Erev Pesach"
-msgstr "Erev Pesach"
+msgstr "إريف بيساك"
 
 #: hebrew/holiday.cpp:94
 #, kde-format
 msgid "Sh. HaGadol"
-msgstr "Sh. HaGadol"
+msgstr "ش. هاجادول"
 
 #: hebrew/holiday.cpp:102
 #, kde-format
 msgid "Pesach"
-msgstr "Pesach"
+msgstr "عيد الفصح"
 
 #: hebrew/holiday.cpp:113 hebrew/holiday.cpp:307
 #, kde-format
 msgid "Chol Hamoed"
-msgstr "Chol Hamoed"
+msgstr "شول حمود"
 
 #: hebrew/holiday.cpp:124 hebrew/holiday.cpp:129 hebrew/holiday.cpp:138
 #, kde-format
@@ -248,7 +246,7 @@ msgstr "ذكرى الكارثة والبطولة"
 #: hebrew/holiday.cpp:164 hebrew/holiday.cpp:171 hebrew/holiday.cpp:182
 #, kde-format
 msgid "Yom HaAtzmaut"
-msgstr "Yom HaAtzmaut"
+msgstr "يوم عتزماوت"
 
 #: hebrew/holiday.cpp:166 hebrew/holiday.cpp:180
 #, kde-format
@@ -258,7 +256,7 @@ msgstr "يوم الذكرى"
 #: hebrew/holiday.cpp:190
 #, kde-format
 msgid "Yom Yerushalayim"
-msgstr "Yom Yerushalayim"
+msgstr "يوم أورشليم"
 
 #: hebrew/holiday.cpp:194
 #, kde-format
@@ -268,7 +266,7 @@ msgstr "لاك بعومر"
 #: hebrew/holiday.cpp:220
 #, kde-format
 msgid "Erev Shavuot"
-msgstr "Erev Shavuot"
+msgstr "ايريف شافوت"
 
 #: hebrew/holiday.cpp:225
 #, kde-format
@@ -278,17 +276,17 @@ msgstr "عيد الأسابيع"
 #: hebrew/holiday.cpp:234
 #, kde-format
 msgid "Tzom Tammuz"
-msgstr "Tzom Tammuz"
+msgstr "تزوم تموز"
 
 #: hebrew/holiday.cpp:242
 #, kde-format
 msgid "Sh. Hazon"
-msgstr "Sh. Hazon"
+msgstr "ش. حزون"
 
 #: hebrew/holiday.cpp:244
 #, kde-format
 msgid "Sh. Nahamu"
-msgstr "Sh. Nahamu"
+msgstr "ش. نحمو"
 
 #: hebrew/holiday.cpp:248
 #, kde-format
@@ -298,32 +296,32 @@ msgstr "ذكرى خراب الهيكل"
 #: hebrew/holiday.cpp:254
 #, kde-format
 msgid "S'lichot"
-msgstr "S'lichot"
+msgstr "سليشوت"
 
 #: hebrew/holiday.cpp:256
 #, kde-format
 msgid "Erev R.H."
-msgstr "Erev R.H."
+msgstr "إيريف ر.ه."
 
 #: hebrew/holiday.cpp:264
 #, kde-format
 msgid "Rosh Hashana"
-msgstr "Rosh Hashana"
+msgstr "روش هاشانا"
 
 #: hebrew/holiday.cpp:268 hebrew/holiday.cpp:283
 #, kde-format
 msgid "Sh. Shuvah"
-msgstr "Sh. Shuvah"
+msgstr "ش. شوفاه"
 
 #: hebrew/holiday.cpp:270 hebrew/holiday.cpp:275
 #, kde-format
 msgid "Tzom Gedalia"
-msgstr "Tzom Gedalia"
+msgstr "تزوم جداليا"
 
 #: hebrew/holiday.cpp:287
 #, kde-format
 msgid "Erev Y.K."
-msgstr "Erev Y.K."
+msgstr "إريف ي.ك."
 
 #: hebrew/holiday.cpp:290
 #, kde-format
@@ -333,7 +331,7 @@ msgstr "يوم الغفران"
 #: hebrew/holiday.cpp:293
 #, kde-format
 msgid "Erev Sukkot"
-msgstr "Erev Sukkot"
+msgstr "إيريف سوكوت"
 
 #: hebrew/holiday.cpp:298
 #, kde-format
@@ -343,68 +341,68 @@ msgstr "عيد العرش"
 #: hebrew/holiday.cpp:311
 #, kde-format
 msgid "Hoshana Rabah"
-msgstr "Hoshana Rabah"
+msgstr "هوشانا رباح"
 
 #: hebrew/holiday.cpp:314
 #, kde-format
 msgid "Shmini Atzeret"
-msgstr "Shmini Atzeret"
+msgstr "شميني عتزيرت"
 
 #: hebrew/holiday.cpp:318
 #, kde-format
 msgid "Simchat Torah"
-msgstr "Simchat Torah"
+msgstr "سمحات التوراة"
 
 #: hebrew/holiday.cpp:329
 #, kde-format
 msgid "Erev Hanukah"
-msgstr "Erev Hanukah"
+msgstr "إيريف حانوكا"
 
 #: hebrew/holiday.cpp:331 hebrew/holiday.cpp:339
 #, kde-format
 msgid "Hanukah"
-msgstr "Hanukah"
+msgstr "حانوكا"
 
 #: hebrew/holiday.cpp:342
 #, kde-format
 msgid "Tzom Tevet"
-msgstr "Tzom Tevet"
+msgstr "تزوم تيفيت"
 
 #: hebrew/holiday.cpp:352 hebrew/holiday.cpp:361 hebrew/holiday.cpp:366
 #: hebrew/holiday.cpp:372
 #, kde-format
 msgid "Sh. Shirah"
-msgstr "Sh. Shirah"
+msgstr "ش. شيرا"
 
 #: hebrew/holiday.cpp:368
 #, kde-format
 msgid "Tu B'Shvat"
-msgstr "Tu B'Shvat"
+msgstr "طو بشفاط"
 
 #: hebrew/holiday.cpp:383 hebrew/holiday.cpp:395 hebrew/holiday.cpp:403
 #, kde-format
 msgid "Sh. Shekalim"
-msgstr "Sh. Shekalim"
+msgstr "ش.شيكاليم"
 
 #: hebrew/holiday.cpp:392
 #, kde-format
 msgid "Purim Katan"
-msgstr "Purim Katan"
+msgstr "بوريم كاتان"
 
 #: hebrew/holiday.cpp:411 hebrew/holiday.cpp:431
 #, kde-format
 msgid "Ta'anit Ester"
-msgstr "Ta'anit Ester"
+msgstr "تعنيت استر"
 
 #: hebrew/holiday.cpp:420 hebrew/holiday.cpp:425
 #, kde-format
 msgid "Sh. Zachor"
-msgstr "Sh. Zachor"
+msgstr "ش. زاخر"
 
 #: hebrew/holiday.cpp:427
 #, kde-format
 msgid "Erev Purim"
-msgstr "Erev Purim"
+msgstr "إيريف بوريم"
 
 #: hebrew/holiday.cpp:435
 #, kde-format
@@ -414,22 +412,22 @@ msgstr "عيد الفور"
 #: hebrew/holiday.cpp:439 hebrew/holiday.cpp:444
 #, kde-format
 msgid "Shushan Purim"
-msgstr "Shushan Purim"
+msgstr "شوشان بوريم"
 
 #: hebrew/holiday.cpp:455
 #, kde-format
 msgid "Sh. Parah"
-msgstr "Sh. Parah"
+msgstr "ش. باراه"
 
 #: hebrew/holiday.cpp:465
 #, kde-format
 msgid "Sh. HaHodesh"
-msgstr "Sh. HaHodesh"
+msgstr "ش. هاخودش"
 
 #: hebrew/holiday.cpp:481
 #, kde-format
 msgid " Omer"
-msgstr " Omer"
+msgstr " عمر"
 
 #: hebrew/parsha.cpp:28
 #, kde-format
@@ -438,252 +436,252 @@ msgctxt ""
 "different spellings in your language; otherwise, just translate the sound to "
 "your characters"
 msgid "Bereshit"
-msgstr "Bereshit"
+msgstr "بيريشيت"
 
 #: hebrew/parsha.cpp:29
 #, kde-format
 msgid "Noach"
-msgstr "Noach"
+msgstr "نوح"
 
 #: hebrew/parsha.cpp:29
 #, kde-format
 msgid "Lech L'cha"
-msgstr "Lech L'cha"
+msgstr "ليتش لتشا"
 
 #: hebrew/parsha.cpp:29
 #, kde-format
 msgid "Vayera"
-msgstr "Vayera"
+msgstr "فايرا"
 
 #: hebrew/parsha.cpp:29
 #, kde-format
 msgid "Chaye Sarah"
-msgstr "Chaye Sarah"
+msgstr "تشاي سارة"
 
 #: hebrew/parsha.cpp:29
 #, kde-format
 msgid "Toldot"
-msgstr "Toldot"
+msgstr "تولدوت"
 
 #: hebrew/parsha.cpp:29
 #, kde-format
 msgid "Vayetze"
-msgstr "Vayetze"
+msgstr "فايتز"
 
 #: hebrew/parsha.cpp:29
 #, kde-format
 msgid "Vayishlach"
-msgstr "Vayishlach"
+msgstr "فايشلاخ"
 
 #: hebrew/parsha.cpp:30
 #, kde-format
 msgid "Vayeshev"
-msgstr "Vayeshev"
+msgstr "فايشيف"
 
 #: hebrew/parsha.cpp:30
 #, kde-format
 msgid "Miketz"
-msgstr "Miketz"
+msgstr "ميكيتز"
 
 #: hebrew/parsha.cpp:30
 #, kde-format
 msgid "Vayigash"
-msgstr "Vayigash"
+msgstr "فايجاش"
 
 #: hebrew/parsha.cpp:30
 #, kde-format
 msgid "Vayechi"
-msgstr "Vayechi"
+msgstr "فايتشي"
 
 #: hebrew/parsha.cpp:30
 #, kde-format
 msgid "Shemot"
-msgstr "Shemot"
+msgstr "شيموت"
 
 #: hebrew/parsha.cpp:30
 #, kde-format
 msgid "Vaera"
-msgstr "Vaera"
+msgstr "فيرا"
 
 #: hebrew/parsha.cpp:30
 #, kde-format
 msgid "Bo"
-msgstr "Bo"
+msgstr "بو"
 
 #: hebrew/parsha.cpp:31
 #, kde-format
 msgid "Beshalach"
-msgstr "Beshalach"
+msgstr "بشالخ"
 
 #: hebrew/parsha.cpp:31
 #, kde-format
 msgid "Yitro"
-msgstr "Yitro"
+msgstr "يترو"
 
 #: hebrew/parsha.cpp:31
 #, kde-format
 msgid "Mishpatim"
-msgstr "Mishpatim"
+msgstr "مشباتيم"
 
 #: hebrew/parsha.cpp:31
 #, kde-format
 msgid "Terumah"
-msgstr "Terumah"
+msgstr "تروماه"
 
 #: hebrew/parsha.cpp:31
 #, kde-format
 msgid "Tetzaveh"
-msgstr "Tetzaveh"
+msgstr "تتسافيه"
 
 #: hebrew/parsha.cpp:31
 #, kde-format
 msgid "Ki Tisa"
-msgstr "Ki Tisa"
+msgstr "كي تيسا"
 
 #: hebrew/parsha.cpp:31
 #, kde-format
 msgid "Vayakhel"
-msgstr "Vayakhel"
+msgstr "فاياخيل"
 
 #: hebrew/parsha.cpp:32
 #, kde-format
 msgid "Pekudei"
-msgstr "Pekudei"
+msgstr "بيكودي"
 
 #: hebrew/parsha.cpp:32
 #, kde-format
 msgid "Vayikra"
-msgstr "Vayikra"
+msgstr "فاييكرا"
 
 #: hebrew/parsha.cpp:32
 #, kde-format
 msgid "Tzav"
-msgstr "Tzav"
+msgstr "تساف"
 
 #: hebrew/parsha.cpp:32
 #, kde-format
 msgid "Shemini"
-msgstr "Shemini"
+msgstr "شيميني"
 
 #: hebrew/parsha.cpp:32
 #, kde-format
 msgid "Tazria"
-msgstr "Tazria"
+msgstr "تازريا"
 
 #: hebrew/parsha.cpp:32
 #, kde-format
 msgid "Metzora"
-msgstr "Metzora"
+msgstr "ميتزورا"
 
 #: hebrew/parsha.cpp:32
 #, kde-format
 msgid "Acharei Mot"
-msgstr "Acharei Mot"
+msgstr "أشاري موت"
 
 #: hebrew/parsha.cpp:33
 #, kde-format
 msgid "Kedoshim"
-msgstr "Kedoshim"
+msgstr "قدوشيم"
 
 #: hebrew/parsha.cpp:33
 #, kde-format
 msgid "Emor"
-msgstr "Emor"
+msgstr "ايمور"
 
 #: hebrew/parsha.cpp:33
 #, kde-format
 msgid "Behar"
-msgstr "Behar"
+msgstr "بيهار"
 
 #: hebrew/parsha.cpp:33
 #, kde-format
 msgid "Bechukotai"
-msgstr "Bechukotai"
+msgstr "بيتشوكوتاي"
 
 #: hebrew/parsha.cpp:33
 #, kde-format
 msgid "Bemidbar"
-msgstr "Bemidbar"
+msgstr "بيميدبار"
 
 #: hebrew/parsha.cpp:33
 #, kde-format
 msgid "Naso"
-msgstr "Naso"
+msgstr "ناسو"
 
 #: hebrew/parsha.cpp:33
 #, kde-format
 msgid "Behaalotcha"
-msgstr "Behaalotcha"
+msgstr "بهاالوتشا"
 
 #: hebrew/parsha.cpp:34
 #, kde-format
 msgid "Shelach"
-msgstr "Shelach"
+msgstr "شِلْخ"
 
 #: hebrew/parsha.cpp:34
 #, kde-format
 msgid "Korach"
-msgstr "Korach"
+msgstr "كوراتش"
 
 #: hebrew/parsha.cpp:34
 #, kde-format
 msgid "Chukat"
-msgstr "Chukat"
+msgstr "تشوكات"
 
 #: hebrew/parsha.cpp:34
 #, kde-format
 msgid "Balak"
-msgstr "Balak"
+msgstr "بالاك"
 
 #: hebrew/parsha.cpp:34
 #, kde-format
 msgid "Pinchas"
-msgstr "Pinchas"
+msgstr "فينحاس"
 
 #: hebrew/parsha.cpp:34
 #, kde-format
 msgid "Matot"
-msgstr "Matot"
+msgstr "ماتوت"
 
 #: hebrew/parsha.cpp:34
 #, kde-format
 msgid "Masei"
-msgstr "Masei"
+msgstr "ماسي"
 
 #: hebrew/parsha.cpp:35
 #, kde-format
 msgid "Devarim"
-msgstr "Devarim"
+msgstr "ديفاريم"
 
 #: hebrew/parsha.cpp:35
 #, kde-format
 msgid "Vaetchanan"
-msgstr "Vaetchanan"
+msgstr "فايتشانان"
 
 #: hebrew/parsha.cpp:35
 #, kde-format
 msgid "Ekev"
-msgstr "Ekev"
+msgstr "إيكيف"
 
 #: hebrew/parsha.cpp:35
 #, kde-format
 msgid "Reeh"
-msgstr "Reeh"
+msgstr "ريح"
 
 #: hebrew/parsha.cpp:35
 #, kde-format
 msgid "Shoftim"
-msgstr "Shoftim"
+msgstr "شوفتيم"
 
 #: hebrew/parsha.cpp:35
 #, kde-format
 msgid "Ki Tetze"
-msgstr "Ki Tetze"
+msgstr "كي تيتزي"
 
 #: hebrew/parsha.cpp:35
 #, kde-format
 msgid "Ki Tavo"
-msgstr "Ki Tavo"
+msgstr "كي تافو"
 
 #: hebrew/parsha.cpp:36
 #, kde-format
@@ -693,12 +691,12 @@ msgstr "نيتزافيم"
 #: hebrew/parsha.cpp:36
 #, kde-format
 msgid "Vayelech"
-msgstr "Vayelech"
+msgstr "فاييليتش"
 
 #: hebrew/parsha.cpp:36
 #, kde-format
 msgid "Haazinu"
-msgstr "Haazinu"
+msgstr "هازينو"
 
 #: lunarphases/lunarphases.cpp:61
 #, kde-format
@@ -723,8 +721,7 @@ msgid "Thumbnail Aspect Ratio Mode"
 msgstr "وضع النسبة الباعية للمصغرات"
 
 #: picoftheday/configdialog.cpp:46
-#, fuzzy, kde-format
-#| msgid "Ignore aspect ratio"
+#, kde-format
 msgctxt "@option:radio"
 msgid "Ignore aspect ratio"
 msgstr "تجاهل النسبة الباعية"
@@ -736,8 +733,7 @@ msgid ""
 msgstr "سيتم تحجيم الصورة المصغرة بحرية. لن يحافظ على نسبة العرض إلى الارتفاع."
 
 #: picoftheday/configdialog.cpp:52
-#, fuzzy, kde-format
-#| msgid "Keep aspect ratio"
+#, kde-format
 msgctxt "@option:radio"
 msgid "Keep aspect ratio"
 msgstr "أبقِ النّسبة الباعيّة"
@@ -752,8 +748,7 @@ msgstr ""
 "الحفاظ على نسبة العرض إلى الارتفاع."
 
 #: picoftheday/configdialog.cpp:59
-#, fuzzy, kde-format
-#| msgid "Keep aspect ratio by expanding"
+#, kde-format
 msgctxt "@option:radio"
 msgid "Keep aspect ratio by expanding"
 msgstr "أبقِ النّسبة الباعيّة بواسطة التمديد"
