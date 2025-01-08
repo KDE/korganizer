@@ -1,6 +1,7 @@
 {
     "KPlugin": {
         "Description": "For each day this plugin shows its daynumber of the year at the top of the agenda view. For example, February 1 is day 32 of the year.",
+        "Description[ar]": "تعرض هذا المحلق في كل يوم رقمه اليومي للسنة على رأس عرض الأعمال. فعلى سبيل المثال، يوم 1 فبراير هو اليوم 32 من السنة.",
         "Description[bg]": "За всеки ден този плъгин показва номера на годината си в горната част на изгледа на дневния ред. Например 1 февруари е ден 32 от годината.",
         "Description[ca@valencia]": "Per a cada dia, este connector mostrarà el número de dia de l'any al capdamunt de la vista d'agenda. Per exemple, l'1 de febrer serà el dia 32 de l'any.",
         "Description[ca]": "Per a cada dia, aquest connector mostrarà el número de dia de l'any al capdamunt de la vista d'agenda. Per exemple, l'1 de febrer serà el dia 32 de l'any.",
@@ -30,6 +31,7 @@
         "Description[zh_TW]": "這個外掛程式會為每一天在行程檢視上方顯示它在一年當中是第幾天。舉例來說，二月一號是年中的第 32 天。",
         "Name": "Date Numbers Plugin for Calendars",
         "Name[af]": "Dag nommer inprop module vir kalenders",
+        "Name[ar]": "ملحق أرقام التاريخ للتقويم",
         "Name[bg]": "Приставка за номера на дати за календари",
         "Name[bs]": "Dodaci brojeva datuma za Kalendar",
         "Name[ca@valencia]": "Connector de números de data per als calendaris",

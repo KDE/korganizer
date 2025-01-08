@@ -1,6 +1,7 @@
 {
     "KPlugin": {
         "Description": "Shows all dates in KOrganizer also in the Jewish calendar system.",
+        "Description[ar]": "يعرض كلّ التّواريخ في «منظّمك» بنظام التّقويم اليهوديّ.",
         "Description[bg]": "Показва всички дати в KOrganizer също и в еврейската календарна система.",
         "Description[ca@valencia]": "Mostra totes les dates en KOrganizer també en el sistema del calendari jueu.",
         "Description[ca]": "Mostra totes les dates en el KOrganizer també en el sistema del calendari jueu.",
@@ -30,6 +31,7 @@
         "Description[zh_TW]": "在 KOrganizer 也以猶太曆法顯示所有日期。",
         "Name": "Jewish Calendar Plugin",
         "Name[af]": "Joodse kalender inprop module",
+        "Name[ar]": "ملحق التّقويم اليهوديّ",
         "Name[bg]": "Приставка за юдейски календар",
         "Name[br]": "Lugent deiziadur yudev",
         "Name[bs]": "Dodatak za Jevrejski Kalendar",

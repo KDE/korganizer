@@ -1,6 +1,7 @@
 {
     "KPlugin": {
         "Description": "This plugin provides links to Wikipedia's 'This Day in History' pages",
+        "Description[ar]": "توفّر هذه الملحقة رابطًا إلى صفحات ”في مثل هذا اليوم“ من ويكيبيديا",
         "Description[bg]": "Този плъгин предоставя връзки към страниците „Този ​​ден в историята“ на Уикипедия",
         "Description[ca@valencia]": "Este connector proporciona els enllaços cap a les pàgines d'«Efemèrides» de la Viquipèdia",
         "Description[ca]": "Aquest connector proporciona els enllaços a les pàgines d'«Efemèrides» de la Viquipèdia",
@@ -29,6 +30,7 @@
         "Description[x-test]": "xxThis plugin provides links to Wikipedia's 'This Day in History' pagesxx",
         "Description[zh_TW]": "這個外掛程式提供到維基百科「歷史上的今天」頁面的連結",
         "Name": "Wikipedia 'This Day in History' Plugin",
+        "Name[ar]": "محلق ويكيبديا  'هذا اليوم في التاريخ'",
         "Name[bg]": "Приставка „Този ​​ден в историята“ на Уикипедия",
         "Name[bs]": "Wikipedia 'Ovaj Dan u Historiji' Dodatak",
         "Name[ca@valencia]": "Connector «Efemèrides» (Este dia en la història) de la Viquipèdia",
