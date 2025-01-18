@@ -34,6 +34,7 @@
   <name xml:lang="ka">KOrganizer</name>
   <name xml:lang="ko">KOrganizer</name>
   <name xml:lang="lt">KOrganizer</name>
+  <name xml:lang="lv">KOrganizer</name>
   <name xml:lang="nb">KOrganizer</name>
   <name xml:lang="nds">KOrganizer</name>
   <name xml:lang="nl">KOrganizer</name>
@@ -75,6 +76,7 @@
   <summary xml:lang="it">KOrganizer è un'applicazione per il calendario e la pianificazione</summary>
   <summary xml:lang="ka">KOrganizer-ი კალენდრის და განრიგის აპლიკაციაა</summary>
   <summary xml:lang="ko">KOrganizer는 캘린더와 일정 관리 앱입니다</summary>
+  <summary xml:lang="lv">„KOrganizer“ ir kalendāra un plānošanas programma</summary>
   <summary xml:lang="nl">KOrganizer is een agenda- en planningstoepassing</summary>
   <summary xml:lang="pl">KOrganizer jest aplikacją kalendarza i planowania</summary>
   <summary xml:lang="pt">O KOrganizer é uma aplicação com componentes de calendários e agendas</summary>
@@ -115,6 +117,7 @@
     <p xml:lang="it">KOrganizer è il componente calendario e di pianificazione di Kontact. Fornisce la gestione di eventi e attività, notifiche di avvisi, esportazione sul web, trasparenza della rete nella gestione dei dati, pianificazione di gruppo, importazione ed esportazione di file di calendario ed altro ancora. Può funzionare con vari servizi di calendario, inclusi NextCloud, Kolab, Google Calendar e altri. KOrganizer è totalmente personalizzabile in base alle tue necessità ed è parte integrante della suite Kontact, che mira ad essere una soluzione completa per l'organizzazione dei dati personali. KOrganizer supporta i due standard principali per salvare e scambiare dati di calendario, vCalendar ed iCalendar.</p>
     <p xml:lang="ka">KOrganizer Kontact-ის კალენდრისა და დაგეგმვის კომპონენტია. ის მოგაწვდით ამოცანებისა და მოვლენების მართვას, განგაშის გაფრთხილებებს, ვებზე გატანას, მონაცემების ქსელისთვის გამჭვრივალედ დამუშავებას, ჯგუფურ დაგეგმვას, კალენდრის ფაილების შეტანას და გამოტანას და სხვა. მას შეუძლია მრავალ კალენდრის სერვისებთან მუშაობა. როგორებიცაა NextCloud, Kolab, Google Calendar და სხვა. KOrganizer სრულად მორგებადია თქვენი საჭიროებებისთვის და Kontact-ის პროგრამული ნაკრების შეუცვლელი ნაწილია. KOrganizer-ს ორი გავრცელებული სტანდარტის მხარდაჭერა აქვს კალენდრის მონაცემების მიმოცვლისთვის, vCalendar და iCalender.</p>
     <p xml:lang="ko">KOrganizer는 Kontact의 달력 및 일정관리 구성 요소입니다. 이벤트 및 태스크 관리, 경보 알림, 웹 내보내기, 데이터의 네트워크 투명 처리, 그룹 예약, 일정 파일 가져오기 및 내보내기 등을 제공합니다. NextCloud, Kolab, Google 캘린더 등 다양한 캘린더 서비스와 협력할 수 있습니다. KOrganizer는 사용자의 필요에 맞게 완벽하게 사용자 정의할 수 있으며, 사용자의 개인 데이터를 정리하는 완벽한 솔루션을 목표로 하는 Kontact 제품군의 필수 요소입니다. KOrganizer는 vCalendar 및 iCalendar의 달력 데이터를 저장하고 교환하는 두 가지 주요 표준을 지원합니다.</p>
+    <p xml:lang="lv">„KOrganizer“ ir „Kontact“ kalendāra un plānošanas komponente. Šī programma ļauj pārvaldīt notikumus un uzdevumus, sniedz paziņojumus, nodrošina tīmekļa eksportu, tīklā caurskatāmu datu apstrādi, grupu plānošanu, kalendāra datņu importēšanu un eksportēšanu un citas iespējas. Tā spēj sadarboties ar daudziem kalendāru pakalpojumiem, piemēram, „NextCloud“, „Kolab“, „Google Calendar“ un citiem. „KOrganizer“ ir pilnībā pielāgojams jūsu vajadzībām un ir integrāla „Kontact“ svītas daļa. Programmas izstrādātāji „KOrganizer“ veido par pilnīgu risinājumu visu jūsu personas datu organizēšanai. „KOrganizer“ atbalsta divus plašā lietotos kalendāra datu saglabāšanas un apmaiņas standartus — „vCalendar“ un „iCalendar“.</p>
     <p xml:lang="nl">KOrganizer is de agenda- en planningcomponent van Kontact. Het biedt beheer van afspraken en taken, melding van herinneringen, naar het web exporteren, netwerktransparant behandelen van gegevens, planning van groepen, im- en exporteren van agendabestanden en meer. Het is in staat om samen te werken met een brede variëteit van agnederingsservices, inclusief NextCloud, Kolab, Google Calendar en anderen. KOrganizer is volledig aan uw behoeften aan te passen en is een integraal onderdeel van de Kontact-suite, die zich richt op een volledige oplossing voor het organiseren van uw persoonlijke gegevens. KOrganizer ondersteunt de twee dominante standaarden voor opslaan en uitwisselen van agendagegevens, vCalendar en iCalendar.</p>
     <p xml:lang="pl">KOrganizer jest składnikiem kalendarza i harmonogramu dla Kontact. Umożliwia zarządzanie wydarzeniami, zadaniami, powiadomieniami, eksportem do sieci, przejrzystą obsługą danych sieciowych, harmonogramem grup, importem i eksportem plików kalendarza i więcej. Współpracuje z wieloma usługami kalendarza, takimi jak NextCloud, Kolab, Kalendarz Google i inne. KOrganizera można w pełni dostosować do własnych potrzeb i jest częścią pakietu Kontact, którego celem jest stworzenie pełnego rozwiązania do zarządzania danymi osobistymi. KOrganizer obsługuje dwa dominujące standardy do przechowywania i wymieniania się się danymi kalendarza, vCalendar oraz iCalendar.</p>
     <p xml:lang="pt">O KOrganizer é o componente de calendários e agendas do Kontact. Oferece a gestão de eventos e tarefas, a notificação dos alarmes, exportação para a Web, tratamento dos dados de forma transparente na rede, agendamentos em grupo, importação e exportação de ficheiros de calendários, entre outros. É capaz de funcionar em conjunto com uma grande variedade de serviços de calendários, incluindo o NextCloud, o Kolab, o Google Calendar, entre outros. O KOrganizer é completamente personalizado de acordo com as suas necessidades e faz parte integral do pacote Kontact, pretendendo ser uma solução completa para organizar os seus dados pessoais. O KOrganizer suporta as duas normas dominantes para guardar e trocar os dados do calendário em vCalendar e iCalendar.</p>
@@ -156,6 +159,7 @@
     <p xml:lang="ka">თვისებები:</p>
     <p xml:lang="ko">기능:</p>
     <p xml:lang="lt">Ypatybės:</p>
+    <p xml:lang="lv">Iespējas:</p>
     <p xml:lang="nb">Egenskaper:</p>
     <p xml:lang="nds">Markmalen:</p>
     <p xml:lang="nl">Mogelijkheden:</p>
@@ -199,6 +203,7 @@
       <li xml:lang="it">Supporto per più calendari e elenchi di cose da fare</li>
       <li xml:lang="ka">მრავალი კალენდრისა და განრიგის სიების მხარდაჭერა</li>
       <li xml:lang="ko">일정 관리 및 할 일 목록 여러 개 지원</li>
+      <li xml:lang="lv">Atbalsts vairākiem kalendāriem un darāmo darbu sarakstiem</li>
       <li xml:lang="nl">Ondersteuning voor meerdere agenda's en takenlijsten</li>
       <li xml:lang="pl">Obsługa wielu kalendarzy i list zadań</li>
       <li xml:lang="pt">Suporte para diversos calendários e listas de itens por-fazer</li>
@@ -237,6 +242,7 @@
       <li xml:lang="it">Modello di memorizzazione</li>
       <li xml:lang="ka">საცავის მოდელი</li>
       <li xml:lang="ko">저장소 모델</li>
+      <li xml:lang="lv">Krātuves modelis</li>
       <li xml:lang="nl">Opslagmodel</li>
       <li xml:lang="pl">Model przechowalni</li>
       <li xml:lang="pt">Modelo de armazenamento</li>
@@ -275,6 +281,7 @@
       <li xml:lang="it">Annulla/ripeti</li>
       <li xml:lang="ka">გაუქმება/გამეორება</li>
       <li xml:lang="ko">실행 취소 및 재실행</li>
+      <li xml:lang="lv">Atsaukšana un atatsaukšana</li>
       <li xml:lang="nl">Ongedaan maken en opnieuw</li>
       <li xml:lang="pl">Cofanie i ponawianie</li>
       <li xml:lang="pt">Desfazer e Refazer operações</li>
@@ -313,6 +320,7 @@
       <li xml:lang="it">Integrazione delle cose da fare con la vista agenda</li>
       <li xml:lang="ka">განრიგის ინტეგრაცია დღის წესრიგის ხედთან</li>
       <li xml:lang="ko">일정 보기와 통합된 할 일 목록</li>
+      <li xml:lang="lv">Darāmo darbu integrācijas dienaskārtības skatā</li>
       <li xml:lang="nl">Taken integreren in agendaoverzicht</li>
       <li xml:lang="pl">Integracja zadań z widokiem rozkładu zajęć</li>
       <li xml:lang="pt">Integração de itens por-fazer com a agenda</li>
@@ -351,6 +359,7 @@
       <li xml:lang="it">Allegati per eventi e cose da fare</li>
       <li xml:lang="ka">ღონისძიებებზე და განრიგებზე მიბმული ფაილები</li>
       <li xml:lang="ko">할 일과 이벤트에 첨부 파일 지원</li>
+      <li xml:lang="lv">Pielikumi notikumiem un darāmajiem darbiem</li>
       <li xml:lang="nl">Aanhangsels voor activiteiten en taken</li>
       <li xml:lang="pl">Załączniki dla wydarzeń i zadań</li>
       <li xml:lang="pt">Anexos para os eventos e itens por-fazer</li>
@@ -388,6 +397,7 @@
       <li xml:lang="it">Voci rapide per cose da fare ed eventi</li>
       <li xml:lang="ka">განრიგებისა და მოვლენების სწრაფი შექმნა</li>
       <li xml:lang="ko">빠른 할 일과 이벤트 입력</li>
+      <li xml:lang="lv">Ātra darāmo darbu un notikumu ierakstu veidošana</li>
       <li xml:lang="nl">Snel invoeren van activiteiten en taken</li>
       <li xml:lang="pl">Wpisy szybkich zadań i wydarzeń</li>
       <li xml:lang="pt">Criação rápida de itens por-fazer e eventos</li>
@@ -426,6 +436,7 @@
       <li xml:lang="it">Supporto per la stampa</li>
       <li xml:lang="ka">ბეჭდვის მხარდაჭერა</li>
       <li xml:lang="ko">인쇄 지원</li>
+      <li xml:lang="lv">Drukāšanas atbalsts</li>
       <li xml:lang="nl">Ondersteuning voor afdrukken</li>
       <li xml:lang="pl">Obsługa wydruku</li>
       <li xml:lang="pt">Suporte para a impressão</li>
