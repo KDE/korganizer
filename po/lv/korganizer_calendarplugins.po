@@ -5,25 +5,25 @@
 # Maris Nartiss <maris.kde@gmail.com>, 2008.
 # Viesturs Zariņš <viesturs.zarins@algorego.com>, 2008.
 # Viesturs Zarins <viesturs.zarins@mii.lu.lv>, 2008, 2010.
+# SPDX-FileCopyrightText: 2025 Toms Trasuns <toms.trasuns@posteo.net>
 msgid ""
 msgstr ""
 "Project-Id-Version: korganizer\n"
 "Report-Msgid-Bugs-To: https://bugs.kde.org\n"
 "POT-Creation-Date: 2024-07-30 00:42+0000\n"
-"PO-Revision-Date: 2010-01-22 22:15+0200\n"
-"Last-Translator: Viesturs Zarins <viesturs.zarins@mii.lu.lv>\n"
-"Language-Team: Latvian <locale@laka.lv>\n"
+"PO-Revision-Date: 2025-01-16 16:56+0200\n"
+"Last-Translator: Toms Trasuns <toms.trasuns@posteo.net>\n"
+"Language-Team: Latvian <kde-i18n-doc@kde.org>\n"
 "Language: lv\n"
 "MIME-Version: 1.0\n"
 "Content-Type: text/plain; charset=UTF-8\n"
 "Content-Transfer-Encoding: 8bit\n"
-"X-Generator: Lokalize 1.0\n"
+"X-Generator: Lokalize 24.12.0\n"
 "Plural-Forms: nplurals=3; plural=(n%10==1 && n%100!=11 ? 0 : n != 0 ? 1 : "
 "2);\n"
 
 #: datenums/configdialog.cpp:28
-#, fuzzy, kde-format
-#| msgid "Configure Day Numbers"
+#, kde-format
 msgctxt "@title:window"
 msgid "Configure Day Numbers"
 msgstr "Konfigurēt dienas numurus"
@@ -34,22 +34,19 @@ msgid "Show Date Number"
 msgstr "Rādīt dienas numuru"
 
 #: datenums/configdialog.cpp:48
-#, fuzzy, kde-format
-#| msgid "Show day number"
+#, kde-format
 msgctxt "@option:radio"
 msgid "Show day number"
 msgstr "Rādīt dienas numuru"
 
 #: datenums/configdialog.cpp:51
-#, fuzzy, kde-format
-#| msgid "Show days to end of year"
+#, kde-format
 msgctxt "@option:radio"
 msgid "Show days to end of year"
 msgstr "Rādīt dienas līdz gada beigām"
 
 #: datenums/configdialog.cpp:54
-#, fuzzy, kde-format
-#| msgid "Show both"
+#, kde-format
 msgctxt "@option:radio"
 msgid "Show both"
 msgstr "Rādīt abus"
@@ -151,8 +148,7 @@ msgstr ""
 "%2"
 
 #: hebrew/configdialog.cpp:28
-#, fuzzy, kde-format
-#| msgid "Configure Holidays"
+#, kde-format
 msgctxt "@title:window"
 msgid "Configure Holidays"
 msgstr "Konfigurēt svētku dienas"
@@ -160,7 +156,7 @@ msgstr "Konfigurēt svētku dienas"
 #: hebrew/configdialog.cpp:42
 #, kde-format
 msgid "Use Israeli holidays"
-msgstr "Lietot Izraēļu svētku dienas"
+msgstr "Lietot izraēliešu svētku dienas"
 
 #: hebrew/configdialog.cpp:46
 #, kde-format
@@ -207,7 +203,7 @@ msgstr ""
 #: hebrew/holiday.cpp:83
 #, kde-format
 msgid "Erev Pesach"
-msgstr ""
+msgstr "Pesaha vakars"
 
 #: hebrew/holiday.cpp:94
 #, kde-format
@@ -217,23 +213,22 @@ msgstr ""
 #: hebrew/holiday.cpp:102
 #, kde-format
 msgid "Pesach"
-msgstr ""
+msgstr "Pesahs"
 
 #: hebrew/holiday.cpp:113 hebrew/holiday.cpp:307
-#, fuzzy, kde-format
-#| msgid "Show Chol HaMoed"
+#, kde-format
 msgid "Chol Hamoed"
-msgstr "Rādīt Chol HaMoed"
+msgstr ""
 
 #: hebrew/holiday.cpp:124 hebrew/holiday.cpp:129 hebrew/holiday.cpp:138
 #, kde-format
 msgid "Yom HaShoah"
-msgstr ""
+msgstr "Holokausta mocekļu un varoņu piemiņas diena"
 
 #: hebrew/holiday.cpp:164 hebrew/holiday.cpp:171 hebrew/holiday.cpp:182
 #, kde-format
 msgid "Yom HaAtzmaut"
-msgstr ""
+msgstr "Izraēlas neatkarības diena"
 
 #: hebrew/holiday.cpp:166 hebrew/holiday.cpp:180
 #, kde-format
@@ -243,12 +238,12 @@ msgstr ""
 #: hebrew/holiday.cpp:190
 #, kde-format
 msgid "Yom Yerushalayim"
-msgstr ""
+msgstr "Jeruzalemes diena"
 
 #: hebrew/holiday.cpp:194
 #, kde-format
 msgid "Lag BaOmer"
-msgstr ""
+msgstr "Lag B’Omer"
 
 #: hebrew/holiday.cpp:220
 #, kde-format
@@ -258,12 +253,12 @@ msgstr ""
 #: hebrew/holiday.cpp:225
 #, kde-format
 msgid "Shavuot"
-msgstr ""
+msgstr "Šavut"
 
 #: hebrew/holiday.cpp:234
 #, kde-format
 msgid "Tzom Tammuz"
-msgstr ""
+msgstr "Tammuza 17. diena"
 
 #: hebrew/holiday.cpp:242
 #, kde-format
@@ -288,12 +283,12 @@ msgstr ""
 #: hebrew/holiday.cpp:256
 #, kde-format
 msgid "Erev R.H."
-msgstr ""
+msgstr "Roš Hašana vakars"
 
 #: hebrew/holiday.cpp:264
 #, kde-format
 msgid "Rosh Hashana"
-msgstr ""
+msgstr "Roš Hašana"
 
 #: hebrew/holiday.cpp:268 hebrew/holiday.cpp:283
 #, kde-format
@@ -303,32 +298,32 @@ msgstr ""
 #: hebrew/holiday.cpp:270 hebrew/holiday.cpp:275
 #, kde-format
 msgid "Tzom Gedalia"
-msgstr ""
+msgstr "Gedaliah gavēnis"
 
 #: hebrew/holiday.cpp:287
 #, kde-format
 msgid "Erev Y.K."
-msgstr ""
+msgstr "Salīdzināšanas dienas vakars"
 
 #: hebrew/holiday.cpp:290
 #, kde-format
 msgid "Yom Kippur"
-msgstr ""
+msgstr "Salīdzināšanas diena"
 
 #: hebrew/holiday.cpp:293
 #, kde-format
 msgid "Erev Sukkot"
-msgstr ""
+msgstr "Sukota vakars"
 
 #: hebrew/holiday.cpp:298
 #, kde-format
 msgid "Sukkot"
-msgstr ""
+msgstr "Sukots"
 
 #: hebrew/holiday.cpp:311
 #, kde-format
 msgid "Hoshana Rabah"
-msgstr ""
+msgstr "Hošana Raba"
 
 #: hebrew/holiday.cpp:314
 #, kde-format
@@ -343,12 +338,12 @@ msgstr ""
 #: hebrew/holiday.cpp:329
 #, kde-format
 msgid "Erev Hanukah"
-msgstr ""
+msgstr "Hanuka vakars"
 
 #: hebrew/holiday.cpp:331 hebrew/holiday.cpp:339
 #, kde-format
 msgid "Hanukah"
-msgstr ""
+msgstr "Hanuka"
 
 #: hebrew/holiday.cpp:342
 #, kde-format
@@ -364,7 +359,7 @@ msgstr ""
 #: hebrew/holiday.cpp:368
 #, kde-format
 msgid "Tu B'Shvat"
-msgstr ""
+msgstr "Tu Bševat"
 
 #: hebrew/holiday.cpp:383 hebrew/holiday.cpp:395 hebrew/holiday.cpp:403
 #, kde-format
@@ -374,12 +369,12 @@ msgstr ""
 #: hebrew/holiday.cpp:392
 #, kde-format
 msgid "Purim Katan"
-msgstr ""
+msgstr "Otrais purims"
 
 #: hebrew/holiday.cpp:411 hebrew/holiday.cpp:431
 #, kde-format
 msgid "Ta'anit Ester"
-msgstr ""
+msgstr "Esteres gavēnis"
 
 #: hebrew/holiday.cpp:420 hebrew/holiday.cpp:425
 #, kde-format
@@ -389,12 +384,12 @@ msgstr ""
 #: hebrew/holiday.cpp:427
 #, kde-format
 msgid "Erev Purim"
-msgstr ""
+msgstr "Purima vakars"
 
 #: hebrew/holiday.cpp:435
 #, kde-format
 msgid "Purim"
-msgstr ""
+msgstr "Purims"
 
 #: hebrew/holiday.cpp:439 hebrew/holiday.cpp:444
 #, kde-format
@@ -417,14 +412,13 @@ msgid " Omer"
 msgstr ""
 
 #: hebrew/parsha.cpp:28
-#, fuzzy, kde-format
-#| msgid "&Refresh"
+#, kde-format
 msgctxt ""
 "These are weekly readings and do not have translations. They may have "
 "different spellings in your language; otherwise, just translate the sound to "
 "your characters"
 msgid "Bereshit"
-msgstr "&Atsvaidzināt"
+msgstr ""
 
 #: hebrew/parsha.cpp:29
 #, kde-format
@@ -693,10 +687,12 @@ msgid ""
 "Currently, the phase is computed for noon at UTC; therefore, you should "
 "expect variations by 1 day in either direction."
 msgstr ""
+"Šis spraudnis rāda mēness fāzi (jauns, augošs, dilstošs, pilns). Šobrīd šo "
+"fāzi aprēķina pusnaktij pēc UTC laika, tāpēc iespējams variācijas pa vienu "
+"dienu abos virzienos."
 
 #: picoftheday/configdialog.cpp:28
-#, fuzzy, kde-format
-#| msgid "Configure Picture of the Day"
+#, kde-format
 msgctxt "@title:window"
 msgid "Configure Picture of the Day"
 msgstr "Konfigurēt dienas attēlu"
@@ -707,8 +703,7 @@ msgid "Thumbnail Aspect Ratio Mode"
 msgstr "Sīktēla malu attiecības režīms"
 
 #: picoftheday/configdialog.cpp:46
-#, fuzzy, kde-format
-#| msgid "Ignore aspect ratio"
+#, kde-format
 msgctxt "@option:radio"
 msgid "Ignore aspect ratio"
 msgstr "Ignorēt malu attiecību"
@@ -754,7 +749,7 @@ msgstr ""
 #: picoftheday/element.cpp:209
 #, kde-format
 msgid "Wikipedia POTD: %1"
-msgstr ""
+msgstr "Vikipēdijas dienas bilde: %1"
 
 #: picoftheday/element.cpp:326
 #, kde-format
@@ -762,21 +757,19 @@ msgid "Picture Page"
 msgstr "Attēla lapa"
 
 #: picoftheday/element.cpp:326
-#, fuzzy, kde-format
-#| msgid "Loading…"
+#, kde-format
 msgid "Loading..."
 msgstr "Ielādē..."
 
 #: picoftheday/element.cpp:332
-#, fuzzy, kde-format
-#| msgid "<qt>Loading <i>Picture of the Day</i>…</qt>"
+#, kde-format
 msgid "<qt>Loading <i>Picture of the Day</i>...</qt>"
 msgstr "<qt>Ielādē <i>dienas attēlu</i>…</qt>"
 
 #: picoftheday/picoftheday.cpp:48
 #, kde-format
 msgid "<qt>This plugin provides the Wikipedia <i>Picture of the Day</i>.</qt>"
-msgstr "<qt>Šis spraudnis rāda Wikipēdijas <i>dienas attēlu</i>.</qt>"
+msgstr "<qt>Šis spraudnis rāda Vikipēdijas <i>dienas attēlu</i>.</qt>"
 
 #: thisdayinhistory/thisdayinhistory.cpp:29
 #, kde-format
@@ -790,17 +783,13 @@ msgstr "Šī diena vēsturē"
 
 #: thisdayinhistory/thisdayinhistory.cpp:39
 #: thisdayinhistory/thisdayinhistory.cpp:53
-#, fuzzy, kde-format
-#| msgctxt "Localized Wikipedia website"
-#| msgid "http://en.wikipedia.org/wiki/"
+#, kde-format
 msgctxt "Localized Wikipedia website"
 msgid "https://en.wikipedia.org/wiki/"
 msgstr "http://lv.wikipedia.org/wiki/"
 
 #: thisdayinhistory/thisdayinhistory.cpp:40
-#, fuzzy, kde-format
-#| msgctxt "Qt date format used by thelocalized Wikipedia"
-#| msgid "MMMM_d"
+#, kde-format
 msgctxt "Qt date format used by the localized Wikipedia"
 msgid "MMMM_d"
 msgstr "MMMM_d"
