@@ -49,6 +49,11 @@ msgid ""
 "Copyright © 2006–2012 Allen Winter\n"
 "Copyright © 2012–2024 KOrganizer authors"
 msgstr ""
+"版权 © 1997–1999 Preston Brown\n"
+"版权 © 2000–2004, 2007 Cornelius Schumacher\n"
+"版权 © 2004–2005 Reinhold Kainhofer\n"
+"版权 © 2006–2012 Allen Winter\n"
+"版权 © 2012–2024 KOrganizer 开发者"
 
 #: aboutdata.cpp:30 kontactplugin/specialdates/specialdates_plugin.cpp:42
 #, kde-format
