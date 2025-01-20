@@ -16,7 +16,7 @@ msgstr ""
 "Project-Id-Version: korganizer\n"
 "Report-Msgid-Bugs-To: https://bugs.kde.org\n"
 "POT-Creation-Date: 2025-01-03 00:42+0000\n"
-"PO-Revision-Date: 2025-01-04 15:10+0100\n"
+"PO-Revision-Date: 2025-01-19 12:58+0100\n"
 "Last-Translator: Adrián Chaves (Gallaecio) <adrian@chaves.io>\n"
 "Language-Team: Proxecto Trasno (proxecto@trasno.gal)\n"
 "Language: gl\n"
@@ -485,7 +485,7 @@ msgid ""
 "This action cannot be undone!"
 msgstr ""
 "Permítelle retirar todas as tarefas completadas da colección de calendarios. "
-"Esta acción non ten volta atrás!"
+"Esta acción non pode desfacerse!"
 
 #. i18n: ectx: property (text), widget (QPushButton, mDeleteButton)
 #: actionmanager.cpp:368 actionmanager.cpp:623 actionmanager.cpp:1308
@@ -694,7 +694,7 @@ msgstr ""
 #, kde-format
 msgctxt "@action"
 msgid "&Refresh"
-msgstr "&Anovar"
+msgstr "&Actualizar"
 
 #: actionmanager.cpp:462
 #, kde-format
