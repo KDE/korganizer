@@ -18,7 +18,7 @@ msgstr ""
 "Project-Id-Version: korganizer\n"
 "Report-Msgid-Bugs-To: https://bugs.kde.org\n"
 "POT-Creation-Date: 2025-01-03 00:42+0000\n"
-"PO-Revision-Date: 2025-01-03 21:24+0200\n"
+"PO-Revision-Date: 2025-01-24 09:27+0200\n"
 "Last-Translator: Yaron Shahrabani <sh.yaron@gmail.com>\n"
 "Language-Team: צוות התרגום של KDE ישראל\n"
 "Language: he\n"
@@ -689,19 +689,19 @@ msgstr ""
 #, kde-format
 msgctxt "@action"
 msgid "&Refresh"
-msgstr "&רענון"
+msgstr "&ריענון"
 
 #: actionmanager.cpp:462
 #, kde-format
 msgctxt "@info:status"
 msgid "Refresh"
-msgstr "רענון"
+msgstr "ריענון"
 
 #: actionmanager.cpp:463
 #, kde-format
 msgctxt "@info:tooltip"
 msgid "Refresh the display"
-msgstr "רענון התצוגה"
+msgstr "ריענון התצוגה"
 
 #: actionmanager.cpp:465
 #, kde-format
