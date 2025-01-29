@@ -96,7 +96,7 @@ KIO::SimpleJob *POTDElement::createJsonQueryJob(const QString &property, const Q
 
 KIO::SimpleJob *POTDElement::createImagesJsonQueryJob(PageProtectionState state)
 {
-    const char *const templatePagePrefix = (state == ProtectedPage) ? "Template:POTD_protected/" : "Template:POTD/";
+    const char *const templatePagePrefix = (state == PageProtectionState::ProtectedPage) ? "Template:POTD_protected/" : "Template:POTD/";
     const QString templatePageName = QLatin1StringView(templatePagePrefix) + mDate.toString(Qt::ISODate);
     const QList<QueryItem> otherQueryItems{
         // TODO: unsure if formatversion is needed, used by https://www.mediawiki.org/wiki/API:Picture_of_the_day_viewer in October 2021
@@ -108,7 +108,7 @@ KIO::SimpleJob *POTDElement::createImagesJsonQueryJob(PageProtectionState state)
 
 void POTDElement::queryImagesJson()
 {
-    auto queryImagesJob = createImagesJsonQueryJob(ProtectedPage);
+    auto queryImagesJob = createImagesJsonQueryJob(PageProtectionState::ProtectedPage);
 
     connect(queryImagesJob, &KIO::SimpleJob::result, this, &POTDElement::handleProtectedImagesJsonResponse);
 }
@@ -130,9 +130,9 @@ void POTDElement::handleImagesJsonResponse(KJob *job, PageProtectionState pagePr
     auto missingIt = pageObject.find(QLatin1StringView("missing"));
     if ((missingIt != pageObject.end()) && missingIt.value().toBool(false)) {
         // fallback to unprotected variant in case there is no protected variant
-        if (pageProtectionState == ProtectedPage) {
+        if (pageProtectionState == PageProtectionState::ProtectedPage) {
             qCDebug(KORGANIZERPICOFTHEDAYPLUGIN_LOG) << mDate << ": protected page reported as missing, trying unprocteded now.";
-            auto queryImagesJob = createImagesJsonQueryJob(UnprotectedPage);
+            auto queryImagesJob = createImagesJsonQueryJob(PageProtectionState::UnprotectedPage);
 
             connect(queryImagesJob, &KIO::SimpleJob::result, this, &POTDElement::handleUnprotectedImagesJsonResponse);
             return;
@@ -161,12 +161,12 @@ void POTDElement::handleImagesJsonResponse(KJob *job, PageProtectionState pagePr
 
 void POTDElement::handleUnprotectedImagesJsonResponse(KJob *job)
 {
-    handleImagesJsonResponse(job, UnprotectedPage);
+    handleImagesJsonResponse(job, PageProtectionState::UnprotectedPage);
 }
 
 void POTDElement::handleProtectedImagesJsonResponse(KJob *job)
 {
-    handleImagesJsonResponse(job, ProtectedPage);
+    handleImagesJsonResponse(job, PageProtectionState::ProtectedPage);
 }
 
 void POTDElement::queryBasicImageInfoJson()

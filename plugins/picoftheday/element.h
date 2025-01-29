@@ -62,7 +62,7 @@ private:
     void getThumbImage(const QUrl &thumbUrl);
 
     // POTD pages once decided about should get an edit-protected variant, but not all have that
-    enum PageProtectionState {
+    enum class PageProtectionState : uint8_t {
         ProtectedPage,
         UnprotectedPage
     };
