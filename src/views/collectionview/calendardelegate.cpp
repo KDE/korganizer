@@ -6,7 +6,6 @@
 
 #include "calendardelegate.h"
 #include "kohelper.h"
-#include "korganizer_debug.h"
 
 #include <Akonadi/CollectionStatistics>
 #include <Akonadi/CollectionUtils>
