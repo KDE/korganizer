@@ -20,7 +20,7 @@
 StyledCalendarDelegate::StyledCalendarDelegate(QObject *parent)
     : QStyledItemDelegate(parent)
 {
-    mIcon.insert(Quickview, QIcon::fromTheme(QStringLiteral("quickview")));
+    mIcon.insert(Action::Quickview, QIcon::fromTheme(QStringLiteral("quickview")));
 }
 
 StyledCalendarDelegate::~StyledCalendarDelegate() = default;
@@ -70,10 +70,10 @@ QList<StyledCalendarDelegate::Action> StyledCalendarDelegate::getActions(const Q
 
     QList<Action> buttons;
     if (!isToplevelSearchCollection && !isToplevelKolabCollection) {
-        buttons << Quickview;
+        buttons << Action::Quickview;
     }
     if (isSearchCollection && !isToplevelSearchCollection) {
-        buttons << Total;
+        buttons << Action::Total;
     }
     return buttons;
 }
@@ -98,7 +98,7 @@ void StyledCalendarDelegate::paint(QPainter *painter, const QStyleOptionViewItem
         int i = 1;
         const auto lstActions = getActions(option, index);
         for (Action action : lstActions) {
-            if (action != Total) {
+            if (action != Action::Total) {
                 QStyleOptionButton buttonOption = buttonOpt(opt, mIcon.value(action), index, i);
                 s->drawControl(QStyle::CE_PushButton, &buttonOption, painter, nullptr);
             } else {
@@ -142,7 +142,7 @@ bool StyledCalendarDelegate::editorEvent(QEvent *event, QAbstractItemModel *mode
 
     // double-click mouse starts the quickview dialog
     if (event->type() == QEvent::MouseButtonDblClick) {
-        Q_EMIT action(index, Quickview);
+        Q_EMIT action(index, static_cast<int>(Action::Quickview));
         return true;
     }
 
@@ -176,7 +176,7 @@ bool StyledCalendarDelegate::editorEvent(QEvent *event, QAbstractItemModel *mode
     QList<StyledCalendarDelegate::Action> actions = getActions(opt, index);
     if (actions.count() >= button) {
         const Action a = actions.at(button - 1);
-        Q_EMIT action(index, a);
+        Q_EMIT action(index, static_cast<int>(a));
         return true;
     }
     return QStyledItemDelegate::editorEvent(event, model, option, index);

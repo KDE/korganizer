@@ -863,7 +863,7 @@ void AkonadiCollectionView::onAction(const QModelIndex &index, int a)
 {
     const auto action = static_cast<StyledCalendarDelegate::Action>(a);
     switch (action) {
-    case StyledCalendarDelegate::Quickview: {
+    case StyledCalendarDelegate::Action::Quickview: {
         const auto collection = Akonadi::CollectionUtils::fromIndex(index);
         const auto title = Akonadi::CalendarUtils::displayName(entityTreeModel(), collection);
         auto quickview = new Quickview(mCalendarView->calendarForCollection(collection), title);
@@ -871,7 +871,7 @@ void AkonadiCollectionView::onAction(const QModelIndex &index, int a)
         quickview->show();
         break;
     }
-    case StyledCalendarDelegate::Total:
+    case StyledCalendarDelegate::Action::Total:
         // TODO: anything to implement here?
         break;
     }
