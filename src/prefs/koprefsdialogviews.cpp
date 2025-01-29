@@ -27,8 +27,8 @@ K_PLUGIN_CLASS_WITH_JSON(KOPrefsDialogViews, "korganizer_configviews.json")
 
 KOPrefsDialogViews::KOPrefsDialogViews(QObject *parent, const KPluginMetaData &data)
     : Korganizer::KPrefsModule(KOPrefs::instance(), parent, data)
-    , mMonthIconComboBox(new KItemIconCheckCombo(KItemIconCheckCombo::MonthType, widget()))
-    , mAgendaIconComboBox(new KItemIconCheckCombo(KItemIconCheckCombo::AgendaType, widget()))
+    , mMonthIconComboBox(new KItemIconCheckCombo(KItemIconCheckCombo::ViewType::MonthType, widget()))
+    , mAgendaIconComboBox(new KItemIconCheckCombo(KItemIconCheckCombo::ViewType::AgendaType, widget()))
 {
     auto topTopLayout = new QVBoxLayout(widget());
     topTopLayout->setContentsMargins({});

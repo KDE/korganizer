@@ -25,11 +25,11 @@ KItemIconCheckCombo::KItemIconCheckCombo(ViewType viewType, QWidget *parent)
     addItem(QIcon::fromTheme(QStringLiteral("meeting-organizer")), i18n("Organizer"));
 
     // Agenda view doesn't support journals yet
-    setItemEnabled(EventViews::EventView::JournalIcon, viewType != AgendaType);
-    setItemEnabled(EventViews::EventView::ReplyIcon, viewType == AgendaType);
-    setItemEnabled(EventViews::EventView::AttendingIcon, viewType == AgendaType);
-    setItemEnabled(EventViews::EventView::TentativeIcon, viewType == AgendaType);
-    setItemEnabled(EventViews::EventView::OrganizerIcon, viewType == AgendaType);
+    setItemEnabled(EventViews::EventView::JournalIcon, viewType != ViewType::AgendaType);
+    setItemEnabled(EventViews::EventView::ReplyIcon, viewType == ViewType::AgendaType);
+    setItemEnabled(EventViews::EventView::AttendingIcon, viewType == ViewType::AgendaType);
+    setItemEnabled(EventViews::EventView::TentativeIcon, viewType == ViewType::AgendaType);
+    setItemEnabled(EventViews::EventView::OrganizerIcon, viewType == ViewType::AgendaType);
 
     setDefaultText(i18nc("@item:inlistbox", "Icons to use"));
     setAlwaysShowDefaultText(true);

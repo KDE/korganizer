@@ -16,7 +16,7 @@ class KItemIconCheckCombo : public KPIM::KCheckComboBox
 {
     Q_OBJECT
 public:
-    enum ViewType {
+    enum class ViewType : uint8_t {
         AgendaType = 0,
         MonthType
     };
