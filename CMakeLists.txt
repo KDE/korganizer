@@ -12,6 +12,9 @@ endif()
 set(PIM_VERSION "6.3.2")
 set(RELEASE_SERVICE_VERSION "24.12.2")
 
+# Update it for each release
+set(KORGANIZER_RELEASE_VERSION_DATE "25.02.03") # yy.MM.dd
+
 set(KDEPIM_VERSION "${PIM_VERSION}${KDEPIM_DEV_VERSION} (${RELEASE_SERVICE_VERSION})")
 
 project(korganizer VERSION ${PIM_VERSION})
