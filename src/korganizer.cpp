@@ -15,6 +15,7 @@
 #include "korganizer.h"
 #include "actionmanager.h"
 #include "calendarview.h"
+#include "config-korganizer.h"
 #include "impl/korganizerifaceimpl.h"
 #include "kocore.h"
 #include "plugininterface/korganizerplugininterface.h"
