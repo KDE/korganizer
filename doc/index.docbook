@@ -2261,9 +2261,9 @@ place.</para></listitem>
 </varlistentry>
 
 <varlistentry>
-<term><guilabel>Show seconds on current-time (Marcus Bains) line</guilabel></term>
+<term><guilabel>Show seconds and timezone on current-time (Marcus Bains) line</guilabel></term>
 <listitem><para>This check box toggles on or off the seconds on the current-time
-line (Marcus Bains line).</para></listitem>
+line (Marcus Bains line). Depending on your locale, the timezone may also be shown.</para></listitem>
 </varlistentry>
 
 <varlistentry>
@@ -2480,7 +2480,7 @@ Agenda view (Day, Week and Work Week views).</para></listitem>
 </varlistentry>
 
 <varlistentry>
-<term><guilabel>Current-time line</guilabel></term>
+<term><guilabel>Current-time (Marcus Bains) line</guilabel></term>
 <listitem><para>Press this button to pick the font, font style and size for the
 Marcus Bains line (a colored line in the Agenda view indicating the current
 time).</para></listitem>
