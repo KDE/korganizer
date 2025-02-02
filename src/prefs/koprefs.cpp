@@ -8,6 +8,8 @@
 */
 
 #include "koprefs.h"
+
+#include <KColorScheme>
 #include <QFontDatabase>
 
 class KOPrefsPrivate
@@ -40,6 +42,9 @@ KOPrefs::KOPrefs()
     KConfigSkeleton::setCurrentGroup(QStringLiteral("General"));
 
     monthViewFontItem()->setDefaultValue(mDefaultMonthViewFont);
+
+    QColor mbColor = KColorScheme(QPalette::Active, KColorScheme::Selection).foreground(KColorScheme::ActiveText).color();
+    agendaMarcusBainsLineLineColorItem()->setDefaultValue(mbColor);
 }
 
 KOPrefs::~KOPrefs()
