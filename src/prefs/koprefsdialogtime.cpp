@@ -267,6 +267,7 @@ void KOPrefsDialogTime::usrWriteConfig()
     KOPrefs::instance()->mWorkWeekMask = mask;
     KOPrefs::instance()->save();
     CalendarSupport::KCalPrefs::instance()->save();
+    setNeedsSave(false);
 }
 
 void KOPrefsDialogTime::setCombo(KComboBox *combo, const QString &text, const QStringList *tags)

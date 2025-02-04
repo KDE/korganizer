@@ -176,6 +176,7 @@ void KOPrefsDialogPlugins::usrWriteConfig()
     KOPrefs::instance()->setDecorationsAtMonthViewTop(mDecorationsAtMonthViewTop.values());
     viewPrefs->setDecorationsAtAgendaViewTop(mDecorationsAtAgendaViewTop.values());
     viewPrefs->setDecorationsAtAgendaViewBottom(mDecorationsAtAgendaViewBottom.values());
+    setNeedsSave(false);
 }
 
 void KOPrefsDialogPlugins::configureClicked(QAction *action)

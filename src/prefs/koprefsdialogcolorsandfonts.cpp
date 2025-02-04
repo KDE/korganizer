@@ -197,6 +197,7 @@ void KOPrefsDialogColorsAndFonts::usrWriteConfig()
         ++i;
     }
 
+    setNeedsSave(false);
     // mCalendarViewsPrefs->writeConfig();
 }
 
