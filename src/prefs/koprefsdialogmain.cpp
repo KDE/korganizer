@@ -105,7 +105,6 @@ KOPrefsDialogMain::KOPrefsDialogMain(QObject *parent, const KPluginMetaData &dat
     mActivities->setChecked(KOPrefs::instance()->enabledActivities());
     connect(mActivities, &QCheckBox::clicked, this, &KOPrefsDialogMain::slotWidChanged);
 #endif
-
     load();
 }
 
@@ -116,6 +115,7 @@ void KOPrefsDialogMain::usrWriteConfig()
 #if HAVE_ACTIVITY_SUPPORT
     KOPrefs::instance()->setEnabledActivities(mActivities->isChecked());
 #endif
+    setNeedsSave(false);
 }
 
 void KOPrefsDialogMain::toggleEmailSettings(bool on)

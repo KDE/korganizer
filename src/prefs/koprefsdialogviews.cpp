@@ -181,6 +181,7 @@ void KOPrefsDialogViews::usrWriteConfig()
 {
     KOPrefs::instance()->eventViewsPreferences()->setAgendaViewIcons(mAgendaIconComboBox->checkedIcons());
     KOPrefs::instance()->eventViewsPreferences()->setMonthViewIcons(mMonthIconComboBox->checkedIcons());
+    setNeedsSave(false);
 }
 
 #include "koprefsdialogviews.moc"

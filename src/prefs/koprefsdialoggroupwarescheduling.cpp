@@ -97,6 +97,7 @@ void KOPrefsDialogGroupwareScheduling::usrWriteConfig()
     cfg.deleteGroup(CalendarSupport::KCalPrefs::instance()->email());
 
     Akonadi::CalendarSettings::self()->save();
+    setNeedsSave(false);
 }
 
 #include "koprefsdialoggroupwarescheduling.moc"
