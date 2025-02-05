@@ -84,8 +84,10 @@ target_link_libraries(korganizer_kcm_static
     KPim6::AkonadiWidgets
     KF6::WindowSystem
     KF6::KIOWidgets
-    KPim6::PimCommonActivities
    )
+if(HAVE_ACTIVITY_SUPPORT)
+    target_link_libraries(korganizer_kcm_static KPim6::PimCommonActivities)
+endif()
 
 add_library(korganizer_configcolorsandfonts MODULE prefs/koprefsdialogcolorsandfonts.cpp prefs/koprefsdialogcolorsandfonts.h)
 target_link_libraries(korganizer_configcolorsandfonts korganizer_kcm_static)
