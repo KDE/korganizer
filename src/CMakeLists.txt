@@ -291,7 +291,7 @@ if(HAVE_ACTIVITY_SUPPORT)
         activities/accountactivities.cpp
 	activities/transportactivities.cpp
 	activities/transportactivities.h
-   )
+    )
     if(BUILD_TESTING)
        add_subdirectory(activities/autotests)
     endif()
