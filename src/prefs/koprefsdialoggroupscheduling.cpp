@@ -8,9 +8,11 @@
 */
 
 #include "koprefsdialoggroupscheduling.h"
+#include "config-korganizer.h"
+#if HAVE_ACTIVITY_SUPPORT
 #include "activities/activitiesmanager.h"
 #include "activities/transportactivities.h"
-#include "config-korganizer.h"
+#endif
 #include "prefs/koprefs.h"
 #include <CalendarSupport/KCalPrefs>
 #include <KLocalizedString>
