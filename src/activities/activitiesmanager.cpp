@@ -6,16 +6,18 @@
 
 #include "activitiesmanager.h"
 #include "accountactivities.h"
-
+#include "transportactivities.h"
 #include <PlasmaActivities/Consumer>
 
 ActivitiesManager::ActivitiesManager(QObject *parent)
     : PimCommonActivities::ActivitiesBaseManager{parent}
     , mActivitiesConsumer(new KActivities::Consumer(this))
     , mAccountActivities(new AccountActivities(this))
+    , mTransportActivities(new TransportActivities(this))
 {
     connect(this, &ActivitiesManager::activitiesChanged, this, [this]() {
         Q_EMIT mAccountActivities->activitiesChanged();
+        Q_EMIT mTransportActivities->activitiesChanged();
     });
 }
 
@@ -43,6 +45,11 @@ void ActivitiesManager::setEnabled(bool newEnabled)
 AccountActivities *ActivitiesManager::accountActivities() const
 {
     return mAccountActivities;
+}
+
+TransportActivities *ActivitiesManager::transportActivities() const
+{
+    return mTransportActivities;
 }
 
 #include "moc_activitiesmanager.cpp"

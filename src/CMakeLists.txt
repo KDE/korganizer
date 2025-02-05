@@ -84,6 +84,7 @@ target_link_libraries(korganizer_kcm_static
     KPim6::AkonadiWidgets
     KF6::WindowSystem
     KF6::KIOWidgets
+    KPim6::PimCommonActivities
    )
 
 add_library(korganizer_configcolorsandfonts MODULE prefs/koprefsdialogcolorsandfonts.cpp prefs/koprefsdialogcolorsandfonts.h)
@@ -286,6 +287,8 @@ if(HAVE_ACTIVITY_SUPPORT)
 
         activities/accountactivities.h
         activities/accountactivities.cpp
+	activities/transportactivities.cpp
+	activities/transportactivities.h
    )
     if(BUILD_TESTING)
        add_subdirectory(activities/autotests)
@@ -359,6 +362,7 @@ target_link_libraries(korganizerprivate
     KF6::NewStuffWidgets
     KPim6::LdapWidgets
     KPim6::AkonadiWidgets
+    KPim6::MailTransport
     KF6::IconThemes
     KF6::IconWidgets
     KF6::WindowSystem

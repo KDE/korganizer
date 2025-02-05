@@ -11,6 +11,7 @@ namespace KActivities
 {
 class Consumer;
 }
+class TransportActivities;
 class AccountActivities;
 class KORGANIZERPRIVATE_EXPORT ActivitiesManager : public PimCommonActivities::ActivitiesBaseManager
 {
@@ -24,10 +25,12 @@ public:
     [[nodiscard]] bool enabled() const override;
     void setEnabled(bool newEnabled);
 
-    AccountActivities *accountActivities() const;
+    [[nodiscard]] TransportActivities *transportActivities() const;
+    [[nodiscard]] AccountActivities *accountActivities() const;
 
 private:
     KActivities::Consumer *const mActivitiesConsumer;
     AccountActivities *const mAccountActivities;
+    TransportActivities *const mTransportActivities;
     bool mEnabled = false;
 };

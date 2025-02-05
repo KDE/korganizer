@@ -8,6 +8,9 @@
 */
 
 #include "koprefsdialoggroupscheduling.h"
+#include "activities/activitiesmanager.h"
+#include "activities/transportactivities.h"
+#include "config-korganizer.h"
 #include "prefs/koprefs.h"
 #include <CalendarSupport/KCalPrefs>
 #include <KLocalizedString>
@@ -43,6 +46,10 @@ KOPrefsDialogGroupScheduling::KOPrefsDialogGroupScheduling(QObject *parent, cons
     topLayout->addWidget(aTransportLabel, 3, 0, 1, 2);
 
     auto tmw = new MailTransport::TransportManagementWidgetNg(topFrame);
+#if HAVE_ACTIVITY_SUPPORT
+    tmw->setEnablePlasmaActivities(KOPrefs::instance()->enabledActivities());
+    tmw->setTransportActivitiesAbstract(ActivitiesManager::self()->transportActivities());
+#endif
     tmw->layout()->setContentsMargins({});
     topLayout->addWidget(tmw, 4, 0, 1, 2);
     load();
