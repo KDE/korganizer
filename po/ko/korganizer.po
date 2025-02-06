@@ -8,7 +8,7 @@ msgid ""
 msgstr ""
 "Project-Id-Version: Korganizer\n"
 "Report-Msgid-Bugs-To: https://bugs.kde.org\n"
-"POT-Creation-Date: 2025-02-05 00:42+0000\n"
+"POT-Creation-Date: 2025-02-06 00:41+0000\n"
 "PO-Revision-Date: 2024-12-10 01:02+0100\n"
 "Last-Translator: Shinjo Park <kde@peremen.name>\n"
 "Language-Team: Korean <kde-kr@kde.org>\n"
@@ -3301,7 +3301,7 @@ msgctxt "@label"
 msgid "Event text"
 msgstr "이벤트 텍스트"
 
-#: prefs/koprefsdialoggroupscheduling.cpp:42
+#: prefs/koprefsdialoggroupscheduling.cpp:47
 #, kde-format
 msgctxt "@label"
 msgid "Mail transport:"

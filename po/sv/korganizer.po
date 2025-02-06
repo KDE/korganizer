@@ -10,7 +10,7 @@ msgid ""
 msgstr ""
 "Project-Id-Version: korganizer\n"
 "Report-Msgid-Bugs-To: https://bugs.kde.org\n"
-"POT-Creation-Date: 2025-02-05 00:42+0000\n"
+"POT-Creation-Date: 2025-02-06 00:41+0000\n"
 "PO-Revision-Date: 2025-01-11 12:12+0100\n"
 "Last-Translator: Stefan Asserhäll <stefan.asserhall@gmail.com>\n"
 "Language-Team: Swedish <kde-i18n-doc@kde.org>\n"
@@ -3358,7 +3358,7 @@ msgctxt "@label"
 msgid "Event text"
 msgstr "Händelsetext"
 
-#: prefs/koprefsdialoggroupscheduling.cpp:42
+#: prefs/koprefsdialoggroupscheduling.cpp:47
 #, kde-format
 msgctxt "@label"
 msgid "Mail transport:"

@@ -1,5 +1,5 @@
 # translation of korganizer.po to
-# Version: $Revision: 1701990 $
+# Version: $Revision: 1702065 $
 # SPDX-FileCopyrightText: 2011, 2012, 2013, 2014, 2015, 2016, 2017, 2018, 2019, 2020, 2021, 2022, 2023, 2024, 2025 Łukasz Wojniłowicz <lukasz.wojnilowicz@gmail.com>
 # translated by Krzysztof Jasiutowicz <kpjas@priv.onet.pl>
 # Krzysztof Lichota <lichota@mimuw.edu.pl>, 2002, 2005, 2006.
@@ -13,7 +13,7 @@ msgid ""
 msgstr ""
 "Project-Id-Version: korganizer\n"
 "Report-Msgid-Bugs-To: https://bugs.kde.org\n"
-"POT-Creation-Date: 2025-02-05 00:42+0000\n"
+"POT-Creation-Date: 2025-02-06 00:41+0000\n"
 "PO-Revision-Date: 2025-01-04 07:47+0100\n"
 "Last-Translator: Łukasz Wojniłowicz <lukasz.wojnilowicz@gmail.com>\n"
 "Language-Team: Polish <kde-i18n-doc@kde.org>\n"
@@ -3398,7 +3398,7 @@ msgctxt "@label"
 msgid "Event text"
 msgstr "Tekst wydarzenia"
 
-#: prefs/koprefsdialoggroupscheduling.cpp:42
+#: prefs/koprefsdialoggroupscheduling.cpp:47
 #, kde-format
 msgctxt "@label"
 msgid "Mail transport:"
