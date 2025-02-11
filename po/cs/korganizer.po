@@ -46,13 +46,7 @@ msgid "A Personal Organizer"
 msgstr "Osobní organizátor"
 
 #: aboutdata.cpp:22
-#, fuzzy, kde-format
-#| msgid ""
-#| "Copyright © 1997–1999 Preston Brown\n"
-#| "Copyright © 2000–2004, 2007 Cornelius Schumacher\n"
-#| "Copyright © 2004–2005 Reinhold Kainhofer\n"
-#| "Copyright © 2006–2012 Allen Winter\n"
-#| "Copyright © 2012–2024 KOrganizer authors"
+#, kde-format
 msgid ""
 "Copyright © 1997–1999 Preston Brown\n"
 "Copyright © 2000–2004, 2007 Cornelius Schumacher\n"
@@ -60,11 +54,6 @@ msgid ""
 "Copyright © 2006–2012 Allen Winter\n"
 "Copyright © 2012–2025 KOrganizer authors"
 msgstr ""
-"Autorská práva © 1997–1999 Preston Brown\n"
-"Autorská práva © 2000–2004, 2007 Cornelius Schumacher\n"
-"Autorská práva © 2004–2005 Reinhold Kainhofer\n"
-"Autorská práva © 2006–2012 Allen Winter\n"
-"Autorská práva © 2012–2024 Autoři aplikace KOrganizer"
 
 #: aboutdata.cpp:30 kontactplugin/specialdates/specialdates_plugin.cpp:42
 #, kde-format
@@ -1114,10 +1103,9 @@ msgid "Select Calendar File to Import"
 msgstr "Vyberte soubor kalendáře pro import"
 
 #: actionmanager.cpp:977
-#, fuzzy, kde-format
-#| msgid "An error occurred: %1"
+#, kde-format
 msgid "An error occurred: %1 (url: %2)"
-msgstr "Vyskytla se chyba: %1"
+msgstr ""
 
 #: actionmanager.cpp:995
 #, kde-format
