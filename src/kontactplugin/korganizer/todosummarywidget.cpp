@@ -17,6 +17,8 @@
 #include <Akonadi/IncidenceChanger>
 #include <Akonadi/ItemFetchScope>
 
+#include <KCalUtils/IncidenceFormatter>
+
 #include <KontactInterface/Core>
 
 #include <KConfig>
@@ -242,12 +244,22 @@ void TodoSummaryWidget::updateView()
                 str = str.toHtmlEscaped();
             }
 
+            QString displayName;
+            Akonadi::Item item = mCalendar->item(todo);
+            if (item.isValid()) {
+                const Akonadi::Collection col = item.parentCollection();
+                if (col.isValid()) {
+                    displayName = col.displayName();
+                }
+            }
+
             auto urlLabel = new KUrlLabel(this);
             urlLabel->setText(str);
             urlLabel->setUrl(todo->uid());
             urlLabel->installEventFilter(this);
             urlLabel->setTextFormat(Qt::RichText);
             urlLabel->setWordWrap(true);
+            urlLabel->setToolTip(KCalUtils::IncidenceFormatter::toolTipStr(displayName, todo, currDate, true));
             mLayout->addWidget(urlLabel, counter, 4);
             mLabels.append(urlLabel);
             connect(urlLabel, &KUrlLabel::leftClickedUrl, this, [this, urlLabel] {
