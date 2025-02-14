@@ -65,7 +65,6 @@ private:
     bool mHideCompleted = false;
     bool mHideOpenEnded = false;
     bool mHideNotStarted = false;
-    bool mShowMineOnly = false;
 
     QList<QLabel *> mLabels;
     Akonadi::ETMCalendar::Ptr mCalendar;

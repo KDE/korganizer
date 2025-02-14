@@ -75,7 +75,6 @@ private:
     bool mShowAnniversariesFromCal = false;
     bool mShowHolidays = false;
     bool mShowSpecialsFromCal = false;
-    bool mShowMineOnly = false;
     bool mJobRunning = false;
     QList<SDEntry> mDates;
 

@@ -62,5 +62,4 @@ private:
     int mDaysAhead;
     bool mShowBirthdaysFromCal = false;
     bool mShowAnniversariesFromCal = false;
-    bool mShowMineOnly = false;
 };

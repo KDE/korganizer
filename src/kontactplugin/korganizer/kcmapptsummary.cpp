@@ -22,7 +22,6 @@ KCMApptSummary::KCMApptSummary(QObject *parent, const KPluginMetaData &data)
     : KCModule(parent, data)
     , mDaysButtonGroup(new QButtonGroup(widget())) // krazy:exclude=tipsandthis
     , mShowButtonGroup(new QButtonGroup(widget())) // krazy:exclude=tipsandthis
-    , mGroupwareButtonGroup(new QButtonGroup(widget())) // krazy:exclude=tipsandthis
 {
     setupUi(widget());
 
@@ -34,15 +33,11 @@ KCMApptSummary::KCMApptSummary(QObject *parent, const KPluginMetaData &data)
     mShowButtonGroup->addButton(mShowBirthdaysFromCal);
     mShowButtonGroup->addButton(mShowAnniversariesFromCal);
 
-    mGroupwareButtonGroup->setExclusive(false);
-    mGroupwareButtonGroup->addButton(mShowMineOnly);
-
     customDaysChanged(7);
 
     // Remove QOverload<QAbstractButton *> when we switch on qt6. For the moment it avoids to add an #ifdef
     connect(mDaysButtonGroup, &QButtonGroup::buttonClicked, this, &KCMApptSummary::modified);
     connect(mShowButtonGroup, &QButtonGroup::buttonClicked, this, &KCMApptSummary::modified);
-    connect(mGroupwareButtonGroup, &QButtonGroup::buttonClicked, this, &KCMApptSummary::modified);
 
     connect(mDaysButtonGroup, &QButtonGroup::buttonClicked, this, &KCMApptSummary::buttonClicked);
 
@@ -92,9 +87,6 @@ void KCMApptSummary::load()
     mShowBirthdaysFromCal->setChecked(group.readEntry("BirthdaysFromCalendar", true));
     mShowAnniversariesFromCal->setChecked(group.readEntry("AnniversariesFromCalendar", true));
 
-    group = config.group(QStringLiteral("Groupware"));
-    mShowMineOnly->setChecked(group.readEntry("ShowMineOnly", false));
-
     setNeedsSave(false);
 }
 
@@ -123,9 +115,6 @@ void KCMApptSummary::save()
     group.writeEntry("BirthdaysFromCalendar", mShowBirthdaysFromCal->isChecked());
     group.writeEntry("AnniversariesFromCalendar", mShowAnniversariesFromCal->isChecked());
 
-    group = config.group(QStringLiteral("Groupware"));
-    group.writeEntry("ShowMineOnly", mShowMineOnly->isChecked());
-
     config.sync();
     setNeedsSave(false);
 }
@@ -138,8 +127,6 @@ void KCMApptSummary::defaults()
 
     mShowBirthdaysFromCal->setChecked(true);
     mShowAnniversariesFromCal->setChecked(true);
-
-    mShowMineOnly->setChecked(false);
 
     markAsChanged();
 }

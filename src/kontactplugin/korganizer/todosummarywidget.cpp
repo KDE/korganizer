@@ -77,9 +77,6 @@ void TodoSummaryWidget::updateView()
     mHideOpenEnded = group.readEntry("OpenEnded", true);
     mHideNotStarted = group.readEntry("NotStarted", false);
 
-    group = config.group(QStringLiteral("Groupware"));
-    mShowMineOnly = group.readEntry("ShowMineOnly", false);
-
     // for each todo,
     //   if it passes the filter, append to a list
     //   else continue
@@ -156,14 +153,6 @@ void TodoSummaryWidget::updateView()
         for (const KCalendarCore::Todo::Ptr &todo : std::as_const(prList)) {
             bool makeBold = false;
             int daysTo = -1;
-
-            // Optionally, show only my To-dos
-            /*      if ( mShowMineOnly &&
-                         !KCalendarCore::CalHelper::isMyCalendarIncidence( mCalendarAdaptor, todo.get() ) ) {
-                    continue;
-                  }
-            TODO: calhelper is deprecated, remove this?
-            */
 
             // Icon label
             auto label = new QLabel(this);

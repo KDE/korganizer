@@ -37,7 +37,6 @@ KCMSDSummary::KCMSDSummary(QObject *parent, const KPluginMetaData &data)
     connect(mShowSpecialsFromCalBox, &QCheckBox::checkStateChanged, this, &KCMSDSummary::modified);
     connect(mShowAnniversariesFromKABBox, &QCheckBox::checkStateChanged, this, &KCMSDSummary::modified);
     connect(mShowBirthdaysFromKABBox, &QCheckBox::checkStateChanged, this, &KCMSDSummary::modified);
-    connect(mShowMineOnly, &QCheckBox::checkStateChanged, this, &KCMSDSummary::modified);
 
     KAcceleratorManager::manage(widget());
 
@@ -82,9 +81,6 @@ void KCMSDSummary::load()
 
     mShowSpecialsFromCalBox->setChecked(group.readEntry("SpecialsFromCalendar", true));
 
-    group = config.group(QStringLiteral("Groupware"));
-    mShowMineOnly->setChecked(group.readEntry("ShowMineOnly", false));
-
     setNeedsSave(false);
 }
 
@@ -116,9 +112,6 @@ void KCMSDSummary::save()
 
     group.writeEntry("SpecialsFromCalendar", mShowSpecialsFromCalBox->isChecked());
 
-    group = config.group(QStringLiteral("Groupware"));
-    group.writeEntry("ShowMineOnly", mShowMineOnly->isChecked());
-
     group.sync();
     setNeedsSave(false);
 }
@@ -136,7 +129,6 @@ void KCMSDSummary::defaults()
     mShowHolidaysFromCalBox->setChecked(true);
     mShowSpecialsFromCalBox->setChecked(true);
 
-    mShowMineOnly->setChecked(false);
     markAsChanged();
 }
 

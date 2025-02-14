@@ -75,9 +75,6 @@ void ApptSummaryWidget::configUpdated()
     mShowBirthdaysFromCal = group.readEntry("BirthdaysFromCalendar", true);
     mShowAnniversariesFromCal = group.readEntry("AnniversariesFromCalendar", true);
 
-    group = config.group(QStringLiteral("Groupware"));
-    mShowMineOnly = group.readEntry("ShowMineOnly", false);
-
     updateView();
 }
 
@@ -113,14 +110,6 @@ void ApptSummaryWidget::updateView()
     KColorScheme::adjustBackground(urgentPalette, KColorScheme::NegativeBackground, QPalette::Window);
 
     for (SummaryEventInfo *event : events) {
-        // Optionally, show only my Events
-        /*      if ( mShowMineOnly &&
-                  !KCalendarCore::CalHelper::isMyCalendarIncidence( mCalendarAdaptor, event->ev ) ) {
-              continue;
-            }
-            TODO: CalHelper is deprecated, remove this?
-        */
-
         KCalendarCore::Event::Ptr ev = event->ev;
         // print the first of the recurring event series only
         if (ev->recurs()) {

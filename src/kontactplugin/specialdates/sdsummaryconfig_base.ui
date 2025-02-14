@@ -239,28 +239,6 @@
     </widget>
    </item>
    <item>
-    <widget class="QGroupBox" name="groupBox">
-     <property name="title">
-      <string>Groupware Settings</string>
-     </property>
-     <layout class="QVBoxLayout" name="verticalLayout_4">
-      <item>
-       <widget class="QCheckBox" name="mShowMineOnly">
-        <property name="toolTip">
-         <string>Show events belonging to my calendars only</string>
-        </property>
-        <property name="whatsThis">
-         <string>Check this box if you want the summary to show events belonging to your calendars only.</string>
-        </property>
-        <property name="text">
-         <string>Show &amp;my events only</string>
-        </property>
-       </widget>
-      </item>
-     </layout>
-    </widget>
-   </item>
-   <item>
     <spacer>
      <property name="orientation">
       <enum>Qt::Vertical</enum>

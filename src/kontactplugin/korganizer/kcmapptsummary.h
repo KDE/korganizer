@@ -27,5 +27,4 @@ private:
     void modified();
     QButtonGroup *const mDaysButtonGroup;
     QButtonGroup *const mShowButtonGroup;
-    QButtonGroup *const mGroupwareButtonGroup;
 };

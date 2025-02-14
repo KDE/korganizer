@@ -32,7 +32,6 @@ KCMTodoSummary::KCMTodoSummary(QObject *parent, const KPluginMetaData &data)
     connect(mHideUnstartedBox, &QCheckBox::checkStateChanged, this, &KCMTodoSummary::modified);
     connect(mHideInProgressBox, &QCheckBox::checkStateChanged, this, &KCMTodoSummary::modified);
     connect(mHideOverdueBox, &QCheckBox::checkStateChanged, this, &KCMTodoSummary::modified);
-    connect(mShowMineOnly, &QCheckBox::checkStateChanged, this, &KCMTodoSummary::modified);
 
     connect(mCustomDays, &QSpinBox::valueChanged, this, &KCMTodoSummary::modified);
     connect(mCustomDays, &QSpinBox::valueChanged, this, &KCMTodoSummary::customDaysChanged);
@@ -79,9 +78,6 @@ void KCMTodoSummary::load()
     mHideOpenEndedBox->setChecked(group.readEntry("OpenEnded", true));
     mHideUnstartedBox->setChecked(group.readEntry("NotStarted", false));
 
-    group = config.group(QStringLiteral("Groupware"));
-    mShowMineOnly->setChecked(group.readEntry("ShowMineOnly", false));
-
     setNeedsSave(false);
 }
 
@@ -107,9 +103,6 @@ void KCMTodoSummary::save()
     group.writeEntry("OpenEnded", mHideOpenEndedBox->isChecked());
     group.writeEntry("NotStarted", mHideUnstartedBox->isChecked());
 
-    group = config.group(QStringLiteral("Groupware"));
-    group.writeEntry("ShowMineOnly", mShowMineOnly->isChecked());
-
     config.sync();
     setNeedsSave(false);
 }
@@ -125,8 +118,6 @@ void KCMTodoSummary::defaults()
     mHideCompletedBox->setChecked(true);
     mHideOpenEndedBox->setChecked(true);
     mHideUnstartedBox->setChecked(false);
-
-    mShowMineOnly->setChecked(false);
 
     markAsChanged();
 }

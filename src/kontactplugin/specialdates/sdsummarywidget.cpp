@@ -153,9 +153,6 @@ void SDSummaryWidget::configUpdated()
 
     mShowSpecialsFromCal = group.readEntry("SpecialsFromCalendar", true);
 
-    group = config.group(QStringLiteral("Groupware"));
-    mShowMineOnly = group.readEntry("ShowMineOnly", false);
-
     updateView();
 }
 
@@ -256,16 +253,8 @@ void SDSummaryWidget::createLabels()
     for (dt = QDate::currentDate(); dt <= QDate::currentDate().addDays(mDaysAhead - 1); dt = dt.addDays(1)) {
         const KCalendarCore::Event::List events =
             mCalendar->events(dt, mCalendar->timeZone(), KCalendarCore::EventSortStartDate, KCalendarCore::SortDirectionAscending);
-        for (const KCalendarCore::Event::Ptr &ev : events) {
-            // Optionally, show only my Events
-            /* if ( mShowMineOnly &&
-                    !KCalendarCore::CalHelper::isMyCalendarIncidence( mCalendarAdaptor, ev. ) ) {
-              // FIXME; does isMyCalendarIncidence work !? It's deprecated too.
-              continue;
-              }
-              // TODO: CalHelper is deprecated, remove this?
-              */
 
+        for (const KCalendarCore::Event::Ptr &ev : events) {
             if (ev->customProperty("KABC", "BIRTHDAY") == QLatin1StringView("YES")) {
                 // Skipping, because these are got by the BirthdaySearchJob
                 // See comments in updateView()
