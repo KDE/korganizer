@@ -7,11 +7,9 @@
 #include "activitiesmanager.h"
 #include "accountactivities.h"
 #include "transportactivities.h"
-#include <PlasmaActivities/Consumer>
 
 ActivitiesManager::ActivitiesManager(QObject *parent)
     : PimCommonActivities::ActivitiesBaseManager{parent}
-    , mActivitiesConsumer(new KActivities::Consumer(this))
     , mAccountActivities(new AccountActivities(this))
     , mTransportActivities(new TransportActivities(this))
 {
