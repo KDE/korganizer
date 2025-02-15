@@ -4,7 +4,7 @@
 # Author: Jessej
 # Author: Lliehu
 # Author: Niklas Laxström
-# SPDX-FileCopyrightText: 2009, 2011, 2012, 2013, 2016, 2017, 2018, 2019, 2020, 2021, 2022, 2023, 2024 Tommi Nieminen <translator@legisign.org>
+# SPDX-FileCopyrightText: 2009, 2011, 2012, 2013, 2016, 2017, 2018, 2019, 2020, 2021, 2022, 2023, 2024, 2025 Tommi Nieminen <translator@legisign.org>
 # Kim Enkovaara <kim.enkovaara@iki.fi>, 2003, 2006.
 # Teemu Rytilahti <teemu.rytilahti@d5k.net>, 2003, 2005.
 # Teemu Rytilahti <teemu.rytilahti@kde-fi.org>, 2003, 2008.
@@ -17,7 +17,7 @@ msgstr ""
 "Project-Id-Version: korganizer\n"
 "Report-Msgid-Bugs-To: https://bugs.kde.org\n"
 "POT-Creation-Date: 2025-02-06 00:41+0000\n"
-"PO-Revision-Date: 2024-12-01 14:48+0200\n"
+"PO-Revision-Date: 2025-02-04 18:50+0200\n"
 "Last-Translator: Tommi Nieminen <translator@legisign.org>\n"
 "Language-Team: Finnish <kde-i18n-doc@kde.org>\n"
 "Language: fi\n"
@@ -57,13 +57,7 @@ msgid "A Personal Organizer"
 msgstr "Ajankäytön hallinta"
 
 #: aboutdata.cpp:22
-#, fuzzy, kde-format
-#| msgid ""
-#| "Copyright © 1997–1999 Preston Brown\n"
-#| "Copyright © 2000–2004, 2007 Cornelius Schumacher\n"
-#| "Copyright © 2004–2005 Reinhold Kainhofer\n"
-#| "Copyright © 2006–2012 Allen Winter\n"
-#| "Copyright © 2012–2024 KOrganizer authors"
+#, kde-format
 msgid ""
 "Copyright © 1997–1999 Preston Brown\n"
 "Copyright © 2000–2004, 2007 Cornelius Schumacher\n"
@@ -75,7 +69,7 @@ msgstr ""
 "Tekijänoikeudet © 2000–2004, 2007 Cornelius Schumacher\n"
 "Tekijänoikeudet © 2004–2005 Reinhold Kainhofer\n"
 "Tekijänoikeudet © 2006–2012 Allen Winter\n"
-"Tekijänoikeudet © 2012–2024 KOrganizerin tekijät"
+"Tekijänoikeudet © 2012–2025 KOrganizerin tekijät"
 
 #: aboutdata.cpp:30 kontactplugin/specialdates/specialdates_plugin.cpp:42
 #, kde-format
