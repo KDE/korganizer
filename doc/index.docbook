@@ -2261,7 +2261,7 @@ place.</para></listitem>
 </varlistentry>
 
 <varlistentry>
-<term><guilabel>Show seconds and timezone on current-time (Marcus Bains) line</guilabel></term>
+<term><guilabel>Show seconds and timezone on the current-time (Marcus Bains) line</guilabel></term>
 <listitem><para>This check box toggles on or off the seconds on the current-time
 line (Marcus Bains line). Depending on your locale, the timezone may also be shown.</para></listitem>
 </varlistentry>
