@@ -8,7 +8,7 @@ msgid ""
 msgstr ""
 "Project-Id-Version: korganizer\n"
 "Report-Msgid-Bugs-To: https://bugs.kde.org\n"
-"POT-Creation-Date: 2025-02-06 00:41+0000\n"
+"POT-Creation-Date: 2025-02-16 00:42+0000\n"
 "PO-Revision-Date: 2024-12-24 20:39+0530\n"
 "Last-Translator: kali <shreekantkalwar@gmail.com>\n"
 "Language-Team: Sanskrit <kde-i18n-doc@kde.org>\n"
@@ -1191,12 +1191,12 @@ msgstr "&Delete Event"
 msgid "&Show To-do"
 msgstr "&Show To-do इति"
 
-#: actionmanager.cpp:1280 kontactplugin/korganizer/todosummarywidget.cpp:321
+#: actionmanager.cpp:1280 kontactplugin/korganizer/todosummarywidget.cpp:322
 #, kde-format
 msgid "&Edit To-do…"
 msgstr "&Edit To-do…"
 
-#: actionmanager.cpp:1283 kontactplugin/korganizer/todosummarywidget.cpp:323
+#: actionmanager.cpp:1283 kontactplugin/korganizer/todosummarywidget.cpp:324
 #, kde-format
 msgid "&Delete To-do"
 msgstr "&Delete To-do इति"
@@ -1463,7 +1463,7 @@ msgctxt "@info"
 msgid "Unable to copy the item \"%1\" to %2."
 msgstr "\"%1\" इत्यस्य द्रव्यस्य %2 प्रति प्रतिलिपिं कर्तुं असमर्थः ।"
 
-#: calendarview.cpp:1496 calendarview.cpp:2488
+#: calendarview.cpp:1496 calendarview.cpp:2493
 #, kde-format
 msgctxt "@title:window"
 msgid "Copying Failed"
@@ -1479,7 +1479,7 @@ msgstr ""
 "मूलपञ्चाङ्गात् \"%1\" इति द्रव्यं निष्कासयितुं असमर्थः । तथापि अस्य द्रव्यस्य प्रतिलिपिः %2 "
 "मध्ये स्थापिता अस्ति"
 
-#: calendarview.cpp:1559 calendarview.cpp:1575 calendarview.cpp:2523
+#: calendarview.cpp:1559 calendarview.cpp:1575 calendarview.cpp:2528
 #, kde-format
 msgctxt "@title:window"
 msgid "Moving Failed"
@@ -1508,7 +1508,7 @@ msgstr "\"%1\" इति द्रव्यं %2 मध्ये योजय�
 msgid "Do you want to dissociate the occurrence on %1 from the recurrence?"
 msgstr "किं भवान् %1 इत्यत्र घटनां पुनरावृत्तितः विच्छेदयितुम् इच्छति?"
 
-#: calendarview.cpp:1613 calendarview.cpp:1625 calendarview.cpp:2293
+#: calendarview.cpp:1613 calendarview.cpp:1625 calendarview.cpp:2298
 #, kde-format
 msgctxt "@title:window"
 msgid "KOrganizer Confirmation"
@@ -1600,7 +1600,7 @@ msgstr "iCalendar सञ्चिका %1 लिखितुं न शक्�
 msgid "No filter"
 msgstr "न फ़िल्टर"
 
-#: calendarview.cpp:2288
+#: calendarview.cpp:2293
 #, kde-format
 msgid ""
 "The item \"%1\" has sub-to-dos. Do you want to delete just this item and "
@@ -1611,19 +1611,19 @@ msgstr ""
 "च तस्य सर्वाणि उप-कार्य-कार्यं स्वतन्त्रं कर्तुम् इच्छति, अथवा तस्य सर्वैः उप-कार्यैः सह कर्तव्यं "
 "विलोपयितुम् इच्छति?"
 
-#: calendarview.cpp:2294
+#: calendarview.cpp:2299
 #, kde-format
 msgctxt "@action:button"
 msgid "Delete Only This"
 msgstr "केवलं एतत् विलोपयतु"
 
-#: calendarview.cpp:2295 calendarview.cpp:2353
+#: calendarview.cpp:2300 calendarview.cpp:2358
 #, kde-format
 msgctxt "@action:button"
 msgid "Delete All"
 msgstr "सर्वं विलोपयतु"
 
-#: calendarview.cpp:2326
+#: calendarview.cpp:2331
 #, kde-format
 msgid ""
 "The item \"%1\" is marked read-only and cannot be deleted; it probably "
@@ -1632,12 +1632,12 @@ msgstr ""
 "\"%1\" इति द्रव्यं केवलं पठनीयं चिह्नितम् अस्ति, तत् विलोपयितुं न शक्यते; सम्भवतः केवलं "
 "पठनीयपञ्चाङ्गस्य अस्ति ।"
 
-#: calendarview.cpp:2330
+#: calendarview.cpp:2335
 #, kde-format
 msgid "Removing not possible"
 msgstr "निष्कासनं न सम्भवति"
 
-#: calendarview.cpp:2348
+#: calendarview.cpp:2353
 #, kde-format
 msgid ""
 "The calendar item \"%1\" recurs over multiple dates; are you sure you want "
@@ -1646,17 +1646,17 @@ msgstr ""
 "पञ्चाङ्गवस्तु \"%1\" बहुतिथिषु पुनरावृत्तिः भवति; किं भवन्तः निश्चितरूपेण तत् तस्य सर्वाणि "
 "पुनरावृत्तयः च विलोपयितुम् इच्छन्ति?"
 
-#: calendarview.cpp:2352 calendarview.cpp:2382
+#: calendarview.cpp:2357 calendarview.cpp:2387
 #, kde-format
 msgid "KOrganizer Confirmation"
 msgstr "KOrganizer पुष्टिकरण"
 
-#: calendarview.cpp:2360
+#: calendarview.cpp:2365
 #, kde-format
 msgid "Also Delete &Future"
 msgstr "Also Delete &Future इति अपि"
 
-#: calendarview.cpp:2364
+#: calendarview.cpp:2369
 #, kde-format
 msgid ""
 "The calendar item \"%1\" recurs over multiple dates. Do you want to delete "
@@ -1665,7 +1665,7 @@ msgstr ""
 "पञ्चाङ्गवस्तु \"%1\" बहुतिथिषु पुनरावृत्तिः भवति । किं भवान् केवलं %2 इत्यत्र वर्तमानं, "
 "भविष्यत्घटनानि अपि, अथवा तस्य सर्वाणि घटनानि विलोपयितुम् इच्छति?"
 
-#: calendarview.cpp:2371
+#: calendarview.cpp:2376
 #, kde-format
 msgid ""
 "The calendar item \"%1\" recurs over multiple dates. Do you want to delete "
@@ -1674,72 +1674,72 @@ msgstr ""
 "पञ्चाङ्गवस्तु \"%1\" बहुतिथिषु पुनरावृत्तिः भवति । किं भवान् केवलं %2 इत्यत्र वर्तमानं वा तस्य "
 "सर्वाणि घटनानि विलोपयितुम् इच्छति?"
 
-#: calendarview.cpp:2383
+#: calendarview.cpp:2388
 #, kde-format
 msgid "Delete C&urrent"
 msgstr "वर्तमानं विलोपयन्तु"
 
-#: calendarview.cpp:2385
+#: calendarview.cpp:2390
 #, kde-format
 msgid "Delete &All"
 msgstr "विलोपयन्तु &सर्वम्"
 
-#: calendarview.cpp:2416 calendarview.cpp:2423
+#: calendarview.cpp:2421 calendarview.cpp:2428
 #, kde-format
 msgid "Delete \"%1\""
 msgstr "\"%1\" विलोपयतु।"
 
-#: calendarview.cpp:2453
+#: calendarview.cpp:2458
 #, kde-format
 msgid ""
 "All calendars are unchecked in the Calendar Manager. No to-do was purged."
 msgstr ""
 "पञ्चाङ्गप्रबन्धके सर्वाणि पञ्चाङ्गानि अनिरीक्षितानि सन्ति । न कोऽपि कर्तव्यः शुद्धः अभवत् ।"
 
-#: calendarview.cpp:2458 calendarview.cpp:2741
+#: calendarview.cpp:2463 calendarview.cpp:2746
 #, kde-format
 msgid "There are no completed to-dos to purge."
 msgstr "शुद्धिकरणार्थं सम्पूर्णाः कार्याणि न सन्ति।"
 
-#: calendarview.cpp:2463
+#: calendarview.cpp:2468
 #, kde-format
 msgid "Delete all completed to-dos from checked calendars?"
 msgstr "चेक्ड् कैलेण्डर् तः सर्वाणि सम्पन्नानि कार्याणि विलोपयन्तु?"
 
-#: calendarview.cpp:2464
+#: calendarview.cpp:2469
 #, kde-format
 msgctxt "@title:window"
 msgid "Purge To-dos"
 msgstr "शुद्धिकरण To-dos"
 
-#: calendarview.cpp:2465
+#: calendarview.cpp:2470
 #, kde-format
 msgctxt "@action:button"
 msgid "Purge"
 msgstr "शुद्धिकरणम्"
 
-#: calendarview.cpp:2476
+#: calendarview.cpp:2481
 #, kde-format
 msgctxt "@info"
 msgid "Unable to edit \"%1\" because it is locked by another process."
 msgstr "\"%1\" सम्पादयितुं असमर्थः यतः अन्येन प्रक्रियायाः ताडितम् अस्ति ।"
 
-#: calendarview.cpp:2488
+#: calendarview.cpp:2493
 #, kde-format
 msgid "Unable to copy the item to %1."
 msgstr "%1 इत्यत्र द्रव्यस्य प्रतिलिपिं कर्तुं असमर्थः ।"
 
-#: calendarview.cpp:2523
+#: calendarview.cpp:2528
 #, kde-format
 msgid "Unable to move the item to  %1."
 msgstr "%1 - मध्ये द्रव्यं स्थानान्तरयितुं असमर्थः ।"
 
-#: calendarview.cpp:2734
+#: calendarview.cpp:2739
 #, kde-format
 msgid "0 completed to-dos were purged."
 msgstr "० सम्पन्नं टू-डोस् शुद्धं कृतम् ।"
 
-#: calendarview.cpp:2735 calendarview.cpp:2745
+#: calendarview.cpp:2740 calendarview.cpp:2750
 #, kde-format
 msgid "%1 to-do was ignored because it has uncompleted or read-only children."
 msgid_plural ""
@@ -1748,19 +1748,19 @@ msgstr[0] "%1 to-do उपेक्षितम् यतः अस्य अप
 msgstr[1] ""
 "%1 to-dos इत्यस्य अवहेलना कृता यतः तेषां अपूर्णाः अथवा केवलं पठनीयाः बालकाः सन्ति ।"
 
-#: calendarview.cpp:2739 calendarview.cpp:2744
+#: calendarview.cpp:2744 calendarview.cpp:2749
 #, kde-format
 msgid "%1 completed to-do was purged."
 msgid_plural "%1 completed to-dos were purged."
 msgstr[0] "%1 सम्पन्नं कर्तव्यं शुद्धं कृतम् ।"
 msgstr[1] "%1 सम्पन्नं to-dos शुद्धं कृतम्।"
 
-#: calendarview.cpp:2750
+#: calendarview.cpp:2755
 #, kde-format
 msgid "An error occurred while purging completed to-dos: %1"
 msgstr "सम्पूर्णं कार्यं शुद्धं कुर्वन् त्रुटिः अभवत्: %1"
 
-#: calendarview.cpp:2804
+#: calendarview.cpp:2809
 #, kde-format
 msgid ""
 "You created an incidence in a calendar that is currently filtered out.\n"
@@ -1769,7 +1769,7 @@ msgstr ""
 "भवान् एकस्मिन् पञ्चाङ्गे एकं घटनां निर्मितवान् यत् सम्प्रति छानितम् अस्ति ।\n"
 "वामपार्श्वपट्टिकायां, पञ्चाङ्गप्रबन्धके घटनां द्रष्टुं सक्षमं कुर्वन्तु ।"
 
-#: calendarview.cpp:2808
+#: calendarview.cpp:2813
 #, kde-format
 msgid ""
 "You created an incidence in a calendar that is currently filtered out.\n"
@@ -2209,32 +2209,32 @@ msgid "Unable to save %1 \"%2\"."
 msgstr "%1 \"%2\" रक्षितुं असमर्थः ।"
 
 #. i18n: ectx: property (windowTitle), widget (QWidget, ApptSummaryConfig_Base)
-#: kontactplugin/korganizer/apptsummaryconfig_base.ui:8
+#: kontactplugin/korganizer/apptsummaryconfig_base.ui:16
 #, kde-format
 msgid "Event Summary Configuration"
 msgstr "घटना सारांश विन्यास"
 
 #. i18n: ectx: property (title), widget (QGroupBox, mDaysButtonGroup)
-#: kontactplugin/korganizer/apptsummaryconfig_base.ui:14
+#: kontactplugin/korganizer/apptsummaryconfig_base.ui:22
 #, kde-format
 msgid "Show Upcoming Events Starting"
 msgstr "आगामिघटनानि आरभ्य दर्शयतु"
 
 #. i18n: ectx: property (toolTip), widget (QRadioButton, mDateTodayButton)
-#: kontactplugin/korganizer/apptsummaryconfig_base.ui:20
+#: kontactplugin/korganizer/apptsummaryconfig_base.ui:28
 #, kde-format
 msgid "Show events for today only"
 msgstr "अद्यत्वे एव घटनाः दर्शयन्तु"
 
 #. i18n: ectx: property (whatsThis), widget (QRadioButton, mDateTodayButton)
-#: kontactplugin/korganizer/apptsummaryconfig_base.ui:23
+#: kontactplugin/korganizer/apptsummaryconfig_base.ui:31
 #, kde-format
 msgid "Check this box if you want to see events occurring on this date only."
 msgstr ""
 "यदि भवान् केवलम् अस्मिन् तिथौ घटमानानि घटनानि द्रष्टुम् इच्छति तर्हि एतत् पेटीम् चिनोतु ।"
 
 #. i18n: ectx: property (text), widget (QRadioButton, mDateTodayButton)
-#: kontactplugin/korganizer/apptsummaryconfig_base.ui:26
+#: kontactplugin/korganizer/apptsummaryconfig_base.ui:34
 #: kontactplugin/korganizer/todosummaryconfig_base.ui:34
 #: kontactplugin/specialdates/sdsummaryconfig_base.ui:34
 #, kde-format
@@ -2242,13 +2242,13 @@ msgid "&Today only"
 msgstr "&अद्य एव"
 
 #. i18n: ectx: property (toolTip), widget (QRadioButton, mDateMonthButton)
-#: kontactplugin/korganizer/apptsummaryconfig_base.ui:36
+#: kontactplugin/korganizer/apptsummaryconfig_base.ui:44
 #, kde-format
 msgid "Show events starting within the next month"
 msgstr "अग्रिममासस्य अन्तः आरभ्यमाणानि घटनानि दर्शयन्तु"
 
 #. i18n: ectx: property (whatsThis), widget (QRadioButton, mDateMonthButton)
-#: kontactplugin/korganizer/apptsummaryconfig_base.ui:39
+#: kontactplugin/korganizer/apptsummaryconfig_base.ui:47
 #, kde-format
 msgid ""
 "Check this box if you want to see events that start sometime during the next "
@@ -2258,7 +2258,7 @@ msgstr ""
 "चिनोतु ।"
 
 #. i18n: ectx: property (text), widget (QRadioButton, mDateMonthButton)
-#: kontactplugin/korganizer/apptsummaryconfig_base.ui:42
+#: kontactplugin/korganizer/apptsummaryconfig_base.ui:50
 #: kontactplugin/korganizer/todosummaryconfig_base.ui:50
 #: kontactplugin/specialdates/sdsummaryconfig_base.ui:50
 #, kde-format
@@ -2266,13 +2266,13 @@ msgid "Within the next &month (31 days)"
 msgstr "अग्रिम &मासस्य अन्तः (३१ दिवसाः)"
 
 #. i18n: ectx: property (toolTip), widget (QRadioButton, mDateRangeButton)
-#: kontactplugin/korganizer/apptsummaryconfig_base.ui:57
+#: kontactplugin/korganizer/apptsummaryconfig_base.ui:65
 #, kde-format
 msgid "Select the days for showing upcoming events"
 msgstr "आगामिनि आयोजनानि दर्शयितुं दिवसान् चिनोतु"
 
 #. i18n: ectx: property (whatsThis), widget (QRadioButton, mDateRangeButton)
-#: kontactplugin/korganizer/apptsummaryconfig_base.ui:60
+#: kontactplugin/korganizer/apptsummaryconfig_base.ui:68
 #, kde-format
 msgid ""
 "Check this box if you want to specify the number of days in the future for "
@@ -2282,7 +2282,7 @@ msgstr ""
 "चिह्नितव्यम् ।"
 
 #. i18n: ectx: property (text), widget (QRadioButton, mDateRangeButton)
-#: kontactplugin/korganizer/apptsummaryconfig_base.ui:63
+#: kontactplugin/korganizer/apptsummaryconfig_base.ui:71
 #: kontactplugin/korganizer/todosummaryconfig_base.ui:74
 #: kontactplugin/specialdates/sdsummaryconfig_base.ui:71
 #, kde-format
@@ -2290,13 +2290,13 @@ msgid "Within the &next:"
 msgstr "अन्तः &next:"
 
 #. i18n: ectx: property (toolTip), widget (QSpinBox, mCustomDays)
-#: kontactplugin/korganizer/apptsummaryconfig_base.ui:76
+#: kontactplugin/korganizer/apptsummaryconfig_base.ui:84
 #, kde-format
 msgid "Set the number of days to show upcoming events"
 msgstr "आगामिनि घटनानि दर्शयितुं दिवससङ्ख्यां सेट् कुर्वन्तु"
 
 #. i18n: ectx: property (whatsThis), widget (QSpinBox, mCustomDays)
-#: kontactplugin/korganizer/apptsummaryconfig_base.ui:79
+#: kontactplugin/korganizer/apptsummaryconfig_base.ui:87
 #, kde-format
 msgid ""
 "Use this spinbox to set the number of days to show upcoming events up to 1 "
@@ -2306,7 +2306,7 @@ msgstr ""
 "उपयोगं कुर्वन्तु ।"
 
 #. i18n: ectx: property (specialValueText), widget (QSpinBox, mCustomDays)
-#: kontactplugin/korganizer/apptsummaryconfig_base.ui:82
+#: kontactplugin/korganizer/apptsummaryconfig_base.ui:90
 #: kontactplugin/korganizer/todosummaryconfig_base.ui:93
 #: kontactplugin/specialdates/sdsummaryconfig_base.ui:90
 #, kde-format
@@ -2314,7 +2314,7 @@ msgid "1 day"
 msgstr "१ दिवसे"
 
 #. i18n: ectx: property (suffix), widget (QSpinBox, mCustomDays)
-#: kontactplugin/korganizer/apptsummaryconfig_base.ui:85
+#: kontactplugin/korganizer/apptsummaryconfig_base.ui:93
 #: kontactplugin/korganizer/todosummaryconfig_base.ui:96
 #: kontactplugin/specialdates/sdsummaryconfig_base.ui:93
 #, kde-format
@@ -2323,19 +2323,19 @@ msgid " days"
 msgstr " दिवसाः"
 
 #. i18n: ectx: property (title), widget (QGroupBox, mShowButtonGroup)
-#: kontactplugin/korganizer/apptsummaryconfig_base.ui:122
+#: kontactplugin/korganizer/apptsummaryconfig_base.ui:130
 #, kde-format
 msgid "Show These Upcoming Events From Your Calendar"
 msgstr "एतानि आगामिनि घटनानि स्वस्य पञ्चाङ्गात् दर्शयन्तु"
 
 #. i18n: ectx: property (toolTip), widget (QCheckBox, mShowBirthdaysFromCal)
-#: kontactplugin/korganizer/apptsummaryconfig_base.ui:128
+#: kontactplugin/korganizer/apptsummaryconfig_base.ui:136
 #, kde-format
 msgid "Show birthdays from your calendar when also using the Birthday resource"
 msgstr "जन्मदिनस्य संसाधनस्य अपि उपयोगं कुर्वन् भवतः पञ्चाङ्गात् जन्मदिनानि दर्शयतु"
 
 #. i18n: ectx: property (whatsThis), widget (QCheckBox, mShowBirthdaysFromCal)
-#: kontactplugin/korganizer/apptsummaryconfig_base.ui:131
+#: kontactplugin/korganizer/apptsummaryconfig_base.ui:139
 #, kde-format
 msgid ""
 "Enable this option to include birthdays from your calendar in the upcoming "
@@ -2347,21 +2347,21 @@ msgstr ""
 
 #. i18n: ectx: property (text), widget (QCheckBox, mShowBirthdaysFromCal)
 #. i18n: ectx: property (text), widget (QCheckBox, mShowBirthdaysFromCalBox)
-#: kontactplugin/korganizer/apptsummaryconfig_base.ui:134
+#: kontactplugin/korganizer/apptsummaryconfig_base.ui:142
 #: kontactplugin/specialdates/sdsummaryconfig_base.ui:142
 #, kde-format
 msgid "Show &birthdays"
 msgstr "&जन्मदिनानि दर्शयतु"
 
 #. i18n: ectx: property (toolTip), widget (QCheckBox, mShowAnniversariesFromCal)
-#: kontactplugin/korganizer/apptsummaryconfig_base.ui:141
+#: kontactplugin/korganizer/apptsummaryconfig_base.ui:149
 #, kde-format
 msgid ""
 "Shows anniversaries from your calendar when using the Birthdays resource"
 msgstr "जन्मदिनसंसाधनस्य उपयोगं कुर्वन् भवतः पञ्चाङ्गात् वार्षिकोत्सवः दर्शयति"
 
 #. i18n: ectx: property (whatsThis), widget (QCheckBox, mShowAnniversariesFromCal)
-#: kontactplugin/korganizer/apptsummaryconfig_base.ui:144
+#: kontactplugin/korganizer/apptsummaryconfig_base.ui:152
 #, kde-format
 msgid ""
 "Enable this option to include anniversaries from your calendar in the "
@@ -2374,69 +2374,35 @@ msgstr ""
 
 #. i18n: ectx: property (text), widget (QCheckBox, mShowAnniversariesFromCal)
 #. i18n: ectx: property (text), widget (QCheckBox, mShowAnniversariesFromCalBox)
-#: kontactplugin/korganizer/apptsummaryconfig_base.ui:147
+#: kontactplugin/korganizer/apptsummaryconfig_base.ui:155
 #: kontactplugin/specialdates/sdsummaryconfig_base.ui:158
 #, kde-format
 msgid "Show &anniversaries"
 msgstr "& वार्षिकोत्सवं दर्शयतु"
-
-#. i18n: ectx: property (title), widget (QGroupBox, groupBox)
-#. i18n: ectx: property (title), widget (QGroupBox, mGroupwareGroup)
-#: kontactplugin/korganizer/apptsummaryconfig_base.ui:157
-#: kontactplugin/korganizer/todosummaryconfig_base.ui:216
-#: kontactplugin/specialdates/sdsummaryconfig_base.ui:244
-#, kde-format
-msgid "Groupware Settings"
-msgstr "समूहवेयर सेटिंग्स्"
-
-#. i18n: ectx: property (toolTip), widget (QCheckBox, mShowMineOnly)
-#: kontactplugin/korganizer/apptsummaryconfig_base.ui:163
-#: kontactplugin/specialdates/sdsummaryconfig_base.ui:250
-#, kde-format
-msgid "Show events belonging to my calendars only"
-msgstr "केवलं मम पञ्चाङ्गानां घटनाः दर्शयतु"
-
-#. i18n: ectx: property (whatsThis), widget (QCheckBox, mShowMineOnly)
-#: kontactplugin/korganizer/apptsummaryconfig_base.ui:166
-#: kontactplugin/specialdates/sdsummaryconfig_base.ui:253
-#, kde-format
-msgid ""
-"Check this box if you want the summary to show events belonging to your "
-"calendars only."
-msgstr ""
-"यदि भवान् इच्छति यत् सारांशः केवलं भवतः पञ्चाङ्गानां घटनाः दर्शयतु इति तर्हि एतत् पेटीम् "
-"चिह्नयन्तु ।"
-
-#. i18n: ectx: property (text), widget (QCheckBox, mShowMineOnly)
-#: kontactplugin/korganizer/apptsummaryconfig_base.ui:169
-#: kontactplugin/specialdates/sdsummaryconfig_base.ui:256
-#, kde-format
-msgid "Show &my events only"
-msgstr "केवलं &मम घटनाः दर्शयतु"
 
 #: kontactplugin/korganizer/apptsummarywidget.cpp:46
 #, kde-format
 msgid "Upcoming Events"
 msgstr "आगामी घटनाः"
 
-#: kontactplugin/korganizer/apptsummarywidget.cpp:207
+#: kontactplugin/korganizer/apptsummarywidget.cpp:196
 #, kde-format
 msgid "No upcoming events starting within the next day"
 msgid_plural "No upcoming events starting within the next %1 days"
 msgstr[0] "परदिनस्य अन्तः आरभ्य आगामिनि कार्यक्रमाः न भविष्यन्ति"
 msgstr[1] "अग्रिम %1 दिवसेषु आरभ्यमाणाः कोऽपि आगामिः कार्यक्रमः नास्ति"
 
-#: kontactplugin/korganizer/apptsummarywidget.cpp:240
+#: kontactplugin/korganizer/apptsummarywidget.cpp:229
 #, kde-format
 msgid "&Edit Appointment…"
 msgstr "&नियुक्ति सम्पादयतु…"
 
-#: kontactplugin/korganizer/apptsummarywidget.cpp:242
+#: kontactplugin/korganizer/apptsummarywidget.cpp:231
 #, kde-format
 msgid "&Delete Appointment"
 msgstr "&नियुक्ति हटाना"
 
-#: kontactplugin/korganizer/apptsummarywidget.cpp:261
+#: kontactplugin/korganizer/apptsummarywidget.cpp:250
 #, kde-format
 msgid "Edit Event: \"%1\""
 msgstr "सम्पादन घटना: \"%1\"।"
@@ -2461,9 +2427,9 @@ msgid ""
 msgstr ""
 "भवन्तः एकं संवादं प्रस्तुतं भविष्यन्ति यत्र भवन्तः नूतनं पत्रिकाप्रविष्टिं निर्मातुम् अर्हन्ति ।"
 
-#: kontactplugin/korganizer/kcmapptsummary.cpp:71
-#: kontactplugin/korganizer/kcmtodosummary.cpp:54
-#: kontactplugin/specialdates/kcmsdsummary.cpp:54
+#: kontactplugin/korganizer/kcmapptsummary.cpp:66
+#: kontactplugin/korganizer/kcmtodosummary.cpp:53
+#: kontactplugin/specialdates/kcmsdsummary.cpp:53
 #, kde-format
 msgid " day"
 msgid_plural " days"
@@ -2530,8 +2496,8 @@ msgid "Tomorrow"
 msgstr "श्वः"
 
 #: kontactplugin/korganizer/summaryeventinfo.cpp:171
-#: kontactplugin/korganizer/todosummarywidget.cpp:214
-#: kontactplugin/specialdates/sdsummarywidget.cpp:496
+#: kontactplugin/korganizer/todosummarywidget.cpp:205
+#: kontactplugin/specialdates/sdsummarywidget.cpp:485
 #, kde-format
 msgid "in 1 day"
 msgid_plural "in %1 days"
@@ -2561,7 +2527,7 @@ msgstr[0] "१ मि"
 msgstr[1] "%1 मिनिट्"
 
 #: kontactplugin/korganizer/summaryeventinfo.cpp:200
-#: kontactplugin/specialdates/sdsummarywidget.cpp:494
+#: kontactplugin/specialdates/sdsummarywidget.cpp:483
 #, kde-format
 msgid "now"
 msgstr "अधुना"
@@ -2783,117 +2749,95 @@ msgstr ""
 msgid "Over&due (not completed and beyond due-date)"
 msgstr "अति&देय (न सम्पन्नं नियततिथितः परं च)"
 
-#. i18n: ectx: property (toolTip), widget (QCheckBox, mShowMineOnly)
-#: kontactplugin/korganizer/todosummaryconfig_base.ui:222
-#, kde-format
-msgid "Show To-dos belonging to my calendars only"
-msgstr "केवलं मम पञ्चाङ्गानां To-dos दर्शयतु"
-
-#. i18n: ectx: property (whatsThis), widget (QCheckBox, mShowMineOnly)
-#: kontactplugin/korganizer/todosummaryconfig_base.ui:225
-#, kde-format
-msgid ""
-"Check this box if you want the summary to show To-dos belonging to your "
-"calendars only."
-msgstr ""
-"यदि भवान् इच्छति यत् सारांशः केवलं भवतः पञ्चाङ्गानां To-dos दर्शयतु इति तर्हि एतत् पेटीम् "
-"चिह्नितव्यम् ।"
-
-#. i18n: ectx: property (text), widget (QCheckBox, mShowMineOnly)
-#: kontactplugin/korganizer/todosummaryconfig_base.ui:228
-#, kde-format
-msgid "Show &my To-dos only"
-msgstr "केवलं &my To-dos दर्शयतु"
-
-#: kontactplugin/korganizer/todosummarywidget.cpp:42
+#: kontactplugin/korganizer/todosummarywidget.cpp:44
 #, kde-format
 msgid "Pending To-dos"
 msgstr "लम्बित टू-डोस"
 
-#: kontactplugin/korganizer/todosummarywidget.cpp:180
+#: kontactplugin/korganizer/todosummarywidget.cpp:171
 #, kde-format
 msgctxt "the to-do is due today"
 msgid "Today"
 msgstr "अद्य"
 
-#: kontactplugin/korganizer/todosummarywidget.cpp:182
+#: kontactplugin/korganizer/todosummarywidget.cpp:173
 #, kde-format
 msgctxt "the to-do is due tomorrow"
 msgid "Tomorrow"
 msgstr "श्वः"
 
-#: kontactplugin/korganizer/todosummarywidget.cpp:188
+#: kontactplugin/korganizer/todosummarywidget.cpp:179
 #, kde-format
 msgctxt "1. weekday, 2. time"
 msgid "%1 %2"
 msgstr "%1 %2"
 
-#: kontactplugin/korganizer/todosummarywidget.cpp:216
+#: kontactplugin/korganizer/todosummarywidget.cpp:207
 #, kde-format
 msgid "1 day ago"
 msgid_plural "%1 days ago"
 msgstr[0] "१ दिवसपूर्वम्"
 msgstr[1] "%1 दिवसपूर्वम्"
 
-#: kontactplugin/korganizer/todosummarywidget.cpp:218
+#: kontactplugin/korganizer/todosummarywidget.cpp:209
 #, kde-format
 msgctxt "the to-do is due"
 msgid "due"
 msgstr "देय"
 
-#: kontactplugin/korganizer/todosummarywidget.cpp:271
+#: kontactplugin/korganizer/todosummarywidget.cpp:272
 #, kde-format
 msgid "No pending to-dos due within the next day"
 msgid_plural "No pending to-dos due within the next %1 days"
 msgstr[0] "परदिनस्य अन्तः लम्बितकार्यं न भवति"
 msgstr[1] "अग्रिम %1 दिवसेषु लम्बितकार्यं न भवति"
 
-#: kontactplugin/korganizer/todosummarywidget.cpp:329
+#: kontactplugin/korganizer/todosummarywidget.cpp:330
 #, kde-format
 msgid "&Mark To-do Completed"
 msgstr "&मार्क टू-डू सम्पन्न"
 
-#: kontactplugin/korganizer/todosummarywidget.cpp:349
+#: kontactplugin/korganizer/todosummarywidget.cpp:350
 #, kde-format
 msgid "Edit To-do: \"%1\""
 msgstr "सम्पादनं कर्तव्यम्: \"%1\""
 
-#: kontactplugin/korganizer/todosummarywidget.cpp:369
+#: kontactplugin/korganizer/todosummarywidget.cpp:370
 #, kde-format
 msgid "open-ended"
 msgstr "मुक्तान्तः"
 
-#: kontactplugin/korganizer/todosummarywidget.cpp:371
+#: kontactplugin/korganizer/todosummarywidget.cpp:372
 #, kde-format
 msgctxt "the to-do is overdue"
 msgid "overdue"
 msgstr "अतिदेयम्"
 
-#: kontactplugin/korganizer/todosummarywidget.cpp:373
+#: kontactplugin/korganizer/todosummarywidget.cpp:374
 #, kde-format
 msgctxt "the to-do starts today"
 msgid "starts today"
 msgstr "अद्य आरभ्यते"
 
-#: kontactplugin/korganizer/todosummarywidget.cpp:377
+#: kontactplugin/korganizer/todosummarywidget.cpp:378
 #, kde-format
 msgctxt "the to-do has not been started yet"
 msgid "not-started"
 msgstr "न-प्रारम्भः"
 
-#: kontactplugin/korganizer/todosummarywidget.cpp:379
+#: kontactplugin/korganizer/todosummarywidget.cpp:380
 #, kde-format
 msgctxt "the to-do is completed"
 msgid "completed"
 msgstr "सम्पन्न"
 
-#: kontactplugin/korganizer/todosummarywidget.cpp:381
+#: kontactplugin/korganizer/todosummarywidget.cpp:382
 #, kde-format
 msgctxt "the to-do is in-progress"
 msgid "in-progress "
 msgstr "प्रगतिशीलः "
 
-#: kontactplugin/korganizer/todosummarywidget.cpp:386
+#: kontactplugin/korganizer/todosummarywidget.cpp:387
 #, kde-format
 msgctxt "Separator for status like this: overdue, completed"
 msgid ","
@@ -3114,68 +3058,68 @@ msgstr "वार्षिकोत्सवं दर्शयतु"
 msgid "Upcoming Special Dates"
 msgstr "आगामी विशेष तिथयः"
 
-#: kontactplugin/specialdates/sdsummarywidget.cpp:459
+#: kontactplugin/specialdates/sdsummarywidget.cpp:448
 #, kde-format
 msgctxt "the special day is today"
 msgid "Today"
 msgstr "अद्य"
 
-#: kontactplugin/specialdates/sdsummarywidget.cpp:461
+#: kontactplugin/specialdates/sdsummarywidget.cpp:450
 #, kde-format
 msgctxt "the special day is tomorrow"
 msgid "Tomorrow"
 msgstr "श्वः"
 
-#: kontactplugin/specialdates/sdsummarywidget.cpp:507
+#: kontactplugin/specialdates/sdsummarywidget.cpp:496
 #, kde-format
 msgid "Birthday"
 msgstr "जन्मदिवस"
 
-#: kontactplugin/specialdates/sdsummarywidget.cpp:510
+#: kontactplugin/specialdates/sdsummarywidget.cpp:499
 #, kde-format
 msgid "Anniversary"
 msgstr "वार्षिकी"
 
-#: kontactplugin/specialdates/sdsummarywidget.cpp:513
+#: kontactplugin/specialdates/sdsummarywidget.cpp:502
 #, kde-format
 msgid "Holiday"
 msgstr "अवकाशदिनं"
 
-#: kontactplugin/specialdates/sdsummarywidget.cpp:516
+#: kontactplugin/specialdates/sdsummarywidget.cpp:505
 #, kde-format
 msgid "Change of Seasons"
 msgstr "ऋतुपरिवर्तनम्"
 
-#: kontactplugin/specialdates/sdsummarywidget.cpp:519
+#: kontactplugin/specialdates/sdsummarywidget.cpp:508
 #, kde-format
 msgid "Special Occasion"
 msgstr "विशेषः अवसरः"
 
-#: kontactplugin/specialdates/sdsummarywidget.cpp:561
+#: kontactplugin/specialdates/sdsummarywidget.cpp:550
 #, kde-format
 msgid "one year"
 msgid_plural "%1 years"
 msgstr[0] "एकवर्षम्"
 msgstr[1] "%1 वर्षाणि"
 
-#: kontactplugin/specialdates/sdsummarywidget.cpp:571
+#: kontactplugin/specialdates/sdsummarywidget.cpp:560
 #, kde-format
 msgid "No special dates within the next 1 day"
 msgid_plural "No special dates pending within the next %1 days"
 msgstr[0] "अग्रिम १ दिवसस्य अन्तः विशेषतिथयः नास्ति"
 msgstr[1] "अग्रिम %1 दिवसेषु विशेषतिथयः लम्बिताः नास्ति"
 
-#: kontactplugin/specialdates/sdsummarywidget.cpp:665
+#: kontactplugin/specialdates/sdsummarywidget.cpp:654
 #, kde-format
 msgid "Send &Mail"
 msgstr "&मेल प्रेषयतु"
 
-#: kontactplugin/specialdates/sdsummarywidget.cpp:666
+#: kontactplugin/specialdates/sdsummarywidget.cpp:655
 #, kde-format
 msgid "View &Contact"
 msgstr "देखें & सम्पर्क करें"
 
-#: kontactplugin/specialdates/sdsummarywidget.cpp:681
+#: kontactplugin/specialdates/sdsummarywidget.cpp:670
 #, kde-format
 msgid "Mail to:\"%1\""
 msgstr "मेल :\"%1\" ."
@@ -3260,17 +3204,17 @@ msgctxt "@info:shell"
 msgid "Lists the available options for user feedback"
 msgstr "उपयोक्तृप्रतिक्रियायाः कृते उपलब्धविकल्पान् सूचीबद्धं करोति"
 
-#: koviewmanager.cpp:427
+#: koviewmanager.cpp:428
 #, kde-format
 msgid "Merged calendar"
 msgstr "विलीनं पञ्चाङ्गम्"
 
-#: koviewmanager.cpp:442
+#: koviewmanager.cpp:443
 #, kde-format
 msgid "Calendars Side by Side"
 msgstr "पञ्चाङ्गाः पार्श्वे पार्श्वे"
 
-#: koviewmanager.cpp:475
+#: koviewmanager.cpp:476
 #, kde-format
 msgid ""
 "Unable to display the work week since there are no work days configured. "
@@ -4033,20 +3977,26 @@ msgstr "वर्तमान-समय-सूचकं प्रदर्शय
 
 #. i18n: ectx: label, entry (MarcusBainsShowSeconds), group (Agenda View)
 #: settings/korganizer.kcfg:155
-#, kde-format
-msgid "Show seconds on the current-time (Marcus Bains) line"
+#, fuzzy, kde-format
+#| msgid "Show seconds on the current-time (Marcus Bains) line"
+msgid "Show seconds and timezone on the current-time (Marcus Bains) line"
 msgstr "वर्तमान-समय (Marcus Bains) रेखायां सेकण्ड् दर्शयतु"
 
 #. i18n: ectx: whatsthis, entry (MarcusBainsShowSeconds), group (Agenda View)
 #: settings/korganizer.kcfg:156
-#, kde-format
-msgid "Check this box if you want to show seconds on the current-time line."
+#, fuzzy, kde-format
+#| msgid "Check this box if you want to show seconds on the current-time line."
+msgid ""
+"Check this box if you want to show seconds on the current-time (Marcus "
+"Bains) line. Depending on your locale, the timezone will also be displayed."
 msgstr "यदि भवान् वर्तमान-समयरेखायां सेकण्ड् दर्शयितुम् इच्छति तर्हि एतत् पेटीम् चिनोतु ।"
 
 #. i18n: ectx: tooltip, entry (MarcusBainsShowSeconds), group (Agenda View)
 #: settings/korganizer.kcfg:157
-#, kde-format
-msgid "Display seconds with the current-time indicator"
+#, fuzzy, kde-format
+#| msgid "Display seconds with the current-time indicator"
+msgid ""
+"Display seconds (possibly with timezone) with the current-time indicator"
 msgstr "वर्तमान-समयसूचकेन सह सेकण्ड् प्रदर्शयन्तु"
 
 #. i18n: ectx: label, entry (SelectionStartsEditor), group (Agenda View)
@@ -4540,8 +4490,9 @@ msgstr "अत्र एजेण्डा दृश्यस्य पृष्
 
 #. i18n: ectx: label, entry, group (Colors)
 #: settings/korganizer.kcfg:331
-#, kde-format
-msgid "Agenda view current-time line color"
+#, fuzzy, kde-format
+#| msgid "Agenda view current-time line color"
+msgid "Agenda view current-time (Marcus Bains) line color"
 msgstr "एजेण्डा दृश्य वर्तमान-समयरेखा वर्ण"
 
 #. i18n: ectx: whatsthis, entry, group (Colors)
@@ -4667,17 +4618,22 @@ msgstr ""
 
 #. i18n: ectx: label, entry, group (Fonts)
 #: settings/korganizer.kcfg:380
-#, kde-format
-msgid "Current-time line"
-msgstr "वर्तमान-समयरेखा"
+#, fuzzy, kde-format
+#| msgid "Show current-time (Marcus Bains) line"
+msgid "Current-time (Marcus Bains) line"
+msgstr "वर्तमान-समय (Marcus Bains) रेखां दर्शयतु"
 
 #. i18n: ectx: whatsthis, entry, group (Fonts)
 #: settings/korganizer.kcfg:381
-#, kde-format
+#, fuzzy, kde-format
+#| msgid ""
+#| "Press this button to configure the current-time line font. This button "
+#| "will open the \"Select Font\" dialog, allowing you to choose the font for "
+#| "the current-time line in the agenda view."
 msgid ""
-"Press this button to configure the current-time line font. This button will "
-"open the \"Select Font\" dialog, allowing you to choose the font for the "
-"current-time line in the agenda view."
+"Press this button to configure the current-time (Marcus Bains) line font. "
+"This button will open the \"Select Font\" dialog, allowing you to choose the "
+"font for the current-time line in the agenda view."
 msgstr ""
 "वर्तमान-समय-रेखा-अङ्कं विन्यस्तुं एतत् बटन् नुदन्तु । एतत् बटन् \"Select Font\" संवादं "
 "उद्घाटयिष्यति, येन भवन्तः एजेण्डा-दृश्ये वर्तमान-समय-रेखायाः कृते फॉन्ट् चयनं कर्तुं शक्नुवन्ति ।"
@@ -5831,3 +5787,35 @@ msgstr "%1"
 msgctxt "4 digit year"
 msgid "%1"
 msgstr "%1"
+
+#~ msgid "Groupware Settings"
+#~ msgstr "समूहवेयर सेटिंग्स्"
+
+#~ msgid "Show events belonging to my calendars only"
+#~ msgstr "केवलं मम पञ्चाङ्गानां घटनाः दर्शयतु"
+
+#~ msgid ""
+#~ "Check this box if you want the summary to show events belonging to your "
+#~ "calendars only."
+#~ msgstr ""
+#~ "यदि भवान् इच्छति यत् सारांशः केवलं भवतः पञ्चाङ्गानां घटनाः दर्शयतु इति तर्हि एतत् पेटीम् "
+#~ "चिह्नयन्तु ।"
+
+#~ msgid "Show &my events only"
+#~ msgstr "केवलं &मम घटनाः दर्शयतु"
+
+#~ msgid "Show To-dos belonging to my calendars only"
+#~ msgstr "केवलं मम पञ्चाङ्गानां To-dos दर्शयतु"
+
+#~ msgid ""
+#~ "Check this box if you want the summary to show To-dos belonging to your "
+#~ "calendars only."
+#~ msgstr ""
+#~ "यदि भवान् इच्छति यत् सारांशः केवलं भवतः पञ्चाङ्गानां To-dos दर्शयतु इति तर्हि एतत् "
+#~ "पेटीम् चिह्नितव्यम् ।"
+
+#~ msgid "Show &my To-dos only"
+#~ msgstr "केवलं &my To-dos दर्शयतु"
+
+#~ msgid "Current-time line"
+#~ msgstr "वर्तमान-समयरेखा"

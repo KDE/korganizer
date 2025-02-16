@@ -5,7 +5,7 @@ msgid ""
 msgstr ""
 "Project-Id-Version: Mimos\n"
 "Report-Msgid-Bugs-To: https://bugs.kde.org\n"
-"POT-Creation-Date: 2025-02-06 00:41+0000\n"
+"POT-Creation-Date: 2025-02-16 00:42+0000\n"
 "PO-Revision-Date: 2005-11-26 19:59+0800\n"
 "Last-Translator: MIMOS <opensource@mimos.my>\n"
 "Language-Team: Malay <kedidiemas@yahoogroups.com>\n"
@@ -1212,13 +1212,13 @@ msgstr "&Hapuskan Peristiwa"
 msgid "&Show To-do"
 msgstr "&Paparkan Tugasan"
 
-#: actionmanager.cpp:1280 kontactplugin/korganizer/todosummarywidget.cpp:321
+#: actionmanager.cpp:1280 kontactplugin/korganizer/todosummarywidget.cpp:322
 #, fuzzy, kde-format
 #| msgid "&Edit To-do..."
 msgid "&Edit To-do…"
 msgstr "&Edit Tugasan..."
 
-#: actionmanager.cpp:1283 kontactplugin/korganizer/todosummarywidget.cpp:323
+#: actionmanager.cpp:1283 kontactplugin/korganizer/todosummarywidget.cpp:324
 #, kde-format
 msgid "&Delete To-do"
 msgstr "&Hapuskan Tugasan"
@@ -1497,7 +1497,7 @@ msgctxt "@info"
 msgid "Unable to copy the item \"%1\" to %2."
 msgstr "Tidak dapat menyalin kejadian ke %1."
 
-#: calendarview.cpp:1496 calendarview.cpp:2488
+#: calendarview.cpp:1496 calendarview.cpp:2493
 #, fuzzy, kde-format
 #| msgid "Copying Failed"
 msgctxt "@title:window"
@@ -1512,7 +1512,7 @@ msgid ""
 "of this item has been put into %2"
 msgstr ""
 
-#: calendarview.cpp:1559 calendarview.cpp:1575 calendarview.cpp:2523
+#: calendarview.cpp:1559 calendarview.cpp:1575 calendarview.cpp:2528
 #, fuzzy, kde-format
 #| msgid "Moving Failed"
 msgctxt "@title:window"
@@ -1544,7 +1544,7 @@ msgstr ""
 msgid "Do you want to dissociate the occurrence on %1 from the recurrence?"
 msgstr "Asingkan peristiwa daripada pengulangan"
 
-#: calendarview.cpp:1613 calendarview.cpp:1625 calendarview.cpp:2293
+#: calendarview.cpp:1613 calendarview.cpp:1625 calendarview.cpp:2298
 #, fuzzy, kde-format
 #| msgid "KOrganizer Confirmation"
 msgctxt "@title:window"
@@ -1643,7 +1643,7 @@ msgstr "Tidak dapat menulis fail arkib %1."
 msgid "No filter"
 msgstr "Tiada penapis"
 
-#: calendarview.cpp:2288
+#: calendarview.cpp:2293
 #, fuzzy, kde-format
 msgid ""
 "The item \"%1\" has sub-to-dos. Do you want to delete just this item and "
@@ -1654,20 +1654,20 @@ msgstr ""
 "sahaja dan menjadikan semua subtugasannya tak bersandar, atau "
 "menghapuskannya bersama dengan semua subtugasannya?"
 
-#: calendarview.cpp:2294
+#: calendarview.cpp:2299
 #, fuzzy, kde-format
 #| msgid "Delete Only This"
 msgctxt "@action:button"
 msgid "Delete Only This"
 msgstr "Hapuskan Ini Sahaja"
 
-#: calendarview.cpp:2295 calendarview.cpp:2353
+#: calendarview.cpp:2300 calendarview.cpp:2358
 #, fuzzy, kde-format
 msgctxt "@action:button"
 msgid "Delete All"
 msgstr "Hapuskan &Semua"
 
-#: calendarview.cpp:2326
+#: calendarview.cpp:2331
 #, fuzzy, kde-format
 #| msgid ""
 #| "The item \"%1\" is marked read-only and cannot be deleted; it probably "
@@ -1679,12 +1679,12 @@ msgstr ""
 "Item \"%1\" bertanda baca saja dan tidak boleh dihapuskan; mungkin ia adalah "
 "anggota sumber kalendar baca saja.."
 
-#: calendarview.cpp:2330
+#: calendarview.cpp:2335
 #, kde-format
 msgid "Removing not possible"
 msgstr "Tidak boleh dibuang"
 
-#: calendarview.cpp:2348
+#: calendarview.cpp:2353
 #, fuzzy, kde-format
 msgid ""
 "The calendar item \"%1\" recurs over multiple dates; are you sure you want "
@@ -1693,18 +1693,18 @@ msgstr ""
 "Kejadian \"%1\" berulang pada beberapa tarikh; anda pasti ingin "
 "menghapuskannya dan semua pengulangannya?"
 
-#: calendarview.cpp:2352 calendarview.cpp:2382
+#: calendarview.cpp:2357 calendarview.cpp:2387
 #, kde-format
 msgid "KOrganizer Confirmation"
 msgstr "Pengesahan KOrganizer"
 
-#: calendarview.cpp:2360
+#: calendarview.cpp:2365
 #, fuzzy, kde-format
 #| msgid "Delete &Future"
 msgid "Also Delete &Future"
 msgstr "Hapuskan yang &Akan Datang"
 
-#: calendarview.cpp:2364
+#: calendarview.cpp:2369
 #, fuzzy, kde-format
 msgid ""
 "The calendar item \"%1\" recurs over multiple dates. Do you want to delete "
@@ -1714,7 +1714,7 @@ msgstr ""
 "terkini sahaja pada  %2, pengulangan akan datang sahaja, atau semua "
 "pengulangannya?"
 
-#: calendarview.cpp:2371
+#: calendarview.cpp:2376
 #, fuzzy, kde-format
 msgid ""
 "The calendar item \"%1\" recurs over multiple dates. Do you want to delete "
@@ -1724,77 +1724,77 @@ msgstr ""
 "terkini sahaja pada  %2, pengulangan akan datang sahaja, atau semua "
 "pengulangannya?"
 
-#: calendarview.cpp:2383
+#: calendarview.cpp:2388
 #, kde-format
 msgid "Delete C&urrent"
 msgstr "Hapuskan yang &Semasa"
 
-#: calendarview.cpp:2385
+#: calendarview.cpp:2390
 #, kde-format
 msgid "Delete &All"
 msgstr "Hapuskan &Semua"
 
-#: calendarview.cpp:2416 calendarview.cpp:2423
+#: calendarview.cpp:2421 calendarview.cpp:2428
 #, fuzzy, kde-format
 #| msgid "Delete %1"
 msgid "Delete \"%1\""
 msgstr "Hapuskan%1"
 
-#: calendarview.cpp:2453
+#: calendarview.cpp:2458
 #, kde-format
 msgid ""
 "All calendars are unchecked in the Calendar Manager. No to-do was purged."
 msgstr ""
 
-#: calendarview.cpp:2458 calendarview.cpp:2741
+#: calendarview.cpp:2463 calendarview.cpp:2746
 #, fuzzy, kde-format
 #| msgid "Strike &out completed to-do summaries"
 msgid "There are no completed to-dos to purge."
 msgstr "Potong ringkasan tugasan yang selesai"
 
-#: calendarview.cpp:2463
+#: calendarview.cpp:2468
 #, fuzzy, kde-format
 #| msgid "Delete all completed to-dos?"
 msgid "Delete all completed to-dos from checked calendars?"
 msgstr "Hapuskan semua tugasan yang telah selesai?"
 
-#: calendarview.cpp:2464
+#: calendarview.cpp:2469
 #, fuzzy, kde-format
 #| msgid "Purge To-dos"
 msgctxt "@title:window"
 msgid "Purge To-dos"
 msgstr "Singkirkan Tugasan"
 
-#: calendarview.cpp:2465
+#: calendarview.cpp:2470
 #, fuzzy, kde-format
 #| msgid "Purge"
 msgctxt "@action:button"
 msgid "Purge"
 msgstr "Singkirkan"
 
-#: calendarview.cpp:2476
+#: calendarview.cpp:2481
 #, fuzzy, kde-format
 msgctxt "@info"
 msgid "Unable to edit \"%1\" because it is locked by another process."
 msgstr "Tidak dapat mengedit kejadian: ia dipasak oleh proses lain."
 
-#: calendarview.cpp:2488
+#: calendarview.cpp:2493
 #, fuzzy, kde-format
 msgid "Unable to copy the item to %1."
 msgstr "Tidak dapat menyalin kejadian ke %1."
 
-#: calendarview.cpp:2523
+#: calendarview.cpp:2528
 #, fuzzy, kde-format
 msgid "Unable to move the item to  %1."
 msgstr "Tidak dapat mengalihkan kejadian ke %1."
 
-#: calendarview.cpp:2734
+#: calendarview.cpp:2739
 #, fuzzy, kde-format
 #| msgid "Hide co&mpleted to-dos"
 msgid "0 completed to-dos were purged."
 msgstr "Sembunyikan tugasan yang telah &selesai"
 
-#: calendarview.cpp:2735 calendarview.cpp:2745
+#: calendarview.cpp:2740 calendarview.cpp:2750
 #, kde-format
 msgid "%1 to-do was ignored because it has uncompleted or read-only children."
 msgid_plural ""
@@ -1802,7 +1802,7 @@ msgid_plural ""
 msgstr[0] ""
 msgstr[1] ""
 
-#: calendarview.cpp:2739 calendarview.cpp:2744
+#: calendarview.cpp:2744 calendarview.cpp:2749
 #, fuzzy, kde-format
 #| msgid "Hide co&mpleted to-dos"
 msgid "%1 completed to-do was purged."
@@ -1810,20 +1810,20 @@ msgid_plural "%1 completed to-dos were purged."
 msgstr[0] "Sembunyikan tugasan yang telah &selesai"
 msgstr[1] "Sembunyikan tugasan yang telah &selesai"
 
-#: calendarview.cpp:2750
+#: calendarview.cpp:2755
 #, fuzzy, kde-format
 #| msgid "Purging completed to-dos"
 msgid "An error occurred while purging completed to-dos: %1"
 msgstr "Menyingkirkan tugasan yang telah selesai"
 
-#: calendarview.cpp:2804
+#: calendarview.cpp:2809
 #, kde-format
 msgid ""
 "You created an incidence in a calendar that is currently filtered out.\n"
 "On the left sidebar, enable it in the calendar manager to see the incidence."
 msgstr ""
 
-#: calendarview.cpp:2808
+#: calendarview.cpp:2813
 #, kde-format
 msgid ""
 "You created an incidence in a calendar that is currently filtered out.\n"
@@ -2278,33 +2278,33 @@ msgid "Unable to save %1 \"%2\"."
 msgstr "Tidak dapat menyimpan %1 \"%2\"."
 
 #. i18n: ectx: property (windowTitle), widget (QWidget, ApptSummaryConfig_Base)
-#: kontactplugin/korganizer/apptsummaryconfig_base.ui:8
+#: kontactplugin/korganizer/apptsummaryconfig_base.ui:16
 #, fuzzy, kde-format
 #| msgid "Calendar"
 msgid "Event Summary Configuration"
 msgstr "Kalendar"
 
 #. i18n: ectx: property (title), widget (QGroupBox, mDaysButtonGroup)
-#: kontactplugin/korganizer/apptsummaryconfig_base.ui:14
+#: kontactplugin/korganizer/apptsummaryconfig_base.ui:22
 #, kde-format
 msgid "Show Upcoming Events Starting"
 msgstr ""
 
 #. i18n: ectx: property (toolTip), widget (QRadioButton, mDateTodayButton)
-#: kontactplugin/korganizer/apptsummaryconfig_base.ui:20
+#: kontactplugin/korganizer/apptsummaryconfig_base.ui:28
 #, fuzzy, kde-format
 #| msgid "Sets where the event or to-do will take place."
 msgid "Show events for today only"
 msgstr "Mengeset tempat peristiwa atau tugasan akan diadakan."
 
 #. i18n: ectx: property (whatsThis), widget (QRadioButton, mDateTodayButton)
-#: kontactplugin/korganizer/apptsummaryconfig_base.ui:23
+#: kontactplugin/korganizer/apptsummaryconfig_base.ui:31
 #, fuzzy, kde-format
 msgid "Check this box if you want to see events occurring on this date only."
 msgstr "Semak opsyen ini jika anda ingin saat dalam garis Marcus Bains."
 
 #. i18n: ectx: property (text), widget (QRadioButton, mDateTodayButton)
-#: kontactplugin/korganizer/apptsummaryconfig_base.ui:26
+#: kontactplugin/korganizer/apptsummaryconfig_base.ui:34
 #: kontactplugin/korganizer/todosummaryconfig_base.ui:34
 #: kontactplugin/specialdates/sdsummaryconfig_base.ui:34
 #, fuzzy, kde-format
@@ -2313,13 +2313,13 @@ msgid "&Today only"
 msgstr "hari"
 
 #. i18n: ectx: property (toolTip), widget (QRadioButton, mDateMonthButton)
-#: kontactplugin/korganizer/apptsummaryconfig_base.ui:36
+#: kontactplugin/korganizer/apptsummaryconfig_base.ui:44
 #, kde-format
 msgid "Show events starting within the next month"
 msgstr ""
 
 #. i18n: ectx: property (whatsThis), widget (QRadioButton, mDateMonthButton)
-#: kontactplugin/korganizer/apptsummaryconfig_base.ui:39
+#: kontactplugin/korganizer/apptsummaryconfig_base.ui:47
 #, fuzzy, kde-format
 msgid ""
 "Check this box if you want to see events that start sometime during the next "
@@ -2327,7 +2327,7 @@ msgid ""
 msgstr "Semak opsyen ini jika anda ingin saat dalam garis Marcus Bains."
 
 #. i18n: ectx: property (text), widget (QRadioButton, mDateMonthButton)
-#: kontactplugin/korganizer/apptsummaryconfig_base.ui:42
+#: kontactplugin/korganizer/apptsummaryconfig_base.ui:50
 #: kontactplugin/korganizer/todosummaryconfig_base.ui:50
 #: kontactplugin/specialdates/sdsummaryconfig_base.ui:50
 #, kde-format
@@ -2335,14 +2335,14 @@ msgid "Within the next &month (31 days)"
 msgstr ""
 
 #. i18n: ectx: property (toolTip), widget (QRadioButton, mDateRangeButton)
-#: kontactplugin/korganizer/apptsummaryconfig_base.ui:57
+#: kontactplugin/korganizer/apptsummaryconfig_base.ui:65
 #, fuzzy, kde-format
 #| msgid "Sets the due date for this to-do."
 msgid "Select the days for showing upcoming events"
 msgstr "Mengeset tarikh jangkaan untuk tugasan ini."
 
 #. i18n: ectx: property (whatsThis), widget (QRadioButton, mDateRangeButton)
-#: kontactplugin/korganizer/apptsummaryconfig_base.ui:60
+#: kontactplugin/korganizer/apptsummaryconfig_base.ui:68
 #, fuzzy, kde-format
 msgid ""
 "Check this box if you want to specify the number of days in the future for "
@@ -2350,7 +2350,7 @@ msgid ""
 msgstr "Semak opsyen ini jika anda ingin saat dalam garis Marcus Bains."
 
 #. i18n: ectx: property (text), widget (QRadioButton, mDateRangeButton)
-#: kontactplugin/korganizer/apptsummaryconfig_base.ui:63
+#: kontactplugin/korganizer/apptsummaryconfig_base.ui:71
 #: kontactplugin/korganizer/todosummaryconfig_base.ui:74
 #: kontactplugin/specialdates/sdsummaryconfig_base.ui:71
 #, kde-format
@@ -2358,13 +2358,13 @@ msgid "Within the &next:"
 msgstr ""
 
 #. i18n: ectx: property (toolTip), widget (QSpinBox, mCustomDays)
-#: kontactplugin/korganizer/apptsummaryconfig_base.ui:76
+#: kontactplugin/korganizer/apptsummaryconfig_base.ui:84
 #, kde-format
 msgid "Set the number of days to show upcoming events"
 msgstr ""
 
 #. i18n: ectx: property (whatsThis), widget (QSpinBox, mCustomDays)
-#: kontactplugin/korganizer/apptsummaryconfig_base.ui:79
+#: kontactplugin/korganizer/apptsummaryconfig_base.ui:87
 #, kde-format
 msgid ""
 "Use this spinbox to set the number of days to show upcoming events up to 1 "
@@ -2372,7 +2372,7 @@ msgid ""
 msgstr ""
 
 #. i18n: ectx: property (specialValueText), widget (QSpinBox, mCustomDays)
-#: kontactplugin/korganizer/apptsummaryconfig_base.ui:82
+#: kontactplugin/korganizer/apptsummaryconfig_base.ui:90
 #: kontactplugin/korganizer/todosummaryconfig_base.ui:93
 #: kontactplugin/specialdates/sdsummaryconfig_base.ui:90
 #, fuzzy, kde-format
@@ -2380,7 +2380,7 @@ msgid "1 day"
 msgstr "_n: 1 hari"
 
 #. i18n: ectx: property (suffix), widget (QSpinBox, mCustomDays)
-#: kontactplugin/korganizer/apptsummaryconfig_base.ui:85
+#: kontactplugin/korganizer/apptsummaryconfig_base.ui:93
 #: kontactplugin/korganizer/todosummaryconfig_base.ui:96
 #: kontactplugin/specialdates/sdsummaryconfig_base.ui:93
 #, fuzzy, kde-format
@@ -2391,19 +2391,19 @@ msgid " days"
 msgstr " hari"
 
 #. i18n: ectx: property (title), widget (QGroupBox, mShowButtonGroup)
-#: kontactplugin/korganizer/apptsummaryconfig_base.ui:122
+#: kontactplugin/korganizer/apptsummaryconfig_base.ui:130
 #, kde-format
 msgid "Show These Upcoming Events From Your Calendar"
 msgstr ""
 
 #. i18n: ectx: property (toolTip), widget (QCheckBox, mShowBirthdaysFromCal)
-#: kontactplugin/korganizer/apptsummaryconfig_base.ui:128
+#: kontactplugin/korganizer/apptsummaryconfig_base.ui:136
 #, kde-format
 msgid "Show birthdays from your calendar when also using the Birthday resource"
 msgstr ""
 
 #. i18n: ectx: property (whatsThis), widget (QCheckBox, mShowBirthdaysFromCal)
-#: kontactplugin/korganizer/apptsummaryconfig_base.ui:131
+#: kontactplugin/korganizer/apptsummaryconfig_base.ui:139
 #, kde-format
 msgid ""
 "Enable this option to include birthdays from your calendar in the upcoming "
@@ -2413,21 +2413,21 @@ msgstr ""
 
 #. i18n: ectx: property (text), widget (QCheckBox, mShowBirthdaysFromCal)
 #. i18n: ectx: property (text), widget (QCheckBox, mShowBirthdaysFromCalBox)
-#: kontactplugin/korganizer/apptsummaryconfig_base.ui:134
+#: kontactplugin/korganizer/apptsummaryconfig_base.ui:142
 #: kontactplugin/specialdates/sdsummaryconfig_base.ui:142
 #, fuzzy, kde-format
 msgid "Show &birthdays"
 msgstr "Hari Lahir"
 
 #. i18n: ectx: property (toolTip), widget (QCheckBox, mShowAnniversariesFromCal)
-#: kontactplugin/korganizer/apptsummaryconfig_base.ui:141
+#: kontactplugin/korganizer/apptsummaryconfig_base.ui:149
 #, kde-format
 msgid ""
 "Shows anniversaries from your calendar when using the Birthdays resource"
 msgstr ""
 
 #. i18n: ectx: property (whatsThis), widget (QCheckBox, mShowAnniversariesFromCal)
-#: kontactplugin/korganizer/apptsummaryconfig_base.ui:144
+#: kontactplugin/korganizer/apptsummaryconfig_base.ui:152
 #, kde-format
 msgid ""
 "Enable this option to include anniversaries from your calendar in the "
@@ -2437,43 +2437,10 @@ msgstr ""
 
 #. i18n: ectx: property (text), widget (QCheckBox, mShowAnniversariesFromCal)
 #. i18n: ectx: property (text), widget (QCheckBox, mShowAnniversariesFromCalBox)
-#: kontactplugin/korganizer/apptsummaryconfig_base.ui:147
+#: kontactplugin/korganizer/apptsummaryconfig_base.ui:155
 #: kontactplugin/specialdates/sdsummaryconfig_base.ui:158
 #, kde-format
 msgid "Show &anniversaries"
-msgstr ""
-
-#. i18n: ectx: property (title), widget (QGroupBox, groupBox)
-#. i18n: ectx: property (title), widget (QGroupBox, mGroupwareGroup)
-#: kontactplugin/korganizer/apptsummaryconfig_base.ui:157
-#: kontactplugin/korganizer/todosummaryconfig_base.ui:216
-#: kontactplugin/specialdates/sdsummaryconfig_base.ui:244
-#, fuzzy, kde-format
-msgid "Groupware Settings"
-msgstr "Mesyuarat"
-
-#. i18n: ectx: property (toolTip), widget (QCheckBox, mShowMineOnly)
-#: kontactplugin/korganizer/apptsummaryconfig_base.ui:163
-#: kontactplugin/specialdates/sdsummaryconfig_base.ui:250
-#, fuzzy, kde-format
-#| msgid "Import Calendar"
-msgid "Show events belonging to my calendars only"
-msgstr "Import kalendar"
-
-#. i18n: ectx: property (whatsThis), widget (QCheckBox, mShowMineOnly)
-#: kontactplugin/korganizer/apptsummaryconfig_base.ui:166
-#: kontactplugin/specialdates/sdsummaryconfig_base.ui:253
-#, fuzzy, kde-format
-msgid ""
-"Check this box if you want the summary to show events belonging to your "
-"calendars only."
-msgstr "Semak opsyen ini jika anda ingin saat dalam garis Marcus Bains."
-
-#. i18n: ectx: property (text), widget (QCheckBox, mShowMineOnly)
-#: kontactplugin/korganizer/apptsummaryconfig_base.ui:169
-#: kontactplugin/specialdates/sdsummaryconfig_base.ui:256
-#, kde-format
-msgid "Show &my events only"
 msgstr ""
 
 #: kontactplugin/korganizer/apptsummarywidget.cpp:46
@@ -2481,26 +2448,26 @@ msgstr ""
 msgid "Upcoming Events"
 msgstr ""
 
-#: kontactplugin/korganizer/apptsummarywidget.cpp:207
+#: kontactplugin/korganizer/apptsummarywidget.cpp:196
 #, kde-format
 msgid "No upcoming events starting within the next day"
 msgid_plural "No upcoming events starting within the next %1 days"
 msgstr[0] ""
 msgstr[1] ""
 
-#: kontactplugin/korganizer/apptsummarywidget.cpp:240
+#: kontactplugin/korganizer/apptsummarywidget.cpp:229
 #, fuzzy, kde-format
 #| msgid "Appointment"
 msgid "&Edit Appointment…"
 msgstr "Temu janji"
 
-#: kontactplugin/korganizer/apptsummarywidget.cpp:242
+#: kontactplugin/korganizer/apptsummarywidget.cpp:231
 #, fuzzy, kde-format
 #| msgid "Appointment"
 msgid "&Delete Appointment"
 msgstr "Temu janji"
 
-#: kontactplugin/korganizer/apptsummarywidget.cpp:261
+#: kontactplugin/korganizer/apptsummarywidget.cpp:250
 #, fuzzy, kde-format
 #| msgid "Edit Event"
 msgid "Edit Event: \"%1\""
@@ -2526,9 +2493,9 @@ msgid ""
 "You will be presented with a dialog where you can create a new journal entry."
 msgstr ""
 
-#: kontactplugin/korganizer/kcmapptsummary.cpp:71
-#: kontactplugin/korganizer/kcmtodosummary.cpp:54
-#: kontactplugin/specialdates/kcmsdsummary.cpp:54
+#: kontactplugin/korganizer/kcmapptsummary.cpp:66
+#: kontactplugin/korganizer/kcmtodosummary.cpp:53
+#: kontactplugin/specialdates/kcmsdsummary.cpp:53
 #, fuzzy, kde-format
 msgid " day"
 msgid_plural " days"
@@ -2601,8 +2568,8 @@ msgid "Tomorrow"
 msgstr ""
 
 #: kontactplugin/korganizer/summaryeventinfo.cpp:171
-#: kontactplugin/korganizer/todosummarywidget.cpp:214
-#: kontactplugin/specialdates/sdsummarywidget.cpp:496
+#: kontactplugin/korganizer/todosummarywidget.cpp:205
+#: kontactplugin/specialdates/sdsummarywidget.cpp:485
 #, fuzzy, kde-format
 msgid "in 1 day"
 msgid_plural "in %1 days"
@@ -2632,7 +2599,7 @@ msgstr[0] "_n: 1 minit"
 msgstr[1] "%1 minit"
 
 #: kontactplugin/korganizer/summaryeventinfo.cpp:200
-#: kontactplugin/specialdates/sdsummarywidget.cpp:494
+#: kontactplugin/specialdates/sdsummarywidget.cpp:483
 #, kde-format
 msgid "now"
 msgstr ""
@@ -2856,48 +2823,26 @@ msgstr "Semak opsyen ini jika anda ingin saat dalam garis Marcus Bains."
 msgid "Over&due (not completed and beyond due-date)"
 msgstr ""
 
-#. i18n: ectx: property (toolTip), widget (QCheckBox, mShowMineOnly)
-#: kontactplugin/korganizer/todosummaryconfig_base.ui:222
-#, fuzzy, kde-format
-#| msgid "Import Calendar"
-msgid "Show To-dos belonging to my calendars only"
-msgstr "Import kalendar"
-
-#. i18n: ectx: property (whatsThis), widget (QCheckBox, mShowMineOnly)
-#: kontactplugin/korganizer/todosummaryconfig_base.ui:225
-#, fuzzy, kde-format
-msgid ""
-"Check this box if you want the summary to show To-dos belonging to your "
-"calendars only."
-msgstr "Semak opsyen ini jika anda ingin saat dalam garis Marcus Bains."
-
-#. i18n: ectx: property (text), widget (QCheckBox, mShowMineOnly)
-#: kontactplugin/korganizer/todosummaryconfig_base.ui:228
-#, fuzzy, kde-format
-#| msgid "&Show To-do"
-msgid "Show &my To-dos only"
-msgstr "&Paparkan Tugasan"
-
-#: kontactplugin/korganizer/todosummarywidget.cpp:42
+#: kontactplugin/korganizer/todosummarywidget.cpp:44
 #, fuzzy, kde-format
 #| msgid "Purge To-dos"
 msgid "Pending To-dos"
 msgstr "Singkirkan Tugasan"
 
-#: kontactplugin/korganizer/todosummarywidget.cpp:180
+#: kontactplugin/korganizer/todosummarywidget.cpp:171
 #, fuzzy, kde-format
 #| msgid "day"
 msgctxt "the to-do is due today"
 msgid "Today"
 msgstr "hari"
 
-#: kontactplugin/korganizer/todosummarywidget.cpp:182
+#: kontactplugin/korganizer/todosummarywidget.cpp:173
 #, kde-format
 msgctxt "the to-do is due tomorrow"
 msgid "Tomorrow"
 msgstr ""
 
-#: kontactplugin/korganizer/todosummarywidget.cpp:188
+#: kontactplugin/korganizer/todosummarywidget.cpp:179
 #, fuzzy, kde-format
 #| msgctxt "monthname year"
 #| msgid "%1 %2"
@@ -2905,21 +2850,21 @@ msgctxt "1. weekday, 2. time"
 msgid "%1 %2"
 msgstr "%1 %2"
 
-#: kontactplugin/korganizer/todosummarywidget.cpp:216
+#: kontactplugin/korganizer/todosummarywidget.cpp:207
 #, fuzzy, kde-format
 msgid "1 day ago"
 msgid_plural "%1 days ago"
 msgstr[0] "_n: 1 hari"
 msgstr[1] "%1 hari"
 
-#: kontactplugin/korganizer/todosummarywidget.cpp:218
+#: kontactplugin/korganizer/todosummarywidget.cpp:209
 #, fuzzy, kde-format
 #| msgid "Due"
 msgctxt "the to-do is due"
 msgid "due"
 msgstr "Cukup Tempoh"
 
-#: kontactplugin/korganizer/todosummarywidget.cpp:271
+#: kontactplugin/korganizer/todosummarywidget.cpp:272
 #, fuzzy, kde-format
 #| msgid "Print only to-dos due in the &range:"
 msgid "No pending to-dos due within the next day"
@@ -2927,54 +2872,54 @@ msgid_plural "No pending to-dos due within the next %1 days"
 msgstr[0] "Cetak hanya tugasan yang cukup tempoh dalam &julat:"
 msgstr[1] "Cetak hanya tugasan yang cukup tempoh dalam &julat:"
 
-#: kontactplugin/korganizer/todosummarywidget.cpp:329
+#: kontactplugin/korganizer/todosummarywidget.cpp:330
 #, fuzzy, kde-format
 msgid "&Mark To-do Completed"
 msgstr "Penyingkiran Selesai"
 
-#: kontactplugin/korganizer/todosummarywidget.cpp:349
+#: kontactplugin/korganizer/todosummarywidget.cpp:350
 #, fuzzy, kde-format
 #| msgid "Edit To-do"
 msgid "Edit To-do: \"%1\""
 msgstr "Edit Tugasan"
 
-#: kontactplugin/korganizer/todosummarywidget.cpp:369
+#: kontactplugin/korganizer/todosummarywidget.cpp:370
 #, kde-format
 msgid "open-ended"
 msgstr ""
 
-#: kontactplugin/korganizer/todosummarywidget.cpp:371
+#: kontactplugin/korganizer/todosummarywidget.cpp:372
 #, kde-format
 msgctxt "the to-do is overdue"
 msgid "overdue"
 msgstr ""
 
-#: kontactplugin/korganizer/todosummarywidget.cpp:373
+#: kontactplugin/korganizer/todosummarywidget.cpp:374
 #, fuzzy, kde-format
 msgctxt "the to-do starts today"
 msgid "starts today"
 msgstr "Tarikh mula:"
 
-#: kontactplugin/korganizer/todosummarywidget.cpp:377
+#: kontactplugin/korganizer/todosummarywidget.cpp:378
 #, kde-format
 msgctxt "the to-do has not been started yet"
 msgid "not-started"
 msgstr ""
 
-#: kontactplugin/korganizer/todosummarywidget.cpp:379
+#: kontactplugin/korganizer/todosummarywidget.cpp:380
 #, fuzzy, kde-format
 #| msgid "co&mpleted"
 msgctxt "the to-do is completed"
 msgid "completed"
 msgstr "&Selesai"
 
-#: kontactplugin/korganizer/todosummarywidget.cpp:381
+#: kontactplugin/korganizer/todosummarywidget.cpp:382
 #, kde-format
 msgctxt "the to-do is in-progress"
 msgid "in-progress "
 msgstr ""
 
-#: kontactplugin/korganizer/todosummarywidget.cpp:386
+#: kontactplugin/korganizer/todosummarywidget.cpp:387
 #, fuzzy, kde-format
 msgctxt "Separator for status like this: overdue, completed"
 msgid ","
@@ -3186,47 +3131,47 @@ msgstr ""
 msgid "Upcoming Special Dates"
 msgstr ""
 
-#: kontactplugin/specialdates/sdsummarywidget.cpp:459
+#: kontactplugin/specialdates/sdsummarywidget.cpp:448
 #, fuzzy, kde-format
 #| msgid "day"
 msgctxt "the special day is today"
 msgid "Today"
 msgstr "hari"
 
-#: kontactplugin/specialdates/sdsummarywidget.cpp:461
+#: kontactplugin/specialdates/sdsummarywidget.cpp:450
 #, kde-format
 msgctxt "the special day is tomorrow"
 msgid "Tomorrow"
 msgstr ""
 
-#: kontactplugin/specialdates/sdsummarywidget.cpp:507
+#: kontactplugin/specialdates/sdsummarywidget.cpp:496
 #, fuzzy, kde-format
 #| msgid "Birthday"
 msgid "Birthday"
 msgstr "Hari Lahir"
 
-#: kontactplugin/specialdates/sdsummarywidget.cpp:510
+#: kontactplugin/specialdates/sdsummarywidget.cpp:499
 #, kde-format
 msgid "Anniversary"
 msgstr ""
 
-#: kontactplugin/specialdates/sdsummarywidget.cpp:513
+#: kontactplugin/specialdates/sdsummarywidget.cpp:502
 #, kde-format
 msgid "Holiday"
 msgstr "Hari cuti"
 
-#: kontactplugin/specialdates/sdsummarywidget.cpp:516
+#: kontactplugin/specialdates/sdsummarywidget.cpp:505
 #, kde-format
 msgid "Change of Seasons"
 msgstr ""
 
-#: kontactplugin/specialdates/sdsummarywidget.cpp:519
+#: kontactplugin/specialdates/sdsummarywidget.cpp:508
 #, fuzzy, kde-format
 #| msgid "Special Occasion"
 msgid "Special Occasion"
 msgstr "Peristiwa Khusus"
 
-#: kontactplugin/specialdates/sdsummarywidget.cpp:561
+#: kontactplugin/specialdates/sdsummarywidget.cpp:550
 #, fuzzy, kde-format
 #| msgid "Next year"
 msgid "one year"
@@ -3234,25 +3179,25 @@ msgid_plural "%1 years"
 msgstr[0] "Tahun seterusnya"
 msgstr[1] "Tahun seterusnya"
 
-#: kontactplugin/specialdates/sdsummarywidget.cpp:571
+#: kontactplugin/specialdates/sdsummarywidget.cpp:560
 #, kde-format
 msgid "No special dates within the next 1 day"
 msgid_plural "No special dates pending within the next %1 days"
 msgstr[0] ""
 msgstr[1] ""
 
-#: kontactplugin/specialdates/sdsummarywidget.cpp:665
+#: kontactplugin/specialdates/sdsummarywidget.cpp:654
 #, fuzzy, kde-format
 #| msgid "Send Email"
 msgid "Send &Mail"
 msgstr "Hantar E-mel"
 
-#: kontactplugin/specialdates/sdsummarywidget.cpp:666
+#: kontactplugin/specialdates/sdsummarywidget.cpp:655
 #, fuzzy, kde-format
 msgid "View &Contact"
 msgstr "Cari Dalam"
 
-#: kontactplugin/specialdates/sdsummarywidget.cpp:681
+#: kontactplugin/specialdates/sdsummarywidget.cpp:670
 #, kde-format
 msgid "Mail to:\"%1\""
 msgstr ""
@@ -3335,18 +3280,18 @@ msgctxt "@info:shell"
 msgid "Lists the available options for user feedback"
 msgstr ""
 
-#: koviewmanager.cpp:427
+#: koviewmanager.cpp:428
 #, fuzzy, kde-format
 #| msgid "Merged calendar '%1'."
 msgid "Merged calendar"
 msgstr "Kalendar '%1' dicantum."
 
-#: koviewmanager.cpp:442
+#: koviewmanager.cpp:443
 #, kde-format
 msgid "Calendars Side by Side"
 msgstr ""
 
-#: koviewmanager.cpp:475
+#: koviewmanager.cpp:476
 #, kde-format
 msgid ""
 "Unable to display the work week since there are no work days configured. "
@@ -4113,19 +4058,22 @@ msgstr "Memaparkan maklumat waktu temu janji."
 #. i18n: ectx: label, entry (MarcusBainsShowSeconds), group (Agenda View)
 #: settings/korganizer.kcfg:155
 #, fuzzy, kde-format
-msgid "Show seconds on the current-time (Marcus Bains) line"
+msgid "Show seconds and timezone on the current-time (Marcus Bains) line"
 msgstr "Paparkan waktu semasa (garis Marcus Bains)"
 
 #. i18n: ectx: whatsthis, entry (MarcusBainsShowSeconds), group (Agenda View)
 #: settings/korganizer.kcfg:156
 #, fuzzy, kde-format
-msgid "Check this box if you want to show seconds on the current-time line."
+msgid ""
+"Check this box if you want to show seconds on the current-time (Marcus "
+"Bains) line. Depending on your locale, the timezone will also be displayed."
 msgstr "Semak opsyen ini jika anda ingin saat dalam garis Marcus Bains."
 
 #. i18n: ectx: tooltip, entry (MarcusBainsShowSeconds), group (Agenda View)
 #: settings/korganizer.kcfg:157
 #, fuzzy, kde-format
-msgid "Display seconds with the current-time indicator"
+msgid ""
+"Display seconds (possibly with timezone) with the current-time indicator"
 msgstr "Paparkan saat pada garis Marcus Bains"
 
 #. i18n: ectx: label, entry (SelectionStartsEditor), group (Agenda View)
@@ -4587,7 +4535,7 @@ msgstr "Paparan agenda warna latar belakang"
 #: settings/korganizer.kcfg:331
 #, fuzzy, kde-format
 #| msgid "Displays appointment time information."
-msgid "Agenda view current-time line color"
+msgid "Agenda view current-time (Marcus Bains) line color"
 msgstr "Memaparkan maklumat waktu temu janji."
 
 #. i18n: ectx: whatsthis, entry, group (Colors)
@@ -4706,16 +4654,16 @@ msgstr ""
 #. i18n: ectx: label, entry, group (Fonts)
 #: settings/korganizer.kcfg:380
 #, fuzzy, kde-format
-msgid "Current-time line"
-msgstr "Penyenggara Semasa"
+msgid "Current-time (Marcus Bains) line"
+msgstr "Paparkan waktu semasa (garis Marcus Bains)"
 
 #. i18n: ectx: whatsthis, entry, group (Fonts)
 #: settings/korganizer.kcfg:381
 #, kde-format
 msgid ""
-"Press this button to configure the current-time line font. This button will "
-"open the \"Select Font\" dialog, allowing you to choose the font for the "
-"current-time line in the agenda view."
+"Press this button to configure the current-time (Marcus Bains) line font. "
+"This button will open the \"Select Font\" dialog, allowing you to choose the "
+"font for the current-time line in the agenda view."
 msgstr ""
 
 #. i18n: ectx: label, entry (DefaultTodoAttachMethod), group (Hidden Options)
@@ -5832,6 +5780,41 @@ msgstr "%1"
 msgctxt "4 digit year"
 msgid "%1"
 msgstr "%1"
+
+#, fuzzy
+#~ msgid "Groupware Settings"
+#~ msgstr "Mesyuarat"
+
+#, fuzzy
+#~| msgid "Import Calendar"
+#~ msgid "Show events belonging to my calendars only"
+#~ msgstr "Import kalendar"
+
+#, fuzzy
+#~ msgid ""
+#~ "Check this box if you want the summary to show events belonging to your "
+#~ "calendars only."
+#~ msgstr "Semak opsyen ini jika anda ingin saat dalam garis Marcus Bains."
+
+#, fuzzy
+#~| msgid "Import Calendar"
+#~ msgid "Show To-dos belonging to my calendars only"
+#~ msgstr "Import kalendar"
+
+#, fuzzy
+#~ msgid ""
+#~ "Check this box if you want the summary to show To-dos belonging to your "
+#~ "calendars only."
+#~ msgstr "Semak opsyen ini jika anda ingin saat dalam garis Marcus Bains."
+
+#, fuzzy
+#~| msgid "&Show To-do"
+#~ msgid "Show &my To-dos only"
+#~ msgstr "&Paparkan Tugasan"
+
+#, fuzzy
+#~ msgid "Current-time line"
+#~ msgstr "Penyenggara Semasa"
 
 #, fuzzy
 #~| msgid "Click to add a new to-do"
