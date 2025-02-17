@@ -18,14 +18,10 @@ public:
     explicit ActivitiesManager(QObject *parent = nullptr);
     ~ActivitiesManager() override;
 
-    [[nodiscard]] bool enabled() const override;
-    void setEnabled(bool newEnabled);
-
     [[nodiscard]] TransportActivities *transportActivities() const;
     [[nodiscard]] AccountActivities *accountActivities() const;
 
 private:
     AccountActivities *const mAccountActivities;
     TransportActivities *const mTransportActivities;
-    bool mEnabled = false;
 };
