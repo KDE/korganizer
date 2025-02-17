@@ -12,13 +12,13 @@
 # Diego Iastrubni <elcuco@kde.org>, 2006, 2009.
 # Chen Levy <contrib@chenlevy.com>, 2006.
 # Elkana Bardugo <ttv200@gmail.com>, 2017. #zanata
-# SPDX-FileCopyrightText: 2023, 2024 Yaron Shahrabani <sh.yaron@gmail.com>
+# SPDX-FileCopyrightText: 2023, 2024, 2025 Yaron Shahrabani <sh.yaron@gmail.com>
 msgid ""
 msgstr ""
 "Project-Id-Version: korganizer\n"
 "Report-Msgid-Bugs-To: https://bugs.kde.org\n"
 "POT-Creation-Date: 2025-02-16 00:42+0000\n"
-"PO-Revision-Date: 2025-01-24 09:27+0200\n"
+"PO-Revision-Date: 2025-02-16 07:37+0200\n"
 "Last-Translator: Yaron Shahrabani <sh.yaron@gmail.com>\n"
 "Language-Team: צוות התרגום של KDE ישראל\n"
 "Language: he\n"
@@ -27,7 +27,7 @@ msgstr ""
 "Content-Transfer-Encoding: 8bit\n"
 "Plural-Forms: nplurals=4; plural=(n == 1) ? 0 : ((n == 2) ? 1 : ((n > 10 && "
 "n % 10 == 0) ? 2 : 3));\n"
-"X-Generator: Lokalize 24.12.0\n"
+"X-Generator: Lokalize 24.12.1\n"
 
 #, kde-format
 msgctxt "NAME OF TRANSLATORS"
@@ -3973,27 +3973,26 @@ msgstr "הצגת מחוון השעה הנוכחית"
 
 #. i18n: ectx: label, entry (MarcusBainsShowSeconds), group (Agenda View)
 #: settings/korganizer.kcfg:155
-#, fuzzy, kde-format
-#| msgid "Show seconds on the current-time (Marcus Bains) line"
+#, kde-format
 msgid "Show seconds and timezone on the current-time (Marcus Bains) line"
-msgstr "הצגת השניות על קו השעה הנוכחית (מרקוס ביינס)"
+msgstr "הצגת השניות ואזור הזמן על קו השעה הנוכחית (מרקוס ביינס)"
 
 #. i18n: ectx: whatsthis, entry (MarcusBainsShowSeconds), group (Agenda View)
 #: settings/korganizer.kcfg:156
-#, fuzzy, kde-format
-#| msgid "Check this box if you want to show seconds on the current-time line."
+#, kde-format
 msgid ""
 "Check this box if you want to show seconds on the current-time (Marcus "
 "Bains) line. Depending on your locale, the timezone will also be displayed."
-msgstr "סימון תיבה זו יגרום להצגת השניות בשורת השעה הנוכחית."
+msgstr ""
+"סימון תיבה זו יגרום להצגת השניות בקו השעה הנוכחית (מרקוס ביינס). כתלות בשפת "
+"המערכת, יוצג גם אזור הזמן שלך."
 
 #. i18n: ectx: tooltip, entry (MarcusBainsShowSeconds), group (Agenda View)
 #: settings/korganizer.kcfg:157
-#, fuzzy, kde-format
-#| msgid "Display seconds with the current-time indicator"
+#, kde-format
 msgid ""
 "Display seconds (possibly with timezone) with the current-time indicator"
-msgstr "הצגת השניות במחוון השעה הנוכחית"
+msgstr "הצגת השניות (אפשר גם עם אזור הזמן) במחוון השעה הנוכחית"
 
 #. i18n: ectx: label, entry (SelectionStartsEditor), group (Agenda View)
 #: settings/korganizer.kcfg:162
@@ -4483,10 +4482,9 @@ msgstr "כאן אפשר לבחור את צבע רקע תצוגת סדר היום
 
 #. i18n: ectx: label, entry, group (Colors)
 #: settings/korganizer.kcfg:331
-#, fuzzy, kde-format
-#| msgid "Agenda view current-time line color"
+#, kde-format
 msgid "Agenda view current-time (Marcus Bains) line color"
-msgstr "צבע שורת הזמן הנוכחי בתצוגת סדר היום"
+msgstr "צבע קו הזמן (מרקוס ביינס) הנוכחי בתצוגת סדר היום"
 
 #. i18n: ectx: whatsthis, entry, group (Colors)
 #: settings/korganizer.kcfg:332
@@ -4611,26 +4609,21 @@ msgstr ""
 
 #. i18n: ectx: label, entry, group (Fonts)
 #: settings/korganizer.kcfg:380
-#, fuzzy, kde-format
-#| msgid "Show current-time (Marcus Bains) line"
+#, kde-format
 msgid "Current-time (Marcus Bains) line"
-msgstr "הצגת קו השעה הנוכחית (מרקוס ביינס)"
+msgstr "קו השעה הנוכחית (מרקוס ביינס)"
 
 #. i18n: ectx: whatsthis, entry, group (Fonts)
 #: settings/korganizer.kcfg:381
-#, fuzzy, kde-format
-#| msgid ""
-#| "Press this button to configure the current-time line font. This button "
-#| "will open the \"Select Font\" dialog, allowing you to choose the font for "
-#| "the current-time line in the agenda view."
+#, kde-format
 msgid ""
 "Press this button to configure the current-time (Marcus Bains) line font. "
 "This button will open the \"Select Font\" dialog, allowing you to choose the "
 "font for the current-time line in the agenda view."
 msgstr ""
-"לחיצה על הכפתור הזה תאפשר להגדיר את גופן שורת הזמן הנוכחי. הכפתור הזה יפתח "
-"את חלונית „בחירת גופן” שבה ניתן לבחור את הגופן לטובת שורת הזמן הנוכחי בתצוגת "
-"סדר היום."
+"לחיצה על הכפתור הזה תאפשר להגדיר את גופן קו הזמן הנוכחי (מרקוס ביינס). "
+"הכפתור הזה יפתח את חלונית „בחירת גופן” שבה ניתן לבחור את הגופן של קו הזמן "
+"הנוכחי בתצוגת סדר היום."
 
 #. i18n: ectx: label, entry (DefaultTodoAttachMethod), group (Hidden Options)
 #: settings/korganizer.kcfg:405

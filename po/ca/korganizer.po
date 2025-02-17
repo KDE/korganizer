@@ -14,7 +14,7 @@ msgstr ""
 "Project-Id-Version: korganizer\n"
 "Report-Msgid-Bugs-To: https://bugs.kde.org\n"
 "POT-Creation-Date: 2025-02-16 00:42+0000\n"
-"PO-Revision-Date: 2025-01-03 10:09+0100\n"
+"PO-Revision-Date: 2025-02-16 09:41+0100\n"
 "Last-Translator: Josep M. Ferrer <txemaq@gmail.com>\n"
 "Language-Team: Catalan <kde-i18n-ca@kde.org>\n"
 "Language: ca\n"
@@ -4063,29 +4063,30 @@ msgstr "Mostra l'indicador de l'hora actual"
 
 #. i18n: ectx: label, entry (MarcusBainsShowSeconds), group (Agenda View)
 #: settings/korganizer.kcfg:155
-#, fuzzy, kde-format
-#| msgid "Show seconds on the current-time (Marcus Bains) line"
+#, kde-format
 msgid "Show seconds and timezone on the current-time (Marcus Bains) line"
-msgstr "Mostra els segons a la línia de l'hora actual (Marcus Bains)"
+msgstr ""
+"Mostra els segons i la zona horària a la línia de temps actual (Marcus Bains)"
 
 #. i18n: ectx: whatsthis, entry (MarcusBainsShowSeconds), group (Agenda View)
 #: settings/korganizer.kcfg:156
-#, fuzzy, kde-format
-#| msgid "Check this box if you want to show seconds on the current-time line."
+#, kde-format
 msgid ""
 "Check this box if you want to show seconds on the current-time (Marcus "
 "Bains) line. Depending on your locale, the timezone will also be displayed."
 msgstr ""
 "Activeu aquesta casella si voleu mostrar els segons a la línia de temps "
-"actual."
+"actual (Marcus Bains). Depenent de la configuració regional, també es "
+"mostrarà la zona horària."
 
 #. i18n: ectx: tooltip, entry (MarcusBainsShowSeconds), group (Agenda View)
 #: settings/korganizer.kcfg:157
-#, fuzzy, kde-format
-#| msgid "Display seconds with the current-time indicator"
+#, kde-format
 msgid ""
 "Display seconds (possibly with timezone) with the current-time indicator"
-msgstr "Mostra els segons amb l'indicador d'hora actual"
+msgstr ""
+"Mostra els segons (possiblement amb la zona horària) amb l'indicador d'hora "
+"actual"
 
 #. i18n: ectx: label, entry (SelectionStartsEditor), group (Agenda View)
 #: settings/korganizer.kcfg:162
@@ -4621,10 +4622,9 @@ msgstr "Seleccioneu aquí el color de fons de la vista d'agenda."
 
 #. i18n: ectx: label, entry, group (Colors)
 #: settings/korganizer.kcfg:331
-#, fuzzy, kde-format
-#| msgid "Agenda view current-time line color"
+#, kde-format
 msgid "Agenda view current-time (Marcus Bains) line color"
-msgstr "Color de la línia de temps actual a la vista d'agenda"
+msgstr "Color de la línia de temps actual (Marcus Bains) a la vista d'agenda"
 
 #. i18n: ectx: whatsthis, entry, group (Colors)
 #: settings/korganizer.kcfg:332
@@ -4756,26 +4756,21 @@ msgstr ""
 
 #. i18n: ectx: label, entry, group (Fonts)
 #: settings/korganizer.kcfg:380
-#, fuzzy, kde-format
-#| msgid "Show current-time (Marcus Bains) line"
+#, kde-format
 msgid "Current-time (Marcus Bains) line"
-msgstr "Mostra la línia de l'hora actual (Marcus Bains)"
+msgstr "Línia de temps actual (Marcus Bains)"
 
 #. i18n: ectx: whatsthis, entry, group (Fonts)
 #: settings/korganizer.kcfg:381
-#, fuzzy, kde-format
-#| msgid ""
-#| "Press this button to configure the current-time line font. This button "
-#| "will open the \"Select Font\" dialog, allowing you to choose the font for "
-#| "the current-time line in the agenda view."
+#, kde-format
 msgid ""
 "Press this button to configure the current-time (Marcus Bains) line font. "
 "This button will open the \"Select Font\" dialog, allowing you to choose the "
 "font for the current-time line in the agenda view."
 msgstr ""
-"Premeu aquest botó per a configurar la lletra per a la línia de temps "
-"actual. Aquest botó obrirà el diàleg «Tria una lletra», permetent-vos triar "
-"la lletra per a la línia de temps actual a la vista d'agenda."
+"Premeu aquest botó per a configurar la lletra de la línia de temps actual "
+"(Marcus Bains). Aquest botó obrirà el diàleg «Tria una lletra», permetent-"
+"vos triar la lletra per a la línia de temps actual a la vista d'agenda."
 
 #. i18n: ectx: label, entry (DefaultTodoAttachMethod), group (Hidden Options)
 #: settings/korganizer.kcfg:405
@@ -5980,35 +5975,3 @@ msgstr "%1"
 msgctxt "4 digit year"
 msgid "%1"
 msgstr "%1"
-
-#~ msgid "Groupware Settings"
-#~ msgstr "Arranjament de treball en grup"
-
-#~ msgid "Show events belonging to my calendars only"
-#~ msgstr "Mostra només els esdeveniments que pertanyen als meus calendaris"
-
-#~ msgid ""
-#~ "Check this box if you want the summary to show events belonging to your "
-#~ "calendars only."
-#~ msgstr ""
-#~ "Activeu aquesta casella si voleu que el resum mostri només els "
-#~ "esdeveniments que pertanyen als vostres calendaris."
-
-#~ msgid "Show &my events only"
-#~ msgstr "Mostra només els &meus esdeveniments"
-
-#~ msgid "Show To-dos belonging to my calendars only"
-#~ msgstr "Mostra només les tasques pendents dels meus calendaris"
-
-#~ msgid ""
-#~ "Check this box if you want the summary to show To-dos belonging to your "
-#~ "calendars only."
-#~ msgstr ""
-#~ "Activeu aquesta casella si voleu que el resum mostri només les tasques "
-#~ "pendents que pertanyen als vostres calendaris."
-
-#~ msgid "Show &my To-dos only"
-#~ msgstr "Mostra només les &meves tasques pendents"
-
-#~ msgid "Current-time line"
-#~ msgstr "Línia de temps actual"

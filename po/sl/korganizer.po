@@ -1,7 +1,7 @@
 # translation of korganizer.po to Slovenian
 # Translation of korganizer.po to Slovenian
 # Copyright (C) 2001,2002, 2003, 2004, 2005, 2006 Free Software Foundation, Inc.
-# $Id: korganizer.po 1702893 2025-02-16 01:20:09Z scripty $
+# $Id: korganizer.po 1702972 2025-02-17 01:19:12Z scripty $
 # $Source$
 #
 # Roman Maurer <roman.maurer@hermes.si>, 2001.
@@ -15,7 +15,7 @@ msgstr ""
 "Project-Id-Version: korganizer\n"
 "Report-Msgid-Bugs-To: https://bugs.kde.org\n"
 "POT-Creation-Date: 2025-02-16 00:42+0000\n"
-"PO-Revision-Date: 2025-01-03 06:48+0100\n"
+"PO-Revision-Date: 2025-02-16 07:56+0100\n"
 "Last-Translator: Matjaž Jeran <matjaz.jeran@amis.net>\n"
 "Language-Team: Slovenian <lugos-slo@lugos.si>\n"
 "Language: sl\n"
@@ -4054,28 +4054,29 @@ msgstr "Pokaži kazalnik trenutnega časa"
 
 #. i18n: ectx: label, entry (MarcusBainsShowSeconds), group (Agenda View)
 #: settings/korganizer.kcfg:155
-#, fuzzy, kde-format
-#| msgid "Show seconds on the current-time (Marcus Bains) line"
+#, kde-format
 msgid "Show seconds and timezone on the current-time (Marcus Bains) line"
-msgstr "Na črti trenutnega časa pokaži sekunde"
+msgstr ""
+"Prikaži sekunde in časovni pas v vrstici trenutnega časa (Marcus Bains)."
 
 #. i18n: ectx: whatsthis, entry (MarcusBainsShowSeconds), group (Agenda View)
 #: settings/korganizer.kcfg:156
-#, fuzzy, kde-format
-#| msgid "Check this box if you want to show seconds on the current-time line."
+#, kde-format
 msgid ""
 "Check this box if you want to show seconds on the current-time (Marcus "
 "Bains) line. Depending on your locale, the timezone will also be displayed."
 msgstr ""
-"Označite to polje, če želite na črti trenutnega časa prikazati sekunde."
+"Označite to polje, če želite prikazati sekunde v vrstici trenutnega časa "
+"(Marcus Bains). V odvisnosti od vaše lokalne nastavitve bo prikazan tudi "
+"časovni pas."
 
 #. i18n: ectx: tooltip, entry (MarcusBainsShowSeconds), group (Agenda View)
 #: settings/korganizer.kcfg:157
-#, fuzzy, kde-format
-#| msgid "Display seconds with the current-time indicator"
+#, kde-format
 msgid ""
 "Display seconds (possibly with timezone) with the current-time indicator"
-msgstr "Pokaži sekunde na kazalniku trenutnega časa"
+msgstr ""
+"Prikaz sekund (po možnosti s časovnim pasom) z indikatorjem trenutnega časa"
 
 #. i18n: ectx: label, entry (SelectionStartsEditor), group (Agenda View)
 #: settings/korganizer.kcfg:162
@@ -4583,10 +4584,9 @@ msgstr "Tu izberite barvo ozadja prikaza dnevnega reda."
 
 #. i18n: ectx: label, entry, group (Colors)
 #: settings/korganizer.kcfg:331
-#, fuzzy, kde-format
-#| msgid "Agenda view current-time line color"
+#, kde-format
 msgid "Agenda view current-time (Marcus Bains) line color"
-msgstr "Barva črte trenutnega časa na prikazu dnevnega reda"
+msgstr "Barva vrstice pogleda dnevnega reda trenutnega časa (Marcus Bains)."
 
 #. i18n: ectx: whatsthis, entry, group (Colors)
 #: settings/korganizer.kcfg:332
@@ -4718,26 +4718,21 @@ msgstr ""
 
 #. i18n: ectx: label, entry, group (Fonts)
 #: settings/korganizer.kcfg:380
-#, fuzzy, kde-format
-#| msgid "Show current-time (Marcus Bains) line"
+#, kde-format
 msgid "Current-time (Marcus Bains) line"
-msgstr "Pokaži črto trenutnega časa (črta Marcusa Bainsa)"
+msgstr "Vrstica trenutnega časa (Marcus Bains)"
 
 #. i18n: ectx: whatsthis, entry, group (Fonts)
 #: settings/korganizer.kcfg:381
-#, fuzzy, kde-format
-#| msgid ""
-#| "Press this button to configure the current-time line font. This button "
-#| "will open the \"Select Font\" dialog, allowing you to choose the font for "
-#| "the current-time line in the agenda view."
+#, kde-format
 msgid ""
 "Press this button to configure the current-time (Marcus Bains) line font. "
 "This button will open the \"Select Font\" dialog, allowing you to choose the "
 "font for the current-time line in the agenda view."
 msgstr ""
-"Kliknite ta gumb, da nastavite pisavo za črto trenutnega časa. Ta gumb odpre "
-"pogovorno okno za izbiranje pisave, ki vam omogoči izbrati pisavo za črto "
-"trenutnega časa v prikazu dnevnega reda."
+"Kliknite ta gumb, da nastavite pisavo za črto trenutnega časa (Marcus "
+"Bains). Ta gumb odpre pogovorno okno za izbiranje pisave, ki vam omogoči "
+"izbrati pisavo za črto trenutnega časa v prikazu dnevnega reda."
 
 #. i18n: ectx: label, entry (DefaultTodoAttachMethod), group (Hidden Options)
 #: settings/korganizer.kcfg:405

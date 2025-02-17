@@ -8,7 +8,7 @@ msgstr ""
 "Project-Id-Version: korganizer\n"
 "Report-Msgid-Bugs-To: https://bugs.kde.org\n"
 "POT-Creation-Date: 2025-02-16 00:42+0000\n"
-"PO-Revision-Date: 2025-01-03 04:01+0100\n"
+"PO-Revision-Date: 2025-02-16 04:38+0100\n"
 "Last-Translator: Temuri Doghonadze <temuri.doghonadze@gmail.com>\n"
 "Language-Team: Georgian <kde-i18n-doc@kde.org>\n"
 "Language: ka\n"
@@ -4007,27 +4007,29 @@ msgstr "მიმდინარე დროის მაჩვენებლ�
 
 #. i18n: ectx: label, entry (MarcusBainsShowSeconds), group (Agenda View)
 #: settings/korganizer.kcfg:155
-#, fuzzy, kde-format
-#| msgid "Show seconds on the current-time (Marcus Bains) line"
+#, kde-format
 msgid "Show seconds and timezone on the current-time (Marcus Bains) line"
-msgstr "მიმდინარე დროის (მარკუს ბეინსის) ხაზზე წამების ჩვენება"
+msgstr ""
+"მიმდინარე დროის (მარკუს ბეინსის) ხაზზე წამების და დროის სარტყლის ჩვენება"
 
 #. i18n: ectx: whatsthis, entry (MarcusBainsShowSeconds), group (Agenda View)
 #: settings/korganizer.kcfg:156
-#, fuzzy, kde-format
-#| msgid "Check this box if you want to show seconds on the current-time line."
+#, kde-format
 msgid ""
 "Check this box if you want to show seconds on the current-time (Marcus "
 "Bains) line. Depending on your locale, the timezone will also be displayed."
-msgstr "ჩართეთ ეს თოლია, თუ გნებავთ მიმდინარე დროის ხაზზე წამებიც გამოჩნდეს."
+msgstr ""
+"ჩართეთ ეს თოლია, თუ გნებავთ მიმდინარე დროის ხაზზე (მარკუს ბეინსის) წამებიც "
+"გამოჩნდეს. თქვენს ენაზე დამოკიდებულებით, შეიძლება, დროის სარტყელიც იყოს "
+"ნაჩვენები."
 
 #. i18n: ectx: tooltip, entry (MarcusBainsShowSeconds), group (Agenda View)
 #: settings/korganizer.kcfg:157
-#, fuzzy, kde-format
-#| msgid "Display seconds with the current-time indicator"
+#, kde-format
 msgid ""
 "Display seconds (possibly with timezone) with the current-time indicator"
-msgstr "მიმდინარე დროის მაჩვენებელთან წამების ჩვენება"
+msgstr ""
+"მიმდინარე დროის მაჩვენებელთან ერთად წამების (ალბათ დროის სარტყლით) ჩვენება"
 
 #. i18n: ectx: label, entry (SelectionStartsEditor), group (Agenda View)
 #: settings/korganizer.kcfg:162
@@ -4544,10 +4546,9 @@ msgstr "აირჩიეთ დღის წესრიგის ხედი
 
 #. i18n: ectx: label, entry, group (Colors)
 #: settings/korganizer.kcfg:331
-#, fuzzy, kde-format
-#| msgid "Agenda view current-time line color"
+#, kde-format
 msgid "Agenda view current-time (Marcus Bains) line color"
-msgstr "დღის წესრიგის ხედის მიმდინარე დროის ხაზის ფერი"
+msgstr "დღის წესრიგის ხედის მიმდინარე დროის(მარკუს ბეინსის) ხაზის ფერი"
 
 #. i18n: ectx: whatsthis, entry, group (Colors)
 #: settings/korganizer.kcfg:332
@@ -4675,26 +4676,21 @@ msgstr ""
 
 #. i18n: ectx: label, entry, group (Fonts)
 #: settings/korganizer.kcfg:380
-#, fuzzy, kde-format
-#| msgid "Show current-time (Marcus Bains) line"
+#, kde-format
 msgid "Current-time (Marcus Bains) line"
-msgstr "მიმდინარე დროის (მარკუს ბეინსის) ხაზის ჩვენება"
+msgstr "მიმდინარე დროის (მარკუს ბეინსის) ხაზი"
 
 #. i18n: ectx: whatsthis, entry, group (Fonts)
 #: settings/korganizer.kcfg:381
-#, fuzzy, kde-format
-#| msgid ""
-#| "Press this button to configure the current-time line font. This button "
-#| "will open the \"Select Font\" dialog, allowing you to choose the font for "
-#| "the current-time line in the agenda view."
+#, kde-format
 msgid ""
 "Press this button to configure the current-time (Marcus Bains) line font. "
 "This button will open the \"Select Font\" dialog, allowing you to choose the "
 "font for the current-time line in the agenda view."
 msgstr ""
-"დააწექით ამ ღილაკს მიმდინარე დროის ხაზის ფონტის მოსარგებად. ეს ღილაკი გასნის "
-"ფონტის არჩევის ფანჯარას, რითიც საშუალებას მოგცემთ, აირჩიოთ ფონტი, რომლითაც "
-"მიმდინარე დროის ხაზის ელემენტები გამოჩნდება."
+"დააწექით ამ ღილაკს მიმდინარე დროის(მარკუს ბეინსის) ხაზის ფონტის მოსარგებად. "
+"ეს ღილაკი გახსნის \"ფონტის არჩევის\" ფანჯარას, რითიც საშუალებას მოგცემთ, "
+"აირჩიოთ ფონტი, რომლითაც მიმდინარე დროის ხაზის ელემენტები გამოჩნდება."
 
 #. i18n: ectx: label, entry (DefaultTodoAttachMethod), group (Hidden Options)
 #: settings/korganizer.kcfg:405

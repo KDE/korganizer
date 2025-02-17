@@ -19,14 +19,14 @@ msgstr ""
 "Project-Id-Version: korganizer\n"
 "Report-Msgid-Bugs-To: https://bugs.kde.org\n"
 "POT-Creation-Date: 2025-02-16 00:42+0000\n"
-"PO-Revision-Date: 2025-01-03 17:55+0100\n"
+"PO-Revision-Date: 2025-02-16 14:04+0100\n"
 "Last-Translator: Freek de Kruijf <freekdekruijf@kde.nl>\n"
 "Language-Team: \n"
 "Language: nl\n"
 "MIME-Version: 1.0\n"
 "Content-Type: text/plain; charset=UTF-8\n"
 "Content-Transfer-Encoding: 8bit\n"
-"X-Generator: Lokalize 24.12.0\n"
+"X-Generator: Lokalize 24.12.2\n"
 "Plural-Forms: nplurals=2; plural=n != 1;\n"
 
 #, kde-format
@@ -4041,27 +4041,27 @@ msgstr "Indicatie van de actuele tijd tonen in de agenda"
 
 #. i18n: ectx: label, entry (MarcusBainsShowSeconds), group (Agenda View)
 #: settings/korganizer.kcfg:155
-#, fuzzy, kde-format
-#| msgid "Show seconds on the current-time (Marcus Bains) line"
+#, kde-format
 msgid "Show seconds and timezone on the current-time (Marcus Bains) line"
-msgstr "Actuele tijd met seconden tonen in de agenda (Marcus Bains-lijn)"
+msgstr "Seconden en tijdzone tonen op de regel met actuele tijd (Marcus Bains)"
 
 #. i18n: ectx: whatsthis, entry (MarcusBainsShowSeconds), group (Agenda View)
 #: settings/korganizer.kcfg:156
-#, fuzzy, kde-format
-#| msgid "Check this box if you want to show seconds on the current-time line."
+#, kde-format
 msgid ""
 "Check this box if you want to show seconds on the current-time (Marcus "
 "Bains) line. Depending on your locale, the timezone will also be displayed."
-msgstr "Selecteer dit keuzevakje om seconden te tonen op de actuele tijdlijn."
+msgstr ""
+"Selecteer dit keuzevakje om seconden te tonen op de actuele tijdlijn (Marcus "
+"Bain). Afhankelijk van uw taalcode zal de tijdzone ook getoond worden."
 
 #. i18n: ectx: tooltip, entry (MarcusBainsShowSeconds), group (Agenda View)
 #: settings/korganizer.kcfg:157
-#, fuzzy, kde-format
-#| msgid "Display seconds with the current-time indicator"
+#, kde-format
 msgid ""
 "Display seconds (possibly with timezone) with the current-time indicator"
-msgstr "Seconden tonen op actuele tijdlijn"
+msgstr ""
+"Seconden tonen (mogelijk met tijdzone) met de indicator van de actuele tijd"
 
 #. i18n: ectx: label, entry (SelectionStartsEditor), group (Agenda View)
 #: settings/korganizer.kcfg:162
@@ -4582,10 +4582,11 @@ msgstr "Selecteer hier de achtergrondkleur voor de agendaweergave."
 
 #. i18n: ectx: label, entry, group (Colors)
 #: settings/korganizer.kcfg:331
-#, fuzzy, kde-format
-#| msgid "Agenda view current-time line color"
+#, kde-format
 msgid "Agenda view current-time (Marcus Bains) line color"
-msgstr "Kleur voor de actuele tijdlijn in de agenda"
+msgstr ""
+"Kleur van regel met de weergave van de actuele tijd (Marcus Bains) in de "
+"agenda"
 
 #. i18n: ectx: whatsthis, entry, group (Colors)
 #: settings/korganizer.kcfg:332
@@ -4715,26 +4716,21 @@ msgstr ""
 
 #. i18n: ectx: label, entry, group (Fonts)
 #: settings/korganizer.kcfg:380
-#, fuzzy, kde-format
-#| msgid "Show current-time (Marcus Bains) line"
+#, kde-format
 msgid "Current-time (Marcus Bains) line"
-msgstr "Actuele tijd tonen (Marcus Bains-lijn)"
+msgstr "Actuele tijdregel (Marcus Bains)"
 
 #. i18n: ectx: whatsthis, entry, group (Fonts)
 #: settings/korganizer.kcfg:381
-#, fuzzy, kde-format
-#| msgid ""
-#| "Press this button to configure the current-time line font. This button "
-#| "will open the \"Select Font\" dialog, allowing you to choose the font for "
-#| "the current-time line in the agenda view."
+#, kde-format
 msgid ""
 "Press this button to configure the current-time (Marcus Bains) line font. "
 "This button will open the \"Select Font\" dialog, allowing you to choose the "
 "font for the current-time line in the agenda view."
 msgstr ""
-"Klik op deze knop om het lettertype voor de tijdlijn in te stellen. Deze "
-"toont de actuele tijd in de agendaweergave. Deze knop opent een "
-"dialoogvenster waarin u het lettertype kunt instellen."
+"Klik op deze knop om het lettertype voor de actuele tijdregel (Marcus Bains) "
+"te configureren. Deze toont de actuele tijd in de agendaweergave. Deze knop "
+"opent een dialoogvenster waarin u het lettertype kunt kiezen."
 
 #. i18n: ectx: label, entry (DefaultTodoAttachMethod), group (Hidden Options)
 #: settings/korganizer.kcfg:405

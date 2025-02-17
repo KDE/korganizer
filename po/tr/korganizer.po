@@ -21,7 +21,7 @@ msgstr ""
 "Project-Id-Version: kdepim-kde4\n"
 "Report-Msgid-Bugs-To: https://bugs.kde.org\n"
 "POT-Creation-Date: 2025-02-16 00:42+0000\n"
-"PO-Revision-Date: 2025-01-03 20:34+0300\n"
+"PO-Revision-Date: 2025-02-16 12:58+0300\n"
 "Last-Translator: Emir SARI <emir_sari@icloud.com>\n"
 "Language-Team: Turkish <kde-l10n-tr@kde.org>\n"
 "Language: tr\n"
@@ -591,7 +591,7 @@ msgid ""
 msgstr ""
 "Bir veya birden çok gün için etkinliklerinizi ve bekleyen yapılacakları "
 "kronolojik olarak sıralayan Ajanda Görünümü’ne geçer. Ayrıca, her bir "
-"etkinliğin uzunluğunu gün zaman çizelgesinde görebilirsiniz."
+"etkinliğin uzunluğunu gün zaman çizgisinde görebilirsiniz."
 
 #: actionmanager.cpp:418
 #, kde-format
@@ -4021,7 +4021,7 @@ msgstr "Ajanda görünümünde yapılacak ögelerini göster"
 #: settings/korganizer.kcfg:148
 #, kde-format
 msgid "Show current-time (Marcus Bains) line"
-msgstr "Geçerli zaman çizelgesini göster (Marcus Bains)"
+msgstr "Geçerli zaman çizgisini göster (Marcus Bains)"
 
 #. i18n: ectx: whatsthis, entry (MarcusBainsEnabled), group (Agenda View)
 #: settings/korganizer.kcfg:149
@@ -4041,29 +4041,27 @@ msgstr "Geçerli saat göstergesini göster"
 
 #. i18n: ectx: label, entry (MarcusBainsShowSeconds), group (Agenda View)
 #: settings/korganizer.kcfg:155
-#, fuzzy, kde-format
-#| msgid "Show seconds on the current-time (Marcus Bains) line"
+#, kde-format
 msgid "Show seconds and timezone on the current-time (Marcus Bains) line"
-msgstr "Geçerli zaman çizelgesi (Marcus Bains) üzerinde saniyeleri göster"
+msgstr ""
+"Geçerli zaman çizgisinde (Marcus Bains) saniyeleri ve zaman dilimini göster"
 
 #. i18n: ectx: whatsthis, entry (MarcusBainsShowSeconds), group (Agenda View)
 #: settings/korganizer.kcfg:156
-#, fuzzy, kde-format
-#| msgid "Check this box if you want to show seconds on the current-time line."
+#, kde-format
 msgid ""
 "Check this box if you want to show seconds on the current-time (Marcus "
 "Bains) line. Depending on your locale, the timezone will also be displayed."
 msgstr ""
-"Geçerli zaman çizelgesi üzerinde saniyeleri göstermek için bu kutuyu "
-"işaretleyin."
+"Geçerli zaman çizgisi üzerinde saniyeleri göstermek için bu kutuyu "
+"işaretleyin. Yerel ayarlarınıza bağlı olarak, zaman dilimi de görüntülenir."
 
 #. i18n: ectx: tooltip, entry (MarcusBainsShowSeconds), group (Agenda View)
 #: settings/korganizer.kcfg:157
-#, fuzzy, kde-format
-#| msgid "Display seconds with the current-time indicator"
+#, kde-format
 msgid ""
 "Display seconds (possibly with timezone) with the current-time indicator"
-msgstr "Geçerli zaman çizelgesi üzerinde saniyeleri göster"
+msgstr "Geçerli zaman çizgisinde saniyeleri (zaman dilimi de olabilir) göster"
 
 #. i18n: ectx: label, entry (SelectionStartsEditor), group (Agenda View)
 #: settings/korganizer.kcfg:162
@@ -4574,24 +4572,22 @@ msgstr "Ajanda görünümü arka plan rengini buradan seçin."
 
 #. i18n: ectx: label, entry, group (Colors)
 #: settings/korganizer.kcfg:331
-#, fuzzy, kde-format
-#| msgid "Agenda view current-time line color"
+#, kde-format
 msgid "Agenda view current-time (Marcus Bains) line color"
-msgstr "Ajanda görünümündeki geçerli zaman çizgisinin rengi"
+msgstr "Ajanda görünümündeki geçerli zaman çizgisinin (Marcus Bains) rengi"
 
 #. i18n: ectx: whatsthis, entry, group (Colors)
 #: settings/korganizer.kcfg:332
 #, kde-format
 msgid "Select a color to use for the current-time (Marcus Bains) line."
-msgstr "Geçerli zaman çizelgesinde (Marcus Bains) kullanılacak rengi seçin."
+msgstr "Geçerli zaman çizgisinde (Marcus Bains) kullanılacak rengi seçin."
 
 #. i18n: ectx: tooltip, entry, group (Colors)
 #: settings/korganizer.kcfg:333
 #, kde-format
 msgid "Use this color for the Agenda View current-time (Marcus Bains) line"
 msgstr ""
-"Ajanda görünümünde geçerli zaman çizelgesi (Marcus Bains) için bu rengi "
-"kullan"
+"Ajanda görünümünde geçerli zaman çizgisi (Marcus Bains) için bu rengi kullan"
 
 #. i18n: ectx: label, entry (ViewBgBusyColor), group (Colors)
 #: settings/korganizer.kcfg:338
@@ -4707,27 +4703,22 @@ msgstr ""
 
 #. i18n: ectx: label, entry, group (Fonts)
 #: settings/korganizer.kcfg:380
-#, fuzzy, kde-format
-#| msgid "Show current-time (Marcus Bains) line"
+#, kde-format
 msgid "Current-time (Marcus Bains) line"
-msgstr "Geçerli zaman çizelgesini göster (Marcus Bains)"
+msgstr "Geçerli zaman (Marcus Bains) çizgisi"
 
 #. i18n: ectx: whatsthis, entry, group (Fonts)
 #: settings/korganizer.kcfg:381
-#, fuzzy, kde-format
-#| msgid ""
-#| "Press this button to configure the current-time line font. This button "
-#| "will open the \"Select Font\" dialog, allowing you to choose the font for "
-#| "the current-time line in the agenda view."
+#, kde-format
 msgid ""
 "Press this button to configure the current-time (Marcus Bains) line font. "
 "This button will open the \"Select Font\" dialog, allowing you to choose the "
 "font for the current-time line in the agenda view."
 msgstr ""
-"Bu düğmeye tıklayarak, şu andaki zaman çizgisi yazıtipini "
-"ayarlayabilirsiniz. Bu düğme, ‘Yazıtipi Seç’ penceresini açar ve ajanda "
-"görünümünde şu andaki zaman çizgisi için kullanılacak yazıtipini seçmenize "
-"izin verir."
+"Bu düğmeye tıklayarak, geçerli zaman çizgisi (Marcus Bains) yazıtipini "
+"ayarlayabilirsiniz. Bu düğme, “Yazıtipi Seç” iletişim kutusunu açar ve "
+"ajanda görünümünde şu andaki zaman çizgisi için kullanılacak yazıtipini "
+"seçmenize izin verir."
 
 #. i18n: ectx: label, entry (DefaultTodoAttachMethod), group (Hidden Options)
 #: settings/korganizer.kcfg:405

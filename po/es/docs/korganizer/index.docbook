@@ -3277,11 +3277,11 @@ choose the <menuchoice
 <varlistentry>
 <term
 ><guilabel
->Mostrar segundos en la línea de tiempo actual (Marcus Bains)</guilabel
+>Show seconds and timezone on the current-time (Marcus Bains) line</guilabel
 ></term>
 <listitem
 ><para
->Esta casilla de verificación conmuta los segundos en la línea de tiempo actual (línea de Marcus Bains).</para
+>Esta casilla de verificación conmuta los segundos en la línea de tiempo actual (línea de Marcus Bains). Dependiendo de su configuración regional, es posible que también se muestre la zona horaria.</para
 ></listitem>
 </varlistentry>
 
@@ -3629,7 +3629,7 @@ choose the <menuchoice
 <varlistentry>
 <term
 ><guilabel
->Línea de hora actual</guilabel
+>Línea de hora actual (Marcus Bains)</guilabel
 ></term>
 <listitem
 ><para

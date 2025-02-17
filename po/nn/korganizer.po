@@ -5636,35 +5636,3 @@ msgstr "%1"
 msgctxt "4 digit year"
 msgid "%1"
 msgstr "%1"
-
-#~ msgid "Groupware Settings"
-#~ msgstr "Gruppevare-oppsett"
-
-#~ msgid "Show events belonging to my calendars only"
-#~ msgstr "Vis berre hendingar i kalendrane mine"
-
-#~ msgid ""
-#~ "Check this box if you want the summary to show events belonging to your "
-#~ "calendars only."
-#~ msgstr ""
-#~ "Kryss av her viss du berre vil sjå hendingar som høyrer til kalendrane "
-#~ "dine i samandraget."
-
-#~ msgid "Show &my events only"
-#~ msgstr "Vis berre &hendingane mine"
-
-#~ msgid "Show To-dos belonging to my calendars only"
-#~ msgstr "Vis berre oppgåver i kalendrane mine"
-
-#~ msgid ""
-#~ "Check this box if you want the summary to show To-dos belonging to your "
-#~ "calendars only."
-#~ msgstr ""
-#~ "Kryss av her viss du berre vil sjå oppgåver som høyrer til kalendrane "
-#~ "dine i samandraget."
-
-#~ msgid "Show &my To-dos only"
-#~ msgstr "Vis berre oppgåvene &mine"
-
-#~ msgid "Current-time line"
-#~ msgstr "Dato- og klokkeslettlinje"
