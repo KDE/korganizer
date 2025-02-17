@@ -34,6 +34,10 @@
 #include <QLabel>
 #include <QStatusBar>
 #include <QVBoxLayout>
+#if HAVE_ACTIVITY_SUPPORT
+#include "activities/activitiesmanager.h"
+#include "prefs/koprefs.h"
+#endif
 #if KORGANIZER_WITH_KUSERFEEDBACK
 #include "userfeedback/userfeedbackmanager.h"
 
@@ -72,6 +76,10 @@ KOrganizer::KOrganizer()
 #if KORGANIZER_WITH_KUSERFEEDBACK
     auto userFeedBackNotificationPopup = new KUserFeedback::NotificationPopup(this);
     userFeedBackNotificationPopup->setFeedbackProvider(UserFeedBackManager::self()->userFeedbackProvider());
+#endif
+
+#if HAVE_ACTIVITY_SUPPORT
+    ActivitiesManager::self()->setEnabled(KOPrefs::instance()->enabledActivities());
 #endif
 }
 

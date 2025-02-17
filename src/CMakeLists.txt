@@ -61,6 +61,10 @@ target_link_libraries(korganizer
     ${korganizer_userfeedback_LIB}
     KF6::IconThemes
    )
+if(TARGET KPim6::PimCommonActivities)
+    target_link_libraries(korganizer KPim6::PimCommonActivities)
+endif()
+
 install(TARGETS
     korganizer ${KDE_INSTALL_TARGETS_DEFAULT_ARGS}
    )
@@ -85,7 +89,7 @@ target_link_libraries(korganizer_kcm_static
     KF6::WindowSystem
     KF6::KIOWidgets
    )
-if(HAVE_ACTIVITY_SUPPORT)
+if(TARGET KPim6::PimCommonActivities)
     target_link_libraries(korganizer_kcm_static KPim6::PimCommonActivities)
 endif()
 
