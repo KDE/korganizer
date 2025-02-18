@@ -12,7 +12,7 @@ msgstr ""
 "Project-Id-Version: korganizer\n"
 "Report-Msgid-Bugs-To: https://bugs.kde.org\n"
 "POT-Creation-Date: 2025-02-05 02:35+0000\n"
-"PO-Revision-Date: 2025-01-06 20:16+0400\n"
+"PO-Revision-Date: 2025-02-17 21:23+0400\n"
 "Last-Translator: Zayed Al-Saidi <zayed.alsaidi@gmail.com>\n"
 "Language-Team: ar\n"
 "Language: ar\n"
@@ -93,7 +93,7 @@ msgstr "كورنيليوس شوماخر"
 #, kde-format
 msgctxt "@info:credit"
 msgid "Preston Brown"
-msgstr "Preston Brown"
+msgstr "برستون براون"
 
 #: aboutdata.cpp:33
 #, kde-format
