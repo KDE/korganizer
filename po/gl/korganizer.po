@@ -15,16 +15,16 @@ msgid ""
 msgstr ""
 "Project-Id-Version: korganizer\n"
 "Report-Msgid-Bugs-To: https://bugs.kde.org\n"
-"POT-Creation-Date: 2025-02-16 00:42+0000\n"
-"PO-Revision-Date: 2025-01-19 12:58+0100\n"
-"Last-Translator: Adrián Chaves (Gallaecio) <adrian@chaves.io>\n"
+"POT-Creation-Date: 2025-02-18 00:41+0000\n"
+"PO-Revision-Date: 2025-02-17 05:51+0100\n"
+"Last-Translator: Adrián Chaves (Gallaecio) <adrian@chaves.gal>\n"
 "Language-Team: Proxecto Trasno (proxecto@trasno.gal)\n"
 "Language: gl\n"
 "MIME-Version: 1.0\n"
 "Content-Type: text/plain; charset=UTF-8\n"
 "Content-Transfer-Encoding: 8bit\n"
 "Plural-Forms: nplurals=2; plural=n != 1;\n"
-"X-Generator: Lokalize 24.12.0\n"
+"X-Generator: Lokalize 24.12.2\n"
 
 #, kde-format
 msgctxt "NAME OF TRANSLATORS"
@@ -3180,18 +3180,18 @@ msgctxt "@info:credit"
 msgid "Tobias Koenig"
 msgstr "Tobias Koenig"
 
-#: korganizer.cpp:284
+#: korganizer.cpp:292
 #, kde-format
 msgid "New Calendar"
 msgstr "Novo calendario"
 
-#: korganizer.cpp:288
+#: korganizer.cpp:296
 #, kde-format
 msgctxt "the calendar is read-only"
 msgid "read-only"
 msgstr "só-lectura"
 
-#: korganizer.cpp:291
+#: korganizer.cpp:299
 #, kde-format
 msgid "Calendar"
 msgstr "Calendario"
@@ -3995,7 +3995,7 @@ msgstr "Amosar as tarefas na vista da axenda"
 #: settings/korganizer.kcfg:148
 #, kde-format
 msgid "Show current-time (Marcus Bains) line"
-msgstr "Amosar a liña da hora actual (Marcus Bains)"
+msgstr "Amosar a liña da hora actual (Marcus Bains)."
 
 #. i18n: ectx: whatsthis, entry (MarcusBainsEnabled), group (Agenda View)
 #: settings/korganizer.kcfg:149
@@ -4005,7 +4005,7 @@ msgid ""
 "current-time line (Marcus Bains line)."
 msgstr ""
 "Marque isto para amosar unha liña na vista do día da semana indicando a liña "
-"da hora actual (liña de Marcus Bains)."
+"da hora actual (Marcus Bains)."
 
 #. i18n: ectx: tooltip, entry (MarcusBainsEnabled), group (Agenda View)
 #: settings/korganizer.kcfg:150
@@ -4015,27 +4015,29 @@ msgstr "Amosar o indicador da hora actual"
 
 #. i18n: ectx: label, entry (MarcusBainsShowSeconds), group (Agenda View)
 #: settings/korganizer.kcfg:155
-#, fuzzy, kde-format
-#| msgid "Show seconds on the current-time (Marcus Bains) line"
+#, kde-format
 msgid "Show seconds and timezone on the current-time (Marcus Bains) line"
-msgstr "Amosar os segundos na liña da hora actual (Marcus Bains)"
+msgstr ""
+"Amosar os segundos e o fuso horario na liña da hora actual (Marcus Bains)."
 
 #. i18n: ectx: whatsthis, entry (MarcusBainsShowSeconds), group (Agenda View)
 #: settings/korganizer.kcfg:156
-#, fuzzy, kde-format
-#| msgid "Check this box if you want to show seconds on the current-time line."
+#, kde-format
 msgid ""
 "Check this box if you want to show seconds on the current-time (Marcus "
 "Bains) line. Depending on your locale, the timezone will also be displayed."
-msgstr "Marque isto se quere amosar os segundos na liña da hora actual."
+msgstr ""
+"Marque isto se quere amosar os segundos na liña da hora actual (Marcus "
+"Bains). Segundo a súa configuración rexional, pode que tamén se amose o fuso "
+"horario."
 
 #. i18n: ectx: tooltip, entry (MarcusBainsShowSeconds), group (Agenda View)
 #: settings/korganizer.kcfg:157
-#, fuzzy, kde-format
-#| msgid "Display seconds with the current-time indicator"
+#, kde-format
 msgid ""
 "Display seconds (possibly with timezone) with the current-time indicator"
-msgstr "Amosar os segundos co indicador da hora actual"
+msgstr ""
+"Amosar os segundos (e quizais o fuso horario) co indicador da hora actual."
 
 #. i18n: ectx: label, entry (SelectionStartsEditor), group (Agenda View)
 #: settings/korganizer.kcfg:162
@@ -4546,10 +4548,9 @@ msgstr "Escolla aquí a cor de fondo para a vista da axenda."
 
 #. i18n: ectx: label, entry, group (Colors)
 #: settings/korganizer.kcfg:331
-#, fuzzy, kde-format
-#| msgid "Agenda view current-time line color"
+#, kde-format
 msgid "Agenda view current-time (Marcus Bains) line color"
-msgstr "Cor da liña da hora actual na vista da axenda"
+msgstr "Cor da liña da hora actual (Marcus Bains) na vista da axenda."
 
 #. i18n: ectx: whatsthis, entry, group (Colors)
 #: settings/korganizer.kcfg:332
@@ -4680,26 +4681,21 @@ msgstr ""
 
 #. i18n: ectx: label, entry, group (Fonts)
 #: settings/korganizer.kcfg:380
-#, fuzzy, kde-format
-#| msgid "Show current-time (Marcus Bains) line"
+#, kde-format
 msgid "Current-time (Marcus Bains) line"
-msgstr "Amosar a liña da hora actual (Marcus Bains)"
+msgstr "Liña da hora actual (Marcus Bains)"
 
 #. i18n: ectx: whatsthis, entry, group (Fonts)
 #: settings/korganizer.kcfg:381
-#, fuzzy, kde-format
-#| msgid ""
-#| "Press this button to configure the current-time line font. This button "
-#| "will open the \"Select Font\" dialog, allowing you to choose the font for "
-#| "the current-time line in the agenda view."
+#, kde-format
 msgid ""
 "Press this button to configure the current-time (Marcus Bains) line font. "
 "This button will open the \"Select Font\" dialog, allowing you to choose the "
 "font for the current-time line in the agenda view."
 msgstr ""
-"Prema este botón para configurar a fonte da liña do momento actual. Este "
-"botón abre o diálogo «Seleccionar a fonte», que permite escoller a fonte "
-"para as actividades na vista da axenda."
+"Prema este botón para configurar a fonte da liña da hora actual (Marcus "
+"Bains). Este botón abre o diálogo «Seleccionar a fonte», que permite "
+"escoller a fonte para as actividades na vista da axenda."
 
 #. i18n: ectx: label, entry (DefaultTodoAttachMethod), group (Hidden Options)
 #: settings/korganizer.kcfg:405

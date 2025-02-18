@@ -8,7 +8,7 @@ msgid ""
 msgstr ""
 "Project-Id-Version: korganizer\n"
 "Report-Msgid-Bugs-To: https://bugs.kde.org\n"
-"POT-Creation-Date: 2025-02-16 00:42+0000\n"
+"POT-Creation-Date: 2025-02-18 00:41+0000\n"
 "PO-Revision-Date: 2009-02-28 20:07+0530\n"
 "Last-Translator: Ravishankar Shrivastava <raviratlami@aol.in>\n"
 "Language-Team: Hindi <kde-i18n-doc@lists.kde.org>\n"
@@ -3304,18 +3304,18 @@ msgctxt "@info:credit"
 msgid "Tobias Koenig"
 msgstr "टाबियस कोएनिग"
 
-#: korganizer.cpp:284
+#: korganizer.cpp:292
 #, kde-format
 msgid "New Calendar"
 msgstr "नवा कलेन्डर"
 
-#: korganizer.cpp:288
+#: korganizer.cpp:296
 #, kde-format
 msgctxt "the calendar is read-only"
 msgid "read-only"
 msgstr "सिरिफ पढ़े जा सके"
 
-#: korganizer.cpp:291
+#: korganizer.cpp:299
 #, kde-format
 msgid "Calendar"
 msgstr "कलेन्डर"

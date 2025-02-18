@@ -10,7 +10,7 @@
 <bookinfo>
 
 <title
->El manual de &korganizer;</title>
+>Manual de &korganizer;</title>
 
 <authorgroup>
 
@@ -3277,7 +3277,7 @@ choose the <menuchoice
 <varlistentry>
 <term
 ><guilabel
->Show seconds and timezone on the current-time (Marcus Bains) line</guilabel
+>Mostrar segundos y zona horaria en la línea de tiempo actual (Marcus Bains)</guilabel
 ></term>
 <listitem
 ><para

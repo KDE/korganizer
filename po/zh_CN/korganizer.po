@@ -2,7 +2,7 @@ msgid ""
 msgstr ""
 "Project-Id-Version: kdeorg\n"
 "Report-Msgid-Bugs-To: https://bugs.kde.org\n"
-"POT-Creation-Date: 2025-02-16 00:42+0000\n"
+"POT-Creation-Date: 2025-02-18 00:41+0000\n"
 "PO-Revision-Date: 2024-04-22 15:58\n"
 "Last-Translator: \n"
 "Language-Team: Chinese Simplified\n"
@@ -3053,18 +3053,18 @@ msgctxt "@info:credit"
 msgid "Tobias Koenig"
 msgstr "Tobias Koenig"
 
-#: korganizer.cpp:284
+#: korganizer.cpp:292
 #, kde-format
 msgid "New Calendar"
 msgstr "新建日历"
 
-#: korganizer.cpp:288
+#: korganizer.cpp:296
 #, kde-format
 msgctxt "the calendar is read-only"
 msgid "read-only"
 msgstr "只读"
 
-#: korganizer.cpp:291
+#: korganizer.cpp:299
 #, kde-format
 msgid "Calendar"
 msgstr "日历"
@@ -3844,27 +3844,24 @@ msgstr "显示当前时间标识符号"
 
 #. i18n: ectx: label, entry (MarcusBainsShowSeconds), group (Agenda View)
 #: settings/korganizer.kcfg:155
-#, fuzzy, kde-format
-#| msgid "Show seconds on the current-time (Marcus Bains) line"
+#, kde-format
 msgid "Show seconds and timezone on the current-time (Marcus Bains) line"
-msgstr "在当前时间(Marcus Bains)线上显示秒数"
+msgstr ""
 
 #. i18n: ectx: whatsthis, entry (MarcusBainsShowSeconds), group (Agenda View)
 #: settings/korganizer.kcfg:156
-#, fuzzy, kde-format
-#| msgid "Check this box if you want to show seconds on the current-time line."
+#, kde-format
 msgid ""
 "Check this box if you want to show seconds on the current-time (Marcus "
 "Bains) line. Depending on your locale, the timezone will also be displayed."
-msgstr "如果您想要在当前时间线上显示秒数，请选中此选项。"
+msgstr ""
 
 #. i18n: ectx: tooltip, entry (MarcusBainsShowSeconds), group (Agenda View)
 #: settings/korganizer.kcfg:157
-#, fuzzy, kde-format
-#| msgid "Display seconds with the current-time indicator"
+#, kde-format
 msgid ""
 "Display seconds (possibly with timezone) with the current-time indicator"
-msgstr "用当前时间标识符号显示秒数"
+msgstr ""
 
 #. i18n: ectx: label, entry (SelectionStartsEditor), group (Agenda View)
 #: settings/korganizer.kcfg:162
@@ -4332,10 +4329,9 @@ msgstr "在此选择日程视图的背景色。"
 
 #. i18n: ectx: label, entry, group (Colors)
 #: settings/korganizer.kcfg:331
-#, fuzzy, kde-format
-#| msgid "Agenda view current-time line color"
+#, kde-format
 msgid "Agenda view current-time (Marcus Bains) line color"
-msgstr "日程视图的当前时间线颜色"
+msgstr ""
 
 #. i18n: ectx: whatsthis, entry, group (Colors)
 #: settings/korganizer.kcfg:332
@@ -4459,25 +4455,18 @@ msgstr ""
 
 #. i18n: ectx: label, entry, group (Fonts)
 #: settings/korganizer.kcfg:380
-#, fuzzy, kde-format
-#| msgid "Show current-time (Marcus Bains) line"
+#, kde-format
 msgid "Current-time (Marcus Bains) line"
-msgstr "显示当前时间(Marcus Bains)线"
+msgstr ""
 
 #. i18n: ectx: whatsthis, entry, group (Fonts)
 #: settings/korganizer.kcfg:381
-#, fuzzy, kde-format
-#| msgid ""
-#| "Press this button to configure the current-time line font. This button "
-#| "will open the \"Select Font\" dialog, allowing you to choose the font for "
-#| "the current-time line in the agenda view."
+#, kde-format
 msgid ""
 "Press this button to configure the current-time (Marcus Bains) line font. "
 "This button will open the \"Select Font\" dialog, allowing you to choose the "
 "font for the current-time line in the agenda view."
 msgstr ""
-"点此按钮配置当前时间线的字体。此按钮会打开一个“选择字体”对话框，允许您从中选"
-"择日程视图中的时间线字体。"
 
 #. i18n: ectx: label, entry (DefaultTodoAttachMethod), group (Hidden Options)
 #: settings/korganizer.kcfg:405
@@ -5587,31 +5576,3 @@ msgstr "%1"
 msgctxt "4 digit year"
 msgid "%1"
 msgstr "%1"
-
-#~ msgid "Groupware Settings"
-#~ msgstr "群件设置"
-
-#~ msgid "Show events belonging to my calendars only"
-#~ msgstr "只显示属于我的日历的事件"
-
-#~ msgid ""
-#~ "Check this box if you want the summary to show events belonging to your "
-#~ "calendars only."
-#~ msgstr "如果您希望摘要中只显示属于自己的日历的事件，请选中此项。"
-
-#~ msgid "Show &my events only"
-#~ msgstr "只显示我的事件(&M)"
-
-#~ msgid "Show To-dos belonging to my calendars only"
-#~ msgstr "只显示属于我的日历的待办事项"
-
-#~ msgid ""
-#~ "Check this box if you want the summary to show To-dos belonging to your "
-#~ "calendars only."
-#~ msgstr "如果您希望摘要中只显示属于自己的日历的待办事项，请选中此项。"
-
-#~ msgid "Show &my To-dos only"
-#~ msgstr "只显示我的待办事项(&M)"
-
-#~ msgid "Current-time line"
-#~ msgstr "目前时间线"

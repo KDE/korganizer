@@ -3261,11 +3261,11 @@ choose the <menuchoice
 <varlistentry>
 <term
 ><guilabel
->Show seconds and timezone on current-time (Marcus Bains) line</guilabel
+>Seconden en tijdzone tonen op de actuele tijdregel (Marcus Bains)</guilabel
 ></term>
 <listitem
 ><para
->This check box toggles on or off the seconds on the current-time line (Marcus Bains line). Depending on your locale, the timezone may also be shown.</para
+>Als u dit aanvinkt, worden seconden getoond op de actuele tijdregel(Marcus Bains-regel). Afhankelijk van uw taalcode kan de tijdzone ook getoond worden.</para
 ></listitem>
 </varlistentry>
 
@@ -3613,7 +3613,7 @@ choose the <menuchoice
 <varlistentry>
 <term
 ><guilabel
->Current-time (Marcus Bains) line</guilabel
+>Actuele tijd regel (Marcus Bains)</guilabel
 ></term>
 <listitem
 ><para

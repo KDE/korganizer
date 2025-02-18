@@ -3219,11 +3219,11 @@ choose the <menuchoice
 <varlistentry>
 <term
 ><guilabel
->Mostra els segons a la línia de temps actual (Marcus Bains)</guilabel
+>Mostra els segons i la zona horària a la línia de temps actual (Marcus Bains)</guilabel
 ></term>
 <listitem
 ><para
->Aquesta casella de selecció activa o desactiva els segons a la línia de temps actual (línia de Marcus Bains).</para
+>Aquesta casella de selecció activa o desactiva els segons a la línia de temps actual (línia de Marcus Bains). Depenent de la configuració regional, també es pot mostrar la zona horària.</para
 ></listitem>
 </varlistentry>
 
@@ -3571,7 +3571,7 @@ choose the <menuchoice
 <varlistentry>
 <term
 ><guilabel
->Línia de temps actual</guilabel
+>Línia de temps actual (Marcus Bains)</guilabel
 ></term>
 <listitem
 ><para
