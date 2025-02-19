@@ -15,7 +15,7 @@ msgid ""
 msgstr ""
 "Project-Id-Version: korganizer\n"
 "Report-Msgid-Bugs-To: https://bugs.kde.org\n"
-"POT-Creation-Date: 2025-02-16 00:42+0000\n"
+"POT-Creation-Date: 2025-02-18 00:41+0000\n"
 "PO-Revision-Date: 2025-02-17 04:01+0100\n"
 "Last-Translator: Eloy Cuadra <ecuadra@eloihr.net>\n"
 "Language-Team: Spanish <kde-l10n-es@kde.org>\n"
@@ -3210,18 +3210,18 @@ msgctxt "@info:credit"
 msgid "Tobias Koenig"
 msgstr "Tobias Koenig"
 
-#: korganizer.cpp:284
+#: korganizer.cpp:292
 #, kde-format
 msgid "New Calendar"
 msgstr "Nuevo calendario"
 
-#: korganizer.cpp:288
+#: korganizer.cpp:296
 #, kde-format
 msgctxt "the calendar is read-only"
 msgid "read-only"
 msgstr "solo lectura"
 
-#: korganizer.cpp:291
+#: korganizer.cpp:299
 #, kde-format
 msgid "Calendar"
 msgstr "Calendario"
@@ -4059,7 +4059,6 @@ msgstr "Mostrar el indicador de hora actual"
 #. i18n: ectx: label, entry (MarcusBainsShowSeconds), group (Agenda View)
 #: settings/korganizer.kcfg:155
 #, kde-format
-#| msgid "Show seconds on the current-time (Marcus Bains) line"
 msgid "Show seconds and timezone on the current-time (Marcus Bains) line"
 msgstr ""
 "Mostrar segundos y zona horaria en la línea de hora actual (Marcus Bains)"
@@ -4067,24 +4066,22 @@ msgstr ""
 #. i18n: ectx: whatsthis, entry (MarcusBainsShowSeconds), group (Agenda View)
 #: settings/korganizer.kcfg:156
 #, kde-format
-#| msgid "Check this box if you want to show seconds on the current-time line."
 msgid ""
 "Check this box if you want to show seconds on the current-time (Marcus "
 "Bains) line. Depending on your locale, the timezone will also be displayed."
 msgstr ""
 "Marque esta casilla si quiere mostrar los segundos en la línea de tiempo "
-"actual (Marcus Bains). Dependiendo de la configuración regional, también "
-"se mostrará la zona horaria."
+"actual (Marcus Bains). Dependiendo de la configuración regional, también se "
+"mostrará la zona horaria."
 
 #. i18n: ectx: tooltip, entry (MarcusBainsShowSeconds), group (Agenda View)
 #: settings/korganizer.kcfg:157
 #, kde-format
-#| msgid "Display seconds with the current-time indicator"
 msgid ""
 "Display seconds (possibly with timezone) with the current-time indicator"
 msgstr ""
-"Mostrar los segundos (posiblemente con la zona horaria) en el indicador "
-"de hora actual"
+"Mostrar los segundos (posiblemente con la zona horaria) en el indicador de "
+"hora actual"
 
 #. i18n: ectx: label, entry (SelectionStartsEditor), group (Agenda View)
 #: settings/korganizer.kcfg:162
@@ -4618,7 +4615,6 @@ msgstr "Seleccione aquí el color de fondo de la vista de agenda."
 #. i18n: ectx: label, entry, group (Colors)
 #: settings/korganizer.kcfg:331
 #, kde-format
-#| msgid "Agenda view current-time line color"
 msgid "Agenda view current-time (Marcus Bains) line color"
 msgstr "Color de la línea de hora actual (Marcus Bains) en la vista de agenda"
 
@@ -4752,26 +4748,20 @@ msgstr ""
 #. i18n: ectx: label, entry, group (Fonts)
 #: settings/korganizer.kcfg:380
 #, kde-format
-#| msgid "Show current-time (Marcus Bains) line"
 msgid "Current-time (Marcus Bains) line"
 msgstr "Línea de hora actual (Marcus Bains)"
 
 #. i18n: ectx: whatsthis, entry, group (Fonts)
 #: settings/korganizer.kcfg:381
 #, kde-format
-#| msgid ""
-#| "Press this button to configure the current-time line font. This button "
-#| "will open the \"Select Font\" dialog, allowing you to choose the font for "
-#| "the current-time line in the agenda view."
 msgid ""
 "Press this button to configure the current-time (Marcus Bains) line font. "
 "This button will open the \"Select Font\" dialog, allowing you to choose the "
 "font for the current-time line in the agenda view."
 msgstr ""
-"Pulse este botón para configurar el tipo de letra de la línea de hora "
-"actual (Marcus Bains) .Este botón abre el cuadro de diálogo «Seleccionar "
-"tipo de letra» para permitirle que elija el tipo de letra para la línea de hor"
-"a "
+"Pulse este botón para configurar el tipo de letra de la línea de hora actual "
+"(Marcus Bains) .Este botón abre el cuadro de diálogo «Seleccionar tipo de "
+"letra» para permitirle que elija el tipo de letra para la línea de hora "
 "actual en la vista de agenda."
 
 #. i18n: ectx: label, entry (DefaultTodoAttachMethod), group (Hidden Options)

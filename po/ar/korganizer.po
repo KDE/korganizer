@@ -12,7 +12,7 @@ msgstr ""
 "Project-Id-Version: korganizer\n"
 "Report-Msgid-Bugs-To: https://bugs.kde.org\n"
 "POT-Creation-Date: 2025-02-18 00:41+0000\n"
-"PO-Revision-Date: 2025-02-17 21:23+0400\n"
+"PO-Revision-Date: 2025-02-18 21:38+0400\n"
 "Last-Translator: Zayed Al-Saidi <zayed.alsaidi@gmail.com>\n"
 "Language-Team: ar\n"
 "Language: ar\n"
@@ -4009,27 +4009,26 @@ msgstr "اعرض مؤشّر الوقت الحالي"
 
 #. i18n: ectx: label, entry (MarcusBainsShowSeconds), group (Agenda View)
 #: settings/korganizer.kcfg:155
-#, fuzzy, kde-format
-#| msgid "Show seconds on the current-time (Marcus Bains) line"
+#, kde-format
 msgid "Show seconds and timezone on the current-time (Marcus Bains) line"
-msgstr "اعرض الثواني في خط الوقت الحالي (ماركوس بينز)"
+msgstr "اعرض الثواني والمنطقة الزمنية في خط الوقت الحالي (ماركوس بينز)"
 
 #. i18n: ectx: whatsthis, entry (MarcusBainsShowSeconds), group (Agenda View)
 #: settings/korganizer.kcfg:156
-#, fuzzy, kde-format
-#| msgid "Check this box if you want to show seconds on the current-time line."
+#, kde-format
 msgid ""
 "Check this box if you want to show seconds on the current-time (Marcus "
 "Bains) line. Depending on your locale, the timezone will also be displayed."
-msgstr "أشّر على هذا المربّع إن أردت عرض الثواني في خط الوقت الحالي."
+msgstr ""
+"حدد هذا المربع إذا كنت تريد عرض الثواني على خط الوقت الحالي (ماركوس باينز). "
+"وفقًا لموقعك، سيُعرض أيضًا المنطقة الزمنية."
 
 #. i18n: ectx: tooltip, entry (MarcusBainsShowSeconds), group (Agenda View)
 #: settings/korganizer.kcfg:157
-#, fuzzy, kde-format
-#| msgid "Display seconds with the current-time indicator"
+#, kde-format
 msgid ""
 "Display seconds (possibly with timezone) with the current-time indicator"
-msgstr "اعرض الثواني مع مؤشّر الوقت الحالي"
+msgstr "اعرض الثواني (ربما مع المنطقة الزمنية) باستخدام مؤشر الوقت الحالي"
 
 #. i18n: ectx: label, entry (SelectionStartsEditor), group (Agenda View)
 #: settings/korganizer.kcfg:162
@@ -4519,10 +4518,9 @@ msgstr "اختر من هنا لون خلفية منظور جدول الأعما�
 
 #. i18n: ectx: label, entry, group (Colors)
 #: settings/korganizer.kcfg:331
-#, fuzzy, kde-format
-#| msgid "Agenda view current-time line color"
+#, kde-format
 msgid "Agenda view current-time (Marcus Bains) line color"
-msgstr "لون خط عرض جدول الأعمال في الوقت الحالي"
+msgstr "لون خط عرض جدول الأعمال في الوقت الحالي (ماركوس باينز)"
 
 #. i18n: ectx: whatsthis, entry, group (Colors)
 #: settings/korganizer.kcfg:332
@@ -4647,23 +4645,21 @@ msgstr ""
 
 #. i18n: ectx: label, entry, group (Fonts)
 #: settings/korganizer.kcfg:380
-#, fuzzy, kde-format
-#| msgid "Show current-time (Marcus Bains) line"
+#, kde-format
 msgid "Current-time (Marcus Bains) line"
-msgstr "اعرض خط الوقت الحالي (ماركوس بينز)"
+msgstr "خط الوقت الحالي (ماركوس بينز)"
 
 #. i18n: ectx: whatsthis, entry, group (Fonts)
 #: settings/korganizer.kcfg:381
-#, fuzzy, kde-format
-#| msgid ""
-#| "Press this button to configure the current-time line font. This button "
-#| "will open the \"Select Font\" dialog, allowing you to choose the font for "
-#| "the current-time line in the agenda view."
+#, kde-format
 msgid ""
 "Press this button to configure the current-time (Marcus Bains) line font. "
 "This button will open the \"Select Font\" dialog, allowing you to choose the "
 "font for the current-time line in the agenda view."
-msgstr "اضغط على هذا الزر لتكوين خط خط الوقت الحالي. "
+msgstr ""
+"اضغط على هذا الزر لضبط خط سطر الوقت الحالي (ماركوس باينز). سيفتح هذا الزر "
+"مربع الحوار \"تحديد الخط\"، مما يسمح لك باختيار الخط لسطر الوقت الحالي في "
+"عرض الأجندة."
 
 #. i18n: ectx: label, entry (DefaultTodoAttachMethod), group (Hidden Options)
 #: settings/korganizer.kcfg:405
