@@ -5668,6 +5668,3 @@ msgstr "%1"
 msgctxt "4 digit year"
 msgid "%1"
 msgstr "%1"
-
-#~ msgid "Current-time line"
-#~ msgstr "Linje for nåværende tid ('Marcus Bains'-linja)"
