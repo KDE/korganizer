@@ -21,7 +21,7 @@ msgstr ""
 "Project-Id-Version: kdepim-kde4\n"
 "Report-Msgid-Bugs-To: https://bugs.kde.org\n"
 "POT-Creation-Date: 2025-02-18 00:41+0000\n"
-"PO-Revision-Date: 2025-02-18 14:25+0300\n"
+"PO-Revision-Date: 2025-02-20 13:23+0300\n"
 "Last-Translator: Emir SARI <emir_sari@icloud.com>\n"
 "Language-Team: Turkish <kde-l10n-tr@kde.org>\n"
 "Language: tr\n"
@@ -4020,7 +4020,7 @@ msgstr "Ajanda görünümünde yapılacak ögelerini görüntüle"
 #: settings/korganizer.kcfg:148
 #, kde-format
 msgid "Show current-time (Marcus Bains) line"
-msgstr "Geçerli zaman akışını göster (Marcus Bains)"
+msgstr "Geçerli zaman akışını (Marcus Bains) göster"
 
 #. i18n: ectx: whatsthis, entry (MarcusBainsEnabled), group (Agenda View)
 #: settings/korganizer.kcfg:149
