@@ -2,7 +2,7 @@ msgid ""
 msgstr ""
 "Project-Id-Version: kdeorg\n"
 "Report-Msgid-Bugs-To: https://bugs.kde.org\n"
-"POT-Creation-Date: 2025-02-05 02:35+0000\n"
+"POT-Creation-Date: 2025-02-22 02:32+0000\n"
 "PO-Revision-Date: 2024-04-22 15:58\n"
 "Last-Translator: \n"
 "Language-Team: Chinese Simplified\n"
@@ -1163,12 +1163,12 @@ msgstr "删除事件(&D)"
 msgid "&Show To-do"
 msgstr "显示待办事项(&S)"
 
-#: actionmanager.cpp:1279 kontactplugin/korganizer/todosummarywidget.cpp:321
+#: actionmanager.cpp:1279 kontactplugin/korganizer/todosummarywidget.cpp:333
 #, kde-format
 msgid "&Edit To-do…"
 msgstr ""
 
-#: actionmanager.cpp:1282 kontactplugin/korganizer/todosummarywidget.cpp:323
+#: actionmanager.cpp:1282 kontactplugin/korganizer/todosummarywidget.cpp:335
 #, kde-format
 msgid "&Delete To-do"
 msgstr "删除待办事项(&D)"
@@ -2463,7 +2463,7 @@ msgid "Tomorrow"
 msgstr "明天"
 
 #: kontactplugin/korganizer/summaryeventinfo.cpp:171
-#: kontactplugin/korganizer/todosummarywidget.cpp:214
+#: kontactplugin/korganizer/todosummarywidget.cpp:216
 #: kontactplugin/specialdates/sdsummarywidget.cpp:496
 #, kde-format
 msgid "in 1 day"
@@ -2722,93 +2722,93 @@ msgstr "如果您希望摘要中只显示属于自己的日历的待办事项，
 msgid "Show &my To-dos only"
 msgstr "只显示我的待办事项(&M)"
 
-#: kontactplugin/korganizer/todosummarywidget.cpp:42
+#: kontactplugin/korganizer/todosummarywidget.cpp:44
 #, kde-format
 msgid "Pending To-dos"
 msgstr "未决的待办事项"
 
-#: kontactplugin/korganizer/todosummarywidget.cpp:180
+#: kontactplugin/korganizer/todosummarywidget.cpp:182
 #, kde-format
 msgctxt "the to-do is due today"
 msgid "Today"
 msgstr "今天"
 
-#: kontactplugin/korganizer/todosummarywidget.cpp:182
+#: kontactplugin/korganizer/todosummarywidget.cpp:184
 #, kde-format
 msgctxt "the to-do is due tomorrow"
 msgid "Tomorrow"
 msgstr "明天"
 
-#: kontactplugin/korganizer/todosummarywidget.cpp:188
+#: kontactplugin/korganizer/todosummarywidget.cpp:190
 #, kde-format
 msgctxt "1. weekday, 2. time"
 msgid "%1 %2"
 msgstr "%2年%1月"
 
-#: kontactplugin/korganizer/todosummarywidget.cpp:216
+#: kontactplugin/korganizer/todosummarywidget.cpp:218
 #, kde-format
 msgid "1 day ago"
 msgid_plural "%1 days ago"
 msgstr[0] "%1 天前"
 
-#: kontactplugin/korganizer/todosummarywidget.cpp:218
+#: kontactplugin/korganizer/todosummarywidget.cpp:220
 #, kde-format
 msgctxt "the to-do is due"
 msgid "due"
 msgstr "到期"
 
-#: kontactplugin/korganizer/todosummarywidget.cpp:271
+#: kontactplugin/korganizer/todosummarywidget.cpp:283
 #, kde-format
 msgid "No pending to-dos due within the next day"
 msgid_plural "No pending to-dos due within the next %1 days"
 msgstr[0] "在以后 %1 天内没有待办事项。"
 
-#: kontactplugin/korganizer/todosummarywidget.cpp:329
+#: kontactplugin/korganizer/todosummarywidget.cpp:341
 #, kde-format
 msgid "&Mark To-do Completed"
 msgstr "标为已办事宜(&M)"
 
-#: kontactplugin/korganizer/todosummarywidget.cpp:349
+#: kontactplugin/korganizer/todosummarywidget.cpp:361
 #, kde-format
 msgid "Edit To-do: \"%1\""
 msgstr "编辑待办：“%1”"
 
-#: kontactplugin/korganizer/todosummarywidget.cpp:369
+#: kontactplugin/korganizer/todosummarywidget.cpp:381
 #, kde-format
 msgid "open-ended"
 msgstr "不设期限"
 
-#: kontactplugin/korganizer/todosummarywidget.cpp:371
+#: kontactplugin/korganizer/todosummarywidget.cpp:383
 #, kde-format
 msgctxt "the to-do is overdue"
 msgid "overdue"
 msgstr "过期"
 
-#: kontactplugin/korganizer/todosummarywidget.cpp:373
+#: kontactplugin/korganizer/todosummarywidget.cpp:385
 #, kde-format
 msgctxt "the to-do starts today"
 msgid "starts today"
 msgstr "今天开始"
 
-#: kontactplugin/korganizer/todosummarywidget.cpp:377
+#: kontactplugin/korganizer/todosummarywidget.cpp:389
 #, kde-format
 msgctxt "the to-do has not been started yet"
 msgid "not-started"
 msgstr "未开始"
 
-#: kontactplugin/korganizer/todosummarywidget.cpp:379
+#: kontactplugin/korganizer/todosummarywidget.cpp:391
 #, kde-format
 msgctxt "the to-do is completed"
 msgid "completed"
 msgstr "已完成"
 
-#: kontactplugin/korganizer/todosummarywidget.cpp:381
+#: kontactplugin/korganizer/todosummarywidget.cpp:393
 #, kde-format
 msgctxt "the to-do is in-progress"
 msgid "in-progress "
 msgstr "进行中"
 
-#: kontactplugin/korganizer/todosummarywidget.cpp:386
+#: kontactplugin/korganizer/todosummarywidget.cpp:398
 #, kde-format
 msgctxt "Separator for status like this: overdue, completed"
 msgid ","
