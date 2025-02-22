@@ -86,7 +86,7 @@
   <summary xml:lang="sk">KOrganizer je aplikácia kalendára a plánovací komponent</summary>
   <summary xml:lang="sl">KOrganizer je program za koledar in razporejanje dogodkov</summary>
   <summary xml:lang="sv">Korganizer är ett kalender- och schemaläggningsprogram</summary>
-  <summary xml:lang="tr">K Organizatör bir takvim ve zamanlama uygulamasıdır</summary>
+  <summary xml:lang="tr">K Organizatör bir takvim ve planlama uygulamasıdır</summary>
   <summary xml:lang="uk">KOrganizer програма-календар для планування заходів.</summary>
   <summary xml:lang="x-test">xxKOrganizer is a calendar and scheduling applicationxx</summary>
   <summary xml:lang="zh-CN">KOrganizer 是一个日历和计划任务程序</summary>
@@ -127,7 +127,7 @@
     <p xml:lang="sk">KOrganizer je súčasťou Kontact pre kalendár a plánovanie. Poskytuje správu udalostí a úloh, upozornenia alarmu, export na web, prehľadné sieťové spracovanie údajov, skupinové plánovanie, import a export súborov kalendára a ďalšie. Dokáže spolupracovať s celou škálou služieb kalendára vrátane služieb NextCloud, Kolab, Google Kalendár a ďalšie. KOrganizer je plne prispôsobiteľný vašim potrebám a je neoddeliteľnou súčasťou balíka Kontact, ktorého cieľom je byť kompletným riešením pre organizáciu vašich osobných údajov. KOrganizer podporuje dva dominantné štandardy pre ukladanie a výmenu dát kalendára, vCalendar a iCalendar.</p>
     <p xml:lang="sl">KOrganizer je komponenta koledarja in planiranje programa Kontact. Zagotavlja upravljanje dogodkov in opravil, obveščanje o alarmih, izvoz spletnih strani, omrežje pregledno ravnanje s podatki, načrtovanje skupin, uvoz in izvoz koledarske datoteke in še več. Lahko sodeluje z najrazličnejšimi koledarskimi storitvami, vključno z NextCloud, Kolab, Google Calendar in drugimi. KOrganizer je popolnoma prilagodljiv vašim potrebam in je sestavni del del programa Kontact, katerega cilj je biti celovita rešitev organiziranja vaših osebnih podatkov. KOrganizer podpira dva prevladujoča standarda za shranjevanje in izmenjavo podatkov koledarja, vCalendar in iCalendar.</p>
     <p xml:lang="sv">Korganizer är kalender- och schemaläggningskomponenten i Kontact. Den tillhandahåller hantering av händelser och uppgifter, alarm underrättelser, webbexport, nätverkstransparent hantering av data, gruppschemaläggning, import och export av kalenderfiler, med mera. Den kan arbeta ihop med ett stort antal kalendertjänster, inklusive NextCloud, Kolab, Google kalender och andra. Korganizer är helt anpassningsbar enligt dina behov och är en integrerad del av Kontact-sviten, som har målet att vara en fullständig lösning för att organisera personlig information. Korganizer stöder de två dominerande standarderna för att lagra och utbyta kalenderdata, vCalendar och iCalendar.</p>
-    <p xml:lang="tr">K Organizatör, Kontak'ın takvim ve zamanlama bileşenidir. Etkinlikler ve görevler yönetimi, alarm bildirimleri, web biçiminde dışa aktarım, ağda iletilebilir veri yönetimi, grup zamanlama ve takvim dosyalarının içe/dışa aktarımını tek bir program altında sunar. Nextcloud, Kolab, Google Takvim ve birçok daha takvim hizmetleriyle birlikte çalışabilir. K Organizatör, gereksinimlerinize göre tümüyle özelleştirilebilir ve kişisel verinizi düzenlemenin tam takım bir yolu olan Kontak takımının ayrılmaz bir parçasıdır. K Organizatör, günümüzde kullanılan iki yaygın takvim verisi taşıma biçimi olan vCalendar ve iCalendar'ı destekler.</p>
+    <p xml:lang="tr">K Organizatör, Kontak’ın takvim ve planlama bileşenidir. Etkinlikler ve görevler yönetimi, alarm bildirimleri, web biçiminde dışa aktarım, ağda iletilebilir veri yönetimi, grup zamanlama ve takvim dosyalarının içe/dışa aktarımını tek bir program altında sunar. Nextcloud, Kolab, Google Takvim ve birçok daha takvim hizmetleriyle birlikte çalışabilir. K Organizatör, gereksinimlerinize göre tümüyle özelleştirilebilir ve kişisel verinizi düzenlemenin tam takım bir yolu olan Kontak takımının ayrılmaz bir parçasıdır. K Organizatör, günümüzde kullanılan iki yaygın takvim verisi taşıma biçimi olan vCalendar ve iCalendar’ı destekler.</p>
     <p xml:lang="uk">KOrganizer — компонент Kontact для ведення календарів та планування. У програмі передбачено керування записами подій та завдань, сповіщення про події, експортування даних до мережі, прозоре керування даними у мережі, групове планування, імпортування та експортування файлів календарів тощо. Програма може працювати із багатьма службами керування календарями, зокрема NextCloud, Kolab, Календарем Google тощо. KOrganizer — дужа гнучка у налаштовуванні програма, яку можна легко пристосувати до ваших потреб. Вона є частиною комплексу програм Kontact, який є повноцінним рішенням для упорядковування ваших особистих даних. У KOrganizer передбачено підтримку двох основних стандартів для зберігання і обміну даними календарів — vCalendar та iCalendar.</p>
     <p xml:lang="x-test">xxKOrganizer is the calendar and scheduling component of Kontact. It provides management of events and tasks, alarm notification, web export, network transparent handling of data, group scheduling, import and export of calendar files and more. It is able to work together with a wide variety of calendaring services, including NextCloud, Kolab, Google Calendar and others. KOrganizer is fully customizable to your needs and is an integral part of the Kontact suite, which aims to be a complete solution for organizing your personal data. KOrganizer supports the two dominant standards for storing and exchanging calendar data, vCalendar and iCalendar.xx</p>
     <p xml:lang="zh-CN">KOrganizer 是 Kontact 的日历及日程安排组件，它提供了日程及任务管理、闹钟通知、网络导出、网络数据传输处理、分组日程安排、导入及导出日历文件等功能。它能与各种各样的日历服务一同使用，如 NextCloud、Kolab 和 Google 日历等。KOrganizer 可根据您的需要进行完全定制，并作为 Kontact 的内置组件，意图打造整理个人数据的完整方案。KOrganizer 还支持使用两种头号标准——vCalendar 和 iCalendar——来存储和交换日历数据。</p>
@@ -291,7 +291,7 @@
       <li xml:lang="sk">Funkcia Späť a Znova</li>
       <li xml:lang="sl">Razveljavi in uveljavi</li>
       <li xml:lang="sv">Ångra och gör om</li>
-      <li xml:lang="tr">Geri Al ve Yinele</li>
+      <li xml:lang="tr">Geri al ve yinele desteği</li>
       <li xml:lang="uk">можливості скасування та повторення дій;</li>
       <li xml:lang="x-test">xxUndo and Redoxx</li>
       <li xml:lang="zh-CN">撤销和重做</li>
@@ -369,7 +369,7 @@
       <li xml:lang="sk">Prílohy pre udalosti a úlohy</li>
       <li xml:lang="sl">Priloge za dogodke in čakajoča opravila</li>
       <li xml:lang="sv">Bilagor för händelser och uppgifter</li>
-      <li xml:lang="tr">Olaylar ve yapılacaklar için ekler</li>
+      <li xml:lang="tr">Etkinlikler ve yapılacaklar için ekler</li>
       <li xml:lang="uk">можливість створення долучень до записів подій та завдань;</li>
       <li xml:lang="x-test">xxAttachments for events and todosxx</li>
       <li xml:lang="zh-CN">事件和待办附件</li>
