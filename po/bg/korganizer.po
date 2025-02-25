@@ -4,7 +4,7 @@ msgstr ""
 "Project-Id-Version: korganizer\n"
 "Report-Msgid-Bugs-To: https://bugs.kde.org\n"
 "POT-Creation-Date: 2025-02-18 00:41+0000\n"
-"PO-Revision-Date: 2025-01-07 22:55+0100\n"
+"PO-Revision-Date: 2025-02-16 20:04+0100\n"
 "Last-Translator: Mincho Kondarev <mkondarev@yahoo.de>\n"
 "Language-Team: Bulgarian <kde-i18n-doc@kde.org>\n"
 "Language: bg\n"
@@ -4026,29 +4026,31 @@ msgstr "Показване на индикатора за текущо врем�
 
 #. i18n: ectx: label, entry (MarcusBainsShowSeconds), group (Agenda View)
 #: settings/korganizer.kcfg:155
-#, fuzzy, kde-format
-#| msgid "Show seconds on the current-time (Marcus Bains) line"
+#, kde-format
 msgid "Show seconds and timezone on the current-time (Marcus Bains) line"
-msgstr "Показване на секунди на реда за текущо време (линия на Marcus Bains)"
+msgstr ""
+"Показване на секунди и часова зона в реда за текущо време (линия на Marcus "
+"Bains)"
 
 #. i18n: ectx: whatsthis, entry (MarcusBainsShowSeconds), group (Agenda View)
 #: settings/korganizer.kcfg:156
-#, fuzzy, kde-format
-#| msgid "Check this box if you want to show seconds on the current-time line."
+#, kde-format
 msgid ""
 "Check this box if you want to show seconds on the current-time (Marcus "
 "Bains) line. Depending on your locale, the timezone will also be displayed."
 msgstr ""
-"Поставете отметка в това квадратче, за да се покажат секундите в линията за "
-"текущото време (линията на Marcus Bains)."
+"Поставете отметка в това квадратче, ако искате да се показват секундите в "
+"линията за текущото време (линията на Marcus Bains). В зависимост от "
+"местоположението ви ще бъде показана и часовата зона."
 
 #. i18n: ectx: tooltip, entry (MarcusBainsShowSeconds), group (Agenda View)
 #: settings/korganizer.kcfg:157
-#, fuzzy, kde-format
-#| msgid "Display seconds with the current-time indicator"
+#, kde-format
 msgid ""
 "Display seconds (possibly with timezone) with the current-time indicator"
-msgstr "Показване на секунди с индикатора за текущо време"
+msgstr ""
+"Показване на секунди (и при възможност часовата зона) в индикатора за текущо "
+"време"
 
 #. i18n: ectx: label, entry (SelectionStartsEditor), group (Agenda View)
 #: settings/korganizer.kcfg:162
@@ -4578,8 +4580,7 @@ msgstr "Цвят на фона за дневния ред."
 
 #. i18n: ectx: label, entry, group (Colors)
 #: settings/korganizer.kcfg:331
-#, fuzzy, kde-format
-#| msgid "Agenda view current-time line color"
+#, kde-format
 msgid "Agenda view current-time (Marcus Bains) line color"
 msgstr "Цвят на реда на текущия час в дневния ред"
 
@@ -4713,27 +4714,22 @@ msgstr ""
 
 #. i18n: ectx: label, entry, group (Fonts)
 #: settings/korganizer.kcfg:380
-#, fuzzy, kde-format
-#| msgid "Show current-time (Marcus Bains) line"
+#, kde-format
 msgid "Current-time (Marcus Bains) line"
-msgstr "Показване на линия на Marcus Bains с текущото време"
+msgstr "Линия на Marcus Bains с текущо време"
 
 #. i18n: ectx: whatsthis, entry, group (Fonts)
 #: settings/korganizer.kcfg:381
-#, fuzzy, kde-format
-#| msgid ""
-#| "Press this button to configure the current-time line font. This button "
-#| "will open the \"Select Font\" dialog, allowing you to choose the font for "
-#| "the current-time line in the agenda view."
+#, kde-format
 msgid ""
 "Press this button to configure the current-time (Marcus Bains) line font. "
 "This button will open the \"Select Font\" dialog, allowing you to choose the "
 "font for the current-time line in the agenda view."
 msgstr ""
-"Натиснете този бутон, за да конфигурирате шрифта на реда за текущо време. "
-"Този бутон ще отвори диалоговия прозорец \" Избор на шрифт \", което ви "
-"позволява да изберете шрифта за реда за текущо време в изгледа на дневния "
-"ред."
+"Натиснете този бутон, за да конфигурирате шрифта на реда за текущо време "
+"(линия на Marcus Bains). Този бутон ще отвори диалоговия прозорец \" Избор "
+"на шрифт \", което ви позволява да изберете шрифта за реда за текущо време в "
+"изгледа на дневния ред."
 
 #. i18n: ectx: label, entry (DefaultTodoAttachMethod), group (Hidden Options)
 #: settings/korganizer.kcfg:405

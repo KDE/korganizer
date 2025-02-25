@@ -16,7 +16,7 @@ msgstr ""
 "Project-Id-Version: korganizer\n"
 "Report-Msgid-Bugs-To: https://bugs.kde.org\n"
 "POT-Creation-Date: 2025-02-18 00:41+0000\n"
-"PO-Revision-Date: 2025-01-03 16:27+0100\n"
+"PO-Revision-Date: 2025-02-16 16:00+0100\n"
 "Last-Translator: Luigi Toscano <luigi.toscano@tiscali.it>\n"
 "Language-Team: Italian <kde-i18n-it@kde.org>\n"
 "Language: it\n"
@@ -4035,8 +4035,8 @@ msgid ""
 "Check this box to display a line in the day or week view indicating the "
 "current-time line (Marcus Bains line)."
 msgstr ""
-"Marca questa casella per mostrare una linea corrispondente all'ora attuale "
-"(linea Marcus Bains), nelle viste quotidiana e settimanale."
+"Marca questa casella per mostrare una linea nelle viste quotidiana e "
+"settimanale che indica la linea all'ora attuale (linea Marcus Bains)."
 
 #. i18n: ectx: tooltip, entry (MarcusBainsEnabled), group (Agenda View)
 #: settings/korganizer.kcfg:150
@@ -4046,29 +4046,30 @@ msgstr "Mostra l'indicatore dell'ora attuale"
 
 #. i18n: ectx: label, entry (MarcusBainsShowSeconds), group (Agenda View)
 #: settings/korganizer.kcfg:155
-#, fuzzy, kde-format
-#| msgid "Show seconds on the current-time (Marcus Bains) line"
+#, kde-format
 msgid "Show seconds and timezone on the current-time (Marcus Bains) line"
-msgstr "Mostra i secondi sulla linea (Marcus Bains) dell'ora attuale"
+msgstr ""
+"Mostra i secondi e il fuso orario nella linea dell'ora attuale (Marcus Bains)"
 
 #. i18n: ectx: whatsthis, entry (MarcusBainsShowSeconds), group (Agenda View)
 #: settings/korganizer.kcfg:156
-#, fuzzy, kde-format
-#| msgid "Check this box if you want to show seconds on the current-time line."
+#, kde-format
 msgid ""
 "Check this box if you want to show seconds on the current-time (Marcus "
 "Bains) line. Depending on your locale, the timezone will also be displayed."
 msgstr ""
 "Marca questa casella se desideri vedere i secondi nella linea dell'ora "
-"attuale."
+"attuale (Marcus Bains). In base alle impostazioni regionali del sistema, "
+"potrebbe essere mostrato anche il fuso orario."
 
 #. i18n: ectx: tooltip, entry (MarcusBainsShowSeconds), group (Agenda View)
 #: settings/korganizer.kcfg:157
-#, fuzzy, kde-format
-#| msgid "Display seconds with the current-time indicator"
+#, kde-format
 msgid ""
 "Display seconds (possibly with timezone) with the current-time indicator"
-msgstr "Mostra i secondi con la linea dell'ora attuale"
+msgstr ""
+"Mostra i secondi (verosimilmente con il fuso orario) con l'indicatore "
+"dell'ora attuale"
 
 #. i18n: ectx: label, entry (SelectionStartsEditor), group (Agenda View)
 #: settings/korganizer.kcfg:162
@@ -4591,10 +4592,9 @@ msgstr "Scegli qui il colore di sfondo della vista agenda."
 
 #. i18n: ectx: label, entry, group (Colors)
 #: settings/korganizer.kcfg:331
-#, fuzzy, kde-format
-#| msgid "Agenda view current-time line color"
+#, kde-format
 msgid "Agenda view current-time (Marcus Bains) line color"
-msgstr "Colore della linea dell'ora attuale nella vista agenda"
+msgstr "Colore della linea dell'ora attuale (Marcus Bains) nella vista agenda"
 
 #. i18n: ectx: whatsthis, entry, group (Colors)
 #: settings/korganizer.kcfg:332
@@ -4724,26 +4724,22 @@ msgstr ""
 
 #. i18n: ectx: label, entry, group (Fonts)
 #: settings/korganizer.kcfg:380
-#, fuzzy, kde-format
-#| msgid "Show current-time (Marcus Bains) line"
+#, kde-format
 msgid "Current-time (Marcus Bains) line"
-msgstr "Mostra la linea (Marcus Bains) dell'ora attuale"
+msgstr "Linea dell'ora attuale (Marcus Bains)"
 
 #. i18n: ectx: whatsthis, entry, group (Fonts)
 #: settings/korganizer.kcfg:381
-#, fuzzy, kde-format
-#| msgid ""
-#| "Press this button to configure the current-time line font. This button "
-#| "will open the \"Select Font\" dialog, allowing you to choose the font for "
-#| "the current-time line in the agenda view."
+#, kde-format
 msgid ""
 "Press this button to configure the current-time (Marcus Bains) line font. "
 "This button will open the \"Select Font\" dialog, allowing you to choose the "
 "font for the current-time line in the agenda view."
 msgstr ""
-"Premi questo pulsante per configurare il carattere della linea del tempo. "
-"Questo pulsante aprirà la finestra di dialogo «Scegli carattere» che ti "
-"permette di impostare il carattere della linea del tempo nella vista agenda."
+"Premi questo pulsante per configurare il carattere della linea dell'ora "
+"attuale (Marcus Bains). Questo pulsante aprirà la finestra di dialogo "
+"«Scegli carattere» che ti permette di impostare il carattere della linea del "
+"tempo nella vista agenda."
 
 #. i18n: ectx: label, entry (DefaultTodoAttachMethod), group (Hidden Options)
 #: settings/korganizer.kcfg:405

@@ -3323,11 +3323,11 @@ choose the <menuchoice
 <varlistentry>
 <term
 ><guilabel
->Mostra i secondi nella linea dell'ora attuale (Marcus Bains)</guilabel
+>Mostra i secondi e il fuso orario nella linea dell'ora attuale (Marcus Bains)</guilabel
 ></term>
 <listitem
 ><para
->Questa casella attiva o disattiva la visualizzazione dei secondi sulla linea dell'ora attuale (linea Marcus Bains).</para
+>Questa casella attiva o disattiva la visualizzazione dei secondi sulla linea dell'ora attuale (linea Marcus Bains). In base alle impostazioni regionali del sistema, potrebbe essere mostrato anche il fuso orario.</para
 ></listitem>
 </varlistentry>
 
@@ -3675,7 +3675,7 @@ choose the <menuchoice
 <varlistentry>
 <term
 ><guilabel
->Linea dell'ora attuale</guilabel
+>Linea dell'ora attuale (Marcus Bains)</guilabel
 ></term>
 <listitem
 ><para
