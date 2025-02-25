@@ -16,7 +16,7 @@ msgstr ""
 "Project-Id-Version: korganizer\n"
 "Report-Msgid-Bugs-To: https://bugs.kde.org\n"
 "POT-Creation-Date: 2025-02-22 02:32+0000\n"
-"PO-Revision-Date: 2024-10-17 15:57+0200\n"
+"PO-Revision-Date: 2025-02-16 16:00+0100\n"
 "Last-Translator: Luigi Toscano <luigi.toscano@tiscali.it>\n"
 "Language-Team: Italian <kde-i18n-it@kde.org>\n"
 "Language: it\n"
@@ -4091,8 +4091,8 @@ msgid ""
 "Check this box to display a line in the day or week view indicating the "
 "current-time line (Marcus Bains line)."
 msgstr ""
-"Marca questa casella per mostrare una linea corrispondente all'ora attuale "
-"(linea Marcus Bains), nelle viste quotidiana e settimanale."
+"Marca questa casella per mostrare una linea nelle viste quotidiana e "
+"settimanale che indica la linea all'ora attuale (linea Marcus Bains)."
 
 #. i18n: ectx: tooltip, entry (MarcusBainsEnabled), group (Agenda View)
 #: settings/korganizer.kcfg:150
@@ -4785,9 +4785,10 @@ msgid ""
 "open the \"Select Font\" dialog, allowing you to choose the font for the "
 "current-time line in the agenda view."
 msgstr ""
-"Premi questo pulsante per configurare il carattere della linea del tempo. "
-"Questo pulsante aprirà la finestra di dialogo «Scegli carattere» che ti "
-"permette di impostare il carattere della linea del tempo nella vista agenda."
+"Premi questo pulsante per configurare il carattere della linea dell'ora "
+"attuale. Questo pulsante aprirà la finestra di dialogo «Scegli carattere» "
+"che ti permette di impostare il carattere della linea del tempo nella vista "
+"agenda."
 
 #. i18n: ectx: label, entry (DefaultTodoAttachMethod), group (Hidden Options)
 #: settings/korganizer.kcfg:405
