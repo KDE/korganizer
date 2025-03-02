@@ -2,13 +2,14 @@
 # Copyright (C) 2009 Free Software Foundation, Inc.
 # This file is distributed under the same license as the korganizer package.
 # Axel Rousseau <axel@esperanto-jeunes.org>, 2009.
+# Oliver Kellogg <olivermkellogg@gmail.com>, 2025.
 #
 msgid ""
 msgstr ""
 "Project-Id-Version: korganizer\n"
 "Report-Msgid-Bugs-To: https://bugs.kde.org\n"
 "POT-Creation-Date: 2025-02-22 02:32+0000\n"
-"PO-Revision-Date: 2024-12-28 17:41+0100\n"
+"PO-Revision-Date: 2025-02-22 21:54+0100\n"
 "Last-Translator: Oliver Kellogg <olivermkellogg@gmail.com>\n"
 "Language-Team: esperanto <kde-i18n-eo@kde.org>\n"
 "Language: eo\n"
@@ -954,7 +955,7 @@ msgstr "Krei novan Taglibron"
 #, kde-format
 msgctxt "@info:tooltip"
 msgid "Create a new Journal"
-msgstr "Kreu novan Taglibron"
+msgstr "Krei novan Taglibron"
 
 #: actionmanager.cpp:599
 #, kde-format
