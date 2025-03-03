@@ -1160,7 +1160,7 @@ msgstr "Produciuse un erro: %1 (URL: %2)"
 #: actionmanager.cpp:995
 #, kde-format
 msgid "Cannot upload calendar to '%1'"
-msgstr "Non é posíbel enviar o calendario a «%1»."
+msgstr "Non é posíbel subir o calendario a «%1»."
 
 #: actionmanager.cpp:1001
 #, kde-format
@@ -5018,7 +5018,7 @@ msgid ""
 msgstr ""
 "Marque esta opción para subir automaticamente a súa información de Ocupación/"
 "Dispoñibilidade.\n"
-"É posíbel omitir esta opción e enviar por correo ou subir dita información "
+"É posíbel omitir esta opción e subir por correo ou subir dita información "
 "usando o menú de Planificación de KOrganizer.\n"
 "Nota: Se KOrganizer está a actuar como cliente Kolab de KDE, isto non se "
 "require, xa que o servidor Kolab2 se ocupa de publicar a súa información de "
