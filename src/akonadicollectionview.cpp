@@ -752,16 +752,32 @@ void AkonadiCollectionView::deleteCalendar()
     const QString displayname = index.model()->data(index, Qt::DisplayRole).toString();
     Q_ASSERT(!displayname.isEmpty());
 
+    bool isTopLevel = collection.parentCollection() == Akonadi::Collection::root();
+
+    QString yesNoMessage;
+    if (isTopLevel) {
+        yesNoMessage = xi18nc("@info",
+                              "Do you really want to delete the <filename>%1</filename> calendar?"
+                              "<para><note>The calendar data will not be deleted, nor will the calendar "
+                              "be removed from its remote resource.</note></para>"
+                              "The <filename>%1</filename> calendar can be added again at any time.",
+                              displayname);
+    } else {
+        yesNoMessage = xi18nc("@info",
+                              "Do you really want to delete the <filename>%1/filename> calendar?"
+                              "<para><warning>This cannot be undone.  "
+                              "Please consider carefully before pressing the %2 button.</warning></para>",
+                              displayname,
+                              KStandardGuiItem::standardItem(KStandardGuiItem::Delete));
+    }
     if (KMessageBox::warningContinueCancel(this,
-                                           i18nc("@info", "Do you really want to delete calendar %1?", displayname),
+                                           yesNoMessage,
                                            i18nc("@title:window", "Delete Calendar"),
                                            KStandardGuiItem::del(),
                                            KStandardGuiItem::cancel(),
                                            QString(),
                                            KMessageBox::Dangerous)
         == KMessageBox::Continue) {
-        bool isTopLevel = collection.parentCollection() == Akonadi::Collection::root();
-
         mNotSendAddRemoveSignal = true;
         mWasDefaultCalendar = KOHelper::isStandardCalendar(collection.id());
 
