@@ -1412,7 +1412,7 @@ button.</para>
 </mediaobject>
 </screenshot>
 
-<para>Checking <guilabel>Store attachment inline</guilabel> will cause the attachment to be stored inside your
+<para>Checking <guilabel>Store a copy of the  attachment file inside the calendar</guilabel> will cause the attachment to be stored inside your
 calendar, which can take a lot of space depending on the size of the
 attachment. If this option is not checked, then only a link pointing to the
 attachment will be stored.  Do not use a link for attachments that change
