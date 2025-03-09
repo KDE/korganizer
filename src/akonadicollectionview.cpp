@@ -745,7 +745,12 @@ void AkonadiCollectionView::deleteCalendar()
     Q_ASSERT(!displayname.isEmpty());
 
     if (KMessageBox::warningContinueCancel(this,
-                                           i18nc("@info", "Do you really want to delete calendar %1?", displayname),
+                                           xi18nc("@info",
+                                                  "Do you really want to delete the <filename>%1</filename> calendar?"
+                                                  "<para><note>The calendar data will not be deleted, nor will the calendar "
+                                                  "be removed from its remote resource.</note></para>"
+                                                  "The <filename>%1</filename> calendar can be added back at any time.",
+                                                  displayname),
                                            i18nc("@title:window", "Delete Calendar"),
                                            KStandardGuiItem::del(),
                                            KStandardGuiItem::cancel(),
