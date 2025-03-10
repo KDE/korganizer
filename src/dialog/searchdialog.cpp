@@ -200,10 +200,20 @@ void SearchDialog::search(const QRegularExpression &regularExpression)
     for (const auto &calendar : m_calendarview->enabledCalendars()) {
         if (m_ui->dateRangeCheckbox->isChecked()) {
             if (m_ui->eventsCheck->isChecked()) {
-                events += calendar->events(startDt, endDt, QTimeZone::systemTimeZone(), m_ui->inclusiveCheck->isChecked());
+                if (m_ui->unfiltered->isChecked()) {
+                    events += calendar->rawEvents(startDt, endDt, QTimeZone::systemTimeZone(), m_ui->inclusiveCheck->isChecked());
+                } else {
+                    events += calendar->events(startDt, endDt, QTimeZone::systemTimeZone(), m_ui->inclusiveCheck->isChecked());
+                }
             }
             if (m_ui->includeUndatedTodos->isChecked()) {
-                for (const KCalendarCore::Todo::Ptr &todo : calendar->todos()) {
+                KCalendarCore::Todo::List tempTodos;
+                if (m_ui->unfiltered->isChecked()) {
+                    KCalendarCore::Todo::List tmpTodos = calendar->rawTodos();
+                } else {
+                    KCalendarCore::Todo::List tmpTodos = calendar->todos();
+                }
+                for (const KCalendarCore::Todo::Ptr &todo : tempTodos) {
                     Q_ASSERT(todo);
                     if ((!todo->hasStartDate() && !todo->hasDueDate()) // undated
                         || (todo->hasStartDate() && (todo->dtStart().toLocalTime().date() >= startDt)
@@ -216,24 +226,44 @@ void SearchDialog::search(const QRegularExpression &regularExpression)
                     }
                 }
             } else {
-                todos += calendar->todos(startDt, endDt, QTimeZone::systemTimeZone(), m_ui->inclusiveCheck->isChecked());
+                if (m_ui->unfiltered->isChecked()) {
+                    todos += calendar->rawTodos(startDt, endDt, QTimeZone::systemTimeZone(), m_ui->inclusiveCheck->isChecked());
+                } else {
+                    todos += calendar->todos(startDt, endDt, QTimeZone::systemTimeZone(), m_ui->inclusiveCheck->isChecked());
+                }
             }
 
             if (m_ui->journalsCheck->isChecked()) {
                 for (auto dt = startDt; dt <= endDt; dt = dt.addDays(1)) {
-                    journals += calendar->journals(dt);
+                    if (m_ui->unfiltered->isChecked()) {
+                        journals += calendar->rawJournalsForDate(dt);
+                    } else {
+                        journals += calendar->journals(dt);
+                    }
                 }
             }
 
         } else {
             if (m_ui->eventsCheck->isChecked()) {
-                events += calendar->events();
+                if (m_ui->unfiltered->isChecked()) {
+                    events += calendar->rawEvents();
+                } else {
+                    events += calendar->events();
+                }
             }
             if (m_ui->todosCheck->isChecked()) {
-                todos += calendar->todos();
+                if (m_ui->unfiltered->isChecked()) {
+                    todos += calendar->rawTodos();
+                } else {
+                    todos += calendar->todos();
+                }
             }
             if (m_ui->journalsCheck->isChecked()) {
-                journals += calendar->journals();
+                if (m_ui->unfiltered->isChecked()) {
+                    journals += calendar->rawJournals();
+                } else {
+                    journals += calendar->journals();
+                }
             }
         }
     }
