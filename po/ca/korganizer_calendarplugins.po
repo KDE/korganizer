@@ -804,7 +804,3 @@ msgstr "Aquest mes a la història"
 msgctxt "Qt date format used by the localized Wikipedia"
 msgid "MMMM_yyyy"
 msgstr "MMMM_yyyy"
-
-#~ msgctxt "@action:button"
-#~ msgid "Search &Directory Service"
-#~ msgstr "Cerca al servei de &directori"
