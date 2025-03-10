@@ -520,10 +520,6 @@ AkonadiCollectionView::AkonadiCollectionView(CalendarView *view, bool hasContext
         mDefaultCalendar->setEnabled(false);
         xmlclient->actionCollection()->addAction(QStringLiteral("set_standard_calendar"), mDefaultCalendar);
         connect(mDefaultCalendar, &QAction::triggered, this, &AkonadiCollectionView::setDefaultCalendar);
-
-        mServerSideSubscription = new QAction(QIcon::fromTheme(QStringLiteral("folder-bookmarks")), i18nc("@action:inmenu", "Serverside Subscription…"), this);
-        xmlclient->actionCollection()->addAction(QStringLiteral("serverside_subscription"), mServerSideSubscription);
-        connect(mServerSideSubscription, &QAction::triggered, this, &AkonadiCollectionView::slotServerSideSubscription);
     }
 }
 
@@ -532,20 +528,6 @@ AkonadiCollectionView::~AkonadiCollectionView()
     // Need this because it seems impossible to detect in the NodeExpander when to save the state
     // before the view is deleted.
     mNewNodeExpander->saveState();
-}
-
-void AkonadiCollectionView::slotServerSideSubscription()
-{
-    const QModelIndex index = mCollectionView->selectionModel()->currentIndex(); // selectedRows()
-    Q_ASSERT(index.isValid());
-    const Akonadi::Collection collection = Akonadi::CollectionUtils::fromIndex(index);
-    if (!collection.isValid()) {
-        return;
-    }
-    auto job = new PimCommon::ManageServerSideSubscriptionJob(this);
-    job->setCurrentCollection(collection);
-    job->setParentWidget(this);
-    job->start();
 }
 
 Akonadi::Collection AkonadiCollectionView::currentCalendar() const
@@ -690,10 +672,6 @@ void AkonadiCollectionView::updateMenu()
                                          && !collection.isVirtual() && collection.contentMimeTypes().contains(KCalendarCore::Event::eventMimeType()));
             disableStuff = false;
         }
-        bool isOnline;
-        mServerSideSubscription->setEnabled(PimCommon::MailUtil::isImapFolder(collection, isOnline));
-    } else {
-        mServerSideSubscription->setEnabled(false);
     }
     if (disableStuff) {
         mDefaultCalendar->setEnabled(false);

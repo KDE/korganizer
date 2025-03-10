@@ -91,7 +91,6 @@ private Q_SLOTS:
     void assignColor();
     void setDefaultCalendar();
     void onAction(const QModelIndex &index, int action);
-    void slotServerSideSubscription();
 
     void selectionChanged(const QItemSelection &selected, const QItemSelection &deselected);
 
@@ -105,7 +104,6 @@ private:
     KCheckableProxyModel *mSelectionProxyModel = nullptr;
     QAction *mAssignColor = nullptr;
     QAction *mDefaultCalendar = nullptr;
-    QAction *mServerSideSubscription = nullptr;
     bool mNotSendAddRemoveSignal = false;
     bool mWasDefaultCalendar = false;
     const bool mHasContextMenu;
