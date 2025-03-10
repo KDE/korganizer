@@ -24,6 +24,7 @@
 #include <CalendarSupport/KCalPrefs>
 #include <CalendarSupport/Utils>
 
+#include <Akonadi/AgentConfigurationDialog>
 #include <Akonadi/AgentFilterProxyModel>
 #include <Akonadi/AgentInstanceCreateJob>
 #include <Akonadi/AgentManager>
@@ -711,7 +712,6 @@ void AkonadiCollectionView::newCalendar()
         const Akonadi::AgentType agentType = dlg->agentType();
         if (agentType.isValid()) {
             auto job = new Akonadi::AgentInstanceCreateJob(agentType, this);
-            job->configure(this);
             connect(job, &Akonadi::AgentInstanceCreateJob::result, this, &AkonadiCollectionView::newCalendarDone);
             job->start();
         }
@@ -730,6 +730,14 @@ void AkonadiCollectionView::newCalendarDone(KJob *job)
         mNotSendAddRemoveSignal = false;
         return;
     }
+
+    auto configureDialog = new Akonadi::AgentConfigurationDialog(createjob->instance(), this);
+    configureDialog->setAttribute(Qt::WA_DeleteOnClose);
+    connect(configureDialog, &QDialog::rejected, this, [instance = createjob->instance()] {
+        Akonadi::AgentManager::self()->removeInstance(instance);
+    });
+    configureDialog->show();
+
     mNotSendAddRemoveSignal = false;
     // TODO
 }
