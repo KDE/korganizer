@@ -603,11 +603,12 @@ void ActionManager::initActions()
     /** Configure Current View Action **/
     mConfigureViewAction = new QAction(QIcon::fromTheme(QStringLiteral("configure")), i18n("Configure View…"), this);
     mConfigureViewAction->setIconText(i18n("Configure"));
-    mConfigureViewAction->setStatusTip(i18nc("@info:status", "Configure the view"));
-    mConfigureViewAction->setToolTip(i18nc("@info:tooltip", "Configure the current view"));
+    mConfigureViewAction->setStatusTip(i18nc("@info:status", "Configure the multi-calendar view"));
+    mConfigureViewAction->setToolTip(i18nc("@info:tooltip", "Configure the multi-calendar view"));
     mConfigureViewAction->setWhatsThis(i18nc("@info:whatsthis",
-                                             "Starts a configuration dialog that allows you to change the settings "
-                                             "for the current calendar view."));
+                                             "In the multi-calendar view, starts a dialog that allows configuring the view. "
+                                             "Currently only the multi-calendar view is supported. "
+                                             "See the Multiple Calendars options in the Views->Agenda Views settings."));
     mConfigureViewAction->setEnabled(mCalendarView->currentView() && mCalendarView->currentView()->hasConfigurationDialog());
     mACollection->addAction(QStringLiteral("configure_view"), mConfigureViewAction);
     connect(mConfigureViewAction, &QAction::triggered, mCalendarView, &CalendarView::configureCurrentView);
