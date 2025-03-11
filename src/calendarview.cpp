@@ -33,21 +33,18 @@
 #include "widgets/navigatorbar.h"
 
 #include <Akonadi/AttributeFactory>
-#include <Akonadi/CollectionIdentificationAttribute>
-
 #include <Akonadi/CalFilterPartStatusProxyModel>
 #include <Akonadi/CalendarClipboard>
 #include <Akonadi/CalendarUtils>
+#include <Akonadi/CollectionIdentificationAttribute>
+#include <Akonadi/CollectionMaintenancePage>
+#include <Akonadi/CollectionPropertiesDialog>
+#include <Akonadi/ControlGui>
 #include <Akonadi/EntityTreeModel>
 #include <Akonadi/FreeBusyManager>
 #include <Akonadi/IncidenceChanger>
 #include <Akonadi/TodoPurger>
 #include <akonadi/calendarsettings.h> //krazy:exclude=camelcase this is a generated file
-
-#include <Akonadi/CollectionMaintenancePage>
-#include <Akonadi/CollectionPropertiesDialog>
-#include <Akonadi/ControlGui>
-#include <Akonadi/EntityTreeModel>
 
 #include <CalendarSupport/CalPrinter>
 #include <CalendarSupport/CalendarSingleton>
@@ -104,6 +101,10 @@ CalendarView::CalendarView(QWidget *parent)
     // We don't reuse the entire ETMCalendar because we want a different selection model. Checking/unchecking
     // calendars in korganizer shouldn't affect kontact's summary view
     mCalendar = Akonadi::ETMCalendar::Ptr(new Akonadi::ETMCalendar(CalendarSupport::calendarSingleton().data()));
+
+    connect(mCalendar->entityTreeModel(), &Akonadi::EntityTreeModel::errorOccurred, this, [this](const QString &message) {
+        KMessageBox::error(this, message);
+    });
 
     mCalendar->setObjectName(QLatin1StringView("KOrg Calendar"));
     mCalendarClipboard = new Akonadi::CalendarClipboard(mCalendar, mChanger, this);
