@@ -288,7 +288,7 @@
 ></listitem>
 <listitem
 ><para
->Mucho más...</para
+>Mucho más…</para
 ></listitem>
 </itemizedlist
 ></para>
@@ -553,7 +553,7 @@
 >Para <link linkend="entering-data-to-do"
 >editar una tarea pendiente</link
 >, pulse con el botón derecho y elija la opción de menú <guimenuitem
->Editar...</guimenuitem
+>Editar…</guimenuitem
 >.</para>
 
 </sect1>
@@ -646,7 +646,7 @@
 ><guimenu
 >Preferencias</guimenu
 > <guimenuitem
->Configurar &korganizer;...</guimenuitem
+>Configurar &korganizer;…</guimenuitem
 ></menuchoice
 > y seleccione la pestaña <guilabel
 >Calendarios</guilabel
@@ -657,7 +657,7 @@
 >Alternativamente, abra el menú de contexto en el panel lateral <guilabel
 >Gestor de calendarios</guilabel
 > con un &RMB; pulse y seleccione <guilabel
->Añadir calendario...</guilabel
+>Añadir calendario…</guilabel
 ></para
 ></step>
 <step
@@ -678,7 +678,7 @@
 <step
 ><para
 >Pulse el botón <guibutton
->Añadir...</guibutton
+>Añadir…</guibutton
 > para añadir recursos nuevos a la lista de los recursos disponibles.</para
 ></step>
 
@@ -694,7 +694,7 @@
 > y pulse <guibutton
 >Borrar calendario</guibutton
 > para borrarlo o <guibutton
-> Propiedades del calendario...</guibutton
+> Propiedades del calendario…</guibutton
 > para modificarlo.</para
 ></step>
 
@@ -825,7 +825,7 @@
 > <guisubmenu
 >Importar</guisubmenu
 ><guimenuitem
->Importar calendario...</guimenuitem
+>Importar calendario…</guimenuitem
 > </menuchoice
 >. &korganizer; le preguntará si quiere <guilabel
 >Añadir como nuevo calendario</guilabel
@@ -866,7 +866,7 @@ store.kde.org KOrganizer Calendars-->
 ><guisubmenu
 >Exportar</guisubmenu
 > <guimenuitem
->Exportar como iCalendar...</guimenuitem
+>Exportar como iCalendar…</guimenuitem
 ></menuchoice
 >. Se desplegará el diálogo <guilabel
 >Guardar como</guilabel
@@ -889,7 +889,7 @@ store.kde.org KOrganizer Calendars-->
 ><guimenu
 >Archivo</guimenu
 ><guimenuitem
->Archivar incidencias antiguas...</guimenuitem
+>Archivar incidencias antiguas…</guimenuitem
 ></menuchoice
 >.</para
 ></step>
@@ -946,7 +946,7 @@ is something worth downloading) using the
 ><guisubmenu
 >Importar</guisubmenu
 > <guimenuitem
->Obtener novedades...</guimenuitem
+>Obtener novedades…</guimenuitem
 ></menuchoice
 > del menú. Al seleccionar uno de los calendarios, aparece un diálogo con la lista de los eventos de los calendarios. Para combinar los eventos que se muestran con los del recurso predeterminado, pulse <guilabel
 >Combinar</guilabel
@@ -1376,7 +1376,7 @@ choose the <menuchoice
 > del menú. Si pulsa con el botón derecho sobre una tarea pendiente existente, tendrá más opciones: puede <guimenuitem
 >Mostrar</guimenuitem
 > el resumen, <guimenuitem
->Editar...</guimenuitem
+>Editar…</guimenuitem
 > los detalles de la tarea pendiente, <guimenuitem
 >Borrar</guimenuitem
 > la tarea pendiente o crear una <guimenuitem
@@ -1385,7 +1385,7 @@ choose the <menuchoice
 
 <para
 >Cuando elija <guimenuitem
->Nueva tarea pendiente...</guimenuitem
+>Nueva tarea pendiente…</guimenuitem
 >, aparecerá un diálogo emergente que le permitirá introducir toda la <link linkend="entering-data-to-do"
 >información</link
 > necesaria.</para>
@@ -1428,9 +1428,9 @@ choose the <menuchoice
 
 <para
 >Cuando pulsa sobre el enlace <guilabel
->Nuevo diario...</guilabel
+>Nuevo diario…</guilabel
 > (o el botón <guibutton
->Nuevo diario...</guibutton
+>Nuevo diario…</guibutton
 >), se crea una nueva entrada en el diario. Si quiere editar una entrada del diario, pulse en el área del texto y edítelo. Para eliminar una entrada del diario, pulse el <inlinemediaobject
 > <imageobject
 ><imagedata fileref="edit-delete.png" format="PNG"/> </imageobject
@@ -1456,7 +1456,7 @@ choose the <menuchoice
 > o <link linkend="entering-data-to-do-general"
 >tareas pendientes</link
 >, pulse el botón <guilabel
->...</guilabel
+>…</guilabel
 > en la pestaña <guilabel
 >General</guilabel
 >. Puede asignar más de una etiqueta a cada elemento.</para>
@@ -1466,7 +1466,7 @@ choose the <menuchoice
 > <guimenu
 >Preferencias</guimenu
 ><guimenuitem
->Gestión de etiquetas...</guimenuitem
+>Gestión de etiquetas…</guimenuitem
 > </menuchoice
 > del menú para abrir el diálogo <guilabel
 >Gestión de etiquetas</guilabel
@@ -1492,7 +1492,7 @@ choose the <menuchoice
 > <guimenu
 >Preferencias</guimenu
 ><guimenuitem
->Gestionar los filtros de vista...</guimenuitem
+>Gestionar los filtros de vista…</guimenuitem
 > </menuchoice
 > del menú para abrir el diálogo <guilabel
 >Editar filtros del calendario</guilabel
@@ -1598,7 +1598,7 @@ choose the <menuchoice
 ><guimenu
 >Acciones</guimenu
 ><guimenuitem
->Nuevo evento...</guimenuitem
+>Nuevo evento…</guimenuitem
 ></menuchoice
 >. Debe aparecer una ventana con seis pestañas.</para>
 
@@ -1737,7 +1737,7 @@ choose the <menuchoice
 >Se pueden asignar varias <link linkend="categories-view"
 >etiquetas</link
 > a un elemento del calendario. Pulse el botón <guibutton
->...</guibutton
+>…</guibutton
 > para mostrar todas las etiquetas disponibles. Marque las casillas de las etiquetas que quiera asignar al evento.</para>
 <para
 >También puede añadir una nueva etiqueta, modificarla o borrarla en el diálogo <guilabel
@@ -1838,7 +1838,7 @@ choose the <menuchoice
 >La lista del centro de la pestaña muestra los asistentes seleccionados para este evento, y le permite añadir asistentes introduciendo el nombre o dirección de correo, editarlos o eliminarlos.</para>
 <para
 >Si los asistentes están en su libreta de direcciones, no tiene que recordar ni teclear su dirección de correo. Simplemente pulse sobre el botón <guibutton
->Seleccionar direcciones...</guibutton
+>Seleccionar direcciones…</guibutton
 > y elija el asistente de la lista. Tenga en cuenta que este es el libro de direcciones estándar de &kde;, que también lo usa &kmail; y también se puede llamar desde una aplicación aparte (&kaddressbook;).</para>
 </listitem>
 </varlistentry>
@@ -1965,7 +1965,7 @@ choose the <menuchoice
 ></term>
 <listitem
 ><para
->Especifica si el evento aparece cada semana (1), en semanas alternas (2) y así sucesivamente. También especifica los días (lunes... domingo) en los que ocurre el suceso. </para
+>Especifica si el evento aparece cada semana (1), en semanas alternas (2) y así sucesivamente. También especifica los días (lunes… domingo) en los que ocurre el suceso. </para
 ></listitem>
 </varlistentry>
 
@@ -2070,7 +2070,7 @@ choose the <menuchoice
 <varlistentry>
 <term
 ><guimenuitem
->Guardar como...</guimenuitem
+>Guardar como…</guimenuitem
 ></term>
 <listitem
 ><para
@@ -2107,7 +2107,7 @@ choose the <menuchoice
 <varlistentry>
 <term
 ><guimenuitem
->Propiedades...</guimenuitem
+>Propiedades…</guimenuitem
 ></term>
 <listitem
 ><para
@@ -2231,7 +2231,7 @@ choose the <menuchoice
 ><guimenu
 >Acciones</guimenu
 ><guimenuitem
->Nueva tarea pendiente...</guimenuitem
+>Nueva tarea pendiente…</guimenuitem
 ></menuchoice
 >. Aparece una ventana con cinco pestañas.</para>
 
@@ -2395,7 +2395,7 @@ choose the <menuchoice
 ><guimenu
 >Planificar</guimenu
 ><guimenuitem
->Publicar la información del elemento...</guimenuitem
+>Publicar la información del elemento…</guimenuitem
 ></menuchoice
 > del menú, cuando el elemento está seleccionado. Tras esto, aparecerá un diálogo, le preguntará qué dirección de correo electrónico recibirá el evento o la tarea pendiente. El elemento se enviará por correo electrónico, en formato iCalendar.</para>
 
@@ -2407,7 +2407,7 @@ choose the <menuchoice
 ><guimenu
 >Planificar</guimenu
 ><guimenuitem
->Publicar información del elemento...</guimenuitem
+>Publicar información del elemento…</guimenuitem
 ></menuchoice
 >, poner la dirección de la lista de correo y el evento se enviará. Los suscriptores de la lista de correo que usen &korganizer; tendrán insertada automáticamente la fecha del concierto en sus calendarios. </para>
 
@@ -2416,7 +2416,7 @@ choose the <menuchoice
 ><guimenu
 >Planificar</guimenu
 ><guimenuitem
->Enviar como iCalendar...</guimenuitem
+>Enviar como iCalendar…</guimenuitem
 ></menuchoice
 > si quiere proporcionar esta opción. </para>
 
@@ -2602,7 +2602,7 @@ choose the <menuchoice
 ><guimenu
 >Planificar</guimenu
 > <guimenuitem
->Información por correo sobre disponibilidad...</guimenuitem
+>Información por correo sobre disponibilidad…</guimenuitem
 ></menuchoice
 >. Introduzca las direcciones de correo a las que quiera enviar la información en el diálogo y pulse <guilabel
 >Aceptar</guilabel
@@ -2669,7 +2669,7 @@ choose the <menuchoice
 ><guimenu
 >Acciones</guimenu
 ><guimenuitem
->Evento nuevo...</guimenuitem
+>Evento nuevo…</guimenuitem
 ></menuchoice
 > o seleccione el área entre <emphasis
 >12 del mediodía</emphasis
@@ -2755,7 +2755,7 @@ choose the <menuchoice
 >. <tip
 ><para
 >Si los asistentes ya están en la libreta de direcciones de &kde; en lugar de teclear los nombres y las direcciones de correo, puede pulsar el botón <guibutton
->Seleccionar asistentes...</guibutton
+>Seleccionar asistentes…</guibutton
 > para añadirlos.</para
 ></tip
 ></para
@@ -2826,7 +2826,7 @@ choose the <menuchoice
 ><guimenu
 >Preferencias</guimenu
 ><guimenuitem
->Configurar &korganizer;...</guimenuitem
+>Configurar &korganizer;…</guimenuitem
 ></menuchoice
 >. Puede obtener más información sobre todas las opciones de configuración y posibilidades en <xref linkend="config-main"/>.</para>
 
@@ -2835,7 +2835,7 @@ choose the <menuchoice
 ><guimenu
 >Preferencias</guimenu
 ><guimenuitem
->Configurar barras de herramientas...</guimenuitem
+>Configurar barras de herramientas…</guimenuitem
 ></menuchoice
 > del menú y lea la sección<ulink url="help:/fundamentals/config.html#toolbars"
 >Personalización de las  barras de herramientas</ulink
@@ -2850,7 +2850,7 @@ choose the <menuchoice
 ><guimenu
 > Preferencias</guimenu
 ><guimenuitem
->Configurar fecha y hora...</guimenuitem
+>Configurar fecha y hora…</guimenuitem
 ></menuchoice
 > del menú. Se tiene que reiniciar &korganizer; para que los cambios hechos en &systemsettings; surtan efecto.</para>
 
@@ -4096,7 +4096,7 @@ format="PNG"/></imageobject
 ><guimenu
 >Archivo</guimenu
 > <guimenuitem
->Imprimir vista previa...</guimenuitem
+>Imprimir vista previa…</guimenuitem
 ></menuchoice>
 </term>
 <listitem
@@ -4142,7 +4142,7 @@ format="PNG"/></imageobject
 > <guisubmenu
 >Importar</guisubmenu
 > <guimenuitem
->Obtener novedades...</guimenuitem
+>Obtener novedades…</guimenuitem
 > </menuchoice
 ></term>
 <listitem
@@ -4205,7 +4205,7 @@ special events, &etc;</para>
 ><guimenu
 >Archivo</guimenu
 > <guimenuitem
->Archivar incidencias antiguas...</guimenuitem
+>Archivar incidencias antiguas…</guimenuitem
 > </menuchoice
 ></term>
 <listitem
@@ -4985,13 +4985,13 @@ format="PNG"/></imageobject
 ><guimenu
 >Acciones</guimenu
 > <guimenuitem
->Nuevo evento...</guimenuitem
+>Nuevo evento…</guimenuitem
 > </menuchoice>
 </term>
 <listitem
 ><para
 >Elija <guilabel
->Nuevo evento...</guilabel
+>Nuevo evento…</guilabel
 > para <action
 >crear un evento nuevo</action
 >.</para>
@@ -5013,13 +5013,13 @@ format="PNG"/></imageobject
 ><guimenu
 >Acciones</guimenu
 > <guimenuitem
->Nueva tarea pendiente...</guimenuitem
+>Nueva tarea pendiente…</guimenuitem
 > </menuchoice>
 </term>
 <listitem
 ><para
 >Elija <guilabel
->Nueva tarea pendiente...</guilabel
+>Nueva tarea pendiente…</guilabel
 > para <action
 >crear una tarea pendiente nueva</action
 >. Inicialmente, la tarea pendiente no tiene fecha de vencimiento, pero puede indicar una.</para>
@@ -5036,13 +5036,13 @@ format="PNG"/></imageobject
 ><guimenu
 >Acciones</guimenu
 > <guimenuitem
->Nueva subtarea pendiente...</guimenuitem
+>Nueva subtarea pendiente…</guimenuitem
 > </menuchoice
 ></term>
 <listitem
 ><para
 >Elija <guilabel
->Nueva subtarea pendiente...</guilabel
+>Nueva subtarea pendiente…</guilabel
 > para <action
 >comenzar a escribir una subtarea pendiente nueva. La tarea pendiente seleccionada actualmente será el padre de la subtarea.</action
 >. Inicialmente, la tarea pendiente no tiene fecha de vencimiento, pero puede indicar uno.</para>
@@ -5064,13 +5064,13 @@ format="PNG"/></imageobject
 ><guimenu
 >Acciones</guimenu
 > <guimenuitem
->Nuevo diario...</guimenuitem
+>Nuevo diario…</guimenuitem
 > </menuchoice
 ></term>
 <listitem
 ><para
 >Elija <guilabel
->Nuevo diario...</guilabel
+>Nuevo diario…</guilabel
 > para <action
 >comenzar a escribir una entrada del diario.</action
 >.</para
@@ -5102,13 +5102,13 @@ format="PNG"/></imageobject
 ><guimenu
 >Acciones</guimenu
 > <guimenuitem
->Editar...</guimenuitem
+>Editar…</guimenuitem
 > </menuchoice
 ></term>
 <listitem
 ><para
 >Elija <guilabel
->Editar...</guilabel
+>Editar…</guilabel
 > para <action
 >editar la entrada del diario, el evento o la tarea pendiente seleccionada actualmente.</action
 ></para
@@ -5169,7 +5169,7 @@ format="PNG"/></imageobject
 ><guimenu
 >Planificar</guimenu
 > <guimenuitem
->Publicar información del elemento...</guimenuitem
+>Publicar información del elemento…</guimenuitem
 > </menuchoice
 ></term>
 <listitem
@@ -5289,7 +5289,7 @@ format="PNG"/></imageobject
 ><guimenu
 >Planificar</guimenu
 > <guimenuitem
->Información por correo de libre/ocupado...</guimenuitem
+>Información por correo de libre/ocupado…</guimenuitem
 > </menuchoice
 ></term>
 <listitem
@@ -5357,7 +5357,7 @@ format="PNG"/></imageobject
 ><guimenu
 >Preferencias</guimenu
 > <guimenuitem
->Configurar fecha y hora...</guimenuitem
+>Configurar fecha y hora…</guimenuitem
 > </menuchoice
 ></term>
 <listitem
@@ -5374,7 +5374,7 @@ format="PNG"/></imageobject
 ><guimenu
 >Preferencias</guimenu
 > <guisubmenu
->Gestionar filtros de vista...</guisubmenu
+>Gestionar filtros de vista…</guisubmenu
 > </menuchoice
 ></term>
 <listitem
@@ -5393,7 +5393,7 @@ format="PNG"/></imageobject
 ><guimenu
 >Preferencias</guimenu
 > <guimenuitem
->Gestión de etiquetas...</guimenuitem
+>Gestión de etiquetas…</guimenuitem
 > </menuchoice
 ></term>
 <listitem

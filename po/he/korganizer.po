@@ -17,7 +17,7 @@ msgid ""
 msgstr ""
 "Project-Id-Version: korganizer\n"
 "Report-Msgid-Bugs-To: https://bugs.kde.org\n"
-"POT-Creation-Date: 2025-02-18 00:41+0000\n"
+"POT-Creation-Date: 2025-03-11 02:35+0000\n"
 "PO-Revision-Date: 2025-02-16 07:37+0200\n"
 "Last-Translator: Yaron Shahrabani <sh.yaron@gmail.com>\n"
 "Language-Team: צוות התרגום של KDE ישראל\n"
@@ -5424,48 +5424,48 @@ msgstr ""
 msgid "Limit search to specified date range"
 msgstr "הגבלת החיפוש לטווח התאריכים שצוין"
 
-#. i18n: ectx: property (text), widget (QLabel, startDateLabel)
-#: ui/searchdialog_base.ui:222
-#, kde-format
-msgid "Fr&om:"
-msgstr "מ&תאריך:"
-
-#. i18n: ectx: property (toolTip), widget (KDateComboBox, startDate)
-#: ui/searchdialog_base.ui:241
-#, kde-format
-msgid "The starting date of the period to search."
-msgstr "תאריך ההתחלה של התקופה לחיפוש."
-
-#. i18n: ectx: property (whatsThis), widget (KDateComboBox, startDate)
-#: ui/searchdialog_base.ui:244
-#, kde-format
-msgid "Search for items in the time period starting at the date given here."
-msgstr "חיפוש אחר פריטים בטווח הזמן שמתחיל בתאריך שסופק כאן."
-
-#. i18n: ectx: property (text), item, widget (KDateComboBox, startDate)
-#. i18n: ectx: property (text), item, widget (KDateComboBox, endDate)
-#: ui/searchdialog_base.ui:248 ui/searchdialog_base.ui:286
-#, kde-format
-msgid "2008-08-18"
-msgstr "2024-09-15"
-
 #. i18n: ectx: property (text), widget (QLabel, endDateLabel)
-#: ui/searchdialog_base.ui:260
+#: ui/searchdialog_base.ui:222
 #, kde-format
 msgid "&To:"
 msgstr "&עד תאריך:"
 
 #. i18n: ectx: property (toolTip), widget (KDateComboBox, endDate)
-#: ui/searchdialog_base.ui:279
+#: ui/searchdialog_base.ui:241
 #, kde-format
 msgid "The ending date of the period to search."
 msgstr "תאריך הסיום של התקופה לחיפוש."
 
 #. i18n: ectx: property (whatsThis), widget (KDateComboBox, endDate)
-#: ui/searchdialog_base.ui:282
+#: ui/searchdialog_base.ui:244
 #, kde-format
 msgid "Search for items in the time period ending at the date given here."
 msgstr "חיפוש אחר פריטים בטווח הזמן שמסתיים בתאריך שסופק כאן."
+
+#. i18n: ectx: property (text), item, widget (KDateComboBox, endDate)
+#. i18n: ectx: property (text), item, widget (KDateComboBox, startDate)
+#: ui/searchdialog_base.ui:248 ui/searchdialog_base.ui:286
+#, kde-format
+msgid "2008-08-18"
+msgstr "2024-09-15"
+
+#. i18n: ectx: property (text), widget (QLabel, startDateLabel)
+#: ui/searchdialog_base.ui:260
+#, kde-format
+msgid "Fr&om:"
+msgstr "מ&תאריך:"
+
+#. i18n: ectx: property (toolTip), widget (KDateComboBox, startDate)
+#: ui/searchdialog_base.ui:279
+#, kde-format
+msgid "The starting date of the period to search."
+msgstr "תאריך ההתחלה של התקופה לחיפוש."
+
+#. i18n: ectx: property (whatsThis), widget (KDateComboBox, startDate)
+#: ui/searchdialog_base.ui:282
+#, kde-format
+msgid "Search for items in the time period starting at the date given here."
+msgstr "חיפוש אחר פריטים בטווח הזמן שמתחיל בתאריך שסופק כאן."
 
 #. i18n: ectx: property (toolTip), widget (QCheckBox, inclusiveCheck)
 #: ui/searchdialog_base.ui:296
@@ -5523,6 +5523,30 @@ msgstr ""
 #, kde-format
 msgid "Include all to-dos &within the specified date range"
 msgstr "לכלול את כל המטלות ב&טווח התאריכים שצוין"
+
+#. i18n: ectx: property (toolTip), widget (QCheckBox, unfiltered)
+#: ui/searchdialog_base.ui:325
+#, fuzzy, kde-format
+#| msgctxt "@info:whatsthis"
+#| msgid "Press this button to remove the currently active filter."
+msgid ""
+"Uncheck this box to skip incidences matching the currently selected view "
+"filter"
+msgstr "לחיצה על כפתור זה תסיר את המסנן הפעיל כרגע."
+
+#. i18n: ectx: property (whatsThis), widget (QCheckBox, unfiltered)
+#: ui/searchdialog_base.ui:328
+#, kde-format
+msgid ""
+"When this box is checked all incidences wil be considered in the search, "
+"even those that aren't displayed according the currently selected view filter"
+msgstr ""
+
+#. i18n: ectx: property (text), widget (QCheckBox, unfiltered)
+#: ui/searchdialog_base.ui:331
+#, kde-format
+msgid "Include all incidences matched by view filter"
+msgstr ""
 
 #. i18n: ectx: property (text), widget (QPushButton, mDayBtn)
 #: views/collectionview/quickview.ui:34

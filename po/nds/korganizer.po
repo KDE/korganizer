@@ -7,7 +7,7 @@ msgid ""
 msgstr ""
 "Project-Id-Version: korganizer\n"
 "Report-Msgid-Bugs-To: https://bugs.kde.org\n"
-"POT-Creation-Date: 2025-02-18 00:41+0000\n"
+"POT-Creation-Date: 2025-03-11 02:35+0000\n"
 "PO-Revision-Date: 2014-09-18 17:03+0200\n"
 "Last-Translator: Sönke Dibbern <s_dibbern@web.de>\n"
 "Language-Team: Low Saxon <kde-i18n-nds@kde.org>\n"
@@ -5958,52 +5958,20 @@ msgstr ""
 msgid "Limit search to specified date range"
 msgstr ""
 
-#. i18n: ectx: property (text), widget (QLabel, startDateLabel)
-#: ui/searchdialog_base.ui:222
-#, kde-format
-msgid "Fr&om:"
-msgstr "&Vun:"
-
-#. i18n: ectx: property (toolTip), widget (KDateComboBox, startDate)
-#: ui/searchdialog_base.ui:241
-#, fuzzy, kde-format
-#| msgctxt "@info:whatsthis"
-#| msgid "Select the starting date for this event."
-msgid "The starting date of the period to search."
-msgstr "Dat Anfangdatum för dit Begeefnis fastleggen"
-
-#. i18n: ectx: property (whatsThis), widget (KDateComboBox, startDate)
-#: ui/searchdialog_base.ui:244
-#, fuzzy, kde-format
-#| msgid ""
-#| "Search for items with a starting date on or after the date you specify "
-#| "here."
-msgid "Search for items in the time period starting at the date given here."
-msgstr ""
-"Na Indrääg söken, de ehr Anfangdatum op't Datum, dat Du hier angiffst, oder "
-"later hebbt."
-
-#. i18n: ectx: property (text), item, widget (KDateComboBox, startDate)
-#. i18n: ectx: property (text), item, widget (KDateComboBox, endDate)
-#: ui/searchdialog_base.ui:248 ui/searchdialog_base.ui:286
-#, kde-format
-msgid "2008-08-18"
-msgstr "18.08.2008"
-
 #. i18n: ectx: property (text), widget (QLabel, endDateLabel)
-#: ui/searchdialog_base.ui:260
+#: ui/searchdialog_base.ui:222
 #, kde-format
 msgid "&To:"
 msgstr "&Na:"
 
 #. i18n: ectx: property (toolTip), widget (KDateComboBox, endDate)
-#: ui/searchdialog_base.ui:279
+#: ui/searchdialog_base.ui:241
 #, kde-format
 msgid "The ending date of the period to search."
 msgstr ""
 
 #. i18n: ectx: property (whatsThis), widget (KDateComboBox, endDate)
-#: ui/searchdialog_base.ui:282
+#: ui/searchdialog_base.ui:244
 #, fuzzy, kde-format
 #| msgid ""
 #| "Search for items with an ending date on or before the date you specify "
@@ -6012,6 +5980,38 @@ msgid "Search for items in the time period ending at the date given here."
 msgstr ""
 "Na Indrääg söken, de ehr Enndatum op't Datum, dat Du hier angiffst, oder "
 "fröher hebbt."
+
+#. i18n: ectx: property (text), item, widget (KDateComboBox, endDate)
+#. i18n: ectx: property (text), item, widget (KDateComboBox, startDate)
+#: ui/searchdialog_base.ui:248 ui/searchdialog_base.ui:286
+#, kde-format
+msgid "2008-08-18"
+msgstr "18.08.2008"
+
+#. i18n: ectx: property (text), widget (QLabel, startDateLabel)
+#: ui/searchdialog_base.ui:260
+#, kde-format
+msgid "Fr&om:"
+msgstr "&Vun:"
+
+#. i18n: ectx: property (toolTip), widget (KDateComboBox, startDate)
+#: ui/searchdialog_base.ui:279
+#, fuzzy, kde-format
+#| msgctxt "@info:whatsthis"
+#| msgid "Select the starting date for this event."
+msgid "The starting date of the period to search."
+msgstr "Dat Anfangdatum för dit Begeefnis fastleggen"
+
+#. i18n: ectx: property (whatsThis), widget (KDateComboBox, startDate)
+#: ui/searchdialog_base.ui:282
+#, fuzzy, kde-format
+#| msgid ""
+#| "Search for items with a starting date on or after the date you specify "
+#| "here."
+msgid "Search for items in the time period starting at the date given here."
+msgstr ""
+"Na Indrääg söken, de ehr Anfangdatum op't Datum, dat Du hier angiffst, oder "
+"later hebbt."
 
 #. i18n: ectx: property (toolTip), widget (QCheckBox, inclusiveCheck)
 #: ui/searchdialog_base.ui:296
@@ -6074,6 +6074,31 @@ msgstr ""
 #| msgid "Include E&vents within the specified date range"
 msgid "Include all to-dos &within the specified date range"
 msgstr "&Begeefnissen binnen de angeven Tiet insluten"
+
+#. i18n: ectx: property (toolTip), widget (QCheckBox, unfiltered)
+#: ui/searchdialog_base.ui:325
+#, fuzzy, kde-format
+#| msgctxt "@info:whatsthis"
+#| msgid "Press this button to remove the currently active filter."
+msgid ""
+"Uncheck this box to skip incidences matching the currently selected view "
+"filter"
+msgstr ""
+"Klick op dissen Knoop, wenn Du den opstunns utsöchten Filter wegdoon wullt."
+
+#. i18n: ectx: property (whatsThis), widget (QCheckBox, unfiltered)
+#: ui/searchdialog_base.ui:328
+#, kde-format
+msgid ""
+"When this box is checked all incidences wil be considered in the search, "
+"even those that aren't displayed according the currently selected view filter"
+msgstr ""
+
+#. i18n: ectx: property (text), widget (QCheckBox, unfiltered)
+#: ui/searchdialog_base.ui:331
+#, kde-format
+msgid "Include all incidences matched by view filter"
+msgstr ""
 
 # unreviewed-context
 #. i18n: ectx: property (text), widget (QPushButton, mDayBtn)

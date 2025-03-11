@@ -8,7 +8,7 @@ msgid ""
 msgstr ""
 "Project-Id-Version: korganizer\n"
 "Report-Msgid-Bugs-To: https://bugs.kde.org\n"
-"POT-Creation-Date: 2025-02-18 00:41+0000\n"
+"POT-Creation-Date: 2025-03-11 02:35+0000\n"
 "PO-Revision-Date: 2024-12-24 20:39+0530\n"
 "Last-Translator: kali <shreekantkalwar@gmail.com>\n"
 "Language-Team: Sanskrit <kde-i18n-doc@kde.org>\n"
@@ -5449,48 +5449,48 @@ msgstr ""
 msgid "Limit search to specified date range"
 msgstr "अन्वेषणं निर्दिष्टतिथिपरिधिपर्यन्तं सीमितं कुर्वन्तु"
 
-#. i18n: ectx: property (text), widget (QLabel, startDateLabel)
-#: ui/searchdialog_base.ui:222
-#, kde-format
-msgid "Fr&om:"
-msgstr "From&about:"
-
-#. i18n: ectx: property (toolTip), widget (KDateComboBox, startDate)
-#: ui/searchdialog_base.ui:241
-#, kde-format
-msgid "The starting date of the period to search."
-msgstr "अन्वेषणार्थं कालस्य आरम्भतिथिः ।"
-
-#. i18n: ectx: property (whatsThis), widget (KDateComboBox, startDate)
-#: ui/searchdialog_base.ui:244
-#, kde-format
-msgid "Search for items in the time period starting at the date given here."
-msgstr "अत्र दत्ततिथितः आरभ्य कालखण्डे वस्तूनि अन्वेष्टुम्।"
-
-#. i18n: ectx: property (text), item, widget (KDateComboBox, startDate)
-#. i18n: ectx: property (text), item, widget (KDateComboBox, endDate)
-#: ui/searchdialog_base.ui:248 ui/searchdialog_base.ui:286
-#, kde-format
-msgid "2008-08-18"
-msgstr "२००८-०८-१८"
-
 #. i18n: ectx: property (text), widget (QLabel, endDateLabel)
-#: ui/searchdialog_base.ui:260
+#: ui/searchdialog_base.ui:222
 #, kde-format
 msgid "&To:"
 msgstr "&इत्यस्मै:"
 
 #. i18n: ectx: property (toolTip), widget (KDateComboBox, endDate)
-#: ui/searchdialog_base.ui:279
+#: ui/searchdialog_base.ui:241
 #, kde-format
 msgid "The ending date of the period to search."
 msgstr "अन्वेषणार्थं कालस्य समाप्तितिथिः ।"
 
 #. i18n: ectx: property (whatsThis), widget (KDateComboBox, endDate)
-#: ui/searchdialog_base.ui:282
+#: ui/searchdialog_base.ui:244
 #, kde-format
 msgid "Search for items in the time period ending at the date given here."
 msgstr "अत्र दत्तदिनाङ्के समाप्तसमयावधिषु वस्तूनि अन्वेष्टुम् ।"
+
+#. i18n: ectx: property (text), item, widget (KDateComboBox, endDate)
+#. i18n: ectx: property (text), item, widget (KDateComboBox, startDate)
+#: ui/searchdialog_base.ui:248 ui/searchdialog_base.ui:286
+#, kde-format
+msgid "2008-08-18"
+msgstr "२००८-०८-१८"
+
+#. i18n: ectx: property (text), widget (QLabel, startDateLabel)
+#: ui/searchdialog_base.ui:260
+#, kde-format
+msgid "Fr&om:"
+msgstr "From&about:"
+
+#. i18n: ectx: property (toolTip), widget (KDateComboBox, startDate)
+#: ui/searchdialog_base.ui:279
+#, kde-format
+msgid "The starting date of the period to search."
+msgstr "अन्वेषणार्थं कालस्य आरम्भतिथिः ।"
+
+#. i18n: ectx: property (whatsThis), widget (KDateComboBox, startDate)
+#: ui/searchdialog_base.ui:282
+#, kde-format
+msgid "Search for items in the time period starting at the date given here."
+msgstr "अत्र दत्ततिथितः आरभ्य कालखण्डे वस्तूनि अन्वेष्टुम्।"
 
 #. i18n: ectx: property (toolTip), widget (QCheckBox, inclusiveCheck)
 #: ui/searchdialog_base.ui:296
@@ -5550,6 +5550,30 @@ msgstr ""
 #, kde-format
 msgid "Include all to-dos &within the specified date range"
 msgstr "निर्दिष्टतिथिपरिधिमध्ये सर्वाणि कार्याणि & समाविष्टानि कुर्वन्तु"
+
+#. i18n: ectx: property (toolTip), widget (QCheckBox, unfiltered)
+#: ui/searchdialog_base.ui:325
+#, fuzzy, kde-format
+#| msgctxt "@info:whatsthis"
+#| msgid "Press this button to remove the currently active filter."
+msgid ""
+"Uncheck this box to skip incidences matching the currently selected view "
+"filter"
+msgstr "वर्तमानं सक्रियं फ़िल्टरं निष्कासयितुं एतत् बटन् नुदन्तु ।"
+
+#. i18n: ectx: property (whatsThis), widget (QCheckBox, unfiltered)
+#: ui/searchdialog_base.ui:328
+#, kde-format
+msgid ""
+"When this box is checked all incidences wil be considered in the search, "
+"even those that aren't displayed according the currently selected view filter"
+msgstr ""
+
+#. i18n: ectx: property (text), widget (QCheckBox, unfiltered)
+#: ui/searchdialog_base.ui:331
+#, kde-format
+msgid "Include all incidences matched by view filter"
+msgstr ""
 
 #. i18n: ectx: property (text), widget (QPushButton, mDayBtn)
 #: views/collectionview/quickview.ui:34
