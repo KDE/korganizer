@@ -5,7 +5,7 @@ msgid ""
 msgstr ""
 "Project-Id-Version: Mimos\n"
 "Report-Msgid-Bugs-To: https://bugs.kde.org\n"
-"POT-Creation-Date: 2025-02-18 00:41+0000\n"
+"POT-Creation-Date: 2025-03-11 00:42+0000\n"
 "PO-Revision-Date: 2005-11-26 19:59+0800\n"
 "Last-Translator: MIMOS <opensource@mimos.my>\n"
 "Language-Team: Malay <kedidiemas@yahoogroups.com>\n"
@@ -5430,48 +5430,48 @@ msgstr ""
 msgid "Limit search to specified date range"
 msgstr ""
 
-#. i18n: ectx: property (text), widget (QLabel, startDateLabel)
+#. i18n: ectx: property (text), widget (QLabel, endDateLabel)
 #: ui/searchdialog_base.ui:222
+#, kde-format
+msgid "&To:"
+msgstr "&Kepada:"
+
+#. i18n: ectx: property (toolTip), widget (KDateComboBox, endDate)
+#: ui/searchdialog_base.ui:241
+#, kde-format
+msgid "The ending date of the period to search."
+msgstr ""
+
+#. i18n: ectx: property (whatsThis), widget (KDateComboBox, endDate)
+#: ui/searchdialog_base.ui:244
+#, kde-format
+msgid "Search for items in the time period ending at the date given here."
+msgstr ""
+
+#. i18n: ectx: property (text), item, widget (KDateComboBox, endDate)
+#. i18n: ectx: property (text), item, widget (KDateComboBox, startDate)
+#: ui/searchdialog_base.ui:248 ui/searchdialog_base.ui:286
+#, kde-format
+msgid "2008-08-18"
+msgstr ""
+
+#. i18n: ectx: property (text), widget (QLabel, startDateLabel)
+#: ui/searchdialog_base.ui:260
 #, kde-format
 msgid "Fr&om:"
 msgstr "&Daripada:"
 
 #. i18n: ectx: property (toolTip), widget (KDateComboBox, startDate)
-#: ui/searchdialog_base.ui:241
+#: ui/searchdialog_base.ui:279
 #, fuzzy, kde-format
 #| msgid "Sets the start date for this to-do"
 msgid "The starting date of the period to search."
 msgstr "Mengeset tarikh mula untuk tugasn ini"
 
 #. i18n: ectx: property (whatsThis), widget (KDateComboBox, startDate)
-#: ui/searchdialog_base.ui:244
-#, kde-format
-msgid "Search for items in the time period starting at the date given here."
-msgstr ""
-
-#. i18n: ectx: property (text), item, widget (KDateComboBox, startDate)
-#. i18n: ectx: property (text), item, widget (KDateComboBox, endDate)
-#: ui/searchdialog_base.ui:248 ui/searchdialog_base.ui:286
-#, kde-format
-msgid "2008-08-18"
-msgstr ""
-
-#. i18n: ectx: property (text), widget (QLabel, endDateLabel)
-#: ui/searchdialog_base.ui:260
-#, kde-format
-msgid "&To:"
-msgstr "&Kepada:"
-
-#. i18n: ectx: property (toolTip), widget (KDateComboBox, endDate)
-#: ui/searchdialog_base.ui:279
-#, kde-format
-msgid "The ending date of the period to search."
-msgstr ""
-
-#. i18n: ectx: property (whatsThis), widget (KDateComboBox, endDate)
 #: ui/searchdialog_base.ui:282
 #, kde-format
-msgid "Search for items in the time period ending at the date given here."
+msgid "Search for items in the time period starting at the date given here."
 msgstr ""
 
 #. i18n: ectx: property (toolTip), widget (QCheckBox, inclusiveCheck)
@@ -5522,6 +5522,29 @@ msgstr ""
 #| msgid "Include to-dos &without due date"
 msgid "Include all to-dos &within the specified date range"
 msgstr "Sertakan tugasan &tanpa tarikh cukup tempoh"
+
+#. i18n: ectx: property (toolTip), widget (QCheckBox, unfiltered)
+#: ui/searchdialog_base.ui:325
+#, fuzzy, kde-format
+#| msgid "Press this button to remove the currently active filter."
+msgid ""
+"Uncheck this box to skip incidences matching the currently selected view "
+"filter"
+msgstr "Tekan butang ini untuk mengeluarkan penapis aktif semasa"
+
+#. i18n: ectx: property (whatsThis), widget (QCheckBox, unfiltered)
+#: ui/searchdialog_base.ui:328
+#, kde-format
+msgid ""
+"When this box is checked all incidences wil be considered in the search, "
+"even those that aren't displayed according the currently selected view filter"
+msgstr ""
+
+#. i18n: ectx: property (text), widget (QCheckBox, unfiltered)
+#: ui/searchdialog_base.ui:331
+#, kde-format
+msgid "Include all incidences matched by view filter"
+msgstr ""
 
 #. i18n: ectx: property (text), widget (QPushButton, mDayBtn)
 #: views/collectionview/quickview.ui:34
