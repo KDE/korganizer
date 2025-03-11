@@ -325,7 +325,7 @@
          <string>Uncheck this box to skip incidences matching the currently selected view filter</string>
         </property>
         <property name="whatsThis">
-         <string>When this box is checked all incidences wil be considered in the search, even those that aren't displayed according the currently selected view filter</string>
+         <string>When this box is checked all incidences will be considered in the search, even those that aren't displayed according the currently selected view filter</string>
         </property>
         <property name="text">
          <string>Include all incidences matched by view filter</string>
