@@ -207,13 +207,13 @@ void SearchDialog::search(const QRegularExpression &regularExpression)
                 }
             }
             if (m_ui->includeUndatedTodos->isChecked()) {
-                KCalendarCore::Todo::List tempTodos;
+                KCalendarCore::Todo::List tmpTodos;
                 if (m_ui->unfiltered->isChecked()) {
-                    KCalendarCore::Todo::List tmpTodos = calendar->rawTodos();
+                    tmpTodos = calendar->rawTodos();
                 } else {
-                    KCalendarCore::Todo::List tmpTodos = calendar->todos();
+                    tmpTodos = calendar->todos();
                 }
-                for (const KCalendarCore::Todo::Ptr &todo : tempTodos) {
+                for (const KCalendarCore::Todo::Ptr &todo : tmpTodos) {
                     Q_ASSERT(todo);
                     if ((!todo->hasStartDate() && !todo->hasDueDate()) // undated
                         || (todo->hasStartDate() && (todo->dtStart().toLocalTime().date() >= startDt)
