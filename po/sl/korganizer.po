@@ -1,7 +1,7 @@
 # translation of korganizer.po to Slovenian
 # Translation of korganizer.po to Slovenian
 # Copyright (C) 2001,2002, 2003, 2004, 2005, 2006 Free Software Foundation, Inc.
-# $Id: korganizer.po 1704807 2025-03-11 01:20:11Z scripty $
+# $Id: korganizer.po 1704877 2025-03-12 01:21:33Z scripty $
 # $Source$
 #
 # Roman Maurer <roman.maurer@hermes.si>, 2001.
@@ -14,8 +14,8 @@ msgid ""
 msgstr ""
 "Project-Id-Version: korganizer\n"
 "Report-Msgid-Bugs-To: https://bugs.kde.org\n"
-"POT-Creation-Date: 2025-03-11 00:42+0000\n"
-"PO-Revision-Date: 2025-02-16 07:56+0100\n"
+"POT-Creation-Date: 2025-03-12 00:43+0000\n"
+"PO-Revision-Date: 2025-03-11 09:26+0100\n"
 "Last-Translator: Matjaž Jeran <matjaz.jeran@amis.net>\n"
 "Language-Team: Slovenian <lugos-slo@lugos.si>\n"
 "Language: sl\n"
@@ -1312,85 +1312,98 @@ msgctxt "@action:button"
 msgid "Add as new calendar"
 msgstr "Dodaj kot nov koledar"
 
-#: akonadicollectionview.cpp:289
+#: akonadicollectionview.cpp:290
 #, kde-format
 msgctxt "@item this is the default calendar"
 msgid "%1 (Offline)"
 msgstr "%1 (Nepovezan)"
 
-#: akonadicollectionview.cpp:292
+#: akonadicollectionview.cpp:293
 #, kde-format
 msgctxt "@item this is the default calendar"
 msgid "%1 (Default)"
 msgstr "%1 (privzeto)"
 
-#: akonadicollectionview.cpp:408
+#: akonadicollectionview.cpp:409
 #, kde-format
 msgctxt "@info:tooltip"
 msgid "Set search keyword"
 msgstr "Nastavi ključno besedo iskanja"
 
-#: akonadicollectionview.cpp:409
+#: akonadicollectionview.cpp:410
 #, kde-format
 msgctxt "@info:whatsthis"
 msgid "Lets you search for a keyword in your calendars"
 msgstr "Omogoča iskanje ključne besede v koledarjih"
 
-#: akonadicollectionview.cpp:414
+#: akonadicollectionview.cpp:415
 #, kde-format
 msgctxt "@info/plain Displayed grayed-out inside the textbox, verb to search"
 msgid "Search…"
 msgstr "Poišči…"
 
-#: akonadicollectionview.cpp:500 manageshowcollectionproperties.cpp:76
+#: akonadicollectionview.cpp:501 manageshowcollectionproperties.cpp:76
 #, kde-format
 msgctxt "@title:window"
 msgid "Properties of Calendar Folder %1"
 msgstr "Lastnosti koledarske mape %1"
 
-#: akonadicollectionview.cpp:512
+#: akonadicollectionview.cpp:513
 #, kde-format
 msgctxt "@action:inmenu"
 msgid "&Set Folder Color…"
 msgstr "Nastavi barvo mape…"
 
-#: akonadicollectionview.cpp:518
+#: akonadicollectionview.cpp:519
 #, kde-format
 msgctxt "@action:inmenu"
 msgid "Set as &Default Folder"
 msgstr "Nastavi kot privzeto mapo"
 
-#: akonadicollectionview.cpp:523
+#: akonadicollectionview.cpp:524
 #, kde-format
 msgctxt "@action:inmenu"
 msgid "Serverside Subscription…"
 msgstr "Naročnina na strani strežnika…"
 
-#: akonadicollectionview.cpp:568
+#: akonadicollectionview.cpp:569
 #, kde-format
 msgctxt "@info"
 msgid "Do you really want replace your current default calendar with \"%1\"?"
 msgstr "Ali resnično želite zamenjati vaš trenutni privzeti koledar z »%1«?"
 
-#: akonadicollectionview.cpp:569
+#: akonadicollectionview.cpp:570
 #, kde-format
 msgctxt "@title:window"
 msgid "Replace Default Calendar?"
 msgstr "Zamenjaj privzeti koledar?"
 
-#: akonadicollectionview.cpp:706
+#: akonadicollectionview.cpp:707
 #, kde-format
 msgctxt "@title:window"
 msgid "Add Calendar"
 msgstr "Dodaj koledar"
 
-#: akonadicollectionview.cpp:748
+#: akonadicollectionview.cpp:760
+#, kde-kuit-format
+msgctxt "@info"
+msgid ""
+"Do you really want to delete the <filename>%1</filename> calendar?"
+"<para><note>The calendar data will not be deleted, nor will the calendar be "
+"removed from its remote resource.</note></para>The <filename>%1</filename> "
+"calendar can be added again at any time."
+msgstr ""
+
+#: akonadicollectionview.cpp:767
 #, kde-format
 msgctxt "@info"
-msgid "Do you really want to delete calendar %1?"
-msgstr "Ali resnično želite izbrisati koledar %1?"
+msgid ""
+"Do you really want to delete the <filename>%1/filename> calendar?"
+"<para><warning>This cannot be undone.  Please consider carefully before "
+"pressing the %2 button.</warning></para>"
+msgstr ""
 
-#: akonadicollectionview.cpp:749
+#: akonadicollectionview.cpp:775
 #, kde-format
 msgctxt "@title:window"
 msgid "Delete Calendar"
@@ -4057,7 +4070,7 @@ msgstr "Pokaži kazalnik trenutnega časa"
 #, kde-format
 msgid "Show seconds and timezone on the current-time (Marcus Bains) line"
 msgstr ""
-"Prikaži sekunde in časovni pas v vrstici trenutnega časa (Marcus Bains)."
+"Prikaži sekunde in časovni pas v vrstici trenutnega časa (Marcus Bains)"
 
 #. i18n: ectx: whatsthis, entry (MarcusBainsShowSeconds), group (Agenda View)
 #: settings/korganizer.kcfg:156
@@ -4586,7 +4599,7 @@ msgstr "Tu izberite barvo ozadja prikaza dnevnega reda."
 #: settings/korganizer.kcfg:331
 #, kde-format
 msgid "Agenda view current-time (Marcus Bains) line color"
-msgstr "Barva vrstice pogleda dnevnega reda trenutnega časa (Marcus Bains)."
+msgstr "Barva vrstice pogleda dnevnega reda trenutnega časa (Marcus Bains)"
 
 #. i18n: ectx: whatsthis, entry, group (Colors)
 #: settings/korganizer.kcfg:332
@@ -5665,27 +5678,33 @@ msgstr "Vključi vse dogodke znotraj danega datumskega obdobja"
 
 #. i18n: ectx: property (toolTip), widget (QCheckBox, unfiltered)
 #: ui/searchdialog_base.ui:325
-#, fuzzy, kde-format
-#| msgctxt "@info:whatsthis"
-#| msgid "Press this button to remove the currently active filter."
+#, kde-format
 msgid ""
 "Uncheck this box to skip incidences matching the currently selected view "
 "filter"
-msgstr "Pritisnite ta gumb, da odstranite trenutno dejaven filter."
+msgstr ""
+"Počistite to polje, če želite preskočiti primere, ki se ujemajo s trenutno "
+"izbranim filtrom pogleda"
 
 #. i18n: ectx: property (whatsThis), widget (QCheckBox, unfiltered)
 #: ui/searchdialog_base.ui:328
-#, kde-format
+#, fuzzy, kde-format
+#| msgid ""
+#| "When this box is checked all incidences wil be considered in the search, "
+#| "even those that aren't displayed according the currently selected view "
+#| "filter"
 msgid ""
-"When this box is checked all incidences wil be considered in the search, "
+"When this box is checked all incidences will be considered in the search, "
 "even those that aren't displayed according the currently selected view filter"
 msgstr ""
+"Ko je to polje označeno, bodo pri iskanju upoštevani vsi primeri, tudi "
+"tisti, ki niso prikazani glede na trenutno izbrani filter pogleda"
 
 #. i18n: ectx: property (text), widget (QCheckBox, unfiltered)
 #: ui/searchdialog_base.ui:331
 #, kde-format
 msgid "Include all incidences matched by view filter"
-msgstr ""
+msgstr "Vključi vse primere, ki se ujemajo s filtrom pogleda"
 
 #. i18n: ectx: property (text), widget (QPushButton, mDayBtn)
 #: views/collectionview/quickview.ui:34
@@ -5927,6 +5946,10 @@ msgstr "%1"
 msgctxt "4 digit year"
 msgid "%1"
 msgstr "%1"
+
+#~ msgctxt "@info"
+#~ msgid "Do you really want to delete calendar %1?"
+#~ msgstr "Ali resnično želite izbrisati koledar %1?"
 
 #~ msgid "Groupware Settings"
 #~ msgstr "Nastavitve skupinskega dela"

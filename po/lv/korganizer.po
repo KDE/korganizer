@@ -10,7 +10,7 @@ msgid ""
 msgstr ""
 "Project-Id-Version: korganizer\n"
 "Report-Msgid-Bugs-To: https://bugs.kde.org\n"
-"POT-Creation-Date: 2025-03-11 00:42+0000\n"
+"POT-Creation-Date: 2025-03-12 00:43+0000\n"
 "PO-Revision-Date: 2025-01-16 16:08+0200\n"
 "Last-Translator: Toms Trasuns <toms.trasuns@posteo.net>\n"
 "Language-Team: Latvian <kde-i18n-doc@kde.org>\n"
@@ -1301,86 +1301,99 @@ msgctxt "@action:button"
 msgid "Add as new calendar"
 msgstr "Pievienot kā jaunu kalendāru"
 
-#: akonadicollectionview.cpp:289
+#: akonadicollectionview.cpp:290
 #, kde-format
 msgctxt "@item this is the default calendar"
 msgid "%1 (Offline)"
 msgstr "%1 (nesaistē)"
 
-#: akonadicollectionview.cpp:292
+#: akonadicollectionview.cpp:293
 #, kde-format
 msgctxt "@item this is the default calendar"
 msgid "%1 (Default)"
 msgstr "%1 (noklusējums)"
 
-#: akonadicollectionview.cpp:408
+#: akonadicollectionview.cpp:409
 #, kde-format
 msgctxt "@info:tooltip"
 msgid "Set search keyword"
 msgstr "Iestatīt meklēšanas atslēgvārdu"
 
-#: akonadicollectionview.cpp:409
+#: akonadicollectionview.cpp:410
 #, kde-format
 msgctxt "@info:whatsthis"
 msgid "Lets you search for a keyword in your calendars"
 msgstr "Ļauj kalendāros meklēt atslēgvārdu"
 
-#: akonadicollectionview.cpp:414
+#: akonadicollectionview.cpp:415
 #, kde-format
 msgctxt "@info/plain Displayed grayed-out inside the textbox, verb to search"
 msgid "Search…"
 msgstr "Meklēt…"
 
-#: akonadicollectionview.cpp:500 manageshowcollectionproperties.cpp:76
+#: akonadicollectionview.cpp:501 manageshowcollectionproperties.cpp:76
 #, kde-format
 msgctxt "@title:window"
 msgid "Properties of Calendar Folder %1"
 msgstr "Kalendāra mapes „%1“ īpašības"
 
-#: akonadicollectionview.cpp:512
+#: akonadicollectionview.cpp:513
 #, kde-format
 msgctxt "@action:inmenu"
 msgid "&Set Folder Color…"
 msgstr "&Iestatīt mapes krāsu…"
 
-#: akonadicollectionview.cpp:518
+#: akonadicollectionview.cpp:519
 #, kde-format
 msgctxt "@action:inmenu"
 msgid "Set as &Default Folder"
 msgstr "Iestatīt kā &noklusējuma mapi"
 
-#: akonadicollectionview.cpp:523
+#: akonadicollectionview.cpp:524
 #, kde-format
 msgctxt "@action:inmenu"
 msgid "Serverside Subscription…"
 msgstr "Servera puses abonements…"
 
-#: akonadicollectionview.cpp:568
+#: akonadicollectionview.cpp:569
 #, kde-format
 msgctxt "@info"
 msgid "Do you really want replace your current default calendar with \"%1\"?"
 msgstr ""
 "Vai tiešām vēlaties aizvietot pašreizējo noklusējuma kalendāru ar „%1“?"
 
-#: akonadicollectionview.cpp:569
+#: akonadicollectionview.cpp:570
 #, kde-format
 msgctxt "@title:window"
 msgid "Replace Default Calendar?"
 msgstr "Vai aizvietot noklusējuma kalendāru?"
 
-#: akonadicollectionview.cpp:706
+#: akonadicollectionview.cpp:707
 #, kde-format
 msgctxt "@title:window"
 msgid "Add Calendar"
 msgstr "Pievienot kalendāru"
 
-#: akonadicollectionview.cpp:748
+#: akonadicollectionview.cpp:760
+#, kde-kuit-format
+msgctxt "@info"
+msgid ""
+"Do you really want to delete the <filename>%1</filename> calendar?"
+"<para><note>The calendar data will not be deleted, nor will the calendar be "
+"removed from its remote resource.</note></para>The <filename>%1</filename> "
+"calendar can be added again at any time."
+msgstr ""
+
+#: akonadicollectionview.cpp:767
 #, kde-format
 msgctxt "@info"
-msgid "Do you really want to delete calendar %1?"
-msgstr "Vai tiešām vēlaties dzēst kalendāru „%1“?"
+msgid ""
+"Do you really want to delete the <filename>%1/filename> calendar?"
+"<para><warning>This cannot be undone.  Please consider carefully before "
+"pressing the %2 button.</warning></para>"
+msgstr ""
 
-#: akonadicollectionview.cpp:749
+#: akonadicollectionview.cpp:775
 #, kde-format
 msgctxt "@title:window"
 msgid "Delete Calendar"
@@ -5633,7 +5646,7 @@ msgstr "Nospiediet šo pogu, lai noņemtu aktīvo filtru."
 #: ui/searchdialog_base.ui:328
 #, kde-format
 msgid ""
-"When this box is checked all incidences wil be considered in the search, "
+"When this box is checked all incidences will be considered in the search, "
 "even those that aren't displayed according the currently selected view filter"
 msgstr ""
 
@@ -5886,6 +5899,10 @@ msgstr "%1"
 msgctxt "4 digit year"
 msgid "%1"
 msgstr "%1"
+
+#~ msgctxt "@info"
+#~ msgid "Do you really want to delete calendar %1?"
+#~ msgstr "Vai tiešām vēlaties dzēst kalendāru „%1“?"
 
 #~ msgid "Groupware Settings"
 #~ msgstr "Grupprogrammatūras iestatījumi"

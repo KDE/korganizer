@@ -13,7 +13,7 @@ msgid ""
 msgstr ""
 "Project-Id-Version: korganizer\n"
 "Report-Msgid-Bugs-To: https://bugs.kde.org\n"
-"POT-Creation-Date: 2025-03-11 00:42+0000\n"
+"POT-Creation-Date: 2025-03-12 00:43+0000\n"
 "PO-Revision-Date: 2025-01-03 09:57+0100\n"
 "Last-Translator: Iñigo Salvador Azurmendi <xalba@ni.eus>\n"
 "Language-Team: Basque <kde-i18n-eu@kde.org>\n"
@@ -1306,86 +1306,99 @@ msgctxt "@action:button"
 msgid "Add as new calendar"
 msgstr "Gehitu egutegi berri gisa"
 
-#: akonadicollectionview.cpp:289
+#: akonadicollectionview.cpp:290
 #, kde-format
 msgctxt "@item this is the default calendar"
 msgid "%1 (Offline)"
 msgstr "%1 (lerroz kanpo)"
 
-#: akonadicollectionview.cpp:292
+#: akonadicollectionview.cpp:293
 #, kde-format
 msgctxt "@item this is the default calendar"
 msgid "%1 (Default)"
 msgstr "%1 (Lehenetsia)"
 
-#: akonadicollectionview.cpp:408
+#: akonadicollectionview.cpp:409
 #, kde-format
 msgctxt "@info:tooltip"
 msgid "Set search keyword"
 msgstr "Ezarri bilatzeko gako-hitza"
 
-#: akonadicollectionview.cpp:409
+#: akonadicollectionview.cpp:410
 #, kde-format
 msgctxt "@info:whatsthis"
 msgid "Lets you search for a keyword in your calendars"
 msgstr "Zure egutegietan gako-hitz bat bilatzen uzten dizu"
 
-#: akonadicollectionview.cpp:414
+#: akonadicollectionview.cpp:415
 #, kde-format
 msgctxt "@info/plain Displayed grayed-out inside the textbox, verb to search"
 msgid "Search…"
 msgstr "Bilatu..."
 
-#: akonadicollectionview.cpp:500 manageshowcollectionproperties.cpp:76
+#: akonadicollectionview.cpp:501 manageshowcollectionproperties.cpp:76
 #, kde-format
 msgctxt "@title:window"
 msgid "Properties of Calendar Folder %1"
 msgstr "%1 egutegi-karpetaren propietateak"
 
-#: akonadicollectionview.cpp:512
+#: akonadicollectionview.cpp:513
 #, kde-format
 msgctxt "@action:inmenu"
 msgid "&Set Folder Color…"
 msgstr "E&zarri karpetaren kolorea..."
 
-#: akonadicollectionview.cpp:518
+#: akonadicollectionview.cpp:519
 #, kde-format
 msgctxt "@action:inmenu"
 msgid "Set as &Default Folder"
 msgstr "Ezarri karpeta &lehenetsi gisa"
 
-#: akonadicollectionview.cpp:523
+#: akonadicollectionview.cpp:524
 #, kde-format
 msgctxt "@action:inmenu"
 msgid "Serverside Subscription…"
 msgstr "Zerbitzari-aldeko harpidetza..."
 
-#: akonadicollectionview.cpp:568
+#: akonadicollectionview.cpp:569
 #, kde-format
 msgctxt "@info"
 msgid "Do you really want replace your current default calendar with \"%1\"?"
 msgstr ""
 "Benetan ordezkatu nahi duzu zure egungo egutegi lehenetsia \"%1\"(e)kin?"
 
-#: akonadicollectionview.cpp:569
+#: akonadicollectionview.cpp:570
 #, kde-format
 msgctxt "@title:window"
 msgid "Replace Default Calendar?"
 msgstr "Egutegi lehenetsia ordezkatu?"
 
-#: akonadicollectionview.cpp:706
+#: akonadicollectionview.cpp:707
 #, kde-format
 msgctxt "@title:window"
 msgid "Add Calendar"
 msgstr "Gehitu egutegia"
 
-#: akonadicollectionview.cpp:748
+#: akonadicollectionview.cpp:760
+#, kde-kuit-format
+msgctxt "@info"
+msgid ""
+"Do you really want to delete the <filename>%1</filename> calendar?"
+"<para><note>The calendar data will not be deleted, nor will the calendar be "
+"removed from its remote resource.</note></para>The <filename>%1</filename> "
+"calendar can be added again at any time."
+msgstr ""
+
+#: akonadicollectionview.cpp:767
 #, kde-format
 msgctxt "@info"
-msgid "Do you really want to delete calendar %1?"
-msgstr "Benetan ezabatu nahi duzu %1 egutegia?"
+msgid ""
+"Do you really want to delete the <filename>%1/filename> calendar?"
+"<para><warning>This cannot be undone.  Please consider carefully before "
+"pressing the %2 button.</warning></para>"
+msgstr ""
 
-#: akonadicollectionview.cpp:749
+#: akonadicollectionview.cpp:775
 #, kde-format
 msgctxt "@title:window"
 msgid "Delete Calendar"
@@ -5677,7 +5690,7 @@ msgstr "Sakatu botoi hori aktibo dagoen iragazkia kentzeko."
 #: ui/searchdialog_base.ui:328
 #, kde-format
 msgid ""
-"When this box is checked all incidences wil be considered in the search, "
+"When this box is checked all incidences will be considered in the search, "
 "even those that aren't displayed according the currently selected view filter"
 msgstr ""
 
@@ -5932,6 +5945,10 @@ msgstr "%1"
 msgctxt "4 digit year"
 msgid "%1"
 msgstr "%1"
+
+#~ msgctxt "@info"
+#~ msgid "Do you really want to delete calendar %1?"
+#~ msgstr "Benetan ezabatu nahi duzu %1 egutegia?"
 
 #~ msgid "Groupware Settings"
 #~ msgstr "Talde-lanerako ezarpenak"

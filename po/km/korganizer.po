@@ -8,7 +8,7 @@ msgid ""
 msgstr ""
 "Project-Id-Version: korganizer\n"
 "Report-Msgid-Bugs-To: https://bugs.kde.org\n"
-"POT-Creation-Date: 2025-03-11 00:42+0000\n"
+"POT-Creation-Date: 2025-03-12 00:43+0000\n"
 "PO-Revision-Date: 2012-07-09 10:04+0700\n"
 "Last-Translator: Khoem Sokhem <khoemsokhem@khmeros.info>\n"
 "Language-Team: Khmer\n"
@@ -1374,7 +1374,7 @@ msgctxt "@action:button"
 msgid "Add as new calendar"
 msgstr "បន្ថែម​ជា​ប្រតិទិន​ថ្មី"
 
-#: akonadicollectionview.cpp:289
+#: akonadicollectionview.cpp:290
 #, fuzzy, kde-format
 #| msgctxt "@action:inmenu lowest priority"
 #| msgid "9 (lowest)"
@@ -1382,87 +1382,99 @@ msgctxt "@item this is the default calendar"
 msgid "%1 (Offline)"
 msgstr "៩ (ទាប​បំផុត)"
 
-#: akonadicollectionview.cpp:292
+#: akonadicollectionview.cpp:293
 #, fuzzy, kde-format
 #| msgid "Use as &Default Calendar"
 msgctxt "@item this is the default calendar"
 msgid "%1 (Default)"
 msgstr "ប្រើ​ជា​ប្រតិទិនលំនាំដើម"
 
-#: akonadicollectionview.cpp:408
+#: akonadicollectionview.cpp:409
 #, fuzzy, kde-format
 #| msgid "Search For"
 msgctxt "@info:tooltip"
 msgid "Set search keyword"
 msgstr "ស្វែងរក"
 
-#: akonadicollectionview.cpp:409
+#: akonadicollectionview.cpp:410
 #, kde-format
 msgctxt "@info:whatsthis"
 msgid "Lets you search for a keyword in your calendars"
 msgstr ""
 
-#: akonadicollectionview.cpp:414
+#: akonadicollectionview.cpp:415
 #, fuzzy, kde-format
 #| msgid "Search"
 msgctxt "@info/plain Displayed grayed-out inside the textbox, verb to search"
 msgid "Search…"
 msgstr "ស្វែងរក​"
 
-#: akonadicollectionview.cpp:500 manageshowcollectionproperties.cpp:76
+#: akonadicollectionview.cpp:501 manageshowcollectionproperties.cpp:76
 #, kde-format
 msgctxt "@title:window"
 msgid "Properties of Calendar Folder %1"
 msgstr "លក្ខណ​សម្បត្តិ​នៃ​ថត​របស់​ប្រតិទិន​ %1​"
 
-#: akonadicollectionview.cpp:512
+#: akonadicollectionview.cpp:513
 #, kde-format
 msgctxt "@action:inmenu"
 msgid "&Set Folder Color…"
 msgstr ""
 
-#: akonadicollectionview.cpp:518
+#: akonadicollectionview.cpp:519
 #, fuzzy, kde-format
 #| msgid "Use as &Default Calendar"
 msgctxt "@action:inmenu"
 msgid "Set as &Default Folder"
 msgstr "ប្រើ​ជា​ប្រតិទិនលំនាំដើម"
 
-#: akonadicollectionview.cpp:523
+#: akonadicollectionview.cpp:524
 #, kde-format
 msgctxt "@action:inmenu"
 msgid "Serverside Subscription…"
 msgstr ""
 
-#: akonadicollectionview.cpp:568
+#: akonadicollectionview.cpp:569
 #, fuzzy, kde-format
 #| msgid "Do you really want to delete calendar %1?"
 msgctxt "@info"
 msgid "Do you really want replace your current default calendar with \"%1\"?"
 msgstr "តើអ្នក​ពិត​ជាចង់​លុប​ប្រតិទិន​​ %1 ឬ ​?"
 
-#: akonadicollectionview.cpp:569
+#: akonadicollectionview.cpp:570
 #, fuzzy, kde-format
 #| msgid "Use as &Default Calendar"
 msgctxt "@title:window"
 msgid "Replace Default Calendar?"
 msgstr "ប្រើ​ជា​ប្រតិទិនលំនាំដើម"
 
-#: akonadicollectionview.cpp:706
+#: akonadicollectionview.cpp:707
 #, fuzzy, kde-format
 #| msgid "Add Calendar"
 msgctxt "@title:window"
 msgid "Add Calendar"
 msgstr "បន្ថែម​​​ប្រតិទិន​"
 
-#: akonadicollectionview.cpp:748
-#, fuzzy, kde-format
-#| msgid "Do you really want to delete calendar %1?"
+#: akonadicollectionview.cpp:760
+#, kde-kuit-format
 msgctxt "@info"
-msgid "Do you really want to delete calendar %1?"
-msgstr "តើអ្នក​ពិត​ជាចង់​លុប​ប្រតិទិន​​ %1 ឬ ​?"
+msgid ""
+"Do you really want to delete the <filename>%1</filename> calendar?"
+"<para><note>The calendar data will not be deleted, nor will the calendar be "
+"removed from its remote resource.</note></para>The <filename>%1</filename> "
+"calendar can be added again at any time."
+msgstr ""
 
-#: akonadicollectionview.cpp:749
+#: akonadicollectionview.cpp:767
+#, kde-format
+msgctxt "@info"
+msgid ""
+"Do you really want to delete the <filename>%1/filename> calendar?"
+"<para><warning>This cannot be undone.  Please consider carefully before "
+"pressing the %2 button.</warning></para>"
+msgstr ""
+
+#: akonadicollectionview.cpp:775
 #, fuzzy, kde-format
 #| msgid "Delete Calendar"
 msgctxt "@title:window"
@@ -5867,7 +5879,7 @@ msgstr "ចុច​ប៊ូតុង​នេះ ដើម្បី​យក�
 #: ui/searchdialog_base.ui:328
 #, kde-format
 msgid ""
-"When this box is checked all incidences wil be considered in the search, "
+"When this box is checked all incidences will be considered in the search, "
 "even those that aren't displayed according the currently selected view filter"
 msgstr ""
 
@@ -6124,6 +6136,12 @@ msgstr "%1"
 msgctxt "4 digit year"
 msgid "%1"
 msgstr "%1"
+
+#, fuzzy
+#~| msgid "Do you really want to delete calendar %1?"
+#~ msgctxt "@info"
+#~ msgid "Do you really want to delete calendar %1?"
+#~ msgstr "តើអ្នក​ពិត​ជាចង់​លុប​ប្រតិទិន​​ %1 ឬ ​?"
 
 #, fuzzy
 #~| msgctxt "@title:group email settings"

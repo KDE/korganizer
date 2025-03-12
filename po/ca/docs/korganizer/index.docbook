@@ -1995,9 +1995,9 @@ choose the <menuchoice
 </screenshot>
 
 <para
->Si marqueu <guilabel
+>Marcant <guilabel
 >Emmagatzema una còpia del fitxer adjunt dins del calendari</guilabel
-> fareu que l'adjunt s'emmagatzemi dins del calendari, i això pot prendre força espai depenent de la grandària de l'adjunt. Si aquesta opció no està marcada, només es desarà un enllaç que apunta a l'adjunt. No useu un enllaç per a adjunts que canvien sovint o que es puguin moure (o eliminar) de la seva ubicació actual.</para>
+> fareu que l'adjunt s'emmagatzemi dins del calendari, i això pot ocupar força espai depenent de la grandària de l'adjunt. Si aquesta opció no està marcada, només es desarà un enllaç que apunta a l'adjunt. No useu un enllaç per a adjunts que canvien sovint o que es puguin moure (o eliminar) de la seva ubicació actual.</para>
 
 <para
 >Es proporcionen les següents opcions del menú contextual per a treballar amb adjunts:</para>
