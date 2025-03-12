@@ -17,7 +17,7 @@ msgid ""
 msgstr ""
 "Project-Id-Version: korganizer\n"
 "Report-Msgid-Bugs-To: https://bugs.kde.org\n"
-"POT-Creation-Date: 2025-03-11 02:35+0000\n"
+"POT-Creation-Date: 2025-03-12 02:36+0000\n"
 "PO-Revision-Date: 2024-12-29 19:04+0100\n"
 "Last-Translator: Johannes Obermayr <johannesobermayr@gmx.de>\n"
 "Language-Team: German <kde-i18n-de@kde.org>\n"
@@ -1392,13 +1392,26 @@ msgctxt "@title:window"
 msgid "Add Calendar"
 msgstr "Kalender hinzufügen"
 
-#: akonadicollectionview.cpp:748
+#: akonadicollectionview.cpp:752
+#, kde-kuit-format
+msgctxt "@info"
+msgid ""
+"Do you really want to delete the <filename>%1</filename> calendar?"
+"<para><note>The calendar data will not be deleted, nor will the calendar be "
+"removed from its remote resource.</note></para>The <filename>%1</filename> "
+"calendar can be added again at any time."
+msgstr ""
+
+#: akonadicollectionview.cpp:759
 #, kde-format
 msgctxt "@info"
-msgid "Do you really want to delete calendar %1?"
-msgstr "Möchten Sie den Kalender %1 wirklich löschen?"
+msgid ""
+"Do you really want to delete the <filename>%1/filename> calendar?"
+"<para><warning>This cannot be undone.  Please consider carefully before "
+"pressing the %2 button.</warning></para>"
+msgstr ""
 
-#: akonadicollectionview.cpp:749
+#: akonadicollectionview.cpp:767
 #, kde-format
 msgctxt "@title:window"
 msgid "Delete Calendar"
@@ -5755,7 +5768,7 @@ msgstr "Drücken Sie diesen Knopf, um den ausgewählten Filter zu löschen."
 #: ui/searchdialog_base.ui:328
 #, kde-format
 msgid ""
-"When this box is checked all incidences wil be considered in the search, "
+"When this box is checked all incidences will be considered in the search, "
 "even those that aren't displayed according the currently selected view filter"
 msgstr ""
 
@@ -6001,6 +6014,10 @@ msgstr "%1"
 msgctxt "4 digit year"
 msgid "%1"
 msgstr "%1"
+
+#~ msgctxt "@info"
+#~ msgid "Do you really want to delete calendar %1?"
+#~ msgstr "Möchten Sie den Kalender %1 wirklich löschen?"
 
 #~ msgid "Groupware Settings"
 #~ msgstr "Groupware-Einstellungen"
