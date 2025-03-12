@@ -764,7 +764,7 @@ void AkonadiCollectionView::deleteCalendar()
                               displayname);
     } else {
         yesNoMessage = xi18nc("@info",
-                              "Do you really want to delete the <filename>%1/filename> calendar?"
+                              "Do you really want to delete the <filename>%1</filename> calendar?"
                               "<para><warning>This cannot be undone.  "
                               "Please consider carefully before pressing the %2 button.</warning></para>",
                               displayname,
