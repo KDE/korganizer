@@ -18,8 +18,8 @@ msgid ""
 msgstr ""
 "Project-Id-Version: korganizer\n"
 "Report-Msgid-Bugs-To: https://bugs.kde.org\n"
-"POT-Creation-Date: 2025-03-12 02:36+0000\n"
-"PO-Revision-Date: 2025-03-11 17:39+0100\n"
+"POT-Creation-Date: 2025-03-13 02:34+0000\n"
+"PO-Revision-Date: 2025-03-12 10:13+0100\n"
 "Last-Translator: Freek de Kruijf <freekdekruijf@kde.nl>\n"
 "Language-Team: Dutch <kde-i18n-nl@kde.org>\n"
 "Language: nl\n"
@@ -1396,15 +1396,27 @@ msgid ""
 "removed from its remote resource.</note></para>The <filename>%1</filename> "
 "calendar can be added again at any time."
 msgstr ""
+"Wilt u de agenda <filename>%1</filename> verwijderen?<para><note>De "
+"agendagegevens zullen niet verwijderd worden, noch zal de agenda verwijderd "
+"worden uit zijn hulpbron op afstand.</note></para>De agenda <filename>%1</"
+"filename> kan op elk moment weer worden toegevoegd."
 
 #: akonadicollectionview.cpp:759
-#, kde-format
+#, fuzzy, kde-kuit-format
+#| msgctxt "@info"
+#| msgid ""
+#| "Do you really want to delete the <filename>%1/filename> calendar?"
+#| "<para><warning>This cannot be undone.  Please consider carefully before "
+#| "pressing the %2 button.</warning></para>"
 msgctxt "@info"
 msgid ""
-"Do you really want to delete the <filename>%1/filename> calendar?"
+"Do you really want to delete the <filename>%1</filename> calendar?"
 "<para><warning>This cannot be undone.  Please consider carefully before "
 "pressing the %2 button.</warning></para>"
 msgstr ""
+"Wilt u de agenda <filename>%1/filename> verwijderen? <para><warning>Dit kan "
+"niet ongedaan worden.  Bedenk u nog eens alvorens op de knop %2 te drukken.</"
+"warning></para>"
 
 #: akonadicollectionview.cpp:767
 #, kde-format
@@ -5577,51 +5589,51 @@ msgstr ""
 msgid "Limit search to specified date range"
 msgstr "Zoeken beperken tot de gespecificeerde datumreeks"
 
-#. i18n: ectx: property (text), widget (QLabel, endDateLabel)
-#: ui/searchdialog_base.ui:222
-#, kde-format
-msgid "&To:"
-msgstr "&Tot:"
-
-#. i18n: ectx: property (toolTip), widget (KDateComboBox, endDate)
-#: ui/searchdialog_base.ui:241
-#, kde-format
-msgid "The ending date of the period to search."
-msgstr "De einddatum van de te doorzoeken periode."
-
-#. i18n: ectx: property (whatsThis), widget (KDateComboBox, endDate)
-#: ui/searchdialog_base.ui:244
-#, kde-format
-msgid "Search for items in the time period ending at the date given here."
-msgstr ""
-"Zoeken naar items in een bepaalde periode die met deze einddatum datum "
-"afloopt."
-
-#. i18n: ectx: property (text), item, widget (KDateComboBox, endDate)
-#. i18n: ectx: property (text), item, widget (KDateComboBox, startDate)
-#: ui/searchdialog_base.ui:248 ui/searchdialog_base.ui:286
-#, kde-format
-msgid "2008-08-18"
-msgstr "2008-08-18"
-
 #. i18n: ectx: property (text), widget (QLabel, startDateLabel)
-#: ui/searchdialog_base.ui:260
+#: ui/searchdialog_base.ui:222
 #, kde-format
 msgid "Fr&om:"
 msgstr "&Van:"
 
 #. i18n: ectx: property (toolTip), widget (KDateComboBox, startDate)
-#: ui/searchdialog_base.ui:279
+#: ui/searchdialog_base.ui:241
 #, kde-format
 msgid "The starting date of the period to search."
 msgstr "De begindatum van de te doorzoeken periode."
 
 #. i18n: ectx: property (whatsThis), widget (KDateComboBox, startDate)
-#: ui/searchdialog_base.ui:282
+#: ui/searchdialog_base.ui:244
 #, kde-format
 msgid "Search for items in the time period starting at the date given here."
 msgstr ""
 "Zoeken naar items in een bepaalde periode die met deze begindatum begint."
+
+#. i18n: ectx: property (text), item, widget (KDateComboBox, startDate)
+#. i18n: ectx: property (text), item, widget (KDateComboBox, endDate)
+#: ui/searchdialog_base.ui:248 ui/searchdialog_base.ui:286
+#, kde-format
+msgid "2008-08-18"
+msgstr "2008-08-18"
+
+#. i18n: ectx: property (text), widget (QLabel, endDateLabel)
+#: ui/searchdialog_base.ui:260
+#, kde-format
+msgid "&To:"
+msgstr "&Tot:"
+
+#. i18n: ectx: property (toolTip), widget (KDateComboBox, endDate)
+#: ui/searchdialog_base.ui:279
+#, kde-format
+msgid "The ending date of the period to search."
+msgstr "De einddatum van de te doorzoeken periode."
+
+#. i18n: ectx: property (whatsThis), widget (KDateComboBox, endDate)
+#: ui/searchdialog_base.ui:282
+#, kde-format
+msgid "Search for items in the time period ending at the date given here."
+msgstr ""
+"Zoeken naar items in een bepaalde periode die met deze einddatum datum "
+"afloopt."
 
 #. i18n: ectx: property (toolTip), widget (QCheckBox, inclusiveCheck)
 #: ui/searchdialog_base.ui:296
@@ -5695,11 +5707,7 @@ msgstr ""
 
 #. i18n: ectx: property (whatsThis), widget (QCheckBox, unfiltered)
 #: ui/searchdialog_base.ui:328
-#, fuzzy, kde-format
-#| msgid ""
-#| "When this box is checked all incidences wil be considered in the search, "
-#| "even those that aren't displayed according the currently selected view "
-#| "filter"
+#, kde-format
 msgid ""
 "When this box is checked all incidences will be considered in the search, "
 "even those that aren't displayed according the currently selected view filter"

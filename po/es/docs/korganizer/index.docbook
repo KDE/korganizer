@@ -2048,8 +2048,8 @@ choose the <menuchoice
 
 <para
 >Si marca <guilabel
->Guardar adjunto en línea</guilabel
-> el adjunto se guardará dentro del calendario, lo que puede necesitar bastante espacio dependiendo del tamaño del adjunto. Si esta opción no está marcada, solo se guardará un enlace que apunta al adjunto. No use un enlace para adjuntos que cambian a menudo o que puedan moverse (o eliminarse) de su ubicación actual.</para>
+>Guardar una copia del archivo adjunto dentro del calendario</guilabel
+>, el adjunto se guardará dentro del calendario, lo que puede necesitar bastante espacio dependiendo del tamaño del adjunto. Si esta opción no está marcada, solo se guardará un enlace que apunta al adjunto. No use un enlace para adjuntos que cambian a menudo o que puedan moverse (o eliminarse) de su ubicación actual.</para>
 
 <para
 >Se proporcionan las siguientes opciones del menú de contexto para trabajar con adjuntos:</para>
