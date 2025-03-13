@@ -557,7 +557,7 @@ use the Calendar Widget to choose the date. Alternatively, you can automatically
 archive all items older than a certain period of time.</para></step>
 <step><para>If you have chosen archiving, you must also provide a filename for
 the archive in the <guilabel>Archive File</guilabel> field. If you want to
-re-use an older archive file, press the <guilabel>Open file dialog</guilabel> button
+reuse an older archive file, press the <guilabel>Open file dialog</guilabel> button
 and find an existing archive. The entries will be added to the file,
 so any item already in the file will not be modified.</para></step>
 </procedure>

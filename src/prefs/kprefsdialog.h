@@ -570,7 +570,7 @@ public:
     /**
       Create a KPrefsWidManager object for a KPrefs object.
 
-      @param prefs  KPrefs object used to access te configuration.
+      @param prefs  KPrefs object used to access the configuration.
     */
     explicit KPrefsWidManager(KConfigSkeleton *prefs);
 
@@ -734,7 +734,7 @@ public:
     /**
       Create a KPrefsDialog for a KPrefs object.
 
-      @param prefs  KPrefs object used to access te configuration.
+      @param prefs  KPrefs object used to access the configuration.
       @param parent Parent widget.
       @param name   Widget name.
       @param modal  true, if dialog has to be modal, false for non-modal.

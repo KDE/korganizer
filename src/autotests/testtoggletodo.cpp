@@ -46,7 +46,7 @@ private Q_SLOTS:
         QVERIFY(KCalendarCore::identical(todo->dtRecurrence(), day1));
         QVERIFY(!todo->isCompleted());
 
-        // Toggle the first occurrance.
+        // Toggle the first occurrence.
         CalendarView::toggleCompleted(todo, day1.date());
 
         QVERIFY(KCalendarCore::identical(todo->dtRecurrence(), day2));
@@ -55,7 +55,7 @@ private Q_SLOTS:
         QVERIFY(KCalendarCore::identical(todo->dtRecurrence(), day1));
         QVERIFY(!todo->isCompleted());
 
-        // Toggle the second occurrance.
+        // Toggle the second occurrence.
         CalendarView::toggleCompleted(todo, day2.date());
         QVERIFY(KCalendarCore::identical(todo->dtRecurrence(), day3));
         QVERIFY(!todo->isCompleted());
@@ -63,7 +63,7 @@ private Q_SLOTS:
         QVERIFY(KCalendarCore::identical(todo->dtRecurrence(), day2));
         QVERIFY(!todo->isCompleted());
 
-        // Complete the second occurrance, then discomplete the first (and
+        // Complete the second occurrence, then discomplete the first (and
         // hence the second).
         CalendarView::toggleCompleted(todo, day2.date());
         QVERIFY(KCalendarCore::identical(todo->dtRecurrence(), day3));
@@ -72,7 +72,7 @@ private Q_SLOTS:
         QVERIFY(KCalendarCore::identical(todo->dtRecurrence(), day1));
         QVERIFY(!todo->isCompleted());
 
-        // Complete the final occurrance, and hence the entire todo.
+        // Complete the final occurrence, and hence the entire todo.
         CalendarView::toggleCompleted(todo, day3.date());
         QVERIFY(todo->isCompleted());
 
@@ -97,7 +97,7 @@ private Q_SLOTS:
         QVERIFY(KCalendarCore::identical(todo->dtRecurrence(), day1));
         QVERIFY(!todo->isCompleted());
 
-        // Toggle the first occurrance.
+        // Toggle the first occurrence.
         CalendarView::toggleCompleted(todo, day1.toLocalTime().date());
         QVERIFY(KCalendarCore::identical(todo->dtRecurrence(), day2));
         QVERIFY(!todo->isCompleted());
@@ -122,7 +122,7 @@ private Q_SLOTS:
         QVERIFY(KCalendarCore::identical(todo->dtRecurrence(), day1));
         QVERIFY(!todo->isCompleted());
 
-        // Complete the final occurrance, and hence the entire todo.
+        // Complete the final occurrence, and hence the entire todo.
         CalendarView::toggleCompleted(todo, day3.toLocalTime().date());
         QVERIFY(todo->isCompleted());
 
