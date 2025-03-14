@@ -8,7 +8,7 @@ msgid ""
 msgstr ""
 "Project-Id-Version: Korganizer\n"
 "Report-Msgid-Bugs-To: https://bugs.kde.org\n"
-"POT-Creation-Date: 2025-03-13 00:42+0000\n"
+"POT-Creation-Date: 2025-03-14 00:43+0000\n"
 "PO-Revision-Date: 2024-12-10 01:02+0100\n"
 "Last-Translator: Shinjo Park <kde@peremen.name>\n"
 "Language-Team: Korean <kde-kr@kde.org>\n"
@@ -484,8 +484,8 @@ msgstr ""
 "습니다!"
 
 #. i18n: ectx: property (text), widget (QPushButton, mDeleteButton)
-#: actionmanager.cpp:368 actionmanager.cpp:623 actionmanager.cpp:1308
-#: actionmanager.cpp:1345 ui/filteredit_base.ui:56
+#: actionmanager.cpp:368 actionmanager.cpp:624 actionmanager.cpp:1309
+#: actionmanager.cpp:1346 ui/filteredit_base.ui:56
 #, kde-format
 msgid "&Delete"
 msgstr "삭제(&D)"
@@ -853,7 +853,7 @@ msgstr "현재 캘린더 보기에 따라서 하루, 1주, 1개월, 1년 앞으�
 msgid "&Day"
 msgstr "일(&D)"
 
-#: actionmanager.cpp:553 actionmanager.cpp:1065
+#: actionmanager.cpp:553 actionmanager.cpp:1066
 #, kde-format
 msgid "&Next Day"
 msgid_plural "&Next %1 Days"
@@ -963,36 +963,41 @@ msgid "Configure"
 msgstr "설정"
 
 #: actionmanager.cpp:606
-#, kde-format
+#, fuzzy, kde-format
+#| msgctxt "@info:tooltip"
+#| msgid "Configure the current view"
 msgctxt "@info:status"
-msgid "Configure the view"
-msgstr "보기 설정"
+msgid "Configure the multi-calendar view"
+msgstr "현재 보기 설정"
 
 #: actionmanager.cpp:607
-#, kde-format
+#, fuzzy, kde-format
+#| msgctxt "@info:tooltip"
+#| msgid "Configure the current view"
 msgctxt "@info:tooltip"
-msgid "Configure the current view"
+msgid "Configure the multi-calendar view"
 msgstr "현재 보기 설정"
 
 #: actionmanager.cpp:609
 #, kde-format
 msgctxt "@info:whatsthis"
 msgid ""
-"Starts a configuration dialog that allows you to change the settings for the "
-"current calendar view."
-msgstr "현재 캘린더 보기 설정을 변경할 수 있는 대화 상자를 엽니다."
+"In the multi-calendar view, starts a dialog that allows configuring the "
+"view. Currently only the multi-calendar view is supported. See the Multiple "
+"Calendars options in the Views->Agenda Views settings."
+msgstr ""
 
-#: actionmanager.cpp:615 actionmanager.cpp:1302 actionmanager.cpp:1343
+#: actionmanager.cpp:616 actionmanager.cpp:1303 actionmanager.cpp:1344
 #, kde-format
 msgid "&Show"
 msgstr "표시(&S)"
 
-#: actionmanager.cpp:619 actionmanager.cpp:1305 actionmanager.cpp:1344
+#: actionmanager.cpp:620 actionmanager.cpp:1306 actionmanager.cpp:1345
 #, kde-format
 msgid "&Edit…"
 msgstr "편집(&E)…"
 
-#: actionmanager.cpp:628
+#: actionmanager.cpp:629
 #, kde-format
 msgctxt "@action"
 msgid "&Make Sub-to-do Independent"
@@ -1002,254 +1007,254 @@ msgstr "하위 할 일을 독립 항목으로 만들기(&M)"
 #. mCalendarView, SLOT(toggleAlarm()),
 #. mACollection, "activate_alarm" );
 #. ************************* SCHEDULE MENU *******************************
-#: actionmanager.cpp:640
+#: actionmanager.cpp:641
 #, kde-format
 msgid "&Publish Item Information…"
 msgstr "항목 정보 게시(&P)…"
 
-#: actionmanager.cpp:647
+#: actionmanager.cpp:648
 #, kde-format
 msgid "Send &Invitation to Attendees"
 msgstr "참석자에게 초대장 전송(&I)"
 
-#: actionmanager.cpp:655
+#: actionmanager.cpp:656
 #, kde-format
 msgctxt "@action"
 msgid "Re&quest Update"
 msgstr "업데이트 요청(&Q)"
 
-#: actionmanager.cpp:663
+#: actionmanager.cpp:664
 #, kde-format
 msgctxt "@action"
 msgid "Send &Cancellation to Attendees"
 msgstr "참석자에게 취소 안내 전송(&C)"
 
-#: actionmanager.cpp:671
+#: actionmanager.cpp:672
 #, kde-format
 msgid "Send Status &Update"
 msgstr "상태 업데이트 전송(&U)"
 
-#: actionmanager.cpp:679
+#: actionmanager.cpp:680
 #, kde-format
 msgctxt "counter proposal"
 msgid "Request Chan&ge"
 msgstr "변경 요청(&G)"
 
-#: actionmanager.cpp:687
+#: actionmanager.cpp:688
 #, kde-format
 msgctxt "@action"
 msgid "&Mail Free Busy Information…"
 msgstr "바쁨/한가함 정보 메일 보내기(&M)…"
 
-#: actionmanager.cpp:692
+#: actionmanager.cpp:693
 #, kde-format
 msgid "&Send as iCalendar…"
 msgstr "iCalendar로 전송(&S)…"
 
-#: actionmanager.cpp:699
+#: actionmanager.cpp:700
 #, kde-format
 msgctxt "@action"
 msgid "&Upload Free Busy Information"
 msgstr "바쁨/한가함 정보 업로드(&U)"
 
-#: actionmanager.cpp:705
+#: actionmanager.cpp:706
 #, kde-format
 msgid "&Address Book"
 msgstr "주소록(&A)"
 
-#: actionmanager.cpp:713
+#: actionmanager.cpp:714
 #, kde-format
 msgid "Show Date Navigator"
 msgstr "날짜 탐색기 표시"
 
-#: actionmanager.cpp:717
+#: actionmanager.cpp:718
 #, kde-format
 msgid "Show To-do View"
 msgstr "할 일 보기 표시"
 
-#: actionmanager.cpp:721
+#: actionmanager.cpp:722
 #, kde-format
 msgid "Show Item Viewer"
 msgstr "항목 뷰어 표시"
 
-#: actionmanager.cpp:737
+#: actionmanager.cpp:738
 #, kde-format
 msgid "Show Calendar Manager"
 msgstr "캘린더 관리자 표시"
 
-#: actionmanager.cpp:751
+#: actionmanager.cpp:752
 #, kde-format
 msgctxt "@action"
 msgid "Configure &Date && Time…"
 msgstr "날짜와 시간 설정(&D)…"
 
-#: actionmanager.cpp:755
+#: actionmanager.cpp:756
 #, kde-format
 msgid "Manage View &Filters…"
 msgstr "보기 필터 관리(&F)…"
 
-#: actionmanager.cpp:759
+#: actionmanager.cpp:760
 #, kde-format
 msgctxt "@action"
 msgid "Manage T&ags…"
 msgstr "태그 관리(&A)…"
 
-#: actionmanager.cpp:767
+#: actionmanager.cpp:768
 #, kde-format
 msgid "&Configure KOrganizer…"
 msgstr "KOrganizer 설정(&C)…"
 
-#: actionmanager.cpp:845
+#: actionmanager.cpp:846
 #, kde-format
 msgid "1 incidence was imported successfully."
 msgid_plural "%1 incidences were imported successfully."
 msgstr[0] "항목 %1개를 가져왔습니다."
 
-#: actionmanager.cpp:848
+#: actionmanager.cpp:849
 #, kde-format
 msgid "There was an error while merging the calendar: %1"
 msgstr "캘린더를 합치는 중 오류 발생: %1"
 
-#: actionmanager.cpp:859
+#: actionmanager.cpp:860
 #, kde-format
 msgid "New calendar added successfully"
 msgstr "새 캘린더가 추가됨"
 
-#: actionmanager.cpp:861
+#: actionmanager.cpp:862
 #, kde-format
 msgid "Could not add a calendar. Error: %1"
 msgstr "캘린더를 추가할 수 없습니다. 오류: %1"
 
-#: actionmanager.cpp:918
+#: actionmanager.cpp:919
 #, kde-format
 msgctxt "@title:window"
 msgid "Select Calendar File to Open"
 msgstr "열 캘린더 파일 선택"
 
-#: actionmanager.cpp:946
+#: actionmanager.cpp:947
 #, kde-format
 msgctxt "@title:window"
 msgid "Select Calendar File to Import"
 msgstr "가져올 캘린더 파일 선택"
 
-#: actionmanager.cpp:977
+#: actionmanager.cpp:978
 #, kde-format
 msgid "An error occurred: %1 (url: %2)"
 msgstr "오류 발생: %1(URL: %2)"
 
-#: actionmanager.cpp:995
+#: actionmanager.cpp:996
 #, kde-format
 msgid "Cannot upload calendar to '%1'"
 msgstr "'%1'(으)로 캘린더를 업로드할 수 없음"
 
-#: actionmanager.cpp:1001
+#: actionmanager.cpp:1002
 #, kde-format
 msgid "Saved calendar '%1'."
 msgstr "'%1' 캘린더를 저장했습니다."
 
-#: actionmanager.cpp:1039
+#: actionmanager.cpp:1040
 #, kde-format
 msgid "Unable to save calendar to the file %1."
 msgstr "%1 파일로 캘린더를 저장할 수 없습니다."
 
-#: actionmanager.cpp:1039
+#: actionmanager.cpp:1040
 #, kde-format
 msgctxt "@title:window"
 msgid "Error"
 msgstr "오류"
 
-#: actionmanager.cpp:1084
+#: actionmanager.cpp:1085
 #, kde-format
 msgid "Could not start control module for date and time format."
 msgstr "날짜와 시간 제어 모듈을 시작할 수 없습니다."
 
-#: actionmanager.cpp:1263
+#: actionmanager.cpp:1264
 #, kde-format
 msgid "&Show Event"
 msgstr "이벤트 표시(&S)"
 
-#: actionmanager.cpp:1266
+#: actionmanager.cpp:1267
 #, kde-format
 msgid "&Edit Event…"
 msgstr "이벤트 편집(&E)…"
 
-#: actionmanager.cpp:1269
+#: actionmanager.cpp:1270
 #, kde-format
 msgid "&Delete Event"
 msgstr "이벤트 삭제(&D)"
 
-#: actionmanager.cpp:1277
+#: actionmanager.cpp:1278
 #, kde-format
 msgid "&Show To-do"
 msgstr "할 일 표시(&S)"
 
-#: actionmanager.cpp:1280 kontactplugin/korganizer/todosummarywidget.cpp:322
+#: actionmanager.cpp:1281 kontactplugin/korganizer/todosummarywidget.cpp:322
 #, kde-format
 msgid "&Edit To-do…"
 msgstr "할 일 편집(&E)…"
 
-#: actionmanager.cpp:1283 kontactplugin/korganizer/todosummarywidget.cpp:324
+#: actionmanager.cpp:1284 kontactplugin/korganizer/todosummarywidget.cpp:324
 #, kde-format
 msgid "&Delete To-do"
 msgstr "할 일 삭제(&D)"
 
-#: actionmanager.cpp:1421 actionmanager.cpp:1527
+#: actionmanager.cpp:1422 actionmanager.cpp:1528
 #, kde-format
 msgid "Attach as &link"
 msgstr "링크로 첨부(&L)"
 
-#: actionmanager.cpp:1422 actionmanager.cpp:1528
+#: actionmanager.cpp:1423 actionmanager.cpp:1529
 #, kde-format
 msgid "Attach &inline"
 msgstr "인라인으로 첨부(&I)"
 
-#: actionmanager.cpp:1423
+#: actionmanager.cpp:1424
 #, kde-format
 msgid "Attach inline &without attachments"
 msgstr "첨부 없이 인라인으로 첨부(&W)"
 
-#: actionmanager.cpp:1425 actionmanager.cpp:1530
+#: actionmanager.cpp:1426 actionmanager.cpp:1531
 #, kde-format
 msgid "C&ancel"
 msgstr "취소(&A)"
 
-#: actionmanager.cpp:1463
+#: actionmanager.cpp:1464
 #, kde-format
 msgid "Removing attachments from an email might invalidate its signature."
 msgstr "이메일에서 첨부를 삭제하면 디지털 서명을 무효화할 수도 있습니다."
 
-#: actionmanager.cpp:1464
+#: actionmanager.cpp:1465
 #, kde-format
 msgctxt "@title:window"
 msgid "Remove Attachments"
 msgstr "첨부 삭제"
 
-#: actionmanager.cpp:1615
+#: actionmanager.cpp:1616
 #, kde-format
 msgid "Undo: %1"
 msgstr "실행 취소: %1"
 
-#: actionmanager.cpp:1618 actionmanager.cpp:1634
+#: actionmanager.cpp:1619 actionmanager.cpp:1635
 #, kde-format
 msgid "Undo"
 msgstr "실행 취소"
 
-#: actionmanager.cpp:1628
+#: actionmanager.cpp:1629
 #, kde-format
 msgid "Redo: %1"
 msgstr "다시 실행: %1"
 
-#: actionmanager.cpp:1631
+#: actionmanager.cpp:1632
 #, kde-format
 msgid "Redo"
 msgstr "다시 실행"
 
-#: actionmanager.cpp:1645
+#: actionmanager.cpp:1646
 #, kde-format
 msgid "URL '%1' is invalid."
 msgstr "URL %1이(가) 잘못되었습니다."
 
-#: actionmanager.cpp:1650
+#: actionmanager.cpp:1651
 #, kde-format
 msgctxt "@info"
 msgid ""
@@ -1263,19 +1268,19 @@ msgstr ""
 "겠습니까?</p><p>캘린더에 합치기를 선택했다면 대상 캘린더를 선택할 수 있습니"
 "다.</p><p>새 캘린더로 추가를 선택했다면 자동으로 새 캘린더를 만듭니다.</p>"
 
-#: actionmanager.cpp:1658
+#: actionmanager.cpp:1659
 #, kde-format
 msgctxt "@title:window"
 msgid "Import Calendar"
 msgstr "캘린더 가져오기"
 
-#: actionmanager.cpp:1659
+#: actionmanager.cpp:1660
 #, kde-format
 msgctxt "@action:button"
 msgid "Merge into existing calendar"
 msgstr "기존 캘린더에 합치기"
 
-#: actionmanager.cpp:1660
+#: actionmanager.cpp:1661
 #, kde-format
 msgctxt "@action:button"
 msgid "Add as new calendar"
@@ -5743,6 +5748,16 @@ msgstr "%1"
 msgctxt "4 digit year"
 msgid "%1"
 msgstr "%1년"
+
+#~ msgctxt "@info:status"
+#~ msgid "Configure the view"
+#~ msgstr "보기 설정"
+
+#~ msgctxt "@info:whatsthis"
+#~ msgid ""
+#~ "Starts a configuration dialog that allows you to change the settings for "
+#~ "the current calendar view."
+#~ msgstr "현재 캘린더 보기 설정을 변경할 수 있는 대화 상자를 엽니다."
 
 #~ msgctxt "@action:inmenu"
 #~ msgid "Serverside Subscription…"

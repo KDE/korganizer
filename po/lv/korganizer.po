@@ -10,7 +10,7 @@ msgid ""
 msgstr ""
 "Project-Id-Version: korganizer\n"
 "Report-Msgid-Bugs-To: https://bugs.kde.org\n"
-"POT-Creation-Date: 2025-03-13 00:42+0000\n"
+"POT-Creation-Date: 2025-03-14 00:43+0000\n"
 "PO-Revision-Date: 2025-01-16 16:08+0200\n"
 "Last-Translator: Toms Trasuns <toms.trasuns@posteo.net>\n"
 "Language-Team: Latvian <kde-i18n-doc@kde.org>\n"
@@ -483,8 +483,8 @@ msgstr ""
 "nevarēs atsaukt!"
 
 #. i18n: ectx: property (text), widget (QPushButton, mDeleteButton)
-#: actionmanager.cpp:368 actionmanager.cpp:623 actionmanager.cpp:1308
-#: actionmanager.cpp:1345 ui/filteredit_base.ui:56
+#: actionmanager.cpp:368 actionmanager.cpp:624 actionmanager.cpp:1309
+#: actionmanager.cpp:1346 ui/filteredit_base.ui:56
 #, kde-format
 msgid "&Delete"
 msgstr "&Dzēst"
@@ -864,7 +864,7 @@ msgstr ""
 msgid "&Day"
 msgstr "&Diena"
 
-#: actionmanager.cpp:553 actionmanager.cpp:1065
+#: actionmanager.cpp:553 actionmanager.cpp:1066
 #, kde-format
 msgid "&Next Day"
 msgid_plural "&Next %1 Days"
@@ -976,38 +976,41 @@ msgid "Configure"
 msgstr "Pielāgot"
 
 #: actionmanager.cpp:606
-#, kde-format
+#, fuzzy, kde-format
+#| msgctxt "@info:tooltip"
+#| msgid "Configure the current view"
 msgctxt "@info:status"
-msgid "Configure the view"
-msgstr "Pielāgot skatu"
+msgid "Configure the multi-calendar view"
+msgstr "Pielāgot pašreizējo skatu"
 
 #: actionmanager.cpp:607
-#, kde-format
+#, fuzzy, kde-format
+#| msgctxt "@info:tooltip"
+#| msgid "Configure the current view"
 msgctxt "@info:tooltip"
-msgid "Configure the current view"
+msgid "Configure the multi-calendar view"
 msgstr "Pielāgot pašreizējo skatu"
 
 #: actionmanager.cpp:609
 #, kde-format
 msgctxt "@info:whatsthis"
 msgid ""
-"Starts a configuration dialog that allows you to change the settings for the "
-"current calendar view."
+"In the multi-calendar view, starts a dialog that allows configuring the "
+"view. Currently only the multi-calendar view is supported. See the Multiple "
+"Calendars options in the Views->Agenda Views settings."
 msgstr ""
-"Atver pielāgošanas lodziņu, kurā varat mainīt pašreizējā kalendāra skata "
-"iestatījumus."
 
-#: actionmanager.cpp:615 actionmanager.cpp:1302 actionmanager.cpp:1343
+#: actionmanager.cpp:616 actionmanager.cpp:1303 actionmanager.cpp:1344
 #, kde-format
 msgid "&Show"
 msgstr "&Rādīt"
 
-#: actionmanager.cpp:619 actionmanager.cpp:1305 actionmanager.cpp:1344
+#: actionmanager.cpp:620 actionmanager.cpp:1306 actionmanager.cpp:1345
 #, kde-format
 msgid "&Edit…"
 msgstr "R&ediģēt…"
 
-#: actionmanager.cpp:628
+#: actionmanager.cpp:629
 #, kde-format
 msgctxt "@action"
 msgid "&Make Sub-to-do Independent"
@@ -1017,104 +1020,104 @@ msgstr "&Padarīt apakšuzdevumu neatkarīgu"
 #. mCalendarView, SLOT(toggleAlarm()),
 #. mACollection, "activate_alarm" );
 #. ************************* SCHEDULE MENU *******************************
-#: actionmanager.cpp:640
+#: actionmanager.cpp:641
 #, kde-format
 msgid "&Publish Item Information…"
 msgstr "&Publicēt vienuma informāciju…"
 
-#: actionmanager.cpp:647
+#: actionmanager.cpp:648
 #, kde-format
 msgid "Send &Invitation to Attendees"
 msgstr "Nosūtīt dalībniekiem &ielūgumus"
 
-#: actionmanager.cpp:655
+#: actionmanager.cpp:656
 #, kde-format
 msgctxt "@action"
 msgid "Re&quest Update"
 msgstr "Pieprasīt at&jauninājumu"
 
-#: actionmanager.cpp:663
+#: actionmanager.cpp:664
 #, kde-format
 msgctxt "@action"
 msgid "Send &Cancellation to Attendees"
 msgstr "Nosūtīt dalībniekiem at&celšanu"
 
-#: actionmanager.cpp:671
+#: actionmanager.cpp:672
 #, kde-format
 msgid "Send Status &Update"
 msgstr "Pieprasīt statusa atja&uninājumu"
 
-#: actionmanager.cpp:679
+#: actionmanager.cpp:680
 #, kde-format
 msgctxt "counter proposal"
 msgid "Request Chan&ge"
 msgstr "Pieprasīt iz&maiņas"
 
-#: actionmanager.cpp:687
+#: actionmanager.cpp:688
 #, kde-format
 msgctxt "@action"
 msgid "&Mail Free Busy Information…"
 msgstr "&Nosūtīt brīvs/aizņemts informāciju…"
 
-#: actionmanager.cpp:692
+#: actionmanager.cpp:693
 #, kde-format
 msgid "&Send as iCalendar…"
 msgstr "&Sūtīt kā „iCalendar“…"
 
-#: actionmanager.cpp:699
+#: actionmanager.cpp:700
 #, kde-format
 msgctxt "@action"
 msgid "&Upload Free Busy Information"
 msgstr "A&ugšupielādēt brīvs/aizņemts informāciju"
 
-#: actionmanager.cpp:705
+#: actionmanager.cpp:706
 #, kde-format
 msgid "&Address Book"
 msgstr "&Adrešu grāmata"
 
-#: actionmanager.cpp:713
+#: actionmanager.cpp:714
 #, kde-format
 msgid "Show Date Navigator"
 msgstr "Rādīt datuma navigatoru"
 
-#: actionmanager.cpp:717
+#: actionmanager.cpp:718
 #, kde-format
 msgid "Show To-do View"
 msgstr "Rādīt uzdevumu skatu"
 
-#: actionmanager.cpp:721
+#: actionmanager.cpp:722
 #, kde-format
 msgid "Show Item Viewer"
 msgstr "Rādīt ierakstu skatītāju"
 
-#: actionmanager.cpp:737
+#: actionmanager.cpp:738
 #, kde-format
 msgid "Show Calendar Manager"
 msgstr "Rādīt kalendāru pārvaldnieku"
 
-#: actionmanager.cpp:751
+#: actionmanager.cpp:752
 #, kde-format
 msgctxt "@action"
 msgid "Configure &Date && Time…"
 msgstr "Konfigurēt &datumu un laiku…"
 
-#: actionmanager.cpp:755
+#: actionmanager.cpp:756
 #, kde-format
 msgid "Manage View &Filters…"
 msgstr "Pārvaldīt skata &filtrus…"
 
-#: actionmanager.cpp:759
+#: actionmanager.cpp:760
 #, kde-format
 msgctxt "@action"
 msgid "Manage T&ags…"
 msgstr "Pārvaldīt &birkas…"
 
-#: actionmanager.cpp:767
+#: actionmanager.cpp:768
 #, kde-format
 msgid "&Configure KOrganizer…"
 msgstr "&Konfigurēt „KOrganizer“…"
 
-#: actionmanager.cpp:845
+#: actionmanager.cpp:846
 #, kde-format
 msgid "1 incidence was imported successfully."
 msgid_plural "%1 incidences were imported successfully."
@@ -1122,153 +1125,153 @@ msgstr[0] "Importēts %1 ieraksts."
 msgstr[1] "Importēti %1 ieraksti."
 msgstr[2] "Importēts %1 ierakstu."
 
-#: actionmanager.cpp:848
+#: actionmanager.cpp:849
 #, kde-format
 msgid "There was an error while merging the calendar: %1"
 msgstr "Sapludinot kalendārus, radās kļūda: %1"
 
-#: actionmanager.cpp:859
+#: actionmanager.cpp:860
 #, kde-format
 msgid "New calendar added successfully"
 msgstr "Jaunais kalendārs ir pievienots"
 
-#: actionmanager.cpp:861
+#: actionmanager.cpp:862
 #, kde-format
 msgid "Could not add a calendar. Error: %1"
 msgstr "Neizdevās pievienot kalendāru. Kļūda: %1"
 
-#: actionmanager.cpp:918
+#: actionmanager.cpp:919
 #, kde-format
 msgctxt "@title:window"
 msgid "Select Calendar File to Open"
 msgstr "Atlasiet atveramo kalendāra datni"
 
-#: actionmanager.cpp:946
+#: actionmanager.cpp:947
 #, kde-format
 msgctxt "@title:window"
 msgid "Select Calendar File to Import"
 msgstr "Atlasiet importējamo kalendāra datni"
 
-#: actionmanager.cpp:977
+#: actionmanager.cpp:978
 #, kde-format
 msgid "An error occurred: %1 (url: %2)"
 msgstr "Gadījās kļūda: %1 (URL: %2)"
 
-#: actionmanager.cpp:995
+#: actionmanager.cpp:996
 #, kde-format
 msgid "Cannot upload calendar to '%1'"
 msgstr "Neizdevās augšupielādēt kalendāru uz „%1“"
 
-#: actionmanager.cpp:1001
+#: actionmanager.cpp:1002
 #, kde-format
 msgid "Saved calendar '%1'."
 msgstr "Saglabāts kalendārs „%1“."
 
-#: actionmanager.cpp:1039
+#: actionmanager.cpp:1040
 #, kde-format
 msgid "Unable to save calendar to the file %1."
 msgstr "Neizdevās saglabāt kalendāru datnē „%1“."
 
-#: actionmanager.cpp:1039
+#: actionmanager.cpp:1040
 #, kde-format
 msgctxt "@title:window"
 msgid "Error"
 msgstr "Kļūda"
 
-#: actionmanager.cpp:1084
+#: actionmanager.cpp:1085
 #, kde-format
 msgid "Could not start control module for date and time format."
 msgstr "Neizdevās palaist datuma un laika formāta kontroles moduli."
 
-#: actionmanager.cpp:1263
+#: actionmanager.cpp:1264
 #, kde-format
 msgid "&Show Event"
 msgstr "&Rādīt notikumu"
 
-#: actionmanager.cpp:1266
+#: actionmanager.cpp:1267
 #, kde-format
 msgid "&Edit Event…"
 msgstr "R&ediģēt notikumu…"
 
-#: actionmanager.cpp:1269
+#: actionmanager.cpp:1270
 #, kde-format
 msgid "&Delete Event"
 msgstr "&Dzēst notikumu"
 
-#: actionmanager.cpp:1277
+#: actionmanager.cpp:1278
 #, kde-format
 msgid "&Show To-do"
 msgstr "&Rādīt uzdevumu"
 
-#: actionmanager.cpp:1280 kontactplugin/korganizer/todosummarywidget.cpp:322
+#: actionmanager.cpp:1281 kontactplugin/korganizer/todosummarywidget.cpp:322
 #, kde-format
 msgid "&Edit To-do…"
 msgstr "R&ediģēt uzdevumu…"
 
-#: actionmanager.cpp:1283 kontactplugin/korganizer/todosummarywidget.cpp:324
+#: actionmanager.cpp:1284 kontactplugin/korganizer/todosummarywidget.cpp:324
 #, kde-format
 msgid "&Delete To-do"
 msgstr "&Dzēst uzdevumu"
 
-#: actionmanager.cpp:1421 actionmanager.cpp:1527
+#: actionmanager.cpp:1422 actionmanager.cpp:1528
 #, kde-format
 msgid "Attach as &link"
 msgstr "Pievienot kā &saiti"
 
-#: actionmanager.cpp:1422 actionmanager.cpp:1528
+#: actionmanager.cpp:1423 actionmanager.cpp:1529
 #, kde-format
 msgid "Attach &inline"
 msgstr "Pievienot &iekļauti"
 
-#: actionmanager.cpp:1423
+#: actionmanager.cpp:1424
 #, kde-format
 msgid "Attach inline &without attachments"
 msgstr "Pievienot iekļauti &bez pielikumiem"
 
-#: actionmanager.cpp:1425 actionmanager.cpp:1530
+#: actionmanager.cpp:1426 actionmanager.cpp:1531
 #, kde-format
 msgid "C&ancel"
 msgstr "&Atcelt"
 
-#: actionmanager.cpp:1463
+#: actionmanager.cpp:1464
 #, kde-format
 msgid "Removing attachments from an email might invalidate its signature."
 msgstr ""
 "Pielikumu izņemšana no e-pasta vēstules var tās parakstu var padarīt "
 "nederīgu."
 
-#: actionmanager.cpp:1464
+#: actionmanager.cpp:1465
 #, kde-format
 msgctxt "@title:window"
 msgid "Remove Attachments"
 msgstr "Noņemt pielikumus"
 
-#: actionmanager.cpp:1615
+#: actionmanager.cpp:1616
 #, kde-format
 msgid "Undo: %1"
 msgstr "Atsaukt: %1"
 
-#: actionmanager.cpp:1618 actionmanager.cpp:1634
+#: actionmanager.cpp:1619 actionmanager.cpp:1635
 #, kde-format
 msgid "Undo"
 msgstr "Atsaukt"
 
-#: actionmanager.cpp:1628
+#: actionmanager.cpp:1629
 #, kde-format
 msgid "Redo: %1"
 msgstr "Atatsaukt: %1"
 
-#: actionmanager.cpp:1631
+#: actionmanager.cpp:1632
 #, kde-format
 msgid "Redo"
 msgstr "Atatsaukt"
 
-#: actionmanager.cpp:1645
+#: actionmanager.cpp:1646
 #, kde-format
 msgid "URL '%1' is invalid."
 msgstr "URL „%1“ nav derīga saite."
 
-#: actionmanager.cpp:1650
+#: actionmanager.cpp:1651
 #, kde-format
 msgctxt "@info"
 msgid ""
@@ -1283,19 +1286,19 @@ msgstr ""
 "jums būs iespēja atlasīt mērķa kalendāru.</p><p>Ja atlasīsiet „pievienot“, "
 "programma automātiski izveidos jaunu kalendāru.</p>"
 
-#: actionmanager.cpp:1658
+#: actionmanager.cpp:1659
 #, kde-format
 msgctxt "@title:window"
 msgid "Import Calendar"
 msgstr "Importēt kalendāru"
 
-#: actionmanager.cpp:1659
+#: actionmanager.cpp:1660
 #, kde-format
 msgctxt "@action:button"
 msgid "Merge into existing calendar"
 msgstr "Saplūdināt ar esošu kalendāru"
 
-#: actionmanager.cpp:1660
+#: actionmanager.cpp:1661
 #, kde-format
 msgctxt "@action:button"
 msgid "Add as new calendar"
@@ -5893,6 +5896,18 @@ msgstr "%1"
 msgctxt "4 digit year"
 msgid "%1"
 msgstr "%1"
+
+#~ msgctxt "@info:status"
+#~ msgid "Configure the view"
+#~ msgstr "Pielāgot skatu"
+
+#~ msgctxt "@info:whatsthis"
+#~ msgid ""
+#~ "Starts a configuration dialog that allows you to change the settings for "
+#~ "the current calendar view."
+#~ msgstr ""
+#~ "Atver pielāgošanas lodziņu, kurā varat mainīt pašreizējā kalendāra skata "
+#~ "iestatījumus."
 
 #~ msgctxt "@action:inmenu"
 #~ msgid "Serverside Subscription…"
