@@ -12,7 +12,7 @@ msgstr ""
 "Project-Id-Version: korganizer\n"
 "Report-Msgid-Bugs-To: https://bugs.kde.org\n"
 "POT-Creation-Date: 2025-03-13 02:34+0000\n"
-"PO-Revision-Date: 2025-02-18 21:38+0400\n"
+"PO-Revision-Date: 2025-03-13 11:47+0400\n"
 "Last-Translator: Zayed Al-Saidi <zayed.alsaidi@gmail.com>\n"
 "Language-Team: ar\n"
 "Language: ar\n"
@@ -1370,6 +1370,9 @@ msgid ""
 "removed from its remote resource.</note></para>The <filename>%1</filename> "
 "calendar can be added again at any time."
 msgstr ""
+"هل تريد حقًا حذف تقويم <filename>%1</filename>؟<para><note>لن تُحذف بيانات "
+"التقويم، ولن يُزال التقويم من مصدره البعيد.</note></para>يمكن إضافة تقويم "
+"<filename>%1</filename> مرة أخرى في أي وقت."
 
 #: akonadicollectionview.cpp:759
 #, kde-kuit-format
@@ -5579,13 +5582,12 @@ msgstr "&ضمن جميع المهام التي يجب إنجازها ضمن نط
 
 #. i18n: ectx: property (toolTip), widget (QCheckBox, unfiltered)
 #: ui/searchdialog_base.ui:325
-#, fuzzy, kde-format
-#| msgctxt "@info:whatsthis"
-#| msgid "Press this button to remove the currently active filter."
+#, kde-format
 msgid ""
 "Uncheck this box to skip incidences matching the currently selected view "
 "filter"
-msgstr "انقر هذا الزر لإزالة المرشّح النشط حاليًا."
+msgstr ""
+"ألغ تحديد هذا المربع لتخطي الحوادث المطابقة لعامل تصفية العرض المحدد حاليًا"
 
 #. i18n: ectx: property (whatsThis), widget (QCheckBox, unfiltered)
 #: ui/searchdialog_base.ui:328
@@ -5594,12 +5596,14 @@ msgid ""
 "When this box is checked all incidences will be considered in the search, "
 "even those that aren't displayed according the currently selected view filter"
 msgstr ""
+"عند تحديد هذا المربع، ستؤخذ جميع الحوادث في الاعتبار في البحث، حتى تلك التي "
+"لم يتم عرضها وفقًا لمرشح العرض المحدد حاليًا"
 
 #. i18n: ectx: property (text), widget (QCheckBox, unfiltered)
 #: ui/searchdialog_base.ui:331
 #, kde-format
 msgid "Include all incidences matched by view filter"
-msgstr ""
+msgstr "تضمين جميع الحوادث المطابقة لمرشح العرض"
 
 #. i18n: ectx: property (text), widget (QPushButton, mDayBtn)
 #: views/collectionview/quickview.ui:34

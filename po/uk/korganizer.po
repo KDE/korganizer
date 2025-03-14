@@ -12,7 +12,7 @@ msgstr ""
 "Project-Id-Version: korganizer\n"
 "Report-Msgid-Bugs-To: https://bugs.kde.org\n"
 "POT-Creation-Date: 2025-03-13 02:34+0000\n"
-"PO-Revision-Date: 2025-03-11 18:54+0200\n"
+"PO-Revision-Date: 2025-03-13 19:23+0200\n"
 "Last-Translator: Yuri Chornoivan <yurchor@ukr.net>\n"
 "Language-Team: Ukrainian <trans-uk@lists.fedoraproject.org>\n"
 "Language: uk\n"
@@ -1393,6 +1393,10 @@ msgid ""
 "removed from its remote resource.</note></para>The <filename>%1</filename> "
 "calendar can be added again at any time."
 msgstr ""
+"Справді хочете вилучити календар <filename>%1</filename>?<para><note>Дані "
+"календаря не буде вилучено, і календар не буде вилучено з його віддаленого "
+"ресурсу.</note></para>Ви зможете надалі будь-коли додати календар <filename>"
+"%1</filename> знову."
 
 #: akonadicollectionview.cpp:759
 #, kde-kuit-format
@@ -1402,6 +1406,9 @@ msgid ""
 "<para><warning>This cannot be undone.  Please consider carefully before "
 "pressing the %2 button.</warning></para>"
 msgstr ""
+"Ви справді хочете вилучити календар <filename>%1</filename>?"
+"<para><warning>Результати не можна буде скасувати. Будьте розважливі, коли "
+"натискатимете кнопку %2.</warning></para>"
 
 #: akonadicollectionview.cpp:767
 #, kde-format
@@ -5718,11 +5725,7 @@ msgstr ""
 
 #. i18n: ectx: property (whatsThis), widget (QCheckBox, unfiltered)
 #: ui/searchdialog_base.ui:328
-#, fuzzy, kde-format
-#| msgid ""
-#| "When this box is checked all incidences wil be considered in the search, "
-#| "even those that aren't displayed according the currently selected view "
-#| "filter"
+#, kde-format
 msgid ""
 "When this box is checked all incidences will be considered in the search, "
 "even those that aren't displayed according the currently selected view filter"

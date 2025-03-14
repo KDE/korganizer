@@ -1,7 +1,7 @@
 # translation of korganizer.po to Slovenian
 # Translation of korganizer.po to Slovenian
 # Copyright (C) 2001,2002, 2003, 2004, 2005, 2006 Free Software Foundation, Inc.
-# $Id: korganizer.po 1705051 2025-03-13 03:04:25Z scripty $
+# $Id: korganizer.po 1705109 2025-03-14 03:13:43Z scripty $
 # $Source$
 #
 # Roman Maurer <roman.maurer@hermes.si>, 2001.
@@ -15,7 +15,7 @@ msgstr ""
 "Project-Id-Version: korganizer\n"
 "Report-Msgid-Bugs-To: https://bugs.kde.org\n"
 "POT-Creation-Date: 2025-03-13 02:34+0000\n"
-"PO-Revision-Date: 2025-03-12 07:34+0100\n"
+"PO-Revision-Date: 2025-03-13 07:35+0100\n"
 "Last-Translator: Matjaž Jeran <matjaz.jeran@amis.net>\n"
 "Language-Team: Slovenian <lugos-slo@lugos.si>\n"
 "Language: sl\n"
@@ -1399,20 +1399,15 @@ msgstr ""
 "kadarkoli dodate."
 
 #: akonadicollectionview.cpp:759
-#, fuzzy, kde-kuit-format
-#| msgctxt "@info"
-#| msgid ""
-#| "Do you really want to delete the <filename>%1/filename> calendar?"
-#| "<para><warning>This cannot be undone.  Please consider carefully before "
-#| "pressing the %2 button.</warning></para>"
+#, kde-kuit-format
 msgctxt "@info"
 msgid ""
 "Do you really want to delete the <filename>%1</filename> calendar?"
 "<para><warning>This cannot be undone.  Please consider carefully before "
 "pressing the %2 button.</warning></para>"
 msgstr ""
-"Ali res želite izbrisati koledar <filename>%1/filename>?<para><warning>Tega "
-"ni mogoče razveljaviti. Pazljivo premislite, preden pritisnete gumb %2.</"
+"Ali res želite izbrisati koledar <filename>%1</filename>?<para><warning>Tega "
+"ni mogoče razveljaviti.  Pazljivo premislite, preden pritisnete gumb %2.</"
 "warning></para>"
 
 #: akonadicollectionview.cpp:767
