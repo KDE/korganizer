@@ -938,20 +938,16 @@ msgid "Configure"
 msgstr "配置"
 
 #: actionmanager.cpp:606
-#, fuzzy, kde-format
-#| msgctxt "@info:tooltip"
-#| msgid "Configure the current view"
+#, kde-format
 msgctxt "@info:status"
 msgid "Configure the multi-calendar view"
-msgstr "配置当前视图"
+msgstr ""
 
 #: actionmanager.cpp:607
-#, fuzzy, kde-format
-#| msgctxt "@info:tooltip"
-#| msgid "Configure the current view"
+#, kde-format
 msgctxt "@info:tooltip"
 msgid "Configure the multi-calendar view"
-msgstr "配置当前视图"
+msgstr ""
 
 #: actionmanager.cpp:609
 #, kde-format
@@ -5610,13 +5606,3 @@ msgstr "%1"
 msgctxt "4 digit year"
 msgid "%1"
 msgstr "%1"
-
-#~ msgctxt "@info:status"
-#~ msgid "Configure the view"
-#~ msgstr "配置视图"
-
-#~ msgctxt "@info:whatsthis"
-#~ msgid ""
-#~ "Starts a configuration dialog that allows you to change the settings for "
-#~ "the current calendar view."
-#~ msgstr "打开配置对话框，并可让您更改当前日历视图的设置。"

@@ -12,7 +12,7 @@ msgstr ""
 "Project-Id-Version: korganizer\n"
 "Report-Msgid-Bugs-To: https://bugs.kde.org\n"
 "POT-Creation-Date: 2025-03-14 00:43+0000\n"
-"PO-Revision-Date: 2025-03-13 13:35+0200\n"
+"PO-Revision-Date: 2025-03-14 13:42+0200\n"
 "Last-Translator: Yuri Chornoivan <yurchor@ukr.net>\n"
 "Language-Team: Ukrainian <trans-uk@lists.fedoraproject.org>\n"
 "Language: uk\n"
@@ -986,20 +986,16 @@ msgid "Configure"
 msgstr "Налаштувати"
 
 #: actionmanager.cpp:606
-#, fuzzy, kde-format
-#| msgctxt "@info:tooltip"
-#| msgid "Configure the current view"
+#, kde-format
 msgctxt "@info:status"
 msgid "Configure the multi-calendar view"
-msgstr "Налаштувати поточний перегляд"
+msgstr "Налаштувати перегляд з декількома календарями"
 
 #: actionmanager.cpp:607
-#, fuzzy, kde-format
-#| msgctxt "@info:tooltip"
-#| msgid "Configure the current view"
+#, kde-format
 msgctxt "@info:tooltip"
 msgid "Configure the multi-calendar view"
-msgstr "Налаштувати поточний перегляд"
+msgstr "Налаштувати перегляд з декількома календарями"
 
 #: actionmanager.cpp:609
 #, kde-format
@@ -1009,6 +1005,11 @@ msgid ""
 "view. Currently only the multi-calendar view is supported. See the Multiple "
 "Calendars options in the Views->Agenda Views settings."
 msgstr ""
+"У режимі перегляду з декількома календарями відкриває вікно, за допомогою "
+"якого можна налаштувати перегляд. У поточній версії передбачено підтримку "
+"лише перегляду з декількома календарями. Див. варіанти переглядів з "
+"декількома календарями на сторінці параметрів «Перегляди->Перегляди порядку "
+"денного»."
 
 #: actionmanager.cpp:616 actionmanager.cpp:1303 actionmanager.cpp:1344
 #, kde-format

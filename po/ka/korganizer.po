@@ -8,7 +8,7 @@ msgstr ""
 "Project-Id-Version: korganizer\n"
 "Report-Msgid-Bugs-To: https://bugs.kde.org\n"
 "POT-Creation-Date: 2025-03-14 00:43+0000\n"
-"PO-Revision-Date: 2025-03-13 05:29+0100\n"
+"PO-Revision-Date: 2025-03-14 04:24+0100\n"
 "Last-Translator: Temuri Doghonadze <temuri.doghonadze@gmail.com>\n"
 "Language-Team: Georgian <kde-i18n-doc@kde.org>\n"
 "Language: ka\n"
@@ -972,20 +972,16 @@ msgid "Configure"
 msgstr "მორგება"
 
 #: actionmanager.cpp:606
-#, fuzzy, kde-format
-#| msgctxt "@info:tooltip"
-#| msgid "Configure the current view"
+#, kde-format
 msgctxt "@info:status"
 msgid "Configure the multi-calendar view"
-msgstr "მიმდინარე ხედის მორგება"
+msgstr "მრავალკალენდრიანი ხედის მორგება"
 
 #: actionmanager.cpp:607
-#, fuzzy, kde-format
-#| msgctxt "@info:tooltip"
-#| msgid "Configure the current view"
+#, kde-format
 msgctxt "@info:tooltip"
 msgid "Configure the multi-calendar view"
-msgstr "მიმდინარე ხედის მორგება"
+msgstr "მრავალკალენდრიანი ხედის მორგება"
 
 #: actionmanager.cpp:609
 #, kde-format
@@ -995,6 +991,10 @@ msgid ""
 "view. Currently only the multi-calendar view is supported. See the Multiple "
 "Calendars options in the Views->Agenda Views settings."
 msgstr ""
+"მრავალკალენდრიან ხედში, გაუშვებს დიალოგს, რომელიც ხედის მორგებაში "
+"დაგეხმარებათ. ამჟამად მხარდაჭერილია, მხოლოდ, მრავალკალენდრიანი ხედია "
+"მხარდაჭერილი. იხილეთ ერთზე მეტი კალენდრის პარამეტრები მენიუში ხედები->გეგმის "
+"ხედის მორგება."
 
 #: actionmanager.cpp:616 actionmanager.cpp:1303 actionmanager.cpp:1344
 #, kde-format

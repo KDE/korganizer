@@ -18,7 +18,7 @@ msgstr ""
 "Project-Id-Version: korganizer\n"
 "Report-Msgid-Bugs-To: https://bugs.kde.org\n"
 "POT-Creation-Date: 2025-03-14 00:43+0000\n"
-"PO-Revision-Date: 2025-03-12 07:43+0200\n"
+"PO-Revision-Date: 2025-03-14 09:29+0200\n"
 "Last-Translator: Yaron Shahrabani <sh.yaron@gmail.com>\n"
 "Language-Team: צוות התרגום של KDE ישראל\n"
 "Language: he\n"
@@ -968,20 +968,16 @@ msgid "Configure"
 msgstr "הגדרה"
 
 #: actionmanager.cpp:606
-#, fuzzy, kde-format
-#| msgctxt "@info:tooltip"
-#| msgid "Configure the current view"
+#, kde-format
 msgctxt "@info:status"
 msgid "Configure the multi-calendar view"
-msgstr "הגדרת התצוגה הנוכחית"
+msgstr "הגדרת תצוגה מרובת לוחות שנה"
 
 #: actionmanager.cpp:607
-#, fuzzy, kde-format
-#| msgctxt "@info:tooltip"
-#| msgid "Configure the current view"
+#, kde-format
 msgctxt "@info:tooltip"
 msgid "Configure the multi-calendar view"
-msgstr "הגדרת התצוגה הנוכחית"
+msgstr "הגדרת תצוגה מרובת לוחות שנה"
 
 #: actionmanager.cpp:609
 #, kde-format
@@ -991,6 +987,9 @@ msgid ""
 "view. Currently only the multi-calendar view is supported. See the Multiple "
 "Calendars options in the Views->Agenda Views settings."
 msgstr ""
+"בתצוגה מרובת לוחות השנה, הפעלה חלונית שמאפשרת להגדיר את התצוגה. כרגע יש "
+"תמיכה רק בתצוגה מרובת לוחות שנה. כדאי לברר פרטים נוספים בהגדרות ריבוי לוחות "
+"שנה תחת הגדרות תצוגות->תצוגות סדר יום."
 
 #: actionmanager.cpp:616 actionmanager.cpp:1303 actionmanager.cpp:1344
 #, kde-format
@@ -1374,12 +1373,7 @@ msgstr ""
 "לוח השנה <filename>%1</filename> שוב בכל עת."
 
 #: akonadicollectionview.cpp:745
-#, fuzzy, kde-kuit-format
-#| msgctxt "@info"
-#| msgid ""
-#| "Do you really want to delete the <filename>%1/filename> calendar?"
-#| "<para><warning>This cannot be undone.  Please consider carefully before "
-#| "pressing the %2 button.</warning></para>"
+#, kde-kuit-format
 msgctxt "@info"
 msgid ""
 "Do you really want to delete the <filename>%1</filename> calendar?"

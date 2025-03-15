@@ -14,7 +14,7 @@ msgstr ""
 "Project-Id-Version: korganizer\n"
 "Report-Msgid-Bugs-To: https://bugs.kde.org\n"
 "POT-Creation-Date: 2025-03-14 00:43+0000\n"
-"PO-Revision-Date: 2025-03-13 09:47+0100\n"
+"PO-Revision-Date: 2025-03-14 09:12+0100\n"
 "Last-Translator: Josep M. Ferrer <txemaq@gmail.com>\n"
 "Language-Team: Catalan <kde-i18n-ca@kde.org>\n"
 "Language: ca\n"
@@ -988,20 +988,16 @@ msgid "Configure"
 msgstr "Configura"
 
 #: actionmanager.cpp:606
-#, fuzzy, kde-format
-#| msgctxt "@info:tooltip"
-#| msgid "Configure the current view"
+#, kde-format
 msgctxt "@info:status"
 msgid "Configure the multi-calendar view"
-msgstr "Configura la vista actual"
+msgstr "Configura la vista multicalendari"
 
 #: actionmanager.cpp:607
-#, fuzzy, kde-format
-#| msgctxt "@info:tooltip"
-#| msgid "Configure the current view"
+#, kde-format
 msgctxt "@info:tooltip"
 msgid "Configure the multi-calendar view"
-msgstr "Configura la vista actual"
+msgstr "Configura la vista multicalendari"
 
 #: actionmanager.cpp:609
 #, kde-format
@@ -1011,6 +1007,9 @@ msgid ""
 "view. Currently only the multi-calendar view is supported. See the Multiple "
 "Calendars options in the Views->Agenda Views settings."
 msgstr ""
+"A la vista multicalendari, s'inicia un diàleg que permet configurar la "
+"vista. Actualment només s'admet la vista multicalendari. Vegeu les opcions "
+"de múltiples calendaris a la configuració Vistes->Vistes d'agenda."
 
 #: actionmanager.cpp:616 actionmanager.cpp:1303 actionmanager.cpp:1344
 #, kde-format
@@ -6020,15 +6019,3 @@ msgstr "%1"
 msgctxt "4 digit year"
 msgid "%1"
 msgstr "%1"
-
-#~ msgctxt "@info:status"
-#~ msgid "Configure the view"
-#~ msgstr "Configura la vista"
-
-#~ msgctxt "@info:whatsthis"
-#~ msgid ""
-#~ "Starts a configuration dialog that allows you to change the settings for "
-#~ "the current calendar view."
-#~ msgstr ""
-#~ "Inicia un diàleg de configuració que permet canviar la configuració de la "
-#~ "vista actual del calendari."

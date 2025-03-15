@@ -1,7 +1,7 @@
 # translation of korganizer.po to Slovenian
 # Translation of korganizer.po to Slovenian
 # Copyright (C) 2001,2002, 2003, 2004, 2005, 2006 Free Software Foundation, Inc.
-# $Id: korganizer.po 1705100 2025-03-14 01:22:49Z scripty $
+# $Id: korganizer.po 1705165 2025-03-15 01:21:50Z scripty $
 # $Source$
 #
 # Roman Maurer <roman.maurer@hermes.si>, 2001.
@@ -15,7 +15,7 @@ msgstr ""
 "Project-Id-Version: korganizer\n"
 "Report-Msgid-Bugs-To: https://bugs.kde.org\n"
 "POT-Creation-Date: 2025-03-14 00:43+0000\n"
-"PO-Revision-Date: 2025-03-13 07:17+0100\n"
+"PO-Revision-Date: 2025-03-14 07:25+0100\n"
 "Last-Translator: Matjaž Jeran <matjaz.jeran@amis.net>\n"
 "Language-Team: Slovenian <lugos-slo@lugos.si>\n"
 "Language: sl\n"
@@ -988,20 +988,16 @@ msgid "Configure"
 msgstr "Nastavi"
 
 #: actionmanager.cpp:606
-#, fuzzy, kde-format
-#| msgctxt "@info:tooltip"
-#| msgid "Configure the current view"
+#, kde-format
 msgctxt "@info:status"
 msgid "Configure the multi-calendar view"
-msgstr "Nastavi trenutni prikaz"
+msgstr "Konfiguriraj pogled z več koledarji"
 
 #: actionmanager.cpp:607
-#, fuzzy, kde-format
-#| msgctxt "@info:tooltip"
-#| msgid "Configure the current view"
+#, kde-format
 msgctxt "@info:tooltip"
 msgid "Configure the multi-calendar view"
-msgstr "Nastavi trenutni prikaz"
+msgstr "Konfiguriraj pogled z več koledarji"
 
 #: actionmanager.cpp:609
 #, kde-format
@@ -1011,6 +1007,9 @@ msgid ""
 "view. Currently only the multi-calendar view is supported. See the Multiple "
 "Calendars options in the Views->Agenda Views settings."
 msgstr ""
+"V pogledu z več koledarji zažene pogovorno okno, ki omogoča konfiguracijo "
+"pogleda. Trenutno je podprt samo pogled z več koledarji. Oglejte si možnosti "
+"Več koledarjev v nastavitvah Pogledi->Pogledi dnevnega reda."
 
 #: actionmanager.cpp:616 actionmanager.cpp:1303 actionmanager.cpp:1344
 #, kde-format

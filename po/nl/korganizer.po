@@ -19,9 +19,9 @@ msgstr ""
 "Project-Id-Version: korganizer\n"
 "Report-Msgid-Bugs-To: https://bugs.kde.org\n"
 "POT-Creation-Date: 2025-03-14 00:43+0000\n"
-"PO-Revision-Date: 2025-03-13 12:11+0100\n"
+"PO-Revision-Date: 2025-03-14 12:07+0100\n"
 "Last-Translator: Freek de Kruijf <freekdekruijf@kde.nl>\n"
-"Language-Team: Dutch <kde-i18n-nl@kde.org>\n"
+"Language-Team: \n"
 "Language: nl\n"
 "MIME-Version: 1.0\n"
 "Content-Type: text/plain; charset=UTF-8\n"
@@ -991,20 +991,16 @@ msgid "Configure"
 msgstr "Configureren"
 
 #: actionmanager.cpp:606
-#, fuzzy, kde-format
-#| msgctxt "@info:tooltip"
-#| msgid "Configure the current view"
+#, kde-format
 msgctxt "@info:status"
 msgid "Configure the multi-calendar view"
-msgstr "De huidige weergave instellen"
+msgstr "De weergave van multi-agenda configureren"
 
 #: actionmanager.cpp:607
-#, fuzzy, kde-format
-#| msgctxt "@info:tooltip"
-#| msgid "Configure the current view"
+#, kde-format
 msgctxt "@info:tooltip"
 msgid "Configure the multi-calendar view"
-msgstr "De huidige weergave instellen"
+msgstr "De weergave van multi-agenda configureren"
 
 #: actionmanager.cpp:609
 #, kde-format
@@ -1014,6 +1010,10 @@ msgid ""
 "view. Currently only the multi-calendar view is supported. See the Multiple "
 "Calendars options in the Views->Agenda Views settings."
 msgstr ""
+"In de weergave van multi-agenda, start een dialoog die configureren van de "
+"weergave biedt. Op dit moment wordt alleen de weergave van multi-agenda "
+"ondersteund. Zie de opties van Meerdere agenda's in de instellingen van "
+"Weergaven->Agendaweergaven."
 
 #: actionmanager.cpp:616 actionmanager.cpp:1303 actionmanager.cpp:1344
 #, kde-format
