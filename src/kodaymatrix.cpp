@@ -815,7 +815,7 @@ void KODayMatrix::paintEvent(QPaintEvent *)
             p.setPen(actcol);
         }
         // reset bold font to plain font
-        if (mEvents.contains(mDays[i]) > 0) {
+        if (mEvents.contains(mDays[i])) {
             QFont myFont = font();
             myFont.setBold(false);
             p.setFont(myFont);
