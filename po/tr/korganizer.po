@@ -21,7 +21,7 @@ msgstr ""
 "Project-Id-Version: kdepim-kde4\n"
 "Report-Msgid-Bugs-To: https://bugs.kde.org\n"
 "POT-Creation-Date: 2025-03-13 02:34+0000\n"
-"PO-Revision-Date: 2025-03-13 13:43+0300\n"
+"PO-Revision-Date: 2025-03-14 20:28+0300\n"
 "Last-Translator: Emir SARI <emir_sari@icloud.com>\n"
 "Language-Team: Turkish <kde-l10n-tr@kde.org>\n"
 "Language: tr\n"
@@ -1952,7 +1952,7 @@ msgstr "&Eylemler"
 #: data/korganizer_part.rc:93 data/korganizerui.rc:81
 #, kde-format
 msgid "S&chedule"
-msgstr "&Zamanla"
+msgstr "&Program"
 
 #. i18n: ectx: Menu (settings)
 #: data/korganizer_part.rc:105 data/korganizerui.rc:93
@@ -1989,7 +1989,7 @@ msgstr "Görünümler"
 #: data/korganizer_part.rc:154 data/korganizerui.rc:139
 #, kde-format
 msgid "Schedule"
-msgstr "Plan"
+msgstr "Program"
 
 #. i18n: ectx: ToolBar (filter_toolbar)
 #: data/korganizer_part.rc:160 data/korganizerui.rc:146
@@ -3708,7 +3708,7 @@ msgstr "Yeni Etkinlikler, Yapılacaklar ve Günce Girdileri"
 #: settings/korganizer.kcfg:25
 #, kde-format
 msgid "Be added to the default calendar"
-msgstr "öntanımlı takvime eklensin"
+msgstr "Öntanımlı takvime ekle"
 
 #. i18n: ectx: whatsthis, entry (Destination), group (Save Settings)
 #: settings/korganizer.kcfg:26
@@ -3724,7 +3724,7 @@ msgstr ""
 #: settings/korganizer.kcfg:29
 #, kde-format
 msgid "Be asked which calendar to use"
-msgstr "hangi takvimin kullanılacağını sorsun"
+msgstr "Hangi takvimin kullanılacağını sor"
 
 #. i18n: ectx: whatsthis, entry (Destination), group (Save Settings)
 #: settings/korganizer.kcfg:30
@@ -5058,7 +5058,7 @@ msgid ""
 "and manages the access to it from other users."
 msgstr ""
 "Uygun/Meşgul bilgisini kendiliğinden yüklemek için bu kutuyu işaretleyin.\n"
-"Bu seçeneği atlamak ve K Organizatör’ün Plan menüsünü kullanarak Uygun/"
+"Bu seçeneği atlamak ve K Organizatör’ün Program menüsünü kullanarak Uygun/"
 "Meşgul bilgisini yüklemek veya postalamak olanaklıdır.\n"
 "Not: K Organizatör, KDE Kolab istemcisi olarak çalışıyorsa buna gerek "
 "yoktur; çünkü Kolab2 sunucusu Uygun/Meşgul bilginizin yayımlanması ve başka "
@@ -5142,7 +5142,7 @@ msgstr ""
 #: ui/kogroupwareprefspage.ui:416 ui/kogroupwareprefspage.ui:489
 #, kde-format
 msgid "Enter your groupware server login password here."
-msgstr "Grup çalışması sunucusu oturum açma parolanızı buraya girin."
+msgstr "Grup yazılımı sunucusu oturum açma parolanızı buraya girin."
 
 #. i18n: ectx: property (text), widget (QLabel, textLabel2)
 #: ui/kogroupwareprefspage.ui:246
