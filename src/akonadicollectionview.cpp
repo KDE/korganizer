@@ -40,7 +40,6 @@
 #include <Akonadi/EntityTreeView>
 #include <Akonadi/StandardCalendarActionManager>
 #include <PimCommonAkonadi/MailUtil>
-#include <PimCommonAkonadi/ManageServerSideSubscriptionJob>
 
 #include <KActionCollection>
 #include <KCheckableProxyModel>
