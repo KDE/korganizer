@@ -7,7 +7,7 @@ msgid ""
 msgstr ""
 "Project-Id-Version: \n"
 "Report-Msgid-Bugs-To: https://bugs.kde.org\n"
-"POT-Creation-Date: 2025-03-14 00:43+0000\n"
+"POT-Creation-Date: 2025-03-16 00:42+0000\n"
 "PO-Revision-Date: 2025-03-12 09:18+0100\n"
 "Last-Translator: giovanni <g.sora@tiscali.it>\n"
 "Language-Team: Interlingua <kde-i18n-doc@kde.org>\n"
@@ -1300,74 +1300,74 @@ msgctxt "@action:button"
 msgid "Add as new calendar"
 msgstr "Adde como nove calendario"
 
-#: akonadicollectionview.cpp:290
+#: akonadicollectionview.cpp:289
 #, kde-format
 msgctxt "@item this is the default calendar"
 msgid "%1 (Offline)"
 msgstr "%1 (foras de linea)"
 
-#: akonadicollectionview.cpp:293
+#: akonadicollectionview.cpp:292
 #, kde-format
 msgctxt "@item this is the default calendar"
 msgid "%1 (Default)"
 msgstr "%1 (Predefinite)"
 
-#: akonadicollectionview.cpp:409
+#: akonadicollectionview.cpp:408
 #, kde-format
 msgctxt "@info:tooltip"
 msgid "Set search keyword"
 msgstr "Fixa prola clave de cerca"
 
-#: akonadicollectionview.cpp:410
+#: akonadicollectionview.cpp:409
 #, kde-format
 msgctxt "@info:whatsthis"
 msgid "Lets you search for a keyword in your calendars"
 msgstr "Te permitte cercar un nparola clave in tu calendarios"
 
-#: akonadicollectionview.cpp:415
+#: akonadicollectionview.cpp:414
 #, kde-format
 msgctxt "@info/plain Displayed grayed-out inside the textbox, verb to search"
 msgid "Search…"
 msgstr "Cerca..."
 
-#: akonadicollectionview.cpp:501 manageshowcollectionproperties.cpp:76
+#: akonadicollectionview.cpp:500 manageshowcollectionproperties.cpp:76
 #, kde-format
 msgctxt "@title:window"
 msgid "Properties of Calendar Folder %1"
 msgstr "Proprietates de dossier de Calendario %1"
 
-#: akonadicollectionview.cpp:513
+#: akonadicollectionview.cpp:512
 #, kde-format
 msgctxt "@action:inmenu"
 msgid "&Set Folder Color…"
 msgstr "&Fixa le color de dossier..."
 
-#: akonadicollectionview.cpp:519
+#: akonadicollectionview.cpp:518
 #, kde-format
 msgctxt "@action:inmenu"
 msgid "Set as &Default Folder"
 msgstr "Fixa como &Dossier predefinite"
 
-#: akonadicollectionview.cpp:551
+#: akonadicollectionview.cpp:550
 #, kde-format
 msgctxt "@info"
 msgid "Do you really want replace your current default calendar with \"%1\"?"
 msgstr ""
 "Tu vermente vole reimplacer tu currente calendario predefinite con \"%1\"?"
 
-#: akonadicollectionview.cpp:552
+#: akonadicollectionview.cpp:551
 #, kde-format
 msgctxt "@title:window"
 msgid "Replace Default Calendar?"
 msgstr "Reimplacia calendario predefinite?"
 
-#: akonadicollectionview.cpp:685
+#: akonadicollectionview.cpp:684
 #, kde-format
 msgctxt "@title:window"
 msgid "Add Calendar"
 msgstr "Adde calendario"
 
-#: akonadicollectionview.cpp:738
+#: akonadicollectionview.cpp:737
 #, kde-kuit-format
 msgctxt "@info"
 msgid ""
@@ -1381,7 +1381,7 @@ msgstr ""
 "su ressource remote.</note></para>Le calendario <filename>%1</filename> pote "
 "esser addite novemente in ulle tempore."
 
-#: akonadicollectionview.cpp:745
+#: akonadicollectionview.cpp:744
 #, fuzzy, kde-kuit-format
 #| msgctxt "@info"
 #| msgid ""
@@ -1398,7 +1398,7 @@ msgstr ""
 "<para><warning>Isto non pote esser annullate. Pro favor considera "
 "attentemente  ante pressare le button %2.</warning></para>"
 
-#: akonadicollectionview.cpp:753
+#: akonadicollectionview.cpp:752
 #, kde-format
 msgctxt "@title:window"
 msgid "Delete Calendar"

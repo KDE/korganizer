@@ -18,7 +18,7 @@ msgid ""
 msgstr ""
 "Project-Id-Version: korganizer\n"
 "Report-Msgid-Bugs-To: https://bugs.kde.org\n"
-"POT-Creation-Date: 2025-03-14 00:43+0000\n"
+"POT-Creation-Date: 2025-03-16 00:42+0000\n"
 "PO-Revision-Date: 2025-03-14 12:07+0100\n"
 "Last-Translator: Freek de Kruijf <freekdekruijf@kde.nl>\n"
 "Language-Team: \n"
@@ -1318,73 +1318,73 @@ msgctxt "@action:button"
 msgid "Add as new calendar"
 msgstr "Toevoegen als nieuwe agenda"
 
-#: akonadicollectionview.cpp:290
+#: akonadicollectionview.cpp:289
 #, kde-format
 msgctxt "@item this is the default calendar"
 msgid "%1 (Offline)"
 msgstr "%1 (Offline)"
 
-#: akonadicollectionview.cpp:293
+#: akonadicollectionview.cpp:292
 #, kde-format
 msgctxt "@item this is the default calendar"
 msgid "%1 (Default)"
 msgstr "%1 (Standaard)"
 
-#: akonadicollectionview.cpp:409
+#: akonadicollectionview.cpp:408
 #, kde-format
 msgctxt "@info:tooltip"
 msgid "Set search keyword"
 msgstr "Zoeksleutel instellen"
 
-#: akonadicollectionview.cpp:410
+#: akonadicollectionview.cpp:409
 #, kde-format
 msgctxt "@info:whatsthis"
 msgid "Lets you search for a keyword in your calendars"
 msgstr "Hiermee kunt u met dit sleutelwoord uw agenda's doorzoeken"
 
-#: akonadicollectionview.cpp:415
+#: akonadicollectionview.cpp:414
 #, kde-format
 msgctxt "@info/plain Displayed grayed-out inside the textbox, verb to search"
 msgid "Search…"
 msgstr "Zoeken…"
 
-#: akonadicollectionview.cpp:501 manageshowcollectionproperties.cpp:76
+#: akonadicollectionview.cpp:500 manageshowcollectionproperties.cpp:76
 #, kde-format
 msgctxt "@title:window"
 msgid "Properties of Calendar Folder %1"
 msgstr "Eigenschappen van agendamap %1"
 
-#: akonadicollectionview.cpp:513
+#: akonadicollectionview.cpp:512
 #, kde-format
 msgctxt "@action:inmenu"
 msgid "&Set Folder Color…"
 msgstr "&Stel kleur in voor map…"
 
-#: akonadicollectionview.cpp:519
+#: akonadicollectionview.cpp:518
 #, kde-format
 msgctxt "@action:inmenu"
 msgid "Set as &Default Folder"
 msgstr "Als stan&daard map gebruiken"
 
-#: akonadicollectionview.cpp:551
+#: akonadicollectionview.cpp:550
 #, kde-format
 msgctxt "@info"
 msgid "Do you really want replace your current default calendar with \"%1\"?"
 msgstr "Wilt u werkelijk de huidige standaard agenda vervangen door \"%1\"?"
 
-#: akonadicollectionview.cpp:552
+#: akonadicollectionview.cpp:551
 #, kde-format
 msgctxt "@title:window"
 msgid "Replace Default Calendar?"
 msgstr "Huidige agenda vervangen?"
 
-#: akonadicollectionview.cpp:685
+#: akonadicollectionview.cpp:684
 #, kde-format
 msgctxt "@title:window"
 msgid "Add Calendar"
 msgstr "Agenda toevoegen"
 
-#: akonadicollectionview.cpp:738
+#: akonadicollectionview.cpp:737
 #, kde-kuit-format
 msgctxt "@info"
 msgid ""
@@ -1398,7 +1398,7 @@ msgstr ""
 "worden uit zijn hulpbron op afstand.</note></para>De agenda <filename>%1</"
 "filename> kan op elk moment weer worden toegevoegd."
 
-#: akonadicollectionview.cpp:745
+#: akonadicollectionview.cpp:744
 #, kde-kuit-format
 msgctxt "@info"
 msgid ""
@@ -1410,7 +1410,7 @@ msgstr ""
 "niet ongedaan worden.  Bedenk u nog eens alvorens op de knop %2 te drukken.</"
 "warning></para>"
 
-#: akonadicollectionview.cpp:753
+#: akonadicollectionview.cpp:752
 #, kde-format
 msgctxt "@title:window"
 msgid "Delete Calendar"

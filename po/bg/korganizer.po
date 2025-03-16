@@ -3,7 +3,7 @@ msgid ""
 msgstr ""
 "Project-Id-Version: korganizer\n"
 "Report-Msgid-Bugs-To: https://bugs.kde.org\n"
-"POT-Creation-Date: 2025-03-14 00:43+0000\n"
+"POT-Creation-Date: 2025-03-16 00:42+0000\n"
 "PO-Revision-Date: 2025-02-16 20:04+0100\n"
 "Last-Translator: Mincho Kondarev <mkondarev@yahoo.de>\n"
 "Language-Team: Bulgarian <kde-i18n-doc@kde.org>\n"
@@ -1299,55 +1299,55 @@ msgctxt "@action:button"
 msgid "Add as new calendar"
 msgstr "Добавяне като нов календар"
 
-#: akonadicollectionview.cpp:290
+#: akonadicollectionview.cpp:289
 #, kde-format
 msgctxt "@item this is the default calendar"
 msgid "%1 (Offline)"
 msgstr "%1 (офлайн)"
 
-#: akonadicollectionview.cpp:293
+#: akonadicollectionview.cpp:292
 #, kde-format
 msgctxt "@item this is the default calendar"
 msgid "%1 (Default)"
 msgstr "%1 (по подразбиране)"
 
-#: akonadicollectionview.cpp:409
+#: akonadicollectionview.cpp:408
 #, kde-format
 msgctxt "@info:tooltip"
 msgid "Set search keyword"
 msgstr "Задаване на ключова дума за търсене"
 
-#: akonadicollectionview.cpp:410
+#: akonadicollectionview.cpp:409
 #, kde-format
 msgctxt "@info:whatsthis"
 msgid "Lets you search for a keyword in your calendars"
 msgstr "Позволява ви да търсите ключова дума във вашите календари"
 
-#: akonadicollectionview.cpp:415
+#: akonadicollectionview.cpp:414
 #, kde-format
 msgctxt "@info/plain Displayed grayed-out inside the textbox, verb to search"
 msgid "Search…"
 msgstr "Търсене…"
 
-#: akonadicollectionview.cpp:501 manageshowcollectionproperties.cpp:76
+#: akonadicollectionview.cpp:500 manageshowcollectionproperties.cpp:76
 #, kde-format
 msgctxt "@title:window"
 msgid "Properties of Calendar Folder %1"
 msgstr "Свойства на папка на календара %1"
 
-#: akonadicollectionview.cpp:513
+#: akonadicollectionview.cpp:512
 #, kde-format
 msgctxt "@action:inmenu"
 msgid "&Set Folder Color…"
 msgstr "&Задаване на цвят на папката…"
 
-#: akonadicollectionview.cpp:519
+#: akonadicollectionview.cpp:518
 #, kde-format
 msgctxt "@action:inmenu"
 msgid "Set as &Default Folder"
 msgstr "Задаване като &папка по подразбиране"
 
-#: akonadicollectionview.cpp:551
+#: akonadicollectionview.cpp:550
 #, kde-format
 msgctxt "@info"
 msgid "Do you really want replace your current default calendar with \"%1\"?"
@@ -1355,19 +1355,19 @@ msgstr ""
 "Наистина ли искате да замените текущия си календар по подразбиране с \" %1 "
 "\"?"
 
-#: akonadicollectionview.cpp:552
+#: akonadicollectionview.cpp:551
 #, kde-format
 msgctxt "@title:window"
 msgid "Replace Default Calendar?"
 msgstr "Да се ​​замени ли календара по подразбиране?"
 
-#: akonadicollectionview.cpp:685
+#: akonadicollectionview.cpp:684
 #, kde-format
 msgctxt "@title:window"
 msgid "Add Calendar"
 msgstr "Добавяне на календар"
 
-#: akonadicollectionview.cpp:738
+#: akonadicollectionview.cpp:737
 #, kde-kuit-format
 msgctxt "@info"
 msgid ""
@@ -1377,7 +1377,7 @@ msgid ""
 "calendar can be added again at any time."
 msgstr ""
 
-#: akonadicollectionview.cpp:745
+#: akonadicollectionview.cpp:744
 #, kde-kuit-format
 msgctxt "@info"
 msgid ""
@@ -1386,7 +1386,7 @@ msgid ""
 "pressing the %2 button.</warning></para>"
 msgstr ""
 
-#: akonadicollectionview.cpp:753
+#: akonadicollectionview.cpp:752
 #, kde-format
 msgctxt "@title:window"
 msgid "Delete Calendar"

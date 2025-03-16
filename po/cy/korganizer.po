@@ -11,7 +11,7 @@ msgid ""
 msgstr ""
 "Project-Id-Version: korganizer\n"
 "Report-Msgid-Bugs-To: https://bugs.kde.org\n"
-"POT-Creation-Date: 2025-03-14 00:43+0000\n"
+"POT-Creation-Date: 2025-03-16 00:42+0000\n"
 "PO-Revision-Date: 2004-02-25 13:53+0000\n"
 "Last-Translator: KD at KGyfieithu <kyfieithu@dotmon.com>\n"
 "Language-Team: Cymraeg <cy@li.org>\n"
@@ -1307,75 +1307,75 @@ msgctxt "@action:button"
 msgid "Add as new calendar"
 msgstr "Calendr Newydd"
 
-#: akonadicollectionview.cpp:290
+#: akonadicollectionview.cpp:289
 #, fuzzy, kde-format
 msgctxt "@item this is the default calendar"
 msgid "%1 (Offline)"
 msgstr "5 (Isaf)"
 
-#: akonadicollectionview.cpp:293
+#: akonadicollectionview.cpp:292
 #, fuzzy, kde-format
 msgctxt "@item this is the default calendar"
 msgid "%1 (Default)"
 msgstr "Fformat Calendr Rhagosodedig"
 
-#: akonadicollectionview.cpp:409
+#: akonadicollectionview.cpp:408
 #, fuzzy, kde-format
 #| msgid "Search For"
 msgctxt "@info:tooltip"
 msgid "Set search keyword"
 msgstr "Chwilio am:"
 
-#: akonadicollectionview.cpp:410
+#: akonadicollectionview.cpp:409
 #, kde-format
 msgctxt "@info:whatsthis"
 msgid "Lets you search for a keyword in your calendars"
 msgstr ""
 
-#: akonadicollectionview.cpp:415
+#: akonadicollectionview.cpp:414
 #, fuzzy, kde-format
 msgctxt "@info/plain Displayed grayed-out inside the textbox, verb to search"
 msgid "Search…"
 msgstr "Chwilio Mewn"
 
-#: akonadicollectionview.cpp:501 manageshowcollectionproperties.cpp:76
+#: akonadicollectionview.cpp:500 manageshowcollectionproperties.cpp:76
 #, fuzzy, kde-format
 #| msgid "Edit Calendar Filters"
 msgctxt "@title:window"
 msgid "Properties of Calendar Folder %1"
 msgstr "Golygu Hidlennau Calendr"
 
-#: akonadicollectionview.cpp:513
+#: akonadicollectionview.cpp:512
 #, kde-format
 msgctxt "@action:inmenu"
 msgid "&Set Folder Color…"
 msgstr ""
 
-#: akonadicollectionview.cpp:519
+#: akonadicollectionview.cpp:518
 #, fuzzy, kde-format
 msgctxt "@action:inmenu"
 msgid "Set as &Default Folder"
 msgstr "Fformat Calendr Rhagosodedig"
 
-#: akonadicollectionview.cpp:551
+#: akonadicollectionview.cpp:550
 #, fuzzy, kde-format
 msgctxt "@info"
 msgid "Do you really want replace your current default calendar with \"%1\"?"
 msgstr "<qt>A ydych yn wir eisiau dileu'r adnodd? <b>%1</b>?</qt>"
 
-#: akonadicollectionview.cpp:552
+#: akonadicollectionview.cpp:551
 #, fuzzy, kde-format
 msgctxt "@title:window"
 msgid "Replace Default Calendar?"
 msgstr "Fformat Calendr Rhagosodedig"
 
-#: akonadicollectionview.cpp:685
+#: akonadicollectionview.cpp:684
 #, fuzzy, kde-format
 msgctxt "@title:window"
 msgid "Add Calendar"
 msgstr "Calendr Newydd"
 
-#: akonadicollectionview.cpp:738
+#: akonadicollectionview.cpp:737
 #, kde-kuit-format
 msgctxt "@info"
 msgid ""
@@ -1385,7 +1385,7 @@ msgid ""
 "calendar can be added again at any time."
 msgstr ""
 
-#: akonadicollectionview.cpp:745
+#: akonadicollectionview.cpp:744
 #, kde-kuit-format
 msgctxt "@info"
 msgid ""
@@ -1394,7 +1394,7 @@ msgid ""
 "pressing the %2 button.</warning></para>"
 msgstr ""
 
-#: akonadicollectionview.cpp:753
+#: akonadicollectionview.cpp:752
 #, fuzzy, kde-format
 msgctxt "@title:window"
 msgid "Delete Calendar"

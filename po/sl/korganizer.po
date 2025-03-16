@@ -1,7 +1,7 @@
 # translation of korganizer.po to Slovenian
 # Translation of korganizer.po to Slovenian
 # Copyright (C) 2001,2002, 2003, 2004, 2005, 2006 Free Software Foundation, Inc.
-# $Id: korganizer.po 1705165 2025-03-15 01:21:50Z scripty $
+# $Id: korganizer.po 1705225 2025-03-16 01:20:59Z scripty $
 # $Source$
 #
 # Roman Maurer <roman.maurer@hermes.si>, 2001.
@@ -14,7 +14,7 @@ msgid ""
 msgstr ""
 "Project-Id-Version: korganizer\n"
 "Report-Msgid-Bugs-To: https://bugs.kde.org\n"
-"POT-Creation-Date: 2025-03-14 00:43+0000\n"
+"POT-Creation-Date: 2025-03-16 00:42+0000\n"
 "PO-Revision-Date: 2025-03-14 07:25+0100\n"
 "Last-Translator: Matjaž Jeran <matjaz.jeran@amis.net>\n"
 "Language-Team: Slovenian <lugos-slo@lugos.si>\n"
@@ -1314,73 +1314,73 @@ msgctxt "@action:button"
 msgid "Add as new calendar"
 msgstr "Dodaj kot nov koledar"
 
-#: akonadicollectionview.cpp:290
+#: akonadicollectionview.cpp:289
 #, kde-format
 msgctxt "@item this is the default calendar"
 msgid "%1 (Offline)"
 msgstr "%1 (Nepovezan)"
 
-#: akonadicollectionview.cpp:293
+#: akonadicollectionview.cpp:292
 #, kde-format
 msgctxt "@item this is the default calendar"
 msgid "%1 (Default)"
 msgstr "%1 (privzeto)"
 
-#: akonadicollectionview.cpp:409
+#: akonadicollectionview.cpp:408
 #, kde-format
 msgctxt "@info:tooltip"
 msgid "Set search keyword"
 msgstr "Nastavi ključno besedo iskanja"
 
-#: akonadicollectionview.cpp:410
+#: akonadicollectionview.cpp:409
 #, kde-format
 msgctxt "@info:whatsthis"
 msgid "Lets you search for a keyword in your calendars"
 msgstr "Omogoča iskanje ključne besede v koledarjih"
 
-#: akonadicollectionview.cpp:415
+#: akonadicollectionview.cpp:414
 #, kde-format
 msgctxt "@info/plain Displayed grayed-out inside the textbox, verb to search"
 msgid "Search…"
 msgstr "Poišči…"
 
-#: akonadicollectionview.cpp:501 manageshowcollectionproperties.cpp:76
+#: akonadicollectionview.cpp:500 manageshowcollectionproperties.cpp:76
 #, kde-format
 msgctxt "@title:window"
 msgid "Properties of Calendar Folder %1"
 msgstr "Lastnosti koledarske mape %1"
 
-#: akonadicollectionview.cpp:513
+#: akonadicollectionview.cpp:512
 #, kde-format
 msgctxt "@action:inmenu"
 msgid "&Set Folder Color…"
 msgstr "Nastavi barvo mape…"
 
-#: akonadicollectionview.cpp:519
+#: akonadicollectionview.cpp:518
 #, kde-format
 msgctxt "@action:inmenu"
 msgid "Set as &Default Folder"
 msgstr "Nastavi kot privzeto mapo"
 
-#: akonadicollectionview.cpp:551
+#: akonadicollectionview.cpp:550
 #, kde-format
 msgctxt "@info"
 msgid "Do you really want replace your current default calendar with \"%1\"?"
 msgstr "Ali resnično želite zamenjati vaš trenutni privzeti koledar z »%1«?"
 
-#: akonadicollectionview.cpp:552
+#: akonadicollectionview.cpp:551
 #, kde-format
 msgctxt "@title:window"
 msgid "Replace Default Calendar?"
 msgstr "Zamenjaj privzeti koledar?"
 
-#: akonadicollectionview.cpp:685
+#: akonadicollectionview.cpp:684
 #, kde-format
 msgctxt "@title:window"
 msgid "Add Calendar"
 msgstr "Dodaj koledar"
 
-#: akonadicollectionview.cpp:738
+#: akonadicollectionview.cpp:737
 #, kde-kuit-format
 msgctxt "@info"
 msgid ""
@@ -1394,7 +1394,7 @@ msgstr ""
 "oddaljenega vira.</note></para>Koledar <filename>%1</filename> lahko "
 "kadarkoli znova dodate."
 
-#: akonadicollectionview.cpp:745
+#: akonadicollectionview.cpp:744
 #, kde-kuit-format
 msgctxt "@info"
 msgid ""
@@ -1406,7 +1406,7 @@ msgstr ""
 "ni mogoče razveljaviti. Pazljivo premislite, preden pritisnete gumb %2.</"
 "warning></para>"
 
-#: akonadicollectionview.cpp:753
+#: akonadicollectionview.cpp:752
 #, kde-format
 msgctxt "@title:window"
 msgid "Delete Calendar"

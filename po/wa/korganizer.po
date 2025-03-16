@@ -6,7 +6,7 @@ msgid ""
 msgstr ""
 "Project-Id-Version: korganizer\n"
 "Report-Msgid-Bugs-To: https://bugs.kde.org\n"
-"POT-Creation-Date: 2025-03-14 00:43+0000\n"
+"POT-Creation-Date: 2025-03-16 00:42+0000\n"
 "PO-Revision-Date: 2013-03-24 10:49+0100\n"
 "Last-Translator: Jean Cayron <jean.cayron@base.be>\n"
 "Language-Team: Walloon <linux-wa@walon.org>\n"
@@ -1384,7 +1384,7 @@ msgctxt "@action:button"
 msgid "Add as new calendar"
 msgstr "Radjouter come novea calindrî"
 
-#: akonadicollectionview.cpp:290
+#: akonadicollectionview.cpp:289
 #, fuzzy, kde-format
 #| msgctxt "@action:inmenu lowest priority"
 #| msgid "9 (lowest)"
@@ -1392,26 +1392,26 @@ msgctxt "@item this is the default calendar"
 msgid "%1 (Offline)"
 msgstr "9 (li pus basse)"
 
-#: akonadicollectionview.cpp:293
+#: akonadicollectionview.cpp:292
 #, fuzzy, kde-format
 #| msgid "Use as &Default Calendar"
 msgctxt "@item this is the default calendar"
 msgid "%1 (Default)"
 msgstr "Eployî come &prémetou calindrî"
 
-#: akonadicollectionview.cpp:409
+#: akonadicollectionview.cpp:408
 #, kde-format
 msgctxt "@info:tooltip"
 msgid "Set search keyword"
 msgstr ""
 
-#: akonadicollectionview.cpp:410
+#: akonadicollectionview.cpp:409
 #, kde-format
 msgctxt "@info:whatsthis"
 msgid "Lets you search for a keyword in your calendars"
 msgstr ""
 
-#: akonadicollectionview.cpp:415
+#: akonadicollectionview.cpp:414
 #, fuzzy, kde-format
 #| msgctxt "@label in QuickSearchLine"
 #| msgid "Search"
@@ -1419,47 +1419,47 @@ msgctxt "@info/plain Displayed grayed-out inside the textbox, verb to search"
 msgid "Search…"
 msgstr "Trover"
 
-#: akonadicollectionview.cpp:501 manageshowcollectionproperties.cpp:76
+#: akonadicollectionview.cpp:500 manageshowcollectionproperties.cpp:76
 #, kde-format
 msgctxt "@title:window"
 msgid "Properties of Calendar Folder %1"
 msgstr "Prôpietés do ridant di calindrî %1"
 
-#: akonadicollectionview.cpp:513
+#: akonadicollectionview.cpp:512
 #, kde-format
 msgctxt "@action:inmenu"
 msgid "&Set Folder Color…"
 msgstr ""
 
-#: akonadicollectionview.cpp:519
+#: akonadicollectionview.cpp:518
 #, fuzzy, kde-format
 #| msgid "Use as &Default Calendar"
 msgctxt "@action:inmenu"
 msgid "Set as &Default Folder"
 msgstr "Eployî come &prémetou calindrî"
 
-#: akonadicollectionview.cpp:551
+#: akonadicollectionview.cpp:550
 #, fuzzy, kde-format
 #| msgid "Do you really want to delete calendar %1?"
 msgctxt "@info"
 msgid "Do you really want replace your current default calendar with \"%1\"?"
 msgstr "Voloz vs disfacer calindrî %1 po do bon ?"
 
-#: akonadicollectionview.cpp:552
+#: akonadicollectionview.cpp:551
 #, fuzzy, kde-format
 #| msgid "Use as &Default Calendar"
 msgctxt "@title:window"
 msgid "Replace Default Calendar?"
 msgstr "Eployî come &prémetou calindrî"
 
-#: akonadicollectionview.cpp:685
+#: akonadicollectionview.cpp:684
 #, fuzzy, kde-format
 #| msgid "Add Calendar"
 msgctxt "@title:window"
 msgid "Add Calendar"
 msgstr "Radjouter calindrî"
 
-#: akonadicollectionview.cpp:738
+#: akonadicollectionview.cpp:737
 #, kde-kuit-format
 msgctxt "@info"
 msgid ""
@@ -1469,7 +1469,7 @@ msgid ""
 "calendar can be added again at any time."
 msgstr ""
 
-#: akonadicollectionview.cpp:745
+#: akonadicollectionview.cpp:744
 #, kde-kuit-format
 msgctxt "@info"
 msgid ""
@@ -1478,7 +1478,7 @@ msgid ""
 "pressing the %2 button.</warning></para>"
 msgstr ""
 
-#: akonadicollectionview.cpp:753
+#: akonadicollectionview.cpp:752
 #, fuzzy, kde-format
 #| msgid "Delete Calendar"
 msgctxt "@title:window"
