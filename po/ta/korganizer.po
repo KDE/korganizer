@@ -12,13 +12,13 @@
 #
 # Ambalam <tamilpc@ambalam.com>, 2004.
 # root <root@localhost.localdomain>, 2004.
-# SPDX-FileCopyrightText: 2021, 2022, 2023, 2024 Kishore G <kishore96@gmail.com>
+# SPDX-FileCopyrightText: 2021, 2022, 2023, 2024, 2025 Kishore G <kishore96@gmail.com>
 msgid ""
 msgstr ""
 "Project-Id-Version: korganizer\n"
 "Report-Msgid-Bugs-To: https://bugs.kde.org\n"
 "POT-Creation-Date: 2025-03-13 02:34+0000\n"
-"PO-Revision-Date: 2024-12-08 14:46+0530\n"
+"PO-Revision-Date: 2025-03-16 14:48+0530\n"
 "Last-Translator: Kishore G <kishore96@gmail.com>\n"
 "Language-Team: Tamil <kde-i18n-doc@kde.org>\n"
 "Language: ta\n"
@@ -26,7 +26,7 @@ msgstr ""
 "Content-Type: text/plain; charset=UTF-8\n"
 "Content-Transfer-Encoding: 8bit\n"
 "Plural-Forms: nplurals=2; plural=n != 1;\n"
-"X-Generator: Lokalize 24.08.3\n"
+"X-Generator: Lokalize 24.12.3\n"
 
 #, kde-format
 msgctxt "NAME OF TRANSLATORS"
@@ -327,13 +327,14 @@ msgid ""
 "<qt>This will hide the menu bar completely. You can show it again by typing "
 "%1.</qt>"
 msgstr ""
+"<qt>இது பட்டிப் பட்டையை முழுதாக மறைத்துவிடும். %1 என்பதை தட்டி நீங்கள் மறுபடியும் அதைக் "
+"காட்டலாம்.</qt>"
 
 #: actionmanager.cpp:133
-#, fuzzy, kde-format
-#| msgid "Hide menu bar"
+#, kde-format
 msgctxt "@title:window"
 msgid "Hide menu bar"
-msgstr "பட்டிப் பட்டையை மறை"
+msgstr "பட்டிப் பட்டையை மறைப்பது"
 
 #: actionmanager.cpp:244
 #, kde-format
@@ -497,7 +498,7 @@ msgstr "அடுத்து என்ன காட்சிமுறை"
 #, kde-format
 msgctxt "@info:tooltip"
 msgid "Switch to the What's Next View"
-msgstr ""
+msgstr "அடுத்து என்ன காட்சிமுறைக்கு மாறும்"
 
 #: actionmanager.cpp:389
 #, kde-format
@@ -597,10 +598,10 @@ msgid "To-do List View"
 msgstr "செயல் பட்டியல் காட்சிமுறை"
 
 #: actionmanager.cpp:430
-#, fuzzy, kde-format
+#, kde-format
 msgctxt "@info:tooltip"
 msgid "Switch to the To-do List View"
-msgstr "துவங்கியபிறகு"
+msgstr "செயல்பட்டியல் காட்சிமுறைக்கு மாறும்"
 
 #: actionmanager.cpp:432
 #, kde-format
@@ -781,11 +782,10 @@ msgid "Scroll Backward"
 msgstr ""
 
 #: actionmanager.cpp:526
-#, fuzzy, kde-format
-#| msgid "Go &Backward"
+#, kde-format
 msgctxt "@info:tooltip"
 msgid "Scroll the view backward"
-msgstr "பின்னால் போ"
+msgstr "காட்சிப்பகுதியில் தற்போதையதற்கு முந்தையதைக் காட்டும்"
 
 #: actionmanager.cpp:528
 #, kde-format
@@ -793,7 +793,7 @@ msgctxt "@info:whatsthis"
 msgid ""
 "Scrolls backward by a day, week, month or year, depending on the current "
 "calendar view."
-msgstr ""
+msgstr "தற்போதைய காட்சிமுறைக்கேற்ப, முந்தைய நாளையோ வாரத்தையோ மாதத்தையோ ஆண்டையோ காட்டும்."
 
 #: actionmanager.cpp:534
 #, kde-format
@@ -815,11 +815,10 @@ msgid "Scroll Forward"
 msgstr "முன்னால் போ"
 
 #: actionmanager.cpp:537
-#, fuzzy, kde-format
-#| msgid "Go &Forward"
+#, kde-format
 msgctxt "@info:tooltip"
 msgid "Scroll the view forward"
-msgstr "முன்னால் போ"
+msgstr "காட்சிப்பகுதியில் தற்போதையதற்கு பிந்தையதைக் காட்டும்"
 
 #: actionmanager.cpp:539
 #, kde-format
@@ -827,7 +826,7 @@ msgctxt "@info:whatsthis"
 msgid ""
 "Scrolls forward by a day, week, month or year, depending on the current "
 "calendar view."
-msgstr ""
+msgstr "தற்போதைய காட்சிமுறைக்கேற்ப, அடுத்த நாளையோ வாரத்தையோ மாதத்தையோ ஆண்டையோ காட்டும்."
 
 #: actionmanager.cpp:544
 #, kde-format
@@ -1087,8 +1086,8 @@ msgstr "கேயார்கனைசரை &அமை…"
 #, kde-format
 msgid "1 incidence was imported successfully."
 msgid_plural "%1 incidences were imported successfully."
-msgstr[0] ""
-msgstr[1] ""
+msgstr[0] "1 நிகழ்வு வெற்றிகரமாக இறக்குமதி செய்யப்பட்டது."
+msgstr[1] "%1 நிகழ்வு வெற்றிகரமாக இறக்குமதி செய்யப்பட்டன."
 
 #: actionmanager.cpp:848
 #, kde-format
@@ -1345,6 +1344,10 @@ msgid ""
 "removed from its remote resource.</note></para>The <filename>%1</filename> "
 "calendar can be added again at any time."
 msgstr ""
+"<filename>%1</filename> எனும் நாள்காட்டியை உறுதியாக நீக்க வேண்டுமா?"
+"<para><note>நாள்காட்டியின் தரவு அழிக்கப்படாது, மேலும் தொலை சேவையகத்திலிருந்தும் "
+"நீக்கப்படாது.</note></para>விரும்பினால் <filename>%1</filename> எனும் நாள்காட்டியை "
+"திரும்ப சேர்க்கலாம்."
 
 #: akonadicollectionview.cpp:759
 #, kde-kuit-format
@@ -1354,6 +1357,9 @@ msgid ""
 "<para><warning>This cannot be undone.  Please consider carefully before "
 "pressing the %2 button.</warning></para>"
 msgstr ""
+"<filename>%1</filename> எனும் நாள்காட்டியை உறுதியாக நீக்க வேண்டுமா?"
+"<para><warning>இச்செயலைத் திரும்பப்பெற முடியாது. %2 பட்டனை அழுத்துமுன் யோசிக்கவும்.</"
+"warning></para>"
 
 #: akonadicollectionview.cpp:767
 #, kde-format
@@ -1367,6 +1373,8 @@ msgid ""
 "<p><em>No Item Selected</em></p><p>Select an event, to-do or journal entry "
 "to view its details here.</p>"
 msgstr ""
+"<p><em>எதுவும் தேர்ந்தெடுக்கப்படவில்லை</em></p><p>நிகழ்வையோ பணியையோ நாளேடு பதிவையோ "
+"தேர்ந்தெடுத்தால் அதன் விவரங்கள் இங்கு காட்டப்படும்.</p>"
 
 #: calendarview.cpp:255
 #, kde-format
@@ -1436,7 +1444,7 @@ msgstr ""
 #, kde-format
 msgctxt "@title:window"
 msgid "Copying Succeeded"
-msgstr "நகலெடுத்தல் முடிந்தது"
+msgstr "நகலெடுப்பது முடிந்தது"
 
 #: calendarview.cpp:1495
 #, fuzzy, kde-format
@@ -1448,7 +1456,7 @@ msgstr "செய்யவேண்டிய உருப்படியை ச�
 #, kde-format
 msgctxt "@title:window"
 msgid "Copying Failed"
-msgstr "நகலெடுத்தல் தோல்வியடைந்தது"
+msgstr "நகலெடுப்பது தோல்வியடைந்தது"
 
 #: calendarview.cpp:1555
 #, kde-format
@@ -1462,7 +1470,7 @@ msgstr ""
 #, kde-format
 msgctxt "@title:window"
 msgid "Moving Failed"
-msgstr "நகர்த்தல் தோல்வியடைந்தது"
+msgstr "நகர்த்துவது தோல்வியடைந்தது"
 
 #: calendarview.cpp:1564
 #, kde-format
@@ -1474,7 +1482,7 @@ msgstr ""
 #, kde-format
 msgctxt "@title:window"
 msgid "Moving Succeeded"
-msgstr "நகர்த்தல் முடிந்தது"
+msgstr "நகர்த்துவது முடிந்தது"
 
 #: calendarview.cpp:1571
 #, kde-format
@@ -1485,7 +1493,7 @@ msgstr ""
 #: calendarview.cpp:1609
 #, kde-format
 msgid "Do you want to dissociate the occurrence on %1 from the recurrence?"
-msgstr ""
+msgstr "%1 அன்று உள்ள நிகழ்வை மற்ற மறுநிகழ்வுகளிலிருந்து பிரித்தெடுக்க வேண்டுமா?"
 
 #: calendarview.cpp:1613 calendarview.cpp:1625 calendarview.cpp:2298
 #, kde-format
@@ -1494,11 +1502,10 @@ msgid "KOrganizer Confirmation"
 msgstr "கேயார்கனைசர் உறுதிப்பாடு"
 
 #: calendarview.cpp:1614
-#, fuzzy, kde-format
-#| msgid "T&ime associated"
+#, kde-format
 msgctxt "@action:button"
 msgid "&Dissociate"
-msgstr "நேரம் ஒருங்கிணைப்பட்டது"
+msgstr "பிரித்தெடு"
 
 #: calendarview.cpp:1620
 #, kde-format
@@ -1506,20 +1513,20 @@ msgid ""
 "Do you want to dissociate the occurrence on %1 from the recurrence or also "
 "dissociate future ones?"
 msgstr ""
+"%1 அன்றுள்ள நிகழ்வை மட்டும் பிரித்தெடுக்க வேண்டுமா, அல்லது அதன் பின்னுள்ள எல்லா "
+"மறுநிகழ்வுகளையுமா?"
 
 #: calendarview.cpp:1626
-#, fuzzy, kde-format
-#| msgid "&Dissociate This Occurrence"
+#, kde-format
 msgctxt "@action:button"
 msgid "&Only Dissociate This One"
-msgstr "பின் மறுநிகழ்வை பிரி"
+msgstr "இதை மட்டும் பிரித்தெடு"
 
 #: calendarview.cpp:1627
-#, fuzzy, kde-format
-#| msgid "&Dissociate Future Occurrences"
+#, kde-format
 msgctxt "@action:button"
 msgid "&Also Dissociate Future Ones"
-msgstr "பின் மறுநிகழ்வை பிரி"
+msgstr "பிந்தையவற்றையும் பிரித்தெடு"
 
 #: calendarview.cpp:1645
 #, kde-format
@@ -1537,11 +1544,10 @@ msgid "Dissociating the future occurrences failed."
 msgstr "பின் மறுநிகழ்வை பிரி"
 
 #: calendarview.cpp:1654 calendarview.cpp:1656
-#, fuzzy, kde-format
-#| msgid "Dissociating Failed"
+#, kde-format
 msgctxt "@title:window"
 msgid "Dissociating Failed"
-msgstr "நிறுவுதல் இயலவில்லை"
+msgstr "பிரித்தெடுப்பது தோல்வியடைந்தது"
 
 #: calendarview.cpp:1656
 #, kde-format
@@ -1557,20 +1563,19 @@ msgstr "நாள்காட்டி"
 #: calendarview.cpp:1827
 #, kde-format
 msgid "Do you want to overwrite %1?"
-msgstr ""
+msgstr "%1 தனை மேலெழுத வேண்டுமா?"
 
 #: calendarview.cpp:1828
-#, fuzzy, kde-format
-#| msgid "Import Calendar"
+#, kde-format
 msgctxt "@title:window"
 msgid "Export Calendar"
-msgstr "நாள்காட்டியை இறக்குமதி செய்"
+msgstr "நாள்காட்டியை ஏற்றுமதி செய்வது"
 
 #: calendarview.cpp:1842
 #, kde-format
 msgctxt "save failure cause unknown"
 msgid "Reason unknown"
-msgstr ""
+msgstr "தெரியாத காரணம்"
 
 #: calendarview.cpp:1844
 #, fuzzy, kde-format
