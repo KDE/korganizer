@@ -2088,17 +2088,18 @@ its important dates and holidays in the calendar view.</para></listitem>
 </varlistentry>
 
 <varlistentry>
-<term><guilabel>Working Period</guilabel></term>
+<term><guilabel>Weekly Schedule</guilabel></term>
 <listitem><para>The options <guilabel>Daily starting hour</guilabel> and
-<guilabel>Daily ending hour</guilabel> let you specify when your working day starts
-and when it ends. &korganizer; sets the working hours apart by marking them
-with a different color from the non working hours, holidays and non working
-days.</para>
+<guilabel>Daily ending hour</guilabel> let you specify when your typical
+day starts and when it ends. &korganizer; sets the hours apart by marking them
+with a different color from the hours outside of your regular routine and from holidays.</para>
 <para>Additionally, you have check boxes beside each day of the week.
-Check the week days that are working days for you, in order to mark the working
-hours in these days. Checking <guilabel>Exclude holidays</guilabel>
-prevents &korganizer; from marking the working hours for the holiday days in the
-region defined in the <guilabel>Use holiday region</guilabel> drop down above.</para>
+Check the week days that are part of your regular schedule, typically
+excluding weekends.  &korganizer; will mark hours that are part of your
+daily schedule (perhaps your weekly work schedule) differently from hours outside
+of your regular schedule. Checking <guilabel>Exclude holidays</guilabel>
+prevents &korganizer; from marking regular schedule (or work) hours for the holiday days
+in the region defined in the <guilabel>Use holiday region</guilabel> drop down above.</para>
 </listitem>
 </varlistentry>
 

@@ -1,15 +1,9 @@
 <?xml version="1.0" encoding="UTF-8"?>
-<!DOCTYPE kcfg SYSTEM
-    "http://www.kde.org/standards/kcfg/1.0/kcfg.dtd">
-<kcfg xmlns="http://www.kde.org/standards/kcfg/1.0"
-      xmlns:xsi="http://www.w3.org/2001/XMLSchema-instance"
-      xsi:schemaLocation="http://www.kde.org/standards/kcfg/1.0
-      http://www.kde.org/standards/kcfg/1.0/kcfg.xsd" >
+<!DOCTYPE kcfg SYSTEM "http://www.kde.org/standards/kcfg/1.0/kcfg.dtd">
+<kcfg xmlns="http://www.kde.org/standards/kcfg/1.0" xmlns:xsi="http://www.w3.org/2001/XMLSchema-instance" xsi:schemaLocation="http://www.kde.org/standards/kcfg/1.0       http://www.kde.org/standards/kcfg/1.0/kcfg.xsd">
   <kcfgfile name="korganizerrc"/>
-
-<!-- PREFERENCES DIALOG -->
-
-<!-- General Page: Save Tab -->
+  <!-- PREFERENCES DIALOG -->
+  <!-- General Page: Save Tab -->
   <group name="Save Settings">
     <entry type="Bool" key="Confirm Deletes" name="Confirm">
       <label>Confirm deletes</label>
@@ -17,7 +11,6 @@
       <whatsthis>Check this box to display a confirmation dialog when deleting items.</whatsthis>
       <default>true</default>
     </entry>
-
     <entry type="Enum" key="Destination" name="Destination">
       <label>New Events, To-dos and Journal Entries Should</label>
       <choices>
@@ -33,93 +26,80 @@
       <default>askDestination</default>
     </entry>
   </group>
-
-<!-- Time&Date Page: Regional Tab -->
+  <!-- Time&Date Page: Regional Tab -->
   <group name="Time &amp; Date">
     <entry type="String" name="TimeZoneId">
       <whatsthis>Select your timezone from the list of locations on this drop down box. If your city is not listed, select one which shares the same timezone. KOrganizer will automatically adjust for daylight savings.</whatsthis>
     </entry>
-
     <entry type="Enum" name="WeekStartDay">
       <label>Weekly start day:</label>
       <tooltip>Select the first day of each week</tooltip>
       <whatsthis>Select the first day of each week. Normally, you can ignore this since it is set in your locale.</whatsthis>
       <default>QLocale().firstDayOfWeek()-1</default>
     </entry>
-
     <entry type="DateTime" name="WorkingHoursStart">
       <label>Daily starting hour</label>
-      <whatsthis>Enter the start time for the working hours here. The working hours will be marked with color by KOrganizer.</whatsthis>
+      <tooltip>Set the time you typically start your day</tooltip>
+      <whatsthis>Enter the start time for your daily schedule here. Your daily schedule hours will be marked with a separate color.</whatsthis>
       <default>QDateTime(QDate(1752,1,1), QTime(8,0))</default>
     </entry>
-
     <entry type="DateTime" name="WorkingHoursEnd">
       <label>Daily ending hour</label>
-      <whatsthis>Enter the ending time for the working hours here. The working hours will be marked with color by KOrganizer.</whatsthis>
+      <tooltip>Set the time you typically end your day</tooltip>
+      <whatsthis>Enter the ending time for your daily schedule here. Your daily schedule hours will be marked with a separate color.</whatsthis>
       <default>QDateTime(QDate(1752,1,1), QTime(17,0))</default>
     </entry>
-
     <entry type="Bool" key="ColorMonthBusyDaysEnabled" name="ColorMonthBusyDaysEnabled">
       <label>Color busy days with a different background color</label>
       <whatsthis>Check this box if you want month view's background to be filled with a different color on days which have at least one all day event marked as busy. Also, you can change the background color used for this option on the Colors configuration page. Look for the "Busy days background color" setting.</whatsthis>
       <default>false</default>
     </entry>
-
   </group>
-
-<!-- Views Page: General Tab -->
+  <!-- Views Page: General Tab -->
   <group name="General View">
     <entry type="Bool" key="Enable ToolTips">
       <label>Enable tooltips for displaying summaries</label>
       <whatsthis>Check this box to display summary tooltips when hovering the mouse over an event or a to-do.</whatsthis>
       <default>true</default>
     </entry>
-
     <entry type="Bool" key="TodosUseCategoryColors">
       <label>To-dos use tag colors</label>
       <whatsthis>Check this box so that to-dos will use tag colors and not colors specific to their due, due today or overdue state</whatsthis>
       <default>false</default>
     </entry>
-
     <entry type="Int" key="Next X Days">
       <label>Next x days</label>
-      <whatsthis>Select the number of &quot;x&quot; days to be displayed in the next days view. To access the next &quot;x&quot; days view, choose the &quot;Next X Days&quot; menu item from the &quot;View&quot; menu.</whatsthis>
-      <tooltip>Show this many days at a time in the Next &quot;x&quot; days view</tooltip>
+      <whatsthis>Select the number of "x" days to be displayed in the next days view. To access the next "x" days view, choose the "Next X Days" menu item from the "View" menu.</whatsthis>
+      <tooltip>Show this many days at a time in the Next "x" days view</tooltip>
       <default>3</default>
     </entry>
-
     <entry type="Bool" key="Show Daily Recurrences" name="DailyRecur">
       <label>Show items that recur daily</label>
       <whatsthis>Check this box to show the days containing daily recurring events in bold typeface in the Date Navigator, or uncheck it to give more prominence to other (non daily recurring) events.</whatsthis>
       <default>true</default>
     </entry>
-
     <entry type="Bool" key="Show Weekly Recurrences" name="WeeklyRecur">
       <label>Show items that recur weekly</label>
       <whatsthis>Check this box to show the days containing weekly recurring events in bold typeface in the Date Navigator, or uncheck it to give more prominence to other (non weekly recurring) events.</whatsthis>
       <default>true</default>
     </entry>
-
     <entry type="Bool" key="Highlight To-dos" name="HighlightTodos">
       <label>Show to-dos instead of events when in Todo View</label>
       <whatsthis>Check this box to show the days containing to-dos in bold typeface in the Date Navigator when in to-do view.</whatsthis>
       <default>true</default>
     </entry>
-
     <entry type="Bool" key="Highlight Journals" name="HighlightJournals">
       <label>Show journals instead of events when in Journal View</label>
       <whatsthis>Check this box to show the days containing journals in bold typeface in the Date Navigator when in journal view.</whatsthis>
       <default>true</default>
     </entry>
-
     <entry type="Bool" key="Week Numbers Show Work Week" name="WeekNumbersShowWork">
       <label>Week numbers select a work week when in work week mode</label>
       <whatsthis>Check this box to select a working week when clicking on the Date Navigator's week numbers, or uncheck it to choose the whole week.</whatsthis>
       <default>false</default>
     </entry>
   </group>
-
-<!-- Views Page: Agenda View Tab -->
+  <!-- Views Page: Agenda View Tab -->
   <group name="Agenda View">
     <entry type="Int" key="Hour Size">
       <label>Hour size</label>
@@ -129,42 +109,36 @@
       <min>4</min>
       <max>30</max>
     </entry>
-
     <entry type="Bool" key="Show Icons in Agenda View" name="EnableAgendaItemIcons">
       <label>Show icons in agenda view items</label>
       <whatsthis>Check this box to display icons (alarm, recursion, etc.) in agenda view items.</whatsthis>
       <tooltip>Display icons in agenda view items</tooltip>
       <default>true</default>
     </entry>
-
     <entry type="Bool" name="ShowTodosAgendaView">
       <label>Show to-dos</label>
       <whatsthis>Check this box to display to-dos in the agenda view.</whatsthis>
       <tooltip>Display to-dos in the agenda view</tooltip>
       <default>true</default>
     </entry>
-
     <entry type="Bool" key="Show current-time line" name="MarcusBainsEnabled">
       <label>Show current-time (Marcus Bains) line</label>
       <whatsthis>Check this box to display a line in the day or week view indicating the current-time line (Marcus Bains line).</whatsthis>
       <tooltip>Display the current-time indicator</tooltip>
       <default>true</default>
     </entry>
-
     <entry type="Bool" key="Current-time line shows seconds" name="MarcusBainsShowSeconds">
       <label>Show seconds and timezone on the current-time (Marcus Bains) line</label>
       <whatsthis>Check this box if you want to show seconds on the current-time (Marcus Bains) line. Depending on your locale, the timezone will also be displayed.</whatsthis>
       <tooltip>Display seconds (possibly with timezone) with the current-time indicator</tooltip>
       <default>false</default>
     </entry>
-
     <entry type="Bool" name="SelectionStartsEditor">
       <label>Time range selection in agenda view starts event editor</label>
       <whatsthis>Check this box to start the event editor automatically when you select a time range in the daily and weekly view. To select a time range, drag the mouse from the start time to the end time of the event you are about to plan.</whatsthis>
       <tooltip>Enable automatic event editor with time range selection</tooltip>
       <default>false</default>
     </entry>
-
     <entry type="Enum" key="AgendaViewColors">
       <label>Color Usage</label>
       <choices>
@@ -218,8 +192,7 @@
       <default>CalendarsMerged</default>
     </entry>
   </group>
-
-<!-- Views Page: Month View Tab -->
+  <!-- Views Page: Month View Tab -->
   <group name="Month View">
     <entry type="Bool" key="Show Icons in Month View" name="EnableMonthItemIcons">
       <label>Show icons in month view items</label>
@@ -227,34 +200,29 @@
       <tooltip>Display icons in month view items</tooltip>
       <default>true</default>
     </entry>
-
     <entry type="Bool" key="Show time in Month View" name="ShowTimeInMonthView">
       <label>Show time in month view items</label>
       <whatsthis>Check this box to display the time in month view items.</whatsthis>
       <tooltip>Display time in month view items</tooltip>
       <default>false</default>
     </entry>
-
     <entry type="Bool" name="ShowTodosMonthView">
       <label>Show to-dos</label>
       <whatsthis>Check this box to display to-dos in the month view.</whatsthis>
       <tooltip>Display to-dos in the month view</tooltip>
       <default>true</default>
     </entry>
-
     <entry type="Bool" name="ShowJournalsMonthView">
       <label>Show journals</label>
       <whatsthis>Check this box to display journals in the month view.</whatsthis>
       <tooltip>Display journals in the month view</tooltip>
       <default>true</default>
     </entry>
-
     <entry type="Bool" key="Full View Month">
       <label>Month view uses full window</label>
       <whatsthis>Check this box to use the full KOrganizer window when displaying the month view. If this box is checked, you will gain some space for the monthly view, but other widgets, such as the date navigator, the item details and the calendars list, will not be displayed.</whatsthis>
       <default>false</default>
     </entry>
-
     <entry type="Enum" key="MonthViewColors">
       <label>Color Usage</label>
       <choices>
@@ -282,8 +250,7 @@
       <default>MonthItemCategoryInsideResourceOutside</default>
     </entry>
   </group>
-
-<!-- Views Page: Todo View Tab -->
+  <!-- Views Page: Todo View Tab -->
   <group name="Todo View">
     <entry type="Bool" key="Sort Completed Todos Separately">
       <label>Always display completed to-dos at the bottom of the list</label>
@@ -291,116 +258,97 @@
       <whatsthis>Check this box if you want all completed to-dos to be always grouped at the bottom of the to-do list.</whatsthis>
       <default>true</default>
     </entry>
-
     <entry type="Bool" key="Full View Todo">
       <label>To-do list view uses full window</label>
       <tooltip>Display to-do list in a full KOrganizer window</tooltip>
       <whatsthis>Check this box to use the full KOrganizer window when displaying the to-do list view. If this box is checked, you will gain some space for the to-do list view, but other widgets, such as the date navigator, the to-do details and the calendars list, will not be displayed.</whatsthis>
       <default>false</default>
     </entry>
-
     <entry type="Bool" key="Flat List Todo">
       <label>Display to-dos in a flat list</label>
       <tooltip>Display to-dos as a flat list instead of a hierarchical tree</tooltip>
       <whatsthis>Check this box if you want to see all your to-dos in a flat list instead of being arranged in a hierarchical tree.</whatsthis>
       <default>false</default>
     </entry>
-
     <entry type="Bool" key="Record Todos In Journals">
       <label>Record completed to-dos in journal entries</label>
       <whatsthis>Check this box to record the completion of a to-do in a new entry of your journal automatically.</whatsthis>
       <default>false</default>
     </entry>
   </group>
-
-<!-- Colors and Fonts Page: Colors Tab -->
+  <!-- Colors and Fonts Page: Colors Tab -->
   <group name="Colors">
     <entry type="Color" key="Holiday Color">
       <label>Holiday color</label>
       <whatsthis>Select the holiday color here. The holiday color will be used for the holiday name in the month view and the holiday number in the date navigator.</whatsthis>
       <default>255, 100, 100</default>
     </entry>
-
     <entry type="Color" key="AgendaBackgroundColor" name="AgendaBgColor">
       <label>Agenda view background color</label>
       <whatsthis>Select the agenda view background color here.</whatsthis>
       <default>255, 255, 255</default>
     </entry>
-
     <entry type="Color" key="Agenda MarcusBainsLine Line Color">
       <label>Agenda view current-time (Marcus Bains) line color</label>
       <whatsthis>Select a color to use for the current-time (Marcus Bains) line.</whatsthis>
       <tooltip>Use this color for the Agenda View current-time (Marcus Bains) line</tooltip>
       <default>255,0,0</default>
     </entry>
-
     <entry type="Color" key="ViewBackgroundBusyColor" name="ViewBgBusyColor">
       <label>Busy days background color</label>
       <whatsthis>When you have an all day event marked as busy, you can have a different agenda or month view background color for that day. Select the color here.</whatsthis>
       <default>136, 255, 219</default>
     </entry>
-
     <entry type="Color" key="WorkingHoursColor">
       <label>Working hours color</label>
       <whatsthis>Select the working hours color for the agenda view here.</whatsthis>
       <default>255, 235, 154</default>
     </entry>
-
     <entry type="Color" key="Todo due today Color" name="TodoDueTodayColor">
       <label>To-do due today color</label>
       <whatsthis>Select the to-do due today color here.</whatsthis>
       <default>255, 200, 50</default>
     </entry>
-
     <entry type="Color" key="Todo overdue Color" name="TodoOverdueColor">
       <label>To-do overdue color</label>
       <whatsthis>Select the to-do overdue color here.</whatsthis>
       <default>255, 100, 100</default>
     </entry>
   </group>
-
-<!-- Colors and Fonts Page: Fonts Tab -->
+  <!-- Colors and Fonts Page: Fonts Tab -->
   <group name="Fonts">
     <entry key="Agenda TimeLabels Font" type="Font">
       <label>Time bar</label>
-      <whatsthis>Press this button to configure the time bar font. The time bar is the widget that shows the hours in the agenda view. This button will open the &quot;Select Font&quot; dialog, allowing you to choose the hour font for the time bar.</whatsthis>
+      <whatsthis>Press this button to configure the time bar font. The time bar is the widget that shows the hours in the agenda view. This button will open the "Select Font" dialog, allowing you to choose the hour font for the time bar.</whatsthis>
     </entry>
-
     <entry type="Font" key="MonthView Font">
       <label>Month view</label>
-      <whatsthis>Press this button to configure the month view font. This button will open the &quot;Select Font&quot; dialog, allowing you to choose the font for the items in the month view.</whatsthis>
+      <whatsthis>Press this button to configure the month view font. This button will open the "Select Font" dialog, allowing you to choose the font for the items in the month view.</whatsthis>
     </entry>
-
     <entry type="Font" key="AgendaView Font">
       <label>Agenda view</label>
-      <whatsthis>Press this button to configure the agenda view font. This button will open the &quot;Select Font&quot; dialog, allowing you to choose the font for the events in the agenda view.</whatsthis>
+      <whatsthis>Press this button to configure the agenda view font. This button will open the "Select Font" dialog, allowing you to choose the font for the events in the agenda view.</whatsthis>
     </entry>
-
     <entry key="Agenda MarcusBainsLine Font" type="Font">
       <label>Current-time (Marcus Bains) line</label>
-      <whatsthis>Press this button to configure the current-time (Marcus Bains) line font. This button will open the &quot;Select Font&quot; dialog, allowing you to choose the font for the current-time line in the agenda view.</whatsthis>
+      <whatsthis>Press this button to configure the current-time (Marcus Bains) line font. This button will open the "Select Font" dialog, allowing you to choose the font for the current-time line in the agenda view.</whatsthis>
     </entry>
   </group>
-
-<!-- Plugins Page -->
+  <!-- Plugins Page -->
   <group name="KOrganizer Plugins">
     <entry type="StringList" name="SelectedPlugins">
-      <default></default>
+      <default/>
     </entry>
   </group>
-
-<!-- Custom Pages Page -->
-
-<!-- Options currently not visible in the GUI -->
+  <!-- Custom Pages Page -->
+  <!-- Options currently not visible in the GUI -->
   <group name="Hidden Options">
-   <entry type="Bool" key="Quick Todo" name="EnableQuickTodo">
+    <entry type="Bool" key="Quick Todo" name="EnableQuickTodo">
       <default>true</default>
     </entry>
-
     <entry type="Bool" key="Todo Quick Search" name="EnableTodoQuickSearch">
       <default>true</default>
     </entry>
-
     <entry type="Enum" name="DefaultTodoAttachMethod">
       <label>Default todo attachment method</label>
       <whatsthis>The default way of attaching dropped emails to a task</whatsthis>
@@ -417,48 +365,38 @@
       </choices>
       <default>TodoAttachInlineFull</default>
     </entry>
-
     <entry type="Bool" key="CompactDialogs">
       <default>false</default>
     </entry>
-
     <entry key="ShowMenuBar" type="Bool">
       <default>true</default>
-       <!-- label and whatsthis are already provided by KStandardAction::showMenubar -->
-      <label></label>
-      <whatsthis></whatsthis>
+      <!-- label and whatsthis are already provided by KStandardAction::showMenubar -->
+      <label/>
+      <whatsthis/>
     </entry>
   </group>
-
-<!-- INTERNAL SETTINGS: Not for users to change -->
+  <!-- INTERNAL SETTINGS: Not for users to change -->
   <group name="Internal Settings">
     <entry type="Int" key="Work Week Mask" name="WorkWeekMask">
       <default>31</default>
     </entry>
-
     <entry type="Int" key="DefaultResourceColorSeed">
       <default>0</default>
     </entry>
-
     <entry type="StringList" key="DefaultResourceColors">
-        <default>#c1d4e7,#d0e7c1,#e3e7c1,#e7c1e6,#a1b1c1</default>
+      <default>#c1d4e7,#d0e7c1,#e3e7c1,#e7c1e6,#a1b1c1</default>
     </entry>
-
     <entry type="Bool" key="AssignDefaultResourceColors">
       <default>true</default>
     </entry>
-
     <entry key="Decorations At Month View Top" type="StringList">
     </entry>
-
     <entry key="Decorations At Agenda View Top" type="StringList">
     </entry>
-
     <entry key="Decorations At Agenda View Bottom" type="StringList">
     </entry>
   </group>
-
-<!-- Theming settings (not implemented yet) -->
+  <!-- Theming settings (not implemented yet) -->
   <group name="Theming">
     <!-- BEGIN: These entries are the same for the agenda and month views, please keep them in sync -->
     <entry key="Agenda Grid Background Color" type="Color">
@@ -476,41 +414,42 @@
     <entry key="Agenda Grid WorkHours Background Image" type="String">
     </entry>
     <!-- END:   These entries are the same for the agenda and month views, please keep them in sync -->
-
-
     <!-- BEGIN: These entries are the same for the agenda and month views, please keep them in sync -->
     <entry key="Agenda CalendarItems Background Color" type="Color">
-      <default>255, 100, 100</default><!-- FIXME -->
+      <default>255, 100, 100</default>
+      <!-- FIXME -->
     </entry>
     <entry key="Agenda CalendarItems Background Image" type="String">
     </entry>
     <entry key="Agenda CalendarItems Font" type="Font">
     </entry>
     <entry key="Agenda CalendarItems Frame Color" type="Color">
-      <default>255, 100, 100</default><!-- FIXME -->
+      <default>255, 100, 100</default>
+      <!-- FIXME -->
     </entry>
     <entry key="Agenda CalendarItems Icon" type="String">
     </entry>
-
     <entry key="Agenda CalendarItems Events Background Image" type="String">
     </entry>
     <entry key="Agenda CalendarItems Events Font" type="Font">
     </entry>
     <entry key="Agenda CalendarItems Events Frame Color" type="Color">
-      <default>255, 100, 100</default><!-- FIXME -->
+      <default>255, 100, 100</default>
+      <!-- FIXME -->
     </entry>
     <entry key="Agenda CalendarItems Events Icon" type="String">
     </entry>
-
     <entry key="Agenda CalendarItems ToDos Background Color" type="Color">
-      <default>255, 100, 100</default><!-- FIXME -->
+      <default>255, 100, 100</default>
+      <!-- FIXME -->
     </entry>
     <entry key="Agenda CalendarItems ToDos Background Image" type="String">
     </entry>
     <entry key="Agenda CalendarItems ToDos Font" type="Font">
     </entry>
     <entry key="Agenda CalendarItems ToDos Frame Color" type="Color">
-      <default>255, 100, 100</default><!-- FIXME -->
+      <default>255, 100, 100</default>
+      <!-- FIXME -->
     </entry>
     <entry key="Agenda CalendarItems ToDos Icon" type="String">
     </entry>
@@ -531,7 +470,6 @@
     <entry key="Agenda CalendarItems ToDos Overdue Icon" type="String">
     </entry>
     <!-- TODO: tags, resources -->
-
     <entry key="Agenda Holidays Background Color" type="Color">
       <label>Holiday color</label>
       <whatsthis>Select the holiday color here. The holiday color will be used for the holiday name in the month view and the holiday number in the date navigator.</whatsthis>
@@ -546,7 +484,6 @@
     </entry>
     <!-- END:   These entries are the same for the agenda and month views, please keep them in sync -->
   </group>
-
   <group name="Theme/Month view">
     <!-- BEGIN: These entries are the same for the Month and month views, please keep them in sync -->
     <entry key="Month Grid Background Color" type="Color">
@@ -569,21 +506,21 @@
     <entry key="Month Grid WorkHours Background Image" type="String">
     </entry>
     <!-- END:   These entries are the same for the Month and month views, please keep them in sync -->
-
     <!-- BEGIN: These entries are the same for the Month and month views, please keep them in sync -->
     <entry key="Month CalendarItems Background Color" type="Color">
-      <default>255, 100, 100</default><!-- FIXME -->
+      <default>255, 100, 100</default>
+      <!-- FIXME -->
     </entry>
     <entry key="Month CalendarItems Background Image" type="String">
     </entry>
     <entry key="Month CalendarItems Font" type="Font">
     </entry>
     <entry key="Month CalendarItems Frame Color" type="Color">
-      <default>255, 100, 100</default><!-- FIXME -->
+      <default>255, 100, 100</default>
+      <!-- FIXME -->
     </entry>
     <entry key="Month CalendarItems Icon" type="String">
     </entry>
-
     <entry key="Month CalendarItems Events Background Color" type="Color">
       <label>Default event color</label>
       <whatsthis>Select the default event color here. The default event color will be used for events in your Month. Note that you can specify a separate color for each event tag below.</whatsthis>
@@ -594,24 +531,25 @@
     <entry key="Month CalendarItems Events Font" type="Font">
     </entry>
     <entry key="Month CalendarItems Events Frame Color" type="Color">
-      <default>255, 100, 100</default><!-- FIXME -->
+      <default>255, 100, 100</default>
+      <!-- FIXME -->
     </entry>
     <entry key="Month CalendarItems Events Icon" type="String">
     </entry>
-
     <entry key="Month CalendarItems ToDos Background Color" type="Color">
-      <default>255, 100, 100</default><!-- FIXME -->
+      <default>255, 100, 100</default>
+      <!-- FIXME -->
     </entry>
     <entry key="Month CalendarItems ToDos Background Image" type="String">
     </entry>
     <entry key="Month CalendarItems ToDos Font" type="Font">
     </entry>
     <entry key="Month CalendarItems ToDos Frame Color" type="Color">
-      <default>255, 100, 100</default><!-- FIXME -->
+      <default>255, 100, 100</default>
+      <!-- FIXME -->
     </entry>
     <entry key="Month CalendarItems ToDos Icon" type="String">
     </entry>
-
     <entry key="Month CalendarItems ToDos DueTodayBackground Color" type="Color">
       <label>To-do due today color</label>
       <whatsthis>Select the to-do due today color here.</whatsthis>
@@ -625,7 +563,6 @@
     </entry>
     <entry key="Month CalendarItems ToDos DueToday Icon" type="String">
     </entry>
-
     <entry key="Month CalendarItems ToDos Overdue Background Color" type="Color">
       <label>To-do overdue color</label>
       <whatsthis>Select the to-do overdue color here.</whatsthis>
@@ -640,7 +577,6 @@
     <entry key="Month CalendarItems ToDos Overdue Icon" type="String">
     </entry>
     <!-- TODO: tags, resources -->
-
     <entry key="Month Holidays Background Color" type="Color">
       <label>Holiday color</label>
       <whatsthis>Select the holiday color here. The holiday color will be used for the holiday name in the month view and the holiday number in the date navigator.</whatsthis>
@@ -650,11 +586,9 @@
     </entry>
     <!-- END:   These entries are the same for the Month and month views, please keep them in sync -->
   </group>
-
- <group name="Activities">
-   <entry name="EnabledActivities" type="Bool">
-     <default>false</default>
-   </entry>
- </group>
-
+  <group name="Activities">
+    <entry name="EnabledActivities" type="Bool">
+      <default>false</default>
+    </entry>
+  </group>
 </kcfg>

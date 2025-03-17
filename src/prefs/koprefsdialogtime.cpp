@@ -108,7 +108,7 @@ KOPrefsDialogTime::KOPrefsDialogTime(QObject *parent, const KPluginMetaData &dat
         mHolidayCheckCombo->setItemCheckState(mHolidayCheckCombo->findData(regionStr), Qt::Checked);
     }
 
-    auto workingHoursGroupBox = new QGroupBox(i18nc("@title:group", "Working Period"), regionalPage);
+    auto workingHoursGroupBox = new QGroupBox(i18nc("@title:group", "Weekly Schedule"), regionalPage);
     regionalLayout->addWidget(workingHoursGroupBox, 2, 0);
 
     QBoxLayout *workingHoursLayout = new QVBoxLayout(workingHoursGroupBox);
@@ -120,14 +120,16 @@ KOPrefsDialogTime::KOPrefsDialogTime(QObject *parent, const KPluginMetaData &dat
     int weekStart = QLocale().firstDayOfWeek();
     for (int i = 0; i < 7; ++i) {
         QString weekDayName = QLocale().dayName((i + weekStart + 6) % 7 + 1, QLocale::ShortFormat);
+        QString weekDayNameLong = QLocale().dayName((i + weekStart + 6) % 7 + 1, QLocale::LongFormat);
         int index = (i + weekStart + 6) % 7;
         mWorkDays[index] = new QCheckBox(weekDayName);
+        mWorkDays[index]->setToolTip(i18nc("@info:tooltip", "Include %1 as part of your weekly schedule", weekDayNameLong));
         mWorkDays[index]->setWhatsThis(i18nc("@info:whatsthis",
-                                             "Check this box to make KOrganizer mark the "
-                                             "working hours for this day of the week. "
-                                             "If this is a work day for you, check "
-                                             "this box, or the working hours will not be "
-                                             "marked with color."));
+                                             "Check this box to consider %1 a part of your regular weekly schedule. "
+                                             "Any %1 daily hours will be shown with different colors than times outside your regular schedule. "
+                                             "Check this box if %1 is included as part of your regular weekly schedule (even if you don't work). "
+                                             "Typically, weekend days should be unchecked.",
+                                             weekDayNameLong));
         connect(mWorkDays[index], &QCheckBox::checkStateChanged, this, &Korganizer::KPrefsModule::slotWidChanged);
 
         workDaysLayout->addWidget(mWorkDays[index]);
@@ -162,6 +164,9 @@ KOPrefsDialogTime::KOPrefsDialogTime(QObject *parent, const KPluginMetaData &dat
     workEndLayout->addWidget(workEnd->timeEdit());
 
     Korganizer::KPrefsWidBool *excludeHolidays = addWidBool(CalendarSupport::KCalPrefs::instance()->excludeHolidaysItem());
+    excludeHolidays->checkBox()->setToolTip(i18nc("@info:tooltip", "Highlight holidays differently from your regular schedule"));
+    excludeHolidays->checkBox()->setWhatsThis(
+        i18nc("@info:whatsthis", "Check this box to highlight holidays differently than days included with your regular schedule."));
 
     workingHoursLayout->addWidget(excludeHolidays->checkBox());
 
