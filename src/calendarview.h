@@ -55,6 +55,8 @@ class TodoPurger;
 class CalFilterPartStatusProxyModel;
 }
 
+class KDatePicker;
+
 class QSplitter;
 class QStackedWidget;
 
@@ -559,6 +561,9 @@ public Q_SLOTS:
     /** Move the current view date to today */
     void goToday();
 
+    /** Move the current view date to date specified by the user */
+    void goSelectADate();
+
     /** Move to the next date(s) in the current view */
     void goNext();
 
@@ -740,6 +745,7 @@ private:
 
     DateNavigator *mDateNavigator = nullptr;
     DateChecker *mDateChecker = nullptr;
+    KDatePicker *mDatePicker = nullptr;
 
     QWidget *mEventViewerBox = nullptr;
     CalendarSupport::IncidenceViewer *mEventViewer = nullptr;

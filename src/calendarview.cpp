@@ -68,6 +68,7 @@
 #include <PimCommonAkonadi/CollectionAclPage>
 #include <PimCommonAkonadi/ImapAclAttribute>
 
+#include <KDatePicker>
 #include <KDialogJobUiDelegate>
 #include <KIO/CommandLauncherJob>
 #include <KMessageBox>
@@ -137,6 +138,7 @@ CalendarView::CalendarView(QWidget *parent)
 
     mDateNavigator = new DateNavigator(this);
     mDateChecker = new DateChecker(this);
+    mDatePicker = new KDatePicker(); // must be parent-less
 
     auto topLayout = new QVBoxLayout(this);
     topLayout->setContentsMargins({});
@@ -570,6 +572,14 @@ void CalendarView::showDate(QDate date)
 void CalendarView::goToday()
 {
     mDateNavigator->selectToday();
+}
+
+void CalendarView::goSelectADate()
+{
+    mDatePicker->show();
+    QObject::connect(mDatePicker, &KDatePicker::dateChanged, this, [this](QDate date) {
+        mDateNavigator->selectADate(date);
+    });
 }
 
 void CalendarView::goNext()

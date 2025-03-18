@@ -3348,6 +3348,13 @@ format="PNG"/></imageobject></inlinemediaobject><menuchoice>
 writing a new journal entry</action>.</para></listitem>
 </varlistentry>
 
+<varlistentry id="menu-actions-pick-date">
+<term><inlinemediaobject><imageobject><imagedata fileref="go-jump.png" format="PNG"/></imageobject></inlinemediaobject>
+<menuchoice><guimenu>Go</guimenu><guimenuitem>Pick a Date</guimenuitem></menuchoice>
+</term>
+<listitem><para><action>Opens a a date selection dialog for quickly navigating the view.</action></para></listitem>
+</varlistentry>
+
 <varlistentry id="menu-actions-show-event">
 <term><menuchoice>
 <guimenu>Actions</guimenu>

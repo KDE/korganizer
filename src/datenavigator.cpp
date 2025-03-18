@@ -127,10 +127,8 @@ void DateNavigator::selectWorkWeek(QDate d)
     emitSelected(/* preferredMonth= */ d);
 }
 
-void DateNavigator::selectToday()
+void DateNavigator::selectADate(QDate d)
 {
-    const QDate d = QDate::currentDate();
-
     const int dateCount = mSelectedDates.count();
 
     if (dateCount == 7) {
@@ -140,6 +138,11 @@ void DateNavigator::selectToday()
     } else {
         selectDates(d, dateCount);
     }
+}
+
+void DateNavigator::selectToday()
+{
+    selectADate(QDate::currentDate());
 }
 
 void DateNavigator::selectPreviousYear()

@@ -47,6 +47,7 @@ public Q_SLOTS:
 
     void selectWeekByDay(int weekDay, QDate, QDate preferredMonth = QDate());
 
+    void selectADate(QDate d);
     void selectToday();
 
     void selectPreviousYear();

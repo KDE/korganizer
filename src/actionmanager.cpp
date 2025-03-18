@@ -601,6 +601,15 @@ void ActionManager::initActions()
     mACollection->addAction(QStringLiteral("new_journal"), mNewJournalAction);
     connect(mNewJournalAction, &QAction::triggered, this, &ActionManager::slotNewJournal);
 
+    /** Scroll to Date Action **/
+    action = new QAction(QIcon::fromTheme(QStringLiteral("go-jump")), i18nc("@action Jump to date", "&Pick a Date"), this);
+    action->setIconText(i18n("Date"));
+    action->setStatusTip(i18nc("@info:status", "Scroll the view to user selected dates"));
+    action->setToolTip(i18nc("@info:tooltip", "Scroll the view to user selected dates"));
+    action->setWhatsThis(i18nc("@info:whatsthis", "Opens a a date selection dialog for quickly navigating the view."));
+    mACollection->addAction(QStringLiteral("pick_date"), action);
+    connect(action, &QAction::triggered, mCalendarView, &CalendarView::goSelectADate);
+
     /** Configure Current View Action **/
     mConfigureViewAction = new QAction(QIcon::fromTheme(QStringLiteral("configure")), i18n("Configure View…"), this);
     mConfigureViewAction->setIconText(i18n("Configure"));
