@@ -127,9 +127,10 @@ void ActionManager::toggleMenubar(bool dontShowWarning)
             if (!dontShowWarning && (!mToolBar->isVisible() || !mToolBar->actions().contains(mHamburgerMenu))) {
                 const QString accel = mShowMenuBarAction->shortcut().toString(QKeySequence::NativeText);
                 KMessageBox::information(mCalendarView,
-                                         i18n("<qt>This will hide the menu bar completely."
-                                              " You can show it again by typing %1.</qt>",
-                                              accel),
+                                         i18nc("@info",
+                                               "This will hide the menu bar completely. "
+                                               "You can show it again by typing %1.",
+                                               accel),
                                          i18nc("@title:window", "Hide menu bar"),
                                          QStringLiteral("HideMenuBarWarning"));
             }
@@ -1647,12 +1648,12 @@ void ActionManager::importCalendar(const QUrl &url)
         return;
     }
 
-    const QString questionText = i18nc("@info",
-                                       "<p>Would you like to merge this calendar item into an existing calendar "
-                                       "or use it to create a brand new calendar?</p>"
-                                       "<p>If you select merge, then you will be given the opportunity to select "
-                                       "the destination calendar.</p>"
-                                       "<p>If you select add, then a new calendar will be created for you automatically.</p>");
+    const QString questionText = xi18nc("@info",
+                                        "<p>Would you like to merge this calendar item into an existing calendar "
+                                        "or use it to create a brand new calendar?</p>"
+                                        "<p>If you select merge, then you will be given the opportunity to select "
+                                        "the destination calendar.</p>"
+                                        "<p>If you select add, then a new calendar will be created for you automatically.</p>");
 
     const int answer = KMessageBox::questionTwoActionsCancel(dialogParent(),
                                                              questionText,

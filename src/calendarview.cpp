@@ -246,15 +246,12 @@ CalendarView::CalendarView(QWidget *parent)
     connect(this, &CalendarView::incidenceSelected, mEventViewer, &CalendarSupport::IncidenceViewer::setIncidence);
 
     // TODO: do a pretty Summary,
-    const QString s = i18n(
+    const QString s = xi18n(
         "<p><em>No Item Selected</em></p>"
-        "<p>Select an event, to-do or journal entry to view its details "
-        "here.</p>");
+        "<p>Select an event, to-do or journal entry to view its details here.</p>");
 
     mEventViewer->setDefaultMessage(s);
-    mEventViewer->setWhatsThis(
-        i18n("View the details of events, journal entries or to-dos "
-             "selected in KOrganizer's main view here."));
+    mEventViewer->setWhatsThis(i18nc("@info:whatsthis", "View the details of events, journal entries or to-dos selected in KOrganizer's main view here."));
     mEventViewer->setIncidence(Akonadi::Item(), QDate());
 
     mViewManager->connectTodoView(mTodoList);

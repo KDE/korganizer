@@ -187,11 +187,11 @@ void KOrganizerPlugin::processDropEvent(QDropEvent *event)
                             if (item.mimeType() == QLatin1StringView("message/rfc822")) {
                                 auto mail = item.payload<KMime::Message::Ptr>();
                                 interface()->openEventEditor(i18nc("Event from email summary", "Mail: %1", mail->subject()->asUnicodeString()),
-                                                             i18nc("Event from email content",
-                                                                   "<b>From:</b> %1<br /><b>To:</b> %2<br /><b>Subject:</b> %3",
-                                                                   mail->from()->displayString(),
-                                                                   mail->to()->displayString(),
-                                                                   mail->subject()->asUnicodeString()),
+                                                             xi18nc("Event from email content",
+                                                                    "<b>From:</b> %1<br /><b>To:</b> %2<br /><b>Subject:</b> %3",
+                                                                    mail->from()->displayString(),
+                                                                    mail->to()->displayString(),
+                                                                    mail->subject()->asUnicodeString()),
                                                              url.toDisplayString(),
                                                              QString(),
                                                              QStringList(),

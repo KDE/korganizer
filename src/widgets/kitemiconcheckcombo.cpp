@@ -18,7 +18,7 @@ KItemIconCheckCombo::KItemIconCheckCombo(ViewType viewType, QWidget *parent)
     addItem(QIcon::fromTheme(QStringLiteral("view-pim-journal")), i18n("Journal"));
     addItem(QIcon::fromTheme(QStringLiteral("appointment-recurring")), i18n("Recurring"));
     addItem(QIcon::fromTheme(QStringLiteral("appointment-reminder")), i18n("Alarm"));
-    addItem(QIcon::fromTheme(QStringLiteral("object-locked")), i18n("Read Only"));
+    addItem(QIcon::fromTheme(QStringLiteral("object-locked")), i18nc("the incidence is read-only", "Read Only"));
     addItem(QIcon::fromTheme(QStringLiteral("mail-reply-sender")), i18n("Needs Reply"));
     addItem(QIcon::fromTheme(QStringLiteral("meeting-attending")), i18n("Attending"));
     addItem(QIcon::fromTheme(QStringLiteral("meeting-attending-tentative")), i18n("Maybe Attending"));
