@@ -7,7 +7,7 @@ msgid ""
 msgstr ""
 "Project-Id-Version: KDE 4.3\n"
 "Report-Msgid-Bugs-To: https://bugs.kde.org\n"
-"POT-Creation-Date: 2025-03-16 00:42+0000\n"
+"POT-Creation-Date: 2025-03-18 00:43+0000\n"
 "PO-Revision-Date: 2024-08-06 22:24+0200\n"
 "Last-Translator: Kristof Kiszel <ulysses@fsf.hu>\n"
 "Language-Team: Hungarian <kde-l10n-hu@kde.org>\n"
@@ -3472,7 +3472,7 @@ msgctxt "@title:group email settings"
 msgid "Email Settings"
 msgstr "E-mail-beállítások"
 
-#: prefs/koprefsdialogmain.cpp:63 prefs/koprefsdialogtime.cpp:189
+#: prefs/koprefsdialogmain.cpp:63 prefs/koprefsdialogtime.cpp:194
 #, kde-format
 msgctxt "@title:group"
 msgid "Reminders"
@@ -3588,102 +3588,122 @@ msgid "Select Holiday Regions"
 msgstr "Szabadság-terület:"
 
 #: prefs/koprefsdialogtime.cpp:111
-#, kde-format
+#, fuzzy, kde-format
+#| msgid "Schedule"
 msgctxt "@title:group"
-msgid "Working Period"
-msgstr "Munkaidő"
+msgid "Weekly Schedule"
+msgstr "Ütemezés"
 
 #: prefs/koprefsdialogtime.cpp:126
 #, kde-format
+msgctxt "@info:tooltip"
+msgid "Include %1 as part of your weekly schedule"
+msgstr ""
+
+#: prefs/koprefsdialogtime.cpp:128
+#, kde-format
 msgctxt "@info:whatsthis"
 msgid ""
-"Check this box to make KOrganizer mark the working hours for this day of the "
-"week. If this is a work day for you, check this box, or the working hours "
-"will not be marked with color."
-msgstr ""
-"Ha ez be van jelölve, akkor a KOrganizer ennél a napnál megjelöli a "
-"munkaidőt. Jelölje be, ha a nap munkanapnak számít, különben a munkaidő nem "
-"lesz színezve."
-
-#: prefs/koprefsdialogtime.cpp:140
-#, kde-format
-msgctxt "@item:inlistbox"
-msgid "Monday"
-msgstr ""
-
-#: prefs/koprefsdialogtime.cpp:140
-#, kde-format
-msgctxt "@item:inlistbox"
-msgid "Tuesday"
-msgstr ""
-
-#: prefs/koprefsdialogtime.cpp:140
-#, kde-format
-msgctxt "@item:inlistbox"
-msgid "Wednesday"
-msgstr ""
-
-#: prefs/koprefsdialogtime.cpp:141
-#, kde-format
-msgctxt "@item:inlistbox"
-msgid "Thursday"
-msgstr ""
-
-#: prefs/koprefsdialogtime.cpp:141
-#, kde-format
-msgctxt "@item:inlistbox"
-msgid "Friday"
-msgstr "Péntek"
-
-#: prefs/koprefsdialogtime.cpp:141
-#, kde-format
-msgctxt "@item:inlistbox"
-msgid "Saturday"
+"Check this box to consider %1 a part of your regular weekly schedule. Any %1 "
+"daily hours will be shown with different colors than times outside your "
+"regular schedule. Check this box if %1 is included as part of your regular "
+"weekly schedule (even if you don't work). Typically, weekend days should be "
+"unchecked."
 msgstr ""
 
 #: prefs/koprefsdialogtime.cpp:142
 #, kde-format
 msgctxt "@item:inlistbox"
+msgid "Monday"
+msgstr ""
+
+#: prefs/koprefsdialogtime.cpp:142
+#, kde-format
+msgctxt "@item:inlistbox"
+msgid "Tuesday"
+msgstr ""
+
+#: prefs/koprefsdialogtime.cpp:142
+#, kde-format
+msgctxt "@item:inlistbox"
+msgid "Wednesday"
+msgstr ""
+
+#: prefs/koprefsdialogtime.cpp:143
+#, kde-format
+msgctxt "@item:inlistbox"
+msgid "Thursday"
+msgstr ""
+
+#: prefs/koprefsdialogtime.cpp:143
+#, kde-format
+msgctxt "@item:inlistbox"
+msgid "Friday"
+msgstr "Péntek"
+
+#: prefs/koprefsdialogtime.cpp:143
+#, kde-format
+msgctxt "@item:inlistbox"
+msgid "Saturday"
+msgstr ""
+
+#: prefs/koprefsdialogtime.cpp:144
+#, kde-format
+msgctxt "@item:inlistbox"
 msgid "Sunday"
 msgstr ""
 
-#: prefs/koprefsdialogtime.cpp:171
+#: prefs/koprefsdialogtime.cpp:167
+#, kde-format
+msgctxt "@info:tooltip"
+msgid "Highlight holidays differently from your regular schedule"
+msgstr ""
+
+#: prefs/koprefsdialogtime.cpp:169
+#, kde-format
+msgctxt "@info:whatsthis"
+msgid ""
+"Check this box to highlight holidays differently than days included with "
+"your regular schedule."
+msgstr ""
+
+#: prefs/koprefsdialogtime.cpp:176
 #, kde-format
 msgctxt "@title:tab"
 msgid "Default Values"
 msgstr "Alapértelmezett értékek"
 
-#: prefs/koprefsdialogtime.cpp:174
+#: prefs/koprefsdialogtime.cpp:179
 #, kde-format
 msgctxt "@title:group"
 msgid "Appointments"
 msgstr "Találkozók"
 
-#: prefs/koprefsdialogtime.cpp:194
+#: prefs/koprefsdialogtime.cpp:199
 #, kde-format
 msgctxt "@label"
 msgid "Default reminder time:"
 msgstr "Alapértelmezett emlékeztetési idő (az esemény előtt):"
 
-#: prefs/koprefsdialogtime.cpp:207
+#: prefs/koprefsdialogtime.cpp:212
 #, kde-format
 msgctxt "@item:inlistbox reminder units in minutes"
 msgid "minute(s)"
 msgstr "perc"
 
-#: prefs/koprefsdialogtime.cpp:208
+#: prefs/koprefsdialogtime.cpp:213
 #, kde-format
 msgctxt "@item:inlistbox reminder time units in hours"
 msgid "hour(s)"
 msgstr "óra"
 
-#: prefs/koprefsdialogtime.cpp:209
+#: prefs/koprefsdialogtime.cpp:214
 #, kde-format
 msgctxt "@item:inlistbox reminder time units in days"
 msgid "day(s)"
 msgstr "nap"
 
-#: prefs/koprefsdialogtime.cpp:219
+#: prefs/koprefsdialogtime.cpp:224
 #, kde-format
 msgid "Audio Files (*.ogg *.wav *.mp3 *.wma *.flac *.aiff *.raw *.au *.ra)"
 msgstr "Hangfájlok (*.ogg *.wav *.mp3 *.wma *.flac *.aiff *.raw *.au *.ra)"
@@ -3780,19 +3800,19 @@ msgid "Reset to Defaults"
 msgstr "Az alapértelmezések visszaállítása"
 
 #. i18n: ectx: label, entry (Confirm), group (Save Settings)
-#: settings/korganizer.kcfg:15
+#: settings/korganizer.kcfg:9
 #, kde-format
 msgid "Confirm deletes"
 msgstr "A törlések megerősítése"
 
 #. i18n: ectx: tooltip, entry (Confirm), group (Save Settings)
-#: settings/korganizer.kcfg:16
+#: settings/korganizer.kcfg:10
 #, kde-format
 msgid "Always confirm when deleting items"
 msgstr "Mindig kérjen megerősítést elemek törlésekor"
 
 #. i18n: ectx: whatsthis, entry (Confirm), group (Save Settings)
-#: settings/korganizer.kcfg:17
+#: settings/korganizer.kcfg:11
 #, kde-format
 msgid "Check this box to display a confirmation dialog when deleting items."
 msgstr ""
@@ -3800,20 +3820,20 @@ msgstr ""
 "törlésekor."
 
 #. i18n: ectx: label, entry (Destination), group (Save Settings)
-#: settings/korganizer.kcfg:22
+#: settings/korganizer.kcfg:15
 #, kde-format
 msgid "New Events, To-dos and Journal Entries Should"
 msgstr "Az új események, feladatok és naplóbejegyzések"
 
 #. i18n: ectx: label, entry (Destination), group (Save Settings)
-#: settings/korganizer.kcfg:25
+#: settings/korganizer.kcfg:18
 #, fuzzy, kde-format
 #| msgid "Be added to the standard calendar"
 msgid "Be added to the default calendar"
 msgstr "Hozzáadás a szabványos naptárhoz"
 
 #. i18n: ectx: whatsthis, entry (Destination), group (Save Settings)
-#: settings/korganizer.kcfg:26
+#: settings/korganizer.kcfg:19
 #, fuzzy, kde-format
 #| msgid ""
 #| "Select this option to always record new events, to-dos and journal "
@@ -3826,13 +3846,13 @@ msgstr ""
 "a szabványos naptárba legyen elmentve."
 
 #. i18n: ectx: label, entry (Destination), group (Save Settings)
-#: settings/korganizer.kcfg:29
+#: settings/korganizer.kcfg:22
 #, kde-format
 msgid "Be asked which calendar to use"
 msgstr "Kérdezze meg, hogy melyik naptárt szeretném használni"
 
 #. i18n: ectx: whatsthis, entry (Destination), group (Save Settings)
-#: settings/korganizer.kcfg:30
+#: settings/korganizer.kcfg:23
 #, kde-format
 msgid ""
 "Select this option to choose the calendar to be used to record the item each "
@@ -3847,7 +3867,7 @@ msgstr ""
 "több azonosítót szeretne kezelni a Kontacttal mint KDE Kolab-klienssel. "
 
 #. i18n: ectx: whatsthis, entry (TimeZoneId), group (Time &amp; Date)
-#: settings/korganizer.kcfg:40
+#: settings/korganizer.kcfg:32
 #, kde-format
 msgid ""
 "Select your timezone from the list of locations on this drop down box. If "
@@ -3859,7 +3879,7 @@ msgstr ""
 "KOrganizer automatikusan lekezeli a téli-nyári időszámítást."
 
 #. i18n: ectx: label, entry (WeekStartDay), group (Time &amp; Date)
-#: settings/korganizer.kcfg:44
+#: settings/korganizer.kcfg:35
 #, fuzzy, kde-format
 #| msgctxt "@info:tooltip"
 #| msgid "Set the start date"
@@ -3867,14 +3887,14 @@ msgid "Weekly start day:"
 msgstr "Kezdődátum beállítása"
 
 #. i18n: ectx: tooltip, entry (WeekStartDay), group (Time &amp; Date)
-#: settings/korganizer.kcfg:45
+#: settings/korganizer.kcfg:36
 #, fuzzy, kde-format
 #| msgid "Select the to-do due today color here."
 msgid "Select the first day of each week"
 msgstr "Itt lehet kiválasztani a mai határidejű feladatok színét."
 
 #. i18n: ectx: whatsthis, entry (WeekStartDay), group (Time &amp; Date)
-#: settings/korganizer.kcfg:46
+#: settings/korganizer.kcfg:37
 #, kde-format
 msgid ""
 "Select the first day of each week. Normally, you can ignore this since it is "
@@ -3882,46 +3902,66 @@ msgid ""
 msgstr ""
 
 #. i18n: ectx: label, entry (WorkingHoursStart), group (Time &amp; Date)
-#: settings/korganizer.kcfg:51
+#: settings/korganizer.kcfg:41
 #, kde-format
 msgid "Daily starting hour"
 msgstr "A nap kezdési órája"
 
+#. i18n: ectx: tooltip, entry (WorkingHoursStart), group (Time &amp; Date)
+#: settings/korganizer.kcfg:42
+#, fuzzy, kde-format
+#| msgid "Sets the title of this journal."
+msgid "Set the time you typically start your day"
+msgstr "Beállítja a napló címét."
+
 #. i18n: ectx: whatsthis, entry (WorkingHoursStart), group (Time &amp; Date)
-#: settings/korganizer.kcfg:52
-#, kde-format
+#: settings/korganizer.kcfg:43
+#, fuzzy, kde-format
+#| msgid ""
+#| "Enter the start time for the working hours here. The working hours will "
+#| "be marked with color by KOrganizer."
 msgid ""
-"Enter the start time for the working hours here. The working hours will be "
-"marked with color by KOrganizer."
+"Enter the start time for your daily schedule here. Your daily schedule hours "
+"will be marked with a separate color."
 msgstr ""
 "A munkaidő kezdési időpontja. A KOrganizer külön színnel jelöli meg a "
 "munkaidőt."
 
 #. i18n: ectx: label, entry (WorkingHoursEnd), group (Time &amp; Date)
-#: settings/korganizer.kcfg:57
+#: settings/korganizer.kcfg:47
 #, kde-format
 msgid "Daily ending hour"
 msgstr "A nap zárási órája"
 
+#. i18n: ectx: tooltip, entry (WorkingHoursEnd), group (Time &amp; Date)
+#: settings/korganizer.kcfg:48
+#, fuzzy, kde-format
+#| msgid "Sets the title of this journal."
+msgid "Set the time you typically end your day"
+msgstr "Beállítja a napló címét."
+
 #. i18n: ectx: whatsthis, entry (WorkingHoursEnd), group (Time &amp; Date)
-#: settings/korganizer.kcfg:58
-#, kde-format
+#: settings/korganizer.kcfg:49
+#, fuzzy, kde-format
+#| msgid ""
+#| "Enter the ending time for the working hours here. The working hours will "
+#| "be marked with color by KOrganizer."
 msgid ""
-"Enter the ending time for the working hours here. The working hours will be "
-"marked with color by KOrganizer."
+"Enter the ending time for your daily schedule here. Your daily schedule "
+"hours will be marked with a separate color."
 msgstr ""
 "A munkaidő befejezési időpontja. A KOrganizer külön színnel jelöli meg a "
 "munkaidőt."
 
 #. i18n: ectx: label, entry (ColorMonthBusyDaysEnabled), group (Time &amp; Date)
 #. i18n: ectx: label, entry (ColorBusyDaysEnabled), group (Agenda View)
-#: settings/korganizer.kcfg:63 settings/korganizer.kcfg:195
+#: settings/korganizer.kcfg:53 settings/korganizer.kcfg:169
 #, kde-format
 msgid "Color busy days with a different background color"
 msgstr "Színezze a zsúfolt napokat különböző háttérszínnel"
 
 #. i18n: ectx: whatsthis, entry (ColorMonthBusyDaysEnabled), group (Time &amp; Date)
-#: settings/korganizer.kcfg:64
+#: settings/korganizer.kcfg:54
 #, kde-format
 msgid ""
 "Check this box if you want month view's background to be filled with a "
@@ -3936,13 +3976,13 @@ msgstr ""
 "megváltoztathatja. Keresse a \"Zsúfolt napok háttérszíne\" beállítást."
 
 #. i18n: ectx: label, entry, group (General View)
-#: settings/korganizer.kcfg:73
+#: settings/korganizer.kcfg:61
 #, kde-format
 msgid "Enable tooltips for displaying summaries"
 msgstr "Tippek engedélyezése összefoglalóknál"
 
 #. i18n: ectx: whatsthis, entry, group (General View)
-#: settings/korganizer.kcfg:74
+#: settings/korganizer.kcfg:62
 #, kde-format
 msgid ""
 "Check this box to display summary tooltips when hovering the mouse over an "
@@ -3952,14 +3992,14 @@ msgstr ""
 "vagy feladat összefoglalója fölé ér."
 
 #. i18n: ectx: label, entry, group (General View)
-#: settings/korganizer.kcfg:79
+#: settings/korganizer.kcfg:66
 #, fuzzy, kde-format
 #| msgid "To-dos use category colors"
 msgid "To-dos use tag colors"
 msgstr "Kategóriaszínek használata a feladatoknál"
 
 #. i18n: ectx: whatsthis, entry, group (General View)
-#: settings/korganizer.kcfg:80
+#: settings/korganizer.kcfg:67
 #, fuzzy, kde-format
 #| msgid ""
 #| "Check this box so that to-dos will use category colors and not colors "
@@ -3972,13 +4012,13 @@ msgstr ""
 "meg, nem az esedékességi állapotnak megfelelő színnel"
 
 #. i18n: ectx: label, entry, group (General View)
-#: settings/korganizer.kcfg:85
+#: settings/korganizer.kcfg:71
 #, kde-format
 msgid "Next x days"
 msgstr "A következő x nap"
 
 #. i18n: ectx: whatsthis, entry, group (General View)
-#: settings/korganizer.kcfg:86
+#: settings/korganizer.kcfg:72
 #, kde-format
 msgid ""
 "Select the number of \"x\" days to be displayed in the next days view. To "
@@ -3990,19 +4030,19 @@ msgstr ""
 "menüből „A következő X nap” menüpontot."
 
 #. i18n: ectx: tooltip, entry, group (General View)
-#: settings/korganizer.kcfg:87
+#: settings/korganizer.kcfg:73
 #, kde-format
 msgid "Show this many days at a time in the Next \"x\" days view"
 msgstr "Ennyi nap látszódjon egyszerre a Következő „x” nap nézetben"
 
 #. i18n: ectx: label, entry (DailyRecur), group (General View)
-#: settings/korganizer.kcfg:92
+#: settings/korganizer.kcfg:77
 #, kde-format
 msgid "Show items that recur daily"
 msgstr "A naponta ismétlődő események megjelenítése"
 
 #. i18n: ectx: whatsthis, entry (DailyRecur), group (General View)
-#: settings/korganizer.kcfg:93
+#: settings/korganizer.kcfg:78
 #, kde-format
 msgid ""
 "Check this box to show the days containing daily recurring events in bold "
@@ -4014,13 +4054,13 @@ msgstr ""
 "ha inkább az egyszeri eseményeket szeretné követni."
 
 #. i18n: ectx: label, entry (WeeklyRecur), group (General View)
-#: settings/korganizer.kcfg:98
+#: settings/korganizer.kcfg:82
 #, kde-format
 msgid "Show items that recur weekly"
 msgstr "A hetente ismétlődő események megjelenítése"
 
 #. i18n: ectx: whatsthis, entry (WeeklyRecur), group (General View)
-#: settings/korganizer.kcfg:99
+#: settings/korganizer.kcfg:83
 #, kde-format
 msgid ""
 "Check this box to show the days containing weekly recurring events in bold "
@@ -4032,13 +4072,13 @@ msgstr ""
 "ha inkább az egyszeri eseményeket szeretné követni."
 
 #. i18n: ectx: label, entry (HighlightTodos), group (General View)
-#: settings/korganizer.kcfg:104
+#: settings/korganizer.kcfg:87
 #, kde-format
 msgid "Show to-dos instead of events when in Todo View"
 msgstr "Feladat nézetben feladatok látszódjanak események helyett"
 
 #. i18n: ectx: whatsthis, entry (HighlightTodos), group (General View)
-#: settings/korganizer.kcfg:105
+#: settings/korganizer.kcfg:88
 #, kde-format
 msgid ""
 "Check this box to show the days containing to-dos in bold typeface in the "
@@ -4049,13 +4089,13 @@ msgstr ""
 "esemény van."
 
 #. i18n: ectx: label, entry (HighlightJournals), group (General View)
-#: settings/korganizer.kcfg:110
+#: settings/korganizer.kcfg:92
 #, kde-format
 msgid "Show journals instead of events when in Journal View"
 msgstr "Napló nézetben naplók látszódjanak események helyett"
 
 #. i18n: ectx: whatsthis, entry (HighlightJournals), group (General View)
-#: settings/korganizer.kcfg:111
+#: settings/korganizer.kcfg:93
 #, kde-format
 msgid ""
 "Check this box to show the days containing journals in bold typeface in the "
@@ -4066,13 +4106,13 @@ msgstr ""
 "tartozik."
 
 #. i18n: ectx: label, entry (WeekNumbersShowWork), group (General View)
-#: settings/korganizer.kcfg:116
+#: settings/korganizer.kcfg:97
 #, kde-format
 msgid "Week numbers select a work week when in work week mode"
 msgstr "A hétszámok kiválasztanak egy munkahetet munkahét módban"
 
 #. i18n: ectx: whatsthis, entry (WeekNumbersShowWork), group (General View)
-#: settings/korganizer.kcfg:117
+#: settings/korganizer.kcfg:98
 #, kde-format
 msgid ""
 "Check this box to select a working week when clicking on the Date "
@@ -4083,13 +4123,13 @@ msgstr ""
 "kiválasztásához."
 
 #. i18n: ectx: label, entry, group (Agenda View)
-#: settings/korganizer.kcfg:125
+#: settings/korganizer.kcfg:105
 #, kde-format
 msgid "Hour size"
 msgstr "Az órák mérete"
 
 #. i18n: ectx: whatsthis, entry, group (Agenda View)
-#: settings/korganizer.kcfg:126
+#: settings/korganizer.kcfg:106
 #, kde-format
 msgid ""
 "Select the height of the hour rows in the agenda grid, in pixels. Increasing "
@@ -4099,19 +4139,19 @@ msgstr ""
 "értéket, a rácsban minden órasor magasabb lesz."
 
 #. i18n: ectx: tooltip, entry, group (Agenda View)
-#: settings/korganizer.kcfg:127
+#: settings/korganizer.kcfg:107
 #, kde-format
 msgid "Set the height (in pixels) for an hour in the agenda grid"
 msgstr "Áttekintő nézetben az órasorok magassága (képpontban)"
 
 #. i18n: ectx: label, entry (EnableAgendaItemIcons), group (Agenda View)
-#: settings/korganizer.kcfg:134
+#: settings/korganizer.kcfg:113
 #, kde-format
 msgid "Show icons in agenda view items"
 msgstr "Ikonok megjelenítése áttekintő nézetben"
 
 #. i18n: ectx: whatsthis, entry (EnableAgendaItemIcons), group (Agenda View)
-#: settings/korganizer.kcfg:135
+#: settings/korganizer.kcfg:114
 #, kde-format
 msgid ""
 "Check this box to display icons (alarm, recursion, etc.) in agenda view "
@@ -4121,39 +4161,39 @@ msgstr ""
 "(emlékeztetők, ismétlődés stb. jelzésére)."
 
 #. i18n: ectx: tooltip, entry (EnableAgendaItemIcons), group (Agenda View)
-#: settings/korganizer.kcfg:136
+#: settings/korganizer.kcfg:115
 #, kde-format
 msgid "Display icons in agenda view items"
 msgstr "Ikonok használata az áttekintő nézetben"
 
 #. i18n: ectx: label, entry (ShowTodosAgendaView), group (Agenda View)
 #. i18n: ectx: label, entry (ShowTodosMonthView), group (Month View)
-#: settings/korganizer.kcfg:141 settings/korganizer.kcfg:239
+#: settings/korganizer.kcfg:119 settings/korganizer.kcfg:210
 #, kde-format
 msgid "Show to-dos"
 msgstr "A feladatok megjelenítése"
 
 #. i18n: ectx: whatsthis, entry (ShowTodosAgendaView), group (Agenda View)
-#: settings/korganizer.kcfg:142
+#: settings/korganizer.kcfg:120
 #, kde-format
 msgid "Check this box to display to-dos in the agenda view."
 msgstr ""
 "Ha ez be van jelölve, a program áttekintő nézetben megjeleníti a feladatokat."
 
 #. i18n: ectx: tooltip, entry (ShowTodosAgendaView), group (Agenda View)
-#: settings/korganizer.kcfg:143
+#: settings/korganizer.kcfg:121
 #, kde-format
 msgid "Display to-dos in the agenda view"
 msgstr "A feladatok megjelenítése áttekintő nézetben"
 
 #. i18n: ectx: label, entry (MarcusBainsEnabled), group (Agenda View)
-#: settings/korganizer.kcfg:148
+#: settings/korganizer.kcfg:125
 #, kde-format
 msgid "Show current-time (Marcus Bains) line"
 msgstr "Az aktuális idő megjelenítése (Marcus Bains-vonal)"
 
 #. i18n: ectx: whatsthis, entry (MarcusBainsEnabled), group (Agenda View)
-#: settings/korganizer.kcfg:149
+#: settings/korganizer.kcfg:126
 #, kde-format
 msgid ""
 "Check this box to display a line in the day or week view indicating the "
@@ -4163,20 +4203,20 @@ msgstr ""
 "aktuális idővonalat (Marcus Bains-vonal)."
 
 #. i18n: ectx: tooltip, entry (MarcusBainsEnabled), group (Agenda View)
-#: settings/korganizer.kcfg:150
+#: settings/korganizer.kcfg:127
 #, kde-format
 msgid "Display the current-time indicator"
 msgstr "Az aktuális idővonal megjelenítése"
 
 #. i18n: ectx: label, entry (MarcusBainsShowSeconds), group (Agenda View)
-#: settings/korganizer.kcfg:155
+#: settings/korganizer.kcfg:131
 #, fuzzy, kde-format
 #| msgid "Show seconds on the current-time (Marcus Bains) line"
 msgid "Show seconds and timezone on the current-time (Marcus Bains) line"
 msgstr "A másodpercek kiírása az aktuális idővonalnál (Marcus Bains-vonal)"
 
 #. i18n: ectx: whatsthis, entry (MarcusBainsShowSeconds), group (Agenda View)
-#: settings/korganizer.kcfg:156
+#: settings/korganizer.kcfg:132
 #, fuzzy, kde-format
 #| msgid "Check this box if you want to show seconds on the current-time line."
 msgid ""
@@ -4187,7 +4227,7 @@ msgstr ""
 "Marcus Bains-vonalon."
 
 #. i18n: ectx: tooltip, entry (MarcusBainsShowSeconds), group (Agenda View)
-#: settings/korganizer.kcfg:157
+#: settings/korganizer.kcfg:133
 #, fuzzy, kde-format
 #| msgid "Display seconds with the current-time indicator"
 msgid ""
@@ -4195,7 +4235,7 @@ msgid ""
 msgstr "A másodpercek megjelenítése az aktuális idővonalnál"
 
 #. i18n: ectx: label, entry (SelectionStartsEditor), group (Agenda View)
-#: settings/korganizer.kcfg:162
+#: settings/korganizer.kcfg:137
 #, kde-format
 msgid "Time range selection in agenda view starts event editor"
 msgstr ""
@@ -4203,7 +4243,7 @@ msgstr ""
 "eseményszerkesztő"
 
 #. i18n: ectx: whatsthis, entry (SelectionStartsEditor), group (Agenda View)
-#: settings/korganizer.kcfg:163
+#: settings/korganizer.kcfg:138
 #, kde-format
 msgid ""
 "Check this box to start the event editor automatically when you select a "
@@ -4216,28 +4256,28 @@ msgstr ""
 "tervezett esemény kezdési idejétől a befejezési idejéig."
 
 #. i18n: ectx: tooltip, entry (SelectionStartsEditor), group (Agenda View)
-#: settings/korganizer.kcfg:164
+#: settings/korganizer.kcfg:139
 #, kde-format
 msgid "Enable automatic event editor with time range selection"
 msgstr "Automatikus eseményszerkesztés időtartomány kiválasztásakor"
 
 #. i18n: ectx: label, entry, group (Agenda View)
 #. i18n: ectx: label, entry, group (Month View)
-#: settings/korganizer.kcfg:169 settings/korganizer.kcfg:259
+#: settings/korganizer.kcfg:143 settings/korganizer.kcfg:227
 #, kde-format
 msgid "Color Usage"
 msgstr "Színhasználat"
 
 #. i18n: ectx: label, entry, group (Agenda View)
 #. i18n: ectx: label, entry, group (Month View)
-#: settings/korganizer.kcfg:172 settings/korganizer.kcfg:262
+#: settings/korganizer.kcfg:146 settings/korganizer.kcfg:230
 #, kde-format
 msgid "Tag inside, calendar outside"
 msgstr "Címke belül, naptár kívül"
 
 #. i18n: ectx: whatsthis, entry, group (Agenda View)
 #. i18n: ectx: whatsthis, entry, group (Month View)
-#: settings/korganizer.kcfg:173 settings/korganizer.kcfg:263
+#: settings/korganizer.kcfg:147 settings/korganizer.kcfg:231
 #, fuzzy, kde-format
 #| msgid ""
 #| "Select the \"Category inside, calendar outside\" option if you would like "
@@ -4256,7 +4296,7 @@ msgstr ""
 "beállítani."
 
 #. i18n: ectx: tooltip, entry, group (Agenda View)
-#: settings/korganizer.kcfg:174
+#: settings/korganizer.kcfg:148
 #, fuzzy, kde-format
 #| msgid ""
 #| "Draw agenda items in their category color inside and calendar color for "
@@ -4270,14 +4310,14 @@ msgstr ""
 
 #. i18n: ectx: label, entry, group (Agenda View)
 #. i18n: ectx: label, entry, group (Month View)
-#: settings/korganizer.kcfg:177 settings/korganizer.kcfg:267
+#: settings/korganizer.kcfg:151 settings/korganizer.kcfg:235
 #, kde-format
 msgid "Calendar inside, tag outside"
 msgstr "Naptár belül, címke kívül"
 
 #. i18n: ectx: whatsthis, entry, group (Agenda View)
 #. i18n: ectx: whatsthis, entry, group (Month View)
-#: settings/korganizer.kcfg:178 settings/korganizer.kcfg:268
+#: settings/korganizer.kcfg:152 settings/korganizer.kcfg:236
 #, fuzzy, kde-format
 #| msgid ""
 #| "Select the \"Calendar inside, category outside\" option if you would like "
@@ -4296,7 +4336,7 @@ msgstr ""
 "beállítani."
 
 #. i18n: ectx: tooltip, entry, group (Agenda View)
-#: settings/korganizer.kcfg:179
+#: settings/korganizer.kcfg:153
 #, fuzzy, kde-format
 #| msgid ""
 #| "Draw agenda items in their calendar color inside and category color for "
@@ -4310,13 +4350,13 @@ msgstr ""
 
 #. i18n: ectx: label, entry, group (Agenda View)
 #. i18n: ectx: label, entry, group (Month View)
-#: settings/korganizer.kcfg:182 settings/korganizer.kcfg:272
+#: settings/korganizer.kcfg:156 settings/korganizer.kcfg:240
 #, kde-format
 msgid "Only tag"
 msgstr "Csak címke"
 
 #. i18n: ectx: whatsthis, entry, group (Agenda View)
-#: settings/korganizer.kcfg:183
+#: settings/korganizer.kcfg:157
 #, fuzzy, kde-format
 #| msgid ""
 #| "Select the \"Only category\" option if you would like to draw calendar "
@@ -4333,7 +4373,7 @@ msgstr ""
 "betűtípusok párbeszédablakban állíthatók be."
 
 #. i18n: ectx: tooltip, entry, group (Agenda View)
-#: settings/korganizer.kcfg:184
+#: settings/korganizer.kcfg:158
 #, fuzzy, kde-format
 #| msgid ""
 #| "Draw agenda items using their category color for the inside and border"
@@ -4343,13 +4383,13 @@ msgstr ""
 
 #. i18n: ectx: label, entry, group (Agenda View)
 #. i18n: ectx: label, entry, group (Month View)
-#: settings/korganizer.kcfg:187 settings/korganizer.kcfg:277
+#: settings/korganizer.kcfg:161 settings/korganizer.kcfg:245
 #, kde-format
 msgid "Only calendar"
 msgstr "Csak naptár"
 
 #. i18n: ectx: whatsthis, entry, group (Agenda View)
-#: settings/korganizer.kcfg:188
+#: settings/korganizer.kcfg:162
 #, fuzzy, kde-format
 #| msgid ""
 #| "Select the \"Only calendar\" option if you would like to draw calendar "
@@ -4365,7 +4405,7 @@ msgstr ""
 "betűtípusok lapon lehet beállítani."
 
 #. i18n: ectx: tooltip, entry, group (Agenda View)
-#: settings/korganizer.kcfg:189
+#: settings/korganizer.kcfg:163
 #, kde-format
 msgid "Draw agenda items using their calendar color for the inside and border"
 msgstr ""
@@ -4373,7 +4413,7 @@ msgstr ""
 "színe legyen."
 
 #. i18n: ectx: whatsthis, entry (ColorBusyDaysEnabled), group (Agenda View)
-#: settings/korganizer.kcfg:196
+#: settings/korganizer.kcfg:170
 #, kde-format
 msgid ""
 "Check this box if you want agenda's background to be filled with a different "
@@ -4387,19 +4427,19 @@ msgstr ""
 "is megváltoztathatja. Keresse a \"Zsúfolt napok háttérszíne\" beállítást."
 
 #. i18n: ectx: label, entry (AgendaViewCalendarDisplay), group (Agenda View)
-#: settings/korganizer.kcfg:200
+#: settings/korganizer.kcfg:174
 #, kde-format
 msgid "Multiple Calendar Display"
 msgstr "Több naptár megjelenítése"
 
 #. i18n: ectx: label, entry (AgendaViewCalendarDisplay), group (Agenda View)
-#: settings/korganizer.kcfg:203
+#: settings/korganizer.kcfg:177
 #, kde-format
 msgid "Merge all calendars into one view"
 msgstr "A naptárak összevonása egy nézetbe"
 
 #. i18n: ectx: whatsthis, entry (AgendaViewCalendarDisplay), group (Agenda View)
-#: settings/korganizer.kcfg:204
+#: settings/korganizer.kcfg:178
 #, kde-format
 msgid ""
 "Select the \"Merge all calendars into one view\" option if you would like "
@@ -4409,19 +4449,19 @@ msgstr ""
 "megjelenítéséhez egyetlen áttekintő nézetben."
 
 #. i18n: ectx: tooltip, entry (AgendaViewCalendarDisplay), group (Agenda View)
-#: settings/korganizer.kcfg:205
+#: settings/korganizer.kcfg:179
 #, kde-format
 msgid "Show all calendars merged together"
 msgstr "Mutasson minden naptárt egyesítve"
 
 #. i18n: ectx: label, entry (AgendaViewCalendarDisplay), group (Agenda View)
-#: settings/korganizer.kcfg:208
+#: settings/korganizer.kcfg:182
 #, kde-format
 msgid "Show calendars side by side"
 msgstr "Egymás melletti naptárak"
 
 #. i18n: ectx: whatsthis, entry (AgendaViewCalendarDisplay), group (Agenda View)
-#: settings/korganizer.kcfg:209
+#: settings/korganizer.kcfg:183
 #, kde-format
 msgid ""
 "Select the \"Show calendars side by side\" option if you would like to see "
@@ -4431,19 +4471,19 @@ msgstr ""
 "látni két naptárat, egymás mellett."
 
 #. i18n: ectx: tooltip, entry (AgendaViewCalendarDisplay), group (Agenda View)
-#: settings/korganizer.kcfg:210
+#: settings/korganizer.kcfg:184
 #, kde-format
 msgid "Show two calendars side-by-side"
 msgstr "Két naptár egymás mellett"
 
 #. i18n: ectx: label, entry (AgendaViewCalendarDisplay), group (Agenda View)
-#: settings/korganizer.kcfg:213
+#: settings/korganizer.kcfg:187
 #, kde-format
 msgid "Switch between views with tabs"
 msgstr "Nézetváltó fülek"
 
 #. i18n: ectx: whatsthis, entry (AgendaViewCalendarDisplay), group (Agenda View)
-#: settings/korganizer.kcfg:214
+#: settings/korganizer.kcfg:188
 #, kde-format
 msgid ""
 "Select \"Switch between views with tabs\" if you would like to alternate "
@@ -4453,19 +4493,19 @@ msgstr ""
 "váltogatni a naptárak között."
 
 #. i18n: ectx: tooltip, entry (AgendaViewCalendarDisplay), group (Agenda View)
-#: settings/korganizer.kcfg:215
+#: settings/korganizer.kcfg:189
 #, kde-format
 msgid "Tab through calendars"
 msgstr "Léptetési lehetőség a naptárakon"
 
 #. i18n: ectx: label, entry (EnableMonthItemIcons), group (Month View)
-#: settings/korganizer.kcfg:225
+#: settings/korganizer.kcfg:198
 #, kde-format
 msgid "Show icons in month view items"
 msgstr "Ikonok használata havi nézetben"
 
 #. i18n: ectx: whatsthis, entry (EnableMonthItemIcons), group (Month View)
-#: settings/korganizer.kcfg:226
+#: settings/korganizer.kcfg:199
 #, kde-format
 msgid ""
 "Check this box to display icons (alarm, recursion, etc.) in month view items."
@@ -4474,32 +4514,32 @@ msgstr ""
 "elemeinek megjelenítéséhez (emlékeztetők, ismétlődés stb. jelzésére)."
 
 #. i18n: ectx: tooltip, entry (EnableMonthItemIcons), group (Month View)
-#: settings/korganizer.kcfg:227
+#: settings/korganizer.kcfg:200
 #, kde-format
 msgid "Display icons in month view items"
 msgstr "Ikonok használata a hónapos nézet elemeinek megjelenítéséhez"
 
 #. i18n: ectx: label, entry (ShowTimeInMonthView), group (Month View)
-#: settings/korganizer.kcfg:232
+#: settings/korganizer.kcfg:204
 #, kde-format
 msgid "Show time in month view items"
 msgstr "Mutassa az időt a havi nézetben"
 
 #. i18n: ectx: whatsthis, entry (ShowTimeInMonthView), group (Month View)
-#: settings/korganizer.kcfg:233
+#: settings/korganizer.kcfg:205
 #, kde-format
 msgid "Check this box to display the time in month view items."
 msgstr ""
 "Jelölje be ezt a jelölőnégyzetet az idő megjelenítéséhez a havi nézetben."
 
 #. i18n: ectx: tooltip, entry (ShowTimeInMonthView), group (Month View)
-#: settings/korganizer.kcfg:234
+#: settings/korganizer.kcfg:206
 #, kde-format
 msgid "Display time in month view items"
 msgstr "Mutassa az időt a havi nézetben"
 
 #. i18n: ectx: whatsthis, entry (ShowTodosMonthView), group (Month View)
-#: settings/korganizer.kcfg:240
+#: settings/korganizer.kcfg:211
 #, kde-format
 msgid "Check this box to display to-dos in the month view."
 msgstr ""
@@ -4507,37 +4547,37 @@ msgstr ""
 "megjelenítéséhez (emlékeztetők, ismétlődés stb. jelzésére)."
 
 #. i18n: ectx: tooltip, entry (ShowTodosMonthView), group (Month View)
-#: settings/korganizer.kcfg:241
+#: settings/korganizer.kcfg:212
 #, kde-format
 msgid "Display to-dos in the month view"
 msgstr "A feladatok megjelenítése hónapos nézetben"
 
 #. i18n: ectx: label, entry (ShowJournalsMonthView), group (Month View)
-#: settings/korganizer.kcfg:246
+#: settings/korganizer.kcfg:216
 #, kde-format
 msgid "Show journals"
 msgstr "A naplók megjelenítése"
 
 #. i18n: ectx: whatsthis, entry (ShowJournalsMonthView), group (Month View)
-#: settings/korganizer.kcfg:247
+#: settings/korganizer.kcfg:217
 #, kde-format
 msgid "Check this box to display journals in the month view."
 msgstr "Ha ez be van jelölve, a naplóbejegyzések megjelennek hónapos nézetben."
 
 #. i18n: ectx: tooltip, entry (ShowJournalsMonthView), group (Month View)
-#: settings/korganizer.kcfg:248
+#: settings/korganizer.kcfg:218
 #, kde-format
 msgid "Display journals in the month view"
 msgstr "A naplóbejegyzések megjelenítése hónapos nézetben"
 
 #. i18n: ectx: label, entry, group (Month View)
-#: settings/korganizer.kcfg:253
+#: settings/korganizer.kcfg:222
 #, kde-format
 msgid "Month view uses full window"
 msgstr "A hónapos nézet teljes ablakos legyen"
 
 #. i18n: ectx: whatsthis, entry, group (Month View)
-#: settings/korganizer.kcfg:254
+#: settings/korganizer.kcfg:223
 #, kde-format
 msgid ""
 "Check this box to use the full KOrganizer window when displaying the month "
@@ -4551,7 +4591,7 @@ msgstr ""
 "és a naptárlista nem fog megjelenni."
 
 #. i18n: ectx: tooltip, entry, group (Month View)
-#: settings/korganizer.kcfg:264
+#: settings/korganizer.kcfg:232
 #, fuzzy, kde-format
 #| msgid ""
 #| "Draw month items in their category color inside and calendar color for "
@@ -4564,7 +4604,7 @@ msgstr ""
 "naptár színével"
 
 #. i18n: ectx: tooltip, entry, group (Month View)
-#: settings/korganizer.kcfg:269
+#: settings/korganizer.kcfg:237
 #, fuzzy, kde-format
 #| msgid ""
 #| "Draw month items in their calendar color inside and category color for "
@@ -4577,7 +4617,7 @@ msgstr ""
 "kategória színével"
 
 #. i18n: ectx: whatsthis, entry, group (Month View)
-#: settings/korganizer.kcfg:273
+#: settings/korganizer.kcfg:241
 #, fuzzy, kde-format
 #| msgid ""
 #| "Select the \"Only category\" option if you would like to draw calendar "
@@ -4594,7 +4634,7 @@ msgstr ""
 "betűtípusok párbeszédablakban állíthatók be."
 
 #. i18n: ectx: tooltip, entry, group (Month View)
-#: settings/korganizer.kcfg:274
+#: settings/korganizer.kcfg:242
 #, fuzzy, kde-format
 #| msgid ""
 #| "Draw month items using their category color for the inside and border"
@@ -4602,7 +4642,7 @@ msgid "Draw month items using their tag color for the inside and border"
 msgstr "A havi elemek belseje és szegélye is a kategória színével jelenjen meg"
 
 #. i18n: ectx: whatsthis, entry, group (Month View)
-#: settings/korganizer.kcfg:278
+#: settings/korganizer.kcfg:246
 #, kde-format
 msgid ""
 "Select the \"Only calendar\" option if you would like to draw calendar items "
@@ -4614,19 +4654,19 @@ msgstr ""
 "Színek és betűtípusok lapon lehet beállítani."
 
 #. i18n: ectx: tooltip, entry, group (Month View)
-#: settings/korganizer.kcfg:279
+#: settings/korganizer.kcfg:247
 #, kde-format
 msgid "Draw month items using their calendar color for the inside and border"
 msgstr "A hónap elemek belseje és szegélye is a naptár színével jelenjen meg"
 
 #. i18n: ectx: label, entry, group (Todo View)
-#: settings/korganizer.kcfg:289
+#: settings/korganizer.kcfg:256
 #, kde-format
 msgid "Always display completed to-dos at the bottom of the list"
 msgstr "A befejezett feladatok a lista aljára kerülnek"
 
 #. i18n: ectx: tooltip, entry, group (Todo View)
-#: settings/korganizer.kcfg:290
+#: settings/korganizer.kcfg:257
 #, kde-format
 msgid ""
 "Completed to-dos are displayed at the bottom of the list, regardless of "
@@ -4636,7 +4676,7 @@ msgstr ""
 "való tekintet nélkül"
 
 #. i18n: ectx: whatsthis, entry, group (Todo View)
-#: settings/korganizer.kcfg:291
+#: settings/korganizer.kcfg:258
 #, kde-format
 msgid ""
 "Check this box if you want all completed to-dos to be always grouped at the "
@@ -4646,19 +4686,19 @@ msgstr ""
 "alján jelennek meg."
 
 #. i18n: ectx: label, entry, group (Todo View)
-#: settings/korganizer.kcfg:296
+#: settings/korganizer.kcfg:262
 #, kde-format
 msgid "To-do list view uses full window"
 msgstr "Teljes ablakos feladatnézet"
 
 #. i18n: ectx: tooltip, entry, group (Todo View)
-#: settings/korganizer.kcfg:297
+#: settings/korganizer.kcfg:263
 #, kde-format
 msgid "Display to-do list in a full KOrganizer window"
 msgstr "Feladatlista megjelenítése a KOrganizer teljes ablakában"
 
 #. i18n: ectx: whatsthis, entry, group (Todo View)
-#: settings/korganizer.kcfg:298
+#: settings/korganizer.kcfg:264
 #, kde-format
 msgid ""
 "Check this box to use the full KOrganizer window when displaying the to-do "
@@ -4672,19 +4712,19 @@ msgstr ""
 "részletek ablaka és az naptárlista nem fog megjelenni."
 
 #. i18n: ectx: label, entry, group (Todo View)
-#: settings/korganizer.kcfg:303
+#: settings/korganizer.kcfg:268
 #, kde-format
 msgid "Display to-dos in a flat list"
 msgstr "Feladatok megjelenítése egyszerű listában"
 
 #. i18n: ectx: tooltip, entry, group (Todo View)
-#: settings/korganizer.kcfg:304
+#: settings/korganizer.kcfg:269
 #, kde-format
 msgid "Display to-dos as a flat list instead of a hierarchical tree"
 msgstr "Feladatok megjelenítése egyszerű listában hierarchikus fa helyett"
 
 #. i18n: ectx: whatsthis, entry, group (Todo View)
-#: settings/korganizer.kcfg:305
+#: settings/korganizer.kcfg:270
 #, kde-format
 msgid ""
 "Check this box if you want to see all your to-dos in a flat list instead of "
@@ -4694,13 +4734,13 @@ msgstr ""
 "látni egy rendezett, hierarchikus faszerkezet helyett."
 
 #. i18n: ectx: label, entry, group (Todo View)
-#: settings/korganizer.kcfg:310
+#: settings/korganizer.kcfg:274
 #, kde-format
 msgid "Record completed to-dos in journal entries"
 msgstr "A befejezett feladatok regisztrálása a naplóban"
 
 #. i18n: ectx: whatsthis, entry, group (Todo View)
-#: settings/korganizer.kcfg:311
+#: settings/korganizer.kcfg:275
 #, kde-format
 msgid ""
 "Check this box to record the completion of a to-do in a new entry of your "
@@ -4712,8 +4752,8 @@ msgstr ""
 #. i18n: ectx: label, entry, group (Colors)
 #. i18n: ectx: label, entry, group (Theming)
 #. i18n: ectx: label, entry, group (Theme/Month view)
-#: settings/korganizer.kcfg:319 settings/korganizer.kcfg:536
-#: settings/korganizer.kcfg:645
+#: settings/korganizer.kcfg:282 settings/korganizer.kcfg:474
+#: settings/korganizer.kcfg:581
 #, kde-format
 msgid "Holiday color"
 msgstr "A szabadság napjainak színe"
@@ -4721,8 +4761,8 @@ msgstr "A szabadság napjainak színe"
 #. i18n: ectx: whatsthis, entry, group (Colors)
 #. i18n: ectx: whatsthis, entry, group (Theming)
 #. i18n: ectx: whatsthis, entry, group (Theme/Month view)
-#: settings/korganizer.kcfg:320 settings/korganizer.kcfg:537
-#: settings/korganizer.kcfg:646
+#: settings/korganizer.kcfg:283 settings/korganizer.kcfg:475
+#: settings/korganizer.kcfg:582
 #, kde-format
 msgid ""
 "Select the holiday color here. The holiday color will be used for the "
@@ -4734,34 +4774,34 @@ msgstr ""
 
 #. i18n: ectx: label, entry (AgendaBgColor), group (Colors)
 #. i18n: ectx: label, entry, group (Theming)
-#: settings/korganizer.kcfg:325 settings/korganizer.kcfg:465
+#: settings/korganizer.kcfg:287 settings/korganizer.kcfg:403
 #, kde-format
 msgid "Agenda view background color"
 msgstr "A feladatok áttekintésénél a háttér színe"
 
 #. i18n: ectx: whatsthis, entry (AgendaBgColor), group (Colors)
 #. i18n: ectx: whatsthis, entry, group (Theming)
-#: settings/korganizer.kcfg:326 settings/korganizer.kcfg:466
+#: settings/korganizer.kcfg:288 settings/korganizer.kcfg:404
 #, kde-format
 msgid "Select the agenda view background color here."
 msgstr "A feladatok áttekintő nézetében ez lesz a háttérszín."
 
 #. i18n: ectx: label, entry, group (Colors)
-#: settings/korganizer.kcfg:331
+#: settings/korganizer.kcfg:292
 #, fuzzy, kde-format
 #| msgid "Agenda view current-time line color"
 msgid "Agenda view current-time (Marcus Bains) line color"
 msgstr "Az aktuális idővonal színe áttekintő nézetben"
 
 #. i18n: ectx: whatsthis, entry, group (Colors)
-#: settings/korganizer.kcfg:332
+#: settings/korganizer.kcfg:293
 #, kde-format
 msgid "Select a color to use for the current-time (Marcus Bains) line."
 msgstr ""
 "Az aktuális idővonal (Marcus Bains-vonal) megjelenítésénél használt szín."
 
 #. i18n: ectx: tooltip, entry, group (Colors)
-#: settings/korganizer.kcfg:333
+#: settings/korganizer.kcfg:294
 #, kde-format
 msgid "Use this color for the Agenda View current-time (Marcus Bains) line"
 msgstr ""
@@ -4769,13 +4809,13 @@ msgstr ""
 "nézetben"
 
 #. i18n: ectx: label, entry (ViewBgBusyColor), group (Colors)
-#: settings/korganizer.kcfg:338
+#: settings/korganizer.kcfg:298
 #, kde-format
 msgid "Busy days background color"
 msgstr "Zsúfolt napok háttérszíne"
 
 #. i18n: ectx: whatsthis, entry (ViewBgBusyColor), group (Colors)
-#: settings/korganizer.kcfg:339
+#: settings/korganizer.kcfg:299
 #, kde-format
 msgid ""
 "When you have an all day event marked as busy, you can have a different "
@@ -4787,53 +4827,53 @@ msgstr ""
 
 #. i18n: ectx: label, entry, group (Colors)
 #. i18n: ectx: label, entry, group (Theme/Month view)
-#: settings/korganizer.kcfg:344 settings/korganizer.kcfg:565
+#: settings/korganizer.kcfg:303 settings/korganizer.kcfg:502
 #, kde-format
 msgid "Working hours color"
 msgstr "A munkaidő óráinak színe"
 
 #. i18n: ectx: whatsthis, entry, group (Colors)
-#: settings/korganizer.kcfg:345
+#: settings/korganizer.kcfg:304
 #, kde-format
 msgid "Select the working hours color for the agenda view here."
 msgstr "Itt lehet kiválasztani, mi legyen a munkaidő színe áttekintő nézetben."
 
 #. i18n: ectx: label, entry (TodoDueTodayColor), group (Colors)
 #. i18n: ectx: label, entry, group (Theme/Month view)
-#: settings/korganizer.kcfg:350 settings/korganizer.kcfg:616
+#: settings/korganizer.kcfg:308 settings/korganizer.kcfg:554
 #, kde-format
 msgid "To-do due today color"
 msgstr "A mai határidejű feladatok színe"
 
 #. i18n: ectx: whatsthis, entry (TodoDueTodayColor), group (Colors)
 #. i18n: ectx: whatsthis, entry, group (Theme/Month view)
-#: settings/korganizer.kcfg:351 settings/korganizer.kcfg:617
+#: settings/korganizer.kcfg:309 settings/korganizer.kcfg:555
 #, kde-format
 msgid "Select the to-do due today color here."
 msgstr "Itt lehet kiválasztani a mai határidejű feladatok színét."
 
 #. i18n: ectx: label, entry (TodoOverdueColor), group (Colors)
 #. i18n: ectx: label, entry, group (Theme/Month view)
-#: settings/korganizer.kcfg:356 settings/korganizer.kcfg:630
+#: settings/korganizer.kcfg:313 settings/korganizer.kcfg:567
 #, kde-format
 msgid "To-do overdue color"
 msgstr "A lejárt határidejű feladatok színe"
 
 #. i18n: ectx: whatsthis, entry (TodoOverdueColor), group (Colors)
 #. i18n: ectx: whatsthis, entry, group (Theme/Month view)
-#: settings/korganizer.kcfg:357 settings/korganizer.kcfg:631
+#: settings/korganizer.kcfg:314 settings/korganizer.kcfg:568
 #, kde-format
 msgid "Select the to-do overdue color here."
 msgstr "Itt lehet kiválasztani a lejárt határidejű feladatok színét."
 
 #. i18n: ectx: label, entry, group (Fonts)
-#: settings/korganizer.kcfg:365
+#: settings/korganizer.kcfg:321
 #, kde-format
 msgid "Time bar"
 msgstr "Idősáv"
 
 #. i18n: ectx: whatsthis, entry, group (Fonts)
-#: settings/korganizer.kcfg:366
+#: settings/korganizer.kcfg:322
 #, kde-format
 msgid ""
 "Press this button to configure the time bar font. The time bar is the widget "
@@ -4845,13 +4885,13 @@ msgstr ""
 "választó párbeszédablakot, ahol kiválaszthatja az óraszámok betűtípusát."
 
 #. i18n: ectx: label, entry, group (Fonts)
-#: settings/korganizer.kcfg:370
+#: settings/korganizer.kcfg:325
 #, kde-format
 msgid "Month view"
 msgstr "Havi nézet"
 
 #. i18n: ectx: whatsthis, entry, group (Fonts)
-#: settings/korganizer.kcfg:371
+#: settings/korganizer.kcfg:326
 #, kde-format
 msgid ""
 "Press this button to configure the month view font. This button will open "
@@ -4863,13 +4903,13 @@ msgstr ""
 "nézetben megjelenő elemek betűtípusát."
 
 #. i18n: ectx: label, entry, group (Fonts)
-#: settings/korganizer.kcfg:375
+#: settings/korganizer.kcfg:329
 #, kde-format
 msgid "Agenda view"
 msgstr "Áttekintő nézet"
 
 #. i18n: ectx: whatsthis, entry, group (Fonts)
-#: settings/korganizer.kcfg:376
+#: settings/korganizer.kcfg:330
 #, kde-format
 msgid ""
 "Press this button to configure the agenda view font. This button will open "
@@ -4881,14 +4921,14 @@ msgstr ""
 "lehet választani, melyik betűtípus legyen érvényes az áttekintő nézetben."
 
 #. i18n: ectx: label, entry, group (Fonts)
-#: settings/korganizer.kcfg:380
+#: settings/korganizer.kcfg:333
 #, fuzzy, kde-format
 #| msgid "Show current-time (Marcus Bains) line"
 msgid "Current-time (Marcus Bains) line"
 msgstr "Az aktuális idő megjelenítése (Marcus Bains-vonal)"
 
 #. i18n: ectx: whatsthis, entry, group (Fonts)
-#: settings/korganizer.kcfg:381
+#: settings/korganizer.kcfg:334
 #, fuzzy, kde-format
 #| msgid ""
 #| "Press this button to configure the current-time line font. This button "
@@ -4904,44 +4944,44 @@ msgstr ""
 "áttekintő nézetben megjelenő aktuális idővonal betűtípusát."
 
 #. i18n: ectx: label, entry (DefaultTodoAttachMethod), group (Hidden Options)
-#: settings/korganizer.kcfg:405
+#: settings/korganizer.kcfg:353
 #, kde-format
 msgid "Default todo attachment method"
 msgstr "Alapértelmezett feladatcsatolás"
 
 #. i18n: ectx: whatsthis, entry (DefaultTodoAttachMethod), group (Hidden Options)
-#: settings/korganizer.kcfg:406
+#: settings/korganizer.kcfg:354
 #, kde-format
 msgid "The default way of attaching dropped emails to a task"
 msgstr "Levél feladatra történő ejtésekor az alapértelmezett csatolási mód"
 
 #. i18n: ectx: label, entry (DefaultTodoAttachMethod), group (Hidden Options)
-#: settings/korganizer.kcfg:409
+#: settings/korganizer.kcfg:357
 #, kde-format
 msgid "Always ask"
 msgstr "Rákérdezés mindig"
 
 #. i18n: ectx: label, entry (DefaultTodoAttachMethod), group (Hidden Options)
-#: settings/korganizer.kcfg:412
+#: settings/korganizer.kcfg:360
 #, kde-format
 msgid "Only attach link to message"
 msgstr "Csak a link csatolása"
 
 #. i18n: ectx: label, entry (DefaultTodoAttachMethod), group (Hidden Options)
-#: settings/korganizer.kcfg:415
+#: settings/korganizer.kcfg:363
 #, kde-format
 msgid "Attach complete message"
 msgstr "A teljes üzenet csatolása"
 
 #. i18n: ectx: label, entry, group (Theming)
 #. i18n: ectx: label, entry, group (Theme/Month view)
-#: settings/korganizer.kcfg:472 settings/korganizer.kcfg:560
+#: settings/korganizer.kcfg:410 settings/korganizer.kcfg:497
 #, kde-format
 msgid "Highlight color"
 msgstr "Kiemelési szín"
 
 #. i18n: ectx: whatsthis, entry, group (Theming)
-#: settings/korganizer.kcfg:473
+#: settings/korganizer.kcfg:411
 #, kde-format
 msgid ""
 "Select the highlight color here. The highlight color will be used for "
@@ -4951,13 +4991,13 @@ msgstr ""
 "megjelölt terület feladatnézetben és a dátumnavigátorban."
 
 #. i18n: ectx: label, entry, group (Theming)
-#: settings/korganizer.kcfg:541
+#: settings/korganizer.kcfg:479
 #, kde-format
 msgid "Use system color"
 msgstr "Rendszerszínek használata"
 
 #. i18n: ectx: whatsthis, entry, group (Theming)
-#: settings/korganizer.kcfg:542
+#: settings/korganizer.kcfg:480
 #, kde-format
 msgid ""
 "Use system color instead of user defined color. If enabled will ignore all "
@@ -4965,19 +5005,19 @@ msgid ""
 msgstr ""
 
 #. i18n: ectx: label, entry, group (Theme/Month view)
-#: settings/korganizer.kcfg:553
+#: settings/korganizer.kcfg:490
 #, kde-format
 msgid "Month view background color"
 msgstr "Háttérszín havi nézetben"
 
 #. i18n: ectx: whatsthis, entry, group (Theme/Month view)
-#: settings/korganizer.kcfg:554
+#: settings/korganizer.kcfg:491
 #, kde-format
 msgid "Select the Month view background color here."
 msgstr "Itt lehet kiválasztani a havi nézet háttérszínét."
 
 #. i18n: ectx: whatsthis, entry, group (Theme/Month view)
-#: settings/korganizer.kcfg:561
+#: settings/korganizer.kcfg:498
 #, kde-format
 msgid ""
 "Select the highlight color here. The highlight color will be used for "
@@ -4987,19 +5027,19 @@ msgstr ""
 "megjelölt terület havi nézetben és a dátumnavigátorban."
 
 #. i18n: ectx: whatsthis, entry, group (Theme/Month view)
-#: settings/korganizer.kcfg:566
+#: settings/korganizer.kcfg:503
 #, kde-format
 msgid "Select the working hours background color for the Month view here."
 msgstr "Itt lehet kiválasztani, mi legyen a munkaidő színe havi nézetben."
 
 #. i18n: ectx: label, entry, group (Theme/Month view)
-#: settings/korganizer.kcfg:588
+#: settings/korganizer.kcfg:525
 #, kde-format
 msgid "Default event color"
 msgstr "Alapértelmezett eseményszín"
 
 #. i18n: ectx: whatsthis, entry, group (Theme/Month view)
-#: settings/korganizer.kcfg:589
+#: settings/korganizer.kcfg:526
 #, fuzzy, kde-format
 #| msgid ""
 #| "Select the default event color here. The default event color will be used "
@@ -6146,6 +6186,20 @@ msgstr "%1"
 msgctxt "4 digit year"
 msgid "%1"
 msgstr "%1"
+
+#~ msgctxt "@title:group"
+#~ msgid "Working Period"
+#~ msgstr "Munkaidő"
+
+#~ msgctxt "@info:whatsthis"
+#~ msgid ""
+#~ "Check this box to make KOrganizer mark the working hours for this day of "
+#~ "the week. If this is a work day for you, check this box, or the working "
+#~ "hours will not be marked with color."
+#~ msgstr ""
+#~ "Ha ez be van jelölve, akkor a KOrganizer ennél a napnál megjelöli a "
+#~ "munkaidőt. Jelölje be, ha a nap munkanapnak számít, különben a munkaidő "
+#~ "nem lesz színezve."
 
 #~ msgctxt "@info:status"
 #~ msgid "Configure the view"
@@ -10498,9 +10552,6 @@ msgstr "%1"
 #~ msgctxt "@title:tab general to-do settings"
 #~ msgid "&General"
 #~ msgstr "Általán&os"
-
-#~ msgid "Sets the title of this journal."
-#~ msgstr "Beállítja a napló címét."
 
 #~ msgctxt "journal title"
 #~ msgid "T&itle:"
