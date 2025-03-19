@@ -405,13 +405,10 @@ AkonadiCollectionView::AkonadiCollectionView(CalendarView *view, bool hasContext
     topLayout->setContentsMargins({});
 
     auto searchCol = new QLineEdit(this);
-    searchCol->setToolTip(i18nc("@info:tooltip", "Set search keyword"));
-    searchCol->setWhatsThis(i18nc("@info:whatsthis", "Lets you search for a keyword in your calendars"));
+    searchCol->setToolTip(i18nc("@info:tooltip", "Calendar search"));
+    searchCol->setWhatsThis(i18nc("@info:whatsthis", "Start typing to search for a calendar within the collection."));
     searchCol->setClearButtonEnabled(true);
-    searchCol->setPlaceholderText(
-        i18nc("@info/plain Displayed grayed-out inside the "
-              "textbox, verb to search",
-              "Search…"));
+    searchCol->setPlaceholderText(i18nc("@info/plain Displayed grayed-out inside the textbox, calendar to search", "Search for calendar…"));
     topLayout->addWidget(searchCol);
 
     auto colorProxy = new ColorProxyModel(this);
