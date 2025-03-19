@@ -2992,7 +2992,7 @@ choose the <menuchoice
 <varlistentry>
 <term
 ><guilabel
->Werkuren</guilabel
+>Wekelijkse planning</guilabel
 ></term>
 <listitem
 ><para
@@ -3000,13 +3000,13 @@ choose the <menuchoice
 >Dagelijkse begintijd</guilabel
 > en <guilabel
 >Dagelijkse eindtijd</guilabel
-> kunt u aangeven wanneer uw werkdag begint en eindigt. &korganizer; markeert de werkuren met een andere achtergrondkleur dan de andere uren, en op feest- en vrije dagen.</para>
+> kunt u specificeren wanneer uw typische werkdag begint en eindigt. &korganizer; markeert de uren buiten uw reguliere routine en voor vakanties.</para>
 <para
->Bovendien moet u de de werkdagen elk apart aanvinken. Merk de weekdagen die voor u werkdagen zijn, zodat de werkuren voor deze dagen gelden.Vink ook <guilabel
->Feestdagen uitsluiten</guilabel
-> aan, zodat &korganizer; geen werkuren markeert op de feestdagen die voor uw land, zoals ingesteld in het neerklapmenu van <guilabel
->Feestdag-regio</guilabel
->, gelden.</para>
+>Daarnaast hebt u keuzevakjes naast elke dag van de week. Activeer de weekdagen die onderdeel zijn van uw reguliere planning, typisch weekeinden uitgesloten. &korganizer; zal uren markeren die onderdeel zijn van uw dagelijkse planning (misschien uw wekelijkse werkplanning) anders dan van uren buiten uw reguliere planning. Activeren van <guilabel
+>Vakantie uitsluiten</guilabel
+> voorkomt dat &korganizer; uren van de reguliere planning (of werk-) voor de vakantiedagen in de regio gedefinieerd in de afrollijst <guilabel
+>Vakantiedagen van regio</guilabel
+> erboven.</para>
 </listitem>
 </varlistentry>
 

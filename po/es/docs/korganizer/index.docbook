@@ -3008,7 +3008,7 @@ choose the <menuchoice
 <varlistentry>
 <term
 ><guilabel
->Periodo de trabajo</guilabel
+>Planificación semanal</guilabel
 ></term>
 <listitem
 ><para
@@ -3016,13 +3016,13 @@ choose the <menuchoice
 >Hora diaria de inicio</guilabel
 > y <guilabel
 >Hora diaria de finalización</guilabel
-> le permiten especificar cuándo comienza y cuándo termina su jornada laboral. &korganizer; define las horas de trabajo resaltándolas con un color diferente de las horas no laborales, de las vacaciones y de los días de fiesta.</para>
+> le permiten especificar cuándo empieza y termina su jornada habitual. &korganizer; define las horas resaltándolas con un color diferente del resto de horas y de los días no laborables.</para>
 <para
->Además, tiene casillas de verificación para cada uno de los días de la semana. Marque los días de la semana que son laborales para usted, para marcar las horas laborales de esos días. Marcar <guilabel
->Excluir vacaciones</guilabel
-> evita que &korganizer; marque las horas laborales para la región de las vacaciones definidas en el desplegable <guilabel
->Usar región de vacaciones</guilabel
-> de arriba.</para>
+>Además, dispone de casillas junto a cada día de la semana. Marque los días de la semana que forman parte de su horario habitual, posiblemente excluyendo los fines de semana. &korganizer; marcará las horas que forman parte de su horario diario (tal vez su horario de trabajo semanal) de forma diferente a las horas que quedan fuera del horario habitual. Marque <guilabel
+>Excluir festivos</guilabel
+> para evitar que &korganizer; marque las horas del horario habitual (o laboral) en los días festivos de la región definida en el menú desplegable <guilabel
+>Usar región de festivos</guilabel
+>.</para>
 </listitem>
 </varlistentry>
 

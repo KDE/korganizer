@@ -2950,7 +2950,7 @@ choose the <menuchoice
 <varlistentry>
 <term
 ><guilabel
->Període laboral</guilabel
+>Planificació setmanal</guilabel
 ></term>
 <listitem
 ><para
@@ -2958,11 +2958,11 @@ choose the <menuchoice
 >Hora de començar</guilabel
 > i <guilabel
 >Hora de plegar</guilabel
-> us permeten especificar quan comença i quan finalitza la vostra jornada laboral. El &korganizer; estableix les hores de treball ressaltant-les amb un color diferent de les hores no laborals, dies de vacances i dies festius.</para>
+> us permeten especificar quan comença i quan finalitza la vostra jornada habitual. El &korganizer; separa les hores ressaltant-les amb un color diferent de les hores fora de la vostra rutina habitual i dels dies festius.</para>
 <para
->A més, teniu caselles de selecció per a cadascun dels dies de la setmana. Per a marcar les hores laborals marqueu els dies de la setmana que són laborals. Marqueu <guilabel
+>A més, teniu caselles de selecció per a cadascun dels dies de la setmana. Marqueu els dies de la setmana que són part de la vostra planificació habitual, excloent normalment els caps de setmana. El &korganizer; marcarà les hores que són part de la vostra planificació diària (potser la vostra planificació laboral setmanal) de manera diferent de les hores fora de la vostra planificació habitual. Marqueu <guilabel
 >Exclou els festius</guilabel
-> per a preveure que el &korganizer; marqui les hores laborals per a la regió de festius definida en la llista desplegable <guilabel
+> per a evitar que el &korganizer; marqui les hores habituals (o laborals) com a dies festius a la regió definida en la llista desplegable <guilabel
 >Usa la regió per als dies festius</guilabel
 > de sobre.</para>
 </listitem>
