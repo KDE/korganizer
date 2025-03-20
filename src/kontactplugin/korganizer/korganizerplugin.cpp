@@ -109,7 +109,7 @@ OrgKdeKorganizerCalendarInterface *KOrganizerPlugin::interface()
 
 void KOrganizerPlugin::slotNewEvent()
 {
-    interface()->openEventEditor(QString());
+    interface()->openEventEditor();
 }
 
 bool KOrganizerPlugin::isRunningStandalone() const

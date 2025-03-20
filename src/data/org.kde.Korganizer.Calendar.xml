@@ -16,6 +16,8 @@
       <annotation name="org.qtproject.QtDBus.QtTypeName.In0" value="QDate"/>
     </method>
     <method name="openEventEditor">
+    </method>
+    <method name="openEventEditor">
       <arg name="text" type="s" direction="in"/>
     </method>
     <method name="openEventEditor">
