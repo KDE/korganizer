@@ -138,7 +138,6 @@ CalendarView::CalendarView(QWidget *parent)
 
     mDateNavigator = new DateNavigator(this);
     mDateChecker = new DateChecker(this);
-    mDatePicker = new KDatePicker(); // must be parent-less
 
     auto topLayout = new QVBoxLayout(this);
     topLayout->setContentsMargins({});
@@ -576,8 +575,10 @@ void CalendarView::goToday()
 
 void CalendarView::goSelectADate()
 {
-    mDatePicker->show();
-    QObject::connect(mDatePicker, &KDatePicker::dateChanged, this, [this](QDate date) {
+    auto datePicker = new KDatePicker(); // must be parent-less
+    datePicker->setAttribute(Qt::WA_DeleteOnClose, true);
+    datePicker->show();
+    QObject::connect(datePicker, &KDatePicker::dateChanged, this, [this](QDate date) {
         mDateNavigator->selectADate(date);
     });
 }

@@ -55,8 +55,6 @@ class TodoPurger;
 class CalFilterPartStatusProxyModel;
 }
 
-class KDatePicker;
-
 class QSplitter;
 class QStackedWidget;
 
@@ -745,7 +743,6 @@ private:
 
     DateNavigator *mDateNavigator = nullptr;
     DateChecker *mDateChecker = nullptr;
-    KDatePicker *mDatePicker = nullptr;
 
     QWidget *mEventViewerBox = nullptr;
     CalendarSupport::IncidenceViewer *mEventViewer = nullptr;
