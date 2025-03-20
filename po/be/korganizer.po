@@ -11,7 +11,7 @@ msgid ""
 msgstr ""
 "Project-Id-Version: korganizer\n"
 "Report-Msgid-Bugs-To: https://bugs.kde.org\n"
-"POT-Creation-Date: 2025-03-19 00:42+0000\n"
+"POT-Creation-Date: 2025-03-20 00:42+0000\n"
 "PO-Revision-Date: 2008-01-01 23:20+0200\n"
 "Last-Translator: Darafei Praliaskouski <komzpa@gmail.com>\n"
 "Language-Team: Belarusian (Official spelling) <i18n@mova.org>\n"
@@ -484,8 +484,8 @@ msgid ""
 msgstr ""
 
 #. i18n: ectx: property (text), widget (QPushButton, mDeleteButton)
-#: actionmanager.cpp:369 actionmanager.cpp:625 actionmanager.cpp:1310
-#: actionmanager.cpp:1347 ui/filteredit_base.ui:56
+#: actionmanager.cpp:369 actionmanager.cpp:634 actionmanager.cpp:1319
+#: actionmanager.cpp:1356 ui/filteredit_base.ui:56
 #, kde-format
 msgid "&Delete"
 msgstr "В&ыдаліць"
@@ -853,7 +853,7 @@ msgstr ""
 msgid "&Day"
 msgstr "&Дзень"
 
-#: actionmanager.cpp:554 actionmanager.cpp:1067
+#: actionmanager.cpp:554 actionmanager.cpp:1076
 #, fuzzy, kde-format
 #| msgid "&Next Day"
 msgid "&Next Day"
@@ -954,30 +954,61 @@ msgstr ""
 
 #: actionmanager.cpp:605
 #, fuzzy, kde-format
+#| msgid "Pick Date"
+msgctxt "@action Jump to date"
+msgid "&Pick a Date"
+msgstr "Выбар даты"
+
+#: actionmanager.cpp:606
+#, fuzzy, kde-format
+#| msgid "&Date:"
+msgid "Date"
+msgstr "&Дата:"
+
+#: actionmanager.cpp:607
+#, fuzzy, kde-format
+msgctxt "@info:status"
+msgid "Scroll the view to user selected dates"
+msgstr "Сёння"
+
+#: actionmanager.cpp:608
+#, fuzzy, kde-format
+msgctxt "@info:tooltip"
+msgid "Scroll the view to user selected dates"
+msgstr "Сёння"
+
+#: actionmanager.cpp:609
+#, kde-format
+msgctxt "@info:whatsthis"
+msgid "Opens a a date selection dialog for quickly navigating the view."
+msgstr ""
+
+#: actionmanager.cpp:614
+#, fuzzy, kde-format
 msgid "Configure View…"
 msgstr "&Настроіць дапаўненьне..."
 
-#: actionmanager.cpp:606
+#: actionmanager.cpp:615
 #, fuzzy, kde-format
 #| msgid "Configure Holidays"
 msgid "Configure"
 msgstr "Настроіць сьвяты"
 
-#: actionmanager.cpp:607
+#: actionmanager.cpp:616
 #, fuzzy, kde-format
 #| msgid "Configure &Date && Time..."
 msgctxt "@info:status"
 msgid "Configure the multi-calendar view"
 msgstr "Настроіць &дату і час..."
 
-#: actionmanager.cpp:608
+#: actionmanager.cpp:617
 #, fuzzy, kde-format
 #| msgid "Configure &Date && Time..."
 msgctxt "@info:tooltip"
 msgid "Configure the multi-calendar view"
 msgstr "Настроіць &дату і час..."
 
-#: actionmanager.cpp:610
+#: actionmanager.cpp:619
 #, kde-format
 msgctxt "@info:whatsthis"
 msgid ""
@@ -986,18 +1017,18 @@ msgid ""
 "Calendars options in the Views->Agenda Views settings."
 msgstr ""
 
-#: actionmanager.cpp:617 actionmanager.cpp:1304 actionmanager.cpp:1345
+#: actionmanager.cpp:626 actionmanager.cpp:1313 actionmanager.cpp:1354
 #, kde-format
 msgid "&Show"
 msgstr "&Паказаць"
 
-#: actionmanager.cpp:621 actionmanager.cpp:1307 actionmanager.cpp:1346
+#: actionmanager.cpp:630 actionmanager.cpp:1316 actionmanager.cpp:1355
 #, fuzzy, kde-format
 #| msgid "&Edit..."
 msgid "&Edit…"
 msgstr "&Змяніць"
 
-#: actionmanager.cpp:630
+#: actionmanager.cpp:639
 #, fuzzy, kde-format
 msgctxt "@action"
 msgid "&Make Sub-to-do Independent"
@@ -1007,107 +1038,107 @@ msgstr "Зрабіць подзадачу самастойнай"
 #. mCalendarView, SLOT(toggleAlarm()),
 #. mACollection, "activate_alarm" );
 #. ************************* SCHEDULE MENU *******************************
-#: actionmanager.cpp:642
+#: actionmanager.cpp:651
 #, fuzzy, kde-format
 msgid "&Publish Item Information…"
 msgstr "Апублікаваць звесткі..."
 
-#: actionmanager.cpp:649
+#: actionmanager.cpp:658
 #, fuzzy, kde-format
 msgid "Send &Invitation to Attendees"
 msgstr "Накіраваць апавяшчэнні"
 
-#: actionmanager.cpp:657
+#: actionmanager.cpp:666
 #, fuzzy, kde-format
 msgctxt "@action"
 msgid "Re&quest Update"
 msgstr "&Дата:"
 
-#: actionmanager.cpp:665
+#: actionmanager.cpp:674
 #, fuzzy, kde-format
 msgctxt "@action"
 msgid "Send &Cancellation to Attendees"
 msgstr "Накіраваць апавяшчэнне аб адмене"
 
-#: actionmanager.cpp:673
+#: actionmanager.cpp:682
 #, fuzzy, kde-format
 msgid "Send Status &Update"
 msgstr "&Дата:"
 
-#: actionmanager.cpp:681
+#: actionmanager.cpp:690
 #, fuzzy, kde-format
 msgctxt "counter proposal"
 msgid "Request Chan&ge"
 msgstr "&Дата:"
 
-#: actionmanager.cpp:689
+#: actionmanager.cpp:698
 #, fuzzy, kde-format
 msgctxt "@action"
 msgid "&Mail Free Busy Information…"
 msgstr "Адправіць звесткі аб занятым часе па пошце..."
 
-#: actionmanager.cpp:694
+#: actionmanager.cpp:703
 #, fuzzy, kde-format
 #| msgid "&iCalendar..."
 msgid "&Send as iCalendar…"
 msgstr "&iCalendar..."
 
-#: actionmanager.cpp:701
+#: actionmanager.cpp:710
 #, fuzzy, kde-format
 msgctxt "@action"
 msgid "&Upload Free Busy Information"
 msgstr "Апублікаваць інфармацыю аб занятым часе"
 
-#: actionmanager.cpp:707
+#: actionmanager.cpp:716
 #, fuzzy, kde-format
 #| msgid "&Addressbook"
 msgid "&Address Book"
 msgstr "&Адрасная кніга"
 
-#: actionmanager.cpp:715
+#: actionmanager.cpp:724
 #, fuzzy, kde-format
 msgid "Show Date Navigator"
 msgstr "Каляндар"
 
-#: actionmanager.cpp:719
+#: actionmanager.cpp:728
 #, fuzzy, kde-format
 msgid "Show To-do View"
 msgstr "&Паказаць заданьне"
 
-#: actionmanager.cpp:723
+#: actionmanager.cpp:732
 #, fuzzy, kde-format
 msgid "Show Item Viewer"
 msgstr "&Паказаць падзею"
 
-#: actionmanager.cpp:739
+#: actionmanager.cpp:748
 #, fuzzy, kde-format
 msgid "Show Calendar Manager"
 msgstr "Экспарт каляндара ў вэб-старонку"
 
-#: actionmanager.cpp:753
+#: actionmanager.cpp:762
 #, fuzzy, kde-format
 #| msgid "Configure &Date && Time..."
 msgctxt "@action"
 msgid "Configure &Date && Time…"
 msgstr "Настроіць &дату і час..."
 
-#: actionmanager.cpp:757
+#: actionmanager.cpp:766
 #, fuzzy, kde-format
 msgid "Manage View &Filters…"
 msgstr "Рэдагаваць &фільтры..."
 
-#: actionmanager.cpp:761
+#: actionmanager.cpp:770
 #, fuzzy, kde-format
 msgctxt "@action"
 msgid "Manage T&ags…"
 msgstr "Рэдагаваць к&атэгорыі..."
 
-#: actionmanager.cpp:769
+#: actionmanager.cpp:778
 #, fuzzy, kde-format
 msgid "&Configure KOrganizer…"
 msgstr "&Настроіць дапаўненьне..."
 
-#: actionmanager.cpp:847
+#: actionmanager.cpp:856
 #, kde-format
 msgid "1 incidence was imported successfully."
 msgid_plural "%1 incidences were imported successfully."
@@ -1115,163 +1146,163 @@ msgstr[0] ""
 msgstr[1] ""
 msgstr[2] ""
 
-#: actionmanager.cpp:850
+#: actionmanager.cpp:859
 #, kde-format
 msgid "There was an error while merging the calendar: %1"
 msgstr ""
 
-#: actionmanager.cpp:861
+#: actionmanager.cpp:870
 #, fuzzy, kde-format
 msgid "New calendar added successfully"
 msgstr "Звесткі аб запісе адпраўленыя."
 
-#: actionmanager.cpp:863
+#: actionmanager.cpp:872
 #, fuzzy, kde-format
 #| msgid "Could not load calendar '%1'."
 msgid "Could not add a calendar. Error: %1"
 msgstr "Немагчыма загрузіць каляндар '%1'."
 
-#: actionmanager.cpp:920
+#: actionmanager.cpp:929
 #, fuzzy, kde-format
 #| msgid "Edit Calendar Filters"
 msgctxt "@title:window"
 msgid "Select Calendar File to Open"
 msgstr "Рэдагаваць фільтры календара"
 
-#: actionmanager.cpp:948
+#: actionmanager.cpp:957
 #, fuzzy, kde-format
 #| msgid "Edit Calendar Filters"
 msgctxt "@title:window"
 msgid "Select Calendar File to Import"
 msgstr "Рэдагаваць фільтры календара"
 
-#: actionmanager.cpp:979
+#: actionmanager.cpp:988
 #, fuzzy, kde-format
 #| msgid "Error Occurred"
 msgid "An error occurred: %1 (url: %2)"
 msgstr "Памылка"
 
-#: actionmanager.cpp:997
+#: actionmanager.cpp:1006
 #, fuzzy, kde-format
 msgid "Cannot upload calendar to '%1'"
 msgstr "Не атрымліваецца размясціць каляндар '%1'"
 
-#: actionmanager.cpp:1003
+#: actionmanager.cpp:1012
 #, kde-format
 msgid "Saved calendar '%1'."
 msgstr "Захаваны каляндар '%1'."
 
-#: actionmanager.cpp:1041
+#: actionmanager.cpp:1050
 #, kde-format
 msgid "Unable to save calendar to the file %1."
 msgstr "Немагчыма захаваць каляндар у файл %1."
 
-#: actionmanager.cpp:1041
+#: actionmanager.cpp:1050
 #, fuzzy, kde-format
 msgctxt "@title:window"
 msgid "Error"
 msgstr "Памылка"
 
-#: actionmanager.cpp:1086
+#: actionmanager.cpp:1095
 #, fuzzy, kde-format
 msgid "Could not start control module for date and time format."
 msgstr "Не атрымліваецца запусціць модуль змены налад фармату часу і даты."
 
-#: actionmanager.cpp:1265
+#: actionmanager.cpp:1274
 #, kde-format
 msgid "&Show Event"
 msgstr "&Паказаць падзею"
 
-#: actionmanager.cpp:1268
+#: actionmanager.cpp:1277
 #, fuzzy, kde-format
 #| msgid "&Edit Event..."
 msgid "&Edit Event…"
 msgstr "&Рэдагаваць падзею..."
 
-#: actionmanager.cpp:1271
+#: actionmanager.cpp:1280
 #, kde-format
 msgid "&Delete Event"
 msgstr "&Выдаліць падзею"
 
-#: actionmanager.cpp:1279
+#: actionmanager.cpp:1288
 #, kde-format
 msgid "&Show To-do"
 msgstr "&Паказаць заданьне"
 
-#: actionmanager.cpp:1282 kontactplugin/korganizer/todosummarywidget.cpp:322
+#: actionmanager.cpp:1291 kontactplugin/korganizer/todosummarywidget.cpp:322
 #, fuzzy, kde-format
 #| msgid "&Edit To-do..."
 msgid "&Edit To-do…"
 msgstr "&Рэдагаваць заданьне..."
 
-#: actionmanager.cpp:1285 kontactplugin/korganizer/todosummarywidget.cpp:324
+#: actionmanager.cpp:1294 kontactplugin/korganizer/todosummarywidget.cpp:324
 #, kde-format
 msgid "&Delete To-do"
 msgstr "&Выдаліць заданьне"
 
-#: actionmanager.cpp:1423 actionmanager.cpp:1529
+#: actionmanager.cpp:1432 actionmanager.cpp:1538
 #, kde-format
 msgid "Attach as &link"
 msgstr ""
 
-#: actionmanager.cpp:1424 actionmanager.cpp:1530
+#: actionmanager.cpp:1433 actionmanager.cpp:1539
 #, fuzzy, kde-format
 #| msgid "Add Attachment"
 msgid "Attach &inline"
 msgstr "Дадаць далучэньне"
 
-#: actionmanager.cpp:1425
+#: actionmanager.cpp:1434
 #, kde-format
 msgid "Attach inline &without attachments"
 msgstr ""
 
-#: actionmanager.cpp:1427 actionmanager.cpp:1532
+#: actionmanager.cpp:1436 actionmanager.cpp:1541
 #, fuzzy, kde-format
 msgid "C&ancel"
 msgstr "&Скасаваць"
 
-#: actionmanager.cpp:1465
+#: actionmanager.cpp:1474
 #, kde-format
 msgid "Removing attachments from an email might invalidate its signature."
 msgstr ""
 
-#: actionmanager.cpp:1466
+#: actionmanager.cpp:1475
 #, fuzzy, kde-format
 #| msgid "Attach&ments"
 msgctxt "@title:window"
 msgid "Remove Attachments"
 msgstr "Далучэ&ньні"
 
-#: actionmanager.cpp:1617
+#: actionmanager.cpp:1626
 #, fuzzy, kde-format
 #| msgid "Undo (%1)"
 msgid "Undo: %1"
 msgstr "Вярнуць: %1"
 
-#: actionmanager.cpp:1620 actionmanager.cpp:1636
+#: actionmanager.cpp:1629 actionmanager.cpp:1645
 #, fuzzy, kde-format
 #| msgid "Undo (%1)"
 msgid "Undo"
 msgstr "Вярнуць"
 
-#: actionmanager.cpp:1630
+#: actionmanager.cpp:1639
 #, fuzzy, kde-format
 #| msgid "Redo (%1)"
 msgid "Redo: %1"
 msgstr "Паўтор (%1)"
 
-#: actionmanager.cpp:1633
+#: actionmanager.cpp:1642
 #, fuzzy, kde-format
 #| msgid "Redo (%1)"
 msgid "Redo"
 msgstr "Паўтарыць"
 
-#: actionmanager.cpp:1647
+#: actionmanager.cpp:1656
 #, kde-format
 msgid "URL '%1' is invalid."
 msgstr "Некарэктны URL '%1'."
 
-#: actionmanager.cpp:1652
+#: actionmanager.cpp:1661
 #, kde-kuit-format
 msgctxt "@info"
 msgid ""
@@ -1282,21 +1313,21 @@ msgid ""
 "p>"
 msgstr ""
 
-#: actionmanager.cpp:1660
+#: actionmanager.cpp:1669
 #, fuzzy, kde-format
 #| msgid "Import Calendar"
 msgctxt "@title:window"
 msgid "Import Calendar"
 msgstr "Імпартаваць каляндар"
 
-#: actionmanager.cpp:1661
+#: actionmanager.cpp:1670
 #, fuzzy, kde-format
 #| msgid "Merge into existing calendar"
 msgctxt "@action:button"
 msgid "Merge into existing calendar"
 msgstr "Аб'яднаць з існуючым календаром"
 
-#: actionmanager.cpp:1662
+#: actionmanager.cpp:1671
 #, fuzzy, kde-format
 #| msgid "Add as new calendar"
 msgctxt "@action:button"
@@ -1319,64 +1350,65 @@ msgstr "Выкарыстоўваць як каляндар па &ўмаўчан�
 
 #: akonadicollectionview.cpp:408
 #, fuzzy, kde-format
-#| msgid "Search For"
+#| msgid "Calendar"
 msgctxt "@info:tooltip"
-msgid "Set search keyword"
-msgstr "Шукаць"
+msgid "Calendar search"
+msgstr "Каляндар"
 
 #: akonadicollectionview.cpp:409
 #, kde-format
 msgctxt "@info:whatsthis"
-msgid "Lets you search for a keyword in your calendars"
+msgid "Start typing to search for a calendar within the collection."
 msgstr ""
 
-#: akonadicollectionview.cpp:414
+#: akonadicollectionview.cpp:411
 #, fuzzy, kde-format
-#| msgid "Search In"
-msgctxt "@info/plain Displayed grayed-out inside the textbox, verb to search"
-msgid "Search…"
-msgstr "Пошук"
+#| msgid "New Calendar"
+msgctxt ""
+"@info/plain Displayed grayed-out inside the textbox, calendar to search"
+msgid "Search for calendar…"
+msgstr "Новы каляндар"
 
-#: akonadicollectionview.cpp:500 manageshowcollectionproperties.cpp:76
+#: akonadicollectionview.cpp:497 manageshowcollectionproperties.cpp:76
 #, fuzzy, kde-format
 msgctxt "@title:window"
 msgid "Properties of Calendar Folder %1"
 msgstr "Уласцівасці для %1"
 
-#: akonadicollectionview.cpp:512
+#: akonadicollectionview.cpp:509
 #, kde-format
 msgctxt "@action:inmenu"
 msgid "&Set Folder Color…"
 msgstr ""
 
-#: akonadicollectionview.cpp:518
+#: akonadicollectionview.cpp:515
 #, fuzzy, kde-format
 #| msgid "Use as &Default Calendar"
 msgctxt "@action:inmenu"
 msgid "Set as &Default Folder"
 msgstr "Выкарыстоўваць як каляндар па &ўмаўчаньні"
 
-#: akonadicollectionview.cpp:550
+#: akonadicollectionview.cpp:547
 #, fuzzy, kde-format
 msgctxt "@info"
 msgid "Do you really want replace your current default calendar with \"%1\"?"
 msgstr "<qt>Вы сапраўды жадаеце выдаліць рэсурс <b>%1</b>?</qt>"
 
-#: akonadicollectionview.cpp:551
+#: akonadicollectionview.cpp:548
 #, fuzzy, kde-format
 #| msgid "Use as &Default Calendar"
 msgctxt "@title:window"
 msgid "Replace Default Calendar?"
 msgstr "Выкарыстоўваць як каляндар па &ўмаўчаньні"
 
-#: akonadicollectionview.cpp:684
+#: akonadicollectionview.cpp:681
 #, fuzzy, kde-format
 #| msgid "Add as new calendar"
 msgctxt "@title:window"
 msgid "Add Calendar"
 msgstr "Дадаць як новы каляндар"
 
-#: akonadicollectionview.cpp:737
+#: akonadicollectionview.cpp:734
 #, kde-kuit-format
 msgctxt "@info"
 msgid ""
@@ -1386,7 +1418,7 @@ msgid ""
 "calendar can be added again at any time."
 msgstr ""
 
-#: akonadicollectionview.cpp:744
+#: akonadicollectionview.cpp:741
 #, kde-kuit-format
 msgctxt "@info"
 msgid ""
@@ -1395,14 +1427,14 @@ msgid ""
 "pressing the %2 button.</warning></para>"
 msgstr ""
 
-#: akonadicollectionview.cpp:752
+#: akonadicollectionview.cpp:749
 #, fuzzy, kde-format
 #| msgid "Default Calendar"
 msgctxt "@title:window"
 msgid "Delete Calendar"
 msgstr "Каляндар па ўмаўчаньні"
 
-#: calendarview.cpp:250
+#: calendarview.cpp:252
 #, fuzzy, kde-kuit-format
 msgid ""
 "<p><em>No Item Selected</em></p><p>Select an event, to-do or journal entry "
@@ -1411,7 +1443,7 @@ msgstr ""
 "<p><em>Не вылучаныя запісы</em></p><p>Калі вы вылучыце падзею, задачу або "
 "артыкул у арганайзеры, тут вы ўбачыце звесткі аб гэтым запісе.</p>"
 
-#: calendarview.cpp:254
+#: calendarview.cpp:256
 #, fuzzy, kde-format
 msgctxt "@info:whatsthis"
 msgid ""
@@ -1419,17 +1451,17 @@ msgid ""
 "KOrganizer's main view here."
 msgstr "Звесткі аб вылучанай падзеі, задачы або запісы часопіса."
 
-#: calendarview.cpp:662
+#: calendarview.cpp:672
 #, fuzzy, kde-format
 msgid "Todo completed: %1 (%2)"
 msgstr "вы&кананае на %1"
 
-#: calendarview.cpp:671
+#: calendarview.cpp:681
 #, fuzzy, kde-format
 msgid "Journal of %1"
 msgstr "&Часопіс"
 
-#: calendarview.cpp:720
+#: calendarview.cpp:730
 #, fuzzy, kde-format
 msgid ""
 "The item \"%1\" is filtered by your current filter rules, so it will be "
@@ -1438,63 +1470,63 @@ msgstr ""
 "Падзея, задача або запіс часопіса \"%1\" не трапляе пад умовы бягучага "
 "фільтра і таму не будзе паказана."
 
-#: calendarview.cpp:789
+#: calendarview.cpp:799
 #, fuzzy, kde-format
 msgctxt "@info"
 msgid "Do you really want to permanently remove the item \"%1\"?"
 msgstr "<qt>Вы сапраўды жадаеце выдаліць рэсурс <b>%1</b>?</qt>"
 
-#: calendarview.cpp:790
+#: calendarview.cpp:800
 #, fuzzy, kde-format
 msgctxt "@title:window"
 msgid "Delete Item?"
 msgstr "Выдаліць старыя падзеі"
 
-#: calendarview.cpp:865
+#: calendarview.cpp:875
 #, fuzzy, kde-format
 msgid "Paste failed: unable to determine a valid target date."
 msgstr "Пакажыце правільную дату пачатку."
 
-#: calendarview.cpp:1295
+#: calendarview.cpp:1305
 #, fuzzy, kde-format
 msgid "Make sub-to-dos independent"
 msgstr "зрабіць подзадачу самастойнай"
 
-#: calendarview.cpp:1352
+#: calendarview.cpp:1362
 #, fuzzy, kde-format
 msgid "Toggle Reminder"
 msgstr "&Напамін:"
 
-#: calendarview.cpp:1384 calendarview.cpp:1436
+#: calendarview.cpp:1394 calendarview.cpp:1446
 #, fuzzy, kde-format
 msgid "Toggle To-do Completed"
 msgstr "%1 %"
 
-#: calendarview.cpp:1488
+#: calendarview.cpp:1498
 #, kde-format
 msgctxt "@info"
 msgid "\"%1\" was successfully copied to %2."
 msgstr ""
 
-#: calendarview.cpp:1489
+#: calendarview.cpp:1499
 #, fuzzy, kde-format
 msgctxt "@title:window"
 msgid "Copying Succeeded"
 msgstr "Памылка капіравання"
 
-#: calendarview.cpp:1493
+#: calendarview.cpp:1503
 #, fuzzy, kde-format
 msgctxt "@info"
 msgid "Unable to copy the item \"%1\" to %2."
 msgstr "Немагчыма знайсьці шаблён '%1'."
 
-#: calendarview.cpp:1494 calendarview.cpp:2491
+#: calendarview.cpp:1504 calendarview.cpp:2501
 #, fuzzy, kde-format
 msgctxt "@title:window"
 msgid "Copying Failed"
 msgstr "Памылка капіравання"
 
-#: calendarview.cpp:1553
+#: calendarview.cpp:1563
 #, kde-format
 msgctxt "@info"
 msgid ""
@@ -1502,50 +1534,50 @@ msgid ""
 "of this item has been put into %2"
 msgstr ""
 
-#: calendarview.cpp:1557 calendarview.cpp:1573 calendarview.cpp:2526
+#: calendarview.cpp:1567 calendarview.cpp:1583 calendarview.cpp:2536
 #, fuzzy, kde-format
 msgctxt "@title:window"
 msgid "Moving Failed"
 msgstr "Памылка перамяшчэння"
 
-#: calendarview.cpp:1562
+#: calendarview.cpp:1572
 #, kde-format
 msgctxt "@info"
 msgid "\"%1\" was successfully moved from %2 to %3."
 msgstr ""
 
-#: calendarview.cpp:1563
+#: calendarview.cpp:1573
 #, fuzzy, kde-format
 msgctxt "@title:window"
 msgid "Moving Succeeded"
 msgstr "Памылка перамяшчэння"
 
-#: calendarview.cpp:1569
+#: calendarview.cpp:1579
 #, kde-format
 msgctxt "@info"
 msgid "Unable to add the item \"%1\" into %2. This item has not been moved."
 msgstr ""
 
-#: calendarview.cpp:1607
+#: calendarview.cpp:1617
 #, fuzzy, kde-format
 #| msgid "Dissociate event from recurrence"
 msgid "Do you want to dissociate the occurrence on %1 from the recurrence?"
 msgstr "Вылучыць як не паўтаральная падзея"
 
-#: calendarview.cpp:1611 calendarview.cpp:1623 calendarview.cpp:2296
+#: calendarview.cpp:1621 calendarview.cpp:1633 calendarview.cpp:2306
 #, fuzzy, kde-format
 #| msgid "KOrganizer Confirmation"
 msgctxt "@title:window"
 msgid "KOrganizer Confirmation"
 msgstr "Пацверджанне KOrganizer"
 
-#: calendarview.cpp:1612
+#: calendarview.cpp:1622
 #, fuzzy, kde-format
 msgctxt "@action:button"
 msgid "&Dissociate"
 msgstr "Вызначанае час"
 
-#: calendarview.cpp:1618
+#: calendarview.cpp:1628
 #, fuzzy, kde-format
 #| msgid "Dissociate event from recurrence"
 msgid ""
@@ -1553,82 +1585,82 @@ msgid ""
 "dissociate future ones?"
 msgstr "Вылучыць як не паўтаральная падзея"
 
-#: calendarview.cpp:1624
+#: calendarview.cpp:1634
 #, fuzzy, kde-format
 msgctxt "@action:button"
 msgid "&Only Dissociate This One"
 msgstr "Аддзяліць як не паўтаральная падзея"
 
-#: calendarview.cpp:1625
+#: calendarview.cpp:1635
 #, fuzzy, kde-format
 #| msgid "&Dissociate Future Occurrences"
 msgctxt "@action:button"
 msgid "&Also Dissociate Future Ones"
 msgstr "Аддзяліць будучыя паўторы"
 
-#: calendarview.cpp:1643
+#: calendarview.cpp:1653
 #, fuzzy, kde-format
 msgid "Dissociate future occurrences"
 msgstr "Аддзяліць будучыя паўторы як асобныя падзеі"
 
-#: calendarview.cpp:1645
+#: calendarview.cpp:1655
 #, fuzzy, kde-format
 msgid "Dissociate occurrence"
 msgstr "Аддзяліць як не паўтаральная падзея"
 
-#: calendarview.cpp:1652
+#: calendarview.cpp:1662
 #, fuzzy, kde-format
 msgid "Dissociating the future occurrences failed."
 msgstr "Памылка аддзялення будучых паўтораў."
 
-#: calendarview.cpp:1652 calendarview.cpp:1654
+#: calendarview.cpp:1662 calendarview.cpp:1664
 #, fuzzy, kde-format
 msgctxt "@title:window"
 msgid "Dissociating Failed"
 msgstr "Памылка аддзялення паўтаральнай падзеі"
 
-#: calendarview.cpp:1654
+#: calendarview.cpp:1664
 #, fuzzy, kde-format
 msgid "Dissociating the occurrence failed."
 msgstr "Аддзяленне падзеі немагчыма."
 
-#: calendarview.cpp:1816
+#: calendarview.cpp:1826
 #, fuzzy, kde-format
 #| msgid "Calendar"
 msgid "iCalendars (*.ics)"
 msgstr "Каляндар"
 
-#: calendarview.cpp:1825
+#: calendarview.cpp:1835
 #, kde-format
 msgid "Do you want to overwrite %1?"
 msgstr ""
 
-#: calendarview.cpp:1826
+#: calendarview.cpp:1836
 #, fuzzy, kde-format
 #| msgid "Import Calendar"
 msgctxt "@title:window"
 msgid "Export Calendar"
 msgstr "Імпартаваць каляндар"
 
-#: calendarview.cpp:1840
+#: calendarview.cpp:1850
 #, kde-format
 msgctxt "save failure cause unknown"
 msgid "Reason unknown"
 msgstr ""
 
-#: calendarview.cpp:1842
+#: calendarview.cpp:1852
 #, fuzzy, kde-format
 #| msgid "Cannot write archive file %1."
 msgctxt "@info"
 msgid "Cannot write iCalendar file %1. %2"
 msgstr "Немагчыма запісаць архіўны файл %1."
 
-#: calendarview.cpp:1943 calendarview.cpp:1988
+#: calendarview.cpp:1953 calendarview.cpp:1998
 #, kde-format
 msgid "No filter"
 msgstr "Няма фільтра"
 
-#: calendarview.cpp:2291
+#: calendarview.cpp:2301
 #, fuzzy, kde-format
 msgid ""
 "The item \"%1\" has sub-to-dos. Do you want to delete just this item and "
@@ -1638,20 +1670,20 @@ msgstr ""
 "Задача \"%1\" мае подзадачи. Пры выдаленні гэтай задачы вы жадаеце зрабіць "
 "усё яе подзадачи самастойнымі або выдаліць разам з паказанай задачай?"
 
-#: calendarview.cpp:2297
+#: calendarview.cpp:2307
 #, fuzzy, kde-format
 msgctxt "@action:button"
 msgid "Delete Only This"
 msgstr "Выдаліць старыя падзеі"
 
-#: calendarview.cpp:2298 calendarview.cpp:2356
+#: calendarview.cpp:2308 calendarview.cpp:2366
 #, fuzzy, kde-format
 #| msgid "Delete &All"
 msgctxt "@action:button"
 msgid "Delete All"
 msgstr "Выдаліць усё"
 
-#: calendarview.cpp:2329
+#: calendarview.cpp:2339
 #, fuzzy, kde-format
 msgid ""
 "The item \"%1\" is marked read-only and cannot be deleted; it probably "
@@ -1661,12 +1693,12 @@ msgstr ""
 "выдаленая. Гэта магло адбыцца пры працы з каляндаром, адчыненым толькі для "
 "чытання."
 
-#: calendarview.cpp:2333
+#: calendarview.cpp:2343
 #, kde-format
 msgid "Removing not possible"
 msgstr "Немагчыма выдаліць"
 
-#: calendarview.cpp:2351
+#: calendarview.cpp:2361
 #, fuzzy, kde-format
 msgid ""
 "The calendar item \"%1\" recurs over multiple dates; are you sure you want "
@@ -1675,18 +1707,18 @@ msgstr ""
 "\"%1\" паўтараецца некалькі раз. Вы ўпэўненыя, што жадаеце выдаліць гэтую "
 "падзею або задачу і ўсё яго паўтору?"
 
-#: calendarview.cpp:2355 calendarview.cpp:2385
+#: calendarview.cpp:2365 calendarview.cpp:2395
 #, kde-format
 msgid "KOrganizer Confirmation"
 msgstr "Пацверджанне KOrganizer"
 
-#: calendarview.cpp:2363
+#: calendarview.cpp:2373
 #, fuzzy, kde-format
 #| msgid "Delete &Future"
 msgid "Also Delete &Future"
 msgstr "Выдаліць &будучыя"
 
-#: calendarview.cpp:2367
+#: calendarview.cpp:2377
 #, fuzzy, kde-format
 msgid ""
 "The calendar item \"%1\" recurs over multiple dates. Do you want to delete "
@@ -1695,7 +1727,7 @@ msgstr ""
 "\"%1\" паўтараецца некалькі раз. Вы жадаеце выдаліць толькі бягучы паўтор на "
 "%2, толькі ўсе будучыя паўторы або наогул усё яго паўтору?"
 
-#: calendarview.cpp:2374
+#: calendarview.cpp:2384
 #, fuzzy, kde-format
 msgid ""
 "The calendar item \"%1\" recurs over multiple dates. Do you want to delete "
@@ -1704,54 +1736,54 @@ msgstr ""
 "\"%1\" паўтараецца некалькі раз. Вы жадаеце выдаліць толькі бягучы паўтор на "
 "%2, толькі ўсе будучыя паўторы або наогул усё яго паўтору?"
 
-#: calendarview.cpp:2386
+#: calendarview.cpp:2396
 #, kde-format
 msgid "Delete C&urrent"
 msgstr "Выдаліць б&ягучы"
 
-#: calendarview.cpp:2388
+#: calendarview.cpp:2398
 #, kde-format
 msgid "Delete &All"
 msgstr "Выдаліць &усе"
 
-#: calendarview.cpp:2419 calendarview.cpp:2426
+#: calendarview.cpp:2429 calendarview.cpp:2436
 #, fuzzy, kde-format
 #| msgid "Delete %1"
 msgid "Delete \"%1\""
 msgstr "Выдаліць %1"
 
-#: calendarview.cpp:2456
+#: calendarview.cpp:2466
 #, kde-format
 msgid ""
 "All calendars are unchecked in the Calendar Manager. No to-do was purged."
 msgstr ""
 
-#: calendarview.cpp:2461 calendarview.cpp:2744
+#: calendarview.cpp:2471 calendarview.cpp:2754
 #, fuzzy, kde-format
 msgid "There are no completed to-dos to purge."
 msgstr "Хаваць вы&кананыя заданьні"
 
-#: calendarview.cpp:2466
+#: calendarview.cpp:2476
 #, fuzzy, kde-format
 #| msgid "Delete all completed to-dos?"
 msgid "Delete all completed to-dos from checked calendars?"
 msgstr "Выдаліць усе выкананыя заданні?"
 
-#: calendarview.cpp:2467
+#: calendarview.cpp:2477
 #, fuzzy, kde-format
 #| msgid "Purge To-dos"
 msgctxt "@title:window"
 msgid "Purge To-dos"
 msgstr "Ачысціць заданьні"
 
-#: calendarview.cpp:2468
+#: calendarview.cpp:2478
 #, fuzzy, kde-format
 #| msgid "Purge"
 msgctxt "@action:button"
 msgid "Purge"
 msgstr "Ачысціць"
 
-#: calendarview.cpp:2479
+#: calendarview.cpp:2489
 #, fuzzy, kde-format
 msgctxt "@info"
 msgid "Unable to edit \"%1\" because it is locked by another process."
@@ -1759,23 +1791,23 @@ msgstr ""
 "Немагчыма змяніць падзею, задачу або запіс часопіса. Яна заблакаваная іншым "
 "працэсам."
 
-#: calendarview.cpp:2491
+#: calendarview.cpp:2501
 #, fuzzy, kde-format
 msgid "Unable to copy the item to %1."
 msgstr "Немагчыма знайсьці шаблён '%1'."
 
-#: calendarview.cpp:2526
+#: calendarview.cpp:2536
 #, fuzzy, kde-format
 msgid "Unable to move the item to  %1."
 msgstr "Немагчыма знайсьці шаблён '%1'."
 
-#: calendarview.cpp:2737
+#: calendarview.cpp:2747
 #, fuzzy, kde-format
 #| msgid "Hide co&mpleted to-dos"
 msgid "0 completed to-dos were purged."
 msgstr "Хаваць вы&кананыя заданьні"
 
-#: calendarview.cpp:2738 calendarview.cpp:2748
+#: calendarview.cpp:2748 calendarview.cpp:2758
 #, kde-format
 msgid "%1 to-do was ignored because it has uncompleted or read-only children."
 msgid_plural ""
@@ -1784,7 +1816,7 @@ msgstr[0] ""
 msgstr[1] ""
 msgstr[2] ""
 
-#: calendarview.cpp:2742 calendarview.cpp:2747
+#: calendarview.cpp:2752 calendarview.cpp:2757
 #, fuzzy, kde-format
 #| msgid "Hide co&mpleted to-dos"
 msgid "%1 completed to-do was purged."
@@ -1793,20 +1825,20 @@ msgstr[0] "Хаваць вы&кананыя заданьні"
 msgstr[1] "Хаваць вы&кананыя заданьні"
 msgstr[2] "Хаваць вы&кананыя заданьні"
 
-#: calendarview.cpp:2753
+#: calendarview.cpp:2763
 #, fuzzy, kde-format
 #| msgid "Purging completed to-dos"
 msgid "An error occurred while purging completed to-dos: %1"
 msgstr "Ачыстка выкананых заданняў"
 
-#: calendarview.cpp:2807
+#: calendarview.cpp:2817
 #, kde-format
 msgid ""
 "You created an incidence in a calendar that is currently filtered out.\n"
 "On the left sidebar, enable it in the calendar manager to see the incidence."
 msgstr ""
 
-#: calendarview.cpp:2811
+#: calendarview.cpp:2821
 #, kde-format
 msgid ""
 "You created an incidence in a calendar that is currently filtered out.\n"
@@ -1881,103 +1913,103 @@ msgid "Check this box if you want to set a custom icon for this folder."
 msgstr "Паказваць секунды на лініі бягучага часу."
 
 #. i18n: ectx: Menu (file)
-#: data/korganizer_part.rc:4 data/korganizerui.rc:4
+#: data/korganizer_part.rc:4 data/korganizerui.rc:6
 #, fuzzy, kde-format
 #| msgid "T&itle:"
 msgid "&File"
 msgstr "&Файл"
 
 #. i18n: ectx: Menu (import)
-#: data/korganizer_part.rc:11 data/korganizerui.rc:5
+#: data/korganizer_part.rc:11 data/korganizerui.rc:8
 #, kde-format
 msgid "&Import"
 msgstr "&Імпартаваць"
 
 #. i18n: ectx: Menu (export)
-#: data/korganizer_part.rc:18 data/korganizerui.rc:12
+#: data/korganizer_part.rc:18 data/korganizerui.rc:16
 #, kde-format
 msgid "&Export"
 msgstr "&Экспартаваць"
 
 #. i18n: ectx: Menu (edit)
-#: data/korganizer_part.rc:30 data/korganizerui.rc:23
+#: data/korganizer_part.rc:30 data/korganizerui.rc:28
 #, fuzzy, kde-format
 #| msgid "&Edit..."
 msgid "&Edit"
 msgstr "&Змяніць"
 
 #. i18n: ectx: Menu (view)
-#: data/korganizer_part.rc:42 data/korganizerui.rc:28
+#: data/korganizer_part.rc:42 data/korganizerui.rc:34
 #, fuzzy, kde-format
 #| msgid "Views"
 msgid "&View"
 msgstr "&Выгляд"
 
 #. i18n: ectx: Menu (zoom)
-#: data/korganizer_part.rc:58 data/korganizerui.rc:44
+#: data/korganizer_part.rc:58 data/korganizerui.rc:51
 #, fuzzy, kde-format
 #| msgid "Zoom In"
 msgid "&Zoom"
 msgstr "&Маштабаванне"
 
 #. i18n: ectx: Menu (go)
-#: data/korganizer_part.rc:66 data/korganizerui.rc:52
+#: data/korganizer_part.rc:66 data/korganizerui.rc:60
 #, kde-format
 msgid "&Go"
 msgstr "&Перайсьці"
 
 #. i18n: ectx: Menu (actions)
-#: data/korganizer_part.rc:78 data/korganizerui.rc:65
+#: data/korganizer_part.rc:78 data/korganizerui.rc:74
 #, kde-format
 msgid "&Actions"
 msgstr "&Дзеяньні"
 
 #. i18n: ectx: Menu (schedule)
-#: data/korganizer_part.rc:93 data/korganizerui.rc:81
+#: data/korganizer_part.rc:95 data/korganizerui.rc:93
 #, kde-format
 msgid "S&chedule"
 msgstr "Р&асклад"
 
 #. i18n: ectx: Menu (settings)
-#: data/korganizer_part.rc:105 data/korganizerui.rc:93
+#: data/korganizer_part.rc:107 data/korganizerui.rc:106
 #, fuzzy, kde-format
 #| msgid "Meeting"
 msgid "&Settings"
 msgstr "&Настаўленні"
 
 #. i18n: ectx: Menu (sidebar)
-#: data/korganizer_part.rc:106 data/korganizerui.rc:95
+#: data/korganizer_part.rc:108 data/korganizerui.rc:109
 #, fuzzy, kde-format
 msgid "&Sidebar"
 msgstr "Бакавая панель"
 
 #. i18n: ectx: Menu (help)
-#: data/korganizer_part.rc:124 data/korganizerui.rc:109
+#: data/korganizer_part.rc:126 data/korganizerui.rc:124
 #, fuzzy, kde-format
 msgid "&Help"
 msgstr "&Дапамога"
 
 #. i18n: ectx: ToolBar (mainToolBar)
-#: data/korganizer_part.rc:129 data/korganizerui.rc:114
+#: data/korganizer_part.rc:131 data/korganizerui.rc:129
 #, fuzzy, kde-format
 msgctxt "main toolbar"
 msgid "Main"
 msgstr "Галоўная"
 
 #. i18n: ectx: ToolBar (korganizer_toolbar)
-#: data/korganizer_part.rc:144 data/korganizerui.rc:129
+#: data/korganizer_part.rc:146 data/korganizerui.rc:144
 #, kde-format
 msgid "Views"
 msgstr "Выгляды"
 
 #. i18n: ectx: ToolBar (schedule_toolbar)
-#: data/korganizer_part.rc:154 data/korganizerui.rc:139
+#: data/korganizer_part.rc:156 data/korganizerui.rc:154
 #, kde-format
 msgid "Schedule"
 msgstr "Расклад"
 
 #. i18n: ectx: ToolBar (filter_toolbar)
-#: data/korganizer_part.rc:160 data/korganizerui.rc:146
+#: data/korganizer_part.rc:162 data/korganizerui.rc:161
 #, fuzzy, kde-format
 msgid "Filters Toolbar"
 msgstr "Фільтры"
@@ -5846,6 +5878,19 @@ msgid "%1"
 msgstr "%1%"
 
 #, fuzzy
+#~| msgid "Search For"
+#~ msgctxt "@info:tooltip"
+#~ msgid "Set search keyword"
+#~ msgstr "Шукаць"
+
+#, fuzzy
+#~| msgid "Search In"
+#~ msgctxt ""
+#~ "@info/plain Displayed grayed-out inside the textbox, verb to search"
+#~ msgid "Search…"
+#~ msgstr "Пошук"
+
+#, fuzzy
 #~| msgid "Working Hours"
 #~ msgctxt "@title:group"
 #~ msgid "Working Period"
@@ -6023,11 +6068,6 @@ msgstr "%1%"
 #~ msgstr "Дата і час"
 
 #, fuzzy
-#~| msgid "&Date:"
-#~ msgid "Date"
-#~ msgstr "&Дата:"
-
-#, fuzzy
 #~ msgid "<qt>Do you really want to delete '<b>%1</b>'?</qt>"
 #~ msgstr "<qt>Вы сапраўды жадаеце выдаліць рэсурс <b>%1</b>?</qt>"
 
@@ -6125,12 +6165,6 @@ msgstr "%1%"
 #~ "This button allows you to configure the plugin that you have selected in "
 #~ "the list above"
 #~ msgstr "Гэтая кнопка дазваляе наладзіць бягучы вылучаны модуль"
-
-#, fuzzy
-#~| msgid "New Calendar"
-#~ msgctxt "@title:window"
-#~ msgid "Search Calendar"
-#~ msgstr "Новы каляндар"
 
 #, fuzzy
 #~ msgid "Include items with a starting date on or after this date"
@@ -11898,12 +11932,6 @@ msgstr "%1%"
 #~ "Click this button to center the Gantt chart on the start time and day of "
 #~ "this event."
 #~ msgstr "Паказаць вылучаную падзею па цэнтры дыяграмы Ганта."
-
-#, fuzzy
-#~| msgid "Pick Date"
-#~ msgctxt "@action:button"
-#~ msgid "Pick Date"
-#~ msgstr "Выбар даты"
 
 #, fuzzy
 #~| msgid "Moves the event to a date and time when all the attendees are free."
