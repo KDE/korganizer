@@ -1400,6 +1400,11 @@ void ActionManager::setTitle()
     mMainWindow->setTitle();
 }
 
+void ActionManager::openEventEditor()
+{
+    mCalendarView->newEvent();
+}
+
 void ActionManager::openEventEditor(const QString &summary)
 {
     mCalendarView->newEvent(summary);
