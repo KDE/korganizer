@@ -16,7 +16,7 @@ msgstr ""
 "Project-Id-Version: korganizer\n"
 "Report-Msgid-Bugs-To: https://bugs.kde.org\n"
 "POT-Creation-Date: 2025-03-13 02:34+0000\n"
-"PO-Revision-Date: 2025-02-16 16:00+0100\n"
+"PO-Revision-Date: 2025-03-19 18:12+0100\n"
 "Last-Translator: Luigi Toscano <luigi.toscano@tiscali.it>\n"
 "Language-Team: Italian <kde-i18n-it@kde.org>\n"
 "Language: it\n"
@@ -1392,6 +1392,10 @@ msgid ""
 "removed from its remote resource.</note></para>The <filename>%1</filename> "
 "calendar can be added again at any time."
 msgstr ""
+"Vuoi davvero eliminare il calendario <filename>%1</filename>? <para><note>I "
+"dati del calendario non sarano eliminati, né il calendario sarà rimosso "
+"dalla sua risorsa remota.</note></para>Il calendario <filename>%1</filename> "
+"può essere aggiunto nuovamente in qualsiasi momento."
 
 #: akonadicollectionview.cpp:759
 #, kde-kuit-format
@@ -1401,6 +1405,9 @@ msgid ""
 "<para><warning>This cannot be undone.  Please consider carefully before "
 "pressing the %2 button.</warning></para>"
 msgstr ""
+"Vuoi davvero eliminare il calendario <filename>%1</filename>?"
+"<para><warning>Questa operazione non può essere annullata.  Tieni conto di "
+"questo attentamente prima di premere il tasto %2.</warning></para>"
 
 #: akonadicollectionview.cpp:767
 #, kde-format
@@ -5699,13 +5706,13 @@ msgstr "Includi tutte le cose da fare &nell'intervallo di date specificato"
 
 #. i18n: ectx: property (toolTip), widget (QCheckBox, unfiltered)
 #: ui/searchdialog_base.ui:325
-#, fuzzy, kde-format
-#| msgctxt "@info:whatsthis"
-#| msgid "Press this button to remove the currently active filter."
+#, kde-format
 msgid ""
 "Uncheck this box to skip incidences matching the currently selected view "
 "filter"
-msgstr "Premi questo pulsante per rimuovere il filtro attivo."
+msgstr ""
+"Deseleziona questa casella per saltare le occorrenza che corrispondono al "
+"filtro vista attualmente selezionato."
 
 #. i18n: ectx: property (whatsThis), widget (QCheckBox, unfiltered)
 #: ui/searchdialog_base.ui:328
@@ -5714,12 +5721,15 @@ msgid ""
 "When this box is checked all incidences will be considered in the search, "
 "even those that aren't displayed according the currently selected view filter"
 msgstr ""
+"Questo questa casella è marcata, tutte le occorrenze selezionate saranno "
+"considerate nella ricerca, anche quelle che non sono mostrate in base al "
+"filtro vista attualmente selezionato"
 
 #. i18n: ectx: property (text), widget (QCheckBox, unfiltered)
 #: ui/searchdialog_base.ui:331
 #, kde-format
 msgid "Include all incidences matched by view filter"
-msgstr ""
+msgstr "Include tutte le occorrenze che corrispondono al filtro vista"
 
 #. i18n: ectx: property (text), widget (QPushButton, mDayBtn)
 #: views/collectionview/quickview.ui:34
