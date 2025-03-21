@@ -115,8 +115,8 @@ public:
      * Sets the actual to be displayed selection in the day matrix starting
      * from start and ending with end. Theview must be manually updated by
      * calling repaint. (?)
-     * @param start start of the new selection
-     * @param end end date of the new selection
+     * @param start the new selection starting date
+     * @param end the new selection ending date
      */
     void setSelectedDaysFrom(QDate start, QDate end);
 
