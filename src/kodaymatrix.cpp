@@ -469,7 +469,7 @@ void KODayMatrix::mousePressEvent(QMouseEvent *e)
 {
     mSelStart = getDayIndexFrom(e->position().toPoint().x(), e->position().toPoint().y());
     if (e->button() == Qt::RightButton) {
-        popupMenu(mDays[mSelStart], mDays[mSelEnd]);
+        popupMenu(mDays[mSelStart]);
     } else if (e->button() == Qt::LeftButton) {
         if (mSelStart > NUMDAYS - 1) {
             mSelStart = NUMDAYS - 1;
@@ -477,7 +477,7 @@ void KODayMatrix::mousePressEvent(QMouseEvent *e)
         mSelInit = mSelStart;
     }
 }
-void KODayMatrix::popupMenu(const QDate &date, const QDate &date2)
+void KODayMatrix::popupMenu(const QDate &date)
 {
     QMenu popup(this);
     popup.setTitle(date.toString());

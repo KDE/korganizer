@@ -235,7 +235,7 @@ private:
     /**
      * Pop-up a context menu for creating a new Event, To-do, or Journal.
      */
-    void popupMenu(const QDate &date, const QDate &date2);
+    void popupMenu(const QDate &date);
 
     /** returns the index of the day located at the matrix's widget (x,y) position.
      *
