@@ -188,7 +188,7 @@ Q_SIGNALS:
      */
     void selected(const KCalendarCore::DateList &daylist);
 
-    void newEventSignal(const QDate &date, const QDate &Date);
+    void newEventSignal(const QDate &date);
     void newTodoSignal(const QDate &date);
     void newJournalSignal(const QDate &date);
 

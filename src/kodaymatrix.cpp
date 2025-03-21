@@ -486,7 +486,7 @@ void KODayMatrix::popupMenu(const QDate &date, const QDate &date2)
     QAction *newJournalAction = popup.addAction(QIcon::fromTheme(QStringLiteral("journal-new")), i18n("New &Journal…"));
     QAction *ret = popup.exec(QCursor::pos());
     if (ret == newEventAction) {
-        Q_EMIT newEventSignal(date, date2);
+        Q_EMIT newEventSignal(date);
     } else if (ret == newTodoAction) {
         Q_EMIT newTodoSignal(date);
     } else if (ret == newJournalAction) {
