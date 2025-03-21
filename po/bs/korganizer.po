@@ -7,7 +7,7 @@ msgid ""
 msgstr ""
 "Project-Id-Version: __kde__kdepim__korganizer\n"
 "Report-Msgid-Bugs-To: https://bugs.kde.org\n"
-"POT-Creation-Date: 2025-03-20 00:42+0000\n"
+"POT-Creation-Date: 2025-03-21 00:42+0000\n"
 "PO-Revision-Date: 2014-01-31 19:03+0100\n"
 "Last-Translator: Samir Ribić <megaribi@epn.ba>\n"
 "Language-Team:  <bs@li.org>\n"
@@ -1333,64 +1333,64 @@ msgstr "&Izmijeni zadatak..."
 msgid "&Delete To-do"
 msgstr "&Obriši zadatak"
 
-#: actionmanager.cpp:1432 actionmanager.cpp:1538
+#: actionmanager.cpp:1437 actionmanager.cpp:1543
 #, kde-format
 msgid "Attach as &link"
 msgstr "Priloži kao &vezu"
 
-#: actionmanager.cpp:1433 actionmanager.cpp:1539
+#: actionmanager.cpp:1438 actionmanager.cpp:1544
 #, kde-format
 msgid "Attach &inline"
 msgstr "Priloži u &liniji"
 
-#: actionmanager.cpp:1434
+#: actionmanager.cpp:1439
 #, kde-format
 msgid "Attach inline &without attachments"
 msgstr "Priloži u liniji &bez priloga"
 
-#: actionmanager.cpp:1436 actionmanager.cpp:1541
+#: actionmanager.cpp:1441 actionmanager.cpp:1546
 #, kde-format
 msgid "C&ancel"
 msgstr "&Otkaži"
 
-#: actionmanager.cpp:1474
+#: actionmanager.cpp:1479
 #, kde-format
 msgid "Removing attachments from an email might invalidate its signature."
 msgstr "Uklanjanjem priloga može se pokvariti potpis e-poruke."
 
-#: actionmanager.cpp:1475
+#: actionmanager.cpp:1480
 #, fuzzy, kde-format
 #| msgid "Remove Attachments"
 msgctxt "@title:window"
 msgid "Remove Attachments"
 msgstr "Ukloni priloge"
 
-#: actionmanager.cpp:1626
+#: actionmanager.cpp:1631
 #, kde-format
 msgid "Undo: %1"
 msgstr "Poništi: %1"
 
-#: actionmanager.cpp:1629 actionmanager.cpp:1645
+#: actionmanager.cpp:1634 actionmanager.cpp:1650
 #, kde-format
 msgid "Undo"
 msgstr "Poništi"
 
-#: actionmanager.cpp:1639
+#: actionmanager.cpp:1644
 #, kde-format
 msgid "Redo: %1"
 msgstr "Ponovi (%1)"
 
-#: actionmanager.cpp:1642
+#: actionmanager.cpp:1647
 #, kde-format
 msgid "Redo"
 msgstr "Vrati"
 
-#: actionmanager.cpp:1656
+#: actionmanager.cpp:1661
 #, kde-format
 msgid "URL '%1' is invalid."
 msgstr "URL '%1' je nevažeći."
 
-#: actionmanager.cpp:1661
+#: actionmanager.cpp:1666
 #, kde-kuit-format
 msgctxt "@info"
 msgid ""
@@ -1406,20 +1406,20 @@ msgstr ""
 "ste odabrali dodavanje, tada će novi kalendar će biti stvoren za vas "
 "automatski.</p>"
 
-#: actionmanager.cpp:1669
+#: actionmanager.cpp:1674
 #, kde-format
 msgctxt "@title:window"
 msgid "Import Calendar"
 msgstr "Uvezi kalendar"
 
-#: actionmanager.cpp:1670
+#: actionmanager.cpp:1675
 #, fuzzy, kde-format
 #| msgid "Merge into existing calendar"
 msgctxt "@action:button"
 msgid "Merge into existing calendar"
 msgstr "Stopi sa postojećim kalendarom"
 
-#: actionmanager.cpp:1671
+#: actionmanager.cpp:1676
 #, fuzzy, kde-format
 #| msgid "Add as new calendar"
 msgctxt "@action:button"

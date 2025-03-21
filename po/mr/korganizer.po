@@ -6,7 +6,7 @@ msgid ""
 msgstr ""
 "Project-Id-Version: \n"
 "Report-Msgid-Bugs-To: https://bugs.kde.org\n"
-"POT-Creation-Date: 2025-03-20 00:42+0000\n"
+"POT-Creation-Date: 2025-03-21 00:42+0000\n"
 "PO-Revision-Date: 2013-04-15 10:39+0530\n"
 "Last-Translator: Chetan Khona <chetan@kompkin.com>\n"
 "Language-Team: Marathi <kde-i18n-doc@kde.org>\n"
@@ -1327,64 +1327,64 @@ msgstr "कार्य संपादन करा (&E)..."
 msgid "&Delete To-do"
 msgstr "कार्य काढून टाका (&D)"
 
-#: actionmanager.cpp:1432 actionmanager.cpp:1538
+#: actionmanager.cpp:1437 actionmanager.cpp:1543
 #, kde-format
 msgid "Attach as &link"
 msgstr "संलग्न साखळी म्हणून जोडा (&L)"
 
-#: actionmanager.cpp:1433 actionmanager.cpp:1539
+#: actionmanager.cpp:1438 actionmanager.cpp:1544
 #, kde-format
 msgid "Attach &inline"
 msgstr "इनलाईन जोडा (&I)"
 
-#: actionmanager.cpp:1434
+#: actionmanager.cpp:1439
 #, kde-format
 msgid "Attach inline &without attachments"
 msgstr "पुरवणीशिवाय इनलाईन जोडा (&W)"
 
-#: actionmanager.cpp:1436 actionmanager.cpp:1541
+#: actionmanager.cpp:1441 actionmanager.cpp:1546
 #, kde-format
 msgid "C&ancel"
 msgstr "रद्द करा (&A)"
 
-#: actionmanager.cpp:1474
+#: actionmanager.cpp:1479
 #, kde-format
 msgid "Removing attachments from an email might invalidate its signature."
 msgstr "इमेलमधून पुरवण्या/जोडपत्रे काढून टाकल्यास त्यावरील सही अवैध होण्याची शक्यता आहे."
 
-#: actionmanager.cpp:1475
+#: actionmanager.cpp:1480
 #, fuzzy, kde-format
 #| msgid "Remove Attachments"
 msgctxt "@title:window"
 msgid "Remove Attachments"
 msgstr "पुरवण्या/जोडपत्रे काढून टाका"
 
-#: actionmanager.cpp:1626
+#: actionmanager.cpp:1631
 #, kde-format
 msgid "Undo: %1"
 msgstr "पूर्ववत करा : %1"
 
-#: actionmanager.cpp:1629 actionmanager.cpp:1645
+#: actionmanager.cpp:1634 actionmanager.cpp:1650
 #, kde-format
 msgid "Undo"
 msgstr "पूर्ववत करा"
 
-#: actionmanager.cpp:1639
+#: actionmanager.cpp:1644
 #, kde-format
 msgid "Redo: %1"
 msgstr "पुन्हा करा : %1"
 
-#: actionmanager.cpp:1642
+#: actionmanager.cpp:1647
 #, kde-format
 msgid "Redo"
 msgstr "पुन्हा करा"
 
-#: actionmanager.cpp:1656
+#: actionmanager.cpp:1661
 #, kde-format
 msgid "URL '%1' is invalid."
 msgstr "'%1' हा एकात्म/वैश्विक साधन शोधक अवैध आहे."
 
-#: actionmanager.cpp:1661
+#: actionmanager.cpp:1666
 #, kde-kuit-format
 msgctxt "@info"
 msgid ""
@@ -1400,20 +1400,20 @@ msgstr ""
 "संधी मिळेल.</p><p>जर वाढवा/मिळवा ही कृती निवडली, तर तुमच्यासाठी नवीन दिनदर्शिका "
 "स्वयंचलित पद्धतीने तयार केली जाईल.</p>"
 
-#: actionmanager.cpp:1669
+#: actionmanager.cpp:1674
 #, kde-format
 msgctxt "@title:window"
 msgid "Import Calendar"
 msgstr "दिनदर्शिका आयात करा..."
 
-#: actionmanager.cpp:1670
+#: actionmanager.cpp:1675
 #, fuzzy, kde-format
 #| msgid "Merge into existing calendar"
 msgctxt "@action:button"
 msgid "Merge into existing calendar"
 msgstr "सध्याच्या दिनदर्शिकेत विलीन/सम्मिलीत करा"
 
-#: actionmanager.cpp:1671
+#: actionmanager.cpp:1676
 #, fuzzy, kde-format
 #| msgid "Add as new calendar"
 msgctxt "@action:button"

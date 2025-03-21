@@ -10,7 +10,7 @@ msgid ""
 msgstr ""
 "Project-Id-Version: korganizer\n"
 "Report-Msgid-Bugs-To: https://bugs.kde.org\n"
-"POT-Creation-Date: 2025-03-20 00:42+0000\n"
+"POT-Creation-Date: 2025-03-21 00:42+0000\n"
 "PO-Revision-Date: 2012-01-28 16:07-0800\n"
 "Last-Translator: Fumiaki Okushi <okushi@kde.gr.jp>\n"
 "Language-Team: Japanese <kde-jp@kde.org>\n"
@@ -1309,65 +1309,65 @@ msgstr "To-Do を編集(&E)..."
 msgid "&Delete To-do"
 msgstr "To-Do を削除(&D)"
 
-#: actionmanager.cpp:1432 actionmanager.cpp:1538
+#: actionmanager.cpp:1437 actionmanager.cpp:1543
 #, kde-format
 msgid "Attach as &link"
 msgstr "リンクとして添付(&L)"
 
-#: actionmanager.cpp:1433 actionmanager.cpp:1539
+#: actionmanager.cpp:1438 actionmanager.cpp:1544
 #, kde-format
 msgid "Attach &inline"
 msgstr "インライン添付(&I)"
 
-#: actionmanager.cpp:1434
+#: actionmanager.cpp:1439
 #, kde-format
 msgid "Attach inline &without attachments"
 msgstr "添付ファイルなしでインライン添付(&W)"
 
-#: actionmanager.cpp:1436 actionmanager.cpp:1541
+#: actionmanager.cpp:1441 actionmanager.cpp:1546
 #, kde-format
 msgid "C&ancel"
 msgstr "キャンセル(&A)"
 
-#: actionmanager.cpp:1474
+#: actionmanager.cpp:1479
 #, kde-format
 msgid "Removing attachments from an email might invalidate its signature."
 msgstr "添付ファイルを削除するとメールの署名が無効になる可能性があります。"
 
-#: actionmanager.cpp:1475
+#: actionmanager.cpp:1480
 #, fuzzy, kde-format
 #| msgid "Remove Attachments"
 msgctxt "@title:window"
 msgid "Remove Attachments"
 msgstr "添付ファイルの削除"
 
-#: actionmanager.cpp:1626
+#: actionmanager.cpp:1631
 #, kde-format
 msgid "Undo: %1"
 msgstr "元に戻す: %1"
 
-#: actionmanager.cpp:1629 actionmanager.cpp:1645
+#: actionmanager.cpp:1634 actionmanager.cpp:1650
 #, kde-format
 msgid "Undo"
 msgstr "元に戻す"
 
-#: actionmanager.cpp:1639
+#: actionmanager.cpp:1644
 #, fuzzy, kde-format
 #| msgid "Redo (%1)"
 msgid "Redo: %1"
 msgstr "やり直す (%1)"
 
-#: actionmanager.cpp:1642
+#: actionmanager.cpp:1647
 #, kde-format
 msgid "Redo"
 msgstr "やり直す"
 
-#: actionmanager.cpp:1656
+#: actionmanager.cpp:1661
 #, kde-format
 msgid "URL '%1' is invalid."
 msgstr "URL ‘%1’ は無効です。"
 
-#: actionmanager.cpp:1661
+#: actionmanager.cpp:1666
 #, kde-kuit-format
 msgctxt "@info"
 msgid ""
@@ -1378,7 +1378,7 @@ msgid ""
 "p>"
 msgstr ""
 
-#: actionmanager.cpp:1669
+#: actionmanager.cpp:1674
 #, fuzzy, kde-format
 #| msgid "Import Calendar"
 msgctxt "@title:window"
@@ -1386,7 +1386,7 @@ msgid "Import Calendar"
 msgstr "カレンダーをインポート"
 
 # @option:radio
-#: actionmanager.cpp:1670
+#: actionmanager.cpp:1675
 #, fuzzy, kde-format
 #| msgid "Merge into existing calendar"
 msgctxt "@action:button"
@@ -1394,7 +1394,7 @@ msgid "Merge into existing calendar"
 msgstr "既存のカレンダーにマージ"
 
 # @option:radio
-#: actionmanager.cpp:1671
+#: actionmanager.cpp:1676
 #, fuzzy, kde-format
 #| msgid "Add as new calendar"
 msgctxt "@action:button"

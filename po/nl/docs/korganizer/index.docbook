@@ -5061,6 +5061,27 @@ format="PNG"/></imageobject
 ></listitem>
 </varlistentry>
 
+<varlistentry id="menu-actions-pick-date">
+<term
+><inlinemediaobject
+><imageobject
+><imagedata fileref="go-jump.png" format="PNG"/></imageobject
+></inlinemediaobject>
+<menuchoice
+><guimenu
+>Ga</guimenu
+> <guimenuitem
+>Kies een dag</guimenuitem
+></menuchoice>
+</term>
+<listitem
+><para
+><action
+>Opent een datumselectiedialoog voor snel navigeren in de weergave.</action
+></para
+></listitem>
+</varlistentry>
+
 <varlistentry id="menu-actions-show-event">
 <term
 ><menuchoice

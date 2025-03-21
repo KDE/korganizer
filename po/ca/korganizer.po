@@ -13,8 +13,8 @@ msgid ""
 msgstr ""
 "Project-Id-Version: korganizer\n"
 "Report-Msgid-Bugs-To: https://bugs.kde.org\n"
-"POT-Creation-Date: 2025-03-20 00:42+0000\n"
-"PO-Revision-Date: 2025-03-19 08:49+0100\n"
+"POT-Creation-Date: 2025-03-21 00:42+0000\n"
+"PO-Revision-Date: 2025-03-20 09:05+0100\n"
 "Last-Translator: Josep M. Ferrer <txemaq@gmail.com>\n"
 "Language-Team: Catalan <kde-i18n-ca@kde.org>\n"
 "Language: ca\n"
@@ -981,34 +981,31 @@ msgstr "Inicia un diàleg que permet crear una entrada nova del diari."
 #, kde-format
 msgctxt "@action Jump to date"
 msgid "&Pick a Date"
-msgstr ""
+msgstr "&Trieu una data"
 
 #: actionmanager.cpp:606
 #, kde-format
 msgid "Date"
-msgstr ""
+msgstr "Data"
 
 #: actionmanager.cpp:607
-#, fuzzy, kde-format
-#| msgctxt "@info:tooltip"
-#| msgid "Scroll the view to today"
+#, kde-format
 msgctxt "@info:status"
 msgid "Scroll the view to user selected dates"
-msgstr "Desplaça la vista a avui"
+msgstr "Desplaça la vista a les dates seleccionades per l'usuari"
 
 #: actionmanager.cpp:608
-#, fuzzy, kde-format
-#| msgctxt "@info:tooltip"
-#| msgid "Scroll the view to today"
+#, kde-format
 msgctxt "@info:tooltip"
 msgid "Scroll the view to user selected dates"
-msgstr "Desplaça la vista a avui"
+msgstr "Desplaça la vista a les dates seleccionades per l'usuari"
 
 #: actionmanager.cpp:609
 #, kde-format
 msgctxt "@info:whatsthis"
 msgid "Opens a a date selection dialog for quickly navigating the view."
 msgstr ""
+"Obre un diàleg de selecció de dates per a navegar ràpidament per la vista."
 
 #: actionmanager.cpp:614
 #, kde-format
@@ -1257,63 +1254,63 @@ msgstr "&Edita la tasca pendent…"
 msgid "&Delete To-do"
 msgstr "&Suprimeix la tasca pendent"
 
-#: actionmanager.cpp:1432 actionmanager.cpp:1538
+#: actionmanager.cpp:1437 actionmanager.cpp:1543
 #, kde-format
 msgid "Attach as &link"
 msgstr "Adjunta com a en&llaç"
 
-#: actionmanager.cpp:1433 actionmanager.cpp:1539
+#: actionmanager.cpp:1438 actionmanager.cpp:1544
 #, kde-format
 msgid "Attach &inline"
 msgstr "Adjunta &inclòs"
 
-#: actionmanager.cpp:1434
+#: actionmanager.cpp:1439
 #, kde-format
 msgid "Attach inline &without attachments"
 msgstr "Adjunta inclòs &sense fitxers adjunts"
 
-#: actionmanager.cpp:1436 actionmanager.cpp:1541
+#: actionmanager.cpp:1441 actionmanager.cpp:1546
 #, kde-format
 msgid "C&ancel"
 msgstr "C&ancel·la"
 
-#: actionmanager.cpp:1474
+#: actionmanager.cpp:1479
 #, kde-format
 msgid "Removing attachments from an email might invalidate its signature."
 msgstr "L'eliminació d'adjunts d'un correu pot invalidar la seva signatura."
 
-#: actionmanager.cpp:1475
+#: actionmanager.cpp:1480
 #, kde-format
 msgctxt "@title:window"
 msgid "Remove Attachments"
 msgstr "Elimina els adjunts"
 
-#: actionmanager.cpp:1626
+#: actionmanager.cpp:1631
 #, kde-format
 msgid "Undo: %1"
 msgstr "Desfés: %1"
 
-#: actionmanager.cpp:1629 actionmanager.cpp:1645
+#: actionmanager.cpp:1634 actionmanager.cpp:1650
 #, kde-format
 msgid "Undo"
 msgstr "Desfés"
 
-#: actionmanager.cpp:1639
+#: actionmanager.cpp:1644
 #, kde-format
 msgid "Redo: %1"
 msgstr "Refés: %1"
 
-#: actionmanager.cpp:1642
+#: actionmanager.cpp:1647
 #, kde-format
 msgid "Redo"
 msgstr "Refés"
 
-#: actionmanager.cpp:1656
+#: actionmanager.cpp:1661
 #, kde-format
 msgid "URL '%1' is invalid."
 msgstr "L'URL «%1» no és vàlid."
 
-#: actionmanager.cpp:1661
+#: actionmanager.cpp:1666
 #, kde-kuit-format
 msgctxt "@info"
 msgid ""
@@ -1328,19 +1325,19 @@ msgstr ""
 "l'oportunitat de seleccionar el calendari de destinació.</p><p>Si "
 "seleccioneu afegir, llavors es crearà automàticament un calendari nou</p>"
 
-#: actionmanager.cpp:1669
+#: actionmanager.cpp:1674
 #, kde-format
 msgctxt "@title:window"
 msgid "Import Calendar"
 msgstr "Importació d'un calendari"
 
-#: actionmanager.cpp:1670
+#: actionmanager.cpp:1675
 #, kde-format
 msgctxt "@action:button"
 msgid "Merge into existing calendar"
 msgstr "Barreja amb el calendari existent"
 
-#: actionmanager.cpp:1671
+#: actionmanager.cpp:1676
 #, kde-format
 msgctxt "@action:button"
 msgid "Add as new calendar"
@@ -1359,27 +1356,23 @@ msgid "%1 (Default)"
 msgstr "%1 (Predeterminat)"
 
 #: akonadicollectionview.cpp:408
-#, fuzzy, kde-format
-#| msgctxt "@title:tab calendar account settings"
-#| msgid "Calendars"
+#, kde-format
 msgctxt "@info:tooltip"
 msgid "Calendar search"
-msgstr "Calendaris"
+msgstr "Cerca del calendari"
 
 #: akonadicollectionview.cpp:409
 #, kde-format
 msgctxt "@info:whatsthis"
 msgid "Start typing to search for a calendar within the collection."
-msgstr ""
+msgstr "Comenceu a escriure per a cercar un calendari dins de la col·lecció."
 
 #: akonadicollectionview.cpp:411
-#, fuzzy, kde-format
-#| msgctxt "@action:inmenu"
-#| msgid "Send as iCalendar…"
+#, kde-format
 msgctxt ""
 "@info/plain Displayed grayed-out inside the textbox, calendar to search"
 msgid "Search for calendar…"
-msgstr "Envia com a iCalendar…"
+msgstr "Cerca de calendari…"
 
 #: akonadicollectionview.cpp:497 manageshowcollectionproperties.cpp:76
 #, kde-format
@@ -6099,16 +6092,3 @@ msgstr "%1"
 msgctxt "4 digit year"
 msgid "%1"
 msgstr "%1"
-
-#~ msgctxt "@info:tooltip"
-#~ msgid "Set search keyword"
-#~ msgstr "Estableix la paraula clau de cerca"
-
-#~ msgctxt "@info:whatsthis"
-#~ msgid "Lets you search for a keyword in your calendars"
-#~ msgstr "Permet cercar una paraula clau als calendaris"
-
-#~ msgctxt ""
-#~ "@info/plain Displayed grayed-out inside the textbox, verb to search"
-#~ msgid "Search…"
-#~ msgstr "Cerca…"

@@ -17,8 +17,8 @@ msgid ""
 msgstr ""
 "Project-Id-Version: korganizer\n"
 "Report-Msgid-Bugs-To: https://bugs.kde.org\n"
-"POT-Creation-Date: 2025-03-20 00:42+0000\n"
-"PO-Revision-Date: 2025-03-18 12:34+0100\n"
+"POT-Creation-Date: 2025-03-21 00:42+0000\n"
+"PO-Revision-Date: 2025-03-21 01:21+0100\n"
 "Last-Translator: Eloy Cuadra <ecuadra@eloihr.net>\n"
 "Language-Team: Spanish <kde-l10n-es@kde.org>\n"
 "Language: es\n"
@@ -332,16 +332,13 @@ msgid "Fester Zigterman"
 msgstr "Fester Zigterman"
 
 #: actionmanager.cpp:131
-#, fuzzy, kde-format
-#| msgid ""
-#| "<qt>This will hide the menu bar completely. You can show it again by "
-#| "typing %1.</qt>"
+#, kde-format
 msgctxt "@info"
 msgid ""
 "This will hide the menu bar completely. You can show it again by typing %1."
 msgstr ""
-"<qt>Esto ocultará la barra de menú completamente. Puede volver a mostrarla "
-"tecleando %1.</qt>"
+"Esto ocultará la barra de menú completamente. Puede volver a mostrarla "
+"pulsando %1."
 
 #: actionmanager.cpp:134
 #, kde-format
@@ -985,34 +982,31 @@ msgstr "Inicia un diálogo que le permite crear una nueva entrada del diario."
 #, kde-format
 msgctxt "@action Jump to date"
 msgid "&Pick a Date"
-msgstr ""
+msgstr "&Escoger una fecha"
 
 #: actionmanager.cpp:606
 #, kde-format
 msgid "Date"
-msgstr ""
+msgstr "Fecha"
 
 #: actionmanager.cpp:607
-#, fuzzy, kde-format
-#| msgctxt "@info:tooltip"
-#| msgid "Scroll the view to today"
+#, kde-format
 msgctxt "@info:status"
 msgid "Scroll the view to user selected dates"
-msgstr "Desplazarse por la vista hasta hoy"
+msgstr "Desplazar la vista hasta las fechas seleccionadas por el usuario"
 
 #: actionmanager.cpp:608
-#, fuzzy, kde-format
-#| msgctxt "@info:tooltip"
-#| msgid "Scroll the view to today"
+#, kde-format
 msgctxt "@info:tooltip"
 msgid "Scroll the view to user selected dates"
-msgstr "Desplazarse por la vista hasta hoy"
+msgstr "Desplazar la vista hasta las fechas seleccionadas por el usuario"
 
 #: actionmanager.cpp:609
 #, kde-format
 msgctxt "@info:whatsthis"
 msgid "Opens a a date selection dialog for quickly navigating the view."
 msgstr ""
+"Abre un diálogo de selección de fecha para navegar rápidamente por la vista."
 
 #: actionmanager.cpp:614
 #, kde-format
@@ -1262,63 +1256,63 @@ msgstr "&Editar tarea pendiente…"
 msgid "&Delete To-do"
 msgstr "&Borrar la tarea pendiente"
 
-#: actionmanager.cpp:1432 actionmanager.cpp:1538
+#: actionmanager.cpp:1437 actionmanager.cpp:1543
 #, kde-format
 msgid "Attach as &link"
 msgstr "Añadir como en&lace"
 
-#: actionmanager.cpp:1433 actionmanager.cpp:1539
+#: actionmanager.cpp:1438 actionmanager.cpp:1544
 #, kde-format
 msgid "Attach &inline"
 msgstr "Añadir &intercalado"
 
-#: actionmanager.cpp:1434
+#: actionmanager.cpp:1439
 #, kde-format
 msgid "Attach inline &without attachments"
 msgstr "Añadir intercalado y sin ad&juntos"
 
-#: actionmanager.cpp:1436 actionmanager.cpp:1541
+#: actionmanager.cpp:1441 actionmanager.cpp:1546
 #, kde-format
 msgid "C&ancel"
 msgstr "C&ancelar"
 
-#: actionmanager.cpp:1474
+#: actionmanager.cpp:1479
 #, kde-format
 msgid "Removing attachments from an email might invalidate its signature."
 msgstr "Eliminar los adjuntos de un correo podría invalidar su firma."
 
-#: actionmanager.cpp:1475
+#: actionmanager.cpp:1480
 #, kde-format
 msgctxt "@title:window"
 msgid "Remove Attachments"
 msgstr "Eliminar adjuntos"
 
-#: actionmanager.cpp:1626
+#: actionmanager.cpp:1631
 #, kde-format
 msgid "Undo: %1"
 msgstr "Deshacer: %1"
 
-#: actionmanager.cpp:1629 actionmanager.cpp:1645
+#: actionmanager.cpp:1634 actionmanager.cpp:1650
 #, kde-format
 msgid "Undo"
 msgstr "Deshacer"
 
-#: actionmanager.cpp:1639
+#: actionmanager.cpp:1644
 #, kde-format
 msgid "Redo: %1"
 msgstr "Rehacer %1"
 
-#: actionmanager.cpp:1642
+#: actionmanager.cpp:1647
 #, kde-format
 msgid "Redo"
 msgstr "Rehacer"
 
-#: actionmanager.cpp:1656
+#: actionmanager.cpp:1661
 #, kde-format
 msgid "URL '%1' is invalid."
 msgstr "La URL «%1» no es válida."
 
-#: actionmanager.cpp:1661
+#: actionmanager.cpp:1666
 #, kde-kuit-format
 msgctxt "@info"
 msgid ""
@@ -1334,19 +1328,19 @@ msgstr ""
 "destino.</p><p>Si selecciona añadir, se creará automáticamente un nuevo "
 "calendario.</p>"
 
-#: actionmanager.cpp:1669
+#: actionmanager.cpp:1674
 #, kde-format
 msgctxt "@title:window"
 msgid "Import Calendar"
 msgstr "Importar calendario"
 
-#: actionmanager.cpp:1670
+#: actionmanager.cpp:1675
 #, kde-format
 msgctxt "@action:button"
 msgid "Merge into existing calendar"
 msgstr "Combinar en el calendario existente"
 
-#: actionmanager.cpp:1671
+#: actionmanager.cpp:1676
 #, kde-format
 msgctxt "@action:button"
 msgid "Add as new calendar"
@@ -1365,27 +1359,23 @@ msgid "%1 (Default)"
 msgstr "%1 (predeterminado)"
 
 #: akonadicollectionview.cpp:408
-#, fuzzy, kde-format
-#| msgctxt "@title:tab calendar account settings"
-#| msgid "Calendars"
+#, kde-format
 msgctxt "@info:tooltip"
 msgid "Calendar search"
-msgstr "Calendarios"
+msgstr "Buscar calendario"
 
 #: akonadicollectionview.cpp:409
 #, kde-format
 msgctxt "@info:whatsthis"
 msgid "Start typing to search for a calendar within the collection."
-msgstr ""
+msgstr "Empiece a escribir para buscar un calendario dentro de la colección."
 
 #: akonadicollectionview.cpp:411
-#, fuzzy, kde-format
-#| msgctxt "@action:inmenu"
-#| msgid "Send as iCalendar…"
+#, kde-format
 msgctxt ""
 "@info/plain Displayed grayed-out inside the textbox, calendar to search"
 msgid "Search for calendar…"
-msgstr "Enviar como iCalendar…"
+msgstr "Buscar calendario…"
 
 #: akonadicollectionview.cpp:497 manageshowcollectionproperties.cpp:76
 #, kde-format
@@ -1466,10 +1456,7 @@ msgstr ""
 "una tarea pendiente o una entrada del diario para ver aquí sus detalles.</p>"
 
 #: calendarview.cpp:256
-#, fuzzy, kde-format
-#| msgid ""
-#| "View the details of events, journal entries or to-dos selected in "
-#| "KOrganizer's main view here."
+#, kde-format
 msgctxt "@info:whatsthis"
 msgid ""
 "View the details of events, journal entries or to-dos selected in "
@@ -5989,8 +5976,7 @@ msgid "Alarm"
 msgstr "Alarma"
 
 #: widgets/kitemiconcheckcombo.cpp:21
-#, fuzzy, kde-format
-#| msgid "Read Only"
+#, kde-format
 msgctxt "the incidence is read-only"
 msgid "Read Only"
 msgstr "Solo lectura"
@@ -6100,16 +6086,3 @@ msgstr "%1"
 msgctxt "4 digit year"
 msgid "%1"
 msgstr "%1"
-
-#~ msgctxt "@info:tooltip"
-#~ msgid "Set search keyword"
-#~ msgstr "Definir palabra clave de búsqueda"
-
-#~ msgctxt "@info:whatsthis"
-#~ msgid "Lets you search for a keyword in your calendars"
-#~ msgstr "Le permite buscar una palabra clave en los calendarios"
-
-#~ msgctxt ""
-#~ "@info/plain Displayed grayed-out inside the textbox, verb to search"
-#~ msgid "Search…"
-#~ msgstr "Buscar…"

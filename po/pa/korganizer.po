@@ -7,7 +7,7 @@ msgid ""
 msgstr ""
 "Project-Id-Version: korganizer\n"
 "Report-Msgid-Bugs-To: https://bugs.kde.org\n"
-"POT-Creation-Date: 2025-03-20 00:42+0000\n"
+"POT-Creation-Date: 2025-03-21 00:42+0000\n"
 "PO-Revision-Date: 2011-01-04 07:42+0530\n"
 "Last-Translator: A S Alam <aalam@users.sf.net>\n"
 "Language-Team: Punjabi/Panjabi <punjabi-users@lists.sf.net>\n"
@@ -1263,65 +1263,65 @@ msgstr "ਕੰਮ-ਕਾਰ ਸੋਧ..."
 msgid "&Delete To-do"
 msgstr "ਕੰਮ-ਕਾਰ ਹਟਾਓ"
 
-#: actionmanager.cpp:1432 actionmanager.cpp:1538
+#: actionmanager.cpp:1437 actionmanager.cpp:1543
 #, kde-format
 msgid "Attach as &link"
 msgstr ""
 
-#: actionmanager.cpp:1433 actionmanager.cpp:1539
+#: actionmanager.cpp:1438 actionmanager.cpp:1544
 #, fuzzy, kde-format
 msgid "Attach &inline"
 msgstr "ਨੱਥੀ ਸ਼ਾਮਿਲ ਕਰੋ"
 
-#: actionmanager.cpp:1434
+#: actionmanager.cpp:1439
 #, kde-format
 msgid "Attach inline &without attachments"
 msgstr ""
 
-#: actionmanager.cpp:1436 actionmanager.cpp:1541
+#: actionmanager.cpp:1441 actionmanager.cpp:1546
 #, kde-format
 msgid "C&ancel"
 msgstr ""
 
-#: actionmanager.cpp:1474
+#: actionmanager.cpp:1479
 #, kde-format
 msgid "Removing attachments from an email might invalidate its signature."
 msgstr ""
 
-#: actionmanager.cpp:1475
+#: actionmanager.cpp:1480
 #, fuzzy, kde-format
 #| msgid "Remove Attachments"
 msgctxt "@title:window"
 msgid "Remove Attachments"
 msgstr "ਅਟੈਚਮੈਂਟ ਹਟਾਓ"
 
-#: actionmanager.cpp:1626
+#: actionmanager.cpp:1631
 #, kde-format
 msgid "Undo: %1"
 msgstr "ਵਾਪਸ: %1"
 
-#: actionmanager.cpp:1629 actionmanager.cpp:1645
+#: actionmanager.cpp:1634 actionmanager.cpp:1650
 #, kde-format
 msgid "Undo"
 msgstr "ਵਾਪਸ"
 
-#: actionmanager.cpp:1639
+#: actionmanager.cpp:1644
 #, fuzzy, kde-format
 #| msgid "Redo (%1)"
 msgid "Redo: %1"
 msgstr "ਮੁੜ ਵਾਪਿਸ(%1)"
 
-#: actionmanager.cpp:1642
+#: actionmanager.cpp:1647
 #, kde-format
 msgid "Redo"
 msgstr "ਪਰਤਾਓ"
 
-#: actionmanager.cpp:1656
+#: actionmanager.cpp:1661
 #, kde-format
 msgid "URL '%1' is invalid."
 msgstr "URL '%1' ਠੀਕ ਨਹੀਂ ਹੈ।"
 
-#: actionmanager.cpp:1661
+#: actionmanager.cpp:1666
 #, kde-kuit-format
 msgctxt "@info"
 msgid ""
@@ -1332,21 +1332,21 @@ msgid ""
 "p>"
 msgstr ""
 
-#: actionmanager.cpp:1669
+#: actionmanager.cpp:1674
 #, fuzzy, kde-format
 #| msgid "Import Calendar"
 msgctxt "@title:window"
 msgid "Import Calendar"
 msgstr "ਕੈਲੰਡਰ ਆਯਾਤ"
 
-#: actionmanager.cpp:1670
+#: actionmanager.cpp:1675
 #, fuzzy, kde-format
 #| msgid "Merge into existing calendar"
 msgctxt "@action:button"
 msgid "Merge into existing calendar"
 msgstr "ਮੌਜੂਦਾ ਕੈਲੰਡਰ ਵਿੱਚ ਮਿਲਾਨ"
 
-#: actionmanager.cpp:1671
+#: actionmanager.cpp:1676
 #, fuzzy, kde-format
 #| msgid "Add as new calendar"
 msgctxt "@action:button"

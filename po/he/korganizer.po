@@ -17,8 +17,8 @@ msgid ""
 msgstr ""
 "Project-Id-Version: korganizer\n"
 "Report-Msgid-Bugs-To: https://bugs.kde.org\n"
-"POT-Creation-Date: 2025-03-20 00:42+0000\n"
-"PO-Revision-Date: 2025-03-14 09:29+0200\n"
+"POT-Creation-Date: 2025-03-21 00:42+0000\n"
+"PO-Revision-Date: 2025-03-20 20:34+0200\n"
 "Last-Translator: Yaron Shahrabani <sh.yaron@gmail.com>\n"
 "Language-Team: צוות התרגום של KDE ישראל\n"
 "Language: he\n"
@@ -327,16 +327,12 @@ msgid "Fester Zigterman"
 msgstr "פסטר ציגטרמן"
 
 #: actionmanager.cpp:131
-#, fuzzy, kde-format
-#| msgid ""
-#| "<qt>This will hide the menu bar completely. You can show it again by "
-#| "typing %1.</qt>"
+#, kde-format
 msgctxt "@info"
 msgid ""
 "This will hide the menu bar completely. You can show it again by typing %1."
 msgstr ""
-"<qt> ההגדרה הזאת תסתיר את שורת התפריטים לגמרי. ניתן להציג אותה שוב על ידי "
-"הרצת הפקודה %1. </qt>"
+"הפעולה הזת תסתיר את סרגל התפריטים לחלוטין. אפשר להציג אותו שוב בהקלדת %1."
 
 #: actionmanager.cpp:134
 #, kde-format
@@ -964,7 +960,7 @@ msgstr "פתיחת חלונית שמאפשרת ליצור רושמת יומן ח
 #, kde-format
 msgctxt "@action Jump to date"
 msgid "&Pick a Date"
-msgstr ""
+msgstr "&בחירת תאריך"
 
 #: actionmanager.cpp:606
 #, kde-format
@@ -972,26 +968,22 @@ msgid "Date"
 msgstr "תאריך"
 
 #: actionmanager.cpp:607
-#, fuzzy, kde-format
-#| msgctxt "@info:tooltip"
-#| msgid "Scroll the view to today"
+#, kde-format
 msgctxt "@info:status"
 msgid "Scroll the view to user selected dates"
-msgstr "גלילת התצוגה להיום"
+msgstr "גלילת התצוגה לתאריכים שנבחרו ע״י המשתמש"
 
 #: actionmanager.cpp:608
-#, fuzzy, kde-format
-#| msgctxt "@info:tooltip"
-#| msgid "Scroll the view to today"
+#, kde-format
 msgctxt "@info:tooltip"
 msgid "Scroll the view to user selected dates"
-msgstr "גלילת התצוגה להיום"
+msgstr "גלילת התצוגה לתאריכים שנבחרו ע״י המשתמש"
 
 #: actionmanager.cpp:609
 #, kde-format
 msgctxt "@info:whatsthis"
 msgid "Opens a a date selection dialog for quickly navigating the view."
-msgstr ""
+msgstr "פתיחת חלונית בחירת תאריך לניווט מהיר בתצוגה."
 
 #: actionmanager.cpp:614
 #, kde-format
@@ -1241,63 +1233,63 @@ msgstr "&עריכת מטלה…"
 msgid "&Delete To-do"
 msgstr "מ&חיקת מטלה"
 
-#: actionmanager.cpp:1432 actionmanager.cpp:1538
+#: actionmanager.cpp:1437 actionmanager.cpp:1543
 #, kde-format
 msgid "Attach as &link"
 msgstr "צירוף כ&קישור"
 
-#: actionmanager.cpp:1433 actionmanager.cpp:1539
+#: actionmanager.cpp:1438 actionmanager.cpp:1544
 #, kde-format
 msgid "Attach &inline"
 msgstr "הוספה כ&חלק מההודעה"
 
-#: actionmanager.cpp:1434
+#: actionmanager.cpp:1439
 #, kde-format
 msgid "Attach inline &without attachments"
 msgstr "צירוף כ&חלק מההודעה בלי לצרף כקובץ"
 
-#: actionmanager.cpp:1436 actionmanager.cpp:1541
+#: actionmanager.cpp:1441 actionmanager.cpp:1546
 #, kde-format
 msgid "C&ancel"
 msgstr "&ביטול"
 
-#: actionmanager.cpp:1474
+#: actionmanager.cpp:1479
 #, kde-format
 msgid "Removing attachments from an email might invalidate its signature."
 msgstr "הסרת קבצים מצורפים מהודעת דוא״ל עלולה לפגוע בחתימה שלה"
 
-#: actionmanager.cpp:1475
+#: actionmanager.cpp:1480
 #, kde-format
 msgctxt "@title:window"
 msgid "Remove Attachments"
 msgstr "הסרת קבצים מצורפים"
 
-#: actionmanager.cpp:1626
+#: actionmanager.cpp:1631
 #, kde-format
 msgid "Undo: %1"
 msgstr "החזרה: %1"
 
-#: actionmanager.cpp:1629 actionmanager.cpp:1645
+#: actionmanager.cpp:1634 actionmanager.cpp:1650
 #, kde-format
 msgid "Undo"
 msgstr "החזרה"
 
-#: actionmanager.cpp:1639
+#: actionmanager.cpp:1644
 #, kde-format
 msgid "Redo: %1"
 msgstr "ביצוע חוזר: %1"
 
-#: actionmanager.cpp:1642
+#: actionmanager.cpp:1647
 #, kde-format
 msgid "Redo"
 msgstr "ביצוע חוזר"
 
-#: actionmanager.cpp:1656
+#: actionmanager.cpp:1661
 #, kde-format
 msgid "URL '%1' is invalid."
 msgstr "הכתובת ‚%1’ שגויה."
 
-#: actionmanager.cpp:1661
+#: actionmanager.cpp:1666
 #, kde-kuit-format
 msgctxt "@info"
 msgid ""
@@ -1311,19 +1303,19 @@ msgstr ""
 "בחירה במיזוג, תופיע אפשרות לבחור את יעד לוח השנה.</p><p>בחירה בהוספה תיצור "
 "עבורך לוח שנה חדש אוטומטית.</p>"
 
-#: actionmanager.cpp:1669
+#: actionmanager.cpp:1674
 #, kde-format
 msgctxt "@title:window"
 msgid "Import Calendar"
 msgstr "ייבוא לוח שנה"
 
-#: actionmanager.cpp:1670
+#: actionmanager.cpp:1675
 #, kde-format
 msgctxt "@action:button"
 msgid "Merge into existing calendar"
 msgstr "מיזוג ללוח שנה קיים"
 
-#: actionmanager.cpp:1671
+#: actionmanager.cpp:1676
 #, kde-format
 msgctxt "@action:button"
 msgid "Add as new calendar"
@@ -1342,25 +1334,23 @@ msgid "%1 (Default)"
 msgstr "%1 (ברירת מחדל)"
 
 #: akonadicollectionview.cpp:408
-#, fuzzy, kde-format
-#| msgctxt "@title:tab calendar account settings"
-#| msgid "Calendars"
+#, kde-format
 msgctxt "@info:tooltip"
 msgid "Calendar search"
-msgstr "לוחות שנה"
+msgstr "חיפוש לוחות שנה"
 
 #: akonadicollectionview.cpp:409
 #, kde-format
 msgctxt "@info:whatsthis"
 msgid "Start typing to search for a calendar within the collection."
-msgstr ""
+msgstr "יש להתחיל להקליד כדי לחפש לוח שנה באוסף."
 
 #: akonadicollectionview.cpp:411
-#, fuzzy, kde-format
+#, kde-format
 msgctxt ""
 "@info/plain Displayed grayed-out inside the textbox, calendar to search"
 msgid "Search for calendar…"
-msgstr "לוח־שנה חדש"
+msgstr "חיפוש לוח שנה…"
 
 #: akonadicollectionview.cpp:497 manageshowcollectionproperties.cpp:76
 #, kde-format
@@ -1438,10 +1428,7 @@ msgstr ""
 "לצפות כאן בפירוט עליה.</p>"
 
 #: calendarview.cpp:256
-#, fuzzy, kde-format
-#| msgid ""
-#| "View the details of events, journal entries or to-dos selected in "
-#| "KOrganizer's main view here."
+#, kde-format
 msgctxt "@info:whatsthis"
 msgid ""
 "View the details of events, journal entries or to-dos selected in "
@@ -3474,17 +3461,16 @@ msgid "Select Holiday Regions"
 msgstr "בחירת אזורי חגים"
 
 #: prefs/koprefsdialogtime.cpp:111
-#, fuzzy, kde-format
-#| msgid "Schedule"
+#, kde-format
 msgctxt "@title:group"
 msgid "Weekly Schedule"
-msgstr "תזמון"
+msgstr "תזמון שבועי"
 
 #: prefs/koprefsdialogtime.cpp:126
 #, kde-format
 msgctxt "@info:tooltip"
 msgid "Include %1 as part of your weekly schedule"
-msgstr ""
+msgstr "לכלול את %1 כחלק מהלו״ז השבועי שלך"
 
 #: prefs/koprefsdialogtime.cpp:128
 #, kde-format
@@ -3496,6 +3482,10 @@ msgid ""
 "weekly schedule (even if you don't work). Typically, weekend days should be "
 "unchecked."
 msgstr ""
+"יש לזמן את התיבה הזאת כדי להכליל את %1 כחלק מהלו״ז השבועי הקבוע שלך. כל %1 "
+"שעות ביום תופענה בצבעים אחרים מאשר זמנים שמחוץ ללו״ז הקבוע שלך. יש לסמן את "
+"התיבה הזאת אם %1 נכלל כחלק מהלו״ז השבועי הקבוע שלך (אפילו ללא עבודה). בדרך "
+"כלל, ימי סוף השבוע לא אמורים להיות מסומנים."
 
 #: prefs/koprefsdialogtime.cpp:142
 #, kde-format
@@ -3543,7 +3533,7 @@ msgstr "יום ראשון"
 #, kde-format
 msgctxt "@info:tooltip"
 msgid "Highlight holidays differently from your regular schedule"
-msgstr ""
+msgstr "להדגיש חגים בשונה מהלו״ז הקבוע שלך"
 
 #: prefs/koprefsdialogtime.cpp:169
 #, kde-format
@@ -3552,6 +3542,7 @@ msgid ""
 "Check this box to highlight holidays differently than days included with "
 "your regular schedule."
 msgstr ""
+"יש לסמן את התיבה הזאת כדי להדגיש חגים בשונה מימים שנכללים בלו״ז הקבוע שלך."
 
 #: prefs/koprefsdialogtime.cpp:176
 #, kde-format
@@ -3786,19 +3777,15 @@ msgstr "שעת התחלת היום"
 #: settings/korganizer.kcfg:42
 #, kde-format
 msgid "Set the time you typically start your day"
-msgstr ""
+msgstr "נא להגדיר את הזמן שבדרך כלל היום שלך מתחיל בו"
 
 #. i18n: ectx: whatsthis, entry (WorkingHoursStart), group (Time &amp; Date)
 #: settings/korganizer.kcfg:43
-#, fuzzy, kde-format
-#| msgid ""
-#| "Enter the start time for the working hours here. The working hours will "
-#| "be marked with color by KOrganizer."
+#, kde-format
 msgid ""
 "Enter the start time for your daily schedule here. Your daily schedule hours "
 "will be marked with a separate color."
-msgstr ""
-"נא למלא את שעת התחלת יום העבודה. שעות העבודה יסומנו בצבע על ידי KOrganizer."
+msgstr "נא למלא את שעת תחילת סדר היום שלך. שעות סדר היום שלך תסומנה בצבע נפרד."
 
 #. i18n: ectx: label, entry (WorkingHoursEnd), group (Time &amp; Date)
 #: settings/korganizer.kcfg:47
@@ -3810,19 +3797,15 @@ msgstr "שעת סוף היום"
 #: settings/korganizer.kcfg:48
 #, kde-format
 msgid "Set the time you typically end your day"
-msgstr ""
+msgstr "נא להגדיר את הזמן שבדרך כלל היום שלך מסתיים בו"
 
 #. i18n: ectx: whatsthis, entry (WorkingHoursEnd), group (Time &amp; Date)
 #: settings/korganizer.kcfg:49
-#, fuzzy, kde-format
-#| msgid ""
-#| "Enter the ending time for the working hours here. The working hours will "
-#| "be marked with color by KOrganizer."
+#, kde-format
 msgid ""
 "Enter the ending time for your daily schedule here. Your daily schedule "
 "hours will be marked with a separate color."
-msgstr ""
-"נא למלא את שעת סיום יום העבודה. שעות העבודה יסומנו בצבע על ידי KOrganizer."
+msgstr "נא למלא את שעת סוף סדר היום שלך. שעות סדר היום שלך תסומנה בצבע נפרד."
 
 #. i18n: ectx: label, entry (ColorMonthBusyDaysEnabled), group (Time &amp; Date)
 #. i18n: ectx: label, entry (ColorBusyDaysEnabled), group (Agenda View)
@@ -5780,8 +5763,7 @@ msgid "Alarm"
 msgstr "התראה"
 
 #: widgets/kitemiconcheckcombo.cpp:21
-#, fuzzy, kde-format
-#| msgid "Read Only"
+#, kde-format
 msgctxt "the incidence is read-only"
 msgid "Read Only"
 msgstr "קריאה בלבד"

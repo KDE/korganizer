@@ -11,8 +11,8 @@ msgid ""
 msgstr ""
 "Project-Id-Version: korganizer\n"
 "Report-Msgid-Bugs-To: https://bugs.kde.org\n"
-"POT-Creation-Date: 2025-03-20 00:42+0000\n"
-"PO-Revision-Date: 2025-03-13 11:47+0400\n"
+"POT-Creation-Date: 2025-03-21 00:42+0000\n"
+"PO-Revision-Date: 2025-03-20 10:20+0400\n"
 "Last-Translator: Zayed Al-Saidi <zayed.alsaidi@gmail.com>\n"
 "Language-Team: ar\n"
 "Language: ar\n"
@@ -321,10 +321,7 @@ msgid "Fester Zigterman"
 msgstr "فيستر زيغترمان"
 
 #: actionmanager.cpp:131
-#, fuzzy, kde-format
-#| msgid ""
-#| "<qt>This will hide the menu bar completely. You can show it again by "
-#| "typing %1.</qt>"
+#, kde-format
 msgctxt "@info"
 msgid ""
 "This will hide the menu bar completely. You can show it again by typing %1."
@@ -966,7 +963,8 @@ msgid "&Pick a Date"
 msgstr "إلتقط التاريخ"
 
 #: actionmanager.cpp:606
-#, kde-format
+#, fuzzy, kde-format
+#| msgid "Date"
 msgid "Date"
 msgstr "التاريخ"
 
@@ -1003,20 +1001,16 @@ msgid "Configure"
 msgstr "اضبط"
 
 #: actionmanager.cpp:616
-#, fuzzy, kde-format
-#| msgctxt "@info:tooltip"
-#| msgid "Configure the current view"
+#, kde-format
 msgctxt "@info:status"
 msgid "Configure the multi-calendar view"
-msgstr "اضبط المنظور الحالي"
+msgstr "اضبط منظور التقويم المتعدد"
 
 #: actionmanager.cpp:617
-#, fuzzy, kde-format
-#| msgctxt "@info:tooltip"
-#| msgid "Configure the current view"
+#, kde-format
 msgctxt "@info:tooltip"
 msgid "Configure the multi-calendar view"
-msgstr "اضبط المنظور الحالي"
+msgstr "اضبط منظور التقويم المتعدد"
 
 #: actionmanager.cpp:619
 #, kde-format
@@ -1026,6 +1020,9 @@ msgid ""
 "view. Currently only the multi-calendar view is supported. See the Multiple "
 "Calendars options in the Views->Agenda Views settings."
 msgstr ""
+"في عرض التقويمات المتعددة، يُفتح مربع حوار يسمح بضبط العرض. حاليًا، لا يُدعم "
+"سوى عرض التقويمات المتعددة. راجع خيارات التقويمات المتعددة في إعدادات "
+"\"العروض\" -> \"منظور جدول الأعمال\"."
 
 #: actionmanager.cpp:626 actionmanager.cpp:1313 actionmanager.cpp:1354
 #, kde-format
@@ -1243,63 +1240,63 @@ msgstr "&حرّر المهمّة…"
 msgid "&Delete To-do"
 msgstr "ا&حذف المهمّة"
 
-#: actionmanager.cpp:1432 actionmanager.cpp:1538
+#: actionmanager.cpp:1437 actionmanager.cpp:1543
 #, kde-format
 msgid "Attach as &link"
 msgstr "أرفِق كراب&ط"
 
-#: actionmanager.cpp:1433 actionmanager.cpp:1539
+#: actionmanager.cpp:1438 actionmanager.cpp:1544
 #, kde-format
 msgid "Attach &inline"
 msgstr "أرفِق &ضمن السياق"
 
-#: actionmanager.cpp:1434
+#: actionmanager.cpp:1439
 #, kde-format
 msgid "Attach inline &without attachments"
 msgstr "أرفِق ضمن السياق &دون مرفقات"
 
-#: actionmanager.cpp:1436 actionmanager.cpp:1541
+#: actionmanager.cpp:1441 actionmanager.cpp:1546
 #, kde-format
 msgid "C&ancel"
 msgstr "أ&لغِ"
 
-#: actionmanager.cpp:1474
+#: actionmanager.cpp:1479
 #, kde-format
 msgid "Removing attachments from an email might invalidate its signature."
 msgstr "يمكن أن تؤدي إزالة المرفقات من أحد رسائل البريد إلى إبطال التوقيع."
 
-#: actionmanager.cpp:1475
+#: actionmanager.cpp:1480
 #, kde-format
 msgctxt "@title:window"
 msgid "Remove Attachments"
 msgstr "إزالة المرفقات"
 
-#: actionmanager.cpp:1626
+#: actionmanager.cpp:1631
 #, kde-format
 msgid "Undo: %1"
 msgstr "تراجَع عن: %1"
 
-#: actionmanager.cpp:1629 actionmanager.cpp:1645
+#: actionmanager.cpp:1634 actionmanager.cpp:1650
 #, kde-format
 msgid "Undo"
 msgstr "تراجَع"
 
-#: actionmanager.cpp:1639
+#: actionmanager.cpp:1644
 #, kde-format
 msgid "Redo: %1"
 msgstr "أعِد: %1"
 
-#: actionmanager.cpp:1642
+#: actionmanager.cpp:1647
 #, kde-format
 msgid "Redo"
 msgstr "أعِد"
 
-#: actionmanager.cpp:1656
+#: actionmanager.cpp:1661
 #, kde-format
 msgid "URL '%1' is invalid."
 msgstr "المسار ”%1“ غير صالح."
 
-#: actionmanager.cpp:1661
+#: actionmanager.cpp:1666
 #, kde-kuit-format
 msgctxt "@info"
 msgid ""
@@ -1313,19 +1310,19 @@ msgstr ""
 "</p><p>إن اخترت الدمج فسيُطلب منك اختيار التقويم المقصد.</p><p>إن اخترت "
 "الإضافة فسيُنشأ تقويم لك آليًا.</p>"
 
-#: actionmanager.cpp:1669
+#: actionmanager.cpp:1674
 #, kde-format
 msgctxt "@title:window"
 msgid "Import Calendar"
 msgstr "استيراد التقويم"
 
-#: actionmanager.cpp:1670
+#: actionmanager.cpp:1675
 #, kde-format
 msgctxt "@action:button"
 msgid "Merge into existing calendar"
 msgstr "ادمج بالتقويم الموجود"
 
-#: actionmanager.cpp:1671
+#: actionmanager.cpp:1676
 #, kde-format
 msgctxt "@action:button"
 msgid "Add as new calendar"
@@ -1422,6 +1419,8 @@ msgid ""
 "<para><warning>This cannot be undone.  Please consider carefully before "
 "pressing the %2 button.</warning></para>"
 msgstr ""
+"هل تريد حقًا حذف تقويم <filename>%1</filename>؟<para><warning>لا يمكن التراجع "
+"عن هذا الإجراء. يُرجى التفكير مليًا قبل الضغط على زر %2.</warning></para>"
 
 #: akonadicollectionview.cpp:749
 #, kde-format
@@ -1439,10 +1438,7 @@ msgstr ""
 "p>"
 
 #: calendarview.cpp:256
-#, fuzzy, kde-format
-#| msgid ""
-#| "View the details of events, journal entries or to-dos selected in "
-#| "KOrganizer's main view here."
+#, kde-format
 msgctxt "@info:whatsthis"
 msgid ""
 "View the details of events, journal entries or to-dos selected in "
@@ -3065,9 +3061,9 @@ msgid ""
 "special occasions summary. These are events from your configured holiday "
 "region, or events with the \"Holiday\" tag."
 msgstr ""
-"مكّن هذا الخيار لتضمين العطلات من تقويمك في ملخص المناسبات الخاصة القادمة. "
-"هذه هي الأحداث من منطقة العطلات التي قمت بضبطها، أو الأحداث التي تحمل علامة "
-"\"عطلة\"."
+"مكّن هذا الخيار لتضمين العطل من تقويمك في ملخص المناسبات الخاصة القادمة. هذه "
+"هي الأحداث من منطقة العطل التي قمت بضبطها، أو الأحداث التي تحمل علامة \"عطلة"
+"\"."
 
 #. i18n: ectx: property (text), widget (QCheckBox, mShowHolidaysFromCalBox)
 #: kontactplugin/specialdates/sdsummaryconfig_base.ui:174
@@ -3515,17 +3511,16 @@ msgid "Select Holiday Regions"
 msgstr "حدّد مناطق العُطل"
 
 #: prefs/koprefsdialogtime.cpp:111
-#, fuzzy, kde-format
-#| msgid "Schedule"
+#, kde-format
 msgctxt "@title:group"
 msgid "Weekly Schedule"
-msgstr "الجدولة"
+msgstr "جدول الأسبوع"
 
 #: prefs/koprefsdialogtime.cpp:126
 #, kde-format
 msgctxt "@info:tooltip"
 msgid "Include %1 as part of your weekly schedule"
-msgstr ""
+msgstr "ضمّن %1 كجزء من جدولك الأسبوعي"
 
 #: prefs/koprefsdialogtime.cpp:128
 #, kde-format
@@ -3537,6 +3532,10 @@ msgid ""
 "weekly schedule (even if you don't work). Typically, weekend days should be "
 "unchecked."
 msgstr ""
+"ضع علامة في هذا المربع لاعتبار %1 جزءًا من جدولك الأسبوعي المعتاد. ستظهر أي "
+"ساعات عمل يومية %1 بألوان مختلفة عن الأوقات خارج جدولك المعتاد. ضع علامة في "
+"هذا المربع إذا كانت %1 مُضمنة في جدولك الأسبوعي المعتاد (حتى لو لم تكن تعمل). "
+"عادةً، يجب إلغاء تحديد أيام عطلة نهاية الأسبوع."
 
 #: prefs/koprefsdialogtime.cpp:142
 #, kde-format
@@ -3584,7 +3583,7 @@ msgstr "الأحد"
 #, kde-format
 msgctxt "@info:tooltip"
 msgid "Highlight holidays differently from your regular schedule"
-msgstr ""
+msgstr "أبرز العُطل بشكل مختلف عن جدولك المعتاد"
 
 #: prefs/koprefsdialogtime.cpp:169
 #, kde-format
@@ -3593,6 +3592,8 @@ msgid ""
 "Check this box to highlight holidays differently than days included with "
 "your regular schedule."
 msgstr ""
+"حدد هذا المربع لتسليط الضوء على العطل بشكل مختلف عن الأيام المضمنة في جدولك "
+"المعتاد."
 
 #: prefs/koprefsdialogtime.cpp:176
 #, kde-format
@@ -3824,20 +3825,17 @@ msgstr "ساعة البداية اليومية"
 
 #. i18n: ectx: tooltip, entry (WorkingHoursStart), group (Time &amp; Date)
 #: settings/korganizer.kcfg:42
-#, fuzzy, kde-format
+#, kde-format
 msgid "Set the time you typically start your day"
-msgstr "المجموعات عنوان من اليومية."
+msgstr "حدد الوقت الذي تبدأ فيه يومك عادةً"
 
 #. i18n: ectx: whatsthis, entry (WorkingHoursStart), group (Time &amp; Date)
 #: settings/korganizer.kcfg:43
-#, fuzzy, kde-format
-#| msgid ""
-#| "Enter the start time for the working hours here. The working hours will "
-#| "be marked with color by KOrganizer."
+#, kde-format
 msgid ""
 "Enter the start time for your daily schedule here. Your daily schedule hours "
 "will be marked with a separate color."
-msgstr "أدخِل هنا وقت بداية ساعات العمل. سيُعلّم «منظّمك» ساعات العمل بلون."
+msgstr "أدخِل وقت بدء جدولك اليومي هنا. ستُميز ساعات جدولك اليومي بلون منفصل."
 
 #. i18n: ectx: label, entry (WorkingHoursEnd), group (Time &amp; Date)
 #: settings/korganizer.kcfg:47
@@ -3847,20 +3845,17 @@ msgstr "ساعة النهاية اليومية"
 
 #. i18n: ectx: tooltip, entry (WorkingHoursEnd), group (Time &amp; Date)
 #: settings/korganizer.kcfg:48
-#, fuzzy, kde-format
+#, kde-format
 msgid "Set the time you typically end your day"
-msgstr "المجموعات عنوان من اليومية."
+msgstr "حدد الوقت الذي ينتهي فيه يومك عادةً"
 
 #. i18n: ectx: whatsthis, entry (WorkingHoursEnd), group (Time &amp; Date)
 #: settings/korganizer.kcfg:49
-#, fuzzy, kde-format
-#| msgid ""
-#| "Enter the ending time for the working hours here. The working hours will "
-#| "be marked with color by KOrganizer."
+#, kde-format
 msgid ""
 "Enter the ending time for your daily schedule here. Your daily schedule "
 "hours will be marked with a separate color."
-msgstr "أدخِل هنا وقت انتهاء ساعات العمل. سيُعلّم «منظّمك» ساعات العمل بلون."
+msgstr "أدخِل وقت نهاية جدولك اليومي هنا. ستُميز ساعات جدولك اليومي بلون منفصل."
 
 #. i18n: ectx: label, entry (ColorMonthBusyDaysEnabled), group (Time &amp; Date)
 #. i18n: ectx: label, entry (ColorBusyDaysEnabled), group (Agenda View)
@@ -5823,8 +5818,7 @@ msgid "Alarm"
 msgstr "منبّه"
 
 #: widgets/kitemiconcheckcombo.cpp:21
-#, fuzzy, kde-format
-#| msgid "Read Only"
+#, kde-format
 msgctxt "the incidence is read-only"
 msgid "Read Only"
 msgstr "للقراءة فقط"

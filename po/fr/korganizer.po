@@ -24,8 +24,8 @@ msgid ""
 msgstr ""
 "Project-Id-Version: korganizer\n"
 "Report-Msgid-Bugs-To: https://bugs.kde.org\n"
-"POT-Creation-Date: 2025-03-20 00:42+0000\n"
-"PO-Revision-Date: 2025-03-15 09:20+0100\n"
+"POT-Creation-Date: 2025-03-21 00:42+0000\n"
+"PO-Revision-Date: 2025-03-19 11:45+0100\n"
 "Last-Translator: Xavier Besnard <xavier.besnard@kde.org>\n"
 "Language-Team: French <French <kde-francophone@kde.org>>\n"
 "Language: fr\n"
@@ -1017,7 +1017,8 @@ msgid "&Pick a Date"
 msgstr "Choisir la date"
 
 #: actionmanager.cpp:606
-#, kde-format
+#, fuzzy, kde-format
+#| msgid "Date"
 msgid "Date"
 msgstr "Date"
 
@@ -1294,32 +1295,32 @@ msgstr "Modifi&er la tâche..."
 msgid "&Delete To-do"
 msgstr "&Supprimer la tâche"
 
-#: actionmanager.cpp:1432 actionmanager.cpp:1538
+#: actionmanager.cpp:1437 actionmanager.cpp:1543
 #, kde-format
 msgid "Attach as &link"
 msgstr "Attacher en tant que &lien"
 
-#: actionmanager.cpp:1433 actionmanager.cpp:1539
+#: actionmanager.cpp:1438 actionmanager.cpp:1544
 #, kde-format
 msgid "Attach &inline"
 msgstr "Attacher le contenu"
 
-#: actionmanager.cpp:1434
+#: actionmanager.cpp:1439
 #, kde-format
 msgid "Attach inline &without attachments"
 msgstr "Inclure le contenu &sans créer de pièce jointe"
 
-#: actionmanager.cpp:1436 actionmanager.cpp:1541
+#: actionmanager.cpp:1441 actionmanager.cpp:1546
 #, kde-format
 msgid "C&ancel"
 msgstr "&Annuler"
 
-#: actionmanager.cpp:1474
+#: actionmanager.cpp:1479
 #, kde-format
 msgid "Removing attachments from an email might invalidate its signature."
 msgstr "Supprimer une pièce jointe d'un message peut invalider sa signature."
 
-#: actionmanager.cpp:1475
+#: actionmanager.cpp:1480
 #, kde-format
 msgctxt "@title:window"
 msgid "Remove Attachments"
@@ -1327,32 +1328,32 @@ msgstr "Supprimer les pièces jointes"
 
 # unreviewed-context
 # unreviewed-context
-#: actionmanager.cpp:1626
+#: actionmanager.cpp:1631
 #, kde-format
 msgid "Undo: %1"
 msgstr "Annuler : %1"
 
-#: actionmanager.cpp:1629 actionmanager.cpp:1645
+#: actionmanager.cpp:1634 actionmanager.cpp:1650
 #, kde-format
 msgid "Undo"
 msgstr "Annuler"
 
-#: actionmanager.cpp:1639
+#: actionmanager.cpp:1644
 #, kde-format
 msgid "Redo: %1"
 msgstr "Refaire : %1"
 
-#: actionmanager.cpp:1642
+#: actionmanager.cpp:1647
 #, kde-format
 msgid "Redo"
 msgstr "Refaire"
 
-#: actionmanager.cpp:1656
+#: actionmanager.cpp:1661
 #, kde-format
 msgid "URL '%1' is invalid."
 msgstr "L'URL « %1 » n'est pas valable."
 
-#: actionmanager.cpp:1661
+#: actionmanager.cpp:1666
 #, kde-kuit-format
 msgctxt "@info"
 msgid ""
@@ -1367,19 +1368,19 @@ msgstr ""
 "l'agenda cible.</p><p>Si vous sélectionnez ajouter, un nouvel agenda sera "
 "créé automatiquement.</p>"
 
-#: actionmanager.cpp:1669
+#: actionmanager.cpp:1674
 #, kde-format
 msgctxt "@title:window"
 msgid "Import Calendar"
 msgstr "Importer un agenda"
 
-#: actionmanager.cpp:1670
+#: actionmanager.cpp:1675
 #, kde-format
 msgctxt "@action:button"
 msgid "Merge into existing calendar"
 msgstr "Fusionner dans un agenda existant"
 
-#: actionmanager.cpp:1671
+#: actionmanager.cpp:1676
 #, kde-format
 msgctxt "@action:button"
 msgid "Add as new calendar"
@@ -3631,17 +3632,16 @@ msgid "Select Holiday Regions"
 msgstr "Sélectionner les régions des jours fériés"
 
 #: prefs/koprefsdialogtime.cpp:111
-#, fuzzy, kde-format
-#| msgid "Schedule"
+#, kde-format
 msgctxt "@title:group"
 msgid "Weekly Schedule"
-msgstr "Planning"
+msgstr "Planning hebdomadaire"
 
 #: prefs/koprefsdialogtime.cpp:126
 #, kde-format
 msgctxt "@info:tooltip"
 msgid "Include %1 as part of your weekly schedule"
-msgstr ""
+msgstr "Inclure %1 comme faisant partie de votre horaire hebdomadaire"
 
 #: prefs/koprefsdialogtime.cpp:128
 #, kde-format
@@ -3700,7 +3700,7 @@ msgstr "Dimanche"
 #, kde-format
 msgctxt "@info:tooltip"
 msgid "Highlight holidays differently from your regular schedule"
-msgstr ""
+msgstr "Mettez en évidence les vacances différemment de votre horaire habituel"
 
 #: prefs/koprefsdialogtime.cpp:169
 #, kde-format
@@ -3709,6 +3709,8 @@ msgid ""
 "Check this box to highlight holidays differently than days included with "
 "your regular schedule."
 msgstr ""
+"Cochez cette case pour mettre en évidence les jours fériés différemment des "
+"jours inclus dans votre horaire régulier."
 
 # unreviewed-context
 #: prefs/koprefsdialogtime.cpp:176
@@ -3959,10 +3961,10 @@ msgstr "Heure de début de journée"
 
 #. i18n: ectx: tooltip, entry (WorkingHoursStart), group (Time &amp; Date)
 #: settings/korganizer.kcfg:42
-#, fuzzy, kde-format
-#| msgid "Sets the title of this journal."
+#, kde-format
 msgid "Set the time you typically start your day"
-msgstr "Définit le titre de ce journal"
+msgstr ""
+"Définissez l'heure à laquelle vous commencez généralement votre journée"
 
 #. i18n: ectx: whatsthis, entry (WorkingHoursStart), group (Time &amp; Date)
 #: settings/korganizer.kcfg:43
@@ -3985,10 +3987,9 @@ msgstr "Heure de fin de journée"
 
 #. i18n: ectx: tooltip, entry (WorkingHoursEnd), group (Time &amp; Date)
 #: settings/korganizer.kcfg:48
-#, fuzzy, kde-format
-#| msgid "Sets the title of this journal."
+#, kde-format
 msgid "Set the time you typically end your day"
-msgstr "Définit le titre de ce journal"
+msgstr "Définissez l'heure à laquelle vous terminez généralement votre journée"
 
 #. i18n: ectx: whatsthis, entry (WorkingHoursEnd), group (Time &amp; Date)
 #: settings/korganizer.kcfg:49

@@ -9,7 +9,7 @@ msgid ""
 msgstr ""
 "Project-Id-Version: korganizer\n"
 "Report-Msgid-Bugs-To: https://bugs.kde.org\n"
-"POT-Creation-Date: 2025-03-20 00:42+0000\n"
+"POT-Creation-Date: 2025-03-21 00:42+0000\n"
 "PO-Revision-Date: 2021-10-18 20:25+0200\n"
 "Last-Translator: Karl Ove Hufthammer <karl@huftis.org>\n"
 "Language-Team: Norwegian Nynorsk <l10n-no@lister.huftis.org>\n"
@@ -935,7 +935,7 @@ msgstr ""
 #: actionmanager.cpp:606
 #, kde-format
 msgid "Date"
-msgstr ""
+msgstr "Dato"
 
 #: actionmanager.cpp:607
 #, kde-format
@@ -1198,63 +1198,63 @@ msgstr "&Rediger oppgåve …"
 msgid "&Delete To-do"
 msgstr "&Slett oppgåve"
 
-#: actionmanager.cpp:1432 actionmanager.cpp:1538
+#: actionmanager.cpp:1437 actionmanager.cpp:1543
 #, kde-format
 msgid "Attach as &link"
 msgstr "Legg ved som &lenkje"
 
-#: actionmanager.cpp:1433 actionmanager.cpp:1539
+#: actionmanager.cpp:1438 actionmanager.cpp:1544
 #, kde-format
 msgid "Attach &inline"
 msgstr "Legg ved i &meldingsteksten"
 
-#: actionmanager.cpp:1434
+#: actionmanager.cpp:1439
 #, kde-format
 msgid "Attach inline &without attachments"
 msgstr "Legg ved i meldingsteksten &utan vedlegg"
 
-#: actionmanager.cpp:1436 actionmanager.cpp:1541
+#: actionmanager.cpp:1441 actionmanager.cpp:1546
 #, kde-format
 msgid "C&ancel"
 msgstr "&Avbryt"
 
-#: actionmanager.cpp:1474
+#: actionmanager.cpp:1479
 #, kde-format
 msgid "Removing attachments from an email might invalidate its signature."
 msgstr "Å fjerna vedlegg frå ein e-post kan gjera signaturen ugyldig."
 
-#: actionmanager.cpp:1475
+#: actionmanager.cpp:1480
 #, fuzzy, kde-format
 msgctxt "@title:window"
 msgid "Remove Attachments"
 msgstr "Fjern vedlegg"
 
-#: actionmanager.cpp:1626
+#: actionmanager.cpp:1631
 #, kde-format
 msgid "Undo: %1"
 msgstr "Angra: %1"
 
-#: actionmanager.cpp:1629 actionmanager.cpp:1645
+#: actionmanager.cpp:1634 actionmanager.cpp:1650
 #, kde-format
 msgid "Undo"
 msgstr "Angra"
 
-#: actionmanager.cpp:1639
+#: actionmanager.cpp:1644
 #, kde-format
 msgid "Redo: %1"
 msgstr "Gjer om: %1"
 
-#: actionmanager.cpp:1642
+#: actionmanager.cpp:1647
 #, kde-format
 msgid "Redo"
 msgstr "Gjer om"
 
-#: actionmanager.cpp:1656
+#: actionmanager.cpp:1661
 #, kde-format
 msgid "URL '%1' is invalid."
 msgstr "Nettadressa «%1» er ugyldig."
 
-#: actionmanager.cpp:1661
+#: actionmanager.cpp:1666
 #, kde-kuit-format
 msgctxt "@info"
 msgid ""
@@ -1265,19 +1265,19 @@ msgid ""
 "p>"
 msgstr ""
 
-#: actionmanager.cpp:1669
+#: actionmanager.cpp:1674
 #, kde-format
 msgctxt "@title:window"
 msgid "Import Calendar"
 msgstr ""
 
-#: actionmanager.cpp:1670
+#: actionmanager.cpp:1675
 #, fuzzy, kde-format
 msgctxt "@action:button"
 msgid "Merge into existing calendar"
 msgstr "Flett inn i eksisterande kalender"
 
-#: actionmanager.cpp:1671
+#: actionmanager.cpp:1676
 #, fuzzy, kde-format
 msgctxt "@action:button"
 msgid "Add as new calendar"
@@ -5745,23 +5745,3 @@ msgstr "%1"
 msgctxt "4 digit year"
 msgid "%1"
 msgstr "%1"
-
-#, fuzzy
-#~ msgctxt ""
-#~ "@info/plain Displayed grayed-out inside the textbox, verb to search"
-#~ msgid "Search…"
-#~ msgstr "Søk …"
-
-#~ msgctxt "@title:group"
-#~ msgid "Working Period"
-#~ msgstr "Arbeidsperiode"
-
-# unreviewed-context
-#~ msgctxt "@info:whatsthis"
-#~ msgid ""
-#~ "Check this box to make KOrganizer mark the working hours for this day of "
-#~ "the week. If this is a work day for you, check this box, or the working "
-#~ "hours will not be marked with color."
-#~ msgstr ""
-#~ "Kryss av her for å merkja denne dagen som ein arbeidsdag. Arbeidstimane "
-#~ "denne dagen vert då viste i ein annan farge."

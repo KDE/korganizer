@@ -13,8 +13,8 @@ msgid ""
 msgstr ""
 "Project-Id-Version: korganizer\n"
 "Report-Msgid-Bugs-To: https://bugs.kde.org\n"
-"POT-Creation-Date: 2025-03-20 00:42+0000\n"
-"PO-Revision-Date: 2025-03-13 09:47+0100\n"
+"POT-Creation-Date: 2025-03-21 00:42+0000\n"
+"PO-Revision-Date: 2025-03-20 09:05+0100\n"
 "Last-Translator: Josep M. Ferrer <txemaq@gmail.com>\n"
 "Language-Team: Catalan <kde-i18n-ca@kde.org>\n"
 "Language: ca@valencia\n"
@@ -328,16 +328,13 @@ msgid "Fester Zigterman"
 msgstr "Fester Zigterman"
 
 #: actionmanager.cpp:131
-#, fuzzy, kde-format
-#| msgid ""
-#| "<qt>This will hide the menu bar completely. You can show it again by "
-#| "typing %1.</qt>"
+#, kde-format
 msgctxt "@info"
 msgid ""
 "This will hide the menu bar completely. You can show it again by typing %1."
 msgstr ""
-"<qt>Ocultarà completament la barra de menús. La podeu tornar a mostrar "
-"prement %1.</qt>"
+"Ocultarà completament la barra de menús. La podeu tornar a mostrar prement "
+"%1."
 
 #: actionmanager.cpp:134
 #, kde-format
@@ -984,34 +981,31 @@ msgstr "Inicia un diàleg que permet crear una entrada nova del diari."
 #, kde-format
 msgctxt "@action Jump to date"
 msgid "&Pick a Date"
-msgstr ""
+msgstr "&Seleccioneu una data"
 
 #: actionmanager.cpp:606
 #, kde-format
 msgid "Date"
-msgstr ""
+msgstr "Data"
 
 #: actionmanager.cpp:607
-#, fuzzy, kde-format
-#| msgctxt "@info:tooltip"
-#| msgid "Scroll the view to today"
+#, kde-format
 msgctxt "@info:status"
 msgid "Scroll the view to user selected dates"
-msgstr "Desplaça la vista fins a hui"
+msgstr "Desplaça la vista fins a les dates seleccionades per l'usuari"
 
 #: actionmanager.cpp:608
-#, fuzzy, kde-format
-#| msgctxt "@info:tooltip"
-#| msgid "Scroll the view to today"
+#, kde-format
 msgctxt "@info:tooltip"
 msgid "Scroll the view to user selected dates"
-msgstr "Desplaça la vista fins a hui"
+msgstr "Desplaça la vista fins a les dates seleccionades per l'usuari"
 
 #: actionmanager.cpp:609
 #, kde-format
 msgctxt "@info:whatsthis"
 msgid "Opens a a date selection dialog for quickly navigating the view."
 msgstr ""
+"Obri un diàleg de selecció de dates per a navegar ràpidament per la vista."
 
 #: actionmanager.cpp:614
 #, kde-format
@@ -1024,20 +1018,16 @@ msgid "Configure"
 msgstr "Configura"
 
 #: actionmanager.cpp:616
-#, fuzzy, kde-format
-#| msgctxt "@info:tooltip"
-#| msgid "Configure the current view"
+#, kde-format
 msgctxt "@info:status"
 msgid "Configure the multi-calendar view"
-msgstr "Configura la vista actual"
+msgstr "Configura la vista multicalendari"
 
 #: actionmanager.cpp:617
-#, fuzzy, kde-format
-#| msgctxt "@info:tooltip"
-#| msgid "Configure the current view"
+#, kde-format
 msgctxt "@info:tooltip"
 msgid "Configure the multi-calendar view"
-msgstr "Configura la vista actual"
+msgstr "Configura la vista multicalendari"
 
 #: actionmanager.cpp:619
 #, kde-format
@@ -1047,6 +1037,9 @@ msgid ""
 "view. Currently only the multi-calendar view is supported. See the Multiple "
 "Calendars options in the Views->Agenda Views settings."
 msgstr ""
+"En la vista multicalendari, s'inicia un diàleg que permet configurar la "
+"vista. Actualment només s'admet la vista multicalendari. Vegeu les opcions "
+"de múltiples calendaris a la configuració «Vistes -> Vistes d'agenda»."
 
 #: actionmanager.cpp:626 actionmanager.cpp:1313 actionmanager.cpp:1354
 #, kde-format
@@ -1261,63 +1254,63 @@ msgstr "&Edita la tasca pendent…"
 msgid "&Delete To-do"
 msgstr "Sup&rimix la tasca pendent"
 
-#: actionmanager.cpp:1432 actionmanager.cpp:1538
+#: actionmanager.cpp:1437 actionmanager.cpp:1543
 #, kde-format
 msgid "Attach as &link"
 msgstr "Adjunta com a en&llaç"
 
-#: actionmanager.cpp:1433 actionmanager.cpp:1539
+#: actionmanager.cpp:1438 actionmanager.cpp:1544
 #, kde-format
 msgid "Attach &inline"
 msgstr "Adjunta &inclòs"
 
-#: actionmanager.cpp:1434
+#: actionmanager.cpp:1439
 #, kde-format
 msgid "Attach inline &without attachments"
 msgstr "Adjunta inclòs &sense fitxers adjunts"
 
-#: actionmanager.cpp:1436 actionmanager.cpp:1541
+#: actionmanager.cpp:1441 actionmanager.cpp:1546
 #, kde-format
 msgid "C&ancel"
 msgstr "C&ancel·la"
 
-#: actionmanager.cpp:1474
+#: actionmanager.cpp:1479
 #, kde-format
 msgid "Removing attachments from an email might invalidate its signature."
 msgstr "L'eliminació d'adjunts d'un correu pot invalidar la seua signatura."
 
-#: actionmanager.cpp:1475
+#: actionmanager.cpp:1480
 #, kde-format
 msgctxt "@title:window"
 msgid "Remove Attachments"
 msgstr "Elimina els adjunts"
 
-#: actionmanager.cpp:1626
+#: actionmanager.cpp:1631
 #, kde-format
 msgid "Undo: %1"
 msgstr "Desfés: %1"
 
-#: actionmanager.cpp:1629 actionmanager.cpp:1645
+#: actionmanager.cpp:1634 actionmanager.cpp:1650
 #, kde-format
 msgid "Undo"
 msgstr "Desfés"
 
-#: actionmanager.cpp:1639
+#: actionmanager.cpp:1644
 #, kde-format
 msgid "Redo: %1"
 msgstr "Refés: %1"
 
-#: actionmanager.cpp:1642
+#: actionmanager.cpp:1647
 #, kde-format
 msgid "Redo"
 msgstr "Refés"
 
-#: actionmanager.cpp:1656
+#: actionmanager.cpp:1661
 #, kde-format
 msgid "URL '%1' is invalid."
 msgstr "L'URL «%1» no és vàlid."
 
-#: actionmanager.cpp:1661
+#: actionmanager.cpp:1666
 #, kde-kuit-format
 msgctxt "@info"
 msgid ""
@@ -1332,19 +1325,19 @@ msgstr ""
 "tindreu l'oportunitat de seleccionar el calendari de destinació.</p><p>Si "
 "seleccioneu afegir, llavors es crearà automàticament un calendari nou</p>"
 
-#: actionmanager.cpp:1669
+#: actionmanager.cpp:1674
 #, kde-format
 msgctxt "@title:window"
 msgid "Import Calendar"
 msgstr "Importeu un calendari"
 
-#: actionmanager.cpp:1670
+#: actionmanager.cpp:1675
 #, kde-format
 msgctxt "@action:button"
 msgid "Merge into existing calendar"
 msgstr "Barreja amb el calendari existent"
 
-#: actionmanager.cpp:1671
+#: actionmanager.cpp:1676
 #, kde-format
 msgctxt "@action:button"
 msgid "Add as new calendar"
@@ -1363,27 +1356,23 @@ msgid "%1 (Default)"
 msgstr "%1 (Predeterminat)"
 
 #: akonadicollectionview.cpp:408
-#, fuzzy, kde-format
-#| msgctxt "@title:tab calendar account settings"
-#| msgid "Calendars"
+#, kde-format
 msgctxt "@info:tooltip"
 msgid "Calendar search"
-msgstr "Calendaris"
+msgstr "Busca del calendari"
 
 #: akonadicollectionview.cpp:409
 #, kde-format
 msgctxt "@info:whatsthis"
 msgid "Start typing to search for a calendar within the collection."
-msgstr ""
+msgstr "Comenceu a escriure per a buscar un calendari dins de la col·lecció."
 
 #: akonadicollectionview.cpp:411
-#, fuzzy, kde-format
-#| msgctxt "@action:inmenu"
-#| msgid "Send as iCalendar…"
+#, kde-format
 msgctxt ""
 "@info/plain Displayed grayed-out inside the textbox, calendar to search"
 msgid "Search for calendar…"
-msgstr "Envia com a iCalendar…"
+msgstr "Busca de calendari…"
 
 #: akonadicollectionview.cpp:497 manageshowcollectionproperties.cpp:76
 #, kde-format
@@ -1464,10 +1453,7 @@ msgstr ""
 "esdeveniment, tasca pendent o entrada de diari per a veure'n els detalls.</p>"
 
 #: calendarview.cpp:256
-#, fuzzy, kde-format
-#| msgid ""
-#| "View the details of events, journal entries or to-dos selected in "
-#| "KOrganizer's main view here."
+#, kde-format
 msgctxt "@info:whatsthis"
 msgid ""
 "View the details of events, journal entries or to-dos selected in "
@@ -3542,17 +3528,16 @@ msgid "Select Holiday Regions"
 msgstr "Seleccioneu les regions de dies festius"
 
 #: prefs/koprefsdialogtime.cpp:111
-#, fuzzy, kde-format
-#| msgid "Schedule"
+#, kde-format
 msgctxt "@title:group"
 msgid "Weekly Schedule"
-msgstr "Planifica"
+msgstr "Planificació setmanal"
 
 #: prefs/koprefsdialogtime.cpp:126
 #, kde-format
 msgctxt "@info:tooltip"
 msgid "Include %1 as part of your weekly schedule"
-msgstr ""
+msgstr "Inclou %1 com a part de la vostra planificació setmanal"
 
 #: prefs/koprefsdialogtime.cpp:128
 #, kde-format
@@ -3564,6 +3549,12 @@ msgid ""
 "weekly schedule (even if you don't work). Typically, weekend days should be "
 "unchecked."
 msgstr ""
+"Marqueu esta casella per a considerar %1 una part de la vostra planificació "
+"setmanal habitual. Les altres %1 hores diàries es mostraran amb colors "
+"diferents que les hores fora de la vostra planificació habitual. Marqueu "
+"esta casella si s'inclou %1 com a part de la vostra planificació setmanal "
+"habitual (encara que no treballeu). Normalment, els dies de cap de setmana "
+"han d'estar desmarcats."
 
 #: prefs/koprefsdialogtime.cpp:142
 #, kde-format
@@ -3612,6 +3603,7 @@ msgstr "Diumenge"
 msgctxt "@info:tooltip"
 msgid "Highlight holidays differently from your regular schedule"
 msgstr ""
+"Ressalta els festius de manera diferent de la vostra planificació habitual"
 
 #: prefs/koprefsdialogtime.cpp:169
 #, kde-format
@@ -3620,6 +3612,8 @@ msgid ""
 "Check this box to highlight holidays differently than days included with "
 "your regular schedule."
 msgstr ""
+"Marqueu esta casella per a ressaltar els festius de manera diferent als dies "
+"inclosos a la vostra planificació habitual."
 
 #: prefs/koprefsdialogtime.cpp:176
 #, kde-format
@@ -3860,20 +3854,17 @@ msgstr "Hora de començar"
 #: settings/korganizer.kcfg:42
 #, kde-format
 msgid "Set the time you typically start your day"
-msgstr ""
+msgstr "Establiu l'hora que normalment comenceu el dia"
 
 #. i18n: ectx: whatsthis, entry (WorkingHoursStart), group (Time &amp; Date)
 #: settings/korganizer.kcfg:43
-#, fuzzy, kde-format
-#| msgid ""
-#| "Enter the start time for the working hours here. The working hours will "
-#| "be marked with color by KOrganizer."
+#, kde-format
 msgid ""
 "Enter the start time for your daily schedule here. Your daily schedule hours "
 "will be marked with a separate color."
 msgstr ""
-"Introduïu ací l'hora en què comenceu a treballar. KOrganizer marca amb un "
-"color les hores laborables."
+"Introduïu ací l'hora d'inici de la vostra planificació diària. Les hores de "
+"la planificació diària estaran marcades amb un color separat."
 
 #. i18n: ectx: label, entry (WorkingHoursEnd), group (Time &amp; Date)
 #: settings/korganizer.kcfg:47
@@ -3885,20 +3876,17 @@ msgstr "Hora de plegar"
 #: settings/korganizer.kcfg:48
 #, kde-format
 msgid "Set the time you typically end your day"
-msgstr ""
+msgstr "Establiu l'hora que normalment acabeu el dia"
 
 #. i18n: ectx: whatsthis, entry (WorkingHoursEnd), group (Time &amp; Date)
 #: settings/korganizer.kcfg:49
-#, fuzzy, kde-format
-#| msgid ""
-#| "Enter the ending time for the working hours here. The working hours will "
-#| "be marked with color by KOrganizer."
+#, kde-format
 msgid ""
 "Enter the ending time for your daily schedule here. Your daily schedule "
 "hours will be marked with a separate color."
 msgstr ""
-"Introduïu ací l'hora en què acabeu de treballar. KOrganizer marca amb un "
-"color les hores laborables."
+"Introduïu ací l'hora final de la vostra planificació diària. Les hores de la "
+"planificació diària estaran marcades amb un color separat."
 
 #. i18n: ectx: label, entry (ColorMonthBusyDaysEnabled), group (Time &amp; Date)
 #. i18n: ectx: label, entry (ColorBusyDaysEnabled), group (Agenda View)
@@ -5988,8 +5976,7 @@ msgid "Alarm"
 msgstr "Alarma"
 
 #: widgets/kitemiconcheckcombo.cpp:21
-#, fuzzy, kde-format
-#| msgid "Read Only"
+#, kde-format
 msgctxt "the incidence is read-only"
 msgid "Read Only"
 msgstr "Només de lectura"
@@ -6099,42 +6086,3 @@ msgstr "%1"
 msgctxt "4 digit year"
 msgid "%1"
 msgstr "%1"
-
-#~ msgctxt "@info:tooltip"
-#~ msgid "Set search keyword"
-#~ msgstr "Establix la paraula clau de busca"
-
-#~ msgctxt "@info:whatsthis"
-#~ msgid "Lets you search for a keyword in your calendars"
-#~ msgstr "Permet buscar una paraula clau als calendaris"
-
-#~ msgctxt ""
-#~ "@info/plain Displayed grayed-out inside the textbox, verb to search"
-#~ msgid "Search…"
-#~ msgstr "Busca…"
-
-#~ msgctxt "@title:group"
-#~ msgid "Working Period"
-#~ msgstr "Període laboral"
-
-#~ msgctxt "@info:whatsthis"
-#~ msgid ""
-#~ "Check this box to make KOrganizer mark the working hours for this day of "
-#~ "the week. If this is a work day for you, check this box, or the working "
-#~ "hours will not be marked with color."
-#~ msgstr ""
-#~ "Marqueu esta casella per a fer que KOrganizer marque les hores laborables "
-#~ "per a este dia de la setmana. Si este dia és laborable, marqueu la "
-#~ "casella o les hores laborables no es marcaran amb color."
-
-#~ msgctxt "@info:status"
-#~ msgid "Configure the view"
-#~ msgstr "Configura la vista"
-
-#~ msgctxt "@info:whatsthis"
-#~ msgid ""
-#~ "Starts a configuration dialog that allows you to change the settings for "
-#~ "the current calendar view."
-#~ msgstr ""
-#~ "Inicia un diàleg de configuració que permet canviar la configuració de la "
-#~ "vista actual del calendari."
