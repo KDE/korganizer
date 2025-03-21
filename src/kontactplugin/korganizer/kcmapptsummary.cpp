@@ -20,8 +20,8 @@ K_PLUGIN_CLASS_WITH_JSON(KCMApptSummary, "kcmapptsummary.json")
 
 KCMApptSummary::KCMApptSummary(QObject *parent, const KPluginMetaData &data)
     : KCModule(parent, data)
-    , mDaysButtonGroup(new QButtonGroup(widget())) // krazy:exclude=tipsandthis
-    , mShowButtonGroup(new QButtonGroup(widget())) // krazy:exclude=tipsandthis
+    , mDaysButtonGroup(new QButtonGroup(widget()))
+    , mShowButtonGroup(new QButtonGroup(widget()))
 {
     setupUi(widget());
 

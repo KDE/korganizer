@@ -20,7 +20,7 @@
 
 #include <Akonadi/ManageAccountWidget>
 #include <IncidenceEditor/IncidenceEditorSettings>
-#include <akonadi/calendarsettings.h>
+#include <akonadi/calendarsettings.h> //krazy:exclude=camelcase this is a generated file
 
 #include <KLocalizedString>
 #include <QCheckBox>

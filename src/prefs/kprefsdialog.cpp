@@ -33,7 +33,6 @@
 #include <QRadioButton>
 #include <QSpinBox>
 #include <QTimeEdit>
-#include <qwidget.h>
 
 using namespace Korganizer;
 
