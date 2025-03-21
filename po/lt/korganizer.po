@@ -10,7 +10,7 @@ msgid ""
 msgstr ""
 "Project-Id-Version: korganizer\n"
 "Report-Msgid-Bugs-To: https://bugs.kde.org\n"
-"POT-Creation-Date: 2025-03-13 02:34+0000\n"
+"POT-Creation-Date: 2025-03-21 02:39+0000\n"
 "PO-Revision-Date: 2024-02-02 23:04+0200\n"
 "Last-Translator: Mindaugas Baranauskas <opensuse.lietuviu.kalba@gmail.com>\n"
 "Language-Team: lt <kde-i18n-lt@kde.org>\n"
@@ -1296,64 +1296,64 @@ msgstr "R&edaguoti darbą..."
 msgid "&Delete To-do"
 msgstr "Paša&linti darbą"
 
-#: actionmanager.cpp:1421 actionmanager.cpp:1527
+#: actionmanager.cpp:1426 actionmanager.cpp:1532
 #, kde-format
 msgid "Attach as &link"
 msgstr "Pridėti kaip &nuorodą"
 
-#: actionmanager.cpp:1422 actionmanager.cpp:1528
+#: actionmanager.cpp:1427 actionmanager.cpp:1533
 #, kde-format
 msgid "Attach &inline"
 msgstr "Pridėti &tekste"
 
-#: actionmanager.cpp:1423
+#: actionmanager.cpp:1428
 #, kde-format
 msgid "Attach inline &without attachments"
 msgstr "Pridėti tekste &be priedų"
 
-#: actionmanager.cpp:1425 actionmanager.cpp:1530
+#: actionmanager.cpp:1430 actionmanager.cpp:1535
 #, kde-format
 msgid "C&ancel"
 msgstr "A&tšaukti"
 
-#: actionmanager.cpp:1463
+#: actionmanager.cpp:1468
 #, kde-format
 msgid "Removing attachments from an email might invalidate its signature."
 msgstr "Pašalinant priedus nuo el. laiško gali susigadinti parašas."
 
-#: actionmanager.cpp:1464
+#: actionmanager.cpp:1469
 #, fuzzy, kde-format
 #| msgid "Remove Attachments"
 msgctxt "@title:window"
 msgid "Remove Attachments"
 msgstr "Pašalinti priedus"
 
-#: actionmanager.cpp:1615
+#: actionmanager.cpp:1620
 #, kde-format
 msgid "Undo: %1"
 msgstr "Atšaukti: %1"
 
-#: actionmanager.cpp:1618 actionmanager.cpp:1634
+#: actionmanager.cpp:1623 actionmanager.cpp:1639
 #, kde-format
 msgid "Undo"
 msgstr "Atšaukti"
 
-#: actionmanager.cpp:1628
+#: actionmanager.cpp:1633
 #, kde-format
 msgid "Redo: %1"
 msgstr "Atstatyti: %1"
 
-#: actionmanager.cpp:1631
+#: actionmanager.cpp:1636
 #, kde-format
 msgid "Redo"
 msgstr "Pakartoti"
 
-#: actionmanager.cpp:1645
+#: actionmanager.cpp:1650
 #, kde-format
 msgid "URL '%1' is invalid."
 msgstr "Adresas „%1“ yra neteisingas."
 
-#: actionmanager.cpp:1650
+#: actionmanager.cpp:1655
 #, kde-format
 msgctxt "@info"
 msgid ""
@@ -1364,20 +1364,20 @@ msgid ""
 "p>"
 msgstr ""
 
-#: actionmanager.cpp:1658
+#: actionmanager.cpp:1663
 #, kde-format
 msgctxt "@title:window"
 msgid "Import Calendar"
 msgstr "Importuoti kalendorių"
 
-#: actionmanager.cpp:1659
+#: actionmanager.cpp:1664
 #, fuzzy, kde-format
 #| msgid "Merge into existing calendar"
 msgctxt "@action:button"
 msgid "Merge into existing calendar"
 msgstr "Sujungti su esančiu kalendoriumi"
 
-#: actionmanager.cpp:1660
+#: actionmanager.cpp:1665
 #, fuzzy, kde-format
 #| msgid "Add as new calendar"
 msgctxt "@action:button"

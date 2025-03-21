@@ -1,5 +1,5 @@
 # translation of korganizer.po to
-# Version: $Revision: 1705051 $
+# Version: $Revision: 1705566 $
 # SPDX-FileCopyrightText: 2011, 2012, 2013, 2014, 2015, 2016, 2017, 2018, 2019, 2020, 2021, 2022, 2023, 2024, 2025 Łukasz Wojniłowicz <lukasz.wojnilowicz@gmail.com>
 # translated by Krzysztof Jasiutowicz <kpjas@priv.onet.pl>
 # Krzysztof Lichota <lichota@mimuw.edu.pl>, 2002, 2005, 2006.
@@ -13,7 +13,7 @@ msgid ""
 msgstr ""
 "Project-Id-Version: korganizer\n"
 "Report-Msgid-Bugs-To: https://bugs.kde.org\n"
-"POT-Creation-Date: 2025-03-13 02:34+0000\n"
+"POT-Creation-Date: 2025-03-21 02:39+0000\n"
 "PO-Revision-Date: 2025-02-23 12:38+0100\n"
 "Last-Translator: Łukasz Wojniłowicz <lukasz.wojnilowicz@gmail.com>\n"
 "Language-Team: Polish <kde-i18n-doc@kde.org>\n"
@@ -1222,63 +1222,63 @@ msgstr "&Edytuj zadanie…"
 msgid "&Delete To-do"
 msgstr "&Usuń zadanie"
 
-#: actionmanager.cpp:1421 actionmanager.cpp:1527
+#: actionmanager.cpp:1426 actionmanager.cpp:1532
 #, kde-format
 msgid "Attach as &link"
 msgstr "Załącz jako &odnośnik"
 
-#: actionmanager.cpp:1422 actionmanager.cpp:1528
+#: actionmanager.cpp:1427 actionmanager.cpp:1533
 #, kde-format
 msgid "Attach &inline"
 msgstr "Zawrzyj w treśc&i"
 
-#: actionmanager.cpp:1423
+#: actionmanager.cpp:1428
 #, kde-format
 msgid "Attach inline &without attachments"
 msgstr "Zawrzyj w treści bez załącznikó&w"
 
-#: actionmanager.cpp:1425 actionmanager.cpp:1530
+#: actionmanager.cpp:1430 actionmanager.cpp:1535
 #, kde-format
 msgid "C&ancel"
 msgstr "&Anuluj"
 
-#: actionmanager.cpp:1463
+#: actionmanager.cpp:1468
 #, kde-format
 msgid "Removing attachments from an email might invalidate its signature."
 msgstr "Usunięcie załączników z e-maila może uszkodzić jego sygnaturę."
 
-#: actionmanager.cpp:1464
+#: actionmanager.cpp:1469
 #, kde-format
 msgctxt "@title:window"
 msgid "Remove Attachments"
 msgstr "Usuń załączniki"
 
-#: actionmanager.cpp:1615
+#: actionmanager.cpp:1620
 #, kde-format
 msgid "Undo: %1"
 msgstr "Cofnij: %1"
 
-#: actionmanager.cpp:1618 actionmanager.cpp:1634
+#: actionmanager.cpp:1623 actionmanager.cpp:1639
 #, kde-format
 msgid "Undo"
 msgstr "Cofnij"
 
-#: actionmanager.cpp:1628
+#: actionmanager.cpp:1633
 #, kde-format
 msgid "Redo: %1"
 msgstr "Przywróć: %1"
 
-#: actionmanager.cpp:1631
+#: actionmanager.cpp:1636
 #, kde-format
 msgid "Redo"
 msgstr "Przywróć"
 
-#: actionmanager.cpp:1645
+#: actionmanager.cpp:1650
 #, kde-format
 msgid "URL '%1' is invalid."
 msgstr "URL '%1' jest nieprawidłowy."
 
-#: actionmanager.cpp:1650
+#: actionmanager.cpp:1655
 #, kde-format
 msgctxt "@info"
 msgid ""
@@ -1293,19 +1293,19 @@ msgstr ""
 "kalendarz.</p><p>Po naciśnięciu dodaj, zostanie dla ciebie utworzony nowy "
 "kalendarz.</p>"
 
-#: actionmanager.cpp:1658
+#: actionmanager.cpp:1663
 #, kde-format
 msgctxt "@title:window"
 msgid "Import Calendar"
 msgstr "Zaimportuj kalendarz"
 
-#: actionmanager.cpp:1659
+#: actionmanager.cpp:1664
 #, kde-format
 msgctxt "@action:button"
 msgid "Merge into existing calendar"
 msgstr "Scal z istniejącym kalendarzem"
 
-#: actionmanager.cpp:1660
+#: actionmanager.cpp:1665
 #, kde-format
 msgctxt "@action:button"
 msgid "Add as new calendar"

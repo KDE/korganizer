@@ -18,7 +18,7 @@ msgid ""
 msgstr ""
 "Project-Id-Version: korganizer\n"
 "Report-Msgid-Bugs-To: https://bugs.kde.org\n"
-"POT-Creation-Date: 2025-03-13 02:34+0000\n"
+"POT-Creation-Date: 2025-03-21 02:39+0000\n"
 "PO-Revision-Date: 2025-02-06 17:41-0300\n"
 "Last-Translator: Geraldo Simiao <geraldosimiao@fedoraproject.org>\n"
 "Language-Team: Brazilian Portuguese <kde-i18n-pt_BR@kde.org>\n"
@@ -1248,63 +1248,63 @@ msgstr "&Editar tarefa..."
 msgid "&Delete To-do"
 msgstr "E&xcluir tarefa"
 
-#: actionmanager.cpp:1421 actionmanager.cpp:1527
+#: actionmanager.cpp:1426 actionmanager.cpp:1532
 #, kde-format
 msgid "Attach as &link"
 msgstr "Anexar como &link"
 
-#: actionmanager.cpp:1422 actionmanager.cpp:1528
+#: actionmanager.cpp:1427 actionmanager.cpp:1533
 #, kde-format
 msgid "Attach &inline"
 msgstr "Anexar como &integrado"
 
-#: actionmanager.cpp:1423
+#: actionmanager.cpp:1428
 #, kde-format
 msgid "Attach inline &without attachments"
 msgstr "Anexar como integrado &sem anexos"
 
-#: actionmanager.cpp:1425 actionmanager.cpp:1530
+#: actionmanager.cpp:1430 actionmanager.cpp:1535
 #, kde-format
 msgid "C&ancel"
 msgstr "C&ancelar"
 
-#: actionmanager.cpp:1463
+#: actionmanager.cpp:1468
 #, kde-format
 msgid "Removing attachments from an email might invalidate its signature."
 msgstr "A remoção dos anexos de um e-mail poderá invalidar a sua assinatura."
 
-#: actionmanager.cpp:1464
+#: actionmanager.cpp:1469
 #, kde-format
 msgctxt "@title:window"
 msgid "Remove Attachments"
 msgstr "Remover anexos"
 
-#: actionmanager.cpp:1615
+#: actionmanager.cpp:1620
 #, kde-format
 msgid "Undo: %1"
 msgstr "Desfazer: %1"
 
-#: actionmanager.cpp:1618 actionmanager.cpp:1634
+#: actionmanager.cpp:1623 actionmanager.cpp:1639
 #, kde-format
 msgid "Undo"
 msgstr "Desfazer"
 
-#: actionmanager.cpp:1628
+#: actionmanager.cpp:1633
 #, kde-format
 msgid "Redo: %1"
 msgstr "Refazer: %1"
 
-#: actionmanager.cpp:1631
+#: actionmanager.cpp:1636
 #, kde-format
 msgid "Redo"
 msgstr "Refazer"
 
-#: actionmanager.cpp:1645
+#: actionmanager.cpp:1650
 #, kde-format
 msgid "URL '%1' is invalid."
 msgstr "A URL '%1' é inválida."
 
-#: actionmanager.cpp:1650
+#: actionmanager.cpp:1655
 #, kde-format
 msgctxt "@info"
 msgid ""
@@ -1320,20 +1320,20 @@ msgstr ""
 "destino.</p><p>Se optar por adicionar, será criado um novo calendário "
 "automaticamente.</p>"
 
-#: actionmanager.cpp:1658
+#: actionmanager.cpp:1663
 #, kde-format
 msgctxt "@title:window"
 msgid "Import Calendar"
 msgstr "Importar calendário"
 
-#: actionmanager.cpp:1659
+#: actionmanager.cpp:1664
 #, fuzzy, kde-format
 #| msgid "Merge into existing calendar"
 msgctxt "@action:button"
 msgid "Merge into existing calendar"
 msgstr "Mesclar com o calendário existente"
 
-#: actionmanager.cpp:1660
+#: actionmanager.cpp:1665
 #, fuzzy, kde-format
 #| msgid "Add as new calendar"
 msgctxt "@action:button"
