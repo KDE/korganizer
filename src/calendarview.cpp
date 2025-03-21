@@ -930,29 +930,33 @@ static QTime nextQuarterHour(const QTime &time)
     return time; // roundup not needed
 }
 
+static QTime adjustedDefaultStartTime(const QDate &startDt)
+{
+    QTime prefTime;
+    if (CalendarSupport::KCalPrefs::instance()->startTime().isValid()) {
+        prefTime = CalendarSupport::KCalPrefs::instance()->startTime().time();
+    }
+
+    const QDateTime currentDateTime = QDateTime::currentDateTime();
+    if (startDt == currentDateTime.date()) {
+        // If today and the current time is already past the default time
+        // use the next quarter hour after the current time.
+        // but don't spill over into tomorrow.
+        const QTime currentTime = currentDateTime.time();
+        if (!prefTime.isValid() || (currentTime > prefTime && currentTime < QTime(23, 45))) {
+            prefTime = nextQuarterHour(currentTime);
+        }
+    }
+    return prefTime;
+}
+
 void CalendarView::dateTimesForNewEvent(QDateTime &startDt, QDateTime &endDt, bool &allDay)
 {
     mViewManager->currentView()->eventDurationHint(startDt, endDt, allDay);
 
     if (!startDt.isValid() || !endDt.isValid()) {
         startDt.setDate(activeDate(true));
-
-        QTime prefTime;
-        if (CalendarSupport::KCalPrefs::instance()->startTime().isValid()) {
-            prefTime = CalendarSupport::KCalPrefs::instance()->startTime().time();
-        }
-
-        const QDateTime currentDateTime = QDateTime::currentDateTime();
-        if (startDt.date() == currentDateTime.date()) {
-            // If today and the current time is already past the default time
-            // use the next quarter hour after the current time.
-            // but don't spill over into tomorrow.
-            const QTime currentTime = currentDateTime.time();
-            if (!prefTime.isValid() || (currentTime > prefTime && currentTime < QTime(23, 45))) {
-                prefTime = nextQuarterHour(currentTime);
-            }
-        }
-        startDt.setTime(prefTime);
+        startDt.setTime(adjustedDefaultStartTime(startDt.date()));
 
         int addSecs = (CalendarSupport::KCalPrefs::instance()->mDefaultDuration.time().hour() * 3600)
             + (CalendarSupport::KCalPrefs::instance()->mDefaultDuration.time().minute() * 60);
@@ -987,10 +991,9 @@ void CalendarView::newEvent()
 
 void CalendarView::newEvent(const QDate &dt)
 {
-    QDateTime startDt(dt, CalendarSupport::KCalPrefs::instance()->mStartTime.time());
+    QDateTime startDt(dt, adjustedDefaultStartTime(dt));
     QTime duration = CalendarSupport::KCalPrefs::instance()->defaultDuration().time();
     QTime time = startDt.time();
-
     time = time.addSecs(duration.hour() * 3600 + duration.minute() * 60 + duration.second());
     QDateTime endDt(startDt);
     endDt.setTime(time);
