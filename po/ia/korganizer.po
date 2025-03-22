@@ -8,7 +8,7 @@ msgstr ""
 "Project-Id-Version: \n"
 "Report-Msgid-Bugs-To: https://bugs.kde.org\n"
 "POT-Creation-Date: 2025-03-21 02:39+0000\n"
-"PO-Revision-Date: 2025-03-12 14:33+0100\n"
+"PO-Revision-Date: 2025-03-21 18:23+0100\n"
 "Last-Translator: giovanni <g.sora@tiscali.it>\n"
 "Language-Team: Interlingua <kde-i18n-doc@kde.org>\n"
 "Language: ia\n"
@@ -1385,19 +1385,14 @@ msgstr ""
 "esser addite novemente in ulle tempore."
 
 #: akonadicollectionview.cpp:759
-#, fuzzy, kde-kuit-format
-#| msgctxt "@info"
-#| msgid ""
-#| "Do you really want to delete the <filename>%1/filename> calendar?"
-#| "<para><warning>This cannot be undone.  Please consider carefully before "
-#| "pressing the %2 button.</warning></para>"
+#, kde-kuit-format
 msgctxt "@info"
 msgid ""
 "Do you really want to delete the <filename>%1</filename> calendar?"
 "<para><warning>This cannot be undone.  Please consider carefully before "
 "pressing the %2 button.</warning></para>"
 msgstr ""
-"Tu vermente vole deler le calendario <filename>%1/filename> ?"
+"Tu vermente vole deler le calendario <filename>%1</filename> ?"
 "<para><warning>Isto non pote esser annullate. Pro favor considera "
 "attentemente  ante pressare le button %2.</warning></para>"
 
@@ -3787,8 +3782,8 @@ msgid ""
 "Enter the start time for the working hours here. The working hours will be "
 "marked with color by KOrganizer."
 msgstr ""
-"Ci tu inserta le tempore initia pro horas de labor. Le horas de labor essera "
-"marcate con color per KOrganizer. "
+"Ci tu inserta le tempore initial pro horas de labor. Le horas de labor "
+"essera marcate con color per KOrganizer. "
 
 #. i18n: ectx: label, entry (WorkingHoursEnd), group (Time &amp; Date)
 #: settings/korganizer.kcfg:57
