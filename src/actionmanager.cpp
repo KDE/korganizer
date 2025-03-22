@@ -606,7 +606,7 @@ void ActionManager::initActions()
     action->setIconText(i18n("Date"));
     action->setStatusTip(i18nc("@info:status", "Scroll the view to user selected dates"));
     action->setToolTip(i18nc("@info:tooltip", "Scroll the view to user selected dates"));
-    action->setWhatsThis(i18nc("@info:whatsthis", "Opens a a date selection dialog for quickly navigating the view."));
+    action->setWhatsThis(i18nc("@info:whatsthis", "Opens a date selection dialog for quickly navigating the view."));
     mACollection->addAction(QStringLiteral("pick_date"), action);
     connect(action, &QAction::triggered, mCalendarView, &CalendarView::goSelectADate);
 
