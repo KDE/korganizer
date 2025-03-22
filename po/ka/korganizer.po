@@ -7,7 +7,7 @@ msgid ""
 msgstr ""
 "Project-Id-Version: korganizer\n"
 "Report-Msgid-Bugs-To: https://bugs.kde.org\n"
-"POT-Creation-Date: 2025-03-21 00:42+0000\n"
+"POT-Creation-Date: 2025-03-22 00:42+0000\n"
 "PO-Revision-Date: 2025-03-20 03:26+0100\n"
 "Last-Translator: Temuri Doghonadze <temuri.doghonadze@gmail.com>\n"
 "Language-Team: Georgian <kde-i18n-doc@kde.org>\n"
@@ -1425,7 +1425,7 @@ msgctxt "@title:window"
 msgid "Delete Calendar"
 msgstr "კალენდრის წაშლა"
 
-#: calendarview.cpp:252
+#: calendarview.cpp:251
 #, kde-kuit-format
 msgid ""
 "<p><em>No Item Selected</em></p><p>Select an event, to-do or journal entry "
@@ -1434,7 +1434,7 @@ msgstr ""
 "<p><em>ელემენტი არჩეული არაა</em></p><p>მონიშნეთ მოვლენა, გასაკეთებელი ან "
 "ჟურნალის ჩანაწერი, რომლის დეტალების აქ ნახვაც გნებავთ.</p>"
 
-#: calendarview.cpp:256
+#: calendarview.cpp:255
 #, kde-format
 msgctxt "@info:whatsthis"
 msgid ""
@@ -1444,17 +1444,17 @@ msgstr ""
 "აქ შეგიძლიათ, Korganzer-ის მთავარ ხედში არჩეული მოვლენის დეტალების, ჟურნალის "
 "ჩანაწერების ან გასაკეთებლის დეტალები იხილოთ."
 
-#: calendarview.cpp:672
+#: calendarview.cpp:673
 #, kde-format
 msgid "Todo completed: %1 (%2)"
 msgstr "გასაკეთებელი დასრულდა: %1 (%2)"
 
-#: calendarview.cpp:681
+#: calendarview.cpp:682
 #, kde-format
 msgid "Journal of %1"
 msgstr "%1-ის ჟურნალი"
 
-#: calendarview.cpp:730
+#: calendarview.cpp:731
 #, kde-format
 msgid ""
 "The item \"%1\" is filtered by your current filter rules, so it will be "
@@ -1463,63 +1463,63 @@ msgstr ""
 "ელემენტი \"%1\" გაიფილტრა თქვენი მიმდინარე ფილტრის წესებით, ასე რომ, ის "
 "დამალულია და ხედში არ გამოჩნდება."
 
-#: calendarview.cpp:799
+#: calendarview.cpp:800
 #, kde-format
 msgctxt "@info"
 msgid "Do you really want to permanently remove the item \"%1\"?"
 msgstr "მართლა გნებავთ, სამუდამოდ წაშალოთ ელემენტი \"%1\"?"
 
-#: calendarview.cpp:800
+#: calendarview.cpp:801
 #, kde-format
 msgctxt "@title:window"
 msgid "Delete Item?"
 msgstr "წავშალო ჩანაწერი?"
 
-#: calendarview.cpp:875
+#: calendarview.cpp:876
 #, kde-format
 msgid "Paste failed: unable to determine a valid target date."
 msgstr "ჩასმის შეცდომა: სწორი სამიზნე თარიღის დადგენა შეუძლებელია."
 
-#: calendarview.cpp:1305
+#: calendarview.cpp:1309
 #, kde-format
 msgid "Make sub-to-dos independent"
 msgstr "ყველა ქვეგასაკეთებლის დამოუკიდებლად გადაკეთება"
 
-#: calendarview.cpp:1362
+#: calendarview.cpp:1366
 #, kde-format
 msgid "Toggle Reminder"
 msgstr "შემხსენებლის გადართვა"
 
-#: calendarview.cpp:1394 calendarview.cpp:1446
+#: calendarview.cpp:1398 calendarview.cpp:1450
 #, kde-format
 msgid "Toggle To-do Completed"
 msgstr "გასაკეთებლის გაკეთებულობის გადართვა"
 
-#: calendarview.cpp:1498
+#: calendarview.cpp:1502
 #, kde-format
 msgctxt "@info"
 msgid "\"%1\" was successfully copied to %2."
 msgstr "\"%1\" წარმატებით დაკოპირდა %2-ზე."
 
-#: calendarview.cpp:1499
+#: calendarview.cpp:1503
 #, kde-format
 msgctxt "@title:window"
 msgid "Copying Succeeded"
 msgstr "კოპირება წარმატებულია"
 
-#: calendarview.cpp:1503
+#: calendarview.cpp:1507
 #, kde-format
 msgctxt "@info"
 msgid "Unable to copy the item \"%1\" to %2."
 msgstr "\"%1\"-ის %2-ში კოპირება შეუძლებელია."
 
-#: calendarview.cpp:1504 calendarview.cpp:2501
+#: calendarview.cpp:1508 calendarview.cpp:2505
 #, kde-format
 msgctxt "@title:window"
 msgid "Copying Failed"
 msgstr "კოპირების შეცდომა"
 
-#: calendarview.cpp:1563
+#: calendarview.cpp:1567
 #, kde-format
 msgctxt "@info"
 msgid ""
@@ -1529,127 +1529,127 @@ msgstr ""
 "ელემენტის \"%1\" საწყისი კალენდრიდან წაშლა შეუძლებელია. მაგრამ ამ ელემენტის "
 "ასლი %2-ში ჩავდეთ"
 
-#: calendarview.cpp:1567 calendarview.cpp:1583 calendarview.cpp:2536
+#: calendarview.cpp:1571 calendarview.cpp:1587 calendarview.cpp:2540
 #, kde-format
 msgctxt "@title:window"
 msgid "Moving Failed"
 msgstr "გადატანის შეცდომა"
 
-#: calendarview.cpp:1572
+#: calendarview.cpp:1576
 #, kde-format
 msgctxt "@info"
 msgid "\"%1\" was successfully moved from %2 to %3."
 msgstr "\"%1\" წარმატებით იქნა გადატანილი %2-დან %3-ში."
 
-#: calendarview.cpp:1573
+#: calendarview.cpp:1577
 #, kde-format
 msgctxt "@title:window"
 msgid "Moving Succeeded"
 msgstr "გადატანა წარმატებულია"
 
-#: calendarview.cpp:1579
+#: calendarview.cpp:1583
 #, kde-format
 msgctxt "@info"
 msgid "Unable to add the item \"%1\" into %2. This item has not been moved."
 msgstr ""
 "ელემენტის %1 %2-ში ჩამატება შეუძლებელია. ელემენტის გადატანა არ მომხდარა."
 
-#: calendarview.cpp:1617
+#: calendarview.cpp:1621
 #, kde-format
 msgid "Do you want to dissociate the occurrence on %1 from the recurrence?"
 msgstr "გნებავთ ინციდენტის %1 გამეორებისგან მოცილება?"
 
-#: calendarview.cpp:1621 calendarview.cpp:1633 calendarview.cpp:2306
+#: calendarview.cpp:1625 calendarview.cpp:1637 calendarview.cpp:2310
 #, kde-format
 msgctxt "@title:window"
 msgid "KOrganizer Confirmation"
 msgstr "KOrganizer -ის დასტური"
 
-#: calendarview.cpp:1622
+#: calendarview.cpp:1626
 #, kde-format
 msgctxt "@action:button"
 msgid "&Dissociate"
 msgstr "&ასოცირების გაუქმება"
 
-#: calendarview.cpp:1628
+#: calendarview.cpp:1632
 #, kde-format
 msgid ""
 "Do you want to dissociate the occurrence on %1 from the recurrence or also "
 "dissociate future ones?"
 msgstr "გნებავთ ინციდენტის %1 გამეორებიდან მომავლისთვისაც მოვაცილო?"
 
-#: calendarview.cpp:1634
+#: calendarview.cpp:1638
 #, kde-format
 msgctxt "@action:button"
 msgid "&Only Dissociate This One"
 msgstr "&მხოლოდ, ამის ასოცირების მოხსნა"
 
-#: calendarview.cpp:1635
+#: calendarview.cpp:1639
 #, kde-format
 msgctxt "@action:button"
 msgid "&Also Dissociate Future Ones"
 msgstr "&ასევე მომავალი ასოცირებების მოხსნა"
 
-#: calendarview.cpp:1653
+#: calendarview.cpp:1657
 #, kde-format
 msgid "Dissociate future occurrences"
 msgstr "მომავალი გამეორებების ასოცირების მოხსნა"
 
-#: calendarview.cpp:1655
+#: calendarview.cpp:1659
 #, kde-format
 msgid "Dissociate occurrence"
 msgstr "გამეორების ასოცირების მოხსნა"
 
-#: calendarview.cpp:1662
+#: calendarview.cpp:1666
 #, kde-format
 msgid "Dissociating the future occurrences failed."
 msgstr "მომავალი გამეორების ასოციაციის მოხსნა ჩავარდა."
 
-#: calendarview.cpp:1662 calendarview.cpp:1664
+#: calendarview.cpp:1666 calendarview.cpp:1668
 #, kde-format
 msgctxt "@title:window"
 msgid "Dissociating Failed"
 msgstr "ასოციაციის მოხსნა ჩავარდა"
 
-#: calendarview.cpp:1664
+#: calendarview.cpp:1668
 #, kde-format
 msgid "Dissociating the occurrence failed."
 msgstr "გამეორების ასოცირების მოხსნა ჩავარდა."
 
-#: calendarview.cpp:1826
+#: calendarview.cpp:1830
 #, kde-format
 msgid "iCalendars (*.ics)"
 msgstr "iCalendars (*.ics)"
 
-#: calendarview.cpp:1835
+#: calendarview.cpp:1839
 #, kde-format
 msgid "Do you want to overwrite %1?"
 msgstr "გნებავთ, გადააწეროთ %1-ს?"
 
-#: calendarview.cpp:1836
+#: calendarview.cpp:1840
 #, kde-format
 msgctxt "@title:window"
 msgid "Export Calendar"
 msgstr "კალენდრს გატანა"
 
-#: calendarview.cpp:1850
+#: calendarview.cpp:1854
 #, kde-format
 msgctxt "save failure cause unknown"
 msgid "Reason unknown"
 msgstr "უცნობი მიზეზი"
 
-#: calendarview.cpp:1852
+#: calendarview.cpp:1856
 #, kde-format
 msgctxt "@info"
 msgid "Cannot write iCalendar file %1. %2"
 msgstr "შეცდომა iCalendar-ის ფაილის %1 ჩაწერისას. %2"
 
-#: calendarview.cpp:1953 calendarview.cpp:1998
+#: calendarview.cpp:1957 calendarview.cpp:2002
 #, kde-format
 msgid "No filter"
 msgstr "ფილტრის გარეშე"
 
-#: calendarview.cpp:2301
+#: calendarview.cpp:2305
 #, kde-format
 msgid ""
 "The item \"%1\" has sub-to-dos. Do you want to delete just this item and "
@@ -1660,19 +1660,19 @@ msgstr ""
 "და მისი ქვეგასაკეთებლები დამოუკიდებლები გახადოთ, თუ თავისი ქვეგასაკეთებლებით "
 "ამოვჭრა?"
 
-#: calendarview.cpp:2307
+#: calendarview.cpp:2311
 #, kde-format
 msgctxt "@action:button"
 msgid "Delete Only This"
 msgstr "მხოლოდ ამის წაშლა"
 
-#: calendarview.cpp:2308 calendarview.cpp:2366
+#: calendarview.cpp:2312 calendarview.cpp:2370
 #, kde-format
 msgctxt "@action:button"
 msgid "Delete All"
 msgstr "ყველას წაშლა"
 
-#: calendarview.cpp:2339
+#: calendarview.cpp:2343
 #, kde-format
 msgid ""
 "The item \"%1\" is marked read-only and cannot be deleted; it probably "
@@ -1681,12 +1681,12 @@ msgstr ""
 "ელემენტი \"%1\" მონიშნულია, როგორც მხოლოდ-წაკითხვადი და მისი წაშლა "
 "შეუძლებელია. ალბათ, ის, მხოლოდ-კითხვად კალენდარს ეკუთვნის."
 
-#: calendarview.cpp:2343
+#: calendarview.cpp:2347
 #, kde-format
 msgid "Removing not possible"
 msgstr "წაშლა შეუძლებელია"
 
-#: calendarview.cpp:2361
+#: calendarview.cpp:2365
 #, kde-format
 msgid ""
 "The calendar item \"%1\" recurs over multiple dates; are you sure you want "
@@ -1695,17 +1695,17 @@ msgstr ""
 "კალენდრის ელემენტი \"%1\" ერთზე მეტ თარიღზე მეორდება. მართლა გნებავთ მისი და "
 "მისი ყველა გამეორების წაშლა?"
 
-#: calendarview.cpp:2365 calendarview.cpp:2395
+#: calendarview.cpp:2369 calendarview.cpp:2399
 #, kde-format
 msgid "KOrganizer Confirmation"
 msgstr "KOrganizer -ის დასტური"
 
-#: calendarview.cpp:2373
+#: calendarview.cpp:2377
 #, kde-format
 msgid "Also Delete &Future"
 msgstr "&მომავალშიც წაიშლება"
 
-#: calendarview.cpp:2377
+#: calendarview.cpp:2381
 #, kde-format
 msgid ""
 "The calendar item \"%1\" recurs over multiple dates. Do you want to delete "
@@ -1714,7 +1714,7 @@ msgstr ""
 "კალენდრის ელემენტი \"%1\" ერთზე მეტ თარიღზე მეორდება. გნებავთ, წაშალოთ "
 "მიმდინარე %2-ზე, მომავალი გამეორება თუ მისი ყველა გამეორება?"
 
-#: calendarview.cpp:2384
+#: calendarview.cpp:2388
 #, kde-format
 msgid ""
 "The calendar item \"%1\" recurs over multiple dates. Do you want to delete "
@@ -1723,22 +1723,22 @@ msgstr ""
 "კალენდრის ელემენტი \"%1\" ერთზე მეტ თარიღზე მეორდება. გნებავთ, მხოლოდ "
 "მიმდინარე, %2-ზე, წაშალოთ, თუ მისი ყველა გამეორება?"
 
-#: calendarview.cpp:2396
+#: calendarview.cpp:2400
 #, kde-format
 msgid "Delete C&urrent"
 msgstr "&მიმდინარს წაშლა"
 
-#: calendarview.cpp:2398
+#: calendarview.cpp:2402
 #, kde-format
 msgid "Delete &All"
 msgstr "&ყველას წაშლა"
 
-#: calendarview.cpp:2429 calendarview.cpp:2436
+#: calendarview.cpp:2433 calendarview.cpp:2440
 #, kde-format
 msgid "Delete \"%1\""
 msgstr "\"%1\"-ის წაშლა"
 
-#: calendarview.cpp:2466
+#: calendarview.cpp:2470
 #, kde-format
 msgid ""
 "All calendars are unchecked in the Calendar Manager. No to-do was purged."
@@ -1746,50 +1746,50 @@ msgstr ""
 "კალენდრის მმართველში ყველა კალენდრის მონიშვნა მოხსნილია. გასაკეთებლები არ "
 "მოცილებულა."
 
-#: calendarview.cpp:2471 calendarview.cpp:2754
+#: calendarview.cpp:2475 calendarview.cpp:2758
 #, kde-format
 msgid "There are no completed to-dos to purge."
 msgstr "მოსასუფთავებელი გასაკეთებლების გარეშე."
 
-#: calendarview.cpp:2476
+#: calendarview.cpp:2480
 #, kde-format
 msgid "Delete all completed to-dos from checked calendars?"
 msgstr "წავშალო ყველა დასრულებული გასაკეთებელი მონიშნული კალენდრებიდან?"
 
-#: calendarview.cpp:2477
+#: calendarview.cpp:2481
 #, kde-format
 msgctxt "@title:window"
 msgid "Purge To-dos"
 msgstr "გასაკეთებლების მოსუფთავება"
 
-#: calendarview.cpp:2478
+#: calendarview.cpp:2482
 #, kde-format
 msgctxt "@action:button"
 msgid "Purge"
 msgstr "გაწმენდა"
 
-#: calendarview.cpp:2489
+#: calendarview.cpp:2493
 #, kde-format
 msgctxt "@info"
 msgid "Unable to edit \"%1\" because it is locked by another process."
 msgstr "\"%1\"-ის ჩასწორება შეუძლებელია, რადგან ის სხვა პროცესმა დაბლოკა."
 
-#: calendarview.cpp:2501
+#: calendarview.cpp:2505
 #, kde-format
 msgid "Unable to copy the item to %1."
 msgstr "ელემენტის %1-ში კოპირება შეუძლებელია."
 
-#: calendarview.cpp:2536
+#: calendarview.cpp:2540
 #, kde-format
 msgid "Unable to move the item to  %1."
 msgstr "ელემენტის %1-ში გადატანა შეუძლებელია."
 
-#: calendarview.cpp:2747
+#: calendarview.cpp:2751
 #, kde-format
 msgid "0 completed to-dos were purged."
 msgstr "მოსუფთავებულია 0 დასრულებული გასაკეთებელი."
 
-#: calendarview.cpp:2748 calendarview.cpp:2758
+#: calendarview.cpp:2752 calendarview.cpp:2762
 #, kde-format
 msgid "%1 to-do was ignored because it has uncompleted or read-only children."
 msgid_plural ""
@@ -1801,19 +1801,19 @@ msgstr[1] ""
 "%1 გასაკეთებელი გამოტოვებელია იმიტომ, რომ მას დაუსრულებელი ან მხოლოდ "
 "კითხვადი შვილები გააჩნია."
 
-#: calendarview.cpp:2752 calendarview.cpp:2757
+#: calendarview.cpp:2756 calendarview.cpp:2761
 #, kde-format
 msgid "%1 completed to-do was purged."
 msgid_plural "%1 completed to-dos were purged."
 msgstr[0] "%1 დასრულებული გასაკეთებელი მოსუფთავდა."
 msgstr[1] "%1 დასრულებული გასაკეთებელი მოსუფთავდა."
 
-#: calendarview.cpp:2763
+#: calendarview.cpp:2767
 #, kde-format
 msgid "An error occurred while purging completed to-dos: %1"
 msgstr "შეცდომა დასრულებული გასაკეთებლების მოსუფთავებისას: %1"
 
-#: calendarview.cpp:2817
+#: calendarview.cpp:2821
 #, kde-format
 msgid ""
 "You created an incidence in a calendar that is currently filtered out.\n"
@@ -1822,7 +1822,7 @@ msgstr ""
 "კალენდარში შექმენით ინციდენტი, რომელიც ახლა გაფილტრულია.\n"
 "მარცხენა მხარეს, ჩართეთ ის კალენდრის მმართველში, რათა ინციდენტი დაინახოთ."
 
-#: calendarview.cpp:2821
+#: calendarview.cpp:2825
 #, kde-format
 msgid ""
 "You created an incidence in a calendar that is currently filtered out.\n"
@@ -3668,19 +3668,19 @@ msgctxt "@title:group"
 msgid "Other Options"
 msgstr "სხვა პარამეტრები"
 
-#: prefs/kprefsdialog.cpp:234
+#: prefs/kprefsdialog.cpp:233
 #, kde-format
 msgctxt "@action:button"
 msgid "Choose…"
 msgstr "არჩევა…"
 
-#: prefs/kprefsdialog.cpp:765
+#: prefs/kprefsdialog.cpp:764
 #, kde-format
 msgctxt "@title:window"
 msgid "Preferences"
 msgstr "პარამეტრები"
 
-#: prefs/kprefsdialog.cpp:867
+#: prefs/kprefsdialog.cpp:866
 #, kde-format
 msgid ""
 "You are about to set all preferences to default values. All custom "
@@ -3689,13 +3689,13 @@ msgstr ""
 "აპირებთ, ყველა პარამეტრი საწყის მნიშვნელობაზე დააბრუნოთ. თქვენი შეტანილი "
 "ყველა ცვლილება დაიკარგება."
 
-#: prefs/kprefsdialog.cpp:869
+#: prefs/kprefsdialog.cpp:868
 #, kde-format
 msgctxt "@title:window"
 msgid "Setting Default Preferences"
 msgstr "ნაგულისხმევ პარამეტრების დაყენება"
 
-#: prefs/kprefsdialog.cpp:870
+#: prefs/kprefsdialog.cpp:869
 #, kde-format
 msgctxt "@action:button"
 msgid "Reset to Defaults"

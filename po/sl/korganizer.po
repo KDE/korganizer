@@ -1,7 +1,7 @@
 # translation of korganizer.po to Slovenian
 # Translation of korganizer.po to Slovenian
 # Copyright (C) 2001,2002, 2003, 2004, 2005, 2006 Free Software Foundation, Inc.
-# $Id: korganizer.po 1705557 2025-03-21 01:21:34Z scripty $
+# $Id: korganizer.po 1705603 2025-03-22 01:21:00Z scripty $
 # $Source$
 #
 # Roman Maurer <roman.maurer@hermes.si>, 2001.
@@ -14,7 +14,7 @@ msgid ""
 msgstr ""
 "Project-Id-Version: korganizer\n"
 "Report-Msgid-Bugs-To: https://bugs.kde.org\n"
-"POT-Creation-Date: 2025-03-21 00:42+0000\n"
+"POT-Creation-Date: 2025-03-22 00:42+0000\n"
 "PO-Revision-Date: 2025-03-20 07:36+0100\n"
 "Last-Translator: Matjaž Jeran <matjaz.jeran@amis.net>\n"
 "Language-Team: Slovenian <lugos-slo@lugos.si>\n"
@@ -1441,7 +1441,7 @@ msgctxt "@title:window"
 msgid "Delete Calendar"
 msgstr "Izbriši koledar"
 
-#: calendarview.cpp:252
+#: calendarview.cpp:251
 #, kde-kuit-format
 msgid ""
 "<p><em>No Item Selected</em></p><p>Select an event, to-do or journal entry "
@@ -1450,7 +1450,7 @@ msgstr ""
 "<p><em>Ni izbranega predmeta</em></p><p>Izberite dogodek, opravilo ali "
 "dnevnik in tu se bodo prikazale podrobnosti.</p>"
 
-#: calendarview.cpp:256
+#: calendarview.cpp:255
 #, kde-format
 msgctxt "@info:whatsthis"
 msgid ""
@@ -1460,17 +1460,17 @@ msgstr ""
 "Oglejte si podrobnosti dogodkov, vnosov v dnevnik ali opravil, izbranih v "
 "glavnem pogledu KOrganizerja tukaj."
 
-#: calendarview.cpp:672
+#: calendarview.cpp:673
 #, kde-format
 msgid "Todo completed: %1 (%2)"
 msgstr "Opravilo zaključeno: %1 (%2)"
 
-#: calendarview.cpp:681
+#: calendarview.cpp:682
 #, kde-format
 msgid "Journal of %1"
 msgstr "Dnevnik piše %1"
 
-#: calendarview.cpp:730
+#: calendarview.cpp:731
 #, kde-format
 msgid ""
 "The item \"%1\" is filtered by your current filter rules, so it will be "
@@ -1479,63 +1479,63 @@ msgstr ""
 "Predmet »%1« je filtriran s trenutnimi filtrirnimi pravili, zato bo skrit in "
 "se ne bo pojavil v tem prikazu."
 
-#: calendarview.cpp:799
+#: calendarview.cpp:800
 #, kde-format
 msgctxt "@info"
 msgid "Do you really want to permanently remove the item \"%1\"?"
 msgstr "Ali res želite trajno odstraniti predmet »%1«?"
 
-#: calendarview.cpp:800
+#: calendarview.cpp:801
 #, kde-format
 msgctxt "@title:window"
 msgid "Delete Item?"
 msgstr "Izbrišem predmet?"
 
-#: calendarview.cpp:875
+#: calendarview.cpp:876
 #, kde-format
 msgid "Paste failed: unable to determine a valid target date."
 msgstr "Lepljenje ni uspelo: ni mogoče določiti veljavnega ciljnega datuma."
 
-#: calendarview.cpp:1305
+#: calendarview.cpp:1309
 #, kde-format
 msgid "Make sub-to-dos independent"
 msgstr "Napravi podopravila samostojna"
 
-#: calendarview.cpp:1362
+#: calendarview.cpp:1366
 #, kde-format
 msgid "Toggle Reminder"
 msgstr "Preklopi opomnik"
 
-#: calendarview.cpp:1394 calendarview.cpp:1446
+#: calendarview.cpp:1398 calendarview.cpp:1450
 #, kde-format
 msgid "Toggle To-do Completed"
 msgstr "Preklopi zaključenost opravila"
 
-#: calendarview.cpp:1498
+#: calendarview.cpp:1502
 #, kde-format
 msgctxt "@info"
 msgid "\"%1\" was successfully copied to %2."
 msgstr "»%1« je bil uspešno skopiran v %2."
 
-#: calendarview.cpp:1499
+#: calendarview.cpp:1503
 #, kde-format
 msgctxt "@title:window"
 msgid "Copying Succeeded"
 msgstr "Kopiranje je uspelo"
 
-#: calendarview.cpp:1503
+#: calendarview.cpp:1507
 #, kde-format
 msgctxt "@info"
 msgid "Unable to copy the item \"%1\" to %2."
 msgstr "Ni mogoče kopirati predmeta »%1« v %2."
 
-#: calendarview.cpp:1504 calendarview.cpp:2501
+#: calendarview.cpp:1508 calendarview.cpp:2505
 #, kde-format
 msgctxt "@title:window"
 msgid "Copying Failed"
 msgstr "Kopiranje ni uspelo"
 
-#: calendarview.cpp:1563
+#: calendarview.cpp:1567
 #, kde-format
 msgctxt "@info"
 msgid ""
@@ -1545,48 +1545,48 @@ msgstr ""
 "Predmeta »%1« ni mogoče odstraniti iz izvornega koledarja. Kljub temu je "
 "bila v %2 dana njegova kopija"
 
-#: calendarview.cpp:1567 calendarview.cpp:1583 calendarview.cpp:2536
+#: calendarview.cpp:1571 calendarview.cpp:1587 calendarview.cpp:2540
 #, kde-format
 msgctxt "@title:window"
 msgid "Moving Failed"
 msgstr "Premikanje ni uspelo"
 
-#: calendarview.cpp:1572
+#: calendarview.cpp:1576
 #, kde-format
 msgctxt "@info"
 msgid "\"%1\" was successfully moved from %2 to %3."
 msgstr "»%1« je bil uspešno premaknjen iz %2 v %3."
 
-#: calendarview.cpp:1573
+#: calendarview.cpp:1577
 #, kde-format
 msgctxt "@title:window"
 msgid "Moving Succeeded"
 msgstr "Premikanje je uspelo"
 
-#: calendarview.cpp:1579
+#: calendarview.cpp:1583
 #, kde-format
 msgctxt "@info"
 msgid "Unable to add the item \"%1\" into %2. This item has not been moved."
 msgstr "Predmeta »%1« ni mogoče dodati v %2, zato ni bil premaknjen."
 
-#: calendarview.cpp:1617
+#: calendarview.cpp:1621
 #, kde-format
 msgid "Do you want to dissociate the occurrence on %1 from the recurrence?"
 msgstr "Ali želite razvezati pojavitev na dan %1 od ponovitve?"
 
-#: calendarview.cpp:1621 calendarview.cpp:1633 calendarview.cpp:2306
+#: calendarview.cpp:1625 calendarview.cpp:1637 calendarview.cpp:2310
 #, kde-format
 msgctxt "@title:window"
 msgid "KOrganizer Confirmation"
 msgstr "Potrditev KOrganizerja"
 
-#: calendarview.cpp:1622
+#: calendarview.cpp:1626
 #, kde-format
 msgctxt "@action:button"
 msgid "&Dissociate"
 msgstr "Razveži"
 
-#: calendarview.cpp:1628
+#: calendarview.cpp:1632
 #, kde-format
 msgid ""
 "Do you want to dissociate the occurrence on %1 from the recurrence or also "
@@ -1595,78 +1595,78 @@ msgstr ""
 "Ali želite razvezati pojavitev samo na dan %1 od ponovitve ali tudi "
 "prihodnje?"
 
-#: calendarview.cpp:1634
+#: calendarview.cpp:1638
 #, kde-format
 msgctxt "@action:button"
 msgid "&Only Dissociate This One"
 msgstr "Razveži samo to"
 
-#: calendarview.cpp:1635
+#: calendarview.cpp:1639
 #, kde-format
 msgctxt "@action:button"
 msgid "&Also Dissociate Future Ones"
 msgstr "Razveži tudi prihodnje"
 
-#: calendarview.cpp:1653
+#: calendarview.cpp:1657
 #, kde-format
 msgid "Dissociate future occurrences"
 msgstr "Razveži prihodnje pojavitve"
 
-#: calendarview.cpp:1655
+#: calendarview.cpp:1659
 #, kde-format
 msgid "Dissociate occurrence"
 msgstr "Razveži pojavitev"
 
-#: calendarview.cpp:1662
+#: calendarview.cpp:1666
 #, kde-format
 msgid "Dissociating the future occurrences failed."
 msgstr "Razvezovanje prihodnjih pojavitev ni uspelo."
 
-#: calendarview.cpp:1662 calendarview.cpp:1664
+#: calendarview.cpp:1666 calendarview.cpp:1668
 #, kde-format
 msgctxt "@title:window"
 msgid "Dissociating Failed"
 msgstr "Razvezovanje ni uspelo"
 
-#: calendarview.cpp:1664
+#: calendarview.cpp:1668
 #, kde-format
 msgid "Dissociating the occurrence failed."
 msgstr "Razvezovanje pojavitve ni uspelo."
 
-#: calendarview.cpp:1826
+#: calendarview.cpp:1830
 #, kde-format
 msgid "iCalendars (*.ics)"
 msgstr "iCalendars (*.ics)"
 
-#: calendarview.cpp:1835
+#: calendarview.cpp:1839
 #, kde-format
 msgid "Do you want to overwrite %1?"
 msgstr "Ali želite prepisati %1?"
 
-#: calendarview.cpp:1836
+#: calendarview.cpp:1840
 #, kde-format
 msgctxt "@title:window"
 msgid "Export Calendar"
 msgstr "Izvozi koledar"
 
-#: calendarview.cpp:1850
+#: calendarview.cpp:1854
 #, kde-format
 msgctxt "save failure cause unknown"
 msgid "Reason unknown"
 msgstr "Vzrok ni znan"
 
-#: calendarview.cpp:1852
+#: calendarview.cpp:1856
 #, kde-format
 msgctxt "@info"
 msgid "Cannot write iCalendar file %1. %2"
 msgstr "Ni mogoče zapisati datoteke iCalendar %1. %2"
 
-#: calendarview.cpp:1953 calendarview.cpp:1998
+#: calendarview.cpp:1957 calendarview.cpp:2002
 #, kde-format
 msgid "No filter"
 msgstr "Brez filtra"
 
-#: calendarview.cpp:2301
+#: calendarview.cpp:2305
 #, kde-format
 msgid ""
 "The item \"%1\" has sub-to-dos. Do you want to delete just this item and "
@@ -1677,19 +1677,19 @@ msgstr ""
 "spremeniti njegova podopravila v samostojna ali pa izbrisati opravilo skupaj "
 "z njegovimi podopravili?"
 
-#: calendarview.cpp:2307
+#: calendarview.cpp:2311
 #, kde-format
 msgctxt "@action:button"
 msgid "Delete Only This"
 msgstr "Izbriši samo to"
 
-#: calendarview.cpp:2308 calendarview.cpp:2366
+#: calendarview.cpp:2312 calendarview.cpp:2370
 #, kde-format
 msgctxt "@action:button"
 msgid "Delete All"
 msgstr "Izbriši vse"
 
-#: calendarview.cpp:2339
+#: calendarview.cpp:2343
 #, kde-format
 msgid ""
 "The item \"%1\" is marked read-only and cannot be deleted; it probably "
@@ -1698,12 +1698,12 @@ msgstr ""
 "Predmet »%1« je označen samo za branje in ga ni mogoče izbrisati. Verjetno "
 "pripada koledarju, ki je samo za branje."
 
-#: calendarview.cpp:2343
+#: calendarview.cpp:2347
 #, kde-format
 msgid "Removing not possible"
 msgstr "Odstranjevanje ni mogoče"
 
-#: calendarview.cpp:2361
+#: calendarview.cpp:2365
 #, kde-format
 msgid ""
 "The calendar item \"%1\" recurs over multiple dates; are you sure you want "
@@ -1712,17 +1712,17 @@ msgstr ""
 "Predmet na koledarju »%1« se ponavlja ob več datumih. Ali ste prepričani, da "
 "želite izbrisati ta predmet in vse njegove ponovitve?"
 
-#: calendarview.cpp:2365 calendarview.cpp:2395
+#: calendarview.cpp:2369 calendarview.cpp:2399
 #, kde-format
 msgid "KOrganizer Confirmation"
 msgstr "Potrditev KOrganizerja"
 
-#: calendarview.cpp:2373
+#: calendarview.cpp:2377
 #, kde-format
 msgid "Also Delete &Future"
 msgstr "Izbriši tudi prihodnje"
 
-#: calendarview.cpp:2377
+#: calendarview.cpp:2381
 #, kde-format
 msgid ""
 "The calendar item \"%1\" recurs over multiple dates. Do you want to delete "
@@ -1732,7 +1732,7 @@ msgstr ""
 "samo trenutno pojavitev na datum %2, tudi prihodnje pojavitve ali vse "
 "njegove pojavitve?"
 
-#: calendarview.cpp:2384
+#: calendarview.cpp:2388
 #, kde-format
 msgid ""
 "The calendar item \"%1\" recurs over multiple dates. Do you want to delete "
@@ -1741,22 +1741,22 @@ msgstr ""
 "Predmet na koledarju »%1« se ponavlja ob več datumih. Ali želite izbrisati "
 "samo trenutno pojavitev na datum %2 ali vse njegove pojavitve?"
 
-#: calendarview.cpp:2396
+#: calendarview.cpp:2400
 #, kde-format
 msgid "Delete C&urrent"
 msgstr "Izbriši trenutne"
 
-#: calendarview.cpp:2398
+#: calendarview.cpp:2402
 #, kde-format
 msgid "Delete &All"
 msgstr "Izbriši vse"
 
-#: calendarview.cpp:2429 calendarview.cpp:2436
+#: calendarview.cpp:2433 calendarview.cpp:2440
 #, kde-format
 msgid "Delete \"%1\""
 msgstr "Izbriši »%1«"
 
-#: calendarview.cpp:2466
+#: calendarview.cpp:2470
 #, kde-format
 msgid ""
 "All calendars are unchecked in the Calendar Manager. No to-do was purged."
@@ -1764,50 +1764,50 @@ msgstr ""
 "V upravljalniku koledarjev ni označen noben koledar. Počiščeno ni bilo "
 "nobeno opravilo."
 
-#: calendarview.cpp:2471 calendarview.cpp:2754
+#: calendarview.cpp:2475 calendarview.cpp:2758
 #, kde-format
 msgid "There are no completed to-dos to purge."
 msgstr "Ne obstaja nobeno zaključeno opravilo, ki bi lahko bilo počiščeno."
 
-#: calendarview.cpp:2476
+#: calendarview.cpp:2480
 #, kde-format
 msgid "Delete all completed to-dos from checked calendars?"
 msgstr "Ali iz označenih koledarjev izbrišem vsa zaključena opravila?"
 
-#: calendarview.cpp:2477
+#: calendarview.cpp:2481
 #, kde-format
 msgctxt "@title:window"
 msgid "Purge To-dos"
 msgstr "Počisti opravila"
 
-#: calendarview.cpp:2478
+#: calendarview.cpp:2482
 #, kde-format
 msgctxt "@action:button"
 msgid "Purge"
 msgstr "Počisti"
 
-#: calendarview.cpp:2489
+#: calendarview.cpp:2493
 #, kde-format
 msgctxt "@info"
 msgid "Unable to edit \"%1\" because it is locked by another process."
 msgstr "Ni mogoče urediti »%1«, ker ga je zaklenilo drugo opravilo."
 
-#: calendarview.cpp:2501
+#: calendarview.cpp:2505
 #, kde-format
 msgid "Unable to copy the item to %1."
 msgstr "Ni mogoče kopirati predmeta v %1."
 
-#: calendarview.cpp:2536
+#: calendarview.cpp:2540
 #, kde-format
 msgid "Unable to move the item to  %1."
 msgstr "Ni mogoče premakniti predmeta v %1."
 
-#: calendarview.cpp:2747
+#: calendarview.cpp:2751
 #, kde-format
 msgid "0 completed to-dos were purged."
 msgstr "Počiščeno ni bilo nobeno zaključeno opravilo."
 
-#: calendarview.cpp:2748 calendarview.cpp:2758
+#: calendarview.cpp:2752 calendarview.cpp:2762
 #, kde-format
 msgid "%1 to-do was ignored because it has uncompleted or read-only children."
 msgid_plural ""
@@ -1825,7 +1825,7 @@ msgstr[3] ""
 "%1 opravila so bila prezrta, ker imajo nezaključena ali pred pisanjem "
 "zaščitena podopravila."
 
-#: calendarview.cpp:2752 calendarview.cpp:2757
+#: calendarview.cpp:2756 calendarview.cpp:2761
 #, kde-format
 msgid "%1 completed to-do was purged."
 msgid_plural "%1 completed to-dos were purged."
@@ -1834,12 +1834,12 @@ msgstr[1] "Počiščeno je bilo %1 zaključeno opravilo."
 msgstr[2] "Počiščeni sta bili %1 zaključeni opravili."
 msgstr[3] "Počiščena so bila %1 zaključena opravila."
 
-#: calendarview.cpp:2763
+#: calendarview.cpp:2767
 #, kde-format
 msgid "An error occurred while purging completed to-dos: %1"
 msgstr "Med čiščenjem zaključenih opravil je prišlo do napake: %1"
 
-#: calendarview.cpp:2817
+#: calendarview.cpp:2821
 #, kde-format
 msgid ""
 "You created an incidence in a calendar that is currently filtered out.\n"
@@ -1849,7 +1849,7 @@ msgstr ""
 "pojavitev,\n"
 "omogočite koledar v upravljalniku koledarjev v stranski vrstici na levi."
 
-#: calendarview.cpp:2821
+#: calendarview.cpp:2825
 #, kde-format
 msgid ""
 "You created an incidence in a calendar that is currently filtered out.\n"
@@ -3716,19 +3716,19 @@ msgctxt "@title:group"
 msgid "Other Options"
 msgstr "Druge možnosti"
 
-#: prefs/kprefsdialog.cpp:234
+#: prefs/kprefsdialog.cpp:233
 #, kde-format
 msgctxt "@action:button"
 msgid "Choose…"
 msgstr "Izberi…"
 
-#: prefs/kprefsdialog.cpp:765
+#: prefs/kprefsdialog.cpp:764
 #, kde-format
 msgctxt "@title:window"
 msgid "Preferences"
 msgstr "Preference"
 
-#: prefs/kprefsdialog.cpp:867
+#: prefs/kprefsdialog.cpp:866
 #, kde-format
 msgid ""
 "You are about to set all preferences to default values. All custom "
@@ -3737,13 +3737,13 @@ msgstr ""
 "Vse možnosti boste nastavili na privzete vrednosti. Vse spremembe po meri "
 "bodo izgubljene."
 
-#: prefs/kprefsdialog.cpp:869
+#: prefs/kprefsdialog.cpp:868
 #, kde-format
 msgctxt "@title:window"
 msgid "Setting Default Preferences"
 msgstr "Nastavljanje privzetih preferenc"
 
-#: prefs/kprefsdialog.cpp:870
+#: prefs/kprefsdialog.cpp:869
 #, kde-format
 msgctxt "@action:button"
 msgid "Reset to Defaults"
