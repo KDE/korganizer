@@ -18,7 +18,7 @@ msgid ""
 msgstr ""
 "Project-Id-Version: korganizer\n"
 "Report-Msgid-Bugs-To: https://bugs.kde.org\n"
-"POT-Creation-Date: 2025-03-22 00:42+0000\n"
+"POT-Creation-Date: 2025-03-23 00:42+0000\n"
 "PO-Revision-Date: 2025-02-06 17:41-0300\n"
 "Last-Translator: Geraldo Simiao <geraldosimiao@fedoraproject.org>\n"
 "Language-Team: Brazilian Portuguese <kde-i18n-pt_BR@kde.org>\n"
@@ -1020,7 +1020,7 @@ msgstr "Rolar a visualização para hoje"
 #: actionmanager.cpp:609
 #, kde-format
 msgctxt "@info:whatsthis"
-msgid "Opens a a date selection dialog for quickly navigating the view."
+msgid "Opens a date selection dialog for quickly navigating the view."
 msgstr ""
 
 #: actionmanager.cpp:614

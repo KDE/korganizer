@@ -8,8 +8,8 @@ msgid ""
 msgstr ""
 "Project-Id-Version: korganizer\n"
 "Report-Msgid-Bugs-To: https://bugs.kde.org\n"
-"POT-Creation-Date: 2025-03-22 00:42+0000\n"
-"PO-Revision-Date: 2025-03-15 22:36+0100\n"
+"POT-Creation-Date: 2025-03-23 00:42+0000\n"
+"PO-Revision-Date: 2025-03-22 22:36+0100\n"
 "Last-Translator: Oliver Kellogg <olivermkellogg@gmail.com>\n"
 "Language-Team: esperanto <kde-i18n-eo@kde.org>\n"
 "Language: eo\n"
@@ -317,16 +317,12 @@ msgid "Fester Zigterman"
 msgstr "Fester Zigterman"
 
 #: actionmanager.cpp:131
-#, fuzzy, kde-format
-#| msgid ""
-#| "<qt>This will hide the menu bar completely. You can show it again by "
-#| "typing %1.</qt>"
+#, kde-format
 msgctxt "@info"
 msgid ""
 "This will hide the menu bar completely. You can show it again by typing %1."
 msgstr ""
-"<qt>Ĉi tio tute kaŝos la menubreton. Vi povas montri ĝin denove tajpante %1."
-"</qt>"
+"Ĉi tio tute kaŝos la menubreton. Vi povas montri ĝin denove tajpante %1."
 
 #: actionmanager.cpp:134
 #, kde-format
@@ -970,33 +966,29 @@ msgstr "Lanĉas dialogon, kiu ebligas al vi krei novan taglibran enskribon."
 #, kde-format
 msgctxt "@action Jump to date"
 msgid "&Pick a Date"
-msgstr ""
+msgstr "&Elekti Daton"
 
 #: actionmanager.cpp:606
 #, kde-format
 msgid "Date"
-msgstr ""
+msgstr "Dato"
 
 #: actionmanager.cpp:607
-#, fuzzy, kde-format
-#| msgctxt "@info:tooltip"
-#| msgid "Scroll the view to today"
+#, kde-format
 msgctxt "@info:status"
 msgid "Scroll the view to user selected dates"
-msgstr "Rulumi la vidon al hodiaŭ"
+msgstr "Rulumi la vidon al uzant-elektitaj datoj"
 
 #: actionmanager.cpp:608
-#, fuzzy, kde-format
-#| msgctxt "@info:tooltip"
-#| msgid "Scroll the view to today"
+#, kde-format
 msgctxt "@info:tooltip"
 msgid "Scroll the view to user selected dates"
-msgstr "Rulumi la vidon al hodiaŭ"
+msgstr "Rulumi la vidon al uzant-elektitaj datoj"
 
 #: actionmanager.cpp:609
 #, kde-format
 msgctxt "@info:whatsthis"
-msgid "Opens a a date selection dialog for quickly navigating the view."
+msgid "Opens a date selection dialog for quickly navigating the view."
 msgstr ""
 
 #: actionmanager.cpp:614
@@ -1344,12 +1336,10 @@ msgid "%1 (Default)"
 msgstr "%1 (Defaŭlte)"
 
 #: akonadicollectionview.cpp:408
-#, fuzzy, kde-format
-#| msgctxt "@title:tab calendar account settings"
-#| msgid "Calendars"
+#, kde-format
 msgctxt "@info:tooltip"
 msgid "Calendar search"
-msgstr "Kalendaroj"
+msgstr "Kalendar-serĉo"
 
 #: akonadicollectionview.cpp:409
 #, kde-format
@@ -1358,19 +1348,17 @@ msgid "Start typing to search for a calendar within the collection."
 msgstr ""
 
 #: akonadicollectionview.cpp:411
-#, fuzzy, kde-format
-#| msgctxt "@action:inmenu"
-#| msgid "Send as iCalendar…"
+#, kde-format
 msgctxt ""
 "@info/plain Displayed grayed-out inside the textbox, calendar to search"
 msgid "Search for calendar…"
-msgstr "Sendi kiel iCalendar…"
+msgstr "Serĉi kalendaron…"
 
 #: akonadicollectionview.cpp:497 manageshowcollectionproperties.cpp:76
 #, kde-format
 msgctxt "@title:window"
 msgid "Properties of Calendar Folder %1"
-msgstr "Propraĵoj de Kalendara Dosierujo %1"
+msgstr "Proprecoj de Kalendara Dosierujo %1"
 
 #: akonadicollectionview.cpp:509
 #, kde-format
@@ -1438,10 +1426,7 @@ msgstr ""
 "enskribon por vidi ĝiajn detalojn ĉi tie.</p>"
 
 #: calendarview.cpp:255
-#, fuzzy, kde-format
-#| msgid ""
-#| "View the details of events, journal entries or to-dos selected in "
-#| "KOrganizer's main view here."
+#, kde-format
 msgctxt "@info:whatsthis"
 msgid ""
 "View the details of events, journal entries or to-dos selected in "
@@ -3491,17 +3476,16 @@ msgid "Select Holiday Regions"
 msgstr "Elekti Feriajn Regionojn"
 
 #: prefs/koprefsdialogtime.cpp:111
-#, fuzzy, kde-format
-#| msgid "Schedule"
+#, kde-format
 msgctxt "@title:group"
 msgid "Weekly Schedule"
-msgstr "Horaro"
+msgstr "Semajna Horaro"
 
 #: prefs/koprefsdialogtime.cpp:126
 #, kde-format
 msgctxt "@info:tooltip"
 msgid "Include %1 as part of your weekly schedule"
-msgstr ""
+msgstr "Inkluzivi %1 kiel parto de via semajna horaro"
 
 #: prefs/koprefsdialogtime.cpp:128
 #, kde-format
@@ -3810,16 +3794,13 @@ msgstr ""
 
 #. i18n: ectx: whatsthis, entry (WorkingHoursStart), group (Time &amp; Date)
 #: settings/korganizer.kcfg:43
-#, fuzzy, kde-format
-#| msgid ""
-#| "Enter the start time for the working hours here. The working hours will "
-#| "be marked with color by KOrganizer."
+#, kde-format
 msgid ""
 "Enter the start time for your daily schedule here. Your daily schedule hours "
 "will be marked with a separate color."
 msgstr ""
-"Enigu la komencan tempon por la laborhoroj ĉi tie. La laborhoroj estos "
-"markitaj per koloro fare de KOrganizer."
+"Enigu la komencan horon por via taga horaro ĉi tie. La horoj de via tagplano "
+"estos markitaj per aparta koloro."
 
 #. i18n: ectx: label, entry (WorkingHoursEnd), group (Time &amp; Date)
 #: settings/korganizer.kcfg:47
@@ -3831,20 +3812,17 @@ msgstr "Ĉiutaga finhoro"
 #: settings/korganizer.kcfg:48
 #, kde-format
 msgid "Set the time you typically end your day"
-msgstr ""
+msgstr "Fiksu la horon kiam vi kutime finas vian tagon"
 
 #. i18n: ectx: whatsthis, entry (WorkingHoursEnd), group (Time &amp; Date)
 #: settings/korganizer.kcfg:49
-#, fuzzy, kde-format
-#| msgid ""
-#| "Enter the ending time for the working hours here. The working hours will "
-#| "be marked with color by KOrganizer."
+#, kde-format
 msgid ""
 "Enter the ending time for your daily schedule here. Your daily schedule "
 "hours will be marked with a separate color."
 msgstr ""
-"Enigu ĉi tie la fintempon por la laborhoroj. La laborhoroj estos markitaj "
-"per koloro fare de KOrganizer."
+"Enigu ĉi tie la finhoron por via taga horaro. La horoj de via tagplano estos "
+"markitaj per aparta koloro."
 
 #. i18n: ectx: label, entry (ColorMonthBusyDaysEnabled), group (Time &amp; Date)
 #. i18n: ectx: label, entry (ColorBusyDaysEnabled), group (Agenda View)
@@ -5858,8 +5836,7 @@ msgid "Alarm"
 msgstr "Alarmo"
 
 #: widgets/kitemiconcheckcombo.cpp:21
-#, fuzzy, kde-format
-#| msgid "Read Only"
+#, kde-format
 msgctxt "the incidence is read-only"
 msgid "Read Only"
 msgstr "Nurlegebla"
@@ -5969,30 +5946,3 @@ msgstr "%1"
 msgctxt "4 digit year"
 msgid "%1"
 msgstr "%1"
-
-#~ msgctxt "@info:tooltip"
-#~ msgid "Set search keyword"
-#~ msgstr "Meti serĉan ŝlosilvorton"
-
-#~ msgctxt "@info:whatsthis"
-#~ msgid "Lets you search for a keyword in your calendars"
-#~ msgstr "Permesas serĉi ŝlosilvorton en viaj kalendaroj"
-
-#~ msgctxt ""
-#~ "@info/plain Displayed grayed-out inside the textbox, verb to search"
-#~ msgid "Search…"
-#~ msgstr "Serĉi…"
-
-#~ msgctxt "@title:group"
-#~ msgid "Working Period"
-#~ msgstr "Laborperiodo"
-
-#~ msgctxt "@info:whatsthis"
-#~ msgid ""
-#~ "Check this box to make KOrganizer mark the working hours for this day of "
-#~ "the week. If this is a work day for you, check this box, or the working "
-#~ "hours will not be marked with color."
-#~ msgstr ""
-#~ "Marku ĉi tiun skatolon por ke KOrganizer marki la laborhorojn por ĉi tiu "
-#~ "semajnotago. Se ĉi tio estas labortago por vi, marku ĉi tiun skatolon, aŭ "
-#~ "la laborhoroj ne estos markitaj per koloro."

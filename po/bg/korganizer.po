@@ -3,8 +3,8 @@ msgid ""
 msgstr ""
 "Project-Id-Version: korganizer\n"
 "Report-Msgid-Bugs-To: https://bugs.kde.org\n"
-"POT-Creation-Date: 2025-03-22 00:42+0000\n"
-"PO-Revision-Date: 2025-02-16 20:04+0100\n"
+"POT-Creation-Date: 2025-03-23 00:42+0000\n"
+"PO-Revision-Date: 2025-03-22 17:16+0100\n"
 "Last-Translator: Mincho Kondarev <mkondarev@yahoo.de>\n"
 "Language-Team: Bulgarian <kde-i18n-doc@kde.org>\n"
 "Language: bg\n"
@@ -12,7 +12,7 @@ msgstr ""
 "Content-Type: text/plain; charset=UTF-8\n"
 "Content-Transfer-Encoding: 8bit\n"
 "Plural-Forms: nplurals=2; plural=n != 1;\n"
-"X-Generator: Lokalize 25.03.70\n"
+"X-Generator: Lokalize 24.12.3\n"
 
 #, kde-format
 msgctxt "NAME OF TRANSLATORS"
@@ -312,16 +312,13 @@ msgid "Fester Zigterman"
 msgstr "Фестър Зигтерман"
 
 #: actionmanager.cpp:131
-#, fuzzy, kde-format
-#| msgid ""
-#| "<qt>This will hide the menu bar completely. You can show it again by "
-#| "typing %1.</qt>"
+#, kde-format
 msgctxt "@info"
 msgid ""
 "This will hide the menu bar completely. You can show it again by typing %1."
 msgstr ""
-"<qt>Това напълно ще скрие менюто. Можете да го накарате да се покаже отново "
-"като напишете: %1.</qt>"
+"Това напълно ще скрие менюто. Можете да го накарате да се покаже отново като "
+"въведете %1."
 
 #: actionmanager.cpp:134
 #, kde-format
@@ -968,34 +965,33 @@ msgstr ""
 #, kde-format
 msgctxt "@action Jump to date"
 msgid "&Pick a Date"
-msgstr ""
+msgstr "&Избиране на дата"
 
 #: actionmanager.cpp:606
 #, kde-format
 msgid "Date"
-msgstr ""
+msgstr "Дата"
 
 #: actionmanager.cpp:607
-#, fuzzy, kde-format
-#| msgctxt "@info:tooltip"
-#| msgid "Scroll the view to today"
+#, kde-format
 msgctxt "@info:status"
 msgid "Scroll the view to user selected dates"
-msgstr "Превъртете изгледа до днес"
+msgstr "Превъртане на изгледа до избрани от потребителя дати"
 
 #: actionmanager.cpp:608
-#, fuzzy, kde-format
-#| msgctxt "@info:tooltip"
-#| msgid "Scroll the view to today"
+#, kde-format
 msgctxt "@info:tooltip"
 msgid "Scroll the view to user selected dates"
-msgstr "Превъртете изгледа до днес"
+msgstr "Превъртане на изгледа до избрани от потребителя дати"
 
 #: actionmanager.cpp:609
-#, kde-format
+#, fuzzy, kde-format
+#| msgctxt "@info:whatsthis"
+#| msgid "Opens a a date selection dialog for quickly navigating the view."
 msgctxt "@info:whatsthis"
-msgid "Opens a a date selection dialog for quickly navigating the view."
+msgid "Opens a date selection dialog for quickly navigating the view."
 msgstr ""
+"Отваря диалогов прозорец за избор на дата за бързо навигиране в изгледа."
 
 #: actionmanager.cpp:614
 #, kde-format
@@ -1008,20 +1004,16 @@ msgid "Configure"
 msgstr "Настройки"
 
 #: actionmanager.cpp:616
-#, fuzzy, kde-format
-#| msgctxt "@info:tooltip"
-#| msgid "Configure the current view"
+#, kde-format
 msgctxt "@info:status"
 msgid "Configure the multi-calendar view"
-msgstr "Конфигуриране на текущия изглед"
+msgstr "Конфигуриране на изгледа с множество календари"
 
 #: actionmanager.cpp:617
-#, fuzzy, kde-format
-#| msgctxt "@info:tooltip"
-#| msgid "Configure the current view"
+#, kde-format
 msgctxt "@info:tooltip"
 msgid "Configure the multi-calendar view"
-msgstr "Конфигуриране на текущия изглед"
+msgstr "Конфигуриране на изгледа с множество календари"
 
 #: actionmanager.cpp:619
 #, kde-format
@@ -1031,6 +1023,10 @@ msgid ""
 "view. Currently only the multi-calendar view is supported. See the Multiple "
 "Calendars options in the Views->Agenda Views settings."
 msgstr ""
+"В изгледа с множество календари той стартира диалогов прозорец, който "
+"позволява конфигуриране на изгледа. Понастоящем се поддържа само изглед с "
+"множество календари. Вижте опциите за множество календари в Изгледи-"
+">Настройки за изгледи на дневен ред."
 
 #: actionmanager.cpp:626 actionmanager.cpp:1313 actionmanager.cpp:1354
 #, kde-format
@@ -1348,27 +1344,23 @@ msgid "%1 (Default)"
 msgstr "%1 (по подразбиране)"
 
 #: akonadicollectionview.cpp:408
-#, fuzzy, kde-format
-#| msgctxt "@title:tab calendar account settings"
-#| msgid "Calendars"
+#, kde-format
 msgctxt "@info:tooltip"
 msgid "Calendar search"
-msgstr "Календари"
+msgstr "Търсене в календара"
 
 #: akonadicollectionview.cpp:409
 #, kde-format
 msgctxt "@info:whatsthis"
 msgid "Start typing to search for a calendar within the collection."
-msgstr ""
+msgstr "Започнете да пишете, за да търсите календар в колекцията."
 
 #: akonadicollectionview.cpp:411
-#, fuzzy, kde-format
-#| msgctxt "@action:inmenu"
-#| msgid "Send as iCalendar…"
+#, kde-format
 msgctxt ""
 "@info/plain Displayed grayed-out inside the textbox, calendar to search"
 msgid "Search for calendar…"
-msgstr "Изпращане като iCalendar…"
+msgstr "Търсене на календар..."
 
 #: akonadicollectionview.cpp:497 manageshowcollectionproperties.cpp:76
 #, kde-format
@@ -1417,6 +1409,10 @@ msgid ""
 "removed from its remote resource.</note></para>The <filename>%1</filename> "
 "calendar can be added again at any time."
 msgstr ""
+"Наистина ли искате да изтриете календара <filename>%1</filename>?"
+"<para><note>Данните в календара няма да бъдат изтрити, нито календарът ще "
+"бъде премахнат от неговия отдалечен ресурс.</note></para>Календарът "
+"<filename>%1</filename> може да бъде добавен отново по всяко време."
 
 #: akonadicollectionview.cpp:741
 #, kde-kuit-format
@@ -1426,6 +1422,9 @@ msgid ""
 "<para><warning>This cannot be undone.  Please consider carefully before "
 "pressing the %2 button.</warning></para>"
 msgstr ""
+"Наистина ли искате да изтриете календара <filename>%1</filename>?"
+"<para><warning>Това не може да бъде върнато. Моля, помислете внимателно, "
+"преди да натиснете бутона %2.</warning></para>"
 
 #: akonadicollectionview.cpp:749
 #, kde-format
@@ -1443,16 +1442,14 @@ msgstr ""
 "в дневник, за да видите подробности.</p>"
 
 #: calendarview.cpp:255
-#, fuzzy, kde-format
-#| msgid ""
-#| "View the details of events, journal entries or to-dos selected in "
-#| "KOrganizer's main view here."
+#, kde-format
 msgctxt "@info:whatsthis"
 msgid ""
 "View the details of events, journal entries or to-dos selected in "
 "KOrganizer's main view here."
 msgstr ""
-"Преглед на детайли за избрано събитие, дневник или задачи в KOrganizer."
+"Вижте подробностите за събития, записи в дневник или задачи, избрани в "
+"основния изглед на KOrganizer тук."
 
 #: calendarview.cpp:673
 #, kde-format
@@ -3508,17 +3505,16 @@ msgid "Select Holiday Regions"
 msgstr "Избиране на регионални празнични дни:"
 
 #: prefs/koprefsdialogtime.cpp:111
-#, fuzzy, kde-format
-#| msgid "Schedule"
+#, kde-format
 msgctxt "@title:group"
 msgid "Weekly Schedule"
-msgstr "График"
+msgstr "Седмичен график"
 
 #: prefs/koprefsdialogtime.cpp:126
 #, kde-format
 msgctxt "@info:tooltip"
 msgid "Include %1 as part of your weekly schedule"
-msgstr ""
+msgstr "Включване на %1 като част от седмичния ви график"
 
 #: prefs/koprefsdialogtime.cpp:128
 #, kde-format
@@ -3530,6 +3526,11 @@ msgid ""
 "weekly schedule (even if you don't work). Typically, weekend days should be "
 "unchecked."
 msgstr ""
+"Поставете отметка в това квадратче, за да считате %1 за част от редовния си "
+"седмичен график. Всеки %1 дневен час ще бъде показан с различни цветове от "
+"часовете извън обичайния ви график. Поставете отметка в това квадратче, ако "
+"%1 е включен като част от редовния ви седмичен график (дори ако не "
+"работите). Обикновено дните през почивните дни не трябва да са отметнати."
 
 #: prefs/koprefsdialogtime.cpp:142
 #, kde-format
@@ -3577,7 +3578,7 @@ msgstr "Неделя"
 #, kde-format
 msgctxt "@info:tooltip"
 msgid "Highlight holidays differently from your regular schedule"
-msgstr ""
+msgstr "Подчертаване на празници, различни от обичайния ви график"
 
 #: prefs/koprefsdialogtime.cpp:169
 #, kde-format
@@ -3586,6 +3587,8 @@ msgid ""
 "Check this box to highlight holidays differently than days included with "
 "your regular schedule."
 msgstr ""
+"Поставете отметка в това квадратче, за да подчертаете празниците по различен "
+"начин от дните, включени в редовния ви график."
 
 #: prefs/koprefsdialogtime.cpp:176
 #, kde-format
@@ -3823,20 +3826,17 @@ msgstr "Работният ден започва в"
 #: settings/korganizer.kcfg:42
 #, kde-format
 msgid "Set the time you typically start your day"
-msgstr ""
+msgstr "Определете часа, в който обикновено започвате деня си"
 
 #. i18n: ectx: whatsthis, entry (WorkingHoursStart), group (Time &amp; Date)
 #: settings/korganizer.kcfg:43
-#, fuzzy, kde-format
-#| msgid ""
-#| "Enter the start time for the working hours here. The working hours will "
-#| "be marked with color by KOrganizer."
+#, kde-format
 msgid ""
 "Enter the start time for your daily schedule here. Your daily schedule hours "
 "will be marked with a separate color."
 msgstr ""
-"Начален час за работното време. Работното време ще бъде маркирано с различен "
-"цвят."
+"Въведете тук началния час за вашия дневен график. Часовете в дневния ви "
+"график ще бъдат маркирани с различен цвят."
 
 #. i18n: ectx: label, entry (WorkingHoursEnd), group (Time &amp; Date)
 #: settings/korganizer.kcfg:47
@@ -3848,20 +3848,17 @@ msgstr "Работният ден завършва в"
 #: settings/korganizer.kcfg:48
 #, kde-format
 msgid "Set the time you typically end your day"
-msgstr ""
+msgstr "Задайте времето, когато обикновено приключвате деня си"
 
 #. i18n: ectx: whatsthis, entry (WorkingHoursEnd), group (Time &amp; Date)
 #: settings/korganizer.kcfg:49
-#, fuzzy, kde-format
-#| msgid ""
-#| "Enter the ending time for the working hours here. The working hours will "
-#| "be marked with color by KOrganizer."
+#, kde-format
 msgid ""
 "Enter the ending time for your daily schedule here. Your daily schedule "
 "hours will be marked with a separate color."
 msgstr ""
-"Краен час за работното време. Работното време ще бъде маркирано с различен "
-"цвят."
+"Въведете тук крайния час за вашия дневен график. Часовете в дневния ви "
+"график ще бъдат маркирани с различен цвят."
 
 #. i18n: ectx: label, entry (ColorMonthBusyDaysEnabled), group (Time &amp; Date)
 #. i18n: ectx: label, entry (ColorBusyDaysEnabled), group (Agenda View)
@@ -5757,13 +5754,13 @@ msgstr "Включване на всички задачи &за посочени
 
 #. i18n: ectx: property (toolTip), widget (QCheckBox, unfiltered)
 #: ui/searchdialog_base.ui:325
-#, fuzzy, kde-format
-#| msgctxt "@info:whatsthis"
-#| msgid "Press this button to remove the currently active filter."
+#, kde-format
 msgid ""
 "Uncheck this box to skip incidences matching the currently selected view "
 "filter"
-msgstr "Натиснете този бутон, за да премахнете активния в момента филтър."
+msgstr ""
+"Премахнете отметката от това поле, за да пропуснете случаите, съответстващи "
+"на избрания понастоящем филтър за изглед"
 
 #. i18n: ectx: property (whatsThis), widget (QCheckBox, unfiltered)
 #: ui/searchdialog_base.ui:328
@@ -5772,12 +5769,14 @@ msgid ""
 "When this box is checked all incidences will be considered in the search, "
 "even those that aren't displayed according the currently selected view filter"
 msgstr ""
+"Ако това поле бъде избрано, всички случаи ще бъдат разгледани при търсенето, "
+"дори тези, които не се показват според избрания в момента филтър за изглед"
 
 #. i18n: ectx: property (text), widget (QCheckBox, unfiltered)
 #: ui/searchdialog_base.ui:331
 #, kde-format
 msgid "Include all incidences matched by view filter"
-msgstr ""
+msgstr "Включване на всички случаи, съответстващи на филтъра за изглед"
 
 #. i18n: ectx: property (text), widget (QPushButton, mDayBtn)
 #: views/collectionview/quickview.ui:34
@@ -5915,8 +5914,7 @@ msgid "Alarm"
 msgstr "Аларма"
 
 #: widgets/kitemiconcheckcombo.cpp:21
-#, fuzzy, kde-format
-#| msgid "Read Only"
+#, kde-format
 msgctxt "the incidence is read-only"
 msgid "Read Only"
 msgstr "Само за четене"
