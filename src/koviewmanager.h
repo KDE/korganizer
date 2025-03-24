@@ -36,6 +36,7 @@ namespace Akonadi
 class Item;
 }
 
+class KActionCollection;
 class KConfig;
 class QTabWidget;
 
@@ -165,6 +166,11 @@ private Q_SLOTS:
     void removeCalendar(const Akonadi::CollectionCalendar::Ptr &calendar);
 
 private:
+    KActionCollection *getActionCollection();
+    [[nodiscard]] bool isAgendaViewAction(QAction *, KActionCollection *);
+    [[nodiscard]] QAction *viewToAction(const QString &, RangeMode);
+    void viewActionEnable(QObject *);
+    void viewActionEnable(QAction *);
     QWidget *widgetForView(KOrg::BaseView *) const;
     QList<KOrg::BaseView *> mViews;
     CalendarView *const mMainView;
@@ -183,6 +189,7 @@ private:
     KOrg::BaseView *mLastEventView = nullptr;
     QTabWidget *mAgendaViewTabs = nullptr;
     int mAgendaViewTabIndex = 0;
+    QAction *mLastViewAction = nullptr;
 
     RangeMode mRangeMode = NO_RANGE;
 };
