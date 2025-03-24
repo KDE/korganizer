@@ -1,5 +1,5 @@
 <!DOCTYPE gui>
-<gui name="korganizer" version="441" translationDomain="korganizer">
+<gui name="korganizer" version="446" translationDomain="korganizer">
   <MenuBar>
     <Menu name="file"><text>&amp;File</text>
       <Merge/>
@@ -68,12 +68,6 @@
       <Action name="go_next"/>
       <Separator/>
       <Action name="go_today"/>
-      <Separator/>
-      <Action name="select_day"/>
-      <Action name="select_nextx"/>
-      <Action name="select_workweek"/>
-      <Action name="select_week"/>
-      <Action name="select_newmonth"/>
 </Menu>
     <Menu name="actions"><text>&amp;Actions</text>
       <Action name="new_event"/>
@@ -136,16 +130,12 @@
     <Action name="go_previous"/>
     <Action name="go_next"/>
     <Action name="go_today"/>
-    <Separator/>
-    <Action name="select_day"/>
-    <Action name="select_week"/>
     <Spacer/>
     <Action name="hamburger_menu"/>
   </ToolBar>
 
   <ToolBar noMerge="1" name="korganizer_toolbar"><text>Views</text>
     <Action name="view_agenda"/>
-    <Separator/>
     <Action name="view_month"/>
     <Action name="view_timeline"/>
     <Action name="view_todo"/>

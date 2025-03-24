@@ -50,6 +50,62 @@ KOrg::BaseView *KOViewManager::currentView()
     return mCurrentView;
 }
 
+KActionCollection *KOViewManager::getActionCollection()
+{
+    KActionCollection *collection = nullptr;
+    KOrg::MainWindow *w = ActionManager::findInstance(QUrl());
+    if (w) {
+        collection = w->getActionCollection();
+    }
+    return collection;
+}
+
+QAction *KOViewManager::viewToAction(const QString &view, RangeMode rangeMode)
+{
+    QAction *action = nullptr;
+    KActionCollection *ac = getActionCollection();
+    if (!ac) {
+        return action;
+    }
+
+    if (view == QLatin1StringView("WhatsNext")) {
+        action = ac->action(QStringLiteral("view_whatsnext"));
+    } else if (view == QLatin1StringView("OldMonth")) {
+        // the oldmonth view is gone, so we assume the new month view
+        action = ac->action(QStringLiteral("view_month"));
+    } else if (view == QLatin1StringView("List")) {
+        action = ac->action(QStringLiteral("view_list"));
+    } else if (view == QLatin1StringView("Journal")) {
+        action = ac->action(QStringLiteral("view_journal"));
+    } else if (view == QLatin1StringView("Todo")) {
+        action = ac->action(QStringLiteral("view_todo"));
+    } else if (view == QLatin1StringView("Timeline")) {
+        action = ac->action(QStringLiteral("view_timeline"));
+    } else if (view == QLatin1StringView("Month")) {
+        action = ac->action(QStringLiteral("view_month"));
+    } else if (view == QLatin1StringView("Agenda")) {
+        switch (rangeMode) {
+        case WORK_WEEK_RANGE:
+            action = ac->action(QStringLiteral("select_workweek"));
+            break;
+        case WEEK_RANGE:
+            action = ac->action(QStringLiteral("select_week"));
+            break;
+        case NEXTX_RANGE:
+            action = ac->action(QStringLiteral("select_nextx"));
+            break;
+        case DAY_RANGE:
+            action = ac->action(QStringLiteral("select_day"));
+            break;
+        case NO_RANGE:
+        default:
+            break;
+        }
+    }
+    Q_ASSERT_X(action, "no such view", qPrintable(view));
+    return action;
+}
+
 void KOViewManager::readSettings(KConfig *config)
 {
     KConfigGroup generalConfig(config, QStringLiteral("General"));
@@ -158,30 +214,17 @@ void KOViewManager::showView(KOrg::BaseView *view)
     raiseCurrentView();
     mMainView->processIncidenceSelection(Akonadi::Item(), QDate());
     mMainView->updateView();
-    KOrg::MainWindow *w = ActionManager::findInstance(QUrl());
+    KActionCollection *ac = getActionCollection();
+    if (ac) {
+        if (QAction *action = ac->action(QStringLiteral("configure_view"))) {
+            action->setEnabled(view->hasConfigurationDialog());
+        }
 
-    if (w) {
-        KActionCollection *ac = w->getActionCollection();
-        if (ac) {
-            if (QAction *action = ac->action(QStringLiteral("configure_view"))) {
-                action->setEnabled(view->hasConfigurationDialog());
-            }
-
-            const QStringList zoomActions = QStringList() << QStringLiteral("zoom_in_horizontally") << QStringLiteral("zoom_out_horizontally")
-                                                          << QStringLiteral("zoom_in_vertically") << QStringLiteral("zoom_out_vertically");
-            const QStringList rangeActions = QStringList()
-                << QStringLiteral("select_workweek") << QStringLiteral("select_week") << QStringLiteral("select_day") << QStringLiteral("select_nextx");
-
-            for (int i = 0; i < zoomActions.size(); ++i) {
-                if (QAction *action = ac->action(zoomActions[i])) {
-                    action->setEnabled(view->supportsZoom());
-                }
-            }
-
-            for (int i = 0; i < rangeActions.size(); ++i) {
-                if (QAction *action = ac->action(rangeActions[i])) {
-                    action->setEnabled(view->supportsDateRangeSelection());
-                }
+        const QStringList zoomActions = QStringList() << QStringLiteral("zoom_in_horizontally") << QStringLiteral("zoom_out_horizontally")
+                                                      << QStringLiteral("zoom_in_vertically") << QStringLiteral("zoom_out_vertically");
+        for (int i = 0; i < zoomActions.size(); ++i) {
+            if (QAction *action = ac->action(zoomActions[i])) {
+                action->setEnabled(view->supportsZoom());
             }
         }
     }
@@ -189,22 +232,19 @@ void KOViewManager::showView(KOrg::BaseView *view)
 
 void KOViewManager::goMenu(bool enable)
 {
-    KOrg::MainWindow *w = ActionManager::findInstance(QUrl());
-    if (w) {
-        KActionCollection *ac = w->getActionCollection();
-        if (ac) {
-            QAction *action = ac->action(QStringLiteral("go_today"));
-            if (action) {
-                action->setEnabled(enable);
-            }
-            action = ac->action(QStringLiteral("go_previous"));
-            if (action) {
-                action->setEnabled(enable);
-            }
-            action = ac->action(QStringLiteral("go_next"));
-            if (action) {
-                action->setEnabled(enable);
-            }
+    KActionCollection *ac = getActionCollection();
+    if (ac) {
+        QAction *action = ac->action(QStringLiteral("go_today"));
+        if (action) {
+            action->setEnabled(enable);
+        }
+        action = ac->action(QStringLiteral("go_previous"));
+        if (action) {
+            action->setEnabled(enable);
+        }
+        action = ac->action(QStringLiteral("go_next"));
+        if (action) {
+            action->setEnabled(enable);
         }
     }
 }
@@ -356,6 +396,54 @@ void KOViewManager::addView(KOrg::BaseView *view, bool isTab)
     }
 }
 
+bool KOViewManager::isAgendaViewAction(QAction *action, KActionCollection *ac)
+{
+    bool boolVal = false;
+    if (action && ac) {
+        boolVal = (action == ac->action(QStringLiteral("select_day")) || action == ac->action(QStringLiteral("select_nextx"))
+                   || action == ac->action(QStringLiteral("select_workweek")) || action == ac->action(QStringLiteral("select_week")));
+    }
+    return boolVal;
+}
+
+void KOViewManager::viewActionEnable(QObject *obj)
+{
+    viewActionEnable(qobject_cast<QAction *>(obj));
+}
+
+void KOViewManager::viewActionEnable(QAction *action)
+{
+    if (!action) {
+        return;
+    }
+
+    KActionCollection *ac = getActionCollection();
+    if (!ac) {
+        return;
+    }
+
+    /* Do nothing -- the action hasn't changed since last time */
+    if (mLastViewAction && action == mLastViewAction) {
+        return;
+    }
+
+    /* Do nothing for top-level agenda view button */
+    if (action == ac->action(QStringLiteral("view_agenda"))) {
+        return;
+    }
+
+    /* Re-enable last view action */
+    if (mLastViewAction) {
+        mLastViewAction->setEnabled(true);
+    }
+
+    /* Disable the any newly selected action */
+    action->setEnabled(false);
+
+    /* Save for the next time */
+    mLastViewAction = action;
+}
+
 void KOViewManager::showMonthView()
 {
     if (!mMonthView) {
@@ -364,6 +452,7 @@ void KOViewManager::showMonthView()
         addView(mMonthView);
         connect(mMonthView, &MonthView::fullViewChanged, mMainView, &CalendarView::changeFullView);
     }
+    viewActionEnable(viewToAction(QStringLiteral("Month"), NO_RANGE));
     goMenu(true);
     showView(mMonthView);
 }
@@ -375,6 +464,7 @@ void KOViewManager::showWhatsNextView()
         mWhatsNextView->setIdentifier("DefaultWhatsNextView");
         addView(mWhatsNextView);
     }
+    viewActionEnable(viewToAction(QStringLiteral("WhatsNext"), NO_RANGE));
     goMenu(true);
     showView(mWhatsNextView);
 }
@@ -386,6 +476,7 @@ void KOViewManager::showListView()
         mListView->setIdentifier("DefaultListView");
         addView(mListView);
     }
+    viewActionEnable(viewToAction(QStringLiteral("List"), NO_RANGE));
     goMenu(true);
     showView(mListView);
 }
@@ -447,6 +538,7 @@ void KOViewManager::showAgendaView()
     }
 
     goMenu(true);
+
     if (showBoth) {
         showView(static_cast<KOrg::BaseView *>(mAgendaViewTabs->currentWidget()));
     } else if (showMerged) {
@@ -454,17 +546,21 @@ void KOViewManager::showAgendaView()
     } else if (showSideBySide) {
         showView(mAgendaSideBySideView);
     }
+    viewActionEnable(viewToAction(QStringLiteral("Agenda"), mRangeMode));
 }
 
 void KOViewManager::selectDay()
 {
+    showAgendaView();
     mRangeMode = DAY_RANGE;
+    viewActionEnable(viewToAction(QStringLiteral("Agenda"), mRangeMode));
     const QDate date = mMainView->activeDate(true);
     mMainView->dateNavigator()->selectDate(date);
 }
 
 void KOViewManager::selectWorkWeek()
 {
+    showAgendaView();
     if (KOGlobals::self()->getWorkWeekMask() != 0) {
         mRangeMode = WORK_WEEK_RANGE;
         QDate date = mMainView->activeDate();
@@ -474,18 +570,23 @@ void KOViewManager::selectWorkWeek()
                            i18n("Unable to display the work week since there are no work days configured. "
                                 "Please properly configure at least 1 work day in the Time and Date preferences."));
     }
+    viewActionEnable(viewToAction(QStringLiteral("Agenda"), mRangeMode));
 }
 
 void KOViewManager::selectWeek()
 {
+    showAgendaView();
     mRangeMode = WEEK_RANGE;
+    viewActionEnable(viewToAction(QStringLiteral("Agenda"), mRangeMode));
     QDate date = mMainView->activeDate();
     mMainView->dateNavigator()->selectWeek(date);
 }
 
 void KOViewManager::selectNextX()
 {
+    showAgendaView();
     mRangeMode = NEXTX_RANGE;
+    viewActionEnable(viewToAction(QStringLiteral("Agenda"), mRangeMode));
     mMainView->dateNavigator()->selectDates(QDate::currentDate(), KOPrefs::instance()->mNextXDays);
 }
 
@@ -500,6 +601,7 @@ void KOViewManager::showTodoView()
         KSharedConfig::Ptr config = KSharedConfig::openConfig();
         mTodoView->restoreLayout(config.data(), QStringLiteral("Todo View"), false);
     }
+    viewActionEnable(viewToAction(QStringLiteral("Todo"), NO_RANGE));
     goMenu(false);
     showView(mTodoView);
 }
@@ -511,6 +613,7 @@ void KOViewManager::showJournalView()
         mJournalView->setIdentifier("DefaultJournalView");
         addView(mJournalView);
     }
+    viewActionEnable(viewToAction(QStringLiteral("Journal"), NO_RANGE));
     goMenu(true);
     showView(mJournalView);
 }
@@ -522,6 +625,7 @@ void KOViewManager::showTimeLineView()
         mTimelineView->setIdentifier("DefaultTimelineView");
         addView(mTimelineView);
     }
+    viewActionEnable(viewToAction(QStringLiteral("Timeline"), NO_RANGE));
     goMenu(true);
     showView(mTimelineView);
 }
@@ -584,6 +688,7 @@ void KOViewManager::currentAgendaViewTabChanged(int index)
     viewConfig.writeEntry("Agenda View Tab Index", mAgendaViewTabs->currentIndex());
 
     if (index > -1) {
+        viewActionEnable(sender());
         goMenu(true);
         QWidget *widget = mAgendaViewTabs->widget(index);
         if (widget) {

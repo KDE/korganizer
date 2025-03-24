@@ -406,6 +406,8 @@ void ActionManager::initActions()
 
     /** Agenda View Action **/
     action = new QAction(QIcon::fromTheme(QStringLiteral("view-calendar-agenda")), i18n("&Agenda"), this);
+    auto agendaMenu = new QMenu(nullptr);
+    action->setMenu(agendaMenu);
     action->setStatusTip(i18nc("@info:status", "Agenda View"));
     action->setToolTip(i18nc("@info:tooltip", "Switch to the Agenda View"));
     action->setWhatsThis(i18nc("@info:whatsthis",
@@ -542,24 +544,51 @@ void ActionManager::initActions()
     mACollection->addAction(QStringLiteral("go_next"), action);
     connect(action, &QAction::triggered, mCalendarView, &CalendarView::goNext);
 
-    action = new QAction(QIcon::fromTheme(QStringLiteral("view-calendar-day")), i18n("&Day"), this);
+    /** Agenda: Day View **/
+    action = new QAction(QIcon::fromTheme(QStringLiteral("view-calendar-day")), i18nc("@action:inmenu", "&Day"), this);
+    action->setText(i18nc("@action:inmenu agenda view show 1 day at a time", "Day"));
+    action->setStatusTip(i18nc("@info:status", "View 1 day at a time"));
+    action->setToolTip(i18nc("@info:tooltip", "Show 1 day at a time in Agenda View"));
+    action->setWhatsThis(i18nc("@info:whatsthis", "Select this option to show only 1 day at a time in Agenda View."));
+    agendaMenu->addAction(action);
     mACollection->addAction(QStringLiteral("select_day"), action);
-    action->setEnabled(mCalendarView->currentView()->supportsDateRangeSelection());
     connect(action, &QAction::triggered, mCalendarView->viewManager(), &KOViewManager::selectDay);
 
+    /** Agenda: Next X Days View **/
     mNextXDays = new QAction(QIcon::fromTheme(QStringLiteral("view-calendar-upcoming-days")), QString(), this);
-    mNextXDays->setEnabled(mCalendarView->currentView()->supportsDateRangeSelection());
+    mNextXDays->setText(i18nc("@action:inmenu agenda view show a few days at a time", "&Next Days"));
+    mNextXDays->setStatusTip(i18nc("@info:status", "View a few days at a time"));
+    mNextXDays->setToolTip(i18nc("@info:tooltip", "Show the next few days at a time in Agenda View"));
+    mNextXDays->setWhatsThis(
+        xi18nc("@info:whatsthis",
+               "Select this option to show the next few days a a time in Agenda View. Configure the <placeholder>Next X Days</placeholder> setting in the "
+               "<interface>Views->General</interface> settings page to adjust the number of days shown."));
+    agendaMenu->addAction(mNextXDays);
     mACollection->addAction(QStringLiteral("select_nextx"), mNextXDays);
     connect(mNextXDays, &QAction::triggered, mCalendarView->viewManager(), &KOViewManager::selectNextX);
-    mNextXDays->setText(i18np("&Next Day", "&Next %1 Days", KOPrefs::instance()->mNextXDays));
 
-    action = new QAction(QIcon::fromTheme(QStringLiteral("view-calendar-workweek")), i18n("W&ork Week"), this);
-    action->setEnabled(mCalendarView->currentView()->supportsDateRangeSelection());
+    /** Agenda: Work Week View **/
+    action = new QAction(QIcon::fromTheme(QStringLiteral("view-calendar-workweek")), i18nc("@action:inmenu", "W&eek Schedule"), this);
+    action->setText(i18nc("@action:inmenu agenda view show the the weekly schedule days only (eg. no weekends)", "Week Schedule"));
+    action->setStatusTip(i18nc("@info:status", "Show a week at a time showing days included in your weekly schedule only"));
+    action->setToolTip(i18nc("@info:tooltip",
+                             "Show a week at a time in Agenda View, excluding days that are not included in your weekly schedule (ie. weekends are excluded)"));
+    action->setWhatsThis(xi18nc(
+        "@info:whatsthis",
+        "Select this option to show a week at a time, excluding the days that are not included in your weekly schedule. Configure your schedule by selecting "
+        "days in the "
+        "<placeholder>Weekly Schedule</placeholder> setting in the <interface>Time and Date->Regional</interface> page.<br>Typically this view is intended for "
+        "showing the week without weekend days.</br>"));
+    agendaMenu->addAction(action);
     mACollection->addAction(QStringLiteral("select_workweek"), action);
     connect(action, &QAction::triggered, mCalendarView->viewManager(), &KOViewManager::selectWorkWeek);
 
-    action = new QAction(QIcon::fromTheme(QStringLiteral("view-calendar-week")), i18n("&Week"), this);
-    action->setEnabled(mCalendarView->currentView()->supportsDateRangeSelection());
+    action = new QAction(QIcon::fromTheme(QStringLiteral("view-calendar-week")), i18nc("@action:inmenu", "&Week"), this);
+    action->setText(i18nc("@action:inmenu agenda view show a week at a time", "Week"));
+    action->setStatusTip(i18nc("@info:status", "View a week at a time"));
+    action->setToolTip(i18nc("@info:tooltip", "Show 1 week at a time in Agenda View"));
+    action->setWhatsThis(i18nc("@info:whatsthis", "Select this option to show a week at a time in Agenda View."));
+    agendaMenu->addAction(action);
     mACollection->addAction(QStringLiteral("select_week"), action);
     connect(action, &QAction::triggered, mCalendarView->viewManager(), &KOViewManager::selectWeek);
 
