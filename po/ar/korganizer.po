@@ -12,7 +12,7 @@ msgstr ""
 "Project-Id-Version: korganizer\n"
 "Report-Msgid-Bugs-To: https://bugs.kde.org\n"
 "POT-Creation-Date: 2025-03-23 00:42+0000\n"
-"PO-Revision-Date: 2025-03-20 10:20+0400\n"
+"PO-Revision-Date: 2025-03-23 09:56+0400\n"
 "Last-Translator: Zayed Al-Saidi <zayed.alsaidi@gmail.com>\n"
 "Language-Team: ar\n"
 "Language: ar\n"
@@ -956,33 +956,27 @@ msgid "Starts a dialog that allows you to create a new Journal entry."
 msgstr "بدء مربع حوار يسمح لك بإنشاء إدخال دفتر يومية جديد."
 
 #: actionmanager.cpp:605
-#, fuzzy, kde-format
-#| msgid "Pick Date"
+#, kde-format
 msgctxt "@action Jump to date"
 msgid "&Pick a Date"
-msgstr "إلتقط التاريخ"
+msgstr "ا&ختر تاريخاً"
 
 #: actionmanager.cpp:606
-#, fuzzy, kde-format
-#| msgid "Date"
+#, kde-format
 msgid "Date"
 msgstr "التاريخ"
 
 #: actionmanager.cpp:607
-#, fuzzy, kde-format
-#| msgctxt "@info:tooltip"
-#| msgid "Scroll the view to today"
+#, kde-format
 msgctxt "@info:status"
 msgid "Scroll the view to user selected dates"
-msgstr "مرّر نحو عرض اليوم"
+msgstr "مرّر العرض إلى التواريخ المحددة من قبل المستخدم"
 
 #: actionmanager.cpp:608
-#, fuzzy, kde-format
-#| msgctxt "@info:tooltip"
-#| msgid "Scroll the view to today"
+#, kde-format
 msgctxt "@info:tooltip"
 msgid "Scroll the view to user selected dates"
-msgstr "مرّر نحو عرض اليوم"
+msgstr "مرّر العرض إلى التواريخ المحددة من قبل المستخدم"
 
 #: actionmanager.cpp:609
 #, kde-format
@@ -1341,26 +1335,23 @@ msgid "%1 (Default)"
 msgstr "%1 (المبدئيّ)"
 
 #: akonadicollectionview.cpp:408
-#, fuzzy, kde-format
-#| msgctxt "@title:tab calendar account settings"
-#| msgid "Calendars"
+#, kde-format
 msgctxt "@info:tooltip"
 msgid "Calendar search"
-msgstr "التقاويم"
+msgstr "بحث التقاويم"
 
 #: akonadicollectionview.cpp:409
 #, kde-format
 msgctxt "@info:whatsthis"
 msgid "Start typing to search for a calendar within the collection."
-msgstr ""
+msgstr "ابدأ الكتابة للبحث عن تقويم داخل المجموعة."
 
 #: akonadicollectionview.cpp:411
-#, fuzzy, kde-format
-#| msgid "Search Calendar"
+#, kde-format
 msgctxt ""
 "@info/plain Displayed grayed-out inside the textbox, calendar to search"
 msgid "Search for calendar…"
-msgstr "البحث في التقويم"
+msgstr "ابحث عن تقويم…"
 
 #: akonadicollectionview.cpp:497 manageshowcollectionproperties.cpp:76
 #, kde-format

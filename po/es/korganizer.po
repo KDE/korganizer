@@ -18,7 +18,7 @@ msgstr ""
 "Project-Id-Version: korganizer\n"
 "Report-Msgid-Bugs-To: https://bugs.kde.org\n"
 "POT-Creation-Date: 2025-03-23 00:42+0000\n"
-"PO-Revision-Date: 2025-03-21 01:21+0100\n"
+"PO-Revision-Date: 2025-03-23 03:00+0100\n"
 "Last-Translator: Eloy Cuadra <ecuadra@eloihr.net>\n"
 "Language-Team: Spanish <kde-l10n-es@kde.org>\n"
 "Language: es\n"
@@ -1002,9 +1002,7 @@ msgid "Scroll the view to user selected dates"
 msgstr "Desplazar la vista hasta las fechas seleccionadas por el usuario"
 
 #: actionmanager.cpp:609
-#, fuzzy, kde-format
-#| msgctxt "@info:whatsthis"
-#| msgid "Opens a a date selection dialog for quickly navigating the view."
+#, kde-format
 msgctxt "@info:whatsthis"
 msgid "Opens a date selection dialog for quickly navigating the view."
 msgstr ""

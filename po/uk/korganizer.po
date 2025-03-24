@@ -12,7 +12,7 @@ msgstr ""
 "Project-Id-Version: korganizer\n"
 "Report-Msgid-Bugs-To: https://bugs.kde.org\n"
 "POT-Creation-Date: 2025-03-23 00:42+0000\n"
-"PO-Revision-Date: 2025-03-20 09:56+0200\n"
+"PO-Revision-Date: 2025-03-23 10:50+0200\n"
 "Last-Translator: Yuri Chornoivan <yurchor@ukr.net>\n"
 "Language-Team: Ukrainian <trans-uk@lists.fedoraproject.org>\n"
 "Language: uk\n"
@@ -999,9 +999,7 @@ msgid "Scroll the view to user selected dates"
 msgstr "Гортати перегляд до вибраних користувачем дат"
 
 #: actionmanager.cpp:609
-#, fuzzy, kde-format
-#| msgctxt "@info:whatsthis"
-#| msgid "Opens a a date selection dialog for quickly navigating the view."
+#, kde-format
 msgctxt "@info:whatsthis"
 msgid "Opens a date selection dialog for quickly navigating the view."
 msgstr "Відкриває вікно вибору дати для швидкого переходу на панелі перегляду."
