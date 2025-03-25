@@ -25,7 +25,7 @@ msgstr ""
 "Project-Id-Version: korganizer\n"
 "Report-Msgid-Bugs-To: https://bugs.kde.org\n"
 "POT-Creation-Date: 2025-03-23 00:42+0000\n"
-"PO-Revision-Date: 2025-03-20 07:20+0100\n"
+"PO-Revision-Date: 2025-03-22 09:28+0100\n"
 "Last-Translator: Xavier Besnard <xavier.besnard@kde.org>\n"
 "Language-Team: French <French <kde-francophone@kde.org>>\n"
 "Language: fr\n"
@@ -1004,14 +1004,11 @@ msgstr ""
 "Ouvre une fenêtre vous permettant de créer une nouvelle entrée dans le "
 "journal."
 
-# unreviewed-context
 #: actionmanager.cpp:605
-#, fuzzy, kde-format
-#| msgctxt "@action:button"
-#| msgid "Pick Date"
+#, kde-format
 msgctxt "@action Jump to date"
 msgid "&Pick a Date"
-msgstr "Choisir la date"
+msgstr "Sélec&tionnez une date"
 
 #: actionmanager.cpp:606
 #, kde-format
@@ -1019,20 +1016,16 @@ msgid "Date"
 msgstr "Date"
 
 #: actionmanager.cpp:607
-#, fuzzy, kde-format
-#| msgctxt "@info:tooltip"
-#| msgid "Scroll the view to today"
+#, kde-format
 msgctxt "@info:status"
 msgid "Scroll the view to user selected dates"
-msgstr "Fait défiler la vue jusqu'à aujourd'hui"
+msgstr "Fait défiler la vue jusqu'aux dates sélectionnées par l'utilisateur"
 
 #: actionmanager.cpp:608
-#, fuzzy, kde-format
-#| msgctxt "@info:tooltip"
-#| msgid "Scroll the view to today"
+#, kde-format
 msgctxt "@info:tooltip"
 msgid "Scroll the view to user selected dates"
-msgstr "Fait défiler la vue jusqu'à aujourd'hui"
+msgstr "Fait défiler la vue jusqu'aux dates sélectionnées par l'utilisateur"
 
 #: actionmanager.cpp:609
 #, kde-format
@@ -1396,27 +1389,23 @@ msgid "%1 (Default)"
 msgstr "%1 (par défaut)"
 
 #: akonadicollectionview.cpp:408
-#, fuzzy, kde-format
-#| msgctxt "@title:tab calendar account settings"
-#| msgid "Calendars"
+#, kde-format
 msgctxt "@info:tooltip"
 msgid "Calendar search"
-msgstr "Agendas"
+msgstr "Recherche d'agendas"
 
 #: akonadicollectionview.cpp:409
 #, kde-format
 msgctxt "@info:whatsthis"
 msgid "Start typing to search for a calendar within the collection."
-msgstr ""
+msgstr "Commencez votre saisie pour rechercher un agenda dans la collection."
 
 #: akonadicollectionview.cpp:411
-#, fuzzy, kde-format
-#| msgctxt "@title:window"
-#| msgid "Search Calendar"
+#, kde-format
 msgctxt ""
 "@info/plain Displayed grayed-out inside the textbox, calendar to search"
 msgid "Search for calendar…"
-msgstr "Chercher dans l'agenda"
+msgstr "Rechercher un agenda..."
 
 # unreviewed-context
 # unreviewed-context
