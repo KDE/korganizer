@@ -527,8 +527,6 @@ void CalendarView::readFilterSettings(KConfig *config)
 
 void CalendarView::writeFilterSettings(KConfig *config)
 {
-    QStringList filterList;
-
     const QStringList oldFilterList = config->groupList().filter(QRegularExpression(QStringLiteral("^Filter_.*")));
     // Delete Old Group
     for (const QString &conf : oldFilterList) {
@@ -536,20 +534,23 @@ void CalendarView::writeFilterSettings(KConfig *config)
         group.deleteGroup(QLatin1StringView());
     }
 
-    filterList.reserve(mFilters.count());
-    for (KCalendarCore::CalFilter *filter : std::as_const(mFilters)) {
-        filterList << filter->name();
-        KConfigGroup filterConfig(config, QStringLiteral("Filter_") + filter->name());
-        filterConfig.writeEntry("Criteria", filter->criteria());
-        filterConfig.writeEntry("CategoryList", filter->categoryList());
-        filterConfig.writeEntry("HideTodoDays", filter->completedTimeSpan());
-    }
-    KConfigGroup generalConfig(config, QStringLiteral("General"));
-    generalConfig.writeEntry("CalendarFilters", filterList);
-    if (mCurrentFilter) {
-        generalConfig.writeEntry("Current Filter", mCurrentFilter->name());
-    } else {
-        generalConfig.writeEntry("Current Filter", QString());
+    if (!mFilters.isEmpty()) {
+        QStringList filterList;
+        filterList.reserve(mFilters.count());
+        for (KCalendarCore::CalFilter *filter : std::as_const(mFilters)) {
+            filterList << filter->name();
+            KConfigGroup filterConfig(config, QStringLiteral("Filter_") + filter->name());
+            filterConfig.writeEntry("Criteria", filter->criteria());
+            filterConfig.writeEntry("CategoryList", filter->categoryList());
+            filterConfig.writeEntry("HideTodoDays", filter->completedTimeSpan());
+        }
+        KConfigGroup generalConfig(config, QStringLiteral("General"));
+        generalConfig.writeEntry("CalendarFilters", filterList);
+        if (mCurrentFilter) {
+            generalConfig.writeEntry("Current Filter", mCurrentFilter->name());
+        } else {
+            generalConfig.writeEntry("Current Filter", QString());
+        }
     }
 }
 
