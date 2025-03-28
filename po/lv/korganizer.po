@@ -11,14 +11,14 @@ msgstr ""
 "Project-Id-Version: korganizer\n"
 "Report-Msgid-Bugs-To: https://bugs.kde.org\n"
 "POT-Creation-Date: 2025-03-23 00:42+0000\n"
-"PO-Revision-Date: 2025-01-16 16:08+0200\n"
+"PO-Revision-Date: 2025-03-26 17:02+0200\n"
 "Last-Translator: Toms Trasuns <toms.trasuns@posteo.net>\n"
 "Language-Team: Latvian <kde-i18n-doc@kde.org>\n"
 "Language: lv\n"
 "MIME-Version: 1.0\n"
 "Content-Type: text/plain; charset=UTF-8\n"
 "Content-Transfer-Encoding: 8bit\n"
-"X-Generator: Lokalize 24.12.0\n"
+"X-Generator: Lokalize 24.12.3\n"
 "Plural-Forms: nplurals=3; plural=(n%10==1 && n%100!=11 ? 0 : n != 0 ? 1 : "
 "2);\n"
 
@@ -320,16 +320,13 @@ msgid "Fester Zigterman"
 msgstr "Fester Zigterman"
 
 #: actionmanager.cpp:131
-#, fuzzy, kde-format
-#| msgid ""
-#| "<qt>This will hide the menu bar completely. You can show it again by "
-#| "typing %1.</qt>"
+#, kde-format
 msgctxt "@info"
 msgid ""
 "This will hide the menu bar completely. You can show it again by typing %1."
 msgstr ""
-"<qt>Šī darbība pilnībā paslēps izvēlnes joslu. To var atkal parādīt, "
-"nospiežot „%1“.</qt>"
+"Šī darbība pilnībā paslēps izvēlnes joslu. To var atkal parādīt, nospiežot "
+"„%1“."
 
 #: actionmanager.cpp:134
 #, kde-format
@@ -969,40 +966,33 @@ msgid "Starts a dialog that allows you to create a new Journal entry."
 msgstr "Atver lodziņu, kurā varat izveidot jaunu žurnāla ierakstu."
 
 #: actionmanager.cpp:605
-#, fuzzy, kde-format
-#| msgctxt "@action:button"
-#| msgid "Pick Date"
+#, kde-format
 msgctxt "@action Jump to date"
 msgid "&Pick a Date"
-msgstr "Izvēlieties datumu"
+msgstr "Iz&vēlieties datumu"
 
 #: actionmanager.cpp:606
-#, fuzzy, kde-format
-#| msgid "&Date:"
+#, kde-format
 msgid "Date"
-msgstr "&Datums:"
+msgstr "Datums"
 
 #: actionmanager.cpp:607
-#, fuzzy, kde-format
-#| msgctxt "@info:tooltip"
-#| msgid "Scroll the view to today"
+#, kde-format
 msgctxt "@info:status"
 msgid "Scroll the view to user selected dates"
-msgstr "Ritināt skatu uz šodienu"
+msgstr "Ritināt skatu uz atlasītajiem datumiem"
 
 #: actionmanager.cpp:608
-#, fuzzy, kde-format
-#| msgctxt "@info:tooltip"
-#| msgid "Scroll the view to today"
+#, kde-format
 msgctxt "@info:tooltip"
 msgid "Scroll the view to user selected dates"
-msgstr "Ritināt skatu uz šodienu"
+msgstr "Ritināt skatu uz atlasītajiem datumiem"
 
 #: actionmanager.cpp:609
 #, kde-format
 msgctxt "@info:whatsthis"
 msgid "Opens a date selection dialog for quickly navigating the view."
-msgstr ""
+msgstr "Atver datuma atlases lodziņu ātrai skata navigācijai."
 
 #: actionmanager.cpp:614
 #, kde-format
@@ -1015,20 +1005,16 @@ msgid "Configure"
 msgstr "Pielāgot"
 
 #: actionmanager.cpp:616
-#, fuzzy, kde-format
-#| msgctxt "@info:tooltip"
-#| msgid "Configure the current view"
+#, kde-format
 msgctxt "@info:status"
 msgid "Configure the multi-calendar view"
-msgstr "Pielāgot pašreizējo skatu"
+msgstr "Pielāgot vairāku kalendāru skatu"
 
 #: actionmanager.cpp:617
-#, fuzzy, kde-format
-#| msgctxt "@info:tooltip"
-#| msgid "Configure the current view"
+#, kde-format
 msgctxt "@info:tooltip"
 msgid "Configure the multi-calendar view"
-msgstr "Pielāgot pašreizējo skatu"
+msgstr "Pielāgot vairāku kalendāru skatu"
 
 #: actionmanager.cpp:619
 #, kde-format
@@ -1038,6 +1024,9 @@ msgid ""
 "view. Currently only the multi-calendar view is supported. See the Multiple "
 "Calendars options in the Views->Agenda Views settings."
 msgstr ""
+"Vairāku kalendāru skats atver lodziņu, kas ļauj šo skatu pielāgot. Šobrīd "
+"programma atbalsta tikai vairāku kalendāru skatu. Vairāku kalendāru opcijas "
+"varat redzēt Skati —> Dienaskārtības skati iestatījumos."
 
 #: actionmanager.cpp:626 actionmanager.cpp:1313 actionmanager.cpp:1354
 #, kde-format
@@ -1356,26 +1345,23 @@ msgid "%1 (Default)"
 msgstr "%1 (noklusējums)"
 
 #: akonadicollectionview.cpp:408
-#, fuzzy, kde-format
-#| msgctxt "@title:tab calendar account settings"
-#| msgid "Calendars"
+#, kde-format
 msgctxt "@info:tooltip"
 msgid "Calendar search"
-msgstr "Kalendāri"
+msgstr "Kalendāru meklēšana"
 
 #: akonadicollectionview.cpp:409
 #, kde-format
 msgctxt "@info:whatsthis"
 msgid "Start typing to search for a calendar within the collection."
-msgstr ""
+msgstr "Sāciet rakstīt, lai meklētu kolekcijā esošu kalendāru."
 
 #: akonadicollectionview.cpp:411
-#, fuzzy, kde-format
-#| msgid "Search Calendar"
+#, kde-format
 msgctxt ""
 "@info/plain Displayed grayed-out inside the textbox, calendar to search"
 msgid "Search for calendar…"
-msgstr "Meklēt kalendārā"
+msgstr "Meklēt kalendāru…"
 
 #: akonadicollectionview.cpp:497 manageshowcollectionproperties.cpp:76
 #, kde-format
@@ -1423,6 +1409,10 @@ msgid ""
 "removed from its remote resource.</note></para>The <filename>%1</filename> "
 "calendar can be added again at any time."
 msgstr ""
+"Vai tiešām vēlaties dzēst <filename>%1</filename> kalendāru?"
+"<para><note>Kalendāra datus programma nedzēsīs, kā arī kalendārs netiks "
+"noņemts no attālā resursa.</note></para>Kalendāru <filename>%1</filename> "
+"varat jebkurā brīdī atkal pievienot."
 
 #: akonadicollectionview.cpp:741
 #, kde-kuit-format
@@ -1432,6 +1422,9 @@ msgid ""
 "<para><warning>This cannot be undone.  Please consider carefully before "
 "pressing the %2 button.</warning></para>"
 msgstr ""
+"Vai tiešām vēlaties dzēst <filename>%1</filename> kalendāru?"
+"<para><warning>Šo darbību nevarēsiet atsaukt. Pārdomājiet, vai tas ir tas, "
+"ko vēlaties, pirms spiežat „%2“.</warning></para>"
 
 #: akonadicollectionview.cpp:749
 #, kde-format
@@ -1449,16 +1442,13 @@ msgstr ""
 "notikumu, uzdevumu vai žurnāla ierakstu.</p>"
 
 #: calendarview.cpp:255
-#, fuzzy, kde-format
-#| msgid ""
-#| "View the details of events, journal entries or to-dos selected in "
-#| "KOrganizer's main view here."
+#, kde-format
 msgctxt "@info:whatsthis"
 msgid ""
 "View the details of events, journal entries or to-dos selected in "
 "KOrganizer's main view here."
 msgstr ""
-"Rāda „KOrganizer“ galvenajā skatā izvēlēto notikumu, žurnāla ierakstu un "
+"„KOrganizer“ galvenajā skatā rāda izvēlēto notikumu, žurnāla ierakstu un "
 "uzdevuma aprakstu."
 
 #: calendarview.cpp:673
@@ -3509,17 +3499,16 @@ msgid "Select Holiday Regions"
 msgstr "Atlasīt svētku dienu reģionus"
 
 #: prefs/koprefsdialogtime.cpp:111
-#, fuzzy, kde-format
-#| msgid "Schedule"
+#, kde-format
 msgctxt "@title:group"
 msgid "Weekly Schedule"
-msgstr "Grafiks"
+msgstr "Nedēļas regulārais plāns"
 
 #: prefs/koprefsdialogtime.cpp:126
 #, kde-format
 msgctxt "@info:tooltip"
 msgid "Include %1 as part of your weekly schedule"
-msgstr ""
+msgstr "Iekļaut %1 kā daļu no nedēļas regulārā plāna"
 
 #: prefs/koprefsdialogtime.cpp:128
 #, kde-format
@@ -3531,6 +3520,11 @@ msgid ""
 "weekly schedule (even if you don't work). Typically, weekend days should be "
 "unchecked."
 msgstr ""
+"Atzīmējiet lauciņu, ja uzskatāt, ka „%1“ ir daļa no jūsu regulārā nedēļas "
+"plāna. Jebkādas „%1“ ikdienas stundas būs redzamas citā krāsā nekā jūsu "
+"regulārais plāns. Atzīmējiet šo lauciņu, ja „%1“ ir daļa no regulārā nedēļās "
+"plāna (pat tad, kad nestrādājat). Parasti nedēļas nogales ir jāatstāj "
+"neatzīmētas."
 
 #: prefs/koprefsdialogtime.cpp:142
 #, kde-format
@@ -3578,7 +3572,7 @@ msgstr "Svētdiena"
 #, kde-format
 msgctxt "@info:tooltip"
 msgid "Highlight holidays differently from your regular schedule"
-msgstr ""
+msgstr "Izcelt brīvdienas atšķirīgi no ierastā grafika"
 
 #: prefs/koprefsdialogtime.cpp:169
 #, kde-format
@@ -3586,7 +3580,7 @@ msgctxt "@info:whatsthis"
 msgid ""
 "Check this box to highlight holidays differently than days included with "
 "your regular schedule."
-msgstr ""
+msgstr "Atzīmējiet šo lauciņu atšķirīgi no dienām, kad satur regulāro grafiku."
 
 #: prefs/koprefsdialogtime.cpp:176
 #, kde-format
@@ -3824,44 +3818,39 @@ msgstr "Darba dienas sākums"
 #: settings/korganizer.kcfg:42
 #, kde-format
 msgid "Set the time you typically start your day"
-msgstr ""
+msgstr "Norādiet laiku, kad parasti sākas jūsu diena"
 
 #. i18n: ectx: whatsthis, entry (WorkingHoursStart), group (Time &amp; Date)
 #: settings/korganizer.kcfg:43
-#, fuzzy, kde-format
-#| msgid ""
-#| "Enter the start time for the working hours here. The working hours will "
-#| "be marked with color by KOrganizer."
+#, kde-format
 msgid ""
 "Enter the start time for your daily schedule here. Your daily schedule hours "
 "will be marked with a separate color."
 msgstr ""
-"Norādiet darba dienas sākuma laiku. „KOrganizer“ ar krāsu izcels darba laiku."
+"Norādiet dienas sākuma laiku. Ikdienas grafika stundas būs izceltas citā "
+"krāsā."
 
 #. i18n: ectx: label, entry (WorkingHoursEnd), group (Time &amp; Date)
 #: settings/korganizer.kcfg:47
 #, kde-format
 msgid "Daily ending hour"
-msgstr "Darbs laiks beidzas"
+msgstr "Darba laiks beidzas"
 
 #. i18n: ectx: tooltip, entry (WorkingHoursEnd), group (Time &amp; Date)
 #: settings/korganizer.kcfg:48
 #, kde-format
 msgid "Set the time you typically end your day"
-msgstr ""
+msgstr "Norādiet laiku, kad parasti beidzat savu dienu"
 
 #. i18n: ectx: whatsthis, entry (WorkingHoursEnd), group (Time &amp; Date)
 #: settings/korganizer.kcfg:49
-#, fuzzy, kde-format
-#| msgid ""
-#| "Enter the ending time for the working hours here. The working hours will "
-#| "be marked with color by KOrganizer."
+#, kde-format
 msgid ""
 "Enter the ending time for your daily schedule here. Your daily schedule "
 "hours will be marked with a separate color."
 msgstr ""
-"Te norādiet darba dienas beigu laiku. „KOrganizer“ ar krāsu izcels darba "
-"laiku."
+"Norādiet darba dienas beigu laiku. Ikdienas grafika stundas būs izceltas "
+"citā krāsā."
 
 #. i18n: ectx: label, entry (ColorMonthBusyDaysEnabled), group (Time &amp; Date)
 #. i18n: ectx: label, entry (ColorBusyDaysEnabled), group (Agenda View)
@@ -4114,28 +4103,28 @@ msgstr "Parādīt pašreizējā laika indikatoru"
 
 #. i18n: ectx: label, entry (MarcusBainsShowSeconds), group (Agenda View)
 #: settings/korganizer.kcfg:131
-#, fuzzy, kde-format
-#| msgid "Show seconds on the current-time (Marcus Bains) line"
+#, kde-format
 msgid "Show seconds and timezone on the current-time (Marcus Bains) line"
-msgstr "Pašreizējā laika (Markusa Beina) rindiņā rādīt sekundes"
+msgstr "Pašreizējā laika (Markusa Beina) rindiņā rādīt sekundes un laika joslu"
 
 #. i18n: ectx: whatsthis, entry (MarcusBainsShowSeconds), group (Agenda View)
 #: settings/korganizer.kcfg:132
-#, fuzzy, kde-format
-#| msgid "Check this box if you want to show seconds on the current-time line."
+#, kde-format
 msgid ""
 "Check this box if you want to show seconds on the current-time (Marcus "
 "Bains) line. Depending on your locale, the timezone will also be displayed."
 msgstr ""
-"Atzīmējiet šo lauciņu, ja vēlaties pašreizējā laika rindiņā redzēt sekundes."
+"Atzīmējiet šo lauciņu, ja vēlaties pašreizējā laika (Markusa Beina) rindiņā "
+"redzēt sekundes. Atkarībā no sistēmas lokāles tajā programma var rādīt arī "
+"laika joslu."
 
 #. i18n: ectx: tooltip, entry (MarcusBainsShowSeconds), group (Agenda View)
 #: settings/korganizer.kcfg:133
-#, fuzzy, kde-format
-#| msgid "Display seconds with the current-time indicator"
+#, kde-format
 msgid ""
 "Display seconds (possibly with timezone) with the current-time indicator"
-msgstr "Pašreizējā laika indikatorā rādīt sekundes."
+msgstr ""
+"Pašreizējā laika indikatorā rādīt sekundes (dažos gadījumos arī laika joslas)"
 
 #. i18n: ectx: label, entry (SelectionStartsEditor), group (Agenda View)
 #: settings/korganizer.kcfg:137
@@ -4641,10 +4630,9 @@ msgstr "Te varat atlasīt dienaskārtības skata fona krāsu."
 
 #. i18n: ectx: label, entry, group (Colors)
 #: settings/korganizer.kcfg:292
-#, fuzzy, kde-format
-#| msgid "Agenda view current-time line color"
+#, kde-format
 msgid "Agenda view current-time (Marcus Bains) line color"
-msgstr "Dienaskārtības skata pašreizējā laika līnijas krāsa"
+msgstr "Dienaskārtības skata pašreizējā laika (Markusa Beina) rindiņas krāsa"
 
 #. i18n: ectx: whatsthis, entry, group (Colors)
 #: settings/korganizer.kcfg:293
@@ -4772,26 +4760,21 @@ msgstr ""
 
 #. i18n: ectx: label, entry, group (Fonts)
 #: settings/korganizer.kcfg:333
-#, fuzzy, kde-format
-#| msgid "Show current-time (Marcus Bains) line"
+#, kde-format
 msgid "Current-time (Marcus Bains) line"
-msgstr "Rādīt pašreizējā laika (Markusa Beinsa) rindiņu"
+msgstr "Pašreizējā laika (Markusa Beinsa) rindiņa"
 
 #. i18n: ectx: whatsthis, entry, group (Fonts)
 #: settings/korganizer.kcfg:334
-#, fuzzy, kde-format
-#| msgid ""
-#| "Press this button to configure the current-time line font. This button "
-#| "will open the \"Select Font\" dialog, allowing you to choose the font for "
-#| "the current-time line in the agenda view."
+#, kde-format
 msgid ""
 "Press this button to configure the current-time (Marcus Bains) line font. "
 "This button will open the \"Select Font\" dialog, allowing you to choose the "
 "font for the current-time line in the agenda view."
 msgstr ""
-"Spiediet šo pogu, lai konfigurētu pašreizējā laika rindiņas fontu. Šī poga "
-"atvērs fontu atlases lodziņu, kurā varēsiet izvēlēties pašreizējā laika "
-"rindiņas vienumu fontu."
+"Spiediet šo pogu, lai konfigurētu pašreizējā laika (Markusa Beina) rindiņas "
+"fontu. Šī poga atvērs fontu atlases lodziņu, kurā varēsiet izvēlēties "
+"pašreizējā laika rindiņas fontu."
 
 #. i18n: ectx: label, entry (DefaultTodoAttachMethod), group (Hidden Options)
 #: settings/korganizer.kcfg:353
@@ -5716,13 +5699,13 @@ msgstr "Iekļaut &visus uzdevumus noteiktajā datumu diapazonā"
 
 #. i18n: ectx: property (toolTip), widget (QCheckBox, unfiltered)
 #: ui/searchdialog_base.ui:325
-#, fuzzy, kde-format
-#| msgctxt "@info:whatsthis"
-#| msgid "Press this button to remove the currently active filter."
+#, kde-format
 msgid ""
 "Uncheck this box to skip incidences matching the currently selected view "
 "filter"
-msgstr "Nospiediet šo pogu, lai noņemtu aktīvo filtru."
+msgstr ""
+"Noņemiet atzīmi lauciņā, lai izlaistu notikumus, kas atbilst pašreiz "
+"atlasītā skata filtram"
 
 #. i18n: ectx: property (whatsThis), widget (QCheckBox, unfiltered)
 #: ui/searchdialog_base.ui:328
@@ -5731,12 +5714,14 @@ msgid ""
 "When this box is checked all incidences will be considered in the search, "
 "even those that aren't displayed according the currently selected view filter"
 msgstr ""
+"Kad ir atzīmēts šis lauciņš, programma meklēs visus notikumus — arī tos, ko "
+"pašreizējais skata filtrs slēpj"
 
 #. i18n: ectx: property (text), widget (QCheckBox, unfiltered)
 #: ui/searchdialog_base.ui:331
 #, kde-format
 msgid "Include all incidences matched by view filter"
-msgstr ""
+msgstr "Iekļaut visus notikumus, kas atbilst skata filtram"
 
 #. i18n: ectx: property (text), widget (QPushButton, mDayBtn)
 #: views/collectionview/quickview.ui:34
@@ -5872,8 +5857,7 @@ msgid "Alarm"
 msgstr "Atgādinājums"
 
 #: widgets/kitemiconcheckcombo.cpp:21
-#, fuzzy, kde-format
-#| msgid "Read Only"
+#, kde-format
 msgctxt "the incidence is read-only"
 msgid "Read Only"
 msgstr "Tikai lasāms"

@@ -11,14 +11,14 @@ msgstr ""
 "Project-Id-Version: korganizer\n"
 "Report-Msgid-Bugs-To: https://bugs.kde.org\n"
 "POT-Creation-Date: 2024-07-30 00:42+0000\n"
-"PO-Revision-Date: 2025-01-16 16:56+0200\n"
+"PO-Revision-Date: 2025-03-26 17:08+0200\n"
 "Last-Translator: Toms Trasuns <toms.trasuns@posteo.net>\n"
 "Language-Team: Latvian <kde-i18n-doc@kde.org>\n"
 "Language: lv\n"
 "MIME-Version: 1.0\n"
 "Content-Type: text/plain; charset=UTF-8\n"
 "Content-Transfer-Encoding: 8bit\n"
-"X-Generator: Lokalize 24.12.0\n"
+"X-Generator: Lokalize 24.12.3\n"
 "Plural-Forms: nplurals=3; plural=(n%10==1 && n%100!=11 ? 0 : n != 0 ? 1 : "
 "2);\n"
 
@@ -208,7 +208,7 @@ msgstr "Pesaha vakars"
 #: hebrew/holiday.cpp:94
 #, kde-format
 msgid "Sh. HaGadol"
-msgstr ""
+msgstr "Lielais sabats"
 
 #: hebrew/holiday.cpp:102
 #, kde-format
@@ -715,8 +715,7 @@ msgid ""
 msgstr "Sīktēla izmēru var brīvi mainīt. Malu attiecība netiks saglabāta."
 
 #: picoftheday/configdialog.cpp:52
-#, fuzzy, kde-format
-#| msgid "Keep aspect ratio"
+#, kde-format
 msgctxt "@option:radio"
 msgid "Keep aspect ratio"
 msgstr "Saglabāt malu attiecību"
@@ -731,11 +730,10 @@ msgstr ""
 "taisnstūrī, saglabājot malu attiecību."
 
 #: picoftheday/configdialog.cpp:59
-#, fuzzy, kde-format
-#| msgid "Keep aspect ratio by expanding"
+#, kde-format
 msgctxt "@option:radio"
 msgid "Keep aspect ratio by expanding"
-msgstr "Saglabāt malu attiecību palielinot"
+msgstr "Saglabāt malu attiecību izvēršot"
 
 #: picoftheday/configdialog.cpp:61
 #, kde-format
