@@ -38,6 +38,7 @@
 #include <Akonadi/EntityDisplayAttribute>
 #include <Akonadi/EntityTreeModel>
 #include <Akonadi/EntityTreeView>
+#include <Akonadi/SelectCollection>
 #include <Akonadi/StandardCalendarActionManager>
 #include <PimCommonAkonadi/MailUtil>
 
@@ -534,21 +535,49 @@ Akonadi::Collection AkonadiCollectionView::currentCalendar() const
     return collection;
 }
 
+QString AkonadiCollectionView::defaultCalendarDisplayName() const
+{
+    QString displayName;
+    const Akonadi::Collection::Id calendarId = CalendarSupport::KCalPrefs::instance()->defaultCalendarId();
+    if (calendarId != -1) {
+        const Akonadi::Collection defaultCollection(calendarId);
+        if (defaultCollection.isValid()) {
+            const QModelIndex defaultIdx = Akonadi::EntityTreeModel::modelIndexForCollection(entityTreeModel(), defaultCollection);
+            if (defaultIdx.isValid()) {
+                displayName = defaultIdx.model()->data(defaultIdx, Qt::DisplayRole).toString();
+            }
+        }
+    }
+    return displayName;
+}
+
 void AkonadiCollectionView::setDefaultCalendar()
 {
     QModelIndex index = mCollectionView->selectionModel()->currentIndex(); // selectedRows()
     Q_ASSERT(index.isValid());
     const Akonadi::Collection collection = Akonadi::CollectionUtils::fromIndex(index);
+    const QString displayName = index.model()->data(index, Qt::DisplayRole).toString();
 
     // Ask if they really want to do this
-    const Akonadi::Collection curCol(CalendarSupport::KCalPrefs::instance()->defaultCalendarId());
-    if (curCol.isValid()
-        && KMessageBox::warningContinueCancel(this,
-                                              i18nc("@info", "Do you really want replace your current default calendar with \"%1\"?", collection.displayName()),
-                                              i18nc("@title:window", "Replace Default Calendar?"))
-            != KMessageBox::Continue) {
+    const QString defaultDisplayName = defaultCalendarDisplayName();
+    QString continueCancelMsg;
+    if (!defaultDisplayName.isEmpty()) {
+        continueCancelMsg = xi18nc("@info",
+                                   "Do you really want to set <filename>%1</filename> as your default calendar folder?"
+                                   "<para>This will replace <filename>%2</filename> as the default calendar folder.</para>",
+                                   displayName,
+                                   defaultDisplayName);
+    } else {
+        continueCancelMsg = xi18nc("@info", "Do you really want to set <filename>%1</filename> as your default calendar folder?", displayName);
+    }
+
+    const Akonadi::Collection defaultCol(CalendarSupport::KCalPrefs::instance()->defaultCalendarId());
+    if (defaultCol.isValid()
+        && KMessageBox::warningContinueCancel(this, continueCancelMsg, i18nc("@title:window", "Replace Default Calendar?")) != KMessageBox::Continue) {
         return;
     }
+
+    mCalendarView->showMessage(xi18nc("@info", "<filename>%1</filename> is now your default event calendar", displayName), KMessageWidget::Information);
 
     CalendarSupport::KCalPrefs::instance()->setDefaultCalendarId(collection.id());
     CalendarSupport::KCalPrefs::instance()->usrSave();
@@ -643,6 +672,36 @@ void AkonadiCollectionView::updateView()
     Q_EMIT resourcesChanged(mSelectionProxyModel ? mSelectionProxyModel->selectionModel()->hasSelection() : false);
 }
 
+bool AkonadiCollectionView::isCalendarFolder(const Akonadi::Collection &collection) const
+{
+    return !collection.contentMimeTypes().contains(QLatin1StringView("inode/directory"));
+}
+
+bool AkonadiCollectionView::isCollectionDefaultable(const Akonadi::Collection &collection, const QString &mimeType) const
+{
+    bool canDefault = false;
+    if (collection.isValid() && !collection.contentMimeTypes().isEmpty() && !collectionIsDefaultCalendar(collection)) {
+        if (collection.remoteId() != QLatin1StringView("akonadi_birthdays_resource")) {
+            const bool isWriteable = collection.rights() & Akonadi::Collection::CanCreateItem;
+            canDefault = isWriteable && !collection.isVirtual() && collection.contentMimeTypes().contains(mimeType);
+        }
+    }
+    return canDefault;
+}
+
+Akonadi::Collection::List AkonadiCollectionView::defaultableCollections(const QString &mimeType) const
+{
+    Akonadi::Collection::List collections;
+    for (int i = 0; i < entityTreeModel()->rowCount(); ++i) {
+        const QModelIndex index = entityTreeModel()->index(i, 0);
+        const Akonadi::Collection collection = index.data(Akonadi::EntityTreeModel::CollectionRole).value<Akonadi::Collection>();
+        if (isCollectionDefaultable(collection, mimeType) || !isCalendarFolder(collection)) {
+            collections << collection;
+        }
+    }
+    return collections;
+}
+
 void AkonadiCollectionView::updateMenu()
 {
     if (!mHasContextMenu) {
@@ -713,7 +772,24 @@ void AkonadiCollectionView::newCalendarDone(KJob *job)
     configureDialog->show();
 
     mNotSendAddRemoveSignal = false;
-    // TODO
+}
+
+bool AkonadiCollectionView::collectionContainsDefaultCalendar(const Akonadi::Collection &collection) const
+{
+    if (collectionIsDefaultCalendar(collection)) {
+        return true;
+    }
+
+    const Akonadi::Collection defaultCollection(CalendarSupport::KCalPrefs::instance()->defaultCalendarId());
+    if (!defaultCollection.isValid()) {
+        return false;
+    }
+
+    const QModelIndex defaultIdx = Akonadi::EntityTreeModel::modelIndexForCollection(entityTreeModel(), defaultCollection);
+    const QModelIndex parentDefaultIdx = entityTreeModel()->parent(defaultIdx);
+    const QModelIndex idx = Akonadi::EntityTreeModel::modelIndexForCollection(entityTreeModel(), collection);
+
+    return parentDefaultIdx == idx;
 }
 
 void AkonadiCollectionView::deleteCalendar()
@@ -726,23 +802,78 @@ void AkonadiCollectionView::deleteCalendar()
     const QString displayname = index.model()->data(index, Qt::DisplayRole).toString();
     Q_ASSERT(!displayname.isEmpty());
 
+    mWasDefaultCalendar = false;
     bool isTopLevel = collection.parentCollection() == Akonadi::Collection::root();
+    if (isTopLevel) {
+        if (collectionContainsDefaultCalendar(collection)) {
+            mWasDefaultCalendar = true;
+        }
+    } else {
+        mWasDefaultCalendar = KOHelper::isStandardCalendar(collection.id());
+    }
 
     QString yesNoMessage;
     if (isTopLevel) {
-        yesNoMessage = xi18nc("@info",
-                              "Do you really want to delete the <filename>%1</filename> calendar?"
-                              "<para><note>The calendar data will not be deleted, nor will the calendar "
-                              "be removed from its remote resource.</note></para>"
-                              "The <filename>%1</filename> calendar can be added again at any time.",
-                              displayname);
+        if (!mWasDefaultCalendar) {
+            yesNoMessage = xi18nc("@info",
+                                  "Do you really want to delete the <filename>%1</filename> calendar?"
+                                  "<para><note>The calendar data will not be deleted, nor will the calendar "
+                                  "be removed from its remote resource. The <filename>%1</filename> calendar "
+                                  "can be added again at any time.</note></para>",
+                                  displayname);
+        } else {
+            if (!collectionIsDefaultCalendar(collection)) {
+                const QString defaultDisplayName = defaultCalendarDisplayName();
+                if (!defaultDisplayName.isEmpty()) {
+                    yesNoMessage = xi18nc("@info",
+                                          "Do you really want to delete the <filename>%1</filename> calendar?"
+                                          "<para><note>The calendar data will not be deleted, nor will the calendar "
+                                          "be removed from its remote resource. The <filename>%1</filename> calendar "
+                                          "can be added again at any time.</note></para>"
+                                          "<para><warning>This calendar contains your default calendar folder "
+                                          "<filename>%2</filename>. If you delete it you may be prompted "
+                                          "to select a new default calendar folder.</warning></para>",
+                                          displayname,
+                                          defaultDisplayName);
+                } else {
+                    yesNoMessage = xi18nc("@info",
+                                          "Do you really want to delete the <filename>%1</filename> calendar?"
+                                          "<para><note>The calendar data will not be deleted, nor will the calendar "
+                                          "be removed from its remote resource. The <filename>%1</filename> calendar "
+                                          "can be added again at any time.</note></para><para><warning>This calendar "
+                                          "contains your default calendar folder. If you delete it you may be prompted "
+                                          "to select a new default calendar folder.</warning></para>",
+                                          displayname);
+                }
+            } else {
+                yesNoMessage = xi18nc("@info",
+                                      "Do you really want to delete the <filename>%1</filename> calendar?"
+                                      "<para><note>The calendar data will not be deleted, nor will the calendar "
+                                      "be removed from its remote resource. The <filename>%1</filename> calendar "
+                                      "can be added again at any time.</note></para>"
+                                      "<para><warning>This is your default calendar. If you delete it you may be "
+                                      "prompted to select a new default calendar.</warning></para>",
+                                      displayname);
+            }
+        }
     } else {
-        yesNoMessage = xi18nc("@info",
-                              "Do you really want to delete the <filename>%1</filename> calendar?"
-                              "<para><warning>This cannot be undone.  "
-                              "Please consider carefully before pressing the %2 button.</warning></para>",
-                              displayname,
-                              KStandardGuiItem::standardItem(KStandardGuiItem::Delete));
+        if (!mWasDefaultCalendar) {
+            yesNoMessage = xi18nc("@info",
+                                  "Do you really want to delete the <filename>%1</filename> folder?"
+                                  "<para><warning>This cannot be undone. "
+                                  "Please consider carefully before pressing the %2 button.</warning></para>",
+                                  displayname,
+                                  KStandardGuiItem::standardItem(KStandardGuiItem::Delete));
+        } else {
+            yesNoMessage = xi18nc("@info",
+                                  "Do you really want to delete the <filename>%1</filename> folder?"
+                                  "<para><warning>This cannot be undone. "
+                                  "Please consider carefully before pressing the %2 button.</warning></para>"
+                                  "<para><warning>This is your default calendar folder. If you delete it you may be "
+                                  "prompted to select a new default calendar.</warning></para>",
+                                  displayname,
+                                  KStandardGuiItem::standardItem(KStandardGuiItem::Delete));
+        }
     }
     if (KMessageBox::warningContinueCancel(this,
                                            yesNoMessage,
@@ -753,7 +884,6 @@ void AkonadiCollectionView::deleteCalendar()
                                            KMessageBox::Dangerous)
         == KMessageBox::Continue) {
         mNotSendAddRemoveSignal = true;
-        mWasDefaultCalendar = KOHelper::isStandardCalendar(collection.id());
 
         if (!isTopLevel) {
             // deletes contents
@@ -764,9 +894,66 @@ void AkonadiCollectionView::deleteCalendar()
             const Akonadi::AgentInstance instance = Akonadi::AgentManager::self()->instance(collection.resource());
             if (instance.isValid()) {
                 Akonadi::AgentManager::self()->removeInstance(instance);
+                resetDefaultEventCalendar();
+                mNotSendAddRemoveSignal = false;
             }
         }
     }
+}
+
+bool AkonadiCollectionView::collectionIsDefaultCalendar(const Akonadi::Collection &collection) const
+{
+    const Akonadi::Collection defaultCollection(CalendarSupport::KCalPrefs::instance()->defaultCalendarId());
+    if (defaultCollection.isValid() && (collection == defaultCollection)) {
+        return true;
+    }
+    return false;
+}
+
+void AkonadiCollectionView::requestDefaultCalendar(const QString &mimeType)
+{
+    Akonadi::Collection::Id defaultCollectionId = -1;
+    Akonadi::Collection defaultCollection(defaultCollectionId); // invalid
+    const Akonadi::Collection::List possibleDefaultCalendars = defaultableCollections(mimeType);
+    const int possibleDefaultCalendarsRemaining = possibleDefaultCalendars.count();
+    if ((possibleDefaultCalendarsRemaining > 1) || ((possibleDefaultCalendarsRemaining == 1) && !isCalendarFolder(possibleDefaultCalendars.first()))) {
+        int dialogCode;
+        const QStringList mimeTypes = QStringList() << KCalendarCore::Event::eventMimeType();
+        const Akonadi::Collection collection = Akonadi::CalendarUtils::selectCollection(this, dialogCode /*by-ref*/, mimeTypes);
+        if (collection.isValid()) {
+            defaultCollection = collection;
+        }
+    } else if (possibleDefaultCalendarsRemaining == 1) {
+        // Automatically set the default calendar as there is only 1 possibility.
+        const Akonadi::Collection collection = possibleDefaultCalendars.first();
+        if (collection.isValid()) {
+            defaultCollection = collection;
+        }
+    }
+    if (defaultCollection.isValid()) {
+        mCalendarView->showMessage(xi18nc("@info", "<filename>%1</filename> is now your default event calendar", defaultCollection.displayName()),
+                                   KMessageWidget::Information);
+        defaultCollectionId = defaultCollection.id();
+    } else {
+        if (possibleDefaultCalendarsRemaining) {
+            mCalendarView->showMessage(i18nc("@info", "Consider setting a default calendar for new events"), KMessageWidget::Information);
+        } else {
+            mCalendarView->showMessage(i18nc("@info", "Consider adding a write-enabled events calendar"), KMessageWidget::Information);
+        }
+    }
+
+    CalendarSupport::KCalPrefs::instance()->setDefaultCalendarId(defaultCollectionId);
+    CalendarSupport::KCalPrefs::instance()->usrSave();
+}
+
+void AkonadiCollectionView::resetDefaultEventCalendar()
+{
+    // Nothing to reset. We didn't remove the default calendar
+    if (!mWasDefaultCalendar) {
+        return;
+    }
+    // TODO: for now only event calendars are considered. implement resetDefaultTodoCalendar()
+    requestDefaultCalendar(KCalendarCore::Event::eventMimeType());
 }
 
 void AkonadiCollectionView::deleteCalendarDone(KJob *job)
@@ -777,11 +964,8 @@ void AkonadiCollectionView::deleteCalendarDone(KJob *job)
         mNotSendAddRemoveSignal = false;
         return;
     }
-    if (mWasDefaultCalendar) {
-        CalendarSupport::KCalPrefs::instance()->setDefaultCalendarId(Akonadi::Collection().id());
-    }
-    mNotSendAddRemoveSignal = false;
-    // TODO
+    Q_EMIT resourcesAddedRemoved();
+    resetDefaultEventCalendar();
 }
 
 void AkonadiCollectionView::rowsInserted(const QModelIndex &, int, int)

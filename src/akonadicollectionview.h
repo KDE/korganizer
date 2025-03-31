@@ -96,6 +96,23 @@ private Q_SLOTS:
 
 private:
     Akonadi::EntityTreeModel *entityTreeModel() const;
+    // Returns the display name for the current default calendar
+    [[nodiscard]] QString defaultCalendarDisplayName() const;
+    // Returns true if the specified collection contains the default collection, in the non-folder case.
+    // Also returns true if the specified collection is the default collection.
+    [[nodiscard]] bool collectionContainsDefaultCalendar(const Akonadi::Collection &collection) const;
+    // Returns true if the specified collection is the default collection.
+    [[nodiscard]] bool collectionIsDefaultCalendar(const Akonadi::Collection &collection) const;
+    // Returns true if the specified collection is a calendar folder, else it is a directory of collections.
+    [[nodiscard]] bool isCalendarFolder(const Akonadi::Collection &collection) const;
+    // Returns true if the specified collection for the mimetype can be marked as the default calendar folder.
+    [[nodiscard]] bool isCollectionDefaultable(const Akonadi::Collection &collection, const QString &mimeType) const;
+    // Returns a list of collections that could be marked as the default calendar folder.
+    [[nodiscard]] Akonadi::Collection::List defaultableCollections(const QString &mimeType) const;
+    // Prompts the user to select a new default calendar folder, or possibly sets one automatically.
+    void requestDefaultCalendar(const QString &mimeType);
+    // Resets the default event calendar folder.
+    void resetDefaultEventCalendar();
 
     CalendarView *mCalendarView = nullptr;
     Akonadi::StandardCalendarActionManager *mActionManager = nullptr;
