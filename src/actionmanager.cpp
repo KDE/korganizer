@@ -1663,11 +1663,11 @@ void ActionManager::importCalendar(const QUrl &url)
     }
 
     const QString questionText = xi18nc("@info",
-                                        "<p>Would you like to merge this calendar item into an existing calendar "
-                                        "or use it to create a brand new calendar?</p>"
-                                        "<p>If you select merge, then you will be given the opportunity to select "
-                                        "the destination calendar.</p>"
-                                        "<p>If you select add, then a new calendar will be created for you automatically.</p>");
+                                        "<para>Would you like to merge this calendar item into an existing calendar "
+                                        "or use it to create a brand new calendar?</para>"
+                                        "<para>If you select merge, then you will be given the opportunity to select "
+                                        "the destination calendar.</para>"
+                                        "<para>If you select add, then a new calendar will be created for you automatically.</para>");
 
     const int answer = KMessageBox::questionTwoActionsCancel(dialogParent(),
                                                              questionText,
