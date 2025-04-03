@@ -14,14 +14,14 @@ msgstr ""
 "Project-Id-Version: korganizer\n"
 "Report-Msgid-Bugs-To: https://bugs.kde.org\n"
 "POT-Creation-Date: 2025-03-21 02:39+0000\n"
-"PO-Revision-Date: 2025-01-03 09:57+0100\n"
+"PO-Revision-Date: 2025-04-02 16:25+0200\n"
 "Last-Translator: Iñigo Salvador Azurmendi <xalba@ni.eus>\n"
 "Language-Team: Basque <kde-i18n-eu@kde.org>\n"
 "Language: eu\n"
 "MIME-Version: 1.0\n"
 "Content-Type: text/plain; charset=UTF-8\n"
 "Content-Transfer-Encoding: 8bit\n"
-"X-Generator: Lokalize 24.12.0\n"
+"X-Generator: Lokalize 24.12.3\n"
 "Plural-Forms: nplurals=2; plural=(n != 1);\n"
 
 #, kde-format
@@ -433,7 +433,7 @@ msgstr ""
 #, kde-format
 msgctxt "@action"
 msgid "Archive O&ld Incidences…"
-msgstr "Artxibatu intzidentzia &zaharrak..."
+msgstr "Artxibatu gertakizun &zaharrak..."
 
 #: actionmanager.cpp:316
 #, kde-format
@@ -729,13 +729,13 @@ msgstr "&Iragazkia"
 #, kde-format
 msgctxt "@info:status"
 msgid "Filter incidences"
-msgstr "Iragazi intzidentziak"
+msgstr "Iragazi gertakizun"
 
 #: actionmanager.cpp:476
 #, kde-format
 msgctxt "@info:tooltip"
 msgid "Filter incidences from the calendar"
-msgstr "Iragazi egutegiko intzidentziak"
+msgstr "Iragazi egutegiko gertakizunak"
 
 #: actionmanager.cpp:478
 #, kde-format
@@ -1126,8 +1126,8 @@ msgstr "&Konfiguratu KOrganizer..."
 #, kde-format
 msgid "1 incidence was imported successfully."
 msgid_plural "%1 incidences were imported successfully."
-msgstr[0] "Intzidentzia bat ondo inportatu da."
-msgstr[1] "%1 intzidentzia ondo inportatu dira."
+msgstr[0] "Gertakizun 1 ondo inportatu da."
+msgstr[1] "%1 gertakizun ondo inportatu dira."
 
 #: actionmanager.cpp:848
 #, kde-format
@@ -1388,6 +1388,10 @@ msgid ""
 "removed from its remote resource.</note></para>The <filename>%1</filename> "
 "calendar can be added again at any time."
 msgstr ""
+"<filename>%1</filename> egutegia benetan ezabatu nahi duzu? "
+"<para><note>Egutegiko datuak ez dira ezabatuko, eta egutegia ez da bere "
+"urruneko baliabidetik kenduko ere.</note></para><filename>%1</filename> "
+"egutegia edozein unetan berriz gehitu daiteke."
 
 #: akonadicollectionview.cpp:759
 #, kde-kuit-format
@@ -1397,6 +1401,9 @@ msgid ""
 "<para><warning>This cannot be undone.  Please consider carefully before "
 "pressing the %2 button.</warning></para>"
 msgstr ""
+"<filename>%1</filename> egutegia benetan ezabatu nahi duzu? "
+"<para><warning>Hau ezin da desegin. Mesedez, %2 botoia sakatu aurretik "
+"arretaz hausnartu.</warning></para>"
 
 #: akonadicollectionview.cpp:767
 #, kde-format
@@ -1801,9 +1808,9 @@ msgid ""
 "You created an incidence in a calendar that is currently filtered out.\n"
 "On the left sidebar, enable it in the calendar manager to see the incidence."
 msgstr ""
-"Intzidentzia bat sortu zenuen une honetan iragazkitik kanpo dagoen egutegi "
+"Gertakizun bat sortu zenuen une honetan iragazkiak kanporatzen duen egutegi "
 "batean.\n"
-"Ezkerreko alboko-barran, egutegi kudeatzailean gaitu ezazu intzidentzia "
+"Ezkerreko alboko-barran, egutegi kudeatzailean gaitu ezazu gertakizuna "
 "ikusteko."
 
 #: calendarview.cpp:2813
@@ -1813,7 +1820,7 @@ msgid ""
 "You can enable it through the calendar manager (Settings->Sidebar->Show "
 "Calendar Manager)"
 msgstr ""
-"Intzidentzia bat sortu zenuen une honetan iragazkitik kanpo dagoen egutegi "
+"Gertakizun bat sortu zenuen une honetan iragazkiak kanporatzen duen egutegi "
 "batean.\n"
 "Egutegi kudeatzailearen bidez gaitu dezakezu (Ezarpenak->Alboko-barra-"
 ">Erakutsi egutegi kudeatzailea)"
@@ -2107,15 +2114,15 @@ msgstr[1] "%1 bat-etortze"
 #: koapp.cpp:63
 #, kde-format
 msgid "Failed to retrieve incidence from Akonadi"
-msgstr "«Akonadi»tik intzidentzia eskuratzea huts egin du."
+msgstr "Akonadi-tik gertakizuna eskuratzea huts egin du"
 
 #: koapp.cpp:68
 #, kde-format
 msgid ""
 "Failed to retrieve incidence from Akonadi: requested incidence doesn't exist."
 msgstr ""
-"«Akonadi»tik intzidentzia eskuratzea huts egin du: eskatutako intzidentzia "
-"ez da existitzen."
+"Akonadi-tik gertakizuna eskuratzea huts egin du: eskatutako gertakizuna ez "
+"da existitzen."
 
 #: kocorehelper.cpp:28
 #, kde-format
@@ -3238,7 +3245,7 @@ msgstr "Bateratu zehaztutako fitxategiak aurrez dagoen egutegi batean"
 #, kde-format
 msgctxt "@info:shell"
 msgid "Display the specified incidence (by URL)"
-msgstr "Erakutsi zehaztutako intzidentzia (URLaren arabera)"
+msgstr "Erakutsi zehaztutako gertakizuna (URLaren arabera)"
 
 #: korganizer_options.h:25
 #, kde-format
@@ -3409,13 +3416,13 @@ msgstr "Kokapena"
 #, kde-format
 msgctxt "@option:check"
 msgid "Show at the top of the agenda views"
-msgstr "Erakutsi agenda ikuspegien goiko aldean"
+msgstr "Erakutsi agenda-ikuspegien goiko aldean"
 
 #: prefs/koprefsdialogplugins.cpp:89
 #, kde-format
 msgctxt "@option:check"
 msgid "Show at the bottom of the agenda views"
-msgstr "Erakutsi agenda ikuspegien beheko aldean"
+msgstr "Erakutsi agenda-ikuspegien beheko aldean"
 
 #: prefs/koprefsdialogplugins.cpp:122
 #, kde-format
@@ -4022,7 +4029,7 @@ msgstr "Azaldu zereginak agenda ikuspegian"
 #: settings/korganizer.kcfg:148
 #, kde-format
 msgid "Show current-time (Marcus Bains) line"
-msgstr "Erakutsi uneko orduaren («Marcus Bains») lerroa"
+msgstr "Erakutsi uneko orduaren (Marcus Bains) lerroa"
 
 #. i18n: ectx: whatsthis, entry (MarcusBainsEnabled), group (Agenda View)
 #: settings/korganizer.kcfg:149
@@ -4031,8 +4038,8 @@ msgid ""
 "Check this box to display a line in the day or week view indicating the "
 "current-time line (Marcus Bains line)."
 msgstr ""
-"Markatu lauki hori, eguneko edo asteko ikuspegian uneko denbora-lerroa "
-"(«Marcus Bains» lerroa) adierazten duen lerro bat azaltzeko."
+"Markatu lauki hori, eguneko edo asteko ikuspegian, uneko orduarenlerroa "
+"(Marcus Bains lerroa) adierazten duen lerro bat azaltzeko."
 
 #. i18n: ectx: tooltip, entry (MarcusBainsEnabled), group (Agenda View)
 #: settings/korganizer.kcfg:150
@@ -4042,28 +4049,28 @@ msgstr "Azaldu uneko orduaren adierazlea"
 
 #. i18n: ectx: label, entry (MarcusBainsShowSeconds), group (Agenda View)
 #: settings/korganizer.kcfg:155
-#, fuzzy, kde-format
-#| msgid "Show seconds on the current-time (Marcus Bains) line"
+#, kde-format
 msgid "Show seconds and timezone on the current-time (Marcus Bains) line"
-msgstr "Erakutsi segundoak uneko ordu («Marcus Bains») lerroan"
+msgstr ""
+"Erakutsi segundoak eta ordu-eremua uneko orduaren (Marcus Bains) lerroan"
 
 #. i18n: ectx: whatsthis, entry (MarcusBainsShowSeconds), group (Agenda View)
 #: settings/korganizer.kcfg:156
-#, fuzzy, kde-format
-#| msgid "Check this box if you want to show seconds on the current-time line."
+#, kde-format
 msgid ""
 "Check this box if you want to show seconds on the current-time (Marcus "
 "Bains) line. Depending on your locale, the timezone will also be displayed."
 msgstr ""
-"Hautatu aukera hori uneko-ordu lerroan segundoak erakustea nahi baduzu."
+"Markatu koadro hau uneko orduaren (Marcus Bains) lerroan segundoak erakustea "
+"nahi baduzu. Zure toki-ezarpenen arabera, ordu-eremua ere azalduko da."
 
 #. i18n: ectx: tooltip, entry (MarcusBainsShowSeconds), group (Agenda View)
 #: settings/korganizer.kcfg:157
-#, fuzzy, kde-format
-#| msgid "Display seconds with the current-time indicator"
+#, kde-format
 msgid ""
 "Display seconds (possibly with timezone) with the current-time indicator"
-msgstr "Azaldu segundoak uneko-ordu adierazlearekin"
+msgstr ""
+"Azaldu segundoak (agian ordu-eremuarekin) uneko orduaren adierazlearekin"
 
 #. i18n: ectx: label, entry (SelectionStartsEditor), group (Agenda View)
 #: settings/korganizer.kcfg:162
@@ -4587,24 +4594,23 @@ msgstr "Hautatu hemen agenda ikuspegiaren atzeko planoaren kolorea."
 
 #. i18n: ectx: label, entry, group (Colors)
 #: settings/korganizer.kcfg:331
-#, fuzzy, kde-format
-#| msgid "Agenda view current-time line color"
+#, kde-format
 msgid "Agenda view current-time (Marcus Bains) line color"
-msgstr "Agenda ikuspegiko uneko ordu lerroaren kolorea"
+msgstr "Agenda ikuspegiko uneko orduaren (Marcus Bains) lerroaren kolorea"
 
 #. i18n: ectx: whatsthis, entry, group (Colors)
 #: settings/korganizer.kcfg:332
 #, kde-format
 msgid "Select a color to use for the current-time (Marcus Bains) line."
 msgstr ""
-"Aukeratu uneko ordu («Marcus Bains») lerroarekin erabili beharreko kolorea."
+"Aukeratu uneko orduaren (Marcus Bains) lerroarekin erabili beharreko kolorea."
 
 #. i18n: ectx: tooltip, entry, group (Colors)
 #: settings/korganizer.kcfg:333
 #, kde-format
 msgid "Use this color for the Agenda View current-time (Marcus Bains) line"
 msgstr ""
-"Erabili kolore hori Agenda ikuspegian uneko ordu («Marcus Bains») lerrorako"
+"Erabili kolore hori Agenda ikuspegian uneko orduaren (Marcus Bains) lerrorako"
 
 #. i18n: ectx: label, entry (ViewBgBusyColor), group (Colors)
 #: settings/korganizer.kcfg:338
@@ -4721,26 +4727,22 @@ msgstr ""
 
 #. i18n: ectx: label, entry, group (Fonts)
 #: settings/korganizer.kcfg:380
-#, fuzzy, kde-format
-#| msgid "Show current-time (Marcus Bains) line"
+#, kde-format
 msgid "Current-time (Marcus Bains) line"
-msgstr "Erakutsi uneko orduaren («Marcus Bains») lerroa"
+msgstr "Uneko orduaren (Marcus Bains) lerroa"
 
 #. i18n: ectx: whatsthis, entry, group (Fonts)
 #: settings/korganizer.kcfg:381
-#, fuzzy, kde-format
-#| msgid ""
-#| "Press this button to configure the current-time line font. This button "
-#| "will open the \"Select Font\" dialog, allowing you to choose the font for "
-#| "the current-time line in the agenda view."
+#, kde-format
 msgid ""
 "Press this button to configure the current-time (Marcus Bains) line font. "
 "This button will open the \"Select Font\" dialog, allowing you to choose the "
 "font for the current-time line in the agenda view."
 msgstr ""
-"Sakatu botoi hori uneko-denbora lerroaren letra-tipoa konfiguratzeko. Botoi "
-"horrek \"Hautatu letra-tipoa\" elkarrizketa-koadroa irekiko du, denbora-"
-"barrako orduaren letra-tipoa hautatzeko aukera emanez."
+"Sakatu botoi hori uneko orduaren (Marcus Bains) lerroaren letra-tipoa "
+"konfiguratzeko. Botoi horrek \"Hautatu letra-tipoa\" elkarrizketa-koadroa "
+"irekiko du, agenda-ikuspegian, uneko orduaren letra-tipoa hautatzeko aukera "
+"emanez."
 
 #. i18n: ectx: label, entry (DefaultTodoAttachMethod), group (Hidden Options)
 #: settings/korganizer.kcfg:405
@@ -5678,13 +5680,13 @@ msgstr "Sartu zehaztutako data-barruti&ko zeregin guztiak"
 
 #. i18n: ectx: property (toolTip), widget (QCheckBox, unfiltered)
 #: ui/searchdialog_base.ui:325
-#, fuzzy, kde-format
-#| msgctxt "@info:whatsthis"
-#| msgid "Press this button to remove the currently active filter."
+#, kde-format
 msgid ""
 "Uncheck this box to skip incidences matching the currently selected view "
 "filter"
-msgstr "Sakatu botoi hori aktibo dagoen iragazkia kentzeko."
+msgstr ""
+"Koadro honi marka kendu, unean hautatutako ikuspegi-iragazkiekin bat datozen "
+"gertakizunak saihesteko"
 
 #. i18n: ectx: property (whatsThis), widget (QCheckBox, unfiltered)
 #: ui/searchdialog_base.ui:328
@@ -5693,12 +5695,14 @@ msgid ""
 "When this box is checked all incidences will be considered in the search, "
 "even those that aren't displayed according the currently selected view filter"
 msgstr ""
+"Koadro hau markatuta dagoenean, bilaketan gertakizun guztiak kontuan hartuko "
+"dira, unean hautatutako iragazkien arabera azaltzen ez direnak barne"
 
 #. i18n: ectx: property (text), widget (QCheckBox, unfiltered)
 #: ui/searchdialog_base.ui:331
 #, kde-format
 msgid "Include all incidences matched by view filter"
-msgstr ""
+msgstr "Sartu ikuspegi-iragazkiarekin bat datozen gertakizun guztiak"
 
 #. i18n: ectx: property (text), widget (QPushButton, mDayBtn)
 #: views/collectionview/quickview.ui:34
