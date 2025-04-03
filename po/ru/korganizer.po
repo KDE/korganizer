@@ -12,13 +12,13 @@
 # Yuri Efremov <yur.arh@gmail.com>, 2013.
 # Alexander Lakhin <exclusion@gmail.com>, 2013.
 # SPDX-FileCopyrightText: 2019, 2020, 2021, 2023, 2024 Alexander Yavorsky <kekcuha@gmail.com>
-# SPDX-FileCopyrightText: 2021, 2022, 2024 Olesya Gerasimenko <translation-team@basealt.ru>
+# SPDX-FileCopyrightText: 2021, 2022, 2024, 2025 Olesya Gerasimenko <translation-team@basealt.ru>
 msgid ""
 msgstr ""
 "Project-Id-Version: korganizer\n"
 "Report-Msgid-Bugs-To: https://bugs.kde.org\n"
 "POT-Creation-Date: 2025-04-02 00:42+0000\n"
-"PO-Revision-Date: 2024-11-28 11:52+0300\n"
+"PO-Revision-Date: 2025-04-02 15:26+0300\n"
 "Last-Translator: Olesya Gerasimenko <translation-team@basealt.ru>\n"
 "Language-Team: Basealt Translation Team\n"
 "Language: ru\n"
@@ -56,13 +56,7 @@ msgid "A Personal Organizer"
 msgstr "Персональный органайзер"
 
 #: aboutdata.cpp:22
-#, fuzzy, kde-format
-#| msgid ""
-#| "Copyright © 1997–1999 Preston Brown\n"
-#| "Copyright © 2000–2004, 2007 Cornelius Schumacher\n"
-#| "Copyright © 2004–2005 Reinhold Kainhofer\n"
-#| "Copyright © 2006–2012 Allen Winter\n"
-#| "Copyright © 2012–2024 KOrganizer authors"
+#, kde-format
 msgid ""
 "Copyright © 1997–1999 Preston Brown\n"
 "Copyright © 2000–2004, 2007 Cornelius Schumacher\n"
@@ -74,7 +68,7 @@ msgstr ""
 "© Cornelius Schumacher, 2000–2004, 2007\n"
 "© Reinhold Kainhofer, 2004–2005\n"
 "© Allen Winter, 2006–2012\n"
-"© Авторы KOrganizer, 2012–2024"
+"© Авторы KOrganizer, 2012–2025"
 
 #: aboutdata.cpp:30 kontactplugin/specialdates/specialdates_plugin.cpp:42
 #, kde-format
@@ -337,9 +331,6 @@ msgstr "Fester Zigterman"
 
 #: actionmanager.cpp:131
 #, fuzzy, kde-format
-#| msgid ""
-#| "<qt>This will hide the menu bar completely. You can show it again by "
-#| "typing %1.</qt>"
 msgctxt "@info"
 msgid ""
 "This will hide the menu bar completely. You can show it again by typing %1."
@@ -1006,16 +997,12 @@ msgstr "Дата"
 
 #: actionmanager.cpp:607
 #, fuzzy, kde-format
-#| msgctxt "@info:tooltip"
-#| msgid "Scroll the view to today"
 msgctxt "@info:status"
 msgid "Scroll the view to user selected dates"
 msgstr "Перейти к сегодняшнему дню"
 
 #: actionmanager.cpp:608
 #, fuzzy, kde-format
-#| msgctxt "@info:tooltip"
-#| msgid "Scroll the view to today"
 msgctxt "@info:tooltip"
 msgid "Scroll the view to user selected dates"
 msgstr "Перейти к сегодняшнему дню"
@@ -1038,16 +1025,12 @@ msgstr "Настроить"
 
 #: actionmanager.cpp:616
 #, fuzzy, kde-format
-#| msgctxt "@info:tooltip"
-#| msgid "Configure the current view"
 msgctxt "@info:status"
 msgid "Configure the multi-calendar view"
 msgstr "Настройка текущего режима просмотра"
 
 #: actionmanager.cpp:617
 #, fuzzy, kde-format
-#| msgctxt "@info:tooltip"
-#| msgid "Configure the current view"
 msgctxt "@info:tooltip"
 msgid "Configure the multi-calendar view"
 msgstr "Настройка текущего режима просмотра"
@@ -1216,9 +1199,9 @@ msgid "Select Calendar File to Import"
 msgstr "Выбор файла календаря для импорта"
 
 #: actionmanager.cpp:988
-#, fuzzy, kde-format
+#, kde-format
 msgid "An error occurred: %1 (url: %2)"
-msgstr "Произошла ошибка: %1"
+msgstr "Произошла ошибка: %1 (URL-адрес: %2)"
 
 #: actionmanager.cpp:1006
 #, kde-format
@@ -1338,13 +1321,6 @@ msgstr "Ошибка в ссылке «%1»."
 
 #: actionmanager.cpp:1666
 #, fuzzy, kde-kuit-format
-#| msgctxt "@info"
-#| msgid ""
-#| "<p>Would you like to merge this calendar item into an existing calendar "
-#| "or use it to create a brand new calendar?</p><p>If you select merge, then "
-#| "you will be given the opportunity to select the destination calendar.</"
-#| "p><p>If you select add, then a new calendar will be created for you "
-#| "automatically.</p>"
 msgctxt "@info"
 msgid ""
 "<para>Would you like to merge this calendar item into an existing calendar "
@@ -1390,8 +1366,6 @@ msgstr "%1 (по умолчанию)"
 
 #: akonadicollectionview.cpp:408
 #, fuzzy, kde-format
-#| msgctxt "@title:tab calendar account settings"
-#| msgid "Calendars"
 msgctxt "@info:tooltip"
 msgid "Calendar search"
 msgstr "Календари"
@@ -1404,8 +1378,6 @@ msgstr ""
 
 #: akonadicollectionview.cpp:411
 #, fuzzy, kde-format
-#| msgctxt "@title:window"
-#| msgid "Search Calendar"
 msgctxt ""
 "@info/plain Displayed grayed-out inside the textbox, calendar to search"
 msgid "Search for calendar…"
@@ -1456,6 +1428,10 @@ msgid ""
 "removed from its remote resource.</note></para>The <filename>%1</filename> "
 "calendar can be added again at any time."
 msgstr ""
+"Удалить календарь <filename>%1</filename>?<para><note>Данные календаря не "
+"будут удалены, а сам календарь останется на соответствующем сетевом ресурсе."
+"</note></para>Календарь <filename>%1</filename> всегда можно будет добавить "
+"снова."
 
 #: akonadicollectionview.cpp:741
 #, kde-kuit-format
@@ -1465,6 +1441,8 @@ msgid ""
 "<para><warning>This cannot be undone.  Please consider carefully before "
 "pressing the %2 button.</warning></para>"
 msgstr ""
+"Удалить календарь <filename>%1</filename>?<para><warning>Учтите, что это "
+"действие необратимо, перед нажатием кнопки %2.</warning></para>"
 
 #: akonadicollectionview.cpp:749
 #, kde-format
@@ -1483,9 +1461,6 @@ msgstr ""
 
 #: calendarview.cpp:255
 #, fuzzy, kde-format
-#| msgid ""
-#| "View the details of events, journal entries or to-dos selected in "
-#| "KOrganizer's main view here."
 msgctxt "@info:whatsthis"
 msgid ""
 "View the details of events, journal entries or to-dos selected in "
@@ -3576,7 +3551,6 @@ msgstr "Выберите регионы для учёта праздников"
 
 #: prefs/koprefsdialogtime.cpp:111
 #, fuzzy, kde-format
-#| msgid "Schedule"
 msgctxt "@title:group"
 msgid "Weekly Schedule"
 msgstr "Расписание"
@@ -3892,9 +3866,6 @@ msgstr ""
 #. i18n: ectx: whatsthis, entry (WorkingHoursStart), group (Time &amp; Date)
 #: settings/korganizer.kcfg:43
 #, fuzzy, kde-format
-#| msgid ""
-#| "Enter the start time for the working hours here. The working hours will "
-#| "be marked with color by KOrganizer."
 msgid ""
 "Enter the start time for your daily schedule here. Your daily schedule hours "
 "will be marked with a separate color."
@@ -3916,9 +3887,6 @@ msgstr ""
 #. i18n: ectx: whatsthis, entry (WorkingHoursEnd), group (Time &amp; Date)
 #: settings/korganizer.kcfg:49
 #, fuzzy, kde-format
-#| msgid ""
-#| "Enter the ending time for the working hours here. The working hours will "
-#| "be marked with color by KOrganizer."
 msgid ""
 "Enter the ending time for your daily schedule here. Your daily schedule "
 "hours will be marked with a separate color."
@@ -4143,7 +4111,7 @@ msgstr "Отображать задачи в расписании"
 #: settings/korganizer.kcfg:125
 #, kde-format
 msgid "Show current-time (Marcus Bains) line"
-msgstr "Показать текущее время"
+msgstr "Показывать текущее время (Marcus Bains)"
 
 #. i18n: ectx: whatsthis, entry (MarcusBainsEnabled), group (Agenda View)
 #: settings/korganizer.kcfg:126
@@ -4153,7 +4121,7 @@ msgid ""
 "current-time line (Marcus Bains line)."
 msgstr ""
 "При просмотре дня или недели показывать линию, отображающую текущее время "
-"(Marcus Bains line)."
+"(Marcus Bains)."
 
 #. i18n: ectx: tooltip, entry (MarcusBainsEnabled), group (Agenda View)
 #: settings/korganizer.kcfg:127
@@ -4163,27 +4131,28 @@ msgstr "Отображать индикатор текущего времени"
 
 #. i18n: ectx: label, entry (MarcusBainsShowSeconds), group (Agenda View)
 #: settings/korganizer.kcfg:131
-#, fuzzy, kde-format
-#| msgid "Show seconds on the current-time (Marcus Bains) line"
+#, kde-format
 msgid "Show seconds and timezone on the current-time (Marcus Bains) line"
-msgstr "Показывать секунды на линии текущего времени (Marcus Bains)"
+msgstr ""
+"Показывать секунды и часовой пояс на линии текущего времени (Marcus Bains)"
 
 #. i18n: ectx: whatsthis, entry (MarcusBainsShowSeconds), group (Agenda View)
 #: settings/korganizer.kcfg:132
-#, fuzzy, kde-format
-#| msgid "Check this box if you want to show seconds on the current-time line."
+#, kde-format
 msgid ""
 "Check this box if you want to show seconds on the current-time (Marcus "
 "Bains) line. Depending on your locale, the timezone will also be displayed."
-msgstr "Показывать секунды на линии текущего времени."
+msgstr ""
+"Показывать секунды на линии текущего времени (Marcus Bains). Также будет "
+"показан часовой пояс (зависит от локали)."
 
 #. i18n: ectx: tooltip, entry (MarcusBainsShowSeconds), group (Agenda View)
 #: settings/korganizer.kcfg:133
-#, fuzzy, kde-format
-#| msgid "Display seconds with the current-time indicator"
+#, kde-format
 msgid ""
 "Display seconds (possibly with timezone) with the current-time indicator"
-msgstr "Показывать секунды на индикаторе текущего времени"
+msgstr ""
+"Показывать секунды (и, возможно, часовой пояс) на индикаторе текущего времени"
 
 #. i18n: ectx: label, entry (SelectionStartsEditor), group (Agenda View)
 #: settings/korganizer.kcfg:137
@@ -4619,8 +4588,8 @@ msgid ""
 "Check this box if you want to see all your to-dos in a flat list instead of "
 "being arranged in a hierarchical tree."
 msgstr ""
-"Включите этот параметр, если следует показывать все задачи в виде плоского "
-"списка, а не в виде иерархического дерева."
+"Показывать все задачи в виде плоского списка, а не в виде иерархического "
+"дерева."
 
 #. i18n: ectx: label, entry, group (Todo View)
 #: settings/korganizer.kcfg:274
@@ -4674,10 +4643,9 @@ msgstr "Цвет фона расписания."
 
 #. i18n: ectx: label, entry, group (Colors)
 #: settings/korganizer.kcfg:292
-#, fuzzy, kde-format
-#| msgid "Agenda view current-time line color"
+#, kde-format
 msgid "Agenda view current-time (Marcus Bains) line color"
-msgstr "Отметка текущего времени в дневном расписании"
+msgstr "Отметка текущего времени (Marcus Bains) в расписании"
 
 #. i18n: ectx: whatsthis, entry, group (Colors)
 #: settings/korganizer.kcfg:293
@@ -4803,25 +4771,20 @@ msgstr "Нажмите эту кнопку для выбора шрифта на
 
 #. i18n: ectx: label, entry, group (Fonts)
 #: settings/korganizer.kcfg:333
-#, fuzzy, kde-format
-#| msgid "Show current-time (Marcus Bains) line"
+#, kde-format
 msgid "Current-time (Marcus Bains) line"
-msgstr "Показать текущее время"
+msgstr "Текущее время (Marcus Bains)"
 
 #. i18n: ectx: whatsthis, entry, group (Fonts)
 #: settings/korganizer.kcfg:334
-#, fuzzy, kde-format
-#| msgid ""
-#| "Press this button to configure the current-time line font. This button "
-#| "will open the \"Select Font\" dialog, allowing you to choose the font for "
-#| "the current-time line in the agenda view."
+#, kde-format
 msgid ""
 "Press this button to configure the current-time (Marcus Bains) line font. "
 "This button will open the \"Select Font\" dialog, allowing you to choose the "
 "font for the current-time line in the agenda view."
 msgstr ""
-"Нажмите эту кнопку, чтобы выбрать шрифт для показа текущего времени в "
-"расписании."
+"Нажмите эту кнопку, чтобы выбрать шрифт для показа текущего времени (Marcus "
+"Bains) в расписании."
 
 #. i18n: ectx: label, entry (DefaultTodoAttachMethod), group (Hidden Options)
 #: settings/korganizer.kcfg:353
@@ -5266,7 +5229,7 @@ msgid ""
 "For security reasons, it is not recommended to store your password in the "
 "configuration file."
 msgstr ""
-"Сохранить пароль для публикации информации о занятом времени в файле "
+"Сохраните пароль для публикации информации о занятом времени в файле "
 "настройки KOrganizer, и его не придётся вводить каждый раз.\n"
 "По соображениям безопасности не рекомендуется хранить пароль в файле "
 "настройки программы."
@@ -5746,13 +5709,12 @@ msgstr "Включить все &задачи, находящиеся в ука�
 
 #. i18n: ectx: property (toolTip), widget (QCheckBox, unfiltered)
 #: ui/searchdialog_base.ui:325
-#, fuzzy, kde-format
-#| msgctxt "@info:whatsthis"
-#| msgid "Press this button to remove the currently active filter."
+#, kde-format
 msgid ""
 "Uncheck this box to skip incidences matching the currently selected view "
 "filter"
-msgstr "Нажмите эту кнопку для удаления выбранного фильтра."
+msgstr ""
+"Снимите этот флажок для пропуска событий, соответствующих текущему фильтру"
 
 #. i18n: ectx: property (whatsThis), widget (QCheckBox, unfiltered)
 #: ui/searchdialog_base.ui:328
@@ -5761,12 +5723,14 @@ msgid ""
 "When this box is checked all incidences will be considered in the search, "
 "even those that aren't displayed according the currently selected view filter"
 msgstr ""
+"Если этот флажок установлен, в поиске будут учитываться все события, даже "
+"те, которые не отображаются из-за текущего фильтра"
 
 #. i18n: ectx: property (text), widget (QCheckBox, unfiltered)
 #: ui/searchdialog_base.ui:331
 #, kde-format
 msgid "Include all incidences matched by view filter"
-msgstr ""
+msgstr "Включать все события, соответствующие фильтру"
 
 #. i18n: ectx: property (text), widget (QPushButton, mDayBtn)
 #: views/collectionview/quickview.ui:34
@@ -5904,7 +5868,6 @@ msgstr "Напоминания"
 
 #: widgets/kitemiconcheckcombo.cpp:21
 #, fuzzy, kde-format
-#| msgid "Read Only"
 msgctxt "the incidence is read-only"
 msgid "Read Only"
 msgstr "Только для чтения"

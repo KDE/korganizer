@@ -11,14 +11,14 @@ msgstr ""
 "Project-Id-Version: korganizer\n"
 "Report-Msgid-Bugs-To: https://bugs.kde.org\n"
 "POT-Creation-Date: 2025-04-02 00:42+0000\n"
-"PO-Revision-Date: 2025-02-16 11:50+0100\n"
+"PO-Revision-Date: 2025-04-02 21:11+0200\n"
 "Last-Translator: Stefan Asserhäll <stefan.asserhall@gmail.com>\n"
 "Language-Team: Swedish <kde-i18n-doc@kde.org>\n"
 "Language: sv\n"
 "MIME-Version: 1.0\n"
 "Content-Type: text/plain; charset=UTF-8\n"
 "Content-Transfer-Encoding: 8bit\n"
-"X-Generator: Lokalize 24.12.0\n"
+"X-Generator: Lokalize 24.12.3\n"
 "Plural-Forms: nplurals=2; plural=n != 1;\n"
 
 #, kde-format
@@ -319,16 +319,13 @@ msgid "Fester Zigterman"
 msgstr "Fester Zigterman"
 
 #: actionmanager.cpp:131
-#, fuzzy, kde-format
-#| msgid ""
-#| "<qt>This will hide the menu bar completely. You can show it again by "
-#| "typing %1.</qt>"
+#, kde-format
 msgctxt "@info"
 msgid ""
 "This will hide the menu bar completely. You can show it again by typing %1."
 msgstr ""
-"<qt>Det här döljer menyraden fullständigt. Du kan visa den igen genom att "
-"skriva %1.</qt>"
+"Det här döljer menyraden fullständigt. Du kan visa den igen genom att skriva "
+"%1."
 
 #: actionmanager.cpp:134
 #, kde-format
@@ -965,12 +962,10 @@ msgid "Starts a dialog that allows you to create a new Journal entry."
 msgstr "En dialogrutan visas där du kan skapa en ny journalanteckning."
 
 #: actionmanager.cpp:605
-#, fuzzy, kde-format
-#| msgctxt "@action:button"
-#| msgid "Pick Date"
+#, kde-format
 msgctxt "@action Jump to date"
 msgid "&Pick a Date"
-msgstr "Välj datum"
+msgstr "&Välj ett datum"
 
 #: actionmanager.cpp:606
 #, kde-format
@@ -978,26 +973,22 @@ msgid "Date"
 msgstr "Datum"
 
 #: actionmanager.cpp:607
-#, fuzzy, kde-format
-#| msgctxt "@info:tooltip"
-#| msgid "Scroll the view to today"
+#, kde-format
 msgctxt "@info:status"
 msgid "Scroll the view to user selected dates"
-msgstr "Gå till i dag i vyn"
+msgstr ""
 
 #: actionmanager.cpp:608
-#, fuzzy, kde-format
-#| msgctxt "@info:tooltip"
-#| msgid "Scroll the view to today"
+#, kde-format
 msgctxt "@info:tooltip"
 msgid "Scroll the view to user selected dates"
-msgstr "Gå till i dag i vyn"
+msgstr ""
 
 #: actionmanager.cpp:609
 #, kde-format
 msgctxt "@info:whatsthis"
 msgid "Opens a date selection dialog for quickly navigating the view."
-msgstr ""
+msgstr "Visar en fildialogruta för att snabbt navigera i vyn."
 
 #: actionmanager.cpp:614
 #, kde-format
@@ -1010,20 +1001,16 @@ msgid "Configure"
 msgstr "Anpassa"
 
 #: actionmanager.cpp:616
-#, fuzzy, kde-format
-#| msgctxt "@info:tooltip"
-#| msgid "Configure the current view"
+#, kde-format
 msgctxt "@info:status"
 msgid "Configure the multi-calendar view"
-msgstr "Anpassa den aktuella vyn"
+msgstr ""
 
 #: actionmanager.cpp:617
-#, fuzzy, kde-format
-#| msgctxt "@info:tooltip"
-#| msgid "Configure the current view"
+#, kde-format
 msgctxt "@info:tooltip"
 msgid "Configure the multi-calendar view"
-msgstr "Anpassa den aktuella vyn"
+msgstr ""
 
 #: actionmanager.cpp:619
 #, kde-format
@@ -1303,14 +1290,7 @@ msgid "URL '%1' is invalid."
 msgstr "Webbadressen \"%1\" är ogiltig."
 
 #: actionmanager.cpp:1666
-#, fuzzy, kde-kuit-format
-#| msgctxt "@info"
-#| msgid ""
-#| "<p>Would you like to merge this calendar item into an existing calendar "
-#| "or use it to create a brand new calendar?</p><p>If you select merge, then "
-#| "you will be given the opportunity to select the destination calendar.</"
-#| "p><p>If you select add, then a new calendar will be created for you "
-#| "automatically.</p>"
+#, kde-kuit-format
 msgctxt "@info"
 msgid ""
 "<para>Would you like to merge this calendar item into an existing calendar "
@@ -1319,10 +1299,10 @@ msgid ""
 "para><para>If you select add, then a new calendar will be created for you "
 "automatically.</para>"
 msgstr ""
-"<p>Vill du sammanfoga det här kalenderobjektet med en befintlig kalender "
-"eller skapa en helt ny kalender?</p><p>Om du väljer att sammanfoga, får du "
-"möjlighet att välja målkalendern.</p><p>Om du väljer att lägga till, skapas "
-"automatiskt en ny kalender åt dig.</p>"
+"<para>Vill du sammanfoga det här kalenderobjektet med en befintlig kalender "
+"eller skapa en helt ny kalender?</para><para>Om du väljer att sammanfoga, "
+"får du möjlighet att välja målkalendern.</para><para>Om du väljer att lägga "
+"till, skapas automatiskt en ny kalender åt dig.</para>"
 
 #: actionmanager.cpp:1674
 #, kde-format
@@ -1355,12 +1335,10 @@ msgid "%1 (Default)"
 msgstr "%1 (standard)"
 
 #: akonadicollectionview.cpp:408
-#, fuzzy, kde-format
-#| msgctxt "@title:tab calendar account settings"
-#| msgid "Calendars"
+#, kde-format
 msgctxt "@info:tooltip"
 msgid "Calendar search"
-msgstr "Kalendrar"
+msgstr "Kalendersökning"
 
 #: akonadicollectionview.cpp:409
 #, kde-format
@@ -1369,13 +1347,11 @@ msgid "Start typing to search for a calendar within the collection."
 msgstr ""
 
 #: akonadicollectionview.cpp:411
-#, fuzzy, kde-format
-#| msgctxt "@title:window"
-#| msgid "Search Calendar"
+#, kde-format
 msgctxt ""
 "@info/plain Displayed grayed-out inside the textbox, calendar to search"
 msgid "Search for calendar…"
-msgstr "Sök kalender"
+msgstr "Sök efter kalender…"
 
 #: akonadicollectionview.cpp:497 manageshowcollectionproperties.cpp:76
 #, kde-format
@@ -1422,6 +1398,10 @@ msgid ""
 "removed from its remote resource.</note></para>The <filename>%1</filename> "
 "calendar can be added again at any time."
 msgstr ""
+"Vill du verkligen ta bort kalendern <filnamn>%1 </filnamn>?"
+"<para><note>Kalenderdata tas inte bort, och kalendern tas inte heller bort "
+"från fjärresursen.</note></para>Kalendern <filename>%1</filename> kan läggas "
+"till när som helst igen."
 
 #: akonadicollectionview.cpp:741
 #, kde-kuit-format
@@ -1431,6 +1411,9 @@ msgid ""
 "<para><warning>This cannot be undone.  Please consider carefully before "
 "pressing the %2 button.</warning></para>"
 msgstr ""
+"Vill du verkligen ta bort kalendern <filename>%1</filename>?"
+"<para><warning>Det går inte att ångra. Överväg noggrant innan du trycker på "
+"knappen %2.</warning></para>"
 
 #: akonadicollectionview.cpp:749
 #, kde-format
@@ -1448,10 +1431,7 @@ msgstr ""
 "journalanteckning för att se dess detaljinformation här.</p>"
 
 #: calendarview.cpp:255
-#, fuzzy, kde-format
-#| msgid ""
-#| "View the details of events, journal entries or to-dos selected in "
-#| "KOrganizer's main view here."
+#, kde-format
 msgctxt "@info:whatsthis"
 msgid ""
 "View the details of events, journal entries or to-dos selected in "
@@ -3493,11 +3473,10 @@ msgid "Select Holiday Regions"
 msgstr "Välj helgområden"
 
 #: prefs/koprefsdialogtime.cpp:111
-#, fuzzy, kde-format
-#| msgid "Schedule"
+#, kde-format
 msgctxt "@title:group"
 msgid "Weekly Schedule"
-msgstr "Schema"
+msgstr "Veckoschema"
 
 #: prefs/koprefsdialogtime.cpp:126
 #, kde-format
@@ -3805,23 +3784,19 @@ msgstr "Tid då arbetsdagen börjar"
 
 #. i18n: ectx: tooltip, entry (WorkingHoursStart), group (Time &amp; Date)
 #: settings/korganizer.kcfg:42
-#, fuzzy, kde-format
-#| msgid "Sets the title of this journal."
+#, kde-format
 msgid "Set the time you typically start your day"
-msgstr "Anger titeln för den här journalen."
+msgstr "Ställ in den tid du vanligtvis startar dagen"
 
 #. i18n: ectx: whatsthis, entry (WorkingHoursStart), group (Time &amp; Date)
 #: settings/korganizer.kcfg:43
-#, fuzzy, kde-format
-#| msgid ""
-#| "Enter the start time for the working hours here. The working hours will "
-#| "be marked with color by KOrganizer."
+#, kde-format
 msgid ""
 "Enter the start time for your daily schedule here. Your daily schedule hours "
 "will be marked with a separate color."
 msgstr ""
-"Skriv in starttiden för arbetstimmar här. Arbetstiden markeras med färg av "
-"Korganizer."
+"Ange starttiden för ditt dagliga schema här. Dina dagliga schematimmar "
+"markeras med en separat färg."
 
 #. i18n: ectx: label, entry (WorkingHoursEnd), group (Time &amp; Date)
 #: settings/korganizer.kcfg:47
@@ -3831,23 +3806,19 @@ msgstr "Tid då arbetsdagen slutar"
 
 #. i18n: ectx: tooltip, entry (WorkingHoursEnd), group (Time &amp; Date)
 #: settings/korganizer.kcfg:48
-#, fuzzy, kde-format
-#| msgid "Sets the title of this journal."
+#, kde-format
 msgid "Set the time you typically end your day"
-msgstr "Anger titeln för den här journalen."
+msgstr "Ställ in den tid du vanligtvis avslutar dagen"
 
 #. i18n: ectx: whatsthis, entry (WorkingHoursEnd), group (Time &amp; Date)
 #: settings/korganizer.kcfg:49
-#, fuzzy, kde-format
-#| msgid ""
-#| "Enter the ending time for the working hours here. The working hours will "
-#| "be marked with color by KOrganizer."
+#, kde-format
 msgid ""
 "Enter the ending time for your daily schedule here. Your daily schedule "
 "hours will be marked with a separate color."
 msgstr ""
-"Skriv in sluttiden för arbetstimmar här. Arbetstiden markeras med färg av "
-"Korganizer."
+"Ange sluttiden för ditt dagliga schema här. Dina dagliga schematimmar "
+"markeras med en separat färg."
 
 #. i18n: ectx: label, entry (ColorMonthBusyDaysEnabled), group (Time &amp; Date)
 #. i18n: ectx: label, entry (ColorBusyDaysEnabled), group (Agenda View)
@@ -5692,14 +5663,13 @@ msgstr "Inkludera alla upp&gifter inom angivet datumintervall"
 
 #. i18n: ectx: property (toolTip), widget (QCheckBox, unfiltered)
 #: ui/searchdialog_base.ui:325
-#, fuzzy, kde-format
-#| msgctxt "@info:whatsthis"
-#| msgid "Press this button to remove the currently active filter."
+#, kde-format
 msgid ""
 "Uncheck this box to skip incidences matching the currently selected view "
 "filter"
 msgstr ""
-"Klicka på knappen för att ta bort filtret som för närvarande är aktivt."
+"Avmarkera rutan för att hoppa över förekomster som matchar vyfiltret som för "
+"närvarande är valt"
 
 #. i18n: ectx: property (whatsThis), widget (QCheckBox, unfiltered)
 #: ui/searchdialog_base.ui:328
@@ -5708,12 +5678,14 @@ msgid ""
 "When this box is checked all incidences will be considered in the search, "
 "even those that aren't displayed according the currently selected view filter"
 msgstr ""
+"När den här rutan är markerad övervägs alla förekomster i sökningen, även de "
+"som inte visas enligt vyfiltret som för närvarande är valt"
 
 #. i18n: ectx: property (text), widget (QCheckBox, unfiltered)
 #: ui/searchdialog_base.ui:331
 #, kde-format
 msgid "Include all incidences matched by view filter"
-msgstr ""
+msgstr "Inkludera alla förekomster som matchas av vyfilter"
 
 #. i18n: ectx: property (text), widget (QPushButton, mDayBtn)
 #: views/collectionview/quickview.ui:34
@@ -5851,8 +5823,7 @@ msgid "Alarm"
 msgstr "Alarm"
 
 #: widgets/kitemiconcheckcombo.cpp:21
-#, fuzzy, kde-format
-#| msgid "Read Only"
+#, kde-format
 msgctxt "the incidence is read-only"
 msgid "Read Only"
 msgstr "Skrivskyddad"

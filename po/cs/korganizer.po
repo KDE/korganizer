@@ -932,7 +932,7 @@ msgstr ""
 #: actionmanager.cpp:606
 #, kde-format
 msgid "Date"
-msgstr ""
+msgstr "Datum"
 
 #: actionmanager.cpp:607
 #, kde-format

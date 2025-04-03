@@ -1,7 +1,7 @@
 # translation of korganizer.po to Slovenian
 # Translation of korganizer.po to Slovenian
 # Copyright (C) 2001,2002, 2003, 2004, 2005, 2006 Free Software Foundation, Inc.
-# $Id: korganizer.po 1706323 2025-04-02 01:21:11Z scripty $
+# $Id: korganizer.po 1706394 2025-04-03 01:20:59Z scripty $
 # $Source$
 #
 # Roman Maurer <roman.maurer@hermes.si>, 2001.
@@ -15,7 +15,7 @@ msgstr ""
 "Project-Id-Version: korganizer\n"
 "Report-Msgid-Bugs-To: https://bugs.kde.org\n"
 "POT-Creation-Date: 2025-04-02 00:42+0000\n"
-"PO-Revision-Date: 2025-03-23 07:17+0100\n"
+"PO-Revision-Date: 2025-04-02 06:30+0200\n"
 "Last-Translator: Matjaž Jeran <matjaz.jeran@amis.net>\n"
 "Language-Team: Slovenian <lugos-slo@lugos.si>\n"
 "Language: sl\n"
@@ -1310,14 +1310,7 @@ msgid "URL '%1' is invalid."
 msgstr "URL »%1« ni veljaven."
 
 #: actionmanager.cpp:1666
-#, fuzzy, kde-kuit-format
-#| msgctxt "@info"
-#| msgid ""
-#| "<p>Would you like to merge this calendar item into an existing calendar "
-#| "or use it to create a brand new calendar?</p><p>If you select merge, then "
-#| "you will be given the opportunity to select the destination calendar.</"
-#| "p><p>If you select add, then a new calendar will be created for you "
-#| "automatically.</p>"
+#, kde-kuit-format
 msgctxt "@info"
 msgid ""
 "<para>Would you like to merge this calendar item into an existing calendar "
@@ -1326,10 +1319,10 @@ msgid ""
 "para><para>If you select add, then a new calendar will be created for you "
 "automatically.</para>"
 msgstr ""
-"<p>Ali želite ta predmet koledarja združiti v obstoječ koledar ali ga "
-"uporabiti za ustvaritev novega koledarja?</p><p>Če izberete združevanje, "
-"boste lahko izbrali ciljni koledar,</p><p>Če izberete dodajanje, bo "
-"samodejno ustvarjen nov koledar.</p>"
+"<para>Ali želite ta element koledarja združiti z obstoječim koledarjem ali "
+"ga uporabiti za ustvarjanje povsem novega koledarja?</para><para>Če izberete "
+"združi, boste imeli možnost izbrati ciljni koledar.</para><para>Če izberete "
+"dodaj, bo za vas samodejno ustvarjen nov koledar.</para>"
 
 #: actionmanager.cpp:1674
 #, kde-format
