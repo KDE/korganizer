@@ -134,7 +134,6 @@ void KOPrefsDialogPlugins::usrReadConfig()
         if (hasSettings) {
             auto but = new QToolButton(mTreeWidget);
             auto act = new QAction(but);
-            const QString decoration = plugin.pluginId();
             act->setData(QVariant::fromValue<PluginItem *>(item));
             but->setDefaultAction(act);
             but->setIcon(QIcon::fromTheme(QStringLiteral("configure")));

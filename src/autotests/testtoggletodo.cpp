@@ -87,7 +87,6 @@ private Q_SLOTS:
         // UTC time zone.
         const QDateTime day1{{2022, 10, 13}, {00, 00, 00}, QTimeZone("Asia/Tokyo")};
         const QDateTime day2 = day1.addDays(1);
-        const QDateTime day3 = day2.addDays(1);
 
         const KCalendarCore::Todo::Ptr todo{new KCalendarCore::Todo};
         todo->setDtStart(day1);
