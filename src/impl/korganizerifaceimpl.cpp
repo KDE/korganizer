@@ -43,7 +43,7 @@ bool KOrganizerIfaceImpl::saveAsURL(const QString &url)
     return mActionManager->saveAsURL(url);
 }
 
-QString KOrganizerIfaceImpl::getCurrentURLasString() const
+QString KOrganizerIfaceImpl::getCurrentURLasString()
 {
     return mActionManager->getCurrentURLasString();
 }

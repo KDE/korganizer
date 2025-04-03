@@ -531,7 +531,7 @@ void ReparentingModel::onSourceRowsMoved(const QModelIndex & /* sourceParent */,
 
 void ReparentingModel::onSourceLayoutAboutToBeChanged()
 {
-    layoutAboutToBeChanged();
+    Q_EMIT layoutAboutToBeChanged();
     // Q_FOREACH(const QModelIndex &proxyPersistentIndex, persistentIndexList()) {
     //     Q_ASSERT(proxyPersistentIndex.isValid());
     //     const QPersistentModelIndex srcPersistentIndex = mapToSource(proxyPersistentIndex);

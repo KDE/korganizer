@@ -69,7 +69,8 @@ int KOrganizerApp::activate(const QStringList &args, const QString &workingDir)
                 return;
             }
             KOrg::MainWindow *korg = ActionManager::findInstance(QUrl());
-            korg->actionManager()->view()->showIncidence(fetchJob->items().first());
+            auto items = fetchJob->items();
+            korg->actionManager()->view()->showIncidence(items.first());
         });
         return 0;
     }

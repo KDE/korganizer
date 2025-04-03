@@ -293,8 +293,6 @@ void KOViewManager::connectView(KOrg::BaseView *view)
     connect(view, &BaseView::startMultiModify, mMainView, &CalendarView::startMultiModify);
     connect(view, &BaseView::endMultiModify, mMainView, &CalendarView::endMultiModify);
 
-    connect(mMainView, &CalendarView::newIncidenceChanger, view, &BaseView::setIncidenceChanger);
-
     connect(mMainView, &CalendarView::calendarAdded, view, &BaseView::calendarAdded);
     connect(mMainView, &CalendarView::calendarRemoved, view, &BaseView::calendarRemoved);
 

@@ -49,8 +49,5 @@ public:
 
 public Q_SLOTS:
     virtual void updateView() = 0;
-
-Q_SIGNALS:
-    virtual void newIncidenceChanger(Akonadi::IncidenceChanger *) = 0;
 };
 }

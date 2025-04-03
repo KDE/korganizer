@@ -27,7 +27,7 @@ public Q_SLOTS:
     [[nodiscard]] bool mergeURL(const QString &url);
     [[nodiscard]] bool saveURL();
     [[nodiscard]] bool saveAsURL(const QString &url);
-    [[nodiscard]] QString getCurrentURLasString() const;
+    [[nodiscard]] QString getCurrentURLasString();
 
     [[nodiscard]] bool editIncidence(const QString &akonadiUrl);
     /** @reimp from KOrganizerIface::deleteIncidence()

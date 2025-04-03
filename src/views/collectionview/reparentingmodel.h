@@ -117,7 +117,7 @@ private Q_SLOTS:
     void onSourceLayoutChanged();
     void onSourceModelAboutToBeReset();
     void onSourceModelReset();
-    void doAddNode(const Node::Ptr &node);
+    void doAddNode(const ReparentingModel::Node::Ptr &node);
 
 private:
     void rebuildFromSource(Node *parentNode, const QModelIndex &idx, const QModelIndexList &skip = QModelIndexList());

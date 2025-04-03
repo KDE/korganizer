@@ -527,9 +527,10 @@ void CalendarView::readFilterSettings(KConfig *config)
 
 void CalendarView::writeFilterSettings(KConfig *config)
 {
+    static QRegularExpression re(QStringLiteral("^Filter_.*"));
     QStringList filterList;
 
-    const QStringList oldFilterList = config->groupList().filter(QRegularExpression(QStringLiteral("^Filter_.*")));
+    const QStringList oldFilterList = config->groupList().filter(re);
     // Delete Old Group
     for (const QString &conf : oldFilterList) {
         KConfigGroup group = config->group(conf);
