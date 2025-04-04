@@ -45,7 +45,7 @@ public:
     QColor resourceColor(const QString &);
     QColor resourceColorKnown(const QString &cal) const;
 
-    QStringList timeScaleTimezones() const;
+    QStringList &timeScaleTimezones();
     void setTimeScaleTimezones(const QStringList &list);
 
 private:

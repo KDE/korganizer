@@ -24,6 +24,11 @@ public:
     }
 
     KOPrefs *const prefs;
+
+private:
+    // disable copy ctor
+    KOPrefsPrivate(const KOPrefsPrivate &) = delete;
+    KOPrefsPrivate &operator=(const KOPrefsPrivate &) = delete;
 };
 
 Q_GLOBAL_STATIC(KOPrefsPrivate, sInstance)
@@ -95,7 +100,7 @@ QColor KOPrefs::resourceColorKnown(const QString &cal) const
     return mEventViewsPrefs->resourceColorKnown(cal);
 }
 
-QStringList KOPrefs::timeScaleTimezones() const
+QStringList &KOPrefs::timeScaleTimezones()
 {
     return mTimeScaleTimeZones;
 }

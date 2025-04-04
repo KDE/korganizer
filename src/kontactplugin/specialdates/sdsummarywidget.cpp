@@ -95,9 +95,9 @@ public:
 
 SDSummaryWidget::SDSummaryWidget(KontactInterface::Plugin *plugin, QWidget *parent)
     : KontactInterface::Summary(parent)
+    , mCalendar(CalendarSupport::calendarSingleton())
     , mPlugin(plugin)
 {
-    mCalendar = CalendarSupport::calendarSingleton();
     // Create the Summary Layout
     auto mainLayout = new QVBoxLayout(this);
     mainLayout->setSpacing(3);

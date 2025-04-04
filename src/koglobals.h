@@ -45,7 +45,7 @@ public:
 
     /** return the HolidayRegion object or 0 if none has been defined
      */
-    [[nodiscard]] QList<KHolidays::HolidayRegion *> holidays() const;
+    [[nodiscard]] QList<KHolidays::HolidayRegion *> &holidays();
 
 protected:
     KOGlobals();

@@ -611,12 +611,11 @@ void AkonadiCollectionView::setCollectionSelectionProxyModel(KCheckableProxyMode
         return;
     }
 
-    m->selectionModel()->disconnect(this);
-
     mSelectionProxyModel = m;
     if (!mSelectionProxyModel) {
         return;
     }
+    m->selectionModel()->disconnect(this);
 
     new NewCalendarChecker(m);
     mBaseModel->setSourceModel(mSelectionProxyModel);

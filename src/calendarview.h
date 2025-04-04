@@ -116,7 +116,7 @@ public:
     void setCalendar(const Akonadi::ETMCalendar::Ptr &);
     Akonadi::ETMCalendar::Ptr calendar() const override;
 
-    QList<Akonadi::CollectionCalendar::Ptr> enabledCalendars() const;
+    QList<Akonadi::CollectionCalendar::Ptr> &enabledCalendars();
 
     Akonadi::CollectionCalendar::Ptr calendarForCollection(const Akonadi::Collection &collection) override;
 

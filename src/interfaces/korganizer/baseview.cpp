@@ -139,7 +139,7 @@ void BaseView::showConfigurationDialog(QWidget *)
 {
 }
 
-QByteArray BaseView::identifier() const
+QByteArray &BaseView::identifier()
 {
     return d->identifier;
 }

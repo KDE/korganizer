@@ -140,7 +140,7 @@ public:
 
     virtual void showConfigurationDialog(QWidget *parent);
 
-    QByteArray identifier() const;
+    QByteArray &identifier();
     virtual void setIdentifier(const QByteArray &identifier);
 
     /**

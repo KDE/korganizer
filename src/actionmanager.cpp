@@ -1278,7 +1278,7 @@ bool ActionManager::addIncidence(const QString &ical)
     return mCalendarView->addIncidence(ical);
 }
 
-QString ActionManager::localFileName() const
+QString &ActionManager::localFileName()
 {
     return mFile;
 }

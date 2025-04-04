@@ -193,7 +193,7 @@ public Q_SLOTS:
     void showDate(QDate date);
 
 public:
-    QString localFileName() const;
+    QString &localFileName();
 
     bool queryClose();
 

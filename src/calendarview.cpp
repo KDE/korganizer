@@ -306,7 +306,7 @@ Akonadi::ETMCalendar::Ptr CalendarView::calendar() const
     return mCalendar;
 }
 
-QList<Akonadi::CollectionCalendar::Ptr> CalendarView::enabledCalendars() const
+QList<Akonadi::CollectionCalendar::Ptr> &CalendarView::enabledCalendars()
 {
     return mEnabledCalendars;
 }
