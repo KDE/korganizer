@@ -17,8 +17,8 @@ msgid ""
 msgstr ""
 "Project-Id-Version: korganizer\n"
 "Report-Msgid-Bugs-To: https://bugs.kde.org\n"
-"POT-Creation-Date: 2025-04-02 00:42+0000\n"
-"PO-Revision-Date: 2025-03-23 03:00+0100\n"
+"POT-Creation-Date: 2025-04-04 00:42+0000\n"
+"PO-Revision-Date: 2025-04-02 12:06+0100\n"
 "Last-Translator: Eloy Cuadra <ecuadra@eloihr.net>\n"
 "Language-Team: Spanish <kde-l10n-es@kde.org>\n"
 "Language: es\n"
@@ -1313,14 +1313,7 @@ msgid "URL '%1' is invalid."
 msgstr "La URL «%1» no es válida."
 
 #: actionmanager.cpp:1666
-#, fuzzy, kde-kuit-format
-#| msgctxt "@info"
-#| msgid ""
-#| "<p>Would you like to merge this calendar item into an existing calendar "
-#| "or use it to create a brand new calendar?</p><p>If you select merge, then "
-#| "you will be given the opportunity to select the destination calendar.</"
-#| "p><p>If you select add, then a new calendar will be created for you "
-#| "automatically.</p>"
+#, kde-kuit-format
 msgctxt "@info"
 msgid ""
 "<para>Would you like to merge this calendar item into an existing calendar "
@@ -1329,11 +1322,11 @@ msgid ""
 "para><para>If you select add, then a new calendar will be created for you "
 "automatically.</para>"
 msgstr ""
-"<p>¿Le gustaría fusionar este elemento de calendario con un calendario "
-"existente o usarlo para crear un calendario completamente nuevo?</p><p>Si "
-"selecciona fusionar, se le dará la oportunidad de seleccionar el calendario "
-"destino.</p><p>Si selecciona añadir, se creará automáticamente un nuevo "
-"calendario.</p>"
+"<para>¿Le gustaría fusionar este elemento de calendario con un calendario "
+"existente o usarlo para crear un calendario completamente nuevo?</"
+"para><para>Si selecciona fusionar, se le dará la oportunidad de seleccionar "
+"el calendario destino.</para><para>Si selecciona añadir, se creará "
+"automáticamente un nuevo calendario.</para>"
 
 #: actionmanager.cpp:1674
 #, kde-format
@@ -3485,13 +3478,13 @@ msgctxt "@title:group"
 msgid "Calendar Decorations"
 msgstr "Decoraciones de calendario"
 
-#: prefs/koprefsdialogplugins.cpp:142
+#: prefs/koprefsdialogplugins.cpp:141
 #, kde-format
 msgctxt "@action"
 msgid "Configure"
 msgstr "Configurar"
 
-#: prefs/koprefsdialogplugins.cpp:202
+#: prefs/koprefsdialogplugins.cpp:201
 #, kde-format
 msgctxt "@info"
 msgid "Unable to configure this plugin"

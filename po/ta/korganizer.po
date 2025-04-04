@@ -17,7 +17,7 @@ msgid ""
 msgstr ""
 "Project-Id-Version: korganizer\n"
 "Report-Msgid-Bugs-To: https://bugs.kde.org\n"
-"POT-Creation-Date: 2025-04-02 00:42+0000\n"
+"POT-Creation-Date: 2025-04-04 00:42+0000\n"
 "PO-Revision-Date: 2025-03-16 14:48+0530\n"
 "Last-Translator: Kishore G <kishore96@gmail.com>\n"
 "Language-Team: Tamil <kde-i18n-doc@kde.org>\n"
@@ -3424,14 +3424,14 @@ msgctxt "@title:group"
 msgid "Calendar Decorations"
 msgstr "நாள்காட்டி"
 
-#: prefs/koprefsdialogplugins.cpp:142
+#: prefs/koprefsdialogplugins.cpp:141
 #, fuzzy, kde-format
 #| msgid "&Configure..."
 msgctxt "@action"
 msgid "Configure"
 msgstr "&வடிவமை..."
 
-#: prefs/koprefsdialogplugins.cpp:202
+#: prefs/koprefsdialogplugins.cpp:201
 #, fuzzy, kde-format
 #| msgid "Unable to configure this plugin"
 msgctxt "@info"

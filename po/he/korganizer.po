@@ -17,8 +17,8 @@ msgid ""
 msgstr ""
 "Project-Id-Version: korganizer\n"
 "Report-Msgid-Bugs-To: https://bugs.kde.org\n"
-"POT-Creation-Date: 2025-04-02 00:42+0000\n"
-"PO-Revision-Date: 2025-03-23 07:39+0200\n"
+"POT-Creation-Date: 2025-04-04 00:42+0000\n"
+"PO-Revision-Date: 2025-04-03 21:33+0300\n"
 "Last-Translator: Yaron Shahrabani <sh.yaron@gmail.com>\n"
 "Language-Team: צוות התרגום של KDE ישראל\n"
 "Language: he\n"
@@ -1290,14 +1290,7 @@ msgid "URL '%1' is invalid."
 msgstr "הכתובת ‚%1’ שגויה."
 
 #: actionmanager.cpp:1666
-#, fuzzy, kde-kuit-format
-#| msgctxt "@info"
-#| msgid ""
-#| "<p>Would you like to merge this calendar item into an existing calendar "
-#| "or use it to create a brand new calendar?</p><p>If you select merge, then "
-#| "you will be given the opportunity to select the destination calendar.</"
-#| "p><p>If you select add, then a new calendar will be created for you "
-#| "automatically.</p>"
+#, kde-kuit-format
 msgctxt "@info"
 msgid ""
 "<para>Would you like to merge this calendar item into an existing calendar "
@@ -1306,9 +1299,9 @@ msgid ""
 "para><para>If you select add, then a new calendar will be created for you "
 "automatically.</para>"
 msgstr ""
-"<p>למזג את פריט לוח השנה הזה ללוח שנה קיים או ליצור לוח שנה חדש? </p><p>לאחר "
-"בחירה במיזוג, תופיע אפשרות לבחור את יעד לוח השנה.</p><p>בחירה בהוספה תיצור "
-"עבורך לוח שנה חדש אוטומטית.</p>"
+"<para>למזג את פריט לוח השנה הזה ללוח שנה קיים או ליצור לוח שנהחדש? </"
+"para><para>לאחר בחירה במיזוג, תופיע אפשרות לבחור את יעד לוח השנה.</"
+"para><para>בחירה בהוספה תיצור עבורך לוח שנה חדש אוטומטית.</para>"
 
 #: actionmanager.cpp:1674
 #, kde-format
@@ -3419,13 +3412,13 @@ msgctxt "@title:group"
 msgid "Calendar Decorations"
 msgstr "עיטורי לוח שנה"
 
-#: prefs/koprefsdialogplugins.cpp:142
+#: prefs/koprefsdialogplugins.cpp:141
 #, kde-format
 msgctxt "@action"
 msgid "Configure"
 msgstr "הגדרה"
 
-#: prefs/koprefsdialogplugins.cpp:202
+#: prefs/koprefsdialogplugins.cpp:201
 #, kde-format
 msgctxt "@info"
 msgid "Unable to configure this plugin"
