@@ -2628,8 +2628,8 @@ static auto forCollection(const Akonadi::Collection &collection)
 
 void CalendarView::collectionSelected(const Akonadi::Collection &collection)
 {
-    auto calendar = std::find_if(mEnabledCalendars.cbegin(), mEnabledCalendars.cend(), forCollection(collection));
-    if (calendar != mEnabledCalendars.cend()) {
+    auto enabledCalendar = std::find_if(mEnabledCalendars.cbegin(), mEnabledCalendars.cend(), forCollection(collection));
+    if (enabledCalendar != mEnabledCalendars.cend()) {
         return;
     }
 
