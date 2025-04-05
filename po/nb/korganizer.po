@@ -3908,14 +3908,12 @@ msgstr "Vis indikatoren for gjeldende tidspunkt"
 #. i18n: ectx: label, entry (MarcusBainsShowSeconds), group (Agenda View)
 #: settings/korganizer.kcfg:155
 #, fuzzy, kde-format
-#| msgid "Show seconds on the current-time (Marcus Bains) line"
 msgid "Show seconds and timezone on the current-time (Marcus Bains) line"
 msgstr "Vis sekunder på gjeldende tidspunkt-( 'Marcus Bains')-linje"
 
 #. i18n: ectx: whatsthis, entry (MarcusBainsShowSeconds), group (Agenda View)
 #: settings/korganizer.kcfg:156
 #, fuzzy, kde-format
-#| msgid "Check this box if you want to show seconds on the current-time line."
 msgid ""
 "Check this box if you want to show seconds on the current-time (Marcus "
 "Bains) line. Depending on your locale, the timezone will also be displayed."
@@ -3924,7 +3922,6 @@ msgstr "Velg dette alternativet for å vise sekunder på tidslinja."
 #. i18n: ectx: tooltip, entry (MarcusBainsShowSeconds), group (Agenda View)
 #: settings/korganizer.kcfg:157
 #, fuzzy, kde-format
-#| msgid "Display seconds with the current-time indicator"
 msgid ""
 "Display seconds (possibly with timezone) with the current-time indicator"
 msgstr "Vis sekunder med indikatoren for gjeldende tidspunkt"
@@ -4408,7 +4405,6 @@ msgstr "Velg bakgrunnsfarge i planleggervisning her."
 #. i18n: ectx: label, entry, group (Colors)
 #: settings/korganizer.kcfg:331
 #, fuzzy, kde-format
-#| msgid "Agenda view current-time line color"
 msgid "Agenda view current-time (Marcus Bains) line color"
 msgstr "Linjefarge for gjeldende tid i planleggervisning"
 
@@ -4538,17 +4534,12 @@ msgstr ""
 #. i18n: ectx: label, entry, group (Fonts)
 #: settings/korganizer.kcfg:380
 #, fuzzy, kde-format
-#| msgid "Show current-time (Marcus Bains) line"
 msgid "Current-time (Marcus Bains) line"
 msgstr "Vis tiden akkurat nå som en 'Marcus Bains-linje'"
 
 #. i18n: ectx: whatsthis, entry, group (Fonts)
 #: settings/korganizer.kcfg:381
 #, fuzzy, kde-format
-#| msgid ""
-#| "Press this button to configure the current-time line font. This button "
-#| "will open the \"Select Font\" dialog, allowing you to choose the font for "
-#| "the current-time line in the agenda view."
 msgid ""
 "Press this button to configure the current-time (Marcus Bains) line font. "
 "This button will open the \"Select Font\" dialog, allowing you to choose the "
@@ -5443,8 +5434,6 @@ msgstr ""
 #. i18n: ectx: property (toolTip), widget (QCheckBox, unfiltered)
 #: ui/searchdialog_base.ui:325
 #, fuzzy, kde-format
-#| msgctxt "@info:whatsthis"
-#| msgid "Press this button to remove the currently active filter."
 msgid ""
 "Uncheck this box to skip incidences matching the currently selected view "
 "filter"
