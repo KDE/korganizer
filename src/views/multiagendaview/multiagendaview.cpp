@@ -42,7 +42,7 @@ class CalendarViewCalendarFactory : public EventViews::MultiAgendaView::Calendar
 public:
     using Ptr = QSharedPointer<CalendarViewCalendarFactory>;
 
-    CalendarViewCalendarFactory(CalendarViewBase *calendarView)
+    explicit CalendarViewCalendarFactory(CalendarViewBase *calendarView)
         : mView(calendarView)
     {
     }

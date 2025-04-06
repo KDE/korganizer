@@ -24,7 +24,7 @@ public:
         virtual bool operator==(const Node &) const;
 
     protected:
-        Node(ReparentingModel &personModel);
+        explicit Node(ReparentingModel &personModel);
 
     private:
         friend class ReparentingModel;
@@ -52,7 +52,7 @@ public:
     struct NodeManager {
         using Ptr = QSharedPointer<NodeManager>;
 
-        NodeManager(ReparentingModel &m)
+        explicit NodeManager(ReparentingModel &m)
             : model(m)
         {
         }

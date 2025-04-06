@@ -81,7 +81,7 @@ class NewCalendarChecker : public QObject
 {
     Q_OBJECT
 public:
-    NewCalendarChecker(QAbstractItemModel *model)
+    explicit NewCalendarChecker(QAbstractItemModel *model)
         : QObject(model)
         , mCheckableProxy(model)
     {

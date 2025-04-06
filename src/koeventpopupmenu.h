@@ -39,7 +39,7 @@ public:
     /**
      * Create an Incidence menu instance with a specified style.
      */
-    KOEventPopupMenu(MenuStyle menuStyle, QWidget *parent = nullptr);
+    explicit KOEventPopupMenu(MenuStyle menuStyle, QWidget *parent = nullptr);
 
 public Q_SLOTS:
     /**
