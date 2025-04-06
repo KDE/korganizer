@@ -432,6 +432,7 @@ void CalendarView::readSettings()
     KConfigGroup geometryConfig(config, QStringLiteral("KOrganizer Geometry"));
 
     QList<int> sizes = geometryConfig.readEntry("Separator1", QList<int>());
+    /* cppcheck-suppress knownConditionTrueFalse */
     if (sizes.count() != 2 || sizes.count() == sizes.count(0)) {
         sizes << mDateNavigatorContainer->minimumSizeHint().width();
         sizes << 300;

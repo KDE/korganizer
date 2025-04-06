@@ -463,6 +463,7 @@ void ReparentingModel::onSourceRowsInserted(const QModelIndex &parent, int start
             }
         }
 
+        /* cppcheck-suppress knownConditionTrueFalse */
         if (parentNode->isSourceNode()) {
             int targetRow = parentNode->children.size();
             beginInsertRows(mapFromSource(parent), targetRow, targetRow);
@@ -625,6 +626,7 @@ QModelIndex ReparentingModel::mapToSource(const QModelIndex &idx) const
         return {};
     }
     Node *node = extractNode(idx);
+    /* cppcheck-suppress knownConditionTrueFalse */
     if (!node->isSourceNode()) {
         return {};
     }
@@ -744,6 +746,7 @@ QVariant ReparentingModel::data(const QModelIndex &proxyIndex, int role) const
         return {};
     }
     const Node *node = extractNode(proxyIndex);
+    /* cppcheck-suppress knownConditionTrueFalse */
     if (node->isSourceNode()) {
         return sourceModel()->data(mapToSource(proxyIndex), role);
     }
@@ -760,6 +763,7 @@ bool ReparentingModel::setData(const QModelIndex &index, const QVariant &value, 
         return false;
     }
     Node *node = extractNode(index);
+    /* cppcheck-suppress knownConditionTrueFalse */
     if (node->isSourceNode()) {
         return sourceModel()->setData(mapToSource(index), value, role);
     }
@@ -772,6 +776,7 @@ Qt::ItemFlags ReparentingModel::flags(const QModelIndex &index) const
         return Qt::NoItemFlags;
     }
     const Node *node = extractNode(index);
+    /* cppcheck-suppress knownConditionTrueFalse */
     if (!node->isSourceNode()) {
         return Qt::ItemIsEnabled | Qt::ItemIsUserCheckable;
     }
@@ -820,6 +825,7 @@ QModelIndex ReparentingModel::buddy(const QModelIndex &index) const
         return {};
     }
     const Node *node = extractNode(index);
+    /* cppcheck-suppress knownConditionTrueFalse */
     if (node->isSourceNode()) {
         return mapFromSource(sourceModel()->buddy(mapToSource(index)));
     }
