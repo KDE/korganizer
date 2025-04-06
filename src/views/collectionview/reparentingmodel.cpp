@@ -400,9 +400,9 @@ QModelIndexList ReparentingModel::descendants(const QModelIndex &sourceIndex)
         const int count = sourceModel()->rowCount(sourceIndex);
         list.reserve(count * 2);
         for (int i = 0; i < count; ++i) {
-            const QModelIndex index = sourceModel()->index(i, 0, sourceIndex);
-            list << index;
-            list << descendants(index);
+            const QModelIndex idx = sourceModel()->index(i, 0, sourceIndex);
+            list << idx;
+            list << descendants(idx);
         }
     }
     return list;
@@ -433,8 +433,8 @@ void ReparentingModel::removeDuplicates(const QModelIndex &sourceIndex)
 void ReparentingModel::onSourceRowsInserted(const QModelIndex &parent, int start, int end)
 {
     // qCDebug(KORGANIZER_LOG) << objectName() << parent << start << end;
-    for (int row = start; row <= end; row++) {
-        QModelIndex sourceIndex = sourceModel()->index(row, 0, parent);
+    for (int r = start; r <= end; r++) {
+        QModelIndex sourceIndex = sourceModel()->index(r, 0, parent);
         Q_ASSERT(sourceIndex.isValid());
         Node *parentNode = getParentNode(sourceIndex);
         if (!parentNode) {
@@ -481,8 +481,8 @@ void ReparentingModel::onSourceRowsAboutToBeRemoved(const QModelIndex &parent, i
 {
     // qCDebug(KORGANIZER_LOG) << objectName() << parent << start << end;
     // we remove in reverse order as otherwise the indexes in parentNode->children wouldn't be correct
-    for (int row = end; row >= start; row--) {
-        QModelIndex sourceIndex = sourceModel()->index(row, 0, parent);
+    for (int r = end; r >= start; r--) {
+        QModelIndex sourceIndex = sourceModel()->index(r, 0, parent);
         Q_ASSERT(sourceIndex.isValid());
 
         const QModelIndex proxyIndex = mapFromSource(sourceIndex);
@@ -498,8 +498,8 @@ void ReparentingModel::onSourceRowsAboutToBeRemoved(const QModelIndex &parent, i
         }
     }
     // Allows the node manager to remove nodes that are no longer relevant
-    for (int row = start; row <= end; row++) {
-        mNodeManager->checkSourceIndexRemoval(sourceModel()->index(row, 0, parent));
+    for (int r = start; r <= end; r++) {
+        mNodeManager->checkSourceIndexRemoval(sourceModel()->index(r, 0, parent));
     }
 }
 
@@ -572,8 +572,8 @@ void ReparentingModel::onSourceLayoutChanged()
 void ReparentingModel::onSourceDataChanged(const QModelIndex &begin, const QModelIndex &end)
 {
     // qCDebug(KORGANIZER_LOG) << objectName() << begin << end;
-    for (int row = begin.row(); row <= end.row(); row++) {
-        mNodeManager->updateSourceIndex(sourceModel()->index(row, begin.column(), begin.parent()));
+    for (int r = begin.row(); r <= end.row(); r++) {
+        mNodeManager->updateSourceIndex(sourceModel()->index(r, begin.column(), begin.parent()));
     }
     Q_EMIT dataChanged(mapFromSource(begin), mapFromSource(end));
 }

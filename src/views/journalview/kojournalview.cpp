@@ -144,8 +144,8 @@ void KOJournalView::printJournal(const KCalendarCore::Journal::Ptr &journal, boo
     if (journal) {
         const auto calendar = calendarForIncidence(journal);
         CalendarSupport::CalPrinter printer(this, calendar, true);
-        KCalendarCore::Incidence::List selectedIncidences;
-        selectedIncidences.append(journal);
+        KCalendarCore::Incidence::List selectedJournals;
+        selectedJournals.append(journal);
 
         const QDate dtStart = journal->dtStart().date();
 
@@ -153,7 +153,7 @@ void KOJournalView::printJournal(const KCalendarCore::Journal::Ptr &journal, boo
         // stylesheet is propagated to the child print dialog. see bug 303902
         const QString css = styleSheet();
         setStyleSheet(QString());
-        printer.print(CalendarSupport::CalPrinterBase::Incidence, dtStart, dtStart, selectedIncidences, preview);
+        printer.print(CalendarSupport::CalPrinterBase::Incidence, dtStart, dtStart, selectedJournals, preview);
         setStyleSheet(css);
     }
 }

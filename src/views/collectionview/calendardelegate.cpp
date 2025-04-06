@@ -96,9 +96,9 @@ void StyledCalendarDelegate::paint(QPainter *painter, const QStyleOptionViewItem
     {
         int i = 1;
         const auto lstActions = getActions(option, index);
-        for (Action action : lstActions) {
-            if (action != Action::Total) {
-                QStyleOptionButton buttonOption = buttonOpt(opt, mIcon.value(action), index, i);
+        for (Action actionItem : lstActions) {
+            if (actionItem != Action::Total) {
+                QStyleOptionButton buttonOption = buttonOpt(opt, mIcon.value(actionItem), index, i);
                 s->drawControl(QStyle::CE_PushButton, &buttonOption, painter, nullptr);
             } else {
                 QStyleOptionButton buttonOption = buttonOpt(opt, QPixmap(), index, i);

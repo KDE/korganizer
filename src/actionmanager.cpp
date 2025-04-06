@@ -954,11 +954,11 @@ void ActionManager::file_open()
 {
     const QString defaultPath = QStandardPaths::writableLocation(QStandardPaths::GenericDataLocation);
     const QUrl dir = QUrl::fromLocalFile(defaultPath + QLatin1StringView("/korganizer/"));
-    const QUrl url =
+    const QUrl fileUrl =
         QFileDialog::getOpenFileUrl(dialogParent(), i18nc("@title:window", "Select Calendar File to Open"), dir, QStringLiteral("text/calendar (*.ics *.vcs)"));
 
-    if (!url.isEmpty()) { // isEmpty if user canceled the dialog
-        file_open(url);
+    if (!fileUrl.isEmpty()) { // isEmpty if user canceled the dialog
+        file_open(fileUrl);
     }
 }
 
@@ -982,13 +982,13 @@ void ActionManager::file_import()
 {
     const QString defaultPath = QStandardPaths::writableLocation(QStandardPaths::GenericDataLocation);
     const QUrl dir = QUrl::fromLocalFile(defaultPath + QLatin1StringView("/korganizer/"));
-    const QUrl url = QFileDialog::getOpenFileUrl(dialogParent(),
-                                                 i18nc("@title:window", "Select Calendar File to Import"),
-                                                 dir,
-                                                 QStringLiteral("text/calendar (*.ics *.vcs)"));
+    const QUrl fileUrl = QFileDialog::getOpenFileUrl(dialogParent(),
+                                                     i18nc("@title:window", "Select Calendar File to Import"),
+                                                     dir,
+                                                     QStringLiteral("text/calendar (*.ics *.vcs)"));
 
-    if (!url.isEmpty()) { // isEmpty if user canceled the dialog
-        importCalendar(url);
+    if (!fileUrl.isEmpty()) { // isEmpty if user canceled the dialog
+        importCalendar(fileUrl);
     }
 }
 
@@ -1252,16 +1252,16 @@ bool ActionManager::handleCommandLine(const QStringList &args)
         // Check for import, merge or ask
         const QStringList argList = parser.positionalArguments();
         if (parser.isSet(QStringLiteral("import"))) {
-            for (const QString &url : argList) {
-                importURL(QUrl::fromUserInput(url), /*merge=*/false);
+            for (const QString &argUrl : argList) {
+                importURL(QUrl::fromUserInput(argUrl), /*merge=*/false);
             }
         } else if (parser.isSet(QStringLiteral("merge"))) {
-            for (const QString &url : argList) {
-                importURL(QUrl::fromUserInput(url), /*merge=*/true);
+            for (const QString &argUrl : argList) {
+                importURL(QUrl::fromUserInput(argUrl), /*merge=*/true);
             }
         } else {
-            for (const QString &url : argList) {
-                mainWindow->actionManager()->importCalendar(QUrl::fromUserInput(url));
+            for (const QString &argUrl : argList) {
+                mainWindow->actionManager()->importCalendar(QUrl::fromUserInput(argUrl));
             }
         }
     }

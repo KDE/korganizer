@@ -178,8 +178,8 @@ void KOTodoView::printTodo(bool preview)
     CalendarSupport::CalPrinter printer(this, calendar, true);
     connect(this, &KOTodoView::configChanged, &printer, &CalendarSupport::CalPrinter::updateConfig);
 
-    KCalendarCore::Incidence::List selectedIncidences;
-    selectedIncidences.append(todo);
+    KCalendarCore::Incidence::List selectedTodos;
+    selectedTodos.append(todo);
 
     QDate todoDate;
     if (todo->hasStartDate()) {
@@ -188,7 +188,7 @@ void KOTodoView::printTodo(bool preview)
         todoDate = todo->dtDue().date();
     }
 
-    printer.print(CalendarSupport::CalPrinterBase::Incidence, todoDate, todoDate, selectedIncidences, preview);
+    printer.print(CalendarSupport::CalPrinterBase::Incidence, todoDate, todoDate, selectedTodos, preview);
 }
 
 void KOTodoView::getHighlightMode(bool &highlightEvents, bool &highlightTodos, bool &highlightJournals)

@@ -320,18 +320,18 @@ Akonadi::CollectionCalendar::Ptr CalendarView::calendarForCollection(const Akona
             continue;
         }
 
-        const auto calendar = it->toStrongRef();
-        if (calendar->collection() == collection) {
-            return calendar;
+        const auto calendarIt = it->toStrongRef();
+        if (calendarIt->collection() == collection) {
+            return calendarIt;
         }
 
         ++it;
     }
 
-    const auto calendar = Akonadi::CollectionCalendar::Ptr::create(eventsModel(), collection);
-    calendar->setFilter(mCurrentFilter);
-    mCalendars.emplace_back(calendar);
-    return calendar;
+    const auto newCalendar = Akonadi::CollectionCalendar::Ptr::create(eventsModel(), collection);
+    newCalendar->setFilter(mCurrentFilter);
+    mCalendars.emplace_back(newCalendar);
+    return newCalendar;
 }
 
 void CalendarView::forEachCalendar(std::function<void(Akonadi::CollectionCalendar::Ptr)> func)
@@ -1783,14 +1783,14 @@ void CalendarView::print()
 {
     createPrinter();
 
-    KOrg::BaseView *currentView = mViewManager->currentView();
+    KOrg::BaseView *curView = mViewManager->currentView();
 
     CalendarSupport::CalPrinter::PrintType printType = CalendarSupport::CalPrinter::Month;
 
     KCalendarCore::Incidence::List selectedIncidences;
-    if (currentView) {
-        printType = currentView->printType();
-        const Akonadi::Item::List selectedViewIncidences = currentView->selectedIncidences();
+    if (curView) {
+        printType = curView->printType();
+        const Akonadi::Item::List selectedViewIncidences = curView->selectedIncidences();
         for (const Akonadi::Item &item : selectedViewIncidences) {
             if (item.hasPayload<KCalendarCore::Incidence::Ptr>()) {
                 selectedIncidences.append(item.payload<KCalendarCore::Incidence::Ptr>());
@@ -1806,14 +1806,14 @@ void CalendarView::printPreview()
 {
     createPrinter();
 
-    KOrg::BaseView *currentView = mViewManager->currentView();
+    KOrg::BaseView *curView = mViewManager->currentView();
 
     CalendarSupport::CalPrinter::PrintType printType = CalendarSupport::CalPrinter::Month;
 
     KCalendarCore::Incidence::List selectedIncidences;
-    if (currentView) {
-        printType = currentView->printType();
-        const Akonadi::Item::List selectedViewIncidences = currentView->selectedIncidences();
+    if (curView) {
+        printType = curView->printType();
+        const Akonadi::Item::List selectedViewIncidences = curView->selectedIncidences();
         for (const Akonadi::Item &item : selectedViewIncidences) {
             if (item.hasPayload<KCalendarCore::Incidence::Ptr>()) {
                 selectedIncidences.append(item.payload<KCalendarCore::Incidence::Ptr>());
@@ -2646,11 +2646,11 @@ void CalendarView::collectionDeselected(const Akonadi::Collection &collection)
         return;
     }
 
-    const auto calendar = *calendarIt;
-    calendar->setFilter(nullptr);
-    mEnabledCalendars.removeOne(calendar);
-    mDateNavigatorContainer->removeCalendar(calendar);
-    Q_EMIT calendarRemoved(calendar);
+    const auto deselectCalendar = *calendarIt;
+    deselectCalendar->setFilter(nullptr);
+    mEnabledCalendars.removeOne(deselectCalendar);
+    mDateNavigatorContainer->removeCalendar(deselectCalendar);
+    Q_EMIT calendarRemoved(deselectCalendar);
 }
 
 Akonadi::Collection CalendarView::defaultCollection(const QLatin1StringView &mimeType) const

@@ -323,32 +323,32 @@ void KODayMatrix::updateEvents()
 
     for (const auto &calendar : mCalendars) {
         const auto eventlist = calendar->events(mDays[0], mDays[NUMDAYS - 1], calendar->timeZone());
-        for (const KCalendarCore::Event::Ptr &event : eventlist) {
+        for (const KCalendarCore::Event::Ptr &ev : eventlist) {
             if (mEvents.count() == NUMDAYS) {
                 // No point in wasting cpu, all days are bold already
                 break;
             }
 
-            Q_ASSERT(event);
-            const ushort recurType = event->recurrenceType();
-            const QDateTime dtStart = event->dtStart().toLocalTime();
+            Q_ASSERT(ev);
+            const ushort recurType = ev->recurrenceType();
+            const QDateTime dtStart = ev->dtStart().toLocalTime();
 
             // timed incidences occur in
             //   [dtStart(), dtEnd()[. All-day incidences occur in [dtStart(), dtEnd()]
             // so we subtract 1 second in the timed case
-            const int secsToAdd = event->allDay() ? 0 : -1;
-            const QDateTime dtEnd = event->dtEnd().toLocalTime().addSecs(secsToAdd);
+            const int secsToAdd = ev->allDay() ? 0 : -1;
+            const QDateTime dtEnd = ev->dtEnd().toLocalTime().addSecs(secsToAdd);
 
             if (!(recurType == KCalendarCore::Recurrence::rDaily && !KOPrefs::instance()->mDailyRecur)
                 && !(recurType == KCalendarCore::Recurrence::rWeekly && !KOPrefs::instance()->mWeeklyRecur)) {
                 KCalendarCore::DateTimeList timeDateList;
-                const bool isRecurrent = event->recurs();
+                const bool isRecurrent = ev->recurs();
                 const int eventDuration = dtStart.daysTo(dtEnd);
 
                 if (isRecurrent) {
                     // Its a recurring event, find out in which days it occurs
-                    timeDateList = event->recurrence()->timesInInterval(QDateTime(mDays[0], {}, QTimeZone::LocalTime),
-                                                                        QDateTime(mDays[NUMDAYS - 1], {}, QTimeZone::LocalTime));
+                    timeDateList = ev->recurrence()->timesInInterval(QDateTime(mDays[0], {}, QTimeZone::LocalTime),
+                                                                     QDateTime(mDays[NUMDAYS - 1], {}, QTimeZone::LocalTime));
                 } else {
                     if (dtStart.date() >= mDays[0]) {
                         timeDateList.append(dtStart);

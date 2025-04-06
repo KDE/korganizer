@@ -176,12 +176,12 @@ void NavigatorBar::selectYearFromMenu()
     year = 0;
     QAction *selectedAct = menu->exec(mYear->mapToGlobal(QPoint(0, 0)));
     if (selectedAct && (selectedAct != activateAction)) {
-        int y = minYear;
+        int yearCount = minYear;
         for (int i = 0; i < years; ++i) {
             if (act[i] == selectedAct) {
-                year = y;
+                year = yearCount;
             }
-            y++;
+            yearCount++;
         }
     }
     qDeleteAll(act);

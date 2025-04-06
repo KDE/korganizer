@@ -242,11 +242,11 @@ Akonadi::CollectionCalendar::Ptr BaseView::calendarForCollection(Akonadi::Collec
 Akonadi::CollectionCalendar::Ptr BaseView::calendarForIncidence(const KCalendarCore::Incidence::Ptr &incidence) const
 {
     bool ok = false;
-    const auto collectionId = incidence->customProperty("VOLATILE", "COLLECTION-ID").toLongLong(&ok);
-    if (!ok || collectionId < 0) {
+    const auto colId = incidence->customProperty("VOLATILE", "COLLECTION-ID").toLongLong(&ok);
+    if (!ok || colId < 0) {
         return {};
     }
 
-    return calendarForCollection(collectionId);
+    return calendarForCollection(colId);
 }
 #include "moc_baseview.cpp"
