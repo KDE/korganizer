@@ -7,7 +7,7 @@ msgid ""
 msgstr ""
 "Project-Id-Version: __kde__kdepim__korganizer\n"
 "Report-Msgid-Bugs-To: https://bugs.kde.org\n"
-"POT-Creation-Date: 2025-04-05 00:42+0000\n"
+"POT-Creation-Date: 2025-04-06 00:42+0000\n"
 "PO-Revision-Date: 2014-01-31 19:03+0100\n"
 "Last-Translator: Samir Ribić <megaribi@epn.ba>\n"
 "Language-Team:  <bs@li.org>\n"
@@ -545,8 +545,8 @@ msgid ""
 msgstr ""
 
 #. i18n: ectx: property (text), widget (QPushButton, mDeleteButton)
-#: actionmanager.cpp:369 actionmanager.cpp:634 actionmanager.cpp:1319
-#: actionmanager.cpp:1356 ui/filteredit_base.ui:56
+#: actionmanager.cpp:369 actionmanager.cpp:663 actionmanager.cpp:1348
+#: actionmanager.cpp:1385 ui/filteredit_base.ui:56
 #, kde-format
 msgid "&Delete"
 msgstr "&Obriši"
@@ -612,7 +612,7 @@ msgstr ""
 msgid "&Agenda"
 msgstr "&Agenda"
 
-#: actionmanager.cpp:409
+#: actionmanager.cpp:411
 #, fuzzy, kde-format
 #| msgctxt "@title:tab"
 #| msgid "Agenda View"
@@ -620,7 +620,7 @@ msgctxt "@info:status"
 msgid "Agenda View"
 msgstr "Prikaz rokovnika"
 
-#: actionmanager.cpp:410
+#: actionmanager.cpp:412
 #, fuzzy, kde-format
 #| msgctxt "@option:check"
 #| msgid "Show at the top of the agenda views"
@@ -628,7 +628,7 @@ msgctxt "@info:tooltip"
 msgid "Switch to the Agenda View"
 msgstr "Prikaži na vrhu dnevnog reda"
 
-#: actionmanager.cpp:412
+#: actionmanager.cpp:414
 #, kde-format
 msgctxt "@info:whatsthis"
 msgid ""
@@ -637,12 +637,12 @@ msgid ""
 "each event in the day timetable."
 msgstr ""
 
-#: actionmanager.cpp:419
+#: actionmanager.cpp:421
 #, kde-format
 msgid "&Event List"
 msgstr "&Lista događaja"
 
-#: actionmanager.cpp:420
+#: actionmanager.cpp:422
 #, fuzzy, kde-format
 #| msgctxt "@title:tab"
 #| msgid "Month View"
@@ -650,13 +650,13 @@ msgctxt "@info:status"
 msgid "List View"
 msgstr "Prikaz mjeseca"
 
-#: actionmanager.cpp:421
+#: actionmanager.cpp:423
 #, kde-format
 msgctxt "@info:tooltip"
 msgid "Switch to the List View"
 msgstr ""
 
-#: actionmanager.cpp:423
+#: actionmanager.cpp:425
 #, kde-format
 msgctxt "@info:whatsthis"
 msgid ""
@@ -664,26 +664,26 @@ msgid ""
 "journal entries for the dates selected in the Date Navigator as a list."
 msgstr ""
 
-#: actionmanager.cpp:429
+#: actionmanager.cpp:431
 #, kde-format
 msgid "&To-do List"
 msgstr "Lista &zadataka"
 
-#: actionmanager.cpp:430
+#: actionmanager.cpp:432
 #, fuzzy, kde-format
 #| msgid "To-do List"
 msgctxt "@info:status"
 msgid "To-do List View"
 msgstr "Lista zadataka"
 
-#: actionmanager.cpp:431
+#: actionmanager.cpp:433
 #, fuzzy, kde-format
 #| msgid "Title of the to-do list"
 msgctxt "@info:tooltip"
 msgid "Switch to the To-do List View"
 msgstr "Naslov liste poslova"
 
-#: actionmanager.cpp:433
+#: actionmanager.cpp:435
 #, kde-format
 msgctxt "@info:whatsthis"
 msgid ""
@@ -691,26 +691,26 @@ msgid ""
 "tasks that need to be done."
 msgstr ""
 
-#: actionmanager.cpp:439
+#: actionmanager.cpp:441
 #, kde-format
 msgid "&Journal"
 msgstr "&Dnevnik"
 
-#: actionmanager.cpp:440
+#: actionmanager.cpp:442
 #, fuzzy, kde-format
 #| msgid "Journal entries"
 msgctxt "@info:status"
 msgid "Journal View"
 msgstr "Unosi u dnevnik"
 
-#: actionmanager.cpp:441
+#: actionmanager.cpp:443
 #, fuzzy, kde-format
 #| msgid "Title of the journal list"
 msgctxt "@info:tooltip"
 msgid "Switch to the Journal View"
 msgstr "Naslov liste dnevnika"
 
-#: actionmanager.cpp:443
+#: actionmanager.cpp:445
 #, kde-format
 msgctxt "@info:whatsthis"
 msgid ""
@@ -718,25 +718,25 @@ msgid ""
 "reflections, occurrences or experiences."
 msgstr ""
 
-#: actionmanager.cpp:449
+#: actionmanager.cpp:451
 #, kde-format
 msgid "Time&line"
 msgstr "Linija&vremena"
 
-#: actionmanager.cpp:450
+#: actionmanager.cpp:452
 #, fuzzy, kde-format
 #| msgid "Time&line"
 msgctxt "@info:status"
 msgid "Timeline View"
 msgstr "Linija&vremena"
 
-#: actionmanager.cpp:451
+#: actionmanager.cpp:453
 #, kde-format
 msgctxt "@info:tooltip"
 msgid "Switch to the Timeline View"
 msgstr ""
 
-#: actionmanager.cpp:453
+#: actionmanager.cpp:455
 #, kde-format
 msgctxt "@info:whatsthis"
 msgid ""
@@ -744,27 +744,27 @@ msgid ""
 "timespan in a Gantt view. Each calendar is displayed in a separate line."
 msgstr ""
 
-#: actionmanager.cpp:462
+#: actionmanager.cpp:464
 #, fuzzy, kde-format
 #| msgid "&Refresh"
 msgctxt "@action"
 msgid "&Refresh"
 msgstr "Osvježi"
 
-#: actionmanager.cpp:463
+#: actionmanager.cpp:465
 #, fuzzy, kde-format
 #| msgid "&Refresh"
 msgctxt "@info:status"
 msgid "Refresh"
 msgstr "Osvježi"
 
-#: actionmanager.cpp:464
+#: actionmanager.cpp:466
 #, kde-format
 msgctxt "@info:tooltip"
 msgid "Refresh the display"
 msgstr ""
 
-#: actionmanager.cpp:466
+#: actionmanager.cpp:468
 #, kde-format
 msgctxt "@info:whatsthis"
 msgid ""
@@ -772,19 +772,19 @@ msgid ""
 "sync or update any calendar folders."
 msgstr ""
 
-#: actionmanager.cpp:475
+#: actionmanager.cpp:477
 #, kde-format
 msgid "F&ilter"
 msgstr "F&ilter"
 
-#: actionmanager.cpp:476
+#: actionmanager.cpp:478
 #, fuzzy, kde-format
 #| msgid "Print &incidence"
 msgctxt "@info:status"
 msgid "Filter incidences"
 msgstr "Štampaj &slučaj"
 
-#: actionmanager.cpp:477
+#: actionmanager.cpp:479
 #, fuzzy, kde-format
 #| msgctxt "@info:tooltip"
 #| msgid "The reminder is set for this date/time"
@@ -792,7 +792,7 @@ msgctxt "@info:tooltip"
 msgid "Filter incidences from the calendar"
 msgstr "Podsjetnik je postavljen na ovaj datum/vrijeme"
 
-#: actionmanager.cpp:479
+#: actionmanager.cpp:481
 #, kde-format
 msgctxt "@info:whatsthis"
 msgid ""
@@ -800,85 +800,85 @@ msgid ""
 "created first. See \"Manage View Filters\" option in the Settings menu."
 msgstr ""
 
-#: actionmanager.cpp:491
+#: actionmanager.cpp:493
 #, kde-format
 msgid "In Horizontally"
 msgstr "U Horizontalnom"
 
-#: actionmanager.cpp:496
+#: actionmanager.cpp:498
 #, kde-format
 msgid "Out Horizontally"
 msgstr "Iz Horizontalnog"
 
-#: actionmanager.cpp:501
+#: actionmanager.cpp:503
 #, kde-format
 msgid "In Vertically"
 msgstr "U Vertikalnom"
 
-#: actionmanager.cpp:506
+#: actionmanager.cpp:508
 #, kde-format
 msgid "Out Vertically"
 msgstr "Iz Vertikalnog"
 
-#: actionmanager.cpp:515
+#: actionmanager.cpp:517
 #, kde-format
 msgctxt "@action Jump to today"
 msgid "To &Today"
 msgstr "Za &Danas"
 
 #. i18n: ectx: property (text), widget (QPushButton, mTodayBtn)
-#: actionmanager.cpp:516 views/collectionview/quickview.ui:94
+#: actionmanager.cpp:518 views/collectionview/quickview.ui:94
 #, kde-format
 msgid "Today"
 msgstr "Danas"
 
-#: actionmanager.cpp:517
+#: actionmanager.cpp:519
 #, fuzzy, kde-format
 #| msgid "Scroll to Today"
 msgctxt "@info:status"
 msgid "Scroll to Today"
 msgstr "Idi na danas"
 
-#: actionmanager.cpp:518
+#: actionmanager.cpp:520
 #, fuzzy, kde-format
 #| msgid "Scroll to Today"
 msgctxt "@info:tooltip"
 msgid "Scroll the view to today"
 msgstr "Idi na danas"
 
-#: actionmanager.cpp:519
+#: actionmanager.cpp:521
 #, kde-format
 msgctxt "@info:whatsthis"
 msgid "Scrolls the current view to the today's date."
 msgstr ""
 
-#: actionmanager.cpp:524
+#: actionmanager.cpp:526
 #, kde-format
 msgctxt "scroll backward"
 msgid "&Backward"
 msgstr "&Unazad"
 
-#: actionmanager.cpp:525
+#: actionmanager.cpp:527
 #, kde-format
 msgctxt "scroll backward"
 msgid "Back"
 msgstr "Nazad"
 
-#: actionmanager.cpp:526
+#: actionmanager.cpp:528
 #, fuzzy, kde-format
 #| msgid "Scroll Backward"
 msgctxt "@info:status"
 msgid "Scroll Backward"
 msgstr "Idi nazad"
 
-#: actionmanager.cpp:527
+#: actionmanager.cpp:529
 #, fuzzy, kde-format
 #| msgid "Scroll Backward"
 msgctxt "@info:tooltip"
 msgid "Scroll the view backward"
 msgstr "Idi nazad"
 
-#: actionmanager.cpp:529
+#: actionmanager.cpp:531
 #, kde-format
 msgctxt "@info:whatsthis"
 msgid ""
@@ -886,13 +886,13 @@ msgid ""
 "calendar view."
 msgstr ""
 
-#: actionmanager.cpp:535
+#: actionmanager.cpp:537
 #, kde-format
 msgctxt "scroll forward"
 msgid "&Forward"
 msgstr "&Naprijed"
 
-#: actionmanager.cpp:536
+#: actionmanager.cpp:538
 #, fuzzy, kde-format
 #| msgctxt "scoll forward"
 #| msgid "Forward"
@@ -900,21 +900,21 @@ msgctxt "scroll forward"
 msgid "Forward"
 msgstr "Naprijed"
 
-#: actionmanager.cpp:537
+#: actionmanager.cpp:539
 #, fuzzy, kde-format
 #| msgid "Scroll Forward"
 msgctxt "@info:status"
 msgid "Scroll Forward"
 msgstr "Idi naprijed"
 
-#: actionmanager.cpp:538
+#: actionmanager.cpp:540
 #, fuzzy, kde-format
 #| msgid "Scroll Forward"
 msgctxt "@info:tooltip"
 msgid "Scroll the view forward"
 msgstr "Idi naprijed"
 
-#: actionmanager.cpp:540
+#: actionmanager.cpp:542
 #, kde-format
 msgctxt "@info:whatsthis"
 msgid ""
@@ -922,50 +922,167 @@ msgid ""
 "calendar view."
 msgstr ""
 
-#: actionmanager.cpp:545
-#, kde-format
+#: actionmanager.cpp:548
+#, fuzzy, kde-format
+#| msgid "&Day"
+msgctxt "@action:inmenu"
 msgid "&Day"
 msgstr "&Dan"
 
-#: actionmanager.cpp:554 actionmanager.cpp:1076
-#, kde-format
-msgid "&Next Day"
-msgid_plural "&Next %1 Days"
-msgstr[0] "&Sljedeći %1 dan"
-msgstr[1] "&Sljedeća %1 dana"
-msgstr[2] "&Sljedećih %1 dana"
+#: actionmanager.cpp:549
+#, fuzzy, kde-format
+#| msgid "&Day"
+msgctxt "@action:inmenu agenda view show 1 day at a time"
+msgid "Day"
+msgstr "&Dan"
 
-#: actionmanager.cpp:556
+#: actionmanager.cpp:550
 #, kde-format
-msgid "W&ork Week"
-msgstr "R&adna sedmica"
+msgctxt "@info:status"
+msgid "View 1 day at a time"
+msgstr ""
+
+#: actionmanager.cpp:551
+#, fuzzy, kde-format
+#| msgid "Show this many days at a time in the Next \"x\" days view"
+msgctxt "@info:tooltip"
+msgid "Show 1 day at a time in Agenda View"
+msgstr "Prikaži toliko dani u prikazu narednih nekoliko dana"
+
+#: actionmanager.cpp:552
+#, kde-format
+msgctxt "@info:whatsthis"
+msgid "Select this option to show only 1 day at a time in Agenda View."
+msgstr ""
+
+#: actionmanager.cpp:559
+#, fuzzy, kde-format
+#| msgid "&Next Day"
+#| msgid_plural "&Next %1 Days"
+msgctxt "@action:inmenu agenda view show a few days at a time"
+msgid "&Next Days"
+msgstr "&Sljedeći %1 dan"
+
+#: actionmanager.cpp:560
+#, kde-format
+msgctxt "@info:status"
+msgid "View a few days at a time"
+msgstr ""
 
 #: actionmanager.cpp:561
+#, fuzzy, kde-format
+#| msgid "Show this many days at a time in the Next \"x\" days view"
+msgctxt "@info:tooltip"
+msgid "Show the next few days at a time in Agenda View"
+msgstr "Prikaži toliko dani u prikazu narednih nekoliko dana"
+
+#: actionmanager.cpp:564
+#, kde-kuit-format
+msgctxt "@info:whatsthis"
+msgid ""
+"Select this option to show the next few days a a time in Agenda View. "
+"Configure the <placeholder>Next X Days</placeholder> setting in the "
+"<interface>Views->General</interface> settings page to adjust the number of "
+"days shown."
+msgstr ""
+
+#: actionmanager.cpp:571
+#, fuzzy, kde-format
+#| msgid "Schedule"
+msgctxt "@action:inmenu"
+msgid "W&eek Schedule"
+msgstr "Raspored"
+
+#: actionmanager.cpp:572
+#, fuzzy, kde-format
+#| msgid "Schedule"
+msgctxt ""
+"@action:inmenu agenda view show the the weekly schedule days only (eg. no "
+"weekends)"
+msgid "Week Schedule"
+msgstr "Raspored"
+
+#: actionmanager.cpp:573
 #, kde-format
+msgctxt "@info:status"
+msgid ""
+"Show a week at a time showing days included in your weekly schedule only"
+msgstr ""
+
+#: actionmanager.cpp:575
+#, kde-format
+msgctxt "@info:tooltip"
+msgid ""
+"Show a week at a time in Agenda View, excluding days that are not included "
+"in your weekly schedule (ie. weekends are excluded)"
+msgstr ""
+
+#: actionmanager.cpp:578
+#, kde-kuit-format
+msgctxt "@info:whatsthis"
+msgid ""
+"Select this option to show a week at a time, excluding the days that are not "
+"included in your weekly schedule. Configure your schedule by selecting days "
+"in the <placeholder>Weekly Schedule</placeholder> setting in the "
+"<interface>Time and Date->Regional</interface> page.<br>Typically this view "
+"is intended for showing the week without weekend days.</br>"
+msgstr ""
+
+#: actionmanager.cpp:586
+#, fuzzy, kde-format
+#| msgid "&Week"
+msgctxt "@action:inmenu"
 msgid "&Week"
 msgstr "&Sedmica"
 
-#: actionmanager.cpp:568 kodaymatrix.cpp:484
+#: actionmanager.cpp:587
+#, fuzzy, kde-format
+#| msgid "&Week"
+msgctxt "@action:inmenu agenda view show a week at a time"
+msgid "Week"
+msgstr "&Sedmica"
+
+#: actionmanager.cpp:588
+#, kde-format
+msgctxt "@info:status"
+msgid "View a week at a time"
+msgstr ""
+
+#: actionmanager.cpp:589
+#, fuzzy, kde-format
+#| msgctxt "@option:check"
+#| msgid "Show at the top of the agenda views"
+msgctxt "@info:tooltip"
+msgid "Show 1 week at a time in Agenda View"
+msgstr "Prikaži na vrhu dnevnog reda"
+
+#: actionmanager.cpp:590
+#, kde-format
+msgctxt "@info:whatsthis"
+msgid "Select this option to show a week at a time in Agenda View."
+msgstr ""
+
+#: actionmanager.cpp:597 kodaymatrix.cpp:484
 #, fuzzy, kde-format
 #| msgid "New E&vent..."
 msgid "New E&vent…"
 msgstr "No&vi događaj..."
 
-#: actionmanager.cpp:569
+#: actionmanager.cpp:598
 #, fuzzy, kde-format
 #| msgid "Create a new Event"
 msgctxt "@info:status"
 msgid "Create a new Event"
 msgstr "Kreiraj novi Događaj"
 
-#: actionmanager.cpp:570
+#: actionmanager.cpp:599
 #, fuzzy, kde-format
 #| msgid "Create a new Event"
 msgctxt "@info:tooltip"
 msgid "Create a new Event"
 msgstr "Kreiraj novi Događaj"
 
-#: actionmanager.cpp:572
+#: actionmanager.cpp:601
 #, kde-format
 msgctxt "@info:whatsthis"
 msgid ""
@@ -973,27 +1090,27 @@ msgid ""
 "attendees, recurrences and much more."
 msgstr ""
 
-#: actionmanager.cpp:578 kodaymatrix.cpp:485
+#: actionmanager.cpp:607 kodaymatrix.cpp:485
 #, fuzzy, kde-format
 #| msgid "New &To-do..."
 msgid "New &To-do…"
 msgstr "Novi &zadatak..."
 
-#: actionmanager.cpp:579
+#: actionmanager.cpp:608
 #, fuzzy, kde-format
 #| msgid "Create a new To-do"
 msgctxt "@info:status"
 msgid "Create a new To-do"
 msgstr "Kreiraj novi zadatak"
 
-#: actionmanager.cpp:580
+#: actionmanager.cpp:609
 #, fuzzy, kde-format
 #| msgid "Create a new To-do"
 msgctxt "@info:tooltip"
 msgid "Create a new To-do"
 msgstr "Kreiraj novi zadatak"
 
-#: actionmanager.cpp:582
+#: actionmanager.cpp:611
 #, kde-format
 msgctxt "@info:whatsthis"
 msgid ""
@@ -1001,96 +1118,96 @@ msgid ""
 "attendees, recurrences and much more."
 msgstr ""
 
-#: actionmanager.cpp:589
+#: actionmanager.cpp:618
 #, fuzzy, kde-format
 #| msgid "New Su&b-to-do..."
 msgctxt "@action"
 msgid "New Su&b-to-do…"
 msgstr "Novi &podzadatak..."
 
-#: actionmanager.cpp:597 kodaymatrix.cpp:486
+#: actionmanager.cpp:626 kodaymatrix.cpp:486
 #, fuzzy, kde-format
 #| msgid "New &Journal..."
 msgid "New &Journal…"
 msgstr "&Dnevnik"
 
-#: actionmanager.cpp:598
+#: actionmanager.cpp:627
 #, fuzzy, kde-format
 #| msgid "Create a new Journal"
 msgctxt "@info:status"
 msgid "Create a new Journal"
 msgstr "Kreiraj novi Dnevnik"
 
-#: actionmanager.cpp:599
+#: actionmanager.cpp:628
 #, fuzzy, kde-format
 #| msgid "Create a new Journal"
 msgctxt "@info:tooltip"
 msgid "Create a new Journal"
 msgstr "Kreiraj novi Dnevnik"
 
-#: actionmanager.cpp:600
+#: actionmanager.cpp:629
 #, kde-format
 msgctxt "@info:whatsthis"
 msgid "Starts a dialog that allows you to create a new Journal entry."
 msgstr ""
 
-#: actionmanager.cpp:605
+#: actionmanager.cpp:634
 #, kde-format
 msgctxt "@action Jump to date"
 msgid "&Pick a Date"
 msgstr ""
 
-#: actionmanager.cpp:606
+#: actionmanager.cpp:635
 #, kde-format
 msgid "Date"
 msgstr "Datum"
 
-#: actionmanager.cpp:607
+#: actionmanager.cpp:636
 #, fuzzy, kde-format
 #| msgid "Scroll to Today"
 msgctxt "@info:status"
 msgid "Scroll the view to user selected dates"
 msgstr "Idi na danas"
 
-#: actionmanager.cpp:608
+#: actionmanager.cpp:637
 #, fuzzy, kde-format
 #| msgid "Scroll to Today"
 msgctxt "@info:tooltip"
 msgid "Scroll the view to user selected dates"
 msgstr "Idi na danas"
 
-#: actionmanager.cpp:609
+#: actionmanager.cpp:638
 #, kde-format
 msgctxt "@info:whatsthis"
 msgid "Opens a date selection dialog for quickly navigating the view."
 msgstr ""
 
-#: actionmanager.cpp:614
+#: actionmanager.cpp:643
 #, fuzzy, kde-format
 #| msgid "Configure View..."
 msgid "Configure View…"
 msgstr "Podesi pogled..."
 
-#: actionmanager.cpp:615
+#: actionmanager.cpp:644
 #, kde-format
 msgid "Configure"
 msgstr "Podesi"
 
-#: actionmanager.cpp:616
+#: actionmanager.cpp:645
 #, fuzzy, kde-format
 #| msgid "Configure the view"
 msgctxt "@info:status"
 msgid "Configure the multi-calendar view"
 msgstr "Podesi pogled"
 
-#: actionmanager.cpp:617
+#: actionmanager.cpp:646
 #, fuzzy, kde-format
 #| msgid "Configure the view"
 msgctxt "@info:tooltip"
 msgid "Configure the multi-calendar view"
 msgstr "Podesi pogled"
 
-#: actionmanager.cpp:619
+#: actionmanager.cpp:648
 #, kde-format
 msgctxt "@info:whatsthis"
 msgid ""
@@ -1099,18 +1216,18 @@ msgid ""
 "Calendars options in the Views->Agenda Views settings."
 msgstr ""
 
-#: actionmanager.cpp:626 actionmanager.cpp:1313 actionmanager.cpp:1354
+#: actionmanager.cpp:655 actionmanager.cpp:1342 actionmanager.cpp:1383
 #, kde-format
 msgid "&Show"
 msgstr "&Prikaži"
 
-#: actionmanager.cpp:630 actionmanager.cpp:1316 actionmanager.cpp:1355
+#: actionmanager.cpp:659 actionmanager.cpp:1345 actionmanager.cpp:1384
 #, fuzzy, kde-format
 #| msgid "&Edit"
 msgid "&Edit…"
 msgstr "&Izmijeni"
 
-#: actionmanager.cpp:639
+#: actionmanager.cpp:668
 #, fuzzy, kde-format
 #| msgid "&Make Sub-to-do Independent"
 msgctxt "@action"
@@ -1121,114 +1238,114 @@ msgstr "Učini podzadatak &nezavisnim"
 #. mCalendarView, SLOT(toggleAlarm()),
 #. mACollection, "activate_alarm" );
 #. ************************* SCHEDULE MENU *******************************
-#: actionmanager.cpp:651
+#: actionmanager.cpp:680
 #, fuzzy, kde-format
 #| msgid "&Publish Item Information..."
 msgid "&Publish Item Information…"
 msgstr "&Objavi podatke o stavci..."
 
-#: actionmanager.cpp:658
+#: actionmanager.cpp:687
 #, kde-format
 msgid "Send &Invitation to Attendees"
 msgstr "Pošalji &pozivnice prisutnima"
 
-#: actionmanager.cpp:666
+#: actionmanager.cpp:695
 #, fuzzy, kde-format
 #| msgid "Re&quest Update"
 msgctxt "@action"
 msgid "Re&quest Update"
 msgstr "Zahtijevaj"
 
-#: actionmanager.cpp:674
+#: actionmanager.cpp:703
 #, fuzzy, kde-format
 #| msgid "Send &Cancellation to Attendees"
 msgctxt "@action"
 msgid "Send &Cancellation to Attendees"
 msgstr "Slanje &otkazivanja učesnicima"
 
-#: actionmanager.cpp:682
+#: actionmanager.cpp:711
 #, kde-format
 msgid "Send Status &Update"
 msgstr "Pošalji &ažuriranj statusa"
 
-#: actionmanager.cpp:690
+#: actionmanager.cpp:719
 #, kde-format
 msgctxt "counter proposal"
 msgid "Request Chan&ge"
 msgstr "Brojač"
 
-#: actionmanager.cpp:698
+#: actionmanager.cpp:727
 #, fuzzy, kde-format
 #| msgid "&Mail Free Busy Information..."
 msgctxt "@action"
 msgid "&Mail Free Busy Information…"
 msgstr "Objavi informaciju slobodno-zauzeto"
 
-#: actionmanager.cpp:703
+#: actionmanager.cpp:732
 #, fuzzy, kde-format
 #| msgid "&Send as iCalendar..."
 msgid "&Send as iCalendar…"
 msgstr "&Pošalji kao iCalendar..."
 
-#: actionmanager.cpp:710
+#: actionmanager.cpp:739
 #, fuzzy, kde-format
 #| msgid "&Upload Free Busy Information"
 msgctxt "@action"
 msgid "&Upload Free Busy Information"
 msgstr "Objavi informaciju slobodno-zauzeto"
 
-#: actionmanager.cpp:716
+#: actionmanager.cpp:745
 #, kde-format
 msgid "&Address Book"
 msgstr "&Adresar"
 
-#: actionmanager.cpp:724
+#: actionmanager.cpp:753
 #, kde-format
 msgid "Show Date Navigator"
 msgstr "Prikaži datumski navigator"
 
-#: actionmanager.cpp:728
+#: actionmanager.cpp:757
 #, kde-format
 msgid "Show To-do View"
 msgstr "Vrsta prikaza"
 
-#: actionmanager.cpp:732
+#: actionmanager.cpp:761
 #, kde-format
 msgid "Show Item Viewer"
 msgstr "Prikazivač događaja"
 
-#: actionmanager.cpp:748
+#: actionmanager.cpp:777
 #, kde-format
 msgid "Show Calendar Manager"
 msgstr "Prikaži upravljač kalendara"
 
-#: actionmanager.cpp:762
+#: actionmanager.cpp:791
 #, fuzzy, kde-format
 #| msgid "Configure &Date && Time..."
 msgctxt "@action"
 msgid "Configure &Date && Time…"
 msgstr "Podesi &datum i vrijeme..."
 
-#: actionmanager.cpp:766
+#: actionmanager.cpp:795
 #, fuzzy, kde-format
 #| msgid "Manage View &Filters..."
 msgid "Manage View &Filters…"
 msgstr "Izmijeni &filtere..."
 
-#: actionmanager.cpp:770
+#: actionmanager.cpp:799
 #, fuzzy, kde-format
 #| msgid "Manage C&ategories..."
 msgctxt "@action"
 msgid "Manage T&ags…"
 msgstr "Izmijeni k&ategorije..."
 
-#: actionmanager.cpp:778
+#: actionmanager.cpp:807
 #, fuzzy, kde-format
 #| msgid "&Configure KOrganizer..."
 msgid "&Configure KOrganizer…"
 msgstr "&Konfiguriši KOrganizer..."
 
-#: actionmanager.cpp:856
+#: actionmanager.cpp:885
 #, kde-format
 msgid "1 incidence was imported successfully."
 msgid_plural "%1 incidences were imported successfully."
@@ -1236,22 +1353,22 @@ msgstr[0] "%1 slucaj je dodat uspješno"
 msgstr[1] "%1  slučaja su dodata uspješno"
 msgstr[2] "%1  slučaja je dodato uspješno"
 
-#: actionmanager.cpp:859
+#: actionmanager.cpp:888
 #, kde-format
 msgid "There was an error while merging the calendar: %1"
 msgstr "Dogodila se jedna greska dok smo spajali kalendar: %1"
 
-#: actionmanager.cpp:870
+#: actionmanager.cpp:899
 #, kde-format
 msgid "New calendar added successfully"
 msgstr "Novi kalendar je dodan uspješno"
 
-#: actionmanager.cpp:872
+#: actionmanager.cpp:901
 #, kde-format
 msgid "Could not add a calendar. Error: %1"
 msgstr "Ne mogu dodati kalendar. Greška:%1"
 
-#: actionmanager.cpp:929
+#: actionmanager.cpp:958
 #, fuzzy, kde-format
 #| msgctxt "@title::window"
 #| msgid "Edit Calendar Filters"
@@ -1259,7 +1376,7 @@ msgctxt "@title:window"
 msgid "Select Calendar File to Open"
 msgstr "Uredi filtere kalendara"
 
-#: actionmanager.cpp:957
+#: actionmanager.cpp:986
 #, fuzzy, kde-format
 #| msgctxt "@title::window"
 #| msgid "Edit Calendar Filters"
@@ -1267,130 +1384,138 @@ msgctxt "@title:window"
 msgid "Select Calendar File to Import"
 msgstr "Uredi filtere kalendara"
 
-#: actionmanager.cpp:988
+#: actionmanager.cpp:1017
 #, fuzzy, kde-format
 #| msgid "An error occurred: %1"
 msgid "An error occurred: %1 (url: %2)"
 msgstr "Desila se greška: %1"
 
-#: actionmanager.cpp:1006
+#: actionmanager.cpp:1035
 #, kde-format
 msgid "Cannot upload calendar to '%1'"
 msgstr "Ne mogu da okačim (upload) kalendar na '%1'."
 
-#: actionmanager.cpp:1012
+#: actionmanager.cpp:1041
 #, kde-format
 msgid "Saved calendar '%1'."
 msgstr "Snimio sam kalendar '%1'."
 
-#: actionmanager.cpp:1050
+#: actionmanager.cpp:1079
 #, kde-format
 msgid "Unable to save calendar to the file %1."
 msgstr "Ne mogu da snimim kalendar u datoteku %1."
 
-#: actionmanager.cpp:1050
+#: actionmanager.cpp:1079
 #, fuzzy, kde-format
 #| msgid "Error"
 msgctxt "@title:window"
 msgid "Error"
 msgstr "Greška"
 
-#: actionmanager.cpp:1095
+#: actionmanager.cpp:1105
+#, kde-format
+msgid "&Next Day"
+msgid_plural "&Next %1 Days"
+msgstr[0] "&Sljedeći %1 dan"
+msgstr[1] "&Sljedeća %1 dana"
+msgstr[2] "&Sljedećih %1 dana"
+
+#: actionmanager.cpp:1124
 #, kde-format
 msgid "Could not start control module for date and time format."
 msgstr ""
 "Nisam mogao da pokrenem kontrolni modul za formatiranje datuma i vremena."
 
-#: actionmanager.cpp:1274
+#: actionmanager.cpp:1303
 #, kde-format
 msgid "&Show Event"
 msgstr "&Prikaži događaj"
 
-#: actionmanager.cpp:1277
+#: actionmanager.cpp:1306
 #, fuzzy, kde-format
 #| msgid "&Edit Event..."
 msgid "&Edit Event…"
 msgstr "&Izmijeni događaj..."
 
-#: actionmanager.cpp:1280
+#: actionmanager.cpp:1309
 #, kde-format
 msgid "&Delete Event"
 msgstr "&Obriši događaj"
 
-#: actionmanager.cpp:1288
+#: actionmanager.cpp:1317
 #, kde-format
 msgid "&Show To-do"
 msgstr "&Prikaži zadatak"
 
-#: actionmanager.cpp:1291 kontactplugin/korganizer/todosummarywidget.cpp:322
+#: actionmanager.cpp:1320 kontactplugin/korganizer/todosummarywidget.cpp:322
 #, fuzzy, kde-format
 #| msgid "&Edit To-do..."
 msgid "&Edit To-do…"
 msgstr "&Izmijeni zadatak..."
 
-#: actionmanager.cpp:1294 kontactplugin/korganizer/todosummarywidget.cpp:324
+#: actionmanager.cpp:1323 kontactplugin/korganizer/todosummarywidget.cpp:324
 #, kde-format
 msgid "&Delete To-do"
 msgstr "&Obriši zadatak"
 
-#: actionmanager.cpp:1437 actionmanager.cpp:1543
+#: actionmanager.cpp:1466 actionmanager.cpp:1572
 #, kde-format
 msgid "Attach as &link"
 msgstr "Priloži kao &vezu"
 
-#: actionmanager.cpp:1438 actionmanager.cpp:1544
+#: actionmanager.cpp:1467 actionmanager.cpp:1573
 #, kde-format
 msgid "Attach &inline"
 msgstr "Priloži u &liniji"
 
-#: actionmanager.cpp:1439
+#: actionmanager.cpp:1468
 #, kde-format
 msgid "Attach inline &without attachments"
 msgstr "Priloži u liniji &bez priloga"
 
-#: actionmanager.cpp:1441 actionmanager.cpp:1546
+#: actionmanager.cpp:1470 actionmanager.cpp:1575
 #, kde-format
 msgid "C&ancel"
 msgstr "&Otkaži"
 
-#: actionmanager.cpp:1479
+#: actionmanager.cpp:1508
 #, kde-format
 msgid "Removing attachments from an email might invalidate its signature."
 msgstr "Uklanjanjem priloga može se pokvariti potpis e-poruke."
 
-#: actionmanager.cpp:1480
+#: actionmanager.cpp:1509
 #, fuzzy, kde-format
 #| msgid "Remove Attachments"
 msgctxt "@title:window"
 msgid "Remove Attachments"
 msgstr "Ukloni priloge"
 
-#: actionmanager.cpp:1631
+#: actionmanager.cpp:1660
 #, kde-format
 msgid "Undo: %1"
 msgstr "Poništi: %1"
 
-#: actionmanager.cpp:1634 actionmanager.cpp:1650
+#: actionmanager.cpp:1663 actionmanager.cpp:1679
 #, kde-format
 msgid "Undo"
 msgstr "Poništi"
 
-#: actionmanager.cpp:1644
+#: actionmanager.cpp:1673
 #, kde-format
 msgid "Redo: %1"
 msgstr "Ponovi (%1)"
 
-#: actionmanager.cpp:1647
+#: actionmanager.cpp:1676
 #, kde-format
 msgid "Redo"
 msgstr "Vrati"
 
-#: actionmanager.cpp:1661
+#: actionmanager.cpp:1690
 #, kde-format
 msgid "URL '%1' is invalid."
 msgstr "URL '%1' je nevažeći."
 
-#: actionmanager.cpp:1666
+#: actionmanager.cpp:1695
 #, fuzzy, kde-kuit-format
 #| msgctxt "@info"
 #| msgid ""
@@ -1413,20 +1538,20 @@ msgstr ""
 "ste odabrali dodavanje, tada će novi kalendar će biti stvoren za vas "
 "automatski.</p>"
 
-#: actionmanager.cpp:1674
+#: actionmanager.cpp:1703
 #, kde-format
 msgctxt "@title:window"
 msgid "Import Calendar"
 msgstr "Uvezi kalendar"
 
-#: actionmanager.cpp:1675
+#: actionmanager.cpp:1704
 #, fuzzy, kde-format
 #| msgid "Merge into existing calendar"
 msgctxt "@action:button"
 msgid "Merge into existing calendar"
 msgstr "Stopi sa postojećim kalendarom"
 
-#: actionmanager.cpp:1676
+#: actionmanager.cpp:1705
 #, fuzzy, kde-format
 #| msgid "Add as new calendar"
 msgctxt "@action:button"
@@ -1514,20 +1639,20 @@ msgctxt "@title:window"
 msgid "Replace Default Calendar?"
 msgstr "Novi kalendar"
 
-#: akonadicollectionview.cpp:580 akonadicollectionview.cpp:934
+#: akonadicollectionview.cpp:580 akonadicollectionview.cpp:933
 #, kde-kuit-format
 msgctxt "@info"
 msgid "<filename>%1</filename> is now your default event calendar"
 msgstr ""
 
-#: akonadicollectionview.cpp:740
+#: akonadicollectionview.cpp:739
 #, fuzzy, kde-format
 #| msgid "Add Calendar"
 msgctxt "@title:window"
 msgid "Add Calendar"
 msgstr "Dodaj kalendar"
 
-#: akonadicollectionview.cpp:819
+#: akonadicollectionview.cpp:818
 #, kde-kuit-format
 msgctxt "@info"
 msgid ""
@@ -1537,7 +1662,7 @@ msgid ""
 "be added again at any time.</note></para>"
 msgstr ""
 
-#: akonadicollectionview.cpp:829
+#: akonadicollectionview.cpp:828
 #, kde-kuit-format
 msgctxt "@info"
 msgid ""
@@ -1550,7 +1675,7 @@ msgid ""
 "para>"
 msgstr ""
 
-#: akonadicollectionview.cpp:840
+#: akonadicollectionview.cpp:839
 #, kde-kuit-format
 msgctxt "@info"
 msgid ""
@@ -1562,7 +1687,7 @@ msgid ""
 "to select a new default calendar folder.</warning></para>"
 msgstr ""
 
-#: akonadicollectionview.cpp:850
+#: akonadicollectionview.cpp:849
 #, kde-kuit-format
 msgctxt "@info"
 msgid ""
@@ -1574,7 +1699,7 @@ msgid ""
 "calendar.</warning></para>"
 msgstr ""
 
-#: akonadicollectionview.cpp:862
+#: akonadicollectionview.cpp:861
 #, kde-kuit-format
 msgctxt "@info"
 msgid ""
@@ -1583,7 +1708,7 @@ msgid ""
 "pressing the %2 button.</warning></para>"
 msgstr ""
 
-#: akonadicollectionview.cpp:869
+#: akonadicollectionview.cpp:868
 #, kde-kuit-format
 msgctxt "@info"
 msgid ""
@@ -1594,20 +1719,20 @@ msgid ""
 "default calendar.</warning></para>"
 msgstr ""
 
-#: akonadicollectionview.cpp:880
+#: akonadicollectionview.cpp:879
 #, fuzzy, kde-format
 #| msgid "Delete Calendar"
 msgctxt "@title:window"
 msgid "Delete Calendar"
 msgstr "Obriši kalendar"
 
-#: akonadicollectionview.cpp:939
+#: akonadicollectionview.cpp:938
 #, kde-format
 msgctxt "@info"
 msgid "Consider setting a default calendar for new events"
 msgstr ""
 
-#: akonadicollectionview.cpp:941
+#: akonadicollectionview.cpp:940
 #, kde-format
 msgctxt "@info"
 msgid "Consider adding a write-enabled events calendar"
@@ -2164,56 +2289,56 @@ msgid "&Go"
 msgstr "&Idi"
 
 #. i18n: ectx: Menu (actions)
-#: data/korganizer_part.rc:78 data/korganizerui.rc:74
+#: data/korganizer_part.rc:72 data/korganizerui.rc:68
 #, kde-format
 msgid "&Actions"
 msgstr "&Akcije"
 
 #. i18n: ectx: Menu (schedule)
-#: data/korganizer_part.rc:95 data/korganizerui.rc:93
+#: data/korganizer_part.rc:89 data/korganizerui.rc:87
 #, kde-format
 msgid "S&chedule"
 msgstr "&Zakaži"
 
 #. i18n: ectx: Menu (settings)
-#: data/korganizer_part.rc:107 data/korganizerui.rc:106
+#: data/korganizer_part.rc:101 data/korganizerui.rc:100
 #, kde-format
 msgid "&Settings"
 msgstr "&Postavke"
 
 #. i18n: ectx: Menu (sidebar)
-#: data/korganizer_part.rc:108 data/korganizerui.rc:109
+#: data/korganizer_part.rc:102 data/korganizerui.rc:103
 #, kde-format
 msgid "&Sidebar"
 msgstr "Vremenska traka"
 
 #. i18n: ectx: Menu (help)
-#: data/korganizer_part.rc:126 data/korganizerui.rc:124
+#: data/korganizer_part.rc:120 data/korganizerui.rc:118
 #, kde-format
 msgid "&Help"
 msgstr "&Pomoć"
 
 #. i18n: ectx: ToolBar (mainToolBar)
-#: data/korganizer_part.rc:131 data/korganizerui.rc:129
+#: data/korganizer_part.rc:125 data/korganizerui.rc:123
 #, kde-format
 msgctxt "main toolbar"
 msgid "Main"
 msgstr "Glavni"
 
 #. i18n: ectx: ToolBar (korganizer_toolbar)
-#: data/korganizer_part.rc:146 data/korganizerui.rc:144
+#: data/korganizer_part.rc:137 data/korganizerui.rc:135
 #, kde-format
 msgid "Views"
 msgstr "Pogledi"
 
 #. i18n: ectx: ToolBar (schedule_toolbar)
-#: data/korganizer_part.rc:156 data/korganizerui.rc:154
+#: data/korganizer_part.rc:146 data/korganizerui.rc:144
 #, kde-format
 msgid "Schedule"
 msgstr "Raspored"
 
 #. i18n: ectx: ToolBar (filter_toolbar)
-#: data/korganizer_part.rc:162 data/korganizerui.rc:161
+#: data/korganizer_part.rc:152 data/korganizerui.rc:151
 #, kde-format
 msgid "Filters Toolbar"
 msgstr "Traka sa filterima"
@@ -3599,17 +3724,17 @@ msgctxt "@info:shell"
 msgid "Lists the available options for user feedback"
 msgstr ""
 
-#: koviewmanager.cpp:426
+#: koviewmanager.cpp:517
 #, kde-format
 msgid "Merged calendar"
 msgstr "Stopljeni kalendar"
 
-#: koviewmanager.cpp:441
+#: koviewmanager.cpp:532
 #, kde-format
 msgid "Calendars Side by Side"
 msgstr "Kalendari jedan do drugog"
 
-#: koviewmanager.cpp:474
+#: koviewmanager.cpp:570
 #, kde-format
 msgid ""
 "Unable to display the work week since there are no work days configured. "
@@ -6227,7 +6352,7 @@ msgstr ""
 msgid "Agenda %1"
 msgstr "Agenda %1"
 
-#: views/multiagendaview/multiagendaview.cpp:340
+#: views/multiagendaview/multiagendaview.cpp:343
 #, fuzzy, kde-format
 #| msgid "Configure Side-By-Side View"
 msgctxt "@title:window"
@@ -6435,6 +6560,9 @@ msgstr "%1"
 msgctxt "4 digit year"
 msgid "%1"
 msgstr "%1"
+
+#~ msgid "W&ork Week"
+#~ msgstr "R&adna sedmica"
 
 #, fuzzy
 #~| msgid "Search For"
