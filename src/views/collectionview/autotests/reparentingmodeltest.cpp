@@ -83,7 +83,7 @@ class ModelSignalSpy : public QObject
 {
     Q_OBJECT
 public:
-    explicit ModelSignalSpy(QAbstractItemModel &model)
+    explicit ModelSignalSpy(const QAbstractItemModel &model)
         : start(0)
         , end(0)
     {

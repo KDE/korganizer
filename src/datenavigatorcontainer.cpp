@@ -299,7 +299,7 @@ void DateNavigatorContainer::setHighlightMode(bool highlightEvents, bool highlig
 {
     mNavigatorView->setHighlightMode(highlightEvents, highlightTodos, highlightJournals);
 
-    for (KDateNavigator *n : std::as_const(mExtraViews)) {
+    for (const KDateNavigator *n : std::as_const(mExtraViews)) {
         if (n) {
             n->setHighlightMode(highlightEvents, highlightTodos, highlightJournals);
         }

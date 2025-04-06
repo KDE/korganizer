@@ -965,7 +965,7 @@ void ActionManager::file_open()
 void ActionManager::file_open(const QUrl &url)
 {
     // is that URL already opened somewhere else? Activate that window
-    KOrg::MainWindow *korg = ActionManager::findInstance(url);
+    KOrg::MainWindow *korg = ActionManager::findInstance(url); /* cppcheck-suppress constVariablePointer */
     if ((nullptr != korg) && (korg != mMainWindow)) {
 #if KDEPIM_HAVE_X11
         KWindowSystem::activateWindow(korg->topLevelWidget()->windowHandle());
@@ -1463,13 +1463,13 @@ void ActionManager::openEventEditor(const QString &summary,
         action = KOPrefs::TodoAttachLink;
     } else if (IncidenceEditorNG::IncidenceEditorSettings::self()->defaultEmailAttachMethod() == IncidenceEditorNG::IncidenceEditorSettings::Ask) {
         auto menu = new QMenu(nullptr);
-        QAction *attachLink = menu->addAction(i18n("Attach as &link"));
-        QAction *attachInline = menu->addAction(i18n("Attach &inline"));
-        QAction *attachBody = menu->addAction(i18n("Attach inline &without attachments"));
+        const QAction *attachLink = menu->addAction(i18n("Attach as &link"));
+        const QAction *attachInline = menu->addAction(i18n("Attach &inline"));
+        const QAction *attachBody = menu->addAction(i18n("Attach inline &without attachments"));
         menu->addSeparator();
         menu->addAction(QIcon::fromTheme(QStringLiteral("dialog-cancel")), i18n("C&ancel"));
 
-        QAction *ret = menu->exec(QCursor::pos());
+        const QAction *ret = menu->exec(QCursor::pos());
         delete menu;
 
         if (ret == attachLink) {
@@ -1569,12 +1569,12 @@ void ActionManager::openTodoEditor(const QString &summary,
         action = KOPrefs::TodoAttachLink;
     } else if (KOPrefs::instance()->defaultTodoAttachMethod() == KOPrefs::TodoAttachAsk) {
         auto menu = new QMenu(nullptr);
-        QAction *attachLink = menu->addAction(i18n("Attach as &link"));
-        QAction *attachInline = menu->addAction(i18n("Attach &inline"));
+        const QAction *attachLink = menu->addAction(i18n("Attach as &link"));
+        const QAction *attachInline = menu->addAction(i18n("Attach &inline"));
         menu->addSeparator();
         menu->addAction(QIcon::fromTheme(QStringLiteral("dialog-cancel")), i18n("C&ancel"));
 
-        QAction *ret = menu->exec(QCursor::pos());
+        const QAction *ret = menu->exec(QCursor::pos());
         delete menu;
 
         if (ret == attachLink) {

@@ -771,7 +771,7 @@ Qt::ItemFlags ReparentingModel::flags(const QModelIndex &index) const
     if (!index.isValid() || !sourceModel()) {
         return Qt::NoItemFlags;
     }
-    Node *node = extractNode(index);
+    const Node *node = extractNode(index);
     if (!node->isSourceNode()) {
         return Qt::ItemIsEnabled | Qt::ItemIsUserCheckable;
     }
@@ -819,7 +819,7 @@ QModelIndex ReparentingModel::buddy(const QModelIndex &index) const
     if (!index.isValid() || !sourceModel()) {
         return {};
     }
-    Node *node = extractNode(index);
+    const Node *node = extractNode(index);
     if (node->isSourceNode()) {
         return mapFromSource(sourceModel()->buddy(mapToSource(index)));
     }

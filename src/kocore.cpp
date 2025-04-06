@@ -52,12 +52,12 @@ EventViews::CalendarDecoration::Decoration *KOCore::loadCalendarDecoration(const
     return KPluginFactory::instantiatePlugin<EventViews::CalendarDecoration::Decoration>(service).plugin;
 }
 
-void KOCore::addXMLGUIClient(QWidget *wdg, KXMLGUIClient *guiclient)
+void KOCore::addXMLGUIClient(QWidget *wdg, KXMLGUIClient *guiclient) /* cppcheck-suppress constParameterPointer */
 {
     mXMLGUIClients.insert(wdg, guiclient);
 }
 
-void KOCore::removeXMLGUIClient(QWidget *wdg)
+void KOCore::removeXMLGUIClient(QWidget *wdg) /* cppcheck-suppress constParameterPointer */
 {
     mXMLGUIClients.remove(wdg);
 }
@@ -68,7 +68,7 @@ KXMLGUIClient *KOCore::xmlguiClient(QWidget *wdg) const
         return nullptr;
     }
 
-    QWidget *topLevel = wdg->topLevelWidget();
+    QWidget *topLevel = wdg->topLevelWidget(); /* cppcheck-suppress constVariablePointer */
     QMap<QWidget *, KXMLGUIClient *>::ConstIterator it = mXMLGUIClients.find(topLevel);
     if (it != mXMLGUIClients.constEnd()) {
         return it.value();

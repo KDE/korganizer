@@ -35,7 +35,7 @@ void SummaryEventTester::test_Multiday()
     for (int i = 0; i < 5; ++i) {
         SummaryEventInfo::List events4 = SummaryEventInfo::eventsForDate(today.addDays(i), cal);
         QCOMPARE(2, events4.size());
-        SummaryEventInfo *ev4 = events4.at(1);
+        const SummaryEventInfo *ev4 = events4.at(1);
 
         QCOMPARE(ev4->summaryText, QString(multidayWithTimeInProgress + QString::fromLatin1(" (%1/7)").arg(i + 2)));
         QCOMPARE(ev4->timeRange,
@@ -57,7 +57,7 @@ void SummaryEventTester::test_Multiday()
     for (int i = 100; i <= 106; ++i) {
         SummaryEventInfo::List events5 = SummaryEventInfo::eventsForDate(today.addDays(i), cal);
         QCOMPARE(1, events5.size());
-        SummaryEventInfo *ev5 = events5.at(0);
+        const SummaryEventInfo *ev5 = events5.at(0);
         /*qDebug() << ev5->summaryText;
         qDebug() << ev5->daysToGo;
         qDebug() << i;*/

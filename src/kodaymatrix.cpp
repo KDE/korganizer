@@ -481,10 +481,10 @@ void KODayMatrix::popupMenu(const QDate &date)
 {
     QMenu popup(this);
     popup.setTitle(date.toString());
-    QAction *newEventAction = popup.addAction(QIcon::fromTheme(QStringLiteral("appointment-new")), i18n("New E&vent…"));
-    QAction *newTodoAction = popup.addAction(QIcon::fromTheme(QStringLiteral("task-new")), i18n("New &To-do…"));
-    QAction *newJournalAction = popup.addAction(QIcon::fromTheme(QStringLiteral("journal-new")), i18n("New &Journal…"));
-    QAction *ret = popup.exec(QCursor::pos());
+    const QAction *newEventAction = popup.addAction(QIcon::fromTheme(QStringLiteral("appointment-new")), i18n("New E&vent…"));
+    const QAction *newTodoAction = popup.addAction(QIcon::fromTheme(QStringLiteral("task-new")), i18n("New &To-do…"));
+    const QAction *newJournalAction = popup.addAction(QIcon::fromTheme(QStringLiteral("journal-new")), i18n("New &Journal…"));
+    const QAction *ret = popup.exec(QCursor::pos());
     if (ret == newEventAction) {
         Q_EMIT newEventSignal(date);
     } else if (ret == newTodoAction) {
@@ -627,8 +627,8 @@ void KODayMatrix::dropEvent(QDropEvent *e)
         } else if (keyboardModifiers & Qt::ShiftModifier) {
             action = DRAG_MOVE;
         } else {
-            QAction *copy = nullptr;
-            QAction *move = nullptr;
+            const QAction *copy = nullptr;
+            const QAction *move = nullptr;
             auto menu = new QMenu(this);
             if (exist) {
                 move = menu->addAction(QIcon::fromTheme(QStringLiteral("edit-paste")), i18n("&Move"));
@@ -641,7 +641,7 @@ void KODayMatrix::dropEvent(QDropEvent *e)
             menu->addSeparator();
             /*QAction *cancel =*/
             menu->addAction(QIcon::fromTheme(QStringLiteral("process-stop")), i18n("&Cancel"));
-            QAction *a = menu->exec(QCursor::pos());
+            const QAction *a = menu->exec(QCursor::pos());
             if (a == copy) {
                 action = DRAG_COPY;
             } else if (a == move) {
