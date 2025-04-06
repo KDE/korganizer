@@ -562,14 +562,14 @@ void ActionManager::initActions()
     mNextXDays->setWhatsThis(
         xi18nc("@info:whatsthis",
                "Select this option to show the next few days a a time in Agenda View. Configure the <placeholder>Next X Days</placeholder> setting in the "
-               "<interface>Views->General</interface> settings page to adjust the number of days shown."));
+               "<interface>Views->General</interface> settingst page to adjust the number of days shown."));
     agendaMenu->addAction(mNextXDays);
     mACollection->addAction(QStringLiteral("select_nextx"), mNextXDays);
     connect(mNextXDays, &QAction::triggered, mCalendarView->viewManager(), &KOViewManager::selectNextX);
 
     /** Agenda: Work Week View **/
     action = new QAction(QIcon::fromTheme(QStringLiteral("view-calendar-workweek")), i18nc("@action:inmenu", "W&eek Schedule"), this);
-    action->setText(i18nc("@action:inmenu agenda view show the the weekly schedule days only (eg. no weekends)", "Week Schedule"));
+    action->setText(i18nc("@action:inmenu agenda view show the weekly schedule days only (eg. no weekends)", "Week Schedule"));
     action->setStatusTip(i18nc("@info:status", "Show a week at a time showing days included in your weekly schedule only"));
     action->setToolTip(i18nc("@info:tooltip",
                              "Show a week at a time in Agenda View, excluding days that are not included in your weekly schedule (ie. weekends are excluded)"));
