@@ -83,14 +83,13 @@ void KOEventViewerDialog::editIncidence()
     if (CalendarSupport::hasIncidence(item)) {
         // make sure korganizer is running or the part is shown
         const QString desktopFile = QStandardPaths::locate(QStandardPaths::ApplicationsLocation, QStringLiteral("org.kde.korganizer.desktop"));
-        QString error;
         if (!QDBusConnection::sessionBus().interface()->startService(desktopFile).isValid()) {
             OrgKdeKorganizerKorganizerInterface korganizerIface(QStringLiteral("org.kde.korganizer"),
                                                                 QStringLiteral("/Korganizer"),
                                                                 QDBusConnection::sessionBus());
             korganizerIface.editIncidence(QString::number(item.id()));
         } else {
-            qCWarning(KORGANIZER_LOG) << "Failure starting korganizer:" << error;
+            qCWarning(KORGANIZER_LOG) << "Failure starting korganizer";
         }
     }
 }
@@ -102,14 +101,13 @@ void KOEventViewerDialog::showIncidenceContext()
     if (CalendarSupport::hasIncidence(item)) {
         // make sure korganizer is running or the part is shown
         const QString desktopFile = QStandardPaths::locate(QStandardPaths::ApplicationsLocation, QStringLiteral("org.kde.korganizer.desktop"));
-        QString error;
         if (!QDBusConnection::sessionBus().interface()->startService(desktopFile).isValid()) {
             OrgKdeKorganizerKorganizerInterface korganizerIface(QStringLiteral("org.kde.korganizer"),
                                                                 QStringLiteral("/Korganizer"),
                                                                 QDBusConnection::sessionBus());
             korganizerIface.showIncidenceContext(QString::number(item.id()));
         } else {
-            qCWarning(KORGANIZER_LOG) << "Failure starting korganizer:" << error;
+            qCWarning(KORGANIZER_LOG) << "Failure starting korganizer";
         }
     }
 }
