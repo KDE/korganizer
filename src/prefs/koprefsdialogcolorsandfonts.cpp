@@ -45,7 +45,7 @@ KOPrefsDialogColorsAndFonts::KOPrefsDialogColorsAndFonts(QObject *parent, const 
     // Use System color
     Korganizer::KPrefsWidBool *useSystemColorBool = addWidBool(KOPrefs::instance()->useSystemColorItem(), colorFrame);
 
-    QCheckBox *useSystemColorButton = useSystemColorBool->checkBox();
+    const QCheckBox *useSystemColorButton = useSystemColorBool->checkBox();
     QObject::connect(useSystemColorButton, &QCheckBox::toggled, this, &KOPrefsDialogColorsAndFonts::useSystemColorToggle);
     colorLayout->addWidget(useSystemColorBool->checkBox(), 1, 0, 1, 2);
 

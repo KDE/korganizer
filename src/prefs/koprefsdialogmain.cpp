@@ -56,7 +56,7 @@ KOPrefsDialogMain::KOPrefsDialogMain(QObject *parent, const KPluginMetaData &dat
     s = addWidString(CalendarSupport::KCalPrefs::instance()->userEmailItem(), mUserEmailSettings);
     emailSettingsLayout->addRow(s->label(), s->lineEdit());
 
-    Korganizer::KPrefsWidRadios *defaultEmailAttachMethod =
+    const Korganizer::KPrefsWidRadios *defaultEmailAttachMethod =
         addWidRadios(IncidenceEditorNG::IncidenceEditorSettings::self()->defaultEmailAttachMethodItem(), personalFrame);
     personalLayout->addWidget(defaultEmailAttachMethod->groupBox());
 
@@ -74,7 +74,7 @@ KOPrefsDialogMain::KOPrefsDialogMain(QObject *parent, const KPluginMetaData &dat
 
     Korganizer::KPrefsWidBool *confirmItem = addWidBool(KOPrefs::instance()->confirmItem(), saveFrame);
     saveLayout->addWidget(confirmItem->checkBox());
-    Korganizer::KPrefsWidRadios *destinationItem = addWidRadios(KOPrefs::instance()->destinationItem(), saveFrame);
+    const Korganizer::KPrefsWidRadios *destinationItem = addWidRadios(KOPrefs::instance()->destinationItem(), saveFrame);
 
     saveLayout->addWidget(destinationItem->groupBox());
     saveLayout->addStretch(1);
