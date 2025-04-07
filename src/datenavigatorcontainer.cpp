@@ -230,7 +230,7 @@ void DateNavigatorContainer::resizeAllContents()
         while (count > (mExtraViews.count() + 1)) {
             auto n = new KDateNavigator(this);
             mExtraViews.append(n);
-            for (const auto &calendar : mCalendars) {
+            for (const auto &calendar : std::as_const(mCalendars)) {
                 n->addCalendar(calendar);
             }
             connectNavigatorView(n);

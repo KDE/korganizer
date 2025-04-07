@@ -94,7 +94,8 @@ SearchDialog::SearchDialog(CalendarView *calendarview)
     //   connect(m_popupMenu, &KOEventPopupMenu::toggleTodoCompletedSignal, this,
     //           &SearchDialog::toggleTodoCompletedSignal);
 
-    for (const auto &calendar : m_calendarview->enabledCalendars()) {
+    const auto enabledCalendars = m_calendarview->enabledCalendars();
+    for (const auto &calendar : enabledCalendars) {
         m_listView->addCalendar(calendar);
     }
 
@@ -197,7 +198,8 @@ void SearchDialog::search(const QRegularExpression &regularExpression)
     KCalendarCore::Event::List events;
     KCalendarCore::Todo::List todos;
     KCalendarCore::Journal::List journals;
-    for (const auto &calendar : m_calendarview->enabledCalendars()) {
+    const auto enabledCalendars = m_calendarview->enabledCalendars();
+    for (const auto &calendar : enabledCalendars) {
         if (m_ui->dateRangeCheckbox->isChecked()) {
             if (m_ui->eventsCheck->isChecked()) {
                 if (m_ui->unfiltered->isChecked()) {
@@ -213,7 +215,7 @@ void SearchDialog::search(const QRegularExpression &regularExpression)
                 } else {
                     tmpTodos = calendar->todos();
                 }
-                for (const KCalendarCore::Todo::Ptr &todo : tmpTodos) {
+                for (const KCalendarCore::Todo::Ptr &todo : std::as_const(tmpTodos)) {
                     Q_ASSERT(todo);
                     if ((!todo->hasStartDate() && !todo->hasDueDate()) // undated
                         || (todo->hasStartDate() && (todo->dtStart().toLocalTime().date() >= startDt)
@@ -274,7 +276,8 @@ void SearchDialog::search(const QRegularExpression &regularExpression)
         Q_ASSERT(ev);
         auto collectionId = ev->customProperty("VOLATILE", "COLLECTION-ID").toLongLong();
         Akonadi::Item item;
-        for (const auto &calendar : m_calendarview->enabledCalendars()) {
+        const auto enabledCalendars2 = m_calendarview->enabledCalendars();
+        for (const auto &calendar : enabledCalendars2) {
             if (calendar->collection().id() == collectionId) {
                 item = calendar->item(ev);
             }

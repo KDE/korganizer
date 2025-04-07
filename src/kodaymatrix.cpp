@@ -88,7 +88,7 @@ QColor KODayMatrix::getShadedColor(const QColor &color) const
 
 KODayMatrix::~KODayMatrix()
 {
-    for (const auto &calendar : mCalendars) {
+    for (const auto &calendar : std::as_const(mCalendars)) {
         calendar->unregisterObserver(this);
     }
 
@@ -253,8 +253,9 @@ void KODayMatrix::updateIncidences()
 
 void KODayMatrix::updateJournals()
 {
-    for (const auto &calendar : mCalendars) {
-        for (const KCalendarCore::Incidence::Ptr &inc : calendar->incidences()) {
+    for (const auto &calendar : std::as_const(mCalendars)) {
+        const KCalendarCore::Incidence::List incidences = calendar->incidences();
+        for (const KCalendarCore::Incidence::Ptr &inc : incidences) {
             Q_ASSERT(inc);
             QDate d = inc->dtStart().toLocalTime().date();
             if (inc->type() == KCalendarCore::Incidence::TypeJournal && d >= mDays[0] && d <= mDays[NUMDAYS - 1] && !mEvents.contains(d)) {
@@ -280,8 +281,9 @@ void KODayMatrix::updateJournals()
 void KODayMatrix::updateTodos()
 {
     QDate d;
-    for (const auto &calendar : mCalendars) {
-        for (const KCalendarCore::Todo::Ptr &t : calendar->todos()) {
+    for (const auto &calendar : std::as_const(mCalendars)) {
+        const KCalendarCore::Todo::List todos = calendar->todos();
+        for (const KCalendarCore::Todo::Ptr &t : todos) {
             if (mEvents.count() == NUMDAYS) {
                 // No point in wasting cpu, all days are bold already
                 break;
@@ -321,7 +323,7 @@ void KODayMatrix::updateEvents()
         return;
     }
 
-    for (const auto &calendar : mCalendars) {
+    for (const auto &calendar : std::as_const(mCalendars)) {
         const auto eventlist = calendar->events(mDays[0], mDays[NUMDAYS - 1], calendar->timeZone());
         for (const KCalendarCore::Event::Ptr &ev : eventlist) {
             if (mEvents.count() == NUMDAYS) {

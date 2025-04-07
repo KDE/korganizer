@@ -391,7 +391,7 @@ void KOViewManager::addView(KOrg::BaseView *view, bool isTab)
     if (!isTab) {
         mMainView->viewStack()->addWidget(view);
     }
-    for (const auto &calendar : mCalendars) {
+    for (const auto &calendar : std::as_const(mCalendars)) {
         view->calendarAdded(calendar);
     }
 }

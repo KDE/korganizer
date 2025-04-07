@@ -1291,7 +1291,8 @@ bool CalendarView::incidence_unsub(const Akonadi::Item &item)
         return false;
     }
 
-    for (const auto &instance : mCalendar->instances(inc)) {
+    const KCalendarCore::Incidence::List instances = mCalendar->instances(inc);
+    for (const KCalendarCore::Incidence::Ptr &instance : instances) {
         KCalendarCore::Incidence::Ptr oldInstance(instance->clone());
         instance->setRelatedTo(QString());
         (void)mChanger->modifyIncidence(mCalendar->item(instance), oldInstance, this);
@@ -2290,7 +2291,8 @@ void CalendarView::deleteRecurringIncidence(const Akonadi::Item &todoItem)
     if (!mChanger->deletedRecently(todoItem.id())) {
         auto incidence = Akonadi::CalendarUtils::incidence(todoItem);
         if (incidence->recurs()) {
-            for (const auto &instance : mCalendar->instances(incidence)) {
+            const KCalendarCore::Incidence::List instances = mCalendar->instances(incidence);
+            for (const KCalendarCore::Incidence::Ptr &instance : instances) {
                 (void)mChanger->deleteIncidence(mCalendar->item(instance), this);
             }
         }

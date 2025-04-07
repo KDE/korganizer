@@ -169,7 +169,8 @@ void KOrganizerPlugin::processDropEvent(QDropEvent *event)
     }
 
     if (md->hasUrls()) {
-        for (const auto &url : md->urls()) {
+        const auto urls = md->urls();
+        for (const auto &url : urls) {
             if (url.scheme() == QLatin1StringView("akonadi") && url.hasQuery()) {
                 const QUrlQuery query(url.query());
                 if (!query.queryItemValue(QStringLiteral("item")).isEmpty()

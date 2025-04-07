@@ -632,7 +632,8 @@ void AkonadiCollectionView::selectionChanged(const QItemSelection &selected, con
 {
     bool changed = false;
 
-    for (const auto &index : selected.indexes()) {
+    const auto selectedIndexes = selected.indexes();
+    for (const auto &index : selectedIndexes) {
         if (!index.isValid()) {
             continue;
         }
@@ -644,7 +645,8 @@ void AkonadiCollectionView::selectionChanged(const QItemSelection &selected, con
         }
     }
 
-    for (const auto &index : deselected.indexes()) {
+    const auto deselectedIndexes = deselected.indexes();
+    for (const auto &index : deselectedIndexes) {
         if (!index.isValid()) {
             continue;
         }

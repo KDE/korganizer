@@ -121,7 +121,7 @@ void KOPrefsDialogPlugins::usrReadConfig()
 
     mDecorations = new QTreeWidgetItem(mTreeWidget, QStringList(i18nc("@title:group", "Calendar Decorations")));
 
-    for (const KPluginMetaData &plugin : plugins) {
+    for (const KPluginMetaData &plugin : std::as_const(plugins)) {
         PluginItem *item = new PluginItem(mDecorations, plugin);
 
         if (selectedPlugins.contains(plugin.pluginId())) {
