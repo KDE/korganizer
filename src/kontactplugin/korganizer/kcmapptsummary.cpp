@@ -46,7 +46,7 @@ KCMApptSummary::KCMApptSummary(QObject *parent, const KPluginMetaData &data)
 
     KAcceleratorManager::manage(widget());
 
-    load();
+    loadUp();
 }
 
 void KCMApptSummary::modified()
@@ -66,7 +66,7 @@ void KCMApptSummary::customDaysChanged(int value)
     mCustomDays->setSuffix(i18np(" day", " days", value));
 }
 
-void KCMApptSummary::load()
+void KCMApptSummary::loadUp()
 {
     KConfig config(QStringLiteral("kcmapptsummaryrc"));
     KConfigGroup group = config.group(QStringLiteral("Days"));

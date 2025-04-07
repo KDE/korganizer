@@ -17,11 +17,11 @@ class KCMApptSummary : public KCModule, public Ui::ApptSummaryConfig_Base
 public:
     explicit KCMApptSummary(QObject *parent, const KPluginMetaData &data);
 
-    void load() override;
     void save() override;
     void defaults() override;
 
 private:
+    void loadUp();
     void buttonClicked(QAbstractButton *button);
     void customDaysChanged(int value);
     void modified();

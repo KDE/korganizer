@@ -38,7 +38,7 @@ KCMTodoSummary::KCMTodoSummary(QObject *parent, const KPluginMetaData &data)
 
     KAcceleratorManager::manage(widget());
 
-    load();
+    loadUp();
 }
 
 KCMTodoSummary::~KCMTodoSummary() = default;
@@ -53,7 +53,7 @@ void KCMTodoSummary::customDaysChanged(int value)
     mCustomDays->setSuffix(i18np(" day", " days", value));
 }
 
-void KCMTodoSummary::load()
+void KCMTodoSummary::loadUp()
 {
     // Note: match default entry values with those in defaults() and
     // TodoSummaryWidget::updateView().
