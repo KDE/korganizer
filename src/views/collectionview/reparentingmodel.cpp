@@ -264,6 +264,7 @@ void ReparentingModel::updateNode(const ReparentingModel::Node::Ptr &node)
         (*it)->update(node);
         const QModelIndex i = index((*it).data());
         Q_EMIT dataChanged(i, i);
+        return;
     }
 
     qCWarning(KORGANIZER_LOG) << objectName() << "no node to update, create new node";
