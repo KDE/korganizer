@@ -38,12 +38,10 @@ void KOWindowList::removeWindow(KOrg::MainWindow *korg)
 
 KOrg::MainWindow *KOWindowList::findInstance(const QUrl &url)
 {
-    for (KOrg::MainWindow *inst : std::as_const(mWindowList)) {
-        if (inst && inst->getCurrentURL() == url) {
-            return inst;
-        }
-    }
-    return nullptr;
+    const auto it = std::find_if(mWindowList.begin(), mWindowList.end(), [url](const KOrg::MainWindow *inst) {
+        return (inst && inst->getCurrentURL() == url);
+    });
+    return (it == mWindowList.end()) ? nullptr : (*it);
 }
 
 KOrg::MainWindow *KOWindowList::defaultInstance()

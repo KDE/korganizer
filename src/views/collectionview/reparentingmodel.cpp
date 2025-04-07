@@ -5,8 +5,9 @@
  */
 
 #include "reparentingmodel.h"
-
 #include "korganizer_debug.h"
+
+#include <algorithm>
 
 /*
  * Notes:
@@ -209,11 +210,10 @@ void ReparentingModel::addNode(const ReparentingModel::Node::Ptr &node)
     // otherwise we run into the problem that while a node is being removed,
     // the async request could be triggered (due to a changed signal),
     // resulting in the node getting read immediately after it had been removed.
-    for (const ReparentingModel::Node::Ptr &existing : std::as_const(mProxyNodes)) {
-        if (*existing == *node) {
-            // qCDebug(KORGANIZER_LOG) << "node is already existing";
-            return;
-        }
+    if (std::any_of(mProxyNodes.begin(), mProxyNodes.end(), [node](const auto &existing) {
+            return *existing == *node;
+        })) {
+        return;
     }
     mNodesToAdd << node;
     qRegisterMetaType<Node::Ptr>("Node::Ptr");
@@ -222,12 +222,12 @@ void ReparentingModel::addNode(const ReparentingModel::Node::Ptr &node)
 
 void ReparentingModel::doAddNode(const Node::Ptr &node)
 {
-    for (const ReparentingModel::Node::Ptr &existing : std::as_const(mProxyNodes)) {
-        if (*existing == *node) {
-            // qCDebug(KORGANIZER_LOG) << "node is already existing";
-            return;
-        }
+    if (std::any_of(mProxyNodes.begin(), mProxyNodes.end(), [node](const auto &existing) {
+            return *existing == *node;
+        })) {
+        return;
     }
+
     // If a datachanged call triggered this through checkSourceIndex, right after a person node has been removed.
     // We'd end-up re-inserting the node that has just been removed. Therefore removeNode can cancel the pending addNode
     // call through mNodesToAdd.
@@ -257,13 +257,13 @@ void ReparentingModel::doAddNode(const Node::Ptr &node)
 
 void ReparentingModel::updateNode(const ReparentingModel::Node::Ptr &node)
 {
-    for (const ReparentingModel::Node::Ptr &existing : std::as_const(mProxyNodes)) {
-        if (*existing == *node) {
-            existing->update(node);
-            const QModelIndex i = index(existing.data());
-            Q_EMIT dataChanged(i, i);
-            return;
-        }
+    const auto it = std::find_if(mProxyNodes.begin(), mProxyNodes.end(), [node](const Node::Ptr &existing) {
+        return *existing == *node;
+    });
+    if (it != mProxyNodes.end()) {
+        (*it)->update(node);
+        const QModelIndex i = index((*it).data());
+        Q_EMIT dataChanged(i, i);
     }
 
     qCWarning(KORGANIZER_LOG) << objectName() << "no node to update, create new node";
@@ -338,13 +338,14 @@ void ReparentingModel::onSourceRowsAboutToBeInserted(const QModelIndex &parent, 
 
 ReparentingModel::Node *ReparentingModel::getReparentNode(const QModelIndex &sourceIndex)
 {
-    for (const Node::Ptr &proxyNode : std::as_const(mProxyNodes)) {
-        // Reparent source nodes according to the provided rules
-        // The proxy can be ignored if it is a duplicate, so only reparent to proxies that are in the model
-        if (proxyNode->parent && proxyNode->adopts(sourceIndex)) {
-            Q_ASSERT(validateNode(proxyNode.data()));
-            return proxyNode.data();
-        }
+    const auto it = std::find_if(mProxyNodes.begin(), mProxyNodes.end(), [sourceIndex](const Node::Ptr &proxyNode) {
+        // Re-parent source nodes according to the provided rules
+        // The proxy can be ignored if it is a duplicate, so only re-parent to proxies that are in the model
+        return (proxyNode->parent && proxyNode->adopts(sourceIndex));
+    });
+    if (it != mProxyNodes.end()) {
+        Q_ASSERT(validateNode((*it).data()));
+        return (*it).data();
     }
     return nullptr;
 }
@@ -617,13 +618,10 @@ QModelIndex ReparentingModel::mapToSource(const QModelIndex &idx) const
 
 ReparentingModel::Node *ReparentingModel::getSourceNode(const QModelIndex &sourceIndex) const
 {
-    for (Node *n : std::as_const(mSourceNodes)) {
-        if (n->sourceIndex == sourceIndex) {
-            return n;
-        }
-    }
-    // qCDebug(KORGANIZER_LOG) << objectName() <<  "no node found for " << sourceIndex;
-    return nullptr;
+    const auto it = std::find_if(mSourceNodes.begin(), mSourceNodes.end(), [sourceIndex](const Node *n) {
+        return n->sourceIndex == sourceIndex;
+    });
+    return it == mSourceNodes.end() ? nullptr : (*it);
 }
 
 QModelIndex ReparentingModel::mapFromSource(const QModelIndex &sourceIndex) const
