@@ -124,7 +124,9 @@ void TodoSummaryWidget::updateView()
         KCalendarCore::Todo::List todoListSorted2(prList);
         KCalendarCore::Todo::List todoListSorted3(prList);
         prList = Akonadi::ETMCalendar::sortTodos(std::move(todoListSorted1), KCalendarCore::TodoSortSummary, KCalendarCore::SortDirectionAscending);
+        /* cppcheck-suppress redundantAssignment */
         prList = Akonadi::ETMCalendar::sortTodos(std::move(todoListSorted2), KCalendarCore::TodoSortPriority, KCalendarCore::SortDirectionAscending);
+        /* cppcheck-suppress redundantAssignment */
         prList = Akonadi::ETMCalendar::sortTodos(std::move(todoListSorted3), KCalendarCore::TodoSortDueDate, KCalendarCore::SortDirectionAscending);
     }
 
