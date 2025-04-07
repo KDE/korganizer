@@ -19,11 +19,11 @@ public:
     explicit KCMTodoSummary(QObject *parent, const KPluginMetaData &data);
     ~KCMTodoSummary() override;
 
-    void load() override;
     void save() override;
     void defaults() override;
 
 private:
+    void loadUp();
     void modified();
     void customDaysChanged(int value);
 };
