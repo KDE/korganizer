@@ -40,7 +40,7 @@ KCMSDSummary::KCMSDSummary(QObject *parent, const KPluginMetaData &data)
 
     KAcceleratorManager::manage(widget());
 
-    load();
+    loadUp();
 }
 
 void KCMSDSummary::modified()
@@ -53,7 +53,7 @@ void KCMSDSummary::customDaysChanged(int value)
     mCustomDays->setSuffix(i18np(" day", " days", value));
 }
 
-void KCMSDSummary::load()
+void KCMSDSummary::loadUp()
 {
     KConfig config(QStringLiteral("kcmsdsummaryrc"));
 

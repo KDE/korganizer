@@ -73,7 +73,8 @@ public:
 
     void showStatusMessage(const QString &message) override;
 
-    void setTitle() override;
+    // FIXME: see the associated FIXME in korganizer_part.cpp
+    void setTitle() override; /* cppcheck-suppress virtualCallInConstructor */
 
 public Q_SLOTS:
     void slotChangeInfo(const Akonadi::Item &, const QDate &date);

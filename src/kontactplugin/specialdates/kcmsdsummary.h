@@ -18,11 +18,11 @@ class KCMSDSummary : public KCModule, public Ui::SDSummaryConfig_Base
 public:
     explicit KCMSDSummary(QObject *parent, const KPluginMetaData &data);
 
-    void load() override;
     void save() override;
     void defaults() override;
 
 private:
+    void loadUp();
     void modified();
     void customDaysChanged(int value);
 };
