@@ -561,8 +561,8 @@ void ActionManager::initActions()
     mNextXDays->setToolTip(i18nc("@info:tooltip", "Show the next few days at a time in Agenda View"));
     mNextXDays->setWhatsThis(
         xi18nc("@info:whatsthis",
-               "Select this option to show the next few days a a time in Agenda View. Configure the <placeholder>Next X Days</placeholder> setting in the "
-               "<interface>Views->General</interface> settingst page to adjust the number of days shown."));
+               "Select this option to show the next few days at a time in Agenda View. Configure the <placeholder>Next X Days</placeholder> setting in the "
+               "<interface>Views->General</interface> settings page to adjust the number of days shown."));
     agendaMenu->addAction(mNextXDays);
     mACollection->addAction(QStringLiteral("select_nextx"), mNextXDays);
     connect(mNextXDays, &QAction::triggered, mCalendarView->viewManager(), &KOViewManager::selectNextX);
