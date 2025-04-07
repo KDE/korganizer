@@ -16,6 +16,6 @@ public:
     explicit KOPrefsDialogGroupScheduling(QObject *parent, const KPluginMetaData &data);
 
 protected:
-    void usrWriteConfig() override;
-    void usrReadConfig() override;
+    void usrWriteConfig() override; /* cppcheck-suppress uselessOverride */
+    void usrReadConfig() override; /* cppcheck-suppress uselessOverride */
 };
