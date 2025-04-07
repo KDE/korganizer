@@ -71,11 +71,6 @@ void KOEventViewerDialog::setIncidence(const Akonadi::Item &incidence, const QDa
     mEventViewer->setIncidence(incidence, date);
 }
 
-void KOEventViewerDialog::addText(const QString &text)
-{
-    mEventViewer->setHeaderText(text);
-}
-
 void KOEventViewerDialog::editIncidence()
 {
     const Akonadi::Item item = mEventViewer->item();

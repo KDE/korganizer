@@ -37,7 +37,6 @@ public:
 
         bool isSourceNode() const;
         Node::Ptr searchNode(Node *node);
-        void reparent(Node *node);
         void addChild(const Node::Ptr &node);
         int row() const;
         void clearHierarchy();
@@ -88,7 +87,6 @@ public:
     void addNode(const Node::Ptr &node);
     void updateNode(const Node::Ptr &node);
     void removeNode(const Node &node);
-    void setNodes(const QList<Node::Ptr> &nodes);
     void clear();
 
     int rowCount(const QModelIndex &parent = QModelIndex()) const override;

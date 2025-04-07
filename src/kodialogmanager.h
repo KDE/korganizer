@@ -49,8 +49,6 @@ public:
 
     [[nodiscard]] IncidenceEditorNG::IncidenceDialog *createDialog(const Akonadi::Item &item);
 
-    void updateSearchDialog();
-
     void connectTypeAhead(IncidenceEditorNG::IncidenceDialog *editor, KOEventView *view);
 
 public Q_SLOTS:

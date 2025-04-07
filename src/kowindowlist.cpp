@@ -36,20 +36,6 @@ void KOWindowList::removeWindow(KOrg::MainWindow *korg)
     }
 }
 
-bool KOWindowList::lastInstance()
-{
-    const int countWindow = mWindowList.count();
-    if (countWindow == 1 && !mDefaultWindow) {
-        return true;
-    }
-
-    if (countWindow == 0 && mDefaultWindow) {
-        return true;
-    } else {
-        return false;
-    }
-}
-
 KOrg::MainWindow *KOWindowList::findInstance(const QUrl &url)
 {
     for (KOrg::MainWindow *inst : std::as_const(mWindowList)) {

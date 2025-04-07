@@ -106,12 +106,6 @@ public:
     QString getHolidayLabel(int offset) const;
 
     /**
-     * Adds all actual selected days from mSelStart to mSelEnd to the supplied
-     * DateList.
-     */
-    void addSelectedDaysTo(KCalendarCore::DateList &);
-
-    /**
      * Sets the actual to be displayed selection in the day matrix starting
      * from start and ending with end. Theview must be manually updated by
      * calling repaint. (?)
@@ -124,31 +118,6 @@ public:
       Clear all selections.
     */
     void clearSelection();
-
-    /** Is today visible in the view? Keep this in sync with
-     * the values today (below) can take.
-     */
-    [[nodiscard]] bool isTodayVisible() const
-    {
-        return mToday >= 0;
-    }
-
-    /**
-     * If today is visible, then we can find out if today is
-     * near the beginning or the end of the month.
-     * This is dependent on today remaining the index
-     * in the array of visible dates and going from
-     * top left (0) to bottom right (41).
-     */
-    [[nodiscard]] bool isBeginningOfMonth() const
-    {
-        return mToday <= 8;
-    }
-
-    [[nodiscard]] bool isEndOfMonth() const
-    {
-        return mToday >= 27;
-    }
 
     /**
      *  Reimplemented from Akonadi::ETMCalendar

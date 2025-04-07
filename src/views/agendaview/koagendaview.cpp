@@ -198,11 +198,6 @@ void KOAgendaView::showIncidences(const Akonadi::Item::List &incidences, const Q
     d->mAgendaView->showIncidences(incidences, date);
 }
 
-void KOAgendaView::changeIncidenceDisplayAdded(const Akonadi::Item &)
-{
-    // Do nothing, EventViews::AgendaView knows when items change
-}
-
 void KOAgendaView::changeIncidenceDisplay(const Akonadi::Item &, Akonadi::IncidenceChanger::ChangeType)
 {
     // Do nothing, EventViews::AgendaView knows when items change

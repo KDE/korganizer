@@ -89,18 +89,6 @@ public:
      */
     virtual void setTypeAheadReceiver(QObject *o);
 
-    /*
-     * Returns true if the view item, that represents a to-do, should use the "completed"
-     * pixmap.
-     *
-     * @param todo The to-do associated with the view item.
-     * @param date The date in which the item appears in the view, for non recurring to-dos
-     * this is the same as the start date, but, for recurring to-dos this is the date of
-     * a particular occurrence.
-     *
-     */
-    static bool usesCompletedTodoPixmap(const Akonadi::Item &todo, const QDate &date);
-
     bool supportsDateNavigation() const override
     {
         return true;
@@ -108,12 +96,6 @@ public:
 
 public Q_SLOTS:
     void focusChanged(QWidget *, QWidget *);
-
-    /**
-     * Performs the default action for an incidence, e.g. open the event editor,
-     * when double-clicking an event in the agenda view.
-     */
-    void defaultAction(const Akonadi::Item &incidence);
 
 Q_SIGNALS:
     /**

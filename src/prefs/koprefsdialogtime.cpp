@@ -275,22 +275,4 @@ void KOPrefsDialogTime::usrWriteConfig()
     setNeedsSave(false);
 }
 
-void KOPrefsDialogTime::setCombo(KComboBox *combo, const QString &text, const QStringList *tags)
-{
-    if (tags) {
-        int i = tags->indexOf(text);
-        if (i > 0) {
-            combo->setCurrentIndex(i);
-        }
-    } else {
-        const int numberOfElements{combo->count()};
-        for (int i = 0; i < numberOfElements; ++i) {
-            if (combo->itemText(i) == text) {
-                combo->setCurrentIndex(i);
-                break;
-            }
-        }
-    }
-}
-
 #include "koprefsdialogtime.moc"

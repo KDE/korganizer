@@ -36,8 +36,6 @@ public:
 
     void setIncidence(const Akonadi::Item &incidence, const QDate &date);
 
-    void addText(const QString &text);
-
     [[nodiscard]] QPushButton *editButton() const;
 
 private:

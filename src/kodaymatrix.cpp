@@ -96,37 +96,6 @@ KODayMatrix::~KODayMatrix()
     delete[] mDayLabels;
 }
 
-void KODayMatrix::addSelectedDaysTo(KCalendarCore::DateList &selDays)
-{
-    if (mSelStart == NOSELECTION) {
-        return;
-    }
-
-    // cope with selection being out of matrix limits at top (< 0)
-    int i0 = mSelStart;
-    if (i0 < 0) {
-        for (int i = i0; i < 0; ++i) {
-            selDays.append(mDays[0].addDays(i));
-        }
-        i0 = 0;
-    }
-
-    // cope with selection being out of matrix limits at bottom (> NUMDAYS-1)
-    if (mSelEnd > NUMDAYS - 1) {
-        for (int i = i0; i <= NUMDAYS - 1; ++i) {
-            selDays.append(mDays[i]);
-        }
-        for (int i = NUMDAYS; i < mSelEnd; ++i) {
-            selDays.append(mDays[0].addDays(i));
-        }
-    } else {
-        // apply normal routine to selection being entirely within matrix limits
-        for (int i = i0; i <= mSelEnd; ++i) {
-            selDays.append(mDays[i]);
-        }
-    }
-}
-
 void KODayMatrix::setSelectedDaysFrom(QDate start, QDate end)
 {
     if (mStartDate.isValid()) {

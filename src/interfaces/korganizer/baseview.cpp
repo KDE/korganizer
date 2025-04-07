@@ -120,21 +120,6 @@ QDateTime BaseView::startDateTime() const
     return d->startDateTime;
 }
 
-QDateTime BaseView::endDateTime() const
-{
-    return d->endDateTime;
-}
-
-QDateTime BaseView::actualStartDateTime() const
-{
-    return d->actualStartDateTime;
-}
-
-QDateTime BaseView::actualEndDateTime() const
-{
-    return d->actualEndDateTime;
-}
-
 void BaseView::showConfigurationDialog(QWidget *)
 {
 }

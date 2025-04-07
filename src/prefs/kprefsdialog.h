@@ -102,8 +102,6 @@ public:
     void readConfig() override;
     void writeConfig() override;
 
-    QList<QWidget *> widgets() const override;
-
 private:
     void init(QWidget *parent);
     KConfigSkeletonItem *mItem = nullptr;
@@ -143,8 +141,6 @@ public:
 
     void readConfig() override;
     void writeConfig() override;
-
-    QList<QWidget *> widgets() const override;
 
 private:
     KConfigSkeleton::ItemInt *mItem = nullptr;
@@ -255,11 +251,6 @@ public:
       Return QLabel used by this widget.
     */
     QLabel *label();
-
-    /**
-      Return KDateComboBox used by this widget.
-    */
-    KDateComboBox *dateEdit();
 
     void readConfig() override;
     void writeConfig() override;
@@ -411,8 +402,6 @@ public:
     void readConfig() override;
     void writeConfig() override;
 
-    QList<QWidget *> widgets() const override;
-
 private:
     KConfigSkeleton::ItemEnum *mItem = nullptr;
 
@@ -449,7 +438,6 @@ public:
 
     KComboBox *comboBox();
 
-    QList<QWidget *> widgets() const override;
     /**
       Return QLabel used by this control element.
     */
@@ -498,8 +486,6 @@ public:
     void readConfig() override;
     void writeConfig() override;
 
-    QList<QWidget *> widgets() const override;
-
 private:
     KConfigSkeleton::ItemString *mItem = nullptr;
 
@@ -546,8 +532,6 @@ public:
 
     void readConfig() override;
     void writeConfig() override;
-
-    QList<QWidget *> widgets() const override;
 
 private:
     KConfigSkeleton::ItemPath *mItem = nullptr;
@@ -614,14 +598,6 @@ public:
     KPrefsWidInt *addWidInt(KConfigSkeleton::ItemInt *item, QWidget *parent = nullptr);
 
     /**
-      Register a @ref KPrefsWidDate object.
-
-      @param item    The KConfigSkeletonItem representing the preferences entry.
-      @param parent  Parent widget.
-    */
-    KPrefsWidDate *addWidDate(KConfigSkeleton::ItemDateTime *item, QWidget *parent = nullptr);
-
-    /**
       Register a @ref KPrefsWidTime object.
 
       @param item    The KConfigSkeletonItem representing the preferences entry.
@@ -683,14 +659,6 @@ public:
     KPrefsWidPath *addWidPath(KConfigSkeleton::ItemPath *item, QWidget *parent = nullptr, const QString &filter = QString(), KFile::Modes mode = KFile::File);
 
     /**
-      Register a password @ref KPrefsWidString object, with echomode set to KLineEdit::Password.
-
-      @param item    The KConfigSkeletonItem representing the preferences entry.
-      @param parent  Parent widget.
-    */
-    KPrefsWidString *addWidPassword(KConfigSkeleton::ItemString *item, QWidget *parent = nullptr);
-
-    /**
       Register a @ref KPrefsWidFont object.
 
       @param item       The KConfigSkeletonItem representing the preferences
@@ -745,8 +713,6 @@ public:
       Destructor.
     */
     ~KPrefsDialog() override;
-
-    void autoCreate();
 
 public Q_SLOTS:
     /** Set all widgets to default values. */

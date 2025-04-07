@@ -396,16 +396,6 @@ void KOViewManager::addView(KOrg::BaseView *view, bool isTab)
     }
 }
 
-bool KOViewManager::isAgendaViewAction(QAction *action, KActionCollection *ac)
-{
-    bool boolVal = false;
-    if (action && ac) {
-        boolVal = (action == ac->action(QStringLiteral("select_day")) || action == ac->action(QStringLiteral("select_nextx"))
-                   || action == ac->action(QStringLiteral("select_workweek")) || action == ac->action(QStringLiteral("select_week")));
-    }
-    return boolVal;
-}
-
 void KOViewManager::viewActionEnable(QObject *obj)
 {
     viewActionEnable(qobject_cast<QAction *>(obj));

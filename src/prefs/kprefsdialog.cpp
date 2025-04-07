@@ -123,13 +123,6 @@ QCheckBox *KPrefsWidBool::checkBox()
     return mCheck;
 }
 
-QList<QWidget *> KPrefsWidBool::widgets() const
-{
-    QList<QWidget *> widgets;
-    widgets.append(mCheck);
-    return widgets;
-}
-
 KPrefsWidInt::KPrefsWidInt(KConfigSkeleton::ItemInt *item, QWidget *parent)
     : mItem(item)
 {
@@ -173,14 +166,6 @@ QLabel *KPrefsWidInt::label() const
 QSpinBox *KPrefsWidInt::spinBox()
 {
     return mSpin;
-}
-
-QList<QWidget *> KPrefsWidInt::widgets() const
-{
-    QList<QWidget *> widgets;
-    widgets.append(mLabel);
-    widgets.append(mSpin);
-    return widgets;
 }
 
 KPrefsWidColor::KPrefsWidColor(KConfigSkeleton::ItemColor *item, QWidget *parent)
@@ -411,11 +396,6 @@ QLabel *KPrefsWidDate::label()
     return mLabel;
 }
 
-KDateComboBox *KPrefsWidDate::dateEdit()
-{
-    return mDateEdit;
-}
-
 KPrefsWidRadios::KPrefsWidRadios(KConfigSkeleton::ItemEnum *item, QWidget *parent)
     : mItem(item)
 {
@@ -458,13 +438,6 @@ void KPrefsWidRadios::writeConfig()
     mItem->setValue(mGroup->checkedId());
 }
 
-QList<QWidget *> KPrefsWidRadios::widgets() const
-{
-    QList<QWidget *> w;
-    w.append(mBox);
-    return w;
-}
-
 KPrefsWidCombo::KPrefsWidCombo(KConfigSkeleton::ItemEnum *item, QWidget *parent)
     : mItem(item)
 {
@@ -494,13 +467,6 @@ void KPrefsWidCombo::readConfig()
 void KPrefsWidCombo::writeConfig()
 {
     mItem->setValue(mCombo->currentIndex());
-}
-
-QList<QWidget *> KPrefsWidCombo::widgets() const
-{
-    QList<QWidget *> w;
-    w.append(mCombo);
-    return w;
 }
 
 KComboBox *KPrefsWidCombo::comboBox()
@@ -553,14 +519,6 @@ KLineEdit *KPrefsWidString::lineEdit()
     return mEdit;
 }
 
-QList<QWidget *> KPrefsWidString::widgets() const
-{
-    QList<QWidget *> widgets;
-    widgets.append(mLabel);
-    widgets.append(mEdit);
-    return widgets;
-}
-
 KPrefsWidPath::KPrefsWidPath(KConfigSkeleton::ItemPath *item, QWidget *parent, const QString &filter, KFile::Modes mode)
     : mItem(item)
 {
@@ -600,14 +558,6 @@ QLabel *KPrefsWidPath::label()
 KUrlRequester *KPrefsWidPath::urlRequester()
 {
     return mURLRequester;
-}
-
-QList<QWidget *> KPrefsWidPath::widgets() const
-{
-    QList<QWidget *> widgets;
-    widgets.append(mLabel);
-    widgets.append(mURLRequester);
-    return widgets;
 }
 
 KPrefsWidManager::KPrefsWidManager(KConfigSkeleton *prefs)
@@ -650,13 +600,6 @@ KPrefsWidTime *KPrefsWidManager::addWidTime(KConfigSkeleton::ItemDateTime *item,
 KPrefsWidDuration *KPrefsWidManager::addWidDuration(KConfigSkeleton::ItemDateTime *item, const QString &format, QWidget *parent)
 {
     auto w = new KPrefsWidDuration(item, format, parent);
-    addWid(w);
-    return w;
-}
-
-KPrefsWidDate *KPrefsWidManager::addWidDate(KConfigSkeleton::ItemDateTime *item, QWidget *parent)
-{
-    auto w = new KPrefsWidDate(item, parent);
     addWid(w);
     return w;
 }
@@ -706,13 +649,6 @@ KPrefsWidString *KPrefsWidManager::addWidString(KConfigSkeleton::ItemString *ite
 KPrefsWidPath *KPrefsWidManager::addWidPath(KConfigSkeleton::ItemPath *item, QWidget *parent, const QString &filter, KFile::Modes mode)
 {
     auto w = new KPrefsWidPath(item, parent, filter, mode);
-    addWid(w);
-    return w;
-}
-
-KPrefsWidString *KPrefsWidManager::addWidPassword(KConfigSkeleton::ItemString *item, QWidget *parent)
-{
-    auto w = new KPrefsWidString(item, parent, KLineEdit::Password);
     addWid(w);
     return w;
 }
@@ -772,62 +708,6 @@ KPrefsDialog::KPrefsDialog(KConfigSkeleton *prefs, QWidget *parent, bool modal)
 }
 
 KPrefsDialog::~KPrefsDialog() = default;
-
-void KPrefsDialog::autoCreate()
-{
-    KConfigSkeletonItem::List items = prefs()->items();
-
-    QMap<QString, QWidget *> mGroupPages;
-    QMap<QString, QGridLayout *> mGroupLayouts;
-    QMap<QString, int> mCurrentRows;
-
-    KConfigSkeletonItem::List::ConstIterator it;
-    for (it = items.constBegin(); it != items.constEnd(); ++it) {
-        QString group = (*it)->group();
-
-        QWidget *page = nullptr;
-        QGridLayout *layout = nullptr;
-        int currentRow;
-        if (!mGroupPages.contains(group)) {
-            page = new QWidget(this);
-            addPage(page, group);
-            layout = new QGridLayout(page);
-            mGroupPages.insert(group, page);
-            mGroupLayouts.insert(group, layout);
-            currentRow = 0;
-            mCurrentRows.insert(group, currentRow);
-        } else {
-            page = mGroupPages[group];
-            layout = mGroupLayouts[group];
-            currentRow = mCurrentRows[group];
-        }
-
-        KPrefsWid *wid = KPrefsWidFactory::create(*it, page);
-
-        if (wid) {
-            QList<QWidget *> widgets = wid->widgets();
-            if (widgets.count() == 1) {
-                layout->addWidget(widgets[0], currentRow, currentRow, 0, 1);
-            } else if (widgets.count() == 2) {
-                layout->addWidget(widgets[0], currentRow, 0);
-                layout->addWidget(widgets[1], currentRow, 1);
-            } else {
-                qCritical() << "More widgets than expected:" << widgets.count();
-            }
-
-            if ((*it)->isImmutable()) {
-                QList<QWidget *>::Iterator it2;
-                for (it2 = widgets.begin(); it2 != widgets.end(); ++it2) {
-                    (*it2)->setEnabled(false);
-                }
-            }
-            addWid(wid);
-            mCurrentRows.insert(group, ++currentRow);
-        }
-    }
-
-    readConfig();
-}
 
 void KPrefsDialog::setDefaults()
 {

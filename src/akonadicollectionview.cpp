@@ -348,31 +348,6 @@ public:
         : QSortFilterProxyModel(parent)
     {
     }
-
-protected:
-    [[nodiscard]] bool checkChildren(const QModelIndex &index, int role, const QVariant &value) const
-    {
-        const QModelIndex sourceIndex = mapToSource(index);
-        for (int i = 0; i < sourceModel()->rowCount(sourceIndex); ++i) {
-            const QModelIndex child = sourceModel()->index(i, 0, sourceIndex);
-            if (child.data(role) != value) {
-                return false;
-            }
-        }
-        return true;
-    }
-
-    void setChildren(const QModelIndex &sourceIndex, const QVariant &value, int role) const
-    {
-        if (!sourceIndex.isValid()) {
-            return;
-        }
-        for (int i = 0; i < sourceModel()->rowCount(sourceIndex); ++i) {
-            const QModelIndex child = sourceModel()->index(i, 0, sourceIndex);
-            sourceModel()->setData(child, value, role);
-            setChildren(child, value, role);
-        }
-    }
 };
 }
 
@@ -621,11 +596,6 @@ void AkonadiCollectionView::setCollectionSelectionProxyModel(KCheckableProxyMode
     mBaseModel->setSourceModel(mSelectionProxyModel);
 
     connect(m->selectionModel(), &QItemSelectionModel::selectionChanged, this, &AkonadiCollectionView::selectionChanged);
-}
-
-KCheckableProxyModel *AkonadiCollectionView::collectionSelectionProxyModel() const
-{
-    return mSelectionProxyModel;
 }
 
 void AkonadiCollectionView::selectionChanged(const QItemSelection &selected, const QItemSelection &deselected)

@@ -179,10 +179,6 @@ public:
     virtual void setDateRange(const QDateTime &start, const QDateTime &end, const QDate &preferredMonth = QDate());
 
     QDateTime startDateTime() const;
-    QDateTime endDateTime() const;
-
-    QDateTime actualStartDateTime() const;
-    QDateTime actualEndDateTime() const;
 
     /** Returns true if the view supports navigation through the date navigator
         ( selecting a date range, changing month, changing year, etc. )

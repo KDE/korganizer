@@ -20,7 +20,6 @@ public:
 
     SummaryEventInfo();
 
-    static List eventsForDate(QDate date, const Akonadi::ETMCalendar::Ptr &calendar);
     static List eventsForRange(QDate start,
                                QDate end, // range is inclusive
                                const Akonadi::ETMCalendar::Ptr &calendar);

@@ -52,8 +52,6 @@ public Q_SLOTS:
 
     void selectPreviousYear();
     void selectPreviousMonth(const QDate &currentMonth = QDate(), const QDate &selectionLowerLimit = QDate(), const QDate &selectionUpperLimit = QDate());
-    void selectPreviousWeek();
-    void selectNextWeek();
     void selectNextMonth(const QDate &currentMonth = QDate(), const QDate &selectionLowerLimit = QDate(), const QDate &selectionUpperLimit = QDate());
     void selectNextYear();
 

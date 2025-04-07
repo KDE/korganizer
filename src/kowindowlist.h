@@ -37,11 +37,6 @@ public:
     ~KOWindowList() override;
 
     /**
-      Is there only one instance left?
-    */
-    [[nodiscard]] bool lastInstance();
-
-    /**
       Is there a instance with this URL?
     */
     KOrg::MainWindow *findInstance(const QUrl &url);

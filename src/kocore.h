@@ -41,8 +41,6 @@ public:
 
     void reloadPlugins();
 
-    KIdentityManagementCore::IdentityManager *identityManager();
-
 protected:
     KOCore();
 

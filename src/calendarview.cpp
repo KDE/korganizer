@@ -1231,12 +1231,6 @@ void CalendarView::newSubTodo(const Akonadi::Item &parentTodo)
     dialog->load(item);
 }
 
-void CalendarView::newFloatingEvent()
-{
-    const QDate date = activeDate();
-    newEvent(QDateTime(date, QTime(12, 0, 0)), QDateTime(date, QTime(12, 0, 0)), true);
-}
-
 bool CalendarView::addIncidence(const QString &ical)
 {
     KCalendarCore::ICalFormat format;
@@ -1248,22 +1242,6 @@ bool CalendarView::addIncidence(const QString &ical)
 bool CalendarView::addIncidence(const KCalendarCore::Incidence::Ptr &incidence)
 {
     return incidence ? mChanger->createIncidence(incidence, Akonadi::Collection(), this) != -1 : false;
-}
-
-void CalendarView::appointment_show()
-{
-    const Akonadi::Item item = selectedIncidence();
-    if (CalendarSupport::hasIncidence(item)) {
-        showIncidence(item);
-    }
-}
-
-void CalendarView::appointment_edit()
-{
-    const Akonadi::Item item = selectedIncidence();
-    if (CalendarSupport::hasIncidence(item)) {
-        editIncidence(item);
-    }
 }
 
 void CalendarView::appointment_delete()
@@ -1702,11 +1680,6 @@ void CalendarView::schedule_cancel(const Akonadi::Item &incidence)
     schedule(KCalendarCore::iTIPCancel, incidence);
 }
 
-void CalendarView::schedule_add(const Akonadi::Item &incidence)
-{
-    schedule(KCalendarCore::iTIPAdd, incidence);
-}
-
 void CalendarView::schedule_reply(const Akonadi::Item &incidence)
 {
     schedule(KCalendarCore::iTIPReply, incidence);
@@ -1715,11 +1688,6 @@ void CalendarView::schedule_reply(const Akonadi::Item &incidence)
 void CalendarView::schedule_counter(const Akonadi::Item &incidence)
 {
     schedule(KCalendarCore::iTIPCounter, incidence);
-}
-
-void CalendarView::schedule_declinecounter(const Akonadi::Item &incidence)
-{
-    schedule(KCalendarCore::iTIPDeclineCounter, incidence);
 }
 
 void CalendarView::schedule_forward(const Akonadi::Item &item)
@@ -1771,14 +1739,6 @@ void CalendarView::openAddressbook()
 bool CalendarView::isReadOnly() const
 {
     return mReadOnly;
-}
-
-void CalendarView::setReadOnly(bool readOnly)
-{
-    if (mReadOnly != readOnly) {
-        mReadOnly = readOnly;
-        Q_EMIT readOnlyChanged(mReadOnly);
-    }
 }
 
 void CalendarView::print()
@@ -1859,13 +1819,6 @@ void CalendarView::exportICalendar()
             KMessageBox::error(this, i18nc("@info", "Cannot write iCalendar file %1. %2", filename, errmess));
         }
     }
-}
-
-void CalendarView::eventUpdated(const Akonadi::Item &)
-{
-    // Don't call updateView here. The code, which has caused the update of the
-    // event is responsible for updating the view.
-    //  updateView();
 }
 
 void CalendarView::processMainViewSelection(const Akonadi::Item &item, const QDate &date)
@@ -2006,29 +1959,6 @@ QString CalendarView::currentFilterName() const
     }
 }
 
-void CalendarView::takeOverEvent()
-{
-    const Akonadi::Item item = currentSelection();
-    KCalendarCore::Incidence::Ptr incidence = Akonadi::CalendarUtils::incidence(item);
-
-    if (!incidence) {
-        return;
-    }
-
-    incidence->setOrganizer(KCalendarCore::Person(CalendarSupport::KCalPrefs::instance()->fullName(), CalendarSupport::KCalPrefs::instance()->email()));
-    incidence->recreate();
-    incidence->setReadOnly(false);
-
-    // PENDING(AKONADI_PORT) call mChanger?
-
-    updateView();
-}
-
-void CalendarView::showIntro()
-{
-    qCDebug(KORGANIZER_LOG) << "To be implemented.";
-}
-
 void CalendarView::showDateNavigator(bool show)
 {
     if (show) {
@@ -2114,10 +2044,6 @@ Akonadi::Item CalendarView::selectedTodo()
         return item;
     }
     return {};
-}
-
-void CalendarView::dialogClosing(const Akonadi::Item &)
-{
 }
 
 Akonadi::Item CalendarView::currentSelection()
@@ -2490,19 +2416,6 @@ void CalendarView::purgeCompleted()
     }
 }
 
-void CalendarView::warningChangeFailed(const Akonadi::Item &item)
-{
-    KCalendarCore::Incidence::Ptr incidence = Akonadi::CalendarUtils::incidence(item);
-    if (incidence) {
-        KMessageBox::error(this, i18nc("@info", "Unable to edit \"%1\" because it is locked by another process.", incidence->summary()));
-    }
-}
-
-void CalendarView::showErrorMessage(const QString &msg)
-{
-    KMessageBox::error(this, msg);
-}
-
 void CalendarView::addIncidenceOn(const Akonadi::Item &itemadd, const QDate &dt)
 {
     if (!CalendarSupport::hasIncidence(itemadd)) {
@@ -2719,30 +2632,6 @@ Akonadi::History *CalendarView::history() const
 void CalendarView::onCutFinished()
 {
     checkClipboard();
-}
-
-void CalendarView::onCheckableProxyAboutToToggle(bool newState)
-{
-    // Someone unchecked a collection, save the view state now.
-    if (!newState) {
-        mTodoList->saveViewState();
-        KOTodoView *todoView = mViewManager->todoView();
-        if (todoView) {
-            todoView->saveViewState();
-        }
-    }
-}
-
-void CalendarView::onCheckableProxyToggled(bool newState)
-{
-    // Someone checked a collection, restore the view state now.
-    if (newState) {
-        mTodoList->restoreViewState();
-        KOTodoView *todoView = mViewManager->todoView();
-        if (todoView) {
-            todoView->restoreViewState();
-        }
-    }
 }
 
 void CalendarView::onTodosPurged(bool success, int numDeleted, int numIgnored)

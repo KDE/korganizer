@@ -145,22 +145,6 @@ void KOrganizer::initializePluginActions()
 
 #endif
 
-void KOrganizer::newMainWindow(const QUrl &url)
-{
-    auto korg = new KOrganizer();
-    if (url.isValid() || url.isEmpty()) {
-        korg->init(true);
-        if (mActionManager->importURL(url, false) || url.isEmpty()) {
-            korg->show();
-        } else {
-            delete korg;
-        }
-    } else {
-        korg->init(false);
-        korg->show();
-    }
-}
-
 void KOrganizer::readSettings()
 {
     // read settings from the KConfig, supplying reasonable

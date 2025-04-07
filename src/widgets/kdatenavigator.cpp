@@ -229,17 +229,6 @@ void KDateNavigator::updateConfig()
     //  setShowWeekNums( true );
 }
 
-void KDateNavigator::setShowWeekNums(bool enabled)
-{
-    for (int i = 0; i < 6; ++i) {
-        if (enabled) {
-            mWeeknos[i]->show();
-        } else {
-            mWeeknos[i]->hide();
-        }
-    }
-}
-
 void KDateNavigator::selectMonthHelper(int monthDifference)
 {
     QDate baseDateNextMonth = mBaseDate.addMonths(monthDifference);

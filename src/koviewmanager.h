@@ -92,16 +92,6 @@ public:
         return mAgendaView;
     }
 
-    KOrg::MultiAgendaView *multiAgendaView() const
-    {
-        return mAgendaSideBySideView;
-    }
-
-    KOTodoView *todoView() const
-    {
-        return mTodoView;
-    }
-
     KOrg::MonthView *monthView() const
     {
         return mMonthView;

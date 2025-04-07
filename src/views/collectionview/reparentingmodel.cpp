@@ -66,12 +66,6 @@ ReparentingModel::Node::Ptr ReparentingModel::Node::searchNode(ReparentingModel:
     return nodePtr;
 }
 
-void ReparentingModel::Node::reparent(ReparentingModel::Node *node)
-{
-    Node::Ptr nodePtr = searchNode(node);
-    addChild(nodePtr);
-}
-
 void ReparentingModel::Node::addChild(const ReparentingModel::Node::Ptr &node)
 {
     node->parent = this;
@@ -294,19 +288,6 @@ void ReparentingModel::removeNode(const ReparentingModel::Node &node)
             mProxyNodes.remove(i);
             endRemoveRows();
             break;
-        }
-    }
-}
-
-void ReparentingModel::setNodes(const QList<Node::Ptr> &nodes)
-{
-    for (const ReparentingModel::Node::Ptr &node : nodes) {
-        addNode(node);
-    }
-    const auto currentProxyNodes = mProxyNodes;
-    for (const ReparentingModel::Node::Ptr &node : currentProxyNodes) {
-        if (!nodes.contains(node)) {
-            removeNode(*node);
         }
     }
 }

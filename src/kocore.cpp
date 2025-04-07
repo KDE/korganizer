@@ -12,10 +12,6 @@
 
 #include <KPluginFactory>
 
-#include <CalendarSupport/IdentityManager>
-
-#include "korganizer_debug.h"
-
 #include <QDBusConnectionInterface>
 
 KOCore *KOCore::mSelf = nullptr;
@@ -110,9 +106,4 @@ void KOCore::reloadPlugins()
     // Plugins should be unloaded, but e.g. komonthview keeps using the old ones
     unloadPlugins();
     loadCalendarDecorations();
-}
-
-KIdentityManagementCore::IdentityManager *KOCore::identityManager()
-{
-    return CalendarSupport::IdentityManager::self();
 }

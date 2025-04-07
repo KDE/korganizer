@@ -27,11 +27,6 @@ class QDate;
 namespace KOHelper
 {
 /**
-  Returns a nice QColor for text, give the input color &c.
-*/
-KORGANIZERPRIVATE_EXPORT QColor getTextColor(const QColor &c);
-
-/**
   This method returns the proper resource / subresource color for the view.
   @return The resource color for the incidence. If the incidence belongs
   to a subresource, the color for the subresource is returned (if set).
@@ -44,15 +39,8 @@ KORGANIZERPRIVATE_EXPORT QColor getTextColor(const QColor &c);
 KORGANIZERPRIVATE_EXPORT void setResourceColor(const Akonadi::Collection &collection, const QColor &color);
 
 /**
-  Returns the number of years between the @p start QDate and the @p end QDate
-  (i.e. the difference in the year number of both dates)
-*/
-[[nodiscard]] KORGANIZERPRIVATE_EXPORT int yearDiff(QDate start, QDate end);
-
-/**
   Return true if it's the standard (that is, the current default) calendar.
 */
 [[nodiscard]] KORGANIZERPRIVATE_EXPORT bool isStandardCalendar(Akonadi::Collection::Id id);
 
-KORGANIZERPRIVATE_EXPORT void showSaveIncidenceErrorMsg(QWidget *parent, const KCalendarCore::Incidence::Ptr &incidence);
 }

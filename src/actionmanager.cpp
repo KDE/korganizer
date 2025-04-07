@@ -1144,6 +1144,7 @@ bool ActionManager::openURL(const QString &url)
     return true;
 }
 
+/* cppcheck-suppress unusedFunction */
 void ActionManager::dumpText(const QString &str)
 {
     qCDebug(KORGANIZER_LOG) << str;
@@ -1276,11 +1277,6 @@ bool ActionManager::deleteIncidence(Akonadi::Item::Id id, bool force)
 bool ActionManager::addIncidence(const QString &ical)
 {
     return mCalendarView->addIncidence(ical);
-}
-
-QString &ActionManager::localFileName()
-{
-    return mFile;
 }
 
 class ActionManager::ActionStringsVisitor : public KCalendarCore::Visitor

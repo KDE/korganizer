@@ -139,11 +139,6 @@ public:
         return mRightFrame;
     }
 
-    QWidget *leftFrame() const
-    {
-        return mLeftFrame;
-    }
-
     NavigatorBar *navigatorBar() const
     {
         return mNavigatorBar;
@@ -296,7 +291,6 @@ public Q_SLOTS:
                   const QStringList &attendees = QStringList(),
                   const QStringList &attachmentMimetypes = QStringList(),
                   bool inlineAttachment = false);
-    void newFloatingEvent();
 
     /** Create a read-only viewer dialog for the supplied incidence.
         It calls the correct showXXX method */
@@ -482,15 +476,6 @@ public Q_SLOTS:
     /** Export as iCalendar file */
     void exportICalendar();
 
-    /** pop up a dialog to show an existing appointment. */
-    void appointment_show();
-    /**
-     * pop up an Appointment Dialog to edit an existing appointment. Get
-     * information on the appointment from the list of unique IDs that is
-     * currently in the View, called currIds.
-     */
-    void appointment_edit();
-
     /**
      * pop up dialog confirming deletion of currently selected event in the
      * View.
@@ -513,25 +498,13 @@ public Q_SLOTS:
     */
     bool makeChildrenIndependent(const Akonadi::Item &item);
 
-    /** Take ownership of selected event. */
-    void takeOverEvent();
-
-    /** set state of calendar to read-only
-        @param readOnly whether the calendar view should be set read-only or not
-    */
-    void setReadOnly(bool readOnly = true);
-
-    void eventUpdated(const Akonadi::Item &incidence);
-
     /* iTIP scheduling actions */
     void schedule_publish(const Akonadi::Item &incidence = Akonadi::Item());
     void schedule_request(const Akonadi::Item &incidence = Akonadi::Item());
     void schedule_refresh(const Akonadi::Item &incidence = Akonadi::Item());
     void schedule_cancel(const Akonadi::Item &incidence = Akonadi::Item());
-    void schedule_add(const Akonadi::Item &incidence = Akonadi::Item());
     void schedule_reply(const Akonadi::Item &incidence = Akonadi::Item());
     void schedule_counter(const Akonadi::Item &incidence = Akonadi::Item());
-    void schedule_declinecounter(const Akonadi::Item &incidence = Akonadi::Item());
     void schedule_forward(const Akonadi::Item &incidence = Akonadi::Item());
     void mailFreeBusy(int daysToPublish = 30);
     void uploadFreeBusy();
@@ -541,8 +514,6 @@ public Q_SLOTS:
     void editFilters();
 
     void updateFilter();
-
-    void showIntro();
 
     void showDateNavigator(bool);
     void showTodoView(bool);
@@ -568,8 +539,6 @@ public Q_SLOTS:
 
     void showLeftFrame(bool show = true);
 
-    void dialogClosing(const Akonadi::Item &incidence);
-
     void processMainViewSelection(const Akonadi::Item &incidence, const QDate &date);
     void processTodoListSelection(const Akonadi::Item &incidence, const QDate &date);
 
@@ -582,7 +551,6 @@ public Q_SLOTS:
         Q_EMIT autoArchivingSettingsModified();
     }
 
-    void showErrorMessage(const QString &);
     void schedule(KCalendarCore::iTIPMethod, const Akonadi::Item &incidence);
     void addIncidenceOn(const Akonadi::Item &incidence, const QDate &);
     void moveIncidenceTo(const Akonadi::Item &incidence, QDate);
@@ -649,7 +617,6 @@ protected:
     Akonadi::Item selectedTodo();
     IncidenceEditorNG::IncidenceDialog *incidenceDialog(const Akonadi::Item &);
 
-    void warningChangeFailed(const Akonadi::Item &);
     void checkForFilteredChange(const Akonadi::Item &incidence);
 
     /**
@@ -668,8 +635,6 @@ protected:
     void deleteChildren(const Akonadi::Item &);
 
 private Q_SLOTS:
-    void onCheckableProxyAboutToToggle(bool newState);
-    void onCheckableProxyToggled(bool newState);
     void onTodosPurged(bool success, int numDeleted, int numIgnored);
 
 private:

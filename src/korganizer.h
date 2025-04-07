@@ -85,8 +85,6 @@ protected Q_SLOTS:
     /** Sets title of window according to filename and modification state */
     void setTitle() override;
 
-    void newMainWindow(const QUrl &);
-
     void slotEditKeys();
 
 protected:

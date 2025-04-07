@@ -262,8 +262,3 @@ SummaryEventInfo::List SummaryEventInfo::eventsForRange(QDate start, QDate end, 
 
     return eventInfoList;
 }
-
-SummaryEventInfo::List SummaryEventInfo::eventsForDate(QDate date, const Akonadi::ETMCalendar::Ptr &calendar)
-{
-    return eventsForRange(date, date, calendar);
-}

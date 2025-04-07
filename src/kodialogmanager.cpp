@@ -151,13 +151,6 @@ void KODialogManager::connectTypeAhead(IncidenceEditorNG::IncidenceDialog *dialo
     }
 }
 
-void KODialogManager::updateSearchDialog()
-{
-    if (mSearchDialog) {
-        mSearchDialog->updateView();
-    }
-}
-
 void KODialogManager::createCategoryEditor()
 {
     if (!mCategoryEditDialog) {

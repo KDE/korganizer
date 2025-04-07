@@ -125,22 +125,6 @@ void KOEventView::showNewEventPopup()
 
 //---------------------------------------------------------------------------
 
-void KOEventView::defaultAction(const Akonadi::Item &aitem)
-{
-    const KCalendarCore::Incidence::Ptr incidence = Akonadi::CalendarUtils::incidence(aitem);
-    if (!incidence) {
-        qCDebug(KORGANIZER_LOG) << "Ouch, null incidence";
-        return;
-    }
-
-    const auto collection = Akonadi::EntityTreeModel::updatedCollection(model(), aitem.storageCollectionId());
-    if (collection.rights() & Akonadi::Collection::CanChangeItem) {
-        Q_EMIT editIncidenceSignal(aitem);
-    } else {
-        Q_EMIT showIncidenceSignal(aitem);
-    }
-}
-
 void KOEventView::setTypeAheadReceiver(QObject *o)
 {
     mTypeAheadReceiver = o;
@@ -163,31 +147,6 @@ void KOEventView::finishTypeAhead()
     qDeleteAll(mTypeAheadEvents);
     mTypeAheadEvents.clear();
     mTypeAhead = false;
-}
-
-bool KOEventView::usesCompletedTodoPixmap(const Akonadi::Item &aitem, const QDate &date)
-{
-    const KCalendarCore::Todo::Ptr todo = Akonadi::CalendarUtils::todo(aitem);
-    if (!todo) {
-        return false;
-    }
-
-    if (todo->isCompleted()) {
-        return true;
-    } else if (todo->recurs()) {
-        QTime time;
-        if (todo->allDay()) {
-            time = QTime(0, 0);
-        } else {
-            time = todo->dtDue().toLocalTime().time();
-        }
-
-        QDateTime itemDateTime(date, time, QTimeZone::LocalTime);
-
-        return itemDateTime < todo->dtDue(false).toLocalTime();
-    } else {
-        return false;
-    }
 }
 
 #include "moc_koeventview.cpp"

@@ -159,25 +159,6 @@ void DateNavigator::selectPreviousMonth(const QDate &currentMonth, const QDate &
     shiftMonth(currentMonth, selectionLowerLimit, selectionUpperLimit, -1);
 }
 
-void DateNavigator::selectPreviousWeek()
-{
-    QDate firstSelected = mSelectedDates.first();
-    const int weekDay = firstSelected.dayOfWeek();
-    firstSelected = firstSelected.addDays(-7);
-
-    selectWeekByDay(weekDay, firstSelected);
-}
-
-void DateNavigator::selectNextWeek()
-{
-    QDate firstSelected = mSelectedDates.first();
-    const int weekDay = firstSelected.dayOfWeek();
-
-    firstSelected = firstSelected.addDays(7);
-
-    selectWeekByDay(weekDay, firstSelected);
-}
-
 void DateNavigator::shiftMonth(const QDate &currentMonth, const QDate &selectionLowerLimit, const QDate &selectionUpperLimit, int offset)
 {
     QDate firstSelected = mSelectedDates.first();
