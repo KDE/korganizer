@@ -13,8 +13,8 @@ msgid ""
 msgstr ""
 "Project-Id-Version: korganizer\n"
 "Report-Msgid-Bugs-To: https://bugs.kde.org\n"
-"POT-Creation-Date: 2025-04-06 00:42+0000\n"
-"PO-Revision-Date: 2025-04-05 11:32+0200\n"
+"POT-Creation-Date: 2025-04-07 00:42+0000\n"
+"PO-Revision-Date: 2025-04-06 12:10+0200\n"
 "Last-Translator: Josep M. Ferrer <txemaq@gmail.com>\n"
 "Language-Team: Catalan <kde-i18n-ca@kde.org>\n"
 "Language: ca@valencia\n"
@@ -873,15 +873,13 @@ msgstr ""
 "vista actual de calendari."
 
 #: actionmanager.cpp:548
-#, fuzzy, kde-format
-#| msgid "&Day"
+#, kde-format
 msgctxt "@action:inmenu"
 msgid "&Day"
 msgstr "&Dia"
 
 #: actionmanager.cpp:549
-#, fuzzy, kde-format
-#| msgid "Day"
+#, kde-format
 msgctxt "@action:inmenu agenda view show 1 day at a time"
 msgid "Day"
 msgstr "Dia"
@@ -890,66 +888,74 @@ msgstr "Dia"
 #, kde-format
 msgctxt "@info:status"
 msgid "View 1 day at a time"
-msgstr ""
+msgstr "Vista d'1 dia individual"
 
 #: actionmanager.cpp:551
-#, fuzzy, kde-format
-#| msgid "Show this many days at a time in the Next \"x\" days view"
+#, kde-format
 msgctxt "@info:tooltip"
 msgid "Show 1 day at a time in Agenda View"
-msgstr "Mostra estos dies alhora en la vista de pròxims «x» dies"
+msgstr "Mostra 1 dia individual a la vista d'agenda"
 
 #: actionmanager.cpp:552
 #, kde-format
 msgctxt "@info:whatsthis"
 msgid "Select this option to show only 1 day at a time in Agenda View."
 msgstr ""
+"Seleccioneu esta opció per a mostrar 1 dia individual a la vista d'agenda."
 
 #: actionmanager.cpp:559
-#, fuzzy, kde-format
-#| msgid "&Next Day"
-#| msgid_plural "&Next %1 Days"
+#, kde-format
 msgctxt "@action:inmenu agenda view show a few days at a time"
 msgid "&Next Days"
-msgstr "Dia següe&nt"
+msgstr "Dies següe&nts"
 
 #: actionmanager.cpp:560
 #, kde-format
 msgctxt "@info:status"
 msgid "View a few days at a time"
-msgstr ""
+msgstr "Vista d'alguns dies a la vegada"
 
 #: actionmanager.cpp:561
-#, fuzzy, kde-format
-#| msgid "Show this many days at a time in the Next \"x\" days view"
+#, kde-format
 msgctxt "@info:tooltip"
 msgid "Show the next few days at a time in Agenda View"
-msgstr "Mostra estos dies alhora en la vista de pròxims «x» dies"
+msgstr "Mostra alguns dies següents a la vegada a la vista d'agenda"
 
+# skip-rule: common-settings
 #: actionmanager.cpp:564
-#, kde-kuit-format
+#, fuzzy, kde-kuit-format
+#| msgctxt "@info:whatsthis"
+#| msgid ""
+#| "Select this option to show the next few days a a time in Agenda View. "
+#| "Configure the <placeholder>Next X Days</placeholder> setting in the "
+#| "<interface>Views->General</interface> settings page to adjust the number "
+#| "of days shown."
 msgctxt "@info:whatsthis"
 msgid ""
 "Select this option to show the next few days a a time in Agenda View. "
 "Configure the <placeholder>Next X Days</placeholder> setting in the "
-"<interface>Views->General</interface> settings page to adjust the number of "
+"<interface>Views->General</interface> settingst page to adjust the number of "
 "days shown."
 msgstr ""
+"Seleccioneu esta opció per a mostrar els dies següents a la vista d'agenda. "
+"Configureu l'opció <placeholder>x dies següents</placeholder> a la pàgina "
+"<interface>Vistes->General</interface> per a ajustar el nombre de dies "
+"mostrats."
 
 #: actionmanager.cpp:571
-#, fuzzy, kde-format
-#| msgctxt "@title:group"
-#| msgid "Weekly Schedule"
+#, kde-format
 msgctxt "@action:inmenu"
 msgid "W&eek Schedule"
-msgstr "Planificació setmanal"
+msgstr "Planificació s&etmanal"
 
 #: actionmanager.cpp:572
 #, fuzzy, kde-format
-#| msgctxt "@title:group"
-#| msgid "Weekly Schedule"
+#| msgctxt ""
+#| "@action:inmenu agenda view show the the weekly schedule days only (eg. no "
+#| "weekends)"
+#| msgid "Week Schedule"
 msgctxt ""
-"@action:inmenu agenda view show the the weekly schedule days only (eg. no "
+"@action:inmenu agenda view show the weekly schedule days only (eg. no "
 "weekends)"
 msgid "Week Schedule"
 msgstr "Planificació setmanal"
@@ -960,6 +966,8 @@ msgctxt "@info:status"
 msgid ""
 "Show a week at a time showing days included in your weekly schedule only"
 msgstr ""
+"Mostra una setmana individual mostrant els dies inclosos només en la vostra "
+"planificació setmanal"
 
 #: actionmanager.cpp:575
 #, kde-format
@@ -968,6 +976,9 @@ msgid ""
 "Show a week at a time in Agenda View, excluding days that are not included "
 "in your weekly schedule (ie. weekends are excluded)"
 msgstr ""
+"Mostra una setmana individual a la vista d'agenda, excloent els dies que no "
+"estan inclosos en la vostra planificació setmanal (és a dir, els caps de "
+"setmana estan exclosos)"
 
 #: actionmanager.cpp:578
 #, kde-kuit-format
@@ -979,17 +990,21 @@ msgid ""
 "<interface>Time and Date->Regional</interface> page.<br>Typically this view "
 "is intended for showing the week without weekend days.</br>"
 msgstr ""
+"Seleccioneu esta opció per a mostrar una setmana individual, excloent els "
+"dies que no estan inclosos en la vostra planificació setmanal. Configureu la "
+"vostra planificació seleccionant els dies a la configuració de la "
+"<placeholder>Planificació setmanal</placeholder> a la pàgina <interface>Data "
+"i hora->Regional</interface>.<br>Normalment esta vista està destinada a "
+"mostrar la setmana sense els dies del cap de setmana.</br>"
 
 #: actionmanager.cpp:586
-#, fuzzy, kde-format
-#| msgid "&Week"
+#, kde-format
 msgctxt "@action:inmenu"
 msgid "&Week"
 msgstr "&Setmana"
 
 #: actionmanager.cpp:587
-#, fuzzy, kde-format
-#| msgid "Week"
+#, kde-format
 msgctxt "@action:inmenu agenda view show a week at a time"
 msgid "Week"
 msgstr "Setmana"
@@ -998,21 +1013,21 @@ msgstr "Setmana"
 #, kde-format
 msgctxt "@info:status"
 msgid "View a week at a time"
-msgstr ""
+msgstr "Vista d'una setmana individual"
 
 #: actionmanager.cpp:589
-#, fuzzy, kde-format
-#| msgctxt "@option:check"
-#| msgid "Show at the top of the agenda views"
+#, kde-format
 msgctxt "@info:tooltip"
 msgid "Show 1 week at a time in Agenda View"
-msgstr "Mostra a la part superior de la vista d'agenda"
+msgstr "Mostra una setmana individual a la vista d'agenda"
 
 #: actionmanager.cpp:590
 #, kde-format
 msgctxt "@info:whatsthis"
 msgid "Select this option to show a week at a time in Agenda View."
 msgstr ""
+"Seleccioneu esta opció per a mostrar una setmana individual a la vista "
+"d'agenda."
 
 #: actionmanager.cpp:597 kodaymatrix.cpp:484
 #, kde-format
@@ -1700,17 +1715,17 @@ msgstr ""
 "Ací veeu els detalls dels esdeveniments, entrades del diari o tasques "
 "pendents seleccionats en la vista principal de KOrganizer."
 
-#: calendarview.cpp:674
+#: calendarview.cpp:675
 #, kde-format
 msgid "Todo completed: %1 (%2)"
 msgstr "Tasca pendent finalitzada: %1 (%2)"
 
-#: calendarview.cpp:683
+#: calendarview.cpp:684
 #, kde-format
 msgid "Journal of %1"
 msgstr "Diari de %1"
 
-#: calendarview.cpp:732
+#: calendarview.cpp:733
 #, kde-format
 msgid ""
 "The item \"%1\" is filtered by your current filter rules, so it will be "
@@ -1719,66 +1734,66 @@ msgstr ""
 "L'element «%1» s'ha filtrat amb les regles de filtratge actuals, per tant, "
 "s'ocultarà i no apareixerà en la vista."
 
-#: calendarview.cpp:801
+#: calendarview.cpp:802
 #, kde-format
 msgctxt "@info"
 msgid "Do you really want to permanently remove the item \"%1\"?"
 msgstr "Segur que voleu eliminar permanentment l'element «%1»?"
 
-#: calendarview.cpp:802
+#: calendarview.cpp:803
 #, kde-format
 msgctxt "@title:window"
 msgid "Delete Item?"
 msgstr "Voleu suprimir l'element?"
 
-#: calendarview.cpp:877
+#: calendarview.cpp:878
 #, kde-format
 msgid "Paste failed: unable to determine a valid target date."
 msgstr ""
 "No s'ha pogut fer l'apegat: no s'ha pogut determinar una data de destinació "
 "vàlida."
 
-#: calendarview.cpp:1310
+#: calendarview.cpp:1311
 #, kde-format
 msgid "Make sub-to-dos independent"
 msgstr "Fes independents les subtasques pendents"
 
-#: calendarview.cpp:1367
+#: calendarview.cpp:1368
 #, kde-format
 msgid "Toggle Reminder"
 msgstr "Canvia el recordatori"
 
-#: calendarview.cpp:1399 calendarview.cpp:1451
+#: calendarview.cpp:1400 calendarview.cpp:1452
 #, kde-format
 msgid "Toggle To-do Completed"
 msgstr "Canvia les tasques pendents finalitzades"
 
-#: calendarview.cpp:1503
+#: calendarview.cpp:1504
 #, kde-format
 msgctxt "@info"
 msgid "\"%1\" was successfully copied to %2."
 msgstr "«%1» s'ha copiat correctament a %2."
 
-#: calendarview.cpp:1504
+#: calendarview.cpp:1505
 #, kde-format
 msgctxt "@title:window"
 msgid "Copying Succeeded"
 msgstr "S'ha copiat correctament"
 
-#: calendarview.cpp:1508
+#: calendarview.cpp:1509
 #, kde-format
 msgctxt "@info"
 msgid "Unable to copy the item \"%1\" to %2."
 msgstr "No s'ha pogut copiar l'element «%1» a %2."
 
-#: calendarview.cpp:1509 calendarview.cpp:2506
+#: calendarview.cpp:1510 calendarview.cpp:2507
 #, kde-format
 msgctxt "@title:window"
 msgid "Copying Failed"
 msgstr "La còpia ha fallat"
 
 # skip-rule: punctuation-period-no
-#: calendarview.cpp:1568
+#: calendarview.cpp:1569
 #, kde-format
 msgctxt "@info"
 msgid ""
@@ -1788,48 +1803,48 @@ msgstr ""
 "No s'ha pogut eliminar l'element «%1» del calendari original. No obstant "
 "açò, s'ha posat una còpia d'este element en %2."
 
-#: calendarview.cpp:1572 calendarview.cpp:1588 calendarview.cpp:2541
+#: calendarview.cpp:1573 calendarview.cpp:1589 calendarview.cpp:2542
 #, kde-format
 msgctxt "@title:window"
 msgid "Moving Failed"
 msgstr "No s'ha pogut fer l'acció de moure"
 
-#: calendarview.cpp:1577
+#: calendarview.cpp:1578
 #, kde-format
 msgctxt "@info"
 msgid "\"%1\" was successfully moved from %2 to %3."
 msgstr "«%1» s'ha mogut correctament des de %2 a %3."
 
-#: calendarview.cpp:1578
+#: calendarview.cpp:1579
 #, kde-format
 msgctxt "@title:window"
 msgid "Moving Succeeded"
 msgstr "S'ha mogut correctament"
 
-#: calendarview.cpp:1584
+#: calendarview.cpp:1585
 #, kde-format
 msgctxt "@info"
 msgid "Unable to add the item \"%1\" into %2. This item has not been moved."
 msgstr "No s'ha pogut afegir l'element «%1» en %2. Este element no s'ha mogut."
 
-#: calendarview.cpp:1622
+#: calendarview.cpp:1623
 #, kde-format
 msgid "Do you want to dissociate the occurrence on %1 from the recurrence?"
 msgstr "Voleu dissociar l'ocurrència en %1 de la repetició?"
 
-#: calendarview.cpp:1626 calendarview.cpp:1638 calendarview.cpp:2311
+#: calendarview.cpp:1627 calendarview.cpp:1639 calendarview.cpp:2312
 #, kde-format
 msgctxt "@title:window"
 msgid "KOrganizer Confirmation"
 msgstr "Confirmeu KOrganizer"
 
-#: calendarview.cpp:1627
+#: calendarview.cpp:1628
 #, kde-format
 msgctxt "@action:button"
 msgid "&Dissociate"
 msgstr "&Dissocia"
 
-#: calendarview.cpp:1633
+#: calendarview.cpp:1634
 #, kde-format
 msgid ""
 "Do you want to dissociate the occurrence on %1 from the recurrence or also "
@@ -1838,78 +1853,78 @@ msgstr ""
 "Voleu dissociar l'ocurrència en %1 de la repetició o també dissociar les "
 "repeticions futures?"
 
-#: calendarview.cpp:1639
+#: calendarview.cpp:1640
 #, kde-format
 msgctxt "@action:button"
 msgid "&Only Dissociate This One"
 msgstr "Dissocia n&omés esta"
 
-#: calendarview.cpp:1640
+#: calendarview.cpp:1641
 #, kde-format
 msgctxt "@action:button"
 msgid "&Also Dissociate Future Ones"
 msgstr "Dissocia t&ambé les futures"
 
-#: calendarview.cpp:1658
+#: calendarview.cpp:1659
 #, kde-format
 msgid "Dissociate future occurrences"
 msgstr "Dissocia les ocurrències futures"
 
-#: calendarview.cpp:1660
+#: calendarview.cpp:1661
 #, kde-format
 msgid "Dissociate occurrence"
 msgstr "Dissocia l'ocurrència"
 
-#: calendarview.cpp:1667
+#: calendarview.cpp:1668
 #, kde-format
 msgid "Dissociating the future occurrences failed."
 msgstr "Ha fallat la dissociació de les ocurrències futures."
 
-#: calendarview.cpp:1667 calendarview.cpp:1669
+#: calendarview.cpp:1668 calendarview.cpp:1670
 #, kde-format
 msgctxt "@title:window"
 msgid "Dissociating Failed"
 msgstr "La dissociació ha fallat"
 
-#: calendarview.cpp:1669
+#: calendarview.cpp:1670
 #, kde-format
 msgid "Dissociating the occurrence failed."
 msgstr "Ha fallat la dissociació de l'ocurrència."
 
-#: calendarview.cpp:1831
+#: calendarview.cpp:1832
 #, kde-format
 msgid "iCalendars (*.ics)"
 msgstr "iCalendar (*.ics)"
 
-#: calendarview.cpp:1840
+#: calendarview.cpp:1841
 #, kde-format
 msgid "Do you want to overwrite %1?"
 msgstr "Voleu sobreescriure %1?"
 
-#: calendarview.cpp:1841
+#: calendarview.cpp:1842
 #, kde-format
 msgctxt "@title:window"
 msgid "Export Calendar"
 msgstr "Exporteu un calendari"
 
-#: calendarview.cpp:1855
+#: calendarview.cpp:1856
 #, kde-format
 msgctxt "save failure cause unknown"
 msgid "Reason unknown"
 msgstr "Motiu desconegut"
 
-#: calendarview.cpp:1857
+#: calendarview.cpp:1858
 #, kde-format
 msgctxt "@info"
 msgid "Cannot write iCalendar file %1. %2"
 msgstr "No s'ha pogut escriure el fitxer d'iCalendar %1. %2"
 
-#: calendarview.cpp:1958 calendarview.cpp:2003
+#: calendarview.cpp:1959 calendarview.cpp:2004
 #, kde-format
 msgid "No filter"
 msgstr "Cap filtre"
 
-#: calendarview.cpp:2306
+#: calendarview.cpp:2307
 #, kde-format
 msgid ""
 "The item \"%1\" has sub-to-dos. Do you want to delete just this item and "
@@ -1920,19 +1935,19 @@ msgstr ""
 "independents les seues subtasques pendents o suprimir la tasca pendent amb "
 "totes les seues subtasques pendents?"
 
-#: calendarview.cpp:2312
+#: calendarview.cpp:2313
 #, kde-format
 msgctxt "@action:button"
 msgid "Delete Only This"
 msgstr "Suprimix només esta"
 
-#: calendarview.cpp:2313 calendarview.cpp:2371
+#: calendarview.cpp:2314 calendarview.cpp:2372
 #, kde-format
 msgctxt "@action:button"
 msgid "Delete All"
 msgstr "Suprimix-ho tot"
 
-#: calendarview.cpp:2344
+#: calendarview.cpp:2345
 #, kde-format
 msgid ""
 "The item \"%1\" is marked read-only and cannot be deleted; it probably "
@@ -1941,12 +1956,12 @@ msgstr ""
 "L'element «%1» està marcat com a només lectura i no es pot suprimir, "
 "probablement pertany a un calendari de només lectura."
 
-#: calendarview.cpp:2348
+#: calendarview.cpp:2349
 #, kde-format
 msgid "Removing not possible"
 msgstr "No és possible eliminar-lo"
 
-#: calendarview.cpp:2366
+#: calendarview.cpp:2367
 #, kde-format
 msgid ""
 "The calendar item \"%1\" recurs over multiple dates; are you sure you want "
@@ -1955,17 +1970,17 @@ msgstr ""
 "L'element de calendari «%1» es repetix en múltiples dates. Segur que voleu "
 "suprimir-lo amb totes les seues repeticions?"
 
-#: calendarview.cpp:2370 calendarview.cpp:2400
+#: calendarview.cpp:2371 calendarview.cpp:2401
 #, kde-format
 msgid "KOrganizer Confirmation"
 msgstr "Confirmeu KOrganizer"
 
-#: calendarview.cpp:2378
+#: calendarview.cpp:2379
 #, kde-format
 msgid "Also Delete &Future"
 msgstr "Suprimix també les &futures"
 
-#: calendarview.cpp:2382
+#: calendarview.cpp:2383
 #, kde-format
 msgid ""
 "The calendar item \"%1\" recurs over multiple dates. Do you want to delete "
@@ -1975,7 +1990,7 @@ msgstr ""
 "només l'ocurrència actual %2, també les repeticions futures, o totes les "
 "seues repeticions?"
 
-#: calendarview.cpp:2389
+#: calendarview.cpp:2390
 #, kde-format
 msgid ""
 "The calendar item \"%1\" recurs over multiple dates. Do you want to delete "
@@ -1984,22 +1999,22 @@ msgstr ""
 "L'element de calendari «%1» es repetix en múltiples dates. Voleu suprimir "
 "només l'ocurrència actual %2 o totes les seues repeticions?"
 
-#: calendarview.cpp:2401
+#: calendarview.cpp:2402
 #, kde-format
 msgid "Delete C&urrent"
 msgstr "Suprimix l'&actual"
 
-#: calendarview.cpp:2403
+#: calendarview.cpp:2404
 #, kde-format
 msgid "Delete &All"
 msgstr "Suprimix-les &totes"
 
-#: calendarview.cpp:2434 calendarview.cpp:2441
+#: calendarview.cpp:2435 calendarview.cpp:2442
 #, kde-format
 msgid "Delete \"%1\""
 msgstr "Suprimix «%1»"
 
-#: calendarview.cpp:2471
+#: calendarview.cpp:2472
 #, kde-format
 msgid ""
 "All calendars are unchecked in the Calendar Manager. No to-do was purged."
@@ -2007,31 +2022,31 @@ msgstr ""
 "Tots els calendaris en el gestor de calendaris estan sense marcar. No s'ha "
 "purgat cap tasca pendent."
 
-#: calendarview.cpp:2476 calendarview.cpp:2759
+#: calendarview.cpp:2477 calendarview.cpp:2760
 #, kde-format
 msgid "There are no completed to-dos to purge."
 msgstr "No hi ha tasques pendents finalitzades per a purgar."
 
-#: calendarview.cpp:2481
+#: calendarview.cpp:2482
 #, kde-format
 msgid "Delete all completed to-dos from checked calendars?"
 msgstr ""
 "Voleu suprimir totes les tasques pendents finalitzades dels calendaris "
 "marcats?"
 
-#: calendarview.cpp:2482
+#: calendarview.cpp:2483
 #, kde-format
 msgctxt "@title:window"
 msgid "Purge To-dos"
 msgstr "Purga les tasques pendents"
 
-#: calendarview.cpp:2483
+#: calendarview.cpp:2484
 #, kde-format
 msgctxt "@action:button"
 msgid "Purge"
 msgstr "Purga"
 
-#: calendarview.cpp:2494
+#: calendarview.cpp:2495
 #, kde-format
 msgctxt "@info"
 msgid "Unable to edit \"%1\" because it is locked by another process."
@@ -2039,22 +2054,22 @@ msgstr ""
 "No s'ha pogut editar l'element «%1» perquè està bloquejat per un altre "
 "procés."
 
-#: calendarview.cpp:2506
+#: calendarview.cpp:2507
 #, kde-format
 msgid "Unable to copy the item to %1."
 msgstr "No s'ha pogut copiar l'element a %1."
 
-#: calendarview.cpp:2541
+#: calendarview.cpp:2542
 #, kde-format
 msgid "Unable to move the item to  %1."
 msgstr "No s'ha pogut moure l'element cap a %1."
 
-#: calendarview.cpp:2752
+#: calendarview.cpp:2753
 #, kde-format
 msgid "0 completed to-dos were purged."
 msgstr "S'han purgat zero tasques pendents finalitzades."
 
-#: calendarview.cpp:2753 calendarview.cpp:2763
+#: calendarview.cpp:2754 calendarview.cpp:2764
 #, kde-format
 msgid "%1 to-do was ignored because it has uncompleted or read-only children."
 msgid_plural ""
@@ -2066,21 +2081,21 @@ msgstr[1] ""
 "S'han ignorat %1 tasques pendents perquè tenia fills incomplets o de només "
 "lectura."
 
-#: calendarview.cpp:2757 calendarview.cpp:2762
+#: calendarview.cpp:2758 calendarview.cpp:2763
 #, kde-format
 msgid "%1 completed to-do was purged."
 msgid_plural "%1 completed to-dos were purged."
 msgstr[0] "S'ha purgat %1 tasca pendent finalitzada."
 msgstr[1] "S'han purgat %1 tasques pendents finalitzades."
 
-#: calendarview.cpp:2768
+#: calendarview.cpp:2769
 #, kde-format
 msgid "An error occurred while purging completed to-dos: %1"
 msgstr ""
 "S'ha produït un error mentre es purgaven les tasques pendents finalitzades: "
 "%1"
 
-#: calendarview.cpp:2822
+#: calendarview.cpp:2823
 #, kde-format
 msgid ""
 "You created an incidence in a calendar that is currently filtered out.\n"
@@ -2089,7 +2104,7 @@ msgstr ""
 "Heu creat una incidència en un calendari que actualment està filtrat.\n"
 "Activeu la barra lateral esquerra en el gestor de calendaris per a veure-la."
 
-#: calendarview.cpp:2826
+#: calendarview.cpp:2827
 #, kde-format
 msgid ""
 "You created an incidence in a calendar that is currently filtered out.\n"
@@ -4186,7 +4201,7 @@ msgstr ""
 #: settings/korganizer.kcfg:71
 #, kde-format
 msgid "Next x days"
-msgstr "Pròxims x dies"
+msgstr "x dies següents"
 
 #. i18n: ectx: whatsthis, entry, group (General View)
 #: settings/korganizer.kcfg:72
@@ -4197,8 +4212,8 @@ msgid ""
 "the \"View\" menu."
 msgstr ""
 "Seleccioneu el nombre «x» de dies que es mostraran en la vista de dies "
-"pròxims. Per a accedir a la vista dels «x» dies pròxims, trieu l'element de "
-"menú «Pròxims x dies» des del menú «Visualitza»."
+"pròxims. Per a accedir a la vista dels «x» dies següents, trieu l'element de "
+"menú «x dies següents» des del menú «Visualitza»."
 
 #. i18n: ectx: tooltip, entry, group (General View)
 #: settings/korganizer.kcfg:73
@@ -6324,6 +6339,3 @@ msgstr "%1"
 msgctxt "4 digit year"
 msgid "%1"
 msgstr "%1"
-
-#~ msgid "W&ork Week"
-#~ msgstr "S&etmana laboral"

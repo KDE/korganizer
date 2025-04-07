@@ -11,8 +11,8 @@ msgid ""
 msgstr ""
 "Project-Id-Version: korganizer\n"
 "Report-Msgid-Bugs-To: https://bugs.kde.org\n"
-"POT-Creation-Date: 2025-04-06 00:42+0000\n"
-"PO-Revision-Date: 2025-04-05 11:38+0300\n"
+"POT-Creation-Date: 2025-04-07 00:42+0000\n"
+"PO-Revision-Date: 2025-04-06 09:25+0300\n"
 "Last-Translator: Yuri Chornoivan <yurchor@ukr.net>\n"
 "Language-Team: Ukrainian <trans-uk@lists.fedoraproject.org>\n"
 "Language: uk\n"
@@ -869,15 +869,13 @@ msgstr ""
 "параметрів поточної панелі перегляду календаря."
 
 #: actionmanager.cpp:548
-#, fuzzy, kde-format
-#| msgid "&Day"
+#, kde-format
 msgctxt "@action:inmenu"
 msgid "&Day"
 msgstr "&День"
 
 #: actionmanager.cpp:549
-#, fuzzy, kde-format
-#| msgid "Day"
+#, kde-format
 msgctxt "@action:inmenu agenda view show 1 day at a time"
 msgid "Day"
 msgstr "День"
@@ -886,66 +884,76 @@ msgstr "День"
 #, kde-format
 msgctxt "@info:status"
 msgid "View 1 day at a time"
-msgstr ""
+msgstr "Одночасний перегляд 1 дня"
 
 #: actionmanager.cpp:551
-#, fuzzy, kde-format
-#| msgid "Show this many days at a time in the Next \"x\" days view"
+#, kde-format
 msgctxt "@info:tooltip"
 msgid "Show 1 day at a time in Agenda View"
-msgstr "Показувати цю кількість днів у перегляді «Наступні x днів»"
+msgstr "Показувати одночасно 1 день на панелі перегляду порядку денного"
 
 #: actionmanager.cpp:552
 #, kde-format
 msgctxt "@info:whatsthis"
 msgid "Select this option to show only 1 day at a time in Agenda View."
 msgstr ""
+"Виберіть цей варіант, якщо хочете одночасно бачити лише 1 день на панелі "
+"перегляду порядку денного."
 
 #: actionmanager.cpp:559
-#, fuzzy, kde-format
-#| msgid "&Next Day"
-#| msgid_plural "&Next %1 Days"
+#, kde-format
 msgctxt "@action:inmenu agenda view show a few days at a time"
 msgid "&Next Days"
-msgstr "%1 &наступний день"
+msgstr "&Наступні дні"
 
 #: actionmanager.cpp:560
 #, kde-format
 msgctxt "@info:status"
 msgid "View a few days at a time"
-msgstr ""
+msgstr "Одночасний перегляд декількох днів"
 
 #: actionmanager.cpp:561
-#, fuzzy, kde-format
-#| msgid "Show this many days at a time in the Next \"x\" days view"
+#, kde-format
 msgctxt "@info:tooltip"
 msgid "Show the next few days at a time in Agenda View"
-msgstr "Показувати цю кількість днів у перегляді «Наступні x днів»"
+msgstr ""
+"Виберіть цей варіант, якщо хочете одночасно бачити наступні декілька днів на "
+"панелі перегляду порядку денного"
 
 #: actionmanager.cpp:564
-#, kde-kuit-format
+#, fuzzy, kde-kuit-format
+#| msgctxt "@info:whatsthis"
+#| msgid ""
+#| "Select this option to show the next few days a a time in Agenda View. "
+#| "Configure the <placeholder>Next X Days</placeholder> setting in the "
+#| "<interface>Views->General</interface> settings page to adjust the number "
+#| "of days shown."
 msgctxt "@info:whatsthis"
 msgid ""
 "Select this option to show the next few days a a time in Agenda View. "
 "Configure the <placeholder>Next X Days</placeholder> setting in the "
-"<interface>Views->General</interface> settings page to adjust the number of "
+"<interface>Views->General</interface> settingst page to adjust the number of "
 "days shown."
 msgstr ""
+"Виберіть цей варіант, якщо хочете одночасно бачити наступні декілька днів на "
+"панелі перегляду порядку денного. Налаштуйте кількість показаних днів за "
+"допомогою пункту <placeholder>Наступні декілька днів</placeholder> на "
+"сторінці параметрів <interface>Перегляди->Загальне</interface>."
 
 #: actionmanager.cpp:571
-#, fuzzy, kde-format
-#| msgctxt "@title:group"
-#| msgid "Weekly Schedule"
+#, kde-format
 msgctxt "@action:inmenu"
 msgid "W&eek Schedule"
-msgstr "Тижневий розклад"
+msgstr "Ти&жневий розклад"
 
 #: actionmanager.cpp:572
 #, fuzzy, kde-format
-#| msgctxt "@title:group"
-#| msgid "Weekly Schedule"
+#| msgctxt ""
+#| "@action:inmenu agenda view show the the weekly schedule days only (eg. no "
+#| "weekends)"
+#| msgid "Week Schedule"
 msgctxt ""
-"@action:inmenu agenda view show the the weekly schedule days only (eg. no "
+"@action:inmenu agenda view show the weekly schedule days only (eg. no "
 "weekends)"
 msgid "Week Schedule"
 msgstr "Тижневий розклад"
@@ -956,6 +964,8 @@ msgctxt "@info:status"
 msgid ""
 "Show a week at a time showing days included in your weekly schedule only"
 msgstr ""
+"Показувати одночасно тиждень з лише тими днями, які включено до вашого "
+"тижневого розкладу"
 
 #: actionmanager.cpp:575
 #, kde-format
@@ -964,6 +974,8 @@ msgid ""
 "Show a week at a time in Agenda View, excluding days that are not included "
 "in your weekly schedule (ie. weekends are excluded)"
 msgstr ""
+"Показувати на панелі порядку денного тиждень без днів, які не включено до "
+"вашого тижневого розкладу (тобто вихідні буде виключено)"
 
 #: actionmanager.cpp:578
 #, kde-kuit-format
@@ -975,17 +987,20 @@ msgid ""
 "<interface>Time and Date->Regional</interface> page.<br>Typically this view "
 "is intended for showing the week without weekend days.</br>"
 msgstr ""
+"Виберіть цей варіант для одночасного показу одного тижня без днів, які не "
+"включено у ваш тижневий робочий графік. Налаштуйте ваш розклад вибором днів "
+"за допомогою пункту <placeholder>Тижневий розклад</placeholder> на сторінці "
+"<interface>Час і дата->Регіональні</interface>.<br>Типово цей режим "
+"перегляду призначено для показу тижня без вихідних.</br>"
 
 #: actionmanager.cpp:586
-#, fuzzy, kde-format
-#| msgid "&Week"
+#, kde-format
 msgctxt "@action:inmenu"
 msgid "&Week"
 msgstr "&Тиждень"
 
 #: actionmanager.cpp:587
-#, fuzzy, kde-format
-#| msgid "Week"
+#, kde-format
 msgctxt "@action:inmenu agenda view show a week at a time"
 msgid "Week"
 msgstr "Тиждень"
@@ -994,21 +1009,21 @@ msgstr "Тиждень"
 #, kde-format
 msgctxt "@info:status"
 msgid "View a week at a time"
-msgstr ""
+msgstr "Одночасний перегляд тижня"
 
 #: actionmanager.cpp:589
-#, fuzzy, kde-format
-#| msgctxt "@option:check"
-#| msgid "Show at the top of the agenda views"
+#, kde-format
 msgctxt "@info:tooltip"
 msgid "Show 1 week at a time in Agenda View"
-msgstr "Показати згори переглядів порядку денного"
+msgstr "Показувати одночасно 1 тиждень на панелі перегляду порядку денного"
 
 #: actionmanager.cpp:590
 #, kde-format
 msgctxt "@info:whatsthis"
 msgid "Select this option to show a week at a time in Agenda View."
 msgstr ""
+"Виберіть цей варіант, якщо хочете одночасно бачити тиждень на панелі "
+"перегляду порядку денного."
 
 #: actionmanager.cpp:597 kodaymatrix.cpp:484
 #, kde-format
@@ -1694,17 +1709,17 @@ msgstr ""
 "Переглянути тут подробиці подій, записів журналів, завдань вибраних в "
 "головному вікні KOrganizer."
 
-#: calendarview.cpp:674
+#: calendarview.cpp:675
 #, kde-format
 msgid "Todo completed: %1 (%2)"
 msgstr "Виконання завдання: %1 (%2)"
 
-#: calendarview.cpp:683
+#: calendarview.cpp:684
 #, kde-format
 msgid "Journal of %1"
 msgstr "Журнал - %1"
 
-#: calendarview.cpp:732
+#: calendarview.cpp:733
 #, kde-format
 msgid ""
 "The item \"%1\" is filtered by your current filter rules, so it will be "
@@ -1713,65 +1728,65 @@ msgstr ""
 "Пункт «%1» фільтрується відповідно до поточних правил фільтрування, тому "
 "його буде приховано і не показано у перегляді."
 
-#: calendarview.cpp:801
+#: calendarview.cpp:802
 #, kde-format
 msgctxt "@info"
 msgid "Do you really want to permanently remove the item \"%1\"?"
 msgstr "Ви дійсно хочете остаточно вилучити пункт «%1»?"
 
-#: calendarview.cpp:802
+#: calendarview.cpp:803
 #, kde-format
 msgctxt "@title:window"
 msgid "Delete Item?"
 msgstr "Вилучити пункт?"
 
-#: calendarview.cpp:877
+#: calendarview.cpp:878
 #, kde-format
 msgid "Paste failed: unable to determine a valid target date."
 msgstr ""
 "Спроба вставлення завершилася невдало: не вдалося визначити коректну дату "
 "призначення."
 
-#: calendarview.cpp:1310
+#: calendarview.cpp:1311
 #, kde-format
 msgid "Make sub-to-dos independent"
 msgstr "Зробити підзавдання незалежними"
 
-#: calendarview.cpp:1367
+#: calendarview.cpp:1368
 #, kde-format
 msgid "Toggle Reminder"
 msgstr "Увімкнути або вимкнути нагадування"
 
-#: calendarview.cpp:1399 calendarview.cpp:1451
+#: calendarview.cpp:1400 calendarview.cpp:1452
 #, kde-format
 msgid "Toggle To-do Completed"
 msgstr "Увімкнути або вимкнути стан завершеності завдання"
 
-#: calendarview.cpp:1503
+#: calendarview.cpp:1504
 #, kde-format
 msgctxt "@info"
 msgid "\"%1\" was successfully copied to %2."
 msgstr "«%1» було успішно скопійовано до %2."
 
-#: calendarview.cpp:1504
+#: calendarview.cpp:1505
 #, kde-format
 msgctxt "@title:window"
 msgid "Copying Succeeded"
 msgstr "Успішне копіювання"
 
-#: calendarview.cpp:1508
+#: calendarview.cpp:1509
 #, kde-format
 msgctxt "@info"
 msgid "Unable to copy the item \"%1\" to %2."
 msgstr "Не вдалося скопіювати запис «%1» до %2."
 
-#: calendarview.cpp:1509 calendarview.cpp:2506
+#: calendarview.cpp:1510 calendarview.cpp:2507
 #, kde-format
 msgctxt "@title:window"
 msgid "Copying Failed"
 msgstr "Копіювання зазнало невдачі"
 
-#: calendarview.cpp:1568
+#: calendarview.cpp:1569
 #, kde-format
 msgctxt "@info"
 msgid ""
@@ -1781,48 +1796,48 @@ msgstr ""
 "Не вдалося вилучити запис «%1» з початкового календаря. Копію цього запису "
 "було збережено у %2."
 
-#: calendarview.cpp:1572 calendarview.cpp:1588 calendarview.cpp:2541
+#: calendarview.cpp:1573 calendarview.cpp:1589 calendarview.cpp:2542
 #, kde-format
 msgctxt "@title:window"
 msgid "Moving Failed"
 msgstr "Пересування зазнало невдачі"
 
-#: calendarview.cpp:1577
+#: calendarview.cpp:1578
 #, kde-format
 msgctxt "@info"
 msgid "\"%1\" was successfully moved from %2 to %3."
 msgstr "«%1» було успішно пересунуто з %2 до %3."
 
-#: calendarview.cpp:1578
+#: calendarview.cpp:1579
 #, kde-format
 msgctxt "@title:window"
 msgid "Moving Succeeded"
 msgstr "Успішне пересування"
 
-#: calendarview.cpp:1584
+#: calendarview.cpp:1585
 #, kde-format
 msgctxt "@info"
 msgid "Unable to add the item \"%1\" into %2. This item has not been moved."
 msgstr "Не вдалося додати запис «%1» до %2. Цей запис не було пересунуто."
 
-#: calendarview.cpp:1622
+#: calendarview.cpp:1623
 #, kde-format
 msgid "Do you want to dissociate the occurrence on %1 from the recurrence?"
 msgstr "Бажаєте виокремити подію о %1 з повторення?"
 
-#: calendarview.cpp:1626 calendarview.cpp:1638 calendarview.cpp:2311
+#: calendarview.cpp:1627 calendarview.cpp:1639 calendarview.cpp:2312
 #, kde-format
 msgctxt "@title:window"
 msgid "KOrganizer Confirmation"
 msgstr "Підтвердження KOrganizer"
 
-#: calendarview.cpp:1627
+#: calendarview.cpp:1628
 #, kde-format
 msgctxt "@action:button"
 msgid "&Dissociate"
 msgstr "Ві&дділити"
 
-#: calendarview.cpp:1633
+#: calendarview.cpp:1634
 #, kde-format
 msgid ""
 "Do you want to dissociate the occurrence on %1 from the recurrence or also "
@@ -1831,78 +1846,78 @@ msgstr ""
 "Бажаєте виокремити випадок %1 з повтору чи також виокремити і всі наступні "
 "випадки?"
 
-#: calendarview.cpp:1639
+#: calendarview.cpp:1640
 #, kde-format
 msgctxt "@action:button"
 msgid "&Only Dissociate This One"
 msgstr "Відділити &лише цю подію"
 
-#: calendarview.cpp:1640
+#: calendarview.cpp:1641
 #, kde-format
 msgctxt "@action:button"
 msgid "&Also Dissociate Future Ones"
 msgstr "Відділити і &майбутні події"
 
-#: calendarview.cpp:1658
+#: calendarview.cpp:1659
 #, kde-format
 msgid "Dissociate future occurrences"
 msgstr "Відділяти майбутні події"
 
-#: calendarview.cpp:1660
+#: calendarview.cpp:1661
 #, kde-format
 msgid "Dissociate occurrence"
 msgstr "Відділити подію"
 
-#: calendarview.cpp:1667
+#: calendarview.cpp:1668
 #, kde-format
 msgid "Dissociating the future occurrences failed."
 msgstr "Відділення майбутніх подій зазнало невдачі."
 
-#: calendarview.cpp:1667 calendarview.cpp:1669
+#: calendarview.cpp:1668 calendarview.cpp:1670
 #, kde-format
 msgctxt "@title:window"
 msgid "Dissociating Failed"
 msgstr "Відділення зазнало невдачі"
 
-#: calendarview.cpp:1669
+#: calendarview.cpp:1670
 #, kde-format
 msgid "Dissociating the occurrence failed."
 msgstr "Відділення події зазнало невдачі."
 
-#: calendarview.cpp:1831
+#: calendarview.cpp:1832
 #, kde-format
 msgid "iCalendars (*.ics)"
 msgstr "iCalendars (*.ics)"
 
-#: calendarview.cpp:1840
+#: calendarview.cpp:1841
 #, kde-format
 msgid "Do you want to overwrite %1?"
 msgstr "Чи бажаєте ви перезаписати «%1»?"
 
-#: calendarview.cpp:1841
+#: calendarview.cpp:1842
 #, kde-format
 msgctxt "@title:window"
 msgid "Export Calendar"
 msgstr "Експортування календаря"
 
-#: calendarview.cpp:1855
+#: calendarview.cpp:1856
 #, kde-format
 msgctxt "save failure cause unknown"
 msgid "Reason unknown"
 msgstr "Причина невідома"
 
-#: calendarview.cpp:1857
+#: calendarview.cpp:1858
 #, kde-format
 msgctxt "@info"
 msgid "Cannot write iCalendar file %1. %2"
 msgstr "Неможливо записати файл iCalendar %1. %2"
 
-#: calendarview.cpp:1958 calendarview.cpp:2003
+#: calendarview.cpp:1959 calendarview.cpp:2004
 #, kde-format
 msgid "No filter"
 msgstr "Без фільтра"
 
-#: calendarview.cpp:2306
+#: calendarview.cpp:2307
 #, kde-format
 msgid ""
 "The item \"%1\" has sub-to-dos. Do you want to delete just this item and "
@@ -1913,19 +1928,19 @@ msgstr ""
 "його підзавдання незалежними чи вилучити це завдання з усіма його "
 "підзавданнями?"
 
-#: calendarview.cpp:2312
+#: calendarview.cpp:2313
 #, kde-format
 msgctxt "@action:button"
 msgid "Delete Only This"
 msgstr "Вилучити тільки це"
 
-#: calendarview.cpp:2313 calendarview.cpp:2371
+#: calendarview.cpp:2314 calendarview.cpp:2372
 #, kde-format
 msgctxt "@action:button"
 msgid "Delete All"
 msgstr "Вилучити всі"
 
-#: calendarview.cpp:2344
+#: calendarview.cpp:2345
 #, kde-format
 msgid ""
 "The item \"%1\" is marked read-only and cannot be deleted; it probably "
@@ -1934,12 +1949,12 @@ msgstr ""
 "Пункт «%1» позначено «тільки для читання», його не можна вилучити; ймовірно, "
 "він належить до календаря тільки для читання."
 
-#: calendarview.cpp:2348
+#: calendarview.cpp:2349
 #, kde-format
 msgid "Removing not possible"
 msgstr "Вилучення неможливе"
 
-#: calendarview.cpp:2366
+#: calendarview.cpp:2367
 #, kde-format
 msgid ""
 "The calendar item \"%1\" recurs over multiple dates; are you sure you want "
@@ -1948,17 +1963,17 @@ msgstr ""
 "Пункт календаря «%1» повторюється в багатьох датах. Ви впевнені, що хочете "
 "вилучити його з усіма повтореннями?"
 
-#: calendarview.cpp:2370 calendarview.cpp:2400
+#: calendarview.cpp:2371 calendarview.cpp:2401
 #, kde-format
 msgid "KOrganizer Confirmation"
 msgstr "Підтвердження KOrganizer"
 
-#: calendarview.cpp:2378
+#: calendarview.cpp:2379
 #, kde-format
 msgid "Also Delete &Future"
 msgstr "Також вилучати &майбутні"
 
-#: calendarview.cpp:2382
+#: calendarview.cpp:2383
 #, kde-format
 msgid ""
 "The calendar item \"%1\" recurs over multiple dates. Do you want to delete "
@@ -1967,7 +1982,7 @@ msgstr ""
 "Пункт календаря «%1» повторюється в багатьох датах. Хочете вилучити тільки "
 "поточний пункт на %2, всі майбутні повторення, чи всі його повторення?"
 
-#: calendarview.cpp:2389
+#: calendarview.cpp:2390
 #, kde-format
 msgid ""
 "The calendar item \"%1\" recurs over multiple dates. Do you want to delete "
@@ -1976,22 +1991,22 @@ msgstr ""
 "Пункт календаря «%1» повторюється в багатьох датах. Хочете вилучити тільки "
 "поточний пункт на %2 чи всі його повторення?"
 
-#: calendarview.cpp:2401
+#: calendarview.cpp:2402
 #, kde-format
 msgid "Delete C&urrent"
 msgstr "Вилучити пото&чну"
 
-#: calendarview.cpp:2403
+#: calendarview.cpp:2404
 #, kde-format
 msgid "Delete &All"
 msgstr "Вилучити &всі"
 
-#: calendarview.cpp:2434 calendarview.cpp:2441
+#: calendarview.cpp:2435 calendarview.cpp:2442
 #, kde-format
 msgid "Delete \"%1\""
 msgstr "Вилучити «%1»"
 
-#: calendarview.cpp:2471
+#: calendarview.cpp:2472
 #, kde-format
 msgid ""
 "All calendars are unchecked in the Calendar Manager. No to-do was purged."
@@ -1999,51 +2014,51 @@ msgstr ""
 "У засобі керування календарями знято позначки з усіх календарів. Не вилучено "
 "жодного запису завдання."
 
-#: calendarview.cpp:2476 calendarview.cpp:2759
+#: calendarview.cpp:2477 calendarview.cpp:2760
 #, kde-format
 msgid "There are no completed to-dos to purge."
 msgstr "Немає завершених завдань для вилучення."
 
-#: calendarview.cpp:2481
+#: calendarview.cpp:2482
 #, kde-format
 msgid "Delete all completed to-dos from checked calendars?"
 msgstr "Вилучити усі виконані завдання з позначених календарів?"
 
-#: calendarview.cpp:2482
+#: calendarview.cpp:2483
 #, kde-format
 msgctxt "@title:window"
 msgid "Purge To-dos"
 msgstr "Очищення завдань"
 
-#: calendarview.cpp:2483
+#: calendarview.cpp:2484
 #, kde-format
 msgctxt "@action:button"
 msgid "Purge"
 msgstr "Очистити"
 
-#: calendarview.cpp:2494
+#: calendarview.cpp:2495
 #, kde-format
 msgctxt "@info"
 msgid "Unable to edit \"%1\" because it is locked by another process."
 msgstr ""
 "Не вдається змінити запис «%1», оскільки його заблоковано іншим процесом."
 
-#: calendarview.cpp:2506
+#: calendarview.cpp:2507
 #, kde-format
 msgid "Unable to copy the item to %1."
 msgstr "Не вдається скопіювати пункт до %1."
 
-#: calendarview.cpp:2541
+#: calendarview.cpp:2542
 #, kde-format
 msgid "Unable to move the item to  %1."
 msgstr "Не вдається пересунути пункт до %1."
 
-#: calendarview.cpp:2752
+#: calendarview.cpp:2753
 #, kde-format
 msgid "0 completed to-dos were purged."
 msgstr "Вилучено 0 завершених завдань."
 
-#: calendarview.cpp:2753 calendarview.cpp:2763
+#: calendarview.cpp:2754 calendarview.cpp:2764
 #, kde-format
 msgid "%1 to-do was ignored because it has uncompleted or read-only children."
 msgid_plural ""
@@ -2061,7 +2076,7 @@ msgstr[3] ""
 "одне завдання проігноровано через те, що у ньому містилися незавершені або "
 "придатні лише для читання дочірні елементи."
 
-#: calendarview.cpp:2757 calendarview.cpp:2762
+#: calendarview.cpp:2758 calendarview.cpp:2763
 #, kde-format
 msgid "%1 completed to-do was purged."
 msgid_plural "%1 completed to-dos were purged."
@@ -2070,12 +2085,12 @@ msgstr[1] "Вилучено %1 завершених завдання."
 msgstr[2] "Вилучено %1 завершених завдань."
 msgstr[3] "Вилучено одне завершене завдання."
 
-#: calendarview.cpp:2768
+#: calendarview.cpp:2769
 #, kde-format
 msgid "An error occurred while purging completed to-dos: %1"
 msgstr "Під час спроби вилучити завершені завдання сталася помилка: %1"
 
-#: calendarview.cpp:2822
+#: calendarview.cpp:2823
 #, kde-format
 msgid ""
 "You created an incidence in a calendar that is currently filtered out.\n"
@@ -2085,7 +2100,7 @@ msgstr ""
 "Щоб побачити запис, вам слід увімкнути календар на панелі керування "
 "календарями у лівій частині вікна."
 
-#: calendarview.cpp:2826
+#: calendarview.cpp:2827
 #, kde-format
 msgid ""
 "You created an incidence in a calendar that is currently filtered out.\n"

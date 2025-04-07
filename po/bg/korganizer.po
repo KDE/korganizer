@@ -3,8 +3,8 @@ msgid ""
 msgstr ""
 "Project-Id-Version: korganizer\n"
 "Report-Msgid-Bugs-To: https://bugs.kde.org\n"
-"POT-Creation-Date: 2025-04-06 00:42+0000\n"
-"PO-Revision-Date: 2025-03-26 17:31+0100\n"
+"POT-Creation-Date: 2025-04-07 00:42+0000\n"
+"PO-Revision-Date: 2025-04-06 17:19+0200\n"
 "Last-Translator: Mincho Kondarev <mkondarev@yahoo.de>\n"
 "Language-Team: Bulgarian <kde-i18n-doc@kde.org>\n"
 "Language: bg\n"
@@ -12,7 +12,7 @@ msgstr ""
 "Content-Type: text/plain; charset=UTF-8\n"
 "Content-Transfer-Encoding: 8bit\n"
 "Plural-Forms: nplurals=2; plural=n != 1;\n"
-"X-Generator: Lokalize 25.03.70\n"
+"X-Generator: Poedit 3.5\n"
 
 #, kde-format
 msgctxt "NAME OF TRANSLATORS"
@@ -855,15 +855,13 @@ msgstr ""
 "изглед на календара."
 
 #: actionmanager.cpp:548
-#, fuzzy, kde-format
-#| msgid "&Day"
+#, kde-format
 msgctxt "@action:inmenu"
 msgid "&Day"
 msgstr "&Ден"
 
 #: actionmanager.cpp:549
-#, fuzzy, kde-format
-#| msgid "Day"
+#, kde-format
 msgctxt "@action:inmenu agenda view show 1 day at a time"
 msgid "Day"
 msgstr "Ден"
@@ -872,66 +870,73 @@ msgstr "Ден"
 #, kde-format
 msgctxt "@info:status"
 msgid "View 1 day at a time"
-msgstr ""
+msgstr "Показване на един ден"
 
 #: actionmanager.cpp:551
-#, fuzzy, kde-format
-#| msgid "Show this many days at a time in the Next \"x\" days view"
+#, kde-format
 msgctxt "@info:tooltip"
 msgid "Show 1 day at a time in Agenda View"
-msgstr "Показване на много дни наведнъж в изгледа Следващи „ x “ дни"
+msgstr "Показване на 1 ден наведнъж в изгледа на дневния ред"
 
 #: actionmanager.cpp:552
 #, kde-format
 msgctxt "@info:whatsthis"
 msgid "Select this option to show only 1 day at a time in Agenda View."
 msgstr ""
+"Изберете тази опция, за да се показва само един ден в изгледа на дневния ред."
 
 #: actionmanager.cpp:559
-#, fuzzy, kde-format
-#| msgid "&Next Day"
-#| msgid_plural "&Next %1 Days"
+#, kde-format
 msgctxt "@action:inmenu agenda view show a few days at a time"
 msgid "&Next Days"
-msgstr "&Следващия ден"
+msgstr "&Следващи дни"
 
 #: actionmanager.cpp:560
 #, kde-format
 msgctxt "@info:status"
 msgid "View a few days at a time"
-msgstr ""
+msgstr "Показване на няколко дни наведнъж"
 
 #: actionmanager.cpp:561
-#, fuzzy, kde-format
-#| msgid "Show this many days at a time in the Next \"x\" days view"
+#, kde-format
 msgctxt "@info:tooltip"
 msgid "Show the next few days at a time in Agenda View"
-msgstr "Показване на много дни наведнъж в изгледа Следващи „ x “ дни"
+msgstr "Показване на следващите няколко дни наведнъж в изгледа на дневния ред"
 
 #: actionmanager.cpp:564
-#, kde-kuit-format
+#, fuzzy, kde-kuit-format
+#| msgctxt "@info:whatsthis"
+#| msgid ""
+#| "Select this option to show the next few days a a time in Agenda View. "
+#| "Configure the <placeholder>Next X Days</placeholder> setting in the "
+#| "<interface>Views->General</interface> settings page to adjust the number "
+#| "of days shown."
 msgctxt "@info:whatsthis"
 msgid ""
 "Select this option to show the next few days a a time in Agenda View. "
 "Configure the <placeholder>Next X Days</placeholder> setting in the "
-"<interface>Views->General</interface> settings page to adjust the number of "
+"<interface>Views->General</interface> settingst page to adjust the number of "
 "days shown."
 msgstr ""
+"Изберете тази опция, за да покажете следващите няколко дни в изгледа на "
+"дневния ред. Конфигурирайте настройката <placeholder>Следващи X дни</"
+"placeholder> в страницата с настройки <interface>Изгледи->Общи</interface>, "
+"за да зададете броя на показаните дни."
 
 #: actionmanager.cpp:571
-#, fuzzy, kde-format
-#| msgctxt "@title:group"
-#| msgid "Weekly Schedule"
+#, kde-format
 msgctxt "@action:inmenu"
 msgid "W&eek Schedule"
-msgstr "Седмичен график"
+msgstr "&Седмичен график"
 
 #: actionmanager.cpp:572
 #, fuzzy, kde-format
-#| msgctxt "@title:group"
-#| msgid "Weekly Schedule"
+#| msgctxt ""
+#| "@action:inmenu agenda view show the the weekly schedule days only (eg. no "
+#| "weekends)"
+#| msgid "Week Schedule"
 msgctxt ""
-"@action:inmenu agenda view show the the weekly schedule days only (eg. no "
+"@action:inmenu agenda view show the weekly schedule days only (eg. no "
 "weekends)"
 msgid "Week Schedule"
 msgstr "Седмичен график"
@@ -941,7 +946,7 @@ msgstr "Седмичен график"
 msgctxt "@info:status"
 msgid ""
 "Show a week at a time showing days included in your weekly schedule only"
-msgstr ""
+msgstr "Показване на една седмица само с дните, включени в седмичния ви график"
 
 #: actionmanager.cpp:575
 #, kde-format
@@ -950,6 +955,9 @@ msgid ""
 "Show a week at a time in Agenda View, excluding days that are not included "
 "in your weekly schedule (ie. weekends are excluded)"
 msgstr ""
+"Показване на една седмица в изгледа на дневния ред, с изключение на дните, "
+"които не са включени в седмичния ви график (т.е. почивните дни не се "
+"показват)"
 
 #: actionmanager.cpp:578
 #, kde-kuit-format
@@ -961,40 +969,43 @@ msgid ""
 "<interface>Time and Date->Regional</interface> page.<br>Typically this view "
 "is intended for showing the week without weekend days.</br>"
 msgstr ""
+"Изберете тази опция, за да се показва една седмица, с изключение на дните, "
+"които не са включени в седмичния ви график. Конфигурирайте графика си, като "
+"изберете дни в настройката <placeholder>Седмичен график</placeholder> в "
+"страницата <interface>Дата и час->Регионални настройки</interface>."
+"<br>Обикновено този изглед е предназначен за показване на седмицата без "
+"почивните дни.</br>"
 
 #: actionmanager.cpp:586
-#, fuzzy, kde-format
-#| msgid "&Week"
+#, kde-format
 msgctxt "@action:inmenu"
 msgid "&Week"
 msgstr "&Седмица"
 
 #: actionmanager.cpp:587
-#, fuzzy, kde-format
-#| msgid "Week"
+#, kde-format
 msgctxt "@action:inmenu agenda view show a week at a time"
 msgid "Week"
-msgstr "За седмица"
+msgstr "Седмица"
 
 #: actionmanager.cpp:588
 #, kde-format
 msgctxt "@info:status"
 msgid "View a week at a time"
-msgstr ""
+msgstr "Показване на една седмица"
 
 #: actionmanager.cpp:589
-#, fuzzy, kde-format
-#| msgctxt "@option:check"
-#| msgid "Show at the top of the agenda views"
+#, kde-format
 msgctxt "@info:tooltip"
 msgid "Show 1 week at a time in Agenda View"
-msgstr "Показване в горната част на дневния изглед"
+msgstr "Показване на 1 седмица наведнъж в изгледа на дневния ред"
 
 #: actionmanager.cpp:590
 #, kde-format
 msgctxt "@info:whatsthis"
 msgid "Select this option to show a week at a time in Agenda View."
 msgstr ""
+"Изберете тази опция, за да се показва една седмица в изгледа на дневния ред."
 
 #: actionmanager.cpp:597 kodaymatrix.cpp:484
 #, kde-format
@@ -1423,14 +1434,7 @@ msgid "URL '%1' is invalid."
 msgstr "Адресът „%1“ е неправилен."
 
 #: actionmanager.cpp:1695
-#, fuzzy, kde-kuit-format
-#| msgctxt "@info"
-#| msgid ""
-#| "<p>Would you like to merge this calendar item into an existing calendar "
-#| "or use it to create a brand new calendar?</p><p>If you select merge, then "
-#| "you will be given the opportunity to select the destination calendar.</"
-#| "p><p>If you select add, then a new calendar will be created for you "
-#| "automatically.</p>"
+#, kde-kuit-format
 msgctxt "@info"
 msgid ""
 "<para>Would you like to merge this calendar item into an existing calendar "
@@ -1439,11 +1443,11 @@ msgid ""
 "para><para>If you select add, then a new calendar will be created for you "
 "automatically.</para>"
 msgstr ""
-"<p> Искате ли да обедините този елемент от календара в съществуващ календар "
-"или да го използвате за създаване на чисто нов календар?</p><p> Ако изберете "
-"обединяване, ще ви бъде предоставена възможност да изберете целевия "
-"календар .</p><p> Ако изберете добавяне, автоматично ще се създаде нов "
-"календар за вас.</p>"
+"<para> Искате ли да обедините този елемент от календара в съществуващ "
+"календар или да го използвате за създаване на чисто нов календар?</"
+"para><para> Ако изберете обединяване, ще ви бъде предоставена възможност да "
+"изберете целевия календар .</para><para> Ако изберете добавяне, автоматично "
+"ще се създаде нов календар за вас.</para>"
 
 #: actionmanager.cpp:1703
 #, kde-format
@@ -1520,19 +1524,19 @@ msgid ""
 "folder?<para>This will replace <filename>%2</filename> as the default "
 "calendar folder.</para>"
 msgstr ""
+"Наистина ли искате да зададете <filename>%1</filename> като папка за "
+"календар по подразбиране?<para>Това ще замени <filename>%2</filename> като "
+"стандартна папка.</para>"
 
 #: akonadicollectionview.cpp:571
-#, fuzzy, kde-kuit-format
-#| msgctxt "@info"
-#| msgid ""
-#| "Do you really want replace your current default calendar with \"%1\"?"
+#, kde-kuit-format
 msgctxt "@info"
 msgid ""
 "Do you really want to set <filename>%1</filename> as your default calendar "
 "folder?"
 msgstr ""
-"Наистина ли искате да замените текущия си календар по подразбиране с \" %1 "
-"\"?"
+"Наистина ли искате да зададете <filename>%1</filename> като папка на "
+"календара по подразбиране?"
 
 #: akonadicollectionview.cpp:576
 #, kde-format
@@ -1545,6 +1549,7 @@ msgstr "Да се ​​замени ли календара по подразб
 msgctxt "@info"
 msgid "<filename>%1</filename> is now your default event calendar"
 msgstr ""
+"<filename>%1</filename> вече е вашият календар за събития по подразбиране"
 
 #: akonadicollectionview.cpp:739
 #, kde-format
@@ -1553,13 +1558,7 @@ msgid "Add Calendar"
 msgstr "Добавяне на календар"
 
 #: akonadicollectionview.cpp:818
-#, fuzzy, kde-kuit-format
-#| msgctxt "@info"
-#| msgid ""
-#| "Do you really want to delete the <filename>%1</filename> calendar?"
-#| "<para><note>The calendar data will not be deleted, nor will the calendar "
-#| "be removed from its remote resource.</note></para>The <filename>%1</"
-#| "filename> calendar can be added again at any time."
+#, kde-kuit-format
 msgctxt "@info"
 msgid ""
 "Do you really want to delete the <filename>%1</filename> calendar?"
@@ -1569,17 +1568,11 @@ msgid ""
 msgstr ""
 "Наистина ли искате да изтриете календара <filename>%1</filename>?"
 "<para><note>Данните в календара няма да бъдат изтрити, нито календарът ще "
-"бъде премахнат от неговия отдалечен ресурс.</note></para>Календарът "
-"<filename>%1</filename> може да бъде добавен отново по всяко време."
+"бъде премахнат от неговия отдалечен ресурс. Календарът <filename>%1</"
+"filename> може да бъде добавен отново по всяко време.</note></para>"
 
 #: akonadicollectionview.cpp:828
-#, fuzzy, kde-kuit-format
-#| msgctxt "@info"
-#| msgid ""
-#| "Do you really want to delete the <filename>%1</filename> calendar?"
-#| "<para><note>The calendar data will not be deleted, nor will the calendar "
-#| "be removed from its remote resource.</note></para>The <filename>%1</"
-#| "filename> calendar can be added again at any time."
+#, kde-kuit-format
 msgctxt "@info"
 msgid ""
 "Do you really want to delete the <filename>%1</filename> calendar?"
@@ -1592,17 +1585,15 @@ msgid ""
 msgstr ""
 "Наистина ли искате да изтриете календара <filename>%1</filename>?"
 "<para><note>Данните в календара няма да бъдат изтрити, нито календарът ще "
-"бъде премахнат от неговия отдалечен ресурс.</note></para>Календарът "
-"<filename>%1</filename> може да бъде добавен отново по всяко време."
+"бъде премахнат от неговия отдалечен ресурс. Календарът <filename>%1</"
+"filename> може да бъде добавен отново по всяко време.</note></"
+"para><para><warning>Този календар съдържа вашата папка на календара по "
+"подразбиране<filename>%2</filename>. Ако я изтриете, може да бъдете "
+"подканени да изберете нова папка на календара по подразбиране.</warning></"
+"para>"
 
 #: akonadicollectionview.cpp:839
-#, fuzzy, kde-kuit-format
-#| msgctxt "@info"
-#| msgid ""
-#| "Do you really want to delete the <filename>%1</filename> calendar?"
-#| "<para><note>The calendar data will not be deleted, nor will the calendar "
-#| "be removed from its remote resource.</note></para>The <filename>%1</"
-#| "filename> calendar can be added again at any time."
+#, kde-kuit-format
 msgctxt "@info"
 msgid ""
 "Do you really want to delete the <filename>%1</filename> calendar?"
@@ -1614,17 +1605,14 @@ msgid ""
 msgstr ""
 "Наистина ли искате да изтриете календара <filename>%1</filename>?"
 "<para><note>Данните в календара няма да бъдат изтрити, нито календарът ще "
-"бъде премахнат от неговия отдалечен ресурс.</note></para>Календарът "
-"<filename>%1</filename> може да бъде добавен отново по всяко време."
+"бъде премахнат от неговия отдалечен ресурс. Календарът <filename>%1</"
+"filename> може да бъде добавен отново по всяко време.</note></"
+"para><para><warning>Този календар съдържа вашата папка с календар по "
+"подразбиране. Ако го изтриете, може да бъдете подканени да изберете нова "
+"папка на календара по подразбиране.</warning></para>"
 
 #: akonadicollectionview.cpp:849
-#, fuzzy, kde-kuit-format
-#| msgctxt "@info"
-#| msgid ""
-#| "Do you really want to delete the <filename>%1</filename> calendar?"
-#| "<para><note>The calendar data will not be deleted, nor will the calendar "
-#| "be removed from its remote resource.</note></para>The <filename>%1</"
-#| "filename> calendar can be added again at any time."
+#, kde-kuit-format
 msgctxt "@info"
 msgid ""
 "Do you really want to delete the <filename>%1</filename> calendar?"
@@ -1636,33 +1624,26 @@ msgid ""
 msgstr ""
 "Наистина ли искате да изтриете календара <filename>%1</filename>?"
 "<para><note>Данните в календара няма да бъдат изтрити, нито календарът ще "
-"бъде премахнат от неговия отдалечен ресурс.</note></para>Календарът "
-"<filename>%1</filename> може да бъде добавен отново по всяко време."
+"бъде премахнат от неговия отдалечен ресурс. Календарът <filename>%1</"
+"filename> може да бъде добавен отново по всяко време.</note></"
+"para><para><warning>Това е вашият календар по подразбиране. Ако го изтриете, "
+"може да бъдете подканени да изберете нов календар по подразбиране.</"
+"warning></para>"
 
 #: akonadicollectionview.cpp:861
-#, fuzzy, kde-kuit-format
-#| msgctxt "@info"
-#| msgid ""
-#| "Do you really want to delete the <filename>%1</filename> calendar?"
-#| "<para><warning>This cannot be undone.  Please consider carefully before "
-#| "pressing the %2 button.</warning></para>"
+#, kde-kuit-format
 msgctxt "@info"
 msgid ""
 "Do you really want to delete the <filename>%1</filename> folder?"
 "<para><warning>This cannot be undone. Please consider carefully before "
 "pressing the %2 button.</warning></para>"
 msgstr ""
-"Наистина ли искате да изтриете календара <filename>%1</filename>?"
-"<para><warning>Това не може да бъде върнато. Моля, помислете внимателно, "
-"преди да натиснете бутона %2.</warning></para>"
+"Наистина ли искате да изтриете папката <filename>%1</filename>?"
+"<para><warning>Това действие не може да бъде върнато. Моля, помислете "
+"внимателно, преди да натиснете бутона %2.</warning></para>"
 
 #: akonadicollectionview.cpp:868
-#, fuzzy, kde-kuit-format
-#| msgctxt "@info"
-#| msgid ""
-#| "Do you really want to delete the <filename>%1</filename> calendar?"
-#| "<para><warning>This cannot be undone.  Please consider carefully before "
-#| "pressing the %2 button.</warning></para>"
+#, kde-kuit-format
 msgctxt "@info"
 msgid ""
 "Do you really want to delete the <filename>%1</filename> folder?"
@@ -1671,9 +1652,12 @@ msgid ""
 "calendar folder. If you delete it you may be prompted to select a new "
 "default calendar.</warning></para>"
 msgstr ""
-"Наистина ли искате да изтриете календара <filename>%1</filename>?"
-"<para><warning>Това не може да бъде върнато. Моля, помислете внимателно, "
-"преди да натиснете бутона %2.</warning></para>"
+"Наистина ли искате да изтриете папката <filename>%1</filename>?"
+"<para><warning>Това действие не може да бъде върнато. Моля, помислете "
+"внимателно, преди да натиснете бутона %2.</warning></"
+"para><para><warning>Това е вашата папка на календара по подразбиране. Ако я "
+"изтриете, ще бъдете подканени да изберете нов календар по подразбиране.</"
+"warning></para>"
 
 #: akonadicollectionview.cpp:879
 #, kde-format
@@ -1685,13 +1669,13 @@ msgstr "Изтриване на календар"
 #, kde-format
 msgctxt "@info"
 msgid "Consider setting a default calendar for new events"
-msgstr ""
+msgstr "Помислете за задаване на календар по подразбиране за нови събития"
 
 #: akonadicollectionview.cpp:940
 #, kde-format
 msgctxt "@info"
 msgid "Consider adding a write-enabled events calendar"
-msgstr ""
+msgstr "Помислете за добавяне на календар за събития с възможност за запис"
 
 #: calendarview.cpp:251
 #, kde-kuit-format
@@ -1712,17 +1696,17 @@ msgstr ""
 "Вижте подробностите за събития, записи в дневник или задачи, избрани в "
 "основния изглед на KOrganizer тук."
 
-#: calendarview.cpp:674
+#: calendarview.cpp:675
 #, kde-format
 msgid "Todo completed: %1 (%2)"
 msgstr "Todo завършен: %1 ( %2)"
 
-#: calendarview.cpp:683
+#: calendarview.cpp:684
 #, kde-format
 msgid "Journal of %1"
 msgstr "Дневник на %1"
 
-#: calendarview.cpp:732
+#: calendarview.cpp:733
 #, kde-format
 msgid ""
 "The item \"%1\" is filtered by your current filter rules, so it will be "
@@ -1731,63 +1715,63 @@ msgstr ""
 "Събитието „%1“ е филтрирано от текущия филтър, така че ще бъде скрито и няма "
 "да се показва."
 
-#: calendarview.cpp:801
+#: calendarview.cpp:802
 #, kde-format
 msgctxt "@info"
 msgid "Do you really want to permanently remove the item \"%1\"?"
 msgstr "Наистина ли искате да премахнете за постоянно елемента \" %1 \"?"
 
-#: calendarview.cpp:802
+#: calendarview.cpp:803
 #, kde-format
 msgctxt "@title:window"
 msgid "Delete Item?"
 msgstr "Да се ​​изтрие ли елемент?"
 
-#: calendarview.cpp:877
+#: calendarview.cpp:878
 #, kde-format
 msgid "Paste failed: unable to determine a valid target date."
 msgstr "Поставянето не бе успешно: не може да се определи валидна целева дата."
 
-#: calendarview.cpp:1310
+#: calendarview.cpp:1311
 #, kde-format
 msgid "Make sub-to-dos independent"
 msgstr "Превръщане на подзадачи в задачи"
 
-#: calendarview.cpp:1367
+#: calendarview.cpp:1368
 #, kde-format
 msgid "Toggle Reminder"
 msgstr "Превключване на напомнянето"
 
-#: calendarview.cpp:1399 calendarview.cpp:1451
+#: calendarview.cpp:1400 calendarview.cpp:1452
 #, kde-format
 msgid "Toggle To-do Completed"
 msgstr "Превключване на завършените задачи"
 
-#: calendarview.cpp:1503
+#: calendarview.cpp:1504
 #, kde-format
 msgctxt "@info"
 msgid "\"%1\" was successfully copied to %2."
 msgstr "\" %1 \"беше успешно копиран в %2."
 
-#: calendarview.cpp:1504
+#: calendarview.cpp:1505
 #, kde-format
 msgctxt "@title:window"
 msgid "Copying Succeeded"
 msgstr "Копирането бе успешно"
 
-#: calendarview.cpp:1508
+#: calendarview.cpp:1509
 #, kde-format
 msgctxt "@info"
 msgid "Unable to copy the item \"%1\" to %2."
 msgstr "Не може да се копира елемента \" %1 \"в %2."
 
-#: calendarview.cpp:1509 calendarview.cpp:2506
+#: calendarview.cpp:1510 calendarview.cpp:2507
 #, kde-format
 msgctxt "@title:window"
 msgid "Copying Failed"
 msgstr "Грешка при копиране"
 
-#: calendarview.cpp:1568
+#: calendarview.cpp:1569
 #, kde-format
 msgctxt "@info"
 msgid ""
@@ -1797,49 +1781,49 @@ msgstr ""
 "Не може да се премахне елементът \" %1\" от оригиналния календар. Въпреки "
 "това, копие на този елемент е поставено в %2."
 
-#: calendarview.cpp:1572 calendarview.cpp:1588 calendarview.cpp:2541
+#: calendarview.cpp:1573 calendarview.cpp:1589 calendarview.cpp:2542
 #, kde-format
 msgctxt "@title:window"
 msgid "Moving Failed"
 msgstr "Грешка при преместване"
 
-#: calendarview.cpp:1577
+#: calendarview.cpp:1578
 #, kde-format
 msgctxt "@info"
 msgid "\"%1\" was successfully moved from %2 to %3."
 msgstr "\" %1 \"беше успешно преместен от %2 в %3."
 
-#: calendarview.cpp:1578
+#: calendarview.cpp:1579
 #, kde-format
 msgctxt "@title:window"
 msgid "Moving Succeeded"
 msgstr "Преместването е успешно"
 
-#: calendarview.cpp:1584
+#: calendarview.cpp:1585
 #, kde-format
 msgctxt "@info"
 msgid "Unable to add the item \"%1\" into %2. This item has not been moved."
 msgstr ""
 "Не може да се добави елементът \" %1 \"в %2. Този елемент не е преместен."
 
-#: calendarview.cpp:1622
+#: calendarview.cpp:1623
 #, kde-format
 msgid "Do you want to dissociate the occurrence on %1 from the recurrence?"
 msgstr "Искате ли да отделите появата на %1 от повторната поява?"
 
-#: calendarview.cpp:1626 calendarview.cpp:1638 calendarview.cpp:2311
+#: calendarview.cpp:1627 calendarview.cpp:1639 calendarview.cpp:2312
 #, kde-format
 msgctxt "@title:window"
 msgid "KOrganizer Confirmation"
 msgstr "Потвърждение на KOrganizer"
 
-#: calendarview.cpp:1627
+#: calendarview.cpp:1628
 #, kde-format
 msgctxt "@action:button"
 msgid "&Dissociate"
 msgstr "&Отделяне"
 
-#: calendarview.cpp:1633
+#: calendarview.cpp:1634
 #, kde-format
 msgid ""
 "Do you want to dissociate the occurrence on %1 from the recurrence or also "
@@ -1848,78 +1832,78 @@ msgstr ""
 "Искате ли да отделите появата на %1 от рецидива или също така да отделите "
 "бъдещите?"
 
-#: calendarview.cpp:1639
+#: calendarview.cpp:1640
 #, kde-format
 msgctxt "@action:button"
 msgid "&Only Dissociate This One"
 msgstr "&Отделяне само на този"
 
-#: calendarview.cpp:1640
+#: calendarview.cpp:1641
 #, kde-format
 msgctxt "@action:button"
 msgid "&Also Dissociate Future Ones"
 msgstr "&Също така отделяне на бъдещите"
 
-#: calendarview.cpp:1658
+#: calendarview.cpp:1659
 #, kde-format
 msgid "Dissociate future occurrences"
 msgstr "Отделяне на бъдещи повторения"
 
-#: calendarview.cpp:1660
+#: calendarview.cpp:1661
 #, kde-format
 msgid "Dissociate occurrence"
 msgstr "Отделяне на повторение"
 
-#: calendarview.cpp:1667
+#: calendarview.cpp:1668
 #, kde-format
 msgid "Dissociating the future occurrences failed."
 msgstr "Грешка при отделянето на бъдещи повторения."
 
-#: calendarview.cpp:1667 calendarview.cpp:1669
+#: calendarview.cpp:1668 calendarview.cpp:1670
 #, kde-format
 msgctxt "@title:window"
 msgid "Dissociating Failed"
 msgstr "Грешка при отделянето"
 
-#: calendarview.cpp:1669
+#: calendarview.cpp:1670
 #, kde-format
 msgid "Dissociating the occurrence failed."
 msgstr "Грешка при отделянето на повторение."
 
-#: calendarview.cpp:1831
+#: calendarview.cpp:1832
 #, kde-format
 msgid "iCalendars (*.ics)"
 msgstr "iCalendars (* .ics)"
 
-#: calendarview.cpp:1840
+#: calendarview.cpp:1841
 #, kde-format
 msgid "Do you want to overwrite %1?"
 msgstr "Искате ли %1 да бъде презаписан?"
 
-#: calendarview.cpp:1841
+#: calendarview.cpp:1842
 #, kde-format
 msgctxt "@title:window"
 msgid "Export Calendar"
 msgstr "Експортиране на календар"
 
-#: calendarview.cpp:1855
+#: calendarview.cpp:1856
 #, kde-format
 msgctxt "save failure cause unknown"
 msgid "Reason unknown"
 msgstr "Неизвестна причина"
 
-#: calendarview.cpp:1857
+#: calendarview.cpp:1858
 #, kde-format
 msgctxt "@info"
 msgid "Cannot write iCalendar file %1. %2"
 msgstr "Не мога да напиша iCalendar файл %1. %2"
 
-#: calendarview.cpp:1958 calendarview.cpp:2003
+#: calendarview.cpp:1959 calendarview.cpp:2004
 #, kde-format
 msgid "No filter"
 msgstr "Без филтър"
 
-#: calendarview.cpp:2306
+#: calendarview.cpp:2307
 #, kde-format
 msgid ""
 "The item \"%1\" has sub-to-dos. Do you want to delete just this item and "
@@ -1930,19 +1914,19 @@ msgstr ""
 "всичките нейни подзадачи да станат независими или да бъде изтрита задачата "
 "заедно с всичките и подзадачи?"
 
-#: calendarview.cpp:2312
+#: calendarview.cpp:2313
 #, kde-format
 msgctxt "@action:button"
 msgid "Delete Only This"
 msgstr "Изтриване само това"
 
-#: calendarview.cpp:2313 calendarview.cpp:2371
+#: calendarview.cpp:2314 calendarview.cpp:2372
 #, kde-format
 msgctxt "@action:button"
 msgid "Delete All"
 msgstr "Изтриване на всички"
 
-#: calendarview.cpp:2344
+#: calendarview.cpp:2345
 #, kde-format
 msgid ""
 "The item \"%1\" is marked read-only and cannot be deleted; it probably "
@@ -1951,12 +1935,12 @@ msgstr ""
 "Елементът \" %1 \"е маркиран само за четене и не може да бъде изтрит; "
 "вероятно принадлежи към календар само за четене."
 
-#: calendarview.cpp:2348
+#: calendarview.cpp:2349
 #, kde-format
 msgid "Removing not possible"
 msgstr "Грешка при изтриване"
 
-#: calendarview.cpp:2366
+#: calendarview.cpp:2367
 #, kde-format
 msgid ""
 "The calendar item \"%1\" recurs over multiple dates; are you sure you want "
@@ -1965,17 +1949,17 @@ msgstr ""
 "Събитието „%1“ се повтаря на много дати. Сигурни ли сте, че искате събитието "
 "и всичките негови повторения да бъдат изтрити?"
 
-#: calendarview.cpp:2370 calendarview.cpp:2400
+#: calendarview.cpp:2371 calendarview.cpp:2401
 #, kde-format
 msgid "KOrganizer Confirmation"
 msgstr "Потвърждение KOrganizer"
 
-#: calendarview.cpp:2378
+#: calendarview.cpp:2379
 #, kde-format
 msgid "Also Delete &Future"
 msgstr "Също така изтриване и бъдеще"
 
-#: calendarview.cpp:2382
+#: calendarview.cpp:2383
 #, kde-format
 msgid ""
 "The calendar item \"%1\" recurs over multiple dates. Do you want to delete "
@@ -1984,7 +1968,7 @@ msgstr ""
 "Елементът на календара \" %1 \"се повтаря за няколко дати. Искате ли да "
 "изтриете само текущия на %2, също бъдещи събития или всичките му появявания?"
 
-#: calendarview.cpp:2389
+#: calendarview.cpp:2390
 #, kde-format
 msgid ""
 "The calendar item \"%1\" recurs over multiple dates. Do you want to delete "
@@ -1993,22 +1977,22 @@ msgstr ""
 "Елементът на календара \" %1 \"се повтаря в продължение на няколко дати. "
 "Искате ли да изтриете само текущия на %2 или всичките му появявания?"
 
-#: calendarview.cpp:2401
+#: calendarview.cpp:2402
 #, kde-format
 msgid "Delete C&urrent"
 msgstr "Изтриване на &текущо"
 
-#: calendarview.cpp:2403
+#: calendarview.cpp:2404
 #, kde-format
 msgid "Delete &All"
 msgstr "Изтриване на &всички"
 
-#: calendarview.cpp:2434 calendarview.cpp:2441
+#: calendarview.cpp:2435 calendarview.cpp:2442
 #, kde-format
 msgid "Delete \"%1\""
 msgstr "Изтриване „%1“"
 
-#: calendarview.cpp:2471
+#: calendarview.cpp:2472
 #, kde-format
 msgid ""
 "All calendars are unchecked in the Calendar Manager. No to-do was purged."
@@ -2016,50 +2000,50 @@ msgstr ""
 "Всички календари са отменени в Мениджъра на календарите. Не е извършено "
 "никакво задължение."
 
-#: calendarview.cpp:2476 calendarview.cpp:2759
+#: calendarview.cpp:2477 calendarview.cpp:2760
 #, kde-format
 msgid "There are no completed to-dos to purge."
 msgstr "Няма завършени задачи за прочистване."
 
-#: calendarview.cpp:2481
+#: calendarview.cpp:2482
 #, kde-format
 msgid "Delete all completed to-dos from checked calendars?"
 msgstr "Да се ​​изтрият ли всички завършени задачи от отметнатите календари?"
 
-#: calendarview.cpp:2482
+#: calendarview.cpp:2483
 #, kde-format
 msgctxt "@title:window"
 msgid "Purge To-dos"
 msgstr "Изтриване на задачи"
 
-#: calendarview.cpp:2483
+#: calendarview.cpp:2484
 #, kde-format
 msgctxt "@action:button"
 msgid "Purge"
 msgstr "Изтриване"
 
-#: calendarview.cpp:2494
+#: calendarview.cpp:2495
 #, kde-format
 msgctxt "@info"
 msgid "Unable to edit \"%1\" because it is locked by another process."
 msgstr "Не може да се редактира \" %1 \", защото е заключен от друг процес."
 
-#: calendarview.cpp:2506
+#: calendarview.cpp:2507
 #, kde-format
 msgid "Unable to copy the item to %1."
 msgstr "Копирането на събитието в %1 беше неуспешно."
 
-#: calendarview.cpp:2541
+#: calendarview.cpp:2542
 #, kde-format
 msgid "Unable to move the item to  %1."
 msgstr "Преместването на елемента в  %1 е невъзможно."
 
-#: calendarview.cpp:2752
+#: calendarview.cpp:2753
 #, kde-format
 msgid "0 completed to-dos were purged."
 msgstr "Изчистени са 0 завършени задачи."
 
-#: calendarview.cpp:2753 calendarview.cpp:2763
+#: calendarview.cpp:2754 calendarview.cpp:2764
 #, kde-format
 msgid "%1 to-do was ignored because it has uncompleted or read-only children."
 msgid_plural ""
@@ -2071,19 +2055,19 @@ msgstr[1] ""
 "%1 задачи бяха пренебрегнати, защото имат незавършени или само за четене "
 "дъщерни задачи."
 
-#: calendarview.cpp:2757 calendarview.cpp:2762
+#: calendarview.cpp:2758 calendarview.cpp:2763
 #, kde-format
 msgid "%1 completed to-do was purged."
 msgid_plural "%1 completed to-dos were purged."
 msgstr[0] "%1 завършена задача бе изчистена."
 msgstr[1] "%1 завършени задачи бяха изчистени."
 
-#: calendarview.cpp:2768
+#: calendarview.cpp:2769
 #, kde-format
 msgid "An error occurred while purging completed to-dos: %1"
 msgstr "Възникна грешка при прочистването на завършените задачи: %1"
 
-#: calendarview.cpp:2822
+#: calendarview.cpp:2823
 #, kde-format
 msgid ""
 "You created an incidence in a calendar that is currently filtered out.\n"
@@ -2093,7 +2077,7 @@ msgstr ""
 "Активирайте го в мениджъра на календара в левия страничен панел, за да "
 "видите събитието."
 
-#: calendarview.cpp:2826
+#: calendarview.cpp:2827
 #, kde-format
 msgid ""
 "You created an incidence in a calendar that is currently filtered out.\n"
