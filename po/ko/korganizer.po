@@ -2,14 +2,14 @@
 # Copyright (C) 2008 This_file_is_part_of_KDE
 # This file is distributed under the same license as the kdepim package.
 # Myong-sung Kim <xfuncrushx@gmail.com>, 2008.
-# SPDX-FileCopyrightText: 2009, 2015, 2019, 2020, 2021, 2022, 2023, 2024 Shinjo Park <kde@peremen.name>
+# SPDX-FileCopyrightText: 2009, 2015, 2019, 2020, 2021, 2022, 2023, 2024, 2025 Shinjo Park <kde@peremen.name>
 #
 msgid ""
 msgstr ""
 "Project-Id-Version: Korganizer\n"
 "Report-Msgid-Bugs-To: https://bugs.kde.org\n"
 "POT-Creation-Date: 2025-03-21 02:39+0000\n"
-"PO-Revision-Date: 2024-12-10 01:02+0100\n"
+"PO-Revision-Date: 2025-04-08 00:21+0200\n"
 "Last-Translator: Shinjo Park <kde@peremen.name>\n"
 "Language-Team: Korean <kde-kr@kde.org>\n"
 "Language: ko\n"
@@ -43,13 +43,7 @@ msgid "A Personal Organizer"
 msgstr "개인 오거나이저"
 
 #: aboutdata.cpp:22
-#, fuzzy, kde-format
-#| msgid ""
-#| "Copyright © 1997–1999 Preston Brown\n"
-#| "Copyright © 2000–2004, 2007 Cornelius Schumacher\n"
-#| "Copyright © 2004–2005 Reinhold Kainhofer\n"
-#| "Copyright © 2006–2012 Allen Winter\n"
-#| "Copyright © 2012–2024 KOrganizer authors"
+#, kde-format
 msgid ""
 "Copyright © 1997–1999 Preston Brown\n"
 "Copyright © 2000–2004, 2007 Cornelius Schumacher\n"
@@ -61,7 +55,7 @@ msgstr ""
 "Copyright © 2000–2004, 2007 Cornelius Schumacher\n"
 "Copyright © 2004–2005 Reinhold Kainhofer\n"
 "Copyright © 2006–2012 Allen Winter\n"
-"Copyright © 2012–2024 KOrganizer authors"
+"Copyright © 2012–2025 KOrganizer authors"
 
 #: aboutdata.cpp:30 kontactplugin/specialdates/specialdates_plugin.cpp:42
 #, kde-format
@@ -1362,6 +1356,9 @@ msgid ""
 "removed from its remote resource.</note></para>The <filename>%1</filename> "
 "calendar can be added again at any time."
 msgstr ""
+"<filename>%1</filename> 캘린더를 삭제하시겠습니까?<para><note>캘린더 데이터"
+"는 삭제되지 않으며, 원격 리소스에서도 캘린더를 삭제하지 않습니다.</note></"
+"para>나중에 다시 <filename>%1</filename> 캘린더를 추가할 수 있습니다."
 
 #: akonadicollectionview.cpp:759
 #, kde-kuit-format
@@ -1371,6 +1368,9 @@ msgid ""
 "<para><warning>This cannot be undone.  Please consider carefully before "
 "pressing the %2 button.</warning></para>"
 msgstr ""
+"<filename>%1</filename> 캘린더를 삭제하시겠습니까?<para><warning>이 작업은 실"
+"행 취소할 수 없습니다. %2 단추를 클릭하기 전에 다시 생각해 보십시오.</"
+"warning></para>"
 
 #: akonadicollectionview.cpp:767
 #, kde-format
@@ -3673,7 +3673,7 @@ msgstr ""
 #: settings/korganizer.kcfg:51
 #, kde-format
 msgid "Daily starting hour"
-msgstr "업무 시작 시간"
+msgstr "일과 시작 시간"
 
 #. i18n: ectx: whatsthis, entry (WorkingHoursStart), group (Time &amp; Date)
 #: settings/korganizer.kcfg:52
@@ -3689,7 +3689,7 @@ msgstr ""
 #: settings/korganizer.kcfg:57
 #, kde-format
 msgid "Daily ending hour"
-msgstr "업무 종료 시간"
+msgstr "일과 종료 시간"
 
 #. i18n: ectx: whatsthis, entry (WorkingHoursEnd), group (Time &amp; Date)
 #: settings/korganizer.kcfg:58
@@ -3947,27 +3947,26 @@ msgstr "현재 시간 표시선 표시"
 
 #. i18n: ectx: label, entry (MarcusBainsShowSeconds), group (Agenda View)
 #: settings/korganizer.kcfg:155
-#, fuzzy, kde-format
-#| msgid "Show seconds on the current-time (Marcus Bains) line"
+#, kde-format
 msgid "Show seconds and timezone on the current-time (Marcus Bains) line"
-msgstr "현재 시간 표시선에 초 표시"
+msgstr "현재 시간 표시선(Marcus Bains 선)에 초와 시간대 표시"
 
 #. i18n: ectx: whatsthis, entry (MarcusBainsShowSeconds), group (Agenda View)
 #: settings/korganizer.kcfg:156
-#, fuzzy, kde-format
-#| msgid "Check this box if you want to show seconds on the current-time line."
+#, kde-format
 msgid ""
 "Check this box if you want to show seconds on the current-time (Marcus "
 "Bains) line. Depending on your locale, the timezone will also be displayed."
-msgstr "이 옵션을 사용하면 현재 시간 표시선에 초를 표시합니다."
+msgstr ""
+"이 옵션을 사용하면 현재 시간 표시선(Marcus Bains 선)에 초를 표시합니다. 로캘"
+"에 따라서 시간대도 표시됩니다."
 
 #. i18n: ectx: tooltip, entry (MarcusBainsShowSeconds), group (Agenda View)
 #: settings/korganizer.kcfg:157
-#, fuzzy, kde-format
-#| msgid "Display seconds with the current-time indicator"
+#, kde-format
 msgid ""
 "Display seconds (possibly with timezone) with the current-time indicator"
-msgstr "현재 시간 표시선에 초 표시"
+msgstr "현재 시간 표시선에 초 표시(사용 가능한 경우 시간대 포함)"
 
 #. i18n: ectx: label, entry (SelectionStartsEditor), group (Agenda View)
 #: settings/korganizer.kcfg:162
@@ -4444,10 +4443,9 @@ msgstr "일정 보기에 사용할 배경색을 선택하십시오."
 
 #. i18n: ectx: label, entry, group (Colors)
 #: settings/korganizer.kcfg:331
-#, fuzzy, kde-format
-#| msgid "Agenda view current-time line color"
+#, kde-format
 msgid "Agenda view current-time (Marcus Bains) line color"
-msgstr "일정 보기 현재 시간 표시선 색"
+msgstr "일정 보기 현재 시간 표시선(Marcus Bains 선) 색"
 
 #. i18n: ectx: whatsthis, entry, group (Colors)
 #: settings/korganizer.kcfg:332
@@ -4572,25 +4570,21 @@ msgstr ""
 
 #. i18n: ectx: label, entry, group (Fonts)
 #: settings/korganizer.kcfg:380
-#, fuzzy, kde-format
-#| msgid "Show current-time (Marcus Bains) line"
+#, kde-format
 msgid "Current-time (Marcus Bains) line"
-msgstr "현재 시간 표시선 표시"
+msgstr "현재 시간 표시선(Marcus Bains 선)"
 
 #. i18n: ectx: whatsthis, entry, group (Fonts)
 #: settings/korganizer.kcfg:381
-#, fuzzy, kde-format
-#| msgid ""
-#| "Press this button to configure the current-time line font. This button "
-#| "will open the \"Select Font\" dialog, allowing you to choose the font for "
-#| "the current-time line in the agenda view."
+#, kde-format
 msgid ""
 "Press this button to configure the current-time (Marcus Bains) line font. "
 "This button will open the \"Select Font\" dialog, allowing you to choose the "
 "font for the current-time line in the agenda view."
 msgstr ""
-"이 옵션에서 현재 시간 표시선 글꼴을 설정하십시오. 이 옵션은 \"글꼴 선택\" 대"
-"화 상자를 표시해서 일정 보기 현재 시간 표시선 글꼴을 결정할 수 있습니다."
+"이 옵션에서 현재 시간 표시선(Marcus Bains 선) 글꼴을 설정하십시오. 이 옵션은 "
+"\"글꼴 선택\" 대화 상자를 표시해서 일정 보기 현재 시간 표시선 글꼴을 결정할 "
+"수 있습니다."
 
 #. i18n: ectx: label, entry (DefaultTodoAttachMethod), group (Hidden Options)
 #: settings/korganizer.kcfg:405
@@ -5492,13 +5486,13 @@ msgstr "지정한 날짜 범위에 있는 모든 할 일 포함(&V)"
 
 #. i18n: ectx: property (toolTip), widget (QCheckBox, unfiltered)
 #: ui/searchdialog_base.ui:325
-#, fuzzy, kde-format
-#| msgctxt "@info:whatsthis"
-#| msgid "Press this button to remove the currently active filter."
+#, kde-format
 msgid ""
 "Uncheck this box to skip incidences matching the currently selected view "
 "filter"
-msgstr "이 단추를 클릭하면 현재 활성화된 필터를 삭제합니다."
+msgstr ""
+"이 옵션을 사용하지 않으면 현재 선택한 보기 필터와 일치하는 반복 항목을 건너뜁"
+"니다"
 
 #. i18n: ectx: property (whatsThis), widget (QCheckBox, unfiltered)
 #: ui/searchdialog_base.ui:328
@@ -5507,12 +5501,14 @@ msgid ""
 "When this box is checked all incidences will be considered in the search, "
 "even those that aren't displayed according the currently selected view filter"
 msgstr ""
+"이 옵션을 사용하면 현재 보기 필터에 의해서 표시되지 않은 항목을 포함하여 모"
+"든 반복 항목을 검색에 포함합니다"
 
 #. i18n: ectx: property (text), widget (QCheckBox, unfiltered)
 #: ui/searchdialog_base.ui:331
 #, kde-format
 msgid "Include all incidences matched by view filter"
-msgstr ""
+msgstr "보기 필터와 일치하는 모든 반복 항목 포함"
 
 #. i18n: ectx: property (text), widget (QPushButton, mDayBtn)
 #: views/collectionview/quickview.ui:34
