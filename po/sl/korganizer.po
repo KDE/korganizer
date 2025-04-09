@@ -1,7 +1,7 @@
 # translation of korganizer.po to Slovenian
 # Translation of korganizer.po to Slovenian
 # Copyright (C) 2001,2002, 2003, 2004, 2005, 2006 Free Software Foundation, Inc.
-# $Id: korganizer.po 1706778 2025-04-08 01:20:44Z scripty $
+# $Id: korganizer.po 1706842 2025-04-09 01:20:55Z scripty $
 # $Source$
 #
 # Roman Maurer <roman.maurer@hermes.si>, 2001.
@@ -15,7 +15,7 @@ msgstr ""
 "Project-Id-Version: korganizer\n"
 "Report-Msgid-Bugs-To: https://bugs.kde.org\n"
 "POT-Creation-Date: 2025-04-08 00:42+0000\n"
-"PO-Revision-Date: 2025-04-07 07:09+0200\n"
+"PO-Revision-Date: 2025-04-08 06:59+0200\n"
 "Last-Translator: Matjaž Jeran <matjaz.jeran@amis.net>\n"
 "Language-Team: Slovenian <lugos-slo@lugos.si>\n"
 "Language: sl\n"
@@ -918,13 +918,7 @@ msgid "Show the next few days at a time in Agenda View"
 msgstr "Prikazi naslednjih nekaj dni naenkrat v pogledu dnevnega reda"
 
 #: actionmanager.cpp:564
-#, fuzzy, kde-kuit-format
-#| msgctxt "@info:whatsthis"
-#| msgid ""
-#| "Select this option to show the next few days a a time in Agenda View. "
-#| "Configure the <placeholder>Next X Days</placeholder> setting in the "
-#| "<interface>Views->General</interface> settingst page to adjust the number "
-#| "of days shown."
+#, kde-kuit-format
 msgctxt "@info:whatsthis"
 msgid ""
 "Select this option to show the next few days at a time in Agenda View. "
@@ -932,9 +926,9 @@ msgid ""
 "<interface>Views->General</interface> settings page to adjust the number of "
 "days shown."
 msgstr ""
-"Izberite to možnost, če želite v pogledu dnevnega reda prikazati čas "
-"naslednjih nekaj dni. Konfigurirajte nastavitev <placeholder>Naslednjih X "
-"dni</placeholder> na strani z nastavitvami <interface>Views->General</"
+"Izberite to možnost, če želite v pogledu dnevnega reda prikazati naslednjih "
+"nekaj dni. Konfigurirajte nastavitev <placeholder>Naslednjih X dni</"
+"placeholder> na strani z nastavitvami <interface>Pogledi->Splošno</"
 "interface>, da prilagodite število prikazanih dni."
 
 #: actionmanager.cpp:571

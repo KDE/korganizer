@@ -8,7 +8,7 @@ msgstr ""
 "Project-Id-Version: \n"
 "Report-Msgid-Bugs-To: https://bugs.kde.org\n"
 "POT-Creation-Date: 2025-04-08 00:42+0000\n"
-"PO-Revision-Date: 2025-04-07 15:57+0200\n"
+"PO-Revision-Date: 2025-04-08 12:46+0200\n"
 "Last-Translator: giovanni <g.sora@tiscali.it>\n"
 "Language-Team: Interlingua <kde-i18n-doc@kde.org>\n"
 "Language: ia\n"
@@ -908,13 +908,7 @@ msgid "Show the next few days at a time in Agenda View"
 msgstr "Monstra le proxime pauc dies per vice in le Vista de Agenda"
 
 #: actionmanager.cpp:564
-#, fuzzy, kde-kuit-format
-#| msgctxt "@info:whatsthis"
-#| msgid ""
-#| "Select this option to show the next few days a a time in Agenda View. "
-#| "Configure the <placeholder>Next X Days</placeholder> setting in the "
-#| "<interface>Views->General</interface> settingst page to adjust the number "
-#| "of days shown."
+#, kde-kuit-format
 msgctxt "@info:whatsthis"
 msgid ""
 "Select this option to show the next few days at a time in Agenda View. "

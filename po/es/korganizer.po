@@ -18,7 +18,7 @@ msgstr ""
 "Project-Id-Version: korganizer\n"
 "Report-Msgid-Bugs-To: https://bugs.kde.org\n"
 "POT-Creation-Date: 2025-04-08 00:42+0000\n"
-"PO-Revision-Date: 2025-04-07 19:52+0100\n"
+"PO-Revision-Date: 2025-04-08 17:00+0100\n"
 "Last-Translator: Eloy Cuadra <ecuadra@eloihr.net>\n"
 "Language-Team: Spanish <kde-l10n-es@kde.org>\n"
 "Language: es\n"
@@ -923,13 +923,7 @@ msgid "Show the next few days at a time in Agenda View"
 msgstr "Mostrar los próximos días a la vez en la vista de agenda"
 
 #: actionmanager.cpp:564
-#, fuzzy, kde-kuit-format
-#| msgctxt "@info:whatsthis"
-#| msgid ""
-#| "Select this option to show the next few days a a time in Agenda View. "
-#| "Configure the <placeholder>Next X Days</placeholder> setting in the "
-#| "<interface>Views->General</interface> settingst page to adjust the number "
-#| "of days shown."
+#, kde-kuit-format
 msgctxt "@info:whatsthis"
 msgid ""
 "Select this option to show the next few days at a time in Agenda View. "

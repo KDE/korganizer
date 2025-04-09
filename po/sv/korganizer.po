@@ -11,7 +11,7 @@ msgstr ""
 "Project-Id-Version: korganizer\n"
 "Report-Msgid-Bugs-To: https://bugs.kde.org\n"
 "POT-Creation-Date: 2025-04-08 00:42+0000\n"
-"PO-Revision-Date: 2025-04-07 20:56+0200\n"
+"PO-Revision-Date: 2025-04-08 17:36+0200\n"
 "Last-Translator: Stefan Asserhäll <stefan.asserhall@gmail.com>\n"
 "Language-Team: Swedish <kde-i18n-doc@kde.org>\n"
 "Language: sv\n"
@@ -905,13 +905,7 @@ msgid "Show the next few days at a time in Agenda View"
 msgstr "Visa närmaste dagarna i agendavyn"
 
 #: actionmanager.cpp:564
-#, fuzzy, kde-kuit-format
-#| msgctxt "@info:whatsthis"
-#| msgid ""
-#| "Select this option to show the next few days a a time in Agenda View. "
-#| "Configure the <placeholder>Next X Days</placeholder> setting in the "
-#| "<interface>Views->General</interface> settingst page to adjust the number "
-#| "of days shown."
+#, kde-kuit-format
 msgctxt "@info:whatsthis"
 msgid ""
 "Select this option to show the next few days at a time in Agenda View. "
@@ -919,9 +913,10 @@ msgid ""
 "<interface>Views->General</interface> settings page to adjust the number of "
 "days shown."
 msgstr ""
-"Välj alternativet för att visa de närmaste dagarna i agendavyn. Anpassa "
-"inställningen <placeholder>Följande dagar</placeholder> på inställningssidan "
-"<interface>Vyer->Allmänt</interface> för att justera antalet dagar som visas."
+"Välj alternativet för att visa de närmaste dagarna åt gången i agendavyn. "
+"Anpassa inställningen <placeholder>Följande dagar</placeholder> på "
+"inställningssidan <interface>Vyer->Allmänt</interface> för att justera "
+"antalet dagar som visas."
 
 #: actionmanager.cpp:571
 #, kde-format
