@@ -980,7 +980,7 @@ QDate QCalendarSystem::addMonths(const QDate &dt, int months) const
                 if (month + months >= 1) {
                     month += months;
                     months = 0;
-                } else if (months < 0) {
+                } else {
                     year = d->addYears(year, -1);
                     months += d->monthsInYear(year);
                 }
@@ -1061,7 +1061,7 @@ int QCalendarSystem::monthsDifference(const QDate &fromDate, const QDate &toDate
     // Calculate number of months in full years preceding y2
     if (y2 == y1) {
         my = 0;
-    } else if (d->hasLeapMonths()) {
+    } else if (d->hasLeapMonths()) { /* cppcheck-suppress knownConditionTrueFalse */
         my = 0;
         for (int y = y1; y < y2; y = d->addYears(y, 1)) {
             my = my + monthsInYear(y);
