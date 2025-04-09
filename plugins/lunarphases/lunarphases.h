@@ -14,7 +14,7 @@ using namespace EventViews::CalendarDecoration;
 class Lunarphases : public Decoration
 {
 public:
-    Lunarphases(QObject *parent = nullptr, const QVariantList &args = {});
+    explicit Lunarphases(QObject *parent = nullptr, const QVariantList &args = {});
 
     [[nodiscard]] Element::List createDayElements(const QDate &) override;
 

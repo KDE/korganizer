@@ -16,7 +16,7 @@ using namespace EventViews::CalendarDecoration;
 class Hebrew : public Decoration
 {
 public:
-    Hebrew(QObject *parent = nullptr, const QVariantList &args = {});
+    explicit Hebrew(QObject *parent = nullptr, const QVariantList &args = {});
 
     void configure(QWidget *parent) override;
 

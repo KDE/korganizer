@@ -17,7 +17,7 @@ struct ElementData;
 class Picoftheday : public Decoration
 {
 public:
-    Picoftheday(QObject *parent = nullptr, const QVariantList &args = {});
+    explicit Picoftheday(QObject *parent = nullptr, const QVariantList &args = {});
 
     [[nodiscard]] Element::List createDayElements(const QDate &) override;
 

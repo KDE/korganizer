@@ -15,7 +15,7 @@ using namespace EventViews::CalendarDecoration;
 class ThisDayInHistory : public Decoration
 {
 public:
-    ThisDayInHistory(QObject *parent = nullptr, const QVariantList &args = {});
+    explicit ThisDayInHistory(QObject *parent = nullptr, const QVariantList &args = {});
 
     [[nodiscard]] Element::List createDayElements(const QDate &) override;
     [[nodiscard]] Element::List createMonthElements(const QDate &) override;

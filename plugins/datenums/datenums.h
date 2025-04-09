@@ -15,7 +15,7 @@ using namespace EventViews::CalendarDecoration;
 class Datenums : public Decoration
 {
 public:
-    Datenums(QObject *parent = nullptr, const QVariantList &args = {});
+    explicit Datenums(QObject *parent = nullptr, const QVariantList &args = {});
 
     void configure(QWidget *parent) override;
 
