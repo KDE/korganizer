@@ -719,9 +719,9 @@ int QCalendarSystem::day(const QDate &date) const
 int QCalendarSystem::quarter(const QDate &date) const
 {
     if (isValid(date)) {
-        int month;
-        d->julianDayToDate(date.toJulianDay(), nullptr, &month, nullptr);
-        return d->quarter(month);
+        int tmpMonth;
+        d->julianDayToDate(date.toJulianDay(), nullptr, &tmpMonth, nullptr);
+        return d->quarter(tmpMonth);
     } else {
         return 0;
     }
@@ -773,9 +773,9 @@ int QCalendarSystem::dayOfWeek(int year, int month, int day) const
 int QCalendarSystem::weekNumber(const QDate &date, int *yearNum) const
 {
     if (isValid(date)) {
-        int year, month, day;
-        d->julianDayToDate(date.toJulianDay(), &year, &month, &day);
-        return weekNumber(year, month, day, yearNum);
+        int tmpYear, tmpMonth, tmpDay;
+        d->julianDayToDate(date.toJulianDay(), &tmpYear, &tmpMonth, &tmpDay);
+        return weekNumber(tmpYear, tmpMonth, tmpDay, yearNum);
     } else {
         return 0;
     }
@@ -917,9 +917,9 @@ int QCalendarSystem::daysInYear(int year) const
 int QCalendarSystem::daysInMonth(const QDate &date) const
 {
     if (isValid(date)) {
-        int year, month;
-        d->julianDayToDate(date.toJulianDay(), &year, &month, nullptr);
-        return d->daysInMonth(year, month);
+        int tmpYear, tmpMonth;
+        d->julianDayToDate(date.toJulianDay(), &tmpYear, &tmpMonth, nullptr);
+        return d->daysInMonth(tmpYear, tmpMonth);
     } else {
         return 0;
     }
@@ -960,11 +960,11 @@ bool QCalendarSystem::isLeapYear(int year) const
 QDate QCalendarSystem::addYears(const QDate &dt, int years) const
 {
     if (isValid(dt)) {
-        int year, month, day;
-        d->julianDayToDate(dt.toJulianDay(), &year, &month, &day);
-        year = d->addYears(year, years);
-        month = qMin(month, d->monthsInYear(year));
-        return date(year, month, qMin(day, d->daysInMonth(year, month)));
+        int tmpYear, tmpMonth, tmpDay;
+        d->julianDayToDate(dt.toJulianDay(), &tmpYear, &tmpMonth, &tmpDay);
+        tmpYear = d->addYears(tmpYear, years);
+        tmpMonth = qMin(tmpMonth, d->monthsInYear(tmpYear));
+        return date(tmpYear, tmpMonth, qMin(tmpDay, d->daysInMonth(tmpYear, tmpMonth)));
     } else {
         return QDate();
     }
@@ -973,29 +973,29 @@ QDate QCalendarSystem::addYears(const QDate &dt, int years) const
 QDate QCalendarSystem::addMonths(const QDate &dt, int months) const
 {
     if (isValid(dt)) {
-        int year, month, day;
-        d->julianDayToDate(dt.toJulianDay(), &year, &month, &day);
+        int tmpYear, tmpMonth, tmpDay;
+        d->julianDayToDate(dt.toJulianDay(), &tmpYear, &tmpMonth, &tmpDay);
         while (months != 0) {
             if (months < 0) {
-                if (month + months >= 1) {
-                    month += months;
+                if (tmpMonth + months >= 1) {
+                    tmpMonth += months;
                     months = 0;
                 } else {
-                    year = d->addYears(year, -1);
-                    months += d->monthsInYear(year);
+                    tmpYear = d->addYears(tmpYear, -1);
+                    months += d->monthsInYear(tmpYear);
                 }
             } else {
-                int miy = d->monthsInYear(year);
-                if (month + months <= miy) {
-                    month += months;
+                int miy = d->monthsInYear(tmpYear);
+                if (tmpMonth + months <= miy) {
+                    tmpMonth += months;
                     months = 0;
                 } else {
-                    year = d->addYears(year, 1);
+                    tmpYear = d->addYears(tmpYear, 1);
                     months -= miy;
                 }
             }
         }
-        return date(year, month, qMin(day, d->daysInMonth(year, month)));
+        return date(tmpYear, tmpMonth, qMin(tmpDay, d->daysInMonth(tmpYear, tmpMonth)));
     } else {
         return QDate();
     }
@@ -1185,9 +1185,9 @@ QDate QCalendarSystem::lastDayOfYear(int year) const
 
 QDate QCalendarSystem::firstDayOfMonth(const QDate &dt) const
 {
-    int year, month;
-    getDate(dt, &year, &month, nullptr);
-    return date(year, month, 1);
+    int tmpYear, tmpMonth;
+    getDate(dt, &tmpYear, &tmpMonth, nullptr);
+    return date(tmpYear, tmpMonth, 1);
 }
 
 QDate QCalendarSystem::firstDayOfMonth(int year, int month) const
@@ -1197,9 +1197,9 @@ QDate QCalendarSystem::firstDayOfMonth(int year, int month) const
 
 QDate QCalendarSystem::lastDayOfMonth(const QDate &dt) const
 {
-    int year, month;
-    getDate(dt, &year, &month, nullptr);
-    return date(year, month, daysInMonth(year, month));
+    int tmpYear, tmpMonth;
+    getDate(dt, &tmpYear, &tmpMonth, nullptr);
+    return date(tmpYear, tmpMonth, daysInMonth(tmpYear, tmpMonth));
 }
 
 QDate QCalendarSystem::lastDayOfMonth(int year, int month) const

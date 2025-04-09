@@ -78,7 +78,7 @@ void POTDElement::completeMissingData()
 
 KIO::SimpleJob *POTDElement::createJsonQueryJob(const QString &property, const QString &title, const QList<QueryItem> &otherQueryItems)
 {
-    QUrl url(QStringLiteral("https://en.wikipedia.org/w/api.php"));
+    QUrl wikipediaUrl(QStringLiteral("https://en.wikipedia.org/w/api.php"));
 
     QUrlQuery urlQuery{
         {QStringLiteral("action"), QStringLiteral("query")},
@@ -89,9 +89,9 @@ KIO::SimpleJob *POTDElement::createJsonQueryJob(const QString &property, const Q
     for (const auto &item : otherQueryItems) {
         urlQuery.addQueryItem(item.key, item.value);
     }
-    url.setQuery(urlQuery);
+    wikipediaUrl.setQuery(urlQuery);
 
-    return KIO::storedGet(url, KIO::NoReload, KIO::HideProgressInfo);
+    return KIO::storedGet(wikipediaUrl, KIO::NoReload, KIO::HideProgressInfo);
 }
 
 KIO::SimpleJob *POTDElement::createImagesJsonQueryJob(PageProtectionState state)
@@ -195,8 +195,8 @@ void POTDElement::handleBasicImageInfoJsonResponse(KJob *job)
     const auto pageObject = pagesObject.isEmpty() ? QJsonObject() : pagesObject.begin()->toObject();
     const auto imageInfo = pageObject.value(QLatin1StringView("imageinfo")).toArray().at(0).toObject();
 
-    const QString url = imageInfo.value(QLatin1StringView("url")).toString();
-    if (url.isEmpty()) {
+    const QString imageUrl = imageInfo.value(QLatin1StringView("url")).toString();
+    if (imageUrl.isEmpty()) {
         qCWarning(KORGANIZERPICOFTHEDAYPLUGIN_LOG) << mDate << ": missing imageinfo data in reply:" << json;
         setLoadingFailed();
         return;
