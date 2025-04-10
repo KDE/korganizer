@@ -313,7 +313,7 @@ void SearchDialog::search(const QRegularExpression &regularExpression)
         }
         if (m_ui->attendeeCheck->isChecked()) {
             const KCalendarCore::Attendee::List lstAttendees = ev->attendees();
-            if (std::any_of(lstAttendees.begin(), lstAttendees.end(), [regularExpression](const KCalendarCore::Attendee &attendee) {
+            if (std::ranges::any_of(lstAttendees, [regularExpression](const KCalendarCore::Attendee &attendee) {
                     return regularExpression.match(attendee.fullName()).hasMatch();
                 })) {
                 m_matchedEvents.append(item);

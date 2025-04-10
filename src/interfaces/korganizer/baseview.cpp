@@ -218,10 +218,10 @@ EventViews::EventView::Changes BaseView::changes() const
 
 Akonadi::CollectionCalendar::Ptr BaseView::calendarForCollection(Akonadi::Collection::Id collectionId) const
 {
-    const auto cal = std::find_if(d->calendars.cbegin(), d->calendars.cend(), [collectionId](const auto &cal) {
+    const auto cal = std::ranges::find_if(d->calendars, [collectionId](const auto &cal) {
         return cal->collection().id() == collectionId;
     });
-    return cal == d->calendars.cend() ? Akonadi::CollectionCalendar::Ptr{} : *cal;
+    return cal == d->calendars.end() ? Akonadi::CollectionCalendar::Ptr{} : *cal;
 }
 
 Akonadi::CollectionCalendar::Ptr BaseView::calendarForIncidence(const KCalendarCore::Incidence::Ptr &incidence) const

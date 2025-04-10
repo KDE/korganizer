@@ -102,7 +102,7 @@ SummaryEventInfo::List SummaryEventInfo::eventsForRange(QDate start, QDate end, 
         }
     }
 
-    std::sort(events.begin(), events.end(), eventLessThan);
+    std::ranges::sort(events, eventLessThan);
 
     SummaryEventInfo::List eventInfoList;
     KCalendarCore::Event::Ptr ev;

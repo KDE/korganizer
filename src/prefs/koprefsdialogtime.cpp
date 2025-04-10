@@ -91,7 +91,7 @@ KOPrefsDialogTime::KOPrefsDialogTime(QObject *parent, const KPluginMetaData &dat
         }
         regionsMap.emplace_back(label, regionCode);
     }
-    std::sort(regionsMap.begin(), regionsMap.end(), [](const auto &lhs, const auto &rhs) {
+    std::ranges::sort(regionsMap, [](const auto &lhs, const auto &rhs) {
         return lhs.first < rhs.first;
     });
 
