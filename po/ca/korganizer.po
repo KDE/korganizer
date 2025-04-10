@@ -14,7 +14,7 @@ msgstr ""
 "Project-Id-Version: korganizer\n"
 "Report-Msgid-Bugs-To: https://bugs.kde.org\n"
 "POT-Creation-Date: 2025-03-21 02:39+0000\n"
-"PO-Revision-Date: 2025-03-13 09:47+0100\n"
+"PO-Revision-Date: 2025-04-06 12:02+0200\n"
 "Last-Translator: Josep M. Ferrer <txemaq@gmail.com>\n"
 "Language-Team: Catalan <kde-i18n-ca@kde.org>\n"
 "Language: ca\n"
@@ -3881,7 +3881,7 @@ msgstr ""
 #: settings/korganizer.kcfg:85
 #, kde-format
 msgid "Next x days"
-msgstr "Pròxims x dies"
+msgstr "x dies següents"
 
 #. i18n: ectx: whatsthis, entry, group (General View)
 #: settings/korganizer.kcfg:86
@@ -3892,8 +3892,8 @@ msgid ""
 "the \"View\" menu."
 msgstr ""
 "Seleccioneu el nombre «x» de dies que es mostraran a la vista de dies "
-"pròxims. Per a accedir a la vista dels «x» dies pròxims, trieu l'element de "
-"menú «Pròxims x dies» des del menú «Visualitza»."
+"pròxims. Per a accedir a la vista dels «x» dies següents, trieu l'element de "
+"menú «x dies següents» des del menú «Visualitza»."
 
 #. i18n: ectx: tooltip, entry, group (General View)
 #: settings/korganizer.kcfg:87
