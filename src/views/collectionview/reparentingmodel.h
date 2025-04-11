@@ -45,7 +45,7 @@ public:
         QList<Ptr> children;
         Node *parent = nullptr;
         ReparentingModel &personModel;
-        const bool mIsSourceNode = false;
+        const bool mIsSourceNode; // init in the ctors
     };
 
     struct NodeManager {

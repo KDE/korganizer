@@ -252,7 +252,6 @@ class ColorProxyModel : public QSortFilterProxyModel
 public:
     explicit ColorProxyModel(QObject *parent = nullptr)
         : QSortFilterProxyModel(parent)
-        , mInitDefaultCalendar(false)
     {
     }
 
@@ -303,7 +302,7 @@ public:
     }
 
 private:
-    mutable bool mInitDefaultCalendar;
+    mutable bool mInitDefaultCalendar = false;
 };
 
 class CollectionFilter : public QSortFilterProxyModel

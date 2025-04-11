@@ -46,9 +46,7 @@
 #endif
 
 KOrganizer::KOrganizer()
-    : KParts::MainWindow()
-    , KOrg::MainWindow()
-    , mCalendarView(new CalendarView(this))
+    : mCalendarView(new CalendarView(this))
 {
     KOCore::self()->addXMLGUIClient(this, this);
     //  setMinimumSize(600,400);  // make sure we don't get resized too small...

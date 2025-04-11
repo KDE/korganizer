@@ -31,8 +31,7 @@ static const char myQuickviewConfigGroupName[] = "Quickview";
 }
 
 Quickview::Quickview(const Akonadi::CollectionCalendar::Ptr &calendar, const QString &title)
-    : QDialog()
-    , mUi(new Ui_quickview)
+    : mUi(new Ui_quickview)
 {
     auto buttonBox = new QDialogButtonBox(QDialogButtonBox::Close, this);
     auto mainWidget = new QWidget(this);

@@ -34,7 +34,6 @@ private:
 Q_GLOBAL_STATIC(KOPrefsPrivate, sInstance)
 
 KOPrefs::KOPrefs()
-    : KOPrefsBase()
 {
     mEventViewsPrefs = EventViews::PrefsPtr(new EventViews::Prefs(this));
 

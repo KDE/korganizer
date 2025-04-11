@@ -1,4 +1,6 @@
 Checks:
 '-clang-analyzer-optin.cplusplus.VirtualCall,
-modernize-use-nodiscard
+modernize-use-nodiscard,
+modernize-use-default-member-init,
+readability-redundant-member-init,
 '

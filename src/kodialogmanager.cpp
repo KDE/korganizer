@@ -49,8 +49,7 @@ protected:
 };
 
 KODialogManager::KODialogManager(CalendarView *mainView)
-    : QObject()
-    , mMainView(mainView)
+    : mMainView(mainView)
 {
 }
 

@@ -36,8 +36,7 @@
 #include <QStackedWidget>
 
 KOViewManager::KOViewManager(CalendarView *mainView)
-    : QObject()
-    , mMainView(mainView)
+    : mMainView(mainView)
 {
     connect(mainView, &CalendarView::calendarAdded, this, &KOViewManager::addCalendar);
     connect(mainView, &CalendarView::calendarRemoved, this, &KOViewManager::removeCalendar);

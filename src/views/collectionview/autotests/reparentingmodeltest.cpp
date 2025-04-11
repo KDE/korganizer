@@ -84,8 +84,6 @@ class ModelSignalSpy : public QObject
     Q_OBJECT
 public:
     explicit ModelSignalSpy(const QAbstractItemModel &model)
-        : start(0)
-        , end(0)
     {
         connect(&model, &QAbstractItemModel::rowsInserted, this, &ModelSignalSpy::onRowsInserted);
         connect(&model, &QAbstractItemModel::rowsRemoved, this, &ModelSignalSpy::onRowsRemoved);
@@ -98,8 +96,8 @@ public:
     QStringList mSignals;
     QModelIndex parent;
     QModelIndex topLeft, bottomRight;
-    int start;
-    int end;
+    int start = 0;
+    int end = 0;
 
 public Q_SLOTS:
     void onRowsInserted(const QModelIndex &p, int s, int e)

@@ -295,7 +295,6 @@ public:
     explicit MultiAgendaViewConfigDialogPrivate(QAbstractItemModel *base, MultiAgendaViewConfigDialog *qq)
         : q(qq)
         , baseModel(base)
-        , currentColumn(0)
     {
     }
 
@@ -313,7 +312,7 @@ public:
     Ui::MultiAgendaViewConfigWidget ui;
     QStandardItemModel listModel;
     QAbstractItemModel *baseModel = nullptr;
-    int currentColumn;
+    int currentColumn = 0;
 };
 
 void MultiAgendaView::restoreConfig(const KConfigGroup &configGroup)
