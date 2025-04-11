@@ -2390,6 +2390,8 @@ bool CalendarView::deleteIncidence(const Akonadi::Item &item, bool force)
         recur->setEndDate(itemDate.addDays(-1));
         (void)mChanger->modifyIncidence(item, oldIncidence, this);
         break;
+    default: // cancel
+        break;
     }
     return true;
 }
