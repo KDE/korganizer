@@ -2546,7 +2546,9 @@ static auto forCollection(const Akonadi::Collection &collection)
 
 void CalendarView::collectionSelected(const Akonadi::Collection &collection)
 {
+    // NOLINTBEGIN(modernize-use-ranges) to avoid detaching
     auto enabledCalendar = std::find_if(mEnabledCalendars.cbegin(), mEnabledCalendars.cend(), forCollection(collection));
+    // NOLINTEND(modernize-use-ranges)
     if (enabledCalendar != mEnabledCalendars.cend()) {
         return;
     }
@@ -2559,7 +2561,7 @@ void CalendarView::collectionSelected(const Akonadi::Collection &collection)
 
 void CalendarView::collectionDeselected(const Akonadi::Collection &collection)
 {
-    auto calendarIt = std::find_if(mEnabledCalendars.begin(), mEnabledCalendars.end(), forCollection(collection));
+    auto calendarIt = std::ranges::find_if(mEnabledCalendars, forCollection(collection));
     if (calendarIt == mEnabledCalendars.end()) {
         return;
     }

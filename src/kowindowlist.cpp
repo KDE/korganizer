@@ -38,7 +38,7 @@ void KOWindowList::removeWindow(KOrg::MainWindow *korg)
 
 KOrg::MainWindow *KOWindowList::findInstance(const QUrl &url)
 {
-    const auto it = std::find_if(mWindowList.begin(), mWindowList.end(), [url](const KOrg::MainWindow *inst) {
+    const auto it = std::ranges::find_if(mWindowList, [url](const KOrg::MainWindow *inst) {
         return (inst && inst->getCurrentURL() == url);
     });
     return (it == mWindowList.end()) ? nullptr : (*it);

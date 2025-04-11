@@ -86,11 +86,6 @@ public:
     int span; // #days in the special occasion.
     KContacts::Addressee addressee;
     Akonadi::Item item;
-
-    bool operator<(const SDEntry &entry) const
-    {
-        return daysTo < entry.daysTo;
-    }
 };
 
 SDSummaryWidget::SDSummaryWidget(KontactInterface::Plugin *plugin, QWidget *parent)
@@ -237,6 +232,11 @@ void SDSummaryWidget::slotBirthdayJobFinished(KJob *job)
     mJobRunning = false;
 }
 
+static bool eventLessThan(const SDEntry &event1, const SDEntry &event2)
+{
+    return event1.daysTo < event2.daysTo;
+}
+
 void SDSummaryWidget::createLabels()
 {
     // Remove all special date labels from the layout and delete them, as we
@@ -380,7 +380,7 @@ void SDSummaryWidget::createLabels()
     }
 
     // Sort, then Print the Special Dates
-    std::sort(mDates.begin(), mDates.end());
+    std::ranges::sort(mDates, eventLessThan);
 
     if (!mDates.isEmpty()) {
         int counter = 0;

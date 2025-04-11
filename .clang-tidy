@@ -6,4 +6,5 @@ readability-redundant-member-init,
 bugprone-switch-missing-default-case,
 misc-use-internal-linkage,
 readability-inconsistent-declaration-parameter-name,
+modernize-use-ranges,
 '

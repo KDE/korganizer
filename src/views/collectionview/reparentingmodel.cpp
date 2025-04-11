@@ -210,7 +210,7 @@ void ReparentingModel::addNode(const ReparentingModel::Node::Ptr &node)
     // otherwise we run into the problem that while a node is being removed,
     // the async request could be triggered (due to a changed signal),
     // resulting in the node getting read immediately after it had been removed.
-    if (std::any_of(mProxyNodes.begin(), mProxyNodes.end(), [node](const auto &existing) {
+    if (std::ranges::any_of(mProxyNodes, [node](const auto &existing) {
             return *existing == *node;
         })) {
         return;
@@ -222,7 +222,7 @@ void ReparentingModel::addNode(const ReparentingModel::Node::Ptr &node)
 
 void ReparentingModel::doAddNode(const Node::Ptr &node)
 {
-    if (std::any_of(mProxyNodes.begin(), mProxyNodes.end(), [node](const auto &existing) {
+    if (std::ranges::any_of(mProxyNodes, [node](const auto &existing) {
             return *existing == *node;
         })) {
         return;
@@ -257,7 +257,7 @@ void ReparentingModel::doAddNode(const Node::Ptr &node)
 
 void ReparentingModel::updateNode(const ReparentingModel::Node::Ptr &node)
 {
-    const auto it = std::find_if(mProxyNodes.begin(), mProxyNodes.end(), [node](const Node::Ptr &existing) {
+    const auto it = std::ranges::find_if(mProxyNodes, [node](const Node::Ptr &existing) {
         return *existing == *node;
     });
     if (it != mProxyNodes.end()) {
@@ -339,7 +339,7 @@ void ReparentingModel::onSourceRowsAboutToBeInserted(const QModelIndex &parent, 
 
 ReparentingModel::Node *ReparentingModel::getReparentNode(const QModelIndex &sourceIndex)
 {
-    const auto it = std::find_if(mProxyNodes.begin(), mProxyNodes.end(), [sourceIndex](const Node::Ptr &proxyNode) {
+    const auto it = std::ranges::find_if(mProxyNodes, [sourceIndex](const Node::Ptr &proxyNode) {
         // Re-parent source nodes according to the provided rules
         // The proxy can be ignored if it is a duplicate, so only re-parent to proxies that are in the model
         return (proxyNode->parent && proxyNode->adopts(sourceIndex));
@@ -619,7 +619,7 @@ QModelIndex ReparentingModel::mapToSource(const QModelIndex &proxyIndex) const
 
 ReparentingModel::Node *ReparentingModel::getSourceNode(const QModelIndex &sourceIndex) const
 {
-    const auto it = std::find_if(mSourceNodes.begin(), mSourceNodes.end(), [sourceIndex](const Node *n) {
+    const auto it = std::ranges::find_if(mSourceNodes, [sourceIndex](const Node *n) {
         return n->sourceIndex == sourceIndex;
     });
     return it == mSourceNodes.end() ? nullptr : (*it);
@@ -658,13 +658,9 @@ void ReparentingModel::rebuildFromSource(Node *parentNode, const QModelIndex &so
 
 bool ReparentingModel::isDuplicate(const Node::Ptr &proxyNode) const
 {
-    for (const Node *n : std::as_const(mSourceNodes)) {
-        // qCDebug(KORGANIZER_LOG) << index << index.data().toString();
-        if (proxyNode->isDuplicateOf(n->sourceIndex)) {
-            return true;
-        }
-    }
-    return false;
+    return std::ranges::any_of(mSourceNodes, [proxyNode](const Node *n) {
+        return proxyNode->isDuplicateOf(n->sourceIndex);
+    });
 }
 
 void ReparentingModel::insertProxyNode(const Node::Ptr &proxyNode)

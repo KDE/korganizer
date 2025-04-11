@@ -328,9 +328,11 @@ void FilterEdit::editCategorySelection()
     Akonadi::Tag::List tags;
     const auto names = mCurrent->categoryList();
     tags.resize(names.size());
+    // NOLINTBEGIN(modernize-use-ranges) to avoid detaching
     std::transform(names.cbegin(), names.cend(), std::back_inserter(tags), [](const QString &name) {
         return Akonadi::Tag{name};
     });
+    // NOLINTEND(modernize-use-ranges)
     mCategorySelectDialog->setSelection(tags);
 
     mCategorySelectDialog->show();
@@ -346,7 +348,9 @@ void FilterEdit::updateCategorySelection()
     const auto tags = mCategorySelectDialog->selection();
     QStringList categories;
     categories.reserve(tags.size());
+    // NOLINTBEGIN(modernize-use-ranges) to avoid detaching
     std::transform(tags.cbegin(), tags.cend(), std::back_inserter(categories), std::bind(&Akonadi::Tag::name, std::placeholders::_1));
+    // NOLINTEND(modernize-use-ranges)
     mCatList->clear();
     mCatList->addItems(categories);
     mCurrent->setCategoryList(categories);
