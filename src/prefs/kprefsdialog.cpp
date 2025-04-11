@@ -36,47 +36,6 @@
 
 using namespace Korganizer;
 
-namespace KPrefsWidFactory
-{
-KPrefsWid *create(KConfigSkeletonItem *item, QWidget *parent)
-{
-    auto boolItem = dynamic_cast<KConfigSkeleton::ItemBool *>(item);
-    if (boolItem) {
-        return new KPrefsWidBool(boolItem, parent);
-    }
-
-    auto stringItem = dynamic_cast<KConfigSkeleton::ItemString *>(item);
-    if (stringItem) {
-        return new KPrefsWidString(stringItem, parent);
-    }
-
-    auto enumItem = dynamic_cast<KConfigSkeleton::ItemEnum *>(item);
-    if (enumItem) {
-        QList<KConfigSkeleton::ItemEnum::Choice> choices = enumItem->choices();
-        if (choices.isEmpty()) {
-            qCritical() << "Enum has no choices.";
-            return nullptr;
-        } else {
-            auto radios = new KPrefsWidRadios(enumItem, parent);
-            QList<KConfigSkeleton::ItemEnum::Choice>::ConstIterator it;
-            int value = 0;
-            QList<KConfigSkeleton::ItemEnum::Choice>::ConstIterator end(choices.constEnd());
-            for (it = choices.constBegin(); it != end; ++it) {
-                radios->addRadio(value++, (*it).label);
-            }
-            return radios;
-        }
-    }
-
-    auto intItem = dynamic_cast<KConfigSkeleton::ItemInt *>(item);
-    if (intItem) {
-        return new KPrefsWidInt(intItem, parent);
-    }
-
-    return nullptr;
-}
-} // namespace KPrefsWidFactory
-
 QList<QWidget *> KPrefsWid::widgets() const
 {
     return {};

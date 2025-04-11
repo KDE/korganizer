@@ -4,4 +4,5 @@ modernize-use-nodiscard,
 modernize-use-default-member-init,
 readability-redundant-member-init,
 bugprone-switch-missing-default-case,
+misc-use-internal-linkage,
 '
