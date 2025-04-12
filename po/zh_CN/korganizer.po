@@ -1284,7 +1284,7 @@ msgstr "可让您在日历中搜索关键词"
 #, kde-format
 msgctxt "@info/plain Displayed grayed-out inside the textbox, verb to search"
 msgid "Search…"
-msgstr ""
+msgstr "搜索…"
 
 #: akonadicollectionview.cpp:500 manageshowcollectionproperties.cpp:76
 #, kde-format
@@ -1308,7 +1308,7 @@ msgstr "设置为默认文件夹(&D)"
 #, kde-format
 msgctxt "@action:inmenu"
 msgid "Serverside Subscription…"
-msgstr ""
+msgstr "服务器端订阅..."
 
 #: akonadicollectionview.cpp:568
 #, kde-format
@@ -1337,6 +1337,9 @@ msgid ""
 "removed from its remote resource.</note></para>The <filename>%1</filename> "
 "calendar can be added again at any time."
 msgstr ""
+"您真的想删除日历 <filename>%1</filename> 吗？<para><note>日历数据不会被删除，"
+"也不会从远程资源中删除日历。</note></para> 日历<filename>%1</filename> 可以随"
+"时再被添加。"
 
 #: akonadicollectionview.cpp:759
 #, kde-kuit-format
@@ -1346,6 +1349,8 @@ msgid ""
 "<para><warning>This cannot be undone.  Please consider carefully before "
 "pressing the %2 button.</warning></para>"
 msgstr ""
+"您真的想删除日历 <filename>%1</filename> 吗？<para><warning>这个操作无法撤"
+"销。请在按下按钮 %2 前认真考虑。</warning></para>"
 
 #: akonadicollectionview.cpp:767
 #, kde-format
@@ -5360,7 +5365,7 @@ msgstr "包括指定日期范围内的事件(&V)"
 msgid ""
 "Uncheck this box to skip incidences matching the currently selected view "
 "filter"
-msgstr ""
+msgstr "取消勾选此框以跳过与当前选择的视图过滤器匹配的事件"
 
 #. i18n: ectx: property (whatsThis), widget (QCheckBox, unfiltered)
 #: ui/searchdialog_base.ui:328
@@ -5369,12 +5374,14 @@ msgid ""
 "When this box is checked all incidences will be considered in the search, "
 "even those that aren't displayed according the currently selected view filter"
 msgstr ""
+"选中此框时，搜索时所有事件都将被考虑，甚至那些根据当前选择的视图过滤器没有被"
+"显示的事件。"
 
 #. i18n: ectx: property (text), widget (QCheckBox, unfiltered)
 #: ui/searchdialog_base.ui:331
 #, kde-format
 msgid "Include all incidences matched by view filter"
-msgstr ""
+msgstr "包括所有与视图过滤器匹配的事件"
 
 #. i18n: ectx: property (text), widget (QPushButton, mDayBtn)
 #: views/collectionview/quickview.ui:34
