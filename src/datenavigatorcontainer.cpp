@@ -202,13 +202,13 @@ void DateNavigatorContainer::setBaseDates(const QDate &start)
 
 void DateNavigatorContainer::resizeEvent(QResizeEvent *)
 {
-#if 0
-    qCDebug(KORGANIZER_LOG) << "DateNavigatorContainer::resizeEvent()";
-    qCDebug(KORGANIZER_LOG) << "  CURRENT SIZE:" << size();
-    qCDebug(KORGANIZER_LOG) << "  MINIMUM SIZEHINT:" << minimumSizeHint();
-    qCDebug(KORGANIZER_LOG) << "  SIZEHINT:" << sizeHint();
-    qCDebug(KORGANIZER_LOG) << "  MINIMUM SIZE:" << minimumSize();
-#endif
+    /*
+        qCDebug(KORGANIZER_LOG) << "DateNavigatorContainer::resizeEvent()";
+        qCDebug(KORGANIZER_LOG) << "  CURRENT SIZE:" << size();
+        qCDebug(KORGANIZER_LOG) << "  MINIMUM SIZEHINT:" << minimumSizeHint();
+        qCDebug(KORGANIZER_LOG) << "  SIZEHINT:" << sizeHint();
+        qCDebug(KORGANIZER_LOG) << "  MINIMUM SIZE:" << minimumSize();
+    */
     QTimer::singleShot(0, this, &DateNavigatorContainer::resizeAllContents);
 }
 

@@ -43,7 +43,6 @@ public:
     ActionManager *actionManager() override;
     [[nodiscard]] KActionCollection *getActionCollection() const override;
 
-    // void initializePluginActions();
     /**
       Open calendar file from URL. Merge into current calendar, if \a merge is
       true.

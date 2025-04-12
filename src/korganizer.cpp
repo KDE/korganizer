@@ -22,7 +22,6 @@
 #include <Libkdepim/ProgressStatusBarWidget>
 #include <Libkdepim/StatusbarProgressWidget>
 
-// #include "korganizer_debug.h"
 #include <KAboutData>
 #include <KActionCollection>
 #include <KSharedConfig>
@@ -116,32 +115,6 @@ void KOrganizer::init(bool document)
     setStandardToolBarMenuEnabled(true);
     setTitle();
 }
-
-#if 0
-void KOrganizer::initializePluginActions()
-{
-#if 0
-    if (mXmlGuiClient->factory()) {
-        QHashIterator<PimCommon::ActionType::Type, QList<QAction *> > localActionsType(
-            mPluginInterface->actionsType());
-        while (localActionsType.hasNext()) {
-            localActionsType.next();
-            QList<QAction *> lst = localActionsType.value();
-            if (!lst.isEmpty()) {
-                const QString actionlistname = QStringLiteral("korganizer")
-                                               + PimCommon::PluginInterface::actionXmlExtension(
-                    localActionsType.key());
-                mXmlGuiClient->unplugActionList(actionlistname);
-                mXmlGuiClient->plugActionList(actionlistname, lst);
-            }
-        }
-    }
-#else
-    qCDebug(KORGANIZER_LOG) << " Plugins not implemented yet";
-#endif
-}
-
-#endif
 
 void KOrganizer::readSettings()
 {
