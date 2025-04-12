@@ -563,9 +563,9 @@ void KODayMatrix::dragMoveEvent(QDragMoveEvent *e)
     e->accept();
 }
 
-void KODayMatrix::dragLeaveEvent(QDragLeaveEvent *dl)
+void KODayMatrix::dragLeaveEvent(QDragLeaveEvent *e)
 {
-    Q_UNUSED(dl)
+    Q_UNUSED(e)
     //  setPalette(oldPalette);
     //  update();
 }

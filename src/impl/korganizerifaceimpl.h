@@ -29,24 +29,25 @@ public Q_SLOTS:
     [[nodiscard]] bool saveAsURL(const QString &url);
     [[nodiscard]] QString getCurrentURLasString();
 
-    [[nodiscard]] bool editIncidence(const QString &akonadiUrl);
+    [[nodiscard]] bool editIncidence(const QString &uid);
     /** @reimp from KOrganizerIface::deleteIncidence()
-        @param akonadiUrl the akonadi Item URL of the item to delete. if no such item exists,
-        nothing happens
+        @param uid the Akonadi Id of the item to delete. if no such item exists,
+        nothing happens.
         @return true if the item could be deleted, false otherwise
     */
-    [[nodiscard]] bool deleteIncidence(const QString &akonadiUrl)
+    [[nodiscard]] bool deleteIncidence(const QString &uid)
     {
-        return deleteIncidence(akonadiUrl, false);
+        return deleteIncidence(uid, false);
     }
 
     /**
-      Delete the incidence with the given akonadi item URL from the active calendar.
-      @param akonadiUrl The Akonadi Item URL.
+      Delete the incidence with the given Akonadi Id from the active calendar.
+      @param uid the Akonadi Id of the item to delete.if no such item exists,
+      nothing happens.
       @param force If true, all recurrences and sub-todos (if applicable) will
       be deleted without prompting for confirmation.
     */
-    [[nodiscard]] bool deleteIncidence(const QString &akonadiUrl, bool force);
+    [[nodiscard]] bool deleteIncidence(const QString &uid, bool force);
 
     /**
       Add an incidence to the active calendar.
@@ -61,16 +62,16 @@ public Q_SLOTS:
     /**
       Show a HTML representation of the incidence (the "View.." dialog).
       If no incidence with the given Akonadi Item URL exists, nothing happens.
-      @param akonadiUrl The Akonadi Item URL of the incidence to be shown.
+      @param uid he Akonadi Id of the item to show.
     */
-    [[nodiscard]] bool showIncidence(const QString &akonadiUrl);
+    [[nodiscard]] bool showIncidence(const QString &uid);
 
     /**
       Show an incidence in context. This means showing the todo, agenda or
       journal view (as appropriate) and scrolling it to show the incidence.
-      @param akonadiUrl the Akonadi Item URL of the incidence to show.
+      @param uid he Akonadi Id of the item to scroll to and show.
     */
-    [[nodiscard]] bool showIncidenceContext(const QString &akonadiUrl);
+    [[nodiscard]] bool showIncidenceContext(const QString &uid);
 
     /**
      * Called by KOrganizerUniqueAppHandler in the kontact plugin

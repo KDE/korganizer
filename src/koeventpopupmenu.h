@@ -90,7 +90,7 @@ private:
     void appendRecurrenceOnlyItems();
     void appendShareOnlyItems();
 
-    void print(bool previous);
+    void print(bool preview);
 
     Akonadi::CollectionCalendar::Ptr mCurrentCalendar;
     Akonadi::Item mCurrentIncidence;

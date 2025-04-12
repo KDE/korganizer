@@ -22,9 +22,9 @@ ReparentingModel::Node::Node(ReparentingModel &model)
 {
 }
 
-ReparentingModel::Node::Node(ReparentingModel &model, ReparentingModel::Node *p, const QModelIndex &srcIndex)
-    : sourceIndex(srcIndex)
-    , parent(p)
+ReparentingModel::Node::Node(ReparentingModel &model, ReparentingModel::Node *parent, const QModelIndex &sourceIndex)
+    : sourceIndex(sourceIndex)
+    , parent(parent)
     , personModel(model)
     , mIsSourceNode(true)
 {
@@ -363,14 +363,14 @@ ReparentingModel::Node *ReparentingModel::getParentNode(const QModelIndex &sourc
     return nullptr;
 }
 
-void ReparentingModel::appendSourceNode(Node *parentNode, const QModelIndex &sourceIndex, const QModelIndexList &skip)
+void ReparentingModel::appendSourceNode(Node *parentNode, const QModelIndex &sourceParent, const QModelIndexList &skip)
 {
-    mNodeManager->checkSourceIndex(sourceIndex);
+    mNodeManager->checkSourceIndex(sourceParent);
 
-    Node::Ptr node(new Node(*this, parentNode, sourceIndex));
+    Node::Ptr node(new Node(*this, parentNode, sourceParent));
     parentNode->children.append(node);
     Q_ASSERT(validateNode(node.data()));
-    rebuildFromSource(node.data(), sourceIndex, skip);
+    rebuildFromSource(node.data(), sourceParent, skip);
 }
 
 QModelIndexList ReparentingModel::descendants(const QModelIndex &sourceIndex)
@@ -603,12 +603,12 @@ QModelIndex ReparentingModel::index(int row, int column, const QModelIndex &pare
     return createIndex(row, column, node);
 }
 
-QModelIndex ReparentingModel::mapToSource(const QModelIndex &idx) const
+QModelIndex ReparentingModel::mapToSource(const QModelIndex &proxyIndex) const
 {
-    if (!idx.isValid() || !sourceModel()) {
+    if (!proxyIndex.isValid() || !sourceModel()) {
         return {};
     }
-    Node *node = extractNode(idx);
+    Node *node = extractNode(proxyIndex);
     /* cppcheck-suppress knownConditionTrueFalse */
     if (!node->isSourceNode()) {
         return {};

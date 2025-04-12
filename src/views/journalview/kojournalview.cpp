@@ -101,9 +101,9 @@ void KOJournalView::flushView()
     mJournalView->flushView();
 }
 
-void KOJournalView::showDates(const QDate &start, const QDate &end, const QDate &dummy)
+void KOJournalView::showDates(const QDate &start, const QDate &end, const QDate &preferredMonth)
 {
-    mJournalView->showDates(start, end, dummy);
+    mJournalView->showDates(start, end, preferredMonth);
 }
 
 void KOJournalView::showIncidences(const Akonadi::Item::List &incidences, const QDate &date)

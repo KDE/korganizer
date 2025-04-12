@@ -22,7 +22,7 @@ public:
 
     ~KOCoreHelper() override = default;
 
-    [[nodiscard]] QColor categoryColor(const QStringList &cats) override;
+    [[nodiscard]] QColor categoryColor(const QStringList &categories) override;
 
     [[nodiscard]] QString holidayString(const QDate &dt) override;
 

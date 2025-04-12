@@ -49,7 +49,7 @@ public:
 
     [[nodiscard]] IncidenceEditorNG::IncidenceDialog *createDialog(const Akonadi::Item &item);
 
-    void connectTypeAhead(IncidenceEditorNG::IncidenceDialog *editor, KOEventView *view);
+    void connectTypeAhead(IncidenceEditorNG::IncidenceDialog *dialog, KOEventView *view);
 
 public Q_SLOTS:
     void showOptionsDialog();

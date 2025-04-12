@@ -28,7 +28,7 @@ public:
 
     private:
         friend class ReparentingModel;
-        Node(ReparentingModel &personModel, Node *parent, const QModelIndex &sourceIndex);
+        Node(ReparentingModel &model, Node *parent, const QModelIndex &sourceIndex);
         virtual QVariant data(int role) const;
         virtual bool setData(const QVariant &variant, int role);
         virtual bool adopts(const QModelIndex &sourceIndex);
@@ -118,7 +118,7 @@ private Q_SLOTS:
     void doAddNode(const ReparentingModel::Node::Ptr &node);
 
 private:
-    void rebuildFromSource(Node *parentNode, const QModelIndex &idx, const QModelIndexList &skip = QModelIndexList());
+    void rebuildFromSource(Node *parentNode, const QModelIndex &sourceParent, const QModelIndexList &skip = QModelIndexList());
     bool isDuplicate(const Node::Ptr &proxyNode) const;
     void insertProxyNode(const Node::Ptr &proxyNode);
     void reparentSourceNodes(const Node::Ptr &proxyNode);
@@ -129,7 +129,7 @@ private:
     Node *getParentNode(const QModelIndex &sourceIndex);
     bool validateNode(const Node *node) const;
     Node *extractNode(const QModelIndex &index) const;
-    void appendSourceNode(Node *parentNode, const QModelIndex &sourceIndex, const QModelIndexList &skip = QModelIndexList());
+    void appendSourceNode(Node *parentNode, const QModelIndex &sourceParent, const QModelIndexList &skip = QModelIndexList());
     QModelIndexList descendants(const QModelIndex &sourceIndex);
     void removeDuplicates(const QModelIndex &sourceIndex);
     Node *getSourceNode(const QModelIndex &sourceIndex) const;

@@ -5,4 +5,5 @@ modernize-use-default-member-init,
 readability-redundant-member-init,
 bugprone-switch-missing-default-case,
 misc-use-internal-linkage,
+readability-inconsistent-declaration-parameter-name,
 '

@@ -76,7 +76,7 @@ private:
       if offset equals -1.
       Bigger offsets are accepted.
     */
-    void shiftMonth(const QDate &date, const QDate &selectionLowerLimit, const QDate &selectionUpperLimit, int offset);
+    void shiftMonth(const QDate &currentMonth, const QDate &selectionLowerLimit, const QDate &selectionUpperLimit, int offset);
 
     KCalendarCore::DateList mSelectedDates;
 

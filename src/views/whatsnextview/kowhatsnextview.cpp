@@ -73,9 +73,9 @@ void KOWhatsNextView::updateView()
     mView->updateView();
 }
 
-void KOWhatsNextView::showDates(const QDate &start, const QDate &end, const QDate &dummy)
+void KOWhatsNextView::showDates(const QDate &start, const QDate &end, const QDate &preferredMonth)
 {
-    mView->showDates(start, end, dummy);
+    mView->showDates(start, end, preferredMonth);
 }
 
 void KOWhatsNextView::showIncidences(const Akonadi::Item::List &incidenceList, const QDate &date)

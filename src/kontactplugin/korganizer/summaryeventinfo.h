@@ -23,7 +23,7 @@ public:
     static List eventsForRange(QDate start,
                                QDate end, // range is inclusive
                                const Akonadi::ETMCalendar::Ptr &calendar);
-    static void setShowSpecialEvents(bool skipBirthdays, bool skipAnniversaries);
+    static void setShowSpecialEvents(bool showBirthdays, bool showAnniversaries);
 
     KCalendarCore::Event::Ptr ev;
     QString startDate;

@@ -1349,9 +1349,9 @@ void CalendarView::toggleAlarm(const Akonadi::Item &item)
     mChanger->endAtomicOperation();
 }
 
-void CalendarView::toggleTodoCompleted(const Akonadi::Item &todoItem)
+void CalendarView::toggleTodoCompleted(const Akonadi::Item &item)
 {
-    const KCalendarCore::Incidence::Ptr incidence = Akonadi::CalendarUtils::incidence(todoItem);
+    const KCalendarCore::Incidence::Ptr incidence = Akonadi::CalendarUtils::incidence(item);
 
     if (!incidence) {
         qCCritical(KORGANIZER_LOG) << "Null incidence";
@@ -1362,7 +1362,7 @@ void CalendarView::toggleTodoCompleted(const Akonadi::Item &todoItem)
         return;
     }
 
-    KCalendarCore::Todo::Ptr todo = Akonadi::CalendarUtils::todo(todoItem);
+    KCalendarCore::Todo::Ptr todo = Akonadi::CalendarUtils::todo(item);
     Q_ASSERT(todo);
     KCalendarCore::Todo::Ptr oldtodo(todo->clone());
 
@@ -1377,7 +1377,7 @@ void CalendarView::toggleTodoCompleted(const Akonadi::Item &todoItem)
     }
 
     mChanger->startAtomicOperation(i18n("Toggle To-do Completed"));
-    (void)mChanger->modifyIncidence(todoItem, oldtodo, this);
+    (void)mChanger->modifyIncidence(item, oldtodo, this);
     mChanger->endAtomicOperation();
 }
 
@@ -1665,29 +1665,29 @@ void CalendarView::schedule_publish(const Akonadi::Item &item)
     }
 }
 
-void CalendarView::schedule_request(const Akonadi::Item &incidence)
+void CalendarView::schedule_request(const Akonadi::Item &item)
 {
-    schedule(KCalendarCore::iTIPRequest, incidence);
+    schedule(KCalendarCore::iTIPRequest, item);
 }
 
-void CalendarView::schedule_refresh(const Akonadi::Item &incidence)
+void CalendarView::schedule_refresh(const Akonadi::Item &item)
 {
-    schedule(KCalendarCore::iTIPRefresh, incidence);
+    schedule(KCalendarCore::iTIPRefresh, item);
 }
 
-void CalendarView::schedule_cancel(const Akonadi::Item &incidence)
+void CalendarView::schedule_cancel(const Akonadi::Item &item)
 {
-    schedule(KCalendarCore::iTIPCancel, incidence);
+    schedule(KCalendarCore::iTIPCancel, item);
 }
 
-void CalendarView::schedule_reply(const Akonadi::Item &incidence)
+void CalendarView::schedule_reply(const Akonadi::Item &item)
 {
-    schedule(KCalendarCore::iTIPReply, incidence);
+    schedule(KCalendarCore::iTIPReply, item);
 }
 
-void CalendarView::schedule_counter(const Akonadi::Item &incidence)
+void CalendarView::schedule_counter(const Akonadi::Item &item)
 {
-    schedule(KCalendarCore::iTIPCounter, incidence);
+    schedule(KCalendarCore::iTIPCounter, item);
 }
 
 void CalendarView::schedule_forward(const Akonadi::Item &item)

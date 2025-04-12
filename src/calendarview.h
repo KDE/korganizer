@@ -309,7 +309,7 @@ public Q_SLOTS:
       journal view (as appropriate) and scrolling it to show the incidence.
       @param incidence The incidence to show.
     */
-    void showIncidenceContext(const Akonadi::Item &incidence);
+    void showIncidenceContext(const Akonadi::Item &item);
     bool showIncidenceContext(Akonadi::Item::Id id);
 
     /**
@@ -369,7 +369,7 @@ public Q_SLOTS:
       Delete the supplied incidence, including any dissociated instances, and
       all children (e.g. sub-todos).
       */
-    void deleteIncidenceFamily(const Akonadi::Item &todo);
+    void deleteIncidenceFamily(const Akonadi::Item &item);
 
     /** create new todo */
     void newTodo();
@@ -403,12 +403,12 @@ public Q_SLOTS:
 
     void configureCurrentView();
 
-    void toggleAlarm(const Akonadi::Item &incidence);
-    void toggleTodoCompleted(const Akonadi::Item &incidence);
+    void toggleAlarm(const Akonadi::Item &item);
+    void toggleTodoCompleted(const Akonadi::Item &item);
     void toggleOccurrenceCompleted(const Akonadi::Item &, const QDate &);
-    void copyIncidenceToResource(const Akonadi::Item &incidence, const Akonadi::Collection &col);
-    void moveIncidenceToResource(const Akonadi::Item &incidence, const Akonadi::Collection &col);
-    void dissociateOccurrences(const Akonadi::Item &incidence, QDate date);
+    void copyIncidenceToResource(const Akonadi::Item &item, const Akonadi::Collection &col);
+    void moveIncidenceToResource(const Akonadi::Item &item, const Akonadi::Collection &col);
+    void dissociateOccurrences(const Akonadi::Item &item, QDate date);
 
     /**
       Check if clipboard contains vCalendar event. The signal pasteEnabled() is
@@ -435,7 +435,7 @@ public Q_SLOTS:
 
     /** passes on the message that an event has changed to the currently
      * activated view so that it can make appropriate display changes. */
-    void changeIncidenceDisplay(const Akonadi::Item &incidence, Akonadi::IncidenceChanger::ChangeType);
+    void changeIncidenceDisplay(const Akonadi::Item &item, Akonadi::IncidenceChanger::ChangeType);
 
     void slotCreateFinished(int changeId, const Akonadi::Item &item, Akonadi::IncidenceChanger::ResultCode resultCode, const QString &errorString);
 
@@ -499,13 +499,13 @@ public Q_SLOTS:
     bool makeChildrenIndependent(const Akonadi::Item &item);
 
     /* iTIP scheduling actions */
-    void schedule_publish(const Akonadi::Item &incidence = Akonadi::Item());
-    void schedule_request(const Akonadi::Item &incidence = Akonadi::Item());
-    void schedule_refresh(const Akonadi::Item &incidence = Akonadi::Item());
-    void schedule_cancel(const Akonadi::Item &incidence = Akonadi::Item());
-    void schedule_reply(const Akonadi::Item &incidence = Akonadi::Item());
-    void schedule_counter(const Akonadi::Item &incidence = Akonadi::Item());
-    void schedule_forward(const Akonadi::Item &incidence = Akonadi::Item());
+    void schedule_publish(const Akonadi::Item &item = Akonadi::Item());
+    void schedule_request(const Akonadi::Item &item = Akonadi::Item());
+    void schedule_refresh(const Akonadi::Item &item = Akonadi::Item());
+    void schedule_cancel(const Akonadi::Item &item = Akonadi::Item());
+    void schedule_reply(const Akonadi::Item &item = Akonadi::Item());
+    void schedule_counter(const Akonadi::Item &item = Akonadi::Item());
+    void schedule_forward(const Akonadi::Item &item = Akonadi::Item());
     void mailFreeBusy(int daysToPublish = 30);
     void uploadFreeBusy();
 
@@ -539,10 +539,10 @@ public Q_SLOTS:
 
     void showLeftFrame(bool show = true);
 
-    void processMainViewSelection(const Akonadi::Item &incidence, const QDate &date);
-    void processTodoListSelection(const Akonadi::Item &incidence, const QDate &date);
+    void processMainViewSelection(const Akonadi::Item &item, const QDate &date);
+    void processTodoListSelection(const Akonadi::Item &item, const QDate &date);
 
-    void processIncidenceSelection(const Akonadi::Item &incidence, const QDate &date);
+    void processIncidenceSelection(const Akonadi::Item &item, const QDate &date);
 
     void purgeCompleted();
 
@@ -551,10 +551,10 @@ public Q_SLOTS:
         Q_EMIT autoArchivingSettingsModified();
     }
 
-    void schedule(KCalendarCore::iTIPMethod, const Akonadi::Item &incidence);
-    void addIncidenceOn(const Akonadi::Item &incidence, const QDate &);
-    void moveIncidenceTo(const Akonadi::Item &incidence, QDate);
-    void filterActivated(int filterNum);
+    void schedule(KCalendarCore::iTIPMethod, const Akonadi::Item &item);
+    void addIncidenceOn(const Akonadi::Item &itemadd, const QDate &);
+    void moveIncidenceTo(const Akonadi::Item &itemmove, QDate);
+    void filterActivated(int filterNo);
 
     void resourcesChanged();
 
@@ -567,7 +567,7 @@ public Q_SLOTS:
      * the week crosses months.  It's a QDate instead of uint so it can be
      * easily fed to KCalendarSystem's functions.
      */
-    void selectWeek(const QDate &week, const QDate &preferredMonth);
+    void selectWeek(const QDate &date, const QDate &preferredMonth);
 
     /**
      * Use as much of the full window as possible for the view.
@@ -612,12 +612,12 @@ public:
     static void toggleCompleted(KCalendarCore::Todo::Ptr, const QDate &);
 
 protected:
-    int msgItemDelete(const Akonadi::Item &incidence);
+    int msgItemDelete(const Akonadi::Item &item);
 
     Akonadi::Item selectedTodo();
     IncidenceEditorNG::IncidenceDialog *incidenceDialog(const Akonadi::Item &);
 
-    void checkForFilteredChange(const Akonadi::Item &incidence);
+    void checkForFilteredChange(const Akonadi::Item &item);
 
     /**
       Adjust the given date/times by valid defaults (selection or configured

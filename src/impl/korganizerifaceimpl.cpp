@@ -59,20 +59,20 @@ bool KOrganizerIfaceImpl::deleteIncidence(const QString &uid, bool force)
     return mActionManager->deleteIncidence(id, force);
 }
 
-bool KOrganizerIfaceImpl::editIncidence(const QString &itemId)
+bool KOrganizerIfaceImpl::editIncidence(const QString &uid)
 {
     bool ok;
-    const qint64 id = QVariant(itemId).toLongLong(&ok);
+    const qint64 id = QVariant(uid).toLongLong(&ok);
     if (!ok) {
-        qCWarning(KORGANIZER_LOG) << "Invalid item id = " << itemId;
+        qCWarning(KORGANIZER_LOG) << "Invalid uid = " << uid;
         return false;
     }
     return mActionManager->editIncidence(id);
 }
 
-bool KOrganizerIfaceImpl::addIncidence(const QString &uid)
+bool KOrganizerIfaceImpl::addIncidence(const QString &iCal)
 {
-    return mActionManager->addIncidence(uid);
+    return mActionManager->addIncidence(iCal);
 }
 
 bool KOrganizerIfaceImpl::showIncidence(const QString &uid)
