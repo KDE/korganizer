@@ -4,7 +4,7 @@ msgstr ""
 "Project-Id-Version: korganizer\n"
 "Report-Msgid-Bugs-To: https://bugs.kde.org\n"
 "POT-Creation-Date: 2025-04-10 00:42+0000\n"
-"PO-Revision-Date: 2025-04-06 17:19+0200\n"
+"PO-Revision-Date: 2025-04-11 21:03+0200\n"
 "Last-Translator: Mincho Kondarev <mkondarev@yahoo.de>\n"
 "Language-Team: Bulgarian <kde-i18n-doc@kde.org>\n"
 "Language: bg\n"
@@ -12,7 +12,7 @@ msgstr ""
 "Content-Type: text/plain; charset=UTF-8\n"
 "Content-Transfer-Encoding: 8bit\n"
 "Plural-Forms: nplurals=2; plural=n != 1;\n"
-"X-Generator: Poedit 3.5\n"
+"X-Generator: Lokalize 25.07.70\n"
 
 #, kde-format
 msgctxt "NAME OF TRANSLATORS"
@@ -904,13 +904,7 @@ msgid "Show the next few days at a time in Agenda View"
 msgstr "Показване на следващите няколко дни наведнъж в изгледа на дневния ред"
 
 #: actionmanager.cpp:564
-#, fuzzy, kde-kuit-format
-#| msgctxt "@info:whatsthis"
-#| msgid ""
-#| "Select this option to show the next few days a a time in Agenda View. "
-#| "Configure the <placeholder>Next X Days</placeholder> setting in the "
-#| "<interface>Views->General</interface> settings page to adjust the number "
-#| "of days shown."
+#, kde-kuit-format
 msgctxt "@info:whatsthis"
 msgid ""
 "Select this option to show the next few days at a time in Agenda View. "
@@ -930,11 +924,7 @@ msgid "W&eek Schedule"
 msgstr "&Седмичен график"
 
 #: actionmanager.cpp:572
-#, fuzzy, kde-format
-#| msgctxt ""
-#| "@action:inmenu agenda view show the the weekly schedule days only (eg. no "
-#| "weekends)"
-#| msgid "Week Schedule"
+#, kde-format
 msgctxt ""
 "@action:inmenu agenda view show the weekly schedule days only (eg. no "
 "weekends)"

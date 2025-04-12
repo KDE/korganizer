@@ -5594,7 +5594,7 @@ msgstr "包括指定日期范围内的事件(&V)"
 msgid ""
 "Uncheck this box to skip incidences matching the currently selected view "
 "filter"
-msgstr ""
+msgstr "取消勾选此框以跳过与当前选择的视图过滤器匹配的事件"
 
 #. i18n: ectx: property (whatsThis), widget (QCheckBox, unfiltered)
 #: ui/searchdialog_base.ui:328
@@ -5603,12 +5603,14 @@ msgid ""
 "When this box is checked all incidences will be considered in the search, "
 "even those that aren't displayed according the currently selected view filter"
 msgstr ""
+"选中此框时，搜索时所有事件都将被考虑，甚至那些根据当前选择的视图过滤器没有被"
+"显示的事件。"
 
 #. i18n: ectx: property (text), widget (QCheckBox, unfiltered)
 #: ui/searchdialog_base.ui:331
 #, kde-format
 msgid "Include all incidences matched by view filter"
-msgstr ""
+msgstr "包括所有与视图过滤器匹配的事件"
 
 #. i18n: ectx: property (text), widget (QPushButton, mDayBtn)
 #: views/collectionview/quickview.ui:34
@@ -5846,10 +5848,3 @@ msgstr "%1"
 msgctxt "4 digit year"
 msgid "%1"
 msgstr "%1"
-
-#~ msgctxt "@info"
-#~ msgid "Unable to edit \"%1\" because it is locked by another process."
-#~ msgstr "无法编辑“%1”，因其被其他进程锁定。"
-
-#~ msgid "Unable to save %1 \"%2\"."
-#~ msgstr "无法保存 %1“%2”。"
