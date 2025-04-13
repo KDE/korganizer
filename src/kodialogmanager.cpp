@@ -44,7 +44,7 @@ public:
         return incidence->accept(*this, incidence);
     }
 
-protected:
+private:
     KODialogManager *mDialogManager = nullptr;
 };
 

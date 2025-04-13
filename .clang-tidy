@@ -6,6 +6,8 @@ readability-redundant-member-init,
 bugprone-switch-missing-default-case,
 misc-const-correctness,
 misc-use-internal-linkage,
+misc-non-private-member-variables-in-classes,
+readability-redundant-access-specifiers,
 readability-inconsistent-declaration-parameter-name,
 modernize-use-ranges,
 '

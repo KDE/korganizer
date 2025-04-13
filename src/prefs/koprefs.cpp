@@ -23,7 +23,9 @@ public:
         delete prefs;
     }
 
+    // NOLINTBEGIN(misc-non-private-member-variables-in-classes)
     KOPrefs *const prefs;
+    // NOLINTEND(misc-non-private-member-variables-in-classes)
 
 private:
     // disable copy ctor

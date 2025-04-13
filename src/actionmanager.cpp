@@ -1331,7 +1331,6 @@ protected:
         return false;
     }
 
-protected:
     bool assignDefaultStrings()
     {
         if (mShow) {
@@ -1346,6 +1345,7 @@ protected:
         return true;
     }
 
+private:
     QAction *mShow = nullptr;
     QAction *mEdit = nullptr;
     QAction *mDelete = nullptr;

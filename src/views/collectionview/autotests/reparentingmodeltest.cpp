@@ -34,8 +34,10 @@ public:
         return false;
     }
 
+    // NOLINTBEGIN(misc-non-private-member-variables-in-classes)
     QString mUid;
     QString mParent;
+    // NOLINTEND(misc-non-private-member-variables-in-classes)
 
 private:
     [[nodiscard]] QVariant data(int role) const override
@@ -93,13 +95,15 @@ public:
         connect(&model, &QAbstractItemModel::modelReset, this, &ModelSignalSpy::onModelReset);
     }
 
+    // NOLINTBEGIN(misc-non-private-member-variables-in-classes)
     QStringList mSignals;
     QModelIndex parent;
     QModelIndex topLeft, bottomRight;
     int start = 0;
     int end = 0;
+    // NOLINTEND(misc-non-private-member-variables-in-classes)
 
-public Q_SLOTS:
+public Q_SLOTS: // NOLINT(readability-redundant-access-specifiers)
     void onRowsInserted(const QModelIndex &p, int s, int e)
     {
         mSignals << QStringLiteral("rowsInserted");

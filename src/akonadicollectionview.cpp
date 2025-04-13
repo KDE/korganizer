@@ -112,7 +112,7 @@ private Q_SLOTS:
         }
     }
 
-private:
+private: // NOLINT(readability-redundant-access-specifiers)
     QAbstractItemModel *const mCheckableProxy;
 };
 
@@ -144,7 +144,7 @@ public:
         // but that unfortunately doesn't seem to work
     }
 
-public Q_SLOTS:
+public Q_SLOTS: // NOLINT(readability-redundant-access-specifiers)
     void saveState()
     {
         saveTreeState();
@@ -185,7 +185,7 @@ private Q_SLOTS:
         }
     }
 
-private:
+private: // NOLINT(readability-redundant-access-specifiers)
     void saveTreeState()
     {
         Akonadi::ETMViewStateSaver treeStateSaver;
