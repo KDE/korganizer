@@ -16,7 +16,7 @@ msgstr ""
 "Project-Id-Version: korganizer\n"
 "Report-Msgid-Bugs-To: https://bugs.kde.org\n"
 "POT-Creation-Date: 2025-03-21 02:39+0000\n"
-"PO-Revision-Date: 2025-03-19 18:12+0100\n"
+"PO-Revision-Date: 2025-04-11 22:03+0200\n"
 "Last-Translator: Luigi Toscano <luigi.toscano@tiscali.it>\n"
 "Language-Team: Italian <kde-i18n-it@kde.org>\n"
 "Language: it\n"
@@ -24,7 +24,7 @@ msgstr ""
 "Content-Type: text/plain; charset=UTF-8\n"
 "Content-Transfer-Encoding: 8bit\n"
 "Plural-Forms: nplurals=2; plural=(n != 1);\n"
-"X-Generator: Lokalize 25.03.70\n"
+"X-Generator: Lokalize 24.12.0\n"
 
 #, kde-format
 msgctxt "NAME OF TRANSLATORS"
@@ -1406,8 +1406,8 @@ msgid ""
 "pressing the %2 button.</warning></para>"
 msgstr ""
 "Vuoi davvero eliminare il calendario <filename>%1</filename>?"
-"<para><warning>Questa operazione non può essere annullata.  Tieni conto di "
-"questo attentamente prima di premere il tasto %2.</warning></para>"
+"<para><warning>Questa operazione non può essere annullata. Bisogna fare "
+"attenzione prima di premere il tasto %2.</warning></para>"
 
 #: akonadicollectionview.cpp:767
 #, kde-format
