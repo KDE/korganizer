@@ -29,7 +29,7 @@ void ManageShowCollectionProperties::showCollectionProperties()
 {
     const Akonadi::Collection col = mCollectionView->currentCalendar();
     const Akonadi::Collection::Id id = col.id();
-    QPointer<Akonadi::CollectionPropertiesDialog> dlg = mHashDialogBox.value(id);
+    QPointer<Akonadi::CollectionPropertiesDialog> const dlg = mHashDialogBox.value(id);
     if (dlg) {
         dlg->activateWindow();
         dlg->raise();
@@ -72,7 +72,7 @@ void ManageShowCollectionProperties::slotCollectionPropertiesFinished(KJob *job)
     if (!collections.isEmpty()) {
         const Akonadi::Collection collection = collections.first();
 
-        QPointer<Akonadi::CollectionPropertiesDialog> dlg = new Akonadi::CollectionPropertiesDialog(collection, mPages, mCollectionView);
+        QPointer<Akonadi::CollectionPropertiesDialog> const dlg = new Akonadi::CollectionPropertiesDialog(collection, mPages, mCollectionView);
         dlg->setWindowTitle(i18nc("@title:window", "Properties of Calendar Folder %1", collection.name()));
 
         dlg->show();

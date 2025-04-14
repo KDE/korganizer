@@ -155,7 +155,7 @@ void KOrganizer::slotEditKeys()
 
 bool KOrganizer::queryClose()
 {
-    bool close = mActionManager->queryClose();
+    const bool close = mActionManager->queryClose();
 
     // Write configuration. I don't know if it really makes sense doing it this
     // way, when having opened multiple calendars in different CalendarViews.

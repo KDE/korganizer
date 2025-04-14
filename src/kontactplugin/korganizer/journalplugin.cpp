@@ -28,7 +28,7 @@ JournalPlugin::JournalPlugin(KontactInterface::Core *core, const KPluginMetaData
     auto action = new QAction(QIcon::fromTheme(QStringLiteral("journal-new")), i18nc("@action:inmenu", "New Journal…"), this);
     actionCollection()->addAction(QStringLiteral("new_journal"), action);
     actionCollection()->setDefaultShortcut(action, QKeySequence(Qt::CTRL | Qt::SHIFT | Qt::Key_J));
-    QString str = i18nc("@info:status", "Create a new journal");
+    QString const str = i18nc("@info:status", "Create a new journal");
     action->setStatusTip(str);
     action->setToolTip(str);
 

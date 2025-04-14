@@ -94,13 +94,13 @@ void ApptSummaryWidget::updateView()
 
     int counter = 0;
 
-    QPixmap pm = QIcon::fromTheme(QStringLiteral("view-calendar-day")).pixmap(style()->pixelMetric(QStyle::PM_SmallIconSize));
-    QPixmap pmb = QIcon::fromTheme(QStringLiteral("view-calendar-birthday")).pixmap(style()->pixelMetric(QStyle::PM_SmallIconSize));
-    QPixmap pma = QIcon::fromTheme(QStringLiteral("view-calendar-wedding-anniversary")).pixmap(style()->pixelMetric(QStyle::PM_SmallIconSize));
+    const QPixmap pm = QIcon::fromTheme(QStringLiteral("view-calendar-day")).pixmap(style()->pixelMetric(QStyle::PM_SmallIconSize));
+    const QPixmap pmb = QIcon::fromTheme(QStringLiteral("view-calendar-birthday")).pixmap(style()->pixelMetric(QStyle::PM_SmallIconSize));
+    const QPixmap pma = QIcon::fromTheme(QStringLiteral("view-calendar-wedding-anniversary")).pixmap(style()->pixelMetric(QStyle::PM_SmallIconSize));
 
     QStringList uidList;
     SummaryEventInfo::setShowSpecialEvents(mShowBirthdaysFromCal, mShowAnniversariesFromCal);
-    QDate currentDate = QDate::currentDate();
+    const QDate currentDate = QDate::currentDate();
 
     const SummaryEventInfo::List events = SummaryEventInfo::eventsForRange(currentDate, currentDate.addDays(mDaysAhead - 1), mCalendar);
 
@@ -110,7 +110,7 @@ void ApptSummaryWidget::updateView()
     KColorScheme::adjustBackground(urgentPalette, KColorScheme::NegativeBackground, QPalette::Window);
 
     for (SummaryEventInfo *event : events) {
-        KCalendarCore::Event::Ptr ev = event->ev;
+        const KCalendarCore::Event::Ptr ev = event->ev;
         // print the first of the recurring event series only
         if (ev->recurs()) {
             if (uidList.contains(ev->instanceIdentifier())) {
@@ -206,7 +206,7 @@ void ApptSummaryWidget::updateView()
 
 void ApptSummaryWidget::viewEvent(const QString &uid)
 {
-    Akonadi::Item::Id id = mCalendar->item(uid).id();
+    const Akonadi::Item::Id id = mCalendar->item(uid).id();
 
     if (id != -1) {
         mPlugin->core()->selectPlugin(QStringLiteral("kontact_korganizerplugin")); // ensure loaded
@@ -231,7 +231,7 @@ void ApptSummaryWidget::popupMenu(const QString &uid)
     QAction *delIt = popup.addAction(i18n("&Delete Appointment"));
     delIt->setIcon(QIcon::fromTheme(QStringLiteral("edit-delete")));
 
-    Akonadi::Item item = mCalendar->item(uid);
+    const Akonadi::Item item = mCalendar->item(uid);
     delIt->setEnabled(mCalendar->hasRight(item, Akonadi::Collection::CanDeleteItem));
 
     const QAction *selectedAction = popup.exec(QCursor::pos());

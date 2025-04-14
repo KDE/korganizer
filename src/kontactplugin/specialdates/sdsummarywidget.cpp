@@ -154,8 +154,8 @@ void SDSummaryWidget::configUpdated()
 bool SDSummaryWidget::initHolidays()
 {
     KConfig _hconfig(QStringLiteral("korganizerrc"));
-    KConfigGroup hconfig(&_hconfig, QStringLiteral("Time & Date"));
-    QString location = hconfig.readEntry("Holidays");
+    KConfigGroup const hconfig(&_hconfig, QStringLiteral("Time & Date"));
+    QString const location = hconfig.readEntry("Holidays");
     if (!location.isEmpty()) {
         delete mHolidays;
         mHolidays = new HolidayRegion(location);
@@ -268,7 +268,7 @@ void SDSummaryWidget::createLabels()
             if (!ev->categoriesStr().isEmpty()) {
                 QStringList::ConstIterator it2;
                 const QStringList c = ev->categories();
-                QStringList::ConstIterator end(c.constEnd());
+                QStringList::ConstIterator const end(c.constEnd());
                 for (it2 = c.constBegin(); it2 != end; ++it2) {
                     const QString itUpper((*it2).toUpper());
                     // Append Birthday Event?
@@ -355,7 +355,7 @@ void SDSummaryWidget::createLabels()
     if (mShowHolidays) {
         if (initHolidays()) {
             for (dt = QDate::currentDate(); dt <= QDate::currentDate().addDays(mDaysAhead - 1); dt = dt.addDays(1)) {
-                QList<Holiday> holidays = mHolidays->rawHolidaysWithAstroSeasons(dt);
+                QList<Holiday> const holidays = mHolidays->rawHolidaysWithAstroSeasons(dt);
                 QList<Holiday>::ConstIterator it = holidays.constBegin();
                 for (; it != holidays.constEnd(); ++it) {
                     SDEntry entry;
@@ -385,7 +385,7 @@ void SDSummaryWidget::createLabels()
     if (!mDates.isEmpty()) {
         int counter = 0;
         QList<SDEntry>::Iterator addrIt;
-        QList<SDEntry>::Iterator addrEnd(mDates.end());
+        QList<SDEntry>::Iterator const addrEnd(mDates.end());
         for (addrIt = mDates.begin(); addrIt != addrEnd; ++addrIt) {
             const bool makeBold = (*addrIt).daysTo == 0; // i.e., today
 
@@ -398,7 +398,7 @@ void SDSummaryWidget::createLabels()
                 icon_name = QStringLiteral("view-calendar-birthday");
                 pic = (*addrIt).addressee.photo();
                 if (pic.isIntern() && !pic.data().isNull()) {
-                    QImage img = pic.data();
+                    QImage const img = pic.data();
                     if (img.width() > img.height()) {
                         icon_img = img.scaledToWidth(32);
                     } else {
@@ -410,7 +410,7 @@ void SDSummaryWidget::createLabels()
                 icon_name = QStringLiteral("view-calendar-wedding-anniversary");
                 pic = (*addrIt).addressee.photo();
                 if (pic.isIntern() && !pic.data().isNull()) {
-                    QImage img = pic.data();
+                    QImage const img = pic.data();
                     if (img.width() > img.height()) {
                         icon_img = img.scaledToWidth(32);
                     } else {
@@ -441,8 +441,8 @@ void SDSummaryWidget::createLabels()
             QString datestr;
 
             // Muck with the year -- change to the year 'daysTo' days away
-            int year = QDate::currentDate().addDays((*addrIt).daysTo).year();
-            QDate sD = QDate(year, (*addrIt).date.month(), (*addrIt).date.day());
+            int const year = QDate::currentDate().addDays((*addrIt).daysTo).year();
+            QDate const sD = QDate(year, (*addrIt).date.month(), (*addrIt).date.day());
 
             if ((*addrIt).daysTo == 0) {
                 datestr = i18nc("the special day is today", "Today");
@@ -564,7 +564,7 @@ void SDSummaryWidget::createLabels()
     }
 
     QList<QLabel *>::ConstIterator lit;
-    QList<QLabel *>::ConstIterator endLit(mLabels.constEnd());
+    QList<QLabel *>::ConstIterator const endLit(mLabels.constEnd());
     for (lit = mLabels.constBegin(); lit != endLit; ++lit) {
         (*lit)->show();
     }
@@ -642,7 +642,7 @@ void SDSummaryWidget::viewContact(const QString &url)
         return;
     }
 
-    QPointer<Akonadi::ContactViewerDialog> dlg = new Akonadi::ContactViewerDialog(this);
+    QPointer<Akonadi::ContactViewerDialog> const dlg = new Akonadi::ContactViewerDialog(this);
     dlg->setContact(item);
     dlg->exec();
     delete dlg;
@@ -694,7 +694,7 @@ void SDSummaryWidget::dateDiff(const QDate &date, int &days, int &years) const
         eventDate = QDate(QDate::currentDate().year(), date.month(), date.day());
     }
 
-    int offset = currentDate.daysTo(eventDate);
+    int const offset = currentDate.daysTo(eventDate);
     if (offset < 0) {
         days = 365 + offset;
         years = QDate::currentDate().year() + 1 - date.year();

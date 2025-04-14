@@ -151,7 +151,7 @@ void KODayMatrix::updateView(QDate actdate)
         // reset index of selection according to shift of starting date from
         // startdate to actdate.
         if (mSelStart != NOSELECTION) {
-            int tmp = actdate.daysTo(mStartDate);
+            int const tmp = actdate.daysTo(mStartDate);
             // shift selection if new one would be visible at least partly !
             if (mSelStart + tmp < NUMDAYS && mSelEnd + tmp >= 0) {
                 // nested if required for next X display pushed from a different month
@@ -187,7 +187,7 @@ void KODayMatrix::updateView(QDate actdate)
     QMap<QDate, QStringList> holidaysByDate = KOGlobals::self()->holiday(mDays[0], mDays[NUMDAYS - 1]);
     for (int i = 0; i < NUMDAYS; ++i) {
         // if it is a holy day then draw it red. Sundays are consider holidays, too
-        QStringList holidays = holidaysByDate[mDays[i]];
+        QStringList const holidays = holidaysByDate[mDays[i]];
         QString holiStr;
 
         if (!holidays.isEmpty()) {
@@ -225,7 +225,7 @@ void KODayMatrix::updateJournals()
         const KCalendarCore::Incidence::List incidences = calendar->incidences();
         for (const KCalendarCore::Incidence::Ptr &inc : incidences) {
             Q_ASSERT(inc);
-            QDate d = inc->dtStart().toLocalTime().date();
+            QDate const d = inc->dtStart().toLocalTime().date();
             if (inc->type() == KCalendarCore::Incidence::TypeJournal && d >= mDays[0] && d <= mDays[NUMDAYS - 1] && !mEvents.contains(d)) {
                 mEvents.append(d);
             }
@@ -258,7 +258,7 @@ void KODayMatrix::updateTodos()
             }
             Q_ASSERT(t);
             if (t->hasDueDate()) {
-                ushort recurType = t->recurrenceType();
+                ushort const recurType = t->recurrenceType();
 
                 if (t->recurs() && !(recurType == KCalendarCore::Recurrence::rDaily && !KOPrefs::instance()->mDailyRecur)
                     && !(recurType == KCalendarCore::Recurrence::rWeekly && !KOPrefs::instance()->mWeeklyRecur)) {
@@ -418,14 +418,14 @@ bool KODayMatrix::event(QEvent *event)
         auto helpEvent = static_cast<QHelpEvent *>(event);
 
         // calculate which cell of the matrix the mouse is in
-        QRect sz = frameRect();
-        int dheight = sz.height() * 7 / 42;
-        int dwidth = sz.width() / 7;
-        int row = helpEvent->pos().y() / dheight;
-        int col = helpEvent->pos().x() / dwidth;
+        QRect const sz = frameRect();
+        int const dheight = sz.height() * 7 / 42;
+        int const dwidth = sz.width() / 7;
+        int const row = helpEvent->pos().y() / dheight;
+        int const col = helpEvent->pos().x() / dwidth;
 
         // show holiday names only
-        QString tipText = getHolidayLabel(col + row * 7);
+        QString const tipText = getHolidayLabel(col + row * 7);
         if (!tipText.isEmpty()) {
             QToolTip::showText(helpEvent->globalPos(), tipText);
         } else {
@@ -572,7 +572,7 @@ void KODayMatrix::dragLeaveEvent(QDragLeaveEvent *e)
 
 void KODayMatrix::dropEvent(QDropEvent *e)
 {
-    QList<QUrl> urls = (e->mimeData()->urls());
+    QList<QUrl> const urls = (e->mimeData()->urls());
     // qCDebug(KORGANIZER_LOG)<<" urls :"<<urls;
     if (urls.isEmpty()) {
         e->ignore();
@@ -580,7 +580,7 @@ void KODayMatrix::dropEvent(QDropEvent *e)
     }
     // For the moment support 1 url
     if (urls.count() >= 1) {
-        QUrl res = urls.at(0);
+        QUrl const res = urls.at(0);
 
         auto job = new Akonadi::ItemFetchJob(Akonadi::Item::fromUrl(res));
         job->fetchScope().setAncestorRetrieval(Akonadi::ItemFetchScope::Parent);
@@ -589,9 +589,9 @@ void KODayMatrix::dropEvent(QDropEvent *e)
         if (job->exec()) {
             items = job->items();
         }
-        bool exist = items.at(0).isValid();
+        bool const exist = items.at(0).isValid();
         int action = DRAG_CANCEL;
-        Qt::KeyboardModifiers keyboardModifiers = e->modifiers();
+        Qt::KeyboardModifiers const keyboardModifiers = e->modifiers();
         if (keyboardModifiers & Qt::ControlModifier) {
             action = DRAG_COPY;
         } else if (keyboardModifiers & Qt::ShiftModifier) {
@@ -622,7 +622,7 @@ void KODayMatrix::dropEvent(QDropEvent *e)
 
         if (action == DRAG_COPY || action == DRAG_MOVE) {
             e->accept();
-            int idx = getDayIndexFrom(e->position().toPoint().x(), e->position().toPoint().y());
+            int const idx = getDayIndexFrom(e->position().toPoint().x(), e->position().toPoint().y());
 
             if (action == DRAG_COPY) {
                 Q_EMIT incidenceDropped(items.at(0), mDays[idx]);
@@ -647,7 +647,7 @@ void KODayMatrix::paintEvent(QPaintEvent *)
     int column;
     const bool isRTL = KOGlobals::self()->reverseLayout();
 
-    QPalette pal = palette();
+    QPalette const pal = palette();
 
     p.begin(this);
 
@@ -691,7 +691,7 @@ void KODayMatrix::paintEvent(QPaintEvent *)
                 }
                 // draw last block from left to mSelEnd
                 if (mSelEnd / 7 < 6) {
-                    int selectionWidth = mSelEnd - 7 * (mSelEnd / 7) + 1;
+                    int const selectionWidth = mSelEnd - 7 * (mSelEnd / 7) + 1;
                     p.fillRect(isRTL ? (7 - selectionWidth) * dayWidth : 0,
                                (row + selectionHeight) * dayHeight,
                                selectionWidth * dayWidth,
@@ -800,7 +800,7 @@ void KODayMatrix::paintEvent(QPaintEvent *)
 
 void KODayMatrix::resizeEvent(QResizeEvent *)
 {
-    QRect sz = frameRect();
+    QRect const sz = frameRect();
     mDaySize.setHeight(sz.height() * 7 / NUMDAYS);
     mDaySize.setWidth(sz.width() / 7);
 }

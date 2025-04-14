@@ -367,7 +367,7 @@ void ReparentingModel::appendSourceNode(Node *parentNode, const QModelIndex &sou
 {
     mNodeManager->checkSourceIndex(sourceParent);
 
-    Node::Ptr node(new Node(*this, parentNode, sourceParent));
+    const Node::Ptr node(new Node(*this, parentNode, sourceParent));
     parentNode->children.append(node);
     Q_ASSERT(validateNode(node.data()));
     rebuildFromSource(node.data(), sourceParent, skip);
@@ -417,7 +417,7 @@ void ReparentingModel::onSourceRowsInserted(const QModelIndex &parent, int start
 {
     // qCDebug(KORGANIZER_LOG) << objectName() << parent << start << end;
     for (int r = start; r <= end; r++) {
-        QModelIndex sourceIndex = sourceModel()->index(r, 0, parent);
+        const QModelIndex sourceIndex = sourceModel()->index(r, 0, parent);
         Q_ASSERT(sourceIndex.isValid());
         Node *parentNode = getParentNode(sourceIndex);
         if (!parentNode) {
@@ -437,7 +437,7 @@ void ReparentingModel::onSourceRowsInserted(const QModelIndex &parent, int start
             for (const QModelIndex &descendant : descendantsItem) {
                 if (Node *proxyNode = getReparentNode(descendant)) {
                     qCDebug(KORGANIZER_LOG) << "reparenting " << descendant.data().toString();
-                    int targetRow = proxyNode->children.size();
+                    const int targetRow = proxyNode->children.size();
                     beginInsertRows(index(proxyNode), targetRow, targetRow);
                     appendSourceNode(proxyNode, descendant);
                     reparented << descendant;
@@ -448,12 +448,12 @@ void ReparentingModel::onSourceRowsInserted(const QModelIndex &parent, int start
 
         /* cppcheck-suppress knownConditionTrueFalse */
         if (parentNode->isSourceNode()) {
-            int targetRow = parentNode->children.size();
+            const int targetRow = parentNode->children.size();
             beginInsertRows(mapFromSource(parent), targetRow, targetRow);
             appendSourceNode(parentNode, sourceIndex, reparented);
             endInsertRows();
         } else { // Reparented
-            int targetRow = parentNode->children.size();
+            const int targetRow = parentNode->children.size();
             beginInsertRows(index(parentNode), targetRow, targetRow);
             appendSourceNode(parentNode, sourceIndex);
             endInsertRows();
@@ -466,7 +466,7 @@ void ReparentingModel::onSourceRowsAboutToBeRemoved(const QModelIndex &parent, i
     // qCDebug(KORGANIZER_LOG) << objectName() << parent << start << end;
     // we remove in reverse order as otherwise the indexes in parentNode->children wouldn't be correct
     for (int r = end; r >= start; r--) {
-        QModelIndex sourceIndex = sourceModel()->index(r, 0, parent);
+        const QModelIndex sourceIndex = sourceModel()->index(r, 0, parent);
         Q_ASSERT(sourceIndex.isValid());
 
         const QModelIndex proxyIndex = mapFromSource(sourceIndex);
@@ -683,7 +683,7 @@ void ReparentingModel::reparentSourceNodes(const Node::Ptr &proxyNode)
             // cannot use them.
             const int oldRow = n->row();
             beginRemoveRows(index(n->parent), oldRow, oldRow);
-            Node::Ptr nodePtr = proxyNode->searchNode(n);
+            const Node::Ptr nodePtr = proxyNode->searchNode(n);
             // We lie about the row being removed already, but the view can deal with that better than if we call endRemoveRows after beginInsertRows
             endRemoveRows();
 

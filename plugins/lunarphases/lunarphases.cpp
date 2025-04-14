@@ -52,7 +52,7 @@ Lunarphases::Lunarphases(QObject *parent, const QVariantList &args)
     : Decoration(parent, args)
 {
     KConfig _config(QStringLiteral("korganizerrc"));
-    KConfigGroup config(&_config, QStringLiteral("Calendar/Lunar Phases Plugin"));
+    KConfigGroup const config(&_config, QStringLiteral("Calendar/Lunar Phases Plugin"));
 }
 
 QString Lunarphases::info() const
@@ -67,7 +67,7 @@ Element::List Lunarphases::createDayElements(const QDate &date)
 {
     Element::List result;
 
-    KHolidays::LunarPhase::Phase phase = KHolidays::LunarPhase::phaseAtDate(date);
+    KHolidays::LunarPhase::Phase const phase = KHolidays::LunarPhase::phaseAtDate(date);
     if (phase != KHolidays::LunarPhase::None) {
         auto e = new LunarphasesElement(phase);
         result.append(e);

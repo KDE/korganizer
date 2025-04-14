@@ -40,7 +40,7 @@ TodoPlugin::TodoPlugin(KontactInterface::Core *core, const KPluginMetaData &data
     auto action = new QAction(QIcon::fromTheme(QStringLiteral("task-new")), i18nc("@action:inmenu", "New To-do…"), this);
     actionCollection()->addAction(QStringLiteral("new_todo"), action);
     actionCollection()->setDefaultShortcut(action, QKeySequence(Qt::CTRL | Qt::SHIFT | Qt::Key_T));
-    QString str = i18nc("@info:status", "Create a new to-do");
+    QString const str = i18nc("@info:status", "Create a new to-do");
     action->setStatusTip(str);
     action->setToolTip(str);
 
@@ -132,7 +132,7 @@ void TodoPlugin::processDropEvent(QDropEvent *event)
         KContacts::Addressee::List::ConstIterator it;
 
         QStringList attendees;
-        KContacts::Addressee::List::ConstIterator end(contacts.constEnd());
+        KContacts::Addressee::List::ConstIterator const end(contacts.constEnd());
         for (it = contacts.constBegin(); it != end; ++it) {
             const QString email = (*it).fullEmail();
             if (email.isEmpty()) {
@@ -147,13 +147,13 @@ void TodoPlugin::processDropEvent(QDropEvent *event)
     }
 
     if (KCalUtils::ICalDrag::canDecode(event->mimeData())) {
-        KCalendarCore::MemoryCalendar::Ptr cal(new KCalendarCore::MemoryCalendar(QTimeZone::systemTimeZone()));
+        KCalendarCore::MemoryCalendar::Ptr const cal(new KCalendarCore::MemoryCalendar(QTimeZone::systemTimeZone()));
         if (KCalUtils::ICalDrag::fromMimeData(event->mimeData(), cal)) {
             KCalendarCore::Incidence::List incidences = cal->incidences();
             Q_ASSERT(incidences.count());
             if (!incidences.isEmpty()) {
                 event->accept();
-                KCalendarCore::Incidence::Ptr i = incidences.first();
+                KCalendarCore::Incidence::Ptr const i = incidences.first();
                 QString summary;
                 if (i->type() == KCalendarCore::Incidence::TypeJournal) {
                     summary = i18nc("@item", "Note: %1", i->summary());

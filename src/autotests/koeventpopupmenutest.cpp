@@ -26,7 +26,7 @@ void KoEventPopupMenuTest::createEventFromEvent()
     auto calendar = Akonadi::CollectionCalendar::Ptr::create(Akonadi::Collection{});
     KOEventPopupMenu menu;
 
-    KCalendarCore::Event::Ptr event(new KCalendarCore::Event());
+    const KCalendarCore::Event::Ptr event(new KCalendarCore::Event());
     Akonadi::Item item;
     item.setMimeType(KCalendarCore::Event::eventMimeType());
     item.setPayload<KCalendarCore::Event::Ptr>(event);
@@ -44,7 +44,7 @@ void KoEventPopupMenuTest::createTodoFromTodo()
     auto calendar = Akonadi::CollectionCalendar::Ptr::create(Akonadi::Collection());
     KOEventPopupMenu menu;
 
-    KCalendarCore::Todo::Ptr todo(new KCalendarCore::Todo());
+    const KCalendarCore::Todo::Ptr todo(new KCalendarCore::Todo());
     Akonadi::Item item;
     item.setMimeType(KCalendarCore::Todo::todoMimeType());
     item.setPayload<KCalendarCore::Todo::Ptr>(todo);
@@ -62,14 +62,14 @@ void KoEventPopupMenuTest::createEventFromTodo()
     auto calendar = Akonadi::CollectionCalendar::Ptr::create(Akonadi::Collection());
     KOEventPopupMenu menu;
 
-    KCalendarCore::Todo::Ptr todo(new KCalendarCore::Todo());
+    const KCalendarCore::Todo::Ptr todo(new KCalendarCore::Todo());
     Akonadi::Item item;
     item.setMimeType(KCalendarCore::Todo::todoMimeType());
     item.setPayload<KCalendarCore::Todo::Ptr>(todo);
 
     QDateTime start;
     QDateTime end;
-    QString summary(QStringLiteral("a test"));
+    const QString summary(QStringLiteral("a test"));
     start = QDateTime::fromSecsSinceEpoch(1402593346);
     end = QDateTime::fromSecsSinceEpoch(1403593346);
     todo->setDtStart(start);
@@ -83,7 +83,7 @@ void KoEventPopupMenuTest::createEventFromTodo()
     QVERIFY(dlg);
     auto editor = menu.findChild<IncidenceEditorNG::IncidenceEditor *>();
     QVERIFY(editor);
-    KCalendarCore::Event::Ptr event(editor->incidence<KCalendarCore::Event>());
+    const KCalendarCore::Event::Ptr event(editor->incidence<KCalendarCore::Event>());
     QVERIFY(event->uid() != todo->uid());
     QCOMPARE(event->dtStart(), start);
     QCOMPARE(event->dtEnd(), end);
@@ -96,14 +96,14 @@ void KoEventPopupMenuTest::createTodoFromEvent()
     auto calendar = Akonadi::CollectionCalendar::Ptr::create(Akonadi::Collection());
     KOEventPopupMenu menu;
 
-    KCalendarCore::Event::Ptr event(new KCalendarCore::Event());
+    const KCalendarCore::Event::Ptr event(new KCalendarCore::Event());
     Akonadi::Item item;
     item.setMimeType(KCalendarCore::Event::eventMimeType());
     item.setPayload<KCalendarCore::Event::Ptr>(event);
 
     QDateTime start;
     QDateTime end;
-    QString summary(QStringLiteral("a test"));
+    const QString summary(QStringLiteral("a test"));
     start = QDateTime::fromSecsSinceEpoch(1402593346);
     end = QDateTime::fromSecsSinceEpoch(1403593346);
     event->setDtStart(start);
@@ -117,7 +117,7 @@ void KoEventPopupMenuTest::createTodoFromEvent()
     QVERIFY(dlg);
     auto editor = menu.findChild<IncidenceEditorNG::IncidenceEditor *>();
     QVERIFY(editor);
-    KCalendarCore::Todo::Ptr todo(editor->incidence<KCalendarCore::Todo>());
+    const KCalendarCore::Todo::Ptr todo(editor->incidence<KCalendarCore::Todo>());
     QVERIFY(todo->uid() != event->uid());
     QCOMPARE(todo->dtStart(), start);
     QCOMPARE(todo->dtDue(), end);
@@ -130,7 +130,7 @@ void KoEventPopupMenuTest::defaultMenuEventVisible()
     auto calendar = Akonadi::CollectionCalendar::Ptr::create(Akonadi::Collection());
     KOEventPopupMenu menu;
 
-    KCalendarCore::Event::Ptr event(new KCalendarCore::Event());
+    const KCalendarCore::Event::Ptr event(new KCalendarCore::Event());
     Akonadi::Item item;
     item.setMimeType(KCalendarCore::Event::eventMimeType());
     item.setPayload<KCalendarCore::Event::Ptr>(event);
@@ -147,7 +147,7 @@ void KoEventPopupMenuTest::defaultMenuTodoVisible()
     auto calendar = Akonadi::CollectionCalendar::Ptr::create(Akonadi::Collection());
     KOEventPopupMenu menu;
 
-    KCalendarCore::Todo::Ptr todo(new KCalendarCore::Todo());
+    const KCalendarCore::Todo::Ptr todo(new KCalendarCore::Todo());
 
     Akonadi::Item item;
     item.setMimeType(KCalendarCore::Todo::todoMimeType());

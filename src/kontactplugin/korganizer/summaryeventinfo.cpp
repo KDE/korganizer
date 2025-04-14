@@ -33,8 +33,8 @@ Q_GLOBAL_STATIC(DateTimeByUidHash, sDateTimeByUid)
 
 static bool eventLessThan(const KCalendarCore::Event::Ptr &event1, const KCalendarCore::Event::Ptr &event2)
 {
-    QDateTime kdt1 = sDateTimeByUid()->value(event1->instanceIdentifier());
-    QDateTime kdt2 = sDateTimeByUid()->value(event2->instanceIdentifier());
+    const QDateTime kdt1 = sDateTimeByUid()->value(event1->instanceIdentifier());
+    const QDateTime kdt2 = sDateTimeByUid()->value(event2->instanceIdentifier());
     if (kdt1 < kdt2) {
         return true;
     } else if (kdt1 > kdt2) {
@@ -54,7 +54,7 @@ bool SummaryEventInfo::skip(const KCalendarCore::Event::Ptr &event)
 {
     // simply check categories because the birthdays resource always adds
     // the appropriate category to the event.
-    QStringList c = event->categories();
+    const QStringList c = event->categories();
     if (!mShowBirthdays && c.contains(QLatin1StringView("BIRTHDAY"), Qt::CaseInsensitive)) {
         return true;
     }
@@ -70,14 +70,14 @@ SummaryEventInfo::SummaryEventInfo() = default;
 /**static*/
 SummaryEventInfo::List SummaryEventInfo::eventsForRange(QDate start, QDate end, const Akonadi::ETMCalendar::Ptr &calendar)
 {
-    KCalendarCore::Event::List allEvents = calendar->events();
+    const KCalendarCore::Event::List allEvents = calendar->events();
     KCalendarCore::Event::List events;
     const auto currentDateTime = QDateTime::currentDateTime();
     const QDate currentDate = currentDateTime.date();
 
     sDateTimeByUid()->clear();
     for (int i = 0; i < allEvents.count(); ++i) {
-        KCalendarCore::Event::Ptr event = allEvents.at(i);
+        const KCalendarCore::Event::Ptr event = allEvents.at(i);
         if (skip(event)) {
             continue;
         }
@@ -121,7 +121,7 @@ SummaryEventInfo::List SummaryEventInfo::eventsForRange(QDate start, QDate end, 
         if (startOfMultiday < currentDate) {
             startOfMultiday = currentDate;
         }
-        bool firstDayOfMultiday = (start == startOfMultiday);
+        const bool firstDayOfMultiday = (start == startOfMultiday);
 
         auto summaryEvent = new SummaryEventInfo();
         eventInfoList.append(summaryEvent);
@@ -131,7 +131,7 @@ SummaryEventInfo::List SummaryEventInfo::eventsForRange(QDate start, QDate end, 
 
         // Start date label
         QString str;
-        QDate sD = occurrenceStartDate;
+        const QDate sD = occurrenceStartDate;
         if (currentDate >= sD) {
             str = i18nc("the appointment is today", "Today");
             summaryEvent->makeBold = true;
@@ -182,13 +182,13 @@ SummaryEventInfo::List SummaryEventInfo::eventsForRange(QDate start, QDate end, 
                 }
                 if (secs > 0) {
                     str = i18nc("eg. in 1 hour 2 minutes", "in ");
-                    int hours = secs / 3600;
+                    const int hours = secs / 3600;
                     if (hours > 0) {
                         str += i18ncp("use abbreviation for hour to keep the text short", "1 hr", "%1 hrs", hours);
                         str += QLatin1Char(' ');
                         secs -= (hours * 3600);
                     }
-                    int mins = secs / 60;
+                    const int mins = secs / 60;
                     if (mins > 0) {
                         str += i18ncp("use abbreviation for minute to keep the text short", "1 min", "%1 mins", mins);
                         if (hours < 1) {
@@ -250,8 +250,8 @@ SummaryEventInfo::List SummaryEventInfo::eventsForRange(QDate start, QDate end, 
         if (ev->recurs()) {
             QDateTime kdt(start, QTime(0, 0, 0));
             kdt = kdt.addSecs(-1);
-            QDateTime next = ev->recurrence()->getNextDateTime(kdt);
-            QString tmp = IncidenceFormatter::dateTimeToString(ev->recurrence()->getNextDateTime(next), ev->allDay(), true);
+            const QDateTime next = ev->recurrence()->getNextDateTime(kdt);
+            const QString tmp = IncidenceFormatter::dateTimeToString(ev->recurrence()->getNextDateTime(next), ev->allDay(), true);
             if (!summaryEvent->timeRange.isEmpty()) {
                 summaryEvent->timeRange += QLatin1StringView("<br>");
             }

@@ -203,7 +203,7 @@ void ReparentingModelTest::testAddRemoveSourceItem()
 
     ReparentingModel reparentingModel;
     reparentingModel.setSourceModel(&sourceModel);
-    ModelSignalSpy spy(reparentingModel);
+    ModelSignalSpy const spy(reparentingModel);
 
     sourceModel.appendRow(new QStandardItem(QStringLiteral("row2")));
     QCOMPARE(reparentingModel.rowCount(QModelIndex()), 2);
@@ -233,7 +233,7 @@ void ReparentingModelTest::testInsertSourceRow()
 
     ReparentingModel reparentingModel;
     reparentingModel.setSourceModel(&sourceModel);
-    ModelSignalSpy spy(reparentingModel);
+    ModelSignalSpy const spy(reparentingModel);
 
     auto row1 = new QStandardItem(QStringLiteral("row1"));
     sourceModel.insertRow(0, row1);
@@ -262,7 +262,7 @@ void ReparentingModelTest::testInsertSourceRowSubnode()
 
     ReparentingModel reparentingModel;
     reparentingModel.setSourceModel(&sourceModel);
-    ModelSignalSpy spy(reparentingModel);
+    ModelSignalSpy const spy(reparentingModel);
 
     auto row1 = new QStandardItem(QStringLiteral("row1"));
     parent->insertRow(0, row1);
@@ -287,7 +287,7 @@ void ReparentingModelTest::testAddRemoveProxyNode()
     ReparentingModel reparentingModel;
     reparentingModel.setSourceModel(&sourceModel);
 
-    ModelSignalSpy spy(reparentingModel);
+    ModelSignalSpy const spy(reparentingModel);
 
     reparentingModel.addNode(ReparentingModel::Node::Ptr(new DummyNode(reparentingModel, QStringLiteral("proxy1"))));
 
@@ -396,7 +396,7 @@ void ReparentingModelTest::testUpdateNode()
 
     QTest::qWait(0);
 
-    QModelIndex index = getIndex("proxy1", reparentingModel);
+    QModelIndex const index = getIndex("proxy1", reparentingModel);
     QCOMPARE(reparentingModel.rowCount(QModelIndex()), 1);
     QVERIFY(index.isValid());
     QCOMPARE(reparentingModel.data(index, Qt::UserRole).toString(), QStringLiteral("blub"));
@@ -405,7 +405,7 @@ void ReparentingModelTest::testUpdateNode()
     reparentingModel.updateNode(ReparentingModel::Node::Ptr(new DummyNode(reparentingModel, QStringLiteral("proxy1"), QStringLiteral("new data"))));
     QTest::qWait(0);
 
-    QModelIndex i2 = getIndex("proxy1", reparentingModel);
+    QModelIndex const i2 = getIndex("proxy1", reparentingModel);
     QCOMPARE(i2.column(), index.column());
     QCOMPARE(i2.row(), index.row());
 
@@ -526,7 +526,7 @@ void ReparentingModelTest::testAddReparentedSourceItem()
 
     QTest::qWait(0);
 
-    ModelSignalSpy spy(reparentingModel);
+    ModelSignalSpy const spy(reparentingModel);
 
     sourceModel.appendRow(new QStandardItem(QStringLiteral("orphan")));
 
@@ -548,7 +548,7 @@ void ReparentingModelTest::testRemoveReparentedSourceItem()
 
     QTest::qWait(0);
 
-    ModelSignalSpy spy(reparentingModel);
+    ModelSignalSpy const spy(reparentingModel);
 
     sourceModel.removeRows(0, 1, QModelIndex());
 
@@ -592,7 +592,7 @@ void ReparentingModelTest::testAddNestedReparentedSourceItem()
 
     QTest::qWait(0);
 
-    ModelSignalSpy spy(reparentingModel);
+    ModelSignalSpy const spy(reparentingModel);
 
     auto item = new QStandardItem(QStringLiteral("parent"));
     item->appendRow(QList<QStandardItem *>() << new QStandardItem(QStringLiteral("orphan")));
@@ -633,10 +633,10 @@ void ReparentingModelTest::testSourceLayoutChanged()
 
     ReparentingModel reparentingModel;
     reparentingModel.setSourceModel(&filter);
-    ModelSignalSpy spy(reparentingModel);
+    ModelSignalSpy const spy(reparentingModel);
 
-    QPersistentModelIndex index1 = reparentingModel.index(0, 0, QModelIndex());
-    QPersistentModelIndex index2 = reparentingModel.index(1, 0, QModelIndex());
+    QPersistentModelIndex const index1 = reparentingModel.index(0, 0, QModelIndex());
+    QPersistentModelIndex const index2 = reparentingModel.index(1, 0, QModelIndex());
 
     // Emits layout changed and sorts the items the other way around
     filter.sort(0, Qt::AscendingOrder);
@@ -672,7 +672,7 @@ void ReparentingModelTest::testInvalidLayoutChanged()
     // Take reference to proxy node
     const QModelIndexList row1List = getIndexList("row1", reparentingModel);
     QVERIFY(!row1List.isEmpty());
-    QPersistentModelIndex persistentIndex = row1List.first();
+    QPersistentModelIndex const persistentIndex = row1List.first();
     QVERIFY(persistentIndex.isValid());
 
     sourceModel.appendRow(new QStandardItem(QStringLiteral("row1")));
@@ -767,7 +767,7 @@ void ReparentingModelTest::testDataChanged()
     ReparentingModel reparentingModel;
     reparentingModel.setNodeManager(ReparentingModel::NodeManager::Ptr(new DummyNodeManager(reparentingModel)));
     reparentingModel.setSourceModel(&sourceModel);
-    ModelSignalSpy spy(reparentingModel);
+    ModelSignalSpy const spy(reparentingModel);
 
     QTest::qWait(0);
 

@@ -140,7 +140,7 @@ void KOEventPopupMenu::showIncidencePopup(const Akonadi::CollectionCalendar::Ptr
         return;
     }
 
-    KCalendarCore::Incidence::Ptr incidence = Akonadi::CalendarUtils::incidence(mCurrentIncidence);
+    KCalendarCore::Incidence::Ptr const incidence = Akonadi::CalendarUtils::incidence(mCurrentIncidence);
     Q_ASSERT(incidence);
 
     // Determine if this Incidence's calendar is writeable.
@@ -286,7 +286,7 @@ void KOEventPopupMenu::dissociateOccurrences()
 void KOEventPopupMenu::forward()
 {
     if (CalendarSupport::hasIncidence(mCurrentIncidence)) {
-        KCalendarCore::Incidence::Ptr incidence = Akonadi::CalendarUtils::incidence(mCurrentIncidence);
+        KCalendarCore::Incidence::Ptr const incidence = Akonadi::CalendarUtils::incidence(mCurrentIncidence);
         if (incidence) {
             auto *handler = new Akonadi::ITIPHandler(this);
             connect(handler, &Akonadi::ITIPHandler::sentAsICalendar, this, [handler]() {
@@ -316,8 +316,8 @@ void KOEventPopupMenu::createEvent()
     }
 
     if (CalendarSupport::hasTodo(mCurrentIncidence)) {
-        KCalendarCore::Todo::Ptr todo(Akonadi::CalendarUtils::todo(mCurrentIncidence));
-        KCalendarCore::Event::Ptr event(new KCalendarCore::Event(*todo));
+        KCalendarCore::Todo::Ptr const todo(Akonadi::CalendarUtils::todo(mCurrentIncidence));
+        KCalendarCore::Event::Ptr const event(new KCalendarCore::Event(*todo));
         event->setUid(KCalendarCore::CalFormat::createUniqueId());
         event->setDtStart(todo->dtStart());
         event->setAllDay(todo->allDay());
@@ -346,8 +346,8 @@ void KOEventPopupMenu::createTodo()
     }
 
     if (CalendarSupport::hasEvent(mCurrentIncidence)) {
-        KCalendarCore::Event::Ptr event(Akonadi::CalendarUtils::event(mCurrentIncidence));
-        KCalendarCore::Todo::Ptr todo(new KCalendarCore::Todo(*event));
+        KCalendarCore::Event::Ptr const event(Akonadi::CalendarUtils::event(mCurrentIncidence));
+        KCalendarCore::Todo::Ptr const todo(new KCalendarCore::Todo(*event));
         todo->setUid(KCalendarCore::CalFormat::createUniqueId());
         todo->setDtStart(event->dtStart());
         todo->setAllDay(event->allDay());

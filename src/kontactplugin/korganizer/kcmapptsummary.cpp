@@ -71,7 +71,7 @@ void KCMApptSummary::load()
     KConfig config(QStringLiteral("kcmapptsummaryrc"));
     KConfigGroup group = config.group(QStringLiteral("Days"));
 
-    int days = group.readEntry("DaysToShow", 7);
+    int const days = group.readEntry("DaysToShow", 7);
     if (days == 1) {
         mDateTodayButton->setChecked(true);
     } else if (days == 31) {

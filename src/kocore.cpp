@@ -65,7 +65,7 @@ KXMLGUIClient *KOCore::xmlguiClient(QWidget *wdg) const
     }
 
     QWidget *topLevel = wdg->topLevelWidget(); /* cppcheck-suppress constVariablePointer */
-    QMap<QWidget *, KXMLGUIClient *>::ConstIterator it = mXMLGUIClients.find(topLevel);
+    QMap<QWidget *, KXMLGUIClient *>::ConstIterator const it = mXMLGUIClients.find(topLevel);
     if (it != mXMLGUIClients.constEnd()) {
         return it.value();
     }
@@ -81,7 +81,7 @@ EventViews::CalendarDecoration::Decoration::List KOCore::loadCalendarDecorations
         mCalendarDecorations.clear();
         const QList<KPluginMetaData> plugins = availableCalendarDecorations();
         for (const auto &plugin : plugins) {
-            QString name = plugin.pluginId();
+            QString const name = plugin.pluginId();
             if (selectedPlugins.contains(name)) {
                 EventViews::CalendarDecoration::Decoration *d = loadCalendarDecoration(plugin);
                 mCalendarDecorations.append(d);

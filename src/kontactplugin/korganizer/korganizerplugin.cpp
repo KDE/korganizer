@@ -132,10 +132,10 @@ void KOrganizerPlugin::processDropEvent(QDropEvent *event)
 
         KContacts::Addressee::List::ConstIterator it;
 
-        KContacts::Addressee::List::ConstIterator end(contacts.constEnd());
+        const KContacts::Addressee::List::ConstIterator end(contacts.constEnd());
         QStringList attendees;
         for (it = contacts.constBegin(); it != end; ++it) {
-            QString email = (*it).fullEmail();
+            const QString email = (*it).fullEmail();
             if (email.isEmpty()) {
                 attendees.append((*it).realName() + QStringLiteral("<>"));
             } else {
@@ -148,13 +148,13 @@ void KOrganizerPlugin::processDropEvent(QDropEvent *event)
     }
 
     if (KCalUtils::ICalDrag::canDecode(event->mimeData())) {
-        KCalendarCore::MemoryCalendar::Ptr cal(new KCalendarCore::MemoryCalendar(QTimeZone::systemTimeZone()));
+        const KCalendarCore::MemoryCalendar::Ptr cal(new KCalendarCore::MemoryCalendar(QTimeZone::systemTimeZone()));
         if (KCalUtils::ICalDrag::fromMimeData(event->mimeData(), cal)) {
             KCalendarCore::Incidence::List incidences = cal->incidences();
             Q_ASSERT(incidences.count());
             if (!incidences.isEmpty()) {
                 event->accept();
-                KCalendarCore::Incidence::Ptr i = incidences.first();
+                const KCalendarCore::Incidence::Ptr i = incidences.first();
                 QString summary;
                 if (i->type() == KCalendarCore::Incidence::TypeJournal) {
                     summary = i18nc("@item", "Note: %1", i->summary());

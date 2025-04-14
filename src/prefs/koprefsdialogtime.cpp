@@ -117,11 +117,11 @@ KOPrefsDialogTime::KOPrefsDialogTime(QObject *parent, const KPluginMetaData &dat
     workingHoursLayout->addLayout(workDaysLayout);
 
     // Respect start of week setting
-    int weekStart = QLocale().firstDayOfWeek();
+    const int weekStart = QLocale().firstDayOfWeek();
     for (int i = 0; i < 7; ++i) {
-        QString weekDayName = QLocale().dayName((i + weekStart + 6) % 7 + 1, QLocale::ShortFormat);
-        QString weekDayNameLong = QLocale().dayName((i + weekStart + 6) % 7 + 1, QLocale::LongFormat);
-        int index = (i + weekStart + 6) % 7;
+        const QString weekDayName = QLocale().dayName((i + weekStart + 6) % 7 + 1, QLocale::ShortFormat);
+        const QString weekDayNameLong = QLocale().dayName((i + weekStart + 6) % 7 + 1, QLocale::LongFormat);
+        const int index = (i + weekStart + 6) % 7;
         mWorkDays[index] = new QCheckBox(weekDayName);
         mWorkDays[index]->setToolTip(i18nc("@info:tooltip", "Include %1 as part of your weekly schedule", weekDayNameLong));
         mWorkDays[index]->setWhatsThis(i18nc("@info:whatsthis",
@@ -253,7 +253,7 @@ void KOPrefsDialogTime::usrWriteConfig()
     QStringList HolidayRegions;
     const auto checkedItems = mHolidayCheckCombo->checkedItems();
     for (const QString &str : checkedItems) {
-        int index = mHolidayCheckCombo->findText(str);
+        const int index = mHolidayCheckCombo->findText(str);
         if (index >= 0) {
             HolidayRegions.append(mHolidayCheckCombo->itemData(index).toString());
         }

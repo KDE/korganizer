@@ -250,7 +250,7 @@ bool MultiAgendaView::hasConfigurationDialog() const
 
 void MultiAgendaView::showConfigurationDialog(QWidget *parent)
 {
-    QPointer<MultiAgendaViewConfigDialog> dlg(new MultiAgendaViewConfigDialog(d->mCollectionSelectionModel, parent));
+    const QPointer<MultiAgendaViewConfigDialog> dlg(new MultiAgendaViewConfigDialog(d->mCollectionSelectionModel, parent));
 
     dlg->setUseCustomColumns(d->mMultiAgendaView->customColumnSetupUsed());
     dlg->setNumberOfColumns(d->mMultiAgendaView->customNumberOfColumns());

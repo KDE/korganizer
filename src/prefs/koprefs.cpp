@@ -70,7 +70,7 @@ void KOPrefs::usrSetDefaults()
 
 void KOPrefs::usrRead()
 {
-    KConfigGroup timeScaleConfig(config(), QStringLiteral("Timescale"));
+    KConfigGroup const timeScaleConfig(config(), QStringLiteral("Timescale"));
     setTimeScaleTimezones(timeScaleConfig.readEntry("Timescale Timezones", QStringList()));
 
     KConfigSkeleton::usrRead();

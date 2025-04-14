@@ -94,7 +94,7 @@ void Quickview::readConfig()
 {
     create(); // ensure a window is created
     windowHandle()->resize(QSize(775, 600));
-    KConfigGroup group(KSharedConfig::openStateConfig(), QLatin1StringView(myQuickviewConfigGroupName));
+    KConfigGroup const group(KSharedConfig::openStateConfig(), QLatin1StringView(myQuickviewConfigGroupName));
     KWindowConfig::restoreWindowSize(windowHandle(), group);
     resize(windowHandle()->size()); // workaround for QTBUG-40584
 

@@ -210,7 +210,7 @@ private:
         }
         qCDebug(KORGANIZER_LOG) << "Restore tree state";
         treeStateRestorer = new Akonadi::ETMViewStateSaver(); // not a leak
-        KConfigGroup group(KSharedConfig::openConfig(), mTreeStateConfig);
+        KConfigGroup const group(KSharedConfig::openConfig(), mTreeStateConfig);
         treeStateRestorer->setView(mTreeView);
         treeStateRestorer->setSelectionModel(nullptr); // we only restore expand state
         treeStateRestorer->restoreState(group);
@@ -444,7 +444,7 @@ AkonadiCollectionView::AkonadiCollectionView(CalendarView *view, bool hasContext
                         << Akonadi::StandardActionManager::SynchronizeResources << Akonadi::StandardActionManager::SynchronizeCollectionTree
                         << Akonadi::StandardActionManager::CopyCollectionToMenu << Akonadi::StandardActionManager::MoveCollectionToMenu;
 
-        for (Akonadi::StandardActionManager::Type standardAction : std::as_const(standardActions)) {
+        for (Akonadi::StandardActionManager::Type const standardAction : std::as_const(standardActions)) {
             mActionManager->createAction(standardAction);
         }
 
@@ -453,7 +453,7 @@ AkonadiCollectionView::AkonadiCollectionView(CalendarView *view, bool hasContext
                         << Akonadi::StandardCalendarActionManager::CreateSubTodo << Akonadi::StandardCalendarActionManager::CreateJournal
                         << Akonadi::StandardCalendarActionManager::EditIncidence;
 
-        for (Akonadi::StandardCalendarActionManager::Type calendarAction : std::as_const(calendarActions)) {
+        for (Akonadi::StandardCalendarActionManager::Type const calendarAction : std::as_const(calendarActions)) {
             mActionManager->createAction(calendarAction);
         }
 
@@ -527,7 +527,7 @@ QString AkonadiCollectionView::defaultCalendarDisplayName() const
 
 void AkonadiCollectionView::setDefaultCalendar()
 {
-    QModelIndex index = mCollectionView->selectionModel()->currentIndex(); // selectedRows()
+    QModelIndex const index = mCollectionView->selectionModel()->currentIndex(); // selectedRows()
     Q_ASSERT(index.isValid());
     const Akonadi::Collection collection = Akonadi::CollectionUtils::fromIndex(index);
     const QString displayName = index.model()->data(index, Qt::DisplayRole).toString();
@@ -563,7 +563,7 @@ void AkonadiCollectionView::setDefaultCalendar()
 
 void AkonadiCollectionView::assignColor()
 {
-    QModelIndex index = mCollectionView->selectionModel()->currentIndex(); // selectedRows()
+    QModelIndex const index = mCollectionView->selectionModel()->currentIndex(); // selectedRows()
     Q_ASSERT(index.isValid());
     const Akonadi::Collection collection = Akonadi::CollectionUtils::fromIndex(index);
     Q_ASSERT(collection.isValid());
@@ -680,7 +680,7 @@ void AkonadiCollectionView::updateMenu()
     bool enableAction = mCollectionView->selectionModel()->hasSelection();
     enableAction = enableAction && (KOPrefs::instance()->agendaViewColors() != KOPrefs::CategoryOnly);
     mAssignColor->setEnabled(enableAction);
-    QModelIndex index = mCollectionView->selectionModel()->currentIndex(); // selectedRows()
+    QModelIndex const index = mCollectionView->selectionModel()->currentIndex(); // selectedRows()
 
     bool disableStuff = true;
 
@@ -706,7 +706,7 @@ void AkonadiCollectionView::updateMenu()
 
 void AkonadiCollectionView::newCalendar()
 {
-    QPointer<Akonadi::AgentTypeDialog> dlg = new Akonadi::AgentTypeDialog(this);
+    QPointer<Akonadi::AgentTypeDialog> const dlg = new Akonadi::AgentTypeDialog(this);
     dlg->setWindowTitle(i18nc("@title:window", "Add Calendar"));
     dlg->agentFilterProxyModel()->addMimeTypeFilter(QStringLiteral("text/calendar"));
     dlg->agentFilterProxyModel()->addCapabilityFilter(QStringLiteral("Resource")); // show only resources, no agents
@@ -764,7 +764,7 @@ bool AkonadiCollectionView::collectionContainsDefaultCalendar(const Akonadi::Col
 
 void AkonadiCollectionView::deleteCalendar()
 {
-    QModelIndex index = mCollectionView->selectionModel()->currentIndex(); // selectedRows()
+    QModelIndex const index = mCollectionView->selectionModel()->currentIndex(); // selectedRows()
     Q_ASSERT(index.isValid());
     const Akonadi::Collection collection = Akonadi::CollectionUtils::fromIndex(index);
     Q_ASSERT(collection.isValid());
@@ -773,7 +773,7 @@ void AkonadiCollectionView::deleteCalendar()
     Q_ASSERT(!displayname.isEmpty());
 
     mWasDefaultCalendar = false;
-    bool isTopLevel = collection.parentCollection() == Akonadi::Collection::root();
+    bool const isTopLevel = collection.parentCollection() == Akonadi::Collection::root();
     if (isTopLevel) {
         if (collectionContainsDefaultCalendar(collection)) {
             mWasDefaultCalendar = true;

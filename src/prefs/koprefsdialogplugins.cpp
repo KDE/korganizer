@@ -115,9 +115,9 @@ void KOPrefsDialogPlugins::usrReadConfig()
     mTreeWidget->clear();
     auto plugins = KOCore::self()->availableCalendarDecorations();
 
-    EventViews::PrefsPtr viewPrefs = KOPrefs::instance()->eventViewsPreferences();
+    const EventViews::PrefsPtr viewPrefs = KOPrefs::instance()->eventViewsPreferences();
 
-    QStringList selectedPlugins = viewPrefs->selectedPlugins();
+    const QStringList selectedPlugins = viewPrefs->selectedPlugins();
 
     mDecorations = new QTreeWidgetItem(mTreeWidget, QStringList(i18nc("@title:group", "Calendar Decorations")));
 
@@ -169,7 +169,7 @@ void KOPrefsDialogPlugins::usrWriteConfig()
             }
         }
     }
-    EventViews::PrefsPtr viewPrefs = KOPrefs::instance()->eventViewsPreferences();
+    const EventViews::PrefsPtr viewPrefs = KOPrefs::instance()->eventViewsPreferences();
     viewPrefs->setSelectedPlugins(selectedPlugins);
 
     KOPrefs::instance()->setDecorationsAtMonthViewTop(mDecorationsAtMonthViewTop.values());
@@ -213,7 +213,7 @@ void KOPrefsDialogPlugins::positioningChanged()
         return;
     }
 
-    QString decoration = item->service().pluginId();
+    const QString decoration = item->service().pluginId();
 
     /*if ( mPositionMonthTop->checkState() == Qt::Checked ) {
       if ( !mDecorationsAtMonthViewTop.contains( decoration ) ) {
@@ -263,7 +263,7 @@ void KOPrefsDialogPlugins::selectionChanged()
     mDescription->setText(item->service().description());
 
     bool hasPosition = false;
-    QString decoration = item->service().pluginId();
+    const QString decoration = item->service().pluginId();
     /*if ( mDecorationsAtMonthViewTop.contains( decoration ) ) {
       mPositionMonthTop->setChecked( true );
       hasPosition = true;

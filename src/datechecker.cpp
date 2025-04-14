@@ -45,7 +45,7 @@ void DateChecker::enableRollover(RolloverType r)
 
 void DateChecker::passedMidnight()
 {
-    QDate today = QDate::currentDate();
+    QDate const today = QDate::currentDate();
 
     if (today.month() != mLastDayChecked.month()) {
         if (mUpdateRollover == FollowMonth) {

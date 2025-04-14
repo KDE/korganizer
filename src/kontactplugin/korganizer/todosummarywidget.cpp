@@ -68,7 +68,7 @@ void TodoSummaryWidget::updateView()
 
     KConfig config(QStringLiteral("kcmtodosummaryrc"));
     KConfigGroup group = config.group(QStringLiteral("Days"));
-    int mDaysToGo = group.readEntry("DaysToShow", 7);
+    int const mDaysToGo = group.readEntry("DaysToShow", 7);
 
     group = config.group(QStringLiteral("Hide"));
     mHideInProgress = group.readEntry("InProgress", false);
@@ -148,7 +148,7 @@ void TodoSummaryWidget::updateView()
 
     int counter = 0;
     if (!prList.isEmpty()) {
-        QPixmap pm = QIcon::fromTheme(QStringLiteral("view-calendar-tasks")).pixmap(style()->pixelMetric(QStyle::PM_SmallIconSize));
+        QPixmap const pm = QIcon::fromTheme(QStringLiteral("view-calendar-tasks")).pixmap(style()->pixelMetric(QStyle::PM_SmallIconSize));
 
         QString str;
 
@@ -226,7 +226,7 @@ void TodoSummaryWidget::updateView()
             // Summary label
             str = todo->summary();
             if (!todo->relatedTo().isEmpty()) { // show parent only, not entire ancestry
-                KCalendarCore::Incidence::Ptr inc = mCalendar->incidence(todo->relatedTo());
+                KCalendarCore::Incidence::Ptr const inc = mCalendar->incidence(todo->relatedTo());
                 if (inc) {
                     str = inc->summary() + QLatin1Char(':') + str;
                 }
@@ -301,12 +301,12 @@ void TodoSummaryWidget::removeTodo(const Akonadi::Item &item)
 
 void TodoSummaryWidget::completeTodo(Akonadi::Item::Id id)
 {
-    Akonadi::Item todoItem = mCalendar->item(id);
+    Akonadi::Item const todoItem = mCalendar->item(id);
 
     if (todoItem.isValid()) {
-        KCalendarCore::Todo::Ptr todo = Akonadi::CalendarUtils::todo(todoItem);
+        KCalendarCore::Todo::Ptr const todo = Akonadi::CalendarUtils::todo(todoItem);
         if (!todo->isReadOnly()) {
-            KCalendarCore::Todo::Ptr oldTodo(todo->clone());
+            KCalendarCore::Todo::Ptr const oldTodo(todo->clone());
             todo->setCompleted(QDateTime::currentDateTime());
             (void)mChanger->modifyIncidence(todoItem, oldTodo);
         }
@@ -315,11 +315,11 @@ void TodoSummaryWidget::completeTodo(Akonadi::Item::Id id)
 
 void TodoSummaryWidget::popupMenu(const QString &uid)
 {
-    KCalendarCore::Todo::Ptr todo = mCalendar->todo(uid);
+    KCalendarCore::Todo::Ptr const todo = mCalendar->todo(uid);
     if (!todo) {
         return;
     }
-    Akonadi::Item item = mCalendar->item(uid);
+    Akonadi::Item const item = mCalendar->item(uid);
     QMenu popup(this);
     QAction *editIt = popup.addAction(i18n("&Edit To-do…"));
     editIt->setIcon(QIcon::fromTheme(QStringLiteral("document-edit")));

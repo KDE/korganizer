@@ -326,7 +326,7 @@ void SearchDialog::readConfig()
 {
     create(); // ensure a window is created
     windowHandle()->resize(QSize(775, 600));
-    KConfigGroup group(KSharedConfig::openStateConfig(), QLatin1StringView(mySearchDialogConfigGroupName));
+    KConfigGroup const group(KSharedConfig::openStateConfig(), QLatin1StringView(mySearchDialogConfigGroupName));
     KWindowConfig::restoreWindowSize(windowHandle(), group);
     resize(windowHandle()->size()); // workaround for QTBUG-40584
 

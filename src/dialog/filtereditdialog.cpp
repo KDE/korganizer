@@ -107,7 +107,7 @@ void FilterEdit::updateFilterList()
         Q_EMIT dataConsistent(false);
     } else {
         QList<KCalendarCore::CalFilter *>::iterator i;
-        QList<KCalendarCore::CalFilter *>::iterator end(mFilters->end());
+        QList<KCalendarCore::CalFilter *>::iterator const end(mFilters->end());
         for (i = mFilters->begin(); i != end; ++i) {
             if (*i) {
                 mRulesList->addItem((*i)->name());
@@ -246,7 +246,7 @@ void FilterEdit::bDeletePressed()
         return;
     }
 
-    int selected = mRulesList->currentRow();
+    int const selected = mRulesList->currentRow();
     KCalendarCore::CalFilter *filter = mFilters->at(selected);
     mFilters->removeAll(filter);
     delete filter;

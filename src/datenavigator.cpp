@@ -191,7 +191,7 @@ void DateNavigator::selectNextMonth(const QDate &currentMonth, const QDate &sele
 void DateNavigator::selectNextYear()
 {
     QDate firstSelected = mSelectedDates.first();
-    int weekDay = firstSelected.dayOfWeek();
+    int const weekDay = firstSelected.dayOfWeek();
     firstSelected = firstSelected.addYears(1);
 
     selectWeekByDay(weekDay, firstSelected);
@@ -224,7 +224,7 @@ void DateNavigator::selectMonth(int month)
 
     int day = firstSelected.day();
     firstSelected.setDate(firstSelected.year(), month, 1);
-    int days = firstSelected.daysInMonth();
+    int const days = firstSelected.daysInMonth();
     // As day we use either the selected date, or if the month has less days
     // than that, we use the max day of that month
     if (day > days) {

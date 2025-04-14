@@ -169,8 +169,8 @@ void KOTodoView::printTodo(bool preview)
         return;
     }
 
-    Akonadi::Item todoItem = selectedItems.first();
-    KCalendarCore::Todo::Ptr todo = Akonadi::CalendarUtils::todo(todoItem);
+    const Akonadi::Item todoItem = selectedItems.first();
+    const KCalendarCore::Todo::Ptr todo = Akonadi::CalendarUtils::todo(todoItem);
     Q_ASSERT(todo);
 
     const auto calendar = calendarForCollection(todoItem.storageCollectionId());

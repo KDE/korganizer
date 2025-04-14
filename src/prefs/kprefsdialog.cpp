@@ -57,11 +57,11 @@ void KPrefsWidBool::init(QWidget *parent)
 {
     mCheck = new QCheckBox(mItem->label(), parent);
     connect(mCheck, &QCheckBox::clicked, this, &KPrefsWidBool::changed);
-    QString toolTip = mItem->toolTip();
+    const QString toolTip = mItem->toolTip();
     if (!toolTip.isEmpty()) {
         mCheck->setToolTip(toolTip);
     }
-    QString whatsThis = mItem->whatsThis();
+    const QString whatsThis = mItem->whatsThis();
     if (!whatsThis.isEmpty()) {
         mCheck->setWhatsThis(whatsThis);
     }
@@ -95,12 +95,12 @@ KPrefsWidInt::KPrefsWidInt(KConfigSkeleton::ItemInt *item, QWidget *parent)
     }
     connect(mSpin, &QSpinBox::valueChanged, this, &KPrefsWidInt::changed);
     mLabel->setBuddy(mSpin);
-    QString toolTip = mItem->toolTip();
+    const QString toolTip = mItem->toolTip();
     if (!toolTip.isEmpty()) {
         mLabel->setToolTip(toolTip);
         mSpin->setToolTip(toolTip);
     }
-    QString whatsThis = mItem->whatsThis();
+    const QString whatsThis = mItem->whatsThis();
     if (!whatsThis.isEmpty()) {
         mLabel->setWhatsThis(whatsThis);
         mSpin->setWhatsThis(whatsThis);
@@ -134,11 +134,11 @@ KPrefsWidColor::KPrefsWidColor(KConfigSkeleton::ItemColor *item, QWidget *parent
     connect(mButton, &KColorButton::changed, this, &KPrefsWidColor::changed);
     mLabel = new QLabel(mItem->label() + QLatin1Char(':'), parent);
     mLabel->setBuddy(mButton);
-    QString toolTip = mItem->toolTip();
+    const QString toolTip = mItem->toolTip();
     if (!toolTip.isEmpty()) {
         mButton->setToolTip(toolTip);
     }
-    QString whatsThis = mItem->whatsThis();
+    const QString whatsThis = mItem->whatsThis();
     if (!whatsThis.isEmpty()) {
         mButton->setWhatsThis(whatsThis);
     }
@@ -176,12 +176,12 @@ KPrefsWidFont::KPrefsWidFont(KConfigSkeleton::ItemFont *item, QWidget *parent, c
 
     mButton = new QPushButton(i18nc("@action:button", "Choose…"), parent);
     connect(mButton, &QPushButton::clicked, this, &Korganizer::KPrefsWidFont::selectFont);
-    QString toolTip = mItem->toolTip();
+    const QString toolTip = mItem->toolTip();
     if (!toolTip.isEmpty()) {
         mPreview->setToolTip(toolTip);
         mButton->setToolTip(toolTip);
     }
-    QString whatsThis = mItem->whatsThis();
+    const QString whatsThis = mItem->whatsThis();
     if (!whatsThis.isEmpty()) {
         mPreview->setWhatsThis(whatsThis);
         mButton->setWhatsThis(whatsThis);
@@ -219,7 +219,7 @@ void KPrefsWidFont::selectFont()
 {
 #ifndef QT_NO_FONTDIALOG
     bool ok;
-    QFont myFont = QFontDialog::getFont(&ok, mPreview->font());
+    const QFont myFont = QFontDialog::getFont(&ok, mPreview->font());
     if (ok) {
         mPreview->setFont(myFont);
         Q_EMIT changed();
@@ -235,11 +235,11 @@ KPrefsWidTime::KPrefsWidTime(KConfigSkeleton::ItemDateTime *item, QWidget *paren
     mLabel->setBuddy(mTimeEdit);
     connect(mTimeEdit, &KTimeComboBox::timeEdited, this, &KPrefsWidTime::changed);
     connect(mTimeEdit, &KTimeComboBox::timeEntered, this, &KPrefsWidTime::changed);
-    QString toolTip = mItem->toolTip();
+    const QString toolTip = mItem->toolTip();
     if (!toolTip.isEmpty()) {
         mTimeEdit->setToolTip(toolTip);
     }
-    QString whatsThis = mItem->whatsThis();
+    const QString whatsThis = mItem->whatsThis();
     if (!whatsThis.isEmpty()) {
         mTimeEdit->setWhatsThis(whatsThis);
     }
@@ -283,11 +283,11 @@ KPrefsWidDuration::KPrefsWidDuration(KConfigSkeleton::ItemDateTime *item, const 
     mTimeEdit->setMinimumTime(QTime(0, 1)); // [1 min]
     mTimeEdit->setMaximumTime(QTime(24, 0)); // [24 hr]
     connect(mTimeEdit, &QTimeEdit::timeChanged, this, &KPrefsWidDuration::changed);
-    QString toolTip = mItem->toolTip();
+    const QString toolTip = mItem->toolTip();
     if (!toolTip.isEmpty()) {
         mTimeEdit->setToolTip(toolTip);
     }
-    QString whatsThis = mItem->whatsThis();
+    const QString whatsThis = mItem->whatsThis();
     if (!whatsThis.isEmpty()) {
         mTimeEdit->setWhatsThis(whatsThis);
     }
@@ -322,11 +322,11 @@ KPrefsWidDate::KPrefsWidDate(KConfigSkeleton::ItemDateTime *item, QWidget *paren
     mDateEdit = new KDateComboBox(parent);
     mLabel->setBuddy(mDateEdit);
     connect(mDateEdit, &KDateComboBox::dateEdited, this, &KPrefsWidDate::changed);
-    QString toolTip = mItem->toolTip();
+    const QString toolTip = mItem->toolTip();
     if (!toolTip.isEmpty()) {
         mDateEdit->setToolTip(toolTip);
     }
-    QString whatsThis = mItem->whatsThis();
+    const QString whatsThis = mItem->whatsThis();
     if (!whatsThis.isEmpty()) {
         mDateEdit->setWhatsThis(whatsThis);
     }
@@ -404,12 +404,12 @@ KPrefsWidCombo::KPrefsWidCombo(KConfigSkeleton::ItemEnum *item, QWidget *parent)
     mCombo = new KComboBox(parent);
     connect(mCombo, &KComboBox::activated, this, &KPrefsWidCombo::changed);
     mLabel->setBuddy(mCombo);
-    QString toolTip = mItem->toolTip();
+    const QString toolTip = mItem->toolTip();
     if (!toolTip.isEmpty()) {
         mLabel->setToolTip(toolTip);
         mCombo->setToolTip(toolTip);
     }
-    QString whatsThis = mItem->whatsThis();
+    const QString whatsThis = mItem->whatsThis();
     if (!whatsThis.isEmpty()) {
         mLabel->setWhatsThis(whatsThis);
         mCombo->setWhatsThis(whatsThis);
@@ -446,11 +446,11 @@ KPrefsWidString::KPrefsWidString(KConfigSkeleton::ItemString *item, QWidget *par
     mLabel->setBuddy(mEdit);
     connect(mEdit, &KLineEdit::textChanged, this, &KPrefsWidString::changed);
     mEdit->setEchoMode(echomode);
-    QString toolTip = mItem->toolTip();
+    const QString toolTip = mItem->toolTip();
     if (!toolTip.isEmpty()) {
         mEdit->setToolTip(toolTip);
     }
-    QString whatsThis = mItem->whatsThis();
+    const QString whatsThis = mItem->whatsThis();
     if (!whatsThis.isEmpty()) {
         mEdit->setWhatsThis(whatsThis);
     }
@@ -487,11 +487,11 @@ KPrefsWidPath::KPrefsWidPath(KConfigSkeleton::ItemPath *item, QWidget *parent, c
     mURLRequester->setMode(mode);
     mURLRequester->setNameFilter(filter);
     connect(mURLRequester, &KUrlRequester::textChanged, this, &KPrefsWidPath::changed);
-    QString toolTip = mItem->toolTip();
+    const QString toolTip = mItem->toolTip();
     if (!toolTip.isEmpty()) {
         mURLRequester->setToolTip(toolTip);
     }
-    QString whatsThis = mItem->whatsThis();
+    const QString whatsThis = mItem->whatsThis();
     if (!whatsThis.isEmpty()) {
         mURLRequester->setWhatsThis(whatsThis);
     }
@@ -576,7 +576,7 @@ KPrefsWidRadios *KPrefsWidManager::addWidRadios(KConfigSkeleton::ItemEnum *item,
     QList<KConfigSkeleton::ItemEnum::Choice> choices;
     choices = item->choices();
     QList<KConfigSkeleton::ItemEnum::Choice>::ConstIterator it;
-    QList<KConfigSkeleton::ItemEnum::Choice>::ConstIterator end(choices.constEnd());
+    const QList<KConfigSkeleton::ItemEnum::Choice>::ConstIterator end(choices.constEnd());
     int value = 0;
     for (it = choices.constBegin(); it != end; ++it) {
         w->addRadio(value++, (*it).label, (*it).toolTip, (*it).whatsThis);
@@ -590,7 +590,7 @@ KPrefsWidCombo *KPrefsWidManager::addWidCombo(KConfigSkeleton::ItemEnum *item, Q
     auto w = new KPrefsWidCombo(item, parent);
     QList<KConfigSkeleton::ItemEnum::Choice> choices;
     choices = item->choices();
-    QList<KConfigSkeleton::ItemEnum::Choice>::ConstIterator end(choices.constEnd());
+    const QList<KConfigSkeleton::ItemEnum::Choice>::ConstIterator end(choices.constEnd());
     for (QList<KConfigSkeleton::ItemEnum::Choice>::ConstIterator it = choices.constBegin(); it != end; ++it) {
         w->comboBox()->addItem((*it).label);
     }
@@ -628,7 +628,7 @@ KPrefsWidInt *KPrefsWidManager::addWidInt(KConfigSkeleton::ItemInt *item, QWidge
 
 void KPrefsWidManager::setWidDefaults()
 {
-    bool tmp = mPrefs->useDefaults(true);
+    const bool tmp = mPrefs->useDefaults(true);
     readWidConfig();
     mPrefs->useDefaults(tmp);
 }

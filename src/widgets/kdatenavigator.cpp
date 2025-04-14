@@ -38,7 +38,7 @@ KDateNavigator::KDateNavigator(QWidget *parent)
     connect(mNavigatorBar, &NavigatorBar::monthSelected, this, &KDateNavigator::monthSelected);
     connect(mNavigatorBar, &NavigatorBar::yearSelected, this, &KDateNavigator::yearSelected);
 
-    QString generalFont = QFontDatabase::systemFont(QFontDatabase::GeneralFont).family();
+    QString const generalFont = QFontDatabase::systemFont(QFontDatabase::GeneralFont).family();
 
     // Set up the heading fields.
     for (int i = 0; i < 7; ++i) {
@@ -152,15 +152,15 @@ void KDateNavigator::setHighlightMode(bool highlightEvents, bool highlightTodos,
 
 void KDateNavigator::updateDates()
 {
-    QDate dayone = startDate();
+    QDate const dayone = startDate();
 
     mDayMatrix->updateView(dayone);
 
     // set the week numbers.
     for (int i = 0; i < 6; ++i) {
         // Use QDate's weekNumber method to determine the week number!
-        QDate dtStart = mDayMatrix->getDate(i * 7);
-        QDate dtEnd = mDayMatrix->getDate((i + 1) * 7 - 1);
+        QDate const dtStart = mDayMatrix->getDate(i * 7);
+        QDate const dtEnd = mDayMatrix->getDate((i + 1) * 7 - 1);
         const int weeknumstart = dtStart.weekNumber();
         const int weeknumend = dtEnd.weekNumber();
         QString weeknum;
@@ -213,11 +213,11 @@ void KDateNavigator::updateView()
 
 void KDateNavigator::updateConfig()
 {
-    int weekstart = KOGlobals::self()->firstDayOfWeek();
+    int const weekstart = KOGlobals::self()->firstDayOfWeek();
     for (int i = 0; i < 7; ++i) {
         const int day = weekstart + i <= 7 ? weekstart + i : (weekstart + i) % 7;
-        QString dayName = QLocale().dayName(day, QLocale::ShortFormat);
-        QString longDayName = QLocale().dayName(day, QLocale::LongFormat);
+        QString const dayName = QLocale().dayName(day, QLocale::ShortFormat);
+        QString const longDayName = QLocale().dayName(day, QLocale::LongFormat);
         mHeadings[i]->setText(dayName);
         mHeadings[i]->setToolTip(i18nc("@info:tooltip", "%1", longDayName));
         mHeadings[i]->setWhatsThis(i18n("A column header of the %1 dates in the month.", longDayName));
@@ -231,7 +231,7 @@ void KDateNavigator::updateConfig()
 
 void KDateNavigator::selectMonthHelper(int monthDifference)
 {
-    QDate baseDateNextMonth = mBaseDate.addMonths(monthDifference);
+    QDate const baseDateNextMonth = mBaseDate.addMonths(monthDifference);
 
     KCalendarCore::DateList newSelection = mSelectedDates;
     for (int i = 0; i < mSelectedDates.count(); ++i) {

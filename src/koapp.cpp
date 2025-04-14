@@ -114,7 +114,7 @@ void KOrganizerApp::processCalendar(const QUrl &url, bool show)
 {
     KOrg::MainWindow *korg = ActionManager::findInstance(url);
     if (!korg) {
-        bool hasDocument = !url.isEmpty();
+        const bool hasDocument = !url.isEmpty();
         korg = new KOrganizer();
         korg->init(hasDocument);
         if (show) {

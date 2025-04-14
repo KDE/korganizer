@@ -107,7 +107,7 @@ QAction *KOViewManager::viewToAction(const QString &view, RangeMode rangeMode)
 
 void KOViewManager::readSettings(KConfig *config)
 {
-    KConfigGroup generalConfig(config, QStringLiteral("General"));
+    KConfigGroup const generalConfig(config, QStringLiteral("General"));
     const QString view = generalConfig.readEntry("Current View");
 
     if (view == QLatin1StringView("WhatsNext")) {
@@ -483,7 +483,7 @@ void KOViewManager::showAgendaView()
             connect(mAgendaViewTabs, &QTabWidget::currentChanged, this, &KOViewManager::currentAgendaViewTabChanged);
             mMainView->viewStack()->addWidget(mAgendaViewTabs);
 
-            KConfigGroup viewConfig = KSharedConfig::openConfig()->group(QStringLiteral("Views"));
+            KConfigGroup const viewConfig = KSharedConfig::openConfig()->group(QStringLiteral("Views"));
             mAgendaViewTabIndex = viewConfig.readEntry("Agenda View Tab Index", 0);
         }
         parent = mAgendaViewTabs;
@@ -552,7 +552,7 @@ void KOViewManager::selectWorkWeek()
     showAgendaView();
     if (KOGlobals::self()->getWorkWeekMask() != 0) {
         mRangeMode = WORK_WEEK_RANGE;
-        QDate date = mMainView->activeDate();
+        QDate const date = mMainView->activeDate();
         mMainView->dateNavigator()->selectWorkWeek(date);
     } else {
         KMessageBox::error(mMainView,
@@ -567,7 +567,7 @@ void KOViewManager::selectWeek()
     showAgendaView();
     mRangeMode = WEEK_RANGE;
     viewActionEnable(viewToAction(QStringLiteral("Agenda"), mRangeMode));
-    QDate date = mMainView->activeDate();
+    QDate const date = mMainView->activeDate();
     mMainView->dateNavigator()->selectWeek(date);
 }
 
@@ -587,7 +587,7 @@ void KOViewManager::showTodoView()
         addView(mTodoView);
         connectTodoView(mTodoView);
 
-        KSharedConfig::Ptr config = KSharedConfig::openConfig();
+        KSharedConfig::Ptr const config = KSharedConfig::openConfig();
         mTodoView->restoreLayout(config.data(), QStringLiteral("Todo View"), false);
     }
     viewActionEnable(viewToAction(QStringLiteral("Todo"), NO_RANGE));
@@ -672,7 +672,7 @@ QWidget *KOViewManager::widgetForView(KOrg::BaseView *view) const
 
 void KOViewManager::currentAgendaViewTabChanged(int index)
 {
-    KSharedConfig::Ptr config = KSharedConfig::openConfig();
+    KSharedConfig::Ptr const config = KSharedConfig::openConfig();
     KConfigGroup viewConfig(config, QStringLiteral("Views"));
     viewConfig.writeEntry("Agenda View Tab Index", mAgendaViewTabs->currentIndex());
 

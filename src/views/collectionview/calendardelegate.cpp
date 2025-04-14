@@ -27,7 +27,7 @@ StyledCalendarDelegate::~StyledCalendarDelegate() = default;
 static QRect enableButtonRect(QRect rect, int pos = 1)
 {
     // 2px border on each side of the icon
-    static int border = 2;
+    static int const border = 2;
     const int side = rect.height() - (2 * border);
     const int offset = side * pos + border * (pos + 1);
     return rect.adjusted(rect.width() - (offset + side), border, -offset, -border);
@@ -96,7 +96,7 @@ void StyledCalendarDelegate::paint(QPainter *painter, const QStyleOptionViewItem
     {
         int i = 1;
         const auto lstActions = getActions(option, index);
-        for (Action actionItem : lstActions) {
+        for (Action const actionItem : lstActions) {
             if (actionItem != Action::Total) {
                 QStyleOptionButton buttonOption = buttonOpt(opt, mIcon.value(actionItem), index, i);
                 s->drawControl(QStyle::CE_PushButton, &buttonOption, painter, nullptr);
@@ -172,7 +172,7 @@ bool StyledCalendarDelegate::editorEvent(QEvent *event, QAbstractItemModel *mode
     QStyleOptionViewItem opt = option;
     opt.state |= QStyle::State_MouseOver;
 
-    QList<StyledCalendarDelegate::Action> actions = getActions(opt, index);
+    QList<StyledCalendarDelegate::Action> const actions = getActions(opt, index);
     if (actions.count() >= button) {
         const Action a = actions.at(button - 1);
         Q_EMIT action(index, static_cast<int>(a));

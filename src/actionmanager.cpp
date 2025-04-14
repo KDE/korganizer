@@ -511,7 +511,7 @@ void ActionManager::initActions()
     connect(action, &QAction::triggered, mCalendarView->viewManager(), &KOViewManager::zoomOutVertically);
 
     /************************** Actions MENU *********************************/
-    bool isRTL = QApplication::isRightToLeft();
+    bool const isRTL = QApplication::isRightToLeft();
 
     /** Scroll to Today Action **/
     action = new QAction(QIcon::fromTheme(QStringLiteral("go-jump-today")), i18nc("@action Jump to today", "To &Today"), this);
@@ -762,7 +762,7 @@ void ActionManager::initActions()
     mACollection->addAction(QStringLiteral("show_eventviewer"), mEventViewerShowAction);
     connect(mEventViewerShowAction, &KToggleAction::triggered, this, &ActionManager::toggleEventViewer);
 
-    KConfigGroup config(KSharedConfig::openConfig(), QStringLiteral("Settings"));
+    KConfigGroup const config(KSharedConfig::openConfig(), QStringLiteral("Settings"));
     mDateNavigatorShowAction->setChecked(config.readEntry("DateNavigatorVisible", true));
     // if we are a kpart, then let's not show the todo in the left pane by
     // default since there's also a Todo part and we'll assume they'll be
@@ -1056,8 +1056,8 @@ bool ActionManager::saveAsURL(const QUrl &url)
         return false;
     }
 
-    QString fileOrig = mFile;
-    QUrl URLOrig = mURL;
+    QString const fileOrig = mFile;
+    QUrl const URLOrig = mURL;
 
     QTemporaryFile *tempFile = nullptr;
     if (url.isLocalFile()) {
@@ -1070,7 +1070,7 @@ bool ActionManager::saveAsURL(const QUrl &url)
     }
     mURL = url;
 
-    bool success = saveURL(); // Save local file and upload local file
+    bool const success = saveURL(); // Save local file and upload local file
     if (success) {
         delete mTempFile;
         mTempFile = tempFile;
@@ -1115,7 +1115,7 @@ void ActionManager::updateConfig()
 
 void ActionManager::configureDateTime()
 {
-    QProcess proc;
+    QProcess const proc;
     const QString program = QStringLiteral("kcmshell6");
     QStringList arguments;
     arguments << QStringLiteral("kcm_regionandlang") << QStringLiteral("clock");

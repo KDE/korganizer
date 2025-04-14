@@ -21,7 +21,7 @@ Datenums::Datenums(QObject *parent, const QVariantList &args)
     : Decoration(parent, args)
 {
     KConfig _config(QStringLiteral("korganizerrc"), KConfig::NoGlobals);
-    KConfigGroup config(&_config, QStringLiteral("Calendar/Datenums Plugin"));
+    KConfigGroup const config(&_config, QStringLiteral("Calendar/Datenums Plugin"));
     mDisplayedInfo = (DayNumbers)config.readEntry("ShowDayNumbers", int(DayOfYear | DaysRemaining));
 }
 
@@ -40,8 +40,8 @@ Element::List Datenums::createDayElements(const QDate &date)
 {
     Element::List result;
 
-    int dayOfYear = date.dayOfYear();
-    int remainingDays = date.daysInYear() - dayOfYear;
+    int const dayOfYear = date.dayOfYear();
+    int const remainingDays = date.daysInYear() - dayOfYear;
 
     StoredElement *e = nullptr;
     switch (mDisplayedInfo) {
@@ -91,7 +91,7 @@ Element::List Datenums::createWeekElements(const QDate &date)
     QString weekOfYearLong;
     QString weekOfYearExtensive;
     QString remainingWeeksShort;
-    QString remainingWeeksLong;
+    QString const remainingWeeksLong;
     QString remainingWeeksExtensive;
     QString weekOfYearAndRemainingWeeksShort;
 

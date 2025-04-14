@@ -152,8 +152,8 @@ void NavigatorBar::selectMonthFromMenu()
 void NavigatorBar::selectYearFromMenu()
 {
     int year = mDate.year();
-    int years = 11; // odd number (show a few years ago -> a few years from now)
-    int minYear = year - (years / 3);
+    int const years = 11; // odd number (show a few years ago -> a few years from now)
+    int const minYear = year - (years / 3);
 
     auto menu = new QMenu(mYear);
     QList<QAction *> act;

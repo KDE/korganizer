@@ -75,8 +75,8 @@ ConfigDialog::~ConfigDialog() = default;
 void ConfigDialog::load()
 {
     KConfig _config(QStringLiteral("korganizerrc"), KConfig::NoGlobals);
-    KConfigGroup config(&_config, QStringLiteral("Calendar/Picoftheday Plugin"));
-    int datenum = config.readEntry("AspectRatioMode", 0);
+    KConfigGroup const config(&_config, QStringLiteral("Calendar/Picoftheday Plugin"));
+    int const datenum = config.readEntry("AspectRatioMode", 0);
     QAbstractButton *btn = mAspectRatioGroup->button(datenum);
     if (!btn) {
         btn = mAspectRatioGroup->button(0);

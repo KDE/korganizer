@@ -147,9 +147,9 @@ void DateNavigatorContainer::updateConfig()
 void DateNavigatorContainer::selectDates(const KCalendarCore::DateList &dateList, const QDate &preferredMonth)
 {
     if (!dateList.isEmpty()) {
-        QDate start(dateList.first());
-        QDate end(dateList.last());
-        QDate navfirst(mNavigatorView->startDate());
+        QDate const start(dateList.first());
+        QDate const end(dateList.last());
+        QDate const navfirst(mNavigatorView->startDate());
         QDate navsecond; // start of the second shown month if existent
         QDate navlast;
         if (!mExtraViews.isEmpty()) {
@@ -214,15 +214,15 @@ void DateNavigatorContainer::resizeEvent(QResizeEvent *)
 
 void DateNavigatorContainer::resizeAllContents()
 {
-    QSize minSize = mNavigatorView->minimumSizeHint();
+    QSize const minSize = mNavigatorView->minimumSizeHint();
 
     //  qCDebug(KORGANIZER_LOG) << "  NAVIGATORVIEW minimumSizeHint:" << minSize;
 
-    int verticalCount = size().height() / minSize.height();
-    int horizontalCount = size().width() / minSize.width();
+    int const verticalCount = size().height() / minSize.height();
+    int const horizontalCount = size().width() / minSize.width();
 
     if (horizontalCount != mHorizontalCount || verticalCount != mVerticalCount) {
-        int count = horizontalCount * verticalCount;
+        int const count = horizontalCount * verticalCount;
         if (count == 0) {
             return;
         }
@@ -255,8 +255,8 @@ void DateNavigatorContainer::resizeAllContents()
         }
     }
 
-    int height = size().height() / verticalCount;
-    int width = size().width() / horizontalCount;
+    int const height = size().height() / verticalCount;
+    int const width = size().width() / horizontalCount;
 
     NavigatorBar *bar = mNavigatorView->navigatorBar();
     if (horizontalCount > 1) {
@@ -267,8 +267,8 @@ void DateNavigatorContainer::resizeAllContents()
 
     mNavigatorView->setGeometry((((KOGlobals::self()->reverseLayout()) ? (horizontalCount - 1) : 0) * width), 0, width, height);
     for (int i = 0; i < mExtraViews.count(); ++i) {
-        int x = (i + 1) % horizontalCount;
-        int y = (i + 1) / horizontalCount;
+        int const x = (i + 1) % horizontalCount;
+        int const y = (i + 1) / horizontalCount;
 
         KDateNavigator *view = mExtraViews.at(i);
         bar = view->navigatorBar();
@@ -333,8 +333,8 @@ QPair<QDate, QDate> DateNavigatorContainer::dateLimits(int offset) const
     firstMonth = mNavigatorView->month().addMonths(offset);
     lastMonth = lastMonth.addMonths(offset);
 
-    QPair<QDate, QDate> firstMonthBoundary = KODayMatrix::matrixLimits(firstMonth);
-    QPair<QDate, QDate> lastMonthBoundary = KODayMatrix::matrixLimits(lastMonth);
+    QPair<QDate, QDate> const firstMonthBoundary = KODayMatrix::matrixLimits(firstMonth);
+    QPair<QDate, QDate> const lastMonthBoundary = KODayMatrix::matrixLimits(lastMonth);
 
     return qMakePair(firstMonthBoundary.first, lastMonthBoundary.second);
 }
