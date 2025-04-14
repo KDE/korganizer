@@ -5909,10 +5909,3 @@ msgstr "%1"
 msgctxt "4 digit year"
 msgid "%1"
 msgstr "%1"
-
-#~ msgctxt "@info"
-#~ msgid "Unable to edit \"%1\" because it is locked by another process."
-#~ msgstr "Kan ikkje redigera «%1», då ho er låst av ein annan prosess."
-
-#~ msgid "Unable to save %1 \"%2\"."
-#~ msgstr "Klarte ikkje lagra %1 «%2»."

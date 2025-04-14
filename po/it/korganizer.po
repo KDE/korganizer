@@ -16,7 +16,7 @@ msgstr ""
 "Project-Id-Version: korganizer\n"
 "Report-Msgid-Bugs-To: https://bugs.kde.org\n"
 "POT-Creation-Date: 2025-04-13 00:42+0000\n"
-"PO-Revision-Date: 2025-04-03 14:03+0200\n"
+"PO-Revision-Date: 2025-04-11 22:03+0200\n"
 "Last-Translator: Luigi Toscano <luigi.toscano@tiscali.it>\n"
 "Language-Team: Italian <kde-i18n-it@kde.org>\n"
 "Language: it\n"
@@ -24,7 +24,7 @@ msgstr ""
 "Content-Type: text/plain; charset=UTF-8\n"
 "Content-Transfer-Encoding: 8bit\n"
 "Plural-Forms: nplurals=2; plural=(n != 1);\n"
-"X-Generator: Lokalize 25.03.70\n"
+"X-Generator: Lokalize 24.12.0\n"
 
 #, kde-format
 msgctxt "NAME OF TRANSLATORS"
@@ -869,15 +869,13 @@ msgstr ""
 "attuale di calendario."
 
 #: actionmanager.cpp:548
-#, fuzzy, kde-format
-#| msgid "&Day"
+#, kde-format
 msgctxt "@action:inmenu"
 msgid "&Day"
 msgstr "&Giorno"
 
 #: actionmanager.cpp:549
-#, fuzzy, kde-format
-#| msgid "Day"
+#, kde-format
 msgctxt "@action:inmenu agenda view show 1 day at a time"
 msgid "Day"
 msgstr "Giorno"
@@ -886,43 +884,39 @@ msgstr "Giorno"
 #, kde-format
 msgctxt "@info:status"
 msgid "View 1 day at a time"
-msgstr ""
+msgstr "Visualizza un giorno alla volta"
 
 #: actionmanager.cpp:551
-#, fuzzy, kde-format
-#| msgid "Show this many days at a time in the Next \"x\" days view"
+#, kde-format
 msgctxt "@info:tooltip"
 msgid "Show 1 day at a time in Agenda View"
-msgstr ""
-"Mostra questo numero di giorni alla volta nella vista Prossimi x giorni"
+msgstr "Mostra un giorno alla volta nella vista agenda"
 
 #: actionmanager.cpp:552
 #, kde-format
 msgctxt "@info:whatsthis"
 msgid "Select this option to show only 1 day at a time in Agenda View."
 msgstr ""
+"Seleziona questa opzione per mostrare solo un giorno alla volta nella vista "
+"agenda."
 
 #: actionmanager.cpp:559
-#, fuzzy, kde-format
-#| msgid "&Next Day"
-#| msgid_plural "&Next %1 Days"
+#, kde-format
 msgctxt "@action:inmenu agenda view show a few days at a time"
 msgid "&Next Days"
-msgstr "&Giorno successivo "
+msgstr "&Giorni successivo"
 
 #: actionmanager.cpp:560
 #, kde-format
 msgctxt "@info:status"
 msgid "View a few days at a time"
-msgstr ""
+msgstr "Visualizza alcuni giorni alla volta"
 
 #: actionmanager.cpp:561
-#, fuzzy, kde-format
-#| msgid "Show this many days at a time in the Next \"x\" days view"
+#, kde-format
 msgctxt "@info:tooltip"
 msgid "Show the next few days at a time in Agenda View"
-msgstr ""
-"Mostra questo numero di giorni alla volta nella vista Prossimi x giorni"
+msgstr "Mostra alcuni giorni successivi nella vista agenda"
 
 #: actionmanager.cpp:564
 #, kde-kuit-format
@@ -933,19 +927,19 @@ msgid ""
 "<interface>Views->General</interface> settings page to adjust the number of "
 "days shown."
 msgstr ""
+"Seleziona questa opzione per mostrare alcuni giorni successivi nella vista "
+"agenda. Configura l'impostazione <placeholder>Prossimi x giorni</"
+"placeholder> nella pagina delle impostazioni <interface>Viste->Generale</"
+"interface> per regolare il numero dei giorni visualizzati."
 
 #: actionmanager.cpp:571
-#, fuzzy, kde-format
-#| msgctxt "@title:group"
-#| msgid "Weekly Schedule"
+#, kde-format
 msgctxt "@action:inmenu"
 msgid "W&eek Schedule"
-msgstr "Pianificazione settimanale"
+msgstr "Pianificazione s&ettimanale"
 
 #: actionmanager.cpp:572
-#, fuzzy, kde-format
-#| msgctxt "@title:group"
-#| msgid "Weekly Schedule"
+#, kde-format
 msgctxt ""
 "@action:inmenu agenda view show the weekly schedule days only (eg. no "
 "weekends)"
@@ -958,6 +952,8 @@ msgctxt "@info:status"
 msgid ""
 "Show a week at a time showing days included in your weekly schedule only"
 msgstr ""
+"Mostra una settimana alla volta che mostra solo i giorni inclusi nella "
+"pianificazione settimanale"
 
 #: actionmanager.cpp:575
 #, kde-format
@@ -966,6 +962,9 @@ msgid ""
 "Show a week at a time in Agenda View, excluding days that are not included "
 "in your weekly schedule (ie. weekends are excluded)"
 msgstr ""
+"Mostra una settimana alla volta nella vista agenda, escludendo i giorni che "
+"non sono inclusi nella pianificazione settimanale (ad es. i giorni del fine "
+"settimana sono esclusi)"
 
 #: actionmanager.cpp:578
 #, kde-kuit-format
@@ -977,17 +976,21 @@ msgid ""
 "<interface>Time and Date->Regional</interface> page.<br>Typically this view "
 "is intended for showing the week without weekend days.</br>"
 msgstr ""
+"Seleziona questa opzione per mostrare una settimana alla volta, escludendo i "
+"giorni che non sono inclusi nella pianificazione settimanale. Configure la "
+"pianificazione selezionando i giorni nelle impostazioni "
+"<placeholder>Pianificazione settimanale</placeholder> nella pagina "
+"<interface>Data e ora-> Regionale</interface>.<br>Normalmente questa vista è "
+"pensata per mostrare le settimane senza il fine settimana.</br>"
 
 #: actionmanager.cpp:586
-#, fuzzy, kde-format
-#| msgid "&Week"
+#, kde-format
 msgctxt "@action:inmenu"
 msgid "&Week"
 msgstr "&Settimana"
 
 #: actionmanager.cpp:587
-#, fuzzy, kde-format
-#| msgid "Week"
+#, kde-format
 msgctxt "@action:inmenu agenda view show a week at a time"
 msgid "Week"
 msgstr "Settimana"
@@ -996,21 +999,21 @@ msgstr "Settimana"
 #, kde-format
 msgctxt "@info:status"
 msgid "View a week at a time"
-msgstr ""
+msgstr "Visualizza una settimana alla volta"
 
 #: actionmanager.cpp:589
-#, fuzzy, kde-format
-#| msgctxt "@option:check"
-#| msgid "Show at the top of the agenda views"
+#, kde-format
 msgctxt "@info:tooltip"
 msgid "Show 1 week at a time in Agenda View"
-msgstr "Mostra in cima alle viste agenda"
+msgstr "Mostra una settimana alla volta nella vista agenda"
 
 #: actionmanager.cpp:590
 #, kde-format
 msgctxt "@info:whatsthis"
 msgid "Select this option to show a week at a time in Agenda View."
 msgstr ""
+"Seleziona questa opzione per mostrare solo una settimana alla volta nella "
+"vista agenda."
 
 #: actionmanager.cpp:597 kodaymatrix.cpp:454
 #, kde-format
@@ -1531,18 +1534,19 @@ msgid ""
 "folder?<para>This will replace <filename>%2</filename> as the default "
 "calendar folder.</para>"
 msgstr ""
+"Vuoi veramente impostare <filename>%1</filename> come cartella di calendario "
+"predefinita?<para>Questa sostituirà <filename>%2</filename> come cartella di "
+"calendario predefinita.</para>"
 
 #: akonadicollectionview.cpp:545
-#, fuzzy, kde-kuit-format
-#| msgctxt "@info"
-#| msgid ""
-#| "Do you really want replace your current default calendar with \"%1\"?"
+#, kde-kuit-format
 msgctxt "@info"
 msgid ""
 "Do you really want to set <filename>%1</filename> as your default calendar "
 "folder?"
 msgstr ""
-"Vuoi veramente sostituire il calendario attualmente predefinito con «%1»?"
+"Vuoi veramente impostare <filename>%1</filename> come cartella di calendario "
+"predefinita?"
 
 #: akonadicollectionview.cpp:550
 #, kde-format
@@ -1555,6 +1559,7 @@ msgstr "Sostituisci il calendario predefinito?"
 msgctxt "@info"
 msgid "<filename>%1</filename> is now your default event calendar"
 msgstr ""
+"Adesso <filename>%1</filename> è il calendario degli eventi predefinito"
 
 #: akonadicollectionview.cpp:710
 #, kde-format
@@ -1563,13 +1568,7 @@ msgid "Add Calendar"
 msgstr "Aggiungi calendario"
 
 #: akonadicollectionview.cpp:789
-#, fuzzy, kde-kuit-format
-#| msgctxt "@info"
-#| msgid ""
-#| "Do you really want to delete the <filename>%1</filename> calendar?"
-#| "<para><note>The calendar data will not be deleted, nor will the calendar "
-#| "be removed from its remote resource.</note></para>The <filename>%1</"
-#| "filename> calendar can be added again at any time."
+#, kde-kuit-format
 msgctxt "@info"
 msgid ""
 "Do you really want to delete the <filename>%1</filename> calendar?"
@@ -1579,17 +1578,11 @@ msgid ""
 msgstr ""
 "Vuoi davvero eliminare il calendario <filename>%1</filename>? <para><note>I "
 "dati del calendario non sarano eliminati, né il calendario sarà rimosso "
-"dalla sua risorsa remota.</note></para>Il calendario <filename>%1</filename> "
-"può essere aggiunto nuovamente in qualsiasi momento."
+"dalla sua risorsa remota. Il calendario <filename>%1</filename> può essere "
+"aggiunto nuovamente in qualsiasi momento.</note></para>"
 
 #: akonadicollectionview.cpp:799
-#, fuzzy, kde-kuit-format
-#| msgctxt "@info"
-#| msgid ""
-#| "Do you really want to delete the <filename>%1</filename> calendar?"
-#| "<para><note>The calendar data will not be deleted, nor will the calendar "
-#| "be removed from its remote resource.</note></para>The <filename>%1</"
-#| "filename> calendar can be added again at any time."
+#, kde-kuit-format
 msgctxt "@info"
 msgid ""
 "Do you really want to delete the <filename>%1</filename> calendar?"
@@ -1602,17 +1595,14 @@ msgid ""
 msgstr ""
 "Vuoi davvero eliminare il calendario <filename>%1</filename>? <para><note>I "
 "dati del calendario non sarano eliminati, né il calendario sarà rimosso "
-"dalla sua risorsa remota.</note></para>Il calendario <filename>%1</filename> "
-"può essere aggiunto nuovamente in qualsiasi momento."
+"dalla sua risorsa remota. Il calendario <filename>%1</filename> può essere "
+"aggiunto nuovamente in qualsiasi momento.</note></para><para><warning>Questo "
+"calendario contiene la cartella di calendario predefinita <filename>%2</"
+"filename>. Se viene eliminata potrebbe venire richiesto di selezionare una "
+"nuova cartella predefinita di calendario.</warning></para>"
 
 #: akonadicollectionview.cpp:810
-#, fuzzy, kde-kuit-format
-#| msgctxt "@info"
-#| msgid ""
-#| "Do you really want to delete the <filename>%1</filename> calendar?"
-#| "<para><note>The calendar data will not be deleted, nor will the calendar "
-#| "be removed from its remote resource.</note></para>The <filename>%1</"
-#| "filename> calendar can be added again at any time."
+#, kde-kuit-format
 msgctxt "@info"
 msgid ""
 "Do you really want to delete the <filename>%1</filename> calendar?"
@@ -1622,19 +1612,16 @@ msgid ""
 "contains your default calendar folder. If you delete it you may be prompted "
 "to select a new default calendar folder.</warning></para>"
 msgstr ""
-"Vuoi davvero eliminare il calendario <filename>%1</filename>? <para><note>I "
+"Vuoi davvero eliminare il calendario <filename>%1</filename>?<para><note>I "
 "dati del calendario non sarano eliminati, né il calendario sarà rimosso "
-"dalla sua risorsa remota.</note></para>Il calendario <filename>%1</filename> "
-"può essere aggiunto nuovamente in qualsiasi momento."
+"dalla sua risorsa remota. Il calendario <filename>%1</filename> può essere "
+"aggiunto nuovamente in qualsiasi momento.</note></para><para><warning>Questo "
+"calendario contiene la cartella di calendario predefinita. Se viene "
+"eliminata potrebbe venire richiesto di selezionare una nuova cartella "
+"predefinita di calendario.</warning></para>"
 
 #: akonadicollectionview.cpp:820
-#, fuzzy, kde-kuit-format
-#| msgctxt "@info"
-#| msgid ""
-#| "Do you really want to delete the <filename>%1</filename> calendar?"
-#| "<para><note>The calendar data will not be deleted, nor will the calendar "
-#| "be removed from its remote resource.</note></para>The <filename>%1</"
-#| "filename> calendar can be added again at any time."
+#, kde-kuit-format
 msgctxt "@info"
 msgid ""
 "Do you really want to delete the <filename>%1</filename> calendar?"
@@ -1646,33 +1633,25 @@ msgid ""
 msgstr ""
 "Vuoi davvero eliminare il calendario <filename>%1</filename>? <para><note>I "
 "dati del calendario non sarano eliminati, né il calendario sarà rimosso "
-"dalla sua risorsa remota.</note></para>Il calendario <filename>%1</filename> "
-"può essere aggiunto nuovamente in qualsiasi momento."
+"dalla sua risorsa remota. Il calendario <filename>%1</filename> può essere "
+"aggiunto nuovamente in qualsiasi momento.</note></para><para><warning>Questo "
+"è il calendario predefinito. Se viene eliminato potrebbe venire richiesto di "
+"selezionare un nuovo calendario predefinito.</warning></para>"
 
 #: akonadicollectionview.cpp:832
-#, fuzzy, kde-kuit-format
-#| msgctxt "@info"
-#| msgid ""
-#| "Do you really want to delete the <filename>%1</filename> calendar?"
-#| "<para><warning>This cannot be undone.  Please consider carefully before "
-#| "pressing the %2 button.</warning></para>"
+#, kde-kuit-format
 msgctxt "@info"
 msgid ""
 "Do you really want to delete the <filename>%1</filename> folder?"
 "<para><warning>This cannot be undone. Please consider carefully before "
 "pressing the %2 button.</warning></para>"
 msgstr ""
-"Vuoi davvero eliminare il calendario <filename>%1</filename>?"
-"<para><warning>Questa operazione non può essere annullata.  Tieni conto di "
-"questo attentamente prima di premere il tasto %2.</warning></para>"
+"Vuoi davvero eliminare la cartella <filename>%1</filename>?"
+"<para><warning>Questa operazione non può essere annullata. Bisogna fare "
+"attenzione prima di premere il tasto %2.</warning></para>"
 
 #: akonadicollectionview.cpp:839
-#, fuzzy, kde-kuit-format
-#| msgctxt "@info"
-#| msgid ""
-#| "Do you really want to delete the <filename>%1</filename> calendar?"
-#| "<para><warning>This cannot be undone.  Please consider carefully before "
-#| "pressing the %2 button.</warning></para>"
+#, kde-kuit-format
 msgctxt "@info"
 msgid ""
 "Do you really want to delete the <filename>%1</filename> folder?"
@@ -1681,9 +1660,12 @@ msgid ""
 "calendar folder. If you delete it you may be prompted to select a new "
 "default calendar.</warning></para>"
 msgstr ""
-"Vuoi davvero eliminare il calendario <filename>%1</filename>?"
-"<para><warning>Questa operazione non può essere annullata.  Tieni conto di "
-"questo attentamente prima di premere il tasto %2.</warning></para>"
+"Vuoi davvero eliminare la cartella <filename>%1</filename>?"
+"<para><warning>Questa operazione non può essere annullata. Bisogna fare "
+"attenzione prima di premere il tasto %2.</warning></"
+"para><para><warning>Questa è la cartella di calendario predefinita. Se viene "
+"eliminata potrebbe venire richiesto di selezionare una nuova cartella "
+"predefinita di calendario.</warning></para>"
 
 #: akonadicollectionview.cpp:850
 #, kde-format
@@ -1692,17 +1674,18 @@ msgid "Delete Calendar"
 msgstr "Elimina calendario"
 
 #: akonadicollectionview.cpp:909
-#, fuzzy, kde-format
-#| msgid "By default, enable reminders for new events"
+#, kde-format
 msgctxt "@info"
 msgid "Consider setting a default calendar for new events"
-msgstr "Abilita in modo predefinito i promemoria per i nuovi eventi"
+msgstr ""
+"Valutare l'impostazione di un calendario predefinito per i nuovi eventi"
 
 #: akonadicollectionview.cpp:911
 #, kde-format
 msgctxt "@info"
 msgid "Consider adding a write-enabled events calendar"
 msgstr ""
+"Valutare l'aggiunta di un calendario per gli eventi aperto in scrittura"
 
 #: calendarview.cpp:251
 #, kde-kuit-format
