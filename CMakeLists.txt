@@ -19,7 +19,7 @@ set(KDEPIM_VERSION
 
 project(korganizer VERSION ${PIM_VERSION})
 
-set(KF_MIN_VERSION "6.11.0")
+set(KF_MIN_VERSION "6.12.0")
 set(QT_REQUIRED_VERSION "6.8.0")
 find_package(ECM ${KF_MIN_VERSION} CONFIG REQUIRED)
 
