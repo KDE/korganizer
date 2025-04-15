@@ -24,8 +24,8 @@ msgid ""
 msgstr ""
 "Project-Id-Version: korganizer\n"
 "Report-Msgid-Bugs-To: https://bugs.kde.org\n"
-"POT-Creation-Date: 2025-04-13 00:42+0000\n"
-"PO-Revision-Date: 2025-04-08 09:28+0200\n"
+"POT-Creation-Date: 2025-04-15 00:42+0000\n"
+"PO-Revision-Date: 2025-04-09 18:54+0200\n"
 "Last-Translator: Xavier Besnard <xavier.besnard@kde.org>\n"
 "Language-Team: French <French <kde-francophone@kde.org>>\n"
 "Language: fr\n"
@@ -956,6 +956,11 @@ msgid ""
 "<interface>Views->General</interface> settings page to adjust the number of "
 "days shown."
 msgstr ""
+"Sélectionnez cette option pour afficher les quelques jours suivants dans la "
+"vue d'agenda. Veuillez configurer le paramètre <placeholder>X jours "
+"suivants</placeholder> dans la page de configuration <interface>Affichage / "
+"Configuration générale</interface> pour ajuster le nombre de jours à "
+"afficher."
 
 #: actionmanager.cpp:571
 #, kde-format
@@ -2061,7 +2066,7 @@ msgstr ""
 "Aucun agenda n'est sélectionné dans le gestionnaire d'agenda. Aucune tâche "
 "n'a été purgée."
 
-#: calendarview.cpp:2407 calendarview.cpp:2653
+#: calendarview.cpp:2407 calendarview.cpp:2655
 #, kde-format
 msgid "There are no completed to-dos to purge."
 msgstr "Aucune tâche terminée à purger."
@@ -2097,12 +2102,12 @@ msgstr "Impossible de copier l'entrée sur %1."
 msgid "Unable to move the item to  %1."
 msgstr "Impossible de déplacer l'entrée dans %1."
 
-#: calendarview.cpp:2646
+#: calendarview.cpp:2648
 #, kde-format
 msgid "0 completed to-dos were purged."
 msgstr "0 tâche terminée ont été purgée."
 
-#: calendarview.cpp:2647 calendarview.cpp:2657
+#: calendarview.cpp:2649 calendarview.cpp:2659
 #, kde-format
 msgid "%1 to-do was ignored because it has uncompleted or read-only children."
 msgid_plural ""
@@ -2114,19 +2119,19 @@ msgstr[1] ""
 "%1 tâches ont été ignorées car elles possèdent des tâches filles en cours ou "
 "en lecture seule."
 
-#: calendarview.cpp:2651 calendarview.cpp:2656
+#: calendarview.cpp:2653 calendarview.cpp:2658
 #, kde-format
 msgid "%1 completed to-do was purged."
 msgid_plural "%1 completed to-dos were purged."
 msgstr[0] "%1 tâche terminée a été purgée."
 msgstr[1] "%1 tâches terminées ont été purgées."
 
-#: calendarview.cpp:2662
+#: calendarview.cpp:2664
 #, kde-format
 msgid "An error occurred while purging completed to-dos: %1"
 msgstr "Une erreur est survenue lors de la purge des tâches terminées : %1"
 
-#: calendarview.cpp:2716
+#: calendarview.cpp:2718
 #, kde-format
 msgid ""
 "You created an incidence in a calendar that is currently filtered out.\n"
@@ -2136,7 +2141,7 @@ msgstr ""
 "Dans la barre latérale de gauche vous pouvez activer l'agenda pour voir cet "
 "évènement."
 
-#: calendarview.cpp:2720
+#: calendarview.cpp:2722
 #, kde-format
 msgid ""
 "You created an incidence in a calendar that is currently filtered out.\n"
@@ -3460,7 +3465,7 @@ msgstr ""
 msgid "Show anni&versaries"
 msgstr "Afficher les &anniversaires"
 
-#: kontactplugin/specialdates/sdsummarywidget.cpp:106
+#: kontactplugin/specialdates/sdsummarywidget.cpp:101
 #, kde-format
 msgid "Upcoming Special Dates"
 msgstr "Prochaines dates particulières"

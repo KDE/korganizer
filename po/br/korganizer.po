@@ -4,7 +4,7 @@ msgid ""
 msgstr ""
 "Project-Id-Version: kdepim/korganizer.po\n"
 "Report-Msgid-Bugs-To: https://bugs.kde.org\n"
-"POT-Creation-Date: 2025-04-13 00:42+0000\n"
+"POT-Creation-Date: 2025-04-15 00:42+0000\n"
 "PO-Revision-Date: 2004-09-20 15:44+0200\n"
 "Last-Translator: Thierry Vignaud <tvignaud@mandriva.com>\n"
 "Language-Team: Breton <LL@li.org>\n"
@@ -1963,7 +1963,7 @@ msgid ""
 "All calendars are unchecked in the Calendar Manager. No to-do was purged."
 msgstr ""
 
-#: calendarview.cpp:2407 calendarview.cpp:2653
+#: calendarview.cpp:2407 calendarview.cpp:2655
 #, kde-format
 msgid "There are no completed to-dos to purge."
 msgstr ""
@@ -1997,12 +1997,12 @@ msgstr "Ne m'eus ket gallet kavout ar patrom '%1'."
 msgid "Unable to move the item to  %1."
 msgstr "Ne m'eus ket gallet kavout ar patrom '%1'."
 
-#: calendarview.cpp:2646
+#: calendarview.cpp:2648
 #, kde-format
 msgid "0 completed to-dos were purged."
 msgstr ""
 
-#: calendarview.cpp:2647 calendarview.cpp:2657
+#: calendarview.cpp:2649 calendarview.cpp:2659
 #, kde-format
 msgid "%1 to-do was ignored because it has uncompleted or read-only children."
 msgid_plural ""
@@ -2010,26 +2010,26 @@ msgid_plural ""
 msgstr[0] ""
 msgstr[1] ""
 
-#: calendarview.cpp:2651 calendarview.cpp:2656
+#: calendarview.cpp:2653 calendarview.cpp:2658
 #, kde-format
 msgid "%1 completed to-do was purged."
 msgid_plural "%1 completed to-dos were purged."
 msgstr[0] ""
 msgstr[1] ""
 
-#: calendarview.cpp:2662
+#: calendarview.cpp:2664
 #, kde-format
 msgid "An error occurred while purging completed to-dos: %1"
 msgstr ""
 
-#: calendarview.cpp:2716
+#: calendarview.cpp:2718
 #, kde-format
 msgid ""
 "You created an incidence in a calendar that is currently filtered out.\n"
 "On the left sidebar, enable it in the calendar manager to see the incidence."
 msgstr ""
 
-#: calendarview.cpp:2720
+#: calendarview.cpp:2722
 #, kde-format
 msgid ""
 "You created an incidence in a calendar that is currently filtered out.\n"
@@ -3326,7 +3326,7 @@ msgstr ""
 msgid "Show anni&versaries"
 msgstr ""
 
-#: kontactplugin/specialdates/sdsummarywidget.cpp:106
+#: kontactplugin/specialdates/sdsummarywidget.cpp:101
 #, kde-format
 msgid "Upcoming Special Dates"
 msgstr ""

@@ -10,7 +10,7 @@ msgid ""
 msgstr ""
 "Project-Id-Version: korganizer\n"
 "Report-Msgid-Bugs-To: https://bugs.kde.org\n"
-"POT-Creation-Date: 2025-04-13 00:42+0000\n"
+"POT-Creation-Date: 2025-04-15 00:42+0000\n"
 "PO-Revision-Date: 2020-08-01 11:26+0200\n"
 "Last-Translator: Martin Schlander <mschlander@opensuse.org>\n"
 "Language-Team: Danish <kde-i18n-doc@kde.org>\n"
@@ -2048,7 +2048,7 @@ msgid ""
 msgstr ""
 "Alle kalendere afmarkeres i kalenderhåndteringen. Intet gøremål blev fjernet."
 
-#: calendarview.cpp:2407 calendarview.cpp:2653
+#: calendarview.cpp:2407 calendarview.cpp:2655
 #, kde-format
 msgid "There are no completed to-dos to purge."
 msgstr "Der er ingen gennemførte gøremål at fjerne."
@@ -2082,12 +2082,12 @@ msgstr "Kan ikke kopiere elementet til %1"
 msgid "Unable to move the item to  %1."
 msgstr "Kan ikke flytte elementet til %1."
 
-#: calendarview.cpp:2646
+#: calendarview.cpp:2648
 #, kde-format
 msgid "0 completed to-dos were purged."
 msgstr "0 gennemførte gøremål blev fjernet."
 
-#: calendarview.cpp:2647 calendarview.cpp:2657
+#: calendarview.cpp:2649 calendarview.cpp:2659
 #, kde-format
 msgid "%1 to-do was ignored because it has uncompleted or read-only children."
 msgid_plural ""
@@ -2099,19 +2099,19 @@ msgstr[1] ""
 "%1 gøremål blev ignoreret, fordi de har ikke gennemførte eller "
 "skrivebeskyttede undergøremål."
 
-#: calendarview.cpp:2651 calendarview.cpp:2656
+#: calendarview.cpp:2653 calendarview.cpp:2658
 #, kde-format
 msgid "%1 completed to-do was purged."
 msgid_plural "%1 completed to-dos were purged."
 msgstr[0] "%1 gennemførte gøremål blev fjernet."
 msgstr[1] "%1 gennemførte gøremål blev fjernet."
 
-#: calendarview.cpp:2662
+#: calendarview.cpp:2664
 #, kde-format
 msgid "An error occurred while purging completed to-dos: %1"
 msgstr "Der opstod en fejl under fjernelse af gennemførte gøremål: %1"
 
-#: calendarview.cpp:2716
+#: calendarview.cpp:2718
 #, kde-format
 msgid ""
 "You created an incidence in a calendar that is currently filtered out.\n"
@@ -2120,7 +2120,7 @@ msgstr ""
 "Du oprettede en forekomst i en kalender som aktuelt er filtreret ud.\n"
 "Aktivér den i venstre sidepanel i kalenderhåndteringen for at se forekomsten."
 
-#: calendarview.cpp:2720
+#: calendarview.cpp:2722
 #, kde-format
 msgid ""
 "You created an incidence in a calendar that is currently filtered out.\n"
@@ -3449,7 +3449,7 @@ msgstr ""
 msgid "Show anni&versaries"
 msgstr "Vis å&rsdage"
 
-#: kontactplugin/specialdates/sdsummarywidget.cpp:106
+#: kontactplugin/specialdates/sdsummarywidget.cpp:101
 #, kde-format
 msgid "Upcoming Special Dates"
 msgstr "Kommende særlige datoer"

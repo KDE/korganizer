@@ -11,7 +11,7 @@ msgid ""
 msgstr ""
 "Project-Id-Version: korganizer\n"
 "Report-Msgid-Bugs-To: https://bugs.kde.org\n"
-"POT-Creation-Date: 2025-04-13 00:42+0000\n"
+"POT-Creation-Date: 2025-04-15 00:42+0000\n"
 "PO-Revision-Date: 2025-04-08 09:06+0300\n"
 "Last-Translator: Yuri Chornoivan <yurchor@ukr.net>\n"
 "Language-Team: Ukrainian <trans-uk@lists.fedoraproject.org>\n"
@@ -2004,7 +2004,7 @@ msgstr ""
 "У засобі керування календарями знято позначки з усіх календарів. Не вилучено "
 "жодного запису завдання."
 
-#: calendarview.cpp:2407 calendarview.cpp:2653
+#: calendarview.cpp:2407 calendarview.cpp:2655
 #, kde-format
 msgid "There are no completed to-dos to purge."
 msgstr "Немає завершених завдань для вилучення."
@@ -2036,12 +2036,12 @@ msgstr "Не вдається скопіювати пункт до %1."
 msgid "Unable to move the item to  %1."
 msgstr "Не вдається пересунути пункт до %1."
 
-#: calendarview.cpp:2646
+#: calendarview.cpp:2648
 #, kde-format
 msgid "0 completed to-dos were purged."
 msgstr "Вилучено 0 завершених завдань."
 
-#: calendarview.cpp:2647 calendarview.cpp:2657
+#: calendarview.cpp:2649 calendarview.cpp:2659
 #, kde-format
 msgid "%1 to-do was ignored because it has uncompleted or read-only children."
 msgid_plural ""
@@ -2059,7 +2059,7 @@ msgstr[3] ""
 "одне завдання проігноровано через те, що у ньому містилися незавершені або "
 "придатні лише для читання дочірні елементи."
 
-#: calendarview.cpp:2651 calendarview.cpp:2656
+#: calendarview.cpp:2653 calendarview.cpp:2658
 #, kde-format
 msgid "%1 completed to-do was purged."
 msgid_plural "%1 completed to-dos were purged."
@@ -2068,12 +2068,12 @@ msgstr[1] "Вилучено %1 завершених завдання."
 msgstr[2] "Вилучено %1 завершених завдань."
 msgstr[3] "Вилучено одне завершене завдання."
 
-#: calendarview.cpp:2662
+#: calendarview.cpp:2664
 #, kde-format
 msgid "An error occurred while purging completed to-dos: %1"
 msgstr "Під час спроби вилучити завершені завдання сталася помилка: %1"
 
-#: calendarview.cpp:2716
+#: calendarview.cpp:2718
 #, kde-format
 msgid ""
 "You created an incidence in a calendar that is currently filtered out.\n"
@@ -2083,7 +2083,7 @@ msgstr ""
 "Щоб побачити запис, вам слід увімкнути календар на панелі керування "
 "календарями у лівій частині вікна."
 
-#: calendarview.cpp:2720
+#: calendarview.cpp:2722
 #, kde-format
 msgid ""
 "You created an incidence in a calendar that is currently filtered out.\n"
@@ -3404,7 +3404,7 @@ msgstr ""
 msgid "Show anni&versaries"
 msgstr "Показати рі&чниці весіль"
 
-#: kontactplugin/specialdates/sdsummarywidget.cpp:106
+#: kontactplugin/specialdates/sdsummarywidget.cpp:101
 #, kde-format
 msgid "Upcoming Special Dates"
 msgstr "Майбутні особливі дати"
