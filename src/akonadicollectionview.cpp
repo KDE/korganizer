@@ -286,7 +286,7 @@ public:
             const Akonadi::Collection::Id colId = collection.id();
             const Akonadi::AgentInstance instance = Akonadi::AgentManager::self()->instance(collection.resource());
             if (!instance.isOnline() && !collection.isVirtual()) {
-                return i18nc("@item this is the default calendar", "%1 (Offline)", collection.displayName());
+                return i18nc("@item this calendar is offline", "%1 (Offline)", collection.displayName());
             }
             if (colId == CalendarSupport::KCalPrefs::instance()->defaultCalendarId()) {
                 return i18nc("@item this is the default calendar", "%1 (Default)", collection.displayName());
@@ -726,11 +726,8 @@ void AkonadiCollectionView::newCalendarDone(KJob *job)
 {
     auto createjob = static_cast<Akonadi::AgentInstanceCreateJob *>(job);
     if (createjob->error()) {
-        // TODO(AKONADI_PORT)
-        // this should show an error dialog and should be merged
-        // with the identical code in ActionManager
-        qCWarning(KORGANIZER_LOG) << "Create calendar failed:" << createjob->errorString();
-        mNotSendAddRemoveSignal = false;
+        mCalendarView->showMessage(xi18nc("@info", "Add new calendar failed: <message>%1</message>", createjob->errorString()), KMessageWidget::Information);
+        mNotSendAddRemoveSignal = true; // no changes on failed add calendar
         return;
     }
 
@@ -866,6 +863,29 @@ void AkonadiCollectionView::deleteCalendar()
                 Akonadi::AgentManager::self()->removeInstance(instance);
                 resetDefaultEventCalendar();
                 mNotSendAddRemoveSignal = false;
+            } else {
+                // In the case of an invalid Agent instance the only thing we can do is remove the collection itself
+                if (collection.isValid()) {
+                    if (KMessageBox::warningContinueCancel(this,
+                                                           xi18nc("@info",
+                                                                  "The calendar you are attempting to remove is corrupted in some way. "
+                                                                  "If you continue the calendar data will be removed. "
+                                                                  "<para><warning>This cannot be undone. "
+                                                                  "Please consider carefully before pressing the %1 button.</warning></para>",
+                                                                  KStandardGuiItem::standardItem(KStandardGuiItem::Delete)),
+                                                           i18nc("@title:window", "Delete Calendar"),
+                                                           KStandardGuiItem::del(),
+                                                           KStandardGuiItem::cancel(),
+                                                           QString(),
+                                                           KMessageBox::Dangerous)
+                        == KMessageBox::Continue) {
+                        auto job = new Akonadi::CollectionDeleteJob(collection, this);
+                        connect(job, &Akonadi::AgentInstanceCreateJob::result, this, &AkonadiCollectionView::deleteCalendarDone);
+                    }
+                } else {
+                    mCalendarView->showMessage(xi18nc("@info", "Delete calendar failed: <message>Invalid Akonadi agent instance</message>"),
+                                               KMessageWidget::Information);
+                }
             }
         }
     }
@@ -930,8 +950,8 @@ void AkonadiCollectionView::deleteCalendarDone(KJob *job)
 {
     auto deletejob = static_cast<Akonadi::CollectionDeleteJob *>(job);
     if (deletejob->error()) {
-        qCWarning(KORGANIZER_LOG) << "Delete calendar failed:" << deletejob->errorString();
-        mNotSendAddRemoveSignal = false;
+        mCalendarView->showMessage(xi18nc("@info", "Delete calendar failed: <message>%1</message>", deletejob->errorString()), KMessageWidget::Information);
+        mNotSendAddRemoveSignal = true; // no changes on failed delete calendar
         return;
     }
     Q_EMIT resourcesAddedRemoved();
