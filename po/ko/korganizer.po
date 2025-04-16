@@ -8,8 +8,8 @@ msgid ""
 msgstr ""
 "Project-Id-Version: Korganizer\n"
 "Report-Msgid-Bugs-To: https://bugs.kde.org\n"
-"POT-Creation-Date: 2025-04-15 00:42+0000\n"
-"PO-Revision-Date: 2025-04-08 00:21+0200\n"
+"POT-Creation-Date: 2025-04-16 00:42+0000\n"
+"PO-Revision-Date: 2025-04-15 23:44+0200\n"
 "Last-Translator: Shinjo Park <kde@peremen.name>\n"
 "Language-Team: Korean <kde-kr@kde.org>\n"
 "Language: ko\n"
@@ -477,7 +477,7 @@ msgstr ""
 "습니다!"
 
 #. i18n: ectx: property (text), widget (QPushButton, mDeleteButton)
-#: actionmanager.cpp:369 actionmanager.cpp:663 actionmanager.cpp:1344
+#: actionmanager.cpp:369 actionmanager.cpp:663 actionmanager.cpp:1343
 #: actionmanager.cpp:1381 ui/filteredit_base.ui:56
 #, kde-format
 msgid "&Delete"
@@ -842,15 +842,13 @@ msgid ""
 msgstr "현재 캘린더 보기에 따라서 하루, 1주, 1개월, 1년 앞으로 스크롤합니다."
 
 #: actionmanager.cpp:548
-#, fuzzy, kde-format
-#| msgid "&Day"
+#, kde-format
 msgctxt "@action:inmenu"
 msgid "&Day"
 msgstr "일(&D)"
 
 #: actionmanager.cpp:549
-#, fuzzy, kde-format
-#| msgid "Day"
+#, kde-format
 msgctxt "@action:inmenu agenda view show 1 day at a time"
 msgid "Day"
 msgstr "일간"
@@ -859,41 +857,37 @@ msgstr "일간"
 #, kde-format
 msgctxt "@info:status"
 msgid "View 1 day at a time"
-msgstr ""
+msgstr "한 번에 하루 보기"
 
 #: actionmanager.cpp:551
-#, fuzzy, kde-format
-#| msgid "Show this many days at a time in the Next \"x\" days view"
+#, kde-format
 msgctxt "@info:tooltip"
 msgid "Show 1 day at a time in Agenda View"
-msgstr "다음 \"x\"일 보기에 표시할 날짜 수 지정"
+msgstr "일정 보기 항목에 한 번에 하루 표시"
 
 #: actionmanager.cpp:552
 #, kde-format
 msgctxt "@info:whatsthis"
 msgid "Select this option to show only 1 day at a time in Agenda View."
-msgstr ""
+msgstr "이 옵션을 사용하면 일정 보기 항목에 한 번에 하루를 표시합니다."
 
 #: actionmanager.cpp:559
-#, fuzzy, kde-format
-#| msgid "&Next Day"
-#| msgid_plural "&Next %1 Days"
+#, kde-format
 msgctxt "@action:inmenu agenda view show a few days at a time"
 msgid "&Next Days"
-msgstr "다음 %1일(&N)"
+msgstr "다음 며칠(&N)"
 
 #: actionmanager.cpp:560
 #, kde-format
 msgctxt "@info:status"
 msgid "View a few days at a time"
-msgstr ""
+msgstr "한 번에 며칠 보기"
 
 #: actionmanager.cpp:561
-#, fuzzy, kde-format
-#| msgid "Show this many days at a time in the Next \"x\" days view"
+#, kde-format
 msgctxt "@info:tooltip"
 msgid "Show the next few days at a time in Agenda View"
-msgstr "다음 \"x\"일 보기에 표시할 날짜 수 지정"
+msgstr "일정 보기 항목에 한 번에 며칠 표시"
 
 #: actionmanager.cpp:564
 #, kde-kuit-format
@@ -904,29 +898,30 @@ msgid ""
 "<interface>Views->General</interface> settings page to adjust the number of "
 "days shown."
 msgstr ""
+"이 옵션을 사용하면 일정 보기에 다음 며칠간을 표시합니다. <interface>보기->일"
+"반</interface> 설정 페이지의 <placeholder>다음 며칠</placeholder> 항목에서 "
+"날 수를 지정할 수 있습니다."
 
 #: actionmanager.cpp:571
-#, fuzzy, kde-format
-#| msgid "Schedule"
+#, kde-format
 msgctxt "@action:inmenu"
 msgid "W&eek Schedule"
-msgstr "일정"
+msgstr "주간 일정(&E)"
 
 #: actionmanager.cpp:572
-#, fuzzy, kde-format
-#| msgid "Schedule"
+#, kde-format
 msgctxt ""
 "@action:inmenu agenda view show the weekly schedule days only (eg. no "
 "weekends)"
 msgid "Week Schedule"
-msgstr "일정"
+msgstr "주간 일정"
 
 #: actionmanager.cpp:573
 #, kde-format
 msgctxt "@info:status"
 msgid ""
 "Show a week at a time showing days included in your weekly schedule only"
-msgstr ""
+msgstr "한 번에 1주 중 주간 일정에 포함된 날만 표시"
 
 #: actionmanager.cpp:575
 #, kde-format
@@ -935,6 +930,8 @@ msgid ""
 "Show a week at a time in Agenda View, excluding days that are not included "
 "in your weekly schedule (ie. weekends are excluded)"
 msgstr ""
+"이 옵션을 사용하면 일정 보기 항목에 1주를 표시하며, 주간 일정에 포함되지 않"
+"은 날은 제외합니다(예: 주말 숨김)"
 
 #: actionmanager.cpp:578
 #, kde-kuit-format
@@ -946,17 +943,19 @@ msgid ""
 "<interface>Time and Date->Regional</interface> page.<br>Typically this view "
 "is intended for showing the week without weekend days.</br>"
 msgstr ""
+"이 옵션을 사용하면 한 번에 1주를 표시하며, 주간 일정에 포함되지 않은 날은 제"
+"외합니다. <interface>날짜와 시간->지역</interface> 페이지의 <placeholder>주"
+"간 설정</placeholder> 항목에서 주간 일정을 선택할 수 있습니다.<br>이 보기는 "
+"주말을 제외한 주간 보기로 사용하도록 의도되었습니다.</br>"
 
 #: actionmanager.cpp:586
-#, fuzzy, kde-format
-#| msgid "&Week"
+#, kde-format
 msgctxt "@action:inmenu"
 msgid "&Week"
 msgstr "주(&W)"
 
 #: actionmanager.cpp:587
-#, fuzzy, kde-format
-#| msgid "Week"
+#, kde-format
 msgctxt "@action:inmenu agenda view show a week at a time"
 msgid "Week"
 msgstr "주간"
@@ -965,21 +964,19 @@ msgstr "주간"
 #, kde-format
 msgctxt "@info:status"
 msgid "View a week at a time"
-msgstr ""
+msgstr "한 번에 1주 보기"
 
 #: actionmanager.cpp:589
-#, fuzzy, kde-format
-#| msgctxt "@option:check"
-#| msgid "Show at the top of the agenda views"
+#, kde-format
 msgctxt "@info:tooltip"
 msgid "Show 1 week at a time in Agenda View"
-msgstr "일정 보기에서 화면 위쪽에 표시"
+msgstr "일정 보기 항목에 한 번에 1주 표시"
 
 #: actionmanager.cpp:590
 #, kde-format
 msgctxt "@info:whatsthis"
 msgid "Select this option to show a week at a time in Agenda View."
-msgstr ""
+msgstr "이 옵션을 사용하면 일정 보기 항목에 한 번에 1주를 표시합니다."
 
 #: actionmanager.cpp:597 kodaymatrix.cpp:454
 #, kde-format
@@ -1126,12 +1123,12 @@ msgstr ""
 "다중 달력 보기에서 보기를 설정할 수 있는 대화 상자를 시작합니다. 현재 다중 달"
 "력 보기만 지원합니다. 보기->일정 보기 설정에서 다중 달력 옵션을 참조하십시오."
 
-#: actionmanager.cpp:655 actionmanager.cpp:1338 actionmanager.cpp:1379
+#: actionmanager.cpp:655 actionmanager.cpp:1337 actionmanager.cpp:1379
 #, kde-format
 msgid "&Show"
 msgstr "표시(&S)"
 
-#: actionmanager.cpp:659 actionmanager.cpp:1341 actionmanager.cpp:1380
+#: actionmanager.cpp:659 actionmanager.cpp:1340 actionmanager.cpp:1380
 #, kde-format
 msgid "&Edit…"
 msgstr "편집(&E)…"
@@ -1433,8 +1430,10 @@ msgid "Add as new calendar"
 msgstr "새 캘린더로 추가"
 
 #: akonadicollectionview.cpp:289
-#, kde-format
-msgctxt "@item this is the default calendar"
+#, fuzzy, kde-format
+#| msgctxt "@item this is the default calendar"
+#| msgid "%1 (Offline)"
+msgctxt "@item this calendar is offline"
 msgid "%1 (Offline)"
 msgstr "%1(오프라인)"
 
@@ -1506,7 +1505,7 @@ msgctxt "@title:window"
 msgid "Replace Default Calendar?"
 msgstr "기본 캘린더 교체?"
 
-#: akonadicollectionview.cpp:554 akonadicollectionview.cpp:904
+#: akonadicollectionview.cpp:554 akonadicollectionview.cpp:924
 #, kde-kuit-format
 msgctxt "@info"
 msgid "<filename>%1</filename> is now your default event calendar"
@@ -1518,7 +1517,13 @@ msgctxt "@title:window"
 msgid "Add Calendar"
 msgstr "캘린더 추가"
 
-#: akonadicollectionview.cpp:789
+#: akonadicollectionview.cpp:729
+#, kde-kuit-format
+msgctxt "@info"
+msgid "Add new calendar failed: <message>%1</message>"
+msgstr ""
+
+#: akonadicollectionview.cpp:786
 #, kde-kuit-format
 msgctxt "@info"
 msgid ""
@@ -1531,7 +1536,7 @@ msgstr ""
 "는 삭제되지 않으며, 원격 리소스에서도 캘린더를 삭제하지 않습니다. 나중에 다"
 "시 <filename>%1</filename> 캘린더를 추가할 수 있습니다.</note></para>"
 
-#: akonadicollectionview.cpp:799
+#: akonadicollectionview.cpp:796
 #, kde-kuit-format
 msgctxt "@info"
 msgid ""
@@ -1550,7 +1555,7 @@ msgstr ""
 "을(를) 포함합니다. 캘린더를 삭제하면 새로운 기본 캘린더 폴더를 선택해야 할 수"
 "도 있습니다.</warning></para>"
 
-#: akonadicollectionview.cpp:810
+#: akonadicollectionview.cpp:807
 #, kde-kuit-format
 msgctxt "@info"
 msgid ""
@@ -1568,7 +1573,7 @@ msgstr ""
 "삭제하면 새로운 기본 캘린더 폴더를 선택해야 할 수도 있습니다.</warning></"
 "para>"
 
-#: akonadicollectionview.cpp:820
+#: akonadicollectionview.cpp:817
 #, kde-kuit-format
 msgctxt "@info"
 msgid ""
@@ -1585,7 +1590,7 @@ msgstr ""
 "para><para><warning>이 캘린더는 현재 기본 캘린더입니다. 캘린더를 삭제하면 새"
 "로운 기본 캘린더를 선택해야 할 수도 있습니다.</warning></para>"
 
-#: akonadicollectionview.cpp:832
+#: akonadicollectionview.cpp:829
 #, kde-kuit-format
 msgctxt "@info"
 msgid ""
@@ -1597,7 +1602,7 @@ msgstr ""
 "행 취소할 수 없습니다. %2 단추를 클릭하기 전에 다시 생각해 보십시오.</"
 "warning></para>"
 
-#: akonadicollectionview.cpp:839
+#: akonadicollectionview.cpp:836
 #, kde-kuit-format
 msgctxt "@info"
 msgid ""
@@ -1613,23 +1618,54 @@ msgstr ""
 "캘린더를 삭제하면 새로운 기본 캘린더를 선택해야 할 수도 있습니다.</warning></"
 "para>"
 
-#: akonadicollectionview.cpp:850
+#: akonadicollectionview.cpp:847 akonadicollectionview.cpp:876
 #, kde-format
 msgctxt "@title:window"
 msgid "Delete Calendar"
 msgstr "캘린더 삭제"
 
-#: akonadicollectionview.cpp:909
+#: akonadicollectionview.cpp:871
+#, fuzzy, kde-kuit-format
+#| msgctxt "@info"
+#| msgid ""
+#| "Do you really want to delete the <filename>%1</filename> folder?"
+#| "<para><warning>This cannot be undone. Please consider carefully before "
+#| "pressing the %2 button.</warning></para>"
+msgctxt "@info"
+msgid ""
+"The calendar you are attempting to remove is corrupted in some way. If you "
+"continue the calendar data will be removed. <para><warning>This cannot be "
+"undone. Please consider carefully before pressing the %1 button.</warning></"
+"para>"
+msgstr ""
+"<filename>%1</filename> 폴더를 삭제하시겠습니까?<para><warning>이 작업은 실"
+"행 취소할 수 없습니다. %2 단추를 클릭하기 전에 다시 생각해 보십시오.</"
+"warning></para>"
+
+#: akonadicollectionview.cpp:886
+#, kde-kuit-format
+msgctxt "@info"
+msgid ""
+"Delete calendar failed: <message>Invalid Akonadi agent instance</message>"
+msgstr ""
+
+#: akonadicollectionview.cpp:929
 #, kde-format
 msgctxt "@info"
 msgid "Consider setting a default calendar for new events"
 msgstr "새 이벤트의 기본 캘린더를 선택하십시오"
 
-#: akonadicollectionview.cpp:911
+#: akonadicollectionview.cpp:931
 #, kde-format
 msgctxt "@info"
 msgid "Consider adding a write-enabled events calendar"
 msgstr "쓰기 가능한 이벤트 캘린더를 추가하십시오"
+
+#: akonadicollectionview.cpp:953
+#, kde-kuit-format
+msgctxt "@info"
+msgid "Delete calendar failed: <message>%1</message>"
+msgstr ""
 
 #: calendarview.cpp:251
 #, kde-kuit-format
@@ -5829,7 +5865,7 @@ msgstr ">"
 msgid "Agenda %1"
 msgstr "일정 %1"
 
-#: views/multiagendaview/multiagendaview.cpp:342
+#: views/multiagendaview/multiagendaview.cpp:346
 #, kde-format
 msgctxt "@title:window"
 msgid "Configure Side-By-Side View"
