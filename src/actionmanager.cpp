@@ -940,15 +940,24 @@ void ActionManager::file_open(const QUrl &url)
 
 void ActionManager::file_import()
 {
-    const QString defaultPath = QStandardPaths::writableLocation(QStandardPaths::GenericDataLocation);
-    const QUrl dir = QUrl::fromLocalFile(defaultPath + QLatin1StringView("/korganizer/"));
-    const QUrl url = QFileDialog::getOpenFileUrl(dialogParent(),
-                                                 i18nc("@title:window", "Select Calendar File to Import"),
-                                                 dir,
-                                                 QStringLiteral("text/calendar (*.ics *.vcs)"));
+    const QString defaultPath = QStandardPaths::writableLocation(QStandardPaths::DownloadLocation);
+    QUrl dir = QUrl::fromLocalFile(defaultPath);
 
-    if (!url.isEmpty()) { // isEmpty if user canceled the dialog
-        importCalendar(url);
+    KSharedConfig::Ptr config = KSharedConfig::openConfig();
+    KConfigGroup group = config->group(QStringLiteral("Settings"));
+    const QUrl lastLocation(group.readEntry("LastImportLocation", QString()));
+    if (lastLocation.isValid()) {
+        dir = lastLocation.adjusted(QUrl::RemoveFilename | QUrl::StripTrailingSlash);
+    }
+
+    const QUrl fileUrl = QFileDialog::getOpenFileUrl(dialogParent(),
+                                                     i18nc("@title:window", "Select Calendar File to Import"),
+                                                     dir,
+                                                     QStringLiteral("text/calendar (*.ics *.vcs)"));
+
+    if (!fileUrl.isEmpty()) { // empty if user canceled the dialog
+        importCalendar(fileUrl);
+        group.writeEntry("LastImportLocation", fileUrl.toString());
     }
 }
 
