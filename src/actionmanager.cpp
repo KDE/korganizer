@@ -577,8 +577,9 @@ void ActionManager::initActions()
         "@info:whatsthis",
         "Select this option to show a week at a time, excluding the days that are not included in your weekly schedule. Configure your schedule by selecting "
         "days in the "
-        "<placeholder>Weekly Schedule</placeholder> setting in the <interface>Time and Date->Regional</interface> page.<br>Typically this view is intended for "
-        "showing the week without weekend days.</br>"));
+        "<placeholder>Weekly Schedule</placeholder> setting in the <interface>Time and Date->Regional</interface> page.<para>Typically this view is intended "
+        "for "
+        "showing the week without weekend days.</para>"));
     agendaMenu->addAction(action);
     mACollection->addAction(QStringLiteral("select_workweek"), action);
     connect(action, &QAction::triggered, mCalendarView->viewManager(), &KOViewManager::selectWorkWeek);
