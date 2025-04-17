@@ -15,7 +15,7 @@ msgid ""
 msgstr ""
 "Project-Id-Version: korganizer\n"
 "Report-Msgid-Bugs-To: https://bugs.kde.org\n"
-"POT-Creation-Date: 2025-04-16 00:42+0000\n"
+"POT-Creation-Date: 2025-04-17 00:42+0000\n"
 "PO-Revision-Date: 2025-04-11 22:03+0200\n"
 "Last-Translator: Luigi Toscano <luigi.toscano@tiscali.it>\n"
 "Language-Team: Italian <kde-i18n-it@kde.org>\n"
@@ -490,8 +490,8 @@ msgstr ""
 "collezione di calendario. Questa azione non può essere annullata!"
 
 #. i18n: ectx: property (text), widget (QPushButton, mDeleteButton)
-#: actionmanager.cpp:369 actionmanager.cpp:663 actionmanager.cpp:1343
-#: actionmanager.cpp:1381 ui/filteredit_base.ui:56
+#: actionmanager.cpp:369 actionmanager.cpp:663 actionmanager.cpp:1352
+#: actionmanager.cpp:1390 ui/filteredit_base.ui:56
 #, kde-format
 msgid "&Delete"
 msgstr "&Elimina"
@@ -1166,12 +1166,12 @@ msgstr ""
 "calendario. Vedi l'opzione Calendari multipli nelle impostazioni Vista -"
 ">Vista agenda."
 
-#: actionmanager.cpp:655 actionmanager.cpp:1337 actionmanager.cpp:1379
+#: actionmanager.cpp:655 actionmanager.cpp:1346 actionmanager.cpp:1388
 #, kde-format
 msgid "&Show"
 msgstr "&Mostra"
 
-#: actionmanager.cpp:659 actionmanager.cpp:1340 actionmanager.cpp:1380
+#: actionmanager.cpp:659 actionmanager.cpp:1349 actionmanager.cpp:1389
 #, kde-format
 msgid "&Edit…"
 msgstr "&Modifica…"
@@ -1311,139 +1311,139 @@ msgctxt "@title:window"
 msgid "Select Calendar File to Open"
 msgstr "Seleziona il file di calendario da aprire"
 
-#: actionmanager.cpp:986
+#: actionmanager.cpp:994
 #, kde-format
 msgctxt "@title:window"
 msgid "Select Calendar File to Import"
 msgstr "Seleziona il file di calendario da importare"
 
-#: actionmanager.cpp:1017
+#: actionmanager.cpp:1026
 #, kde-format
 msgid "An error occurred: %1 (url: %2)"
 msgstr "Si è verificato un errore: %1 (URL: %2)"
 
-#: actionmanager.cpp:1035
+#: actionmanager.cpp:1044
 #, kde-format
 msgid "Cannot upload calendar to '%1'"
 msgstr "Impossibile caricare il calendario in «%1»"
 
-#: actionmanager.cpp:1041
+#: actionmanager.cpp:1050
 #, kde-format
 msgid "Saved calendar '%1'."
 msgstr "Calendario «%1» salvato."
 
-#: actionmanager.cpp:1079
+#: actionmanager.cpp:1088
 #, kde-format
 msgid "Unable to save calendar to the file %1."
 msgstr "Impossibile salvare il calendario nel file %1."
 
-#: actionmanager.cpp:1079
+#: actionmanager.cpp:1088
 #, kde-format
 msgctxt "@title:window"
 msgid "Error"
 msgstr "Errore"
 
-#: actionmanager.cpp:1105
+#: actionmanager.cpp:1114
 #, kde-format
 msgid "&Next Day"
 msgid_plural "&Next %1 Days"
 msgstr[0] "&Giorno successivo "
 msgstr[1] "%1 &giorni successivi"
 
-#: actionmanager.cpp:1124
+#: actionmanager.cpp:1133
 #, kde-format
 msgid "Could not start control module for date and time format."
 msgstr "Impossibile avviare il modulo di controllo per i formati data e ora."
 
-#: actionmanager.cpp:1299
+#: actionmanager.cpp:1308
 #, kde-format
 msgid "&Show Event"
 msgstr "&Mostra evento"
 
-#: actionmanager.cpp:1302
+#: actionmanager.cpp:1311
 #, kde-format
 msgid "&Edit Event…"
 msgstr "Modifica &evento…"
 
-#: actionmanager.cpp:1305
+#: actionmanager.cpp:1314
 #, kde-format
 msgid "&Delete Event"
 msgstr "Elimina e&vento"
 
-#: actionmanager.cpp:1313
+#: actionmanager.cpp:1322
 #, kde-format
 msgid "&Show To-do"
 msgstr "&Mostra cosa da fare"
 
-#: actionmanager.cpp:1316 kontactplugin/korganizer/todosummarywidget.cpp:324
+#: actionmanager.cpp:1325 kontactplugin/korganizer/todosummarywidget.cpp:324
 #, kde-format
 msgid "&Edit To-do…"
 msgstr "M&odifica cosa da fare…"
 
-#: actionmanager.cpp:1319 kontactplugin/korganizer/todosummarywidget.cpp:326
+#: actionmanager.cpp:1328 kontactplugin/korganizer/todosummarywidget.cpp:326
 #, kde-format
 msgid "&Delete To-do"
 msgstr "&Elimina cosa da fare"
 
-#: actionmanager.cpp:1462 actionmanager.cpp:1568
+#: actionmanager.cpp:1471 actionmanager.cpp:1577
 #, kde-format
 msgid "Attach as &link"
 msgstr "Allega come &collegamento"
 
-#: actionmanager.cpp:1463 actionmanager.cpp:1569
+#: actionmanager.cpp:1472 actionmanager.cpp:1578
 #, kde-format
 msgid "Attach &inline"
 msgstr "Allega &in linea"
 
-#: actionmanager.cpp:1464
+#: actionmanager.cpp:1473
 #, kde-format
 msgid "Attach inline &without attachments"
 msgstr "Allega in linea &senza allegati"
 
-#: actionmanager.cpp:1466 actionmanager.cpp:1571
+#: actionmanager.cpp:1475 actionmanager.cpp:1580
 #, kde-format
 msgid "C&ancel"
 msgstr "&Annulla"
 
-#: actionmanager.cpp:1504
+#: actionmanager.cpp:1513
 #, kde-format
 msgid "Removing attachments from an email might invalidate its signature."
 msgstr ""
 "La rimozione degli allegati da un messaggio di posta elettronica potrebbe "
 "invalidarne la firma."
 
-#: actionmanager.cpp:1505
+#: actionmanager.cpp:1514
 #, kde-format
 msgctxt "@title:window"
 msgid "Remove Attachments"
 msgstr "Rimuovi allegati"
 
-#: actionmanager.cpp:1656
+#: actionmanager.cpp:1665
 #, kde-format
 msgid "Undo: %1"
 msgstr "Annulla: %1"
 
-#: actionmanager.cpp:1659 actionmanager.cpp:1675
+#: actionmanager.cpp:1668 actionmanager.cpp:1684
 #, kde-format
 msgid "Undo"
 msgstr "Annulla"
 
-#: actionmanager.cpp:1669
+#: actionmanager.cpp:1678
 #, kde-format
 msgid "Redo: %1"
 msgstr "Rifai: %1"
 
-#: actionmanager.cpp:1672
+#: actionmanager.cpp:1681
 #, kde-format
 msgid "Redo"
 msgstr "Rifai"
 
-#: actionmanager.cpp:1686
+#: actionmanager.cpp:1695
 #, kde-format
 msgid "URL '%1' is invalid."
 msgstr "L'URL «%1» non è valido."
 
-#: actionmanager.cpp:1691
+#: actionmanager.cpp:1700
 #, kde-kuit-format
 msgctxt "@info"
 msgid ""
@@ -1459,19 +1459,19 @@ msgstr ""
 "para><para>Se selezioni l'aggiunta, un nuovo calendario sarà automaticamente "
 "creato per te.</para>"
 
-#: actionmanager.cpp:1699
+#: actionmanager.cpp:1708
 #, kde-format
 msgctxt "@title:window"
 msgid "Import Calendar"
 msgstr "Importa calendario"
 
-#: actionmanager.cpp:1700
+#: actionmanager.cpp:1709
 #, kde-format
 msgctxt "@action:button"
 msgid "Merge into existing calendar"
 msgstr "Fondi con un calendario esistente"
 
-#: actionmanager.cpp:1701
+#: actionmanager.cpp:1710
 #, kde-format
 msgctxt "@action:button"
 msgid "Add as new calendar"

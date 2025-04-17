@@ -20,7 +20,7 @@ msgid ""
 msgstr ""
 "Project-Id-Version: kdepim-kde4\n"
 "Report-Msgid-Bugs-To: https://bugs.kde.org\n"
-"POT-Creation-Date: 2025-04-16 00:42+0000\n"
+"POT-Creation-Date: 2025-04-17 00:42+0000\n"
 "PO-Revision-Date: 2025-04-09 19:52+0300\n"
 "Last-Translator: Emir SARI <emir_sari@îcloud.com>\n"
 "Language-Team: Turkish <kde-l10n-tr@kde.org>\n"
@@ -499,8 +499,8 @@ msgstr ""
 "verir. Bu eylem geri alınamaz!"
 
 #. i18n: ectx: property (text), widget (QPushButton, mDeleteButton)
-#: actionmanager.cpp:369 actionmanager.cpp:663 actionmanager.cpp:1343
-#: actionmanager.cpp:1381 ui/filteredit_base.ui:56
+#: actionmanager.cpp:369 actionmanager.cpp:663 actionmanager.cpp:1352
+#: actionmanager.cpp:1390 ui/filteredit_base.ui:56
 #, kde-format
 msgid "&Delete"
 msgstr "&Sil"
@@ -1165,12 +1165,12 @@ msgstr ""
 "“Görünümler → Ajanda Görünümleri” ayarlarında “Çoklu Takvim Görünümü” "
 "seçeneklerine bakın."
 
-#: actionmanager.cpp:655 actionmanager.cpp:1337 actionmanager.cpp:1379
+#: actionmanager.cpp:655 actionmanager.cpp:1346 actionmanager.cpp:1388
 #, kde-format
 msgid "&Show"
 msgstr "&Göster"
 
-#: actionmanager.cpp:659 actionmanager.cpp:1340 actionmanager.cpp:1380
+#: actionmanager.cpp:659 actionmanager.cpp:1349 actionmanager.cpp:1389
 #, kde-format
 msgid "&Edit…"
 msgstr "Dü&zenle…"
@@ -1310,137 +1310,137 @@ msgctxt "@title:window"
 msgid "Select Calendar File to Open"
 msgstr "Açılacak Takvim Dosyasını Seç"
 
-#: actionmanager.cpp:986
+#: actionmanager.cpp:994
 #, kde-format
 msgctxt "@title:window"
 msgid "Select Calendar File to Import"
 msgstr "İçe Aktarılacak Takvim Dosyasını Seç"
 
-#: actionmanager.cpp:1017
+#: actionmanager.cpp:1026
 #, kde-format
 msgid "An error occurred: %1 (url: %2)"
 msgstr "Bir hata oluştu: %1 (URL: %2)"
 
-#: actionmanager.cpp:1035
+#: actionmanager.cpp:1044
 #, kde-format
 msgid "Cannot upload calendar to '%1'"
 msgstr "Takvim “%1” konumuna yüklenemiyor"
 
-#: actionmanager.cpp:1041
+#: actionmanager.cpp:1050
 #, kde-format
 msgid "Saved calendar '%1'."
 msgstr "“%1” takvimi kaydedildi."
 
-#: actionmanager.cpp:1079
+#: actionmanager.cpp:1088
 #, kde-format
 msgid "Unable to save calendar to the file %1."
 msgstr "Takvim %1 dosyasına kaydedilemedi."
 
-#: actionmanager.cpp:1079
+#: actionmanager.cpp:1088
 #, kde-format
 msgctxt "@title:window"
 msgid "Error"
 msgstr "Hata"
 
-#: actionmanager.cpp:1105
+#: actionmanager.cpp:1114
 #, kde-format
 msgid "&Next Day"
 msgid_plural "&Next %1 Days"
 msgstr[0] "&Sonraki Gün"
 msgstr[1] "&Sonraki %1 Gün"
 
-#: actionmanager.cpp:1124
+#: actionmanager.cpp:1133
 #, kde-format
 msgid "Could not start control module for date and time format."
 msgstr "Tarih ve zaman biçimi için denetim modülü başlatılamadı."
 
-#: actionmanager.cpp:1299
+#: actionmanager.cpp:1308
 #, kde-format
 msgid "&Show Event"
 msgstr "Etkinliği &Göster"
 
-#: actionmanager.cpp:1302
+#: actionmanager.cpp:1311
 #, kde-format
 msgid "&Edit Event…"
 msgstr "Etkinliği Dü&zenle…"
 
-#: actionmanager.cpp:1305
+#: actionmanager.cpp:1314
 #, kde-format
 msgid "&Delete Event"
 msgstr "Etkinliği &Sil"
 
-#: actionmanager.cpp:1313
+#: actionmanager.cpp:1322
 #, kde-format
 msgid "&Show To-do"
 msgstr "Yapılacak’ı &Göster"
 
-#: actionmanager.cpp:1316 kontactplugin/korganizer/todosummarywidget.cpp:324
+#: actionmanager.cpp:1325 kontactplugin/korganizer/todosummarywidget.cpp:324
 #, kde-format
 msgid "&Edit To-do…"
 msgstr "Yapılacak’ı Dü&zenle…"
 
-#: actionmanager.cpp:1319 kontactplugin/korganizer/todosummarywidget.cpp:326
+#: actionmanager.cpp:1328 kontactplugin/korganizer/todosummarywidget.cpp:326
 #, kde-format
 msgid "&Delete To-do"
 msgstr "Y&apılacak’ı Sil"
 
-#: actionmanager.cpp:1462 actionmanager.cpp:1568
+#: actionmanager.cpp:1471 actionmanager.cpp:1577
 #, kde-format
 msgid "Attach as &link"
 msgstr "&Bağlantı Olarak İliştir"
 
-#: actionmanager.cpp:1463 actionmanager.cpp:1569
+#: actionmanager.cpp:1472 actionmanager.cpp:1578
 #, kde-format
 msgid "Attach &inline"
 msgstr "Satır &İçi İliştir"
 
-#: actionmanager.cpp:1464
+#: actionmanager.cpp:1473
 #, kde-format
 msgid "Attach inline &without attachments"
 msgstr "Ekler &Olmadan Satır İçi İliştir"
 
-#: actionmanager.cpp:1466 actionmanager.cpp:1571
+#: actionmanager.cpp:1475 actionmanager.cpp:1580
 #, kde-format
 msgid "C&ancel"
 msgstr "İ&ptal"
 
-#: actionmanager.cpp:1504
+#: actionmanager.cpp:1513
 #, kde-format
 msgid "Removing attachments from an email might invalidate its signature."
 msgstr "Bir e-postadan ekleri silmek imzasını geçersiz kılabilir."
 
-#: actionmanager.cpp:1505
+#: actionmanager.cpp:1514
 #, kde-format
 msgctxt "@title:window"
 msgid "Remove Attachments"
 msgstr "Ekleri Kaldır"
 
-#: actionmanager.cpp:1656
+#: actionmanager.cpp:1665
 #, kde-format
 msgid "Undo: %1"
 msgstr "Geri Al: %1"
 
-#: actionmanager.cpp:1659 actionmanager.cpp:1675
+#: actionmanager.cpp:1668 actionmanager.cpp:1684
 #, kde-format
 msgid "Undo"
 msgstr "Geri Al"
 
-#: actionmanager.cpp:1669
+#: actionmanager.cpp:1678
 #, kde-format
 msgid "Redo: %1"
 msgstr "Yinele: %1"
 
-#: actionmanager.cpp:1672
+#: actionmanager.cpp:1681
 #, kde-format
 msgid "Redo"
 msgstr "Yinele"
 
-#: actionmanager.cpp:1686
+#: actionmanager.cpp:1695
 #, kde-format
 msgid "URL '%1' is invalid."
 msgstr "“%1” URL’si geçersiz."
 
-#: actionmanager.cpp:1691
+#: actionmanager.cpp:1700
 #, kde-kuit-format
 msgctxt "@info"
 msgid ""
@@ -1455,28 +1455,26 @@ msgstr ""
 "hedef takvim seçimi sunulur.</para><para>Eklemeyi seçerseniz sizin için "
 "kendiliğinden bir takvim oluşturulur.</para>"
 
-#: actionmanager.cpp:1699
+#: actionmanager.cpp:1708
 #, kde-format
 msgctxt "@title:window"
 msgid "Import Calendar"
 msgstr "İçe Takvim Aktar"
 
-#: actionmanager.cpp:1700
+#: actionmanager.cpp:1709
 #, kde-format
 msgctxt "@action:button"
 msgid "Merge into existing calendar"
 msgstr "Var Olan Takvime Birleştir"
 
-#: actionmanager.cpp:1701
+#: actionmanager.cpp:1710
 #, kde-format
 msgctxt "@action:button"
 msgid "Add as new calendar"
 msgstr "Yeni Takvim Olarak Ekle"
 
 #: akonadicollectionview.cpp:289
-#, fuzzy, kde-format
-#| msgctxt "@item this is the default calendar"
-#| msgid "%1 (Offline)"
+#, kde-format
 msgctxt "@item this calendar is offline"
 msgid "%1 (Offline)"
 msgstr "%1 (Çevrimdışı)"
@@ -1568,7 +1566,7 @@ msgstr "Takvim Ekle"
 #, kde-kuit-format
 msgctxt "@info"
 msgid "Add new calendar failed: <message>%1</message>"
-msgstr ""
+msgstr "Yeni takvim eklenemedi: <message>%1</message>"
 
 #: akonadicollectionview.cpp:786
 #, kde-kuit-format
@@ -1675,12 +1673,7 @@ msgid "Delete Calendar"
 msgstr "Takvimi Sil"
 
 #: akonadicollectionview.cpp:871
-#, fuzzy, kde-kuit-format
-#| msgctxt "@info"
-#| msgid ""
-#| "Do you really want to delete the <filename>%1</filename> folder?"
-#| "<para><warning>This cannot be undone. Please consider carefully before "
-#| "pressing the %2 button.</warning></para>"
+#, kde-kuit-format
 msgctxt "@info"
 msgid ""
 "The calendar you are attempting to remove is corrupted in some way. If you "
@@ -1688,16 +1681,16 @@ msgid ""
 "undone. Please consider carefully before pressing the %1 button.</warning></"
 "para>"
 msgstr ""
-"<filename>%1</filename> klasörünü silmeyi gerçekten istiyor musunuz?"
-"<para><warning>Bu işlem geri alınamaz. %2 düğmesine basmadan önce lütfen bir "
-"kez daha düşünün.</warning></para>"
+"Silmeye çalıştığınız takvim bir şekilde hasar görmüş. Sürdürürseniz takvim "
+"verisi kaldırılacak. <para><warning>Bu işlem geri alınamaz. %1 düğmesine "
+"basmadan önce lütfen bir kez daha düşünün.</warning></para>"
 
 #: akonadicollectionview.cpp:886
 #, kde-kuit-format
 msgctxt "@info"
 msgid ""
 "Delete calendar failed: <message>Invalid Akonadi agent instance</message>"
-msgstr ""
+msgstr "Takvim silinemedi: <message>Geçersiz Akonadi aracısı örneği</message>"
 
 #: akonadicollectionview.cpp:929
 #, kde-format
@@ -1715,7 +1708,7 @@ msgstr "Yazılabilir bir etkinlik takvimi eklemeyi düşünün"
 #, kde-kuit-format
 msgctxt "@info"
 msgid "Delete calendar failed: <message>%1</message>"
-msgstr ""
+msgstr "Takvim silinemedi: <message>%1</message>"
 
 #: calendarview.cpp:251
 #, kde-kuit-format
@@ -6249,251 +6242,3 @@ msgstr "%1"
 msgctxt "4 digit year"
 msgid "%1"
 msgstr "%1"
-
-#~ msgctxt "@info"
-#~ msgid "Unable to edit \"%1\" because it is locked by another process."
-#~ msgstr ""
-#~ "“%1” ögesi düzenlenemiyor; çünkü bu öge başka bir süreç tarafından "
-#~ "kilitlenmiş."
-
-#~ msgid "Unable to save %1 \"%2\"."
-#~ msgstr "%1 “%2” kaydedilemiyor."
-
-#~ msgid "W&ork Week"
-#~ msgstr "Ç&alışma Haftası"
-
-#~ msgctxt "@info:tooltip"
-#~ msgid "Set search keyword"
-#~ msgstr "Arama anahtar sözcüğü ayarla"
-
-#~ msgctxt "@info:whatsthis"
-#~ msgid "Lets you search for a keyword in your calendars"
-#~ msgstr "Takvimlerinizde bir anahtar sözcüğü aramanıza izin verir"
-
-#~ msgctxt ""
-#~ "@info/plain Displayed grayed-out inside the textbox, verb to search"
-#~ msgid "Search…"
-#~ msgstr "Ara…"
-
-#~ msgctxt "@title:group"
-#~ msgid "Working Period"
-#~ msgstr "Çalışma Aralığı"
-
-#~ msgctxt "@info:whatsthis"
-#~ msgid ""
-#~ "Check this box to make KOrganizer mark the working hours for this day of "
-#~ "the week. If this is a work day for you, check this box, or the working "
-#~ "hours will not be marked with color."
-#~ msgstr ""
-#~ "K Organizatör’ün haftanın bu günü için çalışma saatlerini imlemesi için "
-#~ "bu kutuyu işaretleyin. Eğer bu sizin bir çalışma gününüzse kutuyu "
-#~ "imleyin; aksi takdirde çalışma saatleri renkle imlenmeyecektir."
-
-#~ msgctxt "@info:status"
-#~ msgid "Configure the view"
-#~ msgstr "Görünümü yapılandır"
-
-#~ msgctxt "@info:whatsthis"
-#~ msgid ""
-#~ "Starts a configuration dialog that allows you to change the settings for "
-#~ "the current calendar view."
-#~ msgstr ""
-#~ "Geçerli takvim görümünü için ayarları değiştirebileceğiniz bir "
-#~ "yapılandırma iletişim kutusu açar."
-
-#~ msgctxt "@action:inmenu"
-#~ msgid "Serverside Subscription…"
-#~ msgstr "Sunucu Tarafı Abonelik…"
-
-#~ msgctxt "@info"
-#~ msgid "Do you really want to delete calendar %1?"
-#~ msgstr "%1 takvimini silmeyi gerçekten istiyor musunuz?"
-
-#~ msgid "Groupware Settings"
-#~ msgstr "Groupware Ayarları"
-
-#~ msgid "Show events belonging to my calendars only"
-#~ msgstr "Yalnızca benim takvimime ait etkinlikleri göster"
-
-#~ msgid ""
-#~ "Check this box if you want the summary to show events belonging to your "
-#~ "calendars only."
-#~ msgstr ""
-#~ "Yalnızca kendi takviminize ait etkinlikleri göstermek için bu kutuyu "
-#~ "işaretleyin."
-
-#~ msgid "Show &my events only"
-#~ msgstr "Yalnızca &benim etkinliklerimi göster"
-
-#~ msgid "Show To-dos belonging to my calendars only"
-#~ msgstr "Yalnızca benim takvimime ait yapılacakları göster"
-
-#~ msgid ""
-#~ "Check this box if you want the summary to show To-dos belonging to your "
-#~ "calendars only."
-#~ msgstr ""
-#~ "Yalnızca kendi takviminize ait yapılacakları göstermek için bu kutuyu "
-#~ "işaretleyin."
-
-#~ msgid "Show &my To-dos only"
-#~ msgstr "Yalnızca beni&m yapılacaklarımı göster"
-
-#~ msgid "Current-time line"
-#~ msgstr "Geçerli zaman çizelgesi"
-
-#~ msgctxt "@action:inmenu"
-#~ msgid "Create Note for Event"
-#~ msgstr "Etkinlik için Not Oluştur"
-
-#~ msgctxt "@action:inmenu"
-#~ msgid "Create Note for To-do"
-#~ msgstr "Yapılacak için Not Oluştur"
-
-#~ msgid "Import &Calendar..."
-#~ msgstr "&Takvim İçe Aktar..."
-
-#~ msgid "&Edit..."
-#~ msgstr "Dü&zenle..."
-
-#~ msgctxt ""
-#~ "@info/plain Displayed grayed-out inside the textbox, verb to search"
-#~ msgid "Search..."
-#~ msgstr "Ara..."
-
-#~ msgid "Edit..."
-#~ msgstr "Düzenle..."
-
-#~ msgctxt "@action:inmenu"
-#~ msgid "&Edit..."
-#~ msgstr "Dü&zenle..."
-
-#~ msgid "Day begins at"
-#~ msgstr "Gün başlangıcı"
-
-#~ msgid ""
-#~ "Enter the start time for events here. This time should be the earliest "
-#~ "time that you use for events, as it will be displayed at the top."
-#~ msgstr ""
-#~ "Etkinlikler için başlangıç zamanını buraya girin. Bu zaman, yukarıda "
-#~ "gösterileceği için, etkinlikler için kullanacağınız en erken zaman "
-#~ "olmalıdır."
-
-#~ msgid "Use holiday regions:"
-#~ msgstr "Kullanılacak tatil bölgeleri:"
-
-#~ msgid ""
-#~ "Select which regions you want to use the holidays here. Defined holidays "
-#~ "are shown as non-working days in the date navigator, the agenda view, etc."
-#~ msgstr ""
-#~ "Burada hangi bölgeleri tatilleriniz için kullanacağınızı seçebilirsiniz. "
-#~ "Tanımlanmış tatiller tarih gezgini, ajanda görünümü içinde çalışılmayan "
-#~ "günler olarak gösterilmiştir."
-
-#~ msgid "Exclude holidays"
-#~ msgstr "Tatilleri dışla"
-
-#~ msgid ""
-#~ "Check this box to prevent KOrganizer from marking the working hours on "
-#~ "holidays."
-#~ msgstr ""
-#~ "K Organizatör'ün tatillerde çalışma saatlerini imlemesini engellemek için "
-#~ "bu kutuyu işaretleyin."
-
-#~ msgid "Text"
-#~ msgstr "Metin"
-
-#~ msgid "Numeric Value"
-#~ msgstr "Sayısal Değer"
-
-#~ msgid "Boolean"
-#~ msgstr "Boole Değeri"
-
-#~ msgid "Selection"
-#~ msgstr "Seçim"
-
-#~ msgid "Date & Time"
-#~ msgstr "Tarih ve Saat"
-
-#~ msgid "<qt>Do you really want to delete '<b>%1</b>'?</qt>"
-#~ msgstr "<qt>'<b>%1</b> ögesini gerçekten silmek istiyor musunuz?</qt>"
-
-#~ msgid "Import Page"
-#~ msgstr "Sayfa İçe Aktar"
-
-#~ msgid "Designer Files"
-#~ msgstr "Designer Dosyaları"
-
-#~ msgid ""
-#~ "<qt><b>Warning:</b> Qt Designer could not be found. It is probably not "
-#~ "installed. You will only be able to import existing designer files.</qt>"
-#~ msgstr ""
-#~ "<qt><b>Uyarı:</b> Qt Designer bulunamadı. Büyük olasılıkla kurulu değil. "
-#~ "Yalnızca var olan Designer dosyalarını içe aktarabileceksiniz.</qt>"
-
-#~ msgid "Available Pages"
-#~ msgstr "Kullanılabilir Sayfalar"
-
-#~ msgid "Preview of Selected Page"
-#~ msgstr "Seçili Sayfanın Önizlemesi"
-
-#~ msgid ""
-#~ "<qt><p>This section allows you to add your own GUI Elements ('<i>Widgets</"
-#~ "i>') to store your own values into %1. Proceed as described below:</"
-#~ "p><ol><li>Click on '<i>Edit with Qt Designer</i>'</li><li>In the dialog, "
-#~ "select '<i>Widget</i>', then click <i>OK</i></li><li>Add your widgets to "
-#~ "the form</li><li>Save the file in the directory proposed by Qt Designer</"
-#~ "li><li>Close Qt Designer</li></ol><p>In case you already have a designer "
-#~ "file (*.ui) located somewhere on your hard disk, simply choose '<i>Import "
-#~ "Page</i>'</p><p><b>Important:</b> The name of each input widget you place "
-#~ "within the form must start with '<i>X_</i>'; so if you want the widget to "
-#~ "correspond to your custom entry '<i>X-Foo</i>', set the widget's <i>name</"
-#~ "i> property to '<i>X_Foo</i>'.</p><p><b>Important:</b> The widget will "
-#~ "edit custom fields with an application name of %2.  To change the "
-#~ "application name to be edited, set the widget name in Qt Designer.</p></"
-#~ "qt>"
-#~ msgstr ""
-#~ "<qt><p>Bu bölüm kendi değerlerinizi %1 içerisine saklamak için kendi GUI "
-#~ "Ögelerinizi ('<i>Araç Takımları</i>') eklemenizi sağlar. Aşağıdaki yolu "
-#~ "izleyin:</p><ol><li>'<i>Qt Designer İçinde Düzenle</i>'ye tıklayın</"
-#~ "li><li>Pencere içinde '<i>Araç Takımı</i>', ardından <i>Tamam</i> "
-#~ "tıklayın</li><li>Forma araç takımlarınızı ekleyin</li><li>Dosyayı, Qt "
-#~ "Designer'ın önerdiği dizine kaydedin</li><li>Qt Designer'ı kapatın</li></"
-#~ "ol><p>Sabit diskinizin herhangi bir yerinde mevcut olabilecek bir "
-#~ "Designer dosyanız (*.ui) varsa basitçe '<i>Sayfa İçe Aktar</i>'ı seçin</"
-#~ "p><p><b>Önemli:</b> Forma eklediğiniz her girdi araç takımı '<i>X_</i>' "
-#~ "ile başlamalı; yani eğer '<i>X-Foo</i>' adındaki özel girdinize ait bir "
-#~ "araç takımı istiyorsanız araç takımının <i>name</i> özelliğini '<i>X_Foo</"
-#~ "i>' olarak ayarlayın.</p><p><b>Önemli:</b> Araç takımı, özel alanları %2 "
-#~ "adındaki bir uygulama ile düzenleyecek. Uygulama adının "
-#~ "düzenlenebilirliğini değiştirmek için, araç takımı adını Qt Designer "
-#~ "içinden ayarlayın.</p></qt>"
-
-#~ msgid "<a href=\"whatsthis:%1\">How does this work?</a>"
-#~ msgstr "<a href=\"whatsthis:%1\">Bu nasıl çalışır?</a>"
-
-#~ msgid "Delete Page"
-#~ msgstr "Sayfayı Sil"
-
-#~ msgid "Import Page..."
-#~ msgstr "Sayfa İçe Aktar..."
-
-#~ msgid "Edit with Qt Designer..."
-#~ msgstr "Qt Designer ile Düzenle..."
-
-#~ msgid "Key:"
-#~ msgstr "Düğme:"
-
-#~ msgid "Type:"
-#~ msgstr "Tür:"
-
-#~ msgid "Classname:"
-#~ msgstr "Sınıf Adı:"
-
-#~ msgid "Description:"
-#~ msgstr "Açıklama:"
-
-#~ msgid "Copying Failed"
-#~ msgstr "Kopyalama Başarısız"
-
-#~ msgid "Moving Failed"
-#~ msgstr "Taşıma Başarısız"

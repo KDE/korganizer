@@ -10,7 +10,7 @@ msgid ""
 msgstr ""
 "Project-Id-Version: korganizer\n"
 "Report-Msgid-Bugs-To: https://bugs.kde.org\n"
-"POT-Creation-Date: 2025-04-16 00:42+0000\n"
+"POT-Creation-Date: 2025-04-17 00:42+0000\n"
 "PO-Revision-Date: 2012-01-28 16:07-0800\n"
 "Last-Translator: Fumiaki Okushi <okushi@kde.gr.jp>\n"
 "Language-Team: Japanese <kde-jp@kde.org>\n"
@@ -528,8 +528,8 @@ msgid ""
 msgstr ""
 
 #. i18n: ectx: property (text), widget (QPushButton, mDeleteButton)
-#: actionmanager.cpp:369 actionmanager.cpp:663 actionmanager.cpp:1343
-#: actionmanager.cpp:1381 ui/filteredit_base.ui:56
+#: actionmanager.cpp:369 actionmanager.cpp:663 actionmanager.cpp:1352
+#: actionmanager.cpp:1390 ui/filteredit_base.ui:56
 #, kde-format
 msgid "&Delete"
 msgstr "削除(&D)"
@@ -1196,12 +1196,12 @@ msgid ""
 "Calendars options in the Views->Agenda Views settings."
 msgstr ""
 
-#: actionmanager.cpp:655 actionmanager.cpp:1337 actionmanager.cpp:1379
+#: actionmanager.cpp:655 actionmanager.cpp:1346 actionmanager.cpp:1388
 #, kde-format
 msgid "&Show"
 msgstr "表示(&S)"
 
-#: actionmanager.cpp:659 actionmanager.cpp:1340 actionmanager.cpp:1380
+#: actionmanager.cpp:659 actionmanager.cpp:1349 actionmanager.cpp:1389
 #, fuzzy, kde-format
 #| msgid "&Edit"
 msgid "&Edit…"
@@ -1355,7 +1355,7 @@ msgctxt "@title:window"
 msgid "Select Calendar File to Open"
 msgstr "カレンダーフィルタの編集"
 
-#: actionmanager.cpp:986
+#: actionmanager.cpp:994
 #, fuzzy, kde-format
 #| msgctxt "@title::window"
 #| msgid "Edit Calendar Filters"
@@ -1363,28 +1363,28 @@ msgctxt "@title:window"
 msgid "Select Calendar File to Import"
 msgstr "カレンダーフィルタの編集"
 
-#: actionmanager.cpp:1017
+#: actionmanager.cpp:1026
 #, fuzzy, kde-format
 #| msgid "Purging completed to-dos"
 msgid "An error occurred: %1 (url: %2)"
 msgstr "完了済み To-Do を一括削除"
 
-#: actionmanager.cpp:1035
+#: actionmanager.cpp:1044
 #, kde-format
 msgid "Cannot upload calendar to '%1'"
 msgstr "‘%1’ にカレンダーをアップロードできません"
 
-#: actionmanager.cpp:1041
+#: actionmanager.cpp:1050
 #, kde-format
 msgid "Saved calendar '%1'."
 msgstr "カレンダー “%1” を保存しました。"
 
-#: actionmanager.cpp:1079
+#: actionmanager.cpp:1088
 #, kde-format
 msgid "Unable to save calendar to the file %1."
 msgstr "カレンダーをファイル ‘%1’ に保存できません。"
 
-#: actionmanager.cpp:1079
+#: actionmanager.cpp:1088
 #, fuzzy, kde-format
 #| msgid "Error"
 msgctxt "@title:window"
@@ -1392,108 +1392,108 @@ msgid "Error"
 msgstr "エラー"
 
 # ACCELERATOR changed by translator
-#: actionmanager.cpp:1105
+#: actionmanager.cpp:1114
 #, kde-format
 msgid "&Next Day"
 msgid_plural "&Next %1 Days"
 msgstr[0] "次の %1 日(&X)"
 
-#: actionmanager.cpp:1124
+#: actionmanager.cpp:1133
 #, kde-format
 msgid "Could not start control module for date and time format."
 msgstr "日付と時間の書式を設定するための設定モジュールを起動できませんでした。"
 
-#: actionmanager.cpp:1299
+#: actionmanager.cpp:1308
 #, kde-format
 msgid "&Show Event"
 msgstr "イベントを表示(&S)"
 
-#: actionmanager.cpp:1302
+#: actionmanager.cpp:1311
 #, fuzzy, kde-format
 #| msgid "&Edit Event..."
 msgid "&Edit Event…"
 msgstr "イベントを編集(&E)..."
 
-#: actionmanager.cpp:1305
+#: actionmanager.cpp:1314
 #, kde-format
 msgid "&Delete Event"
 msgstr "イベントを削除(&D)"
 
-#: actionmanager.cpp:1313
+#: actionmanager.cpp:1322
 #, kde-format
 msgid "&Show To-do"
 msgstr "To-Do を表示(&S)"
 
-#: actionmanager.cpp:1316 kontactplugin/korganizer/todosummarywidget.cpp:324
+#: actionmanager.cpp:1325 kontactplugin/korganizer/todosummarywidget.cpp:324
 #, fuzzy, kde-format
 #| msgid "&Edit To-do..."
 msgid "&Edit To-do…"
 msgstr "To-Do を編集(&E)..."
 
-#: actionmanager.cpp:1319 kontactplugin/korganizer/todosummarywidget.cpp:326
+#: actionmanager.cpp:1328 kontactplugin/korganizer/todosummarywidget.cpp:326
 #, kde-format
 msgid "&Delete To-do"
 msgstr "To-Do を削除(&D)"
 
-#: actionmanager.cpp:1462 actionmanager.cpp:1568
+#: actionmanager.cpp:1471 actionmanager.cpp:1577
 #, kde-format
 msgid "Attach as &link"
 msgstr "リンクとして添付(&L)"
 
-#: actionmanager.cpp:1463 actionmanager.cpp:1569
+#: actionmanager.cpp:1472 actionmanager.cpp:1578
 #, kde-format
 msgid "Attach &inline"
 msgstr "インライン添付(&I)"
 
-#: actionmanager.cpp:1464
+#: actionmanager.cpp:1473
 #, kde-format
 msgid "Attach inline &without attachments"
 msgstr "添付ファイルなしでインライン添付(&W)"
 
-#: actionmanager.cpp:1466 actionmanager.cpp:1571
+#: actionmanager.cpp:1475 actionmanager.cpp:1580
 #, kde-format
 msgid "C&ancel"
 msgstr "キャンセル(&A)"
 
-#: actionmanager.cpp:1504
+#: actionmanager.cpp:1513
 #, kde-format
 msgid "Removing attachments from an email might invalidate its signature."
 msgstr "添付ファイルを削除するとメールの署名が無効になる可能性があります。"
 
-#: actionmanager.cpp:1505
+#: actionmanager.cpp:1514
 #, fuzzy, kde-format
 #| msgid "Remove Attachments"
 msgctxt "@title:window"
 msgid "Remove Attachments"
 msgstr "添付ファイルの削除"
 
-#: actionmanager.cpp:1656
+#: actionmanager.cpp:1665
 #, kde-format
 msgid "Undo: %1"
 msgstr "元に戻す: %1"
 
-#: actionmanager.cpp:1659 actionmanager.cpp:1675
+#: actionmanager.cpp:1668 actionmanager.cpp:1684
 #, kde-format
 msgid "Undo"
 msgstr "元に戻す"
 
-#: actionmanager.cpp:1669
+#: actionmanager.cpp:1678
 #, fuzzy, kde-format
 #| msgid "Redo (%1)"
 msgid "Redo: %1"
 msgstr "やり直す (%1)"
 
-#: actionmanager.cpp:1672
+#: actionmanager.cpp:1681
 #, kde-format
 msgid "Redo"
 msgstr "やり直す"
 
-#: actionmanager.cpp:1686
+#: actionmanager.cpp:1695
 #, kde-format
 msgid "URL '%1' is invalid."
 msgstr "URL ‘%1’ は無効です。"
 
-#: actionmanager.cpp:1691
+#: actionmanager.cpp:1700
 #, kde-kuit-format
 msgctxt "@info"
 msgid ""
@@ -1504,7 +1504,7 @@ msgid ""
 "automatically.</para>"
 msgstr ""
 
-#: actionmanager.cpp:1699
+#: actionmanager.cpp:1708
 #, fuzzy, kde-format
 #| msgid "Import Calendar"
 msgctxt "@title:window"
@@ -1512,7 +1512,7 @@ msgid "Import Calendar"
 msgstr "カレンダーをインポート"
 
 # @option:radio
-#: actionmanager.cpp:1700
+#: actionmanager.cpp:1709
 #, fuzzy, kde-format
 #| msgid "Merge into existing calendar"
 msgctxt "@action:button"
@@ -1520,7 +1520,7 @@ msgid "Merge into existing calendar"
 msgstr "既存のカレンダーにマージ"
 
 # @option:radio
-#: actionmanager.cpp:1701
+#: actionmanager.cpp:1710
 #, fuzzy, kde-format
 #| msgid "Add as new calendar"
 msgctxt "@action:button"

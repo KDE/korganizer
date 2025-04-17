@@ -8,20 +8,20 @@
 # Albert Astals Cid <aacid@kde.org>, 2004, 2005, 2006.
 # Manuel Tortosa Moreno <manutortosa@gmail.com>, 2009, 2010, 2011.
 # Antoni Bella Pérez <antonibella5@yahoo.com>, 2011, 2013, 2014, 2015, 2016, 2017, 2018, 2019, 2020, 2022.
-# Josep M. Ferrer <txemaq@gmail.com>, 2006, 2007, 2008, 2009, 2010, 2011, 2012, 2013, 2014, 2015, 2017, 2018, 2020, 2021, 2022, 2023, 2024, 2025.
+# SPDX-FileCopyrightText: 2006, 2007, 2008, 2009, 2010, 2011, 2012, 2013, 2014, 2015, 2017, 2018, 2020, 2021, 2022, 2023, 2024, 2025 Josep M. Ferrer <txemaq@gmail.com>
 msgid ""
 msgstr ""
 "Project-Id-Version: korganizer\n"
 "Report-Msgid-Bugs-To: https://bugs.kde.org\n"
-"POT-Creation-Date: 2025-04-16 00:42+0000\n"
-"PO-Revision-Date: 2025-04-08 09:50+0200\n"
+"POT-Creation-Date: 2025-04-17 00:42+0000\n"
+"PO-Revision-Date: 2025-04-16 11:25+0200\n"
 "Last-Translator: Josep M. Ferrer <txemaq@gmail.com>\n"
 "Language-Team: Catalan <kde-i18n-ca@kde.org>\n"
 "Language: ca@valencia\n"
 "MIME-Version: 1.0\n"
 "Content-Type: text/plain; charset=UTF-8\n"
 "Content-Transfer-Encoding: 8bit\n"
-"X-Generator: Lokalize 22.12.3\n"
+"X-Generator: Lokalize 24.12.3\n"
 "Plural-Forms: nplurals=2; plural=n != 1;\n"
 "X-Accelerator-Marker: &\n"
 
@@ -494,8 +494,8 @@ msgstr ""
 "col·lecció de calendari. Esta acció no es podrà desfer!"
 
 #. i18n: ectx: property (text), widget (QPushButton, mDeleteButton)
-#: actionmanager.cpp:369 actionmanager.cpp:663 actionmanager.cpp:1343
-#: actionmanager.cpp:1381 ui/filteredit_base.ui:56
+#: actionmanager.cpp:369 actionmanager.cpp:663 actionmanager.cpp:1352
+#: actionmanager.cpp:1390 ui/filteredit_base.ui:56
 #, kde-format
 msgid "&Delete"
 msgstr "Sup&rimix"
@@ -1166,12 +1166,12 @@ msgstr ""
 "vista. Actualment només s'admet la vista multicalendari. Vegeu les opcions "
 "de múltiples calendaris a la configuració «Vistes -> Vistes d'agenda»."
 
-#: actionmanager.cpp:655 actionmanager.cpp:1337 actionmanager.cpp:1379
+#: actionmanager.cpp:655 actionmanager.cpp:1346 actionmanager.cpp:1388
 #, kde-format
 msgid "&Show"
 msgstr "&Mostra"
 
-#: actionmanager.cpp:659 actionmanager.cpp:1340 actionmanager.cpp:1380
+#: actionmanager.cpp:659 actionmanager.cpp:1349 actionmanager.cpp:1389
 #, kde-format
 msgid "&Edit…"
 msgstr "&Edita…"
@@ -1311,138 +1311,138 @@ msgctxt "@title:window"
 msgid "Select Calendar File to Open"
 msgstr "Seleccioneu el fitxer de calendari que s'ha d'obrir"
 
-#: actionmanager.cpp:986
+#: actionmanager.cpp:994
 #, kde-format
 msgctxt "@title:window"
 msgid "Select Calendar File to Import"
 msgstr "Seleccioneu el fitxer de calendari que s'ha d'importar"
 
-#: actionmanager.cpp:1017
+#: actionmanager.cpp:1026
 #, kde-format
 msgid "An error occurred: %1 (url: %2)"
 msgstr "S'ha detectat un error: %1 (URL: %2)"
 
-#: actionmanager.cpp:1035
+#: actionmanager.cpp:1044
 #, kde-format
 msgid "Cannot upload calendar to '%1'"
 msgstr "No es pot pujar el calendari a «%1»"
 
-#: actionmanager.cpp:1041
+#: actionmanager.cpp:1050
 #, kde-format
 msgid "Saved calendar '%1'."
 msgstr "S'ha guardat el calendari «%1»."
 
-#: actionmanager.cpp:1079
+#: actionmanager.cpp:1088
 #, kde-format
 msgid "Unable to save calendar to the file %1."
 msgstr "No s'ha pogut guardar el calendari en el fitxer %1."
 
-#: actionmanager.cpp:1079
+#: actionmanager.cpp:1088
 #, kde-format
 msgctxt "@title:window"
 msgid "Error"
 msgstr "S'ha produït un error"
 
-#: actionmanager.cpp:1105
+#: actionmanager.cpp:1114
 #, kde-format
 msgid "&Next Day"
 msgid_plural "&Next %1 Days"
 msgstr[0] "Dia següe&nt"
 msgstr[1] "%1 dies següe&nts"
 
-#: actionmanager.cpp:1124
+#: actionmanager.cpp:1133
 #, kde-format
 msgid "Could not start control module for date and time format."
 msgstr ""
 "No s'ha pogut iniciar el mòdul de control per al format de la data i l'hora."
 
-#: actionmanager.cpp:1299
+#: actionmanager.cpp:1308
 #, kde-format
 msgid "&Show Event"
 msgstr "&Mostra l'esdeveniment"
 
-#: actionmanager.cpp:1302
+#: actionmanager.cpp:1311
 #, kde-format
 msgid "&Edit Event…"
 msgstr "&Edita l'esdeveniment…"
 
-#: actionmanager.cpp:1305
+#: actionmanager.cpp:1314
 #, kde-format
 msgid "&Delete Event"
 msgstr "Sup&rimix l'esdeveniment"
 
-#: actionmanager.cpp:1313
+#: actionmanager.cpp:1322
 #, kde-format
 msgid "&Show To-do"
 msgstr "&Mostra la tasca pendent"
 
-#: actionmanager.cpp:1316 kontactplugin/korganizer/todosummarywidget.cpp:324
+#: actionmanager.cpp:1325 kontactplugin/korganizer/todosummarywidget.cpp:324
 #, kde-format
 msgid "&Edit To-do…"
 msgstr "&Edita la tasca pendent…"
 
-#: actionmanager.cpp:1319 kontactplugin/korganizer/todosummarywidget.cpp:326
+#: actionmanager.cpp:1328 kontactplugin/korganizer/todosummarywidget.cpp:326
 #, kde-format
 msgid "&Delete To-do"
 msgstr "Sup&rimix la tasca pendent"
 
-#: actionmanager.cpp:1462 actionmanager.cpp:1568
+#: actionmanager.cpp:1471 actionmanager.cpp:1577
 #, kde-format
 msgid "Attach as &link"
 msgstr "Adjunta com a en&llaç"
 
-#: actionmanager.cpp:1463 actionmanager.cpp:1569
+#: actionmanager.cpp:1472 actionmanager.cpp:1578
 #, kde-format
 msgid "Attach &inline"
 msgstr "Adjunta &inclòs"
 
-#: actionmanager.cpp:1464
+#: actionmanager.cpp:1473
 #, kde-format
 msgid "Attach inline &without attachments"
 msgstr "Adjunta inclòs &sense fitxers adjunts"
 
-#: actionmanager.cpp:1466 actionmanager.cpp:1571
+#: actionmanager.cpp:1475 actionmanager.cpp:1580
 #, kde-format
 msgid "C&ancel"
 msgstr "C&ancel·la"
 
-#: actionmanager.cpp:1504
+#: actionmanager.cpp:1513
 #, kde-format
 msgid "Removing attachments from an email might invalidate its signature."
 msgstr "L'eliminació d'adjunts d'un correu pot invalidar la seua signatura."
 
-#: actionmanager.cpp:1505
+#: actionmanager.cpp:1514
 #, kde-format
 msgctxt "@title:window"
 msgid "Remove Attachments"
 msgstr "Elimina els adjunts"
 
-#: actionmanager.cpp:1656
+#: actionmanager.cpp:1665
 #, kde-format
 msgid "Undo: %1"
 msgstr "Desfés: %1"
 
-#: actionmanager.cpp:1659 actionmanager.cpp:1675
+#: actionmanager.cpp:1668 actionmanager.cpp:1684
 #, kde-format
 msgid "Undo"
 msgstr "Desfés"
 
-#: actionmanager.cpp:1669
+#: actionmanager.cpp:1678
 #, kde-format
 msgid "Redo: %1"
 msgstr "Refés: %1"
 
-#: actionmanager.cpp:1672
+#: actionmanager.cpp:1681
 #, kde-format
 msgid "Redo"
 msgstr "Refés"
 
-#: actionmanager.cpp:1686
+#: actionmanager.cpp:1695
 #, kde-format
 msgid "URL '%1' is invalid."
 msgstr "L'URL «%1» no és vàlid."
 
-#: actionmanager.cpp:1691
+#: actionmanager.cpp:1700
 #, kde-kuit-format
 msgctxt "@info"
 msgid ""
@@ -1458,28 +1458,26 @@ msgstr ""
 "para><para>Si seleccioneu afegir, llavors es crearà automàticament un "
 "calendari nou.</para>"
 
-#: actionmanager.cpp:1699
+#: actionmanager.cpp:1708
 #, kde-format
 msgctxt "@title:window"
 msgid "Import Calendar"
 msgstr "Importeu un calendari"
 
-#: actionmanager.cpp:1700
+#: actionmanager.cpp:1709
 #, kde-format
 msgctxt "@action:button"
 msgid "Merge into existing calendar"
 msgstr "Barreja amb el calendari existent"
 
-#: actionmanager.cpp:1701
+#: actionmanager.cpp:1710
 #, kde-format
 msgctxt "@action:button"
 msgid "Add as new calendar"
 msgstr "Afig com a calendari nou"
 
 #: akonadicollectionview.cpp:289
-#, fuzzy, kde-format
-#| msgctxt "@item this is the default calendar"
-#| msgid "%1 (Offline)"
+#, kde-format
 msgctxt "@item this calendar is offline"
 msgid "%1 (Offline)"
 msgstr "%1 (desconnectat)"
@@ -1572,7 +1570,7 @@ msgstr "Afig un calendari"
 #, kde-kuit-format
 msgctxt "@info"
 msgid "Add new calendar failed: <message>%1</message>"
-msgstr ""
+msgstr "No s'ha pogut afegir un calendari nou: <message>%1</message>"
 
 # skip-rule: tags-spaces-end
 #: akonadicollectionview.cpp:786
@@ -1658,7 +1656,7 @@ msgid ""
 msgstr ""
 "Segur que voleu suprimir la carpeta <filename>%1</filename>?"
 "<para><warning>Açò no es podrà desfer. Reflexioneu atentament abans de "
-"prémer el botó %2.</warning></para>"
+"prémer el botó «%2».</warning></para>"
 
 #: akonadicollectionview.cpp:836
 #, kde-kuit-format
@@ -1672,7 +1670,7 @@ msgid ""
 msgstr ""
 "Segur que voleu suprimir el calendari <filename>%1</filename>?<para> "
 "<warning>Açò no es podrà desfer. Reflexioneu atentament abans de prémer el "
-"botó %2.</warning></para><para><warning>Si el suprimiu se us demanarà que "
+"botó «%2».</warning></para><para><warning>Si el suprimiu se us demanarà que "
 "seleccioneu una carpeta nova de calendari predeterminat.</warning></para>"
 
 #: akonadicollectionview.cpp:847 akonadicollectionview.cpp:876
@@ -1682,12 +1680,7 @@ msgid "Delete Calendar"
 msgstr "Suprimix el calendari"
 
 #: akonadicollectionview.cpp:871
-#, fuzzy, kde-kuit-format
-#| msgctxt "@info"
-#| msgid ""
-#| "Do you really want to delete the <filename>%1</filename> folder?"
-#| "<para><warning>This cannot be undone. Please consider carefully before "
-#| "pressing the %2 button.</warning></para>"
+#, kde-kuit-format
 msgctxt "@info"
 msgid ""
 "The calendar you are attempting to remove is corrupted in some way. If you "
@@ -1695,9 +1688,9 @@ msgid ""
 "undone. Please consider carefully before pressing the %1 button.</warning></"
 "para>"
 msgstr ""
-"Segur que voleu suprimir la carpeta <filename>%1</filename>?"
-"<para><warning>Açò no es podrà desfer. Reflexioneu atentament abans de "
-"prémer el botó %2.</warning></para>"
+"El calendari que intenteu eliminar pareix que està malmés. Si continueu "
+"s'eliminaran les dades del calendari. <para><warning>Açò no es podrà desfer. "
+"Penseu-ho bé abans de prémer el botó «%1».</warning></para>"
 
 #: akonadicollectionview.cpp:886
 #, kde-kuit-format
@@ -1705,6 +1698,8 @@ msgctxt "@info"
 msgid ""
 "Delete calendar failed: <message>Invalid Akonadi agent instance</message>"
 msgstr ""
+"No s'ha pogut suprimir el calendari: <message>Instància no vàlida de l'agent "
+"d'Akonadi</message>"
 
 #: akonadicollectionview.cpp:929
 #, kde-format
@@ -1723,7 +1718,7 @@ msgstr "Considereu afegir un calendari d'esdeveniments amb permís d'escriptura"
 #, kde-kuit-format
 msgctxt "@info"
 msgid "Delete calendar failed: <message>%1</message>"
-msgstr ""
+msgstr "No s'ha pogut suprimir el calendari: <message>%1</message>"
 
 #: calendarview.cpp:251
 #, kde-kuit-format
@@ -6355,12 +6350,3 @@ msgstr "%1"
 msgctxt "4 digit year"
 msgid "%1"
 msgstr "%1"
-
-#~ msgctxt "@info"
-#~ msgid "Unable to edit \"%1\" because it is locked by another process."
-#~ msgstr ""
-#~ "No s'ha pogut editar l'element «%1» perquè està bloquejat per un altre "
-#~ "procés."
-
-#~ msgid "Unable to save %1 \"%2\"."
-#~ msgstr "No s'ha pogut guardar %1 «%2»."
