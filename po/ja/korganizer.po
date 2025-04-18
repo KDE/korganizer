@@ -10,7 +10,7 @@ msgid ""
 msgstr ""
 "Project-Id-Version: korganizer\n"
 "Report-Msgid-Bugs-To: https://bugs.kde.org\n"
-"POT-Creation-Date: 2025-04-17 00:42+0000\n"
+"POT-Creation-Date: 2025-04-18 00:42+0000\n"
 "PO-Revision-Date: 2012-01-28 16:07-0800\n"
 "Last-Translator: Fumiaki Okushi <okushi@kde.gr.jp>\n"
 "Language-Team: Japanese <kde-jp@kde.org>\n"
@@ -528,8 +528,8 @@ msgid ""
 msgstr ""
 
 #. i18n: ectx: property (text), widget (QPushButton, mDeleteButton)
-#: actionmanager.cpp:369 actionmanager.cpp:663 actionmanager.cpp:1352
-#: actionmanager.cpp:1390 ui/filteredit_base.ui:56
+#: actionmanager.cpp:369 actionmanager.cpp:664 actionmanager.cpp:1353
+#: actionmanager.cpp:1391 ui/filteredit_base.ui:56
 #, kde-format
 msgid "&Delete"
 msgstr "削除(&D)"
@@ -1004,31 +1004,31 @@ msgid ""
 "Select this option to show a week at a time, excluding the days that are not "
 "included in your weekly schedule. Configure your schedule by selecting days "
 "in the <placeholder>Weekly Schedule</placeholder> setting in the "
-"<interface>Time and Date->Regional</interface> page.<br>Typically this view "
-"is intended for showing the week without weekend days.</br>"
+"<interface>Time and Date->Regional</interface> page.<para>Typically this "
+"view is intended for showing the week without weekend days.</para>"
 msgstr ""
 
-#: actionmanager.cpp:586
+#: actionmanager.cpp:587
 #, fuzzy, kde-format
 #| msgid "&Week"
 msgctxt "@action:inmenu"
 msgid "&Week"
 msgstr "週(&W)"
 
-#: actionmanager.cpp:587
+#: actionmanager.cpp:588
 #, fuzzy, kde-format
 #| msgid "&Week"
 msgctxt "@action:inmenu agenda view show a week at a time"
 msgid "Week"
 msgstr "週(&W)"
 
-#: actionmanager.cpp:588
+#: actionmanager.cpp:589
 #, kde-format
 msgctxt "@info:status"
 msgid "View a week at a time"
 msgstr ""
 
-#: actionmanager.cpp:589
+#: actionmanager.cpp:590
 #, fuzzy, kde-format
 #| msgctxt "@option:check"
 #| msgid "Show at the top of the agenda views"
@@ -1036,33 +1036,33 @@ msgctxt "@info:tooltip"
 msgid "Show 1 week at a time in Agenda View"
 msgstr "予定表ビューの上に表示"
 
-#: actionmanager.cpp:590
+#: actionmanager.cpp:591
 #, kde-format
 msgctxt "@info:whatsthis"
 msgid "Select this option to show a week at a time in Agenda View."
 msgstr ""
 
-#: actionmanager.cpp:597 kodaymatrix.cpp:454
+#: actionmanager.cpp:598 kodaymatrix.cpp:454
 #, fuzzy, kde-format
 #| msgid "New E&vent..."
 msgid "New E&vent…"
 msgstr "新しいイベント(&V)..."
 
-#: actionmanager.cpp:598
+#: actionmanager.cpp:599
 #, fuzzy, kde-format
 #| msgid "Create a new Event"
 msgctxt "@info:status"
 msgid "Create a new Event"
 msgstr "新しいイベントを作成"
 
-#: actionmanager.cpp:599
+#: actionmanager.cpp:600
 #, fuzzy, kde-format
 #| msgid "Create a new Event"
 msgctxt "@info:tooltip"
 msgid "Create a new Event"
 msgstr "新しいイベントを作成"
 
-#: actionmanager.cpp:601
+#: actionmanager.cpp:602
 #, kde-format
 msgctxt "@info:whatsthis"
 msgid ""
@@ -1070,27 +1070,27 @@ msgid ""
 "attendees, recurrences and much more."
 msgstr ""
 
-#: actionmanager.cpp:607 kodaymatrix.cpp:455
+#: actionmanager.cpp:608 kodaymatrix.cpp:455
 #, fuzzy, kde-format
 #| msgid "New &To-do..."
 msgid "New &To-do…"
 msgstr "新しい To-Do(&T)..."
 
-#: actionmanager.cpp:608
+#: actionmanager.cpp:609
 #, fuzzy, kde-format
 #| msgid "Create a new To-do"
 msgctxt "@info:status"
 msgid "Create a new To-do"
 msgstr "新しい To-Do を作成"
 
-#: actionmanager.cpp:609
+#: actionmanager.cpp:610
 #, fuzzy, kde-format
 #| msgid "Create a new To-do"
 msgctxt "@info:tooltip"
 msgid "Create a new To-do"
 msgstr "新しい To-Do を作成"
 
-#: actionmanager.cpp:611
+#: actionmanager.cpp:612
 #, kde-format
 msgctxt "@info:whatsthis"
 msgid ""
@@ -1098,96 +1098,96 @@ msgid ""
 "attendees, recurrences and much more."
 msgstr ""
 
-#: actionmanager.cpp:618
+#: actionmanager.cpp:619
 #, fuzzy, kde-format
 #| msgid "New Su&b-to-do..."
 msgctxt "@action"
 msgid "New Su&b-to-do…"
 msgstr "新しいサブ To-Do(&B)..."
 
-#: actionmanager.cpp:626 kodaymatrix.cpp:456
+#: actionmanager.cpp:627 kodaymatrix.cpp:456
 #, fuzzy, kde-format
 #| msgid "New &Journal..."
 msgid "New &Journal…"
 msgstr "新しい日記(&J)..."
 
-#: actionmanager.cpp:627
+#: actionmanager.cpp:628
 #, fuzzy, kde-format
 #| msgid "Create a new Journal"
 msgctxt "@info:status"
 msgid "Create a new Journal"
 msgstr "日記に新しいエントリを作成"
 
-#: actionmanager.cpp:628
+#: actionmanager.cpp:629
 #, fuzzy, kde-format
 #| msgid "Create a new Journal"
 msgctxt "@info:tooltip"
 msgid "Create a new Journal"
 msgstr "日記に新しいエントリを作成"
 
-#: actionmanager.cpp:629
+#: actionmanager.cpp:630
 #, kde-format
 msgctxt "@info:whatsthis"
 msgid "Starts a dialog that allows you to create a new Journal entry."
 msgstr ""
 
-#: actionmanager.cpp:634
+#: actionmanager.cpp:635
 #, kde-format
 msgctxt "@action Jump to date"
 msgid "&Pick a Date"
 msgstr ""
 
-#: actionmanager.cpp:635
+#: actionmanager.cpp:636
 #, kde-format
 msgid "Date"
 msgstr "日付"
 
-#: actionmanager.cpp:636
+#: actionmanager.cpp:637
 #, fuzzy, kde-format
 #| msgid "Scroll to Today"
 msgctxt "@info:status"
 msgid "Scroll the view to user selected dates"
 msgstr "今日へスクロール"
 
-#: actionmanager.cpp:637
+#: actionmanager.cpp:638
 #, fuzzy, kde-format
 #| msgid "Scroll to Today"
 msgctxt "@info:tooltip"
 msgid "Scroll the view to user selected dates"
 msgstr "今日へスクロール"
 
-#: actionmanager.cpp:638
+#: actionmanager.cpp:639
 #, kde-format
 msgctxt "@info:whatsthis"
 msgid "Opens a date selection dialog for quickly navigating the view."
 msgstr ""
 
-#: actionmanager.cpp:643
+#: actionmanager.cpp:644
 #, fuzzy, kde-format
 #| msgid "Configure View..."
 msgid "Configure View…"
 msgstr "ビューを設定..."
 
-#: actionmanager.cpp:644
+#: actionmanager.cpp:645
 #, kde-format
 msgid "Configure"
 msgstr "設定"
 
-#: actionmanager.cpp:645
+#: actionmanager.cpp:646
 #, fuzzy, kde-format
 #| msgid "Configure the view"
 msgctxt "@info:status"
 msgid "Configure the multi-calendar view"
 msgstr "ビューの設定"
 
-#: actionmanager.cpp:646
+#: actionmanager.cpp:647
 #, fuzzy, kde-format
 #| msgid "Configure the view"
 msgctxt "@info:tooltip"
 msgid "Configure the multi-calendar view"
 msgstr "ビューの設定"
 
-#: actionmanager.cpp:648
+#: actionmanager.cpp:649
 #, kde-format
 msgctxt "@info:whatsthis"
 msgid ""
@@ -1196,18 +1196,18 @@ msgid ""
 "Calendars options in the Views->Agenda Views settings."
 msgstr ""
 
-#: actionmanager.cpp:655 actionmanager.cpp:1346 actionmanager.cpp:1388
+#: actionmanager.cpp:656 actionmanager.cpp:1347 actionmanager.cpp:1389
 #, kde-format
 msgid "&Show"
 msgstr "表示(&S)"
 
-#: actionmanager.cpp:659 actionmanager.cpp:1349 actionmanager.cpp:1389
+#: actionmanager.cpp:660 actionmanager.cpp:1350 actionmanager.cpp:1390
 #, fuzzy, kde-format
 #| msgid "&Edit"
 msgid "&Edit…"
 msgstr "編集(&E)"
 
-#: actionmanager.cpp:668
+#: actionmanager.cpp:669
 #, fuzzy, kde-format
 #| msgid "&Make Sub-to-do Independent"
 msgctxt "@action"
@@ -1218,136 +1218,136 @@ msgstr "サブ To-Do を独立させる(&M)"
 #. mCalendarView, SLOT(toggleAlarm()),
 #. mACollection, "activate_alarm" );
 #. ************************* SCHEDULE MENU *******************************
-#: actionmanager.cpp:680
+#: actionmanager.cpp:681
 #, fuzzy, kde-format
 #| msgid "&Publish Item Information..."
 msgid "&Publish Item Information…"
 msgstr "イベント情報を公開(&P)..."
 
-#: actionmanager.cpp:687
+#: actionmanager.cpp:688
 #, kde-format
 msgid "Send &Invitation to Attendees"
 msgstr "参加者に出席依頼を送信(&I)"
 
-#: actionmanager.cpp:695
+#: actionmanager.cpp:696
 #, fuzzy, kde-format
 #| msgid "Re&quest Update"
 msgctxt "@action"
 msgid "Re&quest Update"
 msgstr "主催者に更新情報を要求(&Q)"
 
-#: actionmanager.cpp:703
+#: actionmanager.cpp:704
 #, fuzzy, kde-format
 #| msgid "Send &Cancellation to Attendees"
 msgctxt "@action"
 msgid "Send &Cancellation to Attendees"
 msgstr "参加者にキャンセル通知を送信(&C)"
 
-#: actionmanager.cpp:711
+#: actionmanager.cpp:712
 #, kde-format
 msgid "Send Status &Update"
 msgstr "主催者に状態の更新を送信(&U)"
 
-#: actionmanager.cpp:719
+#: actionmanager.cpp:720
 #, kde-format
 msgctxt "counter proposal"
 msgid "Request Chan&ge"
 msgstr "主催者に変更を提案(&G)"
 
-#: actionmanager.cpp:727
+#: actionmanager.cpp:728
 #, fuzzy, kde-format
 #| msgid "&Mail Free Busy Information..."
 msgctxt "@action"
 msgid "&Mail Free Busy Information…"
 msgstr "フリー/ビジー情報をメールで送信(&M)..."
 
-#: actionmanager.cpp:732
+#: actionmanager.cpp:733
 #, fuzzy, kde-format
 #| msgid "&Send as iCalendar..."
 msgid "&Send as iCalendar…"
 msgstr "iCalendar として送信(&S)..."
 
-#: actionmanager.cpp:739
+#: actionmanager.cpp:740
 #, fuzzy, kde-format
 #| msgid "&Upload Free Busy Information"
 msgctxt "@action"
 msgid "&Upload Free Busy Information"
 msgstr "フリー/ビジー情報をアップロード(&U)"
 
-#: actionmanager.cpp:745
+#: actionmanager.cpp:746
 #, kde-format
 msgid "&Address Book"
 msgstr "アドレス帳(&A)"
 
-#: actionmanager.cpp:753
+#: actionmanager.cpp:754
 #, kde-format
 msgid "Show Date Navigator"
 msgstr "日付ナビゲータを表示"
 
-#: actionmanager.cpp:757
+#: actionmanager.cpp:758
 #, kde-format
 msgid "Show To-do View"
 msgstr "To-Do ビューを表示"
 
-#: actionmanager.cpp:761
+#: actionmanager.cpp:762
 #, kde-format
 msgid "Show Item Viewer"
 msgstr "イベントビューアを表示"
 
-#: actionmanager.cpp:777
+#: actionmanager.cpp:778
 #, kde-format
 msgid "Show Calendar Manager"
 msgstr "カレンダーマネージャを表示"
 
-#: actionmanager.cpp:791
+#: actionmanager.cpp:792
 #, fuzzy, kde-format
 #| msgid "Configure &Date && Time..."
 msgctxt "@action"
 msgid "Configure &Date && Time…"
 msgstr "日付と時間の書式を設定(&D)..."
 
-#: actionmanager.cpp:795
+#: actionmanager.cpp:796
 #, fuzzy, kde-format
 #| msgid "Manage View &Filters..."
 msgid "Manage View &Filters…"
 msgstr "ビューフィルタの管理(&F)..."
 
-#: actionmanager.cpp:799
+#: actionmanager.cpp:800
 #, fuzzy, kde-format
 #| msgid "Manage C&ategories..."
 msgctxt "@action"
 msgid "Manage T&ags…"
 msgstr "カテゴリを編集(&A)..."
 
-#: actionmanager.cpp:807
+#: actionmanager.cpp:808
 #, fuzzy, kde-format
 #| msgid "&Configure Calendar..."
 msgid "&Configure KOrganizer…"
 msgstr "カレンダーを設定(&C)..."
 
-#: actionmanager.cpp:885
+#: actionmanager.cpp:886
 #, kde-format
 msgid "1 incidence was imported successfully."
 msgid_plural "%1 incidences were imported successfully."
 msgstr[0] ""
 
-#: actionmanager.cpp:888
+#: actionmanager.cpp:889
 #, kde-format
 msgid "There was an error while merging the calendar: %1"
 msgstr ""
 
-#: actionmanager.cpp:899
+#: actionmanager.cpp:900
 #, kde-format
 msgid "New calendar added successfully"
 msgstr ""
 
-#: actionmanager.cpp:901
+#: actionmanager.cpp:902
 #, fuzzy, kde-format
 #| msgid "Could not load calendar %1."
 msgid "Could not add a calendar. Error: %1"
 msgstr "カレンダー <resource>%1</resource> を読み込めませんでした。"
 
-#: actionmanager.cpp:958
+#: actionmanager.cpp:959
 #, fuzzy, kde-format
 #| msgctxt "@title::window"
 #| msgid "Edit Calendar Filters"
@@ -1355,7 +1355,7 @@ msgctxt "@title:window"
 msgid "Select Calendar File to Open"
 msgstr "カレンダーフィルタの編集"
 
-#: actionmanager.cpp:994
+#: actionmanager.cpp:995
 #, fuzzy, kde-format
 #| msgctxt "@title::window"
 #| msgid "Edit Calendar Filters"
@@ -1363,28 +1363,28 @@ msgctxt "@title:window"
 msgid "Select Calendar File to Import"
 msgstr "カレンダーフィルタの編集"
 
-#: actionmanager.cpp:1026
+#: actionmanager.cpp:1027
 #, fuzzy, kde-format
 #| msgid "Purging completed to-dos"
 msgid "An error occurred: %1 (url: %2)"
 msgstr "完了済み To-Do を一括削除"
 
-#: actionmanager.cpp:1044
+#: actionmanager.cpp:1045
 #, kde-format
 msgid "Cannot upload calendar to '%1'"
 msgstr "‘%1’ にカレンダーをアップロードできません"
 
-#: actionmanager.cpp:1050
+#: actionmanager.cpp:1051
 #, kde-format
 msgid "Saved calendar '%1'."
 msgstr "カレンダー “%1” を保存しました。"
 
-#: actionmanager.cpp:1088
+#: actionmanager.cpp:1089
 #, kde-format
 msgid "Unable to save calendar to the file %1."
 msgstr "カレンダーをファイル ‘%1’ に保存できません。"
 
-#: actionmanager.cpp:1088
+#: actionmanager.cpp:1089
 #, fuzzy, kde-format
 #| msgid "Error"
 msgctxt "@title:window"
@@ -1392,108 +1392,108 @@ msgid "Error"
 msgstr "エラー"
 
 # ACCELERATOR changed by translator
-#: actionmanager.cpp:1114
+#: actionmanager.cpp:1115
 #, kde-format
 msgid "&Next Day"
 msgid_plural "&Next %1 Days"
 msgstr[0] "次の %1 日(&X)"
 
-#: actionmanager.cpp:1133
+#: actionmanager.cpp:1134
 #, kde-format
 msgid "Could not start control module for date and time format."
 msgstr "日付と時間の書式を設定するための設定モジュールを起動できませんでした。"
 
-#: actionmanager.cpp:1308
+#: actionmanager.cpp:1309
 #, kde-format
 msgid "&Show Event"
 msgstr "イベントを表示(&S)"
 
-#: actionmanager.cpp:1311
+#: actionmanager.cpp:1312
 #, fuzzy, kde-format
 #| msgid "&Edit Event..."
 msgid "&Edit Event…"
 msgstr "イベントを編集(&E)..."
 
-#: actionmanager.cpp:1314
+#: actionmanager.cpp:1315
 #, kde-format
 msgid "&Delete Event"
 msgstr "イベントを削除(&D)"
 
-#: actionmanager.cpp:1322
+#: actionmanager.cpp:1323
 #, kde-format
 msgid "&Show To-do"
 msgstr "To-Do を表示(&S)"
 
-#: actionmanager.cpp:1325 kontactplugin/korganizer/todosummarywidget.cpp:324
+#: actionmanager.cpp:1326 kontactplugin/korganizer/todosummarywidget.cpp:324
 #, fuzzy, kde-format
 #| msgid "&Edit To-do..."
 msgid "&Edit To-do…"
 msgstr "To-Do を編集(&E)..."
 
-#: actionmanager.cpp:1328 kontactplugin/korganizer/todosummarywidget.cpp:326
+#: actionmanager.cpp:1329 kontactplugin/korganizer/todosummarywidget.cpp:326
 #, kde-format
 msgid "&Delete To-do"
 msgstr "To-Do を削除(&D)"
 
-#: actionmanager.cpp:1471 actionmanager.cpp:1577
+#: actionmanager.cpp:1472 actionmanager.cpp:1578
 #, kde-format
 msgid "Attach as &link"
 msgstr "リンクとして添付(&L)"
 
-#: actionmanager.cpp:1472 actionmanager.cpp:1578
+#: actionmanager.cpp:1473 actionmanager.cpp:1579
 #, kde-format
 msgid "Attach &inline"
 msgstr "インライン添付(&I)"
 
-#: actionmanager.cpp:1473
+#: actionmanager.cpp:1474
 #, kde-format
 msgid "Attach inline &without attachments"
 msgstr "添付ファイルなしでインライン添付(&W)"
 
-#: actionmanager.cpp:1475 actionmanager.cpp:1580
+#: actionmanager.cpp:1476 actionmanager.cpp:1581
 #, kde-format
 msgid "C&ancel"
 msgstr "キャンセル(&A)"
 
-#: actionmanager.cpp:1513
+#: actionmanager.cpp:1514
 #, kde-format
 msgid "Removing attachments from an email might invalidate its signature."
 msgstr "添付ファイルを削除するとメールの署名が無効になる可能性があります。"
 
-#: actionmanager.cpp:1514
+#: actionmanager.cpp:1515
 #, fuzzy, kde-format
 #| msgid "Remove Attachments"
 msgctxt "@title:window"
 msgid "Remove Attachments"
 msgstr "添付ファイルの削除"
 
-#: actionmanager.cpp:1665
+#: actionmanager.cpp:1666
 #, kde-format
 msgid "Undo: %1"
 msgstr "元に戻す: %1"
 
-#: actionmanager.cpp:1668 actionmanager.cpp:1684
+#: actionmanager.cpp:1669 actionmanager.cpp:1685
 #, kde-format
 msgid "Undo"
 msgstr "元に戻す"
 
-#: actionmanager.cpp:1678
+#: actionmanager.cpp:1679
 #, fuzzy, kde-format
 #| msgid "Redo (%1)"
 msgid "Redo: %1"
 msgstr "やり直す (%1)"
 
-#: actionmanager.cpp:1681
+#: actionmanager.cpp:1682
 #, kde-format
 msgid "Redo"
 msgstr "やり直す"
 
-#: actionmanager.cpp:1695
+#: actionmanager.cpp:1696
 #, kde-format
 msgid "URL '%1' is invalid."
 msgstr "URL ‘%1’ は無効です。"
 
-#: actionmanager.cpp:1700
+#: actionmanager.cpp:1701
 #, kde-kuit-format
 msgctxt "@info"
 msgid ""
@@ -1504,7 +1504,7 @@ msgid ""
 "automatically.</para>"
 msgstr ""
 
-#: actionmanager.cpp:1708
+#: actionmanager.cpp:1709
 #, fuzzy, kde-format
 #| msgid "Import Calendar"
 msgctxt "@title:window"
@@ -1512,7 +1512,7 @@ msgid "Import Calendar"
 msgstr "カレンダーをインポート"
 
 # @option:radio
-#: actionmanager.cpp:1709
+#: actionmanager.cpp:1710
 #, fuzzy, kde-format
 #| msgid "Merge into existing calendar"
 msgctxt "@action:button"
@@ -1520,7 +1520,7 @@ msgid "Merge into existing calendar"
 msgstr "既存のカレンダーにマージ"
 
 # @option:radio
-#: actionmanager.cpp:1710
+#: actionmanager.cpp:1711
 #, fuzzy, kde-format
 #| msgid "Add as new calendar"
 msgctxt "@action:button"
@@ -1735,10 +1735,13 @@ msgid "Delete calendar failed: <message>%1</message>"
 msgstr ""
 
 #: calendarview.cpp:251
-#, kde-kuit-format
+#, fuzzy, kde-kuit-format
+#| msgid ""
+#| "<p><em>No Item Selected</em></p><p>Select an event, to-do or journal "
+#| "entry to view its details here.</p>"
 msgid ""
-"<p><em>No Item Selected</em></p><p>Select an event, to-do or journal entry "
-"to view its details here.</p>"
+"<para><emphasis>No Item Selected</emphasis></para><para>Select an event, to-"
+"do or journal entry to view its details here.</para>"
 msgstr ""
 "<p>アイテムが選択されていません。</p><p>KOrganizer のメインビューでイベント、"
 "To-Do、日記のエントリを選択すると、ここに詳細が表示されます。</p>"
