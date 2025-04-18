@@ -166,16 +166,16 @@ void KDateNavigator::updateDates()
         QString weeknum;
 
         if (weeknumstart != weeknumend) {
-            weeknum = i18nc("start/end week number of line in date picker", "%1/%2", weeknumstart, weeknumend);
+            weeknum = i18nc("@info start/end week number of line in date picker", "%1/%2", weeknumstart, weeknumend);
         } else {
             weeknum.setNum(weeknumstart);
         }
         mWeeknos[i]->setText(weeknum);
         mWeeknos[i]->setToolTip(i18nc("@info:tooltip", "Scroll to week number %1", weeknum));
-        mWeeknos[i]->setWhatsThis(
-            i18n("Click here to scroll the display to week number %1 "
-                 "of the currently displayed year.",
-                 weeknum));
+        mWeeknos[i]->setWhatsThis(i18nc("@info:whatsthis",
+                                        "Click here to scroll the display to week number %1 "
+                                        "of the currently displayed year.",
+                                        weeknum));
     }
 
     // each updateDates is followed by an updateView -> repaint is issued there !
@@ -220,7 +220,7 @@ void KDateNavigator::updateConfig()
         QString const longDayName = QLocale().dayName(day, QLocale::LongFormat);
         mHeadings[i]->setText(dayName);
         mHeadings[i]->setToolTip(i18nc("@info:tooltip", "%1", longDayName));
-        mHeadings[i]->setWhatsThis(i18n("A column header of the %1 dates in the month.", longDayName));
+        mHeadings[i]->setWhatsThis(i18nc("@info:whatsthis", "A column header of the %1 dates in the month.", longDayName));
     }
     mDayMatrix->setUpdateNeeded();
     updateDayMatrix();

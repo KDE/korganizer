@@ -242,7 +242,7 @@ void ActionManager::initActions()
     //~~~~~~~~~~~~~~~~~~~~~~~~ IMPORT / EXPORT ~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~
     /** Import Action **/
     // TODO: Icon
-    mImportAction = new QAction(i18nc("@action", "Import &Calendar…"), this);
+    mImportAction = new QAction(i18nc("@action:inmenu", "Import &Calendar…"), this);
     mImportAction->setStatusTip(i18nc("@info:status", "Import a calendar"));
     mImportAction->setToolTip(i18nc("@info:tooltip", "Import an iCalendar or vCalendar file"));
     mImportAction->setWhatsThis(i18nc("@info:whatsthis",
@@ -252,7 +252,7 @@ void ActionManager::initActions()
     connect(mImportAction, &QAction::triggered, this, &ActionManager::file_import);
 
     /** Get Hot New Stuff Action **/
-    auto knsAction = new KNSWidgets::Action(i18n("Get New Calendars…"), QStringLiteral("korganizer.knsrc"), this);
+    auto knsAction = new KNSWidgets::Action(i18nc("@action:inmenu", "Get New Calendars…"), QStringLiteral("korganizer.knsrc"), this);
     knsAction->setStatusTip(i18nc("@info:status", "Load a calendar from \"Get Hot New Stuff\""));
     knsAction->setToolTip(i18nc("@info:tooltip", "Search \"Get Hot New Stuff\" for calendars to import"));
     knsAction->setWhatsThis(i18nc("@info:whatsthis",
@@ -277,7 +277,7 @@ void ActionManager::initActions()
             storage.setFileName(file);
             storage.setSaveFormat(new KCalendarCore::ICalFormat);
             if (!storage.load()) {
-                KMessageBox::error(mCalendarView, i18n("Could not load calendar %1.", file));
+                KMessageBox::error(mCalendarView, xi18nc("@info", "Could not load calendar <filename>%1</filename>.", file));
             } else {
                 QStringList eventSummaries;
                 const KCalendarCore::Event::List events = calendar()->events();
@@ -287,7 +287,7 @@ void ActionManager::initActions()
                 }
 
                 const int result = KMessageBox::warningContinueCancelList(mCalendarView,
-                                                                          i18n("The downloaded events will be merged into your current calendar."),
+                                                                          i18nc("@info", "The downloaded events will be merged into your current calendar."),
                                                                           eventSummaries);
 
                 if (result != KMessageBox::Continue) {
@@ -304,7 +304,7 @@ void ActionManager::initActions()
     QAction *action = nullptr;
     /** Export Action **/
     // TODO: Icon
-    action = new QAction(i18nc("@action", "Export as &iCalendar…"), this);
+    action = new QAction(i18nc("@action:inmenu", "Export as &iCalendar…"), this);
     action->setStatusTip(i18nc("@info:status", "Export calendar to file"));
     action->setToolTip(i18nc("@info:tooltip", "Export your calendar to an iCalendar file"));
     action->setWhatsThis(i18nc("@info:whatsthis", "Allows you to export your entire calendar collection to one iCalendar file."));
@@ -313,7 +313,7 @@ void ActionManager::initActions()
 
     /** Archive Action **/
     // TODO: Icon
-    action = new QAction(i18nc("@action", "Archive O&ld Incidences…"), this);
+    action = new QAction(i18nc("@action:inmenu", "Archive O&ld Incidences…"), this);
     action->setStatusTip(i18nc("@info:status", "Archive events and to-dos to a file"));
     action->setToolTip(i18nc("@info:tooltip", "Archive old events and to-dos to an iCalendar file"));
     action->setWhatsThis(i18nc("@info:whatsthis",
@@ -325,7 +325,7 @@ void ActionManager::initActions()
 
     /** Purge Todos Action **/
     // TODO: Icon
-    action = new QAction(i18nc("@action", "Pur&ge Completed To-dos"), mACollection);
+    action = new QAction(i18nc("@action:inmenu", "Pur&ge Completed To-dos"), mACollection);
     action->setStatusTip(i18nc("@info:status", "Purge completed to-dos"));
     action->setToolTip(i18nc("@info:tooltip", "Remove completed to-dos from your calendar"));
     action->setWhatsThis(i18nc("@info:whatsthis",
@@ -366,7 +366,7 @@ void ActionManager::initActions()
             },
             mACollection);
     }
-    mDeleteAction = new QAction(QIcon::fromTheme(QStringLiteral("edit-delete")), i18n("&Delete"), this);
+    mDeleteAction = new QAction(QIcon::fromTheme(QStringLiteral("edit-delete")), i18nc("@action:inmenu", "&Delete"), this);
     mACollection->addAction(QStringLiteral("edit_delete"), mDeleteAction);
     connect(mDeleteAction, &QAction::triggered, mCalendarView, &CalendarView::appointment_delete);
     if (mIsPart) {
@@ -383,7 +383,7 @@ void ActionManager::initActions()
     /************************** VIEW MENU *********************************/
 
     /** What's Next View Action **/
-    action = new QAction(QIcon::fromTheme(QStringLiteral("view-calendar-upcoming-events")), i18n("What's &Next"), this);
+    action = new QAction(QIcon::fromTheme(QStringLiteral("view-calendar-upcoming-events")), i18nc("@action:inmenu", "What's &Next"), this);
     action->setStatusTip(i18nc("@info:status", "What's Next View"));
     action->setToolTip(i18nc("@info:tooltip", "Switch to the What's Next View"));
     action->setWhatsThis(i18nc("@info:whatsthis",
@@ -395,7 +395,7 @@ void ActionManager::initActions()
     connect(action, &QAction::triggered, mCalendarView->viewManager(), &KOViewManager::showWhatsNextView);
 
     /** Month View Action **/
-    action = new QAction(QIcon::fromTheme(QStringLiteral("view-calendar-month")), i18n("&Month"), this);
+    action = new QAction(QIcon::fromTheme(QStringLiteral("view-calendar-month")), i18nc("@action:inmenu", "&Month"), this);
     action->setStatusTip(i18nc("@info:status", "Month View"));
     action->setToolTip(i18nc("@info:tooltip", "Switch to the Month View"));
     action->setWhatsThis(i18nc("@info:whatsthis",
@@ -405,7 +405,7 @@ void ActionManager::initActions()
     connect(action, &QAction::triggered, mCalendarView->viewManager(), &KOViewManager::showMonthView);
 
     /** Agenda View Action **/
-    action = new QAction(QIcon::fromTheme(QStringLiteral("view-calendar-agenda")), i18n("&Agenda"), this);
+    action = new QAction(QIcon::fromTheme(QStringLiteral("view-calendar-agenda")), i18nc("@action:inmenu", "&Agenda"), this);
     auto agendaMenu = new QMenu(nullptr);
     action->setMenu(agendaMenu);
     action->setStatusTip(i18nc("@info:status", "Agenda View"));
@@ -418,7 +418,7 @@ void ActionManager::initActions()
     connect(action, &QAction::triggered, mCalendarView->viewManager(), &KOViewManager::showAgendaView);
 
     /** List View Action **/
-    action = new QAction(QIcon::fromTheme(QStringLiteral("view-calendar-list")), i18n("&Event List"), this);
+    action = new QAction(QIcon::fromTheme(QStringLiteral("view-calendar-list")), i18nc("@action:inmenu", "&Event List"), this);
     action->setStatusTip(i18nc("@info:status", "List View"));
     action->setToolTip(i18nc("@info:tooltip", "Switch to the List View"));
     action->setWhatsThis(i18nc("@info:whatsthis",
@@ -428,7 +428,7 @@ void ActionManager::initActions()
     connect(action, &QAction::triggered, mCalendarView->viewManager(), &KOViewManager::showListView);
 
     /** Todo View Action **/
-    action = new QAction(QIcon::fromTheme(QStringLiteral("view-calendar-tasks")), i18n("&To-do List"), this);
+    action = new QAction(QIcon::fromTheme(QStringLiteral("view-calendar-tasks")), i18nc("@action:inmenu", "&To-do List"), this);
     action->setStatusTip(i18nc("@info:status", "To-do List View"));
     action->setToolTip(i18nc("@info:tooltip", "Switch to the To-do List View"));
     action->setWhatsThis(i18nc("@info:whatsthis",
@@ -438,7 +438,7 @@ void ActionManager::initActions()
     connect(action, &QAction::triggered, mCalendarView->viewManager(), &KOViewManager::showTodoView);
 
     /** Journal View Action **/
-    action = new QAction(QIcon::fromTheme(QStringLiteral("view-calendar-journal")), i18n("&Journal"), this);
+    action = new QAction(QIcon::fromTheme(QStringLiteral("view-calendar-journal")), i18nc("@action:inmenu", "&Journal"), this);
     action->setStatusTip(i18nc("@info:status", "Journal View"));
     action->setToolTip(i18nc("@info:tooltip", "Switch to the Journal View"));
     action->setWhatsThis(i18nc("@info:whatsthis",
@@ -448,7 +448,7 @@ void ActionManager::initActions()
     connect(action, &QAction::triggered, mCalendarView->viewManager(), &KOViewManager::showJournalView);
 
     /** Timeline View Action **/
-    action = new QAction(QIcon::fromTheme(QStringLiteral("view-calendar-timeline")), i18n("Time&line"), this);
+    action = new QAction(QIcon::fromTheme(QStringLiteral("view-calendar-timeline")), i18nc("@action:inmenu", "Time&line"), this);
     action->setStatusTip(i18nc("@info:status", "Timeline View"));
     action->setToolTip(i18nc("@info:tooltip", "Switch to the Timeline View"));
     action->setWhatsThis(i18nc("@info:whatsthis",
@@ -461,7 +461,7 @@ void ActionManager::initActions()
 
     /** Refresh Action **/
     // TODO: icon
-    action = new QAction(i18nc("@action", "&Refresh"), this);
+    action = new QAction(i18nc("@action:inmenu", "&Refresh"), this);
     action->setStatusTip(i18nc("@info:status", "Refresh"));
     action->setToolTip(i18nc("@info:tooltip", "Refresh the display"));
     action->setWhatsThis(i18nc("@info:whatsthis",
@@ -474,7 +474,7 @@ void ActionManager::initActions()
 
     /** Filter Action **/
     // TODO: icon
-    mFilterAction = new KSelectAction(i18n("F&ilter"), this);
+    mFilterAction = new KSelectAction(i18nc("@action:inmenu", "F&ilter"), this);
     mFilterAction->setStatusTip(i18nc("@info:status", "Filter incidences"));
     mFilterAction->setToolTip(i18nc("@info:tooltip", "Filter incidences from the calendar"));
     mFilterAction->setWhatsThis(i18nc("@info:whatsthis",
@@ -490,22 +490,22 @@ void ActionManager::initActions()
 
     //~~~~~~~~~~~~~~~~~~~~~~~~~~~~~ ZOOM ~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~
     // TODO: try to find / create better icons for the following 4 actions
-    action = new QAction(QIcon::fromTheme(QStringLiteral("zoom-in")), i18n("In Horizontally"), this);
+    action = new QAction(QIcon::fromTheme(QStringLiteral("zoom-in")), i18nc("@action:inmenu", "In Horizontally"), this);
     action->setEnabled(mCalendarView->currentView()->supportsZoom());
     mACollection->addAction(QStringLiteral("zoom_in_horizontally"), action);
     connect(action, &QAction::triggered, mCalendarView->viewManager(), &KOViewManager::zoomInHorizontally);
 
-    action = new QAction(QIcon::fromTheme(QStringLiteral("zoom-out")), i18n("Out Horizontally"), this);
+    action = new QAction(QIcon::fromTheme(QStringLiteral("zoom-out")), i18nc("@action:inmenu", "Out Horizontally"), this);
     action->setEnabled(mCalendarView->currentView()->supportsZoom());
     mACollection->addAction(QStringLiteral("zoom_out_horizontally"), action);
     connect(action, &QAction::triggered, mCalendarView->viewManager(), &KOViewManager::zoomOutHorizontally);
 
-    action = new QAction(QIcon::fromTheme(QStringLiteral("zoom-in")), i18n("In Vertically"), this);
+    action = new QAction(QIcon::fromTheme(QStringLiteral("zoom-in")), i18nc("@action:inmenu", "In Vertically"), this);
     action->setEnabled(mCalendarView->currentView()->supportsZoom());
     mACollection->addAction(QStringLiteral("zoom_in_vertically"), action);
     connect(action, &QAction::triggered, mCalendarView->viewManager(), &KOViewManager::zoomInVertically);
 
-    action = new QAction(QIcon::fromTheme(QStringLiteral("zoom-out")), i18n("Out Vertically"), this);
+    action = new QAction(QIcon::fromTheme(QStringLiteral("zoom-out")), i18nc("@action:inmenu", "Out Vertically"), this);
     action->setEnabled(mCalendarView->currentView()->supportsZoom());
     mACollection->addAction(QStringLiteral("zoom_out_vertically"), action);
     connect(action, &QAction::triggered, mCalendarView->viewManager(), &KOViewManager::zoomOutVertically);
@@ -514,8 +514,8 @@ void ActionManager::initActions()
     bool const isRTL = QApplication::isRightToLeft();
 
     /** Scroll to Today Action **/
-    action = new QAction(QIcon::fromTheme(QStringLiteral("go-jump-today")), i18nc("@action Jump to today", "To &Today"), this);
-    action->setIconText(i18n("Today"));
+    action = new QAction(QIcon::fromTheme(QStringLiteral("go-jump-today")), i18nc("@action:inmenu Jump to today", "To &Today"), this);
+    action->setIconText(i18nc("@action:button", "Today"));
     action->setStatusTip(i18nc("@info:status", "Scroll to Today"));
     action->setToolTip(i18nc("@info:tooltip", "Scroll the view to today"));
     action->setWhatsThis(i18nc("@info:whatsthis", "Scrolls the current view to the today's date."));
@@ -523,8 +523,10 @@ void ActionManager::initActions()
     connect(action, &QAction::triggered, mCalendarView, &CalendarView::goToday);
 
     /** Scroll Backward Action **/
-    action = new QAction(QIcon::fromTheme(isRTL ? QStringLiteral("go-next") : QStringLiteral("go-previous")), i18nc("scroll backward", "&Backward"), this);
-    action->setIconText(i18nc("scroll backward", "Back"));
+    action = new QAction(QIcon::fromTheme(isRTL ? QStringLiteral("go-next") : QStringLiteral("go-previous")),
+                         i18nc("@action:inmenu scroll backward", "&Backward"),
+                         this);
+    action->setIconText(i18nc("@action:button scroll backward", "Back"));
     action->setStatusTip(i18nc("@info:status", "Scroll Backward"));
     action->setToolTip(i18nc("@info:tooltip", "Scroll the view backward"));
     action->setWhatsThis(i18nc("@info:whatsthis",
@@ -534,8 +536,10 @@ void ActionManager::initActions()
     connect(action, &QAction::triggered, mCalendarView, &CalendarView::goPrevious);
 
     /** Scroll Forward Action **/
-    action = new QAction(QIcon::fromTheme(isRTL ? QStringLiteral("go-previous") : QStringLiteral("go-next")), i18nc("scroll forward", "&Forward"), this);
-    action->setIconText(i18nc("scroll forward", "Forward"));
+    action = new QAction(QIcon::fromTheme(isRTL ? QStringLiteral("go-previous") : QStringLiteral("go-next")),
+                         i18nc("@action:inmenu scroll forward", "&Forward"),
+                         this);
+    action->setIconText(i18nc("@action:button scroll forward", "Forward"));
     action->setStatusTip(i18nc("@info:status", "Scroll Forward"));
     action->setToolTip(i18nc("@info:tooltip", "Scroll the view forward"));
     action->setWhatsThis(i18nc("@info:whatsthis",
@@ -595,7 +599,7 @@ void ActionManager::initActions()
 
     /************************** Actions MENU *********************************/
     /** New Event Action **/
-    mNewEventAction = new QAction(QIcon::fromTheme(QStringLiteral("appointment-new")), i18n("New E&vent…"), this);
+    mNewEventAction = new QAction(QIcon::fromTheme(QStringLiteral("appointment-new")), i18nc("@action:inmenu", "New E&vent…"), this);
     mNewEventAction->setStatusTip(i18nc("@info:status", "Create a new Event"));
     mNewEventAction->setToolTip(i18nc("@info:tooltip", "Create a new Event"));
     mNewEventAction->setWhatsThis(i18nc("@info:whatsthis",
@@ -605,7 +609,7 @@ void ActionManager::initActions()
     connect(mNewEventAction, &QAction::triggered, this, &ActionManager::slotNewEvent);
 
     /** New To-do Action **/
-    mNewTodoAction = new QAction(QIcon::fromTheme(QStringLiteral("task-new")), i18n("New &To-do…"), this);
+    mNewTodoAction = new QAction(QIcon::fromTheme(QStringLiteral("task-new")), i18nc("@action:inmenu", "New &To-do…"), this);
     mNewTodoAction->setStatusTip(i18nc("@info:status", "Create a new To-do"));
     mNewTodoAction->setToolTip(i18nc("@info:tooltip", "Create a new To-do"));
     mNewTodoAction->setWhatsThis(i18nc("@info:whatsthis",
@@ -616,7 +620,7 @@ void ActionManager::initActions()
 
     /** New Sub-To-do Action **/
     // TODO: icon
-    mNewSubtodoAction = new QAction(i18nc("@action", "New Su&b-to-do…"), this);
+    mNewSubtodoAction = new QAction(i18nc("@action:inmenu", "New Su&b-to-do…"), this);
     // TODO: statustip, tooltip, whatsthis
     mACollection->addAction(QStringLiteral("new_subtodo"), mNewSubtodoAction);
     connect(mNewSubtodoAction, &QAction::triggered, this, &ActionManager::slotNewSubTodo);
@@ -624,7 +628,7 @@ void ActionManager::initActions()
     connect(mCalendarView, &CalendarView::todoSelected, mNewSubtodoAction, &QAction::setEnabled);
 
     /** New Journal Action **/
-    mNewJournalAction = new QAction(QIcon::fromTheme(QStringLiteral("journal-new")), i18n("New &Journal…"), this);
+    mNewJournalAction = new QAction(QIcon::fromTheme(QStringLiteral("journal-new")), i18nc("@action:inmenu", "New &Journal…"), this);
     mNewJournalAction->setStatusTip(i18nc("@info:status", "Create a new Journal"));
     mNewJournalAction->setToolTip(i18nc("@info:tooltip", "Create a new Journal"));
     mNewJournalAction->setWhatsThis(i18nc("@info:whatsthis", "Starts a dialog that allows you to create a new Journal entry."));
@@ -632,8 +636,8 @@ void ActionManager::initActions()
     connect(mNewJournalAction, &QAction::triggered, this, &ActionManager::slotNewJournal);
 
     /** Scroll to Date Action **/
-    action = new QAction(QIcon::fromTheme(QStringLiteral("go-jump")), i18nc("@action Jump to date", "&Pick a Date"), this);
-    action->setIconText(i18n("Date"));
+    action = new QAction(QIcon::fromTheme(QStringLiteral("go-jump")), i18nc("@action:inmenu Jump to date", "&Pick a Date"), this);
+    action->setIconText(i18nc("@action:button", "Date"));
     action->setStatusTip(i18nc("@info:status", "Scroll the view to user selected dates"));
     action->setToolTip(i18nc("@info:tooltip", "Scroll the view to user selected dates"));
     action->setWhatsThis(i18nc("@info:whatsthis", "Opens a date selection dialog for quickly navigating the view."));
@@ -641,8 +645,8 @@ void ActionManager::initActions()
     connect(action, &QAction::triggered, mCalendarView, &CalendarView::goSelectADate);
 
     /** Configure Current View Action **/
-    mConfigureViewAction = new QAction(QIcon::fromTheme(QStringLiteral("configure")), i18n("Configure View…"), this);
-    mConfigureViewAction->setIconText(i18n("Configure"));
+    mConfigureViewAction = new QAction(QIcon::fromTheme(QStringLiteral("configure")), i18nc("@action:inmenu", "Configure View…"), this);
+    mConfigureViewAction->setIconText(i18nc("@action:button", "Configure"));
     mConfigureViewAction->setStatusTip(i18nc("@info:status", "Configure the multi-calendar view"));
     mConfigureViewAction->setToolTip(i18nc("@info:tooltip", "Configure the multi-calendar view"));
     mConfigureViewAction->setWhatsThis(i18nc("@info:whatsthis",
@@ -653,20 +657,20 @@ void ActionManager::initActions()
     mACollection->addAction(QStringLiteral("configure_view"), mConfigureViewAction);
     connect(mConfigureViewAction, &QAction::triggered, mCalendarView, &CalendarView::configureCurrentView);
 
-    mShowIncidenceAction = new QAction(QIcon::fromTheme(QStringLiteral("document-preview")), i18n("&Show"), this);
+    mShowIncidenceAction = new QAction(QIcon::fromTheme(QStringLiteral("document-preview")), i18nc("@action:inmenu", "&Show"), this);
     mACollection->addAction(QStringLiteral("show_incidence"), mShowIncidenceAction);
     connect(mShowIncidenceAction, &QAction::triggered, mCalendarView, qOverload<>(&CalendarView::showIncidence));
 
-    mEditIncidenceAction = new QAction(QIcon::fromTheme(QStringLiteral("document-edit")), i18n("&Edit…"), this);
+    mEditIncidenceAction = new QAction(QIcon::fromTheme(QStringLiteral("document-edit")), i18nc("@action:inmenu", "&Edit…"), this);
     mACollection->addAction(QStringLiteral("edit_incidence"), mEditIncidenceAction);
     connect(mEditIncidenceAction, &QAction::triggered, mCalendarView, qOverload<>(&CalendarView::editIncidence));
 
-    mDeleteIncidenceAction = new QAction(QIcon::fromTheme(QStringLiteral("edit-delete")), i18n("&Delete"), this);
+    mDeleteIncidenceAction = new QAction(QIcon::fromTheme(QStringLiteral("edit-delete")), i18nc("@action:inmenu", "&Delete"), this);
     mACollection->addAction(QStringLiteral("delete_incidence"), mDeleteIncidenceAction);
     connect(mDeleteIncidenceAction, &QAction::triggered, mCalendarView, qOverload<>(&CalendarView::deleteIncidence));
     mACollection->setDefaultShortcut(mDeleteIncidenceAction, QKeySequence(Qt::Key_Delete));
 
-    action = new QAction(i18nc("@action", "&Make Sub-to-do Independent"), this);
+    action = new QAction(i18nc("@action:inmenu", "&Make Sub-to-do Independent"), this);
     mACollection->addAction(QStringLiteral("unsub_todo"), action);
     connect(action, &QAction::triggered, mCalendarView, &CalendarView::todo_unsub);
     action->setEnabled(false);
@@ -678,14 +682,14 @@ void ActionManager::initActions()
     //                                         mACollection, "activate_alarm" );
 
     /************************** SCHEDULE MENU ********************************/
-    mPublishEvent = new QAction(QIcon::fromTheme(QStringLiteral("mail-send")), i18n("&Publish Item Information…"), this);
+    mPublishEvent = new QAction(QIcon::fromTheme(QStringLiteral("mail-send")), i18nc("@action:inmenu", "&Publish Item Information…"), this);
     mACollection->addAction(QStringLiteral("schedule_publish"), mPublishEvent);
     connect(mPublishEvent, &QAction::triggered, this, [this](bool) {
         mCalendarView->schedule_publish();
     });
     mPublishEvent->setEnabled(false);
 
-    mSendInvitation = new QAction(QIcon::fromTheme(QStringLiteral("mail-send")), i18n("Send &Invitation to Attendees"), this);
+    mSendInvitation = new QAction(QIcon::fromTheme(QStringLiteral("mail-send")), i18nc("@action:inmenu", "Send &Invitation to Attendees"), this);
     mACollection->addAction(QStringLiteral("schedule_request"), mSendInvitation);
     connect(mSendInvitation, &QAction::triggered, this, [this](bool) {
         mCalendarView->schedule_request();
@@ -693,7 +697,7 @@ void ActionManager::initActions()
     mSendInvitation->setEnabled(false);
     connect(mCalendarView, &CalendarView::organizerEventsSelected, mSendInvitation, &QAction::setEnabled);
 
-    mRequestUpdate = new QAction(i18nc("@action", "Re&quest Update"), this);
+    mRequestUpdate = new QAction(i18nc("@action:inmenu", "Re&quest Update"), this);
     mACollection->addAction(QStringLiteral("schedule_refresh"), mRequestUpdate);
     connect(mRequestUpdate, &QAction::triggered, this, [this](bool) {
         mCalendarView->schedule_refresh();
@@ -701,7 +705,7 @@ void ActionManager::initActions()
     mRequestUpdate->setEnabled(false);
     connect(mCalendarView, &CalendarView::groupEventsSelected, mRequestUpdate, &QAction::setEnabled);
 
-    mSendCancel = new QAction(i18nc("@action", "Send &Cancellation to Attendees"), this);
+    mSendCancel = new QAction(i18nc("@action:inmenu", "Send &Cancellation to Attendees"), this);
     mACollection->addAction(QStringLiteral("schedule_cancel"), mSendCancel);
     connect(mSendCancel, &QAction::triggered, this, [this](bool) {
         mCalendarView->schedule_cancel();
@@ -709,7 +713,7 @@ void ActionManager::initActions()
     mSendCancel->setEnabled(false);
     connect(mCalendarView, &CalendarView::organizerEventsSelected, mSendCancel, &QAction::setEnabled);
 
-    mSendStatusUpdate = new QAction(QIcon::fromTheme(QStringLiteral("mail-reply-sender")), i18n("Send Status &Update"), this);
+    mSendStatusUpdate = new QAction(QIcon::fromTheme(QStringLiteral("mail-reply-sender")), i18nc("@action:inmenu", "Send Status &Update"), this);
     mACollection->addAction(QStringLiteral("schedule_reply"), mSendStatusUpdate);
     connect(mSendStatusUpdate, &QAction::triggered, this, [this](bool) {
         mCalendarView->schedule_reply();
@@ -717,7 +721,7 @@ void ActionManager::initActions()
     mSendStatusUpdate->setEnabled(false);
     connect(mCalendarView, &CalendarView::groupEventsSelected, mSendStatusUpdate, &QAction::setEnabled);
 
-    mRequestChange = new QAction(i18nc("counter proposal", "Request Chan&ge"), this);
+    mRequestChange = new QAction(i18nc("@action:inmenu counter proposal", "Request Chan&ge"), this);
     mACollection->addAction(QStringLiteral("schedule_counter"), mRequestChange);
     connect(mRequestChange, &QAction::triggered, this, [this](bool) {
         mCalendarView->schedule_counter();
@@ -725,25 +729,25 @@ void ActionManager::initActions()
     mRequestChange->setEnabled(false);
     connect(mCalendarView, &CalendarView::groupEventsSelected, mRequestChange, &QAction::setEnabled);
 
-    action = new QAction(i18nc("@action", "&Mail Free Busy Information…"), this);
+    action = new QAction(i18nc("@action:inmenu", "&Mail Free Busy Information…"), this);
     mACollection->addAction(QStringLiteral("mail_freebusy"), action);
     connect(action, &QAction::triggered, mCalendarView, &CalendarView::mailFreeBusy);
     action->setEnabled(true);
 
-    mForwardEvent = new QAction(QIcon::fromTheme(QStringLiteral("mail-forward")), i18n("&Send as iCalendar…"), this);
+    mForwardEvent = new QAction(QIcon::fromTheme(QStringLiteral("mail-forward")), i18nc("@action:inmenu", "&Send as iCalendar…"), this);
     mACollection->addAction(QStringLiteral("schedule_forward"), mForwardEvent);
     connect(mForwardEvent, &QAction::triggered, this, [this](bool) {
         mCalendarView->schedule_forward();
     });
     mForwardEvent->setEnabled(false);
 
-    action = new QAction(i18nc("@action", "&Upload Free Busy Information"), this);
+    action = new QAction(i18nc("@action:inmenu", "&Upload Free Busy Information"), this);
     mACollection->addAction(QStringLiteral("upload_freebusy"), action);
     connect(action, &QAction::triggered, mCalendarView, &CalendarView::uploadFreeBusy);
     action->setEnabled(true);
 
     if (!mIsPart) {
-        action = new QAction(QIcon::fromTheme(QStringLiteral("help-contents")), i18n("&Address Book"), this);
+        action = new QAction(QIcon::fromTheme(QStringLiteral("help-contents")), i18nc("@action:inmenu", "&Address Book"), this);
         mACollection->addAction(QStringLiteral("addressbook"), action);
         connect(action, &QAction::triggered, mCalendarView, &CalendarView::openAddressbook);
     }
@@ -751,15 +755,15 @@ void ActionManager::initActions()
     /************************** SETTINGS MENU ********************************/
 
     //~~~~~~~~~~~~~~~~~~~~~~~~~~~~ SIDEBAR ~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~
-    mDateNavigatorShowAction = new KToggleAction(i18n("Show Date Navigator"), this);
+    mDateNavigatorShowAction = new KToggleAction(i18nc("@action:inmenu", "Show Date Navigator"), this);
     mACollection->addAction(QStringLiteral("show_datenavigator"), mDateNavigatorShowAction);
     connect(mDateNavigatorShowAction, &KToggleAction::triggered, this, &ActionManager::toggleDateNavigator);
 
-    mTodoViewShowAction = new KToggleAction(i18n("Show To-do View"), this);
+    mTodoViewShowAction = new KToggleAction(i18nc("@action:inmenu", "Show To-do View"), this);
     mACollection->addAction(QStringLiteral("show_todoview"), mTodoViewShowAction);
     connect(mTodoViewShowAction, &KToggleAction::triggered, this, &ActionManager::toggleTodoView);
 
-    mEventViewerShowAction = new KToggleAction(i18n("Show Item Viewer"), this);
+    mEventViewerShowAction = new KToggleAction(i18nc("@action:inmenu", "Show Item Viewer"), this);
     mACollection->addAction(QStringLiteral("show_eventviewer"), mEventViewerShowAction);
     connect(mEventViewerShowAction, &KToggleAction::triggered, this, &ActionManager::toggleEventViewer);
 
@@ -775,7 +779,7 @@ void ActionManager::initActions()
     toggleEventViewer();
 
     if (!mMainWindow->hasDocument()) {
-        mCollectionViewShowAction = new KToggleAction(i18n("Show Calendar Manager"), this);
+        mCollectionViewShowAction = new KToggleAction(i18nc("@action:inmenu", "Show Calendar Manager"), this);
         mACollection->addAction(QStringLiteral("show_resourceview"), mCollectionViewShowAction);
         connect(mCollectionViewShowAction, &KToggleAction::triggered, this, &ActionManager::toggleResourceView);
         mCollectionViewShowAction->setChecked(config.readEntry("ResourceViewVisible", true));
@@ -789,15 +793,15 @@ void ActionManager::initActions()
     toggleMenubar(true);
 
 #if !defined(Q_OS_WIN) && !defined(Q_OS_MACOS)
-    action = new QAction(i18nc("@action", "Configure &Date && Time…"), this);
+    action = new QAction(i18nc("@action:inmenu", "Configure &Date && Time…"), this);
     mACollection->addAction(QStringLiteral("conf_datetime"), action);
     connect(action, &QAction::triggered, this, &ActionManager::configureDateTime);
 #endif
-    action = new QAction(QIcon::fromTheme(QStringLiteral("view-filter")), i18n("Manage View &Filters…"), this);
+    action = new QAction(QIcon::fromTheme(QStringLiteral("view-filter")), i18nc("@action:inmenu", "Manage View &Filters…"), this);
     mACollection->addAction(QStringLiteral("edit_filters"), action);
     connect(action, &QAction::triggered, mCalendarView, &CalendarView::editFilters);
 
-    action = new QAction(i18nc("@action", "Manage T&ags…"), this);
+    action = new QAction(i18nc("@action:inmenu", "Manage T&ags…"), this);
     mACollection->addAction(QStringLiteral("edit_categories"), action);
     connect(action, &QAction::triggered, mCalendarView->dialogManager(), &KODialogManager::showCategoryEditDialog);
 
@@ -805,7 +809,7 @@ void ActionManager::initActions()
     mACollection->addAction(QStringLiteral("colorscheme_menu"), KColorSchemeMenu::createMenu(manager, this));
 
     if (mIsPart) {
-        action = new QAction(QIcon::fromTheme(QStringLiteral("configure")), i18n("&Configure KOrganizer…"), this);
+        action = new QAction(QIcon::fromTheme(QStringLiteral("configure")), i18nc("@action:inmenu", "&Configure KOrganizer…"), this);
         mACollection->addAction(QStringLiteral("korganizer_configure"), action);
         connect(action, &QAction::triggered, mCalendarView, &CalendarView::edit_options);
         mACollection->addAction(KStandardActions::KeyBindings, QStringLiteral("korganizer_configure_shortcuts"), this, &ActionManager::keyBindings);
@@ -883,10 +887,11 @@ void ActionManager::slotMergeFinished(bool success, int total)
     auto importer = qobject_cast<Akonadi::ICalImporter *>(sender());
 
     if (success) {
-        mCalendarView->showMessage(i18np("1 incidence was imported successfully.", "%1 incidences were imported successfully.", total),
+        mCalendarView->showMessage(i18ncp("@info", "1 incidence was imported successfully.", "%1 incidences were imported successfully.", total),
                                    KMessageWidget::Information);
     } else {
-        mCalendarView->showMessage(i18n("There was an error while merging the calendar: %1", importer->errorMessage()), KMessageWidget::Error);
+        mCalendarView->showMessage(xi18nc("@info", "There was an error while merging the calendar: <message>%1</message>", importer->errorMessage()),
+                                   KMessageWidget::Error);
     }
     sender()->deleteLater();
 }
@@ -897,9 +902,9 @@ void ActionManager::slotNewResourceFinished(bool success)
     auto importer = qobject_cast<Akonadi::ICalImporter *>(sender());
     mImportAction->setEnabled(true);
     if (success) {
-        mCalendarView->showMessage(i18n("New calendar added successfully"), KMessageWidget::Information);
+        mCalendarView->showMessage(i18nc("@info", "New calendar added successfully"), KMessageWidget::Information);
     } else {
-        mCalendarView->showMessage(i18n("Could not add a calendar. Error: %1", importer->errorMessage()), KMessageWidget::Error);
+        mCalendarView->showMessage(xi18nc("@info", "Could not add a calendar. Error: <message>%1</message>", importer->errorMessage()), KMessageWidget::Error);
     }
     sender()->deleteLater();
 }
@@ -1024,7 +1029,8 @@ bool ActionManager::importURL(const QUrl &url, bool merge)
     } else {
         // empty error message means user canceled.
         if (!importer->errorMessage().isEmpty()) {
-            mCalendarView->showMessage(i18n("An error occurred: %1 (url: %2)", importer->errorMessage(), url.path()), KMessageWidget::Error);
+            mCalendarView->showMessage(xi18nc("@info", "An error occurred: <message>%1 (url: %2)</message>", importer->errorMessage(), url.path()),
+                                       KMessageWidget::Error);
         }
     }
 
@@ -1042,13 +1048,13 @@ bool ActionManager::saveURL()
         auto job = KIO::file_copy(QUrl::fromLocalFile(mFile), mURL);
         KJobWidgets::setWindow(job, view());
         if (!job->exec()) {
-            const QString msg = i18n("Cannot upload calendar to '%1'", mURL.toDisplayString());
+            const QString msg = xi18nc("@info", "Cannot upload calendar to <filename>%1</filename>", mURL.toDisplayString());
             KMessageBox::error(dialogParent(), msg);
             return false;
         }
     }
 
-    mMainWindow->showStatusMessage(i18n("Saved calendar '%1'.", mURL.toDisplayString()));
+    mMainWindow->showStatusMessage(xi18nc("@info", "Saved calendar <filename>%1</filename>", mURL.toDisplayString()));
 
     return true;
 }
@@ -1086,7 +1092,9 @@ bool ActionManager::saveAsURL(const QUrl &url)
         mTempFile = tempFile;
         setTitle();
     } else {
-        KMessageBox::error(dialogParent(), i18n("Unable to save calendar to the file %1.", mFile), i18nc("@title:window", "Error"));
+        KMessageBox::error(dialogParent(),
+                           xi18nc("@info", "Unable to save calendar to the file <filename>%1<filename>", mFile),
+                           i18nc("@title:window", "Error"));
         qCDebug(KORGANIZER_LOG) << "failed";
         mURL = URLOrig;
         mFile = fileOrig;
@@ -1112,7 +1120,7 @@ void ActionManager::readProperties(const KConfigGroup &)
 // Configuration changed as a result of the options dialog.
 void ActionManager::updateConfig()
 {
-    mNextXDays->setText(i18np("&Next Day", "&Next %1 Days", KOPrefs::instance()->mNextXDays));
+    mNextXDays->setText(i18ncp("@action:inmenu", "&Next Day", "&Next %1 Days", KOPrefs::instance()->mNextXDays));
 
     KOCore::self()->reloadPlugins();
 
@@ -1131,7 +1139,7 @@ void ActionManager::configureDateTime()
     arguments << QStringLiteral("kcm_regionandlang") << QStringLiteral("clock");
 
     if (!proc.startDetached(program, arguments)) {
-        KMessageBox::error(dialogParent(), i18n("Could not start control module for date and time format."));
+        KMessageBox::error(dialogParent(), i18nc("@info", "Could not start control module for date and time format."));
     }
 }
 
@@ -1306,13 +1314,13 @@ protected:
     bool visit(const KCalendarCore::Event::Ptr &) override
     {
         if (mShow) {
-            mShow->setText(i18n("&Show Event"));
+            mShow->setText(i18nc("@action:inmenu", "&Show Event"));
         }
         if (mEdit) {
-            mEdit->setText(i18n("&Edit Event…"));
+            mEdit->setText(i18nc("@action:inmenu", "&Edit Event…"));
         }
         if (mDelete) {
-            mDelete->setText(i18n("&Delete Event"));
+            mDelete->setText(i18nc("@action:inmenu", "&Delete Event"));
         }
         return true;
     }
@@ -1320,13 +1328,13 @@ protected:
     bool visit(const KCalendarCore::Todo::Ptr &) override
     {
         if (mShow) {
-            mShow->setText(i18n("&Show To-do"));
+            mShow->setText(i18nc("@action:inmenu", "&Show To-do"));
         }
         if (mEdit) {
-            mEdit->setText(i18n("&Edit To-do…"));
+            mEdit->setText(i18nc("@action:inmenu", "&Edit To-do…"));
         }
         if (mDelete) {
-            mDelete->setText(i18n("&Delete To-do"));
+            mDelete->setText(i18nc("@action:inmenu", "&Delete To-do"));
         }
         return true;
     }
@@ -1344,13 +1352,13 @@ protected:
     bool assignDefaultStrings()
     {
         if (mShow) {
-            mShow->setText(i18n("&Show"));
+            mShow->setText(i18nc("@action:inmenu", "&Show"));
         }
         if (mEdit) {
-            mEdit->setText(i18n("&Edit…"));
+            mEdit->setText(i18nc("@action:inmenu", "&Edit…"));
         }
         if (mDelete) {
-            mDelete->setText(i18n("&Delete"));
+            mDelete->setText(i18nc("@action:inmenu", "&Delete"));
         }
         return true;
     }
@@ -1386,9 +1394,9 @@ void ActionManager::processIncidenceSelection(const Akonadi::Item &item, QDate d
 
     ActionStringsVisitor v;
     if (!v.act(incidence, mShowIncidenceAction, mEditIncidenceAction, mDeleteIncidenceAction)) {
-        mShowIncidenceAction->setText(i18n("&Show"));
-        mEditIncidenceAction->setText(i18n("&Edit…"));
-        mDeleteIncidenceAction->setText(i18n("&Delete"));
+        mShowIncidenceAction->setText(i18nc("@action:inmenu", "&Show"));
+        mEditIncidenceAction->setText(i18nc("@action:inmenu", "&Edit…"));
+        mDeleteIncidenceAction->setText(i18nc("@action:inmenu", "&Delete"));
     }
 }
 
@@ -1469,11 +1477,11 @@ void ActionManager::openEventEditor(const QString &summary,
         action = KOPrefs::TodoAttachLink;
     } else if (IncidenceEditorNG::IncidenceEditorSettings::self()->defaultEmailAttachMethod() == IncidenceEditorNG::IncidenceEditorSettings::Ask) {
         auto menu = new QMenu(nullptr);
-        const QAction *attachLink = menu->addAction(i18n("Attach as &link"));
-        const QAction *attachInline = menu->addAction(i18n("Attach &inline"));
-        const QAction *attachBody = menu->addAction(i18n("Attach inline &without attachments"));
+        const QAction *attachLink = menu->addAction(i18nc("@action:inmenu", "Attach as &link"));
+        const QAction *attachInline = menu->addAction(i18nc("@action:inmenu", "Attach &inline"));
+        const QAction *attachBody = menu->addAction(i18nc("@action:inmenu", "Attach inline &without attachments"));
         menu->addSeparator();
-        menu->addAction(QIcon::fromTheme(QStringLiteral("dialog-cancel")), i18n("C&ancel"));
+        menu->addAction(QIcon::fromTheme(QStringLiteral("dialog-cancel")), i18nc("@action:inmenu", "C&ancel"));
 
         const QAction *ret = menu->exec(QCursor::pos());
         delete menu;
@@ -1511,7 +1519,7 @@ void ActionManager::openEventEditor(const QString &summary,
             attData = file;
         } else {
             if (KMessageBox::warningContinueCancel(nullptr,
-                                                   i18n("Removing attachments from an email might invalidate its signature."),
+                                                   i18nc("@info", "Removing attachments from an email might invalidate its signature."),
                                                    i18nc("@title:window", "Remove Attachments"),
                                                    KStandardGuiItem::cont(),
                                                    KStandardGuiItem::cancel(),
@@ -1575,10 +1583,10 @@ void ActionManager::openTodoEditor(const QString &summary,
         action = KOPrefs::TodoAttachLink;
     } else if (KOPrefs::instance()->defaultTodoAttachMethod() == KOPrefs::TodoAttachAsk) {
         auto menu = new QMenu(nullptr);
-        const QAction *attachLink = menu->addAction(i18n("Attach as &link"));
-        const QAction *attachInline = menu->addAction(i18n("Attach &inline"));
+        const QAction *attachLink = menu->addAction(i18nc("@action:inmenu", "Attach as &link"));
+        const QAction *attachInline = menu->addAction(i18nc("@action:inmenu", "Attach &inline"));
         menu->addSeparator();
-        menu->addAction(QIcon::fromTheme(QStringLiteral("dialog-cancel")), i18n("C&ancel"));
+        menu->addAction(QIcon::fromTheme(QStringLiteral("dialog-cancel")), i18nc("@action:inmenu", "C&ancel"));
 
         const QAction *ret = menu->exec(QCursor::pos());
         delete menu;
@@ -1663,10 +1671,10 @@ void ActionManager::updateUndoRedoActions()
             nextUndoDescription.truncate(30);
             nextUndoDescription += QStringLiteral("…");
         }
-        mUndoAction->setText(i18n("Undo: %1", nextUndoDescription));
+        mUndoAction->setText(i18nc("@action:inmenu", "Undo: %1", nextUndoDescription));
     } else {
         mUndoAction->setEnabled(false);
-        mUndoAction->setText(i18n("Undo"));
+        mUndoAction->setText(i18nc("@action:inmenu", "Undo"));
     }
 
     if (history->redoAvailable()) {
@@ -1676,13 +1684,13 @@ void ActionManager::updateUndoRedoActions()
             nextRedoDescription.truncate(30);
             nextRedoDescription += QStringLiteral("…");
         }
-        mRedoAction->setText(i18n("Redo: %1", nextRedoDescription));
+        mRedoAction->setText(i18nc("@action:inmenu", "Redo: %1", nextRedoDescription));
     } else {
         mRedoAction->setEnabled(false);
-        mRedoAction->setText(i18n("Redo"));
+        mRedoAction->setText(i18nc("@action:inmenu", "Redo"));
     }
 
-    mUndoAction->setIconText(i18n("Undo"));
+    mUndoAction->setIconText(i18nc("@action:button", "Undo"));
 }
 
 bool ActionManager::queryClose()
@@ -1693,7 +1701,7 @@ bool ActionManager::queryClose()
 void ActionManager::importCalendar(const QUrl &url)
 {
     if (!url.isValid()) {
-        KMessageBox::error(dialogParent(), i18n("URL '%1' is invalid.", url.toDisplayString()));
+        KMessageBox::error(dialogParent(), xi18nc("@info", "URL <filename>%1</filename> is invalid.", url.toDisplayString()));
         return;
     }
 

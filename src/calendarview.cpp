@@ -672,7 +672,7 @@ void CalendarView::slotModifyFinished(int changeId, const Akonadi::Item &item, A
         KCalendarCore::Todo::Ptr const todo = incidence.dynamicCast<KCalendarCore::Todo>();
         if (todo->isCompleted() || todo->recurs()) {
             QString const timeStr = QLocale::system().toString(QTime::currentTime(), QLocale::ShortFormat);
-            QString description = i18n("Todo completed: %1 (%2)", incidence->summary(), timeStr);
+            QString description = i18nc("@info/plain", "Todo completed: %1 (%2)", incidence->summary(), timeStr);
 
             KCalendarCore::Journal::List journals = calendar()->journals(QDate::currentDate());
 
@@ -681,7 +681,7 @@ void CalendarView::slotModifyFinished(int changeId, const Akonadi::Item &item, A
                 journal->setDtStart(QDateTime::currentDateTime());
 
                 QString const dateStr = QLocale::system().toString(QDate::currentDate(), QLocale::LongFormat);
-                journal->setSummary(i18n("Journal of %1", dateStr));
+                journal->setSummary(i18nc("@info/plain", "Journal of %1", dateStr));
                 journal->setDescription(description);
 
                 if (mChanger->createIncidence(journal, item.parentCollection(), this) == -1) {
@@ -729,10 +729,10 @@ void CalendarView::checkForFilteredChange(const Akonadi::Item &item)
     if (filter && !filter->filterIncidence(incidence)) {
         // Incidence is filtered and thus not shown in the view, tell the
         // user so that he isn't surprised if his new event doesn't show up
-        mMessageWidget->setText(
-            i18n("The item \"%1\" is filtered by your current filter rules, "
-                 "so it will be hidden and not appear in the view.",
-                 incidence->summary()));
+        mMessageWidget->setText(xi18nc("@info",
+                                       "The item <resource>%1</resource> is filtered by your current filter rules, "
+                                       "so it will be hidden and not appear in the view.",
+                                       incidence->summary()));
         mMessageWidget->show();
     }
 }
@@ -875,7 +875,7 @@ void CalendarView::edit_paste()
     }
 
     if (!finalDateTime.isValid() && curView->supportsDateNavigation()) {
-        KMessageBox::error(this, i18n("Paste failed: unable to determine a valid target date."));
+        KMessageBox::error(this, i18nc("@info", "Paste failed: unable to determine a valid target date."));
         return;
     }
 
@@ -1287,7 +1287,7 @@ bool CalendarView::makeSubTodosIndependent()
 {
     const Akonadi::Item aTodo = selectedTodo();
 
-    startMultiModify(i18n("Make sub-to-dos independent"));
+    startMultiModify(i18nc("@info/plain", "Make sub-to-dos independent"));
     bool const status = makeChildrenIndependent(aTodo);
     endMultiModify();
     if (status) {
@@ -1344,7 +1344,7 @@ void CalendarView::toggleAlarm(const Akonadi::Item &item)
         KCalendarCore::Alarm::Ptr const alm = incidence->newAlarm();
         CalendarSupport::createAlarmReminder(alm, incidence->type());
     }
-    mChanger->startAtomicOperation(i18n("Toggle Reminder"));
+    mChanger->startAtomicOperation(i18nc("@info/plain", "Toggle Reminder"));
     (void)mChanger->modifyIncidence(item, oldincidence, this);
     mChanger->endAtomicOperation();
 }
@@ -1376,7 +1376,7 @@ void CalendarView::toggleTodoCompleted(const Akonadi::Item &item)
         todo->setStatus(KCalendarCore::Incidence::StatusCompleted);
     }
 
-    mChanger->startAtomicOperation(i18n("Toggle To-do Completed"));
+    mChanger->startAtomicOperation(i18nc("@info/plain", "Toggle To-do Completed"));
     (void)mChanger->modifyIncidence(item, oldtodo, this);
     mChanger->endAtomicOperation();
 }
@@ -1428,7 +1428,7 @@ void CalendarView::toggleOccurrenceCompleted(const Akonadi::Item &todoItem, cons
 
     KCalendarCore::Todo::Ptr const oldtodo{todo->clone()};
     toggleCompleted(todo, occurrenceDate);
-    mChanger->startAtomicOperation(i18n("Toggle To-do Completed"));
+    mChanger->startAtomicOperation(i18nc("@info/plain", "Toggle To-do Completed"));
     (void)mChanger->modifyIncidence(todoItem, oldtodo, this);
     mChanger->endAtomicOperation();
 }
@@ -1599,10 +1599,11 @@ void CalendarView::dissociateOccurrences(const Akonadi::Item &item, QDate date)
 
     if (isFirstOccurrence) {
         answer = KMessageBox::questionTwoActions(this,
-                                                 i18n("Do you want to dissociate "
-                                                      "the occurrence on %1 "
-                                                      "from the recurrence?",
-                                                      QLocale::system().toString(date, QLocale::LongFormat)),
+                                                 i18nc("@info",
+                                                       "Do you want to dissociate "
+                                                       "the occurrence on %1 "
+                                                       "from the recurrence?",
+                                                       QLocale::system().toString(date, QLocale::LongFormat)),
                                                  i18nc("@title:window", "KOrganizer Confirmation"),
                                                  KGuiItem(i18nc("@action:button", "&Dissociate")),
                                                  KStandardGuiItem::cancel());
@@ -1610,11 +1611,12 @@ void CalendarView::dissociateOccurrences(const Akonadi::Item &item, QDate date)
         doOnlyThis = (answer == KMessageBox::ButtonCode::PrimaryAction);
     } else {
         answer = KMessageBox::questionTwoActionsCancel(this,
-                                                       i18n("Do you want to dissociate "
-                                                            "the occurrence on %1 "
-                                                            "from the recurrence or also "
-                                                            "dissociate future ones?",
-                                                            QLocale::system().toString(date, QLocale::LongFormat)),
+                                                       i18nc("@info",
+                                                             "Do you want to dissociate "
+                                                             "the occurrence on %1 "
+                                                             "from the recurrence or also "
+                                                             "dissociate future ones?",
+                                                             QLocale::system().toString(date, QLocale::LongFormat)),
                                                        i18nc("@title:window", "KOrganizer Confirmation"),
                                                        KGuiItem(i18nc("@action:button", "&Only Dissociate This One")),
                                                        KGuiItem(i18nc("@action:button", "&Also Dissociate Future Ones")));
@@ -1635,18 +1637,18 @@ void CalendarView::dissociateOccurrence(const Akonadi::Item &item, const QDateTi
     const KCalendarCore::Incidence::Ptr incidence = Akonadi::CalendarUtils::incidence(item);
 
     if (thisAndFuture) {
-        startMultiModify(i18n("Dissociate future occurrences"));
+        startMultiModify(i18nc("@info/plain", "Dissociate future occurrences"));
     } else {
-        startMultiModify(i18n("Dissociate occurrence"));
+        startMultiModify(i18nc("@info/plain", "Dissociate occurrence"));
     }
     KCalendarCore::Incidence::Ptr const newInc(KCalendarCore::Calendar::createException(incidence, recurrenceId, thisAndFuture));
     if (newInc) {
         (void)mChanger->createIncidence(newInc, item.parentCollection(), this);
     } else {
         if (thisAndFuture) {
-            KMessageBox::error(this, i18n("Dissociating the future occurrences failed."), i18nc("@title:window", "Dissociating Failed"));
+            KMessageBox::error(this, i18nc("@info", "Dissociating the future occurrences failed."), i18nc("@title:window", "Dissociating Failed"));
         } else {
-            KMessageBox::error(this, i18n("Dissociating the occurrence failed."), i18nc("@title:window", "Dissociating Failed"));
+            KMessageBox::error(this, i18nc("@info", "Dissociating the occurrence failed."), i18nc("@title:window", "Dissociating Failed"));
         }
     }
     endMultiModify();
@@ -1789,8 +1791,12 @@ void CalendarView::printPreview()
 
 void CalendarView::exportICalendar()
 {
-    QString filename =
-        QFileDialog::getSaveFileName(this, QString(), QStringLiteral("icalout.ics"), i18n("iCalendars (*.ics)"), nullptr, QFileDialog::DontConfirmOverwrite);
+    QString filename = QFileDialog::getSaveFileName(this,
+                                                    QString(),
+                                                    QStringLiteral("icalout.ics"),
+                                                    QStringLiteral("text/calendar (*.ics)"),
+                                                    nullptr,
+                                                    QFileDialog::DontConfirmOverwrite);
     if (!filename.isEmpty()) {
         // Force correct extension
         if (filename.right(4) != QLatin1StringView(".ics")) {
@@ -1799,7 +1805,7 @@ void CalendarView::exportICalendar()
 
         if (QFileInfo::exists(filename)) {
             const int answer = KMessageBox::warningContinueCancel(this,
-                                                                  i18n("Do you want to overwrite %1?", filename),
+                                                                  xi18nc("@info", "Do you want to overwrite <filename>%1</filename>?", filename),
                                                                   i18nc("@title:window", "Export Calendar"),
                                                                   KStandardGuiItem::overwrite());
             if (answer == KMessageBox::Cancel) {
@@ -1814,9 +1820,9 @@ void CalendarView::exportICalendar()
             if (format->exception()) {
                 errmess = KCalUtils::Stringify::errorMessage(*format->exception());
             } else {
-                errmess = i18nc("save failure cause unknown", "Reason unknown");
+                errmess = i18nc("@info save failure cause unknown", "Reason unknown");
             }
-            KMessageBox::error(this, i18nc("@info", "Cannot write iCalendar file %1. %2", filename, errmess));
+            KMessageBox::error(this, xi18nc("@info", "Cannot write iCalendar file <filename>%1</filename>: <message>%2</message>", filename, errmess));
         }
     }
 }
@@ -1910,7 +1916,7 @@ void CalendarView::updateFilter()
         mCurrentFilter = nullptr;
     }
 
-    filters << i18n("No filter");
+    filters << i18nc("@info/plain", "No filter");
     for (KCalendarCore::CalFilter *filter : std::as_const(mFilters)) {
         if (filter) {
             filters << filter->name();
@@ -1955,7 +1961,7 @@ QString CalendarView::currentFilterName() const
     if (mCurrentFilter) {
         return mCurrentFilter->name();
     } else {
-        return i18n("No filter");
+        return i18nc("@info/plain", "No filter");
     }
 }
 
@@ -2232,11 +2238,12 @@ int CalendarView::questionIndependentChildren(const Akonadi::Item &item)
     auto incidence = Akonadi::CalendarUtils::incidence(item);
     if (!incidence->hasRecurrenceId() && !mCalendar->childItems(item.id()).isEmpty()) {
         km = KMessageBox::questionTwoActionsCancel(this,
-                                                   i18n("The item \"%1\" has sub-to-dos. "
-                                                        "Do you want to delete just this item and "
-                                                        "make all its sub-to-dos independent, or "
-                                                        "delete the to-do with all its sub-to-dos?",
-                                                        incidence->summary()),
+                                                   xi18nc("@info",
+                                                          "The item <resource>%1</resource> has sub-to-dos. "
+                                                          "Do you want to delete just this item and "
+                                                          "make all its sub-to-dos independent, or "
+                                                          "delete the to-do with all its sub-to-dos?",
+                                                          incidence->summary()),
                                                    i18nc("@title:window", "KOrganizer Confirmation"),
                                                    KGuiItem(i18nc("@action:button", "Delete Only This")),
                                                    KGuiItem(i18nc("@action:button", "Delete All")));
@@ -2270,11 +2277,11 @@ bool CalendarView::deleteIncidence(const Akonadi::Item &item, bool force)
     if (!mCalendar->hasRight(item, Akonadi::Collection::CanDeleteItem)) {
         if (!force) {
             KMessageBox::information(this,
-                                     i18n("The item \"%1\" is marked read-only "
-                                          "and cannot be deleted; it probably "
-                                          "belongs to a read-only calendar.",
-                                          incidence->summary()),
-                                     i18n("Removing not possible"),
+                                     xi18nc("@info",
+                                            "The item <resource>%1</resource> is marked read-only "
+                                            "and cannot be deleted; it probably belongs to a read-only calendar.",
+                                            incidence->summary()),
+                                     i18nc("@title:window", "Removing not possible"),
                                      QStringLiteral("deleteReadOnlyIncidence"));
         }
         qCWarning(KORGANIZER_LOG) << "CalendarView::deleteIncidence(): No rights to delete item";
@@ -2292,11 +2299,11 @@ bool CalendarView::deleteIncidence(const Akonadi::Item &item, bool force)
         if (!itemDate.isValid()) {
             qCDebug(KORGANIZER_LOG) << "Date Not Valid";
             km = KMessageBox::warningContinueCancel(this,
-                                                    i18n("The calendar item \"%1\" recurs over multiple dates; "
-                                                         "are you sure you want to delete it "
-                                                         "and all its recurrences?",
-                                                         incidence->summary()),
-                                                    i18n("KOrganizer Confirmation"),
+                                                    xi18nc("@info",
+                                                           "The calendar item <resource>%1</resource> recurs over multiple dates; "
+                                                           "are you sure you want to delete it and all its recurrences?",
+                                                           incidence->summary()),
+                                                    i18nc("@title:window", "KOrganizer Confirmation"),
                                                     KGuiItem(i18nc("@action:button", "Delete All")));
         } else {
             QDateTime const itemDateTime(itemDate, {}, QTimeZone::LocalTime);
@@ -2304,32 +2311,32 @@ bool CalendarView::deleteIncidence(const Akonadi::Item &item, bool force)
             bool const isLast = !incidence->recurrence()->getNextDateTime(itemDateTime).isValid();
 
             QString message;
-            QString const itemFuture(i18n("Also Delete &Future")); // QT5 was a KGuiItem
+            QString const itemFuture(i18nc("@action:button", "Also Delete &Future"));
 
             if (!isFirst && !isLast) {
-                message = i18n(
-                    "The calendar item \"%1\" recurs over multiple dates. "
-                    "Do you want to delete only the current one on %2, also "
-                    "future occurrences, or all its occurrences?",
-                    incidence->summary(),
-                    QLocale::system().toString(itemDate, QLocale::LongFormat));
+                message = xi18nc("@info",
+                                 "The calendar item <resource>%1</resource> recurs over multiple dates. "
+                                 "Do you want to delete only the current one on %2, also "
+                                 "future occurrences, or all its occurrences?",
+                                 incidence->summary(),
+                                 QLocale::system().toString(itemDate, QLocale::LongFormat));
             } else {
-                message = i18n(
-                    "The calendar item \"%1\" recurs over multiple dates. "
-                    "Do you want to delete only the current one on %2 "
-                    "or all its occurrences?",
-                    incidence->summary(),
-                    QLocale::system().toString(itemDate, QLocale::LongFormat));
+                message = xi18nc("@info",
+                                 "The calendar item <resource>%1</resource> recurs over multiple dates. "
+                                 "Do you want to delete only the current one on %2 "
+                                 "or all its occurrences?",
+                                 incidence->summary(),
+                                 QLocale::system().toString(itemDate, QLocale::LongFormat));
             }
 
             if (!(isFirst && isLast)) {
                 QDialogButtonBox::StandardButton const returnValue = PIMMessageBox::fourBtnMsgBox(this,
                                                                                                   QMessageBox::Warning,
                                                                                                   message,
-                                                                                                  i18n("KOrganizer Confirmation"),
-                                                                                                  i18n("Delete C&urrent"),
+                                                                                                  i18nc("@title:window", "KOrganizer Confirmation"),
+                                                                                                  i18nc("@action:button", "Delete C&urrent"),
                                                                                                   itemFuture,
-                                                                                                  i18n("Delete &All"));
+                                                                                                  i18nc("@action:button", "Delete &All"));
                 switch (returnValue) {
                 case QDialogButtonBox::Ok:
                     if (!mCalendar->childItems(item.id()).isEmpty()) {
@@ -2360,14 +2367,14 @@ bool CalendarView::deleteIncidence(const Akonadi::Item &item, bool force)
 
     switch (km) {
     case ItemActions::All:
-        startMultiModify(i18n("Delete \"%1\"", incidence->summary()));
+        startMultiModify(i18nc("@info/plain", "Delete \"%1\"", incidence->summary()));
         deleteChildren(item);
         deleteRecurringIncidence(item);
         endMultiModify();
         break;
 
     case ItemActions::Parent:
-        startMultiModify(i18n("Delete \"%1\"", incidence->summary()));
+        startMultiModify(i18nc("@info/plain", "Delete \"%1\"", incidence->summary()));
         makeChildrenIndependent(item);
         deleteRecurringIncidence(item);
         endMultiModify();
@@ -2399,17 +2406,17 @@ bool CalendarView::deleteIncidence(const Akonadi::Item &item, bool force)
 void CalendarView::purgeCompleted()
 {
     if (checkedCollections().isEmpty()) {
-        showMessage(i18n("All calendars are unchecked in the Calendar Manager. No to-do was purged."), KMessageWidget::Warning);
+        showMessage(i18nc("@info", "All calendars are unchecked in the Calendar Manager. No to-do was purged."), KMessageWidget::Warning);
         return;
     }
 
     if (mCalendar->rawTodos().isEmpty()) {
-        showMessage(i18n("There are no completed to-dos to purge."), KMessageWidget::Information);
+        showMessage(i18nc("@info", "There are no completed to-dos to purge."), KMessageWidget::Information);
         return;
     }
 
     int const result = KMessageBox::warningContinueCancel(this,
-                                                          i18n("Delete all completed to-dos from checked calendars?"),
+                                                          i18nc("@info", "Delete all completed to-dos from checked calendars?"),
                                                           i18nc("@title:window", "Purge To-dos"),
                                                           KGuiItem(i18nc("@action:button", "Purge"), QIcon::fromTheme(QStringLiteral("entry-delete"))));
 
@@ -2421,7 +2428,7 @@ void CalendarView::purgeCompleted()
 void CalendarView::addIncidenceOn(const Akonadi::Item &itemadd, const QDate &dt)
 {
     if (!CalendarSupport::hasIncidence(itemadd)) {
-        KMessageBox::error(this, i18n("Unable to copy the item to %1.", dt.toString()), i18nc("@title:window", "Copying Failed"));
+        KMessageBox::error(this, xi18nc("@info", "Unable to copy item <resource>%1</resource>.", dt.toString()), i18nc("@title:window", "Copying Failed"));
         return;
     }
     Akonadi::Item item = mCalendar->item(itemadd.id());
@@ -2456,7 +2463,7 @@ void CalendarView::addIncidenceOn(const Akonadi::Item &itemadd, const QDate &dt)
 void CalendarView::moveIncidenceTo(const Akonadi::Item &itemmove, QDate dt)
 {
     if (!CalendarSupport::hasIncidence(itemmove)) {
-        KMessageBox::error(this, i18n("Unable to move the item to  %1.", dt.toString()), i18nc("@title:window", "Moving Failed"));
+        KMessageBox::error(this, xi18nc("@info", "Unable to move item <resource>%1</resource>.", dt.toString()), i18nc("@title:window", "Moving Failed"));
         return;
     }
     Akonadi::Item const item = mCalendar->item(itemmove.id());
@@ -2645,23 +2652,25 @@ void CalendarView::onTodosPurged(bool success, int numDeleted, int numIgnored)
     if (success) {
         if (numDeleted == 0 && numIgnored > 0) {
             type = KMessageWidget::Warning;
-            message = i18n("0 completed to-dos were purged.") + QLatin1Char('\n')
-                + i18np("%1 to-do was ignored because it has uncompleted or read-only children.",
-                        "%1 to-dos were ignored because they have uncompleted or read-only children.",
-                        numIgnored);
+            message = xi18nc("@info", "0 completed to-dos were purged.<nl/>")
+                + xi18ncp("@info",
+                          "%1 to-do was ignored because it has uncompleted or read-only children.",
+                          "%1 to-dos were ignored because they have uncompleted or read-only children.",
+                          numIgnored);
         } else if (numDeleted > 0 && numIgnored == 0) {
-            message = i18np("%1 completed to-do was purged.", "%1 completed to-dos were purged.", numDeleted);
+            message = i18ncp("@info", "%1 completed to-do was purged.", "%1 completed to-dos were purged.", numDeleted);
         } else if (numDeleted == 0 && numIgnored == 0) {
-            message = i18n("There are no completed to-dos to purge.");
+            message = i18nc("@info", "There are no completed to-dos to purge.");
         } else {
             type = KMessageWidget::Warning;
-            message = i18np("%1 completed to-do was purged.", "%1 completed to-dos were purged.", numDeleted) + QLatin1Char('\n')
-                + i18np("%1 to-do was ignored because it has uncompleted or read-only children.",
-                        "%1 to-dos were ignored because they have uncompleted or read-only children.",
-                        numIgnored);
+            message = i18ncp("@info", "%1 completed to-do was purged.", "%1 completed to-dos were purged.", numDeleted) + QLatin1Char('\n')
+                + i18ncp("@info",
+                         "%1 to-do was ignored because it has uncompleted or read-only children.",
+                         "%1 to-dos were ignored because they have uncompleted or read-only children.",
+                         numIgnored);
         }
     } else {
-        message = i18n("An error occurred while purging completed to-dos: %1", mTodoPurger->lastError());
+        message = xi18nc("@info", "An error occurred while purging completed to-dos: <message>%1</message>", mTodoPurger->lastError());
         type = KMessageWidget::Error;
     }
 
@@ -2714,13 +2723,13 @@ void CalendarView::handleIncidenceCreated(const Akonadi::Item &item)
     if (!collectionIsChecked) {
         QString message;
         if (mETMCollectionView->isVisible()) {
-            message = i18n(
-                "You created an incidence in a calendar that is currently filtered out.\n"
-                "On the left sidebar, enable it in the calendar manager to see the incidence.");
+            message = xi18nc("@info",
+                             "You created an incidence in a calendar that is currently filtered out."
+                             "<para>On the left sidebar, enable it in the calendar manager to see the incidence.</para>");
         } else {
-            message = i18n(
-                "You created an incidence in a calendar that is currently filtered out.\n"
-                "You can enable it through the calendar manager (Settings->Sidebar->Show Calendar Manager)");
+            message = xi18nc("@info",
+                             "You created an incidence in a calendar that is currently filtered out."
+                             "<para>You can enable it through the calendar manager (Settings->Sidebar->Show Calendar Manager)</para>");
         }
 
         mMessageWidget->setText(message);

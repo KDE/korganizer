@@ -40,7 +40,7 @@ ConfigDialog::ConfigDialog(QWidget *parent)
     auto topLayout = new QVBoxLayout(topFrame);
     topLayout->setContentsMargins({});
 
-    auto dayNumBox = new QGroupBox(i18n("Show Date Number"), topFrame);
+    auto dayNumBox = new QGroupBox(i18nc("@title:group", "Show Date Number"), topFrame);
     dayNumBox->setFlat(true);
     topLayout->addWidget(dayNumBox);
     auto groupLayout = new QVBoxLayout(dayNumBox);

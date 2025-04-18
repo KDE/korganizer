@@ -99,7 +99,7 @@ KOPrefsDialogMain::KOPrefsDialogMain(QObject *parent, const KPluginMetaData &dat
     auto activitiesFrameLayout = new QVBoxLayout;
     activitiesFrame->setLayout(activitiesFrameLayout);
 
-    mActivities = new QCheckBox(i18n("Enabled"), widget());
+    mActivities = new QCheckBox(i18nc("@option:check", "Enabled"), widget());
     activitiesFrameLayout->addWidget(mActivities);
     activitiesFrameLayout->addStretch(1);
     mActivities->setChecked(KOPrefs::instance()->enabledActivities());

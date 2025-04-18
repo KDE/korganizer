@@ -35,7 +35,7 @@ EXPORT_KONTACT_PLUGIN_WITH_JSON(TodoPlugin, "todoplugin.json")
 TodoPlugin::TodoPlugin(KontactInterface::Core *core, const KPluginMetaData &data, const QVariantList &)
     : KontactInterface::Plugin(core, core, data, "korganizer", "todo")
 {
-    setComponentName(QStringLiteral("korganizer"), i18n("KOrganizer"));
+    setComponentName(QStringLiteral("korganizer"), i18nc("@info/plain", "KOrganizer"));
 
     auto action = new QAction(QIcon::fromTheme(QStringLiteral("task-new")), i18nc("@action:inmenu", "New To-do…"), this);
     actionCollection()->addAction(QStringLiteral("new_todo"), action);
@@ -186,16 +186,19 @@ void TodoPlugin::processDropEvent(QDropEvent *event)
                         for (const Akonadi::Item &item : items) {
                             if (item.mimeType() == QLatin1StringView("message/rfc822")) {
                                 auto mail = item.payload<KMime::Message::Ptr>();
-                                interface()->openTodoEditor(i18nc("Event from email summary", "Mail: %1", mail->subject()->asUnicodeString()),
-                                                            xi18nc("Event from email content",
-                                                                   "<b>From:</b> %1<br /><b>To:</b> %2<br /><b>Subject:</b> %3",
-                                                                   mail->from()->displayString(),
-                                                                   mail->to()->displayString(),
-                                                                   mail->subject()->asUnicodeString()),
-                                                            url.toDisplayString(),
-                                                            QString(),
-                                                            QStringList(),
-                                                            QStringLiteral("message/rfc822"));
+                                interface()->openTodoEditor(
+                                    i18nc("@info/plain to-do summary from email subjuect", "Mail: %1", mail->subject()->asUnicodeString()),
+                                    xi18nc("@info to-do description from email content",
+                                           "<emphasis>From:</emphasis> %1<nl/>"
+                                           "<emphasis>To:</emphasis> %2<nl/>"
+                                           "<emphasis>Subject:</emphasis> %3",
+                                           mail->from()->displayString(),
+                                           mail->to()->displayString(),
+                                           mail->subject()->asUnicodeString()),
+                                    url.toDisplayString(),
+                                    QString(),
+                                    QStringList(),
+                                    QStringLiteral("message/rfc822"));
                             }
                         }
                     });

@@ -39,7 +39,7 @@ EXPORT_KONTACT_PLUGIN_WITH_JSON(KOrganizerPlugin, "korganizerplugin.json")
 KOrganizerPlugin::KOrganizerPlugin(KontactInterface::Core *core, const KPluginMetaData &data, const QVariantList &)
     : KontactInterface::Plugin(core, core, data, "korganizer", "calendar")
 {
-    setComponentName(QStringLiteral("korganizer"), i18n("KOrganizer"));
+    setComponentName(QStringLiteral("korganizer"), i18nc("@info/plain", "KOrganizer"));
 
     auto action = new QAction(QIcon::fromTheme(QStringLiteral("appointment-new")), i18nc("@action:inmenu", "New Event…"), this);
     actionCollection()->addAction(QStringLiteral("new_event"), action);
@@ -187,16 +187,19 @@ void KOrganizerPlugin::processDropEvent(QDropEvent *event)
                         for (const Akonadi::Item &item : items) {
                             if (item.mimeType() == QLatin1StringView("message/rfc822")) {
                                 auto mail = item.payload<KMime::Message::Ptr>();
-                                interface()->openEventEditor(i18nc("Event from email summary", "Mail: %1", mail->subject()->asUnicodeString()),
-                                                             xi18nc("Event from email content",
-                                                                    "<b>From:</b> %1<br /><b>To:</b> %2<br /><b>Subject:</b> %3",
-                                                                    mail->from()->displayString(),
-                                                                    mail->to()->displayString(),
-                                                                    mail->subject()->asUnicodeString()),
-                                                             url.toDisplayString(),
-                                                             QString(),
-                                                             QStringList(),
-                                                             QStringLiteral("message/rfc822"));
+                                interface()->openEventEditor(
+                                    i18nc("@info/plain event summary from email subject", "Mail: %1", mail->subject()->asUnicodeString()),
+                                    xi18nc("@info event description from email content",
+                                           "<emphasis>From:</emphasis> %1<nl/>"
+                                           "<emphasis>To:</emphasis> %2<nl/>"
+                                           "<emphasis>Subject:</emphasis> %3",
+                                           mail->from()->displayString(),
+                                           mail->to()->displayString(),
+                                           mail->subject()->asUnicodeString()),
+                                    url.toDisplayString(),
+                                    QString(),
+                                    QStringList(),
+                                    QStringLiteral("message/rfc822"));
                             }
                         }
                     });

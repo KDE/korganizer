@@ -34,7 +34,7 @@ using namespace KOrg;
 
 static QString generateColumnLabel(int c)
 {
-    return i18n("Agenda %1", c + 1);
+    return i18nc("@title:column", "Agenda %1", c + 1);
 }
 
 class CalendarViewCalendarFactory : public EventViews::MultiAgendaView::CalendarFactory

@@ -23,7 +23,7 @@ EXPORT_KONTACT_PLUGIN_WITH_JSON(JournalPlugin, "journalplugin.json")
 JournalPlugin::JournalPlugin(KontactInterface::Core *core, const KPluginMetaData &data, const QVariantList &)
     : KontactInterface::Plugin(core, core, data, "korganizer", "journal")
 {
-    setComponentName(QStringLiteral("korganizer"), i18n("KOrganizer"));
+    setComponentName(QStringLiteral("korganizer"), i18nc("@info/plain", "KOrganizer"));
 
     auto action = new QAction(QIcon::fromTheme(QStringLiteral("journal-new")), i18nc("@action:inmenu", "New Journal…"), this);
     actionCollection()->addAction(QStringLiteral("new_journal"), action);

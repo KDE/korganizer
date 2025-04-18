@@ -15,23 +15,24 @@ using namespace KOrg;
 
 AboutData::AboutData()
     : KAboutData(QStringLiteral("korganizer"),
-                 i18n("KOrganizer"),
+                 i18nc("@info/plain", "KOrganizer"),
                  QStringLiteral(KORGANIZER_VERSION),
-                 i18n("A Personal Organizer"),
+                 i18nc("@info/plain", "A Personal Organizer"),
                  KAboutLicense::GPL,
-                 i18n("Copyright © 1997–1999 Preston Brown\n"
-                      "Copyright © 2000–2004, 2007 Cornelius Schumacher\n"
-                      "Copyright © 2004–2005 Reinhold Kainhofer\n"
-                      "Copyright © 2006–2012 Allen Winter\n"
-                      "Copyright © 2012–2025 KOrganizer authors"),
+                 i18nc("@info/plain",
+                       "Copyright © 1997–1999 Preston Brown\n"
+                       "Copyright © 2000–2004, 2007 Cornelius Schumacher\n"
+                       "Copyright © 2004–2005 Reinhold Kainhofer\n"
+                       "Copyright © 2006–2012 Allen Winter\n"
+                       "Copyright © 2012–2025 KOrganizer authors"),
                  QString(),
                  QStringLiteral("https://userbase.kde.org/KOrganizer"))
 {
-    addAuthor(i18nc("@info:credit", "Allen Winter"), i18n("Maintainer"), QStringLiteral("winter@kde.org"));
-    addAuthor(i18nc("@info:credit", "Reinhold Kainhofer"), i18n("Former Maintainer"), QStringLiteral("reinhold@kainhofer.com"));
-    addAuthor(i18nc("@info:credit", "Cornelius Schumacher"), i18n("Former Maintainer"), QStringLiteral("schumacher@kde.org"));
-    addAuthor(i18nc("@info:credit", "Preston Brown"), i18n("Original Author"), QStringLiteral("pbrown@kde.org"));
-    addAuthor(i18nc("@info:credit", "Laurent Montel"), i18n("Developer"), QStringLiteral("montel@kde.org"));
+    addAuthor(i18nc("@info:credit", "Allen Winter"), i18nc("@info:credit", "Maintainer"), QStringLiteral("winter@kde.org"));
+    addAuthor(i18nc("@info:credit", "Reinhold Kainhofer"), i18nc("@info:credit", "Former Maintainer"), QStringLiteral("reinhold@kainhofer.com"));
+    addAuthor(i18nc("@info:credit", "Cornelius Schumacher"), i18nc("@info:credit", "Former Maintainer"), QStringLiteral("schumacher@kde.org"));
+    addAuthor(i18nc("@info:credit", "Preston Brown"), i18nc("@info:credit", "Original Author"), QStringLiteral("pbrown@kde.org"));
+    addAuthor(i18nc("@info:credit", "Laurent Montel"), i18nc("@info:credit", "Developer"), QStringLiteral("montel@kde.org"));
     addCredit(i18nc("@info:credit", "Richard Apodaca"));
     addCredit(i18nc("@info:credit", "Björn Balazs"));
     addCredit(i18nc("@info:credit", "Jan-Pascal van Best"));
@@ -55,7 +56,7 @@ AboutData::AboutData()
     addCredit(i18nc("@info:credit", "Glen Parker"));
     addCredit(i18nc("@info:credit", "Dan Pilone"));
     addCredit(i18nc("@info:credit", "Roman Rohr"));
-    addCredit(i18nc("@info:credit", "Rafał Rzepecki"), i18n("Part of work sponsored by Google with Summer of Code 2005"));
+    addCredit(i18nc("@info:credit", "Rafał Rzepecki"), i18nc("@info:credit", "Part of work sponsored by Google with Summer of Code 2005"));
     addCredit(i18nc("@info:credit", "Don Sanders"));
     addCredit(i18nc("@info:credit", "Bram Schoenmakers"));
     addCredit(i18nc("@info:credit", "Günter Schwann"));

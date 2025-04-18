@@ -702,8 +702,9 @@ void KPrefsDialog::slotOk()
 void KPrefsDialog::slotDefault()
 {
     if (KMessageBox::warningContinueCancel(this,
-                                           i18n("You are about to set all preferences to default values. "
-                                                "All custom modifications will be lost."),
+                                           i18nc("@info",
+                                                 "You are about to set all preferences to default values. "
+                                                 "All custom modifications will be lost."),
                                            i18nc("@title:window", "Setting Default Preferences"),
                                            KGuiItem(i18nc("@action:button", "Reset to Defaults")))
         == KMessageBox::Continue) {
