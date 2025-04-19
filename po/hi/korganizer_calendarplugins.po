@@ -7,7 +7,7 @@ msgid ""
 msgstr ""
 "Project-Id-Version: korganizer\n"
 "Report-Msgid-Bugs-To: https://bugs.kde.org\n"
-"POT-Creation-Date: 2024-07-30 00:42+0000\n"
+"POT-Creation-Date: 2025-04-19 00:42+0000\n"
 "PO-Revision-Date: 2008-01-24 16:52+0530\n"
 "Last-Translator: Ravishankar Shrivastava <raviratlami@yahoo.com>\n"
 "Language-Team: Hindi <indlinux-hindi@lists.sourceforge.net>\n"
@@ -26,7 +26,9 @@ msgid "Configure Day Numbers"
 msgstr "दिन संख्याओं को कॉन्फ़िगर करें"
 
 #: datenums/configdialog.cpp:43
-#, kde-format
+#, fuzzy, kde-format
+#| msgid "Show Date Number"
+msgctxt "@title:group"
 msgid "Show Date Number"
 msgstr "तारीख क्रमांक दिखाएँ"
 
@@ -694,7 +696,9 @@ msgid "Configure Picture of the Day"
 msgstr "आज का चित्र कॉन्फ़िगर करें"
 
 #: picoftheday/configdialog.cpp:42
-#, kde-format
+#, fuzzy, kde-format
+#| msgid "Thumbnail Aspect Ratio Mode"
+msgctxt "@title:group"
 msgid "Thumbnail Aspect Ratio Mode"
 msgstr "लघुछवि आस्पेक्ट रेशो मोड"
 
@@ -706,7 +710,11 @@ msgid "Ignore aspect ratio"
 msgstr "आस्पेक्ट रेशो अनदेखा करें"
 
 #: picoftheday/configdialog.cpp:48
-#, kde-format
+#, fuzzy, kde-format
+#| msgid ""
+#| "The thumbnail will be scaled freely. The aspect ratio will not be "
+#| "preserved."
+msgctxt "@info:whatsthis"
 msgid ""
 "The thumbnail will be scaled freely. The aspect ratio will not be preserved."
 msgstr "लघुछवि को मुक्त रूप से स्केल किया जाएगा. आस्पेक्ट रेशो को संरक्षित नहीं किया जाएगा."
@@ -720,6 +728,7 @@ msgstr "आस्पेक्ट रेशो बनाए रखें"
 
 #: picoftheday/configdialog.cpp:54
 #, kde-format
+msgctxt "@info:whatsthis"
 msgid ""
 "The thumbnail will be scaled to a rectangle as large as possible inside a "
 "given rectangle, preserving the aspect ratio."
@@ -734,6 +743,7 @@ msgstr "फैलाकर ऑस्पेक्ट रेशो को बन�
 
 #: picoftheday/configdialog.cpp:61
 #, kde-format
+msgctxt "@info:whatsthis"
 msgid ""
 "The thumbnail will be scaled to a rectangle as small as possible outside a "
 "given rectangle, preserving the aspect ratio."

@@ -9,7 +9,7 @@ msgid ""
 msgstr ""
 "Project-Id-Version: korganizer\n"
 "Report-Msgid-Bugs-To: https://bugs.kde.org\n"
-"POT-Creation-Date: 2024-07-30 00:42+0000\n"
+"POT-Creation-Date: 2025-04-19 00:42+0000\n"
 "PO-Revision-Date: 2024-08-06 11:29+0200\n"
 "Last-Translator: Vit Pelcak <vit@pelcak.org>\n"
 "Language-Team: Czech <kde-i18n-doc@kde.org>\n"
@@ -27,7 +27,9 @@ msgid "Configure Day Numbers"
 msgstr "Nastavit číslování dní"
 
 #: datenums/configdialog.cpp:43
-#, kde-format
+#, fuzzy, kde-format
+#| msgid "Show Date Number"
+msgctxt "@title:group"
 msgid "Show Date Number"
 msgstr "Zobrazit číslo data"
 
@@ -693,7 +695,9 @@ msgid "Configure Picture of the Day"
 msgstr "Nastavit obrázek dne"
 
 #: picoftheday/configdialog.cpp:42
-#, kde-format
+#, fuzzy, kde-format
+#| msgid "Thumbnail Aspect Ratio Mode"
+msgctxt "@title:group"
 msgid "Thumbnail Aspect Ratio Mode"
 msgstr "Režim poměru stran miniatur"
 
@@ -705,6 +709,7 @@ msgstr "Ignorovat poměr stran"
 
 #: picoftheday/configdialog.cpp:48
 #, kde-format
+msgctxt "@info:whatsthis"
 msgid ""
 "The thumbnail will be scaled freely. The aspect ratio will not be preserved."
 msgstr ""
@@ -717,6 +722,7 @@ msgstr "Zachovat poměr stran"
 
 #: picoftheday/configdialog.cpp:54
 #, kde-format
+msgctxt "@info:whatsthis"
 msgid ""
 "The thumbnail will be scaled to a rectangle as large as possible inside a "
 "given rectangle, preserving the aspect ratio."
@@ -730,6 +736,7 @@ msgstr "Zachovat poměr stran roztáhnutím"
 
 #: picoftheday/configdialog.cpp:61
 #, kde-format
+msgctxt "@info:whatsthis"
 msgid ""
 "The thumbnail will be scaled to a rectangle as small as possible outside a "
 "given rectangle, preserving the aspect ratio."

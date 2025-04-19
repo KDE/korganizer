@@ -1,7 +1,7 @@
 # translation of korganizer.po to Slovenian
 # Translation of korganizer.po to Slovenian
 # Copyright (C) 2001,2002, 2003, 2004, 2005, 2006 Free Software Foundation, Inc.
-# $Id: korganizer_calendarplugins.po 1685977 2024-07-31 01:15:53Z scripty $
+# $Id: korganizer_calendarplugins.po 1707378 2025-04-19 01:20:44Z scripty $
 # $Source$
 #
 # Roman Maurer <roman.maurer@hermes.si>, 2001.
@@ -14,7 +14,7 @@ msgid ""
 msgstr ""
 "Project-Id-Version: korganizer\n"
 "Report-Msgid-Bugs-To: https://bugs.kde.org\n"
-"POT-Creation-Date: 2024-07-30 00:42+0000\n"
+"POT-Creation-Date: 2025-04-19 00:42+0000\n"
 "PO-Revision-Date: 2024-07-30 09:44+0200\n"
 "Last-Translator: Matjaž Jeran <matjaz.jeran@amis.net>\n"
 "Language-Team: Slovenian <lugos-slo@lugos.si>\n"
@@ -34,7 +34,9 @@ msgid "Configure Day Numbers"
 msgstr "Nastavi številke dni"
 
 #: datenums/configdialog.cpp:43
-#, kde-format
+#, fuzzy, kde-format
+#| msgid "Show Date Number"
+msgctxt "@title:group"
 msgid "Show Date Number"
 msgstr "Pokaži številko datuma"
 
@@ -709,7 +711,9 @@ msgid "Configure Picture of the Day"
 msgstr "Nastavi Izbrano sliko dneva"
 
 #: picoftheday/configdialog.cpp:42
-#, kde-format
+#, fuzzy, kde-format
+#| msgid "Thumbnail Aspect Ratio Mode"
+msgctxt "@title:group"
 msgid "Thumbnail Aspect Ratio Mode"
 msgstr "Način razmerja sličice"
 
@@ -720,7 +724,11 @@ msgid "Ignore aspect ratio"
 msgstr "Prezri razmerje stranic"
 
 #: picoftheday/configdialog.cpp:48
-#, kde-format
+#, fuzzy, kde-format
+#| msgid ""
+#| "The thumbnail will be scaled freely. The aspect ratio will not be "
+#| "preserved."
+msgctxt "@info:whatsthis"
 msgid ""
 "The thumbnail will be scaled freely. The aspect ratio will not be preserved."
 msgstr "Sličica bo umerjena brez, da bi bilo ohranjeno razmerje."
@@ -732,7 +740,11 @@ msgid "Keep aspect ratio"
 msgstr "Ohrani razmerje stranic"
 
 #: picoftheday/configdialog.cpp:54
-#, kde-format
+#, fuzzy, kde-format
+#| msgid ""
+#| "The thumbnail will be scaled to a rectangle as large as possible inside a "
+#| "given rectangle, preserving the aspect ratio."
+msgctxt "@info:whatsthis"
 msgid ""
 "The thumbnail will be scaled to a rectangle as large as possible inside a "
 "given rectangle, preserving the aspect ratio."
@@ -747,7 +759,11 @@ msgid "Keep aspect ratio by expanding"
 msgstr "Ohranjaj razmerje stranic z razširjanjem"
 
 #: picoftheday/configdialog.cpp:61
-#, kde-format
+#, fuzzy, kde-format
+#| msgid ""
+#| "The thumbnail will be scaled to a rectangle as small as possible outside "
+#| "a given rectangle, preserving the aspect ratio."
+msgctxt "@info:whatsthis"
 msgid ""
 "The thumbnail will be scaled to a rectangle as small as possible outside a "
 "given rectangle, preserving the aspect ratio."

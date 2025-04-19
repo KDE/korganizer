@@ -8,7 +8,7 @@ msgid ""
 msgstr ""
 "Project-Id-Version: Korganizer\n"
 "Report-Msgid-Bugs-To: https://bugs.kde.org\n"
-"POT-Creation-Date: 2024-07-30 00:42+0000\n"
+"POT-Creation-Date: 2025-04-19 00:42+0000\n"
 "PO-Revision-Date: 2024-08-19 23:51+0200\n"
 "Last-Translator: Shinjo Park <kde@peremen.name>\n"
 "Language-Team: Korean <kde-kr@kde.org>\n"
@@ -26,7 +26,9 @@ msgid "Configure Day Numbers"
 msgstr "날짜 번호 설정"
 
 #: datenums/configdialog.cpp:43
-#, kde-format
+#, fuzzy, kde-format
+#| msgid "Show Date Number"
+msgctxt "@title:group"
 msgid "Show Date Number"
 msgstr "날짜 번호 표시"
 
@@ -682,7 +684,9 @@ msgid "Configure Picture of the Day"
 msgstr "오늘의 그림 설정"
 
 #: picoftheday/configdialog.cpp:42
-#, kde-format
+#, fuzzy, kde-format
+#| msgid "Thumbnail Aspect Ratio Mode"
+msgctxt "@title:group"
 msgid "Thumbnail Aspect Ratio Mode"
 msgstr "섬네일 비율 모드"
 
@@ -693,7 +697,11 @@ msgid "Ignore aspect ratio"
 msgstr "비율 무시"
 
 #: picoftheday/configdialog.cpp:48
-#, kde-format
+#, fuzzy, kde-format
+#| msgid ""
+#| "The thumbnail will be scaled freely. The aspect ratio will not be "
+#| "preserved."
+msgctxt "@info:whatsthis"
 msgid ""
 "The thumbnail will be scaled freely. The aspect ratio will not be preserved."
 msgstr "섬네일 크기를 자유롭게 조정합니다. 비율을 보존하지 않습니다."
@@ -705,7 +713,11 @@ msgid "Keep aspect ratio"
 msgstr "비율 유지하기"
 
 #: picoftheday/configdialog.cpp:54
-#, kde-format
+#, fuzzy, kde-format
+#| msgid ""
+#| "The thumbnail will be scaled to a rectangle as large as possible inside a "
+#| "given rectangle, preserving the aspect ratio."
+msgctxt "@info:whatsthis"
 msgid ""
 "The thumbnail will be scaled to a rectangle as large as possible inside a "
 "given rectangle, preserving the aspect ratio."
@@ -719,7 +731,11 @@ msgid "Keep aspect ratio by expanding"
 msgstr "확장하여 비율 유지"
 
 #: picoftheday/configdialog.cpp:61
-#, kde-format
+#, fuzzy, kde-format
+#| msgid ""
+#| "The thumbnail will be scaled to a rectangle as small as possible outside "
+#| "a given rectangle, preserving the aspect ratio."
+msgctxt "@info:whatsthis"
 msgid ""
 "The thumbnail will be scaled to a rectangle as small as possible outside a "
 "given rectangle, preserving the aspect ratio."

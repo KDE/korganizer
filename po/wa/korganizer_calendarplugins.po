@@ -6,7 +6,7 @@ msgid ""
 msgstr ""
 "Project-Id-Version: korganizer\n"
 "Report-Msgid-Bugs-To: https://bugs.kde.org\n"
-"POT-Creation-Date: 2024-07-30 00:42+0000\n"
+"POT-Creation-Date: 2025-04-19 00:42+0000\n"
 "PO-Revision-Date: 2013-03-24 10:49+0100\n"
 "Last-Translator: Jean Cayron <jean.cayron@base.be>\n"
 "Language-Team: Walloon <linux-wa@walon.org>\n"
@@ -25,7 +25,9 @@ msgid "Configure Day Numbers"
 msgstr "Apontyî l' limero do djoû"
 
 #: datenums/configdialog.cpp:43
-#, kde-format
+#, fuzzy, kde-format
+#| msgid "Show Date Number"
+msgctxt "@title:group"
 msgid "Show Date Number"
 msgstr "Mostrer l' limero do djoû"
 
@@ -690,7 +692,9 @@ msgid "Configure Picture of the Day"
 msgstr "Apontyî l' imådje do djoû"
 
 #: picoftheday/configdialog.cpp:42
-#, kde-format
+#, fuzzy, kde-format
+#| msgid "Thumbnail Aspect Ratio Mode"
+msgctxt "@title:group"
 msgid "Thumbnail Aspect Ratio Mode"
 msgstr "Môde di rapoirt lårdjeu/hôteu do prévoeyaedje"
 
@@ -703,6 +707,7 @@ msgstr "Passer houte li rapoirt lårdjeu/hôteu"
 
 #: picoftheday/configdialog.cpp:48
 #, kde-format
+msgctxt "@info:whatsthis"
 msgid ""
 "The thumbnail will be scaled freely. The aspect ratio will not be preserved."
 msgstr ""
@@ -716,6 +721,7 @@ msgstr "Wårder l' rapoirt lårdjeu/hôteu"
 
 #: picoftheday/configdialog.cpp:54
 #, kde-format
+msgctxt "@info:whatsthis"
 msgid ""
 "The thumbnail will be scaled to a rectangle as large as possible inside a "
 "given rectangle, preserving the aspect ratio."
@@ -730,6 +736,7 @@ msgstr "Wårder l' rapoirt lårdjeu/hôteu e l' agrandixhant"
 
 #: picoftheday/configdialog.cpp:61
 #, kde-format
+msgctxt "@info:whatsthis"
 msgid ""
 "The thumbnail will be scaled to a rectangle as small as possible outside a "
 "given rectangle, preserving the aspect ratio."

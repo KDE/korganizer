@@ -6,7 +6,7 @@ msgid ""
 msgstr ""
 "Project-Id-Version: korganizer\n"
 "Report-Msgid-Bugs-To: https://bugs.kde.org\n"
-"POT-Creation-Date: 2024-07-30 00:42+0000\n"
+"POT-Creation-Date: 2025-04-19 00:42+0000\n"
 "PO-Revision-Date: 2007-09-17 14:45+0545\n"
 "Last-Translator: Nabin Gautam <nabin@mpp.org.np>\n"
 "Language-Team: Nepali <info@mpp.org.np>\n"
@@ -26,7 +26,9 @@ msgid "Configure Day Numbers"
 msgstr "दिन सङ्ख्या कन्फिगर गर्नुहोस्"
 
 #: datenums/configdialog.cpp:43
-#, kde-format
+#, fuzzy, kde-format
+#| msgid "Show Date Number"
+msgctxt "@title:group"
 msgid "Show Date Number"
 msgstr "मिति सङ्ख्या देखाउनुहोस्"
 
@@ -707,7 +709,9 @@ msgid "Configure Picture of the Day"
 msgstr "यस दिनको तस्वीर कन्फिगर गर्नुहोस्"
 
 #: picoftheday/configdialog.cpp:42
-#, kde-format
+#, fuzzy, kde-format
+#| msgid "Thumbnail Aspect Ratio Mode"
+msgctxt "@title:group"
 msgid "Thumbnail Aspect Ratio Mode"
 msgstr "थम्बनेल आकार अनुपात मोड"
 
@@ -719,7 +723,11 @@ msgid "Ignore aspect ratio"
 msgstr "आकार अनुपात उपेक्षा गर्नुहोस्"
 
 #: picoftheday/configdialog.cpp:48
-#, kde-format
+#, fuzzy, kde-format
+#| msgid ""
+#| "The thumbnail will be scaled freely. The aspect ratio will not be "
+#| "preserved."
+msgctxt "@info:whatsthis"
 msgid ""
 "The thumbnail will be scaled freely. The aspect ratio will not be preserved."
 msgstr "थम्बनेल स्वतन्त्र रूपमा स्केल गरिन्छ । आकार अनुपात सुरक्षित राखिने छैन ।"
@@ -732,7 +740,11 @@ msgid "Keep aspect ratio"
 msgstr "आकार अनुपात राख्नुहोस्"
 
 #: picoftheday/configdialog.cpp:54
-#, kde-format
+#, fuzzy, kde-format
+#| msgid ""
+#| "The thumbnail will be scaled to a rectangle as large as possible inside a "
+#| "given rectangle, preserving the aspect ratio."
+msgctxt "@info:whatsthis"
 msgid ""
 "The thumbnail will be scaled to a rectangle as large as possible inside a "
 "given rectangle, preserving the aspect ratio."
@@ -748,7 +760,11 @@ msgid "Keep aspect ratio by expanding"
 msgstr "आकार अनुपात विस्तार गरेर राख्नुहोस्"
 
 #: picoftheday/configdialog.cpp:61
-#, kde-format
+#, fuzzy, kde-format
+#| msgid ""
+#| "The thumbnail will be scaled to a rectangle as small as possible outside "
+#| "a given rectangle, preserving the aspect ratio."
+msgctxt "@info:whatsthis"
 msgid ""
 "The thumbnail will be scaled to a rectangle as small as possible outside a "
 "given rectangle, preserving the aspect ratio."

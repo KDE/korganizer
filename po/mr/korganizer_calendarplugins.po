@@ -6,7 +6,7 @@ msgid ""
 msgstr ""
 "Project-Id-Version: \n"
 "Report-Msgid-Bugs-To: https://bugs.kde.org\n"
-"POT-Creation-Date: 2024-07-30 00:42+0000\n"
+"POT-Creation-Date: 2025-04-19 00:42+0000\n"
 "PO-Revision-Date: 2013-04-15 10:39+0530\n"
 "Last-Translator: Chetan Khona <chetan@kompkin.com>\n"
 "Language-Team: Marathi <kde-i18n-doc@kde.org>\n"
@@ -25,7 +25,9 @@ msgid "Configure Day Numbers"
 msgstr "दिवसांच्या संख्येची मांडणी करा"
 
 #: datenums/configdialog.cpp:43
-#, kde-format
+#, fuzzy, kde-format
+#| msgid "Show Date Number"
+msgctxt "@title:group"
 msgid "Show Date Number"
 msgstr "तारखांची संख्या दाखवा"
 
@@ -695,7 +697,9 @@ msgid "Configure Picture of the Day"
 msgstr "दिवसाच्या प्रतिमेची/चित्राची मांडणी/रचना करा"
 
 #: picoftheday/configdialog.cpp:42
-#, kde-format
+#, fuzzy, kde-format
+#| msgid "Thumbnail Aspect Ratio Mode"
+msgctxt "@title:group"
 msgid "Thumbnail Aspect Ratio Mode"
 msgstr "लघुचित्राच्या प्रसर गुणोत्तराचे (लांबी-रुंदीचे प्रमाण) स्वरूप"
 
@@ -707,7 +711,11 @@ msgid "Ignore aspect ratio"
 msgstr "प्रसर गुणोत्तराकडे दुर्लक्ष करा."
 
 #: picoftheday/configdialog.cpp:48
-#, kde-format
+#, fuzzy, kde-format
+#| msgid ""
+#| "The thumbnail will be scaled freely. The aspect ratio will not be "
+#| "preserved."
+msgctxt "@info:whatsthis"
 msgid ""
 "The thumbnail will be scaled freely. The aspect ratio will not be preserved."
 msgstr "लघुचित्राचे प्रमाण मुक्तपणे ठरविले जाईल. प्रसर गुणोत्तर कायम ठेवले जाणार नाही."
@@ -720,7 +728,11 @@ msgid "Keep aspect ratio"
 msgstr "स्वरूपाचे गुणोत्तर ठेवा"
 
 #: picoftheday/configdialog.cpp:54
-#, kde-format
+#, fuzzy, kde-format
+#| msgid ""
+#| "The thumbnail will be scaled to a rectangle as large as possible inside a "
+#| "given rectangle, preserving the aspect ratio."
+msgctxt "@info:whatsthis"
 msgid ""
 "The thumbnail will be scaled to a rectangle as large as possible inside a "
 "given rectangle, preserving the aspect ratio."
@@ -736,7 +748,11 @@ msgid "Keep aspect ratio by expanding"
 msgstr "प्रसर गुणोत्तर विस्तार करून ठेवा"
 
 #: picoftheday/configdialog.cpp:61
-#, kde-format
+#, fuzzy, kde-format
+#| msgid ""
+#| "The thumbnail will be scaled to a rectangle as small as possible outside "
+#| "a given rectangle, preserving the aspect ratio."
+msgctxt "@info:whatsthis"
 msgid ""
 "The thumbnail will be scaled to a rectangle as small as possible outside a "
 "given rectangle, preserving the aspect ratio."

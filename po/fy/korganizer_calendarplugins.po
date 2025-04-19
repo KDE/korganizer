@@ -19,7 +19,7 @@ msgid ""
 msgstr ""
 "Project-Id-Version: korganizer\n"
 "Report-Msgid-Bugs-To: https://bugs.kde.org\n"
-"POT-Creation-Date: 2024-07-30 00:42+0000\n"
+"POT-Creation-Date: 2025-04-19 00:42+0000\n"
 "PO-Revision-Date: 2007-03-28 20:53+0200\n"
 "Last-Translator: Rinse de Vries <rinsedevries@kde.nl>\n"
 "Language-Team: Frysk <kde-i18n-fry@kde.org>\n"
@@ -38,7 +38,9 @@ msgid "Configure Day Numbers"
 msgstr "Deinûmers ynstelle"
 
 #: datenums/configdialog.cpp:43
-#, kde-format
+#, fuzzy, kde-format
+#| msgid "Show Date Number"
+msgctxt "@title:group"
 msgid "Show Date Number"
 msgstr "Datumnûmer toane"
 
@@ -715,6 +717,7 @@ msgstr "&Datum && tiid ynstelle..."
 
 #: picoftheday/configdialog.cpp:42
 #, kde-format
+msgctxt "@title:group"
 msgid "Thumbnail Aspect Ratio Mode"
 msgstr ""
 
@@ -726,6 +729,7 @@ msgstr ""
 
 #: picoftheday/configdialog.cpp:48
 #, kde-format
+msgctxt "@info:whatsthis"
 msgid ""
 "The thumbnail will be scaled freely. The aspect ratio will not be preserved."
 msgstr ""
@@ -738,6 +742,7 @@ msgstr ""
 
 #: picoftheday/configdialog.cpp:54
 #, kde-format
+msgctxt "@info:whatsthis"
 msgid ""
 "The thumbnail will be scaled to a rectangle as large as possible inside a "
 "given rectangle, preserving the aspect ratio."
@@ -751,6 +756,7 @@ msgstr ""
 
 #: picoftheday/configdialog.cpp:61
 #, kde-format
+msgctxt "@info:whatsthis"
 msgid ""
 "The thumbnail will be scaled to a rectangle as small as possible outside a "
 "given rectangle, preserving the aspect ratio."

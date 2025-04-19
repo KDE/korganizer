@@ -6,7 +6,7 @@ msgid ""
 msgstr ""
 "Project-Id-Version: kdepim-addons\n"
 "Report-Msgid-Bugs-To: https://bugs.kde.org\n"
-"POT-Creation-Date: 2024-07-30 00:42+0000\n"
+"POT-Creation-Date: 2025-04-19 00:42+0000\n"
 "PO-Revision-Date: 2023-11-07 21:26+0100\n"
 "Last-Translator: Enol P. <enolp@softastur.org>\n"
 "Language-Team: \n"
@@ -25,6 +25,7 @@ msgstr ""
 
 #: datenums/configdialog.cpp:43
 #, kde-format
+msgctxt "@title:group"
 msgid "Show Date Number"
 msgstr ""
 
@@ -680,6 +681,7 @@ msgstr ""
 
 #: picoftheday/configdialog.cpp:42
 #, kde-format
+msgctxt "@title:group"
 msgid "Thumbnail Aspect Ratio Mode"
 msgstr ""
 
@@ -691,6 +693,7 @@ msgstr ""
 
 #: picoftheday/configdialog.cpp:48
 #, kde-format
+msgctxt "@info:whatsthis"
 msgid ""
 "The thumbnail will be scaled freely. The aspect ratio will not be preserved."
 msgstr ""
@@ -703,6 +706,7 @@ msgstr ""
 
 #: picoftheday/configdialog.cpp:54
 #, kde-format
+msgctxt "@info:whatsthis"
 msgid ""
 "The thumbnail will be scaled to a rectangle as large as possible inside a "
 "given rectangle, preserving the aspect ratio."
@@ -716,6 +720,7 @@ msgstr ""
 
 #: picoftheday/configdialog.cpp:61
 #, kde-format
+msgctxt "@info:whatsthis"
 msgid ""
 "The thumbnail will be scaled to a rectangle as small as possible outside a "
 "given rectangle, preserving the aspect ratio."

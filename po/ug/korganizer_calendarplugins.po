@@ -7,7 +7,7 @@ msgid ""
 msgstr ""
 "Project-Id-Version: korganizer\n"
 "Report-Msgid-Bugs-To: https://bugs.kde.org\n"
-"POT-Creation-Date: 2024-07-30 00:42+0000\n"
+"POT-Creation-Date: 2025-04-19 00:42+0000\n"
 "PO-Revision-Date: 2013-09-08 07:05+0900\n"
 "Last-Translator: Gheyret Kenji <gheyret@gmail.com>\n"
 "Language-Team: Uyghur Computer Science Association <UKIJ@yahoogroups.com>\n"
@@ -25,9 +25,11 @@ msgid "Configure Day Numbers"
 msgstr "كۆرۈنۈشنى سەپلەش…"
 
 #: datenums/configdialog.cpp:43
-#, kde-format
+#, fuzzy, kde-format
+#| msgid "Show to-dos"
+msgctxt "@title:group"
 msgid "Show Date Number"
-msgstr ""
+msgstr "قىلىدىغان ئىشلار(to-dos)نى كۆرسەت"
 
 #: datenums/configdialog.cpp:48
 #, fuzzy, kde-format
@@ -689,6 +691,7 @@ msgstr "كۆرۈنۈشنى سەپلەش…"
 
 #: picoftheday/configdialog.cpp:42
 #, kde-format
+msgctxt "@title:group"
 msgid "Thumbnail Aspect Ratio Mode"
 msgstr ""
 
@@ -701,6 +704,7 @@ msgstr "ئېگىزلىك-كەڭلىك نىسبىتىنى ساقلاپ قال"
 
 #: picoftheday/configdialog.cpp:48
 #, kde-format
+msgctxt "@info:whatsthis"
 msgid ""
 "The thumbnail will be scaled freely. The aspect ratio will not be preserved."
 msgstr ""
@@ -714,6 +718,7 @@ msgstr "ئېگىزلىك-كەڭلىك نىسبىتىنى ساقلاپ قال"
 
 #: picoftheday/configdialog.cpp:54
 #, kde-format
+msgctxt "@info:whatsthis"
 msgid ""
 "The thumbnail will be scaled to a rectangle as large as possible inside a "
 "given rectangle, preserving the aspect ratio."
@@ -728,6 +733,7 @@ msgstr "ئېگىزلىك-كەڭلىك نىسبىتىنى ساقلاپ قال"
 
 #: picoftheday/configdialog.cpp:61
 #, kde-format
+msgctxt "@info:whatsthis"
 msgid ""
 "The thumbnail will be scaled to a rectangle as small as possible outside a "
 "given rectangle, preserving the aspect ratio."

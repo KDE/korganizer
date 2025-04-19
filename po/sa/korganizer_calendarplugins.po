@@ -8,7 +8,7 @@ msgid ""
 msgstr ""
 "Project-Id-Version: korganizer\n"
 "Report-Msgid-Bugs-To: https://bugs.kde.org\n"
-"POT-Creation-Date: 2024-07-30 00:42+0000\n"
+"POT-Creation-Date: 2025-04-19 00:42+0000\n"
 "PO-Revision-Date: 2024-12-20 12:26+0530\n"
 "Last-Translator: kali <skkalwar999@gmail.com>\n"
 "Language-Team: Sanskrit <kde-i18n-doc@kde.org>\n"
@@ -26,7 +26,9 @@ msgid "Configure Day Numbers"
 msgstr "दिवससङ्ख्याः विन्यस्यताम्"
 
 #: datenums/configdialog.cpp:43
-#, kde-format
+#, fuzzy, kde-format
+#| msgid "Show Date Number"
+msgctxt "@title:group"
 msgid "Show Date Number"
 msgstr "तिथि संख्या दर्शयतु"
 
@@ -686,7 +688,9 @@ msgid "Configure Picture of the Day"
 msgstr "दिवसस्य चित्रं विन्यस्यताम्"
 
 #: picoftheday/configdialog.cpp:42
-#, kde-format
+#, fuzzy, kde-format
+#| msgid "Thumbnail Aspect Ratio Mode"
+msgctxt "@title:group"
 msgid "Thumbnail Aspect Ratio Mode"
 msgstr "लघुचित्र आस्पेक्ट रेशियो मोड"
 
@@ -697,7 +701,11 @@ msgid "Ignore aspect ratio"
 msgstr "आस्पेक्ट रेश्यो इत्यस्य अवहेलना कुर्वन्तु"
 
 #: picoftheday/configdialog.cpp:48
-#, kde-format
+#, fuzzy, kde-format
+#| msgid ""
+#| "The thumbnail will be scaled freely. The aspect ratio will not be "
+#| "preserved."
+msgctxt "@info:whatsthis"
 msgid ""
 "The thumbnail will be scaled freely. The aspect ratio will not be preserved."
 msgstr "लघुचित्रं स्वतन्त्रतया स्केल भविष्यति । आस्पेक्ट रेश्यो न रक्षिता भविष्यति।"
@@ -709,7 +717,11 @@ msgid "Keep aspect ratio"
 msgstr "आस्पेक्ट रेश्यो रखें"
 
 #: picoftheday/configdialog.cpp:54
-#, kde-format
+#, fuzzy, kde-format
+#| msgid ""
+#| "The thumbnail will be scaled to a rectangle as large as possible inside a "
+#| "given rectangle, preserving the aspect ratio."
+msgctxt "@info:whatsthis"
 msgid ""
 "The thumbnail will be scaled to a rectangle as large as possible inside a "
 "given rectangle, preserving the aspect ratio."
@@ -724,7 +736,11 @@ msgid "Keep aspect ratio by expanding"
 msgstr "विस्तारं कृत्वा आस्पेक्ट रेश्यो रक्षन्तु"
 
 #: picoftheday/configdialog.cpp:61
-#, kde-format
+#, fuzzy, kde-format
+#| msgid ""
+#| "The thumbnail will be scaled to a rectangle as small as possible outside "
+#| "a given rectangle, preserving the aspect ratio."
+msgctxt "@info:whatsthis"
 msgid ""
 "The thumbnail will be scaled to a rectangle as small as possible outside a "
 "given rectangle, preserving the aspect ratio."
