@@ -1093,7 +1093,7 @@ bool ActionManager::saveAsURL(const QUrl &url)
         setTitle();
     } else {
         KMessageBox::error(dialogParent(),
-                           xi18nc("@info", "Unable to save calendar to the file <filename>%1<filename>", mFile),
+                           xi18nc("@info", "Unable to save calendar to the file <filename>%1</filename>", mFile),
                            i18nc("@title:window", "Error"));
         qCDebug(KORGANIZER_LOG) << "failed";
         mURL = URLOrig;
