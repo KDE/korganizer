@@ -441,7 +441,7 @@ Here is a Kolab2 Server URL example:
 
 https://kolab2.example.com/freebusy/
 
-Alternatively, you can specify a full path to the Free/Busy. For example: 
+Alternatively, you can specify a full path to the Free/Busy. For example:
 
 https://kolab2.example.com/freebusy/user.xfb</string>
             </property>
@@ -456,7 +456,7 @@ Here is a Kolab2 Server URL example:
 
 https://kolab2.example.com/freebusy/
 
-Alternatively, you can specify a full path to the Free/Busy. For example: 
+Alternatively, you can specify a full path to the Free/Busy. For example:
 
 https://kolab2.example.com/freebusy/user.xfb</string>
             </property>

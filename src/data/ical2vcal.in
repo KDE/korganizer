@@ -4,7 +4,7 @@
 # (c) 1998 Preston Brown
 # Part of the KOrganizer Project
 #
-# This utility will read ~/.calendar in the ical format as input, and output 
+# This utility will read ~/.calendar in the ical format as input, and output
 # a file in the versit vCalendar format with a .vcs extension.
 #
 # This code is covered by the GNU Public License.  Please see the file
@@ -78,7 +78,7 @@ sub process_appointment
     # this is a count of the total # of parentheses.
     while ($pcount) {
 	$line = &getLine;
-	
+
 	# check to see if more is left to be processed.
 	if ($pcount > 0) {
  	    # process the line.
@@ -91,7 +91,7 @@ sub process_appointment
  		$hour = int ($totalmin / 60);
  		$curappt{"starthour"} = $hour;
  		$curappt{"startmin"} = $min;
-		
+
  	    } elsif ($line =~ /^Length/) {
 		# time length (minutes)
  		$_ = $line;
@@ -244,10 +244,10 @@ sub write_appointment
     if (defined($curappt{"starthour"})) {
 	$tmpstr = &date_to_str($curappt{"startyear"},
 			      $curappt{"startmonth"},
-			      $curappt{"startday"}) . 
+			      $curappt{"startday"}) .
 				  &time_to_str($curappt{"endhour"},
 					       $curappt{"endmin"});
-    } 
+    }
     output("DTEND:$tmpstr");
     if (defined($curappt{"summary"})) {
 	$summary = $curappt{"summary"};
@@ -261,9 +261,9 @@ sub write_appointment
 	$attendee = "ATTENDEE;ROLE=OWNER:" . $curappt{"attendee"};
 	output($attendee);
     }
-    
+
     if (defined($curappt{"alarm"})) {
-	
+
     }
 
     if (defined($curappt{"repeats"})) {
@@ -274,7 +274,7 @@ sub write_appointment
 	} elsif ($curappt{"repeats"} eq "WEEKLY") {
 	    $rule = $rule . "W1" . " ";
 	    $rule = $rule . $curappt{"weekdays"};
-		
+
 	} elsif ($curappt{"repeats"} eq "MONTHLY") {
 	    $rule = $rule . "MD" . $curappt{"period"};
 	    $rule = $rule . " " . $curappt{"startday"};
