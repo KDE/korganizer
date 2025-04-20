@@ -385,7 +385,7 @@ void SDSummaryWidget::createLabels()
     if (!mDates.isEmpty()) {
         int counter = 0;
         QList<SDEntry>::Iterator addrIt;
-        QList<SDEntry>::Iterator const addrEnd(mDates.end());
+        QList<SDEntry>::Iterator addrEnd(mDates.end()); // NOLINT(misc-const-correctness)
         for (addrIt = mDates.begin(); addrIt != addrEnd; ++addrIt) {
             const bool makeBold = (*addrIt).daysTo == 0; // i.e., today
 
