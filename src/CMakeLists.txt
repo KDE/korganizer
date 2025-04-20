@@ -429,4 +429,3 @@ install(FILES
     ${CMAKE_CURRENT_BINARY_DIR}/org.kde.korganizer.service
     DESTINATION ${KDE_INSTALL_DBUSSERVICEDIR}
    )
-

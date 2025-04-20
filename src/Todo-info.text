@@ -15,4 +15,3 @@ Here are the rules for how/when/where should to-dos be displayed in agenda/month
 * In agenda, a not-overdue to-do, with time, is drawn with the rectangle ending
   at dtDue, and not starting at dtDue. If dtDue is at 00h00, then it should be
   displayed in the previous day, ending at 23:59:59
-

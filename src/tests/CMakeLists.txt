@@ -17,4 +17,3 @@ target_link_libraries(korgplugins
   KF6::Holidays
   KF6::KIOCore
 )
-

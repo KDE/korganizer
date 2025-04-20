@@ -11,4 +11,3 @@ CategoryLoggingName=KORGANIZER_LOG
 IncludeFiles=korganizer_debug.h
 TranslationDomain=korganizer
 TranslationSystem=kde
-
