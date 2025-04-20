@@ -110,7 +110,7 @@ void KOGlobals::setHolidayCategories(const QStringList &categories)
     }
 }
 
-QStringList KOGlobals::holidayCategories() const
+QStringList &KOGlobals::holidayCategories()
 {
     return mHolidayCategories;
 }

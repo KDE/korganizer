@@ -57,7 +57,7 @@ public:
     /**
      * Returns the holiday categories list
      */
-    [[nodiscard]] QStringList holidayCategories() const;
+    [[nodiscard]] QStringList &holidayCategories();
 
 protected:
     KOGlobals();
