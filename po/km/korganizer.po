@@ -8,7 +8,7 @@ msgid ""
 msgstr ""
 "Project-Id-Version: korganizer\n"
 "Report-Msgid-Bugs-To: https://bugs.kde.org\n"
-"POT-Creation-Date: 2025-04-19 00:42+0000\n"
+"POT-Creation-Date: 2025-04-20 00:42+0000\n"
 "PO-Revision-Date: 2012-07-09 10:04+0700\n"
 "Last-Translator: Khoem Sokhem <khoemsokhem@khmeros.info>\n"
 "Language-Team: Khmer\n"
@@ -1484,10 +1484,10 @@ msgid "Saved calendar <filename>%1</filename>"
 msgstr ""
 
 #: actionmanager.cpp:1096
-#, fuzzy, kde-format
+#, fuzzy, kde-kuit-format
 #| msgid "Unable to save calendar to the file %1."
 msgctxt "@info"
-msgid "Unable to save calendar to the file <filename>%1<filename>"
+msgid "Unable to save calendar to the file <filename>%1</filename>"
 msgstr "មិន​អាច​រក្សាទុក​ប្រតិទិន​ទៅ​ឯកសារ %1 បាន​ឡើយ ។"
 
 #: actionmanager.cpp:1097

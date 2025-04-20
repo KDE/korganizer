@@ -1,14 +1,15 @@
-# Copyright (C) YEAR This_file_is_part_of_KDE
-# This file is distributed under the same license as the PACKAGE package.
+# Spanish translations for korganizer_calendarplugins.po package.
+# Copyright (C) 2016-2025 This_file_is_part_of_KDE
+# This file is distributed under the same license as the korganizer package.
 #
-# Javier Vinal <fjvinal@gmail.com>, 2016, 2018, 2019.
-# SPDX-FileCopyrightText: 2019, 2020, 2024 Eloy Cuadra <ecuadra@eloihr.net>
+# SPDX-FileCopyrightText: 2016, 2018, 2019 Javier Vinal <fjvinal@gmail.com>
+# SPDX-FileCopyrightText: 2019, 2020, 2024, 2025 Eloy Cuadra <ecuadra@eloihr.net>
 msgid ""
 msgstr ""
-"Project-Id-Version: \n"
+"Project-Id-Version: korganizer_calendarplugins\n"
 "Report-Msgid-Bugs-To: https://bugs.kde.org\n"
 "POT-Creation-Date: 2025-04-19 00:42+0000\n"
-"PO-Revision-Date: 2024-07-30 16:46+0200\n"
+"PO-Revision-Date: 2025-04-19 19:48+0100\n"
 "Last-Translator: Eloy Cuadra <ecuadra@eloihr.net>\n"
 "Language-Team: Spanish <kde-l10n-es@kde.org>\n"
 "Language: es\n"
@@ -16,7 +17,7 @@ msgstr ""
 "Content-Type: text/plain; charset=UTF-8\n"
 "Content-Transfer-Encoding: 8bit\n"
 "Plural-Forms: nplurals=2; plural=n != 1;\n"
-"X-Generator: Lokalize 24.05.2\n"
+"X-Generator: Lokalize 24.12.3\n"
 
 #: datenums/configdialog.cpp:28
 #, kde-format
@@ -25,8 +26,7 @@ msgid "Configure Day Numbers"
 msgstr "Configurar números de días"
 
 #: datenums/configdialog.cpp:43
-#, fuzzy, kde-format
-#| msgid "Show Date Number"
+#, kde-format
 msgctxt "@title:group"
 msgid "Show Date Number"
 msgstr "Mostrar números de fecha"
@@ -691,8 +691,7 @@ msgid "Configure Picture of the Day"
 msgstr "Configurar la imagen del día"
 
 #: picoftheday/configdialog.cpp:42
-#, fuzzy, kde-format
-#| msgid "Thumbnail Aspect Ratio Mode"
+#, kde-format
 msgctxt "@title:group"
 msgid "Thumbnail Aspect Ratio Mode"
 msgstr "Modo de proporción de la miniatura"
@@ -704,10 +703,7 @@ msgid "Ignore aspect ratio"
 msgstr "Ignorar las proporciones"
 
 #: picoftheday/configdialog.cpp:48
-#, fuzzy, kde-format
-#| msgid ""
-#| "The thumbnail will be scaled freely. The aspect ratio will not be "
-#| "preserved."
+#, kde-format
 msgctxt "@info:whatsthis"
 msgid ""
 "The thumbnail will be scaled freely. The aspect ratio will not be preserved."
@@ -721,10 +717,7 @@ msgid "Keep aspect ratio"
 msgstr "Mantener las proporciones"
 
 #: picoftheday/configdialog.cpp:54
-#, fuzzy, kde-format
-#| msgid ""
-#| "The thumbnail will be scaled to a rectangle as large as possible inside a "
-#| "given rectangle, preserving the aspect ratio."
+#, kde-format
 msgctxt "@info:whatsthis"
 msgid ""
 "The thumbnail will be scaled to a rectangle as large as possible inside a "
@@ -740,10 +733,7 @@ msgid "Keep aspect ratio by expanding"
 msgstr "Mantener las proporciones expandiendo"
 
 #: picoftheday/configdialog.cpp:61
-#, fuzzy, kde-format
-#| msgid ""
-#| "The thumbnail will be scaled to a rectangle as small as possible outside "
-#| "a given rectangle, preserving the aspect ratio."
+#, kde-format
 msgctxt "@info:whatsthis"
 msgid ""
 "The thumbnail will be scaled to a rectangle as small as possible outside a "
@@ -765,12 +755,12 @@ msgstr "Página de imagen"
 #: picoftheday/element.cpp:326
 #, kde-format
 msgid "Loading..."
-msgstr "Cargando..."
+msgstr "Cargando…"
 
 #: picoftheday/element.cpp:332
 #, kde-format
 msgid "<qt>Loading <i>Picture of the Day</i>...</qt>"
-msgstr "<qt>Cargando <i>Imagen del día</i>...</qt>"
+msgstr "<qt>Cargando <i>Imagen del día</i>…</qt>"
 
 #: picoftheday/picoftheday.cpp:48
 #, kde-format
@@ -814,7 +804,3 @@ msgstr "Este mes en la historia"
 msgctxt "Qt date format used by the localized Wikipedia"
 msgid "MMMM_yyyy"
 msgstr "MMMM"
-
-#~ msgctxt "@action:button"
-#~ msgid "Search &Directory Service"
-#~ msgstr "Servicio de búsqueda y &directorio"

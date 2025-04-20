@@ -6,7 +6,7 @@ msgid ""
 msgstr ""
 "Project-Id-Version: kdepim/korganizer.po\n"
 "Report-Msgid-Bugs-To: https://bugs.kde.org\n"
-"POT-Creation-Date: 2025-04-19 00:42+0000\n"
+"POT-Creation-Date: 2025-04-20 00:42+0000\n"
 "PO-Revision-Date: 2004-12-03 14:52-0500\n"
 "Last-Translator: Kevin Scannell <kscanne@gmail.com>\n"
 "Language-Team: Irish <gaeilge-gnulinux@lists.sourceforge.net>\n"
@@ -1458,10 +1458,11 @@ msgid "Saved calendar <filename>%1</filename>"
 msgstr ""
 
 #: actionmanager.cpp:1096
-#, kde-format
+#, fuzzy, kde-kuit-format
+#| msgid "Could not load calendar %1."
 msgctxt "@info"
-msgid "Unable to save calendar to the file <filename>%1<filename>"
-msgstr ""
+msgid "Unable to save calendar to the file <filename>%1</filename>"
+msgstr "Níorbh fhéidir féilire %1 a luchtú."
 
 #: actionmanager.cpp:1097
 #, fuzzy, kde-format

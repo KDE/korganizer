@@ -1,12 +1,12 @@
 # Translation of korganizer_calendarplugins.po to Catalan
-# Copyright (C) 2000-2024 This_file_is_part_of_KDE
+# Copyright (C) 2000-2025 This_file_is_part_of_KDE
 #
 # Softcatalà <info@softcatala.org>, 2000.
 # Albert Cervera Areny <albertca@jazzfree.com>, 2003.
 # Ivan Lloro Boada <antispam@wanadoo.es>, 2004.
 # Sebastià Pla i Sanz <sps@sastia.com>, 2004, 2005, 2006.
 # Albert Astals Cid <aacid@kde.org>, 2004, 2005, 2006.
-# Josep M. Ferrer <txemaq@gmail.com>, 2006, 2007, 2008, 2009, 2010, 2011, 2012, 2013, 2014, 2015, 2018, 2020, 2021, 2022, 2024.
+# SPDX-FileCopyrightText: 2006, 2007, 2008, 2009, 2010, 2011, 2012, 2013, 2014, 2015, 2018, 2020, 2021, 2022, 2024, 2025 Josep M. Ferrer <txemaq@gmail.com>
 # Manuel Tortosa Moreno <manutortosa@gmail.com>, 2009, 2010, 2011.
 # Antoni Bella Pérez <antonibella5@yahoo.com>, 2011, 2013, 2014, 2015, 2016, 2018, 2019.
 msgid ""
@@ -14,14 +14,14 @@ msgstr ""
 "Project-Id-Version: korganizer\n"
 "Report-Msgid-Bugs-To: https://bugs.kde.org\n"
 "POT-Creation-Date: 2025-04-19 00:42+0000\n"
-"PO-Revision-Date: 2024-06-26 10:28+0200\n"
+"PO-Revision-Date: 2025-04-19 11:25+0200\n"
 "Last-Translator: Josep M. Ferrer <txemaq@gmail.com>\n"
 "Language-Team: Catalan <kde-i18n-ca@kde.org>\n"
 "Language: ca\n"
 "MIME-Version: 1.0\n"
 "Content-Type: text/plain; charset=UTF-8\n"
 "Content-Transfer-Encoding: 8bit\n"
-"X-Generator: Lokalize 22.12.3\n"
+"X-Generator: Lokalize 24.12.3\n"
 "Plural-Forms: nplurals=2; plural=n != 1;\n"
 "X-Accelerator-Marker: &\n"
 
@@ -32,8 +32,7 @@ msgid "Configure Day Numbers"
 msgstr "Configuració dels números de dia"
 
 #: datenums/configdialog.cpp:43
-#, fuzzy, kde-format
-#| msgid "Show Date Number"
+#, kde-format
 msgctxt "@title:group"
 msgid "Show Date Number"
 msgstr "Mostra el número de data"
@@ -697,8 +696,7 @@ msgid "Configure Picture of the Day"
 msgstr "Configuració de la imatge del dia"
 
 #: picoftheday/configdialog.cpp:42
-#, fuzzy, kde-format
-#| msgid "Thumbnail Aspect Ratio Mode"
+#, kde-format
 msgctxt "@title:group"
 msgid "Thumbnail Aspect Ratio Mode"
 msgstr "Mode de relació d'aspecte de les miniatures"
@@ -710,10 +708,7 @@ msgid "Ignore aspect ratio"
 msgstr "Ignora la relació d'aspecte"
 
 #: picoftheday/configdialog.cpp:48
-#, fuzzy, kde-format
-#| msgid ""
-#| "The thumbnail will be scaled freely. The aspect ratio will not be "
-#| "preserved."
+#, kde-format
 msgctxt "@info:whatsthis"
 msgid ""
 "The thumbnail will be scaled freely. The aspect ratio will not be preserved."
@@ -727,10 +722,7 @@ msgid "Keep aspect ratio"
 msgstr "Mantén la relació d'aspecte"
 
 #: picoftheday/configdialog.cpp:54
-#, fuzzy, kde-format
-#| msgid ""
-#| "The thumbnail will be scaled to a rectangle as large as possible inside a "
-#| "given rectangle, preserving the aspect ratio."
+#, kde-format
 msgctxt "@info:whatsthis"
 msgid ""
 "The thumbnail will be scaled to a rectangle as large as possible inside a "
@@ -746,10 +738,7 @@ msgid "Keep aspect ratio by expanding"
 msgstr "Mantén la relació d'aspecte per expansió"
 
 #: picoftheday/configdialog.cpp:61
-#, fuzzy, kde-format
-#| msgid ""
-#| "The thumbnail will be scaled to a rectangle as small as possible outside "
-#| "a given rectangle, preserving the aspect ratio."
+#, kde-format
 msgctxt "@info:whatsthis"
 msgid ""
 "The thumbnail will be scaled to a rectangle as small as possible outside a "
