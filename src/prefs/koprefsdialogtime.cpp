@@ -3,6 +3,7 @@
 
   SPDX-FileCopyrightText: 2000-2003 Cornelius Schumacher <schumacher@kde.org>
   SPDX-FileCopyrightText: 2003-2004 Reinhold Kainhofer <reinhold@kainhofer.com>
+  SPDX-FileCopyrightText: 2025 Allen Winter <winter@kde.org>
 
   SPDX-License-Identifier: GPL-2.0-or-later WITH LicenseRef-Qt-Commercial-exception-1.0
 */
@@ -11,12 +12,14 @@
 #include "koprefs.h"
 #include <CalendarSupport/KCalPrefs>
 #include <KComboBox>
+#include <KHolidays/HolidayCategories>
 #include <KHolidays/HolidayRegion>
 #include <KLocalizedString>
 #include <KPluginFactory>
 #include <KTimeComboBox>
 #include <KUrlRequester>
 #include <Libkdepim/KCheckComboBox>
+#include <QButtonGroup>
 #include <QCheckBox>
 #include <QComboBox>
 #include <QFrame>
@@ -62,11 +65,12 @@ KOPrefsDialogTime::KOPrefsDialogTime(QObject *parent, const KPluginMetaData &dat
     auto holidayRegBox = new QWidget(regionalPage);
     auto holidayRegBoxHBoxLayout = new QHBoxLayout(holidayRegBox);
     holidayRegBoxHBoxLayout->setContentsMargins({});
-    holidaysLayout->addWidget(holidayRegBox, 1, 0, 1, 2);
+    holidaysLayout->addWidget(holidayRegBox, 1, 0, 1, 1);
 
-    auto holidayLabel = new QLabel(i18nc("@label", "Use holiday region:"), holidayRegBox);
+    auto holidayLabel = new QLabel(i18nc("@label", "Use holiday regions:"), holidayRegBox);
     holidayLabel->setToolTip(CalendarSupport::KCalPrefs::instance()->holidaysItem()->toolTip());
     holidayLabel->setWhatsThis(CalendarSupport::KCalPrefs::instance()->holidaysItem()->whatsThis());
+    holidayRegBoxHBoxLayout->addWidget(holidayLabel);
 
     mHolidayCheckCombo = new KPIM::KCheckComboBox(holidayRegBox);
     holidayRegBoxHBoxLayout->addWidget(mHolidayCheckCombo);
@@ -106,6 +110,45 @@ KOPrefsDialogTime::KOPrefsDialogTime(QObject *parent, const KPluginMetaData &dat
     for (const KHolidays::HolidayRegion *region : holidays) {
         const QString regionStr = region->regionCode();
         mHolidayCheckCombo->setItemCheckState(mHolidayCheckCombo->findData(regionStr), Qt::Checked);
+    }
+
+    // holiday region selection
+    auto holidayCatBox = new QWidget(regionalPage);
+    auto holidayCatBoxHBoxLayout = new QHBoxLayout(holidayCatBox);
+    holidayCatBoxHBoxLayout->setContentsMargins({});
+    holidaysLayout->addWidget(holidayCatBox, 2, 0, 1, 1);
+
+    auto holidayCatLabel = new QLabel(i18nc("@label", "Use holiday categories:"), holidayCatBox);
+    holidayCatLabel->setToolTip(CalendarSupport::KCalPrefs::instance()->holidayCategoriesItem()->toolTip());
+    holidayCatLabel->setWhatsThis(CalendarSupport::KCalPrefs::instance()->holidayCategoriesItem()->whatsThis());
+    holidayCatBoxHBoxLayout->addWidget(holidayCatLabel);
+
+    mHolidayTypeCheckCombo = new KPIM::KCheckComboBox(holidayCatBox);
+    holidayCatBoxHBoxLayout->addWidget(mHolidayTypeCheckCombo);
+    connect(mHolidayTypeCheckCombo, &KPIM::KCheckComboBox::checkedItemsChanged, this, &KOPrefsDialogTime::slotWidChanged);
+    holidaysLayout->addWidget(mHolidayTypeCheckCombo);
+
+    mHolidayTypeCheckCombo->setToolTip(CalendarSupport::KCalPrefs::instance()->holidayCategoriesItem()->toolTip());
+    mHolidayTypeCheckCombo->setWhatsThis(CalendarSupport::KCalPrefs::instance()->holidayCategoriesItem()->whatsThis());
+
+    mHolidayTypeCheckCombo->clear();
+    mHolidayTypeCheckCombo->setDefaultText(i18nc("@item:inlistbox", "Select Holiday Categories"));
+    const QStringList categories = KHolidays::allHolidayCategories();
+    int itemNo = 0;
+    for (const auto &category : std::as_const(categories)) {
+        const QString trCategory = KHolidays::translateHolidayCategory(category);
+        mHolidayTypeCheckCombo->addItem(trCategory, category);
+        mHolidayTypeCheckCombo->setItemData(itemNo++, KHolidays::holidayCategoryDescription(category), Qt::ToolTipRole);
+    }
+    const auto holidayCategories = CalendarSupport::KCalPrefs::instance()->holidayCategories();
+    if (!holidayCategories.isEmpty()) {
+        for (const QString &type : holidayCategories) {
+            mHolidayTypeCheckCombo->setItemCheckState(mHolidayTypeCheckCombo->findData(type), Qt::Checked);
+        }
+    } else {
+        for (const QString &type : categories) {
+            mHolidayTypeCheckCombo->setItemCheckState(mHolidayTypeCheckCombo->findData(type), Qt::Checked);
+        }
     }
 
     auto workingHoursGroupBox = new QGroupBox(i18nc("@title:group", "Weekly Schedule"), regionalPage);
@@ -259,6 +302,16 @@ void KOPrefsDialogTime::usrWriteConfig()
         }
     }
     CalendarSupport::KCalPrefs::instance()->mHolidays = HolidayRegions;
+
+    QStringList HolidayTypes;
+    const auto holidayTypesCheckedItems = mHolidayTypeCheckCombo->checkedItems();
+    for (const QString &str : holidayTypesCheckedItems) {
+        const int index = mHolidayTypeCheckCombo->findText(str);
+        if (index >= 0) {
+            HolidayTypes.append(mHolidayTypeCheckCombo->itemData(index).toString());
+        }
+    }
+    CalendarSupport::KCalPrefs::instance()->mHolidayCategories = HolidayTypes;
 
     CalendarSupport::KCalPrefs::instance()->mReminderTime = mReminderTimeSpin->value();
     CalendarSupport::KCalPrefs::instance()->mReminderTimeUnits = mReminderUnitsCombo->currentIndex();

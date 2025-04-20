@@ -30,6 +30,7 @@ protected:
 private:
     QStringList tzonenames;
     KPIM::KCheckComboBox *mHolidayCheckCombo = nullptr;
+    KPIM::KCheckComboBox *mHolidayTypeCheckCombo = nullptr;
     QSpinBox *mReminderTimeSpin = nullptr;
     KComboBox *mReminderUnitsCombo = nullptr;
     QCheckBox *mWorkDays[7];

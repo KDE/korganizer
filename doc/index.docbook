@@ -2060,11 +2060,21 @@ in the Agenda view.</para></listitem>
 </varlistentry>
 
 <varlistentry>
-<term><guilabel>Holidays</guilabel></term>
-<listitem><para>Select your country from the drop down list, or if
-it is not listed, select <guilabel>(None)</guilabel>.
-If your country is selected, &korganizer; will recognize and display
-its important dates and holidays in the calendar view.</para></listitem>
+<term><guilabel>Holiday Regions</guilabel></term>
+<listitem><para>Select holiday regions from the drop down list.
+For each selected region, &korganizer; will recognize and display
+its important dates and holidays in the agenda and month views.
+You can configure the types of holidays to display with the
+Holiday Categories drop down list (see next entry).
+</para></listitem>
+</varlistentry>
+
+<varlistentry>
+<term><guilabel>Holiday Categories</guilabel></term>
+<listitem><para>Select the holiday categories from the drop down list.
+By default all holiday types are enabled.  Select the holiday categories
+you want to hide, for example some people are not interesting in religious holidays.
+</para></listitem>
 </varlistentry>
 
 <varlistentry>

@@ -19,6 +19,8 @@ QList<KLazyLocalizedString> WhatsNewTranslations::lastNewFeatures() const
                "Setting a default Event calendar has been supported for a long time.  See the Calendar Manager context menu \"Set as Default Todo Calendar\""),
         kli18n("Agenda view: optionally draw bolder/fatter horizontal grid lines every two hours. To enable this behaviour, check the \"Draw bold horizontal "
                "grid lines for the even hours\" option in the View->Agenda View tab"),
+        kli18n("It is now possible to hide holidays that belong to specific categories, for example to hide religious holidays. See the Categories combobox in "
+               "the Holidays section of the Time&Date->Regional tab"),
     };
     return info;
 }

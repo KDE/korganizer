@@ -8,6 +8,10 @@
 
 #include "koglobals.h"
 #include "prefs/koprefs.h"
+
+#include <CalendarSupport/KCalPrefs>
+
+#include <KHolidays/HolidayCategories>
 #include <KHolidays/HolidayRegion>
 
 #include <QApplication>
@@ -30,6 +34,7 @@ KOGlobals::KOGlobals() = default;
 KOGlobals::~KOGlobals()
 {
     qDeleteAll(mHolidayRegions);
+    mHolidayCategories.clear();
 }
 
 bool KOGlobals::reverseLayout()
@@ -37,7 +42,7 @@ bool KOGlobals::reverseLayout()
     return QApplication::isRightToLeft();
 }
 
-QMap<QDate, QStringList> KOGlobals::holiday(const QDate &start, const QDate &end) const
+QMap<QDate, QStringList> KOGlobals::holiday(const QDate &start, const QDate &end)
 {
     QMap<QDate, QStringList> holidaysByDate;
 
@@ -45,8 +50,10 @@ QMap<QDate, QStringList> KOGlobals::holiday(const QDate &start, const QDate &end
         return holidaysByDate;
     }
 
-    for (const KHolidays::HolidayRegion *region : std::as_const(mHolidayRegions)) {
+    setHolidayCategories(CalendarSupport::KCalPrefs::instance()->holidayCategories());
+    for (KHolidays::HolidayRegion *region : std::as_const(mHolidayRegions)) {
         if (region && region->isValid()) {
+            region->setCategories(holidayCategories());
             const KHolidays::Holiday::List list = region->rawHolidaysWithAstroSeasons(start, end);
             const int listCount(list.count());
             for (int i = 0; i < listCount; ++i) {
@@ -91,4 +98,19 @@ void KOGlobals::setHolidays(const QStringList &regions)
 QList<KHolidays::HolidayRegion *> &KOGlobals::holidays()
 {
     return mHolidayRegions;
+}
+
+void KOGlobals::setHolidayCategories(const QStringList &categories)
+{
+    mHolidayCategories.clear();
+    for (const QString &category : categories) {
+        if (KHolidays::isHolidayCategoryValid(category)) {
+            mHolidayCategories.append(category);
+        }
+    }
+}
+
+QStringList KOGlobals::holidayCategories() const
+{
+    return mHolidayCategories;
 }

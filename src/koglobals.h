@@ -31,7 +31,7 @@ public:
 
     ~KOGlobals();
 
-    [[nodiscard]] QMap<QDate, QStringList> holiday(const QDate &start, const QDate &end) const;
+    [[nodiscard]] QMap<QDate, QStringList> holiday(const QDate &start, const QDate &end);
 
     [[nodiscard]] int firstDayOfWeek() const;
 
@@ -43,13 +43,26 @@ public:
     */
     void setHolidays(const QStringList &regions);
 
-    /** return the HolidayRegion object or 0 if none has been defined
+    /**
+     * Returns the HolidayRegion object or 0 if none has been defined
      */
     [[nodiscard]] QList<KHolidays::HolidayRegion *> &holidays();
+
+    /**
+     * Set which holiday categories the user wants to use.
+     * @param categories a list of Holiday Category strings.
+     */
+    void setHolidayCategories(const QStringList &categories);
+
+    /**
+     * Returns the holiday categories list
+     */
+    [[nodiscard]] QStringList holidayCategories() const;
 
 protected:
     KOGlobals();
 
 private:
     QList<KHolidays::HolidayRegion *> mHolidayRegions;
+    QStringList mHolidayCategories;
 };

@@ -19,6 +19,7 @@
 #include <Akonadi/ItemFetchScope>
 #include <Akonadi/SearchQuery>
 #include <CalendarSupport/CalendarSingleton>
+#include <CalendarSupport/KCalPrefs>
 #include <CalendarSupport/Utils>
 
 #include <KCalendarCore/Calendar>
@@ -355,6 +356,7 @@ void SDSummaryWidget::createLabels()
     if (mShowHolidays) {
         if (initHolidays()) {
             for (dt = QDate::currentDate(); dt <= QDate::currentDate().addDays(mDaysAhead - 1); dt = dt.addDays(1)) {
+                mHolidays->setCategories(CalendarSupport::KCalPrefs::instance()->holidayCategories());
                 QList<Holiday> const holidays = mHolidays->rawHolidaysWithAstroSeasons(dt);
                 QList<Holiday>::ConstIterator it = holidays.constBegin();
                 for (; it != holidays.constEnd(); ++it) {
