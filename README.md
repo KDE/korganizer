@@ -1,4 +1,4 @@
-# KOrganizer #
+# KOrganizer
 
 KOrganizer is an easy to use personal information manager (PIM).
 You can schedule appointments, events, create to-dos and write journal entries.
@@ -27,8 +27,6 @@ offering you an integrated solution for your communication and information
 management needs: email, notes, contacts management, news reader and
 news feeds reader.  Even if you do not use it inside Kontact, KOrganizer is
 integrated with the other KDE PIM applications.  For instance, you can configure
-it to show birthdays from [KAddressbook](https://apps.kde.org/kaddressbook/) in your agenda,
-use [KMail](https://apps.kde.org/kmail2/) to send and
+it to show birthdays from [KAddressbook](https://apps.kde.org/kaddressbook/)
+in your agenda, use [KMail](https://apps.kde.org/kmail2/) to send and
 receive invitations, etc.
-
-
