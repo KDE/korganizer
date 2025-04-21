@@ -1123,12 +1123,6 @@ void ActionManager::updateConfig()
     mNextXDays->setText(i18ncp("@action:inmenu", "&Next Day", "&Next %1 Days", KOPrefs::instance()->mNextXDays));
 
     KOCore::self()->reloadPlugins();
-
-#ifdef AKONADI_PORT_DISABLED // shouldn't be required anymore
-    if (mCollectionView) {
-        mCollectionView->updateView();
-    }
-#endif
 }
 
 void ActionManager::configureDateTime()
