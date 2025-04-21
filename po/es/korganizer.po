@@ -17,8 +17,8 @@ msgid ""
 msgstr ""
 "Project-Id-Version: korganizer\n"
 "Report-Msgid-Bugs-To: https://bugs.kde.org\n"
-"POT-Creation-Date: 2025-04-20 00:42+0000\n"
-"PO-Revision-Date: 2025-04-19 20:00+0100\n"
+"POT-Creation-Date: 2025-04-21 00:42+0000\n"
+"PO-Revision-Date: 2025-04-20 10:45+0100\n"
 "Last-Translator: Eloy Cuadra <ecuadra@eloihr.net>\n"
 "Language-Team: Spanish <kde-l10n-es@kde.org>\n"
 "Language: es\n"
@@ -1386,12 +1386,11 @@ msgid "Saved calendar <filename>%1</filename>"
 msgstr "Se ha guardado el calendario <message>%1</message>"
 
 #: actionmanager.cpp:1096
-#, fuzzy, kde-kuit-format
-#| msgctxt "@info"
-#| msgid "Unable to save calendar to the file <filename>%1<filename>"
+#, kde-kuit-format
 msgctxt "@info"
 msgid "Unable to save calendar to the file <filename>%1</filename>"
-msgstr "No se puede guardar el calendario en el archivo <filename>%1<filename>"
+msgstr ""
+"No se puede guardar el calendario en el archivo <filename>%1</filename>"
 
 #: actionmanager.cpp:1097
 #, kde-format
@@ -5836,7 +5835,20 @@ msgstr "Us&ar la dirección de correo completa para la descarga"
 #. i18n: ectx: property (whatsThis), widget (QLineEdit, retrieveUrl)
 #. i18n: ectx: property (whatsThis), widget (QLabel, TextLabel7_2)
 #: ui/kogroupwareprefspage.ui:446 ui/kogroupwareprefspage.ui:461
-#, kde-format
+#, fuzzy, kde-format
+#| msgctxt "@info:whatsthis"
+#| msgid ""
+#| "Enter the URL for the server on which the Free/Busy information is "
+#| "published here.\n"
+#| "Ask the server administrator for this information.\n"
+#| "Here is a Kolab2 Server URL example:\n"
+#| "\n"
+#| "https://kolab2.example.com/freebusy/\n"
+#| "\n"
+#| "Alternatively, you can specify a full path to the Free/Busy. For "
+#| "example: \n"
+#| "\n"
+#| "https://kolab2.example.com/freebusy/user.xfb"
 msgctxt "@info:whatsthis"
 msgid ""
 "Enter the URL for the server on which the Free/Busy information is published "
@@ -5846,7 +5858,7 @@ msgid ""
 "\n"
 "https://kolab2.example.com/freebusy/\n"
 "\n"
-"Alternatively, you can specify a full path to the Free/Busy. For example: \n"
+"Alternatively, you can specify a full path to the Free/Busy. For example:\n"
 "\n"
 "https://kolab2.example.com/freebusy/user.xfb"
 msgstr ""

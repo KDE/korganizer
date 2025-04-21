@@ -24,8 +24,8 @@ msgid ""
 msgstr ""
 "Project-Id-Version: korganizer\n"
 "Report-Msgid-Bugs-To: https://bugs.kde.org\n"
-"POT-Creation-Date: 2025-04-20 00:42+0000\n"
-"PO-Revision-Date: 2025-04-18 18:45+0200\n"
+"POT-Creation-Date: 2025-04-21 00:42+0000\n"
+"PO-Revision-Date: 2025-04-19 09:15+0200\n"
 "Last-Translator: Xavier Besnard <xavier.besnard@kde.org>\n"
 "Language-Team: French <French <kde-francophone@kde.org>>\n"
 "Language: fr\n"
@@ -1070,14 +1070,7 @@ msgstr ""
 "exclus)"
 
 #: actionmanager.cpp:582
-#, fuzzy, kde-kuit-format
-#| msgctxt "@info:whatsthis"
-#| msgid ""
-#| "Select this option to show a week at a time, excluding the days that are "
-#| "not included in your weekly schedule. Configure your schedule by "
-#| "selecting days in the <placeholder>Weekly Schedule</placeholder> setting "
-#| "in the <interface>Time and Date->Regional</interface> page.<br>Typically "
-#| "this view is intended for showing the week without weekend days.</br>"
+#, kde-kuit-format
 msgctxt "@info:whatsthis"
 msgid ""
 "Select this option to show a week at a time, excluding the days that are not "
@@ -1086,12 +1079,12 @@ msgid ""
 "<interface>Time and Date->Regional</interface> page.<para>Typically this "
 "view is intended for showing the week without weekend days.</para>"
 msgstr ""
-"Sélectionnez cette option pour afficher une semaine à la fois, à l'exclusion "
-"des jours qui ne sont pas inclus dans votre horaire hebdomadaire. Veuillez "
-"configurer votre horaire en sélectionnant les jours grâce au paramètre "
-"<placeholder>Horaire hebdomadaire</placeholder> dans la page "
-"<interface>Heure et date / Régional</interface>.<br>Généralement, cet "
-"affichage est destiné à afficher la semaine sans les jours de week-end.</br>"
+"Sélectionnez cette option pour afficher une semaine à la fois, sauf les "
+"jours non inclus dans votre horaire hebdomadaire. Veuillez configurer votre "
+"horaire en sélectionnant les jours grâce au paramètre <placeholder>Horaire "
+"hebdomadaire</placeholder> dans la page <interface>Heure et date / Régional</"
+"interface>.<para>Généralement, cet affichage est destiné à l'affichage de la "
+"semaine sans les jours de weekend.</para>"
 
 #: actionmanager.cpp:591
 #, kde-format
@@ -1967,16 +1960,14 @@ msgid "Delete calendar failed: <message>%1</message>"
 msgstr "Impossible de supprimer l'agenda : <message>%1</message>"
 
 #: calendarview.cpp:251
-#, fuzzy, kde-kuit-format
-#| msgid ""
-#| "<p><em>No Item Selected</em></p><p>Select an event, to-do or journal "
-#| "entry to view its details here.</p>"
+#, kde-kuit-format
 msgid ""
 "<para><emphasis>No Item Selected</emphasis></para><para>Select an event, to-"
 "do or journal entry to view its details here.</para>"
 msgstr ""
-"<p><em>Aucun élément sélectionné</em></p><p>Sélectionnez un évènement, une "
-"tâche ou une entrée de journal pour afficher ses détails ici.</p>"
+"<para><emphasis>Aucun élément sélectionné</emphasis></para><para>Veuillez "
+"sélectionner un évènement, une tâche ou une entrée de journal pour afficher "
+"son contenu détaillé ici.</para>"
 
 #: calendarview.cpp:255
 #, kde-format
@@ -6155,7 +6146,20 @@ msgstr "Utilisez l'&adresse de messagerie complète pour la réception"
 #. i18n: ectx: property (whatsThis), widget (QLineEdit, retrieveUrl)
 #. i18n: ectx: property (whatsThis), widget (QLabel, TextLabel7_2)
 #: ui/kogroupwareprefspage.ui:446 ui/kogroupwareprefspage.ui:461
-#, kde-format
+#, fuzzy, kde-format
+#| msgctxt "@info:whatsthis"
+#| msgid ""
+#| "Enter the URL for the server on which the Free/Busy information is "
+#| "published here.\n"
+#| "Ask the server administrator for this information.\n"
+#| "Here is a Kolab2 Server URL example:\n"
+#| "\n"
+#| "https://kolab2.example.com/freebusy/\n"
+#| "\n"
+#| "Alternatively, you can specify a full path to the Free/Busy. For "
+#| "example: \n"
+#| "\n"
+#| "https://kolab2.example.com/freebusy/user.xfb"
 msgctxt "@info:whatsthis"
 msgid ""
 "Enter the URL for the server on which the Free/Busy information is published "
@@ -6165,7 +6169,7 @@ msgid ""
 "\n"
 "https://kolab2.example.com/freebusy/\n"
 "\n"
-"Alternatively, you can specify a full path to the Free/Busy. For example: \n"
+"Alternatively, you can specify a full path to the Free/Busy. For example:\n"
 "\n"
 "https://kolab2.example.com/freebusy/user.xfb"
 msgstr ""
