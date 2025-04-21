@@ -3,18 +3,20 @@
 
 ########### next target ###############
 
-add_library(lunarphases MODULE lunarphases.cpp lunarphases.h)
-
-
-target_link_libraries(lunarphases
-  KF6::Holidays
-  KPim6::EventViews
+add_library(
+    lunarphases
+    MODULE
+    lunarphases.cpp
+    lunarphases.h
 )
 
-install(TARGETS
-  lunarphases
-  DESTINATION ${KDE_INSTALL_PLUGINDIR}/pim6/korganizer
+target_link_libraries(
+    lunarphases
+    KF6::Holidays
+    KPim6::EventViews
 )
+
+install(TARGETS lunarphases DESTINATION ${KDE_INSTALL_PLUGINDIR}/pim6/korganizer)
 
 ########### install files ###############
 

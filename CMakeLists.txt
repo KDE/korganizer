@@ -5,7 +5,7 @@ set(KDEPIM_DEV_VERSION alpha)
 
 # add an extra space
 if(DEFINED KDEPIM_DEV_VERSION)
-  set(KDEPIM_DEV_VERSION " ${KDEPIM_DEV_VERSION}")
+    set(KDEPIM_DEV_VERSION " ${KDEPIM_DEV_VERSION}")
 endif()
 
 set(PIM_VERSION "6.4.40")
@@ -14,8 +14,7 @@ set(RELEASE_SERVICE_VERSION "25.07.40")
 # Update it for each release
 set(KORGANIZER_RELEASE_VERSION_DATE "25.04.10") # yy.MM.dd
 
-set(KDEPIM_VERSION
-    "${PIM_VERSION}${KDEPIM_DEV_VERSION} (${RELEASE_SERVICE_VERSION})")
+set(KDEPIM_VERSION "${PIM_VERSION}${KDEPIM_DEV_VERSION} (${RELEASE_SERVICE_VERSION})")
 
 project(korganizer VERSION ${PIM_VERSION})
 
@@ -34,8 +33,13 @@ include(ECMGenerateHeaders)
 
 include(KDEGitCommitHooks)
 include(KDEClangFormat)
-file(GLOB_RECURSE ALL_CLANG_FORMAT_SOURCE_FILES src/*.cpp src/*.h plugins/*.cpp
-     plugins/*.h)
+file(
+    GLOB_RECURSE ALL_CLANG_FORMAT_SOURCE_FILES
+    src/*.cpp
+    src/*.h
+    plugins/*.cpp
+    plugins/*.h
+)
 kde_clang_format(${ALL_CLANG_FORMAT_SOURCE_FILES})
 include(CheckFunctionExists)
 
@@ -49,7 +53,8 @@ include(ECMFeatureSummary)
 
 include(ECMCheckOutboundLicense)
 ecm_check_outbound_license(LICENSES GPL-2.0-only FILES
-                           ${ALL_CLANG_FORMAT_SOURCE_FILES})
+                           ${ALL_CLANG_FORMAT_SOURCE_FILES}
+)
 
 # Require a C++20 capable compiler
 set(CMAKE_CXX_STANDARD 20)
@@ -69,15 +74,16 @@ set(KDEPIM_LIB_VERSION "${PIM_VERSION}")
 set(KDEPIM_LIB_SOVERSION "6")
 
 find_package(
-  Qt6
-  ${QT_REQUIRED_VERSION}
-  CONFIG
-  REQUIRED
-  DBus
-  Gui
-  Widgets
-  Test
-  UiTools)
+    Qt6
+    ${QT_REQUIRED_VERSION}
+    CONFIG
+    REQUIRED
+        DBus
+        Gui
+        Widgets
+        Test
+        UiTools
+)
 
 set(PIMCOMMON_LIB_VERSION "6.4.40")
 set(LIBKDEPIM_LIB_VERSION "6.4.40")
@@ -103,93 +109,99 @@ find_package(KF6Holidays ${KF_MIN_VERSION} CONFIG REQUIRED)
 find_package(KF6UserFeedback ${KF_MIN_VERSION} CONFIG)
 
 set_package_properties(
-  KF6UserFeedback PROPERTIES
-  DESCRIPTION "User Feedback lib"
-  TYPE OPTIONAL
-  PURPOSE "Allow to send Telemetry Information (optional).")
+    KF6UserFeedback
+    PROPERTIES
+        DESCRIPTION
+            "User Feedback lib"
+        TYPE
+            OPTIONAL
+        PURPOSE
+            "Allow to send Telemetry Information (optional)."
+)
 
 if(TARGET KF6::UserFeedbackWidgets)
-  set(KORGANIZER_WITH_KUSERFEEDBACK true)
+    set(KORGANIZER_WITH_KUSERFEEDBACK true)
 endif()
 
 find_package(KF6DocTools ${KF_MIN_VERSION})
 set_package_properties(
-  KF6DocTools PROPERTIES
-  DESCRIPTION "Tools to generate documentation"
-  TYPE OPTIONAL)
+    KF6DocTools
+    PROPERTIES
+        DESCRIPTION
+            "Tools to generate documentation"
+        TYPE
+            OPTIONAL
+)
 
 # Find KdepimLibs Package
 find_package(KPim6Akonadi ${AKONADI_VERSION} CONFIG REQUIRED)
 find_package(KF6Contacts ${KF_MIN_VERSION} CONFIG REQUIRED)
 find_package(KF6CalendarCore ${KF_MIN_VERSION} CONFIG REQUIRED)
-find_package(KPim6AkonadiContactWidgets ${AKONADI_CONTACT_VERSION} CONFIG
-             REQUIRED)
-find_package(KPim6IdentityManagementCore ${IDENTITYMANAGEMENT_LIB_VERSION}
-             CONFIG REQUIRED)
+find_package(KPim6AkonadiContactWidgets ${AKONADI_CONTACT_VERSION} CONFIG REQUIRED)
+find_package(KPim6IdentityManagementCore ${IDENTITYMANAGEMENT_LIB_VERSION} CONFIG REQUIRED)
 find_package(KPim6MailTransport ${KMAILTRANSPORT_LIB_VERSION} CONFIG REQUIRED)
 find_package(KPim6CalendarUtils ${CALENDARUTILS_LIB_VERSION} CONFIG REQUIRED)
 find_package(KPim6LdapWidgets ${KLDAP_LIB_VERSION} CONFIG REQUIRED)
-find_package(KPim6AkonadiCalendar ${AKONADICALENDAR_LIB_VERSION} CONFIG
-             REQUIRED)
+find_package(KPim6AkonadiCalendar ${AKONADICALENDAR_LIB_VERSION} CONFIG REQUIRED)
 
-find_package(KPim6KontactInterface ${KONTACTINTERFACE_LIB_VERSION} CONFIG
-             REQUIRED)
+find_package(KPim6KontactInterface ${KONTACTINTERFACE_LIB_VERSION} CONFIG REQUIRED)
 find_package(KPim6Mime ${KMIME_LIB_VERSION} CONFIG REQUIRED)
 
 find_package(KPim6PimCommonAkonadi ${PIMCOMMON_LIB_VERSION} CONFIG REQUIRED)
 find_package(KPim6Libkdepim ${LIBKDEPIM_LIB_VERSION} CONFIG REQUIRED)
-find_package(KPim6IncidenceEditor ${LIBINCIDENCEEDITOR_LIB_VERSION} CONFIG
-             REQUIRED)
-find_package(KPim6CalendarSupport ${CALENDARSUPPORT_LIB_VERSION} CONFIG
-             REQUIRED)
+find_package(KPim6IncidenceEditor ${LIBINCIDENCEEDITOR_LIB_VERSION} CONFIG REQUIRED)
+find_package(KPim6CalendarSupport ${CALENDARSUPPORT_LIB_VERSION} CONFIG REQUIRED)
 find_package(KPim6EventViews ${EVENTVIEW_LIB_VERSION} CONFIG REQUIRED)
 find_package(KPim6PimCommonActivities ${PIMCOMMON_LIB_VERSION} CONFIG)
 
 if(TARGET KPim6::PimCommonActivities)
-  option(OPTION_USE_PLASMA_ACTIVITIES
-         "Activate plasma activities (experimental)" ON)
-  if(OPTION_USE_PLASMA_ACTIVITIES)
-    if(NOT WIN32 AND NOT APPLE)
-      set(OPTION_USE_PLASMA_ACTIVITIES true)
-    else()
-      set(OPTION_USE_PLASMA_ACTIVITIES false)
+    option(OPTION_USE_PLASMA_ACTIVITIES "Activate plasma activities (experimental)" ON)
+    if(OPTION_USE_PLASMA_ACTIVITIES)
+        if(NOT WIN32 AND NOT APPLE)
+            set(OPTION_USE_PLASMA_ACTIVITIES true)
+        else()
+            set(OPTION_USE_PLASMA_ACTIVITIES false)
+        endif()
     endif()
-  endif()
-  if(OPTION_USE_PLASMA_ACTIVITIES)
-    if(NOT WIN32 AND NOT APPLE)
-      find_package(PlasmaActivities "6.3.0")
-      set_package_properties(
-        PlasmaActivities PROPERTIES
-        DESCRIPTION "Allow to compile with plasma activities"
-        TYPE OPTIONAL)
-    endif()
+    if(OPTION_USE_PLASMA_ACTIVITIES)
+        if(NOT WIN32 AND NOT APPLE)
+            find_package(PlasmaActivities "6.3.0")
+            set_package_properties(
+                PlasmaActivities
+                PROPERTIES
+                    DESCRIPTION
+                        "Allow to compile with plasma activities"
+                    TYPE
+                        OPTIONAL
+            )
+        endif()
 
-    if(TARGET Plasma::Activities)
-      set(HAVE_ACTIVITY_SUPPORT TRUE)
+        if(TARGET Plasma::Activities)
+            set(HAVE_ACTIVITY_SUPPORT TRUE)
+        endif()
     endif()
-  endif()
 endif()
 
 if(NOT APPLE)
-  find_package(X11)
+    find_package(X11)
 endif()
 
 set(KDEPIM_HAVE_X11 ${X11_FOUND})
-configure_file(config-korganizer.h.in
-               ${CMAKE_CURRENT_BINARY_DIR}/config-korganizer.h)
-include_directories(${korganizer_SOURCE_DIR} ${korganizer_BINARY_DIR})
-configure_file(korganizer-version.h.in
-               ${CMAKE_CURRENT_BINARY_DIR}/korganizer-version.h @ONLY)
+configure_file(config-korganizer.h.in ${CMAKE_CURRENT_BINARY_DIR}/config-korganizer.h)
+include_directories(
+    ${korganizer_SOURCE_DIR}
+    ${korganizer_BINARY_DIR}
+)
+configure_file(korganizer-version.h.in ${CMAKE_CURRENT_BINARY_DIR}/korganizer-version.h @ONLY)
 
 add_definitions(-DQT_NO_CONTEXTLESS_CONNECT)
 ecm_set_disabled_deprecation_versions(QT 6.9.0 KF 6.12.0)
 
-option(USE_UNITY_CMAKE_SUPPORT "Use UNITY cmake support (speedup compile time)"
-       OFF)
+option(USE_UNITY_CMAKE_SUPPORT "Use UNITY cmake support (speedup compile time)" OFF)
 
 set(COMPILE_WITH_UNITY_CMAKE_SUPPORT OFF)
 if(USE_UNITY_CMAKE_SUPPORT)
-  set(COMPILE_WITH_UNITY_CMAKE_SUPPORT ON)
+    set(COMPILE_WITH_UNITY_CMAKE_SUPPORT ON)
 endif()
 
 add_subdirectory(src)
@@ -197,14 +209,15 @@ add_subdirectory(plugins)
 
 ecm_qt_install_logging_categories(
   EXPORT KORGANIZER FILE korganizer.categories DESTINATION
-  ${KDE_INSTALL_LOGGINGCATEGORIESDIR})
+  ${KDE_INSTALL_LOGGINGCATEGORIESDIR}
+)
 
 kde_configure_git_pre_commit_hook(CHECKS CLANG_FORMAT)
 ki18n_install(po)
 
 if(KF6DocTools_FOUND)
-  kdoctools_install(po)
-  add_subdirectory(doc)
+    kdoctools_install(po)
+    add_subdirectory(doc)
 endif()
 
 ecm_feature_summary(WHAT ALL FATAL_ON_MISSING_REQUIRED_PACKAGES)

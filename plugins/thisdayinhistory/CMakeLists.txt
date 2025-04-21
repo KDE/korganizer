@@ -4,16 +4,13 @@
 ########### next target ###############
 
 add_library(thisdayinhistory MODULE)
-target_sources(thisdayinhistory PRIVATE
-  thisdayinhistory.cpp
-  thisdayinhistory.h
+target_sources(
+    thisdayinhistory
+    PRIVATE
+        thisdayinhistory.cpp
+        thisdayinhistory.h
 )
 
-target_link_libraries(thisdayinhistory
-  KPim6::EventViews
-)
+target_link_libraries(thisdayinhistory KPim6::EventViews)
 
-install(TARGETS
-  thisdayinhistory
-  DESTINATION ${KDE_INSTALL_PLUGINDIR}/pim6/korganizer
-)
+install(TARGETS thisdayinhistory DESTINATION ${KDE_INSTALL_PLUGINDIR}/pim6/korganizer)
