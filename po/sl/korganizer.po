@@ -1,7 +1,7 @@
 # translation of korganizer.po to Slovenian
 # Translation of korganizer.po to Slovenian
 # Copyright (C) 2001,2002, 2003, 2004, 2005, 2006 Free Software Foundation, Inc.
-# $Id: korganizer.po 1707480 2025-04-21 01:19:56Z scripty $
+# $Id: korganizer.po 1707544 2025-04-22 01:20:19Z scripty $
 # $Source$
 #
 # Roman Maurer <roman.maurer@hermes.si>, 2001.
@@ -14,8 +14,8 @@ msgid ""
 msgstr ""
 "Project-Id-Version: korganizer\n"
 "Report-Msgid-Bugs-To: https://bugs.kde.org\n"
-"POT-Creation-Date: 2025-04-21 00:42+0000\n"
-"PO-Revision-Date: 2025-04-20 07:08+0200\n"
+"POT-Creation-Date: 2025-04-22 00:42+0000\n"
+"PO-Revision-Date: 2025-04-21 07:51+0200\n"
 "Last-Translator: Matjaž Jeran <matjaz.jeran@amis.net>\n"
 "Language-Team: Slovenian <lugos-slo@lugos.si>\n"
 "Language: sl\n"
@@ -502,8 +502,8 @@ msgstr ""
 "Dovoli da odstranite vsa zaključena opravila iz koledarja. Tega postopka ne "
 "morete preklicati!"
 
-#: actionmanager.cpp:369 actionmanager.cpp:668 actionmanager.cpp:1361
-#: actionmanager.cpp:1399
+#: actionmanager.cpp:369 actionmanager.cpp:668 actionmanager.cpp:1355
+#: actionmanager.cpp:1393
 #, kde-format
 msgctxt "@action:inmenu"
 msgid "&Delete"
@@ -1189,14 +1189,14 @@ msgstr ""
 "pogleda. Trenutno je podprt samo pogled z več koledarji. Oglejte si možnosti "
 "Več koledarjev v nastavitvah Pogledi->Pogledi dnevnega reda."
 
-#: actionmanager.cpp:660 actionmanager.cpp:1355 actionmanager.cpp:1397
+#: actionmanager.cpp:660 actionmanager.cpp:1349 actionmanager.cpp:1391
 #: koeventpopupmenu.cpp:41
 #, kde-format
 msgctxt "@action:inmenu"
 msgid "&Show"
 msgstr "Pokaži"
 
-#: actionmanager.cpp:664 actionmanager.cpp:1358 actionmanager.cpp:1398
+#: actionmanager.cpp:664 actionmanager.cpp:1352 actionmanager.cpp:1392
 #: koeventpopupmenu.cpp:43
 #, kde-format
 msgctxt "@action:inmenu"
@@ -1401,121 +1401,121 @@ msgstr[1] "&Naslednji %1 dan"
 msgstr[2] "&Naslednja %1 dneva"
 msgstr[3] "&Naslednji %1 dnevi"
 
-#: actionmanager.cpp:1142
+#: actionmanager.cpp:1136
 #, kde-format
 msgctxt "@info"
 msgid "Could not start control module for date and time format."
 msgstr "Nadzornega modula za obliko datuma in časa ni bilo mogoče zagnati."
 
-#: actionmanager.cpp:1317
+#: actionmanager.cpp:1311
 #, kde-format
 msgctxt "@action:inmenu"
 msgid "&Show Event"
 msgstr "Pokaži dogodek"
 
-#: actionmanager.cpp:1320
+#: actionmanager.cpp:1314
 #, kde-format
 msgctxt "@action:inmenu"
 msgid "&Edit Event…"
 msgstr "Ur&edi dogodek…"
 
-#: actionmanager.cpp:1323
+#: actionmanager.cpp:1317
 #, kde-format
 msgctxt "@action:inmenu"
 msgid "&Delete Event"
 msgstr "Izbriši dogodek"
 
-#: actionmanager.cpp:1331
+#: actionmanager.cpp:1325
 #, kde-format
 msgctxt "@action:inmenu"
 msgid "&Show To-do"
 msgstr "Pokaži opravilo"
 
-#: actionmanager.cpp:1334
+#: actionmanager.cpp:1328
 #, kde-format
 msgctxt "@action:inmenu"
 msgid "&Edit To-do…"
 msgstr "Ur&edi opravilo…"
 
-#: actionmanager.cpp:1337
+#: actionmanager.cpp:1331
 #, kde-format
 msgctxt "@action:inmenu"
 msgid "&Delete To-do"
 msgstr "Izbriši opravilo"
 
-#: actionmanager.cpp:1480 actionmanager.cpp:1586
+#: actionmanager.cpp:1474 actionmanager.cpp:1580
 #, kde-format
 msgctxt "@action:inmenu"
 msgid "Attach as &link"
 msgstr "Priloži kot povezavo"
 
-#: actionmanager.cpp:1481 actionmanager.cpp:1587
+#: actionmanager.cpp:1475 actionmanager.cpp:1581
 #, kde-format
 msgctxt "@action:inmenu"
 msgid "Attach &inline"
 msgstr "Priloži znotrajvrst&ično"
 
-#: actionmanager.cpp:1482
+#: actionmanager.cpp:1476
 #, kde-format
 msgctxt "@action:inmenu"
 msgid "Attach inline &without attachments"
 msgstr "Priloži znotrajvrstično brez prilog"
 
-#: actionmanager.cpp:1484 actionmanager.cpp:1589
+#: actionmanager.cpp:1478 actionmanager.cpp:1583
 #, kde-format
 msgctxt "@action:inmenu"
 msgid "C&ancel"
 msgstr "Prekliči"
 
-#: actionmanager.cpp:1522
+#: actionmanager.cpp:1516
 #, kde-format
 msgctxt "@info"
 msgid "Removing attachments from an email might invalidate its signature."
 msgstr "Odstranitev prilog iz e-pošte lahko prekine veljavnost podpisa."
 
-#: actionmanager.cpp:1523
+#: actionmanager.cpp:1517
 #, kde-format
 msgctxt "@title:window"
 msgid "Remove Attachments"
 msgstr "Odstrani priloge"
 
-#: actionmanager.cpp:1674
+#: actionmanager.cpp:1668
 #, kde-format
 msgctxt "@action:inmenu"
 msgid "Undo: %1"
 msgstr "Razveljavi: %1"
 
-#: actionmanager.cpp:1677
+#: actionmanager.cpp:1671
 #, kde-format
 msgctxt "@action:inmenu"
 msgid "Undo"
 msgstr "Razveljavi"
 
-#: actionmanager.cpp:1687
+#: actionmanager.cpp:1681
 #, kde-format
 msgctxt "@action:inmenu"
 msgid "Redo: %1"
 msgstr "Uveljavi: %1"
 
-#: actionmanager.cpp:1690
+#: actionmanager.cpp:1684
 #, kde-format
 msgctxt "@action:inmenu"
 msgid "Redo"
 msgstr "Uveljavi"
 
-#: actionmanager.cpp:1693
+#: actionmanager.cpp:1687
 #, kde-format
 msgctxt "@action:button"
 msgid "Undo"
 msgstr "Razveljavi"
 
-#: actionmanager.cpp:1704
+#: actionmanager.cpp:1698
 #, kde-kuit-format
 msgctxt "@info"
 msgid "URL <filename>%1</filename> is invalid."
 msgstr "URL <filename>%1</filename> je neveljaven."
 
-#: actionmanager.cpp:1709
+#: actionmanager.cpp:1703
 #, kde-kuit-format
 msgctxt "@info"
 msgid ""
@@ -1530,19 +1530,19 @@ msgstr ""
 "združi, boste imeli možnost izbrati ciljni koledar.</para><para>Če izberete "
 "dodaj, bo za vas samodejno ustvarjen nov koledar.</para>"
 
-#: actionmanager.cpp:1717
+#: actionmanager.cpp:1711
 #, kde-format
 msgctxt "@title:window"
 msgid "Import Calendar"
 msgstr "Uvozi koledar"
 
-#: actionmanager.cpp:1718
+#: actionmanager.cpp:1712
 #, kde-format
 msgctxt "@action:button"
 msgid "Merge into existing calendar"
 msgstr "Združi z obstoječim koledarjem"
 
-#: actionmanager.cpp:1719
+#: actionmanager.cpp:1713
 #, kde-format
 msgctxt "@action:button"
 msgid "Add as new calendar"
@@ -5772,20 +5772,7 @@ msgstr "Upor&abi poln elektronski naslov za pridobivanje"
 #. i18n: ectx: property (whatsThis), widget (QLineEdit, retrieveUrl)
 #. i18n: ectx: property (whatsThis), widget (QLabel, TextLabel7_2)
 #: ui/kogroupwareprefspage.ui:446 ui/kogroupwareprefspage.ui:461
-#, fuzzy, kde-format
-#| msgctxt "@info:whatsthis"
-#| msgid ""
-#| "Enter the URL for the server on which the Free/Busy information is "
-#| "published here.\n"
-#| "Ask the server administrator for this information.\n"
-#| "Here is a Kolab2 Server URL example:\n"
-#| "\n"
-#| "https://kolab2.example.com/freebusy/\n"
-#| "\n"
-#| "Alternatively, you can specify a full path to the Free/Busy. For "
-#| "example: \n"
-#| "\n"
-#| "https://kolab2.example.com/freebusy/user.xfb"
+#, kde-format
 msgctxt "@info:whatsthis"
 msgid ""
 "Enter the URL for the server on which the Free/Busy information is published "
@@ -5800,15 +5787,15 @@ msgid ""
 "https://kolab2.example.com/freebusy/user.xfb"
 msgstr ""
 "Sem vnesite naslov URL strežnika, na katerem so objavljeni podatki o "
-"prostosti/zaposlenosti.\n"
+"prostosti/zasedenosti.\n"
 "Za podatek povprašajte skrbnika strežnika.\n"
 "To je primer naslova URL strežnika Kolab 2:\n"
 "\n"
-"https://kolab2.primer.si/freebusy/\n"
+"https://kolab2.example.com/freebusy/\n"
 "\n"
-"Navedete lahko tudi celotno pot. Na primer:\n"
+"Navedete lahko tudi celotno pot do prostosti/zasedenosti. Na primer:\n"
 "\n"
-"https://kolab2.primer.si/freebusy/uporabnik.xfb"
+"https://kolab2.example.com/freebusy/user.xfb"
 
 #. i18n: ectx: property (text), widget (QLabel, textLabel3)
 #: ui/kogroupwareprefspage.ui:479

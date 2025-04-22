@@ -17,7 +17,7 @@ msgid ""
 msgstr ""
 "Project-Id-Version: korganizer\n"
 "Report-Msgid-Bugs-To: https://bugs.kde.org\n"
-"POT-Creation-Date: 2025-04-21 00:42+0000\n"
+"POT-Creation-Date: 2025-04-22 00:42+0000\n"
 "PO-Revision-Date: 2025-04-19 20:13+0300\n"
 "Last-Translator: Yaron Shahrabani <sh.yaron@gmail.com>\n"
 "Language-Team: צוות התרגום של KDE ישראל\n"
@@ -497,8 +497,8 @@ msgid ""
 msgstr ""
 "מאפשר להסיר את כל המטלות שהושלמו מאוסף לוחות השנה שלך. זאת פעולה בלתי הפיכה!"
 
-#: actionmanager.cpp:369 actionmanager.cpp:668 actionmanager.cpp:1361
-#: actionmanager.cpp:1399
+#: actionmanager.cpp:369 actionmanager.cpp:668 actionmanager.cpp:1355
+#: actionmanager.cpp:1393
 #, kde-format
 msgctxt "@action:inmenu"
 msgid "&Delete"
@@ -1162,14 +1162,14 @@ msgstr ""
 "תמיכה רק בתצוגה מרובת לוחות שנה. כדאי לברר פרטים נוספים בהגדרות ריבוי לוחות "
 "שנה תחת הגדרות תצוגות->תצוגות סדר יום."
 
-#: actionmanager.cpp:660 actionmanager.cpp:1355 actionmanager.cpp:1397
+#: actionmanager.cpp:660 actionmanager.cpp:1349 actionmanager.cpp:1391
 #: koeventpopupmenu.cpp:41
 #, kde-format
 msgctxt "@action:inmenu"
 msgid "&Show"
 msgstr "ה&צגה"
 
-#: actionmanager.cpp:664 actionmanager.cpp:1358 actionmanager.cpp:1398
+#: actionmanager.cpp:664 actionmanager.cpp:1352 actionmanager.cpp:1392
 #: koeventpopupmenu.cpp:43
 #, kde-format
 msgctxt "@action:inmenu"
@@ -1375,121 +1375,121 @@ msgstr[1] "היומיים ה&באים"
 msgstr[2] "%1 הימים ה&באים"
 msgstr[3] "%1 הימים ה&באים"
 
-#: actionmanager.cpp:1142
+#: actionmanager.cpp:1136
 #, kde-format
 msgctxt "@info"
 msgid "Could not start control module for date and time format."
 msgstr "לא ניתן להפעיל את מודול הבקרה של תבנית התאריך והשעה."
 
-#: actionmanager.cpp:1317
+#: actionmanager.cpp:1311
 #, kde-format
 msgctxt "@action:inmenu"
 msgid "&Show Event"
 msgstr "ה&צגת אירוע"
 
-#: actionmanager.cpp:1320
+#: actionmanager.cpp:1314
 #, kde-format
 msgctxt "@action:inmenu"
 msgid "&Edit Event…"
 msgstr "&עריכת אירוע…"
 
-#: actionmanager.cpp:1323
+#: actionmanager.cpp:1317
 #, kde-format
 msgctxt "@action:inmenu"
 msgid "&Delete Event"
 msgstr "&מחיקת אירוע"
 
-#: actionmanager.cpp:1331
+#: actionmanager.cpp:1325
 #, kde-format
 msgctxt "@action:inmenu"
 msgid "&Show To-do"
 msgstr "ה&צגת מטלה"
 
-#: actionmanager.cpp:1334
+#: actionmanager.cpp:1328
 #, kde-format
 msgctxt "@action:inmenu"
 msgid "&Edit To-do…"
 msgstr "&עריכת מטלה…"
 
-#: actionmanager.cpp:1337
+#: actionmanager.cpp:1331
 #, kde-format
 msgctxt "@action:inmenu"
 msgid "&Delete To-do"
 msgstr "מ&חיקת מטלה"
 
-#: actionmanager.cpp:1480 actionmanager.cpp:1586
+#: actionmanager.cpp:1474 actionmanager.cpp:1580
 #, kde-format
 msgctxt "@action:inmenu"
 msgid "Attach as &link"
 msgstr "צירוף כ&קישור"
 
-#: actionmanager.cpp:1481 actionmanager.cpp:1587
+#: actionmanager.cpp:1475 actionmanager.cpp:1581
 #, kde-format
 msgctxt "@action:inmenu"
 msgid "Attach &inline"
 msgstr "הוספה כ&חלק מההודעה"
 
-#: actionmanager.cpp:1482
+#: actionmanager.cpp:1476
 #, kde-format
 msgctxt "@action:inmenu"
 msgid "Attach inline &without attachments"
 msgstr "צירוף כחלק מההודעה &בלי לצרף כקובץ"
 
-#: actionmanager.cpp:1484 actionmanager.cpp:1589
+#: actionmanager.cpp:1478 actionmanager.cpp:1583
 #, kde-format
 msgctxt "@action:inmenu"
 msgid "C&ancel"
 msgstr "&ביטול"
 
-#: actionmanager.cpp:1522
+#: actionmanager.cpp:1516
 #, kde-format
 msgctxt "@info"
 msgid "Removing attachments from an email might invalidate its signature."
 msgstr "הסרת קבצים מצורפים מהודעת דוא״ל עלולה לפגוע בחתימה שלה"
 
-#: actionmanager.cpp:1523
+#: actionmanager.cpp:1517
 #, kde-format
 msgctxt "@title:window"
 msgid "Remove Attachments"
 msgstr "הסרת קבצים מצורפים"
 
-#: actionmanager.cpp:1674
+#: actionmanager.cpp:1668
 #, kde-format
 msgctxt "@action:inmenu"
 msgid "Undo: %1"
 msgstr "הסגה: %1"
 
-#: actionmanager.cpp:1677
+#: actionmanager.cpp:1671
 #, kde-format
 msgctxt "@action:inmenu"
 msgid "Undo"
 msgstr "הסגה"
 
-#: actionmanager.cpp:1687
+#: actionmanager.cpp:1681
 #, kde-format
 msgctxt "@action:inmenu"
 msgid "Redo: %1"
 msgstr "ביצוע חוזר: %1"
 
-#: actionmanager.cpp:1690
+#: actionmanager.cpp:1684
 #, kde-format
 msgctxt "@action:inmenu"
 msgid "Redo"
 msgstr "ביצוע חוזר"
 
-#: actionmanager.cpp:1693
+#: actionmanager.cpp:1687
 #, kde-format
 msgctxt "@action:button"
 msgid "Undo"
 msgstr "הסגה"
 
-#: actionmanager.cpp:1704
+#: actionmanager.cpp:1698
 #, kde-kuit-format
 msgctxt "@info"
 msgid "URL <filename>%1</filename> is invalid."
 msgstr "הכתובת <filename>%1</filename> שגויה."
 
-#: actionmanager.cpp:1709
+#: actionmanager.cpp:1703
 #, kde-kuit-format
 msgctxt "@info"
 msgid ""
@@ -1503,19 +1503,19 @@ msgstr ""
 "para><para>לאחר בחירה במיזוג, תופיע אפשרות לבחור את יעד לוח השנה.</"
 "para><para>בחירה בהוספה תיצור עבורך לוח שנה חדש אוטומטית.</para>"
 
-#: actionmanager.cpp:1717
+#: actionmanager.cpp:1711
 #, kde-format
 msgctxt "@title:window"
 msgid "Import Calendar"
 msgstr "ייבוא לוח שנה"
 
-#: actionmanager.cpp:1718
+#: actionmanager.cpp:1712
 #, kde-format
 msgctxt "@action:button"
 msgid "Merge into existing calendar"
 msgstr "מיזוג ללוח שנה קיים"
 
-#: actionmanager.cpp:1719
+#: actionmanager.cpp:1713
 #, kde-format
 msgctxt "@action:button"
 msgid "Add as new calendar"

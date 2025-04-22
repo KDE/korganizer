@@ -13,7 +13,7 @@ msgid ""
 msgstr ""
 "Project-Id-Version: korganizer\n"
 "Report-Msgid-Bugs-To: https://bugs.kde.org\n"
-"POT-Creation-Date: 2025-04-21 00:42+0000\n"
+"POT-Creation-Date: 2025-04-22 00:42+0000\n"
 "PO-Revision-Date: 2009-07-28 20:21+0000\n"
 "Last-Translator: Sveinn í Felli <sveinki@nett.is>\n"
 "Language-Team: Icelandic <kde-isl@molar.is>\n"
@@ -502,8 +502,8 @@ msgid ""
 "This action cannot be undone!"
 msgstr ""
 
-#: actionmanager.cpp:369 actionmanager.cpp:668 actionmanager.cpp:1361
-#: actionmanager.cpp:1399
+#: actionmanager.cpp:369 actionmanager.cpp:668 actionmanager.cpp:1355
+#: actionmanager.cpp:1393
 #, fuzzy, kde-format
 msgctxt "@action:inmenu"
 msgid "&Delete"
@@ -1194,7 +1194,7 @@ msgid ""
 "Calendars options in the Views->Agenda Views settings."
 msgstr ""
 
-#: actionmanager.cpp:660 actionmanager.cpp:1355 actionmanager.cpp:1397
+#: actionmanager.cpp:660 actionmanager.cpp:1349 actionmanager.cpp:1391
 #: koeventpopupmenu.cpp:41
 #, fuzzy, kde-format
 #| msgid "&Show"
@@ -1202,7 +1202,7 @@ msgctxt "@action:inmenu"
 msgid "&Show"
 msgstr "&Sýna"
 
-#: actionmanager.cpp:664 actionmanager.cpp:1358 actionmanager.cpp:1398
+#: actionmanager.cpp:664 actionmanager.cpp:1352 actionmanager.cpp:1392
 #: koeventpopupmenu.cpp:43
 #, fuzzy, kde-format
 #| msgid "&Edit"
@@ -1419,132 +1419,132 @@ msgid_plural "&Next %1 Days"
 msgstr[0] "&Næsti dagur"
 msgstr[1] "&Næstu %1 dagar"
 
-#: actionmanager.cpp:1142
+#: actionmanager.cpp:1136
 #, fuzzy, kde-format
 #| msgid "Could not start control module for date and time format."
 msgctxt "@info"
 msgid "Could not start control module for date and time format."
 msgstr "Gat ekki ræst stjórneiningu fyrir dagsetninga og tímasnið."
 
-#: actionmanager.cpp:1317
+#: actionmanager.cpp:1311
 #, fuzzy, kde-format
 #| msgid "&Show Event"
 msgctxt "@action:inmenu"
 msgid "&Show Event"
 msgstr "Sýna &atburð"
 
-#: actionmanager.cpp:1320
+#: actionmanager.cpp:1314
 #, fuzzy, kde-format
 #| msgid "&Edit Event..."
 msgctxt "@action:inmenu"
 msgid "&Edit Event…"
 msgstr "Br&eyta atburði..."
 
-#: actionmanager.cpp:1323
+#: actionmanager.cpp:1317
 #, fuzzy, kde-format
 #| msgid "&Delete Event"
 msgctxt "@action:inmenu"
 msgid "&Delete Event"
 msgstr "&Eyða atburði"
 
-#: actionmanager.cpp:1331
+#: actionmanager.cpp:1325
 #, fuzzy, kde-format
 #| msgid "&Show To-do"
 msgctxt "@action:inmenu"
 msgid "&Show To-do"
 msgstr "&Sýna verkþátt"
 
-#: actionmanager.cpp:1334
+#: actionmanager.cpp:1328
 #, fuzzy, kde-format
 #| msgid "&Edit To-do..."
 msgctxt "@action:inmenu"
 msgid "&Edit To-do…"
 msgstr "&Sýsla með verkþátt..."
 
-#: actionmanager.cpp:1337
+#: actionmanager.cpp:1331
 #, fuzzy, kde-format
 #| msgid "&Delete To-do"
 msgctxt "@action:inmenu"
 msgid "&Delete To-do"
 msgstr "&Eyða verkþætti"
 
-#: actionmanager.cpp:1480 actionmanager.cpp:1586
+#: actionmanager.cpp:1474 actionmanager.cpp:1580
 #, fuzzy, kde-format
 msgctxt "@action:inmenu"
 msgid "Attach as &link"
 msgstr "Bæta við viðhengi"
 
-#: actionmanager.cpp:1481 actionmanager.cpp:1587
+#: actionmanager.cpp:1475 actionmanager.cpp:1581
 #, fuzzy, kde-format
 msgctxt "@action:inmenu"
 msgid "Attach &inline"
 msgstr "Bæta við viðhengi"
 
-#: actionmanager.cpp:1482
+#: actionmanager.cpp:1476
 #, fuzzy, kde-format
 msgctxt "@action:inmenu"
 msgid "Attach inline &without attachments"
 msgstr "Bæta við viðhengi"
 
-#: actionmanager.cpp:1484 actionmanager.cpp:1589
+#: actionmanager.cpp:1478 actionmanager.cpp:1583
 #, fuzzy, kde-format
 msgctxt "@action:inmenu"
 msgid "C&ancel"
 msgstr "&Breyta"
 
-#: actionmanager.cpp:1522
+#: actionmanager.cpp:1516
 #, kde-format
 msgctxt "@info"
 msgid "Removing attachments from an email might invalidate its signature."
 msgstr ""
 
-#: actionmanager.cpp:1523
+#: actionmanager.cpp:1517
 #, fuzzy, kde-format
 #| msgid "Attach&ments"
 msgctxt "@title:window"
 msgid "Remove Attachments"
 msgstr "Við&hengi"
 
-#: actionmanager.cpp:1674
+#: actionmanager.cpp:1668
 #, fuzzy, kde-format
 #| msgid "Undo (%1)"
 msgctxt "@action:inmenu"
 msgid "Undo: %1"
 msgstr "Afturkalla (%1)"
 
-#: actionmanager.cpp:1677
+#: actionmanager.cpp:1671
 #, fuzzy, kde-format
 msgctxt "@action:inmenu"
 msgid "Undo"
 msgstr "Afturkalla (%1)"
 
-#: actionmanager.cpp:1687
+#: actionmanager.cpp:1681
 #, fuzzy, kde-format
 #| msgid "Redo (%1)"
 msgctxt "@action:inmenu"
 msgid "Redo: %1"
 msgstr "Endurtaka (%1)"
 
-#: actionmanager.cpp:1690
+#: actionmanager.cpp:1684
 #, fuzzy, kde-format
 msgctxt "@action:inmenu"
 msgid "Redo"
 msgstr "Endurtaka (%1)"
 
-#: actionmanager.cpp:1693
+#: actionmanager.cpp:1687
 #, fuzzy, kde-format
 msgctxt "@action:button"
 msgid "Undo"
 msgstr "Afturkalla (%1)"
 
-#: actionmanager.cpp:1704
+#: actionmanager.cpp:1698
 #, fuzzy, kde-kuit-format
 #| msgid "URL '%1' is invalid."
 msgctxt "@info"
 msgid "URL <filename>%1</filename> is invalid."
 msgstr "Slóðin '%1' er ógild."
 
-#: actionmanager.cpp:1709
+#: actionmanager.cpp:1703
 #, kde-kuit-format
 msgctxt "@info"
 msgid ""
@@ -1555,21 +1555,21 @@ msgid ""
 "automatically.</para>"
 msgstr ""
 
-#: actionmanager.cpp:1717
+#: actionmanager.cpp:1711
 #, fuzzy, kde-format
 #| msgid "Import Calendar"
 msgctxt "@title:window"
 msgid "Import Calendar"
 msgstr "Flytja inn dagatal"
 
-#: actionmanager.cpp:1718
+#: actionmanager.cpp:1712
 #, fuzzy, kde-format
 #| msgid "Merge into existing calendar"
 msgctxt "@action:button"
 msgid "Merge into existing calendar"
 msgstr "Sameina inn í núverandi dagatal"
 
-#: actionmanager.cpp:1719
+#: actionmanager.cpp:1713
 #, fuzzy, kde-format
 #| msgid "Add as new calendar"
 msgctxt "@action:button"

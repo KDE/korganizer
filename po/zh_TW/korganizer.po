@@ -14,7 +14,7 @@ msgid ""
 msgstr ""
 "Project-Id-Version: korganizer\n"
 "Report-Msgid-Bugs-To: https://bugs.kde.org\n"
-"POT-Creation-Date: 2025-04-21 00:42+0000\n"
+"POT-Creation-Date: 2025-04-22 00:42+0000\n"
 "PO-Revision-Date: 2025-02-18 16:02+0900\n"
 "Last-Translator: Kisaragi Hiu <mail@kisaragi-hiu.com>\n"
 "Language-Team: Traditional Chinese <zh-l10n@lists.slat.org>\n"
@@ -520,8 +520,8 @@ msgid ""
 "This action cannot be undone!"
 msgstr "讓您從行事曆收藏中移除所有已完成的待辦事項。這個動作無法復原！"
 
-#: actionmanager.cpp:369 actionmanager.cpp:668 actionmanager.cpp:1361
-#: actionmanager.cpp:1399
+#: actionmanager.cpp:369 actionmanager.cpp:668 actionmanager.cpp:1355
+#: actionmanager.cpp:1393
 #, fuzzy, kde-format
 #| msgid "&Delete"
 msgctxt "@action:inmenu"
@@ -1226,14 +1226,14 @@ msgid ""
 "Calendars options in the Views->Agenda Views settings."
 msgstr ""
 
-#: actionmanager.cpp:660 actionmanager.cpp:1355 actionmanager.cpp:1397
+#: actionmanager.cpp:660 actionmanager.cpp:1349 actionmanager.cpp:1391
 #: koeventpopupmenu.cpp:41
 #, kde-format
 msgctxt "@action:inmenu"
 msgid "&Show"
 msgstr "顯示(&S)"
 
-#: actionmanager.cpp:664 actionmanager.cpp:1358 actionmanager.cpp:1398
+#: actionmanager.cpp:664 actionmanager.cpp:1352 actionmanager.cpp:1392
 #: koeventpopupmenu.cpp:43
 #, kde-format
 msgctxt "@action:inmenu"
@@ -1469,139 +1469,139 @@ msgid "&Next Day"
 msgid_plural "&Next %1 Days"
 msgstr[0] "未來 %1 天(&N)"
 
-#: actionmanager.cpp:1142
+#: actionmanager.cpp:1136
 #, fuzzy, kde-format
 #| msgid "Could not start control module for date and time format."
 msgctxt "@info"
 msgid "Could not start control module for date and time format."
 msgstr "無法啟動日期與時間格式的控制模組。"
 
-#: actionmanager.cpp:1317
+#: actionmanager.cpp:1311
 #, fuzzy, kde-format
 #| msgid "&Show Event"
 msgctxt "@action:inmenu"
 msgid "&Show Event"
 msgstr "顯示事件(&S)"
 
-#: actionmanager.cpp:1320
+#: actionmanager.cpp:1314
 #, fuzzy, kde-format
 #| msgid "&Edit Event…"
 msgctxt "@action:inmenu"
 msgid "&Edit Event…"
 msgstr "編輯事件(&E)…"
 
-#: actionmanager.cpp:1323
+#: actionmanager.cpp:1317
 #, fuzzy, kde-format
 #| msgid "&Delete Event"
 msgctxt "@action:inmenu"
 msgid "&Delete Event"
 msgstr "刪除事件…(&D)"
 
-#: actionmanager.cpp:1331
+#: actionmanager.cpp:1325
 #, fuzzy, kde-format
 #| msgid "&Show To-do"
 msgctxt "@action:inmenu"
 msgid "&Show To-do"
 msgstr "顯示待辦事項(&S)"
 
-#: actionmanager.cpp:1334
+#: actionmanager.cpp:1328
 #, fuzzy, kde-format
 #| msgid "&Edit To-do…"
 msgctxt "@action:inmenu"
 msgid "&Edit To-do…"
 msgstr "編輯待辦事項(&E)…"
 
-#: actionmanager.cpp:1337
+#: actionmanager.cpp:1331
 #, fuzzy, kde-format
 #| msgid "&Delete To-do"
 msgctxt "@action:inmenu"
 msgid "&Delete To-do"
 msgstr "刪除待辦事項(&D)"
 
-#: actionmanager.cpp:1480 actionmanager.cpp:1586
+#: actionmanager.cpp:1474 actionmanager.cpp:1580
 #, fuzzy, kde-format
 #| msgid "Attach as &link"
 msgctxt "@action:inmenu"
 msgid "Attach as &link"
 msgstr "以連結附加(&L)"
 
-#: actionmanager.cpp:1481 actionmanager.cpp:1587
+#: actionmanager.cpp:1475 actionmanager.cpp:1581
 #, fuzzy, kde-format
 #| msgid "Attach &inline"
 msgctxt "@action:inmenu"
 msgid "Attach &inline"
 msgstr "以內含檔附加(&I)"
 
-#: actionmanager.cpp:1482
+#: actionmanager.cpp:1476
 #, fuzzy, kde-format
 #| msgid "Attach inline &without attachments"
 msgctxt "@action:inmenu"
 msgid "Attach inline &without attachments"
 msgstr "以內含但不附檔方式附加(&W)"
 
-#: actionmanager.cpp:1484 actionmanager.cpp:1589
+#: actionmanager.cpp:1478 actionmanager.cpp:1583
 #, fuzzy, kde-format
 #| msgid "C&ancel"
 msgctxt "@action:inmenu"
 msgid "C&ancel"
 msgstr "取消(&A)"
 
-#: actionmanager.cpp:1522
+#: actionmanager.cpp:1516
 #, fuzzy, kde-format
 #| msgid "Removing attachments from an email might invalidate its signature."
 msgctxt "@info"
 msgid "Removing attachments from an email might invalidate its signature."
 msgstr "從電子郵件中移除附加檔可能會造成它的簽章檢查錯誤。"
 
-#: actionmanager.cpp:1523
+#: actionmanager.cpp:1517
 #, kde-format
 msgctxt "@title:window"
 msgid "Remove Attachments"
 msgstr "移除附檔"
 
-#: actionmanager.cpp:1674
+#: actionmanager.cpp:1668
 #, fuzzy, kde-format
 #| msgid "Undo: %1"
 msgctxt "@action:inmenu"
 msgid "Undo: %1"
 msgstr "復原：%1"
 
-#: actionmanager.cpp:1677
+#: actionmanager.cpp:1671
 #, fuzzy, kde-format
 #| msgid "Undo"
 msgctxt "@action:inmenu"
 msgid "Undo"
 msgstr "復原"
 
-#: actionmanager.cpp:1687
+#: actionmanager.cpp:1681
 #, fuzzy, kde-format
 #| msgid "Redo: %1"
 msgctxt "@action:inmenu"
 msgid "Redo: %1"
 msgstr "重做：%1"
 
-#: actionmanager.cpp:1690
+#: actionmanager.cpp:1684
 #, fuzzy, kde-format
 #| msgid "Redo"
 msgctxt "@action:inmenu"
 msgid "Redo"
 msgstr "重做"
 
-#: actionmanager.cpp:1693
+#: actionmanager.cpp:1687
 #, fuzzy, kde-format
 #| msgid "Undo"
 msgctxt "@action:button"
 msgid "Undo"
 msgstr "復原"
 
-#: actionmanager.cpp:1704
+#: actionmanager.cpp:1698
 #, fuzzy, kde-kuit-format
 #| msgid "URL '%1' is invalid."
 msgctxt "@info"
 msgid "URL <filename>%1</filename> is invalid."
 msgstr "無效的網址：%1。"
 
-#: actionmanager.cpp:1709
+#: actionmanager.cpp:1703
 #, fuzzy, kde-kuit-format
 #| msgctxt "@info"
 #| msgid ""
@@ -1622,19 +1622,19 @@ msgstr ""
 "p><p>如果您選擇合併，則會讓您選擇要合併的行事曆。</p><p>如果您選擇新增，則會"
 "自動為您建立一個新的行事曆。</p>"
 
-#: actionmanager.cpp:1717
+#: actionmanager.cpp:1711
 #, kde-format
 msgctxt "@title:window"
 msgid "Import Calendar"
 msgstr "匯入行事曆"
 
-#: actionmanager.cpp:1718
+#: actionmanager.cpp:1712
 #, kde-format
 msgctxt "@action:button"
 msgid "Merge into existing calendar"
 msgstr "合併到已存在的行事曆"
 
-#: actionmanager.cpp:1719
+#: actionmanager.cpp:1713
 #, kde-format
 msgctxt "@action:button"
 msgid "Add as new calendar"

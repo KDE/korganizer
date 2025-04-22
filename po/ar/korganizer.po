@@ -11,8 +11,8 @@ msgid ""
 msgstr ""
 "Project-Id-Version: korganizer\n"
 "Report-Msgid-Bugs-To: https://bugs.kde.org\n"
-"POT-Creation-Date: 2025-04-21 00:42+0000\n"
-"PO-Revision-Date: 2025-04-19 13:27+0400\n"
+"POT-Creation-Date: 2025-04-22 00:42+0000\n"
+"PO-Revision-Date: 2025-04-21 17:32+0400\n"
 "Last-Translator: Zayed Al-Saidi <zayed.alsaidi@gmail.com>\n"
 "Language-Team: ar\n"
 "Language: ar\n"
@@ -489,8 +489,8 @@ msgid ""
 "This action cannot be undone!"
 msgstr "يسمح لك بإزالة جميع المهام المكتملة من مجموعة التقويم الخاصة بك."
 
-#: actionmanager.cpp:369 actionmanager.cpp:668 actionmanager.cpp:1361
-#: actionmanager.cpp:1399
+#: actionmanager.cpp:369 actionmanager.cpp:668 actionmanager.cpp:1355
+#: actionmanager.cpp:1393
 #, kde-format
 msgctxt "@action:inmenu"
 msgid "&Delete"
@@ -1159,14 +1159,14 @@ msgstr ""
 "سوى عرض التقويمات المتعددة. راجع خيارات التقويمات المتعددة في إعدادات "
 "\"العروض\" -> \"منظور جدول الأعمال\"."
 
-#: actionmanager.cpp:660 actionmanager.cpp:1355 actionmanager.cpp:1397
+#: actionmanager.cpp:660 actionmanager.cpp:1349 actionmanager.cpp:1391
 #: koeventpopupmenu.cpp:41
 #, kde-format
 msgctxt "@action:inmenu"
 msgid "&Show"
 msgstr "ا&عرض"
 
-#: actionmanager.cpp:664 actionmanager.cpp:1358 actionmanager.cpp:1398
+#: actionmanager.cpp:664 actionmanager.cpp:1352 actionmanager.cpp:1392
 #: koeventpopupmenu.cpp:43
 #, kde-format
 msgctxt "@action:inmenu"
@@ -1352,12 +1352,10 @@ msgid "Saved calendar <filename>%1</filename>"
 msgstr "حُفظ التقويم <filename>%1</filename>."
 
 #: actionmanager.cpp:1096
-#, fuzzy, kde-kuit-format
-#| msgctxt "@info"
-#| msgid "Unable to save calendar to the file <filename>%1<filename>"
+#, kde-kuit-format
 msgctxt "@info"
 msgid "Unable to save calendar to the file <filename>%1</filename>"
-msgstr "تعذّر حفظ التقويم في الملف <filename>%1</filename>."
+msgstr "تعذّر حفظ التقويم في الملف <filename>%1</filename>"
 
 #: actionmanager.cpp:1097
 #, kde-format
@@ -1377,121 +1375,121 @@ msgstr[3] "%1 أيام ال&تالية"
 msgstr[4] "%1 يومًا ال&تالي"
 msgstr[5] "%1 يوم ال&تالي"
 
-#: actionmanager.cpp:1142
+#: actionmanager.cpp:1136
 #, kde-format
 msgctxt "@info"
 msgid "Could not start control module for date and time format."
 msgstr "تعذّر بدء وحدة التحكّم لتنسيق التاريخ والوقت."
 
-#: actionmanager.cpp:1317
+#: actionmanager.cpp:1311
 #, kde-format
 msgctxt "@action:inmenu"
 msgid "&Show Event"
 msgstr "ا&عرض الحدث"
 
-#: actionmanager.cpp:1320
+#: actionmanager.cpp:1314
 #, kde-format
 msgctxt "@action:inmenu"
 msgid "&Edit Event…"
 msgstr "&حرّر الحدث…"
 
-#: actionmanager.cpp:1323
+#: actionmanager.cpp:1317
 #, kde-format
 msgctxt "@action:inmenu"
 msgid "&Delete Event"
 msgstr "ا&حذف الحدث"
 
-#: actionmanager.cpp:1331
+#: actionmanager.cpp:1325
 #, kde-format
 msgctxt "@action:inmenu"
 msgid "&Show To-do"
 msgstr "ا&عرض المهمّة"
 
-#: actionmanager.cpp:1334
+#: actionmanager.cpp:1328
 #, kde-format
 msgctxt "@action:inmenu"
 msgid "&Edit To-do…"
 msgstr "&حرّر المهمّة…"
 
-#: actionmanager.cpp:1337
+#: actionmanager.cpp:1331
 #, kde-format
 msgctxt "@action:inmenu"
 msgid "&Delete To-do"
 msgstr "ا&حذف المهمّة"
 
-#: actionmanager.cpp:1480 actionmanager.cpp:1586
+#: actionmanager.cpp:1474 actionmanager.cpp:1580
 #, kde-format
 msgctxt "@action:inmenu"
 msgid "Attach as &link"
 msgstr "أرفِق كراب&ط"
 
-#: actionmanager.cpp:1481 actionmanager.cpp:1587
+#: actionmanager.cpp:1475 actionmanager.cpp:1581
 #, kde-format
 msgctxt "@action:inmenu"
 msgid "Attach &inline"
 msgstr "أرفِق &ضمن السياق"
 
-#: actionmanager.cpp:1482
+#: actionmanager.cpp:1476
 #, kde-format
 msgctxt "@action:inmenu"
 msgid "Attach inline &without attachments"
 msgstr "أرفِق ضمن السياق &دون مرفقات"
 
-#: actionmanager.cpp:1484 actionmanager.cpp:1589
+#: actionmanager.cpp:1478 actionmanager.cpp:1583
 #, kde-format
 msgctxt "@action:inmenu"
 msgid "C&ancel"
 msgstr "أ&لغِ"
 
-#: actionmanager.cpp:1522
+#: actionmanager.cpp:1516
 #, kde-format
 msgctxt "@info"
 msgid "Removing attachments from an email might invalidate its signature."
 msgstr "يمكن أن تؤدي إزالة المرفقات من أحد رسائل البريد إلى إبطال التوقيع."
 
-#: actionmanager.cpp:1523
+#: actionmanager.cpp:1517
 #, kde-format
 msgctxt "@title:window"
 msgid "Remove Attachments"
 msgstr "إزالة المرفقات"
 
-#: actionmanager.cpp:1674
+#: actionmanager.cpp:1668
 #, kde-format
 msgctxt "@action:inmenu"
 msgid "Undo: %1"
 msgstr "تراجَع عن: %1"
 
-#: actionmanager.cpp:1677
+#: actionmanager.cpp:1671
 #, kde-format
 msgctxt "@action:inmenu"
 msgid "Undo"
 msgstr "تراجَع"
 
-#: actionmanager.cpp:1687
+#: actionmanager.cpp:1681
 #, kde-format
 msgctxt "@action:inmenu"
 msgid "Redo: %1"
 msgstr "أعِد: %1"
 
-#: actionmanager.cpp:1690
+#: actionmanager.cpp:1684
 #, kde-format
 msgctxt "@action:inmenu"
 msgid "Redo"
 msgstr "أعِد"
 
-#: actionmanager.cpp:1693
+#: actionmanager.cpp:1687
 #, kde-format
 msgctxt "@action:button"
 msgid "Undo"
 msgstr "تراجع"
 
-#: actionmanager.cpp:1704
+#: actionmanager.cpp:1698
 #, kde-kuit-format
 msgctxt "@info"
 msgid "URL <filename>%1</filename> is invalid."
 msgstr "العنوان <filename>%1</filename> غير صالح."
 
-#: actionmanager.cpp:1709
+#: actionmanager.cpp:1703
 #, kde-kuit-format
 msgctxt "@info"
 msgid ""
@@ -1505,19 +1503,19 @@ msgstr ""
 "جديد؟</para><para>إن اخترت الدمج فسيُطلب منك اختيار التقويم المقصد.</"
 "para><para>إن اخترت الإضافة فسيُنشأ تقويم لك آليًا.</para>"
 
-#: actionmanager.cpp:1717
+#: actionmanager.cpp:1711
 #, kde-format
 msgctxt "@title:window"
 msgid "Import Calendar"
 msgstr "استيراد التقويم"
 
-#: actionmanager.cpp:1718
+#: actionmanager.cpp:1712
 #, kde-format
 msgctxt "@action:button"
 msgid "Merge into existing calendar"
 msgstr "ادمج بالتقويم الموجود"
 
-#: actionmanager.cpp:1719
+#: actionmanager.cpp:1713
 #, kde-format
 msgctxt "@action:button"
 msgid "Add as new calendar"

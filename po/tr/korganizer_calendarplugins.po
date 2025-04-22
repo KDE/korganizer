@@ -20,15 +20,15 @@ msgstr ""
 "Project-Id-Version: kdepim-kde4\n"
 "Report-Msgid-Bugs-To: https://bugs.kde.org\n"
 "POT-Creation-Date: 2025-04-19 00:42+0000\n"
-"PO-Revision-Date: 2025-02-21 09:32+0300\n"
-"Last-Translator: Emir SARI <emir_sari@icloud.com>\n"
+"PO-Revision-Date: 2025-04-21 10:56+0300\n"
+"Last-Translator: Emir SARI <emir_sari@îcloud.com>\n"
 "Language-Team: Turkish <kde-l10n-tr@kde.org>\n"
 "Language: tr\n"
 "MIME-Version: 1.0\n"
 "Content-Type: text/plain; charset=UTF-8\n"
 "Content-Transfer-Encoding: 8bit\n"
 "Plural-Forms: nplurals=2; plural=(n > 1);\n"
-"X-Generator: Lokalize 25.03.70\n"
+"X-Generator: Lokalize 25.04.0\n"
 "(http: //www.transifex.com/projects/p/kdepim-k-tr/language/tr/)\n"
 "X-POOTLE-MTIME: 1413104942.000000\n"
 
@@ -39,8 +39,7 @@ msgid "Configure Day Numbers"
 msgstr "Gün Numaralarını Yapılandır"
 
 #: datenums/configdialog.cpp:43
-#, fuzzy, kde-format
-#| msgid "Show Date Number"
+#, kde-format
 msgctxt "@title:group"
 msgid "Show Date Number"
 msgstr "Tarih Numarasını Göster"
@@ -704,8 +703,7 @@ msgid "Configure Picture of the Day"
 msgstr "Günün Resmini Yapılandır"
 
 #: picoftheday/configdialog.cpp:42
-#, fuzzy, kde-format
-#| msgid "Thumbnail Aspect Ratio Mode"
+#, kde-format
 msgctxt "@title:group"
 msgid "Thumbnail Aspect Ratio Mode"
 msgstr "Küçük Görsel En–Boy Oranı Kipi"
@@ -717,10 +715,7 @@ msgid "Ignore aspect ratio"
 msgstr "En–boy oranını yok say"
 
 #: picoftheday/configdialog.cpp:48
-#, fuzzy, kde-format
-#| msgid ""
-#| "The thumbnail will be scaled freely. The aspect ratio will not be "
-#| "preserved."
+#, kde-format
 msgctxt "@info:whatsthis"
 msgid ""
 "The thumbnail will be scaled freely. The aspect ratio will not be preserved."
@@ -734,10 +729,7 @@ msgid "Keep aspect ratio"
 msgstr "En–boy oranını koru"
 
 #: picoftheday/configdialog.cpp:54
-#, fuzzy, kde-format
-#| msgid ""
-#| "The thumbnail will be scaled to a rectangle as large as possible inside a "
-#| "given rectangle, preserving the aspect ratio."
+#, kde-format
 msgctxt "@info:whatsthis"
 msgid ""
 "The thumbnail will be scaled to a rectangle as large as possible inside a "
@@ -753,10 +745,7 @@ msgid "Keep aspect ratio by expanding"
 msgstr "Genişleterek en–boy oranını koru"
 
 #: picoftheday/configdialog.cpp:61
-#, fuzzy, kde-format
-#| msgid ""
-#| "The thumbnail will be scaled to a rectangle as small as possible outside "
-#| "a given rectangle, preserving the aspect ratio."
+#, kde-format
 msgctxt "@info:whatsthis"
 msgid ""
 "The thumbnail will be scaled to a rectangle as small as possible outside a "

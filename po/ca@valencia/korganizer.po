@@ -8,20 +8,20 @@
 # Albert Astals Cid <aacid@kde.org>, 2004, 2005, 2006.
 # Manuel Tortosa Moreno <manutortosa@gmail.com>, 2009, 2010, 2011.
 # Antoni Bella Pérez <antonibella5@yahoo.com>, 2011, 2013, 2014, 2015, 2016, 2017, 2018, 2019, 2020, 2022.
-# SPDX-FileCopyrightText: 2006, 2007, 2008, 2009, 2010, 2011, 2012, 2013, 2014, 2015, 2017, 2018, 2020, 2021, 2022, 2023, 2024, 2025 Josep M. Ferrer <txemaq@gmail.com>
+# Josep M. Ferrer <txemaq@gmail.com>, 2006, 2007, 2008, 2009, 2010, 2011, 2012, 2013, 2014, 2015, 2017, 2018, 2020, 2021, 2022, 2023, 2024, 2025.
 msgid ""
 msgstr ""
 "Project-Id-Version: korganizer\n"
 "Report-Msgid-Bugs-To: https://bugs.kde.org\n"
-"POT-Creation-Date: 2025-04-21 00:42+0000\n"
-"PO-Revision-Date: 2025-04-20 09:45+0200\n"
+"POT-Creation-Date: 2025-04-22 00:42+0000\n"
+"PO-Revision-Date: 2025-04-21 10:42+0200\n"
 "Last-Translator: Josep M. Ferrer <txemaq@gmail.com>\n"
 "Language-Team: Catalan <kde-i18n-ca@kde.org>\n"
 "Language: ca@valencia\n"
 "MIME-Version: 1.0\n"
 "Content-Type: text/plain; charset=UTF-8\n"
 "Content-Transfer-Encoding: 8bit\n"
-"X-Generator: Lokalize 24.12.3\n"
+"X-Generator: Lokalize 22.12.3\n"
 "Plural-Forms: nplurals=2; plural=n != 1;\n"
 "X-Accelerator-Marker: &\n"
 
@@ -504,8 +504,8 @@ msgstr ""
 "Permet eliminar totes les tasques pendents finalitzades del calendari de la "
 "col·lecció de calendari. Esta acció no es podrà desfer!"
 
-#: actionmanager.cpp:369 actionmanager.cpp:668 actionmanager.cpp:1361
-#: actionmanager.cpp:1399
+#: actionmanager.cpp:369 actionmanager.cpp:668 actionmanager.cpp:1355
+#: actionmanager.cpp:1393
 #, kde-format
 msgctxt "@action:inmenu"
 msgid "&Delete"
@@ -1195,14 +1195,14 @@ msgstr ""
 "vista. Actualment només s'admet la vista multicalendari. Vegeu les opcions "
 "de múltiples calendaris a la configuració «Vistes -> Vistes d'agenda»."
 
-#: actionmanager.cpp:660 actionmanager.cpp:1355 actionmanager.cpp:1397
+#: actionmanager.cpp:660 actionmanager.cpp:1349 actionmanager.cpp:1391
 #: koeventpopupmenu.cpp:41
 #, kde-format
 msgctxt "@action:inmenu"
 msgid "&Show"
 msgstr "&Mostra"
 
-#: actionmanager.cpp:664 actionmanager.cpp:1358 actionmanager.cpp:1398
+#: actionmanager.cpp:664 actionmanager.cpp:1352 actionmanager.cpp:1392
 #: koeventpopupmenu.cpp:43
 #, kde-format
 msgctxt "@action:inmenu"
@@ -1404,122 +1404,122 @@ msgid_plural "&Next %1 Days"
 msgstr[0] "Dia següe&nt"
 msgstr[1] "%1 dies següe&nts"
 
-#: actionmanager.cpp:1142
+#: actionmanager.cpp:1136
 #, kde-format
 msgctxt "@info"
 msgid "Could not start control module for date and time format."
 msgstr ""
 "No s'ha pogut iniciar el mòdul de control per al format de la data i l'hora."
 
-#: actionmanager.cpp:1317
+#: actionmanager.cpp:1311
 #, kde-format
 msgctxt "@action:inmenu"
 msgid "&Show Event"
 msgstr "&Mostra l'esdeveniment"
 
-#: actionmanager.cpp:1320
+#: actionmanager.cpp:1314
 #, kde-format
 msgctxt "@action:inmenu"
 msgid "&Edit Event…"
 msgstr "&Edita l'esdeveniment…"
 
-#: actionmanager.cpp:1323
+#: actionmanager.cpp:1317
 #, kde-format
 msgctxt "@action:inmenu"
 msgid "&Delete Event"
 msgstr "Sup&rimix l'esdeveniment"
 
-#: actionmanager.cpp:1331
+#: actionmanager.cpp:1325
 #, kde-format
 msgctxt "@action:inmenu"
 msgid "&Show To-do"
 msgstr "&Mostra la tasca pendent"
 
-#: actionmanager.cpp:1334
+#: actionmanager.cpp:1328
 #, kde-format
 msgctxt "@action:inmenu"
 msgid "&Edit To-do…"
 msgstr "&Edita la tasca pendent…"
 
-#: actionmanager.cpp:1337
+#: actionmanager.cpp:1331
 #, kde-format
 msgctxt "@action:inmenu"
 msgid "&Delete To-do"
 msgstr "Sup&rimix la tasca pendent"
 
-#: actionmanager.cpp:1480 actionmanager.cpp:1586
+#: actionmanager.cpp:1474 actionmanager.cpp:1580
 #, kde-format
 msgctxt "@action:inmenu"
 msgid "Attach as &link"
 msgstr "Adjunta com a en&llaç"
 
-#: actionmanager.cpp:1481 actionmanager.cpp:1587
+#: actionmanager.cpp:1475 actionmanager.cpp:1581
 #, kde-format
 msgctxt "@action:inmenu"
 msgid "Attach &inline"
 msgstr "Adjunta &inclòs"
 
-#: actionmanager.cpp:1482
+#: actionmanager.cpp:1476
 #, kde-format
 msgctxt "@action:inmenu"
 msgid "Attach inline &without attachments"
 msgstr "Adjunta inclòs &sense fitxers adjunts"
 
-#: actionmanager.cpp:1484 actionmanager.cpp:1589
+#: actionmanager.cpp:1478 actionmanager.cpp:1583
 #, kde-format
 msgctxt "@action:inmenu"
 msgid "C&ancel"
 msgstr "C&ancel·la"
 
-#: actionmanager.cpp:1522
+#: actionmanager.cpp:1516
 #, kde-format
 msgctxt "@info"
 msgid "Removing attachments from an email might invalidate its signature."
 msgstr "L'eliminació d'adjunts d'un correu pot invalidar la seua signatura."
 
-#: actionmanager.cpp:1523
+#: actionmanager.cpp:1517
 #, kde-format
 msgctxt "@title:window"
 msgid "Remove Attachments"
 msgstr "Elimina els adjunts"
 
-#: actionmanager.cpp:1674
+#: actionmanager.cpp:1668
 #, kde-format
 msgctxt "@action:inmenu"
 msgid "Undo: %1"
 msgstr "Desfés: %1"
 
-#: actionmanager.cpp:1677
+#: actionmanager.cpp:1671
 #, kde-format
 msgctxt "@action:inmenu"
 msgid "Undo"
 msgstr "Desfés"
 
-#: actionmanager.cpp:1687
+#: actionmanager.cpp:1681
 #, kde-format
 msgctxt "@action:inmenu"
 msgid "Redo: %1"
 msgstr "Refés: %1"
 
-#: actionmanager.cpp:1690
+#: actionmanager.cpp:1684
 #, kde-format
 msgctxt "@action:inmenu"
 msgid "Redo"
 msgstr "Refés"
 
-#: actionmanager.cpp:1693
+#: actionmanager.cpp:1687
 #, kde-format
 msgctxt "@action:button"
 msgid "Undo"
 msgstr "Desfés"
 
-#: actionmanager.cpp:1704
+#: actionmanager.cpp:1698
 #, kde-kuit-format
 msgctxt "@info"
 msgid "URL <filename>%1</filename> is invalid."
 msgstr "L'URL <filename>%1</filename> no és vàlid."
 
-#: actionmanager.cpp:1709
+#: actionmanager.cpp:1703
 #, kde-kuit-format
 msgctxt "@info"
 msgid ""
@@ -1535,19 +1535,19 @@ msgstr ""
 "para><para>Si seleccioneu afegir, llavors es crearà automàticament un "
 "calendari nou.</para>"
 
-#: actionmanager.cpp:1717
+#: actionmanager.cpp:1711
 #, kde-format
 msgctxt "@title:window"
 msgid "Import Calendar"
 msgstr "Importeu un calendari"
 
-#: actionmanager.cpp:1718
+#: actionmanager.cpp:1712
 #, kde-format
 msgctxt "@action:button"
 msgid "Merge into existing calendar"
 msgstr "Barreja amb el calendari existent"
 
-#: actionmanager.cpp:1719
+#: actionmanager.cpp:1713
 #, kde-format
 msgctxt "@action:button"
 msgid "Add as new calendar"
@@ -5834,20 +5834,7 @@ msgstr "Utilitza l'&adreça de correu completa per a la recuperació"
 #. i18n: ectx: property (whatsThis), widget (QLineEdit, retrieveUrl)
 #. i18n: ectx: property (whatsThis), widget (QLabel, TextLabel7_2)
 #: ui/kogroupwareprefspage.ui:446 ui/kogroupwareprefspage.ui:461
-#, fuzzy, kde-format
-#| msgctxt "@info:whatsthis"
-#| msgid ""
-#| "Enter the URL for the server on which the Free/Busy information is "
-#| "published here.\n"
-#| "Ask the server administrator for this information.\n"
-#| "Here is a Kolab2 Server URL example:\n"
-#| "\n"
-#| "https://kolab2.example.com/freebusy/\n"
-#| "\n"
-#| "Alternatively, you can specify a full path to the Free/Busy. For "
-#| "example: \n"
-#| "\n"
-#| "https://kolab2.example.com/freebusy/user.xfb"
+#, kde-format
 msgctxt "@info:whatsthis"
 msgid ""
 "Enter the URL for the server on which the Free/Busy information is published "
@@ -5869,7 +5856,7 @@ msgstr ""
 "https://kolab2.example.com/lliureocupat/\n"
 "\n"
 "De manera alternativa, podeu indicar un camí complet en el lliure/ocupat. "
-"Per exemple: \n"
+"Per exemple:\n"
 "\n"
 "https://kolab2.example.com/lliureocupat/usuari.xfb"
 

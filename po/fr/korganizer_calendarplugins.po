@@ -17,14 +17,14 @@
 # Anne-Marie Mahfouf <annemarie.mahfouf@free.fr>, 2010.
 # Vincent Pinon <vpinon@kde.org>, 2018.
 # Simon Depiets <sdepiets@gmail.com>, 2019.
-# SPDX-FileCopyrightText: 2021, 2024 Xavier Besnard <xavier.besnard@kde.org>
+# SPDX-FileCopyrightText: 2021, 2024, 2025 Xavier Besnard <xavier.besnard@kde.org>
 #
 msgid ""
 msgstr ""
 "Project-Id-Version: korganizer\n"
 "Report-Msgid-Bugs-To: https://bugs.kde.org\n"
 "POT-Creation-Date: 2025-04-19 00:42+0000\n"
-"PO-Revision-Date: 2024-08-01 10:04+0200\n"
+"PO-Revision-Date: 2025-04-20 09:04+0200\n"
 "Last-Translator: Xavier Besnard <xavier.besnard@kde.org>\n"
 "Language-Team: French <French <kde-francophone@kde.org>>\n"
 "Language: fr\n"
@@ -32,7 +32,7 @@ msgstr ""
 "Content-Type: text/plain; charset=UTF-8\n"
 "Content-Transfer-Encoding: 8bit\n"
 "Plural-Forms: nplurals=2; plural=(n > 1);\n"
-"X-Generator: Lokalize 23.08.5\n"
+"X-Generator: Lokalize 24.12.3\n"
 "X-Environment: kde\n"
 "X-Accelerator-Marker: &\n"
 "X-Text-Markup: kde4\n"
@@ -44,11 +44,10 @@ msgid "Configure Day Numbers"
 msgstr "Configurer le numéro des jours"
 
 #: datenums/configdialog.cpp:43
-#, fuzzy, kde-format
-#| msgid "Show Date Number"
+#, kde-format
 msgctxt "@title:group"
 msgid "Show Date Number"
-msgstr "Afficher le numéro des jours"
+msgstr "Afficher le numéro des semaines"
 
 #: datenums/configdialog.cpp:48
 #, kde-format
@@ -721,11 +720,10 @@ msgid "Configure Picture of the Day"
 msgstr "Configurer l'image du jour"
 
 #: picoftheday/configdialog.cpp:42
-#, fuzzy, kde-format
-#| msgid "Thumbnail Aspect Ratio Mode"
+#, kde-format
 msgctxt "@title:group"
 msgid "Thumbnail Aspect Ratio Mode"
-msgstr "Type de ratio d'affichage des vignettes"
+msgstr "Mode du ratio d'aspect pour les vignettes"
 
 #: picoftheday/configdialog.cpp:46
 #, kde-format
@@ -734,16 +732,13 @@ msgid "Ignore aspect ratio"
 msgstr "Ignorer le ratio d'affichage"
 
 #: picoftheday/configdialog.cpp:48
-#, fuzzy, kde-format
-#| msgid ""
-#| "The thumbnail will be scaled freely. The aspect ratio will not be "
-#| "preserved."
+#, kde-format
 msgctxt "@info:whatsthis"
 msgid ""
 "The thumbnail will be scaled freely. The aspect ratio will not be preserved."
 msgstr ""
-"La vignette sera librement agrandie. Le ratio d'affichage ne sera pas "
-"conservé."
+"La vignette sera librement mise à l'échelle. Le ratio d'affichage ne sera "
+"pas conservé."
 
 #: picoftheday/configdialog.cpp:52
 #, kde-format
@@ -752,16 +747,15 @@ msgid "Keep aspect ratio"
 msgstr "Conserver le ratio d'affichage"
 
 #: picoftheday/configdialog.cpp:54
-#, fuzzy, kde-format
-#| msgid ""
-#| "The thumbnail will be scaled to a rectangle as large as possible inside a "
-#| "given rectangle, preserving the aspect ratio."
+#, kde-format
 msgctxt "@info:whatsthis"
 msgid ""
 "The thumbnail will be scaled to a rectangle as large as possible inside a "
 "given rectangle, preserving the aspect ratio."
 msgstr ""
-"La vignette sera agrandie au maximum en conservant le ratio d'affichage."
+"La vignette sera mise à l'échelle selon un rectangle aussi grand que "
+"possible mais à l'intérieur du rectangle fourni et en préservant le ratio "
+"d'affichage."
 
 #: picoftheday/configdialog.cpp:59
 #, kde-format
@@ -770,17 +764,15 @@ msgid "Keep aspect ratio by expanding"
 msgstr "Conserver le ratio d'affichage par extension"
 
 #: picoftheday/configdialog.cpp:61
-#, fuzzy, kde-format
-#| msgid ""
-#| "The thumbnail will be scaled to a rectangle as small as possible outside "
-#| "a given rectangle, preserving the aspect ratio."
+#, kde-format
 msgctxt "@info:whatsthis"
 msgid ""
 "The thumbnail will be scaled to a rectangle as small as possible outside a "
 "given rectangle, preserving the aspect ratio."
 msgstr ""
-"La vignette sera agrandie au maximum avec une coupure tout en conservant le "
-"ratio d'affichage."
+"La vignette sera mise à l'échelle selon un rectangle aussi petit que "
+"possible mais à l'extérieur du rectangle fourni et en préservant le ratio "
+"d'affichage."
 
 #: picoftheday/element.cpp:209
 #, kde-format
