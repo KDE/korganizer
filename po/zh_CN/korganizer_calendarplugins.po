@@ -27,7 +27,7 @@ msgstr "配置日编号"
 #: datenums/configdialog.cpp:43
 #, kde-format
 msgid "Show Date Number"
-msgstr "显示日编号"
+msgstr ""
 
 #: datenums/configdialog.cpp:48
 #, kde-format
@@ -683,7 +683,7 @@ msgstr "配置今日图片"
 #: picoftheday/configdialog.cpp:42
 #, kde-format
 msgid "Thumbnail Aspect Ratio Mode"
-msgstr "缩略图纵横比"
+msgstr ""
 
 #: picoftheday/configdialog.cpp:46
 #, kde-format
@@ -695,7 +695,7 @@ msgstr ""
 #, kde-format
 msgid ""
 "The thumbnail will be scaled freely. The aspect ratio will not be preserved."
-msgstr "所略图将被自由缩放，不考虑纵横比。"
+msgstr ""
 
 #: picoftheday/configdialog.cpp:52
 #, kde-format
@@ -708,7 +708,7 @@ msgstr ""
 msgid ""
 "The thumbnail will be scaled to a rectangle as large as possible inside a "
 "given rectangle, preserving the aspect ratio."
-msgstr "缩略图将在指定的矩形范围里被尽可能维持形状地放大，保留纵横比。"
+msgstr ""
 
 #: picoftheday/configdialog.cpp:59
 #, kde-format
@@ -722,7 +722,6 @@ msgid ""
 "The thumbnail will be scaled to a rectangle as small as possible outside a "
 "given rectangle, preserving the aspect ratio."
 msgstr ""
-"缩略图将被维持形状地放大，并尽可能保证少超出指定的矩形范围，保留纵横比。"
 
 #: picoftheday/element.cpp:209
 #, kde-format
