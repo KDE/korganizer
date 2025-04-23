@@ -18,7 +18,7 @@ msgstr ""
 "Project-Id-Version: korganizer\n"
 "Report-Msgid-Bugs-To: https://bugs.kde.org\n"
 "POT-Creation-Date: 2025-04-22 00:42+0000\n"
-"PO-Revision-Date: 2025-04-19 20:13+0300\n"
+"PO-Revision-Date: 2025-04-22 08:30+0300\n"
 "Last-Translator: Yaron Shahrabani <sh.yaron@gmail.com>\n"
 "Language-Team: צוות התרגום של KDE ישראל\n"
 "Language: he\n"
@@ -27,7 +27,7 @@ msgstr ""
 "Content-Transfer-Encoding: 8bit\n"
 "Plural-Forms: nplurals=4; plural=(n == 1) ? 0 : ((n == 2) ? 1 : ((n > 10 && "
 "n % 10 == 0) ? 2 : 3));\n"
-"X-Generator: Lokalize 24.12.3\n"
+"X-Generator: Poedit 3.5\n"
 
 #, kde-format
 msgctxt "NAME OF TRANSLATORS"
@@ -1353,11 +1353,10 @@ msgid "Saved calendar <filename>%1</filename>"
 msgstr "לוח השנה <message>%1</message> נשמר"
 
 #: actionmanager.cpp:1096
-#, fuzzy, kde-kuit-format
-#| msgid "Unable to save calendar to the file %1."
+#, kde-kuit-format
 msgctxt "@info"
 msgid "Unable to save calendar to the file <filename>%1</filename>"
-msgstr "אי אפשר לשמור לוח שנה לקובץ <filename>%1<filename>"
+msgstr "אי אפשר לשמור לוח שנה לקובץ <filename>%1</filename>"
 
 #: actionmanager.cpp:1097
 #, kde-format
@@ -5629,20 +5628,7 @@ msgstr "להשתמש בכתובת &דוא״ל מלאה לקבלה"
 #. i18n: ectx: property (whatsThis), widget (QLineEdit, retrieveUrl)
 #. i18n: ectx: property (whatsThis), widget (QLabel, TextLabel7_2)
 #: ui/kogroupwareprefspage.ui:446 ui/kogroupwareprefspage.ui:461
-#, fuzzy, kde-format
-#| msgctxt "@info:whatsthis"
-#| msgid ""
-#| "Enter the URL for the server on which the Free/Busy information is "
-#| "published here.\n"
-#| "Ask the server administrator for this information.\n"
-#| "Here is a Kolab2 Server URL example:\n"
-#| "\n"
-#| "https://kolab2.example.com/freebusy/\n"
-#| "\n"
-#| "Alternatively, you can specify a full path to the Free/Busy. For "
-#| "example: \n"
-#| "\n"
-#| "https://kolab2.example.com/freebusy/user.xfb"
+#, kde-format
 msgctxt "@info:whatsthis"
 msgid ""
 "Enter the URL for the server on which the Free/Busy information is published "
@@ -5662,7 +5648,7 @@ msgstr ""
 "\n"
 "https://kolab2.example.com/freebusy/\n"
 "\n"
-"לחלופין, אפשר לציין את הנתיב המלא לנתוני פנוי/עסוק. למשל: \n"
+"לחלופין, אפשר לציין את הנתיב המלא לנתוני פנוי/עסוק. למשל:\n"
 "\n"
 "https://kolab2.example.com/freebusy/user.xfb"
 
