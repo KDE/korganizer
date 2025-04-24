@@ -1791,9 +1791,20 @@ void CalendarView::printPreview()
 
 void CalendarView::exportICalendar()
 {
+    QString exportPath = QStandardPaths::writableLocation(QStandardPaths::DocumentsLocation);
+
+    KSharedConfig::Ptr config = KSharedConfig::openConfig();
+    KConfigGroup group = config->group(QStringLiteral("Settings"));
+    const QFileInfo lastLocation(group.readEntry("LastExportLocation", QString()));
+    const QString lastExportPath = lastLocation.absolutePath();
+    if (!lastExportPath.isEmpty()) {
+        exportPath = lastExportPath;
+    }
+    exportPath = exportPath + QStringLiteral("/icalout.ics");
+
     QString filename = QFileDialog::getSaveFileName(this,
-                                                    QString(),
-                                                    QStringLiteral("icalout.ics"),
+                                                    i18nc("@title:window", "Export Calendar to File"),
+                                                    exportPath,
                                                     QStringLiteral("text/calendar (*.ics)"),
                                                     nullptr,
                                                     QFileDialog::DontConfirmOverwrite);
@@ -1823,6 +1834,8 @@ void CalendarView::exportICalendar()
                 errmess = i18nc("@info save failure cause unknown", "Reason unknown");
             }
             KMessageBox::error(this, xi18nc("@info", "Cannot write iCalendar file <filename>%1</filename>: <message>%2</message>", filename, errmess));
+        } else {
+            group.writeEntry("LastExportLocation", filename);
         }
     }
 }
