@@ -67,8 +67,7 @@ msgid "Allen Winter"
 msgstr "Allen Winter"
 
 #: aboutdata.cpp:31
-#, fuzzy, kde-format
-#| msgid "Maintainer"
+#, kde-format
 msgctxt "@info:credit"
 msgid "Maintainer"
 msgstr "Správce"
@@ -99,8 +98,7 @@ msgid "Preston Brown"
 msgstr "Preston Brown"
 
 #: aboutdata.cpp:34
-#, fuzzy, kde-format
-#| msgid "Original Author"
+#, kde-format
 msgctxt "@info:credit"
 msgid "Original Author"
 msgstr "Původní autor"
@@ -112,8 +110,7 @@ msgid "Laurent Montel"
 msgstr "Laurent Montel"
 
 #: aboutdata.cpp:35
-#, fuzzy, kde-format
-#| msgid "Developer"
+#, kde-format
 msgctxt "@info:credit"
 msgid "Developer"
 msgstr "Vývojář"
@@ -403,11 +400,10 @@ msgid ""
 msgstr ""
 
 #: actionmanager.cpp:280
-#, fuzzy, kde-kuit-format
-#| msgid "Could not load calendar %1."
+#, kde-kuit-format
 msgctxt "@info"
 msgid "Could not load calendar <filename>%1</filename>."
-msgstr "Nelze načíst kalendář %1."
+msgstr "Nelze načíst kalendář <filename>%1</filename>."
 
 #: actionmanager.cpp:290
 #, fuzzy, kde-format
@@ -502,8 +498,7 @@ msgstr ""
 
 #: actionmanager.cpp:369 actionmanager.cpp:668 actionmanager.cpp:1355
 #: actionmanager.cpp:1393
-#, fuzzy, kde-format
-#| msgid "&Delete"
+#, kde-format
 msgctxt "@action:inmenu"
 msgid "&Delete"
 msgstr "&Smazat"
@@ -1150,8 +1145,7 @@ msgid "Configure View…"
 msgstr "Nastavit pohled…"
 
 #: actionmanager.cpp:649
-#, fuzzy, kde-format
-#| msgid "Configure"
+#, kde-format
 msgctxt "@action:button"
 msgid "Configure"
 msgstr "Nastavit"
@@ -1387,11 +1381,10 @@ msgid "An error occurred: <message>%1 (url: %2)</message>"
 msgstr ""
 
 #: actionmanager.cpp:1051
-#, fuzzy, kde-kuit-format
-#| msgid "Cannot upload calendar to '%1'"
+#, kde-kuit-format
 msgctxt "@info"
 msgid "Cannot upload calendar to <filename>%1</filename>"
-msgstr "Nelze načíst kalendář na '%1'"
+msgstr "Nelze odeslat kalendář do <filename>%1</filename>"
 
 #: actionmanager.cpp:1057
 #, kde-kuit-format
@@ -1494,11 +1487,10 @@ msgid "Attach inline &without attachments"
 msgstr "Přidat na místě bez příloh"
 
 #: actionmanager.cpp:1478 actionmanager.cpp:1583
-#, fuzzy, kde-format
-#| msgid "C&ancel"
+#, kde-format
 msgctxt "@action:inmenu"
 msgid "C&ancel"
-msgstr "Zrušit"
+msgstr "&Zrušit"
 
 #: actionmanager.cpp:1516
 #, fuzzy, kde-format
@@ -1521,8 +1513,7 @@ msgid "Undo: %1"
 msgstr "Zpět: (%1)"
 
 #: actionmanager.cpp:1671
-#, fuzzy, kde-format
-#| msgid "Undo"
+#, kde-format
 msgctxt "@action:inmenu"
 msgid "Undo"
 msgstr "Zpět"
@@ -1535,15 +1526,13 @@ msgid "Redo: %1"
 msgstr "Znovu: %1"
 
 #: actionmanager.cpp:1684
-#, fuzzy, kde-format
-#| msgid "Redo"
+#, kde-format
 msgctxt "@action:inmenu"
 msgid "Redo"
 msgstr "Znovu"
 
 #: actionmanager.cpp:1687
-#, fuzzy, kde-format
-#| msgid "Undo"
+#, kde-format
 msgctxt "@action:button"
 msgid "Undo"
 msgstr "Zpět"
@@ -3640,8 +3629,7 @@ msgstr ""
 "Autorská práva © 2004–2010 Allen Winter"
 
 #: kontactplugin/specialdates/specialdates_plugin.cpp:43
-#, fuzzy, kde-format
-#| msgid "Current Maintainer"
+#, kde-format
 msgctxt "@info:credit"
 msgid "Current Maintainer"
 msgstr "Současný správce"
@@ -3836,8 +3824,7 @@ msgid "Activities"
 msgstr "Aktivity"
 
 #: prefs/koprefsdialogmain.cpp:102
-#, fuzzy, kde-format
-#| msgid "Enabled"
+#, kde-format
 msgctxt "@option:check"
 msgid "Enabled"
 msgstr "Povoleno"
@@ -3868,8 +3855,7 @@ msgid "Calendar Decorations"
 msgstr "Dekorace kalendářů"
 
 #: prefs/koprefsdialogplugins.cpp:141
-#, fuzzy, kde-format
-#| msgid "Configure"
+#, kde-format
 msgctxt "@info:tooltip"
 msgid "Configure"
 msgstr "Nastavit"
