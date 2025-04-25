@@ -6292,16 +6292,3 @@ msgstr "%1"
 msgctxt "4 digit year"
 msgid "%1"
 msgstr "%1"
-
-#~ msgid "&Show"
-#~ msgstr "Vi&s"
-
-#, fuzzy
-#~ msgid "&Edit…"
-#~ msgstr "&Rediger"
-
-#~ msgid "Saved calendar '%1'."
-#~ msgstr "Lagret kalender «%1»."
-
-#~ msgid "KOrganizer Confirmation"
-#~ msgstr "KOrganizer-bekreftelse"

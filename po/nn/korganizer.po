@@ -6226,16 +6226,3 @@ msgstr "%1"
 msgctxt "4 digit year"
 msgid "%1"
 msgstr "%1"
-
-#~ msgid "&Show"
-#~ msgstr "&Vis"
-
-#, fuzzy
-#~ msgid "&Edit…"
-#~ msgstr "&Rediger"
-
-#~ msgid "Saved calendar '%1'."
-#~ msgstr "Lagra kalenderen «%1»."
-
-#~ msgid "KOrganizer Confirmation"
-#~ msgstr "Kalender-stadfesting"

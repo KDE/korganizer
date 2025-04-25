@@ -5947,9 +5947,3 @@ msgstr ""
 msgctxt "4 digit year"
 msgid "%1"
 msgstr ""
-
-#~ msgid "Saved calendar '%1'."
-#~ msgstr "Vurkii kaleandar «%1»."
-
-#~ msgid "KOrganizer Confirmation"
-#~ msgstr "KOrganizer nannen"
