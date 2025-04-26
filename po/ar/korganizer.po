@@ -11,7 +11,7 @@ msgid ""
 msgstr ""
 "Project-Id-Version: korganizer\n"
 "Report-Msgid-Bugs-To: https://bugs.kde.org\n"
-"POT-Creation-Date: 2025-04-22 00:42+0000\n"
+"POT-Creation-Date: 2025-04-26 00:43+0000\n"
 "PO-Revision-Date: 2025-04-24 10:53+0400\n"
 "Last-Translator: Zayed Al-Saidi <zayed.alsaidi@gmail.com>\n"
 "Language-Team: ar\n"
@@ -1843,7 +1843,7 @@ msgctxt "@info"
 msgid "Unable to copy the item \"%1\" to %2."
 msgstr "تعذّر نسخ العنصر ”%1“ إلى %2."
 
-#: calendarview.cpp:1489 calendarview.cpp:2431
+#: calendarview.cpp:1489 calendarview.cpp:2444
 #, kde-format
 msgctxt "@title:window"
 msgid "Copying Failed"
@@ -1859,7 +1859,7 @@ msgstr ""
 "تعذر إزالة العنصر \"%1\" من التقويم الأصلي. ومع ذلك،وُضع نسخة من هذا العنصر "
 "في %2"
 
-#: calendarview.cpp:1552 calendarview.cpp:1568 calendarview.cpp:2466
+#: calendarview.cpp:1552 calendarview.cpp:1568 calendarview.cpp:2479
 #, kde-format
 msgctxt "@title:window"
 msgid "Moving Failed"
@@ -1889,8 +1889,8 @@ msgctxt "@info"
 msgid "Do you want to dissociate the occurrence on %1 from the recurrence?"
 msgstr "أتريد إلغاء ربط الحدوث في تاريخ %1 من التكرار؟"
 
-#: calendarview.cpp:1607 calendarview.cpp:1620 calendarview.cpp:2247
-#: calendarview.cpp:2306 calendarview.cpp:2336
+#: calendarview.cpp:1607 calendarview.cpp:1620 calendarview.cpp:2260
+#: calendarview.cpp:2319 calendarview.cpp:2349
 #, kde-format
 msgctxt "@title:window"
 msgid "KOrganizer Confirmation"
@@ -1954,25 +1954,33 @@ msgctxt "@info"
 msgid "Dissociating the occurrence failed."
 msgstr "فشل فصل الحدوثات."
 
-#: calendarview.cpp:1808
+#: calendarview.cpp:1806
+#, fuzzy, kde-format
+#| msgctxt "@info:status"
+#| msgid "Export calendar to file"
+msgctxt "@title:window"
+msgid "Export Calendar to File"
+msgstr "صدر تقويم إلى ملف"
+
+#: calendarview.cpp:1819
 #, kde-kuit-format
 msgctxt "@info"
 msgid "Do you want to overwrite <filename>%1</filename>?"
 msgstr "أتريد الكتابة فوق <filename>%1</filename>؟"
 
-#: calendarview.cpp:1809
+#: calendarview.cpp:1820
 #, kde-format
 msgctxt "@title:window"
 msgid "Export Calendar"
 msgstr "تصدير التقويم"
 
-#: calendarview.cpp:1823
+#: calendarview.cpp:1834
 #, kde-format
 msgctxt "@info save failure cause unknown"
 msgid "Reason unknown"
 msgstr "السبب مجهول"
 
-#: calendarview.cpp:1825
+#: calendarview.cpp:1836
 #, kde-kuit-format
 msgctxt "@info"
 msgid ""
@@ -1981,13 +1989,13 @@ msgstr ""
 "تعذّرت كتابة ملف iCalendar بالاسم <filename>%1</filename>: <message>%2</"
 "message>"
 
-#: calendarview.cpp:1919 calendarview.cpp:1964
+#: calendarview.cpp:1932 calendarview.cpp:1977
 #, kde-format
 msgctxt "@info/plain"
 msgid "No filter"
 msgstr "دون مرشح"
 
-#: calendarview.cpp:2242
+#: calendarview.cpp:2255
 #, kde-kuit-format
 msgctxt "@info"
 msgid ""
@@ -1998,19 +2006,19 @@ msgstr ""
 "للعنصر <resource>%1</resource> مهام فرعيّة. أتريد حذف هذا العنصر فحسب وجعل "
 "مهامه الفرعيّة مستقلة، أم حذف المهمّة مع كل مهامها الفرعيّة؟"
 
-#: calendarview.cpp:2248
+#: calendarview.cpp:2261
 #, kde-format
 msgctxt "@action:button"
 msgid "Delete Only This"
 msgstr "احذف هذه فقط"
 
-#: calendarview.cpp:2249 calendarview.cpp:2307
+#: calendarview.cpp:2262 calendarview.cpp:2320
 #, kde-format
 msgctxt "@action:button"
 msgid "Delete All"
 msgstr "احذف الكل"
 
-#: calendarview.cpp:2281
+#: calendarview.cpp:2294
 #, kde-kuit-format
 msgctxt "@info"
 msgid ""
@@ -2020,13 +2028,13 @@ msgstr ""
 "عُلّم العنصر <resource>%1</resource> على أنه للقراءة فقط ولا يمكن حذفه، أغلب "
 "الظن بأنه لتقويم للقراءة فقط."
 
-#: calendarview.cpp:2284
+#: calendarview.cpp:2297
 #, kde-format
 msgctxt "@title:window"
 msgid "Removing not possible"
 msgstr "الحذف غير ممكن"
 
-#: calendarview.cpp:2303
+#: calendarview.cpp:2316
 #, kde-kuit-format
 msgctxt "@info"
 msgid ""
@@ -2036,13 +2044,13 @@ msgstr ""
 "يتكرّر عنصر التقاويم <resource>%1</resource> في عدد من التواريخ، أمتأكّد من "
 "حذفه مع كل تكراراته؟"
 
-#: calendarview.cpp:2314
+#: calendarview.cpp:2327
 #, kde-format
 msgctxt "@action:button"
 msgid "Also Delete &Future"
 msgstr "احذف الحدوثات المس&تقبلية أيضًا"
 
-#: calendarview.cpp:2318
+#: calendarview.cpp:2331
 #, kde-kuit-format
 msgctxt "@info"
 msgid ""
@@ -2053,7 +2061,7 @@ msgstr ""
 "يتكرر عنصر التقويم <resource>%1</resource> في تواريخ متعددة. هل تريد حذف "
 "العنصر الحالي فقط في %2، أم أيضًا الأحداث المستقبلية، أم كل أحداثه؟"
 
-#: calendarview.cpp:2325
+#: calendarview.cpp:2338
 #, kde-kuit-format
 msgctxt "@info"
 msgid ""
@@ -2063,74 +2071,74 @@ msgstr ""
 "يتكرّر عنصر التقاويم <resource>%1</resource> في عدد من التواريخ. أتريد حذف "
 "الحالي في %2 فقط، أو حذف كل الحدوثات؟"
 
-#: calendarview.cpp:2337
+#: calendarview.cpp:2350
 #, kde-format
 msgctxt "@action:button"
 msgid "Delete C&urrent"
 msgstr "احذف ال&حالي"
 
-#: calendarview.cpp:2339
+#: calendarview.cpp:2352
 #, kde-format
 msgctxt "@action:button"
 msgid "Delete &All"
 msgstr "احذف ال&كل"
 
-#: calendarview.cpp:2370 calendarview.cpp:2377
+#: calendarview.cpp:2383 calendarview.cpp:2390
 #, kde-format
 msgctxt "@info/plain"
 msgid "Delete \"%1\""
 msgstr "احذف \"%1\""
 
-#: calendarview.cpp:2409
+#: calendarview.cpp:2422
 #, kde-format
 msgctxt "@info"
 msgid ""
 "All calendars are unchecked in the Calendar Manager. No to-do was purged."
 msgstr "كل التقاويم غير مؤشّر عليها في مدير التقاويم. لم تُنظّف أية مهام."
 
-#: calendarview.cpp:2414 calendarview.cpp:2663
+#: calendarview.cpp:2427 calendarview.cpp:2676
 #, kde-format
 msgctxt "@info"
 msgid "There are no completed to-dos to purge."
 msgstr "لا مهام غير مكتملة لتنظيفها."
 
-#: calendarview.cpp:2419
+#: calendarview.cpp:2432
 #, kde-format
 msgctxt "@info"
 msgid "Delete all completed to-dos from checked calendars?"
 msgstr "أأحذف المهام المكتملة من التقاويم المؤشّر عليها؟"
 
-#: calendarview.cpp:2420
+#: calendarview.cpp:2433
 #, kde-format
 msgctxt "@title:window"
 msgid "Purge To-dos"
 msgstr "تنظيف المهام"
 
-#: calendarview.cpp:2421
+#: calendarview.cpp:2434
 #, kde-format
 msgctxt "@action:button"
 msgid "Purge"
 msgstr "نظّف"
 
-#: calendarview.cpp:2431
+#: calendarview.cpp:2444
 #, kde-kuit-format
 msgctxt "@info"
 msgid "Unable to copy item <resource>%1</resource>."
 msgstr "تعذّر نسخ العنصر <resource>%1</resource>."
 
-#: calendarview.cpp:2466
+#: calendarview.cpp:2479
 #, kde-kuit-format
 msgctxt "@info"
 msgid "Unable to move item <resource>%1</resource>."
 msgstr "تعذّر نقل العنصر <resource>%1</resource>."
 
-#: calendarview.cpp:2655
+#: calendarview.cpp:2668
 #, kde-kuit-format
 msgctxt "@info"
 msgid "0 completed to-dos were purged.<nl/>"
 msgstr "لم تنُظّفت أي مهمّة مكتملة.<nl/>"
 
-#: calendarview.cpp:2657 calendarview.cpp:2668
+#: calendarview.cpp:2670 calendarview.cpp:2681
 #, kde-format, kde-kuit-format
 msgctxt "@info"
 msgid "%1 to-do was ignored because it has uncompleted or read-only children."
@@ -2148,7 +2156,7 @@ msgstr[4] ""
 msgstr[5] ""
 "تجاهلتُ %1 مهمّة لأن فيها أبناء إما أنهم لم يكتملوا أو أنهم للقراءة فقط."
 
-#: calendarview.cpp:2661 calendarview.cpp:2666
+#: calendarview.cpp:2674 calendarview.cpp:2679
 #, kde-format
 msgctxt "@info"
 msgid "%1 completed to-do was purged."
@@ -2160,13 +2168,13 @@ msgstr[3] "نُظّفت %1 مهام مكتملة."
 msgstr[4] "نُظّفت %1 مهمّةً مكتملة."
 msgstr[5] "نُظّفت %1 مهمّة مكتملة."
 
-#: calendarview.cpp:2673
+#: calendarview.cpp:2686
 #, kde-kuit-format
 msgctxt "@info"
 msgid "An error occurred while purging completed to-dos: <message>%1</message>"
 msgstr "حدث خطأ أثناء تنظيف المهام المكتملة:  <message>%1</message>"
 
-#: calendarview.cpp:2727
+#: calendarview.cpp:2740
 #, kde-kuit-format
 msgctxt "@info"
 msgid ""
@@ -2177,7 +2185,7 @@ msgstr ""
 "أنشأت حدوثًا في تقويم مرشّح مخفيّ حاليًا.<para>فعّله من الشريط الجانبي اليمني في "
 "مدير التقاويم لرؤية الحدوث.</para>"
 
-#: calendarview.cpp:2731
+#: calendarview.cpp:2744
 #, kde-kuit-format
 msgctxt "@info"
 msgid ""
