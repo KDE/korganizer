@@ -19,7 +19,7 @@ msgstr ""
 "Project-Id-Version: korganizer\n"
 "Report-Msgid-Bugs-To: https://bugs.kde.org\n"
 "POT-Creation-Date: 2025-04-26 00:43+0000\n"
-"PO-Revision-Date: 2025-04-21 14:47+0200\n"
+"PO-Revision-Date: 2025-04-26 16:37+0200\n"
 "Last-Translator: Freek de Kruijf <freekdekruijf@kde.nl>\n"
 "Language-Team: \n"
 "Language: nl\n"
@@ -2000,12 +2000,10 @@ msgid "Dissociating the occurrence failed."
 msgstr "Het voorval loskoppelen is mislukt."
 
 #: calendarview.cpp:1806
-#, fuzzy, kde-format
-#| msgctxt "@info:status"
-#| msgid "Export calendar to file"
+#, kde-format
 msgctxt "@title:window"
 msgid "Export Calendar to File"
-msgstr "Agenda naar een bestand exporteren"
+msgstr "Agenda naar bestand exporteren"
 
 #: calendarview.cpp:1819
 #, kde-kuit-format
