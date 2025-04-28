@@ -18,7 +18,7 @@ msgstr ""
 "Project-Id-Version: korganizer\n"
 "Report-Msgid-Bugs-To: https://bugs.kde.org\n"
 "POT-Creation-Date: 2025-04-18 02:33+0000\n"
-"PO-Revision-Date: 2025-03-16 14:48+0530\n"
+"PO-Revision-Date: 2025-04-27 13:07+0530\n"
 "Last-Translator: Kishore G <kishore96@gmail.com>\n"
 "Language-Team: Tamil <kde-i18n-doc@kde.org>\n"
 "Language: ta\n"
@@ -26,7 +26,7 @@ msgstr ""
 "Content-Type: text/plain; charset=UTF-8\n"
 "Content-Transfer-Encoding: 8bit\n"
 "Plural-Forms: nplurals=2; plural=n != 1;\n"
-"X-Generator: Lokalize 24.12.3\n"
+"X-Generator: Lokalize 25.04.0\n"
 
 #, kde-format
 msgctxt "NAME OF TRANSLATORS"
@@ -65,7 +65,7 @@ msgstr ""
 #, kde-format
 msgctxt "@info:credit"
 msgid "Allen Winter"
-msgstr ""
+msgstr "ஆல்லன் வின்டர்"
 
 #: aboutdata.cpp:30
 #, kde-format
@@ -76,7 +76,7 @@ msgstr "பராமரிப்பாளர்"
 #, kde-format
 msgctxt "@info:credit"
 msgid "Reinhold Kainhofer"
-msgstr ""
+msgstr "ரைன்ஹோல்டு கைன்ஹோஃபர்"
 
 #: aboutdata.cpp:31 aboutdata.cpp:32
 #, kde-format
@@ -87,13 +87,13 @@ msgstr "முந்தைய பராமரிப்பாளர்"
 #, kde-format
 msgctxt "@info:credit"
 msgid "Cornelius Schumacher"
-msgstr ""
+msgstr "கார்னீலியஸ் ஷூமாக்கர்"
 
 #: aboutdata.cpp:33
 #, kde-format
 msgctxt "@info:credit"
 msgid "Preston Brown"
-msgstr ""
+msgstr "பிரெஸ்டவுன் பிரவுன்"
 
 #: aboutdata.cpp:33
 #, kde-format
@@ -101,11 +101,10 @@ msgid "Original Author"
 msgstr "முதல் பதிப்பை இயற்றியவர்"
 
 #: aboutdata.cpp:34
-#, fuzzy, kde-format
-#| msgid "Current Maintainer"
+#, kde-format
 msgctxt "@info:credit"
 msgid "Laurent Montel"
-msgstr "தற்போதைய பராமரிப்பாளர்"
+msgstr "லாரெண்டு மாண்டெல்"
 
 #: aboutdata.cpp:34
 #, kde-format
@@ -236,13 +235,13 @@ msgstr ""
 #, kde-format
 msgctxt "@info:credit"
 msgid "Glen Parker"
-msgstr ""
+msgstr "கலென் பார்க்கர்"
 
 #: aboutdata.cpp:56
 #, kde-format
 msgctxt "@info:credit"
 msgid "Dan Pilone"
-msgstr ""
+msgstr "டான் பிலோன்"
 
 #: aboutdata.cpp:57
 #, kde-format
@@ -435,11 +434,10 @@ msgid "Archive events and to-dos to a file"
 msgstr "நிகழ்வுகளும் செய்யவேண்டியவையும் கோப்புக்கு காப்பகப்படுத்தப்படுகின்றன"
 
 #: actionmanager.cpp:317
-#, fuzzy, kde-format
-#| msgid "Archive old events to a separate file"
+#, kde-format
 msgctxt "@info:tooltip"
 msgid "Archive old events and to-dos to an iCalendar file"
-msgstr "Archive old events to a separate file"
+msgstr ""
 
 #: actionmanager.cpp:319
 #, kde-format
@@ -757,11 +755,10 @@ msgid "Scroll the view to today"
 msgstr "இன்றைய நாளுக்கு காட்சியை உருளச்செய்யும்"
 
 #: actionmanager.cpp:518
-#, fuzzy, kde-format
-#| msgid "Replace the currently selected date with this date."
+#, kde-format
 msgctxt "@info:whatsthis"
 msgid "Scrolls the current view to the today's date."
-msgstr "தற்போது தேர்ந்தெடுக்கப்பட்ட தேதியை இந்த தேதியில் இடம்மாற்று."
+msgstr ""
 
 #: actionmanager.cpp:523
 #, kde-format
@@ -779,7 +776,7 @@ msgstr "முன்னே"
 #, kde-format
 msgctxt "@info:status"
 msgid "Scroll Backward"
-msgstr ""
+msgstr "முந்தைய உருப்படிகளைக் காட்டுகிறது"
 
 #: actionmanager.cpp:526
 #, kde-format
@@ -808,11 +805,10 @@ msgid "Forward"
 msgstr "பின்னே"
 
 #: actionmanager.cpp:536
-#, fuzzy, kde-format
-#| msgid "Go &Forward"
+#, kde-format
 msgctxt "@info:status"
 msgid "Scroll Forward"
-msgstr "முன்னால் போ"
+msgstr "பிந்தைய உருப்படிகளைக் காட்டுகிறது"
 
 #: actionmanager.cpp:537
 #, kde-format
