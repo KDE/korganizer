@@ -8,7 +8,7 @@ msgid ""
 msgstr ""
 "Project-Id-Version: korganizer\n"
 "Report-Msgid-Bugs-To: https://bugs.kde.org\n"
-"POT-Creation-Date: 2025-04-26 00:43+0000\n"
+"POT-Creation-Date: 2025-04-28 00:42+0000\n"
 "PO-Revision-Date: 2009-02-28 20:07+0530\n"
 "Last-Translator: Ravishankar Shrivastava <raviratlami@aol.in>\n"
 "Language-Team: Hindi <kde-i18n-doc@lists.kde.org>\n"
@@ -1874,6 +1874,7 @@ msgstr ""
 
 #: calendarview.cpp:251
 #, kde-kuit-format
+msgctxt "@info"
 msgid ""
 "<para><emphasis>No Item Selected</emphasis></para><para>Select an event, to-"
 "do or journal entry to view its details here.</para>"

@@ -17,8 +17,8 @@ msgid ""
 msgstr ""
 "Project-Id-Version: korganizer\n"
 "Report-Msgid-Bugs-To: https://bugs.kde.org\n"
-"POT-Creation-Date: 2025-04-26 00:43+0000\n"
-"PO-Revision-Date: 2025-03-16 14:48+0530\n"
+"POT-Creation-Date: 2025-04-28 00:42+0000\n"
+"PO-Revision-Date: 2025-04-27 13:08+0530\n"
 "Last-Translator: Kishore G <kishore96@gmail.com>\n"
 "Language-Team: Tamil <kde-i18n-doc@kde.org>\n"
 "Language: ta\n"
@@ -26,7 +26,7 @@ msgstr ""
 "Content-Type: text/plain; charset=UTF-8\n"
 "Content-Transfer-Encoding: 8bit\n"
 "Plural-Forms: nplurals=2; plural=n != 1;\n"
-"X-Generator: Lokalize 24.12.3\n"
+"X-Generator: Lokalize 25.04.0\n"
 
 #, kde-format
 msgctxt "NAME OF TRANSLATORS"
@@ -42,15 +42,13 @@ msgstr "tamilpc@ambalam.com"
 #: kontactplugin/korganizer/korganizerplugin.cpp:42
 #: kontactplugin/korganizer/todoplugin.cpp:38
 #: kontactplugin/specialdates/specialdates_plugin.cpp:23
-#, fuzzy, kde-format
-#| msgid "KOrganizer"
+#, kde-format
 msgctxt "@info/plain"
 msgid "KOrganizer"
-msgstr "KDE ஒருங்கிணைப்பாளர்"
+msgstr "கேயார்கனைசர்"
 
 #: aboutdata.cpp:20
-#, fuzzy, kde-format
-#| msgid "A Personal Organizer"
+#, kde-format
 msgctxt "@info/plain"
 msgid "A Personal Organizer"
 msgstr "தனிப்பயன் அமைப்பி"
@@ -70,11 +68,10 @@ msgstr ""
 #, kde-format
 msgctxt "@info:credit"
 msgid "Allen Winter"
-msgstr ""
+msgstr "ஆல்லன் வின்டர்"
 
 #: aboutdata.cpp:31
-#, fuzzy, kde-format
-#| msgid "Maintainer"
+#, kde-format
 msgctxt "@info:credit"
 msgid "Maintainer"
 msgstr "பராமரிப்பாளர்"
@@ -83,11 +80,10 @@ msgstr "பராமரிப்பாளர்"
 #, kde-format
 msgctxt "@info:credit"
 msgid "Reinhold Kainhofer"
-msgstr ""
+msgstr "ரைன்ஹோல்டு கைன்ஹோஃபர்"
 
 #: aboutdata.cpp:32 aboutdata.cpp:33
-#, fuzzy, kde-format
-#| msgid "Former Maintainer"
+#, kde-format
 msgctxt "@info:credit"
 msgid "Former Maintainer"
 msgstr "முந்தைய பராமரிப்பாளர்"
@@ -96,31 +92,28 @@ msgstr "முந்தைய பராமரிப்பாளர்"
 #, kde-format
 msgctxt "@info:credit"
 msgid "Cornelius Schumacher"
-msgstr ""
+msgstr "கார்னீலியஸ் ஷூமாக்கர்"
 
 #: aboutdata.cpp:34
 #, kde-format
 msgctxt "@info:credit"
 msgid "Preston Brown"
-msgstr ""
+msgstr "பிரெஸ்டவுன் பிரவுன்"
 
 #: aboutdata.cpp:34
-#, fuzzy, kde-format
-#| msgid "Original Author"
+#, kde-format
 msgctxt "@info:credit"
 msgid "Original Author"
 msgstr "முதல் பதிப்பை இயற்றியவர்"
 
 #: aboutdata.cpp:35
-#, fuzzy, kde-format
-#| msgid "Current Maintainer"
+#, kde-format
 msgctxt "@info:credit"
 msgid "Laurent Montel"
-msgstr "தற்போதைய பராமரிப்பாளர்"
+msgstr "லாரெண்டு மாண்டெல்"
 
 #: aboutdata.cpp:35
-#, fuzzy, kde-format
-#| msgid "Developer"
+#, kde-format
 msgctxt "@info:credit"
 msgid "Developer"
 msgstr "நிரலாளர்"
@@ -249,13 +242,13 @@ msgstr ""
 #, kde-format
 msgctxt "@info:credit"
 msgid "Glen Parker"
-msgstr ""
+msgstr "கலென் பார்க்கர்"
 
 #: aboutdata.cpp:57
 #, kde-format
 msgctxt "@info:credit"
 msgid "Dan Pilone"
-msgstr ""
+msgstr "டான் பிலோன்"
 
 #: aboutdata.cpp:58
 #, kde-format
@@ -336,16 +329,13 @@ msgid "Fester Zigterman"
 msgstr ""
 
 #: actionmanager.cpp:131
-#, fuzzy, kde-format
-#| msgid ""
-#| "<qt>This will hide the menu bar completely. You can show it again by "
-#| "typing %1.</qt>"
+#, kde-format
 msgctxt "@info"
 msgid ""
 "This will hide the menu bar completely. You can show it again by typing %1."
 msgstr ""
-"<qt>இது பட்டிப் பட்டையை முழுதாக மறைத்துவிடும். %1 என்பதை தட்டி நீங்கள் மறுபடியும் அதைக் "
-"காட்டலாம்.</qt>"
+"இது பட்டிப் பட்டையை முழுதாக மறைத்துவிடும். %1 என்பதை தட்டி நீங்கள் மறுபடியும் அதைக் "
+"காட்டலாம்."
 
 #: actionmanager.cpp:134
 #, kde-format
@@ -354,12 +344,10 @@ msgid "Hide menu bar"
 msgstr "பட்டிப் பட்டையை மறைப்பது"
 
 #: actionmanager.cpp:245
-#, fuzzy, kde-format
-#| msgctxt "@action"
-#| msgid "Import &Calendar…"
+#, kde-format
 msgctxt "@action:inmenu"
 msgid "Import &Calendar…"
-msgstr "&நாள்காட்டியை இறக்குமதி செய்…"
+msgstr "நாள்காட்டியை இறக்குமதி செய்…"
 
 #: actionmanager.cpp:246
 #, kde-format
@@ -382,8 +370,7 @@ msgid ""
 msgstr ""
 
 #: actionmanager.cpp:255
-#, fuzzy, kde-format
-#| msgid "Get New Calendars…"
+#, kde-format
 msgctxt "@action:inmenu"
 msgid "Get New Calendars…"
 msgstr "புதிய நாள்காட்டிகளை பெறு…"
@@ -409,23 +396,19 @@ msgid ""
 msgstr ""
 
 #: actionmanager.cpp:280
-#, fuzzy, kde-kuit-format
-#| msgid "Could not load calendar %1."
+#, kde-kuit-format
 msgctxt "@info"
 msgid "Could not load calendar <filename>%1</filename>."
-msgstr "%1 நாள்காட்டியை ஏற்ற முடியவில்லை."
+msgstr "<filename>%1</filename> என்ற நாள்காட்டியை ஏற்ற முடியவில்லை."
 
 #: actionmanager.cpp:290
-#, fuzzy, kde-format
-#| msgid "The downloaded events will be merged into your current calendar."
+#, kde-format
 msgctxt "@info"
 msgid "The downloaded events will be merged into your current calendar."
-msgstr "இறக்கிய நிகழ்வுகளை உங்களின் நடைமுறை நாள்காட்டியில் ஒன்றாகச் சேர்க்கப்படும்."
+msgstr "பதிவிறக்கிய நிகழ்வுகள் உங்கள் தற்போதைய நாள்காட்டியில் சேர்க்கப்படும்."
 
 #: actionmanager.cpp:307
-#, fuzzy, kde-format
-#| msgctxt "@action"
-#| msgid "Export as &iCalendar…"
+#, kde-format
 msgctxt "@action:inmenu"
 msgid "Export as &iCalendar…"
 msgstr "iCalendar-&ஆக ஏற்றுமதி செய்…"
@@ -450,12 +433,10 @@ msgid ""
 msgstr ""
 
 #: actionmanager.cpp:316
-#, fuzzy, kde-format
-#| msgctxt "@action"
-#| msgid "Archive O&ld Incidences…"
+#, kde-format
 msgctxt "@action:inmenu"
 msgid "Archive O&ld Incidences…"
-msgstr "&பழைய நிகழ்வுகளைக் காப்பகப்படுத்து…"
+msgstr "பழைய நிகழ்வுகளைக் காப்பகப்படுத்து…"
 
 #: actionmanager.cpp:317
 #, kde-format
@@ -464,11 +445,10 @@ msgid "Archive events and to-dos to a file"
 msgstr "நிகழ்வுகளும் செய்யவேண்டியவையும் கோப்புக்கு காப்பகப்படுத்தப்படுகின்றன"
 
 #: actionmanager.cpp:318
-#, fuzzy, kde-format
-#| msgid "Archive old events to a separate file"
+#, kde-format
 msgctxt "@info:tooltip"
 msgid "Archive old events and to-dos to an iCalendar file"
-msgstr "Archive old events to a separate file"
+msgstr ""
 
 #: actionmanager.cpp:320
 #, kde-format
@@ -480,12 +460,10 @@ msgid ""
 msgstr ""
 
 #: actionmanager.cpp:328
-#, fuzzy, kde-format
-#| msgctxt "@action"
-#| msgid "Pur&ge Completed To-dos"
+#, kde-format
 msgctxt "@action:inmenu"
 msgid "Pur&ge Completed To-dos"
-msgstr "&செய்யவேண்டியவற்றில் முடித்தவற்றை நீக்கு"
+msgstr "செய்யவேண்டியவற்றில் முடித்தவற்றை நீக்கு"
 
 #: actionmanager.cpp:329
 #, kde-format
@@ -509,18 +487,16 @@ msgstr ""
 
 #: actionmanager.cpp:369 actionmanager.cpp:668 actionmanager.cpp:1355
 #: actionmanager.cpp:1393
-#, fuzzy, kde-format
-#| msgid "&Delete"
+#, kde-format
 msgctxt "@action:inmenu"
 msgid "&Delete"
-msgstr "&நீக்கு"
+msgstr "நீக்கு"
 
 #: actionmanager.cpp:386
-#, fuzzy, kde-format
-#| msgid "What's &Next"
+#, kde-format
 msgctxt "@action:inmenu"
 msgid "What's &Next"
-msgstr "&அடுத்து என்ன"
+msgstr "அடுத்து என்ன"
 
 #: actionmanager.cpp:387
 #, kde-format
@@ -545,11 +521,10 @@ msgid ""
 msgstr ""
 
 #: actionmanager.cpp:398
-#, fuzzy, kde-format
-#| msgid "&Month"
+#, kde-format
 msgctxt "@action:inmenu"
 msgid "&Month"
-msgstr "&மாதம்"
+msgstr "மாதம்"
 
 #: actionmanager.cpp:399
 #, kde-format
@@ -572,11 +547,10 @@ msgid ""
 msgstr ""
 
 #: actionmanager.cpp:408
-#, fuzzy, kde-format
-#| msgid "&Agenda"
+#, kde-format
 msgctxt "@action:inmenu"
 msgid "&Agenda"
-msgstr "&நிகழ்ச்சிநிரல்"
+msgstr "நிகழ்ச்சிநிரல்"
 
 #: actionmanager.cpp:411
 #, kde-format
@@ -600,11 +574,10 @@ msgid ""
 msgstr ""
 
 #: actionmanager.cpp:421
-#, fuzzy, kde-format
-#| msgid "&Event List"
+#, kde-format
 msgctxt "@action:inmenu"
 msgid "&Event List"
-msgstr "&நிகழ்வுப் பட்டியல்"
+msgstr "நிகழ்வுப் பட்டியல்"
 
 #: actionmanager.cpp:422
 #, kde-format
@@ -627,11 +600,10 @@ msgid ""
 msgstr ""
 
 #: actionmanager.cpp:431
-#, fuzzy, kde-format
-#| msgid "&To-do List"
+#, kde-format
 msgctxt "@action:inmenu"
 msgid "&To-do List"
-msgstr "&செயல் பட்டியல்"
+msgstr "செயல் பட்டியல்"
 
 #: actionmanager.cpp:432
 #, kde-format
@@ -654,11 +626,10 @@ msgid ""
 msgstr ""
 
 #: actionmanager.cpp:441
-#, fuzzy, kde-format
-#| msgid "&Journal"
+#, kde-format
 msgctxt "@action:inmenu"
 msgid "&Journal"
-msgstr "&நாளேடு"
+msgstr "நாளேடு"
 
 #: actionmanager.cpp:442
 #, kde-format
@@ -681,11 +652,10 @@ msgid ""
 msgstr ""
 
 #: actionmanager.cpp:451
-#, fuzzy, kde-format
-#| msgid "Time&line"
+#, kde-format
 msgctxt "@action:inmenu"
 msgid "Time&line"
-msgstr "&காலவரிசை"
+msgstr "காலவரிசை"
 
 #: actionmanager.cpp:452
 #, kde-format
@@ -708,12 +678,10 @@ msgid ""
 msgstr ""
 
 #: actionmanager.cpp:464
-#, fuzzy, kde-format
-#| msgctxt "@action"
-#| msgid "&Refresh"
+#, kde-format
 msgctxt "@action:inmenu"
 msgid "&Refresh"
-msgstr "&புதுப்பி"
+msgstr "புதுப்பி"
 
 #: actionmanager.cpp:465
 #, kde-format
@@ -736,11 +704,10 @@ msgid ""
 msgstr ""
 
 #: actionmanager.cpp:477
-#, fuzzy, kde-format
-#| msgid "F&ilter"
+#, kde-format
 msgctxt "@action:inmenu"
 msgid "F&ilter"
-msgstr "&வடிகட்டு"
+msgstr "வடிகட்டு"
 
 #: actionmanager.cpp:478
 #, kde-format
@@ -763,44 +730,37 @@ msgid ""
 msgstr ""
 
 #: actionmanager.cpp:493
-#, fuzzy, kde-format
-#| msgid "In Horizontally"
+#, kde-format
 msgctxt "@action:inmenu"
 msgid "In Horizontally"
 msgstr "கிடைமட்டத்தில் பெரிதாக்கு"
 
 #: actionmanager.cpp:498
-#, fuzzy, kde-format
-#| msgid "Out Horizontally"
+#, kde-format
 msgctxt "@action:inmenu"
 msgid "Out Horizontally"
 msgstr "கிடைமட்டத்தில் சிறிதாகு"
 
 #: actionmanager.cpp:503
-#, fuzzy, kde-format
-#| msgid "In Vertically"
+#, kde-format
 msgctxt "@action:inmenu"
 msgid "In Vertically"
 msgstr "செங்குத்தாக பெரிதாக்கு"
 
 #: actionmanager.cpp:508
-#, fuzzy, kde-format
-#| msgid "Out Vertically"
+#, kde-format
 msgctxt "@action:inmenu"
 msgid "Out Vertically"
 msgstr "செங்குத்தாக சிறிதாக்கு"
 
 #: actionmanager.cpp:517
-#, fuzzy, kde-format
-#| msgctxt "@action Jump to today"
-#| msgid "To &Today"
+#, kde-format
 msgctxt "@action:inmenu Jump to today"
 msgid "To &Today"
-msgstr "&இன்றுக்கு"
+msgstr "இன்றைய நாளுக்கு"
 
 #: actionmanager.cpp:518
-#, fuzzy, kde-format
-#| msgid "Today"
+#, kde-format
 msgctxt "@action:button"
 msgid "Today"
 msgstr "இன்று"
@@ -818,24 +778,19 @@ msgid "Scroll the view to today"
 msgstr "இன்றைய நாளுக்கு காட்சியை உருளச்செய்யும்"
 
 #: actionmanager.cpp:521
-#, fuzzy, kde-format
-#| msgid "Replace the currently selected date with this date."
+#, kde-format
 msgctxt "@info:whatsthis"
 msgid "Scrolls the current view to the today's date."
-msgstr "தற்போது தேர்ந்தெடுக்கப்பட்ட தேதியை இந்த தேதியில் இடம்மாற்று."
+msgstr ""
 
 #: actionmanager.cpp:527
-#, fuzzy, kde-format
-#| msgctxt "scroll backward"
-#| msgid "&Backward"
+#, kde-format
 msgctxt "@action:inmenu scroll backward"
 msgid "&Backward"
-msgstr "&முன்னே"
+msgstr "முந்தையவற்றிற்கு"
 
 #: actionmanager.cpp:529
-#, fuzzy, kde-format
-#| msgctxt "scroll backward"
-#| msgid "Back"
+#, kde-format
 msgctxt "@action:button scroll backward"
 msgid "Back"
 msgstr "முன்னே"
@@ -844,7 +799,7 @@ msgstr "முன்னே"
 #, kde-format
 msgctxt "@info:status"
 msgid "Scroll Backward"
-msgstr ""
+msgstr "முந்தைய உருப்படிகளைக் காட்டுகிறது"
 
 #: actionmanager.cpp:531
 #, kde-format
@@ -861,27 +816,22 @@ msgid ""
 msgstr "தற்போதைய காட்சிமுறைக்கேற்ப, முந்தைய நாளையோ வாரத்தையோ மாதத்தையோ ஆண்டையோ காட்டும்."
 
 #: actionmanager.cpp:540
-#, fuzzy, kde-format
-#| msgctxt "scroll forward"
-#| msgid "&Forward"
+#, kde-format
 msgctxt "@action:inmenu scroll forward"
 msgid "&Forward"
-msgstr "&பின்னே"
+msgstr "பிந்தையவற்றிற்கு"
 
 #: actionmanager.cpp:542
-#, fuzzy, kde-format
-#| msgctxt "scroll forward"
-#| msgid "Forward"
+#, kde-format
 msgctxt "@action:button scroll forward"
 msgid "Forward"
 msgstr "பின்னே"
 
 #: actionmanager.cpp:543
-#, fuzzy, kde-format
-#| msgid "Go &Forward"
+#, kde-format
 msgctxt "@info:status"
 msgid "Scroll Forward"
-msgstr "முன்னால் போ"
+msgstr "பிந்தைய உருப்படிகளைக் காட்டுகிறது"
 
 #: actionmanager.cpp:544
 #, kde-format
@@ -898,15 +848,13 @@ msgid ""
 msgstr "தற்போதைய காட்சிமுறைக்கேற்ப, அடுத்த நாளையோ வாரத்தையோ மாதத்தையோ ஆண்டையோ காட்டும்."
 
 #: actionmanager.cpp:552
-#, fuzzy, kde-format
-#| msgid "&Day"
+#, kde-format
 msgctxt "@action:inmenu"
 msgid "&Day"
-msgstr "&நாள்"
+msgstr "நாள்"
 
 #: actionmanager.cpp:553
-#, fuzzy, kde-format
-#| msgid "Day"
+#, kde-format
 msgctxt "@action:inmenu agenda view show 1 day at a time"
 msgid "Day"
 msgstr "நாள்"
@@ -915,15 +863,13 @@ msgstr "நாள்"
 #, kde-format
 msgctxt "@info:status"
 msgid "View 1 day at a time"
-msgstr ""
+msgstr "ஒவ்வொரு நாளாக காட்டுகிறது"
 
 #: actionmanager.cpp:555
-#, fuzzy, kde-format
-#| msgctxt "@info:tooltip"
-#| msgid "Switch to the Agenda View"
+#, kde-format
 msgctxt "@info:tooltip"
 msgid "Show 1 day at a time in Agenda View"
-msgstr "நிகழ்ச்சிநிரல் காட்சிக்கு மாறு"
+msgstr "நிகழ்ச்சிநிரல் காட்சியில் ஒவ்வொரு நாளாக காட்டு"
 
 #: actionmanager.cpp:556
 #, kde-format
@@ -1878,6 +1824,7 @@ msgstr ""
 #| msgid ""
 #| "<p><em>No Item Selected</em></p><p>Select an event, to-do or journal "
 #| "entry to view its details here.</p>"
+msgctxt "@info"
 msgid ""
 "<para><emphasis>No Item Selected</emphasis></para><para>Select an event, to-"
 "do or journal entry to view its details here.</para>"
