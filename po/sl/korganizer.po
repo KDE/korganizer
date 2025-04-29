@@ -1,7 +1,7 @@
 # translation of korganizer.po to Slovenian
 # Translation of korganizer.po to Slovenian
 # Copyright (C) 2001,2002, 2003, 2004, 2005, 2006 Free Software Foundation, Inc.
-# $Id: korganizer.po 1707912 2025-04-28 01:20:20Z scripty $
+# $Id: korganizer.po 1707985 2025-04-29 01:19:58Z scripty $
 # $Source$
 #
 # Roman Maurer <roman.maurer@hermes.si>, 2001.
@@ -15,7 +15,7 @@ msgstr ""
 "Project-Id-Version: korganizer\n"
 "Report-Msgid-Bugs-To: https://bugs.kde.org\n"
 "POT-Creation-Date: 2025-04-28 00:42+0000\n"
-"PO-Revision-Date: 2025-04-26 07:57+0200\n"
+"PO-Revision-Date: 2025-04-28 09:58+0200\n"
 "Last-Translator: Matjaž Jeran <matjaz.jeran@amis.net>\n"
 "Language-Team: Slovenian <lugos-slo@lugos.si>\n"
 "Language: sl\n"
@@ -1787,17 +1787,15 @@ msgid "Delete calendar failed: <message>%1</message>"
 msgstr "Brisanje koledarja ni uspelo: <message>%1</message>"
 
 #: calendarview.cpp:251
-#, fuzzy, kde-kuit-format
-#| msgid ""
-#| "<para><emphasis>No Item Selected</emphasis></para><para>Select an event, "
-#| "to-do or journal entry to view its details here.</para>"
+#, kde-kuit-format
 msgctxt "@info"
 msgid ""
 "<para><emphasis>No Item Selected</emphasis></para><para>Select an event, to-"
 "do or journal entry to view its details here.</para>"
 msgstr ""
-"<para><emphasis>Ni izbranega predmeta</emphasis></para><para>Izberite "
-"dogodek, opravilo ali dnevnik in tu se bodo prikazale podrobnosti.</para>"
+"<para><emphasis>Ni izbranega elementa</emphasis></para><para>Izberite "
+"dogodek, opravilo ali vnos v dnevnik, da si ogledate podrobnosti o njem.</"
+"para>"
 
 #: calendarview.cpp:255
 #, kde-format

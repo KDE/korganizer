@@ -12,7 +12,7 @@ msgstr ""
 "Project-Id-Version: korganizer\n"
 "Report-Msgid-Bugs-To: https://bugs.kde.org\n"
 "POT-Creation-Date: 2025-04-28 00:42+0000\n"
-"PO-Revision-Date: 2025-04-24 10:53+0400\n"
+"PO-Revision-Date: 2025-04-28 17:22+0400\n"
 "Last-Translator: Zayed Al-Saidi <zayed.alsaidi@gmail.com>\n"
 "Language-Team: ar\n"
 "Language: ar\n"
@@ -1959,12 +1959,10 @@ msgid "Dissociating the occurrence failed."
 msgstr "فشل فصل الحدوثات."
 
 #: calendarview.cpp:1806
-#, fuzzy, kde-format
-#| msgctxt "@info:status"
-#| msgid "Export calendar to file"
+#, kde-format
 msgctxt "@title:window"
 msgid "Export Calendar to File"
-msgstr "صدر تقويم إلى ملف"
+msgstr "صدّر تقويم إلى ملف"
 
 #: calendarview.cpp:1819
 #, kde-kuit-format
