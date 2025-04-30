@@ -12,7 +12,7 @@ msgstr ""
 "Project-Id-Version: korganizer\n"
 "Report-Msgid-Bugs-To: https://bugs.kde.org\n"
 "POT-Creation-Date: 2025-04-28 00:42+0000\n"
-"PO-Revision-Date: 2025-04-28 17:22+0400\n"
+"PO-Revision-Date: 2025-04-29 15:36+0400\n"
 "Last-Translator: Zayed Al-Saidi <zayed.alsaidi@gmail.com>\n"
 "Language-Team: ar\n"
 "Language: ar\n"
@@ -1749,17 +1749,14 @@ msgid "Delete calendar failed: <message>%1</message>"
 msgstr "فشل حذف التقويم: <message>%1</message>"
 
 #: calendarview.cpp:251
-#, fuzzy, kde-kuit-format
-#| msgid ""
-#| "<para><emphasis>No Item Selected</emphasis></para><para>Select an event, "
-#| "to-do or journal entry to view its details here.</para>"
+#, kde-kuit-format
 msgctxt "@info"
 msgid ""
 "<para><emphasis>No Item Selected</emphasis></para><para>Select an event, to-"
 "do or journal entry to view its details here.</para>"
 msgstr ""
-"<para>لا عناصر محدّدة</para><para>اختر حدثًا أو مهمّة أو مدخلة يوميّة لعرض "
-"تفاصيلها هنا.</para>"
+"<para><emphasis>لا عناصر محدّدة</emphasis></para><para>اختر حدثًا أو مهمّة أو "
+"مدخلة يوميّة لعرض تفاصيلها هنا.</para>"
 
 #: calendarview.cpp:255
 #, kde-format
