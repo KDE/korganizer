@@ -665,7 +665,7 @@ Akonadi::Collection::List AkonadiCollectionView::defaultableCollections(const QS
     for (int i = 0; i < entityTreeModel()->rowCount(); ++i) {
         const QModelIndex index = entityTreeModel()->index(i, 0);
         const Akonadi::Collection collection = index.data(Akonadi::EntityTreeModel::CollectionRole).value<Akonadi::Collection>();
-        if (isCollectionDefaultable(collection, mimeType) || !isCalendarFolder(collection)) {
+        if (isCollectionDefaultable(collection, mimeType)) {
             collections << collection;
         }
     }
