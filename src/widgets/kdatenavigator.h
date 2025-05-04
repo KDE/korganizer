@@ -103,6 +103,7 @@ private:
 
     QLabel *mHeadings[7];
     QLabel *mWeeknos[7];
+    int mWeeknosWidth = 0;
 
     KODayMatrix *mDayMatrix = nullptr;
 

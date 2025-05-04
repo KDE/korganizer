@@ -10,6 +10,7 @@
 #include "kdatenavigator.h"
 #include "kodaymatrix.h"
 #include "koglobals.h"
+#include "prefs/koprefs.h"
 #include "widgets/navigatorbar.h"
 
 #include <KLocalizedString>
@@ -58,6 +59,7 @@ KDateNavigator::KDateNavigator(QWidget *parent)
 
         topLayout->addWidget(mWeeknos[i], i + 2, 0);
     }
+    mWeeknosWidth = mWeeknos[0]->width(); // save an initial width for the weekno buttons
 
     mDayMatrix = new KODayMatrix(this);
     mDayMatrix->setObjectName(QLatin1StringView("KDateNavigator::dayMatrix"));
@@ -177,7 +179,6 @@ void KDateNavigator::updateDates()
                                         "of the currently displayed year.",
                                         weeknum));
     }
-
     // each updateDates is followed by an updateView -> repaint is issued there !
     //  mDayMatrix->repaint();
 }
@@ -205,6 +206,20 @@ QDate KDateNavigator::month() const
     }
 }
 
+void KDateNavigator::setShowWeekNums(bool enabled)
+{
+    if (!enabled) {
+        mWeeknosWidth = mWeeknos[0]->width();
+    }
+    for (int i = 0; i < 6; ++i) {
+        if (enabled) {
+            mWeeknos[i]->setMaximumWidth(mWeeknosWidth);
+        } else {
+            mWeeknos[i]->setFixedWidth(0);
+        }
+    }
+}
+
 void KDateNavigator::updateView()
 {
     updateDayMatrix();
@@ -214,6 +229,7 @@ void KDateNavigator::updateView()
 void KDateNavigator::updateConfig()
 {
     int const weekstart = KOGlobals::self()->firstDayOfWeek();
+    setShowWeekNums(KOPrefs::instance()->mWeekNumbersShow);
     for (int i = 0; i < 7; ++i) {
         const int day = weekstart + i <= 7 ? weekstart + i : (weekstart + i) % 7;
         QString const dayName = QLocale().dayName(day, QLocale::ShortFormat);
@@ -225,8 +241,6 @@ void KDateNavigator::updateConfig()
     mDayMatrix->setUpdateNeeded();
     updateDayMatrix();
     update();
-    // FIXME: Use actual config setting here
-    //  setShowWeekNums( true );
 }
 
 void KDateNavigator::selectMonthHelper(int monthDifference)
