@@ -641,6 +641,8 @@ private:
     Akonadi::Collection selectedCollection() const;
     Akonadi::Collection::List checkedCollections() const;
 
+    void agendaViewMenuSelector(const KCalendarCore::DateList &dates);
+
     int questionIndependentChildren(const Akonadi::Item &item);
 
     void createPrinter();

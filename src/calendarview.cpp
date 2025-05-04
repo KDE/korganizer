@@ -233,6 +233,7 @@ CalendarView::CalendarView(QWidget *parent)
 
     connect(mViewManager, &KOViewManager::datesSelected, mDateNavigator, [this](const KCalendarCore::DateList &dates) {
         mDateNavigator->selectDates(dates);
+        agendaViewMenuSelector(dates);
     });
 
     connect(mDateNavigatorContainer, &DateNavigatorContainer::incidenceDropped, this, &CalendarView::addIncidenceOn);
@@ -1903,6 +1904,18 @@ void CalendarView::checkClipboard()
     Q_EMIT pasteEnabled(mCalendarClipboard->pasteAvailable());
 }
 
+void CalendarView::agendaViewMenuSelector(const KCalendarCore::DateList &dates)
+{
+    // a range of dates was selected in the date navigator.  week selections are done in selectWeek()
+    if (mViewManager->currentView() == mViewManager->agendaView()) {
+        if (dates.first() == dates.last()) {
+            mViewManager->viewActionEnable(mViewManager->viewToAction(QStringLiteral("Agenda"), KOViewManager::DAY_RANGE));
+        } else {
+            mViewManager->viewActionEnable(mViewManager->viewToAction(QStringLiteral("Agenda"), KOViewManager::NEXTX_RANGE));
+        }
+    }
+}
+
 void CalendarView::showDates(const KCalendarCore::DateList &selectedDates, const QDate &preferredMonth)
 {
     mDateNavigatorContainer->selectDates(selectedDates, preferredMonth);
@@ -1910,6 +1923,7 @@ void CalendarView::showDates(const KCalendarCore::DateList &selectedDates, const
 
     if (mViewManager->currentView()) {
         updateView(selectedDates.first(), selectedDates.last(), preferredMonth, false);
+        agendaViewMenuSelector(selectedDates);
     } else {
         mViewManager->showAgendaView();
     }
@@ -2540,8 +2554,14 @@ void CalendarView::selectWeek(const QDate &date, const QDate &preferredMonth)
 {
     if (KOPrefs::instance()->mWeekNumbersShowWork && mViewManager->rangeMode() == KOViewManager::WORK_WEEK_RANGE) {
         mDateNavigator->selectWorkWeek(date);
+        if (mViewManager->currentView() == mViewManager->agendaView()) {
+            mViewManager->viewActionEnable(mViewManager->viewToAction(QStringLiteral("Agenda"), KOViewManager::WORK_WEEK_RANGE));
+        }
     } else {
         mDateNavigator->selectWeek(date, preferredMonth);
+        if (mViewManager->currentView() == mViewManager->agendaView()) {
+            mViewManager->viewActionEnable(mViewManager->viewToAction(QStringLiteral("Agenda"), KOViewManager::WEEK_RANGE));
+        }
     }
 }
 

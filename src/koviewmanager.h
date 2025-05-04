@@ -117,6 +117,10 @@ public:
         return mRangeMode;
     }
 
+    [[nodiscard]] QAction *viewToAction(const QString &, RangeMode);
+    void viewActionEnable(QObject *);
+    void viewActionEnable(QAction *);
+
 Q_SIGNALS:
     void configChanged();
     void datesSelected(const KCalendarCore::DateList &);
@@ -158,9 +162,6 @@ private Q_SLOTS:
 private:
     KActionCollection *getActionCollection();
     [[nodiscard]] bool isAgendaViewAction(QAction *, KActionCollection *);
-    [[nodiscard]] QAction *viewToAction(const QString &, RangeMode);
-    void viewActionEnable(QObject *);
-    void viewActionEnable(QAction *);
     QWidget *widgetForView(KOrg::BaseView *) const;
     QList<KOrg::BaseView *> mViews;
     CalendarView *const mMainView;
