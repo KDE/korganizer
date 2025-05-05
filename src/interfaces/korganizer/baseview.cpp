@@ -29,7 +29,6 @@ public:
 
     ~BaseViewPrivate() = default;
 
-    // NOLINTBEGIN(misc-non-private-member-variables-in-classes)
     EventViews::EventView::Changes mChanges;
     QAbstractItemModel *model = nullptr;
     Akonadi::EntityTreeModel *etm = nullptr;
@@ -39,7 +38,6 @@ public:
     QDateTime endDateTime;
     QDateTime actualStartDateTime;
     QDateTime actualEndDateTime;
-    // NOLINTEND(misc-non-private-member-variables-in-classes)
 };
 
 BaseView::BaseView(QWidget *parent)

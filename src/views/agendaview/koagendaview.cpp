@@ -31,10 +31,8 @@ public:
         delete mPopup;
     }
 
-    // NOLINTBEGIN(misc-non-private-member-variables-in-classes)
     EventViews::AgendaView *mAgendaView = nullptr;
     KOEventPopupMenu *mPopup = nullptr;
-    // NOLINTEND(misc-non-private-member-variables-in-classes)
 
 private:
     // disable copy ctor

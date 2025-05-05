@@ -70,12 +70,10 @@ public:
         mPopup = q->eventPopup();
     }
 
-    // NOLINTBEGIN(misc-non-private-member-variables-in-classes)
     EventViews::MultiAgendaView *mMultiAgendaView = nullptr;
     KOEventPopupMenu *mPopup = nullptr;
     KCheckableProxyModel *mCollectionSelectionModel = nullptr;
     Akonadi::Collection::Id mCollectionId = -1;
-    // NOLINTEND(misc-non-private-member-variables-in-classes)
 
 private:
     // disable copy ctor
@@ -307,7 +305,6 @@ public:
     void setUpColumns(int n);
     [[nodiscard]] AkonadiCollectionView *view(int index) const;
     AkonadiCollectionView *createView(KCheckableProxyModel *model);
-    // NOLINTBEGIN(misc-non-private-member-variables-in-classes)
     MultiAgendaViewConfigDialog *const q;
     QList<KCheckableProxyModel *> newlyCreated;
     QList<KCheckableProxyModel *> selections;
@@ -316,7 +313,6 @@ public:
     QStandardItemModel listModel;
     QAbstractItemModel *baseModel = nullptr;
     int currentColumn = 0;
-    // NOLINTEND(misc-non-private-member-variables-in-classes)
 };
 
 void MultiAgendaView::restoreConfig(const KConfigGroup &configGroup)
