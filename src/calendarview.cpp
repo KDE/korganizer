@@ -44,7 +44,7 @@
 #include <Akonadi/FreeBusyManager>
 #include <Akonadi/IncidenceChanger>
 #include <Akonadi/TodoPurger>
-#include <akonadi/calendarsettings.h> //krazy:exclude=camelcase this is a generated file
+#include <akonadi/calendarsettings.h>
 
 #include <CalendarSupport/CalPrinter>
 #include <CalendarSupport/CalendarSingleton>

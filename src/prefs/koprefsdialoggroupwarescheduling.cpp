@@ -14,7 +14,7 @@
 #include <QIcon>
 #include <QStandardPaths>
 #include <QVBoxLayout>
-#include <akonadi/calendarsettings.h> //krazy:exclude=camelcase this is a generated file
+#include <akonadi/calendarsettings.h>
 
 K_PLUGIN_CLASS_WITH_JSON(KOPrefsDialogGroupwareScheduling, "korganizer_configfreebusy.json")
 
