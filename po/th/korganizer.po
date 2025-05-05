@@ -6,7 +6,7 @@ msgid ""
 msgstr ""
 "Project-Id-Version: korganizer\n"
 "Report-Msgid-Bugs-To: https://bugs.kde.org\n"
-"POT-Creation-Date: 2025-04-28 00:42+0000\n"
+"POT-Creation-Date: 2025-05-05 00:42+0000\n"
 "PO-Revision-Date: 2008-07-21 16:18+0700\n"
 "Last-Translator: Thanomsub Noppaburana <donga.nb@gmail.com>\n"
 "Language-Team: Thai <thai-l10n@googlegroups.com>\n"
@@ -1873,7 +1873,7 @@ msgctxt "@info"
 msgid "Delete calendar failed: <message>%1</message>"
 msgstr ""
 
-#: calendarview.cpp:251
+#: calendarview.cpp:252
 #, fuzzy, kde-kuit-format
 #| msgid ""
 #| "<p><em>No Item Selected</em></p><p>Select an event, to-do or journal "
@@ -1886,7 +1886,7 @@ msgstr ""
 "<p><em>ยังไม่มีการเลือกรายการ</em></p><p>เลือกรายการของ เหตุการณ์, สิ่งที่จะทำ "
 "หรือบันทึกประจำวัน เพื่อแสดงรายละเอียดที่นี่</p>"
 
-#: calendarview.cpp:255
+#: calendarview.cpp:256
 #, fuzzy, kde-format
 #| msgid ""
 #| "View the details of events, journal entries or to-dos selected in "
@@ -1899,21 +1899,21 @@ msgstr ""
 "แสดงรายละเอียดของเหตุการณ์, บันทึกประจำวัน หรือสิ่งที่จะทำที่ได้เลือกไว้ในมุมมองหลักของ "
 "KOrganizer ได้ที่นี่"
 
-#: calendarview.cpp:675
+#: calendarview.cpp:676
 #, fuzzy, kde-format
 #| msgid "Todo completed: %1 (%2)"
 msgctxt "@info/plain"
 msgid "Todo completed: %1 (%2)"
 msgstr "สิ่งที่จะทำเสร็จสมบูรณ์แล้ว: %1 (%2)"
 
-#: calendarview.cpp:684
+#: calendarview.cpp:685
 #, fuzzy, kde-format
 #| msgid "Journal of %1"
 msgctxt "@info/plain"
 msgid "Journal of %1"
 msgstr "บันทึกประจำวันของ %1"
 
-#: calendarview.cpp:733
+#: calendarview.cpp:734
 #, fuzzy, kde-kuit-format
 #| msgid ""
 #| "The item \"%1\" is filtered by your current filter rules, so it will be "
@@ -1925,42 +1925,42 @@ msgid ""
 msgstr ""
 "รายการ \"%1\" ถูกกรองโดยกฏการกรองปัจจุบันของคุณ ดังนั้นมันจะถูกซ่อนและไม่ปรากฏในมุมมอง"
 
-#: calendarview.cpp:802
+#: calendarview.cpp:803
 #, fuzzy, kde-format
 #| msgid "<qt>Do you really want to delete the resource <b>%1</b>?</qt>"
 msgctxt "@info"
 msgid "Do you really want to permanently remove the item \"%1\"?"
 msgstr "<qt>คุณต้องการจะลบทรัพยากร <b>%1</b> นี้ จริงหรือไม่ ?</qt>"
 
-#: calendarview.cpp:803
+#: calendarview.cpp:804
 #, fuzzy, kde-format
 #| msgid "Delete Old Items"
 msgctxt "@title:window"
 msgid "Delete Item?"
 msgstr "ลบรายการเก่า"
 
-#: calendarview.cpp:878
+#: calendarview.cpp:879
 #, fuzzy, kde-format
 #| msgid "Please specify a valid start date."
 msgctxt "@info"
 msgid "Paste failed: unable to determine a valid target date."
 msgstr "โปรดระบุวันเริ่มที่ถูกต้อง"
 
-#: calendarview.cpp:1290
+#: calendarview.cpp:1291
 #, fuzzy, kde-format
 #| msgid "Make sub-to-dos independent"
 msgctxt "@info/plain"
 msgid "Make sub-to-dos independent"
 msgstr "ทำให้รายการย่อยของสิ่งที่จะทำเป็นอิสระ"
 
-#: calendarview.cpp:1347
+#: calendarview.cpp:1348
 #, fuzzy, kde-format
 #| msgid "&Toggle Reminder"
 msgctxt "@info/plain"
 msgid "Toggle Reminder"
 msgstr "เปิด/ปิดการเตือนความจำ"
 
-#: calendarview.cpp:1379 calendarview.cpp:1431
+#: calendarview.cpp:1380 calendarview.cpp:1432
 #, fuzzy, kde-format
 #| msgctxt "delete completed to-dos"
 #| msgid "Pur&ge Completed"
@@ -1968,34 +1968,34 @@ msgctxt "@info/plain"
 msgid "Toggle To-do Completed"
 msgstr "กำจัดตัวที่เสร็จแล้ว"
 
-#: calendarview.cpp:1483
+#: calendarview.cpp:1484
 #, kde-format
 msgctxt "@info"
 msgid "\"%1\" was successfully copied to %2."
 msgstr ""
 
-#: calendarview.cpp:1484
+#: calendarview.cpp:1485
 #, fuzzy, kde-format
 #| msgid "Copying Failed"
 msgctxt "@title:window"
 msgid "Copying Succeeded"
 msgstr "การคัดลอกล้มเหลว"
 
-#: calendarview.cpp:1488
+#: calendarview.cpp:1489
 #, fuzzy, kde-format
 #| msgid "Unable to copy the item to %1."
 msgctxt "@info"
 msgid "Unable to copy the item \"%1\" to %2."
 msgstr "ไม่สามารถคัดลอกรายการไปยัง %1 ได้"
 
-#: calendarview.cpp:1489 calendarview.cpp:2444
+#: calendarview.cpp:1490 calendarview.cpp:2458
 #, fuzzy, kde-format
 #| msgid "Copying Failed"
 msgctxt "@title:window"
 msgid "Copying Failed"
 msgstr "การคัดลอกล้มเหลว"
 
-#: calendarview.cpp:1548
+#: calendarview.cpp:1549
 #, kde-format
 msgctxt "@info"
 msgid ""
@@ -2003,54 +2003,54 @@ msgid ""
 "of this item has been put into %2"
 msgstr ""
 
-#: calendarview.cpp:1552 calendarview.cpp:1568 calendarview.cpp:2479
+#: calendarview.cpp:1553 calendarview.cpp:1569 calendarview.cpp:2493
 #, fuzzy, kde-format
 #| msgid "Moving Failed"
 msgctxt "@title:window"
 msgid "Moving Failed"
 msgstr "การทำการย้ายล้มเหลว"
 
-#: calendarview.cpp:1557
+#: calendarview.cpp:1558
 #, kde-format
 msgctxt "@info"
 msgid "\"%1\" was successfully moved from %2 to %3."
 msgstr ""
 
-#: calendarview.cpp:1558
+#: calendarview.cpp:1559
 #, fuzzy, kde-format
 #| msgid "Moving Failed"
 msgctxt "@title:window"
 msgid "Moving Succeeded"
 msgstr "การทำการย้ายล้มเหลว"
 
-#: calendarview.cpp:1564
+#: calendarview.cpp:1565
 #, kde-format
 msgctxt "@info"
 msgid "Unable to add the item \"%1\" into %2. This item has not been moved."
 msgstr ""
 
-#: calendarview.cpp:1603
+#: calendarview.cpp:1604
 #, fuzzy, kde-format
 #| msgid "Dissociate event from recurrence"
 msgctxt "@info"
 msgid "Do you want to dissociate the occurrence on %1 from the recurrence?"
 msgstr "แยกเหตุการณ์ออกจากการเกิดขึ้นใหม่"
 
-#: calendarview.cpp:1607 calendarview.cpp:1620 calendarview.cpp:2260
-#: calendarview.cpp:2319 calendarview.cpp:2349
+#: calendarview.cpp:1608 calendarview.cpp:1621 calendarview.cpp:2274
+#: calendarview.cpp:2333 calendarview.cpp:2363
 #, kde-format
 msgctxt "@title:window"
 msgid "KOrganizer Confirmation"
 msgstr "การยืนยันของ KOrganizer"
 
-#: calendarview.cpp:1608
+#: calendarview.cpp:1609
 #, fuzzy, kde-format
 #| msgid "T&ime associated"
 msgctxt "@action:button"
 msgid "&Dissociate"
 msgstr "เกี่ยวข้องกับเว&ลาด้วย"
 
-#: calendarview.cpp:1615
+#: calendarview.cpp:1616
 #, fuzzy, kde-format
 #| msgid "Dissociate event from recurrence"
 msgctxt "@info"
@@ -2059,77 +2059,77 @@ msgid ""
 "dissociate future ones?"
 msgstr "แยกเหตุการณ์ออกจากการเกิดขึ้นใหม่"
 
-#: calendarview.cpp:1621
+#: calendarview.cpp:1622
 #, fuzzy, kde-format
 #| msgid "&Dissociate This Occurrence"
 msgctxt "@action:button"
 msgid "&Only Dissociate This One"
 msgstr "ถอนการเกิดขึ้นอีกนี้"
 
-#: calendarview.cpp:1622
+#: calendarview.cpp:1623
 #, fuzzy, kde-format
 #| msgid "Dissociate &Future Occurrences"
 msgctxt "@action:button"
 msgid "&Also Dissociate Future Ones"
 msgstr "ถอนการเกิดขึ้นอีกที่จะเกิดในอนาคต"
 
-#: calendarview.cpp:1640
+#: calendarview.cpp:1641
 #, fuzzy, kde-format
 #| msgid "Dissociate future occurrences"
 msgctxt "@info/plain"
 msgid "Dissociate future occurrences"
 msgstr "ถอนการเกิดขึ้นอีกในอนาคต"
 
-#: calendarview.cpp:1642
+#: calendarview.cpp:1643
 #, fuzzy, kde-format
 #| msgid "Dissociate occurrence"
 msgctxt "@info/plain"
 msgid "Dissociate occurrence"
 msgstr "ถอนการเกิดขึ้นอีก"
 
-#: calendarview.cpp:1649
+#: calendarview.cpp:1650
 #, fuzzy, kde-format
 #| msgid "Dissociating the future occurrences failed."
 msgctxt "@info"
 msgid "Dissociating the future occurrences failed."
 msgstr "การถอนการเกิดขึ้นอีกในอนาคตล้มเหลว"
 
-#: calendarview.cpp:1649 calendarview.cpp:1651
+#: calendarview.cpp:1650 calendarview.cpp:1652
 #, fuzzy, kde-format
 #| msgid "Dissociating Failed"
 msgctxt "@title:window"
 msgid "Dissociating Failed"
 msgstr "การถอนอีกล้มเหลว"
 
-#: calendarview.cpp:1651
+#: calendarview.cpp:1652
 #, fuzzy, kde-format
 #| msgid "Dissociating the occurrence failed."
 msgctxt "@info"
 msgid "Dissociating the occurrence failed."
 msgstr "การถอนการเกิดขึ้นอีกล้มเหลว"
 
-#: calendarview.cpp:1806
+#: calendarview.cpp:1807
 #, fuzzy, kde-format
 #| msgid "Import Calendar"
 msgctxt "@title:window"
 msgid "Export Calendar to File"
 msgstr "นำเข้าปฏิทิน"
 
-#: calendarview.cpp:1819
+#: calendarview.cpp:1820
 #, fuzzy, kde-kuit-format
 #| msgid "<qt>Do you really want to delete the resource <b>%1</b>?</qt>"
 msgctxt "@info"
 msgid "Do you want to overwrite <filename>%1</filename>?"
 msgstr "<qt>คุณต้องการจะลบทรัพยากร <b>%1</b> นี้ จริงหรือไม่ ?</qt>"
 
-#: calendarview.cpp:1820
+#: calendarview.cpp:1821
 #, fuzzy, kde-format
 #| msgid "Import Calendar"
 msgctxt "@title:window"
 msgid "Export Calendar"
 msgstr "นำเข้าปฏิทิน"
 
-#: calendarview.cpp:1834
+#: calendarview.cpp:1835
 #, fuzzy, kde-format
 #| msgctxt "@option unknown alarm type"
 #| msgid "Unknown"
@@ -2137,7 +2137,7 @@ msgctxt "@info save failure cause unknown"
 msgid "Reason unknown"
 msgstr "ไม่ทราบ"
 
-#: calendarview.cpp:1836
+#: calendarview.cpp:1837
 #, fuzzy, kde-kuit-format
 #| msgid "Cannot write archive file %1."
 msgctxt "@info"
@@ -2145,14 +2145,14 @@ msgid ""
 "Cannot write iCalendar file <filename>%1</filename>: <message>%2</message>"
 msgstr "ไม่สามารถเขียนแฟ้มจัดเก็บ %1 ได้"
 
-#: calendarview.cpp:1932 calendarview.cpp:1977
+#: calendarview.cpp:1946 calendarview.cpp:1991
 #, fuzzy, kde-format
 #| msgid "No filter"
 msgctxt "@info/plain"
 msgid "No filter"
 msgstr "ไม่มีตัวกรอง"
 
-#: calendarview.cpp:2255
+#: calendarview.cpp:2269
 #, fuzzy, kde-kuit-format
 #| msgid ""
 #| "The item \"%1\" has sub-to-dos. Do you want to delete just this item and "
@@ -2168,21 +2168,21 @@ msgstr ""
 "และทำให้รายการย่อยของสิ่งที่จะทำของมันเป็นอิสระหรือไม่ "
 "หรือจะลบสิ่งที่จะทำพร้อมทั้งรายกายย่อยทั้งหมดของมันด้วย ?"
 
-#: calendarview.cpp:2261
+#: calendarview.cpp:2275
 #, fuzzy, kde-format
 #| msgid "Delete Only This"
 msgctxt "@action:button"
 msgid "Delete Only This"
 msgstr "ลบตัวนี้เท่านั้น"
 
-#: calendarview.cpp:2262 calendarview.cpp:2320
+#: calendarview.cpp:2276 calendarview.cpp:2334
 #, fuzzy, kde-format
 #| msgid "Delete All"
 msgctxt "@action:button"
 msgid "Delete All"
 msgstr "ลบทั้งหมด"
 
-#: calendarview.cpp:2294
+#: calendarview.cpp:2308
 #, fuzzy, kde-kuit-format
 #| msgid ""
 #| "The item \"%1\" is marked read-only and cannot be deleted; it probably "
@@ -2195,14 +2195,14 @@ msgstr ""
 "รายการ \"%1\" ถูกกำหนดให้อ่านได้อย่างเดียวและไม่สามารถทำการลบได้ "
 "มันอาจจะเป็นทรัพยากรของปฏิทินที่ให้อ่านได้อย่างเดียว"
 
-#: calendarview.cpp:2297
+#: calendarview.cpp:2311
 #, fuzzy, kde-format
 #| msgid "Removing not possible"
 msgctxt "@title:window"
 msgid "Removing not possible"
 msgstr "การเอาออกเป็นไปไม่ได้"
 
-#: calendarview.cpp:2316
+#: calendarview.cpp:2330
 #, fuzzy, kde-kuit-format
 #| msgid ""
 #| "The calendar item \"%1\" recurs over multiple dates; are you sure you "
@@ -2215,14 +2215,14 @@ msgstr ""
 "รายการของปฏิทินรายการ \"%1\" จะเกิดขึ้นอีกหลายครั้งในหลายวัน; "
 "คุณแน่ใจหรือว่าต้องการจะลบมันและการเกิดขึ้นอีกของมันทั้งหมดด้วย ?"
 
-#: calendarview.cpp:2327
+#: calendarview.cpp:2341
 #, fuzzy, kde-format
 #| msgid "Delete &Future"
 msgctxt "@action:button"
 msgid "Also Delete &Future"
 msgstr "ลบที่จะเกิดอนาคต"
 
-#: calendarview.cpp:2331
+#: calendarview.cpp:2345
 #, fuzzy, kde-kuit-format
 #| msgid ""
 #| "The calendar item \"%1\" recurs over multiple dates. Do you want to "
@@ -2238,7 +2238,7 @@ msgstr ""
 "คุณต้องการที่จะลบเพียงตัวเดียวบน %2,   ลบเฉพาะที่จะเกิดขึ้นอีกในอนาคตทั้งหมด, "
 "หรือจะลบการเกิดขึ้นอีกทั้งหมดของมัน ?"
 
-#: calendarview.cpp:2338
+#: calendarview.cpp:2352
 #, fuzzy, kde-kuit-format
 #| msgid ""
 #| "The calendar item \"%1\" recurs over multiple dates. Do you want to "
@@ -2253,84 +2253,84 @@ msgstr ""
 "คุณต้องการที่จะลบเพียงตัวเดียวบน %2,   ลบเฉพาะที่จะเกิดขึ้นอีกในอนาคตทั้งหมด, "
 "หรือจะลบการเกิดขึ้นอีกทั้งหมดของมัน ?"
 
-#: calendarview.cpp:2350
+#: calendarview.cpp:2364
 #, fuzzy, kde-format
 #| msgid "Delete C&urrent"
 msgctxt "@action:button"
 msgid "Delete C&urrent"
 msgstr "ลบรายการปัจจุบัน"
 
-#: calendarview.cpp:2352
+#: calendarview.cpp:2366
 #, fuzzy, kde-format
 #| msgid "Delete &All"
 msgctxt "@action:button"
 msgid "Delete &All"
 msgstr "ลบทั้งหมด"
 
-#: calendarview.cpp:2383 calendarview.cpp:2390
+#: calendarview.cpp:2397 calendarview.cpp:2404
 #, fuzzy, kde-format
 #| msgid "Delete %1"
 msgctxt "@info/plain"
 msgid "Delete \"%1\""
 msgstr "ลบ %1"
 
-#: calendarview.cpp:2422
+#: calendarview.cpp:2436
 #, kde-format
 msgctxt "@info"
 msgid ""
 "All calendars are unchecked in the Calendar Manager. No to-do was purged."
 msgstr ""
 
-#: calendarview.cpp:2427 calendarview.cpp:2676
+#: calendarview.cpp:2441 calendarview.cpp:2696
 #, fuzzy, kde-format
 #| msgid "Strike &out completed to-do summaries"
 msgctxt "@info"
 msgid "There are no completed to-dos to purge."
 msgstr "ขีดฆ่ารายงานสรุปสิ่งที่จะทำที่เสร็จสมบูรณ์แล้ว"
 
-#: calendarview.cpp:2432
+#: calendarview.cpp:2446
 #, fuzzy, kde-format
 #| msgid "Delete all completed to-dos?"
 msgctxt "@info"
 msgid "Delete all completed to-dos from checked calendars?"
 msgstr "ลบสิ่งที่จะทำที่เสร็จสมบูรณ์แล้วทั้งหมดหรือไม่ ?"
 
-#: calendarview.cpp:2433
+#: calendarview.cpp:2447
 #, fuzzy, kde-format
 #| msgid "Purge To-dos"
 msgctxt "@title:window"
 msgid "Purge To-dos"
 msgstr "กำจัดสิ่งที่จะทำ"
 
-#: calendarview.cpp:2434
+#: calendarview.cpp:2448
 #, fuzzy, kde-format
 #| msgid "Purge"
 msgctxt "@action:button"
 msgid "Purge"
 msgstr "กำจัด"
 
-#: calendarview.cpp:2444
+#: calendarview.cpp:2458
 #, fuzzy, kde-kuit-format
 #| msgid "Unable to copy the item to %1."
 msgctxt "@info"
 msgid "Unable to copy item <resource>%1</resource>."
 msgstr "ไม่สามารถคัดลอกรายการไปยัง %1 ได้"
 
-#: calendarview.cpp:2479
+#: calendarview.cpp:2493
 #, fuzzy, kde-kuit-format
 #| msgid "Unable to move the item to  %1."
 msgctxt "@info"
 msgid "Unable to move item <resource>%1</resource>."
 msgstr "ไม่สามารถย้ายรายการไปยัง %1  ได้"
 
-#: calendarview.cpp:2668
+#: calendarview.cpp:2688
 #, fuzzy, kde-kuit-format
 #| msgid "Hide co&mpleted to-dos"
 msgctxt "@info"
 msgid "0 completed to-dos were purged.<nl/>"
 msgstr "ซ่อนสิ่งที่จะทำที่เสร็จสมบูรณ์แล้ว"
 
-#: calendarview.cpp:2670 calendarview.cpp:2681
+#: calendarview.cpp:2690 calendarview.cpp:2701
 #, kde-format, kde-kuit-format
 msgctxt "@info"
 msgid "%1 to-do was ignored because it has uncompleted or read-only children."
@@ -2338,7 +2338,7 @@ msgid_plural ""
 "%1 to-dos were ignored because they have uncompleted or read-only children."
 msgstr[0] ""
 
-#: calendarview.cpp:2674 calendarview.cpp:2679
+#: calendarview.cpp:2694 calendarview.cpp:2699
 #, fuzzy, kde-format
 #| msgid "Hide co&mpleted to-dos"
 msgctxt "@info"
@@ -2346,14 +2346,14 @@ msgid "%1 completed to-do was purged."
 msgid_plural "%1 completed to-dos were purged."
 msgstr[0] "ซ่อนสิ่งที่จะทำที่เสร็จสมบูรณ์แล้ว"
 
-#: calendarview.cpp:2686
+#: calendarview.cpp:2706
 #, fuzzy, kde-kuit-format
 #| msgid "Purging completed to-dos"
 msgctxt "@info"
 msgid "An error occurred while purging completed to-dos: <message>%1</message>"
 msgstr "กำจัดสิ่งที่จะทำที่เสร็จสมบูรณ์แล้ว"
 
-#: calendarview.cpp:2740
+#: calendarview.cpp:2760
 #, kde-kuit-format
 msgctxt "@info"
 msgid ""
@@ -2362,7 +2362,7 @@ msgid ""
 "incidence.</para>"
 msgstr ""
 
-#: calendarview.cpp:2744
+#: calendarview.cpp:2764
 #, kde-kuit-format
 msgctxt "@info"
 msgid ""
@@ -4310,8 +4310,8 @@ msgctxt "@title:tab general settings"
 msgid "General"
 msgstr "ค่าทั่วไป"
 
-#: prefs/koprefsdialogviews.cpp:50 prefs/koprefsdialogviews.cpp:87
-#: prefs/koprefsdialogviews.cpp:131 prefs/koprefsdialogviews.cpp:158
+#: prefs/koprefsdialogviews.cpp:50 prefs/koprefsdialogviews.cpp:88
+#: prefs/koprefsdialogviews.cpp:132 prefs/koprefsdialogviews.cpp:159
 #, fuzzy, kde-format
 #| msgid "Display Options"
 msgctxt "@title:group"
@@ -4330,13 +4330,13 @@ msgctxt "@title:group"
 msgid "Date Navigator"
 msgstr "ตัวนำทางวัน"
 
-#: prefs/koprefsdialogviews.cpp:81
+#: prefs/koprefsdialogviews.cpp:82
 #, kde-format
 msgctxt "@title:tab"
 msgid "Agenda View"
 msgstr "มุมมองกำหนดการ"
 
-#: prefs/koprefsdialogviews.cpp:93
+#: prefs/koprefsdialogviews.cpp:94
 #, fuzzy, kde-format
 #| msgctxt "@label suffix in the hour size spin box"
 #| msgid " pixel"
@@ -4344,19 +4344,19 @@ msgctxt "@label suffix in the hour size spin box"
 msgid " pixels"
 msgstr " พิกเซล"
 
-#: prefs/koprefsdialogviews.cpp:125
+#: prefs/koprefsdialogviews.cpp:126
 #, kde-format
 msgctxt "@title:tab"
 msgid "Month View"
 msgstr "มุมมองรายเดือน"
 
-#: prefs/koprefsdialogviews.cpp:152
+#: prefs/koprefsdialogviews.cpp:153
 #, kde-format
 msgctxt "@title:tab"
 msgid "Todo View"
 msgstr "มุมมองสิ่งที่จะทำ"
 
-#: prefs/koprefsdialogviews.cpp:165
+#: prefs/koprefsdialogviews.cpp:166
 #, fuzzy, kde-format
 #| msgid "Other Options"
 msgctxt "@title:group"
@@ -4555,7 +4555,7 @@ msgstr ""
 
 #. i18n: ectx: label, entry (ColorMonthBusyDaysEnabled), group (Time &amp; Date)
 #. i18n: ectx: label, entry (ColorBusyDaysEnabled), group (Agenda View)
-#: settings/korganizer.kcfg:53 settings/korganizer.kcfg:169
+#: settings/korganizer.kcfg:53 settings/korganizer.kcfg:174
 #, fuzzy, kde-format
 #| msgid "Month view background color"
 msgid "Color busy days with a different background color"
@@ -4705,28 +4705,47 @@ msgstr ""
 "กาเลือกตัวเลือกนี้ เพื่อให้แสดงวันบรรจุเหตุการณ์ที่เกิดขึ้นอีกทุกวัน ในแบบอักษรตัวหนาในตัวนำทางวัน "
 "หรือไม่กาเลือกเพื่อให้เหตุการณ์อื่นดูเด่นกว่า"
 
-#. i18n: ectx: label, entry (WeekNumbersShowWork), group (General View)
+#. i18n: ectx: label, entry (WeekNumbersShow), group (General View)
 #: settings/korganizer.kcfg:97
+#, fuzzy, kde-format
+#| msgid "Show day number"
+msgid "Show week numbers"
+msgstr "แสดงจำนวนวัน"
+
+#. i18n: ectx: whatsthis, entry (WeekNumbersShow), group (General View)
+#: settings/korganizer.kcfg:98
+#, fuzzy, kde-format
+#| msgid ""
+#| "Check this box to display icons (alarm, recursion, etc.) in month view "
+#| "cells."
+msgid "Check this box to show the Date Navigator's week numbers."
+msgstr ""
+"กาเลือกตัวเลือกนี้เพื่อให้มีการแสดงไอคอน (แจ้งเตือน, เกิดขึ้นอีก เป็นต้น) "
+"ในเซลล์ของมุมมองรายเดือน"
+
+#. i18n: ectx: label, entry (WeekNumbersShowWork), group (General View)
+#: settings/korganizer.kcfg:102
 #, kde-format
 msgid "Week numbers select a work week when in work week mode"
 msgstr ""
 
 #. i18n: ectx: whatsthis, entry (WeekNumbersShowWork), group (General View)
-#: settings/korganizer.kcfg:98
+#: settings/korganizer.kcfg:103
 #, kde-format
 msgid ""
 "Check this box to select a working week when clicking on the Date "
-"Navigator's week numbers, or uncheck it to choose the whole week."
+"Navigator's week numbers, or uncheck it to choose the whole week.  Ignored "
+"if week numbers are not shown."
 msgstr ""
 
 #. i18n: ectx: label, entry, group (Agenda View)
-#: settings/korganizer.kcfg:105
+#: settings/korganizer.kcfg:110
 #, kde-format
 msgid "Hour size"
 msgstr "ขนาดช่องชั่วโมง"
 
 #. i18n: ectx: whatsthis, entry, group (Agenda View)
-#: settings/korganizer.kcfg:106
+#: settings/korganizer.kcfg:111
 #, kde-format
 msgid ""
 "Select the height of the hour rows in the agenda grid, in pixels. Increasing "
@@ -4734,20 +4753,20 @@ msgid ""
 msgstr ""
 
 #. i18n: ectx: tooltip, entry, group (Agenda View)
-#: settings/korganizer.kcfg:107
+#: settings/korganizer.kcfg:112
 #, kde-format
 msgid "Set the height (in pixels) for an hour in the agenda grid"
 msgstr ""
 
 #. i18n: ectx: label, entry (EnableAgendaItemIcons), group (Agenda View)
-#: settings/korganizer.kcfg:113
+#: settings/korganizer.kcfg:118
 #, fuzzy, kde-format
 #| msgid "Choose the colors of the agenda view items."
 msgid "Show icons in agenda view items"
 msgstr "เลือกสีที่จะใช้กับรายการในมุมมองกำหนดการ"
 
 #. i18n: ectx: whatsthis, entry (EnableAgendaItemIcons), group (Agenda View)
-#: settings/korganizer.kcfg:114
+#: settings/korganizer.kcfg:119
 #, fuzzy, kde-format
 #| msgid ""
 #| "Check this box to display icons (alarm, recursion, etc.) in month view "
@@ -4760,7 +4779,7 @@ msgstr ""
 "ในเซลล์ของมุมมองรายเดือน"
 
 #. i18n: ectx: tooltip, entry (EnableAgendaItemIcons), group (Agenda View)
-#: settings/korganizer.kcfg:115
+#: settings/korganizer.kcfg:120
 #, fuzzy, kde-format
 #| msgid "Choose the colors of the agenda view items."
 msgid "Display icons in agenda view items"
@@ -4768,14 +4787,14 @@ msgstr "เลือกสีที่จะใช้กับรายการ
 
 #. i18n: ectx: label, entry (ShowTodosAgendaView), group (Agenda View)
 #. i18n: ectx: label, entry (ShowTodosMonthView), group (Month View)
-#: settings/korganizer.kcfg:119 settings/korganizer.kcfg:210
+#: settings/korganizer.kcfg:124 settings/korganizer.kcfg:215
 #, fuzzy, kde-format
 #| msgid "&Show To-do"
 msgid "Show to-dos"
 msgstr "แสดงสิ่งที่จะทำ"
 
 #. i18n: ectx: whatsthis, entry (ShowTodosAgendaView), group (Agenda View)
-#: settings/korganizer.kcfg:120
+#: settings/korganizer.kcfg:125
 #, fuzzy, kde-format
 #| msgid ""
 #| "Check this box to display icons (alarm, recursion, etc.) in month view "
@@ -4786,20 +4805,20 @@ msgstr ""
 "ในเซลล์ของมุมมองรายเดือน"
 
 #. i18n: ectx: tooltip, entry (ShowTodosAgendaView), group (Agenda View)
-#: settings/korganizer.kcfg:121
+#: settings/korganizer.kcfg:126
 #, fuzzy, kde-format
 #| msgid "Choose the colors of the agenda view items."
 msgid "Display to-dos in the agenda view"
 msgstr "เลือกสีที่จะใช้กับรายการในมุมมองกำหนดการ"
 
 #. i18n: ectx: label, entry (MarcusBainsEnabled), group (Agenda View)
-#: settings/korganizer.kcfg:125
+#: settings/korganizer.kcfg:130
 #, kde-format
 msgid "Show current-time (Marcus Bains) line"
 msgstr "แสดงบรรทัดของเวลาปัจจุบัน (Marcus Bains)"
 
 #. i18n: ectx: whatsthis, entry (MarcusBainsEnabled), group (Agenda View)
-#: settings/korganizer.kcfg:126
+#: settings/korganizer.kcfg:131
 #, fuzzy, kde-format
 #| msgid ""
 #| "Check this box to display a red line in the day or week view indicating "
@@ -4812,7 +4831,7 @@ msgstr ""
 "เพื่อใช้แสดงสถานะเส้นเวลาปัจจุบัน (เส้นของ Marcus Bains)"
 
 #. i18n: ectx: tooltip, entry (MarcusBainsEnabled), group (Agenda View)
-#: settings/korganizer.kcfg:127
+#: settings/korganizer.kcfg:132
 #, fuzzy, kde-format
 #| msgctxt "@info:whatsthis"
 #| msgid "Displays appointment time information."
@@ -4820,14 +4839,14 @@ msgid "Display the current-time indicator"
 msgstr "แสดงข้อมูลของเวลานัดหมาย"
 
 #. i18n: ectx: label, entry (MarcusBainsShowSeconds), group (Agenda View)
-#: settings/korganizer.kcfg:131
+#: settings/korganizer.kcfg:136
 #, fuzzy, kde-format
 #| msgid "Show current-time (Marcus Bains) line"
 msgid "Show seconds and timezone on the current-time (Marcus Bains) line"
 msgstr "แสดงบรรทัดของเวลาปัจจุบัน (Marcus Bains)"
 
 #. i18n: ectx: whatsthis, entry (MarcusBainsShowSeconds), group (Agenda View)
-#: settings/korganizer.kcfg:132
+#: settings/korganizer.kcfg:137
 #, fuzzy, kde-format
 #| msgid "Check this box if you want to show seconds on the current-time line."
 msgid ""
@@ -4836,7 +4855,7 @@ msgid ""
 msgstr "กาเลือกที่กล่องนี้ หากคุณต้องการให้มีการแสดงวินาทีบนเส้นเวลาปัจจุบันด้วย"
 
 #. i18n: ectx: tooltip, entry (MarcusBainsShowSeconds), group (Agenda View)
-#: settings/korganizer.kcfg:133
+#: settings/korganizer.kcfg:138
 #, fuzzy, kde-format
 #| msgid "Show seconds on current-time line"
 msgid ""
@@ -4844,13 +4863,13 @@ msgid ""
 msgstr "แสดงวินาทีบนบรรทัดเวลาปัจจุบัน"
 
 #. i18n: ectx: label, entry (SelectionStartsEditor), group (Agenda View)
-#: settings/korganizer.kcfg:137
+#: settings/korganizer.kcfg:142
 #, kde-format
 msgid "Time range selection in agenda view starts event editor"
 msgstr "การเลือกช่วงเวลาในมุมมองกำหนดการ เป็นการเรียกตัวแก้ไขเหตุการณ์"
 
 #. i18n: ectx: whatsthis, entry (SelectionStartsEditor), group (Agenda View)
-#: settings/korganizer.kcfg:138
+#: settings/korganizer.kcfg:143
 #, kde-format
 msgid ""
 "Check this box to start the event editor automatically when you select a "
@@ -4862,14 +4881,14 @@ msgstr ""
 "ให้คลิกเมาส์ค้างไว้ที่เวลาเริ่มแล้วลากไปจนถึงเวลาสิ้นสุดที่ต้องการบนเหตุการณ์ที่คุณกำลังวางแผนอยู่"
 
 #. i18n: ectx: tooltip, entry (SelectionStartsEditor), group (Agenda View)
-#: settings/korganizer.kcfg:139
+#: settings/korganizer.kcfg:144
 #, kde-format
 msgid "Enable automatic event editor with time range selection"
 msgstr ""
 
 #. i18n: ectx: label, entry, group (Agenda View)
 #. i18n: ectx: label, entry, group (Month View)
-#: settings/korganizer.kcfg:143 settings/korganizer.kcfg:227
+#: settings/korganizer.kcfg:148 settings/korganizer.kcfg:232
 #, fuzzy, kde-format
 #| msgctxt "@title:tab"
 #| msgid "Colors"
@@ -4878,7 +4897,7 @@ msgstr "สี"
 
 #. i18n: ectx: label, entry, group (Agenda View)
 #. i18n: ectx: label, entry, group (Month View)
-#: settings/korganizer.kcfg:146 settings/korganizer.kcfg:230
+#: settings/korganizer.kcfg:151 settings/korganizer.kcfg:235
 #, fuzzy, kde-format
 #| msgid "Category inside, calendar outside"
 msgid "Tag inside, calendar outside"
@@ -4886,7 +4905,7 @@ msgstr "หมวดหมู่อยู่ภายใน, ปฏิทิน�
 
 #. i18n: ectx: whatsthis, entry, group (Agenda View)
 #. i18n: ectx: whatsthis, entry, group (Month View)
-#: settings/korganizer.kcfg:147 settings/korganizer.kcfg:231
+#: settings/korganizer.kcfg:152 settings/korganizer.kcfg:236
 #, kde-format
 msgid ""
 "Select the \"Tag inside, calendar outside\" option if you would like to draw "
@@ -4896,7 +4915,7 @@ msgid ""
 msgstr ""
 
 #. i18n: ectx: tooltip, entry, group (Agenda View)
-#: settings/korganizer.kcfg:148
+#: settings/korganizer.kcfg:153
 #, kde-format
 msgid ""
 "Draw agenda items with their tag color inside and calendar color for their "
@@ -4905,7 +4924,7 @@ msgstr ""
 
 #. i18n: ectx: label, entry, group (Agenda View)
 #. i18n: ectx: label, entry, group (Month View)
-#: settings/korganizer.kcfg:151 settings/korganizer.kcfg:235
+#: settings/korganizer.kcfg:156 settings/korganizer.kcfg:240
 #, fuzzy, kde-format
 #| msgid "Calendar inside, category outside"
 msgid "Calendar inside, tag outside"
@@ -4913,7 +4932,7 @@ msgstr "ปฏิทินอยู่ภายใน, หมวดหมู่�
 
 #. i18n: ectx: whatsthis, entry, group (Agenda View)
 #. i18n: ectx: whatsthis, entry, group (Month View)
-#: settings/korganizer.kcfg:152 settings/korganizer.kcfg:236
+#: settings/korganizer.kcfg:157 settings/korganizer.kcfg:241
 #, kde-format
 msgid ""
 "Select the \"Calendar inside, tag outside\" option if you would like to draw "
@@ -4923,7 +4942,7 @@ msgid ""
 msgstr ""
 
 #. i18n: ectx: tooltip, entry, group (Agenda View)
-#: settings/korganizer.kcfg:153
+#: settings/korganizer.kcfg:158
 #, kde-format
 msgid ""
 "Draw agenda items with their calendar color inside and tag color for their "
@@ -4932,14 +4951,14 @@ msgstr ""
 
 #. i18n: ectx: label, entry, group (Agenda View)
 #. i18n: ectx: label, entry, group (Month View)
-#: settings/korganizer.kcfg:156 settings/korganizer.kcfg:240
+#: settings/korganizer.kcfg:161 settings/korganizer.kcfg:245
 #, fuzzy, kde-format
 #| msgid "Only category"
 msgid "Only tag"
 msgstr "หมวดหมู่เท่านั้น"
 
 #. i18n: ectx: whatsthis, entry, group (Agenda View)
-#: settings/korganizer.kcfg:157
+#: settings/korganizer.kcfg:162
 #, kde-format
 msgid ""
 "Select the \"Only tag\" option if you would like to draw calendar items "
@@ -4948,20 +4967,20 @@ msgid ""
 msgstr ""
 
 #. i18n: ectx: tooltip, entry, group (Agenda View)
-#: settings/korganizer.kcfg:158
+#: settings/korganizer.kcfg:163
 #, kde-format
 msgid "Draw agenda items using their tag color for the inside and border"
 msgstr ""
 
 #. i18n: ectx: label, entry, group (Agenda View)
 #. i18n: ectx: label, entry, group (Month View)
-#: settings/korganizer.kcfg:161 settings/korganizer.kcfg:245
+#: settings/korganizer.kcfg:166 settings/korganizer.kcfg:250
 #, kde-format
 msgid "Only calendar"
 msgstr "ปฏิทินเท่านั้น"
 
 #. i18n: ectx: whatsthis, entry, group (Agenda View)
-#: settings/korganizer.kcfg:162
+#: settings/korganizer.kcfg:167
 #, kde-format
 msgid ""
 "Select the \"Only calendar\" option if you would like to draw calendar items "
@@ -4970,13 +4989,13 @@ msgid ""
 msgstr ""
 
 #. i18n: ectx: tooltip, entry, group (Agenda View)
-#: settings/korganizer.kcfg:163
+#: settings/korganizer.kcfg:168
 #, kde-format
 msgid "Draw agenda items using their calendar color for the inside and border"
 msgstr ""
 
 #. i18n: ectx: whatsthis, entry (ColorBusyDaysEnabled), group (Agenda View)
-#: settings/korganizer.kcfg:170
+#: settings/korganizer.kcfg:175
 #, kde-format
 msgid ""
 "Check this box if you want agenda's background to be filled with a different "
@@ -4986,20 +5005,20 @@ msgid ""
 msgstr ""
 
 #. i18n: ectx: label, entry (AgendaViewCalendarDisplay), group (Agenda View)
-#: settings/korganizer.kcfg:174
+#: settings/korganizer.kcfg:179
 #, fuzzy, kde-format
 #| msgid "Agenda View Calendar Display"
 msgid "Multiple Calendar Display"
 msgstr "มุมมองกำหนดการแสดงปฏิทิน"
 
 #. i18n: ectx: label, entry (AgendaViewCalendarDisplay), group (Agenda View)
-#: settings/korganizer.kcfg:177
+#: settings/korganizer.kcfg:182
 #, kde-format
 msgid "Merge all calendars into one view"
 msgstr "ผนวกรวมปฏิทินทุกตัวเข้าเป็นมุมมองเดียว"
 
 #. i18n: ectx: whatsthis, entry (AgendaViewCalendarDisplay), group (Agenda View)
-#: settings/korganizer.kcfg:178
+#: settings/korganizer.kcfg:183
 #, kde-format
 msgid ""
 "Select the \"Merge all calendars into one view\" option if you would like "
@@ -5007,19 +5026,19 @@ msgid ""
 msgstr ""
 
 #. i18n: ectx: tooltip, entry (AgendaViewCalendarDisplay), group (Agenda View)
-#: settings/korganizer.kcfg:179
+#: settings/korganizer.kcfg:184
 #, kde-format
 msgid "Show all calendars merged together"
 msgstr ""
 
 #. i18n: ectx: label, entry (AgendaViewCalendarDisplay), group (Agenda View)
-#: settings/korganizer.kcfg:182
+#: settings/korganizer.kcfg:187
 #, kde-format
 msgid "Show calendars side by side"
 msgstr "แสดงปฏิทินด้านต่อด้าน"
 
 #. i18n: ectx: whatsthis, entry (AgendaViewCalendarDisplay), group (Agenda View)
-#: settings/korganizer.kcfg:183
+#: settings/korganizer.kcfg:188
 #, kde-format
 msgid ""
 "Select the \"Show calendars side by side\" option if you would like to see "
@@ -5027,20 +5046,20 @@ msgid ""
 msgstr ""
 
 #. i18n: ectx: tooltip, entry (AgendaViewCalendarDisplay), group (Agenda View)
-#: settings/korganizer.kcfg:184
+#: settings/korganizer.kcfg:189
 #, fuzzy, kde-format
 #| msgid "Show calendars side by side"
 msgid "Show two calendars side-by-side"
 msgstr "แสดงปฏิทินด้านต่อด้าน"
 
 #. i18n: ectx: label, entry (AgendaViewCalendarDisplay), group (Agenda View)
-#: settings/korganizer.kcfg:187
+#: settings/korganizer.kcfg:192
 #, kde-format
 msgid "Switch between views with tabs"
 msgstr "สลับแต่ละมุมมองด้วยแท็บ"
 
 #. i18n: ectx: whatsthis, entry (AgendaViewCalendarDisplay), group (Agenda View)
-#: settings/korganizer.kcfg:188
+#: settings/korganizer.kcfg:193
 #, kde-format
 msgid ""
 "Select \"Switch between views with tabs\" if you would like to alternate "
@@ -5048,14 +5067,14 @@ msgid ""
 msgstr ""
 
 #. i18n: ectx: tooltip, entry (AgendaViewCalendarDisplay), group (Agenda View)
-#: settings/korganizer.kcfg:189
+#: settings/korganizer.kcfg:194
 #, fuzzy, kde-format
 #| msgid "Merged calendar"
 msgid "Tab through calendars"
 msgstr "ปฏิทินที่ผนวกรวม"
 
 #. i18n: ectx: label, entry (EnableMonthItemIcons), group (Month View)
-#: settings/korganizer.kcfg:198
+#: settings/korganizer.kcfg:203
 #, fuzzy, kde-format
 #| msgctxt "@option:check"
 #| msgid "Show in the month view"
@@ -5063,7 +5082,7 @@ msgid "Show icons in month view items"
 msgstr "แสดงในมุมมองเดือน"
 
 #. i18n: ectx: whatsthis, entry (EnableMonthItemIcons), group (Month View)
-#: settings/korganizer.kcfg:199
+#: settings/korganizer.kcfg:204
 #, fuzzy, kde-format
 #| msgid ""
 #| "Check this box to display icons (alarm, recursion, etc.) in month view "
@@ -5075,14 +5094,14 @@ msgstr ""
 "ในเซลล์ของมุมมองรายเดือน"
 
 #. i18n: ectx: tooltip, entry (EnableMonthItemIcons), group (Month View)
-#: settings/korganizer.kcfg:200
+#: settings/korganizer.kcfg:205
 #, fuzzy, kde-format
 #| msgid "Enable icons in events in month view cells"
 msgid "Display icons in month view items"
 msgstr "เปิดใช้ไอคอนในเหตุการณ์ในเซลล์ของมุมมองรายเดือน"
 
 #. i18n: ectx: label, entry (ShowTimeInMonthView), group (Month View)
-#: settings/korganizer.kcfg:204
+#: settings/korganizer.kcfg:209
 #, fuzzy, kde-format
 #| msgctxt "@option:check"
 #| msgid "Show in the month view"
@@ -5090,7 +5109,7 @@ msgid "Show time in month view items"
 msgstr "แสดงในมุมมองเดือน"
 
 #. i18n: ectx: whatsthis, entry (ShowTimeInMonthView), group (Month View)
-#: settings/korganizer.kcfg:205
+#: settings/korganizer.kcfg:210
 #, fuzzy, kde-format
 #| msgid ""
 #| "Check this box to display icons (alarm, recursion, etc.) in month view "
@@ -5101,14 +5120,14 @@ msgstr ""
 "ในเซลล์ของมุมมองรายเดือน"
 
 #. i18n: ectx: tooltip, entry (ShowTimeInMonthView), group (Month View)
-#: settings/korganizer.kcfg:206
+#: settings/korganizer.kcfg:211
 #, fuzzy, kde-format
 #| msgid "Enable icons in events in month view cells"
 msgid "Display time in month view items"
 msgstr "เปิดใช้ไอคอนในเหตุการณ์ในเซลล์ของมุมมองรายเดือน"
 
 #. i18n: ectx: whatsthis, entry (ShowTodosMonthView), group (Month View)
-#: settings/korganizer.kcfg:211
+#: settings/korganizer.kcfg:216
 #, fuzzy, kde-format
 #| msgid ""
 #| "Check this box to display icons (alarm, recursion, etc.) in month view "
@@ -5119,21 +5138,21 @@ msgstr ""
 "ในเซลล์ของมุมมองรายเดือน"
 
 #. i18n: ectx: tooltip, entry (ShowTodosMonthView), group (Month View)
-#: settings/korganizer.kcfg:212
+#: settings/korganizer.kcfg:217
 #, fuzzy, kde-format
 #| msgid "Enable icons in events in month view cells"
 msgid "Display to-dos in the month view"
 msgstr "เปิดใช้ไอคอนในเหตุการณ์ในเซลล์ของมุมมองรายเดือน"
 
 #. i18n: ectx: label, entry (ShowJournalsMonthView), group (Month View)
-#: settings/korganizer.kcfg:216
+#: settings/korganizer.kcfg:221
 #, fuzzy, kde-format
 #| msgid "New &Journal..."
 msgid "Show journals"
 msgstr "บันทึกประจำวันใหม่..."
 
 #. i18n: ectx: whatsthis, entry (ShowJournalsMonthView), group (Month View)
-#: settings/korganizer.kcfg:217
+#: settings/korganizer.kcfg:222
 #, fuzzy, kde-format
 #| msgid ""
 #| "Check this box to display icons (alarm, recursion, etc.) in month view "
@@ -5144,20 +5163,20 @@ msgstr ""
 "ในเซลล์ของมุมมองรายเดือน"
 
 #. i18n: ectx: tooltip, entry (ShowJournalsMonthView), group (Month View)
-#: settings/korganizer.kcfg:218
+#: settings/korganizer.kcfg:223
 #, fuzzy, kde-format
 #| msgid "Enable icons in events in month view cells"
 msgid "Display journals in the month view"
 msgstr "เปิดใช้ไอคอนในเหตุการณ์ในเซลล์ของมุมมองรายเดือน"
 
 #. i18n: ectx: label, entry, group (Month View)
-#: settings/korganizer.kcfg:222
+#: settings/korganizer.kcfg:227
 #, kde-format
 msgid "Month view uses full window"
 msgstr "มุมมองรายเดือนใช้งานเต็มพื้นที่หน้าต่าง"
 
 #. i18n: ectx: whatsthis, entry, group (Month View)
-#: settings/korganizer.kcfg:223
+#: settings/korganizer.kcfg:228
 #, kde-format
 msgid ""
 "Check this box to use the full KOrganizer window when displaying the month "
@@ -5167,7 +5186,7 @@ msgid ""
 msgstr ""
 
 #. i18n: ectx: tooltip, entry, group (Month View)
-#: settings/korganizer.kcfg:232
+#: settings/korganizer.kcfg:237
 #, kde-format
 msgid ""
 "Draw month items with their tag color inside and calendar color for their "
@@ -5175,7 +5194,7 @@ msgid ""
 msgstr ""
 
 #. i18n: ectx: tooltip, entry, group (Month View)
-#: settings/korganizer.kcfg:237
+#: settings/korganizer.kcfg:242
 #, kde-format
 msgid ""
 "Draw month items with their calendar color inside and tag color for their "
@@ -5183,7 +5202,7 @@ msgid ""
 msgstr ""
 
 #. i18n: ectx: whatsthis, entry, group (Month View)
-#: settings/korganizer.kcfg:241
+#: settings/korganizer.kcfg:246
 #, kde-format
 msgid ""
 "Select the \"Only tag\" option if you would like to draw calendar items "
@@ -5192,13 +5211,13 @@ msgid ""
 msgstr ""
 
 #. i18n: ectx: tooltip, entry, group (Month View)
-#: settings/korganizer.kcfg:242
+#: settings/korganizer.kcfg:247
 #, kde-format
 msgid "Draw month items using their tag color for the inside and border"
 msgstr ""
 
 #. i18n: ectx: whatsthis, entry, group (Month View)
-#: settings/korganizer.kcfg:246
+#: settings/korganizer.kcfg:251
 #, kde-format
 msgid ""
 "Select the \"Only calendar\" option if you would like to draw calendar items "
@@ -5207,19 +5226,19 @@ msgid ""
 msgstr ""
 
 #. i18n: ectx: tooltip, entry, group (Month View)
-#: settings/korganizer.kcfg:247
+#: settings/korganizer.kcfg:252
 #, kde-format
 msgid "Draw month items using their calendar color for the inside and border"
 msgstr ""
 
 #. i18n: ectx: label, entry, group (Todo View)
-#: settings/korganizer.kcfg:256
+#: settings/korganizer.kcfg:261
 #, kde-format
 msgid "Always display completed to-dos at the bottom of the list"
 msgstr ""
 
 #. i18n: ectx: tooltip, entry, group (Todo View)
-#: settings/korganizer.kcfg:257
+#: settings/korganizer.kcfg:262
 #, kde-format
 msgid ""
 "Completed to-dos are displayed at the bottom of the list, regardless of "
@@ -5227,7 +5246,7 @@ msgid ""
 msgstr ""
 
 #. i18n: ectx: whatsthis, entry, group (Todo View)
-#: settings/korganizer.kcfg:258
+#: settings/korganizer.kcfg:263
 #, kde-format
 msgid ""
 "Check this box if you want all completed to-dos to be always grouped at the "
@@ -5235,20 +5254,20 @@ msgid ""
 msgstr ""
 
 #. i18n: ectx: label, entry, group (Todo View)
-#: settings/korganizer.kcfg:262
+#: settings/korganizer.kcfg:267
 #, kde-format
 msgid "To-do list view uses full window"
 msgstr "การแสดงรายการสิ่งที่จะทำใช้งานเต็มพื้นที่หน้าต่าง"
 
 #. i18n: ectx: tooltip, entry, group (Todo View)
-#: settings/korganizer.kcfg:263
+#: settings/korganizer.kcfg:268
 #, fuzzy, kde-format
 #| msgid "To-do list view uses full window"
 msgid "Display to-do list in a full KOrganizer window"
 msgstr "การแสดงรายการสิ่งที่จะทำใช้งานเต็มพื้นที่หน้าต่าง"
 
 #. i18n: ectx: whatsthis, entry, group (Todo View)
-#: settings/korganizer.kcfg:264
+#: settings/korganizer.kcfg:269
 #, kde-format
 msgid ""
 "Check this box to use the full KOrganizer window when displaying the to-do "
@@ -5258,20 +5277,20 @@ msgid ""
 msgstr ""
 
 #. i18n: ectx: label, entry, group (Todo View)
-#: settings/korganizer.kcfg:268
+#: settings/korganizer.kcfg:273
 #, fuzzy, kde-format
 #| msgid "Enable icons in events in month view cells"
 msgid "Display to-dos in a flat list"
 msgstr "เปิดใช้ไอคอนในเหตุการณ์ในเซลล์ของมุมมองรายเดือน"
 
 #. i18n: ectx: tooltip, entry, group (Todo View)
-#: settings/korganizer.kcfg:269
+#: settings/korganizer.kcfg:274
 #, kde-format
 msgid "Display to-dos as a flat list instead of a hierarchical tree"
 msgstr ""
 
 #. i18n: ectx: whatsthis, entry, group (Todo View)
-#: settings/korganizer.kcfg:270
+#: settings/korganizer.kcfg:275
 #, fuzzy, kde-format
 #| msgid "Check this box if you want to show seconds on the current-time line."
 msgid ""
@@ -5280,13 +5299,13 @@ msgid ""
 msgstr "กาเลือกที่กล่องนี้ หากคุณต้องการให้มีการแสดงวินาทีบนเส้นเวลาปัจจุบันด้วย"
 
 #. i18n: ectx: label, entry, group (Todo View)
-#: settings/korganizer.kcfg:274
+#: settings/korganizer.kcfg:279
 #, kde-format
 msgid "Record completed to-dos in journal entries"
 msgstr "บันทึกสิ่งที่จะทำที่เสร็จสมบูรณ์แล้วไว้ในรายการบันทึกประจำวัน"
 
 #. i18n: ectx: whatsthis, entry, group (Todo View)
-#: settings/korganizer.kcfg:275
+#: settings/korganizer.kcfg:280
 #, kde-format
 msgid ""
 "Check this box to record the completion of a to-do in a new entry of your "
@@ -5296,8 +5315,8 @@ msgstr ""
 #. i18n: ectx: label, entry, group (Colors)
 #. i18n: ectx: label, entry, group (Theming)
 #. i18n: ectx: label, entry, group (Theme/Month view)
-#: settings/korganizer.kcfg:282 settings/korganizer.kcfg:474
-#: settings/korganizer.kcfg:581
+#: settings/korganizer.kcfg:287 settings/korganizer.kcfg:479
+#: settings/korganizer.kcfg:586
 #, kde-format
 msgid "Holiday color"
 msgstr "สีของวันหยุด"
@@ -5305,8 +5324,8 @@ msgstr "สีของวันหยุด"
 #. i18n: ectx: whatsthis, entry, group (Colors)
 #. i18n: ectx: whatsthis, entry, group (Theming)
 #. i18n: ectx: whatsthis, entry, group (Theme/Month view)
-#: settings/korganizer.kcfg:283 settings/korganizer.kcfg:475
-#: settings/korganizer.kcfg:582
+#: settings/korganizer.kcfg:288 settings/korganizer.kcfg:480
+#: settings/korganizer.kcfg:587
 #, kde-format
 msgid ""
 "Select the holiday color here. The holiday color will be used for the "
@@ -5315,20 +5334,20 @@ msgstr ""
 
 #. i18n: ectx: label, entry (AgendaBgColor), group (Colors)
 #. i18n: ectx: label, entry, group (Theming)
-#: settings/korganizer.kcfg:287 settings/korganizer.kcfg:403
+#: settings/korganizer.kcfg:292 settings/korganizer.kcfg:408
 #, kde-format
 msgid "Agenda view background color"
 msgstr "สีพื้นหลังของมุมมองกำหนดการ"
 
 #. i18n: ectx: whatsthis, entry (AgendaBgColor), group (Colors)
 #. i18n: ectx: whatsthis, entry, group (Theming)
-#: settings/korganizer.kcfg:288 settings/korganizer.kcfg:404
+#: settings/korganizer.kcfg:293 settings/korganizer.kcfg:409
 #, kde-format
 msgid "Select the agenda view background color here."
 msgstr ""
 
 #. i18n: ectx: label, entry, group (Colors)
-#: settings/korganizer.kcfg:292
+#: settings/korganizer.kcfg:297
 #, fuzzy, kde-format
 #| msgctxt "@info:whatsthis"
 #| msgid "Displays appointment time information."
@@ -5336,28 +5355,28 @@ msgid "Agenda view current-time (Marcus Bains) line color"
 msgstr "แสดงข้อมูลของเวลานัดหมาย"
 
 #. i18n: ectx: whatsthis, entry, group (Colors)
-#: settings/korganizer.kcfg:293
+#: settings/korganizer.kcfg:298
 #, fuzzy, kde-format
 #| msgid "Show current-time (Marcus Bains) line"
 msgid "Select a color to use for the current-time (Marcus Bains) line."
 msgstr "แสดงบรรทัดของเวลาปัจจุบัน (Marcus Bains)"
 
 #. i18n: ectx: tooltip, entry, group (Colors)
-#: settings/korganizer.kcfg:294
+#: settings/korganizer.kcfg:299
 #, fuzzy, kde-format
 #| msgid "Show current-time (Marcus Bains) line"
 msgid "Use this color for the Agenda View current-time (Marcus Bains) line"
 msgstr "แสดงบรรทัดของเวลาปัจจุบัน (Marcus Bains)"
 
 #. i18n: ectx: label, entry (ViewBgBusyColor), group (Colors)
-#: settings/korganizer.kcfg:298
+#: settings/korganizer.kcfg:303
 #, fuzzy, kde-format
 #| msgid "Agenda view background color"
 msgid "Busy days background color"
 msgstr "สีพื้นหลังของมุมมองกำหนดการ"
 
 #. i18n: ectx: whatsthis, entry (ViewBgBusyColor), group (Colors)
-#: settings/korganizer.kcfg:299
+#: settings/korganizer.kcfg:304
 #, kde-format
 msgid ""
 "When you have an all day event marked as busy, you can have a different "
@@ -5366,53 +5385,53 @@ msgstr ""
 
 #. i18n: ectx: label, entry, group (Colors)
 #. i18n: ectx: label, entry, group (Theme/Month view)
-#: settings/korganizer.kcfg:303 settings/korganizer.kcfg:502
+#: settings/korganizer.kcfg:308 settings/korganizer.kcfg:507
 #, kde-format
 msgid "Working hours color"
 msgstr "สีของชั่วโมงทำงาน"
 
 #. i18n: ectx: whatsthis, entry, group (Colors)
-#: settings/korganizer.kcfg:304
+#: settings/korganizer.kcfg:309
 #, kde-format
 msgid "Select the working hours color for the agenda view here."
 msgstr ""
 
 #. i18n: ectx: label, entry (TodoDueTodayColor), group (Colors)
 #. i18n: ectx: label, entry, group (Theme/Month view)
-#: settings/korganizer.kcfg:308 settings/korganizer.kcfg:554
+#: settings/korganizer.kcfg:313 settings/korganizer.kcfg:559
 #, kde-format
 msgid "To-do due today color"
 msgstr "สีของวันนี้ที่เป็นวันครบกำหนดของสิ่งที่จะทำ"
 
 #. i18n: ectx: whatsthis, entry (TodoDueTodayColor), group (Colors)
 #. i18n: ectx: whatsthis, entry, group (Theme/Month view)
-#: settings/korganizer.kcfg:309 settings/korganizer.kcfg:555
+#: settings/korganizer.kcfg:314 settings/korganizer.kcfg:560
 #, kde-format
 msgid "Select the to-do due today color here."
 msgstr ""
 
 #. i18n: ectx: label, entry (TodoOverdueColor), group (Colors)
 #. i18n: ectx: label, entry, group (Theme/Month view)
-#: settings/korganizer.kcfg:313 settings/korganizer.kcfg:567
+#: settings/korganizer.kcfg:318 settings/korganizer.kcfg:572
 #, kde-format
 msgid "To-do overdue color"
 msgstr "สีของวันเกินกำหนดของสิ่งที่จะทำ"
 
 #. i18n: ectx: whatsthis, entry (TodoOverdueColor), group (Colors)
 #. i18n: ectx: whatsthis, entry, group (Theme/Month view)
-#: settings/korganizer.kcfg:314 settings/korganizer.kcfg:568
+#: settings/korganizer.kcfg:319 settings/korganizer.kcfg:573
 #, kde-format
 msgid "Select the to-do overdue color here."
 msgstr ""
 
 #. i18n: ectx: label, entry, group (Fonts)
-#: settings/korganizer.kcfg:321
+#: settings/korganizer.kcfg:326
 #, kde-format
 msgid "Time bar"
 msgstr "แถบเวลา"
 
 #. i18n: ectx: whatsthis, entry, group (Fonts)
-#: settings/korganizer.kcfg:322
+#: settings/korganizer.kcfg:327
 #, kde-format
 msgid ""
 "Press this button to configure the time bar font. The time bar is the widget "
@@ -5421,13 +5440,13 @@ msgid ""
 msgstr ""
 
 #. i18n: ectx: label, entry, group (Fonts)
-#: settings/korganizer.kcfg:325
+#: settings/korganizer.kcfg:330
 #, kde-format
 msgid "Month view"
 msgstr "มุมมองรายเดือน"
 
 #. i18n: ectx: whatsthis, entry, group (Fonts)
-#: settings/korganizer.kcfg:326
+#: settings/korganizer.kcfg:331
 #, kde-format
 msgid ""
 "Press this button to configure the month view font. This button will open "
@@ -5436,13 +5455,13 @@ msgid ""
 msgstr ""
 
 #. i18n: ectx: label, entry, group (Fonts)
-#: settings/korganizer.kcfg:329
+#: settings/korganizer.kcfg:334
 #, kde-format
 msgid "Agenda view"
 msgstr "มุมมองกำหนดการ"
 
 #. i18n: ectx: whatsthis, entry, group (Fonts)
-#: settings/korganizer.kcfg:330
+#: settings/korganizer.kcfg:335
 #, kde-format
 msgid ""
 "Press this button to configure the agenda view font. This button will open "
@@ -5451,14 +5470,14 @@ msgid ""
 msgstr ""
 
 #. i18n: ectx: label, entry, group (Fonts)
-#: settings/korganizer.kcfg:333
+#: settings/korganizer.kcfg:338
 #, fuzzy, kde-format
 #| msgid "Show current-time (Marcus Bains) line"
 msgid "Current-time (Marcus Bains) line"
 msgstr "แสดงบรรทัดของเวลาปัจจุบัน (Marcus Bains)"
 
 #. i18n: ectx: whatsthis, entry, group (Fonts)
-#: settings/korganizer.kcfg:334
+#: settings/korganizer.kcfg:339
 #, kde-format
 msgid ""
 "Press this button to configure the current-time (Marcus Bains) line font. "
@@ -5467,44 +5486,44 @@ msgid ""
 msgstr ""
 
 #. i18n: ectx: label, entry (DefaultTodoAttachMethod), group (Hidden Options)
-#: settings/korganizer.kcfg:353
+#: settings/korganizer.kcfg:358
 #, kde-format
 msgid "Default todo attachment method"
 msgstr "วิธีการปริยายในการแนบแฟ้มของสิ่งที่จะทำ"
 
 #. i18n: ectx: whatsthis, entry (DefaultTodoAttachMethod), group (Hidden Options)
-#: settings/korganizer.kcfg:354
+#: settings/korganizer.kcfg:359
 #, kde-format
 msgid "The default way of attaching dropped emails to a task"
 msgstr "หนทางปริยายในการแนบจดหมายที่นำมาหย่อนไปยังงาน"
 
 #. i18n: ectx: label, entry (DefaultTodoAttachMethod), group (Hidden Options)
-#: settings/korganizer.kcfg:357
+#: settings/korganizer.kcfg:362
 #, kde-format
 msgid "Always ask"
 msgstr "ให้ถามเสมอ"
 
 #. i18n: ectx: label, entry (DefaultTodoAttachMethod), group (Hidden Options)
-#: settings/korganizer.kcfg:360
+#: settings/korganizer.kcfg:365
 #, kde-format
 msgid "Only attach link to message"
 msgstr "ให้แนบตำแหน่งเชื่อมโยงไว้ในจดหมายเท่านั้น"
 
 #. i18n: ectx: label, entry (DefaultTodoAttachMethod), group (Hidden Options)
-#: settings/korganizer.kcfg:363
+#: settings/korganizer.kcfg:368
 #, kde-format
 msgid "Attach complete message"
 msgstr "ให้แนบเป็นสิ่งที่แนบมาด้วยที่สมบูรณ์"
 
 #. i18n: ectx: label, entry, group (Theming)
 #. i18n: ectx: label, entry, group (Theme/Month view)
-#: settings/korganizer.kcfg:410 settings/korganizer.kcfg:497
+#: settings/korganizer.kcfg:415 settings/korganizer.kcfg:502
 #, kde-format
 msgid "Highlight color"
 msgstr "สีตัวเน้น"
 
 #. i18n: ectx: whatsthis, entry, group (Theming)
-#: settings/korganizer.kcfg:411
+#: settings/korganizer.kcfg:416
 #, kde-format
 msgid ""
 "Select the highlight color here. The highlight color will be used for "
@@ -5512,14 +5531,14 @@ msgid ""
 msgstr ""
 
 #. i18n: ectx: label, entry, group (Theming)
-#: settings/korganizer.kcfg:479
+#: settings/korganizer.kcfg:484
 #, fuzzy, kde-format
 #| msgid "&Use colors"
 msgid "Use system color"
 msgstr "ใช้สี"
 
 #. i18n: ectx: whatsthis, entry, group (Theming)
-#: settings/korganizer.kcfg:480
+#: settings/korganizer.kcfg:485
 #, kde-format
 msgid ""
 "Use system color instead of user defined color. If enabled will ignore all "
@@ -5527,19 +5546,19 @@ msgid ""
 msgstr ""
 
 #. i18n: ectx: label, entry, group (Theme/Month view)
-#: settings/korganizer.kcfg:490
+#: settings/korganizer.kcfg:495
 #, kde-format
 msgid "Month view background color"
 msgstr "สีพื้นหลังของมุมมองรายเดือน"
 
 #. i18n: ectx: whatsthis, entry, group (Theme/Month view)
-#: settings/korganizer.kcfg:491
+#: settings/korganizer.kcfg:496
 #, kde-format
 msgid "Select the Month view background color here."
 msgstr "เลือกสีพื้นหลังที่จะใช้ในมุมมองรายเดือนได้ที่นี่"
 
 #. i18n: ectx: whatsthis, entry, group (Theme/Month view)
-#: settings/korganizer.kcfg:498
+#: settings/korganizer.kcfg:503
 #, kde-format
 msgid ""
 "Select the highlight color here. The highlight color will be used for "
@@ -5547,19 +5566,19 @@ msgid ""
 msgstr ""
 
 #. i18n: ectx: whatsthis, entry, group (Theme/Month view)
-#: settings/korganizer.kcfg:503
+#: settings/korganizer.kcfg:508
 #, kde-format
 msgid "Select the working hours background color for the Month view here."
 msgstr "เลือกสีพื้นหลังของชั่วโมงทำงานที่จะใช้ในมุมมองรายเดือนได้ที่นี่"
 
 #. i18n: ectx: label, entry, group (Theme/Month view)
-#: settings/korganizer.kcfg:525
+#: settings/korganizer.kcfg:530
 #, kde-format
 msgid "Default event color"
 msgstr "สีปริยายของเหตุการณ์"
 
 #. i18n: ectx: whatsthis, entry, group (Theme/Month view)
-#: settings/korganizer.kcfg:526
+#: settings/korganizer.kcfg:531
 #, kde-format
 msgid ""
 "Select the default event color here. The default event color will be used "
@@ -6439,7 +6458,7 @@ msgstr "เรื่อง:"
 msgid "Selected Calendars"
 msgstr "ปฏิทินใหม่"
 
-#: widgets/kdatenavigator.cpp:169
+#: widgets/kdatenavigator.cpp:171
 #, fuzzy, kde-format
 #| msgctxt "start/end week number of line in date picker"
 #| msgid "%1/%2"
@@ -6447,14 +6466,14 @@ msgctxt "@info start/end week number of line in date picker"
 msgid "%1/%2"
 msgstr "%1/%2"
 
-#: widgets/kdatenavigator.cpp:174
+#: widgets/kdatenavigator.cpp:176
 #, fuzzy, kde-format
 #| msgid "Print week &numbers"
 msgctxt "@info:tooltip"
 msgid "Scroll to week number %1"
 msgstr "พิมพ์หมายเลขสัปดาห์"
 
-#: widgets/kdatenavigator.cpp:176
+#: widgets/kdatenavigator.cpp:178
 #, fuzzy, kde-format
 #| msgid "Press this button to remove the currently active filter."
 msgctxt "@info:whatsthis"
@@ -6463,14 +6482,14 @@ msgid ""
 "displayed year."
 msgstr "กดที่ปุ่มนี้เพื่อลบตัวกรองที่ทำงานอยู่"
 
-#: widgets/kdatenavigator.cpp:222
+#: widgets/kdatenavigator.cpp:238
 #, fuzzy, kde-format
 #| msgid "%1%"
 msgctxt "@info:tooltip"
 msgid "%1"
 msgstr "%1%"
 
-#: widgets/kdatenavigator.cpp:223
+#: widgets/kdatenavigator.cpp:239
 #, kde-format
 msgctxt "@info:whatsthis"
 msgid "A column header of the %1 dates in the month."
@@ -7816,9 +7835,6 @@ msgstr "%1%"
 #~ msgstr "ปรับแต่งจำนวนวัน"
 
 #~ msgid "Show Date Number"
-#~ msgstr "แสดงจำนวนวัน"
-
-#~ msgid "Show day number"
 #~ msgstr "แสดงจำนวนวัน"
 
 #~ msgid "Show days to end of year"
