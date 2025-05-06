@@ -6,7 +6,7 @@ msgid ""
 msgstr ""
 "Project-Id-Version: korganizer\n"
 "Report-Msgid-Bugs-To: https://bugs.kde.org\n"
-"POT-Creation-Date: 2025-05-05 00:42+0000\n"
+"POT-Creation-Date: 2025-05-06 00:42+0000\n"
 "PO-Revision-Date: 2008-07-21 16:18+0700\n"
 "Last-Translator: Thanomsub Noppaburana <donga.nb@gmail.com>\n"
 "Language-Team: Thai <thai-l10n@googlegroups.com>\n"
@@ -6417,7 +6417,7 @@ msgctxt "@title:column"
 msgid "Agenda %1"
 msgstr "มุมมองกำหนดการ"
 
-#: views/multiagendaview/multiagendaview.cpp:346
+#: views/multiagendaview/multiagendaview.cpp:342
 #, fuzzy, kde-format
 #| msgid "Configure &Date && Time..."
 msgctxt "@title:window"

@@ -17,8 +17,8 @@ msgid ""
 msgstr ""
 "Project-Id-Version: korganizer\n"
 "Report-Msgid-Bugs-To: https://bugs.kde.org\n"
-"POT-Creation-Date: 2025-05-05 00:42+0000\n"
-"PO-Revision-Date: 2025-04-29 18:48+0300\n"
+"POT-Creation-Date: 2025-05-06 00:42+0000\n"
+"PO-Revision-Date: 2025-05-05 13:10+0300\n"
 "Last-Translator: Yaron Shahrabani <sh.yaron@gmail.com>\n"
 "Language-Team: צוות התרגום של KDE ישראל\n"
 "Language: he\n"
@@ -27,7 +27,7 @@ msgstr ""
 "Content-Transfer-Encoding: 8bit\n"
 "Plural-Forms: nplurals=4; plural=(n == 1) ? 0 : ((n == 2) ? 1 : ((n > 10 && "
 "n % 10 == 0) ? 2 : 3));\n"
-"X-Generator: Lokalize 24.12.3\n"
+"X-Generator: Lokalize 25.04.0\n"
 
 #, kde-format
 msgctxt "NAME OF TRANSLATORS"
@@ -4356,18 +4356,15 @@ msgstr ""
 
 #. i18n: ectx: label, entry (WeekNumbersShow), group (General View)
 #: settings/korganizer.kcfg:97
-#, fuzzy, kde-format
-#| msgctxt "@info:tooltip"
-#| msgid "Scroll to week number %1"
+#, kde-format
 msgid "Show week numbers"
-msgstr "גלילה לשבוע מס׳ %1"
+msgstr "הצגת מספרי השבועות"
 
 #. i18n: ectx: whatsthis, entry (WeekNumbersShow), group (General View)
 #: settings/korganizer.kcfg:98
-#, fuzzy, kde-format
-#| msgid "Check this box to display the time in month view items."
+#, kde-format
 msgid "Check this box to show the Date Navigator's week numbers."
-msgstr "יש לסמן את התיבה הזאת כדי להציג את השעה בפריטי תצוגת חודש"
+msgstr "יש לסמן את התיבה הזאת כדי להציג את מספרי השבועות של התאריכון"
 
 #. i18n: ectx: label, entry (WeekNumbersShowWork), group (General View)
 #: settings/korganizer.kcfg:102
@@ -4377,17 +4374,15 @@ msgstr "מספרי השבועות בוחרים מספר שבוע כאשר נמצ
 
 #. i18n: ectx: whatsthis, entry (WeekNumbersShowWork), group (General View)
 #: settings/korganizer.kcfg:103
-#, fuzzy, kde-format
-#| msgid ""
-#| "Check this box to select a working week when clicking on the Date "
-#| "Navigator's week numbers, or uncheck it to choose the whole week."
+#, kde-format
 msgid ""
 "Check this box to select a working week when clicking on the Date "
 "Navigator's week numbers, or uncheck it to choose the whole week.  Ignored "
 "if week numbers are not shown."
 msgstr ""
 "יש לסמן את התיבה הזאת כדי לבחור שבוע עבודה בלחיצה על מספרי השבוע בתאריכון, "
-"או לבטל את הסימון כדי לבחור את השבוע כולו."
+"או לבטל את הסימון כדי לבחור את השבוע כולו. לא תקף אם מספרי השבועות לא "
+"מופיעים."
 
 #. i18n: ectx: label, entry, group (Agenda View)
 #: settings/korganizer.kcfg:110
@@ -6105,7 +6100,7 @@ msgctxt "@title:column"
 msgid "Agenda %1"
 msgstr "סדר יום %1"
 
-#: views/multiagendaview/multiagendaview.cpp:346
+#: views/multiagendaview/multiagendaview.cpp:342
 #, kde-format
 msgctxt "@title:window"
 msgid "Configure Side-By-Side View"

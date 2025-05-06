@@ -5,7 +5,7 @@ msgid ""
 msgstr ""
 "Project-Id-Version: korganizer 0\n"
 "Report-Msgid-Bugs-To: https://bugs.kde.org\n"
-"POT-Creation-Date: 2025-05-05 00:42+0000\n"
+"POT-Creation-Date: 2025-05-06 00:42+0000\n"
 "PO-Revision-Date: 2011-02-27 12:20+0100\n"
 "Last-Translator: Marko Dimjasevic <marko@dimjasevic.net>\n"
 "Language-Team: Croatian <kde-croatia-list@lists.sourceforge.net>\n"
@@ -5841,7 +5841,7 @@ msgctxt "@title:column"
 msgid "Agenda %1"
 msgstr "Pregled događaja"
 
-#: views/multiagendaview/multiagendaview.cpp:346
+#: views/multiagendaview/multiagendaview.cpp:342
 #, fuzzy, kde-format
 msgctxt "@title:window"
 msgid "Configure Side-By-Side View"

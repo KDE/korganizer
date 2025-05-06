@@ -17,7 +17,7 @@ msgid ""
 msgstr ""
 "Project-Id-Version: korganizer\n"
 "Report-Msgid-Bugs-To: https://bugs.kde.org\n"
-"POT-Creation-Date: 2025-05-05 00:42+0000\n"
+"POT-Creation-Date: 2025-05-06 00:42+0000\n"
 "PO-Revision-Date: 2024-12-29 19:04+0100\n"
 "Last-Translator: Johannes Obermayr <johannesobermayr@gmx.de>\n"
 "Language-Team: German <kde-i18n-de@kde.org>\n"
@@ -1573,7 +1573,9 @@ msgid "Attach inline &without attachments"
 msgstr "Im Text hinzufügen, &ohne Anhänge"
 
 #: actionmanager.cpp:1478 actionmanager.cpp:1583
-#, kde-format
+#, fuzzy, kde-format
+#| msgctxt "@action:inmenu"
+#| msgid "C&ancel"
 msgctxt "@action:inmenu"
 msgid "C&ancel"
 msgstr "&Abbrechen"
@@ -6529,7 +6531,7 @@ msgctxt "@title:column"
 msgid "Agenda %1"
 msgstr "Terminplan %1"
 
-#: views/multiagendaview/multiagendaview.cpp:346
+#: views/multiagendaview/multiagendaview.cpp:342
 #, kde-format
 msgctxt "@title:window"
 msgid "Configure Side-By-Side View"

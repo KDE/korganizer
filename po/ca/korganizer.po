@@ -13,8 +13,8 @@ msgid ""
 msgstr ""
 "Project-Id-Version: korganizer\n"
 "Report-Msgid-Bugs-To: https://bugs.kde.org\n"
-"POT-Creation-Date: 2025-05-05 00:42+0000\n"
-"PO-Revision-Date: 2025-04-28 09:25+0200\n"
+"POT-Creation-Date: 2025-05-06 00:42+0000\n"
+"PO-Revision-Date: 2025-05-05 13:33+0200\n"
 "Last-Translator: Josep M. Ferrer <txemaq@gmail.com>\n"
 "Language-Team: Catalan <kde-i18n-ca@kde.org>\n"
 "Language: ca\n"
@@ -4469,20 +4469,17 @@ msgstr ""
 
 #. i18n: ectx: label, entry (WeekNumbersShow), group (General View)
 #: settings/korganizer.kcfg:97
-#, fuzzy, kde-format
-#| msgctxt "@info:tooltip"
-#| msgid "Scroll to week number %1"
+#, kde-format
 msgid "Show week numbers"
-msgstr "Desplaça a la setmana número %1"
+msgstr "Mostra els números de setmana"
 
 #. i18n: ectx: whatsthis, entry (WeekNumbersShow), group (General View)
 #: settings/korganizer.kcfg:98
-#, fuzzy, kde-format
-#| msgid "Check this box to display the time in month view items."
+#, kde-format
 msgid "Check this box to show the Date Navigator's week numbers."
 msgstr ""
-"Activeu aquesta casella per a visualitzar l'hora en els elements a la vista "
-"mensual."
+"Activeu aquesta casella per a visualitzar els números de setmana del "
+"navegador de dates."
 
 #. i18n: ectx: label, entry (WeekNumbersShowWork), group (General View)
 #: settings/korganizer.kcfg:102
@@ -4494,10 +4491,7 @@ msgstr ""
 
 #. i18n: ectx: whatsthis, entry (WeekNumbersShowWork), group (General View)
 #: settings/korganizer.kcfg:103
-#, fuzzy, kde-format
-#| msgid ""
-#| "Check this box to select a working week when clicking on the Date "
-#| "Navigator's week numbers, or uncheck it to choose the whole week."
+#, kde-format
 msgid ""
 "Check this box to select a working week when clicking on the Date "
 "Navigator's week numbers, or uncheck it to choose the whole week.  Ignored "
@@ -4505,7 +4499,8 @@ msgid ""
 msgstr ""
 "Activeu aquesta casella per a seleccionar una setmana laboral en clicar en "
 "els números de setmana del navegador de dates, o desactiveu-la per a "
-"seleccionar la setmana sencera."
+"seleccionar la setmana sencera. S'ignora si no es mostren els números de "
+"setmana."
 
 #. i18n: ectx: label, entry, group (Agenda View)
 #: settings/korganizer.kcfg:110
@@ -6346,7 +6341,7 @@ msgctxt "@title:column"
 msgid "Agenda %1"
 msgstr "Agenda %1"
 
-#: views/multiagendaview/multiagendaview.cpp:346
+#: views/multiagendaview/multiagendaview.cpp:342
 #, kde-format
 msgctxt "@title:window"
 msgid "Configure Side-By-Side View"

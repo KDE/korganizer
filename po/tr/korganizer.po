@@ -20,7 +20,7 @@ msgid ""
 msgstr ""
 "Project-Id-Version: kdepim-kde4\n"
 "Report-Msgid-Bugs-To: https://bugs.kde.org\n"
-"POT-Creation-Date: 2025-05-05 00:42+0000\n"
+"POT-Creation-Date: 2025-05-06 00:42+0000\n"
 "PO-Revision-Date: 2025-04-28 10:25+0300\n"
 "Last-Translator: Emir SARI <emir_sari@îcloud.com>\n"
 "Language-Team: Turkish <kde-l10n-tr@kde.org>\n"
@@ -6236,7 +6236,7 @@ msgctxt "@title:column"
 msgid "Agenda %1"
 msgstr "Ajanda %1"
 
-#: views/multiagendaview/multiagendaview.cpp:346
+#: views/multiagendaview/multiagendaview.cpp:342
 #, kde-format
 msgctxt "@title:window"
 msgid "Configure Side-By-Side View"

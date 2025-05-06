@@ -1,7 +1,7 @@
 # translation of korganizer.po to Slovenian
 # Translation of korganizer.po to Slovenian
 # Copyright (C) 2001,2002, 2003, 2004, 2005, 2006 Free Software Foundation, Inc.
-# $Id: korganizer.po 1708314 2025-05-05 01:21:08Z scripty $
+# $Id: korganizer.po 1708359 2025-05-06 01:20:41Z scripty $
 # $Source$
 #
 # Roman Maurer <roman.maurer@hermes.si>, 2001.
@@ -14,8 +14,8 @@ msgid ""
 msgstr ""
 "Project-Id-Version: korganizer\n"
 "Report-Msgid-Bugs-To: https://bugs.kde.org\n"
-"POT-Creation-Date: 2025-05-05 00:42+0000\n"
-"PO-Revision-Date: 2025-04-28 09:58+0200\n"
+"POT-Creation-Date: 2025-05-06 00:42+0000\n"
+"PO-Revision-Date: 2025-05-05 07:30+0200\n"
 "Last-Translator: Matjaž Jeran <matjaz.jeran@amis.net>\n"
 "Language-Team: Slovenian <lugos-slo@lugos.si>\n"
 "Language: sl\n"
@@ -4455,17 +4455,16 @@ msgstr ""
 
 #. i18n: ectx: label, entry (WeekNumbersShow), group (General View)
 #: settings/korganizer.kcfg:97
-#, fuzzy, kde-format
-#| msgid "Show day number"
+#, kde-format
 msgid "Show week numbers"
-msgstr "Pokaži številko dneva"
+msgstr "Pokaži številke tedna"
 
 #. i18n: ectx: whatsthis, entry (WeekNumbersShow), group (General View)
 #: settings/korganizer.kcfg:98
-#, fuzzy, kde-format
-#| msgid "Check this box to display the time in month view items."
+#, kde-format
 msgid "Check this box to show the Date Navigator's week numbers."
-msgstr "Označite to polje, da bo v predmetih mesečnega prikaza prikazan čas."
+msgstr ""
+"Označite to polje, če želite prikazati številke tednov v navigatorju datuma."
 
 #. i18n: ectx: label, entry (WeekNumbersShowWork), group (General View)
 #: settings/korganizer.kcfg:102
@@ -4475,17 +4474,15 @@ msgstr "Številke tedna v načinu delovnega tedna označijo delovni teden"
 
 #. i18n: ectx: whatsthis, entry (WeekNumbersShowWork), group (General View)
 #: settings/korganizer.kcfg:103
-#, fuzzy, kde-format
-#| msgid ""
-#| "Check this box to select a working week when clicking on the Date "
-#| "Navigator's week numbers, or uncheck it to choose the whole week."
+#, kde-format
 msgid ""
 "Check this box to select a working week when clicking on the Date "
 "Navigator's week numbers, or uncheck it to choose the whole week.  Ignored "
 "if week numbers are not shown."
 msgstr ""
-"Označite to polje, da se ob kliku na številke tednov v krmarju po datumih "
-"izbere delovni teden. V nasprotnem se izbere celotni teden."
+"Označite to polje, če želite izbrati delovni teden, ko kliknete številke "
+"tednov v navigatorju datuma, ali pa ga počistite, če želite izbrati cel "
+"teden. Prezrto, če številke tednov niso prikazane."
 
 #. i18n: ectx: label, entry, group (Agenda View)
 #: settings/korganizer.kcfg:110
@@ -6263,7 +6260,7 @@ msgctxt "@title:column"
 msgid "Agenda %1"
 msgstr "Dnevni red %1"
 
-#: views/multiagendaview/multiagendaview.cpp:346
+#: views/multiagendaview/multiagendaview.cpp:342
 #, kde-format
 msgctxt "@title:window"
 msgid "Configure Side-By-Side View"

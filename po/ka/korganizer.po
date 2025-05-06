@@ -7,8 +7,8 @@ msgid ""
 msgstr ""
 "Project-Id-Version: korganizer\n"
 "Report-Msgid-Bugs-To: https://bugs.kde.org\n"
-"POT-Creation-Date: 2025-05-05 00:42+0000\n"
-"PO-Revision-Date: 2025-04-28 04:21+0200\n"
+"POT-Creation-Date: 2025-05-06 00:42+0000\n"
+"PO-Revision-Date: 2025-05-05 03:47+0200\n"
 "Last-Translator: Temuri Doghonadze <temuri.doghonadze@gmail.com>\n"
 "Language-Team: Georgian <kde-i18n-doc@kde.org>\n"
 "Language: ka\n"
@@ -4405,18 +4405,15 @@ msgstr ""
 
 #. i18n: ectx: label, entry (WeekNumbersShow), group (General View)
 #: settings/korganizer.kcfg:97
-#, fuzzy, kde-format
-#| msgctxt "@info:tooltip"
-#| msgid "Scroll to week number %1"
+#, kde-format
 msgid "Show week numbers"
-msgstr "გადახვევა კვირაზე %1"
+msgstr "კვირის რიცხვის ჩვენება"
 
 #. i18n: ectx: whatsthis, entry (WeekNumbersShow), group (General View)
 #: settings/korganizer.kcfg:98
-#, fuzzy, kde-format
-#| msgid "Check this box to display the time in month view items."
+#, kde-format
 msgid "Check this box to show the Date Navigator's week numbers."
-msgstr "ჩართეთ ეს თოლია თვის ხედის ელემენტებში დროის საჩვენებლად."
+msgstr "ჩართეთ ეს თოლია თარიღის ნავიგატორის კვირის ნომრების საჩვენებლად."
 
 #. i18n: ectx: label, entry (WeekNumbersShowWork), group (General View)
 #: settings/korganizer.kcfg:102
@@ -4427,17 +4424,15 @@ msgstr ""
 
 #. i18n: ectx: whatsthis, entry (WeekNumbersShowWork), group (General View)
 #: settings/korganizer.kcfg:103
-#, fuzzy, kde-format
-#| msgid ""
-#| "Check this box to select a working week when clicking on the Date "
-#| "Navigator's week numbers, or uncheck it to choose the whole week."
+#, kde-format
 msgid ""
 "Check this box to select a working week when clicking on the Date "
 "Navigator's week numbers, or uncheck it to choose the whole week.  Ignored "
 "if week numbers are not shown."
 msgstr ""
 "დასვით ეს თოლია, რომ მონაცემების ნავიგატორის კვირის რიცხვებზე დაწკაპუნებისას "
-"სამუშაო კვირა აირჩიოთ, ან გამორთეთ, რომ მთელი კვირა აირჩიოთ."
+"სამუშაო კვირა აირჩიოთ, ან გამორთეთ, რომ მთელი კვირა აირჩიოთ.  გამოტოვებულია, "
+"თუ კვირის ნომრები ნაჩვენები არაა."
 
 #. i18n: ectx: label, entry, group (Agenda View)
 #: settings/korganizer.kcfg:110
@@ -6228,7 +6223,7 @@ msgctxt "@title:column"
 msgid "Agenda %1"
 msgstr "დღის წესრიგი %1"
 
-#: views/multiagendaview/multiagendaview.cpp:346
+#: views/multiagendaview/multiagendaview.cpp:342
 #, kde-format
 msgctxt "@title:window"
 msgid "Configure Side-By-Side View"

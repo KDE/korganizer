@@ -18,8 +18,8 @@ msgid ""
 msgstr ""
 "Project-Id-Version: korganizer\n"
 "Report-Msgid-Bugs-To: https://bugs.kde.org\n"
-"POT-Creation-Date: 2025-05-05 00:42+0000\n"
-"PO-Revision-Date: 2025-04-28 11:07+0200\n"
+"POT-Creation-Date: 2025-05-06 00:42+0000\n"
+"PO-Revision-Date: 2025-05-05 10:25+0200\n"
 "Last-Translator: Freek de Kruijf <freekdekruijf@kde.nl>\n"
 "Language-Team: \n"
 "Language: nl\n"
@@ -4444,19 +4444,15 @@ msgstr ""
 
 #. i18n: ectx: label, entry (WeekNumbersShow), group (General View)
 #: settings/korganizer.kcfg:97
-#, fuzzy, kde-format
-#| msgid "Show day number"
+#, kde-format
 msgid "Show week numbers"
-msgstr "Dagnummer tonen"
+msgstr "Weeknummers tonen"
 
 #. i18n: ectx: whatsthis, entry (WeekNumbersShow), group (General View)
 #: settings/korganizer.kcfg:98
-#, fuzzy, kde-format
-#| msgid "Check this box to display the time in month view items."
+#, kde-format
 msgid "Check this box to show the Date Navigator's week numbers."
-msgstr ""
-"Selecteer dit keuzevakje als u de tijd in de maandweergave wilt laten "
-"weergeven."
+msgstr "Activeer dit vakje om de weeknummers van datumnavigator te tonen."
 
 #. i18n: ectx: label, entry (WeekNumbersShowWork), group (General View)
 #: settings/korganizer.kcfg:102
@@ -4466,18 +4462,15 @@ msgstr "In weekmodus wordt met weeknummers een werkweek geselecteerd"
 
 #. i18n: ectx: whatsthis, entry (WeekNumbersShowWork), group (General View)
 #: settings/korganizer.kcfg:103
-#, fuzzy, kde-format
-#| msgid ""
-#| "Check this box to select a working week when clicking on the Date "
-#| "Navigator's week numbers, or uncheck it to choose the whole week."
+#, kde-format
 msgid ""
 "Check this box to select a working week when clicking on the Date "
 "Navigator's week numbers, or uncheck it to choose the whole week.  Ignored "
 "if week numbers are not shown."
 msgstr ""
 "Klik op dit vakje om een werkweek te selecteren als op de weeknummers in de "
-"datumnavigator wordt geklikt, of zet het vinkje uit als de gehele week moet "
-"worden gekozen."
+"datumnavigator wordt geklikt of verwijder activatie het als de gehele week "
+"moet worden gekozen. Genegeerd als geen weeknummers worden getoond."
 
 #. i18n: ectx: label, entry, group (Agenda View)
 #: settings/korganizer.kcfg:110
@@ -6278,7 +6271,7 @@ msgctxt "@title:column"
 msgid "Agenda %1"
 msgstr "Agenda %1"
 
-#: views/multiagendaview/multiagendaview.cpp:346
+#: views/multiagendaview/multiagendaview.cpp:342
 #, kde-format
 msgctxt "@title:window"
 msgid "Configure Side-By-Side View"
