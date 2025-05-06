@@ -689,10 +689,6 @@ void AkonadiCollectionView::updateMenu()
         const Akonadi::Collection collection = Akonadi::CollectionUtils::fromIndex(index);
 
         if (collection.isValid() && !collection.contentMimeTypes().isEmpty()) {
-            if (collection.remoteId() == QLatin1StringView("akonadi_birthdays_resource")) {
-                mAssignColor->setEnabled(false);
-            }
-
             mDefaultCalendar->setEnabled(!KOHelper::isStandardCalendar(collection.id()) && (collection.rights() & Akonadi::Collection::CanCreateItem)
                                          && !collection.isVirtual() && collection.contentMimeTypes().contains(KCalendarCore::Event::eventMimeType()));
             disableStuff = false;
