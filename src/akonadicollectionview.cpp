@@ -759,10 +759,6 @@ void AkonadiCollectionView::updateMenu()
         const Akonadi::Collection collection = Akonadi::CollectionUtils::fromIndex(index);
 
         if (collection.isValid() && !collection.contentMimeTypes().isEmpty()) {
-            if (collection.remoteId() == QLatin1StringView("akonadi_birthdays_resource")) {
-                mAssignColor->setEnabled(false);
-            }
-
             bool isDefaultSetable = (collection.rights() & Akonadi::Collection::CanCreateItem) && !collection.isVirtual();
             if (isDefaultSetable) {
                 if (collection.contentMimeTypes().contains(KCalendarCore::Event::eventMimeType())) {
