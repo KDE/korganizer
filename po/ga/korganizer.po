@@ -6,7 +6,7 @@ msgid ""
 msgstr ""
 "Project-Id-Version: kdepim/korganizer.po\n"
 "Report-Msgid-Bugs-To: https://bugs.kde.org\n"
-"POT-Creation-Date: 2025-05-06 00:42+0000\n"
+"POT-Creation-Date: 2025-05-07 00:43+0000\n"
 "PO-Revision-Date: 2004-12-03 14:52-0500\n"
 "Last-Translator: Kevin Scannell <kscanne@gmail.com>\n"
 "Language-Team: Irish <gaeilge-gnulinux@lists.sourceforge.net>\n"
@@ -1349,7 +1349,7 @@ msgstr "Taispeáin Uimhir an Lae"
 #, fuzzy, kde-format
 #| msgid "Show To-do View"
 msgctxt "@action:inmenu"
-msgid "Show To-do View"
+msgid "Show To-do List in Calendar Views"
 msgstr "Taispeáin Amharc Tascliosta"
 
 #: actionmanager.cpp:766
@@ -1892,38 +1892,38 @@ msgid ""
 "so it will be hidden and not appear in the view."
 msgstr ""
 
-#: calendarview.cpp:803
+#: calendarview.cpp:812
 #, kde-format
 msgctxt "@info"
 msgid "Do you really want to permanently remove the item \"%1\"?"
 msgstr "An bhfuil tú cinnte gur mian leat mír \"%1\" a bhaint go deo?"
 
-#: calendarview.cpp:804
+#: calendarview.cpp:813
 #, kde-format
 msgctxt "@title:window"
 msgid "Delete Item?"
 msgstr "An bhfuil fonn ort an mhír a scriosadh?"
 
-#: calendarview.cpp:879
+#: calendarview.cpp:888
 #, kde-format
 msgctxt "@info"
 msgid "Paste failed: unable to determine a valid target date."
 msgstr ""
 
-#: calendarview.cpp:1291
+#: calendarview.cpp:1300
 #, kde-format
 msgctxt "@info/plain"
 msgid "Make sub-to-dos independent"
 msgstr ""
 
-#: calendarview.cpp:1348
+#: calendarview.cpp:1357
 #, fuzzy, kde-format
 #| msgid "&Toggle Reminder"
 msgctxt "@info/plain"
 msgid "Toggle Reminder"
 msgstr "&Scoránaigh Meabhrúchán"
 
-#: calendarview.cpp:1380 calendarview.cpp:1432
+#: calendarview.cpp:1389 calendarview.cpp:1441
 #, fuzzy, kde-format
 #| msgctxt "@action:inmenu delete completed to-dos"
 #| msgid "Pur&ge Completed"
@@ -1931,31 +1931,31 @@ msgctxt "@info/plain"
 msgid "Toggle To-do Completed"
 msgstr "Pur&gú Críochnaithe"
 
-#: calendarview.cpp:1484
+#: calendarview.cpp:1493
 #, kde-format
 msgctxt "@info"
 msgid "\"%1\" was successfully copied to %2."
 msgstr ""
 
-#: calendarview.cpp:1485
+#: calendarview.cpp:1494
 #, kde-format
 msgctxt "@title:window"
 msgid "Copying Succeeded"
 msgstr "D'éirigh le Cóipeáil"
 
-#: calendarview.cpp:1489
+#: calendarview.cpp:1498
 #, kde-format
 msgctxt "@info"
 msgid "Unable to copy the item \"%1\" to %2."
 msgstr ""
 
-#: calendarview.cpp:1490 calendarview.cpp:2458
+#: calendarview.cpp:1499 calendarview.cpp:2467
 #, kde-format
 msgctxt "@title:window"
 msgid "Copying Failed"
 msgstr "Theip ar Chóipeáil"
 
-#: calendarview.cpp:1549
+#: calendarview.cpp:1558
 #, kde-format
 msgctxt "@info"
 msgid ""
@@ -1963,52 +1963,52 @@ msgid ""
 "of this item has been put into %2"
 msgstr ""
 
-#: calendarview.cpp:1553 calendarview.cpp:1569 calendarview.cpp:2493
+#: calendarview.cpp:1562 calendarview.cpp:1578 calendarview.cpp:2502
 #, kde-format
 msgctxt "@title:window"
 msgid "Moving Failed"
 msgstr "Theip ar Bhogadh"
 
-#: calendarview.cpp:1558
+#: calendarview.cpp:1567
 #, kde-format
 msgctxt "@info"
 msgid "\"%1\" was successfully moved from %2 to %3."
 msgstr ""
 
-#: calendarview.cpp:1559
+#: calendarview.cpp:1568
 #, kde-format
 msgctxt "@title:window"
 msgid "Moving Succeeded"
 msgstr ""
 
-#: calendarview.cpp:1565
+#: calendarview.cpp:1574
 #, kde-format
 msgctxt "@info"
 msgid "Unable to add the item \"%1\" into %2. This item has not been moved."
 msgstr ""
 
-#: calendarview.cpp:1604
+#: calendarview.cpp:1613
 #, kde-format
 msgctxt "@info"
 msgid "Do you want to dissociate the occurrence on %1 from the recurrence?"
 msgstr ""
 
-#: calendarview.cpp:1608 calendarview.cpp:1621 calendarview.cpp:2274
-#: calendarview.cpp:2333 calendarview.cpp:2363
+#: calendarview.cpp:1617 calendarview.cpp:1630 calendarview.cpp:2283
+#: calendarview.cpp:2342 calendarview.cpp:2372
 #, fuzzy, kde-format
 #| msgid "KOrganizer Confirmation"
 msgctxt "@title:window"
 msgid "KOrganizer Confirmation"
 msgstr "Deimhniú KOrganizer"
 
-#: calendarview.cpp:1609
+#: calendarview.cpp:1618
 #, fuzzy, kde-format
 #| msgid "Locking Failed"
 msgctxt "@action:button"
 msgid "&Dissociate"
 msgstr "Theip ar Chur Faoi Ghlas"
 
-#: calendarview.cpp:1616
+#: calendarview.cpp:1625
 #, kde-format
 msgctxt "@info"
 msgid ""
@@ -2016,53 +2016,53 @@ msgid ""
 "dissociate future ones?"
 msgstr ""
 
-#: calendarview.cpp:1622
+#: calendarview.cpp:1631
 #, kde-format
 msgctxt "@action:button"
 msgid "&Only Dissociate This One"
 msgstr ""
 
-#: calendarview.cpp:1623
+#: calendarview.cpp:1632
 #, kde-format
 msgctxt "@action:button"
 msgid "&Also Dissociate Future Ones"
 msgstr ""
 
-#: calendarview.cpp:1641
+#: calendarview.cpp:1650
 #, fuzzy, kde-format
 #| msgid "Delete C&urrent"
 msgctxt "@info/plain"
 msgid "Dissociate future occurrences"
 msgstr "Scrios &Ceann Reatha"
 
-#: calendarview.cpp:1643
+#: calendarview.cpp:1652
 #, fuzzy, kde-format
 #| msgid "Delete C&urrent"
 msgctxt "@info/plain"
 msgid "Dissociate occurrence"
 msgstr "Scrios &Ceann Reatha"
 
-#: calendarview.cpp:1650
+#: calendarview.cpp:1659
 #, kde-format
 msgctxt "@info"
 msgid "Dissociating the future occurrences failed."
 msgstr ""
 
-#: calendarview.cpp:1650 calendarview.cpp:1652
+#: calendarview.cpp:1659 calendarview.cpp:1661
 #, fuzzy, kde-format
 #| msgid "Locking Failed"
 msgctxt "@title:window"
 msgid "Dissociating Failed"
 msgstr "Theip ar Chur Faoi Ghlas"
 
-#: calendarview.cpp:1652
+#: calendarview.cpp:1661
 #, fuzzy, kde-format
 #| msgid "Locking Failed"
 msgctxt "@info"
 msgid "Dissociating the occurrence failed."
 msgstr "Theip ar Chur Faoi Ghlas"
 
-#: calendarview.cpp:1807
+#: calendarview.cpp:1816
 #, fuzzy, kde-format
 #| msgctxt "@title:group"
 #| msgid "Exporting Calendar"
@@ -2070,14 +2070,14 @@ msgctxt "@title:window"
 msgid "Export Calendar to File"
 msgstr "Féilire á Easpórtáil"
 
-#: calendarview.cpp:1820
+#: calendarview.cpp:1829
 #, fuzzy, kde-kuit-format
 #| msgid "Do you want to overwrite file \"%1\"?"
 msgctxt "@info"
 msgid "Do you want to overwrite <filename>%1</filename>?"
 msgstr "An bhfuil fonn ort comhad \"%1\" a fhorscríobh?"
 
-#: calendarview.cpp:1821
+#: calendarview.cpp:1830
 #, fuzzy, kde-format
 #| msgctxt "@title:window"
 #| msgid "Import Calendar"
@@ -2085,7 +2085,7 @@ msgctxt "@title:window"
 msgid "Export Calendar"
 msgstr "Iompórtáil Féilire"
 
-#: calendarview.cpp:1835
+#: calendarview.cpp:1844
 #, fuzzy, kde-format
 #| msgctxt "unknown status"
 #| msgid "unknown"
@@ -2093,21 +2093,21 @@ msgctxt "@info save failure cause unknown"
 msgid "Reason unknown"
 msgstr "anaithnid"
 
-#: calendarview.cpp:1837
+#: calendarview.cpp:1846
 #, kde-kuit-format
 msgctxt "@info"
 msgid ""
 "Cannot write iCalendar file <filename>%1</filename>: <message>%2</message>"
 msgstr ""
 
-#: calendarview.cpp:1946 calendarview.cpp:1991
+#: calendarview.cpp:1955 calendarview.cpp:2000
 #, fuzzy, kde-format
 #| msgid "No filter"
 msgctxt "@info/plain"
 msgid "No filter"
 msgstr "Gan scagaire"
 
-#: calendarview.cpp:2269
+#: calendarview.cpp:2278
 #, kde-kuit-format
 msgctxt "@info"
 msgid ""
@@ -2116,21 +2116,21 @@ msgid ""
 "all its sub-to-dos?"
 msgstr ""
 
-#: calendarview.cpp:2275
+#: calendarview.cpp:2284
 #, fuzzy, kde-format
 #| msgid "Delete Only This"
 msgctxt "@action:button"
 msgid "Delete Only This"
 msgstr "Ná Scrios Ach An Ceann Seo"
 
-#: calendarview.cpp:2276 calendarview.cpp:2334
+#: calendarview.cpp:2285 calendarview.cpp:2343
 #, fuzzy, kde-format
 #| msgid "Delete All"
 msgctxt "@action:button"
 msgid "Delete All"
 msgstr "Scrios Uile"
 
-#: calendarview.cpp:2308
+#: calendarview.cpp:2317
 #, kde-kuit-format
 msgctxt "@info"
 msgid ""
@@ -2138,14 +2138,14 @@ msgid ""
 "it probably belongs to a read-only calendar."
 msgstr ""
 
-#: calendarview.cpp:2311
+#: calendarview.cpp:2320
 #, fuzzy, kde-format
 #| msgid "Removing not possible"
 msgctxt "@title:window"
 msgid "Removing not possible"
 msgstr "Ní féidir baint"
 
-#: calendarview.cpp:2330
+#: calendarview.cpp:2339
 #, kde-kuit-format
 msgctxt "@info"
 msgid ""
@@ -2153,14 +2153,14 @@ msgid ""
 "you sure you want to delete it and all its recurrences?"
 msgstr ""
 
-#: calendarview.cpp:2341
+#: calendarview.cpp:2350
 #, fuzzy, kde-format
 #| msgid "Delete C&urrent"
 msgctxt "@action:button"
 msgid "Also Delete &Future"
 msgstr "Scrios &Ceann Reatha"
 
-#: calendarview.cpp:2345
+#: calendarview.cpp:2354
 #, kde-kuit-format
 msgctxt "@info"
 msgid ""
@@ -2169,7 +2169,7 @@ msgid ""
 "its occurrences?"
 msgstr ""
 
-#: calendarview.cpp:2352
+#: calendarview.cpp:2361
 #, kde-kuit-format
 msgctxt "@info"
 msgid ""
@@ -2177,84 +2177,84 @@ msgid ""
 "want to delete only the current one on %2 or all its occurrences?"
 msgstr ""
 
-#: calendarview.cpp:2364
+#: calendarview.cpp:2373
 #, fuzzy, kde-format
 #| msgid "Delete C&urrent"
 msgctxt "@action:button"
 msgid "Delete C&urrent"
 msgstr "Scrios &Ceann Reatha"
 
-#: calendarview.cpp:2366
+#: calendarview.cpp:2375
 #, fuzzy, kde-format
 #| msgid "Delete &All"
 msgctxt "@action:button"
 msgid "Delete &All"
 msgstr "Scrios &gach rud"
 
-#: calendarview.cpp:2397 calendarview.cpp:2404
+#: calendarview.cpp:2406 calendarview.cpp:2413
 #, fuzzy, kde-format
 #| msgid "Delete %1"
 msgctxt "@info/plain"
 msgid "Delete \"%1\""
 msgstr "Scrios %1"
 
-#: calendarview.cpp:2436
+#: calendarview.cpp:2445
 #, kde-format
 msgctxt "@info"
 msgid ""
 "All calendars are unchecked in the Calendar Manager. No to-do was purged."
 msgstr ""
 
-#: calendarview.cpp:2441 calendarview.cpp:2696
+#: calendarview.cpp:2450 calendarview.cpp:2705
 #, fuzzy, kde-format
 #| msgid "Delete all completed to-dos?"
 msgctxt "@info"
 msgid "There are no completed to-dos to purge."
 msgstr "Scrios gach tasc críochnaithe?"
 
-#: calendarview.cpp:2446
+#: calendarview.cpp:2455
 #, fuzzy, kde-format
 #| msgid "Delete all completed to-dos?"
 msgctxt "@info"
 msgid "Delete all completed to-dos from checked calendars?"
 msgstr "Scrios gach tasc críochnaithe?"
 
-#: calendarview.cpp:2447
+#: calendarview.cpp:2456
 #, fuzzy, kde-format
 #| msgid "Purge To-dos"
 msgctxt "@title:window"
 msgid "Purge To-dos"
 msgstr "Purgaigh Tascanna"
 
-#: calendarview.cpp:2448
+#: calendarview.cpp:2457
 #, fuzzy, kde-format
 #| msgid "Purge"
 msgctxt "@action:button"
 msgid "Purge"
 msgstr "Purgaigh"
 
-#: calendarview.cpp:2458
+#: calendarview.cpp:2467
 #, fuzzy, kde-kuit-format
 #| msgid "<qt>Unable to create subresource <b>%1</b>.</qt>"
 msgctxt "@info"
 msgid "Unable to copy item <resource>%1</resource>."
 msgstr "<qt>Ní féidir fo-acmhainn <b>%1</b> a chruthú.</qt>"
 
-#: calendarview.cpp:2493
+#: calendarview.cpp:2502
 #, fuzzy, kde-kuit-format
 #| msgid "<qt>Unable to create subresource <b>%1</b>.</qt>"
 msgctxt "@info"
 msgid "Unable to move item <resource>%1</resource>."
 msgstr "<qt>Ní féidir fo-acmhainn <b>%1</b> a chruthú.</qt>"
 
-#: calendarview.cpp:2688
+#: calendarview.cpp:2697
 #, fuzzy, kde-kuit-format
 #| msgid "Hide co&mpleted to-dos"
 msgctxt "@info"
 msgid "0 completed to-dos were purged.<nl/>"
 msgstr "Folaigh ta&scanna críochnaithe"
 
-#: calendarview.cpp:2690 calendarview.cpp:2701
+#: calendarview.cpp:2699 calendarview.cpp:2710
 #, kde-format, kde-kuit-format
 msgctxt "@info"
 msgid "%1 to-do was ignored because it has uncompleted or read-only children."
@@ -2266,7 +2266,7 @@ msgstr[2] ""
 msgstr[3] ""
 msgstr[4] ""
 
-#: calendarview.cpp:2694 calendarview.cpp:2699
+#: calendarview.cpp:2703 calendarview.cpp:2708
 #, fuzzy, kde-format
 #| msgid "Hide co&mpleted to-dos"
 msgctxt "@info"
@@ -2278,14 +2278,14 @@ msgstr[2] "Folaigh ta&scanna críochnaithe"
 msgstr[3] "Folaigh ta&scanna críochnaithe"
 msgstr[4] "Folaigh ta&scanna críochnaithe"
 
-#: calendarview.cpp:2706
+#: calendarview.cpp:2715
 #, fuzzy, kde-kuit-format
 #| msgid "Purging completed to-dos"
 msgctxt "@info"
 msgid "An error occurred while purging completed to-dos: <message>%1</message>"
 msgstr "Tascanna críochnaithe á bpurgú"
 
-#: calendarview.cpp:2760
+#: calendarview.cpp:2769
 #, kde-kuit-format
 msgctxt "@info"
 msgid ""
@@ -2294,7 +2294,7 @@ msgid ""
 "incidence.</para>"
 msgstr ""
 
-#: calendarview.cpp:2764
+#: calendarview.cpp:2773
 #, kde-kuit-format
 msgctxt "@info"
 msgid ""
