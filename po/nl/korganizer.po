@@ -19,7 +19,7 @@ msgstr ""
 "Project-Id-Version: korganizer\n"
 "Report-Msgid-Bugs-To: https://bugs.kde.org\n"
 "POT-Creation-Date: 2025-05-07 00:43+0000\n"
-"PO-Revision-Date: 2025-05-05 10:25+0200\n"
+"PO-Revision-Date: 2025-05-07 12:07+0200\n"
 "Last-Translator: Freek de Kruijf <freekdekruijf@kde.nl>\n"
 "Language-Team: \n"
 "Language: nl\n"
@@ -1287,11 +1287,10 @@ msgid "Show Date Navigator"
 msgstr "Datumnavigator tonen"
 
 #: actionmanager.cpp:762
-#, fuzzy, kde-format
-#| msgid "Show icons in agenda view items"
+#, kde-format
 msgctxt "@action:inmenu"
 msgid "Show To-do List in Calendar Views"
-msgstr "Pictogrammen tonen in agendaweergaven"
+msgstr "Takenlijst tonen in agendaweergaven"
 
 #: actionmanager.cpp:766
 #, kde-format

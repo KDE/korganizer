@@ -14,7 +14,7 @@ msgstr ""
 "Project-Id-Version: korganizer\n"
 "Report-Msgid-Bugs-To: https://bugs.kde.org\n"
 "POT-Creation-Date: 2025-05-07 00:43+0000\n"
-"PO-Revision-Date: 2025-05-05 13:33+0200\n"
+"PO-Revision-Date: 2025-05-07 10:36+0200\n"
 "Last-Translator: Josep M. Ferrer <txemaq@gmail.com>\n"
 "Language-Team: Catalan <kde-i18n-ca@kde.org>\n"
 "Language: ca\n"
@@ -1286,11 +1286,10 @@ msgid "Show Date Navigator"
 msgstr "Mostra el navegador de dates"
 
 #: actionmanager.cpp:762
-#, fuzzy, kde-format
-#| msgid "Show icons in agenda view items"
+#, kde-format
 msgctxt "@action:inmenu"
 msgid "Show To-do List in Calendar Views"
-msgstr "Mostra les icones dels elements a la vista d'agenda"
+msgstr "Mostra la llista de tasques pendents a les vistes de calendari"
 
 #: actionmanager.cpp:766
 #, kde-format
@@ -6549,49 +6548,3 @@ msgstr "%1"
 msgctxt "4 digit year"
 msgid "%1"
 msgstr "%1"
-
-#~ msgctxt "@action:inmenu"
-#~ msgid "Show To-do View"
-#~ msgstr "Mostra la vista de les tasques pendents"
-
-#~ msgid "&Show"
-#~ msgstr "&Mostra"
-
-#~ msgid "&Edit…"
-#~ msgstr "&Edita…"
-
-#~ msgid "Saved calendar '%1'."
-#~ msgstr "S'ha desat el calendari «%1»."
-
-#~ msgid "URL '%1' is invalid."
-#~ msgstr "L'URL «%1» no és vàlid."
-
-#~ msgid "iCalendars (*.ics)"
-#~ msgstr "iCalendar (*.ics)"
-
-#~ msgctxt "@info"
-#~ msgid "Cannot write iCalendar file %1. %2"
-#~ msgstr "No s'ha pogut escriure el fitxer d'iCalendar %1. %2"
-
-#~ msgid "KOrganizer Confirmation"
-#~ msgstr "Confirmació del KOrganizer"
-
-#~ msgctxt "Event from email content"
-#~ msgid "<b>From:</b> %1<br /><b>To:</b> %2<br /><b>Subject:</b> %3"
-#~ msgstr "<b>De:</b> %1<br /><b>A:</b> %2<br /><b>Assumpte:</b> %3"
-
-#~ msgctxt "@action"
-#~ msgid "Configure"
-#~ msgstr "Configura"
-
-#~ msgctxt "@info"
-#~ msgid "Unable to edit \"%1\" because it is locked by another process."
-#~ msgstr ""
-#~ "No s'ha pogut editar l'element «%1» perquè està bloquejat per un altre "
-#~ "procés."
-
-#~ msgid "Unable to save %1 \"%2\"."
-#~ msgstr "No s'ha pogut desar %1 «%2»."
-
-#~ msgid "W&ork Week"
-#~ msgstr "S&etmana laboral"

@@ -1,7 +1,7 @@
 # translation of korganizer.po to Slovenian
 # Translation of korganizer.po to Slovenian
 # Copyright (C) 2001,2002, 2003, 2004, 2005, 2006 Free Software Foundation, Inc.
-# $Id: korganizer.po 1708431 2025-05-07 01:21:58Z scripty $
+# $Id: korganizer.po 1708494 2025-05-08 01:21:41Z scripty $
 # $Source$
 #
 # Roman Maurer <roman.maurer@hermes.si>, 2001.
@@ -15,7 +15,7 @@ msgstr ""
 "Project-Id-Version: korganizer\n"
 "Report-Msgid-Bugs-To: https://bugs.kde.org\n"
 "POT-Creation-Date: 2025-05-07 00:43+0000\n"
-"PO-Revision-Date: 2025-05-05 07:30+0200\n"
+"PO-Revision-Date: 2025-05-07 06:34+0200\n"
 "Last-Translator: Matjaž Jeran <matjaz.jeran@amis.net>\n"
 "Language-Team: Slovenian <lugos-slo@lugos.si>\n"
 "Language: sl\n"
@@ -1280,11 +1280,10 @@ msgid "Show Date Navigator"
 msgstr "Pokaži krmarja po datumih"
 
 #: actionmanager.cpp:762
-#, fuzzy, kde-format
-#| msgid "Show icons in agenda view items"
+#, kde-format
 msgctxt "@action:inmenu"
 msgid "Show To-do List in Calendar Views"
-msgstr "Pokaži ikone v predmetih v prikazu dnevnega reda"
+msgstr "Pokaži seznam opravil v pogledih koledarja"
 
 #: actionmanager.cpp:766
 #, kde-format

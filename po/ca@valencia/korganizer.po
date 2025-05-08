@@ -14,7 +14,7 @@ msgstr ""
 "Project-Id-Version: korganizer\n"
 "Report-Msgid-Bugs-To: https://bugs.kde.org\n"
 "POT-Creation-Date: 2025-05-07 00:43+0000\n"
-"PO-Revision-Date: 2025-05-05 13:33+0200\n"
+"PO-Revision-Date: 2025-05-07 10:36+0200\n"
 "Last-Translator: Josep M. Ferrer <txemaq@gmail.com>\n"
 "Language-Team: Catalan <kde-i18n-ca@kde.org>\n"
 "Language: ca@valencia\n"
@@ -1286,11 +1286,10 @@ msgid "Show Date Navigator"
 msgstr "Mostra el navegador de dates"
 
 #: actionmanager.cpp:762
-#, fuzzy, kde-format
-#| msgid "Show icons in agenda view items"
+#, kde-format
 msgctxt "@action:inmenu"
 msgid "Show To-do List in Calendar Views"
-msgstr "Mostra les icones dels elements en la vista d'agenda"
+msgstr "Mostra la llista de tasques pendents a les vistes de calendari"
 
 #: actionmanager.cpp:766
 #, kde-format
@@ -6543,7 +6542,3 @@ msgstr "%1"
 msgctxt "4 digit year"
 msgid "%1"
 msgstr "%1"
-
-#~ msgctxt "@action:inmenu"
-#~ msgid "Show To-do View"
-#~ msgstr "Mostra la vista de les tasques pendents"

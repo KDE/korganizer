@@ -12,7 +12,7 @@ msgstr ""
 "Project-Id-Version: korganizer\n"
 "Report-Msgid-Bugs-To: https://bugs.kde.org\n"
 "POT-Creation-Date: 2025-05-07 00:43+0000\n"
-"PO-Revision-Date: 2025-05-05 09:33+0300\n"
+"PO-Revision-Date: 2025-05-07 13:45+0300\n"
 "Last-Translator: Yuri Chornoivan <yurchor@ukr.net>\n"
 "Language-Team: Ukrainian <trans-uk@lists.fedoraproject.org>\n"
 "Language: uk\n"
@@ -1283,11 +1283,10 @@ msgid "Show Date Navigator"
 msgstr "Показати навігатор датами"
 
 #: actionmanager.cpp:762
-#, fuzzy, kde-format
-#| msgid "Show icons in agenda view items"
+#, kde-format
 msgctxt "@action:inmenu"
 msgid "Show To-do List in Calendar Views"
-msgstr "Показувати піктограми у перегляді пунктів порядку денного"
+msgstr "Показувати список завдань на панелях календарів"
 
 #: actionmanager.cpp:766
 #, kde-format

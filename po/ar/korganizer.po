@@ -12,7 +12,7 @@ msgstr ""
 "Project-Id-Version: korganizer\n"
 "Report-Msgid-Bugs-To: https://bugs.kde.org\n"
 "POT-Creation-Date: 2025-05-07 00:43+0000\n"
-"PO-Revision-Date: 2025-04-29 15:36+0400\n"
+"PO-Revision-Date: 2025-05-07 18:04+0400\n"
 "Last-Translator: Zayed Al-Saidi <zayed.alsaidi@gmail.com>\n"
 "Language-Team: ar\n"
 "Language: ar\n"
@@ -1250,11 +1250,10 @@ msgid "Show Date Navigator"
 msgstr "اعرض متصفّح التواريخ"
 
 #: actionmanager.cpp:762
-#, fuzzy, kde-format
-#| msgid "Show icons in agenda view items"
+#, kde-format
 msgctxt "@action:inmenu"
 msgid "Show To-do List in Calendar Views"
-msgstr "اعرض الأيقونات في عناصر منظور جدول الأعمال"
+msgstr "اعرض قائمة المهام في منظور جدول الأعمال"
 
 #: actionmanager.cpp:766
 #, kde-format
@@ -4396,17 +4395,15 @@ msgstr ""
 
 #. i18n: ectx: label, entry (WeekNumbersShow), group (General View)
 #: settings/korganizer.kcfg:97
-#, fuzzy, kde-format
-#| msgid "Show day number"
+#, kde-format
 msgid "Show week numbers"
-msgstr "أعرض رقم اليوم"
+msgstr "أظهر أرقام الأسابيع"
 
 #. i18n: ectx: whatsthis, entry (WeekNumbersShow), group (General View)
 #: settings/korganizer.kcfg:98
-#, fuzzy, kde-format
-#| msgid "Check this box to display the time in month view items."
+#, kde-format
 msgid "Check this box to show the Date Navigator's week numbers."
-msgstr "أشّر على هذا المربّع لعرض الوقت في عناصر منظور الشهر."
+msgstr "أشّر على هذا المربّع لعرض أرقام الأسبوع في مستعرض التاريخ."
 
 #. i18n: ectx: label, entry (WeekNumbersShowWork), group (General View)
 #: settings/korganizer.kcfg:102
@@ -4416,17 +4413,15 @@ msgstr "أرقام الأسبوع تحدد أسبوع العمل عندما تك
 
 #. i18n: ectx: whatsthis, entry (WeekNumbersShowWork), group (General View)
 #: settings/korganizer.kcfg:103
-#, fuzzy, kde-format
-#| msgid ""
-#| "Check this box to select a working week when clicking on the Date "
-#| "Navigator's week numbers, or uncheck it to choose the whole week."
+#, kde-format
 msgid ""
 "Check this box to select a working week when clicking on the Date "
 "Navigator's week numbers, or uncheck it to choose the whole week.  Ignored "
 "if week numbers are not shown."
 msgstr ""
-"أشر على هذا المربع لتحديد أسبوع عمل عند النقر على أرقام الأسبوع الخاصة "
-"بمستكشف التاريخ، أو ألغ تحديده لاختيار الأسبوع بأكمله."
+"حدد هذا المربع لتحديد أسبوع عمل عند النقر على أرقام الأسابيع في مستعرض "
+"التاريخ، أو إلغاء تحديده وتحديد الأسبوع بأكمله. لا يعمل بهذا الخيار إذا لم "
+"تظهر أرقام الأسابيع."
 
 #. i18n: ectx: label, entry, group (Agenda View)
 #: settings/korganizer.kcfg:110

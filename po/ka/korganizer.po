@@ -8,7 +8,7 @@ msgstr ""
 "Project-Id-Version: korganizer\n"
 "Report-Msgid-Bugs-To: https://bugs.kde.org\n"
 "POT-Creation-Date: 2025-05-07 00:43+0000\n"
-"PO-Revision-Date: 2025-05-05 03:47+0200\n"
+"PO-Revision-Date: 2025-05-07 05:12+0200\n"
 "Last-Translator: Temuri Doghonadze <temuri.doghonadze@gmail.com>\n"
 "Language-Team: Georgian <kde-i18n-doc@kde.org>\n"
 "Language: ka\n"
@@ -1265,11 +1265,10 @@ msgid "Show Date Navigator"
 msgstr "თარიღის ნავიგატორის ჩვენება"
 
 #: actionmanager.cpp:762
-#, fuzzy, kde-format
-#| msgid "Show icons in agenda view items"
+#, kde-format
 msgctxt "@action:inmenu"
 msgid "Show To-do List in Calendar Views"
-msgstr "დღის წესრიგის ხედის ელემენტებში ხატულების ჩვენება"
+msgstr "დღის წესრიგის სიის ჩვენება კალენდრის ხედებში"
 
 #: actionmanager.cpp:766
 #, kde-format
