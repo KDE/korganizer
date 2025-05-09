@@ -21,7 +21,7 @@ msgstr ""
 "Project-Id-Version: kdepim-kde4\n"
 "Report-Msgid-Bugs-To: https://bugs.kde.org\n"
 "POT-Creation-Date: 2025-05-07 00:43+0000\n"
-"PO-Revision-Date: 2025-05-06 23:20+0300\n"
+"PO-Revision-Date: 2025-05-08 13:27+0300\n"
 "Last-Translator: Emir SARI <emir_sari@îcloud.com>\n"
 "Language-Team: Turkish <kde-l10n-tr@kde.org>\n"
 "Language: tr\n"
@@ -1285,11 +1285,10 @@ msgid "Show Date Navigator"
 msgstr "Tarih Gezgini’ni Göster"
 
 #: actionmanager.cpp:762
-#, fuzzy, kde-format
-#| msgid "Show icons in agenda view items"
+#, kde-format
 msgctxt "@action:inmenu"
 msgid "Show To-do List in Calendar Views"
-msgstr "Ajanda görünümü ögelerinde simgeleri göster"
+msgstr "Takvim görünümlerinde yapılacakları göster"
 
 #: actionmanager.cpp:766
 #, kde-format

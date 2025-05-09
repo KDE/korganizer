@@ -18,7 +18,7 @@ msgstr ""
 "Project-Id-Version: korganizer\n"
 "Report-Msgid-Bugs-To: https://bugs.kde.org\n"
 "POT-Creation-Date: 2025-05-07 00:43+0000\n"
-"PO-Revision-Date: 2025-05-05 13:10+0300\n"
+"PO-Revision-Date: 2025-05-07 09:01+0300\n"
 "Last-Translator: Yaron Shahrabani <sh.yaron@gmail.com>\n"
 "Language-Team: צוות התרגום של KDE ישראל\n"
 "Language: he\n"
@@ -1253,11 +1253,10 @@ msgid "Show Date Navigator"
 msgstr "הצגת תאריכון"
 
 #: actionmanager.cpp:762
-#, fuzzy, kde-format
-#| msgid "Show icons in agenda view items"
+#, kde-format
 msgctxt "@action:inmenu"
 msgid "Show To-do List in Calendar Views"
-msgstr "הצגת סמלים בפריטי תצוגת סדר היום"
+msgstr "הצגת רשימת מטלות בתצוגות לוח שנה"
 
 #: actionmanager.cpp:766
 #, kde-format
