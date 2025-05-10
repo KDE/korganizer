@@ -8,7 +8,7 @@ msgstr ""
 "Project-Id-Version: \n"
 "Report-Msgid-Bugs-To: https://bugs.kde.org\n"
 "POT-Creation-Date: 2025-05-07 00:43+0000\n"
-"PO-Revision-Date: 2025-04-22 12:21+0200\n"
+"PO-Revision-Date: 2025-05-09 17:19+0200\n"
 "Last-Translator: giovanni <g.sora@tiscali.it>\n"
 "Language-Team: Interlingua <kde-i18n-doc@kde.org>\n"
 "Language: ia\n"
@@ -1271,11 +1271,10 @@ msgid "Show Date Navigator"
 msgstr "Monstra navigator de data"
 
 #: actionmanager.cpp:762
-#, fuzzy, kde-format
-#| msgid "Show icons in agenda view items"
+#, kde-format
 msgctxt "@action:inmenu"
 msgid "Show To-do List in Calendar Views"
-msgstr "Monstra icones in elementos de vista de agenda"
+msgstr "Monstra lista de actiones de facer in vistas de calendario"
 
 #: actionmanager.cpp:766
 #, kde-format
@@ -1778,10 +1777,7 @@ msgid "Delete calendar failed: <message>%1</message>"
 msgstr "Il falleva deler calendario : <message>%1</message>"
 
 #: calendarview.cpp:252
-#, fuzzy, kde-kuit-format
-#| msgid ""
-#| "<para><emphasis>No Item Selected</emphasis></para><para>Select an event, "
-#| "to-do or journal entry to view its details here.</para>"
+#, kde-kuit-format
 msgctxt "@info"
 msgid ""
 "<para><emphasis>No Item Selected</emphasis></para><para>Select an event, to-"
@@ -1991,9 +1987,7 @@ msgid "Dissociating the occurrence failed."
 msgstr "Il falleva dissociar occurrentia."
 
 #: calendarview.cpp:1816
-#, fuzzy, kde-format
-#| msgctxt "@info:status"
-#| msgid "Export calendar to file"
+#, kde-format
 msgctxt "@title:window"
 msgid "Export Calendar to File"
 msgstr "Exporta calendario a file"
@@ -4446,18 +4440,17 @@ msgstr ""
 
 #. i18n: ectx: label, entry (WeekNumbersShow), group (General View)
 #: settings/korganizer.kcfg:97
-#, fuzzy, kde-format
-#| msgid "Show day number"
+#, kde-format
 msgid "Show week numbers"
-msgstr "Monstra numero de die"
+msgstr "Monstra numeros de septimana"
 
 #. i18n: ectx: whatsthis, entry (WeekNumbersShow), group (General View)
 #: settings/korganizer.kcfg:98
-#, fuzzy, kde-format
-#| msgid "Check this box to display the time in month view items."
+#, kde-format
 msgid "Check this box to show the Date Navigator's week numbers."
 msgstr ""
-"Marca iste quadrato pro monstrar le tempore in elementos de vista de mense"
+"Marca iste quadrato pro monstrar le numeros de septimana del Navigator de "
+"Data"
 
 #. i18n: ectx: label, entry (WeekNumbersShowWork), group (General View)
 #: settings/korganizer.kcfg:102
@@ -4469,10 +4462,7 @@ msgstr ""
 
 #. i18n: ectx: whatsthis, entry (WeekNumbersShowWork), group (General View)
 #: settings/korganizer.kcfg:103
-#, fuzzy, kde-format
-#| msgid ""
-#| "Check this box to select a working week when clicking on the Date "
-#| "Navigator's week numbers, or uncheck it to choose the whole week."
+#, kde-format
 msgid ""
 "Check this box to select a working week when clicking on the Date "
 "Navigator's week numbers, or uncheck it to choose the whole week.  Ignored "
@@ -4480,7 +4470,7 @@ msgid ""
 msgstr ""
 "Marca iste quadrato pro seliger un septimana de labor quando on pulsa sur le "
 "numeros de septimana del navigator de data, o leva le marca pro seliger le "
-"septimana complete."
+"septimana complete. Ignorate si le numero de septimana non es monstrate."
 
 #. i18n: ectx: label, entry, group (Agenda View)
 #: settings/korganizer.kcfg:110
