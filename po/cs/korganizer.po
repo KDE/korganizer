@@ -36,18 +36,16 @@ msgstr ""
 #: kontactplugin/korganizer/korganizerplugin.cpp:42
 #: kontactplugin/korganizer/todoplugin.cpp:38
 #: kontactplugin/specialdates/specialdates_plugin.cpp:23
-#, fuzzy, kde-format
-#| msgid "KOrganizer"
+#, kde-format
 msgctxt "@info/plain"
 msgid "KOrganizer"
-msgstr "KOrganizer"
+msgstr ""
 
 #: aboutdata.cpp:20
-#, fuzzy, kde-format
-#| msgid "A Personal Organizer"
+#, kde-format
 msgctxt "@info/plain"
 msgid "A Personal Organizer"
-msgstr "Osobní organizátor"
+msgstr ""
 
 #: aboutdata.cpp:23
 #, kde-format
@@ -79,11 +77,10 @@ msgid "Reinhold Kainhofer"
 msgstr "Reinhold Kainhofer"
 
 #: aboutdata.cpp:32 aboutdata.cpp:33
-#, fuzzy, kde-format
-#| msgid "Former Maintainer"
+#, kde-format
 msgctxt "@info:credit"
 msgid "Former Maintainer"
-msgstr "Bývalý správce"
+msgstr ""
 
 #: aboutdata.cpp:33
 #, kde-format
@@ -260,11 +257,10 @@ msgid "Rafał Rzepecki"
 msgstr "Rafał Rzepecki"
 
 #: aboutdata.cpp:59
-#, fuzzy, kde-format
-#| msgid "Part of work sponsored by Google with Summer of Code 2005"
+#, kde-format
 msgctxt "@info:credit"
 msgid "Part of work sponsored by Google with Summer of Code 2005"
-msgstr "Část práce sponzoroval Google jeho Summer of Code 2005"
+msgstr ""
 
 #: aboutdata.cpp:60
 #, kde-format
@@ -327,16 +323,11 @@ msgid "Fester Zigterman"
 msgstr "Fester Zigterman"
 
 #: actionmanager.cpp:131
-#, fuzzy, kde-format
-#| msgid ""
-#| "<qt>This will hide the menu bar completely. You can show it again by "
-#| "typing %1.</qt>"
+#, kde-format
 msgctxt "@info"
 msgid ""
 "This will hide the menu bar completely. You can show it again by typing %1."
 msgstr ""
-"<qt>Toto úplně skryje panel nabídky. Můžete ji opětovně zobrazit pomocí %1.</"
-"qt>"
 
 #: actionmanager.cpp:134
 #, kde-format
@@ -345,12 +336,10 @@ msgid "Hide menu bar"
 msgstr "Skrýt nabídku"
 
 #: actionmanager.cpp:245
-#, fuzzy, kde-format
-#| msgctxt "@action"
-#| msgid "Import &Calendar…"
+#, kde-format
 msgctxt "@action:inmenu"
 msgid "Import &Calendar…"
-msgstr "Importovat kalendář…"
+msgstr ""
 
 #: actionmanager.cpp:246
 #, kde-format
@@ -373,11 +362,10 @@ msgid ""
 msgstr ""
 
 #: actionmanager.cpp:255
-#, fuzzy, kde-format
-#| msgid "Get New Calendars…"
+#, kde-format
 msgctxt "@action:inmenu"
 msgid "Get New Calendars…"
-msgstr "Získat nové kalendáře…"
+msgstr ""
 
 #: actionmanager.cpp:256
 #, kde-format
@@ -406,19 +394,16 @@ msgid "Could not load calendar <filename>%1</filename>."
 msgstr "Nelze načíst kalendář <filename>%1</filename>."
 
 #: actionmanager.cpp:290
-#, fuzzy, kde-format
-#| msgid "The downloaded events will be merged into your current calendar."
+#, kde-format
 msgctxt "@info"
 msgid "The downloaded events will be merged into your current calendar."
-msgstr "Stažené události budou sloučeny s vaším kalendářem."
+msgstr ""
 
 #: actionmanager.cpp:307
-#, fuzzy, kde-format
-#| msgctxt "@action"
-#| msgid "Export as &iCalendar…"
+#, kde-format
 msgctxt "@action:inmenu"
 msgid "Export as &iCalendar…"
-msgstr "Exportovat jako &iCalendar…"
+msgstr ""
 
 #: actionmanager.cpp:308
 #, kde-format
@@ -440,12 +425,10 @@ msgid ""
 msgstr ""
 
 #: actionmanager.cpp:316
-#, fuzzy, kde-format
-#| msgctxt "@action"
-#| msgid "Archive O&ld Incidences…"
+#, kde-format
 msgctxt "@action:inmenu"
 msgid "Archive O&ld Incidences…"
-msgstr "A&rchivovat staré výskyty..."
+msgstr ""
 
 #: actionmanager.cpp:317
 #, kde-format
@@ -469,12 +452,10 @@ msgid ""
 msgstr ""
 
 #: actionmanager.cpp:328
-#, fuzzy, kde-format
-#| msgctxt "@action"
-#| msgid "Pur&ge Completed To-dos"
+#, kde-format
 msgctxt "@action:inmenu"
 msgid "Pur&ge Completed To-dos"
-msgstr "Pročistit dokončené úkol&y"
+msgstr ""
 
 #: actionmanager.cpp:329
 #, kde-format
@@ -504,11 +485,10 @@ msgid "&Delete"
 msgstr "&Smazat"
 
 #: actionmanager.cpp:386
-#, fuzzy, kde-format
-#| msgid "What's &Next"
+#, kde-format
 msgctxt "@action:inmenu"
 msgid "What's &Next"
-msgstr "Co je &nového"
+msgstr ""
 
 #: actionmanager.cpp:387
 #, kde-format
@@ -533,11 +513,10 @@ msgid ""
 msgstr ""
 
 #: actionmanager.cpp:398
-#, fuzzy, kde-format
-#| msgid "&Month"
+#, kde-format
 msgctxt "@action:inmenu"
 msgid "&Month"
-msgstr "&Měsíc"
+msgstr ""
 
 #: actionmanager.cpp:399
 #, kde-format
@@ -560,11 +539,10 @@ msgid ""
 msgstr ""
 
 #: actionmanager.cpp:408
-#, fuzzy, kde-format
-#| msgid "&Agenda"
+#, kde-format
 msgctxt "@action:inmenu"
 msgid "&Agenda"
-msgstr "&Agenda"
+msgstr ""
 
 #: actionmanager.cpp:411
 #, kde-format
@@ -588,11 +566,10 @@ msgid ""
 msgstr ""
 
 #: actionmanager.cpp:421
-#, fuzzy, kde-format
-#| msgid "&Event List"
+#, kde-format
 msgctxt "@action:inmenu"
 msgid "&Event List"
-msgstr "S&eznam událostí"
+msgstr ""
 
 #: actionmanager.cpp:422
 #, kde-format
@@ -615,11 +592,10 @@ msgid ""
 msgstr ""
 
 #: actionmanager.cpp:431
-#, fuzzy, kde-format
-#| msgid "&To-do List"
+#, kde-format
 msgctxt "@action:inmenu"
 msgid "&To-do List"
-msgstr "Seznam ú&kolů"
+msgstr ""
 
 #: actionmanager.cpp:432
 #, kde-format
@@ -642,11 +618,10 @@ msgid ""
 msgstr ""
 
 #: actionmanager.cpp:441
-#, fuzzy, kde-format
-#| msgid "&Journal"
+#, kde-format
 msgctxt "@action:inmenu"
 msgid "&Journal"
-msgstr "&Deník"
+msgstr ""
 
 #: actionmanager.cpp:442
 #, kde-format
@@ -669,11 +644,10 @@ msgid ""
 msgstr ""
 
 #: actionmanager.cpp:451
-#, fuzzy, kde-format
-#| msgid "Time&line"
+#, kde-format
 msgctxt "@action:inmenu"
 msgid "Time&line"
-msgstr "Ča&sová přímka"
+msgstr ""
 
 #: actionmanager.cpp:452
 #, kde-format
@@ -696,12 +670,10 @@ msgid ""
 msgstr ""
 
 #: actionmanager.cpp:464
-#, fuzzy, kde-format
-#| msgctxt "@action"
-#| msgid "&Refresh"
+#, kde-format
 msgctxt "@action:inmenu"
 msgid "&Refresh"
-msgstr "O&bnovit"
+msgstr ""
 
 #: actionmanager.cpp:465
 #, kde-format
@@ -724,11 +696,10 @@ msgid ""
 msgstr ""
 
 #: actionmanager.cpp:477
-#, fuzzy, kde-format
-#| msgid "F&ilter"
+#, kde-format
 msgctxt "@action:inmenu"
 msgid "F&ilter"
-msgstr "F&iltr"
+msgstr ""
 
 #: actionmanager.cpp:478
 #, kde-format
@@ -751,47 +722,40 @@ msgid ""
 msgstr ""
 
 #: actionmanager.cpp:493
-#, fuzzy, kde-format
-#| msgid "In Horizontally"
+#, kde-format
 msgctxt "@action:inmenu"
 msgid "In Horizontally"
-msgstr "Přiblížit vodorovně"
+msgstr ""
 
 #: actionmanager.cpp:498
-#, fuzzy, kde-format
-#| msgid "Out Horizontally"
+#, kde-format
 msgctxt "@action:inmenu"
 msgid "Out Horizontally"
-msgstr "Oddálit vodorovně"
+msgstr ""
 
 #: actionmanager.cpp:503
-#, fuzzy, kde-format
-#| msgid "In Vertically"
+#, kde-format
 msgctxt "@action:inmenu"
 msgid "In Vertically"
-msgstr "Přiblížit svisle"
+msgstr ""
 
 #: actionmanager.cpp:508
-#, fuzzy, kde-format
-#| msgid "Out Vertically"
+#, kde-format
 msgctxt "@action:inmenu"
 msgid "Out Vertically"
-msgstr "Oddálit svisle"
+msgstr ""
 
 #: actionmanager.cpp:517
-#, fuzzy, kde-format
-#| msgctxt "@action Jump to today"
-#| msgid "To &Today"
+#, kde-format
 msgctxt "@action:inmenu Jump to today"
 msgid "To &Today"
-msgstr "Na d&nešek"
+msgstr ""
 
 #: actionmanager.cpp:518
-#, fuzzy, kde-format
-#| msgid "Today"
+#, kde-format
 msgctxt "@action:button"
 msgid "Today"
-msgstr "Dnes"
+msgstr ""
 
 #: actionmanager.cpp:519
 #, kde-format
@@ -812,20 +776,16 @@ msgid "Scrolls the current view to the today's date."
 msgstr ""
 
 #: actionmanager.cpp:527
-#, fuzzy, kde-format
-#| msgctxt "scroll backward"
-#| msgid "&Backward"
+#, kde-format
 msgctxt "@action:inmenu scroll backward"
 msgid "&Backward"
-msgstr "Z&pět"
+msgstr ""
 
 #: actionmanager.cpp:529
-#, fuzzy, kde-format
-#| msgctxt "scroll backward"
-#| msgid "Back"
+#, kde-format
 msgctxt "@action:button scroll backward"
 msgid "Back"
-msgstr "Zpět"
+msgstr ""
 
 #: actionmanager.cpp:530
 #, kde-format
@@ -848,20 +808,16 @@ msgid ""
 msgstr ""
 
 #: actionmanager.cpp:540
-#, fuzzy, kde-format
-#| msgctxt "scroll forward"
-#| msgid "&Forward"
+#, kde-format
 msgctxt "@action:inmenu scroll forward"
 msgid "&Forward"
-msgstr "Vpřed"
+msgstr ""
 
 #: actionmanager.cpp:542
-#, fuzzy, kde-format
-#| msgctxt "scroll forward"
-#| msgid "Forward"
+#, kde-format
 msgctxt "@action:button scroll forward"
 msgid "Forward"
-msgstr "Vpřed"
+msgstr ""
 
 #: actionmanager.cpp:543
 #, kde-format
@@ -884,18 +840,16 @@ msgid ""
 msgstr ""
 
 #: actionmanager.cpp:552
-#, fuzzy, kde-format
-#| msgid "&Day"
+#, kde-format
 msgctxt "@action:inmenu"
 msgid "&Day"
-msgstr "&Den"
+msgstr ""
 
 #: actionmanager.cpp:553
-#, fuzzy, kde-format
-#| msgid "Day"
+#, kde-format
 msgctxt "@action:inmenu agenda view show 1 day at a time"
 msgid "Day"
-msgstr "Den"
+msgstr ""
 
 #: actionmanager.cpp:554
 #, kde-format
@@ -916,12 +870,10 @@ msgid "Select this option to show only 1 day at a time in Agenda View."
 msgstr ""
 
 #: actionmanager.cpp:563
-#, fuzzy, kde-format
-#| msgid "&Next Day"
-#| msgid_plural "&Next %1 Days"
+#, kde-format
 msgctxt "@action:inmenu agenda view show a few days at a time"
 msgid "&Next Days"
-msgstr "&Následující den"
+msgstr ""
 
 #: actionmanager.cpp:564
 #, kde-format
@@ -946,20 +898,18 @@ msgid ""
 msgstr ""
 
 #: actionmanager.cpp:575
-#, fuzzy, kde-format
-#| msgid "Schedule"
+#, kde-format
 msgctxt "@action:inmenu"
 msgid "W&eek Schedule"
-msgstr "Rozvrh"
+msgstr ""
 
 #: actionmanager.cpp:576
-#, fuzzy, kde-format
-#| msgid "Schedule"
+#, kde-format
 msgctxt ""
 "@action:inmenu agenda view show the weekly schedule days only (eg. no "
 "weekends)"
 msgid "Week Schedule"
-msgstr "Rozvrh"
+msgstr ""
 
 #: actionmanager.cpp:577
 #, kde-format
@@ -988,18 +938,16 @@ msgid ""
 msgstr ""
 
 #: actionmanager.cpp:591
-#, fuzzy, kde-format
-#| msgid "&Week"
+#, kde-format
 msgctxt "@action:inmenu"
 msgid "&Week"
-msgstr "&Týden"
+msgstr ""
 
 #: actionmanager.cpp:592
-#, fuzzy, kde-format
-#| msgid "Week"
+#, kde-format
 msgctxt "@action:inmenu agenda view show a week at a time"
 msgid "Week"
-msgstr "Týden"
+msgstr ""
 
 #: actionmanager.cpp:593
 #, kde-format
@@ -1020,11 +968,10 @@ msgid "Select this option to show a week at a time in Agenda View."
 msgstr ""
 
 #: actionmanager.cpp:602
-#, fuzzy, kde-format
-#| msgid "New E&vent…"
+#, kde-format
 msgctxt "@action:inmenu"
 msgid "New E&vent…"
-msgstr "No&vá událost…"
+msgstr ""
 
 #: actionmanager.cpp:603
 #, kde-format
@@ -1047,11 +994,10 @@ msgid ""
 msgstr ""
 
 #: actionmanager.cpp:612
-#, fuzzy, kde-format
-#| msgid "New &To-do…"
+#, kde-format
 msgctxt "@action:inmenu"
 msgid "New &To-do…"
-msgstr "Nový úko&l…"
+msgstr ""
 
 #: actionmanager.cpp:613
 #, kde-format
@@ -1074,19 +1020,16 @@ msgid ""
 msgstr ""
 
 #: actionmanager.cpp:623
-#, fuzzy, kde-format
-#| msgctxt "@action"
-#| msgid "New Su&b-to-do…"
+#, kde-format
 msgctxt "@action:inmenu"
 msgid "New Su&b-to-do…"
-msgstr "Nový po&dúkol…"
+msgstr ""
 
 #: actionmanager.cpp:631
-#, fuzzy, kde-format
-#| msgid "New &Journal…"
+#, kde-format
 msgctxt "@action:inmenu"
 msgid "New &Journal…"
-msgstr "Nový &deník…"
+msgstr ""
 
 #: actionmanager.cpp:632
 #, kde-format
@@ -1113,11 +1056,10 @@ msgid "&Pick a Date"
 msgstr ""
 
 #: actionmanager.cpp:640
-#, fuzzy, kde-format
-#| msgid "Date"
+#, kde-format
 msgctxt "@action:button"
 msgid "Date"
-msgstr "Datum"
+msgstr ""
 
 #: actionmanager.cpp:641
 #, kde-format
@@ -1138,11 +1080,10 @@ msgid "Opens a date selection dialog for quickly navigating the view."
 msgstr ""
 
 #: actionmanager.cpp:648
-#, fuzzy, kde-format
-#| msgid "Configure View…"
+#, kde-format
 msgctxt "@action:inmenu"
 msgid "Configure View…"
-msgstr "Nastavit pohled…"
+msgstr ""
 
 #: actionmanager.cpp:649
 #, kde-format
@@ -1151,20 +1092,16 @@ msgid "Configure"
 msgstr "Nastavit"
 
 #: actionmanager.cpp:650
-#, fuzzy, kde-format
-#| msgctxt "@info:status"
-#| msgid "Configure the view"
+#, kde-format
 msgctxt "@info:status"
 msgid "Configure the multi-calendar view"
-msgstr "Nastavit pohled"
+msgstr ""
 
 #: actionmanager.cpp:651
-#, fuzzy, kde-format
-#| msgctxt "@info:status"
-#| msgid "Configure the view"
+#, kde-format
 msgctxt "@info:tooltip"
 msgid "Configure the multi-calendar view"
-msgstr "Nastavit pohled"
+msgstr ""
 
 #: actionmanager.cpp:653
 #, kde-format
@@ -1190,149 +1127,122 @@ msgid "&Edit…"
 msgstr "&Upravit…"
 
 #: actionmanager.cpp:673
-#, fuzzy, kde-format
-#| msgctxt "@action"
-#| msgid "&Make Sub-to-do Independent"
+#, kde-format
 msgctxt "@action:inmenu"
 msgid "&Make Sub-to-do Independent"
-msgstr "Učinit podúkol nezávislý&m"
+msgstr ""
 
 #. i18n( "&Activate Reminder" ), 0,
 #. mCalendarView, SLOT(toggleAlarm()),
 #. mACollection, "activate_alarm" );
 #. ************************* SCHEDULE MENU *******************************
 #: actionmanager.cpp:685
-#, fuzzy, kde-format
-#| msgid "&Publish Item Information…"
+#, kde-format
 msgctxt "@action:inmenu"
 msgid "&Publish Item Information…"
-msgstr "&Publikovat informace o položce…"
+msgstr ""
 
 #: actionmanager.cpp:692
-#, fuzzy, kde-format
-#| msgid "Send &Invitation to Attendees"
+#, kde-format
 msgctxt "@action:inmenu"
 msgid "Send &Invitation to Attendees"
-msgstr "Odeslat po&zvánku účastníkům"
+msgstr ""
 
 #: actionmanager.cpp:700
-#, fuzzy, kde-format
-#| msgctxt "@action"
-#| msgid "Re&quest Update"
+#, kde-format
 msgctxt "@action:inmenu"
 msgid "Re&quest Update"
-msgstr "Požadovat &aktualizaci"
+msgstr ""
 
 #: actionmanager.cpp:708
-#, fuzzy, kde-format
-#| msgctxt "@action"
-#| msgid "Send &Cancellation to Attendees"
+#, kde-format
 msgctxt "@action:inmenu"
 msgid "Send &Cancellation to Attendees"
-msgstr "Odeslat účastníkům &storno"
+msgstr ""
 
 #: actionmanager.cpp:716
-#, fuzzy, kde-format
-#| msgid "Send Status &Update"
+#, kde-format
 msgctxt "@action:inmenu"
 msgid "Send Status &Update"
-msgstr "Odeslat akt&ualizaci stavu"
+msgstr ""
 
 #: actionmanager.cpp:724
-#, fuzzy, kde-format
-#| msgctxt "counter proposal"
-#| msgid "Request Chan&ge"
+#, kde-format
 msgctxt "@action:inmenu counter proposal"
 msgid "Request Chan&ge"
-msgstr "P&ožadovat změnu"
+msgstr ""
 
 #: actionmanager.cpp:732
-#, fuzzy, kde-format
-#| msgctxt "@action"
-#| msgid "&Mail Free Busy Information…"
+#, kde-format
 msgctxt "@action:inmenu"
 msgid "&Mail Free Busy Information…"
-msgstr "Odeslat informace o aktivitě e&mailem…"
+msgstr ""
 
 #: actionmanager.cpp:737
-#, fuzzy, kde-format
-#| msgid "&Send as iCalendar…"
+#, kde-format
 msgctxt "@action:inmenu"
 msgid "&Send as iCalendar…"
-msgstr "&Odeslat jako iCalendar…"
+msgstr ""
 
 #: actionmanager.cpp:744
-#, fuzzy, kde-format
-#| msgctxt "@action"
-#| msgid "&Upload Free Busy Information"
+#, kde-format
 msgctxt "@action:inmenu"
 msgid "&Upload Free Busy Information"
-msgstr "Odeslat in&formace o aktivitě"
+msgstr ""
 
 #: actionmanager.cpp:750
-#, fuzzy, kde-format
-#| msgid "&Address Book"
+#, kde-format
 msgctxt "@action:inmenu"
 msgid "&Address Book"
-msgstr "Knih&a adres"
+msgstr ""
 
 #: actionmanager.cpp:758
-#, fuzzy, kde-format
-#| msgid "Show Date Navigator"
+#, kde-format
 msgctxt "@action:inmenu"
 msgid "Show Date Navigator"
-msgstr "Zobrazit navigátor"
+msgstr ""
 
 #: actionmanager.cpp:762
-#, fuzzy, kde-format
-#| msgid "Show To-do View"
+#, kde-format
 msgctxt "@action:inmenu"
 msgid "Show To-do List in Calendar Views"
-msgstr "Zobrazit pohled na úkoly"
+msgstr ""
 
 #: actionmanager.cpp:766
-#, fuzzy, kde-format
-#| msgid "Show Item Viewer"
+#, kde-format
 msgctxt "@action:inmenu"
 msgid "Show Item Viewer"
-msgstr "Zobrazit prohlížeč položek"
+msgstr ""
 
 #: actionmanager.cpp:782
-#, fuzzy, kde-format
-#| msgid "Show Calendar Manager"
+#, kde-format
 msgctxt "@action:inmenu"
 msgid "Show Calendar Manager"
-msgstr "Zobrazit správce kalendáře"
+msgstr ""
 
 #: actionmanager.cpp:796
-#, fuzzy, kde-format
-#| msgctxt "@action"
-#| msgid "Configure &Date && Time…"
+#, kde-format
 msgctxt "@action:inmenu"
 msgid "Configure &Date && Time…"
-msgstr "Nastavit &datum a čas…"
+msgstr ""
 
 #: actionmanager.cpp:800
-#, fuzzy, kde-format
-#| msgid "Manage View &Filters…"
+#, kde-format
 msgctxt "@action:inmenu"
 msgid "Manage View &Filters…"
-msgstr "Upravit &filtry pohledů…"
+msgstr ""
 
 #: actionmanager.cpp:804
-#, fuzzy, kde-format
-#| msgctxt "@action"
-#| msgid "Manage T&ags…"
+#, kde-format
 msgctxt "@action:inmenu"
 msgid "Manage T&ags…"
-msgstr "Spravovat zn&ačky…"
+msgstr ""
 
 #: actionmanager.cpp:812
-#, fuzzy, kde-format
-#| msgid "&Configure KOrganizer…"
+#, kde-format
 msgctxt "@action:inmenu"
 msgid "&Configure KOrganizer…"
-msgstr "Nastavit &KOrganizer…"
+msgstr ""
 
 #: actionmanager.cpp:890
 #, kde-format
@@ -1356,11 +1266,10 @@ msgid "New calendar added successfully"
 msgstr ""
 
 #: actionmanager.cpp:907
-#, fuzzy, kde-kuit-format
-#| msgid "Could not add a calendar. Error: %1"
+#, kde-kuit-format
 msgctxt "@info"
 msgid "Could not add a calendar. Error: <message>%1</message>"
-msgstr "Nelze přidat kalendář. Chyba %1"
+msgstr ""
 
 #: actionmanager.cpp:964
 #, kde-format
@@ -1393,11 +1302,10 @@ msgid "Saved calendar <filename>%1</filename>"
 msgstr ""
 
 #: actionmanager.cpp:1096
-#, fuzzy, kde-kuit-format
-#| msgid "Unable to save calendar to the file %1."
+#, kde-kuit-format
 msgctxt "@info"
 msgid "Unable to save calendar to the file <filename>%1</filename>"
-msgstr "Nelze uložit kalendář do souboru %1."
+msgstr ""
 
 #: actionmanager.cpp:1097
 #, kde-format
@@ -1406,85 +1314,73 @@ msgid "Error"
 msgstr "Chyba"
 
 #: actionmanager.cpp:1123
-#, fuzzy, kde-format
-#| msgid "&Next Day"
-#| msgid_plural "&Next %1 Days"
+#, kde-format
 msgctxt "@action:inmenu"
 msgid "&Next Day"
 msgid_plural "&Next %1 Days"
-msgstr[0] "&Následující den"
-msgstr[1] "&Následující %1 dny"
-msgstr[2] "&Následujících %1 dní"
+msgstr[0] ""
+msgstr[1] ""
+msgstr[2] ""
 
 #: actionmanager.cpp:1136
-#, fuzzy, kde-format
-#| msgid "Could not start control module for date and time format."
+#, kde-format
 msgctxt "@info"
 msgid "Could not start control module for date and time format."
-msgstr "Nelze spustit ovládací modul pro nastavení data a času."
+msgstr ""
 
 #: actionmanager.cpp:1311
-#, fuzzy, kde-format
-#| msgid "&Show Event"
+#, kde-format
 msgctxt "@action:inmenu"
 msgid "&Show Event"
-msgstr "Zobrazit událo&st"
+msgstr ""
 
 #: actionmanager.cpp:1314
-#, fuzzy, kde-format
-#| msgid "&Edit Event…"
+#, kde-format
 msgctxt "@action:inmenu"
 msgid "&Edit Event…"
-msgstr "&Upravit událost…"
+msgstr ""
 
 #: actionmanager.cpp:1317
-#, fuzzy, kde-format
-#| msgid "&Delete Event"
+#, kde-format
 msgctxt "@action:inmenu"
 msgid "&Delete Event"
-msgstr "Smazat u&dálost"
+msgstr ""
 
 #: actionmanager.cpp:1325
-#, fuzzy, kde-format
-#| msgid "&Show To-do"
+#, kde-format
 msgctxt "@action:inmenu"
 msgid "&Show To-do"
-msgstr "Z&obrazit úkol"
+msgstr ""
 
 #: actionmanager.cpp:1328
-#, fuzzy, kde-format
-#| msgid "&Edit To-do…"
+#, kde-format
 msgctxt "@action:inmenu"
 msgid "&Edit To-do…"
-msgstr "&Upravit úkol…"
+msgstr ""
 
 #: actionmanager.cpp:1331
-#, fuzzy, kde-format
-#| msgid "&Delete To-do"
+#, kde-format
 msgctxt "@action:inmenu"
 msgid "&Delete To-do"
-msgstr "S&mazat úkol"
+msgstr ""
 
 #: actionmanager.cpp:1474 actionmanager.cpp:1580
-#, fuzzy, kde-format
-#| msgid "Attach as &link"
+#, kde-format
 msgctxt "@action:inmenu"
 msgid "Attach as &link"
-msgstr "Přidat jako odkaz"
+msgstr ""
 
 #: actionmanager.cpp:1475 actionmanager.cpp:1581
-#, fuzzy, kde-format
-#| msgid "Attach &inline"
+#, kde-format
 msgctxt "@action:inmenu"
 msgid "Attach &inline"
-msgstr "Př&idat na místě"
+msgstr ""
 
 #: actionmanager.cpp:1476
-#, fuzzy, kde-format
-#| msgid "Attach inline &without attachments"
+#, kde-format
 msgctxt "@action:inmenu"
 msgid "Attach inline &without attachments"
-msgstr "Přidat na místě bez příloh"
+msgstr ""
 
 #: actionmanager.cpp:1478 actionmanager.cpp:1583
 #, kde-format
@@ -1493,11 +1389,10 @@ msgid "C&ancel"
 msgstr "&Zrušit"
 
 #: actionmanager.cpp:1516
-#, fuzzy, kde-format
-#| msgid "Removing attachments from an email might invalidate its signature."
+#, kde-format
 msgctxt "@info"
 msgid "Removing attachments from an email might invalidate its signature."
-msgstr "Odstranění příloh z e-mailu může zneplatnit jeho podpis."
+msgstr ""
 
 #: actionmanager.cpp:1517
 #, kde-format
@@ -1506,11 +1401,10 @@ msgid "Remove Attachments"
 msgstr "Odstranit přílohy"
 
 #: actionmanager.cpp:1668
-#, fuzzy, kde-format
-#| msgid "Undo: %1"
+#, kde-format
 msgctxt "@action:inmenu"
 msgid "Undo: %1"
-msgstr "Zpět: (%1)"
+msgstr ""
 
 #: actionmanager.cpp:1671
 #, kde-format
@@ -1519,11 +1413,10 @@ msgid "Undo"
 msgstr "Zpět"
 
 #: actionmanager.cpp:1681
-#, fuzzy, kde-format
-#| msgid "Redo: %1"
+#, kde-format
 msgctxt "@action:inmenu"
 msgid "Redo: %1"
-msgstr "Znovu: %1"
+msgstr ""
 
 #: actionmanager.cpp:1684
 #, kde-format
@@ -1538,11 +1431,10 @@ msgid "Undo"
 msgstr "Zpět"
 
 #: actionmanager.cpp:1698
-#, fuzzy, kde-kuit-format
-#| msgid "URL '%1' is invalid."
+#, kde-kuit-format
 msgctxt "@info"
 msgid "URL <filename>%1</filename> is invalid."
-msgstr "URL '%1' není platné."
+msgstr ""
 
 #: actionmanager.cpp:1703
 #, kde-kuit-format
@@ -1574,12 +1466,10 @@ msgid "Add as new calendar"
 msgstr "Přidat jako nový kalendář"
 
 #: akonadicollectionview.cpp:289
-#, fuzzy, kde-format
-#| msgctxt "@item this is the default calendar"
-#| msgid "%1 (Offline)"
+#, kde-format
 msgctxt "@item this calendar is offline"
 msgid "%1 (Offline)"
-msgstr "%1 (odpojen)"
+msgstr ""
 
 #: akonadicollectionview.cpp:292
 #, kde-format
@@ -1588,12 +1478,10 @@ msgid "%1 (Default)"
 msgstr "%1 (Výchozí)"
 
 #: akonadicollectionview.cpp:383
-#, fuzzy, kde-format
-#| msgctxt "@title:tab calendar account settings"
-#| msgid "Calendars"
+#, kde-format
 msgctxt "@info:tooltip"
 msgid "Calendar search"
-msgstr "Kalendáře"
+msgstr ""
 
 #: akonadicollectionview.cpp:384
 #, kde-format
@@ -1602,13 +1490,11 @@ msgid "Start typing to search for a calendar within the collection."
 msgstr ""
 
 #: akonadicollectionview.cpp:386
-#, fuzzy, kde-format
-#| msgctxt "@action:inmenu"
-#| msgid "Send as iCalendar…"
+#, kde-format
 msgctxt ""
 "@info/plain Displayed grayed-out inside the textbox, calendar to search"
 msgid "Search for calendar…"
-msgstr "Odeslat jako iCalendar…"
+msgstr ""
 
 #: akonadicollectionview.cpp:472 manageshowcollectionproperties.cpp:76
 #, kde-format
@@ -1638,14 +1524,12 @@ msgid ""
 msgstr ""
 
 #: akonadicollectionview.cpp:545
-#, fuzzy, kde-kuit-format
-#| msgctxt "@info"
-#| msgid "Do you really want to delete calendar %1?"
+#, kde-kuit-format
 msgctxt "@info"
 msgid ""
 "Do you really want to set <filename>%1</filename> as your default calendar "
 "folder?"
-msgstr "Opravdu si přejete smazat kalendář %1?"
+msgstr ""
 
 #: akonadicollectionview.cpp:550
 #, kde-format
@@ -1780,57 +1664,40 @@ msgid "Delete calendar failed: <message>%1</message>"
 msgstr ""
 
 #: calendarview.cpp:252
-#, fuzzy, kde-kuit-format
-#| msgid ""
-#| "<p><em>No Item Selected</em></p><p>Select an event, to-do or journal "
-#| "entry to view its details here.</p>"
+#, kde-kuit-format
 msgctxt "@info"
 msgid ""
 "<para><emphasis>No Item Selected</emphasis></para><para>Select an event, to-"
 "do or journal entry to view its details here.</para>"
 msgstr ""
-"<p><em>Žádná položka není vybrána</em></p><p>Pokud v hlavním okně vyberete "
-"nějakou událost, úkol nebo deník, zde uvidíte náhled.</p>"
 
 #: calendarview.cpp:256
-#, fuzzy, kde-format
-#| msgid ""
-#| "View the details of events, journal entries or to-dos selected in "
-#| "KOrganizer's main view here."
+#, kde-format
 msgctxt "@info:whatsthis"
 msgid ""
 "View the details of events, journal entries or to-dos selected in "
 "KOrganizer's main view here."
 msgstr ""
-"Zde zobrazit podrobnosti o událostech, položkách deníku, či úkolech "
-"vybraných v hlavním okně KOrganizer."
 
 #: calendarview.cpp:676
-#, fuzzy, kde-format
-#| msgid "Todo completed: %1 (%2)"
+#, kde-format
 msgctxt "@info/plain"
 msgid "Todo completed: %1 (%2)"
-msgstr "Úloha byla dokončena: %1 (%2)"
+msgstr ""
 
 #: calendarview.cpp:685
-#, fuzzy, kde-format
-#| msgid "Journal of %1"
+#, kde-format
 msgctxt "@info/plain"
 msgid "Journal of %1"
-msgstr "Deník %1"
+msgstr ""
 
 #: calendarview.cpp:734
-#, fuzzy, kde-kuit-format
-#| msgid ""
-#| "The item \"%1\" is filtered by your current filter rules, so it will be "
-#| "hidden and not appear in the view."
+#, kde-kuit-format
 msgctxt "@info"
 msgid ""
 "The item <resource>%1</resource> is filtered by your current filter rules, "
 "so it will be hidden and not appear in the view."
 msgstr ""
-"Položka \"%1\" je filtrována aktuálně nastavenými pravidly pro filtrování, "
-"takže bude skryta a nezobrazí se v pohledu."
 
 #: calendarview.cpp:812
 #, kde-format
@@ -1851,25 +1718,22 @@ msgid "Paste failed: unable to determine a valid target date."
 msgstr ""
 
 #: calendarview.cpp:1300
-#, fuzzy, kde-format
-#| msgid "Make sub-to-dos independent"
+#, kde-format
 msgctxt "@info/plain"
 msgid "Make sub-to-dos independent"
-msgstr "Učinit podúkoly nezávislými"
+msgstr ""
 
 #: calendarview.cpp:1357
-#, fuzzy, kde-format
-#| msgid "Toggle Reminder"
+#, kde-format
 msgctxt "@info/plain"
 msgid "Toggle Reminder"
-msgstr "Přepnout upomínku"
+msgstr ""
 
 #: calendarview.cpp:1389 calendarview.cpp:1441
-#, fuzzy, kde-format
-#| msgid "Toggle To-do Completed"
+#, kde-format
 msgctxt "@info/plain"
 msgid "Toggle To-do Completed"
-msgstr "Přepnout dokončené úkoly"
+msgstr ""
 
 #: calendarview.cpp:1493
 #, kde-format
@@ -1967,25 +1831,22 @@ msgid "&Also Dissociate Future Ones"
 msgstr ""
 
 #: calendarview.cpp:1650
-#, fuzzy, kde-format
-#| msgid "Dissociate future occurrences"
+#, kde-format
 msgctxt "@info/plain"
 msgid "Dissociate future occurrences"
-msgstr "Vyčlenit budoucí opakování"
+msgstr ""
 
 #: calendarview.cpp:1652
-#, fuzzy, kde-format
-#| msgid "Dissociate occurrence"
+#, kde-format
 msgctxt "@info/plain"
 msgid "Dissociate occurrence"
-msgstr "Vyčlenit opakování"
+msgstr ""
 
 #: calendarview.cpp:1659
-#, fuzzy, kde-format
-#| msgid "Dissociating the future occurrences failed."
+#, kde-format
 msgctxt "@info"
 msgid "Dissociating the future occurrences failed."
-msgstr "Vyčlenění budoucích opakování selhalo."
+msgstr ""
 
 #: calendarview.cpp:1659 calendarview.cpp:1661
 #, kde-format
@@ -1994,26 +1855,22 @@ msgid "Dissociating Failed"
 msgstr "Vyčlenění selhalo"
 
 #: calendarview.cpp:1661
-#, fuzzy, kde-format
-#| msgid "Dissociating the occurrence failed."
+#, kde-format
 msgctxt "@info"
 msgid "Dissociating the occurrence failed."
-msgstr "Vyčlenění události z opakování selhalo."
+msgstr ""
 
 #: calendarview.cpp:1816
-#, fuzzy, kde-format
-#| msgctxt "@title:window"
-#| msgid "Export Calendar"
+#, kde-format
 msgctxt "@title:window"
 msgid "Export Calendar to File"
-msgstr "Exportovat kalendář"
+msgstr ""
 
 #: calendarview.cpp:1829
-#, fuzzy, kde-kuit-format
-#| msgid "Do you want to overwrite %1?"
+#, kde-kuit-format
 msgctxt "@info"
 msgid "Do you want to overwrite <filename>%1</filename>?"
-msgstr "Přejete si přepsat %1?"
+msgstr ""
 
 #: calendarview.cpp:1830
 #, kde-format
@@ -2022,12 +1879,10 @@ msgid "Export Calendar"
 msgstr "Exportovat kalendář"
 
 #: calendarview.cpp:1844
-#, fuzzy, kde-format
-#| msgctxt "save failure cause unknown"
-#| msgid "Reason unknown"
+#, kde-format
 msgctxt "@info save failure cause unknown"
 msgid "Reason unknown"
-msgstr "Neznámý důvod"
+msgstr ""
 
 #: calendarview.cpp:1846
 #, kde-kuit-format
@@ -2037,27 +1892,19 @@ msgid ""
 msgstr ""
 
 #: calendarview.cpp:1955 calendarview.cpp:2000
-#, fuzzy, kde-format
-#| msgid "No filter"
+#, kde-format
 msgctxt "@info/plain"
 msgid "No filter"
-msgstr "Žádný filtr"
+msgstr ""
 
 #: calendarview.cpp:2278
-#, fuzzy, kde-kuit-format
-#| msgid ""
-#| "The item \"%1\" has sub-to-dos. Do you want to delete just this item and "
-#| "make all its sub-to-dos independent, or delete the to-do with all its sub-"
-#| "to-dos?"
+#, kde-kuit-format
 msgctxt "@info"
 msgid ""
 "The item <resource>%1</resource> has sub-to-dos. Do you want to delete just "
 "this item and make all its sub-to-dos independent, or delete the to-do with "
 "all its sub-to-dos?"
 msgstr ""
-"Položka \"%1\" má podúkoly. Přejete si smazat pouze tuto položku a zároveň "
-"všechny její podúkoly změnit na nezávislé úkoly, anebo si přejete smazat "
-"úkol i se všemi svými podúkoly?"
 
 #: calendarview.cpp:2284
 #, kde-format
@@ -2080,79 +1927,59 @@ msgid ""
 msgstr ""
 
 #: calendarview.cpp:2320
-#, fuzzy, kde-format
-#| msgid "Removing not possible"
+#, kde-format
 msgctxt "@title:window"
 msgid "Removing not possible"
-msgstr "Odstranění není možné"
+msgstr ""
 
 #: calendarview.cpp:2339
-#, fuzzy, kde-kuit-format
-#| msgid ""
-#| "The calendar item \"%1\" recurs over multiple dates; are you sure you "
-#| "want to delete it and all its recurrences?"
+#, kde-kuit-format
 msgctxt "@info"
 msgid ""
 "The calendar item <resource>%1</resource> recurs over multiple dates; are "
 "you sure you want to delete it and all its recurrences?"
 msgstr ""
-"Událost \"%1\" se opakuje ve více dnech. Opravdu si přejete smazat vybranou "
-"událost a všechna opakování?"
 
 #: calendarview.cpp:2350
-#, fuzzy, kde-format
-#| msgid "Also Delete &Future"
+#, kde-format
 msgctxt "@action:button"
 msgid "Also Delete &Future"
-msgstr "Taktéž smazat &budoucí"
+msgstr ""
 
 #: calendarview.cpp:2354
-#, fuzzy, kde-kuit-format
-#| msgid ""
-#| "The calendar item \"%1\" recurs over multiple dates; are you sure you "
-#| "want to delete it and all its recurrences?"
+#, kde-kuit-format
 msgctxt "@info"
 msgid ""
 "The calendar item <resource>%1</resource> recurs over multiple dates. Do you "
 "want to delete only the current one on %2, also future occurrences, or all "
 "its occurrences?"
 msgstr ""
-"Událost \"%1\" se opakuje ve více dnech. Opravdu si přejete smazat vybranou "
-"událost a všechna opakování?"
 
 #: calendarview.cpp:2361
-#, fuzzy, kde-kuit-format
-#| msgid ""
-#| "The calendar item \"%1\" recurs over multiple dates; are you sure you "
-#| "want to delete it and all its recurrences?"
+#, kde-kuit-format
 msgctxt "@info"
 msgid ""
 "The calendar item <resource>%1</resource> recurs over multiple dates. Do you "
 "want to delete only the current one on %2 or all its occurrences?"
 msgstr ""
-"Událost \"%1\" se opakuje ve více dnech. Opravdu si přejete smazat vybranou "
-"událost a všechna opakování?"
 
 #: calendarview.cpp:2373
-#, fuzzy, kde-format
-#| msgid "Delete C&urrent"
+#, kde-format
 msgctxt "@action:button"
 msgid "Delete C&urrent"
-msgstr "Smazat so&učasnou"
+msgstr ""
 
 #: calendarview.cpp:2375
-#, fuzzy, kde-format
-#| msgid "Delete &All"
+#, kde-format
 msgctxt "@action:button"
 msgid "Delete &All"
-msgstr "Sm&azat vše"
+msgstr ""
 
 #: calendarview.cpp:2406 calendarview.cpp:2413
-#, fuzzy, kde-format
-#| msgid "Delete \"%1\""
+#, kde-format
 msgctxt "@info/plain"
 msgid "Delete \"%1\""
-msgstr "Smazat \"%1\""
+msgstr ""
 
 #: calendarview.cpp:2445
 #, kde-format
@@ -2162,18 +1989,16 @@ msgid ""
 msgstr ""
 
 #: calendarview.cpp:2450 calendarview.cpp:2705
-#, fuzzy, kde-format
-#| msgid "There are no completed to-dos to purge."
+#, kde-format
 msgctxt "@info"
 msgid "There are no completed to-dos to purge."
-msgstr "K vymazání nejsou žádné dokončené úkoly."
+msgstr ""
 
 #: calendarview.cpp:2455
-#, fuzzy, kde-format
-#| msgid "Delete all completed to-dos from checked calendars?"
+#, kde-format
 msgctxt "@info"
 msgid "Delete all completed to-dos from checked calendars?"
-msgstr "Smazat všechny dokončené úkoly ze zaškrtnutých kalendářů?"
+msgstr ""
 
 #: calendarview.cpp:2456
 #, kde-format
@@ -2188,25 +2013,22 @@ msgid "Purge"
 msgstr "Pročištění"
 
 #: calendarview.cpp:2467
-#, fuzzy, kde-kuit-format
-#| msgid "Unable to copy the item to %1."
+#, kde-kuit-format
 msgctxt "@info"
 msgid "Unable to copy item <resource>%1</resource>."
-msgstr "Nelze zkopírovat položku do %1."
+msgstr ""
 
 #: calendarview.cpp:2502
-#, fuzzy, kde-kuit-format
-#| msgid "Unable to move the item to  %1."
+#, kde-kuit-format
 msgctxt "@info"
 msgid "Unable to move item <resource>%1</resource>."
-msgstr "Nelze přesunout položku do %1."
+msgstr ""
 
 #: calendarview.cpp:2697
-#, fuzzy, kde-kuit-format
-#| msgid "0 completed to-dos were purged."
+#, kde-kuit-format
 msgctxt "@info"
 msgid "0 completed to-dos were purged.<nl/>"
-msgstr "Bylo vymazáno 0 dokončených úkolů."
+msgstr ""
 
 #: calendarview.cpp:2699 calendarview.cpp:2710
 #, kde-format, kde-kuit-format
@@ -2219,22 +2041,19 @@ msgstr[1] ""
 msgstr[2] ""
 
 #: calendarview.cpp:2703 calendarview.cpp:2708
-#, fuzzy, kde-format
-#| msgid "%1 completed to-do was purged."
-#| msgid_plural "%1 completed to-dos were purged."
+#, kde-format
 msgctxt "@info"
 msgid "%1 completed to-do was purged."
 msgid_plural "%1 completed to-dos were purged."
-msgstr[0] "Byl vymazán %1 dokončený úkol."
-msgstr[1] "Byly vymazány %1 dokončené úkoly."
-msgstr[2] "Bylo vymazáno %1 dokončených úkolů."
+msgstr[0] ""
+msgstr[1] ""
+msgstr[2] ""
 
 #: calendarview.cpp:2715
-#, fuzzy, kde-kuit-format
-#| msgid "An error occurred while purging completed to-dos: %1"
+#, kde-kuit-format
 msgctxt "@info"
 msgid "An error occurred while purging completed to-dos: <message>%1</message>"
-msgstr "Při čištění dokončených úkolů došlo k chybě: %1"
+msgstr ""
 
 #: calendarview.cpp:2769
 #, kde-kuit-format
@@ -2937,12 +2756,10 @@ msgid "Note: %1"
 msgstr "Poznámka: %1"
 
 #: kontactplugin/korganizer/korganizerplugin.cpp:191
-#, fuzzy, kde-format
-#| msgctxt "Event from email summary"
-#| msgid "Mail: %1"
+#, kde-format
 msgctxt "@info/plain event summary from email subject"
 msgid "Mail: %1"
-msgstr "Pošta: %1"
+msgstr ""
 
 #: kontactplugin/korganizer/korganizerplugin.cpp:193
 #, kde-kuit-format
@@ -3041,12 +2858,10 @@ msgid ""
 msgstr "Zobrazí se vám okno, kde budete moci vytvořit nový úkol."
 
 #: kontactplugin/korganizer/todoplugin.cpp:190
-#, fuzzy, kde-format
-#| msgctxt "Event from email summary"
-#| msgid "Mail: %1"
+#, kde-format
 msgctxt "@info/plain to-do summary from email subjuect"
 msgid "Mail: %1"
-msgstr "Pošta: %1"
+msgstr ""
 
 #: kontactplugin/korganizer/todoplugin.cpp:192
 #, kde-kuit-format
@@ -3611,31 +3426,24 @@ msgid "Mail to:\"%1\""
 msgstr "Poslat: \"%1\""
 
 #: kontactplugin/specialdates/specialdates_plugin.cpp:36
-#, fuzzy, kde-format
-#| msgid "Special Dates Summary"
+#, kde-format
 msgctxt "@info/plain"
 msgid "Special Dates Summary"
-msgstr "Souhrn speciálních dat"
+msgstr ""
 
 #: kontactplugin/specialdates/specialdates_plugin.cpp:38
-#, fuzzy, kde-format
-#| msgid "Kontact Special Dates Summary"
+#, kde-format
 msgctxt "@info/plain"
 msgid "Kontact Special Dates Summary"
-msgstr "Shrnutí speciálních dat"
+msgstr ""
 
 #: kontactplugin/specialdates/specialdates_plugin.cpp:41
-#, fuzzy, kde-format
-#| msgid ""
-#| "Copyright © 2003 Tobias Koenig\n"
-#| "Copyright © 2004–2010 Allen Winter"
+#, kde-format
 msgctxt "@info/plain"
 msgid ""
 "Copyright © 2003 Tobias Koenig\n"
 "Copyright © 2004–2010 Allen Winter"
 msgstr ""
-"Autorská práva © 2003 Tobias Koenig\n"
-"Autorská práva © 2004–2010 Allen Winter"
 
 #: kontactplugin/specialdates/specialdates_plugin.cpp:43
 #, kde-format
@@ -3912,11 +3720,10 @@ msgid "Select Holiday Regions"
 msgstr "Zvolte regiony svátků"
 
 #: prefs/koprefsdialogtime.cpp:111
-#, fuzzy, kde-format
-#| msgid "Schedule"
+#, kde-format
 msgctxt "@title:group"
 msgid "Weekly Schedule"
-msgstr "Rozvrh"
+msgstr ""
 
 #: prefs/koprefsdialogtime.cpp:126
 #, kde-format
@@ -4028,11 +3835,10 @@ msgid "day(s)"
 msgstr "dnů"
 
 #: prefs/koprefsdialogtime.cpp:224
-#, fuzzy, kde-format
-#| msgid "Audio Files (*.ogg *.wav *.mp3 *.wma *.flac *.aiff *.raw *.au *.ra)"
+#, kde-format
 msgctxt "@info/plain"
 msgid "Audio Files (*.ogg *.wav *.mp3 *.wma *.flac *.aiff *.raw *.au *.ra)"
-msgstr "Audio soubory (*.ogg *.wav *.mp3 *.wma *.flac *.aiff *.raw *.au *.ra)"
+msgstr ""
 
 #: prefs/koprefsdialogviews.cpp:44
 #, kde-format
@@ -4102,17 +3908,12 @@ msgid "Preferences"
 msgstr "Předvolby"
 
 #: prefs/kprefsdialog.cpp:706
-#, fuzzy, kde-format
-#| msgid ""
-#| "You are about to set all preferences to default values. All custom "
-#| "modifications will be lost."
+#, kde-format
 msgctxt "@info"
 msgid ""
 "You are about to set all preferences to default values. All custom "
 "modifications will be lost."
 msgstr ""
-"Chystáte se nastavit výchozí hodnoty konfigurace. Veškeré vlastní úpravy "
-"budou ztraceny."
 
 #: prefs/kprefsdialog.cpp:708
 #, kde-format
@@ -4229,16 +4030,11 @@ msgstr ""
 
 #. i18n: ectx: whatsthis, entry (WorkingHoursStart), group (Time &amp; Date)
 #: settings/korganizer.kcfg:43
-#, fuzzy, kde-format
-#| msgid ""
-#| "Enter the start time for the working hours here. The working hours will "
-#| "be marked with color by KOrganizer."
+#, kde-format
 msgid ""
 "Enter the start time for your daily schedule here. Your daily schedule hours "
 "will be marked with a separate color."
 msgstr ""
-"Zde zadejte počáteční čas vašeho pracovního dne. Pracovní hodiny budou "
-"programem KOrganizer barevně označeny."
 
 #. i18n: ectx: label, entry (WorkingHoursEnd), group (Time &amp; Date)
 #: settings/korganizer.kcfg:47
@@ -4254,16 +4050,11 @@ msgstr ""
 
 #. i18n: ectx: whatsthis, entry (WorkingHoursEnd), group (Time &amp; Date)
 #: settings/korganizer.kcfg:49
-#, fuzzy, kde-format
-#| msgid ""
-#| "Enter the ending time for the working hours here. The working hours will "
-#| "be marked with color by KOrganizer."
+#, kde-format
 msgid ""
 "Enter the ending time for your daily schedule here. Your daily schedule "
 "hours will be marked with a separate color."
 msgstr ""
-"Zde zadejte koncový čas vašeho pracovního dne. Pracovní hodiny budou "
-"programem KOrganizer barevně označeny."
 
 #. i18n: ectx: label, entry (ColorMonthBusyDaysEnabled), group (Time &amp; Date)
 #. i18n: ectx: label, entry (ColorBusyDaysEnabled), group (Agenda View)
@@ -4506,27 +4297,24 @@ msgstr ""
 
 #. i18n: ectx: label, entry (MarcusBainsShowSeconds), group (Agenda View)
 #: settings/korganizer.kcfg:136
-#, fuzzy, kde-format
-#| msgid "Show current-time (Marcus Bains) line"
+#, kde-format
 msgid "Show seconds and timezone on the current-time (Marcus Bains) line"
-msgstr "Zobrazit aktuální čas (čára Marcuse Bainse)"
+msgstr ""
 
 #. i18n: ectx: whatsthis, entry (MarcusBainsShowSeconds), group (Agenda View)
 #: settings/korganizer.kcfg:137
-#, fuzzy, kde-format
-#| msgid "Check this box if you want to show seconds on the current-time line."
+#, kde-format
 msgid ""
 "Check this box if you want to show seconds on the current-time (Marcus "
 "Bains) line. Depending on your locale, the timezone will also be displayed."
-msgstr "Zaškrtněte, pokud si přejete zobrazit sekundy na čáře aktuálního času."
+msgstr ""
 
 #. i18n: ectx: tooltip, entry (MarcusBainsShowSeconds), group (Agenda View)
 #: settings/korganizer.kcfg:138
-#, fuzzy, kde-format
-#| msgid "Display seconds with the current-time indicator"
+#, kde-format
 msgid ""
 "Display seconds (possibly with timezone) with the current-time indicator"
-msgstr "Zobrazit sekundy na čáře aktuálního času"
+msgstr ""
 
 #. i18n: ectx: label, entry (SelectionStartsEditor), group (Agenda View)
 #: settings/korganizer.kcfg:142
@@ -4987,10 +4775,9 @@ msgstr "Zde zvolte barvu pozadí pohledu na agendu."
 
 #. i18n: ectx: label, entry, group (Colors)
 #: settings/korganizer.kcfg:297
-#, fuzzy, kde-format
-#| msgid "Show current-time (Marcus Bains) line"
+#, kde-format
 msgid "Agenda view current-time (Marcus Bains) line color"
-msgstr "Zobrazit aktuální čas (čára Marcuse Bainse)"
+msgstr ""
 
 #. i18n: ectx: whatsthis, entry, group (Colors)
 #: settings/korganizer.kcfg:298
@@ -5106,10 +4893,9 @@ msgstr ""
 
 #. i18n: ectx: label, entry, group (Fonts)
 #: settings/korganizer.kcfg:338
-#, fuzzy, kde-format
-#| msgid "Show current-time (Marcus Bains) line"
+#, kde-format
 msgid "Current-time (Marcus Bains) line"
-msgstr "Zobrazit aktuální čas (čára Marcuse Bainse)"
+msgstr ""
 
 #. i18n: ectx: whatsthis, entry, group (Fonts)
 #: settings/korganizer.kcfg:339
@@ -6001,13 +5787,11 @@ msgstr ""
 
 #. i18n: ectx: property (toolTip), widget (QCheckBox, unfiltered)
 #: ui/searchdialog_base.ui:325
-#, fuzzy, kde-format
-#| msgctxt "@info:whatsthis"
-#| msgid "Press this button to remove the currently active filter."
+#, kde-format
 msgid ""
 "Uncheck this box to skip incidences matching the currently selected view "
 "filter"
-msgstr "Toto tlačítko stiskněte pro odstranění právě aktivního filtru."
+msgstr ""
 
 #. i18n: ectx: property (whatsThis), widget (QCheckBox, unfiltered)
 #: ui/searchdialog_base.ui:328
@@ -6066,11 +5850,10 @@ msgid ">"
 msgstr ">"
 
 #: views/multiagendaview/multiagendaview.cpp:37
-#, fuzzy, kde-format
-#| msgid "Agenda %1"
+#, kde-format
 msgctxt "@title:column"
 msgid "Agenda %1"
-msgstr "Agenda %1"
+msgstr ""
 
 #: views/multiagendaview/multiagendaview.cpp:342
 #, kde-format
@@ -6110,12 +5893,10 @@ msgid "Selected Calendars"
 msgstr "Vybrané kalendáře"
 
 #: widgets/kdatenavigator.cpp:171
-#, fuzzy, kde-format
-#| msgctxt "start/end week number of line in date picker"
-#| msgid "%1/%2"
+#, kde-format
 msgctxt "@info start/end week number of line in date picker"
 msgid "%1/%2"
-msgstr "%1/%2"
+msgstr ""
 
 #: widgets/kdatenavigator.cpp:176
 #, kde-format
@@ -6169,11 +5950,10 @@ msgid "Alarm"
 msgstr "Alarm"
 
 #: widgets/kitemiconcheckcombo.cpp:21
-#, fuzzy, kde-format
-#| msgid "Read Only"
+#, kde-format
 msgctxt "the incidence is read-only"
 msgid "Read Only"
-msgstr "Pouze ke čtení"
+msgstr ""
 
 #: widgets/kitemiconcheckcombo.cpp:22
 #, kde-format
@@ -6272,81 +6052,3 @@ msgstr "%1"
 msgctxt "4 digit year"
 msgid "%1"
 msgstr "%1"
-
-#~ msgid "&Show"
-#~ msgstr "&Zobrazit"
-
-#~ msgid "&Edit…"
-#~ msgstr "&Upravit…"
-
-#~ msgid "Saved calendar '%1'."
-#~ msgstr "Uložen kalendář '%1'."
-
-#~ msgid "iCalendars (*.ics)"
-#~ msgstr "iCalendar (*.ics)"
-
-#~ msgid "KOrganizer Confirmation"
-#~ msgstr "KOrganizer - potvrzení"
-
-#~ msgctxt "Event from email content"
-#~ msgid "<b>From:</b> %1<br /><b>To:</b> %2<br /><b>Subject:</b> %3"
-#~ msgstr "<b>Od:</b> %1<br /><b>Komu:</b> %2<br /><b>Předmět:</b> %3"
-
-#~ msgctxt "@action"
-#~ msgid "Configure"
-#~ msgstr "Nastavit"
-
-#~ msgid "Unable to save %1 \"%2\"."
-#~ msgstr "Nelze uložit %1 do \"%2\"."
-
-#~ msgid "W&ork Week"
-#~ msgstr "Prac&ovní týden"
-
-#~ msgctxt ""
-#~ "@info/plain Displayed grayed-out inside the textbox, verb to search"
-#~ msgid "Search…"
-#~ msgstr "Hledat…"
-
-#~ msgctxt "@title:group"
-#~ msgid "Working Period"
-#~ msgstr "Pracovní doba"
-
-#~ msgctxt "@info:whatsthis"
-#~ msgid ""
-#~ "Check this box to make KOrganizer mark the working hours for this day of "
-#~ "the week. If this is a work day for you, check this box, or the working "
-#~ "hours will not be marked with color."
-#~ msgstr ""
-#~ "Zaškrtněte, pokud si přejete, aby KOrganizer označoval pracovní hodiny "
-#~ "pro tento den v týdnu. Jedná-li se o váš pracovní den, zaškrtněte tento "
-#~ "přepínač - jinak nebudou pracovní hodiny barevně označeny."
-
-#~ msgctxt "@action:inmenu"
-#~ msgid "Serverside Subscription…"
-#~ msgstr "Odběr na serveru…"
-
-#~ msgid "Groupware Settings"
-#~ msgstr "Nastavení Groupware"
-
-#~ msgid ""
-#~ "Check this box if you want the summary to show events belonging to your "
-#~ "calendars only."
-#~ msgstr ""
-#~ "Zaškrtněte, pokud si přejete ve shrnutí zobrazení událostí náležejících "
-#~ "pouze do vašich kalendářů."
-
-#~ msgid "Show &my events only"
-#~ msgstr "Zobrazit pouze &moje události"
-
-#~ msgid ""
-#~ "Check this box if you want the summary to show To-dos belonging to your "
-#~ "calendars only."
-#~ msgstr ""
-#~ "Zaškrtněte, pokud si přejete ve shrnutí zobrazení úkolů náležejících "
-#~ "pouze do vašich kalendářů."
-
-#~ msgid "Show &my To-dos only"
-#~ msgstr "Zobrazit pouze &moje úkoly"
-
-#~ msgid "Current-time line"
-#~ msgstr "Čára aktuálního času"

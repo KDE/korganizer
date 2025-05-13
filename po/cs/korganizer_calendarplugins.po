@@ -27,11 +27,10 @@ msgid "Configure Day Numbers"
 msgstr "Nastavit číslování dní"
 
 #: datenums/configdialog.cpp:43
-#, fuzzy, kde-format
-#| msgid "Show Date Number"
+#, kde-format
 msgctxt "@title:group"
 msgid "Show Date Number"
-msgstr "Zobrazit číslo data"
+msgstr ""
 
 #: datenums/configdialog.cpp:48
 #, kde-format
@@ -695,11 +694,10 @@ msgid "Configure Picture of the Day"
 msgstr "Nastavit obrázek dne"
 
 #: picoftheday/configdialog.cpp:42
-#, fuzzy, kde-format
-#| msgid "Thumbnail Aspect Ratio Mode"
+#, kde-format
 msgctxt "@title:group"
 msgid "Thumbnail Aspect Ratio Mode"
-msgstr "Režim poměru stran miniatur"
+msgstr ""
 
 #: picoftheday/configdialog.cpp:46
 #, kde-format

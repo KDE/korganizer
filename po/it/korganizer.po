@@ -16,7 +16,7 @@ msgstr ""
 "Project-Id-Version: korganizer\n"
 "Report-Msgid-Bugs-To: https://bugs.kde.org\n"
 "POT-Creation-Date: 2025-05-07 00:43+0000\n"
-"PO-Revision-Date: 2025-05-02 10:58+0200\n"
+"PO-Revision-Date: 2025-05-12 22:56+0200\n"
 "Last-Translator: Luigi Toscano <luigi.toscano@tiscali.it>\n"
 "Language-Team: Italian <kde-i18n-it@kde.org>\n"
 "Language: it\n"
@@ -1286,11 +1286,10 @@ msgid "Show Date Navigator"
 msgstr "Mostra navigatore date"
 
 #: actionmanager.cpp:762
-#, fuzzy, kde-format
-#| msgid "Show icons in agenda view items"
+#, kde-format
 msgctxt "@action:inmenu"
 msgid "Show To-do List in Calendar Views"
-msgstr "Mostra icone le voci della vista agenda."
+msgstr "Mostra elenco delle cose da fare nelle viste calendario"
 
 #: actionmanager.cpp:766
 #, kde-format
@@ -1854,8 +1853,7 @@ msgid "Delete Item?"
 msgstr "Elimina voce?"
 
 #: calendarview.cpp:888
-#, fuzzy, kde-format
-#| msgid "Paste failed: unable to determine a valid target date."
+#, kde-format
 msgctxt "@info"
 msgid "Paste failed: unable to determine a valid target date."
 msgstr ""
@@ -4460,18 +4458,17 @@ msgstr ""
 
 #. i18n: ectx: label, entry (WeekNumbersShow), group (General View)
 #: settings/korganizer.kcfg:97
-#, fuzzy, kde-format
-#| msgid "Show day number"
+#, kde-format
 msgid "Show week numbers"
-msgstr "Mostra numero del giorno"
+msgstr "Mostra numeri di settimana"
 
 #. i18n: ectx: whatsthis, entry (WeekNumbersShow), group (General View)
 #: settings/korganizer.kcfg:98
-#, fuzzy, kde-format
-#| msgid "Check this box to display the time in month view items."
+#, kde-format
 msgid "Check this box to show the Date Navigator's week numbers."
 msgstr ""
-"Marca questa casella per mostrare l'orario delle voci della vista mensile."
+"Marca questa casella per mostrare i numeri della settimana del navigatore "
+"delle date."
 
 #. i18n: ectx: label, entry (WeekNumbersShowWork), group (General View)
 #: settings/korganizer.kcfg:102
@@ -4483,10 +4480,7 @@ msgstr ""
 
 #. i18n: ectx: whatsthis, entry (WeekNumbersShowWork), group (General View)
 #: settings/korganizer.kcfg:103
-#, fuzzy, kde-format
-#| msgid ""
-#| "Check this box to select a working week when clicking on the Date "
-#| "Navigator's week numbers, or uncheck it to choose the whole week."
+#, kde-format
 msgid ""
 "Check this box to select a working week when clicking on the Date "
 "Navigator's week numbers, or uncheck it to choose the whole week.  Ignored "
@@ -4494,7 +4488,8 @@ msgid ""
 msgstr ""
 "Marca questa casella per selezionare la settimana lavorativa quando fai clic "
 "sui numeri delle date nel navigatore date, o togli la marcatura per "
-"scegliere l'intera settimana."
+"scegliere l'intera settimana.  Ignorata se i numeri della settimana non sono "
+"mostrati."
 
 #. i18n: ectx: label, entry, group (Agenda View)
 #: settings/korganizer.kcfg:110
