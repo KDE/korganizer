@@ -4,7 +4,7 @@ msgstr ""
 "Project-Id-Version: korganizer\n"
 "Report-Msgid-Bugs-To: https://bugs.kde.org\n"
 "POT-Creation-Date: 2025-05-07 00:43+0000\n"
-"PO-Revision-Date: 2025-04-29 22:33+0200\n"
+"PO-Revision-Date: 2025-05-08 18:31+0200\n"
 "Last-Translator: Mincho Kondarev <mkondarev@yahoo.de>\n"
 "Language-Team: Bulgarian <kde-i18n-doc@kde.org>\n"
 "Language: bg\n"
@@ -1267,11 +1267,10 @@ msgid "Show Date Navigator"
 msgstr "Показване на датите"
 
 #: actionmanager.cpp:762
-#, fuzzy, kde-format
-#| msgid "Show icons in agenda view items"
+#, kde-format
 msgctxt "@action:inmenu"
 msgid "Show To-do List in Calendar Views"
-msgstr "Показване на икони в елементи от изгледа на дневен ред"
+msgstr "Показване на списък със задачи в изгледи на календара"
 
 #: actionmanager.cpp:766
 #, kde-format
@@ -4431,20 +4430,15 @@ msgstr ""
 
 #. i18n: ectx: label, entry (WeekNumbersShow), group (General View)
 #: settings/korganizer.kcfg:97
-#, fuzzy, kde-format
-#| msgctxt "@info:tooltip"
-#| msgid "Scroll to week number %1"
+#, kde-format
 msgid "Show week numbers"
-msgstr "Превъртете до номер седмица %1"
+msgstr "Показване на номера на седмицата"
 
 #. i18n: ectx: whatsthis, entry (WeekNumbersShow), group (General View)
 #: settings/korganizer.kcfg:98
-#, fuzzy, kde-format
-#| msgid "Check this box to display the time in month view items."
+#, kde-format
 msgid "Check this box to show the Date Navigator's week numbers."
-msgstr ""
-"Поставете отметка в това квадратче, за да се покаже времето в елементите от "
-"месечния изглед."
+msgstr "Отметнете това квадратче, за показване на номерата на седмицата."
 
 #. i18n: ectx: label, entry (WeekNumbersShowWork), group (General View)
 #: settings/korganizer.kcfg:102
@@ -4454,18 +4448,16 @@ msgstr "Седмичните номера избират работна седм
 
 #. i18n: ectx: whatsthis, entry (WeekNumbersShowWork), group (General View)
 #: settings/korganizer.kcfg:103
-#, fuzzy, kde-format
-#| msgid ""
-#| "Check this box to select a working week when clicking on the Date "
-#| "Navigator's week numbers, or uncheck it to choose the whole week."
+#, kde-format
 msgid ""
 "Check this box to select a working week when clicking on the Date "
 "Navigator's week numbers, or uncheck it to choose the whole week.  Ignored "
 "if week numbers are not shown."
 msgstr ""
 "Поставете отметка в това квадратче, за да изберете работна седмица, когато "
-"щракнете върху номерата на седмицата на Навигатора на дати, или премахнете "
-"отметката, за да изберете цялата седмица."
+"щракнете върху номерата на седмицата или премахнете отметката, за да "
+"изберете цялата седмица. Игнорира се, ако номерата на седмиците не са "
+"показани."
 
 #. i18n: ectx: label, entry, group (Agenda View)
 #: settings/korganizer.kcfg:110
