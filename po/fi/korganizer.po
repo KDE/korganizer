@@ -17,7 +17,7 @@ msgstr ""
 "Project-Id-Version: korganizer\n"
 "Report-Msgid-Bugs-To: https://bugs.kde.org\n"
 "POT-Creation-Date: 2025-05-07 00:43+0000\n"
-"PO-Revision-Date: 2025-04-03 17:46+0300\n"
+"PO-Revision-Date: 2025-04-08 21:36+0300\n"
 "Last-Translator: Tommi Nieminen <translator@legisign.org>\n"
 "Language-Team: Finnish <kde-i18n-doc@kde.org>\n"
 "Language: fi\n"
@@ -352,16 +352,12 @@ msgid "Fester Zigterman"
 msgstr "Fester Zigterman"
 
 #: actionmanager.cpp:131
-#, fuzzy, kde-format
-#| msgid ""
-#| "<qt>This will hide the menu bar completely. You can show it again by "
-#| "typing %1.</qt>"
+#, kde-format
 msgctxt "@info"
 msgid ""
 "This will hide the menu bar completely. You can show it again by typing %1."
 msgstr ""
-"<qt>Tämä piilottaa valikkorivin täysin. Saat sen uudelleen näkyviin "
-"näppäimellä %1.</qt>"
+"Tämä piilottaa valikkorivin kokonaan. Sen saa taas näkyviin painamalla %1."
 
 #: actionmanager.cpp:134
 #, kde-format
@@ -944,15 +940,13 @@ msgstr ""
 "kuukauden tai vuoden."
 
 #: actionmanager.cpp:552
-#, fuzzy, kde-format
-#| msgid "&Day"
+#, kde-format
 msgctxt "@action:inmenu"
 msgid "&Day"
 msgstr "&Päivä"
 
 #: actionmanager.cpp:553
-#, fuzzy, kde-format
-#| msgid "Day"
+#, kde-format
 msgctxt "@action:inmenu agenda view show 1 day at a time"
 msgid "Day"
 msgstr "Päivä"
@@ -961,41 +955,37 @@ msgstr "Päivä"
 #, kde-format
 msgctxt "@info:status"
 msgid "View 1 day at a time"
-msgstr ""
+msgstr "Näytä yksi päivä kerrallaan"
 
 #: actionmanager.cpp:555
-#, fuzzy, kde-format
-#| msgid "Show this many days at a time in the Next \"x\" days view"
+#, kde-format
 msgctxt "@info:tooltip"
 msgid "Show 1 day at a time in Agenda View"
-msgstr "Näytä näin monta päivää kerrallaan seuraavien ”x” päivän näkymässä"
+msgstr "Näytä päivyrinäkymässä yksi päivä kerrallaan"
 
 #: actionmanager.cpp:556
 #, kde-format
 msgctxt "@info:whatsthis"
 msgid "Select this option to show only 1 day at a time in Agenda View."
-msgstr ""
+msgstr "Näytä päivyrinäkymässä yksi päivä kerrallaan valitsemalla tämä."
 
 #: actionmanager.cpp:563
-#, fuzzy, kde-format
-#| msgid "&Next Day"
-#| msgid_plural "&Next %1 Days"
+#, kde-format
 msgctxt "@action:inmenu agenda view show a few days at a time"
 msgid "&Next Days"
-msgstr "&Seuraava päivä"
+msgstr "&Seuraavat päivät"
 
 #: actionmanager.cpp:564
 #, kde-format
 msgctxt "@info:status"
 msgid "View a few days at a time"
-msgstr ""
+msgstr "Näytä muutama päivä kerrallaan"
 
 #: actionmanager.cpp:565
-#, fuzzy, kde-format
-#| msgid "Show this many days at a time in the Next \"x\" days view"
+#, kde-format
 msgctxt "@info:tooltip"
 msgid "Show the next few days at a time in Agenda View"
-msgstr "Näytä näin monta päivää kerrallaan seuraavien ”x” päivän näkymässä"
+msgstr "Näytä päivyrinäkymässä muutama seuraava päivä kerrallaan"
 
 #: actionmanager.cpp:568
 #, kde-kuit-format
@@ -1008,27 +998,25 @@ msgid ""
 msgstr ""
 
 #: actionmanager.cpp:575
-#, fuzzy, kde-format
-#| msgid "Schedule"
+#, kde-format
 msgctxt "@action:inmenu"
 msgid "W&eek Schedule"
-msgstr "Aikataulu"
+msgstr "&Viikkoaikataulu"
 
 #: actionmanager.cpp:576
-#, fuzzy, kde-format
-#| msgid "Schedule"
+#, kde-format
 msgctxt ""
 "@action:inmenu agenda view show the weekly schedule days only (eg. no "
 "weekends)"
 msgid "Week Schedule"
-msgstr "Aikataulu"
+msgstr "Viikkoaikataulu"
 
 #: actionmanager.cpp:577
 #, kde-format
 msgctxt "@info:status"
 msgid ""
 "Show a week at a time showing days included in your weekly schedule only"
-msgstr ""
+msgstr "Näytä viikko kerrallaan mutta vain viikkoaikataulusi päivät"
 
 #: actionmanager.cpp:579
 #, kde-format
@@ -1037,6 +1025,8 @@ msgid ""
 "Show a week at a time in Agenda View, excluding days that are not included "
 "in your weekly schedule (ie. weekends are excluded)"
 msgstr ""
+"Näytä päivyrinäkymässä viikko kerrallaan, mutta jätä pois päivät, joita "
+"viikkoaikataulussasi ei ole (ts. viikonpäivät jäävät pois)"
 
 #: actionmanager.cpp:582
 #, kde-kuit-format
@@ -1050,15 +1040,13 @@ msgid ""
 msgstr ""
 
 #: actionmanager.cpp:591
-#, fuzzy, kde-format
-#| msgid "&Week"
+#, kde-format
 msgctxt "@action:inmenu"
 msgid "&Week"
 msgstr "&Viikko"
 
 #: actionmanager.cpp:592
-#, fuzzy, kde-format
-#| msgid "Week"
+#, kde-format
 msgctxt "@action:inmenu agenda view show a week at a time"
 msgid "Week"
 msgstr "Viikko"
@@ -1067,21 +1055,19 @@ msgstr "Viikko"
 #, kde-format
 msgctxt "@info:status"
 msgid "View a week at a time"
-msgstr ""
+msgstr "Näytä viikko kerrallaan"
 
 #: actionmanager.cpp:594
-#, fuzzy, kde-format
-#| msgctxt "@option:check"
-#| msgid "Show at the top of the agenda views"
+#, kde-format
 msgctxt "@info:tooltip"
 msgid "Show 1 week at a time in Agenda View"
-msgstr "Näytä ylinnä päivyrinäkymissä"
+msgstr "Näytä päivyrinäkymässä yksi viikko kerrallaan"
 
 #: actionmanager.cpp:595
 #, kde-format
 msgctxt "@info:whatsthis"
 msgid "Select this option to show a week at a time in Agenda View."
-msgstr ""
+msgstr "Näytä päivyrinäkymässä viikko kerrallaan valitsemalla tämä."
 
 #: actionmanager.cpp:602
 #, fuzzy, kde-format
@@ -1190,26 +1176,22 @@ msgid "Date"
 msgstr "Päivä"
 
 #: actionmanager.cpp:641
-#, fuzzy, kde-format
-#| msgctxt "@info:tooltip"
-#| msgid "Scroll the view to today"
+#, kde-format
 msgctxt "@info:status"
 msgid "Scroll the view to user selected dates"
-msgstr "Vieritä tähän päivään"
+msgstr "Vieritä näkymää käyttäjän valitsemiin päiviin"
 
 #: actionmanager.cpp:642
-#, fuzzy, kde-format
-#| msgctxt "@info:tooltip"
-#| msgid "Scroll the view to today"
+#, kde-format
 msgctxt "@info:tooltip"
 msgid "Scroll the view to user selected dates"
-msgstr "Vieritä tähän päivään"
+msgstr "Vieritä näkymää käyttäjän valitsemiin päiviin"
 
 #: actionmanager.cpp:643
 #, kde-format
 msgctxt "@info:whatsthis"
 msgid "Opens a date selection dialog for quickly navigating the view."
-msgstr ""
+msgstr "Avaa päivämääränvalintaikkuna näkymässä liikkumiseksi."
 
 #: actionmanager.cpp:648
 #, fuzzy, kde-format
@@ -1226,20 +1208,16 @@ msgid "Configure"
 msgstr "Asetukset"
 
 #: actionmanager.cpp:650
-#, fuzzy, kde-format
-#| msgctxt "@info:tooltip"
-#| msgid "Configure the current view"
+#, kde-format
 msgctxt "@info:status"
 msgid "Configure the multi-calendar view"
-msgstr "Nykyisen näkymän asetukset"
+msgstr "Monikalenterinäkymän asetukset"
 
 #: actionmanager.cpp:651
-#, fuzzy, kde-format
-#| msgctxt "@info:tooltip"
-#| msgid "Configure the current view"
+#, kde-format
 msgctxt "@info:tooltip"
 msgid "Configure the multi-calendar view"
-msgstr "Nykyisen näkymän asetukset"
+msgstr "Monikalenterinäkymän asetukset"
 
 #: actionmanager.cpp:653
 #, kde-format
@@ -1249,6 +1227,9 @@ msgid ""
 "view. Currently only the multi-calendar view is supported. See the Multiple "
 "Calendars options in the Views->Agenda Views settings."
 msgstr ""
+"Monikalenterinäkymässä avaa ikkunan, jossa näkymää voi mukauttaa. "
+"Toistaiseksi vain monikalenterinäkymää tuetaan. Katso monikalenteriasetuksia "
+"kohdassa Näkymät → Päivyrinäkymät."
 
 #: actionmanager.cpp:660 actionmanager.cpp:1349 actionmanager.cpp:1391
 #: koeventpopupmenu.cpp:41
@@ -1566,7 +1547,9 @@ msgid "Attach inline &without attachments"
 msgstr "&Sisällytä tekstiin (liitteittä)"
 
 #: actionmanager.cpp:1478 actionmanager.cpp:1583
-#, kde-format
+#, fuzzy, kde-format
+#| msgctxt "@action:inmenu"
+#| msgid "C&ancel"
 msgctxt "@action:inmenu"
 msgid "C&ancel"
 msgstr "Peruuta"
@@ -1629,14 +1612,7 @@ msgid "URL <filename>%1</filename> is invalid."
 msgstr "Verkko-osoite ”%1” on virheellinen."
 
 #: actionmanager.cpp:1703
-#, fuzzy, kde-kuit-format
-#| msgctxt "@info"
-#| msgid ""
-#| "<p>Would you like to merge this calendar item into an existing calendar "
-#| "or use it to create a brand new calendar?</p><p>If you select merge, then "
-#| "you will be given the opportunity to select the destination calendar.</"
-#| "p><p>If you select add, then a new calendar will be created for you "
-#| "automatically.</p>"
+#, kde-kuit-format
 msgctxt "@info"
 msgid ""
 "<para>Would you like to merge this calendar item into an existing calendar "
@@ -1645,10 +1621,10 @@ msgid ""
 "para><para>If you select add, then a new calendar will be created for you "
 "automatically.</para>"
 msgstr ""
-"<p>Haluatko yhdistää tämän kalenterimerkinnän olemassa olevaan kalenteriin "
-"vai luoda uuden kalenterin?</p><p>Jos valitset yhdistämisen, sinun on "
-"valittava kohdekalenteri.</p><p>Jos valitset uuden kalenterin luomisen, se "
-"luodaan automaattisesti.</p>"
+"<para>Haluatko yhdistää tämän kalenterimerkinnän olemassa olevaan "
+"kalenteriin vai luoda uuden kalenterin?</para><para>Jos valitset "
+"yhdistämisen, sinun on valittava kohdekalenteri.</para><para>Jos valitset "
+"uuden kalenterin luomisen, se luodaan automaattisesti.</para>"
 
 #: actionmanager.cpp:1711
 #, kde-format
@@ -1683,27 +1659,23 @@ msgid "%1 (Default)"
 msgstr "%1 (oletus)"
 
 #: akonadicollectionview.cpp:383
-#, fuzzy, kde-format
-#| msgctxt "@title:tab calendar account settings"
-#| msgid "Calendars"
+#, kde-format
 msgctxt "@info:tooltip"
 msgid "Calendar search"
-msgstr "Kalenterit"
+msgstr "Kalenterin haku"
 
 #: akonadicollectionview.cpp:384
 #, kde-format
 msgctxt "@info:whatsthis"
 msgid "Start typing to search for a calendar within the collection."
-msgstr ""
+msgstr "Etsi kokoelmasta kalenteria alkamalla kirjoittaa."
 
 #: akonadicollectionview.cpp:386
-#, fuzzy, kde-format
-#| msgctxt "@title:window"
-#| msgid "Search Calendar"
+#, kde-format
 msgctxt ""
 "@info/plain Displayed grayed-out inside the textbox, calendar to search"
 msgid "Search for calendar…"
-msgstr "Etsi kalenterista"
+msgstr "Etsi kalenteria…"
 
 #: akonadicollectionview.cpp:472 manageshowcollectionproperties.cpp:76
 #, kde-format
@@ -1731,17 +1703,19 @@ msgid ""
 "folder?<para>This will replace <filename>%2</filename> as the default "
 "calendar folder.</para>"
 msgstr ""
+"Haluatko varmasti asettaa kansion <filename>%1</filename> "
+"oletuskalenterikansioksi?<para>Tämä korvaa aiemmin valitun kansion <filename>"
+"%2</filename>.</para>"
 
 #: akonadicollectionview.cpp:545
-#, fuzzy, kde-kuit-format
-#| msgctxt "@info"
-#| msgid ""
-#| "Do you really want replace your current default calendar with \"%1\"?"
+#, kde-kuit-format
 msgctxt "@info"
 msgid ""
 "Do you really want to set <filename>%1</filename> as your default calendar "
 "folder?"
-msgstr "Haluatko varmasti, että ”%1” korvaa nykyisen oletuskalenterisi?"
+msgstr ""
+"Haluatko varmasti, että <filename>%1</filename> korvaa nykyisen "
+"oletuskalenterikansion?"
 
 #: akonadicollectionview.cpp:550
 #, kde-format
@@ -1753,7 +1727,7 @@ msgstr "Korvataanko oletuskalenteri?"
 #, kde-kuit-format
 msgctxt "@info"
 msgid "<filename>%1</filename> is now your default event calendar"
-msgstr ""
+msgstr "<filename>%1</filename> on nyt tapahtumien oletuskalenteri"
 
 #: akonadicollectionview.cpp:710
 #, kde-format
@@ -1776,6 +1750,10 @@ msgid ""
 "removed from its remote resource. The <filename>%1</filename> calendar can "
 "be added again at any time.</note></para>"
 msgstr ""
+"Haluatko varmasti poistaa kalenterin <filename>%1</filename>?"
+"<para><note>Kalenterin tietoja ei poisteta eikä kalenteria poisteta "
+"etäresurssistaan. Kalenterin <filename>%1</filename> voi milloin tahansa "
+"lisätä uudelleen.</note></para>"
 
 #: akonadicollectionview.cpp:796
 #, kde-kuit-format
@@ -1789,6 +1767,12 @@ msgid ""
 "it you may be prompted to select a new default calendar folder.</warning></"
 "para>"
 msgstr ""
+"Haluatko varmasti poistaa kalenterin <filename>%1</filename>?"
+"<para><note>Kalenterin tietoja ei poisteta eikä kalenteria poisteta "
+"etäresurssistaan. Kalenterin <filename>%1</filename> voi milloin tahansa "
+"lisätä uudelleen.</note></para><para><warning>Kalenteriin sisältyy "
+"oletuskalenterikansio <filename>%2</filename>. Jos se poistetaan, sinulta "
+"kysytään uutta oletuskalenterikansiota.</warning></para>"
 
 #: akonadicollectionview.cpp:807
 #, kde-kuit-format
@@ -1801,6 +1785,12 @@ msgid ""
 "contains your default calendar folder. If you delete it you may be prompted "
 "to select a new default calendar folder.</warning></para>"
 msgstr ""
+"Haluatko varmasti poistaa kalenterin <filename>%1</filename>?"
+"<para><note>Kalenterin tietoja ei poisteta eikä kalenteria poisteta "
+"etäresurssistaan. Kalenterin <filename>%1</filename> voi milloin tahansa "
+"lisätä uudelleen.</note></para><para><warning>Kalenteriin sisältyy "
+"oletuskalenterikansio. Jos se poistetaan, sinua voidaan pyytää valitsemaan "
+"uusi oletuskalenterikansio.</warning></para>"
 
 #: akonadicollectionview.cpp:817
 #, kde-kuit-format
@@ -1813,6 +1803,12 @@ msgid ""
 "calendar. If you delete it you may be prompted to select a new default "
 "calendar.</warning></para>"
 msgstr ""
+"Haluatko varmasti poistaa kalenterin <filename>%1</filename>?"
+"<para><note>Kalenterin tietoja ei poisteta eikä kalenteria poisteta "
+"etäresurssistaan Kalenterin <filename>%1</filename> voi milloin tahansa "
+"lisätä uudelleen</note></para><para><warning>Tämä on oletuskalenteri. Jos se "
+"poistetaan, sinua voidaan pyytää valitsemaan uusi oletuskalenteri.</"
+"warning></para>"
 
 #: akonadicollectionview.cpp:829
 #, kde-kuit-format
@@ -1822,6 +1818,9 @@ msgid ""
 "<para><warning>This cannot be undone. Please consider carefully before "
 "pressing the %2 button.</warning></para>"
 msgstr ""
+"Haluatko varmasti poistaa kalenterin <filename>%1</filename>?"
+"<para><warning>Tätä ei voi kumota. Harkitse huolella, ennen kuin napsautat "
+"%2.</warning></para>"
 
 #: akonadicollectionview.cpp:836
 #, kde-kuit-format
@@ -1833,6 +1832,11 @@ msgid ""
 "calendar folder. If you delete it you may be prompted to select a new "
 "default calendar.</warning></para>"
 msgstr ""
+"Haluatko varmasti poistaa kansion <filename>%1</filename>?"
+"<para><warning>Tätä ei voi kumota. Harkitse huolella, ennen kuin napsautat "
+"%2.</warning></para><para><warning>Tämä on oletuskalenterikansio. Jos se "
+"poistetaan, sinua voidaan pyytää valitsemaan uusi oletuskalenteri</warning></"
+"para>"
 
 #: akonadicollectionview.cpp:847 akonadicollectionview.cpp:876
 #, kde-format
@@ -1861,13 +1865,13 @@ msgstr ""
 #, kde-format
 msgctxt "@info"
 msgid "Consider setting a default calendar for new events"
-msgstr ""
+msgstr "Harkitse oletuskalenterin asettamista uusia tapahtumia varten"
 
 #: akonadicollectionview.cpp:931
 #, kde-format
 msgctxt "@info"
 msgid "Consider adding a write-enabled events calendar"
-msgstr ""
+msgstr "Harkitse kirjoitettavissa olevan tapahtumakalenterin lisäämistä"
 
 #: akonadicollectionview.cpp:953
 #, kde-kuit-format
@@ -1889,17 +1893,14 @@ msgstr ""
 "valitsemalla tapahtuma, tehtävä tai päiväkirjamerkintä.</p>"
 
 #: calendarview.cpp:256
-#, fuzzy, kde-format
-#| msgid ""
-#| "View the details of events, journal entries or to-dos selected in "
-#| "KOrganizer's main view here."
+#, kde-format
 msgctxt "@info:whatsthis"
 msgid ""
 "View the details of events, journal entries or to-dos selected in "
 "KOrganizer's main view here."
 msgstr ""
-"Näytä KOrganizerin päänäytössä valittujen tapahtumien, päiväkirjamerkintöjen "
-"tai tehtävien yksityiskohdat tässä."
+"Näytä KOrganizerin päänäkymässä valittujen tapahtumien, "
+"päiväkirjamerkintöjen tai tehtävien yksityiskohdat tässä."
 
 #: calendarview.cpp:676
 #, fuzzy, kde-format
@@ -4052,7 +4053,7 @@ msgstr "Liitännäisen määrittely epäonnistui"
 #, kde-format
 msgctxt "@title:tab"
 msgid "Regional"
-msgstr "Paikallinen"
+msgstr "Maa-asetukset"
 
 #: prefs/koprefsdialogtime.cpp:47
 #, kde-format
@@ -4085,17 +4086,16 @@ msgid "Select Holiday Regions"
 msgstr "Valitse vapaapäiväalue"
 
 #: prefs/koprefsdialogtime.cpp:111
-#, fuzzy, kde-format
-#| msgid "Schedule"
+#, kde-format
 msgctxt "@title:group"
 msgid "Weekly Schedule"
-msgstr "Aikataulu"
+msgstr "Viikkoaikataulu"
 
 #: prefs/koprefsdialogtime.cpp:126
 #, kde-format
 msgctxt "@info:tooltip"
 msgid "Include %1 as part of your weekly schedule"
-msgstr ""
+msgstr "Lue %1 osaksi viikkoaikatauluasi"
 
 #: prefs/koprefsdialogtime.cpp:128
 #, kde-format
@@ -4107,6 +4107,11 @@ msgid ""
 "weekly schedule (even if you don't work). Typically, weekend days should be "
 "unchecked."
 msgstr ""
+"Kun tämä on valittu, %1 luetaan osaksi tavallista viikkoaikatauluasi. "
+"Päivittäiset tunnit, kun on %1, näytetään eri värein kuin tavallisen "
+"aikataulusi ulkopuoliset ajat. Valitse tämä, jos %1 kuuluu osana tavalliseen "
+"viikkoaikatauluusi (vaikket tekisi työtä). Tyypillisesti viikonlopun päivien "
+"tulisi jäädä valitsematta."
 
 #: prefs/koprefsdialogtime.cpp:142
 #, kde-format
@@ -4154,7 +4159,7 @@ msgstr "Sunnuntai"
 #, kde-format
 msgctxt "@info:tooltip"
 msgid "Highlight holidays differently from your regular schedule"
-msgstr ""
+msgstr "Korosta vapaapäivät eri tavoin kuin tavallinen aikataulusi"
 
 #: prefs/koprefsdialogtime.cpp:169
 #, kde-format
@@ -4163,6 +4168,8 @@ msgid ""
 "Check this box to highlight holidays differently than days included with "
 "your regular schedule."
 msgstr ""
+"Valitse tämä korostaaksesi vapaapäivät eri tavoin kuin tavalliseen "
+"aikatauluusi kuuluvat päivät."
 
 #: prefs/koprefsdialogtime.cpp:176
 #, kde-format
@@ -4402,22 +4409,19 @@ msgstr "Päivän aloittava tunti"
 
 #. i18n: ectx: tooltip, entry (WorkingHoursStart), group (Time &amp; Date)
 #: settings/korganizer.kcfg:42
-#, fuzzy, kde-format
-#| msgid "Sets the title of this journal."
+#, kde-format
 msgid "Set the time you typically start your day"
-msgstr "Asettaa tälle päiväkirjamerkinnälle otsikon."
+msgstr "Aseta kellonaika, jolloin päiväsi tyypillisesti alkaa"
 
 #. i18n: ectx: whatsthis, entry (WorkingHoursStart), group (Time &amp; Date)
 #: settings/korganizer.kcfg:43
-#, fuzzy, kde-format
-#| msgid ""
-#| "Enter the start time for the working hours here. The working hours will "
-#| "be marked with color by KOrganizer."
+#, kde-format
 msgid ""
 "Enter the start time for your daily schedule here. Your daily schedule hours "
 "will be marked with a separate color."
 msgstr ""
-"Anna tähän työajan alkuaika. Työaika merkitään KOrganizerissa eri värillä."
+"Anna tähän päivittäisen työajan aloitusaika. Päiväaikataulun tunnit "
+"merkitään eri värillä."
 
 #. i18n: ectx: label, entry (WorkingHoursEnd), group (Time &amp; Date)
 #: settings/korganizer.kcfg:47
@@ -4427,23 +4431,19 @@ msgstr "Päivän päättävä tunti"
 
 #. i18n: ectx: tooltip, entry (WorkingHoursEnd), group (Time &amp; Date)
 #: settings/korganizer.kcfg:48
-#, fuzzy, kde-format
-#| msgid "Sets the title of this journal."
+#, kde-format
 msgid "Set the time you typically end your day"
-msgstr "Asettaa tälle päiväkirjamerkinnälle otsikon."
+msgstr "Aseta kellonaika, jolloin päiväsi tyypillisesti päättyy"
 
 #. i18n: ectx: whatsthis, entry (WorkingHoursEnd), group (Time &amp; Date)
 #: settings/korganizer.kcfg:49
-#, fuzzy, kde-format
-#| msgid ""
-#| "Enter the ending time for the working hours here. The working hours will "
-#| "be marked with color by KOrganizer."
+#, kde-format
 msgid ""
 "Enter the ending time for your daily schedule here. Your daily schedule "
 "hours will be marked with a separate color."
 msgstr ""
-"Anna tähän työajan päättymisaika. Työaika merkitään KOrganizerissa eri "
-"värillä."
+"Anna tähän päivittäisen aikataulusi päättymisaika. Päivittäisen aikataulun "
+"tunnit osoitetaan eri värillä."
 
 #. i18n: ectx: label, entry (ColorMonthBusyDaysEnabled), group (Time &amp; Date)
 #. i18n: ectx: label, entry (ColorBusyDaysEnabled), group (Agenda View)
@@ -6316,13 +6316,13 @@ msgstr "Sisällytä &annetun aikavälin tehtävät"
 
 #. i18n: ectx: property (toolTip), widget (QCheckBox, unfiltered)
 #: ui/searchdialog_base.ui:325
-#, fuzzy, kde-format
-#| msgctxt "@info:whatsthis"
-#| msgid "Press this button to remove the currently active filter."
+#, kde-format
 msgid ""
 "Uncheck this box to skip incidences matching the currently selected view "
 "filter"
-msgstr "Voit poistaa käytössä olevan suodattimen napsauttamalla tästä."
+msgstr ""
+"Sivuuta valittua näkymäsuodatinta vastaavat esiintymät valitsemalla tämä "
+"ruutu"
 
 #. i18n: ectx: property (whatsThis), widget (QCheckBox, unfiltered)
 #: ui/searchdialog_base.ui:328
@@ -6331,12 +6331,14 @@ msgid ""
 "When this box is checked all incidences will be considered in the search, "
 "even those that aren't displayed according the currently selected view filter"
 msgstr ""
+"Jos tämä ruutu on valittu, haku ottaa huomioon kaikki ilmentymät, nekin "
+"joita valitussa näkymäsuodattimessa ei näytetä"
 
 #. i18n: ectx: property (text), widget (QCheckBox, unfiltered)
 #: ui/searchdialog_base.ui:331
 #, kde-format
 msgid "Include all incidences matched by view filter"
-msgstr ""
+msgstr "Sisällytä kaikki näkymäsuodatinta vastaavat ilmentymät"
 
 #. i18n: ectx: property (text), widget (QPushButton, mDayBtn)
 #: views/collectionview/quickview.ui:34
@@ -6489,8 +6491,7 @@ msgid "Alarm"
 msgstr "Hälytys"
 
 #: widgets/kitemiconcheckcombo.cpp:21
-#, fuzzy, kde-format
-#| msgid "Read Only"
+#, kde-format
 msgctxt "the incidence is read-only"
 msgid "Read Only"
 msgstr "Vain luku"
