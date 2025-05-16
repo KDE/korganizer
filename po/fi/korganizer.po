@@ -17,7 +17,7 @@ msgstr ""
 "Project-Id-Version: korganizer\n"
 "Report-Msgid-Bugs-To: https://bugs.kde.org\n"
 "POT-Creation-Date: 2025-04-18 02:33+0000\n"
-"PO-Revision-Date: 2025-04-03 17:46+0300\n"
+"PO-Revision-Date: 2025-04-08 21:36+0300\n"
 "Last-Translator: Tommi Nieminen <translator@legisign.org>\n"
 "Language-Team: Finnish <kde-i18n-doc@kde.org>\n"
 "Language: fi\n"
@@ -1387,6 +1387,10 @@ msgid ""
 "removed from its remote resource.</note></para>The <filename>%1</filename> "
 "calendar can be added again at any time."
 msgstr ""
+"Haluatko varmasti poistaa kalenterin <filename>%1</filename>?"
+"<para><note>Kalenterin tietoja ei poisteta eikä kalenteria poisteta "
+"etäresurssistaan.</note></para>Kalenterin <filename>%1</filename> voi "
+"milloin tahansa lisätä uudelleen."
 
 #: akonadicollectionview.cpp:759
 #, kde-kuit-format
@@ -1396,6 +1400,9 @@ msgid ""
 "<para><warning>This cannot be undone.  Please consider carefully before "
 "pressing the %2 button.</warning></para>"
 msgstr ""
+"Haluatko varmasti poistaa kalenterin <filename>%1</filename>?"
+"<para><warning>Tätä ei voi kumota. Harkitse huolella, ennen kuin napsautat "
+"%2.</warning></para>"
 
 #: akonadicollectionview.cpp:767
 #, kde-format
@@ -3427,7 +3434,7 @@ msgstr "Liitännäisen määrittely epäonnistui"
 #, kde-format
 msgctxt "@title:tab"
 msgid "Regional"
-msgstr "Paikallinen"
+msgstr "Maa-asetukset"
 
 #: prefs/koprefsdialogtime.cpp:47
 #, kde-format
@@ -5608,13 +5615,13 @@ msgstr "Sisällytä &annetun aikavälin tehtävät"
 
 #. i18n: ectx: property (toolTip), widget (QCheckBox, unfiltered)
 #: ui/searchdialog_base.ui:325
-#, fuzzy, kde-format
-#| msgctxt "@info:whatsthis"
-#| msgid "Press this button to remove the currently active filter."
+#, kde-format
 msgid ""
 "Uncheck this box to skip incidences matching the currently selected view "
 "filter"
-msgstr "Voit poistaa käytössä olevan suodattimen napsauttamalla tästä."
+msgstr ""
+"Sivuuta valittua näkymäsuodatinta vastaavat esiintymät valitsemalla tämä "
+"ruutu"
 
 #. i18n: ectx: property (whatsThis), widget (QCheckBox, unfiltered)
 #: ui/searchdialog_base.ui:328
@@ -5623,12 +5630,14 @@ msgid ""
 "When this box is checked all incidences will be considered in the search, "
 "even those that aren't displayed according the currently selected view filter"
 msgstr ""
+"Jos tämä ruutu on valittu, haku ottaa huomioon kaikki ilmentymät, nekin "
+"joita valitussa näkymäsuodattimessa ei näytetä"
 
 #. i18n: ectx: property (text), widget (QCheckBox, unfiltered)
 #: ui/searchdialog_base.ui:331
 #, kde-format
 msgid "Include all incidences matched by view filter"
-msgstr ""
+msgstr "Sisällytä kaikki näkymäsuodatinta vastaavat ilmentymät"
 
 #. i18n: ectx: property (text), widget (QPushButton, mDayBtn)
 #: views/collectionview/quickview.ui:34
