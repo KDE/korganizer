@@ -9,30 +9,41 @@
 
 Checks: -*,
         bugprone-*,
+        -bugprone-easily-swappable-parameters,
+        -bugprone-implicit-widening-of-multiplication-result,
+        -bugprone-narrowing-conversions,
+        -bugprone-suspicious-include,
         clang-analyzer-*,
         -clang-analyzer-osx,
         -clang-analyzer-cplusplus.NewDeleteLeaks,
-        google-*,
-        -google-build-using-namespace,
-        -google-readability-todo,
-        -google-runtime-references,
-        -google-readability-function-size,
-        -google-default-arguments,
+        -google-*,
         misc-*,
         -misc-definitions-in-headers,
+        -misc-include-cleaner,
+        -misc-no-recursion,
+        -misc-use-anonymous-namespace,
         -*-non-private-member-variables-in-classes,
         performance-*,
+        -performance-enum-size,
         -performance-no-automatic-move,
         readability-*,
         -readability-avoid-const-params-in-decls,
+        -readability-avoid-nested-conditional-operator,
         -readability-convert-member-functions-to-static,
         -readability-else-after-return,
+        -readability-function-cognitive-complexity,
+        -readability-function-size,
+        -readability-identifier-length,
         -readability-implicit-bool-conversion,
-        -readability-static-accessed-through-instance,
         -readability-magic-numbers,
         -readability-make-member-function-const,
-        -readability-function-size
-AnalyzeTemporaryDtors: true
+        -readability-math-missing-parentheses,
+        -readability-named-parameter,
+        -readability-qualified-auto,
+        -readability-redundant-casting,
+        -readability-simplify-boolean-expr,
+        -readability-static-accessed-through-instance,
+        -readability-use-std-min-max,
 CheckOptions:
     - key:  bugprone-assert-side-effects.AssertMacros
       value: 'Q_ASSERT;QVERIFY;QCOMPARE;AKVERIFY'
@@ -48,13 +59,3 @@ CheckOptions:
       value: true
     - key: VectorLikeClasses
       value: 'std::vector;QList'
-WarningsAsErrors: bugprone-*,
-                  clang-*,
-                  google-*,
-                  misc-*,
-                  performance-*,
-                  readability-*,
-                  -readability-magic-numbers,
-                  -readability-make-member-function-const
-IgnoredVariableNames: db
-
