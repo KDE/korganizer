@@ -70,7 +70,7 @@ void ManageShowCollectionProperties::slotCollectionPropertiesFinished(KJob *job)
 
     const Akonadi::Collection::List collections = fetch->collections();
     if (!collections.isEmpty()) {
-        const Akonadi::Collection collection = collections.first();
+        const Akonadi::Collection &collection = collections.first();
 
         QPointer<Akonadi::CollectionPropertiesDialog> const dlg = new Akonadi::CollectionPropertiesDialog(collection, mPages, mCollectionView);
         dlg->setWindowTitle(i18nc("@title:window", "Properties of Calendar Folder %1", collection.name()));

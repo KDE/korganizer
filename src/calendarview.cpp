@@ -286,7 +286,7 @@ CalendarView::~CalendarView()
 {
     mCalendar->unregisterObserver(this);
     mCalendar->setFilter(nullptr); // So calendar doesn't deleted it twice
-    forEachCalendar([](auto calendar) {
+    forEachCalendar([](const auto &calendar) {
         calendar->setFilter(nullptr);
     });
     qDeleteAll(mFilters);
@@ -335,6 +335,7 @@ Akonadi::CollectionCalendar::Ptr CalendarView::calendarForCollection(const Akona
     return newCalendar;
 }
 
+// NOLINTBEGIN(performance-unnecessary-value-param)
 void CalendarView::forEachCalendar(std::function<void(Akonadi::CollectionCalendar::Ptr)> func)
 {
     auto it = mCalendars.begin();
@@ -349,6 +350,7 @@ void CalendarView::forEachCalendar(std::function<void(Akonadi::CollectionCalenda
         ++it;
     }
 }
+// NOLINTEND(performance-unnecessary-value-param)
 
 QDate CalendarView::activeDate(bool fallbackToToday)
 {
@@ -771,7 +773,7 @@ void CalendarView::updateView(const QDate &start, const QDate &end, const QDate 
         mTodoList->setVisible(false);
     } else {
         KSharedConfig::Ptr config = KSharedConfig::openConfig();
-        KConfigGroup group = config->group(QStringLiteral("Settings"));
+        const KConfigGroup group = config->group(QStringLiteral("Settings"));
         mTodoList->setVisible(group.readEntry("TodoViewVisible", false));
     }
 
@@ -1391,7 +1393,7 @@ void CalendarView::toggleTodoCompleted(const Akonadi::Item &item)
     mChanger->endAtomicOperation();
 }
 
-void CalendarView::toggleCompleted(KCalendarCore::Todo::Ptr todo, const QDate &occurrenceDate)
+void CalendarView::toggleCompleted(const KCalendarCore::Todo::Ptr &todo, const QDate &occurrenceDate)
 {
     if (todo->recurs()) {
         QDateTime const recurrenceId = recurrenceOnDate(todo, occurrenceDate);
@@ -1584,7 +1586,7 @@ void CalendarView::moveIncidenceToResource(const Akonadi::Item &item, const Akon
 #endif
 }
 
-QDateTime CalendarView::recurrenceOnDate(KCalendarCore::Incidence::Ptr incidence, QDate displayDate)
+QDateTime CalendarView::recurrenceOnDate(const KCalendarCore::Incidence::Ptr &incidence, const QDate &displayDate)
 {
     const auto start = incidence->dateTime(KCalendarCore::IncidenceBase::RoleDisplayStart);
     const auto offset = start.toLocalTime().date().daysTo(displayDate);
@@ -1964,7 +1966,7 @@ void CalendarView::updateFilter()
     Q_EMIT filtersUpdated(filters, pos + 1);
 
     mCalendar->setFilter(mCurrentFilter);
-    forEachCalendar([this](auto calendar) {
+    forEachCalendar([this](const auto &calendar) {
         calendar->setFilter(mCurrentFilter);
     });
 }
@@ -1978,7 +1980,7 @@ void CalendarView::filterActivated(int filterNo)
     if (newFilter != mCurrentFilter) {
         mCurrentFilter = newFilter;
         mCalendar->setFilter(mCurrentFilter);
-        forEachCalendar([this](auto calendar) {
+        forEachCalendar([this](const auto &calendar) {
             calendar->setFilter(mCurrentFilter);
         });
         mViewManager->addChange(EventViews::EventView::FilterChanged);
@@ -2615,7 +2617,7 @@ void CalendarView::collectionDeselected(const Akonadi::Collection &collection)
         return;
     }
 
-    const auto deselectCalendar = *calendarIt;
+    const auto &deselectCalendar = *calendarIt;
     deselectCalendar->setFilter(nullptr);
     mEnabledCalendars.removeOne(deselectCalendar);
     mDateNavigatorContainer->removeCalendar(deselectCalendar);

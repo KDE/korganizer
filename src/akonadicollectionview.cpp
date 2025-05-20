@@ -205,7 +205,9 @@ private: // NOLINT(readability-redundant-access-specifiers)
         if (!findEtm(mTreeView->model())) {
             return;
         }
-        if (treeStateRestorer) { // We don't need more than one to be running at the same time
+        // NOLINT(readability-delete-null-pointer)
+        if (treeStateRestorer) { // NOLINT(readability-delete-null-pointer)
+            // We don't need more than one to be running at the same time
             delete treeStateRestorer;
         }
         qCDebug(KORGANIZER_LOG) << "Restore tree state";
@@ -915,7 +917,7 @@ void AkonadiCollectionView::requestDefaultCalendar(const QString &mimeType)
         }
     } else if (possibleDefaultCalendarsRemaining == 1) {
         // Automatically set the default calendar as there is only 1 possibility.
-        const Akonadi::Collection collection = possibleDefaultCalendars.first();
+        const Akonadi::Collection &collection = possibleDefaultCalendars.first();
         if (collection.isValid()) {
             defaultCollection = collection;
         }

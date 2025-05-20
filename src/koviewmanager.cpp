@@ -69,9 +69,6 @@ QAction *KOViewManager::viewToAction(const QString &view, RangeMode rangeMode)
 
     if (view == QLatin1StringView("WhatsNext")) {
         action = ac->action(QStringLiteral("view_whatsnext"));
-    } else if (view == QLatin1StringView("OldMonth")) {
-        // the oldmonth view is gone, so we assume the new month view
-        action = ac->action(QStringLiteral("view_month"));
     } else if (view == QLatin1StringView("List")) {
         action = ac->action(QStringLiteral("view_list"));
     } else if (view == QLatin1StringView("Journal")) {
@@ -80,7 +77,7 @@ QAction *KOViewManager::viewToAction(const QString &view, RangeMode rangeMode)
         action = ac->action(QStringLiteral("view_todo"));
     } else if (view == QLatin1StringView("Timeline")) {
         action = ac->action(QStringLiteral("view_timeline"));
-    } else if (view == QLatin1StringView("Month")) {
+    } else if ((view == QLatin1StringView("Month")) || (view == QLatin1StringView("OldMonth"))) {
         action = ac->action(QStringLiteral("view_month"));
     } else if (view == QLatin1StringView("Agenda")) {
         switch (rangeMode) {
@@ -112,9 +109,6 @@ void KOViewManager::readSettings(KConfig *config)
 
     if (view == QLatin1StringView("WhatsNext")) {
         showWhatsNextView();
-    } else if (view == QLatin1StringView("OldMonth")) {
-        // the oldmonth view is gone, so we assume the new month view
-        showMonthView();
     } else if (view == QLatin1StringView("List")) {
         showListView();
         mListView->readSettings(config);
@@ -124,7 +118,7 @@ void KOViewManager::readSettings(KConfig *config)
         showTodoView();
     } else if (view == QLatin1StringView("Timeline")) {
         showTimeLineView();
-    } else if (view == QLatin1StringView("Month")) {
+    } else if ((view == QLatin1StringView("Month")) || (view == QLatin1StringView("OldMonth"))) {
         showMonthView();
     } else {
         showAgendaView();

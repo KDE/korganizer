@@ -77,7 +77,7 @@ SummaryEventInfo::List SummaryEventInfo::eventsForRange(QDate start, QDate end, 
 
     sDateTimeByUid()->clear();
     for (int i = 0; i < allEvents.count(); ++i) {
-        const KCalendarCore::Event::Ptr event = allEvents.at(i);
+        const KCalendarCore::Event::Ptr &event = allEvents.at(i);
         if (skip(event)) {
             continue;
         }

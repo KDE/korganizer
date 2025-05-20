@@ -329,7 +329,7 @@ void KOEventPopupMenu::createNewEvent()
     newEvent->setAllDay(currentIncidence->allDay());
     newEvent->setDtEnd(QDateTime());
     if (CalendarSupport::KCalPrefs::instance()->defaultEventReminders()) {
-        KCalendarCore::Alarm::Ptr alarm = newEvent->newAlarm();
+        const KCalendarCore::Alarm::Ptr alarm = newEvent->newAlarm();
         CalendarSupport::createAlarmReminder(alarm, newEvent->type());
     }
     Akonadi::Item newEventItem;
@@ -356,8 +356,8 @@ void KOEventPopupMenu::createEvent()
 
     // Create New Event over an existing event in the same time-slot
     if (CalendarSupport::hasEvent(mCurrentIncidence)) {
-        KCalendarCore::Event::Ptr newEvent(new KCalendarCore::Event());
-        KCalendarCore::Event::Ptr const currentEvent(Akonadi::CalendarUtils::event(mCurrentIncidence));
+        const KCalendarCore::Event::Ptr newEvent(new KCalendarCore::Event());
+        const KCalendarCore::Event::Ptr currentEvent(Akonadi::CalendarUtils::event(mCurrentIncidence));
         newEvent->setUid(KCalendarCore::CalFormat::createUniqueId());
         QDateTime startDt = currentEvent->dtStart();
         startDt.setDate(mCurrentDate);
@@ -370,7 +370,7 @@ void KOEventPopupMenu::createEvent()
             newEvent->setDtEnd(startDt.addSecs(addSecs));
         }
         if (CalendarSupport::KCalPrefs::instance()->defaultEventReminders()) {
-            KCalendarCore::Alarm::Ptr alarm = newEvent->newAlarm();
+            const KCalendarCore::Alarm::Ptr alarm = newEvent->newAlarm();
             CalendarSupport::createAlarmReminder(alarm, newEvent->type());
         }
         Akonadi::Item newEventItem;
@@ -418,7 +418,7 @@ void KOEventPopupMenu::createNewTodo()
     newTodo->setAllDay(currentIncidence->allDay());
     newTodo->setDtDue(QDateTime());
     if (CalendarSupport::KCalPrefs::instance()->defaultTodoReminders()) {
-        KCalendarCore::Alarm::Ptr alarm = newTodo->newAlarm();
+        const KCalendarCore::Alarm::Ptr alarm = newTodo->newAlarm();
         CalendarSupport::createAlarmReminder(alarm, newTodo->type());
     }
     Akonadi::Item newTodoItem;
@@ -446,7 +446,7 @@ void KOEventPopupMenu::createTodo()
         newTodo->setAllDay(currentTodo->allDay());
         newTodo->setDtDue(currentTodo->dtDue());
         if (CalendarSupport::KCalPrefs::instance()->defaultTodoReminders()) {
-            KCalendarCore::Alarm::Ptr alarm = newTodo->newAlarm();
+            const KCalendarCore::Alarm::Ptr alarm = newTodo->newAlarm();
             CalendarSupport::createAlarmReminder(alarm, newTodo->type());
         }
         Akonadi::Item newTodoItem;
