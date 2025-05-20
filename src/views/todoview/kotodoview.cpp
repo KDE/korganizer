@@ -169,7 +169,7 @@ void KOTodoView::printTodo(bool preview)
         return;
     }
 
-    const Akonadi::Item todoItem = selectedItems.first();
+    const Akonadi::Item &todoItem = selectedItems.first();
     const KCalendarCore::Todo::Ptr todo = Akonadi::CalendarUtils::todo(todoItem);
     Q_ASSERT(todo);
 

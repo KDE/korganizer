@@ -153,7 +153,7 @@ void TodoPlugin::processDropEvent(QDropEvent *event)
             Q_ASSERT(incidences.count());
             if (!incidences.isEmpty()) {
                 event->accept();
-                KCalendarCore::Incidence::Ptr const i = incidences.first();
+                KCalendarCore::Incidence::Ptr const &i = incidences.first();
                 QString summary;
                 if (i->type() == KCalendarCore::Incidence::TypeJournal) {
                     summary = i18nc("@item", "Note: %1", i->summary());

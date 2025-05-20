@@ -75,12 +75,12 @@ private:
       @param todo is a pointer to a To-do object to test.
       @return if the To-do starts on the current date.
     */
-    bool startsToday(const KCalendarCore::Todo::Ptr &todo);
+    bool startsToday(const KCalendarCore::Todo::Ptr &todo) const;
 
     /**
       Create a text string containing the states of the To-do.
       @param todo is a pointer to a To-do object to test.
       @return a QString containing a comma-separated list of To-do states.
     */
-    const QString stateStr(const KCalendarCore::Todo::Ptr &todo);
+    QString stateStr(const KCalendarCore::Todo::Ptr &todo) const;
 };

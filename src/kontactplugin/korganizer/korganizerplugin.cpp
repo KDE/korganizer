@@ -154,7 +154,7 @@ void KOrganizerPlugin::processDropEvent(QDropEvent *event)
             Q_ASSERT(incidences.count());
             if (!incidences.isEmpty()) {
                 event->accept();
-                const KCalendarCore::Incidence::Ptr i = incidences.first();
+                const KCalendarCore::Incidence::Ptr &i = incidences.first();
                 QString summary;
                 if (i->type() == KCalendarCore::Incidence::TypeJournal) {
                     summary = i18nc("@item", "Note: %1", i->summary());

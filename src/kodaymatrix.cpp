@@ -432,7 +432,7 @@ bool KODayMatrix::event(QEvent *event)
             QToolTip::hideText();
         }
     }
-    return QWidget::event(event);
+    return QFrame::event(event);
 }
 
 void KODayMatrix::mousePressEvent(QMouseEvent *e)
@@ -580,7 +580,7 @@ void KODayMatrix::dropEvent(QDropEvent *e)
     }
     // For the moment support 1 url
     if (urls.count() >= 1) {
-        QUrl const res = urls.at(0);
+        QUrl const &res = urls.at(0);
 
         auto job = new Akonadi::ItemFetchJob(Akonadi::Item::fromUrl(res));
         job->fetchScope().setAncestorRetrieval(Akonadi::ItemFetchScope::Parent);

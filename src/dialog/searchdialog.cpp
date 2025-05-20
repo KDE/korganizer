@@ -29,7 +29,7 @@
 
 namespace
 {
-static const char mySearchDialogConfigGroupName[] = "SearchDialog";
+const char mySearchDialogConfigGroupName[] = "SearchDialog";
 }
 
 SearchDialog::SearchDialog(CalendarView *calendarview)

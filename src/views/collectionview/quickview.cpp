@@ -27,7 +27,7 @@
 
 namespace
 {
-static const char myQuickviewConfigGroupName[] = "Quickview";
+const char myQuickviewConfigGroupName[] = "Quickview";
 }
 
 Quickview::Quickview(const Akonadi::CollectionCalendar::Ptr &calendar, const QString &title)

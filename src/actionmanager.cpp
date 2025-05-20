@@ -1245,7 +1245,7 @@ class ActionManager::ActionStringsVisitor : public KCalendarCore::Visitor
 public:
     ActionStringsVisitor() = default;
 
-    bool act(KCalendarCore::IncidenceBase::Ptr incidence, QAction *show, QAction *edit, QAction *del)
+    bool act(const KCalendarCore::IncidenceBase::Ptr &incidence, QAction *show, QAction *edit, QAction *del)
     {
         mShow = show;
         mEdit = edit;
@@ -1520,9 +1520,7 @@ void ActionManager::openTodoEditor(const QString &summary,
                                    const QString &attachmentMimetype)
 {
     int action = KOPrefs::instance()->defaultTodoAttachMethod();
-    if (attachmentMimetype != QLatin1StringView("message/rfc822")) {
-        action = KOPrefs::TodoAttachLink;
-    } else if (file.isEmpty()) {
+    if ((attachmentMimetype != QLatin1StringView("message/rfc822")) || file.isEmpty()) {
         action = KOPrefs::TodoAttachLink;
     } else if (KOPrefs::instance()->defaultTodoAttachMethod() == KOPrefs::TodoAttachAsk) {
         auto menu = new QMenu(nullptr);

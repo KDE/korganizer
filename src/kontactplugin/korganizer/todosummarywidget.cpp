@@ -358,12 +358,12 @@ bool TodoSummaryWidget::eventFilter(QObject *obj, QEvent *e)
     return KontactInterface::Summary::eventFilter(obj, e);
 }
 
-bool TodoSummaryWidget::startsToday(const KCalendarCore::Todo::Ptr &todo)
+bool TodoSummaryWidget::startsToday(const KCalendarCore::Todo::Ptr &todo) const
 {
     return todo->hasStartDate() && todo->dtStart().date() == QDate::currentDate();
 }
 
-const QString TodoSummaryWidget::stateStr(const KCalendarCore::Todo::Ptr &todo)
+QString TodoSummaryWidget::stateStr(const KCalendarCore::Todo::Ptr &todo) const
 {
     QString str1;
     QString str2;

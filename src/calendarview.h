@@ -609,7 +609,7 @@ public:
     */
     QDate activeDate(bool fallbackToToday = false);
 
-    static void toggleCompleted(KCalendarCore::Todo::Ptr, const QDate &);
+    static void toggleCompleted(const KCalendarCore::Todo::Ptr &, const QDate &);
 
 protected:
     int msgItemDelete(const Akonadi::Item &item);
@@ -650,7 +650,7 @@ private:
     /**
      * Return the recurrence ID of  the occurrence of @p incidence displayed on @displayDate.
      */
-    static QDateTime recurrenceOnDate(KCalendarCore::Incidence::Ptr incidence, QDate displayDate);
+    static QDateTime recurrenceOnDate(const KCalendarCore::Incidence::Ptr &incidence, const QDate &displayDate);
 
     void dissociateOccurrence(const Akonadi::Item &item, const QDateTime &recurrenceId, bool thisAndFuture);
 
