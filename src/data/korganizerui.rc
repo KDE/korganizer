@@ -1,6 +1,6 @@
 <?xml version="1.0"?>
 <!DOCTYPE gui>
-<gui name="korganizer" version="444" translationDomain="korganizer">
+<gui name="korganizer" version="445" translationDomain="korganizer">
   <MenuBar>
     <Menu name="file">
       <text>&amp;File</text>
@@ -15,9 +15,6 @@
       <Menu name="export">
         <text>&amp;Export</text>
         <Action name="export_icalendar"/>
-        <Merge/>
-        <Separator/>
-        <Action name="uploadnewstuff"/>
       </Menu>
       <Separator/>
       <Action name="file_archive"/>

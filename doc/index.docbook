@@ -578,12 +578,6 @@ do not wish to view them in the to-do lists, consider
 <sect1 id="managing-get-hot-new-stuff">
 <title>Downloading Using Get Hot New Stuff</title>
 
-<!--para>If you have a calendar containing events of public interest, such as
-a conference or championship schedule, you can upload it (or check if there
-is something worth downloading) using the
-<ulink url="http://ghns.berlios.de/">get hot new stuff framework</ulink>.
-</para-->
-
 <para>
 To open the <guilabel>Get Hot New Stuff</guilabel>
 dialog, which offers a list of calendars to download, choose the
@@ -592,16 +586,6 @@ dialog, which offers a list of calendars to download, choose the
 If you select one of the calendars, a dialog with the list of events from the
 calendars will appear. To merge the displayed events with your default resource,
 press <guilabel>Merge</guilabel>.</para>
-
-<!--para>
-To open the <guilabel>Upload Hot New Stuff</guilabel> dialog, which allow you
-to export calendars containing events which may be useful to other people, such
-as a conference program, a list of holidays, special events, &etc;,
-choose the <menuchoice><guimenu>File</guimenu><guisubmenu>Export</guisubmenu>
-<guimenuitem>Upload Hot New Stuff...</guimenuitem></menuchoice>.</para>
-
-<para>Before uploading the events, make sure you have
-<link linkend="filters-view">filtered out</link> all unrelated data.</para-->
 
 </sect1>
 
@@ -2867,22 +2851,6 @@ file.</para>
 <xref linkend="managing-export" />.</para>
 </listitem>
 </varlistentry>
-
-<!--not in 4.6.0
-varlistentry id="menu-file-export-ghns">
-<term><menuchoice>
-<guimenu>File</guimenu>
-<guisubmenu>Export</guisubmenu>
-<guimenuitem>Upload Hot New Stuff...</guimenuitem>
-</menuchoice></term>
-<listitem><para>This action will open the <guilabel>Upload Hot New Stuff</guilabel>
-dialog, which allow you to export calendars containing events which may be
-useful to other people, such as a conference program, a list of holidays,
-special events, &etc;</para>
-<para>For more information about this action, please refer to
-<xref linkend="managing-get-hot-new-stuff" />.</para>
-</listitem>
-</varlistentry-->
 
 <varlistentry id="menu-file-archive-old">
 <term><menuchoice>
