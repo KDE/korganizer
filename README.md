@@ -14,13 +14,13 @@ KOrganizer will remind you about pending tasks, record your occurrences,
 experiences, and reflections and help you keep your schedule.
 
 But KOrganizer is not only about your personal calendar, it can help you
-to interact with your colleagues and friends too.  With KOrganizer,
-you can invite anyone with an email address to an event and process responses,
-share a calendar (using a groupware server or simply a file over the network),
-and share events (eg.  the schedule of a championship or a conference), using
-the get hot new stuff framework.  KOrganizer is based on open standards,
-and works with many different group scheduling servers, giving you the control
-over your information and the freedom to choose the best solutions.
+to interact with your colleagues and friends too.  With KOrganizer, you can
+invite anyone with an email address to an event and process responses, and
+share a calendar (using a groupware server or simply a file over the network).
+
+KOrganizer is based on open standards, and works with many different group
+scheduling servers, giving you the control over your information and the
+freedom to choose the best solutions.
 
 KOrganizer is also the calendar, journal and to-do component of [Kontact](https://apps.kde.org/kontact/),
 offering you an integrated solution for your communication and information

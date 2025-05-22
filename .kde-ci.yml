@@ -28,7 +28,6 @@ Dependencies:
     'frameworks/kitemviews': '@latest-kf6'
     'frameworks/kjobwidgets': '@latest-kf6'
     'frameworks/kcmutils': '@latest-kf6'
-    'frameworks/knewstuff': '@latest-kf6'
     'frameworks/kparts': '@latest-kf6'
     'frameworks/kwidgetsaddons': '@latest-kf6'
     'frameworks/kwindowsystem': '@latest-kf6'

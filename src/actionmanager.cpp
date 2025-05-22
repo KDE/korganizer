@@ -64,7 +64,6 @@
 
 #include "korganizer_debug.h"
 #include "korganizer_options.h"
-#include <KNSWidgets/Action>
 #include <KToggleAction>
 #include <KWindowSystem>
 #include <QIcon>
@@ -250,56 +249,6 @@ void ActionManager::initActions()
                                       "iCalendar or vCalendar file into your current calendar collection."));
     mACollection->addAction(QStringLiteral("import_icalendar"), mImportAction);
     connect(mImportAction, &QAction::triggered, this, &ActionManager::file_import);
-
-    /** Get Hot New Stuff Action **/
-    auto knsAction = new KNSWidgets::Action(i18nc("@action:inmenu", "Get New Calendars…"), QStringLiteral("korganizer.knsrc"), this);
-    knsAction->setStatusTip(i18nc("@info:status", "Load a calendar from \"Get Hot New Stuff\""));
-    knsAction->setToolTip(i18nc("@info:tooltip", "Search \"Get Hot New Stuff\" for calendars to import"));
-    knsAction->setWhatsThis(i18nc("@info:whatsthis",
-                                  "This menu entry opens the \"Get Hot New Stuff\" dialog that allows you "
-                                  "to search and import fun and useful calendars donated to the community."));
-    mACollection->addAction(QStringLiteral("downloadnewstuff"), knsAction);
-    connect(knsAction, &KNSWidgets::Action::dialogFinished, this, [this](auto changedEntries) {
-        for (const auto &e : changedEntries) {
-            qCDebug(KORGANIZER_LOG) << " downloadNewStuff :";
-            const QStringList lstFile = e.installedFiles();
-            if (lstFile.count() != 1) {
-                continue;
-            }
-            const QString file = lstFile.at(0);
-            const QUrl filename = QUrl::fromLocalFile(file);
-            qCDebug(KORGANIZER_LOG) << "filename :" << filename;
-            if (!filename.isValid()) {
-                continue;
-            }
-
-            KCalendarCore::FileStorage storage(calendar());
-            storage.setFileName(file);
-            storage.setSaveFormat(new KCalendarCore::ICalFormat);
-            if (!storage.load()) {
-                KMessageBox::error(mCalendarView, xi18nc("@info", "Could not load calendar <filename>%1</filename>.", file));
-            } else {
-                QStringList eventSummaries;
-                const KCalendarCore::Event::List events = calendar()->events();
-                eventSummaries.reserve(events.count());
-                for (const KCalendarCore::Event::Ptr &event : events) {
-                    eventSummaries.append(event->summary());
-                }
-
-                const int result = KMessageBox::warningContinueCancelList(mCalendarView,
-                                                                          i18nc("@info", "The downloaded events will be merged into your current calendar."),
-                                                                          eventSummaries);
-
-                if (result != KMessageBox::Continue) {
-                    // FIXME (KNS2): hm, no way out here :-)
-                }
-
-                if (importURL(QUrl::fromLocalFile(file), true)) {
-                    // FIXME (KNS2): here neither
-                }
-            }
-        }
-    });
 
     QAction *action = nullptr;
     /** Export Action **/

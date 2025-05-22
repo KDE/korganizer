@@ -471,7 +471,6 @@ target_link_libraries(
         KPim6::Mime
         KPim6::IdentityManagementCore
         KF6::KCMUtils
-        KF6::NewStuffWidgets
         KPim6::LdapWidgets
         KPim6::AkonadiWidgets
         KPim6::MailTransport
@@ -521,8 +520,6 @@ install(
         data/org.kde.korganizer.Korganizer.xml
     DESTINATION ${KDE_INSTALL_DBUSINTERFACEDIR}
 )
-
-install(FILES data/korganizer.knsrc DESTINATION ${KDE_INSTALL_KNSRCDIR})
 
 install(
     PROGRAMS
