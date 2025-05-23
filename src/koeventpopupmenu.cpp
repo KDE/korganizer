@@ -14,6 +14,7 @@
 #include <Akonadi/ItemCreateJob>
 
 #include <CalendarSupport/CalPrinter>
+#include <CalendarSupport/KCalPrefs>
 #include <CalendarSupport/Utils>
 
 #include <KCalendarCore/CalFormat>
@@ -79,6 +80,14 @@ void KOEventPopupMenu::appendEventOnlyItems()
 {
     mEventOnlyItems.append(addSeparator());
 
+    mEventOnlyItems.append(addAction(QIcon::fromTheme(QStringLiteral("appointment-new")),
+                                     i18nc("@action:inmenu", "New Event"),
+                                     this,
+                                     qOverload<>(&KOEventPopupMenu::createEvent)));
+
+    mEventOnlyItems.append(
+        addAction(QIcon::fromTheme(QStringLiteral("task-new")), i18nc("@action:inmenu", "New To-do"), this, qOverload<>(&KOEventPopupMenu::createNewTodo)));
+
     mEventOnlyItems.append(
         addAction(QIcon::fromTheme(QStringLiteral("task-new")), i18nc("@action:inmenu", "Create To-do from Event"), this, &KOEventPopupMenu::createTodo));
     mEventOnlyItems.last()->setObjectName(QLatin1StringView("createtodo")); // id used by unit test
@@ -88,16 +97,24 @@ void KOEventPopupMenu::appendTodoOnlyItems()
 {
     mTodoOnlyItems.append(addSeparator());
 
-    mTodoOnlyItems.append(addAction(QIcon::fromTheme(QStringLiteral("task-complete")),
-                                    i18nc("@action:inmenu", "Togg&le To-do Completed"),
+    mTodoOnlyItems.append(
+        addAction(QIcon::fromTheme(QStringLiteral("task-new")), i18nc("@action:inmenu", "New To-do"), this, qOverload<>(&KOEventPopupMenu::createTodo)));
+
+    mTodoOnlyItems.append(addAction(QIcon::fromTheme(QStringLiteral("appointment-new")),
+                                    i18nc("@action:inmenu", "New Event"),
                                     this,
-                                    &KOEventPopupMenu::toggleTodoCompleted));
+                                    qOverload<>(&KOEventPopupMenu::createNewEvent)));
 
     mTodoOnlyItems.append(addAction(QIcon::fromTheme(QStringLiteral("appointment-new")),
                                     i18nc("@action:inmenu", "Create Event from To-do"),
                                     this,
                                     qOverload<>(&KOEventPopupMenu::createEvent)));
     mTodoOnlyItems.last()->setObjectName(QLatin1StringView("createevent")); // id used by unit test
+
+    mTodoOnlyItems.append(addAction(QIcon::fromTheme(QStringLiteral("task-complete")),
+                                    i18nc("@action:inmenu", "Togg&le To-do Completed"),
+                                    this,
+                                    &KOEventPopupMenu::toggleTodoCompleted));
 }
 
 void KOEventPopupMenu::appendReminderOnlyItems()
@@ -298,6 +315,32 @@ void KOEventPopupMenu::forward()
     }
 }
 
+void KOEventPopupMenu::createNewEvent()
+{
+    // Must be a Incidence
+    if (!CalendarSupport::hasIncidence(mCurrentIncidence)) {
+        return;
+    }
+
+    KCalendarCore::Event::Ptr const newEvent(new KCalendarCore::Event());
+    KCalendarCore::Incidence::Ptr const currentIncidence(Akonadi::CalendarUtils::incidence(mCurrentIncidence));
+    newEvent->setUid(KCalendarCore::CalFormat::createUniqueId());
+    newEvent->setDtStart(currentIncidence->dtStart());
+    newEvent->setAllDay(currentIncidence->allDay());
+    newEvent->setDtEnd(QDateTime());
+    if (CalendarSupport::KCalPrefs::instance()->defaultEventReminders()) {
+        KCalendarCore::Alarm::Ptr alarm = newEvent->newAlarm();
+        CalendarSupport::createAlarmReminder(alarm, newEvent->type());
+    }
+    Akonadi::Item newEventItem;
+    newEventItem.setMimeType(KCalendarCore::Event::eventMimeType());
+    newEventItem.setPayload<KCalendarCore::Event::Ptr>(newEvent);
+    IncidenceEditorNG::IncidenceDialog *dlg = IncidenceEditorNG::IncidenceDialogFactory::create(true, KCalendarCore::IncidenceBase::TypeEvent, nullptr, this);
+    dlg->setObjectName(QLatin1StringView("incidencedialog"));
+    dlg->load(newEventItem);
+    dlg->open();
+}
+
 void KOEventPopupMenu::createEvent(const Akonadi::Item &item)
 {
     mCurrentIncidence = item;
@@ -310,11 +353,38 @@ void KOEventPopupMenu::createEvent()
     if (!CalendarSupport::hasIncidence(mCurrentIncidence)) {
         return;
     }
-    // Event ->event doesn't make sense
+
+    // Create New Event over an existing event in the same time-slot
     if (CalendarSupport::hasEvent(mCurrentIncidence)) {
+        KCalendarCore::Event::Ptr newEvent(new KCalendarCore::Event());
+        KCalendarCore::Event::Ptr const currentEvent(Akonadi::CalendarUtils::event(mCurrentIncidence));
+        newEvent->setUid(KCalendarCore::CalFormat::createUniqueId());
+        QDateTime startDt = currentEvent->dtStart();
+        startDt.setDate(mCurrentDate);
+        newEvent->setDtStart(startDt);
+        newEvent->setAllDay(currentEvent->allDay());
+        newEvent->setDtEnd(currentEvent->dtEnd());
+        if (!currentEvent->allDay()) {
+            int const addSecs = (CalendarSupport::KCalPrefs::instance()->mDefaultDuration.time().hour() * 3600)
+                + (CalendarSupport::KCalPrefs::instance()->mDefaultDuration.time().minute() * 60);
+            newEvent->setDtEnd(startDt.addSecs(addSecs));
+        }
+        if (CalendarSupport::KCalPrefs::instance()->defaultEventReminders()) {
+            KCalendarCore::Alarm::Ptr alarm = newEvent->newAlarm();
+            CalendarSupport::createAlarmReminder(alarm, newEvent->type());
+        }
+        Akonadi::Item newEventItem;
+        newEventItem.setMimeType(KCalendarCore::Event::eventMimeType());
+        newEventItem.setPayload<KCalendarCore::Event::Ptr>(newEvent);
+        IncidenceEditorNG::IncidenceDialog *dlg =
+            IncidenceEditorNG::IncidenceDialogFactory::create(true, KCalendarCore::IncidenceBase::TypeEvent, nullptr, this);
+        dlg->setObjectName(QLatin1StringView("incidencedialog"));
+        dlg->load(newEventItem);
+        dlg->open();
         return;
     }
 
+    // Create New Event from existing todo
     if (CalendarSupport::hasTodo(mCurrentIncidence)) {
         KCalendarCore::Todo::Ptr const todo(Akonadi::CalendarUtils::todo(mCurrentIncidence));
         KCalendarCore::Event::Ptr const event(new KCalendarCore::Event(*todo));
@@ -334,17 +404,62 @@ void KOEventPopupMenu::createEvent()
     }
 }
 
+void KOEventPopupMenu::createNewTodo()
+{
+    // Must be a Incidence
+    if (!CalendarSupport::hasIncidence(mCurrentIncidence)) {
+        return;
+    }
+
+    KCalendarCore::Todo::Ptr const newTodo(new KCalendarCore::Todo());
+    KCalendarCore::Incidence::Ptr const currentIncidence(Akonadi::CalendarUtils::incidence(mCurrentIncidence));
+    newTodo->setUid(KCalendarCore::CalFormat::createUniqueId());
+    newTodo->setDtStart(currentIncidence->dtStart());
+    newTodo->setAllDay(currentIncidence->allDay());
+    newTodo->setDtDue(QDateTime());
+    if (CalendarSupport::KCalPrefs::instance()->defaultTodoReminders()) {
+        KCalendarCore::Alarm::Ptr alarm = newTodo->newAlarm();
+        CalendarSupport::createAlarmReminder(alarm, newTodo->type());
+    }
+    Akonadi::Item newTodoItem;
+    newTodoItem.setMimeType(KCalendarCore::Todo::todoMimeType());
+    newTodoItem.setPayload<KCalendarCore::Todo::Ptr>(newTodo);
+    IncidenceEditorNG::IncidenceDialog *dlg = IncidenceEditorNG::IncidenceDialogFactory::create(true, KCalendarCore::IncidenceBase::TypeTodo, nullptr, this);
+    dlg->setObjectName(QLatin1StringView("incidencedialog"));
+    dlg->load(newTodoItem);
+    dlg->open();
+}
+
 void KOEventPopupMenu::createTodo()
 {
     // Must be a Incidence
     if (!CalendarSupport::hasIncidence(mCurrentIncidence)) {
         return;
     }
-    // Todo->Todo doesn't make sense
+
+    // Create New Todo over an existing todo in the same time-slot
     if (CalendarSupport::hasTodo(mCurrentIncidence)) {
-        return;
+        KCalendarCore::Todo::Ptr const newTodo(new KCalendarCore::Todo());
+        KCalendarCore::Todo::Ptr const currentTodo(Akonadi::CalendarUtils::todo(mCurrentIncidence));
+        newTodo->setUid(KCalendarCore::CalFormat::createUniqueId());
+        newTodo->setDtStart(currentTodo->dtStart());
+        newTodo->setAllDay(currentTodo->allDay());
+        newTodo->setDtDue(currentTodo->dtDue());
+        if (CalendarSupport::KCalPrefs::instance()->defaultTodoReminders()) {
+            KCalendarCore::Alarm::Ptr alarm = newTodo->newAlarm();
+            CalendarSupport::createAlarmReminder(alarm, newTodo->type());
+        }
+        Akonadi::Item newTodoItem;
+        newTodoItem.setMimeType(KCalendarCore::Todo::todoMimeType());
+        newTodoItem.setPayload<KCalendarCore::Todo::Ptr>(newTodo);
+        IncidenceEditorNG::IncidenceDialog *dlg =
+            IncidenceEditorNG::IncidenceDialogFactory::create(true, KCalendarCore::IncidenceBase::TypeTodo, nullptr, this);
+        dlg->setObjectName(QLatin1StringView("incidencedialog"));
+        dlg->load(newTodoItem);
+        dlg->open();
     }
 
+    // Create New Todo from existing event
     if (CalendarSupport::hasEvent(mCurrentIncidence)) {
         KCalendarCore::Event::Ptr const event(Akonadi::CalendarUtils::event(mCurrentIncidence));
         KCalendarCore::Todo::Ptr const todo(new KCalendarCore::Todo(*event));

@@ -63,7 +63,31 @@ protected Q_SLOTS:
     void toggleTodoCompleted();
     void dissociateOccurrences();
     void forward();
+
+    /**
+     * Start the incidenceeditor to create a new To-do using a few settings from the currently selected incidence
+     * where the current incidence can be a to-do or event.
+     */
+    void createNewTodo();
+
+    /**
+     * Start the incidenceeditor to create a new To-do using a few settings from the currently selected incidence
+     * 1. if current incidence is a to-do, then reuse the start, all-day and due
+     * 2. if current incidence is an event, then reuse almost settings (i.e morph event into to-do)
+     */
     void createTodo();
+
+    /**
+     * Start the incidenceeditor to create a new Event using a few settings from the currently selected incidence
+     * where the current incidence can be a to-do or event.
+     */
+    void createNewEvent();
+
+    /**
+     * Start the incidenceeditor to create a new Event using a few settings from the currently selected incidence
+     * 1. if current incidence is an event, then reuse the start, all-day and end
+     * 2. if current incidence is a to-do, then reuse almost settings (i.e morph to-do into event)
+     */
     void createEvent();
 
 Q_SIGNALS:
