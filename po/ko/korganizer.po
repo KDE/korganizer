@@ -8,7 +8,7 @@ msgid ""
 msgstr ""
 "Project-Id-Version: Korganizer\n"
 "Report-Msgid-Bugs-To: https://bugs.kde.org\n"
-"POT-Creation-Date: 2025-05-07 00:43+0000\n"
+"POT-Creation-Date: 2025-05-23 00:43+0000\n"
 "PO-Revision-Date: 2025-04-22 23:01+0200\n"
 "Last-Translator: Shinjo Park <kde@peremen.name>\n"
 "Language-Team: Korean <kde-kr@kde.org>\n"
@@ -324,38 +324,38 @@ msgctxt "@info:credit"
 msgid "Fester Zigterman"
 msgstr "Fester Zigterman"
 
-#: actionmanager.cpp:131
+#: actionmanager.cpp:130
 #, kde-format
 msgctxt "@info"
 msgid ""
 "This will hide the menu bar completely. You can show it again by typing %1."
 msgstr "메뉴 표시줄을 완전히 숨깁니다. %1 키를 눌러서 다시 볼 수 있습니다."
 
-#: actionmanager.cpp:134
+#: actionmanager.cpp:133
 #, kde-format
 msgctxt "@title:window"
 msgid "Hide menu bar"
 msgstr "메뉴 표시줄 숨기기"
 
-#: actionmanager.cpp:245
+#: actionmanager.cpp:244
 #, kde-format
 msgctxt "@action:inmenu"
 msgid "Import &Calendar…"
 msgstr "캘린더 가져오기(&C)…"
 
-#: actionmanager.cpp:246
+#: actionmanager.cpp:245
 #, kde-format
 msgctxt "@info:status"
 msgid "Import a calendar"
 msgstr "캘린더 가져오기"
 
-#: actionmanager.cpp:247
+#: actionmanager.cpp:246
 #, kde-format
 msgctxt "@info:tooltip"
 msgid "Import an iCalendar or vCalendar file"
 msgstr "iCalendar 또는 vCalendar 파일 가져오기"
 
-#: actionmanager.cpp:249
+#: actionmanager.cpp:248
 #, kde-format
 msgctxt "@info:whatsthis"
 msgid ""
@@ -365,90 +365,50 @@ msgstr ""
 "현재 캘린더 모음집으로 iCalendar나 vCalendar 파일을 가져오려면 이 항목을 선택"
 "하십시오."
 
-#: actionmanager.cpp:255
-#, kde-format
-msgctxt "@action:inmenu"
-msgid "Get New Calendars…"
-msgstr "새 캘린더 가져오기…"
-
 #: actionmanager.cpp:256
-#, kde-format
-msgctxt "@info:status"
-msgid "Load a calendar from \"Get Hot New Stuff\""
-msgstr "\"새로운 항목 가져오기\"에서 새 캘린더 다운로드"
-
-#: actionmanager.cpp:257
-#, kde-format
-msgctxt "@info:tooltip"
-msgid "Search \"Get Hot New Stuff\" for calendars to import"
-msgstr "\"새로운 항목 다운로드\"에서 가져올 캘린더 검색"
-
-#: actionmanager.cpp:259
-#, kde-format
-msgctxt "@info:whatsthis"
-msgid ""
-"This menu entry opens the \"Get Hot New Stuff\" dialog that allows you to "
-"search and import fun and useful calendars donated to the community."
-msgstr ""
-"이 메뉴 항목은 \"새로운 항목 다운로드\" 대화 상자를 열어서 커뮤니티에서 제공"
-"한 캘린더를 검색하고 가져올 수 있습니다."
-
-#: actionmanager.cpp:280
-#, kde-kuit-format
-msgctxt "@info"
-msgid "Could not load calendar <filename>%1</filename>."
-msgstr "<filename>%1</filename> 캘린더를 불러올 수 없음"
-
-#: actionmanager.cpp:290
-#, kde-format
-msgctxt "@info"
-msgid "The downloaded events will be merged into your current calendar."
-msgstr "다운로드한 이벤트를 현재 캘린더에 합칩니다."
-
-#: actionmanager.cpp:307
 #, kde-format
 msgctxt "@action:inmenu"
 msgid "Export as &iCalendar…"
 msgstr "iCalendar로 내보내기(&I)…"
 
-#: actionmanager.cpp:308
+#: actionmanager.cpp:257
 #, kde-format
 msgctxt "@info:status"
 msgid "Export calendar to file"
 msgstr "파일로 캘린더 내보내기"
 
-#: actionmanager.cpp:309
+#: actionmanager.cpp:258
 #, kde-format
 msgctxt "@info:tooltip"
 msgid "Export your calendar to an iCalendar file"
 msgstr "내 캘린더를 iCalendar 파일로 내보내기"
 
-#: actionmanager.cpp:310
+#: actionmanager.cpp:259
 #, kde-format
 msgctxt "@info:whatsthis"
 msgid ""
 "Allows you to export your entire calendar collection to one iCalendar file."
 msgstr "전체 캘린더 모음집을 단일 iCalendar 파일로 내보냅니다."
 
-#: actionmanager.cpp:316
+#: actionmanager.cpp:265
 #, kde-format
 msgctxt "@action:inmenu"
 msgid "Archive O&ld Incidences…"
 msgstr "오래된 반복 항목 정리(&L)…"
 
-#: actionmanager.cpp:317
+#: actionmanager.cpp:266
 #, kde-format
 msgctxt "@info:status"
 msgid "Archive events and to-dos to a file"
 msgstr "이벤트와 할 일을 파일로 압축"
 
-#: actionmanager.cpp:318
+#: actionmanager.cpp:267
 #, kde-format
 msgctxt "@info:tooltip"
 msgid "Archive old events and to-dos to an iCalendar file"
 msgstr "오래된 이벤트와 할 일을 iCalendar 파일로 압축"
 
-#: actionmanager.cpp:320
+#: actionmanager.cpp:269
 #, kde-format
 msgctxt "@info:whatsthis"
 msgid ""
@@ -459,25 +419,25 @@ msgstr ""
 "이 메뉴 항목은 오래된 이벤트와 할 일을 iCalendar 파일로 압축해서 내보내는 대"
 "화 상자를 엽니다. 기존 캘린더 모음집에서 삭제됩니다."
 
-#: actionmanager.cpp:328
+#: actionmanager.cpp:277
 #, kde-format
 msgctxt "@action:inmenu"
 msgid "Pur&ge Completed To-dos"
 msgstr "완료한 할 일 정리(&G)"
 
-#: actionmanager.cpp:329
+#: actionmanager.cpp:278
 #, kde-format
 msgctxt "@info:status"
 msgid "Purge completed to-dos"
 msgstr "완료한 할 일 정리"
 
-#: actionmanager.cpp:330
+#: actionmanager.cpp:279
 #, kde-format
 msgctxt "@info:tooltip"
 msgid "Remove completed to-dos from your calendar"
 msgstr "캘린더에서 완료한 할 일 삭제"
 
-#: actionmanager.cpp:332
+#: actionmanager.cpp:281
 #, kde-format
 msgctxt "@info:whatsthis"
 msgid ""
@@ -487,32 +447,32 @@ msgstr ""
 "캘린더 모음집에서 완료한 모든 할 일을 삭제합니다. 이 작업은 실행 취소할 수 없"
 "습니다!"
 
-#: actionmanager.cpp:369 actionmanager.cpp:668 actionmanager.cpp:1355
-#: actionmanager.cpp:1393
+#: actionmanager.cpp:318 actionmanager.cpp:617 actionmanager.cpp:1304
+#: actionmanager.cpp:1342
 #, kde-format
 msgctxt "@action:inmenu"
 msgid "&Delete"
 msgstr "삭제(&D)"
 
-#: actionmanager.cpp:386
+#: actionmanager.cpp:335
 #, kde-format
 msgctxt "@action:inmenu"
 msgid "What's &Next"
 msgstr "다음 일정(&N)"
 
-#: actionmanager.cpp:387
+#: actionmanager.cpp:336
 #, kde-format
 msgctxt "@info:status"
 msgid "What's Next View"
 msgstr "다음 일정 보기"
 
-#: actionmanager.cpp:388
+#: actionmanager.cpp:337
 #, kde-format
 msgctxt "@info:tooltip"
 msgid "Switch to the What's Next View"
 msgstr "다음 일정 보기로 전환"
 
-#: actionmanager.cpp:390
+#: actionmanager.cpp:339
 #, kde-format
 msgctxt "@info:whatsthis"
 msgid ""
@@ -525,25 +485,25 @@ msgstr ""
 "와 할 일을 표시합니다. 모든 열린 할 일을 표시하지만, 날짜 탐색 사이드바에서 "
 "선택한 날짜의 이벤트만 표시합니다."
 
-#: actionmanager.cpp:398
+#: actionmanager.cpp:347
 #, kde-format
 msgctxt "@action:inmenu"
 msgid "&Month"
 msgstr "월간(&M)"
 
-#: actionmanager.cpp:399
+#: actionmanager.cpp:348
 #, kde-format
 msgctxt "@info:status"
 msgid "Month View"
 msgstr "월간 보기"
 
-#: actionmanager.cpp:400
+#: actionmanager.cpp:349
 #, kde-format
 msgctxt "@info:tooltip"
 msgid "Switch to the Month View"
 msgstr "월간 보기로 전환"
 
-#: actionmanager.cpp:402
+#: actionmanager.cpp:351
 #, kde-format
 msgctxt "@info:whatsthis"
 msgid ""
@@ -553,25 +513,25 @@ msgstr ""
 "월간 보기로 전환합니다. 월간 달력 레이아웃으로 이벤트와 할 일 만료 기한을 표"
 "시합니다."
 
-#: actionmanager.cpp:408
+#: actionmanager.cpp:357
 #, kde-format
 msgctxt "@action:inmenu"
 msgid "&Agenda"
 msgstr "일정(&A)"
 
-#: actionmanager.cpp:411
+#: actionmanager.cpp:360
 #, kde-format
 msgctxt "@info:status"
 msgid "Agenda View"
 msgstr "일정 보기"
 
-#: actionmanager.cpp:412
+#: actionmanager.cpp:361
 #, kde-format
 msgctxt "@info:tooltip"
 msgid "Switch to the Agenda View"
 msgstr "일정 보기로 전환"
 
-#: actionmanager.cpp:414
+#: actionmanager.cpp:363
 #, kde-format
 msgctxt "@info:whatsthis"
 msgid ""
@@ -582,25 +542,25 @@ msgstr ""
 "이벤트나 단시일 내에 만료되는 할 일을 시간순으로 정렬해서 표시하는 일정 보기"
 "로 전환합니다. 날짜별 시간표에서 각각 이벤트의 시간을 표시합니다."
 
-#: actionmanager.cpp:421
+#: actionmanager.cpp:370
 #, kde-format
 msgctxt "@action:inmenu"
 msgid "&Event List"
 msgstr "이벤트 목록(&E)"
 
-#: actionmanager.cpp:422
+#: actionmanager.cpp:371
 #, kde-format
 msgctxt "@info:status"
 msgid "List View"
 msgstr "목록 보기"
 
-#: actionmanager.cpp:423
+#: actionmanager.cpp:372
 #, kde-format
 msgctxt "@info:tooltip"
 msgid "Switch to the List View"
 msgstr "목록 보기로 전환"
 
-#: actionmanager.cpp:425
+#: actionmanager.cpp:374
 #, kde-format
 msgctxt "@info:whatsthis"
 msgid ""
@@ -610,25 +570,25 @@ msgstr ""
 "날짜 탐색기에서 선택한 날짜의 모든 할 일, 이벤트, 저널 항목을 목록으로 표시합"
 "니다."
 
-#: actionmanager.cpp:431
+#: actionmanager.cpp:380
 #, kde-format
 msgctxt "@action:inmenu"
 msgid "&To-do List"
 msgstr "할 일 목록(&T)"
 
-#: actionmanager.cpp:432
+#: actionmanager.cpp:381
 #, kde-format
 msgctxt "@info:status"
 msgid "To-do List View"
 msgstr "할 일 목록 보기"
 
-#: actionmanager.cpp:433
+#: actionmanager.cpp:382
 #, kde-format
 msgctxt "@info:tooltip"
 msgid "Switch to the To-do List View"
 msgstr "할 일 목록 보기로 전환"
 
-#: actionmanager.cpp:435
+#: actionmanager.cpp:384
 #, kde-format
 msgctxt "@info:whatsthis"
 msgid ""
@@ -636,25 +596,25 @@ msgid ""
 "tasks that need to be done."
 msgstr "해야 할 일을 표시하는 할 일 목록 보기로 전환합니다."
 
-#: actionmanager.cpp:441
+#: actionmanager.cpp:390
 #, kde-format
 msgctxt "@action:inmenu"
 msgid "&Journal"
 msgstr "저널(&J)"
 
-#: actionmanager.cpp:442
+#: actionmanager.cpp:391
 #, kde-format
 msgctxt "@info:status"
 msgid "Journal View"
 msgstr "저널 보기"
 
-#: actionmanager.cpp:443
+#: actionmanager.cpp:392
 #, kde-format
 msgctxt "@info:tooltip"
 msgid "Switch to the Journal View"
 msgstr "저널 보기로 전환"
 
-#: actionmanager.cpp:445
+#: actionmanager.cpp:394
 #, kde-format
 msgctxt "@info:whatsthis"
 msgid ""
@@ -662,25 +622,25 @@ msgid ""
 "reflections, occurrences or experiences."
 msgstr "감상, 반복, 경험 등을 기록할 수 있는 저널 보기로 전환합니다."
 
-#: actionmanager.cpp:451
+#: actionmanager.cpp:400
 #, kde-format
 msgctxt "@action:inmenu"
 msgid "Time&line"
 msgstr "타임라인(&L)"
 
-#: actionmanager.cpp:452
+#: actionmanager.cpp:401
 #, kde-format
 msgctxt "@info:status"
 msgid "Timeline View"
 msgstr "타임라인 보기"
 
-#: actionmanager.cpp:453
+#: actionmanager.cpp:402
 #, kde-format
 msgctxt "@info:tooltip"
 msgid "Switch to the Timeline View"
 msgstr "타임라인 보기로 전환"
 
-#: actionmanager.cpp:455
+#: actionmanager.cpp:404
 #, kde-format
 msgctxt "@info:whatsthis"
 msgid ""
@@ -690,25 +650,25 @@ msgstr ""
 "선택한 시간 간격 동안의 이벤트를 간트 보기로 표시하는 타임라인 보기로 전환합"
 "니다. 각각 캘린더는 다른 선으로 표시됩니다."
 
-#: actionmanager.cpp:464
+#: actionmanager.cpp:413
 #, kde-format
 msgctxt "@action:inmenu"
 msgid "&Refresh"
 msgstr "새로 고침(&R)"
 
-#: actionmanager.cpp:465
+#: actionmanager.cpp:414
 #, kde-format
 msgctxt "@info:status"
 msgid "Refresh"
 msgstr "새로 고침"
 
-#: actionmanager.cpp:466
+#: actionmanager.cpp:415
 #, kde-format
 msgctxt "@info:tooltip"
 msgid "Refresh the display"
 msgstr "디스플레이 새로 고침"
 
-#: actionmanager.cpp:468
+#: actionmanager.cpp:417
 #, kde-format
 msgctxt "@info:whatsthis"
 msgid ""
@@ -718,25 +678,25 @@ msgstr ""
 "현재 달력 보기를 새로 고칩니다. 달력 폴더를 동기화하거나 업데이트하지는 않습"
 "니다."
 
-#: actionmanager.cpp:477
+#: actionmanager.cpp:426
 #, kde-format
 msgctxt "@action:inmenu"
 msgid "F&ilter"
 msgstr "필터(&I)"
 
-#: actionmanager.cpp:478
+#: actionmanager.cpp:427
 #, kde-format
 msgctxt "@info:status"
 msgid "Filter incidences"
 msgstr "항목 필터"
 
-#: actionmanager.cpp:479
+#: actionmanager.cpp:428
 #, kde-format
 msgctxt "@info:tooltip"
 msgid "Filter incidences from the calendar"
 msgstr "캘린더의 항목 필터"
 
-#: actionmanager.cpp:481
+#: actionmanager.cpp:430
 #, kde-format
 msgctxt "@info:whatsthis"
 msgid ""
@@ -746,85 +706,85 @@ msgstr ""
 "캘린더 모음집에 사용자 정의 보기 필터를 수행합니다. 작업을 실행하기 전에 필터"
 "를 생성해야 합니다. 설정 메뉴의 \"보기 필터 관리\"를 참조하십시오."
 
-#: actionmanager.cpp:493
+#: actionmanager.cpp:442
 #, kde-format
 msgctxt "@action:inmenu"
 msgid "In Horizontally"
 msgstr "수평 안쪽"
 
-#: actionmanager.cpp:498
+#: actionmanager.cpp:447
 #, kde-format
 msgctxt "@action:inmenu"
 msgid "Out Horizontally"
 msgstr "수평 바깥쪽"
 
-#: actionmanager.cpp:503
+#: actionmanager.cpp:452
 #, kde-format
 msgctxt "@action:inmenu"
 msgid "In Vertically"
 msgstr "수직 안쪽"
 
-#: actionmanager.cpp:508
+#: actionmanager.cpp:457
 #, kde-format
 msgctxt "@action:inmenu"
 msgid "Out Vertically"
 msgstr "수직 바깥쪽"
 
-#: actionmanager.cpp:517
+#: actionmanager.cpp:466
 #, kde-format
 msgctxt "@action:inmenu Jump to today"
 msgid "To &Today"
 msgstr "오늘로(&T)"
 
-#: actionmanager.cpp:518
+#: actionmanager.cpp:467
 #, kde-format
 msgctxt "@action:button"
 msgid "Today"
 msgstr "오늘"
 
-#: actionmanager.cpp:519
+#: actionmanager.cpp:468
 #, kde-format
 msgctxt "@info:status"
 msgid "Scroll to Today"
 msgstr "오늘로 스크롤"
 
-#: actionmanager.cpp:520
+#: actionmanager.cpp:469
 #, kde-format
 msgctxt "@info:tooltip"
 msgid "Scroll the view to today"
 msgstr "보기를 오늘로 스크롤"
 
-#: actionmanager.cpp:521
+#: actionmanager.cpp:470
 #, kde-format
 msgctxt "@info:whatsthis"
 msgid "Scrolls the current view to the today's date."
 msgstr "보기를 오늘 날짜로 스크롤합니다."
 
-#: actionmanager.cpp:527
+#: actionmanager.cpp:476
 #, kde-format
 msgctxt "@action:inmenu scroll backward"
 msgid "&Backward"
 msgstr "뒤로(&B)"
 
-#: actionmanager.cpp:529
+#: actionmanager.cpp:478
 #, kde-format
 msgctxt "@action:button scroll backward"
 msgid "Back"
 msgstr "뒤로"
 
-#: actionmanager.cpp:530
+#: actionmanager.cpp:479
 #, kde-format
 msgctxt "@info:status"
 msgid "Scroll Backward"
 msgstr "뒤로 스크롤"
 
-#: actionmanager.cpp:531
+#: actionmanager.cpp:480
 #, kde-format
 msgctxt "@info:tooltip"
 msgid "Scroll the view backward"
 msgstr "보기를 뒤로 스크롤"
 
-#: actionmanager.cpp:533
+#: actionmanager.cpp:482
 #, kde-format
 msgctxt "@info:whatsthis"
 msgid ""
@@ -832,31 +792,31 @@ msgid ""
 "calendar view."
 msgstr "현재 캘린더 보기에 따라서 하루, 1주, 1개월, 1년 뒤로 스크롤합니다."
 
-#: actionmanager.cpp:540
+#: actionmanager.cpp:489
 #, kde-format
 msgctxt "@action:inmenu scroll forward"
 msgid "&Forward"
 msgstr "앞으로(&F)"
 
-#: actionmanager.cpp:542
+#: actionmanager.cpp:491
 #, kde-format
 msgctxt "@action:button scroll forward"
 msgid "Forward"
 msgstr "앞으로"
 
-#: actionmanager.cpp:543
+#: actionmanager.cpp:492
 #, kde-format
 msgctxt "@info:status"
 msgid "Scroll Forward"
 msgstr "앞으로 스크롤"
 
-#: actionmanager.cpp:544
+#: actionmanager.cpp:493
 #, kde-format
 msgctxt "@info:tooltip"
 msgid "Scroll the view forward"
 msgstr "보기를 앞으로 스크롤"
 
-#: actionmanager.cpp:546
+#: actionmanager.cpp:495
 #, kde-format
 msgctxt "@info:whatsthis"
 msgid ""
@@ -864,55 +824,55 @@ msgid ""
 "calendar view."
 msgstr "현재 캘린더 보기에 따라서 하루, 1주, 1개월, 1년 앞으로 스크롤합니다."
 
-#: actionmanager.cpp:552
+#: actionmanager.cpp:501
 #, kde-format
 msgctxt "@action:inmenu"
 msgid "&Day"
 msgstr "일(&D)"
 
-#: actionmanager.cpp:553
+#: actionmanager.cpp:502
 #, kde-format
 msgctxt "@action:inmenu agenda view show 1 day at a time"
 msgid "Day"
 msgstr "일간"
 
-#: actionmanager.cpp:554
+#: actionmanager.cpp:503
 #, kde-format
 msgctxt "@info:status"
 msgid "View 1 day at a time"
 msgstr "한 번에 하루 보기"
 
-#: actionmanager.cpp:555
+#: actionmanager.cpp:504
 #, kde-format
 msgctxt "@info:tooltip"
 msgid "Show 1 day at a time in Agenda View"
 msgstr "일정 보기 항목에 한 번에 하루 표시"
 
-#: actionmanager.cpp:556
+#: actionmanager.cpp:505
 #, kde-format
 msgctxt "@info:whatsthis"
 msgid "Select this option to show only 1 day at a time in Agenda View."
 msgstr "이 옵션을 사용하면 일정 보기 항목에 한 번에 하루를 표시합니다."
 
-#: actionmanager.cpp:563
+#: actionmanager.cpp:512
 #, kde-format
 msgctxt "@action:inmenu agenda view show a few days at a time"
 msgid "&Next Days"
 msgstr "다음 며칠(&N)"
 
-#: actionmanager.cpp:564
+#: actionmanager.cpp:513
 #, kde-format
 msgctxt "@info:status"
 msgid "View a few days at a time"
 msgstr "한 번에 며칠 보기"
 
-#: actionmanager.cpp:565
+#: actionmanager.cpp:514
 #, kde-format
 msgctxt "@info:tooltip"
 msgid "Show the next few days at a time in Agenda View"
 msgstr "일정 보기 항목에 한 번에 며칠 표시"
 
-#: actionmanager.cpp:568
+#: actionmanager.cpp:517
 #, kde-kuit-format
 msgctxt "@info:whatsthis"
 msgid ""
@@ -925,13 +885,13 @@ msgstr ""
 "반</interface> 설정 페이지의 <placeholder>다음 며칠</placeholder> 항목에서 "
 "날 수를 지정할 수 있습니다."
 
-#: actionmanager.cpp:575
+#: actionmanager.cpp:524
 #, kde-format
 msgctxt "@action:inmenu"
 msgid "W&eek Schedule"
 msgstr "주간 일정(&E)"
 
-#: actionmanager.cpp:576
+#: actionmanager.cpp:525
 #, kde-format
 msgctxt ""
 "@action:inmenu agenda view show the weekly schedule days only (eg. no "
@@ -939,14 +899,14 @@ msgctxt ""
 msgid "Week Schedule"
 msgstr "주간 일정"
 
-#: actionmanager.cpp:577
+#: actionmanager.cpp:526
 #, kde-format
 msgctxt "@info:status"
 msgid ""
 "Show a week at a time showing days included in your weekly schedule only"
 msgstr "한 번에 1주 중 주간 일정에 포함된 날만 표시"
 
-#: actionmanager.cpp:579
+#: actionmanager.cpp:528
 #, kde-format
 msgctxt "@info:tooltip"
 msgid ""
@@ -956,7 +916,7 @@ msgstr ""
 "이 옵션을 사용하면 일정 보기 항목에 1주를 표시하며, 주간 일정에 포함되지 않"
 "은 날은 제외합니다(예: 주말 숨김)"
 
-#: actionmanager.cpp:582
+#: actionmanager.cpp:531
 #, kde-kuit-format
 msgctxt "@info:whatsthis"
 msgid ""
@@ -971,55 +931,55 @@ msgstr ""
 "간 설정</placeholder> 항목에서 주간 일정을 선택할 수 있습니다.<para>이 보기"
 "는 주말을 제외한 주간 보기로 사용하도록 의도되었습니다.</para>"
 
-#: actionmanager.cpp:591
+#: actionmanager.cpp:540
 #, kde-format
 msgctxt "@action:inmenu"
 msgid "&Week"
 msgstr "주(&W)"
 
-#: actionmanager.cpp:592
+#: actionmanager.cpp:541
 #, kde-format
 msgctxt "@action:inmenu agenda view show a week at a time"
 msgid "Week"
 msgstr "주간"
 
-#: actionmanager.cpp:593
+#: actionmanager.cpp:542
 #, kde-format
 msgctxt "@info:status"
 msgid "View a week at a time"
 msgstr "한 번에 1주 보기"
 
-#: actionmanager.cpp:594
+#: actionmanager.cpp:543
 #, kde-format
 msgctxt "@info:tooltip"
 msgid "Show 1 week at a time in Agenda View"
 msgstr "일정 보기 항목에 한 번에 1주 표시"
 
-#: actionmanager.cpp:595
+#: actionmanager.cpp:544
 #, kde-format
 msgctxt "@info:whatsthis"
 msgid "Select this option to show a week at a time in Agenda View."
 msgstr "이 옵션을 사용하면 일정 보기 항목에 한 번에 1주를 표시합니다."
 
-#: actionmanager.cpp:602
+#: actionmanager.cpp:551
 #, kde-format
 msgctxt "@action:inmenu"
 msgid "New E&vent…"
 msgstr "새 이벤트(&V)…"
 
-#: actionmanager.cpp:603
+#: actionmanager.cpp:552
 #, kde-format
 msgctxt "@info:status"
 msgid "Create a new Event"
 msgstr "새 이벤트 만들기"
 
-#: actionmanager.cpp:604
+#: actionmanager.cpp:553
 #, kde-format
 msgctxt "@info:tooltip"
 msgid "Create a new Event"
 msgstr "새 이벤트 만들기"
 
-#: actionmanager.cpp:606
+#: actionmanager.cpp:555
 #, kde-format
 msgctxt "@info:whatsthis"
 msgid ""
@@ -1029,25 +989,25 @@ msgstr ""
 "새 이벤트를 만들 수 있는 대화 상자를 엽니다. 알림, 참석자, 반복 등을 입력할 "
 "수 있습니다."
 
-#: actionmanager.cpp:612
+#: actionmanager.cpp:561
 #, kde-format
 msgctxt "@action:inmenu"
 msgid "New &To-do…"
 msgstr "새 할 일(&T)…"
 
-#: actionmanager.cpp:613
+#: actionmanager.cpp:562
 #, kde-format
 msgctxt "@info:status"
 msgid "Create a new To-do"
 msgstr "새 할 일 만들기"
 
-#: actionmanager.cpp:614
+#: actionmanager.cpp:563
 #, kde-format
 msgctxt "@info:tooltip"
 msgid "Create a new To-do"
 msgstr "새 할 일 만들기"
 
-#: actionmanager.cpp:616
+#: actionmanager.cpp:565
 #, kde-format
 msgctxt "@info:whatsthis"
 msgid ""
@@ -1057,91 +1017,91 @@ msgstr ""
 "새 할 일을 만들 수 있는 대화 상자를 엽니다. 알림, 참석자, 반복 등을 입력할 "
 "수 있습니다."
 
-#: actionmanager.cpp:623
+#: actionmanager.cpp:572
 #, kde-format
 msgctxt "@action:inmenu"
 msgid "New Su&b-to-do…"
 msgstr "새 하위 할 일(&B)…"
 
-#: actionmanager.cpp:631
+#: actionmanager.cpp:580
 #, kde-format
 msgctxt "@action:inmenu"
 msgid "New &Journal…"
 msgstr "새 저널(&J)…"
 
-#: actionmanager.cpp:632
+#: actionmanager.cpp:581
 #, kde-format
 msgctxt "@info:status"
 msgid "Create a new Journal"
 msgstr "새 저널 만들기"
 
-#: actionmanager.cpp:633
+#: actionmanager.cpp:582
 #, kde-format
 msgctxt "@info:tooltip"
 msgid "Create a new Journal"
 msgstr "새 저널 만들기"
 
-#: actionmanager.cpp:634
+#: actionmanager.cpp:583
 #, kde-format
 msgctxt "@info:whatsthis"
 msgid "Starts a dialog that allows you to create a new Journal entry."
 msgstr "새 저널 항목을 만들 수 있는 대화 상자를 엽니다."
 
-#: actionmanager.cpp:639
+#: actionmanager.cpp:588
 #, kde-format
 msgctxt "@action:inmenu Jump to date"
 msgid "&Pick a Date"
 msgstr "날짜 선택(&P)"
 
-#: actionmanager.cpp:640
+#: actionmanager.cpp:589
 #, kde-format
 msgctxt "@action:button"
 msgid "Date"
 msgstr "날짜"
 
-#: actionmanager.cpp:641
+#: actionmanager.cpp:590
 #, kde-format
 msgctxt "@info:status"
 msgid "Scroll the view to user selected dates"
 msgstr "보기를 사용자가 선택한 날짜로 스크롤"
 
-#: actionmanager.cpp:642
+#: actionmanager.cpp:591
 #, kde-format
 msgctxt "@info:tooltip"
 msgid "Scroll the view to user selected dates"
 msgstr "보기를 사용자가 선택한 날짜로 스크롤"
 
-#: actionmanager.cpp:643
+#: actionmanager.cpp:592
 #, kde-format
 msgctxt "@info:whatsthis"
 msgid "Opens a date selection dialog for quickly navigating the view."
 msgstr "보기를 빠르게 탐색할 수 있는 날짜 선택 대화 상자를 엽니다."
 
-#: actionmanager.cpp:648
+#: actionmanager.cpp:597
 #, kde-format
 msgctxt "@action:inmenu"
 msgid "Configure View…"
 msgstr "보기 설정…"
 
-#: actionmanager.cpp:649
+#: actionmanager.cpp:598
 #, kde-format
 msgctxt "@action:button"
 msgid "Configure"
 msgstr "설정"
 
-#: actionmanager.cpp:650
+#: actionmanager.cpp:599
 #, kde-format
 msgctxt "@info:status"
 msgid "Configure the multi-calendar view"
 msgstr "다중 달력 보기 설정"
 
-#: actionmanager.cpp:651
+#: actionmanager.cpp:600
 #, kde-format
 msgctxt "@info:tooltip"
 msgid "Configure the multi-calendar view"
 msgstr "다중 달력 보기 설정"
 
-#: actionmanager.cpp:653
+#: actionmanager.cpp:602
 #, kde-format
 msgctxt "@info:whatsthis"
 msgid ""
@@ -1152,21 +1112,21 @@ msgstr ""
 "다중 달력 보기에서 보기를 설정할 수 있는 대화 상자를 시작합니다. 현재 다중 달"
 "력 보기만 지원합니다. 보기->일정 보기 설정에서 다중 달력 옵션을 참조하십시오."
 
-#: actionmanager.cpp:660 actionmanager.cpp:1349 actionmanager.cpp:1391
+#: actionmanager.cpp:609 actionmanager.cpp:1298 actionmanager.cpp:1340
 #: koeventpopupmenu.cpp:41
 #, kde-format
 msgctxt "@action:inmenu"
 msgid "&Show"
 msgstr "표시(&S)"
 
-#: actionmanager.cpp:664 actionmanager.cpp:1352 actionmanager.cpp:1392
+#: actionmanager.cpp:613 actionmanager.cpp:1301 actionmanager.cpp:1341
 #: koeventpopupmenu.cpp:43
 #, kde-format
 msgctxt "@action:inmenu"
 msgid "&Edit…"
 msgstr "편집(&E)…"
 
-#: actionmanager.cpp:673
+#: actionmanager.cpp:622
 #, kde-format
 msgctxt "@action:inmenu"
 msgid "&Make Sub-to-do Independent"
@@ -1176,304 +1136,304 @@ msgstr "하위 할 일을 독립 항목으로 만들기(&M)"
 #. mCalendarView, SLOT(toggleAlarm()),
 #. mACollection, "activate_alarm" );
 #. ************************* SCHEDULE MENU *******************************
-#: actionmanager.cpp:685
+#: actionmanager.cpp:634
 #, kde-format
 msgctxt "@action:inmenu"
 msgid "&Publish Item Information…"
 msgstr "항목 정보 게시(&P)…"
 
-#: actionmanager.cpp:692
+#: actionmanager.cpp:641
 #, kde-format
 msgctxt "@action:inmenu"
 msgid "Send &Invitation to Attendees"
 msgstr "참석자에게 초대장 전송(&I)"
 
-#: actionmanager.cpp:700
+#: actionmanager.cpp:649
 #, kde-format
 msgctxt "@action:inmenu"
 msgid "Re&quest Update"
 msgstr "업데이트 요청(&Q)"
 
-#: actionmanager.cpp:708
+#: actionmanager.cpp:657
 #, kde-format
 msgctxt "@action:inmenu"
 msgid "Send &Cancellation to Attendees"
 msgstr "참석자에게 취소 안내 전송(&C)"
 
-#: actionmanager.cpp:716
+#: actionmanager.cpp:665
 #, kde-format
 msgctxt "@action:inmenu"
 msgid "Send Status &Update"
 msgstr "상태 업데이트 전송(&U)"
 
-#: actionmanager.cpp:724
+#: actionmanager.cpp:673
 #, kde-format
 msgctxt "@action:inmenu counter proposal"
 msgid "Request Chan&ge"
 msgstr "변경 요청(&G)"
 
-#: actionmanager.cpp:732
+#: actionmanager.cpp:681
 #, kde-format
 msgctxt "@action:inmenu"
 msgid "&Mail Free Busy Information…"
 msgstr "바쁨/한가함 정보 메일 보내기(&M)…"
 
-#: actionmanager.cpp:737
+#: actionmanager.cpp:686
 #, kde-format
 msgctxt "@action:inmenu"
 msgid "&Send as iCalendar…"
 msgstr "iCalendar로 전송(&S)…"
 
-#: actionmanager.cpp:744
+#: actionmanager.cpp:693
 #, kde-format
 msgctxt "@action:inmenu"
 msgid "&Upload Free Busy Information"
 msgstr "바쁨/한가함 정보 업로드(&U)"
 
-#: actionmanager.cpp:750
+#: actionmanager.cpp:699
 #, kde-format
 msgctxt "@action:inmenu"
 msgid "&Address Book"
 msgstr "주소록(&A)"
 
-#: actionmanager.cpp:758
+#: actionmanager.cpp:707
 #, kde-format
 msgctxt "@action:inmenu"
 msgid "Show Date Navigator"
 msgstr "날짜 탐색기 표시"
 
-#: actionmanager.cpp:762
+#: actionmanager.cpp:711
 #, fuzzy, kde-format
 #| msgid "Show icons in agenda view items"
 msgctxt "@action:inmenu"
 msgid "Show To-do List in Calendar Views"
 msgstr "일정 보기 항목에 아이콘 표시"
 
-#: actionmanager.cpp:766
+#: actionmanager.cpp:715
 #, kde-format
 msgctxt "@action:inmenu"
 msgid "Show Item Viewer"
 msgstr "항목 뷰어 표시"
 
-#: actionmanager.cpp:782
+#: actionmanager.cpp:731
 #, kde-format
 msgctxt "@action:inmenu"
 msgid "Show Calendar Manager"
 msgstr "캘린더 관리자 표시"
 
-#: actionmanager.cpp:796
+#: actionmanager.cpp:745
 #, kde-format
 msgctxt "@action:inmenu"
 msgid "Configure &Date && Time…"
 msgstr "날짜와 시간 설정(&D)…"
 
-#: actionmanager.cpp:800
+#: actionmanager.cpp:749
 #, kde-format
 msgctxt "@action:inmenu"
 msgid "Manage View &Filters…"
 msgstr "보기 필터 관리(&F)…"
 
-#: actionmanager.cpp:804
+#: actionmanager.cpp:753
 #, kde-format
 msgctxt "@action:inmenu"
 msgid "Manage T&ags…"
 msgstr "태그 관리(&A)…"
 
-#: actionmanager.cpp:812
+#: actionmanager.cpp:761
 #, kde-format
 msgctxt "@action:inmenu"
 msgid "&Configure KOrganizer…"
 msgstr "KOrganizer 설정(&C)…"
 
-#: actionmanager.cpp:890
+#: actionmanager.cpp:839
 #, kde-format
 msgctxt "@info"
 msgid "1 incidence was imported successfully."
 msgid_plural "%1 incidences were imported successfully."
 msgstr[0] "항목 %1개를 가져왔습니다."
 
-#: actionmanager.cpp:893
+#: actionmanager.cpp:842
 #, kde-kuit-format
 msgctxt "@info"
 msgid "There was an error while merging the calendar: <message>%1</message>"
 msgstr "캘린더를 합치는 중 오류 발생: <message>%1</message>"
 
-#: actionmanager.cpp:905
+#: actionmanager.cpp:854
 #, kde-format
 msgctxt "@info"
 msgid "New calendar added successfully"
 msgstr "새 캘린더가 추가됨"
 
-#: actionmanager.cpp:907
+#: actionmanager.cpp:856
 #, kde-kuit-format
 msgctxt "@info"
 msgid "Could not add a calendar. Error: <message>%1</message>"
 msgstr "캘린더를 추가할 수 없습니다. 오류: <message>%1</message>"
 
-#: actionmanager.cpp:964
+#: actionmanager.cpp:913
 #, kde-format
 msgctxt "@title:window"
 msgid "Select Calendar File to Open"
 msgstr "열 캘린더 파일 선택"
 
-#: actionmanager.cpp:1000
+#: actionmanager.cpp:949
 #, kde-format
 msgctxt "@title:window"
 msgid "Select Calendar File to Import"
 msgstr "가져올 캘린더 파일 선택"
 
-#: actionmanager.cpp:1032
+#: actionmanager.cpp:981
 #, kde-kuit-format
 msgctxt "@info"
 msgid "An error occurred: <message>%1 (url: %2)</message>"
 msgstr "오류 발생: <message>%1(URL: %2)</message>"
 
-#: actionmanager.cpp:1051
+#: actionmanager.cpp:1000
 #, kde-kuit-format
 msgctxt "@info"
 msgid "Cannot upload calendar to <filename>%1</filename>"
 msgstr "<filename>%1</filename>(으)로 캘린더를 업로드할 수 없음"
 
-#: actionmanager.cpp:1057
+#: actionmanager.cpp:1006
 #, kde-kuit-format
 msgctxt "@info"
 msgid "Saved calendar <filename>%1</filename>"
 msgstr "<filename>%1</filename> 캘린더를 저장함"
 
-#: actionmanager.cpp:1096
+#: actionmanager.cpp:1045
 #, kde-kuit-format
 msgctxt "@info"
 msgid "Unable to save calendar to the file <filename>%1</filename>"
 msgstr "<filename>%1</filename> 파일로 캘린더를 저장할 수 없음"
 
-#: actionmanager.cpp:1097
+#: actionmanager.cpp:1046
 #, kde-format
 msgctxt "@title:window"
 msgid "Error"
 msgstr "오류"
 
-#: actionmanager.cpp:1123
+#: actionmanager.cpp:1072
 #, kde-format
 msgctxt "@action:inmenu"
 msgid "&Next Day"
 msgid_plural "&Next %1 Days"
 msgstr[0] "다음 %1일(&N)"
 
-#: actionmanager.cpp:1136
+#: actionmanager.cpp:1085
 #, kde-format
 msgctxt "@info"
 msgid "Could not start control module for date and time format."
 msgstr "날짜와 시간 제어 모듈을 시작할 수 없습니다."
 
-#: actionmanager.cpp:1311
+#: actionmanager.cpp:1260
 #, kde-format
 msgctxt "@action:inmenu"
 msgid "&Show Event"
 msgstr "이벤트 표시(&S)"
 
-#: actionmanager.cpp:1314
+#: actionmanager.cpp:1263
 #, kde-format
 msgctxt "@action:inmenu"
 msgid "&Edit Event…"
 msgstr "이벤트 편집(&E)…"
 
-#: actionmanager.cpp:1317
+#: actionmanager.cpp:1266
 #, kde-format
 msgctxt "@action:inmenu"
 msgid "&Delete Event"
 msgstr "이벤트 삭제(&D)"
 
-#: actionmanager.cpp:1325
+#: actionmanager.cpp:1274
 #, kde-format
 msgctxt "@action:inmenu"
 msgid "&Show To-do"
 msgstr "할 일 표시(&S)"
 
-#: actionmanager.cpp:1328
+#: actionmanager.cpp:1277
 #, kde-format
 msgctxt "@action:inmenu"
 msgid "&Edit To-do…"
 msgstr "할 일 편집(&E)…"
 
-#: actionmanager.cpp:1331
+#: actionmanager.cpp:1280
 #, kde-format
 msgctxt "@action:inmenu"
 msgid "&Delete To-do"
 msgstr "할 일 삭제(&D)"
 
-#: actionmanager.cpp:1474 actionmanager.cpp:1580
+#: actionmanager.cpp:1423 actionmanager.cpp:1529
 #, kde-format
 msgctxt "@action:inmenu"
 msgid "Attach as &link"
 msgstr "링크로 첨부(&L)"
 
-#: actionmanager.cpp:1475 actionmanager.cpp:1581
+#: actionmanager.cpp:1424 actionmanager.cpp:1530
 #, kde-format
 msgctxt "@action:inmenu"
 msgid "Attach &inline"
 msgstr "인라인으로 첨부(&I)"
 
-#: actionmanager.cpp:1476
+#: actionmanager.cpp:1425
 #, kde-format
 msgctxt "@action:inmenu"
 msgid "Attach inline &without attachments"
 msgstr "첨부 없이 인라인으로 첨부(&W)"
 
-#: actionmanager.cpp:1478 actionmanager.cpp:1583
+#: actionmanager.cpp:1427 actionmanager.cpp:1532
 #, kde-format
 msgctxt "@action:inmenu"
 msgid "C&ancel"
 msgstr "취소(&A)"
 
-#: actionmanager.cpp:1516
+#: actionmanager.cpp:1465
 #, kde-format
 msgctxt "@info"
 msgid "Removing attachments from an email might invalidate its signature."
 msgstr "이메일에서 첨부를 삭제하면 디지털 서명을 무효화할 수도 있습니다."
 
-#: actionmanager.cpp:1517
+#: actionmanager.cpp:1466
 #, kde-format
 msgctxt "@title:window"
 msgid "Remove Attachments"
 msgstr "첨부 삭제"
 
-#: actionmanager.cpp:1668
+#: actionmanager.cpp:1617
 #, kde-format
 msgctxt "@action:inmenu"
 msgid "Undo: %1"
 msgstr "실행 취소: %1"
 
-#: actionmanager.cpp:1671
+#: actionmanager.cpp:1620
 #, kde-format
 msgctxt "@action:inmenu"
 msgid "Undo"
 msgstr "실행 취소"
 
-#: actionmanager.cpp:1681
+#: actionmanager.cpp:1630
 #, kde-format
 msgctxt "@action:inmenu"
 msgid "Redo: %1"
 msgstr "다시 실행: %1"
 
-#: actionmanager.cpp:1684
+#: actionmanager.cpp:1633
 #, kde-format
 msgctxt "@action:inmenu"
 msgid "Redo"
 msgstr "다시 실행"
 
-#: actionmanager.cpp:1687
+#: actionmanager.cpp:1636
 #, kde-format
 msgctxt "@action:button"
 msgid "Undo"
 msgstr "실행 취소"
 
-#: actionmanager.cpp:1698
+#: actionmanager.cpp:1647
 #, kde-kuit-format
 msgctxt "@info"
 msgid "URL <filename>%1</filename> is invalid."
 msgstr "<filename>%1</filename> URL이 잘못되었습니다."
 
-#: actionmanager.cpp:1703
+#: actionmanager.cpp:1652
 #, kde-kuit-format
 msgctxt "@info"
 msgid ""
@@ -1488,19 +1448,19 @@ msgstr ""
 "수 있습니다.</para><para>새 캘린더로 추가를 선택했다면 자동으로 새 캘린더를 "
 "만듭니다.</para>"
 
-#: actionmanager.cpp:1711
+#: actionmanager.cpp:1660
 #, kde-format
 msgctxt "@title:window"
 msgid "Import Calendar"
 msgstr "캘린더 가져오기"
 
-#: actionmanager.cpp:1712
+#: actionmanager.cpp:1661
 #, kde-format
 msgctxt "@action:button"
 msgid "Merge into existing calendar"
 msgstr "기존 캘린더에 합치기"
 
-#: actionmanager.cpp:1713
+#: actionmanager.cpp:1662
 #, kde-format
 msgctxt "@action:button"
 msgid "Add as new calendar"
@@ -2254,86 +2214,86 @@ msgid "&Import"
 msgstr "가져오기(&I)"
 
 #. i18n: ectx: Menu (export)
-#: data/korganizer_part.rc:18 data/korganizerui.rc:16
+#: data/korganizer_part.rc:15 data/korganizerui.rc:13
 #, kde-format
 msgid "&Export"
 msgstr "내보내기(&E)"
 
 #. i18n: ectx: Menu (edit)
-#: data/korganizer_part.rc:30 data/korganizerui.rc:28
+#: data/korganizer_part.rc:24 data/korganizerui.rc:22
 #, kde-format
 msgid "&Edit"
 msgstr "편집(&E)"
 
 #. i18n: ectx: Menu (view)
-#: data/korganizer_part.rc:42 data/korganizerui.rc:34
+#: data/korganizer_part.rc:36 data/korganizerui.rc:28
 #, kde-format
 msgid "&View"
 msgstr "보기(&V)"
 
 #. i18n: ectx: Menu (zoom)
-#: data/korganizer_part.rc:58 data/korganizerui.rc:51
+#: data/korganizer_part.rc:52 data/korganizerui.rc:45
 #, kde-format
 msgid "&Zoom"
 msgstr "확대/축소(&Z)"
 
 #. i18n: ectx: Menu (go)
-#: data/korganizer_part.rc:66 data/korganizerui.rc:60
+#: data/korganizer_part.rc:60 data/korganizerui.rc:54
 #, kde-format
 msgid "&Go"
 msgstr "이동(&G)"
 
 #. i18n: ectx: Menu (actions)
-#: data/korganizer_part.rc:72 data/korganizerui.rc:68
+#: data/korganizer_part.rc:66 data/korganizerui.rc:62
 #, kde-format
 msgid "&Actions"
 msgstr "동작(&A)"
 
 #. i18n: ectx: Menu (schedule)
-#: data/korganizer_part.rc:89 data/korganizerui.rc:87
+#: data/korganizer_part.rc:83 data/korganizerui.rc:81
 #, kde-format
 msgid "S&chedule"
 msgstr "일정(&C)"
 
 #. i18n: ectx: Menu (settings)
-#: data/korganizer_part.rc:101 data/korganizerui.rc:100
+#: data/korganizer_part.rc:95 data/korganizerui.rc:94
 #, kde-format
 msgid "&Settings"
 msgstr "설정(&S)"
 
 #. i18n: ectx: Menu (sidebar)
-#: data/korganizer_part.rc:102 data/korganizerui.rc:103
+#: data/korganizer_part.rc:96 data/korganizerui.rc:97
 #, kde-format
 msgid "&Sidebar"
 msgstr "사이드바(&S)"
 
 #. i18n: ectx: Menu (help)
-#: data/korganizer_part.rc:120 data/korganizerui.rc:118
+#: data/korganizer_part.rc:114 data/korganizerui.rc:112
 #, kde-format
 msgid "&Help"
 msgstr "도움말(&H)"
 
 #. i18n: ectx: ToolBar (mainToolBar)
-#: data/korganizer_part.rc:125 data/korganizerui.rc:123
+#: data/korganizer_part.rc:119 data/korganizerui.rc:117
 #, kde-format
 msgctxt "main toolbar"
 msgid "Main"
 msgstr "주"
 
 #. i18n: ectx: ToolBar (korganizer_toolbar)
-#: data/korganizer_part.rc:137 data/korganizerui.rc:135
+#: data/korganizer_part.rc:131 data/korganizerui.rc:129
 #, kde-format
 msgid "Views"
 msgstr "보기"
 
 #. i18n: ectx: ToolBar (schedule_toolbar)
-#: data/korganizer_part.rc:146 data/korganizerui.rc:144
+#: data/korganizer_part.rc:140 data/korganizerui.rc:138
 #, kde-format
 msgid "Schedule"
 msgstr "일정"
 
 #. i18n: ectx: ToolBar (filter_toolbar)
-#: data/korganizer_part.rc:152 data/korganizerui.rc:151
+#: data/korganizer_part.rc:146 data/korganizerui.rc:145
 #, kde-format
 msgid "Filters Toolbar"
 msgstr "필터"
@@ -6261,6 +6221,34 @@ msgstr "%1"
 msgctxt "4 digit year"
 msgid "%1"
 msgstr "%1년"
+
+#~ msgctxt "@action:inmenu"
+#~ msgid "Get New Calendars…"
+#~ msgstr "새 캘린더 가져오기…"
+
+#~ msgctxt "@info:status"
+#~ msgid "Load a calendar from \"Get Hot New Stuff\""
+#~ msgstr "\"새로운 항목 가져오기\"에서 새 캘린더 다운로드"
+
+#~ msgctxt "@info:tooltip"
+#~ msgid "Search \"Get Hot New Stuff\" for calendars to import"
+#~ msgstr "\"새로운 항목 다운로드\"에서 가져올 캘린더 검색"
+
+#~ msgctxt "@info:whatsthis"
+#~ msgid ""
+#~ "This menu entry opens the \"Get Hot New Stuff\" dialog that allows you to "
+#~ "search and import fun and useful calendars donated to the community."
+#~ msgstr ""
+#~ "이 메뉴 항목은 \"새로운 항목 다운로드\" 대화 상자를 열어서 커뮤니티에서 제"
+#~ "공한 캘린더를 검색하고 가져올 수 있습니다."
+
+#~ msgctxt "@info"
+#~ msgid "Could not load calendar <filename>%1</filename>."
+#~ msgstr "<filename>%1</filename> 캘린더를 불러올 수 없음"
+
+#~ msgctxt "@info"
+#~ msgid "The downloaded events will be merged into your current calendar."
+#~ msgstr "다운로드한 이벤트를 현재 캘린더에 합칩니다."
 
 #~ msgctxt "@action:inmenu"
 #~ msgid "Show To-do View"

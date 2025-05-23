@@ -11,7 +11,7 @@ msgid ""
 msgstr ""
 "Project-Id-Version: korganizer\n"
 "Report-Msgid-Bugs-To: https://bugs.kde.org\n"
-"POT-Creation-Date: 2025-05-07 00:43+0000\n"
+"POT-Creation-Date: 2025-05-23 00:43+0000\n"
 "PO-Revision-Date: 2025-05-07 13:45+0300\n"
 "Last-Translator: Yuri Chornoivan <yurchor@ukr.net>\n"
 "Language-Team: Ukrainian <trans-uk@lists.fedoraproject.org>\n"
@@ -329,7 +329,7 @@ msgctxt "@info:credit"
 msgid "Fester Zigterman"
 msgstr "Fester Zigterman"
 
-#: actionmanager.cpp:131
+#: actionmanager.cpp:130
 #, kde-format
 msgctxt "@info"
 msgid ""
@@ -338,31 +338,31 @@ msgstr ""
 "За допомогою цього пункту можна повністю сховати смужку меню. Наказати "
 "програмі знову показувати цю смужку можна клавіатурним скороченням %1."
 
-#: actionmanager.cpp:134
+#: actionmanager.cpp:133
 #, kde-format
 msgctxt "@title:window"
 msgid "Hide menu bar"
 msgstr "Приховування смужки меню"
 
-#: actionmanager.cpp:245
+#: actionmanager.cpp:244
 #, kde-format
 msgctxt "@action:inmenu"
 msgid "Import &Calendar…"
 msgstr "Імпортувати &календар…"
 
-#: actionmanager.cpp:246
+#: actionmanager.cpp:245
 #, kde-format
 msgctxt "@info:status"
 msgid "Import a calendar"
 msgstr "Імпортування календаря"
 
-#: actionmanager.cpp:247
+#: actionmanager.cpp:246
 #, kde-format
 msgctxt "@info:tooltip"
 msgid "Import an iCalendar or vCalendar file"
 msgstr "Імпортувати файл iCalendar або vCalendar"
 
-#: actionmanager.cpp:249
+#: actionmanager.cpp:248
 #, kde-format
 msgctxt "@info:whatsthis"
 msgid ""
@@ -372,66 +372,25 @@ msgstr ""
 "Виберіть цей пункт меню, якщо ви бажаєте імпортувати вміст файла не у "
 "форматі iCalendar або vCalendar до вашого поточного календаря."
 
-#: actionmanager.cpp:255
-#, kde-format
-msgctxt "@action:inmenu"
-msgid "Get New Calendars…"
-msgstr "Отримати нові календарі…"
-
 #: actionmanager.cpp:256
-#, kde-format
-msgctxt "@info:status"
-msgid "Load a calendar from \"Get Hot New Stuff\""
-msgstr "Завантаження календаря з «Отримати нові матеріали»"
-
-#: actionmanager.cpp:257
-#, kde-format
-msgctxt "@info:tooltip"
-msgid "Search \"Get Hot New Stuff\" for calendars to import"
-msgstr "Шукати на «Отримати нові матеріали» календарі для імпортування"
-
-#: actionmanager.cpp:259
-#, kde-format
-msgctxt "@info:whatsthis"
-msgid ""
-"This menu entry opens the \"Get Hot New Stuff\" dialog that allows you to "
-"search and import fun and useful calendars donated to the community."
-msgstr ""
-"Цей пункт меню відкриває діалогове вікно «Отримати нові матеріали», за "
-"допомогою якого ви зможете шукати та імпортувати цікаві та корисні "
-"календарі, які створено спільнотою користувачів та розробників."
-
-#: actionmanager.cpp:280
-#, kde-kuit-format
-msgctxt "@info"
-msgid "Could not load calendar <filename>%1</filename>."
-msgstr "Не вдалося завантажити календар <filename>%1</filename>."
-
-#: actionmanager.cpp:290
-#, kde-format
-msgctxt "@info"
-msgid "The downloaded events will be merged into your current calendar."
-msgstr "Отримані події будуть вставлені у ваш поточного календар."
-
-#: actionmanager.cpp:307
 #, kde-format
 msgctxt "@action:inmenu"
 msgid "Export as &iCalendar…"
 msgstr "Експор&тувати як iCalendar…"
 
-#: actionmanager.cpp:308
+#: actionmanager.cpp:257
 #, kde-format
 msgctxt "@info:status"
 msgid "Export calendar to file"
 msgstr "Експортування календаря до файла"
 
-#: actionmanager.cpp:309
+#: actionmanager.cpp:258
 #, kde-format
 msgctxt "@info:tooltip"
 msgid "Export your calendar to an iCalendar file"
 msgstr "Експортувати ваш календар до файла iCalendar"
 
-#: actionmanager.cpp:310
+#: actionmanager.cpp:259
 #, kde-format
 msgctxt "@info:whatsthis"
 msgid ""
@@ -439,25 +398,25 @@ msgid ""
 msgstr ""
 "Надає вам змогу експортувати усю збірку календаря до одного файла iCalendar."
 
-#: actionmanager.cpp:316
+#: actionmanager.cpp:265
 #, kde-format
 msgctxt "@action:inmenu"
 msgid "Archive O&ld Incidences…"
 msgstr "Архівувати &старі події…"
 
-#: actionmanager.cpp:317
+#: actionmanager.cpp:266
 #, kde-format
 msgctxt "@info:status"
 msgid "Archive events and to-dos to a file"
 msgstr "Архівувати записи подій і завдань до файла"
 
-#: actionmanager.cpp:318
+#: actionmanager.cpp:267
 #, kde-format
 msgctxt "@info:tooltip"
 msgid "Archive old events and to-dos to an iCalendar file"
 msgstr "Архівувати застарілі записи подій і завдань до файла iCalendar"
 
-#: actionmanager.cpp:320
+#: actionmanager.cpp:269
 #, kde-format
 msgctxt "@info:whatsthis"
 msgid ""
@@ -470,25 +429,25 @@ msgstr ""
 "архівувати до файла iCalendar. Архівовані у такий спосіб записи буде "
 "вилучено із вашої наявної збірки подій календаря."
 
-#: actionmanager.cpp:328
+#: actionmanager.cpp:277
 #, kde-format
 msgctxt "@action:inmenu"
 msgid "Pur&ge Completed To-dos"
 msgstr "Вилу&чити виконані завдання"
 
-#: actionmanager.cpp:329
+#: actionmanager.cpp:278
 #, kde-format
 msgctxt "@info:status"
 msgid "Purge completed to-dos"
 msgstr "Витерти виконані завдання"
 
-#: actionmanager.cpp:330
+#: actionmanager.cpp:279
 #, kde-format
 msgctxt "@info:tooltip"
 msgid "Remove completed to-dos from your calendar"
 msgstr "Вилучити завершені завдання з вашого календаря"
 
-#: actionmanager.cpp:332
+#: actionmanager.cpp:281
 #, kde-format
 msgctxt "@info:whatsthis"
 msgid ""
@@ -498,32 +457,32 @@ msgstr ""
 "Надає вам змогу вилучити усі завершені завдання з вашої збірки календаря. "
 "Наслідки цієї дії неможливо буде скасувати!"
 
-#: actionmanager.cpp:369 actionmanager.cpp:668 actionmanager.cpp:1355
-#: actionmanager.cpp:1393
+#: actionmanager.cpp:318 actionmanager.cpp:617 actionmanager.cpp:1304
+#: actionmanager.cpp:1342
 #, kde-format
 msgctxt "@action:inmenu"
 msgid "&Delete"
 msgstr "&Вилучити"
 
-#: actionmanager.cpp:386
+#: actionmanager.cpp:335
 #, kde-format
 msgctxt "@action:inmenu"
 msgid "What's &Next"
 msgstr "Що &наступне"
 
-#: actionmanager.cpp:387
+#: actionmanager.cpp:336
 #, kde-format
 msgctxt "@info:status"
 msgid "What's Next View"
 msgstr "Перегляд наступних подій"
 
-#: actionmanager.cpp:388
+#: actionmanager.cpp:337
 #, kde-format
 msgctxt "@info:tooltip"
 msgid "Switch to the What's Next View"
 msgstr "Перемкнутися на перегляд наступних подій"
 
-#: actionmanager.cpp:390
+#: actionmanager.cpp:339
 #, kde-format
 msgctxt "@info:whatsthis"
 msgid ""
@@ -538,25 +497,25 @@ msgstr ""
 "але ви побачите лише записи подій з днів, які вибрано на бічній панелі "
 "навігатора датами."
 
-#: actionmanager.cpp:398
+#: actionmanager.cpp:347
 #, kde-format
 msgctxt "@action:inmenu"
 msgid "&Month"
 msgstr "&Місяць"
 
-#: actionmanager.cpp:399
+#: actionmanager.cpp:348
 #, kde-format
 msgctxt "@info:status"
 msgid "Month View"
 msgstr "Перегляд місяця"
 
-#: actionmanager.cpp:400
+#: actionmanager.cpp:349
 #, kde-format
 msgctxt "@info:tooltip"
 msgid "Switch to the Month View"
 msgstr "Перемкнутися на перегляд місяця"
 
-#: actionmanager.cpp:402
+#: actionmanager.cpp:351
 #, kde-format
 msgctxt "@info:whatsthis"
 msgid ""
@@ -566,25 +525,25 @@ msgstr ""
 "Перемикає програму у режим перегляду місяця, де буде показано усі події і "
 "поточні завдання у звичному форматі календаря за місяць."
 
-#: actionmanager.cpp:408
+#: actionmanager.cpp:357
 #, kde-format
 msgctxt "@action:inmenu"
 msgid "&Agenda"
 msgstr "По&рядок денний"
 
-#: actionmanager.cpp:411
+#: actionmanager.cpp:360
 #, kde-format
 msgctxt "@info:status"
 msgid "Agenda View"
 msgstr "Перегляд порядку денного"
 
-#: actionmanager.cpp:412
+#: actionmanager.cpp:361
 #, kde-format
 msgctxt "@info:tooltip"
 msgid "Switch to the Agenda View"
 msgstr "Перемкнутися на перегляд порядку денного"
 
-#: actionmanager.cpp:414
+#: actionmanager.cpp:363
 #, kde-format
 msgctxt "@info:whatsthis"
 msgid ""
@@ -597,25 +556,25 @@ msgstr ""
 "упорядковані хронологічно. Ви також зможете побачити тривалість кожної "
 "наступної події у розкладі дня."
 
-#: actionmanager.cpp:421
+#: actionmanager.cpp:370
 #, kde-format
 msgctxt "@action:inmenu"
 msgid "&Event List"
 msgstr "Список &подій"
 
-#: actionmanager.cpp:422
+#: actionmanager.cpp:371
 #, kde-format
 msgctxt "@info:status"
 msgid "List View"
 msgstr "Перегляд списку"
 
-#: actionmanager.cpp:423
+#: actionmanager.cpp:372
 #, kde-format
 msgctxt "@info:tooltip"
 msgid "Switch to the List View"
 msgstr "Перемкнутися на перегляд списку"
 
-#: actionmanager.cpp:425
+#: actionmanager.cpp:374
 #, kde-format
 msgctxt "@info:whatsthis"
 msgid ""
@@ -626,25 +585,25 @@ msgstr ""
 "події та записи журналу для та, які було позначено на панелі навігатора "
 "датами."
 
-#: actionmanager.cpp:431
+#: actionmanager.cpp:380
 #, kde-format
 msgctxt "@action:inmenu"
 msgid "&To-do List"
 msgstr "Список &завдань"
 
-#: actionmanager.cpp:432
+#: actionmanager.cpp:381
 #, kde-format
 msgctxt "@info:status"
 msgid "To-do List View"
 msgstr "Перегляд списку завдань"
 
-#: actionmanager.cpp:433
+#: actionmanager.cpp:382
 #, kde-format
 msgctxt "@info:tooltip"
 msgid "Switch to the To-do List View"
 msgstr "Перемкнути на перегляд списку завдань"
 
-#: actionmanager.cpp:435
+#: actionmanager.cpp:384
 #, kde-format
 msgctxt "@info:whatsthis"
 msgid ""
@@ -654,25 +613,25 @@ msgstr ""
 "Перемикає програму у режим перегляду списку завдань, де ви зможете стежити "
 "за виконанням запланованих завдань."
 
-#: actionmanager.cpp:441
+#: actionmanager.cpp:390
 #, kde-format
 msgctxt "@action:inmenu"
 msgid "&Journal"
 msgstr "&Журнал"
 
-#: actionmanager.cpp:442
+#: actionmanager.cpp:391
 #, kde-format
 msgctxt "@info:status"
 msgid "Journal View"
 msgstr "Перегляд журналу"
 
-#: actionmanager.cpp:443
+#: actionmanager.cpp:392
 #, kde-format
 msgctxt "@info:tooltip"
 msgid "Switch to the Journal View"
 msgstr "Перемкнути на перегляд журналу"
 
-#: actionmanager.cpp:445
+#: actionmanager.cpp:394
 #, kde-format
 msgctxt "@info:whatsthis"
 msgid ""
@@ -682,25 +641,25 @@ msgstr ""
 "Перемикає програму у режим перегляду журналу, який призначено для створення "
 "і перегляду ваших записів щодо подій, досвіду і міркувань."
 
-#: actionmanager.cpp:451
+#: actionmanager.cpp:400
 #, kde-format
 msgctxt "@action:inmenu"
 msgid "Time&line"
 msgstr "&Шкала часу"
 
-#: actionmanager.cpp:452
+#: actionmanager.cpp:401
 #, kde-format
 msgctxt "@info:status"
 msgid "Timeline View"
 msgstr "Перегляд розкладу"
 
-#: actionmanager.cpp:453
+#: actionmanager.cpp:402
 #, kde-format
 msgctxt "@info:tooltip"
 msgid "Switch to the Timeline View"
 msgstr "Перемкнути на перегляд розкладу подій"
 
-#: actionmanager.cpp:455
+#: actionmanager.cpp:404
 #, kde-format
 msgctxt "@info:whatsthis"
 msgid ""
@@ -711,25 +670,25 @@ msgstr ""
 "вибраного діапазону часу у вигляді діаграми Ґанта. Кожен з календарів буде "
 "показано окремою лінією."
 
-#: actionmanager.cpp:464
+#: actionmanager.cpp:413
 #, kde-format
 msgctxt "@action:inmenu"
 msgid "&Refresh"
 msgstr "&Оновити"
 
-#: actionmanager.cpp:465
+#: actionmanager.cpp:414
 #, kde-format
 msgctxt "@info:status"
 msgid "Refresh"
 msgstr "Оновити"
 
-#: actionmanager.cpp:466
+#: actionmanager.cpp:415
 #, kde-format
 msgctxt "@info:tooltip"
 msgid "Refresh the display"
 msgstr "Оновити показ"
 
-#: actionmanager.cpp:468
+#: actionmanager.cpp:417
 #, kde-format
 msgctxt "@info:whatsthis"
 msgid ""
@@ -740,25 +699,25 @@ msgstr ""
 "перегляду календаря. У результаті виконання дії самі дані тек календарів не "
 "буде синхронізовано або оновлено."
 
-#: actionmanager.cpp:477
+#: actionmanager.cpp:426
 #, kde-format
 msgctxt "@action:inmenu"
 msgid "F&ilter"
 msgstr "Ф&ільтр"
 
-#: actionmanager.cpp:478
+#: actionmanager.cpp:427
 #, kde-format
 msgctxt "@info:status"
 msgid "Filter incidences"
 msgstr "Фільтрувати записи"
 
-#: actionmanager.cpp:479
+#: actionmanager.cpp:428
 #, kde-format
 msgctxt "@info:tooltip"
 msgid "Filter incidences from the calendar"
 msgstr "Фільтрувати записи у календарі"
 
-#: actionmanager.cpp:481
+#: actionmanager.cpp:430
 #, kde-format
 msgctxt "@info:whatsthis"
 msgid ""
@@ -769,85 +728,85 @@ msgstr ""
 "перегляду. Щоб скористатися цією можливістю, вам слід спочатку визначити "
 "фільтри. Див. пункт «Керування фільтрами перегляду» у меню «Параметри»."
 
-#: actionmanager.cpp:493
+#: actionmanager.cpp:442
 #, kde-format
 msgctxt "@action:inmenu"
 msgid "In Horizontally"
 msgstr "Збільшити горизонтально"
 
-#: actionmanager.cpp:498
+#: actionmanager.cpp:447
 #, kde-format
 msgctxt "@action:inmenu"
 msgid "Out Horizontally"
 msgstr "Зменшити горизонтально"
 
-#: actionmanager.cpp:503
+#: actionmanager.cpp:452
 #, kde-format
 msgctxt "@action:inmenu"
 msgid "In Vertically"
 msgstr "Збільшити вертикально"
 
-#: actionmanager.cpp:508
+#: actionmanager.cpp:457
 #, kde-format
 msgctxt "@action:inmenu"
 msgid "Out Vertically"
 msgstr "Зменшити вертикально"
 
-#: actionmanager.cpp:517
+#: actionmanager.cpp:466
 #, kde-format
 msgctxt "@action:inmenu Jump to today"
 msgid "To &Today"
 msgstr "&Сьогодні"
 
-#: actionmanager.cpp:518
+#: actionmanager.cpp:467
 #, kde-format
 msgctxt "@action:button"
 msgid "Today"
 msgstr "Сьогодні"
 
-#: actionmanager.cpp:519
+#: actionmanager.cpp:468
 #, kde-format
 msgctxt "@info:status"
 msgid "Scroll to Today"
 msgstr "Гортати до сьогоднішнього дня"
 
-#: actionmanager.cpp:520
+#: actionmanager.cpp:469
 #, kde-format
 msgctxt "@info:tooltip"
 msgid "Scroll the view to today"
 msgstr "Гортати перегляд до сьогоднішнього дня"
 
-#: actionmanager.cpp:521
+#: actionmanager.cpp:470
 #, kde-format
 msgctxt "@info:whatsthis"
 msgid "Scrolls the current view to the today's date."
 msgstr "Гортає поточний перегляд до поточної дати."
 
-#: actionmanager.cpp:527
+#: actionmanager.cpp:476
 #, kde-format
 msgctxt "@action:inmenu scroll backward"
 msgid "&Backward"
 msgstr "&Назад"
 
-#: actionmanager.cpp:529
+#: actionmanager.cpp:478
 #, kde-format
 msgctxt "@action:button scroll backward"
 msgid "Back"
 msgstr "Назад"
 
-#: actionmanager.cpp:530
+#: actionmanager.cpp:479
 #, kde-format
 msgctxt "@info:status"
 msgid "Scroll Backward"
 msgstr "Гортати назад"
 
-#: actionmanager.cpp:531
+#: actionmanager.cpp:480
 #, kde-format
 msgctxt "@info:tooltip"
 msgid "Scroll the view backward"
 msgstr "Гортати перегляд назад"
 
-#: actionmanager.cpp:533
+#: actionmanager.cpp:482
 #, kde-format
 msgctxt "@info:whatsthis"
 msgid ""
@@ -857,31 +816,31 @@ msgstr ""
 "Гортає перегляд назад на день, тиждень, місяць чи рік, залежно від "
 "параметрів поточної панелі перегляду календаря."
 
-#: actionmanager.cpp:540
+#: actionmanager.cpp:489
 #, kde-format
 msgctxt "@action:inmenu scroll forward"
 msgid "&Forward"
 msgstr "&Вперед"
 
-#: actionmanager.cpp:542
+#: actionmanager.cpp:491
 #, kde-format
 msgctxt "@action:button scroll forward"
 msgid "Forward"
 msgstr "Вперед"
 
-#: actionmanager.cpp:543
+#: actionmanager.cpp:492
 #, kde-format
 msgctxt "@info:status"
 msgid "Scroll Forward"
 msgstr "Гортати вперед"
 
-#: actionmanager.cpp:544
+#: actionmanager.cpp:493
 #, kde-format
 msgctxt "@info:tooltip"
 msgid "Scroll the view forward"
 msgstr "Гортати перегляд вперед"
 
-#: actionmanager.cpp:546
+#: actionmanager.cpp:495
 #, kde-format
 msgctxt "@info:whatsthis"
 msgid ""
@@ -891,31 +850,31 @@ msgstr ""
 "Гортає перегляд вперед на день, тиждень, місяць чи рік, залежно від "
 "параметрів поточної панелі перегляду календаря."
 
-#: actionmanager.cpp:552
+#: actionmanager.cpp:501
 #, kde-format
 msgctxt "@action:inmenu"
 msgid "&Day"
 msgstr "&День"
 
-#: actionmanager.cpp:553
+#: actionmanager.cpp:502
 #, kde-format
 msgctxt "@action:inmenu agenda view show 1 day at a time"
 msgid "Day"
 msgstr "День"
 
-#: actionmanager.cpp:554
+#: actionmanager.cpp:503
 #, kde-format
 msgctxt "@info:status"
 msgid "View 1 day at a time"
 msgstr "Одночасний перегляд 1 дня"
 
-#: actionmanager.cpp:555
+#: actionmanager.cpp:504
 #, kde-format
 msgctxt "@info:tooltip"
 msgid "Show 1 day at a time in Agenda View"
 msgstr "Показувати одночасно 1 день на панелі перегляду порядку денного"
 
-#: actionmanager.cpp:556
+#: actionmanager.cpp:505
 #, kde-format
 msgctxt "@info:whatsthis"
 msgid "Select this option to show only 1 day at a time in Agenda View."
@@ -923,19 +882,19 @@ msgstr ""
 "Виберіть цей варіант, якщо хочете одночасно бачити лише 1 день на панелі "
 "перегляду порядку денного."
 
-#: actionmanager.cpp:563
+#: actionmanager.cpp:512
 #, kde-format
 msgctxt "@action:inmenu agenda view show a few days at a time"
 msgid "&Next Days"
 msgstr "&Наступні дні"
 
-#: actionmanager.cpp:564
+#: actionmanager.cpp:513
 #, kde-format
 msgctxt "@info:status"
 msgid "View a few days at a time"
 msgstr "Одночасний перегляд декількох днів"
 
-#: actionmanager.cpp:565
+#: actionmanager.cpp:514
 #, kde-format
 msgctxt "@info:tooltip"
 msgid "Show the next few days at a time in Agenda View"
@@ -943,7 +902,7 @@ msgstr ""
 "Виберіть цей варіант, якщо хочете одночасно бачити наступні декілька днів на "
 "панелі перегляду порядку денного"
 
-#: actionmanager.cpp:568
+#: actionmanager.cpp:517
 #, kde-kuit-format
 msgctxt "@info:whatsthis"
 msgid ""
@@ -957,13 +916,13 @@ msgstr ""
 "допомогою пункту <placeholder>Наступні декілька днів</placeholder> на "
 "сторінці параметрів <interface>Перегляди->Загальне</interface>."
 
-#: actionmanager.cpp:575
+#: actionmanager.cpp:524
 #, kde-format
 msgctxt "@action:inmenu"
 msgid "W&eek Schedule"
 msgstr "Ти&жневий розклад"
 
-#: actionmanager.cpp:576
+#: actionmanager.cpp:525
 #, kde-format
 msgctxt ""
 "@action:inmenu agenda view show the weekly schedule days only (eg. no "
@@ -971,7 +930,7 @@ msgctxt ""
 msgid "Week Schedule"
 msgstr "Тижневий розклад"
 
-#: actionmanager.cpp:577
+#: actionmanager.cpp:526
 #, kde-format
 msgctxt "@info:status"
 msgid ""
@@ -980,7 +939,7 @@ msgstr ""
 "Показувати одночасно тиждень з лише тими днями, які включено до вашого "
 "тижневого розкладу"
 
-#: actionmanager.cpp:579
+#: actionmanager.cpp:528
 #, kde-format
 msgctxt "@info:tooltip"
 msgid ""
@@ -990,7 +949,7 @@ msgstr ""
 "Показувати на панелі порядку денного тиждень без днів, які не включено до "
 "вашого тижневого розкладу (тобто вихідні буде виключено)"
 
-#: actionmanager.cpp:582
+#: actionmanager.cpp:531
 #, kde-kuit-format
 msgctxt "@info:whatsthis"
 msgid ""
@@ -1006,31 +965,31 @@ msgstr ""
 "<interface>Час і дата->Регіональні</interface>.<para>Типово цей режим "
 "перегляду призначено для показу тижня без вихідних.</para>"
 
-#: actionmanager.cpp:591
+#: actionmanager.cpp:540
 #, kde-format
 msgctxt "@action:inmenu"
 msgid "&Week"
 msgstr "&Тиждень"
 
-#: actionmanager.cpp:592
+#: actionmanager.cpp:541
 #, kde-format
 msgctxt "@action:inmenu agenda view show a week at a time"
 msgid "Week"
 msgstr "Тиждень"
 
-#: actionmanager.cpp:593
+#: actionmanager.cpp:542
 #, kde-format
 msgctxt "@info:status"
 msgid "View a week at a time"
 msgstr "Одночасний перегляд тижня"
 
-#: actionmanager.cpp:594
+#: actionmanager.cpp:543
 #, kde-format
 msgctxt "@info:tooltip"
 msgid "Show 1 week at a time in Agenda View"
 msgstr "Показувати одночасно 1 тиждень на панелі перегляду порядку денного"
 
-#: actionmanager.cpp:595
+#: actionmanager.cpp:544
 #, kde-format
 msgctxt "@info:whatsthis"
 msgid "Select this option to show a week at a time in Agenda View."
@@ -1038,25 +997,25 @@ msgstr ""
 "Виберіть цей варіант, якщо хочете одночасно бачити тиждень на панелі "
 "перегляду порядку денного."
 
-#: actionmanager.cpp:602
+#: actionmanager.cpp:551
 #, kde-format
 msgctxt "@action:inmenu"
 msgid "New E&vent…"
 msgstr "Нова п&одія…"
 
-#: actionmanager.cpp:603
+#: actionmanager.cpp:552
 #, kde-format
 msgctxt "@info:status"
 msgid "Create a new Event"
 msgstr "Створити нову подію"
 
-#: actionmanager.cpp:604
+#: actionmanager.cpp:553
 #, kde-format
 msgctxt "@info:tooltip"
 msgid "Create a new Event"
 msgstr "Створити нову подію"
 
-#: actionmanager.cpp:606
+#: actionmanager.cpp:555
 #, kde-format
 msgctxt "@info:whatsthis"
 msgid ""
@@ -1066,25 +1025,25 @@ msgstr ""
 "Відкриває діалогове вікно, яке надає вам змогу створити запис події із "
 "нагадуваннями, учасниками, регулярністю та іншими параметрами."
 
-#: actionmanager.cpp:612
+#: actionmanager.cpp:561
 #, kde-format
 msgctxt "@action:inmenu"
 msgid "New &To-do…"
 msgstr "Нове &завдання…"
 
-#: actionmanager.cpp:613
+#: actionmanager.cpp:562
 #, kde-format
 msgctxt "@info:status"
 msgid "Create a new To-do"
 msgstr "Створення нового завдання"
 
-#: actionmanager.cpp:614
+#: actionmanager.cpp:563
 #, kde-format
 msgctxt "@info:tooltip"
 msgid "Create a new To-do"
 msgstr "Створити нове завдання"
 
-#: actionmanager.cpp:616
+#: actionmanager.cpp:565
 #, kde-format
 msgctxt "@info:whatsthis"
 msgid ""
@@ -1094,91 +1053,91 @@ msgstr ""
 "Відкриває діалогове вікно, яке надає вам змогу створити запис завдання із "
 "нагадуваннями, учасниками, регулярністю та іншими параметрами."
 
-#: actionmanager.cpp:623
+#: actionmanager.cpp:572
 #, kde-format
 msgctxt "@action:inmenu"
 msgid "New Su&b-to-do…"
 msgstr "Нове п&ідзавдання…"
 
-#: actionmanager.cpp:631
+#: actionmanager.cpp:580
 #, kde-format
 msgctxt "@action:inmenu"
 msgid "New &Journal…"
 msgstr "Новий &журнал…"
 
-#: actionmanager.cpp:632
+#: actionmanager.cpp:581
 #, kde-format
 msgctxt "@info:status"
 msgid "Create a new Journal"
 msgstr "Створити новий журнал"
 
-#: actionmanager.cpp:633
+#: actionmanager.cpp:582
 #, kde-format
 msgctxt "@info:tooltip"
 msgid "Create a new Journal"
 msgstr "Створити новий журнал"
 
-#: actionmanager.cpp:634
+#: actionmanager.cpp:583
 #, kde-format
 msgctxt "@info:whatsthis"
 msgid "Starts a dialog that allows you to create a new Journal entry."
 msgstr "Відкриває діалогове вікно, яке надає вам змогу створити запис журналу."
 
-#: actionmanager.cpp:639
+#: actionmanager.cpp:588
 #, kde-format
 msgctxt "@action:inmenu Jump to date"
 msgid "&Pick a Date"
 msgstr "&Вибрати дату"
 
-#: actionmanager.cpp:640
+#: actionmanager.cpp:589
 #, kde-format
 msgctxt "@action:button"
 msgid "Date"
 msgstr "Дата"
 
-#: actionmanager.cpp:641
+#: actionmanager.cpp:590
 #, kde-format
 msgctxt "@info:status"
 msgid "Scroll the view to user selected dates"
 msgstr "Гортати перегляд до вибраних користувачем дат"
 
-#: actionmanager.cpp:642
+#: actionmanager.cpp:591
 #, kde-format
 msgctxt "@info:tooltip"
 msgid "Scroll the view to user selected dates"
 msgstr "Гортати перегляд до вибраних користувачем дат"
 
-#: actionmanager.cpp:643
+#: actionmanager.cpp:592
 #, kde-format
 msgctxt "@info:whatsthis"
 msgid "Opens a date selection dialog for quickly navigating the view."
 msgstr "Відкриває вікно вибору дати для швидкого переходу на панелі перегляду."
 
-#: actionmanager.cpp:648
+#: actionmanager.cpp:597
 #, kde-format
 msgctxt "@action:inmenu"
 msgid "Configure View…"
 msgstr "Налаштувати перегляд…"
 
-#: actionmanager.cpp:649
+#: actionmanager.cpp:598
 #, kde-format
 msgctxt "@action:button"
 msgid "Configure"
 msgstr "Налаштувати"
 
-#: actionmanager.cpp:650
+#: actionmanager.cpp:599
 #, kde-format
 msgctxt "@info:status"
 msgid "Configure the multi-calendar view"
 msgstr "Налаштувати перегляд з декількома календарями"
 
-#: actionmanager.cpp:651
+#: actionmanager.cpp:600
 #, kde-format
 msgctxt "@info:tooltip"
 msgid "Configure the multi-calendar view"
 msgstr "Налаштувати перегляд з декількома календарями"
 
-#: actionmanager.cpp:653
+#: actionmanager.cpp:602
 #, kde-format
 msgctxt "@info:whatsthis"
 msgid ""
@@ -1192,21 +1151,21 @@ msgstr ""
 "декількома календарями на сторінці параметрів «Перегляди->Перегляди порядку "
 "денного»."
 
-#: actionmanager.cpp:660 actionmanager.cpp:1349 actionmanager.cpp:1391
+#: actionmanager.cpp:609 actionmanager.cpp:1298 actionmanager.cpp:1340
 #: koeventpopupmenu.cpp:41
 #, kde-format
 msgctxt "@action:inmenu"
 msgid "&Show"
 msgstr "&Показати"
 
-#: actionmanager.cpp:664 actionmanager.cpp:1352 actionmanager.cpp:1392
+#: actionmanager.cpp:613 actionmanager.cpp:1301 actionmanager.cpp:1341
 #: koeventpopupmenu.cpp:43
 #, kde-format
 msgctxt "@action:inmenu"
 msgid "&Edit…"
 msgstr "З&мінити…"
 
-#: actionmanager.cpp:673
+#: actionmanager.cpp:622
 #, kde-format
 msgctxt "@action:inmenu"
 msgid "&Make Sub-to-do Independent"
@@ -1216,115 +1175,115 @@ msgstr "З&робити підзавдання незалежним"
 #. mCalendarView, SLOT(toggleAlarm()),
 #. mACollection, "activate_alarm" );
 #. ************************* SCHEDULE MENU *******************************
-#: actionmanager.cpp:685
+#: actionmanager.cpp:634
 #, kde-format
 msgctxt "@action:inmenu"
 msgid "&Publish Item Information…"
 msgstr "&Оприлюднити інформацію про пункт…"
 
-#: actionmanager.cpp:692
+#: actionmanager.cpp:641
 #, kde-format
 msgctxt "@action:inmenu"
 msgid "Send &Invitation to Attendees"
 msgstr "Надіслати учасникам &запрошення"
 
-#: actionmanager.cpp:700
+#: actionmanager.cpp:649
 #, kde-format
 msgctxt "@action:inmenu"
 msgid "Re&quest Update"
 msgstr "Дати за&пит на оновлення"
 
-#: actionmanager.cpp:708
+#: actionmanager.cpp:657
 #, kde-format
 msgctxt "@action:inmenu"
 msgid "Send &Cancellation to Attendees"
 msgstr "Надіслати учасникам &скасування"
 
-#: actionmanager.cpp:716
+#: actionmanager.cpp:665
 #, kde-format
 msgctxt "@action:inmenu"
 msgid "Send Status &Update"
 msgstr "Надіслати &оновлення стану"
 
-#: actionmanager.cpp:724
+#: actionmanager.cpp:673
 #, kde-format
 msgctxt "@action:inmenu counter proposal"
 msgid "Request Chan&ge"
 msgstr "Дати запит на з&міну"
 
-#: actionmanager.cpp:732
+#: actionmanager.cpp:681
 #, kde-format
 msgctxt "@action:inmenu"
 msgid "&Mail Free Busy Information…"
 msgstr "&Надіслати поштою інформацію про вільний/зайнятий час…"
 
-#: actionmanager.cpp:737
+#: actionmanager.cpp:686
 #, kde-format
 msgctxt "@action:inmenu"
 msgid "&Send as iCalendar…"
 msgstr "&Надіслати як iCalendar…"
 
-#: actionmanager.cpp:744
+#: actionmanager.cpp:693
 #, kde-format
 msgctxt "@action:inmenu"
 msgid "&Upload Free Busy Information"
 msgstr "Виванта&жити інформацію про вільний/зайнятий час"
 
-#: actionmanager.cpp:750
+#: actionmanager.cpp:699
 #, kde-format
 msgctxt "@action:inmenu"
 msgid "&Address Book"
 msgstr "&Адресна книга"
 
-#: actionmanager.cpp:758
+#: actionmanager.cpp:707
 #, kde-format
 msgctxt "@action:inmenu"
 msgid "Show Date Navigator"
 msgstr "Показати навігатор датами"
 
-#: actionmanager.cpp:762
+#: actionmanager.cpp:711
 #, kde-format
 msgctxt "@action:inmenu"
 msgid "Show To-do List in Calendar Views"
 msgstr "Показувати список завдань на панелях календарів"
 
-#: actionmanager.cpp:766
+#: actionmanager.cpp:715
 #, kde-format
 msgctxt "@action:inmenu"
 msgid "Show Item Viewer"
 msgstr "Показати переглядач подій"
 
-#: actionmanager.cpp:782
+#: actionmanager.cpp:731
 #, kde-format
 msgctxt "@action:inmenu"
 msgid "Show Calendar Manager"
 msgstr "Показувати керування календарями"
 
-#: actionmanager.cpp:796
+#: actionmanager.cpp:745
 #, kde-format
 msgctxt "@action:inmenu"
 msgid "Configure &Date && Time…"
 msgstr "Налаштування &часу та дати…"
 
-#: actionmanager.cpp:800
+#: actionmanager.cpp:749
 #, kde-format
 msgctxt "@action:inmenu"
 msgid "Manage View &Filters…"
 msgstr "Керування &фільтрами перегляду…"
 
-#: actionmanager.cpp:804
+#: actionmanager.cpp:753
 #, kde-format
 msgctxt "@action:inmenu"
 msgid "Manage T&ags…"
 msgstr "Керування &мітками…"
 
-#: actionmanager.cpp:812
+#: actionmanager.cpp:761
 #, kde-format
 msgctxt "@action:inmenu"
 msgid "&Configure KOrganizer…"
 msgstr "&Налаштувати KOrganizer…"
 
-#: actionmanager.cpp:890
+#: actionmanager.cpp:839
 #, kde-format
 msgctxt "@info"
 msgid "1 incidence was imported successfully."
@@ -1334,69 +1293,69 @@ msgstr[1] "Успішно імпортовано %1 записи."
 msgstr[2] "Успішно імпортовано %1 записів."
 msgstr[3] "Успішно імпортовано один запис."
 
-#: actionmanager.cpp:893
+#: actionmanager.cpp:842
 #, kde-kuit-format
 msgctxt "@info"
 msgid "There was an error while merging the calendar: <message>%1</message>"
 msgstr ""
 "Під час спроби об’єднати календарі сталася помилка: <message>%1</message>"
 
-#: actionmanager.cpp:905
+#: actionmanager.cpp:854
 #, kde-format
 msgctxt "@info"
 msgid "New calendar added successfully"
 msgstr "Новий календар успішно додано"
 
-#: actionmanager.cpp:907
+#: actionmanager.cpp:856
 #, kde-kuit-format
 msgctxt "@info"
 msgid "Could not add a calendar. Error: <message>%1</message>"
 msgstr ""
 "Не вдалося додати календар. Повідомлення про помилку: <message>%1</message>"
 
-#: actionmanager.cpp:964
+#: actionmanager.cpp:913
 #, kde-format
 msgctxt "@title:window"
 msgid "Select Calendar File to Open"
 msgstr "Виберіть файл календаря, який слід відкрити"
 
-#: actionmanager.cpp:1000
+#: actionmanager.cpp:949
 #, kde-format
 msgctxt "@title:window"
 msgid "Select Calendar File to Import"
 msgstr "Виберіть файл календаря, який слід імпортувати"
 
-#: actionmanager.cpp:1032
+#: actionmanager.cpp:981
 #, kde-kuit-format
 msgctxt "@info"
 msgid "An error occurred: <message>%1 (url: %2)</message>"
 msgstr "Сталася помилка: <message>%1 (адреса: %2)</message>"
 
-#: actionmanager.cpp:1051
+#: actionmanager.cpp:1000
 #, kde-kuit-format
 msgctxt "@info"
 msgid "Cannot upload calendar to <filename>%1</filename>"
 msgstr "Не вдалося вивантажити календар до <filename>%1</filename>"
 
-#: actionmanager.cpp:1057
+#: actionmanager.cpp:1006
 #, kde-kuit-format
 msgctxt "@info"
 msgid "Saved calendar <filename>%1</filename>"
 msgstr "Збережено календар <filename>%1</filename>"
 
-#: actionmanager.cpp:1096
+#: actionmanager.cpp:1045
 #, kde-kuit-format
 msgctxt "@info"
 msgid "Unable to save calendar to the file <filename>%1</filename>"
 msgstr "Не вдалося зберегти календар до файла <filename>%1</filename>"
 
-#: actionmanager.cpp:1097
+#: actionmanager.cpp:1046
 #, kde-format
 msgctxt "@title:window"
 msgid "Error"
 msgstr "Помилка"
 
-#: actionmanager.cpp:1123
+#: actionmanager.cpp:1072
 #, kde-format
 msgctxt "@action:inmenu"
 msgid "&Next Day"
@@ -1406,122 +1365,122 @@ msgstr[1] "%1 &наступних дні"
 msgstr[2] "%1 &наступних днів"
 msgstr[3] "%1 &наступний день"
 
-#: actionmanager.cpp:1136
+#: actionmanager.cpp:1085
 #, kde-format
 msgctxt "@info"
 msgid "Could not start control module for date and time format."
 msgstr "Не вдалося запустити модуль управління для формату дати і часу."
 
-#: actionmanager.cpp:1311
+#: actionmanager.cpp:1260
 #, kde-format
 msgctxt "@action:inmenu"
 msgid "&Show Event"
 msgstr "&Перегляд події"
 
-#: actionmanager.cpp:1314
+#: actionmanager.cpp:1263
 #, kde-format
 msgctxt "@action:inmenu"
 msgid "&Edit Event…"
 msgstr "&Редагування події…"
 
-#: actionmanager.cpp:1317
+#: actionmanager.cpp:1266
 #, kde-format
 msgctxt "@action:inmenu"
 msgid "&Delete Event"
 msgstr "&Вилучити подію"
 
-#: actionmanager.cpp:1325
+#: actionmanager.cpp:1274
 #, kde-format
 msgctxt "@action:inmenu"
 msgid "&Show To-do"
 msgstr "&Показати завдання"
 
-#: actionmanager.cpp:1328
+#: actionmanager.cpp:1277
 #, kde-format
 msgctxt "@action:inmenu"
 msgid "&Edit To-do…"
 msgstr "&Редагувати завдання…"
 
-#: actionmanager.cpp:1331
+#: actionmanager.cpp:1280
 #, kde-format
 msgctxt "@action:inmenu"
 msgid "&Delete To-do"
 msgstr "&Вилучити завдання"
 
-#: actionmanager.cpp:1474 actionmanager.cpp:1580
+#: actionmanager.cpp:1423 actionmanager.cpp:1529
 #, kde-format
 msgctxt "@action:inmenu"
 msgid "Attach as &link"
 msgstr "Долучити як &посилання"
 
-#: actionmanager.cpp:1475 actionmanager.cpp:1581
+#: actionmanager.cpp:1424 actionmanager.cpp:1530
 #, kde-format
 msgctxt "@action:inmenu"
 msgid "Attach &inline"
 msgstr "Долучити в &тіло"
 
-#: actionmanager.cpp:1476
+#: actionmanager.cpp:1425
 #, kde-format
 msgctxt "@action:inmenu"
 msgid "Attach inline &without attachments"
 msgstr "Долучити в тіло &без окремих долучень"
 
-#: actionmanager.cpp:1478 actionmanager.cpp:1583
+#: actionmanager.cpp:1427 actionmanager.cpp:1532
 #, kde-format
 msgctxt "@action:inmenu"
 msgid "C&ancel"
 msgstr "&Скасувати"
 
-#: actionmanager.cpp:1516
+#: actionmanager.cpp:1465
 #, kde-format
 msgctxt "@info"
 msgid "Removing attachments from an email might invalidate its signature."
 msgstr ""
 "Вилучення додатків з електронного листа може зробити підпис некоректним."
 
-#: actionmanager.cpp:1517
+#: actionmanager.cpp:1466
 #, kde-format
 msgctxt "@title:window"
 msgid "Remove Attachments"
 msgstr "Вилучення долучень"
 
-#: actionmanager.cpp:1668
+#: actionmanager.cpp:1617
 #, kde-format
 msgctxt "@action:inmenu"
 msgid "Undo: %1"
 msgstr "Вернути: %1"
 
-#: actionmanager.cpp:1671
+#: actionmanager.cpp:1620
 #, kde-format
 msgctxt "@action:inmenu"
 msgid "Undo"
 msgstr "Скасувати"
 
-#: actionmanager.cpp:1681
+#: actionmanager.cpp:1630
 #, kde-format
 msgctxt "@action:inmenu"
 msgid "Redo: %1"
 msgstr "Повторити: %1"
 
-#: actionmanager.cpp:1684
+#: actionmanager.cpp:1633
 #, kde-format
 msgctxt "@action:inmenu"
 msgid "Redo"
 msgstr "Повторити"
 
-#: actionmanager.cpp:1687
+#: actionmanager.cpp:1636
 #, kde-format
 msgctxt "@action:button"
 msgid "Undo"
 msgstr "Вернути"
 
-#: actionmanager.cpp:1698
+#: actionmanager.cpp:1647
 #, kde-kuit-format
 msgctxt "@info"
 msgid "URL <filename>%1</filename> is invalid."
 msgstr "Адреса <filename>%1</filename> є некоректною."
 
-#: actionmanager.cpp:1703
+#: actionmanager.cpp:1652
 #, kde-kuit-format
 msgctxt "@info"
 msgid ""
@@ -1537,19 +1496,19 @@ msgstr ""
 "об’єднання.</para><para>Створення ж нового календаря буде виконано "
 "автоматично.</para>"
 
-#: actionmanager.cpp:1711
+#: actionmanager.cpp:1660
 #, kde-format
 msgctxt "@title:window"
 msgid "Import Calendar"
 msgstr "Імпортування календаря"
 
-#: actionmanager.cpp:1712
+#: actionmanager.cpp:1661
 #, kde-format
 msgctxt "@action:button"
 msgid "Merge into existing calendar"
 msgstr "Об'єднати в календар, що вже існує"
 
-#: actionmanager.cpp:1713
+#: actionmanager.cpp:1662
 #, kde-format
 msgctxt "@action:button"
 msgid "Add as new calendar"
@@ -2328,86 +2287,86 @@ msgid "&Import"
 msgstr "&Імпорт"
 
 #. i18n: ectx: Menu (export)
-#: data/korganizer_part.rc:18 data/korganizerui.rc:16
+#: data/korganizer_part.rc:15 data/korganizerui.rc:13
 #, kde-format
 msgid "&Export"
 msgstr "&Експорт"
 
 #. i18n: ectx: Menu (edit)
-#: data/korganizer_part.rc:30 data/korganizerui.rc:28
+#: data/korganizer_part.rc:24 data/korganizerui.rc:22
 #, kde-format
 msgid "&Edit"
 msgstr "З&міни"
 
 #. i18n: ectx: Menu (view)
-#: data/korganizer_part.rc:42 data/korganizerui.rc:34
+#: data/korganizer_part.rc:36 data/korganizerui.rc:28
 #, kde-format
 msgid "&View"
 msgstr "Пе&регляд"
 
 #. i18n: ectx: Menu (zoom)
-#: data/korganizer_part.rc:58 data/korganizerui.rc:51
+#: data/korganizer_part.rc:52 data/korganizerui.rc:45
 #, kde-format
 msgid "&Zoom"
 msgstr "Зміна &масштабу"
 
 #. i18n: ectx: Menu (go)
-#: data/korganizer_part.rc:66 data/korganizerui.rc:60
+#: data/korganizer_part.rc:60 data/korganizerui.rc:54
 #, kde-format
 msgid "&Go"
 msgstr "Пере&хід"
 
 #. i18n: ectx: Menu (actions)
-#: data/korganizer_part.rc:72 data/korganizerui.rc:68
+#: data/korganizer_part.rc:66 data/korganizerui.rc:62
 #, kde-format
 msgid "&Actions"
 msgstr "&Дії"
 
 #. i18n: ectx: Menu (schedule)
-#: data/korganizer_part.rc:89 data/korganizerui.rc:87
+#: data/korganizer_part.rc:83 data/korganizerui.rc:81
 #, kde-format
 msgid "S&chedule"
 msgstr "&Розклад"
 
 #. i18n: ectx: Menu (settings)
-#: data/korganizer_part.rc:101 data/korganizerui.rc:100
+#: data/korganizer_part.rc:95 data/korganizerui.rc:94
 #, kde-format
 msgid "&Settings"
 msgstr "П&араметри"
 
 #. i18n: ectx: Menu (sidebar)
-#: data/korganizer_part.rc:102 data/korganizerui.rc:103
+#: data/korganizer_part.rc:96 data/korganizerui.rc:97
 #, kde-format
 msgid "&Sidebar"
 msgstr "&Бічна панель"
 
 #. i18n: ectx: Menu (help)
-#: data/korganizer_part.rc:120 data/korganizerui.rc:118
+#: data/korganizer_part.rc:114 data/korganizerui.rc:112
 #, kde-format
 msgid "&Help"
 msgstr "&Довідка"
 
 #. i18n: ectx: ToolBar (mainToolBar)
-#: data/korganizer_part.rc:125 data/korganizerui.rc:123
+#: data/korganizer_part.rc:119 data/korganizerui.rc:117
 #, kde-format
 msgctxt "main toolbar"
 msgid "Main"
 msgstr "Головний"
 
 #. i18n: ectx: ToolBar (korganizer_toolbar)
-#: data/korganizer_part.rc:137 data/korganizerui.rc:135
+#: data/korganizer_part.rc:131 data/korganizerui.rc:129
 #, kde-format
 msgid "Views"
 msgstr "Перегляд"
 
 #. i18n: ectx: ToolBar (schedule_toolbar)
-#: data/korganizer_part.rc:146 data/korganizerui.rc:144
+#: data/korganizer_part.rc:140 data/korganizerui.rc:138
 #, kde-format
 msgid "Schedule"
 msgstr "Розклад"
 
 #. i18n: ectx: ToolBar (filter_toolbar)
-#: data/korganizer_part.rc:152 data/korganizerui.rc:151
+#: data/korganizer_part.rc:146 data/korganizerui.rc:145
 #, kde-format
 msgid "Filters Toolbar"
 msgstr "Пенал фільтрів"
@@ -6505,6 +6464,35 @@ msgstr "%1"
 msgctxt "4 digit year"
 msgid "%1"
 msgstr "%1"
+
+#~ msgctxt "@action:inmenu"
+#~ msgid "Get New Calendars…"
+#~ msgstr "Отримати нові календарі…"
+
+#~ msgctxt "@info:status"
+#~ msgid "Load a calendar from \"Get Hot New Stuff\""
+#~ msgstr "Завантаження календаря з «Отримати нові матеріали»"
+
+#~ msgctxt "@info:tooltip"
+#~ msgid "Search \"Get Hot New Stuff\" for calendars to import"
+#~ msgstr "Шукати на «Отримати нові матеріали» календарі для імпортування"
+
+#~ msgctxt "@info:whatsthis"
+#~ msgid ""
+#~ "This menu entry opens the \"Get Hot New Stuff\" dialog that allows you to "
+#~ "search and import fun and useful calendars donated to the community."
+#~ msgstr ""
+#~ "Цей пункт меню відкриває діалогове вікно «Отримати нові матеріали», за "
+#~ "допомогою якого ви зможете шукати та імпортувати цікаві та корисні "
+#~ "календарі, які створено спільнотою користувачів та розробників."
+
+#~ msgctxt "@info"
+#~ msgid "Could not load calendar <filename>%1</filename>."
+#~ msgstr "Не вдалося завантажити календар <filename>%1</filename>."
+
+#~ msgctxt "@info"
+#~ msgid "The downloaded events will be merged into your current calendar."
+#~ msgstr "Отримані події будуть вставлені у ваш поточного календар."
 
 #~ msgctxt "@action:inmenu"
 #~ msgid "Show To-do View"
