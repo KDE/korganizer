@@ -7,7 +7,7 @@ msgid ""
 msgstr ""
 "Project-Id-Version: korganizer\n"
 "Report-Msgid-Bugs-To: https://bugs.kde.org\n"
-"POT-Creation-Date: 2025-05-23 00:43+0000\n"
+"POT-Creation-Date: 2025-05-24 00:43+0000\n"
 "PO-Revision-Date: 2013-09-08 07:05+0900\n"
 "Last-Translator: Gheyret Kenji <gheyret@gmail.com>\n"
 "Language-Team: Uyghur Computer Science Association <UKIJ@yahoogroups.com>\n"
@@ -1166,7 +1166,7 @@ msgid ""
 msgstr ""
 
 #: actionmanager.cpp:609 actionmanager.cpp:1298 actionmanager.cpp:1340
-#: koeventpopupmenu.cpp:41
+#: koeventpopupmenu.cpp:42
 #, fuzzy, kde-format
 #| msgid "&Show"
 msgctxt "@action:inmenu"
@@ -1174,7 +1174,7 @@ msgid "&Show"
 msgstr "كۆرسەت(&S)"
 
 #: actionmanager.cpp:613 actionmanager.cpp:1301 actionmanager.cpp:1341
-#: koeventpopupmenu.cpp:43
+#: koeventpopupmenu.cpp:44
 #, fuzzy, kde-format
 #| msgid "&Edit"
 msgctxt "@action:inmenu"
@@ -2543,28 +2543,28 @@ msgstr "قوش(&A)"
 msgid "&Cancel"
 msgstr "ۋاز كەچ(&C)"
 
-#: koeventpopupmenu.cpp:45
+#: koeventpopupmenu.cpp:46
 #, fuzzy, kde-format
 #| msgid "&Delete"
 msgctxt "@action:inmenu delete this incidence"
 msgid "&Delete"
 msgstr "ئۆچۈر(&D)"
 
-#: koeventpopupmenu.cpp:49
+#: koeventpopupmenu.cpp:50
 #, fuzzy, kde-format
 #| msgid "&Print"
 msgctxt "@action:inmenu"
 msgid "&Print…"
 msgstr "باس(&P)"
 
-#: koeventpopupmenu.cpp:51
+#: koeventpopupmenu.cpp:52
 #, fuzzy, kde-format
 #| msgid "Print Previe&w..."
 msgctxt "@action:inmenu"
 msgid "Print Previe&w…"
 msgstr "بېسىشنى ئالدىن كۆزەت(&W)…"
 
-#: koeventpopupmenu.cpp:72
+#: koeventpopupmenu.cpp:73
 #, fuzzy, kde-format
 #| msgctxt "cut this event"
 #| msgid "C&ut"
@@ -2572,28 +2572,49 @@ msgctxt "@action:inmenu cut this incidence"
 msgid "C&ut"
 msgstr "كەس(&U)"
 
-#: koeventpopupmenu.cpp:74
+#: koeventpopupmenu.cpp:75
 #, fuzzy, kde-format
 #| msgid "&Copy"
 msgctxt "@action:inmenu copy this incidence"
 msgid "&Copy"
 msgstr "كۆچۈر(&C)"
 
-#: koeventpopupmenu.cpp:75
+#: koeventpopupmenu.cpp:76
 #, fuzzy, kde-format
 #| msgid "&Paste"
 msgctxt "@action:inmenu"
 msgid "&Paste"
 msgstr "چاپلا(&P)"
 
-#: koeventpopupmenu.cpp:83
+#: koeventpopupmenu.cpp:84 koeventpopupmenu.cpp:104
+#, fuzzy, kde-format
+#| msgid "New E&vent..."
+msgctxt "@action:inmenu"
+msgid "New Event"
+msgstr "يېڭى ھادىسە(&V)…"
+
+#: koeventpopupmenu.cpp:89 koeventpopupmenu.cpp:101
+#, fuzzy, kde-format
+#| msgid "New &To-do..."
+msgctxt "@action:inmenu"
+msgid "New To-do"
+msgstr "يېڭى قىلىدىغان ئىشلار(&T)…"
+
+#: koeventpopupmenu.cpp:92
 #, fuzzy, kde-format
 #| msgid "Create a new To-do"
 msgctxt "@action:inmenu"
 msgid "Create To-do from Event"
 msgstr "يېڭىدىن قىلىدىغان ئىشلارنى قۇرىدۇ"
 
-#: koeventpopupmenu.cpp:92
+#: koeventpopupmenu.cpp:109
+#, fuzzy, kde-format
+#| msgid "Create a new Event"
+msgctxt "@action:inmenu"
+msgid "Create Event from To-do"
+msgstr "يېڭى ھادىسە قۇرىدۇ"
+
+#: koeventpopupmenu.cpp:115
 #, fuzzy, kde-format
 #| msgctxt "@title:column to-do percent completed"
 #| msgid "Completed"
@@ -2601,14 +2622,7 @@ msgctxt "@action:inmenu"
 msgid "Togg&le To-do Completed"
 msgstr "تاماملاندى"
 
-#: koeventpopupmenu.cpp:97
-#, fuzzy, kde-format
-#| msgid "Create a new Event"
-msgctxt "@action:inmenu"
-msgid "Create Event from To-do"
-msgstr "يېڭى ھادىسە قۇرىدۇ"
-
-#: koeventpopupmenu.cpp:108
+#: koeventpopupmenu.cpp:125
 #, fuzzy, kde-format
 #| msgctxt "@title"
 #| msgid "Reminder"
@@ -2616,26 +2630,26 @@ msgctxt "@action:inmenu"
 msgid "&Toggle Reminder"
 msgstr "ئەسكەرتكۈچ"
 
-#: koeventpopupmenu.cpp:115
+#: koeventpopupmenu.cpp:132
 #, kde-format
 msgctxt "@action:inmenu"
 msgid "&Dissociate From Recurrence…"
 msgstr ""
 
-#: koeventpopupmenu.cpp:123
+#: koeventpopupmenu.cpp:140
 #, fuzzy, kde-format
 #| msgid "Calendar"
 msgctxt "@action:inmenu"
 msgid "Send as iCalendar…"
 msgstr "يىلنامە"
 
-#: koeventpopupmenu.cpp:173
+#: koeventpopupmenu.cpp:190
 #, kde-format
 msgctxt "@action:inmenu"
 msgid "&Toggle Reminder Off"
 msgstr ""
 
-#: koeventpopupmenu.cpp:174
+#: koeventpopupmenu.cpp:191
 #, kde-format
 msgctxt "@action:inmenu"
 msgid "&Toggle Reminder On"

@@ -11,7 +11,7 @@ msgid ""
 msgstr ""
 "Project-Id-Version: korganizer\n"
 "Report-Msgid-Bugs-To: https://bugs.kde.org\n"
-"POT-Creation-Date: 2025-05-23 00:43+0000\n"
+"POT-Creation-Date: 2025-05-24 00:43+0000\n"
 "PO-Revision-Date: 2008-01-01 23:20+0200\n"
 "Last-Translator: Darafei Praliaskouski <komzpa@gmail.com>\n"
 "Language-Team: Belarusian (Official spelling) <i18n@mova.org>\n"
@@ -1127,7 +1127,7 @@ msgid ""
 msgstr ""
 
 #: actionmanager.cpp:609 actionmanager.cpp:1298 actionmanager.cpp:1340
-#: koeventpopupmenu.cpp:41
+#: koeventpopupmenu.cpp:42
 #, fuzzy, kde-format
 #| msgid "&Show"
 msgctxt "@action:inmenu"
@@ -1135,7 +1135,7 @@ msgid "&Show"
 msgstr "&Паказаць"
 
 #: actionmanager.cpp:613 actionmanager.cpp:1301 actionmanager.cpp:1341
-#: koeventpopupmenu.cpp:43
+#: koeventpopupmenu.cpp:44
 #, fuzzy, kde-format
 #| msgid "&Edit..."
 msgctxt "@action:inmenu"
@@ -2524,91 +2524,103 @@ msgstr "&Дадаць"
 msgid "&Cancel"
 msgstr "&Скасаваць"
 
-#: koeventpopupmenu.cpp:45
+#: koeventpopupmenu.cpp:46
 #, fuzzy, kde-format
 #| msgid "&Delete"
 msgctxt "@action:inmenu delete this incidence"
 msgid "&Delete"
 msgstr "В&ыдаліць"
 
-#: koeventpopupmenu.cpp:49
+#: koeventpopupmenu.cpp:50
 #, fuzzy, kde-format
 msgctxt "@action:inmenu"
 msgid "&Print…"
 msgstr "&Друкаваць"
 
-#: koeventpopupmenu.cpp:51
+#: koeventpopupmenu.cpp:52
 #, fuzzy, kde-format
 #| msgid "&Print..."
 msgctxt "@action:inmenu"
 msgid "Print Previe&w…"
 msgstr "&Друк..."
 
-#: koeventpopupmenu.cpp:72
+#: koeventpopupmenu.cpp:73
 #, fuzzy, kde-format
 #| msgid "&Cut"
 msgctxt "@action:inmenu cut this incidence"
 msgid "C&ut"
 msgstr "Вы&разаць"
 
-#: koeventpopupmenu.cpp:74
+#: koeventpopupmenu.cpp:75
 #, fuzzy, kde-format
 #| msgid "&Copy"
 msgctxt "@action:inmenu copy this incidence"
 msgid "&Copy"
 msgstr "С&капіраваць"
 
-#: koeventpopupmenu.cpp:75
+#: koeventpopupmenu.cpp:76
 #, fuzzy, kde-format
 #| msgid "&Date:"
 msgctxt "@action:inmenu"
 msgid "&Paste"
 msgstr "&Дата:"
 
-#: koeventpopupmenu.cpp:83
+#: koeventpopupmenu.cpp:84 koeventpopupmenu.cpp:104
+#, fuzzy, kde-format
+msgctxt "@action:inmenu"
+msgid "New Event"
+msgstr "Новая &падзея..."
+
+#: koeventpopupmenu.cpp:89 koeventpopupmenu.cpp:101
+#, fuzzy, kde-format
+msgctxt "@action:inmenu"
+msgid "New To-do"
+msgstr "Новае заданьне..."
+
+#: koeventpopupmenu.cpp:92
 #, fuzzy, kde-format
 msgctxt "@action:inmenu"
 msgid "Create To-do from Event"
 msgstr "Націсніце для дадання новай задачы"
 
-#: koeventpopupmenu.cpp:92
-#, fuzzy, kde-format
-msgctxt "@action:inmenu"
-msgid "Togg&le To-do Completed"
-msgstr "%1 %"
-
-#: koeventpopupmenu.cpp:97
+#: koeventpopupmenu.cpp:109
 #, fuzzy, kde-format
 msgctxt "@action:inmenu"
 msgid "Create Event from To-do"
 msgstr "Націсніце для дадання новай задачы"
 
-#: koeventpopupmenu.cpp:108
+#: koeventpopupmenu.cpp:115
+#, fuzzy, kde-format
+msgctxt "@action:inmenu"
+msgid "Togg&le To-do Completed"
+msgstr "%1 %"
+
+#: koeventpopupmenu.cpp:125
 #, fuzzy, kde-format
 msgctxt "@action:inmenu"
 msgid "&Toggle Reminder"
 msgstr "&Напамін:"
 
-#: koeventpopupmenu.cpp:115
+#: koeventpopupmenu.cpp:132
 #, fuzzy, kde-format
 msgctxt "@action:inmenu"
 msgid "&Dissociate From Recurrence…"
 msgstr "Аддзяліць як не паўтаральная падзея"
 
-#: koeventpopupmenu.cpp:123
+#: koeventpopupmenu.cpp:140
 #, fuzzy, kde-format
 #| msgid "&iCalendar..."
 msgctxt "@action:inmenu"
 msgid "Send as iCalendar…"
 msgstr "&iCalendar..."
 
-#: koeventpopupmenu.cpp:173
+#: koeventpopupmenu.cpp:190
 #, fuzzy, kde-format
 msgctxt "@action:inmenu"
 msgid "&Toggle Reminder Off"
 msgstr "&Напамін:"
 
-#: koeventpopupmenu.cpp:174
+#: koeventpopupmenu.cpp:191
 #, fuzzy, kde-format
 msgctxt "@action:inmenu"
 msgid "&Toggle Reminder On"

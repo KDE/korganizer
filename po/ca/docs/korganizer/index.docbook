@@ -191,7 +191,7 @@
 >) intuïtiu i d'ús fàcil. Podeu planificar cites, esdeveniments, crear tasques pendents i escriure entrades al diari. El &korganizer; us recordarà les tasques pendents, registrarà les vostres ocurrències, experiències i reflexions, ajudant-vos a mantenir la vostra planificació.</para>
 
 <para
->Però el &korganizer; no és tan sols el vostre calendari personal, també us pot ajudar a interactuar amb els vostres col·legues i amics. Amb el &korganizer; podreu invitar a qualsevol que disposi d'una adreça de correu electrònic a un esdeveniment i processar les respostes, compartir un calendari (utilitzant un servidor de treball en grup, o simplement, un fitxer compartit en la xarxa), i compartir esdeveniments (&pex; la planificació d'un campionat o un congrés), utilitzant el marc per a obtenir les novetats. El &korganizer; es basa en estàndards oberts i funciona amb molts servidors de planificació de grups diferents, oferint-vos el control de la vostra informació i la llibertat per a escollir les millors solucions. </para>
+>Però el &korganizer; no és tan sols el vostre calendari personal, també us pot ajudar a interactuar amb els vostres col·legues i amics. Amb el &korganizer; podreu invitar a qualsevol que disposi d'una adreça de correu electrònic a un esdeveniment i processar les respostes i compartir un calendari (utilitzant un servidor de treball en grup, o simplement, un fitxer compartit en la xarxa). El &korganizer; es basa en estàndards oberts i funciona amb molts servidors de planificació de grups diferents, oferint-vos el control de la vostra informació i la llibertat per a escollir les millors solucions. </para>
 
 <para
 >El &korganizer; també és el component de calendari, de diari i de tasques pendents del &kontact;, oferint-vos una solució integrada per a les vostres necessitats de comunicació i gestió d'informació: correu electrònic, notes, gestió de contactes, lector de notícies, sincronització amb dispositius portàtils i lector de fils de notícies. Fins i tot si no l'useu des del &kontact;, el &korganizer; està incrustat amb les altres aplicacions <acronym
@@ -562,7 +562,7 @@
 >Podeu exportar les vostres dades com un fitxer iCalendar o vCalendar. Aquests fitxers estan acceptats per la majoria de les aplicacions de planificació. </para>
 
 <para
->En aquest capítol, explicarem com gestionar el vostre calendari, utilitzar els recursos, les accions importa i exporta, i obtenir l'esquema amb les novetats.</para>
+>En aquest capítol explicarem com gestionar els vostres recursos de calendari així com utilitzar les accions importa i exporta.</para>
 
 <sect1 id="managing-resources">
 <title
@@ -807,9 +807,6 @@
 
 <para
 >Un bon moment per a fer-ho fora en rebre un vCalendar amb unes quantes entrades mitjançant correu electrònic, per exemple, o quan penseu importar el vostre calendari des d'una altra aplicació. En l'últim cas, el primer a fer seria utilitzar aquesta aplicació per a exportar les dades de calendari en un dels anteriors formats, o utilitzar una eina per a convertir des del format natiu de l'aplicació.</para>
-
-<!--Get Hot New Stuff
-store.kde.org KOrganizer Calendars-->
 </sect2>
 
 <sect2 id="managing-export">
@@ -891,61 +888,7 @@ store.kde.org KOrganizer Calendars-->
 >. </para>
 
 </sect2>
-
 </sect1>
-<!-- only import ??-->
-<sect1 id="managing-get-hot-new-stuff">
-<title
->Publicar i descarregar utilitzant «Obtén les novetats»</title>
-
-<!--para
->If you have a calendar containing events of public interest, such as
-a conference or championship schedule, you can upload it (or check if there
-is something worth downloading) using the
-<ulink url="http://ghns.berlios.de/"
->get hot new stuff framework</ulink
->.
-</para-->
-
-<para
->Per a obrir el diàleg <guilabel
->Obtén les novetats</guilabel
->, el qual ofereix una llista de calendaris per a descarregar, escolliu l'element de menú <menuchoice
-><guimenu
->Fitxer</guimenu
-><guisubmenu
->Importa</guisubmenu
-><guimenuitem
->Obtén les novetats...</guimenuitem
-></menuchoice
->. En seleccionar un dels calendaris, apareixerà un diàleg amb la llista dels esdeveniments dels calendaris. Per a fusionar els esdeveniments que es mostren amb els del recurs predeterminat, premeu <guilabel
->Fusiona</guilabel
->.</para>
-
-<!--para>
-To open the <guilabel
->Upload Hot New Stuff</guilabel
-> dialog, which allow you
-to export calendars containing events which may be useful to other people, such
-as a conference program, a list of holidays, special events, &etc;,
-choose the <menuchoice
-><guimenu
->File</guimenu
-><guisubmenu
->Export</guisubmenu>
-<guimenuitem
->Upload Hot New Stuff...</guimenuitem
-></menuchoice
->.</para>
-
-<para
->Before uploading the events, make sure you have
-<link linkend="filters-view"
->filtered out</link
-> all unrelated data.</para-->
-
-</sect1>
-
 </chapter>
 
 <chapter id="chapter-views-and-filters"
@@ -4066,27 +4009,6 @@ format="PNG"/></imageobject
 </listitem>
 </varlistentry>
 
-<varlistentry id="menu-file-import-ghns">
-<term
-><menuchoice
-><guimenu
->Fitxer</guimenu
-> <guisubmenu
->Importa</guisubmenu
-> <guimenuitem
->Obtén les novetats...</guimenuitem
-> </menuchoice
-></term>
-<listitem
-><para
->Aquesta acció obre el diàleg <guilabel
->Obtén les novetats</guilabel
->, el qual us oferirà una llista amb els calendaris que podeu descarregar. Aquests esdeveniments es poden afegir al vostre calendari.</para>
-<para
->Per a més informació sobre aquesta acció, si us plau, consulteu <xref linkend="managing-get-hot-new-stuff"/>.</para>
-</listitem>
-</varlistentry>
-
 <varlistentry id="menu-file-export-icalendar">
 <term
 ><menuchoice
@@ -4105,31 +4027,6 @@ format="PNG"/></imageobject
 >Per a més informació sobre aquesta acció, si us plau, consulteu <xref linkend="managing-export"/>.</para>
 </listitem>
 </varlistentry>
-
-<!--not in 4.6.0
-varlistentry id="menu-file-export-ghns">
-<term
-><menuchoice>
-<guimenu
->File</guimenu>
-<guisubmenu
->Export</guisubmenu>
-<guimenuitem
->Upload Hot New Stuff...</guimenuitem>
-</menuchoice
-></term>
-<listitem
-><para
->This action will open the <guilabel
->Upload Hot New Stuff</guilabel>
-dialog, which allow you to export calendars containing events which may be
-useful to other people, such as a conference program, a list of holidays,
-special events, &etc;</para>
-<para
->For more information about this action, please refer to
-<xref linkend="managing-get-hot-new-stuff"/>.</para>
-</listitem>
-</varlistentry-->
 
 <varlistentry id="menu-file-archive-old">
 <term

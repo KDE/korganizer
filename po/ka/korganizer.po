@@ -7,7 +7,7 @@ msgid ""
 msgstr ""
 "Project-Id-Version: korganizer\n"
 "Report-Msgid-Bugs-To: https://bugs.kde.org\n"
-"POT-Creation-Date: 2025-05-23 00:43+0000\n"
+"POT-Creation-Date: 2025-05-24 00:43+0000\n"
 "PO-Revision-Date: 2025-05-07 05:12+0200\n"
 "Last-Translator: Temuri Doghonadze <temuri.doghonadze@gmail.com>\n"
 "Language-Team: Georgian <kde-i18n-doc@kde.org>\n"
@@ -1134,14 +1134,14 @@ msgstr ""
 "ხედის მორგება."
 
 #: actionmanager.cpp:609 actionmanager.cpp:1298 actionmanager.cpp:1340
-#: koeventpopupmenu.cpp:41
+#: koeventpopupmenu.cpp:42
 #, kde-format
 msgctxt "@action:inmenu"
 msgid "&Show"
 msgstr "&ჩვენება"
 
 #: actionmanager.cpp:613 actionmanager.cpp:1301 actionmanager.cpp:1341
-#: koeventpopupmenu.cpp:43
+#: koeventpopupmenu.cpp:44
 #, kde-format
 msgctxt "@action:inmenu"
 msgid "&Edit…"
@@ -2514,85 +2514,101 @@ msgstr "&დამატება"
 msgid "&Cancel"
 msgstr "&გაუქმება"
 
-#: koeventpopupmenu.cpp:45
+#: koeventpopupmenu.cpp:46
 #, kde-format
 msgctxt "@action:inmenu delete this incidence"
 msgid "&Delete"
 msgstr "&წაშლა"
 
-#: koeventpopupmenu.cpp:49
+#: koeventpopupmenu.cpp:50
 #, kde-format
 msgctxt "@action:inmenu"
 msgid "&Print…"
 msgstr "&ბეჭდვა…"
 
-#: koeventpopupmenu.cpp:51
+#: koeventpopupmenu.cpp:52
 #, kde-format
 msgctxt "@action:inmenu"
 msgid "Print Previe&w…"
 msgstr "&დასაბეჭდის მინიატურა…"
 
-#: koeventpopupmenu.cpp:72
+#: koeventpopupmenu.cpp:73
 #, kde-format
 msgctxt "@action:inmenu cut this incidence"
 msgid "C&ut"
 msgstr "&ამოჭრა"
 
-#: koeventpopupmenu.cpp:74
+#: koeventpopupmenu.cpp:75
 #, kde-format
 msgctxt "@action:inmenu copy this incidence"
 msgid "&Copy"
 msgstr "&კოპირება"
 
-#: koeventpopupmenu.cpp:75
+#: koeventpopupmenu.cpp:76
 #, kde-format
 msgctxt "@action:inmenu"
 msgid "&Paste"
 msgstr "&ჩასმა"
 
-#: koeventpopupmenu.cpp:83
+#: koeventpopupmenu.cpp:84 koeventpopupmenu.cpp:104
+#, fuzzy, kde-format
+#| msgctxt "@action:inmenu"
+#| msgid "New Event…"
+msgctxt "@action:inmenu"
+msgid "New Event"
+msgstr "ახალი მოვლენა…"
+
+#: koeventpopupmenu.cpp:89 koeventpopupmenu.cpp:101
+#, fuzzy, kde-format
+#| msgctxt "@action:inmenu"
+#| msgid "New To-do…"
+msgctxt "@action:inmenu"
+msgid "New To-do"
+msgstr "ახალი განრიგი…"
+
+#: koeventpopupmenu.cpp:92
 #, kde-format
 msgctxt "@action:inmenu"
 msgid "Create To-do from Event"
 msgstr "მოვლენიდან გასაკეთებლის შექმნა"
 
-#: koeventpopupmenu.cpp:92
-#, kde-format
-msgctxt "@action:inmenu"
-msgid "Togg&le To-do Completed"
-msgstr "გასაკეთებლის &დასრულების გადართვა"
-
-#: koeventpopupmenu.cpp:97
+#: koeventpopupmenu.cpp:109
 #, kde-format
 msgctxt "@action:inmenu"
 msgid "Create Event from To-do"
 msgstr "გასაკეთებლიდან მოვლენის შექმნა"
 
-#: koeventpopupmenu.cpp:108
+#: koeventpopupmenu.cpp:115
+#, kde-format
+msgctxt "@action:inmenu"
+msgid "Togg&le To-do Completed"
+msgstr "გასაკეთებლის &დასრულების გადართვა"
+
+#: koeventpopupmenu.cpp:125
 #, kde-format
 msgctxt "@action:inmenu"
 msgid "&Toggle Reminder"
 msgstr "შემხსენებლის &გადართვა"
 
-#: koeventpopupmenu.cpp:115
+#: koeventpopupmenu.cpp:132
 #, kde-format
 msgctxt "@action:inmenu"
 msgid "&Dissociate From Recurrence…"
 msgstr "&გამეორებიდან ამოღება…"
 
-#: koeventpopupmenu.cpp:123
+#: koeventpopupmenu.cpp:140
 #, kde-format
 msgctxt "@action:inmenu"
 msgid "Send as iCalendar…"
 msgstr "გაგზავნა, როგორც iCalendar-ის ფაილი…"
 
-#: koeventpopupmenu.cpp:173
+#: koeventpopupmenu.cpp:190
 #, kde-format
 msgctxt "@action:inmenu"
 msgid "&Toggle Reminder Off"
 msgstr "შემხსენებლის გადართვა &გამორთ"
 
-#: koeventpopupmenu.cpp:174
+#: koeventpopupmenu.cpp:191
 #, kde-format
 msgctxt "@action:inmenu"
 msgid "&Toggle Reminder On"

@@ -15,7 +15,7 @@ msgid ""
 msgstr ""
 "Project-Id-Version: korganizer\n"
 "Report-Msgid-Bugs-To: https://bugs.kde.org\n"
-"POT-Creation-Date: 2025-05-23 00:43+0000\n"
+"POT-Creation-Date: 2025-05-24 00:43+0000\n"
 "PO-Revision-Date: 2002-11-09 12:52+0200\n"
 "Last-Translator: Thelma Lungcuzo <thelma@translate.org.za>\n"
 "Language-Team: Xhosa <xhosa@translate.org.za>\n"
@@ -1117,7 +1117,7 @@ msgid ""
 msgstr ""
 
 #: actionmanager.cpp:609 actionmanager.cpp:1298 actionmanager.cpp:1340
-#: koeventpopupmenu.cpp:41
+#: koeventpopupmenu.cpp:42
 #, fuzzy, kde-format
 #| msgid "&Show"
 msgctxt "@action:inmenu"
@@ -1125,7 +1125,7 @@ msgid "&Show"
 msgstr "&Bonisa"
 
 #: actionmanager.cpp:613 actionmanager.cpp:1301 actionmanager.cpp:1341
-#: koeventpopupmenu.cpp:43
+#: koeventpopupmenu.cpp:44
 #, fuzzy, kde-format
 msgctxt "@action:inmenu"
 msgid "&Edit…"
@@ -2445,49 +2445,67 @@ msgstr "D&ibanisa"
 msgid "&Cancel"
 msgstr ""
 
-#: koeventpopupmenu.cpp:45
+#: koeventpopupmenu.cpp:46
 #, fuzzy, kde-format
 msgctxt "@action:inmenu delete this incidence"
 msgid "&Delete"
 msgstr "Cima..."
 
-#: koeventpopupmenu.cpp:49
+#: koeventpopupmenu.cpp:50
 #, fuzzy, kde-format
 msgctxt "@action:inmenu"
 msgid "&Print…"
 msgstr "i Khalenda"
 
-#: koeventpopupmenu.cpp:51
+#: koeventpopupmenu.cpp:52
 #, fuzzy, kde-format
 msgctxt "@action:inmenu"
 msgid "Print Previe&w…"
 msgstr "&Hlela..."
 
-#: koeventpopupmenu.cpp:72
+#: koeventpopupmenu.cpp:73
 #, kde-format
 msgctxt "@action:inmenu cut this incidence"
 msgid "C&ut"
 msgstr ""
 
-#: koeventpopupmenu.cpp:74
+#: koeventpopupmenu.cpp:75
 #, kde-format
 msgctxt "@action:inmenu copy this incidence"
 msgid "&Copy"
 msgstr ""
 
-#: koeventpopupmenu.cpp:75
+#: koeventpopupmenu.cpp:76
 #, fuzzy, kde-format
 msgctxt "@action:inmenu"
 msgid "&Paste"
 msgstr "Lindeleka:"
 
-#: koeventpopupmenu.cpp:83
+#: koeventpopupmenu.cpp:84 koeventpopupmenu.cpp:104
+#, fuzzy, kde-format
+msgctxt "@action:inmenu"
+msgid "New Event"
+msgstr "Isi&ganeko Esitsha..."
+
+#: koeventpopupmenu.cpp:89 koeventpopupmenu.cpp:101
+#, fuzzy, kde-format
+msgctxt "@action:inmenu"
+msgid "New To-do"
+msgstr "Ukwe-Nza Okutsha"
+
+#: koeventpopupmenu.cpp:92
 #, fuzzy, kde-format
 msgctxt "@action:inmenu"
 msgid "Create To-do from Event"
 msgstr "Cima Ukwe-Nza"
 
-#: koeventpopupmenu.cpp:92
+#: koeventpopupmenu.cpp:109
+#, fuzzy, kde-format
+msgctxt "@action:inmenu"
+msgid "Create Event from To-do"
+msgstr "Cima Ukwe-Nza"
+
+#: koeventpopupmenu.cpp:115
 #, fuzzy, kde-format
 msgctxt "@action:inmenu"
 msgid "Togg&le To-do Completed"
@@ -2495,37 +2513,31 @@ msgstr ""
 "cima ngokugqityiwe Ku-Dos\n"
 "Hlenga-hlengisa Okugqityiweyo"
 
-#: koeventpopupmenu.cpp:97
-#, fuzzy, kde-format
-msgctxt "@action:inmenu"
-msgid "Create Event from To-do"
-msgstr "Cima Ukwe-Nza"
-
-#: koeventpopupmenu.cpp:108
+#: koeventpopupmenu.cpp:125
 #, fuzzy, kde-format
 msgctxt "@action:inmenu"
 msgid "&Toggle Reminder"
 msgstr "Umkhumbuzi:"
 
-#: koeventpopupmenu.cpp:115
+#: koeventpopupmenu.cpp:132
 #, fuzzy, kde-format
 msgctxt "@action:inmenu"
 msgid "&Dissociate From Recurrence…"
 msgstr "Dwelisa iziganeko zemini yangoku"
 
-#: koeventpopupmenu.cpp:123
+#: koeventpopupmenu.cpp:140
 #, fuzzy, kde-format
 msgctxt "@action:inmenu"
 msgid "Send as iCalendar…"
 msgstr "iKhalenda..."
 
-#: koeventpopupmenu.cpp:173
+#: koeventpopupmenu.cpp:190
 #, fuzzy, kde-format
 msgctxt "@action:inmenu"
 msgid "&Toggle Reminder Off"
 msgstr "Umkhumbuzi:"
 
-#: koeventpopupmenu.cpp:174
+#: koeventpopupmenu.cpp:191
 #, fuzzy, kde-format
 msgctxt "@action:inmenu"
 msgid "&Toggle Reminder On"

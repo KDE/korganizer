@@ -219,7 +219,7 @@
 >)intuitivo y fácil de usar. Puede planificar citas, eventos, crear tareas pendientes y escribir entradas del diario. &korganizer; recordará sus tareas pendientes, anotará sus ideas, experiencias y reflexiones y le ayudará a mantener su planificación.</para>
 
 <para
->Pero &korganizer; no solo se ocupa de su calendario personal. También puede ayudarle a interactuar con sus colegas y con sus amigos. Con &korganizer; puede invitar a un evento a cualquiera que disponga de una dirección de correo y procesar las respuestas, compartir un calendario (empleando un servidor de trabajo en grupo o, simplemente, un archivo compartido en la red) y compartir eventos (&eg; la planificación de un campeonato o de un congreso), usando la infraestructura para conseguir las novedades. &korganizer; se basa en estándares abiertos y funciona con muchos servidores de planificación de grupos diferentes, dándole el control de su información y la libertad para elegir las mejores soluciones. </para>
+>Pero &korganizer; no solo se ocupa de su calendario personal. También puede ayudarle a interactuar con sus colegas y con sus amigos. Con &korganizer; puede invitar a un evento a cualquiera que disponga de una dirección de correo y procesar las respuestas y compartir un calendario (empleando un servidor de trabajo en grupo o, simplemente, un archivo compartido en la red). &korganizer; se basa en estándares abiertos y funciona con muchos servidores de planificación de grupos diferentes, dándole el control de su información y la libertad para elegir las mejores soluciones. </para>
 
 <para
 >&korganizer; también es el componente de calendario, de diario y de tareas pendientes de &kontact;, ofreciéndole una solución integrada para sus necesidades de comunicación y de gestión de información: correo, notas, gestión de contactos, lector de noticias y lector de fuentes de noticias. Incluso si no lo usa desde &kontact;, &korganizer; está integrado con las otras aplicaciones de &kde; <acronym
@@ -590,7 +590,7 @@
 >Puede exportar sus datos como un archivo iCalendar o vCalendar. Estos archivos los admiten la mayor parte de las aplicaciones de planificación. </para>
 
 <para
->En este capítulo explicaremos cómo gestionar su calendario, usar los recursos, acciones de importar y exportar y obtener el esquema con las novedades.</para>
+>En este capítulo explicaremos cómo puede gestionar sus recursos de calendario, así como el uso de las acciones de importar y exportar.</para>
 
 <sect1 id="managing-resources">
 <title
@@ -835,9 +835,6 @@
 
 <para
 >Un buen momento para hacer esto sería cuando recibiese un vCalendar con unas cuantas entradas mediante correo, por ejemplo, o cuando planee importar su calendario desde otra aplicación. En el último caso, lo primero que debe hacer es usar esa aplicación para exportar los datos del calendario en uno de los formatos anteriores, o usar una herramienta para convertir desde el formato nativo de la aplicación.</para>
-
-<!--Get Hot New Stuff
-store.kde.org KOrganizer Calendars-->
 </sect2>
 
 <sect2 id="managing-export">
@@ -921,61 +918,7 @@ store.kde.org KOrganizer Calendars-->
 > en su lugar. </para>
 
 </sect2>
-
 </sect1>
-<!-- only import ??-->
-<sect1 id="managing-get-hot-new-stuff">
-<title
->Descarga usando la obtención de novedades</title>
-
-<!--para
->If you have a calendar containing events of public interest, such as
-a conference or championship schedule, you can upload it (or check if there
-is something worth downloading) using the
-<ulink url="http://ghns.berlios.de/"
->get hot new stuff framework</ulink
->.
-</para-->
-
-<para
->Para abrir el diálogo <guilabel
->Obtener las novedades</guilabel
->, que ofrece una lista de calendarios para descargar, elija la opción <menuchoice
-><guimenu
->Archivo</guimenu
-><guisubmenu
->Importar</guisubmenu
-> <guimenuitem
->Obtener novedades…</guimenuitem
-></menuchoice
-> del menú. Al seleccionar uno de los calendarios, aparece un diálogo con la lista de los eventos de los calendarios. Para combinar los eventos que se muestran con los del recurso predeterminado, pulse <guilabel
->Combinar</guilabel
->.</para>
-
-<!--para>
-To open the <guilabel
->Upload Hot New Stuff</guilabel
-> dialog, which allow you
-to export calendars containing events which may be useful to other people, such
-as a conference program, a list of holidays, special events, &etc;,
-choose the <menuchoice
-><guimenu
->File</guimenu
-><guisubmenu
->Export</guisubmenu>
-<guimenuitem
->Upload Hot New Stuff...</guimenuitem
-></menuchoice
->.</para>
-
-<para
->Before uploading the events, make sure you have
-<link linkend="filters-view"
->filtered out</link
-> all unrelated data.</para-->
-
-</sect1>
-
 </chapter>
 
 <chapter id="chapter-views-and-filters"
@@ -4134,27 +4077,6 @@ format="PNG"/></imageobject
 </listitem>
 </varlistentry>
 
-<varlistentry id="menu-file-import-ghns">
-<term
-><menuchoice
-><guimenu
->Archivo</guimenu
-> <guisubmenu
->Importar</guisubmenu
-> <guimenuitem
->Obtener novedades…</guimenuitem
-> </menuchoice
-></term>
-<listitem
-><para
->Esta acción abre el diálogo<guilabel
->Obtener novedades</guilabel
->, que le ofrece una lista con los calendarios que puede descargar. Estos eventos se pueden añadir a su calendario.</para>
-<para
->Si quiere más información sobre esta acción, puede dirigirse a <xref linkend="managing-get-hot-new-stuff"/>.</para>
-</listitem>
-</varlistentry>
-
 <varlistentry id="menu-file-export-icalendar">
 <term
 ><menuchoice
@@ -4173,31 +4095,6 @@ format="PNG"/></imageobject
 >Si quiere más información sobre esta acción, puede dirigirse a <xref linkend="managing-export"/>.</para>
 </listitem>
 </varlistentry>
-
-<!--not in 4.6.0
-varlistentry id="menu-file-export-ghns">
-<term
-><menuchoice>
-<guimenu
->File</guimenu>
-<guisubmenu
->Export</guisubmenu>
-<guimenuitem
->Upload Hot New Stuff...</guimenuitem>
-</menuchoice
-></term>
-<listitem
-><para
->This action will open the <guilabel
->Upload Hot New Stuff</guilabel>
-dialog, which allow you to export calendars containing events which may be
-useful to other people, such as a conference program, a list of holidays,
-special events, &etc;</para>
-<para
->For more information about this action, please refer to
-<xref linkend="managing-get-hot-new-stuff"/>.</para>
-</listitem>
-</varlistentry-->
 
 <varlistentry id="menu-file-archive-old">
 <term

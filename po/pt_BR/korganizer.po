@@ -18,7 +18,7 @@ msgid ""
 msgstr ""
 "Project-Id-Version: korganizer\n"
 "Report-Msgid-Bugs-To: https://bugs.kde.org\n"
-"POT-Creation-Date: 2025-05-23 00:43+0000\n"
+"POT-Creation-Date: 2025-05-24 00:43+0000\n"
 "PO-Revision-Date: 2025-02-06 17:41-0300\n"
 "Last-Translator: Geraldo Simiao <geraldosimiao@fedoraproject.org>\n"
 "Language-Team: Brazilian Portuguese <kde-i18n-pt_BR@kde.org>\n"
@@ -1206,14 +1206,14 @@ msgid ""
 msgstr ""
 
 #: actionmanager.cpp:609 actionmanager.cpp:1298 actionmanager.cpp:1340
-#: koeventpopupmenu.cpp:41
+#: koeventpopupmenu.cpp:42
 #, kde-format
 msgctxt "@action:inmenu"
 msgid "&Show"
 msgstr "&Mostrar"
 
 #: actionmanager.cpp:613 actionmanager.cpp:1301 actionmanager.cpp:1341
-#: koeventpopupmenu.cpp:43
+#: koeventpopupmenu.cpp:44
 #, fuzzy, kde-format
 #| msgid "&Edit"
 msgctxt "@action:inmenu"
@@ -2710,13 +2710,13 @@ msgstr "&Adicionar"
 msgid "&Cancel"
 msgstr "&Cancelar"
 
-#: koeventpopupmenu.cpp:45
+#: koeventpopupmenu.cpp:46
 #, kde-format
 msgctxt "@action:inmenu delete this incidence"
 msgid "&Delete"
 msgstr "&Excluir"
 
-#: koeventpopupmenu.cpp:49
+#: koeventpopupmenu.cpp:50
 #, fuzzy, kde-format
 #| msgctxt "@action:inmenu"
 #| msgid "&Print..."
@@ -2724,7 +2724,7 @@ msgctxt "@action:inmenu"
 msgid "&Print…"
 msgstr "&Imprimir..."
 
-#: koeventpopupmenu.cpp:51
+#: koeventpopupmenu.cpp:52
 #, fuzzy, kde-format
 #| msgctxt "@action:inmenu"
 #| msgid "Print Previe&w..."
@@ -2732,49 +2732,65 @@ msgctxt "@action:inmenu"
 msgid "Print Previe&w…"
 msgstr "Visuali&zar impressão..."
 
-#: koeventpopupmenu.cpp:72
+#: koeventpopupmenu.cpp:73
 #, kde-format
 msgctxt "@action:inmenu cut this incidence"
 msgid "C&ut"
 msgstr "Recor&tar"
 
-#: koeventpopupmenu.cpp:74
+#: koeventpopupmenu.cpp:75
 #, kde-format
 msgctxt "@action:inmenu copy this incidence"
 msgid "&Copy"
 msgstr "&Copiar"
 
-#: koeventpopupmenu.cpp:75
+#: koeventpopupmenu.cpp:76
 #, kde-format
 msgctxt "@action:inmenu"
 msgid "&Paste"
 msgstr "Co&lar"
 
-#: koeventpopupmenu.cpp:83
+#: koeventpopupmenu.cpp:84 koeventpopupmenu.cpp:104
+#, fuzzy, kde-format
+#| msgctxt "@action:inmenu"
+#| msgid "New Event..."
+msgctxt "@action:inmenu"
+msgid "New Event"
+msgstr "Novo evento..."
+
+#: koeventpopupmenu.cpp:89 koeventpopupmenu.cpp:101
+#, fuzzy, kde-format
+#| msgctxt "@action:inmenu"
+#| msgid "New To-do..."
+msgctxt "@action:inmenu"
+msgid "New To-do"
+msgstr "Nova tarefa..."
+
+#: koeventpopupmenu.cpp:92
 #, kde-format
 msgctxt "@action:inmenu"
 msgid "Create To-do from Event"
 msgstr "Criar tarefa a partir do evento"
 
-#: koeventpopupmenu.cpp:92
-#, kde-format
-msgctxt "@action:inmenu"
-msgid "Togg&le To-do Completed"
-msgstr "Ativar/Desativar tarefa conc&luída"
-
-#: koeventpopupmenu.cpp:97
+#: koeventpopupmenu.cpp:109
 #, kde-format
 msgctxt "@action:inmenu"
 msgid "Create Event from To-do"
 msgstr "Criar evento a partir da tarefa"
 
-#: koeventpopupmenu.cpp:108
+#: koeventpopupmenu.cpp:115
+#, kde-format
+msgctxt "@action:inmenu"
+msgid "Togg&le To-do Completed"
+msgstr "Ativar/Desativar tarefa conc&luída"
+
+#: koeventpopupmenu.cpp:125
 #, kde-format
 msgctxt "@action:inmenu"
 msgid "&Toggle Reminder"
 msgstr "A&tivar/Desativar lembrete"
 
-#: koeventpopupmenu.cpp:115
+#: koeventpopupmenu.cpp:132
 #, fuzzy, kde-format
 #| msgctxt "@action:inmenu"
 #| msgid "&Dissociate From Recurrence..."
@@ -2782,7 +2798,7 @@ msgctxt "@action:inmenu"
 msgid "&Dissociate From Recurrence…"
 msgstr "&Desassociar da recorrência..."
 
-#: koeventpopupmenu.cpp:123
+#: koeventpopupmenu.cpp:140
 #, fuzzy, kde-format
 #| msgctxt "@action:inmenu"
 #| msgid "Send as iCalendar..."
@@ -2790,13 +2806,13 @@ msgctxt "@action:inmenu"
 msgid "Send as iCalendar…"
 msgstr "Enviar como iCalendar..."
 
-#: koeventpopupmenu.cpp:173
+#: koeventpopupmenu.cpp:190
 #, kde-format
 msgctxt "@action:inmenu"
 msgid "&Toggle Reminder Off"
 msgstr "&Desativar lembrete"
 
-#: koeventpopupmenu.cpp:174
+#: koeventpopupmenu.cpp:191
 #, kde-format
 msgctxt "@action:inmenu"
 msgid "&Toggle Reminder On"

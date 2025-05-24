@@ -7,7 +7,7 @@ msgid ""
 msgstr ""
 "Project-Id-Version: korganizer\n"
 "Report-Msgid-Bugs-To: https://bugs.kde.org\n"
-"POT-Creation-Date: 2025-05-23 00:43+0000\n"
+"POT-Creation-Date: 2025-05-24 00:43+0000\n"
 "PO-Revision-Date: 2010-09-24 16:28+0530\n"
 "Last-Translator: Rajesh Ranjan <rajesh672@gmail.com>\n"
 "Language-Team: Maithili <bhashaghar@googlegroups.com>\n"
@@ -1150,14 +1150,14 @@ msgid ""
 msgstr ""
 
 #: actionmanager.cpp:609 actionmanager.cpp:1298 actionmanager.cpp:1340
-#: koeventpopupmenu.cpp:41
+#: koeventpopupmenu.cpp:42
 #, kde-format
 msgctxt "@action:inmenu"
 msgid "&Show"
 msgstr ""
 
 #: actionmanager.cpp:613 actionmanager.cpp:1301 actionmanager.cpp:1341
-#: koeventpopupmenu.cpp:43
+#: koeventpopupmenu.cpp:44
 #, fuzzy, kde-format
 #| msgid "&Edit"
 msgctxt "@action:inmenu"
@@ -2496,55 +2496,77 @@ msgstr "जोड़ू (&A)"
 msgid "&Cancel"
 msgstr "रद्द करू (&C)"
 
-#: koeventpopupmenu.cpp:45
+#: koeventpopupmenu.cpp:46
 #, fuzzy, kde-format
 #| msgid "&Delete"
 msgctxt "@action:inmenu delete this incidence"
 msgid "&Delete"
 msgstr "मेटाबू (&D)"
 
-#: koeventpopupmenu.cpp:49
+#: koeventpopupmenu.cpp:50
 #, fuzzy, kde-format
 #| msgid "&Print"
 msgctxt "@action:inmenu"
 msgid "&Print…"
 msgstr "छपाइ(&P)"
 
-#: koeventpopupmenu.cpp:51
+#: koeventpopupmenu.cpp:52
 #, fuzzy, kde-format
 #| msgid "&Print..."
 msgctxt "@action:inmenu"
 msgid "Print Previe&w…"
 msgstr "छापू (&P)..."
 
-#: koeventpopupmenu.cpp:72
+#: koeventpopupmenu.cpp:73
 #, kde-format
 msgctxt "@action:inmenu cut this incidence"
 msgid "C&ut"
 msgstr ""
 
-#: koeventpopupmenu.cpp:74
+#: koeventpopupmenu.cpp:75
 #, fuzzy, kde-format
 #| msgid "&Copy"
 msgctxt "@action:inmenu copy this incidence"
 msgid "&Copy"
 msgstr "कोपी करू (&C)"
 
-#: koeventpopupmenu.cpp:75
+#: koeventpopupmenu.cpp:76
 #, fuzzy, kde-format
 #| msgid "&Paste"
 msgctxt "@action:inmenu"
 msgid "&Paste"
 msgstr "साटू (&P)"
 
-#: koeventpopupmenu.cpp:83
+#: koeventpopupmenu.cpp:84 koeventpopupmenu.cpp:104
+#, fuzzy, kde-format
+#| msgctxt "@title:column event description"
+#| msgid "Event"
+msgctxt "@action:inmenu"
+msgid "New Event"
+msgstr "घटना"
+
+#: koeventpopupmenu.cpp:89 koeventpopupmenu.cpp:101
+#, fuzzy, kde-format
+#| msgid "Today"
+msgctxt "@action:inmenu"
+msgid "New To-do"
+msgstr "आइ"
+
+#: koeventpopupmenu.cpp:92
 #, fuzzy, kde-format
 #| msgid "Delete Page"
 msgctxt "@action:inmenu"
 msgid "Create To-do from Event"
 msgstr "पृष्ट मिटाउ"
 
-#: koeventpopupmenu.cpp:92
+#: koeventpopupmenu.cpp:109
+#, fuzzy, kde-format
+#| msgid "Delete Page"
+msgctxt "@action:inmenu"
+msgid "Create Event from To-do"
+msgstr "पृष्ट मिटाउ"
+
+#: koeventpopupmenu.cpp:115
 #, fuzzy, kde-format
 #| msgctxt "@title:column to-do percent completed"
 #| msgid "Completed"
@@ -2552,41 +2574,34 @@ msgctxt "@action:inmenu"
 msgid "Togg&le To-do Completed"
 msgstr "समाप्त"
 
-#: koeventpopupmenu.cpp:97
-#, fuzzy, kde-format
-#| msgid "Delete Page"
-msgctxt "@action:inmenu"
-msgid "Create Event from To-do"
-msgstr "पृष्ट मिटाउ"
-
-#: koeventpopupmenu.cpp:108
+#: koeventpopupmenu.cpp:125
 #, fuzzy, kde-format
 #| msgid "Reminder"
 msgctxt "@action:inmenu"
 msgid "&Toggle Reminder"
 msgstr "याद देलाबैबला"
 
-#: koeventpopupmenu.cpp:115
+#: koeventpopupmenu.cpp:132
 #, kde-format
 msgctxt "@action:inmenu"
 msgid "&Dissociate From Recurrence…"
 msgstr ""
 
-#: koeventpopupmenu.cpp:123
+#: koeventpopupmenu.cpp:140
 #, fuzzy, kde-format
 #| msgid "Calendar"
 msgctxt "@action:inmenu"
 msgid "Send as iCalendar…"
 msgstr "कैलेंडर"
 
-#: koeventpopupmenu.cpp:173
+#: koeventpopupmenu.cpp:190
 #, fuzzy, kde-format
 #| msgid "Reminder"
 msgctxt "@action:inmenu"
 msgid "&Toggle Reminder Off"
 msgstr "याद देलाबैबला"
 
-#: koeventpopupmenu.cpp:174
+#: koeventpopupmenu.cpp:191
 #, fuzzy, kde-format
 #| msgid "Reminder"
 msgctxt "@action:inmenu"

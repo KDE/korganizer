@@ -205,7 +205,7 @@
 >). За його допомогою ви можете планувати зустрічі, події, створювати завдання і записи у журналі. &korganizer; нагадає вам про заплановані задачі, збереже ваші записи про події, враження і міркування, а також допоможе вам у дотриманні вашого розкладу.</para>
 
 <para
->Але &korganizer; призначено не лише бути вашим календарем, програма може допомогти вам співпрацювати з вашими колегами і друзями. За допомогою &korganizer; ви зможете запрошувати будь-кого з відомою вам адресою електронної пошти на подію і обробити відповіді, спільно використовувати календар (за допомогою сервера групової роботи або простого файла у мережі), створювати спільні події (наприклад розклад чемпіонату або конференції) за допомогою найсучасніших засобів роботи. &korganizer; побудовано на відкритих стандартах і працювати з багатьма різними серверами групового планування, ця програма надасть вам змогу керувати вашими даними і свободу обирати найкращі інструменти розв'язання проблем. </para>
+>Але &korganizer; призначено не лише бути вашим календарем, програма може допомогти вам співпрацювати з вашими колегами і друзями. За допомогою &korganizer; ви зможете запрошувати будь-кого з відомою вам адресою електронної пошти на подію і обробити відповіді і спільно використовувати календар (за допомогою сервера групової роботи або простого файла у мережі). &korganizer; побудовано на відкритих стандартах і працювати з багатьма різними серверами групового планування, ця програма надасть вам змогу керувати вашими даними і свободу обирати найкращі інструменти розв'язання проблем. </para>
 
 <para
 >Крім того, &korganizer; є календарем, журналом і компонентом завдань &kontact;, програма пропонує вам інтегроване вирішення проблем обміну і керування інформацією: електронна пошта, нотатки, керування контактами, читання новин та читання подач новин. Навіть, якщо ви не використовуєте програму у межах &kontact;, &korganizer; інтегровано з іншими програмами керування особистими даними (<acronym
@@ -576,7 +576,7 @@
 >Ви можете експортувати ваші дані як файл у форматах iCalendar або vCalendar. Файли у таких форматах підтримуються більшість програм для роботи з розкладом. </para>
 
 <para
->У цій главі ми розглянемо способи керування вашим календарем, використання ресурсів, дії з імпорту і експорту та схему отримання нових даних.</para>
+>У цій главі ми також розглянемо способи керування вашим календарем за допомогою дій з імпортування і експортування.</para>
 
 <sect1 id="managing-resources">
 <title
@@ -822,9 +822,6 @@
 
 <para
 >Гарним прикладом ситуації, коли потрібен імпорт, є отримання вами файла vCalendar з декількома записами, наприклад електронною поштою або імпорт вашого календаря з іншої програми. У останньому випадку перше, що вам слід зробити, це експортувати дані календаря у один з форматів, згаданих вище, за допомогою програми походження файла або скористатися інструментом, який може перетворювати файли програми походження до одного з форматів, які розуміє &korganizer;.</para>
-
-<!--Get Hot New Stuff
-store.kde.org KOrganizer Calendars-->
 </sect2>
 
 <sect2 id="managing-export">
@@ -910,61 +907,7 @@ store.kde.org KOrganizer Calendars-->
 > замість вилучення. </para>
 
 </sect2>
-
 </sect1>
-<!-- only import ??-->
-<sect1 id="managing-get-hot-new-stuff">
-<title
->Отримання за допомогою інструменту отримання нових матеріалів</title>
-
-<!--para
->If you have a calendar containing events of public interest, such as
-a conference or championship schedule, you can upload it (or check if there
-is something worth downloading) using the
-<ulink url="http://ghns.berlios.de/"
->get hot new stuff framework</ulink
->.
-</para-->
-
-<para
->Щоб відкрити діалогове вікно <guilabel
->Отримати нові матеріали</guilabel
->, у якому програма запропонує вам список календарів, які ви можете отримати, скористайтеся пунктом меню <menuchoice
-><guimenu
->Файл</guimenu
-><guisubmenu
->Імпорт</guisubmenu
-> <guimenuitem
->Отримати нові матеріали...</guimenuitem
-></menuchoice
->. Після вибору одного з календарів у цьому списку програма відкриє діалогове вікно зі списком подій з календаря. Щоб додати показані події до вашого типового ресурсу, натисніть кнопку <guilabel
->Об'єднати</guilabel
->.</para>
-
-<!--para>
-To open the <guilabel
->Upload Hot New Stuff</guilabel
-> dialog, which allow you
-to export calendars containing events which may be useful to other people, such
-as a conference program, a list of holidays, special events, &etc;,
-choose the <menuchoice
-><guimenu
->File</guimenu
-><guisubmenu
->Export</guisubmenu>
-<guimenuitem
->Upload Hot New Stuff...</guimenuitem
-></menuchoice
->.</para>
-
-<para
->Before uploading the events, make sure you have
-<link linkend="filters-view"
->filtered out</link
-> all unrelated data.</para-->
-
-</sect1>
-
 </chapter>
 
 <chapter id="chapter-views-and-filters"
@@ -4119,27 +4062,6 @@ format="PNG"/></imageobject
 </listitem>
 </varlistentry>
 
-<varlistentry id="menu-file-import-ghns">
-<term
-><menuchoice
-><guimenu
->Файл</guimenu
-> <guisubmenu
->Імпорт</guisubmenu
-> <guimenuitem
->Отримати нові матеріали...</guimenuitem
-> </menuchoice
-></term>
-<listitem
-><para
->За допомогою цього пункту меню можна відкрити діалогове вікно <guilabel
->Отримати нові матеріали</guilabel
->, у якому програма запропонує вам список календарів для отримання. Події з відповідних календарів буде додано до вашого календаря.</para>
-<para
->Докладніше про цей пункт можна дізнатися з розділу <xref linkend="managing-get-hot-new-stuff"/>.</para>
-</listitem>
-</varlistentry>
-
 <varlistentry id="menu-file-export-icalendar">
 <term
 ><menuchoice
@@ -4158,31 +4080,6 @@ format="PNG"/></imageobject
 >Докладніше про цей пункт можна дізнатися з розділу <xref linkend="managing-export"/>.</para>
 </listitem>
 </varlistentry>
-
-<!--not in 4.6.0
-varlistentry id="menu-file-export-ghns">
-<term
-><menuchoice>
-<guimenu
->File</guimenu>
-<guisubmenu
->Export</guisubmenu>
-<guimenuitem
->Upload Hot New Stuff...</guimenuitem>
-</menuchoice
-></term>
-<listitem
-><para
->This action will open the <guilabel
->Upload Hot New Stuff</guilabel>
-dialog, which allow you to export calendars containing events which may be
-useful to other people, such as a conference program, a list of holidays,
-special events, &etc;</para>
-<para
->For more information about this action, please refer to
-<xref linkend="managing-get-hot-new-stuff"/>.</para>
-</listitem>
-</varlistentry-->
 
 <varlistentry id="menu-file-archive-old">
 <term

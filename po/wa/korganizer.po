@@ -6,7 +6,7 @@ msgid ""
 msgstr ""
 "Project-Id-Version: korganizer\n"
 "Report-Msgid-Bugs-To: https://bugs.kde.org\n"
-"POT-Creation-Date: 2025-05-23 00:43+0000\n"
+"POT-Creation-Date: 2025-05-24 00:43+0000\n"
 "PO-Revision-Date: 2013-03-24 10:49+0100\n"
 "Last-Translator: Jean Cayron <jean.cayron@base.be>\n"
 "Language-Team: Walloon <linux-wa@walon.org>\n"
@@ -1233,7 +1233,7 @@ msgid ""
 msgstr ""
 
 #: actionmanager.cpp:609 actionmanager.cpp:1298 actionmanager.cpp:1340
-#: koeventpopupmenu.cpp:41
+#: koeventpopupmenu.cpp:42
 #, fuzzy, kde-format
 #| msgid "&Show"
 msgctxt "@action:inmenu"
@@ -1241,7 +1241,7 @@ msgid "&Show"
 msgstr "&Mostrer"
 
 #: actionmanager.cpp:613 actionmanager.cpp:1301 actionmanager.cpp:1341
-#: koeventpopupmenu.cpp:43
+#: koeventpopupmenu.cpp:44
 #, fuzzy, kde-format
 #| msgid "&Edit"
 msgctxt "@action:inmenu"
@@ -2690,28 +2690,28 @@ msgstr "R&adjouter"
 msgid "&Cancel"
 msgstr "&Rinoncî"
 
-#: koeventpopupmenu.cpp:45
+#: koeventpopupmenu.cpp:46
 #, fuzzy, kde-format
 #| msgid "&Delete"
 msgctxt "@action:inmenu delete this incidence"
 msgid "&Delete"
 msgstr "&Disfacer"
 
-#: koeventpopupmenu.cpp:49
+#: koeventpopupmenu.cpp:50
 #, fuzzy, kde-format
 #| msgid "&Print"
 msgctxt "@action:inmenu"
 msgid "&Print…"
 msgstr "&Rexhe"
 
-#: koeventpopupmenu.cpp:51
+#: koeventpopupmenu.cpp:52
 #, fuzzy, kde-format
 #| msgid "&Print..."
 msgctxt "@action:inmenu"
 msgid "Print Previe&w…"
 msgstr "&Rexhe"
 
-#: koeventpopupmenu.cpp:72
+#: koeventpopupmenu.cpp:73
 #, fuzzy, kde-format
 #| msgctxt "cut this event"
 #| msgid "C&ut"
@@ -2719,28 +2719,50 @@ msgctxt "@action:inmenu cut this incidence"
 msgid "C&ut"
 msgstr "Cô&per"
 
-#: koeventpopupmenu.cpp:74
+#: koeventpopupmenu.cpp:75
 #, fuzzy, kde-format
 #| msgid "&Copy"
 msgctxt "@action:inmenu copy this incidence"
 msgid "&Copy"
 msgstr "&Copyî"
 
-#: koeventpopupmenu.cpp:75
+#: koeventpopupmenu.cpp:76
 #, fuzzy, kde-format
 #| msgid "&Paste"
 msgctxt "@action:inmenu"
 msgid "&Paste"
 msgstr "Ac&laper"
 
-#: koeventpopupmenu.cpp:83
+#: koeventpopupmenu.cpp:84 koeventpopupmenu.cpp:104
+#, fuzzy, kde-format
+#| msgctxt "@title:window"
+#| msgid "New Event"
+msgctxt "@action:inmenu"
+msgid "New Event"
+msgstr "Novea evenmint"
+
+#: koeventpopupmenu.cpp:89 koeventpopupmenu.cpp:101
+#, fuzzy, kde-format
+#| msgid "New &To-do..."
+msgctxt "@action:inmenu"
+msgid "New To-do"
+msgstr "Novea &afé..."
+
+#: koeventpopupmenu.cpp:92
 #, fuzzy, kde-format
 #| msgid "Delete To-do"
 msgctxt "@action:inmenu"
 msgid "Create To-do from Event"
 msgstr "Disfacer afé"
 
-#: koeventpopupmenu.cpp:92
+#: koeventpopupmenu.cpp:109
+#, fuzzy, kde-format
+#| msgid "Create a new Event"
+msgctxt "@action:inmenu"
+msgid "Create Event from To-do"
+msgstr "Ahiver on novea evenmint"
+
+#: koeventpopupmenu.cpp:115
 #, fuzzy, kde-format
 #| msgctxt "delete completed to-dos"
 #| msgid "Pur&ge Completed"
@@ -2748,42 +2770,35 @@ msgctxt "@action:inmenu"
 msgid "Togg&le To-do Completed"
 msgstr "Netiae&dje tot fwait"
 
-#: koeventpopupmenu.cpp:97
-#, fuzzy, kde-format
-#| msgid "Create a new Event"
-msgctxt "@action:inmenu"
-msgid "Create Event from To-do"
-msgstr "Ahiver on novea evenmint"
-
-#: koeventpopupmenu.cpp:108
+#: koeventpopupmenu.cpp:125
 #, fuzzy, kde-format
 #| msgid "&Toggle Reminder"
 msgctxt "@action:inmenu"
 msgid "&Toggle Reminder"
 msgstr "(Dis)me&te rimimbreu"
 
-#: koeventpopupmenu.cpp:115
+#: koeventpopupmenu.cpp:132
 #, fuzzy, kde-format
 #| msgid "&Dissociate This Occurrence"
 msgctxt "@action:inmenu"
 msgid "&Dissociate From Recurrence…"
 msgstr "&Disassocyî ciste ocurince"
 
-#: koeventpopupmenu.cpp:123
+#: koeventpopupmenu.cpp:140
 #, fuzzy, kde-format
 #| msgid "&Send as iCalendar..."
 msgctxt "@action:inmenu"
 msgid "Send as iCalendar…"
 msgstr "E&voyî come iCalendar..."
 
-#: koeventpopupmenu.cpp:173
+#: koeventpopupmenu.cpp:190
 #, fuzzy, kde-format
 #| msgid "&Toggle Reminder"
 msgctxt "@action:inmenu"
 msgid "&Toggle Reminder Off"
 msgstr "(Dis)me&te rimimbreu"
 
-#: koeventpopupmenu.cpp:174
+#: koeventpopupmenu.cpp:191
 #, fuzzy, kde-format
 #| msgid "&Toggle Reminder"
 msgctxt "@action:inmenu"
