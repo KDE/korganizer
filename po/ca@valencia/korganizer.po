@@ -1408,7 +1408,7 @@ msgid ""
 msgstr ""
 "Segur que voleu suprimir el calendari <filename>%1</filename>?<para> "
 "<warning>Açò no es podrà desfer. Reflexioneu atentament abans de prémer el "
-"botó %2.</warning></para>"
+"botó «%2».</warning></para>"
 
 #: akonadicollectionview.cpp:767
 #, kde-format
@@ -3988,9 +3988,9 @@ msgid ""
 "Check this box to select a working week when clicking on the Date "
 "Navigator's week numbers, or uncheck it to choose the whole week."
 msgstr ""
-"Marqueu esta casella per a seleccionar una setmana laboral clicant en els "
-"números de setmana del navegador de dates, o desactiveu-la per a seleccionar "
-"la setmana sencera."
+"Marqueu esta casella per a seleccionar una setmana laboral quan es clique "
+"damunt dels números de setmana del navegador de dates, o desactiveu-la per a "
+"seleccionar la setmana sencera."
 
 #. i18n: ectx: label, entry, group (Agenda View)
 #: settings/korganizer.kcfg:125
@@ -4955,8 +4955,8 @@ msgid ""
 "given number of days are hidden."
 msgstr ""
 "Si es marca esta casella, el filtre ocultarà tots els elements de tasca "
-"pendent de la llista que hagen estat finalitzades. De manera opcional, només "
-"s'ocultaran els elements que hagen estat finalitzats fa un cert nombre de "
+"pendent de la llista que hagen sigut finalitzades. De manera opcional, només "
+"s'ocultaran els elements que hagen sigut finalitzats fa un cert nombre de "
 "dies."
 
 #. i18n: ectx: property (text), widget (QCheckBox, mCompletedCheck)
@@ -5949,8 +5949,8 @@ msgid ""
 "Click this button to scroll the display to the same approximate day of the "
 "previous year"
 msgstr ""
-"Cliqueu este botó per a desplaçar-vos aproximadament al mateix dia de l'any "
-"anterior"
+"Cliqueu damunt d'este botó per a desplaçar-vos aproximadament al mateix dia "
+"de l'any anterior"
 
 #: widgets/navigatorbar.cpp:36
 #, kde-format
@@ -5963,8 +5963,8 @@ msgid ""
 "Click this button to scroll the display to the same approximate date of the "
 "previous month"
 msgstr ""
-"Cliqueu este botó per a desplaçar-vos aproximadament a la mateixa data del "
-"mes anterior"
+"Cliqueu damunt d'este botó per a desplaçar-vos aproximadament a la mateixa "
+"data del mes anterior"
 
 #: widgets/navigatorbar.cpp:41
 #, kde-format
@@ -5977,8 +5977,8 @@ msgid ""
 "Click this button to scroll the display to the same approximate date of the "
 "next month"
 msgstr ""
-"Cliqueu este botó per a desplaçar-vos aproximadament a la mateixa data del "
-"mes posterior"
+"Cliqueu damunt d'este botó per a desplaçar-vos aproximadament a la mateixa "
+"data del mes posterior"
 
 #: widgets/navigatorbar.cpp:46
 #, kde-format
@@ -5991,8 +5991,8 @@ msgid ""
 "Click this button to scroll the display to the same approximate day of the "
 "next year"
 msgstr ""
-"Cliqueu este botó per a desplaçar-vos aproximadament al mateix dia de l'any "
-"posterior"
+"Cliqueu damunt d'este botó per a desplaçar-vos aproximadament al mateix dia "
+"de l'any posterior"
 
 #: widgets/navigatorbar.cpp:54
 #, kde-format
