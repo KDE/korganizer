@@ -14,7 +14,7 @@ msgstr ""
 "Project-Id-Version: korganizer\n"
 "Report-Msgid-Bugs-To: https://bugs.kde.org\n"
 "POT-Creation-Date: 2025-05-24 00:43+0000\n"
-"PO-Revision-Date: 2025-05-07 10:36+0200\n"
+"PO-Revision-Date: 2025-05-24 11:07+0200\n"
 "Last-Translator: Josep M. Ferrer <txemaq@gmail.com>\n"
 "Language-Team: Catalan <kde-i18n-ca@kde.org>\n"
 "Language: ca\n"
@@ -2592,20 +2592,16 @@ msgid "&Paste"
 msgstr "&Enganxa"
 
 #: koeventpopupmenu.cpp:84 koeventpopupmenu.cpp:104
-#, fuzzy, kde-format
-#| msgctxt "@action:inmenu"
-#| msgid "New Event…"
+#, kde-format
 msgctxt "@action:inmenu"
 msgid "New Event"
-msgstr "Esdeveniment nou…"
+msgstr "Esdeveniment nou"
 
 #: koeventpopupmenu.cpp:89 koeventpopupmenu.cpp:101
-#, fuzzy, kde-format
-#| msgctxt "@action:inmenu"
-#| msgid "New To-do…"
+#, kde-format
 msgctxt "@action:inmenu"
 msgid "New To-do"
-msgstr "Tasca pendent nova…"
+msgstr "Tasca pendent nova"
 
 #: koeventpopupmenu.cpp:92
 #, kde-format
@@ -6524,32 +6520,3 @@ msgstr "%1"
 msgctxt "4 digit year"
 msgid "%1"
 msgstr "%1"
-
-#~ msgctxt "@action:inmenu"
-#~ msgid "Get New Calendars…"
-#~ msgstr "Obtén calendaris nous…"
-
-#~ msgctxt "@info:status"
-#~ msgid "Load a calendar from \"Get Hot New Stuff\""
-#~ msgstr "Carrega un calendari des de «Obtén les novetats»"
-
-#~ msgctxt "@info:tooltip"
-#~ msgid "Search \"Get Hot New Stuff\" for calendars to import"
-#~ msgstr "Cerca calendaris a importar a «Obtén les novetats»"
-
-#~ msgctxt "@info:whatsthis"
-#~ msgid ""
-#~ "This menu entry opens the \"Get Hot New Stuff\" dialog that allows you to "
-#~ "search and import fun and useful calendars donated to the community."
-#~ msgstr ""
-#~ "Aquesta entrada de menú obre el diàleg «Obtén les novetats» que permet "
-#~ "cercar i importar calendaris divertits i útils donats per la comunitat."
-
-#~ msgctxt "@info"
-#~ msgid "Could not load calendar <filename>%1</filename>."
-#~ msgstr "No s'ha pogut carregar el calendari <filename>%1</filename>."
-
-#~ msgctxt "@info"
-#~ msgid "The downloaded events will be merged into your current calendar."
-#~ msgstr ""
-#~ "Els esdeveniments descarregats es barrejaran amb el calendari actual."

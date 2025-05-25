@@ -14,7 +14,7 @@ msgstr ""
 "Project-Id-Version: korganizer\n"
 "Report-Msgid-Bugs-To: https://bugs.kde.org\n"
 "POT-Creation-Date: 2025-05-24 00:43+0000\n"
-"PO-Revision-Date: 2025-05-07 10:36+0200\n"
+"PO-Revision-Date: 2025-05-24 11:07+0200\n"
 "Last-Translator: Josep M. Ferrer <txemaq@gmail.com>\n"
 "Language-Team: Catalan <kde-i18n-ca@kde.org>\n"
 "Language: ca@valencia\n"
@@ -2594,20 +2594,16 @@ msgid "&Paste"
 msgstr "A&pega"
 
 #: koeventpopupmenu.cpp:84 koeventpopupmenu.cpp:104
-#, fuzzy, kde-format
-#| msgctxt "@action:inmenu"
-#| msgid "New Event…"
+#, kde-format
 msgctxt "@action:inmenu"
 msgid "New Event"
-msgstr "Esdeveniment nou…"
+msgstr "Esdeveniment nou"
 
 #: koeventpopupmenu.cpp:89 koeventpopupmenu.cpp:101
-#, fuzzy, kde-format
-#| msgctxt "@action:inmenu"
-#| msgid "New To-do…"
+#, kde-format
 msgctxt "@action:inmenu"
 msgid "New To-do"
-msgstr "Tasca pendent nova…"
+msgstr "Tasca pendent nova"
 
 #: koeventpopupmenu.cpp:92
 #, kde-format
@@ -4473,9 +4469,10 @@ msgid ""
 "Navigator's week numbers, or uncheck it to choose the whole week.  Ignored "
 "if week numbers are not shown."
 msgstr ""
-"Marqueu esta casella per a seleccionar una setmana laboral clicant en els "
-"números de setmana del navegador de dates, o desactiveu-la per a seleccionar "
-"la setmana sencera. S'ignora si no es mostren els números de setmana."
+"Marqueu esta casella per a seleccionar una setmana laboral quan es clique "
+"damunt dels números de setmana del navegador de dates, o desactiveu-la per a "
+"seleccionar la setmana sencera. S'ignora si no es mostren els números de "
+"setmana."
 
 #. i18n: ectx: label, entry, group (Agenda View)
 #: settings/korganizer.kcfg:110
@@ -5446,8 +5443,8 @@ msgid ""
 "given number of days are hidden."
 msgstr ""
 "Si es marca esta casella, el filtre ocultarà tots els elements de tasca "
-"pendent de la llista que hagen estat finalitzades. De manera opcional, només "
-"s'ocultaran els elements que hagen estat finalitzats fa un cert nombre de "
+"pendent de la llista que hagen sigut finalitzades. De manera opcional, només "
+"s'ocultaran els elements que hagen sigut finalitzats fa un cert nombre de "
 "dies."
 
 #. i18n: ectx: property (text), widget (QCheckBox, mCompletedCheck)
@@ -6450,8 +6447,8 @@ msgid ""
 "Click this button to scroll the display to the same approximate day of the "
 "previous year"
 msgstr ""
-"Cliqueu este botó per a desplaçar-vos aproximadament al mateix dia de l'any "
-"anterior"
+"Cliqueu damunt d'este botó per a desplaçar-vos aproximadament al mateix dia "
+"de l'any anterior"
 
 #: widgets/navigatorbar.cpp:36
 #, kde-format
@@ -6464,8 +6461,8 @@ msgid ""
 "Click this button to scroll the display to the same approximate date of the "
 "previous month"
 msgstr ""
-"Cliqueu este botó per a desplaçar-vos aproximadament a la mateixa data del "
-"mes anterior"
+"Cliqueu damunt d'este botó per a desplaçar-vos aproximadament a la mateixa "
+"data del mes anterior"
 
 #: widgets/navigatorbar.cpp:41
 #, kde-format
@@ -6478,8 +6475,8 @@ msgid ""
 "Click this button to scroll the display to the same approximate date of the "
 "next month"
 msgstr ""
-"Cliqueu este botó per a desplaçar-vos aproximadament a la mateixa data del "
-"mes posterior"
+"Cliqueu damunt d'este botó per a desplaçar-vos aproximadament a la mateixa "
+"data del mes posterior"
 
 #: widgets/navigatorbar.cpp:46
 #, kde-format
@@ -6492,8 +6489,8 @@ msgid ""
 "Click this button to scroll the display to the same approximate day of the "
 "next year"
 msgstr ""
-"Cliqueu este botó per a desplaçar-vos aproximadament al mateix dia de l'any "
-"posterior"
+"Cliqueu damunt d'este botó per a desplaçar-vos aproximadament al mateix dia "
+"de l'any posterior"
 
 #: widgets/navigatorbar.cpp:54
 #, kde-format
@@ -6518,32 +6515,3 @@ msgstr "%1"
 msgctxt "4 digit year"
 msgid "%1"
 msgstr "%1"
-
-#~ msgctxt "@action:inmenu"
-#~ msgid "Get New Calendars…"
-#~ msgstr "Obtín calendaris nous…"
-
-#~ msgctxt "@info:status"
-#~ msgid "Load a calendar from \"Get Hot New Stuff\""
-#~ msgstr "Carrega un calendari des de «Obtín les novetats»"
-
-#~ msgctxt "@info:tooltip"
-#~ msgid "Search \"Get Hot New Stuff\" for calendars to import"
-#~ msgstr "Busca calendaris que s'hagen d'importar a «Obtín les novetats»"
-
-#~ msgctxt "@info:whatsthis"
-#~ msgid ""
-#~ "This menu entry opens the \"Get Hot New Stuff\" dialog that allows you to "
-#~ "search and import fun and useful calendars donated to the community."
-#~ msgstr ""
-#~ "Esta entrada de menú obri el diàleg «Obtín les novetats» que permet "
-#~ "buscar i importar calendaris divertits i útils donats per la comunitat."
-
-#~ msgctxt "@info"
-#~ msgid "Could not load calendar <filename>%1</filename>."
-#~ msgstr "No s'ha pogut carregar el calendari <filename>%1</filename>."
-
-#~ msgctxt "@info"
-#~ msgid "The downloaded events will be merged into your current calendar."
-#~ msgstr ""
-#~ "Els esdeveniments descarregats es barrejaran amb el calendari actual."

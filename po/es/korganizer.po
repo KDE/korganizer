@@ -1,5 +1,5 @@
 # Spanish translations for korganizer.po package.
-# Copyright (C) 2001-2025 This file is part of KDE
+# Copyright (C) 2001-2025 This file is copyright:
 # This file is distributed under the same license as the korganizer package.
 # Automatically generated, 2001.
 #
@@ -18,7 +18,7 @@ msgstr ""
 "Project-Id-Version: korganizer\n"
 "Report-Msgid-Bugs-To: https://bugs.kde.org\n"
 "POT-Creation-Date: 2025-05-24 00:43+0000\n"
-"PO-Revision-Date: 2025-05-07 18:58+0100\n"
+"PO-Revision-Date: 2025-05-24 11:27+0100\n"
 "Last-Translator: Eloy Cuadra <ecuadra@eloihr.net>\n"
 "Language-Team: Spanish <kde-l10n-es@kde.org>\n"
 "Language: es\n"
@@ -27,7 +27,7 @@ msgstr ""
 "Content-Transfer-Encoding: 8bit\n"
 "First-Translator: Boris Wesslowski <Boris@Wesslowski.com>\n"
 "Second-Translator: Pablo de Vicente <pvicentea@nexo.es>\n"
-"X-Generator: Lokalize 25.04.0\n"
+"X-Generator: Lokalize 25.04.1\n"
 "Plural-Forms: nplurals=2; plural=n != 1;\n"
 
 #, kde-format
@@ -2597,20 +2597,16 @@ msgid "&Paste"
 msgstr "&Pegar"
 
 #: koeventpopupmenu.cpp:84 koeventpopupmenu.cpp:104
-#, fuzzy, kde-format
-#| msgctxt "@action:inmenu"
-#| msgid "New Event…"
+#, kde-format
 msgctxt "@action:inmenu"
 msgid "New Event"
-msgstr "Nuevo evento…"
+msgstr "Nuevo evento"
 
 #: koeventpopupmenu.cpp:89 koeventpopupmenu.cpp:101
-#, fuzzy, kde-format
-#| msgctxt "@action:inmenu"
-#| msgid "New To-do…"
+#, kde-format
 msgctxt "@action:inmenu"
 msgid "New To-do"
-msgstr "Nueva tarea pendiente…"
+msgstr "Nueva tarea pendiente"
 
 #: koeventpopupmenu.cpp:92
 #, kde-format
@@ -6520,32 +6516,3 @@ msgstr "%1"
 msgctxt "4 digit year"
 msgid "%1"
 msgstr "%1"
-
-#~ msgctxt "@action:inmenu"
-#~ msgid "Get New Calendars…"
-#~ msgstr "Obtener nuevos calendarios…"
-
-#~ msgctxt "@info:status"
-#~ msgid "Load a calendar from \"Get Hot New Stuff\""
-#~ msgstr "Cargar calendario de «Obtener novedades»"
-
-#~ msgctxt "@info:tooltip"
-#~ msgid "Search \"Get Hot New Stuff\" for calendars to import"
-#~ msgstr "Buscar calendarios a importar en «Obtener novedades»"
-
-#~ msgctxt "@info:whatsthis"
-#~ msgid ""
-#~ "This menu entry opens the \"Get Hot New Stuff\" dialog that allows you to "
-#~ "search and import fun and useful calendars donated to the community."
-#~ msgstr ""
-#~ "Esta entrada del menú abre el diálogo «Obtener novedades» que le permite "
-#~ "buscar e importar útiles y entretenidos calendarios donados por la "
-#~ "comunidad."
-
-#~ msgctxt "@info"
-#~ msgid "Could not load calendar <filename>%1</filename>."
-#~ msgstr "No se ha podido cargar el calendario <filename>%1</filename>."
-
-#~ msgctxt "@info"
-#~ msgid "The downloaded events will be merged into your current calendar."
-#~ msgstr "Los eventos descargados se combinarán con su calendario actual."
