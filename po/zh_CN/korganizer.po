@@ -2409,19 +2409,16 @@ msgid "&Paste"
 msgstr "粘贴(&P)"
 
 #: koeventpopupmenu.cpp:84 koeventpopupmenu.cpp:104
-#, fuzzy, kde-format
-#| msgctxt "@action:inmenu"
-#| msgid "&Show Event"
+#, kde-format
 msgctxt "@action:inmenu"
 msgid "New Event"
-msgstr "显示事件(&S)"
+msgstr ""
 
 #: koeventpopupmenu.cpp:89 koeventpopupmenu.cpp:101
-#, fuzzy, kde-format
-#| msgid "To-do"
+#, kde-format
 msgctxt "@action:inmenu"
 msgid "New To-do"
-msgstr "待办事项"
+msgstr ""
 
 #: koeventpopupmenu.cpp:92
 #, kde-format
