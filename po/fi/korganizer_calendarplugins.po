@@ -4,7 +4,7 @@
 # Author: Jessej
 # Author: Lliehu
 # Author: Niklas Laxström
-# SPDX-FileCopyrightText: 2009, 2011, 2012, 2013, 2018, 2019, 2020, 2024 Tommi Nieminen <translator@legisign.org>
+# SPDX-FileCopyrightText: 2009, 2011, 2012, 2013, 2018, 2019, 2020, 2024, 2025 Tommi Nieminen <translator@legisign.org>
 # Kim Enkovaara <kim.enkovaara@iki.fi>, 2003, 2006.
 # Teemu Rytilahti <teemu.rytilahti@d5k.net>, 2003, 2005.
 # Teemu Rytilahti <teemu.rytilahti@kde-fi.org>, 2003, 2008.
@@ -17,7 +17,7 @@ msgstr ""
 "Project-Id-Version: korganizer\n"
 "Report-Msgid-Bugs-To: https://bugs.kde.org\n"
 "POT-Creation-Date: 2025-04-19 00:42+0000\n"
-"PO-Revision-Date: 2024-10-21 19:55+0300\n"
+"PO-Revision-Date: 2025-05-25 16:56+0300\n"
 "Last-Translator: Tommi Nieminen <translator@legisign.org>\n"
 "Language-Team: Finnish <kde-i18n-doc@kde.org>\n"
 "Language: fi\n"
@@ -34,8 +34,7 @@ msgid "Configure Day Numbers"
 msgstr "Muokkaa päivien numeroita"
 
 #: datenums/configdialog.cpp:43
-#, fuzzy, kde-format
-#| msgid "Show Date Number"
+#, kde-format
 msgctxt "@title:group"
 msgid "Show Date Number"
 msgstr "Näytä päivän numero"
@@ -699,11 +698,10 @@ msgid "Configure Picture of the Day"
 msgstr "Päivän kuva -asetukset"
 
 #: picoftheday/configdialog.cpp:42
-#, fuzzy, kde-format
-#| msgid "Thumbnail Aspect Ratio Mode"
+#, kde-format
 msgctxt "@title:group"
 msgid "Thumbnail Aspect Ratio Mode"
-msgstr "Esikatselun kuvasuhde"
+msgstr "Pienoiskuvan kuvasuhde"
 
 #: picoftheday/configdialog.cpp:46
 #, kde-format
@@ -712,14 +710,11 @@ msgid "Ignore aspect ratio"
 msgstr "Sivuuta kuvasuhde"
 
 #: picoftheday/configdialog.cpp:48
-#, fuzzy, kde-format
-#| msgid ""
-#| "The thumbnail will be scaled freely. The aspect ratio will not be "
-#| "preserved."
+#, kde-format
 msgctxt "@info:whatsthis"
 msgid ""
 "The thumbnail will be scaled freely. The aspect ratio will not be preserved."
-msgstr "Esikatselukuva skaalataan vapaasti. Kuvasuhdetta ei säilytetä."
+msgstr "Pienoiskuva skaalataan vapaasti. Kuvasuhdetta ei säilytetä."
 
 #: picoftheday/configdialog.cpp:52
 #, kde-format
@@ -728,16 +723,13 @@ msgid "Keep aspect ratio"
 msgstr "Säilytä kuvasuhde"
 
 #: picoftheday/configdialog.cpp:54
-#, fuzzy, kde-format
-#| msgid ""
-#| "The thumbnail will be scaled to a rectangle as large as possible inside a "
-#| "given rectangle, preserving the aspect ratio."
+#, kde-format
 msgctxt "@info:whatsthis"
 msgid ""
 "The thumbnail will be scaled to a rectangle as large as possible inside a "
 "given rectangle, preserving the aspect ratio."
 msgstr ""
-"Esikatselukuva skaalataan mahdollisimman suureksi suorakulmioksi. Kuvasuhde "
+"Pienoiskuva skaalataan mahdollisimman suureksi suorakulmioksi. Kuvasuhde "
 "säilytetään."
 
 #: picoftheday/configdialog.cpp:59
@@ -747,16 +739,13 @@ msgid "Keep aspect ratio by expanding"
 msgstr "Säilytä kuvasuhde laajentamalla"
 
 #: picoftheday/configdialog.cpp:61
-#, fuzzy, kde-format
-#| msgid ""
-#| "The thumbnail will be scaled to a rectangle as small as possible outside "
-#| "a given rectangle, preserving the aspect ratio."
+#, kde-format
 msgctxt "@info:whatsthis"
 msgid ""
 "The thumbnail will be scaled to a rectangle as small as possible outside a "
 "given rectangle, preserving the aspect ratio."
 msgstr ""
-"Esikatselukuva skaalataan mahdollisimman pieneksi annetun suorakulmion "
+"Pienoiskuva skaalataan mahdollisimman pieneksi annetun suorakulmion "
 "ulkopuolella. Kuvasuhde säilytetään."
 
 #: picoftheday/element.cpp:209
