@@ -17,7 +17,7 @@ msgstr ""
 "Project-Id-Version: korganizer\n"
 "Report-Msgid-Bugs-To: https://bugs.kde.org\n"
 "POT-Creation-Date: 2025-04-18 02:33+0000\n"
-"PO-Revision-Date: 2025-04-08 21:36+0300\n"
+"PO-Revision-Date: 2025-05-28 18:15+0300\n"
 "Last-Translator: Tommi Nieminen <translator@legisign.org>\n"
 "Language-Team: Finnish <kde-i18n-doc@kde.org>\n"
 "Language: fi\n"
@@ -31,7 +31,7 @@ msgstr ""
 msgctxt "NAME OF TRANSLATORS"
 msgid "Your names"
 msgstr ""
-"Tommi Nieminen,Kim Enkovaara,Teemu Rytilahti,Tapio Kautto,Ilpo Kantonen,"
+"Tommi Nieminen, Kim Enkovaara, Teemu Rytilahti, Tapio Kautto, Ilpo Kantonen, "
 "Mikko Piippo"
 
 #, kde-format
@@ -1130,7 +1130,7 @@ msgstr[1] "%1 esiintymää tuotiin onnistuneesti."
 #: actionmanager.cpp:848
 #, kde-format
 msgid "There was an error while merging the calendar: %1"
-msgstr "Sattui virhe liitettäessä kalenteria: %1"
+msgstr "Yhdistettäessä kalenteria tapahtui virhe: %1"
 
 #: actionmanager.cpp:859
 #, kde-format
@@ -1157,7 +1157,7 @@ msgstr "Valitse tuotava kalenteritiedosto"
 #: actionmanager.cpp:986
 #, kde-format
 msgid "An error occurred: %1 (url: %2)"
-msgstr "Sattui virhe: %1 (verkko-osoite: %2)"
+msgstr "Tapahtui virhe: %1 (verkko-osoite: %2)"
 
 #: actionmanager.cpp:1004
 #, kde-format
@@ -1727,13 +1727,13 @@ msgstr "Poista ”%1”"
 msgid ""
 "All calendars are unchecked in the Calendar Manager. No to-do was purged."
 msgstr ""
-"Mikään kalenteri ei ole valittuna kalenterien hallinnassa. Tehtäviä ei "
-"poistettu."
+"Yhtäkään kalenteria ei ole kalenterien hallinnassa valittu. Tehtäviä ei "
+"siivottu."
 
 #: calendarview.cpp:2463 calendarview.cpp:2746
 #, kde-format
 msgid "There are no completed to-dos to purge."
-msgstr "Ei ole valmiita tehtäviä, joita poistaa."
+msgstr "Ei ole valmistuneita tehtäviä siivottavaksi."
 
 #: calendarview.cpp:2468
 #, kde-format
@@ -1744,13 +1744,13 @@ msgstr "Poistetaanko kaikki valmiit tehtävät valituista kalentereista?"
 #, kde-format
 msgctxt "@title:window"
 msgid "Purge To-dos"
-msgstr "Puhdista tehtävät"
+msgstr "Siivoa tehtävät"
 
 #: calendarview.cpp:2470
 #, kde-format
 msgctxt "@action:button"
 msgid "Purge"
-msgstr "Puhdista"
+msgstr "Siivoa"
 
 #: calendarview.cpp:2481
 #, kde-format
@@ -1771,7 +1771,7 @@ msgstr "Merkintää ei voitu siirtää kohteeseen  %1."
 #: calendarview.cpp:2739
 #, kde-format
 msgid "0 completed to-dos were purged."
-msgstr "Yhtään valmista tehtävää ei poistettu."
+msgstr "Yhtään valmistunutta tehtävää ei siivottu."
 
 #: calendarview.cpp:2740 calendarview.cpp:2750
 #, kde-format
@@ -1789,13 +1789,13 @@ msgstr[1] ""
 #, kde-format
 msgid "%1 completed to-do was purged."
 msgid_plural "%1 completed to-dos were purged."
-msgstr[0] "Poistettiin %1 valmista tehtävä."
-msgstr[1] "Poistettiin %1 valmista tehtävää."
+msgstr[0] "Siivottiin yksi valmistunut tehtävä."
+msgstr[1] "Siivottiin %1 valmistunutta tehtävää."
 
 #: calendarview.cpp:2755
 #, kde-format
 msgid "An error occurred while purging completed to-dos: %1"
-msgstr "Sattui virhe poistettaessa valmiita tehtäviä: %1"
+msgstr "Poistettaessa valmistuneita tehtäviä tapahtui virhe: %1"
 
 #: calendarview.cpp:2809
 #, kde-format
@@ -2702,13 +2702,13 @@ msgstr "Piilota valmistuneet tehtävät"
 msgid ""
 "Check this box if you do not want to see To-dos that have already been "
 "completed."
-msgstr "Valitse tämä ruutu, ellet haluat nähdä valmistuneita tehtäviä."
+msgstr "Valitse tämä, ellet haluat nähdä valmistuneita tehtäviä."
 
 #. i18n: ectx: property (text), widget (QCheckBox, mHideCompletedBox)
 #: kontactplugin/korganizer/todosummaryconfig_base.ui:145
 #, kde-format
 msgid "&Completed"
-msgstr "&Valmiit"
+msgstr "&Valmistuneet"
 
 #. i18n: ectx: property (toolTip), widget (QCheckBox, mHideOpenEndedBox)
 #: kontactplugin/korganizer/todosummaryconfig_base.ui:155
@@ -2766,13 +2766,13 @@ msgid ""
 "are not yet completed."
 msgstr ""
 "Valitse tämä ruutu, ellet haluat nähdä tehtäviä, jotka on aloitettu mutta "
-"jotka eivät vielä ole valmiita."
+"kesken."
 
 #. i18n: ectx: property (text), widget (QCheckBox, mHideInProgressBox)
 #: kontactplugin/korganizer/todosummaryconfig_base.ui:190
 #, kde-format
 msgid "&In-progress (started but not completed)"
-msgstr "&Meneillään olevat (aloitettu muttei valmis)"
+msgstr "K&esken (aloitettu muttei valmis)"
 
 #. i18n: ectx: property (toolTip), widget (QCheckBox, mHideOverdueBox)
 #: kontactplugin/korganizer/todosummaryconfig_base.ui:197
@@ -2787,14 +2787,14 @@ msgid ""
 "Check this box if you do not want to see To-dos that are past their due date "
 "but have not yet been completed."
 msgstr ""
-"Valitse tämä ruutu, ellet halua nähdä tehtäviä, jotka ovat ohittaneet "
+"Valitse tämä, ellet halua nähdä tehtäviä, jotka ovat ohittaneet "
 "määräpäivänsä valmistumatta."
 
 #. i18n: ectx: property (text), widget (QCheckBox, mHideOverdueBox)
 #: kontactplugin/korganizer/todosummaryconfig_base.ui:206
 #, kde-format
 msgid "Over&due (not completed and beyond due-date)"
-msgstr "&Myöhässä (ei valmis, mutta määräpäivä ohi)"
+msgstr "M&yöhässä (ei valmis, mutta määräpäivä ohi)"
 
 #: kontactplugin/korganizer/todosummarywidget.cpp:44
 #, kde-format
@@ -2842,7 +2842,7 @@ msgstr[1] "Ei tehtävien määräpäivää seuraavien %1 päivän sisällä"
 #: kontactplugin/korganizer/todosummarywidget.cpp:330
 #, kde-format
 msgid "&Mark To-do Completed"
-msgstr "&Merkitse tehtävä tehdyksi"
+msgstr "&Merkitse tehtävä valmiiksi"
 
 #: kontactplugin/korganizer/todosummarywidget.cpp:350
 #, kde-format
@@ -4432,7 +4432,7 @@ msgstr "Väritä kuukauden merkinnät kalenterivärillään sisältä ja reunoil
 #: settings/korganizer.kcfg:289
 #, kde-format
 msgid "Always display completed to-dos at the bottom of the list"
-msgstr "Näytä valmiit tehtävät aina luettelon lopussa"
+msgstr "Näytä valmistuneet tehtävät aina luettelon lopussa"
 
 #. i18n: ectx: tooltip, entry, group (Todo View)
 #: settings/korganizer.kcfg:290
@@ -4441,7 +4441,7 @@ msgid ""
 "Completed to-dos are displayed at the bottom of the list, regardless of "
 "priority"
 msgstr ""
-"Valmiit tehtävät näytetään luettelon lopussa prioriteetistaan riippumatta"
+"Valmistuneet tehtävät näytetään etusijastaan riippumatta luettelon lopussa"
 
 #. i18n: ectx: whatsthis, entry, group (Todo View)
 #: settings/korganizer.kcfg:291
@@ -4450,8 +4450,8 @@ msgid ""
 "Check this box if you want all completed to-dos to be always grouped at the "
 "bottom of the to-do list."
 msgstr ""
-"Valitse tämä, jos haluat valmiiden tehtävien ryhmittyvän aina "
-"tehtäväluettelossa alimmas."
+"Valitse tämä, jos haluat ryhmitellä valmistuneet tehtävät tehtäväluettelossa "
+"aina alimmas."
 
 #. i18n: ectx: label, entry, group (Todo View)
 #: settings/korganizer.kcfg:296
@@ -4505,7 +4505,7 @@ msgstr ""
 #: settings/korganizer.kcfg:310
 #, kde-format
 msgid "Record completed to-dos in journal entries"
-msgstr "Kirjaa valmiit tehtävät päiväkirjamerkinnöiksi"
+msgstr "Kirjaa valmistuneet tehtävät päiväkirjamerkinnöiksi"
 
 #. i18n: ectx: whatsthis, entry, group (Todo View)
 #: settings/korganizer.kcfg:311
@@ -4862,15 +4862,15 @@ msgid ""
 "that have been completed. Optionally, only items that have been completed a "
 "given number of days are hidden."
 msgstr ""
-"Tällä asetuksella suodatin piilottaa kaikki suoritetut tehtävät luettelosta. "
-"Vaihtoehtoisesti piilotetaan vain tehtävät, joiden valmistumisesta on tietty "
-"aika."
+"Kun tämä on valittu, suodatin piilottaa luettelosta kaikki valmistuneet "
+"tehtävät. Vaihtoehtoisesti piilotetaan vain tehtävät, joiden valmistumisesta "
+"on tietty aika."
 
 #. i18n: ectx: property (text), widget (QCheckBox, mCompletedCheck)
 #: ui/filteredit_base.ui:134
 #, kde-format
 msgid "Hide co&mpleted to-dos"
-msgstr "Piilota val&miit tehtävät"
+msgstr "Piilota &valmistuneet tehtävät"
 
 #. i18n: ectx: property (whatsThis), widget (QLabel, mCompletedTimeSpanLabel)
 #: ui/filteredit_base.ui:177
@@ -4881,9 +4881,9 @@ msgid ""
 "as you check it. You can increase or decrease the number of days in the "
 "spinbox."
 msgstr ""
-"Tällä valinnalla voit valita, mitkä valmiit tehtävät piilotetaan. Kun "
-"valitset <i>välittömästi</i>, tehtävä piilotetaan heti, kun se on merkitty "
-"tehdyksi. Voit lisätä tai vähentää päivien lukumäärää kiertolaatikosta."
+"Tällä valinnalla voi valita, mitkä valmistuneet tehtävät piilotetaan. Jos "
+"valitaan <i>välittömästi</i>, tehtävä piilotetaan heti, kun se on merkitty "
+"tehdyksi. Päivien määrää voi kasvattaa tai pienentää kiertolaatikosta."
 
 #. i18n: ectx: property (text), widget (QLabel, mCompletedTimeSpanLabel)
 #: ui/filteredit_base.ui:180
@@ -4901,10 +4901,10 @@ msgid ""
 "items will be hidden, that have been marked finished longer than 24 hours "
 "ago."
 msgstr ""
-"Tästä voi valita, montako päivää loppuun saatettu tehtävä näkyy "
-"tehtäväluettelossa. Jos valitset ”välittömästi”, kaikki valmiit tehtävät "
-"piilotetaan. Jos valitset esimerkiksi 1, kaikki yli vuorokauden ajan "
-"valmiiksi merkityt tehtävät piilotetaan."
+"Tästä voi valita, montako päivää valmistunut tehtävä näkyy "
+"tehtäväluettelossa. Jos valitaan ”välittömästi”, piilotetaan kaikki "
+"valmistuneet tehtävät. Jos valitaan esimerkiksi 1, piilotetaan kaikki yli "
+"vuorokauden ajan valmiiksi merkityt tehtävät."
 
 #. i18n: ectx: property (whatsThis), widget (QCheckBox, mHideInactiveTodosCheck)
 #: ui/filteredit_base.ui:218
