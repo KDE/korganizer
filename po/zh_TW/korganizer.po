@@ -14,15 +14,15 @@ msgid ""
 msgstr ""
 "Project-Id-Version: korganizer\n"
 "Report-Msgid-Bugs-To: https://bugs.kde.org\n"
-"POT-Creation-Date: 2025-05-24 00:43+0000\n"
-"PO-Revision-Date: 2025-02-18 16:02+0900\n"
+"POT-Creation-Date: 2025-06-04 00:43+0000\n"
+"PO-Revision-Date: 2025-06-04 07:56+0900\n"
 "Last-Translator: Kisaragi Hiu <mail@kisaragi-hiu.com>\n"
 "Language-Team: Traditional Chinese <zh-l10n@lists.slat.org>\n"
 "Language: zh_TW\n"
 "MIME-Version: 1.0\n"
 "Content-Type: text/plain; charset=UTF-8\n"
 "Content-Transfer-Encoding: 8bit\n"
-"X-Generator: Lokalize 25.03.70\n"
+"X-Generator: Lokalize 25.07.70\n"
 "Plural-Forms: nplurals=1; plural=0;\n"
 
 #, kde-format
@@ -41,27 +41,19 @@ msgstr ""
 #: kontactplugin/korganizer/korganizerplugin.cpp:42
 #: kontactplugin/korganizer/todoplugin.cpp:38
 #: kontactplugin/specialdates/specialdates_plugin.cpp:23
-#, fuzzy, kde-format
-#| msgid "KOrganizer"
+#, kde-format
 msgctxt "@info/plain"
 msgid "KOrganizer"
 msgstr "KOrganizer"
 
 #: aboutdata.cpp:20
-#, fuzzy, kde-format
-#| msgid "A Personal Organizer"
+#, kde-format
 msgctxt "@info/plain"
 msgid "A Personal Organizer"
 msgstr "個人事務組織軟體"
 
 #: aboutdata.cpp:23
-#, fuzzy, kde-format
-#| msgid ""
-#| "Copyright © 1997–1999 Preston Brown\n"
-#| "Copyright © 2000–2004, 2007 Cornelius Schumacher\n"
-#| "Copyright © 2004–2005 Reinhold Kainhofer\n"
-#| "Copyright © 2006–2012 Allen Winter\n"
-#| "Copyright © 2012–2025 KOrganizer authors"
+#, kde-format
 msgctxt "@info/plain"
 msgid ""
 "Copyright © 1997–1999 Preston Brown\n"
@@ -83,8 +75,7 @@ msgid "Allen Winter"
 msgstr "Allen Winter"
 
 #: aboutdata.cpp:31
-#, fuzzy, kde-format
-#| msgid "Maintainer"
+#, kde-format
 msgctxt "@info:credit"
 msgid "Maintainer"
 msgstr "維護者"
@@ -96,8 +87,7 @@ msgid "Reinhold Kainhofer"
 msgstr "Reinhold Kainhofer"
 
 #: aboutdata.cpp:32 aboutdata.cpp:33
-#, fuzzy, kde-format
-#| msgid "Former Maintainer"
+#, kde-format
 msgctxt "@info:credit"
 msgid "Former Maintainer"
 msgstr "前任維護者"
@@ -115,8 +105,7 @@ msgid "Preston Brown"
 msgstr "Preston Brown"
 
 #: aboutdata.cpp:34
-#, fuzzy, kde-format
-#| msgid "Original Author"
+#, kde-format
 msgctxt "@info:credit"
 msgid "Original Author"
 msgstr "原作者"
@@ -128,8 +117,7 @@ msgid "Laurent Montel"
 msgstr "Laurent Montel"
 
 #: aboutdata.cpp:35
-#, fuzzy, kde-format
-#| msgid "Developer"
+#, kde-format
 msgctxt "@info:credit"
 msgid "Developer"
 msgstr "開發者"
@@ -279,8 +267,7 @@ msgid "Rafał Rzepecki"
 msgstr "Rafał Rzepecki"
 
 #: aboutdata.cpp:59
-#, fuzzy, kde-format
-#| msgid "Part of work sponsored by Google with Summer of Code 2005"
+#, kde-format
 msgctxt "@info:credit"
 msgid "Part of work sponsored by Google with Summer of Code 2005"
 msgstr "一部份的工作是由 Google Summer of Code 2005 貢獻"
@@ -346,14 +333,11 @@ msgid "Fester Zigterman"
 msgstr "Fester Zigterman"
 
 #: actionmanager.cpp:130
-#, fuzzy, kde-format
-#| msgid ""
-#| "<qt>This will hide the menu bar completely. You can show it again by "
-#| "typing %1.</qt>"
+#, kde-format
 msgctxt "@info"
 msgid ""
 "This will hide the menu bar completely. You can show it again by typing %1."
-msgstr "<qt>這會完全隱藏選單列。您可以按下 %1 重新顯示選單列。</qt>"
+msgstr "這會完全隱藏選單列。您可以按下 %1 重新顯示選單列。"
 
 #: actionmanager.cpp:133
 #, kde-format
@@ -362,9 +346,7 @@ msgid "Hide menu bar"
 msgstr "隱藏選單列"
 
 #: actionmanager.cpp:244
-#, fuzzy, kde-format
-#| msgctxt "@action"
-#| msgid "Import &Calendar…"
+#, kde-format
 msgctxt "@action:inmenu"
 msgid "Import &Calendar…"
 msgstr "匯入行事曆(&C)…"
@@ -392,9 +374,7 @@ msgstr ""
 "中。"
 
 #: actionmanager.cpp:256
-#, fuzzy, kde-format
-#| msgctxt "@action"
-#| msgid "Export as &iCalendar…"
+#, kde-format
 msgctxt "@action:inmenu"
 msgid "Export as &iCalendar…"
 msgstr "匯出為 iCalendar(&I)…"
@@ -419,9 +399,7 @@ msgid ""
 msgstr "讓您將您的整個行事曆收藏匯出成一個 iCalendar 檔案。"
 
 #: actionmanager.cpp:265
-#, fuzzy, kde-format
-#| msgctxt "@action"
-#| msgid "Archive O&ld Incidences…"
+#, kde-format
 msgctxt "@action:inmenu"
 msgid "Archive O&ld Incidences…"
 msgstr "封存舊事件(&L)…"
@@ -450,9 +428,7 @@ msgstr ""
 "封存後它們將會從您現有的行事曆收藏中移除。"
 
 #: actionmanager.cpp:277
-#, fuzzy, kde-format
-#| msgctxt "@action"
-#| msgid "Pur&ge Completed To-dos"
+#, kde-format
 msgctxt "@action:inmenu"
 msgid "Pur&ge Completed To-dos"
 msgstr "清除已完成的待辦事項(&G)"
@@ -479,15 +455,13 @@ msgstr "讓您從行事曆收藏中移除所有已完成的待辦事項。這個
 
 #: actionmanager.cpp:318 actionmanager.cpp:617 actionmanager.cpp:1304
 #: actionmanager.cpp:1342
-#, fuzzy, kde-format
-#| msgid "&Delete"
+#, kde-format
 msgctxt "@action:inmenu"
 msgid "&Delete"
 msgstr "刪除(&D)"
 
 #: actionmanager.cpp:335
-#, fuzzy, kde-format
-#| msgid "What's &Next"
+#, kde-format
 msgctxt "@action:inmenu"
 msgid "What's &Next"
 msgstr "下一個是什麼(&N)"
@@ -518,8 +492,7 @@ msgstr ""
 "件會被顯示。"
 
 #: actionmanager.cpp:347
-#, fuzzy, kde-format
-#| msgid "&Month"
+#, kde-format
 msgctxt "@action:inmenu"
 msgid "&Month"
 msgstr "月覽表(&M)"
@@ -545,8 +518,7 @@ msgid ""
 msgstr "切換到月份檢視，用常見的月份行事曆版面配置來顯示所有事件和待辦事項。"
 
 #: actionmanager.cpp:357
-#, fuzzy, kde-format
-#| msgid "&Agenda"
+#, kde-format
 msgctxt "@action:inmenu"
 msgid "&Agenda"
 msgstr "行程(&A)"
@@ -575,8 +547,7 @@ msgstr ""
 "顯示。在單日時間表內可以看到各個事件的長度。"
 
 #: actionmanager.cpp:370
-#, fuzzy, kde-format
-#| msgid "&Event List"
+#, kde-format
 msgctxt "@action:inmenu"
 msgid "&Event List"
 msgstr "事件列表(&E)"
@@ -604,8 +575,7 @@ msgstr ""
 "件和日誌項目。"
 
 #: actionmanager.cpp:380
-#, fuzzy, kde-format
-#| msgid "&To-do List"
+#, kde-format
 msgctxt "@action:inmenu"
 msgid "&To-do List"
 msgstr "待辦事項清單(&T)"
@@ -631,8 +601,7 @@ msgid ""
 msgstr "切換至待辦事項清單檢視，提供讓您追蹤需要完成的事項的地方。"
 
 #: actionmanager.cpp:390
-#, fuzzy, kde-format
-#| msgid "&Journal"
+#, kde-format
 msgctxt "@action:inmenu"
 msgid "&Journal"
 msgstr "日誌(&J)"
@@ -658,8 +627,7 @@ msgid ""
 msgstr "切換至日誌檢視，它提供一個讓您記錄想法、經驗或新主意的地方。"
 
 #: actionmanager.cpp:400
-#, fuzzy, kde-format
-#| msgid "Time&line"
+#, kde-format
 msgctxt "@action:inmenu"
 msgid "Time&line"
 msgstr "時間軸(&L)"
@@ -687,9 +655,7 @@ msgstr ""
 "有自己的一行。"
 
 #: actionmanager.cpp:413
-#, fuzzy, kde-format
-#| msgctxt "@action"
-#| msgid "&Refresh"
+#, kde-format
 msgctxt "@action:inmenu"
 msgid "&Refresh"
 msgstr "重新整理(&R)"
@@ -717,8 +683,7 @@ msgstr ""
 "夾。"
 
 #: actionmanager.cpp:426
-#, fuzzy, kde-format
-#| msgid "F&ilter"
+#, kde-format
 msgctxt "@action:inmenu"
 msgid "F&ilter"
 msgstr "過濾器(&I)"
@@ -746,44 +711,37 @@ msgstr ""
 "「管理檢視過濾器」選項。"
 
 #: actionmanager.cpp:442
-#, fuzzy, kde-format
-#| msgid "In Horizontally"
+#, kde-format
 msgctxt "@action:inmenu"
 msgid "In Horizontally"
 msgstr "水平放大"
 
 #: actionmanager.cpp:447
-#, fuzzy, kde-format
-#| msgid "Out Horizontally"
+#, kde-format
 msgctxt "@action:inmenu"
 msgid "Out Horizontally"
 msgstr "水平縮小"
 
 #: actionmanager.cpp:452
-#, fuzzy, kde-format
-#| msgid "In Vertically"
+#, kde-format
 msgctxt "@action:inmenu"
 msgid "In Vertically"
 msgstr "垂直放大"
 
 #: actionmanager.cpp:457
-#, fuzzy, kde-format
-#| msgid "Out Vertically"
+#, kde-format
 msgctxt "@action:inmenu"
 msgid "Out Vertically"
 msgstr "垂直縮小"
 
 #: actionmanager.cpp:466
-#, fuzzy, kde-format
-#| msgctxt "@action Jump to today"
-#| msgid "To &Today"
+#, kde-format
 msgctxt "@action:inmenu Jump to today"
 msgid "To &Today"
 msgstr "跳到今天(&T)"
 
 #: actionmanager.cpp:467
-#, fuzzy, kde-format
-#| msgid "Today"
+#, kde-format
 msgctxt "@action:button"
 msgid "Today"
 msgstr "今天"
@@ -807,20 +765,16 @@ msgid "Scrolls the current view to the today's date."
 msgstr "將目前檢視捲動到今天的日期。"
 
 #: actionmanager.cpp:476
-#, fuzzy, kde-format
-#| msgctxt "scroll backward"
-#| msgid "&Backward"
+#, kde-format
 msgctxt "@action:inmenu scroll backward"
 msgid "&Backward"
 msgstr "往前(&B)"
 
 #: actionmanager.cpp:478
-#, fuzzy, kde-format
-#| msgctxt "scroll backward"
-#| msgid "Back"
+#, kde-format
 msgctxt "@action:button scroll backward"
 msgid "Back"
-msgstr "返回"
+msgstr "往前"
 
 #: actionmanager.cpp:479
 #, kde-format
@@ -843,17 +797,13 @@ msgid ""
 msgstr "根據目前行事曆檢視，往過去捲動一天、一週、一個月或一年。"
 
 #: actionmanager.cpp:489
-#, fuzzy, kde-format
-#| msgctxt "scroll forward"
-#| msgid "&Forward"
+#, kde-format
 msgctxt "@action:inmenu scroll forward"
 msgid "&Forward"
 msgstr "往後(&F)"
 
 #: actionmanager.cpp:491
-#, fuzzy, kde-format
-#| msgctxt "scroll forward"
-#| msgid "Forward"
+#, kde-format
 msgctxt "@action:button scroll forward"
 msgid "Forward"
 msgstr "往後"
@@ -879,15 +829,13 @@ msgid ""
 msgstr "根據目前行事曆檢視，往未來捲動一天、一週、一個月或一年。"
 
 #: actionmanager.cpp:501
-#, fuzzy, kde-format
-#| msgid "&Day"
+#, kde-format
 msgctxt "@action:inmenu"
 msgid "&Day"
 msgstr "日覽表(&D)"
 
 #: actionmanager.cpp:502
-#, fuzzy, kde-format
-#| msgid "Day"
+#, kde-format
 msgctxt "@action:inmenu agenda view show 1 day at a time"
 msgid "Day"
 msgstr "日"
@@ -896,41 +844,37 @@ msgstr "日"
 #, kde-format
 msgctxt "@info:status"
 msgid "View 1 day at a time"
-msgstr ""
+msgstr "一次檢視一天"
 
 #: actionmanager.cpp:504
-#, fuzzy, kde-format
-#| msgid "Show this many days at a time in the Next \"x\" days view"
+#, kde-format
 msgctxt "@info:tooltip"
 msgid "Show 1 day at a time in Agenda View"
-msgstr "在「未來幾天」檢視中顯示幾天的行程。"
+msgstr "在行程檢視中一次顯示一天"
 
 #: actionmanager.cpp:505
 #, kde-format
 msgctxt "@info:whatsthis"
 msgid "Select this option to show only 1 day at a time in Agenda View."
-msgstr ""
+msgstr "選取這個選項來在行程檢視中一次只顯示一天。"
 
 #: actionmanager.cpp:512
-#, fuzzy, kde-format
-#| msgid "&Next Day"
-#| msgid_plural "&Next %1 Days"
+#, kde-format
 msgctxt "@action:inmenu agenda view show a few days at a time"
 msgid "&Next Days"
-msgstr "未來 %1 天(&N)"
+msgstr "未來幾天(&N)"
 
 #: actionmanager.cpp:513
 #, kde-format
 msgctxt "@info:status"
 msgid "View a few days at a time"
-msgstr ""
+msgstr "一次檢視幾天"
 
 #: actionmanager.cpp:514
-#, fuzzy, kde-format
-#| msgid "Show this many days at a time in the Next \"x\" days view"
+#, kde-format
 msgctxt "@info:tooltip"
 msgid "Show the next few days at a time in Agenda View"
-msgstr "在「未來幾天」檢視中顯示幾天的行程。"
+msgstr "在行程檢視中顯示未來幾天"
 
 #: actionmanager.cpp:517
 #, kde-kuit-format
@@ -941,6 +885,8 @@ msgid ""
 "<interface>Views->General</interface> settings page to adjust the number of "
 "days shown."
 msgstr ""
+"選取這個選項來在行程檢視中顯示未來幾天。在 <interface>檢視->一般</interface> "
+"設定頁面當中調整 <placeholder>未來幾天</placeholder> 設定來調整要顯示幾天。"
 
 #: actionmanager.cpp:524
 #, fuzzy, kde-format
@@ -1418,9 +1364,7 @@ msgid "Error"
 msgstr "錯誤"
 
 #: actionmanager.cpp:1072
-#, fuzzy, kde-format
-#| msgid "&Next Day"
-#| msgid_plural "&Next %1 Days"
+#, kde-format
 msgctxt "@action:inmenu"
 msgid "&Next Day"
 msgid_plural "&Next %1 Days"
@@ -1475,14 +1419,14 @@ msgctxt "@action:inmenu"
 msgid "&Delete To-do"
 msgstr "刪除待辦事項(&D)"
 
-#: actionmanager.cpp:1423 actionmanager.cpp:1529
+#: actionmanager.cpp:1423 actionmanager.cpp:1527
 #, fuzzy, kde-format
 #| msgid "Attach as &link"
 msgctxt "@action:inmenu"
 msgid "Attach as &link"
 msgstr "以連結附加(&L)"
 
-#: actionmanager.cpp:1424 actionmanager.cpp:1530
+#: actionmanager.cpp:1424 actionmanager.cpp:1528
 #, fuzzy, kde-format
 #| msgid "Attach &inline"
 msgctxt "@action:inmenu"
@@ -1496,7 +1440,7 @@ msgctxt "@action:inmenu"
 msgid "Attach inline &without attachments"
 msgstr "以內含但不附檔方式附加(&W)"
 
-#: actionmanager.cpp:1427 actionmanager.cpp:1532
+#: actionmanager.cpp:1427 actionmanager.cpp:1530
 #, fuzzy, kde-format
 #| msgid "C&ancel"
 msgctxt "@action:inmenu"
@@ -1516,49 +1460,49 @@ msgctxt "@title:window"
 msgid "Remove Attachments"
 msgstr "移除附檔"
 
-#: actionmanager.cpp:1617
+#: actionmanager.cpp:1615
 #, fuzzy, kde-format
 #| msgid "Undo: %1"
 msgctxt "@action:inmenu"
 msgid "Undo: %1"
 msgstr "復原：%1"
 
-#: actionmanager.cpp:1620
+#: actionmanager.cpp:1618
 #, fuzzy, kde-format
 #| msgid "Undo"
 msgctxt "@action:inmenu"
 msgid "Undo"
 msgstr "復原"
 
-#: actionmanager.cpp:1630
+#: actionmanager.cpp:1628
 #, fuzzy, kde-format
 #| msgid "Redo: %1"
 msgctxt "@action:inmenu"
 msgid "Redo: %1"
 msgstr "重做：%1"
 
-#: actionmanager.cpp:1633
+#: actionmanager.cpp:1631
 #, fuzzy, kde-format
 #| msgid "Redo"
 msgctxt "@action:inmenu"
 msgid "Redo"
 msgstr "重做"
 
-#: actionmanager.cpp:1636
+#: actionmanager.cpp:1634
 #, fuzzy, kde-format
 #| msgid "Undo"
 msgctxt "@action:button"
 msgid "Undo"
 msgstr "復原"
 
-#: actionmanager.cpp:1647
+#: actionmanager.cpp:1645
 #, fuzzy, kde-kuit-format
 #| msgid "URL '%1' is invalid."
 msgctxt "@info"
 msgid "URL <filename>%1</filename> is invalid."
 msgstr "無效的網址：%1。"
 
-#: actionmanager.cpp:1652
+#: actionmanager.cpp:1650
 #, fuzzy, kde-kuit-format
 #| msgctxt "@info"
 #| msgid ""
@@ -1579,25 +1523,25 @@ msgstr ""
 "p><p>如果您選擇合併，則會讓您選擇要合併的行事曆。</p><p>如果您選擇新增，則會"
 "自動為您建立一個新的行事曆。</p>"
 
-#: actionmanager.cpp:1660
+#: actionmanager.cpp:1658
 #, kde-format
 msgctxt "@title:window"
 msgid "Import Calendar"
 msgstr "匯入行事曆"
 
-#: actionmanager.cpp:1661
+#: actionmanager.cpp:1659
 #, kde-format
 msgctxt "@action:button"
 msgid "Merge into existing calendar"
 msgstr "合併到已存在的行事曆"
 
-#: actionmanager.cpp:1662
+#: actionmanager.cpp:1660
 #, kde-format
 msgctxt "@action:button"
 msgid "Add as new calendar"
 msgstr "新增為新行事曆"
 
-#: akonadicollectionview.cpp:289
+#: akonadicollectionview.cpp:291
 #, fuzzy, kde-format
 #| msgctxt "@item this is the default calendar"
 #| msgid "%1 (Offline)"
@@ -1605,13 +1549,13 @@ msgctxt "@item this calendar is offline"
 msgid "%1 (Offline)"
 msgstr "%1（離線）"
 
-#: akonadicollectionview.cpp:292
+#: akonadicollectionview.cpp:294
 #, kde-format
 msgctxt "@item this is the default calendar"
 msgid "%1 (Default)"
 msgstr "%1（預設）"
 
-#: akonadicollectionview.cpp:383
+#: akonadicollectionview.cpp:385
 #, fuzzy, kde-format
 #| msgctxt "@title:tab calendar account settings"
 #| msgid "Calendars"
@@ -1619,13 +1563,13 @@ msgctxt "@info:tooltip"
 msgid "Calendar search"
 msgstr "行事曆"
 
-#: akonadicollectionview.cpp:384
+#: akonadicollectionview.cpp:386
 #, kde-format
 msgctxt "@info:whatsthis"
 msgid "Start typing to search for a calendar within the collection."
 msgstr ""
 
-#: akonadicollectionview.cpp:386
+#: akonadicollectionview.cpp:388
 #, fuzzy, kde-format
 #| msgid "Search Calendar"
 msgctxt ""
@@ -1633,25 +1577,25 @@ msgctxt ""
 msgid "Search for calendar…"
 msgstr "搜尋行事曆"
 
-#: akonadicollectionview.cpp:472 manageshowcollectionproperties.cpp:76
+#: akonadicollectionview.cpp:474 manageshowcollectionproperties.cpp:76
 #, kde-format
 msgctxt "@title:window"
 msgid "Properties of Calendar Folder %1"
 msgstr "行事曆資料夾 %1 的內容"
 
-#: akonadicollectionview.cpp:484
+#: akonadicollectionview.cpp:486
 #, kde-format
 msgctxt "@action:inmenu"
 msgid "&Set Folder Color…"
 msgstr "設定資料夾顏色(&S)…"
 
-#: akonadicollectionview.cpp:490
+#: akonadicollectionview.cpp:492
 #, kde-format
 msgctxt "@action:inmenu"
 msgid "Set as &Default Folder"
 msgstr "設為預設資料夾(&D)"
 
-#: akonadicollectionview.cpp:540
+#: akonadicollectionview.cpp:542
 #, kde-kuit-format
 msgctxt "@info"
 msgid ""
@@ -1660,7 +1604,7 @@ msgid ""
 "calendar folder.</para>"
 msgstr ""
 
-#: akonadicollectionview.cpp:545
+#: akonadicollectionview.cpp:547
 #, fuzzy, kde-kuit-format
 #| msgctxt "@info"
 #| msgid ""
@@ -1671,31 +1615,31 @@ msgid ""
 "folder?"
 msgstr "您確定要將您的預設行事曆替換為 \"%1\" 嗎？"
 
-#: akonadicollectionview.cpp:550
+#: akonadicollectionview.cpp:552
 #, kde-format
 msgctxt "@title:window"
 msgid "Replace Default Calendar?"
 msgstr "替換預設行事曆？"
 
-#: akonadicollectionview.cpp:554 akonadicollectionview.cpp:924
+#: akonadicollectionview.cpp:556 akonadicollectionview.cpp:926
 #, kde-kuit-format
 msgctxt "@info"
 msgid "<filename>%1</filename> is now your default event calendar"
 msgstr ""
 
-#: akonadicollectionview.cpp:710
+#: akonadicollectionview.cpp:712
 #, kde-format
 msgctxt "@title:window"
 msgid "Add Calendar"
 msgstr "新增行事曆"
 
-#: akonadicollectionview.cpp:729
+#: akonadicollectionview.cpp:731
 #, kde-kuit-format
 msgctxt "@info"
 msgid "Add new calendar failed: <message>%1</message>"
 msgstr ""
 
-#: akonadicollectionview.cpp:786
+#: akonadicollectionview.cpp:788
 #, kde-kuit-format
 msgctxt "@info"
 msgid ""
@@ -1705,7 +1649,7 @@ msgid ""
 "be added again at any time.</note></para>"
 msgstr ""
 
-#: akonadicollectionview.cpp:796
+#: akonadicollectionview.cpp:798
 #, kde-kuit-format
 msgctxt "@info"
 msgid ""
@@ -1718,7 +1662,7 @@ msgid ""
 "para>"
 msgstr ""
 
-#: akonadicollectionview.cpp:807
+#: akonadicollectionview.cpp:809
 #, kde-kuit-format
 msgctxt "@info"
 msgid ""
@@ -1730,7 +1674,7 @@ msgid ""
 "to select a new default calendar folder.</warning></para>"
 msgstr ""
 
-#: akonadicollectionview.cpp:817
+#: akonadicollectionview.cpp:819
 #, kde-kuit-format
 msgctxt "@info"
 msgid ""
@@ -1742,7 +1686,7 @@ msgid ""
 "calendar.</warning></para>"
 msgstr ""
 
-#: akonadicollectionview.cpp:829
+#: akonadicollectionview.cpp:831
 #, kde-kuit-format
 msgctxt "@info"
 msgid ""
@@ -1751,7 +1695,7 @@ msgid ""
 "pressing the %2 button.</warning></para>"
 msgstr ""
 
-#: akonadicollectionview.cpp:836
+#: akonadicollectionview.cpp:838
 #, kde-kuit-format
 msgctxt "@info"
 msgid ""
@@ -1762,13 +1706,13 @@ msgid ""
 "default calendar.</warning></para>"
 msgstr ""
 
-#: akonadicollectionview.cpp:847 akonadicollectionview.cpp:876
+#: akonadicollectionview.cpp:849 akonadicollectionview.cpp:878
 #, kde-format
 msgctxt "@title:window"
 msgid "Delete Calendar"
 msgstr "刪除行事曆"
 
-#: akonadicollectionview.cpp:871
+#: akonadicollectionview.cpp:873
 #, kde-kuit-format
 msgctxt "@info"
 msgid ""
@@ -1778,26 +1722,26 @@ msgid ""
 "para>"
 msgstr ""
 
-#: akonadicollectionview.cpp:886
+#: akonadicollectionview.cpp:888
 #, kde-kuit-format
 msgctxt "@info"
 msgid ""
 "Delete calendar failed: <message>Invalid Akonadi agent instance</message>"
 msgstr ""
 
-#: akonadicollectionview.cpp:929
+#: akonadicollectionview.cpp:931
 #, kde-format
 msgctxt "@info"
 msgid "Consider setting a default calendar for new events"
 msgstr ""
 
-#: akonadicollectionview.cpp:931
+#: akonadicollectionview.cpp:933
 #, kde-format
 msgctxt "@info"
 msgid "Consider adding a write-enabled events calendar"
 msgstr ""
 
-#: akonadicollectionview.cpp:953
+#: akonadicollectionview.cpp:955
 #, kde-kuit-format
 msgctxt "@info"
 msgid "Delete calendar failed: <message>%1</message>"
@@ -1827,21 +1771,21 @@ msgid ""
 "KOrganizer's main view here."
 msgstr "檢視您在 KOrganizer 中所選擇的事件、待辦事項或日誌項目的詳情。"
 
-#: calendarview.cpp:676
+#: calendarview.cpp:678
 #, fuzzy, kde-format
 #| msgid "Todo completed: %1 (%2)"
 msgctxt "@info/plain"
 msgid "Todo completed: %1 (%2)"
 msgstr "已完成待辦事項：%1（%2）"
 
-#: calendarview.cpp:685
+#: calendarview.cpp:687
 #, fuzzy, kde-format
 #| msgid "Journal of %1"
 msgctxt "@info/plain"
 msgid "Journal of %1"
 msgstr "%1 的日誌"
 
-#: calendarview.cpp:734
+#: calendarview.cpp:736
 #, fuzzy, kde-kuit-format
 #| msgid ""
 #| "The item \"%1\" is filtered by your current filter rules, so it will be "
@@ -1852,71 +1796,71 @@ msgid ""
 "so it will be hidden and not appear in the view."
 msgstr "項目 %1 已被您目前的過濾規則過濾掉了，所以不會在此檢視中顯示。"
 
-#: calendarview.cpp:812
+#: calendarview.cpp:814
 #, kde-format
 msgctxt "@info"
 msgid "Do you really want to permanently remove the item \"%1\"?"
 msgstr "您確定要永久刪除項目 %1 嗎？"
 
-#: calendarview.cpp:813
+#: calendarview.cpp:815
 #, kde-format
 msgctxt "@title:window"
 msgid "Delete Item?"
 msgstr "要刪除此項目嗎？"
 
-#: calendarview.cpp:888
+#: calendarview.cpp:890
 #, fuzzy, kde-format
 #| msgid "Paste failed: unable to determine a valid target date."
 msgctxt "@info"
 msgid "Paste failed: unable to determine a valid target date."
 msgstr "貼上失敗：無法決定正確的目標日期。"
 
-#: calendarview.cpp:1300
+#: calendarview.cpp:1302
 #, fuzzy, kde-format
 #| msgid "Make sub-to-dos independent"
 msgctxt "@info/plain"
 msgid "Make sub-to-dos independent"
 msgstr "將子待辦事項獨立出來"
 
-#: calendarview.cpp:1357
+#: calendarview.cpp:1359
 #, fuzzy, kde-format
 #| msgid "Toggle Reminder"
 msgctxt "@info/plain"
 msgid "Toggle Reminder"
 msgstr "切換提醒"
 
-#: calendarview.cpp:1389 calendarview.cpp:1441
+#: calendarview.cpp:1391 calendarview.cpp:1443
 #, fuzzy, kde-format
 #| msgid "Toggle To-do Completed"
 msgctxt "@info/plain"
 msgid "Toggle To-do Completed"
 msgstr "切換待辦事項完成標記"
 
-#: calendarview.cpp:1493
+#: calendarview.cpp:1495
 #, kde-format
 msgctxt "@info"
 msgid "\"%1\" was successfully copied to %2."
 msgstr "%1 已成功複製到 %2。"
 
-#: calendarview.cpp:1494
+#: calendarview.cpp:1496
 #, kde-format
 msgctxt "@title:window"
 msgid "Copying Succeeded"
 msgstr "複製成功"
 
-#: calendarview.cpp:1498
+#: calendarview.cpp:1500
 #, kde-format
 msgctxt "@info"
 msgid "Unable to copy the item \"%1\" to %2."
 msgstr "無法複製此項目 %1 到 %2。"
 
-#: calendarview.cpp:1499 calendarview.cpp:2467
+#: calendarview.cpp:1501 calendarview.cpp:2469
 #, kde-format
 msgctxt "@title:window"
 msgid "Copying Failed"
 msgstr "複製失敗"
 
-#: calendarview.cpp:1558
+#: calendarview.cpp:1560
 #, kde-format
 msgctxt "@info"
 msgid ""
@@ -1924,51 +1868,51 @@ msgid ""
 "of this item has been put into %2"
 msgstr "無法從原始行事曆移除項目 \"%1\"。不過，此項目的複本已放入 %2"
 
-#: calendarview.cpp:1562 calendarview.cpp:1578 calendarview.cpp:2502
+#: calendarview.cpp:1564 calendarview.cpp:1580 calendarview.cpp:2504
 #, kde-format
 msgctxt "@title:window"
 msgid "Moving Failed"
 msgstr "移動失敗"
 
-#: calendarview.cpp:1567
+#: calendarview.cpp:1569
 #, kde-format
 msgctxt "@info"
 msgid "\"%1\" was successfully moved from %2 to %3."
 msgstr "\"%1\" 已成功從 %2 移到 %3。"
 
-#: calendarview.cpp:1568
+#: calendarview.cpp:1570
 #, kde-format
 msgctxt "@title:window"
 msgid "Moving Succeeded"
 msgstr "移動成功"
 
-#: calendarview.cpp:1574
+#: calendarview.cpp:1576
 #, kde-format
 msgctxt "@info"
 msgid "Unable to add the item \"%1\" into %2. This item has not been moved."
 msgstr "無法將項目 %1 新增到 %2。此項目未被移動。"
 
-#: calendarview.cpp:1613
+#: calendarview.cpp:1615
 #, fuzzy, kde-format
 #| msgid "Do you want to dissociate the occurrence on %1 from the recurrence?"
 msgctxt "@info"
 msgid "Do you want to dissociate the occurrence on %1 from the recurrence?"
 msgstr "您要將於 %1 發生的事件從循環中分離出來嗎？ "
 
-#: calendarview.cpp:1617 calendarview.cpp:1630 calendarview.cpp:2283
-#: calendarview.cpp:2342 calendarview.cpp:2372
+#: calendarview.cpp:1619 calendarview.cpp:1632 calendarview.cpp:2285
+#: calendarview.cpp:2344 calendarview.cpp:2374
 #, kde-format
 msgctxt "@title:window"
 msgid "KOrganizer Confirmation"
 msgstr "KOrganizer 確認"
 
-#: calendarview.cpp:1618
+#: calendarview.cpp:1620
 #, kde-format
 msgctxt "@action:button"
 msgid "&Dissociate"
 msgstr "分離(&D)"
 
-#: calendarview.cpp:1625
+#: calendarview.cpp:1627
 #, fuzzy, kde-format
 #| msgid ""
 #| "Do you want to dissociate the occurrence on %1 from the recurrence or "
@@ -1979,53 +1923,53 @@ msgid ""
 "dissociate future ones?"
 msgstr "您要將於 %1 發生的事件從循環中分離出來，還是要把將來的事件一起分離？ "
 
-#: calendarview.cpp:1631
+#: calendarview.cpp:1633
 #, kde-format
 msgctxt "@action:button"
 msgid "&Only Dissociate This One"
 msgstr "只分離此事件(&O)"
 
-#: calendarview.cpp:1632
+#: calendarview.cpp:1634
 #, kde-format
 msgctxt "@action:button"
 msgid "&Also Dissociate Future Ones"
 msgstr "將未來的事件一起分離(&A)"
 
-#: calendarview.cpp:1650
+#: calendarview.cpp:1652
 #, fuzzy, kde-format
 #| msgid "Dissociate future occurrences"
 msgctxt "@info/plain"
 msgid "Dissociate future occurrences"
 msgstr "分離未來的事件"
 
-#: calendarview.cpp:1652
+#: calendarview.cpp:1654
 #, fuzzy, kde-format
 #| msgid "Dissociate occurrence"
 msgctxt "@info/plain"
 msgid "Dissociate occurrence"
 msgstr "分離此事件"
 
-#: calendarview.cpp:1659
+#: calendarview.cpp:1661
 #, fuzzy, kde-format
 #| msgid "Dissociating the future occurrences failed."
 msgctxt "@info"
 msgid "Dissociating the future occurrences failed."
 msgstr "分離未來的事件失敗。"
 
-#: calendarview.cpp:1659 calendarview.cpp:1661
+#: calendarview.cpp:1661 calendarview.cpp:1663
 #, kde-format
 msgctxt "@title:window"
 msgid "Dissociating Failed"
 msgstr "分離失敗"
 
-#: calendarview.cpp:1661
+#: calendarview.cpp:1663
 #, fuzzy, kde-format
 #| msgid "Dissociating the occurrence failed."
 msgctxt "@info"
 msgid "Dissociating the occurrence failed."
 msgstr "分離此事件時失敗。"
 
-#: calendarview.cpp:1816
+#: calendarview.cpp:1818
 #, fuzzy, kde-format
 #| msgctxt "@info:status"
 #| msgid "Export calendar to file"
@@ -2033,20 +1977,20 @@ msgctxt "@title:window"
 msgid "Export Calendar to File"
 msgstr "匯出行事曆到檔案"
 
-#: calendarview.cpp:1829
+#: calendarview.cpp:1831
 #, fuzzy, kde-kuit-format
 #| msgid "Do you want to overwrite %1?"
 msgctxt "@info"
 msgid "Do you want to overwrite <filename>%1</filename>?"
 msgstr "您要覆寫 %1 嗎？"
 
-#: calendarview.cpp:1830
+#: calendarview.cpp:1832
 #, kde-format
 msgctxt "@title:window"
 msgid "Export Calendar"
 msgstr "匯出行事曆"
 
-#: calendarview.cpp:1844
+#: calendarview.cpp:1846
 #, fuzzy, kde-format
 #| msgctxt "save failure cause unknown"
 #| msgid "Reason unknown"
@@ -2054,7 +1998,7 @@ msgctxt "@info save failure cause unknown"
 msgid "Reason unknown"
 msgstr "理由未知"
 
-#: calendarview.cpp:1846
+#: calendarview.cpp:1848
 #, fuzzy, kde-kuit-format
 #| msgctxt "@info"
 #| msgid "Cannot write iCalendar file %1. %2"
@@ -2063,14 +2007,14 @@ msgid ""
 "Cannot write iCalendar file <filename>%1</filename>: <message>%2</message>"
 msgstr "無法寫入 iCalendar 檔案 %1。%2"
 
-#: calendarview.cpp:1955 calendarview.cpp:2000
+#: calendarview.cpp:1957 calendarview.cpp:2002
 #, fuzzy, kde-format
 #| msgid "No filter"
 msgctxt "@info/plain"
 msgid "No filter"
 msgstr "沒有過濾器"
 
-#: calendarview.cpp:2278
+#: calendarview.cpp:2280
 #, fuzzy, kde-kuit-format
 #| msgid ""
 #| "The item \"%1\" has sub-to-dos. Do you want to delete just this item and "
@@ -2085,19 +2029,19 @@ msgstr ""
 "項目 %1 有子待辦事項。您要只刪除此項目，並讓所有的子待辦事項獨立出來，還是連"
 "同子待辦事項一起刪除？"
 
-#: calendarview.cpp:2284
+#: calendarview.cpp:2286
 #, kde-format
 msgctxt "@action:button"
 msgid "Delete Only This"
 msgstr "只刪除此項目"
 
-#: calendarview.cpp:2285 calendarview.cpp:2343
+#: calendarview.cpp:2287 calendarview.cpp:2345
 #, kde-format
 msgctxt "@action:button"
 msgid "Delete All"
 msgstr "全部刪除"
 
-#: calendarview.cpp:2317
+#: calendarview.cpp:2319
 #, fuzzy, kde-kuit-format
 #| msgid ""
 #| "The item \"%1\" is marked read-only and cannot be deleted; it probably "
@@ -2108,14 +2052,14 @@ msgid ""
 "it probably belongs to a read-only calendar."
 msgstr "項目 %1 標記為唯讀，因此無法刪除。有可能此項目屬於一個唯讀的行事曆。"
 
-#: calendarview.cpp:2320
+#: calendarview.cpp:2322
 #, fuzzy, kde-format
 #| msgid "Removing not possible"
 msgctxt "@title:window"
 msgid "Removing not possible"
 msgstr "無法移除"
 
-#: calendarview.cpp:2339
+#: calendarview.cpp:2341
 #, fuzzy, kde-kuit-format
 #| msgid ""
 #| "The calendar item \"%1\" recurs over multiple dates; are you sure you "
@@ -2127,14 +2071,14 @@ msgid ""
 msgstr ""
 "行事曆項目 %1 會在許多時候循環發生。您確定要刪除此項目及其所有的循環規則嗎？"
 
-#: calendarview.cpp:2350
+#: calendarview.cpp:2352
 #, fuzzy, kde-format
 #| msgid "Also Delete &Future"
 msgctxt "@action:button"
 msgid "Also Delete &Future"
 msgstr "刪除未來的提醒(&F)"
 
-#: calendarview.cpp:2354
+#: calendarview.cpp:2356
 #, fuzzy, kde-kuit-format
 #| msgid ""
 #| "The calendar item \"%1\" recurs over multiple dates. Do you want to "
@@ -2149,7 +2093,7 @@ msgstr ""
 "行事曆項目 %1 會在許多時候循環發生。您要只刪除 %2 上目前的循環，刪除所有未來"
 "的循環，還是刪除所有的循環規則？"
 
-#: calendarview.cpp:2361
+#: calendarview.cpp:2363
 #, fuzzy, kde-kuit-format
 #| msgid ""
 #| "The calendar item \"%1\" recurs over multiple dates. Do you want to "
@@ -2162,28 +2106,28 @@ msgstr ""
 "行事曆項目 %1 會在許多時候循環發生。您要只刪除 %2 上目前的循環，還是刪除所有"
 "的循環規則？"
 
-#: calendarview.cpp:2373
+#: calendarview.cpp:2375
 #, fuzzy, kde-format
 #| msgid "Delete C&urrent"
 msgctxt "@action:button"
 msgid "Delete C&urrent"
 msgstr "刪除目前的(&U)"
 
-#: calendarview.cpp:2375
+#: calendarview.cpp:2377
 #, fuzzy, kde-format
 #| msgid "Delete &All"
 msgctxt "@action:button"
 msgid "Delete &All"
 msgstr "全部刪除(&A)"
 
-#: calendarview.cpp:2406 calendarview.cpp:2413
+#: calendarview.cpp:2408 calendarview.cpp:2415
 #, fuzzy, kde-format
 #| msgid "Delete \"%1\""
 msgctxt "@info/plain"
 msgid "Delete \"%1\""
 msgstr "刪除 \"%1\""
 
-#: calendarview.cpp:2445
+#: calendarview.cpp:2447
 #, fuzzy, kde-format
 #| msgid ""
 #| "All calendars are unchecked in the Calendar Manager. No to-do was purged."
@@ -2192,54 +2136,54 @@ msgid ""
 "All calendars are unchecked in the Calendar Manager. No to-do was purged."
 msgstr "所有行事曆在行事曆管理員中都未被勾選，所以沒有移除任何待辦事項。"
 
-#: calendarview.cpp:2450 calendarview.cpp:2705
+#: calendarview.cpp:2452 calendarview.cpp:2707
 #, fuzzy, kde-format
 #| msgid "There are no completed to-dos to purge."
 msgctxt "@info"
 msgid "There are no completed to-dos to purge."
 msgstr "沒有已完成的待辦事項需要移除。"
 
-#: calendarview.cpp:2455
+#: calendarview.cpp:2457
 #, fuzzy, kde-format
 #| msgid "Delete all completed to-dos from checked calendars?"
 msgctxt "@info"
 msgid "Delete all completed to-dos from checked calendars?"
 msgstr "要從勾選的行事曆中刪除所有已完成的待辦事項嗎？"
 
-#: calendarview.cpp:2456
+#: calendarview.cpp:2458
 #, kde-format
 msgctxt "@title:window"
 msgid "Purge To-dos"
 msgstr "清除待辦事項"
 
-#: calendarview.cpp:2457
+#: calendarview.cpp:2459
 #, kde-format
 msgctxt "@action:button"
 msgid "Purge"
 msgstr "清除"
 
-#: calendarview.cpp:2467
+#: calendarview.cpp:2469
 #, fuzzy, kde-kuit-format
 #| msgid "Unable to copy the item to %1."
 msgctxt "@info"
 msgid "Unable to copy item <resource>%1</resource>."
 msgstr "無法複製此項目到 %1。"
 
-#: calendarview.cpp:2502
+#: calendarview.cpp:2504
 #, fuzzy, kde-kuit-format
 #| msgid "Unable to move the item to  %1."
 msgctxt "@info"
 msgid "Unable to move item <resource>%1</resource>."
 msgstr "無法移動此項目到 %1。"
 
-#: calendarview.cpp:2697
+#: calendarview.cpp:2699
 #, fuzzy, kde-kuit-format
 #| msgid "0 completed to-dos were purged."
 msgctxt "@info"
 msgid "0 completed to-dos were purged.<nl/>"
 msgstr "0 個完成的待辦事項已被移除。"
 
-#: calendarview.cpp:2699 calendarview.cpp:2710
+#: calendarview.cpp:2701 calendarview.cpp:2712
 #, fuzzy, kde-format, kde-kuit-format
 #| msgid ""
 #| "%1 to-do was ignored because it has uncompleted or read-only children."
@@ -2252,7 +2196,7 @@ msgid_plural ""
 "%1 to-dos were ignored because they have uncompleted or read-only children."
 msgstr[0] "%1 個待辦事項被忽略，因為它們有未完成或唯讀的子待辦事項。"
 
-#: calendarview.cpp:2703 calendarview.cpp:2708
+#: calendarview.cpp:2705 calendarview.cpp:2710
 #, fuzzy, kde-format
 #| msgid "%1 completed to-do was purged."
 #| msgid_plural "%1 completed to-dos were purged."
@@ -2261,14 +2205,14 @@ msgid "%1 completed to-do was purged."
 msgid_plural "%1 completed to-dos were purged."
 msgstr[0] "%1 個完成的待辦事項已被移除。"
 
-#: calendarview.cpp:2715
+#: calendarview.cpp:2717
 #, fuzzy, kde-kuit-format
 #| msgid "An error occurred while purging completed to-dos: %1"
 msgctxt "@info"
 msgid "An error occurred while purging completed to-dos: <message>%1</message>"
 msgstr "清除已完成的待辦事項時發生錯誤：%1"
 
-#: calendarview.cpp:2769
+#: calendarview.cpp:2771
 #, fuzzy, kde-kuit-format
 #| msgid ""
 #| "You created an incidence in a calendar that is currently filtered out.\n"
@@ -2283,7 +2227,7 @@ msgstr ""
 "您在目前被過濾掉的行事曆中建立了一個事件。\n"
 "在左邊的側列，請在行事曆管理員中將它開啟以便看到此事件。"
 
-#: calendarview.cpp:2773
+#: calendarview.cpp:2775
 #, fuzzy, kde-kuit-format
 #| msgid ""
 #| "You created an incidence in a calendar that is currently filtered out.\n"
@@ -3730,17 +3674,17 @@ msgstr "列出能用於使用者回饋的選項"
 msgid "KOrganizer"
 msgstr "KOrganizer"
 
-#: koviewmanager.cpp:506
+#: koviewmanager.cpp:500
 #, kde-format
 msgid "Merged calendar"
 msgstr "合併行事曆"
 
-#: koviewmanager.cpp:521
+#: koviewmanager.cpp:515
 #, kde-format
 msgid "Calendars Side by Side"
 msgstr "並排顯示行事曆"
 
-#: koviewmanager.cpp:559
+#: koviewmanager.cpp:553
 #, kde-format
 msgid ""
 "Unable to display the work week since there are no work days configured. "
