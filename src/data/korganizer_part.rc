@@ -1,5 +1,5 @@
 <!DOCTYPE gui>
-<gui name="korganizer" version="448" translationDomain="korganizer">
+<gui name="korganizer" version="449" translationDomain="korganizer">
   <MenuBar>
     <Menu name="file"><text>&amp;File</text>
       <Merge/>
@@ -10,7 +10,6 @@
       <Separator/>
       <Menu name="import"><text>&amp;Import</text>
         <Action name="import_icalendar"/>
-        <Action name="import_ical"/>
       </Menu>
       <Menu name="export"><text>&amp;Export</text>
         <Action name="export_icalendar"/>
