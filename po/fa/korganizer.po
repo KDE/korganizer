@@ -8,7 +8,7 @@ msgid ""
 msgstr ""
 "Project-Id-Version: korganizer\n"
 "Report-Msgid-Bugs-To: https://bugs.kde.org\n"
-"POT-Creation-Date: 2025-06-04 00:43+0000\n"
+"POT-Creation-Date: 2025-06-08 00:43+0000\n"
 "PO-Revision-Date: 2012-01-13 10:32+0330\n"
 "Last-Translator: Mohammad Reza Mirdamadi <mohi@ubuntu.ir>\n"
 "Language-Team: Farsi (Persian) <>\n"
@@ -2369,67 +2369,67 @@ msgid "&Import"
 msgstr "&واردات‌"
 
 #. i18n: ectx: Menu (export)
-#: data/korganizer_part.rc:15 data/korganizerui.rc:13
+#: data/korganizer_part.rc:14 data/korganizerui.rc:12
 #, kde-format
 msgid "&Export"
 msgstr "&صادرات‌"
 
 #. i18n: ectx: Menu (edit)
-#: data/korganizer_part.rc:24 data/korganizerui.rc:22
+#: data/korganizer_part.rc:23 data/korganizerui.rc:21
 #, kde-format
 msgid "&Edit"
 msgstr "&ویرایش‌"
 
 #. i18n: ectx: Menu (view)
-#: data/korganizer_part.rc:36 data/korganizerui.rc:28
+#: data/korganizer_part.rc:35 data/korganizerui.rc:27
 #, kde-format
 msgid "&View"
 msgstr "&نما‌"
 
 #. i18n: ectx: Menu (zoom)
-#: data/korganizer_part.rc:52 data/korganizerui.rc:45
+#: data/korganizer_part.rc:51 data/korganizerui.rc:44
 #, kde-format
 msgid "&Zoom"
 msgstr "&بزرگ‌نمایی‌"
 
 #. i18n: ectx: Menu (go)
-#: data/korganizer_part.rc:60 data/korganizerui.rc:54
+#: data/korganizer_part.rc:59 data/korganizerui.rc:53
 #, kde-format
 msgid "&Go"
 msgstr "&برو‌"
 
 #. i18n: ectx: Menu (actions)
-#: data/korganizer_part.rc:66 data/korganizerui.rc:62
+#: data/korganizer_part.rc:65 data/korganizerui.rc:61
 #, kde-format
 msgid "&Actions"
 msgstr "&کنشها‌"
 
 #. i18n: ectx: Menu (schedule)
-#: data/korganizer_part.rc:83 data/korganizerui.rc:81
+#: data/korganizer_part.rc:82 data/korganizerui.rc:80
 #, kde-format
 msgid "S&chedule"
 msgstr "&زمان‌بندی‌"
 
 #. i18n: ectx: Menu (settings)
-#: data/korganizer_part.rc:95 data/korganizerui.rc:94
+#: data/korganizer_part.rc:94 data/korganizerui.rc:93
 #, kde-format
 msgid "&Settings"
 msgstr "&تنظیمات‌"
 
 #. i18n: ectx: Menu (sidebar)
-#: data/korganizer_part.rc:96 data/korganizerui.rc:97
+#: data/korganizer_part.rc:95 data/korganizerui.rc:96
 #, kde-format
 msgid "&Sidebar"
 msgstr "&میله جانبی‌"
 
 #. i18n: ectx: Menu (help)
-#: data/korganizer_part.rc:114 data/korganizerui.rc:112
+#: data/korganizer_part.rc:113 data/korganizerui.rc:111
 #, kde-format
 msgid "&Help"
 msgstr "&کمک‌"
 
 #. i18n: ectx: ToolBar (mainToolBar)
-#: data/korganizer_part.rc:119 data/korganizerui.rc:117
+#: data/korganizer_part.rc:118 data/korganizerui.rc:116
 #, fuzzy, kde-format
 #| msgid "Main"
 msgctxt "main toolbar"
@@ -2437,19 +2437,19 @@ msgid "Main"
 msgstr "اصلی"
 
 #. i18n: ectx: ToolBar (korganizer_toolbar)
-#: data/korganizer_part.rc:131 data/korganizerui.rc:129
+#: data/korganizer_part.rc:130 data/korganizerui.rc:128
 #, kde-format
 msgid "Views"
 msgstr "نماها"
 
 #. i18n: ectx: ToolBar (schedule_toolbar)
-#: data/korganizer_part.rc:140 data/korganizerui.rc:138
+#: data/korganizer_part.rc:139 data/korganizerui.rc:137
 #, kde-format
 msgid "Schedule"
 msgstr "زمان‌بندی"
 
 #. i18n: ectx: ToolBar (filter_toolbar)
-#: data/korganizer_part.rc:146 data/korganizerui.rc:145
+#: data/korganizer_part.rc:145 data/korganizerui.rc:144
 #, kde-format
 msgid "Filters Toolbar"
 msgstr "میله ابزار پالایه‌ها"
