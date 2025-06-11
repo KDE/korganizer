@@ -15,7 +15,7 @@ msgstr ""
 "Project-Id-Version: korganizer\n"
 "Report-Msgid-Bugs-To: https://bugs.kde.org\n"
 "POT-Creation-Date: 2025-04-18 02:33+0000\n"
-"PO-Revision-Date: 2025-06-09 21:54+0900\n"
+"PO-Revision-Date: 2025-06-10 12:26+0900\n"
 "Last-Translator: Kisaragi Hiu <mail@kisaragi-hiu.com>\n"
 "Language-Team: Traditional Chinese <zh-l10n@lists.slat.org>\n"
 "Language: zh_TW\n"
@@ -3622,7 +3622,7 @@ msgstr "選取每週的第一天。一般來說，您可以忽略此選項，因
 #: settings/korganizer.kcfg:51
 #, kde-format
 msgid "Daily starting hour"
-msgstr "每日開始工作時間"
+msgstr "每日開始時間"
 
 #. i18n: ectx: whatsthis, entry (WorkingHoursStart), group (Time &amp; Date)
 #: settings/korganizer.kcfg:52
@@ -5374,13 +5374,11 @@ msgstr "包含指定日期範圍內的待辦事項(&W)"
 
 #. i18n: ectx: property (toolTip), widget (QCheckBox, unfiltered)
 #: ui/searchdialog_base.ui:325
-#, fuzzy, kde-format
-#| msgctxt "@info:whatsthis"
-#| msgid "Press this button to remove the currently active filter."
+#, kde-format
 msgid ""
 "Uncheck this box to skip incidences matching the currently selected view "
 "filter"
-msgstr "按下此鍵以移除目前啟用的過濾器。"
+msgstr "取消勾選此方塊來跳過符合目前所選檢視過濾器的事件"
 
 #. i18n: ectx: property (whatsThis), widget (QCheckBox, unfiltered)
 #: ui/searchdialog_base.ui:328
@@ -5389,12 +5387,14 @@ msgid ""
 "When this box is checked all incidences will be considered in the search, "
 "even those that aren't displayed according the currently selected view filter"
 msgstr ""
+"此方塊勾選時所有事件都會包含在搜尋當中，包含依目前所選檢視過濾器而未顯示的重"
+"複事件在內"
 
 #. i18n: ectx: property (text), widget (QCheckBox, unfiltered)
 #: ui/searchdialog_base.ui:331
 #, kde-format
 msgid "Include all incidences matched by view filter"
-msgstr ""
+msgstr "包含所有檢視過濾器所符合的重複事件"
 
 #. i18n: ectx: property (text), widget (QPushButton, mDayBtn)
 #: views/collectionview/quickview.ui:34

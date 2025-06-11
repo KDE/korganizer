@@ -10,20 +10,20 @@
 # Frank Weng (a.k.a. Franklin) <franklin at goodhorse dot idv dot tw>, 2006, 2007, 2008, 2009, 2010.
 # Franklin Weng <franklin at goodhorse dot idv dot tw>, 2007, 2008.
 # pan93412 <pan93412@gmail.com>, 2019.
-# SPDX-FileCopyrightText: 2023, 2024 Kisaragi Hiu <mail@kisaragi-hiu.com>
+# SPDX-FileCopyrightText: 2023, 2024, 2025 Kisaragi Hiu <mail@kisaragi-hiu.com>
 msgid ""
 msgstr ""
 "Project-Id-Version: korganizer\n"
 "Report-Msgid-Bugs-To: https://bugs.kde.org\n"
 "POT-Creation-Date: 2024-07-30 00:42+0000\n"
-"PO-Revision-Date: 2024-08-09 03:47+0900\n"
+"PO-Revision-Date: 2025-06-10 12:30+0900\n"
 "Last-Translator: Kisaragi Hiu <mail@kisaragi-hiu.com>\n"
 "Language-Team: Traditional Chinese <zh-l10n@lists.slat.org>\n"
 "Language: zh_TW\n"
 "MIME-Version: 1.0\n"
 "Content-Type: text/plain; charset=UTF-8\n"
 "Content-Transfer-Encoding: 8bit\n"
-"X-Generator: Lokalize 24.04.70\n"
+"X-Generator: Lokalize 25.07.70\n"
 "Plural-Forms: nplurals=1; plural=0;\n"
 
 #: datenums/configdialog.cpp:28
@@ -148,7 +148,7 @@ msgstr "設定假日"
 #: hebrew/configdialog.cpp:42
 #, kde-format
 msgid "Use Israeli holidays"
-msgstr "使用以色列鍵盤"
+msgstr "使用以色列假日"
 
 #: hebrew/configdialog.cpp:46
 #, kde-format
@@ -697,7 +697,7 @@ msgstr "縮圖外觀比例模式"
 #, kde-format
 msgctxt "@option:radio"
 msgid "Ignore aspect ratio"
-msgstr "忽略外觀的比例"
+msgstr "忽略外觀比例"
 
 #: picoftheday/configdialog.cpp:48
 #, kde-format
