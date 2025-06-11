@@ -10,20 +10,20 @@
 # Frank Weng (a.k.a. Franklin) <franklin at goodhorse dot idv dot tw>, 2006, 2007, 2008, 2009, 2010.
 # Franklin Weng <franklin at goodhorse dot idv dot tw>, 2007, 2008.
 # pan93412 <pan93412@gmail.com>, 2019.
-# SPDX-FileCopyrightText: 2023, 2024 Kisaragi Hiu <mail@kisaragi-hiu.com>
+# SPDX-FileCopyrightText: 2023, 2024, 2025 Kisaragi Hiu <mail@kisaragi-hiu.com>
 msgid ""
 msgstr ""
 "Project-Id-Version: korganizer\n"
 "Report-Msgid-Bugs-To: https://bugs.kde.org\n"
 "POT-Creation-Date: 2025-04-19 00:42+0000\n"
-"PO-Revision-Date: 2024-08-09 03:47+0900\n"
+"PO-Revision-Date: 2025-06-10 12:30+0900\n"
 "Last-Translator: Kisaragi Hiu <mail@kisaragi-hiu.com>\n"
 "Language-Team: Traditional Chinese <zh-l10n@lists.slat.org>\n"
 "Language: zh_TW\n"
 "MIME-Version: 1.0\n"
 "Content-Type: text/plain; charset=UTF-8\n"
 "Content-Transfer-Encoding: 8bit\n"
-"X-Generator: Lokalize 24.04.70\n"
+"X-Generator: Lokalize 25.07.70\n"
 "Plural-Forms: nplurals=1; plural=0;\n"
 
 #: datenums/configdialog.cpp:28
@@ -33,8 +33,7 @@ msgid "Configure Day Numbers"
 msgstr "設定日期編號"
 
 #: datenums/configdialog.cpp:43
-#, fuzzy, kde-format
-#| msgid "Show Date Number"
+#, kde-format
 msgctxt "@title:group"
 msgid "Show Date Number"
 msgstr "顯示日期編號"
@@ -150,7 +149,7 @@ msgstr "設定假日"
 #: hebrew/configdialog.cpp:42
 #, kde-format
 msgid "Use Israeli holidays"
-msgstr "使用以色列鍵盤"
+msgstr "使用以色列假日"
 
 #: hebrew/configdialog.cpp:46
 #, kde-format
@@ -691,8 +690,7 @@ msgid "Configure Picture of the Day"
 msgstr "設定本日圖片"
 
 #: picoftheday/configdialog.cpp:42
-#, fuzzy, kde-format
-#| msgid "Thumbnail Aspect Ratio Mode"
+#, kde-format
 msgctxt "@title:group"
 msgid "Thumbnail Aspect Ratio Mode"
 msgstr "縮圖外觀比例模式"
@@ -701,13 +699,10 @@ msgstr "縮圖外觀比例模式"
 #, kde-format
 msgctxt "@option:radio"
 msgid "Ignore aspect ratio"
-msgstr "忽略外觀的比例"
+msgstr "忽略外觀比例"
 
 #: picoftheday/configdialog.cpp:48
-#, fuzzy, kde-format
-#| msgid ""
-#| "The thumbnail will be scaled freely. The aspect ratio will not be "
-#| "preserved."
+#, kde-format
 msgctxt "@info:whatsthis"
 msgid ""
 "The thumbnail will be scaled freely. The aspect ratio will not be preserved."
@@ -720,15 +715,12 @@ msgid "Keep aspect ratio"
 msgstr "保留外觀比例"
 
 #: picoftheday/configdialog.cpp:54
-#, fuzzy, kde-format
-#| msgid ""
-#| "The thumbnail will be scaled to a rectangle as large as possible inside a "
-#| "given rectangle, preserving the aspect ratio."
+#, kde-format
 msgctxt "@info:whatsthis"
 msgid ""
 "The thumbnail will be scaled to a rectangle as large as possible inside a "
 "given rectangle, preserving the aspect ratio."
-msgstr "縮圖會依照原有的比例，盡可能縮放到指定的矩形中。"
+msgstr "縮圖會保留原有筆記，盡可能縮放到一個矩形中。"
 
 #: picoftheday/configdialog.cpp:59
 #, kde-format
@@ -737,15 +729,12 @@ msgid "Keep aspect ratio by expanding"
 msgstr "擴張時保留外觀比例"
 
 #: picoftheday/configdialog.cpp:61
-#, fuzzy, kde-format
-#| msgid ""
-#| "The thumbnail will be scaled to a rectangle as small as possible outside "
-#| "a given rectangle, preserving the aspect ratio."
+#, kde-format
 msgctxt "@info:whatsthis"
 msgid ""
 "The thumbnail will be scaled to a rectangle as small as possible outside a "
 "given rectangle, preserving the aspect ratio."
-msgstr "縮圖會保留原有比例，並盡可能不超過矩形太多。"
+msgstr "縮圖會保留原有比例，並盡可能縮小到一個矩形外。"
 
 #: picoftheday/element.cpp:209
 #, kde-format

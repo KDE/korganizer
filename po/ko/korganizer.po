@@ -9,7 +9,7 @@ msgstr ""
 "Project-Id-Version: Korganizer\n"
 "Report-Msgid-Bugs-To: https://bugs.kde.org\n"
 "POT-Creation-Date: 2025-06-08 00:43+0000\n"
-"PO-Revision-Date: 2025-04-22 23:01+0200\n"
+"PO-Revision-Date: 2025-06-10 23:16+0200\n"
 "Last-Translator: Shinjo Park <kde@peremen.name>\n"
 "Language-Team: Korean <kde-kr@kde.org>\n"
 "Language: ko\n"
@@ -1203,11 +1203,10 @@ msgid "Show Date Navigator"
 msgstr "날짜 탐색기 표시"
 
 #: actionmanager.cpp:711
-#, fuzzy, kde-format
-#| msgid "Show icons in agenda view items"
+#, kde-format
 msgctxt "@action:inmenu"
 msgid "Show To-do List in Calendar Views"
-msgstr "일정 보기 항목에 아이콘 표시"
+msgstr "캘린더 보기에 할 일 표시"
 
 #: actionmanager.cpp:715
 #, kde-format
@@ -1698,10 +1697,7 @@ msgid "Delete calendar failed: <message>%1</message>"
 msgstr "캘린더 삭제 실패: <message>%1</message>"
 
 #: calendarview.cpp:252
-#, fuzzy, kde-kuit-format
-#| msgid ""
-#| "<para><emphasis>No Item Selected</emphasis></para><para>Select an event, "
-#| "to-do or journal entry to view its details here.</para>"
+#, kde-kuit-format
 msgctxt "@info"
 msgid ""
 "<para><emphasis>No Item Selected</emphasis></para><para>Select an event, to-"
@@ -1908,9 +1904,7 @@ msgid "Dissociating the occurrence failed."
 msgstr "현재 항목을 분리할 수 없습니다."
 
 #: calendarview.cpp:1818
-#, fuzzy, kde-format
-#| msgctxt "@info:status"
-#| msgid "Export calendar to file"
+#, kde-format
 msgctxt "@title:window"
 msgid "Export Calendar to File"
 msgstr "파일로 캘린더 내보내기"
@@ -2515,20 +2509,16 @@ msgid "&Paste"
 msgstr "붙여넣기(&P)"
 
 #: koeventpopupmenu.cpp:84 koeventpopupmenu.cpp:104
-#, fuzzy, kde-format
-#| msgctxt "@action:inmenu"
-#| msgid "New Event…"
+#, kde-format
 msgctxt "@action:inmenu"
 msgid "New Event"
-msgstr "새 이벤트…"
+msgstr "새 이벤트"
 
 #: koeventpopupmenu.cpp:89 koeventpopupmenu.cpp:101
-#, fuzzy, kde-format
-#| msgctxt "@action:inmenu"
-#| msgid "New To-do…"
+#, kde-format
 msgctxt "@action:inmenu"
 msgid "New To-do"
-msgstr "새 할 일…"
+msgstr "새 할 일"
 
 #: koeventpopupmenu.cpp:92
 #, kde-format
@@ -4292,17 +4282,15 @@ msgstr ""
 
 #. i18n: ectx: label, entry (WeekNumbersShow), group (General View)
 #: settings/korganizer.kcfg:97
-#, fuzzy, kde-format
-#| msgid "Print week &numbers"
+#, kde-format
 msgid "Show week numbers"
-msgstr "주차 표시(&N)"
+msgstr "주 번호 표시"
 
 #. i18n: ectx: whatsthis, entry (WeekNumbersShow), group (General View)
 #: settings/korganizer.kcfg:98
-#, fuzzy, kde-format
-#| msgid "Check this box to display the time in month view items."
+#, kde-format
 msgid "Check this box to show the Date Navigator's week numbers."
-msgstr "이 옵션을 사용하면 월간 보기 항목에 시간을 표시합니다."
+msgstr "이 옵션을 사용하면 날짜 탐색기에 주 번호를 표시합니다."
 
 #. i18n: ectx: label, entry (WeekNumbersShowWork), group (General View)
 #: settings/korganizer.kcfg:102
@@ -4312,17 +4300,15 @@ msgstr "업무 주간 모드에서 주 번호로 업무 주간 선택"
 
 #. i18n: ectx: whatsthis, entry (WeekNumbersShowWork), group (General View)
 #: settings/korganizer.kcfg:103
-#, fuzzy, kde-format
-#| msgid ""
-#| "Check this box to select a working week when clicking on the Date "
-#| "Navigator's week numbers, or uncheck it to choose the whole week."
+#, kde-format
 msgid ""
 "Check this box to select a working week when clicking on the Date "
 "Navigator's week numbers, or uncheck it to choose the whole week.  Ignored "
 "if week numbers are not shown."
 msgstr ""
 "이 옵션을 사용하면 날짜 탐색기의 주 번호를 클릭했을 때 업무 주간만 선택하며, "
-"사용하지 않으면 전체 주간을 선택합니다."
+"사용하지 않으면 전체 주간을 선택합니다. 주 번호를 표시하지 않을 때에는 무시됩"
+"니다."
 
 #. i18n: ectx: label, entry, group (Agenda View)
 #: settings/korganizer.kcfg:110
@@ -5578,20 +5564,7 @@ msgstr "가져올 때 전체 이메일 주소 사용(&A)"
 #. i18n: ectx: property (whatsThis), widget (QLineEdit, retrieveUrl)
 #. i18n: ectx: property (whatsThis), widget (QLabel, TextLabel7_2)
 #: ui/kogroupwareprefspage.ui:446 ui/kogroupwareprefspage.ui:461
-#, fuzzy, kde-format
-#| msgctxt "@info:whatsthis"
-#| msgid ""
-#| "Enter the URL for the server on which the Free/Busy information is "
-#| "published here.\n"
-#| "Ask the server administrator for this information.\n"
-#| "Here is a Kolab2 Server URL example:\n"
-#| "\n"
-#| "https://kolab2.example.com/freebusy/\n"
-#| "\n"
-#| "Alternatively, you can specify a full path to the Free/Busy. For "
-#| "example: \n"
-#| "\n"
-#| "https://kolab2.example.com/freebusy/user.xfb"
+#, kde-format
 msgctxt "@info:whatsthis"
 msgid ""
 "Enter the URL for the server on which the Free/Busy information is published "
@@ -5610,6 +5583,8 @@ msgstr ""
 "Kolab2 서버 URL 예제입니다:\n"
 "\n"
 "https://kolab2.example.com/freebusy/\n"
+"\n"
+"\n"
 "바쁨/한가함 정보의 전체 URL을 입력해도 됩니다. 예제:\n"
 "\n"
 "https://kolab2.example.com/freebusy/user.xfb"
