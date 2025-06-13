@@ -84,17 +84,14 @@ QAction *KOViewManager::viewToAction(const QString &view, RangeMode rangeMode)
         case WORK_WEEK_RANGE:
             action = ac->action(QStringLiteral("select_workweek"));
             break;
-        case WEEK_RANGE:
-            action = ac->action(QStringLiteral("select_week"));
-            break;
         case NEXTX_RANGE:
             action = ac->action(QStringLiteral("select_nextx"));
             break;
         case DAY_RANGE:
             action = ac->action(QStringLiteral("select_day"));
             break;
-        case NO_RANGE:
         default:
+            action = ac->action(QStringLiteral("select_week"));
             break;
         }
     }
