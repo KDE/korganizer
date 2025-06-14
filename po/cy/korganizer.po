@@ -11,7 +11,7 @@ msgid ""
 msgstr ""
 "Project-Id-Version: korganizer\n"
 "Report-Msgid-Bugs-To: https://bugs.kde.org\n"
-"POT-Creation-Date: 2025-06-08 00:43+0000\n"
+"POT-Creation-Date: 2025-06-14 00:43+0000\n"
 "PO-Revision-Date: 2004-02-25 13:53+0000\n"
 "Last-Translator: KD at KGyfieithu <kyfieithu@dotmon.com>\n"
 "Language-Team: Cymraeg <cy@li.org>\n"
@@ -3618,18 +3618,18 @@ msgstr ""
 msgid "KOrganizer"
 msgstr "KTrefnydd"
 
-#: koviewmanager.cpp:500
+#: koviewmanager.cpp:497
 #, fuzzy, kde-format
 #| msgid "Merged calendar '%1'."
 msgid "Merged calendar"
 msgstr "Calendr '%1' wedi ei gyfuno."
 
-#: koviewmanager.cpp:515
+#: koviewmanager.cpp:512
 #, kde-format
 msgid "Calendars Side by Side"
 msgstr ""
 
-#: koviewmanager.cpp:553
+#: koviewmanager.cpp:550
 #, kde-format
 msgid ""
 "Unable to display the work week since there are no work days configured. "

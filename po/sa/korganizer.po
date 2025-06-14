@@ -8,7 +8,7 @@ msgid ""
 msgstr ""
 "Project-Id-Version: korganizer\n"
 "Report-Msgid-Bugs-To: https://bugs.kde.org\n"
-"POT-Creation-Date: 2025-06-08 00:43+0000\n"
+"POT-Creation-Date: 2025-06-14 00:43+0000\n"
 "PO-Revision-Date: 2024-12-24 20:39+0530\n"
 "Last-Translator: kali <shreekantkalwar@gmail.com>\n"
 "Language-Team: Sanskrit <kde-i18n-doc@kde.org>\n"
@@ -3804,17 +3804,17 @@ msgstr "उपयोक्तृप्रतिक्रियायाः क�
 msgid "KOrganizer"
 msgstr "KOorganizer"
 
-#: koviewmanager.cpp:500
+#: koviewmanager.cpp:497
 #, kde-format
 msgid "Merged calendar"
 msgstr "विलीनं पञ्चाङ्गम्"
 
-#: koviewmanager.cpp:515
+#: koviewmanager.cpp:512
 #, kde-format
 msgid "Calendars Side by Side"
 msgstr "पञ्चाङ्गाः पार्श्वे पार्श्वे"
 
-#: koviewmanager.cpp:553
+#: koviewmanager.cpp:550
 #, kde-format
 msgid ""
 "Unable to display the work week since there are no work days configured. "

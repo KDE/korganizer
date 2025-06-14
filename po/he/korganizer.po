@@ -17,7 +17,7 @@ msgid ""
 msgstr ""
 "Project-Id-Version: korganizer\n"
 "Report-Msgid-Bugs-To: https://bugs.kde.org\n"
-"POT-Creation-Date: 2025-06-08 00:43+0000\n"
+"POT-Creation-Date: 2025-06-14 00:43+0000\n"
 "PO-Revision-Date: 2025-05-25 10:20+0300\n"
 "Last-Translator: Yaron Shahrabani <sh.yaron@gmail.com>\n"
 "Language-Team: צוות התרגום של KDE ישראל\n"
@@ -3622,17 +3622,17 @@ msgstr "הצגת האפשרויות הזמינות למשוב משתמש"
 msgid "KOrganizer"
 msgstr "KOrganizer"
 
-#: koviewmanager.cpp:500
+#: koviewmanager.cpp:497
 #, kde-format
 msgid "Merged calendar"
 msgstr "לוח השנה מוזג"
 
-#: koviewmanager.cpp:515
+#: koviewmanager.cpp:512
 #, kde-format
 msgid "Calendars Side by Side"
 msgstr "לוחות שנה זה לצד זה"
 
-#: koviewmanager.cpp:553
+#: koviewmanager.cpp:550
 #, kde-format
 msgid ""
 "Unable to display the work week since there are no work days configured. "
