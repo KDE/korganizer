@@ -1359,6 +1359,11 @@ void CalendarView::toggleAlarm(const Akonadi::Item &item)
     mChanger->startAtomicOperation(i18nc("@info/plain", "Toggle Reminder"));
     (void)mChanger->modifyIncidence(item, oldincidence, this);
     mChanger->endAtomicOperation();
+    if (incidence->hasEnabledAlarms()) {
+        showMessage(xi18nc("@info alarm enabled", "<message>%1</message> reminder is enabled", incidence->summary()), KMessageWidget::Information);
+    } else {
+        showMessage(xi18nc("@info alarm disabled", "<message>%1</message> reminder is disabled", incidence->summary()), KMessageWidget::Information);
+    }
 }
 
 void CalendarView::toggleTodoCompleted(const Akonadi::Item &item)
@@ -1391,6 +1396,8 @@ void CalendarView::toggleTodoCompleted(const Akonadi::Item &item)
     mChanger->startAtomicOperation(i18nc("@info/plain", "Toggle To-do Completed"));
     (void)mChanger->modifyIncidence(item, oldtodo, this);
     mChanger->endAtomicOperation();
+    showMessage(xi18nc("@info percentage completed", "To-do <message>%1</message> %2 percent completed", todo->summary(), todo->percentComplete()),
+                KMessageWidget::Information);
 }
 
 void CalendarView::toggleCompleted(const KCalendarCore::Todo::Ptr &todo, const QDate &occurrenceDate)
