@@ -263,26 +263,32 @@ public Q_SLOTS:
     /** Archive old events of calendar */
     void archiveCalendar();
 
+    /**
+     * Open an event editor dialog for a new event without having a date hint.
+     * Uses the current date/time as defaults.
+     */
+    void newEvent();
+
+    /**
+     * Open an event editor dialog for a new event with the specified date.
+     */
     void newEvent(const QDate &);
 
     /**
-       Create an event editor dialog for a new event without having a date hint.
-       Uses the current date/time as defaults.
-    */
-    void newEvent();
-
+     * Open an event editor dialog for a new event with the specified date/time.
+     */
     void newEvent(const QDateTime &startDt);
 
     /**
-       Create an event editor dialog for a new event with supplied date/times,
-       and if bool is true, make the event take all day.
-    */
+     * Open an event editor dialog for a new event with supplied date/times,
+     * optionally as an all-day event.
+     */
     void newEvent(const QDateTime &startDt, const QDateTime &EndDt, bool allDay = false);
 
     /**
-      Create an event editor dialog for a new event from given summary,
-      description, attachment list and attendees list
-    */
+     * Open an event editor dialog for a new event from given summary, description,
+     * attachments and attendees lists.
+     */
     void newEvent(const QString &summary,
                   const QString &description = QString(),
                   const QStringList &attachment = QStringList(),
@@ -369,24 +375,44 @@ public Q_SLOTS:
       */
     void deleteIncidenceFamily(const Akonadi::Item &item);
 
-    /** create new todo */
+    /**
+     * Open an todo dialog for a new todo without having a date hint.
+     * Uses the active date, falling back to the current date if necessary.
+     */
     void newTodo();
 
-    /** create new todo, due on date */
-    void newTodo(const QDate &date);
+    /**
+     * Open a todo editor dialog for a new todo with the specified start date/time.
+     */
+    void newTodo(const QDateTime &startDt);
 
-    /** create new todo **/
-    void newTodo(const Akonadi::Collection &collection);
+    /**
+     * Open a todo editor dialog for a new todo with the specified due date.
+     */
+    void newTodo(const QDate &dueDate);
 
-    /** create new todo with a parent todo */
+    /**
+     * Open a todo editor dialog for a new todo with the specified start and due date/times,
+     * optionally as an all-day todo.
+     */
+    void newTodo(const QDateTime &startDt, const QDateTime &dueDt, bool allDay = false);
+
+    /**
+     * Open a todo editor dialog to create a new todo from a parent todo, which is
+     * selected in the current view.
+     */
     void newSubTodo();
 
-    /** create new todo with a parent todo */
+    /**
+     * Open a todo editor dialog to create a new todo with the specified parent todo.
+     * The new todo is added to the collection that contains the specified todo.
+     */
     void newSubTodo(const Akonadi::Item &todo);
 
-    /** create new todo with parent todo */
-    void newSubTodo(const Akonadi::Collection &collection);
-
+    /**
+     * Open a todo editor dialog for a new todo from given summary, description,
+     * attachments and attendees lists.
+     */
     void newTodo(const QString &summary,
                  const QString &description = QString(),
                  const QStringList &attachments = QStringList(),
@@ -638,7 +664,10 @@ protected:
       defaults, if invalid values are given) and allow the view to adjust the type.
     */
     void dateTimesForNewEvent(QDateTime &startDt, QDateTime &endDt, bool &allDay);
+    void dateTimesForNewTodo(QDateTime &startDt, QDateTime &dueDt);
+
     IncidenceEditorNG::IncidenceDialog *newEventEditor(const KCalendarCore::Event::Ptr &event);
+    IncidenceEditorNG::IncidenceDialog *newTodoEditor(const KCalendarCore::Todo::Ptr &todo);
 
     bool eventFilter(QObject *watched, QEvent *event) override;
 

@@ -818,12 +818,12 @@ void ActionManager::slotNewEvent()
 
 void ActionManager::slotNewTodo()
 {
-    mCalendarView->newTodo(selectedCollection());
+    mCalendarView->newTodo();
 }
 
 void ActionManager::slotNewSubTodo()
 {
-    mCalendarView->newSubTodo(selectedCollection());
+    mCalendarView->newSubTodo();
 }
 
 void ActionManager::slotNewJournal()

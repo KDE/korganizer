@@ -981,6 +981,22 @@ void CalendarView::dateTimesForNewEvent(QDateTime &startDt, QDateTime &endDt, bo
     }
 }
 
+void CalendarView::dateTimesForNewTodo(QDateTime &startDt, QDateTime &dueDt)
+{
+    if (!startDt.isValid()) {
+        startDt.setDate(activeDate(true));
+        startDt.setTime(QTime(0, 0, 0, 0));
+    }
+    const QDateTime currentDateTime = QDateTime::currentDateTime();
+    if (startDt.date() < currentDateTime.date()) {
+        startDt.setDate(currentDateTime.date());
+        startDt.setTime(QTime(0, 0, 0, 0));
+    }
+    if (!dueDt.isValid() || dueDt.date() <= startDt.date()) {
+        dueDt.setDate(startDt.date());
+        dueDt.setTime(QTime(23, 59, 59, 999));
+    }
+}
 IncidenceEditorNG::IncidenceDialog *CalendarView::incidenceDialog(const Akonadi::Item &item)
 {
     IncidenceEditorNG::IncidenceDialog *dialog = mDialogManager->createDialog(item); // NOLINT(misc-const-correctness)
@@ -1068,6 +1084,75 @@ void CalendarView::newEvent(const QString &summary,
                                                                  this /* parent */);
 }
 
+IncidenceEditorNG::IncidenceDialog *CalendarView::newTodoEditor(const KCalendarCore::Todo::Ptr &todo)
+{
+    Akonadi::Item item;
+    item.setPayload(todo);
+    IncidenceEditorNG::IncidenceDialog *dialog = incidenceDialog(item);
+
+    dialog->load(item);
+
+    mDialogManager->connectTypeAhead(dialog, qobject_cast<KOEventView *>(viewManager()->currentView()));
+
+    return dialog;
+}
+
+void CalendarView::newTodo()
+{
+    newTodo(activeDate(true));
+}
+
+void CalendarView::newTodo(const QDate &dueDate)
+{
+    const IncidenceEditorNG::IncidenceDefaults defaults = IncidenceEditorNG::IncidenceDefaults::minimalIncidenceDefaults();
+
+    KCalendarCore::Todo::Ptr const todo(new KCalendarCore::Todo);
+    defaults.setDefaults(todo);
+    QDateTime adjustedDt(dueDate, QTime(0, 0, 0, 0));
+    dateTimesForNewTodo(adjustedDt, adjustedDt);
+    todo->setDtStart(adjustedDt);
+    todo->setDtDue(adjustedDt);
+    todo->setAllDay(true);
+
+    IncidenceEditorNG::IncidenceDialog *todoEditor = newTodoEditor(todo);
+    Q_ASSERT(todoEditor);
+
+    // Fallsback to the default collection defined in config
+    todoEditor->selectCollection(defaultCollection(KCalendarCore::Todo::todoMimeType()));
+}
+
+void CalendarView::newTodo(const QDateTime &startDt)
+{
+    const QDate dt = startDt.date();
+    QDateTime const adjustedStartDt(dt, adjustedDefaultStartTime(dt));
+    newTodo(adjustedStartDt, QDateTime(), false);
+}
+
+void CalendarView::newTodo(const QDateTime &startDt, const QDateTime &dueDt, bool allDay)
+{
+    // Let the current view change the default start/due datetime
+    QDateTime newStartDt(startDt);
+    QDateTime newDueDt(dueDt);
+
+    // Adjust the start/due date times (i.e. replace invalid values by defaults,
+    // and let the view adjust the type.
+    dateTimesForNewTodo(newStartDt, newDueDt);
+
+    IncidenceEditorNG::IncidenceDefaults defaults = IncidenceEditorNG::IncidenceDefaults::minimalIncidenceDefaults();
+    defaults.setStartDateTime(newStartDt);
+    defaults.setEndDateTime(newDueDt);
+
+    KCalendarCore::Todo::Ptr const todo(new KCalendarCore::Todo);
+    defaults.setDefaults(todo);
+    todo->setAllDay(allDay);
+
+    IncidenceEditorNG::IncidenceDialog *todoEditor = newTodoEditor(todo);
+    Q_ASSERT(todoEditor);
+
+    // Fallsback to the default collection defined in config
+    todoEditor->selectCollection(defaultCollection(KCalendarCore::Todo::todoMimeType()));
+}
+
 void CalendarView::newTodo(const QString &summary,
                            const QString &description,
                            const QStringList &attachments,
@@ -1087,53 +1172,6 @@ void CalendarView::newTodo(const QString &summary,
                                                                 defaultCol,
                                                                 true /* cleanupAttachmentTempFiles */,
                                                                 this /* parent */);
-}
-
-void CalendarView::newTodo()
-{
-    newTodo(Akonadi::Collection());
-}
-
-void CalendarView::newTodo(const Akonadi::Collection &collection)
-{
-    IncidenceEditorNG::IncidenceDefaults defaults = IncidenceEditorNG::IncidenceDefaults::minimalIncidenceDefaults();
-
-    bool allDay = true;
-    if (mViewManager->currentView()->isEventView()) {
-        QDateTime startDt;
-        QDateTime endDt;
-        dateTimesForNewEvent(startDt, endDt, allDay);
-
-        defaults.setStartDateTime(startDt);
-        defaults.setEndDateTime(endDt);
-    }
-
-    KCalendarCore::Todo::Ptr const todo(new KCalendarCore::Todo);
-    defaults.setDefaults(todo);
-    todo->setAllDay(allDay);
-
-    Akonadi::Item item;
-    item.setPayload(todo);
-
-    IncidenceEditorNG::IncidenceDialog *dialog = createIncidenceEditor(item, collection);
-
-    dialog->load(item);
-}
-
-void CalendarView::newTodo(const QDate &date)
-{
-    IncidenceEditorNG::IncidenceDefaults defaults = IncidenceEditorNG::IncidenceDefaults::minimalIncidenceDefaults();
-    defaults.setEndDateTime(QDateTime(date, QTime::currentTime()));
-
-    KCalendarCore::Todo::Ptr const todo(new KCalendarCore::Todo);
-    defaults.setDefaults(todo);
-    todo->setAllDay(true);
-
-    Akonadi::Item item;
-    item.setPayload(todo);
-
-    IncidenceEditorNG::IncidenceDialog *dialog = createIncidenceEditor(item);
-    dialog->load(item);
 }
 
 void CalendarView::newJournal()
@@ -1205,26 +1243,6 @@ void CalendarView::newSubTodo()
     if (CalendarSupport::hasTodo(item)) {
         newSubTodo(item);
     }
-}
-
-void CalendarView::newSubTodo(const Akonadi::Collection &collection)
-{
-    if (!CalendarSupport::hasTodo(selectedTodo())) {
-        qCWarning(KORGANIZER_LOG) << "CalendarSupport::hasTodo() is false";
-        return;
-    }
-
-    IncidenceEditorNG::IncidenceDefaults defaults = IncidenceEditorNG::IncidenceDefaults::minimalIncidenceDefaults();
-    defaults.setRelatedIncidence(Akonadi::CalendarUtils::incidence(selectedTodo()));
-
-    KCalendarCore::Todo::Ptr const todo(new KCalendarCore::Todo);
-    defaults.setDefaults(todo);
-
-    Akonadi::Item item;
-    item.setPayload(todo);
-
-    IncidenceEditorNG::IncidenceDialog *dialog = createIncidenceEditor(item, collection);
-    dialog->load(item);
 }
 
 void CalendarView::newSubTodo(const Akonadi::Item &parentTodo)
