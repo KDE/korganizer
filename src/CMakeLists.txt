@@ -371,6 +371,8 @@ set(korganizerprivate_LIB_SRCS
     korganizer_options.h
     collectionsortfilterproxymodel.h
     collectionsortfilterproxymodel.cpp
+    whatsnew/whatsnewtranslations.cpp
+    whatsnew/whatsnewtranslations.h
 )
 
 if(HAVE_ACTIVITY_SUPPORT)

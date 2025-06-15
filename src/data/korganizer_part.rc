@@ -1,5 +1,5 @@
 <!DOCTYPE gui>
-<gui name="korganizer" version="449" translationDomain="korganizer">
+<gui name="korganizer" version="450" translationDomain="korganizer">
   <MenuBar>
     <Menu name="file"><text>&amp;File</text>
       <Merge/>
@@ -111,7 +111,7 @@
       <Action name="korganizer_configure" group="settings_configure" />
     </Menu>
     <Menu name="help"><text>&amp;Help</text>
-      <Action name="show_intro"/>
+      <Action name="whatsnew" />
     </Menu>
   </MenuBar>
 

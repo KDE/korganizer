@@ -9,6 +9,7 @@
   SPDX-FileCopyrightText: 2000-2004 Cornelius Schumacher <schumacher@kde.org>
   SPDX-FileCopyrightText: 2003-2004 Reinhold Kainhofer <reinhold@kainhofer.com>
   SPDX-FileCopyrightText: 2005 Rafal Rzepecki <divide@users.sourceforge.net>
+  SPDX-FileCopyrightText: 2004-2025 Allen Winter <winter@kde.org>
 
   SPDX-License-Identifier: GPL-2.0-or-later WITH Qt-Commercial-exception-1.0
 */
@@ -30,6 +31,7 @@
 #include "views/agendaview/koagendaview.h"
 #include "views/monthview/monthview.h"
 #include "views/todoview/kotodoview.h"
+#include "whatsnew/whatsnewtranslations.h"
 #include "widgets/navigatorbar.h"
 
 #include <Akonadi/AttributeFactory>
@@ -64,6 +66,8 @@
 
 #include <KCalUtils/DndFactory>
 #include <KCalUtils/Stringify>
+
+#include <PimCommon/WhatsNewDialog>
 
 #include <PimCommonAkonadi/CollectionAclPage>
 #include <PimCommonAkonadi/ImapAclAttribute>
@@ -1806,6 +1810,14 @@ void CalendarView::printPreview()
 
     KCalendarCore::DateList tmpDateList = mDateNavigator->selectedDates();
     mCalPrinter->print(printType, tmpDateList.first(), tmpDateList.last(), selectedIncidences, true);
+}
+
+void CalendarView::slotWhatsNew()
+{
+    const WhatsNewTranslations translations;
+    PimCommon::WhatsNewDialog dlg(translations.createWhatsNewInfo(), this);
+    dlg.updateInformations();
+    dlg.exec();
 }
 
 void CalendarView::exportICalendar()

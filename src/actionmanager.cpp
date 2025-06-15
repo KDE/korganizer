@@ -7,7 +7,7 @@
   SPDX-FileCopyrightText: 2004 Reinhold Kainhofer <reinhold@kainhofer.com>
   SPDX-FileCopyrightText: 2005 Rafal Rzepecki <divide@users.sourceforge.net>
   SPDX-FileCopyrightText: 2010-2025 Laurent Montel <montel@kde.org>
-  SPDX-FileCopyrightText: 2012-2019 Allen Winter <winter@kde.org>
+  SPDX-FileCopyrightText: 2004-2025 Allen Winter <winter@kde.org>
 
   SPDX-License-Identifier: GPL-2.0-or-later WITH Qt-Commercial-exception-1.0
 */
@@ -756,6 +756,10 @@ void ActionManager::initActions()
 
     auto manager = KColorSchemeManager::instance();
     mACollection->addAction(QStringLiteral("colorscheme_menu"), KColorSchemeMenu::createMenu(manager, this));
+
+    action = new QAction(QIcon::fromTheme(QStringLiteral("korganizer")), i18nc("@action:inmenu", "What's new"), this);
+    mACollection->addAction(QStringLiteral("whatsnew"), action);
+    connect(action, &QAction::triggered, mCalendarView, &CalendarView::slotWhatsNew);
 
     if (mIsPart) {
         action = new QAction(QIcon::fromTheme(QStringLiteral("configure")), i18nc("@action:inmenu", "&Configure KOrganizer…"), this);

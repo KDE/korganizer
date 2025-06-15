@@ -4,6 +4,7 @@
   SPDX-FileCopyrightText: 2000, 2001, 2003, 2004 Cornelius Schumacher <schumacher@kde.org>
   SPDX-FileCopyrightText: 2003-2004 Reinhold Kainhofer <reinhold@kainhofer.com>
   SPDX-FileCopyrightText: 2005 Rafal Rzepecki <divide@users.sourceforge.net>
+  SPDX-FileCopyrightText: 2004-2025 Allen Winter <winter@kde.org>
 
   SPDX-License-Identifier: GPL-2.0-or-later WITH Qt-Commercial-exception-1.0
 */
@@ -579,6 +580,9 @@ public Q_SLOTS:
 
     void collectionSelected(const Akonadi::Collection &collection);
     void collectionDeselected(const Akonadi::Collection &collection);
+
+    /** Popup the "What's New" dialog **/
+    void slotWhatsNew();
 
 protected Q_SLOTS:
     /**
