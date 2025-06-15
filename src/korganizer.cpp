@@ -18,10 +18,12 @@
 #include "impl/korganizerifaceimpl.h"
 #include "kocore.h"
 #include "plugininterface/korganizerplugininterface.h"
+#include "prefs/koprefs.h"
 
 #include <Libkdepim/ProgressStatusBarWidget>
 #include <Libkdepim/StatusbarProgressWidget>
 
+#include "whatsnew/whatsnewtranslations.h"
 #include <KAboutData>
 #include <KActionCollection>
 #include <KSharedConfig>
@@ -30,12 +32,12 @@
 #include <KToolBar>
 #include <PimCommon/NeedUpdateVersionUtils>
 #include <PimCommon/NeedUpdateVersionWidget>
+#include <PimCommon/WhatsNewMessageWidget>
 #include <QLabel>
 #include <QStatusBar>
 #include <QVBoxLayout>
 #if HAVE_ACTIVITY_SUPPORT
 #include "activities/activitiesmanager.h"
-#include "prefs/koprefs.h"
 #endif
 #if KORGANIZER_WITH_KUSERFEEDBACK
 #include "userfeedback/userfeedbackmanager.h"
@@ -62,6 +64,21 @@ KOrganizer::KOrganizer()
             needUpdateVersionWidget->setObsoleteVersion(status);
         }
     }
+
+    const WhatsNewTranslations translations;
+    const QString newFeaturesMD5 = translations.newFeaturesMD5();
+    if (!newFeaturesMD5.isEmpty()) {
+        const bool hasNewFeature = (KOPrefs::instance()->previousNewFeaturesMD5() != newFeaturesMD5);
+        if (hasNewFeature) {
+            auto whatsNewMessageWidget = new PimCommon::WhatsNewMessageWidget(this);
+            whatsNewMessageWidget->setWhatsNewInfos(translations.createWhatsNewInfo());
+            whatsNewMessageWidget->setObjectName(QStringLiteral("whatsNewMessageWidget"));
+            mainWidgetLayout->addWidget(whatsNewMessageWidget);
+            KOPrefs::instance()->setPreviousNewFeaturesMD5(newFeaturesMD5);
+            whatsNewMessageWidget->animatedShow();
+        }
+    }
+
     mainWidgetLayout->addWidget(mCalendarView);
 
     mCalendarView->setObjectName(QLatin1StringView("KOrganizer::CalendarView"));

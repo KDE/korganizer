@@ -13,9 +13,12 @@
 #include "calendarview.h"
 #include "impl/korganizerifaceimpl.h"
 #include "kocore.h"
+#include "prefs/koprefs.h"
+#include "whatsnew/whatsnewtranslations.h"
 
 #include <Akonadi/CalendarUtils>
 #include <KCalUtils/IncidenceFormatter>
+#include <PimCommon/WhatsNewMessageWidget>
 
 #include "korganizer_debug.h"
 #include <KParts/StatusBarExtension>
@@ -56,6 +59,21 @@ KOrganizerPart::KOrganizerPart(QWidget *parentWidget, QObject *parent, const KPl
     setComponentName(QStringLiteral("korganizer"), i18n("KOrganizer"));
 
     auto topLayout = new QVBoxLayout(canvas);
+
+    const WhatsNewTranslations translations;
+    const QString newFeaturesMD5 = translations.newFeaturesMD5();
+    if (!newFeaturesMD5.isEmpty()) {
+        const bool hasNewFeature = (KOPrefs::instance()->previousNewFeaturesMD5() != newFeaturesMD5);
+        if (hasNewFeature) {
+            auto whatsNewMessageWidget = new PimCommon::WhatsNewMessageWidget(parentWidget);
+            whatsNewMessageWidget->setWhatsNewInfos(translations.createWhatsNewInfo());
+            whatsNewMessageWidget->setObjectName(QStringLiteral("whatsNewMessageWidget"));
+            topLayout->addWidget(whatsNewMessageWidget);
+            KOPrefs::instance()->setPreviousNewFeaturesMD5(newFeaturesMD5);
+            whatsNewMessageWidget->animatedShow();
+        }
+    }
+
     topLayout->addWidget(mView);
     topLayout->setContentsMargins({});
 

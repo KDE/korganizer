@@ -596,4 +596,9 @@
       <default>false</default>
     </entry>
   </group>
+  <group name="General">
+    <entry name="PreviousNewFeaturesMD5" type="String">
+      <default/>
+    </entry>
+  </group>
 </kcfg>
