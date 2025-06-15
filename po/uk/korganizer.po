@@ -11,7 +11,7 @@ msgid ""
 msgstr ""
 "Project-Id-Version: korganizer\n"
 "Report-Msgid-Bugs-To: https://bugs.kde.org\n"
-"POT-Creation-Date: 2025-06-14 00:43+0000\n"
+"POT-Creation-Date: 2025-06-15 00:43+0000\n"
 "PO-Revision-Date: 2025-05-24 10:26+0300\n"
 "Last-Translator: Yuri Chornoivan <yurchor@ukr.net>\n"
 "Language-Team: Ukrainian <trans-uk@lists.fedoraproject.org>\n"
@@ -1826,37 +1826,55 @@ msgctxt "@info/plain"
 msgid "Toggle Reminder"
 msgstr "Увімкнути або вимкнути нагадування"
 
-#: calendarview.cpp:1391 calendarview.cpp:1443
+#: calendarview.cpp:1363
+#, kde-kuit-format
+msgctxt "@info alarm enabled"
+msgid "<message>%1</message> reminder is enabled"
+msgstr ""
+
+#: calendarview.cpp:1365
+#, kde-kuit-format
+msgctxt "@info alarm disabled"
+msgid "<message>%1</message> reminder is disabled"
+msgstr ""
+
+#: calendarview.cpp:1396 calendarview.cpp:1450
 #, kde-format
 msgctxt "@info/plain"
 msgid "Toggle To-do Completed"
 msgstr "Увімкнути або вимкнути стан завершеності завдання"
 
-#: calendarview.cpp:1495
+#: calendarview.cpp:1399
+#, kde-kuit-format
+msgctxt "@info percentage completed"
+msgid "To-do <message>%1</message> %2 percent completed"
+msgstr ""
+
+#: calendarview.cpp:1502
 #, kde-format
 msgctxt "@info"
 msgid "\"%1\" was successfully copied to %2."
 msgstr "«%1» було успішно скопійовано до %2."
 
-#: calendarview.cpp:1496
+#: calendarview.cpp:1503
 #, kde-format
 msgctxt "@title:window"
 msgid "Copying Succeeded"
 msgstr "Успішне копіювання"
 
-#: calendarview.cpp:1500
+#: calendarview.cpp:1507
 #, kde-format
 msgctxt "@info"
 msgid "Unable to copy the item \"%1\" to %2."
 msgstr "Не вдалося скопіювати запис «%1» до %2."
 
-#: calendarview.cpp:1501 calendarview.cpp:2469
+#: calendarview.cpp:1508 calendarview.cpp:2476
 #, kde-format
 msgctxt "@title:window"
 msgid "Copying Failed"
 msgstr "Копіювання зазнало невдачі"
 
-#: calendarview.cpp:1560
+#: calendarview.cpp:1567
 #, kde-format
 msgctxt "@info"
 msgid ""
@@ -1866,50 +1884,50 @@ msgstr ""
 "Не вдалося вилучити запис «%1» з початкового календаря. Копію цього запису "
 "було збережено у %2."
 
-#: calendarview.cpp:1564 calendarview.cpp:1580 calendarview.cpp:2504
+#: calendarview.cpp:1571 calendarview.cpp:1587 calendarview.cpp:2511
 #, kde-format
 msgctxt "@title:window"
 msgid "Moving Failed"
 msgstr "Пересування зазнало невдачі"
 
-#: calendarview.cpp:1569
+#: calendarview.cpp:1576
 #, kde-format
 msgctxt "@info"
 msgid "\"%1\" was successfully moved from %2 to %3."
 msgstr "«%1» було успішно пересунуто з %2 до %3."
 
-#: calendarview.cpp:1570
+#: calendarview.cpp:1577
 #, kde-format
 msgctxt "@title:window"
 msgid "Moving Succeeded"
 msgstr "Успішне пересування"
 
-#: calendarview.cpp:1576
+#: calendarview.cpp:1583
 #, kde-format
 msgctxt "@info"
 msgid "Unable to add the item \"%1\" into %2. This item has not been moved."
 msgstr "Не вдалося додати запис «%1» до %2. Цей запис не було пересунуто."
 
-#: calendarview.cpp:1615
+#: calendarview.cpp:1622
 #, kde-format
 msgctxt "@info"
 msgid "Do you want to dissociate the occurrence on %1 from the recurrence?"
 msgstr "Бажаєте виокремити подію о %1 з повторення?"
 
-#: calendarview.cpp:1619 calendarview.cpp:1632 calendarview.cpp:2285
-#: calendarview.cpp:2344 calendarview.cpp:2374
+#: calendarview.cpp:1626 calendarview.cpp:1639 calendarview.cpp:2292
+#: calendarview.cpp:2351 calendarview.cpp:2381
 #, kde-format
 msgctxt "@title:window"
 msgid "KOrganizer Confirmation"
 msgstr "Підтвердження KOrganizer"
 
-#: calendarview.cpp:1620
+#: calendarview.cpp:1627
 #, kde-format
 msgctxt "@action:button"
 msgid "&Dissociate"
 msgstr "Ві&дділити"
 
-#: calendarview.cpp:1627
+#: calendarview.cpp:1634
 #, kde-format
 msgctxt "@info"
 msgid ""
@@ -1919,73 +1937,73 @@ msgstr ""
 "Бажаєте виокремити випадок %1 з повтору чи також виокремити і всі наступні "
 "випадки?"
 
-#: calendarview.cpp:1633
+#: calendarview.cpp:1640
 #, kde-format
 msgctxt "@action:button"
 msgid "&Only Dissociate This One"
 msgstr "Відділити &лише цю подію"
 
-#: calendarview.cpp:1634
+#: calendarview.cpp:1641
 #, kde-format
 msgctxt "@action:button"
 msgid "&Also Dissociate Future Ones"
 msgstr "Відділити і &майбутні події"
 
-#: calendarview.cpp:1652
+#: calendarview.cpp:1659
 #, kde-format
 msgctxt "@info/plain"
 msgid "Dissociate future occurrences"
 msgstr "Відділяти майбутні події"
 
-#: calendarview.cpp:1654
+#: calendarview.cpp:1661
 #, kde-format
 msgctxt "@info/plain"
 msgid "Dissociate occurrence"
 msgstr "Відділити подію"
 
-#: calendarview.cpp:1661
+#: calendarview.cpp:1668
 #, kde-format
 msgctxt "@info"
 msgid "Dissociating the future occurrences failed."
 msgstr "Відділення майбутніх подій зазнало невдачі."
 
-#: calendarview.cpp:1661 calendarview.cpp:1663
+#: calendarview.cpp:1668 calendarview.cpp:1670
 #, kde-format
 msgctxt "@title:window"
 msgid "Dissociating Failed"
 msgstr "Відділення зазнало невдачі"
 
-#: calendarview.cpp:1663
+#: calendarview.cpp:1670
 #, kde-format
 msgctxt "@info"
 msgid "Dissociating the occurrence failed."
 msgstr "Відділення події зазнало невдачі."
 
-#: calendarview.cpp:1818
+#: calendarview.cpp:1825
 #, kde-format
 msgctxt "@title:window"
 msgid "Export Calendar to File"
 msgstr "Експортування календаря до файла"
 
-#: calendarview.cpp:1831
+#: calendarview.cpp:1838
 #, kde-kuit-format
 msgctxt "@info"
 msgid "Do you want to overwrite <filename>%1</filename>?"
 msgstr "Чи бажаєте ви перезаписати <filename>%1</filename>?"
 
-#: calendarview.cpp:1832
+#: calendarview.cpp:1839
 #, kde-format
 msgctxt "@title:window"
 msgid "Export Calendar"
 msgstr "Експортування календаря"
 
-#: calendarview.cpp:1846
+#: calendarview.cpp:1853
 #, kde-format
 msgctxt "@info save failure cause unknown"
 msgid "Reason unknown"
 msgstr "Причина невідома"
 
-#: calendarview.cpp:1848
+#: calendarview.cpp:1855
 #, kde-kuit-format
 msgctxt "@info"
 msgid ""
@@ -1994,13 +2012,13 @@ msgstr ""
 "Неможливо записати файл iCalendar <filename>%1</filename>: <message>%2</"
 "message>"
 
-#: calendarview.cpp:1957 calendarview.cpp:2002
+#: calendarview.cpp:1964 calendarview.cpp:2009
 #, kde-format
 msgctxt "@info/plain"
 msgid "No filter"
 msgstr "Без фільтра"
 
-#: calendarview.cpp:2280
+#: calendarview.cpp:2287
 #, kde-kuit-format
 msgctxt "@info"
 msgid ""
@@ -2012,19 +2030,19 @@ msgstr ""
 "пункт і зробити всі його підзавдання незалежними чи вилучити це завдання з "
 "усіма його підзавданнями?"
 
-#: calendarview.cpp:2286
+#: calendarview.cpp:2293
 #, kde-format
 msgctxt "@action:button"
 msgid "Delete Only This"
 msgstr "Вилучити тільки це"
 
-#: calendarview.cpp:2287 calendarview.cpp:2345
+#: calendarview.cpp:2294 calendarview.cpp:2352
 #, kde-format
 msgctxt "@action:button"
 msgid "Delete All"
 msgstr "Вилучити всі"
 
-#: calendarview.cpp:2319
+#: calendarview.cpp:2326
 #, kde-kuit-format
 msgctxt "@info"
 msgid ""
@@ -2034,13 +2052,13 @@ msgstr ""
 "Пункт <resource>%1</resource> позначено «тільки для читання», його не можна "
 "вилучити; ймовірно, він належить до календаря тільки для читання."
 
-#: calendarview.cpp:2322
+#: calendarview.cpp:2329
 #, kde-format
 msgctxt "@title:window"
 msgid "Removing not possible"
 msgstr "Вилучення неможливе"
 
-#: calendarview.cpp:2341
+#: calendarview.cpp:2348
 #, kde-kuit-format
 msgctxt "@info"
 msgid ""
@@ -2050,13 +2068,13 @@ msgstr ""
 "Пункт календаря <resource>%1</resource> повторюється в багатьох датах. Ви "
 "впевнені, що хочете вилучити його з усіма повтореннями?"
 
-#: calendarview.cpp:2352
+#: calendarview.cpp:2359
 #, kde-format
 msgctxt "@action:button"
 msgid "Also Delete &Future"
 msgstr "Також вилучати &майбутні"
 
-#: calendarview.cpp:2356
+#: calendarview.cpp:2363
 #, kde-kuit-format
 msgctxt "@info"
 msgid ""
@@ -2068,7 +2086,7 @@ msgstr ""
 "Хочете вилучити тільки поточний пункт на %2, всі майбутні повторення, чи всі "
 "його повторення?"
 
-#: calendarview.cpp:2363
+#: calendarview.cpp:2370
 #, kde-kuit-format
 msgctxt "@info"
 msgid ""
@@ -2078,25 +2096,25 @@ msgstr ""
 "Пункт календаря <resource>%1</resource> повторюється в багатьох датах. "
 "Хочете вилучити тільки поточний пункт на %2 чи всі його повторення?"
 
-#: calendarview.cpp:2375
+#: calendarview.cpp:2382
 #, kde-format
 msgctxt "@action:button"
 msgid "Delete C&urrent"
 msgstr "Вилучити пото&чну"
 
-#: calendarview.cpp:2377
+#: calendarview.cpp:2384
 #, kde-format
 msgctxt "@action:button"
 msgid "Delete &All"
 msgstr "Вилучити &всі"
 
-#: calendarview.cpp:2408 calendarview.cpp:2415
+#: calendarview.cpp:2415 calendarview.cpp:2422
 #, kde-format
 msgctxt "@info/plain"
 msgid "Delete \"%1\""
 msgstr "Вилучити «%1»"
 
-#: calendarview.cpp:2447
+#: calendarview.cpp:2454
 #, kde-format
 msgctxt "@info"
 msgid ""
@@ -2105,49 +2123,49 @@ msgstr ""
 "У засобі керування календарями знято позначки з усіх календарів. Не вилучено "
 "жодного запису завдання."
 
-#: calendarview.cpp:2452 calendarview.cpp:2707
+#: calendarview.cpp:2459 calendarview.cpp:2714
 #, kde-format
 msgctxt "@info"
 msgid "There are no completed to-dos to purge."
 msgstr "Немає завершених завдань для вилучення."
 
-#: calendarview.cpp:2457
+#: calendarview.cpp:2464
 #, kde-format
 msgctxt "@info"
 msgid "Delete all completed to-dos from checked calendars?"
 msgstr "Вилучити усі виконані завдання з позначених календарів?"
 
-#: calendarview.cpp:2458
+#: calendarview.cpp:2465
 #, kde-format
 msgctxt "@title:window"
 msgid "Purge To-dos"
 msgstr "Очищення завдань"
 
-#: calendarview.cpp:2459
+#: calendarview.cpp:2466
 #, kde-format
 msgctxt "@action:button"
 msgid "Purge"
 msgstr "Очистити"
 
-#: calendarview.cpp:2469
+#: calendarview.cpp:2476
 #, kde-kuit-format
 msgctxt "@info"
 msgid "Unable to copy item <resource>%1</resource>."
 msgstr "Не вдалося скопіювати пункт <resource>%1</resource>."
 
-#: calendarview.cpp:2504
+#: calendarview.cpp:2511
 #, kde-kuit-format
 msgctxt "@info"
 msgid "Unable to move item <resource>%1</resource>."
 msgstr "Не вдалося пересунути пункт <resource>%1</resource>."
 
-#: calendarview.cpp:2699
+#: calendarview.cpp:2706
 #, kde-kuit-format
 msgctxt "@info"
 msgid "0 completed to-dos were purged.<nl/>"
 msgstr "Вилучено 0 записів завершених завдань.<nl/>"
 
-#: calendarview.cpp:2701 calendarview.cpp:2712
+#: calendarview.cpp:2708 calendarview.cpp:2719
 #, kde-format, kde-kuit-format
 msgctxt "@info"
 msgid "%1 to-do was ignored because it has uncompleted or read-only children."
@@ -2166,7 +2184,7 @@ msgstr[3] ""
 "одне завдання проігноровано через те, що у ньому містилися незавершені або "
 "придатні лише для читання дочірні елементи."
 
-#: calendarview.cpp:2705 calendarview.cpp:2710
+#: calendarview.cpp:2712 calendarview.cpp:2717
 #, kde-format
 msgctxt "@info"
 msgid "%1 completed to-do was purged."
@@ -2176,7 +2194,7 @@ msgstr[1] "Вилучено %1 завершених завдання."
 msgstr[2] "Вилучено %1 завершених завдань."
 msgstr[3] "Вилучено одне завершене завдання."
 
-#: calendarview.cpp:2717
+#: calendarview.cpp:2724
 #, kde-kuit-format
 msgctxt "@info"
 msgid "An error occurred while purging completed to-dos: <message>%1</message>"
@@ -2184,7 +2202,7 @@ msgstr ""
 "Під час спроби вилучити завершені завдання сталася помилка: <message>%1</"
 "message>"
 
-#: calendarview.cpp:2771
+#: calendarview.cpp:2778
 #, kde-kuit-format
 msgctxt "@info"
 msgid ""
@@ -2196,7 +2214,7 @@ msgstr ""
 "<para>Щоб побачити запис, вам слід увімкнути календар на панелі керування "
 "календарями у лівій частині вікна.</para>"
 
-#: calendarview.cpp:2775
+#: calendarview.cpp:2782
 #, kde-kuit-format
 msgctxt "@info"
 msgid ""
