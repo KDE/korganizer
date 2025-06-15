@@ -73,6 +73,7 @@ public:
 
     void showStatusMessage(const QString &message) override;
 
+    /* cppcheck-suppress virtualCallInConstructor; see the associated FIXME in korganizer_part.cpp */
     void setTitle() override;
 
 public Q_SLOTS:
