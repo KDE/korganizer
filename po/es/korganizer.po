@@ -18,7 +18,7 @@ msgstr ""
 "Project-Id-Version: korganizer\n"
 "Report-Msgid-Bugs-To: https://bugs.kde.org\n"
 "POT-Creation-Date: 2025-06-15 00:43+0000\n"
-"PO-Revision-Date: 2025-05-24 11:27+0100\n"
+"PO-Revision-Date: 2025-06-15 12:32+0100\n"
 "Last-Translator: Eloy Cuadra <ecuadra@eloihr.net>\n"
 "Language-Team: Spanish <kde-l10n-es@kde.org>\n"
 "Language: es\n"
@@ -27,7 +27,7 @@ msgstr ""
 "Content-Transfer-Encoding: 8bit\n"
 "First-Translator: Boris Wesslowski <Boris@Wesslowski.com>\n"
 "Second-Translator: Pablo de Vicente <pvicentea@nexo.es>\n"
-"X-Generator: Lokalize 25.04.1\n"
+"X-Generator: Lokalize 25.04.2\n"
 "Plural-Forms: nplurals=2; plural=n != 1;\n"
 
 #, kde-format
@@ -1839,13 +1839,13 @@ msgstr "Conmutar el recordatorio"
 #, kde-kuit-format
 msgctxt "@info alarm enabled"
 msgid "<message>%1</message> reminder is enabled"
-msgstr ""
+msgstr "El recordatorio de <message>%1</message> está activado"
 
 #: calendarview.cpp:1365
 #, kde-kuit-format
 msgctxt "@info alarm disabled"
 msgid "<message>%1</message> reminder is disabled"
-msgstr ""
+msgstr "El recordatorio de <message>%1</message> está desactivado"
 
 #: calendarview.cpp:1396 calendarview.cpp:1450
 #, kde-format
@@ -1857,7 +1857,7 @@ msgstr "Conmutar tarea pendiente completada"
 #, kde-kuit-format
 msgctxt "@info percentage completed"
 msgid "To-do <message>%1</message> %2 percent completed"
-msgstr ""
+msgstr "%2 % completado de la tarea <message>%1</message>"
 
 #: calendarview.cpp:1502
 #, kde-format

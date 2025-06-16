@@ -1,7 +1,7 @@
 # translation of korganizer.po to Slovenian
 # Translation of korganizer.po to Slovenian
 # Copyright (C) 2001,2002, 2003, 2004, 2005, 2006 Free Software Foundation, Inc.
-# $Id: korganizer.po 1711198 2025-06-15 01:23:03Z scripty $
+# $Id: korganizer.po 1711254 2025-06-16 01:22:49Z scripty $
 # $Source$
 #
 # Roman Maurer <roman.maurer@hermes.si>, 2001.
@@ -15,7 +15,7 @@ msgstr ""
 "Project-Id-Version: korganizer\n"
 "Report-Msgid-Bugs-To: https://bugs.kde.org\n"
 "POT-Creation-Date: 2025-06-15 00:43+0000\n"
-"PO-Revision-Date: 2025-05-25 05:57+0200\n"
+"PO-Revision-Date: 2025-06-15 12:48+0200\n"
 "Last-Translator: Matjaž Jeran <matjaz.jeran@amis.net>\n"
 "Language-Team: Slovenian <lugos-slo@lugos.si>\n"
 "Language: sl\n"
@@ -25,7 +25,7 @@ msgstr ""
 "Plural-Forms: nplurals=4; plural=(n%100==1 ? 1 : n%100==2 ? 2 : n%100==3 || n"
 "%100==4 ? 3 : 0);\n"
 "Translator: Andrej Mernik <andrejm@ubuntu.si>\n"
-"X-Generator: Lokalize 25.04.1\n"
+"X-Generator: Poedit 3.6\n"
 
 #, kde-format
 msgctxt "NAME OF TRANSLATORS"
@@ -1822,13 +1822,13 @@ msgstr "Preklopi opomnik"
 #, kde-kuit-format
 msgctxt "@info alarm enabled"
 msgid "<message>%1</message> reminder is enabled"
-msgstr ""
+msgstr "Opomnik <message>%1</message> je omogočen"
 
 #: calendarview.cpp:1365
 #, kde-kuit-format
 msgctxt "@info alarm disabled"
 msgid "<message>%1</message> reminder is disabled"
-msgstr ""
+msgstr "Opomnik <message>%1</message> je onemogočen"
 
 #: calendarview.cpp:1396 calendarview.cpp:1450
 #, kde-format
@@ -1840,7 +1840,7 @@ msgstr "Preklopi zaključenost opravila"
 #, kde-kuit-format
 msgctxt "@info percentage completed"
 msgid "To-do <message>%1</message> %2 percent completed"
-msgstr ""
+msgstr "Opravilo <message>%1</message> %2 odstotkov dokončano"
 
 #: calendarview.cpp:1502
 #, kde-format

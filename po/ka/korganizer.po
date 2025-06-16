@@ -8,7 +8,7 @@ msgstr ""
 "Project-Id-Version: korganizer\n"
 "Report-Msgid-Bugs-To: https://bugs.kde.org\n"
 "POT-Creation-Date: 2025-06-15 00:43+0000\n"
-"PO-Revision-Date: 2025-05-24 04:49+0200\n"
+"PO-Revision-Date: 2025-06-15 04:10+0200\n"
 "Last-Translator: Temuri Doghonadze <temuri.doghonadze@gmail.com>\n"
 "Language-Team: Georgian <kde-i18n-doc@kde.org>\n"
 "Language: ka\n"
@@ -1806,13 +1806,13 @@ msgstr "შემხსენებლის გადართვა"
 #, kde-kuit-format
 msgctxt "@info alarm enabled"
 msgid "<message>%1</message> reminder is enabled"
-msgstr ""
+msgstr "<message>%1</message> შეხსენება ჩართულია"
 
 #: calendarview.cpp:1365
 #, kde-kuit-format
 msgctxt "@info alarm disabled"
 msgid "<message>%1</message> reminder is disabled"
-msgstr ""
+msgstr "<message>%1</message> შეხსენება გამორთულია"
 
 #: calendarview.cpp:1396 calendarview.cpp:1450
 #, kde-format
@@ -1824,7 +1824,7 @@ msgstr "გასაკეთებლის გაკეთებულობ�
 #, kde-kuit-format
 msgctxt "@info percentage completed"
 msgid "To-do <message>%1</message> %2 percent completed"
-msgstr ""
+msgstr "გეგმა <message>%1</message> %2 პროცენტით დასრულებულია"
 
 #: calendarview.cpp:1502
 #, kde-format

@@ -16,7 +16,7 @@ msgstr ""
 "Project-Id-Version: korganizer\n"
 "Report-Msgid-Bugs-To: https://bugs.kde.org\n"
 "POT-Creation-Date: 2025-06-15 00:43+0000\n"
-"PO-Revision-Date: 2025-05-24 11:32+0200\n"
+"PO-Revision-Date: 2025-06-15 19:25+0200\n"
 "Last-Translator: Luigi Toscano <luigi.toscano@tiscali.it>\n"
 "Language-Team: Italian <kde-i18n-it@kde.org>\n"
 "Language: it\n"
@@ -1836,13 +1836,13 @@ msgstr "Attiva/disattiva promemoria"
 #, kde-kuit-format
 msgctxt "@info alarm enabled"
 msgid "<message>%1</message> reminder is enabled"
-msgstr ""
+msgstr "Il promemoria <message>%1</message> è abilitato"
 
 #: calendarview.cpp:1365
 #, kde-kuit-format
 msgctxt "@info alarm disabled"
 msgid "<message>%1</message> reminder is disabled"
-msgstr ""
+msgstr "Il promemoria <message>%1</message> è disabilitato"
 
 #: calendarview.cpp:1396 calendarview.cpp:1450
 #, kde-format
@@ -1854,7 +1854,7 @@ msgstr "Mostra/nascondi cose da fare completate"
 #, kde-kuit-format
 msgctxt "@info percentage completed"
 msgid "To-do <message>%1</message> %2 percent completed"
-msgstr ""
+msgstr "Cosa da fare <message>%1</message> completata al %2 percento"
 
 #: calendarview.cpp:1502
 #, kde-format
