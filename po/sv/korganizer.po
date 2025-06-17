@@ -11,7 +11,7 @@ msgstr ""
 "Project-Id-Version: korganizer\n"
 "Report-Msgid-Bugs-To: https://bugs.kde.org\n"
 "POT-Creation-Date: 2025-06-15 00:43+0000\n"
-"PO-Revision-Date: 2025-05-31 18:43+0200\n"
+"PO-Revision-Date: 2025-06-16 22:23+0200\n"
 "Last-Translator: Stefan Asserhäll <stefan.asserhall@gmail.com>\n"
 "Language-Team: Swedish <kde-i18n-doc@kde.org>\n"
 "Language: sv\n"
@@ -1803,13 +1803,13 @@ msgstr "Växla påminnelse"
 #, kde-kuit-format
 msgctxt "@info alarm enabled"
 msgid "<message>%1</message> reminder is enabled"
-msgstr ""
+msgstr "<message>%1</message> påminnelse är aktiverad"
 
 #: calendarview.cpp:1365
 #, kde-kuit-format
 msgctxt "@info alarm disabled"
 msgid "<message>%1</message> reminder is disabled"
-msgstr ""
+msgstr "<message>%1</message> påminnelse är inaktiverad"
 
 #: calendarview.cpp:1396 calendarview.cpp:1450
 #, kde-format
@@ -1821,7 +1821,7 @@ msgstr "Växla färdiga uppgifter"
 #, kde-kuit-format
 msgctxt "@info percentage completed"
 msgid "To-do <message>%1</message> %2 percent completed"
-msgstr ""
+msgstr "Uppgift <message>%1</message> %2 procent färdig"
 
 #: calendarview.cpp:1502
 #, kde-format

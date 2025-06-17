@@ -4,7 +4,7 @@ msgstr ""
 "Project-Id-Version: korganizer\n"
 "Report-Msgid-Bugs-To: https://bugs.kde.org\n"
 "POT-Creation-Date: 2025-06-15 00:43+0000\n"
-"PO-Revision-Date: 2025-05-26 19:20+0200\n"
+"PO-Revision-Date: 2025-06-17 00:29+0200\n"
 "Last-Translator: Mincho Kondarev <mkondarev@yahoo.de>\n"
 "Language-Team: Bulgarian <kde-i18n-doc@kde.org>\n"
 "Language: bg\n"
@@ -1813,13 +1813,13 @@ msgstr "Превключване на напомнянето"
 #, kde-kuit-format
 msgctxt "@info alarm enabled"
 msgid "<message>%1</message> reminder is enabled"
-msgstr ""
+msgstr "<message>%1</message> напомняне е включено"
 
 #: calendarview.cpp:1365
 #, kde-kuit-format
 msgctxt "@info alarm disabled"
 msgid "<message>%1</message> reminder is disabled"
-msgstr ""
+msgstr "<message>%1</message> напомняне е деактивиран"
 
 #: calendarview.cpp:1396 calendarview.cpp:1450
 #, kde-format
@@ -1831,7 +1831,7 @@ msgstr "Превключване на завършените задачи"
 #, kde-kuit-format
 msgctxt "@info percentage completed"
 msgid "To-do <message>%1</message> %2 percent completed"
-msgstr ""
+msgstr "Задача <message>%1</message> в завършена на %2%"
 
 #: calendarview.cpp:1502
 #, kde-format

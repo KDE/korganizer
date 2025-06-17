@@ -14,7 +14,7 @@ msgstr ""
 "Project-Id-Version: korganizer\n"
 "Report-Msgid-Bugs-To: https://bugs.kde.org\n"
 "POT-Creation-Date: 2025-06-15 00:43+0000\n"
-"PO-Revision-Date: 2025-05-24 11:07+0200\n"
+"PO-Revision-Date: 2025-06-15 08:28+0200\n"
 "Last-Translator: Josep M. Ferrer <txemaq@gmail.com>\n"
 "Language-Team: Catalan <kde-i18n-ca@kde.org>\n"
 "Language: ca@valencia\n"
@@ -1836,13 +1836,13 @@ msgstr "Canvia el recordatori"
 #, kde-kuit-format
 msgctxt "@info alarm enabled"
 msgid "<message>%1</message> reminder is enabled"
-msgstr ""
+msgstr "El recordatori de <message>%1</message> està activat"
 
 #: calendarview.cpp:1365
 #, kde-kuit-format
 msgctxt "@info alarm disabled"
 msgid "<message>%1</message> reminder is disabled"
-msgstr ""
+msgstr "El recordatori de <message>%1</message> està desactivat"
 
 #: calendarview.cpp:1396 calendarview.cpp:1450
 #, kde-format
@@ -1854,7 +1854,7 @@ msgstr "Canvia les tasques pendents finalitzades"
 #, kde-kuit-format
 msgctxt "@info percentage completed"
 msgid "To-do <message>%1</message> %2 percent completed"
-msgstr ""
+msgstr "La tasca pendent <message>%1</message> s'ha completat a %2 per cent"
 
 #: calendarview.cpp:1502
 #, kde-format

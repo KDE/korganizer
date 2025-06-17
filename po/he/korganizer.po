@@ -18,7 +18,7 @@ msgstr ""
 "Project-Id-Version: korganizer\n"
 "Report-Msgid-Bugs-To: https://bugs.kde.org\n"
 "POT-Creation-Date: 2025-06-15 00:43+0000\n"
-"PO-Revision-Date: 2025-05-25 10:20+0300\n"
+"PO-Revision-Date: 2025-06-16 16:09+0300\n"
 "Last-Translator: Yaron Shahrabani <sh.yaron@gmail.com>\n"
 "Language-Team: צוות התרגום של KDE ישראל\n"
 "Language: he\n"
@@ -1782,13 +1782,13 @@ msgstr "החלפת מצב תזכורת"
 #, kde-kuit-format
 msgctxt "@info alarm enabled"
 msgid "<message>%1</message> reminder is enabled"
-msgstr ""
+msgstr "תזכורת <message>%1</message> פעילה"
 
 #: calendarview.cpp:1365
 #, kde-kuit-format
 msgctxt "@info alarm disabled"
 msgid "<message>%1</message> reminder is disabled"
-msgstr ""
+msgstr "תזכורת <message>%1</message> כבויה"
 
 #: calendarview.cpp:1396 calendarview.cpp:1450
 #, kde-format
@@ -1800,7 +1800,7 @@ msgstr "החלפת מצב השלמת מטלה"
 #, kde-kuit-format
 msgctxt "@info percentage completed"
 msgid "To-do <message>%1</message> %2 percent completed"
-msgstr ""
+msgstr "%2 אחוזים הושלמו מהמטלה <message>%1</message>"
 
 #: calendarview.cpp:1502
 #, kde-format
