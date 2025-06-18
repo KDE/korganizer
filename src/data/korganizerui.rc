@@ -1,6 +1,6 @@
 <?xml version="1.0"?>
 <!DOCTYPE gui>
-<gui name="korganizer" version="448" translationDomain="korganizer">
+<gui name="korganizer" version="449" translationDomain="korganizer">
   <MenuBar>
     <Menu name="file">
       <text>&amp;File</text>
@@ -55,6 +55,8 @@
       <Action name="go_next"/>
       <Separator/>
       <Action name="go_today"/>
+      <Separator/>
+      <Action name="pick_date"/>
       <Merge/>
     </Menu>
     <Menu name="actions">
@@ -63,8 +65,6 @@
       <Action name="new_todo"/>
       <Action name="new_subtodo"/>
       <Action name="new_journal"/>
-      <Separator/>
-      <Action name="pick_date"/>
       <Separator/>
       <Action name="show_incidence"/>
       <Action name="edit_incidence"/>
