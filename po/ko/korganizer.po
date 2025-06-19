@@ -8,7 +8,7 @@ msgid ""
 msgstr ""
 "Project-Id-Version: Korganizer\n"
 "Report-Msgid-Bugs-To: https://bugs.kde.org\n"
-"POT-Creation-Date: 2025-06-15 00:43+0000\n"
+"POT-Creation-Date: 2025-06-19 00:43+0000\n"
 "PO-Revision-Date: 2025-06-10 23:16+0200\n"
 "Last-Translator: Shinjo Park <kde@peremen.name>\n"
 "Language-Team: Korean <kde-kr@kde.org>\n"
@@ -447,8 +447,8 @@ msgstr ""
 "캘린더 모음집에서 완료한 모든 할 일을 삭제합니다. 이 작업은 실행 취소할 수 없"
 "습니다!"
 
-#: actionmanager.cpp:318 actionmanager.cpp:617 actionmanager.cpp:1304
-#: actionmanager.cpp:1342
+#: actionmanager.cpp:318 actionmanager.cpp:617 actionmanager.cpp:1308
+#: actionmanager.cpp:1346
 #, kde-format
 msgctxt "@action:inmenu"
 msgid "&Delete"
@@ -1112,14 +1112,14 @@ msgstr ""
 "다중 달력 보기에서 보기를 설정할 수 있는 대화 상자를 시작합니다. 현재 다중 달"
 "력 보기만 지원합니다. 보기->일정 보기 설정에서 다중 달력 옵션을 참조하십시오."
 
-#: actionmanager.cpp:609 actionmanager.cpp:1298 actionmanager.cpp:1340
+#: actionmanager.cpp:609 actionmanager.cpp:1302 actionmanager.cpp:1344
 #: koeventpopupmenu.cpp:42
 #, kde-format
 msgctxt "@action:inmenu"
 msgid "&Show"
 msgstr "표시(&S)"
 
-#: actionmanager.cpp:613 actionmanager.cpp:1301 actionmanager.cpp:1341
+#: actionmanager.cpp:613 actionmanager.cpp:1305 actionmanager.cpp:1345
 #: koeventpopupmenu.cpp:44
 #, kde-format
 msgctxt "@action:inmenu"
@@ -1238,201 +1238,209 @@ msgctxt "@action:inmenu"
 msgid "Manage T&ags…"
 msgstr "태그 관리(&A)…"
 
-#: actionmanager.cpp:761
+#: actionmanager.cpp:760
+#, fuzzy, kde-format
+#| msgctxt "@action:inmenu"
+#| msgid "What's &Next"
+msgctxt "@action:inmenu"
+msgid "What's new"
+msgstr "다음 일정(&N)"
+
+#: actionmanager.cpp:765
 #, kde-format
 msgctxt "@action:inmenu"
 msgid "&Configure KOrganizer…"
 msgstr "KOrganizer 설정(&C)…"
 
-#: actionmanager.cpp:839
+#: actionmanager.cpp:843
 #, kde-format
 msgctxt "@info"
 msgid "1 incidence was imported successfully."
 msgid_plural "%1 incidences were imported successfully."
 msgstr[0] "항목 %1개를 가져왔습니다."
 
-#: actionmanager.cpp:842
+#: actionmanager.cpp:846
 #, kde-kuit-format
 msgctxt "@info"
 msgid "There was an error while merging the calendar: <message>%1</message>"
 msgstr "캘린더를 합치는 중 오류 발생: <message>%1</message>"
 
-#: actionmanager.cpp:854
+#: actionmanager.cpp:858
 #, kde-format
 msgctxt "@info"
 msgid "New calendar added successfully"
 msgstr "새 캘린더가 추가됨"
 
-#: actionmanager.cpp:856
+#: actionmanager.cpp:860
 #, kde-kuit-format
 msgctxt "@info"
 msgid "Could not add a calendar. Error: <message>%1</message>"
 msgstr "캘린더를 추가할 수 없습니다. 오류: <message>%1</message>"
 
-#: actionmanager.cpp:913
+#: actionmanager.cpp:917
 #, kde-format
 msgctxt "@title:window"
 msgid "Select Calendar File to Open"
 msgstr "열 캘린더 파일 선택"
 
-#: actionmanager.cpp:949
+#: actionmanager.cpp:953
 #, kde-format
 msgctxt "@title:window"
 msgid "Select Calendar File to Import"
 msgstr "가져올 캘린더 파일 선택"
 
-#: actionmanager.cpp:981
+#: actionmanager.cpp:985
 #, kde-kuit-format
 msgctxt "@info"
 msgid "An error occurred: <message>%1 (url: %2)</message>"
 msgstr "오류 발생: <message>%1(URL: %2)</message>"
 
-#: actionmanager.cpp:1000
+#: actionmanager.cpp:1004
 #, kde-kuit-format
 msgctxt "@info"
 msgid "Cannot upload calendar to <filename>%1</filename>"
 msgstr "<filename>%1</filename>(으)로 캘린더를 업로드할 수 없음"
 
-#: actionmanager.cpp:1006
+#: actionmanager.cpp:1010
 #, kde-kuit-format
 msgctxt "@info"
 msgid "Saved calendar <filename>%1</filename>"
 msgstr "<filename>%1</filename> 캘린더를 저장함"
 
-#: actionmanager.cpp:1045
+#: actionmanager.cpp:1049
 #, kde-kuit-format
 msgctxt "@info"
 msgid "Unable to save calendar to the file <filename>%1</filename>"
 msgstr "<filename>%1</filename> 파일로 캘린더를 저장할 수 없음"
 
-#: actionmanager.cpp:1046
+#: actionmanager.cpp:1050
 #, kde-format
 msgctxt "@title:window"
 msgid "Error"
 msgstr "오류"
 
-#: actionmanager.cpp:1072
+#: actionmanager.cpp:1076
 #, kde-format
 msgctxt "@action:inmenu"
 msgid "&Next Day"
 msgid_plural "&Next %1 Days"
 msgstr[0] "다음 %1일(&N)"
 
-#: actionmanager.cpp:1085
+#: actionmanager.cpp:1089
 #, kde-format
 msgctxt "@info"
 msgid "Could not start control module for date and time format."
 msgstr "날짜와 시간 제어 모듈을 시작할 수 없습니다."
 
-#: actionmanager.cpp:1260
+#: actionmanager.cpp:1264
 #, kde-format
 msgctxt "@action:inmenu"
 msgid "&Show Event"
 msgstr "이벤트 표시(&S)"
 
-#: actionmanager.cpp:1263
+#: actionmanager.cpp:1267
 #, kde-format
 msgctxt "@action:inmenu"
 msgid "&Edit Event…"
 msgstr "이벤트 편집(&E)…"
 
-#: actionmanager.cpp:1266
+#: actionmanager.cpp:1270
 #, kde-format
 msgctxt "@action:inmenu"
 msgid "&Delete Event"
 msgstr "이벤트 삭제(&D)"
 
-#: actionmanager.cpp:1274
+#: actionmanager.cpp:1278
 #, kde-format
 msgctxt "@action:inmenu"
 msgid "&Show To-do"
 msgstr "할 일 표시(&S)"
 
-#: actionmanager.cpp:1277
+#: actionmanager.cpp:1281
 #, kde-format
 msgctxt "@action:inmenu"
 msgid "&Edit To-do…"
 msgstr "할 일 편집(&E)…"
 
-#: actionmanager.cpp:1280
+#: actionmanager.cpp:1284
 #, kde-format
 msgctxt "@action:inmenu"
 msgid "&Delete To-do"
 msgstr "할 일 삭제(&D)"
 
-#: actionmanager.cpp:1423 actionmanager.cpp:1527
+#: actionmanager.cpp:1427 actionmanager.cpp:1531
 #, kde-format
 msgctxt "@action:inmenu"
 msgid "Attach as &link"
 msgstr "링크로 첨부(&L)"
 
-#: actionmanager.cpp:1424 actionmanager.cpp:1528
+#: actionmanager.cpp:1428 actionmanager.cpp:1532
 #, kde-format
 msgctxt "@action:inmenu"
 msgid "Attach &inline"
 msgstr "인라인으로 첨부(&I)"
 
-#: actionmanager.cpp:1425
+#: actionmanager.cpp:1429
 #, kde-format
 msgctxt "@action:inmenu"
 msgid "Attach inline &without attachments"
 msgstr "첨부 없이 인라인으로 첨부(&W)"
 
-#: actionmanager.cpp:1427 actionmanager.cpp:1530
+#: actionmanager.cpp:1431 actionmanager.cpp:1534
 #, kde-format
 msgctxt "@action:inmenu"
 msgid "C&ancel"
 msgstr "취소(&A)"
 
-#: actionmanager.cpp:1465
+#: actionmanager.cpp:1469
 #, kde-format
 msgctxt "@info"
 msgid "Removing attachments from an email might invalidate its signature."
 msgstr "이메일에서 첨부를 삭제하면 디지털 서명을 무효화할 수도 있습니다."
 
-#: actionmanager.cpp:1466
+#: actionmanager.cpp:1470
 #, kde-format
 msgctxt "@title:window"
 msgid "Remove Attachments"
 msgstr "첨부 삭제"
 
-#: actionmanager.cpp:1615
+#: actionmanager.cpp:1619
 #, kde-format
 msgctxt "@action:inmenu"
 msgid "Undo: %1"
 msgstr "실행 취소: %1"
 
-#: actionmanager.cpp:1618
+#: actionmanager.cpp:1622
 #, kde-format
 msgctxt "@action:inmenu"
 msgid "Undo"
 msgstr "실행 취소"
 
-#: actionmanager.cpp:1628
+#: actionmanager.cpp:1632
 #, kde-format
 msgctxt "@action:inmenu"
 msgid "Redo: %1"
 msgstr "다시 실행: %1"
 
-#: actionmanager.cpp:1631
+#: actionmanager.cpp:1635
 #, kde-format
 msgctxt "@action:inmenu"
 msgid "Redo"
 msgstr "다시 실행"
 
-#: actionmanager.cpp:1634
+#: actionmanager.cpp:1638
 #, kde-format
 msgctxt "@action:button"
 msgid "Undo"
 msgstr "실행 취소"
 
-#: actionmanager.cpp:1645
+#: actionmanager.cpp:1649
 #, kde-kuit-format
 msgctxt "@info"
 msgid "URL <filename>%1</filename> is invalid."
 msgstr "<filename>%1</filename> URL이 잘못되었습니다."
 
-#: actionmanager.cpp:1650
+#: actionmanager.cpp:1654
 #, kde-kuit-format
 msgctxt "@info"
 msgid ""
@@ -1447,19 +1455,19 @@ msgstr ""
 "수 있습니다.</para><para>새 캘린더로 추가를 선택했다면 자동으로 새 캘린더를 "
 "만듭니다.</para>"
 
-#: actionmanager.cpp:1658
+#: actionmanager.cpp:1662
 #, kde-format
 msgctxt "@title:window"
 msgid "Import Calendar"
 msgstr "캘린더 가져오기"
 
-#: actionmanager.cpp:1659
+#: actionmanager.cpp:1663
 #, kde-format
 msgctxt "@action:button"
 msgid "Merge into existing calendar"
 msgstr "기존 캘린더에 합치기"
 
-#: actionmanager.cpp:1660
+#: actionmanager.cpp:1664
 #, kde-format
 msgctxt "@action:button"
 msgid "Add as new calendar"
@@ -1696,7 +1704,7 @@ msgctxt "@info"
 msgid "Delete calendar failed: <message>%1</message>"
 msgstr "캘린더 삭제 실패: <message>%1</message>"
 
-#: calendarview.cpp:252
+#: calendarview.cpp:256
 #, kde-kuit-format
 msgctxt "@info"
 msgid ""
@@ -1706,7 +1714,7 @@ msgstr ""
 "<para><emphasis>선택한 항목 없음</emphasis></para><para>선택한 이벤트, 할 "
 "일, 저널의 자세한 내용을 여기에서 확인할 수 있습니다.</para>"
 
-#: calendarview.cpp:256
+#: calendarview.cpp:260
 #, kde-format
 msgctxt "@info:whatsthis"
 msgid ""
@@ -1716,19 +1724,19 @@ msgstr ""
 "선택한 이벤트 정보, 저널 항목, 할 일을 KOrganizer의 주 보기에서 볼 수 있습니"
 "다."
 
-#: calendarview.cpp:678
+#: calendarview.cpp:682
 #, kde-format
 msgctxt "@info/plain"
 msgid "Todo completed: %1 (%2)"
 msgstr "할 일 완료: %1(%2)"
 
-#: calendarview.cpp:687
+#: calendarview.cpp:691
 #, kde-format
 msgctxt "@info/plain"
 msgid "Journal of %1"
 msgstr "%1의 저널"
 
-#: calendarview.cpp:736
+#: calendarview.cpp:740
 #, kde-kuit-format
 msgctxt "@info"
 msgid ""
@@ -1738,85 +1746,85 @@ msgstr ""
 "<resource>%1</resource> 항목은 현재 필터 규칙과 일치하지 않으며, 보기에서 숨"
 "겨져서 나타나지 않습니다."
 
-#: calendarview.cpp:814
+#: calendarview.cpp:818
 #, kde-format
 msgctxt "@info"
 msgid "Do you really want to permanently remove the item \"%1\"?"
 msgstr "\"%1\" 항목을 삭제하시겠습니까?"
 
-#: calendarview.cpp:815
+#: calendarview.cpp:819
 #, kde-format
 msgctxt "@title:window"
 msgid "Delete Item?"
 msgstr "항목을 삭제하겠습니까?"
 
-#: calendarview.cpp:890
+#: calendarview.cpp:894
 #, kde-format
 msgctxt "@info"
 msgid "Paste failed: unable to determine a valid target date."
 msgstr "붙여넣기 실패: 올바른 대상 날짜를 결정할 수 없습니다."
 
-#: calendarview.cpp:1302
+#: calendarview.cpp:1306
 #, kde-format
 msgctxt "@info/plain"
 msgid "Make sub-to-dos independent"
 msgstr "하위 할 일을 독립 항목으로 만들기"
 
-#: calendarview.cpp:1359
+#: calendarview.cpp:1363
 #, kde-format
 msgctxt "@info/plain"
 msgid "Toggle Reminder"
 msgstr "알림 전환"
 
-#: calendarview.cpp:1363
+#: calendarview.cpp:1367
 #, kde-kuit-format
 msgctxt "@info alarm enabled"
 msgid "<message>%1</message> reminder is enabled"
 msgstr ""
 
-#: calendarview.cpp:1365
+#: calendarview.cpp:1369
 #, kde-kuit-format
 msgctxt "@info alarm disabled"
 msgid "<message>%1</message> reminder is disabled"
 msgstr ""
 
-#: calendarview.cpp:1396 calendarview.cpp:1450
+#: calendarview.cpp:1400 calendarview.cpp:1454
 #, kde-format
 msgctxt "@info/plain"
 msgid "Toggle To-do Completed"
 msgstr "할 일 완료 여부 전환"
 
-#: calendarview.cpp:1399
+#: calendarview.cpp:1403
 #, kde-kuit-format
 msgctxt "@info percentage completed"
 msgid "To-do <message>%1</message> %2 percent completed"
 msgstr ""
 
-#: calendarview.cpp:1502
+#: calendarview.cpp:1506
 #, kde-format
 msgctxt "@info"
 msgid "\"%1\" was successfully copied to %2."
 msgstr "\"%1\"을(를) %2(으)로 복사했습니다."
 
-#: calendarview.cpp:1503
+#: calendarview.cpp:1507
 #, kde-format
 msgctxt "@title:window"
 msgid "Copying Succeeded"
 msgstr "복사 성공"
 
-#: calendarview.cpp:1507
+#: calendarview.cpp:1511
 #, kde-format
 msgctxt "@info"
 msgid "Unable to copy the item \"%1\" to %2."
 msgstr "\"%1\"을(를) %2(으)로 복사할 수 없습니다."
 
-#: calendarview.cpp:1508 calendarview.cpp:2476
+#: calendarview.cpp:1512 calendarview.cpp:2488
 #, kde-format
 msgctxt "@title:window"
 msgid "Copying Failed"
 msgstr "복사 실패"
 
-#: calendarview.cpp:1567
+#: calendarview.cpp:1571
 #, kde-format
 msgctxt "@info"
 msgid ""
@@ -1826,50 +1834,50 @@ msgstr ""
 "원래 캘린더에서 \"%1\" 항목을 삭제할 수 없습니다. 그 대신 항목의 복사본을 %2"
 "에 저장했습니다"
 
-#: calendarview.cpp:1571 calendarview.cpp:1587 calendarview.cpp:2511
+#: calendarview.cpp:1575 calendarview.cpp:1591 calendarview.cpp:2523
 #, kde-format
 msgctxt "@title:window"
 msgid "Moving Failed"
 msgstr "이동 실패"
 
-#: calendarview.cpp:1576
+#: calendarview.cpp:1580
 #, kde-format
 msgctxt "@info"
 msgid "\"%1\" was successfully moved from %2 to %3."
 msgstr "\"%1\"을(를) %2에서 %3(으)로 이동했습니다."
 
-#: calendarview.cpp:1577
+#: calendarview.cpp:1581
 #, kde-format
 msgctxt "@title:window"
 msgid "Moving Succeeded"
 msgstr "이동 성공"
 
-#: calendarview.cpp:1583
+#: calendarview.cpp:1587
 #, kde-format
 msgctxt "@info"
 msgid "Unable to add the item \"%1\" into %2. This item has not been moved."
 msgstr "\"%1\" 항목을 %2에 추가할 수 없습니다. 항목을 이동하지 않았습니다."
 
-#: calendarview.cpp:1622
+#: calendarview.cpp:1626
 #, kde-format
 msgctxt "@info"
 msgid "Do you want to dissociate the occurrence on %1 from the recurrence?"
 msgstr "%1의 반복 항목을 전체 반복에서 분리하시겠습니까?"
 
-#: calendarview.cpp:1626 calendarview.cpp:1639 calendarview.cpp:2292
-#: calendarview.cpp:2351 calendarview.cpp:2381
+#: calendarview.cpp:1630 calendarview.cpp:1643 calendarview.cpp:2304
+#: calendarview.cpp:2363 calendarview.cpp:2393
 #, kde-format
 msgctxt "@title:window"
 msgid "KOrganizer Confirmation"
 msgstr "KOrganizer 확인"
 
-#: calendarview.cpp:1627
+#: calendarview.cpp:1631
 #, kde-format
 msgctxt "@action:button"
 msgid "&Dissociate"
 msgstr "분리(&D)"
 
-#: calendarview.cpp:1634
+#: calendarview.cpp:1638
 #, kde-format
 msgctxt "@info"
 msgid ""
@@ -1879,73 +1887,73 @@ msgstr ""
 "%1의 반복 항목만 분리하시겠습니까, 아니면 차후 모든 항목도 반복에서 분리하시"
 "겠습니까?"
 
-#: calendarview.cpp:1640
+#: calendarview.cpp:1644
 #, kde-format
 msgctxt "@action:button"
 msgid "&Only Dissociate This One"
 msgstr "이 항목만 분리(&O)"
 
-#: calendarview.cpp:1641
+#: calendarview.cpp:1645
 #, kde-format
 msgctxt "@action:button"
 msgid "&Also Dissociate Future Ones"
 msgstr "미래 항목도 분리(&A)"
 
-#: calendarview.cpp:1659
+#: calendarview.cpp:1663
 #, kde-format
 msgctxt "@info/plain"
 msgid "Dissociate future occurrences"
 msgstr "미래 항목 분리"
 
-#: calendarview.cpp:1661
+#: calendarview.cpp:1665
 #, kde-format
 msgctxt "@info/plain"
 msgid "Dissociate occurrence"
 msgstr "항목 분리"
 
-#: calendarview.cpp:1668
+#: calendarview.cpp:1672
 #, kde-format
 msgctxt "@info"
 msgid "Dissociating the future occurrences failed."
 msgstr "미래 항목을 분리할 수 없습니다."
 
-#: calendarview.cpp:1668 calendarview.cpp:1670
+#: calendarview.cpp:1672 calendarview.cpp:1674
 #, kde-format
 msgctxt "@title:window"
 msgid "Dissociating Failed"
 msgstr "분리 실패"
 
-#: calendarview.cpp:1670
+#: calendarview.cpp:1674
 #, kde-format
 msgctxt "@info"
 msgid "Dissociating the occurrence failed."
 msgstr "현재 항목을 분리할 수 없습니다."
 
-#: calendarview.cpp:1825
+#: calendarview.cpp:1837
 #, kde-format
 msgctxt "@title:window"
 msgid "Export Calendar to File"
 msgstr "파일로 캘린더 내보내기"
 
-#: calendarview.cpp:1838
+#: calendarview.cpp:1850
 #, kde-kuit-format
 msgctxt "@info"
 msgid "Do you want to overwrite <filename>%1</filename>?"
 msgstr "<filename>%1</filename>을(를) 덮어쓰시겠습니까?"
 
-#: calendarview.cpp:1839
+#: calendarview.cpp:1851
 #, kde-format
 msgctxt "@title:window"
 msgid "Export Calendar"
 msgstr "캘린더 내보내기"
 
-#: calendarview.cpp:1853
+#: calendarview.cpp:1865
 #, kde-format
 msgctxt "@info save failure cause unknown"
 msgid "Reason unknown"
 msgstr "이유 알 수 없음"
 
-#: calendarview.cpp:1855
+#: calendarview.cpp:1867
 #, kde-kuit-format
 msgctxt "@info"
 msgid ""
@@ -1954,13 +1962,13 @@ msgstr ""
 "iCalendar 파일 <filename>%1</filename>에 쓸 수 없습니다. <message>%2</"
 "message>"
 
-#: calendarview.cpp:1964 calendarview.cpp:2009
+#: calendarview.cpp:1976 calendarview.cpp:2021
 #, kde-format
 msgctxt "@info/plain"
 msgid "No filter"
 msgstr "필터 없음"
 
-#: calendarview.cpp:2287
+#: calendarview.cpp:2299
 #, kde-kuit-format
 msgctxt "@info"
 msgid ""
@@ -1972,19 +1980,19 @@ msgstr ""
 "하고 하위 할 일을 독립 항목으로 만드시겠습니까, 아니면 하위 할 일을 포함하여 "
 "한꺼번에 삭제하시겠습니까?"
 
-#: calendarview.cpp:2293
+#: calendarview.cpp:2305
 #, kde-format
 msgctxt "@action:button"
 msgid "Delete Only This"
 msgstr "이것만 삭제"
 
-#: calendarview.cpp:2294 calendarview.cpp:2352
+#: calendarview.cpp:2306 calendarview.cpp:2364
 #, kde-format
 msgctxt "@action:button"
 msgid "Delete All"
 msgstr "모두 삭제"
 
-#: calendarview.cpp:2326
+#: calendarview.cpp:2338
 #, kde-kuit-format
 msgctxt "@info"
 msgid ""
@@ -1994,13 +2002,13 @@ msgstr ""
 "<resource>%1</resource> 항목이 읽기 전용으로 표시되어 삭제할 수 없습니다. 읽"
 "기 전용 캘린더에 포함된 것 같습니다."
 
-#: calendarview.cpp:2329
+#: calendarview.cpp:2341
 #, kde-format
 msgctxt "@title:window"
 msgid "Removing not possible"
 msgstr "삭제 불가능"
 
-#: calendarview.cpp:2348
+#: calendarview.cpp:2360
 #, kde-kuit-format
 msgctxt "@info"
 msgid ""
@@ -2010,13 +2018,13 @@ msgstr ""
 "<resource>%1</resource> 캘린더 항목이 여러 날짜에 걸쳐 반복되고 있습니다. 이 "
 "항목과 모든 반복 항목을 삭제하시겠습니까?"
 
-#: calendarview.cpp:2359
+#: calendarview.cpp:2371
 #, kde-format
 msgctxt "@action:button"
 msgid "Also Delete &Future"
 msgstr "미래의 모든 항목 삭제(&F)"
 
-#: calendarview.cpp:2363
+#: calendarview.cpp:2375
 #, kde-kuit-format
 msgctxt "@info"
 msgid ""
@@ -2028,7 +2036,7 @@ msgstr ""
 "의 현재 항목만 삭제하거나, 이를 포함하여 미래 항목을 삭제하거나, 모든 반복 항"
 "목을 삭제하시겠습니까?"
 
-#: calendarview.cpp:2370
+#: calendarview.cpp:2382
 #, kde-kuit-format
 msgctxt "@info"
 msgid ""
@@ -2038,25 +2046,25 @@ msgstr ""
 "<resource>%1</resource> 캘린더 항목이 여러 날짜에 걸쳐 반복되고 있습니다. %2"
 "의 현재 항목만 삭제하거나, 모든 반복 항목을 삭제하시겠습니까?"
 
-#: calendarview.cpp:2382
+#: calendarview.cpp:2394
 #, kde-format
 msgctxt "@action:button"
 msgid "Delete C&urrent"
 msgstr "현재 항목만 삭제(&U)"
 
-#: calendarview.cpp:2384
+#: calendarview.cpp:2396
 #, kde-format
 msgctxt "@action:button"
 msgid "Delete &All"
 msgstr "모두 삭제(&A)"
 
-#: calendarview.cpp:2415 calendarview.cpp:2422
+#: calendarview.cpp:2427 calendarview.cpp:2434
 #, kde-format
 msgctxt "@info/plain"
 msgid "Delete \"%1\""
 msgstr "\"%1\" 삭제"
 
-#: calendarview.cpp:2454
+#: calendarview.cpp:2466
 #, kde-format
 msgctxt "@info"
 msgid ""
@@ -2064,49 +2072,49 @@ msgid ""
 msgstr ""
 "캘린더 관리자에서 선택한 캘린더가 없습니다. 할 일 목록을 비우지 않았습니다."
 
-#: calendarview.cpp:2459 calendarview.cpp:2714
+#: calendarview.cpp:2471 calendarview.cpp:2726
 #, kde-format
 msgctxt "@info"
 msgid "There are no completed to-dos to purge."
 msgstr "비울 완료된 할 일이 없습니다."
 
-#: calendarview.cpp:2464
+#: calendarview.cpp:2476
 #, kde-format
 msgctxt "@info"
 msgid "Delete all completed to-dos from checked calendars?"
 msgstr "모든 완료된 할 일을 선택한 캘린더에서 삭제하시겠습니까?"
 
-#: calendarview.cpp:2465
+#: calendarview.cpp:2477
 #, kde-format
 msgctxt "@title:window"
 msgid "Purge To-dos"
 msgstr "할 일 비우기"
 
-#: calendarview.cpp:2466
+#: calendarview.cpp:2478
 #, kde-format
 msgctxt "@action:button"
 msgid "Purge"
 msgstr "깨끗이 삭제"
 
-#: calendarview.cpp:2476
+#: calendarview.cpp:2488
 #, kde-kuit-format
 msgctxt "@info"
 msgid "Unable to copy item <resource>%1</resource>."
 msgstr "<resource>%1</resource> 항목을 복사할 수 없습니다."
 
-#: calendarview.cpp:2511
+#: calendarview.cpp:2523
 #, kde-kuit-format
 msgctxt "@info"
 msgid "Unable to move item <resource>%1</resource>."
 msgstr "<resource>%1</resource> 항목을 이동할 수 없습니다."
 
-#: calendarview.cpp:2706
+#: calendarview.cpp:2718
 #, kde-kuit-format
 msgctxt "@info"
 msgid "0 completed to-dos were purged.<nl/>"
 msgstr "완료된 할 일 0개를 삭제했습니다.<nl/>"
 
-#: calendarview.cpp:2708 calendarview.cpp:2719
+#: calendarview.cpp:2720 calendarview.cpp:2731
 #, kde-format, kde-kuit-format
 msgctxt "@info"
 msgid "%1 to-do was ignored because it has uncompleted or read-only children."
@@ -2116,20 +2124,20 @@ msgstr[0] ""
 "할 일 %1개에는 완료하지 않았거나 읽기 전용인 자식 항목이 있기 때문에 무시했습"
 "니다."
 
-#: calendarview.cpp:2712 calendarview.cpp:2717
+#: calendarview.cpp:2724 calendarview.cpp:2729
 #, kde-format
 msgctxt "@info"
 msgid "%1 completed to-do was purged."
 msgid_plural "%1 completed to-dos were purged."
 msgstr[0] "완료된 할 일 %1개를 삭제했습니다."
 
-#: calendarview.cpp:2724
+#: calendarview.cpp:2736
 #, kde-kuit-format
 msgctxt "@info"
 msgid "An error occurred while purging completed to-dos: <message>%1</message>"
 msgstr "완료된 할 일을 비우는 중 오류 발생: <message>%1</message>"
 
-#: calendarview.cpp:2778
+#: calendarview.cpp:2790
 #, kde-kuit-format
 msgctxt "@info"
 msgid ""
@@ -2140,7 +2148,7 @@ msgstr ""
 "현재 필터에서 제외된 캘린더에 항목을 만들었습니다.<para>해당 항목을 보려면 왼"
 "쪽 사이드바의 캘린더 관리자에서 활성화하십시오.</para>"
 
-#: calendarview.cpp:2782
+#: calendarview.cpp:2794
 #, kde-kuit-format
 msgctxt "@info"
 msgid ""
@@ -2256,7 +2264,7 @@ msgid "&Go"
 msgstr "이동(&G)"
 
 #. i18n: ectx: Menu (actions)
-#: data/korganizer_part.rc:65 data/korganizerui.rc:61
+#: data/korganizer_part.rc:67 data/korganizerui.rc:63
 #, kde-format
 msgid "&Actions"
 msgstr "동작(&A)"
@@ -3538,18 +3546,18 @@ msgctxt "@info:credit"
 msgid "Tobias Koenig"
 msgstr "Tobias Koenig"
 
-#: korganizer.cpp:247
+#: korganizer.cpp:264
 #, kde-format
 msgid "New Calendar"
 msgstr "새 캘린더"
 
-#: korganizer.cpp:251
+#: korganizer.cpp:268
 #, kde-format
 msgctxt "the calendar is read-only"
 msgid "read-only"
 msgstr "읽기 전용"
 
-#: korganizer.cpp:254
+#: korganizer.cpp:271
 #, kde-format
 msgid "Calendar"
 msgstr "캘린더"
@@ -3588,7 +3596,7 @@ msgctxt "@info:shell"
 msgid "Lists the available options for user feedback"
 msgstr "사용자 피드백 옵션을 표시합니다"
 
-#: korganizer_part.cpp:56
+#: korganizer_part.cpp:59
 #, kde-format
 msgid "KOrganizer"
 msgstr "KOrganizer"
@@ -6070,6 +6078,44 @@ msgstr "제목"
 msgid "Selected Calendars"
 msgstr "선택한 캘린더"
 
+#: whatsnew/whatsnewtranslations.cpp:18
+#, fuzzy
+#| msgctxt "@action:button"
+#| msgid "Add as new calendar"
+msgid "Add What's New menu"
+msgstr "새 캘린더로 추가"
+
+#: whatsnew/whatsnewtranslations.cpp:19
+msgid "Add a Date Picker dialog available from the Go menu"
+msgstr ""
+
+#: whatsnew/whatsnewtranslations.cpp:20
+msgid ""
+"Agenda view move day, next X Days, work week into the Agenda tool button"
+msgstr ""
+
+#: whatsnew/whatsnewtranslations.cpp:21
+msgid "Agenda view timelabels can switch to a 24-hour clock"
+msgstr ""
+
+#: whatsnew/whatsnewtranslations.cpp:22
+msgid "Agenda view menu adds create new Event/To-do"
+msgstr ""
+
+#: whatsnew/whatsnewtranslations.cpp:23
+msgid "To-do view menu has options for toggling completion and reminders"
+msgstr ""
+
+#: whatsnew/whatsnewtranslations.cpp:24
+msgid "To-do view no longer will show the to-do list in the sidebar"
+msgstr ""
+
+#: whatsnew/whatsnewtranslations.cpp:25
+#, fuzzy
+#| msgid "Get &Hot New Stuff..."
+msgid "Get Hot New Stuff removed"
+msgstr "새로운 항목 다운로드(&H)..."
+
 #: widgets/kdatenavigator.cpp:171
 #, kde-format
 msgctxt "@info start/end week number of line in date picker"
@@ -6584,9 +6630,6 @@ msgstr "%1년"
 #~ msgstr ""
 #~ "Copyright © 2004 Tobias Koenig\n"
 #~ "Copyright © 2004–2010 Allen Winter"
-
-#~ msgid "Get &Hot New Stuff..."
-#~ msgstr "새로운 항목 다운로드(&H)..."
 
 #~ msgctxt "@title:tab systray settings"
 #~ msgid "System Tray"

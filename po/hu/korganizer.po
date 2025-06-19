@@ -7,7 +7,7 @@ msgid ""
 msgstr ""
 "Project-Id-Version: KDE 4.3\n"
 "Report-Msgid-Bugs-To: https://bugs.kde.org\n"
-"POT-Creation-Date: 2025-06-15 00:43+0000\n"
+"POT-Creation-Date: 2025-06-19 00:43+0000\n"
 "PO-Revision-Date: 2024-08-06 22:24+0200\n"
 "Last-Translator: Kristof Kiszel <ulysses@fsf.hu>\n"
 "Language-Team: Hungarian <kde-l10n-hu@kde.org>\n"
@@ -481,8 +481,8 @@ msgstr ""
 "Lehetővé teszi az összes befejezett feladat eltávolítását a "
 "naptárgyűjteményből. Ez a művelet nem vonható vissza!"
 
-#: actionmanager.cpp:318 actionmanager.cpp:617 actionmanager.cpp:1304
-#: actionmanager.cpp:1342
+#: actionmanager.cpp:318 actionmanager.cpp:617 actionmanager.cpp:1308
+#: actionmanager.cpp:1346
 #, fuzzy, kde-format
 #| msgid "&Delete"
 msgctxt "@action:inmenu"
@@ -1178,14 +1178,14 @@ msgid ""
 "Calendars options in the Views->Agenda Views settings."
 msgstr ""
 
-#: actionmanager.cpp:609 actionmanager.cpp:1298 actionmanager.cpp:1340
+#: actionmanager.cpp:609 actionmanager.cpp:1302 actionmanager.cpp:1344
 #: koeventpopupmenu.cpp:42
 #, kde-format
 msgctxt "@action:inmenu"
 msgid "&Show"
 msgstr "&Megjelenítés"
 
-#: actionmanager.cpp:613 actionmanager.cpp:1301 actionmanager.cpp:1341
+#: actionmanager.cpp:613 actionmanager.cpp:1305 actionmanager.cpp:1345
 #: koeventpopupmenu.cpp:44
 #, fuzzy, kde-format
 #| msgid "&Edit"
@@ -1324,14 +1324,21 @@ msgctxt "@action:inmenu"
 msgid "Manage T&ags…"
 msgstr "A k&ategóriák szerkesztése..."
 
-#: actionmanager.cpp:761
+#: actionmanager.cpp:760
+#, fuzzy, kde-format
+#| msgid "What's &Next"
+msgctxt "@action:inmenu"
+msgid "What's new"
+msgstr "Mi kö&vetkezik?"
+
+#: actionmanager.cpp:765
 #, fuzzy, kde-format
 #| msgid "&Configure KOrganizer..."
 msgctxt "@action:inmenu"
 msgid "&Configure KOrganizer…"
 msgstr "A KOrganizer &beállítása…"
 
-#: actionmanager.cpp:839
+#: actionmanager.cpp:843
 #, fuzzy, kde-format
 #| msgid "1 incidence was imported successfully."
 #| msgid_plural "%1 incidences were imported successfully."
@@ -1341,73 +1348,73 @@ msgid_plural "%1 incidences were imported successfully."
 msgstr[0] "1 előfordulás sikeresen importálva."
 msgstr[1] "%1 előfordulás sikeresen importálva."
 
-#: actionmanager.cpp:842
+#: actionmanager.cpp:846
 #, fuzzy, kde-kuit-format
 #| msgid "There was an error while merging the calendar: %1"
 msgctxt "@info"
 msgid "There was an error while merging the calendar: <message>%1</message>"
 msgstr "Hiba történt a naptár egyesítése közben: %1"
 
-#: actionmanager.cpp:854
+#: actionmanager.cpp:858
 #, fuzzy, kde-format
 #| msgid "New calendar added successfully"
 msgctxt "@info"
 msgid "New calendar added successfully"
 msgstr "Az új naptár sikeresen hozzáadva"
 
-#: actionmanager.cpp:856
+#: actionmanager.cpp:860
 #, fuzzy, kde-kuit-format
 #| msgid "Could not add a calendar. Error: %1"
 msgctxt "@info"
 msgid "Could not add a calendar. Error: <message>%1</message>"
 msgstr "Nem sikerült hozzáadni a naptárt. A hiba: %1"
 
-#: actionmanager.cpp:913
+#: actionmanager.cpp:917
 #, kde-format
 msgctxt "@title:window"
 msgid "Select Calendar File to Open"
 msgstr "Válassza ki a megnyitandó naptárfájlt"
 
-#: actionmanager.cpp:949
+#: actionmanager.cpp:953
 #, kde-format
 msgctxt "@title:window"
 msgid "Select Calendar File to Import"
 msgstr "Válassza ki az importálandó naptárfájlt"
 
-#: actionmanager.cpp:981
+#: actionmanager.cpp:985
 #, fuzzy, kde-kuit-format
 #| msgid "An error occurred: %1"
 msgctxt "@info"
 msgid "An error occurred: <message>%1 (url: %2)</message>"
 msgstr "Hiba történt: %1"
 
-#: actionmanager.cpp:1000
+#: actionmanager.cpp:1004
 #, fuzzy, kde-kuit-format
 #| msgid "Cannot upload calendar to '%1'"
 msgctxt "@info"
 msgid "Cannot upload calendar to <filename>%1</filename>"
 msgstr "A(z) „%1” naptár feltöltése nem sikerült."
 
-#: actionmanager.cpp:1006
+#: actionmanager.cpp:1010
 #, kde-kuit-format
 msgctxt "@info"
 msgid "Saved calendar <filename>%1</filename>"
 msgstr ""
 
-#: actionmanager.cpp:1045
+#: actionmanager.cpp:1049
 #, fuzzy, kde-kuit-format
 #| msgid "Unable to save calendar to the file %1."
 msgctxt "@info"
 msgid "Unable to save calendar to the file <filename>%1</filename>"
 msgstr "Nem sikerült elmenteni a naptárt ebbe a fájlba: %1."
 
-#: actionmanager.cpp:1046
+#: actionmanager.cpp:1050
 #, kde-format
 msgctxt "@title:window"
 msgid "Error"
 msgstr "Hiba"
 
-#: actionmanager.cpp:1072
+#: actionmanager.cpp:1076
 #, fuzzy, kde-format
 #| msgid "&Next Day"
 #| msgid_plural "&Next %1 Days"
@@ -1417,83 +1424,83 @@ msgid_plural "&Next %1 Days"
 msgstr[0] "A &következő nap"
 msgstr[1] "A &következő %1 nap"
 
-#: actionmanager.cpp:1085
+#: actionmanager.cpp:1089
 #, fuzzy, kde-format
 #| msgid "Could not start control module for date and time format."
 msgctxt "@info"
 msgid "Could not start control module for date and time format."
 msgstr "A dátum- és időbeállító modult nem sikerült elindítani."
 
-#: actionmanager.cpp:1260
+#: actionmanager.cpp:1264
 #, fuzzy, kde-format
 #| msgid "&Show Event"
 msgctxt "@action:inmenu"
 msgid "&Show Event"
 msgstr "Az e&semény megjelenítése"
 
-#: actionmanager.cpp:1263
+#: actionmanager.cpp:1267
 #, fuzzy, kde-format
 #| msgid "&Edit Event..."
 msgctxt "@action:inmenu"
 msgid "&Edit Event…"
 msgstr "Az esemény szer&kesztése..."
 
-#: actionmanager.cpp:1266
+#: actionmanager.cpp:1270
 #, fuzzy, kde-format
 #| msgid "&Delete Event"
 msgctxt "@action:inmenu"
 msgid "&Delete Event"
 msgstr "Az esemény tör&lése..."
 
-#: actionmanager.cpp:1274
+#: actionmanager.cpp:1278
 #, fuzzy, kde-format
 #| msgid "&Show To-do"
 msgctxt "@action:inmenu"
 msgid "&Show To-do"
 msgstr "A feladat meg&jelenítése"
 
-#: actionmanager.cpp:1277
+#: actionmanager.cpp:1281
 #, fuzzy, kde-format
 #| msgid "&Edit To-do..."
 msgctxt "@action:inmenu"
 msgid "&Edit To-do…"
 msgstr "A feladat sz&erkesztése..."
 
-#: actionmanager.cpp:1280
+#: actionmanager.cpp:1284
 #, fuzzy, kde-format
 #| msgid "&Delete To-do"
 msgctxt "@action:inmenu"
 msgid "&Delete To-do"
 msgstr "A feladat &törlése"
 
-#: actionmanager.cpp:1423 actionmanager.cpp:1527
+#: actionmanager.cpp:1427 actionmanager.cpp:1531
 #, fuzzy, kde-format
 #| msgid "Attach as &link"
 msgctxt "@action:inmenu"
 msgid "Attach as &link"
 msgstr "Csatolás &linkként"
 
-#: actionmanager.cpp:1424 actionmanager.cpp:1528
+#: actionmanager.cpp:1428 actionmanager.cpp:1532
 #, fuzzy, kde-format
 #| msgid "Attach &inline"
 msgctxt "@action:inmenu"
 msgid "Attach &inline"
 msgstr "Csatolás be&szúrva"
 
-#: actionmanager.cpp:1425
+#: actionmanager.cpp:1429
 #, fuzzy, kde-format
 #| msgid "Attach inline &without attachments"
 msgctxt "@action:inmenu"
 msgid "Attach inline &without attachments"
 msgstr "Csat&olás beszúrva mellékletek nélkül"
 
-#: actionmanager.cpp:1427 actionmanager.cpp:1530
+#: actionmanager.cpp:1431 actionmanager.cpp:1534
 #, kde-format
 msgctxt "@action:inmenu"
 msgid "C&ancel"
 msgstr "&Mégsem"
 
-#: actionmanager.cpp:1465
+#: actionmanager.cpp:1469
 #, fuzzy, kde-format
 #| msgid "Removing attachments from an email might invalidate its signature."
 msgctxt "@info"
@@ -1502,55 +1509,55 @@ msgstr ""
 "Ha eltávolít egy mellékletet valamelyik e-mailből, annak digitális aláírása "
 "érvénytelenné válhat."
 
-#: actionmanager.cpp:1466
+#: actionmanager.cpp:1470
 #, kde-format
 msgctxt "@title:window"
 msgid "Remove Attachments"
 msgstr "Mellékletek eltávolítása"
 
-#: actionmanager.cpp:1615
+#: actionmanager.cpp:1619
 #, fuzzy, kde-format
 #| msgid "Undo: %1"
 msgctxt "@action:inmenu"
 msgid "Undo: %1"
 msgstr "Visszavonás: %1"
 
-#: actionmanager.cpp:1618
+#: actionmanager.cpp:1622
 #, fuzzy, kde-format
 #| msgid "Undo"
 msgctxt "@action:inmenu"
 msgid "Undo"
 msgstr "Visszavonás"
 
-#: actionmanager.cpp:1628
+#: actionmanager.cpp:1632
 #, fuzzy, kde-format
 #| msgid "Redo: %1"
 msgctxt "@action:inmenu"
 msgid "Redo: %1"
 msgstr "Újra végrehajtás: %1"
 
-#: actionmanager.cpp:1631
+#: actionmanager.cpp:1635
 #, fuzzy, kde-format
 #| msgid "Redo"
 msgctxt "@action:inmenu"
 msgid "Redo"
 msgstr "Újra végrehajtás"
 
-#: actionmanager.cpp:1634
+#: actionmanager.cpp:1638
 #, fuzzy, kde-format
 #| msgid "Undo"
 msgctxt "@action:button"
 msgid "Undo"
 msgstr "Visszavonás"
 
-#: actionmanager.cpp:1645
+#: actionmanager.cpp:1649
 #, fuzzy, kde-kuit-format
 #| msgid "URL '%1' is invalid."
 msgctxt "@info"
 msgid "URL <filename>%1</filename> is invalid."
 msgstr "A(z) „%1” URL érvénytelen."
 
-#: actionmanager.cpp:1650
+#: actionmanager.cpp:1654
 #, fuzzy, kde-kuit-format
 #| msgctxt "@info"
 #| msgid ""
@@ -1573,20 +1580,20 @@ msgstr ""
 "p><p>Ha a hozzáadást választja, akkor automatikusan egy új naptár lesz "
 "létrehozva önnek.</p>"
 
-#: actionmanager.cpp:1658
+#: actionmanager.cpp:1662
 #, kde-format
 msgctxt "@title:window"
 msgid "Import Calendar"
 msgstr "Naptár importálása"
 
-#: actionmanager.cpp:1659
+#: actionmanager.cpp:1663
 #, fuzzy, kde-format
 #| msgid "Merge into existing calendar"
 msgctxt "@action:button"
 msgid "Merge into existing calendar"
 msgstr "Összeolvasztás a mostani naptár adataival"
 
-#: actionmanager.cpp:1660
+#: actionmanager.cpp:1664
 #, fuzzy, kde-format
 #| msgid "Add as new calendar"
 msgctxt "@action:button"
@@ -1799,7 +1806,7 @@ msgctxt "@info"
 msgid "Delete calendar failed: <message>%1</message>"
 msgstr ""
 
-#: calendarview.cpp:252
+#: calendarview.cpp:256
 #, fuzzy, kde-kuit-format
 #| msgid ""
 #| "<p><em>No Item Selected</em></p><p>Select an event, to-do or journal "
@@ -1812,7 +1819,7 @@ msgstr ""
 "<p><em>Egy elem sincs kijelölve</em></p><p>Ha kijelöl egy eseményt, "
 "feladatot vagy naplóbejegyzést, akkor itt jelennek meg annak részletei.</p>"
 
-#: calendarview.cpp:256
+#: calendarview.cpp:260
 #, fuzzy, kde-format
 #| msgid ""
 #| "View the details of events, journal entries or to-dos selected in "
@@ -1825,21 +1832,21 @@ msgstr ""
 "Itt lehet megnézni a KOrganizer fő nézetében kijelölt események, "
 "naplóbejegyzések és feladatok részleteit."
 
-#: calendarview.cpp:678
+#: calendarview.cpp:682
 #, fuzzy, kde-format
 #| msgid "Todo completed: %1 (%2)"
 msgctxt "@info/plain"
 msgid "Todo completed: %1 (%2)"
 msgstr "Feladat befejezve: %1 (%2)"
 
-#: calendarview.cpp:687
+#: calendarview.cpp:691
 #, fuzzy, kde-format
 #| msgid "Journal of %1"
 msgctxt "@info/plain"
 msgid "Journal of %1"
 msgstr "Napló - %1"
 
-#: calendarview.cpp:736
+#: calendarview.cpp:740
 #, fuzzy, kde-kuit-format
 #| msgid ""
 #| "The item \"%1\" is filtered by your current filter rules, so it will be "
@@ -1852,89 +1859,89 @@ msgstr ""
 "A(z) „%1” elem beleesik az aktuális szűrőbe, ezért el lesz rejtve, nem "
 "jelenik meg a nézetben."
 
-#: calendarview.cpp:814
+#: calendarview.cpp:818
 #, kde-format
 msgctxt "@info"
 msgid "Do you really want to permanently remove the item \"%1\"?"
 msgstr "Biztos benne, hogy véglegesen törli a(z) „%1” elemet?"
 
-#: calendarview.cpp:815
+#: calendarview.cpp:819
 #, kde-format
 msgctxt "@title:window"
 msgid "Delete Item?"
 msgstr "Törli az elemet?"
 
-#: calendarview.cpp:890
+#: calendarview.cpp:894
 #, fuzzy, kde-format
 #| msgid "Paste failed: unable to determine a valid target date."
 msgctxt "@info"
 msgid "Paste failed: unable to determine a valid target date."
 msgstr "Beillesztés nem sikerült: nem határozható meg érvényes céldátum."
 
-#: calendarview.cpp:1302
+#: calendarview.cpp:1306
 #, fuzzy, kde-format
 #| msgid "Make sub-to-dos independent"
 msgctxt "@info/plain"
 msgid "Make sub-to-dos independent"
 msgstr "A részfeladatok önállóvá tétele"
 
-#: calendarview.cpp:1359
+#: calendarview.cpp:1363
 #, fuzzy, kde-format
 #| msgid "Toggle Reminder"
 msgctxt "@info/plain"
 msgid "Toggle Reminder"
 msgstr "Emlékeztető ki-be"
 
-#: calendarview.cpp:1363
+#: calendarview.cpp:1367
 #, kde-kuit-format
 msgctxt "@info alarm enabled"
 msgid "<message>%1</message> reminder is enabled"
 msgstr ""
 
-#: calendarview.cpp:1365
+#: calendarview.cpp:1369
 #, kde-kuit-format
 msgctxt "@info alarm disabled"
 msgid "<message>%1</message> reminder is disabled"
 msgstr ""
 
-#: calendarview.cpp:1396 calendarview.cpp:1450
+#: calendarview.cpp:1400 calendarview.cpp:1454
 #, fuzzy, kde-format
 #| msgid "Toggle To-do Completed"
 msgctxt "@info/plain"
 msgid "Toggle To-do Completed"
 msgstr "Befejezett feladatok ki-be"
 
-#: calendarview.cpp:1399
+#: calendarview.cpp:1403
 #, kde-kuit-format
 msgctxt "@info percentage completed"
 msgid "To-do <message>%1</message> %2 percent completed"
 msgstr ""
 
-#: calendarview.cpp:1502
+#: calendarview.cpp:1506
 #, kde-format
 msgctxt "@info"
 msgid "\"%1\" was successfully copied to %2."
 msgstr "„%1” sikeresen átmásolva ide: %2."
 
-#: calendarview.cpp:1503
+#: calendarview.cpp:1507
 #, kde-format
 msgctxt "@title:window"
 msgid "Copying Succeeded"
 msgstr "A másolás sikerült"
 
-#: calendarview.cpp:1507
+#: calendarview.cpp:1511
 #, kde-format
 msgctxt "@info"
 msgid "Unable to copy the item \"%1\" to %2."
 msgstr "Nem sikerült átmásolni a(z) „%1” elemet ide: %2."
 
-#: calendarview.cpp:1508 calendarview.cpp:2476
+#: calendarview.cpp:1512 calendarview.cpp:2488
 #, kde-format
 msgctxt "@title:window"
 msgid "Copying Failed"
 msgstr "A másolás nem sikerült"
 
-#: calendarview.cpp:1567
+#: calendarview.cpp:1571
 #, fuzzy, kde-format
 #| msgctxt "@info"
 #| msgid ""
@@ -1948,25 +1955,25 @@ msgstr ""
 "Nem lehet eltávolítani a(z) „%1” elemet ebből: %2. Azonban az elem másolata "
 "bekerült ide: %3,"
 
-#: calendarview.cpp:1571 calendarview.cpp:1587 calendarview.cpp:2511
+#: calendarview.cpp:1575 calendarview.cpp:1591 calendarview.cpp:2523
 #, kde-format
 msgctxt "@title:window"
 msgid "Moving Failed"
 msgstr "Az áthelyezés nem sikerült"
 
-#: calendarview.cpp:1576
+#: calendarview.cpp:1580
 #, kde-format
 msgctxt "@info"
 msgid "\"%1\" was successfully moved from %2 to %3."
 msgstr "„%1” sikeresen áthelyezve innen: %2 ide: %3."
 
-#: calendarview.cpp:1577
+#: calendarview.cpp:1581
 #, kde-format
 msgctxt "@title:window"
 msgid "Moving Succeeded"
 msgstr "Az áthelyezés sikerült"
 
-#: calendarview.cpp:1583
+#: calendarview.cpp:1587
 #, kde-format
 msgctxt "@info"
 msgid "Unable to add the item \"%1\" into %2. This item has not been moved."
@@ -1974,28 +1981,28 @@ msgstr ""
 "Nem lehet hozzáadni a(z) „%1” elemet ehhez: %2. Ez az elem nem lett "
 "áthelyezve."
 
-#: calendarview.cpp:1622
+#: calendarview.cpp:1626
 #, fuzzy, kde-format
 #| msgid "Do you want to dissociate the occurrence on %1 from the recurrence?"
 msgctxt "@info"
 msgid "Do you want to dissociate the occurrence on %1 from the recurrence?"
 msgstr "Le akarja választani az ismétlődésről a(z) %1 napi előfordulást?"
 
-#: calendarview.cpp:1626 calendarview.cpp:1639 calendarview.cpp:2292
-#: calendarview.cpp:2351 calendarview.cpp:2381
+#: calendarview.cpp:1630 calendarview.cpp:1643 calendarview.cpp:2304
+#: calendarview.cpp:2363 calendarview.cpp:2393
 #, kde-format
 msgctxt "@title:window"
 msgid "KOrganizer Confirmation"
 msgstr "KOrganizer jóváhagyás"
 
-#: calendarview.cpp:1627
+#: calendarview.cpp:1631
 #, fuzzy, kde-format
 #| msgid "&Dissociate"
 msgctxt "@action:button"
 msgid "&Dissociate"
 msgstr "&Leválasztás"
 
-#: calendarview.cpp:1634
+#: calendarview.cpp:1638
 #, fuzzy, kde-format
 #| msgid ""
 #| "Do you want to dissociate the occurrence on %1 from the recurrence or "
@@ -2008,56 +2015,56 @@ msgstr ""
 "Le akarja választani az ismétlődésről a(z) %1 napi előfordulást, vagy csak a "
 "jövőbelieket?"
 
-#: calendarview.cpp:1640
+#: calendarview.cpp:1644
 #, fuzzy, kde-format
 #| msgid "&Only Dissociate This One"
 msgctxt "@action:button"
 msgid "&Only Dissociate This One"
 msgstr "Csak &ezt az egyet"
 
-#: calendarview.cpp:1641
+#: calendarview.cpp:1645
 #, fuzzy, kde-format
 #| msgid "&Also Dissociate Future Ones"
 msgctxt "@action:button"
 msgid "&Also Dissociate Future Ones"
 msgstr "Az ezutáni előfordulásokat &is"
 
-#: calendarview.cpp:1659
+#: calendarview.cpp:1663
 #, fuzzy, kde-format
 #| msgid "Dissociate future occurrences"
 msgctxt "@info/plain"
 msgid "Dissociate future occurrences"
 msgstr "A jövőbeli előfordulások leválasztása"
 
-#: calendarview.cpp:1661
+#: calendarview.cpp:1665
 #, fuzzy, kde-format
 #| msgid "Dissociate occurrence"
 msgctxt "@info/plain"
 msgid "Dissociate occurrence"
 msgstr "Az esemény elválasztása a többi előfordulástól"
 
-#: calendarview.cpp:1668
+#: calendarview.cpp:1672
 #, fuzzy, kde-format
 #| msgid "Dissociating the future occurrences failed."
 msgctxt "@info"
 msgid "Dissociating the future occurrences failed."
 msgstr "A jövőbeli előfordulások leválasztása nem sikerült."
 
-#: calendarview.cpp:1668 calendarview.cpp:1670
+#: calendarview.cpp:1672 calendarview.cpp:1674
 #, fuzzy, kde-format
 #| msgid "Dissociating Failed"
 msgctxt "@title:window"
 msgid "Dissociating Failed"
 msgstr "A leválasztás nem sikerült"
 
-#: calendarview.cpp:1670
+#: calendarview.cpp:1674
 #, fuzzy, kde-format
 #| msgid "Dissociating the occurrence failed."
 msgctxt "@info"
 msgid "Dissociating the occurrence failed."
 msgstr "Az esemény elválasztása nem sikerült."
 
-#: calendarview.cpp:1825
+#: calendarview.cpp:1837
 #, fuzzy, kde-format
 #| msgctxt "@info:status"
 #| msgid "Export calendar to file"
@@ -2065,20 +2072,20 @@ msgctxt "@title:window"
 msgid "Export Calendar to File"
 msgstr "Naptár exportálása fájlba"
 
-#: calendarview.cpp:1838
+#: calendarview.cpp:1850
 #, fuzzy, kde-kuit-format
 #| msgid "Do you want to overwrite file \"%1\"?"
 msgctxt "@info"
 msgid "Do you want to overwrite <filename>%1</filename>?"
 msgstr "Felül szeretné írni a(z) „%1” fájlt?"
 
-#: calendarview.cpp:1839
+#: calendarview.cpp:1851
 #, kde-format
 msgctxt "@title:window"
 msgid "Export Calendar"
 msgstr "Naptár exportálása"
 
-#: calendarview.cpp:1853
+#: calendarview.cpp:1865
 #, fuzzy, kde-format
 #| msgctxt "save failure cause unknown"
 #| msgid "Reason unknown"
@@ -2086,7 +2093,7 @@ msgctxt "@info save failure cause unknown"
 msgid "Reason unknown"
 msgstr "Ismeretlen okból"
 
-#: calendarview.cpp:1855
+#: calendarview.cpp:1867
 #, fuzzy, kde-kuit-format
 #| msgctxt "@info"
 #| msgid "Cannot write iCalendar file %1. %2"
@@ -2095,14 +2102,14 @@ msgid ""
 "Cannot write iCalendar file <filename>%1</filename>: <message>%2</message>"
 msgstr "Nem sikerült írni a következő iCalendar-fájlba: %1. %2"
 
-#: calendarview.cpp:1964 calendarview.cpp:2009
+#: calendarview.cpp:1976 calendarview.cpp:2021
 #, fuzzy, kde-format
 #| msgid "No filter"
 msgctxt "@info/plain"
 msgid "No filter"
 msgstr "Nincs szűrő"
 
-#: calendarview.cpp:2287
+#: calendarview.cpp:2299
 #, fuzzy, kde-kuit-format
 #| msgid ""
 #| "The item \"%1\" has sub-to-dos. Do you want to delete just this item and "
@@ -2118,21 +2125,21 @@ msgstr ""
 "törölni (ekkor a részfeladatok önálló feladattá válnak), vagy a "
 "részfeladatokat is törölni szeretné?"
 
-#: calendarview.cpp:2293
+#: calendarview.cpp:2305
 #, fuzzy, kde-format
 #| msgid "Delete Only This"
 msgctxt "@action:button"
 msgid "Delete Only This"
 msgstr "Törlés (csak ezt)"
 
-#: calendarview.cpp:2294 calendarview.cpp:2352
+#: calendarview.cpp:2306 calendarview.cpp:2364
 #, fuzzy, kde-format
 #| msgid "Delete All"
 msgctxt "@action:button"
 msgid "Delete All"
 msgstr "Minden törlése"
 
-#: calendarview.cpp:2326
+#: calendarview.cpp:2338
 #, fuzzy, kde-kuit-format
 #| msgid ""
 #| "The item \"%1\" is marked read-only and cannot be deleted; it probably "
@@ -2145,14 +2152,14 @@ msgstr ""
 "Az „%1” elem csak olvashatóként van megjelölve, nem törölhető; valószínűleg "
 "egy csak olvasható naptárhoz tartozik."
 
-#: calendarview.cpp:2329
+#: calendarview.cpp:2341
 #, fuzzy, kde-format
 #| msgid "Removing not possible"
 msgctxt "@title:window"
 msgid "Removing not possible"
 msgstr "Az eltávolítás nem lehetséges"
 
-#: calendarview.cpp:2348
+#: calendarview.cpp:2360
 #, fuzzy, kde-kuit-format
 #| msgid ""
 #| "The calendar item \"%1\" recurs over multiple dates; are you sure you "
@@ -2165,14 +2172,14 @@ msgstr ""
 "A(z) „%1” bejegyzés több napon megismétlődik. Biztosan törölni szeretné az "
 "esemény minden előfordulását?"
 
-#: calendarview.cpp:2359
+#: calendarview.cpp:2371
 #, fuzzy, kde-format
 #| msgid "Also Delete &Future"
 msgctxt "@action:button"
 msgid "Also Delete &Future"
 msgstr "A &későbbieket is"
 
-#: calendarview.cpp:2363
+#: calendarview.cpp:2375
 #, fuzzy, kde-kuit-format
 #| msgid ""
 #| "The calendar item \"%1\" recurs over multiple dates. Do you want to "
@@ -2188,7 +2195,7 @@ msgstr ""
 "szeretné törölni (%2), esetleg a későbbi előfordulásokat is, vagy minden "
 "előfordulást?"
 
-#: calendarview.cpp:2370
+#: calendarview.cpp:2382
 #, fuzzy, kde-kuit-format
 #| msgid ""
 #| "The calendar item \"%1\" recurs over multiple dates. Do you want to "
@@ -2201,28 +2208,28 @@ msgstr ""
 "A(z) „%1” naptárbejegyzés több napon megismétlődik. Csak ezt az előfordulást "
 "szeretné törölni (%2), vagy minden előfordulást?"
 
-#: calendarview.cpp:2382
+#: calendarview.cpp:2394
 #, fuzzy, kde-format
 #| msgid "Delete C&urrent"
 msgctxt "@action:button"
 msgid "Delete C&urrent"
 msgstr "Az akt&uális törlése"
 
-#: calendarview.cpp:2384
+#: calendarview.cpp:2396
 #, fuzzy, kde-format
 #| msgid "Delete &All"
 msgctxt "@action:button"
 msgid "Delete &All"
 msgstr "Mind&en törlése"
 
-#: calendarview.cpp:2415 calendarview.cpp:2422
+#: calendarview.cpp:2427 calendarview.cpp:2434
 #, fuzzy, kde-format
 #| msgid "Delete \"%1\""
 msgctxt "@info/plain"
 msgid "Delete \"%1\""
 msgstr "„%1” törlése"
 
-#: calendarview.cpp:2454
+#: calendarview.cpp:2466
 #, fuzzy, kde-format
 #| msgid ""
 #| "All calendars are unchecked in the Calendar Manager. No to-do was purged."
@@ -2233,55 +2240,55 @@ msgstr ""
 "Egyetlen naptár sincs kiválasztva a Naptárkezelőben. Nem kerültek feladatok "
 "törlésre."
 
-#: calendarview.cpp:2459 calendarview.cpp:2714
+#: calendarview.cpp:2471 calendarview.cpp:2726
 #, fuzzy, kde-format
 #| msgid "There are no completed to-dos to purge."
 msgctxt "@info"
 msgid "There are no completed to-dos to purge."
 msgstr "Nincsenek törlendő befejezett feladatok."
 
-#: calendarview.cpp:2464
+#: calendarview.cpp:2476
 #, fuzzy, kde-format
 #| msgid "Delete all completed to-dos from checked calendars?"
 msgctxt "@info"
 msgid "Delete all completed to-dos from checked calendars?"
 msgstr "Töröli az összes befejezett feladatot a kijelölt naptárakból?"
 
-#: calendarview.cpp:2465
+#: calendarview.cpp:2477
 #, kde-format
 msgctxt "@title:window"
 msgid "Purge To-dos"
 msgstr "Feladatok törlése"
 
-#: calendarview.cpp:2466
+#: calendarview.cpp:2478
 #, fuzzy, kde-format
 #| msgid "Purge"
 msgctxt "@action:button"
 msgid "Purge"
 msgstr "Törlés"
 
-#: calendarview.cpp:2476
+#: calendarview.cpp:2488
 #, fuzzy, kde-kuit-format
 #| msgid "Unable to copy the item to %1."
 msgctxt "@info"
 msgid "Unable to copy item <resource>%1</resource>."
 msgstr "Nem sikerült átmásolni az elemet ide: %1."
 
-#: calendarview.cpp:2511
+#: calendarview.cpp:2523
 #, fuzzy, kde-kuit-format
 #| msgid "Unable to move the item to  %1."
 msgctxt "@info"
 msgid "Unable to move item <resource>%1</resource>."
 msgstr "Nem sikerült áthelyezni az elemet ide: %1."
 
-#: calendarview.cpp:2706
+#: calendarview.cpp:2718
 #, fuzzy, kde-kuit-format
 #| msgid "0 completed to-dos were purged."
 msgctxt "@info"
 msgid "0 completed to-dos were purged.<nl/>"
 msgstr "0 befejezett feladat lett törölve."
 
-#: calendarview.cpp:2708 calendarview.cpp:2719
+#: calendarview.cpp:2720 calendarview.cpp:2731
 #, fuzzy, kde-format, kde-kuit-format
 #| msgid ""
 #| "%1 to-do was ignored because it has uncompleted or read-only children."
@@ -2299,7 +2306,7 @@ msgstr[1] ""
 "%1 feladat mellőzve lett, mert befejezetlen vagy csak olvasható gyermekei "
 "vannak."
 
-#: calendarview.cpp:2712 calendarview.cpp:2717
+#: calendarview.cpp:2724 calendarview.cpp:2729
 #, fuzzy, kde-format
 #| msgid "%1 completed to-do was purged."
 #| msgid_plural "%1 completed to-dos were purged."
@@ -2309,14 +2316,14 @@ msgid_plural "%1 completed to-dos were purged."
 msgstr[0] "%1 befejezett feladat lett törölve."
 msgstr[1] "%1 befejezett feladat lett törölve."
 
-#: calendarview.cpp:2724
+#: calendarview.cpp:2736
 #, fuzzy, kde-kuit-format
 #| msgid "An error occurred while purging completed to-dos: %1"
 msgctxt "@info"
 msgid "An error occurred while purging completed to-dos: <message>%1</message>"
 msgstr "Hiba történt a befejezett feladatok törlése közben: %1"
 
-#: calendarview.cpp:2778
+#: calendarview.cpp:2790
 #, fuzzy, kde-kuit-format
 #| msgid ""
 #| "You created an incidence in a calendar that is currently filtered out.\n"
@@ -2332,7 +2339,7 @@ msgstr ""
 "A bal oldalsávon engedélyezze azt a naptárkezelőben az esemény "
 "megtekintéséhez."
 
-#: calendarview.cpp:2782
+#: calendarview.cpp:2794
 #, fuzzy, kde-kuit-format
 #| msgid ""
 #| "You created an incidence in a calendar that is currently filtered out.\n"
@@ -2468,7 +2475,7 @@ msgid "&Go"
 msgstr "&Ugrás"
 
 #. i18n: ectx: Menu (actions)
-#: data/korganizer_part.rc:65 data/korganizerui.rc:61
+#: data/korganizer_part.rc:67 data/korganizerui.rc:63
 #, kde-format
 msgid "&Actions"
 msgstr "El&járások"
@@ -3879,18 +3886,18 @@ msgctxt "@info:credit"
 msgid "Tobias Koenig"
 msgstr "Tobias Koenig"
 
-#: korganizer.cpp:247
+#: korganizer.cpp:264
 #, kde-format
 msgid "New Calendar"
 msgstr "Új naptár"
 
-#: korganizer.cpp:251
+#: korganizer.cpp:268
 #, kde-format
 msgctxt "the calendar is read-only"
 msgid "read-only"
 msgstr "csak olvasható"
 
-#: korganizer.cpp:254
+#: korganizer.cpp:271
 #, kde-format
 msgid "Calendar"
 msgstr "Naptár"
@@ -3936,7 +3943,7 @@ msgctxt "@info:shell"
 msgid "Lists the available options for user feedback"
 msgstr ""
 
-#: korganizer_part.cpp:56
+#: korganizer_part.cpp:59
 #, kde-format
 msgid "KOrganizer"
 msgstr "KOrganizer"
@@ -6653,6 +6660,43 @@ msgstr "Cím"
 msgid "Selected Calendars"
 msgstr "Kiválasztott naptárak"
 
+#: whatsnew/whatsnewtranslations.cpp:18
+#, fuzzy
+#| msgid "Add as new calendar"
+msgid "Add What's New menu"
+msgstr "Hozzáadás új naptárként"
+
+#: whatsnew/whatsnewtranslations.cpp:19
+msgid "Add a Date Picker dialog available from the Go menu"
+msgstr ""
+
+#: whatsnew/whatsnewtranslations.cpp:20
+msgid ""
+"Agenda view move day, next X Days, work week into the Agenda tool button"
+msgstr ""
+
+#: whatsnew/whatsnewtranslations.cpp:21
+msgid "Agenda view timelabels can switch to a 24-hour clock"
+msgstr ""
+
+#: whatsnew/whatsnewtranslations.cpp:22
+msgid "Agenda view menu adds create new Event/To-do"
+msgstr ""
+
+#: whatsnew/whatsnewtranslations.cpp:23
+msgid "To-do view menu has options for toggling completion and reminders"
+msgstr ""
+
+#: whatsnew/whatsnewtranslations.cpp:24
+msgid "To-do view no longer will show the to-do list in the sidebar"
+msgstr ""
+
+#: whatsnew/whatsnewtranslations.cpp:25
+#, fuzzy
+#| msgid "Get &Hot New Stuff..."
+msgid "Get Hot New Stuff removed"
+msgstr "Kie&gészítők letöltése..."
+
 #: widgets/kdatenavigator.cpp:171
 #, fuzzy, kde-format
 #| msgctxt "start/end week number of line in date picker"
@@ -7238,9 +7282,6 @@ msgstr "%1"
 
 #~ msgid "(c) 2004 Tobias Koenig"
 #~ msgstr "© Tobias Koenig, 2004."
-
-#~ msgid "Get &Hot New Stuff..."
-#~ msgstr "Kie&gészítők letöltése..."
 
 #~ msgctxt "@title:tab systray settings"
 #~ msgid "System Tray"
