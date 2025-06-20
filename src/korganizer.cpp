@@ -70,7 +70,7 @@ KOrganizer::KOrganizer()
     if (!newFeaturesMD5.isEmpty()) {
         const bool hasNewFeature = (KOPrefs::instance()->previousNewFeaturesMD5() != newFeaturesMD5);
         if (hasNewFeature) {
-            auto whatsNewMessageWidget = new PimCommon::WhatsNewMessageWidget(this);
+            auto whatsNewMessageWidget = new PimCommon::WhatsNewMessageWidget(this, i18n("KOrganizer"));
             whatsNewMessageWidget->setWhatsNewInfos(translations.createWhatsNewInfo());
             whatsNewMessageWidget->setObjectName(QStringLiteral("whatsNewMessageWidget"));
             mainWidgetLayout->addWidget(whatsNewMessageWidget);

@@ -65,7 +65,7 @@ KOrganizerPart::KOrganizerPart(QWidget *parentWidget, QObject *parent, const KPl
     if (!newFeaturesMD5.isEmpty()) {
         const bool hasNewFeature = (KOPrefs::instance()->previousNewFeaturesMD5() != newFeaturesMD5);
         if (hasNewFeature) {
-            auto whatsNewMessageWidget = new PimCommon::WhatsNewMessageWidget(parentWidget);
+            auto whatsNewMessageWidget = new PimCommon::WhatsNewMessageWidget(parentWidget, i18n("KOrganizer"));
             whatsNewMessageWidget->setWhatsNewInfos(translations.createWhatsNewInfo());
             whatsNewMessageWidget->setObjectName(QStringLiteral("whatsNewMessageWidget"));
             topLayout->addWidget(whatsNewMessageWidget);
