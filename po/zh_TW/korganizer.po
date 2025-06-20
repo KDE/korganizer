@@ -15,7 +15,7 @@ msgstr ""
 "Project-Id-Version: korganizer\n"
 "Report-Msgid-Bugs-To: https://bugs.kde.org\n"
 "POT-Creation-Date: 2025-06-19 00:43+0000\n"
-"PO-Revision-Date: 2025-06-10 12:27+0900\n"
+"PO-Revision-Date: 2025-06-19 22:23+0900\n"
 "Last-Translator: Kisaragi Hiu <mail@kisaragi-hiu.com>\n"
 "Language-Team: Traditional Chinese <zh-l10n@lists.slat.org>\n"
 "Language: zh_TW\n"
@@ -1240,12 +1240,10 @@ msgid "Manage T&ags…"
 msgstr "管理標籤(&A)…"
 
 #: actionmanager.cpp:760
-#, fuzzy, kde-format
-#| msgctxt "@action:inmenu"
-#| msgid "What's &Next"
+#, kde-format
 msgctxt "@action:inmenu"
 msgid "What's new"
-msgstr "下一個是什麼(&N)"
+msgstr "新功能"
 
 #: actionmanager.cpp:765
 #, kde-format
@@ -1770,13 +1768,13 @@ msgstr "切換提醒"
 #, kde-kuit-format
 msgctxt "@info alarm enabled"
 msgid "<message>%1</message> reminder is enabled"
-msgstr ""
+msgstr "<message>%1</message> 提醒已啟用"
 
 #: calendarview.cpp:1369
 #, kde-kuit-format
 msgctxt "@info alarm disabled"
 msgid "<message>%1</message> reminder is disabled"
-msgstr ""
+msgstr "<message>%1</message> 提醒已停用"
 
 #: calendarview.cpp:1400 calendarview.cpp:1454
 #, kde-format
@@ -1788,7 +1786,7 @@ msgstr "切換待辦事項完成標記"
 #, kde-kuit-format
 msgctxt "@info percentage completed"
 msgid "To-do <message>%1</message> %2 percent completed"
-msgstr ""
+msgstr "待辦事項 <message>%1</message> %2%% 已完成"
 
 #: calendarview.cpp:1506
 #, kde-format
@@ -2240,7 +2238,7 @@ msgstr "縮放(&Z)"
 #: data/korganizer_part.rc:59 data/korganizerui.rc:53
 #, kde-format
 msgid "&Go"
-msgstr "到(&G)"
+msgstr "前往(&G)"
 
 #. i18n: ectx: Menu (actions)
 #: data/korganizer_part.rc:67 data/korganizerui.rc:63
@@ -5964,42 +5962,37 @@ msgid "Selected Calendars"
 msgstr "選取行事曆"
 
 #: whatsnew/whatsnewtranslations.cpp:18
-#, fuzzy
-#| msgctxt "@action:button"
-#| msgid "Add as new calendar"
 msgid "Add What's New menu"
-msgstr "新增為新行事曆"
+msgstr "新增新功能選單"
 
 #: whatsnew/whatsnewtranslations.cpp:19
 msgid "Add a Date Picker dialog available from the Go menu"
-msgstr ""
+msgstr "新增日期挑選對話框，可從「前往」選單使用"
 
 #: whatsnew/whatsnewtranslations.cpp:20
 msgid ""
 "Agenda view move day, next X Days, work week into the Agenda tool button"
-msgstr ""
+msgstr "行程檢視：將單日、接下來 X 天、工作週移動到行程工具按鈕內"
 
 #: whatsnew/whatsnewtranslations.cpp:21
 msgid "Agenda view timelabels can switch to a 24-hour clock"
-msgstr ""
+msgstr "行程檢視：時間標籤可以切換成 24 小時制時鐘"
 
 #: whatsnew/whatsnewtranslations.cpp:22
 msgid "Agenda view menu adds create new Event/To-do"
-msgstr ""
+msgstr "行程檢視：選單加入建立新事件/待辦事項的選項"
 
 #: whatsnew/whatsnewtranslations.cpp:23
 msgid "To-do view menu has options for toggling completion and reminders"
-msgstr ""
+msgstr "待辦事項檢視：選單現在有選項切換是否已完成與提醒"
 
 #: whatsnew/whatsnewtranslations.cpp:24
 msgid "To-do view no longer will show the to-do list in the sidebar"
-msgstr ""
+msgstr "待辦事項檢視：不再將待辦事項顯示於側邊欄"
 
 #: whatsnew/whatsnewtranslations.cpp:25
-#, fuzzy
-#| msgid "Get &Hot New Stuff..."
 msgid "Get Hot New Stuff removed"
-msgstr "取得熱門新事件...(&H)"
+msgstr "移除「取得熱門新玩意」"
 
 #: widgets/kdatenavigator.cpp:171
 #, kde-format

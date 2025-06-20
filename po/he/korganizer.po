@@ -18,7 +18,7 @@ msgstr ""
 "Project-Id-Version: korganizer\n"
 "Report-Msgid-Bugs-To: https://bugs.kde.org\n"
 "POT-Creation-Date: 2025-06-19 00:43+0000\n"
-"PO-Revision-Date: 2025-06-16 16:09+0300\n"
+"PO-Revision-Date: 2025-06-19 11:39+0300\n"
 "Last-Translator: Yaron Shahrabani <sh.yaron@gmail.com>\n"
 "Language-Team: צוות התרגום של KDE ישראל\n"
 "Language: he\n"
@@ -1249,12 +1249,10 @@ msgid "Manage T&ags…"
 msgstr "ניהול ת&גיות…"
 
 #: actionmanager.cpp:760
-#, fuzzy, kde-format
-#| msgctxt "@action:inmenu"
-#| msgid "What's &Next"
+#, kde-format
 msgctxt "@action:inmenu"
 msgid "What's new"
-msgstr "מה ב&המשך"
+msgstr "מה חדש"
 
 #: actionmanager.cpp:765
 #, kde-format
@@ -6136,42 +6134,39 @@ msgid "Selected Calendars"
 msgstr "לוחות שנה נבחרים"
 
 #: whatsnew/whatsnewtranslations.cpp:18
-#, fuzzy
-#| msgctxt "@action:button"
-#| msgid "Add as new calendar"
 msgid "Add What's New menu"
-msgstr "הוספה בתור לוח שנה חדש"
+msgstr "הוספת תפריט מה חדש"
 
 #: whatsnew/whatsnewtranslations.cpp:19
 msgid "Add a Date Picker dialog available from the Go menu"
-msgstr ""
+msgstr "הוספת חלונית בורר תאריכים שזמינה מתפריט המעבר"
 
 #: whatsnew/whatsnewtranslations.cpp:20
 msgid ""
 "Agenda view move day, next X Days, work week into the Agenda tool button"
 msgstr ""
+"תצוגת סדר יום מעבירה את יום, X הימים הבאים ושבוע עבודה לתוך כפתור כלי סדר "
+"היום"
 
 #: whatsnew/whatsnewtranslations.cpp:21
 msgid "Agenda view timelabels can switch to a 24-hour clock"
-msgstr ""
+msgstr "תוויות זמן בתצוגת סדר יום יכולה לעבור לשעון 24 שעות"
 
 #: whatsnew/whatsnewtranslations.cpp:22
 msgid "Agenda view menu adds create new Event/To-do"
-msgstr ""
+msgstr "תפריט תצוגת סדר יום מוסיפה יצירת אירוע/מטלה חדשים"
 
 #: whatsnew/whatsnewtranslations.cpp:23
 msgid "To-do view menu has options for toggling completion and reminders"
-msgstr ""
+msgstr "לתפריט תצוגת מטלות יש אפשרויות להפעלת וכיבוי השלמות ותזכורות"
 
 #: whatsnew/whatsnewtranslations.cpp:24
 msgid "To-do view no longer will show the to-do list in the sidebar"
-msgstr ""
+msgstr "תצוגת המטלות לא תציג עוד את רשימת המטלות בסרגל הצד"
 
 #: whatsnew/whatsnewtranslations.cpp:25
-#, fuzzy
-#| msgid "Get &Hot New Stuff..."
 msgid "Get Hot New Stuff removed"
-msgstr "הורדת &חומר חדש..."
+msgstr "הסרת דברים חדשים ולוהטים"
 
 #: widgets/kdatenavigator.cpp:171
 #, kde-format

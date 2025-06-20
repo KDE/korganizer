@@ -12,7 +12,7 @@ msgstr ""
 "Project-Id-Version: korganizer\n"
 "Report-Msgid-Bugs-To: https://bugs.kde.org\n"
 "POT-Creation-Date: 2025-06-19 00:43+0000\n"
-"PO-Revision-Date: 2025-06-15 13:19+0300\n"
+"PO-Revision-Date: 2025-06-19 09:00+0300\n"
 "Last-Translator: Yuri Chornoivan <yurchor@ukr.net>\n"
 "Language-Team: Ukrainian <trans-uk@lists.fedoraproject.org>\n"
 "Language: uk\n"
@@ -1278,12 +1278,10 @@ msgid "Manage T&ags…"
 msgstr "Керування &мітками…"
 
 #: actionmanager.cpp:760
-#, fuzzy, kde-format
-#| msgctxt "@action:inmenu"
-#| msgid "What's &Next"
+#, kde-format
 msgctxt "@action:inmenu"
 msgid "What's new"
-msgstr "Що &наступне"
+msgstr "Що нового?"
 
 #: actionmanager.cpp:765
 #, kde-format
@@ -6333,42 +6331,45 @@ msgid "Selected Calendars"
 msgstr "Позначені календарі"
 
 #: whatsnew/whatsnewtranslations.cpp:18
-#, fuzzy
-#| msgctxt "@action:button"
-#| msgid "Add as new calendar"
 msgid "Add What's New menu"
-msgstr "Додати новий календар"
+msgstr "Додано меню «Що нового?»"
 
 #: whatsnew/whatsnewtranslations.cpp:19
 msgid "Add a Date Picker dialog available from the Go menu"
 msgstr ""
+"Додано вікно вибору дати, доступ до якого можна отримати з меню «Перехід»"
 
 #: whatsnew/whatsnewtranslations.cpp:20
 msgid ""
 "Agenda view move day, next X Days, work week into the Agenda tool button"
 msgstr ""
+"Пересунути пункти дня, наступних днів та робочого тижня до кнопки "
+"інструмента порядку денного на панелі перегляду порядку денного"
 
 #: whatsnew/whatsnewtranslations.cpp:21
 msgid "Agenda view timelabels can switch to a 24-hour clock"
 msgstr ""
+"Мітки часу на панелі перегляду порядку денного можна перемкнути у 24-"
+"годинний формат"
 
 #: whatsnew/whatsnewtranslations.cpp:22
 msgid "Agenda view menu adds create new Event/To-do"
 msgstr ""
+"У меню панелі порядку денного додано пункт створення записів подій і завдань"
 
 #: whatsnew/whatsnewtranslations.cpp:23
 msgid "To-do view menu has options for toggling completion and reminders"
 msgstr ""
+"У меню перегляду завдань додано пункти для перемикання стану завершеності та "
+"нагадувань"
 
 #: whatsnew/whatsnewtranslations.cpp:24
 msgid "To-do view no longer will show the to-do list in the sidebar"
-msgstr ""
+msgstr "На панелі перегляду завдань вилучено список завдань на бічній панелі"
 
 #: whatsnew/whatsnewtranslations.cpp:25
-#, fuzzy
-#| msgid "Get &Hot New Stuff..."
 msgid "Get Hot New Stuff removed"
-msgstr "Отримати &нові матеріали…"
+msgstr "Вилучено можливість отримання нових матеріалів"
 
 #: widgets/kdatenavigator.cpp:171
 #, kde-format

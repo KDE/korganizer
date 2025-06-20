@@ -19,7 +19,7 @@ msgstr ""
 "Project-Id-Version: korganizer\n"
 "Report-Msgid-Bugs-To: https://bugs.kde.org\n"
 "POT-Creation-Date: 2025-06-19 00:43+0000\n"
-"PO-Revision-Date: 2025-06-16 13:18+0200\n"
+"PO-Revision-Date: 2025-06-19 14:24+0200\n"
 "Last-Translator: Freek de Kruijf <freekdekruijf@kde.nl>\n"
 "Language-Team: \n"
 "Language: nl\n"
@@ -1282,12 +1282,10 @@ msgid "Manage T&ags…"
 msgstr "T&ags beheren…"
 
 #: actionmanager.cpp:760
-#, fuzzy, kde-format
-#| msgctxt "@action:inmenu"
-#| msgid "What's &Next"
+#, kde-format
 msgctxt "@action:inmenu"
 msgid "What's new"
-msgstr "Wat &nu"
+msgstr "Wat is nieuw"
 
 #: actionmanager.cpp:765
 #, kde-format
@@ -6306,42 +6304,41 @@ msgid "Selected Calendars"
 msgstr "Geselecteerde agenda's"
 
 #: whatsnew/whatsnewtranslations.cpp:18
-#, fuzzy
-#| msgctxt "@action:button"
-#| msgid "Add as new calendar"
 msgid "Add What's New menu"
-msgstr "Toevoegen als nieuwe agenda"
+msgstr "Wat is nieuw toevoegen"
 
 #: whatsnew/whatsnewtranslations.cpp:19
 msgid "Add a Date Picker dialog available from the Go menu"
-msgstr ""
+msgstr "Een Datumkiezerdialoog toevoegen beschikbaar vanuit het menu Ga"
 
 #: whatsnew/whatsnewtranslations.cpp:20
 msgid ""
 "Agenda view move day, next X Days, work week into the Agenda tool button"
 msgstr ""
+"Agendaweergave verplaats dag, volgende X dagen, werkweek in de werkknop "
+"Agenda"
 
 #: whatsnew/whatsnewtranslations.cpp:21
 msgid "Agenda view timelabels can switch to a 24-hour clock"
-msgstr ""
+msgstr "Agendaweergave tijdlabels kunnen omschakelen naar een 24-uurs klok"
 
 #: whatsnew/whatsnewtranslations.cpp:22
 msgid "Agenda view menu adds create new Event/To-do"
-msgstr ""
+msgstr "Agendaweergavemenu voegt toe nieuwe gebeurtenis/taak aanmaken"
 
 #: whatsnew/whatsnewtranslations.cpp:23
 msgid "To-do view menu has options for toggling completion and reminders"
 msgstr ""
+"Menu voor taakweergave heeft opties voor omschakelen van voltooien en "
+"herinneringen"
 
 #: whatsnew/whatsnewtranslations.cpp:24
 msgid "To-do view no longer will show the to-do list in the sidebar"
-msgstr ""
+msgstr "Taakweergave zal niet langer de takenlijst tonen in de zijbalk"
 
 #: whatsnew/whatsnewtranslations.cpp:25
-#, fuzzy
-#| msgid "Get &Hot New Stuff..."
 msgid "Get Hot New Stuff removed"
-msgstr "&Vers van de pers..."
+msgstr "Vers van de pers verwijderd"
 
 #: widgets/kdatenavigator.cpp:171
 #, kde-format

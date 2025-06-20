@@ -18,7 +18,7 @@ msgstr ""
 "Project-Id-Version: korganizer\n"
 "Report-Msgid-Bugs-To: https://bugs.kde.org\n"
 "POT-Creation-Date: 2025-06-19 00:43+0000\n"
-"PO-Revision-Date: 2025-06-15 12:32+0100\n"
+"PO-Revision-Date: 2025-06-19 19:26+0100\n"
 "Last-Translator: Eloy Cuadra <ecuadra@eloihr.net>\n"
 "Language-Team: Spanish <kde-l10n-es@kde.org>\n"
 "Language: es\n"
@@ -1283,12 +1283,10 @@ msgid "Manage T&ags…"
 msgstr "Gestión de etiquet&as…"
 
 #: actionmanager.cpp:760
-#, fuzzy, kde-format
-#| msgctxt "@action:inmenu"
-#| msgid "What's &Next"
+#, kde-format
 msgctxt "@action:inmenu"
 msgid "What's new"
-msgstr "Qué es lo &siguiente"
+msgstr "Novedades"
 
 #: actionmanager.cpp:765
 #, kde-format
@@ -6373,40 +6371,46 @@ msgid "Selected Calendars"
 msgstr "Calendarios seleccionados"
 
 #: whatsnew/whatsnewtranslations.cpp:18
-#, fuzzy
-#| msgctxt "@action:button"
-#| msgid "Add as new calendar"
 msgid "Add What's New menu"
-msgstr "Añadir como calendario nuevo"
+msgstr "Añadir el menú Novedades"
 
 #: whatsnew/whatsnewtranslations.cpp:19
 msgid "Add a Date Picker dialog available from the Go menu"
-msgstr ""
+msgstr "Añadir un diálogo de selección de fecha disponible en el menú Ir"
 
 #: whatsnew/whatsnewtranslations.cpp:20
 msgid ""
 "Agenda view move day, next X Days, work week into the Agenda tool button"
 msgstr ""
+"Vista de agenda: mover día, siguientes X días y semana laboral en el botón "
+"de herramientas de la agenda"
 
 #: whatsnew/whatsnewtranslations.cpp:21
 msgid "Agenda view timelabels can switch to a 24-hour clock"
 msgstr ""
+"Vista de agenda: las etiquetas de hora pueden cambiar a un reloj de 24 horas"
 
 #: whatsnew/whatsnewtranslations.cpp:22
 msgid "Agenda view menu adds create new Event/To-do"
 msgstr ""
+"Vista de agenda: se ha añadido al menú la opción de crear nuevo evento o "
+"tarea pendiente"
 
 #: whatsnew/whatsnewtranslations.cpp:23
 msgid "To-do view menu has options for toggling completion and reminders"
 msgstr ""
+"Vista de tareas pendientes: el menú tiene opciones para conmutar el estado "
+"de compleción y los recordatorios"
 
 #: whatsnew/whatsnewtranslations.cpp:24
 msgid "To-do view no longer will show the to-do list in the sidebar"
 msgstr ""
+"Vista de tareas pendientes: ya no se muestra la lista de tareas pendientes "
+"en la barra lateral"
 
 #: whatsnew/whatsnewtranslations.cpp:25
 msgid "Get Hot New Stuff removed"
-msgstr ""
+msgstr "Se ha eliminado la opción de obtener novedades"
 
 #: widgets/kdatenavigator.cpp:171
 #, kde-format

@@ -1,7 +1,7 @@
 # translation of korganizer.po to Slovenian
 # Translation of korganizer.po to Slovenian
 # Copyright (C) 2001,2002, 2003, 2004, 2005, 2006 Free Software Foundation, Inc.
-# $Id: korganizer.po 1711544 2025-06-19 01:23:11Z scripty $
+# $Id: korganizer.po 1711603 2025-06-20 01:22:55Z scripty $
 # $Source$
 #
 # Roman Maurer <roman.maurer@hermes.si>, 2001.
@@ -15,7 +15,7 @@ msgstr ""
 "Project-Id-Version: korganizer\n"
 "Report-Msgid-Bugs-To: https://bugs.kde.org\n"
 "POT-Creation-Date: 2025-06-19 00:43+0000\n"
-"PO-Revision-Date: 2025-06-15 12:48+0200\n"
+"PO-Revision-Date: 2025-06-19 07:10+0200\n"
 "Last-Translator: Matjaž Jeran <matjaz.jeran@amis.net>\n"
 "Language-Team: Slovenian <lugos-slo@lugos.si>\n"
 "Language: sl\n"
@@ -1275,12 +1275,10 @@ msgid "Manage T&ags…"
 msgstr "Upravljanje oznak…"
 
 #: actionmanager.cpp:760
-#, fuzzy, kde-format
-#| msgctxt "@action:inmenu"
-#| msgid "What's &Next"
+#, kde-format
 msgctxt "@action:inmenu"
 msgid "What's new"
-msgstr "Kaj sledi"
+msgstr "Kaj je novega"
 
 #: actionmanager.cpp:765
 #, kde-format
@@ -6295,42 +6293,44 @@ msgid "Selected Calendars"
 msgstr "Izbrani koledarji"
 
 #: whatsnew/whatsnewtranslations.cpp:18
-#, fuzzy
-#| msgctxt "@action:button"
-#| msgid "Add as new calendar"
 msgid "Add What's New menu"
-msgstr "Dodaj kot nov koledar"
+msgstr "Dodaj meni Kaj je novega"
 
 #: whatsnew/whatsnewtranslations.cpp:19
 msgid "Add a Date Picker dialog available from the Go menu"
-msgstr ""
+msgstr "Dodaj pogovorno okno za izbiro datuma, ki je na voljo v meniju Pojdi"
 
 #: whatsnew/whatsnewtranslations.cpp:20
 msgid ""
 "Agenda view move day, next X Days, work week into the Agenda tool button"
 msgstr ""
+"Pogled dnevnega reda premakne dan, naslednjih X dni, delovni teden v gumb "
+"orodja Dnevni red"
 
 #: whatsnew/whatsnewtranslations.cpp:21
 msgid "Agenda view timelabels can switch to a 24-hour clock"
 msgstr ""
+"Časovne oznake v pogledu dnevnega reda se lahko preklopijo na 24-urni format"
 
 #: whatsnew/whatsnewtranslations.cpp:22
 msgid "Agenda view menu adds create new Event/To-do"
 msgstr ""
+"Meni za ogled dnevnega reda doda možnost ustvarjanja novega dogodka/opravila"
 
 #: whatsnew/whatsnewtranslations.cpp:23
 msgid "To-do view menu has options for toggling completion and reminders"
 msgstr ""
+"Meni za ogled opravil ima možnosti za preklapljanje med dokončanjem in "
+"opomniki"
 
 #: whatsnew/whatsnewtranslations.cpp:24
 msgid "To-do view no longer will show the to-do list in the sidebar"
 msgstr ""
+"V pogledu opravil se seznam opravil ne bo več prikazoval v stranski vrstici."
 
 #: whatsnew/whatsnewtranslations.cpp:25
-#, fuzzy
-#| msgid "Get &Hot New Stuff..."
 msgid "Get Hot New Stuff removed"
-msgstr "Dobi vroče novosti..."
+msgstr "Odstrani vroče nove stvari"
 
 #: widgets/kdatenavigator.cpp:171
 #, kde-format
