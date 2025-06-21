@@ -83,7 +83,7 @@ KOrganizerPart::KOrganizerPart(QWidget *parentWidget, QObject *parent, const KPl
     mActionManager->readSettings();
 
     setXMLFile(QStringLiteral("korganizer_part.rc"), true);
-    setTitle(); // NOLINT see the associated FIXME in korganizer_part.cpp
+    setTitle(); // NOLINT see the associated FIXME in setTitle() below
 }
 
 KOrganizerPart::~KOrganizerPart()
