@@ -8,7 +8,7 @@ msgid ""
 msgstr ""
 "Project-Id-Version: korganizer\n"
 "Report-Msgid-Bugs-To: https://bugs.kde.org\n"
-"POT-Creation-Date: 2025-06-19 00:43+0000\n"
+"POT-Creation-Date: 2025-06-21 00:43+0000\n"
 "PO-Revision-Date: 2025-03-22 22:36+0100\n"
 "Last-Translator: Oliver Kellogg <olivermkellogg@gmail.com>\n"
 "Language-Team: esperanto <kde-i18n-eo@kde.org>\n"
@@ -2062,6 +2062,12 @@ msgctxt "@info"
 msgid "Dissociating the occurrence failed."
 msgstr "Malasociiĝo de la okazaĵo malsukcesis."
 
+#: calendarview.cpp:1818 korganizer.cpp:73 korganizer_part.cpp:59
+#: korganizer_part.cpp:68
+#, kde-format
+msgid "KOrganizer"
+msgstr "KOrganizer"
+
 #: calendarview.cpp:1837
 #, fuzzy, kde-format
 #| msgctxt "@info:status"
@@ -3837,11 +3843,6 @@ msgstr ""
 msgctxt "@info:shell"
 msgid "Lists the available options for user feedback"
 msgstr "Listigas la disponeblajn elekteblojn por uzant-sugestoj"
-
-#: korganizer_part.cpp:59
-#, kde-format
-msgid "KOrganizer"
-msgstr "KOrganizer"
 
 #: koviewmanager.cpp:497
 #, kde-format

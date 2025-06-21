@@ -15,7 +15,7 @@ msgid ""
 msgstr ""
 "Project-Id-Version: korganizer\n"
 "Report-Msgid-Bugs-To: https://bugs.kde.org\n"
-"POT-Creation-Date: 2025-06-19 00:43+0000\n"
+"POT-Creation-Date: 2025-06-21 00:43+0000\n"
 "PO-Revision-Date: 2002-11-09 12:52+0200\n"
 "Last-Translator: Thelma Lungcuzo <thelma@translate.org.za>\n"
 "Language-Team: Xhosa <xhosa@translate.org.za>\n"
@@ -1902,6 +1902,12 @@ msgctxt "@info"
 msgid "Dissociating the occurrence failed."
 msgstr "Dwelisa iziganeko zemini yangoku"
 
+#: calendarview.cpp:1818 korganizer.cpp:73 korganizer_part.cpp:59
+#: korganizer_part.cpp:68
+#, kde-format
+msgid "KOrganizer"
+msgstr "KOrganizer"
+
 #: calendarview.cpp:1837
 #, fuzzy, kde-format
 msgctxt "@title:window"
@@ -3565,11 +3571,6 @@ msgstr ""
 msgctxt "@info:shell"
 msgid "Lists the available options for user feedback"
 msgstr ""
-
-#: korganizer_part.cpp:59
-#, kde-format
-msgid "KOrganizer"
-msgstr "KOrganizer"
 
 #: koviewmanager.cpp:497
 #, fuzzy, kde-format

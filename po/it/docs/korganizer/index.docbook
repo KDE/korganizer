@@ -237,7 +237,7 @@
 >). Puoi pianificare appuntamenti, eventi, creare cose da fare e scrivere delle voci di un diario. &korganizer; ti ricorderà i lavori in sospeso, e ti aiuterà a seguire il tuo programma.</para>
 
 <para
->Ma &korganizer; non è solo il tuo calendario personale: ti può anche aiutare a collaborare con i tuoi colleghi e amici. Con &korganizer; invitare a un evento chiunque abbia un indirizzo di posta elettronica ed elaborare le risposte, condividere un calendario (usando un server per programmi di gruppo o semplicemente un file in rete), e condividere eventi (per esempio il programma di un campionato o una conferenza) usando l'infrastruttura per le novità. &korganizer; si basa su standard pubblici, e funziona con molti diversi server di pianificazione, dandoti il controllo delle tue informazioni e la libertà di scegliere le soluzioni migliori. </para>
+>Ma &korganizer; non è solo il tuo calendario personale: ti può anche aiutare a collaborare con i tuoi colleghi e amici. Con &korganizer; invitare a un evento chiunque abbia un indirizzo di posta elettronica ed elaborare le risposte; e condividere un calendario (usando un server per programmi di gruppo o semplicemente un file in rete). &korganizer; si basa su standard pubblici, e funziona con molti diversi server di pianificazione, dandoti il controllo delle tue informazioni e la libertà di scegliere le soluzioni migliori. </para>
 
 <para
 >&korganizer; è anche il componente per il calendario, il diario e le cose da fare di &kontact;, che ti offre una soluzione integrata per le tue necessità di gestione della comunicazione e delle informazioni: posta elettronica, note, gestione dei contatti, notizie e lettura delle fonti di notizie. Anche se non lo usi in &kontact;, &korganizer; è integrato con le altre applicazioni <acronym
@@ -608,7 +608,7 @@
 >Puoi esportare i tuoi dati come file iCalendar o vCalendar. Questi file sono supportati dalla maggior parte delle applicazioni di pianificazione. </para>
 
 <para
->In questo capitolo, spiegheremo come gestire il calendario, usando le azioni delle risorse, di importazione ed esportazione, e lo schema del prelievo delle novità.</para>
+>In questo capitolo spiegheremo come gestire le risorse di calendario, nonché l'uso delle azioni di importazione ed esportazione.</para>
 
 <sect1 id="managing-resources">
 <title
@@ -853,9 +853,6 @@
 
 <para
 >Un buon momento per farlo sarebbe se hai ricevuto un vCalendar con qualche voce per posta elettronica, per esempio, o se hai intenzione di importare il tuo calendario da un'altra applicazione. In quest'ultimo caso, la prima cosa da fare è usare quell'applicazione per esportare i dati del calendario in uno dei formati sopracitati, o usare uno strumento per convertire il formato nativo dell'applicazione.</para>
-
-<!--Get Hot New Stuff
-store.kde.org KOrganizer Calendars-->
 </sect2>
 
 <sect2 id="managing-export">
@@ -941,61 +938,7 @@ store.kde.org KOrganizer Calendars-->
 > invece di eliminarle. </para>
 
 </sect2>
-
 </sect1>
-<!-- only import ??-->
-<sect1 id="managing-get-hot-new-stuff">
-<title
->Scaricare usando le Novità</title>
-
-<!--para
->If you have a calendar containing events of public interest, such as
-a conference or championship schedule, you can upload it (or check if there
-is something worth downloading) using the
-<ulink url="http://ghns.berlios.de/"
->get hot new stuff framework</ulink
->.
-</para-->
-
-<para
->Per aprire la finestra <guilabel
->Scarica le Novità</guilabel
->, che offre un elenco di calendari da scaricare, scegli la voce <menuchoice
-><guimenu
->File</guimenu
-><guisubmenu
->Importa</guisubmenu
-><guimenuitem
->Scarica le Novità...</guimenuitem
-></menuchoice
->. Se selezioni uno dei calendari, apparirà una finestra con il suo elenco di eventi. Per unire gli eventi visualizzati con la tua risorsa predefinita, premi <guilabel
->Unisci</guilabel
->.</para>
-
-<!--para>
-To open the <guilabel
->Upload Hot New Stuff</guilabel
-> dialog, which allow you
-to export calendars containing events which may be useful to other people, such
-as a conference program, a list of holidays, special events, &etc;,
-choose the <menuchoice
-><guimenu
->File</guimenu
-><guisubmenu
->Export</guisubmenu>
-<guimenuitem
->Upload Hot New Stuff...</guimenuitem
-></menuchoice
->.</para>
-
-<para
->Before uploading the events, make sure you have
-<link linkend="filters-view"
->filtered out</link
-> all unrelated data.</para-->
-
-</sect1>
-
 </chapter>
 
 <chapter id="chapter-views-and-filters"
@@ -2092,7 +2035,7 @@ choose the <menuchoice
 
 <para
 >Marcando la casella <guilabel
->Conserva allegato in linea</guilabel
+>Conserva una copia dell'allegato nel calendario</guilabel
 > l'allegato sarà memorizzato nel calendario, e questo potrebbe aver bisogno di molto spazio in base alle dimensione dell'allegato. Se questa opzione non è marcata sarà memorizzato solo un collegamento all'allegato. Non usare un collegamento per allegati che cambiano spesso o possono essere rimossi dalla loro posizione attuale.</para>
 
 <para
@@ -3054,7 +2997,7 @@ choose the <menuchoice
 <varlistentry>
 <term
 ><guilabel
->Periodo lavorativo</guilabel
+>Pianificazione settimanale</guilabel
 ></term>
 <listitem
 ><para
@@ -3062,11 +3005,11 @@ choose the <menuchoice
 >Ora di inizio giornata</guilabel
 > e <guilabel
 >Ora di fine giornata</guilabel
-> ti permettono di specificare quando inizia e finisce la tua giornata lavorativa. &korganizer; imposta diversamente le ore lavorative colorandole in maniera differente rispetto alle ore non lavorative, alle vacanze ed ai giorni non lavorativi.</para>
+> ti permettono di specificare quando inizia e finisce la tua giornata tipica. &korganizer; imposta diversamente le ore colorandole in maniera differente rispetto alle ore al di fuori dalla tua normale routine e ai giorni di vacanza.</para>
 <para
->In più, sono presenti delle caselle etichettate con i giorni della settimana. Seleziona quelle corrispondenti ai tuoi giorni lavorativi, in modo da evidenziare le ore lavorative di tali giorni. Marcando <guilabel
+>In più, sono presenti delle caselle etichettate con i giorni della settimana. Seleziona quelle corrispondenti alla tua normale pianificazione, di solito escludendo i fine settimana. &korganizer; segnerà le ore che sono parte della pianificazione giornaliera (probabilmente le ore di lavoro) in modo diverso da quelle che sono al di fuori della normale pianificazione. Marcando <guilabel
 >Escludi festività</guilabel
-> si evita che &korganizer; evidenzi le ore lavorative per i giorni di festività della zona definite nel menu a discesa <guilabel
+> si evita che &korganizer; evidenzi le ore della normale pianificazione (o lavorative) per i giorni di festività della zona definite nel menu a discesa <guilabel
 >Usa le festività della zona</guilabel
 > più in alto.</para>
 </listitem>
@@ -4178,27 +4121,6 @@ format="PNG"/></imageobject
 </listitem>
 </varlistentry>
 
-<varlistentry id="menu-file-import-ghns">
-<term
-><menuchoice
-><guimenu
->File</guimenu
-><guimenu
->Importa</guimenu
-><guimenuitem
->Scarica le Novità...</guimenuitem
-> </menuchoice
-></term>
-<listitem
-><para
->Questa azione apre la finestra di dialogo <guilabel
->Scarica le Novità...</guilabel
->, che mette a disposizione una lista di calendari da scaricare. Questi eventi possono essere aggiunti al tuo calendario.</para>
-<para
->Per maggiori informazioni su questa azione fai riferimento a <xref linkend="managing-get-hot-new-stuff"/>.</para>
-</listitem>
-</varlistentry>
-
 <varlistentry id="menu-file-export-icalendar">
 <term
 ><menuchoice
@@ -4217,31 +4139,6 @@ format="PNG"/></imageobject
 >Per maggiori informazioni riguardo a questa azione, fai riferimento a <xref linkend="managing-export"/>.</para>
 </listitem>
 </varlistentry>
-
-<!--not in 4.6.0
-varlistentry id="menu-file-export-ghns">
-<term
-><menuchoice>
-<guimenu
->File</guimenu>
-<guisubmenu
->Export</guisubmenu>
-<guimenuitem
->Upload Hot New Stuff...</guimenuitem>
-</menuchoice
-></term>
-<listitem
-><para
->This action will open the <guilabel
->Upload Hot New Stuff</guilabel>
-dialog, which allow you to export calendars containing events which may be
-useful to other people, such as a conference program, a list of holidays,
-special events, &etc;</para>
-<para
->For more information about this action, please refer to
-<xref linkend="managing-get-hot-new-stuff"/>.</para>
-</listitem>
-</varlistentry-->
 
 <varlistentry id="menu-file-archive-old">
 <term
@@ -5118,6 +5015,27 @@ format="PNG"/></imageobject
 > per <action
 >cominciare a scrivere una nuova voce nel diario</action
 >.</para
+></listitem>
+</varlistentry>
+
+<varlistentry id="menu-actions-pick-date">
+<term
+><inlinemediaobject
+><imageobject
+><imagedata fileref="go-jump.png" format="PNG"/></imageobject
+></inlinemediaobject>
+<menuchoice
+><guimenu
+> Vai</guimenu
+><guimenuitem
+>Scegli una data</guimenuitem
+></menuchoice>
+</term>
+<listitem
+><para
+><action
+>Apre una finestra di dialogo di seleziona della data per navigare rapidamente nella vista.</action
+></para
 ></listitem>
 </varlistentry>
 

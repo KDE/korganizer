@@ -15,8 +15,8 @@ msgid ""
 msgstr ""
 "Project-Id-Version: korganizer\n"
 "Report-Msgid-Bugs-To: https://bugs.kde.org\n"
-"POT-Creation-Date: 2025-06-19 00:43+0000\n"
-"PO-Revision-Date: 2025-06-15 19:25+0200\n"
+"POT-Creation-Date: 2025-06-21 00:43+0000\n"
+"PO-Revision-Date: 2025-06-20 23:48+0200\n"
 "Last-Translator: Luigi Toscano <luigi.toscano@tiscali.it>\n"
 "Language-Team: Italian <kde-i18n-it@kde.org>\n"
 "Language: it\n"
@@ -1282,12 +1282,10 @@ msgid "Manage T&ags…"
 msgstr "Gestisci &etichette…"
 
 #: actionmanager.cpp:760
-#, fuzzy, kde-format
-#| msgctxt "@action:inmenu"
-#| msgid "What's &Next"
+#, kde-format
 msgctxt "@action:inmenu"
 msgid "What's new"
-msgstr "Cosa viene &dopo"
+msgstr "Cosa c'è di nuovo"
 
 #: actionmanager.cpp:765
 #, kde-format
@@ -1993,6 +1991,12 @@ msgstr "Dissociazione non riuscita"
 msgctxt "@info"
 msgid "Dissociating the occurrence failed."
 msgstr "Dissociazione della ricorrenza non riuscita."
+
+#: calendarview.cpp:1818 korganizer.cpp:73 korganizer_part.cpp:59
+#: korganizer_part.cpp:68
+#, kde-format
+msgid "KOrganizer"
+msgstr "KOrganizer"
 
 #: calendarview.cpp:1837
 #, kde-format
@@ -3722,11 +3726,6 @@ msgstr ""
 msgctxt "@info:shell"
 msgid "Lists the available options for user feedback"
 msgstr "Mostra le opzioni disponibili per le segnalazioni degli utenti"
-
-#: korganizer_part.cpp:59
-#, kde-format
-msgid "KOrganizer"
-msgstr "KOrganizer"
 
 #: koviewmanager.cpp:497
 #, kde-format
@@ -6333,42 +6332,46 @@ msgid "Selected Calendars"
 msgstr "Calendari selezionati"
 
 #: whatsnew/whatsnewtranslations.cpp:18
-#, fuzzy
-#| msgctxt "@action:button"
-#| msgid "Add as new calendar"
 msgid "Add What's New menu"
-msgstr "Aggiungi come nuovo calendario"
+msgstr "Aggiungi il menu Cosa c'è di nuovo"
 
 #: whatsnew/whatsnewtranslations.cpp:19
 msgid "Add a Date Picker dialog available from the Go menu"
-msgstr ""
+msgstr "Aggiunta una finestra selettore di data disponibile dal menu Vai"
 
 #: whatsnew/whatsnewtranslations.cpp:20
 msgid ""
 "Agenda view move day, next X Days, work week into the Agenda tool button"
 msgstr ""
+"La vista agenda ha spostato il giorno, prossimi X giorni, settimana "
+"lavorativa nel pulsante dello strumento agenda"
 
 #: whatsnew/whatsnewtranslations.cpp:21
 msgid "Agenda view timelabels can switch to a 24-hour clock"
 msgstr ""
+"Le etichette temporali della vista agenda possono passare al formato di "
+"orologio a 24 ore"
 
 #: whatsnew/whatsnewtranslations.cpp:22
 msgid "Agenda view menu adds create new Event/To-do"
 msgstr ""
+"Dal menu della vista agenda è possibile creare un nuovo evento/cosa da fare"
 
 #: whatsnew/whatsnewtranslations.cpp:23
 msgid "To-do view menu has options for toggling completion and reminders"
 msgstr ""
+"Il menu della vista delle cose da fare ha opzioni per abilitare/disabilitare "
+"il completamento e i promemoria"
 
 #: whatsnew/whatsnewtranslations.cpp:24
 msgid "To-do view no longer will show the to-do list in the sidebar"
 msgstr ""
+"La vista delle cose da fare non mostra più l'elenco delle cose da fare nella "
+"barra laterale"
 
 #: whatsnew/whatsnewtranslations.cpp:25
-#, fuzzy
-#| msgid "Get &Hot New Stuff..."
 msgid "Get Hot New Stuff removed"
-msgstr "Scarica le &Novità..."
+msgstr "«Scarica le novità« rimosso"
 
 #: widgets/kdatenavigator.cpp:171
 #, kde-format
