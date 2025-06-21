@@ -2092,7 +2092,7 @@ choose the <menuchoice
 
 <para
 >Marcando la casella <guilabel
->Conserva allegato in linea</guilabel
+>Conserva una copia dell'allegato nel calendario</guilabel
 > l'allegato sarà memorizzato nel calendario, e questo potrebbe aver bisogno di molto spazio in base alle dimensione dell'allegato. Se questa opzione non è marcata sarà memorizzato solo un collegamento all'allegato. Non usare un collegamento per allegati che cambiano spesso o possono essere rimossi dalla loro posizione attuale.</para>
 
 <para
