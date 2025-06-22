@@ -14,7 +14,7 @@ msgstr ""
 "Project-Id-Version: korganizer\n"
 "Report-Msgid-Bugs-To: https://bugs.kde.org\n"
 "POT-Creation-Date: 2025-06-21 00:43+0000\n"
-"PO-Revision-Date: 2025-06-15 08:28+0200\n"
+"PO-Revision-Date: 2025-06-19 09:11+0200\n"
 "Last-Translator: Josep M. Ferrer <txemaq@gmail.com>\n"
 "Language-Team: Catalan <kde-i18n-ca@kde.org>\n"
 "Language: ca@valencia\n"
@@ -1282,12 +1282,10 @@ msgid "Manage T&ags…"
 msgstr "Gestiona &les etiquetes…"
 
 #: actionmanager.cpp:760
-#, fuzzy, kde-format
-#| msgctxt "@action:inmenu"
-#| msgid "What's &Next"
+#, kde-format
 msgctxt "@action:inmenu"
 msgid "What's new"
-msgstr "&Què toca ara"
+msgstr "Què hi ha de nou"
 
 #: actionmanager.cpp:765
 #, kde-format
@@ -6373,40 +6371,46 @@ msgid "Selected Calendars"
 msgstr "Calendaris seleccionats"
 
 #: whatsnew/whatsnewtranslations.cpp:18
-#, fuzzy
-#| msgctxt "@action:button"
-#| msgid "Add as new calendar"
 msgid "Add What's New menu"
-msgstr "Afig com a calendari nou"
+msgstr "Afig el menú Què hi ha de nou"
 
 #: whatsnew/whatsnewtranslations.cpp:19
 msgid "Add a Date Picker dialog available from the Go menu"
-msgstr ""
+msgstr "Afig un diàleg selector de dates disponible des del menú Ves"
 
 #: whatsnew/whatsnewtranslations.cpp:20
 msgid ""
 "Agenda view move day, next X Days, work week into the Agenda tool button"
 msgstr ""
+"La vista d'agenda mou el dia, els pròxims X dies, la setmana laboral al botó "
+"de l'eina Agenda"
 
 #: whatsnew/whatsnewtranslations.cpp:21
 msgid "Agenda view timelabels can switch to a 24-hour clock"
 msgstr ""
+"Les etiquetes de temps de la vista d'agenda poden canviar a un rellotge de "
+"24 hores"
 
 #: whatsnew/whatsnewtranslations.cpp:22
 msgid "Agenda view menu adds create new Event/To-do"
 msgstr ""
+"El menú de vista d'agenda afig crear un esdeveniment/tasca pendent nova"
 
 #: whatsnew/whatsnewtranslations.cpp:23
 msgid "To-do view menu has options for toggling completion and reminders"
 msgstr ""
+"El menú de vista de les tasques pendents té opcions per a canviar compleció "
+"i recordatoris"
 
 #: whatsnew/whatsnewtranslations.cpp:24
 msgid "To-do view no longer will show the to-do list in the sidebar"
 msgstr ""
+"La vista de les tasques pendents ja no mostrarà la llista de tasques "
+"pendents a la barra lateral"
 
 #: whatsnew/whatsnewtranslations.cpp:25
 msgid "Get Hot New Stuff removed"
-msgstr ""
+msgstr "S'ha eliminat «Obtín les novetats candents»"
 
 #: widgets/kdatenavigator.cpp:171
 #, kde-format

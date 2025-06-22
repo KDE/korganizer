@@ -25,7 +25,7 @@ msgstr ""
 "Project-Id-Version: korganizer\n"
 "Report-Msgid-Bugs-To: https://bugs.kde.org\n"
 "POT-Creation-Date: 2025-06-21 00:43+0000\n"
-"PO-Revision-Date: 2025-06-17 14:00+0200\n"
+"PO-Revision-Date: 2025-06-20 12:29+0200\n"
 "Last-Translator: Xavier Besnard <xavier.besnard@kde.org>\n"
 "Language-Team: French <French <kde-francophone@kde.org>>\n"
 "Language: fr\n"
@@ -1313,12 +1313,10 @@ msgid "Manage T&ags…"
 msgstr "Gérer les é&tiquettes..."
 
 #: actionmanager.cpp:760
-#, fuzzy, kde-format
-#| msgctxt "@action:inmenu"
-#| msgid "What's &Next"
+#, kde-format
 msgctxt "@action:inmenu"
 msgid "What's new"
-msgstr "Quoi de &neuf"
+msgstr "Quoi de neuf"
 
 #: actionmanager.cpp:765
 #, kde-format
@@ -6504,42 +6502,49 @@ msgid "Selected Calendars"
 msgstr "Agendas sélectionnés"
 
 #: whatsnew/whatsnewtranslations.cpp:18
-#, fuzzy
-#| msgctxt "@action:button"
-#| msgid "Add as new calendar"
 msgid "Add What's New menu"
-msgstr "Ajouter en tant que nouvel agenda"
+msgstr "Ajouter le menu « Quoi de neuf »"
 
 #: whatsnew/whatsnewtranslations.cpp:19
 msgid "Add a Date Picker dialog available from the Go menu"
 msgstr ""
+"Ajouter une boîte de dialogue « Sélecteur de dates » à partir du menu "
+"« Aller »"
 
 #: whatsnew/whatsnewtranslations.cpp:20
 msgid ""
 "Agenda view move day, next X Days, work week into the Agenda tool button"
 msgstr ""
+"L'affichage « Agenda » déplace un jour, les x jours suivants, la semaine "
+"ouvrée avec le bouton de l'outil « Agenda »"
 
 #: whatsnew/whatsnewtranslations.cpp:21
 msgid "Agenda view timelabels can switch to a 24-hour clock"
 msgstr ""
+"Les étiquettes de temps de la vue « Agenda » peuvent basculer à une horloge "
+"sur 24 heures"
 
 #: whatsnew/whatsnewtranslations.cpp:22
 msgid "Agenda view menu adds create new Event/To-do"
 msgstr ""
+"Le menu de la vue « Agenda » ajoute un menu « Créer un nouvel évènement / "
+"tâche »."
 
 #: whatsnew/whatsnewtranslations.cpp:23
 msgid "To-do view menu has options for toggling completion and reminders"
 msgstr ""
+"Le menu d'affichage des tâches à faire possède des options pour modifier la "
+"réalisation et les rappels"
 
 #: whatsnew/whatsnewtranslations.cpp:24
 msgid "To-do view no longer will show the to-do list in the sidebar"
 msgstr ""
+"La vue « Tâches à faire » n'affichera plus la liste des tâches à faire dans "
+"la barre latérale"
 
 #: whatsnew/whatsnewtranslations.cpp:25
-#, fuzzy
-#| msgid "Get &Hot New Stuff..."
 msgid "Get Hot New Stuff removed"
-msgstr "Recevoir des nou&veautés..."
+msgstr "Le menu « Obtenir les nouveautés » a été supprimé"
 
 #: widgets/kdatenavigator.cpp:171
 #, kde-format

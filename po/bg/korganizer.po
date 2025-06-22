@@ -4,7 +4,7 @@ msgstr ""
 "Project-Id-Version: korganizer\n"
 "Report-Msgid-Bugs-To: https://bugs.kde.org\n"
 "POT-Creation-Date: 2025-06-21 00:43+0000\n"
-"PO-Revision-Date: 2025-06-17 00:29+0200\n"
+"PO-Revision-Date: 2025-06-21 11:53+0200\n"
 "Last-Translator: Mincho Kondarev <mkondarev@yahoo.de>\n"
 "Language-Team: Bulgarian <kde-i18n-doc@kde.org>\n"
 "Language: bg\n"
@@ -1262,12 +1262,10 @@ msgid "Manage T&ags…"
 msgstr "Управление на &етикети…"
 
 #: actionmanager.cpp:760
-#, fuzzy, kde-format
-#| msgctxt "@action:inmenu"
-#| msgid "What's &Next"
+#, kde-format
 msgctxt "@action:inmenu"
 msgid "What's new"
-msgstr "К&акво следва"
+msgstr "Какво ново"
 
 #: actionmanager.cpp:765
 #, kde-format
@@ -5459,9 +5457,9 @@ msgid ""
 "ago."
 msgstr ""
 "Тук можете да зададете броя дни, след което изпълнените задачи се скриват от "
-"списъка със задачи. Ако изберете \"незабавно\", всички завършени задачи ще "
-"се скрият. Ако, например, изберете стойност 1, ще се скрият всички задачи, "
-"които са маркирани като :изпълнени\" през последните 24 часа."
+"списъка със задачи. Ако изберете „незабавно“, всички завършени задачи ще се "
+"скрият. Ако, например, изберете стойност 1, ще се скрият всички задачи, "
+"които са маркирани като : „изпълнени“ през последните 24 часа."
 
 #. i18n: ectx: property (whatsThis), widget (QCheckBox, mHideInactiveTodosCheck)
 #: ui/filteredit_base.ui:218
@@ -6303,40 +6301,47 @@ msgid "Selected Calendars"
 msgstr "Избрани календари"
 
 #: whatsnew/whatsnewtranslations.cpp:18
-#, fuzzy
-#| msgctxt "@action:button"
-#| msgid "Add as new calendar"
 msgid "Add What's New menu"
-msgstr "Добавяне като нов календар"
+msgstr "Добавяне на меню „Какво ново“"
 
 #: whatsnew/whatsnewtranslations.cpp:19
 msgid "Add a Date Picker dialog available from the Go menu"
 msgstr ""
+"Добавяне на диалогов прозорец за избор на дата, достъпен от менюто "
+"„Навигация“."
 
 #: whatsnew/whatsnewtranslations.cpp:20
 msgid ""
 "Agenda view move day, next X Days, work week into the Agenda tool button"
 msgstr ""
+"Изглед „Дневен ред“ премества ден, следващи X дни, работна седмица в бутона "
+"за инструмента „Дневен ред“"
 
 #: whatsnew/whatsnewtranslations.cpp:21
 msgid "Agenda view timelabels can switch to a 24-hour clock"
 msgstr ""
+"Етикетите в хронологията в изглед „Дневен ред“ могат да превключват във "
+"формат на 24-часов часовник"
 
 #: whatsnew/whatsnewtranslations.cpp:22
 msgid "Agenda view menu adds create new Event/To-do"
 msgstr ""
+"Менюто на изглед „Дневен ред“ добавя „Създаване на ново събитие/задача“"
 
 #: whatsnew/whatsnewtranslations.cpp:23
 msgid "To-do view menu has options for toggling completion and reminders"
 msgstr ""
+"Менюто за преглед на задачи има опции за превключване между завършване и "
+"напомняния"
 
 #: whatsnew/whatsnewtranslations.cpp:24
 msgid "To-do view no longer will show the to-do list in the sidebar"
 msgstr ""
+"Изгледът на задачи вече не показва списъка със задачи в страничния панел"
 
 #: whatsnew/whatsnewtranslations.cpp:25
 msgid "Get Hot New Stuff removed"
-msgstr ""
+msgstr "„Изтегляне на нови неща“ е премахнато"
 
 #: widgets/kdatenavigator.cpp:171
 #, kde-format
@@ -6508,153 +6513,3 @@ msgstr "%1"
 msgctxt "4 digit year"
 msgid "%1"
 msgstr "%1"
-
-#~ msgctxt "@action:inmenu"
-#~ msgid "Get New Calendars…"
-#~ msgstr "Изтегляне на нови календари…"
-
-#~ msgctxt "@info:status"
-#~ msgid "Load a calendar from \"Get Hot New Stuff\""
-#~ msgstr "Заредете календар от \" Вземете нови нови неща \""
-
-#~ msgctxt "@info:tooltip"
-#~ msgid "Search \"Get Hot New Stuff\" for calendars to import"
-#~ msgstr ""
-#~ "Търсене „ Изтегляне на нови горещи неща “ за календари за импортиране"
-
-#~ msgctxt "@info:whatsthis"
-#~ msgid ""
-#~ "This menu entry opens the \"Get Hot New Stuff\" dialog that allows you to "
-#~ "search and import fun and useful calendars donated to the community."
-#~ msgstr ""
-#~ "Този запис в менюто отваря диалоговия прозорец \" Вземи нови нови неща "
-#~ "\", който ви позволява да търсите и импортирате забавни и полезни "
-#~ "календари, дарени на общността."
-
-#~ msgctxt "@info"
-#~ msgid "Could not load calendar <filename>%1</filename>."
-#~ msgstr "Не може да бъде отворен аудио файлът <filename>%1</filename>."
-
-#~ msgctxt "@info"
-#~ msgid "The downloaded events will be merged into your current calendar."
-#~ msgstr "Изтеглените събития ще бъдат смесени с вашия текущ календар."
-
-#~ msgctxt "@action:inmenu"
-#~ msgid "Show To-do View"
-#~ msgstr "Показване на задачите"
-
-#~ msgid "&Show"
-#~ msgstr "&Показване"
-
-#~ msgid "&Edit…"
-#~ msgstr "&Редактиране…"
-
-#~ msgid "Saved calendar '%1'."
-#~ msgstr "Календарът „%1“ е записан."
-
-#~ msgid "URL '%1' is invalid."
-#~ msgstr "Адресът „%1“ е неправилен."
-
-#~ msgid "iCalendars (*.ics)"
-#~ msgstr "iCalendars (* .ics)"
-
-#~ msgid "KOrganizer Confirmation"
-#~ msgstr "Потвърждение KOrganizer"
-
-#~ msgctxt "Event from email content"
-#~ msgid "<b>From:</b> %1<br /><b>To:</b> %2<br /><b>Subject:</b> %3"
-#~ msgstr "<b>От:</b> %1<br /><b>До:</b> %2<br /><b>Тема:</b> %3"
-
-#~ msgctxt "@action"
-#~ msgid "Configure"
-#~ msgstr "Конфигуриране"
-
-#~ msgctxt "@info"
-#~ msgid "Unable to edit \"%1\" because it is locked by another process."
-#~ msgstr "Не може да се редактира \" %1 \", защото е заключен от друг процес."
-
-#~ msgid "Unable to save %1 \"%2\"."
-#~ msgstr "Неуспешен запис на %1 „%2“."
-
-#~ msgid "W&ork Week"
-#~ msgstr "&Работна седмица"
-
-#~ msgctxt "@info:tooltip"
-#~ msgid "Set search keyword"
-#~ msgstr "Задаване на ключова дума за търсене"
-
-#~ msgctxt "@info:whatsthis"
-#~ msgid "Lets you search for a keyword in your calendars"
-#~ msgstr "Позволява ви да търсите ключова дума във вашите календари"
-
-#~ msgctxt ""
-#~ "@info/plain Displayed grayed-out inside the textbox, verb to search"
-#~ msgid "Search…"
-#~ msgstr "Търсене…"
-
-#~ msgctxt "@title:group"
-#~ msgid "Working Period"
-#~ msgstr "Работни дни"
-
-#~ msgctxt "@info:whatsthis"
-#~ msgid ""
-#~ "Check this box to make KOrganizer mark the working hours for this day of "
-#~ "the week. If this is a work day for you, check this box, or the working "
-#~ "hours will not be marked with color."
-#~ msgstr ""
-#~ "Поставете отметка в това квадратче, за да накарате KOrganizer да маркира "
-#~ "работното време за този ден от седмицата. Ако това е работен ден за вас, "
-#~ "поставете отметка в това квадратче, или работното време няма да бъде "
-#~ "маркирано с цвят."
-
-#~ msgctxt "@info:status"
-#~ msgid "Configure the view"
-#~ msgstr "Конфигуриране на изгледа"
-
-#~ msgctxt "@info:whatsthis"
-#~ msgid ""
-#~ "Starts a configuration dialog that allows you to change the settings for "
-#~ "the current calendar view."
-#~ msgstr ""
-#~ "Стартира диалогов прозорец за конфигуриране, който ви позволява да "
-#~ "промените настройките за текущия изглед на календара."
-
-#~ msgctxt "@action:inmenu"
-#~ msgid "Serverside Subscription…"
-#~ msgstr "Абонамент за сървъра…"
-
-#~ msgctxt "@info"
-#~ msgid "Do you really want to delete calendar %1?"
-#~ msgstr "Наистина ли искате да изтриете календар %1?"
-
-#~ msgid "Groupware Settings"
-#~ msgstr "Настройки за групов софтуер"
-
-#~ msgid "Show events belonging to my calendars only"
-#~ msgstr "Показване на събития, принадлежащи само на моите календари"
-
-#~ msgid ""
-#~ "Check this box if you want the summary to show events belonging to your "
-#~ "calendars only."
-#~ msgstr ""
-#~ "Поставете отметка в това квадратче, ако искате описанието да показва "
-#~ "събития, принадлежащи само на вашите календари."
-
-#~ msgid "Show &my events only"
-#~ msgstr "Показване само моите събития"
-
-#~ msgid "Show To-dos belonging to my calendars only"
-#~ msgstr "Показване на задачи, принадлежащи само на моите календари"
-
-#~ msgid ""
-#~ "Check this box if you want the summary to show To-dos belonging to your "
-#~ "calendars only."
-#~ msgstr ""
-#~ "Поставете отметка в това квадратче, ако искате описанието да показва "
-#~ "задачи, принадлежащи само на вашите календари."
-
-#~ msgid "Show &my To-dos only"
-#~ msgstr "Показване само моите задачи"
-
-#~ msgid "Current-time line"
-#~ msgstr "Линия за текущото време"
