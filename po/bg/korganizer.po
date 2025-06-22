@@ -5954,39 +5954,3 @@ msgstr "%1"
 msgctxt "4 digit year"
 msgid "%1"
 msgstr "%1"
-
-#~ msgctxt "@info"
-#~ msgid "Do you really want to delete calendar %1?"
-#~ msgstr "Наистина ли искате да изтриете календар %1?"
-
-#~ msgid "Groupware Settings"
-#~ msgstr "Настройки за групов софтуер"
-
-#~ msgid "Show events belonging to my calendars only"
-#~ msgstr "Показване на събития, принадлежащи само на моите календари"
-
-#~ msgid ""
-#~ "Check this box if you want the summary to show events belonging to your "
-#~ "calendars only."
-#~ msgstr ""
-#~ "Поставете отметка в това квадратче, ако искате описанието да показва "
-#~ "събития, принадлежащи само на вашите календари."
-
-#~ msgid "Show &my events only"
-#~ msgstr "Показване само моите събития"
-
-#~ msgid "Show To-dos belonging to my calendars only"
-#~ msgstr "Показване на задачи, принадлежащи само на моите календари"
-
-#~ msgid ""
-#~ "Check this box if you want the summary to show To-dos belonging to your "
-#~ "calendars only."
-#~ msgstr ""
-#~ "Поставете отметка в това квадратче, ако искате описанието да показва "
-#~ "задачи, принадлежащи само на вашите календари."
-
-#~ msgid "Show &my To-dos only"
-#~ msgstr "Показване само моите задачи"
-
-#~ msgid "Current-time line"
-#~ msgstr "Линия за текущото време"

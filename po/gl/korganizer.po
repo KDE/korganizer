@@ -16,7 +16,7 @@ msgstr ""
 "Project-Id-Version: korganizer\n"
 "Report-Msgid-Bugs-To: https://bugs.kde.org\n"
 "POT-Creation-Date: 2025-04-18 02:33+0000\n"
-"PO-Revision-Date: 2025-02-17 05:51+0100\n"
+"PO-Revision-Date: 2025-06-21 12:21+0200\n"
 "Last-Translator: Adrián Chaves (Gallaecio) <adrian@chaves.gal>\n"
 "Language-Team: Proxecto Trasno (proxecto@trasno.gal)\n"
 "Language: gl\n"
@@ -24,7 +24,7 @@ msgstr ""
 "Content-Type: text/plain; charset=UTF-8\n"
 "Content-Transfer-Encoding: 8bit\n"
 "Plural-Forms: nplurals=2; plural=n != 1;\n"
-"X-Generator: Lokalize 24.12.2\n"
+"X-Generator: Lokalize 25.04.2\n"
 
 #, kde-format
 msgctxt "NAME OF TRANSLATORS"
@@ -73,7 +73,7 @@ msgstr "Allen Winter"
 #: aboutdata.cpp:30
 #, kde-format
 msgid "Maintainer"
-msgstr "Mantedor"
+msgstr "Mantemento."
 
 #: aboutdata.cpp:31
 #, kde-format
@@ -84,7 +84,7 @@ msgstr "Reinhold Kainhofer"
 #: aboutdata.cpp:31 aboutdata.cpp:32
 #, kde-format
 msgid "Former Maintainer"
-msgstr "Mantedor anterior"
+msgstr "Mantemento anterior."
 
 #: aboutdata.cpp:32
 #, kde-format
