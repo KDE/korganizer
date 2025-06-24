@@ -83,10 +83,7 @@ public:
     explicit ReparentingModel(QObject *parent = nullptr);
     ~ReparentingModel() override;
 
-    void setNodeManager(const NodeManager::Ptr &nodeManager);
     void addNode(const Node::Ptr &node);
-    void updateNode(const Node::Ptr &node);
-    void removeNode(const Node &node);
     void clear();
 
     int rowCount(const QModelIndex &parent = QModelIndex()) const override;

@@ -255,55 +255,12 @@ void ReparentingModel::doAddNode(const Node::Ptr &node)
     }
 }
 
-void ReparentingModel::updateNode(const ReparentingModel::Node::Ptr &node)
-{
-    const auto it = std::ranges::find_if(mProxyNodes, [node](const Node::Ptr &existing) {
-        return *existing == *node;
-    });
-    if (it != mProxyNodes.end()) {
-        (*it)->update(node);
-        const QModelIndex i = index((*it).data());
-        Q_EMIT dataChanged(i, i);
-        return;
-    }
-
-    qCWarning(KORGANIZER_LOG) << objectName() << "no node to update, create new node";
-    addNode(node);
-}
-
-void ReparentingModel::removeNode(const ReparentingModel::Node &node)
-{
-    // If there is an addNode in progress for that node, abort it.
-    for (int i = 0; i < mNodesToAdd.size(); ++i) {
-        if (*mNodesToAdd.at(i) == node) {
-            mNodesToAdd.remove(i);
-        }
-    }
-    for (int i = 0; i < mProxyNodes.size(); ++i) {
-        if (*mProxyNodes.at(i) == node) {
-            // TODO: this does not yet take care of un-reparenting reparented nodes.
-            const Node &n = *mProxyNodes.at(i);
-            Node *parentNode = n.parent;
-            beginRemoveRows(index(parentNode), n.row(), n.row());
-            parentNode->children.remove(n.row()); // deletes node
-            mProxyNodes.remove(i);
-            endRemoveRows();
-            break;
-        }
-    }
-}
-
 void ReparentingModel::clear()
 {
     beginResetModel();
     mProxyNodes.clear();
     rebuildAll();
     endResetModel();
-}
-
-void ReparentingModel::setNodeManager(const NodeManager::Ptr &nodeManager)
-{
-    mNodeManager = nodeManager;
 }
 
 void ReparentingModel::setSourceModel(QAbstractItemModel *sourceModel)
