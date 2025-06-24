@@ -1815,7 +1815,7 @@ void CalendarView::printPreview()
 void CalendarView::slotWhatsNew()
 {
     const WhatsNewTranslations translations;
-    PimCommon::WhatsNewDialog dlg(translations.createWhatsNewInfo(), this, i18n("KOrganizer"));
+    PimCommon::WhatsNewDialog dlg(translations.createWhatsNewInfo(), this, i18nc(@title:window", "KOrganizer"));
     dlg.updateInformations();
     dlg.exec();
 }
