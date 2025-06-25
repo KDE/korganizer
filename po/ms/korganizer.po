@@ -5,7 +5,7 @@ msgid ""
 msgstr ""
 "Project-Id-Version: Mimos\n"
 "Report-Msgid-Bugs-To: https://bugs.kde.org\n"
-"POT-Creation-Date: 2025-06-21 00:43+0000\n"
+"POT-Creation-Date: 2025-06-25 00:43+0000\n"
 "PO-Revision-Date: 2005-11-26 19:59+0800\n"
 "Last-Translator: MIMOS <opensource@mimos.my>\n"
 "Language-Team: Malay <kedidiemas@yahoogroups.com>\n"
@@ -1975,9 +1975,10 @@ msgctxt "@info"
 msgid "Dissociating the occurrence failed."
 msgstr "Gagal mengasingkan kemunculan."
 
-#: calendarview.cpp:1818 korganizer.cpp:73 korganizer_part.cpp:59
-#: korganizer_part.cpp:68
-#, kde-format
+#: calendarview.cpp:1818
+#, fuzzy, kde-format
+#| msgid "KOrganizer"
+msgctxt "@title:window"
 msgid "KOrganizer"
 msgstr "KOrganizer"
 
@@ -3671,6 +3672,11 @@ msgstr "Penyenggara Semasa"
 msgctxt "@info:credit"
 msgid "Tobias Koenig"
 msgstr ""
+
+#: korganizer.cpp:73 korganizer_part.cpp:59 korganizer_part.cpp:68
+#, kde-format
+msgid "KOrganizer"
+msgstr "KOrganizer"
 
 #: korganizer.cpp:264
 #, kde-format

@@ -7,7 +7,7 @@ msgid ""
 msgstr ""
 "Project-Id-Version: korganizer\n"
 "Report-Msgid-Bugs-To: https://bugs.kde.org\n"
-"POT-Creation-Date: 2025-06-21 00:43+0000\n"
+"POT-Creation-Date: 2025-06-25 00:43+0000\n"
 "PO-Revision-Date: 2011-01-04 07:42+0530\n"
 "Last-Translator: A S Alam <aalam@users.sf.net>\n"
 "Language-Team: Punjabi/Panjabi <punjabi-users@lists.sf.net>\n"
@@ -2008,9 +2008,10 @@ msgctxt "@info"
 msgid "Dissociating the occurrence failed."
 msgstr "ਤਾਲਾਬੰਦੀ ਅਸਫਲ"
 
-#: calendarview.cpp:1818 korganizer.cpp:73 korganizer_part.cpp:59
-#: korganizer_part.cpp:68
-#, kde-format
+#: calendarview.cpp:1818
+#, fuzzy, kde-format
+#| msgid "KOrganizer"
+msgctxt "@title:window"
 msgid "KOrganizer"
 msgstr "ਕੇ-ਪਰਬੰਧਕ"
 
@@ -3730,6 +3731,11 @@ msgstr "ਪੁਰਾਣਾ ਪਰਬੰਧਕ"
 msgctxt "@info:credit"
 msgid "Tobias Koenig"
 msgstr ""
+
+#: korganizer.cpp:73 korganizer_part.cpp:59 korganizer_part.cpp:68
+#, kde-format
+msgid "KOrganizer"
+msgstr "ਕੇ-ਪਰਬੰਧਕ"
 
 #: korganizer.cpp:264
 #, kde-format

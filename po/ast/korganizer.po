@@ -6,7 +6,7 @@ msgid ""
 msgstr ""
 "Project-Id-Version: korganizer\n"
 "Report-Msgid-Bugs-To: https://bugs.kde.org\n"
-"POT-Creation-Date: 2025-06-21 00:43+0000\n"
+"POT-Creation-Date: 2025-06-25 00:43+0000\n"
 "PO-Revision-Date: 2024-03-15 01:17+0100\n"
 "Last-Translator: Enol P. <enolp@softastur.org>\n"
 "Language-Team: Assamese <alministradores@softastur.org>\n"
@@ -1841,9 +1841,10 @@ msgctxt "@info"
 msgid "Dissociating the occurrence failed."
 msgstr ""
 
-#: calendarview.cpp:1818 korganizer.cpp:73 korganizer_part.cpp:59
-#: korganizer_part.cpp:68
-#, kde-format
+#: calendarview.cpp:1818
+#, fuzzy, kde-format
+#| msgid "KOrganizer"
+msgctxt "@title:window"
 msgid "KOrganizer"
 msgstr "KOrganizer"
 
@@ -3415,6 +3416,11 @@ msgstr ""
 msgctxt "@info:credit"
 msgid "Tobias Koenig"
 msgstr ""
+
+#: korganizer.cpp:73 korganizer_part.cpp:59 korganizer_part.cpp:68
+#, kde-format
+msgid "KOrganizer"
+msgstr "KOrganizer"
 
 #: korganizer.cpp:264
 #, kde-format
