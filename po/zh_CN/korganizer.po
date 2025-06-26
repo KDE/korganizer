@@ -1852,8 +1852,7 @@ msgid "Dissociating the occurrence failed."
 msgstr "拆分事件失败。"
 
 #: calendarview.cpp:1818
-#, fuzzy, kde-format
-#| msgid "KOrganizer"
+#, kde-format
 msgctxt "@title:window"
 msgid "KOrganizer"
 msgstr "KOrganizer"
