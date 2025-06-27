@@ -12,7 +12,7 @@ msgstr ""
 "Project-Id-Version: korganizer\n"
 "Report-Msgid-Bugs-To: https://bugs.kde.org\n"
 "POT-Creation-Date: 2025-06-25 00:43+0000\n"
-"PO-Revision-Date: 2025-05-27 18:02+0400\n"
+"PO-Revision-Date: 2025-06-26 11:18+0400\n"
 "Last-Translator: Zayed Al-Saidi <zayed.alsaidi@gmail.com>\n"
 "Language-Team: ar\n"
 "Language: ar\n"
@@ -1246,12 +1246,10 @@ msgid "Manage T&ags…"
 msgstr "أدِر ال&وسوم…"
 
 #: actionmanager.cpp:760
-#, fuzzy, kde-format
-#| msgctxt "@action:inmenu"
-#| msgid "What's &Next"
+#, kde-format
 msgctxt "@action:inmenu"
 msgid "What's new"
-msgstr "ما الآ&تي"
+msgstr "ما الجديد"
 
 #: actionmanager.cpp:765
 #, kde-format
@@ -1792,13 +1790,13 @@ msgstr "مبدل التذكير"
 #, kde-kuit-format
 msgctxt "@info alarm enabled"
 msgid "<message>%1</message> reminder is enabled"
-msgstr ""
+msgstr "تذكير <message>%1</message> ممكن"
 
 #: calendarview.cpp:1369
 #, kde-kuit-format
 msgctxt "@info alarm disabled"
 msgid "<message>%1</message> reminder is disabled"
-msgstr ""
+msgstr "تذكير <message>%1</message> معطل"
 
 #: calendarview.cpp:1400 calendarview.cpp:1454
 #, kde-format
@@ -1810,7 +1808,7 @@ msgstr "بدّل بين حالتي اكتملت المَهمة"
 #, kde-kuit-format
 msgctxt "@info percentage completed"
 msgid "To-do <message>%1</message> %2 percent completed"
-msgstr ""
+msgstr "أكملت المهمة <message>%1</message> بنسبة %2"
 
 #: calendarview.cpp:1506
 #, kde-format
@@ -1942,8 +1940,7 @@ msgid "Dissociating the occurrence failed."
 msgstr "فشل فصل الحدوثات."
 
 #: calendarview.cpp:1818
-#, fuzzy, kde-format
-#| msgid "KOrganizer"
+#, kde-format
 msgctxt "@title:window"
 msgid "KOrganizer"
 msgstr "منظّمك"
@@ -6187,42 +6184,39 @@ msgid "Selected Calendars"
 msgstr "التقاويم المحدّدة"
 
 #: whatsnew/whatsnewtranslations.cpp:18
-#, fuzzy
-#| msgctxt "@action:button"
-#| msgid "Add as new calendar"
 msgid "Add What's New menu"
-msgstr "أضِف كتقويم جديد"
+msgstr "أضِف قائمة ما الجديد"
 
 #: whatsnew/whatsnewtranslations.cpp:19
 msgid "Add a Date Picker dialog available from the Go menu"
-msgstr ""
+msgstr "أضف مربع حوار منتقي التاريخ المتاح من قائمة اذهب"
 
 #: whatsnew/whatsnewtranslations.cpp:20
 msgid ""
 "Agenda view move day, next X Days, work week into the Agenda tool button"
 msgstr ""
+"عرض جدول الأعمال نقل اليوم، والأيام X التالية، وأسبوع العمل في زر أداة جدول "
+"الأعمال"
 
 #: whatsnew/whatsnewtranslations.cpp:21
 msgid "Agenda view timelabels can switch to a 24-hour clock"
-msgstr ""
+msgstr "يمكن أن تتحول العلامات الزمنية لعرض جدول الأعمال إلى ساعة 24 ساعة"
 
 #: whatsnew/whatsnewtranslations.cpp:22
 msgid "Agenda view menu adds create new Event/To-do"
-msgstr ""
+msgstr "قائمة عرض جدول الأعمال تضيف إنشاء حدث جديد/مهمة جديدة"
 
 #: whatsnew/whatsnewtranslations.cpp:23
 msgid "To-do view menu has options for toggling completion and reminders"
-msgstr ""
+msgstr "تحتوي قائمة عرض المهام على خيارات لتبديل الإكمال والتذكيرات"
 
 #: whatsnew/whatsnewtranslations.cpp:24
 msgid "To-do view no longer will show the to-do list in the sidebar"
-msgstr ""
+msgstr "لن تعرض طريقة عرض المهام بعد الآن قائمة المهام في الشريط الجانبي"
 
 #: whatsnew/whatsnewtranslations.cpp:25
-#, fuzzy
-#| msgid "Get &Hot New Stuff..."
 msgid "Get Hot New Stuff removed"
-msgstr "اجلب أشياء &جديدة…"
+msgstr "إزالة احصل على بيانات جديدة"
 
 #: widgets/kdatenavigator.cpp:171
 #, kde-format
