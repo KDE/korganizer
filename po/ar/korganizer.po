@@ -12,7 +12,7 @@ msgstr ""
 "Project-Id-Version: korganizer\n"
 "Report-Msgid-Bugs-To: https://bugs.kde.org\n"
 "POT-Creation-Date: 2025-04-18 02:33+0000\n"
-"PO-Revision-Date: 2025-03-20 10:20+0400\n"
+"PO-Revision-Date: 2025-06-28 17:09+0400\n"
 "Last-Translator: Zayed Al-Saidi <zayed.alsaidi@gmail.com>\n"
 "Language-Team: ar\n"
 "Language: ar\n"
@@ -681,19 +681,19 @@ msgstr ""
 #, kde-format
 msgctxt "@action"
 msgid "&Refresh"
-msgstr "أن&عِش"
+msgstr "&حدّث"
 
 #: actionmanager.cpp:462
 #, kde-format
 msgctxt "@info:status"
 msgid "Refresh"
-msgstr "أنعش"
+msgstr "&حدّث"
 
 #: actionmanager.cpp:463
 #, kde-format
 msgctxt "@info:tooltip"
 msgid "Refresh the display"
-msgstr "أنعش العرض"
+msgstr "حدّث العرض"
 
 #: actionmanager.cpp:465
 #, kde-format
@@ -701,7 +701,9 @@ msgctxt "@info:whatsthis"
 msgid ""
 "This action will refresh and redraw the current calendar view. It does not "
 "sync or update any calendar folders."
-msgstr "هذا الإجراء سوف يقوم بتحديث وإعادة رسم عرض التقويم الحالي. "
+msgstr ""
+"هذا الإجراء سوف يقوم بتحديث وإعادة رسم عرض التقويم الحالي ، ولا يقوم بمزامنة "
+"أي مجلدات تقويم أو تحديثها."
 
 #: actionmanager.cpp:474
 #, kde-format
