@@ -15,7 +15,7 @@ msgid ""
 msgstr ""
 "Project-Id-Version: korganizer\n"
 "Report-Msgid-Bugs-To: https://bugs.kde.org\n"
-"POT-Creation-Date: 2025-06-25 00:43+0000\n"
+"POT-Creation-Date: 2025-06-30 00:42+0000\n"
 "PO-Revision-Date: 2015-02-07 22:17+0100\n"
 "Last-Translator: Bjørn Steensrud <bjornst@skogkatt.homelinux.org>\n"
 "Language-Team: Norwegian Bokmål <l10n-no@lister.huftis.org>\n"
@@ -6156,32 +6156,121 @@ msgid "Add What's New menu"
 msgstr "Legg til som ny kalender"
 
 #: whatsnew/whatsnewtranslations.cpp:19
-msgid "Add a Date Picker dialog available from the Go menu"
+msgid "Add a Date Picker dialog available on the Go menu"
 msgstr ""
 
 #: whatsnew/whatsnewtranslations.cpp:20
 msgid ""
-"Agenda view move day, next X Days, work week into the Agenda tool button"
+"Agenda view: consolidated the \"Day\", \"Next X Days\", \"Work Schedule\", "
+"\"Week\" time ranges into the Agenda tool button"
 msgstr ""
 
 #: whatsnew/whatsnewtranslations.cpp:21
-msgid "Agenda view timelabels can switch to a 24-hour clock"
+msgid ""
+"Agenda view: added timelabels context menu option to toggle a 24-hour "
+"(military style) clock"
 msgstr ""
 
 #: whatsnew/whatsnewtranslations.cpp:22
-msgid "Agenda view menu adds create new Event/To-do"
+msgid "Agenda view: added context menu to create new Event or To-do"
 msgstr ""
 
 #: whatsnew/whatsnewtranslations.cpp:23
-msgid "To-do view menu has options for toggling completion and reminders"
+msgid ""
+"To-do view: added context menu options for toggling completion and reminders"
 msgstr ""
 
 #: whatsnew/whatsnewtranslations.cpp:24
-msgid "To-do view no longer will show the to-do list in the sidebar"
+msgid "To-do view: remove the (redundant) to-do list from the sidebar"
 msgstr ""
 
 #: whatsnew/whatsnewtranslations.cpp:25
+#, fuzzy
+#| msgid "To-do list view uses full window"
+msgid "To-do view: save/restore fullview setting"
+msgstr "Gjøremålliste vises i fullt vindu"
+
+#: whatsnew/whatsnewtranslations.cpp:26
+msgid "To-do view: save/restore flatview setting"
+msgstr ""
+
+#: whatsnew/whatsnewtranslations.cpp:27
+msgid ""
+"Date navigator: added an option in the Configure->Views settings for hiding "
+"the week numbers"
+msgstr ""
+
+#: whatsnew/whatsnewtranslations.cpp:28
+#, fuzzy
+#| msgid "Week numbers select a work week when in work week mode"
+msgid ""
+"Date navigator: the \"Week numbers select a work week when in work week mode"
+"\" setting is true by default"
+msgstr "Ukenumre velger en arbeidsuke når arbeidsukemodus er på"
+
+#: whatsnew/whatsnewtranslations.cpp:29
+msgid "Incidence editor: remember/restore the template manager geometry"
+msgstr ""
+
+#: whatsnew/whatsnewtranslations.cpp:30
+msgid "The export calendar dialog remembers its last export folder location"
+msgstr ""
+
+#: whatsnew/whatsnewtranslations.cpp:31
+msgid "The import calendar dialog remembers its last import folder location"
+msgstr ""
+
+#: whatsnew/whatsnewtranslations.cpp:32
 msgid "Get Hot New Stuff removed"
+msgstr ""
+
+#: whatsnew/whatsnewtranslations.cpp:33
+msgid "Add calendar file: remote calendars are always read-only"
+msgstr ""
+
+#: whatsnew/whatsnewtranslations.cpp:34
+msgid "Add calendar file: will not permit an empty file path"
+msgstr ""
+
+#: whatsnew/whatsnewtranslations.cpp:35
+msgid ""
+"DAV configuration: dialog allows seeing the account password when editing"
+msgstr ""
+
+#: whatsnew/whatsnewtranslations.cpp:36
+msgid "DAV configuration: wizard shows icons for the various providers"
+msgstr ""
+
+#: whatsnew/whatsnewtranslations.cpp:37
+msgid "DAV configuration: wizard updated list of providers"
+msgstr ""
+
+#: whatsnew/whatsnewtranslations.cpp:54
+#, kde-format
+msgid ""
+"Semantics are changed from a \"working schedule\" concept to a \"week "
+"schedule\" concept to accommodate non-working users"
+msgstr ""
+
+#: whatsnew/whatsnewtranslations.cpp:55
+#, kde-format
+msgid "Initial \"New Event\" start times are consistent across all the views"
+msgstr ""
+
+#: whatsnew/whatsnewtranslations.cpp:56
+#, kde-format
+msgid "Improved default event calendar handling"
+msgstr ""
+
+#: whatsnew/whatsnewtranslations.cpp:57
+#, kde-format
+msgid ""
+"Incidences with a long excluded dates list no longer create huge tooltips"
+msgstr ""
+
+#: whatsnew/whatsnewtranslations.cpp:58
+#, kde-format
+msgid "Fixed the organizer email address for incidences with attendees"
 msgstr ""
 
 #: widgets/kdatenavigator.cpp:171
