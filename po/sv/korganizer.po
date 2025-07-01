@@ -11,7 +11,7 @@ msgstr ""
 "Project-Id-Version: korganizer\n"
 "Report-Msgid-Bugs-To: https://bugs.kde.org\n"
 "POT-Creation-Date: 2025-06-30 00:42+0000\n"
-"PO-Revision-Date: 2025-06-28 20:04+0200\n"
+"PO-Revision-Date: 2025-06-30 19:38+0200\n"
 "Last-Translator: Stefan Asserhäll <stefan.asserhall@gmail.com>\n"
 "Language-Team: Swedish <kde-i18n-doc@kde.org>\n"
 "Language: sv\n"
@@ -6225,86 +6225,79 @@ msgid "Add What's New menu"
 msgstr "Lägg till Vad är nytt-meny"
 
 #: whatsnew/whatsnewtranslations.cpp:19
-#, fuzzy
-#| msgid "Add a Date Picker dialog available from the Go menu"
 msgid "Add a Date Picker dialog available on the Go menu"
 msgstr "Lägg till en datumväljardialogruta tillgänglig i menyn Gå"
 
 #: whatsnew/whatsnewtranslations.cpp:20
-#, fuzzy
-#| msgid ""
-#| "Agenda view move day, next X Days, work week into the Agenda tool button"
 msgid ""
 "Agenda view: consolidated the \"Day\", \"Next X Days\", \"Work Schedule\", "
 "\"Week\" time ranges into the Agenda tool button"
 msgstr ""
-"Agendavyn flyttar dag, följande dagar, arbetsvecka till verktygsknappen "
-"Agenda"
+"Agendavy: sammanställde tidsintervallen \"Dag, \"Följande dagar\", "
+"\"Arbetsvecka\", \"Vecka\" till verktygsknappen Agenda"
 
 #: whatsnew/whatsnewtranslations.cpp:21
-#, fuzzy
-#| msgid "Agenda view timelabels can switch to a 24-hour clock"
 msgid ""
 "Agenda view: added timelabels context menu option to toggle a 24-hour "
 "(military style) clock"
-msgstr "Agendavyns tidsbeteckningar kan byta till 24-timmarsklocka"
+msgstr ""
+"Agendavy: tillägg av sammanhangsberoende menyalternativ för tidsbeteckningar "
+"som byter till en 24-timmarsklocka (militär stil)"
 
 #: whatsnew/whatsnewtranslations.cpp:22
-#, fuzzy
-#| msgid "Agenda view menu adds create new Event/To-do"
 msgid "Agenda view: added context menu to create new Event or To-do"
-msgstr "Agendavyns meny lägger till skapa ny händelse eller uppgift"
+msgstr ""
+"Agendavy: tillägg av sammanhangsberoende meny för att skapa ny händelse "
+"eller uppgift"
 
 #: whatsnew/whatsnewtranslations.cpp:23
-#, fuzzy
-#| msgid "To-do view menu has options for toggling completion and reminders"
 msgid ""
 "To-do view: added context menu options for toggling completion and reminders"
 msgstr ""
-"Uppgiftsvyns meny har alternativ för att stänga av och sätta på "
-"komplettering och påminnelser"
+"Uppgiftsvy: tillägg av sammanhangsberoende menyalternativ för att stänga av "
+"och sätta på komplettering och påminnelser"
 
 #: whatsnew/whatsnewtranslations.cpp:24
-#, fuzzy
-#| msgid "To-do view no longer will show the to-do list in the sidebar"
 msgid "To-do view: remove the (redundant) to-do list from the sidebar"
-msgstr "Uppgiftsvyns visar inte längre uppgiftslistan i sidoraden"
+msgstr "Uppgiftsvy: ta bort den (onödiga) uppgiftslistan från sidoraden"
 
 #: whatsnew/whatsnewtranslations.cpp:25
-#, fuzzy
-#| msgid "To-do list view uses full window"
 msgid "To-do view: save/restore fullview setting"
-msgstr "Uppgiftsvyn använder hela fönstret"
+msgstr "Uppgiftsvy: spara och återställ inställning av fullständig visning"
 
 #: whatsnew/whatsnewtranslations.cpp:26
 msgid "To-do view: save/restore flatview setting"
-msgstr ""
+msgstr "Uppgiftsvy: spara och återställ inställning av enkel lista"
 
 #: whatsnew/whatsnewtranslations.cpp:27
 msgid ""
 "Date navigator: added an option in the Configure->Views settings for hiding "
 "the week numbers"
 msgstr ""
+"Datumnavigering: tillägg av ett alternativ i inställningarna Anpassa -> Vyer "
+"för att dölja veckonummer"
 
 #: whatsnew/whatsnewtranslations.cpp:28
-#, fuzzy
-#| msgid "Week numbers select a work week when in work week mode"
 msgid ""
 "Date navigator: the \"Week numbers select a work week when in work week mode"
 "\" setting is true by default"
-msgstr "Veckonummer väljer en arbetsvecka i arbetsveckoläge"
+msgstr ""
+"Datumnavigering: inställningen \"Veckonummer väljer en arbetsvecka i "
+"arbetsveckoläge\" är normalt sann"
 
 #: whatsnew/whatsnewtranslations.cpp:29
 msgid "Incidence editor: remember/restore the template manager geometry"
-msgstr ""
+msgstr "Förekomsteditor: kom ihåg och återställ mallhanteringens geometri"
 
 #: whatsnew/whatsnewtranslations.cpp:30
 msgid "The export calendar dialog remembers its last export folder location"
 msgstr ""
+"Dialogrutan för kalenderexport kommer ihåg senast exporterade katalogplats"
 
 #: whatsnew/whatsnewtranslations.cpp:31
 msgid "The import calendar dialog remembers its last import folder location"
 msgstr ""
+"Dialogrutan för kalenderimport kommer ihåg senast exporterade katalogplats"
 
 #: whatsnew/whatsnewtranslations.cpp:32
 msgid "Get Hot New Stuff removed"
@@ -6312,24 +6305,26 @@ msgstr "Hämta heta nyheter borttaget"
 
 #: whatsnew/whatsnewtranslations.cpp:33
 msgid "Add calendar file: remote calendars are always read-only"
-msgstr ""
+msgstr "Lägg till kalenderfil: fjärrkalendrar är alltid skrivskyddade"
 
 #: whatsnew/whatsnewtranslations.cpp:34
 msgid "Add calendar file: will not permit an empty file path"
-msgstr ""
+msgstr "Lägg till kalenderfil: tillåter inte en tom filsökväg"
 
 #: whatsnew/whatsnewtranslations.cpp:35
 msgid ""
 "DAV configuration: dialog allows seeing the account password when editing"
 msgstr ""
+"DAV-inställning: dialogrutan tillåter att visa kontots lösenord vid "
+"redigering"
 
 #: whatsnew/whatsnewtranslations.cpp:36
 msgid "DAV configuration: wizard shows icons for the various providers"
-msgstr ""
+msgstr "DAV-inställning: guiden visar ikoner för de olika leverantörerna"
 
 #: whatsnew/whatsnewtranslations.cpp:37
 msgid "DAV configuration: wizard updated list of providers"
-msgstr ""
+msgstr "DAV-inställning: uppdaterad lista med leverantörer i guiden"
 
 #: whatsnew/whatsnewtranslations.cpp:54
 #, kde-format
@@ -6337,27 +6332,31 @@ msgid ""
 "Semantics are changed from a \"working schedule\" concept to a \"week "
 "schedule\" concept to accommodate non-working users"
 msgstr ""
+"Semantiken ändras från konceptet \"arbetsschema\" till \"veckoschema\" för "
+"att tillgodose användare som inte arbetar"
 
 #: whatsnew/whatsnewtranslations.cpp:55
 #, kde-format
 msgid "Initial \"New Event\" start times are consistent across all the views"
-msgstr ""
+msgstr "Inledande starttider för \"Ny händelse\" är konsekventa i alla vyer"
 
 #: whatsnew/whatsnewtranslations.cpp:56
 #, kde-format
 msgid "Improved default event calendar handling"
-msgstr ""
+msgstr "Förbättrad kalenderhantering av standardhändelser"
 
 #: whatsnew/whatsnewtranslations.cpp:57
 #, kde-format
 msgid ""
 "Incidences with a long excluded dates list no longer create huge tooltips"
 msgstr ""
+"Förekomster med en lång lista över undantagna datum skapar inte längre "
+"mycket stora verktygstips"
 
 #: whatsnew/whatsnewtranslations.cpp:58
 #, kde-format
 msgid "Fixed the organizer email address for incidences with attendees"
-msgstr ""
+msgstr "Åtgärdade organisatörens e-postadress för förekomster med deltagare"
 
 #: widgets/kdatenavigator.cpp:171
 #, kde-format

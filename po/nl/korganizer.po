@@ -19,7 +19,7 @@ msgstr ""
 "Project-Id-Version: korganizer\n"
 "Report-Msgid-Bugs-To: https://bugs.kde.org\n"
 "POT-Creation-Date: 2025-06-30 00:42+0000\n"
-"PO-Revision-Date: 2025-06-25 11:30+0200\n"
+"PO-Revision-Date: 2025-06-30 18:06+0200\n"
 "Last-Translator: Freek de Kruijf <freekdekruijf@kde.nl>\n"
 "Language-Team: \n"
 "Language: nl\n"
@@ -1298,8 +1298,8 @@ msgstr "KOrganizer &configureren…"
 msgctxt "@info"
 msgid "1 incidence was imported successfully."
 msgid_plural "%1 incidences were imported successfully."
-msgstr[0] "1 gebeurtenis is met succes geïmporteerd."
-msgstr[1] "%1 gebeurtenissen zijn met succes geïmporteerd."
+msgstr[0] "1 voorval is met succes geïmporteerd."
+msgstr[1] "%1 voorvallen zijn met succes geïmporteerd."
 
 #: actionmanager.cpp:846
 #, kde-kuit-format
@@ -2212,7 +2212,7 @@ msgid ""
 "<para>On the left sidebar, enable it in the calendar manager to see the "
 "incidence.</para>"
 msgstr ""
-"U heeft gebeurtenis in de agenda aangemaakt, die nu wordt uitgefilterd."
+"U heeft een voorval in de agenda aangemaakt, die nu wordt uitgefilterd."
 "<para>U kunt die zichtbaar maken als u die activeert in het agendabeheer in "
 "de zijbalk links.</para>"
 
@@ -2224,7 +2224,7 @@ msgid ""
 "<para>You can enable it through the calendar manager (Settings->Sidebar-"
 ">Show Calendar Manager)</para>"
 msgstr ""
-"U heeft een gebeurtenis in de agenda aangemaakt, die nu wordt uitgefilterd."
+"U heeft een voorval in de agenda aangemaakt, die nu wordt uitgefilterd."
 "<para>U kunt die activeren in het agendabeheer (Instellingen->Zijbalk-> "
 "Agendabeheer tonen)</para>"
 
@@ -6204,7 +6204,7 @@ msgid ""
 "Uncheck this box to skip incidences matching the currently selected view "
 "filter"
 msgstr ""
-"Deactiveer dit vakje om incidenten die overeenkomen met het nu geselecteerde "
+"Deactiveer dit vakje om voorvallen die overeenkomen met het nu geselecteerde "
 "weergavefilter over te slaan."
 
 #. i18n: ectx: property (whatsThis), widget (QCheckBox, unfiltered)
@@ -6214,7 +6214,7 @@ msgid ""
 "When this box is checked all incidences will be considered in the search, "
 "even those that aren't displayed according the currently selected view filter"
 msgstr ""
-"Wanneer dit vakje is geactiveerd zullen alle incidenten beschouwd worden in "
+"Wanneer dit vakje is geactiveerd zullen alle voorvallen beschouwd worden in "
 "de zoekopdracht, zelfs die die niet getoond worden volgens het nu "
 "geselecteerde weergavefilter"
 
@@ -6222,7 +6222,7 @@ msgstr ""
 #: ui/searchdialog_base.ui:331
 #, kde-format
 msgid "Include all incidences matched by view filter"
-msgstr "Neem alle incidenten mee overeenkomend met het weergavefilter"
+msgstr "Neem alle voorvallen mee overeenkomend met het weergavefilter"
 
 #. i18n: ectx: property (text), widget (QPushButton, mDayBtn)
 #: views/collectionview/quickview.ui:34
@@ -6314,86 +6314,80 @@ msgid "Add What's New menu"
 msgstr "Wat is nieuw toevoegen"
 
 #: whatsnew/whatsnewtranslations.cpp:19
-#, fuzzy
-#| msgid "Add a Date Picker dialog available from the Go menu"
 msgid "Add a Date Picker dialog available on the Go menu"
-msgstr "Een Datumkiezerdialoog toevoegen beschikbaar vanuit het menu Ga"
+msgstr "Een Datumkiezerdialoog toevoegen beschikbaar in het menu Ga"
 
 #: whatsnew/whatsnewtranslations.cpp:20
-#, fuzzy
-#| msgid ""
-#| "Agenda view move day, next X Days, work week into the Agenda tool button"
 msgid ""
 "Agenda view: consolidated the \"Day\", \"Next X Days\", \"Work Schedule\", "
 "\"Week\" time ranges into the Agenda tool button"
 msgstr ""
-"Agendaweergave verplaats dag, volgende X dagen, werkweek in de werkknop "
-"Agenda"
+"Agendaweergave: geconsolideerd de tijdreeksen \"Dag\", \"Volgende X dagen\", "
+"\"Werkplanning\", \"Week\" in de werkknop Agenda"
 
 #: whatsnew/whatsnewtranslations.cpp:21
-#, fuzzy
-#| msgid "Agenda view timelabels can switch to a 24-hour clock"
 msgid ""
 "Agenda view: added timelabels context menu option to toggle a 24-hour "
 "(military style) clock"
-msgstr "Agendaweergave tijdlabels kunnen omschakelen naar een 24-uurs klok"
+msgstr ""
+"Agendaweergave: contextmenu-option van tijdlabels toegevoegd om naar een 24-"
+"uurs klok (militaire stijl) om te schakelen"
 
 #: whatsnew/whatsnewtranslations.cpp:22
-#, fuzzy
-#| msgid "Agenda view menu adds create new Event/To-do"
 msgid "Agenda view: added context menu to create new Event or To-do"
-msgstr "Agendaweergavemenu voegt toe nieuwe gebeurtenis/taak aanmaken"
+msgstr ""
+"Agendaweergave: contextmenu toegevoegd om nieuwe gebeurtenis  of taak aan te "
+"maken"
 
 #: whatsnew/whatsnewtranslations.cpp:23
-#, fuzzy
-#| msgid "To-do view menu has options for toggling completion and reminders"
 msgid ""
 "To-do view: added context menu options for toggling completion and reminders"
 msgstr ""
-"Menu voor taakweergave heeft opties voor omschakelen van voltooien en "
-"herinneringen"
+"Taakweergave: contextmenu-opties toegevoegd voor omschakelen van voltooien "
+"en herinneringen"
 
 #: whatsnew/whatsnewtranslations.cpp:24
-#, fuzzy
-#| msgid "To-do view no longer will show the to-do list in the sidebar"
 msgid "To-do view: remove the (redundant) to-do list from the sidebar"
-msgstr "Taakweergave zal niet langer de takenlijst tonen in de zijbalk"
+msgstr "Taakweergave: de (overbodige) takenlijst uit de zijbalk verwijderen"
 
 #: whatsnew/whatsnewtranslations.cpp:25
-#, fuzzy
-#| msgid "To-do list view uses full window"
 msgid "To-do view: save/restore fullview setting"
-msgstr "Takenlijst in volledig venster"
+msgstr "Taakweergave: instelling volledige weergave opslaan/herstellen"
 
 #: whatsnew/whatsnewtranslations.cpp:26
 msgid "To-do view: save/restore flatview setting"
-msgstr ""
+msgstr "Taakweergave: instelling vlakke weergave opslaan/herstellen"
 
 #: whatsnew/whatsnewtranslations.cpp:27
 msgid ""
 "Date navigator: added an option in the Configure->Views settings for hiding "
 "the week numbers"
 msgstr ""
+"Datumnavigator: een optie toegevoegd in de instellingen Configureren-"
+">Weergave voor het verbergen van weeknummers"
 
 #: whatsnew/whatsnewtranslations.cpp:28
-#, fuzzy
-#| msgid "Week numbers select a work week when in work week mode"
 msgid ""
 "Date navigator: the \"Week numbers select a work week when in work week mode"
 "\" setting is true by default"
-msgstr "In weekmodus wordt met weeknummers een werkweek geselecteerd"
+msgstr ""
+"Datumnavigator: de instelling \"Weeknummers in een werkweek selecteren "
+"indien in modus Werkweek\" is standaard waar"
 
 #: whatsnew/whatsnewtranslations.cpp:29
 msgid "Incidence editor: remember/restore the template manager geometry"
 msgstr ""
+"Voorvalbewerker: de geometrie van de sjabloonbeheerder onthouden/herstellen"
 
 #: whatsnew/whatsnewtranslations.cpp:30
 msgid "The export calendar dialog remembers its last export folder location"
 msgstr ""
+"De dialoog agenda exporteren onthoudt zijn laatste maplocatie voor exporteren"
 
 #: whatsnew/whatsnewtranslations.cpp:31
 msgid "The import calendar dialog remembers its last import folder location"
 msgstr ""
+"De dialoog agenda exporteren onthoudt zijn laatste maplocatie voor importeren"
 
 #: whatsnew/whatsnewtranslations.cpp:32
 msgid "Get Hot New Stuff removed"
@@ -6401,24 +6395,28 @@ msgstr "Vers van de pers verwijderd"
 
 #: whatsnew/whatsnewtranslations.cpp:33
 msgid "Add calendar file: remote calendars are always read-only"
-msgstr ""
+msgstr "Agendabestand toevoegen: agenda's op afstand zijn altijd alleen-lezen"
 
 #: whatsnew/whatsnewtranslations.cpp:34
 msgid "Add calendar file: will not permit an empty file path"
-msgstr ""
+msgstr "Agendabestand toevoegen: zal geen leeg bestandspad toestaan"
 
 #: whatsnew/whatsnewtranslations.cpp:35
 msgid ""
 "DAV configuration: dialog allows seeing the account password when editing"
 msgstr ""
+"DAV-configuratie: dialoog staat toe het zien van het accountwachtwoord bij "
+"bewerken"
 
 #: whatsnew/whatsnewtranslations.cpp:36
 msgid "DAV configuration: wizard shows icons for the various providers"
 msgstr ""
+"DAV-configuratie: assistent toont pictogrammen voor de verschillende "
+"leveranciers"
 
 #: whatsnew/whatsnewtranslations.cpp:37
 msgid "DAV configuration: wizard updated list of providers"
-msgstr ""
+msgstr "DAV-configuratie: assistent heeft lijst met leveranciers bijgewerkt"
 
 #: whatsnew/whatsnewtranslations.cpp:54
 #, kde-format
@@ -6426,27 +6424,33 @@ msgid ""
 "Semantics are changed from a \"working schedule\" concept to a \"week "
 "schedule\" concept to accommodate non-working users"
 msgstr ""
+"Semantiek is gewijzigd van een concept \"werkplan\" naar een concept "
+"\"weekplan\" om niet-werkende gebruikers te accommoderen"
 
 #: whatsnew/whatsnewtranslations.cpp:55
 #, kde-format
 msgid "Initial \"New Event\" start times are consistent across all the views"
 msgstr ""
+"Initiële starttijden van \"Nieuwe gebeurtenis\" zijn consistent over alle "
+"weergaven"
 
 #: whatsnew/whatsnewtranslations.cpp:56
 #, kde-format
 msgid "Improved default event calendar handling"
-msgstr ""
+msgstr "Verbeterde behandeling van standaardagenda voor gebeurtenissen"
 
 #: whatsnew/whatsnewtranslations.cpp:57
 #, kde-format
 msgid ""
 "Incidences with a long excluded dates list no longer create huge tooltips"
 msgstr ""
+"Voorvallen met een lange lijst uitgesloten datums maken niet langer enorme "
+"tekstballonnen"
 
 #: whatsnew/whatsnewtranslations.cpp:58
 #, kde-format
 msgid "Fixed the organizer email address for incidences with attendees"
-msgstr ""
+msgstr "Het e-mailadres van de organisator voor voorvallen met deelnemers"
 
 #: widgets/kdatenavigator.cpp:171
 #, kde-format

@@ -11,14 +11,14 @@ msgstr ""
 "Project-Id-Version: korganizer\n"
 "Report-Msgid-Bugs-To: https://bugs.kde.org\n"
 "POT-Creation-Date: 2025-06-30 00:42+0000\n"
-"PO-Revision-Date: 2025-05-05 17:43+0300\n"
+"PO-Revision-Date: 2025-06-27 16:36+0300\n"
 "Last-Translator: Toms Trasuns <toms.trasuns@posteo.net>\n"
 "Language-Team: Latvian <kde-i18n-doc@kde.org>\n"
 "Language: lv\n"
 "MIME-Version: 1.0\n"
 "Content-Type: text/plain; charset=UTF-8\n"
 "Content-Transfer-Encoding: 8bit\n"
-"X-Generator: Lokalize 25.04.0\n"
+"X-Generator: Lokalize 25.04.2\n"
 "Plural-Forms: nplurals=3; plural=(n%10==1 && n%100!=11 ? 0 : n != 0 ? 1 : "
 "2);\n"
 
@@ -1227,11 +1227,10 @@ msgid "Show Date Navigator"
 msgstr "Rādīt datuma navigatoru"
 
 #: actionmanager.cpp:711
-#, fuzzy, kde-format
-#| msgid "Show icons in agenda view items"
+#, kde-format
 msgctxt "@action:inmenu"
 msgid "Show To-do List in Calendar Views"
-msgstr "Rādīt ikonas dienaskārtības skata vienumos"
+msgstr "Kalendāra skatos rādīt uzdevumu sarakstu"
 
 #: actionmanager.cpp:715
 #, kde-format
@@ -1264,12 +1263,10 @@ msgid "Manage T&ags…"
 msgstr "Pārvaldīt &birkas…"
 
 #: actionmanager.cpp:760
-#, fuzzy, kde-format
-#| msgctxt "@action:inmenu"
-#| msgid "What's &Next"
+#, kde-format
 msgctxt "@action:inmenu"
 msgid "What's new"
-msgstr "Kas &tālāk"
+msgstr "Kas jauns"
 
 #: actionmanager.cpp:765
 #, kde-format
@@ -1820,13 +1817,13 @@ msgstr "Pārslēgt atgādināšanu"
 #, kde-kuit-format
 msgctxt "@info alarm enabled"
 msgid "<message>%1</message> reminder is enabled"
-msgstr ""
+msgstr "„<message>%1</message>“ atgādinājums ir ieslēgts"
 
 #: calendarview.cpp:1369
 #, kde-kuit-format
 msgctxt "@info alarm disabled"
 msgid "<message>%1</message> reminder is disabled"
-msgstr ""
+msgstr "„<message>%1</message>“ atgādinājums ir izslēgts"
 
 #: calendarview.cpp:1400 calendarview.cpp:1454
 #, kde-format
@@ -1838,7 +1835,7 @@ msgstr "Pārslēgt uzdevuma pabeigtību"
 #, kde-kuit-format
 msgctxt "@info percentage completed"
 msgid "To-do <message>%1</message> %2 percent completed"
-msgstr ""
+msgstr "Ir pabeigti %2 procenti no uzdevuma „<message>%1</message>“"
 
 #: calendarview.cpp:1506
 #, kde-format
@@ -1971,8 +1968,7 @@ msgid "Dissociating the occurrence failed."
 msgstr "Neizdevās nošķirt atkārtošanos."
 
 #: calendarview.cpp:1818
-#, fuzzy, kde-format
-#| msgid "KOrganizer"
+#, kde-format
 msgctxt "@title:window"
 msgid "KOrganizer"
 msgstr "KOrganizer"
@@ -2598,20 +2594,16 @@ msgid "&Paste"
 msgstr "&Ielīmēt"
 
 #: koeventpopupmenu.cpp:84 koeventpopupmenu.cpp:104
-#, fuzzy, kde-format
-#| msgctxt "@action:inmenu"
-#| msgid "New Event…"
+#, kde-format
 msgctxt "@action:inmenu"
 msgid "New Event"
-msgstr "Jauns notikums…"
+msgstr "Jauns notikums"
 
 #: koeventpopupmenu.cpp:89 koeventpopupmenu.cpp:101
-#, fuzzy, kde-format
-#| msgctxt "@action:inmenu"
-#| msgid "New To-do…"
+#, kde-format
 msgctxt "@action:inmenu"
 msgid "New To-do"
-msgstr "Jauns uzdevums…"
+msgstr "Jauns uzdevums"
 
 #: koeventpopupmenu.cpp:92
 #, kde-format
@@ -6256,40 +6248,53 @@ msgid "Selected Calendars"
 msgstr "Atlasītie kalendāri"
 
 #: whatsnew/whatsnewtranslations.cpp:18
-#, fuzzy
-#| msgctxt "@action:button"
-#| msgid "Add as new calendar"
 msgid "Add What's New menu"
-msgstr "Pievienot kā jaunu kalendāru"
+msgstr "Pievienota „Kas jauns“ izvēlne"
 
 #: whatsnew/whatsnewtranslations.cpp:19
+#, fuzzy
+#| msgid "Add a Date Picker dialog available from the Go menu"
 msgid "Add a Date Picker dialog available on the Go menu"
-msgstr ""
+msgstr "„Iet“ izvēlnei ir pievienots „Datuma atlasītāja“ logs"
 
 #: whatsnew/whatsnewtranslations.cpp:20
+#, fuzzy
+#| msgid ""
+#| "Agenda view move day, next X Days, work week into the Agenda tool button"
 msgid ""
 "Agenda view: consolidated the \"Day\", \"Next X Days\", \"Work Schedule\", "
 "\"Week\" time ranges into the Agenda tool button"
 msgstr ""
+"Dienaskārtības rīka pogai ir pievienots dienaskārtības skats, pārvietošanas "
+"diena, nākamās X dienas, darba nedēļa"
 
 #: whatsnew/whatsnewtranslations.cpp:21
+#, fuzzy
+#| msgid "Agenda view timelabels can switch to a 24-hour clock"
 msgid ""
 "Agenda view: added timelabels context menu option to toggle a 24-hour "
 "(military style) clock"
-msgstr ""
+msgstr "Dienaskārtības skata laika etiķetes var pāslēgt uz 24 stundu laiku"
 
 #: whatsnew/whatsnewtranslations.cpp:22
+#, fuzzy
+#| msgid "Agenda view menu adds create new Event/To-do"
 msgid "Agenda view: added context menu to create new Event or To-do"
 msgstr ""
+"Dienaskārtības skata izvēlnes pievienošana izveido jaunu notikumu/uzdevumu"
 
 #: whatsnew/whatsnewtranslations.cpp:23
+#, fuzzy
+#| msgid "To-do view menu has options for toggling completion and reminders"
 msgid ""
 "To-do view: added context menu options for toggling completion and reminders"
-msgstr ""
+msgstr "Uzdevumu skata izvēlnei ir opcija pārslēgt pabeigtību un atgādinājumus"
 
 #: whatsnew/whatsnewtranslations.cpp:24
+#, fuzzy
+#| msgid "To-do view no longer will show the to-do list in the sidebar"
 msgid "To-do view: remove the (redundant) to-do list from the sidebar"
-msgstr ""
+msgstr "Uzdevumu skats vairs sānu joslā nerādīs uzdevumu sarakstu"
 
 #: whatsnew/whatsnewtranslations.cpp:25
 #, fuzzy
@@ -6328,10 +6333,8 @@ msgid "The import calendar dialog remembers its last import folder location"
 msgstr ""
 
 #: whatsnew/whatsnewtranslations.cpp:32
-#, fuzzy
-#| msgid "Get &Hot New Stuff..."
 msgid "Get Hot New Stuff removed"
-msgstr "Ielādēt &jaunas lietas..."
+msgstr "Noņemts „iegūt jaunas lietas“"
 
 #: whatsnew/whatsnewtranslations.cpp:33
 msgid "Add calendar file: remote calendars are always read-only"

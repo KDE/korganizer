@@ -18,7 +18,7 @@ msgstr ""
 "Project-Id-Version: korganizer\n"
 "Report-Msgid-Bugs-To: https://bugs.kde.org\n"
 "POT-Creation-Date: 2025-06-30 00:42+0000\n"
-"PO-Revision-Date: 2025-06-26 00:36+0100\n"
+"PO-Revision-Date: 2025-06-30 23:56+0100\n"
 "Last-Translator: Eloy Cuadra <ecuadra@eloihr.net>\n"
 "Language-Team: Spanish <kde-l10n-es@kde.org>\n"
 "Language: es\n"
@@ -6381,118 +6381,123 @@ msgid "Add What's New menu"
 msgstr "Añadir el menú Novedades"
 
 #: whatsnew/whatsnewtranslations.cpp:19
-#, fuzzy
-#| msgid "Add a Date Picker dialog available from the Go menu"
 msgid "Add a Date Picker dialog available on the Go menu"
-msgstr "Añadir un diálogo de selección de fecha disponible en el menú Ir"
+msgstr "Añadir un diálogo de selección de fecha disponible en el menú Ir."
 
 #: whatsnew/whatsnewtranslations.cpp:20
-#, fuzzy
-#| msgid ""
-#| "Agenda view move day, next X Days, work week into the Agenda tool button"
 msgid ""
 "Agenda view: consolidated the \"Day\", \"Next X Days\", \"Work Schedule\", "
 "\"Week\" time ranges into the Agenda tool button"
 msgstr ""
-"Vista de agenda: mover día, siguientes X días y semana laboral en el botón "
-"de herramientas de la agenda"
+"Vista de agenda: se han consolidado los intervalos de tiempo «Día», "
+"«Próximos X días», «Horario de trabajo» y «Semana» en el botón de la "
+"herramienta Agenda."
 
 #: whatsnew/whatsnewtranslations.cpp:21
-#, fuzzy
-#| msgid "Agenda view timelabels can switch to a 24-hour clock"
 msgid ""
 "Agenda view: added timelabels context menu option to toggle a 24-hour "
 "(military style) clock"
 msgstr ""
-"Vista de agenda: las etiquetas de hora pueden cambiar a un reloj de 24 horas"
+"Vista de agenda: se ha añadido la opción de menú de contexto de etiquetas de "
+"tiempo para cambiar a un reloj de 24 horas (de estilo militar)."
 
 #: whatsnew/whatsnewtranslations.cpp:22
-#, fuzzy
-#| msgid "Agenda view menu adds create new Event/To-do"
 msgid "Agenda view: added context menu to create new Event or To-do"
 msgstr ""
-"Vista de agenda: se ha añadido al menú la opción de crear nuevo evento o "
-"tarea pendiente"
+"Vista de agenda: se ha añadido un menú de contexto para crear un nuevo "
+"evento o tarea pendiente."
 
 #: whatsnew/whatsnewtranslations.cpp:23
-#, fuzzy
-#| msgid "To-do view menu has options for toggling completion and reminders"
 msgid ""
 "To-do view: added context menu options for toggling completion and reminders"
 msgstr ""
-"Vista de tareas pendientes: el menú tiene opciones para conmutar el estado "
-"de compleción y los recordatorios"
+"Vista de tareas pendientes: se han añadido opciones al menú de contexto para "
+"conmutar el estado de compleción y los recordatorios."
 
 #: whatsnew/whatsnewtranslations.cpp:24
-#, fuzzy
-#| msgid "To-do view no longer will show the to-do list in the sidebar"
 msgid "To-do view: remove the (redundant) to-do list from the sidebar"
 msgstr ""
-"Vista de tareas pendientes: ya no se muestra la lista de tareas pendientes "
-"en la barra lateral"
+"Vista de tareas pendientes: se ha eliminado la (redundante) lista de tareas "
+"pendientes de la barra lateral."
 
 #: whatsnew/whatsnewtranslations.cpp:25
-#, fuzzy
-#| msgid "To-do list view uses full window"
 msgid "To-do view: save/restore fullview setting"
-msgstr "La vista de la lista de tareas pendientes usa la pantalla completa"
+msgstr ""
+"Vista de tareas pendientes: guardar/restaurar la configuración de vista "
+"completa."
 
 #: whatsnew/whatsnewtranslations.cpp:26
 msgid "To-do view: save/restore flatview setting"
 msgstr ""
+"Vista de tareas pendientes: guardar/restaurar la configuración de vista "
+"plana."
 
 #: whatsnew/whatsnewtranslations.cpp:27
 msgid ""
 "Date navigator: added an option in the Configure->Views settings for hiding "
 "the week numbers"
 msgstr ""
+"Navegador de fechas: se ha añadido una opción a las preferencias de "
+"«Configurar->Vistas» para ocultar los números de las semanas."
 
 #: whatsnew/whatsnewtranslations.cpp:28
-#, fuzzy
-#| msgid "Week numbers select a work week when in work week mode"
 msgid ""
 "Date navigator: the \"Week numbers select a work week when in work week mode"
 "\" setting is true by default"
 msgstr ""
-"Los números de semana seleccionan una semana de trabajo en el modo de "
-"trabajo semanal"
+"Navegador de fechas: el ajuste «Los números de semana seleccionan una semana "
+"de trabajo en el modo de trabajo semanal» es cierto de forma predeterminada."
 
 #: whatsnew/whatsnewtranslations.cpp:29
 msgid "Incidence editor: remember/restore the template manager geometry"
 msgstr ""
+"Editor de incidencias: recordar/restaurar la geometría del gestor de "
+"plantillas."
 
 #: whatsnew/whatsnewtranslations.cpp:30
 msgid "The export calendar dialog remembers its last export folder location"
 msgstr ""
+"El diálogo de exportación de calendario recuerda la ubicación de la última "
+"carpeta de exportación usada."
 
 #: whatsnew/whatsnewtranslations.cpp:31
 msgid "The import calendar dialog remembers its last import folder location"
 msgstr ""
+"El diálogo de importación de calendario recuerda la ubicación de la última "
+"carpeta de importación usada."
 
 #: whatsnew/whatsnewtranslations.cpp:32
 msgid "Get Hot New Stuff removed"
-msgstr "Se ha eliminado la opción de obtener novedades"
+msgstr "Se ha eliminado la opción de obtener novedades."
 
 #: whatsnew/whatsnewtranslations.cpp:33
 msgid "Add calendar file: remote calendars are always read-only"
 msgstr ""
+"Añadir archivo de calendario: los calendarios remotos son siempre de solo "
+"lectura."
 
 #: whatsnew/whatsnewtranslations.cpp:34
 msgid "Add calendar file: will not permit an empty file path"
-msgstr ""
+msgstr "Añadir archivo de calendario: no se permite una ruta de archivo vacía."
 
 #: whatsnew/whatsnewtranslations.cpp:35
 msgid ""
 "DAV configuration: dialog allows seeing the account password when editing"
 msgstr ""
+"Configuración de DAV: el diálogo permite ver la contraseña de la cuenta "
+"cuando se modifica."
 
 #: whatsnew/whatsnewtranslations.cpp:36
 msgid "DAV configuration: wizard shows icons for the various providers"
 msgstr ""
+"Configuración de DAV: el asistente muestra iconos para los distintos "
+"proveedores."
 
 #: whatsnew/whatsnewtranslations.cpp:37
 msgid "DAV configuration: wizard updated list of providers"
 msgstr ""
+"Configuración de DAV: se ha actualizado la lista de proveedores del "
+"asistente."
 
 #: whatsnew/whatsnewtranslations.cpp:54
 #, kde-format
@@ -6500,27 +6505,35 @@ msgid ""
 "Semantics are changed from a \"working schedule\" concept to a \"week "
 "schedule\" concept to accommodate non-working users"
 msgstr ""
+"Se ha cambiado la semántica del concepto de «horario laboral» a la de "
+"«horario semanal» para adaptarse a los usuarios que no trabajan."
 
 #: whatsnew/whatsnewtranslations.cpp:55
 #, kde-format
 msgid "Initial \"New Event\" start times are consistent across all the views"
 msgstr ""
+"Las horas de inicio predeterminadas de «Nuevo evento» son consistentes en "
+"todas las vistas."
 
 #: whatsnew/whatsnewtranslations.cpp:56
 #, kde-format
 msgid "Improved default event calendar handling"
-msgstr ""
+msgstr "Se ha mejorado la gestión del calendario de eventos predeterminado."
 
 #: whatsnew/whatsnewtranslations.cpp:57
 #, kde-format
 msgid ""
 "Incidences with a long excluded dates list no longer create huge tooltips"
 msgstr ""
+"Las incidencias con una larga lista de fechas excluidas ya no generan "
+"enormes ayudas emergentes."
 
 #: whatsnew/whatsnewtranslations.cpp:58
 #, kde-format
 msgid "Fixed the organizer email address for incidences with attendees"
 msgstr ""
+"Se ha corregido la dirección de correo electrónico del organizador para "
+"incidencias con asistentes."
 
 #: widgets/kdatenavigator.cpp:171
 #, kde-format
