@@ -5913,10 +5913,8 @@ msgid "To-do view: remove the (redundant) to-do list from the sidebar"
 msgstr ""
 
 #: whatsnew/whatsnewtranslations.cpp:25
-#, fuzzy
-#| msgid "To-do list view uses full window"
 msgid "To-do view: save/restore fullview setting"
-msgstr "待办列表视图使用整个窗口"
+msgstr ""
 
 #: whatsnew/whatsnewtranslations.cpp:26
 msgid "To-do view: save/restore flatview setting"
@@ -5929,12 +5927,10 @@ msgid ""
 msgstr ""
 
 #: whatsnew/whatsnewtranslations.cpp:28
-#, fuzzy
-#| msgid "Week numbers select a work week when in work week mode"
 msgid ""
 "Date navigator: the \"Week numbers select a work week when in work week mode"
 "\" setting is true by default"
-msgstr "在工作周模式中使用周号选择工作周"
+msgstr ""
 
 #: whatsnew/whatsnewtranslations.cpp:29
 msgid "Incidence editor: remember/restore the template manager geometry"

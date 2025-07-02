@@ -15,7 +15,7 @@ msgstr ""
 "Project-Id-Version: korganizer\n"
 "Report-Msgid-Bugs-To: https://bugs.kde.org\n"
 "POT-Creation-Date: 2025-06-30 00:42+0000\n"
-"PO-Revision-Date: 2025-06-19 22:23+0900\n"
+"PO-Revision-Date: 2025-07-01 20:29+0900\n"
 "Last-Translator: Kisaragi Hiu <mail@kisaragi-hiu.com>\n"
 "Language-Team: Traditional Chinese <zh-l10n@lists.slat.org>\n"
 "Language: zh_TW\n"
@@ -1914,8 +1914,7 @@ msgid "Dissociating the occurrence failed."
 msgstr "分離此事件時失敗。"
 
 #: calendarview.cpp:1818
-#, fuzzy, kde-format
-#| msgid "KOrganizer"
+#, kde-format
 msgctxt "@title:window"
 msgid "KOrganizer"
 msgstr "KOrganizer"
@@ -5973,52 +5972,39 @@ msgid "Add What's New menu"
 msgstr "新增新功能選單"
 
 #: whatsnew/whatsnewtranslations.cpp:19
-#, fuzzy
-#| msgid "Add a Date Picker dialog available from the Go menu"
 msgid "Add a Date Picker dialog available on the Go menu"
 msgstr "新增日期挑選對話框，可從「前往」選單使用"
 
 #: whatsnew/whatsnewtranslations.cpp:20
-#, fuzzy
-#| msgid ""
-#| "Agenda view move day, next X Days, work week into the Agenda tool button"
 msgid ""
 "Agenda view: consolidated the \"Day\", \"Next X Days\", \"Work Schedule\", "
 "\"Week\" time ranges into the Agenda tool button"
-msgstr "行程檢視：將單日、接下來 X 天、工作週移動到行程工具按鈕內"
+msgstr ""
+"行程檢視：將「單日」、「接下來 X 天」、「工作行程」、「單週」時間範圍移動到行"
+"程工具按鈕內"
 
 #: whatsnew/whatsnewtranslations.cpp:21
-#, fuzzy
-#| msgid "Agenda view timelabels can switch to a 24-hour clock"
 msgid ""
 "Agenda view: added timelabels context menu option to toggle a 24-hour "
 "(military style) clock"
-msgstr "行程檢視：時間標籤可以切換成 24 小時制時鐘"
+msgstr "行程檢視：新增時間標籤內文選單選項來切換使用 24 小時制時鐘"
 
 #: whatsnew/whatsnewtranslations.cpp:22
-#, fuzzy
-#| msgid "Agenda view menu adds create new Event/To-do"
 msgid "Agenda view: added context menu to create new Event or To-do"
-msgstr "行程檢視：選單加入建立新事件/待辦事項的選項"
+msgstr "行程檢視：新增建立新事件/待辦事項的內文選單"
 
 #: whatsnew/whatsnewtranslations.cpp:23
-#, fuzzy
-#| msgid "To-do view menu has options for toggling completion and reminders"
 msgid ""
 "To-do view: added context menu options for toggling completion and reminders"
-msgstr "待辦事項檢視：選單現在有選項切換是否已完成與提醒"
+msgstr "待辦事項檢視：新增內文選單選項來切換是否已完成與提醒"
 
 #: whatsnew/whatsnewtranslations.cpp:24
-#, fuzzy
-#| msgid "To-do view no longer will show the to-do list in the sidebar"
 msgid "To-do view: remove the (redundant) to-do list from the sidebar"
-msgstr "待辦事項檢視：不再將待辦事項顯示於側邊欄"
+msgstr "待辦事項檢視：從側邊欄移除（重複顯示的）待辦事項清單"
 
 #: whatsnew/whatsnewtranslations.cpp:25
-#, fuzzy
-#| msgid "To-do list view uses full window"
 msgid "To-do view: save/restore fullview setting"
-msgstr "待辦事項檢視使用整個視窗"
+msgstr "待辦事項檢視：儲存/還原完整檢視設定值"
 
 #: whatsnew/whatsnewtranslations.cpp:26
 msgid "To-do view: save/restore flatview setting"
@@ -6031,12 +6017,10 @@ msgid ""
 msgstr ""
 
 #: whatsnew/whatsnewtranslations.cpp:28
-#, fuzzy
-#| msgid "Week numbers select a work week when in work week mode"
 msgid ""
 "Date navigator: the \"Week numbers select a work week when in work week mode"
 "\" setting is true by default"
-msgstr "在工作週模式中，使用週編號選取工作週"
+msgstr ""
 
 #: whatsnew/whatsnewtranslations.cpp:29
 msgid "Incidence editor: remember/restore the template manager geometry"

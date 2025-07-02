@@ -191,7 +191,7 @@
 >, Personal Information Manager). U kunt hierin afspraken bijhouden, een takenlijst maken en journalen bijhouden. &korganizer; herinnert u aan openstaande taken, helpt u voorvallen, ervaringen en gedachten te onthouden, en uw afspraken na te komen.</para>
 
 <para
->&korganizer; is niet alleen uw persoonlijke agenda, maar kan u ook helpen in de contacten met uw collega's en vrienden. Met &korganizer; kunt u iedereen die een e-mailadres heeft uitnodigen voor een afspraak, en de antwoorden verwerken, een agenda delen (met behulp van een groupware server, of gewoon een bestand over het netwerk), en afspraken delen (&eg; het schema van een kampioenschap of een conferentie), gebruikmakend van het raamwerk voor "Vers van de pers". &korganizer; is gebaseerd op open standaarden, en werkt samen met veel verschillende "group scheduling" servers (groepsplanning). Hiermee krijgt u controle over uw informatie, en kunt u de beste oplossingen kiezen. </para>
+>&korganizer; is niet alleen uw persoonlijke agenda, maar kan u ook helpen in de contacten met uw collega's en vrienden. Met &korganizer; kunt u iedereen die een e-mailadres heeft uitnodigen voor een afspraak, en de antwoorden verwerken, een agenda delen (met behulp van een groupware server of gewoon een bestand over het netwerk). &korganizer; is gebaseerd op open standaarden en werkt samen met veel verschillende "group scheduling" servers (groepsplanning). Hiermee krijgt u controle over uw informatie, en kunt u de beste oplossingen kiezen. </para>
 
 <para
 >&korganizer; is ook een onderdeel van &kontact; voor agenda, journaal en takenlijst. Hierdoor is het een geïntegreerde oplossing voor wat nodig is voor uw communicatie- en informatiebeheer: e-mail, notities, contactenbeheer, nieuwslezer, en "news feed reader". Zelfs als u het niet samen met &kontact; gebruikt, is &korganizer; geïntegreerd in de andere <acronym
@@ -572,7 +572,7 @@
 >U kunt uw gegevens exporteren als een iCalendar- of vCalendar-bestand. Deze bestanden worden ondersteund door de meeste agendaprogramma's. </para>
 
 <para
->In dit hoofdstuk leggen we uit hoe u uw agenda kunt beheren, gebruik makend van de gegevensbronnen, afspraken importeren en exporteren, en het schema "Vers van de pers".</para>
+>In dit hoofdstuk leggen we uit hoe u uw agendahulpbronnen kunt beheren evenals gebruik maken van de import- en exportacties.</para>
 
 <sect1 id="managing-resources">
 <title
@@ -817,9 +817,6 @@
 
 <para
 >Een goed moment om dit te doen is bijvoorbeeld als u een vCalendar met wat ingangen ontvangt via e-mail, of als u uw agenda vanuit een ander programma wilt importeren. In het laatste geval moet u eerst in dat programma de agendagegevens exporteren naar een van de bovenstaande formaten, of een hulpmiddel gebruiken om die vanuit het formaat van dat programma te converteren.</para>
-
-<!--Get Hot New Stuff
-store.kde.org KOrganizer Calendars-->
 </sect2>
 
 <sect2 id="managing-export">
@@ -905,61 +902,7 @@ store.kde.org KOrganizer Calendars-->
 >, in plaats van ze te verwijderen. </para>
 
 </sect2>
-
 </sect1>
-<!-- only import ??-->
-<sect1 id="managing-get-hot-new-stuff">
-<title
->Downloaden met "Vers van de pers"</title>
-
-<!--para
->If you have a calendar containing events of public interest, such as
-a conference or championship schedule, you can upload it (or check if there
-is something worth downloading) using the
-<ulink url="http://ghns.berlios.de/"
->get hot new stuff framework</ulink
->.
-</para-->
-
-<para
->U krijgt de dialoog <guilabel
->Vers van de pers</guilabel
->, waarin een lijst van agenda's voor download wordt aangeboden, door te klikken in het menu op <menuchoice
-><guimenu
->Bestand</guimenu
-><guisubmenu
->Importeren</guisubmenu
-> <guimenuitem
->Vers van de pers...</guimenuitem
-></menuchoice
->. Als u een van de agenda's selecteert, krijgt u een dialoog te zien van de afspraken die daarin staan. Die kunt u in uw standaard agenda invoegen door te klikken op <guilabel
->Invoegen</guilabel
->.</para>
-
-<!--para>
-To open the <guilabel
->Upload Hot New Stuff</guilabel
-> dialog, which allow you
-to export calendars containing events which may be useful to other people, such
-as a conference program, a list of holidays, special events, &etc;,
-choose the <menuchoice
-><guimenu
->File</guimenu
-><guisubmenu
->Export</guisubmenu>
-<guimenuitem
->Upload Hot New Stuff...</guimenuitem
-></menuchoice
->.</para>
-
-<para
->Before uploading the events, make sure you have
-<link linkend="filters-view"
->filtered out</link
-> all unrelated data.</para-->
-
-</sect1>
-
 </chapter>
 
 <chapter id="chapter-views-and-filters"
@@ -4118,27 +4061,6 @@ format="PNG"/></imageobject
 </listitem>
 </varlistentry>
 
-<varlistentry id="menu-file-import-ghns">
-<term
-><menuchoice
-><guimenu
->Bestand</guimenu
-> <guisubmenu
->Importeren</guisubmenu
-> <guimenuitem
->Vers van de pers......</guimenuitem
-> </menuchoice
-></term>
-<listitem
-><para
->Hiermee opent u de dialoog voor het <guilabel
->Vers van de pers</guilabel
->, waarin u een lijst van agenda's krijgt die u kunt ophalen. De afspraken daarin kunnen aan uw agenda worden toegevoegd.</para>
-<para
->Meer informatie hierover vindt u in <xref linkend="managing-get-hot-new-stuff"/>.</para>
-</listitem>
-</varlistentry>
-
 <varlistentry id="menu-file-export-icalendar">
 <term
 ><menuchoice
@@ -4157,31 +4079,6 @@ format="PNG"/></imageobject
 >Meer informatie hierover vindt u in <xref linkend="managing-export"/>.</para>
 </listitem>
 </varlistentry>
-
-<!--not in 4.6.0
-varlistentry id="menu-file-export-ghns">
-<term
-><menuchoice>
-<guimenu
->File</guimenu>
-<guisubmenu
->Export</guisubmenu>
-<guimenuitem
->Upload Hot New Stuff...</guimenuitem>
-</menuchoice
-></term>
-<listitem
-><para
->This action will open the <guilabel
->Upload Hot New Stuff</guilabel>
-dialog, which allow you to export calendars containing events which may be
-useful to other people, such as a conference program, a list of holidays,
-special events, &etc;</para>
-<para
->For more information about this action, please refer to
-<xref linkend="managing-get-hot-new-stuff"/>.</para>
-</listitem>
-</varlistentry-->
 
 <varlistentry id="menu-file-archive-old">
 <term
