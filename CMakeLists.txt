@@ -3,15 +3,15 @@
 
 cmake_minimum_required(VERSION 3.16 FATAL_ERROR)
 # Do NOT add quote
-set(KDEPIM_DEV_VERSION alpha)
+set(KDEPIM_DEV_VERSION beta)
 
 # add an extra space
 if(DEFINED KDEPIM_DEV_VERSION)
     set(KDEPIM_DEV_VERSION " ${KDEPIM_DEV_VERSION}")
 endif()
 
-set(PIM_VERSION "6.4.40")
-set(RELEASE_SERVICE_VERSION "25.07.40")
+set(PIM_VERSION "6.4.80")
+set(RELEASE_SERVICE_VERSION "25.07.80")
 
 # Update it for each release
 set(KORGANIZER_RELEASE_VERSION_DATE "25.07.10") # yy.MM.dd
