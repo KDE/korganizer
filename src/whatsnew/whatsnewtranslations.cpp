@@ -27,6 +27,7 @@ QList<KLazyLocalizedString> WhatsNewTranslations::lastNewFeatures() const
         kli18n("Date navigator: added an option in the Configure->Views settings for hiding the week numbers"),
         kli18n("Date navigator: the \"Week numbers select a work week when in work week mode\" setting is true by default"),
         kli18n("Incidence editor: remember/restore the template manager geometry"),
+        kli18n("Incidence editor: support drag-and-drop attachments"),
         kli18n("The export calendar dialog remembers its last export folder location"),
         kli18n("The import calendar dialog remembers its last import folder location"),
         kli18n("Get Hot New Stuff removed"),
