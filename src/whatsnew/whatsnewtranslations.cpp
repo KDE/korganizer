@@ -57,6 +57,7 @@ QList<PimCommon::WhatsNewInfo> WhatsNewTranslations::createWhatsNewInfo() const
                            i18n("Improved default event calendar handling")});
         info65.setBugFixings({i18n("Incidences with a long excluded dates list no longer create huge tooltips"),
                               i18n("Fixed the organizer email address for incidences with attendees")});
+        listInfo.append(std::move(info65));
     }
 
     return listInfo;
