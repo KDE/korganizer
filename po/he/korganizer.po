@@ -17,7 +17,7 @@ msgid ""
 msgstr ""
 "Project-Id-Version: korganizer\n"
 "Report-Msgid-Bugs-To: https://bugs.kde.org\n"
-"POT-Creation-Date: 2025-06-30 00:42+0000\n"
+"POT-Creation-Date: 2025-07-09 00:44+0000\n"
 "PO-Revision-Date: 2025-06-30 10:11+0300\n"
 "Last-Translator: Yaron Shahrabani <sh.yaron@gmail.com>\n"
 "Language-Team: צוות התרגום של KDE ישראל\n"
@@ -6202,39 +6202,43 @@ msgid "Incidence editor: remember/restore the template manager geometry"
 msgstr "עורך מופעים: שמירת/שחזור צורת מנהל התבניות"
 
 #: whatsnew/whatsnewtranslations.cpp:30
+msgid "Incidence editor: support drag-and-drop attachments"
+msgstr ""
+
+#: whatsnew/whatsnewtranslations.cpp:31
 msgid "The export calendar dialog remembers its last export folder location"
 msgstr "חלונית ייצוא לוח השנה זוכרת את מקום התיקייה האחרונה שיוצאה"
 
-#: whatsnew/whatsnewtranslations.cpp:31
+#: whatsnew/whatsnewtranslations.cpp:32
 msgid "The import calendar dialog remembers its last import folder location"
 msgstr "חלונית ייבוא לוח השנה זוכרת את מקום התיקייה האחרונה שיובאה"
 
-#: whatsnew/whatsnewtranslations.cpp:32
+#: whatsnew/whatsnewtranslations.cpp:33
 msgid "Get Hot New Stuff removed"
 msgstr "הסרת דברים חדשים ולוהטים"
 
-#: whatsnew/whatsnewtranslations.cpp:33
+#: whatsnew/whatsnewtranslations.cpp:34
 msgid "Add calendar file: remote calendars are always read-only"
 msgstr "הוספת קובץ לוח שנה: לוחות שנה מרוחקים הם תמיד לקריאה בלבד"
 
-#: whatsnew/whatsnewtranslations.cpp:34
+#: whatsnew/whatsnewtranslations.cpp:35
 msgid "Add calendar file: will not permit an empty file path"
 msgstr "הוספת קובץ לוח שנה: לא יורשה נתיב קובץ ריק"
 
-#: whatsnew/whatsnewtranslations.cpp:35
+#: whatsnew/whatsnewtranslations.cpp:36
 msgid ""
 "DAV configuration: dialog allows seeing the account password when editing"
 msgstr "הגדרות DAV: החלונית מאפשרת לראות את סיסמת החשבון בזמן העריכה"
 
-#: whatsnew/whatsnewtranslations.cpp:36
+#: whatsnew/whatsnewtranslations.cpp:37
 msgid "DAV configuration: wizard shows icons for the various providers"
 msgstr "הגדרות DAV: האשף מציג סמלים לספקים השונים"
 
-#: whatsnew/whatsnewtranslations.cpp:37
+#: whatsnew/whatsnewtranslations.cpp:38
 msgid "DAV configuration: wizard updated list of providers"
 msgstr "הגדרות DAV: רשימת הספקים באשף עודכנה"
 
-#: whatsnew/whatsnewtranslations.cpp:54
+#: whatsnew/whatsnewtranslations.cpp:55
 #, kde-format
 msgid ""
 "Semantics are changed from a \"working schedule\" concept to a \"week "
@@ -6243,23 +6247,23 @@ msgstr ""
 "הסמנטיקה הוחלפה מעקרון של „לו״ז עבודה” ל„לו״ז שבועי” כדי להתאים למשתמשים "
 "שאינם עובדים"
 
-#: whatsnew/whatsnewtranslations.cpp:55
+#: whatsnew/whatsnewtranslations.cpp:56
 #, kde-format
 msgid "Initial \"New Event\" start times are consistent across all the views"
 msgstr "זמני התחלת „אירוע חדש” עקביים על פני כל התצוגות"
 
-#: whatsnew/whatsnewtranslations.cpp:56
+#: whatsnew/whatsnewtranslations.cpp:57
 #, kde-format
 msgid "Improved default event calendar handling"
 msgstr "טיפול משפול בלוח שנה כברירת מחדל לאירועים"
 
-#: whatsnew/whatsnewtranslations.cpp:57
+#: whatsnew/whatsnewtranslations.cpp:58
 #, kde-format
 msgid ""
 "Incidences with a long excluded dates list no longer create huge tooltips"
 msgstr "מופעים עם תאריכים מוחרגים ממושכים לא יוצרים עוד חלוניות צצות ענקיות"
 
-#: whatsnew/whatsnewtranslations.cpp:58
+#: whatsnew/whatsnewtranslations.cpp:59
 #, kde-format
 msgid "Fixed the organizer email address for incidences with attendees"
 msgstr "כתובת הדוא״ל של המארגן/ת תוקנה במופעים עם משתתפים"
