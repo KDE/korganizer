@@ -16,7 +16,7 @@ msgstr ""
 "Project-Id-Version: korganizer\n"
 "Report-Msgid-Bugs-To: https://bugs.kde.org\n"
 "POT-Creation-Date: 2025-07-09 00:44+0000\n"
-"PO-Revision-Date: 2025-07-07 18:31+0200\n"
+"PO-Revision-Date: 2025-07-09 14:12+0200\n"
 "Last-Translator: Luigi Toscano <luigi.toscano@tiscali.it>\n"
 "Language-Team: Italian <kde-i18n-it@kde.org>\n"
 "Language: it\n"
@@ -6415,6 +6415,8 @@ msgstr ""
 #: whatsnew/whatsnewtranslations.cpp:30
 msgid "Incidence editor: support drag-and-drop attachments"
 msgstr ""
+"Editor delle occorrenze: supporto per il trascinamento e rilascio degli "
+"allegati"
 
 #: whatsnew/whatsnewtranslations.cpp:31
 msgid "The export calendar dialog remembers its last export folder location"
