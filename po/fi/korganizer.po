@@ -17,7 +17,7 @@ msgstr ""
 "Project-Id-Version: korganizer\n"
 "Report-Msgid-Bugs-To: https://bugs.kde.org\n"
 "POT-Creation-Date: 2025-07-09 00:44+0000\n"
-"PO-Revision-Date: 2025-05-28 18:15+0300\n"
+"PO-Revision-Date: 2025-07-07 21:16+0300\n"
 "Last-Translator: Tommi Nieminen <translator@legisign.org>\n"
 "Language-Team: Finnish <kde-i18n-doc@kde.org>\n"
 "Language: fi\n"
@@ -1266,12 +1266,10 @@ msgid "Manage T&ags…"
 msgstr "&Luokitusten hallinta…"
 
 #: actionmanager.cpp:760
-#, fuzzy, kde-format
-#| msgctxt "@action:inmenu"
-#| msgid "What's &Next"
+#, kde-format
 msgctxt "@action:inmenu"
 msgid "What's new"
-msgstr "&Mitä seuraavaksi"
+msgstr "Mitä uutta"
 
 #: actionmanager.cpp:765
 #, kde-format
@@ -1817,13 +1815,13 @@ msgstr "Vaihda muistutuksen tilaa"
 #, kde-kuit-format
 msgctxt "@info alarm enabled"
 msgid "<message>%1</message> reminder is enabled"
-msgstr ""
+msgstr "<message>%1</message>: muistutus on käytössä"
 
 #: calendarview.cpp:1369
 #, kde-kuit-format
 msgctxt "@info alarm disabled"
 msgid "<message>%1</message> reminder is disabled"
-msgstr ""
+msgstr "<message>%1</message>: muistutus ei ole käytössä"
 
 #: calendarview.cpp:1400 calendarview.cpp:1454
 #, kde-format
@@ -1835,7 +1833,7 @@ msgstr "Vaihda tehtävän valmis-tilaa"
 #, kde-kuit-format
 msgctxt "@info percentage completed"
 msgid "To-do <message>%1</message> %2 percent completed"
-msgstr ""
+msgstr "Tehtävästä ”<message>%1</message>” %2 % valmiina"
 
 #: calendarview.cpp:1506
 #, kde-format
@@ -6230,11 +6228,8 @@ msgid "Selected Calendars"
 msgstr "Valitut kalenterit"
 
 #: whatsnew/whatsnewtranslations.cpp:18
-#, fuzzy
-#| msgctxt "@action:button"
-#| msgid "Add as new calendar"
 msgid "Add What's New menu"
-msgstr "Lisää uudeksi kalenteriksi"
+msgstr "Lisää Mitä uutta -valikko"
 
 #: whatsnew/whatsnewtranslations.cpp:19
 msgid "Add a Date Picker dialog available on the Go menu"
@@ -6306,10 +6301,8 @@ msgid "The import calendar dialog remembers its last import folder location"
 msgstr ""
 
 #: whatsnew/whatsnewtranslations.cpp:33
-#, fuzzy
-#| msgid "Get &Hot New Stuff..."
 msgid "Get Hot New Stuff removed"
-msgstr "Hae &verkosta…"
+msgstr "”Hae verkosta” poistettu"
 
 #: whatsnew/whatsnewtranslations.cpp:34
 msgid "Add calendar file: remote calendars are always read-only"
