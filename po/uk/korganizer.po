@@ -12,7 +12,7 @@ msgstr ""
 "Project-Id-Version: korganizer\n"
 "Report-Msgid-Bugs-To: https://bugs.kde.org\n"
 "POT-Creation-Date: 2025-07-09 02:40+0000\n"
-"PO-Revision-Date: 2025-06-30 16:37+0300\n"
+"PO-Revision-Date: 2025-07-12 20:05+0300\n"
 "Last-Translator: Yuri Chornoivan <yurchor@ukr.net>\n"
 "Language-Team: Ukrainian <trans-uk@lists.fedoraproject.org>\n"
 "Language: uk\n"
@@ -6414,7 +6414,7 @@ msgstr ""
 
 #: whatsnew/whatsnewtranslations.cpp:30
 msgid "Incidence editor: support drag-and-drop attachments"
-msgstr ""
+msgstr "Редактор зустрічей: підтримка перетягування зі скиданням для долучень"
 
 #: whatsnew/whatsnewtranslations.cpp:31
 msgid "The export calendar dialog remembers its last export folder location"
