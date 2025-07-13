@@ -736,11 +736,11 @@ void CalendarView::checkForFilteredChange(const Akonadi::Item &item)
     if (filter && !filter->filterIncidence(incidence)) {
         // Incidence is filtered and thus not shown in the view, tell the
         // user so that he isn't surprised if his new event doesn't show up
-        mMessageWidget->setText(xi18nc("@info",
-                                       "The item <resource>%1</resource> is filtered by your current filter rules, "
-                                       "so it will be hidden and not appear in the view.",
-                                       incidence->summary()));
-        mMessageWidget->show();
+        const auto message = xi18nc("@info",
+                                    "The item <resource>%1</resource> is filtered by your current filter rules, "
+                                    "so it will be hidden and not appear in the view.",
+                                    incidence->summary());
+        showMessage(message, KMessageWidget::Information);
     }
 }
 
@@ -2794,10 +2794,7 @@ void CalendarView::handleIncidenceCreated(const Akonadi::Item &item)
                              "You created an incidence in a calendar that is currently filtered out."
                              "<para>You can enable it through the calendar manager (Settings->Sidebar->Show Calendar Manager)</para>");
         }
-
-        mMessageWidget->setText(message);
-        mMessageWidget->setMessageType(KMessageWidget::Information);
-        mMessageWidget->show();
+        showMessage(message, KMessageWidget::Information);
     }
 }
 
