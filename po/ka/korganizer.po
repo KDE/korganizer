@@ -1506,7 +1506,7 @@ msgstr "%1 (გათიშულია)"
 #, kde-format
 msgctxt "@item this is the default calendar"
 msgid "%1 (Default)"
-msgstr "%1 (ნაგულისხმები)"
+msgstr "%1 (ნაგულისხმევი)"
 
 #: akonadicollectionview.cpp:385
 #, kde-format
@@ -3992,7 +3992,7 @@ msgstr ""
 #, kde-format
 msgctxt "@title:tab"
 msgid "Default Values"
-msgstr "ნაგულისხმები მნიშვნელობები"
+msgstr "ნაგულისხმევი მნიშვნელობები"
 
 #: prefs/koprefsdialogtime.cpp:179
 #, kde-format
@@ -4004,7 +4004,7 @@ msgstr "ჩაწერილები"
 #, kde-format
 msgctxt "@label"
 msgid "Default reminder time:"
-msgstr "შეხსენებლის ნაგულისხმები დრო:"
+msgstr "შეხსენებლის ნაგულისხმევი დრო:"
 
 #: prefs/koprefsdialogtime.cpp:212
 #, kde-format
@@ -5211,7 +5211,7 @@ msgstr ""
 #: settings/korganizer.kcfg:358
 #, kde-format
 msgid "Default todo attachment method"
-msgstr "გეგმაზე მიმაგრების ნაგულისხმები მეთოდი"
+msgstr "გეგმაზე მიმაგრების ნაგულისხმევი მეთოდი"
 
 #. i18n: ectx: whatsthis, entry (DefaultTodoAttachMethod), group (Hidden Options)
 #: settings/korganizer.kcfg:359
@@ -5302,7 +5302,7 @@ msgstr "აქ შეგიძლიათ თვის ხედისთვი
 #: settings/korganizer.kcfg:530
 #, kde-format
 msgid "Default event color"
-msgstr "ნაგულისხმები მოვლენის ფერი"
+msgstr "ნაგულისხმევი მოვლენის ფერი"
 
 #. i18n: ectx: whatsthis, entry, group (Theme/Month view)
 #: settings/korganizer.kcfg:531
