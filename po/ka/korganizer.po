@@ -8,7 +8,7 @@ msgstr ""
 "Project-Id-Version: korganizer\n"
 "Report-Msgid-Bugs-To: https://bugs.kde.org\n"
 "POT-Creation-Date: 2025-07-09 02:40+0000\n"
-"PO-Revision-Date: 2025-06-30 04:31+0200\n"
+"PO-Revision-Date: 2025-07-13 05:47+0200\n"
 "Last-Translator: Temuri Doghonadze <temuri.doghonadze@gmail.com>\n"
 "Language-Team: Georgian <kde-i18n-doc@kde.org>\n"
 "Language: ka\n"
@@ -1506,7 +1506,7 @@ msgstr "%1 (გათიშულია)"
 #, kde-format
 msgctxt "@item this is the default calendar"
 msgid "%1 (Default)"
-msgstr "%1 (ნაგულისხმები)"
+msgstr "%1 (ნაგულისხმევი)"
 
 #: akonadicollectionview.cpp:385
 #, kde-format
@@ -3992,7 +3992,7 @@ msgstr ""
 #, kde-format
 msgctxt "@title:tab"
 msgid "Default Values"
-msgstr "ნაგულისხმები მნიშვნელობები"
+msgstr "ნაგულისხმევი მნიშვნელობები"
 
 #: prefs/koprefsdialogtime.cpp:179
 #, kde-format
@@ -4004,7 +4004,7 @@ msgstr "ჩაწერილები"
 #, kde-format
 msgctxt "@label"
 msgid "Default reminder time:"
-msgstr "შეხსენებლის ნაგულისხმები დრო:"
+msgstr "შეხსენებლის ნაგულისხმევი დრო:"
 
 #: prefs/koprefsdialogtime.cpp:212
 #, kde-format
@@ -5211,7 +5211,7 @@ msgstr ""
 #: settings/korganizer.kcfg:358
 #, kde-format
 msgid "Default todo attachment method"
-msgstr "გეგმაზე მიმაგრების ნაგულისხმები მეთოდი"
+msgstr "გეგმაზე მიმაგრების ნაგულისხმევი მეთოდი"
 
 #. i18n: ectx: whatsthis, entry (DefaultTodoAttachMethod), group (Hidden Options)
 #: settings/korganizer.kcfg:359
@@ -5302,7 +5302,7 @@ msgstr "აქ შეგიძლიათ თვის ხედისთვი
 #: settings/korganizer.kcfg:530
 #, kde-format
 msgid "Default event color"
-msgstr "ნაგულისხმები მოვლენის ფერი"
+msgstr "ნაგულისხმევი მოვლენის ფერი"
 
 #. i18n: ectx: whatsthis, entry, group (Theme/Month view)
 #: settings/korganizer.kcfg:531
@@ -6334,6 +6334,7 @@ msgstr ""
 #: whatsnew/whatsnewtranslations.cpp:30
 msgid "Incidence editor: support drag-and-drop attachments"
 msgstr ""
+"ინციდენტების რედაქტორი: მიმაგრებული ფაილების გადათრევა/დაგდების მხარდაჭერა"
 
 #: whatsnew/whatsnewtranslations.cpp:31
 msgid "The export calendar dialog remembers its last export folder location"
