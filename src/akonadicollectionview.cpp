@@ -210,7 +210,6 @@ private: // NOLINT(readability-redundant-access-specifiers)
             // We don't need more than one to be running at the same time
             delete treeStateRestorer;
         }
-        qCDebug(KORGANIZER_LOG) << "Restore tree state";
         treeStateRestorer = new Akonadi::ETMViewStateSaver(); // not a leak
         KConfigGroup const group(KSharedConfig::openConfig(), mTreeStateConfig);
         treeStateRestorer->setView(mTreeView);
