@@ -14,7 +14,7 @@ msgid ""
 msgstr ""
 "Project-Id-Version: korganizer\n"
 "Report-Msgid-Bugs-To: https://bugs.kde.org\n"
-"POT-Creation-Date: 2025-07-09 00:44+0000\n"
+"POT-Creation-Date: 2025-07-17 00:42+0000\n"
 "PO-Revision-Date: 2025-07-01 20:29+0900\n"
 "Last-Translator: Kisaragi Hiu <mail@kisaragi-hiu.com>\n"
 "Language-Team: Traditional Chinese <zh-l10n@lists.slat.org>\n"
@@ -1471,56 +1471,56 @@ msgctxt "@action:button"
 msgid "Add as new calendar"
 msgstr "新增為新行事曆"
 
-#: akonadicollectionview.cpp:291
+#: akonadicollectionview.cpp:290
 #, kde-format
 msgctxt "@item this calendar is offline"
 msgid "%1 (Offline)"
 msgstr "%1（離線）"
 
-#: akonadicollectionview.cpp:294
+#: akonadicollectionview.cpp:293
 #, kde-format
 msgctxt "@item this is the default calendar"
 msgid "%1 (Default)"
 msgstr "%1（預設）"
 
-#: akonadicollectionview.cpp:385
+#: akonadicollectionview.cpp:384
 #, kde-format
 msgctxt "@info:tooltip"
 msgid "Calendar search"
 msgstr "行事曆搜尋"
 
-#: akonadicollectionview.cpp:386
+#: akonadicollectionview.cpp:385
 #, kde-format
 msgctxt "@info:whatsthis"
 msgid "Start typing to search for a calendar within the collection."
 msgstr "開始打字來搜尋收藏內的行事曆。"
 
-#: akonadicollectionview.cpp:388
+#: akonadicollectionview.cpp:387
 #, kde-format
 msgctxt ""
 "@info/plain Displayed grayed-out inside the textbox, calendar to search"
 msgid "Search for calendar…"
 msgstr "搜尋行事曆…"
 
-#: akonadicollectionview.cpp:474 manageshowcollectionproperties.cpp:76
+#: akonadicollectionview.cpp:473 manageshowcollectionproperties.cpp:76
 #, kde-format
 msgctxt "@title:window"
 msgid "Properties of Calendar Folder %1"
 msgstr "行事曆資料夾 %1 的內容"
 
-#: akonadicollectionview.cpp:486
+#: akonadicollectionview.cpp:485
 #, kde-format
 msgctxt "@action:inmenu"
 msgid "&Set Folder Color…"
 msgstr "設定資料夾顏色(&S)…"
 
-#: akonadicollectionview.cpp:492
+#: akonadicollectionview.cpp:491
 #, kde-format
 msgctxt "@action:inmenu"
 msgid "Set as &Default Folder"
 msgstr "設為預設資料夾(&D)"
 
-#: akonadicollectionview.cpp:542
+#: akonadicollectionview.cpp:541
 #, kde-kuit-format
 msgctxt "@info"
 msgid ""
@@ -1531,7 +1531,7 @@ msgstr ""
 "您確定要將 <filename>%1</filename> 設為您的預設行事曆資料夾嗎？<para>這會取"
 "代 <filename>%2</filename> 作為預設的行事曆資料夾。</para>"
 
-#: akonadicollectionview.cpp:547
+#: akonadicollectionview.cpp:546
 #, kde-kuit-format
 msgctxt "@info"
 msgid ""
@@ -1539,31 +1539,31 @@ msgid ""
 "folder?"
 msgstr "您確定要將 <filename>%1</filename> 設為您的預設行事曆資料夾嗎？"
 
-#: akonadicollectionview.cpp:552
+#: akonadicollectionview.cpp:551
 #, kde-format
 msgctxt "@title:window"
 msgid "Replace Default Calendar?"
 msgstr "替換預設行事曆？"
 
-#: akonadicollectionview.cpp:556 akonadicollectionview.cpp:926
+#: akonadicollectionview.cpp:555 akonadicollectionview.cpp:925
 #, kde-kuit-format
 msgctxt "@info"
 msgid "<filename>%1</filename> is now your default event calendar"
 msgstr "<filename>%1</filename> 現在是您的預設事件行事曆"
 
-#: akonadicollectionview.cpp:712
+#: akonadicollectionview.cpp:711
 #, kde-format
 msgctxt "@title:window"
 msgid "Add Calendar"
 msgstr "新增行事曆"
 
-#: akonadicollectionview.cpp:731
+#: akonadicollectionview.cpp:730
 #, kde-kuit-format
 msgctxt "@info"
 msgid "Add new calendar failed: <message>%1</message>"
 msgstr "新增行事曆失敗：<message>%1</message>"
 
-#: akonadicollectionview.cpp:788
+#: akonadicollectionview.cpp:787
 #, kde-kuit-format
 msgctxt "@info"
 msgid ""
@@ -1576,7 +1576,7 @@ msgstr ""
 "除，行事曆也不會被從遠端資源移除。<filename>%1</filename> 行事曆可以在任何時"
 "候重新加入。</note></para>"
 
-#: akonadicollectionview.cpp:798
+#: akonadicollectionview.cpp:797
 #, kde-kuit-format
 msgctxt "@info"
 msgid ""
@@ -1594,7 +1594,7 @@ msgstr ""
 "<filename>%2</filename>。如果您刪除它您可能會被詢問要選擇新的預設行事曆資料"
 "夾。</warning></para>"
 
-#: akonadicollectionview.cpp:809
+#: akonadicollectionview.cpp:808
 #, kde-kuit-format
 msgctxt "@info"
 msgid ""
@@ -1610,7 +1610,7 @@ msgstr ""
 "候重新加入。</note></para><para><warning>這個行事曆包含您的預設行事曆資料夾。"
 "如果您刪除它您可能會被詢問要選擇新的預設行事曆資料夾。</warning></para>"
 
-#: akonadicollectionview.cpp:819
+#: akonadicollectionview.cpp:818
 #, kde-kuit-format
 msgctxt "@info"
 msgid ""
@@ -1626,7 +1626,7 @@ msgstr ""
 "候重新加入。</note></para><para><warning>這是您的預設行事曆。如果您刪除它您可"
 "能會被詢問選擇新的預設行事曆。</warning></para>"
 
-#: akonadicollectionview.cpp:831
+#: akonadicollectionview.cpp:830
 #, kde-kuit-format
 msgctxt "@info"
 msgid ""
@@ -1637,7 +1637,7 @@ msgstr ""
 "您確定要刪除 <filename>%1</filename> 資料夾嗎？<para><warning>這個動作無法復"
 "原。請在按下 %2 按鈕前仔細考慮。</warning></para>"
 
-#: akonadicollectionview.cpp:838
+#: akonadicollectionview.cpp:837
 #, kde-kuit-format
 msgctxt "@info"
 msgid ""
@@ -1651,13 +1651,13 @@ msgstr ""
 "原。請在按下 %2 按鈕前仔細考慮。</warning></para><para><warning>這是您的預設"
 "行事曆資料夾。如果您刪除它您可能會被詢問選擇新的預設行事曆。</warning></para>"
 
-#: akonadicollectionview.cpp:849 akonadicollectionview.cpp:878
+#: akonadicollectionview.cpp:848 akonadicollectionview.cpp:877
 #, kde-format
 msgctxt "@title:window"
 msgid "Delete Calendar"
 msgstr "刪除行事曆"
 
-#: akonadicollectionview.cpp:873
+#: akonadicollectionview.cpp:872
 #, kde-kuit-format
 msgctxt "@info"
 msgid ""
@@ -1669,26 +1669,26 @@ msgstr ""
 "您正嘗試移除的行事曆已毀損。如果您繼續，它的資料會被移除。<para><warning>這個"
 "動作無法復原。請在按下 %1 按鈕前仔細考慮。</warning></para>"
 
-#: akonadicollectionview.cpp:888
+#: akonadicollectionview.cpp:887
 #, kde-kuit-format
 msgctxt "@info"
 msgid ""
 "Delete calendar failed: <message>Invalid Akonadi agent instance</message>"
 msgstr "刪除行事曆失敗：<message>無效的 Akonadi 代理程式實體</message>"
 
-#: akonadicollectionview.cpp:931
+#: akonadicollectionview.cpp:930
 #, kde-format
 msgctxt "@info"
 msgid "Consider setting a default calendar for new events"
 msgstr "請考慮設定預設行事曆來放置新事件"
 
-#: akonadicollectionview.cpp:933
+#: akonadicollectionview.cpp:932
 #, kde-format
 msgctxt "@info"
 msgid "Consider adding a write-enabled events calendar"
 msgstr "請考慮加入可寫入的事件行事曆"
 
-#: akonadicollectionview.cpp:955
+#: akonadicollectionview.cpp:954
 #, kde-kuit-format
 msgctxt "@info"
 msgid "Delete calendar failed: <message>%1</message>"

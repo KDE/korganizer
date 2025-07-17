@@ -8,7 +8,7 @@ msgid ""
 msgstr ""
 "Project-Id-Version: korganizer\n"
 "Report-Msgid-Bugs-To: https://bugs.kde.org\n"
-"POT-Creation-Date: 2025-07-09 00:44+0000\n"
+"POT-Creation-Date: 2025-07-17 00:42+0000\n"
 "PO-Revision-Date: 2025-03-22 22:36+0100\n"
 "Last-Translator: Oliver Kellogg <olivermkellogg@gmail.com>\n"
 "Language-Team: esperanto <kde-i18n-eo@kde.org>\n"
@@ -1613,7 +1613,7 @@ msgctxt "@action:button"
 msgid "Add as new calendar"
 msgstr "Aldoni kiel nova kalendaro"
 
-#: akonadicollectionview.cpp:291
+#: akonadicollectionview.cpp:290
 #, fuzzy, kde-format
 #| msgctxt "@item this is the default calendar"
 #| msgid "%1 (Offline)"
@@ -1621,50 +1621,50 @@ msgctxt "@item this calendar is offline"
 msgid "%1 (Offline)"
 msgstr "%1 (Senrete)"
 
-#: akonadicollectionview.cpp:294
+#: akonadicollectionview.cpp:293
 #, kde-format
 msgctxt "@item this is the default calendar"
 msgid "%1 (Default)"
 msgstr "%1 (Defaŭlte)"
 
-#: akonadicollectionview.cpp:385
+#: akonadicollectionview.cpp:384
 #, kde-format
 msgctxt "@info:tooltip"
 msgid "Calendar search"
 msgstr "Kalendar-serĉo"
 
-#: akonadicollectionview.cpp:386
+#: akonadicollectionview.cpp:385
 #, kde-format
 msgctxt "@info:whatsthis"
 msgid "Start typing to search for a calendar within the collection."
 msgstr ""
 
-#: akonadicollectionview.cpp:388
+#: akonadicollectionview.cpp:387
 #, kde-format
 msgctxt ""
 "@info/plain Displayed grayed-out inside the textbox, calendar to search"
 msgid "Search for calendar…"
 msgstr "Serĉi kalendaron…"
 
-#: akonadicollectionview.cpp:474 manageshowcollectionproperties.cpp:76
+#: akonadicollectionview.cpp:473 manageshowcollectionproperties.cpp:76
 #, kde-format
 msgctxt "@title:window"
 msgid "Properties of Calendar Folder %1"
 msgstr "Proprecoj de Kalendara Dosierujo %1"
 
-#: akonadicollectionview.cpp:486
+#: akonadicollectionview.cpp:485
 #, kde-format
 msgctxt "@action:inmenu"
 msgid "&Set Folder Color…"
 msgstr "Meti Do&sieruj-Koloron…"
 
-#: akonadicollectionview.cpp:492
+#: akonadicollectionview.cpp:491
 #, kde-format
 msgctxt "@action:inmenu"
 msgid "Set as &Default Folder"
 msgstr "Meti kiel &Defaŭlta Dosierujo"
 
-#: akonadicollectionview.cpp:542
+#: akonadicollectionview.cpp:541
 #, kde-kuit-format
 msgctxt "@info"
 msgid ""
@@ -1673,7 +1673,7 @@ msgid ""
 "calendar folder.</para>"
 msgstr ""
 
-#: akonadicollectionview.cpp:547
+#: akonadicollectionview.cpp:546
 #, fuzzy, kde-kuit-format
 #| msgctxt "@info"
 #| msgid ""
@@ -1685,31 +1685,31 @@ msgid ""
 msgstr ""
 "Ĉu vi vere volas anstataŭigi vian nunan defaŭltan kalendaron per \"%1\"?"
 
-#: akonadicollectionview.cpp:552
+#: akonadicollectionview.cpp:551
 #, kde-format
 msgctxt "@title:window"
 msgid "Replace Default Calendar?"
 msgstr "Ĉu anstataŭigi defaŭltan kalendaron?"
 
-#: akonadicollectionview.cpp:556 akonadicollectionview.cpp:926
+#: akonadicollectionview.cpp:555 akonadicollectionview.cpp:925
 #, kde-kuit-format
 msgctxt "@info"
 msgid "<filename>%1</filename> is now your default event calendar"
 msgstr ""
 
-#: akonadicollectionview.cpp:712
+#: akonadicollectionview.cpp:711
 #, kde-format
 msgctxt "@title:window"
 msgid "Add Calendar"
 msgstr "Aldoni Kalendaron"
 
-#: akonadicollectionview.cpp:731
+#: akonadicollectionview.cpp:730
 #, kde-kuit-format
 msgctxt "@info"
 msgid "Add new calendar failed: <message>%1</message>"
 msgstr ""
 
-#: akonadicollectionview.cpp:788
+#: akonadicollectionview.cpp:787
 #, kde-kuit-format
 msgctxt "@info"
 msgid ""
@@ -1719,7 +1719,7 @@ msgid ""
 "be added again at any time.</note></para>"
 msgstr ""
 
-#: akonadicollectionview.cpp:798
+#: akonadicollectionview.cpp:797
 #, kde-kuit-format
 msgctxt "@info"
 msgid ""
@@ -1732,7 +1732,7 @@ msgid ""
 "para>"
 msgstr ""
 
-#: akonadicollectionview.cpp:809
+#: akonadicollectionview.cpp:808
 #, kde-kuit-format
 msgctxt "@info"
 msgid ""
@@ -1744,7 +1744,7 @@ msgid ""
 "to select a new default calendar folder.</warning></para>"
 msgstr ""
 
-#: akonadicollectionview.cpp:819
+#: akonadicollectionview.cpp:818
 #, kde-kuit-format
 msgctxt "@info"
 msgid ""
@@ -1756,7 +1756,7 @@ msgid ""
 "calendar.</warning></para>"
 msgstr ""
 
-#: akonadicollectionview.cpp:831
+#: akonadicollectionview.cpp:830
 #, kde-kuit-format
 msgctxt "@info"
 msgid ""
@@ -1765,7 +1765,7 @@ msgid ""
 "pressing the %2 button.</warning></para>"
 msgstr ""
 
-#: akonadicollectionview.cpp:838
+#: akonadicollectionview.cpp:837
 #, kde-kuit-format
 msgctxt "@info"
 msgid ""
@@ -1776,13 +1776,13 @@ msgid ""
 "default calendar.</warning></para>"
 msgstr ""
 
-#: akonadicollectionview.cpp:849 akonadicollectionview.cpp:878
+#: akonadicollectionview.cpp:848 akonadicollectionview.cpp:877
 #, kde-format
 msgctxt "@title:window"
 msgid "Delete Calendar"
 msgstr "Forigi Kalendaron"
 
-#: akonadicollectionview.cpp:873
+#: akonadicollectionview.cpp:872
 #, kde-kuit-format
 msgctxt "@info"
 msgid ""
@@ -1792,26 +1792,26 @@ msgid ""
 "para>"
 msgstr ""
 
-#: akonadicollectionview.cpp:888
+#: akonadicollectionview.cpp:887
 #, kde-kuit-format
 msgctxt "@info"
 msgid ""
 "Delete calendar failed: <message>Invalid Akonadi agent instance</message>"
 msgstr ""
 
-#: akonadicollectionview.cpp:931
+#: akonadicollectionview.cpp:930
 #, kde-format
 msgctxt "@info"
 msgid "Consider setting a default calendar for new events"
 msgstr ""
 
-#: akonadicollectionview.cpp:933
+#: akonadicollectionview.cpp:932
 #, kde-format
 msgctxt "@info"
 msgid "Consider adding a write-enabled events calendar"
 msgstr ""
 
-#: akonadicollectionview.cpp:955
+#: akonadicollectionview.cpp:954
 #, kde-kuit-format
 msgctxt "@info"
 msgid "Delete calendar failed: <message>%1</message>"

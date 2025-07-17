@@ -1,7 +1,7 @@
 # translation of korganizer.po to Slovenian
 # Translation of korganizer.po to Slovenian
 # Copyright (C) 2001,2002, 2003, 2004, 2005, 2006 Free Software Foundation, Inc.
-# $Id: korganizer.po 1713051 2025-07-10 01:23:40Z scripty $
+# $Id: korganizer.po 1713550 2025-07-17 01:22:18Z scripty $
 # $Source$
 #
 # Roman Maurer <roman.maurer@hermes.si>, 2001.
@@ -14,7 +14,7 @@ msgid ""
 msgstr ""
 "Project-Id-Version: korganizer\n"
 "Report-Msgid-Bugs-To: https://bugs.kde.org\n"
-"POT-Creation-Date: 2025-07-09 00:44+0000\n"
+"POT-Creation-Date: 2025-07-17 00:42+0000\n"
 "PO-Revision-Date: 2025-07-09 07:23+0200\n"
 "Last-Translator: Matjaž Jeran <matjaz.jeran@amis.net>\n"
 "Language-Team: Slovenian <lugos-slo@lugos.si>\n"
@@ -1513,56 +1513,56 @@ msgctxt "@action:button"
 msgid "Add as new calendar"
 msgstr "Dodaj kot nov koledar"
 
-#: akonadicollectionview.cpp:291
+#: akonadicollectionview.cpp:290
 #, kde-format
 msgctxt "@item this calendar is offline"
 msgid "%1 (Offline)"
 msgstr "%1 (Nepovezan)"
 
-#: akonadicollectionview.cpp:294
+#: akonadicollectionview.cpp:293
 #, kde-format
 msgctxt "@item this is the default calendar"
 msgid "%1 (Default)"
 msgstr "%1 (Privzeto)"
 
-#: akonadicollectionview.cpp:385
+#: akonadicollectionview.cpp:384
 #, kde-format
 msgctxt "@info:tooltip"
 msgid "Calendar search"
 msgstr "Iskanje po koledarju"
 
-#: akonadicollectionview.cpp:386
+#: akonadicollectionview.cpp:385
 #, kde-format
 msgctxt "@info:whatsthis"
 msgid "Start typing to search for a calendar within the collection."
 msgstr "Začnite tipkati, da poiščete koledar v zbirki."
 
-#: akonadicollectionview.cpp:388
+#: akonadicollectionview.cpp:387
 #, kde-format
 msgctxt ""
 "@info/plain Displayed grayed-out inside the textbox, calendar to search"
 msgid "Search for calendar…"
 msgstr "Iskanje koledarja…"
 
-#: akonadicollectionview.cpp:474 manageshowcollectionproperties.cpp:76
+#: akonadicollectionview.cpp:473 manageshowcollectionproperties.cpp:76
 #, kde-format
 msgctxt "@title:window"
 msgid "Properties of Calendar Folder %1"
 msgstr "Lastnosti koledarske mape %1"
 
-#: akonadicollectionview.cpp:486
+#: akonadicollectionview.cpp:485
 #, kde-format
 msgctxt "@action:inmenu"
 msgid "&Set Folder Color…"
 msgstr "Nastavi barvo mape…"
 
-#: akonadicollectionview.cpp:492
+#: akonadicollectionview.cpp:491
 #, kde-format
 msgctxt "@action:inmenu"
 msgid "Set as &Default Folder"
 msgstr "Nastavi kot privzeto mapo"
 
-#: akonadicollectionview.cpp:542
+#: akonadicollectionview.cpp:541
 #, kde-kuit-format
 msgctxt "@info"
 msgid ""
@@ -1574,7 +1574,7 @@ msgstr ""
 "<para>To bo zamenjalo <filename>%2</filename> kot privzeto mapo koledarja.</"
 "para>"
 
-#: akonadicollectionview.cpp:547
+#: akonadicollectionview.cpp:546
 #, kde-kuit-format
 msgctxt "@info"
 msgid ""
@@ -1583,31 +1583,31 @@ msgid ""
 msgstr ""
 "Ali res želite nastaviti <filename>%1</filename> kot privzeto mapo koledarja?"
 
-#: akonadicollectionview.cpp:552
+#: akonadicollectionview.cpp:551
 #, kde-format
 msgctxt "@title:window"
 msgid "Replace Default Calendar?"
 msgstr "Zamenjaj privzeti koledar?"
 
-#: akonadicollectionview.cpp:556 akonadicollectionview.cpp:926
+#: akonadicollectionview.cpp:555 akonadicollectionview.cpp:925
 #, kde-kuit-format
 msgctxt "@info"
 msgid "<filename>%1</filename> is now your default event calendar"
 msgstr "<filename>%1</filename> je zdaj vaš privzeti koledar dogodkov"
 
-#: akonadicollectionview.cpp:712
+#: akonadicollectionview.cpp:711
 #, kde-format
 msgctxt "@title:window"
 msgid "Add Calendar"
 msgstr "Dodaj koledar"
 
-#: akonadicollectionview.cpp:731
+#: akonadicollectionview.cpp:730
 #, kde-kuit-format
 msgctxt "@info"
 msgid "Add new calendar failed: <message>%1</message>"
 msgstr "Dodajanje novega koledarja ni uspelo: <message>%1</message>"
 
-#: akonadicollectionview.cpp:788
+#: akonadicollectionview.cpp:787
 #, kde-kuit-format
 msgctxt "@info"
 msgid ""
@@ -1621,7 +1621,7 @@ msgstr ""
 "oddaljenega vira. Koledar <filename>%1</filename> lahko znova dodate kadar "
 "koli.</note></para>"
 
-#: akonadicollectionview.cpp:798
+#: akonadicollectionview.cpp:797
 #, kde-kuit-format
 msgctxt "@info"
 msgid ""
@@ -1640,7 +1640,7 @@ msgstr ""
 "koledarsko mapo <filename>%2</filename>. Če jo izbrišete, boste morda "
 "pozvani, da izberete novo privzeto mapo koledarja.</warning></para>"
 
-#: akonadicollectionview.cpp:809
+#: akonadicollectionview.cpp:808
 #, kde-kuit-format
 msgctxt "@info"
 msgid ""
@@ -1658,7 +1658,7 @@ msgstr ""
 "koledarja. Če jo izbrišete, boste morda pozvani, da izberete novo privzeto "
 "mapo koledarja.</warning></para>"
 
-#: akonadicollectionview.cpp:819
+#: akonadicollectionview.cpp:818
 #, kde-kuit-format
 msgctxt "@info"
 msgid ""
@@ -1676,7 +1676,7 @@ msgstr ""
 "izbrišete, boste morda pozvani, da izberete nov privzeti koledar.</warning></"
 "para>"
 
-#: akonadicollectionview.cpp:831
+#: akonadicollectionview.cpp:830
 #, kde-kuit-format
 msgctxt "@info"
 msgid ""
@@ -1688,7 +1688,7 @@ msgstr ""
 "mogoče razveljaviti. Pazljivo premislite, preden pritisnete gumb %2.</"
 "warning></para>"
 
-#: akonadicollectionview.cpp:838
+#: akonadicollectionview.cpp:837
 #, kde-kuit-format
 msgctxt "@info"
 msgid ""
@@ -1704,13 +1704,13 @@ msgstr ""
 "izbrišete, boste morda pozvani, da izberete nov privzeti koledar.</warning></"
 "para>"
 
-#: akonadicollectionview.cpp:849 akonadicollectionview.cpp:878
+#: akonadicollectionview.cpp:848 akonadicollectionview.cpp:877
 #, kde-format
 msgctxt "@title:window"
 msgid "Delete Calendar"
 msgstr "Izbriši koledar"
 
-#: akonadicollectionview.cpp:873
+#: akonadicollectionview.cpp:872
 #, kde-kuit-format
 msgctxt "@info"
 msgid ""
@@ -1724,7 +1724,7 @@ msgstr ""
 "ni mogoče razveljaviti. Pazljivo premislite, preden pritisnete gumb %1.</"
 "warning></para>"
 
-#: akonadicollectionview.cpp:888
+#: akonadicollectionview.cpp:887
 #, kde-kuit-format
 msgctxt "@info"
 msgid ""
@@ -1733,19 +1733,19 @@ msgstr ""
 "Brisanje koledarja ni uspelo: <message>Neveljaven primerek posrednika "
 "Akonadi</message>"
 
-#: akonadicollectionview.cpp:931
+#: akonadicollectionview.cpp:930
 #, kde-format
 msgctxt "@info"
 msgid "Consider setting a default calendar for new events"
 msgstr "Razmislite o nastavitvi privzetega koledarja za nove dogodke"
 
-#: akonadicollectionview.cpp:933
+#: akonadicollectionview.cpp:932
 #, kde-format
 msgctxt "@info"
 msgid "Consider adding a write-enabled events calendar"
 msgstr "Razmislite o dodajanju koledarja dogodkov, ki omogoča pisanje"
 
-#: akonadicollectionview.cpp:955
+#: akonadicollectionview.cpp:954
 #, kde-kuit-format
 msgctxt "@info"
 msgid "Delete calendar failed: <message>%1</message>"
