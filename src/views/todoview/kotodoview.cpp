@@ -93,13 +93,11 @@ void KOTodoView::setModel(QAbstractItemModel *model)
 
 void KOTodoView::calendarAdded(const Akonadi::CollectionCalendar::Ptr &calendar)
 {
-    BaseView::calendarAdded(calendar);
     mView->addCalendar(calendar);
 }
 
 void KOTodoView::calendarRemoved(const Akonadi::CollectionCalendar::Ptr &calendar)
 {
-    BaseView::calendarRemoved(calendar);
     mView->removeCalendar(calendar);
 }
 
@@ -115,7 +113,6 @@ KCalendarCore::DateList KOTodoView::selectedIncidenceDates()
 
 void KOTodoView::setIncidenceChanger(Akonadi::IncidenceChanger *changer)
 {
-    BaseView::setIncidenceChanger(changer);
     mView->setIncidenceChanger(changer);
 }
 
