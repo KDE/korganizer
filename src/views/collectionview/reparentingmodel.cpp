@@ -724,7 +724,11 @@ QVariant ReparentingModel::data(const QModelIndex &proxyIndex, int role) const
     const Node *node = extractNode(proxyIndex);
     /* cppcheck-suppress knownConditionTrueFalse */
     if (node->isSourceNode()) {
-        return sourceModel()->data(mapToSource(proxyIndex), role);
+        const QModelIndex cur = mapToSource(proxyIndex);
+        if (cur.isValid()) {
+            return sourceModel()->data(cur, role);
+        }
+        return {};
     }
     return node->data(role);
 }
@@ -741,7 +745,11 @@ bool ReparentingModel::setData(const QModelIndex &index, const QVariant &value, 
     Node *node = extractNode(index);
     /* cppcheck-suppress knownConditionTrueFalse */
     if (node->isSourceNode()) {
-        return sourceModel()->setData(mapToSource(index), value, role);
+        const QModelIndex cur = mapToSource(index);
+        if (cur.isValid()) {
+            return sourceModel()->setData(cur, value, role);
+        }
+        return false;
     }
     return node->setData(value, role);
 }
@@ -756,7 +764,11 @@ Qt::ItemFlags ReparentingModel::flags(const QModelIndex &index) const
     if (!node->isSourceNode()) {
         return Qt::ItemIsEnabled | Qt::ItemIsUserCheckable;
     }
-    return sourceModel()->flags(mapToSource(index));
+    const QModelIndex cur = mapToSource(index);
+    if (cur.isValid()) {
+        return sourceModel()->flags(cur);
+    }
+    return Qt::NoItemFlags;
 }
 
 int ReparentingModel::row(ReparentingModel::Node *node) const
@@ -803,7 +815,11 @@ QModelIndex ReparentingModel::buddy(const QModelIndex &index) const
     const Node *node = extractNode(index);
     /* cppcheck-suppress knownConditionTrueFalse */
     if (node->isSourceNode()) {
-        return mapFromSource(sourceModel()->buddy(mapToSource(index)));
+        const QModelIndex cur = mapToSource(index);
+        if (cur.isValid()) {
+            return mapFromSource(sourceModel()->buddy(cur));
+        }
+        return {};
     }
     return index;
 }
