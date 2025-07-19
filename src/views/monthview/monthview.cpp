@@ -194,11 +194,15 @@ void MonthView::showDates(const QDate &start, const QDate &end, const QDate &pre
 
 void MonthView::calendarAdded(const Akonadi::CollectionCalendar::Ptr &calendar)
 {
-    mMonthView->addCalendar(calendar);
+    if (calendar && calendar->collection().isValid()) {
+        mMonthView->addCalendar(calendar);
+    }
 }
 
 void MonthView::calendarRemoved(const Akonadi::CollectionCalendar::Ptr &calendar)
 {
-    mMonthView->removeCalendar(calendar);
+    if (calendar && calendar->collection().isValid()) {
+        mMonthView->removeCalendar(calendar);
+    }
 }
 #include "moc_monthview.cpp"

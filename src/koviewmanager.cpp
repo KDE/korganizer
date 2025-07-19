@@ -707,7 +707,9 @@ void KOViewManager::addCalendar(const Akonadi::CollectionCalendar::Ptr &calendar
 
 void KOViewManager::removeCalendar(const Akonadi::CollectionCalendar::Ptr &calendar)
 {
-    mCalendars.removeAll(calendar);
+    if (mCalendars.contains(calendar)) {
+        mCalendars.removeAll(calendar);
+    }
 }
 
 #include "moc_koviewmanager.cpp"
