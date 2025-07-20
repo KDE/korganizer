@@ -4,7 +4,7 @@ msgid ""
 msgstr ""
 "Project-Id-Version: kdepim/korganizer.po\n"
 "Report-Msgid-Bugs-To: https://bugs.kde.org\n"
-"POT-Creation-Date: 2025-07-09 02:40+0000\n"
+"POT-Creation-Date: 2025-07-20 02:39+0000\n"
 "PO-Revision-Date: 2004-09-20 15:44+0200\n"
 "Last-Translator: Thierry Vignaud <tvignaud@mandriva.com>\n"
 "Language-Team: Breton <LL@li.org>\n"
@@ -2117,7 +2117,7 @@ msgid ""
 "All calendars are unchecked in the Calendar Manager. No to-do was purged."
 msgstr ""
 
-#: calendarview.cpp:2471 calendarview.cpp:2726
+#: calendarview.cpp:2471 calendarview.cpp:2736
 #, fuzzy, kde-format
 msgctxt "@info"
 msgid "There are no completed to-dos to purge."
@@ -2156,14 +2156,14 @@ msgctxt "@info"
 msgid "Unable to move item <resource>%1</resource>."
 msgstr "Ne m'eus ket gallet kavout ar patrom '%1'."
 
-#: calendarview.cpp:2718
+#: calendarview.cpp:2728
 #, fuzzy, kde-kuit-format
 #| msgid "Import Calendar"
 msgctxt "@info"
 msgid "0 completed to-dos were purged.<nl/>"
 msgstr "Enporzh an deiziadur"
 
-#: calendarview.cpp:2720 calendarview.cpp:2731
+#: calendarview.cpp:2730 calendarview.cpp:2741
 #, kde-format, kde-kuit-format
 msgctxt "@info"
 msgid "%1 to-do was ignored because it has uncompleted or read-only children."
@@ -2172,7 +2172,7 @@ msgid_plural ""
 msgstr[0] ""
 msgstr[1] ""
 
-#: calendarview.cpp:2724 calendarview.cpp:2729
+#: calendarview.cpp:2734 calendarview.cpp:2739
 #, fuzzy, kde-format
 msgctxt "@info"
 msgid "%1 completed to-do was purged."
@@ -2180,13 +2180,13 @@ msgid_plural "%1 completed to-dos were purged."
 msgstr[0] "Echu eo ar ska&rzhañ"
 msgstr[1] "Echu eo ar ska&rzhañ"
 
-#: calendarview.cpp:2736
+#: calendarview.cpp:2746
 #, kde-kuit-format
 msgctxt "@info"
 msgid "An error occurred while purging completed to-dos: <message>%1</message>"
 msgstr ""
 
-#: calendarview.cpp:2790
+#: calendarview.cpp:2800
 #, kde-kuit-format
 msgctxt "@info"
 msgid ""
@@ -2195,7 +2195,7 @@ msgid ""
 "incidence.</para>"
 msgstr ""
 
-#: calendarview.cpp:2794
+#: calendarview.cpp:2804
 #, kde-kuit-format
 msgctxt "@info"
 msgid ""

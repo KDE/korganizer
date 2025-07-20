@@ -1,7 +1,7 @@
 # translation of korganizer.po to Slovenian
 # Translation of korganizer.po to Slovenian
 # Copyright (C) 2001,2002, 2003, 2004, 2005, 2006 Free Software Foundation, Inc.
-# $Id: korganizer.po 1713131 2025-07-10 03:06:22Z scripty $
+# $Id: korganizer.po 1713770 2025-07-20 03:10:55Z scripty $
 # $Source$
 #
 # Roman Maurer <roman.maurer@hermes.si>, 2001.
@@ -14,7 +14,7 @@ msgid ""
 msgstr ""
 "Project-Id-Version: korganizer\n"
 "Report-Msgid-Bugs-To: https://bugs.kde.org\n"
-"POT-Creation-Date: 2025-07-09 02:40+0000\n"
+"POT-Creation-Date: 2025-07-20 02:39+0000\n"
 "PO-Revision-Date: 2025-07-09 07:43+0200\n"
 "Last-Translator: Matjaž Jeran <matjaz.jeran@amis.net>\n"
 "Language-Team: Slovenian <lugos-slo@lugos.si>\n"
@@ -2128,7 +2128,7 @@ msgstr ""
 "V upravljalniku koledarjev ni označen noben koledar. Počiščeno ni bilo "
 "nobeno opravilo."
 
-#: calendarview.cpp:2471 calendarview.cpp:2726
+#: calendarview.cpp:2471 calendarview.cpp:2736
 #, kde-format
 msgctxt "@info"
 msgid "There are no completed to-dos to purge."
@@ -2164,13 +2164,13 @@ msgctxt "@info"
 msgid "Unable to move item <resource>%1</resource>."
 msgstr "Ni mogoče premakniti predmeta v <resource>%1</resource>."
 
-#: calendarview.cpp:2718
+#: calendarview.cpp:2728
 #, kde-kuit-format
 msgctxt "@info"
 msgid "0 completed to-dos were purged.<nl/>"
 msgstr "Počiščeno ni bilo nobeno zaključeno opravilo.<nl/>"
 
-#: calendarview.cpp:2720 calendarview.cpp:2731
+#: calendarview.cpp:2730 calendarview.cpp:2741
 #, kde-format, kde-kuit-format
 msgctxt "@info"
 msgid "%1 to-do was ignored because it has uncompleted or read-only children."
@@ -2189,7 +2189,7 @@ msgstr[3] ""
 "%1 opravila so bila prezrta, ker imajo nezaključena ali pred pisanjem "
 "zaščitena podopravila."
 
-#: calendarview.cpp:2724 calendarview.cpp:2729
+#: calendarview.cpp:2734 calendarview.cpp:2739
 #, kde-format
 msgctxt "@info"
 msgid "%1 completed to-do was purged."
@@ -2199,14 +2199,14 @@ msgstr[1] "Počiščeno je bilo %1 zaključeno opravilo."
 msgstr[2] "Počiščeni sta bili %1 zaključeni opravili."
 msgstr[3] "Počiščena so bila %1 zaključena opravila."
 
-#: calendarview.cpp:2736
+#: calendarview.cpp:2746
 #, kde-kuit-format
 msgctxt "@info"
 msgid "An error occurred while purging completed to-dos: <message>%1</message>"
 msgstr ""
 "Med čiščenjem zaključenih opravil je prišlo do napake: <message>%1</message>"
 
-#: calendarview.cpp:2790
+#: calendarview.cpp:2800
 #, kde-kuit-format
 msgctxt "@info"
 msgid ""
@@ -2217,7 +2217,7 @@ msgstr ""
 "Pojavitev ste ustvarili v koledarju, ki je trenutno filtriran.<para>Na levi "
 "stranski vrstici omogočite upravljalniku koledarja, da vidi pojavitev.</para>"
 
-#: calendarview.cpp:2794
+#: calendarview.cpp:2804
 #, kde-kuit-format
 msgctxt "@info"
 msgid ""

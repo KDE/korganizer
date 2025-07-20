@@ -7,7 +7,7 @@ msgid ""
 msgstr ""
 "Project-Id-Version: \n"
 "Report-Msgid-Bugs-To: https://bugs.kde.org\n"
-"POT-Creation-Date: 2025-07-09 02:40+0000\n"
+"POT-Creation-Date: 2025-07-20 02:39+0000\n"
 "PO-Revision-Date: 2025-05-27 12:00+0200\n"
 "Last-Translator: giovanni <g.sora@tiscali.it>\n"
 "Language-Team: Interlingua <kde-i18n-doc@kde.org>\n"
@@ -2121,7 +2121,7 @@ msgstr ""
 "Omne calendarios es non marcate in le Gerente de Calendario. Nulle action de "
 "facer esseva delite."
 
-#: calendarview.cpp:2471 calendarview.cpp:2726
+#: calendarview.cpp:2471 calendarview.cpp:2736
 #, kde-format
 msgctxt "@info"
 msgid "There are no completed to-dos to purge."
@@ -2157,13 +2157,13 @@ msgctxt "@info"
 msgid "Unable to move item <resource>%1</resource>."
 msgstr "Incapace a mover le elemento <resource>%1</resource> ."
 
-#: calendarview.cpp:2718
+#: calendarview.cpp:2728
 #, kde-kuit-format
 msgctxt "@info"
 msgid "0 completed to-dos were purged.<nl/>"
 msgstr "0 activitates de facer completate esseva delite.<nl/>"
 
-#: calendarview.cpp:2720 calendarview.cpp:2731
+#: calendarview.cpp:2730 calendarview.cpp:2741
 #, kde-format, kde-kuit-format
 msgctxt "@info"
 msgid "%1 to-do was ignored because it has uncompleted or read-only children."
@@ -2176,7 +2176,7 @@ msgstr[1] ""
 "%1 actiones de facer esserva ignorate proque illos ha filios incomplete o de "
 "sol lectura."
 
-#: calendarview.cpp:2724 calendarview.cpp:2729
+#: calendarview.cpp:2734 calendarview.cpp:2739
 #, kde-format
 msgctxt "@info"
 msgid "%1 completed to-do was purged."
@@ -2184,7 +2184,7 @@ msgid_plural "%1 completed to-dos were purged."
 msgstr[0] "%1 activitate de facer completate esseva delite."
 msgstr[1] "%1 activitates de facer completate esseva delite."
 
-#: calendarview.cpp:2736
+#: calendarview.cpp:2746
 #, kde-kuit-format
 msgctxt "@info"
 msgid "An error occurred while purging completed to-dos: <message>%1</message>"
@@ -2192,7 +2192,7 @@ msgstr ""
 "Un error occurreva durante que on deleva  actiones de facer completate: "
 "<message>%1</message>"
 
-#: calendarview.cpp:2790
+#: calendarview.cpp:2800
 #, kde-kuit-format
 msgctxt "@info"
 msgid ""
@@ -2204,7 +2204,7 @@ msgstr ""
 "<para>Sur le latere sinistre del barra, habilita lo in le gerente de "
 "calendario pro vider le incidentia.</para>"
 
-#: calendarview.cpp:2794
+#: calendarview.cpp:2804
 #, kde-kuit-format
 msgctxt "@info"
 msgid ""

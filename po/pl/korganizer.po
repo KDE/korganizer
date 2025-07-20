@@ -1,5 +1,5 @@
 # translation of korganizer.po to
-# Version: $Revision: 1712983 $
+# Version: $Revision: 1713770 $
 # SPDX-FileCopyrightText: 2011, 2012, 2013, 2014, 2015, 2016, 2017, 2018, 2019, 2020, 2021, 2022, 2023, 2024, 2025 Łukasz Wojniłowicz <lukasz.wojnilowicz@gmail.com>
 # translated by Krzysztof Jasiutowicz <kpjas@priv.onet.pl>
 # Krzysztof Lichota <lichota@mimuw.edu.pl>, 2002, 2005, 2006.
@@ -13,7 +13,7 @@ msgid ""
 msgstr ""
 "Project-Id-Version: korganizer\n"
 "Report-Msgid-Bugs-To: https://bugs.kde.org\n"
-"POT-Creation-Date: 2025-07-09 02:40+0000\n"
+"POT-Creation-Date: 2025-07-20 02:39+0000\n"
 "PO-Revision-Date: 2025-02-23 12:38+0100\n"
 "Last-Translator: Łukasz Wojniłowicz <lukasz.wojnilowicz@gmail.com>\n"
 "Language-Team: Polish <kde-i18n-doc@kde.org>\n"
@@ -2275,7 +2275,7 @@ msgstr ""
 "Wszystkie kalendarze są odznaczone w Zarządzaniu Kalendarzami. Żadne zadanie "
 "nie zostało wyczyszczone."
 
-#: calendarview.cpp:2471 calendarview.cpp:2726
+#: calendarview.cpp:2471 calendarview.cpp:2736
 #, fuzzy, kde-format
 #| msgid "There are no completed to-dos to purge."
 msgctxt "@info"
@@ -2315,14 +2315,14 @@ msgctxt "@info"
 msgid "Unable to move item <resource>%1</resource>."
 msgstr "Nie można przesunąć elementu do %1."
 
-#: calendarview.cpp:2718
+#: calendarview.cpp:2728
 #, fuzzy, kde-kuit-format
 #| msgid "0 completed to-dos were purged."
 msgctxt "@info"
 msgid "0 completed to-dos were purged.<nl/>"
 msgstr "0 ukończonych zadania zostało wyczyszczonych."
 
-#: calendarview.cpp:2720 calendarview.cpp:2731
+#: calendarview.cpp:2730 calendarview.cpp:2741
 #, fuzzy, kde-format, kde-kuit-format
 #| msgid ""
 #| "%1 to-do was ignored because it has uncompleted or read-only children."
@@ -2343,7 +2343,7 @@ msgstr[2] ""
 "%1 zadań zostało pominiętych, bo mają zadanie podrzędne nieukończone lub "
 "tylko-do-odczytu."
 
-#: calendarview.cpp:2724 calendarview.cpp:2729
+#: calendarview.cpp:2734 calendarview.cpp:2739
 #, fuzzy, kde-format
 #| msgid "%1 completed to-do was purged."
 #| msgid_plural "%1 completed to-dos were purged."
@@ -2354,14 +2354,14 @@ msgstr[0] "%1 ukończone zadanie zostało wyczyszczone."
 msgstr[1] "%1 ukończone zadania zostały wyczyszczone."
 msgstr[2] "%1 ukończonych zadań zostało wyczyszczonych."
 
-#: calendarview.cpp:2736
+#: calendarview.cpp:2746
 #, fuzzy, kde-kuit-format
 #| msgid "An error occurred while purging completed to-dos: %1"
 msgctxt "@info"
 msgid "An error occurred while purging completed to-dos: <message>%1</message>"
 msgstr "Wystąpił błąd, przy czyszczeniu ukończonych zadań: %1"
 
-#: calendarview.cpp:2790
+#: calendarview.cpp:2800
 #, fuzzy, kde-kuit-format
 #| msgid ""
 #| "You created an incidence in a calendar that is currently filtered out.\n"
@@ -2377,7 +2377,7 @@ msgstr ""
 "Na lewym pasku bocznym, włącz je w zarządzaniu kalendarzem, aby obejrzeć "
 "wystąpienie."
 
-#: calendarview.cpp:2794
+#: calendarview.cpp:2804
 #, fuzzy, kde-kuit-format
 #| msgid ""
 #| "You created an incidence in a calendar that is currently filtered out.\n"
