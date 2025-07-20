@@ -10,7 +10,7 @@ msgid ""
 msgstr ""
 "Project-Id-Version: korganizer\n"
 "Report-Msgid-Bugs-To: https://bugs.kde.org\n"
-"POT-Creation-Date: 2025-07-17 00:42+0000\n"
+"POT-Creation-Date: 2025-07-20 00:43+0000\n"
 "PO-Revision-Date: 2019-11-05 20:02+0100\n"
 "Last-Translator: Matej Mrenica <matejm98mthw@gmail.com>\n"
 "Language-Team: Slovak <kde-i18n-doc@kde.org>\n"
@@ -2307,7 +2307,7 @@ msgstr ""
 "Všetky kalendáre sú odznačené v správcovi kalendárov. Žiadna úloha nebola "
 "vyčistená."
 
-#: calendarview.cpp:2471 calendarview.cpp:2726
+#: calendarview.cpp:2471 calendarview.cpp:2736
 #, fuzzy, kde-format
 #| msgid "There are no completed to-dos to purge."
 msgctxt "@info"
@@ -2349,14 +2349,14 @@ msgctxt "@info"
 msgid "Unable to move item <resource>%1</resource>."
 msgstr "Nemôžem presunúť položku do %1."
 
-#: calendarview.cpp:2718
+#: calendarview.cpp:2728
 #, fuzzy, kde-kuit-format
 #| msgid "0 completed to-dos were purged."
 msgctxt "@info"
 msgid "0 completed to-dos were purged.<nl/>"
 msgstr "0 ukončených úloh bolo vyčistených."
 
-#: calendarview.cpp:2720 calendarview.cpp:2731
+#: calendarview.cpp:2730 calendarview.cpp:2741
 #, fuzzy, kde-format, kde-kuit-format
 #| msgid ""
 #| "%1 to-do was ignored because it has uncompleted or read-only children."
@@ -2377,7 +2377,7 @@ msgstr[2] ""
 "%1 úloh bolo ignorovaných, pretože majú neukončené alebo iba na čítanie "
 "podúlohy."
 
-#: calendarview.cpp:2724 calendarview.cpp:2729
+#: calendarview.cpp:2734 calendarview.cpp:2739
 #, fuzzy, kde-format
 #| msgid "%1 completed to-do was purged."
 #| msgid_plural "%1 completed to-dos were purged."
@@ -2388,14 +2388,14 @@ msgstr[0] "%1 ukončená úloha bola vyčistená."
 msgstr[1] "%1 ukončené úlohy boli vyčistené."
 msgstr[2] "%1 ukončených úloh bolo vyčistených."
 
-#: calendarview.cpp:2736
+#: calendarview.cpp:2746
 #, fuzzy, kde-kuit-format
 #| msgid "An error occurred while purging completed to-dos: %1"
 msgctxt "@info"
 msgid "An error occurred while purging completed to-dos: <message>%1</message>"
 msgstr "Nastala chyba počas čistenia ukončených úloh: %1"
 
-#: calendarview.cpp:2790
+#: calendarview.cpp:2800
 #, fuzzy, kde-kuit-format
 #| msgid ""
 #| "You created an incidence in a calendar that is currently filtered out.\n"
@@ -2410,7 +2410,7 @@ msgstr ""
 "Vytvorili ste výskyt v kalendári, ktorý je práve odfiltrovaný.\n"
 "V ľavom bočnom paneli ho povoľte v správcovi kalendára, aby ste to videli."
 
-#: calendarview.cpp:2794
+#: calendarview.cpp:2804
 #, fuzzy, kde-kuit-format
 #| msgid ""
 #| "You created an incidence in a calendar that is currently filtered out.\n"

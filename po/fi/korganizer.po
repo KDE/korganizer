@@ -16,7 +16,7 @@ msgid ""
 msgstr ""
 "Project-Id-Version: korganizer\n"
 "Report-Msgid-Bugs-To: https://bugs.kde.org\n"
-"POT-Creation-Date: 2025-07-17 00:42+0000\n"
+"POT-Creation-Date: 2025-07-20 00:43+0000\n"
 "PO-Revision-Date: 2025-07-07 21:16+0300\n"
 "Last-Translator: Tommi Nieminen <translator@legisign.org>\n"
 "Language-Team: Finnish <kde-i18n-doc@kde.org>\n"
@@ -2115,7 +2115,7 @@ msgstr ""
 "Yhtäkään kalenteria ei ole kalenterien hallinnassa valittu. Tehtäviä ei "
 "siivottu."
 
-#: calendarview.cpp:2471 calendarview.cpp:2726
+#: calendarview.cpp:2471 calendarview.cpp:2736
 #, kde-format
 msgctxt "@info"
 msgid "There are no completed to-dos to purge."
@@ -2151,13 +2151,13 @@ msgctxt "@info"
 msgid "Unable to move item <resource>%1</resource>."
 msgstr "Ei voitu siirtää kohdetta <resource>%1</resource>"
 
-#: calendarview.cpp:2718
+#: calendarview.cpp:2728
 #, kde-kuit-format
 msgctxt "@info"
 msgid "0 completed to-dos were purged.<nl/>"
 msgstr "Yhtään valmistunutta tehtävää ei siivottu.<nl/>"
 
-#: calendarview.cpp:2720 calendarview.cpp:2731
+#: calendarview.cpp:2730 calendarview.cpp:2741
 #, kde-format, kde-kuit-format
 msgctxt "@info"
 msgid "%1 to-do was ignored because it has uncompleted or read-only children."
@@ -2170,7 +2170,7 @@ msgstr[1] ""
 "%1 tehtävää sivuutettiin, koska niillä on tekemättömiä tai "
 "kirjoitussuojattuja alitehtäviä."
 
-#: calendarview.cpp:2724 calendarview.cpp:2729
+#: calendarview.cpp:2734 calendarview.cpp:2739
 #, kde-format
 msgctxt "@info"
 msgid "%1 completed to-do was purged."
@@ -2178,14 +2178,14 @@ msgid_plural "%1 completed to-dos were purged."
 msgstr[0] "Siivottiin yksi valmistunut tehtävä."
 msgstr[1] "Siivottiin %1 valmistunutta tehtävää."
 
-#: calendarview.cpp:2736
+#: calendarview.cpp:2746
 #, kde-kuit-format
 msgctxt "@info"
 msgid "An error occurred while purging completed to-dos: <message>%1</message>"
 msgstr ""
 "Siivottaessa valmistuneita tehtäviä tapahtui virhe: <message>%1</message>"
 
-#: calendarview.cpp:2790
+#: calendarview.cpp:2800
 #, kde-kuit-format
 msgctxt "@info"
 msgid ""
@@ -2197,7 +2197,7 @@ msgstr ""
 "<para>Nähdäksesi esiintymän tuo kalenteri näkyviin vasemman sivupalkin "
 "kalenteriluettelosta.</para>"
 
-#: calendarview.cpp:2794
+#: calendarview.cpp:2804
 #, kde-kuit-format
 msgctxt "@info"
 msgid ""

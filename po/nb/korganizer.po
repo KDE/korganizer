@@ -15,7 +15,7 @@ msgid ""
 msgstr ""
 "Project-Id-Version: korganizer\n"
 "Report-Msgid-Bugs-To: https://bugs.kde.org\n"
-"POT-Creation-Date: 2025-07-17 00:42+0000\n"
+"POT-Creation-Date: 2025-07-20 00:43+0000\n"
 "PO-Revision-Date: 2015-02-07 22:17+0100\n"
 "Last-Translator: Bjørn Steensrud <bjornst@skogkatt.homelinux.org>\n"
 "Language-Team: Norwegian Bokmål <l10n-no@lister.huftis.org>\n"
@@ -2147,7 +2147,7 @@ msgstr ""
 "Ingen kalendere er merket av i kalenderbehandleren. Ingen gjøremål ble "
 "fjernet."
 
-#: calendarview.cpp:2471 calendarview.cpp:2726
+#: calendarview.cpp:2471 calendarview.cpp:2736
 #, fuzzy, kde-format
 #| msgid "There are no completed to-dos to purge."
 msgctxt "@info"
@@ -2187,14 +2187,14 @@ msgctxt "@info"
 msgid "Unable to move item <resource>%1</resource>."
 msgstr "Kan ikke flytte elementet til %1."
 
-#: calendarview.cpp:2718
+#: calendarview.cpp:2728
 #, fuzzy, kde-kuit-format
 #| msgid "0 completed to-dos were purged."
 msgctxt "@info"
 msgid "0 completed to-dos were purged.<nl/>"
 msgstr "0 fullførte gjøremål ble fjernet."
 
-#: calendarview.cpp:2720 calendarview.cpp:2731
+#: calendarview.cpp:2730 calendarview.cpp:2741
 #, fuzzy, kde-format, kde-kuit-format
 #| msgid ""
 #| "%1 to-do was ignored because it has uncompleted or read-only children."
@@ -2212,7 +2212,7 @@ msgstr[1] ""
 "%1 gjøremål ble ignorert fordi de har ufullførte eller skrivebeskyttede "
 "under-gjøremål."
 
-#: calendarview.cpp:2724 calendarview.cpp:2729
+#: calendarview.cpp:2734 calendarview.cpp:2739
 #, fuzzy, kde-format
 #| msgid "%1 completed to-do was purged."
 #| msgid_plural "%1 completed to-dos were purged."
@@ -2222,14 +2222,14 @@ msgid_plural "%1 completed to-dos were purged."
 msgstr[0] "%1 fullført gjøremål ble fjernet."
 msgstr[1] "%1 fullførte gjøremål ble fjernet."
 
-#: calendarview.cpp:2736
+#: calendarview.cpp:2746
 #, fuzzy, kde-kuit-format
 #| msgid "An error occurred while purging completed to-dos: %1"
 msgctxt "@info"
 msgid "An error occurred while purging completed to-dos: <message>%1</message>"
 msgstr "Det oppsto en feil under fjerning av fullførte gjøremål: %1 "
 
-#: calendarview.cpp:2790
+#: calendarview.cpp:2800
 #, fuzzy, kde-kuit-format
 #| msgid ""
 #| "You created an incidence in a calendar that is currently filtered out.\n"
@@ -2244,7 +2244,7 @@ msgstr ""
 "Du opprettet en forekomst i en kalender som nå er filtrert bort.\n"
 "Slå den på i venstre sidestolpe for å se den i kalenderbehandleren ."
 
-#: calendarview.cpp:2794
+#: calendarview.cpp:2804
 #, fuzzy, kde-kuit-format
 #| msgid ""
 #| "You created an incidence in a calendar that is currently filtered out.\n"

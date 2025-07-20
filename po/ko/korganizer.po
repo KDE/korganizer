@@ -8,7 +8,7 @@ msgid ""
 msgstr ""
 "Project-Id-Version: Korganizer\n"
 "Report-Msgid-Bugs-To: https://bugs.kde.org\n"
-"POT-Creation-Date: 2025-07-17 00:42+0000\n"
+"POT-Creation-Date: 2025-07-20 00:43+0000\n"
 "PO-Revision-Date: 2025-06-10 23:16+0200\n"
 "Last-Translator: Shinjo Park <kde@peremen.name>\n"
 "Language-Team: Korean <kde-kr@kde.org>\n"
@@ -2079,7 +2079,7 @@ msgid ""
 msgstr ""
 "캘린더 관리자에서 선택한 캘린더가 없습니다. 할 일 목록을 비우지 않았습니다."
 
-#: calendarview.cpp:2471 calendarview.cpp:2726
+#: calendarview.cpp:2471 calendarview.cpp:2736
 #, kde-format
 msgctxt "@info"
 msgid "There are no completed to-dos to purge."
@@ -2115,13 +2115,13 @@ msgctxt "@info"
 msgid "Unable to move item <resource>%1</resource>."
 msgstr "<resource>%1</resource> 항목을 이동할 수 없습니다."
 
-#: calendarview.cpp:2718
+#: calendarview.cpp:2728
 #, kde-kuit-format
 msgctxt "@info"
 msgid "0 completed to-dos were purged.<nl/>"
 msgstr "완료된 할 일 0개를 삭제했습니다.<nl/>"
 
-#: calendarview.cpp:2720 calendarview.cpp:2731
+#: calendarview.cpp:2730 calendarview.cpp:2741
 #, kde-format, kde-kuit-format
 msgctxt "@info"
 msgid "%1 to-do was ignored because it has uncompleted or read-only children."
@@ -2131,20 +2131,20 @@ msgstr[0] ""
 "할 일 %1개에는 완료하지 않았거나 읽기 전용인 자식 항목이 있기 때문에 무시했습"
 "니다."
 
-#: calendarview.cpp:2724 calendarview.cpp:2729
+#: calendarview.cpp:2734 calendarview.cpp:2739
 #, kde-format
 msgctxt "@info"
 msgid "%1 completed to-do was purged."
 msgid_plural "%1 completed to-dos were purged."
 msgstr[0] "완료된 할 일 %1개를 삭제했습니다."
 
-#: calendarview.cpp:2736
+#: calendarview.cpp:2746
 #, kde-kuit-format
 msgctxt "@info"
 msgid "An error occurred while purging completed to-dos: <message>%1</message>"
 msgstr "완료된 할 일을 비우는 중 오류 발생: <message>%1</message>"
 
-#: calendarview.cpp:2790
+#: calendarview.cpp:2800
 #, kde-kuit-format
 msgctxt "@info"
 msgid ""
@@ -2155,7 +2155,7 @@ msgstr ""
 "현재 필터에서 제외된 캘린더에 항목을 만들었습니다.<para>해당 항목을 보려면 왼"
 "쪽 사이드바의 캘린더 관리자에서 활성화하십시오.</para>"
 
-#: calendarview.cpp:2794
+#: calendarview.cpp:2804
 #, kde-kuit-format
 msgctxt "@info"
 msgid ""

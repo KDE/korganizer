@@ -8,7 +8,7 @@ msgid ""
 msgstr ""
 "Project-Id-Version: korganizer\n"
 "Report-Msgid-Bugs-To: https://bugs.kde.org\n"
-"POT-Creation-Date: 2025-07-17 00:42+0000\n"
+"POT-Creation-Date: 2025-07-20 00:43+0000\n"
 "PO-Revision-Date: 2024-12-24 20:39+0530\n"
 "Last-Translator: kali <shreekantkalwar@gmail.com>\n"
 "Language-Team: Sanskrit <kde-i18n-doc@kde.org>\n"
@@ -2245,7 +2245,7 @@ msgid ""
 msgstr ""
 "पञ्चाङ्गप्रबन्धके सर्वाणि पञ्चाङ्गानि अनिरीक्षितानि सन्ति । न कोऽपि कर्तव्यः शुद्धः अभवत् ।"
 
-#: calendarview.cpp:2471 calendarview.cpp:2726
+#: calendarview.cpp:2471 calendarview.cpp:2736
 #, fuzzy, kde-format
 #| msgid "There are no completed to-dos to purge."
 msgctxt "@info"
@@ -2285,14 +2285,14 @@ msgctxt "@info"
 msgid "Unable to move item <resource>%1</resource>."
 msgstr "%1 - मध्ये द्रव्यं स्थानान्तरयितुं असमर्थः ।"
 
-#: calendarview.cpp:2718
+#: calendarview.cpp:2728
 #, fuzzy, kde-kuit-format
 #| msgid "0 completed to-dos were purged."
 msgctxt "@info"
 msgid "0 completed to-dos were purged.<nl/>"
 msgstr "० सम्पन्नं टू-डोस् शुद्धं कृतम् ।"
 
-#: calendarview.cpp:2720 calendarview.cpp:2731
+#: calendarview.cpp:2730 calendarview.cpp:2741
 #, fuzzy, kde-format, kde-kuit-format
 #| msgid ""
 #| "%1 to-do was ignored because it has uncompleted or read-only children."
@@ -2307,7 +2307,7 @@ msgstr[0] "%1 to-do उपेक्षितम् यतः अस्य अप
 msgstr[1] ""
 "%1 to-dos इत्यस्य अवहेलना कृता यतः तेषां अपूर्णाः अथवा केवलं पठनीयाः बालकाः सन्ति ।"
 
-#: calendarview.cpp:2724 calendarview.cpp:2729
+#: calendarview.cpp:2734 calendarview.cpp:2739
 #, fuzzy, kde-format
 #| msgid "%1 completed to-do was purged."
 #| msgid_plural "%1 completed to-dos were purged."
@@ -2317,14 +2317,14 @@ msgid_plural "%1 completed to-dos were purged."
 msgstr[0] "%1 सम्पन्नं कर्तव्यं शुद्धं कृतम् ।"
 msgstr[1] "%1 सम्पन्नं to-dos शुद्धं कृतम्।"
 
-#: calendarview.cpp:2736
+#: calendarview.cpp:2746
 #, fuzzy, kde-kuit-format
 #| msgid "An error occurred while purging completed to-dos: %1"
 msgctxt "@info"
 msgid "An error occurred while purging completed to-dos: <message>%1</message>"
 msgstr "सम्पूर्णं कार्यं शुद्धं कुर्वन् त्रुटिः अभवत्: %1"
 
-#: calendarview.cpp:2790
+#: calendarview.cpp:2800
 #, fuzzy, kde-kuit-format
 #| msgid ""
 #| "You created an incidence in a calendar that is currently filtered out.\n"
@@ -2339,7 +2339,7 @@ msgstr ""
 "भवान् एकस्मिन् पञ्चाङ्गे एकं घटनां निर्मितवान् यत् सम्प्रति छानितम् अस्ति ।\n"
 "वामपार्श्वपट्टिकायां, पञ्चाङ्गप्रबन्धके घटनां द्रष्टुं सक्षमं कुर्वन्तु ।"
 
-#: calendarview.cpp:2794
+#: calendarview.cpp:2804
 #, fuzzy, kde-kuit-format
 #| msgid ""
 #| "You created an incidence in a calendar that is currently filtered out.\n"
