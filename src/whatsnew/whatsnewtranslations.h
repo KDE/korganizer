@@ -16,4 +16,7 @@ public:
 
     [[nodiscard]] QList<PimCommon::WhatsNewInfo> createWhatsNewInfo() const override;
     [[nodiscard]] QList<KLazyLocalizedString> lastNewFeatures() const override;
+
+private:
+    [[nodiscard]] QList<KLazyLocalizedString> lastNewFeatures65() const;
 };

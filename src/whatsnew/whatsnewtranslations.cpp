@@ -15,6 +15,15 @@ WhatsNewTranslations::~WhatsNewTranslations() = default;
 QList<KLazyLocalizedString> WhatsNewTranslations::lastNewFeatures() const
 {
     const QList<KLazyLocalizedString> info{
+        kli18nc("PLACEHOLDER. DO NOT TRANSLATE", "Nothing yet"),
+    };
+
+    return info;
+}
+
+QList<KLazyLocalizedString> WhatsNewTranslations::lastNewFeatures65() const
+{
+    const QList<KLazyLocalizedString> info{
         kli18n("Add What's New menu"),
         kli18n("Add a Date Picker dialog available on the Go menu"),
         kli18n("Agenda view: consolidated the \"Day\", \"Next X Days\", \"Work Schedule\", \"Week\" time ranges into the Agenda tool button"),
@@ -44,14 +53,15 @@ QList<PimCommon::WhatsNewInfo> WhatsNewTranslations::createWhatsNewInfo() const
 {
     QList<PimCommon::WhatsNewInfo> listInfo;
     {
+        // Version 6.5.0
         PimCommon::WhatsNewInfo info65;
         info65.setVersion(QStringLiteral("6.5.0"));
-        QStringList lst;
-        const auto newFeatureStrings = lastNewFeatures();
-        for (const KLazyLocalizedString &l : newFeatureStrings) {
-            lst += l.toString();
+        QStringList lst65;
+        const auto newFeatureStrings65 = lastNewFeatures65();
+        for (const KLazyLocalizedString &l : newFeatureStrings65) {
+            lst65 += l.toString();
         }
-        info65.setNewFeatures(lst);
+        info65.setNewFeatures(lst65);
         info65.setChanges({i18n("Semantics are changed from a \"working schedule\" concept to a \"week schedule\" concept to accommodate non-working users"),
                            i18n("Initial \"New Event\" start times are consistent across all the views"),
                            i18n("Improved default event calendar handling")});
@@ -61,6 +71,19 @@ QList<PimCommon::WhatsNewInfo> WhatsNewTranslations::createWhatsNewInfo() const
             i18n("Agenda view: events without a duration are displayed as 30 long (rather than 15 minutes long)"),
         });
         listInfo.append(std::move(info65));
+
+        // Version 6.6.0 (Current)
+        PimCommon::WhatsNewInfo info66;
+        info66.setVersion(QStringLiteral("6.6.0"));
+        QStringList lst66;
+        const auto newFeatureStrings66 = lastNewFeatures();
+        for (const KLazyLocalizedString &l : newFeatureStrings66) {
+            lst66 += l.toString();
+        }
+        info66.setNewFeatures(lst66);
+        // info66.setChanges({i18n()});
+        // info66.setBugFixings({i18n()};
+        listInfo.append(std::move(info66));
     }
 
     return listInfo;
