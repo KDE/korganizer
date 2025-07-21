@@ -9,7 +9,7 @@ msgstr ""
 "Project-Id-Version: Korganizer\n"
 "Report-Msgid-Bugs-To: https://bugs.kde.org\n"
 "POT-Creation-Date: 2025-07-20 00:43+0000\n"
-"PO-Revision-Date: 2025-06-10 23:16+0200\n"
+"PO-Revision-Date: 2025-07-21 01:11+0200\n"
 "Last-Translator: Shinjo Park <kde@peremen.name>\n"
 "Language-Team: Korean <kde-kr@kde.org>\n"
 "Language: ko\n"
@@ -1239,12 +1239,10 @@ msgid "Manage T&ags…"
 msgstr "태그 관리(&A)…"
 
 #: actionmanager.cpp:760
-#, fuzzy, kde-format
-#| msgctxt "@action:inmenu"
-#| msgid "What's &Next"
+#, kde-format
 msgctxt "@action:inmenu"
 msgid "What's new"
-msgstr "다음 일정(&N)"
+msgstr "새로운 기능"
 
 #: actionmanager.cpp:765
 #, kde-format
@@ -1930,8 +1928,7 @@ msgid "Dissociating the occurrence failed."
 msgstr "현재 항목을 분리할 수 없습니다."
 
 #: calendarview.cpp:1818
-#, fuzzy, kde-format
-#| msgid "KOrganizer"
+#, kde-format
 msgctxt "@title:window"
 msgid "KOrganizer"
 msgstr "KOrganizer"
@@ -6086,11 +6083,8 @@ msgid "Selected Calendars"
 msgstr "선택한 캘린더"
 
 #: whatsnew/whatsnewtranslations.cpp:18
-#, fuzzy
-#| msgctxt "@action:button"
-#| msgid "Add as new calendar"
 msgid "Add What's New menu"
-msgstr "새 캘린더로 추가"
+msgstr "새로운 기능 메뉴 추가"
 
 #: whatsnew/whatsnewtranslations.cpp:19
 msgid "Add a Date Picker dialog available on the Go menu"
@@ -6122,10 +6116,8 @@ msgid "To-do view: remove the (redundant) to-do list from the sidebar"
 msgstr ""
 
 #: whatsnew/whatsnewtranslations.cpp:25
-#, fuzzy
-#| msgid "To-do list view uses full window"
 msgid "To-do view: save/restore fullview setting"
-msgstr "전체 창으로 할 일 보기"
+msgstr "하 ㄹ일 보기: 전체 보기 설정 저장/복원"
 
 #: whatsnew/whatsnewtranslations.cpp:26
 msgid "To-do view: save/restore flatview setting"
@@ -6162,10 +6154,8 @@ msgid "The import calendar dialog remembers its last import folder location"
 msgstr ""
 
 #: whatsnew/whatsnewtranslations.cpp:33
-#, fuzzy
-#| msgid "Get &Hot New Stuff..."
 msgid "Get Hot New Stuff removed"
-msgstr "새로운 항목 다운로드(&H)..."
+msgstr "새로운 항목 다운로드 기능이 삭제됨"
 
 #: whatsnew/whatsnewtranslations.cpp:34
 msgid "Add calendar file: remote calendars are always read-only"
