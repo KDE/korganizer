@@ -55,8 +55,11 @@ QList<PimCommon::WhatsNewInfo> WhatsNewTranslations::createWhatsNewInfo() const
         info65.setChanges({i18n("Semantics are changed from a \"working schedule\" concept to a \"week schedule\" concept to accommodate non-working users"),
                            i18n("Initial \"New Event\" start times are consistent across all the views"),
                            i18n("Improved default event calendar handling")});
-        info65.setBugFixings({i18n("Incidences with a long excluded dates list no longer create huge tooltips"),
-                              i18n("Fixed the organizer email address for incidences with attendees")});
+        info65.setBugFixings({
+            i18n("Incidences with a long excluded dates list no longer create huge tooltips"),
+            i18n("Fixed the organizer email address for incidences with attendees"),
+            i18n("Agenda view: events without a duration are displayed as 30 long (rather than 15 minutes long)"),
+        });
         listInfo.append(std::move(info65));
     }
 
