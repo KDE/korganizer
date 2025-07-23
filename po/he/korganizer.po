@@ -17,7 +17,7 @@ msgid ""
 msgstr ""
 "Project-Id-Version: korganizer\n"
 "Report-Msgid-Bugs-To: https://bugs.kde.org\n"
-"POT-Creation-Date: 2025-07-20 02:39+0000\n"
+"POT-Creation-Date: 2025-07-23 02:37+0000\n"
 "PO-Revision-Date: 2025-07-09 15:36+0300\n"
 "Last-Translator: Yaron Shahrabani <sh.yaron@gmail.com>\n"
 "Language-Team: צוות התרגום של KDE ישראל\n"
@@ -6257,16 +6257,23 @@ msgstr "זמני התחלת „אירוע חדש” עקביים על פני כ�
 msgid "Improved default event calendar handling"
 msgstr "טיפול משפול בלוח שנה כברירת מחדל לאירועים"
 
-#: whatsnew/whatsnewtranslations.cpp:58
+#: whatsnew/whatsnewtranslations.cpp:59
 #, kde-format
 msgid ""
 "Incidences with a long excluded dates list no longer create huge tooltips"
 msgstr "מופעים עם תאריכים מוחרגים ממושכים לא יוצרים עוד חלוניות צצות ענקיות"
 
-#: whatsnew/whatsnewtranslations.cpp:59
+#: whatsnew/whatsnewtranslations.cpp:60
 #, kde-format
 msgid "Fixed the organizer email address for incidences with attendees"
 msgstr "כתובת הדוא״ל של המארגן/ת תוקנה במופעים עם משתתפים"
+
+#: whatsnew/whatsnewtranslations.cpp:61
+#, kde-format
+msgid ""
+"Agenda view: events without a duration are displayed as 30 long (rather than "
+"15 minutes long)"
+msgstr ""
 
 #: widgets/kdatenavigator.cpp:171
 #, kde-format

@@ -7,7 +7,7 @@ msgid ""
 msgstr ""
 "Project-Id-Version: kdepim\n"
 "Report-Msgid-Bugs-To: https://bugs.kde.org\n"
-"POT-Creation-Date: 2025-07-20 02:39+0000\n"
+"POT-Creation-Date: 2025-07-23 02:37+0000\n"
 "PO-Revision-Date: 2009-06-08 01:08+0000\n"
 "Last-Translator: Vilson Gjeci <vilsongjeci@gmail.com>\n"
 "Language-Team: Albanian <sq@li.org>\n"
@@ -6094,15 +6094,22 @@ msgstr ""
 msgid "Improved default event calendar handling"
 msgstr ""
 
-#: whatsnew/whatsnewtranslations.cpp:58
+#: whatsnew/whatsnewtranslations.cpp:59
 #, kde-format
 msgid ""
 "Incidences with a long excluded dates list no longer create huge tooltips"
 msgstr ""
 
-#: whatsnew/whatsnewtranslations.cpp:59
+#: whatsnew/whatsnewtranslations.cpp:60
 #, kde-format
 msgid "Fixed the organizer email address for incidences with attendees"
+msgstr ""
+
+#: whatsnew/whatsnewtranslations.cpp:61
+#, kde-format
+msgid ""
+"Agenda view: events without a duration are displayed as 30 long (rather than "
+"15 minutes long)"
 msgstr ""
 
 #: widgets/kdatenavigator.cpp:171
