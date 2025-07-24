@@ -12,7 +12,7 @@ msgstr ""
 "Project-Id-Version: korganizer\n"
 "Report-Msgid-Bugs-To: https://bugs.kde.org\n"
 "POT-Creation-Date: 2025-07-23 00:44+0000\n"
-"PO-Revision-Date: 2025-07-09 09:40+0300\n"
+"PO-Revision-Date: 2025-07-23 16:12+0300\n"
 "Last-Translator: Yuri Chornoivan <yurchor@ukr.net>\n"
 "Language-Team: Ukrainian <trans-uk@lists.fedoraproject.org>\n"
 "Language: uk\n"
@@ -6339,7 +6339,7 @@ msgstr "Позначені календарі"
 #: whatsnew/whatsnewtranslations.cpp:18
 msgctxt "PLACEHOLDER. DO NOT TRANSLATE"
 msgid "Nothing yet"
-msgstr ""
+msgstr "Nothing yet"
 
 #: whatsnew/whatsnewtranslations.cpp:27
 msgid "Add What's New menu"
@@ -6507,6 +6507,8 @@ msgid ""
 "Agenda view: events without a duration are displayed as 30 long (rather than "
 "15 minutes long)"
 msgstr ""
+"Панель порядку денного: записи подій без тривалості буде показано із "
+"тривалістю 30 (а не 15 хвилин)"
 
 #: widgets/kdatenavigator.cpp:171
 #, kde-format
