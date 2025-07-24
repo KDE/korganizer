@@ -12,22 +12,22 @@
 # Henrique Pinto <henrique.pinto@kdemail.net>, 2005.
 # André Marcelo Alvarenga <alvarenga@kde.org>, 2008, 2009, 2010, 2011, 2012, 2013, 2014, 2015, 2016, 2018, 2019, 2020.
 # Luiz Fernando Ranghetti <elchevive@opensuse.org>, 2009, 2010, 2012, 2018, 2019, 2020, 2021, 2022, 2023, 2024.
-# Marcus Vinícius de Andrade Gama <marcus.gama@gmail.com>, 2010, 2012.
+# SPDX-FileCopyrightText: 2010, 2012, 2025 Marcus Vinícius de Andrade Gama <marcus.gama@gmail.com>
 # SPDX-FileCopyrightText: 2025 Geraldo Simiao <geraldosimiao@fedoraproject.org>
 msgid ""
 msgstr ""
 "Project-Id-Version: korganizer\n"
 "Report-Msgid-Bugs-To: https://bugs.kde.org\n"
 "POT-Creation-Date: 2025-07-23 02:37+0000\n"
-"PO-Revision-Date: 2025-02-06 17:41-0300\n"
-"Last-Translator: Geraldo Simiao <geraldosimiao@fedoraproject.org>\n"
+"PO-Revision-Date: 2025-07-23 20:03-0300\n"
+"Last-Translator: Marcus Gama <marcus.gama@gmail.com>\n"
 "Language-Team: Brazilian Portuguese <kde-i18n-pt_BR@kde.org>\n"
 "Language: pt_BR\n"
 "MIME-Version: 1.0\n"
 "Content-Type: text/plain; charset=UTF-8\n"
 "Content-Transfer-Encoding: 8bit\n"
 "Plural-Forms: nplurals=2; plural=(n > 1);\n"
-"X-Generator: Lokalize 24.12.1\n"
+"X-Generator: Lokalize 25.04.3\n"
 
 #, kde-format
 msgctxt "NAME OF TRANSLATORS"
@@ -47,27 +47,19 @@ msgstr ""
 #: kontactplugin/korganizer/korganizerplugin.cpp:42
 #: kontactplugin/korganizer/todoplugin.cpp:38
 #: kontactplugin/specialdates/specialdates_plugin.cpp:23
-#, fuzzy, kde-format
-#| msgid "KOrganizer"
+#, kde-format
 msgctxt "@info/plain"
 msgid "KOrganizer"
 msgstr "KOrganizer"
 
 #: aboutdata.cpp:20
-#, fuzzy, kde-format
-#| msgid "A Personal Organizer"
+#, kde-format
 msgctxt "@info/plain"
 msgid "A Personal Organizer"
 msgstr "Um organizador pessoal"
 
 #: aboutdata.cpp:23
-#, fuzzy, kde-format
-#| msgid ""
-#| "Copyright © 1997–1999 Preston Brown\n"
-#| "Copyright © 2000–2004, 2007 Cornelius Schumacher\n"
-#| "Copyright © 2004–2005 Reinhold Kainhofer\n"
-#| "Copyright © 2006–2012 Allen Winter\n"
-#| "Copyright © 2012–2025 KOrganizer authors"
+#, kde-format
 msgctxt "@info/plain"
 msgid ""
 "Copyright © 1997–1999 Preston Brown\n"
@@ -89,8 +81,7 @@ msgid "Allen Winter"
 msgstr "Allen Winter"
 
 #: aboutdata.cpp:31
-#, fuzzy, kde-format
-#| msgid "Maintainer"
+#, kde-format
 msgctxt "@info:credit"
 msgid "Maintainer"
 msgstr "Mantenedor"
@@ -102,8 +93,7 @@ msgid "Reinhold Kainhofer"
 msgstr "Reinhold Kainhofer"
 
 #: aboutdata.cpp:32 aboutdata.cpp:33
-#, fuzzy, kde-format
-#| msgid "Former Maintainer"
+#, kde-format
 msgctxt "@info:credit"
 msgid "Former Maintainer"
 msgstr "Mantenedor anterior"
@@ -121,8 +111,7 @@ msgid "Preston Brown"
 msgstr "Preston Brown"
 
 #: aboutdata.cpp:34
-#, fuzzy, kde-format
-#| msgid "Original Author"
+#, kde-format
 msgctxt "@info:credit"
 msgid "Original Author"
 msgstr "Autor original"
@@ -134,8 +123,7 @@ msgid "Laurent Montel"
 msgstr "Laurent Montel"
 
 #: aboutdata.cpp:35
-#, fuzzy, kde-format
-#| msgid "Developer"
+#, kde-format
 msgctxt "@info:credit"
 msgid "Developer"
 msgstr "Desenvolvedor"
@@ -285,8 +273,7 @@ msgid "Rafał Rzepecki"
 msgstr "Rafał Rzepecki"
 
 #: aboutdata.cpp:59
-#, fuzzy, kde-format
-#| msgid "Part of work sponsored by Google with Summer of Code 2005"
+#, kde-format
 msgctxt "@info:credit"
 msgid "Part of work sponsored by Google with Summer of Code 2005"
 msgstr "Parte do trabalho patrocinado pelo Google no Summer of Code 2005"
@@ -352,16 +339,13 @@ msgid "Fester Zigterman"
 msgstr "Fester Zigterman"
 
 #: actionmanager.cpp:130
-#, fuzzy, kde-format
-#| msgid ""
-#| "<qt>This will hide the menu bar completely. You can show it again by "
-#| "typing %1.</qt>"
+#, kde-format
 msgctxt "@info"
 msgid ""
 "This will hide the menu bar completely. You can show it again by typing %1."
 msgstr ""
-"<qt>Isto irá ocultar a barra de menus completamente. Você pode exibi-la "
-"novamente digitando %1.</qt>"
+"Isto irá ocultar a barra de menus completamente. Você pode exibi-la "
+"novamente digitando %1."
 
 #: actionmanager.cpp:133
 #, kde-format
@@ -370,9 +354,7 @@ msgid "Hide menu bar"
 msgstr "Ocultar barra de menus"
 
 #: actionmanager.cpp:244
-#, fuzzy, kde-format
-#| msgctxt "@action"
-#| msgid "Import &Calendar…"
+#, kde-format
 msgctxt "@action:inmenu"
 msgid "Import &Calendar…"
 msgstr "Importar &calendário…"
@@ -400,8 +382,7 @@ msgstr ""
 "iCalendar ou vCalendar na sua coleção de calendários atual."
 
 #: actionmanager.cpp:256
-#, fuzzy, kde-format
-#| msgid "Export as &iCalendar..."
+#, kde-format
 msgctxt "@action:inmenu"
 msgid "Export as &iCalendar…"
 msgstr "Exportar como &iCalendar..."
@@ -427,8 +408,7 @@ msgstr ""
 "Permite exportar sua coleção inteira de calendário para um arquivo iCalendar."
 
 #: actionmanager.cpp:265
-#, fuzzy, kde-format
-#| msgid "Archive O&ld Incidences..."
+#, kde-format
 msgctxt "@action:inmenu"
 msgid "Archive O&ld Incidences…"
 msgstr "Arquivar &incidências antigas..."
@@ -458,8 +438,7 @@ msgstr ""
 "Elas serão removidas de sua coleção de calendário existente."
 
 #: actionmanager.cpp:277
-#, fuzzy, kde-format
-#| msgid "Pur&ge Completed To-dos"
+#, kde-format
 msgctxt "@action:inmenu"
 msgid "Pur&ge Completed To-dos"
 msgstr "Elimi&nar tarefas concluídas"
@@ -488,18 +467,16 @@ msgstr ""
 
 #: actionmanager.cpp:318 actionmanager.cpp:617 actionmanager.cpp:1308
 #: actionmanager.cpp:1346
-#, fuzzy, kde-format
-#| msgid "&Delete"
+#, kde-format
 msgctxt "@action:inmenu"
 msgid "&Delete"
 msgstr "&Excluir"
 
 #: actionmanager.cpp:335
-#, fuzzy, kde-format
-#| msgid "What's &Next"
+#, kde-format
 msgctxt "@action:inmenu"
 msgid "What's &Next"
-msgstr "Qual é o &próximo"
+msgstr "O que temos a &seguir"
 
 #: actionmanager.cpp:336
 #, kde-format
@@ -528,8 +505,7 @@ msgstr ""
 "na barra lateral do navegador de datas serão exibidos."
 
 #: actionmanager.cpp:347
-#, fuzzy, kde-format
-#| msgid "&Month"
+#, kde-format
 msgctxt "@action:inmenu"
 msgid "&Month"
 msgstr "&Mês"
@@ -557,8 +533,7 @@ msgstr ""
 "em um layout familiar de calendário mensal."
 
 #: actionmanager.cpp:357
-#, fuzzy, kde-format
-#| msgid "&Agenda"
+#, kde-format
 msgctxt "@action:inmenu"
 msgid "&Agenda"
 msgstr "&Agenda"
@@ -588,8 +563,7 @@ msgstr ""
 "ver a extensão de cada evento no horário do dia."
 
 #: actionmanager.cpp:370
-#, fuzzy, kde-format
-#| msgid "&Event List"
+#, kde-format
 msgctxt "@action:inmenu"
 msgid "&Event List"
 msgstr "Lista de &eventos"
@@ -618,8 +592,7 @@ msgstr ""
 "datas como uma lista."
 
 #: actionmanager.cpp:380
-#, fuzzy, kde-format
-#| msgid "&To-do List"
+#, kde-format
 msgctxt "@action:inmenu"
 msgid "&To-do List"
 msgstr "Lista de &tarefas"
@@ -647,8 +620,7 @@ msgstr ""
 "você rastrear tarefas que precisam ser feitas."
 
 #: actionmanager.cpp:390
-#, fuzzy, kde-format
-#| msgid "&Journal"
+#, kde-format
 msgctxt "@action:inmenu"
 msgid "&Journal"
 msgstr "Diá&rio"
@@ -676,8 +648,7 @@ msgstr ""
 "suas reflexões, ocorrências e experiências."
 
 #: actionmanager.cpp:400
-#, fuzzy, kde-format
-#| msgid "Time&line"
+#, kde-format
 msgctxt "@action:inmenu"
 msgid "Time&line"
 msgstr "&Linha de tempo"
@@ -706,8 +677,7 @@ msgstr ""
 "calendário é mostrado em uma linha separada."
 
 #: actionmanager.cpp:413
-#, fuzzy, kde-format
-#| msgid "&Refresh"
+#, kde-format
 msgctxt "@action:inmenu"
 msgid "&Refresh"
 msgstr "A&tualizar"
@@ -735,8 +705,7 @@ msgstr ""
 "não sincroniza ou atualiza qualquer pasta de calendário."
 
 #: actionmanager.cpp:426
-#, fuzzy, kde-format
-#| msgid "F&ilter"
+#, kde-format
 msgctxt "@action:inmenu"
 msgid "F&ilter"
 msgstr "F&iltro"
@@ -765,44 +734,37 @@ msgstr ""
 "filtros de visualizações\" no menu Configurações."
 
 #: actionmanager.cpp:442
-#, fuzzy, kde-format
-#| msgid "In Horizontally"
+#, kde-format
 msgctxt "@action:inmenu"
 msgid "In Horizontally"
 msgstr "Aumentar na horizontal"
 
 #: actionmanager.cpp:447
-#, fuzzy, kde-format
-#| msgid "Out Horizontally"
+#, kde-format
 msgctxt "@action:inmenu"
 msgid "Out Horizontally"
 msgstr "Reduzir na horizontal"
 
 #: actionmanager.cpp:452
-#, fuzzy, kde-format
-#| msgid "In Vertically"
+#, kde-format
 msgctxt "@action:inmenu"
 msgid "In Vertically"
 msgstr "Aumentar na vertical"
 
 #: actionmanager.cpp:457
-#, fuzzy, kde-format
-#| msgid "Out Vertically"
+#, kde-format
 msgctxt "@action:inmenu"
 msgid "Out Vertically"
 msgstr "Reduzir na vertical"
 
 #: actionmanager.cpp:466
-#, fuzzy, kde-format
-#| msgctxt "@action Jump to today"
-#| msgid "To &Today"
+#, kde-format
 msgctxt "@action:inmenu Jump to today"
 msgid "To &Today"
 msgstr "Para &hoje"
 
 #: actionmanager.cpp:467
-#, fuzzy, kde-format
-#| msgid "Today"
+#, kde-format
 msgctxt "@action:button"
 msgid "Today"
 msgstr "Hoje"
@@ -826,17 +788,13 @@ msgid "Scrolls the current view to the today's date."
 msgstr "Rola a visualização atual para a data do dia de hoje."
 
 #: actionmanager.cpp:476
-#, fuzzy, kde-format
-#| msgctxt "scroll backward"
-#| msgid "&Backward"
+#, kde-format
 msgctxt "@action:inmenu scroll backward"
 msgid "&Backward"
 msgstr "&Para trás"
 
 #: actionmanager.cpp:478
-#, fuzzy, kde-format
-#| msgctxt "scroll backward"
-#| msgid "Back"
+#, kde-format
 msgctxt "@action:button scroll backward"
 msgid "Back"
 msgstr "Voltar"
@@ -864,17 +822,13 @@ msgstr ""
 "atual do calendário."
 
 #: actionmanager.cpp:489
-#, fuzzy, kde-format
-#| msgctxt "scroll forward"
-#| msgid "&Forward"
+#, kde-format
 msgctxt "@action:inmenu scroll forward"
 msgid "&Forward"
 msgstr "&Avançar"
 
 #: actionmanager.cpp:491
-#, fuzzy, kde-format
-#| msgctxt "scroll forward"
-#| msgid "Forward"
+#, kde-format
 msgctxt "@action:button scroll forward"
 msgid "Forward"
 msgstr "Avançar"
@@ -902,15 +856,13 @@ msgstr ""
 "atual do calendário."
 
 #: actionmanager.cpp:501
-#, fuzzy, kde-format
-#| msgid "&Day"
+#, kde-format
 msgctxt "@action:inmenu"
 msgid "&Day"
 msgstr "&Dia"
 
 #: actionmanager.cpp:502
-#, fuzzy, kde-format
-#| msgid "Day"
+#, kde-format
 msgctxt "@action:inmenu agenda view show 1 day at a time"
 msgid "Day"
 msgstr "Dia"
@@ -919,41 +871,38 @@ msgstr "Dia"
 #, kde-format
 msgctxt "@info:status"
 msgid "View 1 day at a time"
-msgstr ""
+msgstr "Ver um dia por vez"
 
 #: actionmanager.cpp:504
-#, fuzzy, kde-format
-#| msgid "Show this many days at a time in the Next \"x\" days view"
+#, kde-format
 msgctxt "@info:tooltip"
 msgid "Show 1 day at a time in Agenda View"
-msgstr "Mostrar este número de dias de uma vez na visão Próximos \"x\" dias"
+msgstr "Mostra um dia por vez na visão de Agenda"
 
 #: actionmanager.cpp:505
 #, kde-format
 msgctxt "@info:whatsthis"
 msgid "Select this option to show only 1 day at a time in Agenda View."
 msgstr ""
+"Selecione esta opção para mostrar somente um dia por vez na visão de Agenda."
 
 #: actionmanager.cpp:512
-#, fuzzy, kde-format
-#| msgid "&Next Day"
-#| msgid_plural "&Next %1 Days"
+#, kde-format
 msgctxt "@action:inmenu agenda view show a few days at a time"
 msgid "&Next Days"
-msgstr "Dia segui&nte"
+msgstr "&Próximos dias"
 
 #: actionmanager.cpp:513
 #, kde-format
 msgctxt "@info:status"
 msgid "View a few days at a time"
-msgstr ""
+msgstr "Ver alguns dias por vez"
 
 #: actionmanager.cpp:514
-#, fuzzy, kde-format
-#| msgid "Show this many days at a time in the Next \"x\" days view"
+#, kde-format
 msgctxt "@info:tooltip"
 msgid "Show the next few days at a time in Agenda View"
-msgstr "Mostrar este número de dias de uma vez na visão Próximos \"x\" dias"
+msgstr "Mostra alguns dias por vez na visão de Agenda"
 
 #: actionmanager.cpp:517
 #, kde-kuit-format
@@ -964,22 +913,24 @@ msgid ""
 "<interface>Views->General</interface> settings page to adjust the number of "
 "days shown."
 msgstr ""
+"Selecione esta opção para exibir alguns dias por vez na visão da Agenda. "
+"Configure a opção <placeholder>Próximos X Dias</placeholder> na página de "
+"configurações em <interface>Ver->Geral</interface> para ajustar o número de "
+"dias a ser exibido."
 
 #: actionmanager.cpp:524
-#, fuzzy, kde-format
-#| msgid "Schedule"
+#, kde-format
 msgctxt "@action:inmenu"
 msgid "W&eek Schedule"
-msgstr "Agenda"
+msgstr "Agenda s&emanal"
 
 #: actionmanager.cpp:525
-#, fuzzy, kde-format
-#| msgid "Schedule"
+#, kde-format
 msgctxt ""
 "@action:inmenu agenda view show the weekly schedule days only (eg. no "
 "weekends)"
 msgid "Week Schedule"
-msgstr "Agenda"
+msgstr "Agenda semanal"
 
 #: actionmanager.cpp:526
 #, kde-format
@@ -987,6 +938,8 @@ msgctxt "@info:status"
 msgid ""
 "Show a week at a time showing days included in your weekly schedule only"
 msgstr ""
+"Mostra uma semana por vez mostrando os dias incluídos somente na semana de "
+"sua agenda"
 
 #: actionmanager.cpp:528
 #, kde-format
@@ -995,6 +948,9 @@ msgid ""
 "Show a week at a time in Agenda View, excluding days that are not included "
 "in your weekly schedule (ie. weekends are excluded)"
 msgstr ""
+"Mostra uma semana por vez na visão da Agenda, excluindo dias que não "
+"estiverem incluídos na semana da agenda (por exemplo, fins de semana são "
+"excluídos)"
 
 #: actionmanager.cpp:531
 #, kde-kuit-format
