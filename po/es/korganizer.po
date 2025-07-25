@@ -18,7 +18,7 @@ msgstr ""
 "Project-Id-Version: korganizer\n"
 "Report-Msgid-Bugs-To: https://bugs.kde.org\n"
 "POT-Creation-Date: 2025-07-23 02:37+0000\n"
-"PO-Revision-Date: 2025-07-12 01:51+0100\n"
+"PO-Revision-Date: 2025-07-24 19:52+0100\n"
 "Last-Translator: Eloy Cuadra <ecuadra@eloihr.net>\n"
 "Language-Team: Spanish <kde-l10n-es@kde.org>\n"
 "Language: es\n"
@@ -6545,6 +6545,8 @@ msgid ""
 "Agenda view: events without a duration are displayed as 30 long (rather than "
 "15 minutes long)"
 msgstr ""
+"Vista de agenda: los eventos sin duración se muestran con una duración de 30 "
+"minutos (en lugar de 15)"
 
 #: widgets/kdatenavigator.cpp:171
 #, kde-format

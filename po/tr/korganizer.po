@@ -21,7 +21,7 @@ msgstr ""
 "Project-Id-Version: kdepim-kde4\n"
 "Report-Msgid-Bugs-To: https://bugs.kde.org\n"
 "POT-Creation-Date: 2025-07-23 02:37+0000\n"
-"PO-Revision-Date: 2025-07-02 17:21+0300\n"
+"PO-Revision-Date: 2025-07-24 20:17+0300\n"
 "Last-Translator: Emir SARI <emir_sari@îcloud.com>\n"
 "Language-Team: Turkish <kde-l10n-tr@kde.org>\n"
 "Language: tr\n"
@@ -6413,6 +6413,8 @@ msgid ""
 "Agenda view: events without a duration are displayed as 30 long (rather than "
 "15 minutes long)"
 msgstr ""
+"Ajanda görünümü: Süresi olmayan etkinlikler 15 yerine 30 dakikalık olarak "
+"görüntülenir"
 
 #: widgets/kdatenavigator.cpp:171
 #, kde-format
