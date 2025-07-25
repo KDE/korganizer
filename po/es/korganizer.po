@@ -18,7 +18,7 @@ msgstr ""
 "Project-Id-Version: korganizer\n"
 "Report-Msgid-Bugs-To: https://bugs.kde.org\n"
 "POT-Creation-Date: 2025-07-23 00:44+0000\n"
-"PO-Revision-Date: 2025-07-09 03:53+0100\n"
+"PO-Revision-Date: 2025-07-24 20:09+0100\n"
 "Last-Translator: Eloy Cuadra <ecuadra@eloihr.net>\n"
 "Language-Team: Spanish <kde-l10n-es@kde.org>\n"
 "Language: es\n"
@@ -6379,7 +6379,7 @@ msgstr "Calendarios seleccionados"
 #: whatsnew/whatsnewtranslations.cpp:18
 msgctxt "PLACEHOLDER. DO NOT TRANSLATE"
 msgid "Nothing yet"
-msgstr ""
+msgstr "Todavía no hay nada"
 
 #: whatsnew/whatsnewtranslations.cpp:27
 msgid "Add What's New menu"
@@ -6550,6 +6550,8 @@ msgid ""
 "Agenda view: events without a duration are displayed as 30 long (rather than "
 "15 minutes long)"
 msgstr ""
+"Vista de agenda: los eventos sin duración se muestran con una duración de 30 "
+"minutos (en lugar de 15)"
 
 #: widgets/kdatenavigator.cpp:171
 #, kde-format

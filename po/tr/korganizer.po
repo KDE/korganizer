@@ -21,15 +21,15 @@ msgstr ""
 "Project-Id-Version: kdepim-kde4\n"
 "Report-Msgid-Bugs-To: https://bugs.kde.org\n"
 "POT-Creation-Date: 2025-07-23 00:44+0000\n"
-"PO-Revision-Date: 2025-07-14 13:29+0300\n"
-"Last-Translator: Emir SARI <emir_sari@icloud.com>\n"
-"Language-Team: Turkish <kde-i18n-doc@kde.org>\n"
+"PO-Revision-Date: 2025-07-24 20:17+0300\n"
+"Last-Translator: Emir SARI <emir_sari@îcloud.com>\n"
+"Language-Team: Turkish <kde-l10n-tr@kde.org>\n"
 "Language: tr\n"
 "MIME-Version: 1.0\n"
 "Content-Type: text/plain; charset=UTF-8\n"
 "Content-Transfer-Encoding: 8bit\n"
 "Plural-Forms: nplurals=2; plural=(n > 1);\n"
-"X-Generator: Lokalize 25.07.70\n"
+"X-Generator: Lokalize 25.04.2\n"
 "(http: //www.transifex.com/projects/p/kdepim-k-tr/language/tr/)\n"
 "X-POOTLE-MTIME: 1413104942.000000\n"
 
@@ -6273,7 +6273,7 @@ msgstr "Seçili takvimler"
 #: whatsnew/whatsnewtranslations.cpp:18
 msgctxt "PLACEHOLDER. DO NOT TRANSLATE"
 msgid "Nothing yet"
-msgstr ""
+msgstr "Nothing yet"
 
 #: whatsnew/whatsnewtranslations.cpp:27
 msgid "Add What's New menu"
@@ -6418,6 +6418,8 @@ msgid ""
 "Agenda view: events without a duration are displayed as 30 long (rather than "
 "15 minutes long)"
 msgstr ""
+"Ajanda görünümü: Süresi olmayan etkinlikler 15 yerine 30 dakikalık olarak "
+"görüntülenir"
 
 #: widgets/kdatenavigator.cpp:171
 #, kde-format
