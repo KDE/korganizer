@@ -18,7 +18,7 @@ msgstr ""
 "Project-Id-Version: korganizer\n"
 "Report-Msgid-Bugs-To: https://bugs.kde.org\n"
 "POT-Creation-Date: 2025-07-23 02:37+0000\n"
-"PO-Revision-Date: 2025-07-09 15:36+0300\n"
+"PO-Revision-Date: 2025-07-24 09:44+0300\n"
 "Last-Translator: Yaron Shahrabani <sh.yaron@gmail.com>\n"
 "Language-Team: צוות התרגום של KDE ישראל\n"
 "Language: he\n"
@@ -6274,6 +6274,8 @@ msgid ""
 "Agenda view: events without a duration are displayed as 30 long (rather than "
 "15 minutes long)"
 msgstr ""
+"תצוגת סדר יום: אירועים בלי משך זמן יופיעו כאילו הם למשך חצי שעה (במקום 15 "
+"דקות)"
 
 #: widgets/kdatenavigator.cpp:171
 #, kde-format
