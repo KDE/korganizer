@@ -19,7 +19,7 @@ msgstr ""
 "Project-Id-Version: korganizer\n"
 "Report-Msgid-Bugs-To: https://bugs.kde.org\n"
 "POT-Creation-Date: 2025-07-23 02:37+0000\n"
-"PO-Revision-Date: 2025-07-24 07:33-0300\n"
+"PO-Revision-Date: 2025-07-26 14:57-0300\n"
 "Last-Translator: Marcus Gama <marcus.gama@gmail.com>\n"
 "Language-Team: Brazilian Portuguese <kde-i18n-pt_BR@kde.org>\n"
 "Language: pt_BR\n"
@@ -476,19 +476,19 @@ msgstr "&Excluir"
 #, kde-format
 msgctxt "@action:inmenu"
 msgid "What's &Next"
-msgstr "O que temos a &seguir"
+msgstr "O que vem a &seguir"
 
 #: actionmanager.cpp:336
 #, kde-format
 msgctxt "@info:status"
 msgid "What's Next View"
-msgstr "Vista de qual é o próximo"
+msgstr "Vista do que vem a seguir"
 
 #: actionmanager.cpp:337
 #, kde-format
 msgctxt "@info:tooltip"
 msgid "Switch to the What's Next View"
-msgstr "Alternar para a visualização de qual é o próximo"
+msgstr "Alternar para a vista do que vem a seguir"
 
 #: actionmanager.cpp:339
 #, kde-format
@@ -499,10 +499,10 @@ msgid ""
 "will be displayed, but only the events from the days selected in the Date "
 "Navigator sidebar will be shown."
 msgstr ""
-"Alterna para a vista \"Qual é o próximo\" que mostra seus eventos e tarefas "
-"que estão por vir em uma lista curta para uma rápida leitura. Todas as "
-"tarefas em aberto serão exibidas mas apenas os eventos dos dias selecionados "
-"na barra lateral do navegador de datas serão exibidos."
+"Alterna para a vista \"O que vem a seguir\" que mostra seus eventos e "
+"tarefas que estão por vir em uma lista curta para uma rápida leitura. Todas "
+"as tarefas em aberto serão exibidas mas apenas os eventos dos dias "
+"selecionados na barra lateral do navegador de datas serão exibidos."
 
 #: actionmanager.cpp:347
 #, kde-format
@@ -948,7 +948,7 @@ msgid ""
 "Show a week at a time in Agenda View, excluding days that are not included "
 "in your weekly schedule (ie. weekends are excluded)"
 msgstr ""
-"Mostra uma semana por vez na visão da Agenda, excluindo dias que não "
+"Mostra uma semana por vez na Visão da Agenda, excluindo dias que não "
 "estiverem incluídos na semana da agenda (por exemplo, fins de semana são "
 "excluídos)"
 
@@ -1031,7 +1031,7 @@ msgstr ""
 #, kde-format
 msgctxt "@action:inmenu"
 msgid "New &To-do…"
-msgstr "Nova &tarefa..."
+msgstr "Nova &tarefa…"
 
 #: actionmanager.cpp:562
 #, kde-format
@@ -1151,7 +1151,7 @@ msgstr ""
 "Na vista multi-calendário, abre uma janela que permite a configuração da "
 "vista. Atualmente, somente a exibição de calendários múltiplos é suportada. "
 "Veja as opções de múltiplos calendários nas configurações em Visualizações -"
-"> Visão da agenda."
+"> Visão da Agenda."
 
 #: actionmanager.cpp:609 actionmanager.cpp:1302 actionmanager.cpp:1344
 #: koeventpopupmenu.cpp:42
@@ -3906,7 +3906,7 @@ msgstr "Não foi possível configurar este plugin"
 #, kde-format
 msgctxt "@title:tab"
 msgid "Regional"
-msgstr "Regional"
+msgstr "Configurações regionais"
 
 #: prefs/koprefsdialogtime.cpp:47
 #, kde-format
@@ -4097,7 +4097,7 @@ msgstr "Navegador de datas"
 #, kde-format
 msgctxt "@title:tab"
 msgid "Agenda View"
-msgstr "Visão da agenda"
+msgstr "Visão da Agenda"
 
 #: prefs/koprefsdialogviews.cpp:94
 #, kde-format
@@ -4109,13 +4109,13 @@ msgstr " pixels"
 #, kde-format
 msgctxt "@title:tab"
 msgid "Month View"
-msgstr "Visualização mensal"
+msgstr "Visão Mensal"
 
 #: prefs/koprefsdialogviews.cpp:153
 #, kde-format
 msgctxt "@title:tab"
 msgid "Todo View"
-msgstr "Visão de tarefas"
+msgstr "Visão de Tarefas"
 
 #: prefs/koprefsdialogviews.cpp:166
 #, kde-format
@@ -4434,7 +4434,7 @@ msgstr ""
 #: settings/korganizer.kcfg:92
 #, kde-format
 msgid "Show journals instead of events when in Journal View"
-msgstr "Mostrar diários em vez de eventos quando estiver na Visão Diário"
+msgstr "Mostrar diários em vez de eventos quando estiver na Visão do Diário"
 
 #. i18n: ectx: whatsthis, entry (HighlightJournals), group (General View)
 #: settings/korganizer.kcfg:93
@@ -4444,7 +4444,7 @@ msgid ""
 "Date Navigator when in journal view."
 msgstr ""
 "Marque esta opção para mostrar os dias que contêm diários em negrito no "
-"navegador de datas, quando estiver na visão diário."
+"navegador de datas, quando estiver na visão do diário."
 
 #. i18n: ectx: label, entry (WeekNumbersShow), group (General View)
 #: settings/korganizer.kcfg:97
@@ -5222,7 +5222,7 @@ msgstr ""
 #: settings/korganizer.kcfg:334
 #, kde-format
 msgid "Agenda view"
-msgstr "Visão da agenda"
+msgstr "Visão da Agenda"
 
 #. i18n: ectx: whatsthis, entry, group (Fonts)
 #: settings/korganizer.kcfg:335
@@ -6333,7 +6333,7 @@ msgid ""
 "Agenda view: consolidated the \"Day\", \"Next X Days\", \"Work Schedule\", "
 "\"Week\" time ranges into the Agenda tool button"
 msgstr ""
-"Visão da agenda: consolidou os intervalos de tempo do \"Dia\", \"Próximos X "
+"Visão da Agenda: consolidou os intervalos de tempo do \"Dia\", \"Próximos X "
 "dias\", \"Agenda de trabalho\" e \"Semana\" no botão da ferramenta Agenda"
 
 #: whatsnew/whatsnewtranslations.cpp:21
@@ -6347,7 +6347,7 @@ msgstr ""
 #: whatsnew/whatsnewtranslations.cpp:22
 msgid "Agenda view: added context menu to create new Event or To-do"
 msgstr ""
-"Visão da agenda: adicionado menu de contexto para criar novo evento ou tarefa"
+"Visão da Agenda: adicionado menu de contexto para criar novo evento ou tarefa"
 
 #: whatsnew/whatsnewtranslations.cpp:23
 msgid ""
