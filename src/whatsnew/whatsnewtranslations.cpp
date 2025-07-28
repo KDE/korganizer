@@ -21,7 +21,6 @@ QList<KLazyLocalizedString> WhatsNewTranslations::lastNewFeatures() const
         kli18n("Agenda view: added timelabels context menu option to toggle a 24-hour (military style) clock"),
         kli18n("Agenda view: added context menu to create new Event or To-do"),
         kli18n("To-do view: added context menu options for toggling completion and reminders"),
-        kli18n("To-do view: remove the (redundant) to-do list from the sidebar"),
         kli18n("To-do view: save/restore fullview setting"),
         kli18n("To-do view: save/restore flatview setting"),
         kli18n("Date navigator: added an option in the Configure->Views settings for hiding the week numbers"),
