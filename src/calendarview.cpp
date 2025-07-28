@@ -776,15 +776,6 @@ void CalendarView::updateView(const QDate &start, const QDate &end, const QDate 
 {
     const bool currentViewIsTodoView = mViewManager->currentView()->identifier() == "DefaultTodoView";
 
-    /* Never show the todolist in the sidebar when in todoview mode */
-    if (currentViewIsTodoView) {
-        mTodoList->setVisible(false);
-    } else {
-        KSharedConfig::Ptr config = KSharedConfig::openConfig();
-        const KConfigGroup group = config->group(QStringLiteral("Settings"));
-        mTodoList->setVisible(group.readEntry("TodoViewVisible", false));
-    }
-
     if (updateTodos && mTodoList->isVisible()) {
         // Update the sidepane todoView
         mTodoList->updateView();
