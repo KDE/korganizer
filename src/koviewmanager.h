@@ -161,7 +161,6 @@ private Q_SLOTS:
 
 private:
     KActionCollection *getActionCollection();
-    [[nodiscard]] bool isAgendaViewAction(QAction *, KActionCollection *);
     QWidget *widgetForView(KOrg::BaseView *) const;
     QList<KOrg::BaseView *> mViews;
     CalendarView *const mMainView;

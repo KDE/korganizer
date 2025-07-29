@@ -61,7 +61,6 @@ public:
 
     Akonadi::EntityTreeView *view() const;
 
-    KCheckableProxyModel *collectionSelectionProxyModel() const;
     void setCollectionSelectionProxyModel(KCheckableProxyModel *);
 
     [[nodiscard]] Akonadi::Collection selectedCollection() const;
