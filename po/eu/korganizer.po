@@ -14,7 +14,7 @@ msgstr ""
 "Project-Id-Version: korganizer\n"
 "Report-Msgid-Bugs-To: https://bugs.kde.org\n"
 "POT-Creation-Date: 2025-07-29 02:38+0000\n"
-"PO-Revision-Date: 2025-07-23 13:53+0200\n"
+"PO-Revision-Date: 2025-07-29 10:22+0200\n"
 "Last-Translator: Iñigo Salvador Azurmendi <xalba@ni.eus>\n"
 "Language-Team: Basque <kde-i18n-eu@kde.org>\n"
 "Language: eu\n"
@@ -1237,8 +1237,7 @@ msgid "Show Date Navigator"
 msgstr "Erakutsi Data Nabigatzailea"
 
 #: actionmanager.cpp:711
-#, fuzzy, kde-format
-#| msgid "Show To-do View"
+#, kde-format
 msgctxt "@action:inmenu"
 msgid "Show To-do View"
 msgstr "Erakutsi zereginen ikuspegia"

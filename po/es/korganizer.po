@@ -18,7 +18,7 @@ msgstr ""
 "Project-Id-Version: korganizer\n"
 "Report-Msgid-Bugs-To: https://bugs.kde.org\n"
 "POT-Creation-Date: 2025-07-29 02:38+0000\n"
-"PO-Revision-Date: 2025-07-24 19:52+0100\n"
+"PO-Revision-Date: 2025-07-29 13:50+0100\n"
 "Last-Translator: Eloy Cuadra <ecuadra@eloihr.net>\n"
 "Language-Team: Spanish <kde-l10n-es@kde.org>\n"
 "Language: es\n"
@@ -1247,11 +1247,10 @@ msgid "Show Date Navigator"
 msgstr "Mostrar el navegador de fechas"
 
 #: actionmanager.cpp:711
-#, fuzzy, kde-format
-#| msgid "Show To-dos Due"
+#, kde-format
 msgctxt "@action:inmenu"
 msgid "Show To-do View"
-msgstr "Mostrar tareas pendientes vencidas"
+msgstr "Mostrar la vista de tareas pendientes"
 
 #: actionmanager.cpp:715
 #, kde-format
@@ -6713,12 +6712,3 @@ msgstr "%1"
 msgctxt "4 digit year"
 msgid "%1"
 msgstr "%1"
-
-#~ msgctxt "@action:inmenu"
-#~ msgid "Show To-do List in Calendar Views"
-#~ msgstr "Mostrar la lista de tareas pendientes en las vistas de calendario"
-
-#~ msgid "To-do view: remove the (redundant) to-do list from the sidebar"
-#~ msgstr ""
-#~ "Vista de tareas pendientes: se ha eliminado la (redundante) lista de "
-#~ "tareas pendientes de la barra lateral."

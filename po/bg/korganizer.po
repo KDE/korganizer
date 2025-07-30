@@ -4,7 +4,7 @@ msgstr ""
 "Project-Id-Version: korganizer\n"
 "Report-Msgid-Bugs-To: https://bugs.kde.org\n"
 "POT-Creation-Date: 2025-07-29 02:38+0000\n"
-"PO-Revision-Date: 2025-07-28 17:12+0200\n"
+"PO-Revision-Date: 2025-07-29 21:57+0200\n"
 "Last-Translator: Mincho Kondarev <mkondarev@yahoo.de>\n"
 "Language-Team: Bulgarian <kde-i18n-doc@kde.org>\n"
 "Language: bg\n"
@@ -1226,11 +1226,10 @@ msgid "Show Date Navigator"
 msgstr "Показване на датите"
 
 #: actionmanager.cpp:711
-#, fuzzy, kde-format
-#| msgid "Show To-dos Due"
+#, kde-format
 msgctxt "@action:inmenu"
 msgid "Show To-do View"
-msgstr "Показване на задълженията"
+msgstr "Показване на задачите"
 
 #: actionmanager.cpp:715
 #, kde-format

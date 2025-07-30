@@ -8,7 +8,7 @@ msgstr ""
 "Project-Id-Version: korganizer\n"
 "Report-Msgid-Bugs-To: https://bugs.kde.org\n"
 "POT-Creation-Date: 2025-07-29 02:38+0000\n"
-"PO-Revision-Date: 2025-07-13 05:47+0200\n"
+"PO-Revision-Date: 2025-07-29 07:03+0200\n"
 "Last-Translator: Temuri Doghonadze <temuri.doghonadze@gmail.com>\n"
 "Language-Team: Georgian <kde-i18n-doc@kde.org>\n"
 "Language: ka\n"
@@ -6408,6 +6408,8 @@ msgid ""
 "Agenda view: events without a duration are displayed as 30 long (rather than "
 "15 minutes long)"
 msgstr ""
+"გეგმის ხედი: ხანგრძლივობის არმქონე მოვლენები ნაჩვენები იქნება, როგორც 30 წთ "
+"(და არა როგორც 15 წთ-ის ხანგრძლივობის მქონე)"
 
 #: widgets/kdatenavigator.cpp:171
 #, kde-format
