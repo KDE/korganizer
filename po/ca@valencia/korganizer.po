@@ -14,7 +14,7 @@ msgstr ""
 "Project-Id-Version: korganizer\n"
 "Report-Msgid-Bugs-To: https://bugs.kde.org\n"
 "POT-Creation-Date: 2025-07-29 02:38+0000\n"
-"PO-Revision-Date: 2025-07-23 11:14+0200\n"
+"PO-Revision-Date: 2025-07-29 09:11+0200\n"
 "Last-Translator: Josep M. Ferrer <txemaq@gmail.com>\n"
 "Language-Team: Catalan <kde-i18n-ca@kde.org>\n"
 "Language: ca@valencia\n"
@@ -1092,7 +1092,7 @@ msgstr "Inicia un diàleg que permet crear una entrada nova del diari."
 #, kde-format
 msgctxt "@action:inmenu Jump to date"
 msgid "&Pick a Date"
-msgstr "&Seleccioneu una data"
+msgstr "&Trieu una data"
 
 #: actionmanager.cpp:589
 #, kde-format
@@ -1246,11 +1246,10 @@ msgid "Show Date Navigator"
 msgstr "Mostra el navegador de dates"
 
 #: actionmanager.cpp:711
-#, fuzzy, kde-format
-#| msgid "Show To-dos Due"
+#, kde-format
 msgctxt "@action:inmenu"
 msgid "Show To-do View"
-msgstr "Mostra el venciment de les tasques pendents"
+msgstr "Mostra la vista de les tasques pendents"
 
 #: actionmanager.cpp:715
 #, kde-format
@@ -3786,8 +3785,8 @@ msgstr ""
 msgctxt "@info:whatsthis"
 msgid "Choose the color of the tag selected in the adjacent combo box."
 msgstr ""
-"Seleccioneu ací el color de l'etiqueta seleccionada utilitzant el quadro "
-"combinat superior."
+"Trieu ací el color de l'etiqueta seleccionada utilitzant el quadro combinat "
+"superior."
 
 #: prefs/koprefsdialogcolorsandfonts.cpp:123
 #, kde-format
@@ -3811,8 +3810,8 @@ msgctxt "@info:whatsthis"
 msgid ""
 "Choose here the color of the calendar selected using the combo box above."
 msgstr ""
-"Seleccioneu ací el color del calendari seleccionat utilitzant el quadro "
-"combinat superior."
+"Trieu ací el color del calendari seleccionat utilitzant el quadro combinat "
+"superior."
 
 #: prefs/koprefsdialogcolorsandfonts.cpp:150
 #, kde-format
@@ -4144,7 +4143,7 @@ msgstr "Altres opcions"
 #, kde-format
 msgctxt "@action:button"
 msgid "Choose…"
-msgstr "Seleccioneu…"
+msgstr "Trieu…"
 
 #: prefs/kprefsdialog.cpp:659
 #, kde-format
@@ -6702,12 +6701,3 @@ msgstr "%1"
 msgctxt "4 digit year"
 msgid "%1"
 msgstr "%1"
-
-#~ msgctxt "@action:inmenu"
-#~ msgid "Show To-do List in Calendar Views"
-#~ msgstr "Mostra la llista de tasques pendents a les vistes de calendari"
-
-#~ msgid "To-do view: remove the (redundant) to-do list from the sidebar"
-#~ msgstr ""
-#~ "Vista de les tasques pendents: elimina la llista de tasques pendents "
-#~ "(redundant) de la barra lateral"
