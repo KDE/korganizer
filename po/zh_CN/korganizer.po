@@ -5776,7 +5776,7 @@ msgstr "包括指定日期范围内的事件(&V)"
 msgid ""
 "Uncheck this box to skip incidences matching the currently selected view "
 "filter"
-msgstr "取消勾选此框以跳过与当前选择的视图过滤器匹配的事件"
+msgstr "取消选中此复选框以跳过与当前视图筛选器匹配的事件"
 
 #. i18n: ectx: property (whatsThis), widget (QCheckBox, unfiltered)
 #: ui/searchdialog_base.ui:328
@@ -5934,7 +5934,7 @@ msgstr ""
 
 #: whatsnew/whatsnewtranslations.cpp:29
 msgid "Incidence editor: support drag-and-drop attachments"
-msgstr ""
+msgstr "事件编辑器：支持拖放附件"
 
 #: whatsnew/whatsnewtranslations.cpp:30
 msgid "The export calendar dialog remembers its last export folder location"
@@ -6002,7 +6002,7 @@ msgstr ""
 msgid ""
 "Agenda view: events without a duration are displayed as 30 long (rather than "
 "15 minutes long)"
-msgstr ""
+msgstr "议程视图：没有持续时间的事件显示为 30 分钟  (而不是 15 分钟) "
 
 #: widgets/kdatenavigator.cpp:171
 #, kde-format
