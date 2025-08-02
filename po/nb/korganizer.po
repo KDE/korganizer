@@ -6452,9 +6452,3 @@ msgstr "%1"
 msgctxt "4 digit year"
 msgid "%1"
 msgstr "%1"
-
-#, fuzzy
-#~| msgid "Show icons in agenda view items"
-#~ msgctxt "@action:inmenu"
-#~ msgid "Show To-do List in Calendar Views"
-#~ msgstr "Vis ikoner i elementene i timeplanvisningen"
