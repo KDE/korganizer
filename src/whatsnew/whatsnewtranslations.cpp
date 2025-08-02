@@ -15,7 +15,7 @@ WhatsNewTranslations::~WhatsNewTranslations() = default;
 QList<KLazyLocalizedString> WhatsNewTranslations::lastNewFeatures() const
 {
     const QList<KLazyLocalizedString> info{
-        kli18nc("PLACEHOLDER. DO NOT TRANSLATE", "Nothing yet"),
+        kli18n("Incidence editor: detect and warn about creating incidences in the past"),
     };
 
     return info;
