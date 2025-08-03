@@ -106,21 +106,27 @@ void KOViewManager::readSettings(KConfig *config)
 
     if (view == QLatin1StringView("WhatsNext")) {
         showWhatsNextView();
+        return;
     } else if (view == QLatin1StringView("List")) {
         showListView();
         mListView->readSettings(config);
+        return;
     } else if (view == QLatin1StringView("Journal")) {
         showJournalView();
+        return;
     } else if (view == QLatin1StringView("Todo")) {
         showTodoView();
+        return;
     } else if (view == QLatin1StringView("Timeline")) {
         showTimeLineView();
+        return;
     } else if ((view == QLatin1StringView("Month")) || (view == QLatin1StringView("OldMonth"))) {
         showMonthView();
-    } else {
-        showAgendaView();
+        return;
     }
 
+    // Else, agendaview with a range mode
+    showAgendaView();
     mRangeMode = RangeMode(generalConfig.readEntry("Range Mode", int(OTHER_RANGE)));
 
     switch (mRangeMode) {
