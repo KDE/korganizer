@@ -16,6 +16,7 @@ QList<KLazyLocalizedString> WhatsNewTranslations::lastNewFeatures() const
 {
     const QList<KLazyLocalizedString> info{
         kli18n("Add What's New menu"),
+        kli18n("The current view is remembered"),
         kli18n("Add a Date Picker dialog available on the Go menu"),
         kli18n("Agenda view: consolidated the \"Day\", \"Next X Days\", \"Work Schedule\", \"Week\" time ranges into the Agenda tool button"),
         kli18n("Agenda view: added timelabels context menu option to toggle a 24-hour (military style) clock"),
