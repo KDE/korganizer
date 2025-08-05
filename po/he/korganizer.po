@@ -18,7 +18,7 @@ msgstr ""
 "Project-Id-Version: korganizer\n"
 "Report-Msgid-Bugs-To: https://bugs.kde.org\n"
 "POT-Creation-Date: 2025-08-04 00:42+0000\n"
-"PO-Revision-Date: 2025-08-03 11:17+0300\n"
+"PO-Revision-Date: 2025-08-04 20:31+0300\n"
 "Last-Translator: Yaron Shahrabani <sh.yaron@gmail.com>\n"
 "Language-Team: צוות התרגום של KDE ישראל\n"
 "Language: he\n"
@@ -6149,7 +6149,7 @@ msgstr "הוספת תפריט מה חדש"
 
 #: whatsnew/whatsnewtranslations.cpp:28
 msgid "The current view is remembered"
-msgstr ""
+msgstr "התצוגה הנוכחית נשמרת"
 
 #: whatsnew/whatsnewtranslations.cpp:29
 msgid "Add a Date Picker dialog available on the Go menu"

@@ -12,7 +12,7 @@ msgstr ""
 "Project-Id-Version: korganizer\n"
 "Report-Msgid-Bugs-To: https://bugs.kde.org\n"
 "POT-Creation-Date: 2025-08-04 00:42+0000\n"
-"PO-Revision-Date: 2025-08-03 16:05+0300\n"
+"PO-Revision-Date: 2025-08-04 09:03+0300\n"
 "Last-Translator: Yuri Chornoivan <yurchor@ukr.net>\n"
 "Language-Team: Ukrainian <trans-uk@lists.fedoraproject.org>\n"
 "Language: uk\n"
@@ -6348,7 +6348,7 @@ msgstr "Додано меню «Що нового?»"
 
 #: whatsnew/whatsnewtranslations.cpp:28
 msgid "The current view is remembered"
-msgstr ""
+msgstr "Нова версія програми запам'ятовує параметри поточного перегляду"
 
 #: whatsnew/whatsnewtranslations.cpp:29
 msgid "Add a Date Picker dialog available on the Go menu"

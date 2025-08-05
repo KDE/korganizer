@@ -21,7 +21,7 @@ msgstr ""
 "Project-Id-Version: kdepim-kde4\n"
 "Report-Msgid-Bugs-To: https://bugs.kde.org\n"
 "POT-Creation-Date: 2025-08-04 00:42+0000\n"
-"PO-Revision-Date: 2025-08-03 19:01+0300\n"
+"PO-Revision-Date: 2025-08-04 13:28+0300\n"
 "Last-Translator: Emir SARI <emir_sari@îcloud.com>\n"
 "Language-Team: Turkish <kde-l10n-tr@kde.org>\n"
 "Language: tr\n"
@@ -6280,7 +6280,7 @@ msgstr "Neler Yeni menü ögesi eklendi"
 
 #: whatsnew/whatsnewtranslations.cpp:28
 msgid "The current view is remembered"
-msgstr ""
+msgstr "Geçerli görünüm artık anımsanıyor"
 
 #: whatsnew/whatsnewtranslations.cpp:29
 msgid "Add a Date Picker dialog available on the Go menu"
