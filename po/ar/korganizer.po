@@ -12,7 +12,7 @@ msgstr ""
 "Project-Id-Version: korganizer\n"
 "Report-Msgid-Bugs-To: https://bugs.kde.org\n"
 "POT-Creation-Date: 2025-08-04 02:53+0000\n"
-"PO-Revision-Date: 2025-08-03 07:39+0400\n"
+"PO-Revision-Date: 2025-08-04 15:17+0400\n"
 "Last-Translator: Zayed Al-Saidi <zayed.alsaidi@gmail.com>\n"
 "Language-Team: ar\n"
 "Language: ar\n"
@@ -1469,7 +1469,7 @@ msgid ""
 msgstr ""
 "<para>أتريد دمج عنصر التقويم هذا بالتقويم الموجود أو استخدامه لإنشاء تقويم "
 "جديد؟</para><para>إن اخترت الدمج فسيُطلب منك اختيار التقويم المقصد.</"
-"para><para>إن اخترت الإضافة فسيُنشأ تقويم لك آليًا.</para>"
+"para><para>إن اخترت الإضافة فسيُنشأ تقويم لك آليًّا.</para>"
 
 #: actionmanager.cpp:1662
 #, kde-format
@@ -2173,7 +2173,7 @@ msgid ""
 "<para>On the left sidebar, enable it in the calendar manager to see the "
 "incidence.</para>"
 msgstr ""
-"أنشأت حدوثًا في تقويم مرشّح مخفيّ حاليًا.<para>فعّله من الشريط الجانبي اليمني في "
+"أنشأت حدوثًا في تقويم مرشّح مخفيّ حاليًا.<para>مكّنه من الشريط الجانبي اليمني في "
 "مدير التقاويم لرؤية الحدوث.</para>"
 
 #: calendarview.cpp:2795
@@ -4112,13 +4112,13 @@ msgstr ""
 #, kde-format
 msgctxt "@title:window"
 msgid "Setting Default Preferences"
-msgstr "ضبط التفضيلات الافتراضية"
+msgstr "ضبط التفضيلات المبدئية"
 
 #: prefs/kprefsdialog.cpp:709
 #, kde-format
 msgctxt "@action:button"
 msgid "Reset to Defaults"
-msgstr "صفّر إلى الافتراضيّات"
+msgstr "صفّر إلى المبدئيّات"
 
 #. i18n: ectx: label, entry (Confirm), group (Save Settings)
 #: settings/korganizer.kcfg:9
@@ -4158,7 +4158,7 @@ msgid ""
 "using the current default calendar."
 msgstr ""
 "حدد هذا الخيار لتسجيل الأحداث الجديدة والمهام وقيود اليومية دائمًا باستخدام "
-"التقويم الافتراضي الحالي."
+"التقويم المبدئي الحالي."
 
 #. i18n: ectx: label, entry (Destination), group (Save Settings)
 #: settings/korganizer.kcfg:22
@@ -4191,7 +4191,7 @@ msgid ""
 msgstr ""
 "اختر منطقتك الزمنية من قائمة المواقع في هذه القائمة المنسدلة. إن لم تكن "
 "مدينتك موجودة، فاختر مدينة لها نفس المنطقة الزمنية لمدينتك. سيضبط «منظّمك» "
-"التوقيت الصيفي. آليًا."
+"التوقيت الصيفي. آليًّا."
 
 #. i18n: ectx: label, entry (WeekStartDay), group (Time &amp; Date)
 #: settings/korganizer.kcfg:35
@@ -4278,7 +4278,7 @@ msgstr ""
 #: settings/korganizer.kcfg:61
 #, kde-format
 msgid "Enable tooltips for displaying summaries"
-msgstr "فعّل التلميحات لعرض الملخّصات"
+msgstr "مكّن التلميحات لعرض الملخّصات"
 
 #. i18n: ectx: whatsthis, entry, group (General View)
 #: settings/korganizer.kcfg:62
@@ -4549,7 +4549,7 @@ msgid ""
 "time range in the daily and weekly view. To select a time range, drag the "
 "mouse from the start time to the end time of the event you are about to plan."
 msgstr ""
-"حدد هذا المربع لبدء تشغيل محرر الأحداث تلقائيًا عند تحديد نطاق زمني في العرض "
+"حدد هذا المربع لبدء تشغيل محرر الأحداث آليًّا عند تحديد نطاق زمني في العرض "
 "اليومي والأسبوعي. لتحديد نطاق زمني، اسحب الفأرة من وقت البدء إلى وقت "
 "الانتهاء للحدث الذي تخطط له."
 
@@ -4557,7 +4557,7 @@ msgstr ""
 #: settings/korganizer.kcfg:144
 #, kde-format
 msgid "Enable automatic event editor with time range selection"
-msgstr "مكّن محرر الأحداث التلقائي مع تحديد النطاق الزمني"
+msgstr "مكّن محرر الأحداث الآليّ مع تحديد النطاق الزمني"
 
 #. i18n: ectx: label, entry, group (Agenda View)
 #. i18n: ectx: label, entry, group (Month View)
@@ -4982,8 +4982,7 @@ msgid ""
 "Check this box to record the completion of a to-do in a new entry of your "
 "journal automatically."
 msgstr ""
-"أشّر على هذا المربع لتسجيل إكمال مهمة ما في إدخال جديد في دفتر يومياتك "
-"تلقائيًا."
+"أشّر على هذا المربع لتسجيل إكمال مهمة ما في إدخال جديد في دفتر يومياتك آليًّا."
 
 #. i18n: ectx: label, entry, group (Colors)
 #. i18n: ectx: label, entry, group (Theming)
@@ -5269,8 +5268,8 @@ msgid ""
 "for events in your Month. Note that you can specify a separate color for "
 "each event tag below."
 msgstr ""
-"حدد لون الحدث الافتراضي هنا. سيستخدم لون الحدث الافتراضي للأحداث في شهرك. "
-"لاحظ أنه يمكنك تحديد لون منفصل لكل علامة حدث أدناه."
+"حدد لون الحدث المبدئي هنا. سيستخدم لون الحدث المبدئي للأحداث في شهرك. لاحظ "
+"أنه يمكنك تحديد لون منفصل لكل علامة حدث أدناه."
 
 #. i18n: ectx: property (placeholderText), widget (KListWidgetSearchLine, searchline)
 #: ui/filteredit_base.ui:35
@@ -5484,7 +5483,7 @@ msgid ""
 "as the Kolab2 server taking care of publishing your Free/Busy information "
 "and manages the access to it from other users."
 msgstr ""
-"حدد هذا المربع لتحميل معلوماتك المتوفرة/المشغولة تلقائيًا.\n"
+"حدد هذا المربع لتحميل معلوماتك المتوفرة/المشغولة آليًّا.\n"
 "من الممكن تخطي هذا الخيار وإرسال معلوماتك المتوفرة/المشغولة عبر البريد "
 "الإلكتروني أو تحميلها باستخدام قائمة \"الجدول\" في منظمك.\n"
 "ملاحظة: إذا كان منظمك يعمل كعميل كيدي Kolab، فهذا ليس ضروريًا، حيث يتولى خادم "
@@ -5495,7 +5494,7 @@ msgstr ""
 #: ui/kogroupwareprefspage.ui:75
 #, kde-format
 msgid "Publish your free/&busy information automatically"
-msgstr "انشر معلومات متوفر/م&شغول آليًا"
+msgstr "انشر معلومات متوفر/م&شغول آليًّا"
 
 #. i18n: ectx: property (whatsThis), widget (QLabel, publishDelayLabel)
 #. i18n: ectx: property (whatsThis), widget (QSpinBox, publishDelay)
@@ -5507,7 +5506,7 @@ msgid ""
 "information automatically."
 msgstr ""
 "اضبط الحد الأدنى للفاصل الزمني بالدقائق بين كل تحميل هنا. لا يكون هذا الضبط "
-"فعالاً إلا في حالة اختيارك نشر معلوماتك تلقائيًا."
+"فعالاً إلا في حالة اختيارك نشر معلوماتك آليًّا."
 
 #. i18n: ectx: property (text), widget (QLabel, publishDelayLabel)
 #: ui/kogroupwareprefspage.ui:102
@@ -5659,13 +5658,13 @@ msgid ""
 "make this possible."
 msgstr ""
 "أشّر على هذا المربع لاسترداد معلومات متوفر/مشغول الخاصة بالأشخاص الآخرين "
-"تلقائيًا. لاحظ أنه يتعين عليك ملء معلومات الخادم الصحيحة لجعل هذا ممكنًا."
+"آليًّا. لاحظ أنه يتعين عليك ملء معلومات الخادم الصحيحة لجعل هذا ممكنًا."
 
 #. i18n: ectx: property (text), widget (QCheckBox, retrieveEnable)
 #: ui/kogroupwareprefspage.ui:372
 #, kde-format
 msgid "Retrieve other people's free/&busy information automatically"
-msgstr "اجلب معلومات مت&فرّغ/مشغول لبقية الأشخاص آليًا"
+msgstr "اجلب معلومات مت&فرّغ/مشغول لبقية الأشخاص آليًّا"
 
 #. i18n: ectx: property (toolTip), widget (QCheckBox, fullDomainRetrieval)
 #: ui/kogroupwareprefspage.ui:382

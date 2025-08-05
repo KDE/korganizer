@@ -14,7 +14,7 @@ msgstr ""
 "Project-Id-Version: korganizer\n"
 "Report-Msgid-Bugs-To: https://bugs.kde.org\n"
 "POT-Creation-Date: 2025-08-04 02:53+0000\n"
-"PO-Revision-Date: 2025-07-29 09:11+0200\n"
+"PO-Revision-Date: 2025-08-04 08:43+0200\n"
 "Last-Translator: Josep M. Ferrer <txemaq@gmail.com>\n"
 "Language-Team: Catalan <kde-i18n-ca@kde.org>\n"
 "Language: ca@valencia\n"
@@ -6381,7 +6381,7 @@ msgstr "Afig el menú Què hi ha de nou"
 
 #: whatsnew/whatsnewtranslations.cpp:19
 msgid "The current view is remembered"
-msgstr ""
+msgstr "Es recordarà la vista actual"
 
 #: whatsnew/whatsnewtranslations.cpp:20
 msgid "Add a Date Picker dialog available on the Go menu"

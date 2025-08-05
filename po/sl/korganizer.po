@@ -1,7 +1,7 @@
 # translation of korganizer.po to Slovenian
 # Translation of korganizer.po to Slovenian
 # Copyright (C) 2001,2002, 2003, 2004, 2005, 2006 Free Software Foundation, Inc.
-# $Id: korganizer.po 1714835 2025-08-04 03:25:09Z scripty $
+# $Id: korganizer.po 1714986 2025-08-05 03:37:02Z scripty $
 # $Source$
 #
 # Roman Maurer <roman.maurer@hermes.si>, 2001.
@@ -15,7 +15,7 @@ msgstr ""
 "Project-Id-Version: korganizer\n"
 "Report-Msgid-Bugs-To: https://bugs.kde.org\n"
 "POT-Creation-Date: 2025-08-04 02:53+0000\n"
-"PO-Revision-Date: 2025-07-23 07:09+0200\n"
+"PO-Revision-Date: 2025-08-04 08:14+0200\n"
 "Last-Translator: Matjaž Jeran <matjaz.jeran@amis.net>\n"
 "Language-Team: Slovenian <lugos-slo@lugos.si>\n"
 "Language: sl\n"
@@ -6304,7 +6304,7 @@ msgstr "Dodaj meni Kaj je novega"
 
 #: whatsnew/whatsnewtranslations.cpp:19
 msgid "The current view is remembered"
-msgstr ""
+msgstr "Trenutni pogled je zapomnjen"
 
 #: whatsnew/whatsnewtranslations.cpp:20
 msgid "Add a Date Picker dialog available on the Go menu"
@@ -6422,7 +6422,7 @@ msgstr ""
 #, kde-format
 msgid "Initial \"New Event\" start times are consistent across all the views"
 msgstr ""
-"Začetni časi začetka \"Novega dogodka\" so konsistentni v vseh pogledih."
+"Začetni časi začetka \"Novega dogodka\" so konsistentni v vseh pogledih"
 
 #: whatsnew/whatsnewtranslations.cpp:57
 #, kde-format
