@@ -11,7 +11,7 @@ msgstr ""
 "Project-Id-Version: korganizer\n"
 "Report-Msgid-Bugs-To: https://bugs.kde.org\n"
 "POT-Creation-Date: 2025-04-19 00:42+0000\n"
-"PO-Revision-Date: 2025-04-19 13:20+0400\n"
+"PO-Revision-Date: 2025-08-06 17:26+0400\n"
 "Last-Translator: Zayed Al-Saidi <zayed.alsaidi@gmail.com>\n"
 "Language-Team: ar\n"
 "Language: ar\n"
@@ -175,7 +175,7 @@ msgstr "اضبط أيّام الأعياد"
 #: hebrew/configdialog.cpp:42
 #, kde-format
 msgid "Use Israeli holidays"
-msgstr "إستعمل الأعياد الإسرائيلية"
+msgstr "استعمل الأعياد الإسرائيلية"
 
 #: hebrew/configdialog.cpp:46
 #, kde-format
@@ -733,7 +733,7 @@ msgstr "تجاهل النسبة الباعية"
 msgctxt "@info:whatsthis"
 msgid ""
 "The thumbnail will be scaled freely. The aspect ratio will not be preserved."
-msgstr "سيتم تحجيم الصورة المصغرة بحرية. لن يحافظ على نسبة العرض إلى الارتفاع."
+msgstr "سيُغير حجم الصورة المصغرة بحرية. لن يحافظ على نسبة العرض إلى الارتفاع."
 
 #: picoftheday/configdialog.cpp:52
 #, kde-format
@@ -748,7 +748,7 @@ msgid ""
 "The thumbnail will be scaled to a rectangle as large as possible inside a "
 "given rectangle, preserving the aspect ratio."
 msgstr ""
-"سيتم تحجيم الصورة المصغرة إلى مستطيل كبير قدر الإمكان داخل مستطيل المعطى، مع "
+"سيُغير حجم الصورة المصغرة إلى مستطيل كبير قدر الإمكان داخل مستطيل المعطى، مع "
 "الحفاظ على نسبة العرض إلى الارتفاع."
 
 #: picoftheday/configdialog.cpp:59
@@ -764,8 +764,8 @@ msgid ""
 "The thumbnail will be scaled to a rectangle as small as possible outside a "
 "given rectangle, preserving the aspect ratio."
 msgstr ""
-"سيتم تحجيم الصورة المصغرة إلى مستطيل صغير قدر الإمكان خارج مستطيل المعطى ، "
-"مع الحفاظ على نسبة العرض إلى الارتفاع."
+"سيُغير حجم الصورة المصغرة إلى مستطيل صغير قدر الإمكان خارج مستطيل المعطى ، مع "
+"الحفاظ على نسبة العرض إلى الارتفاع."
 
 #: picoftheday/element.cpp:209
 #, kde-format
