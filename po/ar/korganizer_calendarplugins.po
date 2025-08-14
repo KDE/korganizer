@@ -706,9 +706,9 @@ msgid ""
 "Currently, the phase is computed for noon at UTC; therefore, you should "
 "expect variations by 1 day in either direction."
 msgstr ""
-"يعرض هذا المحلق مرحلة القمر في اليوم (جديد ، أولاً ، آخر ، كامل).حاليا ، تحسب "
-"المرحلة للظهر حسب توقيت UTC ؛ لذلك ، يجب أن تتوقع الاختلافات في يوم واحد في "
-"أي من الاتجاهين."
+"يعرض هذا المحلق مرحلة القمر في اليوم (جديد، أولاً، آخر، كامل).حاليا، تحسب "
+"المرحلة للظهر حسب توقيت UTC؛ لذلك، يجب أن تتوقع الاختلافات في يوم واحد في أي "
+"من الاتجاهين."
 
 #: picoftheday/configdialog.cpp:28
 #, kde-format
@@ -764,7 +764,7 @@ msgid ""
 "The thumbnail will be scaled to a rectangle as small as possible outside a "
 "given rectangle, preserving the aspect ratio."
 msgstr ""
-"سيُغير حجم الصورة المصغرة إلى مستطيل صغير قدر الإمكان خارج مستطيل المعطى ، مع "
+"سيُغير حجم الصورة المصغرة إلى مستطيل صغير قدر الإمكان خارج مستطيل المعطى، مع "
 "الحفاظ على نسبة العرض إلى الارتفاع."
 
 #: picoftheday/element.cpp:209
