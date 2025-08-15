@@ -12,7 +12,7 @@ msgstr ""
 "Project-Id-Version: korganizer\n"
 "Report-Msgid-Bugs-To: https://bugs.kde.org\n"
 "POT-Creation-Date: 2025-08-04 00:42+0000\n"
-"PO-Revision-Date: 2025-08-13 22:52+0400\n"
+"PO-Revision-Date: 2025-08-14 11:36+0400\n"
 "Last-Translator: Zayed Al-Saidi <zayed.alsaidi@gmail.com>\n"
 "Language-Team: ar\n"
 "Language: ar\n"
@@ -3446,8 +3446,7 @@ msgid ""
 "region, or events with the \"Holiday\" tag."
 msgstr ""
 "مكّن هذا الخيار لتضمين العطل من تقويمك في ملخص المناسبات الخاصة القادمة. هذه "
-"هي الأحداث من منطقة العطل التي قمت بضبطها، أو الأحداث التي تحمل علامة \"عطلة"
-"\"."
+"هي الأحداث من منطقة العطل التي ضبطتها، أو الأحداث التي تحمل علامة \"عطلة\"."
 
 #. i18n: ectx: property (text), widget (QCheckBox, mShowHolidaysFromCalBox)
 #: kontactplugin/specialdates/sdsummaryconfig_base.ui:174
@@ -5587,9 +5586,9 @@ msgid ""
 msgstr ""
 "أدخل معلومات الولوج المتعلقة بحسابك على الخادم هنا.\n"
 "\n"
-"خصوصية خادم Kolab2: قمت بتسجيل معرفك الفريد (UID). بشكل مبدئي سيكون معرفك "
-"الفريد هو عنوان بريدك الإلكتروني على خادم Kolab2، ولكن قد يكون مختلفًا أيضًا. "
-"في الحالة الأخيرة، أدخل معرفك الفريد."
+"خصوصية خادم Kolab2: سجلت معرفك الفريد (UID). بشكل مبدئي سيكون معرفك الفريد "
+"هو عنوان بريدك الإلكتروني على خادم Kolab2، ولكن قد يكون مختلفًا أيضًا. في "
+"الحالة الأخيرة، أدخل معرفك الفريد."
 
 #. i18n: ectx: property (text), widget (QLabel, TextLabel6)
 #: ui/kogroupwareprefspage.ui:261
