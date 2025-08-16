@@ -7,7 +7,7 @@ msgid ""
 msgstr ""
 "Project-Id-Version: korganizer\n"
 "Report-Msgid-Bugs-To: https://bugs.kde.org\n"
-"POT-Creation-Date: 2025-08-04 00:42+0000\n"
+"POT-Creation-Date: 2025-08-16 00:44+0000\n"
 "PO-Revision-Date: 2025-08-04 09:16+0200\n"
 "Last-Translator: Temuri Doghonadze <temuri.doghonadze@gmail.com>\n"
 "Language-Team: Georgian <kde-i18n-doc@kde.org>\n"
@@ -6262,22 +6262,34 @@ msgid "Selected Calendars"
 msgstr "მონიშნული კალენდარები"
 
 #: whatsnew/whatsnewtranslations.cpp:18
+#, fuzzy
+#| msgid ""
+#| "Agenda view: added timelabels context menu option to toggle a 24-hour "
+#| "(military style) clock"
+msgid ""
+"Agenda view: added timelabels context menu to show/hide time labels for the "
+"system timezone on the right (or left) side as well"
+msgstr ""
+"გეგმის ხედი: დაემატა კონტექსტური მენიუს პუნქტი დროის ჭდეების 24-საათიან "
+"(სამხედრო)საათზე გადართვა"
+
+#: whatsnew/whatsnewtranslations.cpp:19
 msgid "Incidence editor: detect and warn about creating incidences in the past"
 msgstr "რედაქტორი: წარსულში ინციდენტების შექმნის აღმოჩენა და გაფრთხილება"
 
-#: whatsnew/whatsnewtranslations.cpp:27
+#: whatsnew/whatsnewtranslations.cpp:28
 msgid "Add What's New menu"
 msgstr "დაემატა მენიუ 'რა არის ახალი'"
 
-#: whatsnew/whatsnewtranslations.cpp:28
+#: whatsnew/whatsnewtranslations.cpp:29
 msgid "The current view is remembered"
 msgstr "მიმდინარე ხედი გახსენებულია"
 
-#: whatsnew/whatsnewtranslations.cpp:29
+#: whatsnew/whatsnewtranslations.cpp:30
 msgid "Add a Date Picker dialog available on the Go menu"
 msgstr "დაემატა თარიღის ამრჩევი დიალოგი. ხელმისაწვდომია გადასვლის მენიუდან"
 
-#: whatsnew/whatsnewtranslations.cpp:30
+#: whatsnew/whatsnewtranslations.cpp:31
 msgid ""
 "Agenda view: consolidated the \"Day\", \"Next X Days\", \"Work Schedule\", "
 "\"Week\" time ranges into the Agenda tool button"
@@ -6285,7 +6297,7 @@ msgstr ""
 "გეგის ხედი: გაერთიანებული \"დღის\", \"შემდეგი X დღის\", \"სამუშაოს გეგმის, "
 "\"კვირის\" დროის შუალედების გადატანა გეგმის ხელსაწყოს ღილაკში"
 
-#: whatsnew/whatsnewtranslations.cpp:31
+#: whatsnew/whatsnewtranslations.cpp:32
 msgid ""
 "Agenda view: added timelabels context menu option to toggle a 24-hour "
 "(military style) clock"
@@ -6293,32 +6305,32 @@ msgstr ""
 "გეგმის ხედი: დაემატა კონტექსტური მენიუს პუნქტი დროის ჭდეების 24-საათიან "
 "(სამხედრო)საათზე გადართვა"
 
-#: whatsnew/whatsnewtranslations.cpp:32
+#: whatsnew/whatsnewtranslations.cpp:33
 msgid "Agenda view: added context menu to create new Event or To-do"
 msgstr ""
 "გეგმის ხედი: დაემატა კონტექსტური მენიუს პუქტი ახალი მოვლენების/გეგმების "
 "დასამატებლად"
 
-#: whatsnew/whatsnewtranslations.cpp:33
+#: whatsnew/whatsnewtranslations.cpp:34
 msgid ""
 "To-do view: added context menu options for toggling completion and reminders"
 msgstr ""
 "გეგმების ხედი: დაემატა კონტექსტური მენიუს პარამეტრები დასრულებების და "
 "შეხსენებების გადასართავად"
 
-#: whatsnew/whatsnewtranslations.cpp:34
+#: whatsnew/whatsnewtranslations.cpp:35
 msgid "To-do view: remove the (redundant) to-do list from the sidebar"
 msgstr "გეგმის ხედ: აღარ გაჩვენებთ (ზედმეტ) გეგმების სიას ამ გვერდით პანელიდან"
 
-#: whatsnew/whatsnewtranslations.cpp:35
+#: whatsnew/whatsnewtranslations.cpp:36
 msgid "To-do view: save/restore fullview setting"
 msgstr "გასაკეთებლების ხედი: სრული ხედის პარამეტრის შენახვა/აღდგენა"
 
-#: whatsnew/whatsnewtranslations.cpp:36
+#: whatsnew/whatsnewtranslations.cpp:37
 msgid "To-do view: save/restore flatview setting"
 msgstr "გეგმის ხედი: ბრტყელი ხედის პარამეტრის შენახვა/აღდგენა"
 
-#: whatsnew/whatsnewtranslations.cpp:37
+#: whatsnew/whatsnewtranslations.cpp:38
 msgid ""
 "Date navigator: added an option in the Configure->Views settings for hiding "
 "the week numbers"
@@ -6326,7 +6338,7 @@ msgstr ""
 "თარიღის ნავიგატორი: დაემატა პარამეტრი მენიუში მორგება->ხედის მორგება კვირის "
 "ნომრების დასამალად"
 
-#: whatsnew/whatsnewtranslations.cpp:38
+#: whatsnew/whatsnewtranslations.cpp:39
 msgid ""
 "Date navigator: the \"Week numbers select a work week when in work week mode"
 "\" setting is true by default"
@@ -6334,55 +6346,55 @@ msgstr ""
 "თარიღის ნავიგატორი: \"კვირის ნომრები აირჩევენ სამუშაო კვირას, როცა სამუშაო "
 "კვირის რეჟიმია ჩართული\" პარამეტრი ნაგულისხმევად ჭეშმარიტია"
 
-#: whatsnew/whatsnewtranslations.cpp:39
+#: whatsnew/whatsnewtranslations.cpp:40
 msgid "Incidence editor: remember/restore the template manager geometry"
 msgstr ""
 "ინციდენტების რედაქტორი: შაბლონების მმართველის გეომეტრიის დამახსოვრება/აღდგენა"
 
-#: whatsnew/whatsnewtranslations.cpp:40
+#: whatsnew/whatsnewtranslations.cpp:41
 msgid "Incidence editor: support drag-and-drop attachments"
 msgstr ""
 "ინციდენტების რედაქტორი: მიმაგრებული ფაილების გადათრევა-დაგდების მხარდაჭერა"
 
-#: whatsnew/whatsnewtranslations.cpp:41
+#: whatsnew/whatsnewtranslations.cpp:42
 msgid "The export calendar dialog remembers its last export folder location"
 msgstr ""
 "კალენდრის გატანის დიალოგი იმახსოვრებს ბოლო გატანის საქაღალდის მდებარეობას"
 
-#: whatsnew/whatsnewtranslations.cpp:42
+#: whatsnew/whatsnewtranslations.cpp:43
 msgid "The import calendar dialog remembers its last import folder location"
 msgstr ""
 "კალენდრის შემოტანის დიალოგი იმახსოვრებს ბოლო შემოტანის საქაღალდის მდებარეობას"
 
-#: whatsnew/whatsnewtranslations.cpp:43
+#: whatsnew/whatsnewtranslations.cpp:44
 msgid "Get Hot New Stuff removed"
 msgstr "ახალი &რამერუმეების წაშლა"
 
-#: whatsnew/whatsnewtranslations.cpp:44
+#: whatsnew/whatsnewtranslations.cpp:45
 msgid "Add calendar file: remote calendars are always read-only"
 msgstr ""
 "კალენდრის ფაილის დამატება: დაშორებული კალენდრები ყოველთვის მხოლოდ წაკითხვადია"
 
-#: whatsnew/whatsnewtranslations.cpp:45
+#: whatsnew/whatsnewtranslations.cpp:46
 msgid "Add calendar file: will not permit an empty file path"
 msgstr "კალენდრის ფაილის დამატება: ცარიელი ფაილის ბილიკი დაშვებული არაა"
 
-#: whatsnew/whatsnewtranslations.cpp:46
+#: whatsnew/whatsnewtranslations.cpp:47
 msgid ""
 "DAV configuration: dialog allows seeing the account password when editing"
 msgstr ""
 "DAV-ის მორგება: დიალოგი საშუალებას გაძლევთ, დაინახოთ ანგარიშის პაროლი მისი "
 "ჩასწორებისას"
 
-#: whatsnew/whatsnewtranslations.cpp:47
+#: whatsnew/whatsnewtranslations.cpp:48
 msgid "DAV configuration: wizard shows icons for the various providers"
 msgstr "DAV-ის მორგება: ოსტატი სხვადასხვა პროვაიდერების ხატულებს გაჩვენებთ"
 
-#: whatsnew/whatsnewtranslations.cpp:48
+#: whatsnew/whatsnewtranslations.cpp:49
 msgid "DAV configuration: wizard updated list of providers"
 msgstr "DAV-ის მორგება: ოსტატმა განაახლა პროვაიდერების სია"
 
-#: whatsnew/whatsnewtranslations.cpp:66
+#: whatsnew/whatsnewtranslations.cpp:67
 #, kde-format
 msgid ""
 "Semantics are changed from a \"working schedule\" concept to a \"week "
@@ -6391,30 +6403,30 @@ msgstr ""
 "სემანტიკა შეიცვალა \"სამუშაო გრაფიკის\" კონცეპტიდან \"კვირის გრაფიკის\" "
 "კონცეპტზე, რომ უმუშევარი მომხმარებლებიც დაფაროს"
 
-#: whatsnew/whatsnewtranslations.cpp:67
+#: whatsnew/whatsnewtranslations.cpp:68
 #, kde-format
 msgid "Initial \"New Event\" start times are consistent across all the views"
 msgstr "საწყისი \"ახალი მოვლენის\" დაწყების თარიღები მუდმივია ყველა ხედისთვის"
 
-#: whatsnew/whatsnewtranslations.cpp:68
+#: whatsnew/whatsnewtranslations.cpp:69
 #, kde-format
 msgid "Improved default event calendar handling"
 msgstr "გაუმჯობესდა ნაგულისხმევი მოვლენის კალენდრის მართვა"
 
-#: whatsnew/whatsnewtranslations.cpp:70
+#: whatsnew/whatsnewtranslations.cpp:71
 #, kde-format
 msgid ""
 "Incidences with a long excluded dates list no longer create huge tooltips"
 msgstr ""
 "ინციდენტები გრძელი ამოღებული თარიღებით აღარ ქმნიან უზარმაზარ მინიშნებებს"
 
-#: whatsnew/whatsnewtranslations.cpp:71
+#: whatsnew/whatsnewtranslations.cpp:72
 #, kde-format
 msgid "Fixed the organizer email address for incidences with attendees"
 msgstr ""
 "გასწორდა ორგანიზატორის ელფოსტის მისამართი დამსწრეების მქონე ინციტენდებისთვის"
 
-#: whatsnew/whatsnewtranslations.cpp:72
+#: whatsnew/whatsnewtranslations.cpp:73
 #, kde-format
 msgid ""
 "Agenda view: events without a duration are displayed as 30 long (rather than "

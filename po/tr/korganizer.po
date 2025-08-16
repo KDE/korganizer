@@ -20,7 +20,7 @@ msgid ""
 msgstr ""
 "Project-Id-Version: kdepim-kde4\n"
 "Report-Msgid-Bugs-To: https://bugs.kde.org\n"
-"POT-Creation-Date: 2025-08-04 00:42+0000\n"
+"POT-Creation-Date: 2025-08-16 00:44+0000\n"
 "PO-Revision-Date: 2025-08-04 13:28+0300\n"
 "Last-Translator: Emir SARI <emir_sari@îcloud.com>\n"
 "Language-Team: Turkish <kde-l10n-tr@kde.org>\n"
@@ -6271,22 +6271,32 @@ msgid "Selected Calendars"
 msgstr "Seçili takvimler"
 
 #: whatsnew/whatsnewtranslations.cpp:18
+#, fuzzy
+#| msgid ""
+#| "Agenda view: added timelabels context menu option to toggle a 24-hour "
+#| "(military style) clock"
+msgid ""
+"Agenda view: added timelabels context menu to show/hide time labels for the "
+"system timezone on the right (or left) side as well"
+msgstr "Ajanda görünümü: 24 saat görünümü için bir seçenek eklendi"
+
+#: whatsnew/whatsnewtranslations.cpp:19
 msgid "Incidence editor: detect and warn about creating incidences in the past"
 msgstr "Ülay düzenleyicisi: Geçmişte etkinlik oluşturmayı algıla ve uyar"
 
-#: whatsnew/whatsnewtranslations.cpp:27
+#: whatsnew/whatsnewtranslations.cpp:28
 msgid "Add What's New menu"
 msgstr "Neler Yeni menü ögesi eklendi"
 
-#: whatsnew/whatsnewtranslations.cpp:28
+#: whatsnew/whatsnewtranslations.cpp:29
 msgid "The current view is remembered"
 msgstr "Geçerli görünüm artık anımsanıyor"
 
-#: whatsnew/whatsnewtranslations.cpp:29
+#: whatsnew/whatsnewtranslations.cpp:30
 msgid "Add a Date Picker dialog available on the Go menu"
 msgstr "Git menüsüne bir tarih seçicisi iletişim kutusu eklendi"
 
-#: whatsnew/whatsnewtranslations.cpp:30
+#: whatsnew/whatsnewtranslations.cpp:31
 msgid ""
 "Agenda view: consolidated the \"Day\", \"Next X Days\", \"Work Schedule\", "
 "\"Week\" time ranges into the Agenda tool button"
@@ -6294,45 +6304,45 @@ msgstr ""
 "Ajanda görünümü: “Gün”, “Sonraki N Gün”, “Çalışma Haftası” görünümleri araç "
 "düğmelerine taşındı"
 
-#: whatsnew/whatsnewtranslations.cpp:31
+#: whatsnew/whatsnewtranslations.cpp:32
 msgid ""
 "Agenda view: added timelabels context menu option to toggle a 24-hour "
 "(military style) clock"
 msgstr "Ajanda görünümü: 24 saat görünümü için bir seçenek eklendi"
 
-#: whatsnew/whatsnewtranslations.cpp:32
+#: whatsnew/whatsnewtranslations.cpp:33
 msgid "Agenda view: added context menu to create new Event or To-do"
 msgstr ""
 "Ajanda görünümü: Etkinlik veya Yapılacak oluşturmak için bir bağlam menüsü "
 "seçeneği eklendi"
 
-#: whatsnew/whatsnewtranslations.cpp:33
+#: whatsnew/whatsnewtranslations.cpp:34
 msgid ""
 "To-do view: added context menu options for toggling completion and reminders"
 msgstr ""
 "Yapılacak görünümü: Tamamlama ve anımsatma için bağlam menüsü seçenekleri "
 "eklendi"
 
-#: whatsnew/whatsnewtranslations.cpp:34
+#: whatsnew/whatsnewtranslations.cpp:35
 msgid "To-do view: remove the (redundant) to-do list from the sidebar"
 msgstr ""
 "Yapılacak görünümü: Gereksiz yapılacaklar listesi kenar çubuğundan kaldırıldı"
 
-#: whatsnew/whatsnewtranslations.cpp:35
+#: whatsnew/whatsnewtranslations.cpp:36
 msgid "To-do view: save/restore fullview setting"
 msgstr "Yapılacak görünümü: Tam ekran ayarını anımsa"
 
-#: whatsnew/whatsnewtranslations.cpp:36
+#: whatsnew/whatsnewtranslations.cpp:37
 msgid "To-do view: save/restore flatview setting"
 msgstr "Yapılacaklar görünümü: Düz görünüm ayarını kaydet/geri yükle"
 
-#: whatsnew/whatsnewtranslations.cpp:37
+#: whatsnew/whatsnewtranslations.cpp:38
 msgid ""
 "Date navigator: added an option in the Configure->Views settings for hiding "
 "the week numbers"
 msgstr "Tarih gezgini: Hafta numaralarını gizlemek için bir seçenek"
 
-#: whatsnew/whatsnewtranslations.cpp:38
+#: whatsnew/whatsnewtranslations.cpp:39
 msgid ""
 "Date navigator: the \"Week numbers select a work week when in work week mode"
 "\" setting is true by default"
@@ -6340,51 +6350,51 @@ msgstr ""
 "Tarih gezgini: “Çalışma haftası kipinde iken hafta sayıları bir çalışma "
 "haftası seçer” seçeneği artık öntanımlı olarak etkin"
 
-#: whatsnew/whatsnewtranslations.cpp:39
+#: whatsnew/whatsnewtranslations.cpp:40
 msgid "Incidence editor: remember/restore the template manager geometry"
 msgstr ""
 "Olay düzenleyicisi: Şablon yöneticisi geometrisini anımsa ve geri yükle"
 
-#: whatsnew/whatsnewtranslations.cpp:40
+#: whatsnew/whatsnewtranslations.cpp:41
 msgid "Incidence editor: support drag-and-drop attachments"
 msgstr "Olay düzenleyicisi: Ekleri sürükle–bırak yapmayı destekle"
 
-#: whatsnew/whatsnewtranslations.cpp:41
+#: whatsnew/whatsnewtranslations.cpp:42
 msgid "The export calendar dialog remembers its last export folder location"
 msgstr ""
 "Takvimi dışa aktar iletişim kutusu artık son dışa aktarma konumunu anımsıyor"
 
-#: whatsnew/whatsnewtranslations.cpp:42
+#: whatsnew/whatsnewtranslations.cpp:43
 msgid "The import calendar dialog remembers its last import folder location"
 msgstr ""
 "Takvim içe aktar iletişim kutusu artık son dışa aktarma konumunu anımsıyor"
 
-#: whatsnew/whatsnewtranslations.cpp:43
+#: whatsnew/whatsnewtranslations.cpp:44
 msgid "Get Hot New Stuff removed"
 msgstr "Yeni Şeyler Al kaldırıldı"
 
-#: whatsnew/whatsnewtranslations.cpp:44
+#: whatsnew/whatsnewtranslations.cpp:45
 msgid "Add calendar file: remote calendars are always read-only"
 msgstr "Takvim dosyası ekle: Uzak takvimler artık her zaman saltokunur"
 
-#: whatsnew/whatsnewtranslations.cpp:45
+#: whatsnew/whatsnewtranslations.cpp:46
 msgid "Add calendar file: will not permit an empty file path"
 msgstr "Takvim dosyası ekle: Boş bir dosya yoluna izin verilmiyor"
 
-#: whatsnew/whatsnewtranslations.cpp:46
+#: whatsnew/whatsnewtranslations.cpp:47
 msgid ""
 "DAV configuration: dialog allows seeing the account password when editing"
 msgstr "DAV yapılandırması: Düzenleme sırasında parolayı görme olanağı"
 
-#: whatsnew/whatsnewtranslations.cpp:47
+#: whatsnew/whatsnewtranslations.cpp:48
 msgid "DAV configuration: wizard shows icons for the various providers"
 msgstr "DAV yapılandırması: Çeşitli sağlayıcılar için simgeler"
 
-#: whatsnew/whatsnewtranslations.cpp:48
+#: whatsnew/whatsnewtranslations.cpp:49
 msgid "DAV configuration: wizard updated list of providers"
 msgstr "DAV yapılandırması: Sağlayıcı listesi güncellemesi"
 
-#: whatsnew/whatsnewtranslations.cpp:66
+#: whatsnew/whatsnewtranslations.cpp:67
 #, kde-format
 msgid ""
 "Semantics are changed from a \"working schedule\" concept to a \"week "
@@ -6393,29 +6403,29 @@ msgstr ""
 "Anlamsal bir değişiklik olarak “çalışma programı” yerine “haftalık program” "
 "kullanılıyor"
 
-#: whatsnew/whatsnewtranslations.cpp:67
+#: whatsnew/whatsnewtranslations.cpp:68
 #, kde-format
 msgid "Initial \"New Event\" start times are consistent across all the views"
 msgstr "İlk “Yeni Etkinlik” saatleri artık her yerde aynı"
 
-#: whatsnew/whatsnewtranslations.cpp:68
+#: whatsnew/whatsnewtranslations.cpp:69
 #, kde-format
 msgid "Improved default event calendar handling"
 msgstr "Öntanımlı etkinlik takvimi işlemesi iyileştirildi"
 
-#: whatsnew/whatsnewtranslations.cpp:70
+#: whatsnew/whatsnewtranslations.cpp:71
 #, kde-format
 msgid ""
 "Incidences with a long excluded dates list no longer create huge tooltips"
 msgstr ""
 "Uzun bir dışlanan tarih listeli olayların araç ipuçları artık devasa değil"
 
-#: whatsnew/whatsnewtranslations.cpp:71
+#: whatsnew/whatsnewtranslations.cpp:72
 #, kde-format
 msgid "Fixed the organizer email address for incidences with attendees"
 msgstr "Katılımcılı olayların organizatör e-posta adresi düzeltildi"
 
-#: whatsnew/whatsnewtranslations.cpp:72
+#: whatsnew/whatsnewtranslations.cpp:73
 #, kde-format
 msgid ""
 "Agenda view: events without a duration are displayed as 30 long (rather than "
