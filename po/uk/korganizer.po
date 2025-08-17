@@ -12,7 +12,7 @@ msgstr ""
 "Project-Id-Version: korganizer\n"
 "Report-Msgid-Bugs-To: https://bugs.kde.org\n"
 "POT-Creation-Date: 2025-08-16 00:44+0000\n"
-"PO-Revision-Date: 2025-08-04 09:03+0300\n"
+"PO-Revision-Date: 2025-08-16 17:50+0300\n"
 "Last-Translator: Yuri Chornoivan <yurchor@ukr.net>\n"
 "Language-Team: Ukrainian <trans-uk@lists.fedoraproject.org>\n"
 "Language: uk\n"
@@ -6337,16 +6337,13 @@ msgid "Selected Calendars"
 msgstr "Позначені календарі"
 
 #: whatsnew/whatsnewtranslations.cpp:18
-#, fuzzy
-#| msgid ""
-#| "Agenda view: added timelabels context menu option to toggle a 24-hour "
-#| "(military style) clock"
 msgid ""
 "Agenda view: added timelabels context menu to show/hide time labels for the "
 "system timezone on the right (or left) side as well"
 msgstr ""
-"Панель перегляду порядку денного: додано пункт контекстного часу часових "
-"міток для вмикання і вимикання 24-годинного режиму (військовий стан)"
+"Панель перегляду порядку денного: додано пункт контекстного часу для показу "
+"або приховування часових міток для загальносистемного часового поясу "
+"праворуч (або ліворуч)"
 
 #: whatsnew/whatsnewtranslations.cpp:19
 msgid "Incidence editor: detect and warn about creating incidences in the past"

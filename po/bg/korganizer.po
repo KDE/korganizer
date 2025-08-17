@@ -4,7 +4,7 @@ msgstr ""
 "Project-Id-Version: korganizer\n"
 "Report-Msgid-Bugs-To: https://bugs.kde.org\n"
 "POT-Creation-Date: 2025-08-16 00:44+0000\n"
-"PO-Revision-Date: 2025-07-28 17:12+0200\n"
+"PO-Revision-Date: 2025-08-16 22:21+0200\n"
 "Last-Translator: Mincho Kondarev <mkondarev@yahoo.de>\n"
 "Language-Team: Bulgarian <kde-i18n-doc@kde.org>\n"
 "Language: bg\n"
@@ -6306,20 +6306,19 @@ msgid "Selected Calendars"
 msgstr "Избрани календари"
 
 #: whatsnew/whatsnewtranslations.cpp:18
-#, fuzzy
-#| msgid ""
-#| "Agenda view: added timelabels context menu option to toggle a 24-hour "
-#| "(military style) clock"
 msgid ""
 "Agenda view: added timelabels context menu to show/hide time labels for the "
 "system timezone on the right (or left) side as well"
 msgstr ""
-"Изглед на дневен ред: добавена опция в контекстното меню за времеви етикети "
-"за превключване на 24-часов часовник (военен стил)"
+"Изглед на дневен ред: добавено контекстно меню за времеви етикети, за да се "
+"показват/скриват времевите етикети за системната часова зона от дясната (или "
+"лявата) страна"
 
 #: whatsnew/whatsnewtranslations.cpp:19
 msgid "Incidence editor: detect and warn about creating incidences in the past"
 msgstr ""
+"Редактор на събития: открива и предупреждава за създаването на събития в "
+"миналото"
 
 #: whatsnew/whatsnewtranslations.cpp:28
 msgid "Add What's New menu"
@@ -6327,7 +6326,7 @@ msgstr "Добавяне на меню „Какво ново“"
 
 #: whatsnew/whatsnewtranslations.cpp:29
 msgid "The current view is remembered"
-msgstr ""
+msgstr "Текущият изглед е запомнен"
 
 #: whatsnew/whatsnewtranslations.cpp:30
 msgid "Add a Date Picker dialog available on the Go menu"

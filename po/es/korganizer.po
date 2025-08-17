@@ -18,7 +18,7 @@ msgstr ""
 "Project-Id-Version: korganizer\n"
 "Report-Msgid-Bugs-To: https://bugs.kde.org\n"
 "POT-Creation-Date: 2025-08-16 00:44+0000\n"
-"PO-Revision-Date: 2025-08-05 23:55+0100\n"
+"PO-Revision-Date: 2025-08-16 18:56+0100\n"
 "Last-Translator: Eloy Cuadra <ecuadra@eloihr.net>\n"
 "Language-Team: Spanish <kde-l10n-es@kde.org>\n"
 "Language: es\n"
@@ -6377,16 +6377,13 @@ msgid "Selected Calendars"
 msgstr "Calendarios seleccionados"
 
 #: whatsnew/whatsnewtranslations.cpp:18
-#, fuzzy
-#| msgid ""
-#| "Agenda view: added timelabels context menu option to toggle a 24-hour "
-#| "(military style) clock"
 msgid ""
 "Agenda view: added timelabels context menu to show/hide time labels for the "
 "system timezone on the right (or left) side as well"
 msgstr ""
-"Vista de agenda: se ha añadido la opción de menú de contexto de etiquetas de "
-"tiempo para cambiar a un reloj de 24 horas (de estilo militar)."
+"Vista de agenda: se ha añadido un menú de contexto a las etiquetas de tiempo "
+"para mostrar/ocultar estas etiquetas en la zona horaria del sistema en el "
+"lado derecho (o izquierdo) también."
 
 #: whatsnew/whatsnewtranslations.cpp:19
 msgid "Incidence editor: detect and warn about creating incidences in the past"

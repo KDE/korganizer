@@ -1,7 +1,7 @@
 # translation of korganizer.po to Slovenian
 # Translation of korganizer.po to Slovenian
 # Copyright (C) 2001,2002, 2003, 2004, 2005, 2006 Free Software Foundation, Inc.
-# $Id: korganizer.po 1716144 2025-08-16 01:24:45Z scripty $
+# $Id: korganizer.po 1716243 2025-08-17 01:23:31Z scripty $
 # $Source$
 #
 # Roman Maurer <roman.maurer@hermes.si>, 2001.
@@ -15,7 +15,7 @@ msgstr ""
 "Project-Id-Version: korganizer\n"
 "Report-Msgid-Bugs-To: https://bugs.kde.org\n"
 "POT-Creation-Date: 2025-08-16 00:44+0000\n"
-"PO-Revision-Date: 2025-08-04 08:13+0200\n"
+"PO-Revision-Date: 2025-08-16 10:29+0200\n"
 "Last-Translator: Matjaž Jeran <matjaz.jeran@amis.net>\n"
 "Language-Team: Slovenian <lugos-slo@lugos.si>\n"
 "Language: sl\n"
@@ -6299,16 +6299,13 @@ msgid "Selected Calendars"
 msgstr "Izbrani koledarji"
 
 #: whatsnew/whatsnewtranslations.cpp:18
-#, fuzzy
-#| msgid ""
-#| "Agenda view: added timelabels context menu option to toggle a 24-hour "
-#| "(military style) clock"
 msgid ""
 "Agenda view: added timelabels context menu to show/hide time labels for the "
 "system timezone on the right (or left) side as well"
 msgstr ""
-"Pogled dnevnega reda: dodana možnost kontekstnega menija časovnih oznak za "
-"preklop med 24-urnim (vojaškim) formatom časa"
+"Pogled dnevnega reda: dodan kontekstni meni časovnih oznak za prikaz/"
+"skrivanje časovnih oznak za sistemski časovni pas tudi na desni (ali levi) "
+"strani."
 
 #: whatsnew/whatsnewtranslations.cpp:19
 msgid "Incidence editor: detect and warn about creating incidences in the past"
