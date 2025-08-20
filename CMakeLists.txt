@@ -73,6 +73,7 @@ ecm_check_outbound_license(LICENSES GPL-2.0-only GPL-3.0-only FILES
 
 # Require a C++20 capable compiler
 set(CMAKE_CXX_STANDARD 20)
+set(CMAKE_CXX_SCAN_FOR_MODULES OFF)
 set(CMAKE_CXX_EXTENSIONS OFF)
 set(CMAKE_CXX_STANDARD_REQUIRED TRUE)
 
