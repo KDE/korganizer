@@ -214,7 +214,7 @@ void TodoPlugin::processDropEvent(QDropEvent *event)
         return;
     }
 
-    qCWarning(KORGANIZERPLUGIN_LOG) << QStringLiteral("Cannot handle drop events of type '%1'.").arg(event->mimeData()->formats().join(QLatin1Char(';')));
+    qCWarning(KORGANIZERPLUGIN_LOG) << QStringLiteral("Cannot handle drop events of type '%1'.").arg(event->mimeData()->formats().join(u';'));
 }
 
 #include "todoplugin.moc"

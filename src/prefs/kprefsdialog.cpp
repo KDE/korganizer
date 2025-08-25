@@ -85,7 +85,7 @@ QCheckBox *KPrefsWidBool::checkBox()
 KPrefsWidInt::KPrefsWidInt(KConfigSkeleton::ItemInt *item, QWidget *parent)
     : mItem(item)
 {
-    mLabel = new QLabel(mItem->label() + QLatin1Char(':'), parent);
+    mLabel = new QLabel(mItem->label() + u':', parent);
     mSpin = new QSpinBox(parent);
     if (!mItem->minValue().isNull()) {
         mSpin->setMinimum(mItem->minValue().toInt());
@@ -132,7 +132,7 @@ KPrefsWidColor::KPrefsWidColor(KConfigSkeleton::ItemColor *item, QWidget *parent
 {
     mButton = new KColorButton(parent);
     connect(mButton, &KColorButton::changed, this, &KPrefsWidColor::changed);
-    mLabel = new QLabel(mItem->label() + QLatin1Char(':'), parent);
+    mLabel = new QLabel(mItem->label() + u':', parent);
     mLabel->setBuddy(mButton);
     const QString toolTip = mItem->toolTip();
     if (!toolTip.isEmpty()) {
@@ -169,7 +169,7 @@ KColorButton *KPrefsWidColor::button()
 KPrefsWidFont::KPrefsWidFont(KConfigSkeleton::ItemFont *item, QWidget *parent, const QString &sampleText)
     : mItem(item)
 {
-    mLabel = new QLabel(mItem->label() + QLatin1Char(':'), parent);
+    mLabel = new QLabel(mItem->label() + u':', parent);
 
     mPreview = new QLabel(sampleText, parent);
     mPreview->setFrameStyle(QFrame::StyledPanel | QFrame::Sunken);
@@ -230,7 +230,7 @@ void KPrefsWidFont::selectFont()
 KPrefsWidTime::KPrefsWidTime(KConfigSkeleton::ItemDateTime *item, QWidget *parent)
     : mItem(item)
 {
-    mLabel = new QLabel(mItem->label() + QLatin1Char(':'), parent);
+    mLabel = new QLabel(mItem->label() + u':', parent);
     mTimeEdit = new KTimeComboBox(parent);
     mLabel->setBuddy(mTimeEdit);
     connect(mTimeEdit, &KTimeComboBox::timeEdited, this, &KPrefsWidTime::changed);
@@ -272,7 +272,7 @@ KTimeComboBox *KPrefsWidTime::timeEdit()
 KPrefsWidDuration::KPrefsWidDuration(KConfigSkeleton::ItemDateTime *item, const QString &format, QWidget *parent)
     : mItem(item)
 {
-    mLabel = new QLabel(mItem->label() + QLatin1Char(':'), parent);
+    mLabel = new QLabel(mItem->label() + u':', parent);
     mTimeEdit = new QTimeEdit(parent);
     mLabel->setBuddy(mTimeEdit);
     if (format.isEmpty()) {
@@ -318,7 +318,7 @@ QTimeEdit *KPrefsWidDuration::timeEdit()
 KPrefsWidDate::KPrefsWidDate(KConfigSkeleton::ItemDateTime *item, QWidget *parent)
     : mItem(item)
 {
-    mLabel = new QLabel(mItem->label() + QLatin1Char(':'), parent);
+    mLabel = new QLabel(mItem->label() + u':', parent);
     mDateEdit = new KDateComboBox(parent);
     mLabel->setBuddy(mDateEdit);
     connect(mDateEdit, &KDateComboBox::dateEdited, this, &KPrefsWidDate::changed);
@@ -441,7 +441,7 @@ QLabel *KPrefsWidCombo::label() const
 KPrefsWidString::KPrefsWidString(KConfigSkeleton::ItemString *item, QWidget *parent, KLineEdit::EchoMode echomode)
     : mItem(item)
 {
-    mLabel = new QLabel(mItem->label() + QLatin1Char(':'), parent);
+    mLabel = new QLabel(mItem->label() + u':', parent);
     mEdit = new KLineEdit(parent);
     mLabel->setBuddy(mEdit);
     connect(mEdit, &KLineEdit::textChanged, this, &KPrefsWidString::changed);
@@ -481,7 +481,7 @@ KLineEdit *KPrefsWidString::lineEdit()
 KPrefsWidPath::KPrefsWidPath(KConfigSkeleton::ItemPath *item, QWidget *parent, const QString &filter, KFile::Modes mode)
     : mItem(item)
 {
-    mLabel = new QLabel(mItem->label() + QLatin1Char(':'), parent);
+    mLabel = new QLabel(mItem->label() + u':', parent);
     mURLRequester = new KUrlRequester(parent);
     mLabel->setBuddy(mURLRequester);
     mURLRequester->setMode(mode);

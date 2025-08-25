@@ -265,7 +265,7 @@ void KOrganizer::setTitle()
         }
 
         if (mCalendarView->isReadOnly()) {
-            title += QLatin1StringView(" [") + i18nc("the calendar is read-only", "read-only") + QLatin1Char(']');
+            title += QLatin1StringView(" [") + i18nc("the calendar is read-only", "read-only") + u']';
         }
     } else {
         title = i18n("Calendar");

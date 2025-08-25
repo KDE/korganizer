@@ -217,7 +217,7 @@ void TodoSummaryWidget::updateView()
             mLabels.append(label);
 
             // Priority label
-            str = QLatin1Char('[') + QString::number(todo->priority()) + QLatin1Char(']');
+            str = QLatin1Char('[') + QString::number(todo->priority()) + u']';
             label = new QLabel(str, this);
             label->setAlignment(Qt::AlignRight | Qt::AlignVCenter);
             mLayout->addWidget(label, counter, 3);
@@ -228,7 +228,7 @@ void TodoSummaryWidget::updateView()
             if (!todo->relatedTo().isEmpty()) { // show parent only, not entire ancestry
                 KCalendarCore::Incidence::Ptr const inc = mCalendar->incidence(todo->relatedTo());
                 if (inc) {
-                    str = inc->summary() + QLatin1Char(':') + str;
+                    str = inc->summary() + u':' + str;
                 }
             }
             if (!Qt::mightBeRichText(str)) {

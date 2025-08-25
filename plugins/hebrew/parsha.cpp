@@ -214,7 +214,7 @@ QString Parsha::findParshaName(int dayNumber, int kvia, bool isLeapYear, bool us
         buffer = parshiotNames[index];
         return buffer;
     } else { // Create a double parsha
-        buffer = parshiotNames[index - 100] + QLatin1Char('-') + parshiotNames[index - 99];
+        buffer = parshiotNames[index - 100] + u'-' + parshiotNames[index - 99];
         return buffer;
     }
 }

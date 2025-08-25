@@ -51,7 +51,7 @@ Element::List Hebrew::createDayElements(const QDate &date)
 
     KCalendarSystem *cal = KCalendarSystem::create(KLocale::HebrewCalendar);
 
-    text = cal->formatDate(date, KLocale::Day, KLocale::LongNumber) + QLatin1Char(' ') + cal->monthName(date);
+    text = cal->formatDate(date, KLocale::Day, KLocale::LongNumber) + u' ' + cal->monthName(date);
 
     for (const QString &holiday : holidays) {
         text += QLatin1StringView("<br/>\n") + holiday;

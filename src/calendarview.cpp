@@ -699,7 +699,7 @@ void CalendarView::slotModifyFinished(int changeId, const Akonadi::Item &item, A
                 Akonadi::Item const journalItem = mCalendar->item(journals.first()->uid());
                 KCalendarCore::Journal::Ptr const journal = Akonadi::CalendarUtils::journal(journalItem);
                 KCalendarCore::Journal::Ptr const oldJournal(journal->clone());
-                journal->setDescription(journal->description().append(QLatin1Char('\n') + description));
+                journal->setDescription(journal->description().append(u'\n' + description));
                 (void)mChanger->modifyIncidence(journalItem, oldJournal, this);
             }
         }
@@ -2736,7 +2736,7 @@ void CalendarView::onTodosPurged(bool success, int numDeleted, int numIgnored)
             message = i18nc("@info", "There are no completed to-dos to purge.");
         } else {
             type = KMessageWidget::Warning;
-            message = i18ncp("@info", "%1 completed to-do was purged.", "%1 completed to-dos were purged.", numDeleted) + QLatin1Char('\n')
+            message = i18ncp("@info", "%1 completed to-do was purged.", "%1 completed to-dos were purged.", numDeleted) + u'\n'
                 + i18ncp("@info",
                          "%1 to-do was ignored because it has uncompleted or read-only children.",
                          "%1 to-dos were ignored because they have uncompleted or read-only children.",

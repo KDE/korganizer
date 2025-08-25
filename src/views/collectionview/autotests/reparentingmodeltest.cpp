@@ -42,7 +42,7 @@ private:
     {
         if (role == Qt::DisplayRole) {
             if (mName != mUid) {
-                return QString(mUid + QLatin1Char('-') + mName);
+                return QString(mUid + u'-' + mName);
             } else {
                 return mName;
             }

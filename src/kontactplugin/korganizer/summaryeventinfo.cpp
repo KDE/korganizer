@@ -185,7 +185,7 @@ SummaryEventInfo::List SummaryEventInfo::eventsForRange(QDate start, QDate end, 
                     const int hours = secs / 3600;
                     if (hours > 0) {
                         str += i18ncp("use abbreviation for hour to keep the text short", "1 hr", "%1 hrs", hours);
-                        str += QLatin1Char(' ');
+                        str += u' ';
                         secs -= (hours * 3600);
                     }
                     const int mins = secs / 60;
