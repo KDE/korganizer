@@ -11,14 +11,14 @@ msgstr ""
 "Project-Id-Version: korganizer\n"
 "Report-Msgid-Bugs-To: https://bugs.kde.org\n"
 "POT-Creation-Date: 2025-08-16 00:44+0000\n"
-"PO-Revision-Date: 2025-06-27 16:36+0300\n"
+"PO-Revision-Date: 2025-08-22 13:50+0300\n"
 "Last-Translator: Toms Trasuns <toms.trasuns@posteo.net>\n"
 "Language-Team: Latvian <kde-i18n-doc@kde.org>\n"
 "Language: lv\n"
 "MIME-Version: 1.0\n"
 "Content-Type: text/plain; charset=UTF-8\n"
 "Content-Transfer-Encoding: 8bit\n"
-"X-Generator: Lokalize 25.04.2\n"
+"X-Generator: Lokalize 25.08.0\n"
 "Plural-Forms: nplurals=3; plural=(n%10==1 && n%100!=11 ? 0 : n != 0 ? 1 : "
 "2);\n"
 
@@ -4991,13 +4991,13 @@ msgstr ""
 #: settings/korganizer.kcfg:273
 #, kde-format
 msgid "Display to-dos in a flat list"
-msgstr "Uzdevumus parādīt plakanā sarakstā"
+msgstr "Uzdevumus parādīt vienkāršā sarakstā"
 
 #. i18n: ectx: tooltip, entry, group (Todo View)
 #: settings/korganizer.kcfg:274
 #, kde-format
 msgid "Display to-dos as a flat list instead of a hierarchical tree"
-msgstr "Parādīt uzdevumus plakanā sarakstā, bet ne hierarhiskā koka skatā"
+msgstr "Parādīt uzdevumus vienkāršā sarakstā, bet ne hierarhiskā koka skatā"
 
 #. i18n: ectx: whatsthis, entry, group (Todo View)
 #: settings/korganizer.kcfg:275
@@ -5006,8 +5006,8 @@ msgid ""
 "Check this box if you want to see all your to-dos in a flat list instead of "
 "being arranged in a hierarchical tree."
 msgstr ""
-"Atzīmējiet šo lauciņu, ja vēlaties redzēt visus uzdevumus plakanā skatā, bet "
-"ne izkārtotus hierarhiska koka skatā."
+"Atzīmējiet šo lauciņu, ja vēlaties redzēt visus uzdevumus vienkāršā skatā, "
+"bet ne izkārtotus hierarhiska koka skatā."
 
 #. i18n: ectx: label, entry, group (Todo View)
 #: settings/korganizer.kcfg:279
@@ -6248,16 +6248,16 @@ msgid "Selected Calendars"
 msgstr "Atlasītie kalendāri"
 
 #: whatsnew/whatsnewtranslations.cpp:18
-#, fuzzy
-#| msgid "Agenda view timelabels can switch to a 24-hour clock"
 msgid ""
 "Agenda view: added timelabels context menu to show/hide time labels for the "
 "system timezone on the right (or left) side as well"
-msgstr "Dienaskārtības skata laika etiķetes var pāslēgt uz 24 stundu laiku"
+msgstr ""
+"Dienaskārtības skats: pievienota laika etiķešu konteksta izvēlne, lai "
+"parādītu/paslēptu etiķetes sistēmas laika zonā labajā (vai kreisajā) pusē."
 
 #: whatsnew/whatsnewtranslations.cpp:19
 msgid "Incidence editor: detect and warn about creating incidences in the past"
-msgstr ""
+msgstr "Notikuma redaktors: konstatē un brīdina par notikumu izveidi pagātnē"
 
 #: whatsnew/whatsnewtranslations.cpp:28
 msgid "Add What's New menu"
@@ -6265,92 +6265,84 @@ msgstr "Pievienota „Kas jauns“ izvēlne"
 
 #: whatsnew/whatsnewtranslations.cpp:29
 msgid "The current view is remembered"
-msgstr ""
+msgstr "Pašreizējais skats tiek iegaumēts"
 
 #: whatsnew/whatsnewtranslations.cpp:30
-#, fuzzy
-#| msgid "Add a Date Picker dialog available from the Go menu"
 msgid "Add a Date Picker dialog available on the Go menu"
-msgstr "„Iet“ izvēlnei ir pievienots „Datuma atlasītāja“ logs"
+msgstr "„Iet“ izvēlnei ir pievienots „Datuma atlasītāja“ lodziņš"
 
 #: whatsnew/whatsnewtranslations.cpp:31
-#, fuzzy
-#| msgid ""
-#| "Agenda view move day, next X Days, work week into the Agenda tool button"
 msgid ""
 "Agenda view: consolidated the \"Day\", \"Next X Days\", \"Work Schedule\", "
 "\"Week\" time ranges into the Agenda tool button"
 msgstr ""
-"Dienaskārtības rīka pogai ir pievienots dienaskārtības skats, pārvietošanas "
-"diena, nākamās X dienas, darba nedēļa"
+"Dienaskārtības skats: Dienaskārtības rīka pogā ir apvienoti „Diena“, "
+"„Nākamās x dienas“, „Darba grafika“ un „Nedēļa“ laika diapazoni."
 
 #: whatsnew/whatsnewtranslations.cpp:32
-#, fuzzy
-#| msgid "Agenda view timelabels can switch to a 24-hour clock"
 msgid ""
 "Agenda view: added timelabels context menu option to toggle a 24-hour "
 "(military style) clock"
-msgstr "Dienaskārtības skata laika etiķetes var pāslēgt uz 24 stundu laiku"
+msgstr ""
+"Dienaskārtības skats: pievienota laika etiķešu konteksta izvēlne, lai "
+"pārslēgtu uz 24 stundu pulksteni"
 
 #: whatsnew/whatsnewtranslations.cpp:33
-#, fuzzy
-#| msgid "Agenda view menu adds create new Event/To-do"
 msgid "Agenda view: added context menu to create new Event or To-do"
 msgstr ""
-"Dienaskārtības skata izvēlnes pievienošana izveido jaunu notikumu/uzdevumu"
+"Dienaskārtības skats: pievienota konteksta izvēlne, lai izveidotu jaunu "
+"notikumu vai uzdevumu"
 
 #: whatsnew/whatsnewtranslations.cpp:34
-#, fuzzy
-#| msgid "To-do view menu has options for toggling completion and reminders"
 msgid ""
 "To-do view: added context menu options for toggling completion and reminders"
-msgstr "Uzdevumu skata izvēlnei ir opcija pārslēgt pabeigtību un atgādinājumus"
+msgstr ""
+"Uzdevumu skats: pievienota konteksta izvēlne, lai ieslēgtu vai izslēgtu "
+"pabeigšanu un atgādinājumus"
 
 #: whatsnew/whatsnewtranslations.cpp:35
-#, fuzzy
-#| msgid "To-do view no longer will show the to-do list in the sidebar"
 msgid "To-do view: remove the (redundant) to-do list from the sidebar"
-msgstr "Uzdevumu skats vairs sānu joslā nerādīs uzdevumu sarakstu"
+msgstr "Uzdevumu skats: noņemts (liekais) uzdevumu saraksts sānu joslā"
 
 #: whatsnew/whatsnewtranslations.cpp:36
-#, fuzzy
-#| msgid "To-do list view uses full window"
 msgid "To-do view: save/restore fullview setting"
-msgstr "Uzdevumu saraksts aizņem visu logu"
+msgstr "Uzdevumu skats: saglabāt/atjaunot pilnerkāna iestatījumu"
 
 #: whatsnew/whatsnewtranslations.cpp:37
 msgid "To-do view: save/restore flatview setting"
-msgstr ""
+msgstr "Uzdevumu skats: saglabāt/atjaunot vienkārša skata iestatījumus"
 
 #: whatsnew/whatsnewtranslations.cpp:38
 msgid ""
 "Date navigator: added an option in the Configure->Views settings for hiding "
 "the week numbers"
 msgstr ""
+"Datumu navigators: pievienota opcija „Konfigurēt->Skats“ iestatījumos "
+"nedēļas numuru noņemšanai"
 
 #: whatsnew/whatsnewtranslations.cpp:39
-#, fuzzy
-#| msgid "Week numbers select a work week when in work week mode"
 msgid ""
 "Date navigator: the \"Week numbers select a work week when in work week mode"
 "\" setting is true by default"
-msgstr "Nedēļas skaitļi atlasa darba nedēļu, strādājot darba nedēļas režīmā"
+msgstr ""
+"Datumu navigators: „Nedēļas skaitļi atlasa darba nedēļu, strādājot darba "
+"nedēļas režīmā“ režīmā ir ieslēgts pēc noklusējuma"
 
 #: whatsnew/whatsnewtranslations.cpp:40
 msgid "Incidence editor: remember/restore the template manager geometry"
-msgstr ""
+msgstr "Notikumu redaktors: atcerēties/atjaunot veidņu pārvaldības ģeometriju"
 
 #: whatsnew/whatsnewtranslations.cpp:41
 msgid "Incidence editor: support drag-and-drop attachments"
-msgstr ""
+msgstr "Notikumu redaktors: atbalsta piesaistņu vilkšanu un nomešanu"
 
 #: whatsnew/whatsnewtranslations.cpp:42
 msgid "The export calendar dialog remembers its last export folder location"
-msgstr ""
+msgstr "Eksporta kalendāra lodziņš atceras pēdējās eksporta mapes vietu"
 
 #: whatsnew/whatsnewtranslations.cpp:43
 msgid "The import calendar dialog remembers its last import folder location"
-msgstr ""
+msgstr "Importa kalendāra lodziņš atceras pēdējo importa mapes vietu"
 
 #: whatsnew/whatsnewtranslations.cpp:44
 msgid "Get Hot New Stuff removed"
@@ -6359,23 +6351,26 @@ msgstr "Noņemts „iegūt jaunas lietas“"
 #: whatsnew/whatsnewtranslations.cpp:45
 msgid "Add calendar file: remote calendars are always read-only"
 msgstr ""
+"Kalendāra datnes pievienošana: attāli kalendāri ir vienmēr tikai lasāms"
 
 #: whatsnew/whatsnewtranslations.cpp:46
 msgid "Add calendar file: will not permit an empty file path"
-msgstr ""
+msgstr "Kalendāra pievienošanas datne: neatļaus tukšu datnes ceļu"
 
 #: whatsnew/whatsnewtranslations.cpp:47
 msgid ""
 "DAV configuration: dialog allows seeing the account password when editing"
 msgstr ""
+"DAV konfigurācija: lodziņš atļauj rediģēšanas laikā redzēt konta paroli"
 
 #: whatsnew/whatsnewtranslations.cpp:48
 msgid "DAV configuration: wizard shows icons for the various providers"
 msgstr ""
+"DAV konfigurēšana: vednis parāda ikonas dažādiem pakalpojumu sniedzējiem"
 
 #: whatsnew/whatsnewtranslations.cpp:49
 msgid "DAV configuration: wizard updated list of providers"
-msgstr ""
+msgstr "DAV konfigurācija: vednis atjaunināja pakalpojumu sniedzēju sarakstu"
 
 #: whatsnew/whatsnewtranslations.cpp:67
 #, kde-format
@@ -6383,27 +6378,31 @@ msgid ""
 "Semantics are changed from a \"working schedule\" concept to a \"week "
 "schedule\" concept to accommodate non-working users"
 msgstr ""
+"Semantika ir mainīta no „darba grafika“ koncepta uz „nedēļas grafika“ "
+"konceptu, lai būtu lietderīgāka lietotājiem, kuri nestrādā."
 
 #: whatsnew/whatsnewtranslations.cpp:68
 #, kde-format
 msgid "Initial \"New Event\" start times are consistent across all the views"
-msgstr ""
+msgstr "Sākotnējais „Jauna notikuma“ sākuma laiks ir konsekvents visos skatos"
 
 #: whatsnew/whatsnewtranslations.cpp:69
 #, kde-format
 msgid "Improved default event calendar handling"
-msgstr ""
+msgstr "Uzlabotas noklusējuma notikumu kalendāra darbības"
 
 #: whatsnew/whatsnewtranslations.cpp:71
 #, kde-format
 msgid ""
 "Incidences with a long excluded dates list no longer create huge tooltips"
 msgstr ""
+"Notikumu sarakstiem ar gariem ignorējamiem datumiem vairs nebūs milzīgi "
+"paskaidres."
 
 #: whatsnew/whatsnewtranslations.cpp:72
 #, kde-format
 msgid "Fixed the organizer email address for incidences with attendees"
-msgstr ""
+msgstr "Labota organizatora e-pasta adrese notikumiem ar apmeklētājiem"
 
 #: whatsnew/whatsnewtranslations.cpp:73
 #, kde-format
@@ -6411,6 +6410,8 @@ msgid ""
 "Agenda view: events without a duration are displayed as 30 long (rather than "
 "15 minutes long)"
 msgstr ""
+"Dienaskārtības skats: notikumi bez ilguma ir parādāmi kā 30 minūtes gari "
+"(bet ne 15 minūtes)"
 
 #: widgets/kdatenavigator.cpp:171
 #, kde-format
