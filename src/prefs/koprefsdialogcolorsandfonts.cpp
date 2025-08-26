@@ -157,10 +157,9 @@ KOPrefsDialogColorsAndFonts::KOPrefsDialogColorsAndFonts(QObject *parent, const 
     fontLayout->addWidget(timeBarFont->preview(), 0, 1);
     fontLayout->addWidget(timeBarFont->button(), 0, 2);
 
-    Korganizer::KPrefsWidFont *monthViewFont =
-        addWidFont(KOPrefs::instance()->monthViewFontItem(),
-                   fontFrame,
-                   QLocale().toString(QTime(12, 34), QLocale::ShortFormat) + u' ' + i18nc("@label", "Event text"));
+    Korganizer::KPrefsWidFont *monthViewFont = addWidFont(KOPrefs::instance()->monthViewFontItem(),
+                                                          fontFrame,
+                                                          QLocale().toString(QTime(12, 34), QLocale::ShortFormat) + u' ' + i18nc("@label", "Event text"));
 
     fontLayout->addWidget(monthViewFont->label(), 1, 0);
     fontLayout->addWidget(monthViewFont->preview(), 1, 1);
