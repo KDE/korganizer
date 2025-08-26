@@ -1,30 +1,31 @@
+# SPDX-FileCopyrightText: 2002, 2003, 2004, 2005, 2006, 2007, Stefan Winter <swinter@kde.org>
+# SPDX-FileCopyrightText: 2002, 2003, 2005 Thomas Diehl <thd@kde.org>
+# SPDX-FileCopyrightText: 2003, 2004, 2005, 2006 Stephan Johach <hunsum@gmx.de>
+# SPDX-FileCopyrightText: 2004 Matthias Kalle Dalheimer <kalle@kdab.net>
+# SPDX-FileCopyrightText: 2005, 2006, 2007, 2008, 2009, 2010 Thomas Reitelbach <tr@erdfunkstelle.de>
+# SPDX-FileCopyrightText: 2008, 2009, 2010, 2011, 2012, 2013, 2014, 2015, 2018, 2019, 2020 Burkhard Lück <lueck@hube-lueck.de>
+# SPDX-FileCopyrightText: 2009, 2010, 2011, 2012, 2013, 2014, 2016 Frederik Schwarzer <schwarzer@kde.org>
+# SPDX-FileCopyrightText: 2010 Moritz Baumann <flamingmo@online.de>
+# SPDX-FileCopyrightText: 2010 Panagiotis Papadopoulos <pano_90@gmx.net>
+# SPDX-FileCopyrightText: 2011 Bjoern Ricks <bjoern.ricks@intevation.de>
+# SPDX-FileCopyrightText: 2011 Torbjörn Klatt <torbjoern@torbjoern-klatt.de>
 # SPDX-FileCopyrightText: 2024 Johannes Obermayr <johannesobermayr@gmx.de>
-# Stefan Winter <swinter@kde.org>, 2002, 2003, 2004, 2005, 2006, 2007.
-# Thomas Diehl <thd@kde.org>, 2002,2003, 2005.
-# Stephan Johach <hunsum@gmx.de>, 2003, 2004, 2005, 2006.
-# Matthias Kalle Dalheimer <kalle@kdab.net>, 2004.
-# Thomas Reitelbach <tr@erdfunkstelle.de>, 2005, 2006, 2007, 2008, 2009, 2010.
-# Burkhard Lück <lueck@hube-lueck.de>, 2008, 2009, 2010, 2011, 2012, 2013, 2014, 2015, 2018, 2019, 2020.
-# Frederik Schwarzer <schwarzer@kde.org>, 2009, 2010, 2011, 2012, 2013, 2014, 2016.
-# Moritz Baumann <flamingmo@online.de>, 2010.
-# Panagiotis Papadopoulos <pano_90@gmx.net>, 2010.
-# Bjoern Ricks <bjoern.ricks@intevation.de>, 2011.
-# Torbjörn Klatt <torbjoern@torbjoern-klatt.de>, 2011.
-# Intevation GmbH, 2010.
+# SPDX-FileCopyrightText: 2025 Philipp Kiemle <l10n@prly.mozmail.com>
+# SPDX-FileCopyrightText: 2010 Intevation GmbH
 msgid ""
 msgstr ""
 "Project-Id-Version: korganizer_calendarplugins\n"
 "Report-Msgid-Bugs-To: https://bugs.kde.org\n"
 "POT-Creation-Date: 2025-04-19 00:42+0000\n"
-"PO-Revision-Date: 2024-09-07 00:24+0200\n"
-"Last-Translator: Johannes Obermayr <johannesobermayr@gmx.de>\n"
+"PO-Revision-Date: 2025-08-19 13:47+0200\n"
+"Last-Translator: Philipp Kiemle <l10n@prly.mozmail.com>\n"
 "Language-Team: German <kde-i18n-de@kde.org>\n"
 "Language: de\n"
 "MIME-Version: 1.0\n"
 "Content-Type: text/plain; charset=UTF-8\n"
 "Content-Transfer-Encoding: 8bit\n"
 "Plural-Forms: nplurals=2; plural=(n != 1);\n"
-"X-Generator: Lokalize 24.11.70\n"
+"X-Generator: Lokalize 25.08.0\n"
 
 #: datenums/configdialog.cpp:28
 #, kde-format
@@ -33,8 +34,7 @@ msgid "Configure Day Numbers"
 msgstr "Anzeige der Kalendertage einrichten"
 
 #: datenums/configdialog.cpp:43
-#, fuzzy, kde-format
-#| msgid "Show Date Number"
+#, kde-format
 msgctxt "@title:group"
 msgid "Show Date Number"
 msgstr "Kalendertag anzeigen"
@@ -699,8 +699,7 @@ msgid "Configure Picture of the Day"
 msgstr "Bild des Tages einrichten"
 
 #: picoftheday/configdialog.cpp:42
-#, fuzzy, kde-format
-#| msgid "Thumbnail Aspect Ratio Mode"
+#, kde-format
 msgctxt "@title:group"
 msgid "Thumbnail Aspect Ratio Mode"
 msgstr "Seitenverhältnis für Vorschaubilder"
@@ -712,15 +711,12 @@ msgid "Ignore aspect ratio"
 msgstr "Seitenverhältnis ignorieren"
 
 #: picoftheday/configdialog.cpp:48
-#, fuzzy, kde-format
-#| msgid ""
-#| "The thumbnail will be scaled freely. The aspect ratio will not be "
-#| "preserved."
+#, kde-format
 msgctxt "@info:whatsthis"
 msgid ""
 "The thumbnail will be scaled freely. The aspect ratio will not be preserved."
 msgstr ""
-"Das Vorschaubild wird frei skaliert, das Seitenverhältnis wird nicht "
+"Das Vorschaubild wird frei skaliert. Das Seitenverhältnis wird nicht "
 "beibehalten."
 
 #: picoftheday/configdialog.cpp:52
@@ -730,17 +726,14 @@ msgid "Keep aspect ratio"
 msgstr "Seitenverhältnis beibehalten"
 
 #: picoftheday/configdialog.cpp:54
-#, fuzzy, kde-format
-#| msgid ""
-#| "The thumbnail will be scaled to a rectangle as large as possible inside a "
-#| "given rectangle, preserving the aspect ratio."
+#, kde-format
 msgctxt "@info:whatsthis"
 msgid ""
 "The thumbnail will be scaled to a rectangle as large as possible inside a "
 "given rectangle, preserving the aspect ratio."
 msgstr ""
 "Das Vorschaubild wird innerhalb eines gegebenen Rechtecks größtmöglich "
-"skaliert, ohne das Seitenverhältnis zu ändern."
+"skaliert, ohne das Seitenverhältnis zu verändern."
 
 #: picoftheday/configdialog.cpp:59
 #, kde-format
@@ -749,17 +742,14 @@ msgid "Keep aspect ratio by expanding"
 msgstr "Ausdehnen, Seitenverhältnis beibehalten"
 
 #: picoftheday/configdialog.cpp:61
-#, fuzzy, kde-format
-#| msgid ""
-#| "The thumbnail will be scaled to a rectangle as small as possible outside "
-#| "a given rectangle, preserving the aspect ratio."
+#, kde-format
 msgctxt "@info:whatsthis"
 msgid ""
 "The thumbnail will be scaled to a rectangle as small as possible outside a "
 "given rectangle, preserving the aspect ratio."
 msgstr ""
 "Das Vorschaubild wird außerhalb eines gegebenen Rechtecks kleinstmöglich "
-"skaliert, ohne das Seitenverhältnis zu ändern."
+"skaliert, ohne das Seitenverhältnis zu verändern."
 
 #: picoftheday/element.cpp:209
 #, kde-format
@@ -774,12 +764,12 @@ msgstr "Bild-Seite"
 #: picoftheday/element.cpp:326
 #, kde-format
 msgid "Loading..."
-msgstr "Wird geladen ..."
+msgstr "Wird geladen …"
 
 #: picoftheday/element.cpp:332
 #, kde-format
 msgid "<qt>Loading <i>Picture of the Day</i>...</qt>"
-msgstr "<qt><i>Bild des Tages</i> wird geladen ...</qt>"
+msgstr "<qt><i>Bild des Tages</i> wird geladen …</qt>"
 
 #: picoftheday/picoftheday.cpp:48
 #, kde-format
