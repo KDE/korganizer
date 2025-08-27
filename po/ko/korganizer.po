@@ -8,7 +8,7 @@ msgid ""
 msgstr ""
 "Project-Id-Version: Korganizer\n"
 "Report-Msgid-Bugs-To: https://bugs.kde.org\n"
-"POT-Creation-Date: 2025-08-16 00:44+0000\n"
+"POT-Creation-Date: 2025-08-27 00:44+0000\n"
 "PO-Revision-Date: 2025-07-21 01:11+0200\n"
 "Last-Translator: Shinjo Park <kde@peremen.name>\n"
 "Language-Team: Korean <kde-kr@kde.org>\n"
@@ -3682,8 +3682,8 @@ msgctxt "@title:tab"
 msgid "Fonts"
 msgstr "글꼴"
 
-#: prefs/koprefsdialogcolorsandfonts.cpp:163
-#: prefs/koprefsdialogcolorsandfonts.cpp:169
+#: prefs/koprefsdialogcolorsandfonts.cpp:162
+#: prefs/koprefsdialogcolorsandfonts.cpp:168
 #, kde-format
 msgctxt "@label"
 msgid "Event text"

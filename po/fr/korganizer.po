@@ -24,8 +24,8 @@ msgid ""
 msgstr ""
 "Project-Id-Version: korganizer\n"
 "Report-Msgid-Bugs-To: https://bugs.kde.org\n"
-"POT-Creation-Date: 2025-08-16 00:44+0000\n"
-"PO-Revision-Date: 2025-07-10 08:43+0200\n"
+"POT-Creation-Date: 2025-08-27 00:44+0000\n"
+"PO-Revision-Date: 2025-08-17 13:41+0200\n"
 "Last-Translator: Xavier Besnard <xavier.besnard@kde.org>\n"
 "Language-Team: French <French <kde-francophone@kde.org>>\n"
 "Language: fr\n"
@@ -35,7 +35,7 @@ msgstr ""
 "Plural-Forms: nplurals=2; plural=(n > 1);\n"
 "X-Accelerator-Marker: &\n"
 "X-Environment: kde\n"
-"X-Generator: Lokalize 25.04.3\n"
+"X-Generator: Lokalize 25.08.0\n"
 "X-Text-Markup: kde4\n"
 
 #, kde-format
@@ -3911,8 +3911,8 @@ msgid "Fonts"
 msgstr "Polices"
 
 # unreviewed-context
-#: prefs/koprefsdialogcolorsandfonts.cpp:163
-#: prefs/koprefsdialogcolorsandfonts.cpp:169
+#: prefs/koprefsdialogcolorsandfonts.cpp:162
+#: prefs/koprefsdialogcolorsandfonts.cpp:168
 #, kde-format
 msgctxt "@label"
 msgid "Event text"
@@ -6507,21 +6507,19 @@ msgid "Selected Calendars"
 msgstr "Agendas sélectionnés"
 
 #: whatsnew/whatsnewtranslations.cpp:18
-#, fuzzy
-#| msgid ""
-#| "Agenda view: added timelabels context menu option to toggle a 24-hour "
-#| "(military style) clock"
 msgid ""
 "Agenda view: added timelabels context menu to show/hide time labels for the "
 "system timezone on the right (or left) side as well"
 msgstr ""
-"Affichage d'agendas : ajout d'une option de menu contextuel pour les "
-"étiquettes de temps pour basculer vers une horloge sur 24 heures (Apparence "
-"militaire)"
+"Vue d’agenda : ajout d'un menu contextuel des horaires permettant "
+"d'afficher / de masquer les étiquettes de temps pour le fuseau horaire du "
+"système sur le côté droit (ou gauche)"
 
 #: whatsnew/whatsnewtranslations.cpp:19
 msgid "Incidence editor: detect and warn about creating incidences in the past"
 msgstr ""
+"Éditeur d'incidences : détecter et avertir de la création d'incidences dans "
+"le passé"
 
 #: whatsnew/whatsnewtranslations.cpp:28
 msgid "Add What's New menu"
@@ -6529,7 +6527,7 @@ msgstr "Ajouter le menu « Quoi de neuf »"
 
 #: whatsnew/whatsnewtranslations.cpp:29
 msgid "The current view is remembered"
-msgstr ""
+msgstr "La vue actuelle est mémorisée."
 
 #: whatsnew/whatsnewtranslations.cpp:30
 msgid "Add a Date Picker dialog available on the Go menu"
@@ -6699,6 +6697,8 @@ msgid ""
 "Agenda view: events without a duration are displayed as 30 long (rather than "
 "15 minutes long)"
 msgstr ""
+"Vue agenda : les événements sans durée sont affichés sur 30 minutes (Au lieu "
+"de 15 minutes)"
 
 #: widgets/kdatenavigator.cpp:171
 #, kde-format

@@ -5,7 +5,7 @@ msgid ""
 msgstr ""
 "Project-Id-Version: Mimos\n"
 "Report-Msgid-Bugs-To: https://bugs.kde.org\n"
-"POT-Creation-Date: 2025-08-16 00:44+0000\n"
+"POT-Creation-Date: 2025-08-27 00:44+0000\n"
 "PO-Revision-Date: 2005-11-26 19:59+0800\n"
 "Last-Translator: MIMOS <opensource@mimos.my>\n"
 "Language-Team: Malay <kedidiemas@yahoogroups.com>\n"
@@ -3801,8 +3801,8 @@ msgctxt "@title:tab"
 msgid "Fonts"
 msgstr "bulan"
 
-#: prefs/koprefsdialogcolorsandfonts.cpp:163
-#: prefs/koprefsdialogcolorsandfonts.cpp:169
+#: prefs/koprefsdialogcolorsandfonts.cpp:162
+#: prefs/koprefsdialogcolorsandfonts.cpp:168
 #, fuzzy, kde-format
 #| msgid "Event text"
 msgctxt "@label"
