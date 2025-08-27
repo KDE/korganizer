@@ -25,7 +25,7 @@ msgstr ""
 "Project-Id-Version: korganizer\n"
 "Report-Msgid-Bugs-To: https://bugs.kde.org\n"
 "POT-Creation-Date: 2025-08-04 02:53+0000\n"
-"PO-Revision-Date: 2025-07-10 08:43+0200\n"
+"PO-Revision-Date: 2025-08-17 13:41+0200\n"
 "Last-Translator: Xavier Besnard <xavier.besnard@kde.org>\n"
 "Language-Team: French <French <kde-francophone@kde.org>>\n"
 "Language: fr\n"
@@ -35,7 +35,7 @@ msgstr ""
 "Plural-Forms: nplurals=2; plural=(n > 1);\n"
 "X-Accelerator-Marker: &\n"
 "X-Environment: kde\n"
-"X-Generator: Lokalize 25.04.3\n"
+"X-Generator: Lokalize 25.08.0\n"
 "X-Text-Markup: kde4\n"
 
 #, kde-format
@@ -6511,7 +6511,7 @@ msgstr "Ajouter le menu « Quoi de neuf »"
 
 #: whatsnew/whatsnewtranslations.cpp:19
 msgid "The current view is remembered"
-msgstr ""
+msgstr "La vue actuelle est mémorisée."
 
 #: whatsnew/whatsnewtranslations.cpp:20
 msgid "Add a Date Picker dialog available on the Go menu"
@@ -6675,6 +6675,8 @@ msgid ""
 "Agenda view: events without a duration are displayed as 30 long (rather than "
 "15 minutes long)"
 msgstr ""
+"Vue agenda : les événements sans durée sont affichés sur 30 minutes (Au lieu "
+"de 15 minutes)"
 
 #: widgets/kdatenavigator.cpp:171
 #, kde-format
