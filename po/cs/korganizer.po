@@ -1847,11 +1847,10 @@ msgid "Dissociating the occurrence failed."
 msgstr ""
 
 #: calendarview.cpp:1818
-#, fuzzy, kde-format
-#| msgid "KOrganizer"
+#, kde-format
 msgctxt "@title:window"
 msgid "KOrganizer"
-msgstr "KOrganizer"
+msgstr ""
 
 #: calendarview.cpp:1837
 #, kde-format
@@ -2447,20 +2446,16 @@ msgid "&Paste"
 msgstr "V&ložit"
 
 #: koeventpopupmenu.cpp:84 koeventpopupmenu.cpp:104
-#, fuzzy, kde-format
-#| msgctxt "@action:inmenu"
-#| msgid "New Event…"
+#, kde-format
 msgctxt "@action:inmenu"
 msgid "New Event"
-msgstr "Nová událost..."
+msgstr ""
 
 #: koeventpopupmenu.cpp:89 koeventpopupmenu.cpp:101
-#, fuzzy, kde-format
-#| msgctxt "@action:inmenu"
-#| msgid "New To-do…"
+#, kde-format
 msgctxt "@action:inmenu"
 msgid "New To-do"
-msgstr "Nový úkol…"
+msgstr ""
 
 #: koeventpopupmenu.cpp:92
 #, kde-format
@@ -5912,11 +5907,8 @@ msgid "Incidence editor: detect and warn about creating incidences in the past"
 msgstr ""
 
 #: whatsnew/whatsnewtranslations.cpp:28
-#, fuzzy
-#| msgctxt "@action:button"
-#| msgid "Add as new calendar"
 msgid "Add What's New menu"
-msgstr "Přidat jako nový kalendář"
+msgstr ""
 
 #: whatsnew/whatsnewtranslations.cpp:29
 msgid "The current view is remembered"
@@ -5952,10 +5944,8 @@ msgid "To-do view: remove the (redundant) to-do list from the sidebar"
 msgstr ""
 
 #: whatsnew/whatsnewtranslations.cpp:36
-#, fuzzy
-#| msgid "To-do list view uses full window"
 msgid "To-do view: save/restore fullview setting"
-msgstr "Seznam úloh používá celé okno"
+msgstr ""
 
 #: whatsnew/whatsnewtranslations.cpp:37
 msgid "To-do view: save/restore flatview setting"
@@ -6209,7 +6199,3 @@ msgstr "%1"
 msgctxt "4 digit year"
 msgid "%1"
 msgstr "%1"
-
-#~ msgctxt "@info"
-#~ msgid "Could not load calendar <filename>%1</filename>."
-#~ msgstr "Nelze načíst kalendář <filename>%1</filename>."
