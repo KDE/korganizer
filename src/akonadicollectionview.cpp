@@ -14,7 +14,6 @@
 #include "collectionsortfilterproxymodel.h"
 #include "config-korganizer.h"
 #include "kocore.h"
-#include "koglobals.h"
 #include "kohelper.h"
 #include "manageshowcollectionproperties.h"
 #include "prefs/koprefs.h"
@@ -861,7 +860,9 @@ void AkonadiCollectionView::deleteCalendar()
             // deletes the agent, not the contents
             const Akonadi::AgentInstance instance = Akonadi::AgentManager::self()->instance(collection.resource());
             if (instance.isValid()) {
+                mCalendarView->incidenceChanger()->setShowDialogsOnError(false);
                 Akonadi::AgentManager::self()->removeInstance(instance);
+                mCalendarView->incidenceChanger()->setShowDialogsOnError(true);
                 resetDefaultEventCalendar();
                 mNotSendAddRemoveSignal = false;
             } else {
