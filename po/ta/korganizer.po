@@ -17,7 +17,7 @@ msgid ""
 msgstr ""
 "Project-Id-Version: korganizer\n"
 "Report-Msgid-Bugs-To: https://bugs.kde.org\n"
-"POT-Creation-Date: 2025-08-27 00:44+0000\n"
+"POT-Creation-Date: 2025-08-31 00:43+0000\n"
 "PO-Revision-Date: 2025-08-10 19:50+0530\n"
 "Last-Translator: Kishore G <kishore96@gmail.com>\n"
 "Language-Team: Tamil <kde-l10n-ta@kde.org>\n"
@@ -1514,7 +1514,7 @@ msgctxt "@action:button"
 msgid "Add as new calendar"
 msgstr "புதிய நாள்காட்டியாக சேர்"
 
-#: akonadicollectionview.cpp:290
+#: akonadicollectionview.cpp:289
 #, fuzzy, kde-format
 #| msgctxt "@item this is the default calendar"
 #| msgid "%1 (Offline)"
@@ -1522,26 +1522,26 @@ msgctxt "@item this calendar is offline"
 msgid "%1 (Offline)"
 msgstr "%1 (தொடர்பற்று உள்ளது)"
 
-#: akonadicollectionview.cpp:293
+#: akonadicollectionview.cpp:292
 #, kde-format
 msgctxt "@item this is the default calendar"
 msgid "%1 (Default)"
 msgstr "%1 (இயல்பிருப்பு)"
 
-#: akonadicollectionview.cpp:384
+#: akonadicollectionview.cpp:383
 #, fuzzy, kde-format
 #| msgid "Calendar"
 msgctxt "@info:tooltip"
 msgid "Calendar search"
 msgstr "நாள்காட்டி"
 
-#: akonadicollectionview.cpp:385
+#: akonadicollectionview.cpp:384
 #, kde-format
 msgctxt "@info:whatsthis"
 msgid "Start typing to search for a calendar within the collection."
 msgstr ""
 
-#: akonadicollectionview.cpp:387
+#: akonadicollectionview.cpp:386
 #, fuzzy, kde-format
 #| msgid "New Calendar"
 msgctxt ""
@@ -1549,25 +1549,25 @@ msgctxt ""
 msgid "Search for calendar…"
 msgstr "நாள்காட்டி"
 
-#: akonadicollectionview.cpp:473 manageshowcollectionproperties.cpp:76
+#: akonadicollectionview.cpp:472 manageshowcollectionproperties.cpp:76
 #, kde-format
 msgctxt "@title:window"
 msgid "Properties of Calendar Folder %1"
 msgstr "%1 நாள்காட்டி அடைவின் பண்புகள்"
 
-#: akonadicollectionview.cpp:485
+#: akonadicollectionview.cpp:484
 #, kde-format
 msgctxt "@action:inmenu"
 msgid "&Set Folder Color…"
 msgstr "&அடைவின் நிறத்தை அமை…"
 
-#: akonadicollectionview.cpp:491
+#: akonadicollectionview.cpp:490
 #, kde-format
 msgctxt "@action:inmenu"
 msgid "Set as &Default Folder"
 msgstr "&இயல்பிருப்பு அடைவாக அமை"
 
-#: akonadicollectionview.cpp:541
+#: akonadicollectionview.cpp:540
 #, kde-kuit-format
 msgctxt "@info"
 msgid ""
@@ -1576,7 +1576,7 @@ msgid ""
 "calendar folder.</para>"
 msgstr ""
 
-#: akonadicollectionview.cpp:546
+#: akonadicollectionview.cpp:545
 #, fuzzy, kde-kuit-format
 #| msgctxt "@info"
 #| msgid ""
@@ -1587,31 +1587,31 @@ msgid ""
 "folder?"
 msgstr "தற்போதையதற்கு பதிலாக \"%1\" தனை உங்கள் இயல்பிருப்பு நாள்காட்டியாக அமைக்கலாமா?"
 
-#: akonadicollectionview.cpp:551
+#: akonadicollectionview.cpp:550
 #, kde-format
 msgctxt "@title:window"
 msgid "Replace Default Calendar?"
 msgstr "இயல்பிருப்பு நாள்காட்டியாக இதை அமைக்கலாமா?"
 
-#: akonadicollectionview.cpp:555 akonadicollectionview.cpp:925
+#: akonadicollectionview.cpp:554 akonadicollectionview.cpp:926
 #, kde-kuit-format
 msgctxt "@info"
 msgid "<filename>%1</filename> is now your default event calendar"
 msgstr ""
 
-#: akonadicollectionview.cpp:711
+#: akonadicollectionview.cpp:710
 #, kde-format
 msgctxt "@title:window"
 msgid "Add Calendar"
 msgstr "நாள்காட்டியை சேர்ப்பது"
 
-#: akonadicollectionview.cpp:730
+#: akonadicollectionview.cpp:729
 #, kde-kuit-format
 msgctxt "@info"
 msgid "Add new calendar failed: <message>%1</message>"
 msgstr ""
 
-#: akonadicollectionview.cpp:787
+#: akonadicollectionview.cpp:786
 #, fuzzy, kde-kuit-format
 #| msgctxt "@info"
 #| msgid ""
@@ -1631,7 +1631,7 @@ msgstr ""
 "நீக்கப்படாது.</note></para>விரும்பினால் <filename>%1</filename> எனும் நாள்காட்டியை "
 "திரும்ப சேர்க்கலாம்."
 
-#: akonadicollectionview.cpp:797
+#: akonadicollectionview.cpp:796
 #, fuzzy, kde-kuit-format
 #| msgctxt "@info"
 #| msgid ""
@@ -1654,7 +1654,7 @@ msgstr ""
 "நீக்கப்படாது.</note></para>விரும்பினால் <filename>%1</filename> எனும் நாள்காட்டியை "
 "திரும்ப சேர்க்கலாம்."
 
-#: akonadicollectionview.cpp:808
+#: akonadicollectionview.cpp:807
 #, fuzzy, kde-kuit-format
 #| msgctxt "@info"
 #| msgid ""
@@ -1676,7 +1676,7 @@ msgstr ""
 "நீக்கப்படாது.</note></para>விரும்பினால் <filename>%1</filename> எனும் நாள்காட்டியை "
 "திரும்ப சேர்க்கலாம்."
 
-#: akonadicollectionview.cpp:818
+#: akonadicollectionview.cpp:817
 #, fuzzy, kde-kuit-format
 #| msgctxt "@info"
 #| msgid ""
@@ -1698,7 +1698,7 @@ msgstr ""
 "நீக்கப்படாது.</note></para>விரும்பினால் <filename>%1</filename> எனும் நாள்காட்டியை "
 "திரும்ப சேர்க்கலாம்."
 
-#: akonadicollectionview.cpp:830
+#: akonadicollectionview.cpp:829
 #, fuzzy, kde-kuit-format
 #| msgctxt "@info"
 #| msgid ""
@@ -1715,7 +1715,7 @@ msgstr ""
 "<para><warning>இச்செயலைத் திரும்பப்பெற முடியாது. %2 பட்டனை அழுத்துமுன் யோசிக்கவும்.</"
 "warning></para>"
 
-#: akonadicollectionview.cpp:837
+#: akonadicollectionview.cpp:836
 #, fuzzy, kde-kuit-format
 #| msgctxt "@info"
 #| msgid ""
@@ -1734,13 +1734,13 @@ msgstr ""
 "<para><warning>இச்செயலைத் திரும்பப்பெற முடியாது. %2 பட்டனை அழுத்துமுன் யோசிக்கவும்.</"
 "warning></para>"
 
-#: akonadicollectionview.cpp:848 akonadicollectionview.cpp:877
+#: akonadicollectionview.cpp:847 akonadicollectionview.cpp:878
 #, kde-format
 msgctxt "@title:window"
 msgid "Delete Calendar"
 msgstr "நாள்காட்டியை நீக்குவது"
 
-#: akonadicollectionview.cpp:872
+#: akonadicollectionview.cpp:873
 #, fuzzy, kde-kuit-format
 #| msgctxt "@info"
 #| msgid ""
@@ -1758,26 +1758,26 @@ msgstr ""
 "<para><warning>இச்செயலைத் திரும்பப்பெற முடியாது. %2 பட்டனை அழுத்துமுன் யோசிக்கவும்.</"
 "warning></para>"
 
-#: akonadicollectionview.cpp:887
+#: akonadicollectionview.cpp:888
 #, kde-kuit-format
 msgctxt "@info"
 msgid ""
 "Delete calendar failed: <message>Invalid Akonadi agent instance</message>"
 msgstr ""
 
-#: akonadicollectionview.cpp:930
+#: akonadicollectionview.cpp:931
 #, kde-format
 msgctxt "@info"
 msgid "Consider setting a default calendar for new events"
 msgstr ""
 
-#: akonadicollectionview.cpp:932
+#: akonadicollectionview.cpp:933
 #, kde-format
 msgctxt "@info"
 msgid "Consider adding a write-enabled events calendar"
 msgstr ""
 
-#: akonadicollectionview.cpp:954
+#: akonadicollectionview.cpp:955
 #, kde-kuit-format
 msgctxt "@info"
 msgid "Delete calendar failed: <message>%1</message>"

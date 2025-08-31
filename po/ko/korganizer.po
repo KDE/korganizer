@@ -8,7 +8,7 @@ msgid ""
 msgstr ""
 "Project-Id-Version: Korganizer\n"
 "Report-Msgid-Bugs-To: https://bugs.kde.org\n"
-"POT-Creation-Date: 2025-08-27 00:44+0000\n"
+"POT-Creation-Date: 2025-08-31 00:43+0000\n"
 "PO-Revision-Date: 2025-07-21 01:11+0200\n"
 "Last-Translator: Shinjo Park <kde@peremen.name>\n"
 "Language-Team: Korean <kde-kr@kde.org>\n"
@@ -1471,56 +1471,56 @@ msgctxt "@action:button"
 msgid "Add as new calendar"
 msgstr "새 캘린더로 추가"
 
-#: akonadicollectionview.cpp:290
+#: akonadicollectionview.cpp:289
 #, kde-format
 msgctxt "@item this calendar is offline"
 msgid "%1 (Offline)"
 msgstr "%1(오프라인)"
 
-#: akonadicollectionview.cpp:293
+#: akonadicollectionview.cpp:292
 #, kde-format
 msgctxt "@item this is the default calendar"
 msgid "%1 (Default)"
 msgstr "%1(기본값)"
 
-#: akonadicollectionview.cpp:384
+#: akonadicollectionview.cpp:383
 #, kde-format
 msgctxt "@info:tooltip"
 msgid "Calendar search"
 msgstr "캘린더 검색"
 
-#: akonadicollectionview.cpp:385
+#: akonadicollectionview.cpp:384
 #, kde-format
 msgctxt "@info:whatsthis"
 msgid "Start typing to search for a calendar within the collection."
 msgstr "모음집에 있는 캘린더를 검색하려면 입력하십시오."
 
-#: akonadicollectionview.cpp:387
+#: akonadicollectionview.cpp:386
 #, kde-format
 msgctxt ""
 "@info/plain Displayed grayed-out inside the textbox, calendar to search"
 msgid "Search for calendar…"
 msgstr "캘린더 검색…"
 
-#: akonadicollectionview.cpp:473 manageshowcollectionproperties.cpp:76
+#: akonadicollectionview.cpp:472 manageshowcollectionproperties.cpp:76
 #, kde-format
 msgctxt "@title:window"
 msgid "Properties of Calendar Folder %1"
 msgstr "%1 캘린더 폴더 속성"
 
-#: akonadicollectionview.cpp:485
+#: akonadicollectionview.cpp:484
 #, kde-format
 msgctxt "@action:inmenu"
 msgid "&Set Folder Color…"
 msgstr "폴더 색상 설정(&S)…"
 
-#: akonadicollectionview.cpp:491
+#: akonadicollectionview.cpp:490
 #, kde-format
 msgctxt "@action:inmenu"
 msgid "Set as &Default Folder"
 msgstr "기본 폴더로 설정(&D)"
 
-#: akonadicollectionview.cpp:541
+#: akonadicollectionview.cpp:540
 #, kde-kuit-format
 msgctxt "@info"
 msgid ""
@@ -1531,7 +1531,7 @@ msgstr ""
 "<filename>%1</filename> 폴더를 기본 캘린더 폴더로 설정하시겠습니까?<para>현"
 "재 기본 캘린더 폴더 <filename>%2</filename>을(를) 대체합니다.</para>"
 
-#: akonadicollectionview.cpp:546
+#: akonadicollectionview.cpp:545
 #, kde-kuit-format
 msgctxt "@info"
 msgid ""
@@ -1539,31 +1539,31 @@ msgid ""
 "folder?"
 msgstr "<filename>%1</filename> 폴더를 기본 캘린더 폴더로 설정하시겠습니까?"
 
-#: akonadicollectionview.cpp:551
+#: akonadicollectionview.cpp:550
 #, kde-format
 msgctxt "@title:window"
 msgid "Replace Default Calendar?"
 msgstr "기본 캘린더 교체?"
 
-#: akonadicollectionview.cpp:555 akonadicollectionview.cpp:925
+#: akonadicollectionview.cpp:554 akonadicollectionview.cpp:926
 #, kde-kuit-format
 msgctxt "@info"
 msgid "<filename>%1</filename> is now your default event calendar"
 msgstr "기본 이벤트 캘린더를 <filename>%1</filename>(으)로 설정함"
 
-#: akonadicollectionview.cpp:711
+#: akonadicollectionview.cpp:710
 #, kde-format
 msgctxt "@title:window"
 msgid "Add Calendar"
 msgstr "캘린더 추가"
 
-#: akonadicollectionview.cpp:730
+#: akonadicollectionview.cpp:729
 #, kde-kuit-format
 msgctxt "@info"
 msgid "Add new calendar failed: <message>%1</message>"
 msgstr "새 캘린더를 추가할 수 없음: <message>%1</message>"
 
-#: akonadicollectionview.cpp:787
+#: akonadicollectionview.cpp:786
 #, kde-kuit-format
 msgctxt "@info"
 msgid ""
@@ -1576,7 +1576,7 @@ msgstr ""
 "는 삭제되지 않으며, 원격 리소스에서도 캘린더를 삭제하지 않습니다. 나중에 다"
 "시 <filename>%1</filename> 캘린더를 추가할 수 있습니다.</note></para>"
 
-#: akonadicollectionview.cpp:797
+#: akonadicollectionview.cpp:796
 #, kde-kuit-format
 msgctxt "@info"
 msgid ""
@@ -1595,7 +1595,7 @@ msgstr ""
 "을(를) 포함합니다. 캘린더를 삭제하면 새로운 기본 캘린더 폴더를 선택해야 할 수"
 "도 있습니다.</warning></para>"
 
-#: akonadicollectionview.cpp:808
+#: akonadicollectionview.cpp:807
 #, kde-kuit-format
 msgctxt "@info"
 msgid ""
@@ -1613,7 +1613,7 @@ msgstr ""
 "삭제하면 새로운 기본 캘린더 폴더를 선택해야 할 수도 있습니다.</warning></"
 "para>"
 
-#: akonadicollectionview.cpp:818
+#: akonadicollectionview.cpp:817
 #, kde-kuit-format
 msgctxt "@info"
 msgid ""
@@ -1630,7 +1630,7 @@ msgstr ""
 "para><para><warning>이 캘린더는 현재 기본 캘린더입니다. 캘린더를 삭제하면 새"
 "로운 기본 캘린더를 선택해야 할 수도 있습니다.</warning></para>"
 
-#: akonadicollectionview.cpp:830
+#: akonadicollectionview.cpp:829
 #, kde-kuit-format
 msgctxt "@info"
 msgid ""
@@ -1642,7 +1642,7 @@ msgstr ""
 "행 취소할 수 없습니다. %2 단추를 클릭하기 전에 다시 생각해 보십시오.</"
 "warning></para>"
 
-#: akonadicollectionview.cpp:837
+#: akonadicollectionview.cpp:836
 #, kde-kuit-format
 msgctxt "@info"
 msgid ""
@@ -1658,13 +1658,13 @@ msgstr ""
 "캘린더를 삭제하면 새로운 기본 캘린더를 선택해야 할 수도 있습니다.</warning></"
 "para>"
 
-#: akonadicollectionview.cpp:848 akonadicollectionview.cpp:877
+#: akonadicollectionview.cpp:847 akonadicollectionview.cpp:878
 #, kde-format
 msgctxt "@title:window"
 msgid "Delete Calendar"
 msgstr "캘린더 삭제"
 
-#: akonadicollectionview.cpp:872
+#: akonadicollectionview.cpp:873
 #, kde-kuit-format
 msgctxt "@info"
 msgid ""
@@ -1677,26 +1677,26 @@ msgstr ""
 "니다.<para><warning>이 작업은 실행 취소할 수 없습니다. %1 단추를 누르기 전에 "
 "신중하게 결정하십시오.</warning></para>"
 
-#: akonadicollectionview.cpp:887
+#: akonadicollectionview.cpp:888
 #, kde-kuit-format
 msgctxt "@info"
 msgid ""
 "Delete calendar failed: <message>Invalid Akonadi agent instance</message>"
 msgstr "캘린더 삭제 실패: <message>잘못된 Akonadi 에이전트 인스턴스</message>"
 
-#: akonadicollectionview.cpp:930
+#: akonadicollectionview.cpp:931
 #, kde-format
 msgctxt "@info"
 msgid "Consider setting a default calendar for new events"
 msgstr "새 이벤트의 기본 캘린더를 선택하십시오"
 
-#: akonadicollectionview.cpp:932
+#: akonadicollectionview.cpp:933
 #, kde-format
 msgctxt "@info"
 msgid "Consider adding a write-enabled events calendar"
 msgstr "쓰기 가능한 이벤트 캘린더를 추가하십시오"
 
-#: akonadicollectionview.cpp:954
+#: akonadicollectionview.cpp:955
 #, kde-kuit-format
 msgctxt "@info"
 msgid "Delete calendar failed: <message>%1</message>"
