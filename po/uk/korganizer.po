@@ -11,7 +11,7 @@ msgid ""
 msgstr ""
 "Project-Id-Version: korganizer\n"
 "Report-Msgid-Bugs-To: https://bugs.kde.org\n"
-"POT-Creation-Date: 2025-08-04 02:53+0000\n"
+"POT-Creation-Date: 2025-08-31 02:44+0000\n"
 "PO-Revision-Date: 2025-08-04 09:29+0300\n"
 "Last-Translator: Yuri Chornoivan <yurchor@ukr.net>\n"
 "Language-Team: Ukrainian <trans-uk@lists.fedoraproject.org>\n"
@@ -1520,56 +1520,56 @@ msgctxt "@action:button"
 msgid "Add as new calendar"
 msgstr "Додати новий календар"
 
-#: akonadicollectionview.cpp:291
+#: akonadicollectionview.cpp:290
 #, kde-format
 msgctxt "@item this calendar is offline"
 msgid "%1 (Offline)"
 msgstr "%1 (поза мережею)"
 
-#: akonadicollectionview.cpp:294
+#: akonadicollectionview.cpp:293
 #, kde-format
 msgctxt "@item this is the default calendar"
 msgid "%1 (Default)"
 msgstr "%1 (типовий)"
 
-#: akonadicollectionview.cpp:385
+#: akonadicollectionview.cpp:384
 #, kde-format
 msgctxt "@info:tooltip"
 msgid "Calendar search"
 msgstr "Пошук календаря"
 
-#: akonadicollectionview.cpp:386
+#: akonadicollectionview.cpp:385
 #, kde-format
 msgctxt "@info:whatsthis"
 msgid "Start typing to search for a calendar within the collection."
 msgstr "Почніть введення критерію пошуку календаря у збірці."
 
-#: akonadicollectionview.cpp:388
+#: akonadicollectionview.cpp:387
 #, kde-format
 msgctxt ""
 "@info/plain Displayed grayed-out inside the textbox, calendar to search"
 msgid "Search for calendar…"
 msgstr "Шукати календар…"
 
-#: akonadicollectionview.cpp:474 manageshowcollectionproperties.cpp:76
+#: akonadicollectionview.cpp:473 manageshowcollectionproperties.cpp:76
 #, kde-format
 msgctxt "@title:window"
 msgid "Properties of Calendar Folder %1"
 msgstr "Властивості теки календаря %1"
 
-#: akonadicollectionview.cpp:486
+#: akonadicollectionview.cpp:485
 #, kde-format
 msgctxt "@action:inmenu"
 msgid "&Set Folder Color…"
 msgstr "&Встановити колір теки…"
 
-#: akonadicollectionview.cpp:492
+#: akonadicollectionview.cpp:491
 #, kde-format
 msgctxt "@action:inmenu"
 msgid "Set as &Default Folder"
 msgstr "Зробити &типовою текою"
 
-#: akonadicollectionview.cpp:542
+#: akonadicollectionview.cpp:541
 #, kde-kuit-format
 msgctxt "@info"
 msgid ""
@@ -1581,7 +1581,7 @@ msgstr ""
 "календарів?<para>У результаті буде замінено <filename>%2</filename> як "
 "типову теку календарів.</para>"
 
-#: akonadicollectionview.cpp:547
+#: akonadicollectionview.cpp:546
 #, kde-kuit-format
 msgctxt "@info"
 msgid ""
@@ -1591,31 +1591,31 @@ msgstr ""
 "Ви справді хочете зробити <filename>%1</filename> вашою типовою текою "
 "календарів?"
 
-#: akonadicollectionview.cpp:552
+#: akonadicollectionview.cpp:551
 #, kde-format
 msgctxt "@title:window"
 msgid "Replace Default Calendar?"
 msgstr "Замінити типовий календар?"
 
-#: akonadicollectionview.cpp:556 akonadicollectionview.cpp:926
+#: akonadicollectionview.cpp:555 akonadicollectionview.cpp:927
 #, kde-kuit-format
 msgctxt "@info"
 msgid "<filename>%1</filename> is now your default event calendar"
 msgstr "<filename>%1</filename> тепер є вашим типовим календарем подій"
 
-#: akonadicollectionview.cpp:712
+#: akonadicollectionview.cpp:711
 #, kde-format
 msgctxt "@title:window"
 msgid "Add Calendar"
 msgstr "Додавання календаря"
 
-#: akonadicollectionview.cpp:731
+#: akonadicollectionview.cpp:730
 #, kde-kuit-format
 msgctxt "@info"
 msgid "Add new calendar failed: <message>%1</message>"
 msgstr "Не вдалося додати новий календар: <message>%1</message>"
 
-#: akonadicollectionview.cpp:788
+#: akonadicollectionview.cpp:787
 #, kde-kuit-format
 msgctxt "@info"
 msgid ""
@@ -1629,7 +1629,7 @@ msgstr ""
 "ресурсу. Ви зможете надалі будь-коли додати календар <filename>%1</filename> "
 "знову.</note></para>"
 
-#: akonadicollectionview.cpp:798
+#: akonadicollectionview.cpp:797
 #, kde-kuit-format
 msgctxt "@info"
 msgid ""
@@ -1648,7 +1648,7 @@ msgstr ""
 "календарів <filename>%2</filename>. Якщо ви вилучите його, програма "
 "попросить вас вибрати нову типову теку календарів.</warning></para>"
 
-#: akonadicollectionview.cpp:809
+#: akonadicollectionview.cpp:808
 #, kde-kuit-format
 msgctxt "@info"
 msgid ""
@@ -1666,7 +1666,7 @@ msgstr ""
 "календарів. Якщо ви вилучите його, програма попросить вас вибрати нову "
 "типову теку календарів.</warning></para>"
 
-#: akonadicollectionview.cpp:819
+#: akonadicollectionview.cpp:818
 #, kde-kuit-format
 msgctxt "@info"
 msgid ""
@@ -1683,7 +1683,7 @@ msgstr ""
 "знову</note></para><para><warning>Це ваш типовий календар. Якщо ви вилучите "
 "його, програма попросить вас вибрати новий типовий календар.</warning></para>"
 
-#: akonadicollectionview.cpp:831
+#: akonadicollectionview.cpp:830
 #, kde-kuit-format
 msgctxt "@info"
 msgid ""
@@ -1695,7 +1695,7 @@ msgstr ""
 "<para><warning>Результати не можна буде скасувати. Будьте розважливі, коли "
 "натискатимете кнопку %2.</warning></para>"
 
-#: akonadicollectionview.cpp:838
+#: akonadicollectionview.cpp:837
 #, kde-kuit-format
 msgctxt "@info"
 msgid ""
@@ -1711,13 +1711,13 @@ msgstr ""
 "para><para><warning>Це ваша типова тека календарів. Якщо ви її вилучите, "
 "програма може попросити вас вибрати новий типовий календар.</warning></para>"
 
-#: akonadicollectionview.cpp:849 akonadicollectionview.cpp:878
+#: akonadicollectionview.cpp:848 akonadicollectionview.cpp:879
 #, kde-format
 msgctxt "@title:window"
 msgid "Delete Calendar"
 msgstr "Вилучення календаря"
 
-#: akonadicollectionview.cpp:873
+#: akonadicollectionview.cpp:874
 #, kde-kuit-format
 msgctxt "@info"
 msgid ""
@@ -1731,7 +1731,7 @@ msgstr ""
 "<para><warning>Результати дії не можна буде скасувати. Будь ласка, зважте "
 "усе до того, як натиснете кнопку %1.</warning></para>"
 
-#: akonadicollectionview.cpp:888
+#: akonadicollectionview.cpp:889
 #, kde-kuit-format
 msgctxt "@info"
 msgid ""
@@ -1740,19 +1740,19 @@ msgstr ""
 "Не вдалося вилучити календар: <message>Некоректний екземпляр агента Akonadi</"
 "message>"
 
-#: akonadicollectionview.cpp:931
+#: akonadicollectionview.cpp:932
 #, kde-format
 msgctxt "@info"
 msgid "Consider setting a default calendar for new events"
 msgstr "Вам варто створити типовий календар для нових записів подій"
 
-#: akonadicollectionview.cpp:933
+#: akonadicollectionview.cpp:934
 #, kde-format
 msgctxt "@info"
 msgid "Consider adding a write-enabled events calendar"
 msgstr "Вам варто додати придатний до запису подій календар"
 
-#: akonadicollectionview.cpp:955
+#: akonadicollectionview.cpp:956
 #, kde-kuit-format
 msgctxt "@info"
 msgid "Delete calendar failed: <message>%1</message>"
