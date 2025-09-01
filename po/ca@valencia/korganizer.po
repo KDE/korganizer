@@ -375,7 +375,7 @@ msgid ""
 "Select this menu entry if you would like to import the contents of an "
 "iCalendar or vCalendar file into your current calendar collection."
 msgstr ""
-"Seleccioneu esta entrada del menú si voleu importar el contingut d'un fitxer "
+"Trieu esta entrada del menú si voleu importar el contingut d'un fitxer "
 "iCalendar o vCalendar a dins de la col·lecció actual de calendari."
 
 #: actionmanager.cpp:256
@@ -883,8 +883,7 @@ msgstr "Mostra 1 dia individual a la vista d'agenda"
 #, kde-format
 msgctxt "@info:whatsthis"
 msgid "Select this option to show only 1 day at a time in Agenda View."
-msgstr ""
-"Seleccioneu esta opció per a mostrar 1 dia individual a la vista d'agenda."
+msgstr "Trieu esta opció per a mostrar 1 dia individual a la vista d'agenda."
 
 #: actionmanager.cpp:512
 #, kde-format
@@ -914,10 +913,10 @@ msgid ""
 "<interface>Views->General</interface> settings page to adjust the number of "
 "days shown."
 msgstr ""
-"Seleccioneu esta opció per a mostrar alguns dies següents a la vista "
-"d'agenda. Configureu l'opció <placeholder>x dies següents</placeholder> a la "
-"pàgina <interface>Vistes->General</interface> per a ajustar el nombre de "
-"dies mostrats."
+"Trieu esta opció per a mostrar alguns dies següents a la vista d'agenda. "
+"Configureu l'opció <placeholder>x dies següents</placeholder> a la pàgina "
+"<interface>Vistes->General</interface> per a ajustar el nombre de dies "
+"mostrats."
 
 #: actionmanager.cpp:524
 #, kde-format
@@ -963,9 +962,9 @@ msgid ""
 "<interface>Time and Date->Regional</interface> page.<para>Typically this "
 "view is intended for showing the week without weekend days.</para>"
 msgstr ""
-"Seleccioneu esta opció per a mostrar una setmana individual, excloent els "
-"dies que no estan inclosos en la vostra planificació setmanal. Configureu la "
-"vostra planificació seleccionant els dies a la configuració de la "
+"Trieu esta opció per a mostrar una setmana individual, excloent els dies que "
+"no estan inclosos en la vostra planificació setmanal. Configureu la vostra "
+"planificació seleccionant els dies a la configuració de la "
 "<placeholder>Planificació setmanal</placeholder> a la pàgina <interface>Data "
 "i hora->Regional</interface>.<para>Normalment esta vista està destinada a "
 "mostrar la setmana sense els dies del cap de setmana.</para>"
@@ -999,8 +998,7 @@ msgstr "Mostra una setmana individual a la vista d'agenda"
 msgctxt "@info:whatsthis"
 msgid "Select this option to show a week at a time in Agenda View."
 msgstr ""
-"Seleccioneu esta opció per a mostrar una setmana individual en la vista "
-"d'agenda."
+"Trieu esta opció per a mostrar una setmana individual en la vista d'agenda."
 
 #: actionmanager.cpp:551
 #, kde-format
@@ -1323,13 +1321,13 @@ msgstr "No s'ha pogut carregar un calendari. Error: <message>%1</message>"
 #, kde-format
 msgctxt "@title:window"
 msgid "Select Calendar File to Open"
-msgstr "Seleccioneu el fitxer de calendari que s'ha d'obrir"
+msgstr "Trieu el fitxer de calendari que s'ha d'obrir"
 
 #: actionmanager.cpp:953
 #, kde-format
 msgctxt "@title:window"
 msgid "Select Calendar File to Import"
-msgstr "Seleccioneu el fitxer de calendari que s'ha d'importar"
+msgstr "Trieu el fitxer de calendari que s'ha d'importar"
 
 #: actionmanager.cpp:985
 #, kde-kuit-format
@@ -1496,10 +1494,10 @@ msgid ""
 "automatically.</para>"
 msgstr ""
 "<para>Voleu fusionar este element de calendari en un calendari existent, o "
-"bé utilitzar-lo per a crear un calendari nou?</para><para>Si seleccioneu "
-"fusió, tindreu l'oportunitat de seleccionar el calendari de destinació.</"
-"para><para>Si seleccioneu afegir, llavors es crearà automàticament un "
-"calendari nou.</para>"
+"bé utilitzar-lo per a crear un calendari nou?</para><para>Si trieu fusió, "
+"tindreu l'oportunitat de seleccionar el calendari de destinació.</"
+"para><para>Si trieu afegir, llavors es crearà automàticament un calendari "
+"nou.</para>"
 
 #: actionmanager.cpp:1662
 #, kde-format
@@ -1771,8 +1769,8 @@ msgid ""
 "do or journal entry to view its details here.</para>"
 msgstr ""
 "<para><emphasis>No hi ha cap element seleccionat</emphasis></"
-"para><para>Seleccioneu un esdeveniment, tasca pendent o entrada de diari per "
-"a veure'n els detalls.</para>"
+"para><para>Trieu un esdeveniment, tasca pendent o entrada de diari per a "
+"veure'n els detalls.</para>"
 
 #: calendarview.cpp:260
 #, kde-format
@@ -2412,7 +2410,7 @@ msgid ""
 "shows a week. The number in the left column is the number of the week in the "
 "year. Press it to select the whole week.</p></qt>"
 msgstr ""
-"<qt><p>Seleccioneu ací les dates que voleu mostrar en la vista principal de "
+"<qt><p>Trieu ací les dates que voleu mostrar en la vista principal de "
 "KOrganizer. Manteniu premut el botó del ratolí per a seleccionar més d'un "
 "dia.</p><p>Premeu els botons superiors per a passar als mesos o anys "
 "següents o anteriors.</p><p>Cada línia mostra una setmana. El número de la "
@@ -2744,7 +2742,7 @@ msgstr "En el pròxim &mes (31 dies)"
 #: kontactplugin/korganizer/apptsummaryconfig_base.ui:65
 #, kde-format
 msgid "Select the days for showing upcoming events"
-msgstr "Seleccioneu els dies per a mostrar esdeveniments pròxims"
+msgstr "Trieu els dies per a mostrar esdeveniments pròxims"
 
 #. i18n: ectx: property (whatsThis), widget (QRadioButton, mDateRangeButton)
 #: kontactplugin/korganizer/apptsummaryconfig_base.ui:68
@@ -3116,7 +3114,7 @@ msgstr ""
 #: kontactplugin/korganizer/todosummaryconfig_base.ui:65
 #, kde-format
 msgid "Select the days for showing pending To-dos"
-msgstr "Seleccioneu els dies per a mostrar les tasques pendents inacabades"
+msgstr "Trieu els dies per a mostrar les tasques pendents inacabades"
 
 #. i18n: ectx: property (whatsThis), widget (QRadioButton, mDateRangeButton)
 #: kontactplugin/korganizer/todosummaryconfig_base.ui:71
@@ -3410,7 +3408,7 @@ msgstr ""
 #: kontactplugin/specialdates/sdsummaryconfig_base.ui:65
 #, kde-format
 msgid "Select the days for showing upcoming special occasions"
-msgstr "Seleccioneu els dies per a mostrar les pròximes ocasions especials"
+msgstr "Trieu els dies per a mostrar les pròximes ocasions especials"
 
 #. i18n: ectx: property (whatsThis), widget (QRadioButton, mDateRangeButton)
 #: kontactplugin/specialdates/sdsummaryconfig_base.ui:68
@@ -3777,7 +3775,7 @@ msgid ""
 "Select the tag you want to modify. You can change the selected tag's color "
 "using the adjacent color button."
 msgstr ""
-"Seleccioneu ací l'etiqueta que voleu modificar. Podeu canviar el color de "
+"Trieu ací l'etiqueta que voleu modificar. Podeu canviar el color de "
 "l'etiqueta seleccionat utilitzant el botó inferior."
 
 #: prefs/koprefsdialogcolorsandfonts.cpp:115
@@ -3801,7 +3799,7 @@ msgid ""
 "Select the calendar you want to modify. You can change the selected calendar "
 "color using the button below."
 msgstr ""
-"Seleccioneu ací el calendari que voleu modificar. Podeu canviar el color del "
+"Trieu ací el calendari que voleu modificar. Podeu canviar el color del "
 "calendari seleccionat utilitzant el botó inferior."
 
 #: prefs/koprefsdialogcolorsandfonts.cpp:142
@@ -3951,7 +3949,7 @@ msgstr "%1 (%2)"
 #, kde-format
 msgctxt "@item:inlistbox"
 msgid "Select Holiday Regions"
-msgstr "Seleccioneu les regions de dies festius"
+msgstr "Trieu les regions de dies festius"
 
 #: prefs/koprefsdialogtime.cpp:111
 #, kde-format
@@ -4143,7 +4141,7 @@ msgstr "Altres opcions"
 #, kde-format
 msgctxt "@action:button"
 msgid "Choose…"
-msgstr "Trieu…"
+msgstr "Tria…"
 
 #: prefs/kprefsdialog.cpp:659
 #, kde-format
@@ -4212,9 +4210,8 @@ msgid ""
 "Select this option to always record new events, to-dos and journal entries "
 "using the current default calendar."
 msgstr ""
-"Seleccioneu esta opció per a registrar sempre els esdeveniments nous, "
-"tasques pendents i entrades de diari utilitzant el calendari predeterminat "
-"actual."
+"Trieu esta opció per a registrar sempre els esdeveniments nous, tasques "
+"pendents i entrades de diari utilitzant el calendari predeterminat actual."
 
 #. i18n: ectx: label, entry (Destination), group (Save Settings)
 #: settings/korganizer.kcfg:22
@@ -4232,9 +4229,9 @@ msgid ""
 "Kolab server or have to manage multiple accounts using Kontact as a KDE "
 "Kolab client. "
 msgstr ""
-"Seleccioneu esta opció per a triar el calendari que s'utilitzarà per a "
-"registrar l'element cada vegada que creeu un nou esdeveniment, tasca pendent "
-"o entrada de diari. Es recomana esta opció si teniu intenció d'utilitzar la "
+"Trieu esta opció per a triar el calendari que s'utilitzarà per a registrar "
+"l'element cada vegada que creeu un nou esdeveniment, tasca pendent o entrada "
+"de diari. Es recomana esta opció si teniu intenció d'utilitzar la "
 "funcionalitat de carpetes compartides del servidor Kolab o heu de gestionar "
 "múltiples comptes utilitzant Kontact com a client KDE de Kolab. "
 
@@ -4246,9 +4243,9 @@ msgid ""
 "your city is not listed, select one which shares the same timezone. "
 "KOrganizer will automatically adjust for daylight savings."
 msgstr ""
-"Seleccioneu la vostra zona horària de la llista d'ubicacions d'esta llista "
-"desplegable. Si la vostra ciutat no hi és, seleccioneu-ne una amb la mateixa "
-"zona horària. KOrganizer ajustarà automàticament el canvi d'hora."
+"Trieu la vostra zona horària de la llista d'ubicacions d'esta llista "
+"desplegable. Si la vostra ciutat no hi és, trieu-ne una amb la mateixa zona "
+"horària. KOrganizer ajustarà automàticament el canvi d'hora."
 
 #. i18n: ectx: label, entry (WeekStartDay), group (Time &amp; Date)
 #: settings/korganizer.kcfg:35
@@ -4260,7 +4257,7 @@ msgstr "Dia d'inici de la setmana:"
 #: settings/korganizer.kcfg:36
 #, kde-format
 msgid "Select the first day of each week"
-msgstr "Seleccioneu el primer dia de cada setmana"
+msgstr "Trieu el primer dia de cada setmana"
 
 #. i18n: ectx: whatsthis, entry (WeekStartDay), group (Time &amp; Date)
 #: settings/korganizer.kcfg:37
@@ -4269,8 +4266,8 @@ msgid ""
 "Select the first day of each week. Normally, you can ignore this since it is "
 "set in your locale."
 msgstr ""
-"Seleccioneu el primer dia de cada setmana. Normalment podeu ignorar-ho, ja "
-"que està configurat en la vostra configuració regional."
+"Trieu el primer dia de cada setmana. Normalment podeu ignorar-ho, ja que "
+"està configurat en la vostra configuració regional."
 
 #. i18n: ectx: label, entry (WorkingHoursStart), group (Time &amp; Date)
 #: settings/korganizer.kcfg:41
@@ -4386,9 +4383,9 @@ msgid ""
 "access the next \"x\" days view, choose the \"Next X Days\" menu item from "
 "the \"View\" menu."
 msgstr ""
-"Seleccioneu el nombre «x» de dies que es mostraran en la vista de dies "
-"pròxims. Per a accedir a la vista dels «x» dies següents, trieu l'element de "
-"menú «x dies següents» des del menú «Visualitza»."
+"Trieu el nombre «x» de dies que es mostraran en la vista de dies pròxims. "
+"Per a accedir a la vista dels «x» dies següents, trieu l'element de menú «x "
+"dies següents» des del menú «Visualitza»."
 
 #. i18n: ectx: tooltip, entry, group (General View)
 #: settings/korganizer.kcfg:73
@@ -4517,8 +4514,8 @@ msgid ""
 "Select the height of the hour rows in the agenda grid, in pixels. Increasing "
 "this value will make each row in the agenda grid taller."
 msgstr ""
-"Seleccioneu l'alçària de les files de l'hora en la quadrícula de l'agenda, "
-"en píxels. L'augment d'este valor farà que cada fila en la quadrícula de "
+"Trieu l'alçària de les files de l'hora en la quadrícula de l'agenda, en "
+"píxels. L'augment d'este valor farà que cada fila en la quadrícula de "
 "l'agenda siga més alta."
 
 #. i18n: ectx: tooltip, entry, group (Agenda View)
@@ -4673,11 +4670,10 @@ msgid ""
 "drawn in the color of its calendar.  Please use the Colors and Fonts "
 "configuration page for setting these colors."
 msgstr ""
-"Seleccioneu l'opció «Etiqueta a dins, calendari a fora» si voleu dibuixar "
-"els elements del calendari utilitzant el color de la seua etiqueta "
-"associada, amb la vora de l'element dibuixada en el color del seu calendari. "
-"Utilitzeu la pàgina de configuració de colors i lletres per a establir estos "
-"colors."
+"Trieu l'opció «Etiqueta a dins, calendari a fora» si voleu dibuixar els "
+"elements del calendari utilitzant el color de la seua etiqueta associada, "
+"amb la vora de l'element dibuixada en el color del seu calendari. Utilitzeu "
+"la pàgina de configuració de colors i lletres per a establir estos colors."
 
 #. i18n: ectx: tooltip, entry, group (Agenda View)
 #: settings/korganizer.kcfg:153
@@ -4706,9 +4702,9 @@ msgid ""
 "drawn in the color of its tag.  Please use the Colors and Fonts "
 "configuration page for setting these colors."
 msgstr ""
-"Seleccioneu l'opció «Calendari a dins, etiqueta a fora» si voleu dibuixar "
-"els elements del calendari utilitzant el color del calendari associat, amb "
-"la vora de l'element dibuixada en el color de la seua etiqueta. Utilitzeu la "
+"Trieu l'opció «Calendari a dins, etiqueta a fora» si voleu dibuixar els "
+"elements del calendari utilitzant el color del calendari associat, amb la "
+"vora de l'element dibuixada en el color de la seua etiqueta. Utilitzeu la "
 "pàgina de configuració de colors i lletres per a establir estos colors."
 
 #. i18n: ectx: tooltip, entry, group (Agenda View)
@@ -4736,7 +4732,7 @@ msgid ""
 "(both inside and border) using the color of their associated tag.  Please "
 "use the Colors and Fonts configuration page for setting these colors."
 msgstr ""
-"Seleccioneu l'opció «Només l'etiqueta» si voleu dibuixar els elements del "
+"Trieu l'opció «Només l'etiqueta» si voleu dibuixar els elements del "
 "calendari utilitzant el color de la seua etiqueta associada (a dins i a les "
 "vores). Utilitzeu la pàgina de configuració de colors i lletres per a "
 "establir estos colors."
@@ -4764,7 +4760,7 @@ msgid ""
 "(both inside and border) using the color of their calendar. Please use the "
 "Colors and Fonts configuration page for setting these colors."
 msgstr ""
-"Seleccioneu l'opció «Només el calendari» si voleu dibuixar els elements del "
+"Trieu l'opció «Només el calendari» si voleu dibuixar els elements del "
 "calendari utilitzant el color del calendari (a dins i a les vores) Utilitzeu "
 "la pàgina de configuració de colors i lletres per a establir estos colors."
 
@@ -4810,8 +4806,8 @@ msgid ""
 "Select the \"Merge all calendars into one view\" option if you would like "
 "all your calendars to be shown together in one agenda view."
 msgstr ""
-"Seleccioneu l'opció «Fusiona tots els calendaris en una única vista» si "
-"voleu que tots els calendaris es mostren junts en una vista d'agenda."
+"Trieu l'opció «Fusiona tots els calendaris en una única vista» si voleu que "
+"tots els calendaris es mostren junts en una vista d'agenda."
 
 #. i18n: ectx: tooltip, entry (AgendaViewCalendarDisplay), group (Agenda View)
 #: settings/korganizer.kcfg:184
@@ -4832,8 +4828,8 @@ msgid ""
 "Select the \"Show calendars side by side\" option if you would like to see "
 "two calendars at once, in a side-by-side view."
 msgstr ""
-"Seleccioneu l'opció «Mostra els calendaris costat a costat» si voleu veure "
-"dos calendaris alhora, en una vista de costat a costat."
+"Trieu l'opció «Mostra els calendaris costat a costat» si voleu veure dos "
+"calendaris alhora, en una vista de costat a costat."
 
 #. i18n: ectx: tooltip, entry (AgendaViewCalendarDisplay), group (Agenda View)
 #: settings/korganizer.kcfg:189
@@ -4854,8 +4850,8 @@ msgid ""
 "Select \"Switch between views with tabs\" if you would like to alternate "
 "between calendars using the tab key."
 msgstr ""
-"Seleccioneu «Canvia entre vistes amb les pestanyes» si voleu alternar entre "
-"els calendaris utilitzant la tecla del tabulador."
+"Trieu «Canvia entre vistes amb les pestanyes» si voleu alternar entre els "
+"calendaris utilitzant la tecla del tabulador."
 
 #. i18n: ectx: tooltip, entry (AgendaViewCalendarDisplay), group (Agenda View)
 #: settings/korganizer.kcfg:194
@@ -4983,7 +4979,7 @@ msgid ""
 "(both inside and border) in the color of their associated tag.  Please use "
 "the Colors and Fonts configuration page for setting these colors."
 msgstr ""
-"Seleccioneu l'opció «Només la categoria» si voleu dibuixar els elements del "
+"Trieu l'opció «Només la categoria» si voleu dibuixar els elements del "
 "calendari utilitzant el color de la seua categoria associada (a dins i a les "
 "vores). Utilitzeu la pàgina de configuració de colors i lletres per a "
 "establir estos colors."
@@ -5004,7 +5000,7 @@ msgid ""
 "(both inside and border) in the color of their calendar.  Please use the "
 "Colors and Fonts configuration page for setting these colors."
 msgstr ""
-"Seleccioneu l'opció «Només el calendari» si voleu dibuixar els elements del "
+"Trieu l'opció «Només el calendari» si voleu dibuixar els elements del "
 "calendari en el color del calendari (a dins i a les vores). Utilitzeu la "
 "pàgina de configuració de colors i lletres per a establir estos colors."
 
@@ -5131,8 +5127,8 @@ msgid ""
 "Select the holiday color here. The holiday color will be used for the "
 "holiday name in the month view and the holiday number in the date navigator."
 msgstr ""
-"Seleccioneu ací el color dels dies festius. Este color s'utilitzarà per al "
-"nom del dia festiu en la vista mensual i per al número del dia festiu en el "
+"Trieu ací el color dels dies festius. Este color s'utilitzarà per al nom del "
+"dia festiu en la vista mensual i per al número del dia festiu en el "
 "navegador de dates."
 
 #. i18n: ectx: label, entry (AgendaBgColor), group (Colors)
@@ -5147,7 +5143,7 @@ msgstr "Color de fons de la vista d'agenda"
 #: settings/korganizer.kcfg:293 settings/korganizer.kcfg:409
 #, kde-format
 msgid "Select the agenda view background color here."
-msgstr "Seleccioneu ací el color de fons de la vista d'agenda."
+msgstr "Trieu ací el color de fons de la vista d'agenda."
 
 #. i18n: ectx: label, entry, group (Colors)
 #: settings/korganizer.kcfg:297
@@ -5160,7 +5156,7 @@ msgstr "Color de la línia de temps actual (Marcus Bains) a la vista d'agenda"
 #, kde-format
 msgid "Select a color to use for the current-time (Marcus Bains) line."
 msgstr ""
-"Selecciona un color que s'utilitzarà per a la línia de l'hora actual (Marcus "
+"Tria un color que s'utilitzarà per a la línia de l'hora actual (Marcus "
 "Bains)."
 
 #. i18n: ectx: tooltip, entry, group (Colors)
@@ -5186,7 +5182,7 @@ msgid ""
 msgstr ""
 "Quan teniu un esdeveniment de tot el dia marcat com a ocupat, podeu tindre "
 "un color de fons diferent de la vista d'agenda o mensual per a este dia. "
-"Seleccioneu el color ací."
+"Trieu el color ací."
 
 #. i18n: ectx: label, entry, group (Colors)
 #. i18n: ectx: label, entry, group (Theme/Month view)
@@ -5199,7 +5195,7 @@ msgstr "Color de les hores laborables"
 #: settings/korganizer.kcfg:309
 #, kde-format
 msgid "Select the working hours color for the agenda view here."
-msgstr "Seleccioneu ací el color de les hores laborables en la vista d'agenda."
+msgstr "Trieu ací el color de les hores laborables en la vista d'agenda."
 
 #. i18n: ectx: label, entry (TodoDueTodayColor), group (Colors)
 #. i18n: ectx: label, entry, group (Theme/Month view)
@@ -5213,7 +5209,7 @@ msgstr "Color de les tasques pendents que vencen hui"
 #: settings/korganizer.kcfg:314 settings/korganizer.kcfg:560
 #, kde-format
 msgid "Select the to-do due today color here."
-msgstr "Seleccioneu ací el color de les tasques pendents que vencen hui."
+msgstr "Trieu ací el color de les tasques pendents que vencen hui."
 
 #. i18n: ectx: label, entry (TodoOverdueColor), group (Colors)
 #. i18n: ectx: label, entry, group (Theme/Month view)
@@ -5227,7 +5223,7 @@ msgstr "Color de les tasques pendents endarrerides"
 #: settings/korganizer.kcfg:319 settings/korganizer.kcfg:573
 #, kde-format
 msgid "Select the to-do overdue color here."
-msgstr "Seleccioneu ací el color de les tasques pendents endarrerides."
+msgstr "Trieu ací el color de les tasques pendents endarrerides."
 
 #. i18n: ectx: label, entry, group (Fonts)
 #: settings/korganizer.kcfg:326
@@ -5346,8 +5342,8 @@ msgid ""
 "Select the highlight color here. The highlight color will be used for "
 "marking the currently selected area in your agenda and in the date navigator."
 msgstr ""
-"Seleccioneu ací el color de ressaltat. Este color s'utilitzarà per a marcar "
-"l'àrea seleccionada en l'agenda i en el navegador de dates."
+"Trieu ací el color de ressaltat. Este color s'utilitzarà per a marcar l'àrea "
+"seleccionada en l'agenda i en el navegador de dates."
 
 #. i18n: ectx: label, entry, group (Theming)
 #: settings/korganizer.kcfg:484
@@ -5375,7 +5371,7 @@ msgstr "Color de fons de la vista mensual"
 #: settings/korganizer.kcfg:496
 #, kde-format
 msgid "Select the Month view background color here."
-msgstr "Seleccioneu ací el color de fons de la vista mensual."
+msgstr "Trieu ací el color de fons de la vista mensual."
 
 #. i18n: ectx: whatsthis, entry, group (Theme/Month view)
 #: settings/korganizer.kcfg:503
@@ -5384,16 +5380,15 @@ msgid ""
 "Select the highlight color here. The highlight color will be used for "
 "marking the currently selected area in your Month and in the date navigator."
 msgstr ""
-"Seleccioneu ací el color de ressaltat. Este color s'utilitzarà per a marcar "
-"l'àrea seleccionada en la vista mensual i en el navegador de dates."
+"Trieu ací el color de ressaltat. Este color s'utilitzarà per a marcar l'àrea "
+"seleccionada en la vista mensual i en el navegador de dates."
 
 #. i18n: ectx: whatsthis, entry, group (Theme/Month view)
 #: settings/korganizer.kcfg:508
 #, kde-format
 msgid "Select the working hours background color for the Month view here."
 msgstr ""
-"Seleccioneu ací el color de fons per a les hores laborables en la vista "
-"mensual."
+"Trieu ací el color de fons per a les hores laborables en la vista mensual."
 
 #. i18n: ectx: label, entry, group (Theme/Month view)
 #: settings/korganizer.kcfg:530
@@ -5409,10 +5404,9 @@ msgid ""
 "for events in your Month. Note that you can specify a separate color for "
 "each event tag below."
 msgstr ""
-"Seleccioneu ací el color predeterminat dels esdeveniments. Este color "
-"s'utilitzarà per als esdeveniments en la vista mensual. Cal tindre present "
-"que podeu especificar davall un color diferent per a cada etiqueta "
-"d'esdeveniment."
+"Trieu ací el color predeterminat dels esdeveniments. Este color s'utilitzarà "
+"per als esdeveniments en la vista mensual. Cal tindre present que podeu "
+"especificar davall un color diferent per a cada etiqueta d'esdeveniment."
 
 #. i18n: ectx: property (placeholderText), widget (KListWidgetSearchLine, searchline)
 #: ui/filteredit_base.ui:35
@@ -5454,9 +5448,9 @@ msgid ""
 "your views. Daily and weekly recurring items may take a lot of space, so it "
 "might be handy to hide them."
 msgstr ""
-"Seleccioneu esta opció si no voleu mostrar els esdeveniments i tasques "
-"pendents repetitius en les vistes. Els elements repetits diàriament i "
-"setmanal poden ocupar un munt d'espai, per tant, pot ser útil ocultar-los."
+"Trieu esta opció si no voleu mostrar els esdeveniments i tasques pendents "
+"repetitius en les vistes. Els elements repetits diàriament i setmanal poden "
+"ocupar un munt d'espai, per tant, pot ser útil ocultar-los."
 
 #. i18n: ectx: property (text), widget (QCheckBox, mRecurringCheck)
 #: ui/filteredit_base.ui:124
@@ -5515,9 +5509,9 @@ msgid ""
 msgstr ""
 "Ací podeu indicar el nombre de dies que un element de tasca pendent haurà "
 "d'estar finalitzat per a ocultar-lo en la llista de tasques pendents. Si "
-"seleccioneu «Immediatament», s'ocultaran totes les tasques pendents "
-"finalitzades. Si, per exemple, trieu el valor 1, s'ocultaran tots els "
-"elements que s'han marcat com a finalitzats fa més de 24 hores."
+"trieu «Immediatament», s'ocultaran totes les tasques pendents finalitzades. "
+"Si, per exemple, trieu el valor 1, s'ocultaran tots els elements que s'han "
+"marcat com a finalitzats fa més de 24 hores."
 
 # skip-rule: punctuation-period-no
 #. i18n: ectx: property (whatsThis), widget (QCheckBox, mHideInactiveTodosCheck)
@@ -6686,13 +6680,13 @@ msgstr ""
 #, kde-format
 msgctxt "@info:tooltip"
 msgid "Select a month"
-msgstr "Seleccioneu un mes"
+msgstr "Trieu un mes"
 
 #: widgets/navigatorbar.cpp:60
 #, kde-format
 msgctxt "@info:tooltip"
 msgid "Select a year"
-msgstr "Seleccioneu un any"
+msgstr "Trieu un any"
 
 #: widgets/navigatorbar.cpp:109
 #, kde-format
