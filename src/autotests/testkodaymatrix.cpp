@@ -29,7 +29,7 @@ void KODayMatrixTest::testMatrixLimits()
         iterator.next();
         const DateRange range = KODayMatrix::matrixLimits(iterator.key());
         // qCDebug(KORGANIZER_LOG) << "Expected is " << iterator.value() << " and got " << range;
-        QVERIFY(range == iterator.value());
+        QCOMPARE(range, iterator.value());
     }
 }
 
