@@ -4141,7 +4141,7 @@ msgstr "Altres opcions"
 #, kde-format
 msgctxt "@action:button"
 msgid "Choose…"
-msgstr "Trieu…"
+msgstr "Tria…"
 
 #: prefs/kprefsdialog.cpp:659
 #, kde-format
