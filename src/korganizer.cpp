@@ -68,14 +68,19 @@ KOrganizer::KOrganizer()
     const WhatsNewTranslations translations;
     const QString newFeaturesMD5 = translations.newFeaturesMD5();
     if (!newFeaturesMD5.isEmpty()) {
-        const bool hasNewFeature = (KOPrefs::instance()->previousNewFeaturesMD5() != newFeaturesMD5);
-        if (hasNewFeature) {
-            auto whatsNewMessageWidget = new PimCommon::WhatsNewMessageWidget(this, i18n("KOrganizer"));
-            whatsNewMessageWidget->setWhatsNewInfos(translations.createWhatsNewInfo());
-            whatsNewMessageWidget->setObjectName(QStringLiteral("whatsNewMessageWidget"));
-            mainWidgetLayout->addWidget(whatsNewMessageWidget);
+        const QString previousNewFeaturesMD5 = KOPrefs::instance()->previousNewFeaturesMD5();
+        if (!previousNewFeaturesMD5.isEmpty()) {
+            const bool hasNewFeature = (previousNewFeaturesMD5 != newFeaturesMD5);
+            if (hasNewFeature) {
+                auto whatsNewMessageWidget = new PimCommon::WhatsNewMessageWidget(this, i18n("KOrganizer"));
+                whatsNewMessageWidget->setWhatsNewInfos(translations.createWhatsNewInfo());
+                whatsNewMessageWidget->setObjectName(QStringLiteral("whatsNewMessageWidget"));
+                mainWidgetLayout->addWidget(whatsNewMessageWidget);
+                KOPrefs::instance()->setPreviousNewFeaturesMD5(newFeaturesMD5);
+                whatsNewMessageWidget->animatedShow();
+            }
+        } else {
             KOPrefs::instance()->setPreviousNewFeaturesMD5(newFeaturesMD5);
-            whatsNewMessageWidget->animatedShow();
         }
     }
 
