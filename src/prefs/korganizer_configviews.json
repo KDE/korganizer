@@ -34,7 +34,6 @@
         "Description[sv]": "Inställning av Korganizers vyer",
         "Description[tr]": "K Organizatör görünüm yapılandırması",
         "Description[uk]": "Налаштування переглядів у KOrganizer",
-        "Description[x-test]": "xxKOrganizer View Configurationxx",
         "Description[zh_CN]": "KOrganizer 视图配置",
         "Description[zh_TW]": "KOrganizer 檢視設定",
         "Icon": "view-choose",
@@ -109,7 +108,6 @@
         "Name[uz@cyrillic]": "Кўринишлар",
         "Name[uz]": "Koʻrinishlar",
         "Name[wa]": "Vuwes",
-        "Name[x-test]": "xxViewsxx",
         "Name[zh_CN]": "查看",
         "Name[zh_TW]": "檢視"
     },

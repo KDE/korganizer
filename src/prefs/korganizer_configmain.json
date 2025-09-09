@@ -34,7 +34,6 @@
         "Description[sv]": "Korganizers huvudinställning",
         "Description[tr]": "K Organizatör ana yapılandırması",
         "Description[uk]": "Налаштування особистих даних у KOrganizer",
-        "Description[x-test]": "xxKOrganizer Main Configurationxx",
         "Description[zh_CN]": "KOrganizer 主要配置",
         "Description[zh_TW]": "KOrganizer 主設定",
         "Icon": "korganizer",
@@ -110,7 +109,6 @@
         "Name[uz@cyrillic]": "Умумий",
         "Name[uz]": "Umumiy",
         "Name[wa]": "Djenerå",
-        "Name[x-test]": "xxGeneralxx",
         "Name[zh_CN]": "通用",
         "Name[zh_TW]": "General"
     },

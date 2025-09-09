@@ -34,7 +34,6 @@
         "Description[sv]": "Inställning av översikt av förestående speciella datum",
         "Description[tr]": "Yaklaşan özel tarih özeti yapılandırması",
         "Description[uk]": "Зведення налаштування майбутніх особливих дат",
-        "Description[x-test]": "xxUpcoming Special Dates Summary Setupxx",
         "Description[zh_CN]": "近期的特殊日期摘要设置",
         "Description[zh_TW]": "將來臨的特殊日期摘要設定",
         "Icon": "view-calendar-special-occasion",
@@ -96,7 +95,6 @@
         "Name[tr]": "Yaklaşan Özel Tarihler",
         "Name[uk]": "Майбутні особливі дати",
         "Name[wa]": "Sipeciålès dates a vni",
-        "Name[x-test]": "xxUpcoming Special Datesxx",
         "Name[zh_CN]": "即将到来的特殊日期",
         "Name[zh_TW]": "將來臨的特殊日期"
     },

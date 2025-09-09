@@ -34,7 +34,6 @@
         "Description[sv]": "Inställning av Korganizers tid och datum",
         "Description[tr]": "K Organizatör tarih ve zaman yapılandırması",
         "Description[uk]": "Налаштування часу і дати в KOrganizer",
-        "Description[x-test]": "xxKOrganizer Time and Date Configurationxx",
         "Description[zh_CN]": "KOrganizer 时间和日期配置",
         "Description[zh_TW]": "KOrganizer 時間與日期設定",
         "Icon": "preferences-system-time",
@@ -96,7 +95,6 @@
         "Name[ug]": "ۋاقىت ۋە چېسلا",
         "Name[uk]": "Час і дата",
         "Name[wa]": "Eure et date",
-        "Name[x-test]": "xxTime and Datexx",
         "Name[zh_CN]": "时间和日期",
         "Name[zh_TW]": "時間與日期"
     },

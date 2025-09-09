@@ -34,7 +34,6 @@
         "Description[sv]": "Inställning av ledig/upptagen i Korganizer",
         "Description[tr]": "K Organizatör Uygun/Meşgul yapılandırması",
         "Description[uk]": "Налаштування вільного/зайнятого часу в KOrganizer",
-        "Description[x-test]": "xxKOrganizer Free/Busy Configurationxx",
         "Description[zh_CN]": "KOrganizer 空闲/忙碌配置",
         "Description[zh_TW]": "KOrganizer 行程資訊設定",
         "Icon": "preferences-other",
@@ -106,7 +105,6 @@
         "Name[uz@cyrillic]": "Бўш/Банд",
         "Name[uz]": "Boʻsh/Band",
         "Name[wa]": "Libe/Ocupé",
-        "Name[x-test]": "xxFree/Busyxx",
         "Name[zh_CN]": "空闲/忙碌",
         "Name[zh_TW]": "行程資訊"
     },

@@ -34,7 +34,6 @@
         "Description[sv]": "Inställning av Korganizers färger och teckensnitt",
         "Description[tr]": "K Organizatör renk ve yazıtipi yapılandırması",
         "Description[uk]": "Налаштування кольорів і шрифтів у KOrganizer",
-        "Description[x-test]": "xxKOrganizer Colors and Fonts Configurationxx",
         "Description[zh_CN]": "KOrganizer 颜色和字体配置",
         "Description[zh_TW]": "KOrganizer 顏色與字型設定",
         "Icon": "preferences-desktop-color",
@@ -94,7 +93,6 @@
         "Name[tr]": "Renkler ve Yazıtipleri",
         "Name[uk]": "Кольори і шрифти",
         "Name[wa]": "Coleurs et fontes",
-        "Name[x-test]": "xxColors and Fontsxx",
         "Name[zh_CN]": "颜色和字体",
         "Name[zh_TW]": "顏色與字型"
     },
