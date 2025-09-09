@@ -7,7 +7,7 @@ msgid ""
 msgstr ""
 "Project-Id-Version: korganizer\n"
 "Report-Msgid-Bugs-To: https://bugs.kde.org\n"
-"POT-Creation-Date: 2025-08-31 02:44+0000\n"
+"POT-Creation-Date: 2025-09-09 03:30+0000\n"
 "PO-Revision-Date: 2006-12-17 13:34+0000\n"
 "Last-Translator: Mashrab Kuvatov <kmashrab@uni-bremen.de>\n"
 "Language-Team: Uzbek <floss-uz-l10n@googlegroups.com>\n"
@@ -3615,24 +3615,24 @@ msgctxt "@info:credit"
 msgid "Tobias Koenig"
 msgstr ""
 
-#: korganizer.cpp:73 korganizer_part.cpp:59 korganizer_part.cpp:68
+#: korganizer.cpp:75 korganizer_part.cpp:59 korganizer_part.cpp:70
 #, kde-format
 msgid "KOrganizer"
 msgstr "KOrganizer"
 
-#: korganizer.cpp:264
+#: korganizer.cpp:269
 #, kde-format
 msgid "New Calendar"
 msgstr "Yangi kalendar"
 
-#: korganizer.cpp:268
+#: korganizer.cpp:273
 #, fuzzy, kde-format
 #| msgid "read-only"
 msgctxt "the calendar is read-only"
 msgid "read-only"
 msgstr "faqat oʻqishga"
 
-#: korganizer.cpp:271
+#: korganizer.cpp:276
 #, kde-format
 msgid "Calendar"
 msgstr "Kalendar"

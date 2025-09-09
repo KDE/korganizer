@@ -13,7 +13,7 @@ msgid ""
 msgstr ""
 "Project-Id-Version: korganizer\n"
 "Report-Msgid-Bugs-To: https://bugs.kde.org\n"
-"POT-Creation-Date: 2025-08-31 02:44+0000\n"
+"POT-Creation-Date: 2025-09-09 03:30+0000\n"
 "PO-Revision-Date: 2009-07-28 20:21+0000\n"
 "Last-Translator: Sveinn í Felli <sveinki@nett.is>\n"
 "Language-Team: Icelandic <kde-isl@molar.is>\n"
@@ -3696,24 +3696,24 @@ msgctxt "@info:credit"
 msgid "Tobias Koenig"
 msgstr ""
 
-#: korganizer.cpp:73 korganizer_part.cpp:59 korganizer_part.cpp:68
+#: korganizer.cpp:75 korganizer_part.cpp:59 korganizer_part.cpp:70
 #, kde-format
 msgid "KOrganizer"
 msgstr "KOrganizer"
 
-#: korganizer.cpp:264
+#: korganizer.cpp:269
 #, kde-format
 msgid "New Calendar"
 msgstr "Nýtt dagatal"
 
-#: korganizer.cpp:268
+#: korganizer.cpp:273
 #, fuzzy, kde-format
 #| msgid "read-only"
 msgctxt "the calendar is read-only"
 msgid "read-only"
 msgstr "ritvarið"
 
-#: korganizer.cpp:271
+#: korganizer.cpp:276
 #, kde-format
 msgid "Calendar"
 msgstr "Dagatal"
