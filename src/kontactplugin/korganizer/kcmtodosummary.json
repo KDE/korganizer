@@ -34,7 +34,6 @@
         "Description[sv]": "Inställning av översikt över väntande uppgifter",
         "Description[tr]": "Bekleyen yapılacaklar özeti yapılandırması",
         "Description[uk]": "Зведення налаштування призначених завдань",
-        "Description[x-test]": "xxPending To-dos Summary Setupxx",
         "Description[zh_CN]": "未决待办事项摘要设置",
         "Description[zh_TW]": "未決定的待辦事項摘要設定",
         "Icon": "view-calendar-tasks",
@@ -96,7 +95,6 @@
         "Name[ug]": "بىر تەرەپ قىلىنمىغان قىلىدىغان ئىشلار(To-dos)",
         "Name[uk]": "Призначені завдання",
         "Name[wa]": "Afés co a fé",
-        "Name[x-test]": "xxPending To-dosxx",
         "Name[zh_CN]": "未决的待办事宜",
         "Name[zh_TW]": "未決定的待辦事項"
     },

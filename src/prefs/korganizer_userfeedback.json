@@ -34,7 +34,6 @@
         "Description[sv]": "Inställning av Korganizer användaråterkoppling",
         "Description[tr]": "K Organizatör kullanıcı geri bildirimi yapılandırması",
         "Description[uk]": "Налаштування відгуків користувача щодо KOrganizer",
-        "Description[x-test]": "xxKOrganizer User Feedback Configurationxx",
         "Description[zh_CN]": "KOrganizer 用户反馈配置",
         "Description[zh_TW]": "KOrganizer 使用者回饋設定",
         "Icon": "preferences-other",
@@ -73,7 +72,6 @@
         "Name[ta]": "பயனர் பின்னூட்டம்",
         "Name[tr]": "Kullanıcı Geri Bildirimi",
         "Name[uk]": "Відгуки користувача",
-        "Name[x-test]": "xxUser Feedbackxx",
         "Name[zh_CN]": "用户反馈",
         "Name[zh_TW]": "使用者回饋"
     },

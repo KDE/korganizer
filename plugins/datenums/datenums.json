@@ -30,7 +30,6 @@
         "Description[sv]": "Insticksprogrammet visar dagens nummer under året för varje dag längst upp i agendavyn. Till exempel är 1:a februari den 32:e dagen under året.",
         "Description[tr]": "Bu eklenti her gün için ajanda görünümünün en üstünde yılın gün numarasını gösterir. Örneğin 1 Şubat, yılın 32. günüdür.",
         "Description[uk]": "Цей додаток показує зверху перегляду щоденника номер для кожного дня року. Наприклад, 1-го лютого — це 32 день року.",
-        "Description[x-test]": "xxFor each day this plugin shows its daynumber of the year at the top of the agenda view. For example, February 1 is day 32 of the year.xx",
         "Description[zh_TW]": "這個外掛程式會為每一天在行程檢視上方顯示它在一年當中是第幾天。舉例來說，二月一號是年中的第 32 天。",
         "Name": "Date Numbers Plugin for Calendars",
         "Name[af]": "Dag nommer inprop module vir kalenders",
@@ -82,7 +81,6 @@
         "Name[tr]": "Takvimler için Tarih Numaraları Eklentisi",
         "Name[uk]": "Додаток дат для календарів",
         "Name[wa]": "Tchôke-divins des nombes des dates po les Calindrîs",
-        "Name[x-test]": "xxDate Numbers Plugin for Calendarsxx",
         "Name[zh_TW]": "行事曆用的日期編號外掛程式"
     },
     "X-KDE-KOrganizer-HasSettings": true,
