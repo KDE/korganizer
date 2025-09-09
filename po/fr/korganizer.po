@@ -24,7 +24,7 @@ msgid ""
 msgstr ""
 "Project-Id-Version: korganizer\n"
 "Report-Msgid-Bugs-To: https://bugs.kde.org\n"
-"POT-Creation-Date: 2025-08-31 00:43+0000\n"
+"POT-Creation-Date: 2025-09-09 00:58+0000\n"
 "PO-Revision-Date: 2025-08-17 13:41+0200\n"
 "Last-Translator: Xavier Besnard <xavier.besnard@kde.org>\n"
 "Language-Team: French <French <kde-francophone@kde.org>>\n"
@@ -3764,24 +3764,24 @@ msgctxt "@info:credit"
 msgid "Tobias Koenig"
 msgstr "Tobias Koenig"
 
-#: korganizer.cpp:73 korganizer_part.cpp:59 korganizer_part.cpp:68
+#: korganizer.cpp:75 korganizer_part.cpp:59 korganizer_part.cpp:70
 #, kde-format
 msgid "KOrganizer"
 msgstr "KOrganizer"
 
-#: korganizer.cpp:264
+#: korganizer.cpp:269
 #, kde-format
 msgid "New Calendar"
 msgstr "Nouvel agenda"
 
 # unreviewed-context
-#: korganizer.cpp:268
+#: korganizer.cpp:273
 #, kde-format
 msgctxt "the calendar is read-only"
 msgid "read-only"
 msgstr "En lecture seule"
 
-#: korganizer.cpp:271
+#: korganizer.cpp:276
 #, kde-format
 msgid "Calendar"
 msgstr "Agenda"

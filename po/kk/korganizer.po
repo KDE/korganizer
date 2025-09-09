@@ -6,7 +6,7 @@ msgid ""
 msgstr ""
 "Project-Id-Version: korganizer\n"
 "Report-Msgid-Bugs-To: https://bugs.kde.org\n"
-"POT-Creation-Date: 2025-08-31 00:43+0000\n"
+"POT-Creation-Date: 2025-09-09 00:58+0000\n"
 "PO-Revision-Date: 2013-09-30 02:22+0600\n"
 "Last-Translator: Sairan Kikkarin <sairan@computer.org>\n"
 "Language-Team: Kazakh <kde-i18n-doc@kde.org>\n"
@@ -3929,23 +3929,23 @@ msgctxt "@info:credit"
 msgid "Tobias Koenig"
 msgstr "Tobias Koenig"
 
-#: korganizer.cpp:73 korganizer_part.cpp:59 korganizer_part.cpp:68
+#: korganizer.cpp:75 korganizer_part.cpp:59 korganizer_part.cpp:70
 #, kde-format
 msgid "KOrganizer"
 msgstr "KOrganizer"
 
-#: korganizer.cpp:264
+#: korganizer.cpp:269
 #, kde-format
 msgid "New Calendar"
 msgstr "Жаңа күнтізбе"
 
-#: korganizer.cpp:268
+#: korganizer.cpp:273
 #, kde-format
 msgctxt "the calendar is read-only"
 msgid "read-only"
 msgstr "тек оқу үшін"
 
-#: korganizer.cpp:271
+#: korganizer.cpp:276
 #, kde-format
 msgid "Calendar"
 msgstr "Күнтізбе"

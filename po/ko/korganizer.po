@@ -8,7 +8,7 @@ msgid ""
 msgstr ""
 "Project-Id-Version: Korganizer\n"
 "Report-Msgid-Bugs-To: https://bugs.kde.org\n"
-"POT-Creation-Date: 2025-08-31 00:43+0000\n"
+"POT-Creation-Date: 2025-09-09 00:58+0000\n"
 "PO-Revision-Date: 2025-07-21 01:11+0200\n"
 "Last-Translator: Shinjo Park <kde@peremen.name>\n"
 "Language-Team: Korean <kde-kr@kde.org>\n"
@@ -3550,23 +3550,23 @@ msgctxt "@info:credit"
 msgid "Tobias Koenig"
 msgstr "Tobias Koenig"
 
-#: korganizer.cpp:73 korganizer_part.cpp:59 korganizer_part.cpp:68
+#: korganizer.cpp:75 korganizer_part.cpp:59 korganizer_part.cpp:70
 #, kde-format
 msgid "KOrganizer"
 msgstr "KOrganizer"
 
-#: korganizer.cpp:264
+#: korganizer.cpp:269
 #, kde-format
 msgid "New Calendar"
 msgstr "새 캘린더"
 
-#: korganizer.cpp:268
+#: korganizer.cpp:273
 #, kde-format
 msgctxt "the calendar is read-only"
 msgid "read-only"
 msgstr "읽기 전용"
 
-#: korganizer.cpp:271
+#: korganizer.cpp:276
 #, kde-format
 msgid "Calendar"
 msgstr "캘린더"
