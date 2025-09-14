@@ -2798,11 +2798,13 @@ void CalendarView::handleIncidenceCreated(const Akonadi::Item &item)
         if (mETMCollectionView->isVisible()) {
             message = xi18nc("@info",
                              "You created an incidence in a calendar that is currently filtered out."
-                             "<para>On the left sidebar, enable it in the calendar manager to see the incidence.</para>");
+                             "<para>To see the newly created incidence, please enable its calendar in the calendar manager.</para>");
         } else {
             message = xi18nc("@info",
                              "You created an incidence in a calendar that is currently filtered out."
-                             "<para>You can enable it through the calendar manager (Settings->Sidebar->Show Calendar Manager)</para>");
+                             "<para>To see the newly created incidence, please enable its calendar in the calendar manager.</para>"
+                             "<para>The calendar manager is currently hidden. Show the manager using the <interface>Settings->Sidebar->Show Calendar "
+                             "Manager</interface> menu.</para>");
         }
         showMessage(message, KMessageWidget::Information);
     }
