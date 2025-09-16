@@ -18,7 +18,7 @@ msgstr ""
 "Project-Id-Version: korganizer\n"
 "Report-Msgid-Bugs-To: https://bugs.kde.org\n"
 "POT-Creation-Date: 2025-09-15 00:43+0000\n"
-"PO-Revision-Date: 2025-08-16 18:56+0100\n"
+"PO-Revision-Date: 2025-09-15 15:05+0100\n"
 "Last-Translator: Eloy Cuadra <ecuadra@eloihr.net>\n"
 "Language-Team: Spanish <kde-l10n-es@kde.org>\n"
 "Language: es\n"
@@ -27,7 +27,7 @@ msgstr ""
 "Content-Transfer-Encoding: 8bit\n"
 "First-Translator: Boris Wesslowski <Boris@Wesslowski.com>\n"
 "Second-Translator: Pablo de Vicente <pvicentea@nexo.es>\n"
-"X-Generator: Lokalize 25.04.3\n"
+"X-Generator: Lokalize 25.08.1\n"
 "Plural-Forms: nplurals=2; plural=n != 1;\n"
 
 #, kde-format
@@ -2218,29 +2218,19 @@ msgstr ""
 "<message>%1</message>"
 
 #: calendarview.cpp:2800
-#, fuzzy, kde-kuit-format
-#| msgctxt "@info"
-#| msgid ""
-#| "You created an incidence in a calendar that is currently filtered out."
-#| "<para>On the left sidebar, enable it in the calendar manager to see the "
-#| "incidence.</para>"
+#, kde-kuit-format
 msgctxt "@info"
 msgid ""
 "You created an incidence in a calendar that is currently filtered out."
 "<para>To see the newly created incidence, please enable its calendar in the "
 "calendar manager.</para>"
 msgstr ""
-"Ha creado una incidencia en un calendario que está filtrado actualmente."
-"<para>En el panel lateral izquierdo, actívela en el gestor de calendarios "
-"para verla.</para>"
+"Ha creado una incidencia en un calendario que no se muestra actualmente."
+"<para>Para ver la incidencia recién creada, active su calendario en el "
+"gestor de calendarios.</para>"
 
 #: calendarview.cpp:2804
-#, fuzzy, kde-kuit-format
-#| msgctxt "@info"
-#| msgid ""
-#| "You created an incidence in a calendar that is currently filtered out."
-#| "<para>You can enable it through the calendar manager (Settings->Sidebar-"
-#| ">Show Calendar Manager)</para>"
+#, kde-kuit-format
 msgctxt "@info"
 msgid ""
 "You created an incidence in a calendar that is currently filtered out."
@@ -2249,9 +2239,11 @@ msgid ""
 "the manager using the <interface>Settings->Sidebar->Show Calendar Manager</"
 "interface> menu.</para>"
 msgstr ""
-"Ha creado una incidencia en un calendario que está filtrado actualmente."
-"<para>Puede activarla mediante el gestor de calendarios (Preferencias->Panel "
-"lateral->Mostrar gestor de calendarios).</para>"
+"Ha creado una incidencia en un calendario que no se muestra actualmente."
+"<para>Para ver la incidencia recién creada, active su calendario en el "
+"gestor de calendarios.</para><para>El gestor de calendarios está oculto en "
+"este momento. Puede mostrar el gestor usando el menú <interface>Preferencias-"
+">Barra lateral->Mostrar el gestor de calendarios</interface>.</para>"
 
 #: collectiongeneralpage.cpp:37
 #, kde-format

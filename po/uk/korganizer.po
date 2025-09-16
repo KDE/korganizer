@@ -12,7 +12,7 @@ msgstr ""
 "Project-Id-Version: korganizer\n"
 "Report-Msgid-Bugs-To: https://bugs.kde.org\n"
 "POT-Creation-Date: 2025-09-15 00:43+0000\n"
-"PO-Revision-Date: 2025-08-16 17:50+0300\n"
+"PO-Revision-Date: 2025-09-15 08:26+0300\n"
 "Last-Translator: Yuri Chornoivan <yurchor@ukr.net>\n"
 "Language-Team: Ukrainian <trans-uk@lists.fedoraproject.org>\n"
 "Language: uk\n"
@@ -2215,12 +2215,7 @@ msgstr ""
 "message>"
 
 #: calendarview.cpp:2800
-#, fuzzy, kde-kuit-format
-#| msgctxt "@info"
-#| msgid ""
-#| "You created an incidence in a calendar that is currently filtered out."
-#| "<para>On the left sidebar, enable it in the calendar manager to see the "
-#| "incidence.</para>"
+#, kde-kuit-format
 msgctxt "@info"
 msgid ""
 "You created an incidence in a calendar that is currently filtered out."
@@ -2228,16 +2223,11 @@ msgid ""
 "calendar manager.</para>"
 msgstr ""
 "Вами створено запис у календарі, який програма фільтрує і не показує."
-"<para>Щоб побачити запис, вам слід увімкнути календар на панелі керування "
-"календарями у лівій частині вікна.</para>"
+"<para>Щоб переглянути новостворені записи зустрічей, будь ласка, увімкніть "
+"їхній календар у засобі керування календарями.</para>"
 
 #: calendarview.cpp:2804
-#, fuzzy, kde-kuit-format
-#| msgctxt "@info"
-#| msgid ""
-#| "You created an incidence in a calendar that is currently filtered out."
-#| "<para>You can enable it through the calendar manager (Settings->Sidebar-"
-#| ">Show Calendar Manager)</para>"
+#, kde-kuit-format
 msgctxt "@info"
 msgid ""
 "You created an incidence in a calendar that is currently filtered out."
@@ -2247,8 +2237,11 @@ msgid ""
 "interface> menu.</para>"
 msgstr ""
 "Вами створено запис у календарі, який програма фільтрує і не показує."
-"<para>Увімкнути показ запису можна за допомогою вікна керування календарями "
-"(Параметри → Бічна панель → Показувати керування календарями).</para>"
+"<para>Щоб переглянути новостворений запис зустрічі, будь ласка, увімкніть "
+"його календар у засобі керування календарями.</para><para>Зараз засіб "
+"керування календарями приховано. Щоб увімкнути його показ, скористайтеся "
+"пунктом меню <interface>Параметри->Бічна панель->Показувати керування "
+"календарями</interface>.</para>"
 
 #: collectiongeneralpage.cpp:37
 #, kde-format

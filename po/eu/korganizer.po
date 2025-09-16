@@ -14,14 +14,14 @@ msgstr ""
 "Project-Id-Version: korganizer\n"
 "Report-Msgid-Bugs-To: https://bugs.kde.org\n"
 "POT-Creation-Date: 2025-09-15 00:43+0000\n"
-"PO-Revision-Date: 2025-08-16 12:23+0200\n"
+"PO-Revision-Date: 2025-09-15 22:33+0200\n"
 "Last-Translator: Iñigo Salvador Azurmendi <xalba@ni.eus>\n"
 "Language-Team: Basque <kde-i18n-eu@kde.org>\n"
 "Language: eu\n"
 "MIME-Version: 1.0\n"
 "Content-Type: text/plain; charset=UTF-8\n"
 "Content-Transfer-Encoding: 8bit\n"
-"X-Generator: Lokalize 25.04.3\n"
+"X-Generator: Lokalize 25.08.1\n"
 "Plural-Forms: nplurals=2; plural=(n != 1);\n"
 
 #, kde-format
@@ -2201,12 +2201,7 @@ msgstr ""
 "message>"
 
 #: calendarview.cpp:2800
-#, fuzzy, kde-kuit-format
-#| msgctxt "@info"
-#| msgid ""
-#| "You created an incidence in a calendar that is currently filtered out."
-#| "<para>On the left sidebar, enable it in the calendar manager to see the "
-#| "incidence.</para>"
+#, kde-kuit-format
 msgctxt "@info"
 msgid ""
 "You created an incidence in a calendar that is currently filtered out."
@@ -2214,16 +2209,11 @@ msgid ""
 "calendar manager.</para>"
 msgstr ""
 "Gertakizun bat sortu zenuen une honetan iragazkiak kanporatzen duen egutegi "
-"batean.<para>Ezkerreko alboko-barran, egutegi kudeatzailean gaitu ezazu "
-"gertakizuna ikusteko.</para>"
+"batean.<para>Gertakizun sortu berria ikusteko, mesedez, gaitu bere egutegia "
+"egutegi-kudeatzailean.</para>"
 
 #: calendarview.cpp:2804
-#, fuzzy, kde-kuit-format
-#| msgctxt "@info"
-#| msgid ""
-#| "You created an incidence in a calendar that is currently filtered out."
-#| "<para>You can enable it through the calendar manager (Settings->Sidebar-"
-#| ">Show Calendar Manager)</para>"
+#, kde-kuit-format
 msgctxt "@info"
 msgid ""
 "You created an incidence in a calendar that is currently filtered out."
@@ -2233,8 +2223,10 @@ msgid ""
 "interface> menu.</para>"
 msgstr ""
 "Gertakizun bat sortu zenuen une honetan iragazkiak kanporatzen duen egutegi "
-"batean.<para>Egutegi kudeatzailearen bidez gaitu dezakezu (Ezarpenak->Alboko-"
-"barra->Erakutsi egutegi kudeatzailea)</para>"
+"batean.<para>Gertakizun sortu berria ikusteko, mesedez, gaitu bere egutegia "
+"egutegi-kudeatzailean.</para><para>Egutegi-kudeatzailea une honetan ezkutuan "
+"dago. Erakutsi kudeatzailea <interface>Ezarpenak->Alboko barra->Erakutsi "
+"egutegi-kudeatzailea</interface> erabiliz.</para>"
 
 #: collectiongeneralpage.cpp:37
 #, kde-format

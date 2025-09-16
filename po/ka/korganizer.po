@@ -8,7 +8,7 @@ msgstr ""
 "Project-Id-Version: korganizer\n"
 "Report-Msgid-Bugs-To: https://bugs.kde.org\n"
 "POT-Creation-Date: 2025-09-15 00:43+0000\n"
-"PO-Revision-Date: 2025-08-16 06:30+0200\n"
+"PO-Revision-Date: 2025-09-15 03:57+0200\n"
 "Last-Translator: Temuri Doghonadze <temuri.doghonadze@gmail.com>\n"
 "Language-Team: Georgian <kde-i18n-doc@kde.org>\n"
 "Language: ka\n"
@@ -16,7 +16,7 @@ msgstr ""
 "Content-Type: text/plain; charset=UTF-8\n"
 "Content-Transfer-Encoding: 8bit\n"
 "Plural-Forms: nplurals=2; plural=(n != 1);\n"
-"X-Generator: Poedit 3.6\n"
+"X-Generator: Poedit 3.7\n"
 
 #, kde-format
 msgctxt "NAME OF TRANSLATORS"
@@ -2179,28 +2179,18 @@ msgstr ""
 "შეცდომა დასრულებული გასაკეთებლების მოსუფთავებისას: <message>%1</message>"
 
 #: calendarview.cpp:2800
-#, fuzzy, kde-kuit-format
-#| msgctxt "@info"
-#| msgid ""
-#| "You created an incidence in a calendar that is currently filtered out."
-#| "<para>On the left sidebar, enable it in the calendar manager to see the "
-#| "incidence.</para>"
+#, kde-kuit-format
 msgctxt "@info"
 msgid ""
 "You created an incidence in a calendar that is currently filtered out."
 "<para>To see the newly created incidence, please enable its calendar in the "
 "calendar manager.</para>"
 msgstr ""
-"კალენდარში შექმენით ინციდენტი, რომელიც ახლა გაფილტრულია. <para>მარცხენა "
-"მხარეს, ჩართეთ ის კალენდრის მმართველში, რათა ინციდენტი დაინახოთ.</para>"
+"კალენდარში შექმენით ინციდენტი, რომელიც ახლა გაფილტრულია. <para>ახალშექმნილი "
+"ინციდენტების დასანახად ჩართეთ მისი კალენდარი კალენდრების მმართველში.</para>"
 
 #: calendarview.cpp:2804
-#, fuzzy, kde-kuit-format
-#| msgctxt "@info"
-#| msgid ""
-#| "You created an incidence in a calendar that is currently filtered out."
-#| "<para>You can enable it through the calendar manager (Settings->Sidebar-"
-#| ">Show Calendar Manager)</para>"
+#, kde-kuit-format
 msgctxt "@info"
 msgid ""
 "You created an incidence in a calendar that is currently filtered out."
@@ -2209,9 +2199,11 @@ msgid ""
 "the manager using the <interface>Settings->Sidebar->Show Calendar Manager</"
 "interface> menu.</para>"
 msgstr ""
-"შექმენით ინციდენტი, რომელიც ამჟამად გაფილტრულია.<para>მისი ჩართვა კალენდრის "
-"მმართველით შეგიძლიათ (მორგება->გვერდითი პანელი->კალენდრის მმართველის "
-"ჩვენება)</para>"
+"შექმენით ინციდენტი, რომელიც ამჟამად გაფილტრულია.<para>ახალშექმნილი "
+"ინციდენტების დასანახად ჩართეთ მისი კალენდარი კალენდრების მმართველში.</"
+"para><para>კალენდრების მმართველი ამჟამად დამალულია. მმართველის გამოჩენა "
+"შეგიძლიათ მენიუდან <interface>მორგება->გვერდითი პანელი->კალენდრების "
+"მმართველის ჩვენება</interface>.</para>"
 
 #: collectiongeneralpage.cpp:37
 #, kde-format

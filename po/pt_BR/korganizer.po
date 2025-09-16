@@ -20,7 +20,7 @@ msgstr ""
 "Project-Id-Version: korganizer\n"
 "Report-Msgid-Bugs-To: https://bugs.kde.org\n"
 "POT-Creation-Date: 2025-09-15 00:43+0000\n"
-"PO-Revision-Date: 2025-08-20 12:37-0300\n"
+"PO-Revision-Date: 2025-09-15 06:42-0300\n"
 "Last-Translator: Marcus Gama <marcus.gama@gmail.com>\n"
 "Language-Team: Brazilian Portuguese <kde-i18n-pt_BR@kde.org>\n"
 "Language: pt_BR\n"
@@ -28,7 +28,7 @@ msgstr ""
 "Content-Type: text/plain; charset=UTF-8\n"
 "Content-Transfer-Encoding: 8bit\n"
 "Plural-Forms: nplurals=2; plural=(n > 1);\n"
-"X-Generator: Lokalize 25.08.0\n"
+"X-Generator: Poedit 3.6\n"
 
 #, kde-format
 msgctxt "NAME OF TRANSLATORS"
@@ -2207,29 +2207,19 @@ msgstr ""
 "Ocorreu um erro ao eliminar as tarefas concluídas: <message>%1</message>"
 
 #: calendarview.cpp:2800
-#, fuzzy, kde-kuit-format
-#| msgctxt "@info"
-#| msgid ""
-#| "You created an incidence in a calendar that is currently filtered out."
-#| "<para>On the left sidebar, enable it in the calendar manager to see the "
-#| "incidence.</para>"
+#, kde-kuit-format
 msgctxt "@info"
 msgid ""
 "You created an incidence in a calendar that is currently filtered out."
 "<para>To see the newly created incidence, please enable its calendar in the "
 "calendar manager.</para>"
 msgstr ""
-"Você criou uma incidência num calendário que está no momento excluído pelo "
-"filtro. <para>Na barra lateral esquerda, ative-o no gerenciador de "
-"calendários para ver a incidência.</para>"
+"Você criou uma incidência em um calendário que está atualmente filtrado."
+"<para>Para ver a incidência recém-criada, ative o calendário dela no "
+"gerenciador de calendários.</para>"
 
 #: calendarview.cpp:2804
-#, fuzzy, kde-kuit-format
-#| msgctxt "@info"
-#| msgid ""
-#| "You created an incidence in a calendar that is currently filtered out."
-#| "<para>You can enable it through the calendar manager (Settings->Sidebar-"
-#| ">Show Calendar Manager)</para>"
+#, kde-kuit-format
 msgctxt "@info"
 msgid ""
 "You created an incidence in a calendar that is currently filtered out."
@@ -2238,9 +2228,12 @@ msgid ""
 "the manager using the <interface>Settings->Sidebar->Show Calendar Manager</"
 "interface> menu.</para>"
 msgstr ""
-"Você criou uma incidência num calendário que está no momento excluído pelo "
-"filtro. <para>É possível ativá-lo através do gerenciador de calendários "
-"(Configurações->Barra lateral->Mostrar gerenciador de calendários)</para>"
+"Você criou uma incidência em um calendário que está atualmente filtrado."
+"<para>Para ver a incidência recém-criada, ative o calendário dela no "
+"gerenciador de calendários.</para><para>O gerenciador de calendários está "
+"oculto no momento. Exiba o gerenciador usando o menu da interface "
+"<interface>Configurações -> Barra lateral -> Mostrar gerenciador de "
+"calendários</interface>.</para>"
 
 #: collectiongeneralpage.cpp:37
 #, kde-format
