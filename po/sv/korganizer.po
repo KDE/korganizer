@@ -11,7 +11,7 @@ msgstr ""
 "Project-Id-Version: korganizer\n"
 "Report-Msgid-Bugs-To: https://bugs.kde.org\n"
 "POT-Creation-Date: 2025-09-15 00:43+0000\n"
-"PO-Revision-Date: 2025-08-16 07:27+0200\n"
+"PO-Revision-Date: 2025-09-17 21:49+0200\n"
 "Last-Translator: Stefan Asserhäll <stefan.asserhall@gmail.com>\n"
 "Language-Team: Swedish <kde-i18n-doc@kde.org>\n"
 "Language: sv\n"
@@ -2178,12 +2178,7 @@ msgstr ""
 "Ett fel uppstod när färdiga uppgifter skulle rensas: <message>%1</message>"
 
 #: calendarview.cpp:2800
-#, fuzzy, kde-kuit-format
-#| msgctxt "@info"
-#| msgid ""
-#| "You created an incidence in a calendar that is currently filtered out."
-#| "<para>On the left sidebar, enable it in the calendar manager to see the "
-#| "incidence.</para>"
+#, kde-kuit-format
 msgctxt "@info"
 msgid ""
 "You created an incidence in a calendar that is currently filtered out."
@@ -2191,16 +2186,11 @@ msgid ""
 "calendar manager.</para>"
 msgstr ""
 "Du skapade en förekomst i en kalender som för närvarande är bortfiltrerad."
-"<para>I vänster sidorad, aktivera den i kalenderhanteringen för att se "
-"förekomsten.</para>"
+"<para>För att se den nyskapade förekomsten, aktivera dess kalender i "
+"kalenderhanteringen.</para>"
 
 #: calendarview.cpp:2804
-#, fuzzy, kde-kuit-format
-#| msgctxt "@info"
-#| msgid ""
-#| "You created an incidence in a calendar that is currently filtered out."
-#| "<para>You can enable it through the calendar manager (Settings->Sidebar-"
-#| ">Show Calendar Manager)</para>"
+#, kde-kuit-format
 msgctxt "@info"
 msgid ""
 "You created an incidence in a calendar that is currently filtered out."
@@ -2210,8 +2200,10 @@ msgid ""
 "interface> menu.</para>"
 msgstr ""
 "Du skapade en förekomst i en kalender som för närvarande är bortfiltrerad."
-"<para>Du kan aktivera den via kalenderhanteringen (Inställningar -> Sidorad -"
-"> Visa kalenderhantering)</para>"
+"<para>För att se den nyskapade förekomsten, aktivera dess kalender i "
+"kalenderhanteringen.</para><para>Kalenderhanteringen är för närvarande dold. "
+"Visa hanteringen med menyn <interface>Inställningar -> Sidorad -> Visa "
+"kalenderhantering</interface>.</para>"
 
 #: collectiongeneralpage.cpp:37
 #, kde-format
