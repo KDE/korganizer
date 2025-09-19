@@ -4,7 +4,7 @@ msgstr ""
 "Project-Id-Version: korganizer\n"
 "Report-Msgid-Bugs-To: https://bugs.kde.org\n"
 "POT-Creation-Date: 2025-09-15 00:43+0000\n"
-"PO-Revision-Date: 2025-08-16 22:21+0200\n"
+"PO-Revision-Date: 2025-09-18 11:18+0200\n"
 "Last-Translator: Mincho Kondarev <mkondarev@yahoo.de>\n"
 "Language-Team: Bulgarian <kde-i18n-doc@kde.org>\n"
 "Language: bg\n"
@@ -2192,29 +2192,18 @@ msgstr ""
 "message>"
 
 #: calendarview.cpp:2800
-#, fuzzy, kde-kuit-format
-#| msgctxt "@info"
-#| msgid ""
-#| "You created an incidence in a calendar that is currently filtered out."
-#| "<para>On the left sidebar, enable it in the calendar manager to see the "
-#| "incidence.</para>"
+#, kde-kuit-format
 msgctxt "@info"
 msgid ""
 "You created an incidence in a calendar that is currently filtered out."
 "<para>To see the newly created incidence, please enable its calendar in the "
 "calendar manager.</para>"
 msgstr ""
-"Създадохте събитие в календар, който в момента е филтриран. \n"
-"<para>Активирайте го в мениджъра на календара в левия страничен панел, за да "
-"видите събитието.</para>"
+"Създадохте събитие в календар, който в момента е филтриран.<para>Активирайте "
+"го в мениджъра на календара, за да видите събитието.</para>"
 
 #: calendarview.cpp:2804
-#, fuzzy, kde-kuit-format
-#| msgctxt "@info"
-#| msgid ""
-#| "You created an incidence in a calendar that is currently filtered out."
-#| "<para>You can enable it through the calendar manager (Settings->Sidebar-"
-#| ">Show Calendar Manager)</para>"
+#, kde-kuit-format
 msgctxt "@info"
 msgid ""
 "You created an incidence in a calendar that is currently filtered out."
@@ -2223,9 +2212,11 @@ msgid ""
 "the manager using the <interface>Settings->Sidebar->Show Calendar Manager</"
 "interface> menu.</para>"
 msgstr ""
-"Създадохте събитие в календар, който в момента е филтриран. \n"
-"<para>Можете да го активирате чрез мениджъра на календара (Настройки-> "
-"Страничен панел-> Показване на мениджъра на календара)</para>"
+"Създадохте събитие в календар, който в момента е филтриран.<para>За да "
+"видите новосъздаденото събитие, моля, активирайте календара му вмениджъра на "
+"календари.</para><para>Мениджърът на календари в момента е скрит. "
+"Покажетемениджъра, като използвате менюто <interface>Настройки->Странична "
+"лента->Показване на мениджъра на календари</interface>.</para>"
 
 #: collectiongeneralpage.cpp:37
 #, kde-format
