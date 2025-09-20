@@ -16,11 +16,6 @@
 
 #include <EventViews/CalendarDecoration>
 
-namespace KIdentityManagementCore
-{
-class IdentityManager;
-}
-
 class KORGANIZER_CORE_EXPORT KOCore
 {
 public:

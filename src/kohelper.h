@@ -20,7 +20,6 @@ class Collection;
 }
 
 class QColor;
-class QDate;
 
 // Provides static methods that are useful to all views.
 
