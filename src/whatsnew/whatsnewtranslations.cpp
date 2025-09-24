@@ -17,6 +17,7 @@ QList<KLazyLocalizedString> WhatsNewTranslations::lastNewFeatures() const
     const QList<KLazyLocalizedString> info{
         kli18n("Agenda view: added timelabels context menu to show/hide time labels for the system timezone on the right (or left) side as well"),
         kli18n("Incidence editor: detect and warn about creating incidences in the past"),
+        kli18n("Incidence editor: add emoticon support"),
     };
 
     return info;
