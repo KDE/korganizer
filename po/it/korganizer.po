@@ -15,8 +15,8 @@ msgid ""
 msgstr ""
 "Project-Id-Version: korganizer\n"
 "Report-Msgid-Bugs-To: https://bugs.kde.org\n"
-"POT-Creation-Date: 2025-09-15 00:43+0000\n"
-"PO-Revision-Date: 2025-08-16 14:42+0200\n"
+"POT-Creation-Date: 2025-09-25 00:43+0000\n"
+"PO-Revision-Date: 2025-09-15 19:19+0200\n"
 "Last-Translator: Luigi Toscano <luigi.toscano@tiscali.it>\n"
 "Language-Team: Italian <kde-i18n-it@kde.org>\n"
 "Language: it\n"
@@ -2215,12 +2215,7 @@ msgstr ""
 "completate: <message>%1</message>"
 
 #: calendarview.cpp:2800
-#, fuzzy, kde-kuit-format
-#| msgctxt "@info"
-#| msgid ""
-#| "You created an incidence in a calendar that is currently filtered out."
-#| "<para>On the left sidebar, enable it in the calendar manager to see the "
-#| "incidence.</para>"
+#, kde-kuit-format
 msgctxt "@info"
 msgid ""
 "You created an incidence in a calendar that is currently filtered out."
@@ -2228,16 +2223,11 @@ msgid ""
 "calendar manager.</para>"
 msgstr ""
 "Hai creato nel calendario un'occorrenza che è attualmente filtrata. "
-"<para>Abilita il gestore del calendario nella barra laterale a sinistra per "
-"vedere l'occorrenza.</para>"
+"<para>Per vedere l'occorrenza appena creata, abilitarne il calendario nel "
+"gestore del calendario.</para>"
 
 #: calendarview.cpp:2804
-#, fuzzy, kde-kuit-format
-#| msgctxt "@info"
-#| msgid ""
-#| "You created an incidence in a calendar that is currently filtered out."
-#| "<para>You can enable it through the calendar manager (Settings->Sidebar-"
-#| ">Show Calendar Manager)</para>"
+#, kde-kuit-format
 msgctxt "@info"
 msgid ""
 "You created an incidence in a calendar that is currently filtered out."
@@ -2247,8 +2237,10 @@ msgid ""
 "interface> menu.</para>"
 msgstr ""
 "Hai creato nel calendario un'occorrenza che è attualmente filtrata. "
-"<para>Puoi comunque abilitarla usando il gestore del calendario "
-"(Impostazioni->Barra laterale->Mostra il gestore del calendario)</para>"
+"<para>Per vedere l'occorrenza appena creata, abilitarne il calendario nel "
+"gestore del calendario.</para><para>Il gestore del calendario è attualmente "
+"nascosto. Si può mostrare usando il menu <interface>Impostazioni->Barra "
+"laterale->Mostra il gestore del calendario</interface>.</para>"
 
 #: collectiongeneralpage.cpp:37
 #, kde-format
@@ -6363,19 +6355,23 @@ msgstr ""
 "Editor di occorrenze: rileva e avvisa quando vengono create delle occorrenze "
 "nel passato"
 
-#: whatsnew/whatsnewtranslations.cpp:28
+#: whatsnew/whatsnewtranslations.cpp:20
+msgid "Incidence editor: add emoticon support"
+msgstr ""
+
+#: whatsnew/whatsnewtranslations.cpp:29
 msgid "Add What's New menu"
 msgstr "Aggiungi il menu Cosa c'è di nuovo"
 
-#: whatsnew/whatsnewtranslations.cpp:29
+#: whatsnew/whatsnewtranslations.cpp:30
 msgid "The current view is remembered"
 msgstr "La vista attuale viene ricordata"
 
-#: whatsnew/whatsnewtranslations.cpp:30
+#: whatsnew/whatsnewtranslations.cpp:31
 msgid "Add a Date Picker dialog available on the Go menu"
 msgstr "Aggiunta una finestra selettore di data disponibile nel menu Vai"
 
-#: whatsnew/whatsnewtranslations.cpp:31
+#: whatsnew/whatsnewtranslations.cpp:32
 msgid ""
 "Agenda view: consolidated the \"Day\", \"Next X Days\", \"Work Schedule\", "
 "\"Week\" time ranges into the Agenda tool button"
@@ -6384,7 +6380,7 @@ msgstr ""
 "giorni\", \"settimana lavorativa\", \"settimana\", nel pulsante dello "
 "strumento agenda"
 
-#: whatsnew/whatsnewtranslations.cpp:32
+#: whatsnew/whatsnewtranslations.cpp:33
 msgid ""
 "Agenda view: added timelabels context menu option to toggle a 24-hour "
 "(military style) clock"
@@ -6392,36 +6388,36 @@ msgstr ""
 "Vista agenda: aggiunte opzioni di menu di contesto alle etichette "
 "dell'orario per passare al formato di orologio a 24 ore"
 
-#: whatsnew/whatsnewtranslations.cpp:33
+#: whatsnew/whatsnewtranslations.cpp:34
 msgid "Agenda view: added context menu to create new Event or To-do"
 msgstr ""
 "Vista agenda: aggiunto un menu contestuale per creare un nuovo evento o cosa "
 "da fare"
 
-#: whatsnew/whatsnewtranslations.cpp:34
+#: whatsnew/whatsnewtranslations.cpp:35
 msgid ""
 "To-do view: added context menu options for toggling completion and reminders"
 msgstr ""
 "Vista delle cose da fare: aggiunte opzioni del menu contestuale per "
 "abilitare/disabilitare il completamento e i promemoria"
 
-#: whatsnew/whatsnewtranslations.cpp:35
+#: whatsnew/whatsnewtranslations.cpp:36
 msgid "To-do view: remove the (redundant) to-do list from the sidebar"
 msgstr ""
 "Vista delle cose da fare: rimosso il (ridondante) elenco delle cose da fare "
 "dalla barra laterale"
 
-#: whatsnew/whatsnewtranslations.cpp:36
+#: whatsnew/whatsnewtranslations.cpp:37
 msgid "To-do view: save/restore fullview setting"
 msgstr ""
 "Vista delle cose da fare: salva/ripristina le opzioni per la finestra intera"
 
-#: whatsnew/whatsnewtranslations.cpp:37
+#: whatsnew/whatsnewtranslations.cpp:38
 msgid "To-do view: save/restore flatview setting"
 msgstr ""
 "Vista delle cose da fare: salva/ripristina le opzioni per la vista piatta"
 
-#: whatsnew/whatsnewtranslations.cpp:38
+#: whatsnew/whatsnewtranslations.cpp:39
 msgid ""
 "Date navigator: added an option in the Configure->Views settings for hiding "
 "the week numbers"
@@ -6429,7 +6425,7 @@ msgstr ""
 "Navigatore delle date: aggiunta un'opzione nelle impostazioni Configura-"
 ">Viste per nascondere i giorni della settimana"
 
-#: whatsnew/whatsnewtranslations.cpp:39
+#: whatsnew/whatsnewtranslations.cpp:40
 msgid ""
 "Date navigator: the \"Week numbers select a work week when in work week mode"
 "\" setting is true by default"
@@ -6438,64 +6434,64 @@ msgstr ""
 "una settimana lavorativa in modalità settimana lavorativa» è attiva in modo "
 "predefinito"
 
-#: whatsnew/whatsnewtranslations.cpp:40
+#: whatsnew/whatsnewtranslations.cpp:41
 msgid "Incidence editor: remember/restore the template manager geometry"
 msgstr ""
 "Editor di occorrenze: ricorda/ripristina la geometria del gestore di modelli"
 
-#: whatsnew/whatsnewtranslations.cpp:41
+#: whatsnew/whatsnewtranslations.cpp:42
 msgid "Incidence editor: support drag-and-drop attachments"
 msgstr ""
 "Editor delle occorrenze: supporto per il trascinamento e rilascio degli "
 "allegati"
 
-#: whatsnew/whatsnewtranslations.cpp:42
+#: whatsnew/whatsnewtranslations.cpp:43
 msgid "The export calendar dialog remembers its last export folder location"
 msgstr ""
 "La finestra di esportazione del calendario ricorda l'ultima posizione usata "
 "per la cartella di esportazione"
 
-#: whatsnew/whatsnewtranslations.cpp:43
+#: whatsnew/whatsnewtranslations.cpp:44
 msgid "The import calendar dialog remembers its last import folder location"
 msgstr ""
 "La finestra di impostazione del calendario ricorda l'ultima posizione usata "
 "per la cartella di importazione"
 
-#: whatsnew/whatsnewtranslations.cpp:44
+#: whatsnew/whatsnewtranslations.cpp:45
 msgid "Get Hot New Stuff removed"
 msgstr "«Scarica le novità« rimosso"
 
-#: whatsnew/whatsnewtranslations.cpp:45
+#: whatsnew/whatsnewtranslations.cpp:46
 msgid "Add calendar file: remote calendars are always read-only"
 msgstr ""
 "Aggiunta di file di calendario: i calendari remoti sono sempre in sola "
 "lettura"
 
-#: whatsnew/whatsnewtranslations.cpp:46
+#: whatsnew/whatsnewtranslations.cpp:47
 msgid "Add calendar file: will not permit an empty file path"
 msgstr ""
 "Aggiunta di file di calendario: non è permesso un percorso di file vuoto"
 
-#: whatsnew/whatsnewtranslations.cpp:47
+#: whatsnew/whatsnewtranslations.cpp:48
 msgid ""
 "DAV configuration: dialog allows seeing the account password when editing"
 msgstr ""
 "Configurazione DAV: la finestra permette di vedere la password dell'account "
 "durante la modifica"
 
-#: whatsnew/whatsnewtranslations.cpp:48
+#: whatsnew/whatsnewtranslations.cpp:49
 msgid "DAV configuration: wizard shows icons for the various providers"
 msgstr ""
 "Configurazione DAV: la configurazione guidata mostra le icone per i vari "
 "fornitori"
 
-#: whatsnew/whatsnewtranslations.cpp:49
+#: whatsnew/whatsnewtranslations.cpp:50
 msgid "DAV configuration: wizard updated list of providers"
 msgstr ""
 "Configurazione DAV: aggiornamento della lista dei fornitori nella "
 "configurazione guidata"
 
-#: whatsnew/whatsnewtranslations.cpp:67
+#: whatsnew/whatsnewtranslations.cpp:68
 #, kde-format
 msgid ""
 "Semantics are changed from a \"working schedule\" concept to a \"week "
@@ -6505,19 +6501,19 @@ msgstr ""
 "di «pianificazione settimanale» per soddisfare le esigenze degli utenti non "
 "lavoratori"
 
-#: whatsnew/whatsnewtranslations.cpp:68
+#: whatsnew/whatsnewtranslations.cpp:69
 #, kde-format
 msgid "Initial \"New Event\" start times are consistent across all the views"
 msgstr ""
 "Gli orari di avvio di un «Nuovo evento» impostati inizialmente sono coerenti "
 "tra tutte le viste"
 
-#: whatsnew/whatsnewtranslations.cpp:69
+#: whatsnew/whatsnewtranslations.cpp:70
 #, kde-format
 msgid "Improved default event calendar handling"
 msgstr "Migliorata la gestione predefinita degli eventi di calendario"
 
-#: whatsnew/whatsnewtranslations.cpp:71
+#: whatsnew/whatsnewtranslations.cpp:72
 #, kde-format
 msgid ""
 "Incidences with a long excluded dates list no longer create huge tooltips"
@@ -6525,14 +6521,14 @@ msgstr ""
 "Le occorrenze con un lungo elenco di date escluse non creano più "
 "suggerimenti enormi"
 
-#: whatsnew/whatsnewtranslations.cpp:72
+#: whatsnew/whatsnewtranslations.cpp:73
 #, kde-format
 msgid "Fixed the organizer email address for incidences with attendees"
 msgstr ""
 "Corretto l'indirizzo di posta dell'organizzatore delle occorrenze con "
 "partecipanti"
 
-#: whatsnew/whatsnewtranslations.cpp:73
+#: whatsnew/whatsnewtranslations.cpp:74
 #, kde-format
 msgid ""
 "Agenda view: events without a duration are displayed as 30 long (rather than "
