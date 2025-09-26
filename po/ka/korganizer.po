@@ -8,7 +8,7 @@ msgstr ""
 "Project-Id-Version: korganizer\n"
 "Report-Msgid-Bugs-To: https://bugs.kde.org\n"
 "POT-Creation-Date: 2025-09-25 00:43+0000\n"
-"PO-Revision-Date: 2025-09-15 03:57+0200\n"
+"PO-Revision-Date: 2025-09-25 05:57+0200\n"
 "Last-Translator: Temuri Doghonadze <temuri.doghonadze@gmail.com>\n"
 "Language-Team: Georgian <kde-i18n-doc@kde.org>\n"
 "Language: ka\n"
@@ -6279,7 +6279,7 @@ msgstr "რედაქტორი: წარსულში ინციდე
 
 #: whatsnew/whatsnewtranslations.cpp:20
 msgid "Incidence editor: add emoticon support"
-msgstr ""
+msgstr "ინციდენტების რედაქტორი: დაემატა ემოციების მხარდაჭერა"
 
 #: whatsnew/whatsnewtranslations.cpp:29
 msgid "Add What's New menu"

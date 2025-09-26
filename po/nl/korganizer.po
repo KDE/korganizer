@@ -19,7 +19,7 @@ msgstr ""
 "Project-Id-Version: korganizer\n"
 "Report-Msgid-Bugs-To: https://bugs.kde.org\n"
 "POT-Creation-Date: 2025-09-25 00:43+0000\n"
-"PO-Revision-Date: 2025-09-15 10:00+0200\n"
+"PO-Revision-Date: 2025-09-25 15:26+0200\n"
 "Last-Translator: Freek de Kruijf <freekdekruijf@kde.nl>\n"
 "Language-Team: \n"
 "Language: nl\n"
@@ -6329,7 +6329,7 @@ msgstr ""
 
 #: whatsnew/whatsnewtranslations.cpp:20
 msgid "Incidence editor: add emoticon support"
-msgstr ""
+msgstr "Bewerker van incidenten: ondersteuning van emoticons toevoegen"
 
 #: whatsnew/whatsnewtranslations.cpp:29
 msgid "Add What's New menu"
