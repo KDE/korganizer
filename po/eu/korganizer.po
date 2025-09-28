@@ -14,7 +14,7 @@ msgstr ""
 "Project-Id-Version: korganizer\n"
 "Report-Msgid-Bugs-To: https://bugs.kde.org\n"
 "POT-Creation-Date: 2025-09-25 00:43+0000\n"
-"PO-Revision-Date: 2025-09-15 22:33+0200\n"
+"PO-Revision-Date: 2025-09-27 11:36+0200\n"
 "Last-Translator: Iñigo Salvador Azurmendi <xalba@ni.eus>\n"
 "Language-Team: Basque <kde-i18n-eu@kde.org>\n"
 "Language: eu\n"
@@ -6316,7 +6316,7 @@ msgstr ""
 
 #: whatsnew/whatsnewtranslations.cpp:20
 msgid "Incidence editor: add emoticon support"
-msgstr ""
+msgstr "Intzidentzia editorea: emotikonoen euskarria gehitzea"
 
 #: whatsnew/whatsnewtranslations.cpp:29
 msgid "Add What's New menu"
