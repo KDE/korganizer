@@ -1,6 +1,6 @@
 # translation of korganizer.po to
-# Version: $Revision: 1709616 $
-# SPDX-FileCopyrightText: 2011, 2012, 2013, 2014, 2015, 2016, 2018, 2019, 2020, 2024 Łukasz Wojniłowicz <lukasz.wojnilowicz@gmail.com>
+# Version: $Revision: 1719161 $
+# SPDX-FileCopyrightText: 2011, 2012, 2013, 2014, 2015, 2016, 2018, 2019, 2020, 2024, 2025 Łukasz Wojniłowicz <lukasz.wojnilowicz@gmail.com>
 # translated by Krzysztof Jasiutowicz <kpjas@priv.onet.pl>
 # Krzysztof Lichota <lichota@mimuw.edu.pl>, 2002, 2005, 2006.
 # Michal Rudolf <mrudolf@kdewebdev.org>, 2003, 2004.
@@ -14,15 +14,16 @@ msgstr ""
 "Project-Id-Version: korganizer\n"
 "Report-Msgid-Bugs-To: https://bugs.kde.org\n"
 "POT-Creation-Date: 2025-04-19 00:42+0000\n"
-"PO-Revision-Date: 2024-08-03 11:54+0200\n"
+"PO-Revision-Date: 2025-09-27 08:31+0200\n"
 "Last-Translator: Łukasz Wojniłowicz <lukasz.wojnilowicz@gmail.com>\n"
-"Language-Team: Polish <kde-i18n-doc@kde.org>\n"
+"Language-Team: pl\n"
 "Language: pl\n"
 "MIME-Version: 1.0\n"
 "Content-Type: text/plain; charset=UTF-8\n"
 "Content-Transfer-Encoding: 8bit\n"
 "Plural-Forms: nplurals=3; plural=(n==1 ? 0 : n%10>=2 && n%10<=4 && (n%100<10 "
 "|| n%100>=20) ? 1 : 2);\n"
+"X-Generator: Lokalize 25.08.0\n"
 
 #: datenums/configdialog.cpp:28
 #, kde-format
@@ -31,11 +32,10 @@ msgid "Configure Day Numbers"
 msgstr "Ustawienia numerów dni"
 
 #: datenums/configdialog.cpp:43
-#, fuzzy, kde-format
-#| msgid "Show Date Number"
+#, kde-format
 msgctxt "@title:group"
 msgid "Show Date Number"
-msgstr "Pokaż numer dnia"
+msgstr "Pokaż numer daty"
 
 #: datenums/configdialog.cpp:48
 #, kde-format
@@ -702,8 +702,7 @@ msgid "Configure Picture of the Day"
 msgstr "Ustawienia obrazu dnia"
 
 #: picoftheday/configdialog.cpp:42
-#, fuzzy, kde-format
-#| msgid "Thumbnail Aspect Ratio Mode"
+#, kde-format
 msgctxt "@title:group"
 msgid "Thumbnail Aspect Ratio Mode"
 msgstr "Tryb kształtu miniatury"
@@ -715,10 +714,7 @@ msgid "Ignore aspect ratio"
 msgstr "Nie zważaj na kształt"
 
 #: picoftheday/configdialog.cpp:48
-#, fuzzy, kde-format
-#| msgid ""
-#| "The thumbnail will be scaled freely. The aspect ratio will not be "
-#| "preserved."
+#, kde-format
 msgctxt "@info:whatsthis"
 msgid ""
 "The thumbnail will be scaled freely. The aspect ratio will not be preserved."
@@ -731,10 +727,7 @@ msgid "Keep aspect ratio"
 msgstr "Zachowaj kształt"
 
 #: picoftheday/configdialog.cpp:54
-#, fuzzy, kde-format
-#| msgid ""
-#| "The thumbnail will be scaled to a rectangle as large as possible inside a "
-#| "given rectangle, preserving the aspect ratio."
+#, kde-format
 msgctxt "@info:whatsthis"
 msgid ""
 "The thumbnail will be scaled to a rectangle as large as possible inside a "
@@ -750,10 +743,7 @@ msgid "Keep aspect ratio by expanding"
 msgstr "Zachowaj kształt przy zwiększaniu"
 
 #: picoftheday/configdialog.cpp:61
-#, fuzzy, kde-format
-#| msgid ""
-#| "The thumbnail will be scaled to a rectangle as small as possible outside "
-#| "a given rectangle, preserving the aspect ratio."
+#, kde-format
 msgctxt "@info:whatsthis"
 msgid ""
 "The thumbnail will be scaled to a rectangle as small as possible outside a "

@@ -205,7 +205,7 @@
 >). Načrtujete lahko sestanke, dogodke, ustvarite opravilain pišete vnose v dnevnik. &korganizer; vas bo spomnil na čakajoče naloge,zabeleži svoje dogodke, izkušnje in razmišljanja ter vam pomaga ohranjati svojčasovni plan.</para>
 
 <para
->Toda &korganizer; ni samo vaš osebni koledar, lahko vam pomagakomunicirati tudi s svojimi sodelavci in prijatelji. Z &korganizer; lahkopovabite kogarkoli z e-poštnim naslovom na dogodek in obdelate odgovore, delitekoledar (z uporabo strežnika skupinske programske opreme ali preprosto datoteke prek omrežja) in delite dogodke (npr. urnik prvenstva ali konference), z uporabookvirja pridobivanja novih stvari. &korganizer; temelji na odprtih standardih,in deluje s številnimi različnimi strežniki za skupinsko razporejanje, kar vam omogočanadzor nad vašimi informacijami in svobodo izbire najboljših rešitev. </para>
+>Vendar &korganizer; ni namenjen le vašemu osebnemu koledarju, temveč vam lahko pomaga tudi pri interakciji s sodelavci in prijatelji. Z &korganizer; lahko na dogodek povabite kogar koli z e-poštnim naslovom in obdelate odgovore ter delite koledar (z uporabo strežnika za skupinsko delo ali preprosto datoteke prek omrežja). &korganizer; temelji na odprtih standardih in deluje s številnimi različnimi strežniki za skupinsko planiranje, kar vam daje nadzor nad vašimi podatki in svobodo izbire najboljših rešitev. </para>
 
 <para
 >&korganizer; je tudi koledar, dnevnik in komponenta opravil &kontact;a, ki vam ponuja integrirano rešitev za vašo komunikacijo in potrebe upravljanja informacij: e-pošta, beležke, upravljanje stikov, bralnik novic in bralnik virov novic. Tudi če ga ne uporabljate znotraj &kontact;, je &korganizer; integriran z drugimi &kde; <acronym
@@ -576,7 +576,7 @@
 >Podatke lahko izvozite kot datoteko iCalendar ali vCalendar. Te datoteke sopodpira večina aplikacij za razporejanje. </para>
 
 <para
->V tem poglavju bomo razložili, kako upravljati svoj koledar z uporabovirov, dejanj uvoza in izvoza ter sheme pridobivanja novih stvari.</para>
+>V tem poglavju bomo razložili, kako upravljati vire koledarja ter kako uporabljati dejanja uvoza in izvoza.</para>
 
 <sect1 id="managing-resources">
 <title
@@ -624,7 +624,7 @@
 
 <procedure id="procedure-add-resource">
 <title
->Dodajanje novega vira v &korganizer;</title>
+>Dodajanje novega vira v &korganizer; Vir</title>
 
 <step
 ><para
@@ -821,9 +821,6 @@
 
 <para
 >Pravi čas za to bi bil, če bi na primer po e-pošti prejeli vCalendar z nekaj vnosi ali če nameravate svoj koledar uvoziti iz druge aplikacije. V slednjem primeru morate najprej uporabiti to aplikacijo za izvoz koledarskih podatkov v eni od zgornjih oblik zapisa ali uporabiti orodje za pretvorbo iz izvorne oblike zapisa aplikacije.</para>
-
-<!--Get Hot New Stuff
-store.kde.org KOrganizer Calendars-->
 </sect2>
 
 <sect2 id="managing-export">
@@ -891,7 +888,7 @@ store.kde.org KOrganizer Calendars-->
 ><para
 >Če ste izbrali arhiviranje, morate podati tudi ime datoteke za arhiv v polju <guilabel
 >Arhivska datoteka</guilabel
->. Če želite znova uporabiti starejšo arhivsko datoteko, pritisnite gumb <guilabel
+>. Če želite ponovno  uporabiti starejšo arhivsko datoteko, pritisnite gumb <guilabel
 >Odpri pogovorno okno datoteke</guilabel
 > in poiščite obstoječi arhiv. Vnosi bodo dodani v datoteko, tako da noben element, ki je že v datoteki, ne bo spremenjen.</para
 ></step>
@@ -909,61 +906,7 @@ store.kde.org KOrganizer Calendars-->
 >, namesto da bi jih izbrisali. </para>
 
 </sect2>
-
 </sect1>
-<!-- only import ??-->
-<sect1 id="managing-get-hot-new-stuff">
-<title
->Prenos z uporabo Get Hot New Stuff</title>
-
-<!--para
->If you have a calendar containing events of public interest, such as
-a conference or championship schedule, you can upload it (or check if there
-is something worth downloading) using the
-<ulink url="http://ghns.berlios.de/"
->get hot new stuff framework</ulink
->.
-</para-->
-
-<para
->Če želite odpreti pogovorno okno <guilabel
->Get Hot New Stuff</guilabel
->, ki ponuja seznam koledarjev za prenos, izberite <menuchoice
-><guimenu
->Datoteka</guimenu
-><guisubmenu
->Uvoz</guisubmenu
-> <guimenuitem
->Pridobi Hot New Stuff ...</guimenuitem
-></menuchoice
-> element menija. Če izberete enega od koledarjev, se prikaže pogovorno okno s seznamom dogodkov iz koledarjev. Če želite združiti prikazane dogodke z vašim privzetim virom, pritisnite <guilabel
->Združi</guilabel
->.</para>
-
-<!--para>
-To open the <guilabel
->Upload Hot New Stuff</guilabel
-> dialog, which allow you
-to export calendars containing events which may be useful to other people, such
-as a conference program, a list of holidays, special events, &etc;,
-choose the <menuchoice
-><guimenu
->File</guimenu
-><guisubmenu
->Export</guisubmenu>
-<guimenuitem
->Upload Hot New Stuff...</guimenuitem
-></menuchoice
->.</para>
-
-<para
->Before uploading the events, make sure you have
-<link linkend="filters-view"
->filtered out</link
-> all unrelated data.</para-->
-
-</sect1>
-
 </chapter>
 
 <chapter id="chapter-views-and-filters"
@@ -1029,7 +972,7 @@ choose the <menuchoice
 ></menuchoice
 > menijski element (ali pritisnete <inlinemediaobject
 ><imageobject
-><imagedata fileref=" go-previous.png" format="PNG"/></imageobject
+><imagedata fileref="go-previous.png" format="PNG"/></imageobject
 ></inlinemediaobject
 >gumb orodne vrstice), ki se pomakne na prejšnji dan, teden, mesec ali leto, pri čemer izberete element menija<menuchoice
 ><guimenu
@@ -1309,7 +1252,7 @@ choose the <menuchoice
 ></menuchoice
 > ali pritisnete <inlinemediaobject
 ><imageobject
-><imagedata fileref=" view-calendar-month.png" format="PNG"/></imageobject
+><imagedata fileref="view-calendar-month.png" format="PNG"/></imageobject
 ></inlinemediaobject
 ><guilabel
 >Mesec</guilabel
@@ -2037,9 +1980,9 @@ choose the <menuchoice
 </screenshot>
 
 <para
->Če izberete <guilabel
->Shrani prilogo v vrstici</guilabel
->, bo priloga shranjena v vašem koledarju, kar lahko zavzame veliko prostora, odvisno od velikosti priloge. Če ta možnost ni označena, bo shranjena samo povezava, ki kaže na prilogo. Ne uporabljajte povezave za priloge, ki se pogosto spreminjajo ali se lahko premaknejo (ali odstranijo) s trenutne lokacije.</para>
+>Če odkljukate <guilabel 
+>Shrani kopijo priponke v koledarju</guilabel 
+>, bo priponka shranjena v vaš koledar, kar lahko zavzame veliko prostora, odvisno od velikosti priponke. Če ta možnost ni označena, bo shranjena samo povezava, ki kaže na prilogo. Ne uporabljajte povezave za priloge, ki se pogosto spreminjajo ali se lahko premaknejo (ali odstranijo) s trenutne lokacije.</para>
 
 <para
 >Za delo s prilogami so na voljo naslednja dejanja v kontekstnem meniju:</para>
@@ -2998,7 +2941,7 @@ choose the <menuchoice
 <varlistentry>
 <term
 ><guilabel
->Delovno obdobje</guilabel
+>Tedenski razpored</guilabel
 ></term>
 <listitem
 ><para
@@ -3006,11 +2949,11 @@ choose the <menuchoice
 >Dnevna začetna ura</guilabel
 > in <guilabel
 >Dnevna končna ura</guilabel
-> lahko določite, kdaj se vaš delovni dan začne in kdaj konča. &korganizer; loči delovni čas tako, da ga označi z drugo barvo od prostih ur, praznikov in prostih dni.</para>
+> lahko določite, kdaj se vaš običajni dan začne in kdaj konča. &korganizer; loči ure tako, da jih označi z drugačno barvo od ur izven vaše običajne rutine in od počitnic.</para>
 <para
->Poleg tega imate poleg vsakega dne v tednu potrditvena polja. Preverite dneve v tednu, ki so za vas delovni dnevi, da označite delovni čas v teh dneh. Preverjanje <guilabel
+>Poleg tega imate poleg vsakega dne v tednu potrditvena polja. Preverite dneve v tednu, ki so del vašega rednega urnika, običajno brez koncev tedna. &korganizer; bo ure, ki so del vašega dnevnega urnika (morda vašega tedenskega delovnega urnika), označil drugače kot ure izven vašega rednega razporeda. Preverjanje <guilabel
 >Izključi praznike</guilabel
-> prepreči &korganizer; od označevanja delovnega časa za praznike v regiji, določeni v zgornjem spustnem meniju <guilabel
+> prepreči &korganizer; od označevanja rednega urnika (ali delovnega časa) za praznične dni v regiji, določeni v zgornjem spustnem meniju <guilabel
 >Uporabi počitniško regijo</guilabel
 >.</para>
 </listitem>
@@ -3267,11 +3210,11 @@ choose the <menuchoice
 <varlistentry>
 <term
 ><guilabel
->Prikaži sekunde v vrstici trenutnega časa (Marcus Bains)</guilabel
+>Prikaži sekunde in časovni pas v vrstici (Marcus Bains) trenutnega časa</guilabel
 ></term>
 <listitem
 ><para
->To potrditveno polje vklopi ali izklopi sekunde na vrstici trenutnega časa (vrstica Marcusa Bainsa).</para
+>To potrditveno polje vklopi ali izklopi sekunde na vrstici trenutnega časa (vrstica Marcusa Bainsa). V odvisnosti od vaše lokalne nastavitve je lahko prikazan tudi časovni pas.</para
 ></listitem>
 </varlistentry>
 
@@ -3619,7 +3562,7 @@ choose the <menuchoice
 <varlistentry>
 <term
 ><guilabel
->Črta trenutnega časa</guilabel
+>Vrstica trenutnega časa (Marcus Bains)</guilabel
 ></term>
 <listitem
 ><para
@@ -4128,27 +4071,6 @@ format="PNG"/></imageobject
 </listitem>
 </varlistentry>
 
-<varlistentry id="menu-file-import-ghns">
-<term
-><menuchoice
-><guimenu
->Datoteka</guimenu
-> <guisubmenu
->Uvoz</guisubmenu
-> <guimenuitem
->Pridobite vroče nove stvari ...</guimenuitem
-> </menuchoice
-></term>
-<listitem
-><para
->To dejanje bo odprlo pogovorno okno <guilabel
->Pridobi vroče nove stvari</guilabel
->, ki ponuja seznam koledarjev za prenos. Te dogodke lahko dodate v svoj koledar.</para>
-<para
->Za več informacij o tem dejanju glejte <xref linkend="managing-get-hot-new-stuff"/>.</para>
-</listitem>
-</varlistentry>
-
 <varlistentry id="menu-file-export-icalendar">
 <term
 ><menuchoice
@@ -4167,31 +4089,6 @@ format="PNG"/></imageobject
 >Za več informacij o tem dejanju glejte <xref linkend="managing-export"/>.</para>
 </listitem>
 </varlistentry>
-
-<!--not in 4.6.0
-varlistentry id="menu-file-export-ghns">
-<term
-><menuchoice>
-<guimenu
->File</guimenu>
-<guisubmenu
->Export</guisubmenu>
-<guimenuitem
->Upload Hot New Stuff...</guimenuitem>
-</menuchoice
-></term>
-<listitem
-><para
->This action will open the <guilabel
->Upload Hot New Stuff</guilabel>
-dialog, which allow you to export calendars containing events which may be
-useful to other people, such as a conference program, a list of holidays,
-special events, &etc;</para>
-<para
->For more information about this action, please refer to
-<xref linkend="managing-get-hot-new-stuff"/>.</para>
-</listitem>
-</varlistentry-->
 
 <varlistentry id="menu-file-archive-old">
 <term
@@ -5076,6 +4973,27 @@ format="PNG"/></imageobject
 >, da <action
 >začnete pisati nov vnos v dnevnik</action
 >.</para
+></listitem>
+</varlistentry>
+
+<varlistentry id="menu-actions-pick-date">
+<term
+><inlinemediaobject
+><imageobject
+><imagedata fileref="go-jump.png" format="PNG"/></imageobject
+></inlinemediaobject>
+<menuchoice
+><guimenu
+>Pojdi</guimenu
+><guimenuitem
+>Poberi datum</guimenuitem
+></menuchoice>
+</term>
+<listitem
+><para
+><action
+>Odpre pogovorno okno za izbiro datuma za hitro krmarjenje po pogledu.</action
+></para
 ></listitem>
 </varlistentry>
 

@@ -1473,7 +1473,9 @@ msgid "Attach inline &without attachments"
 msgstr "Însoțitori"
 
 #: actionmanager.cpp:1431 actionmanager.cpp:1534
-#, kde-format
+#, fuzzy, kde-format
+#| msgctxt "@action:inmenu"
+#| msgid "C&ancel"
 msgctxt "@action:inmenu"
 msgid "C&ancel"
 msgstr "&Anulează"
