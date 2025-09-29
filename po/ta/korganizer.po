@@ -18,7 +18,7 @@ msgstr ""
 "Project-Id-Version: korganizer\n"
 "Report-Msgid-Bugs-To: https://bugs.kde.org\n"
 "POT-Creation-Date: 2025-09-25 00:43+0000\n"
-"PO-Revision-Date: 2025-08-10 19:50+0530\n"
+"PO-Revision-Date: 2025-09-28 15:20+0530\n"
 "Last-Translator: Kishore G <kishore96@gmail.com>\n"
 "Language-Team: Tamil <kde-l10n-ta@kde.org>\n"
 "Language: ta\n"
@@ -26,7 +26,7 @@ msgstr ""
 "Content-Type: text/plain; charset=UTF-8\n"
 "Content-Transfer-Encoding: 8bit\n"
 "Plural-Forms: nplurals=2; plural=n != 1;\n"
-"X-Generator: Lokalize 25.04.3\n"
+"X-Generator: Lokalize 25.08.1\n"
 
 #, kde-format
 msgctxt "NAME OF TRANSLATORS"
@@ -966,8 +966,7 @@ msgid ""
 msgstr ""
 
 #: actionmanager.cpp:561
-#, fuzzy, kde-format
-#| msgid "New &To-do…"
+#, kde-format
 msgctxt "@action:inmenu"
 msgid "New &To-do…"
 msgstr "புதியதாக &செய்யவேண்டியது…"
@@ -995,16 +994,13 @@ msgid ""
 msgstr ""
 
 #: actionmanager.cpp:572
-#, fuzzy, kde-format
-#| msgctxt "@action"
-#| msgid "New Su&b-to-do…"
+#, kde-format
 msgctxt "@action:inmenu"
 msgid "New Su&b-to-do…"
 msgstr "புதிய சா&ர்-செய்யவேண்டியது…"
 
 #: actionmanager.cpp:580
-#, fuzzy, kde-format
-#| msgid "New &Journal…"
+#, kde-format
 msgctxt "@action:inmenu"
 msgid "New &Journal…"
 msgstr "புதிய நா&ளேடு…"
@@ -1037,8 +1033,7 @@ msgid "&Pick a Date"
 msgstr "தேதியை எடு"
 
 #: actionmanager.cpp:589
-#, fuzzy, kde-format
-#| msgid "&Date:"
+#, kde-format
 msgctxt "@action:button"
 msgid "Date"
 msgstr "தேதி"
