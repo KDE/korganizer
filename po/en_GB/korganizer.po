@@ -10,7 +10,7 @@ msgid ""
 msgstr ""
 "Project-Id-Version: korganizer\n"
 "Report-Msgid-Bugs-To: https://bugs.kde.org\n"
-"POT-Creation-Date: 2025-09-25 00:43+0000\n"
+"POT-Creation-Date: 2025-09-30 00:44+0000\n"
 "PO-Revision-Date: 2024-11-23 12:12+0000\n"
 "Last-Translator: Steve Allewell <steve.allewell@gmail.com>\n"
 "Language-Team: British English\n"
@@ -6448,8 +6448,10 @@ msgid "Incidence editor: detect and warn about creating incidences in the past"
 msgstr ""
 
 #: whatsnew/whatsnewtranslations.cpp:20
-msgid "Incidence editor: add emoticon support"
-msgstr ""
+#, fuzzy
+#| msgid "IncidenceEditorApp"
+msgid "Incidence editor: add emoji support"
+msgstr "IncidenceEditorApp"
 
 #: whatsnew/whatsnewtranslations.cpp:29
 #, fuzzy
@@ -11198,9 +11200,6 @@ msgstr "%1"
 #~ msgctxt "@title:group"
 #~ msgid "Saving Calendar"
 #~ msgstr "Saving Calendar"
-
-#~ msgid "IncidenceEditorApp"
-#~ msgstr "IncidenceEditorApp"
 
 #~ msgid "KDE application to run the KOrganizer incidenceeditor."
 #~ msgstr "KDE application to run the KOrganizer incidenceeditor."

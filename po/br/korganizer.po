@@ -4,7 +4,7 @@ msgid ""
 msgstr ""
 "Project-Id-Version: kdepim/korganizer.po\n"
 "Report-Msgid-Bugs-To: https://bugs.kde.org\n"
-"POT-Creation-Date: 2025-09-25 00:43+0000\n"
+"POT-Creation-Date: 2025-09-30 00:44+0000\n"
 "PO-Revision-Date: 2004-09-20 15:44+0200\n"
 "Last-Translator: Thierry Vignaud <tvignaud@mandriva.com>\n"
 "Language-Team: Breton <LL@li.org>\n"
@@ -6077,7 +6077,7 @@ msgid "Incidence editor: detect and warn about creating incidences in the past"
 msgstr ""
 
 #: whatsnew/whatsnewtranslations.cpp:20
-msgid "Incidence editor: add emoticon support"
+msgid "Incidence editor: add emoji support"
 msgstr ""
 
 #: whatsnew/whatsnewtranslations.cpp:29

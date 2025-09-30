@@ -11,7 +11,7 @@ msgid ""
 msgstr ""
 "Project-Id-Version: korganizer\n"
 "Report-Msgid-Bugs-To: https://bugs.kde.org\n"
-"POT-Creation-Date: 2025-09-25 00:43+0000\n"
+"POT-Creation-Date: 2025-09-30 00:44+0000\n"
 "PO-Revision-Date: 2025-09-16 19:10+0400\n"
 "Last-Translator: Zayed Al-Saidi <zayed.alsaidi@gmail.com>\n"
 "Language-Team: ar\n"
@@ -6199,7 +6199,7 @@ msgid "Incidence editor: detect and warn about creating incidences in the past"
 msgstr "محرر الحدوث: يكتشف إنشاء أحداث في الماضي وينبه عليها"
 
 #: whatsnew/whatsnewtranslations.cpp:20
-msgid "Incidence editor: add emoticon support"
+msgid "Incidence editor: add emoji support"
 msgstr ""
 
 #: whatsnew/whatsnewtranslations.cpp:29
