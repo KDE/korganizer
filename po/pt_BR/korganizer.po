@@ -20,7 +20,7 @@ msgstr ""
 "Project-Id-Version: korganizer\n"
 "Report-Msgid-Bugs-To: https://bugs.kde.org\n"
 "POT-Creation-Date: 2025-09-30 00:44+0000\n"
-"PO-Revision-Date: 2025-09-25 06:55-0300\n"
+"PO-Revision-Date: 2025-09-30 06:36-0300\n"
 "Last-Translator: Marcus Gama <marcus.gama@gmail.com>\n"
 "Language-Team: Brazilian Portuguese <kde-i18n-pt_BR@kde.org>\n"
 "Language: pt_BR\n"
@@ -6342,10 +6342,8 @@ msgstr ""
 "passado"
 
 #: whatsnew/whatsnewtranslations.cpp:20
-#, fuzzy
-#| msgid "Incidence editor: add emoticon support"
 msgid "Incidence editor: add emoji support"
-msgstr "Editor de incidência: adiciona suporte a emoticons"
+msgstr "Editor de incidência: adiciona suporte a emoji"
 
 #: whatsnew/whatsnewtranslations.cpp:29
 msgid "Add What's New menu"

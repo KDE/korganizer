@@ -12,7 +12,7 @@ msgstr ""
 "Project-Id-Version: korganizer\n"
 "Report-Msgid-Bugs-To: https://bugs.kde.org\n"
 "POT-Creation-Date: 2025-09-30 00:44+0000\n"
-"PO-Revision-Date: 2025-09-25 19:01+0300\n"
+"PO-Revision-Date: 2025-09-30 10:31+0300\n"
 "Last-Translator: Yuri Chornoivan <yurchor@ukr.net>\n"
 "Language-Team: Ukrainian <trans-uk@lists.fedoraproject.org>\n"
 "Language: uk\n"
@@ -6357,8 +6357,6 @@ msgstr ""
 "про це"
 
 #: whatsnew/whatsnewtranslations.cpp:20
-#, fuzzy
-#| msgid "Incidence editor: add emoticon support"
 msgid "Incidence editor: add emoji support"
 msgstr "Редактор зустрічей: додано підтримку емоційок"
 
