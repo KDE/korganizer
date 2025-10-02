@@ -18,7 +18,7 @@ msgstr ""
 "Project-Id-Version: korganizer\n"
 "Report-Msgid-Bugs-To: https://bugs.kde.org\n"
 "POT-Creation-Date: 2025-09-30 00:44+0000\n"
-"PO-Revision-Date: 2025-09-25 08:25+0300\n"
+"PO-Revision-Date: 2025-09-30 08:53+0300\n"
 "Last-Translator: Yaron Shahrabani <sh.yaron@gmail.com>\n"
 "Language-Team: צוות התרגום של KDE ישראל\n"
 "Language: he\n"
@@ -27,7 +27,7 @@ msgstr ""
 "Content-Transfer-Encoding: 8bit\n"
 "Plural-Forms: nplurals=4; plural=(n == 1) ? 0 : ((n == 2) ? 1 : ((n > 10 && "
 "n % 10 == 0) ? 2 : 3));\n"
-"X-Generator: Lokalize 25.08.0\n"
+"X-Generator: Lokalize 25.08.1\n"
 
 #, kde-format
 msgctxt "NAME OF TRANSLATORS"
@@ -6156,10 +6156,8 @@ msgid "Incidence editor: detect and warn about creating incidences in the past"
 msgstr "עורך מופעים: זיהוי ואזהרה בנוגע ליצירת מופעים בעבר"
 
 #: whatsnew/whatsnewtranslations.cpp:20
-#, fuzzy
-#| msgid "Incidence editor: add emoticon support"
 msgid "Incidence editor: add emoji support"
-msgstr "עורך מופעים: הוספת תמיכה בסמלי הבעת רגש"
+msgstr "עורך מופעים: הוספת תמיכה באמוג׳י"
 
 #: whatsnew/whatsnewtranslations.cpp:29
 msgid "Add What's New menu"
