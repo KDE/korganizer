@@ -4,7 +4,7 @@ msgstr ""
 "Project-Id-Version: korganizer\n"
 "Report-Msgid-Bugs-To: https://bugs.kde.org\n"
 "POT-Creation-Date: 2025-09-30 00:44+0000\n"
-"PO-Revision-Date: 2025-09-26 15:14+0200\n"
+"PO-Revision-Date: 2025-10-05 15:23+0200\n"
 "Last-Translator: Mincho Kondarev <mkondarev@yahoo.de>\n"
 "Language-Team: Bulgarian <kde-i18n-doc@kde.org>\n"
 "Language: bg\n"
@@ -6324,8 +6324,6 @@ msgstr ""
 "миналото"
 
 #: whatsnew/whatsnewtranslations.cpp:20
-#, fuzzy
-#| msgid "Incidence editor: add emoticon support"
 msgid "Incidence editor: add emoji support"
 msgstr "Редактор на събития: добавена поддръжка за емотикони"
 

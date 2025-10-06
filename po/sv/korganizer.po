@@ -11,14 +11,14 @@ msgstr ""
 "Project-Id-Version: korganizer\n"
 "Report-Msgid-Bugs-To: https://bugs.kde.org\n"
 "POT-Creation-Date: 2025-09-30 00:44+0000\n"
-"PO-Revision-Date: 2025-09-26 13:45+0200\n"
+"PO-Revision-Date: 2025-10-05 08:44+0200\n"
 "Last-Translator: Stefan Asserhäll <stefan.asserhall@gmail.com>\n"
 "Language-Team: Swedish <kde-i18n-doc@kde.org>\n"
 "Language: sv\n"
 "MIME-Version: 1.0\n"
 "Content-Type: text/plain; charset=UTF-8\n"
 "Content-Transfer-Encoding: 8bit\n"
-"X-Generator: Lokalize 25.08.0\n"
+"X-Generator: Lokalize 25.08.1\n"
 "Plural-Forms: nplurals=2; plural=n != 1;\n"
 
 #, kde-format
@@ -6238,10 +6238,8 @@ msgstr ""
 "Förekomsteditor: detektera och varna om förekomster skapade i det förflutna"
 
 #: whatsnew/whatsnewtranslations.cpp:20
-#, fuzzy
-#| msgid "Incidence editor: add emoticon support"
 msgid "Incidence editor: add emoji support"
-msgstr "Förekomsteditor: lägg till stöd för smilisar"
+msgstr "Förekomsteditor: lägg till stöd för emoji"
 
 #: whatsnew/whatsnewtranslations.cpp:29
 msgid "Add What's New menu"
