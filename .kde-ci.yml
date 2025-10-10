@@ -36,6 +36,7 @@ Dependencies:
     'frameworks/kcontacts': '@latest-kf6'
     'frameworks/kcalendarcore': '@latest-kf6'
     'frameworks/kuserfeedback': '@latest-kf6'
+    'libraries/ktextaddons': '@latest-kf6'
 
 - 'on': ['Linux', 'FreeBSD']
   'require':
