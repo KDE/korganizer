@@ -7,9 +7,16 @@
 #pragma once
 #include "config-korganizer.h"
 #include "korganizerprivate_export.h"
+#if HAVE_TEXTUTILS_HAS_WHATSNEW_SUPPORT
+#include <TextAddonsWidgets/WhatsNewTranslationsBase>
+#else
 #include <PimCommon/WhatsNewTranslationsBase>
-
+#endif
+#if HAVE_TEXTUTILS_HAS_WHATSNEW_SUPPORT
+class KORGANIZERPRIVATE_EXPORT WhatsNewTranslations : public TextAddonsWidgets::WhatsNewTranslationsBase
+#else
 class KORGANIZERPRIVATE_EXPORT WhatsNewTranslations : public PimCommon::WhatsNewTranslationsBase
+#endif
 {
 public:
     WhatsNewTranslations();

@@ -18,7 +18,11 @@
 
 #include <Akonadi/CalendarUtils>
 #include <KCalUtils/IncidenceFormatter>
+#if HAVE_TEXTUTILS_HAS_WHATSNEW_SUPPORT
+#include <TextAddonsWidgets/WhatsNewMessageWidget>
+#else
 #include <PimCommon/WhatsNewMessageWidget>
+#endif
 
 #include "korganizer_debug.h"
 #include <KParts/StatusBarExtension>
@@ -67,7 +71,11 @@ KOrganizerPart::KOrganizerPart(QWidget *parentWidget, QObject *parent, const KPl
         if (!previousNewFeaturesMD5.isEmpty()) {
             const bool hasNewFeature = (previousNewFeaturesMD5 != newFeaturesMD5);
             if (hasNewFeature) {
+#if HAVE_TEXTUTILS_HAS_WHATSNEW_SUPPORT
+                auto whatsNewMessageWidget = new TextAddonsWidgets::WhatsNewMessageWidget(parentWidget, i18n("KOrganizer"));
+#else
                 auto whatsNewMessageWidget = new PimCommon::WhatsNewMessageWidget(parentWidget, i18n("KOrganizer"));
+#endif
                 whatsNewMessageWidget->setWhatsNewInfos(translations.createWhatsNewInfo());
                 whatsNewMessageWidget->setObjectName(QStringLiteral("whatsNewMessageWidget"));
                 topLayout->addWidget(whatsNewMessageWidget);

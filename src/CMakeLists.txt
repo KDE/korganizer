@@ -220,6 +220,7 @@ target_link_libraries(
     KF6::CalendarCore
     KPim6::CalendarUtils
     KF6::KIOWidgets
+    KF6::TextAddonsWidgets
 )
 
 install(TARGETS korganizerpart DESTINATION ${KDE_INSTALL_PLUGINDIR})
@@ -483,6 +484,7 @@ target_link_libraries(
         KF6::ItemViews
         KF6::JobWidgets
         KF6::KIOGui
+        KF6::TextAddonsWidgets
         ${korganizer_userfeedback_LIB}
 )
 
