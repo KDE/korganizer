@@ -9,7 +9,7 @@ msgstr ""
 "Project-Id-Version: Korganizer\n"
 "Report-Msgid-Bugs-To: https://bugs.kde.org\n"
 "POT-Creation-Date: 2025-09-09 03:30+0000\n"
-"PO-Revision-Date: 2025-07-21 01:11+0200\n"
+"PO-Revision-Date: 2025-10-12 12:17+0200\n"
 "Last-Translator: Shinjo Park <kde@peremen.name>\n"
 "Language-Team: Korean <kde-kr@kde.org>\n"
 "Language: ko\n"
@@ -1778,13 +1778,13 @@ msgstr "알림 전환"
 #, kde-kuit-format
 msgctxt "@info alarm enabled"
 msgid "<message>%1</message> reminder is enabled"
-msgstr ""
+msgstr "<message>%1</message> 알림이 활성화됨"
 
 #: calendarview.cpp:1360
 #, kde-kuit-format
 msgctxt "@info alarm disabled"
 msgid "<message>%1</message> reminder is disabled"
-msgstr ""
+msgstr "<message>%1</message> 알림이 비활성화됨"
 
 #: calendarview.cpp:1391 calendarview.cpp:1445
 #, kde-format
@@ -1796,7 +1796,7 @@ msgstr "할 일 완료 여부 전환"
 #, kde-kuit-format
 msgctxt "@info percentage completed"
 msgid "To-do <message>%1</message> %2 percent completed"
-msgstr ""
+msgstr "<message>%1</message> 할 일이 %2퍼센트 완료됨"
 
 #: calendarview.cpp:1497
 #, kde-format
