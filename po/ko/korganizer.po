@@ -9,7 +9,7 @@ msgstr ""
 "Project-Id-Version: Korganizer\n"
 "Report-Msgid-Bugs-To: https://bugs.kde.org\n"
 "POT-Creation-Date: 2025-09-30 00:44+0000\n"
-"PO-Revision-Date: 2025-07-21 01:11+0200\n"
+"PO-Revision-Date: 2025-10-12 12:17+0200\n"
 "Last-Translator: Shinjo Park <kde@peremen.name>\n"
 "Language-Team: Korean <kde-kr@kde.org>\n"
 "Language: ko\n"
@@ -1778,13 +1778,13 @@ msgstr "알림 전환"
 #, kde-kuit-format
 msgctxt "@info alarm enabled"
 msgid "<message>%1</message> reminder is enabled"
-msgstr ""
+msgstr "<message>%1</message> 알림이 활성화됨"
 
 #: calendarview.cpp:1369
 #, kde-kuit-format
 msgctxt "@info alarm disabled"
 msgid "<message>%1</message> reminder is disabled"
-msgstr ""
+msgstr "<message>%1</message> 알림이 비활성화됨"
 
 #: calendarview.cpp:1400 calendarview.cpp:1454
 #, kde-format
@@ -1796,7 +1796,7 @@ msgstr "할 일 완료 여부 전환"
 #, kde-kuit-format
 msgctxt "@info percentage completed"
 msgid "To-do <message>%1</message> %2 percent completed"
-msgstr ""
+msgstr "<message>%1</message> 할 일이 %2퍼센트 완료됨"
 
 #: calendarview.cpp:1506
 #, kde-format
@@ -2142,28 +2142,18 @@ msgid "An error occurred while purging completed to-dos: <message>%1</message>"
 msgstr "완료된 할 일을 비우는 중 오류 발생: <message>%1</message>"
 
 #: calendarview.cpp:2800
-#, fuzzy, kde-kuit-format
-#| msgctxt "@info"
-#| msgid ""
-#| "You created an incidence in a calendar that is currently filtered out."
-#| "<para>On the left sidebar, enable it in the calendar manager to see the "
-#| "incidence.</para>"
+#, kde-kuit-format
 msgctxt "@info"
 msgid ""
 "You created an incidence in a calendar that is currently filtered out."
 "<para>To see the newly created incidence, please enable its calendar in the "
 "calendar manager.</para>"
 msgstr ""
-"현재 필터에서 제외된 캘린더에 항목을 만들었습니다.<para>해당 항목을 보려면 왼"
-"쪽 사이드바의 캘린더 관리자에서 활성화하십시오.</para>"
+"현재 필터에서 제외된 캘린더에 항목을 만들었습니다.<para>새로 만든 항목을 보려"
+"면 캘린더 관리자에서 해당 캘린더를 활성화하십시오.</para>"
 
 #: calendarview.cpp:2804
-#, fuzzy, kde-kuit-format
-#| msgctxt "@info"
-#| msgid ""
-#| "You created an incidence in a calendar that is currently filtered out."
-#| "<para>You can enable it through the calendar manager (Settings->Sidebar-"
-#| ">Show Calendar Manager)</para>"
+#, kde-kuit-format
 msgctxt "@info"
 msgid ""
 "You created an incidence in a calendar that is currently filtered out."
@@ -2172,8 +2162,10 @@ msgid ""
 "the manager using the <interface>Settings->Sidebar->Show Calendar Manager</"
 "interface> menu.</para>"
 msgstr ""
-"현재 필터에서 제외된 캘린더에 항목을 만들었습니다.<para>해당 항목을 보려면 캘"
-"린더 관리자에서 활성화하십시오(설정->사이드바->캘린더 관리자 표시)</para>"
+"현재 필터에서 제외된 캘린더에 항목을 만들었습니다.<para>새로 만든 항목을 보려"
+"면 캘린더 관리자에서 해당 캘린더를 활성화하십시오.</para><para>캘린더 관리자"
+"가 현재 숨겨져 있습니다. <interface>설정->사이드바->캘린더 관리자 표시</"
+"interface> 메뉴에서 표시를 활성화하십시오.</para>"
 
 #: collectiongeneralpage.cpp:37
 #, kde-format
