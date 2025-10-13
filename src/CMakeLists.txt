@@ -66,6 +66,7 @@ target_link_libraries(
     KF6::WindowSystem
     ${korganizer_userfeedback_LIB}
     KF6::IconThemes
+    KF6::TextAddonsWidgets
 )
 if(TARGET KPim6::PimCommonActivities)
     target_link_libraries(korganizer KPim6::PimCommonActivities)

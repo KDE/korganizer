@@ -30,9 +30,18 @@
 #include <KShortcutsDialog>
 #include <KStandardAction>
 #include <KToolBar>
+
+#if HAVE_TEXTUTILS_HAS_WHATSNEW_SUPPORT
+#include <TextAddonsWidgets/NeedUpdateVersionUtils>
+#include <TextAddonsWidgets/NeedUpdateVersionWidget>
+#include <TextAddonsWidgets/VerifyNewVersionWidget>
+#include <TextAddonsWidgets/WhatsNewMessageWidget>
+#else
 #include <PimCommon/NeedUpdateVersionUtils>
 #include <PimCommon/NeedUpdateVersionWidget>
+#include <PimCommon/VerifyNewVersionWidget>
 #include <PimCommon/WhatsNewMessageWidget>
+#endif
 #include <QLabel>
 #include <QStatusBar>
 #include <QVBoxLayout>
@@ -56,6 +65,17 @@ KOrganizer::KOrganizer()
     auto mainWidgetLayout = new QVBoxLayout(mainWidget);
     mainWidgetLayout->setContentsMargins({});
     mainWidgetLayout->setSpacing(0);
+#if HAVE_TEXTUTILS_HAS_WHATSNEW_SUPPORT
+    if (TextAddonsWidgets::NeedUpdateVersionUtils::checkVersion()) {
+        const auto status =
+            TextAddonsWidgets::NeedUpdateVersionUtils::obsoleteVersionStatus(QLatin1String(KORGANIZER_RELEASE_VERSION_DATE), QDate::currentDate());
+        if (status != TextAddonsWidgets::NeedUpdateVersionUtils::ObsoleteVersion::NotObsoleteYet) {
+            auto needUpdateVersionWidget = new TextAddonsWidgets::NeedUpdateVersionWidget(this);
+            mainWidgetLayout->addWidget(needUpdateVersionWidget);
+            needUpdateVersionWidget->setObsoleteVersion(status);
+        }
+    }
+#else
     if (PimCommon::NeedUpdateVersionUtils::checkVersion()) {
         const auto status = PimCommon::NeedUpdateVersionUtils::obsoleteVersionStatus(QLatin1String(KORGANIZER_RELEASE_VERSION_DATE), QDate::currentDate());
         if (status != PimCommon::NeedUpdateVersionUtils::ObsoleteVersion::NotObsoleteYet) {
@@ -64,6 +84,7 @@ KOrganizer::KOrganizer()
             needUpdateVersionWidget->setObsoleteVersion(status);
         }
     }
+#endif
 
     const WhatsNewTranslations translations;
     const QString newFeaturesMD5 = translations.newFeaturesMD5();
@@ -72,8 +93,13 @@ KOrganizer::KOrganizer()
         if (!previousNewFeaturesMD5.isEmpty()) {
             const bool hasNewFeature = (previousNewFeaturesMD5 != newFeaturesMD5);
             if (hasNewFeature) {
+#if HAVE_TEXTUTILS_HAS_WHATSNEW_SUPPORT
+                auto whatsNewMessageWidget = new TextAddonsWidgets::WhatsNewMessageWidget(this, i18n("KOrganizer"));
+                whatsNewMessageWidget->setWhatsNewInfos(translations.createWhatsNewInfo());
+#else
                 auto whatsNewMessageWidget = new PimCommon::WhatsNewMessageWidget(this, i18n("KOrganizer"));
                 whatsNewMessageWidget->setWhatsNewInfos(translations.createWhatsNewInfo());
+#endif
                 whatsNewMessageWidget->setObjectName(QStringLiteral("whatsNewMessageWidget"));
                 mainWidgetLayout->addWidget(whatsNewMessageWidget);
                 KOPrefs::instance()->setPreviousNewFeaturesMD5(newFeaturesMD5);
