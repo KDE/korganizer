@@ -17,7 +17,7 @@ msgstr ""
 "Project-Id-Version: korganizer\n"
 "Report-Msgid-Bugs-To: https://bugs.kde.org\n"
 "POT-Creation-Date: 2025-10-14 00:43+0000\n"
-"PO-Revision-Date: 2025-08-14 18:19+0300\n"
+"PO-Revision-Date: 2025-10-15 21:17+0300\n"
 "Last-Translator: Tommi Nieminen <translator@legisign.org>\n"
 "Language-Team: Finnish <kde-i18n-doc@kde.org>\n"
 "Language: fi\n"
@@ -2111,7 +2111,7 @@ msgctxt "@info"
 msgid ""
 "All calendars are unchecked in the Calendar Manager. No to-do was purged."
 msgstr ""
-"Yhtäkään kalenteria ei ole kalenterien hallinnassa valittu. Tehtäviä ei "
+"Yhtäkään kalenteria ei ole kalenterinhallinnassa valittu. Tehtäviä ei "
 "siivottu."
 
 #: calendarview.cpp:2479 calendarview.cpp:2744
@@ -2185,12 +2185,7 @@ msgstr ""
 "Siivottaessa valmistuneita tehtäviä tapahtui virhe: <message>%1</message>"
 
 #: calendarview.cpp:2808
-#, fuzzy, kde-kuit-format
-#| msgctxt "@info"
-#| msgid ""
-#| "You created an incidence in a calendar that is currently filtered out."
-#| "<para>On the left sidebar, enable it in the calendar manager to see the "
-#| "incidence.</para>"
+#, kde-kuit-format
 msgctxt "@info"
 msgid ""
 "You created an incidence in a calendar that is currently filtered out."
@@ -2198,16 +2193,10 @@ msgid ""
 "calendar manager.</para>"
 msgstr ""
 "Loit esiintymän kalenteriin, joka on suodatettu pois näkyvistä."
-"<para>Nähdäksesi esiintymän tuo kalenteri näkyviin vasemman sivupalkin "
-"kalenteriluettelosta.</para>"
+"<para>Nähdäksesi esiintymän ota se käyttöön kalenterinhallinnasta.</para>"
 
 #: calendarview.cpp:2812
-#, fuzzy, kde-kuit-format
-#| msgctxt "@info"
-#| msgid ""
-#| "You created an incidence in a calendar that is currently filtered out."
-#| "<para>You can enable it through the calendar manager (Settings->Sidebar-"
-#| ">Show Calendar Manager)</para>"
+#, kde-kuit-format
 msgctxt "@info"
 msgid ""
 "You created an incidence in a calendar that is currently filtered out."
@@ -2216,9 +2205,11 @@ msgid ""
 "the manager using the <interface>Settings->Sidebar->Show Calendar Manager</"
 "interface> menu.</para>"
 msgstr ""
-"Loit esiintymän kalenteriin, joka on suodatettu pois näkyvistä.<para>Voit "
-"tuoda kalenterin näkyviin kalenterien hallinnasta (Asetukset → Sivupalkki → "
-"Näytä kalenterien hallinta)</para>"
+"Loit esiintymän kalenteriin, joka on suodatettu pois näkyvistä."
+"<para>Nähdäksesi vasta luodun esiintymän ota sen kalenteri käyttöön "
+"kalenterinhallinnasta.</para><para>Kalenterien hallinta on tällä hetkellä "
+"piilossa. Näytä se valitsemalla <interface>Asetukset → Sivupaneeli → Näytä "
+"kalenterinhallinta</interface>.</para>"
 
 #: collectiongeneralpage.cpp:37
 #, kde-format
@@ -6240,24 +6231,22 @@ msgid "Selected Calendars"
 msgstr "Valitut kalenterit"
 
 #: whatsnew/whatsnewtranslations.cpp:18
-#, fuzzy
-#| msgid ""
-#| "Agenda view: added timelabels context menu option to toggle a 24-hour "
-#| "(military style) clock"
 msgid ""
 "Agenda view: added timelabels context menu to show/hide time labels for the "
 "system timezone on the right (or left) side as well"
 msgstr ""
-"Päivyrinäkymä: lisätty kontekstivalikkokohdat 24-tuntisen kellon ottamiseksi "
-"käyttöön tai poistamiseksi käytöstä"
+"Päivyrinäkymä: lisätty kontekstivalikko järjestelmän aikavyöhykkeen "
+"aikaselitteiden näyttämiseksi tai piilottamiseksi myös oikealta (tai "
+"vasemmalta) puolen"
 
 #: whatsnew/whatsnewtranslations.cpp:19
 msgid "Incidence editor: detect and warn about creating incidences in the past"
 msgstr ""
+"Esiintymämuokkain: havaitse ja varoita luomasta esiintymiä menneisyyteen"
 
 #: whatsnew/whatsnewtranslations.cpp:20
 msgid "Incidence editor: add emoji support"
-msgstr ""
+msgstr "Esiintymämuokkain: lisää hymiötuki"
 
 #: whatsnew/whatsnewtranslations.cpp:29
 msgid "Add What's New menu"
@@ -6265,7 +6254,7 @@ msgstr "Lisää Mitä uutta -valikko"
 
 #: whatsnew/whatsnewtranslations.cpp:30
 msgid "The current view is remembered"
-msgstr ""
+msgstr "Muistetaan nykyinen näkymä"
 
 #: whatsnew/whatsnewtranslations.cpp:31
 msgid "Add a Date Picker dialog available on the Go menu"
