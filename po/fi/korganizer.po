@@ -17,7 +17,7 @@ msgstr ""
 "Project-Id-Version: korganizer\n"
 "Report-Msgid-Bugs-To: https://bugs.kde.org\n"
 "POT-Creation-Date: 2025-09-09 03:30+0000\n"
-"PO-Revision-Date: 2025-08-14 18:19+0300\n"
+"PO-Revision-Date: 2025-10-15 21:17+0300\n"
 "Last-Translator: Tommi Nieminen <translator@legisign.org>\n"
 "Language-Team: Finnish <kde-i18n-doc@kde.org>\n"
 "Language: fi\n"
@@ -2111,7 +2111,7 @@ msgctxt "@info"
 msgid ""
 "All calendars are unchecked in the Calendar Manager. No to-do was purged."
 msgstr ""
-"Yhtäkään kalenteria ei ole kalenterien hallinnassa valittu. Tehtäviä ei "
+"Yhtäkään kalenteria ei ole kalenterinhallinnassa valittu. Tehtäviä ei "
 "siivottu."
 
 #: calendarview.cpp:2462 calendarview.cpp:2727
@@ -2193,8 +2193,8 @@ msgid ""
 "incidence.</para>"
 msgstr ""
 "Loit esiintymän kalenteriin, joka on suodatettu pois näkyvistä."
-"<para>Nähdäksesi esiintymän tuo kalenteri näkyviin vasemman sivupalkin "
-"kalenteriluettelosta.</para>"
+"<para>Nähdäksesi esiintymän ota sen kalenteri käyttöön vasemman sivupalkin "
+"kalenterinhallinnassa.</para>"
 
 #: calendarview.cpp:2795
 #, kde-kuit-format
@@ -2205,8 +2205,8 @@ msgid ""
 ">Show Calendar Manager)</para>"
 msgstr ""
 "Loit esiintymän kalenteriin, joka on suodatettu pois näkyvistä.<para>Voit "
-"tuoda kalenterin näkyviin kalenterien hallinnasta (Asetukset → Sivupalkki → "
-"Näytä kalenterien hallinta)</para>"
+"tuoda kalenterin näkyviin kalenterinhallinnasta (Asetukset → Sivupalkki → "
+"Näytä kalenterinhallinta)</para>"
 
 #: collectiongeneralpage.cpp:37
 #, kde-format
@@ -6232,7 +6232,7 @@ msgstr "Lisää Mitä uutta -valikko"
 
 #: whatsnew/whatsnewtranslations.cpp:19
 msgid "The current view is remembered"
-msgstr ""
+msgstr "Muistetaan nykyinen näkymä"
 
 #: whatsnew/whatsnewtranslations.cpp:20
 msgid "Add a Date Picker dialog available on the Go menu"
