@@ -37,12 +37,22 @@ bool CollectionSortFilterProxyModel::filterAcceptsRow(int source_row, const QMod
 void CollectionSortFilterProxyModel::setAccountActivities(Akonadi::AccountActivitiesAbstract *accountActivities)
 {
     if (mAccountActivities) {
-        disconnect(mAccountActivities, &Akonadi::AccountActivitiesAbstract::activitiesChanged, this, &CollectionSortFilterProxyModel::invalidateFilter);
+        disconnect(mAccountActivities, &Akonadi::AccountActivitiesAbstract::activitiesChanged, this, &CollectionSortFilterProxyModel::slotInvalidateFilter);
     }
     mAccountActivities = accountActivities;
     if (mAccountActivities) {
-        connect(mAccountActivities, &Akonadi::AccountActivitiesAbstract::activitiesChanged, this, &CollectionSortFilterProxyModel::invalidateFilter);
+        connect(mAccountActivities, &Akonadi::AccountActivitiesAbstract::activitiesChanged, this, &CollectionSortFilterProxyModel::slotInvalidateFilter);
     }
+}
+
+void CollectionSortFilterProxyModel::slotInvalidateFilter()
+{
+#if QT_VERSION >= QT_VERSION_CHECK(6, 10, 0)
+    beginFilterChange();
+    endFilterChange(QSortFilterProxyModel::Direction::Rows);
+#else
+    invalidateFilter();
+#endif
 }
 
 #include "moc_collectionsortfilterproxymodel.cpp"
