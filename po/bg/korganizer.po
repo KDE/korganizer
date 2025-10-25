@@ -4,7 +4,7 @@ msgstr ""
 "Project-Id-Version: korganizer\n"
 "Report-Msgid-Bugs-To: https://bugs.kde.org\n"
 "POT-Creation-Date: 2025-10-14 00:43+0000\n"
-"PO-Revision-Date: 2025-10-05 15:23+0200\n"
+"PO-Revision-Date: 2025-10-24 22:07+0200\n"
 "Last-Translator: Mincho Kondarev <mkondarev@yahoo.de>\n"
 "Language-Team: Bulgarian <kde-i18n-doc@kde.org>\n"
 "Language: bg\n"
@@ -711,8 +711,8 @@ msgid ""
 "created first. See \"Manage View Filters\" option in the Settings menu."
 msgstr ""
 "Изпълнява дефинирани от потребителя филтри за изглед в колекцията от "
-"календари. Първо трябва да бъдат създадени филтри. Вижте опцията \" "
-"Управление на филтри за изглед \"в менюто Настройки."
+"календари. Първо трябва да бъдат създадени филтри. Вижте опцията  "
+"„Управление на филтри за изглед \"в менюто Настройки."
 
 #: actionmanager.cpp:442
 #, kde-format
@@ -1789,7 +1789,7 @@ msgstr ""
 #, kde-format
 msgctxt "@info"
 msgid "Do you really want to permanently remove the item \"%1\"?"
-msgstr "Наистина ли искате да премахнете за постоянно елемента \" %1 \"?"
+msgstr "Наистина ли искате да премахнете за постоянно елемента  „%1 \"?"
 
 #: calendarview.cpp:823
 #, kde-format
@@ -1855,7 +1855,7 @@ msgstr "Копирането бе успешно"
 #, kde-format
 msgctxt "@info"
 msgid "Unable to copy the item \"%1\" to %2."
-msgstr "Не може да се копира елемента \" %1 \"в %2."
+msgstr "Не може да се копира елемента  „%1 \"в %2."
 
 #: calendarview.cpp:1516 calendarview.cpp:2496
 #, kde-format
@@ -1870,7 +1870,7 @@ msgid ""
 "Unable to remove the item \"%1\" from the original calendar. However, a copy "
 "of this item has been put into %2"
 msgstr ""
-"Не може да се премахне елементът \" %1\" от оригиналния календар. Въпреки "
+"Не може да се премахне елементът  „%1\" от оригиналния календар. Въпреки "
 "това, копие на този елемент е поставено в %2."
 
 #: calendarview.cpp:1579 calendarview.cpp:1595 calendarview.cpp:2531
@@ -1896,7 +1896,7 @@ msgstr "Преместването е успешно"
 msgctxt "@info"
 msgid "Unable to add the item \"%1\" into %2. This item has not been moved."
 msgstr ""
-"Не може да се добави елементът \" %1 \"в %2. Този елемент не е преместен."
+"Не може да се добави елементът  „%1 \"в %2. Този елемент не е преместен."
 
 #: calendarview.cpp:1630
 #, kde-format
@@ -2425,7 +2425,7 @@ msgstr "Нов филтър %1"
 #, kde-format
 msgctxt "@info"
 msgid "Do you really want to permanently remove the filter \"%1\"?"
-msgstr "Наистина ли искате да премахнете за постоянно филтъра \" %1 \"?"
+msgstr "Наистина ли искате да премахнете за постоянно филтъра  „%1 \"?"
 
 #: dialog/filtereditdialog.cpp:243
 #, kde-format
@@ -2864,7 +2864,7 @@ msgstr "&Изтриване на среща"
 #: kontactplugin/korganizer/apptsummarywidget.cpp:250
 #, kde-format
 msgid "Edit Event: \"%1\""
-msgstr "Редактиране на събитие: \" %1 \""
+msgstr "Редактиране на събитие:  „%1 \""
 
 #: kontactplugin/korganizer/journalplugin.cpp:28
 #, kde-format
@@ -3298,7 +3298,7 @@ msgstr "&Маркиране на завършеното"
 #: kontactplugin/korganizer/todosummarywidget.cpp:352
 #, kde-format
 msgid "Edit To-do: \"%1\""
-msgstr "Редактиране на задача: \" %1 \""
+msgstr "Редактиране на задача:  „%1 \""
 
 #: kontactplugin/korganizer/todosummarywidget.cpp:372
 #, kde-format
@@ -3438,8 +3438,8 @@ msgid ""
 "tag."
 msgstr ""
 "Активирайте тази опция, за да включите рождените дни от календара си в "
-"предстоящата специални поводи. Обикновено това са събития с \" \"Рожден ден"
-"\" етикет."
+"предстоящата специални поводи. Обикновено това са събития с  „\"Рожден ден\" "
+"етикет."
 
 #. i18n: ectx: property (toolTip), widget (QCheckBox, mShowAnniversariesFromCalBox)
 #: kontactplugin/specialdates/sdsummaryconfig_base.ui:152
@@ -3624,7 +3624,7 @@ msgstr "Преглед и контакт"
 #: kontactplugin/specialdates/sdsummarywidget.cpp:670
 #, kde-format
 msgid "Mail to:\"%1\""
-msgstr "Поща до: \" %1 \""
+msgstr "Поща до:  „%1 \""
 
 #: kontactplugin/specialdates/specialdates_plugin.cpp:36
 #, kde-format
@@ -4356,9 +4356,9 @@ msgid ""
 "access the next \"x\" days view, choose the \"Next X Days\" menu item from "
 "the \"View\" menu."
 msgstr ""
-"Изберете броя на \" x \"дни, които да се показват в изгледа за следващите "
-"дни. За достъп до следващия изглед на \" x \"дни, изберете елемента от "
-"менюто \" Next X Days \"от \" View \" меню."
+"Изберете броя на  „x \"дни, които да се показват в изгледа за следващите "
+"дни. За достъп до следващия изглед на  „x \"дни, изберете елемента от "
+"менюто  „Next X Days \"от  „View  „меню."
 
 #. i18n: ectx: tooltip, entry, group (General View)
 #: settings/korganizer.kcfg:73
@@ -4768,7 +4768,7 @@ msgid ""
 "Select the \"Merge all calendars into one view\" option if you would like "
 "all your calendars to be shown together in one agenda view."
 msgstr ""
-"Изберете опцията \" Обединяване на всички календари в един изглед \", ако "
+"Изберете опцията  „Обединяване на всички календари в един изглед \", ако "
 "искате всичките ви календари да се показват заедно в един изглед на дневен "
 "ред."
 
@@ -4791,7 +4791,7 @@ msgid ""
 "Select the \"Show calendars side by side\" option if you would like to see "
 "two calendars at once, in a side-by-side view."
 msgstr ""
-"Изберете опцията \" Показване на календари един до друг \", ако искате да "
+"Изберете опцията  „Показване на календари един до друг \", ако искате да "
 "видите два календара наведнъж, в изглед един до друг."
 
 #. i18n: ectx: tooltip, entry (AgendaViewCalendarDisplay), group (Agenda View)
@@ -4813,7 +4813,7 @@ msgid ""
 "Select \"Switch between views with tabs\" if you would like to alternate "
 "between calendars using the tab key."
 msgstr ""
-"Изберете \" Превключване между изгледи с раздели \", ако искате да редувате "
+"Изберете  „Превключване между изгледи с раздели \", ако искате да редувате "
 "календари с помощта на клавиша за раздели."
 
 #. i18n: ectx: tooltip, entry (AgendaViewCalendarDisplay), group (Agenda View)
@@ -4967,7 +4967,7 @@ msgid ""
 "(both inside and border) in the color of their calendar.  Please use the "
 "Colors and Fonts configuration page for setting these colors."
 msgstr ""
-"Изберете опцията \" Само календар \", ако искате да нарисувате елементи от "
+"Изберете опцията  „Само календар \", ако искате да нарисувате елементи от "
 "календара (както отвътре, така и от границата) в цвета на календара им. "
 "Моля, използвайте страницата за конфигуриране на Цветове и шрифтове за "
 "настройка на тези цветове."
@@ -5202,7 +5202,7 @@ msgid ""
 msgstr ""
 "Натиснете този бутон, за да конфигурирате шрифта на лентата за време. "
 "Лентата за време е уиджета, което показва часовете в изгледа на дневния ред. "
-"Този бутон ще отвори диалоговия прозорец \" Избор на шрифт \", което ви "
+"Този бутон ще отвори диалоговия прозорец  „Избор на шрифт \", което ви "
 "позволява да изберете часовия шрифт за лентата за време ."
 
 #. i18n: ectx: label, entry, group (Fonts)
@@ -5220,7 +5220,7 @@ msgid ""
 "the month view."
 msgstr ""
 "Натиснете този бутон, за да конфигурирате шрифта за месечен изглед. Този "
-"бутон ще отвори диалоговия прозорец \" Избор на шрифт \", като ви позволява "
+"бутон ще отвори диалоговия прозорец  „Избор на шрифт \", като ви позволява "
 "да изберете шрифта за елементите в месечния изглед."
 
 #. i18n: ectx: label, entry, group (Fonts)
@@ -5238,7 +5238,7 @@ msgid ""
 "in the agenda view."
 msgstr ""
 "Натиснете този бутон, за да конфигурирате шрифта на изгледа на дневния ред. "
-"Този бутон ще отвори диалоговия прозорец \" Избор на шрифт \", което ви "
+"Този бутон ще отвори диалоговия прозорец  „Избор на шрифт \", което ви "
 "позволява да изберете шрифта за събитията в изгледа на дневния ред."
 
 #. i18n: ectx: label, entry, group (Fonts)
@@ -5256,8 +5256,8 @@ msgid ""
 "font for the current-time line in the agenda view."
 msgstr ""
 "Натиснете този бутон, за да конфигурирате шрифта на реда за текущо време "
-"(линия на Marcus Bains). Този бутон ще отвори диалоговия прозорец \" Избор "
-"на шрифт \", което ви позволява да изберете шрифта за реда за текущо време в "
+"(линия на Marcus Bains). Този бутон ще отвори диалоговия прозорец  „Избор на "
+"шрифт \", което ви позволява да изберете шрифта за реда за текущо време в "
 "изгледа на дневния ред."
 
 #. i18n: ectx: label, entry (DefaultTodoAttachMethod), group (Hidden Options)
