@@ -384,13 +384,18 @@ protected:
      */
     virtual void showDates(const QDate &start, const QDate &end, const QDate &preferredMonth = QDate()) = 0;
 
+    struct DateRange {
+        QDateTime start;
+        QDateTime end;
+    };
+
     /**
      * From the requested date range (passed via setDateRange()), calculates the
      * adjusted date range actually displayed by the view, depending on the view's
      * supported range (e.g., a month view always displays one month).
      * The default implementation returns the range unmodified
      */
-    virtual QPair<QDateTime, QDateTime> actualDateRange(const QDateTime &start, const QDateTime &end, const QDate &preferredMonth = QDate()) const;
+    virtual DateRange actualDateRange(const QDateTime &start, const QDateTime &end, const QDate &preferredMonth = QDate()) const;
 
     Akonadi::CollectionCalendar::Ptr calendarForCollection(Akonadi::Collection::Id collectionId) const;
     Akonadi::CollectionCalendar::Ptr calendarForIncidence(const KCalendarCore::Incidence::Ptr &incidence) const;

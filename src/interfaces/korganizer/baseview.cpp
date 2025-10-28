@@ -110,9 +110,9 @@ void BaseView::setDateRange(const QDateTime &start, const QDateTime &end, const 
     d->startDateTime = start;
     d->endDateTime = end;
     showDates(start.date(), end.date(), preferredMonth);
-    const QPair<QDateTime, QDateTime> adjusted = actualDateRange(start, end, preferredMonth);
-    d->actualStartDateTime = adjusted.first;
-    d->actualEndDateTime = adjusted.second;
+    const DateRange adjusted = actualDateRange(start, end, preferredMonth);
+    d->actualStartDateTime = adjusted.start;
+    d->actualEndDateTime = adjusted.end;
 }
 
 QDateTime BaseView::startDateTime() const
@@ -200,10 +200,14 @@ void BaseView::calendarReset()
 {
 }
 
-QPair<QDateTime, QDateTime> BaseView::actualDateRange(const QDateTime &start, const QDateTime &end, const QDate &preferredMonth) const
+BaseView::DateRange BaseView::actualDateRange(const QDateTime &start, const QDateTime &end, const QDate &preferredMonth) const
 {
     Q_UNUSED(preferredMonth)
-    return qMakePair(start, end);
+    const BaseView::DateRange range{
+        .start = start,
+        .end = end,
+    };
+    return range;
 }
 
 void BaseView::setChanges(EventViews::EventView::Changes changes)
