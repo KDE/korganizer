@@ -4,7 +4,7 @@ msgstr ""
 "Project-Id-Version: korganizer\n"
 "Report-Msgid-Bugs-To: https://bugs.kde.org\n"
 "POT-Creation-Date: 2025-10-14 00:43+0000\n"
-"PO-Revision-Date: 2025-10-24 22:07+0200\n"
+"PO-Revision-Date: 2025-10-24 23:39+0200\n"
 "Last-Translator: Mincho Kondarev <mkondarev@yahoo.de>\n"
 "Language-Team: Bulgarian <kde-i18n-doc@kde.org>\n"
 "Language: bg\n"
@@ -12,7 +12,7 @@ msgstr ""
 "Content-Type: text/plain; charset=UTF-8\n"
 "Content-Transfer-Encoding: 8bit\n"
 "Plural-Forms: nplurals=2; plural=n != 1;\n"
-"X-Generator: Lokalize 25.07.70\n"
+"X-Generator: Lokalize 25.08.2\n"
 
 #, kde-format
 msgctxt "NAME OF TRANSLATORS"
@@ -1843,7 +1843,7 @@ msgstr "Задача <message>%1</message> в завършена на %2%"
 #, kde-format
 msgctxt "@info"
 msgid "\"%1\" was successfully copied to %2."
-msgstr "\" %1 \"беше успешно копиран в %2."
+msgstr "„%1“ беше успешно копиран в %2."
 
 #: calendarview.cpp:1511
 #, kde-format
@@ -1883,7 +1883,7 @@ msgstr "Грешка при преместване"
 #, kde-format
 msgctxt "@info"
 msgid "\"%1\" was successfully moved from %2 to %3."
-msgstr "\" %1 \"беше успешно преместен от %2 в %3."
+msgstr "„%1“ беше успешно преместен от %2 в %3."
 
 #: calendarview.cpp:1585
 #, kde-format
@@ -2109,7 +2109,7 @@ msgstr "Изтриване на &всички"
 #, kde-format
 msgctxt "@info/plain"
 msgid "Delete \"%1\""
-msgstr "Изтриване \"%1\""
+msgstr "Изтриване „%1“"
 
 #: calendarview.cpp:2474
 #, kde-format
@@ -3438,7 +3438,7 @@ msgid ""
 "tag."
 msgstr ""
 "Активирайте тази опция, за да включите рождените дни от календара си в "
-"предстоящата специални поводи. Обикновено това са събития с  „\"Рожден ден\" "
+"предстоящата специални поводи. Обикновено това са събития с  „Рожден ден\" "
 "етикет."
 
 #. i18n: ectx: property (toolTip), widget (QCheckBox, mShowAnniversariesFromCalBox)
@@ -4364,7 +4364,7 @@ msgstr ""
 #: settings/korganizer.kcfg:73
 #, kde-format
 msgid "Show this many days at a time in the Next \"x\" days view"
-msgstr "Показване на много дни наведнъж в изгледа Следващи „ x “ дни"
+msgstr "Показване на много дни наведнъж в изгледа Следващи „x“ дни"
 
 #. i18n: ectx: label, entry (DailyRecur), group (General View)
 #: settings/korganizer.kcfg:77
@@ -5348,7 +5348,7 @@ msgstr ""
 #: settings/korganizer.kcfg:508
 #, kde-format
 msgid "Select the working hours background color for the Month view here."
-msgstr "Изберете тук цвета на фона за работното време за изгледа„ Месец “."
+msgstr "Изберете тук цвета на фона за работното време за изгледа „Месец“."
 
 #. i18n: ectx: label, entry, group (Theme/Month view)
 #: settings/korganizer.kcfg:530
