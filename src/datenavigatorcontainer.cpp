@@ -333,10 +333,10 @@ QPair<QDate, QDate> DateNavigatorContainer::dateLimits(int offset) const
     firstMonth = mNavigatorView->month().addMonths(offset);
     lastMonth = lastMonth.addMonths(offset);
 
-    QPair<QDate, QDate> const firstMonthBoundary = KODayMatrix::matrixLimits(firstMonth);
-    QPair<QDate, QDate> const lastMonthBoundary = KODayMatrix::matrixLimits(lastMonth);
+    KODayMatrix::MatrixRange const firstMonthBoundary = KODayMatrix::matrixLimits(firstMonth);
+    KODayMatrix::MatrixRange const lastMonthBoundary = KODayMatrix::matrixLimits(lastMonth);
 
-    return qMakePair(firstMonthBoundary.first, lastMonthBoundary.second);
+    return qMakePair(firstMonthBoundary.start, lastMonthBoundary.end);
 }
 
 QDate DateNavigatorContainer::monthOfNavigator(int navigatorIndex) const
@@ -379,16 +379,16 @@ KDateNavigator *DateNavigatorContainer::firstNavigatorForDate(const QDate &date)
 {
     KDateNavigator *navigator = nullptr;
     if (date.isValid()) {
-        QPair<QDate, QDate> limits = KODayMatrix::matrixLimits(mNavigatorView->month());
+        KODayMatrix::MatrixRange limits = KODayMatrix::matrixLimits(mNavigatorView->month());
 
-        if (date >= limits.first && date <= limits.second) {
+        if (date >= limits.start && date <= limits.end) {
             // The date is in the first navigator
             navigator = mNavigatorView;
         } else {
             for (KDateNavigator *nav : std::as_const(mExtraViews)) {
                 if (nav) {
                     limits = KODayMatrix::matrixLimits(nav->month());
-                    if (date >= limits.first && date <= limits.second) {
+                    if (date >= limits.start && date <= limits.end) {
                         navigator = nav;
                         break;
                     }

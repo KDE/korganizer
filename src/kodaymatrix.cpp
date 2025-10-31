@@ -806,7 +806,7 @@ void KODayMatrix::resizeEvent(QResizeEvent *)
 }
 
 /* static */
-QPair<QDate, QDate> KODayMatrix::matrixLimits(QDate month)
+KODayMatrix::MatrixRange KODayMatrix::matrixLimits(QDate month)
 {
     QDate d(month.year(), month.month(), 1);
 
@@ -819,7 +819,10 @@ QPair<QDate, QDate> KODayMatrix::matrixLimits(QDate month)
         d = d.addDays(-7); // Start on the second line
     }
 
-    return qMakePair(d, d.addDays(NUMDAYS - 1));
+    const KODayMatrix::MatrixRange range{.start = d, .end = d.addDays(NUMDAYS - 1)
+
+    };
+    return range;
 }
 
 #include "moc_kodaymatrix.cpp"

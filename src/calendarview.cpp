@@ -600,8 +600,8 @@ void CalendarView::goNext()
 {
     if (qobject_cast<MonthView *>(mViewManager->currentView())) {
         const QDate month = mDateNavigatorContainer->monthOfNavigator(0);
-        QPair<QDate, QDate> const limits = KODayMatrix::matrixLimits(month);
-        mDateNavigator->selectNextMonth(month, limits.first, limits.second);
+        KODayMatrix::MatrixRange const limits = KODayMatrix::matrixLimits(month);
+        mDateNavigator->selectNextMonth(month, limits.start, limits.end);
     } else {
         mDateNavigator->selectNext();
     }
@@ -611,8 +611,8 @@ void CalendarView::goPrevious()
 {
     if (qobject_cast<MonthView *>(mViewManager->currentView())) {
         const QDate month = mDateNavigatorContainer->monthOfNavigator(0);
-        QPair<QDate, QDate> const limits = KODayMatrix::matrixLimits(month);
-        mDateNavigator->selectPreviousMonth(month, limits.first, limits.second);
+        KODayMatrix::MatrixRange const limits = KODayMatrix::matrixLimits(month);
+        mDateNavigator->selectPreviousMonth(month, limits.start, limits.end);
     } else {
         mDateNavigator->selectPrevious();
     }

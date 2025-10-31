@@ -65,10 +65,19 @@ public:
      */
     ~KODayMatrix() override;
 
+    struct MatrixRange {
+        QDate start;
+        QDate end;
+        bool operator==(const MatrixRange &other) const
+        {
+            return other.start == start && other.end == end;
+        }
+    };
+
     /** returns the first and last date of the 6*7 matrix that displays @p month
      * @param month The month we want to get matrix boundaries
      */
-    [[nodiscard]] static QPair<QDate, QDate> matrixLimits(QDate month);
+    [[nodiscard]] static MatrixRange matrixLimits(QDate month);
 
     /**
       Associate a calendar with this day matrix. If there is a calendar, the
