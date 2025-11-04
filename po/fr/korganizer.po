@@ -25,7 +25,7 @@ msgstr ""
 "Project-Id-Version: korganizer\n"
 "Report-Msgid-Bugs-To: https://bugs.kde.org\n"
 "POT-Creation-Date: 2025-10-14 00:43+0000\n"
-"PO-Revision-Date: 2025-09-26 10:11+0200\n"
+"PO-Revision-Date: 2025-10-01 09:15+0200\n"
 "Last-Translator: Xavier Besnard <xavier.besnard@kde.org>\n"
 "Language-Team: French <French <kde-francophone@kde.org>>\n"
 "Language: fr\n"
@@ -449,7 +449,7 @@ msgid ""
 "dos that you can archive into an iCalendar file.  They will be removed from "
 "your existing calendar collection."
 msgstr ""
-"Cette option ouvre une boîte de dialogue vous permettant de sélectionner "
+"Cette option ouvre une boite de dialogue vous permettant de sélectionner "
 "d'anciens évènements et tâches à faire que vous pouvez archiver dans un "
 "fichier « iCalendar ». Ils seront supprimés de votre collection d'agendas "
 "existante."
@@ -1144,7 +1144,7 @@ msgstr "Fait défiler la vue jusqu'aux dates sélectionnées par l'utilisateur"
 msgctxt "@info:whatsthis"
 msgid "Opens a date selection dialog for quickly navigating the view."
 msgstr ""
-"Ouvre une boîte de dialogue de sélection de date pour naviguer rapidement "
+"Ouvre une boite de dialogue de sélection de date pour naviguer rapidement "
 "dans la vue."
 
 # unreviewed-context
@@ -1180,7 +1180,7 @@ msgid ""
 "view. Currently only the multi-calendar view is supported. See the Multiple "
 "Calendars options in the Views->Agenda Views settings."
 msgstr ""
-"Dans l'affichage en agendas multiples, démarre une boîte de dialogue "
+"Dans l'affichage en agendas multiples, démarre une boite de dialogue "
 "permettant de configurer l'affichage. Actuellement, seule la vue en agendas "
 "multiples est prise en charge. Veuillez consulter les options des agendas "
 "multiples dans la configuration  Affichage /  Affichage d'agendas."
@@ -1854,7 +1854,7 @@ msgid ""
 "so it will be hidden and not appear in the view."
 msgstr ""
 "L'élément <resource>%1</resource> est filtrée par vos règles de filtrage "
-"actuelles. Aussi, celui-ci sera masqué et n'apparaîtra pas dans la vue."
+"actuelles. Aussi, celui-ci sera masqué et n'apparaitra pas dans la vue."
 
 #: calendarview.cpp:822
 #, kde-format
@@ -2483,7 +2483,7 @@ msgid ""
 "shows a week. The number in the left column is the number of the week in the "
 "year. Press it to select the whole week.</p></qt>"
 msgstr ""
-"<qt> <p>Sélectionnez les dates que vous souhaitez faire apparaître dans la "
+"<qt> <p>Sélectionnez les dates que vous souhaitez faire apparaitre dans la "
 "vue principale de KOrganizer. Maintenez le bouton de votre sourie appuyé "
 "pour sélectionner plusieurs jours à la fois.</p> <p>Utilisez les boutons ci-"
 "dessus pour naviguer vers les mois ou les années adjacents</p>. <p>Chaque "
@@ -2983,7 +2983,7 @@ msgctxt "@info:whatsthis"
 msgid ""
 "You will be presented with a dialog where you can create a new journal entry."
 msgstr ""
-"Vous pourrez créer une nouvelle entrée dans le journal à l'aide d'une boîte "
+"Vous pourrez créer une nouvelle entrée dans le journal à l'aide d'une boite "
 "de dialogue."
 
 #: kontactplugin/korganizer/kcmapptsummary.cpp:66
@@ -3013,7 +3013,7 @@ msgctxt "@info:whatsthis"
 msgid ""
 "You will be presented with a dialog where you can create a new event item."
 msgstr ""
-"Vous pourrez créer un nouvel évènement à l'aide d'une boîte de dialogue."
+"Vous pourrez créer un nouvel évènement à l'aide d'une boite de dialogue."
 
 #: kontactplugin/korganizer/korganizerplugin.cpp:146
 #: kontactplugin/korganizer/todoplugin.cpp:145
@@ -3132,7 +3132,7 @@ msgctxt "@info:whatsthis"
 msgid ""
 "You will be presented with a dialog where you can create a new to-do item."
 msgstr ""
-"Vous pourrez créer une nouvelle tâche à l'aide d'une boîte de dialogue."
+"Vous pourrez créer une nouvelle tâche à l'aide d'une boite de dialogue."
 
 #: kontactplugin/korganizer/todoplugin.cpp:190
 #, kde-format
@@ -4367,7 +4367,7 @@ msgid ""
 "your city is not listed, select one which shares the same timezone. "
 "KOrganizer will automatically adjust for daylight savings."
 msgstr ""
-"Sélectionnez votre fuseau horaire dans la liste de la boîte déroulante. Si "
+"Sélectionnez votre fuseau horaire dans la liste de la boite déroulante. Si "
 "votre ville n'est pas listée, sélectionnez-en une qui se situe dans le même "
 "fuseau horaire. KOrganizer gérera automatiquement les décalages horaires."
 
@@ -5370,7 +5370,7 @@ msgid ""
 msgstr ""
 "Cliquez sur ce bouton pour configurer la police utilisée pour les heures. Il "
 "s'agit des heures indiquées à gauche dans la vue agenda. Ce bouton permet "
-"d'ouvrir une boîte de dialogue de sélection de police."
+"d'ouvrir une boite de dialogue de sélection de police."
 
 #. i18n: ectx: label, entry, group (Fonts)
 #: settings/korganizer.kcfg:330
@@ -5387,7 +5387,7 @@ msgid ""
 "the month view."
 msgstr ""
 "Cliquez sur ce bouton pour configurer la police de vue mensuelle. Ce bouton "
-"permet d'ouvrir une boîte de dialogue de sélection de police."
+"permet d'ouvrir une boite de dialogue de sélection de police."
 
 #. i18n: ectx: label, entry, group (Fonts)
 #: settings/korganizer.kcfg:334
@@ -5404,7 +5404,7 @@ msgid ""
 "in the agenda view."
 msgstr ""
 "Cliquez sur ce bouton pour configurer la police de vue agenda. Ce bouton "
-"permet d'ouvrir une boîte de dialogue de sélection de police qui sera "
+"permet d'ouvrir une boite de dialogue de sélection de police qui sera "
 "utilisée pour les évènements dans la vue agenda."
 
 #. i18n: ectx: label, entry, group (Fonts)
@@ -5423,7 +5423,7 @@ msgid ""
 msgstr ""
 "Veuillez appuyer sur ce bouton pour configurer la police utilisée pour la "
 "ligne d'heure courante (De Marcus Bains). Ce bouton permettra l'ouverture de "
-"la boîte de dialogue de sélection de polices pour la ligne d'heure courante "
+"la boite de dialogue de sélection de polices pour la ligne d'heure courante "
 "dans l'affichage du calendrier."
 
 #. i18n: ectx: label, entry (DefaultTodoAttachMethod), group (Hidden Options)
@@ -6528,8 +6528,6 @@ msgstr ""
 "le passé"
 
 #: whatsnew/whatsnewtranslations.cpp:20
-#, fuzzy
-#| msgid "Incidence editor: add emoticon support"
 msgid "Incidence editor: add emoji support"
 msgstr "Éditeur d'occurrences : ajout de la prise en charge des émoticônes"
 
@@ -6544,7 +6542,7 @@ msgstr "La vue actuelle est mémorisée."
 #: whatsnew/whatsnewtranslations.cpp:31
 msgid "Add a Date Picker dialog available on the Go menu"
 msgstr ""
-"Ajouter une boîte de dialogue « Sélecteur de dates » à partir du menu "
+"Ajouter une boite de dialogue « Sélecteur de dates » à partir du menu "
 "« Aller »"
 
 #: whatsnew/whatsnewtranslations.cpp:32
@@ -6625,13 +6623,13 @@ msgstr ""
 #: whatsnew/whatsnewtranslations.cpp:43
 msgid "The export calendar dialog remembers its last export folder location"
 msgstr ""
-"La boîte de dialogue d'exportation d'agendas se souvient de son dernier "
+"La boite de dialogue d'exportation d'agendas se souvient de son dernier "
 "emplacement de dossier d'exportation"
 
 #: whatsnew/whatsnewtranslations.cpp:44
 msgid "The import calendar dialog remembers its last import folder location"
 msgstr ""
-"La boîte de dialogue d'importation d'agendas se souvient de son dernier "
+"La boite de dialogue d'importation d'agendas se souvient de son dernier "
 "emplacement de dossier d'importation"
 
 #: whatsnew/whatsnewtranslations.cpp:45
@@ -6653,7 +6651,7 @@ msgstr ""
 msgid ""
 "DAV configuration: dialog allows seeing the account password when editing"
 msgstr ""
-"Configuration « DAV » : la boîte de dialogue permet l'affichage du mot de "
+"Configuration « DAV » : la boite de dialogue permet l'affichage du mot de "
 "passe du compte lors de la modification"
 
 #: whatsnew/whatsnewtranslations.cpp:49
@@ -6680,7 +6678,7 @@ msgstr ""
 #, kde-format
 msgid "Initial \"New Event\" start times are consistent across all the views"
 msgstr ""
-"Les heures de début initiales d'un « nouvel événement » sont cohérentes dans "
+"Les heures de début initiales d'un « nouvel évènement » sont cohérentes dans "
 "toutes les vues"
 
 #: whatsnew/whatsnewtranslations.cpp:82
@@ -6709,7 +6707,7 @@ msgid ""
 "Agenda view: events without a duration are displayed as 30 long (rather than "
 "15 minutes long)"
 msgstr ""
-"Vue agenda : les événements sans durée sont affichés sur 30 minutes (Au lieu "
+"Vue agenda : les évènements sans durée sont affichés sur 30 minutes (Au lieu "
 "de 15 minutes)"
 
 #: widgets/kdatenavigator.cpp:171
