@@ -13,7 +13,7 @@ msgid ""
 msgstr ""
 "Project-Id-Version: korganizer\n"
 "Report-Msgid-Bugs-To: https://bugs.kde.org\n"
-"POT-Creation-Date: 2025-10-14 00:43+0000\n"
+"POT-Creation-Date: 2025-11-06 15:21+0000\n"
 "PO-Revision-Date: 2025-10-02 21:17+0200\n"
 "Last-Translator: Iñigo Salvador Azurmendi <xalba@ni.eus>\n"
 "Language-Team: Basque <kde-i18n-eu@kde.org>\n"
@@ -1237,10 +1237,11 @@ msgid "Show Date Navigator"
 msgstr "Erakutsi Data Nabigatzailea"
 
 #: actionmanager.cpp:711
-#, kde-format
+#, fuzzy, kde-format
+#| msgid "Show To-do View"
 msgctxt "@action:inmenu"
-msgid "Show To-do List in Calendar Views"
-msgstr "Erakutsi zereginen zerrenda Egutegi ikuspegietan"
+msgid "Show To-do View"
+msgstr "Erakutsi zereginen ikuspegia"
 
 #: actionmanager.cpp:715
 #, kde-format
@@ -1793,86 +1794,86 @@ msgstr ""
 "<resource>%1</resource> elementua uneko zure iragazki arauek iragazi dute, "
 "beraz ezkutatu egingo da eta ez da ikuspegian agertuko."
 
-#: calendarview.cpp:822
+#: calendarview.cpp:813
 #, kde-format
 msgctxt "@info"
 msgid "Do you really want to permanently remove the item \"%1\"?"
 msgstr "Benetan betiko ezabatu nahi duzu \"%1\" elementua?"
 
-#: calendarview.cpp:823
+#: calendarview.cpp:814
 #, kde-format
 msgctxt "@title:window"
 msgid "Delete Item?"
 msgstr "Elementua ezabatu?"
 
-#: calendarview.cpp:898
+#: calendarview.cpp:889
 #, kde-format
 msgctxt "@info"
 msgid "Paste failed: unable to determine a valid target date."
 msgstr ""
 "Itsastea huts egin du: ez da helburuko data baliodun bat zehazteko gai."
 
-#: calendarview.cpp:1310
+#: calendarview.cpp:1301
 #, kde-format
 msgctxt "@info/plain"
 msgid "Make sub-to-dos independent"
 msgstr "Egin azpi-zereginak independente"
 
-#: calendarview.cpp:1367
+#: calendarview.cpp:1358
 #, kde-format
 msgctxt "@info/plain"
 msgid "Toggle Reminder"
 msgstr "Txandakatu oroigarria"
 
-#: calendarview.cpp:1371
+#: calendarview.cpp:1362
 #, kde-kuit-format
 msgctxt "@info alarm enabled"
 msgid "<message>%1</message> reminder is enabled"
 msgstr "<message>%1</message> oroigarria gaituta dago"
 
-#: calendarview.cpp:1373
+#: calendarview.cpp:1364
 #, kde-kuit-format
 msgctxt "@info alarm disabled"
 msgid "<message>%1</message> reminder is disabled"
 msgstr "<message>%1</message> oroigarria ezgaituta dago"
 
-#: calendarview.cpp:1404 calendarview.cpp:1458
+#: calendarview.cpp:1395 calendarview.cpp:1449
 #, kde-format
 msgctxt "@info/plain"
 msgid "Toggle To-do Completed"
 msgstr "Txandakatu zeregina osatuta"
 
-#: calendarview.cpp:1407
+#: calendarview.cpp:1398
 #, kde-kuit-format
 msgctxt "@info percentage completed"
 msgid "To-do <message>%1</message> %2 percent completed"
 msgstr "<message>%1</message> zeregina ehuneko %2 osatuta"
 
-#: calendarview.cpp:1510
+#: calendarview.cpp:1501
 #, kde-format
 msgctxt "@info"
 msgid "\"%1\" was successfully copied to %2."
 msgstr "\"%1\" %2(e)ra ondo kopiatu da."
 
-#: calendarview.cpp:1511
+#: calendarview.cpp:1502
 #, kde-format
 msgctxt "@title:window"
 msgid "Copying Succeeded"
 msgstr "Kopiatzea ondo egin da"
 
-#: calendarview.cpp:1515
+#: calendarview.cpp:1506
 #, kde-format
 msgctxt "@info"
 msgid "Unable to copy the item \"%1\" to %2."
 msgstr "Ez da \"%1\" elementua %2(e)ra kopiatzeko gai."
 
-#: calendarview.cpp:1516 calendarview.cpp:2496
+#: calendarview.cpp:1507 calendarview.cpp:2487
 #, kde-format
 msgctxt "@title:window"
 msgid "Copying Failed"
 msgstr "Kopiatzea huts egin du"
 
-#: calendarview.cpp:1575
+#: calendarview.cpp:1566
 #, kde-format
 msgctxt "@info"
 msgid ""
@@ -1882,51 +1883,51 @@ msgstr ""
 "Ez da \"%1\" elementua jatorrizko egutegitik kentzeko gai. Dena den, "
 "elementu horren kopia bat %2(e)an ipini da"
 
-#: calendarview.cpp:1579 calendarview.cpp:1595 calendarview.cpp:2531
+#: calendarview.cpp:1570 calendarview.cpp:1586 calendarview.cpp:2522
 #, kde-format
 msgctxt "@title:window"
 msgid "Moving Failed"
 msgstr "Mugitzea huts egin du"
 
-#: calendarview.cpp:1584
+#: calendarview.cpp:1575
 #, kde-format
 msgctxt "@info"
 msgid "\"%1\" was successfully moved from %2 to %3."
 msgstr "\"%1\" ondo mugitu da %2(e)tik %3(e)ra."
 
-#: calendarview.cpp:1585
+#: calendarview.cpp:1576
 #, kde-format
 msgctxt "@title:window"
 msgid "Moving Succeeded"
 msgstr "Mugitzea ondo egin da"
 
-#: calendarview.cpp:1591
+#: calendarview.cpp:1582
 #, kde-format
 msgctxt "@info"
 msgid "Unable to add the item \"%1\" into %2. This item has not been moved."
 msgstr ""
 "Ez da \"%1\" elementua %2(e)ra gehitzeko gai. Elementu hori ez da mugitu."
 
-#: calendarview.cpp:1630
+#: calendarview.cpp:1621
 #, kde-format
 msgctxt "@info"
 msgid "Do you want to dissociate the occurrence on %1 from the recurrence?"
 msgstr "%1(e)ko errepika errepikatzetik banandu nahi duzu?"
 
-#: calendarview.cpp:1634 calendarview.cpp:1647 calendarview.cpp:2312
-#: calendarview.cpp:2371 calendarview.cpp:2401
+#: calendarview.cpp:1625 calendarview.cpp:1638 calendarview.cpp:2303
+#: calendarview.cpp:2362 calendarview.cpp:2392
 #, kde-format
 msgctxt "@title:window"
 msgid "KOrganizer Confirmation"
 msgstr "KOrganizer baieztatzea"
 
-#: calendarview.cpp:1635
+#: calendarview.cpp:1626
 #, kde-format
 msgctxt "@action:button"
 msgid "&Dissociate"
 msgstr "&Banandu"
 
-#: calendarview.cpp:1642
+#: calendarview.cpp:1633
 #, kde-format
 msgctxt "@info"
 msgid ""
@@ -1936,79 +1937,79 @@ msgstr ""
 "%1(e)ko errepika errepikatzetik banandu nahi duzu edo etorkizunekoak ere "
 "banandu nahi dituzu?"
 
-#: calendarview.cpp:1648
+#: calendarview.cpp:1639
 #, kde-format
 msgctxt "@action:button"
 msgid "&Only Dissociate This One"
 msgstr "Banandu gertaera hau ba&karrik"
 
-#: calendarview.cpp:1649
+#: calendarview.cpp:1640
 #, kde-format
 msgctxt "@action:button"
 msgid "&Also Dissociate Future Ones"
 msgstr "Banandu etorkizunekoak &ere"
 
-#: calendarview.cpp:1667
+#: calendarview.cpp:1658
 #, kde-format
 msgctxt "@info/plain"
 msgid "Dissociate future occurrences"
 msgstr "Banandu etorkizuneko errepikak"
 
-#: calendarview.cpp:1669
+#: calendarview.cpp:1660
 #, kde-format
 msgctxt "@info/plain"
 msgid "Dissociate occurrence"
 msgstr "Banandu errepika"
 
-#: calendarview.cpp:1676
+#: calendarview.cpp:1667
 #, kde-format
 msgctxt "@info"
 msgid "Dissociating the future occurrences failed."
 msgstr "Etorkizuneko errepikak banatzea huts egin du."
 
-#: calendarview.cpp:1676 calendarview.cpp:1678
+#: calendarview.cpp:1667 calendarview.cpp:1669
 #, kde-format
 msgctxt "@title:window"
 msgid "Dissociating Failed"
 msgstr "Banantzea huts egin du"
 
-#: calendarview.cpp:1678
+#: calendarview.cpp:1669
 #, kde-format
 msgctxt "@info"
 msgid "Dissociating the occurrence failed."
 msgstr "Gertaera honen bereizketak huts egin du."
 
-#: calendarview.cpp:1823 calendarview.cpp:1825
+#: calendarview.cpp:1814 calendarview.cpp:1816
 #, kde-format
 msgctxt "@title:window"
 msgid "KOrganizer"
 msgstr "KOrganizer"
 
-#: calendarview.cpp:1845
+#: calendarview.cpp:1836
 #, kde-format
 msgctxt "@title:window"
 msgid "Export Calendar to File"
 msgstr "Esportatu egutegia fitxategira"
 
-#: calendarview.cpp:1858
+#: calendarview.cpp:1849
 #, kde-kuit-format
 msgctxt "@info"
 msgid "Do you want to overwrite <filename>%1</filename>?"
 msgstr "<filename>%1</filename> gainidatzi nahi duzu?"
 
-#: calendarview.cpp:1859
+#: calendarview.cpp:1850
 #, kde-format
 msgctxt "@title:window"
 msgid "Export Calendar"
 msgstr "Esportatu egutegia"
 
-#: calendarview.cpp:1873
+#: calendarview.cpp:1864
 #, kde-format
 msgctxt "@info save failure cause unknown"
 msgid "Reason unknown"
 msgstr "Arrazoi ezezaguna"
 
-#: calendarview.cpp:1875
+#: calendarview.cpp:1866
 #, kde-kuit-format
 msgctxt "@info"
 msgid ""
@@ -2017,13 +2018,13 @@ msgstr ""
 "Ezin du <filename>%1</filename> iCalendar fitxategian idatzi: <message>%2</"
 "message>"
 
-#: calendarview.cpp:1984 calendarview.cpp:2029
+#: calendarview.cpp:1975 calendarview.cpp:2020
 #, kde-format
 msgctxt "@info/plain"
 msgid "No filter"
 msgstr "Iragazkirik ez"
 
-#: calendarview.cpp:2307
+#: calendarview.cpp:2298
 #, kde-kuit-format
 msgctxt "@info"
 msgid ""
@@ -2035,19 +2036,19 @@ msgstr ""
 "bakarrik ezabatu eta haren azpi-zeregin guztiak independente egin nahi "
 "dituzu, edo zeregina bere azpi-zeregin guztiekin ezabatu nahi duzu?"
 
-#: calendarview.cpp:2313
+#: calendarview.cpp:2304
 #, kde-format
 msgctxt "@action:button"
 msgid "Delete Only This"
 msgstr "Ezabatu hau bakarrik"
 
-#: calendarview.cpp:2314 calendarview.cpp:2372
+#: calendarview.cpp:2305 calendarview.cpp:2363
 #, kde-format
 msgctxt "@action:button"
 msgid "Delete All"
 msgstr "Ezabatuta guztiak"
 
-#: calendarview.cpp:2346
+#: calendarview.cpp:2337
 #, kde-kuit-format
 msgctxt "@info"
 msgid ""
@@ -2057,13 +2058,13 @@ msgstr ""
 "<resource>%1</resource> elementua soilik irakurtzeko gisa markatuta dago eta "
 "ezin da ezabatu; baliteke soilik irakurtzekoa den egutegi batena izatea."
 
-#: calendarview.cpp:2349
+#: calendarview.cpp:2340
 #, kde-format
 msgctxt "@title:window"
 msgid "Removing not possible"
 msgstr "Ezin du kendu"
 
-#: calendarview.cpp:2368
+#: calendarview.cpp:2359
 #, kde-kuit-format
 msgctxt "@info"
 msgid ""
@@ -2073,13 +2074,13 @@ msgstr ""
 "Egunkariko <resource>%1</resource> elementua data ezberdinetan errepikatzen "
 "da; ziur zaude hura eta haren errepika guztiak ezabatu nahi dituzula?"
 
-#: calendarview.cpp:2379
+#: calendarview.cpp:2370
 #, kde-format
 msgctxt "@action:button"
 msgid "Also Delete &Future"
 msgstr "Ezabatu e&torkizunekoa ere"
 
-#: calendarview.cpp:2383
+#: calendarview.cpp:2374
 #, kde-kuit-format
 msgctxt "@info"
 msgid ""
@@ -2091,7 +2092,7 @@ msgstr ""
 "da; %2(e)ko uneko errepika bakarrik, baita etorkizuneko errepikak ere, edo "
 "errepikatze guztiak ezabatu nahi dituzu?"
 
-#: calendarview.cpp:2390
+#: calendarview.cpp:2381
 #, kde-kuit-format
 msgctxt "@info"
 msgid ""
@@ -2102,25 +2103,25 @@ msgstr ""
 "da; %2(e)ko uneko errepika bakarrik, edo errepikatze guztiak ezabatu nahi "
 "dituzu?"
 
-#: calendarview.cpp:2402
+#: calendarview.cpp:2393
 #, kde-format
 msgctxt "@action:button"
 msgid "Delete C&urrent"
 msgstr "Ezabatu &unekoa"
 
-#: calendarview.cpp:2404
+#: calendarview.cpp:2395
 #, kde-format
 msgctxt "@action:button"
 msgid "Delete &All"
 msgstr "Ezabatu den&a"
 
-#: calendarview.cpp:2435 calendarview.cpp:2442
+#: calendarview.cpp:2426 calendarview.cpp:2433
 #, kde-format
 msgctxt "@info/plain"
 msgid "Delete \"%1\""
 msgstr "Ezabatu \"%1\""
 
-#: calendarview.cpp:2474
+#: calendarview.cpp:2465
 #, kde-format
 msgctxt "@info"
 msgid ""
@@ -2129,49 +2130,49 @@ msgstr ""
 "Egutegi kudeatzaileko egutegi guztiak markatu gabe daude. Ez dago betiko "
 "ezabatu den zereginik."
 
-#: calendarview.cpp:2479 calendarview.cpp:2744
+#: calendarview.cpp:2470 calendarview.cpp:2735
 #, kde-format
 msgctxt "@info"
 msgid "There are no completed to-dos to purge."
 msgstr "Ez dago betiko ezabatzeko osatutako zereginik."
 
-#: calendarview.cpp:2484
+#: calendarview.cpp:2475
 #, kde-format
 msgctxt "@info"
 msgid "Delete all completed to-dos from checked calendars?"
 msgstr "Markatutako egutegietan osatutako zeregin guztiak ezabatu?"
 
-#: calendarview.cpp:2485
+#: calendarview.cpp:2476
 #, kde-format
 msgctxt "@title:window"
 msgid "Purge To-dos"
 msgstr "Betiko ezabatu zereginak"
 
-#: calendarview.cpp:2486
+#: calendarview.cpp:2477
 #, kde-format
 msgctxt "@action:button"
 msgid "Purge"
 msgstr "Betiko ezabatu"
 
-#: calendarview.cpp:2496
+#: calendarview.cpp:2487
 #, kde-kuit-format
 msgctxt "@info"
 msgid "Unable to copy item <resource>%1</resource>."
 msgstr "Ez da <resource>%1</resource> elementua kopiatzeko gai."
 
-#: calendarview.cpp:2531
+#: calendarview.cpp:2522
 #, kde-kuit-format
 msgctxt "@info"
 msgid "Unable to move item <resource>%1</resource>."
 msgstr "Ez da <resource>%1</resource> elementua mugitzeko gai."
 
-#: calendarview.cpp:2736
+#: calendarview.cpp:2727
 #, kde-kuit-format
 msgctxt "@info"
 msgid "0 completed to-dos were purged.<nl/>"
 msgstr "Osatutako 0 zeregin betiko ezabatu dira.<nl/>"
 
-#: calendarview.cpp:2738 calendarview.cpp:2749
+#: calendarview.cpp:2729 calendarview.cpp:2740
 #, kde-format, kde-kuit-format
 msgctxt "@info"
 msgid "%1 to-do was ignored because it has uncompleted or read-only children."
@@ -2184,7 +2185,7 @@ msgstr[1] ""
 "%1 zeregini ezikusi egin zaio osatu gabeko edo soilik irakurtzeko umeak "
 "dituelako."
 
-#: calendarview.cpp:2742 calendarview.cpp:2747
+#: calendarview.cpp:2733 calendarview.cpp:2738
 #, kde-format
 msgctxt "@info"
 msgid "%1 completed to-do was purged."
@@ -2192,7 +2193,7 @@ msgid_plural "%1 completed to-dos were purged."
 msgstr[0] "Osatutako zeregin %1 betiko ezabatu da."
 msgstr[1] "Osatutako %1 zeregin betiko ezabatu dira."
 
-#: calendarview.cpp:2754
+#: calendarview.cpp:2745
 #, kde-kuit-format
 msgctxt "@info"
 msgid "An error occurred while purging completed to-dos: <message>%1</message>"
@@ -2200,7 +2201,7 @@ msgstr ""
 "Errore bat gertatu da osatutako zereginak betiko ezabatzean: <message>%1</"
 "message>"
 
-#: calendarview.cpp:2808
+#: calendarview.cpp:2799
 #, kde-kuit-format
 msgctxt "@info"
 msgid ""
@@ -2212,7 +2213,7 @@ msgstr ""
 "batean.<para>Gertakizun sortu berria ikusteko, mesedez, gaitu bere egutegia "
 "egutegi-kudeatzailean.</para>"
 
-#: calendarview.cpp:2812
+#: calendarview.cpp:2803
 #, kde-kuit-format
 msgctxt "@info"
 msgid ""
@@ -6361,19 +6362,14 @@ msgstr ""
 "menuetan aukerak gehitu dira"
 
 #: whatsnew/whatsnewtranslations.cpp:36
-msgid "To-do view: remove the (redundant) to-do list from the sidebar"
-msgstr ""
-"Zeregin ikuspegia: alboko-barratik zeregin-zerrenda (erredundantea) kentzea"
-
-#: whatsnew/whatsnewtranslations.cpp:37
 msgid "To-do view: save/restore fullview setting"
 msgstr "Zeregin ikuspegia: gorde/lehengoratu ikuspegi osoaren ezarpenak"
 
-#: whatsnew/whatsnewtranslations.cpp:38
+#: whatsnew/whatsnewtranslations.cpp:37
 msgid "To-do view: save/restore flatview setting"
 msgstr "Zeregin ikuspegia: ikuspegi lauaren ezarpenak gorde/lehengoratu"
 
-#: whatsnew/whatsnewtranslations.cpp:39
+#: whatsnew/whatsnewtranslations.cpp:38
 msgid ""
 "Date navigator: added an option in the Configure->Views settings for hiding "
 "the week numbers"
@@ -6381,7 +6377,7 @@ msgstr ""
 "Data nabigatzailea: Konfiguratu->Ikuspegi-ezarpenak menuan asteko zenbakiak "
 "ezkutatzeko aukera bat gehitu da"
 
-#: whatsnew/whatsnewtranslations.cpp:40
+#: whatsnew/whatsnewtranslations.cpp:39
 msgid ""
 "Date navigator: the \"Week numbers select a work week when in work week mode"
 "\" setting is true by default"
@@ -6389,59 +6385,59 @@ msgstr ""
 "Data nabigatzailea: \"Asteko zenbakiek, lan-astea moduan, lan-aste bat "
 "hautatzen dute\" ezarpena era lehenetsian egia da"
 
-#: whatsnew/whatsnewtranslations.cpp:41
+#: whatsnew/whatsnewtranslations.cpp:40
 msgid "Incidence editor: remember/restore the template manager geometry"
 msgstr ""
 "Intzidentzia editorea: gogoratu/lehengoratu txantiloi-kudeatzailearen "
 "geometria"
 
-#: whatsnew/whatsnewtranslations.cpp:42
+#: whatsnew/whatsnewtranslations.cpp:41
 msgid "Incidence editor: support drag-and-drop attachments"
 msgstr ""
 "Intzidentzia editorea: eranskinak arrastatzea eta jaregitea onartzen du"
 
-#: whatsnew/whatsnewtranslations.cpp:43
+#: whatsnew/whatsnewtranslations.cpp:42
 msgid "The export calendar dialog remembers its last export folder location"
 msgstr ""
 "Esportatu egutegia elkarrizketa-koadroak esportatzeko bere azken karpeta "
 "gogoratzen du"
 
-#: whatsnew/whatsnewtranslations.cpp:44
+#: whatsnew/whatsnewtranslations.cpp:43
 msgid "The import calendar dialog remembers its last import folder location"
 msgstr ""
 "Inportatu egutegia elkarrizketa-koadroak inportatzeko bere azken karpeta "
 "gogoratzen du"
 
-#: whatsnew/whatsnewtranslations.cpp:45
+#: whatsnew/whatsnewtranslations.cpp:44
 msgid "Get Hot New Stuff removed"
 msgstr "Berrikuntzak eskuratzeko aukera kendu da"
 
-#: whatsnew/whatsnewtranslations.cpp:46
+#: whatsnew/whatsnewtranslations.cpp:45
 msgid "Add calendar file: remote calendars are always read-only"
 msgstr ""
 "Gehitu egutegi-fitxategia: urruneko egutegiak beti soilik irakurtzeko dira"
 
-#: whatsnew/whatsnewtranslations.cpp:47
+#: whatsnew/whatsnewtranslations.cpp:46
 msgid "Add calendar file: will not permit an empty file path"
 msgstr "Gehitu egutegi-fitxategia: ez du utziko fitxategi bide-izen hutsa"
 
-#: whatsnew/whatsnewtranslations.cpp:48
+#: whatsnew/whatsnewtranslations.cpp:47
 msgid ""
 "DAV configuration: dialog allows seeing the account password when editing"
 msgstr ""
 "DAV konfigurazioa: editatzean, elkarrizketa-koadroak kontuaren pasahitza "
 "ikusten uzten du"
 
-#: whatsnew/whatsnewtranslations.cpp:49
+#: whatsnew/whatsnewtranslations.cpp:48
 msgid "DAV configuration: wizard shows icons for the various providers"
 msgstr ""
 "DAV konfigurazioa: morroiak hornitzaile ezberdinen ikonoak erakusten ditu"
 
-#: whatsnew/whatsnewtranslations.cpp:50
+#: whatsnew/whatsnewtranslations.cpp:49
 msgid "DAV configuration: wizard updated list of providers"
 msgstr "DAV konfigurazioa: morroiak hornitzaileen zerrenda eguneratua du"
 
-#: whatsnew/whatsnewtranslations.cpp:80
+#: whatsnew/whatsnewtranslations.cpp:79
 #, kde-format
 msgid ""
 "Semantics are changed from a \"working schedule\" concept to a \"week "
@@ -6450,19 +6446,19 @@ msgstr ""
 "Lanik egiten ez duten erabiltzaileetara egokitzeko semantika aldatu da, "
 "\"lan ordutegia\" kontzeptutik \"asteko ordutegia\" kontzeptura"
 
-#: whatsnew/whatsnewtranslations.cpp:81
+#: whatsnew/whatsnewtranslations.cpp:80
 #, kde-format
 msgid "Initial \"New Event\" start times are consistent across all the views"
 msgstr ""
 "\"Ekitaldi berria\"ren hasierako hasiera orduak ikuspegi guztien artean "
 "koherenteak dira"
 
-#: whatsnew/whatsnewtranslations.cpp:82
+#: whatsnew/whatsnewtranslations.cpp:81
 #, kde-format
 msgid "Improved default event calendar handling"
 msgstr "Ekitaldi-egutegi lehenetsiaren erabilpen hobetua"
 
-#: whatsnew/whatsnewtranslations.cpp:84
+#: whatsnew/whatsnewtranslations.cpp:83
 #, kde-format
 msgid ""
 "Incidences with a long excluded dates list no longer create huge tooltips"
@@ -6470,14 +6466,14 @@ msgstr ""
 "Baztertutako daten zerrenda luzea duten intzidentziek jada ez dute tresna-"
 "argibide erraldoirik sortzen"
 
-#: whatsnew/whatsnewtranslations.cpp:85
+#: whatsnew/whatsnewtranslations.cpp:84
 #, kde-format
 msgid "Fixed the organizer email address for incidences with attendees"
 msgstr ""
 "Partaideak dituzten intzidentzietarako, antolatzailearen e-posta helbidea "
 "konpondu da"
 
-#: whatsnew/whatsnewtranslations.cpp:86
+#: whatsnew/whatsnewtranslations.cpp:85
 #, kde-format
 msgid ""
 "Agenda view: events without a duration are displayed as 30 long (rather than "
@@ -6657,6 +6653,15 @@ msgctxt "4 digit year"
 msgid "%1"
 msgstr "%1"
 
+#~ msgctxt "@action:inmenu"
+#~ msgid "Show To-do List in Calendar Views"
+#~ msgstr "Erakutsi zereginen zerrenda Egutegi ikuspegietan"
+
+#~ msgid "To-do view: remove the (redundant) to-do list from the sidebar"
+#~ msgstr ""
+#~ "Zeregin ikuspegia: alboko-barratik zeregin-zerrenda (erredundantea) "
+#~ "kentzea"
+
 #~ msgctxt "PLACEHOLDER. DO NOT TRANSLATE"
 #~ msgid "Nothing yet"
 #~ msgstr "Nothing yet"
@@ -6695,12 +6700,6 @@ msgstr "%1"
 #~ msgctxt "@info"
 #~ msgid "The downloaded events will be merged into your current calendar."
 #~ msgstr "Zama-jaitsitako ekitaldiak zure uneko egutegian bateratuko dira."
-
-#, fuzzy
-#~| msgid "Show To-do View"
-#~ msgctxt "@action:inmenu"
-#~ msgid "Show To-do View"
-#~ msgstr "Erakutsi zereginen ikuspegia"
 
 #~ msgid "&Show"
 #~ msgstr "&Erakutsi"
