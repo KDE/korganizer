@@ -51,24 +51,12 @@ QList<KLazyLocalizedString> WhatsNewTranslations::lastNewFeatures65() const
     return info;
 }
 
-#if HAVE_TEXTUTILS_HAS_WHATSNEW_SUPPORT
 QList<TextAddonsWidgets::WhatsNewInfo> WhatsNewTranslations::createWhatsNewInfo() const
-#else
-QList<PimCommon::WhatsNewInfo> WhatsNewTranslations::createWhatsNewInfo() const
-#endif
 {
-#if HAVE_TEXTUTILS_HAS_WHATSNEW_SUPPORT
     QList<TextAddonsWidgets::WhatsNewInfo> listInfo;
-#else
-    QList<PimCommon::WhatsNewInfo> listInfo;
-#endif
     {
         // Version 6.5.0
-#if HAVE_TEXTUTILS_HAS_WHATSNEW_SUPPORT
         TextAddonsWidgets::WhatsNewInfo info65;
-#else
-        PimCommon::WhatsNewInfo info65;
-#endif
         info65.setVersion(QStringLiteral("6.5.0"));
         QStringList lst65;
         const auto newFeatureStrings65 = lastNewFeatures65();
@@ -87,11 +75,7 @@ QList<PimCommon::WhatsNewInfo> WhatsNewTranslations::createWhatsNewInfo() const
         listInfo.append(std::move(info65));
 
         // Version 6.6.0 (Current)
-#if HAVE_TEXTUTILS_HAS_WHATSNEW_SUPPORT
         TextAddonsWidgets::WhatsNewInfo info66;
-#else
-        PimCommon::WhatsNewInfo info66;
-#endif
         info66.setVersion(QStringLiteral("6.6.0"));
         QStringList lst66;
         const auto newFeatureStrings66 = lastNewFeatures();

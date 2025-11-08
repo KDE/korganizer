@@ -67,11 +67,7 @@
 #include <KCalUtils/DndFactory>
 #include <KCalUtils/Stringify>
 
-#if HAVE_TEXTUTILS_HAS_WHATSNEW_SUPPORT
 #include <TextAddonsWidgets/WhatsNewDialog>
-#else
-#include <PimCommon/WhatsNewDialog>
-#endif
 
 #include <PimCommonAkonadi/CollectionAclPage>
 #include <PimCommonAkonadi/ImapAclAttribute>
@@ -1810,11 +1806,7 @@ void CalendarView::printPreview()
 void CalendarView::slotWhatsNew()
 {
     const WhatsNewTranslations translations;
-#if HAVE_TEXTUTILS_HAS_WHATSNEW_SUPPORT
     TextAddonsWidgets::WhatsNewDialog dlg(translations.createWhatsNewInfo(), this, i18nc("@title:window", "KOrganizer"));
-#else
-    PimCommon::WhatsNewDialog dlg(translations.createWhatsNewInfo(), this, i18nc("@title:window", "KOrganizer"));
-#endif
     dlg.updateInformations();
     dlg.exec();
 }

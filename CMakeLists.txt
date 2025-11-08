@@ -199,7 +199,7 @@ if(NOT APPLE)
     find_package(X11)
 endif()
 
-set(KTEXTADDONS_MIN_VERSION "1.8.0")
+set(KTEXTADDONS_MIN_VERSION "1.8.44")
 
 find_package(KF6TextAddonsWidgets ${KTEXTADDONS_MIN_VERSION} CONFIG)
 set_package_properties(
@@ -210,11 +210,6 @@ set_package_properties(
         TYPE
             REQUIRED
 )
-
-if(${KF6TextAddonsWidgets_VERSION} VERSION_GREATER_EQUAL 1.8.44)
-    set(HAVE_TEXTUTILS_HAS_WHATSNEW_SUPPORT TRUE)
-endif()
-
 
 set(KDEPIM_HAVE_X11 ${X11_FOUND})
 configure_file(config-korganizer.h.in ${CMAKE_CURRENT_BINARY_DIR}/config-korganizer.h)
