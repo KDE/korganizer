@@ -1236,11 +1236,10 @@ msgid "Show Date Navigator"
 msgstr "Datumsnavigator anzeigen"
 
 #: actionmanager.cpp:711
-#, fuzzy, kde-format
-#| msgid "Show To-do View"
+#, kde-format
 msgctxt "@action:inmenu"
 msgid "Show To-do View"
-msgstr "Aufgaben-Ansicht anzeigen"
+msgstr "Aufgabenansicht anzeigen"
 
 #: actionmanager.cpp:715
 #, kde-format
