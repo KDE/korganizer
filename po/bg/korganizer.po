@@ -6658,12 +6658,3 @@ msgstr "%1"
 msgctxt "4 digit year"
 msgid "%1"
 msgstr "%1"
-
-#~ msgctxt "@action:inmenu"
-#~ msgid "Show To-do List in Calendar Views"
-#~ msgstr "Показване на списък със задачи в изгледи на календара"
-
-#~ msgid "To-do view: remove the (redundant) to-do list from the sidebar"
-#~ msgstr ""
-#~ "Изглед на задачи: премахване на (излишния) списък със задачи от "
-#~ "страничната лента"
