@@ -28,6 +28,7 @@
         "Description[sv]": "Insticksprogrammet visar dagens månfas (ny, skära, oval, full)",
         "Description[tr]": "Bu eklenti günün Ay evresini gösterir (Yeniay, İlkdördün, Sondördün, Dolunay).",
         "Description[uk]": "Цей додаток показує фазу місяця (новий, перша чверть, остання чверть, повня)",
+        "Description[zh_CN]": "此插件用于显示每日的月相 (新月、弦月、盈凸月、满月)",
         "Description[zh_TW]": "這個外掛程式會顯示當天的月相（新月、上弦月、下弦月、滿月）",
         "Name": "Lunar Phases Plugin for Calendars",
         "Name[ar]": "ملحق مراحل القمر للتقويم",
@@ -59,6 +60,7 @@
         "Name[ta]": "நிலவின் கலைகளைக் காட்டும் நாள்காட்டி செருகுநிரல்",
         "Name[tr]": "Takvimler için Ay’ın Evreleri Eklentisi",
         "Name[uk]": "Додаток фаз місяця для календарів",
+        "Name[zh_CN]": "农历月相插件",
         "Name[zh_TW]": "行事曆用的月相外掛程式"
     },
     "X-KDE-KOrganizer-HasSettings": false,

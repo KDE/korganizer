@@ -30,6 +30,7 @@
         "Description[sv]": "Insticksprogrammet tillhandahåller Wikipedias Dagens bild",
         "Description[tr]": "Bu eklenti, Vikipedi “Günün Resmi”ni sağlar.",
         "Description[uk]": "За допомогою цього додатка можна отримувати «Зображення дня» з Вікіпедії.",
+        "Description[zh_CN]": "此插件提供对维基百科“每日图片”的支持",
         "Description[zh_TW]": "這個外掛程式提供維基百科的「本日圖片」",
         "Name": "Wikipedia Picture Of the Day Plugin for Calendars",
         "Name[ar]": "ملحق صورة اليوم من ويكيبديا للتقويم",
@@ -76,6 +77,7 @@
         "Name[tr]": "Takvimler için Vikipedi “Günün Resmi” Eklentisi",
         "Name[uk]": "Додаток дат для календарів (зображення дня з Wikipedia)",
         "Name[wa]": "Tchôke-divins imådje do djoû Wikipedia po les calindrîs",
+        "Name[zh_CN]": "维基百科每日图片日历插件",
         "Name[zh_TW]": "行事曆用的維基百科「本日圖片」外掛程式"
     },
     "X-KDE-KOrganizer-HasSettings": true,

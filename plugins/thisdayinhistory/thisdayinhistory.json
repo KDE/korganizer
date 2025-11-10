@@ -30,6 +30,7 @@
         "Description[sv]": "Insticksprogrammet tillhandahåller länkar till Wikipedias sida 'Den här dagen i historien'",
         "Description[tr]": "Bu eklenti, Vikipedi’nin “Tarihte Bugün” sayfalarına bağlantılar sağlar.",
         "Description[uk]": "За допомогою цього додатка створюються посилання на сторінки Вікіпедії «Цей день у історії».",
+        "Description[zh_CN]": "此插件提供了对维基百科上“历史上的今天”页面的链接",
         "Description[zh_TW]": "這個外掛程式提供到維基百科「歷史上的今天」頁面的連結",
         "Name": "Wikipedia 'This Day in History' Plugin",
         "Name[ar]": "محلق ويكيبديا  'هذا اليوم في التاريخ'",
@@ -76,6 +77,7 @@
         "Name[tr]": "Vikipedi “Tarihte Bugün” Eklentisi",
         "Name[uk]": "Додаток сторінки Вікіпедії «Цей день в історії»",
         "Name[wa]": "Tchôke-divins « Ci djoû ci e l' Istwere » del Wikipedia",
+        "Name[zh_CN]": "维基百科“历史上的今天”插件",
         "Name[zh_TW]": "維基百科「歷史上的今天」外掛程式"
     },
     "X-KDE-KOrganizer-HasSettings": false,
