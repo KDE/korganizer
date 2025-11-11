@@ -1165,11 +1165,10 @@ msgid "Show Date Navigator"
 msgstr ""
 
 #: actionmanager.cpp:711
-#, fuzzy, kde-format
-#| msgid "Show To-dos Due"
+#, kde-format
 msgctxt "@action:inmenu"
 msgid "Show To-do View"
-msgstr "Zobrazit prošlé úkoly"
+msgstr ""
 
 #: actionmanager.cpp:715
 #, kde-format
