@@ -84,7 +84,7 @@ QList<TextAddonsWidgets::WhatsNewInfo> WhatsNewTranslations::createWhatsNewInfo(
         }
         info66.setNewFeatures(lst66);
         // info66.setChanges({i18n()});
-        // info66.setBugFixings({i18n()};
+        info66.setBugFixings({i18n("Incidence editor: the tags are sorted alphabetically in the tags editor")});
         listInfo.append(std::move(info66));
     }
 
