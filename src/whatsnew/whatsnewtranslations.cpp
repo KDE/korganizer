@@ -14,6 +14,12 @@ WhatsNewTranslations::~WhatsNewTranslations() = default;
 // Use by newFeaturesMD5. changes in this list will trigger a "new stuff" notification
 QList<KLazyLocalizedString> WhatsNewTranslations::lastNewFeatures() const
 {
+    const QList<KLazyLocalizedString> info{};
+    return info;
+}
+
+QList<KLazyLocalizedString> WhatsNewTranslations::lastNewFeatures66() const
+{
     const QList<KLazyLocalizedString> info{
         kli18n("Agenda view: added timelabels context menu to show/hide time labels for the system timezone on the right (or left) side as well"),
         kli18n("Incidence editor: detect and warn about creating incidences in the past"),
@@ -74,11 +80,11 @@ QList<TextAddonsWidgets::WhatsNewInfo> WhatsNewTranslations::createWhatsNewInfo(
         });
         listInfo.append(std::move(info65));
 
-        // Version 6.6.0 (Current)
+        // Version 6.6.0
         TextAddonsWidgets::WhatsNewInfo info66;
         info66.setVersion(QStringLiteral("6.6.0"));
         QStringList lst66;
-        const auto newFeatureStrings66 = lastNewFeatures();
+        const auto newFeatureStrings66 = lastNewFeatures66();
         for (const KLazyLocalizedString &l : newFeatureStrings66) {
             lst66 += l.toString();
         }
@@ -86,6 +92,19 @@ QList<TextAddonsWidgets::WhatsNewInfo> WhatsNewTranslations::createWhatsNewInfo(
         // info66.setChanges({i18n()});
         info66.setBugFixings({i18n("Incidence editor: the tags are sorted alphabetically in the tags editor")});
         listInfo.append(std::move(info66));
+
+        // Version 6.7.0 (Current)
+        TextAddonsWidgets::WhatsNewInfo info67;
+        info67.setVersion(QStringLiteral("6.7.0"));
+        QStringList lst67;
+        const auto newFeatureStrings67 = lastNewFeatures();
+        for (const KLazyLocalizedString &l : newFeatureStrings67) {
+            lst67 += l.toString();
+        }
+        info67.setNewFeatures(lst67);
+        // info67.setChanges({i18n()});
+        // info66.setBugFixings({i18n());
+        listInfo.append(std::move(info67));
     }
 
     return listInfo;

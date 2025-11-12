@@ -19,4 +19,5 @@ public:
 
 private:
     [[nodiscard]] QList<KLazyLocalizedString> lastNewFeatures65() const;
+    [[nodiscard]] QList<KLazyLocalizedString> lastNewFeatures66() const;
 };
