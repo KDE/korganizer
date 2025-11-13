@@ -13,7 +13,7 @@ msgid ""
 msgstr ""
 "Project-Id-Version: korganizer\n"
 "Report-Msgid-Bugs-To: https://bugs.kde.org\n"
-"POT-Creation-Date: 2025-11-06 17:06+0000\n"
+"POT-Creation-Date: 2025-11-13 02:38+0000\n"
 "PO-Revision-Date: 2025-10-02 21:17+0200\n"
 "Last-Translator: Iñigo Salvador Azurmendi <xalba@ni.eus>\n"
 "Language-Team: Basque <kde-i18n-eu@kde.org>\n"
@@ -6481,6 +6481,15 @@ msgid ""
 msgstr ""
 "Agenda ikuspegia: iraupenik gabeko ekitaldiak 30 minutuko luzerarekin "
 "erakusten dira (15 minutuko luzeraren ordez)"
+
+#. i18n()});
+#: whatsnew/whatsnewtranslations.cpp:103
+#, fuzzy, kde-format
+#| msgid ""
+#| "Incidence editor: detect and warn about creating incidences in the past"
+msgid "Incidence editor: the tags are sorted alphabetically in the tags editor"
+msgstr ""
+"Intzidentzia editorea: intzidentziak iraganean sortzea antzeman eta abisatu"
 
 #: widgets/kdatenavigator.cpp:171
 #, kde-format

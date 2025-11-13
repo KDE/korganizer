@@ -19,7 +19,7 @@ msgid ""
 msgstr ""
 "Project-Id-Version: korganizer\n"
 "Report-Msgid-Bugs-To: https://bugs.kde.org\n"
-"POT-Creation-Date: 2025-11-06 17:06+0000\n"
+"POT-Creation-Date: 2025-11-13 02:38+0000\n"
 "PO-Revision-Date: 2025-11-08 21:16-0300\n"
 "Last-Translator: Guilherme Marçal Silva <guimarcalsilva@gmail.com>\n"
 "Language-Team: Brazilian Portuguese <kde-i18n-pt_BR@kde.org>\n"
@@ -6503,6 +6503,16 @@ msgid ""
 msgstr ""
 "Vista de agenda: eventos sem uma duração são exibidos como tendo 30 minutos "
 "de duração (ao invés de 15 minutos)"
+
+#. i18n()});
+#: whatsnew/whatsnewtranslations.cpp:103
+#, fuzzy, kde-format
+#| msgid ""
+#| "Incidence editor: detect and warn about creating incidences in the past"
+msgid "Incidence editor: the tags are sorted alphabetically in the tags editor"
+msgstr ""
+"Editor de incidência: detecta e avisa sobre a criação de incidências no "
+"passado"
 
 #: widgets/kdatenavigator.cpp:171
 #, kde-format

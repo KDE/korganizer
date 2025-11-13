@@ -2,7 +2,7 @@ msgid ""
 msgstr ""
 "Project-Id-Version: kdeorg\n"
 "Report-Msgid-Bugs-To: https://bugs.kde.org\n"
-"POT-Creation-Date: 2025-11-06 17:06+0000\n"
+"POT-Creation-Date: 2025-11-13 02:38+0000\n"
 "PO-Revision-Date: 2024-04-22 15:58\n"
 "Last-Translator: \n"
 "Language-Team: Chinese Simplified\n"
@@ -6055,6 +6055,12 @@ msgid ""
 "Agenda view: events without a duration are displayed as 30 long (rather than "
 "15 minutes long)"
 msgstr "议程视图：没有持续时间的事件显示为 30 分钟  (而不是 15 分钟) "
+
+#. i18n()});
+#: whatsnew/whatsnewtranslations.cpp:103
+#, kde-format
+msgid "Incidence editor: the tags are sorted alphabetically in the tags editor"
+msgstr ""
 
 #: widgets/kdatenavigator.cpp:171
 #, kde-format

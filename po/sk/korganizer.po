@@ -10,7 +10,7 @@ msgid ""
 msgstr ""
 "Project-Id-Version: korganizer\n"
 "Report-Msgid-Bugs-To: https://bugs.kde.org\n"
-"POT-Creation-Date: 2025-11-06 17:06+0000\n"
+"POT-Creation-Date: 2025-11-13 02:38+0000\n"
 "PO-Revision-Date: 2019-11-05 20:02+0100\n"
 "Last-Translator: Matej Mrenica <matejm98mthw@gmail.com>\n"
 "Language-Team: Slovak <kde-i18n-doc@kde.org>\n"
@@ -6836,6 +6836,12 @@ msgstr ""
 msgid ""
 "Agenda view: events without a duration are displayed as 30 long (rather than "
 "15 minutes long)"
+msgstr ""
+
+#. i18n()});
+#: whatsnew/whatsnewtranslations.cpp:103
+#, kde-format
+msgid "Incidence editor: the tags are sorted alphabetically in the tags editor"
 msgstr ""
 
 #: widgets/kdatenavigator.cpp:171

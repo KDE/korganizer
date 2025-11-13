@@ -1,7 +1,7 @@
 # translation of korganizer.po to Slovenian
 # Translation of korganizer.po to Slovenian
 # Copyright (C) 2001,2002, 2003, 2004, 2005, 2006 Free Software Foundation, Inc.
-# $Id: korganizer.po 1722164 2025-11-06 17:38:10Z scripty $
+# $Id: korganizer.po 1722713 2025-11-13 03:10:24Z scripty $
 # $Source$
 #
 # Roman Maurer <roman.maurer@hermes.si>, 2001.
@@ -14,7 +14,7 @@ msgid ""
 msgstr ""
 "Project-Id-Version: korganizer\n"
 "Report-Msgid-Bugs-To: https://bugs.kde.org\n"
-"POT-Creation-Date: 2025-11-06 17:06+0000\n"
+"POT-Creation-Date: 2025-11-13 02:38+0000\n"
 "PO-Revision-Date: 2025-09-30 07:26+0200\n"
 "Last-Translator: Matjaž Jeran <matjaz.jeran@amis.net>\n"
 "Language-Team: Slovenian <lugos-slo@lugos.si>\n"
@@ -6476,6 +6476,16 @@ msgid ""
 msgstr ""
 "Pogled dnevnega reda: dogodki brez trajanja so prikazani kot dolgi 30 minut "
 "(namesto 15 minut)"
+
+#. i18n()});
+#: whatsnew/whatsnewtranslations.cpp:103
+#, fuzzy, kde-format
+#| msgid ""
+#| "Incidence editor: detect and warn about creating incidences in the past"
+msgid "Incidence editor: the tags are sorted alphabetically in the tags editor"
+msgstr ""
+"Urejevalnik incidenc: zaznavanje in opozarjanje na nastanek incidenc v "
+"preteklosti"
 
 #: widgets/kdatenavigator.cpp:171
 #, kde-format

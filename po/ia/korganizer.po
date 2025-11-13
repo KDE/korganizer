@@ -7,7 +7,7 @@ msgid ""
 msgstr ""
 "Project-Id-Version: \n"
 "Report-Msgid-Bugs-To: https://bugs.kde.org\n"
-"POT-Creation-Date: 2025-11-06 17:06+0000\n"
+"POT-Creation-Date: 2025-11-13 02:38+0000\n"
 "PO-Revision-Date: 2025-09-02 17:48+0200\n"
 "Last-Translator: giovanni <g.sora@tiscali.it>\n"
 "Language-Team: Interlingua <kde-i18n-doc@kde.org>\n"
@@ -6515,6 +6515,12 @@ msgid ""
 msgstr ""
 "Vista de Agenda: eventos sin duration es monstrate como longe 30 (plus tosto "
 "que longe de 15 minutas)"
+
+#. i18n()});
+#: whatsnew/whatsnewtranslations.cpp:103
+#, kde-format
+msgid "Incidence editor: the tags are sorted alphabetically in the tags editor"
+msgstr ""
 
 #: widgets/kdatenavigator.cpp:171
 #, kde-format

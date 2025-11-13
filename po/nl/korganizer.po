@@ -18,7 +18,7 @@ msgid ""
 msgstr ""
 "Project-Id-Version: korganizer\n"
 "Report-Msgid-Bugs-To: https://bugs.kde.org\n"
-"POT-Creation-Date: 2025-11-06 17:06+0000\n"
+"POT-Creation-Date: 2025-11-13 02:38+0000\n"
 "PO-Revision-Date: 2025-10-01 00:20+0200\n"
 "Last-Translator: Freek de Kruijf <freekdekruijf@kde.nl>\n"
 "Language-Team: \n"
@@ -6487,6 +6487,16 @@ msgid ""
 msgstr ""
 "Agendaweergave: gebeurtenissen zonder een tijdsduur worden als 30 lang (in "
 "plaats van 15 minuten lang) getoond"
+
+#. i18n()});
+#: whatsnew/whatsnewtranslations.cpp:103
+#, fuzzy, kde-format
+#| msgid ""
+#| "Incidence editor: detect and warn about creating incidences in the past"
+msgid "Incidence editor: the tags are sorted alphabetically in the tags editor"
+msgstr ""
+"Incidentenbewerker: detecteer en waarschuw over het maken van incidenten in "
+"het verleden"
 
 #: widgets/kdatenavigator.cpp:171
 #, kde-format

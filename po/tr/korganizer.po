@@ -20,7 +20,7 @@ msgid ""
 msgstr ""
 "Project-Id-Version: kdepim-kde4\n"
 "Report-Msgid-Bugs-To: https://bugs.kde.org\n"
-"POT-Creation-Date: 2025-11-06 17:06+0000\n"
+"POT-Creation-Date: 2025-11-13 02:38+0000\n"
 "PO-Revision-Date: 2025-10-03 10:10+0300\n"
 "Last-Translator: Emir SARI <emir_sari@îcloud.com>\n"
 "Language-Team: Turkish <kde-l10n-tr@kde.org>\n"
@@ -6435,6 +6435,14 @@ msgid ""
 msgstr ""
 "Ajanda görünümü: Süresi olmayan etkinlikler 15 yerine 30 dakikalık olarak "
 "görüntülenir"
+
+#. i18n()});
+#: whatsnew/whatsnewtranslations.cpp:103
+#, fuzzy, kde-format
+#| msgid ""
+#| "Incidence editor: detect and warn about creating incidences in the past"
+msgid "Incidence editor: the tags are sorted alphabetically in the tags editor"
+msgstr "Ülay düzenleyicisi: Geçmişte etkinlik oluşturmayı algıla ve uyar"
 
 #: widgets/kdatenavigator.cpp:171
 #, kde-format
