@@ -11,7 +11,7 @@ msgid ""
 msgstr ""
 "Project-Id-Version: korganizer\n"
 "Report-Msgid-Bugs-To: https://bugs.kde.org\n"
-"POT-Creation-Date: 2025-11-09 00:43+0000\n"
+"POT-Creation-Date: 2025-11-13 00:43+0000\n"
 "PO-Revision-Date: 2025-09-30 10:31+0300\n"
 "Last-Translator: Yuri Chornoivan <yurchor@ukr.net>\n"
 "Language-Team: Ukrainian <trans-uk@lists.fedoraproject.org>\n"
@@ -6341,7 +6341,7 @@ msgstr "Заголовок"
 msgid "Selected Calendars"
 msgstr "Позначені календарі"
 
-#: whatsnew/whatsnewtranslations.cpp:18
+#: whatsnew/whatsnewtranslations.cpp:24
 msgid ""
 "Agenda view: added timelabels context menu to show/hide time labels for the "
 "system timezone on the right (or left) side as well"
@@ -6350,30 +6350,30 @@ msgstr ""
 "або приховування часових міток для загальносистемного часового поясу "
 "праворуч (або ліворуч)"
 
-#: whatsnew/whatsnewtranslations.cpp:19
+#: whatsnew/whatsnewtranslations.cpp:25
 msgid "Incidence editor: detect and warn about creating incidences in the past"
 msgstr ""
 "Редактор зустрічей: виявлення створення зустрічей у минулому та попередження "
 "про це"
 
-#: whatsnew/whatsnewtranslations.cpp:20
+#: whatsnew/whatsnewtranslations.cpp:26
 msgid "Incidence editor: add emoji support"
 msgstr "Редактор зустрічей: додано підтримку емоційок"
 
-#: whatsnew/whatsnewtranslations.cpp:29
+#: whatsnew/whatsnewtranslations.cpp:35
 msgid "Add What's New menu"
 msgstr "Додано меню «Що нового?»"
 
-#: whatsnew/whatsnewtranslations.cpp:30
+#: whatsnew/whatsnewtranslations.cpp:36
 msgid "The current view is remembered"
 msgstr "Нова версія програми запам'ятовує параметри поточного перегляду"
 
-#: whatsnew/whatsnewtranslations.cpp:31
+#: whatsnew/whatsnewtranslations.cpp:37
 msgid "Add a Date Picker dialog available on the Go menu"
 msgstr ""
 "Додано вікно вибору дати, доступ до якого можна отримати з меню «Перехід»"
 
-#: whatsnew/whatsnewtranslations.cpp:32
+#: whatsnew/whatsnewtranslations.cpp:38
 msgid ""
 "Agenda view: consolidated the \"Day\", \"Next X Days\", \"Work Schedule\", "
 "\"Week\" time ranges into the Agenda tool button"
@@ -6381,7 +6381,7 @@ msgstr ""
 "Панель порядку денного: діапазони часу «День», «Наступні X днів», «Робочий "
 "розклад», «Тиждень» зібрано у кнопці інструмента порядку денного"
 
-#: whatsnew/whatsnewtranslations.cpp:33
+#: whatsnew/whatsnewtranslations.cpp:39
 msgid ""
 "Agenda view: added timelabels context menu option to toggle a 24-hour "
 "(military style) clock"
@@ -6389,31 +6389,31 @@ msgstr ""
 "Панель перегляду порядку денного: додано пункт контекстного часу часових "
 "міток для вмикання і вимикання 24-годинного режиму (військовий стан)"
 
-#: whatsnew/whatsnewtranslations.cpp:34
+#: whatsnew/whatsnewtranslations.cpp:40
 msgid "Agenda view: added context menu to create new Event or To-do"
 msgstr ""
 "Панель порядку денного: додано контекстне меню для створення запису події "
 "або завдання"
 
-#: whatsnew/whatsnewtranslations.cpp:35
+#: whatsnew/whatsnewtranslations.cpp:41
 msgid ""
 "To-do view: added context menu options for toggling completion and reminders"
 msgstr ""
 "Панель перегляду завдань: додано пункти контекстного меню для перемикання "
 "стану завершеності та нагадувань"
 
-#: whatsnew/whatsnewtranslations.cpp:36
+#: whatsnew/whatsnewtranslations.cpp:42
 msgid "To-do view: save/restore fullview setting"
 msgstr ""
 "Панель перегляду завдань: збереження і відновлення параметра повного "
 "перегляду"
 
-#: whatsnew/whatsnewtranslations.cpp:37
+#: whatsnew/whatsnewtranslations.cpp:43
 msgid "To-do view: save/restore flatview setting"
 msgstr ""
 "Панель завдань: збереження і відновлення параметра однорангового перегляду"
 
-#: whatsnew/whatsnewtranslations.cpp:38
+#: whatsnew/whatsnewtranslations.cpp:44
 msgid ""
 "Date navigator: added an option in the Configure->Views settings for hiding "
 "the week numbers"
@@ -6421,7 +6421,7 @@ msgstr ""
 "Навігація датами: додано пункт у параметрах «Налаштувати->Перегляди» для "
 "приховування номерів тижнів"
 
-#: whatsnew/whatsnewtranslations.cpp:39
+#: whatsnew/whatsnewtranslations.cpp:45
 msgid ""
 "Date navigator: the \"Week numbers select a work week when in work week mode"
 "\" setting is true by default"
@@ -6429,62 +6429,62 @@ msgstr ""
 "Навігація датами: типовим значенням параметра «Вибір тижня призводить до "
 "вибору робочого тижня у режимі робочого тижня» тепер є «істина»"
 
-#: whatsnew/whatsnewtranslations.cpp:40
+#: whatsnew/whatsnewtranslations.cpp:46
 msgid "Incidence editor: remember/restore the template manager geometry"
 msgstr ""
 "Редактор зустрічей: запам'ятовування і відновлення геометрії засобу "
 "керування шаблонами"
 
-#: whatsnew/whatsnewtranslations.cpp:41
+#: whatsnew/whatsnewtranslations.cpp:47
 msgid "Incidence editor: support drag-and-drop attachments"
 msgstr "Редактор зустрічей: підтримка перетягування зі скиданням для долучень"
 
-#: whatsnew/whatsnewtranslations.cpp:42
+#: whatsnew/whatsnewtranslations.cpp:48
 msgid "The export calendar dialog remembers its last export folder location"
 msgstr ""
 "У вікні експортування календаря реалізовано запам'ятовування останнього "
 "місце теки експортування"
 
-#: whatsnew/whatsnewtranslations.cpp:43
+#: whatsnew/whatsnewtranslations.cpp:49
 msgid "The import calendar dialog remembers its last import folder location"
 msgstr ""
 "У вікні імпортування календаря реалізовано запам'ятовування останнього місце "
 "теки імпортування"
 
-#: whatsnew/whatsnewtranslations.cpp:44
+#: whatsnew/whatsnewtranslations.cpp:50
 msgid "Get Hot New Stuff removed"
 msgstr "Вилучено можливість отримання нових матеріалів"
 
-#: whatsnew/whatsnewtranslations.cpp:45
+#: whatsnew/whatsnewtranslations.cpp:51
 msgid "Add calendar file: remote calendars are always read-only"
 msgstr ""
 "Додавання файла календаря: віддалені календарі тепер є придатними лише для "
 "читання"
 
-#: whatsnew/whatsnewtranslations.cpp:46
+#: whatsnew/whatsnewtranslations.cpp:52
 msgid "Add calendar file: will not permit an empty file path"
 msgstr ""
 "Додавання файла календаря: неможливим стало визначення порожнього шляху до "
 "файла"
 
-#: whatsnew/whatsnewtranslations.cpp:47
+#: whatsnew/whatsnewtranslations.cpp:53
 msgid ""
 "DAV configuration: dialog allows seeing the account password when editing"
 msgstr ""
 "Налаштування DAV: у вікні уможливлено перегляд пароля до облікового запису "
 "при редагуванні"
 
-#: whatsnew/whatsnewtranslations.cpp:48
+#: whatsnew/whatsnewtranslations.cpp:54
 msgid "DAV configuration: wizard shows icons for the various providers"
 msgstr ""
 "Налаштування DAV: реалізовано показ піктограм для різних надавачів даних у "
 "майстрі"
 
-#: whatsnew/whatsnewtranslations.cpp:49
+#: whatsnew/whatsnewtranslations.cpp:55
 msgid "DAV configuration: wizard updated list of providers"
 msgstr "Налаштування DAV: оновлено список надавачів даних у майстрі"
 
-#: whatsnew/whatsnewtranslations.cpp:67
+#: whatsnew/whatsnewtranslations.cpp:73
 #, kde-format
 msgid ""
 "Semantics are changed from a \"working schedule\" concept to a \"week "
@@ -6493,19 +6493,19 @@ msgstr ""
 "Змінено семантику з концепції «робочого розкладу» на «розклад тижня» для "
 "задоволення потреб користувачів поза робочим часом"
 
-#: whatsnew/whatsnewtranslations.cpp:68
+#: whatsnew/whatsnewtranslations.cpp:74
 #, kde-format
 msgid "Initial \"New Event\" start times are consistent across all the views"
 msgstr ""
 "Початкові часи початку «Нової події» у новій версії є узгодженими за усіма "
 "панелями перегляду"
 
-#: whatsnew/whatsnewtranslations.cpp:69
+#: whatsnew/whatsnewtranslations.cpp:75
 #, kde-format
 msgid "Improved default event calendar handling"
 msgstr "Удосконалено обробку типового календаря подій"
 
-#: whatsnew/whatsnewtranslations.cpp:71
+#: whatsnew/whatsnewtranslations.cpp:77
 #, kde-format
 msgid ""
 "Incidences with a long excluded dates list no longer create huge tooltips"
@@ -6513,13 +6513,13 @@ msgstr ""
 "Програма більше не створюватиме величезних панелей підказок для зустрічей із "
 "довгими списками виключених дат"
 
-#: whatsnew/whatsnewtranslations.cpp:72
+#: whatsnew/whatsnewtranslations.cpp:78
 #, kde-format
 msgid "Fixed the organizer email address for incidences with attendees"
 msgstr ""
 "Виправлено адресу електронної пошти організатора для зустрічі із учасниками"
 
-#: whatsnew/whatsnewtranslations.cpp:73
+#: whatsnew/whatsnewtranslations.cpp:79
 #, kde-format
 msgid ""
 "Agenda view: events without a duration are displayed as 30 long (rather than "
@@ -6527,6 +6527,16 @@ msgid ""
 msgstr ""
 "Панель порядку денного: записи подій без тривалості буде показано із "
 "тривалістю 30 (а не 15 хвилин)"
+
+#. i18n()});
+#: whatsnew/whatsnewtranslations.cpp:93
+#, fuzzy, kde-format
+#| msgid ""
+#| "Incidence editor: detect and warn about creating incidences in the past"
+msgid "Incidence editor: the tags are sorted alphabetically in the tags editor"
+msgstr ""
+"Редактор зустрічей: виявлення створення зустрічей у минулому та попередження "
+"про це"
 
 #: widgets/kdatenavigator.cpp:171
 #, kde-format
