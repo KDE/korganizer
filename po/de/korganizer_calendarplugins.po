@@ -10,7 +10,7 @@
 # SPDX-FileCopyrightText: 2011 Bjoern Ricks <bjoern.ricks@intevation.de>
 # SPDX-FileCopyrightText: 2011 Torbjörn Klatt <torbjoern@torbjoern-klatt.de>
 # SPDX-FileCopyrightText: 2024 Johannes Obermayr <johannesobermayr@gmx.de>
-# SPDX-FileCopyrightText: 2025 Philipp Kiemle <l10n@prly.mozmail.com>
+# SPDX-FileCopyrightText: 2025 Philipp Kiemle <l10n.daphipz@fastmail.de>
 # SPDX-FileCopyrightText: 2010 Intevation GmbH
 msgid ""
 msgstr ""
