@@ -19,14 +19,14 @@ msgstr ""
 "Project-Id-Version: korganizer\n"
 "Report-Msgid-Bugs-To: https://bugs.kde.org\n"
 "POT-Creation-Date: 2025-11-13 00:43+0000\n"
-"PO-Revision-Date: 2025-10-01 00:20+0200\n"
+"PO-Revision-Date: 2025-11-13 17:35+0100\n"
 "Last-Translator: Freek de Kruijf <freekdekruijf@kde.nl>\n"
 "Language-Team: \n"
 "Language: nl\n"
 "MIME-Version: 1.0\n"
 "Content-Type: text/plain; charset=UTF-8\n"
 "Content-Transfer-Encoding: 8bit\n"
-"X-Generator: Lokalize 25.08.1\n"
+"X-Generator: Lokalize 25.08.3\n"
 "Plural-Forms: nplurals=2; plural=n != 1;\n"
 
 #, kde-format
@@ -6489,13 +6489,11 @@ msgstr ""
 
 #. i18n()});
 #: whatsnew/whatsnewtranslations.cpp:93
-#, fuzzy, kde-format
-#| msgid ""
-#| "Incidence editor: detect and warn about creating incidences in the past"
+#, kde-format
 msgid "Incidence editor: the tags are sorted alphabetically in the tags editor"
 msgstr ""
-"Incidentenbewerker: detecteer en waarschuw over het maken van incidenten in "
-"het verleden"
+"Incidentenbewerker: de tags worden alfabetisch gesorteerd in bewerker van "
+"tags"
 
 #: widgets/kdatenavigator.cpp:171
 #, kde-format
