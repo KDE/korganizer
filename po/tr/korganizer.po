@@ -21,7 +21,7 @@ msgstr ""
 "Project-Id-Version: kdepim-kde4\n"
 "Report-Msgid-Bugs-To: https://bugs.kde.org\n"
 "POT-Creation-Date: 2025-11-13 00:43+0000\n"
-"PO-Revision-Date: 2025-10-03 10:10+0300\n"
+"PO-Revision-Date: 2025-11-14 18:44+0300\n"
 "Last-Translator: Emir SARI <emir_sari@îcloud.com>\n"
 "Language-Team: Turkish <kde-l10n-tr@kde.org>\n"
 "Language: tr\n"
@@ -29,7 +29,7 @@ msgstr ""
 "Content-Type: text/plain; charset=UTF-8\n"
 "Content-Transfer-Encoding: 8bit\n"
 "Plural-Forms: nplurals=2; plural=(n > 1);\n"
-"X-Generator: Lokalize 25.08.1\n"
+"X-Generator: Lokalize 25.08.2\n"
 "(http: //www.transifex.com/projects/p/kdepim-k-tr/language/tr/)\n"
 "X-POOTLE-MTIME: 1413104942.000000\n"
 
@@ -6284,7 +6284,7 @@ msgstr ""
 
 #: whatsnew/whatsnewtranslations.cpp:25
 msgid "Incidence editor: detect and warn about creating incidences in the past"
-msgstr "Ülay düzenleyicisi: Geçmişte etkinlik oluşturmayı algıla ve uyar"
+msgstr "Olay düzenleyicisi: Geçmişte etkinlik oluşturmayı algıla ve uyar"
 
 #: whatsnew/whatsnewtranslations.cpp:26
 msgid "Incidence editor: add emoji support"
@@ -6437,11 +6437,11 @@ msgstr ""
 
 #. i18n()});
 #: whatsnew/whatsnewtranslations.cpp:93
-#, fuzzy, kde-format
-#| msgid ""
-#| "Incidence editor: detect and warn about creating incidences in the past"
+#, kde-format
 msgid "Incidence editor: the tags are sorted alphabetically in the tags editor"
-msgstr "Ülay düzenleyicisi: Geçmişte etkinlik oluşturmayı algıla ve uyar"
+msgstr ""
+"Olay düzenleyicisi: Künyeler artık düzenleyicide abecesel olarak "
+"sıralanıyorlar"
 
 #: widgets/kdatenavigator.cpp:171
 #, kde-format
