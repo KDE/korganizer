@@ -21,7 +21,7 @@ msgstr ""
 "Project-Id-Version: kdepim-kde4\n"
 "Report-Msgid-Bugs-To: https://bugs.kde.org\n"
 "POT-Creation-Date: 2025-11-13 02:38+0000\n"
-"PO-Revision-Date: 2025-11-14 18:44+0300\n"
+"PO-Revision-Date: 2025-11-15 21:23+0300\n"
 "Last-Translator: Emir SARI <emir_sari@îcloud.com>\n"
 "Language-Team: Turkish <kde-l10n-tr@kde.org>\n"
 "Language: tr\n"
@@ -738,25 +738,25 @@ msgstr ""
 #, kde-format
 msgctxt "@action:inmenu"
 msgid "In Horizontally"
-msgstr "Yatay Olarak Yaklaştır"
+msgstr "Yatay Olarak Yakınlaştır"
 
 #: actionmanager.cpp:447
 #, kde-format
 msgctxt "@action:inmenu"
 msgid "Out Horizontally"
-msgstr "Yatay Olarak Uzaklaştır"
+msgstr "Yatay Olarak Yakınlaştır"
 
 #: actionmanager.cpp:452
 #, kde-format
 msgctxt "@action:inmenu"
 msgid "In Vertically"
-msgstr "Dikey Olarak Yaklaştır"
+msgstr "Dikey Olarak Yakınlaştır"
 
 #: actionmanager.cpp:457
 #, kde-format
 msgctxt "@action:inmenu"
 msgid "Out Vertically"
-msgstr "Dikey Olarak Uzaklaştır"
+msgstr "Dikey Olarak Yakınlaştır"
 
 #: actionmanager.cpp:466
 #, kde-format
@@ -4690,7 +4690,7 @@ msgid ""
 "(both inside and border) using the color of their associated tag.  Please "
 "use the Colors and Fonts configuration page for setting these colors."
 msgstr ""
-"İlişkili etiketlerinin rengini kullanarak takvim ögelerini (hem iç hem de "
+"İlişkili künyelerinin rengini kullanarak takvim ögelerini (hem iç hem de "
 "kenarlık) çizmek istiyorsanız “Yalnızca künye” seçeneğini seçin. Bu renkleri "
 "ayarlamak için lütfen Renkler ve Yazıtipleri yapılandırma sayfasını kullanın."
 
@@ -5430,7 +5430,7 @@ msgstr ""
 #: ui/filteredit_base.ui:180
 #, kde-format
 msgid "Da&ys after completion:"
-msgstr "Tamamlanma sonraki &gün:"
+msgstr "Tamamlanma sonrası &gün:"
 
 #. i18n: ectx: property (whatsThis), widget (QSpinBox, mCompletedTimeSpan)
 #: ui/filteredit_base.ui:193
@@ -5469,7 +5469,7 @@ msgstr "Etkin olmayan yapılacakları &gizle"
 #: ui/filteredit_base.ui:228
 #, kde-format
 msgid "Tags"
-msgstr "Etiketler"
+msgstr "Künyeler"
 
 #. i18n: ectx: property (whatsThis), widget (QRadioButton, mCatHideCheck)
 #: ui/filteredit_base.ui:272
@@ -5478,14 +5478,14 @@ msgid ""
 "When this option is chosen, this filter will show all items which do <i>not</"
 "i> contain any of the selected tags."
 msgstr ""
-"Bu seçenek seçiliyken, bu süzgeç, seçili etiketlerden hiçbirini "
-"<i>içermeyen</i> tüm ögeleri gösterecektir."
+"Bu seçenek seçiliyken bu süzgeç, seçili künyelerden hiçbirini <i>içermeyen</"
+"i> tüm ögeleri gösterecektir."
 
 #. i18n: ectx: property (text), widget (QRadioButton, mCatHideCheck)
 #: ui/filteredit_base.ui:275
 #, kde-format
 msgid "Show all except selected"
-msgstr "Seçilenler dışındakilerin tümünü göster"
+msgstr "Seçililer dışındakilerin tümünü göster"
 
 #. i18n: ectx: property (whatsThis), widget (QRadioButton, mCatShowCheck)
 #: ui/filteredit_base.ui:288
@@ -5494,14 +5494,14 @@ msgid ""
 "When this option is chosen, this filter will show all items containing any "
 "of the selected tags."
 msgstr ""
-"Bu seçenek seçiliyken bu süzgeç, seçili etiketleri içeren tüm ögeleri "
+"Bu seçenek seçiliyken bu süzgeç, seçili künyeleri içeren tüm ögeleri "
 "gösterecektir."
 
 #. i18n: ectx: property (text), widget (QRadioButton, mCatShowCheck)
 #: ui/filteredit_base.ui:291
 #, kde-format
 msgid "Show only selected"
-msgstr "Yalnızca seçiliyi göster"
+msgstr "Yalnızca seçilileri göster"
 
 #. i18n: ectx: property (text), widget (QPushButton, mCatEditButton)
 #: ui/filteredit_base.ui:301
@@ -6526,7 +6526,7 @@ msgstr "Belki Katılacak"
 #: widgets/kitemiconcheckcombo.cpp:25
 #, kde-format
 msgid "Organizer"
-msgstr "Düzenleyici"
+msgstr "Organizatör"
 
 #: widgets/kitemiconcheckcombo.cpp:34
 #, kde-format

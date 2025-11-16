@@ -25,7 +25,7 @@ msgstr ""
 "Project-Id-Version: korganizer\n"
 "Report-Msgid-Bugs-To: https://bugs.kde.org\n"
 "POT-Creation-Date: 2025-11-13 02:38+0000\n"
-"PO-Revision-Date: 2025-10-01 09:15+0200\n"
+"PO-Revision-Date: 2025-11-14 13:48+0100\n"
 "Last-Translator: Xavier Besnard <xavier.besnard@kde.org>\n"
 "Language-Team: French <French <kde-francophone@kde.org>>\n"
 "Language: fr\n"
@@ -35,7 +35,7 @@ msgstr ""
 "Plural-Forms: nplurals=2; plural=(n > 1);\n"
 "X-Accelerator-Marker: &\n"
 "X-Environment: kde\n"
-"X-Generator: Lokalize 25.08.1\n"
+"X-Generator: Lokalize 25.08.3\n"
 "X-Text-Markup: kde4\n"
 
 #, kde-format
@@ -6705,13 +6705,11 @@ msgstr ""
 
 #. i18n()});
 #: whatsnew/whatsnewtranslations.cpp:103
-#, fuzzy, kde-format
-#| msgid ""
-#| "Incidence editor: detect and warn about creating incidences in the past"
+#, kde-format
 msgid "Incidence editor: the tags are sorted alphabetically in the tags editor"
 msgstr ""
-"Éditeur d'incidences : détecter et avertir de la création d'incidences dans "
-"le passé"
+"Éditeur de fréquences : les étiquettes sont triées en ordre alphabétique "
+"dans l'éditeur d'étiquettes"
 
 #: widgets/kdatenavigator.cpp:171
 #, kde-format
