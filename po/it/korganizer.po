@@ -16,7 +16,7 @@ msgstr ""
 "Project-Id-Version: korganizer\n"
 "Report-Msgid-Bugs-To: https://bugs.kde.org\n"
 "POT-Creation-Date: 2025-11-13 00:43+0000\n"
-"PO-Revision-Date: 2025-09-30 23:43+0200\n"
+"PO-Revision-Date: 2025-11-14 00:23+0100\n"
 "Last-Translator: Luigi Toscano <luigi.toscano@tiscali.it>\n"
 "Language-Team: Italian <kde-i18n-it@kde.org>\n"
 "Language: it\n"
@@ -6352,8 +6352,8 @@ msgstr ""
 #: whatsnew/whatsnewtranslations.cpp:25
 msgid "Incidence editor: detect and warn about creating incidences in the past"
 msgstr ""
-"Editor di occorrenze: rileva e avvisa quando vengono create delle occorrenze "
-"nel passato"
+"Editor delle occorrenze: rileva e avvisa quando vengono create delle "
+"occorrenze nel passato"
 
 #: whatsnew/whatsnewtranslations.cpp:26
 msgid "Incidence editor: add emoji support"
@@ -6431,7 +6431,8 @@ msgstr ""
 #: whatsnew/whatsnewtranslations.cpp:46
 msgid "Incidence editor: remember/restore the template manager geometry"
 msgstr ""
-"Editor di occorrenze: ricorda/ripristina la geometria del gestore di modelli"
+"Editor delle occorrenze: ricorda/ripristina la geometria del gestore di "
+"modelli"
 
 #: whatsnew/whatsnewtranslations.cpp:47
 msgid "Incidence editor: support drag-and-drop attachments"
@@ -6533,13 +6534,11 @@ msgstr ""
 
 #. i18n()});
 #: whatsnew/whatsnewtranslations.cpp:93
-#, fuzzy, kde-format
-#| msgid ""
-#| "Incidence editor: detect and warn about creating incidences in the past"
+#, kde-format
 msgid "Incidence editor: the tags are sorted alphabetically in the tags editor"
 msgstr ""
-"Editor di occorrenze: rileva e avvisa quando vengono create delle occorrenze "
-"nel passato"
+"Editor delle occorrenze: le etichette sono ordinate alfabeticamente "
+"nell'editor delle etichette"
 
 #: widgets/kdatenavigator.cpp:171
 #, kde-format
