@@ -12,7 +12,7 @@ msgstr ""
 "Project-Id-Version: korganizer\n"
 "Report-Msgid-Bugs-To: https://bugs.kde.org\n"
 "POT-Creation-Date: 2025-11-13 02:38+0000\n"
-"PO-Revision-Date: 2025-09-30 10:31+0300\n"
+"PO-Revision-Date: 2025-11-16 15:58+0200\n"
 "Last-Translator: Yuri Chornoivan <yurchor@ukr.net>\n"
 "Language-Team: Ukrainian <trans-uk@lists.fedoraproject.org>\n"
 "Language: uk\n"
@@ -6531,13 +6531,9 @@ msgstr ""
 
 #. i18n()});
 #: whatsnew/whatsnewtranslations.cpp:103
-#, fuzzy, kde-format
-#| msgid ""
-#| "Incidence editor: detect and warn about creating incidences in the past"
+#, kde-format
 msgid "Incidence editor: the tags are sorted alphabetically in the tags editor"
-msgstr ""
-"Редактор зустрічей: виявлення створення зустрічей у минулому та попередження "
-"про це"
+msgstr "Редактор зустрічей: мітки у редакторі міток упорядковано з абеткою"
 
 #: widgets/kdatenavigator.cpp:171
 #, kde-format
