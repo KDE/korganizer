@@ -12,7 +12,7 @@ msgstr ""
 "Project-Id-Version: korganizer\n"
 "Report-Msgid-Bugs-To: https://bugs.kde.org\n"
 "POT-Creation-Date: 2025-11-17 14:41+0000\n"
-"PO-Revision-Date: 2025-10-05 10:20+0400\n"
+"PO-Revision-Date: 2025-11-19 20:38+0400\n"
 "Last-Translator: Zayed Al-Saidi <zayed.alsaidi@gmail.com>\n"
 "Language-Team: ar\n"
 "Language: ar\n"
@@ -6348,11 +6348,9 @@ msgstr ""
 
 #. i18n()});
 #: whatsnew/whatsnewtranslations.cpp:103
-#, fuzzy, kde-format
-#| msgid ""
-#| "Incidence editor: detect and warn about creating incidences in the past"
+#, kde-format
 msgid "Incidence editor: the tags are sorted alphabetically in the tags editor"
-msgstr "محرر الحدوث: يكتشف إنشاء أحداث في الماضي وينبه عليها"
+msgstr "محرر الحدوث: الوسوم مرتبة أبجديًا في محرر الوسوم"
 
 #: widgets/kdatenavigator.cpp:171
 #, kde-format
