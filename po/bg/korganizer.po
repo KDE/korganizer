@@ -4,7 +4,7 @@ msgstr ""
 "Project-Id-Version: korganizer\n"
 "Report-Msgid-Bugs-To: https://bugs.kde.org\n"
 "POT-Creation-Date: 2025-11-17 11:53+0000\n"
-"PO-Revision-Date: 2025-11-07 18:00+0100\n"
+"PO-Revision-Date: 2025-11-19 23:32+0100\n"
 "Last-Translator: Mincho Kondarev <mkondarev@yahoo.de>\n"
 "Language-Team: Bulgarian <kde-i18n-doc@kde.org>\n"
 "Language: bg\n"
@@ -6490,13 +6490,11 @@ msgstr ""
 
 #. i18n()});
 #: whatsnew/whatsnewtranslations.cpp:93
-#, fuzzy, kde-format
-#| msgid ""
-#| "Incidence editor: detect and warn about creating incidences in the past"
+#, kde-format
 msgid "Incidence editor: the tags are sorted alphabetically in the tags editor"
 msgstr ""
-"Редактор на събития: открива и предупреждава за създаването на събития в "
-"миналото"
+"Редактор на събития: етикетите са подредени по азбучен ред в редактора на "
+"етикети."
 
 #: widgets/kdatenavigator.cpp:171
 #, kde-format
