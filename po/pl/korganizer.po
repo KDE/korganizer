@@ -1,5 +1,5 @@
 # translation of korganizer.po to
-# Version: $Revision: 1723076 $
+# Version: $Revision: 1723604 $
 # SPDX-FileCopyrightText: 2011, 2012, 2013, 2014, 2015, 2016, 2017, 2018, 2019, 2020, 2021, 2022, 2023, 2024, 2025 Łukasz Wojniłowicz <lukasz.wojnilowicz@gmail.com>
 # translated by Krzysztof Jasiutowicz <kpjas@priv.onet.pl>
 # Krzysztof Lichota <lichota@mimuw.edu.pl>, 2002, 2005, 2006.
@@ -14,7 +14,7 @@ msgstr ""
 "Project-Id-Version: korganizer\n"
 "Report-Msgid-Bugs-To: https://bugs.kde.org\n"
 "POT-Creation-Date: 2025-11-17 11:53+0000\n"
-"PO-Revision-Date: 2025-11-01 10:37+0100\n"
+"PO-Revision-Date: 2025-11-22 22:11+0100\n"
 "Last-Translator: Łukasz Wojniłowicz <lukasz.wojnilowicz@gmail.com>\n"
 "Language-Team: pl\n"
 "Language: pl\n"
@@ -1235,8 +1235,7 @@ msgid "Show Date Navigator"
 msgstr "Pokaż wybór daty"
 
 #: actionmanager.cpp:711
-#, fuzzy, kde-format
-#| msgid "Show To-do View"
+#, kde-format
 msgctxt "@action:inmenu"
 msgid "Show To-do View"
 msgstr "Pokaż widok zadań"
@@ -6447,12 +6446,11 @@ msgstr ""
 
 #. i18n()});
 #: whatsnew/whatsnewtranslations.cpp:93
-#, fuzzy, kde-format
-#| msgid ""
-#| "Incidence editor: detect and warn about creating incidences in the past"
+#, kde-format
 msgid "Incidence editor: the tags are sorted alphabetically in the tags editor"
 msgstr ""
-"Edytor wystąpienia: wykryj i ostrzeż o tworzeniu wystąpień w przeszłości"
+"Edytor wystąpienia: znaczniki są uszeregowane alfabetycznie w edytorze "
+"znaczników"
 
 #: widgets/kdatenavigator.cpp:171
 #, kde-format
