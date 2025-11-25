@@ -18,7 +18,7 @@ static void korganizer_options(QCommandLineParser *parser)
                                          i18nc("@info:shell", "Import the specified files as separate calendars")));
     parser->addOption(QCommandLineOption(QStringList() << QStringLiteral("m") << QStringLiteral("merge"),
                                          i18nc("@info:shell", "Merge the specified files into an existing calendar")));
-    parser->addOption(QCommandLineOption({QStringLiteral("view")}, i18nc("@info:shell", "Display the specified incidence (by URL)"), QStringLiteral("url")));
+    parser->addOption(QCommandLineOption({QStringLiteral("view")}, i18nc("@info:shell", "Display the specified incidence (by URL)"), i18n("Url")));
 
     parser->addPositionalArgument(QStringLiteral("calendars"),
                                   i18nc("@info:shell",
