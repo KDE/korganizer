@@ -11,7 +11,7 @@ msgid ""
 msgstr ""
 "Project-Id-Version: korganizer\n"
 "Report-Msgid-Bugs-To: https://bugs.kde.org\n"
-"POT-Creation-Date: 2025-11-17 11:53+0000\n"
+"POT-Creation-Date: 2025-11-26 00:44+0000\n"
 "PO-Revision-Date: 2025-11-13 15:00+0200\n"
 "Last-Translator: Yuri Chornoivan <yurchor@ukr.net>\n"
 "Language-Team: Ukrainian <trans-uk@lists.fedoraproject.org>\n"
@@ -3743,6 +3743,11 @@ msgstr "Об’єднати вказані файли з наявним кале
 msgctxt "@info:shell"
 msgid "Display the specified incidence (by URL)"
 msgstr "Показати вказану подію (за адресою)"
+
+#: korganizer_options.h:21
+#, kde-format
+msgid "Url"
+msgstr ""
 
 #: korganizer_options.h:25
 #, kde-format

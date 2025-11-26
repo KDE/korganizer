@@ -8,7 +8,7 @@ msgid ""
 msgstr ""
 "Project-Id-Version: korganizer\n"
 "Report-Msgid-Bugs-To: https://bugs.kde.org\n"
-"POT-Creation-Date: 2025-11-17 11:53+0000\n"
+"POT-Creation-Date: 2025-11-26 00:44+0000\n"
 "PO-Revision-Date: 2020-05-11 16:37+0300\n"
 "Last-Translator: Marek Laane <qiilaq69@gmail.com>\n"
 "Language-Team: Estonian <kde-et@lists.linux.ee>\n"
@@ -3927,6 +3927,11 @@ msgstr "Määratud failide ühendamine olemasoleva kalendriga"
 msgctxt "@info:shell"
 msgid "Display the specified incidence (by URL)"
 msgstr "(URL-i alusel) määratud sündmuse näitamine"
+
+#: korganizer_options.h:21
+#, kde-format
+msgid "Url"
+msgstr ""
 
 #: korganizer_options.h:25
 #, fuzzy, kde-format

@@ -10,7 +10,7 @@ msgid ""
 msgstr ""
 "Project-Id-Version: korganizer\n"
 "Report-Msgid-Bugs-To: https://bugs.kde.org\n"
-"POT-Creation-Date: 2025-11-17 11:53+0000\n"
+"POT-Creation-Date: 2025-11-26 00:44+0000\n"
 "PO-Revision-Date: 2024-02-02 23:04+0200\n"
 "Last-Translator: Mindaugas Baranauskas <opensuse.lietuviu.kalba@gmail.com>\n"
 "Language-Team: lt <kde-i18n-lt@kde.org>\n"
@@ -3960,6 +3960,11 @@ msgstr "Sulieti nurodytus failus į egzistuojantį kalendorių"
 #, kde-format
 msgctxt "@info:shell"
 msgid "Display the specified incidence (by URL)"
+msgstr ""
+
+#: korganizer_options.h:21
+#, kde-format
+msgid "Url"
 msgstr ""
 
 #: korganizer_options.h:25

@@ -15,7 +15,7 @@ msgid ""
 msgstr ""
 "Project-Id-Version: korganizer\n"
 "Report-Msgid-Bugs-To: https://bugs.kde.org\n"
-"POT-Creation-Date: 2025-11-17 11:53+0000\n"
+"POT-Creation-Date: 2025-11-26 00:44+0000\n"
 "PO-Revision-Date: 2015-02-07 22:17+0100\n"
 "Last-Translator: Bjørn Steensrud <bjornst@skogkatt.homelinux.org>\n"
 "Language-Team: Norwegian Bokmål <l10n-no@lister.huftis.org>\n"
@@ -3662,6 +3662,11 @@ msgstr "Flett de oppgitte filene inn i en eksisterende kalender"
 #, kde-format
 msgctxt "@info:shell"
 msgid "Display the specified incidence (by URL)"
+msgstr ""
+
+#: korganizer_options.h:21
+#, kde-format
+msgid "Url"
 msgstr ""
 
 #: korganizer_options.h:25

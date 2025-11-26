@@ -5,7 +5,7 @@ msgid ""
 msgstr ""
 "Project-Id-Version: korganizer-1.1.1\n"
 "Report-Msgid-Bugs-To: https://bugs.kde.org\n"
-"POT-Creation-Date: 2025-11-17 11:53+0000\n"
+"POT-Creation-Date: 2025-11-26 00:44+0000\n"
 "PO-Revision-Date: 2022-02-06 19:07+0000\n"
 "Last-Translator: Sergiu Bivol <sergiu@cip.md>\n"
 "Language-Team: Romanian\n"
@@ -3731,6 +3731,11 @@ msgstr "Însoțitori"
 #, kde-format
 msgctxt "@info:shell"
 msgid "Display the specified incidence (by URL)"
+msgstr ""
+
+#: korganizer_options.h:21
+#, kde-format
+msgid "Url"
 msgstr ""
 
 #: korganizer_options.h:25

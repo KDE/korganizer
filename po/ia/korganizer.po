@@ -7,7 +7,7 @@ msgid ""
 msgstr ""
 "Project-Id-Version: \n"
 "Report-Msgid-Bugs-To: https://bugs.kde.org\n"
-"POT-Creation-Date: 2025-11-17 11:53+0000\n"
+"POT-Creation-Date: 2025-11-26 00:44+0000\n"
 "PO-Revision-Date: 2025-09-02 17:48+0200\n"
 "Last-Translator: giovanni <g.sora@tiscali.it>\n"
 "Language-Team: Interlingua <kde-i18n-doc@kde.org>\n"
@@ -3707,6 +3707,11 @@ msgstr "Fusiona le files specificate in un calendario existente"
 msgctxt "@info:shell"
 msgid "Display the specified incidence (by URL)"
 msgstr "Monstra le incidentia specificate (per URL)"
+
+#: korganizer_options.h:21
+#, kde-format
+msgid "Url"
+msgstr ""
 
 #: korganizer_options.h:25
 #, kde-format

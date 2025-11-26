@@ -14,7 +14,7 @@ msgid ""
 msgstr ""
 "Project-Id-Version: korganizer\n"
 "Report-Msgid-Bugs-To: https://bugs.kde.org\n"
-"POT-Creation-Date: 2025-11-17 11:53+0000\n"
+"POT-Creation-Date: 2025-11-26 00:44+0000\n"
 "PO-Revision-Date: 2025-07-01 20:29+0900\n"
 "Last-Translator: Kisaragi Hiu <mail@kisaragi-hiu.com>\n"
 "Language-Team: Traditional Chinese <zh-l10n@lists.slat.org>\n"
@@ -3561,6 +3561,11 @@ msgstr "將指定的檔案與現有的行事曆合併"
 msgctxt "@info:shell"
 msgid "Display the specified incidence (by URL)"
 msgstr "顯示指定的重複事件（依網址）"
+
+#: korganizer_options.h:21
+#, kde-format
+msgid "Url"
+msgstr ""
 
 #: korganizer_options.h:25
 #, kde-format

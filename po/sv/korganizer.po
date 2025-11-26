@@ -10,7 +10,7 @@ msgid ""
 msgstr ""
 "Project-Id-Version: korganizer\n"
 "Report-Msgid-Bugs-To: https://bugs.kde.org\n"
-"POT-Creation-Date: 2025-11-17 11:53+0000\n"
+"POT-Creation-Date: 2025-11-26 00:44+0000\n"
 "PO-Revision-Date: 2025-11-21 01:45+0100\n"
 "Last-Translator: Stefan Asserhäll <stefan.asserhall@gmail.com>\n"
 "Language-Team: Swedish <kde-i18n-doc@kde.org>\n"
@@ -3665,6 +3665,11 @@ msgstr "Sammanfoga angivna filer med en befintlig kalender"
 msgctxt "@info:shell"
 msgid "Display the specified incidence (by URL)"
 msgstr "Visa angiven förekomst (enligt webbadress)"
+
+#: korganizer_options.h:21
+#, kde-format
+msgid "Url"
+msgstr ""
 
 #: korganizer_options.h:25
 #, kde-format
