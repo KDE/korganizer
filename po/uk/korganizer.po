@@ -12,7 +12,7 @@ msgstr ""
 "Project-Id-Version: korganizer\n"
 "Report-Msgid-Bugs-To: https://bugs.kde.org\n"
 "POT-Creation-Date: 2025-11-26 00:44+0000\n"
-"PO-Revision-Date: 2025-11-13 15:00+0200\n"
+"PO-Revision-Date: 2025-11-26 16:41+0200\n"
 "Last-Translator: Yuri Chornoivan <yurchor@ukr.net>\n"
 "Language-Team: Ukrainian <trans-uk@lists.fedoraproject.org>\n"
 "Language: uk\n"
@@ -3747,7 +3747,7 @@ msgstr "Показати вказану подію (за адресою)"
 #: korganizer_options.h:21
 #, kde-format
 msgid "Url"
-msgstr ""
+msgstr "Адреса"
 
 #: korganizer_options.h:25
 #, kde-format

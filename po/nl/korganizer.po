@@ -19,7 +19,7 @@ msgstr ""
 "Project-Id-Version: korganizer\n"
 "Report-Msgid-Bugs-To: https://bugs.kde.org\n"
 "POT-Creation-Date: 2025-11-26 00:44+0000\n"
-"PO-Revision-Date: 2025-11-13 17:35+0100\n"
+"PO-Revision-Date: 2025-11-26 14:58+0100\n"
 "Last-Translator: Freek de Kruijf <freekdekruijf@kde.nl>\n"
 "Language-Team: \n"
 "Language: nl\n"
@@ -3712,7 +3712,7 @@ msgstr "Het genoemde voorval tonen (middels URL)"
 #: korganizer_options.h:21
 #, kde-format
 msgid "Url"
-msgstr ""
+msgstr "URL"
 
 #: korganizer_options.h:25
 #, kde-format

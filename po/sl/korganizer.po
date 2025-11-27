@@ -1,7 +1,7 @@
 # translation of korganizer.po to Slovenian
 # Translation of korganizer.po to Slovenian
 # Copyright (C) 2001,2002, 2003, 2004, 2005, 2006 Free Software Foundation, Inc.
-# $Id: korganizer.po 1723771 2025-11-26 01:25:56Z scripty $
+# $Id: korganizer.po 1723831 2025-11-27 01:26:09Z scripty $
 # $Source$
 #
 # Roman Maurer <roman.maurer@hermes.si>, 2001.
@@ -15,7 +15,7 @@ msgstr ""
 "Project-Id-Version: korganizer\n"
 "Report-Msgid-Bugs-To: https://bugs.kde.org\n"
 "POT-Creation-Date: 2025-11-26 00:44+0000\n"
-"PO-Revision-Date: 2025-11-13 06:29+0100\n"
+"PO-Revision-Date: 2025-11-26 07:45+0100\n"
 "Last-Translator: Matjaž Jeran <matjaz.jeran@amis.net>\n"
 "Language-Team: Slovenian <lugos-slo@lugos.si>\n"
 "Language: sl\n"
@@ -3729,7 +3729,7 @@ msgstr "Prikaži dane incidence (po URL)"
 #: korganizer_options.h:21
 #, kde-format
 msgid "Url"
-msgstr ""
+msgstr "Url"
 
 #: korganizer_options.h:25
 #, kde-format
