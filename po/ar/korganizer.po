@@ -12,7 +12,7 @@ msgstr ""
 "Project-Id-Version: korganizer\n"
 "Report-Msgid-Bugs-To: https://bugs.kde.org\n"
 "POT-Creation-Date: 2025-11-26 00:44+0000\n"
-"PO-Revision-Date: 2025-11-19 20:38+0400\n"
+"PO-Revision-Date: 2025-11-27 12:20+0400\n"
 "Last-Translator: Zayed Al-Saidi <zayed.alsaidi@gmail.com>\n"
 "Language-Team: ar\n"
 "Language: ar\n"
@@ -3683,7 +3683,7 @@ msgstr "عرض الحدوث المحدد (حسب العنوان URL)"
 #: korganizer_options.h:21
 #, kde-format
 msgid "Url"
-msgstr ""
+msgstr "الرابط"
 
 #: korganizer_options.h:25
 #, kde-format
