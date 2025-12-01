@@ -18,7 +18,7 @@ msgstr ""
 "Project-Id-Version: korganizer\n"
 "Report-Msgid-Bugs-To: https://bugs.kde.org\n"
 "POT-Creation-Date: 2025-11-26 00:44+0000\n"
-"PO-Revision-Date: 2025-11-02 17:08+0530\n"
+"PO-Revision-Date: 2025-11-30 15:30+0530\n"
 "Last-Translator: Kishore G <kishore96@gmail.com>\n"
 "Language-Team: Tamil <kde-l10n-ta@kde.org>\n"
 "Language: ta\n"
@@ -26,7 +26,7 @@ msgstr ""
 "Content-Type: text/plain; charset=UTF-8\n"
 "Content-Transfer-Encoding: 8bit\n"
 "Plural-Forms: nplurals=2; plural=n != 1;\n"
-"X-Generator: Lokalize 25.08.1\n"
+"X-Generator: Lokalize 25.08.3\n"
 
 #, kde-format
 msgctxt "NAME OF TRANSLATORS"
@@ -1751,15 +1751,13 @@ msgid "Paste failed: unable to determine a valid target date."
 msgstr "தயவு செய்து ஒரு சரியான துவக்க தேதியை குறிப்பிடுக."
 
 #: calendarview.cpp:1297
-#, fuzzy, kde-format
-#| msgid "Make sub-to-dos independent"
+#, kde-format
 msgctxt "@info/plain"
 msgid "Make sub-to-dos independent"
-msgstr "Make Sub-To-Do Independent"
+msgstr ""
 
 #: calendarview.cpp:1354
-#, fuzzy, kde-format
-#| msgid "Toggle Reminder"
+#, kde-format
 msgctxt "@info/plain"
 msgid "Toggle Reminder"
 msgstr "நினைவூட்டலை நிலைமாற்று"
@@ -1792,7 +1790,7 @@ msgstr ""
 #, kde-format
 msgctxt "@info"
 msgid "\"%1\" was successfully copied to %2."
-msgstr ""
+msgstr "\"%1\", %2-க்கு வெற்றிகரமாக நகலெடுக்கப்பட்டுள்ளது"
 
 #: calendarview.cpp:1498
 #, kde-format
@@ -1801,10 +1799,10 @@ msgid "Copying Succeeded"
 msgstr "நகலெடுப்பது முடிந்தது"
 
 #: calendarview.cpp:1502
-#, fuzzy, kde-format
+#, kde-format
 msgctxt "@info"
 msgid "Unable to copy the item \"%1\" to %2."
-msgstr "செய்யவேண்டிய உருப்படியை சேமிக்க முடியவில்லை."
+msgstr "\"%1\" தனை %2-க்கு நகலெடுக்க முடியவில்லை."
 
 #: calendarview.cpp:1503 calendarview.cpp:2479
 #, kde-format
@@ -1819,6 +1817,7 @@ msgid ""
 "Unable to remove the item \"%1\" from the original calendar. However, a copy "
 "of this item has been put into %2"
 msgstr ""
+"\"%1\" தனை நாள்காட்டியிலுருந்து நீக்க முடியாததால் அதன் நகல் %2 தனில் இடப்பட்டுள்ளது"
 
 #: calendarview.cpp:1566 calendarview.cpp:1582 calendarview.cpp:2514
 #, kde-format
@@ -1830,7 +1829,7 @@ msgstr "நகர்த்துவது தோல்வியடைந்த�
 #, kde-format
 msgctxt "@info"
 msgid "\"%1\" was successfully moved from %2 to %3."
-msgstr ""
+msgstr "\"%1\", %2 தனிலிருந்து %3-க்கு வெற்றிகரமாக நகர்த்தப்பட்டுள்ளது."
 
 #: calendarview.cpp:1572
 #, kde-format
@@ -2511,36 +2510,36 @@ msgid "New &Journal…"
 msgstr "புதிய நா&ளேடு…"
 
 #: kodaymatrix.cpp:604
-#, fuzzy, kde-format
+#, kde-format
 msgid "&Move"
-msgstr "நகர்த்த"
+msgstr "நகர்த்து"
 
 #: kodaymatrix.cpp:606
-#, fuzzy, kde-format
+#, kde-format
 msgid "&Copy"
-msgstr "நகலிட"
+msgstr "நகலெடு"
 
 #: kodaymatrix.cpp:609
 #, kde-format
 msgid "&Add"
-msgstr "&சேர்"
+msgstr "சேர்"
 
 #: kodaymatrix.cpp:613
-#, fuzzy, kde-format
+#, kde-format
 msgid "&Cancel"
-msgstr "மாற்றம்"
+msgstr "ரத்து செய்"
 
 #: koeventpopupmenu.cpp:46
-#, fuzzy, kde-format
+#, kde-format
 msgctxt "@action:inmenu delete this incidence"
 msgid "&Delete"
-msgstr "%1னை அழி"
+msgstr "நீக்கு"
 
 #: koeventpopupmenu.cpp:50
 #, kde-format
 msgctxt "@action:inmenu"
 msgid "&Print…"
-msgstr "&அச்சிடு…"
+msgstr "அச்சிடு…"
 
 #: koeventpopupmenu.cpp:52
 #, kde-format

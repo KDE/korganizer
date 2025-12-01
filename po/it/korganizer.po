@@ -16,7 +16,7 @@ msgstr ""
 "Project-Id-Version: korganizer\n"
 "Report-Msgid-Bugs-To: https://bugs.kde.org\n"
 "POT-Creation-Date: 2025-11-26 00:44+0000\n"
-"PO-Revision-Date: 2025-11-14 00:23+0100\n"
+"PO-Revision-Date: 2025-11-28 00:53+0100\n"
 "Last-Translator: Luigi Toscano <luigi.toscano@tiscali.it>\n"
 "Language-Team: Italian <kde-i18n-it@kde.org>\n"
 "Language: it\n"
@@ -3723,7 +3723,7 @@ msgstr "Mostra l'occorrenza specificata (per URL)"
 #: korganizer_options.h:21
 #, kde-format
 msgid "Url"
-msgstr ""
+msgstr "URL"
 
 #: korganizer_options.h:25
 #, kde-format
