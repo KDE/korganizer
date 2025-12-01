@@ -6741,16 +6741,3 @@ msgstr "%1"
 msgctxt "4 digit year"
 msgid "%1"
 msgstr "%1"
-
-#~ msgctxt "@action:inmenu"
-#~ msgid "Show To-do List in Calendar Views"
-#~ msgstr "Mostra la llista de tasques pendents a les vistes de calendari"
-
-#~ msgid "To-do view: remove the (redundant) to-do list from the sidebar"
-#~ msgstr ""
-#~ "Vista de les tasques pendents: elimina la llista de tasques pendents "
-#~ "(redundant) de la barra lateral"
-
-#~ msgctxt "PLACEHOLDER. DO NOT TRANSLATE"
-#~ msgid "Nothing yet"
-#~ msgstr "Nothing yet"
