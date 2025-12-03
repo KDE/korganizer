@@ -14,7 +14,7 @@ msgstr ""
 "Project-Id-Version: korganizer\n"
 "Report-Msgid-Bugs-To: https://bugs.kde.org\n"
 "POT-Creation-Date: 2025-11-26 00:44+0000\n"
-"PO-Revision-Date: 2025-11-13 09:38+0100\n"
+"PO-Revision-Date: 2025-11-26 10:51+0100\n"
 "Last-Translator: Josep M. Ferrer <txemaq@gmail.com>\n"
 "Language-Team: Catalan <kde-i18n-ca@kde.org>\n"
 "Language: ca@valencia\n"
@@ -1303,7 +1303,8 @@ msgstr[1] "S'han importat amb èxit %1 incidències."
 #, kde-kuit-format
 msgctxt "@info"
 msgid "There was an error while merging the calendar: <message>%1</message>"
-msgstr "S'ha produït un error en fusionar el calendari: <message>%1</message>"
+msgstr ""
+"S'ha produït un error mentre es fusionava el calendari: <message>%1</message>"
 
 #: actionmanager.cpp:858
 #, kde-format
@@ -1611,7 +1612,7 @@ msgstr "Afig un calendari"
 #, kde-kuit-format
 msgctxt "@info"
 msgid "Add new calendar failed: <message>%1</message>"
-msgstr "No s'ha pogut afegir un calendari nou: <message>%1</message>"
+msgstr "Ha fallat mentre s'afegia un calendari nou: <message>%1</message>"
 
 # skip-rule: tags-spaces-end
 #: akonadicollectionview.cpp:786
@@ -1739,8 +1740,8 @@ msgctxt "@info"
 msgid ""
 "Delete calendar failed: <message>Invalid Akonadi agent instance</message>"
 msgstr ""
-"No s'ha pogut suprimir el calendari: <message>Instància no vàlida de l'agent "
-"d'Akonadi</message>"
+"Ha fallat mentre se suprimia el calendari: <message>Instància no vàlida de "
+"l'agent d'Akonadi</message>"
 
 #: akonadicollectionview.cpp:931
 #, kde-format
@@ -1759,7 +1760,7 @@ msgstr "Considereu afegir un calendari d'esdeveniments amb permís d'escriptura"
 #, kde-kuit-format
 msgctxt "@info"
 msgid "Delete calendar failed: <message>%1</message>"
-msgstr "No s'ha pogut suprimir el calendari: <message>%1</message>"
+msgstr "Ha fallat mentre se suprimia el calendari: <message>%1</message>"
 
 #: calendarview.cpp:256
 #, kde-kuit-format
@@ -2532,15 +2533,15 @@ msgstr[1] "%1 coincidències"
 #: koapp.cpp:63
 #, kde-format
 msgid "Failed to retrieve incidence from Akonadi"
-msgstr "No s'ha pogut rebre la incidència des d'Akonadi"
+msgstr "Ha fallat mentre es rebia la incidència des d'Akonadi"
 
 #: koapp.cpp:68
 #, kde-format
 msgid ""
 "Failed to retrieve incidence from Akonadi: requested incidence doesn't exist."
 msgstr ""
-"No s'ha pogut rebre la incidència des d'Akonadi: La incidència sol·licitada "
-"no existix."
+"Ha fallat mentre es rebia la incidència des d'Akonadi: La incidència "
+"sol·licitada no existix."
 
 #: kocorehelper.cpp:28
 #, kde-format
@@ -3726,7 +3727,7 @@ msgstr "Mostra la incidència especificada (mitjançant un URL)"
 #: korganizer_options.h:21
 #, kde-format
 msgid "Url"
-msgstr ""
+msgstr "URL"
 
 #: korganizer_options.h:25
 #, kde-format
