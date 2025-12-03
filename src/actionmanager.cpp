@@ -1479,8 +1479,8 @@ void ActionManager::openEventEditor(const QString &summary,
             newMsg->setHead(msg->head());
             newMsg->setBody(msg->textContent()->body());
             newMsg->parse();
-            newMsg->contentTransferEncoding()->from7BitString(msg->textContent()->contentTransferEncoding()->as7BitString());
-            newMsg->contentType()->from7BitString(msg->textContent()->contentType()->as7BitString());
+            newMsg->contentTransferEncoding()->from7BitString(msg->textContent()->contentTransferEncoding()->as7BitString(false));
+            newMsg->contentType()->from7BitString(msg->textContent()->contentType()->as7BitString(false));
             newMsg->assemble();
             tf.write(newMsg->encodedContent());
             attData = tf.fileName();
