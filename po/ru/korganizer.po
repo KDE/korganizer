@@ -18,14 +18,14 @@ msgstr ""
 "Project-Id-Version: korganizer\n"
 "Report-Msgid-Bugs-To: https://bugs.kde.org\n"
 "POT-Creation-Date: 2025-11-17 14:41+0000\n"
-"PO-Revision-Date: 2025-08-22 18:37+0300\n"
-"Last-Translator: Alexander Yavorsky <kekcuha@gmail.com>\n"
-"Language-Team: Russian <kde-russian@lists.kde.ru>\n"
+"PO-Revision-Date: 2025-12-03 16:57+0300\n"
+"Last-Translator: Olesya Gerasimenko <goa@altlinux.org>\n"
+"Language-Team: Basealt Translation Team\n"
 "Language: ru\n"
 "MIME-Version: 1.0\n"
 "Content-Type: text/plain; charset=UTF-8\n"
 "Content-Transfer-Encoding: 8bit\n"
-"X-Generator: Lokalize 25.08.0\n"
+"X-Generator: Lokalize 23.08.5\n"
 "Plural-Forms: nplurals=4; plural=n==1 ? 3 : n%10==1 && n%100!=11 ? 0 : n"
 "%10>=2 && n%10<=4 && (n%100<10 || n%100>=20) ? 1 : 2;\n"
 "X-Environment: kde\n"
@@ -845,7 +845,7 @@ msgstr "Прокрутка вперёд"
 #, kde-format
 msgctxt "@info:tooltip"
 msgid "Scroll the view forward"
-msgstr "Прокрутить режим просмотра назад"
+msgstr "Прокрутить режим просмотра вперёд"
 
 #: actionmanager.cpp:495
 #, kde-format
@@ -873,21 +873,21 @@ msgstr "День"
 #, kde-format
 msgctxt "@info:status"
 msgid "View 1 day at a time"
-msgstr ""
+msgstr "Просмотр одного дня за раза"
 
 #: actionmanager.cpp:504
-#, fuzzy, kde-format
-#| msgid "Show this many days at a time in the Next \"x\" days view"
+#, kde-format
 msgctxt "@info:tooltip"
 msgid "Show 1 day at a time in Agenda View"
-msgstr ""
-"Показать данное количество дней за раз при просмотре следующих «x» дней"
+msgstr "Показывать один день за раз при просмотре расписания"
 
 #: actionmanager.cpp:505
 #, kde-format
 msgctxt "@info:whatsthis"
 msgid "Select this option to show only 1 day at a time in Agenda View."
 msgstr ""
+"Выберите этот параметр для показа только одного дня за раз при просмотре "
+"расписания."
 
 #: actionmanager.cpp:512
 #, kde-format
@@ -899,15 +899,13 @@ msgstr "&Следующие дни"
 #, kde-format
 msgctxt "@info:status"
 msgid "View a few days at a time"
-msgstr ""
+msgstr "Просмотр нескольких дней за раз"
 
 #: actionmanager.cpp:514
-#, fuzzy, kde-format
-#| msgid "Show this many days at a time in the Next \"x\" days view"
+#, kde-format
 msgctxt "@info:tooltip"
 msgid "Show the next few days at a time in Agenda View"
-msgstr ""
-"Показать данное количество дней за раз при просмотре следующих «x» дней"
+msgstr "Показывать следующие несколько дней за раз при просмотре расписания"
 
 #: actionmanager.cpp:517
 #, kde-kuit-format
@@ -918,6 +916,10 @@ msgid ""
 "<interface>Views->General</interface> settings page to adjust the number of "
 "days shown."
 msgstr ""
+"Выберите этот параметр для показа нескольких следующих дней за раз при "
+"просмотре расписания. Параметр <placeholder>Следующие x дней</placeholder> в "
+"разделе настройки <interface>Вид -> Общие</interface> позволяет настроить "
+"количество отображаемых дней."
 
 #: actionmanager.cpp:524
 #, kde-format
@@ -939,6 +941,8 @@ msgctxt "@info:status"
 msgid ""
 "Show a week at a time showing days included in your weekly schedule only"
 msgstr ""
+"Показ недели за раз (с отображением только входящих в еженедельное "
+"расписание дней)"
 
 #: actionmanager.cpp:528
 #, kde-format
@@ -947,6 +951,8 @@ msgid ""
 "Show a week at a time in Agenda View, excluding days that are not included "
 "in your weekly schedule (ie. weekends are excluded)"
 msgstr ""
+"Показывать неделю за раз при просмотре расписания, исключая не входящие в "
+"еженедельное расписание дни (то есть без выходных)"
 
 #: actionmanager.cpp:531
 #, kde-kuit-format
@@ -958,6 +964,12 @@ msgid ""
 "<interface>Time and Date->Regional</interface> page.<para>Typically this "
 "view is intended for showing the week without weekend days.</para>"
 msgstr ""
+"Выберите этот параметр для показа недели за раз, исключая не входящие в "
+"еженедельное расписание дни. Параметр <placeholder>Еженедельное расписание</"
+"placeholder> на странице настройки <interface>Дата и время -> Региональные "
+"параметры</interface> позволяет настроить расписание путём выбора дней."
+"<para>Обычно это представление предназначается для показа недели без "
+"выходных дней.</para>"
 
 #: actionmanager.cpp:540
 #, kde-format
@@ -975,21 +987,20 @@ msgstr "Неделя"
 #, kde-format
 msgctxt "@info:status"
 msgid "View a week at a time"
-msgstr ""
+msgstr "Просмотр недели за раз"
 
 #: actionmanager.cpp:543
-#, fuzzy, kde-format
-#| msgctxt "@option:check"
-#| msgid "Show at the top of the agenda views"
+#, kde-format
 msgctxt "@info:tooltip"
 msgid "Show 1 week at a time in Agenda View"
-msgstr "Показывать над расписанием"
+msgstr "Показывать одну неделю за раз при просмотре расписания"
 
 #: actionmanager.cpp:544
 #, kde-format
 msgctxt "@info:whatsthis"
 msgid "Select this option to show a week at a time in Agenda View."
 msgstr ""
+"Выберите этот параметр для показа недели за раз при просмотре расписания."
 
 #: actionmanager.cpp:551
 #, kde-format
@@ -1092,22 +1103,22 @@ msgid "Date"
 msgstr "Дата"
 
 #: actionmanager.cpp:590
-#, fuzzy, kde-format
+#, kde-format
 msgctxt "@info:status"
 msgid "Scroll the view to user selected dates"
-msgstr "Перейти к сегодняшнему дню"
+msgstr "Прокрутка режима просмотра к выбранным пользователем датам"
 
 #: actionmanager.cpp:591
-#, fuzzy, kde-format
+#, kde-format
 msgctxt "@info:tooltip"
 msgid "Scroll the view to user selected dates"
-msgstr "Перейти к сегодняшнему дню"
+msgstr "Прокрутить режим просмотра к выбранным пользователем датам"
 
 #: actionmanager.cpp:592
 #, kde-format
 msgctxt "@info:whatsthis"
 msgid "Opens a date selection dialog for quickly navigating the view."
-msgstr ""
+msgstr "Открытие диалога выбора даты для быстрой навигации."
 
 #: actionmanager.cpp:597
 #, kde-format
@@ -1122,16 +1133,16 @@ msgid "Configure"
 msgstr "Настроить"
 
 #: actionmanager.cpp:599
-#, fuzzy, kde-format
+#, kde-format
 msgctxt "@info:status"
 msgid "Configure the multi-calendar view"
-msgstr "Настройка текущего режима просмотра"
+msgstr "Настройка просмотра нескольких календарей"
 
 #: actionmanager.cpp:600
-#, fuzzy, kde-format
+#, kde-format
 msgctxt "@info:tooltip"
 msgid "Configure the multi-calendar view"
-msgstr "Настройка текущего режима просмотра"
+msgstr "Настройка просмотра нескольких календарей"
 
 #: actionmanager.cpp:602
 #, kde-format
@@ -1141,6 +1152,10 @@ msgid ""
 "view. Currently only the multi-calendar view is supported. See the Multiple "
 "Calendars options in the Views->Agenda Views settings."
 msgstr ""
+"Запуск — в режиме просмотра нескольких календарей — диалога настройки "
+"представления. В текущей версии программы поддерживается только просмотр "
+"нескольких календарей. Параметры  показа нескольких календарей настраиваются "
+"в разделе Вид -> Расписание."
 
 # BUGME: please add ellipsis as it opens a dialog --aspotashev
 #: actionmanager.cpp:609 actionmanager.cpp:1302 actionmanager.cpp:1344
@@ -1234,8 +1249,7 @@ msgid "Show Date Navigator"
 msgstr "Календарь"
 
 #: actionmanager.cpp:711
-#, fuzzy, kde-format
-#| msgid "Show To-do View"
+#, kde-format
 msgctxt "@action:inmenu"
 msgid "Show To-do View"
 msgstr "Задачи"
@@ -1271,12 +1285,10 @@ msgid "Manage T&ags…"
 msgstr "Ме&тки событий…"
 
 #: actionmanager.cpp:760
-#, fuzzy, kde-format
-#| msgctxt "@action:inmenu"
-#| msgid "What's &Next"
+#, kde-format
 msgctxt "@action:inmenu"
 msgid "What's new"
-msgstr "Что &дальше"
+msgstr "Что нового?"
 
 #: actionmanager.cpp:765
 #, kde-format
@@ -1517,9 +1529,7 @@ msgid "Add as new calendar"
 msgstr "Добавить календарь"
 
 #: akonadicollectionview.cpp:289
-#, fuzzy, kde-format
-#| msgctxt "@item this is the default calendar"
-#| msgid "%1 (Offline)"
+#, kde-format
 msgctxt "@item this calendar is offline"
 msgid "%1 (Offline)"
 msgstr "%1 (не в сети)"
@@ -1531,16 +1541,16 @@ msgid "%1 (Default)"
 msgstr "%1 (по умолчанию)"
 
 #: akonadicollectionview.cpp:383
-#, fuzzy, kde-format
+#, kde-format
 msgctxt "@info:tooltip"
 msgid "Calendar search"
-msgstr "Календари"
+msgstr "Поиск календарей"
 
 #: akonadicollectionview.cpp:384
 #, kde-format
 msgctxt "@info:whatsthis"
 msgid "Start typing to search for a calendar within the collection."
-msgstr ""
+msgstr "Введите текст для поиска календаря в наборе."
 
 #: akonadicollectionview.cpp:386
 #, kde-format
@@ -1575,17 +1585,17 @@ msgid ""
 "folder?<para>This will replace <filename>%2</filename> as the default "
 "calendar folder.</para>"
 msgstr ""
+"Сделать <filename>%1</filename> папкой календаря по умолчанию?<para>Папка "
+"<filename>%2</filename> больше не будет использоваться в качестве таковой.</"
+"para>"
 
 #: akonadicollectionview.cpp:545
-#, fuzzy, kde-kuit-format
-#| msgctxt "@info"
-#| msgid ""
-#| "Do you really want replace your current default calendar with \"%1\"?"
+#, kde-kuit-format
 msgctxt "@info"
 msgid ""
 "Do you really want to set <filename>%1</filename> as your default calendar "
 "folder?"
-msgstr "Заменить текущий календарь по умолчанию на «%1»?"
+msgstr "Сделать <filename>%1</filename> папкой календаря по умолчанию?"
 
 #: akonadicollectionview.cpp:550
 #, kde-format
@@ -1598,6 +1608,7 @@ msgstr "Замена календаря по умолчанию"
 msgctxt "@info"
 msgid "<filename>%1</filename> is now your default event calendar"
 msgstr ""
+"<filename>%1</filename> теперь является календарём событий по умолчанию"
 
 #: akonadicollectionview.cpp:710
 #, kde-format
@@ -1829,13 +1840,13 @@ msgstr "Активизация напоминания"
 #, kde-kuit-format
 msgctxt "@info alarm enabled"
 msgid "<message>%1</message> reminder is enabled"
-msgstr ""
+msgstr "Напоминание включено (<message>%1</message>)"
 
 #: calendarview.cpp:1364
 #, kde-kuit-format
 msgctxt "@info alarm disabled"
 msgid "<message>%1</message> reminder is disabled"
-msgstr ""
+msgstr "Напоминание отключено (<message>%1</message>)"
 
 #: calendarview.cpp:1395 calendarview.cpp:1449
 #, kde-format
@@ -1847,7 +1858,7 @@ msgstr "Пометка выполненной задачи"
 #, kde-kuit-format
 msgctxt "@info percentage completed"
 msgid "To-do <message>%1</message> %2 percent completed"
-msgstr ""
+msgstr "Процент выполнения задачи <message>%1</message>: %2"
 
 #: calendarview.cpp:1501
 #, kde-format
@@ -1978,8 +1989,7 @@ msgid "Dissociating the occurrence failed."
 msgstr "Отделение события невозможно."
 
 #: calendarview.cpp:1814 calendarview.cpp:1816
-#, fuzzy, kde-format
-#| msgid "KOrganizer"
+#, kde-format
 msgctxt "@title:window"
 msgid "KOrganizer"
 msgstr "KOrganizer"
@@ -2210,12 +2220,7 @@ msgstr ""
 "message>"
 
 #: calendarview.cpp:2799
-#, fuzzy, kde-kuit-format
-#| msgctxt "@info"
-#| msgid ""
-#| "You created an incidence in a calendar that is currently filtered out."
-#| "<para>On the left sidebar, enable it in the calendar manager to see the "
-#| "incidence.</para>"
+#, kde-kuit-format
 msgctxt "@info"
 msgid ""
 "You created an incidence in a calendar that is currently filtered out."
@@ -2223,16 +2228,11 @@ msgid ""
 "calendar manager.</para>"
 msgstr ""
 "Вы создали событие в календаре, который сейчас не в списке выбранных. "
-"<para>Чтобы увидеть это событие, включите календарь в списке календарей на "
-"левой панели.</para>"
+"<para>Чтобы увидеть это новое событие, включите соответствующий календарь в "
+"списке календарей.</para>"
 
 #: calendarview.cpp:2803
-#, fuzzy, kde-kuit-format
-#| msgctxt "@info"
-#| msgid ""
-#| "You created an incidence in a calendar that is currently filtered out."
-#| "<para>You can enable it through the calendar manager (Settings->Sidebar-"
-#| ">Show Calendar Manager)</para>"
+#, kde-kuit-format
 msgctxt "@info"
 msgid ""
 "You created an incidence in a calendar that is currently filtered out."
@@ -2242,8 +2242,10 @@ msgid ""
 "interface> menu.</para>"
 msgstr ""
 "Вы создали событие в календаре, который сейчас не в списке выбранных. "
-"<para>Вы можете включить его в списке календарей (Настройка -> Боковая "
-"панель -> Список календарей).</para>"
+"<para>Чтобы увидеть это новое событие, включите соответствующий календарь в "
+"списке календарей.</para><para>Список календарей сейчас скрыт. Чтобы "
+"показать его, воспользуйтесь меню <interface>Настройка -> Боковая панель -> "
+"Список календарей</interface>.</para>"
 
 #: collectiongeneralpage.cpp:37
 #, kde-format
@@ -2629,20 +2631,16 @@ msgid "&Paste"
 msgstr "Вст&авить"
 
 #: koeventpopupmenu.cpp:84 koeventpopupmenu.cpp:104
-#, fuzzy, kde-format
-#| msgctxt "@action:inmenu"
-#| msgid "New Event…"
+#, kde-format
 msgctxt "@action:inmenu"
 msgid "New Event"
-msgstr "Создать событие…"
+msgstr "Новое событие"
 
 #: koeventpopupmenu.cpp:89 koeventpopupmenu.cpp:101
-#, fuzzy, kde-format
-#| msgctxt "@action:inmenu"
-#| msgid "New To-do…"
+#, kde-format
 msgctxt "@action:inmenu"
 msgid "New To-do"
-msgstr "Создать задачу…"
+msgstr "Новая задача"
 
 # BUGME: please add ellipsis --aspotashev
 #: koeventpopupmenu.cpp:92
@@ -2968,9 +2966,7 @@ msgid "Note: %1"
 msgstr "Заметка: %1"
 
 #: kontactplugin/korganizer/korganizerplugin.cpp:191
-#, fuzzy, kde-format
-#| msgctxt "Event from email summary"
-#| msgid "Mail: %1"
+#, kde-format
 msgctxt "@info/plain event summary from email subject"
 msgid "Mail: %1"
 msgstr "Письмо: %1"
@@ -2982,6 +2978,8 @@ msgid ""
 "<emphasis>From:</emphasis> %1<nl/><emphasis>To:</emphasis> %2<nl/"
 "><emphasis>Subject:</emphasis> %3"
 msgstr ""
+"<emphasis>От:</emphasis> %1<nl/><emphasis>Кому:</emphasis> %2<nl/"
+"><emphasis>Тема:</emphasis> %3"
 
 #: kontactplugin/korganizer/summaryeventinfo.cpp:136
 #, kde-format
@@ -3075,9 +3073,7 @@ msgid ""
 msgstr "Будет открыто диалоговое окно для создания новой задачи."
 
 #: kontactplugin/korganizer/todoplugin.cpp:190
-#, fuzzy, kde-format
-#| msgctxt "Event from email summary"
-#| msgid "Mail: %1"
+#, kde-format
 msgctxt "@info/plain to-do summary from email subjuect"
 msgid "Mail: %1"
 msgstr "Письмо: %1"
@@ -3089,6 +3085,8 @@ msgid ""
 "<emphasis>From:</emphasis> %1<nl/><emphasis>To:</emphasis> %2<nl/"
 "><emphasis>Subject:</emphasis> %3"
 msgstr ""
+"<emphasis>От:</emphasis> %1<nl/><emphasis>Кому:</emphasis> %2<nl/"
+"><emphasis>Тема:</emphasis> %3"
 
 #. i18n: ectx: property (windowTitle), widget (QWidget, TodoSummaryConfig_Base)
 #: kontactplugin/korganizer/todosummaryconfig_base.ui:16
@@ -3981,16 +3979,16 @@ msgid "Select Holiday Regions"
 msgstr "Выберите регионы для учёта праздников"
 
 #: prefs/koprefsdialogtime.cpp:111
-#, fuzzy, kde-format
+#, kde-format
 msgctxt "@title:group"
 msgid "Weekly Schedule"
-msgstr "Расписание"
+msgstr "Еженедельное расписание"
 
 #: prefs/koprefsdialogtime.cpp:126
 #, kde-format
 msgctxt "@info:tooltip"
 msgid "Include %1 as part of your weekly schedule"
-msgstr ""
+msgstr "Сделать %1 частью еженедельного расписания"
 
 #: prefs/koprefsdialogtime.cpp:128
 #, kde-format
@@ -4002,6 +4000,11 @@ msgid ""
 "weekly schedule (even if you don't work). Typically, weekend days should be "
 "unchecked."
 msgstr ""
+"Включите этот параметр, чтобы считать %1 частью обычного еженедельного "
+"расписания. Все ежедневные часы %1 будут показаны цветами, отличающимися от "
+"цветов для периодов времени вне обычного расписания. Включите этот параметр, "
+"если %1 является частью обычного еженедельного расписания (даже если вы не "
+"работаете). Как правило, для выходных дней флажок должен быть снят."
 
 #: prefs/koprefsdialogtime.cpp:142
 #, kde-format
@@ -4050,6 +4053,8 @@ msgstr "Воскресенье"
 msgctxt "@info:tooltip"
 msgid "Highlight holidays differently from your regular schedule"
 msgstr ""
+"Использовать для праздничных дней подсветку, выделяющую их на фоне обычного "
+"расписания"
 
 #: prefs/koprefsdialogtime.cpp:169
 #, kde-format
@@ -4058,6 +4063,8 @@ msgid ""
 "Check this box to highlight holidays differently than days included with "
 "your regular schedule."
 msgstr ""
+"Включите этот параметр, чтобы подсвечивать праздничные дни не так, как "
+"входящие в обычное расписание дни."
 
 #: prefs/koprefsdialogtime.cpp:176
 #, kde-format
@@ -4471,10 +4478,9 @@ msgstr "Показывать номера недель"
 
 #. i18n: ectx: whatsthis, entry (WeekNumbersShow), group (General View)
 #: settings/korganizer.kcfg:98
-#, fuzzy, kde-format
-#| msgid "Check this box to display the time in month view items."
+#, kde-format
 msgid "Check this box to show the Date Navigator's week numbers."
-msgstr "Показывать время при просмотре элементов месяца."
+msgstr "Показывать номера недель в календаре."
 
 #. i18n: ectx: label, entry (WeekNumbersShowWork), group (General View)
 #: settings/korganizer.kcfg:102
@@ -4484,17 +4490,15 @@ msgstr "Номера недель выбирают рабочую неделю �
 
 #. i18n: ectx: whatsthis, entry (WeekNumbersShowWork), group (General View)
 #: settings/korganizer.kcfg:103
-#, fuzzy, kde-format
-#| msgid ""
-#| "Check this box to select a working week when clicking on the Date "
-#| "Navigator's week numbers, or uncheck it to choose the whole week."
+#, kde-format
 msgid ""
 "Check this box to select a working week when clicking on the Date "
 "Navigator's week numbers, or uncheck it to choose the whole week.  Ignored "
 "if week numbers are not shown."
 msgstr ""
 "Показывать рабочую неделю при нажатии на номер недели в календаре, иначе "
-"будет отображаться целая неделя."
+"будет отображаться целая неделя. Значение этого параметра игнорируется, "
+"когда не отображаются номера недель."
 
 #. i18n: ectx: label, entry, group (Agenda View)
 #: settings/korganizer.kcfg:110
@@ -6281,117 +6285,135 @@ msgid ""
 "Agenda view: added timelabels context menu to show/hide time labels for the "
 "system timezone on the right (or left) side as well"
 msgstr ""
+"Расписание: добавление контекстного меню для показа или скрытия меток "
+"времени для системного часового пояса также и с правой (или левой) стороны"
 
 #: whatsnew/whatsnewtranslations.cpp:19
 msgid "Incidence editor: detect and warn about creating incidences in the past"
 msgstr ""
+"Редактор событий: обнаружение и предупреждение о создании событий в прошлом"
 
 #: whatsnew/whatsnewtranslations.cpp:20
 msgid "Incidence editor: add emoji support"
-msgstr ""
+msgstr "Редактор событий: добавление поддержки смайликов"
 
 #: whatsnew/whatsnewtranslations.cpp:29
-#, fuzzy
-#| msgctxt "@action:button"
-#| msgid "Add as new calendar"
 msgid "Add What's New menu"
-msgstr "Добавить календарь"
+msgstr "Добавление меню «Что нового?»"
 
 #: whatsnew/whatsnewtranslations.cpp:30
 msgid "The current view is remembered"
-msgstr ""
+msgstr "Запоминание текущего представления"
 
 #: whatsnew/whatsnewtranslations.cpp:31
 msgid "Add a Date Picker dialog available on the Go menu"
-msgstr ""
+msgstr "Добавление диалога выбора даты в меню «Переход»"
 
 #: whatsnew/whatsnewtranslations.cpp:32
 msgid ""
 "Agenda view: consolidated the \"Day\", \"Next X Days\", \"Work Schedule\", "
 "\"Week\" time ranges into the Agenda tool button"
 msgstr ""
+"Расписание: объединение временных диапазонов («День», «Следующие x дней», "
+"«Рабочее расписание», «Неделя») под кнопкой инструмента «Расписание»"
 
 #: whatsnew/whatsnewtranslations.cpp:33
 msgid ""
 "Agenda view: added timelabels context menu option to toggle a 24-hour "
 "(military style) clock"
 msgstr ""
+"Расписание: добавление параметра, позволяющего включать или отключать часы в "
+"24-часовом формате (армейский стиль), в контекстное меню меток времени"
 
 #: whatsnew/whatsnewtranslations.cpp:34
 msgid "Agenda view: added context menu to create new Event or To-do"
 msgstr ""
+"Расписание: добавление контекстного меню для создания нового события или "
+"задачи"
 
 #: whatsnew/whatsnewtranslations.cpp:35
 msgid ""
 "To-do view: added context menu options for toggling completion and reminders"
 msgstr ""
+"Задачи: добавление параметров, позволяющих включать или отключать выполнение "
+"и напоминания, в контекстное меню "
 
 #: whatsnew/whatsnewtranslations.cpp:36
-#, fuzzy
-#| msgid "To-do list view uses full window"
 msgid "To-do view: save/restore fullview setting"
-msgstr "Выделять для списка задач всё пространство"
+msgstr ""
+"Задачи: сохранение и восстановление значения параметра полноэкранного "
+"просмотра"
 
 #: whatsnew/whatsnewtranslations.cpp:37
 msgid "To-do view: save/restore flatview setting"
 msgstr ""
+"Задачи: сохранение и восстановление значения параметра просмотра в виде "
+"плоского списка"
 
 #: whatsnew/whatsnewtranslations.cpp:38
 msgid ""
 "Date navigator: added an option in the Configure->Views settings for hiding "
 "the week numbers"
 msgstr ""
+"Календарь: добавление параметра для скрытия номеров недель в раздел "
+"Настроить -> Вид "
 
 #: whatsnew/whatsnewtranslations.cpp:39
-#, fuzzy
-#| msgid "Week numbers select a work week when in work week mode"
 msgid ""
 "Date navigator: the \"Week numbers select a work week when in work week mode"
 "\" setting is true by default"
-msgstr "Номера недель выбирают рабочую неделю в режиме рабочей недели"
+msgstr ""
+"Календарь: параметр «Номера недель выбирают рабочую неделю в режиме рабочей "
+"недели» включён по умолчанию"
 
 #: whatsnew/whatsnewtranslations.cpp:40
 msgid "Incidence editor: remember/restore the template manager geometry"
 msgstr ""
+"Редактор событий: запоминание/восстановление геометрии в диспетчере шаблонов"
 
 #: whatsnew/whatsnewtranslations.cpp:41
 msgid "Incidence editor: support drag-and-drop attachments"
 msgstr ""
+"Редактор событий: поддержка выполнения вложения с помощью перетаскивания"
 
 #: whatsnew/whatsnewtranslations.cpp:42
 msgid "The export calendar dialog remembers its last export folder location"
 msgstr ""
+"Сохранение последнего расположения папки экспорта в диалоге экспорта "
+"календаря"
 
 #: whatsnew/whatsnewtranslations.cpp:43
 msgid "The import calendar dialog remembers its last import folder location"
 msgstr ""
+"Сохранение последнего расположения папки импорта в диалоге импорта календаря"
 
 #: whatsnew/whatsnewtranslations.cpp:44
-#, fuzzy
-#| msgid "Get &Hot New Stuff..."
 msgid "Get Hot New Stuff removed"
-msgstr "Загрузка материалов из &Интернета..."
+msgstr "Удаление возможности загрузки материалов из Интернета"
 
 #: whatsnew/whatsnewtranslations.cpp:45
 msgid "Add calendar file: remote calendars are always read-only"
 msgstr ""
+"Добавление файла календаря: сетевые календари всегда доступны только для "
+"чтения"
 
 #: whatsnew/whatsnewtranslations.cpp:46
 msgid "Add calendar file: will not permit an empty file path"
-msgstr ""
+msgstr "Добавление файла календаря: нельзя указывать пустой путь к файлу"
 
 #: whatsnew/whatsnewtranslations.cpp:47
 msgid ""
 "DAV configuration: dialog allows seeing the account password when editing"
 msgstr ""
+"Настройка DAV: в диалоге возможен просмотр пароля во время редактирования"
 
 #: whatsnew/whatsnewtranslations.cpp:48
 msgid "DAV configuration: wizard shows icons for the various providers"
-msgstr ""
+msgstr "Настройка DAV: в мастере показаны значки для различных поставщиков"
 
 #: whatsnew/whatsnewtranslations.cpp:49
 msgid "DAV configuration: wizard updated list of providers"
-msgstr ""
+msgstr "Настройка DAV: в мастере обновлён список поставщиков"
 
 #: whatsnew/whatsnewtranslations.cpp:79
 #, kde-format
@@ -6399,27 +6421,33 @@ msgid ""
 "Semantics are changed from a \"working schedule\" concept to a \"week "
 "schedule\" concept to accommodate non-working users"
 msgstr ""
+"Замена формулировки «рабочее расписание» на «расписание на неделю» (подходит "
+"как работающим, так и неработающим пользователям)"
 
 #: whatsnew/whatsnewtranslations.cpp:80
 #, kde-format
 msgid "Initial \"New Event\" start times are consistent across all the views"
 msgstr ""
+"Одно и то же первоначальное время начала «Нового события» во всех "
+"представлениях"
 
 #: whatsnew/whatsnewtranslations.cpp:81
 #, kde-format
 msgid "Improved default event calendar handling"
-msgstr ""
+msgstr "Улучшение обработки календаря событий по умолчанию"
 
 #: whatsnew/whatsnewtranslations.cpp:83
 #, kde-format
 msgid ""
 "Incidences with a long excluded dates list no longer create huge tooltips"
 msgstr ""
+"Для событий с длинным перечнем исключённых дат больше не создаются огромные "
+"всплывающие подсказки"
 
 #: whatsnew/whatsnewtranslations.cpp:84
 #, kde-format
 msgid "Fixed the organizer email address for incidences with attendees"
-msgstr ""
+msgstr "Исправление адреса эл. почты организатора для событий с участниками"
 
 #: whatsnew/whatsnewtranslations.cpp:85
 #, kde-format
@@ -6427,12 +6455,13 @@ msgid ""
 "Agenda view: events without a duration are displayed as 30 long (rather than "
 "15 minutes long)"
 msgstr ""
+"Расписание: показ событий без длительности как 30-минутных (а не 15-минутных)"
 
 #. i18n()});
 #: whatsnew/whatsnewtranslations.cpp:103
 #, kde-format
 msgid "Incidence editor: the tags are sorted alphabetically in the tags editor"
-msgstr ""
+msgstr "Редактор событий: автоматическая сортировка меток в редакторе меток"
 
 #: widgets/kdatenavigator.cpp:171
 #, kde-format
