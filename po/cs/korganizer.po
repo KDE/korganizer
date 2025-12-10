@@ -3505,7 +3505,7 @@ msgstr ""
 #: korganizer_options.h:21
 #, kde-format
 msgid "Url"
-msgstr ""
+msgstr "Url"
 
 #: korganizer_options.h:25
 #, kde-format
