@@ -1033,8 +1033,12 @@ bool ActionManager::saveAsURL(const QUrl &url)
         mFile = url.toLocalFile();
     } else {
         tempFile = new QTemporaryFile;
+        if (!tempFile->open()) {
+            qCWarning(KORGANIZER_LOG) << "Impossible to open temporary file";
+            delete mTempFile;
+            return false;
+        }
         tempFile->setAutoRemove(false);
-        tempFile->open();
         mFile = tempFile->fileName();
     }
     mURL = url;
