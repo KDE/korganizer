@@ -76,9 +76,7 @@ public:
     Akonadi::Collection::Id mCollectionId = -1;
 
 private:
-    // disable copy ctor
-    MultiAgendaViewPrivate(const MultiAgendaViewPrivate &) = delete;
-    MultiAgendaViewPrivate &operator=(const MultiAgendaViewPrivate &) = delete;
+    Q_DISABLE_COPY_MOVE(MultiAgendaViewPrivate)
     MultiAgendaView *const q;
 };
 

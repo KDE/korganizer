@@ -35,9 +35,7 @@ public:
     KOEventPopupMenu *mPopup = nullptr;
 
 private:
-    // disable copy ctor
-    KOAgendaViewPrivate(const KOAgendaViewPrivate &) = delete;
-    KOAgendaViewPrivate &operator=(const KOAgendaViewPrivate &) = delete;
+    Q_DISABLE_COPY_MOVE(KOAgendaViewPrivate)
     KOAgendaView *const q;
 };
 

@@ -26,9 +26,7 @@ public:
     KOPrefs *const prefs;
 
 private:
-    // disable copy ctor
-    KOPrefsPrivate(const KOPrefsPrivate &) = delete;
-    KOPrefsPrivate &operator=(const KOPrefsPrivate &) = delete;
+    Q_DISABLE_COPY_MOVE(KOPrefsPrivate)
 };
 
 Q_GLOBAL_STATIC(KOPrefsPrivate, sInstance)
