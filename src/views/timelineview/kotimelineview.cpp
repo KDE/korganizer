@@ -6,7 +6,7 @@
   SPDX-FileCopyrightText: 2010 Andras Mantia <andras@kdab.com>
   SPDX-FileCopyrightText: 2010 Sérgio Martins <sergio.martins@kdab.com>
 
-  SPDX-License-Identifier: GPL-2.0-or-later WITH Qt-Commercial-exception-1.0
+  SPDX-License-Identifier: GPL-2.0-or-later WITH LicenseRef-Qt-Commercial-exception-1.0
 */
 
 #include "kotimelineview.h"

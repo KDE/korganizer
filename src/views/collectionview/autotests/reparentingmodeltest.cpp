@@ -1,7 +1,7 @@
 /*
  * SPDX-FileCopyrightText: 2014 Christian Mollekopf <mollekopf@kolabsys.com>
  *
- * SPDX-License-Identifier: GPL-2.0-or-later WITH Qt-Commercial-exception-1.0
+ * SPDX-License-Identifier: GPL-2.0-or-later WITH LicenseRef-Qt-Commercial-exception-1.0
  */
 
 #include "reparentingmodel.h"

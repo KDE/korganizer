@@ -4,7 +4,7 @@
   SPDX-FileCopyrightText: 2000, 2001 Cornelius Schumacher <schumacher@kde.org>
   SPDX-FileCopyrightText: 2005 Rafal Rzepecki <divide@users.sourceforge.net>
 
-  SPDX-License-Identifier: GPL-2.0-or-later WITH Qt-Commercial-exception-1.0
+  SPDX-License-Identifier: GPL-2.0-or-later WITH LicenseRef-Qt-Commercial-exception-1.0
 */
 
 #include "koeventviewerdialog.h"

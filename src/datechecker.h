@@ -4,7 +4,7 @@
   SPDX-FileCopyrightText: 2002 Adriaan de Groot <groot@kde.org>
   SPDX-FileCopyrightText: 2004 Cornelius Schumacher <schumacher@kde.org>
 
-  SPDX-License-Identifier: GPL-2.0-or-later WITH Qt-Commercial-exception-1.0
+  SPDX-License-Identifier: GPL-2.0-or-later WITH LicenseRef-Qt-Commercial-exception-1.0
 */
 
 #pragma once

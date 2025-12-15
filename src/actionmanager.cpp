@@ -9,7 +9,7 @@
   SPDX-FileCopyrightText: 2010-2025 Laurent Montel <montel@kde.org>
   SPDX-FileCopyrightText: 2004-2025 Allen Winter <winter@kde.org>
 
-  SPDX-License-Identifier: GPL-2.0-or-later WITH Qt-Commercial-exception-1.0
+  SPDX-License-Identifier: GPL-2.0-or-later WITH LicenseRef-Qt-Commercial-exception-1.0
 */
 #include "actionmanager.h"
 #include "akonadicollectionview.h"
