@@ -185,7 +185,7 @@ void TodoPlugin::processDropEvent(QDropEvent *event)
                         const Akonadi::Item::List items = fetchJob->items();
                         for (const Akonadi::Item &item : items) {
                             if (item.mimeType() == QLatin1StringView("message/rfc822")) {
-                                auto mail = item.payload<KMime::Message::Ptr>();
+                                auto mail = item.payload<std::shared_ptr<KMime::Message>>();
                                 interface()->openTodoEditor(
                                     i18nc("@info/plain to-do summary from email subjuect", "Mail: %1", mail->subject()->asUnicodeString()),
                                     xi18nc("@info to-do description from email content",

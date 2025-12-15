@@ -186,7 +186,7 @@ void KOrganizerPlugin::processDropEvent(QDropEvent *event)
                         const Akonadi::Item::List items = fetchJob->items();
                         for (const Akonadi::Item &item : items) {
                             if (item.mimeType() == QLatin1StringView("message/rfc822")) {
-                                auto mail = item.payload<KMime::Message::Ptr>();
+                                auto mail = item.payload<std::shared_ptr<KMime::Message>>();
                                 interface()->openEventEditor(
                                     i18nc("@info/plain event summary from email subject", "Mail: %1", mail->subject()->asUnicodeString()),
                                     xi18nc("@info event description from email content",
