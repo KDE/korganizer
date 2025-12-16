@@ -11,6 +11,7 @@
 
 #include "kolistview.h"
 #include "koeventpopupmenu.h"
+#include "prefs/koprefs.h"
 
 #include <EventViews/ListView>
 
@@ -190,4 +191,15 @@ void KOListView::calendarRemoved(const Akonadi::CollectionCalendar::Ptr &calenda
 {
     mListView->removeCalendar(calendar);
 }
+
+bool KOListView::showSideBar()
+{
+    return KOPrefs::instance()->listViewShowSidebar();
+}
+
+void KOListView::setShowSideBar(bool show)
+{
+    KOPrefs::instance()->setListViewShowSidebar(show);
+}
+
 #include "moc_kolistview.cpp"

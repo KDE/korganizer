@@ -44,6 +44,9 @@ public:
 
     [[nodiscard]] CalendarSupport::CalPrinterBase::PrintType printType() const override;
 
+    [[nodiscard]] bool showSideBar() override;
+    void setShowSideBar(bool show) override;
+
 public Q_SLOTS:
     void updateView() override;
     void flushView() override;

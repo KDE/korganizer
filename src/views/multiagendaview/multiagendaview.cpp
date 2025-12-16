@@ -333,6 +333,18 @@ void MultiAgendaView::calendarRemoved(const Akonadi::CollectionCalendar::Ptr &ca
     d->mMultiAgendaView->removeCalendar(calendar);
 }
 
+bool MultiAgendaView::showSideBar()
+{
+    // follow agenda view settings
+    return KOPrefs::instance()->agendaViewShowSidebar();
+}
+
+void MultiAgendaView::setShowSideBar(bool show)
+{
+    // follow agenda view settings
+    KOPrefs::instance()->setAgendaViewShowSidebar(show);
+}
+
 MultiAgendaViewConfigDialog::MultiAgendaViewConfigDialog(QAbstractItemModel *baseModel, QWidget *parent)
     : QDialog(parent)
     , d(new MultiAgendaViewConfigDialogPrivate(baseModel, this))

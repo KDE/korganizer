@@ -400,6 +400,13 @@
     </entry>
     <entry key="Decorations At Agenda View Bottom" type="StringList">
     </entry>
+    <entry type="Bool" key="AgendaView Show Sidebar"></entry>
+    <entry type="Bool" key="JournalView Show Sidebar"></entry>
+    <entry type="Bool" key="ListView Show Sidebar"></entry>
+    <entry type="Bool" key="MonthView Show Sidebar"></entry>
+    <entry type="Bool" key="TimelineView Show Sidebar"></entry>
+    <entry type="Bool" key="TodoView Show Sidebar"></entry>
+    <entry type="Bool" key="WhatsNextView Show Sidebar"></entry>
   </group>
   <!-- Theming settings (not implemented yet) -->
   <group name="Theming">

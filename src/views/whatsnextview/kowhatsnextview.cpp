@@ -7,6 +7,8 @@
 */
 
 #include "kowhatsnextview.h"
+#include "prefs/koprefs.h"
+
 #include <QVBoxLayout>
 
 KOWhatsNextView::KOWhatsNextView(QWidget *parent)
@@ -106,6 +108,16 @@ void KOWhatsNextView::calendarAdded(const Akonadi::CollectionCalendar::Ptr &cale
 void KOWhatsNextView::calendarRemoved(const Akonadi::CollectionCalendar::Ptr &calendar)
 {
     mView->removeCalendar(calendar);
+}
+
+bool KOWhatsNextView::showSideBar()
+{
+    return KOPrefs::instance()->whatsNextViewShowSidebar();
+}
+
+void KOWhatsNextView::setShowSideBar(bool show)
+{
+    KOPrefs::instance()->setWhatsNextViewShowSidebar(show);
 }
 
 #include "moc_kowhatsnextview.cpp"

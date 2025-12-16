@@ -22,7 +22,7 @@ MonthView::MonthView(QWidget *parent)
 {
     auto layout = new QVBoxLayout(this);
     layout->setContentsMargins({});
-    mMonthView = new EventViews::MonthView(EventViews::MonthView::Visible, this);
+    mMonthView = new EventViews::MonthView(EventViews::MonthView::Hidden, this);
     mMonthView->enableMonthYearHeader(false); // the month year header is redundant and takes space
     mMonthView->setPreferences(KOPrefs::instance()->eventViewsPreferences());
     layout->addWidget(mMonthView);
@@ -79,8 +79,6 @@ MonthView::MonthView(QWidget *parent)
     connect(mMonthView, &EventViews::EventView::newSubTodoSignal, this, &BaseView::newSubTodoSignal);
 
     connect(mMonthView, &EventViews::EventView::newJournalSignal, this, &BaseView::newJournalSignal);
-
-    connect(mMonthView, &EventViews::MonthView::fullViewChanged, this, &MonthView::fullViewChanged);
 }
 
 MonthView::~MonthView() = default;
@@ -125,9 +123,14 @@ QDate MonthView::averageDate() const
     return mMonthView->averageDate();
 }
 
-bool MonthView::usesFullWindow()
+bool MonthView::showSideBar()
 {
-    return mMonthView->usesFullWindow();
+    return KOPrefs::instance()->monthViewShowSidebar();
+}
+
+void MonthView::setShowSideBar(bool show)
+{
+    KOPrefs::instance()->setMonthViewShowSidebar(show);
 }
 
 bool MonthView::supportsDateRangeSelection()

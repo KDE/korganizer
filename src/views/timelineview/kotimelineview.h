@@ -51,6 +51,9 @@ public:
 
     [[nodiscard]] CalendarSupport::CalPrinterBase::PrintType printType() const override;
 
+    [[nodiscard]] bool showSideBar() override;
+    void setShowSideBar(bool show) override;
+
 public Q_SLOTS:
     void calendarAdded(const Akonadi::CollectionCalendar::Ptr &calendar) override;
     void calendarRemoved(const Akonadi::CollectionCalendar::Ptr &calendar) override;

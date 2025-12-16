@@ -568,12 +568,25 @@ public Q_SLOTS:
     void selectWeek(const QDate &date, const QDate &preferredMonth);
 
     /**
-     * Use as much of the full window as possible for the view.
-     *
+     * In todoview, Use as much of the full window as possible.
      * @param fullView if true, expand the view as much as possible within the
      * main view (hiding the sidebar for example); else put back the normal view.
      */
     void changeFullView(bool fullView);
+
+    /**
+     * The user wants to hide/show the sidebar in non-todoview
+     */
+    void selectShowSideBar();
+
+    /**
+     * Use as much of the full window as possible for the view.
+     *
+     * @param show if false, expand the view as much as possible within the
+     * calendar view by hiding the sidebar and adding a view navigator; else,
+     * restore the normal view. Ignored if the current view is the todoview.
+     */
+    void showSideBar(bool show);
 
     void collectionSelected(const Akonadi::Collection &collection);
     void collectionDeselected(const Akonadi::Collection &collection);
@@ -691,7 +704,7 @@ private:
     QStackedWidget *mRightFrame = nullptr;
     CalendarSupport::MessageWidget *mMessageWidget = nullptr;
 
-    // This navigator bar is used when in full window month view
+    // This navigator bar is used when in full window calendar view (n/a for todoview)
     // It has nothing to do with the date navigator
     NavigatorBar *mNavigatorBar = nullptr;
 

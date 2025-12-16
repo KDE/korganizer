@@ -32,8 +32,11 @@ KDateNavigator::KDateNavigator(QWidget *parent)
 
     topLayout->addWidget(mNavigatorBar, 0, 0, 1, 8);
 
+    connect(mNavigatorBar, &NavigatorBar::fullWindowClicked, this, &KDateNavigator::fullWindowClicked);
     connect(mNavigatorBar, &NavigatorBar::prevYearClicked, this, &KDateNavigator::prevYearClicked);
     connect(mNavigatorBar, &NavigatorBar::prevMonthClicked, this, &KDateNavigator::prevMonthClicked);
+    connect(mNavigatorBar, &NavigatorBar::prevWeekClicked, this, &KDateNavigator::prevWeekClicked);
+    connect(mNavigatorBar, &NavigatorBar::nextWeekClicked, this, &KDateNavigator::nextWeekClicked);
     connect(mNavigatorBar, &NavigatorBar::nextMonthClicked, this, &KDateNavigator::nextMonthClicked);
     connect(mNavigatorBar, &NavigatorBar::nextYearClicked, this, &KDateNavigator::nextYearClicked);
     connect(mNavigatorBar, &NavigatorBar::monthSelected, this, &KDateNavigator::monthSelected);
@@ -243,6 +246,22 @@ void KDateNavigator::updateConfig()
     update();
 }
 
+void KDateNavigator::selectWeekHelper(int weekDifference)
+{
+    const int dayDifference = 7 * weekDifference;
+    QDate const baseDateNextWeek = mBaseDate.addDays(dayDifference);
+
+    KCalendarCore::DateList newSelection = mSelectedDates;
+    for (int i = 0; i < mSelectedDates.count(); ++i) {
+        newSelection[i] = newSelection[i].addDays(dayDifference);
+    }
+
+    setBaseDate(baseDateNextWeek);
+    mSelectedDates = newSelection;
+    mDayMatrix->setSelectedDaysFrom(*(newSelection.begin()), *(--newSelection.end()));
+    updateView();
+}
+
 void KDateNavigator::selectMonthHelper(int monthDifference)
 {
     QDate const baseDateNextMonth = mBaseDate.addMonths(monthDifference);
@@ -266,6 +285,16 @@ void KDateNavigator::selectNextMonth()
 void KDateNavigator::selectPreviousMonth()
 {
     selectMonthHelper(-1);
+}
+
+void KDateNavigator::selectNextWeek()
+{
+    selectWeekHelper(1);
+}
+
+void KDateNavigator::selectPreviousWeek()
+{
+    selectWeekHelper(-1);
 }
 
 void KDateNavigator::selectDates(const KCalendarCore::DateList &dateList)

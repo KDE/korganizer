@@ -207,8 +207,11 @@ CalendarView::CalendarView(QWidget *parent)
     connect(mDateNavigatorContainer, &DateNavigatorContainer::newJournalSignal, this, qOverload<const QDate &>(&CalendarView::newJournal));
 
     // Signals emitted by mNavigatorBar
+    connect(mNavigatorBar, &NavigatorBar::fullWindowClicked, this, &CalendarView::selectShowSideBar);
     connect(mNavigatorBar, &NavigatorBar::prevYearClicked, mDateNavigator, &DateNavigator::selectPreviousYear);
     connect(mNavigatorBar, &NavigatorBar::nextYearClicked, mDateNavigator, &DateNavigator::selectNextYear);
+    connect(mNavigatorBar, &NavigatorBar::prevWeekClicked, mDateNavigator, &DateNavigator::selectPreviousWeek);
+    connect(mNavigatorBar, &NavigatorBar::nextWeekClicked, mDateNavigator, &DateNavigator::selectNextWeek);
     connect(mNavigatorBar, &NavigatorBar::prevMonthClicked, this, [this]() {
         mDateNavigator->selectPreviousMonth();
     });
@@ -220,7 +223,9 @@ CalendarView::CalendarView(QWidget *parent)
 
     // Signals emitted by mDateNavigatorContainer
     connect(mDateNavigatorContainer, &DateNavigatorContainer::weekClicked, this, &CalendarView::selectWeek);
-
+    connect(mDateNavigatorContainer, &DateNavigatorContainer::fullWindowClicked, this, &CalendarView::selectShowSideBar);
+    connect(mDateNavigatorContainer, &DateNavigatorContainer::prevWeekClicked, mDateNavigator, &DateNavigator::selectPreviousWeek);
+    connect(mDateNavigatorContainer, &DateNavigatorContainer::nextWeekClicked, mDateNavigator, &DateNavigator::selectNextWeek);
     connect(mDateNavigatorContainer, &DateNavigatorContainer::prevMonthClicked, mDateNavigator, &DateNavigator::selectPreviousMonth);
     connect(mDateNavigatorContainer, &DateNavigatorContainer::nextMonthClicked, mDateNavigator, &DateNavigator::selectNextMonth);
     connect(mDateNavigatorContainer, &DateNavigatorContainer::prevYearClicked, mDateNavigator, &DateNavigator::selectPreviousYear);
@@ -456,8 +461,8 @@ void CalendarView::readSettings()
 
     readFilterSettings(config.data());
 
-    KConfigGroup const viewConfig(config, QStringLiteral("Views"));
-    int const dateCount = viewConfig.readEntry("ShownDatesCount", 7);
+    KConfigGroup const viewsConfig(config, QStringLiteral("Views"));
+    int const dateCount = viewsConfig.readEntry("ShownDatesCount", 7);
     if (dateCount == 7) {
         mDateNavigator->selectWeek();
     } else {
@@ -493,8 +498,8 @@ void CalendarView::writeSettings()
 
     writeFilterSettings(config.data());
 
-    KConfigGroup viewConfig(config, QStringLiteral("Views"));
-    viewConfig.writeEntry("ShownDatesCount", mDateNavigator->selectedDates().count());
+    KConfigGroup viewsConfig(config, QStringLiteral("Views"));
+    viewsConfig.writeEntry("ShownDatesCount", mDateNavigator->selectedDates().count());
 
     config->sync();
 }
@@ -2585,16 +2590,29 @@ void CalendarView::selectWeek(const QDate &date, const QDate &preferredMonth)
         }
     }
 }
-
 void CalendarView::changeFullView(bool fullView)
 {
+    // user pressed the fullwindow button in the todoview view (from eventviews)
+    showSideBar(!fullView);
+}
+
+void CalendarView::selectShowSideBar()
+{
+    showSideBar(!mViewManager->currentView()->showSideBar()); // toggle button pressed
+}
+
+void CalendarView::showSideBar(bool show)
+{
     if (mViewManager->currentView()) {
-        if (mViewManager->currentView()->identifier() == "DefaultTodoView") {
-            showLeftFrame(!fullView);
-        } else if (mViewManager->currentView()->identifier() == "DefaultMonthView") {
-            showLeftFrame(!fullView);
-            fullView ? mNavigatorBar->show() : mNavigatorBar->hide();
+        showLeftFrame(show);
+        if (mViewManager->currentView()->identifier() != "DefaultTodoView") {
+            mNavigatorBar->setSideBarMode(show);
+            show ? mNavigatorBar->hide() : mNavigatorBar->show();
+        } else {
+            // never show the navigator bar in todoview
+            mNavigatorBar->hide();
         }
+        mViewManager->currentView()->setShowSideBar(show);
     }
 }
 

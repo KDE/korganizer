@@ -42,7 +42,9 @@ public:
      */
     [[nodiscard]] QDate averageDate() const;
 
-    [[nodiscard]] bool usesFullWindow() override;
+    [[nodiscard]] bool showSideBar() override;
+
+    void setShowSideBar(bool show) override;
 
     [[nodiscard]] bool supportsDateRangeSelection() override;
 

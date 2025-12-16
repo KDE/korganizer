@@ -23,7 +23,6 @@
 #include "views/timelineview/kotimelineview.h"
 #include "views/todoview/kotodoview.h"
 #include "views/whatsnextview/kowhatsnextview.h"
-#include "widgets/navigatorbar.h"
 
 #include <Akonadi/EntityTreeModel>
 
@@ -247,16 +246,8 @@ void KOViewManager::goMenu(bool enable)
 
 void KOViewManager::raiseCurrentView()
 {
-    if (mCurrentView && mCurrentView->usesFullWindow()) {
-        mMainView->showLeftFrame(false);
-        if (mCurrentView == mTodoView) {
-            mMainView->navigatorBar()->hide();
-        } else {
-            mMainView->navigatorBar()->show();
-        }
-    } else {
-        mMainView->showLeftFrame(true);
-        mMainView->navigatorBar()->hide();
+    if (mCurrentView) {
+        mMainView->showSideBar(mCurrentView->showSideBar());
     }
     mMainView->viewStack()->setCurrentWidget(widgetForView(mCurrentView));
 }
@@ -436,7 +427,6 @@ void KOViewManager::showMonthView()
         mMonthView = new KOrg::MonthView(mMainView->viewStack());
         mMonthView->setIdentifier("DefaultMonthView");
         addView(mMonthView);
-        connect(mMonthView, &MonthView::fullViewChanged, mMainView, &CalendarView::changeFullView);
     }
     viewActionEnable(viewToAction(QStringLiteral("Month"), NO_RANGE));
     goMenu(true);

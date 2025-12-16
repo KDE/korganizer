@@ -27,25 +27,43 @@ NavigatorBar::NavigatorBar(QWidget *parent)
 
     const bool isRTL = KOGlobals::self()->reverseLayout();
 
+    mFullWindow = createNavigationButton(QStringLiteral("view-fullscreen"),
+                                         i18nc("@info:tooltip", "Show/hide the sidebar in this view"),
+                                         i18nc("@info::whatsthis",
+                                               "Click this button to show/hide the sidebar in the current view. "
+                                               "Each view can show/hide the sidebar independently."));
+
     mPrevYear = createNavigationButton(isRTL ? QStringLiteral("arrow-right-double") : QStringLiteral("arrow-left-double"),
-                                       i18n("Scroll backward to the previous year"),
-                                       i18n("Click this button to scroll the display to the "
-                                            "same approximate day of the previous year"));
+                                       i18nc("@info:tooltip", "Scroll backward a year"),
+                                       i18nc("@info::whatsthis",
+                                             "Click this button to scroll the display to the "
+                                             "same approximate day of the previous year"));
 
     mPrevMonth = createNavigationButton(isRTL ? QStringLiteral("arrow-right") : QStringLiteral("arrow-left"),
-                                        i18n("Scroll backward to the previous month"),
-                                        i18n("Click this button to scroll the display to the "
-                                             "same approximate date of the previous month"));
+                                        i18nc("@info:tooltip", "Scroll backward a month"),
+                                        i18nc("@info::whatsthis",
+                                              "Click this button to scroll the display to the "
+                                              "same approximate date of the previous month"));
+
+    mPrevWeek = createNavigationButton(isRTL ? QStringLiteral("arrow-right") : QStringLiteral("arrow-left"),
+                                       i18nc("@info:tooltip", "Scroll backward a week"),
+                                       i18nc("@info::whatsthis", "Click this button to scroll the display to back 1 week in time"));
+
+    mNextWeek = createNavigationButton(isRTL ? QStringLiteral("arrow-left") : QStringLiteral("arrow-right"),
+                                       i18nc("@info:tooltip", "Scroll forward a week"),
+                                       i18nc("@info::whatsthis", "Click this button to scroll the display to forward 1 week in time"));
 
     mNextMonth = createNavigationButton(isRTL ? QStringLiteral("arrow-left") : QStringLiteral("arrow-right"),
-                                        i18n("Scroll forward to the next month"),
-                                        i18n("Click this button to scroll the display to the "
-                                             "same approximate date of the next month"));
+                                        i18nc("@info:tooltip", "Scroll forward a month"),
+                                        i18nc("@info::whatsthis",
+                                              "Click this button to scroll the display to the "
+                                              "same approximate date of the next month"));
 
     mNextYear = createNavigationButton(isRTL ? QStringLiteral("arrow-left-double") : QStringLiteral("arrow-right-double"),
-                                       i18n("Scroll forward to the next year"),
-                                       i18n("Click this button to scroll the display to the "
-                                            "same approximate day of the next year"));
+                                       i18nc("@info:tooltip", "Scroll forward a year"),
+                                       i18nc("@info::whatsthis",
+                                             "Click this button to scroll the display to the "
+                                             "same approximate day of the next year"));
 
     // Create month name button
     mMonth->setPopupMode(QToolButton::InstantPopup);
@@ -62,17 +80,24 @@ NavigatorBar::NavigatorBar(QWidget *parent)
     // set up control frame layout
     auto ctrlLayout = new QHBoxLayout(this);
     ctrlLayout->setContentsMargins({});
+    ctrlLayout->setSpacing(0);
+    ctrlLayout->addWidget(mFullWindow);
+    ctrlLayout->addStretch();
     ctrlLayout->addWidget(mPrevYear);
     ctrlLayout->addWidget(mPrevMonth);
-    ctrlLayout->addStretch();
+    ctrlLayout->addWidget(mPrevWeek);
     ctrlLayout->addWidget(mMonth);
     ctrlLayout->addWidget(mYear);
-    ctrlLayout->addStretch();
+    ctrlLayout->addWidget(mNextWeek);
     ctrlLayout->addWidget(mNextMonth);
     ctrlLayout->addWidget(mNextYear);
+    ctrlLayout->addStretch();
 
+    connect(mFullWindow, &QToolButton::clicked, this, &NavigatorBar::fullWindowClicked);
     connect(mPrevYear, &QToolButton::clicked, this, &NavigatorBar::prevYearClicked);
     connect(mPrevMonth, &QToolButton::clicked, this, &NavigatorBar::prevMonthClicked);
+    connect(mPrevWeek, &QToolButton::clicked, this, &NavigatorBar::prevWeekClicked);
+    connect(mNextWeek, &QToolButton::clicked, this, &NavigatorBar::nextWeekClicked);
     connect(mNextMonth, &QToolButton::clicked, this, &NavigatorBar::nextMonthClicked);
     connect(mNextYear, &QToolButton::clicked, this, &NavigatorBar::nextYearClicked);
     connect(mMonth, &QToolButton::clicked, this, &NavigatorBar::selectMonthFromMenu);
@@ -204,6 +229,15 @@ QToolButton *NavigatorBar::createNavigationButton(const QString &icon, const QSt
     button->setWhatsThis(whatsThis);
 
     return button;
+}
+
+void NavigatorBar::setSideBarMode(bool isShown)
+{
+    if (isShown) {
+        mFullWindow->setIcon(QIcon::fromTheme(QStringLiteral("view-fullscreen")));
+    } else {
+        mFullWindow->setIcon(QIcon::fromTheme(QStringLiteral("view-restore")));
+    }
 }
 
 #include "moc_navigatorbar.cpp"

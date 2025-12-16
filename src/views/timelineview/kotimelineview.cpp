@@ -151,4 +151,15 @@ void KOTimelineView::calendarRemoved(const Akonadi::CollectionCalendar::Ptr &cal
 {
     mTimeLineView->removeCalendar(calendar);
 }
+
+bool KOTimelineView::showSideBar()
+{
+    return KOPrefs::instance()->timelineViewShowSidebar();
+}
+
+void KOTimelineView::setShowSideBar(bool show)
+{
+    KOPrefs::instance()->setTimelineViewShowSidebar(show);
+}
+
 #include "moc_kotimelineview.cpp"

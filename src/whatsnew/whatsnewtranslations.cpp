@@ -19,6 +19,8 @@ QList<KLazyLocalizedString> WhatsNewTranslations::lastNewFeatures() const
                "Time&Date->Default Values tab"),
         kli18n("Month view: no longer display the month year header to save vertical space and remove redundancy"),
         kli18n("Month view: use a slightly different color for drawing the day headers for days outside of the currently selected month"),
+        kli18n("Month view: the navigation controls on the lower right side are removed in favor of the improved application navigator bar"),
+        kli18n("Navigator bar: improved by adding week scrolling and showing/hiding the sidebar on a per-view basis"),
     };
 
     return info;

@@ -46,7 +46,8 @@ public:
     /** documentation in baseview.h */
     void getHighlightMode(bool &highlightEvents, bool &highlightTodos, bool &highlightJournals) override;
 
-    [[nodiscard]] bool usesFullWindow() override;
+    [[nodiscard]] bool showSideBar() override;
+    void setShowSideBar(bool show) override;
 
     void saveViewState();
     void restoreViewState();

@@ -59,11 +59,16 @@ void DateNavigatorContainer::connectNavigatorView(KDateNavigator *v)
     connect(v, &KDateNavigator::goPrevious, this, &DateNavigatorContainer::goPrevious);
     connect(v, &KDateNavigator::goNext, this, &DateNavigatorContainer::goNext);
 
+    connect(v, &KDateNavigator::fullWindowClicked, this, &DateNavigatorContainer::fullWindowClicked);
+
     connect(v, &KDateNavigator::nextYearClicked, this, &DateNavigatorContainer::nextYearClicked);
     connect(v, &KDateNavigator::prevYearClicked, this, &DateNavigatorContainer::prevYearClicked);
 
     connect(v, &KDateNavigator::prevMonthClicked, this, &DateNavigatorContainer::goPrevMonth);
     connect(v, &KDateNavigator::nextMonthClicked, this, &DateNavigatorContainer::goNextMonth);
+
+    connect(v, &KDateNavigator::prevWeekClicked, this, &DateNavigatorContainer::goPrevWeek);
+    connect(v, &KDateNavigator::nextWeekClicked, this, &DateNavigatorContainer::goNextWeek);
 
     connect(v, &KDateNavigator::monthSelected, this, &DateNavigatorContainer::monthSelected);
     connect(v, &KDateNavigator::yearSelected, this, &DateNavigatorContainer::yearSelected);
@@ -318,6 +323,16 @@ void DateNavigatorContainer::goPrevMonth()
     const QPair<QDate, QDate> p = dateLimits(-1);
 
     Q_EMIT prevMonthClicked(mNavigatorView->month(), p.first, p.second);
+}
+
+void DateNavigatorContainer::goNextWeek()
+{
+    Q_EMIT nextWeekClicked();
+}
+
+void DateNavigatorContainer::goPrevWeek()
+{
+    Q_EMIT prevWeekClicked();
 }
 
 QPair<QDate, QDate> DateNavigatorContainer::dateLimits(int offset) const

@@ -181,9 +181,14 @@ void BaseView::getHighlightMode(bool &highlightEvents, bool &highlightTodos, boo
     highlightJournals = false;
 }
 
-bool BaseView::usesFullWindow()
+bool BaseView::showSideBar()
 {
-    return false;
+    return true;
+}
+
+void BaseView::setShowSideBar(bool show)
+{
+    Q_UNUSED(show);
 }
 
 bool BaseView::supportsZoom()

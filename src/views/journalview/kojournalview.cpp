@@ -168,4 +168,13 @@ void KOJournalView::calendarRemoved(const Akonadi::CollectionCalendar::Ptr &cale
     mJournalView->removeCalendar(calendar);
 }
 
+bool KOJournalView::showSideBar()
+{
+    return KOPrefs::instance()->journalViewShowSidebar();
+}
+
+void KOJournalView::setShowSideBar(bool show)
+{
+    KOPrefs::instance()->setJournalViewShowSidebar(show);
+}
 #include "moc_kojournalview.cpp"

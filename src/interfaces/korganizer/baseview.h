@@ -119,10 +119,12 @@ public:
     virtual void getHighlightMode(bool &highlightEvents, bool &highlightTodos, bool &highlightJournals);
 
     /**
-     * returns whether this view should be displayed full window.
-     * Base implementation returns false.
+     * returns whether this view should show the sidebar.
+     * Base implementation returns true.
      */
-    virtual bool usesFullWindow();
+    virtual bool showSideBar() = 0;
+
+    virtual void setShowSideBar(bool show) = 0;
 
     /**
      * returns whether this view supports zoom.

@@ -66,6 +66,9 @@ public:
 
     [[nodiscard]] Akonadi::Collection::Id collectionId() const override;
 
+    [[nodiscard]] bool showSideBar() override;
+    void setShowSideBar(bool show) override;
+
 public Q_SLOTS:
     void showDates(const QDate &start, const QDate &end, const QDate &preferredMonth = QDate()) override;
     void showIncidences(const Akonadi::Item::List &incidenceList, const QDate &date) override;

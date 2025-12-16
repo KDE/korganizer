@@ -60,6 +60,8 @@ public Q_SLOTS:
     void updateDayMatrix();
     void updateToday();
 
+    void goPrevWeek();
+    void goNextWeek();
     void goPrevMonth();
     void goNextMonth();
 
@@ -81,8 +83,13 @@ Q_SIGNALS:
     void goPrevious();
     void goNext();
 
+    void fullWindowClicked();
+
     void nextYearClicked();
     void prevYearClicked();
+
+    void nextWeekClicked();
+    void prevWeekClicked();
 
     /** Signals that the previous month button has been clicked.
 

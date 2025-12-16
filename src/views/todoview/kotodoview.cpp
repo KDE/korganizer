@@ -215,9 +215,18 @@ void KOTodoView::saveLayout(KConfig *config, const QString &group) const
     mView->saveLayout(config, group);
 }
 
-bool KOTodoView::usesFullWindow()
+bool KOTodoView::showSideBar()
 {
-    return mView->usesFullWindow();
+    // we use the eventview button, not the navigator bar button for fullwindow mode
+    return !mView->usesFullWindow();
+    // return KOPrefs::instance()->todoViewShowSidebar();
+}
+
+void KOTodoView::setShowSideBar(bool show)
+{
+    Q_UNUSED(show);
+    // we use the eventview button, not the navigator bar button for fullwindow mode
+    // KOPrefs::instance()->setTodoViewShowSidebar(show);
 }
 
 CalendarSupport::CalPrinterBase::PrintType KOTodoView::printType() const

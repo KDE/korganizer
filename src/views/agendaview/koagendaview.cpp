@@ -296,4 +296,14 @@ void KOAgendaView::calendarRemoved(const Akonadi::CollectionCalendar::Ptr &calen
     d->mAgendaView->removeCalendar(calendar);
 }
 
+bool KOAgendaView::showSideBar()
+{
+    return KOPrefs::instance()->agendaViewShowSidebar();
+}
+
+void KOAgendaView::setShowSideBar(bool show)
+{
+    KOPrefs::instance()->setAgendaViewShowSidebar(show);
+}
+
 #include "moc_koagendaview.cpp"

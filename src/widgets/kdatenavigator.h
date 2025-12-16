@@ -63,6 +63,8 @@ public Q_SLOTS:
     void selectDates(const KCalendarCore::DateList &);
     void selectPreviousMonth();
     void selectNextMonth();
+    void selectPreviousWeek();
+    void selectNextWeek();
     void updateView();
     void updateConfig();
     void updateDayMatrix();
@@ -80,6 +82,10 @@ Q_SIGNALS:
 
     void goPrevious();
     void goNext();
+
+    void fullWindowClicked();
+    void nextWeekClicked();
+    void prevWeekClicked();
     void nextMonthClicked();
     void prevMonthClicked();
     void nextYearClicked();
@@ -98,6 +104,7 @@ protected:
     void setShowWeekNums(bool enabled);
 
 private:
+    void selectWeekHelper(int weekDifference);
     void selectMonthHelper(int monthDifference);
     NavigatorBar *const mNavigatorBar;
 

@@ -21,11 +21,21 @@ public:
     ~NavigatorBar() override;
 
     void showButtons(bool left, bool right);
+    /**
+     * Settings for the sidebar open/close button.
+     *
+     * @param isShown indicates is the sidebar is shown and toggles for full window button for closing.
+     * else the full window button is toggled for opening.
+     */
+    void setSideBarMode(bool isShown);
 
 public Q_SLOTS:
     void selectDates(const KCalendarCore::DateList &);
 
 Q_SIGNALS:
+    void fullWindowClicked();
+    void nextWeekClicked();
+    void prevWeekClicked();
     void nextMonthClicked();
     void prevMonthClicked();
     void nextYearClicked();
@@ -41,10 +51,13 @@ private:
     void selectYearFromMenu();
     QDate mDate;
 
+    QToolButton *mFullWindow = nullptr;
     QToolButton *mPrevYear = nullptr;
     QToolButton *mPrevMonth = nullptr;
+    QToolButton *mPrevWeek = nullptr;
     QToolButton *const mMonth;
     QToolButton *const mYear;
+    QToolButton *mNextWeek = nullptr;
     QToolButton *mNextMonth = nullptr;
     QToolButton *mNextYear = nullptr;
 };
