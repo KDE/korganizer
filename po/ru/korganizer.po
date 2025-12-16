@@ -17,7 +17,7 @@ msgid ""
 msgstr ""
 "Project-Id-Version: korganizer\n"
 "Report-Msgid-Bugs-To: https://bugs.kde.org\n"
-"POT-Creation-Date: 2025-11-26 00:44+0000\n"
+"POT-Creation-Date: 2025-12-16 06:51+0000\n"
 "PO-Revision-Date: 2025-12-03 16:59+0300\n"
 "Last-Translator: Olesya Gerasimenko <goa@altlinux.org>\n"
 "Language-Team: Basealt Translation Team\n"
@@ -464,8 +464,8 @@ msgstr ""
 "Это действие позволяет удалить из календаря задачи, которые были выполнены. "
 "Это действие необратимо!"
 
-#: actionmanager.cpp:318 actionmanager.cpp:617 actionmanager.cpp:1308
-#: actionmanager.cpp:1346
+#: actionmanager.cpp:318 actionmanager.cpp:617 actionmanager.cpp:1312
+#: actionmanager.cpp:1350
 #, kde-format
 msgctxt "@action:inmenu"
 msgid "&Delete"
@@ -1158,14 +1158,14 @@ msgstr ""
 "в разделе Вид -> Расписание."
 
 # BUGME: please add ellipsis as it opens a dialog --aspotashev
-#: actionmanager.cpp:609 actionmanager.cpp:1302 actionmanager.cpp:1344
+#: actionmanager.cpp:609 actionmanager.cpp:1306 actionmanager.cpp:1348
 #: koeventpopupmenu.cpp:42
 #, kde-format
 msgctxt "@action:inmenu"
 msgid "&Show"
 msgstr "Пр&осмотреть…"
 
-#: actionmanager.cpp:613 actionmanager.cpp:1305 actionmanager.cpp:1345
+#: actionmanager.cpp:613 actionmanager.cpp:1309 actionmanager.cpp:1349
 #: koeventpopupmenu.cpp:44
 #, kde-format
 msgctxt "@action:inmenu"
@@ -1355,19 +1355,19 @@ msgctxt "@info"
 msgid "Saved calendar <filename>%1</filename>"
 msgstr "Календарь сохранён в <filename>%1</filename>"
 
-#: actionmanager.cpp:1049
+#: actionmanager.cpp:1053
 #, kde-kuit-format
 msgctxt "@info"
 msgid "Unable to save calendar to the file <filename>%1</filename>"
 msgstr "Невозможно сохранить календарь в файл <filename>%1</filename>."
 
-#: actionmanager.cpp:1050
+#: actionmanager.cpp:1054
 #, kde-format
 msgctxt "@title:window"
 msgid "Error"
 msgstr "Ошибка"
 
-#: actionmanager.cpp:1076
+#: actionmanager.cpp:1080
 #, kde-format
 msgctxt "@action:inmenu"
 msgid "&Next Day"
@@ -1377,7 +1377,7 @@ msgstr[1] "&Следующие %1 дня"
 msgstr[2] "&Следующие %1 дней"
 msgstr[3] "&Следующий день"
 
-#: actionmanager.cpp:1089
+#: actionmanager.cpp:1093
 #, kde-format
 msgctxt "@info"
 msgid "Could not start control module for date and time format."
@@ -1385,117 +1385,117 @@ msgstr ""
 "Не удаётся запустить модуль изменения параметров формата времени и даты."
 
 # BUGME: please add ellipsis as it opens a dialog --aspotashev
-#: actionmanager.cpp:1264
+#: actionmanager.cpp:1268
 #, kde-format
 msgctxt "@action:inmenu"
 msgid "&Show Event"
 msgstr "&Просмотреть событие…"
 
-#: actionmanager.cpp:1267
+#: actionmanager.cpp:1271
 #, kde-format
 msgctxt "@action:inmenu"
 msgid "&Edit Event…"
 msgstr "&Изменить событие…"
 
-#: actionmanager.cpp:1270
+#: actionmanager.cpp:1274
 #, kde-format
 msgctxt "@action:inmenu"
 msgid "&Delete Event"
 msgstr "&Удалить событие"
 
 # BUGME: please add ellipsis as it opens a dialog --aspotashev
-#: actionmanager.cpp:1278
+#: actionmanager.cpp:1282
 #, kde-format
 msgctxt "@action:inmenu"
 msgid "&Show To-do"
 msgstr "&Просмотреть задачу…"
 
-#: actionmanager.cpp:1281
+#: actionmanager.cpp:1285
 #, kde-format
 msgctxt "@action:inmenu"
 msgid "&Edit To-do…"
 msgstr "&Изменить задачу…"
 
-#: actionmanager.cpp:1284
+#: actionmanager.cpp:1288
 #, kde-format
 msgctxt "@action:inmenu"
 msgid "&Delete To-do"
 msgstr "&Удалить задачу"
 
-#: actionmanager.cpp:1427 actionmanager.cpp:1531
+#: actionmanager.cpp:1431 actionmanager.cpp:1535
 #, kde-format
 msgctxt "@action:inmenu"
 msgid "Attach as &link"
 msgstr "Присоединить как &ссылку"
 
-#: actionmanager.cpp:1428 actionmanager.cpp:1532
+#: actionmanager.cpp:1432 actionmanager.cpp:1536
 #, kde-format
 msgctxt "@action:inmenu"
 msgid "Attach &inline"
 msgstr "Отп&равить в теле письма"
 
-#: actionmanager.cpp:1429
+#: actionmanager.cpp:1433
 #, kde-format
 msgctxt "@action:inmenu"
 msgid "Attach inline &without attachments"
 msgstr "Присоединить &письмо без вложений"
 
-#: actionmanager.cpp:1431 actionmanager.cpp:1534
+#: actionmanager.cpp:1435 actionmanager.cpp:1538
 #, kde-format
 msgctxt "@action:inmenu"
 msgid "C&ancel"
 msgstr "О&тменить"
 
-#: actionmanager.cpp:1469
+#: actionmanager.cpp:1473
 #, kde-format
 msgctxt "@info"
 msgid "Removing attachments from an email might invalidate its signature."
 msgstr ""
 "Удаление вложений из письма может сделать его подпись недействительной."
 
-#: actionmanager.cpp:1470
+#: actionmanager.cpp:1474
 #, kde-format
 msgctxt "@title:window"
 msgid "Remove Attachments"
 msgstr "Удаление вложений"
 
-#: actionmanager.cpp:1619
+#: actionmanager.cpp:1623
 #, kde-format
 msgctxt "@action:inmenu"
 msgid "Undo: %1"
 msgstr "Отменить %1"
 
-#: actionmanager.cpp:1622
+#: actionmanager.cpp:1626
 #, kde-format
 msgctxt "@action:inmenu"
 msgid "Undo"
 msgstr "Отменить действие"
 
-#: actionmanager.cpp:1632
+#: actionmanager.cpp:1636
 #, kde-format
 msgctxt "@action:inmenu"
 msgid "Redo: %1"
 msgstr "Повторить %1"
 
-#: actionmanager.cpp:1635
+#: actionmanager.cpp:1639
 #, kde-format
 msgctxt "@action:inmenu"
 msgid "Redo"
 msgstr "Повторить действие"
 
-#: actionmanager.cpp:1638
+#: actionmanager.cpp:1642
 #, kde-format
 msgctxt "@action:button"
 msgid "Undo"
 msgstr "Отменить действие"
 
-#: actionmanager.cpp:1649
+#: actionmanager.cpp:1653
 #, kde-kuit-format
 msgctxt "@info"
 msgid "URL <filename>%1</filename> is invalid."
 msgstr "Ошибка в ссылке <filename>%1</filename>."
 
-#: actionmanager.cpp:1654
+#: actionmanager.cpp:1658
 #, kde-kuit-format
 msgctxt "@info"
 msgid ""
@@ -1510,19 +1510,19 @@ msgstr ""
 "целевой календарь.</para> <para>Если решено добавить календарь, новый "
 "календарь будет создан автоматически.</para>"
 
-#: actionmanager.cpp:1662
+#: actionmanager.cpp:1666
 #, kde-format
 msgctxt "@title:window"
 msgid "Import Calendar"
 msgstr "Импорт календаря"
 
-#: actionmanager.cpp:1663
+#: actionmanager.cpp:1667
 #, kde-format
 msgctxt "@action:button"
 msgid "Merge into existing calendar"
 msgstr "Объединить с существующим календарём"
 
-#: actionmanager.cpp:1664
+#: actionmanager.cpp:1668
 #, kde-format
 msgctxt "@action:button"
 msgid "Add as new calendar"
@@ -6247,7 +6247,7 @@ msgid "Agenda %1"
 msgstr "Расписание %1"
 
 # BUGME: please this fix translation --aspotashev
-#: views/multiagendaview/multiagendaview.cpp:342
+#: views/multiagendaview/multiagendaview.cpp:340
 #, kde-format
 msgctxt "@title:window"
 msgid "Configure Side-By-Side View"

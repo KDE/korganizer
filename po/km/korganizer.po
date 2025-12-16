@@ -8,7 +8,7 @@ msgid ""
 msgstr ""
 "Project-Id-Version: korganizer\n"
 "Report-Msgid-Bugs-To: https://bugs.kde.org\n"
-"POT-Creation-Date: 2025-11-26 00:44+0000\n"
+"POT-Creation-Date: 2025-12-16 06:51+0000\n"
 "PO-Revision-Date: 2012-07-09 10:04+0700\n"
 "Last-Translator: Khoem Sokhem <khoemsokhem@khmeros.info>\n"
 "Language-Team: Khmer\n"
@@ -512,8 +512,8 @@ msgid ""
 "This action cannot be undone!"
 msgstr ""
 
-#: actionmanager.cpp:318 actionmanager.cpp:617 actionmanager.cpp:1308
-#: actionmanager.cpp:1346
+#: actionmanager.cpp:318 actionmanager.cpp:617 actionmanager.cpp:1312
+#: actionmanager.cpp:1350
 #, fuzzy, kde-format
 #| msgid "&Delete"
 msgctxt "@action:inmenu"
@@ -1226,7 +1226,7 @@ msgid ""
 "Calendars options in the Views->Agenda Views settings."
 msgstr ""
 
-#: actionmanager.cpp:609 actionmanager.cpp:1302 actionmanager.cpp:1344
+#: actionmanager.cpp:609 actionmanager.cpp:1306 actionmanager.cpp:1348
 #: koeventpopupmenu.cpp:42
 #, fuzzy, kde-format
 #| msgid "&Show"
@@ -1234,7 +1234,7 @@ msgctxt "@action:inmenu"
 msgid "&Show"
 msgstr "បង្ហាញ"
 
-#: actionmanager.cpp:613 actionmanager.cpp:1305 actionmanager.cpp:1345
+#: actionmanager.cpp:613 actionmanager.cpp:1309 actionmanager.cpp:1349
 #: koeventpopupmenu.cpp:44
 #, fuzzy, kde-format
 #| msgid "&Edit"
@@ -1449,21 +1449,21 @@ msgctxt "@info"
 msgid "Saved calendar <filename>%1</filename>"
 msgstr ""
 
-#: actionmanager.cpp:1049
+#: actionmanager.cpp:1053
 #, fuzzy, kde-kuit-format
 #| msgid "Unable to save calendar to the file %1."
 msgctxt "@info"
 msgid "Unable to save calendar to the file <filename>%1</filename>"
 msgstr "មិន​អាច​រក្សាទុក​ប្រតិទិន​ទៅ​ឯកសារ %1 បាន​ឡើយ ។"
 
-#: actionmanager.cpp:1050
+#: actionmanager.cpp:1054
 #, fuzzy, kde-format
 #| msgid "Error"
 msgctxt "@title:window"
 msgid "Error"
 msgstr "កំហុស"
 
-#: actionmanager.cpp:1076
+#: actionmanager.cpp:1080
 #, fuzzy, kde-format
 #| msgid "&Next Day"
 #| msgid_plural "&Next %1 Days"
@@ -1472,140 +1472,140 @@ msgid "&Next Day"
 msgid_plural "&Next %1 Days"
 msgstr[0] "%1 ថ្ងៃ​បន្ទាប់"
 
-#: actionmanager.cpp:1089
+#: actionmanager.cpp:1093
 #, fuzzy, kde-format
 #| msgid "Could not start control module for date and time format."
 msgctxt "@info"
 msgid "Could not start control module for date and time format."
 msgstr "មិន​អាច​ចាប់ផ្ដើម​ម៉ូឌុល​បញ្ជា សម្រាប់​ទ្រង់ទ្រាយ​កាលបរិច្ឆេទ និង​ពេលវេលា​បាន​ឡើយ ។"
 
-#: actionmanager.cpp:1264
+#: actionmanager.cpp:1268
 #, fuzzy, kde-format
 #| msgid "&Show Event"
 msgctxt "@action:inmenu"
 msgid "&Show Event"
 msgstr "បង្ហាញ​ព្រឹត្តិការណ៍"
 
-#: actionmanager.cpp:1267
+#: actionmanager.cpp:1271
 #, fuzzy, kde-format
 #| msgid "&Edit Event..."
 msgctxt "@action:inmenu"
 msgid "&Edit Event…"
 msgstr "កែសម្រួល​ព្រឹត្តិការណ៍..."
 
-#: actionmanager.cpp:1270
+#: actionmanager.cpp:1274
 #, fuzzy, kde-format
 #| msgid "&Delete Event"
 msgctxt "@action:inmenu"
 msgid "&Delete Event"
 msgstr "លុប​ព្រឹត្តិការណ៍"
 
-#: actionmanager.cpp:1278
+#: actionmanager.cpp:1282
 #, fuzzy, kde-format
 #| msgid "&Show To-do"
 msgctxt "@action:inmenu"
 msgid "&Show To-do"
 msgstr "បង្ហាញ​ការងារ​ត្រូ​វធ្វើ"
 
-#: actionmanager.cpp:1281
+#: actionmanager.cpp:1285
 #, fuzzy, kde-format
 #| msgid "&Edit To-do..."
 msgctxt "@action:inmenu"
 msgid "&Edit To-do…"
 msgstr "កែសម្រួល​ការងារ​ត្រូវ​ធ្វើ..."
 
-#: actionmanager.cpp:1284
+#: actionmanager.cpp:1288
 #, fuzzy, kde-format
 #| msgid "&Delete To-do"
 msgctxt "@action:inmenu"
 msgid "&Delete To-do"
 msgstr "លុប​ការងារ​ត្រូវធ្វើ"
 
-#: actionmanager.cpp:1427 actionmanager.cpp:1531
+#: actionmanager.cpp:1431 actionmanager.cpp:1535
 #, fuzzy, kde-format
 #| msgid "Attach as &link"
 msgctxt "@action:inmenu"
 msgid "Attach as &link"
 msgstr "ភ្ជាប់​ជា​តំណ"
 
-#: actionmanager.cpp:1428 actionmanager.cpp:1532
+#: actionmanager.cpp:1432 actionmanager.cpp:1536
 #, fuzzy, kde-format
 #| msgid "Attach &inline"
 msgctxt "@action:inmenu"
 msgid "Attach &inline"
 msgstr "ភ្ជាប់​ក្នុង​តួ"
 
-#: actionmanager.cpp:1429
+#: actionmanager.cpp:1433
 #, fuzzy, kde-format
 #| msgid "Attach inline &without attachments"
 msgctxt "@action:inmenu"
 msgid "Attach inline &without attachments"
 msgstr "ភ្ជាប់​ក្នុងតួ​ដោយគ្មាន​ឯកសារ​ភ្ជាប់"
 
-#: actionmanager.cpp:1431 actionmanager.cpp:1534
+#: actionmanager.cpp:1435 actionmanager.cpp:1538
 #, fuzzy, kde-format
 #| msgid "C&ancel"
 msgctxt "@action:inmenu"
 msgid "C&ancel"
 msgstr "​បោះបង់"
 
-#: actionmanager.cpp:1469
+#: actionmanager.cpp:1473
 #, fuzzy, kde-format
 #| msgid "Removing attachments from an email might invalidate its signature."
 msgctxt "@info"
 msgid "Removing attachments from an email might invalidate its signature."
 msgstr "ការ​យក​ឯកសារ​ភ្ជាប់​ចេញ​ពី​អ៊ីមែល គឺ​អាច​ធ្វើ​ឲ្យ​ហត្ថលេខា​របស់​វា​មិនមាន​សុពលភាព ។"
 
-#: actionmanager.cpp:1470
+#: actionmanager.cpp:1474
 #, fuzzy, kde-format
 #| msgid "Remove Attachments"
 msgctxt "@title:window"
 msgid "Remove Attachments"
 msgstr "យក​ឯកសារ​ភ្ជាប់​ចេញ"
 
-#: actionmanager.cpp:1619
+#: actionmanager.cpp:1623
 #, fuzzy, kde-format
 #| msgid "Undo: %1"
 msgctxt "@action:inmenu"
 msgid "Undo: %1"
 msgstr "មិន​ធ្វើ​វិញ ៖ %1"
 
-#: actionmanager.cpp:1622
+#: actionmanager.cpp:1626
 #, fuzzy, kde-format
 #| msgid "Undo"
 msgctxt "@action:inmenu"
 msgid "Undo"
 msgstr "មិន​ធ្វើ​វិញ"
 
-#: actionmanager.cpp:1632
+#: actionmanager.cpp:1636
 #, fuzzy, kde-format
 #| msgid "Redo (%1)"
 msgctxt "@action:inmenu"
 msgid "Redo: %1"
 msgstr "ធ្វើ​វិញ (%1)"
 
-#: actionmanager.cpp:1635
+#: actionmanager.cpp:1639
 #, fuzzy, kde-format
 #| msgid "Redo"
 msgctxt "@action:inmenu"
 msgid "Redo"
 msgstr "ធ្វើ​វិញ"
 
-#: actionmanager.cpp:1638
+#: actionmanager.cpp:1642
 #, fuzzy, kde-format
 #| msgid "Undo"
 msgctxt "@action:button"
 msgid "Undo"
 msgstr "មិន​ធ្វើ​វិញ"
 
-#: actionmanager.cpp:1649
+#: actionmanager.cpp:1653
 #, fuzzy, kde-kuit-format
 #| msgid "URL '%1' is invalid."
 msgctxt "@info"
 msgid "URL <filename>%1</filename> is invalid."
 msgstr "URL '%1' មិន​ត្រឹមត្រូវ​ឡើយ ។"
 
-#: actionmanager.cpp:1654
+#: actionmanager.cpp:1658
 #, kde-kuit-format
 msgctxt "@info"
 msgid ""
@@ -1616,21 +1616,21 @@ msgid ""
 "automatically.</para>"
 msgstr ""
 
-#: actionmanager.cpp:1662
+#: actionmanager.cpp:1666
 #, fuzzy, kde-format
 #| msgid "Import Calendar"
 msgctxt "@title:window"
 msgid "Import Calendar"
 msgstr "នាំចូល​ប្រតិទិន"
 
-#: actionmanager.cpp:1663
+#: actionmanager.cpp:1667
 #, fuzzy, kde-format
 #| msgid "Merge into existing calendar"
 msgctxt "@action:button"
 msgid "Merge into existing calendar"
 msgstr "បញ្ចូល​ទៅ​ក្នុង​ប្រតិទិន​ដែល​មាន​ស្រាប់"
 
-#: actionmanager.cpp:1664
+#: actionmanager.cpp:1668
 #, fuzzy, kde-format
 #| msgid "Add as new calendar"
 msgctxt "@action:button"
@@ -6550,7 +6550,7 @@ msgctxt "@title:column"
 msgid "Agenda %1"
 msgstr "របៀបវារៈ %1"
 
-#: views/multiagendaview/multiagendaview.cpp:342
+#: views/multiagendaview/multiagendaview.cpp:340
 #, fuzzy, kde-format
 #| msgid "Configure Side-By-Side View"
 msgctxt "@title:window"

@@ -7,7 +7,7 @@ msgid ""
 msgstr ""
 "Project-Id-Version: KDE 4.3\n"
 "Report-Msgid-Bugs-To: https://bugs.kde.org\n"
-"POT-Creation-Date: 2025-11-26 00:44+0000\n"
+"POT-Creation-Date: 2025-12-16 06:51+0000\n"
 "PO-Revision-Date: 2024-08-06 22:24+0200\n"
 "Last-Translator: Kristof Kiszel <ulysses@fsf.hu>\n"
 "Language-Team: Hungarian <kde-l10n-hu@kde.org>\n"
@@ -481,8 +481,8 @@ msgstr ""
 "Lehetővé teszi az összes befejezett feladat eltávolítását a "
 "naptárgyűjteményből. Ez a művelet nem vonható vissza!"
 
-#: actionmanager.cpp:318 actionmanager.cpp:617 actionmanager.cpp:1308
-#: actionmanager.cpp:1346
+#: actionmanager.cpp:318 actionmanager.cpp:617 actionmanager.cpp:1312
+#: actionmanager.cpp:1350
 #, fuzzy, kde-format
 #| msgid "&Delete"
 msgctxt "@action:inmenu"
@@ -1178,14 +1178,14 @@ msgid ""
 "Calendars options in the Views->Agenda Views settings."
 msgstr ""
 
-#: actionmanager.cpp:609 actionmanager.cpp:1302 actionmanager.cpp:1344
+#: actionmanager.cpp:609 actionmanager.cpp:1306 actionmanager.cpp:1348
 #: koeventpopupmenu.cpp:42
 #, kde-format
 msgctxt "@action:inmenu"
 msgid "&Show"
 msgstr "&Megjelenítés"
 
-#: actionmanager.cpp:613 actionmanager.cpp:1305 actionmanager.cpp:1345
+#: actionmanager.cpp:613 actionmanager.cpp:1309 actionmanager.cpp:1349
 #: koeventpopupmenu.cpp:44
 #, fuzzy, kde-format
 #| msgid "&Edit"
@@ -1401,20 +1401,20 @@ msgctxt "@info"
 msgid "Saved calendar <filename>%1</filename>"
 msgstr ""
 
-#: actionmanager.cpp:1049
+#: actionmanager.cpp:1053
 #, fuzzy, kde-kuit-format
 #| msgid "Unable to save calendar to the file %1."
 msgctxt "@info"
 msgid "Unable to save calendar to the file <filename>%1</filename>"
 msgstr "Nem sikerült elmenteni a naptárt ebbe a fájlba: %1."
 
-#: actionmanager.cpp:1050
+#: actionmanager.cpp:1054
 #, kde-format
 msgctxt "@title:window"
 msgid "Error"
 msgstr "Hiba"
 
-#: actionmanager.cpp:1076
+#: actionmanager.cpp:1080
 #, fuzzy, kde-format
 #| msgid "&Next Day"
 #| msgid_plural "&Next %1 Days"
@@ -1424,83 +1424,83 @@ msgid_plural "&Next %1 Days"
 msgstr[0] "A &következő nap"
 msgstr[1] "A &következő %1 nap"
 
-#: actionmanager.cpp:1089
+#: actionmanager.cpp:1093
 #, fuzzy, kde-format
 #| msgid "Could not start control module for date and time format."
 msgctxt "@info"
 msgid "Could not start control module for date and time format."
 msgstr "A dátum- és időbeállító modult nem sikerült elindítani."
 
-#: actionmanager.cpp:1264
+#: actionmanager.cpp:1268
 #, fuzzy, kde-format
 #| msgid "&Show Event"
 msgctxt "@action:inmenu"
 msgid "&Show Event"
 msgstr "Az e&semény megjelenítése"
 
-#: actionmanager.cpp:1267
+#: actionmanager.cpp:1271
 #, fuzzy, kde-format
 #| msgid "&Edit Event..."
 msgctxt "@action:inmenu"
 msgid "&Edit Event…"
 msgstr "Az esemény szer&kesztése..."
 
-#: actionmanager.cpp:1270
+#: actionmanager.cpp:1274
 #, fuzzy, kde-format
 #| msgid "&Delete Event"
 msgctxt "@action:inmenu"
 msgid "&Delete Event"
 msgstr "Az esemény tör&lése..."
 
-#: actionmanager.cpp:1278
+#: actionmanager.cpp:1282
 #, fuzzy, kde-format
 #| msgid "&Show To-do"
 msgctxt "@action:inmenu"
 msgid "&Show To-do"
 msgstr "A feladat meg&jelenítése"
 
-#: actionmanager.cpp:1281
+#: actionmanager.cpp:1285
 #, fuzzy, kde-format
 #| msgid "&Edit To-do..."
 msgctxt "@action:inmenu"
 msgid "&Edit To-do…"
 msgstr "A feladat sz&erkesztése..."
 
-#: actionmanager.cpp:1284
+#: actionmanager.cpp:1288
 #, fuzzy, kde-format
 #| msgid "&Delete To-do"
 msgctxt "@action:inmenu"
 msgid "&Delete To-do"
 msgstr "A feladat &törlése"
 
-#: actionmanager.cpp:1427 actionmanager.cpp:1531
+#: actionmanager.cpp:1431 actionmanager.cpp:1535
 #, fuzzy, kde-format
 #| msgid "Attach as &link"
 msgctxt "@action:inmenu"
 msgid "Attach as &link"
 msgstr "Csatolás &linkként"
 
-#: actionmanager.cpp:1428 actionmanager.cpp:1532
+#: actionmanager.cpp:1432 actionmanager.cpp:1536
 #, fuzzy, kde-format
 #| msgid "Attach &inline"
 msgctxt "@action:inmenu"
 msgid "Attach &inline"
 msgstr "Csatolás be&szúrva"
 
-#: actionmanager.cpp:1429
+#: actionmanager.cpp:1433
 #, fuzzy, kde-format
 #| msgid "Attach inline &without attachments"
 msgctxt "@action:inmenu"
 msgid "Attach inline &without attachments"
 msgstr "Csat&olás beszúrva mellékletek nélkül"
 
-#: actionmanager.cpp:1431 actionmanager.cpp:1534
+#: actionmanager.cpp:1435 actionmanager.cpp:1538
 #, kde-format
 msgctxt "@action:inmenu"
 msgid "C&ancel"
 msgstr "&Mégsem"
 
-#: actionmanager.cpp:1469
+#: actionmanager.cpp:1473
 #, fuzzy, kde-format
 #| msgid "Removing attachments from an email might invalidate its signature."
 msgctxt "@info"
@@ -1509,55 +1509,55 @@ msgstr ""
 "Ha eltávolít egy mellékletet valamelyik e-mailből, annak digitális aláírása "
 "érvénytelenné válhat."
 
-#: actionmanager.cpp:1470
+#: actionmanager.cpp:1474
 #, kde-format
 msgctxt "@title:window"
 msgid "Remove Attachments"
 msgstr "Mellékletek eltávolítása"
 
-#: actionmanager.cpp:1619
+#: actionmanager.cpp:1623
 #, fuzzy, kde-format
 #| msgid "Undo: %1"
 msgctxt "@action:inmenu"
 msgid "Undo: %1"
 msgstr "Visszavonás: %1"
 
-#: actionmanager.cpp:1622
+#: actionmanager.cpp:1626
 #, fuzzy, kde-format
 #| msgid "Undo"
 msgctxt "@action:inmenu"
 msgid "Undo"
 msgstr "Visszavonás"
 
-#: actionmanager.cpp:1632
+#: actionmanager.cpp:1636
 #, fuzzy, kde-format
 #| msgid "Redo: %1"
 msgctxt "@action:inmenu"
 msgid "Redo: %1"
 msgstr "Újra végrehajtás: %1"
 
-#: actionmanager.cpp:1635
+#: actionmanager.cpp:1639
 #, fuzzy, kde-format
 #| msgid "Redo"
 msgctxt "@action:inmenu"
 msgid "Redo"
 msgstr "Újra végrehajtás"
 
-#: actionmanager.cpp:1638
+#: actionmanager.cpp:1642
 #, fuzzy, kde-format
 #| msgid "Undo"
 msgctxt "@action:button"
 msgid "Undo"
 msgstr "Visszavonás"
 
-#: actionmanager.cpp:1649
+#: actionmanager.cpp:1653
 #, fuzzy, kde-kuit-format
 #| msgid "URL '%1' is invalid."
 msgctxt "@info"
 msgid "URL <filename>%1</filename> is invalid."
 msgstr "A(z) „%1” URL érvénytelen."
 
-#: actionmanager.cpp:1654
+#: actionmanager.cpp:1658
 #, fuzzy, kde-kuit-format
 #| msgctxt "@info"
 #| msgid ""
@@ -1580,20 +1580,20 @@ msgstr ""
 "p><p>Ha a hozzáadást választja, akkor automatikusan egy új naptár lesz "
 "létrehozva önnek.</p>"
 
-#: actionmanager.cpp:1662
+#: actionmanager.cpp:1666
 #, kde-format
 msgctxt "@title:window"
 msgid "Import Calendar"
 msgstr "Naptár importálása"
 
-#: actionmanager.cpp:1663
+#: actionmanager.cpp:1667
 #, fuzzy, kde-format
 #| msgid "Merge into existing calendar"
 msgctxt "@action:button"
 msgid "Merge into existing calendar"
 msgstr "Összeolvasztás a mostani naptár adataival"
 
-#: actionmanager.cpp:1664
+#: actionmanager.cpp:1668
 #, fuzzy, kde-format
 #| msgid "Add as new calendar"
 msgctxt "@action:button"
@@ -6637,7 +6637,7 @@ msgctxt "@title:column"
 msgid "Agenda %1"
 msgstr "Áttekintő nézet %1"
 
-#: views/multiagendaview/multiagendaview.cpp:342
+#: views/multiagendaview/multiagendaview.cpp:340
 #, kde-format
 msgctxt "@title:window"
 msgid "Configure Side-By-Side View"
