@@ -14,7 +14,10 @@ WhatsNewTranslations::~WhatsNewTranslations() = default;
 // Use by newFeaturesMD5. changes in this list will trigger a "new stuff" notification
 QList<KLazyLocalizedString> WhatsNewTranslations::lastNewFeatures() const
 {
-    const QList<KLazyLocalizedString> info{};
+    const QList<KLazyLocalizedString> info{
+        kli18n("Month view: use a slightly different color for drawing the day headers for days outside of the currently selected month"),
+    };
+
     return info;
 }
 
