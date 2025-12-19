@@ -23,7 +23,7 @@ NavigatorBar::NavigatorBar(QWidget *parent)
 {
     QFont tfont = font();
     tfont.setPointSize(10);
-    tfont.setBold(false);
+    tfont.setBold(true);
 
     const bool isRTL = KOGlobals::self()->reverseLayout();
 

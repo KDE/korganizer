@@ -23,6 +23,7 @@ MonthView::MonthView(QWidget *parent)
     auto layout = new QVBoxLayout(this);
     layout->setContentsMargins({});
     mMonthView = new EventViews::MonthView(EventViews::MonthView::Visible, this);
+    mMonthView->enableMonthYearHeader(false); // the month year header is redundant and takes space
     mMonthView->setPreferences(KOPrefs::instance()->eventViewsPreferences());
     layout->addWidget(mMonthView);
     mPopup = eventPopup();

@@ -15,6 +15,7 @@ WhatsNewTranslations::~WhatsNewTranslations() = default;
 QList<KLazyLocalizedString> WhatsNewTranslations::lastNewFeatures() const
 {
     const QList<KLazyLocalizedString> info{
+        kli18n("Month view: no longer display the month year header to save vertical space and remove redundancy."),
         kli18n("Month view: use a slightly different color for drawing the day headers for days outside of the currently selected month"),
     };
 
