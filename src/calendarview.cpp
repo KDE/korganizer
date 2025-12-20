@@ -546,7 +546,7 @@ void CalendarView::writeFilterSettings(KConfig *config)
     }
 
     filterList.reserve(mFilters.count());
-    for (KCalendarCore::CalFilter *filter : std::as_const(mFilters)) {
+    for (const KCalendarCore::CalFilter *filter : std::as_const(mFilters)) {
         filterList << filter->name();
         KConfigGroup filterConfig(config, QStringLiteral("Filter_") + filter->name());
         filterConfig.writeEntry("Criteria", filter->criteria());
@@ -732,7 +732,7 @@ void CalendarView::slotDeleteFinished(int changeId,
 void CalendarView::checkForFilteredChange(const Akonadi::Item &item)
 {
     KCalendarCore::Incidence::Ptr const incidence = Akonadi::CalendarUtils::incidence(item);
-    KCalendarCore::CalFilter *filter = calendar()->filter();
+    const KCalendarCore::CalFilter *filter = calendar()->filter();
     if (filter && !filter->filterIncidence(incidence)) {
         // Incidence is filtered and thus not shown in the view, tell the
         // user so that he isn't surprised if his new event doesn't show up
@@ -851,7 +851,7 @@ void CalendarView::edit_paste()
     bool useEndTime = false;
     KCalUtils::DndFactory::PasteFlags pasteFlags = {};
 
-    KOrg::BaseView *curView = mViewManager->currentView();
+    const KOrg::BaseView *curView = mViewManager->currentView();
     KOAgendaView *agendaView = mViewManager->agendaView();
     MonthView *monthView = mViewManager->monthView();
 
@@ -975,7 +975,7 @@ void CalendarView::dateTimesForNewEvent(QDateTime &startDt, QDateTime &endDt, bo
 
 IncidenceEditorNG::IncidenceDialog *CalendarView::incidenceDialog(const Akonadi::Item &item)
 {
-    IncidenceEditorNG::IncidenceDialog *dialog = mDialogManager->createDialog(item);
+    IncidenceEditorNG::IncidenceDialog *dialog = mDialogManager->createDialog(item); // NOLINT(misc-const-correctness)
     connect(dialog, &IncidenceEditorNG::IncidenceDialog::incidenceCreated, this, &CalendarView::handleIncidenceCreated);
     return dialog;
 }
@@ -984,7 +984,7 @@ IncidenceEditorNG::IncidenceDialog *CalendarView::newEventEditor(const KCalendar
 {
     Akonadi::Item item;
     item.setPayload(event);
-    IncidenceEditorNG::IncidenceDialog *dialog = incidenceDialog(item);
+    IncidenceEditorNG::IncidenceDialog *dialog = incidenceDialog(item); // NOLINT(misc-const-correctness)
 
     dialog->load(item);
 
@@ -1965,7 +1965,7 @@ void CalendarView::updateFilter()
     }
 
     filters << i18nc("@info/plain", "No filter");
-    for (KCalendarCore::CalFilter *filter : std::as_const(mFilters)) {
+    for (const KCalendarCore::CalFilter *filter : std::as_const(mFilters)) {
         if (filter) {
             filters << filter->name();
         }

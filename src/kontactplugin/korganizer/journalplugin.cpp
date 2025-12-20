@@ -45,7 +45,7 @@ JournalPlugin::~JournalPlugin() = default;
 
 KParts::Part *JournalPlugin::createPart()
 {
-    KParts::Part *part = loadPart();
+    KParts::Part *part = loadPart(); // NOLINT(misc-const-correctness)
 
     if (!part) {
         return nullptr;

@@ -161,7 +161,7 @@ void KOPrefsDialogPlugins::usrWriteConfig()
     QStringList selectedPlugins;
 
     for (int i = 0; i < mTreeWidget->topLevelItemCount(); ++i) {
-        QTreeWidgetItem *serviceTypeGroup = mTreeWidget->topLevelItem(i);
+        const QTreeWidgetItem *serviceTypeGroup = mTreeWidget->topLevelItem(i);
         for (int j = 0; j < serviceTypeGroup->childCount(); ++j) {
             auto item = static_cast<PluginItem *>(serviceTypeGroup->child(j));
             if (item->checkState(0) == Qt::Checked) {

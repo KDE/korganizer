@@ -353,7 +353,7 @@ ReparentingModel::Node *ReparentingModel::getReparentNode(const QModelIndex &sou
 
 ReparentingModel::Node *ReparentingModel::getParentNode(const QModelIndex &sourceIndex)
 {
-    if (Node *node = getReparentNode(sourceIndex)) {
+    if (Node *node = getReparentNode(sourceIndex)) { // NOLINT(misc-const-correctness)
         return node;
     }
     const QModelIndex proxyIndex = mapFromSource(sourceIndex.parent());
@@ -575,7 +575,7 @@ void ReparentingModel::onSourceModelReset()
 
 ReparentingModel::Node *ReparentingModel::extractNode(const QModelIndex &index) const
 {
-    Node *node = static_cast<Node *>(index.internalPointer());
+    Node *node = static_cast<Node *>(index.internalPointer()); // NOLINT(misc-const-correctness)
     Q_ASSERT(node);
     Q_ASSERT(validateNode(node));
     return node;
@@ -598,7 +598,7 @@ QModelIndex ReparentingModel::index(int row, int column, const QModelIndex &pare
     if (parentNode->children.size() <= row) {
         return {};
     }
-    Node *node = parentNode->children.at(row).data();
+    const Node *node = parentNode->children.at(row).data();
     Q_ASSERT(validateNode(node));
     return createIndex(row, column, node);
 }
@@ -608,7 +608,7 @@ QModelIndex ReparentingModel::mapToSource(const QModelIndex &proxyIndex) const
     if (!proxyIndex.isValid() || !sourceModel()) {
         return {};
     }
-    Node *node = extractNode(proxyIndex);
+    const Node *node = extractNode(proxyIndex);
     /* cppcheck-suppress knownConditionTrueFalse */
     if (!node->isSourceNode()) {
         return {};
@@ -834,7 +834,7 @@ int ReparentingModel::rowCount(const QModelIndex &parent) const
         return 0;
     }
 
-    Node *node = extractNode(parent);
+    const Node *node = extractNode(parent);
     return node->children.size();
 }
 

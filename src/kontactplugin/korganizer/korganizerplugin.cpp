@@ -70,7 +70,7 @@ KontactInterface::Summary *KOrganizerPlugin::createSummaryWidget(QWidget *parent
 
 KParts::Part *KOrganizerPlugin::createPart()
 {
-    KParts::Part *part = loadPart();
+    KParts::Part *part = loadPart(); // NOLINT(misc-const-correctness)
 
     if (!part) {
         return nullptr;

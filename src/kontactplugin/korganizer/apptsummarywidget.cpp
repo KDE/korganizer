@@ -109,7 +109,7 @@ void ApptSummaryWidget::updateView()
     QPalette urgentPalette = palette();
     KColorScheme::adjustBackground(urgentPalette, KColorScheme::NegativeBackground, QPalette::Window);
 
-    for (SummaryEventInfo *event : events) {
+    for (const SummaryEventInfo *event : events) {
         const KCalendarCore::Event::Ptr ev = event->ev;
         // print the first of the recurring event series only
         if (ev->recurs()) {

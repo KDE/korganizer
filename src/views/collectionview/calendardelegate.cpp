@@ -33,13 +33,13 @@ static QRect enableButtonRect(QRect rect, int pos = 1)
     return rect.adjusted(rect.width() - (offset + side), border, -offset, -border);
 }
 
-static QStyle *style(const QStyleOptionViewItem &option)
+static const QStyle *style(const QStyleOptionViewItem &option)
 {
     QWidget const *widget = nullptr;
     if (const auto v3 = qstyleoption_cast<const QStyleOptionViewItem *>(&option)) {
         widget = v3->widget;
     }
-    QStyle *style = widget ? widget->style() : QApplication::style();
+    const QStyle *style = widget ? widget->style() : QApplication::style();
     return style;
 }
 
@@ -90,7 +90,7 @@ void StyledCalendarDelegate::paint(QPainter *painter, const QStyleOptionViewItem
     initStyleOption(&opt, index);
     QStyledItemDelegate::paint(painter, opt, index);
 
-    QStyle *s = style(option);
+    const QStyle *s = style(option);
 
     // Buttons
     {

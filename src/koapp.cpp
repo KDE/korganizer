@@ -40,7 +40,7 @@ int KOrganizerApp::activate(const QStringList &args, const QString &workingDir)
     Q_UNUSED(workingDir)
     static bool first = true;
     if (isSessionRestored() && first) {
-        KOrg::MainWindow *korg = ActionManager::findInstance(QUrl());
+        const KOrg::MainWindow *korg = ActionManager::findInstance(QUrl());
         if (korg) {
             korg->view()->updateView();
         }

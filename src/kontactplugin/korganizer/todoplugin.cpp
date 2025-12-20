@@ -59,7 +59,7 @@ KontactInterface::Summary *TodoPlugin::createSummaryWidget(QWidget *parent)
 
 KParts::Part *TodoPlugin::createPart()
 {
-    KParts::Part *part = loadPart();
+    KParts::Part *part = loadPart(); // NOLINT(misc-const-correctness)
 
     if (!part) {
         return nullptr;

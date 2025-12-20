@@ -411,7 +411,7 @@ void MultiAgendaViewConfigDialogPrivate::setUpColumns(int n)
             ui.selectionStack->removeWidget(w);
             delete w;
             qDeleteAll(listModel.takeRow(i));
-            KCheckableProxyModel *const m = selections[i];
+            const KCheckableProxyModel *const m = selections[i];
             selections.remove(i);
             const int pos = newlyCreated.indexOf(m);
             if (pos != -1) {
@@ -488,7 +488,7 @@ KCheckableProxyModel *MultiAgendaViewConfigDialog::takeSelectionModel(int column
         return nullptr;
     }
 
-    KCheckableProxyModel *const m = d->selections[column];
+    KCheckableProxyModel *const m = d->selections[column]; // NOLINT(misc-const-correctness)
     d->newlyCreated.erase(std::remove(d->newlyCreated.begin(), d->newlyCreated.end(), m), d->newlyCreated.end());
     return m;
 }
@@ -502,7 +502,7 @@ void MultiAgendaViewConfigDialog::setSelectionModel(int column, KCheckableProxyM
 {
     Q_ASSERT(column >= 0 && column < d->selections.size());
 
-    KCheckableProxyModel *const m = d->selections[column];
+    const KCheckableProxyModel *const m = d->selections[column];
     if (m == model) {
         return;
     }

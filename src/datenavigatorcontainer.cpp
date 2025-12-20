@@ -377,7 +377,7 @@ void DateNavigatorContainer::handleWeekClickedSignal(const QDate &week, const QD
 
 KDateNavigator *DateNavigatorContainer::firstNavigatorForDate(const QDate &date) const
 {
-    KDateNavigator *navigator = nullptr;
+    KDateNavigator *navigator = nullptr; // NOLINT(misc-const-correctness)
     if (date.isValid()) {
         KODayMatrix::MatrixRange limits = KODayMatrix::matrixLimits(mNavigatorView->month());
 

@@ -61,7 +61,7 @@
 #endif
 static Akonadi::EntityTreeModel *findEtm(QAbstractItemModel *model)
 {
-    QAbstractProxyModel *proxyModel = nullptr;
+    const QAbstractProxyModel *proxyModel = nullptr;
     while (model) {
         proxyModel = qobject_cast<QAbstractProxyModel *>(model);
         if (proxyModel && proxyModel->sourceModel()) {
@@ -91,7 +91,7 @@ public:
 private Q_SLOTS:
     void onSourceRowsInserted(const QModelIndex &parent, int start, int end)
     {
-        Akonadi::EntityTreeModel *etm = findEtm(mCheckableProxy);
+        const Akonadi::EntityTreeModel *etm = findEtm(mCheckableProxy);
         // Only check new collections and not during initial population
         if (!etm || !etm->isCollectionTreeFetched()) {
             return;
@@ -154,7 +154,7 @@ private Q_SLOTS:
     {
         // The initial expansion is handled by the state saver
         if (!mExpandAll) {
-            Akonadi::EntityTreeModel *etm = findEtm(mTreeView->model());
+            const Akonadi::EntityTreeModel *etm = findEtm(mTreeView->model());
             if (!etm || !etm->isCollectionTreeFetched()) {
                 restoreTreeState();
                 return;
@@ -970,7 +970,7 @@ void AkonadiCollectionView::rowsInserted(const QModelIndex &, int, int)
 Akonadi::Collection AkonadiCollectionView::selectedCollection() const
 {
     Akonadi::Collection collection;
-    QItemSelectionModel *selectionModel = mCollectionView->selectionModel();
+    const QItemSelectionModel *selectionModel = mCollectionView->selectionModel();
     if (!selectionModel) {
         return collection;
     }
@@ -987,7 +987,7 @@ Akonadi::Collection::List AkonadiCollectionView::checkedCollections() const
     if (!mSelectionProxyModel) {
         return collections;
     }
-    QItemSelectionModel *selectionModel = mSelectionProxyModel->selectionModel();
+    const QItemSelectionModel *selectionModel = mSelectionProxyModel->selectionModel();
     if (!selectionModel) {
         return collections;
     }
@@ -1008,7 +1008,7 @@ bool AkonadiCollectionView::isChecked(const Akonadi::Collection &collection) con
     if (!mSelectionProxyModel) {
         return false;
     }
-    QItemSelectionModel *selectionModel = mSelectionProxyModel->selectionModel();
+    const QItemSelectionModel *selectionModel = mSelectionProxyModel->selectionModel();
     if (!selectionModel) {
         return false;
     }

@@ -1611,7 +1611,7 @@ void ActionManager::showDate(QDate date)
 
 void ActionManager::updateUndoRedoActions()
 {
-    Akonadi::History *history = mCalendarView->incidenceChanger()->history();
+    const Akonadi::History *history = mCalendarView->incidenceChanger()->history();
 
     if (history->undoAvailable()) {
         mUndoAction->setEnabled(true);

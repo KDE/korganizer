@@ -51,8 +51,8 @@ KOrg::BaseView *KOViewManager::currentView()
 
 KActionCollection *KOViewManager::getActionCollection()
 {
-    KActionCollection *collection = nullptr;
-    KOrg::MainWindow *w = ActionManager::findInstance(QUrl());
+    KActionCollection *collection = nullptr; // NOLINT(misc-const-correctness)
+    const KOrg::MainWindow *w = ActionManager::findInstance(QUrl());
     if (w) {
         collection = w->getActionCollection();
     }
@@ -61,8 +61,8 @@ KActionCollection *KOViewManager::getActionCollection()
 
 QAction *KOViewManager::viewToAction(const QString &view, RangeMode rangeMode)
 {
-    QAction *action = nullptr;
-    KActionCollection *ac = getActionCollection();
+    QAction *action = nullptr; // NOLINT(misc-const-correctness)
+    const KActionCollection *ac = getActionCollection();
     if (!ac) {
         return action;
     }
@@ -210,7 +210,7 @@ void KOViewManager::showView(KOrg::BaseView *view)
     raiseCurrentView();
     mMainView->processIncidenceSelection(Akonadi::Item(), QDate());
     mMainView->updateView();
-    KActionCollection *ac = getActionCollection();
+    const KActionCollection *ac = getActionCollection();
     if (ac) {
         if (QAction *action = ac->action(QStringLiteral("configure_view"))) {
             action->setEnabled(view->hasConfigurationDialog());
@@ -228,7 +228,7 @@ void KOViewManager::showView(KOrg::BaseView *view)
 
 void KOViewManager::goMenu(bool enable)
 {
-    KActionCollection *ac = getActionCollection();
+    const KActionCollection *ac = getActionCollection();
     if (ac) {
         QAction *action = ac->action(QStringLiteral("go_today"));
         if (action) {
@@ -403,7 +403,7 @@ void KOViewManager::viewActionEnable(QAction *action)
         return;
     }
 
-    KActionCollection *ac = getActionCollection();
+    const KActionCollection *ac = getActionCollection();
     if (!ac) {
         return;
     }

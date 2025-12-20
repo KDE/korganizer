@@ -159,7 +159,7 @@ void FilterEdit::saveChanges()
     const int numberOfCat(mCatList->count());
     categoryList.reserve(numberOfCat);
     for (int i = 0; i < numberOfCat; ++i) {
-        QListWidgetItem *item = mCatList->item(i);
+        const QListWidgetItem *item = mCatList->item(i);
         if (item) {
             categoryList.append(item->text());
         }
@@ -247,7 +247,7 @@ void FilterEdit::bDeletePressed()
     }
 
     int const selected = mRulesList->currentRow();
-    KCalendarCore::CalFilter *filter = mFilters->at(selected);
+    const KCalendarCore::CalFilter *filter = mFilters->at(selected);
     mFilters->removeAll(filter);
     delete filter;
     mCurrent = nullptr;
@@ -270,7 +270,7 @@ void FilterEdit::updateSelectedName(const QString &newText)
     }
     bool allOk = true;
 
-    for (KCalendarCore::CalFilter *i : std::as_const(*mFilters)) {
+    for (const KCalendarCore::CalFilter *i : std::as_const(*mFilters)) {
         if (i && i->name().isEmpty()) {
             allOk = false;
         }
@@ -291,7 +291,7 @@ bool FilterEdit::correctName(const QString &newText)
     if (!newText.isEmpty()) {
         const int val = mRulesList->count();
         for (int i = 0; i < val; ++i) {
-            QListWidgetItem *item = mRulesList->item(i);
+            const QListWidgetItem *item = mRulesList->item(i);
             if (item && (mRulesList->currentItem() != item)) {
                 if (newText == item->text()) {
                     negative = true;

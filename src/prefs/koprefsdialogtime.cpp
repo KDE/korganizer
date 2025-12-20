@@ -103,7 +103,7 @@ KOPrefsDialogTime::KOPrefsDialogTime(QObject *parent, const KPluginMetaData &dat
 
     // QString regionStr = KHolidays::HolidayRegion::defaultRegionCode();
     const auto holidays = KOGlobals::self()->holidays();
-    for (KHolidays::HolidayRegion *region : holidays) {
+    for (const KHolidays::HolidayRegion *region : holidays) {
         const QString regionStr = region->regionCode();
         mHolidayCheckCombo->setItemCheckState(mHolidayCheckCombo->findData(regionStr), Qt::Checked);
     }
