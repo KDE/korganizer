@@ -1,7 +1,7 @@
 # translation of korganizer.po to Slovenian
 # Translation of korganizer.po to Slovenian
 # Copyright (C) 2001,2002, 2003, 2004, 2005, 2006 Free Software Foundation, Inc.
-# $Id: korganizer.po 1725377 2025-12-20 01:24:57Z scripty $
+# $Id: korganizer.po 1725511 2025-12-21 01:26:04Z scripty $
 # $Source$
 #
 # Roman Maurer <roman.maurer@hermes.si>, 2001.
@@ -15,7 +15,7 @@ msgstr ""
 "Project-Id-Version: korganizer\n"
 "Report-Msgid-Bugs-To: https://bugs.kde.org\n"
 "POT-Creation-Date: 2025-12-20 00:43+0000\n"
-"PO-Revision-Date: 2025-12-19 06:35+0100\n"
+"PO-Revision-Date: 2025-12-20 07:19+0100\n"
 "Last-Translator: Matjaž Jeran <matjaz.jeran@amis.net>\n"
 "Language-Team: Slovenian <lugos-slo@lugos.si>\n"
 "Language: sl\n"
@@ -6313,6 +6313,8 @@ msgid ""
 "Month view: no longer display the month year header to save vertical space "
 "and remove redundancy."
 msgstr ""
+"Mesečni pogled: glave meseca in leta nista več prikazani zaradi prihranka "
+"navpičnega prostora in odvečne vsebine."
 
 #: whatsnew/whatsnewtranslations.cpp:19
 msgid ""
