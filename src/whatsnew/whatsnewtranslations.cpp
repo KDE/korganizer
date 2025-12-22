@@ -15,7 +15,9 @@ WhatsNewTranslations::~WhatsNewTranslations() = default;
 QList<KLazyLocalizedString> WhatsNewTranslations::lastNewFeatures() const
 {
     const QList<KLazyLocalizedString> info{
-        kli18n("Month view: no longer display the month year header to save vertical space and remove redundancy."),
+        kli18n("Reminders are enabled by default for all new events and to-dos. To disable this behavior, uncheck the Enable reminders options in the settings "
+               "Time&Date->Default Values tab"),
+        kli18n("Month view: no longer display the month year header to save vertical space and remove redundancy"),
         kli18n("Month view: use a slightly different color for drawing the day headers for days outside of the currently selected month"),
     };
 
