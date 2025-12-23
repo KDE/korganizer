@@ -1,0 +1,5630 @@
+<?xml version="1.0" ?>
+<!DOCTYPE book PUBLIC "-//KDE//DTD DocBook XML V4.5-Based Variant V1.1//EN"
+ "dtd/kdedbx45.dtd" [
+  <!ENTITY % addindex "IGNORE">
+  <!ENTITY % Turkish "INCLUDE">
+]>
+
+<book id="korganizer" lang="&language;">
+
+<bookinfo>
+
+<title
+>&korganizer; El Kitabı</title>
+
+<authorgroup>
+
+<author
+><firstname
+>Carlos</firstname
+> <othername
+>Leonhard</othername
+> <surname
+>Woelz</surname
+> <affiliation
+><address
+><email
+>carloswoelz@imap-mail.com</email
+></address
+></affiliation>
+</author>
+
+<author
+>&Milos.Prudek; &Milos.Prudek.mail; </author>
+
+<author
+>&Paul.E.Ahlquist.Jr; &Paul.E.Ahlquist.Jr.mail; </author>
+
+<author
+><firstname
+>J&uuml;rgen</firstname
+> <surname
+>Nagel</surname
+> <affiliation
+><address
+><email
+>juergen.nagel@student.fh-reutlingen.de</email
+></address
+></affiliation>
+</author>
+
+<author
+>&Michel.Boyer; &Michel.Boyer.mail; </author>
+
+<othercredit role="developer"
+><firstname
+>Reinhold</firstname
+> <surname
+>Kainhofer</surname
+> <affiliation
+><address
+><email
+>reinhold@kainhofer.com</email
+></address
+></affiliation>
+<contrib
+>Geliştirici</contrib>
+</othercredit>
+
+<othercredit role="developer"
+><firstname
+>Cornelius</firstname
+> <surname
+>Schumacher</surname
+> <affiliation
+><address
+>&Cornelius.Schumacher.mail;</address
+></affiliation>
+<contrib
+>Geliştirici</contrib>
+</othercredit>
+
+<othercredit role="developer"
+><firstname
+>Preston</firstname
+> <surname
+>Brown</surname
+> <affiliation
+><address
+>&Preston.Brown.mail;</address
+></affiliation>
+<contrib
+>Geliştirici</contrib>
+</othercredit>
+
+<othercredit role="reviewer"
+><firstname
+>Lauri</firstname
+> <surname
+>Watts</surname
+> <affiliation
+><address
+>&Lauri.Watts.mail;</address
+></affiliation>
+<contrib
+>Eleştirmen</contrib>
+</othercredit>
+
+<othercredit role="translator"
+><firstname
+>Emir</firstname
+><surname
+>SARI</surname
+><affiliation
+><address
+><email
+>emir_sari@icloud.com</email
+></address
+></affiliation
+><contrib
+>Çeviri</contrib
+></othercredit
+> 
+</authorgroup>
+
+
+
+<copyright>
+<year
+>2000</year
+><holder
+>&Milos.Prudek;</holder>
+</copyright>
+
+<copyright>
+<year
+>2001</year>
+<holder
+>&Paul.E.Ahlquist.Jr;</holder>
+</copyright>
+
+<copyright>
+<year
+>2004</year>
+<holder
+>J&uuml;rgen Nagel</holder>
+</copyright>
+
+<copyright>
+<year
+>2005</year>
+<holder
+>Carlos Leonhard Woelz</holder>
+</copyright>
+
+<legalnotice
+>&FDLNotice;</legalnotice>
+
+<date
+>2016‒12‒08</date>
+<releaseinfo
+>5.4.40 (Uygulamalar 16.12)</releaseinfo>
+
+<abstract
+><para
+>&korganizer;, kullanımı kolay bir kişisel bilgi yöneticisidir (<acronym
+>PIM</acronym
+>). Günce girdileri yazabilir, randevular, etkinlikler ve yapılacaklar planlayabilirsiniz. &korganizer; size bekleyen görevlerinizi anımsatır ve planınıza sadık kalmanızı sağlar. </para
+></abstract>
+
+<keywordset>
+<keyword
+>KDE</keyword>
+<keyword
+>K Organizatör</keyword>
+<keyword
+>kdepim</keyword>
+<keyword
+>yönetici</keyword>
+<keyword
+>zaman</keyword>
+<keyword
+>plan</keyword>
+<keyword
+>anımsatıcı</keyword>
+<keyword
+>randevu</keyword>
+<keyword
+>etkinlik</keyword>
+<keyword
+>günce</keyword>
+<keyword
+>yapılacak</keyword>
+</keywordset>
+
+</bookinfo>
+
+<chapter id="introduction"
+><!--updated to 5.4.40-->
+<title
+>Giriş</title>
+
+<para
+>&korganizer;, sezgisel ve kullanımı kolay bir kişisel bilgi yöneticisidir (<acronym
+>PIM</acronym
+>). Günce girdileri yazabilir, randevular, etkinlikler ve yapılacaklar planlayabilirsiniz. &korganizer; size bekleyen görevlerinizi anımsatır, olaylarınızı ve deneyimlerinizi kaydeder ve planınıza sadık kalmanızı sağlar.</para>
+
+<para
+>Ancak &korganizer; sadece kişisel takviminizle ilgili değildir, iş arkadaşlarınız ve dostlarınızla da etkileşim kurmanıza yardımcı olabilir. &korganizer; ile e-posta adresi olan herkesi bir etkinliğe davet edebilir ve yanıtları işleyebilir, bir takvim (bir grup yazılımı sunucusu veya ağ üzerinden bir dosya kullanarak) paylaşabilirsiniz. &korganizer; açık standartlara dayanır ve birçok farklı grup planlama sunucusuyla çalışarak size bilgileriniz üzerinde denetim ve en iyi çözümleri seçme özgürlüğü verir. </para>
+
+<para
+>&korganizer; ayrıca &kontact;’ın takvim, günce ve yapılacaklar bileşenidir; böylelikle size tüm iletişim ve bilgi yönetimi gereksinimleriniz için tümleşik bir çözüm sunar: E-posta, notlar, kişi yönetimi, haber ve haber beslemesi okuyucusu. Onu &kontact;’ın içinde kullanmasanız bile &korganizer;, diğer &kde; <acronym
+>PIM</acronym
+> uygulamalarıyla tümleşiktir. Örneğin onu, ajandanızda &kaddressbook; uygulamasından alacağı doğum günlerini göstermesi için yapılandırabilir, &kmail; kullanarak davetleri alabilir ve gönderebilirsiniz.</para>
+
+<para
+>&korganizer;’ün ana özellikleri:</para>
+<para
+><itemizedlist>
+<listitem
+><para
+>Yapılacaklar listesi oluşturmak, etkinlikler planlamak ve günce girdileri yazmak.</para
+></listitem>
+<listitem
+><para
+>İlgili ögeleri künyelerle gruplandırarak etkinliklerinizi ve yapılacaklarınızı düzenleyin.</para
+></listitem>
+<listitem
+><para
+>Künyeleri renklerle vurgulayın.</para
+></listitem>
+<listitem
+><para
+>Birden çok takvim açıp onları sorunsuzca görüntüleyip düzenleyin.</para
+></listitem>
+<listitem
+><para
+>Etkinliklerinizi sürükle–bırak yöntemiyle yeniden planlayın.</para
+></listitem>
+<listitem
+><para
+>Kolaylıkla yinelenen etkinlikler üretin.</para
+></listitem>
+<listitem
+><para
+>Grup programı özelliklerini kullanarak etkinlikler düzenleyin veya etkinliklere katılın.</para
+></listitem>
+<listitem
+><para
+>Desteklenen birden fazla grup yazılımı sunucusu arasından seçim yapın.</para
+></listitem>
+<listitem
+><para
+>vCalendar ve iCalendar (açık standartlar) için yerel destek sunar.</para
+></listitem>
+<listitem
+><para
+>Takvim birleştirmek ve içe aktarmak.</para
+></listitem>
+<listitem
+><para
+>Açık takvimler arasında sürükle–bırak yapabilme özelliği.</para
+></listitem>
+<listitem
+><para
+>&konqueror; ile işbirliği yapabilme özelliği.</para
+></listitem>
+<listitem
+><para
+>Özelleştirilebilir simge kümeleri.</para
+></listitem>
+<listitem
+><para
+>Sürükle–bırak özelliğini destekleyen araç panelleri.</para
+></listitem>
+<listitem
+><para
+>Çok daha fazlası…</para
+></listitem>
+</itemizedlist
+></para>
+
+
+<para
+>Şimdi &korganizer;’ün <link linkend="five-minute-course"
+>Beş Dakikalık Hızlı Kurs</link
+>’una bakın veya <link linkend="managing-data"
+>belgelendirmesini</link
+> okuyun!</para>
+
+</chapter>
+
+<chapter id="five-minute-course"
+><!--updated to 5.4.40-->
+<title
+>&korganizer; Beş Dakikalık Hızlı Kursu</title>
+<subtitle
+>(deneyimliler ve sabırsızlar için)</subtitle>
+
+<para
+>Zaman sıkıntısı mı çekiyorsunuz? Gelin, &korganizer;’e hızlı ve uygulamalı bir genel bakış ile işe koyulalım!</para>
+
+<para
+>Daha önce bir kişisel bilgi programı ile çalıştıysanız &korganizer; ile evinizde gibi hissedeceksiniz. Yeni etkinlikler girebilir, var olan etkinlikleri yeniden planlayabilir, etkinliklerinize künyeler atayabilir, yeni künyeler tasarlayabilir, katılımcı listelerini ve rollerini girebilir ve değiştirebilir, etkinlik davetlerini kendiliğinden e-postayla gönderebilir ve diğer &korganizer; takvimleriyle veri alışverişi yapabilir, yapılacaklar oluşturabilir ve günce girdileri yazabilirsiniz.</para>
+
+<para
+>Bu kurs, &kde; ile nasıl çalışacağınızı bildiğinizi ve kendi başınıza keşfetmeyi tercih ettiğinizi varsayar. Burada yalnızca &korganizer;’ün temel işlevleri ele alınmaktadır.</para>
+
+<sect1 id="course-entering-events">
+<title
+>Etkinlikler Girmek</title>
+
+<procedure>
+<step
+><para
+><inlinemediaobject
+><imageobject
+> <imagedata fileref="view-calendar-agenda.png" format="PNG"/></imageobject
+> </inlinemediaobject
+><guibutton
+>Ajanda</guibutton
+> araç çubuğu düğmesine tıklayın veya <menuchoice
+><guimenu
+>Görünüm</guimenu
+> <guimenuitem
+>Ajanda</guimenuitem
+></menuchoice
+> menü ögesini seçin. Bu, <link linkend="agenda-view"
+><guilabel
+>Ajanda Görünümü</guilabel
+></link
+>’nü getirir.</para
+></step>
+
+<step
+><para
+><link linkend="glossary" endterm="gloss-date-navigator"
+>Tarih Gezgini</link
+>’nde istediğiniz tarihe tıklayın. </para
+></step>
+
+<step
+><para
+>Ana panelde istediğiniz saatin yanında bulunan ve etkinliğin zamanını yansıtan metin alanını seçin. Bu alana çift tıklayın veya <guilabel
+>Yeni Etkinlik</guilabel
+> iletişim kutusunu açmak için etkinliğin özetini yazmaya başlayın.</para
+></step>
+
+<step
+><para
+><link linkend="entering-data-events"
+>Etkinlik ayrıntılarını girin</link
+>. İletişim kutusunda dolaşmak ve etkinliğin tüm özelliklerine erişmek için pencerenin altındaki altı sekmeyi kullanın.</para
+></step>
+
+<step
+><para
+>Etkinliği kaydetmek için <guibutton
+>Tamam</guibutton
+> düğmesine tıklayın.</para
+></step>
+</procedure>
+</sect1>
+
+<sect1 id="course-entering-todos">
+<title
+>Yapılacaklar Girmek</title>
+
+<procedure>
+<step
+><para
+><guilabel
+>Yeni Yapılacak</guilabel
+> iletişim kutusunu açmak için <xref linkend="menu-actions-new-todo"/> menü ögesini seçin.</para
+></step>
+
+<step
+><para
+><link linkend="entering-data-to-do"
+>Yapılacak ayrıntılarını girin</link
+>. İletişim kutusunda dolaşmak ve etkinliğin tüm özelliklerine erişmek için pencerenin altındaki beş sekmeyi kullanın.</para
+></step>
+
+<step
+><para
+>Yapılacağı kaydetmek için <guibutton
+>Tamam</guibutton
+> düğmesine tıklayın.</para
+></step>
+</procedure>
+
+</sect1>
+
+<sect1 id="course-entering-journals">
+<title
+>Günce Girdileri Eklemek</title>
+
+<procedure>
+
+<step
+><para
+><link linkend="journal-view"
+><guilabel
+>Günce</guilabel
+> ana görünümünü açmak için <inlinemediaobject
+><imageobject
+> <imagedata fileref="journal-new.png" format="PNG"/></imageobject
+> </inlinemediaobject
+><menuchoice
+><guimenu
+>Görünüm</guimenu
+> <guimenuitem
+>Günce</guimenuitem
+></menuchoice
+> menü ögesini</link
+> kullanın.</para
+></step>
+
+<step
+><para
+><menuchoice
+><guimenu
+>Eylemler</guimenu
+> <guimenuitem
+>Yeni Günce</guimenuitem
+></menuchoice
+> menü ögesini seçin.</para
+></step>
+
+<step
+><para
+>Günce girdisi özetini ve metnini girin.</para
+></step>
+
+</procedure>
+
+</sect1>
+
+<sect1 id="course-rescheduling-events">
+<title
+>Etkinlikleri Yeniden Planlamak</title>
+
+<para
+>Etkinlikleri yeniden programlamak basit bir sürükle–bırak işlemidir:</para>
+
+<procedure>
+<step
+><para
+><link linkend="glossary" endterm="gloss-date-navigator"
+>Tarih Gezgini</link
+>’ni kullanarak, yeniden planlamak istediğiniz etkinliğin olduğu tarihe gidin.</para
+></step>
+
+<step
+><para
+>Bu işleme başlamadan önce uygun bir <link linkend="reference-menus-view"
+>görünüm</link
+> seçmelisiniz. Yalnızca <link linkend="agenda-view"
+><guilabel
+>Ajanda</guilabel
+> görünümü</link
+> (Gün, İş Haftası ve Hafta görünümleri) ayrıntılı saatleri gösterir ve kesin zamanlı etkinlikleri (randevular gibi) yeniden planlamak için uygundur. Ay görünümü ise yalnızca günleri gösterir. Bundan dolayı, tatil gibi uzun dönemli etkinlikleri değiştirmek istiyorsanız Ay görünümünü kullanın.</para
+></step>
+
+<step
+><para
+>Hafta görünümünü görüntülemek için Ajanda görünümünü seçin, <inlinemediaobject
+><imageobject
+> <imagedata fileref="view-calendar-week.png" format="PNG"/></imageobject
+> </inlinemediaobject
+><guibutton
+>Hafta</guibutton
+> görünümü araç çubuğu düğmesine tıklayın veya <menuchoice
+><guimenu
+>Git</guimenu
+> <guimenuitem
+>Hafta</guimenuitem
+></menuchoice
+> menü ögesini kullanın. </para
+></step>
+
+<step
+><para
+>Etkinliği yeni tarih ve zaman konumuna sürükleyip bırakın.</para
+></step>
+
+</procedure>
+
+<para
+>Daha hassas bir şekilde yeniden planlamak isterseniz etkinliğe çift tıklayın ve günü çeyrek saatlere bölen açılır menüleri kullanarak başlangıç ve bitiş saatini değiştirin. Bu yeterince hassas değilse istediğiniz saati doğrudan girebilirsiniz.</para>
+
+</sect1>
+
+<sect1 id="course-rescheduling-todos">
+<title
+>Yapılacakları Yeniden Planlamak veya Düzenlemek</title>
+
+<para
+>Bu işleme başlamadan önce uygun bir <link linkend="reference-menus-view"
+>görünüm</link
+> seçmelisiniz. Yalnızca <link linkend="todo-view"
+><inlinemediaobject
+><imageobject
+> <imagedata fileref="view-calendar-tasks.png" format="PNG"/></imageobject
+> </inlinemediaobject
+><guilabel
+>Yapılacaklar Listesi</guilabel
+> görünümü</link
+> ve <link linkend="description-view"
+>Yapılacaklar kenar çubuğu bileşeni</link
+> bir bitiş tarihi olmayan yapılacakları gösterir.</para>
+
+<para
+>Yapılacaklar Listesi görünümünü görüntülemek için <inlinemediaobject
+><imageobject
+> <imagedata fileref="view-calendar-tasks.png" format="PNG"/></imageobject
+> </inlinemediaobject
+><guibutton
+>Yapılacaklar Listesi</guibutton
+> görünümü araç çubuğu düğmesine tıklayın veya <menuchoice
+><guimenu
+>Görünüm</guimenu
+> <guimenuitem
+>Yapılacaklar Listesi</guimenuitem
+></menuchoice
+> menü ögesini kullanın. </para>
+
+<para
+>Bir yapılacak ögesini yeniden planlamak için üzerinde sağ tıklayın. Bu, bir bağlam menüsü getirir. <guimenuitem
+>Şuraya Kopyala</guimenuitem
+> veya <guimenuitem
+>Şuraya Taşı</guimenuitem
+> menü ögelerini kullanın ve şimdi görünen takvimden yeni tarihi seçin. Yapılacak ögesi artık seçilen tarihe kopyalandı veya taşındı. Alternatif olarak, eğer ana panelde bir <guilabel
+>Yapılacaklar Listesi</guilabel
+> görünümü tutuyorsa yalnızca <guilabel
+>Bitiş Tarihi/Zamanı</guilabel
+> sütununa sağ tıklayın. Bir takvim anında açılır ve buradan yeni tarihi ayarlayabilirsiniz.</para>
+
+<para
+>Bir yapılacak ögesini <link linkend="entering-data-to-do"
+>düzenlemek</link
+> için ona sağ tıklayın ve <guimenuitem
+>Düzenle…</guimenuitem
+> menü ögesini kullanın.</para>
+
+</sect1>
+
+<sect1 id="course-conclusion">
+<title
+>Sonuç</title>
+
+<para
+>Bu beş dakikalık kurs, &korganizer;’ün yalnızca temel işlemlerini kapsar. &korganizer;’ün tüm yeteneklerini ortaya çıkarmak için şimdi bu kılavuzun tümünü okuyun. Pek okuyasınız yoksa en azından <link linkend="faq"
+>&FAQ;</link
+> bölümüne bir göz atın.</para>
+
+</sect1>
+
+</chapter>
+
+<chapter id="managing-data"
+><!--updated to 5.4.40-->
+<title
+>Takvimler İçe Aktarmak, Takvimleri Dışa Aktarmak ve Yönetmek</title>
+
+<para
+>&korganizer;, etkinlikleri, günce girdilerini ve yapılacakları çeşitli yöntemler ve konumlar kullanarak depolayabilir ve onları getirebilir. Bu konumlardan her birine <firstterm
+>takvim özkaynağı</firstterm
+> adı verilir. </para>
+
+<para
+>&korganizer; iCalendar ve vCalendar standartlarına dayalı takvim dosyalarını yerel olarak destekler (onları yeni bir özkaynak olarak ekleyerek); ancak veriyi var olan bir özkaynağa içe aktarabilirsiniz (birleştirebilirsiniz) ve yeni bir pencerede açabilirsiniz. Eski <application
+>ical</application
+> uygulaması tarafından kullanılan biçim de desteklenir.</para>
+
+<para
+>Verinizi iCalendar veya vCalendar dosyası olarak dışa aktarabilirsiniz. Bu dosyalar, çoğu planlama uygulaması tarafından desteklenir. </para>
+
+<para
+>Bu fasılda takvim özkaynaklarınızı nasıl yöneteceğinizi ve içe/dışa aktarma eylemlerini nasıl kullanacağınızı açıklayacağız.</para>
+
+<sect1 id="managing-resources">
+<title
+>Takvim Özkaynakları</title>
+
+<para
+>&korganizer;, öntanımlı özkaynak olarak bir yerel dosya kullanır. Bu, sizin tek seçeneğiniz değildir; ekleyebileceğiniz birden çok özkaynak türü bulunur: Grup yazılımı sunucuları, blog olarak günce girdileri, ağ dosyaları gibi. Birden çok özkaynak kullanıyorsanız &korganizer; <link linkend="config-main-general-personal"
+>öntanımlı özkaynak olarak neyi kullanacağı konusunda veya yeni etkinlikleri, yapılacakları veya günce girdilerini kaydederken hangi özkaynağı kullanması gerektiği konusunda</link
+> yapılandırılabilir. &korganizer;, <link linkend="description-view"
+>görünümlerindeki</link
+> iki veya daha çok özkaynağı sorunsuzca birleştirebilir. </para>
+
+<para
+>Öntanımlı özkaynak birçok kullanım durumu için iyi bir seçimdir; ancak özellikle desteklenen bir grup yazılımı sunucusu kullanıyorsanız başka bir özkaynak kullanmak isteyebilirsiniz. Lütfen sunucu yöneticisinden uygun/meşgul bilgisini yayınlama ve alma içerilmek üzere grup yazılımı özkaynağını yapılandırmak için gereken bilgileri isteyin. Uygun/Meşgul bilgilerine erişim, bir etkinlik organizatörünün katılımcıyı etkinliğin katılımcı listesine eklerken onun takvimini dikkate almasını sağlar.</para>
+
+<note
+><para
+>Takvim depolamasının yanı sıra, grup yazılımı sunucuları genellikle kişiler, posta ve <link linkend="glossary" endterm="gloss-freebusy"
+>uygun/meşgul</link
+> bilgisi depolaması sunarlar. Bundan dolayı, burada belirtilen özkaynakların bazıları &kmail; ve &kaddressbook; (&kontact;’ın posta ve kişi yönetimi bileşeni) veya <link linkend="config-main-free-busy"
+>ana yapılandırmadaki uygun/meşgul bilgisine</link
+> ait olabilir.</para>
+<para
+>&korganizer;’ün <link linkend="group-scheduling"
+>grup planlaması</link
+> iletişimi, eş tabanlı bir e-posta standardına dayanır. Bu, onu kullanmak için bir grup yazılımı sunucusuna gereksiniminizin olmadığı anlamına gelir!</para
+></note>
+
+<screenshot id="screenshot-resources">
+<screeninfo
+>&korganizer;’ün Takvimler Ekle iletişim kutusu</screeninfo>
+<mediaobject>
+<imageobject
+><imagedata fileref="korganizer-resource.png" format="PNG"/></imageobject>
+<textobject
+><phrase
+>&korganizer;’ün Takvimler Ekle iletişim kutusu</phrase
+></textobject>
+<caption
+><para
+>&korganizer;’ün Takvimler Ekle iletişim kutusu</para
+></caption>
+</mediaobject>
+</screenshot>
+
+<procedure id="procedure-add-resource">
+<title
+>Yeni Bir &korganizer; Özkaynağı Eklemek</title>
+
+<step
+><para
+><menuchoice
+><guimenu
+>Ayarlar</guimenu
+> <guimenuitem
+>&korganizer;’ü Yapılandır…</guimenuitem
+></menuchoice
+> menü ögesiyle &korganizer;’ün ayarlar iletişim kutusunu açın ve <guilabel
+>Genel</guilabel
+> panelinden <guilabel
+>Takvimler</guilabel
+> sekmesine geçin. </para>
+<para
+>Alternatif olarak, <guilabel
+>Takvim Yöneticisi</guilabel
+> kenar çubuğunda &RMB; ile tıklayın ve <guilabel
+>Takvim Ekle…</guilabel
+>’yi seçin.</para
+></step>
+<step
+><para
+>Kenar çubuğunda <guilabel
+>Takvim Yöneticisi</guilabel
+> görüntülenmiyorsa onu görüntülemek için <menuchoice
+><guimenu
+>Ayarlar</guimenu
+> <guisubmenu
+>Kenar Çubuğu</guisubmenu
+> <guimenuitem
+>Takvim Yöneticisini Göster</guimenuitem
+></menuchoice
+> menü ögesini seçin.</para
+></step>
+
+<step
+><para
+>Kullanılabilir özkaynaklar listesine yeni özkaynaklar eklemek için <guibutton
+>Ekle…</guibutton
+> düğmesine basın.</para
+></step>
+
+<step
+><para
+>Etkinleştirmek için özkaynağı seçin.</para
+></step>
+
+<step
+><para
+>Daha sonra bir özkaynağı düzenlemek veya silmek isterseniz onu <guilabel
+>Takvim Yöneticisi</guilabel
+> kenar çubuğunda seçin ve silmek için <guibutton
+>Takvimi Sil</guibutton
+>’e veya üzerinde değişiklik yapmak için <guibutton
+>Takvim Özellikleri…</guibutton
+> ögesini kullanın.</para
+></step>
+
+</procedure>
+<para
+>&korganizer;’de kullanılabilir olan özkaynaklar içinde şunları bulabilirsiniz:</para>
+
+<variablelist>
+
+<varlistentry>
+<term
+><guilabel
+>Doğum Günleri ve Yıldönümleri</guilabel
+></term>
+<listitem
+><para
+>Adres defterinizdeki kişilerin doğum günü ve yıldönümü tarihlerine takvim etkinlikleri olarak erişim sağlar.</para
+></listitem>
+</varlistentry>
+
+<varlistentry>
+<term
+><guilabel
+>DAV GroupWare Özkaynağı</guilabel
+></term>
+<listitem
+><para
+>DAV takvimlerini ve adres defterlerini yönetmek için özkaynak (CalDAV, GroupDAV).</para
+></listitem>
+</varlistentry>
+
+<varlistentry>
+<term
+><guilabel
+>Google Takvim ve Görevler</guilabel
+></term>
+<listitem
+><para
+>Google Takvim ve Görevlerinize erişin.</para
+></listitem>
+</varlistentry>
+
+<varlistentry>
+<term
+><guilabel
+>iCal Takvim Dosyası</guilabel
+></term>
+<listitem
+><para
+>iCal dosyasından veri yükler.</para
+></listitem>
+</varlistentry>
+
+<varlistentry>
+<term
+><guilabel
+>iCal Takvim Klasörü</guilabel
+></term>
+<listitem
+><para
+>Belirli bir dizinde her biri tek bir dosyada saklanan takvim ögelerine erişim sağlar.</para
+></listitem>
+</varlistentry>
+
+<varlistentry>
+<term
+><guilabel
+>K Alarm Takvim Dosyası</guilabel
+></term>
+<listitem
+><para
+>K Alarm takvim dosyasından veri yükler.</para
+></listitem>
+</varlistentry>
+
+<varlistentry>
+<term
+><guilabel
+>K Alarm Takvim Dizini</guilabel
+></term>
+<listitem
+><para
+>Yerel K Alarm dizininden veri yükler.</para
+></listitem>
+</varlistentry>
+
+<varlistentry>
+<term
+><guilabel
+>Kolab Grup Yazılımı Sunucusu</guilabel
+></term>
+<listitem
+><para
+>Bir Kolab IMAP Sunucusu üzerinde Kolab grup yazılımı klasörlerine ve e-postaya erişim sağlar.</para
+></listitem>
+</varlistentry>
+
+<varlistentry>
+<term
+><guilabel
+>Open-Xchange Grup Yazılımı Sunucusu</guilabel
+></term>
+<listitem
+><para
+>Open-Xchange grup yazılımı sunucusundaki toplantı, yapılacaklar ve kişilere erişimi sağlar.</para
+></listitem>
+</varlistentry>
+
+</variablelist>
+
+</sect1>
+
+<sect1 id="managing-import-export">
+<title
+>Takvimler İçe Aktarmak, Takvimleri Dışa Aktarmak ve Yönetmek</title>
+
+<para
+>Yerel dosyalar, &korganizer; tarafından kullanılabilecek diğer birçok özkaynaktan yalnızca biri olsa da, takvimleri paylaşmanın, kopyaları kaydetmenin veya eski takvim programınızdan ögeler içe aktarmanın en uygun yoludur.</para>
+
+<sect2 id="managing-import">
+<title
+>Takvim İçe Aktarmak</title>
+
+<para
+>Bir iCalendar veya vCalendar dosyanız varsa ve onu içe aktarmak istiyorsanız <menuchoice
+><guimenu
+>Dosya</guimenu
+> <guisubmenu
+>İçe Aktar</guisubmenu
+> <guimenuitem
+>Takvim İçe Aktar</guimenuitem
+></menuchoice
+> menü ögesini kullanın. &korganizer; size takvimi yeni bir yerel özkaynak olarak ekleyen <guilabel
+>Yeni Takvim Olarak Ekle</guilabel
+> mi yoksa takvim ögelerini var olan bir özkaynağa birleştiren <guilabel
+>Var Olan Takvime Birleştir</guilabel
+> mi yapmak istediğinizi soracaktır.</para>
+
+<para
+>Örneğin, e-posta yoluyla birkaç girdisi olan bir vCalendar aldıysanız veya takviminizi başka bir uygulamadan içe aktarmayı planlıyorsanız bunu yapmak için iyi bir zaman olacaktır. İkinci durumda yapılması gereken ilk şey, takvim verilerini yukarıdaki biçimlerden birinde dışa aktarmak için söz konusu uygulamayı kullanmak veya uygulamanın yerel biçiminden dönüştürmek için bir araç kullanmaktır.</para>
+</sect2>
+
+<sect2 id="managing-export">
+<title
+>Takvimleri Dışa Aktarmak</title>
+
+<para
+>Verilerinizi, çoğu planlama uygulaması tarafından desteklenen bir iCalendar dosyası olarak dışa aktarabilirsiniz. &korganizer;, <link linkend="filters-view"
+>işareti kaldırılmamış</link
+> (bunlara <quote
+>etkin</quote
+> ögeler diyelim) tüm özkaynaklardaki takvim ögelerini dışa aktaracaktır. Başka bir deyişle, bir takvim ögesini göremiyorsanız bu öge dışa aktarılan dosyada yer almayacaktır. İstenmeyen ögeleri dışa aktarmadan önce süzmek istiyorsanız <link linkend="filters-view"
+>süzgeçler</link
+> oluşturabilirsiniz. Etkinliklerinizi ve yapılacaklarınızı <link linkend="categories-view"
+>künyelerle</link
+> sınıflandırırsanız süzgeçler daha da etkili olurlar. Özkaynakları etkinleştirmek veya devre dışı bırakmak için <link linkend="managing-resources"
+><guilabel
+>Takvim Yöneticisi</guilabel
+></link
+> kenar çubuğundaki özkaynak kutusunu işaretleyin veya işaretini kaldırın.</para>
+
+<para
+>Tüm <quote
+>etkin</quote
+> etkinliklerinizi, yapılacaklarınızı ve günce girdilerinizi (hangi özkaynağa ait olduklarından bağımsız olarak) yeni bir iCalendar dosyası olarak dışa aktarmak için <menuchoice
+><guimenu
+>Dosya</guimenu
+> <guisubmenu
+>Dışa Aktar</guisubmenu
+> <guimenuitem
+>iCalendar Olarak Dışa Aktar…</guimenuitem
+></menuchoice
+> menü ögesini kullanın. <guilabel
+>Farklı Kaydet</guilabel
+> iletişim kutusu açılır. Dışa aktarma eylemini tamamlamak için yeni dosya için olan adı ve konumu girin.</para>
+
+</sect2>
+
+<sect2 id="managing-purge-archive">
+<title
+>Takvimlerinizin Bakımını Yapmak</title>
+
+
+<para
+>Çağdaş bilgisayarlar geniş depolama alanına sahiptir. Bununla birlikte, &korganizer; takviminizi Palm aygıtı gibi sınırlı bellekli bir makineyle eşzamanlarsanız arşivleme özelliğini yararlı bulacaksınız. Çok sayıda etkinlik olduğunda &korganizer;’ün başarımı kötüleşebilir. Eski ögeleri arşivlemek için aşağıdaki prosedürü izleyin:</para>
+
+<procedure>
+<step
+><para
+><menuchoice
+><guimenu
+>Dosya</guimenu
+> <guimenuitem
+>Eski Olayları Arşivle…</guimenuitem
+></menuchoice
+> menü ögesini kullanın.</para
+></step>
+<step
+><para
+><guilabel
+>Şundan daha eski olayları arşivle</guilabel
+> alanındaki tarihi doldurun veya bir tarih seçmek için takvim araç takımını kullanın. Alternatif olarak, belirli bir periyottan daha eski ögeleri kendiliğinden arşivleyebilirsiniz.</para
+></step>
+<step
+><para
+>Arşivlemeyi seçtiyseniz <guilabel
+>Arşiv dosyası</guilabel
+> alanındaki arşiv için bir dosya adı sağlamalısınız. Daha eski bir arşiv dosyasını yeniden kullanmak istiyorsanız <guilabel
+>Dosya İletişim Kutusunu Aç</guilabel
+> düğmesine basın ve var olan bir arşivi bulun. Girdiler dosyaya eklenir ve var olan girdilerde herhangi bir değişiklik yapılmaz.</para
+></step>
+</procedure>
+
+<para
+>Arşivlemek, tamamlanmış yapılacaklar da içerilmek üzere tüm eski ögeleri bir dosyada tutar. Tamamlanmış yapılacakları tutmak istemiyorsanız <menuchoice
+><guimenu
+>Dosya</guimenu
+> <guimenuitem
+>Tamamlanmış Yapılacakları Temizle</guimenuitem
+></menuchoice
+> menü ögesini kullanarak tüm tamamlanmış yapılacakları etkin özkaynaklarınızdan silin. Bunları tutmak; ancak listelerde görüntülemek istemiyorsanız onları silmek yerine <link linkend="filters-view"
+>süzmeyi</link
+> düşünün. </para>
+
+</sect2>
+</sect1>
+</chapter>
+
+<chapter id="chapter-views-and-filters"
+><!-- updated to 5.4.40-->
+
+<title
+>Görünümler ve Süzgeçler</title>
+
+<para
+>Takvimler (özkaynaklar) etkinlikleri, yapılacakları ve/veya günce girdilerini tutabilirler; ancak bu ögelerin doğası çok farklıdır. Yapılacak işlerin kendileriyle ilişkilendirilmiş bir tarihi olmayabilir, bu nedenle bir program görünümü bunlara uygun değildir. Günce girdileri düşüncelerinizin, olaylarınızın veya deneyimlerinizin bir koleksiyonudur. Yaklaşan etkinlikler listesi veya yapılacaklar listesi vb. ile ilişkili olmadıkları için kendi görünüm kiplerini gerektirirler.</para>
+
+<para
+>Bilgilerinizi kullanışlı ve sezgisel bir şekilde görüntülemenin zorluğunu çözmek için &korganizer; farklı görünümler, süzgeçler ve arama özellikleri sunar. Ayrıca ilgili etkinliklere ve yapılacak işlere künyeler atayabilirsiniz, bu da daha sonra süzgeçler veya renkler kullanarak bunları görüntülemenize yardımcı olur.</para>
+
+<sect1 id="description-view">
+<title
+>&korganizer; Görünümleri</title>
+
+<para
+>Bu bölümde, farklı görüntüleme kiplerini açıklıyoruz ve &korganizer; kullanarak kişisel verilerinize nasıl göz atacağınıza dair bir genel bakış sunuyoruz.</para>
+
+<para
+>&korganizer; penceresi iki ana alana ayrılabilir: Ana pencere ve kenar çubuğu. Ana pencere ana görünümleri, kenar çubuğu ise Tarih Gezgini’ni, Yapılacaklar Görünümü’nü, Öğe Görüntüleyicisi’ni ve Takvim Yöneticisi Görünümü’nü görüntüler. Kenar çubuğu bileşenlerini gösterip gizlemek için <menuchoice
+><guimenu
+>Ayarlar</guimenu
+> <guisubmenu
+>Kenar Çubuğu</guisubmenu
+></menuchoice
+> alt menüsü altındaki menü ögelerini kullanın.</para>
+
+<para
+>Tarih Gezgini, tarihlerde gezmek ve onları seçmek için kullanılır. Bugünün tarihi küçük bir kutu içinde gösterilir, etkinlikleri olan günler kalın olur (<link linkend="config-main-views"
+>görünüm yapılandırmasına bağlı olarak</link
+> günlük veya haftalık etkinlikler kalın ile imlenmemiş olabilir) ve tatiller kırmızı ile imlenir. Bir tarihe atlamak istiyorsanız yalnızca üzerine tıklayın. Aynı anda birden fazla bitişik tarih seçmek için fareyi basılı tutun. <guilabel
+>Sırada Ne Var</guilabel
+>, <guilabel
+>Liste</guilabel
+>, <guilabel
+>Ajanda</guilabel
+> ve <guilabel
+>Günce</guilabel
+> görünümleri, yalnızca Tarih Gezgini’nde seçili tarihlerdeki etkinlikleri, yapılacakları ve günce girdilerini gösterir. <guilabel
+>Ay</guilabel
+> görünümü, Tarih Gezgini’nde gösterilen ilk aydan itibaren etkinlikleri veya yapılacak işleri gösterir (ayın seçili günleri Ay görünümünü değiştirmez, yalnızca ay değişir).</para>
+
+<para
+>Yapılacaklar kenar çubuğu bileşeni, aynı <link linkend="todo-view"
+>Yapılacaklar Görünümü</link
+>’nde olduğu gibi yapılacaklarınızı listeler. Diğer görünümleri kullanırken yapılacak işlerinizi görmek istiyorsanız kullanışlıdır.</para>
+
+<para
+>Öge Görüntüleyicisi kenar çubuğu bileşeni, şu anda seçili olan etkinliklerin, yapılacakların veya günce girdilerinin ayrıntılarını gösterir.</para>
+
+<para
+>Son olarak, Takvim Yöneticisi Görüntüleyicisi kenar çubuğu bileşeni, özkaynak kutusunu işaretleyerek veya işaretini kaldırarak listedeki özkaynakları etkinleştirmenize veya devre dışı bırakmanıza ve özkaynaklarınızı yönetmenize olanak tanır. Daha fazla bilgi için lütfen <xref linkend="managing-resources"/> bölümüne bakın.</para>
+
+<para
+>Takvimlerinizde ayrıca (görünüme bağlı olarak); önceki gün, hafta, ay veya yıl aralığında geri gitmek için <menuchoice
+><guimenu
+>Git</guimenu
+> <guimenuitem
+>Geri</guimenuitem
+></menuchoice
+> menü ögesini (veya <inlinemediaobject
+><imageobject
+><imagedata fileref="go-previous.png" format="PNG"/></imageobject
+></inlinemediaobject
+> araç çubuğunu düğmesini); önceki gün, hafta, ay veya yıl aralığında ileri gitmek için <menuchoice
+><guimenu
+>Git</guimenu
+><guimenuitem
+>İleri</guimenuitem
+></menuchoice
+> menü ögesini (veya <inlinemediaobject
+><imageobject
+><imagedata fileref="go-next.png" format="PNG"/></imageobject
+></inlinemediaobject
+> araç çubuğu düğmesini) veya geçerli görünümde bugünü içerecek olan <menuchoice
+><guimenu
+>Git</guimenu
+> <guimenuitem
+>Bugüne</guimenuitem
+></menuchoice
+> menü ögesini (veya <inlinemediaobject
+><imageobject
+><imagedata fileref="go-jump-today.png" format="PNG"/></imageobject
+></inlinemediaobject
+> araç çubuğunu düğmesini) kullanabilirsiniz.</para>
+
+<sect2 id="whatsnext-view">
+<title
+>Sırada Ne Var Görünümü</title>
+
+<para
+>Bu görünüm, etkinlikleri ve yapılacak işleri tez okuyabileceğiniz basit bir biçimde görüntüler. Tüm açık yapılacaklar görüntülenir; ancak yalnızca <guilabel
+>Tarih Gezgini</guilabel
+> kenar çubuğunda seçilen günlerdeki etkinlikler gösterilir. Etkinlikler ve yapılacaklar her satırda bir tane gösterilir.</para>
+
+<para
+>Sırada Ne Var görünümüne, <menuchoice
+><guimenu
+>Görünüm</guimenu
+> <guimenuitem
+>Sırada Ne Var</guimenuitem
+></menuchoice
+> menü ögesini seçerek geçin.</para>
+
+</sect2>
+
+<sect2 id="list-view">
+<title
+>Etkinlik Listesi Görünümü</title>
+<para
+>Bu görünüm, Tarih Gezgini’nde seçilen tarihler için tüm yapılacak işlerinizi, etkinliklerinizi ve günce girdilerinizi bir liste olarak görüntüler. Seçilen tarihlerde bitiş tarihi gelmemiş olan açık yapılacak işler gösterilmez. Bu görünüm, birçok farklı ögeyi kompakt bir şekilde görüntülemek için iyidir. Ayrıca, etkinlikleriniz uzun bir zaman dilimine yayılmışsa ve diğer görünümlerden biri kullanıldığında ekranda tümüyle görüntülenemeyecekse de kullanışlıdır.</para>
+
+<para
+>Ögeler her satırda bir tane görüntülenir. Sütunlar bir anımsatıcının ayarlanıp ayarlanmadığını (içinde görüntülenen bir zil simgesi anımsatıcının ayarlandığı anlamına gelir), birden çok kez yinelenip yinelenmediğini (takip eden oklar simgesi yinelenen bir etkinlik olduğu anlamına gelir), başlangıç ve bitiş zamanı bilgilerini gösterir. Fareyi bir ögenin üzerine getirdiğinizde, öge hakkında ayrıntılı bilgi içeren bir araç ipucu görüntülenir.</para>
+
+<para
+><menuchoice
+><guimenu
+>Görünüm</guimenu
+> <guimenuitem
+>Etkinlik Listesi</guimenuitem
+></menuchoice
+> menü ögesini kullanarak görüntüyü liste yapın.</para>
+
+
+</sect2>
+
+<sect2 id="agenda-view">
+<title
+>Ajanda Görünümü</title>
+
+<!--TODO: add agenda view options, color of resources and tags-->
+
+<para
+>Ajanda Görünümü, bir veya daha çok gün için etkinliklerinizi veya yapılması gerekenleri kronolojik olarak sıralanmış şekilde sunar. Gün çizelgesinde her etkinliğin uzunluğunu da görebilirsiniz. Ajanda Görünümünü’nü etkinleştirmek için <menuchoice
+><guimenu
+>Görünüm</guimenu
+> <guimenuitem
+>Ajanda</guimenuitem
+></menuchoice
+> menü ögesini kullanın veya <inlinemediaobject
+><imageobject
+><imagedata fileref="view-calendar-agenda.png" format="PNG"/></imageobject
+></inlinemediaobject
+>araç çubuğu düğmesine basın.</para>
+<para
+><guilabel
+>Gün</guilabel
+>, <guilabel
+>Çalışma Haftası</guilabel
+> ve <guilabel
+>Hafta</guilabel
+> görünümü, Ajanda Görünümü’nün varyasyonlarıdır. Özünde, Ajanda Görünümü’nde gösterilen günleri Tarih Gezgini’nde seçerek istediğiniz zaman ayarlayabilirsiniz.</para>
+<!--check bell + chasing-arrows icon here-->
+<para
+>Zaman, görünümün sol tarafındaki bir zaman çubuğu ile gösterilir. Tüm gün tek bir ekranda görüntülenemediğinde (ki bu olağan bir durumdur) sağ tarafta bir sarma çubuğu bulunur. Görünümdeki her dikdörtgen, o zaman için yapılması gereken tek bir etkinliği veya yapılacak işi temsil eder ve başlangıç ve bitiş zamanı ile özeti görüntüler. Bir anımsatıcı ayarlanmışsa bir <guiicon
+>zil</guiicon
+> simgesi ve birden çok kez yinelenirse bir <guiicon
+>takip eden oklar</guiicon
+> simgesi görüntülenir. Fareyi bir takvim öğesinin üzerine getirdiğinizde, öğe hakkında ayrıntılı bilgi içeren bir araç ipucu görüntülenir. &korganizer;’ün geçerli gün üzerinde (Marcus Bains çizgisi) geçerli zamanı imleyen kırmızı bir çizgi göstermesini sağlamak için <link linkend="config-main-views"
+>&korganizer; görünüm yapılandırmasında</link
+> <guilabel
+>Geçerli zaman akışını (Marcus Bains) göster</guilabel
+> kutusunu işaretleyin.</para>
+
+<para
+>Herhangi bir etkinlik farenizle yeniden boyutlandırılabilir. Fare işaretçisini etkinliğin üst veya alt kenarına yaklaştırın ve kenarı yukarı veya aşağı sürükleyin. Bu şekilde etkinliğinizin başlangıç ve bitiş zamanını görsel olarak değiştirebilirsiniz. Bu aynı zamanda Hafta ve Çalışma Haftası görünümlerinde de çalışır. Başka bir deyişle, olayın üst veya alt kenarlığını yeni zamana taşıyarak başlangıç ve bitiş zamanlarını fareyle değiştirmek olanaklıdır.</para>
+
+<para
+>Herhangi bir etkinlik farenizle yeniden planlanabilir. Fare imlecini etkinliğin üzerine getirin ve yeni bir zaman konumuna sürükleyin. Bu aynı zamanda Hafta ve Çalışma Haftası görünümlerinde de çalışır. Olaylar başka, şu anda görünmeyen tarihlere taşınabilir. Fare imlecini etkinliğin üzerine getirin ve Tarih Gezgini’ne sürükleyin.</para>
+
+<para
+>Ajanda görünümü çoğu ekranda tüm günü kapsayamayacağından, tüm günü görmek için yukarı ve aşağı kaydırmanız gerekecektir. Geçerli görünümünüzün üstünde veya altında o anda görünmeyen etkinlikler olup olmadığını gösteren yararlı bir ipucu vardır; her gün görünümünün altında küçük bir aşağı işaretli ok veya üstte yukarı işaretli oktur.</para>
+
+<tip
+><para
+>Etkinlikler eklemek için iki kullanışlı kısayol vardır: <itemizedlist>
+<listitem
+><para
+>Herhangi bir açık zaman bölgesine çift tıkladığınızda &korganizer; kendiliğinden öntanımlı süreye sahip (tercihler iletişim kutusunda özelleştirilebilir) bir etkinlik oluşturacaktır. Özeti hemen ekleyebilirsiniz. Etkinlikler, tıkladığınız yerden itibaren en yakın yarım saate <quote
+>yuvarlanarak</quote
+> yarım saatlik artışlarla gerçekleşir.</para
+></listitem>
+<listitem
+><para
+>Herhangi bir açık zaman bölgesini seçin ve çift tıklayın veya etkinliğin özetini yazmaya başlayın. &korganizer;, Ajanda görünümündeki seçim alanı tarafından tanımlanan süreyi ve başlangıç zamanını kendiliğinden ayarlayacaktır.</para
+></listitem>
+</itemizedlist>
+</para
+></tip>
+
+<para
+>Ajandanızı organize etmenize yardımcı olmak için etkinliklerin renkleri künyelerini yansıtır ve <link linkend="config-main-views"
+>&korganizer; görünüm yapılandırmasına</link
+> bağlı olarak, ayrıca kendi <link linkend="managing-resources"
+>özkaynaklarını</link
+> da yansıtabilir. Bundan dolayı, <link linkend="categories-view"
+>etkinliklere künyeler</link
+> ve <link linkend="config-main-colors"
+>künyelere farklı renkler</link
+> atarsanız etkinliğin türünü kolaylıkla tez ayırt edebilirsiniz. </para>
+
+<para
+>Ajanda görünümü, tüm takvimlerinizdeki etkinlikleri tek bir görünümde birleştirerek görüntüleyebilir veya takvim başına bir görünüm gösterebilir. Her iki görünümün sekmeler aracılığıyla kullanılabilir olması da olanaklıdır ve <link linkend="config-main-views"
+>tercihler iletişim kutusundan özelleştirilebilir</link
+>. </para>
+
+<sect3 id="day-view">
+<title
+>Gün Görünümü</title>
+
+<para
+>Bu görünüm, tek bir gün için <link linkend="agenda-view"
+>Ajanda Görünümü</link
+>’nü gösterir.</para>
+
+<para
+><menuchoice
+><guimenu
+>Git</guimenu
+> <guimenuitem
+>Gün</guimenuitem
+></menuchoice
+> menü ögesini veya araç çubuğundaki <inlinemediaobject
+><imageobject
+><imagedata fileref="go-jump-today.png" format="PNG"/></imageobject
+></inlinemediaobject
+><guilabel
+>Gün</guilabel
+> ögesini kullanarak Gün Görünümü’ne geçebilirsiniz.</para>
+
+</sect3>
+
+<sect3 id="next-x-days-view">
+<title
+>Sonraki X Gün Görünümü</title>
+
+<para
+>Bu görünüm, bugünden başlayarak sonraki günler için <link linkend="agenda-view"
+>Ajanda Görünümü</link
+>’nü sunar. <link linkend="config-main-views"
+>&korganizer; görünüm yapılandırmasından</link
+> görüntülenecek günlerin sayısını seçebilirsiniz. Öntanımlı değer 3’tür.</para>
+
+<para
+>Sonraki günler görünümüne <menuchoice
+><guimenu
+>Git</guimenu
+> <guimenuitem
+>Sonraki X Gün</guimenuitem
+></menuchoice
+> menü ögesini kullanarak gidebilirsiniz (X, gün sayısını belirtir; genellikle 3’tür).</para>
+
+</sect3>
+
+
+<sect3 id="week-view">
+<title
+>Hafta Görünümü</title>
+
+<para
+>Hafta görünümü, Gün görünümüne benzer bir görünüm sağlar. Yedi güne ait olaylar yan yana gösterilir.</para>
+
+<para
+><menuchoice
+><guimenu
+>Git</guimenu
+> <guimenuitem
+>Hafta</guimenuitem
+></menuchoice
+> menü ögesini veya araç çubuğundaki <inlinemediaobject
+><imageobject
+><imagedata fileref="view-calendar-week.png" format="PNG"/></imageobject
+></inlinemediaobject
+><guilabel
+>Hafta</guilabel
+> ögesini kullanarak Hafta Görünümü’ne geçebilirsiniz.</para>
+
+</sect3>
+
+<sect3 id="workweek-view">
+<title
+>Çalışma Haftası Görünümü</title>
+
+<para
+>Bu, yalnızca haftanın çalışma günlerini göstermesi dışında Hafta Görünümü ile aynıdır.</para>
+
+<para
+><menuchoice
+><guimenu
+>Git</guimenu
+> <guimenuitem
+>Çalışma Haftası</guimenuitem
+></menuchoice
+> menü ögesini kullanarak Çalışma Haftası Görünümü’ne geçebilirsiniz.</para>
+
+</sect3>
+
+</sect2>
+
+
+<sect2 id="month-view">
+<title
+>Ay Görünümü</title>
+
+<!--TODO: add month view options-->
+
+<para
+>Ay görünümü, içinde bulunduğunuz ayın tüm etkinliklerini ve yapılması gerekenleri tanıdık bir ay takvimi düzeninde gösterir. Görünümdeki her hücre bir günü temsil eder ve her gün, sağlanan alana sığabilecek tüm etkinlikleri içerir (pencereyi büyütmek daha fazla randevu görmenizi sağlar). Yineleme ve anımsatma durumuna ilişkin bilgiler, diğer görünümlerde olduğu gibi <guiicon
+>zil</guiicon
+> ve <guiicon
+>takip eden oklar</guiicon
+> simgeleri aracılığıyla gösterilir.</para>
+
+<para
+>Ay görünümünde Tarih Gezgini oklarını kullanarak gezinebilirsiniz veya <guilabel
+>Git</guilabel
+> menüsündeki ögeleri ve araç çubuğu düğmelerini kullanabilirsiniz. Bir günlük hücrenin görünür alanı, tüm etkinlikleri ve yapılacakları kapsamayabileceğinden, ögeleri taramak için klavyeyi kullanın veya sarma çubuklarını kullanarak o andan itibaren tüm olayları ve yapılacakları görebilirsiniz.</para>
+
+<para
+>Öge ayrıntılarını içeren bir araç ipucu görüntülemek için farenizi herhangi bir takvim ögesinin üzerine getirin. Bir etkinlik oluşturmak için boş bir alana çift tıklayın, düzenlemek için herhangi bir takvim ögesine çift tıklayın.</para>
+
+<para
+>Verinizi organize etmenize yardımcı olmak için etkinliklerin renkleri künyelerini yansıtır ve <link linkend="config-main-views"
+>&korganizer; görünüm yapılandırmasına</link
+> bağlı olarak, ayrıca kendi <link linkend="managing-resources"
+>özkaynaklarını</link
+> da yansıtabilir. Bundan dolayı, <link linkend="categories-view"
+>etkinliklere künyeler</link
+> ve <link linkend="config-main-colors"
+>künyelere farklı renkler</link
+> atarsanız etkinliğin (veya özkaynağın) türünü kolaylıkla tez ayırt edebilirsiniz. </para>
+
+<para
+><menuchoice
+><guimenu
+>Git</guimenu
+> <guimenuitem
+>Ay</guimenuitem
+></menuchoice
+> menü ögesini veya araç çubuğundaki <inlinemediaobject
+><imageobject
+><imagedata fileref="view-calendar-month.png" format="PNG"/></imageobject
+></inlinemediaobject
+><guilabel
+>Ay</guilabel
+> ögesini kullanarak Ay Görünümü’ne geçebilirsiniz.</para>
+
+</sect2>
+
+<!-- Timeline View-->
+
+<sect2 id="timeline-view">
+<title
+>Zaman Akışı Görünümü</title>
+
+<para
+>Zaman Akışı görünümü, seçili zaman aralığı için tüm olayları bir Gantt görünümünde gösterir. Her takvim ayrı bir satırda görüntülenir. </para>
+
+<para
+>Öge ayrıntılarını içeren bir araç ipucu görüntülemek için farenizi herhangi bir takvim ögesinin üzerine getirin. Bir etkinlik oluşturmak için boş bir alana çift tıklayın, düzenlemek için herhangi bir takvim ögesine çift tıklayın.</para>
+
+</sect2>
+
+<sect2 id="todo-view">
+<title
+>Yapılacaklar Listesi</title>
+
+<para
+>Yapılacaklar Listesi, yapılması gerekenler hakkında tez (veya uzun vadeli) notlar almanız için bir yer sağlar. Yapılacaklar Görünümü kenar çubuğu bileşeni, Tarih Gezgini’nin hemen altında görünür. Ana panelde görüntülemek için <inlinemediaobject
+><imageobject
+><imagedata fileref="view-calendar-tasks.png" format="PNG"/></imageobject
+></inlinemediaobject
+><guilabel
+>Yapılacaklar Listesi</guilabel
+> görünüm araç çubuğu düğmesini veya <menuchoice
+><guimenu
+>Görünüm</guimenu
+> <guimenuitem
+>Yapılacaklar Listesi</guimenuitem
+></menuchoice
+> menü ögesini kullanın.</para>
+
+<para
+>Yapılacak işinize bir <quote
+>bitiş tarihi</quote
+>, başka bir deyişle yapılacak işin bitirilmesi gereken bir tarih verebilirsiniz.</para>
+
+<para
+>Yapılacak işlere öncelikler de atayabilirsiniz ve bunlar öncelik sırasına göre sıralanmış olarak görünür. Sayı ne kadar düşükse öncelik o kadar yüksektir; ancak sıfır (0), <quote
+>öncelik yok</quote
+> olarak tanımlanır.</para>
+
+<para
+>Yeni bir yapılacak girdisi oluşturmak için Yapılacaklar Görünümü kenar çubuğu bileşeninde veya Yapılacaklar Listesi Görünümü’nde sağ tıklayın ve <guimenuitem
+>Yeni Yapılacak</guimenuitem
+> menü ögesini seçin. Var olan bir yapılacak ögesine sağ tıklarsanız daha fazla seçenek alırsınız: Özeti <guimenuitem
+>Göster</guimenuitem
+> yapabilir, yapılacak ayrıntılarını <guimenuitem
+>Düzenle…</guimenuitem
+> yapabilir, yapılacak ögesini hepten <guimenuitem
+>Sil</guimenuitem
+> yapabilir ve <guimenuitem
+>Yeni Alt Yapılacak…</guimenuitem
+> oluşturabilirsiniz. Örneğin, bir ev yapmak gibi büyük bir iş yapabilir ve doğru inşaat alanını seçmek, bir mimarı işe almak, işçileri işe almak ve son olarak arkadaşlarınız için bir parti düzenlemek gibi alt işler yapabilirsiniz.</para>
+
+<para
+><guimenuitem
+>Yeni Yapılacak…</guimenuitem
+> ögesini seçtiğinizde bir iletişim kutusu açılır ve burada tüm gerekli <link linkend="entering-data-to-do"
+>bilgileri</link
+> girebilirsiniz.</para>
+
+<para
+>Listedeki herhangi bir yapılacak işi vurgulamak için tıklayın. Yapılacak iş açıklamasının solundaki kalın çizgi kutusuna tıklarsanız yapılacak işin <quote
+>tamamlandı</quote
+> durumunu değiştirirsiniz. Yapılacak iş açıklamasına çift tıklarsanız tüm ayrıntılarını düzenleyebilirsiniz.</para>
+
+<para
+>Tamamlandı olarak işaretlediğiniz tüm girdileri toptan kaldırmak için <mousebutton
+>sağ</mousebutton
+> fare menüsünden <link linkend="managing-purge-archive"
+>Tamamlanmışları Temizle</link
+> seçeneğini kullanın.</para>
+
+<para
+>Yapılacaklar ayrıca hiyerarşiyi yeniden düzenlemek veya yapılacakları diğer takvim pencereleriyle değiştirmek için fare ile sürüklenebilir. Ayrıca tüm kullanılabilir sürükle–bırak işlemlerinin bir <link linkend="other-features-drag-and-drop"
+>genel görünümüne buradan</link
+> bakabilirsiniz.</para>
+</sect2>
+
+<sect2 id="journal-view">
+<title
+>Günce Görünümü</title>
+<para
+>Günlük Görünümü; düşüncelerinizi, olaylarınızı veya deneyimlerinizi kaydetmeniz için bir yer sağlar. Günce Görünümü’nü ana panelde <inlinemediaobject
+><imageobject
+><imagedata fileref="journal-new.png" format="PNG"/></imageobject
+></inlinemediaobject
+><guilabel
+>Günce Görünümü</guilabel
+> araç çubuğu düğmesine basarak veya <menuchoice
+><guimenu
+>Görünüm</guimenu
+> <guimenuitem
+>Günce</guimenuitem
+></menuchoice
+> menü ögesini kullanarak görüntüleyebilirsiniz.</para>
+
+<para
+><guilabel
+>Yeni Günce…</guilabel
+> bağlantısına (veya <guibutton
+>Yeni Günce…</guibutton
+> düğmesine) tıkladığınızda, yeni bir günce girdisi oluşturulur. Bir günce girdisini düzenlemek istiyorsanız yalnızca metin kutusuna tıklayın ve onu düzenleyin! Bir günce girdisini kaldırmak için Günce Görünümü’ndeyken <inlinemediaobject
+><imageobject
+><imagedata fileref="edit-delete.png" format="PNG"/></imageobject
+></inlinemediaobject
+> silme düğmesine basın.</para>
+
+</sect2>
+
+</sect1>
+
+<sect1 id="categories-view">
+<title
+>Künyeler</title>
+
+<!--TODO: Add screenshot?-->
+
+<para
+>Girdilerinizi ilgili gruplar halinde düzenlemenize yardımcı olması için etkinliklere, yapılacak işlere ve günce girdilerine künyeler atayabilirsiniz. Künyeleri sayesinde, bunları daha sonra etkinlikleri ve yapılacak işleri ararken, süzerken ve görüntülerken kullanabilirsiniz.</para>
+
+<para
+>Yeni <link linkend="entering-data-events-general"
+>etkinlikler</link
+> veya <link linkend="entering-data-to-do-general"
+>yapılacaklar</link
+> oluştururken veya düzenlerken künyeler atamak için <guilabel
+>Genel</guilabel
+> sekmesindeki <guibutton
+>…</guibutton
+> düğmesine tıklayın. Her bir ögeye birden çok künye atayabilirsiniz.</para>
+
+<para
+>Künyeler oluşturmak veya silmek için <menuchoice
+><guimenu
+>Ayarlar</guimenu
+><guimenuitem
+>Künyeleri Yönet…</guimenuitem
+></menuchoice
+> menüsünden <guilabel
+>Künyeleri Yönet</guilabel
+> iletişim kutusunu açın. <link linkend="config-main-colors"
+>Künyelere farklı renkler atarsanız</link
+> (<link linkend="config-main-views"
+>&korganizer; görünüm yapılandırmasına bağlı olarak</link
+>) etkinliğin türünü hem Ajanda hem de Ay görünümündeyken kolaylıkla tez ayırt edebilirsiniz. </para>
+
+</sect1>
+
+<sect1 id="filters-view">
+<title
+>Süzgeçler</title>
+
+<para
+>Verilerinizi görüntülemenize, bulmanıza ve dışa aktarmanıza yardımcı olmak için takvimleriniz için süzgeçler oluşturabilir ve kullanabilirsiniz. Örneğin, tamamlanmış yapılacak işleri görüntülemek istemiyorsanız bunları <link linkend="managing-purge-archive"
+>temizlemek yerine</link
+> süzebilirsiniz. Künyeler atarsanız bunları süzgeçler oluşturmak için kullanabilirsiniz.</para>
+
+<para
+>Süzgeçler oluşturmak, onları düzenlemek ve silmek için <guilabel
+>Takvim Süzgeçlerini Düzenle</guilabel
+> iletişim kutusunu açmak için <menuchoice
+><guimenu
+>Ayarlar</guimenu
+> <guimenuitem
+>Görünüm Süzgeçlerini Yönet…</guimenuitem
+></menuchoice
+> menü ögesini kullanın. Bu iletişim kutusunu kullanarak, &korganizer; ile görüntülenecek süzgeçler oluşturabilir, onları düzenleyebilir veya silebilirsiniz.</para>
+
+<!--TODO: Add detailed description of the dialog. Is it stable yet?-->
+
+<para
+><menuchoice
+><guimenu
+>Görünüm</guimenu
+> <guisubmenu
+>Süzgeç</guisubmenu
+></menuchoice
+> alt menüsü ve süzgeç araç çubuğu açılır menüsü, <link linkend="menu-settings-edit-filters"
+><guilabel
+>Takvim Süzgeçlerini Düzenle</guilabel
+></link
+> iletişim kutusu tarafından oluşturulmuş tüm kullanılabilir süzgeçlere erişim sağlar. Süzgeçlerin görüntülenmesini açıp kapatmak için <menuchoice
+><guimenu
+>Ayarlar</guimenu
+> <guisubmenu
+>Gösterilen Araç Çubukları</guisubmenu
+> <guimenuitem
+>Süzgeçler Araç Çubuğu</guimenuitem
+></menuchoice
+> ögesini kullanın. Bir süzgeç kullanmak istemiyorsanız <guilabel
+>Süzgeç Yok</guilabel
+> ögesini seçin.</para>
+
+<para
+>Süzgeçler, <link linkend="managing-export"
+>takviminizi dışa aktarırken</link
+> yararlıdır. Bir süzgeç kullanıyorsanız yalnızca süzülmüş (görünür) ögeler dışa aktarılır. Ayrıca süzgeçler, ögeleriniz <link linkend="categories-view"
+>künyeler</link
+> ile sınıflandırıldığında daha kullanışlıdır; çünkü künyeler tabanlı süzgeçleri kolaylıkla oluşturabilirsiniz.</para>
+
+</sect1>
+
+<sect1 id="search-view">
+<title
+>Arama</title>
+
+<para
+>Etkinlikleri, yapılacakları veya günce girdilerini özetlerine, açıklamalarına ve/veya künyelerine göre bulmak için <menuchoice
+><guimenu
+>Düzen</guimenu
+> <guimenuitem
+>Bul</guimenuitem
+></menuchoice
+> menü ögesini veya <keycombo action="simul"
+>&Ctrl;<keycap
+>F</keycap
+></keycombo
+> kısayolunu kullanın.</para>
+
+<tip
+><para
+>Tam kesin özeti anımsayamıyorsanız joker karakterler kullanabilirsiniz. Özetin tek bir karakterini bilmiyorsanız eksik karakterin yerine <userinput
+>?</userinput
+> koyun. Birden çok karakteri bilmiyorsanız <userinput
+>*</userinput
+> kullanın. Örneğin, etkinliğin veya yapılacağın başında <emphasis
+>toplantı</emphasis
+> ve sonrasında <emphasis
+>ürün</emphasis
+> olduğunu biliyorsanız Bul iletişim kutusunda <userinput
+>toplantı*ürün</userinput
+> yazın. &korganizer;, <quote
+>Yapılacak: Toplantı sonrasında ürün lansmanı</quote
+>, <quote
+>Toplantıda ürün prototiplerini göster</quote
+> ve benzer yapılacakları bulacaktır. BÜYÜK/küçük harf duyarlı değildir.</para
+></tip>
+
+<para
+>Bul işleminin sonuçları; belirli anahtar sözcükleri içeren etkinlikler, günce girdileri ve yapılacaklardan oluşan bir listedir. Arama listesinin karakteristikleri, <link linkend="list-view"
+>Liste Görünümü</link
+>’ndekilerle aynıdır.</para>
+
+<para
+>Sonuç listesi odağa sahiptir. Etkinliği veya yapılacak ayrıntılarını görüntülemek için çift tıklayın. Bu ayrıntılar hakkında daha fazla bilgi için <xref linkend="entering-data-events"/> ve <xref linkend="entering-data-to-do"/> bölümlerine bakın.</para>
+
+</sect1>
+
+</chapter>
+
+<chapter id="entering-data"
+>  <!--updated to 5.4.40-->
+
+<title
+>Veri Girmek</title>
+
+<sect1 id="entering-data-events">
+<title
+>Etkinlikler</title>
+
+<para
+>Etkinlikler; iş toplantıları, kişisel yıldönümleri ve sinema ziyaretleri gibi gelecekteki veya geçmişteki randevulardır. Bir etkinlik, tatiller gibi birkaç gün de sürebilir.</para>
+
+<para
+>Yeni bir etkinlik girmek pek kolaydır. <menuchoice
+><guimenu
+>Eylemler</guimenu
+> <guimenuitem
+>Yeni Etkinlik…</guimenuitem
+></menuchoice
+> menü ögesini kullanın. Altı adet sekmeye sahip bir pencere açılır.</para>
+
+<para
+>Dilerseniz yeni bir etkinlik oluşturmak için farklı bir yol kullanabilirsiniz:</para>
+
+<procedure>
+<step
+><para
+>Etkinlik tarihine gitmek için Tarih Gezgini’ni kullanın.</para
+></step>
+
+<step
+><para
+><guilabel
+>Ajanda</guilabel
+> görünümüne geçin ve istenen görünümün simgesine <guimenu
+>Araç Çubuğunu Görüntüle</guimenu
+> ile tıklayın veya istediğiniz görünümü <guimenu
+>Git</guimenu
+> menüsünden seçin. Etkinliğiniz belirli bir saatte başladığından, günün saatlerini görüntüleyen bir <link linkend="reference-menus-view"
+>görünüm</link
+> seçmelisiniz. <guimenuitem
+>Gün</guimenuitem
+>, <guimenuitem
+>Çalışma Haftası</guimenuitem
+> veya <guimenuitem
+>Hafta</guimenuitem
+> görünümünü seçebilirsiniz. <guimenuitem
+>Ay</guimenuitem
+> görünümü, yapılacaklar için daha elverişlidir; aşağıda açıklanmıştır.</para
+></step>
+
+<step
+><para
+>Ana panelde, etkinliğinizin başlayacağı saat ve tarihe çift tıklayın. </para
+></step>
+
+<step
+><para
+>Pencerenin alt kısmında altı sekmeli bir iletişim kutusu görünür. Verilerinizi aşağıda açıklandığı gibi girin.</para
+></step>
+</procedure>
+
+<screenshot id="screenshot-event-general">
+<screeninfo
+>&korganizer;’ün Etkinliği Düzenle iletişim kutusunun ekran görüntüsü</screeninfo>
+<mediaobject>
+<imageobject
+><imagedata fileref="event-general.png" format="PNG"/></imageobject>
+<textobject
+><phrase
+>&korganizer;’ün Etkinliği Düzenle iletişim kutusunun ekran görüntüsü</phrase
+></textobject>
+<caption
+><para
+>&korganizer;’ün Etkinliği Düzenle iletişim kutusunun ekran görüntüsü</para
+></caption>
+</mediaobject>
+</screenshot>
+
+<para
+>Bu, bireysel olay penceresi alanlarının ve araç takımlarının kapsamlı bir açıklamasıdır. Tüm alanların doldurulması gerekmez; bazıları boş bırakılabilir. Ayrıntılı bilgi için <link linkend="entering-data-required-fields"
+>Gerekli Alanlar</link
+> bölümünü okuyun. Örneklerle öğrenmek isterseniz <link linkend="examples-entering-event"
+>Etkinlik Girmek</link
+> bölümünde bir tane vardır. </para>
+
+<variablelist>
+<varlistentry>
+<term
+><guilabel
+>Özet:</guilabel
+></term>
+<listitem
+><para
+><guilabel
+>Özet</guilabel
+> alanına etkinliğin kısa bir açıklamasını girin. Bu açıklama, &korganizer; ana panelinde gösterilen metindir.</para
+></listitem>
+</varlistentry>
+
+<varlistentry>
+<term
+><guilabel
+>Konum:</guilabel
+></term>
+<listitem
+><para
+>Etkinliğin gerçekleşeceği <guilabel
+>konumun</guilabel
+> kısa bir açıklamasını girin.</para
+></listitem>
+</varlistentry>
+
+<varlistentry>
+<term
+><guilabel
+>Başlangıç</guilabel
+> ve <guilabel
+>Bitiş</guilabel
+></term>
+<listitem
+><para
+>Etkinliğinizin &korganizer; tarafından önerilen başlangıç ve bitiş tarihleri. Etkinliklerin aynı günde başlaması ve bitmesi önerilir. Bu tarihleri istediğiniz gibi değiştirin. Tarihleri doğrudan girin veya <link linkend="glossary" endterm="gloss-calendar-widget"
+>Takvim Araç Takımı</link
+>’nı kullanın. Zamanı, çeyrek saatlik aralıklar olarak seçin veya istediğiniz zamanı doğrudan zaman alanlarına girin. Bu alanlar yalnızca <guilabel
+>Tüm gün</guilabel
+> kutusu işaretlenmemişse kullanılabilirdir.</para
+></listitem>
+</varlistentry>
+
+</variablelist>
+
+<sect2 id="entering-data-events-general">
+<title
+>Genel Sekmesi</title>
+
+<variablelist>
+<varlistentry>
+<term
+>Ayrıntılar:</term>
+<listitem
+><para
+>Büyük, başlıksız dikdörtgene etkinliğin uzun bir açıklamasını girin. Buraya dilediğiniz kadar ayrıntı yazabilirsiniz. Örneğin, olay arabanızın planlı genel onarımı ise, onarılması gereken tüm ögeleri listeleyebilirsiniz. Daha sonra bu listeyi yazdırabilir ve servis görevlisine verebilirsiniz. Etkinlik alışveriş ise satın almanız gereken malları listelemelisiniz. Etkinliğin çıktısını alın ve alışverişe giderken yanınızda götürün.</para
+></listitem>
+</varlistentry>
+
+<varlistentry>
+<term
+><guilabel
+>Künyeler</guilabel
+></term>
+<listitem
+><para
+>Bir takvim ögesine birden çok <link linkend="categories-view"
+>künye</link
+> atayabilirsiniz. Kullanılabilir tüm künyeleri görüntülemek için <guibutton
+>…</guibutton
+> düğmesine tıklayın. Etkinlik için uygun olan künyeleri seçmek üzere künye kutularını işaretleyin.</para>
+<para
+><guilabel
+>Künyeleri Yönet</guilabel
+> iletişim kutusunda bir künye ekleyebilir, künyede değişiklik yapabilir veya bir künyeyi silebilirsiniz. <menuchoice
+><guimenu
+>Ayarlar</guimenu
+> <guimenuitem
+>Künyeleri Yönet</guimenuitem
+></menuchoice
+> menü ögesinden bu iletişim kutusunu açın.</para>
+
+<tip
+><para
+>İş yerindeki dil dersiniz hem İş hem de Eğitim künyelerine ait olabilirken, evliliğinizin yıldönümü Kişisel veya Özel Günler künyelerine aittir — bu sizin seçiminizdir.</para
+></tip>
+</listitem>
+</varlistentry>
+
+<varlistentry>
+<term
+><guilabel
+>Erişim:</guilabel
+></term>
+<listitem
+><para
+><guilabel
+>Genel</guilabel
+>, etkinliği özel veya gizli tutmak içinse <guilabel
+>Özel</guilabel
+> veya <guilabel
+>Çok Gizli</guilabel
+> künyelerini seçin. Şu anda bu seçenek, etkinliklerin <quote
+>SINIF</quote
+> özniteliğini <quote
+>GENEL</quote
+>, <quote
+>ÖZEL</quote
+> veya <quote
+>ÇOK GİZLİ</quote
+> olarak ayarlar. Ancak bu ayarların gerçekte kullanılıp kullanılmadığı, istemcinin veya grup yazılımı sunucusunun gerçekleme yöntemine bağlıdır.</para>
+<warning
+><para
+>Şu anda &korganizer;, diğer kişilere ait olan ve çok gizli olarak imlenmiş ögeleri <emphasis
+>görüntüleyecektir</emphasis
+>. Diğer istemciler bunlara farklı davranabilir; ancak özel veya çok gizli etkinlikleri yayınlarken dikkatli olun: iCalendar bir metin dosyası biçimidir ve herhangi bir metin düzenleyicisi ile okunabilir (birinin bunlara okuma erişimi varsa). Dolayısıyla, ögeleri gerçekten gizli tutmak istiyorsanız yalnızca sizin erişebileceğiniz bir özkaynak kullandığınızdan emin olun.</para
+></warning
+></listitem>
+</varlistentry>
+
+</variablelist>
+
+</sect2>
+
+<sect2 id="entering-data-events-attendees">
+<title
+>Katılımcılar Sekmesi</title>
+
+<para
+>Etkinliğinize davet etmek istediğiniz kişileri bu sekmede seçin.</para>
+
+<screenshot id="screenshot-event-attendees">
+<screeninfo
+>&korganizer;’ün Etkinliği Düzenle iletişim kutusu — Katılımcılar sekmesi</screeninfo>
+<mediaobject>
+<imageobject
+><imagedata fileref="event-attendees.png" format="PNG"/></imageobject>
+<textobject
+><phrase
+>&korganizer;’ün Etkinliği Düzenle iletişim kutusu — Katılımcılar sekmesi</phrase
+></textobject>
+<caption
+><para
+>&korganizer;’ün Etkinliği Düzenle iletişim kutusu — Katılımcılar sekmesi</para
+></caption>
+</mediaobject>
+</screenshot>
+
+<variablelist>
+<varlistentry>
+<term
+><guilabel
+>Toplantı organizatörü:</guilabel
+></term>
+<listitem
+><para
+>Bu yapılacak işin veya etkinliğin organizatörüne karşılık gelen kimliği ayarlar. Eğer &korganizer; davet e-postaları gönderecek şekilde yapılandırılmışsa bu e-postalar gönderilirken bu açılan kutuda seçilen kimlik kullanılacaktır. Öntanımlı kimlik, &korganizer; yapılandırmasının <guilabel
+>Kişisel</guilabel
+> bölümünde ayarlanabilir. Ayrıca, kimlikler &kmail; ayarlarınızdan ve adres defterinizden toplanır.</para
+></listitem>
+</varlistentry>
+
+<varlistentry>
+<term
+>Katılımcı Listesi</term>
+<listitem
+><para
+>Sekmenin ortasındaki liste, bu etkinlik için seçilen katılımcıları görüntüler ve ad ve posta adresi girerek katılımcı eklemenize, düzenlemenize veya kaldırmanıza olanak tanır.</para>
+<para
+>Katılımcılar adres defterinizdeyse onları listeye eklemek için anımsamanıza veya e-posta adreslerinizi girmenize gerek yoktur. Yalnızca <guibutton
+>Alıcı Seç…</guibutton
+> düğmesine basın ve katılımcıları listeden seçin. Bunun &kmail; tarafından da kullanılan standart &kde; adres defteri olduğunu aklınızda bulundurun; bir diğer adı da &kaddressbook; olarak geçer.</para>
+</listitem>
+</varlistentry>
+
+<varlistentry>
+<term
+>Katılımcılar</term>
+<listitem
+><para
+>Bir girdinin sol tarafındaki açılır menüden katılımcının rolünü (Katılımcı, İsteğe Bağlı Katılımcı, Gözlemci, Başkan) seçin. Rol, katılımcının bu etkinlikte hangi rolü oynadığını basit bir şekilde anımsatır. </para
+></listitem>
+</varlistentry>
+
+<varlistentry>
+<term
+>Durum</term>
+<listitem
+><para
+>Bir girişin sağ tarafındaki açılır menüden katılımcının durumunu (Eylem Gerekiyor, Kabul Edildi, Reddedildi, Geçici, Devredildi) seçin. Grup yazılımı planlaması kullanıyorsanız ve katılımcılarınızdan yanıt talep ediyorsanız yanıtları aldıkça katılımcının durumu güncellenecektir. Yanıt talep etmezseniz durumu elle güncellemeniz gerekecektir.</para
+></listitem>
+</varlistentry>
+
+<varlistentry>
+<term
+>Yanıt İste</term>
+<listitem
+><para
+>Bu katılımcının program planınıza yanıt vermesi gerekiyorsa açılır kutudan <guilabel
+>Yanıt iste</guilabel
+> seçeneğini seçin. Sonuç olarak katılımcıya etkinlik programı bilgileri e-posta ile gönderilecektir. Bunu belirtmek için ayrıntılar listesinde küçük bir zarf görünecektir. Bu özellik özellikle grup yazılımı planlaması etkinleştirildiğinde, katılımcının durumu kendiliğinden güncellendiği için kullanışlıdır.</para
+></listitem>
+</varlistentry>
+
+ <!-- Participiants: no conflicts Reschedule button
+ What is that? How does it work?-->
+
+</variablelist>
+
+</sect2>
+
+<!--Fixme Resources tab missing -->
+
+<sect2 id="entering-data-events-reminder">
+<title
+>Anımsatıcı Sekmesi</title>
+<variablelist>
+<varlistentry>
+<term
+>Anımsatıcı</term>
+<listitem
+><para
+>Açılır kutudan öntanımlı bir anımsatıcı seçin ve &korganizer; size bir etkinliği anımsatacaksa <guibutton
+>Ekle</guibutton
+> düğmesine basın.</para>
+<para
+><guilabel
+>Var Olan Anımsatıcıyı Düzenle</guilabel
+> iletişim kutusunu açmak için <guibutton
+>Yapılandır</guibutton
+> düğmesini kullanın. Bu iletişim kutusunu kullanarak, etkinliklerin başlamasından veya bitmesinden kaç dakika, saat veya gün önce veya sonra anımsatılmasını istediğinizi seçebilir, anımsatıcılarınız için yinelenen aralıklar ayarlayabilir ve metin görüntüleyen veya ses çalan özel anımsatıcılar oluşturabilirsiniz.</para>
+</listitem>
+</varlistentry>
+
+</variablelist>
+
+</sect2>
+
+<sect2 id="entering-data-events-recurrence">
+<title
+>Yineleme Sekmesi</title>
+
+<para
+>Bazı etkinlikler düzenli olarak gerçekleşir. Kesin zamanlamalarını burada belirtebilirsiniz.</para>
+
+<screenshot id="screenshot-event-recurrence">
+<screeninfo
+>&korganizer;’ün Etkinliği Düzenle iletişim kutusu — Yineleme sekmesi</screeninfo>
+<mediaobject>
+<imageobject
+><imagedata fileref="event-recurrence.png" format="PNG"/></imageobject>
+<textobject
+><phrase
+>&korganizer;’ün Etkinliği Düzenle iletişim kutusu — Yineleme sekmesi</phrase
+></textobject>
+<caption
+><para
+>&korganizer;’ün Etkinliği Düzenle iletişim kutusu — Yineleme sekmesi</para
+></caption>
+</mediaobject>
+</screenshot>
+
+<note
+><para
+>Ayarları etkinleştirmek için <guilabel
+>Yinelemeler</guilabel
+> yanındaki açılır menüden bir yineleme kuralı seçin. <guilabel
+>Asla</guilabel
+> seçiliyse bu sekmede bir değişiklik yapamazsınız.</para
+></note>
+
+<sect3 id="recurrence-recurrence-rule">
+<title
+>Yineleme Kuralı</title>
+
+<para
+>Bu etkinliği günlük, haftalık, aylık veya yıllık olarak yinelemek isteyip istemediğinizi seçin. Daha ayrıntılı seçenekler aşağıdaki gibidir:</para>
+
+<variablelist>
+<varlistentry>
+<term
+><guilabel
+>Günlük</guilabel
+></term>
+<listitem
+><para
+>Olayın her gün mü (1), gün aşırı mı (2) ve benzeri şekilde mi gerçekleşeceğini belirtin.</para
+></listitem>
+</varlistentry>
+
+<varlistentry>
+<term
+><guilabel
+>Haftalık</guilabel
+></term>
+<listitem
+><para
+>Olayın her hafta mı (1), iki haftada bir mi (2), vb. gerçekleşeceğini belirtin. Ayrıca olayın gerçekleşeceği günleri de (Pazar‥Pazartesi) belirtin. </para
+></listitem>
+</varlistentry>
+
+<varlistentry>
+<term
+><guilabel
+>Aylık</guilabel
+></term>
+<listitem
+><para
+>Etkinliğin ayın aynı gününde veya haftanın belirli bir gününde belirli bir haftada gerçekleşmesini sağlayabilirsiniz. Bu iki olasılık arasında seçim yapmanız gerekir. Öntanımlı olarak &korganizer;, ayın aynı takvim gününde (örneğin 15’inde) yinelemek istediğinizi varsayar. Periyodu da ayarlayabilirsiniz, böylece aylık, üç aylık ve benzeri şekilde yineleyebilirsiniz.</para
+></listitem>
+</varlistentry>
+
+<varlistentry>
+<term
+><guilabel
+>Yıllık</guilabel
+></term>
+<listitem>
+<para
+>Bu, Aylık ile benzerdir. Yılın bir takvim gününü mü (&eg;, yılın 250. günü), ayın haftanın belirli bir günündeki belirli bir haftayı mı (&eg;, Mart ayının 2. Salı günü), yoksa yılın belirli bir ayındaki ayın gününü mü belirttiğinizi seçmeniz gerekir. Öntanımlı olarak &korganizer;, ayın gününü kastettiğinizi varsayar. Periyodu iki yılda bir, dört yılda bir vb. gerçekleşen olayları yansıtacak şekilde ayarlayabilirsiniz.</para>
+</listitem>
+</varlistentry>
+</variablelist>
+</sect3>
+
+<sect3 id="recurrence-recurrence-range">
+<title
+>Yineleme Erimi</title>
+
+<para
+>Öntanımlı olarak, yineleyen olaylar bunu sonsuza kadar yapacaktır; yineleme için bir <quote
+>son</quote
+> yoktur. Bu istenilen bir durum olabilir veya olmayabilir, bu nedenle bir bitiş tarihi veya yineleme sayısı seçerek yinelemeyi sonlandırabilirsiniz.</para>
+
+</sect3>
+
+<sect3 id="recurrence-exceptions">
+<title
+>İstisnalar</title>
+
+<para
+>Çok güzel bir yineleme kuralı oluşturmuş olabilirsiniz; ancak birkaç istisna olduğunun farkına varın. Örneğin, üniversite ders programınızı ayarladıysanız tatiller ve benzerleri için istisnalar yapmak isteyebilirsiniz. Bu alanda, istisnalar listesine tarih ekleyebilir, tarihleri değiştirebilir ve silebilirsiniz (&ie; yineleme kuralı eşleşse bile etkinliğin <emphasis
+>planlanmayacağı</emphasis
+> zamanlar). Tarih seçicisi ile bir tarih seçin ve eklemek için <guibutton
+>Ekle</guibutton
+> düğmesine basın. Tarihleri kaldırmak için sağ taraftaki kutuda vurgulayın ve ardından <guibutton
+>Sil</guibutton
+> düğmesine tıklayın.</para>
+
+</sect3>
+</sect2>
+
+<sect2 id="entering-data-events-attachments">
+<title
+>Ekler</title>
+
+<para
+>Etkinlikler ve yapılacaklar ekler içerebilir. Ekler bağlantı olarak ya da satır içi olarak saklanabilir. Bir ek eklemek için <guibutton
+>Ekle</guibutton
+> düğmesine basın.</para>
+
+<screenshot id="screenshot-event-attachments">
+<screeninfo
+>&korganizer;’ün Etkinliği Düzenle iletişim kutusu — Ekler sekmesi</screeninfo>
+<mediaobject>
+<imageobject
+><imagedata fileref="event-attachments.png" format="PNG"/></imageobject>
+<textobject
+><phrase
+>&korganizer;’ün Etkinliği Düzenle iletişim kutusu — Ekler sekmesi</phrase
+></textobject>
+<caption
+><para
+>&korganizer;’ün Etkinliği Düzenle iletişim kutusu — Ekler sekmesi</para
+></caption>
+</mediaobject>
+</screenshot>
+
+<para
+><guilabel
+>Ek dosyasının bir kopyasını takvimde depola</guilabel
+> seçeneğinin işaretlenmesi, ekin takviminizin içinde depolanmasına neden olur ve bu da ekin boyutuna bağlı olarak çok fazla yer kaplayabilir. Bu seçenek işaretlenmezse yalnızca eke işaret eden bir bağlantı saklanır. Sık sık değişen veya geçerli konumlarından taşınabilen (veya kaldırılabilen) ekler için bir bağlantı kullanmayın.</para>
+
+<para
+>Eklerle çalışmak için bağlam menüsünde aşağıdaki eylemler sağlanmıştır:</para>
+
+<variablelist>
+
+<varlistentry>
+<term
+><guimenuitem
+>Aç</guimenuitem
+></term>
+<listitem
+><para
+>Seçili eki ilişkili uygulama ile görüntüleyin.</para
+></listitem>
+</varlistentry>
+
+<varlistentry>
+<term
+><guimenuitem
+>Farklı Kaydet…</guimenuitem
+></term>
+<listitem
+><para
+>Var olan bir eki farklı bir adla kaydetmenize olanak tanır.</para
+></listitem>
+</varlistentry>
+
+<varlistentry>
+<term
+><guimenuitem
+>Kopyala</guimenuitem
+>, <guimenuitem
+>Kes</guimenuitem
+> ve <guimenuitem
+>Yapıştır</guimenuitem
+></term>
+<listitem
+><para
+>Panoya kopyalama, panoya kesme ve panodan yapıştırma işlemi yapmanıza olanak tanır.</para
+></listitem>
+</varlistentry>
+
+<varlistentry>
+<term
+><guimenuitem
+>Kaldır</guimenuitem
+></term>
+<listitem
+><para
+>Seçili eki siler.</para
+></listitem>
+</varlistentry>
+
+<varlistentry>
+<term
+><guimenuitem
+>Özellikler…</guimenuitem
+></term>
+<listitem
+><para
+>Var olan eki değiştirmeye olanak tanır.</para
+></listitem>
+</varlistentry>
+
+</variablelist>
+
+</sect2>
+
+<!--FIXME works with certain type of calendars e.g. google calendar ?-->
+<sect2 id="entering-data-events-freebusy">
+<title
+>Uygun/Meşgul</title>
+
+<para
+>Etkinliğinize katılımcı eklerken, o belirli zamanda meşgul veya uygun olup olmadıklarını bilmeniz gerekir. Katılımcılar uygun/meşgul bilgilerini kullanıma sunarsa davetleri göndermeden önce programlarını burada görüntüleyebilirsiniz.</para>
+
+<para
+>Bu, sağda uygun/meşgul programı çizelgesini gösterir, burada her satır solda listelenen katılımcılardan birini temsil eder. Çizelgedeki işaretli alanlar diğer etkinlikler tarafından halihazırda alınan zamanı temsil eder, işaretsiz alanlar diğer etkinliklerden boş zamanı temsil eder. Etkinliği fareyle sürükleyerek farklı bir zaman noktasına taşıyabilir veya vurgulanan alanın kenarlarını fareyle hareket ettirerek yeniden boyutlandırabilirsiniz.</para>
+
+<para
+>Uygun/meşgul bilgisi yalnızca katılımcı uygun/meşgul programını yayınlarsa ve &korganizer; bunu almak üzere doğru bir biçimde yapılandırılmışsa kullanılabilir. &korganizer;’ü uygun/meşgul bilgisini almak/yayınlamak ile ilgili daha fazla bilgi için <xref linkend="config"/> bölümüne bakın. Listedeki katılımcı girişine çift tıklandığında, katılımcının uygun/meşgul bilgilerinin bulunduğu yer girilebilir. </para>
+
+<variablelist>
+
+<varlistentry>
+<term
+><guilabel
+>Ölçek</guilabel
+></term>
+<listitem
+><para
+>Plan grafiğindeki yakınlaştırma düzeyini ayarlayın. <guilabel
+>Saat</guilabel
+>, birkaç saatlik bir erimi; <guilabel
+>Gün</guilabel
+>, birkaç günlük bir erimi; <guilabel
+>Hafta</guilabel
+>, birkaç haftalık bir erimi ve <guilabel
+>Ay</guilabel
+>, birkaç aylık bir erimi gösterirken <guilabel
+>Kendiliğinden</guilabel
+>, geçerli etkinlik veya yapılacak için olan en uygun erimi seçer.</para
+></listitem>
+</varlistentry>
+
+<varlistentry>
+<term
+><guibutton
+>Başlangıca Ortala</guibutton
+></term>
+<listitem
+><para
+>Bu düğmeye basarak uygun/meşgul programı çizelgesini bu etkinliğin başlangıç ​​saatine ve gününe göre ortalayabilirsiniz.</para
+></listitem>
+</varlistentry>
+
+<varlistentry>
+<term
+><guibutton
+>Tarih Seç</guibutton
+></term>
+<listitem
+><para
+>Etkinliği tüm katılımcıların uygun olduğu bir gün veya saate kendiliğinden taşımak için bu düğmeye basın.</para
+></listitem>
+</varlistentry>
+
+<varlistentry>
+<term
+><guibutton
+>Yeniden Yükle</guibutton
+></term>
+<listitem
+><para
+>İlgili sunuculardan tüm katılımcılar için uygun/meşgul verisini yeniden yüklemek için bu düğmeye basın.</para
+></listitem>
+</varlistentry>
+
+</variablelist>
+
+<para
+>Girilen veriyi onaylamak, geri çağırmak veya geri almak için <guibutton
+>Tamam</guibutton
+>, <guibutton
+>Uygula</guibutton
+> ve <guibutton
+>İptal</guibutton
+> eylem düğmelerinden birini seçin.</para>
+
+</sect2>
+
+<sect2 id="entering-data-events-template-buttons">
+<title
+>Şablonları Yönet</title>
+
+<para
+><guibutton
+>Şablonları Yönet</guibutton
+> düğmesi, geçerli etkinliği şablon olarak kaydetmenizi sağlayan bir iletişim kutusu açar, böylece girilen verileri gelecekteki etkinlikler için yeniden kullanabilirsiniz. Örneğin, aynı yerde ve aynı kişilerle gerçekleşen bir toplantı için bir şablon kaydedebilirsiniz.</para>
+<para
+><guibutton
+>Uygula</guibutton
+> düğmesiyle etkinliğiniz için var olan bir şablonu kullanabilirsiniz. Önceki paragraftaki örneği sürdürerek toplantının gündemini belirtebilirsiniz.</para>
+
+</sect2>
+
+</sect1>
+
+<sect1 id="entering-data-to-do">
+<title
+>Yapılacaklar</title>
+
+<para
+>Yapılacaklar Listesi, yapmanız gereken şeyler hakkında kendinize notlar yazabileceğiniz bir yerdir. Yapılacaklar, planlanmış veya planlanmamış görevlerdir. Kısa ve uzun vadeli yapılacaklar vardır. Örneğin, bir hafta içinde kuaföre gitmelisiniz ve eski arabanızı bir yıl içinde satmalısınız. Bunlar büyük olasılıkla anımsatıcı gerektirmeyen; ancak bir listede tutmak istediğiniz ve isteğe bağlı bir bitiş tarihi olan ögelerdir.</para>
+
+<para
+>Yeni bir yapılacak girmek için <menuchoice
+><guimenu
+>Eylemler</guimenu
+> <guimenuitem
+>Yeni Yapılacak…</guimenuitem
+></menuchoice
+> ögesini seçin. Alt kısmında beş adet sekme olan bir pencere açılır.</para>
+
+<sect2 id="entering-data-to-do-general">
+<title
+>Genel Sekmesi</title>
+
+<screenshot id="screenshot-todo-general">
+<screeninfo
+>&korganizer;’ün yapılacakları düzenle iletişim kutusunun ekran görüntüsü</screeninfo>
+<mediaobject>
+<imageobject
+><imagedata fileref="todo-general.png" format="PNG"/></imageobject>
+<textobject
+><phrase
+>&korganizer;’ün yapılacakları düzenle iletişim kutusunun ekran görüntüsü</phrase
+></textobject>
+<caption
+><para
+>&korganizer;’ün yapılacakları düzenle iletişim kutusunun ekran görüntüsü</para
+></caption>
+</mediaobject>
+</screenshot>
+
+<para
+>Bu sekme, <guilabel
+>Yapılacakları Düzenle</guilabel
+> iletişim kutusu ile birçok seçeneği paylaşır; ancak yapılacaklar için bazı ek ögelere sahiptir:</para>
+
+<variablelist>
+<varlistentry>
+<term
+><guilabel
+>Tamamlanma</guilabel
+></term>
+<listitem
+><para
+>Bu, başlangıçta %0 tamamlanma olarak ayarlanmış bir tamamlanan yüzde açılır menüsüdür. Daha sonra, tamamlanma yüzdesini %10’luk adımlarla ayarlayarak ilerlemenizi belirtebilirsiniz.</para
+></listitem>
+</varlistentry>
+
+<varlistentry>
+<term
+><guilabel
+>Öncelik</guilabel
+></term>
+<listitem
+><para
+>Yapılacaklarınıza bir öncelik atayın. Bu açılır menü, bir ile dokuz arasında öncelikler sunar, bir en yüksek olanıdır. Başlangıçta yapılacaklar beş (orta) önceliğe ayarlanır.</para
+></listitem>
+</varlistentry>
+</variablelist>
+
+</sect2>
+
+</sect1>
+
+<sect1 id="entering-data-required-fields">
+
+<title
+>Zorunlu Alanlar</title>
+
+<para
+>Etkinlikleri ve yapılacak işleri girerken hangi alanların zorunlu, hangi alanların boş bırakılabileceğine dair genel bir bakış:</para>
+
+<itemizedlist>
+<listitem
+><para
+><guilabel
+>Özet</guilabel
+> alanını doldurmanız gerekir.</para
+></listitem>
+<listitem
+><para
+><guilabel
+>Genel</guilabel
+> sekmesi tümüyle boş bırakılabilir.</para
+></listitem>
+<listitem
+><para
+>Bir <guilabel
+>Anımsatıcı</guilabel
+> ayarlarsanız zamanı ve çalınacak sesi veya çalıştırılacak programı da belirtmeniz gerekir.</para
+></listitem>
+<listitem
+><para
+><guilabel
+>Katılımcılar</guilabel
+> sekmesi tümüyle boş bırakılabilir.</para
+></listitem>
+<listitem
+><para
+><guilabel
+>Yineleme</guilabel
+> sekmesi yalnızca günlük, haftalık, aylık veya yıllık tekrarı seçerseniz doldurulmalıdır. </para
+></listitem>
+<listitem
+><para
+><guilabel
+>Ekler</guilabel
+> iletişim kutusu tümüyle boş bırakılabilir.</para
+></listitem>
+</itemizedlist>
+</sect1>
+</chapter>
+
+<chapter id="group-scheduling"
+>   <!--updated to 5.4.40-->
+<title
+>Grup Programı</title>
+
+<para
+>&korganizer;’ün grup programı işlevi, randevuları, toplantıları ve paylaşılan yapılacakları düzenlemenize, katılımcılardan yanıt istemenize ve ögeleri yayımlamanıza olanak tanır. Bir etkinliğe veya yapılacaklar listesine davet ediliyorsanız katılıp katılamayacağınızı belirterek yanıtlayabilir veya farklı bir zaman veya konum gibi farklı düzenlemelerle karşı teklif gönderebilirsiniz. Ayrıca, uygun olduğunuzda insanlara bildirmek için uygun/meşgul programınızı yayınlayabilir ve aynı bilgileri başkalarından isteyebilirsiniz.</para>
+
+<para
+>Şu anda &korganizer;, etkinlikleri ve yapılacakları ulaştırmak için standart bir veri şemasıyla e-posta kullanır (Grup Programı için IMIP protokolü). IMIP standardı başka istemciler tarafından da kullanılır. Örnek olarak; &Microsoft;<application
+>Outlook</application
+>, Lotus <application
+>Notes</application
+> ve Novell <application
+>Evolution</application
+> verilebilir. Bu, bu istemcileri kullanan kişilerle de etkinlikler paylaşabileceğiniz anlamına gelir. &korganizer;; etkinlikler, etkinlik yanıtları, güncellemeler, iptaller vb. işlemek üzere &kmail; ile tümleşiktir. Örneğin, &kmail;’da bir davet alırsanız onu <guilabel
+>kabul etmek</guilabel
+> için ileti gövdesindeki düğmeye tıklayın. Böylece etkinlik takviminize eklenir ve etkinliğin organizatörüne bir yanıt kendiliğinden gider.</para>
+
+
+<!--TODO: check if to-dos work or not.-->
+<!--TODO: check what happens if you counter without this option on.-->
+
+<para
+><link linkend="config-main-groupscheduling"
+>&korganizer; grup programı yapılandırmasındaki</link
+> <guilabel
+>Grup yazılımı iletişimini kullan</guilabel
+> kutusunu işaretlerseniz &korganizer;, grup programı iletişimini sizin için halleder. Başka bir deyişle, planlama işleri için <guimenu
+>Program</guimenu
+> menüsünü doğrudan kullanmanıza gerek kalmaz. Örneğin, katılımcılı bir <link linkend="entering-data-events"
+>etkinlik veya yapılacak</link
+> oluşturursanız &korganizer;, katılımcılara davet göndermek isteyip istemediğinizi soracaktır; böylece <menuchoice
+><guimenu
+>Program</guimenu
+> <guimenuitem
+>Katılımcılara Davet Gönder</guimenuitem
+></menuchoice
+> menü ögesini kullanmanıza gerek kalmaz. Ayrıca, davet edildiğiniz bir etkinlik için olan katılımcı durumunuzu değiştirirseniz etkinliğin organizatörüne güncellenmiş durumunuzu göndermek isteyip istemediğinizi de soracaktır; böylece yine <menuchoice
+><guimenu
+>Program</guimenu
+> <guimenuitem
+>Durum Güncellemesi Gönder</guimenuitem
+></menuchoice
+> ögesini kullanmanıza gerek kalmaz.</para>
+
+
+
+<sect1 id="publish">
+<title
+>Bir etkinlik, yapılacak veya günce yayımlamak</title>
+
+<para
+>Yalnızca bir etkinlik, yapılacak veya günce girdisi göndermek istiyorsanız öge seçiliyken <menuchoice
+><guimenu
+>Program</guimenu
+> <guimenuitem
+>Öge Bilgisini Yayımla…</guimenuitem
+></menuchoice
+> menü ögesini kullanmanız yeterlidir. Sonrasında bir iletişim kutusu açılır ve burada ögeyi alacak olan kişilerin e-posta adreslerini sorar. Akabinde öge, iCalendar biçiminde posta ile gönderilir.</para>
+
+<para
+>Lütfen bu eylemi yalnızca ögenin katılımcılarına değil, herhangi bir ögeyi herkese e-posta ile göndermek için kullanabileceğinizi unutmayın. Aslında, hiç katılımcısı olmayan bir ögeyi yayımlayabilirsiniz; çünkü yayınlama işlemi katılımcılardan bir yanıt istemez.</para>
+
+<para
+>Bir örnek: Bir grupta çalıyorsunuz ve zaman zaman canlı konserler veriyorsunuz. Hayranlarınızı konserler hakkında bilgilendirmek için bir e-posta listesi tutuyorsunuz. Konser tarihlerinizi düzenlemek için &korganizer; kullanıyorsanız yalnızca <menuchoice
+><guimenu
+>Program</guimenu
+> <guimenuitem
+>Öge Bilgilerini Yayımla…</guimenuitem
+></menuchoice
+> menü ögesini seçebilir, e-posta listesinin adresini girebilirsiniz ve etkinlik gönderilir. &korganizer; kullanan e-posta listesi aboneleri, konser tarihini kendiliğinden takvimlerine ekleyebilirler. </para>
+
+<para
+>Yukarıda açıklandığı gibi bir etkinlik yayımlamak, alıcıyı yalnızca etkinlik hakkında bilgilendirir; ancak katılım isteme seçeneği sunmaz. Bunun yerine bu seçeneği sağlamak istiyorsanız <menuchoice
+><guimenu
+>Program</guimenu
+> <guimenuitem
+>iCalendar Olarak Gönder…</guimenuitem
+></menuchoice
+> ögesini kullanın. </para>
+
+</sect1>
+
+
+<sect1 id="as-organizer">
+<title
+>Grup Programında Organizatör Olarak Görev Almak</title>
+
+<para
+>Bir <link linkend="entering-data-events"
+>etkinlik</link
+> veya <link linkend="entering-data-to-do"
+>yapılacak</link
+> oluşturduğunuzda ve onlara <link linkend="entering-data-events-attendees"
+>katılımcılar eklediğinizde</link
+>, etkinlik organizatörü olarak görev almış olursunuz. Katılımcılar eklemek için <guilabel
+>Etkinliği Düzenle</guilabel
+> veya <guilabel
+>Yapılacağı Düzenle</guilabel
+> iletişim kutusundaki <link linkend="entering-data-events-attendees"
+>katılımcılar sekmesini</link
+> kullanın. Bir grup progamı etkinliğinin organizatörüyseniz <link linkend="agenda-view"
+>Ajanda Görünümü</link
+>’nde etkinlikte bir <inlinemediaobject
+> <imageobject
+> <imagedata fileref="organizer.png" format="PNG"/> </imageobject
+> <textobject
+> <phrase
+>Organizatör Simgesi</phrase
+> </textobject
+> </inlinemediaobject
+> yerleştirilir.</para>
+
+<para
+>Organizatör, davetleri göndermek, katılımcıların yanıtlarını toplamak ve etkinlik veya yapılacaklar ile ilgili verileri ilgili herkes için güncel tutmaktan sorumludur.</para>
+
+<sect2 id="request">
+<title
+>Davet Gönderme ve Yanıtları İşleme</title>
+
+<para
+>Bir etkinlik veya yapılacak organize etmek için öncelikle onu &korganizer;’de <link linkend="entering-data-events"
+>oluşturun</link
+> ve katılımcıları, katılımcılar sekmesini kullanarak ekleyin. &korganizer; katılımcılara davetler gönderebilir. Gönderim işlemi kendiliğinden (<link linkend="config-main-groupscheduling"
+>&korganizer; grup programı yapılandırmasını</link
+> kullanarak) veya etkinliği veya yapılacağı seçip <menuchoice
+><guimenu
+>Program</guimenu
+> <guimenuitem
+>Katılımcılara Davet Gönder</guimenuitem
+></menuchoice
+> menü ögesini kullanarak yapılabilir. Katılımcılar, etkinlik veya yapılacaklar için tüm ilgili bilgileri içeren bir e-posta alırlar. Toplantı teklifine kabul ederek veya reddederek veya karşı teklifte bulunarak yanıt verebilirler. Ayrıca daveti devredebilir veya iletebilirler. Tüm bu bilgiler size tekrar e-postayla gönderilir ve &kmail; yazılımını uygun şekilde yapılandırdıysanız katılımcıların yanıtları kendiliğinden takviminize eklenir. Katılmaya istekli ek katılımcılar varsa (örneğin, iletilen bir daveti kabul ederek) yeni katılımcıları kabul etmeniz istenecektir. </para>
+
+</sect2>
+
+<sect2 id="cancel">
+<title
+>Bir Etkinliği veya Yapılacakları İptal Etmek</title>
+
+<para
+>Bir etkinliği veya yapılacağı iptal etmek için onun organizatörü olmanız gerekir. <link linkend="config-main-groupscheduling"
+>&korganizer; grup programı yapılandırmasındaki</link
+> <guilabel
+>Grup Yazılımı iletişimini kullan</guilabel
+> kutusunu işaretlediyseniz yalnızca ögeyi silin ve &korganizer; size iptal göndermeniz için soracaktır. Aksi takdirde yalnızca ögeyi seçin ve <menuchoice
+><guimenu
+>Program</guimenu
+> <guimenuitem
+>Katılımcılara İptal Gönder</guimenuitem
+></menuchoice
+> menü ögesini seçin.</para>
+
+<para
+>Bu eylem, tüm katılımcılara bir iptal iletisi gönderir, böylece katılımcılar da ögeyi takvimlerinden kaldırabilirler.</para>
+</sect2>
+</sect1>
+
+
+<sect1 id="as-attendee">
+<title
+>Katılımcı Gibi Davranmak</title>
+
+<para
+>Bir davet içeren bir e-posta aldığınızda ve onu kabul ettiğinizde, etkinlik veya yapılacak takviminize eklenir. Bu bir etkinlikse <link linkend="agenda-view"
+>Ajanda Görünümü</link
+>’nde küçük bir <inlinemediaobject
+> <imageobject
+> <imagedata fileref="meeting-attending.png" format="PNG"/> </imageobject
+> <textobject
+> <phrase
+>Katılımcı Simgesi</phrase
+> </textobject
+> </inlinemediaobject
+> etkinliğe eklenir.</para>
+
+<sect2 id="reply">
+<title
+>Bir Daveti Yanıtlamak</title>
+
+<para
+>&kmail; gelen kutunuzda bir davetiniz varsa isteği yok saymak için <guibutton
+>Reddet</guibutton
+> düğmesine, kabul etmek içinse <guibutton
+>Kabul Et</guibutton
+> veya <guibutton
+>Koşullu Kabul Et</guibutton
+> düğmesine basın. Son iki eylem ögeyi takviminize ekler. Her durumda &kmail;, yanıtınızı kendiliğinden organizatöre gönderir.</para>
+
+<para
+>Daveti <guibutton
+>Delege Et</guibutton
+> veya <guibutton
+>İlet</guibutton
+> yapabilirsiniz. Delege ederken, başka bir kişiyi vekiliniz olarak önerebilirsiniz. <guibutton
+>İlet</guibutton
+>’u kullanarak daveti henüz davet edilmemiş bir veya daha fazla kişiye iletebilirsiniz. Delege etme veya iletme alıcısı daveti kabul ettiğinde, organizatörden yeni katılımcıyı onaylaması istenecektir.</para>
+
+<para
+>Herhangi bir nedenden olayı fikrinizi değiştirirseniz durumunuzu, ögenin <link linkend="entering-data-events-attendees"
+>katılımcı sekmesinden</link
+> düzenleyin. <link linkend="config-main-groupscheduling"
+>&korganizer; grup programı yapılandırması</link
+> bölümünde <guilabel
+>Grup yazılımı iletişimini kullan </guilabel
+> kutusunu işaretlediyseniz &korganizer; size, katılım durumunuzu güncellediğinizi bildiren bir e-posta göndermek isteyip istemediğinizi soracaktır. İstemezseniz <menuchoice
+> <guimenu
+>Program</guimenu
+><guimenuitem
+>Durum Güncellemesi Gönder</guimenuitem
+> </menuchoice
+> menü ögesinden durum güncellemenizi kendiniz gönderebilirsiniz. </para>
+</sect2>
+
+<sect2 id="counter">
+<title
+>Alternatif Bir Teklif Yollamak</title>
+
+
+<para
+>Davet edildiğiniz etkinlik veya yapılacak işin bazı özelliklerinden memnun kalmazsanız ve organizatöre karşı bir teklif göndermek isterseniz (örneğin alternatif bir yer veya zaman) öğeyi düzenleyip ve seçip <menuchoice
+> <guimenu
+>Program</guimenu
+><guimenuitem
+>Değişiklik İste</guimenuitem
+> </menuchoice
+> menü ögesini seçerek bir teklif olarak geri gönderebilirsiniz.</para>
+
+<para
+>Etkinlik organizatörü teklifinizi e-posta yoluyla alacak ve kabul veya ret edebilecektir.</para>
+</sect2>
+
+<sect2 id="refresh">
+
+<title
+>Bir Etkinliğin veya Yapılacağın En Son Sürümünü İstemek</title>
+
+<para
+>Bir etkinliğin veya yapılacağın en son sürümünü istemek için ögeyi seçin ve <menuchoice
+><guimenu
+>Program</guimenu
+> <guimenuitem
+>Güncelleme İste</guimenuitem
+></menuchoice
+> menü ögesini kullanın. Organizatör, ögenin güncel sürümünü size yollamalıdır.</para>
+
+</sect2>
+</sect1>
+
+<sect1 id="free-busy">
+<title
+>Uygun/Meşgul Bilgisi</title>
+
+<para
+>Uygun/Meşgul bilgisi, bir müsaitlik programını temsil eder. Birinin daha önceden taahhütleri olduğu aralıkları sunarak, diğerleri bu dönemler için randevu ayarlamaktan kaçınabilir. Yalnızca zamanların yayınlandığını, etkinliklerin, nedenlerin veya katılımcıların yayınlanmadığını unutmayın.</para>
+
+<para
+>&korganizer;, uygun/meşgul bilgilerinin elle veya kendiliğinden yayınlanmasını ve alınmasını destekler.</para>
+
+<para
+>Uygun/Meşgul bilginizi e-posta ile göndermek için <menuchoice
+><guimenu
+>Program</guimenu
+> <guimenuitem
+>Uygun/Meşgul Bilgisini E-posta ile Gönder…</guimenuitem
+></menuchoice
+> menü ögesini seçin. İletişim kutusunda göndermek istediğiniz e-posta adreslerini girin ve <guilabel
+>Tamam</guilabel
+> düğmesine basın.</para>
+
+<para
+>Grup Yazılımı sunucuları genellikle uygun/meşgul bilgilerinizi yüklemek için standart bir konuma sahiptir, böylece diğer kullanıcılar verilerinize erişebilir ve siz de diğer kullanıcıların uygun/meşgul programlarına erişebilirsiniz. &korganizer;’ün uygun/meşgul bilgisini kendiliğinden indirmesini/yüklemesini istiyorsanız bunu &korganizer; <guilabel
+>Yapılandırma</guilabel
+> iletişim kutusunun <link linkend="config-main-free-busy"
+>Uygun/Meşgul Tercihleri</link
+> sayfasından yapılandırabilirsiniz.</para>
+
+<para
+>&korganizer; tercihlerinde ayarlanan sunucuya uygun/meşgul bilgilerinizi yüklemek için <menuchoice
+><guimenu
+>Program</guimenu
+> <guimenuitem
+>Uygun/Meşgul Bilgisini Yükle</guimenuitem
+></menuchoice
+> menü ögesini seçin.</para>
+
+</sect1>
+
+<sect1 id="examples">
+<title
+>Örnekler</title>
+
+<sect2 id="examples-entering-event">
+<title
+>Yeni Bir Grup Etkinliği Girmek</title>
+
+<para
+>Bu örnekte bir etkinlik gireceksiniz. <emphasis
+>Önümüzdeki Pazartesi</emphasis
+>, yeni çıkacak ürününüzle ilgili bir toplantı ayarlamanız gerekiyor. Patronunuz <emphasis
+>Ayça Korkmaz</emphasis
+> toplantı <emphasis
+>başkanı</emphasis
+> ve siz Alp Demirtaş, etkinlik <emphasis
+>organizatörü</emphasis
+> olacaksınız. Ek olarak iki tane daha <emphasis
+>katılımcı</emphasis
+> olacak: <emphasis
+>Tunç Yıldırım</emphasis
+> ve <emphasis
+>Gökçe Yıldız</emphasis
+>. Ayça size toplantı programını verdi. Etkinlik <emphasis
+>öğlen 12</emphasis
+>’de başlayacak ve <emphasis
+>saat 1</emphasis
+>’de bitecek. Aynı etkinliğin her Pazartesi <emphasis
+>yinelenmesi</emphasis
+> gerekiyor. </para>
+
+<procedure>
+<step
+><para
+>Tarih Gezgini’ni kullanarak gelecek Pazartesi’ye gidin.</para
+></step>
+
+<step
+><para
+><menuchoice
+><guimenu
+>Eylemler</guimenu
+><guimenuitem
+>Yeni Etkinlik…</guimenuitem
+></menuchoice
+> menü ögesini seçin veya <emphasis
+>öğlen 12</emphasis
+> ve <emphasis
+>saat 1</emphasis
+> arasındaki alanı seçip etkinlik özetini yazmaya başlayın.</para
+></step>
+
+<step
+><para
+>Uygun bir özet girin. Kısa ve öz bir açıklama yazmak önemlidir; çünkü birden çok yerde görünür. Bu etkinlik için <userinput
+>Ürün Lansmanı</userinput
+> yazabiliriz.</para
+></step>
+
+<step
+><para
+>Ayrıntılı etkinlik programını en büyük dikdörtgen alana girin. Bu basit örnek için, <userinput
+>Giriş, Plan, Sonuç</userinput
+> sözcüklerini üç ayrı alana yazın.</para
+></step>
+
+<step
+><para
+><guilabel
+>Anımsatıcı</guilabel
+> sekmesine gidin. Anımsatma süresini 15 dakikaya ayarlayın, toplantı başlamadan önce bir bardak çay içmek için yeterli bir süre.</para
+></step>
+
+<step
+><para
+><guilabel
+>Genel</guilabel
+> sekmesine gidin. <guilabel
+>Künyeleri Yönet</guilabel
+> iletişim kutusundan <guilabel
+>Randevu</guilabel
+>’yu seçin.</para
+></step>
+
+<step
+><para
+><guilabel
+>Yineleme</guilabel
+> sekmesine gidin ve <guilabel
+>Haftalık</guilabel
+> yinelemeyi seçin.</para>
+<note
+><para
+>İşin çoğu sizin için kendiliğinden yapılır. &korganizer; öntanımlı olarak haftalık yineleme kullanır. Ayrıca, <guilabel
+>Bitiş:</guilabel
+> bölümünün <guilabel
+>asla</guilabel
+> olarak seçildiğine dikkat edin. Bu, etkinliğin her Pazartesi yineleneceğini belirtir (tabii ki ilk ayarladığınız Pazartesi’den başlayarak).</para
+></note
+></step>
+
+<step
+><para
+>Buradaki işimiz bittiğine göre <guilabel
+>Katılımcılar</guilabel
+> sekmesine geçelim.</para
+></step>
+
+<step
+><para
+><guilabel
+>Katılımcılar</guilabel
+> sekmesinde şunları yapmalısınız:</para>
+<substeps>
+
+<step
+><para
+>Etkinliğin organizatörü olduğunuzu göreceksiniz.</para
+></step>
+
+<step
+><para
+>İlk giriş alanında e-postayı <userinput
+>Ad &#060;e-posta&#062;</userinput
+> biçiminde girin. Bizim örneğimizde, <userinput
+>Ayça Korkmaz &#060;akorkmaz@bufirma.com&#062;</userinput
+> gibi olacak. <tip
+><para
+>Katılımcılar halihazırda &kde; adres defterinizde varsa adları ve e-postaları elle yazmak yerine <guibutton
+>Katılımcılar Seç…</guibutton
+> düğmesine tıklayarak listeden seçebilirsiniz.</para
+></tip
+></para
+></step>
+
+<step
+><para
+>Rol olarak <emphasis
+>Başkan</emphasis
+> seçin.</para
+></step>
+
+<step
+><para
+>Bir sonraki giriş alanına <userinput
+>Tunç Yıldırım &#060;tyildirim@bufirma.com&#062;</userinput
+> girin.</para
+></step>
+
+<step
+><para
+>Bir sonraki giriş alanına <userinput
+>Gökçe Yıldız &#060;gyildiz@bufirma.com&#062;</userinput
+> girin. </para
+></step>
+
+</substeps>
+</step>
+
+<step
+><para
+>&korganizer;’ü grup yazılımı iletişimini kullanmak için yapılandırdıysanız katılımcılara e-posta göndermeyi isteyip istemediğinizi soran bir iletişim kutusu açılacaktır. Bu iletişim kutusunda etkinliğin ayrıntıları ve <guilabel
+>Katılımcılar</guilabel
+> sekmesinde <guilabel
+>Yanıt iste</guilabel
+> kutusu işaretliyse yanıt istenip istenmeyeceği içerilir. Bunların dışında, <menuchoice
+><guimenu
+>Program</guimenu
+> <guimenuitem
+>Katılımcılara Davet Gönder</guimenuitem
+></menuchoice
+> menü ögesini kullanarak davetleri gönderebilirsiniz.</para
+></step>
+
+<step
+><para
+>Sekmelere tıklayarak etkinlik ayarlarını gözden geçirin. Memnunsanız <guibutton
+>Tamam</guibutton
+> düğmesine basın.</para
+></step>
+</procedure>
+
+<para
+>Tebrikler, ilk etkinliğinizi planladınız!</para>
+</sect2>
+
+</sect1>
+
+</chapter>
+
+<chapter id="config"
+>  <!--updated to 5.4.40, missing General System Tray + Calendars-->
+<title
+>&korganizer; Yapılandırması</title>
+
+<para
+>&korganizer;’ün görünüşünü ve davranışını değiştirmek için <menuchoice
+><guimenu
+>Ayarlar</guimenu
+><guimenuitem
+>&korganizer; Uygulamasını Yapılandır…</guimenuitem
+></menuchoice
+> menü ögesini seçin. Tüm yapılandırma seçenekleri ve olasılıkları için <xref linkend="config-main"/> bölümüne bakın.</para>
+
+<para
+>Çubuktaki kullanılabilir araçlar kümesini özelleştirmek için <menuchoice
+><guimenu
+>Ayarlar</guimenu
+><guimenuitem
+>Araç Çubuklarını Yapılandır…</guimenuitem
+></menuchoice
+> menü ögesini kullanın ve &kde; Temelleri içindeki <ulink url="help:/fundamentals/config.html#toolbars"
+>Araç Çubuklarını Yapılandırmak</ulink
+> bölümünü okuyun.</para>
+
+<para
+>Tarih ve zaman biçimleri gibi yerel ayarlar &systemsettings; içindeki <guilabel
+>Dil</guilabel
+> ve <guilabel
+>Biçimler</guilabel
+> modüllerinden yapılandırılabilir. Bu denetim modüllerine &korganizer; içinden ulaşabilirsiniz; yalnızca <menuchoice
+><guimenu
+>Ayarlar</guimenu
+><guimenuitem
+>Tarih ve Zamanı Yapılandır…</guimenuitem
+></menuchoice
+> menü ögesini kullanın. &systemsettings; içinde yapılan değişikliklerin geçerli olması için &korganizer;’ün yeniden başlatılması gerekir.</para>
+
+<para
+>&korganizer;’ün takvim, günce ve yapılacak ögelerini nerede depoladığını (yerel dosyalarda, grup yazılımı sunucularında &etc;) yapılandırmak için <xref linkend="managing-resources"/> bölümüne bakın.</para>
+
+<sect1 id="config-main">
+<title
+>&korganizer; Temel Yapılandırması</title>
+
+<para
+>Seçenekler iletişim kutusu, &korganizer;’ün farklı bölümlerini yapılandırmanıza olanak tanır.</para>
+
+<sect2 id="config-main-general">
+<title
+>Genel sayfası</title>
+
+<sect3 id="config-main-general-personal">
+<title
+>Kişisel sekmesi</title>
+
+<para
+>Kişisel seçenekleri, kişisel kimliğinizle ve diğer genel kategorilerin hiçbirine girmeyen diğer çeşitli şeylerle ilgilidir.</para>
+
+<variablelist>
+
+<varlistentry>
+<term
+><guilabel
+>Tam ad</guilabel
+></term>
+<listitem
+><para
+><guilabel
+>Tam ad</guilabel
+> ilk olarak <quote
+>Anonim</quote
+> adına ve <quote
+>hiçkimse@hiçbiryer</quote
+> olarak ayarlıdır. Adınızı, doğrudan buraya girerek değiştirebilirsiniz. Bu ad, yapılacaklarda ve etkinliklerde öntanımlı <guilabel
+>Organizatör</guilabel
+> olarak görüntülenecektir.</para
+></listitem>
+</varlistentry>
+
+<varlistentry>
+<term
+><guilabel
+>E-posta adresi</guilabel
+></term>
+<listitem
+><para
+><guilabel
+>E-posta adresi</guilabel
+>, takvimin sahibini tanımlamak için kullanılır. Başka bir kişi sizin takviminizi veya etkinliklerinizi açtığında onların üzerinde değişiklik yapamaz; çünkü saltokunur olacaklardır.</para
+></listitem>
+</varlistentry>
+
+<varlistentry>
+<term
+><guilabel
+>Öntanımlı e-posta eki yöntemi</guilabel
+></term>
+<listitem
+><para
+>Bu seçenek, bir e-postanın bir etkinliğe nasıl ekleneceğini seçmenize olanak tanır. Bir e-postayı, ekler içerilmek üzere tam e-posta olarak, ekler dışında e-posta olarak veya yalnızca e-postaya bir bağlantı olarak ekleyebilirsiniz.</para>
+<para
+>Eksiz bir e-postayı eklemenin imzayı geçersiz kılabileceğini unutmayın. </para
+></listitem>
+</varlistentry>
+</variablelist>
+
+</sect3>
+
+<sect3 id="config-main-general-save">
+<title
+>Kaydet sekmesi</title>
+
+<variablelist>
+
+<varlistentry>
+<term
+><guilabel
+>Silmeleri onayla</guilabel
+></term>
+<listitem
+><para
+><guilabel
+>Silmeleri onayla</guilabel
+> kutusunu işaretlediğinizde &korganizer;, her bir silme işlemini onaylamanızı isteyecektir. Bu işaretli değilse &korganizer; etkinlikleri silmeden önce size sorguda bulunmaz.</para
+></listitem>
+</varlistentry>
+
+<varlistentry>
+<term
+><guilabel
+>Yeni etkinlikler, yapılacaklar ve günce girdileri şunları sağlamalı</guilabel
+></term>
+<listitem
+><para
+>Bu seçenek, yeni ögeleri doğrudan öntanımlı takvime eklenip eklenmeyeceğini veya &korganizer;’ün her bir yeni ögenin hangi takvime kaydedileceğini sormasını sağlar.</para>
+<para
+>Kolab2 sunucusu belirliliği: <guilabel
+>Kolab</guilabel
+> sunucusunun paylaşılan klasör işlevselliğini kullanacaksanız <guilabel
+>Hangi takvimin kullanılacağını sor</guilabel
+> seçeneğinin seçilmesi önerilir. Bu, hangi bilgilerin yalnızca size açık olacağını ve hangi bilgilerin paylaşılan klasörlerde yayınlanacağını denetlemenizi sağlayacaktır.</para>
+</listitem>
+</varlistentry>
+
+</variablelist>
+
+</sect3>
+
+<!-- System Tray tab missing-->
+
+<!-- Calendars tab missing-->
+
+</sect2>
+
+<sect2 id="config-main-time-and-date">
+<title
+>Zaman ve Tarih</title>
+
+<sect3 id="config-main-time-and-date-regional">
+<title
+>Bölgesel sekmesi</title>
+
+<variablelist>
+
+<varlistentry>
+<term
+><guilabel
+>Gün şu saatte başlar</guilabel
+></term>
+<listitem
+><para
+>Açılır listeden güne başladığınız saati seçin. Bu, normalde uyandığınız saat veya çalışmaya başladığınız saat olabilir. Bu ayar, bu saatten önce öge eklemenizi veya görüntülemenizi engellemez; yalnızca takvim görünümünün en üstünde öntanımlı olarak görüntülenecek saati ayarlar. Ajanda görünümünde önceki veya sonraki etkinlikleri görüntülemek için sarma çubuğunu kullanın.</para
+></listitem>
+</varlistentry>
+
+<varlistentry>
+<term
+><guilabel
+>Tatiller</guilabel
+></term>
+<listitem
+><para
+>Açılır listeden ülkenizi veya listede yoksa <guilabel
+>(Yok)</guilabel
+>’u seçin. Ülkenizi seçtiyseniz &korganizer;,takvim görünümünde önemli günleri ve tatilleri tanır ve görüntüler.</para
+></listitem>
+</varlistentry>
+
+<varlistentry>
+<term
+><guilabel
+>Haftalık program</guilabel
+></term>
+<listitem
+><para
+><guilabel
+>Günlük başlama saati</guilabel
+> ve <guilabel
+>Günlük bitiş saati</guilabel
+>, tipik bir günün ne zaman başlayacağını belirlemenize olanak tanır. &korganizer; saatleri, normal rutininizin dışındaki saatlerden ve tatillerden farklı bir renkle işaretleyerek ayırır.</para>
+<para
+>Ayrıca, haftanın her gününün yanında onay kutuları bulunur. Normal programınızın bir parçası olan hafta günlerini, genellikle hafta sonlarını dışlayarak işaretleyin. &korganizer;, günlük programınızın (belki de haftalık çalışma programınızın) bir parçası olan saatleri, normal programınızın dışındaki saatlerden farklı olarak işaretler. <guilabel
+>Tatilleri dışla</guilabel
+> seçeneğini işaretlemek, &korganizer;’ün yukarıdaki <guilabel
+>Tatil bölgesini kullan</guilabel
+> açılır menüsünde tanımlanan bölgedeki tatil günleri için normal program (veya çalışma) saatlerini işaretlemesini engeller.</para>
+</listitem>
+</varlistentry>
+
+<varlistentry>
+<term
+><guilabel
+>Haftanın ilk günü</guilabel
+></term>
+<listitem
+><para
+>Her haftanın ilk gününü seçin. Normalde, yerel ayarlarınızda ayarlı olduğu için bunu göz ardı edebilirsiniz.</para
+></listitem>
+</varlistentry>
+
+</variablelist>
+</sect3>
+
+<sect3 id="config-main-time-and-date-default">
+<title
+>Öntanımlı Değerler sekmesi</title>
+
+<variablelist>
+<varlistentry>
+<term
+><guilabel
+>Öntanımlı randevu zamanı</guilabel
+></term>
+<listitem
+><para
+>Etkinliklerin öntanımlı başlangıç saatini açılır listeden seçin. <link linkend="entering-data-events"
+>Eylemler</link
+> menüsünden <link linkend="menu-actions-new-event"
+>Yeni Etkinlik</link
+>’i seçtiğinizde veya &korganizer;’ün etkinliğinizin ne zaman başlamasını istediğizi tahmin edemediği bir durumda &korganizer;, başlangıç zamanına öntanımlı olarak bu değeri koyar.</para
+></listitem>
+</varlistentry>
+
+<varlistentry>
+<term
+><guilabel
+>Yeni randevunun öntanımlı süresi (SS:DD):</guilabel
+></term>
+<listitem
+><para
+>Olaylar için öntanımlı süreyi dönen kutuyu kullanarak seçin. <link linkend="entering-data-events"
+>Eylemler</link
+> menüsünden <link linkend="menu-actions-new-event"
+>Yeni Etkinlik</link
+>’i seçtiğinizde veya &korganizer;’ün etkinliğinizin ne zaman başlamasını istediğizi tahmin edemediği bir durumda &korganizer;, başlangıç zamanına öntanımlı olarak bu değeri koyar. </para
+></listitem>
+</varlistentry>
+
+<varlistentry>
+<term
+><guilabel
+>Anımsatıcılar</guilabel
+></term>
+<listitem
+><para
+>Anımsatıcının gerçek etkinliğin planlanan saatinden ne kadar önce etkinleştirileceğini belirlemek için <guilabel
+>Öntanımlı anımsatma zamanı</guilabel
+>’nı seçin.</para>
+<para
+>Yeni anımsatıcılar için öntanımlı ses dosyası olarak kullanılacak bir dosya ayarlayın. Etkinlik veya yapılacaklar düzenleyicilerinden erişilebilen Gelişmiş Anımsatıcı’da istediğiniz zaman başka bir dosya belirleyebilirsiniz.</para>
+<para
+>Yeni oluşturulan tüm etkinlikler veya yapılacaklar için anımsatıcıları etkinleştirmek istiyorsanız sonraki iki kutuyu işaretleyin. Anımsatıcıları istediğiniz zaman düzenleyici iletişim kutularından kapatabilirsiniz.</para>
+</listitem>
+</varlistentry>
+
+</variablelist>
+</sect3>
+</sect2>
+
+<sect2 id="config-main-views">
+<title
+>Görünümler</title>
+
+<para
+>Bu seçenekler, &korganizer; görünümlerini yapılandırmanızı sağlar:</para>
+
+<sect3 id="config-main-views-general">
+<title
+>Genel sekmesi</title>
+<variablelist>
+<varlistentry>
+<term
+><guilabel
+>Sonraki X gün:</guilabel
+></term>
+<listitem
+><para
+>Bu seçenek, <guimenu
+>Git</guimenu
+> menüsündeki <guimenu
+>Sonraki X Gün</guimenu
+> menü ögesinde gösterilen günlerin sayısını yapılandırmanıza olanak tanır.</para
+></listitem>
+</varlistentry>
+
+<varlistentry>
+<term
+><guilabel
+>Özetleri görüntülemek için araç ipuçlarını etkinleştir</guilabel
+></term>
+<listitem
+><para
+>Bir etkinlik için özetiniz geçerli görünüme sığacaktan daha uzunsa kalan karakterler görüntülenmez. Randevu üzerinde fare işaretçisini birkaç saniye gezdirdiğinizde tam özetin görüntülenmesini istiyorsanız <guilabel
+>Özetleri görüntülemek için araç ipuçlarını etkinleştir</guilabel
+> seçeneğini işaretleyin.</para
+></listitem>
+</varlistentry>
+
+<varlistentry>
+<term
+><guilabel
+>Yapılacaklar künye renklerini kullanır</guilabel
+></term>
+<listitem
+><para
+>Yapılacakların, bitiş tarihi gelen, bugün teslim tarihi gelen veya gecikmiş durumlarına özgü renkleri değil, künye renklerini kullanması için bu kutuyu işaretleyin.</para
+></listitem>
+</varlistentry>
+
+</variablelist>
+
+<para
+><link linkend="description-view"
+>Tarih Gezgini</link
+> seçenekleri:</para>
+
+<variablelist>
+
+<varlistentry>
+<term
+><guilabel
+>Günlük yinelenen ögeleri göster</guilabel
+></term>
+<listitem
+><para
+><guilabel
+>Günlük yinelenen ögeleri göster</guilabel
+> kutusu işaretlenirse günlük olarak yinelenen etkinlikleri içeren günler Tarih Gezgini’nde kalın yazıyüzüyle gösterilir.</para
+></listitem>
+</varlistentry>
+
+<varlistentry>
+<term
+><guilabel
+>Haftalık yinelenen ögeleri göster</guilabel
+></term>
+<listitem
+><para
+><guilabel
+>Haftalık yinelenen ögeleri göster</guilabel
+> kutusu işaretlenirse günlük olarak yinelenen etkinlikleri içeren günler Tarih Gezgini’nde kalın yazıyüzüyle gösterilir.</para
+></listitem>
+</varlistentry>
+
+<varlistentry>
+<term
+><guilabel
+>Yapılacaklar görünümündeyken etkinlikler yerine yapılacakları göster</guilabel
+></term>
+<listitem
+><para
+>Yapılacaklar görünümündeyken Tarih Gezgini’nde yapılacaklar içeren günleri kalın yazıyüzüyle göstermek için bu kutuyu işaretleyin.</para
+></listitem>
+</varlistentry>
+
+<varlistentry>
+<term
+><guilabel
+>Günce görünümündeyken etkinlikler yerine günceleri göster</guilabel
+></term>
+<listitem
+><para
+>Günce görünümündeyken Tarih Gezgini’nde günceler içeren günleri kalın yazıyüzüyle göstermek için bu kutuyu işaretleyin.</para
+></listitem>
+</varlistentry>
+
+<varlistentry>
+<term
+><guilabel
+>Çalışma haftası kipindeyken hafta numaraları bir çalışma haftası seçer</guilabel
+></term>
+<listitem
+><para
+><guilabel
+>Çalışma haftası kipindeyken hafta numaraları bir çalışma haftası seçer</guilabel
+> kutusu işaretliyse Tarih Gezgini’nin yan tarafındaki hafta numaralarına tıklamak, normal 7 günlük haftalar yerine çalışma haftaları arasında gezinmenizi sağlar.</para
+></listitem>
+</varlistentry>
+
+</variablelist>
+</sect3>
+
+<sect3 id="config-main-views-agenda">
+<title
+>Ajanda Görünümü sekmesi</title>
+
+<para
+><link linkend="agenda-view"
+>Ajanda Görünümü</link
+> seçenekleri:</para>
+
+<variablelist>
+
+<varlistentry>
+<term
+><guilabel
+>Saat büyüklüğü:</guilabel
+></term>
+<listitem
+><para
+>Bunu kullanarak, Ajanda görünümündeki satırların yüksekliğini denetleyebilirsiniz.</para
+></listitem>
+</varlistentry>
+
+<varlistentry>
+<term
+><guilabel
+>Ajanda görünümü ögelerinde simgeleri göster</guilabel
+></term>
+<listitem
+><para
+>Ajanda görünümü ögelerinde simgeleri (anımsatıcı, yineleme vb.) görüntülemek için bu kutuyu işaretleyin.</para
+></listitem>
+</varlistentry>
+
+<varlistentry>
+<term
+><guilabel
+>Yapılacakları göster</guilabel
+></term>
+<listitem
+><para
+>Bu onay kutusu, Ajanda görünümünde yapılacak işlerin Gün, Hafta ve Ay görünümlerinde görüntülenmesini açar. Son bitiş tarihi olan çok fazla yapılacak işiniz varsa karışıklığı önlemek için bunları kapatmak isteyebilirsiniz.</para
+></listitem>
+</varlistentry>
+
+<varlistentry>
+<term
+><guilabel
+>Geçerli zaman (Marcus Bains) çizgisini göster</guilabel
+></term>
+<listitem
+><para
+>Bu onay kutusu, Gün veya Hafta görünümünde geçerli saati gösteren kırmızı çizgiyi (Marcus Bains çizgisi) açıp kapatır. Bu çizgi, örneğin bir toplantıya ne kadar zaman kaldığına dair bir gösterge sunar.</para
+></listitem>
+</varlistentry>
+
+<varlistentry>
+<term
+><guilabel
+>Geçerli zaman (Marcus Bains) satırında saniyeleri ve zaman dilimini göster</guilabel
+></term>
+<listitem
+><para
+>Bu onay kutusu, geçerli zaman çizgisindeki (Marcus Bains çizgisi) saniyeleri açar veya kapatır. Bulunduğunuz yere bağlı olarak, zaman dilimi de gösterilebilir.</para
+></listitem>
+</varlistentry>
+
+<varlistentry>
+<term
+><guilabel
+>Ajanda görünümünde zaman erimi seçimi etkinlik düzenleyicisini başlatır</guilabel
+></term>
+<listitem
+><para
+>Günlük ve haftalık görünümde bir zaman erimi seçtiğinizde etkinlik düzenleyicisini kendiliğinden başlatmak için bu kutuyu işaretleyin. Bir zaman erimi seçmek için planlamak üzere olduğunuz etkinliğin başlangıç ​​saatinden bitiş saatine kadar fareyi sürükleyin.</para
+></listitem>
+</varlistentry>
+<!--FIXME Icons to use dropdown box missing-->
+<varlistentry>
+<term
+><guilabel
+>Renk Kullanımı</guilabel
+></term>
+<listitem>
+<para
+>Takvim ögelerini ilişkili künyelerinin renginde ve ögenin kenarlığını da kendi takviminin renginde çizmek istiyorsanız <guilabel
+>Künye içeride, takvim dışarıda</guilabel
+> seçeneğini seçin.</para>
+
+<para
+>Takvim ögelerini ilişkili takvim renklerinde ve ögenin kenarlıklarının künyesinin renginde çizilmesini istiyorsanız <guilabel
+>Takvim içeride, künye dışarıda</guilabel
+> seçeneğini seçin.</para>
+
+<para
+>Takvim ögelerini (hem iç hem de kenarlık) ilişkili künyelerinin renginde çizmek istiyorsanız <guilabel
+>Yalnızca künye</guilabel
+> seçeneğini seçin.</para>
+
+<para
+>Takvim ögelerini (hem iç hem de kenarlık) takvimlerinin renginde çizmek istiyorsanız <guilabel
+>Yalnızca takvim</guilabel
+> seçeneğini seçin.</para>
+
+<para
+>Bu renkleri ayarlamak için <link linkend="config-main-colors"
+>Renkler ve Yazıtipleri</link
+> yapılandırma sayfasını kullanın.</para>
+</listitem>
+</varlistentry>
+
+<varlistentry>
+<term
+><guilabel
+>Meşgul günleri başka bir arka plan rengiyle renklendir</guilabel
+></term>
+<listitem
+><para
+>En azından bir tam gün etkinliğinin yoğun olarak işaretlendiği günlerde Ajanda görünümünün arka planının farklı bir renkle doldurulmasını istiyorsanız bu kutuyu işaretleyin.</para>
+<para
+>Lütfen istediğiniz Ajanda görünümü arka plan meşgul rengini seçmek için Renkler yapılandırma alanına bakın.</para
+></listitem>
+</varlistentry>
+
+<varlistentry>
+<term
+><guilabel
+>Çoklu Takvim Görüntüleme</guilabel
+></term>
+<listitem
+><para
+>Tüm takvimlerin tek bir Ajanda görünümünde birleştirilip birleştirilmeyeceğini, her takvimin kendi Ajanda görünümünde görüntülenip görüntülenmeyeceğini veya her görünüme sekmeler aracılığıyla erişilip erişilemeyeceğini seçin. Yan yana görünüm, bağlam menüsünden <guimenuitem
+>Görünümü Yapılandır</guimenuitem
+> seçeneğiyle özelleştirilebilir. </para
+></listitem>
+</varlistentry>
+
+</variablelist>
+</sect3>
+
+<sect3 id="config-main-views-month">
+<title
+>Ay Görünümü sekmesi</title>
+
+<para
+><link linkend="month-view"
+>Ay Görünümü</link
+> seçenekleri:</para>
+
+<variablelist>
+
+<varlistentry>
+<term
+><guilabel
+>Görüntüleme Seçenekleri</guilabel
+></term>
+<listitem
+><para
+>Ay görünümünde zamanı, simgeleri (anımsatıcı, yineleme vb.), yapılacak işleri veya günlükleri görüntülemek için ilk dört onay kutusunu kullanın.</para
+></listitem>
+</varlistentry>
+<!--FIXME Icons to use dropdown box missing-->
+
+<varlistentry>
+<term
+><guilabel
+>Meşgul günleri başka bir arka plan rengiyle renklendir</guilabel
+></term>
+<listitem
+><para
+>En azından bir tam gün etkinliğinin yoğun olarak işaretlendiği günlerde Ay görünümünün arka planının farklı bir renkle doldurulmasını istiyorsanız bu kutuyu işaretleyin.</para>
+<para
+>Lütfen istediğiniz Ajanda/Ay görünümü arka plan meşgul rengini seçmek için Renkler yapılandırma alanına bakın.</para
+></listitem>
+</varlistentry>
+
+<varlistentry>
+<term
+><guilabel
+>Renk Kullanımı</guilabel
+></term>
+<listitem>
+<para
+>Ay görünümü için olan renkleri <link linkend="config-main-views-agenda"
+>Ajanda Görünümü</link
+> içinde olduğu gibi yapılandırın.</para
+></listitem>
+</varlistentry>
+
+</variablelist>
+</sect3>
+
+<sect3 id="config-main-views-todo">
+<title
+>Yapılacaklar Görünümü sekmesi</title>
+
+<para
+><link linkend="todo-view"
+>Yapılacaklar Görünümü</link
+> seçenekleri:</para>
+
+<variablelist>
+
+<varlistentry>
+<term
+><guilabel
+>Tamamlanan yapılacakları her zaman listenin en altında görüntüle</guilabel
+></term>
+<listitem
+><para
+>Bu seçeneği etkinleştirirseniz tamamlanan tüm yapılacaklar her zaman Yapılacaklar Listesi’nin en altında gruplandırılır.</para
+></listitem>
+</varlistentry>
+
+<varlistentry>
+<term
+><guilabel
+>Tamamlanan yapılacakları günce girdilerinde kaydet</guilabel
+></term>
+<listitem
+><para
+>Bu kutuyu işaretlerseniz &korganizer;, tamamlanan her yapılacak iş için kendiliğinden bir günce girişi ekleyecektir.</para
+></listitem>
+</varlistentry>
+
+</variablelist>
+</sect3>
+</sect2>
+
+<sect2 id="config-main-colors-fonts">
+<title
+>Renkler ve Yazıtipleri</title>
+
+<sect3 id="config-main-colors">
+<title
+>Renkler</title>
+
+<para
+>Tatiller, vurgulamalar ve belirli etkinlik künyeleri için kullanılacak rengi seçin. Her künye için farklı bir renk seçebilirsiniz. Elbette çok fazla renk kafa karıştırıcı olabilir, bu yüzden sağduyunuzu kullanın. Renk kullanımı aynı zamanda <link linkend="config-main-views"
+>görünüm tercihlerine</link
+> de bağlıdır.</para>
+
+<variablelist>
+
+<varlistentry>
+<term
+><guilabel
+>Tatil rengi</guilabel
+></term>
+<listitem
+><para
+>Bu düğme, tatil rengini seçmenize olanak tanıyan <guilabel
+>Renk Seç</guilabel
+> iletişim kutusunu açar. Tatil rengi, Ay görünümünde tatil adı ve Tarih Gezgini’nde tatil tarihi için kullanılır.</para
+></listitem>
+</varlistentry>
+
+<varlistentry>
+<term
+><guilabel
+>Ajanda görünümü arka plan rengi</guilabel
+></term>
+<listitem
+><para
+>Bu düğme, <guilabel
+>Renk Seç</guilabel
+> iletişim kutusunu açar ve Ajanda görünümü arka plan rengini seçmenize olanak tanır.</para
+></listitem>
+</varlistentry>
+
+<varlistentry>
+<term
+><guilabel
+>Meşgul günler arka plan rengi</guilabel
+></term>
+<listitem
+><para
+>Bu düğme, Ajanda veya Ay görünümü arka plan meşgul rengini seçmenize olanak tanıyan <guilabel
+>Renk Seç</guilabel
+> iletişim kutusunu açar. Bu renk, yalnızca bu görünümlerden herhangi birinde meşgul günleri farklı bir renkle çizme seçeneği ayarlandığında kullanılır.</para
+></listitem>
+</varlistentry>
+
+<varlistentry>
+<term
+><guilabel
+>Ajanda görünümü geçerli zaman çizgisi rengi</guilabel
+></term>
+<listitem
+><para
+>Bu düğme, <guilabel
+>Renk Seç</guilabel
+> iletişim kutusunu açar ve geçerli zaman (Marcus Bains) satırı için bir renk seçmenize olanak tanır.</para
+></listitem>
+</varlistentry>
+
+<varlistentry>
+<term
+><guilabel
+>Çalışma saatleri rengi</guilabel
+></term>
+<listitem
+><para
+>Bu düğme, <guilabel
+>Renk Seç</guilabel
+> iletişim kutusunu açar ve Ajanda görünümünde çalışma saatleri arka planının rengini seçmenize olanak tanır.</para
+></listitem>
+</varlistentry>
+
+<varlistentry>
+<term
+><guilabel
+>Bitiş tarihi bugün rengi</guilabel
+></term>
+<listitem
+><para
+>Bu düğme, bugün bitirilmesi gereken işin rengini seçmenize olanak tanıyan <guilabel
+>Renk Seç</guilabel
+> iletişim kutusunu açar.</para
+></listitem>
+</varlistentry>
+
+<varlistentry>
+<term
+><guilabel
+>Bitiş tarihi geçmiş yapılacak rengi</guilabel
+></term>
+<listitem
+><para
+>Bu düğme, gecikmiş yapılacak işin rengini seçmenize olanak tanıyan <guilabel
+>Renk Seç</guilabel
+> iletişim kutusunu açar.</para
+></listitem>
+</varlistentry>
+
+<varlistentry>
+<term
+><guilabel
+>Künyeler</guilabel
+></term>
+<listitem
+><para
+>Bu grup, her künyeye bir renk atamanıza olanak tanır. Açılır listeden bir künye seçin ve <guilabel
+>Renk Seç</guilabel
+> iletişim kutusunu açmak için düğmeye basın; böylece o künye için bir renk seçebilirsiniz. <link linkend="config-main-views"
+>Görünüm tercihlerine bağlı olarak</link
+> bu renk, Ajanda ve Ay görünümlerinde bu künyeyi taşıyan etkinlikleri ve yapılacak işleri işaretlemek için kullanılacaktır.</para
+></listitem>
+</varlistentry>
+
+<varlistentry>
+<term
+><guilabel
+>Özkaynaklar</guilabel
+></term>
+<listitem
+><para
+>Bu grup, her özkaynağa bir renk atamanıza olanak tanır. Açılır listeden bir özkaynak seçin ve <guilabel
+>Renk Seç</guilabel
+> iletişim kutusunu açmak için düğmeye basın; böylece o özkaynak için bir renk seçebilirsiniz. <link linkend="config-main-views"
+>Görünüm tercihlerine bağlı olarak</link
+> bu renk, Ajanda ve Ay görünümlerinde bu künyeyi taşıyan etkinlikleri ve yapılacak işleri işaretlemek için kullanılacaktır.</para
+></listitem>
+</varlistentry>
+
+</variablelist>
+
+</sect3>
+
+<sect3 id="config-main-fonts">
+<title
+>Yazıtipi sekmesi</title>
+
+<variablelist>
+
+<varlistentry>
+<term
+><guilabel
+>Zaman çubuğu</guilabel
+></term>
+<listitem
+><para
+>Zaman çubuğunun yazıtipini, yazı biçemini ve puntosunu seçmek için bu düğmeye basın.</para
+></listitem>
+</varlistentry>
+
+<varlistentry>
+<term
+><guilabel
+>Ay görünümü</guilabel
+></term>
+<listitem
+><para
+>Ay görünümünün yazıtipini, yazı biçemini ve puntosunu seçmek için bu düğmeye basın.</para
+></listitem>
+</varlistentry>
+
+<varlistentry>
+<term
+><guilabel
+>Ajanda görünümü</guilabel
+></term>
+<listitem
+><para
+>Ajanda görünümünün (gün, hafta, çalışma haftası görünümleri) yazıtipini, yazı biçemini ve puntosunu seçmek için bu düğmeye basın.</para
+></listitem>
+</varlistentry>
+
+<varlistentry>
+<term
+><guilabel
+>Geçerli zaman (Marcus Bains) çizgisi</guilabel
+></term>
+<listitem
+><para
+>Marcus Bains çizgisinin (geçerli zamanı gösteren, ajanda görünümündeki bir renkli çizgi) yazıtipini, yazı biçemini ve puntosunu seçmek için bu düğmeye basın.</para
+></listitem>
+</varlistentry>
+
+</variablelist>
+
+</sect3>
+
+</sect2>
+
+<sect2 id="config-main-groupscheduling">
+<title
+>Grup Programı</title>
+
+<variablelist>
+
+<varlistentry>
+<term
+><guilabel
+>Grup Yazılımı iletişimini kullan</guilabel
+></term>
+<listitem
+><para
+>Başkalarını ilgilendiren etkinlikler veya yapılacaklar listesi oluştururken, güncellerken veya silerken kendiliğinden bir e-posta göndermek için bu kutuyu işaretleyin. Bu e-posta, oluşturduğunuz bir etkinliğin katılımcılarına bir davet, oluşturduğunuz bir etkinliğin iptali, davet durumunuzla ilgili bir yanıt veya güncelleme, bir etkinlik değişiklik talebi vb. olabilir. Grup yazılımı işlevini kullanmak istiyorsanız bu seçeneği işaretleyin (örneğin, &kontact;’ı &kde; <guilabel
+>Kolab</guilabel
+> istemcisi olarak yapılandırmak için).</para
+></listitem>
+</varlistentry>
+
+<varlistentry>
+<term
+><guilabel
+>Etkinlikleri postalarken sahibine bir kopya gönder</guilabel
+></term>
+<listitem
+><para
+><guilabel
+>Etkinlikleri postalarken sahibine bir kopya gönder</guilabel
+> kutusunu işaretlediğinizde, &korganizer;’ün isteğiniz üzerine etkinliğe katılanlara gönderdiği tüm e-posta iletilerinin bir kopyasını alacaksınız.</para
+></listitem>
+</varlistentry>
+
+<varlistentry>
+<term
+><guilabel
+>Posta taşıması</guilabel
+></term>
+<listitem
+><para
+>Burada hangi posta taşıma türünü kullanmak istediğinizi seçebilirsiniz. &kmail; veya &Sendmail; komutunu kullanabilirsiniz (çalışması için sisteminizde kurulu olması gerekir).</para
+></listitem>
+</varlistentry>
+
+</variablelist>
+
+</sect2>
+
+<sect2 id="config-main-free-busy">
+<title
+>Uygun/Meşgul</title>
+
+<para
+>Uygun/Meşgul bilgisi, bir müsaitlik programını temsil eder. Birinin daha önceden taahhütleri olduğu aralıkları sunarak, diğerleri bu dönemler için randevu ayarlamaktan kaçınabilir. Yalnızca zamanların yayınlandığını, etkinliklerin, nedenlerin veya katılımcıların yayınlanmadığını unutmayın.</para>
+
+<para
+>&korganizer;, uygun/meşgul bilgilerinin elle veya kendiliğinden yayınlanmasını ve alınmasını destekler.</para>
+
+<sect3 id="config-main-free-busy-publish">
+<title
+>Yayınla</title>
+<para
+>Uygun/Meşgul bilgilerinizi yayınlayarak, başkalarının sizi bir etkinliğe davet ederken yoğun zaman programınızı hesaba katmalarını sağlarsınız.</para>
+
+<variablelist>
+
+<varlistentry>
+<term
+><guilabel
+>Uygun/Meşgul bilgisini kendiliğinden yayınla</guilabel
+></term>
+<listitem
+><para
+>Uygun/Meşgul bilgilerinizin kendiliğinden yüklenmesini istiyorsanız bu seçeneği etkinleştirin. Bu seçeneği atlayıp Uygun/Meşgul bilgilerinizi &korganizer;’ün <guilabel
+>Program</guilabel
+> menüsü aracılığıyla postayla göndermeyi veya yüklemeyi seçebilirsiniz.</para>
+
+<para
+>Uygulamanız bir <guilabel
+>&kde; Kolab istemcisi</guilabel
+> olarak çalışacak şekilde ayarlanmışsa bu gerekli değildir. <guilabel
+>Kolab2</guilabel
+> sunucusu, Uygun/Meşgul bilgilerinizin yayınlanmasını ve diğer kullanıcıların bu bilgilere erişimini yönetebilir.</para>
+</listitem>
+</varlistentry>
+
+<varlistentry>
+<term
+><guilabel
+>Yüklemeler arasındaki en az süre (dakika olarak)</guilabel
+></term>
+<listitem
+><para
+>Bilgilerinizi kendiliğinden yayınlamayı seçerseniz her yükleme arasındaki zaman aralığını dakika türünden yapılandırabilirsiniz.</para>
+</listitem>
+</varlistentry>
+
+<varlistentry>
+<term
+><guilabel
+>(Öntanımlı 60) günlük uygun/meşgul bilgisini yayınla</guilabel
+></term>
+<listitem
+><para
+>Yayımlanmasını ve başkalarının erişimine açılmasını istediğiniz takvim günü sayısını yapılandırın.</para
+></listitem>
+</varlistentry>
+
+<varlistentry>
+<term
+><guilabel
+>Sunucu &URL;’si</guilabel
+></term>
+<listitem
+><para
+>Uygun/Meşgul bilgilerinizin yayınlanacağı sunucunun &URL; adresini girin. Bu bilgiyi sunucu yöneticisinden isteyin.</para>
+<para
+>Kolab2 sunucusu örneği: <userinput
+>webdavs://kolab2.com/freebusy/joe@kolab2.com.ifb</userinput
+> </para
+></listitem>
+</varlistentry>
+
+<varlistentry>
+<term
+><guilabel
+>Kullanıcı adı</guilabel
+></term>
+<listitem
+><para
+>Sunucudaki hesabınıza ait giriş bilgilerini girin.</para>
+<para
+>Kolab2 sunucusuna özgü: Kayıtlı UID’niz (Benzersiz Tanımlayıcı), öntanımlı olarak Kolab2 sunucusundaki e-posta adresinize benzer olacaktır; ancak farklı olabilir. Bu durumda UID’nizi girin. UID’nizi bilmiyorsanız sunucu yöneticisine sorun.</para
+></listitem>
+</varlistentry>
+
+<varlistentry>
+<term
+><guilabel
+>Parola</guilabel
+></term>
+<listitem
+><para
+>Parolanızı (sunucu giriş parolası) buraya girin.</para
+></listitem>
+</varlistentry>
+
+<varlistentry>
+<term
+><guilabel
+>Parolayı anımsa</guilabel
+></term>
+<listitem
+><para
+>&korganizer;’ün parolanızı anımsamasını ve her Uygun/Meşgul bilginizi yüklerken size sormayı atlamasını istiyorsanız bu seçeneği işaretleyin.</para>
+<warning
+><para
+>Güvenlik nedeniyle parolanızı yapılandırma dosyasında saklamanız önerilmez.</para
+></warning
+></listitem>
+</varlistentry>
+
+</variablelist>
+
+</sect3>
+
+<sect3 id="config-main-free-busy-retrieve">
+<title
+>Al</title>
+
+<para
+>Başkalarının uygun/meşgul bilgilerini alarak, onları bir etkinliğe davet ederken yoğun zamanlarını da hesaba katabilirsiniz.</para>
+
+<variablelist>
+
+<varlistentry>
+<term
+><guilabel
+>Diğer kişilerin uygun/meşgul bilgisni kendiliğinden al</guilabel
+></term>
+<listitem
+><para
+>Diğer kullanıcıların uygun/meşgul zamanlarını alma sürecini otomatikleştirin. Bu seçeneği etkinleştirmek için aşağıdaki sunucu bilgileri bölümünü doldurun.</para
+></listitem>
+</varlistentry>
+
+<varlistentry>
+<term
+><guilabel
+>Alım için tam e-posta adresini kullan</guilabel
+></term>
+<listitem
+><para
+>Bu ayar, sunucudan alınacak dosyanın adını değiştirmenize olanak tanır. Bu seçeneği işaretlerseniz <userinput
+>user@domain.ifb</userinput
+> adlı bir uygun/meşgul dosyası indirilir, aksi takdirde <userinput
+>user.ifb</userinput
+> dosyası indirilir. Bu seçeneği nasıl yapılandıracağınızdan emin değilseniz sunucu yöneticisine danışın.</para>
+<para
+><guilabel
+>Kolab2 sunucusu belirliliği:</guilabel
+> &korganizer;’ü <guilabel
+>&kde; Kolab istemcisi (&kontact;/Kolab)</guilabel
+> için bir bileşen olarak yapılandırıyorsanız bu seçeneği işaretlemeniz gerekir.</para
+></listitem>
+</varlistentry>
+
+<varlistentry>
+<term
+><guilabel
+>Sunucu &URL;’si</guilabel
+></term>
+<listitem
+><para
+>Uygun/Meşgul bilgilerinizin alınacağı sunucunun &URL; adresini girin. Bu bilgiyi sunucu yöneticisinden isteyin.</para>
+<para
+><guilabel
+>Kolab2 sunucusu örneği: </guilabel
+><userinput
+>webdavs://kolab2.com/freebusy/</userinput
+> </para
+></listitem>
+</varlistentry>
+
+<varlistentry>
+<term
+><guilabel
+>Kullanıcı adı</guilabel
+></term>
+<listitem
+><para
+>Sunucudaki hesabınıza ait giriş bilgilerini girin.</para>
+</listitem>
+</varlistentry>
+
+<varlistentry>
+<term
+><guilabel
+>Parola</guilabel
+></term>
+<listitem
+><para
+>Parolanızı (sunucu giriş parolası) buraya girin. </para
+></listitem>
+</varlistentry>
+
+<varlistentry>
+<term
+><guilabel
+>Parolayı anımsa</guilabel
+></term>
+<listitem
+><para
+>&korganizer;’ün parolanızı anımsamasını ve her uygun/meşgul dosyasını alırken size sormayı atlamasını istiyorsanız bu seçeneği işaretleyin.</para>
+<warning
+><para
+>Güvenlik nedeniyle parolanızı yapılandırma dosyasında saklamanız önerilmez.</para
+></warning>
+</listitem>
+</varlistentry>
+
+</variablelist>
+</sect3>
+</sect2>
+
+<sect2 id="config-main-plugins">
+<title
+>Eklentiler</title>
+
+<para
+>Eklentileri yapılandırmakla ilgili daha fazla bilgi için <xref linkend="plugins-chapter"/> bakın.</para>
+
+</sect2>
+
+<sect2 id="config-custom-pages">
+<title
+>Özel Sayfalar</title>
+
+<para
+>Bu sayfa, kendi değerlerinizi &korganizer;’de depolamak için kendi grafik arayüz ögelerinizi eklemenize olanak tanır.</para>
+<para
+><guilabel
+>Bu Nasıl Çalışır?</guilabel
+> içinde açıklandığı üzere kendi ögelerinizi oluşturun.</para>
+
+</sect2>
+</sect1>
+
+</chapter>
+
+<chapter id="plugins-chapter"
+><!--updated to 5.4.40-->
+
+<title
+>Eklentiler</title>
+
+<para
+>&korganizer; eklentilerle uygulamayı genişletme olanağı sağlar. </para>
+
+<para
+>Eklentiler, &korganizer;ana yapılandırma iletişim kutusunda yapılandırılabilir. <menuchoice
+><guimenu
+>Ayarlar</guimenu
+><guimenuitem
+>&korganizer; Uygulamasını Yapılandır</guimenuitem
+></menuchoice
+> yolunu izleyin ve iletişim kutusunun kenarındaki <guilabel
+>Eklentiler</guilabel
+> simgesine tıklayın. </para>
+
+<sect1 id="plugins-chapter-availableplugins">
+<title
+>Kullanılabilir Eklentiler</title>
+
+<sect2 id="date-numbers-plugin">
+<title
+>Takvimler için Tarih Numaraları Eklentisi</title>
+<para
+>Bu eklenti, Ajanda görünümüne yıl içindeki gün sayısını ekler. Örneğin 1 Şubat, 32. gündür. </para>
+</sect2>
+
+<sect2 id="wikipedia-thisday-plugin">
+<title
+>Vikipedi “Tarihte Bugün” Eklentisi</title>
+<para
+>Bu eklenti, Vikipedi’deki <quote
+>Tarihte Bugün</quote
+> sayfasına bağlantı sağlar. </para>
+</sect2>
+
+<sect2 id="wikipedia-pictureoftheday-plugin">
+<title
+>Takvimler için Vikipedi Günün Resmi Eklentisi</title>
+<para
+>Bu eklenti, Vikipedi’deki <quote
+>Günün Resmi</quote
+> sayfasına bağlantı sağlar. </para>
+</sect2>
+
+<sect2 id="jewish-calendar-plugin">
+<title
+>Musevî Takvimi Eklentisi</title>
+<para
+>Bu eklenti, Miladî takvim tarihlerine ek olarak Musevî takvimi tarihlerini de sunar. Eklentinin yapılandırma iletişim kutusunda, İsrail bayramlarını, haftalık Parşa’yı, Ömer gününü ve/veya Chol HaMoed’i görüntülemek isteyip istemediğinizi seçebilirsiniz. </para>
+</sect2>
+
+</sect1>
+
+</chapter>
+
+<chapter id="reference">
+<title
+>Referans</title>
+
+<sect1 id="reference-menus"
+><!--updated to 5.4.40, Send as iCalendar-->
+<title
+>Menüler</title>
+
+<para
+>&korganizer; başlatıldığında, ana &korganizer; penceresi görünür. Bu pencerede birkaç bileşen vardır: Bir menü çubuğu, araç çubuğu, ay takvimi, geçerli etkinlikleri gösteren bir <quote
+>görünüm</quote
+> ve bir yapılacaklar listesi.</para>
+
+<para
+>Menüler, takvimle gerçekleştirilebilecek tüm genel işlemlere erişim sağlar; bunlar arasında etkinlikleri, yapılacak işleri ve günlük girişlerini kaydetme, yükleme, ekleme ve silme, yazdırma ve daha fazlası yer alır.</para>
+
+<para
+>&kontact; uygulamasının takvim bileşeni olarak &korganizer; kullanıldığında menülerin tek başına kullanılan uygulamadan farklı olduğunu lütfen unutmayın.</para>
+
+<sect2 id="reference-menus-file">
+<title
+>Dosya</title>
+
+<para
+><guimenu
+>Dosya</guimenu
+> menüsü, tüm takvimi ilgilendiren işlevlere erişim sağlar.</para>
+
+<variablelist>
+
+<varlistentry id="menu-file-open">
+<term
+><inlinemediaobject
+><imageobject
+><imagedata fileref="document-open.png"
+ format="PNG"/></imageobject
+></inlinemediaobject
+><menuchoice
+><shortcut
+><keycombo action="simul"
+>&Ctrl;<keycap
+>O</keycap
+></keycombo
+></shortcut
+> <guimenu
+>Dosya</guimenu
+> <guimenuitem
+>Aç</guimenuitem
+></menuchoice>
+</term>
+<listitem
+><para
+><action
+>Yeni bir vCalendar veya iCalendar dosyası yüklemenizi sağlayan bir dosya iletişim kutusu açar</action
+>. Geçerli takvimde değişiklik yaptıysanız yenisini yüklemeden önce bunları kaydetme seçeneği sunulacaktır.</para>
+<para
+>Bunun hakkında daha fazla bilgi için lütfen <xref linkend="managing-import-export"/> bakın.</para>
+</listitem>
+</varlistentry>
+
+<varlistentry id="menu-file-print">
+<term
+><inlinemediaobject
+><imageobject
+><imagedata fileref="document-print.png"
+ format="PNG"/></imageobject
+></inlinemediaobject
+><menuchoice
+><shortcut
+><keycombo action="simul"
+>&Ctrl;<keycap
+>P</keycap
+></keycombo
+></shortcut
+> <guimenu
+>Dosya</guimenu
+> <guimenuitem
+>Yazdır</guimenuitem
+></menuchoice>
+</term>
+<listitem
+><para
+><action
+>Geçerli takvimi yazdırmak</action
+> için <guimenuitem
+>Yazdır</guimenuitem
+> menü ögesine veya <guilabel
+>Yazdır</guilabel
+> simgesine tıklayın. Yazdırılacak tarih erimini (elle veya takvim araç takımıyla) ve yazdırma şeklini (Gün, Hafta, Ay veya Yapılacaklar ve Günlük) belirtebilirsiniz.</para
+></listitem>
+</varlistentry>
+
+<varlistentry id="menu-file-print-preview">
+<term
+><inlinemediaobject
+><imageobject>
+<imagedata fileref="document-print-preview.png"
+format="PNG"/></imageobject
+></inlinemediaobject
+><menuchoice
+><guimenu
+> Dosya</guimenu
+><guimenuitem
+>Yazdırma Önizlemesi</guimenuitem
+></menuchoice>
+</term>
+<listitem
+><para
+><guimenuitem
+>Yazdırma Önizlemesi</guimenuitem
+>’ni seçerseniz veya <guiicon
+>Yazdırma Önizlemesi</guiicon
+> simgesine tıklarsanız <action
+>geçerli takvim yazıcınız yerine ekranınıza yazdırılır</action
+>. Yazdırmaya başlamadan önce çıktının doğru olup olmadığını denetlemek için bu özelliği kullanın.</para>
+<para
+>Yazdırılacak tarih erimini (elle olarak veya Takvim araç takımı ile) ve görünüm türünü (Gün, Hafta, Ay veya Yapılacak) belirtebilirsiniz.</para>
+</listitem>
+</varlistentry>
+
+<varlistentry id="menu-file-import-calendar">
+<term
+><menuchoice
+><guimenu
+>Dosya</guimenu
+> <guisubmenu
+>İçe Aktar</guisubmenu
+> <guimenuitem
+>Takvim İçe Aktar…</guimenuitem
+> </menuchoice
+></term>
+<listitem
+><para
+>Başka bir yerde farklı bir iCalendar veya vCalendar dosyanız varsa ve içeriğini kendi takviminize <action
+>birleştirmek, yeni bir özkaynak olarak eklemek veya yeni bir pencerede açmak</action
+> istiyorsanız bu menü ögesini seçin. Örneğin, e-posta yoluyla birkaç girdi içeren bir vCalendar aldıysanız bunu yapmak için iyi bir zaman olabilir.</para>
+<para
+>Bu eylem hakkında daha fazla bilgi için <xref linkend="managing-import"/> bakın.</para>
+</listitem>
+</varlistentry>
+
+<varlistentry id="menu-file-export-icalendar">
+<term
+><menuchoice
+><guimenu
+>Dosya</guimenu
+> <guisubmenu
+>Dışa Aktar</guisubmenu
+> <guimenuitem
+>iCalendar Olarak Dışa Aktar…</guimenuitem
+> </menuchoice
+></term>
+<listitem
+><para
+>Bu eylem; tüm etkin etkinliklerinizi, yapılacak işlerinizi ve günce girdilerinizi (hangi özkaynağa ait olduklarından bağımsız olarak) yeni bir iCalendar dosyasına dışa aktaracaktır.</para>
+<para
+>Bu eylem hakkında daha fazla bilgi için <xref linkend="managing-export"/> bakın.</para>
+</listitem>
+</varlistentry>
+
+<varlistentry id="menu-file-archive-old">
+<term
+><menuchoice
+><guimenu
+>Dosya</guimenu
+> <guimenuitem
+>Eski Olayları Arşivle…</guimenuitem
+> </menuchoice
+></term>
+<listitem
+><para
+><action
+>Zaman zaman eski etkinliklerinizi silmelisiniz.</action
+></para>
+<para
+>Bu eylem hakkında daha fazla bilgi için <xref linkend="managing-purge-archive"/> bakın.</para>
+</listitem>
+</varlistentry>
+
+<varlistentry id="menu-file-purge">
+<term
+><menuchoice
+><guimenu
+>Dosya</guimenu
+> <guimenuitem
+>Tamamlanmış Yapılacakları Temizle</guimenuitem
+> </menuchoice
+></term>
+<listitem
+><para
+>Bu eylem, tamamlanan tüm yapılacak işleri etkin takviminizden kaldıracaktır.</para>
+<para
+>Bu eylem hakkında daha fazla bilgi için <xref linkend="managing-purge-archive"/> bakın.</para>
+</listitem
+></varlistentry>
+
+<varlistentry id="menu-file-quit">
+<term
+><inlinemediaobject
+><imageobject
+><imagedata
+ fileref="application-exit.png"/></imageobject
+></inlinemediaobject
+><menuchoice
+><shortcut
+> <keycombo action="simul"
+>&Ctrl;<keycap
+>Q</keycap
+></keycombo
+> </shortcut
+> <guimenu
+>Dosya</guimenu
+> <guimenuitem
+>Çık</guimenuitem
+> </menuchoice>
+</term>
+<listitem
+><para
+><guimenuitem
+>Çık</guimenuitem
+>’ı seçtiğinizde veya <guiicon
+>Çık</guiicon
+> simgesine tıkladığınızda, <action
+>geçerli takvim penceresi kapanır ve geçerli takvim değiştirilmiş; ancak henüz kaydedilmemişse kaydetmeniz istenir.</action
+></para>
+<para
+>Bu, açılabilecek diğer takvim pencerelerini etkilemez. Her takvim penceresinden ayrı ayrı çıkmanız gerekir.</para
+> </listitem>
+</varlistentry>
+</variablelist>
+
+</sect2>
+
+<sect2 id="reference-menus-edit">
+<title
+>Düzen</title>
+
+<para
+><guilabel
+>Düzen</guilabel
+> menüsüyle etkinlikleri ve yapılacak işleri düzenleyebilir ve içlerinde arama yapabilirsiniz.</para>
+
+<para
+><guimenuitem
+>Kes</guimenuitem
+>, <guimenuitem
+>Kopyala</guimenuitem
+> ve <guimenuitem
+>Yapıştır</guimenuitem
+> menü ögeleri, diğer &kde; uygulamalarındakiyle aynı şekilde davranır. <guimenuitem
+>Bul</guimenuitem
+> menü ögesiyle, geçerli takvimdeki etkinlikleri ve yapılacak işleri bulabilirsiniz.</para>
+
+<variablelist>
+
+<varlistentry id="menu-edit-undo">
+<term
+><inlinemediaobject
+><imageobject
+><imagedata fileref="edit-undo.png"
+ format="PNG"/></imageobject
+></inlinemediaobject
+><menuchoice
+><shortcut
+> <keycombo action="simul"
+>&Ctrl;<keycap
+>Z</keycap
+></keycombo
+> </shortcut
+> <guimenu
+>Düzen</guimenu
+> <guimenuitem
+>Geri Al</guimenuitem
+> </menuchoice>
+</term>
+<listitem
+><para
+><action
+>Son eylemi geri alır</action
+> veya başka bir deyişle, takvimi son eylemden hemen önceki durumuna döndürür.</para
+></listitem>
+</varlistentry>
+
+<varlistentry id="menu-edit-redo">
+<term
+><inlinemediaobject
+><imageobject
+><imagedata fileref="edit-redo.png"
+ format="PNG"/></imageobject
+></inlinemediaobject
+><menuchoice
+><shortcut
+> <keycombo action="simul"
+>&Ctrl;&Shift;<keycap
+>Z</keycap
+></keycombo
+> </shortcut
+> <guimenu
+>Düzen</guimenu
+> <guimenuitem
+>Yinele</guimenuitem
+> </menuchoice>
+</term>
+<listitem
+><para
+><action
+>Son eylemi yineler</action
+> veya başka bir deyişle, takvimi son geri alma eyleminden hemen önceki durumuna döndürür.</para
+></listitem>
+</varlistentry>
+
+<varlistentry id="menu-edit-cut">
+<term
+><inlinemediaobject
+><imageobject
+><imagedata fileref="edit-cut.png"
+ format="PNG"/></imageobject
+></inlinemediaobject
+><menuchoice
+><shortcut
+> <keycombo action="simul"
+>&Ctrl;<keycap
+>X</keycap
+></keycombo
+> </shortcut
+> <guimenu
+>Düzen</guimenu
+> <guimenuitem
+>Kes</guimenuitem
+> </menuchoice>
+</term>
+<listitem
+><para
+><action
+>Şu anda seçili olan etkinliği/etkinlikleri panoya keser ve takviminizden kaldırır.</action
+></para
+></listitem>
+</varlistentry>
+
+<varlistentry id="menu-edit-copy">
+<term
+><inlinemediaobject
+><imageobject
+><imagedata fileref="edit-copy.png"
+ format="PNG"/></imageobject
+></inlinemediaobject
+><menuchoice
+><shortcut
+> <keycombo action="simul"
+>&Ctrl;<keycap
+>C</keycap
+></keycombo
+> </shortcut
+> <guimenu
+>Düzen</guimenu
+> <guimenuitem
+>Kopyala</guimenuitem
+></menuchoice>
+</term>
+<listitem
+><para
+><action
+>Şu anda seçili olan ögeyi/ögeleri panoya kopyalar; ancak bunlara dokunmaz.</action
+></para
+></listitem>
+</varlistentry>
+
+<varlistentry id="menu-edit-paste">
+<term
+><inlinemediaobject
+><imageobject
+><imagedata fileref="edit-paste.png"
+ format="PNG"/></imageobject
+></inlinemediaobject
+><menuchoice
+><shortcut
+> <keycombo action="simul"
+>&Ctrl;<keycap
+>V</keycap
+></keycombo
+> </shortcut
+> <guimenu
+>Düzen</guimenu
+> <guimenuitem
+>Yapıştır</guimenuitem
+></menuchoice>
+</term>
+<listitem
+><para
+><guimenuitem
+>Yapıştır</guimenuitem
+>, <action
+>panonun içeriğini takviminize ekler</action
+>. Pano, önceki bir Kes/Kopyala işlemiyle veya &korganizer; dışında yapılan bir seçimle sağlanan geçerli bir vCalendar veya iCalendar ögesi içermelidir. Panonun içeriği anlaşılamıyorsa uyarılırsınız.</para>
+<tip
+><para
+>Ancak, <keycombo action="simul"
+>&Ctrl; <keycap
+>C</keycap
+></keycombo
+> ve <keycombo action="simul"
+>&Ctrl; <keycap
+>V</keycap
+></keycombo
+> kısayollarıyla başka bir uygulamadan veya bir &korganizer; etkinlik düzenleme penceresine veya buradan başka bir uygulamaya güvenle işlem yapabilirsiniz. </para
+></tip
+></listitem>
+</varlistentry>
+
+<varlistentry id="menu-edit-delete">
+<term
+><inlinemediaobject
+><imageobject
+><imagedata fileref="edit-delete.png"
+ format="PNG"/></imageobject
+></inlinemediaobject
+><menuchoice
+><guimenu
+>Düzen</guimenu
+> <guimenuitem
+>Sil</guimenuitem
+> </menuchoice>
+</term>
+<listitem
+><para
+><action
+>Şu anda seçili olan ögeyi/ögeleri silerek takviminizden kaldırın.</action
+></para
+></listitem>
+</varlistentry>
+
+<varlistentry id="menu-edit-find">
+<term
+><inlinemediaobject
+><imageobject
+><imagedata fileref="edit-find.png"
+ format="PNG"/></imageobject
+></inlinemediaobject
+><menuchoice
+><shortcut
+> <keycombo action="simul"
+>&Ctrl;<keycap
+>F</keycap
+></keycombo
+> </shortcut
+> <guimenu
+>Düzen</guimenu
+> <guimenuitem
+>Bul…</guimenuitem
+> </menuchoice>
+</term>
+<listitem
+><para
+><guimenu
+>Düzen</guimenu
+> menüsünden <guimenuitem
+>Bul</guimenuitem
+>’u seçin veya <guiicon
+>Bul</guiicon
+> simgesine tıklayarak özetlerine, açıklamalarına ve/veya künyelerine göre etkinlikleri, yapılacak işleri ve günce girdilerini <action
+>bulun</action
+>.</para>
+<para
+>Bu eylem hakkında daha fazla bilgi için <xref linkend="search-view"/> bakın.</para>
+</listitem>
+</varlistentry>
+</variablelist>
+
+</sect2>
+
+<sect2 id="reference-menus-view">
+<title
+>Görünüm</title>
+
+<para
+>Etkinliklerinizi, yapılacak işlerinizi ve günce girdilerinizi görüntülemek için kullanabileceğiniz birkaç farklı <quote
+>görünüm</quote
+> vardır. &korganizer;, oturumlar arasında son etkin görünümün ne olduğunu anımsayacak kadar akıllıdır ve bir sonraki başlatılışında bu görünümü görüntüler.</para>
+
+<para
+>Genel olarak, her görünüm günce girdilerinizi, yapılacak işlerinizi ve etkinliklerinizi belirli bir zaman dilimi veya görüntüleme stiliyle sınırlı olarak görüntülemenin bir yolunu sunar. Daha fazla işlem yapmak için herhangi bir ögeyi seçmek üzere tıklayın. <guimenuitem
+>Düzenle</guimenuitem
+>, <guimenuitem
+>Sil</guimenuitem
+> gibi seçeneklerin bulunduğu bir menü açmak için bir ögeye <mousebutton
+>sağ</mousebutton
+> tıklayın. Benzer işlemleri gerçekleştirmek için <guimenu
+>Eylem</guimenu
+> menüsünü de kullanabilirsiniz.</para>
+
+<variablelist>
+
+<varlistentry id="menu-view-agenda">
+<term
+><inlinemediaobject
+><imageobject
+><imagedata fileref="view-calendar-agenda.png"
+ format="PNG"/></imageobject
+></inlinemediaobject
+><menuchoice
+><guimenu
+>Görünüm</guimenu
+> <guimenuitem
+>Ajanda</guimenuitem
+> </menuchoice
+></term>
+<listitem
+><para
+><action
+>Görüntüyü, Ajanda görünümüne geçirir.</action>
+</para>
+<para
+>Bu eylem hakkında daha fazla bilgi için <xref linkend="agenda-view"/> bakın.</para>
+</listitem>
+</varlistentry>
+
+<varlistentry id="menu-view-month">
+<term
+><inlinemediaobject
+><imageobject
+><imagedata fileref="view-calendar-month.png"
+ format="PNG"/></imageobject
+></inlinemediaobject
+><menuchoice
+><guimenu
+>Görünüm</guimenu
+> <guimenuitem
+>Ay</guimenuitem
+> </menuchoice
+></term>
+<listitem
+><para
+><action
+>Görüntüyü, Ay görünümüne geçirir.</action>
+</para>
+<para
+>Bu eylem hakkında daha fazla bilgi için <xref linkend="month-view"/> bakın.</para>
+</listitem>
+</varlistentry>
+
+<varlistentry id="menu-view-timeline">
+<term
+><inlinemediaobject
+><imageobject
+><imagedata fileref="view-calendar-timeline.png"
+ format="PNG"/></imageobject
+></inlinemediaobject
+><menuchoice
+><guimenu
+>Görünüm</guimenu
+> <guimenuitem
+>Zaman Akışı</guimenuitem
+> </menuchoice
+></term>
+<listitem
+><para
+><action
+>Görüntüyü, Zaman Akışı görünümüne geçirir.</action>
+</para>
+<para
+>Bu eylem hakkında daha fazla bilgi için <xref linkend="timeline-view"/> bakın.</para>
+</listitem>
+</varlistentry>
+
+<varlistentry id="menu-view-todo">
+<term
+> <inlinemediaobject
+><imageobject
+><imagedata
+ fileref="view-calendar-tasks.png"
+format="PNG"/></imageobject
+></inlinemediaobject
+><menuchoice
+><guimenu
+>Görünüm</guimenu
+> <guimenuitem
+>Yapılacaklar Listesi</guimenuitem
+></menuchoice>
+ </term>
+<listitem
+><para
+><action
+>Görüntüyü, Yapılacaklar Listesi görünümüne geçirir.</action
+></para>
+<para
+>Bu eylem hakkında daha fazla bilgi için <xref linkend="todo-view"/> bakın.</para>
+</listitem>
+</varlistentry>
+
+<varlistentry id="menu-view-list">
+<term
+><inlinemediaobject
+><imageobject
+><imagedata fileref="view-calendar-list.png"
+ format="PNG"/></imageobject
+></inlinemediaobject
+><menuchoice
+><guimenu
+>Görünüm</guimenu
+><guimenuitem
+>Etkinlik Listesi</guimenuitem
+></menuchoice>
+</term>
+<listitem
+><para
+><action
+>Görüntüyü, Etkinlik Listesi görünümüne geçirir.</action
+></para>
+<para
+>Bu eylem hakkında daha fazla bilgi için <xref linkend="list-view"/> bakın.</para>
+</listitem>
+</varlistentry>
+
+<varlistentry id="menu-view-whatsnext">
+<term
+><inlinemediaobject
+><imageobject
+><imagedata fileref="view-calendar-upcoming-events.png"
+ format="PNG"/></imageobject
+></inlinemediaobject
+><menuchoice
+><guimenu
+>Görünüm</guimenu
+><guimenuitem
+>Sırada Ne Var</guimenuitem
+></menuchoice>
+</term>
+<listitem
+><para
+><action
+>Görüntüyü, Sırada Ne Var görünümüne geçirir.</action
+></para>
+<para
+>Bu görünüm, bir sonraki etkinliklerinizi ve yapılacak işlerinizi görüntüler. Etkinlikler ve yapılacak işler her satırda bir tane olacak şekilde görüntülenir.</para>
+<para
+>Bu eylem hakkında daha fazla bilgi için <xref linkend="whatsnext-view"/> bakın.</para>
+</listitem>
+</varlistentry>
+
+<varlistentry id="menu-view-journal">
+<term
+><inlinemediaobject
+><imageobject
+><imagedata
+ fileref="journal-new.png"
+format="PNG"/></imageobject
+></inlinemediaobject
+><menuchoice
+><guimenu
+>Görünüm</guimenu
+> <guimenuitem
+>Günce</guimenuitem
+> </menuchoice>
+</term>
+<listitem
+><para
+><action
+>Görüntüyü, Günce görünümüne geçirir.</action
+></para>
+<para
+>Bu eylem hakkında daha fazla bilgi için <xref linkend="journal-view"/> bakın.</para
+></listitem>
+</varlistentry>
+
+<varlistentry id="menu-view-update">
+<term
+><menuchoice
+><guimenu
+>Görünüm</guimenu
+> <guimenuitem
+>Yenile</guimenuitem
+> </menuchoice
+></term>
+<listitem
+><para>
+<action
+>Şu anda görüntülenen görünümü günceller veya yeniler.</action>
+</para
+></listitem>
+</varlistentry>
+
+<varlistentry id="menu-view-zoom">
+<term
+><menuchoice
+><guimenu
+>Görünüm</guimenu
+><guisubmenu
+>Yakınlaştır</guisubmenu
+></menuchoice
+></term>
+<listitem
+><para
+><action
+>Geçerli görünümü daha fazla veya daha az veri gösterecek şekilde ayarlamak için bu alt menüyü kullanın.</action
+></para>
+<para
+>Ajanda görünümünde (gün veya hafta görünümünde), daha az veya çok gün göstermek için yakınlaştırma eylemlerini kullanabilirsiniz (<menuchoice
+><guisubmenu
+>Yakınlaştır</guisubmenu
+> <guimenuitem
+>Yatay Olarak Yakınlaştır</guimenuitem
+></menuchoice
+> ve <menuchoice
+> <guisubmenu
+>Yakınlaştır</guisubmenu
+><guimenuitem
+>Yatay Olarak Uzaklaştır</guimenuitem
+></menuchoice
+>); ayrıca gün içinde daha az veya çok saat göstermek için (<menuchoice
+><guisubmenu
+>Yakınlaştır</guisubmenu
+> <guimenuitem
+>Dikey Olarak Yakınlaştır</guimenuitem
+></menuchoice
+> ve <menuchoice
+><guisubmenu
+>Yakınlaştır</guisubmenu
+><guimenuitem
+>Dikey Olarak Uzaklaştır</guimenuitem
+> </menuchoice
+>) eylemlerini kullanın.</para
+></listitem>
+</varlistentry>
+
+<varlistentry id="menu-view-filter">
+<term
+><menuchoice
+><guimenu
+>Görünüm</guimenu
+> <guisubmenu
+>Süz</guisubmenu
+> </menuchoice
+></term>
+<listitem
+><para
+>Bu alt menü, <link linkend="menu-settings-edit-filters"
+><guilabel
+>Takvim Süzgeçlerini Düzenle</guilabel
+></link
+> iletişim kutusu kullanılarak oluşturulmuş süzgeçlere erişim sağlar. &korganizer; görünümünde kullanmak üzere süzgeç seçmek için bu menüyü <action
+>kullanın</action
+>. Bir süzgeç kullanmak istemezseniz <guilabel
+>Süzgeç yok</guilabel
+> seçeneğini seçin.</para
+></listitem>
+</varlistentry>
+
+</variablelist>
+
+</sect2>
+
+<sect2 id="reference-menus-go">
+<title
+>Git</title>
+
+<para
+>&korganizer; görünümlerinde gezinmek ile ilgili daha fazla bilgi için <xref linkend="description-view"/> bakın.</para>
+
+<variablelist>
+<varlistentry id="menu-go-previous-day">
+<term
+><inlinemediaobject
+><imageobject
+><imagedata fileref="go-previous.png"
+format="PNG"/></imageobject
+></inlinemediaobject
+><menuchoice
+><guimenu
+>Git</guimenu
+><guimenuitem
+>Geri</guimenuitem
+></menuchoice>
+</term>
+<listitem
+><para
+><action
+>Görünüme bağlı olarak bir önceki güne, haftaya veya aya gidin.</action
+></para
+></listitem>
+</varlistentry>
+
+<varlistentry id="menu-go-next-day">
+<term
+><inlinemediaobject
+><imageobject
+><imagedata fileref="go-next.png"
+ format="PNG"/></imageobject
+></inlinemediaobject
+><menuchoice
+><guimenu
+>Git</guimenu
+><guimenuitem
+>İleri</guimenuitem
+></menuchoice>
+</term>
+<listitem
+><para
+><action
+>Görünüme bağlı olarak bir sonraki güne, haftaya veya aya gidin.</action
+></para
+></listitem>
+</varlistentry>
+
+<varlistentry id="menu-go-goto-today">
+<term
+><inlinemediaobject
+><imageobject
+><imagedata fileref="go-jump-today.png"
+format="PNG"/></imageobject
+></inlinemediaobject
+><menuchoice
+><guimenu
+>Git</guimenu
+><guimenuitem
+>Bugüne</guimenuitem
+></menuchoice>
+</term>
+<listitem
+><para
+><action
+>İçinde bulunduğumuz günü kapsayan zaman dilimine gidin.</action
+></para
+></listitem>
+</varlistentry>
+
+<varlistentry id="menu-view-day">
+<term
+><inlinemediaobject
+><imageobject
+><imagedata fileref="go-jump-today.png"
+ format="PNG"/></imageobject
+></inlinemediaobject
+><menuchoice
+><guimenu
+>Git</guimenu
+><guimenuitem
+>Gün</guimenuitem
+></menuchoice>
+</term>
+<listitem
+><para
+><action
+>Görüntüyü, Gün görünümüne geçirir.</action
+></para>
+<para
+>Bu eylem hakkında daha fazla bilgi için <xref linkend="agenda-view"/> bakın.</para>
+</listitem>
+</varlistentry>
+
+<varlistentry id="menu-view-xdays">
+<term
+><inlinemediaobject
+><imageobject
+><imagedata fileref="view-calendar-upcoming-days.png"
+ format="PNG"/></imageobject
+></inlinemediaobject
+><menuchoice
+><guimenu
+>Git</guimenu
+><guimenuitem
+>Sonraki X Gün</guimenuitem
+></menuchoice>
+</term>
+<listitem
+><para
+><action
+>Görüntüyü, Sonraki X Gün görünümüne geçirir; buradaki X, &korganizer; ana yapılandırmasında tanımlanmıştır.</action
+></para>
+<para
+>Bu eylem hakkında daha fazla bilgi için <xref linkend="agenda-view"/> bakın.</para>
+</listitem>
+</varlistentry>
+
+<varlistentry id="menu-view-workweek">
+<term
+><inlinemediaobject
+><imageobject
+><imagedata
+ fileref="view-calendar-workweek.png"
+format="PNG"/></imageobject
+></inlinemediaobject
+><menuchoice
+><guimenu
+>Git</guimenu
+><guimenuitem
+>Çalışma Haftası</guimenuitem
+></menuchoice>
+</term>
+<listitem
+><para
+><action
+>Görüntüyü, Çalışma Haftası görünümüne geçirir.</action
+></para>
+<para
+>Bu, Hafta görünümüyle aynıdır; ancak yalnızca haftanın çalışma günleri gösterilir.</para>
+<para
+>Bu eylem hakkında daha fazla bilgi için <xref linkend="agenda-view"/> bakın.</para>
+</listitem>
+</varlistentry>
+
+<varlistentry id="menu-view-week">
+<term
+><inlinemediaobject
+><imageobject
+><imagedata fileref="view-calendar-week.png"
+ format="PNG"/></imageobject
+></inlinemediaobject
+><menuchoice
+><guimenu
+>Git</guimenu
+><guimenuitem
+>Hafta</guimenuitem
+></menuchoice>
+</term>
+<listitem
+><para
+><action
+>Görüntüyü, Hafta görünümüne geçirir.</action
+></para>
+<para
+>Hafta görünümü, Gün görünümüne benzer bir görünüm sunar. Yedi güne ait etkinlikler yan yana gösterilir. Gün görünümünde kullanılabilen tüm işlevler Hafta görünümünde de vardır.</para>
+<para
+>Bu eylem hakkında daha fazla bilgi için <xref linkend="agenda-view"/> bakın.</para
+></listitem>
+</varlistentry>
+
+</variablelist>
+
+</sect2>
+
+<sect2 id="reference-menus-actions">
+<title
+>Eylemler</title>
+
+<variablelist>
+<varlistentry id="menu-actions-new-event">
+<term
+><inlinemediaobject
+><imageobject
+><imagedata fileref="appointment-new.png"
+format="PNG"/></imageobject
+></inlinemediaobject
+><menuchoice
+><guimenu
+>Eylemler</guimenu
+> <guimenuitem
+>Yeni Etkinlik…</guimenuitem
+> </menuchoice>
+</term>
+<listitem
+><para
+>Yeni bir etkinlik <action
+>oluşturmak</action
+> için <guilabel
+>Yeni Etkinlik…</guilabel
+> ögesini seçin.</para>
+<para
+>Etkinlik penceresi ile ilgili ayrıntılı bir açıklamayı <link linkend="entering-data-events"
+>Etkinlikler Girmek</link
+> bölümünde bulabilirsiniz.</para
+></listitem>
+</varlistentry>
+
+<varlistentry id="menu-actions-new-todo">
+<term
+><inlinemediaobject
+><imageobject
+><imagedata fileref="view-task.png"
+format="PNG"/></imageobject
+></inlinemediaobject
+><menuchoice
+><guimenu
+>Eylemler</guimenu
+> <guimenuitem
+>Yeni Yapılacak…</guimenuitem
+> </menuchoice>
+</term>
+<listitem
+><para
+>Yeni bir yapılacak <action
+>oluşturmak</action
+> için <guilabel
+>Yeni Yapılacak…</guilabel
+> ögesini seçin. Başlangıçta yapılacaklar listesinin bir bitiş tarihi yoktur; ancak siz bir tarih belirleyebilirsiniz.</para>
+<para
+>Yapılacak penceresi ile ilgili ayrıntılı bir açıklamayı <link linkend="entering-data-to-do"
+>Yapılacaklar Girmek</link
+> bölümünde bulabilirsiniz.</para
+></listitem>
+</varlistentry>
+
+<varlistentry id="menu-actions-new-subtodo">
+<term
+><menuchoice
+><guimenu
+>Eylemler</guimenu
+> <guimenuitem
+>Yeni Alt Yapılacak…</guimenuitem
+> </menuchoice
+></term>
+<listitem
+><para
+>Yeni bir alt yapılacak yazmaya <action
+>başlamak</action
+> için <guilabel
+>Yeni Yapılacak…</guilabel
+> ögesini seçin. Geçerli seçili yapılacak, üst yapılacak ögesi olacaktır. Başlangıçta yapılacaklar listesinin bir bitiş tarihi yoktur; ancak siz bir tarih belirleyebilirsiniz.</para>
+<para
+>Yapılacak penceresi ile ilgili ayrıntılı bir açıklamayı <link linkend="entering-data-to-do"
+>Yapılacaklar Girmek</link
+> bölümünde bulabilirsiniz.</para
+></listitem>
+</varlistentry>
+
+<varlistentry id="menu-actions-new-journal">
+<term
+><inlinemediaobject
+><imageobject
+><imagedata fileref="journal-new.png"
+format="PNG"/></imageobject
+></inlinemediaobject
+><menuchoice
+><guimenu
+>Eylemler</guimenu
+> <guimenuitem
+>Yeni Günce…</guimenuitem
+> </menuchoice
+></term>
+<listitem
+><para
+>Yeni bir günce girdisi yazmaya <action
+>başlamak</action
+> için <guilabel
+>Yeni Günce…</guilabel
+> ögesini seçin.</para
+></listitem>
+</varlistentry>
+
+<varlistentry id="menu-actions-pick-date">
+<term
+><inlinemediaobject
+><imageobject
+><imagedata fileref="go-jump.png" format="PNG"/></imageobject
+></inlinemediaobject>
+<menuchoice
+><guimenu
+>Git</guimenu
+><guimenuitem
+>Bir Tarih Seç</guimenuitem
+></menuchoice>
+</term>
+<listitem
+><para
+><action
+>Görünümde hızlı bir şekilde dolaşmak için bir tarih seçimi iletişim kutusu açar.</action
+></para
+></listitem>
+</varlistentry>
+
+<varlistentry id="menu-actions-show-event">
+<term
+><menuchoice
+><guimenu
+>Eylemler</guimenu
+> <guimenuitem
+>Göster</guimenuitem
+> </menuchoice
+></term>
+<listitem
+><para
+>Şu anda seçili olan günce girdisi, etkinlik veya yapılacak işin ayrıntılarını gösteren bir <action
+>iletişim kutusu açmak</action
+> için <guilabel
+>Göster</guilabel
+> ögesini seçin.</para
+></listitem>
+</varlistentry>
+
+<varlistentry id="menu-actions-edit-event">
+<term
+><menuchoice
+><guimenu
+>Eylemler</guimenu
+> <guimenuitem
+>Düzenle…</guimenuitem
+> </menuchoice
+></term>
+<listitem
+><para
+>Şu anda seçili olan günce girdisini, etkinliği veya yapılacak işi <action
+>düzenlemek</action
+> için <guilabel
+>Düzenle…</guilabel
+> ögesini seçin.</para
+></listitem>
+</varlistentry>
+
+<varlistentry id="menu-actions-delete-event">
+<term
+><menuchoice
+><shortcut
+> &Del; </shortcut
+> <guimenu
+>Eylemler</guimenu
+> <guimenuitem
+>Sil</guimenuitem
+> </menuchoice
+></term>
+<listitem
+><para
+>Şu anda seçili olan günce girdisini, etkinliği veya yapılacak işi <action
+>kaldırmak</action
+> için <guilabel
+>Sil</guilabel
+> ögesini seçin.</para
+></listitem>
+</varlistentry>
+
+<varlistentry id="menu-actions-make-subtodo-independent">
+<term
+><menuchoice
+><guimenu
+>Eylemler</guimenu
+> <guimenuitem
+>Alt Yapılacak’ı Bağımsız Yap</guimenuitem
+> </menuchoice
+></term>
+<listitem
+><para
+>Şu anda seçili olan alt yapılacak ögesini, üst ögesinden ayırıp bağımsız yapmak için <guimenuitem
+>Alt Yapılacak’ı Bağımsız Yap</guimenuitem
+> ögesini seçin</para
+></listitem>
+</varlistentry>
+
+</variablelist>
+
+</sect2>
+
+<sect2 id="reference-menus-schedule">
+<title
+>Program</title>
+
+<variablelist>
+
+<varlistentry id="menu-schedule-publish">
+<term
+><menuchoice
+><guimenu
+>Program</guimenu
+> <guimenuitem
+>Öge Bilgisini Yayımla…</guimenuitem
+> </menuchoice
+></term>
+<listitem
+><para
+>Seçili etkinliği, yapılacak işi veya günce girdisini iCalendar biçiminde e-postayla gönderin.</para>
+<para
+>Bu eylem hakkında daha fazla bilgi için <xref linkend="publish"/> bakın.</para
+></listitem>
+</varlistentry>
+
+<varlistentry id="menu-schedule-request">
+<term
+><menuchoice
+><guimenu
+>Program</guimenu
+> <guimenuitem
+>Katılımcılara Davet Gönder</guimenuitem
+> </menuchoice
+></term>
+<listitem
+><para
+>Seçili yapılacak işi veya etkinliği katılımcılara gönderin ve gerekirse onlardan yanıt isteyin.</para>
+<para
+>Bu eylem hakkında daha fazla bilgi için <xref linkend="request"/> bakın.</para
+></listitem>
+</varlistentry>
+
+<varlistentry id="menu-schedule-reply">
+<term
+><menuchoice
+><guimenu
+>Program</guimenu
+> <guimenuitem
+>Durum Güncellemesi Gönder</guimenuitem
+> </menuchoice
+></term>
+<listitem
+><para
+>Katılımcı olarak durumunuzu değiştirdiyseniz güncellenmiş durumunuzu (kabul edildi, geçici vb.) ögenin organizatörüne göndermek için bu menü ögesini seçin.</para>
+<para
+>Bu eylem hakkında daha fazla bilgi için <xref linkend="reply"/> bakın.</para
+></listitem>
+</varlistentry>
+
+<varlistentry id="menu-schedule-cancel">
+<term
+><menuchoice
+><guimenu
+>Program</guimenu
+> <guimenuitem
+>Katılımcılara İptal Bilgisi Gönder</guimenuitem
+> </menuchoice
+></term>
+<listitem
+><para
+>Bir etkinliği veya yapılacak işi iptal etmeyi planlıyorsanız bunu kullanın ve katılımcıları iptal hakkında bilgilendirmek için bu menü ögesini seçin.</para>
+<para
+>Bu eylem hakkında daha fazla bilgi için <xref linkend="cancel"/> bakın.</para
+></listitem>
+</varlistentry>
+
+<varlistentry id="menu-schedule-refresh">
+<term
+><menuchoice
+><guimenu
+>Program</guimenu
+> <guimenuitem
+>Güncelleme İste</guimenuitem
+> </menuchoice
+></term>
+<listitem
+><para
+>Seçili etkinliğin veya yapılacak işin son hâlini organizatörden talep edin.</para>
+<para
+>Bu eylem hakkında daha fazla bilgi için <xref linkend="refresh"/> bakın.</para
+></listitem>
+</varlistentry>
+
+<varlistentry id="menu-schedule-counter">
+<term
+><menuchoice
+><guimenu
+>Program</guimenu
+> <guimenuitem
+>Değişiklik İste</guimenuitem
+> </menuchoice
+></term>
+<listitem
+><para
+>Seçili etkinlik veya yapılacak işin organizatörüne alternatif bir teklif gönderin. </para>
+<para
+>Bu eylem hakkında daha fazla bilgi için <xref linkend="counter"/> bakın.</para
+></listitem>
+</varlistentry>
+
+<!--varlistentry id="menu-schedule-mail-icalendar">
+<term
+><menuchoice>
+<guimenu
+>Schedule</guimenu>
+<guimenuitem
+>Send as iCalendar...</guimenuitem>
+</menuchoice
+></term>
+<listitem
+><para
+>.</para>
+<para
+>For more information about this action, please refer to
+<xref linkend="????"/>.</para
+></listitem>
+</varlistentry-->
+
+<varlistentry id="menu-schedule-mail-freebusy">
+<term
+><menuchoice
+><guimenu
+>Program</guimenu
+> <guimenuitem
+>Uygun/Meşgul Bilgisini E-posta ile Gönder…</guimenuitem
+> </menuchoice
+></term>
+<listitem
+><para
+>Uygun/Meşgul bilgilerinizi bir veya daha fazla e-posta adresine e-postayla gönderin.</para>
+<para
+>Bu eylem hakkında daha fazla bilgi için <xref linkend="free-busy"/> bakın.</para
+></listitem>
+</varlistentry>
+
+<varlistentry id="menu-schedule-upload-freebusy">
+<term
+><menuchoice
+><guimenu
+>Program</guimenu
+> <guimenuitem
+>Uygun/Meşgul Bilgisini Yükle</guimenuitem
+> </menuchoice
+></term>
+<listitem
+><para
+>Uygun/Meşgul bilgilerinizi grup yazılımı sunucusuna yükleyin. Diğer kullanıcılar bu bilgilere erişebilecektir.</para>
+<para
+>Bu eylem hakkında daha fazla bilgi için <xref linkend="free-busy"/> bakın.</para
+></listitem>
+</varlistentry>
+
+</variablelist>
+
+</sect2>
+
+<sect2 id="reference-menus-settings-help">
+<title
+>Ayarlar ve Yardım</title>
+
+<para
+>&kde; Temelleri belgelendirmesinin <ulink url="help:/fundamentals/menus.html"
+>Menü</ulink
+> faslında açıklanan ortak &kde; menülerinden ayrı olarak, &korganizer; içinde bu uygulamaya özel Ayarlar ve Yardım menü girdileri vardır: </para>
+
+<variablelist>
+
+<varlistentry id="menu-settings-sidebar">
+<term
+><menuchoice
+><guimenu
+>Ayarlar</guimenu
+> <guisubmenu
+>Kenar Çubuğu</guisubmenu
+> </menuchoice
+></term>
+<listitem
+><para
+>Bu alt menünün menü ögelerine <action
+>tıklayın</action
+> ve &korganizer; kenar çubuğu bileşenlerini gösterin veya gizleyin. Kenar çubuğunun yalnızca <link linkend="config-main-views"
+>geçerli görünüm tüm pencereyi kullanmadığında</link
+> görünür olduğunu aklınızda bulundurun.</para
+></listitem>
+</varlistentry>
+
+<varlistentry id="menu-settings-configure-date-time">
+<term
+><menuchoice
+><guimenu
+>Ayarlar</guimenu
+> <guimenuitem
+>Tarihi ve Zamanı Yapılandır…</guimenuitem
+> </menuchoice
+></term>
+<listitem
+><para
+>Masaüstü tarih ve zaman biçimlerini ayarlamak için bu menü ögesine <action
+>tıklayın</action
+>. Bu ayarın diğer masaüstü uygulamaları arasında paylaşıldığını unutmayın.</para
+></listitem>
+</varlistentry>
+
+<varlistentry id="menu-settings-edit-filters">
+<term
+><menuchoice
+><guimenu
+>Ayarlar</guimenu
+> <guisubmenu
+>Görünüm Süzgeçlerini Yönet…</guisubmenu
+> </menuchoice
+></term>
+<listitem
+><para
+><guilabel
+>Süzgeçleri Düzenle</guilabel
+> iletişim kutusunu açmak için bu menü ögesini <action
+>seçin</action
+>. Bu iletişim kutusunu kullanarak, &korganizer; tarafından hangi ögelerin görüntüleneceğini etkileyecek süzgeçler oluşturabilir, silebilir ve düzenleyebilirsiniz.</para
+></listitem>
+</varlistentry>
+
+<varlistentry id="menu-settings-edit-categories">
+<term
+><menuchoice
+><guimenu
+>Ayarlar</guimenu
+> <guimenuitem
+>Künyeleri Yönet…</guimenuitem
+> </menuchoice
+></term>
+<listitem
+><para
+><guilabel
+>Künyeleri Yönet</guilabel
+> iletişim kutusunu açmak için bu menü ögesini <action
+>seçin</action
+>. Bu iletişim kutusunu kullanarak takvim ögesi künyeleri oluşturabilir, silebilir ve düzenleyebilirsiniz. Künyeler, etkinliklerinizi ve yapılacak işlerinizi ilgili gruplarda düzenlemek için kullanılır.</para
+></listitem>
+</varlistentry>
+
+</variablelist>
+
+</sect2>
+
+</sect1>
+
+</chapter>
+
+<chapter id="other-features"
+>  <!--updated to 5.4.40-->
+<title
+>Diğer Özellikler</title>
+
+<para
+>Bu fasılda &korganizer;’ün diğer kullanışlı özelliklerini öğreneceksiniz: Farenizin bir tıklamasıyla hangi numaraları yapabileceğiniz gibi.</para>
+
+<sect1 id="other-features-commandline-options">
+<title
+>Komut Satırı</title>
+
+<para
+>konsolekalendar, komut satırından &kde; takvimine erişmek için güzel bir programdır.</para>
+
+</sect1>
+
+<sect1 id="other-features-drag-and-drop">
+<title
+>Sürükle ve Bırak İşlemleri</title>
+
+<para
+>&korganizer;, farenizle kolayca kullanılabilir. Desteklenen sürükle ve bırak işlemleri aşağıda ayrıntılı olarak açıklanmıştır.</para>
+
+<itemizedlist>
+<listitem
+><para
+>Herhangi bir etkinliğin boyutunu farenizle değiştirebilirsiniz. Fare imlecini etkinliğin üst veya alt kenarına yaklaştırıp kenarı yukarı veya aşağı sürüklemeniz yeterlidir. Böylece randevunuzun başlangıç ​​ve bitiş saatini görsel olarak değiştirebilirsiniz. Bu özellik, Gün, Hafta ve Çalışma Haftası görünümlerinde çalışır.</para
+></listitem>
+<listitem
+><para
+>Herhangi bir etkinliği farenizle yeniden planlayabilirsiniz. Fare işaretçisini etkinliğin üzerine getirin ve yeni bir zaman konumuna sürükleyin. Bu işlem Gün, Hafta ve Çalışma Haftası görünümlerinde çalışır.</para
+></listitem>
+<listitem
+><para
+>Etkinlikler, şu anda görünmeyen başka tarihlere kopyalanabilir. Fare işaretçisini etkinliğin üzerine getirin ve geçerli takvimin sol tarafındaki Tarih Gezgini’ne veya farklı bir takvimin Tarih Gezgini’ne sürükleyin.</para>
+<tip
+><para
+>Ancak bir takvimdeki Ajanda görünümünden başka bir takvimdeki Ajanda görünümüne sürükleme yapamazsınız.</para
+></tip
+></listitem>
+<listitem
+><para
+>Araç çubukları ekranda sürüklenebilir. Fare imlecini araç çubuğunun tutacağının üzerine getirin ve onu ekranınızdaki yeni bir konuma sürükleyin.</para
+></listitem>
+</itemizedlist>
+
+</sect1>
+
+</chapter>
+
+<chapter id="faq">
+<title
+>Sorular ve Yanıtlar</title
+> <!-- link to userbase faq? -->
+
+<qandaset id="faq-questions">
+<qandaentry>
+<question>
+<para
+>&korganizer; ile Uygun/Meşgul sistemini kullanabilir miyim?</para>
+</question>
+<answer
+><para
+>Evet, <link linkend="config-main-free-busy"
+>Uygun/Meşgul</link
+> içindeki yönergeleri izleyin.</para>
+</answer>
+</qandaentry>
+</qandaset>
+
+</chapter>
+
+<chapter id="credits">
+<title
+>Emeği Geçenler ve Lisans</title>
+
+<para
+>&korganizer;</para>
+
+<para
+>Program: © 2000–2010, &kde; geliştiricileri</para>
+
+<para
+>Katkıcılar:</para>
+
+<itemizedlist>
+  <listitem
+><para
+>Allen Winter <email
+>winter@kde.org</email
+></para>
+</listitem>
+<listitem
+><para
+>Reinhold Kainhofer <email
+>reinhold@kainhofer.com</email
+></para>
+</listitem>
+<listitem
+><para
+>&Cornelius.Schumacher; &Cornelius.Schumacher.mail;</para>
+</listitem>
+<listitem
+><para
+>&Preston.Brown; &Preston.Brown.mail;</para>
+</listitem>
+</itemizedlist>
+
+<para
+>Belgelendirme: © 2000 &Milos.Prudek;</para>
+<para
+>Belgelendirme: © 2001 Paul E. Ahlquist, Jr <email
+>&Paul.E.Ahlquist.Jr.mail;</email
+></para>
+<para
+>Belgelendirme: © 2004 J&uuml;rgen Nagel <email
+>juergen.nagel@student.fh-reutlingen.de</email
+></para>
+<para
+>Belgelendirme: © 2005 Carlos Leonhard Woelz <email
+>carloswoelz@imap-mail.com</email
+></para>
+
+<para
+>Çeviren: Mesutcan Kurt <email
+>mesutcank@gmail.com</email
+></para
+><para
+>Çeviren: Emir SARI <email
+>emir_sari@icloud.com</email
+></para
+> &underFDL; &underGPL; </chapter>
+
+<glossary id="glossary">
+<title
+>Kavram Dizini</title>
+
+<glossentry id="gloss-calendar-widget">
+<glossterm
+>Takvim Araç Takımı</glossterm>
+<glossdef>
+
+<para
+>Etkinlik düzenleme penceresi gibi belirli giriş pencerelerinde tarih seçmek için kullanılan bir araçtır. Tarih alanının sağında küçük bir düğme olarak görüntülenir. Düğmeye tıkladığınızda bir ay takvimi görürsünüz. İstediğiniz tarihe gitmek için okları kullanın veya doğrudan istediğiniz ay veya yıla gitmek için ay adına ya da yıl numarasına tıklayın.</para>
+
+</glossdef>
+</glossentry>
+
+<glossentry id="gloss-date-navigator">
+<glossterm
+>Tarih Gezgini</glossterm>
+<glossdef>
+
+<para
+>&korganizer; penceresinin sol üst köşesindeki takvim. Tarihler arasında gezinmek ve seçim yapmak için kullanılan ana yöntemdir. Tek oklu simgeler, birer aylık aralıklarla ileri ve geri hareket ederken, çift oklar birer yıllık aralıklarla hareket etmenizi sağlar. Bugünün tarihi küçük bir kutucukla işaretlenir. Etkinlik içeren tarihler kalın yazılır. Bir tarih seçmek istiyorsanız üzerine tıklamanız yeterlidir. Birden fazla komşu tarihi aynı anda seçmek istiyorsanız &Ctrl; düğmesini basılı tutun ve tarihlere tıklayın. Tarihler ana panelde görüntülenir.</para>
+
+<para
+>Yinelenen etkinlikler her zaman görüntülenmez. Tarih Gezgini’nde yinelenen randevuların görüntülenmesini engelleyebilirsiniz. <link linkend="config-main-views"
+>Görünümler</link
+> faslından daha fazla bilgi alın.</para>
+
+</glossdef>
+</glossentry>
+
+<glossentry id="gloss-due-date">
+<glossterm
+>Bitiş Tarihi</glossterm>
+<glossdef>
+
+<para
+>Bitiş tarihi, yapılacaklar listenizin tamamlanması gereken tarihtir. Örneğin, yapılacaklar listeniz kitaplarınızı 16 Kasım’a kadar kütüphaneye teslim etmenizse bu tarihe <quote
+>yapılacaklar listesi bitiş tarihi</quote
+> denir.</para>
+
+</glossdef>
+</glossentry>
+
+<!--<glossentry id="gloss-group-scheduling">
+<glossterm
+>Group scheduling features</glossterm>
+<glossdef>
+
+<para
+>These features are planned for the future versions of &korganizer;. Group
+scheduling will facilitate member roles (attendee, owner, organizer), time
+conflict resolution, event reminder distribution, response collection and
+evaluation. In other words, you will be able to appoint attendees, invite them
+automatically, and see who accepted or refused attending the appointment.</para>
+
+<para
+>Currently, group scheduling features are not working. However, hooks exist
+in the calendar data structures for these features. <guilabel
+>Private</guilabel>
+check box, <guilabel
+>Require response</guilabel
+> check box and
+<guilabel
+>E-mail</guilabel
+> field will then be fully employed. These controls
+are described in more detail in <link linkend="entering-data"
+>Entering
+Data</link
+> chapter, in the <link
+linkend="entering-data-events-attendees"
+>Attendees section</link
+> of Windows
+reference, and in the <link linkend="config-main-personal"
+>Personal
+Preferences</link
+> section.</para>
+
+</glossdef>
+</glossentry>
+-->
+<glossentry id="gloss-main-panel">
+<glossterm
+>Ana Panel</glossterm>
+<glossdef>
+<para
+>Genellikle ekranın en büyük kısmı, Tarih Gezgini’nin sağındadır. Gün, Çalışma Günleri, Hafta veya Ay Görünümü, Liste Görünümü veya Yapılacaklar Listesi görünümünü görüntüler.</para>
+<para
+>Sağ fare düğmesi yalnızca Liste ve Yapılacaklar Listesi görünümlerinde kullanılabilir. Yerel bir menü görüntüler. Sol fare düğmesi ise herhangi bir görünümde kullanılabilir.</para>
+</glossdef>
+</glossentry>
+
+<glossentry id="gloss-freebusy">
+<glossterm
+>Uygun/Meşgul</glossterm>
+<glossdef>
+<para
+>Uygun/Meşgul bilgisi, yoğun zaman aralıklarından oluşan bir kümedir. Kişinin daha önce taahhütleri olduğu zaman aralıklarını sunarak, diğer kişilerin bu zaman dilimleri için randevu ayarlaması gerekmez. Etkinlik başlıkları, açıklamaları veya katılımcıların değil, yalnızca saatlerin yayınlandığını unutmayın. Başka bir deyişle, uygun/meşgul bilgisi, müsaitlik programıdır.</para>
+<para
+>Etkinliğinize katılımcı eklerken, davetleri göndermeden önce katılımcıların o anda meşgul mü yoksa uygun mu olduklarını bilmeniz gerekir. Katılımcılar uygun/meşgul bilgilerini açık yaparlarsa &korganizer; bu bilgiyi alıp onu <guilabel
+>Etkinliği Düzenle</guilabel
+> iletişim kutusunun <guilabel
+>Uygun/Meşgul</guilabel
+> sekmesinde görüntüleyebilir.</para>
+</glossdef>
+</glossentry>
+
+<!--FIXME: remove this or transform in glossary items
+
+<sect1 id="course-event-types">
+<title
+>Calendar Item Types</title>
+
+<para
+>There are three types of items:</para>
+
+<itemizedlist>
+<listitem
+><para
+>Events start and finish at distinct date. You can also specify
+distinct start and finish times, but you do not have to. While business
+meetings, personal anniversaries and cinema visits are examples of carefully
+planned events with exact time scheduling, a holiday is an event that takes
+several days and thus there is no need to specify exact start and finish
+times.</para
+></listitem>
+
+<listitem
+><para
+>To-do's must take place no later than a
+certain date, but they can also take place sooner.</para
+></listitem>
+</itemizedlist>
+
+<para
+>Naturally, what began as a To-do may later require exact timing.
+Say it is July 1 and you need to go to a hairdresser within a week.
+On July 3 you talk to your hairdresser and agree on an exact time. Thus the
+original To-do becomes similar to an appointment. </para>
+
+<para
+>&korganizer; makes adding exact time to a To-do very easy. If you
+check the <guilabel
+>Due</guilabel
+> check box and/or the <guilabel
+>Start</guilabel>
+check box you can specify the appropriate dates, when you check the
+<guilabel
+>Time associated</guilabel
+> check box and fill in the associated times, your
+To-do becomes very similar to an event.</para>
+
+</sect1>
+
+-->
+
+</glossary>
+
+&documentation.index;
+
+</book>
+<!--
+Local Variables:
+mode: sgml
+sgml-minimize-attributes:nil
+sgml-general-insert-case:lower
+sgml-indent-step:0
+sgml-indent-data:nil
+End:
+
+// vim:ts=2:sw=2:tw=78:noet
+-->
