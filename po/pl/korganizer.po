@@ -1,5 +1,5 @@
 # translation of korganizer.po to
-# Version: $Revision: 1725636 $
+# Version: $Revision: 1725805 $
 # SPDX-FileCopyrightText: 2011, 2012, 2013, 2014, 2015, 2016, 2017, 2018, 2019, 2020, 2021, 2022, 2023, 2024, 2025 Łukasz Wojniłowicz <lukasz.wojnilowicz@gmail.com>
 # translated by Krzysztof Jasiutowicz <kpjas@priv.onet.pl>
 # Krzysztof Lichota <lichota@mimuw.edu.pl>, 2002, 2005, 2006.
@@ -14,7 +14,7 @@ msgstr ""
 "Project-Id-Version: korganizer\n"
 "Report-Msgid-Bugs-To: https://bugs.kde.org\n"
 "POT-Creation-Date: 2025-12-23 00:42+0000\n"
-"PO-Revision-Date: 2025-12-06 15:00+0100\n"
+"PO-Revision-Date: 2025-12-24 16:15+0100\n"
 "Last-Translator: Łukasz Wojniłowicz <lukasz.wojnilowicz@gmail.com>\n"
 "Language-Team: pl\n"
 "Language: pl\n"
@@ -6291,18 +6291,25 @@ msgid ""
 "this behavior, uncheck the Enable reminders options in the settings "
 "Time&Date->Default Values tab"
 msgstr ""
+"Przypomnienia są domyślnie włączane dla wszystkich nowych wydarzeń i zadań. "
+"Aby wyłączyć to zachowanie, odznacz pole włączania przypomnień na karcie "
+"ustawień Data i Czas->Domyślne wartości"
 
 #: whatsnew/whatsnewtranslations.cpp:20
 msgid ""
 "Month view: no longer display the month year header to save vertical space "
 "and remove redundancy"
 msgstr ""
+"Widok miesiąca: zaprzestano pokazywania nagłówka miesiąca i roku, aby "
+"zaoszczędzić przestrzeń w pionie i nie powtarzać się"
 
 #: whatsnew/whatsnewtranslations.cpp:21
 msgid ""
 "Month view: use a slightly different color for drawing the day headers for "
 "days outside of the currently selected month"
 msgstr ""
+"Widok miesiąca: użyto nieznacznie innego koloru do rysowania nagłówków dni "
+"dla dni spoza obecnie zaznaczonego miesiąca"
 
 #: whatsnew/whatsnewtranslations.cpp:30
 msgid ""
