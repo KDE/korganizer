@@ -17,7 +17,7 @@ msgid ""
 msgstr ""
 "Project-Id-Version: korganizer\n"
 "Report-Msgid-Bugs-To: https://bugs.kde.org\n"
-"POT-Creation-Date: 2025-12-23 00:42+0000\n"
+"POT-Creation-Date: 2025-12-29 00:44+0000\n"
 "PO-Revision-Date: 2025-12-27 11:28+0100\n"
 "Last-Translator: Eloy Cuadra <ecuadra@eloihr.net>\n"
 "Language-Team: Spanish <kde-l10n-es@kde.org>\n"
@@ -1766,7 +1766,7 @@ msgctxt "@info"
 msgid "Delete calendar failed: <message>%1</message>"
 msgstr "No se ha podido borrar el calendario: <message>%1</message>"
 
-#: calendarview.cpp:256
+#: calendarview.cpp:261
 #, kde-kuit-format
 msgctxt "@info"
 msgid ""
@@ -1777,7 +1777,7 @@ msgstr ""
 "para><para>Seleccione un evento, una tarea pendiente o una entrada del "
 "diario para ver aquí sus detalles.</para>"
 
-#: calendarview.cpp:260
+#: calendarview.cpp:265
 #, kde-format
 msgctxt "@info:whatsthis"
 msgid ""
@@ -1787,19 +1787,19 @@ msgstr ""
 "Ver los detalles de los eventos, de las entradas del diario o de las tareas "
 "pendientes aquí, en la vista principal de KOrganizer."
 
-#: calendarview.cpp:682
+#: calendarview.cpp:687
 #, kde-format
 msgctxt "@info/plain"
 msgid "Todo completed: %1 (%2)"
 msgstr "Tarea pendiente completada: %1 (%2)"
 
-#: calendarview.cpp:691
+#: calendarview.cpp:696
 #, kde-format
 msgctxt "@info/plain"
 msgid "Journal of %1"
 msgstr "Diario de %1"
 
-#: calendarview.cpp:740
+#: calendarview.cpp:745
 #, kde-kuit-format
 msgctxt "@info"
 msgid ""
@@ -1809,19 +1809,19 @@ msgstr ""
 "El elemento <resource>%1</resource> está filtrado por las reglas de filtrado "
 "actuales, por lo que permanecerá oculto y no se mostrará en la vista."
 
-#: calendarview.cpp:809
+#: calendarview.cpp:814
 #, kde-format
 msgctxt "@info"
 msgid "Do you really want to permanently remove the item \"%1\"?"
 msgstr "¿Seguro qué desea eliminar permanentemente el elemento «%1»?"
 
-#: calendarview.cpp:810
+#: calendarview.cpp:815
 #, kde-format
 msgctxt "@title:window"
 msgid "Delete Item?"
 msgstr "¿Borrar elemento?"
 
-#: calendarview.cpp:885
+#: calendarview.cpp:890
 #, kde-format
 msgctxt "@info"
 msgid "Paste failed: unable to determine a valid target date."
@@ -1829,67 +1829,67 @@ msgstr ""
 "La operación de pegado ha fallado: no se ha encontrado una fecha de destino "
 "válida."
 
-#: calendarview.cpp:1297
+#: calendarview.cpp:1302
 #, kde-format
 msgctxt "@info/plain"
 msgid "Make sub-to-dos independent"
 msgstr "Hacer las subtareas independientes"
 
-#: calendarview.cpp:1354
+#: calendarview.cpp:1359
 #, kde-format
 msgctxt "@info/plain"
 msgid "Toggle Reminder"
 msgstr "Conmutar el recordatorio"
 
-#: calendarview.cpp:1358
+#: calendarview.cpp:1363
 #, kde-kuit-format
 msgctxt "@info alarm enabled"
 msgid "<message>%1</message> reminder is enabled"
 msgstr "El recordatorio de <message>%1</message> está activado"
 
-#: calendarview.cpp:1360
+#: calendarview.cpp:1365
 #, kde-kuit-format
 msgctxt "@info alarm disabled"
 msgid "<message>%1</message> reminder is disabled"
 msgstr "El recordatorio de <message>%1</message> está desactivado"
 
-#: calendarview.cpp:1391 calendarview.cpp:1445
+#: calendarview.cpp:1396 calendarview.cpp:1450
 #, kde-format
 msgctxt "@info/plain"
 msgid "Toggle To-do Completed"
 msgstr "Conmutar tarea pendiente completada"
 
-#: calendarview.cpp:1394
+#: calendarview.cpp:1399
 #, kde-kuit-format
 msgctxt "@info percentage completed"
 msgid "To-do <message>%1</message> %2 percent completed"
 msgstr "%2 % completado de la tarea <message>%1</message>"
 
-#: calendarview.cpp:1497
+#: calendarview.cpp:1502
 #, kde-format
 msgctxt "@info"
 msgid "\"%1\" was successfully copied to %2."
 msgstr "«%1» copiado satisfactoriamente a %2."
 
-#: calendarview.cpp:1498
+#: calendarview.cpp:1503
 #, kde-format
 msgctxt "@title:window"
 msgid "Copying Succeeded"
 msgstr "Copiado satisfactorio"
 
-#: calendarview.cpp:1502
+#: calendarview.cpp:1507
 #, kde-format
 msgctxt "@info"
 msgid "Unable to copy the item \"%1\" to %2."
 msgstr "No se puede copiar el elemento en %1 a %2."
 
-#: calendarview.cpp:1503 calendarview.cpp:2479
+#: calendarview.cpp:1508 calendarview.cpp:2484
 #, kde-format
 msgctxt "@title:window"
 msgid "Copying Failed"
 msgstr "La copia ha fallado"
 
-#: calendarview.cpp:1562
+#: calendarview.cpp:1567
 #, kde-format
 msgctxt "@info"
 msgid ""
@@ -1899,51 +1899,51 @@ msgstr ""
 "No se puede eliminar el elemento «%1» del calendario original. Sin embargo, "
 "se ha puesto una copia del elemento en %2."
 
-#: calendarview.cpp:1566 calendarview.cpp:1582 calendarview.cpp:2514
+#: calendarview.cpp:1571 calendarview.cpp:1587 calendarview.cpp:2519
 #, kde-format
 msgctxt "@title:window"
 msgid "Moving Failed"
 msgstr "El movimiento ha fallado"
 
-#: calendarview.cpp:1571
+#: calendarview.cpp:1576
 #, kde-format
 msgctxt "@info"
 msgid "\"%1\" was successfully moved from %2 to %3."
 msgstr "Se ha movido satisfactoriamente «%1» de %2 a %3."
 
-#: calendarview.cpp:1572
+#: calendarview.cpp:1577
 #, kde-format
 msgctxt "@title:window"
 msgid "Moving Succeeded"
 msgstr "Movido satisfactoriamente"
 
-#: calendarview.cpp:1578
+#: calendarview.cpp:1583
 #, kde-format
 msgctxt "@info"
 msgid "Unable to add the item \"%1\" into %2. This item has not been moved."
 msgstr ""
 "No es posible añadir el elemento «%1» a %2. Este elemento no se ha movido."
 
-#: calendarview.cpp:1617
+#: calendarview.cpp:1622
 #, kde-format
 msgctxt "@info"
 msgid "Do you want to dissociate the occurrence on %1 from the recurrence?"
 msgstr "¿Desea disociar la aparición en %1 de la repetición?"
 
-#: calendarview.cpp:1621 calendarview.cpp:1634 calendarview.cpp:2295
-#: calendarview.cpp:2354 calendarview.cpp:2384
+#: calendarview.cpp:1626 calendarview.cpp:1639 calendarview.cpp:2300
+#: calendarview.cpp:2359 calendarview.cpp:2389
 #, kde-format
 msgctxt "@title:window"
 msgid "KOrganizer Confirmation"
 msgstr "Confirmación de KOrganizer"
 
-#: calendarview.cpp:1622
+#: calendarview.cpp:1627
 #, kde-format
 msgctxt "@action:button"
 msgid "&Dissociate"
 msgstr "&Disociar"
 
-#: calendarview.cpp:1629
+#: calendarview.cpp:1634
 #, kde-format
 msgctxt "@info"
 msgid ""
@@ -1953,79 +1953,79 @@ msgstr ""
 "¿Desea disociar la aparición en %1 de la repetición o disociar también las "
 "ocurrencias futuras?"
 
-#: calendarview.cpp:1635
+#: calendarview.cpp:1640
 #, kde-format
 msgctxt "@action:button"
 msgid "&Only Dissociate This One"
 msgstr "Dis&ociar solo esta ocurrencia"
 
-#: calendarview.cpp:1636
+#: calendarview.cpp:1641
 #, kde-format
 msgctxt "@action:button"
 msgid "&Also Dissociate Future Ones"
 msgstr "Disoci&ar también las ocurrencias futuras"
 
-#: calendarview.cpp:1654
+#: calendarview.cpp:1659
 #, kde-format
 msgctxt "@info/plain"
 msgid "Dissociate future occurrences"
 msgstr "Disociar las apariciones futuras"
 
-#: calendarview.cpp:1656
+#: calendarview.cpp:1661
 #, kde-format
 msgctxt "@info/plain"
 msgid "Dissociate occurrence"
 msgstr "Disociar la aparición"
 
-#: calendarview.cpp:1663
+#: calendarview.cpp:1668
 #, kde-format
 msgctxt "@info"
 msgid "Dissociating the future occurrences failed."
 msgstr "La disociación de las apariciones futuras ha fallado."
 
-#: calendarview.cpp:1663 calendarview.cpp:1665
+#: calendarview.cpp:1668 calendarview.cpp:1670
 #, kde-format
 msgctxt "@title:window"
 msgid "Dissociating Failed"
 msgstr "La disociación ha fallado"
 
-#: calendarview.cpp:1665
+#: calendarview.cpp:1670
 #, kde-format
 msgctxt "@info"
 msgid "Dissociating the occurrence failed."
 msgstr "La disociación de la aparición ha fallado."
 
-#: calendarview.cpp:1809
+#: calendarview.cpp:1814
 #, kde-format
 msgctxt "@title:window"
 msgid "KOrganizer"
 msgstr "KOrganizer"
 
-#: calendarview.cpp:1828
+#: calendarview.cpp:1833
 #, kde-format
 msgctxt "@title:window"
 msgid "Export Calendar to File"
 msgstr "Exportar calendario a archivo"
 
-#: calendarview.cpp:1841
+#: calendarview.cpp:1846
 #, kde-kuit-format
 msgctxt "@info"
 msgid "Do you want to overwrite <filename>%1</filename>?"
 msgstr "¿Desea sobrescribir <filename>%1</filename>?"
 
-#: calendarview.cpp:1842
+#: calendarview.cpp:1847
 #, kde-format
 msgctxt "@title:window"
 msgid "Export Calendar"
 msgstr "Exportar calendario"
 
-#: calendarview.cpp:1856
+#: calendarview.cpp:1861
 #, kde-format
 msgctxt "@info save failure cause unknown"
 msgid "Reason unknown"
 msgstr "Razón desconocida"
 
-#: calendarview.cpp:1858
+#: calendarview.cpp:1863
 #, kde-kuit-format
 msgctxt "@info"
 msgid ""
@@ -2034,13 +2034,13 @@ msgstr ""
 "No se puede escribir en el archivo iCalendar <filename>%1</filename>: "
 "<message>%2</message>"
 
-#: calendarview.cpp:1967 calendarview.cpp:2012
+#: calendarview.cpp:1972 calendarview.cpp:2017
 #, kde-format
 msgctxt "@info/plain"
 msgid "No filter"
 msgstr "Sin filtro"
 
-#: calendarview.cpp:2290
+#: calendarview.cpp:2295
 #, kde-kuit-format
 msgctxt "@info"
 msgid ""
@@ -2052,19 +2052,19 @@ msgstr ""
 "este elemento y hacer independientes todas sus subtareas o borrar la tarea "
 "pendiente y todas sus subtareas?"
 
-#: calendarview.cpp:2296
+#: calendarview.cpp:2301
 #, kde-format
 msgctxt "@action:button"
 msgid "Delete Only This"
 msgstr "Borrar solo esta"
 
-#: calendarview.cpp:2297 calendarview.cpp:2355
+#: calendarview.cpp:2302 calendarview.cpp:2360
 #, kde-format
 msgctxt "@action:button"
 msgid "Delete All"
 msgstr "Borrar todas"
 
-#: calendarview.cpp:2329
+#: calendarview.cpp:2334
 #, kde-kuit-format
 msgctxt "@info"
 msgid ""
@@ -2074,13 +2074,13 @@ msgstr ""
 "El elemento <resource>%1</resource> está marcado como de solo lectura y no "
 "se puede borrar. Probablemente pertenezca a un calendario de solo lectura."
 
-#: calendarview.cpp:2332
+#: calendarview.cpp:2337
 #, kde-format
 msgctxt "@title:window"
 msgid "Removing not possible"
 msgstr "No es posible eliminar"
 
-#: calendarview.cpp:2351
+#: calendarview.cpp:2356
 #, kde-kuit-format
 msgctxt "@info"
 msgid ""
@@ -2090,13 +2090,13 @@ msgstr ""
 "El elemento <resource>%1</resource> del calendario se repite en varias "
 "fechas. ¿Seguro que quiere borrarlo junto a todas sus repeticiones?"
 
-#: calendarview.cpp:2362
+#: calendarview.cpp:2367
 #, kde-format
 msgctxt "@action:button"
 msgid "Also Delete &Future"
 msgstr "Borrar también las &futuras"
 
-#: calendarview.cpp:2366
+#: calendarview.cpp:2371
 #, kde-kuit-format
 msgctxt "@info"
 msgid ""
@@ -2108,7 +2108,7 @@ msgstr ""
 "fechas. ¿Quiere borrar solo la repetición actual del %2, también las "
 "repeticiones futuras o todas las repeticiones?"
 
-#: calendarview.cpp:2373
+#: calendarview.cpp:2378
 #, kde-kuit-format
 msgctxt "@info"
 msgid ""
@@ -2119,25 +2119,25 @@ msgstr ""
 "fechas. ¿Quiere borrar solo la repetición actual del %2 o todas las "
 "repeticiones?"
 
-#: calendarview.cpp:2385
+#: calendarview.cpp:2390
 #, kde-format
 msgctxt "@action:button"
 msgid "Delete C&urrent"
 msgstr "Borrar la act&ual"
 
-#: calendarview.cpp:2387
+#: calendarview.cpp:2392
 #, kde-format
 msgctxt "@action:button"
 msgid "Delete &All"
 msgstr "Borr&ar todo"
 
-#: calendarview.cpp:2418 calendarview.cpp:2425
+#: calendarview.cpp:2423 calendarview.cpp:2430
 #, kde-format
 msgctxt "@info/plain"
 msgid "Delete \"%1\""
 msgstr "Borrar «%1»"
 
-#: calendarview.cpp:2457
+#: calendarview.cpp:2462
 #, kde-format
 msgctxt "@info"
 msgid ""
@@ -2146,49 +2146,49 @@ msgstr ""
 "Todos los calendarios están desmarcados en el gestor de calendarios. No se "
 "ha purgado ninguna tarea pendiente."
 
-#: calendarview.cpp:2462 calendarview.cpp:2727
+#: calendarview.cpp:2467 calendarview.cpp:2745
 #, kde-format
 msgctxt "@info"
 msgid "There are no completed to-dos to purge."
 msgstr "No hay tareas pendientes completadas para purgar."
 
-#: calendarview.cpp:2467
+#: calendarview.cpp:2472
 #, kde-format
 msgctxt "@info"
 msgid "Delete all completed to-dos from checked calendars?"
 msgstr "¿Borrar todas las tareas pendientes de calendarios marcados?"
 
-#: calendarview.cpp:2468
+#: calendarview.cpp:2473
 #, kde-format
 msgctxt "@title:window"
 msgid "Purge To-dos"
 msgstr "Purgar las tareas pendientes"
 
-#: calendarview.cpp:2469
+#: calendarview.cpp:2474
 #, kde-format
 msgctxt "@action:button"
 msgid "Purge"
 msgstr "Purgar"
 
-#: calendarview.cpp:2479
+#: calendarview.cpp:2484
 #, kde-kuit-format
 msgctxt "@info"
 msgid "Unable to copy item <resource>%1</resource>."
 msgstr "No se puede copiar el elemento <resource>%1</resource>."
 
-#: calendarview.cpp:2514
+#: calendarview.cpp:2519
 #, kde-kuit-format
 msgctxt "@info"
 msgid "Unable to move item <resource>%1</resource>."
 msgstr "No se puede mover el elemento a <resource>%1</resource>."
 
-#: calendarview.cpp:2719
+#: calendarview.cpp:2737
 #, kde-kuit-format
 msgctxt "@info"
 msgid "0 completed to-dos were purged.<nl/>"
 msgstr "Se han purgado 0 tareas pendientes completadas.<nl/>"
 
-#: calendarview.cpp:2721 calendarview.cpp:2732
+#: calendarview.cpp:2739 calendarview.cpp:2750
 #, kde-format, kde-kuit-format
 msgctxt "@info"
 msgid "%1 to-do was ignored because it has uncompleted or read-only children."
@@ -2201,7 +2201,7 @@ msgstr[1] ""
 "Se han ignorado %1 tareas pendientes porque tenían hijos incompletos o de "
 "solo lectura."
 
-#: calendarview.cpp:2725 calendarview.cpp:2730
+#: calendarview.cpp:2743 calendarview.cpp:2748
 #, kde-format
 msgctxt "@info"
 msgid "%1 completed to-do was purged."
@@ -2209,7 +2209,7 @@ msgid_plural "%1 completed to-dos were purged."
 msgstr[0] "Se ha purgado %1 tarea pendiente completada."
 msgstr[1] "Se han purgado %1 tareas pendientes completadas."
 
-#: calendarview.cpp:2737
+#: calendarview.cpp:2755
 #, kde-kuit-format
 msgctxt "@info"
 msgid "An error occurred while purging completed to-dos: <message>%1</message>"
@@ -2217,7 +2217,7 @@ msgstr ""
 "Ha ocurrido un error mientras se purgaban las tareas pendientes completadas: "
 "<message>%1</message>"
 
-#: calendarview.cpp:2791
+#: calendarview.cpp:2809
 #, kde-kuit-format
 msgctxt "@info"
 msgid ""
@@ -2229,7 +2229,7 @@ msgstr ""
 "<para>Para ver la incidencia recién creada, active su calendario en el "
 "gestor de calendarios.</para>"
 
-#: calendarview.cpp:2795
+#: calendarview.cpp:2813
 #, kde-kuit-format
 msgctxt "@info"
 msgid ""
@@ -3746,17 +3746,17 @@ msgctxt "@info:shell"
 msgid "Lists the available options for user feedback"
 msgstr "Lista todas las opciones disponibles para los comentarios del usuario"
 
-#: koviewmanager.cpp:503
+#: koviewmanager.cpp:493
 #, kde-format
 msgid "Merged calendar"
 msgstr "Calendario fusionado"
 
-#: koviewmanager.cpp:518
+#: koviewmanager.cpp:508
 #, kde-format
 msgid "Calendars Side by Side"
 msgstr "Calendarios lado-a-lado"
 
-#: koviewmanager.cpp:556
+#: koviewmanager.cpp:546
 #, kde-format
 msgid ""
 "Unable to display the work week since there are no work days configured. "
@@ -5123,8 +5123,8 @@ msgstr ""
 #. i18n: ectx: label, entry, group (Colors)
 #. i18n: ectx: label, entry, group (Theming)
 #. i18n: ectx: label, entry, group (Theme/Month view)
-#: settings/korganizer.kcfg:287 settings/korganizer.kcfg:479
-#: settings/korganizer.kcfg:586
+#: settings/korganizer.kcfg:287 settings/korganizer.kcfg:486
+#: settings/korganizer.kcfg:593
 #, kde-format
 msgid "Holiday color"
 msgstr "Color para vacaciones"
@@ -5132,8 +5132,8 @@ msgstr "Color para vacaciones"
 #. i18n: ectx: whatsthis, entry, group (Colors)
 #. i18n: ectx: whatsthis, entry, group (Theming)
 #. i18n: ectx: whatsthis, entry, group (Theme/Month view)
-#: settings/korganizer.kcfg:288 settings/korganizer.kcfg:480
-#: settings/korganizer.kcfg:587
+#: settings/korganizer.kcfg:288 settings/korganizer.kcfg:487
+#: settings/korganizer.kcfg:594
 #, kde-format
 msgid ""
 "Select the holiday color here. The holiday color will be used for the "
@@ -5145,14 +5145,14 @@ msgstr ""
 
 #. i18n: ectx: label, entry (AgendaBgColor), group (Colors)
 #. i18n: ectx: label, entry, group (Theming)
-#: settings/korganizer.kcfg:292 settings/korganizer.kcfg:408
+#: settings/korganizer.kcfg:292 settings/korganizer.kcfg:415
 #, kde-format
 msgid "Agenda view background color"
 msgstr "Color de fondo para la vista de agenda"
 
 #. i18n: ectx: whatsthis, entry (AgendaBgColor), group (Colors)
 #. i18n: ectx: whatsthis, entry, group (Theming)
-#: settings/korganizer.kcfg:293 settings/korganizer.kcfg:409
+#: settings/korganizer.kcfg:293 settings/korganizer.kcfg:416
 #, kde-format
 msgid "Select the agenda view background color here."
 msgstr "Seleccione aquí el color de fondo de la vista de agenda."
@@ -5196,7 +5196,7 @@ msgstr ""
 
 #. i18n: ectx: label, entry, group (Colors)
 #. i18n: ectx: label, entry, group (Theme/Month view)
-#: settings/korganizer.kcfg:308 settings/korganizer.kcfg:507
+#: settings/korganizer.kcfg:308 settings/korganizer.kcfg:514
 #, kde-format
 msgid "Working hours color"
 msgstr "Color para horas de trabajo"
@@ -5209,28 +5209,28 @@ msgstr "Seleccione aquí el color del horario laboral en la vista de agenda."
 
 #. i18n: ectx: label, entry (TodoDueTodayColor), group (Colors)
 #. i18n: ectx: label, entry, group (Theme/Month view)
-#: settings/korganizer.kcfg:313 settings/korganizer.kcfg:559
+#: settings/korganizer.kcfg:313 settings/korganizer.kcfg:566
 #, kde-format
 msgid "To-do due today color"
 msgstr "Color para tareas pendientes cumplidas hoy"
 
 #. i18n: ectx: whatsthis, entry (TodoDueTodayColor), group (Colors)
 #. i18n: ectx: whatsthis, entry, group (Theme/Month view)
-#: settings/korganizer.kcfg:314 settings/korganizer.kcfg:560
+#: settings/korganizer.kcfg:314 settings/korganizer.kcfg:567
 #, kde-format
 msgid "Select the to-do due today color here."
 msgstr "Seleccione aquí el color para la tarea pendiente que vence hoy."
 
 #. i18n: ectx: label, entry (TodoOverdueColor), group (Colors)
 #. i18n: ectx: label, entry, group (Theme/Month view)
-#: settings/korganizer.kcfg:318 settings/korganizer.kcfg:572
+#: settings/korganizer.kcfg:318 settings/korganizer.kcfg:579
 #, kde-format
 msgid "To-do overdue color"
 msgstr "Color para tareas pendientes retrasadas"
 
 #. i18n: ectx: whatsthis, entry (TodoOverdueColor), group (Colors)
 #. i18n: ectx: whatsthis, entry, group (Theme/Month view)
-#: settings/korganizer.kcfg:319 settings/korganizer.kcfg:573
+#: settings/korganizer.kcfg:319 settings/korganizer.kcfg:580
 #, kde-format
 msgid "Select the to-do overdue color here."
 msgstr "Seleccione aquí el color de la tarea pendiente cumplida."
@@ -5341,13 +5341,13 @@ msgstr "Adjuntar mensaje completo"
 
 #. i18n: ectx: label, entry, group (Theming)
 #. i18n: ectx: label, entry, group (Theme/Month view)
-#: settings/korganizer.kcfg:415 settings/korganizer.kcfg:502
+#: settings/korganizer.kcfg:422 settings/korganizer.kcfg:509
 #, kde-format
 msgid "Highlight color"
 msgstr "Color para resaltado"
 
 #. i18n: ectx: whatsthis, entry, group (Theming)
-#: settings/korganizer.kcfg:416
+#: settings/korganizer.kcfg:423
 #, kde-format
 msgid ""
 "Select the highlight color here. The highlight color will be used for "
@@ -5358,13 +5358,13 @@ msgstr ""
 "fechas."
 
 #. i18n: ectx: label, entry, group (Theming)
-#: settings/korganizer.kcfg:484
+#: settings/korganizer.kcfg:491
 #, kde-format
 msgid "Use system color"
 msgstr "Usar color del sistema"
 
 #. i18n: ectx: whatsthis, entry, group (Theming)
-#: settings/korganizer.kcfg:485
+#: settings/korganizer.kcfg:492
 #, kde-format
 msgid ""
 "Use system color instead of user defined color. If enabled will ignore all "
@@ -5374,19 +5374,19 @@ msgstr ""
 "activado, ignorará el resto de preferencias de color"
 
 #. i18n: ectx: label, entry, group (Theme/Month view)
-#: settings/korganizer.kcfg:495
+#: settings/korganizer.kcfg:502
 #, kde-format
 msgid "Month view background color"
 msgstr "Color de fondo para la vista mensual"
 
 #. i18n: ectx: whatsthis, entry, group (Theme/Month view)
-#: settings/korganizer.kcfg:496
+#: settings/korganizer.kcfg:503
 #, kde-format
 msgid "Select the Month view background color here."
 msgstr "Seleccione el color de fondo para la vista de Mes aquí."
 
 #. i18n: ectx: whatsthis, entry, group (Theme/Month view)
-#: settings/korganizer.kcfg:503
+#: settings/korganizer.kcfg:510
 #, kde-format
 msgid ""
 "Select the highlight color here. The highlight color will be used for "
@@ -5397,20 +5397,20 @@ msgstr ""
 "fechas."
 
 #. i18n: ectx: whatsthis, entry, group (Theme/Month view)
-#: settings/korganizer.kcfg:508
+#: settings/korganizer.kcfg:515
 #, kde-format
 msgid "Select the working hours background color for the Month view here."
 msgstr ""
 "Seleccione el color de fondo para las horas laborales en la vista Mes aquí."
 
 #. i18n: ectx: label, entry, group (Theme/Month view)
-#: settings/korganizer.kcfg:530
+#: settings/korganizer.kcfg:537
 #, kde-format
 msgid "Default event color"
 msgstr "Color predeterminado para evento"
 
 #. i18n: ectx: whatsthis, entry, group (Theme/Month view)
-#: settings/korganizer.kcfg:531
+#: settings/korganizer.kcfg:538
 #, kde-format
 msgid ""
 "Select the default event color here. The default event color will be used "
@@ -6348,7 +6348,7 @@ msgctxt "@title:column"
 msgid "Agenda %1"
 msgstr "Agenda %1"
 
-#: views/multiagendaview/multiagendaview.cpp:340
+#: views/multiagendaview/multiagendaview.cpp:352
 #, kde-format
 msgctxt "@title:window"
 msgid "Configure Side-By-Side View"
@@ -6412,7 +6412,19 @@ msgstr ""
 "Vista mensual: se usa un color ligeramente distinto para dibujar la cabecera "
 "de los días que caigan fuera del mes seleccionado."
 
-#: whatsnew/whatsnewtranslations.cpp:30
+#: whatsnew/whatsnewtranslations.cpp:22
+msgid ""
+"Month view: the navigation controls on the lower right side are removed in "
+"favor of the improved application navigator bar"
+msgstr ""
+
+#: whatsnew/whatsnewtranslations.cpp:23
+msgid ""
+"Navigator bar: improved by adding week scrolling and showing/hiding the "
+"sidebar on a per-view basis"
+msgstr ""
+
+#: whatsnew/whatsnewtranslations.cpp:32
 msgid ""
 "Agenda view: added timelabels context menu to show/hide time labels for the "
 "system timezone on the right (or left) side as well"
@@ -6421,29 +6433,29 @@ msgstr ""
 "para mostrar/ocultar estas etiquetas en la zona horaria del sistema en el "
 "lado derecho (o izquierdo) también."
 
-#: whatsnew/whatsnewtranslations.cpp:31
+#: whatsnew/whatsnewtranslations.cpp:33
 msgid "Incidence editor: detect and warn about creating incidences in the past"
 msgstr ""
 "Editor de incidencias: detectar y avisar de la creación de incidencias en el "
 "pasado"
 
-#: whatsnew/whatsnewtranslations.cpp:32
+#: whatsnew/whatsnewtranslations.cpp:34
 msgid "Incidence editor: add emoji support"
 msgstr "Editor de incidencias: añadir compatibilidad con emojis"
 
-#: whatsnew/whatsnewtranslations.cpp:41
+#: whatsnew/whatsnewtranslations.cpp:43
 msgid "Add What's New menu"
 msgstr "Añadir el menú Novedades"
 
-#: whatsnew/whatsnewtranslations.cpp:42
+#: whatsnew/whatsnewtranslations.cpp:44
 msgid "The current view is remembered"
 msgstr "Se recuerda la vista actual"
 
-#: whatsnew/whatsnewtranslations.cpp:43
+#: whatsnew/whatsnewtranslations.cpp:45
 msgid "Add a Date Picker dialog available on the Go menu"
 msgstr "Añadir un diálogo de selección de fecha disponible en el menú Ir."
 
-#: whatsnew/whatsnewtranslations.cpp:44
+#: whatsnew/whatsnewtranslations.cpp:46
 msgid ""
 "Agenda view: consolidated the \"Day\", \"Next X Days\", \"Work Schedule\", "
 "\"Week\" time ranges into the Agenda tool button"
@@ -6452,7 +6464,7 @@ msgstr ""
 "«Próximos X días», «Horario de trabajo» y «Semana» en el botón de la "
 "herramienta Agenda."
 
-#: whatsnew/whatsnewtranslations.cpp:45
+#: whatsnew/whatsnewtranslations.cpp:47
 msgid ""
 "Agenda view: added timelabels context menu option to toggle a 24-hour "
 "(military style) clock"
@@ -6460,32 +6472,32 @@ msgstr ""
 "Vista de agenda: se ha añadido la opción de menú de contexto de etiquetas de "
 "tiempo para cambiar a un reloj de 24 horas (de estilo militar)."
 
-#: whatsnew/whatsnewtranslations.cpp:46
+#: whatsnew/whatsnewtranslations.cpp:48
 msgid "Agenda view: added context menu to create new Event or To-do"
 msgstr ""
 "Vista de agenda: se ha añadido un menú de contexto para crear un nuevo "
 "evento o tarea pendiente."
 
-#: whatsnew/whatsnewtranslations.cpp:47
+#: whatsnew/whatsnewtranslations.cpp:49
 msgid ""
 "To-do view: added context menu options for toggling completion and reminders"
 msgstr ""
 "Vista de tareas pendientes: se han añadido opciones al menú de contexto para "
 "conmutar el estado de compleción y los recordatorios."
 
-#: whatsnew/whatsnewtranslations.cpp:48
+#: whatsnew/whatsnewtranslations.cpp:50
 msgid "To-do view: save/restore fullview setting"
 msgstr ""
 "Vista de tareas pendientes: guardar/restaurar la configuración de vista "
 "completa."
 
-#: whatsnew/whatsnewtranslations.cpp:49
+#: whatsnew/whatsnewtranslations.cpp:51
 msgid "To-do view: save/restore flatview setting"
 msgstr ""
 "Vista de tareas pendientes: guardar/restaurar la configuración de vista "
 "plana."
 
-#: whatsnew/whatsnewtranslations.cpp:50
+#: whatsnew/whatsnewtranslations.cpp:52
 msgid ""
 "Date navigator: added an option in the Configure->Views settings for hiding "
 "the week numbers"
@@ -6493,7 +6505,7 @@ msgstr ""
 "Navegador de fechas: se ha añadido una opción a las preferencias de "
 "«Configurar->Vistas» para ocultar los números de las semanas."
 
-#: whatsnew/whatsnewtranslations.cpp:51
+#: whatsnew/whatsnewtranslations.cpp:53
 msgid ""
 "Date navigator: the \"Week numbers select a work week when in work week mode"
 "\" setting is true by default"
@@ -6501,62 +6513,62 @@ msgstr ""
 "Navegador de fechas: el ajuste «Los números de semana seleccionan una semana "
 "de trabajo en el modo de trabajo semanal» es cierto de forma predeterminada."
 
-#: whatsnew/whatsnewtranslations.cpp:52
+#: whatsnew/whatsnewtranslations.cpp:54
 msgid "Incidence editor: remember/restore the template manager geometry"
 msgstr ""
 "Editor de incidencias: recordar/restaurar la geometría del gestor de "
 "plantillas."
 
-#: whatsnew/whatsnewtranslations.cpp:53
+#: whatsnew/whatsnewtranslations.cpp:55
 msgid "Incidence editor: support drag-and-drop attachments"
 msgstr "Editor de incidencias: permitir arrastrar y soltar adjuntos"
 
-#: whatsnew/whatsnewtranslations.cpp:54
+#: whatsnew/whatsnewtranslations.cpp:56
 msgid "The export calendar dialog remembers its last export folder location"
 msgstr ""
 "El diálogo de exportación de calendario recuerda la ubicación de la última "
 "carpeta de exportación usada."
 
-#: whatsnew/whatsnewtranslations.cpp:55
+#: whatsnew/whatsnewtranslations.cpp:57
 msgid "The import calendar dialog remembers its last import folder location"
 msgstr ""
 "El diálogo de importación de calendario recuerda la ubicación de la última "
 "carpeta de importación usada."
 
-#: whatsnew/whatsnewtranslations.cpp:56
+#: whatsnew/whatsnewtranslations.cpp:58
 msgid "Get Hot New Stuff removed"
 msgstr "Se ha eliminado la opción de obtener novedades."
 
-#: whatsnew/whatsnewtranslations.cpp:57
+#: whatsnew/whatsnewtranslations.cpp:59
 msgid "Add calendar file: remote calendars are always read-only"
 msgstr ""
 "Añadir archivo de calendario: los calendarios remotos son siempre de solo "
 "lectura."
 
-#: whatsnew/whatsnewtranslations.cpp:58
+#: whatsnew/whatsnewtranslations.cpp:60
 msgid "Add calendar file: will not permit an empty file path"
 msgstr "Añadir archivo de calendario: no se permite una ruta de archivo vacía."
 
-#: whatsnew/whatsnewtranslations.cpp:59
+#: whatsnew/whatsnewtranslations.cpp:61
 msgid ""
 "DAV configuration: dialog allows seeing the account password when editing"
 msgstr ""
 "Configuración de DAV: el diálogo permite ver la contraseña de la cuenta "
 "cuando se modifica."
 
-#: whatsnew/whatsnewtranslations.cpp:60
+#: whatsnew/whatsnewtranslations.cpp:62
 msgid "DAV configuration: wizard shows icons for the various providers"
 msgstr ""
 "Configuración de DAV: el asistente muestra iconos para los distintos "
 "proveedores."
 
-#: whatsnew/whatsnewtranslations.cpp:61
+#: whatsnew/whatsnewtranslations.cpp:63
 msgid "DAV configuration: wizard updated list of providers"
 msgstr ""
 "Configuración de DAV: se ha actualizado la lista de proveedores del "
 "asistente."
 
-#: whatsnew/whatsnewtranslations.cpp:79
+#: whatsnew/whatsnewtranslations.cpp:81
 #, kde-format
 msgid ""
 "Semantics are changed from a \"working schedule\" concept to a \"week "
@@ -6565,19 +6577,19 @@ msgstr ""
 "Se ha cambiado la semántica del concepto de «horario laboral» a la de "
 "«horario semanal» para adaptarse a los usuarios que no trabajan."
 
-#: whatsnew/whatsnewtranslations.cpp:80
+#: whatsnew/whatsnewtranslations.cpp:82
 #, kde-format
 msgid "Initial \"New Event\" start times are consistent across all the views"
 msgstr ""
 "Las horas de inicio predeterminadas de «Nuevo evento» son consistentes en "
 "todas las vistas."
 
-#: whatsnew/whatsnewtranslations.cpp:81
+#: whatsnew/whatsnewtranslations.cpp:83
 #, kde-format
 msgid "Improved default event calendar handling"
 msgstr "Se ha mejorado la gestión del calendario de eventos predeterminado."
 
-#: whatsnew/whatsnewtranslations.cpp:83
+#: whatsnew/whatsnewtranslations.cpp:85
 #, kde-format
 msgid ""
 "Incidences with a long excluded dates list no longer create huge tooltips"
@@ -6585,14 +6597,14 @@ msgstr ""
 "Las incidencias con una larga lista de fechas excluidas ya no generan "
 "enormes ayudas emergentes."
 
-#: whatsnew/whatsnewtranslations.cpp:84
+#: whatsnew/whatsnewtranslations.cpp:86
 #, kde-format
 msgid "Fixed the organizer email address for incidences with attendees"
 msgstr ""
 "Se ha corregido la dirección de correo electrónico del organizador para "
 "incidencias con asistentes."
 
-#: whatsnew/whatsnewtranslations.cpp:85
+#: whatsnew/whatsnewtranslations.cpp:87
 #, kde-format
 msgid ""
 "Agenda view: events without a duration are displayed as 30 long (rather than "
@@ -6602,26 +6614,26 @@ msgstr ""
 "minutos (en lugar de 15)"
 
 #. i18n()});
-#: whatsnew/whatsnewtranslations.cpp:99
+#: whatsnew/whatsnewtranslations.cpp:101
 #, kde-format
 msgid "Incidence editor: the tags are sorted alphabetically in the tags editor"
 msgstr ""
 "Editor de incidencias: las etiquetas se ordenan alfabéticamente en el editor "
 "de etiquetas"
 
-#: widgets/kdatenavigator.cpp:171
+#: widgets/kdatenavigator.cpp:174
 #, kde-format
 msgctxt "@info start/end week number of line in date picker"
 msgid "%1/%2"
 msgstr "%1/%2"
 
-#: widgets/kdatenavigator.cpp:176
+#: widgets/kdatenavigator.cpp:179
 #, kde-format
 msgctxt "@info:tooltip"
 msgid "Scroll to week number %1"
 msgstr "Desplazar hasta la semana número %1"
 
-#: widgets/kdatenavigator.cpp:178
+#: widgets/kdatenavigator.cpp:181
 #, kde-format
 msgctxt "@info:whatsthis"
 msgid ""
@@ -6631,13 +6643,13 @@ msgstr ""
 "Pulse aquí para desplazar la pantalla hasta la semana número %1 del año "
 "mostrado actualmente."
 
-#: widgets/kdatenavigator.cpp:238
+#: widgets/kdatenavigator.cpp:241
 #, kde-format
 msgctxt "@info:tooltip"
 msgid "%1"
 msgstr "%1"
 
-#: widgets/kdatenavigator.cpp:239
+#: widgets/kdatenavigator.cpp:242
 #, kde-format
 msgctxt "@info:whatsthis"
 msgid "A column header of the %1 dates in the month."
@@ -6701,12 +6713,34 @@ msgid "Icons to use"
 msgstr "Iconos a utilizar"
 
 #: widgets/navigatorbar.cpp:31
-#, kde-format
-msgid "Scroll backward to the previous year"
-msgstr "Desplazar hacia atrás hasta el año anterior"
+#, fuzzy, kde-format
+#| msgid "Show time in month view items"
+msgctxt "@info:tooltip"
+msgid "Show/hide the sidebar in this view"
+msgstr "Mostrar tiempo en elementos de vista de mes"
 
-#: widgets/navigatorbar.cpp:32
+#: widgets/navigatorbar.cpp:33
 #, kde-format
+msgctxt "@info::whatsthis"
+msgid ""
+"Click this button to show/hide the sidebar in the current view. Each view "
+"can show/hide the sidebar independently."
+msgstr ""
+
+#: widgets/navigatorbar.cpp:37
+#, fuzzy, kde-format
+#| msgctxt "@info:status"
+#| msgid "Scroll Backward"
+msgctxt "@info:tooltip"
+msgid "Scroll backward a year"
+msgstr "Desplazar hacia atrás"
+
+#: widgets/navigatorbar.cpp:39
+#, fuzzy, kde-format
+#| msgid ""
+#| "Click this button to scroll the display to the same approximate day of "
+#| "the previous year"
+msgctxt "@info::whatsthis"
 msgid ""
 "Click this button to scroll the display to the same approximate day of the "
 "previous year"
@@ -6714,13 +6748,20 @@ msgstr ""
 "Pulse este botón para desplazar la pantalla hasta la misma fecha aproximada "
 "del año anterior"
 
-#: widgets/navigatorbar.cpp:36
-#, kde-format
-msgid "Scroll backward to the previous month"
-msgstr "Desplazar hacia atrás hasta el mes anterior"
+#: widgets/navigatorbar.cpp:43
+#, fuzzy, kde-format
+#| msgctxt "@info:status"
+#| msgid "Scroll Backward"
+msgctxt "@info:tooltip"
+msgid "Scroll backward a month"
+msgstr "Desplazar hacia atrás"
 
-#: widgets/navigatorbar.cpp:37
-#, kde-format
+#: widgets/navigatorbar.cpp:45
+#, fuzzy, kde-format
+#| msgid ""
+#| "Click this button to scroll the display to the same approximate date of "
+#| "the previous month"
+msgctxt "@info::whatsthis"
 msgid ""
 "Click this button to scroll the display to the same approximate date of the "
 "previous month"
@@ -6728,13 +6769,57 @@ msgstr ""
 "Pulse este botón para desplazar la pantalla hasta la misma fecha aproximada "
 "del mes anterior"
 
-#: widgets/navigatorbar.cpp:41
-#, kde-format
-msgid "Scroll forward to the next month"
+#: widgets/navigatorbar.cpp:49
+#, fuzzy, kde-format
+#| msgctxt "@info:status"
+#| msgid "Scroll Backward"
+msgctxt "@info:tooltip"
+msgid "Scroll backward a week"
+msgstr "Desplazar hacia atrás"
+
+#: widgets/navigatorbar.cpp:50
+#, fuzzy, kde-format
+#| msgid ""
+#| "Click this button to scroll the display to the same approximate date of "
+#| "the next month"
+msgctxt "@info::whatsthis"
+msgid "Click this button to scroll the display to back 1 week in time"
+msgstr ""
+"Pulse este botón para desplazar la pantalla hasta la misma fecha aproximada "
+"del próximo mes"
+
+#: widgets/navigatorbar.cpp:53
+#, fuzzy, kde-format
+#| msgctxt "@info:status"
+#| msgid "Scroll Forward"
+msgctxt "@info:tooltip"
+msgid "Scroll forward a week"
+msgstr "Desplazar hacia adelante"
+
+#: widgets/navigatorbar.cpp:54
+#, fuzzy, kde-format
+#| msgid ""
+#| "Click this button to scroll the display to the same approximate day of "
+#| "the next year"
+msgctxt "@info::whatsthis"
+msgid "Click this button to scroll the display to forward 1 week in time"
+msgstr ""
+"Pulse este botón para desplazar la pantalla hasta el mismo día aproximado "
+"del próximo año"
+
+#: widgets/navigatorbar.cpp:57
+#, fuzzy, kde-format
+#| msgid "Scroll forward to the next month"
+msgctxt "@info:tooltip"
+msgid "Scroll forward a month"
 msgstr "Desplazar hacia adelante hasta el mes siguiente"
 
-#: widgets/navigatorbar.cpp:42
-#, kde-format
+#: widgets/navigatorbar.cpp:59
+#, fuzzy, kde-format
+#| msgid ""
+#| "Click this button to scroll the display to the same approximate date of "
+#| "the next month"
+msgctxt "@info::whatsthis"
 msgid ""
 "Click this button to scroll the display to the same approximate date of the "
 "next month"
@@ -6742,13 +6827,19 @@ msgstr ""
 "Pulse este botón para desplazar la pantalla hasta la misma fecha aproximada "
 "del próximo mes"
 
-#: widgets/navigatorbar.cpp:46
-#, kde-format
-msgid "Scroll forward to the next year"
+#: widgets/navigatorbar.cpp:63
+#, fuzzy, kde-format
+#| msgid "Scroll forward to the next year"
+msgctxt "@info:tooltip"
+msgid "Scroll forward a year"
 msgstr "Desplazar hacia adelante hasta el año siguiente"
 
-#: widgets/navigatorbar.cpp:47
-#, kde-format
+#: widgets/navigatorbar.cpp:65
+#, fuzzy, kde-format
+#| msgid ""
+#| "Click this button to scroll the display to the same approximate day of "
+#| "the next year"
+msgctxt "@info::whatsthis"
 msgid ""
 "Click this button to scroll the display to the same approximate day of the "
 "next year"
@@ -6756,26 +6847,32 @@ msgstr ""
 "Pulse este botón para desplazar la pantalla hasta el mismo día aproximado "
 "del próximo año"
 
-#: widgets/navigatorbar.cpp:54
+#: widgets/navigatorbar.cpp:72
 #, kde-format
 msgctxt "@info:tooltip"
 msgid "Select a month"
 msgstr "Seleccione un mes"
 
-#: widgets/navigatorbar.cpp:60
+#: widgets/navigatorbar.cpp:78
 #, kde-format
 msgctxt "@info:tooltip"
 msgid "Select a year"
 msgstr "Seleccione un año"
 
-#: widgets/navigatorbar.cpp:109
+#: widgets/navigatorbar.cpp:134
 #, kde-format
 msgctxt "monthname"
 msgid "%1"
 msgstr "%1"
 
-#: widgets/navigatorbar.cpp:110
+#: widgets/navigatorbar.cpp:135
 #, kde-format
 msgctxt "4 digit year"
 msgid "%1"
 msgstr "%1"
+
+#~ msgid "Scroll backward to the previous year"
+#~ msgstr "Desplazar hacia atrás hasta el año anterior"
+
+#~ msgid "Scroll backward to the previous month"
+#~ msgstr "Desplazar hacia atrás hasta el mes anterior"
