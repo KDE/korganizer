@@ -20,8 +20,8 @@ msgstr ""
 "Project-Id-Version: korganizer\n"
 "Report-Msgid-Bugs-To: https://bugs.kde.org\n"
 "POT-Creation-Date: 2025-12-29 00:44+0000\n"
-"PO-Revision-Date: 2025-12-23 06:09-0300\n"
-"Last-Translator: Marcus Gama <marcus.gama@gmail.com>\n"
+"PO-Revision-Date: 2025-12-28 23:41-0300\n"
+"Last-Translator: Guilherme Marçal Silva <guimarcalsilva@gmail.com>\n"
 "Language-Team: Brazilian Portuguese <kde-i18n-pt_BR@kde.org>\n"
 "Language: pt_BR\n"
 "MIME-Version: 1.0\n"
@@ -693,7 +693,7 @@ msgstr "Atualizar"
 #, kde-format
 msgctxt "@info:tooltip"
 msgid "Refresh the display"
-msgstr "Atualizar a exibição"
+msgstr "Atualizar a vista"
 
 #: actionmanager.cpp:417
 #, kde-format
@@ -1149,7 +1149,7 @@ msgid ""
 "view. Currently only the multi-calendar view is supported. See the Multiple "
 "Calendars options in the Views->Agenda Views settings."
 msgstr ""
-"Na vista multi-calendário, abre uma janela que permite a configuração da "
+"Na vista multi-calendário, abre-se uma janela que permite a configuração da "
 "vista. Atualmente, somente a exibição de calendários múltiplos é suportada. "
 "Veja as opções de múltiplos calendários nas configurações em Visualizações -"
 "> Visão da Agenda."
@@ -4779,7 +4779,7 @@ msgstr "Exibição de múltiplos calendários"
 #: settings/korganizer.kcfg:182
 #, kde-format
 msgid "Merge all calendars into one view"
-msgstr "Mesclar todos os calendários em uma exibição"
+msgstr "Mesclar todos os calendários em uma vista"
 
 #. i18n: ectx: whatsthis, entry (AgendaViewCalendarDisplay), group (Agenda View)
 #: settings/korganizer.kcfg:183
@@ -6362,12 +6362,16 @@ msgid ""
 "Month view: the navigation controls on the lower right side are removed in "
 "favor of the improved application navigator bar"
 msgstr ""
+"Visão do mês: os controles de navegação na parte inferior direita foram "
+"removidos em favor de uma barra de navegação melhorada"
 
 #: whatsnew/whatsnewtranslations.cpp:23
 msgid ""
 "Navigator bar: improved by adding week scrolling and showing/hiding the "
 "sidebar on a per-view basis"
 msgstr ""
+"Barra de navegação: melhorada adicionando a rolagem por semanas e mostrando/"
+"ocultando a barra lateral para cada vista"
 
 #: whatsnew/whatsnewtranslations.cpp:32
 msgid ""
@@ -6573,7 +6577,7 @@ msgid ""
 "Click here to scroll the display to week number %1 of the currently "
 "displayed year."
 msgstr ""
-"Clique aqui para mover a exibição para a semana número %1, do ano atualmente "
+"Clique aqui para mover a vista para a semana número %1, do ano atualmente "
 "exibido."
 
 #: widgets/kdatenavigator.cpp:241
@@ -6646,11 +6650,10 @@ msgid "Icons to use"
 msgstr "Ícones a usar"
 
 #: widgets/navigatorbar.cpp:31
-#, fuzzy, kde-format
-#| msgid "Show time in month view items"
+#, kde-format
 msgctxt "@info:tooltip"
 msgid "Show/hide the sidebar in this view"
-msgstr "Mostrar a hora nos itens da visão mensal"
+msgstr "Mostrar/ocultar a barra lateral de ícones nesta vista"
 
 #: widgets/navigatorbar.cpp:33
 #, kde-format
@@ -6659,125 +6662,95 @@ msgid ""
 "Click this button to show/hide the sidebar in the current view. Each view "
 "can show/hide the sidebar independently."
 msgstr ""
+"Clique neste botão para mostrar/ocultar a barra lateral de ícones nesta "
+"vista. Cada vista pode mostrar/ocultar a barra lateral independentemente."
 
 #: widgets/navigatorbar.cpp:37
-#, fuzzy, kde-format
-#| msgctxt "@info:status"
-#| msgid "Scroll Backward"
+#, kde-format
 msgctxt "@info:tooltip"
 msgid "Scroll backward a year"
-msgstr "Ir para trás"
+msgstr "Rolar para trás um ano"
 
 #: widgets/navigatorbar.cpp:39
-#, fuzzy, kde-format
-#| msgid ""
-#| "Click this button to scroll the display to the same approximate day of "
-#| "the previous year"
+#, kde-format
 msgctxt "@info::whatsthis"
 msgid ""
 "Click this button to scroll the display to the same approximate day of the "
 "previous year"
 msgstr ""
-"Clique neste botão para mover a exibição para o mesmo dia aproximado do ano "
+"Clique neste botão para mover a vista para o mesmo dia aproximado do ano "
 "anterior"
 
 #: widgets/navigatorbar.cpp:43
-#, fuzzy, kde-format
-#| msgctxt "@info:status"
-#| msgid "Scroll Backward"
+#, kde-format
 msgctxt "@info:tooltip"
 msgid "Scroll backward a month"
-msgstr "Ir para trás"
+msgstr "Rolar para trás um mês"
 
 #: widgets/navigatorbar.cpp:45
-#, fuzzy, kde-format
-#| msgid ""
-#| "Click this button to scroll the display to the same approximate date of "
-#| "the previous month"
+#, kde-format
 msgctxt "@info::whatsthis"
 msgid ""
 "Click this button to scroll the display to the same approximate date of the "
 "previous month"
 msgstr ""
-"Clique neste botão para mover a exibição para a mesma data aproximada do mês "
+"Clique neste botão para mover a vista para a mesma data aproximada do mês "
 "anterior"
 
 #: widgets/navigatorbar.cpp:49
-#, fuzzy, kde-format
-#| msgctxt "@info:status"
-#| msgid "Scroll Backward"
+#, kde-format
 msgctxt "@info:tooltip"
 msgid "Scroll backward a week"
-msgstr "Ir para trás"
+msgstr "Rolar para trás uma semana"
 
 #: widgets/navigatorbar.cpp:50
-#, fuzzy, kde-format
-#| msgid ""
-#| "Click this button to scroll the display to the same approximate date of "
-#| "the next month"
+#, kde-format
 msgctxt "@info::whatsthis"
 msgid "Click this button to scroll the display to back 1 week in time"
-msgstr ""
-"Clique neste botão para mover a exibição para a mesma data aproximada do mês "
-"seguinte"
+msgstr "Clique neste botão para mover a vista para trás em uma semana"
 
 #: widgets/navigatorbar.cpp:53
-#, fuzzy, kde-format
-#| msgctxt "@info:status"
-#| msgid "Scroll Forward"
+#, kde-format
 msgctxt "@info:tooltip"
 msgid "Scroll forward a week"
-msgstr "Ir para frente"
+msgstr "Ir para frente uma semana"
 
 #: widgets/navigatorbar.cpp:54
-#, fuzzy, kde-format
-#| msgid ""
-#| "Click this button to scroll the display to the same approximate day of "
-#| "the next year"
+#, kde-format
 msgctxt "@info::whatsthis"
 msgid "Click this button to scroll the display to forward 1 week in time"
-msgstr ""
-"Clique neste botão para mover a exibição para o mesmo dia aproximado do ano "
-"seguinte"
+msgstr "Clique neste botão para mover a vista em frente em uma semana"
 
 #: widgets/navigatorbar.cpp:57
-#, fuzzy, kde-format
-#| msgid "Scroll forward to the next month"
+#, kde-format
 msgctxt "@info:tooltip"
 msgid "Scroll forward a month"
 msgstr "Deslocar para o mês seguinte"
 
 #: widgets/navigatorbar.cpp:59
-#, fuzzy, kde-format
-#| msgid ""
-#| "Click this button to scroll the display to the same approximate date of "
-#| "the next month"
+#, kde-format
 msgctxt "@info::whatsthis"
 msgid ""
 "Click this button to scroll the display to the same approximate date of the "
 "next month"
 msgstr ""
-"Clique neste botão para mover a exibição para a mesma data aproximada do mês "
+"Clique neste botão para mover a vista para a mesma data aproximada do mês "
 "seguinte"
 
 #: widgets/navigatorbar.cpp:63
-#, fuzzy, kde-format
-#| msgid "Scroll forward to the next year"
+#, kde-format
 msgctxt "@info:tooltip"
 msgid "Scroll forward a year"
 msgstr "Deslocar para o ano seguinte"
 
 #: widgets/navigatorbar.cpp:65
-#, fuzzy, kde-format
-#| msgid ""
-#| "Click this button to scroll the display to the same approximate day of "
-#| "the next year"
+#, kde-format
 msgctxt "@info::whatsthis"
 msgid ""
 "Click this button to scroll the display to the same approximate day of the "
 "next year"
 msgstr ""
-"Clique neste botão para mover a exibição para o mesmo dia aproximado do ano "
+"Clique neste botão para mover a vista para o mesmo dia aproximado do ano "
 "seguinte"
 
 #: widgets/navigatorbar.cpp:72
