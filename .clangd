@@ -1,0 +1,4 @@
+Diagnostics:
+  UnusedIncludes: Strict
+  Includes:
+    IgnoreHeader: korganizer_options.h
