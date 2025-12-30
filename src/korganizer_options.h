@@ -12,6 +12,9 @@
 #include <KLocalizedString>
 #include <QCommandLineParser>
 
+QT_WARNING_PUSH
+QT_WARNING_DISABLE_GCC("-Wunused-function")
+QT_WARNING_DISABLE_CLANG("-Wunused-function")
 static void korganizer_options(QCommandLineParser *parser)
 {
     parser->addOption(QCommandLineOption(QStringList() << QStringLiteral("i") << QStringLiteral("import"),
@@ -29,3 +32,4 @@ static void korganizer_options(QCommandLineParser *parser)
     parser->addOption(QCommandLineOption(QStringLiteral("feedback"), i18nc("@info:shell", "Lists the available options for user feedback")));
 #endif
 }
+QT_WARNING_POP
