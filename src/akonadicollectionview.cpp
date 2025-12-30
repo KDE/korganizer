@@ -9,7 +9,7 @@
 
   SPDX-License-Identifier: GPL-2.0-or-later WITH LicenseRef-Qt-Commercial-exception-1.0
 */
-
+// First contribution: adding a small comment
 #include "akonadicollectionview.h"
 #include "collectionsortfilterproxymodel.h"
 #include "config-korganizer.h"
