@@ -8,7 +8,6 @@
 */
 
 #include "korganizer_part.h"
-#include "aboutdata.h"
 #include "actionmanager.h"
 #include "calendarview.h"
 #include "impl/korganizerifaceimpl.h"

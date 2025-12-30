@@ -19,6 +19,7 @@
 #include "prefs/koprefs.h"
 #include "views/collectionview/calendardelegate.h"
 #include "views/collectionview/quickview.h"
+#include "views/collectionview/reparentingmodel.h"
 
 #include <CalendarSupport/KCalPrefs>
 #include <CalendarSupport/Utils>

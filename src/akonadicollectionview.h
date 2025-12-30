@@ -11,7 +11,6 @@
 #pragma once
 
 #include "calendarview.h"
-#include "views/collectionview/reparentingmodel.h"
 #include <Akonadi/Collection>
 
 class AkonadiCollectionView;
@@ -24,9 +23,11 @@ class EntityTreeModel;
 class StandardCalendarActionManager;
 }
 
-class QAction;
 class KJob;
+
 class QAbstractProxyModel;
+class QAction;
+class QItemSelection;
 class QModelIndex;
 
 /**

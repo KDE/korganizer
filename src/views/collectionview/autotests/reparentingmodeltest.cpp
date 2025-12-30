@@ -5,7 +5,6 @@
  */
 
 #include "reparentingmodel.h"
-#include "korganizer_debug.h"
 #include <QObject>
 #include <QSortFilterProxyModel>
 #include <QStandardItemModel>

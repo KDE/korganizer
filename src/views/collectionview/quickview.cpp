@@ -5,7 +5,6 @@
  */
 
 #include "quickview.h"
-#include "korganizer_debug.h"
 #include "ui_quickview.h"
 
 #include <Akonadi/CalendarUtils>

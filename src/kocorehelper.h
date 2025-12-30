@@ -11,8 +11,6 @@
 #pragma once
 
 #include "corehelper.h"
-#include "kocore.h"
-#include "koglobals.h"
 #include <CalendarSupport/KCalPrefs>
 
 class KOCoreHelper : public KOrg::CoreHelper

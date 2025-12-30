@@ -7,6 +7,7 @@
 */
 
 #include "kocorehelper.h"
+#include "koglobals.h"
 
 #include <Akonadi/TagCache>
 

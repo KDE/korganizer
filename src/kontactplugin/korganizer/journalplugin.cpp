@@ -12,7 +12,6 @@
 
 #include <KontactInterface/Core>
 
-#include "korganizerplugin_debug.h"
 #include <KActionCollection>
 #include <KLocalizedString>
 #include <QAction>

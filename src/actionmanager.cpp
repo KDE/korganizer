@@ -18,8 +18,6 @@
 #include "calendarview.h"
 #include "kocore.h"
 #include "kodialogmanager.h"
-#include "koglobals.h"
-#include "korganizeradaptor.h"
 #include "koviewmanager.h"
 #include "kowindowlist.h"
 #include "prefs/koprefs.h"

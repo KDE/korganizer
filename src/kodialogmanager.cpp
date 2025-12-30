@@ -11,7 +11,6 @@
 #include "calendarview.h"
 #include "dialog/filtereditdialog.h"
 #include "dialog/searchdialog.h"
-#include "prefs/koprefs.h"
 
 #include <CalendarSupport/ArchiveDialog>
 #include <PimCommon/PimUtil>
