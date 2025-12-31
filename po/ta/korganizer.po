@@ -17,7 +17,7 @@ msgid ""
 msgstr ""
 "Project-Id-Version: korganizer\n"
 "Report-Msgid-Bugs-To: https://bugs.kde.org\n"
-"POT-Creation-Date: 2025-12-29 00:44+0000\n"
+"POT-Creation-Date: 2025-12-31 00:44+0000\n"
 "PO-Revision-Date: 2025-11-30 15:30+0530\n"
 "Last-Translator: Kishore G <kishore96@gmail.com>\n"
 "Language-Team: Tamil <kde-l10n-ta@kde.org>\n"
@@ -38,7 +38,7 @@ msgctxt "EMAIL OF TRANSLATORS"
 msgid "Your emails"
 msgstr "tamilpc@ambalam.com"
 
-#: aboutdata.cpp:18 kontactplugin/korganizer/journalplugin.cpp:26
+#: aboutdata.cpp:18 kontactplugin/korganizer/journalplugin.cpp:25
 #: kontactplugin/korganizer/korganizerplugin.cpp:42
 #: kontactplugin/korganizer/todoplugin.cpp:38
 #: kontactplugin/specialdates/specialdates_plugin.cpp:23
@@ -328,7 +328,7 @@ msgctxt "@info:credit"
 msgid "Fester Zigterman"
 msgstr ""
 
-#: actionmanager.cpp:130
+#: actionmanager.cpp:128
 #, kde-format
 msgctxt "@info"
 msgid ""
@@ -337,31 +337,31 @@ msgstr ""
 "இது பட்டிப் பட்டையை முழுதாக மறைத்துவிடும். %1 என்பதை தட்டி நீங்கள் மறுபடியும் அதைக் "
 "காட்டலாம்."
 
-#: actionmanager.cpp:133
+#: actionmanager.cpp:131
 #, kde-format
 msgctxt "@title:window"
 msgid "Hide menu bar"
 msgstr "பட்டிப் பட்டையை மறைப்பது"
 
-#: actionmanager.cpp:244
+#: actionmanager.cpp:242
 #, kde-format
 msgctxt "@action:inmenu"
 msgid "Import &Calendar…"
 msgstr "நாள்காட்டியை இறக்குமதி செய்…"
 
-#: actionmanager.cpp:245
+#: actionmanager.cpp:243
 #, kde-format
 msgctxt "@info:status"
 msgid "Import a calendar"
 msgstr "நாள்காட்டியை இறக்குமதி செய்கிறது"
 
-#: actionmanager.cpp:246
+#: actionmanager.cpp:244
 #, kde-format
 msgctxt "@info:tooltip"
 msgid "Import an iCalendar or vCalendar file"
 msgstr "iCalendar அல்லது vCalendar கோப்பை இறக்குமதி செய்"
 
-#: actionmanager.cpp:248
+#: actionmanager.cpp:246
 #, kde-format
 msgctxt "@info:whatsthis"
 msgid ""
@@ -371,50 +371,50 @@ msgstr ""
 "iCalendar அல்லது vCalendar கோப்பின் உள்ளடக்கத்தை இறக்குமதி செய்ய வேண்டுமெனில் இதைப் "
 "பயன்படுத்தவும்."
 
-#: actionmanager.cpp:256
+#: actionmanager.cpp:254
 #, kde-format
 msgctxt "@action:inmenu"
 msgid "Export as &iCalendar…"
 msgstr "iCalendar-&ஆக ஏற்றுமதி செய்…"
 
-#: actionmanager.cpp:257
+#: actionmanager.cpp:255
 #, kde-format
 msgctxt "@info:status"
 msgid "Export calendar to file"
 msgstr "நாள்காட்டியை கோப்புக்கு ஏற்றுமதி செய்கிறது"
 
-#: actionmanager.cpp:258
+#: actionmanager.cpp:256
 #, kde-format
 msgctxt "@info:tooltip"
 msgid "Export your calendar to an iCalendar file"
 msgstr "உங்கள் நாள்காட்டியை iCalendar கோப்பாக ஏற்றுமதி செய்யும்"
 
-#: actionmanager.cpp:259
+#: actionmanager.cpp:257
 #, kde-format
 msgctxt "@info:whatsthis"
 msgid ""
 "Allows you to export your entire calendar collection to one iCalendar file."
 msgstr "அனைத்து நாள்காட்டிகளையும் ஒரே iCalendar கோப்பிற்கு ஏற்றுமதி செய்ய இது உதவும்."
 
-#: actionmanager.cpp:265
+#: actionmanager.cpp:263
 #, kde-format
 msgctxt "@action:inmenu"
 msgid "Archive O&ld Incidences…"
 msgstr "பழைய நிகழ்வுகளைக் காப்பகப்படுத்து…"
 
-#: actionmanager.cpp:266
+#: actionmanager.cpp:264
 #, kde-format
 msgctxt "@info:status"
 msgid "Archive events and to-dos to a file"
 msgstr "நிகழ்வுகளும் செய்யவேண்டியவையும் கோப்புக்கு காப்பகப்படுத்தப்படுகின்றன"
 
-#: actionmanager.cpp:267
+#: actionmanager.cpp:265
 #, kde-format
 msgctxt "@info:tooltip"
 msgid "Archive old events and to-dos to an iCalendar file"
 msgstr ""
 
-#: actionmanager.cpp:269
+#: actionmanager.cpp:267
 #, kde-format
 msgctxt "@info:whatsthis"
 msgid ""
@@ -423,25 +423,25 @@ msgid ""
 "your existing calendar collection."
 msgstr ""
 
-#: actionmanager.cpp:277
+#: actionmanager.cpp:275
 #, kde-format
 msgctxt "@action:inmenu"
 msgid "Pur&ge Completed To-dos"
 msgstr "செய்யவேண்டியவற்றில் முடித்தவற்றை நீக்கு"
 
-#: actionmanager.cpp:278
+#: actionmanager.cpp:276
 #, kde-format
 msgctxt "@info:status"
 msgid "Purge completed to-dos"
 msgstr "செய்யவேண்டியவற்றில் முடித்தவற்றை நீக்குகிறது"
 
-#: actionmanager.cpp:279
+#: actionmanager.cpp:277
 #, kde-format
 msgctxt "@info:tooltip"
 msgid "Remove completed to-dos from your calendar"
 msgstr "செய்யவேண்டியவற்றில் முடித்தவற்றை உங்கள் நாள்காட்டியிலிருந்து நீக்கும்"
 
-#: actionmanager.cpp:281
+#: actionmanager.cpp:279
 #, kde-format
 msgctxt "@info:whatsthis"
 msgid ""
@@ -449,32 +449,32 @@ msgid ""
 "This action cannot be undone!"
 msgstr ""
 
-#: actionmanager.cpp:318 actionmanager.cpp:617 actionmanager.cpp:1312
-#: actionmanager.cpp:1350
+#: actionmanager.cpp:316 actionmanager.cpp:615 actionmanager.cpp:1310
+#: actionmanager.cpp:1348
 #, kde-format
 msgctxt "@action:inmenu"
 msgid "&Delete"
 msgstr "நீக்கு"
 
-#: actionmanager.cpp:335
+#: actionmanager.cpp:333
 #, kde-format
 msgctxt "@action:inmenu"
 msgid "What's &Next"
 msgstr "அடுத்து என்ன"
 
-#: actionmanager.cpp:336
+#: actionmanager.cpp:334
 #, kde-format
 msgctxt "@info:status"
 msgid "What's Next View"
 msgstr "அடுத்து என்ன காட்சிமுறை"
 
-#: actionmanager.cpp:337
+#: actionmanager.cpp:335
 #, kde-format
 msgctxt "@info:tooltip"
 msgid "Switch to the What's Next View"
 msgstr "அடுத்து என்ன காட்சிமுறைக்கு மாறும்"
 
-#: actionmanager.cpp:339
+#: actionmanager.cpp:337
 #, kde-format
 msgctxt "@info:whatsthis"
 msgid ""
@@ -484,25 +484,25 @@ msgid ""
 "Navigator sidebar will be shown."
 msgstr ""
 
-#: actionmanager.cpp:347
+#: actionmanager.cpp:345
 #, kde-format
 msgctxt "@action:inmenu"
 msgid "&Month"
 msgstr "மாதம்"
 
-#: actionmanager.cpp:348
+#: actionmanager.cpp:346
 #, kde-format
 msgctxt "@info:status"
 msgid "Month View"
 msgstr "மாதக் காட்சி"
 
-#: actionmanager.cpp:349
+#: actionmanager.cpp:347
 #, kde-format
 msgctxt "@info:tooltip"
 msgid "Switch to the Month View"
 msgstr "மாதக் காட்சிக்கு மாறு"
 
-#: actionmanager.cpp:351
+#: actionmanager.cpp:349
 #, kde-format
 msgctxt "@info:whatsthis"
 msgid ""
@@ -510,25 +510,25 @@ msgid ""
 "familiar monthly calendar layout."
 msgstr ""
 
-#: actionmanager.cpp:357
+#: actionmanager.cpp:355
 #, kde-format
 msgctxt "@action:inmenu"
 msgid "&Agenda"
 msgstr "நிகழ்ச்சிநிரல்"
 
-#: actionmanager.cpp:360
+#: actionmanager.cpp:358
 #, kde-format
 msgctxt "@info:status"
 msgid "Agenda View"
 msgstr "நிகழ்ச்சிநிரல் காட்சிமுறை"
 
-#: actionmanager.cpp:361
+#: actionmanager.cpp:359
 #, kde-format
 msgctxt "@info:tooltip"
 msgid "Switch to the Agenda View"
 msgstr "நிகழ்ச்சிநிரல் காட்சிக்கு மாறு"
 
-#: actionmanager.cpp:363
+#: actionmanager.cpp:361
 #, kde-format
 msgctxt "@info:whatsthis"
 msgid ""
@@ -537,25 +537,25 @@ msgid ""
 "each event in the day timetable."
 msgstr ""
 
-#: actionmanager.cpp:370
+#: actionmanager.cpp:368
 #, kde-format
 msgctxt "@action:inmenu"
 msgid "&Event List"
 msgstr "நிகழ்வுப் பட்டியல்"
 
-#: actionmanager.cpp:371
+#: actionmanager.cpp:369
 #, kde-format
 msgctxt "@info:status"
 msgid "List View"
 msgstr "பட்டியல் காட்சிமுறை"
 
-#: actionmanager.cpp:372
+#: actionmanager.cpp:370
 #, kde-format
 msgctxt "@info:tooltip"
 msgid "Switch to the List View"
 msgstr "பட்டியல் காட்சிக்கு மாறு"
 
-#: actionmanager.cpp:374
+#: actionmanager.cpp:372
 #, kde-format
 msgctxt "@info:whatsthis"
 msgid ""
@@ -563,25 +563,25 @@ msgid ""
 "journal entries for the dates selected in the Date Navigator as a list."
 msgstr ""
 
-#: actionmanager.cpp:380
+#: actionmanager.cpp:378
 #, kde-format
 msgctxt "@action:inmenu"
 msgid "&To-do List"
 msgstr "செயல் பட்டியல்"
 
-#: actionmanager.cpp:381
+#: actionmanager.cpp:379
 #, kde-format
 msgctxt "@info:status"
 msgid "To-do List View"
 msgstr "செயல் பட்டியல் காட்சிமுறை"
 
-#: actionmanager.cpp:382
+#: actionmanager.cpp:380
 #, kde-format
 msgctxt "@info:tooltip"
 msgid "Switch to the To-do List View"
 msgstr "செயல்பட்டியல் காட்சிமுறைக்கு மாறும்"
 
-#: actionmanager.cpp:384
+#: actionmanager.cpp:382
 #, kde-format
 msgctxt "@info:whatsthis"
 msgid ""
@@ -589,25 +589,25 @@ msgid ""
 "tasks that need to be done."
 msgstr ""
 
-#: actionmanager.cpp:390
+#: actionmanager.cpp:388
 #, kde-format
 msgctxt "@action:inmenu"
 msgid "&Journal"
 msgstr "நாளேடு"
 
-#: actionmanager.cpp:391
+#: actionmanager.cpp:389
 #, kde-format
 msgctxt "@info:status"
 msgid "Journal View"
 msgstr "நாளேட்டுக் காட்சிமுறை"
 
-#: actionmanager.cpp:392
+#: actionmanager.cpp:390
 #, kde-format
 msgctxt "@info:tooltip"
 msgid "Switch to the Journal View"
 msgstr "நாளேடு காட்சிமுறைக்குத் தாவும்"
 
-#: actionmanager.cpp:394
+#: actionmanager.cpp:392
 #, kde-format
 msgctxt "@info:whatsthis"
 msgid ""
@@ -615,25 +615,25 @@ msgid ""
 "reflections, occurrences or experiences."
 msgstr ""
 
-#: actionmanager.cpp:400
+#: actionmanager.cpp:398
 #, kde-format
 msgctxt "@action:inmenu"
 msgid "Time&line"
 msgstr "காலவரிசை"
 
-#: actionmanager.cpp:401
+#: actionmanager.cpp:399
 #, kde-format
 msgctxt "@info:status"
 msgid "Timeline View"
 msgstr "காலவரிசை காட்சிமுறை"
 
-#: actionmanager.cpp:402
+#: actionmanager.cpp:400
 #, kde-format
 msgctxt "@info:tooltip"
 msgid "Switch to the Timeline View"
 msgstr "காலவரிசை காட்சிமுறைக்குத் தாவும்"
 
-#: actionmanager.cpp:404
+#: actionmanager.cpp:402
 #, kde-format
 msgctxt "@info:whatsthis"
 msgid ""
@@ -641,25 +641,25 @@ msgid ""
 "timespan in a Gantt view. Each calendar is displayed in a separate line."
 msgstr ""
 
-#: actionmanager.cpp:413
+#: actionmanager.cpp:411
 #, kde-format
 msgctxt "@action:inmenu"
 msgid "&Refresh"
 msgstr "புதுப்பி"
 
-#: actionmanager.cpp:414
+#: actionmanager.cpp:412
 #, kde-format
 msgctxt "@info:status"
 msgid "Refresh"
 msgstr "புதுப்பிக்கிறது"
 
-#: actionmanager.cpp:415
+#: actionmanager.cpp:413
 #, kde-format
 msgctxt "@info:tooltip"
 msgid "Refresh the display"
 msgstr "காட்சியைப் புதுப்பிக்கும்"
 
-#: actionmanager.cpp:417
+#: actionmanager.cpp:415
 #, kde-format
 msgctxt "@info:whatsthis"
 msgid ""
@@ -667,25 +667,25 @@ msgid ""
 "sync or update any calendar folders."
 msgstr ""
 
-#: actionmanager.cpp:426
+#: actionmanager.cpp:424
 #, kde-format
 msgctxt "@action:inmenu"
 msgid "F&ilter"
 msgstr "வடிகட்டு"
 
-#: actionmanager.cpp:427
+#: actionmanager.cpp:425
 #, kde-format
 msgctxt "@info:status"
 msgid "Filter incidences"
 msgstr "நிகழ்வுகளை வடிகட்டுகிறது"
 
-#: actionmanager.cpp:428
+#: actionmanager.cpp:426
 #, kde-format
 msgctxt "@info:tooltip"
 msgid "Filter incidences from the calendar"
 msgstr "நாள்காட்டியில் காட்டப்படும் நிகழ்வுகளை வடிகட்டும்"
 
-#: actionmanager.cpp:430
+#: actionmanager.cpp:428
 #, kde-format
 msgctxt "@info:whatsthis"
 msgid ""
@@ -693,85 +693,85 @@ msgid ""
 "created first. See \"Manage View Filters\" option in the Settings menu."
 msgstr ""
 
-#: actionmanager.cpp:442
+#: actionmanager.cpp:440
 #, kde-format
 msgctxt "@action:inmenu"
 msgid "In Horizontally"
 msgstr "கிடைமட்டத்தில் பெரிதாக்கு"
 
-#: actionmanager.cpp:447
+#: actionmanager.cpp:445
 #, kde-format
 msgctxt "@action:inmenu"
 msgid "Out Horizontally"
 msgstr "கிடைமட்டத்தில் சிறிதாகு"
 
-#: actionmanager.cpp:452
+#: actionmanager.cpp:450
 #, kde-format
 msgctxt "@action:inmenu"
 msgid "In Vertically"
 msgstr "செங்குத்தாக பெரிதாக்கு"
 
-#: actionmanager.cpp:457
+#: actionmanager.cpp:455
 #, kde-format
 msgctxt "@action:inmenu"
 msgid "Out Vertically"
 msgstr "செங்குத்தாக சிறிதாக்கு"
 
-#: actionmanager.cpp:466
+#: actionmanager.cpp:464
 #, kde-format
 msgctxt "@action:inmenu Jump to today"
 msgid "To &Today"
 msgstr "இன்றைய நாளுக்கு"
 
-#: actionmanager.cpp:467
+#: actionmanager.cpp:465
 #, kde-format
 msgctxt "@action:button"
 msgid "Today"
 msgstr "இன்று"
 
-#: actionmanager.cpp:468
+#: actionmanager.cpp:466
 #, kde-format
 msgctxt "@info:status"
 msgid "Scroll to Today"
 msgstr "இன்றைய நாளுக்கு உருள்கிறது"
 
-#: actionmanager.cpp:469
+#: actionmanager.cpp:467
 #, kde-format
 msgctxt "@info:tooltip"
 msgid "Scroll the view to today"
 msgstr "இன்றைய நாளுக்கு காட்சியை உருளச்செய்யும்"
 
-#: actionmanager.cpp:470
+#: actionmanager.cpp:468
 #, kde-format
 msgctxt "@info:whatsthis"
 msgid "Scrolls the current view to the today's date."
 msgstr ""
 
-#: actionmanager.cpp:476
+#: actionmanager.cpp:474
 #, kde-format
 msgctxt "@action:inmenu scroll backward"
 msgid "&Backward"
 msgstr "முந்தையவற்றிற்கு"
 
-#: actionmanager.cpp:478
+#: actionmanager.cpp:476
 #, kde-format
 msgctxt "@action:button scroll backward"
 msgid "Back"
 msgstr "முன்னே"
 
-#: actionmanager.cpp:479
+#: actionmanager.cpp:477
 #, kde-format
 msgctxt "@info:status"
 msgid "Scroll Backward"
 msgstr "முந்தைய உருப்படிகளைக் காட்டுகிறது"
 
-#: actionmanager.cpp:480
+#: actionmanager.cpp:478
 #, kde-format
 msgctxt "@info:tooltip"
 msgid "Scroll the view backward"
 msgstr "காட்சிப்பகுதியில் தற்போதையதற்கு முந்தையதைக் காட்டும்"
 
-#: actionmanager.cpp:482
+#: actionmanager.cpp:480
 #, kde-format
 msgctxt "@info:whatsthis"
 msgid ""
@@ -779,31 +779,31 @@ msgid ""
 "calendar view."
 msgstr "தற்போதைய காட்சிமுறைக்கேற்ப, முந்தைய நாளையோ வாரத்தையோ மாதத்தையோ ஆண்டையோ காட்டும்."
 
-#: actionmanager.cpp:489
+#: actionmanager.cpp:487
 #, kde-format
 msgctxt "@action:inmenu scroll forward"
 msgid "&Forward"
 msgstr "பிந்தையவற்றிற்கு"
 
-#: actionmanager.cpp:491
+#: actionmanager.cpp:489
 #, kde-format
 msgctxt "@action:button scroll forward"
 msgid "Forward"
 msgstr "பின்னே"
 
-#: actionmanager.cpp:492
+#: actionmanager.cpp:490
 #, kde-format
 msgctxt "@info:status"
 msgid "Scroll Forward"
 msgstr "பிந்தைய உருப்படிகளைக் காட்டுகிறது"
 
-#: actionmanager.cpp:493
+#: actionmanager.cpp:491
 #, kde-format
 msgctxt "@info:tooltip"
 msgid "Scroll the view forward"
 msgstr "காட்சிப்பகுதியில் தற்போதையதற்கு பிந்தையதைக் காட்டும்"
 
-#: actionmanager.cpp:495
+#: actionmanager.cpp:493
 #, kde-format
 msgctxt "@info:whatsthis"
 msgid ""
@@ -811,55 +811,55 @@ msgid ""
 "calendar view."
 msgstr "தற்போதைய காட்சிமுறைக்கேற்ப, அடுத்த நாளையோ வாரத்தையோ மாதத்தையோ ஆண்டையோ காட்டும்."
 
-#: actionmanager.cpp:501
+#: actionmanager.cpp:499
 #, kde-format
 msgctxt "@action:inmenu"
 msgid "&Day"
 msgstr "நாள்"
 
-#: actionmanager.cpp:502
+#: actionmanager.cpp:500
 #, kde-format
 msgctxt "@action:inmenu agenda view show 1 day at a time"
 msgid "Day"
 msgstr "நாள்"
 
-#: actionmanager.cpp:503
+#: actionmanager.cpp:501
 #, kde-format
 msgctxt "@info:status"
 msgid "View 1 day at a time"
 msgstr "ஒவ்வொரு நாளாக காட்டுகிறது"
 
-#: actionmanager.cpp:504
+#: actionmanager.cpp:502
 #, kde-format
 msgctxt "@info:tooltip"
 msgid "Show 1 day at a time in Agenda View"
 msgstr "நிகழ்ச்சிநிரல் காட்சியில் ஒவ்வொரு நாளாக காட்டு"
 
-#: actionmanager.cpp:505
+#: actionmanager.cpp:503
 #, kde-format
 msgctxt "@info:whatsthis"
 msgid "Select this option to show only 1 day at a time in Agenda View."
 msgstr ""
 
-#: actionmanager.cpp:512
+#: actionmanager.cpp:510
 #, kde-format
 msgctxt "@action:inmenu agenda view show a few days at a time"
 msgid "&Next Days"
 msgstr "அடுத்த நாட்கள்"
 
-#: actionmanager.cpp:513
+#: actionmanager.cpp:511
 #, kde-format
 msgctxt "@info:status"
 msgid "View a few days at a time"
 msgstr "அடுத்த சில நாட்களை ஒரே நேரத்தில் காட்டுகிறது"
 
-#: actionmanager.cpp:514
+#: actionmanager.cpp:512
 #, kde-format
 msgctxt "@info:tooltip"
 msgid "Show the next few days at a time in Agenda View"
 msgstr "அட்டவணை பயன்முறையில அடுத்த சில நாட்களை ஒருங்கே காட்டும்"
 
-#: actionmanager.cpp:517
+#: actionmanager.cpp:515
 #, kde-kuit-format
 msgctxt "@info:whatsthis"
 msgid ""
@@ -869,13 +869,13 @@ msgid ""
 "days shown."
 msgstr ""
 
-#: actionmanager.cpp:524
+#: actionmanager.cpp:522
 #, kde-format
 msgctxt "@action:inmenu"
 msgid "W&eek Schedule"
 msgstr "வார அட்டவணை"
 
-#: actionmanager.cpp:525
+#: actionmanager.cpp:523
 #, kde-format
 msgctxt ""
 "@action:inmenu agenda view show the weekly schedule days only (eg. no "
@@ -883,14 +883,14 @@ msgctxt ""
 msgid "Week Schedule"
 msgstr "வார அட்டவணை"
 
-#: actionmanager.cpp:526
+#: actionmanager.cpp:524
 #, kde-format
 msgctxt "@info:status"
 msgid ""
 "Show a week at a time showing days included in your weekly schedule only"
 msgstr ""
 
-#: actionmanager.cpp:528
+#: actionmanager.cpp:526
 #, kde-format
 msgctxt "@info:tooltip"
 msgid ""
@@ -898,7 +898,7 @@ msgid ""
 "in your weekly schedule (ie. weekends are excluded)"
 msgstr ""
 
-#: actionmanager.cpp:531
+#: actionmanager.cpp:529
 #, kde-kuit-format
 msgctxt "@info:whatsthis"
 msgid ""
@@ -909,55 +909,55 @@ msgid ""
 "view is intended for showing the week without weekend days.</para>"
 msgstr ""
 
-#: actionmanager.cpp:540
+#: actionmanager.cpp:538
 #, kde-format
 msgctxt "@action:inmenu"
 msgid "&Week"
 msgstr "வாரம்"
 
-#: actionmanager.cpp:541
+#: actionmanager.cpp:539
 #, kde-format
 msgctxt "@action:inmenu agenda view show a week at a time"
 msgid "Week"
 msgstr "வாரம்"
 
-#: actionmanager.cpp:542
+#: actionmanager.cpp:540
 #, kde-format
 msgctxt "@info:status"
 msgid "View a week at a time"
 msgstr ""
 
-#: actionmanager.cpp:543
+#: actionmanager.cpp:541
 #, kde-format
 msgctxt "@info:tooltip"
 msgid "Show 1 week at a time in Agenda View"
 msgstr "அட்டவணை காட்சியில் ஒரு வாரத்தை மட்டும் காட்டு"
 
-#: actionmanager.cpp:544
+#: actionmanager.cpp:542
 #, kde-format
 msgctxt "@info:whatsthis"
 msgid "Select this option to show a week at a time in Agenda View."
 msgstr ""
 
-#: actionmanager.cpp:551
+#: actionmanager.cpp:549
 #, kde-format
 msgctxt "@action:inmenu"
 msgid "New E&vent…"
 msgstr "புதிய நிகழ்வு…"
 
-#: actionmanager.cpp:552
+#: actionmanager.cpp:550
 #, kde-format
 msgctxt "@info:status"
 msgid "Create a new Event"
 msgstr "புதிய நிகழ்வை உருவாக்குகிறது"
 
-#: actionmanager.cpp:553
+#: actionmanager.cpp:551
 #, kde-format
 msgctxt "@info:tooltip"
 msgid "Create a new Event"
 msgstr "புதிய நிகழ்வை உருவாக்கு"
 
-#: actionmanager.cpp:555
+#: actionmanager.cpp:553
 #, kde-format
 msgctxt "@info:whatsthis"
 msgid ""
@@ -965,27 +965,27 @@ msgid ""
 "attendees, recurrences and much more."
 msgstr ""
 
-#: actionmanager.cpp:561
+#: actionmanager.cpp:559
 #, kde-format
 msgctxt "@action:inmenu"
 msgid "New &To-do…"
 msgstr "புதியதாக &செய்யவேண்டியது…"
 
-#: actionmanager.cpp:562
+#: actionmanager.cpp:560
 #, fuzzy, kde-format
 #| msgid "Click to add a new to-do"
 msgctxt "@info:status"
 msgid "Create a new To-do"
 msgstr "புதிய செயலை இணைக்க சொடுக்கு"
 
-#: actionmanager.cpp:563
+#: actionmanager.cpp:561
 #, fuzzy, kde-format
 #| msgid "Click to add a new to-do"
 msgctxt "@info:tooltip"
 msgid "Create a new To-do"
 msgstr "புதிய செயலை இணைக்க சொடுக்கு"
 
-#: actionmanager.cpp:565
+#: actionmanager.cpp:563
 #, kde-format
 msgctxt "@info:whatsthis"
 msgid ""
@@ -993,49 +993,49 @@ msgid ""
 "attendees, recurrences and much more."
 msgstr ""
 
-#: actionmanager.cpp:572
+#: actionmanager.cpp:570
 #, kde-format
 msgctxt "@action:inmenu"
 msgid "New Su&b-to-do…"
 msgstr "புதிய சா&ர்-செய்யவேண்டியது…"
 
-#: actionmanager.cpp:580
+#: actionmanager.cpp:578
 #, kde-format
 msgctxt "@action:inmenu"
 msgid "New &Journal…"
 msgstr "புதிய நா&ளேடு…"
 
-#: actionmanager.cpp:581
+#: actionmanager.cpp:579
 #, kde-format
 msgctxt "@info:status"
 msgid "Create a new Journal"
 msgstr "புதிய நாளேடு உருவாக்கப்படுகிறது"
 
-#: actionmanager.cpp:582
+#: actionmanager.cpp:580
 #, kde-format
 msgctxt "@info:tooltip"
 msgid "Create a new Journal"
 msgstr "புதிய நாளேடை உருவாக்க உதவும்"
 
-#: actionmanager.cpp:583
+#: actionmanager.cpp:581
 #, kde-format
 msgctxt "@info:whatsthis"
 msgid "Starts a dialog that allows you to create a new Journal entry."
 msgstr "புதிய நாளேடு பதிவை உருவாக்க உதவும் சாளரத்தைத் திறக்கும்."
 
-#: actionmanager.cpp:588
+#: actionmanager.cpp:586
 #, kde-format
 msgctxt "@action:inmenu Jump to date"
 msgid "&Pick a Date"
 msgstr "தேதியைத் தேர்ந்தெடு"
 
-#: actionmanager.cpp:589
+#: actionmanager.cpp:587
 #, kde-format
 msgctxt "@action:button"
 msgid "Date"
 msgstr "தேதி"
 
-#: actionmanager.cpp:590
+#: actionmanager.cpp:588
 #, fuzzy, kde-format
 #| msgctxt "@info:tooltip"
 #| msgid "Scroll the view to today"
@@ -1043,7 +1043,7 @@ msgctxt "@info:status"
 msgid "Scroll the view to user selected dates"
 msgstr "இன்றைய நாளுக்கு காட்சியை உருளச்செய்யும்"
 
-#: actionmanager.cpp:591
+#: actionmanager.cpp:589
 #, fuzzy, kde-format
 #| msgctxt "@info:tooltip"
 #| msgid "Scroll the view to today"
@@ -1051,25 +1051,25 @@ msgctxt "@info:tooltip"
 msgid "Scroll the view to user selected dates"
 msgstr "இன்றைய நாளுக்கு காட்சியை உருளச்செய்யும்"
 
-#: actionmanager.cpp:592
+#: actionmanager.cpp:590
 #, kde-format
 msgctxt "@info:whatsthis"
 msgid "Opens a date selection dialog for quickly navigating the view."
 msgstr ""
 
-#: actionmanager.cpp:597
+#: actionmanager.cpp:595
 #, kde-format
 msgctxt "@action:inmenu"
 msgid "Configure View…"
 msgstr "காட்சிமுறையை அமை…"
 
-#: actionmanager.cpp:598
+#: actionmanager.cpp:596
 #, kde-format
 msgctxt "@action:button"
 msgid "Configure"
 msgstr "அமை"
 
-#: actionmanager.cpp:599
+#: actionmanager.cpp:597
 #, fuzzy, kde-format
 #| msgctxt "@info:tooltip"
 #| msgid "Configure the current view"
@@ -1077,7 +1077,7 @@ msgctxt "@info:status"
 msgid "Configure the multi-calendar view"
 msgstr "தற்போதைய காட்சிமுறையை அமை"
 
-#: actionmanager.cpp:600
+#: actionmanager.cpp:598
 #, fuzzy, kde-format
 #| msgctxt "@info:tooltip"
 #| msgid "Configure the current view"
@@ -1085,7 +1085,7 @@ msgctxt "@info:tooltip"
 msgid "Configure the multi-calendar view"
 msgstr "தற்போதைய காட்சிமுறையை அமை"
 
-#: actionmanager.cpp:602
+#: actionmanager.cpp:600
 #, kde-format
 msgctxt "@info:whatsthis"
 msgid ""
@@ -1094,21 +1094,21 @@ msgid ""
 "Calendars options in the Views->Agenda Views settings."
 msgstr ""
 
-#: actionmanager.cpp:609 actionmanager.cpp:1306 actionmanager.cpp:1348
+#: actionmanager.cpp:607 actionmanager.cpp:1304 actionmanager.cpp:1346
 #: koeventpopupmenu.cpp:42
 #, kde-format
 msgctxt "@action:inmenu"
 msgid "&Show"
 msgstr "காட்டு"
 
-#: actionmanager.cpp:613 actionmanager.cpp:1309 actionmanager.cpp:1349
+#: actionmanager.cpp:611 actionmanager.cpp:1307 actionmanager.cpp:1347
 #: koeventpopupmenu.cpp:44
 #, kde-format
 msgctxt "@action:inmenu"
 msgid "&Edit…"
 msgstr "திருத்து…"
 
-#: actionmanager.cpp:622
+#: actionmanager.cpp:620
 #, kde-format
 msgctxt "@action:inmenu"
 msgid "&Make Sub-to-do Independent"
@@ -1118,123 +1118,123 @@ msgstr "சார்செயலை தனிச்செயலாக்கு"
 #. mCalendarView, SLOT(toggleAlarm()),
 #. mACollection, "activate_alarm" );
 #. ************************* SCHEDULE MENU *******************************
-#: actionmanager.cpp:634
+#: actionmanager.cpp:632
 #, fuzzy, kde-format
 msgctxt "@action:inmenu"
 msgid "&Publish Item Information…"
 msgstr "அஞ்சல் இல்லாத வேலையுள்ள தகவல்"
 
-#: actionmanager.cpp:641
+#: actionmanager.cpp:639
 #, kde-format
 msgctxt "@action:inmenu"
 msgid "Send &Invitation to Attendees"
 msgstr "பங்கேற்போருக்கு அழைப்பிதழ் அனுப்பு"
 
-#: actionmanager.cpp:649
+#: actionmanager.cpp:647
 #, kde-format
 msgctxt "@action:inmenu"
 msgid "Re&quest Update"
 msgstr "தற்போதைய நிலையைக் கோரு"
 
-#: actionmanager.cpp:657
+#: actionmanager.cpp:655
 #, kde-format
 msgctxt "@action:inmenu"
 msgid "Send &Cancellation to Attendees"
 msgstr "ரத்து செய்ததாக பங்கேற்போருக்கு செய்தியனுப்பு"
 
-#: actionmanager.cpp:665
+#: actionmanager.cpp:663
 #, kde-format
 msgctxt "@action:inmenu"
 msgid "Send Status &Update"
 msgstr "தற்போதைய நிலைகுறித்த செய்தியனுப்பு"
 
-#: actionmanager.cpp:673
+#: actionmanager.cpp:671
 #, kde-format
 msgctxt "@action:inmenu counter proposal"
 msgid "Request Chan&ge"
 msgstr "மாற்றம் கோரு"
 
-#: actionmanager.cpp:681
+#: actionmanager.cpp:679
 #, fuzzy, kde-format
 msgctxt "@action:inmenu"
 msgid "&Mail Free Busy Information…"
 msgstr "அஞ்சல் இல்லாத வேலையுள்ள தகவல்"
 
-#: actionmanager.cpp:686
+#: actionmanager.cpp:684
 #, kde-format
 msgctxt "@action:inmenu"
 msgid "&Send as iCalendar…"
 msgstr "iCalendar-ஆக அனுப்பு…"
 
-#: actionmanager.cpp:693
+#: actionmanager.cpp:691
 #, fuzzy, kde-format
 #| msgid "&Upload Free Busy Information"
 msgctxt "@action:inmenu"
 msgid "&Upload Free Busy Information"
 msgstr "வேலைபுரியும் தகவலை ஏற்று"
 
-#: actionmanager.cpp:699
+#: actionmanager.cpp:697
 #, kde-format
 msgctxt "@action:inmenu"
 msgid "&Address Book"
 msgstr "முகவரிப்புத்தகம்"
 
-#: actionmanager.cpp:707
+#: actionmanager.cpp:705
 #, kde-format
 msgctxt "@action:inmenu"
 msgid "Show Date Navigator"
 msgstr "தேதி மாற்றியைக் காட்டு"
 
-#: actionmanager.cpp:711
+#: actionmanager.cpp:709
 #, fuzzy, kde-format
 #| msgid "Show To-do View"
 msgctxt "@action:inmenu"
 msgid "Show To-do View"
 msgstr "செய்யவேண்டியவை காட்சிமுறையை காட்டு"
 
-#: actionmanager.cpp:715
+#: actionmanager.cpp:713
 #, kde-format
 msgctxt "@action:inmenu"
 msgid "Show Item Viewer"
 msgstr "உருப்படியின் விவரங்களைக் காட்டு"
 
-#: actionmanager.cpp:731
+#: actionmanager.cpp:729
 #, kde-format
 msgctxt "@action:inmenu"
 msgid "Show Calendar Manager"
 msgstr "நாள்காட்டி மேலாண்மைப் பலகையைக் காட்டு"
 
-#: actionmanager.cpp:745
+#: actionmanager.cpp:743
 #, kde-format
 msgctxt "@action:inmenu"
 msgid "Configure &Date && Time…"
 msgstr "தேதியையும் நேரத்தையும் அமை…"
 
-#: actionmanager.cpp:749
+#: actionmanager.cpp:747
 #, kde-format
 msgctxt "@action:inmenu"
 msgid "Manage View &Filters…"
 msgstr "காட்சி வடிகட்டிகளை அமை…"
 
-#: actionmanager.cpp:753
+#: actionmanager.cpp:751
 #, kde-format
 msgctxt "@action:inmenu"
 msgid "Manage T&ags…"
 msgstr "குறிச்சொற்களை நிர்வகி…"
 
-#: actionmanager.cpp:760
+#: actionmanager.cpp:758
 #, kde-format
 msgctxt "@action:inmenu"
 msgid "What's new"
 msgstr "புதியவை என்ன?"
 
-#: actionmanager.cpp:765
+#: actionmanager.cpp:763
 #, kde-format
 msgctxt "@action:inmenu"
 msgid "&Configure KOrganizer…"
 msgstr "கேயார்கனைசரை அமை…"
 
-#: actionmanager.cpp:843
+#: actionmanager.cpp:841
 #, kde-format
 msgctxt "@info"
 msgid "1 incidence was imported successfully."
@@ -1242,67 +1242,67 @@ msgid_plural "%1 incidences were imported successfully."
 msgstr[0] "1 நிகழ்வு வெற்றிகரமாக இறக்குமதி செய்யப்பட்டது."
 msgstr[1] "%1 நிகழ்வுகள் வெற்றிகரமாக இறக்குமதி செய்யப்பட்டன."
 
-#: actionmanager.cpp:846
+#: actionmanager.cpp:844
 #, kde-kuit-format
 msgctxt "@info"
 msgid "There was an error while merging the calendar: <message>%1</message>"
 msgstr "நாள்காட்டியை ஒன்றணைப்பதில் சிக்கல்: <message>%1</message>"
 
-#: actionmanager.cpp:858
+#: actionmanager.cpp:856
 #, kde-format
 msgctxt "@info"
 msgid "New calendar added successfully"
 msgstr "புதிய நாள்காட்டி வெற்றிகரமாக சேர்க்கப்பட்டுள்ளது"
 
-#: actionmanager.cpp:860
+#: actionmanager.cpp:858
 #, kde-kuit-format
 msgctxt "@info"
 msgid "Could not add a calendar. Error: <message>%1</message>"
 msgstr "நாள்காட்டியை சேர்க்க முடியவில்லை. சிக்கல்: <message>%1</message>"
 
-#: actionmanager.cpp:917
+#: actionmanager.cpp:915
 #, kde-format
 msgctxt "@title:window"
 msgid "Select Calendar File to Open"
 msgstr "திறக்க வேண்டிய நாள்காட்டி கோப்பைத் தேர்ந்தெடுக்கவும்"
 
-#: actionmanager.cpp:953
+#: actionmanager.cpp:951
 #, kde-format
 msgctxt "@title:window"
 msgid "Select Calendar File to Import"
 msgstr "இறக்குமதி செய்ய வேண்டிய நாள்காட்டி கோப்பைத் தேர்ந்தெடுக்கவும்"
 
-#: actionmanager.cpp:985
+#: actionmanager.cpp:983
 #, kde-kuit-format
 msgctxt "@info"
 msgid "An error occurred: <message>%1 (url: %2)</message>"
 msgstr "சிக்கல் ஏற்பட்டது: <message>%1 (முகவரி: %2)</message>"
 
-#: actionmanager.cpp:1004
+#: actionmanager.cpp:1002
 #, kde-kuit-format
 msgctxt "@info"
 msgid "Cannot upload calendar to <filename>%1</filename>"
 msgstr "நாள்காட்டியை <filename>%1</filename> என்பதற்கு ஏற்ற முடியாது"
 
-#: actionmanager.cpp:1010
+#: actionmanager.cpp:1008
 #, kde-kuit-format
 msgctxt "@info"
 msgid "Saved calendar <filename>%1</filename>"
 msgstr "நாள்காட்டி <filename>%1</filename> தனில் சேமிக்கப்பட்டது"
 
-#: actionmanager.cpp:1053
+#: actionmanager.cpp:1051
 #, kde-kuit-format
 msgctxt "@info"
 msgid "Unable to save calendar to the file <filename>%1</filename>"
 msgstr "<filename>%1</filename> எனும் கோப்பிற்கு நாள்காட்டியை சேமிக்க முடியவில்லை"
 
-#: actionmanager.cpp:1054
+#: actionmanager.cpp:1052
 #, kde-format
 msgctxt "@title:window"
 msgid "Error"
 msgstr "சிக்கல்"
 
-#: actionmanager.cpp:1080
+#: actionmanager.cpp:1078
 #, kde-format
 msgctxt "@action:inmenu"
 msgid "&Next Day"
@@ -1310,122 +1310,122 @@ msgid_plural "&Next %1 Days"
 msgstr[0] "அடுத்த நாள்"
 msgstr[1] "அடுத்த %1 நாட்கள்"
 
-#: actionmanager.cpp:1093
+#: actionmanager.cpp:1091
 #, kde-format
 msgctxt "@info"
 msgid "Could not start control module for date and time format."
 msgstr "தேதி மற்றும் நேர வடிவிற்கான கட்டுப்பாட்டுக் கூறைத் துவக்க முடியவில்லை."
 
-#: actionmanager.cpp:1268
+#: actionmanager.cpp:1266
 #, kde-format
 msgctxt "@action:inmenu"
 msgid "&Show Event"
 msgstr "நிகழ்வை காட்டு"
 
-#: actionmanager.cpp:1271
+#: actionmanager.cpp:1269
 #, kde-format
 msgctxt "@action:inmenu"
 msgid "&Edit Event…"
 msgstr "நிகழ்வை திருத்து…"
 
-#: actionmanager.cpp:1274
+#: actionmanager.cpp:1272
 #, kde-format
 msgctxt "@action:inmenu"
 msgid "&Delete Event"
 msgstr "நிகழ்வை நீக்கு"
 
-#: actionmanager.cpp:1282
+#: actionmanager.cpp:1280
 #, kde-format
 msgctxt "@action:inmenu"
 msgid "&Show To-do"
 msgstr "செய்யவேண்டியதை காட்டு"
 
-#: actionmanager.cpp:1285
+#: actionmanager.cpp:1283
 #, kde-format
 msgctxt "@action:inmenu"
 msgid "&Edit To-do…"
 msgstr "செய்யவேண்டியதை திருத்து…"
 
-#: actionmanager.cpp:1288
+#: actionmanager.cpp:1286
 #, kde-format
 msgctxt "@action:inmenu"
 msgid "&Delete To-do"
 msgstr "செய்யவேண்டியதை நீக்கு"
 
-#: actionmanager.cpp:1431 actionmanager.cpp:1535
+#: actionmanager.cpp:1429 actionmanager.cpp:1533
 #, kde-format
 msgctxt "@action:inmenu"
 msgid "Attach as &link"
 msgstr "இணைப்பாக இணை"
 
-#: actionmanager.cpp:1432 actionmanager.cpp:1536
+#: actionmanager.cpp:1430 actionmanager.cpp:1534
 #, kde-format
 msgctxt "@action:inmenu"
 msgid "Attach &inline"
 msgstr "உரையிலேயே இணை"
 
-#: actionmanager.cpp:1433
+#: actionmanager.cpp:1431
 #, kde-format
 msgctxt "@action:inmenu"
 msgid "Attach inline &without attachments"
 msgstr "உடனிணைப்புகள் இல்லாமல் உரையிலேயே இணை"
 
-#: actionmanager.cpp:1435 actionmanager.cpp:1538
+#: actionmanager.cpp:1433 actionmanager.cpp:1536
 #, kde-format
 msgctxt "@action:inmenu"
 msgid "C&ancel"
 msgstr "ரத்து செய்"
 
-#: actionmanager.cpp:1473
+#: actionmanager.cpp:1471
 #, kde-format
 msgctxt "@info"
 msgid "Removing attachments from an email might invalidate its signature."
 msgstr ""
 "அஞ்சலிலிருந்து உடனிணைப்புகளை நீக்குவது, அதன் கையொப்பம் செல்லுபடியாகாதபடி அதை மாற்றலாம்."
 
-#: actionmanager.cpp:1474
+#: actionmanager.cpp:1472
 #, kde-format
 msgctxt "@title:window"
 msgid "Remove Attachments"
 msgstr "உடனிணைப்புகளை நீக்குவது"
 
-#: actionmanager.cpp:1623
+#: actionmanager.cpp:1621
 #, kde-format
 msgctxt "@action:inmenu"
 msgid "Undo: %1"
 msgstr "செயல்நீக்கு: %1"
 
-#: actionmanager.cpp:1626
+#: actionmanager.cpp:1624
 #, kde-format
 msgctxt "@action:inmenu"
 msgid "Undo"
 msgstr "செயல்நீக்கு"
 
-#: actionmanager.cpp:1636
+#: actionmanager.cpp:1634
 #, kde-format
 msgctxt "@action:inmenu"
 msgid "Redo: %1"
 msgstr "மீளச்செய்: %1"
 
-#: actionmanager.cpp:1639
+#: actionmanager.cpp:1637
 #, kde-format
 msgctxt "@action:inmenu"
 msgid "Redo"
 msgstr "மீளச்செய்"
 
-#: actionmanager.cpp:1642
+#: actionmanager.cpp:1640
 #, kde-format
 msgctxt "@action:button"
 msgid "Undo"
 msgstr "செயல்நீக்கு"
 
-#: actionmanager.cpp:1653
+#: actionmanager.cpp:1651
 #, kde-kuit-format
 msgctxt "@info"
 msgid "URL <filename>%1</filename> is invalid."
 msgstr "<filename>%1</filename> எனும் முகவரி செல்லுபடியாகாதது."
 
-#: actionmanager.cpp:1658
+#: actionmanager.cpp:1656
 #, kde-kuit-format
 msgctxt "@info"
 msgid ""
@@ -1436,74 +1436,74 @@ msgid ""
 "automatically.</para>"
 msgstr ""
 
-#: actionmanager.cpp:1666
+#: actionmanager.cpp:1664
 #, kde-format
 msgctxt "@title:window"
 msgid "Import Calendar"
 msgstr "நாள்காட்டியை இறக்குமதி செய்வது"
 
-#: actionmanager.cpp:1667
+#: actionmanager.cpp:1665
 #, kde-format
 msgctxt "@action:button"
 msgid "Merge into existing calendar"
 msgstr "ஏற்கனவேயுள்ள நாள்காட்டியுடன் ஒன்றுசேர்"
 
-#: actionmanager.cpp:1668
+#: actionmanager.cpp:1666
 #, kde-format
 msgctxt "@action:button"
 msgid "Add as new calendar"
 msgstr "புதிய நாள்காட்டியாக சேர்"
 
-#: akonadicollectionview.cpp:289
+#: akonadicollectionview.cpp:290
 #, kde-format
 msgctxt "@item this calendar is offline"
 msgid "%1 (Offline)"
 msgstr "%1 (தொடர்பற்று உள்ளது)"
 
-#: akonadicollectionview.cpp:292
+#: akonadicollectionview.cpp:293
 #, kde-format
 msgctxt "@item this is the default calendar"
 msgid "%1 (Default)"
 msgstr "%1 (இயல்பிருப்பு)"
 
-#: akonadicollectionview.cpp:383
+#: akonadicollectionview.cpp:384
 #, kde-format
 msgctxt "@info:tooltip"
 msgid "Calendar search"
 msgstr "நாள்காட்டித் தேடல்"
 
-#: akonadicollectionview.cpp:384
+#: akonadicollectionview.cpp:385
 #, kde-format
 msgctxt "@info:whatsthis"
 msgid "Start typing to search for a calendar within the collection."
 msgstr "ஓர் நாள்காட்டியைக் கண்டுபிடிக்க அதன் பெயரை உள்ளிடவும்."
 
-#: akonadicollectionview.cpp:386
+#: akonadicollectionview.cpp:387
 #, kde-format
 msgctxt ""
 "@info/plain Displayed grayed-out inside the textbox, calendar to search"
 msgid "Search for calendar…"
 msgstr "நாள்காட்டியைக் கண்டுபிடி…"
 
-#: akonadicollectionview.cpp:472 manageshowcollectionproperties.cpp:76
+#: akonadicollectionview.cpp:473 manageshowcollectionproperties.cpp:76
 #, kde-format
 msgctxt "@title:window"
 msgid "Properties of Calendar Folder %1"
 msgstr "%1 நாள்காட்டி அடைவின் பண்புகள்"
 
-#: akonadicollectionview.cpp:484
+#: akonadicollectionview.cpp:485
 #, kde-format
 msgctxt "@action:inmenu"
 msgid "&Set Folder Color…"
 msgstr "&அடைவின் நிறத்தை அமை…"
 
-#: akonadicollectionview.cpp:490
+#: akonadicollectionview.cpp:491
 #, kde-format
 msgctxt "@action:inmenu"
 msgid "Set as &Default Folder"
 msgstr "&இயல்பிருப்பு அடைவாக அமை"
 
-#: akonadicollectionview.cpp:540
+#: akonadicollectionview.cpp:541
 #, kde-kuit-format
 msgctxt "@info"
 msgid ""
@@ -1515,7 +1515,7 @@ msgstr ""
 "<para>இது தற்போதைய இயல்பிருப்பு நாள்காட்டியான <filename>%2</filename> என்பதற்கு "
 "பதிலாக அமைக்கப்படும்.</para>"
 
-#: akonadicollectionview.cpp:545
+#: akonadicollectionview.cpp:546
 #, kde-kuit-format
 msgctxt "@info"
 msgid ""
@@ -1523,31 +1523,31 @@ msgid ""
 "folder?"
 msgstr "<filename>%1</filename> தனை உங்கள் இயல்பிருப்பு நாள்காட்டியாக அமைக்கலாமா?"
 
-#: akonadicollectionview.cpp:550
+#: akonadicollectionview.cpp:551
 #, kde-format
 msgctxt "@title:window"
 msgid "Replace Default Calendar?"
 msgstr "இயல்பிருப்பு நாள்காட்டியாக இதை அமைக்கலாமா?"
 
-#: akonadicollectionview.cpp:554 akonadicollectionview.cpp:926
+#: akonadicollectionview.cpp:555 akonadicollectionview.cpp:927
 #, kde-kuit-format
 msgctxt "@info"
 msgid "<filename>%1</filename> is now your default event calendar"
 msgstr "<filename>%1</filename> இப்போது உங்கள் இயல்பிருப்பு நாள்காட்டியாக உள்ளது"
 
-#: akonadicollectionview.cpp:710
+#: akonadicollectionview.cpp:711
 #, kde-format
 msgctxt "@title:window"
 msgid "Add Calendar"
 msgstr "நாள்காட்டியை சேர்ப்பது"
 
-#: akonadicollectionview.cpp:729
+#: akonadicollectionview.cpp:730
 #, kde-kuit-format
 msgctxt "@info"
 msgid "Add new calendar failed: <message>%1</message>"
 msgstr "புதிய நாள்காட்டியை சேர்ப்பது தோல்வியடைந்தது: <message>%1</message>"
 
-#: akonadicollectionview.cpp:786
+#: akonadicollectionview.cpp:787
 #, kde-kuit-format
 msgctxt "@info"
 msgid ""
@@ -1561,7 +1561,7 @@ msgstr ""
 "நீக்கப்படாது. <filename>%1</filename> எனும் நாள்காட்டியை எப்போது வேண்டுமானாலும் "
 "திரும்ப சேர்க்கலாம்.</note></para>"
 
-#: akonadicollectionview.cpp:796
+#: akonadicollectionview.cpp:797
 #, kde-kuit-format
 msgctxt "@info"
 msgid ""
@@ -1580,7 +1580,7 @@ msgstr ""
 "<filename>%2</filename> இந்த நாள்காட்டியில் உள்ளது. இதை நீக்கினால் புதிய இயல்பிருப்பு "
 "நாள்காட்டியைத் தேர்ந்தெடுக்க வேண்டியிருக்கும். </warning></para>"
 
-#: akonadicollectionview.cpp:807
+#: akonadicollectionview.cpp:808
 #, kde-kuit-format
 msgctxt "@info"
 msgid ""
@@ -1598,7 +1598,7 @@ msgstr ""
 "நாள்காட்டியில் உள்ளது. இதை நீக்கினால் புதிய இயல்பிருப்பு நாள்காட்டியைத் தேர்ந்தெடுக்க "
 "வேண்டியிருக்கும். </warning></para>"
 
-#: akonadicollectionview.cpp:817
+#: akonadicollectionview.cpp:818
 #, kde-kuit-format
 msgctxt "@info"
 msgid ""
@@ -1616,7 +1616,7 @@ msgstr ""
 "இதை நீக்கினால் புதிய இயல்பிருப்பு நாள்காட்டியைத் தேர்ந்தெடுக்க வேண்டியிருக்கும். </"
 "warning></para>"
 
-#: akonadicollectionview.cpp:829
+#: akonadicollectionview.cpp:830
 #, kde-kuit-format
 msgctxt "@info"
 msgid ""
@@ -1628,7 +1628,7 @@ msgstr ""
 "<para><warning>இச்செயலைத் திரும்பப்பெற முடியாது. %2 பட்டனை அழுத்துமுன் யோசிக்கவும்.</"
 "warning></para>"
 
-#: akonadicollectionview.cpp:836
+#: akonadicollectionview.cpp:837
 #, kde-kuit-format
 msgctxt "@info"
 msgid ""
@@ -1643,13 +1643,13 @@ msgstr ""
 "warning></para> <para><warning>இது உங்கள் இயல்பிருப்பு நாள்காட்டி. இதை நீக்கினால் "
 "புதிய இயல்பிருப்பு நாள்காட்டியைத் தேர்ந்தெடுக்க வேண்டியிருக்கும்.</warning></para>"
 
-#: akonadicollectionview.cpp:847 akonadicollectionview.cpp:878
+#: akonadicollectionview.cpp:848 akonadicollectionview.cpp:879
 #, kde-format
 msgctxt "@title:window"
 msgid "Delete Calendar"
 msgstr "நாள்காட்டியை நீக்குவது"
 
-#: akonadicollectionview.cpp:873
+#: akonadicollectionview.cpp:874
 #, fuzzy, kde-kuit-format
 #| msgctxt "@info"
 #| msgid ""
@@ -1667,26 +1667,26 @@ msgstr ""
 "<para><warning>இச்செயலைத் திரும்பப்பெற முடியாது. %2 பட்டனை அழுத்துமுன் யோசிக்கவும்.</"
 "warning></para>"
 
-#: akonadicollectionview.cpp:888
+#: akonadicollectionview.cpp:889
 #, kde-kuit-format
 msgctxt "@info"
 msgid ""
 "Delete calendar failed: <message>Invalid Akonadi agent instance</message>"
 msgstr ""
 
-#: akonadicollectionview.cpp:931
+#: akonadicollectionview.cpp:932
 #, kde-format
 msgctxt "@info"
 msgid "Consider setting a default calendar for new events"
 msgstr ""
 
-#: akonadicollectionview.cpp:933
+#: akonadicollectionview.cpp:934
 #, kde-format
 msgctxt "@info"
 msgid "Consider adding a write-enabled events calendar"
 msgstr ""
 
-#: akonadicollectionview.cpp:955
+#: akonadicollectionview.cpp:956
 #, kde-kuit-format
 msgctxt "@info"
 msgid "Delete calendar failed: <message>%1</message>"
@@ -2482,7 +2482,7 @@ msgid ""
 "Failed to retrieve incidence from Akonadi: requested incidence doesn't exist."
 msgstr ""
 
-#: kocorehelper.cpp:28
+#: kocorehelper.cpp:29
 #, fuzzy, kde-format
 msgctxt "@item:intext delimiter for joining holiday names"
 msgid ","
@@ -2826,20 +2826,20 @@ msgstr "சந்திப்பு"
 msgid "Edit Event: \"%1\""
 msgstr "நிகழ்வை திருத்து"
 
-#: kontactplugin/korganizer/journalplugin.cpp:28
+#: kontactplugin/korganizer/journalplugin.cpp:27
 #, kde-format
 msgctxt "@action:inmenu"
 msgid "New Journal…"
 msgstr "புதிய நாளேடு…"
 
-#: kontactplugin/korganizer/journalplugin.cpp:31
+#: kontactplugin/korganizer/journalplugin.cpp:30
 #, fuzzy, kde-format
 #| msgid "Click to add a new to-do"
 msgctxt "@info:status"
 msgid "Create a new journal"
 msgstr "புதிய செயலை இணைக்க சொடுக்கு"
 
-#: kontactplugin/korganizer/journalplugin.cpp:36
+#: kontactplugin/korganizer/journalplugin.cpp:35
 #, kde-format
 msgctxt "@info:whatsthis"
 msgid ""
@@ -3608,7 +3608,7 @@ msgctxt "@info:credit"
 msgid "Tobias Koenig"
 msgstr ""
 
-#: korganizer.cpp:78 korganizer_part.cpp:59 korganizer_part.cpp:70
+#: korganizer.cpp:78 korganizer_part.cpp:58 korganizer_part.cpp:69
 #, kde-format
 msgid "KOrganizer"
 msgstr "KDE ஒருங்கிணைப்பாளர்"

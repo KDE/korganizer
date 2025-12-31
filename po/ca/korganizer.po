@@ -13,7 +13,7 @@ msgid ""
 msgstr ""
 "Project-Id-Version: korganizer\n"
 "Report-Msgid-Bugs-To: https://bugs.kde.org\n"
-"POT-Creation-Date: 2025-12-29 00:44+0000\n"
+"POT-Creation-Date: 2025-12-31 00:44+0000\n"
 "PO-Revision-Date: 2025-12-29 08:51+0100\n"
 "Last-Translator: Josep M. Ferrer <txemaq@gmail.com>\n"
 "Language-Team: Catalan <kde-i18n-ca@kde.org>\n"
@@ -39,7 +39,7 @@ msgstr ""
 "quico@softcatala.org,albertca@jazzfree.com,antispam@wanadoo.es,aacid@kde.org,"
 "sps@sastia.com,txemaq@gmail.com,manutortosa@gmail.com,antonibella5@yahoo.com"
 
-#: aboutdata.cpp:18 kontactplugin/korganizer/journalplugin.cpp:26
+#: aboutdata.cpp:18 kontactplugin/korganizer/journalplugin.cpp:25
 #: kontactplugin/korganizer/korganizerplugin.cpp:42
 #: kontactplugin/korganizer/todoplugin.cpp:38
 #: kontactplugin/specialdates/specialdates_plugin.cpp:23
@@ -335,7 +335,7 @@ msgctxt "@info:credit"
 msgid "Fester Zigterman"
 msgstr "Fester Zigterman"
 
-#: actionmanager.cpp:130
+#: actionmanager.cpp:128
 #, kde-format
 msgctxt "@info"
 msgid ""
@@ -344,31 +344,31 @@ msgstr ""
 "Això ocultarà completament la barra de menús. La podeu tornar a mostrar "
 "prement %1."
 
-#: actionmanager.cpp:133
+#: actionmanager.cpp:131
 #, kde-format
 msgctxt "@title:window"
 msgid "Hide menu bar"
 msgstr "Ocultació de la barra de menús"
 
-#: actionmanager.cpp:244
+#: actionmanager.cpp:242
 #, kde-format
 msgctxt "@action:inmenu"
 msgid "Import &Calendar…"
 msgstr "Importa un &calendari…"
 
-#: actionmanager.cpp:245
+#: actionmanager.cpp:243
 #, kde-format
 msgctxt "@info:status"
 msgid "Import a calendar"
 msgstr "Importació d'un calendari"
 
-#: actionmanager.cpp:246
+#: actionmanager.cpp:244
 #, kde-format
 msgctxt "@info:tooltip"
 msgid "Import an iCalendar or vCalendar file"
 msgstr "Importa un fitxer iCalendar o vCalendar"
 
-#: actionmanager.cpp:248
+#: actionmanager.cpp:246
 #, kde-format
 msgctxt "@info:whatsthis"
 msgid ""
@@ -378,25 +378,25 @@ msgstr ""
 "Seleccioneu aquesta entrada del menú si voleu importar el contingut d'un "
 "fitxer iCalendar o vCalendar a la col·lecció actual de calendari."
 
-#: actionmanager.cpp:256
+#: actionmanager.cpp:254
 #, kde-format
 msgctxt "@action:inmenu"
 msgid "Export as &iCalendar…"
 msgstr "Exporta com a &iCalendar…"
 
-#: actionmanager.cpp:257
+#: actionmanager.cpp:255
 #, kde-format
 msgctxt "@info:status"
 msgid "Export calendar to file"
 msgstr "Exporta el calendari a un fitxer"
 
-#: actionmanager.cpp:258
+#: actionmanager.cpp:256
 #, kde-format
 msgctxt "@info:tooltip"
 msgid "Export your calendar to an iCalendar file"
 msgstr "Exporta el vostre calendari a un fitxer iCalendar"
 
-#: actionmanager.cpp:259
+#: actionmanager.cpp:257
 #, kde-format
 msgctxt "@info:whatsthis"
 msgid ""
@@ -404,19 +404,19 @@ msgid ""
 msgstr ""
 "Permet exportar tota la vostra col·lecció de calendari a un fitxer iCalendar."
 
-#: actionmanager.cpp:265
+#: actionmanager.cpp:263
 #, kde-format
 msgctxt "@action:inmenu"
 msgid "Archive O&ld Incidences…"
 msgstr "Ar&xiva les incidències antigues…"
 
-#: actionmanager.cpp:266
+#: actionmanager.cpp:264
 #, kde-format
 msgctxt "@info:status"
 msgid "Archive events and to-dos to a file"
 msgstr "Arxiva els esdeveniments i les tasques pendents a un fitxer"
 
-#: actionmanager.cpp:267
+#: actionmanager.cpp:265
 #, kde-format
 msgctxt "@info:tooltip"
 msgid "Archive old events and to-dos to an iCalendar file"
@@ -424,7 +424,7 @@ msgstr ""
 "Arxiva els esdeveniments i les tasques pendents antigues a un fitxer "
 "iCalendar"
 
-#: actionmanager.cpp:269
+#: actionmanager.cpp:267
 #, kde-format
 msgctxt "@info:whatsthis"
 msgid ""
@@ -436,25 +436,25 @@ msgstr ""
 "i tasques pendents antigues que podeu arxivar a un fitxer iCalendar. "
 "S'eliminaran de la col·lecció existent de calendari."
 
-#: actionmanager.cpp:277
+#: actionmanager.cpp:275
 #, kde-format
 msgctxt "@action:inmenu"
 msgid "Pur&ge Completed To-dos"
 msgstr "Nete&ja les tasques pendents finalitzades"
 
-#: actionmanager.cpp:278
+#: actionmanager.cpp:276
 #, kde-format
 msgctxt "@info:status"
 msgid "Purge completed to-dos"
 msgstr "Neteja les tasques pendents finalitzades"
 
-#: actionmanager.cpp:279
+#: actionmanager.cpp:277
 #, kde-format
 msgctxt "@info:tooltip"
 msgid "Remove completed to-dos from your calendar"
 msgstr "Elimina totes les tasques pendents finalitzades del calendari"
 
-#: actionmanager.cpp:281
+#: actionmanager.cpp:279
 #, kde-format
 msgctxt "@info:whatsthis"
 msgid ""
@@ -464,32 +464,32 @@ msgstr ""
 "Permet eliminar totes les tasques pendents finalitzades del calendari de la "
 "col·lecció de calendari. Aquesta acció no es pot desfer!"
 
-#: actionmanager.cpp:318 actionmanager.cpp:617 actionmanager.cpp:1312
-#: actionmanager.cpp:1350
+#: actionmanager.cpp:316 actionmanager.cpp:615 actionmanager.cpp:1310
+#: actionmanager.cpp:1348
 #, kde-format
 msgctxt "@action:inmenu"
 msgid "&Delete"
 msgstr "&Suprimeix"
 
-#: actionmanager.cpp:335
+#: actionmanager.cpp:333
 #, kde-format
 msgctxt "@action:inmenu"
 msgid "What's &Next"
 msgstr "&Què toca ara"
 
-#: actionmanager.cpp:336
+#: actionmanager.cpp:334
 #, kde-format
 msgctxt "@info:status"
 msgid "What's Next View"
 msgstr "Vista «Què toca ara»"
 
-#: actionmanager.cpp:337
+#: actionmanager.cpp:335
 #, kde-format
 msgctxt "@info:tooltip"
 msgid "Switch to the What's Next View"
 msgstr "Canvia a la vista «Què toca ara»"
 
-#: actionmanager.cpp:339
+#: actionmanager.cpp:337
 #, kde-format
 msgctxt "@info:whatsthis"
 msgid ""
@@ -504,25 +504,25 @@ msgstr ""
 "esdeveniments dels dies seleccionats al navegador de dates de la barra "
 "lateral."
 
-#: actionmanager.cpp:347
+#: actionmanager.cpp:345
 #, kde-format
 msgctxt "@action:inmenu"
 msgid "&Month"
 msgstr "&Mes"
 
-#: actionmanager.cpp:348
+#: actionmanager.cpp:346
 #, kde-format
 msgctxt "@info:status"
 msgid "Month View"
 msgstr "Vista mensual"
 
-#: actionmanager.cpp:349
+#: actionmanager.cpp:347
 #, kde-format
 msgctxt "@info:tooltip"
 msgid "Switch to the Month View"
 msgstr "Canvia a la vista mensual"
 
-#: actionmanager.cpp:351
+#: actionmanager.cpp:349
 #, kde-format
 msgctxt "@info:whatsthis"
 msgid ""
@@ -532,25 +532,25 @@ msgstr ""
 "Canvia a la vista mensual, la qual mostra tots els esdeveniments i tasques "
 "pendents vençudes en una disposició familiar mensual de calendari."
 
-#: actionmanager.cpp:357
+#: actionmanager.cpp:355
 #, kde-format
 msgctxt "@action:inmenu"
 msgid "&Agenda"
 msgstr "&Agenda"
 
-#: actionmanager.cpp:360
+#: actionmanager.cpp:358
 #, kde-format
 msgctxt "@info:status"
 msgid "Agenda View"
 msgstr "Vista d'agenda"
 
-#: actionmanager.cpp:361
+#: actionmanager.cpp:359
 #, kde-format
 msgctxt "@info:tooltip"
 msgid "Switch to the Agenda View"
 msgstr "Canvia a la vista d'agenda"
 
-#: actionmanager.cpp:363
+#: actionmanager.cpp:361
 #, kde-format
 msgctxt "@info:whatsthis"
 msgid ""
@@ -562,25 +562,25 @@ msgstr ""
 "pendents vençudes d'un o més dies, ordenats cronològicament. També es pot "
 "veure la durada de cada esdeveniment a la taula horària del dia."
 
-#: actionmanager.cpp:370
+#: actionmanager.cpp:368
 #, kde-format
 msgctxt "@action:inmenu"
 msgid "&Event List"
 msgstr "Llista d'&esdeveniments"
 
-#: actionmanager.cpp:371
+#: actionmanager.cpp:369
 #, kde-format
 msgctxt "@info:status"
 msgid "List View"
 msgstr "Vista de llista"
 
-#: actionmanager.cpp:372
+#: actionmanager.cpp:370
 #, kde-format
 msgctxt "@info:tooltip"
 msgid "Switch to the List View"
 msgstr "Canvia a la vista de llista"
 
-#: actionmanager.cpp:374
+#: actionmanager.cpp:372
 #, kde-format
 msgctxt "@info:whatsthis"
 msgid ""
@@ -591,25 +591,25 @@ msgstr ""
 "pendents, els esdeveniments i entrades del diari per a les dates "
 "seleccionades al navegador de dates."
 
-#: actionmanager.cpp:380
+#: actionmanager.cpp:378
 #, kde-format
 msgctxt "@action:inmenu"
 msgid "&To-do List"
 msgstr "Llista de &tasques pendents"
 
-#: actionmanager.cpp:381
+#: actionmanager.cpp:379
 #, kde-format
 msgctxt "@info:status"
 msgid "To-do List View"
 msgstr "Vista de llista de tasques pendents"
 
-#: actionmanager.cpp:382
+#: actionmanager.cpp:380
 #, kde-format
 msgctxt "@info:tooltip"
 msgid "Switch to the To-do List View"
 msgstr "Canvia a la vista de la llista de tasques pendents"
 
-#: actionmanager.cpp:384
+#: actionmanager.cpp:382
 #, kde-format
 msgctxt "@info:whatsthis"
 msgid ""
@@ -619,25 +619,25 @@ msgstr ""
 "Canvia a la vista de llista de tasques pendents, que proporciona un lloc per "
 "a seguir les tasques que cal fer."
 
-#: actionmanager.cpp:390
+#: actionmanager.cpp:388
 #, kde-format
 msgctxt "@action:inmenu"
 msgid "&Journal"
 msgstr "D&iari"
 
-#: actionmanager.cpp:391
+#: actionmanager.cpp:389
 #, kde-format
 msgctxt "@info:status"
 msgid "Journal View"
 msgstr "La vista Diari"
 
-#: actionmanager.cpp:392
+#: actionmanager.cpp:390
 #, kde-format
 msgctxt "@info:tooltip"
 msgid "Switch to the Journal View"
 msgstr "Canvia a la vista de diari"
 
-#: actionmanager.cpp:394
+#: actionmanager.cpp:392
 #, kde-format
 msgctxt "@info:whatsthis"
 msgid ""
@@ -647,25 +647,25 @@ msgstr ""
 "Canvia a la vista de diari, la qual proporciona lloc en el qual registrar "
 "les reflexions, casos o experiències."
 
-#: actionmanager.cpp:400
+#: actionmanager.cpp:398
 #, kde-format
 msgctxt "@action:inmenu"
 msgid "Time&line"
 msgstr "&Línia de temps"
 
-#: actionmanager.cpp:401
+#: actionmanager.cpp:399
 #, kde-format
 msgctxt "@info:status"
 msgid "Timeline View"
 msgstr "La vista Línia de temps"
 
-#: actionmanager.cpp:402
+#: actionmanager.cpp:400
 #, kde-format
 msgctxt "@info:tooltip"
 msgid "Switch to the Timeline View"
 msgstr "Canvia a la vista de línia de temps"
 
-#: actionmanager.cpp:404
+#: actionmanager.cpp:402
 #, kde-format
 msgctxt "@info:whatsthis"
 msgid ""
@@ -676,25 +676,25 @@ msgstr ""
 "per a l'interval de temps seleccionat en un diagrama de Gantt. Cada "
 "calendari es visualitza en una línia separada."
 
-#: actionmanager.cpp:413
+#: actionmanager.cpp:411
 #, kde-format
 msgctxt "@action:inmenu"
 msgid "&Refresh"
 msgstr "Actualit&za"
 
-#: actionmanager.cpp:414
+#: actionmanager.cpp:412
 #, kde-format
 msgctxt "@info:status"
 msgid "Refresh"
 msgstr "Actualitza"
 
-#: actionmanager.cpp:415
+#: actionmanager.cpp:413
 #, kde-format
 msgctxt "@info:tooltip"
 msgid "Refresh the display"
 msgstr "Actualitza la pantalla"
 
-#: actionmanager.cpp:417
+#: actionmanager.cpp:415
 #, kde-format
 msgctxt "@info:whatsthis"
 msgid ""
@@ -704,25 +704,25 @@ msgstr ""
 "Aquesta acció actualitzarà i redibuixarà la vista actual del calendari. No "
 "sincronitza ni actualitza cap carpeta de calendari."
 
-#: actionmanager.cpp:426
+#: actionmanager.cpp:424
 #, kde-format
 msgctxt "@action:inmenu"
 msgid "F&ilter"
 msgstr "F&iltre"
 
-#: actionmanager.cpp:427
+#: actionmanager.cpp:425
 #, kde-format
 msgctxt "@info:status"
 msgid "Filter incidences"
 msgstr "Filtra les incidències"
 
-#: actionmanager.cpp:428
+#: actionmanager.cpp:426
 #, kde-format
 msgctxt "@info:tooltip"
 msgid "Filter incidences from the calendar"
 msgstr "Filtra les incidències del calendari"
 
-#: actionmanager.cpp:430
+#: actionmanager.cpp:428
 #, kde-format
 msgctxt "@info:whatsthis"
 msgid ""
@@ -733,85 +733,85 @@ msgstr ""
 "Primer cal crear els filtres. Vegeu l'opció «Gestiona els filtres de vista» "
 "al menú Arranjament."
 
-#: actionmanager.cpp:442
+#: actionmanager.cpp:440
 #, kde-format
 msgctxt "@action:inmenu"
 msgid "In Horizontally"
 msgstr "Apropa horitzontalment"
 
-#: actionmanager.cpp:447
+#: actionmanager.cpp:445
 #, kde-format
 msgctxt "@action:inmenu"
 msgid "Out Horizontally"
 msgstr "Allunya horitzontalment"
 
-#: actionmanager.cpp:452
+#: actionmanager.cpp:450
 #, kde-format
 msgctxt "@action:inmenu"
 msgid "In Vertically"
 msgstr "Apropa verticalment"
 
-#: actionmanager.cpp:457
+#: actionmanager.cpp:455
 #, kde-format
 msgctxt "@action:inmenu"
 msgid "Out Vertically"
 msgstr "Allunya verticalment"
 
-#: actionmanager.cpp:466
+#: actionmanager.cpp:464
 #, kde-format
 msgctxt "@action:inmenu Jump to today"
 msgid "To &Today"
 msgstr "A a&vui"
 
-#: actionmanager.cpp:467
+#: actionmanager.cpp:465
 #, kde-format
 msgctxt "@action:button"
 msgid "Today"
 msgstr "Avui"
 
-#: actionmanager.cpp:468
+#: actionmanager.cpp:466
 #, kde-format
 msgctxt "@info:status"
 msgid "Scroll to Today"
 msgstr "Ves a avui"
 
-#: actionmanager.cpp:469
+#: actionmanager.cpp:467
 #, kde-format
 msgctxt "@info:tooltip"
 msgid "Scroll the view to today"
 msgstr "Desplaça la vista a avui"
 
-#: actionmanager.cpp:470
+#: actionmanager.cpp:468
 #, kde-format
 msgctxt "@info:whatsthis"
 msgid "Scrolls the current view to the today's date."
 msgstr "Desplaça la vista actual fins a la data d'avui."
 
-#: actionmanager.cpp:476
+#: actionmanager.cpp:474
 #, kde-format
 msgctxt "@action:inmenu scroll backward"
 msgid "&Backward"
 msgstr "&Enrere"
 
-#: actionmanager.cpp:478
+#: actionmanager.cpp:476
 #, kde-format
 msgctxt "@action:button scroll backward"
 msgid "Back"
 msgstr "Enrere"
 
-#: actionmanager.cpp:479
+#: actionmanager.cpp:477
 #, kde-format
 msgctxt "@info:status"
 msgid "Scroll Backward"
 msgstr "Ves enrere"
 
-#: actionmanager.cpp:480
+#: actionmanager.cpp:478
 #, kde-format
 msgctxt "@info:tooltip"
 msgid "Scroll the view backward"
 msgstr "Desplaça la vista cap enrere"
 
-#: actionmanager.cpp:482
+#: actionmanager.cpp:480
 #, kde-format
 msgctxt "@info:whatsthis"
 msgid ""
@@ -821,31 +821,31 @@ msgstr ""
 "Desplaça la vista cap enrere en un dia, setmana, mes o any, en funció de la "
 "vista actual de calendari."
 
-#: actionmanager.cpp:489
+#: actionmanager.cpp:487
 #, kde-format
 msgctxt "@action:inmenu scroll forward"
 msgid "&Forward"
 msgstr "En&davant"
 
-#: actionmanager.cpp:491
+#: actionmanager.cpp:489
 #, kde-format
 msgctxt "@action:button scroll forward"
 msgid "Forward"
 msgstr "Endavant"
 
-#: actionmanager.cpp:492
+#: actionmanager.cpp:490
 #, kde-format
 msgctxt "@info:status"
 msgid "Scroll Forward"
 msgstr "Ves endavant"
 
-#: actionmanager.cpp:493
+#: actionmanager.cpp:491
 #, kde-format
 msgctxt "@info:tooltip"
 msgid "Scroll the view forward"
 msgstr "Desplaça la vista cap endavant"
 
-#: actionmanager.cpp:495
+#: actionmanager.cpp:493
 #, kde-format
 msgctxt "@info:whatsthis"
 msgid ""
@@ -855,57 +855,57 @@ msgstr ""
 "Desplaça la vista cap endavant en un dia, setmana, mes o any, en funció de "
 "la vista actual de calendari."
 
-#: actionmanager.cpp:501
+#: actionmanager.cpp:499
 #, kde-format
 msgctxt "@action:inmenu"
 msgid "&Day"
 msgstr "&Dia"
 
-#: actionmanager.cpp:502
+#: actionmanager.cpp:500
 #, kde-format
 msgctxt "@action:inmenu agenda view show 1 day at a time"
 msgid "Day"
 msgstr "Dia"
 
-#: actionmanager.cpp:503
+#: actionmanager.cpp:501
 #, kde-format
 msgctxt "@info:status"
 msgid "View 1 day at a time"
 msgstr "Vista d'1 dia individual"
 
-#: actionmanager.cpp:504
+#: actionmanager.cpp:502
 #, kde-format
 msgctxt "@info:tooltip"
 msgid "Show 1 day at a time in Agenda View"
 msgstr "Mostra 1 dia individual a la vista d'agenda"
 
-#: actionmanager.cpp:505
+#: actionmanager.cpp:503
 #, kde-format
 msgctxt "@info:whatsthis"
 msgid "Select this option to show only 1 day at a time in Agenda View."
 msgstr ""
 "Seleccioneu aquesta opció per a mostrar 1 dia individual a la vista d'agenda."
 
-#: actionmanager.cpp:512
+#: actionmanager.cpp:510
 #, kde-format
 msgctxt "@action:inmenu agenda view show a few days at a time"
 msgid "&Next Days"
 msgstr "Dies següe&nts"
 
-#: actionmanager.cpp:513
+#: actionmanager.cpp:511
 #, kde-format
 msgctxt "@info:status"
 msgid "View a few days at a time"
 msgstr "Vista d'alguns dies a la vegada"
 
-#: actionmanager.cpp:514
+#: actionmanager.cpp:512
 #, kde-format
 msgctxt "@info:tooltip"
 msgid "Show the next few days at a time in Agenda View"
 msgstr "Mostra alguns dies següents a la vegada a la vista d'agenda"
 
 # skip-rule: common-settings
-#: actionmanager.cpp:517
+#: actionmanager.cpp:515
 #, kde-kuit-format
 msgctxt "@info:whatsthis"
 msgid ""
@@ -919,13 +919,13 @@ msgstr ""
 "pàgina <interface>Vistes->General</interface> per a ajustar el nombre de "
 "dies mostrats."
 
-#: actionmanager.cpp:524
+#: actionmanager.cpp:522
 #, kde-format
 msgctxt "@action:inmenu"
 msgid "W&eek Schedule"
 msgstr "Planificació s&etmanal"
 
-#: actionmanager.cpp:525
+#: actionmanager.cpp:523
 #, kde-format
 msgctxt ""
 "@action:inmenu agenda view show the weekly schedule days only (eg. no "
@@ -933,7 +933,7 @@ msgctxt ""
 msgid "Week Schedule"
 msgstr "Planificació setmanal"
 
-#: actionmanager.cpp:526
+#: actionmanager.cpp:524
 #, kde-format
 msgctxt "@info:status"
 msgid ""
@@ -942,7 +942,7 @@ msgstr ""
 "Mostra una setmana individual mostrant els dies inclosos només en la vostra "
 "planificació setmanal"
 
-#: actionmanager.cpp:528
+#: actionmanager.cpp:526
 #, kde-format
 msgctxt "@info:tooltip"
 msgid ""
@@ -953,7 +953,7 @@ msgstr ""
 "estan inclosos en la vostra planificació setmanal (és a dir, els caps de "
 "setmana estan exclosos)"
 
-#: actionmanager.cpp:531
+#: actionmanager.cpp:529
 #, kde-kuit-format
 msgctxt "@info:whatsthis"
 msgid ""
@@ -970,31 +970,31 @@ msgstr ""
 "i hora->Regional</interface>.<para>Normalment aquesta vista està destinada a "
 "mostrar la setmana sense els dies del cap de setmana.</para>"
 
-#: actionmanager.cpp:540
+#: actionmanager.cpp:538
 #, kde-format
 msgctxt "@action:inmenu"
 msgid "&Week"
 msgstr "&Setmana"
 
-#: actionmanager.cpp:541
+#: actionmanager.cpp:539
 #, kde-format
 msgctxt "@action:inmenu agenda view show a week at a time"
 msgid "Week"
 msgstr "Setmana"
 
-#: actionmanager.cpp:542
+#: actionmanager.cpp:540
 #, kde-format
 msgctxt "@info:status"
 msgid "View a week at a time"
 msgstr "Vista d'una setmana individual"
 
-#: actionmanager.cpp:543
+#: actionmanager.cpp:541
 #, kde-format
 msgctxt "@info:tooltip"
 msgid "Show 1 week at a time in Agenda View"
 msgstr "Mostra una setmana individual a la vista d'agenda"
 
-#: actionmanager.cpp:544
+#: actionmanager.cpp:542
 #, kde-format
 msgctxt "@info:whatsthis"
 msgid "Select this option to show a week at a time in Agenda View."
@@ -1002,25 +1002,25 @@ msgstr ""
 "Seleccioneu aquesta opció per a mostrar una setmana individual a la vista "
 "d'agenda."
 
-#: actionmanager.cpp:551
+#: actionmanager.cpp:549
 #, kde-format
 msgctxt "@action:inmenu"
 msgid "New E&vent…"
 msgstr "Esde&veniment nou…"
 
-#: actionmanager.cpp:552
+#: actionmanager.cpp:550
 #, kde-format
 msgctxt "@info:status"
 msgid "Create a new Event"
 msgstr "Crea un esdeveniment nou"
 
-#: actionmanager.cpp:553
+#: actionmanager.cpp:551
 #, kde-format
 msgctxt "@info:tooltip"
 msgid "Create a new Event"
 msgstr "Crea un esdeveniment nou"
 
-#: actionmanager.cpp:555
+#: actionmanager.cpp:553
 #, kde-format
 msgctxt "@info:whatsthis"
 msgid ""
@@ -1030,25 +1030,25 @@ msgstr ""
 "Inicia un diàleg que permet crear un esdeveniment nou amb recordatoris, "
 "assistents, repeticions i molt més."
 
-#: actionmanager.cpp:561
+#: actionmanager.cpp:559
 #, kde-format
 msgctxt "@action:inmenu"
 msgid "New &To-do…"
 msgstr "&Tasca pendent nova…"
 
-#: actionmanager.cpp:562
+#: actionmanager.cpp:560
 #, kde-format
 msgctxt "@info:status"
 msgid "Create a new To-do"
 msgstr "Crea una tasca pendent nova"
 
-#: actionmanager.cpp:563
+#: actionmanager.cpp:561
 #, kde-format
 msgctxt "@info:tooltip"
 msgid "Create a new To-do"
 msgstr "Crea una tasca pendent nova"
 
-#: actionmanager.cpp:565
+#: actionmanager.cpp:563
 #, kde-format
 msgctxt "@info:whatsthis"
 msgid ""
@@ -1058,92 +1058,92 @@ msgstr ""
 "Inicia un diàleg que permet crear una tasca pendent nova amb recordatoris, "
 "assistents, repeticions i molt més."
 
-#: actionmanager.cpp:572
+#: actionmanager.cpp:570
 #, kde-format
 msgctxt "@action:inmenu"
 msgid "New Su&b-to-do…"
 msgstr "Su&btasca pendent nova…"
 
-#: actionmanager.cpp:580
+#: actionmanager.cpp:578
 #, kde-format
 msgctxt "@action:inmenu"
 msgid "New &Journal…"
 msgstr "D&iari nou…"
 
-#: actionmanager.cpp:581
+#: actionmanager.cpp:579
 #, kde-format
 msgctxt "@info:status"
 msgid "Create a new Journal"
 msgstr "Crea un diari nou"
 
-#: actionmanager.cpp:582
+#: actionmanager.cpp:580
 #, kde-format
 msgctxt "@info:tooltip"
 msgid "Create a new Journal"
 msgstr "Crea un diari nou"
 
-#: actionmanager.cpp:583
+#: actionmanager.cpp:581
 #, kde-format
 msgctxt "@info:whatsthis"
 msgid "Starts a dialog that allows you to create a new Journal entry."
 msgstr "Inicia un diàleg que permet crear una entrada nova del diari."
 
-#: actionmanager.cpp:588
+#: actionmanager.cpp:586
 #, kde-format
 msgctxt "@action:inmenu Jump to date"
 msgid "&Pick a Date"
 msgstr "&Trieu una data"
 
-#: actionmanager.cpp:589
+#: actionmanager.cpp:587
 #, kde-format
 msgctxt "@action:button"
 msgid "Date"
 msgstr "Data"
 
-#: actionmanager.cpp:590
+#: actionmanager.cpp:588
 #, kde-format
 msgctxt "@info:status"
 msgid "Scroll the view to user selected dates"
 msgstr "Desplaça la vista a les dates seleccionades per l'usuari"
 
-#: actionmanager.cpp:591
+#: actionmanager.cpp:589
 #, kde-format
 msgctxt "@info:tooltip"
 msgid "Scroll the view to user selected dates"
 msgstr "Desplaça la vista a les dates seleccionades per l'usuari"
 
-#: actionmanager.cpp:592
+#: actionmanager.cpp:590
 #, kde-format
 msgctxt "@info:whatsthis"
 msgid "Opens a date selection dialog for quickly navigating the view."
 msgstr ""
 "Obre un diàleg de selecció de dates per a navegar ràpidament per la vista."
 
-#: actionmanager.cpp:597
+#: actionmanager.cpp:595
 #, kde-format
 msgctxt "@action:inmenu"
 msgid "Configure View…"
 msgstr "Configura la vista…"
 
-#: actionmanager.cpp:598
+#: actionmanager.cpp:596
 #, kde-format
 msgctxt "@action:button"
 msgid "Configure"
 msgstr "Configura"
 
-#: actionmanager.cpp:599
+#: actionmanager.cpp:597
 #, kde-format
 msgctxt "@info:status"
 msgid "Configure the multi-calendar view"
 msgstr "Configura la vista multicalendari"
 
-#: actionmanager.cpp:600
+#: actionmanager.cpp:598
 #, kde-format
 msgctxt "@info:tooltip"
 msgid "Configure the multi-calendar view"
 msgstr "Configura la vista multicalendari"
 
-#: actionmanager.cpp:602
+#: actionmanager.cpp:600
 #, kde-format
 msgctxt "@info:whatsthis"
 msgid ""
@@ -1155,21 +1155,21 @@ msgstr ""
 "vista. Actualment només s'admet la vista multicalendari. Vegeu les opcions "
 "de múltiples calendaris a la configuració Vistes->Vistes d'agenda."
 
-#: actionmanager.cpp:609 actionmanager.cpp:1306 actionmanager.cpp:1348
+#: actionmanager.cpp:607 actionmanager.cpp:1304 actionmanager.cpp:1346
 #: koeventpopupmenu.cpp:42
 #, kde-format
 msgctxt "@action:inmenu"
 msgid "&Show"
 msgstr "&Mostra"
 
-#: actionmanager.cpp:613 actionmanager.cpp:1309 actionmanager.cpp:1349
+#: actionmanager.cpp:611 actionmanager.cpp:1307 actionmanager.cpp:1347
 #: koeventpopupmenu.cpp:44
 #, kde-format
 msgctxt "@action:inmenu"
 msgid "&Edit…"
 msgstr "E&dita…"
 
-#: actionmanager.cpp:622
+#: actionmanager.cpp:620
 #, kde-format
 msgctxt "@action:inmenu"
 msgid "&Make Sub-to-do Independent"
@@ -1179,121 +1179,121 @@ msgstr "&Fes independent la subtasca pendent"
 #. mCalendarView, SLOT(toggleAlarm()),
 #. mACollection, "activate_alarm" );
 #. ************************* SCHEDULE MENU *******************************
-#: actionmanager.cpp:634
+#: actionmanager.cpp:632
 #, kde-format
 msgctxt "@action:inmenu"
 msgid "&Publish Item Information…"
 msgstr "&Publica la informació de l'element…"
 
-#: actionmanager.cpp:641
+#: actionmanager.cpp:639
 #, kde-format
 msgctxt "@action:inmenu"
 msgid "Send &Invitation to Attendees"
 msgstr "Envia una &invitació als assistents"
 
-#: actionmanager.cpp:649
+#: actionmanager.cpp:647
 #, kde-format
 msgctxt "@action:inmenu"
 msgid "Re&quest Update"
 msgstr "&Petició d'actualització"
 
-#: actionmanager.cpp:657
+#: actionmanager.cpp:655
 #, kde-format
 msgctxt "@action:inmenu"
 msgid "Send &Cancellation to Attendees"
 msgstr "Envia la &cancel·lació als assistents"
 
-#: actionmanager.cpp:665
+#: actionmanager.cpp:663
 #, kde-format
 msgctxt "@action:inmenu"
 msgid "Send Status &Update"
 msgstr "Envia una act&ualització de l'estat"
 
-#: actionmanager.cpp:673
+#: actionmanager.cpp:671
 #, kde-format
 msgctxt "@action:inmenu counter proposal"
 msgid "Request Chan&ge"
 msgstr "Petició de can&vi"
 
-#: actionmanager.cpp:681
+#: actionmanager.cpp:679
 #, kde-format
 msgctxt "@action:inmenu"
 msgid "&Mail Free Busy Information…"
 msgstr "En&via per correu la informació de lliure/ocupat…"
 
-#: actionmanager.cpp:686
+#: actionmanager.cpp:684
 #, kde-format
 msgctxt "@action:inmenu"
 msgid "&Send as iCalendar…"
 msgstr "&Envia com a iCalendar…"
 
-#: actionmanager.cpp:693
+#: actionmanager.cpp:691
 #, kde-format
 msgctxt "@action:inmenu"
 msgid "&Upload Free Busy Information"
 msgstr "P&uja la informació de lliure/ocupat"
 
-#: actionmanager.cpp:699
+#: actionmanager.cpp:697
 #, kde-format
 msgctxt "@action:inmenu"
 msgid "&Address Book"
 msgstr "Llibreta d'&adreces"
 
-#: actionmanager.cpp:707
+#: actionmanager.cpp:705
 #, kde-format
 msgctxt "@action:inmenu"
 msgid "Show Date Navigator"
 msgstr "Mostra el navegador de dates"
 
-#: actionmanager.cpp:711
+#: actionmanager.cpp:709
 #, kde-format
 msgctxt "@action:inmenu"
 msgid "Show To-do View"
 msgstr "Mostra la vista de les tasques pendents"
 
-#: actionmanager.cpp:715
+#: actionmanager.cpp:713
 #, kde-format
 msgctxt "@action:inmenu"
 msgid "Show Item Viewer"
 msgstr "Mostra el visualitzador d'elements"
 
-#: actionmanager.cpp:731
+#: actionmanager.cpp:729
 #, kde-format
 msgctxt "@action:inmenu"
 msgid "Show Calendar Manager"
 msgstr "Mostra el gestor de calendaris"
 
-#: actionmanager.cpp:745
+#: actionmanager.cpp:743
 #, kde-format
 msgctxt "@action:inmenu"
 msgid "Configure &Date && Time…"
 msgstr "Configura la &data i l'hora…"
 
-#: actionmanager.cpp:749
+#: actionmanager.cpp:747
 #, kde-format
 msgctxt "@action:inmenu"
 msgid "Manage View &Filters…"
 msgstr "Gestiona els &filtres de vista…"
 
-#: actionmanager.cpp:753
+#: actionmanager.cpp:751
 #, kde-format
 msgctxt "@action:inmenu"
 msgid "Manage T&ags…"
 msgstr "Gestiona &les etiquetes…"
 
-#: actionmanager.cpp:760
+#: actionmanager.cpp:758
 #, kde-format
 msgctxt "@action:inmenu"
 msgid "What's new"
 msgstr "Què hi ha de nou"
 
-#: actionmanager.cpp:765
+#: actionmanager.cpp:763
 #, kde-format
 msgctxt "@action:inmenu"
 msgid "&Configure KOrganizer…"
 msgstr "&Configura el KOrganizer…"
 
-#: actionmanager.cpp:843
+#: actionmanager.cpp:841
 #, kde-format
 msgctxt "@info"
 msgid "1 incidence was imported successfully."
@@ -1301,67 +1301,67 @@ msgid_plural "%1 incidences were imported successfully."
 msgstr[0] "S'ha importat amb èxit una incidència."
 msgstr[1] "S'han importat amb èxit %1 incidències."
 
-#: actionmanager.cpp:846
+#: actionmanager.cpp:844
 #, kde-kuit-format
 msgctxt "@info"
 msgid "There was an error while merging the calendar: <message>%1</message>"
 msgstr "S'ha produït un error en fusionar el calendari: <message>%1</message>"
 
-#: actionmanager.cpp:858
+#: actionmanager.cpp:856
 #, kde-format
 msgctxt "@info"
 msgid "New calendar added successfully"
 msgstr "El calendari nou s'ha afegit amb èxit"
 
-#: actionmanager.cpp:860
+#: actionmanager.cpp:858
 #, kde-kuit-format
 msgctxt "@info"
 msgid "Could not add a calendar. Error: <message>%1</message>"
 msgstr "No s'ha pogut carregar un calendari. Error: <message>%1</message>"
 
-#: actionmanager.cpp:917
+#: actionmanager.cpp:915
 #, kde-format
 msgctxt "@title:window"
 msgid "Select Calendar File to Open"
 msgstr "Selecció del fitxer de calendari a obrir"
 
-#: actionmanager.cpp:953
+#: actionmanager.cpp:951
 #, kde-format
 msgctxt "@title:window"
 msgid "Select Calendar File to Import"
 msgstr "Selecció del fitxer de calendari a importar"
 
-#: actionmanager.cpp:985
+#: actionmanager.cpp:983
 #, kde-kuit-format
 msgctxt "@info"
 msgid "An error occurred: <message>%1 (url: %2)</message>"
 msgstr "S'ha detectat un error: <message>%1 (URL: %2)</message>"
 
-#: actionmanager.cpp:1004
+#: actionmanager.cpp:1002
 #, kde-kuit-format
 msgctxt "@info"
 msgid "Cannot upload calendar to <filename>%1</filename>"
 msgstr "No es pot pujar el calendari a <filename>%1</filename>"
 
-#: actionmanager.cpp:1010
+#: actionmanager.cpp:1008
 #, kde-kuit-format
 msgctxt "@info"
 msgid "Saved calendar <filename>%1</filename>"
 msgstr "El calendari <filename>%1</filename> s'ha desat"
 
-#: actionmanager.cpp:1053
+#: actionmanager.cpp:1051
 #, kde-kuit-format
 msgctxt "@info"
 msgid "Unable to save calendar to the file <filename>%1</filename>"
 msgstr "No s'ha pogut desar el calendari al fitxer <filename>%1</filename>"
 
-#: actionmanager.cpp:1054
+#: actionmanager.cpp:1052
 #, kde-format
 msgctxt "@title:window"
 msgid "Error"
 msgstr "Error"
 
-#: actionmanager.cpp:1080
+#: actionmanager.cpp:1078
 #, kde-format
 msgctxt "@action:inmenu"
 msgid "&Next Day"
@@ -1369,122 +1369,122 @@ msgid_plural "&Next %1 Days"
 msgstr[0] "Dia següe&nt"
 msgstr[1] "%1 dies següe&nts"
 
-#: actionmanager.cpp:1093
+#: actionmanager.cpp:1091
 #, kde-format
 msgctxt "@info"
 msgid "Could not start control module for date and time format."
 msgstr ""
 "No s'ha pogut iniciar el mòdul de control per al format de la data i l'hora."
 
-#: actionmanager.cpp:1268
+#: actionmanager.cpp:1266
 #, kde-format
 msgctxt "@action:inmenu"
 msgid "&Show Event"
 msgstr "&Mostra l'esdeveniment"
 
-#: actionmanager.cpp:1271
+#: actionmanager.cpp:1269
 #, kde-format
 msgctxt "@action:inmenu"
 msgid "&Edit Event…"
 msgstr "&Edita l'esdeveniment…"
 
-#: actionmanager.cpp:1274
+#: actionmanager.cpp:1272
 #, kde-format
 msgctxt "@action:inmenu"
 msgid "&Delete Event"
 msgstr "&Suprimeix l'esdeveniment"
 
-#: actionmanager.cpp:1282
+#: actionmanager.cpp:1280
 #, kde-format
 msgctxt "@action:inmenu"
 msgid "&Show To-do"
 msgstr "&Mostra la tasca pendent"
 
-#: actionmanager.cpp:1285
+#: actionmanager.cpp:1283
 #, kde-format
 msgctxt "@action:inmenu"
 msgid "&Edit To-do…"
 msgstr "&Edita la tasca pendent…"
 
-#: actionmanager.cpp:1288
+#: actionmanager.cpp:1286
 #, kde-format
 msgctxt "@action:inmenu"
 msgid "&Delete To-do"
 msgstr "&Suprimeix la tasca pendent"
 
-#: actionmanager.cpp:1431 actionmanager.cpp:1535
+#: actionmanager.cpp:1429 actionmanager.cpp:1533
 #, kde-format
 msgctxt "@action:inmenu"
 msgid "Attach as &link"
 msgstr "Adjunta com a en&llaç"
 
-#: actionmanager.cpp:1432 actionmanager.cpp:1536
+#: actionmanager.cpp:1430 actionmanager.cpp:1534
 #, kde-format
 msgctxt "@action:inmenu"
 msgid "Attach &inline"
 msgstr "Adjunta &inclòs"
 
-#: actionmanager.cpp:1433
+#: actionmanager.cpp:1431
 #, kde-format
 msgctxt "@action:inmenu"
 msgid "Attach inline &without attachments"
 msgstr "Adjunta inclòs &sense fitxers adjunts"
 
-#: actionmanager.cpp:1435 actionmanager.cpp:1538
+#: actionmanager.cpp:1433 actionmanager.cpp:1536
 #, kde-format
 msgctxt "@action:inmenu"
 msgid "C&ancel"
 msgstr "C&ancel·la"
 
-#: actionmanager.cpp:1473
+#: actionmanager.cpp:1471
 #, kde-format
 msgctxt "@info"
 msgid "Removing attachments from an email might invalidate its signature."
 msgstr "L'eliminació d'adjunts d'un correu pot invalidar la seva signatura."
 
-#: actionmanager.cpp:1474
+#: actionmanager.cpp:1472
 #, kde-format
 msgctxt "@title:window"
 msgid "Remove Attachments"
 msgstr "Elimina els adjunts"
 
-#: actionmanager.cpp:1623
+#: actionmanager.cpp:1621
 #, kde-format
 msgctxt "@action:inmenu"
 msgid "Undo: %1"
 msgstr "Desfés: %1"
 
-#: actionmanager.cpp:1626
+#: actionmanager.cpp:1624
 #, kde-format
 msgctxt "@action:inmenu"
 msgid "Undo"
 msgstr "Desfés"
 
-#: actionmanager.cpp:1636
+#: actionmanager.cpp:1634
 #, kde-format
 msgctxt "@action:inmenu"
 msgid "Redo: %1"
 msgstr "Refés: %1"
 
-#: actionmanager.cpp:1639
+#: actionmanager.cpp:1637
 #, kde-format
 msgctxt "@action:inmenu"
 msgid "Redo"
 msgstr "Refés"
 
-#: actionmanager.cpp:1642
+#: actionmanager.cpp:1640
 #, kde-format
 msgctxt "@action:button"
 msgid "Undo"
 msgstr "Desfés"
 
-#: actionmanager.cpp:1653
+#: actionmanager.cpp:1651
 #, kde-kuit-format
 msgctxt "@info"
 msgid "URL <filename>%1</filename> is invalid."
 msgstr "L'URL <filename>%1</filename> no és vàlid."
 
-#: actionmanager.cpp:1658
+#: actionmanager.cpp:1656
 #, kde-kuit-format
 msgctxt "@info"
 msgid ""
@@ -1500,74 +1500,74 @@ msgstr ""
 "para><para>Si seleccioneu afegir, llavors es crearà automàticament un "
 "calendari nou.</para>"
 
-#: actionmanager.cpp:1666
+#: actionmanager.cpp:1664
 #, kde-format
 msgctxt "@title:window"
 msgid "Import Calendar"
 msgstr "Importació d'un calendari"
 
-#: actionmanager.cpp:1667
+#: actionmanager.cpp:1665
 #, kde-format
 msgctxt "@action:button"
 msgid "Merge into existing calendar"
 msgstr "Barreja amb el calendari existent"
 
-#: actionmanager.cpp:1668
+#: actionmanager.cpp:1666
 #, kde-format
 msgctxt "@action:button"
 msgid "Add as new calendar"
 msgstr "Afegeix com a calendari nou"
 
-#: akonadicollectionview.cpp:289
+#: akonadicollectionview.cpp:290
 #, kde-format
 msgctxt "@item this calendar is offline"
 msgid "%1 (Offline)"
 msgstr "%1 (desconnectat)"
 
-#: akonadicollectionview.cpp:292
+#: akonadicollectionview.cpp:293
 #, kde-format
 msgctxt "@item this is the default calendar"
 msgid "%1 (Default)"
 msgstr "%1 (Predeterminat)"
 
-#: akonadicollectionview.cpp:383
+#: akonadicollectionview.cpp:384
 #, kde-format
 msgctxt "@info:tooltip"
 msgid "Calendar search"
 msgstr "Cerca del calendari"
 
-#: akonadicollectionview.cpp:384
+#: akonadicollectionview.cpp:385
 #, kde-format
 msgctxt "@info:whatsthis"
 msgid "Start typing to search for a calendar within the collection."
 msgstr "Comenceu a escriure per a cercar un calendari dins de la col·lecció."
 
-#: akonadicollectionview.cpp:386
+#: akonadicollectionview.cpp:387
 #, kde-format
 msgctxt ""
 "@info/plain Displayed grayed-out inside the textbox, calendar to search"
 msgid "Search for calendar…"
 msgstr "Cerca de calendari…"
 
-#: akonadicollectionview.cpp:472 manageshowcollectionproperties.cpp:76
+#: akonadicollectionview.cpp:473 manageshowcollectionproperties.cpp:76
 #, kde-format
 msgctxt "@title:window"
 msgid "Properties of Calendar Folder %1"
 msgstr "Propietats de la carpeta de calendari %1"
 
-#: akonadicollectionview.cpp:484
+#: akonadicollectionview.cpp:485
 #, kde-format
 msgctxt "@action:inmenu"
 msgid "&Set Folder Color…"
 msgstr "E&stableix el color de la carpeta…"
 
-#: akonadicollectionview.cpp:490
+#: akonadicollectionview.cpp:491
 #, kde-format
 msgctxt "@action:inmenu"
 msgid "Set as &Default Folder"
 msgstr "Estableix com a carpeta pre&determinada"
 
-#: akonadicollectionview.cpp:540
+#: akonadicollectionview.cpp:541
 #, kde-kuit-format
 msgctxt "@info"
 msgid ""
@@ -1579,7 +1579,7 @@ msgstr ""
 "predeterminat?<para>Això substituirà <filename>%2</filename> com a carpeta "
 "del calendari predeterminat.</para>"
 
-#: akonadicollectionview.cpp:545
+#: akonadicollectionview.cpp:546
 #, kde-kuit-format
 msgctxt "@info"
 msgid ""
@@ -1589,33 +1589,33 @@ msgstr ""
 "Segur que voleu establir <filename>%1</filename> com a carpeta del calendari "
 "predeterminat?"
 
-#: akonadicollectionview.cpp:550
+#: akonadicollectionview.cpp:551
 #, kde-format
 msgctxt "@title:window"
 msgid "Replace Default Calendar?"
 msgstr "Substitueixo el calendari predeterminat?"
 
-#: akonadicollectionview.cpp:554 akonadicollectionview.cpp:926
+#: akonadicollectionview.cpp:555 akonadicollectionview.cpp:927
 #, kde-kuit-format
 msgctxt "@info"
 msgid "<filename>%1</filename> is now your default event calendar"
 msgstr ""
 "<filename>%1</filename> ara és el calendari predeterminat d'esdeveniments"
 
-#: akonadicollectionview.cpp:710
+#: akonadicollectionview.cpp:711
 #, kde-format
 msgctxt "@title:window"
 msgid "Add Calendar"
 msgstr "Afegeix un calendari"
 
-#: akonadicollectionview.cpp:729
+#: akonadicollectionview.cpp:730
 #, kde-kuit-format
 msgctxt "@info"
 msgid "Add new calendar failed: <message>%1</message>"
 msgstr "Ha fallat en afegir un calendari nou: <message>%1</message>"
 
 # skip-rule: tags-spaces-end
-#: akonadicollectionview.cpp:786
+#: akonadicollectionview.cpp:787
 #, kde-kuit-format
 msgctxt "@info"
 msgid ""
@@ -1630,7 +1630,7 @@ msgstr ""
 "nou en qualsevol moment.</note></para>"
 
 # skip-rule: tags-spaces-end
-#: akonadicollectionview.cpp:796
+#: akonadicollectionview.cpp:797
 #, kde-kuit-format
 msgctxt "@info"
 msgid ""
@@ -1651,7 +1651,7 @@ msgstr ""
 "predeterminat.</warning></para>"
 
 # skip-rule: tags-spaces-end
-#: akonadicollectionview.cpp:807
+#: akonadicollectionview.cpp:808
 #, kde-kuit-format
 msgctxt "@info"
 msgid ""
@@ -1670,7 +1670,7 @@ msgstr ""
 "seleccioneu una carpeta nova de calendari predeterminat.</warning></para>"
 
 # skip-rule: tags-spaces-end
-#: akonadicollectionview.cpp:817
+#: akonadicollectionview.cpp:818
 #, kde-kuit-format
 msgctxt "@info"
 msgid ""
@@ -1688,7 +1688,7 @@ msgstr ""
 "calendari predeterminat. Si el suprimiu se us demanarà que seleccioneu una "
 "carpeta nova de calendari predeterminat.</warning></para>"
 
-#: akonadicollectionview.cpp:829
+#: akonadicollectionview.cpp:830
 #, kde-kuit-format
 msgctxt "@info"
 msgid ""
@@ -1700,7 +1700,7 @@ msgstr ""
 "<para><warning>Això no es pot desfer. Reflexioneu atentament abans de prémer "
 "el botó %2.</warning></para>"
 
-#: akonadicollectionview.cpp:836
+#: akonadicollectionview.cpp:837
 #, kde-kuit-format
 msgctxt "@info"
 msgid ""
@@ -1715,13 +1715,13 @@ msgstr ""
 "botó %2.</warning></para><para><warning>Si el suprimiu se us demanarà que "
 "seleccioneu una carpeta nova de calendari predeterminat.</warning></para>"
 
-#: akonadicollectionview.cpp:847 akonadicollectionview.cpp:878
+#: akonadicollectionview.cpp:848 akonadicollectionview.cpp:879
 #, kde-format
 msgctxt "@title:window"
 msgid "Delete Calendar"
 msgstr "Suprimeix el calendari"
 
-#: akonadicollectionview.cpp:873
+#: akonadicollectionview.cpp:874
 #, kde-kuit-format
 msgctxt "@info"
 msgid ""
@@ -1734,7 +1734,7 @@ msgstr ""
 "s'eliminaran les dades del calendari. <para><warning>Això no es pot desfer. "
 "Penseu-ho bé abans de prémer el botó %1.</warning></para>"
 
-#: akonadicollectionview.cpp:888
+#: akonadicollectionview.cpp:889
 #, kde-kuit-format
 msgctxt "@info"
 msgid ""
@@ -1743,20 +1743,20 @@ msgstr ""
 "Ha fallat en suprimir el calendari: <message>Instància no vàlida de l'agent "
 "de l'Akonadi</message>"
 
-#: akonadicollectionview.cpp:931
+#: akonadicollectionview.cpp:932
 #, kde-format
 msgctxt "@info"
 msgid "Consider setting a default calendar for new events"
 msgstr ""
 "Considereu establir un calendari predeterminat per a esdeveniments nous"
 
-#: akonadicollectionview.cpp:933
+#: akonadicollectionview.cpp:934
 #, kde-format
 msgctxt "@info"
 msgid "Consider adding a write-enabled events calendar"
 msgstr "Considereu afegir un calendari d'esdeveniments amb permís d'escriptura"
 
-#: akonadicollectionview.cpp:955
+#: akonadicollectionview.cpp:956
 #, kde-kuit-format
 msgctxt "@info"
 msgid "Delete calendar failed: <message>%1</message>"
@@ -2542,7 +2542,7 @@ msgstr ""
 "Ha fallat en rebre la incidència des de l'Akonadi: La incidència "
 "sol·licitada no existeix."
 
-#: kocorehelper.cpp:28
+#: kocorehelper.cpp:29
 #, kde-format
 msgctxt "@item:intext delimiter for joining holiday names"
 msgid ","
@@ -2890,19 +2890,19 @@ msgstr "&Suprimeix la cita"
 msgid "Edit Event: \"%1\""
 msgstr "Edita l'esdeveniment: «%1»"
 
-#: kontactplugin/korganizer/journalplugin.cpp:28
+#: kontactplugin/korganizer/journalplugin.cpp:27
 #, kde-format
 msgctxt "@action:inmenu"
 msgid "New Journal…"
 msgstr "Diari nou…"
 
-#: kontactplugin/korganizer/journalplugin.cpp:31
+#: kontactplugin/korganizer/journalplugin.cpp:30
 #, kde-format
 msgctxt "@info:status"
 msgid "Create a new journal"
 msgstr "Crea un nou diari"
 
-#: kontactplugin/korganizer/journalplugin.cpp:36
+#: kontactplugin/korganizer/journalplugin.cpp:35
 #, kde-format
 msgctxt "@info:whatsthis"
 msgid ""
@@ -3687,7 +3687,7 @@ msgctxt "@info:credit"
 msgid "Tobias Koenig"
 msgstr "Tobias Koenig"
 
-#: korganizer.cpp:78 korganizer_part.cpp:59 korganizer_part.cpp:70
+#: korganizer.cpp:78 korganizer_part.cpp:58 korganizer_part.cpp:69
 #, kde-format
 msgid "KOrganizer"
 msgstr "KOrganizer"
