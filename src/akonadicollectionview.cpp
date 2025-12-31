@@ -637,7 +637,7 @@ Akonadi::EntityTreeView *AkonadiCollectionView::view() const
 {
     return mCollectionView;
 }
-
+// Updates the collection view when data changes
 void AkonadiCollectionView::updateView()
 {
     Q_EMIT resourcesChanged(mSelectionProxyModel ? mSelectionProxyModel->selectionModel()->hasSelection() : false);
