@@ -14,6 +14,8 @@
 #include "collectionsortfilterproxymodel.h"
 #include "config-korganizer.h"
 #include "kocore.h"
+// Third PR : Added a high.level description comment for this file
+//This file defines the collection view logic used by KOrganizer's calendar UI.
 #include "kohelper.h"
 #include "manageshowcollectionproperties.h"
 #include "prefs/koprefs.h"
