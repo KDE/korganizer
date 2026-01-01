@@ -8,7 +8,7 @@ msgid ""
 msgstr ""
 "Project-Id-Version: korganizer\n"
 "Report-Msgid-Bugs-To: https://bugs.kde.org\n"
-"POT-Creation-Date: 2025-12-31 00:44+0000\n"
+"POT-Creation-Date: 2026-01-01 00:43+0000\n"
 "PO-Revision-Date: 2024-12-24 20:39+0530\n"
 "Last-Translator: kali <shreekantkalwar@gmail.com>\n"
 "Language-Team: Sanskrit <kde-i18n-doc@kde.org>\n"
@@ -3804,30 +3804,30 @@ msgstr "पठनीय एव"
 msgid "Calendar"
 msgstr "पञ्चाङ्गम्"
 
-#: korganizer_options.h:18
+#: korganizer_options.h:21
 #, kde-format
 msgctxt "@info:shell"
 msgid "Import the specified files as separate calendars"
 msgstr "निर्दिष्टसञ्चिकाः पृथक् पञ्चाङ्गरूपेण आयातयन्तु"
 
-#: korganizer_options.h:20
+#: korganizer_options.h:23
 #, kde-format
 msgctxt "@info:shell"
 msgid "Merge the specified files into an existing calendar"
 msgstr "निर्दिष्टसञ्चिकाः विद्यमानपञ्चाङ्गे विलीनयन्तु"
 
-#: korganizer_options.h:21
+#: korganizer_options.h:24
 #, kde-format
 msgctxt "@info:shell"
 msgid "Display the specified incidence (by URL)"
 msgstr "निर्दिष्टं घटनां प्रदर्शयन्तु (URL द्वारा)"
 
-#: korganizer_options.h:21
+#: korganizer_options.h:24
 #, kde-format
 msgid "Url"
 msgstr ""
 
-#: korganizer_options.h:25
+#: korganizer_options.h:28
 #, kde-format
 msgctxt "@info:shell"
 msgid ""
@@ -3837,7 +3837,7 @@ msgstr ""
 "पञ्चाङ्गसञ्चिकाः अथवा urls। यावत् -i अथवा -m स्पष्टतया निर्दिष्टं न भवति तावत् "
 "उपयोक्तारः पृष्टः भविष्यति यत् आयातः वा विलयः वा इति"
 
-#: korganizer_options.h:29
+#: korganizer_options.h:32
 #, kde-format
 msgctxt "@info:shell"
 msgid "Lists the available options for user feedback"

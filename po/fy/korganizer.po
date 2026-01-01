@@ -19,7 +19,7 @@ msgid ""
 msgstr ""
 "Project-Id-Version: korganizer\n"
 "Report-Msgid-Bugs-To: https://bugs.kde.org\n"
-"POT-Creation-Date: 2025-12-31 00:44+0000\n"
+"POT-Creation-Date: 2026-01-01 00:43+0000\n"
 "PO-Revision-Date: 2007-03-28 20:53+0200\n"
 "Last-Translator: Rinse de Vries <rinsedevries@kde.nl>\n"
 "Language-Team: Frysk <kde-i18n-fry@kde.org>\n"
@@ -3873,14 +3873,14 @@ msgstr "allinnich-lêze"
 msgid "Calendar"
 msgstr "Kalinder"
 
-#: korganizer_options.h:18
+#: korganizer_options.h:21
 #, fuzzy, kde-format
 #| msgid "Attach&ments"
 msgctxt "@info:shell"
 msgid "Import the specified files as separate calendars"
 msgstr "&Taheaksels"
 
-#: korganizer_options.h:20
+#: korganizer_options.h:23
 #, fuzzy, kde-format
 #| msgid ""
 #| "Merge the given calendars into the standard calendar (i.e. copy the "
@@ -3890,18 +3890,18 @@ msgid "Merge the specified files into an existing calendar"
 msgstr ""
 "De opjûne aginda's gearfoegje mei de standert aginda (alle items kopiearje)"
 
-#: korganizer_options.h:21
+#: korganizer_options.h:24
 #, kde-format
 msgctxt "@info:shell"
 msgid "Display the specified incidence (by URL)"
 msgstr ""
 
-#: korganizer_options.h:21
+#: korganizer_options.h:24
 #, kde-format
 msgid "Url"
 msgstr ""
 
-#: korganizer_options.h:25
+#: korganizer_options.h:28
 #, fuzzy, kde-format
 #| msgid ""
 #| "Calendar files or urls. Unless -i, -o or -m is explicitly specified, the "
@@ -3915,7 +3915,7 @@ msgstr ""
 "oars sil de brûker frege wurde  om te ymportearen, gear te foegjen of om it "
 "te iepenje yn in nij finster."
 
-#: korganizer_options.h:29
+#: korganizer_options.h:32
 #, kde-format
 msgctxt "@info:shell"
 msgid "Lists the available options for user feedback"

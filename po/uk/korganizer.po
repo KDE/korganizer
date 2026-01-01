@@ -11,7 +11,7 @@ msgid ""
 msgstr ""
 "Project-Id-Version: korganizer\n"
 "Report-Msgid-Bugs-To: https://bugs.kde.org\n"
-"POT-Creation-Date: 2025-12-31 00:44+0000\n"
+"POT-Creation-Date: 2026-01-01 00:43+0000\n"
 "PO-Revision-Date: 2025-12-29 09:04+0200\n"
 "Last-Translator: Yuri Chornoivan <yurchor@ukr.net>\n"
 "Language-Team: Ukrainian <trans-uk@lists.fedoraproject.org>\n"
@@ -3726,30 +3726,30 @@ msgstr "лише читання"
 msgid "Calendar"
 msgstr "Календар"
 
-#: korganizer_options.h:18
+#: korganizer_options.h:21
 #, kde-format
 msgctxt "@info:shell"
 msgid "Import the specified files as separate calendars"
 msgstr "Імпортувати вказані файли як окремі календарі"
 
-#: korganizer_options.h:20
+#: korganizer_options.h:23
 #, kde-format
 msgctxt "@info:shell"
 msgid "Merge the specified files into an existing calendar"
 msgstr "Об’єднати вказані файли з наявним календарем"
 
-#: korganizer_options.h:21
+#: korganizer_options.h:24
 #, kde-format
 msgctxt "@info:shell"
 msgid "Display the specified incidence (by URL)"
 msgstr "Показати вказану подію (за адресою)"
 
-#: korganizer_options.h:21
+#: korganizer_options.h:24
 #, kde-format
 msgid "Url"
 msgstr "Адреса"
 
-#: korganizer_options.h:25
+#: korganizer_options.h:28
 #, kde-format
 msgctxt "@info:shell"
 msgid ""
@@ -3760,7 +3760,7 @@ msgstr ""
 "програма запитає користувача у окремому вікні користувача про те, що треба "
 "зробити: імпортувати чи об’єднати календарі."
 
-#: korganizer_options.h:29
+#: korganizer_options.h:32
 #, kde-format
 msgctxt "@info:shell"
 msgid "Lists the available options for user feedback"

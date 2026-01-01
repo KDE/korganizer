@@ -10,7 +10,7 @@ msgid ""
 msgstr ""
 "Project-Id-Version: korganizer\n"
 "Report-Msgid-Bugs-To: https://bugs.kde.org\n"
-"POT-Creation-Date: 2025-12-31 00:44+0000\n"
+"POT-Creation-Date: 2026-01-01 00:43+0000\n"
 "PO-Revision-Date: 2020-08-01 11:26+0200\n"
 "Last-Translator: Martin Schlander <mschlander@opensuse.org>\n"
 "Language-Team: Danish <kde-i18n-doc@kde.org>\n"
@@ -3905,33 +3905,33 @@ msgstr "skrivebeskyttet"
 msgid "Calendar"
 msgstr "Kalender"
 
-#: korganizer_options.h:18
+#: korganizer_options.h:21
 #, fuzzy, kde-format
 #| msgid "Import the specified files as separate calendars"
 msgctxt "@info:shell"
 msgid "Import the specified files as separate calendars"
 msgstr "Importér de angivne filer som separate kalendere"
 
-#: korganizer_options.h:20
+#: korganizer_options.h:23
 #, fuzzy, kde-format
 #| msgid "Merge the specified files into an existing calendar"
 msgctxt "@info:shell"
 msgid "Merge the specified files into an existing calendar"
 msgstr "Flet de angivne filer ind i en eksisterende kalender"
 
-#: korganizer_options.h:21
+#: korganizer_options.h:24
 #, fuzzy, kde-format
 #| msgid "Display the specified incidence (by URL)"
 msgctxt "@info:shell"
 msgid "Display the specified incidence (by URL)"
 msgstr "Vis den angivne forekomst (ved URL)"
 
-#: korganizer_options.h:21
+#: korganizer_options.h:24
 #, kde-format
 msgid "Url"
 msgstr ""
 
-#: korganizer_options.h:25
+#: korganizer_options.h:28
 #, fuzzy, kde-format
 #| msgid ""
 #| "Calendar files or urls. Unless -i or -m is explicitly specified, the user "
@@ -3944,7 +3944,7 @@ msgstr ""
 "Kalenderfiler eller URL'er. Medmindre -i, -o eller -m eksplicit er angivet, "
 "vil brugeren blive spurgt om der skal importeres eller indflettes"
 
-#: korganizer_options.h:29
+#: korganizer_options.h:32
 #, fuzzy, kde-format
 #| msgid "Lists the available options for user feedback"
 msgctxt "@info:shell"

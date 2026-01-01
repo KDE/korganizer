@@ -6,7 +6,7 @@ msgid ""
 msgstr ""
 "Project-Id-Version: korganizer\n"
 "Report-Msgid-Bugs-To: https://bugs.kde.org\n"
-"POT-Creation-Date: 2025-12-31 00:44+0000\n"
+"POT-Creation-Date: 2026-01-01 00:43+0000\n"
 "PO-Revision-Date: 2023-05-29 22:20+0400\n"
 "Last-Translator: Kheyyam <xxmn77@gmail.com>\n"
 "Language-Team: Azerbaijani <kde-i18n-doc@kde.org>\n"
@@ -3899,33 +3899,33 @@ msgstr "yalnız oxumaq üçün"
 msgid "Calendar"
 msgstr "Təqvim"
 
-#: korganizer_options.h:18
+#: korganizer_options.h:21
 #, fuzzy, kde-format
 #| msgid "Import the specified files as separate calendars"
 msgctxt "@info:shell"
 msgid "Import the specified files as separate calendars"
 msgstr "Göstərilmiş faylları ayrıca təqvimlər kimi idxal edin"
 
-#: korganizer_options.h:20
+#: korganizer_options.h:23
 #, fuzzy, kde-format
 #| msgid "Merge the specified files into an existing calendar"
 msgctxt "@info:shell"
 msgid "Merge the specified files into an existing calendar"
 msgstr "Göstərilmiş faylları mövcud təqvimdə birləşdirin"
 
-#: korganizer_options.h:21
+#: korganizer_options.h:24
 #, fuzzy, kde-format
 #| msgid "Display the specified incidence (by URL)"
 msgctxt "@info:shell"
 msgid "Display the specified incidence (by URL)"
 msgstr "Verilmiş hadisələri göstərmək (URL-a görə)"
 
-#: korganizer_options.h:21
+#: korganizer_options.h:24
 #, kde-format
 msgid "Url"
 msgstr ""
 
-#: korganizer_options.h:25
+#: korganizer_options.h:28
 #, fuzzy, kde-format
 #| msgid ""
 #| "Calendar files or urls. Unless -i or -m is explicitly specified, the user "
@@ -3939,7 +3939,7 @@ msgstr ""
 "istifadəçiyə birləşdirməsi və ya idxal etməsi sorğusu üçün dialoq "
 "göstəriləcək"
 
-#: korganizer_options.h:29
+#: korganizer_options.h:32
 #, fuzzy, kde-format
 #| msgid "Lists the available options for user feedback"
 msgctxt "@info:shell"

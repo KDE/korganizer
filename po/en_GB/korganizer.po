@@ -10,7 +10,7 @@ msgid ""
 msgstr ""
 "Project-Id-Version: korganizer\n"
 "Report-Msgid-Bugs-To: https://bugs.kde.org\n"
-"POT-Creation-Date: 2025-12-31 00:44+0000\n"
+"POT-Creation-Date: 2026-01-01 00:43+0000\n"
 "PO-Revision-Date: 2024-11-23 12:12+0000\n"
 "Last-Translator: Steve Allewell <steve.allewell@gmail.com>\n"
 "Language-Team: British English\n"
@@ -3829,30 +3829,30 @@ msgstr "read-only"
 msgid "Calendar"
 msgstr "Calendar"
 
-#: korganizer_options.h:18
+#: korganizer_options.h:21
 #, kde-format
 msgctxt "@info:shell"
 msgid "Import the specified files as separate calendars"
 msgstr "Import the specified files as separate calendars"
 
-#: korganizer_options.h:20
+#: korganizer_options.h:23
 #, kde-format
 msgctxt "@info:shell"
 msgid "Merge the specified files into an existing calendar"
 msgstr "Merge the specified files into an existing calendar"
 
-#: korganizer_options.h:21
+#: korganizer_options.h:24
 #, kde-format
 msgctxt "@info:shell"
 msgid "Display the specified incidence (by URL)"
 msgstr "Display the specified incidence (by URL)"
 
-#: korganizer_options.h:21
+#: korganizer_options.h:24
 #, kde-format
 msgid "Url"
 msgstr ""
 
-#: korganizer_options.h:25
+#: korganizer_options.h:28
 #, kde-format
 msgctxt "@info:shell"
 msgid ""
@@ -3862,7 +3862,7 @@ msgstr ""
 "Calendar files or urls. Unless -i or -m is explicitly specified, the user "
 "will be asked whether to import or merge"
 
-#: korganizer_options.h:29
+#: korganizer_options.h:32
 #, kde-format
 msgctxt "@info:shell"
 msgid "Lists the available options for user feedback"

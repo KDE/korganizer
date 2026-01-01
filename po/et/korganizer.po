@@ -8,7 +8,7 @@ msgid ""
 msgstr ""
 "Project-Id-Version: korganizer\n"
 "Report-Msgid-Bugs-To: https://bugs.kde.org\n"
-"POT-Creation-Date: 2025-12-31 00:44+0000\n"
+"POT-Creation-Date: 2026-01-01 00:43+0000\n"
 "PO-Revision-Date: 2020-05-11 16:37+0300\n"
 "Last-Translator: Marek Laane <qiilaq69@gmail.com>\n"
 "Language-Team: Estonian <kde-et@lists.linux.ee>\n"
@@ -3907,33 +3907,33 @@ msgstr "kirjutuskaitstud"
 msgid "Calendar"
 msgstr "Kalender"
 
-#: korganizer_options.h:18
+#: korganizer_options.h:21
 #, fuzzy, kde-format
 #| msgid "Import the specified files as separate calendars"
 msgctxt "@info:shell"
 msgid "Import the specified files as separate calendars"
 msgstr "Määratud failide importimine eraldi kalendritena"
 
-#: korganizer_options.h:20
+#: korganizer_options.h:23
 #, fuzzy, kde-format
 #| msgid "Merge the specified files into an existing calendar"
 msgctxt "@info:shell"
 msgid "Merge the specified files into an existing calendar"
 msgstr "Määratud failide ühendamine olemasoleva kalendriga"
 
-#: korganizer_options.h:21
+#: korganizer_options.h:24
 #, fuzzy, kde-format
 #| msgid "Display the specified incidence (by URL)"
 msgctxt "@info:shell"
 msgid "Display the specified incidence (by URL)"
 msgstr "(URL-i alusel) määratud sündmuse näitamine"
 
-#: korganizer_options.h:21
+#: korganizer_options.h:24
 #, kde-format
 msgid "Url"
 msgstr ""
 
-#: korganizer_options.h:25
+#: korganizer_options.h:28
 #, fuzzy, kde-format
 #| msgid ""
 #| "Calendar files or urls. Unless -i or -m is explicitly specified, the user "
@@ -3946,7 +3946,7 @@ msgstr ""
 "Kalendrifailid või URL-id. Kui pole antud võtit -i või -m, küsitakse "
 "kasutajalt, kas need importida või ühendada."
 
-#: korganizer_options.h:29
+#: korganizer_options.h:32
 #, fuzzy, kde-format
 #| msgid "Lists the available options for user feedback"
 msgctxt "@info:shell"

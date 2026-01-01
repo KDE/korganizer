@@ -6,7 +6,7 @@ msgid ""
 msgstr ""
 "Project-Id-Version: korganizer\n"
 "Report-Msgid-Bugs-To: https://bugs.kde.org\n"
-"POT-Creation-Date: 2025-12-31 00:44+0000\n"
+"POT-Creation-Date: 2026-01-01 00:43+0000\n"
 "PO-Revision-Date: 2007-09-17 14:45+0545\n"
 "Last-Translator: Nabin Gautam <nabin@mpp.org.np>\n"
 "Language-Team: Nepali <info@mpp.org.np>\n"
@@ -3882,14 +3882,14 @@ msgstr "पढ्ने मात्र"
 msgid "Calendar"
 msgstr "क्यालेन्डर"
 
-#: korganizer_options.h:18
+#: korganizer_options.h:21
 #, fuzzy, kde-format
 #| msgid "New attachment"
 msgctxt "@info:shell"
 msgid "Import the specified files as separate calendars"
 msgstr "नयाँ सङ्लग्नता"
 
-#: korganizer_options.h:20
+#: korganizer_options.h:23
 #, fuzzy, kde-format
 #| msgid ""
 #| "Merge the given calendars into the standard calendar (i.e. copy the "
@@ -3898,18 +3898,18 @@ msgctxt "@info:shell"
 msgid "Merge the specified files into an existing calendar"
 msgstr "मानक क्यालेन्डरमा दिएको क्यालेन्डर गाभ्नुहोस् (जस्तै घटना प्रतिलिपि गर्नुहोस्)"
 
-#: korganizer_options.h:21
+#: korganizer_options.h:24
 #, kde-format
 msgctxt "@info:shell"
 msgid "Display the specified incidence (by URL)"
 msgstr ""
 
-#: korganizer_options.h:21
+#: korganizer_options.h:24
 #, kde-format
 msgid "Url"
 msgstr ""
 
-#: korganizer_options.h:25
+#: korganizer_options.h:28
 #, fuzzy, kde-format
 #| msgid ""
 #| "Calendar files or urls. Unless -i, -o or -m is explicitly specified, the "
@@ -3923,7 +3923,7 @@ msgstr ""
 "प्रयोगकर्तालाई भिन्न सञ्झ्यालमा आयात गर्ने या नगर्ने, गाभ्ने या नगाभ्ने वा खोल्ने या नखोल्ने "
 "सोधिन्छ ।"
 
-#: korganizer_options.h:29
+#: korganizer_options.h:32
 #, kde-format
 msgctxt "@info:shell"
 msgid "Lists the available options for user feedback"

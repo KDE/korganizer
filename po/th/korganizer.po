@@ -6,7 +6,7 @@ msgid ""
 msgstr ""
 "Project-Id-Version: korganizer\n"
 "Report-Msgid-Bugs-To: https://bugs.kde.org\n"
-"POT-Creation-Date: 2025-12-31 00:44+0000\n"
+"POT-Creation-Date: 2026-01-01 00:43+0000\n"
 "PO-Revision-Date: 2008-07-21 16:18+0700\n"
 "Last-Translator: Thanomsub Noppaburana <donga.nb@gmail.com>\n"
 "Language-Team: Thai <thai-l10n@googlegroups.com>\n"
@@ -3907,7 +3907,7 @@ msgstr "อ่านได้อย่างเดียว"
 msgid "Calendar"
 msgstr "ปฏิทิน"
 
-#: korganizer_options.h:18
+#: korganizer_options.h:21
 #, fuzzy, kde-format
 #| msgctxt "@option:check"
 #| msgid "Store attachment inline"
@@ -3915,7 +3915,7 @@ msgctxt "@info:shell"
 msgid "Import the specified files as separate calendars"
 msgstr "เก็บสิ่งที่แนบมาด้วยไว้ในบรรทัด"
 
-#: korganizer_options.h:20
+#: korganizer_options.h:23
 #, fuzzy, kde-format
 #| msgid ""
 #| "Merge the given calendars into the standard calendar (i.e. copy the "
@@ -3924,18 +3924,18 @@ msgctxt "@info:shell"
 msgid "Merge the specified files into an existing calendar"
 msgstr "ผนวกรวมปฏิทินที่ให้ไว้ในปฏิทินมาตรฐาน (เช่น ทำการคัดลอกเหตุการณ์)"
 
-#: korganizer_options.h:21
+#: korganizer_options.h:24
 #, kde-format
 msgctxt "@info:shell"
 msgid "Display the specified incidence (by URL)"
 msgstr ""
 
-#: korganizer_options.h:21
+#: korganizer_options.h:24
 #, kde-format
 msgid "Url"
 msgstr ""
 
-#: korganizer_options.h:25
+#: korganizer_options.h:28
 #, fuzzy, kde-format
 #| msgid ""
 #| "Calendar files or urls. Unless -i, -o or -m is explicitly specified, the "
@@ -3948,7 +3948,7 @@ msgstr ""
 "แฟ้มปฏิทินหรือที่อยู่ URL จนกว่าจะมีการแยกระบุพารามิเตอร์ -i, -o หรือ -m "
 "ผู้ใช้จะถูกถามเพื่อให้เลือกทำการนำเข้า, ผนวกรวม หรือเปิดในหน้าต่างใหม่"
 
-#: korganizer_options.h:29
+#: korganizer_options.h:32
 #, kde-format
 msgctxt "@info:shell"
 msgid "Lists the available options for user feedback"
