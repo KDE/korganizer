@@ -1,7 +1,7 @@
 /*
   This file is part of KOrganizer.
 
-  SPDX-FileCopyrightText: 2024-2025 Laurent Montel <montel@kde.org>
+  SPDX-FileCopyrightText: 2024-2026 Laurent Montel <montel@kde.org>
 
   SPDX-License-Identifier: GPL-2.0-or-later WITH LicenseRef-Qt-Commercial-exception-1.0
 */
