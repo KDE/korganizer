@@ -6161,7 +6161,7 @@ msgstr "回滚到去年"
 msgid ""
 "Click this button to scroll the display to the same approximate day of the "
 "previous year"
-msgstr "点击此按钮滚动到去年大致同一天的地方"
+msgstr ""
 
 #: widgets/navigatorbar.cpp:36
 #, kde-format
@@ -6173,7 +6173,7 @@ msgstr "回滚到上个月"
 msgid ""
 "Click this button to scroll the display to the same approximate date of the "
 "previous month"
-msgstr "点击此按钮滚动到上个月大致同一天的地方"
+msgstr ""
 
 #: widgets/navigatorbar.cpp:41
 #, kde-format
@@ -6185,7 +6185,7 @@ msgstr "前滚到下个月"
 msgid ""
 "Click this button to scroll the display to the same approximate date of the "
 "next month"
-msgstr "点击此按钮滚动到下个月大致同一天的地方"
+msgstr ""
 
 #: widgets/navigatorbar.cpp:46
 #, kde-format
@@ -6197,7 +6197,7 @@ msgstr "前滚到明年"
 msgid ""
 "Click this button to scroll the display to the same approximate day of the "
 "next year"
-msgstr "点击此按钮滚动到明年大致同一天的地方"
+msgstr ""
 
 #: widgets/navigatorbar.cpp:54
 #, kde-format
