@@ -563,7 +563,8 @@ void AkonadiCollectionView::setDefaultCalendar()
 
     Q_EMIT defaultResourceChanged(collection);
 }
-
+// Convert the selected UI index into an Akonadi::Collection
+//so that operations can be performed on the actual calendar data.
 void AkonadiCollectionView::assignColor()
 {
     QModelIndex const index = mCollectionView->selectionModel()->currentIndex(); // selectedRows()
@@ -581,7 +582,7 @@ void AkonadiCollectionView::assignColor()
         updateView();
     }
 }
-
+,
 void AkonadiCollectionView::setCollectionSelectionProxyModel(KCheckableProxyModel *m)
 {
     if (mSelectionProxyModel == m) {
