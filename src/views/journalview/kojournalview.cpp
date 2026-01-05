@@ -14,7 +14,6 @@
 
 #include <EventViews/JournalView>
 
-#include <CalendarSupport/CalPrintDefaultPlugins>
 #include <CalendarSupport/CalPrinter>
 #include <CalendarSupport/Utils>
 
