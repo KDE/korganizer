@@ -6,13 +6,13 @@
 # محمد سعد  Mohamed SAAD <metehyi@free.fr>, 2006.
 # Youssef Chahibi <chahibi@gmail.com>, 2007.
 # Safa Alfulaij <safa1996alfulaij@gmail.com>, 2017, 2018.
-# SPDX-FileCopyrightText: 2022, 2024, 2025 Zayed Al-Saidi <zayed.alsaidi@gmail.com>
+# SPDX-FileCopyrightText: 2022, 2024, 2025, 2026 Zayed Al-Saidi <zayed.alsaidi@gmail.com>
 msgid ""
 msgstr ""
 "Project-Id-Version: korganizer\n"
 "Report-Msgid-Bugs-To: https://bugs.kde.org\n"
 "POT-Creation-Date: 2026-01-02 00:45+0000\n"
-"PO-Revision-Date: 2025-12-24 17:24+0400\n"
+"PO-Revision-Date: 2026-01-08 12:26+0400\n"
 "Last-Translator: Zayed Al-Saidi <zayed.alsaidi@gmail.com>\n"
 "Language-Team: ar\n"
 "Language: ar\n"
@@ -49,14 +49,7 @@ msgid "A Personal Organizer"
 msgstr "منظّم شخصي"
 
 #: aboutdata.cpp:23
-#, fuzzy, kde-format
-#| msgctxt "@info/plain"
-#| msgid ""
-#| "Copyright © 1997–1999 Preston Brown\n"
-#| "Copyright © 2000–2004, 2007 Cornelius Schumacher\n"
-#| "Copyright © 2004–2005 Reinhold Kainhofer\n"
-#| "Copyright © 2006–2012 Allen Winter\n"
-#| "Copyright © 2012–2025 KOrganizer authors"
+#, kde-format
 msgctxt "@info/plain"
 msgid ""
 "Copyright © 1997–1999 Preston Brown\n"
@@ -69,7 +62,7 @@ msgstr ""
 "حقوق النشر © 2000–2004, 2007 كورنيليوس  شوماخر \n"
 "حقوق النشر © 2004–2005 رينهولد كاينهوفر\n"
 "حقوق النشر © 2006–2012 ألين وينتر\n"
-"حقوق النشر © 2012–2025 مؤلفو منظمك"
+"حقوق النشر © 2012–2026 مؤلفو منظمك"
 
 #: aboutdata.cpp:31 kontactplugin/specialdates/specialdates_plugin.cpp:43
 #, kde-format
@@ -6229,12 +6222,16 @@ msgid ""
 "Month view: the navigation controls on the lower right side are removed in "
 "favor of the improved application navigator bar"
 msgstr ""
+"عرض الشهر: إزالة عناصر التحكم في التنقل الموجودة في الجانب الأيمن السفلي "
+"واستبدالها بشريط تنقل محسّن للتطبيق"
 
 #: whatsnew/whatsnewtranslations.cpp:23
 msgid ""
 "Navigator bar: improved by adding week scrolling and showing/hiding the "
 "sidebar on a per-view basis"
 msgstr ""
+"شريط التنقل: تحسين بإضافة التمرير الأسبوعي وإظهار/إخفاء الشريط الجانبي على "
+"أساس كل عرض على حدة"
 
 #: whatsnew/whatsnewtranslations.cpp:32
 msgid ""
@@ -6491,11 +6488,10 @@ msgid "Icons to use"
 msgstr "الأيقونات لاستخدامها"
 
 #: widgets/navigatorbar.cpp:31
-#, fuzzy, kde-format
-#| msgid "Show time in month view items"
+#, kde-format
 msgctxt "@info:tooltip"
 msgid "Show/hide the sidebar in this view"
-msgstr "اعرض الوقت في عناصر منظور الشهر"
+msgstr "اعرض/اخفِ الشريط الجانبي لهذا العرض"
 
 #: widgets/navigatorbar.cpp:33
 #, kde-format
@@ -6504,39 +6500,31 @@ msgid ""
 "Click this button to show/hide the sidebar in the current view. Each view "
 "can show/hide the sidebar independently."
 msgstr ""
+"انقر فوق هذا الزر لإظهار/إخفاء الشريط الجانبي في العرض الحالي. يمكن لكل عرض "
+"إظهار/إخفاء الشريط الجانبي بشكل مستقل."
 
 #: widgets/navigatorbar.cpp:37
-#, fuzzy, kde-format
-#| msgctxt "@info:status"
-#| msgid "Scroll Backward"
+#, kde-format
 msgctxt "@info:tooltip"
 msgid "Scroll backward a year"
-msgstr "مرر للخلف"
+msgstr "مرر للخلف سنة"
 
 #: widgets/navigatorbar.cpp:39
-#, fuzzy, kde-format
-#| msgid ""
-#| "Click this button to scroll the display to the same approximate day of "
-#| "the previous year"
+#, kde-format
 msgctxt "@info::whatsthis"
 msgid ""
 "Click this button to scroll the display to the same approximate day of the "
 "previous year"
-msgstr "انقر فوق هذا الزر لتمرير العرض إلى نفس اليوم التقريبي من العام السابق"
+msgstr "انقر فوق هذا الزر لتمرير العرض إلى نفس اليوم التقريبي من السنة السابقة"
 
 #: widgets/navigatorbar.cpp:43
-#, fuzzy, kde-format
-#| msgctxt "@info:status"
-#| msgid "Scroll Backward"
+#, kde-format
 msgctxt "@info:tooltip"
 msgid "Scroll backward a month"
-msgstr "مرر للخلف"
+msgstr "مرر للخلف شهر"
 
 #: widgets/navigatorbar.cpp:45
-#, fuzzy, kde-format
-#| msgid ""
-#| "Click this button to scroll the display to the same approximate date of "
-#| "the previous month"
+#, kde-format
 msgctxt "@info::whatsthis"
 msgid ""
 "Click this button to scroll the display to the same approximate date of the "
@@ -6544,49 +6532,37 @@ msgid ""
 msgstr "انقر فوق هذا الزر لتمرير العرض إلى نفس التاريخ التقريبي للشهر السابق"
 
 #: widgets/navigatorbar.cpp:49
-#, fuzzy, kde-format
-#| msgctxt "@info:status"
-#| msgid "Scroll Backward"
+#, kde-format
 msgctxt "@info:tooltip"
 msgid "Scroll backward a week"
-msgstr "مرر للخلف"
+msgstr "مرر للخلف أسبوع"
 
 #: widgets/navigatorbar.cpp:50
-#, fuzzy, kde-format
-#| msgid ""
-#| "Click this button to scroll the display to the same approximate date of "
-#| "the next month"
+#, kde-format
 msgctxt "@info::whatsthis"
 msgid "Click this button to scroll the display to back 1 week in time"
-msgstr "انقر فوق هذا الزر لتمرير العرض إلى نفس التاريخ التقريبي للشهر التالي"
+msgstr "انقر فوق هذا الزر لتمرير العرض أسبوع واحد للخلف"
 
 #: widgets/navigatorbar.cpp:53
-#, fuzzy, kde-format
+#, kde-format
 msgctxt "@info:tooltip"
 msgid "Scroll forward a week"
-msgstr "لف أمام إلى التالي السنة"
+msgstr "مرر للأمام أسبوع"
 
 #: widgets/navigatorbar.cpp:54
-#, fuzzy, kde-format
-#| msgid ""
-#| "Click this button to scroll the display to the same approximate day of "
-#| "the next year"
+#, kde-format
 msgctxt "@info::whatsthis"
 msgid "Click this button to scroll the display to forward 1 week in time"
-msgstr "انقر فوق هذا الزر لتمرير العرض إلى نفس اليوم التقريبي من العام التالي"
+msgstr "انقر فوق هذا الزر لتمرير العرض أسبوع واحد للأمام"
 
 #: widgets/navigatorbar.cpp:57
-#, fuzzy, kde-format
-#| msgid "Scroll forward to the next month"
+#, kde-format
 msgctxt "@info:tooltip"
 msgid "Scroll forward a month"
-msgstr "مرر للأمام إلى الشهر التالي"
+msgstr "مرر للأمام شهر"
 
 #: widgets/navigatorbar.cpp:59
-#, fuzzy, kde-format
-#| msgid ""
-#| "Click this button to scroll the display to the same approximate date of "
-#| "the next month"
+#, kde-format
 msgctxt "@info::whatsthis"
 msgid ""
 "Click this button to scroll the display to the same approximate date of the "
@@ -6594,22 +6570,18 @@ msgid ""
 msgstr "انقر فوق هذا الزر لتمرير العرض إلى نفس التاريخ التقريبي للشهر التالي"
 
 #: widgets/navigatorbar.cpp:63
-#, fuzzy, kde-format
-#| msgid "Scroll forward to the next year"
+#, kde-format
 msgctxt "@info:tooltip"
 msgid "Scroll forward a year"
-msgstr "مرر للأمام إلى العام التالي"
+msgstr "مرر للأمام سنة"
 
 #: widgets/navigatorbar.cpp:65
-#, fuzzy, kde-format
-#| msgid ""
-#| "Click this button to scroll the display to the same approximate day of "
-#| "the next year"
+#, kde-format
 msgctxt "@info::whatsthis"
 msgid ""
 "Click this button to scroll the display to the same approximate day of the "
 "next year"
-msgstr "انقر فوق هذا الزر لتمرير العرض إلى نفس اليوم التقريبي من العام التالي"
+msgstr "انقر فوق هذا الزر لتمرير العرض إلى نفس اليوم التقريبي من السنة التالية"
 
 #: widgets/navigatorbar.cpp:72
 #, kde-format
