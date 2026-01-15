@@ -11,3 +11,24 @@ include:
       - /gitlab-templates/windows-qt6.yml
       - /gitlab-templates/pre-commit.yml
       - /gitlab-templates/documentation.yml
+
+build_clazy:
+ extends:
+  - .ci_linux_base
+  - .suse_tumbleweed_qt6stable
+ rules:
+  # only run on merge requests
+  - if: $CI_PIPELINE_SOURCE == "merge_request_event"
+ variables:
+    # remove/comment the CXXFLAGS if you don't want the build to fail on clazy issues
+    CXXFLAGS: -Werror -Wno-deprecated-declarations
+    CC: clang
+    CXX: clazy
+ script:
+  - git config --global --add safe.directory $CI_PROJECT_DIR
+  - python3 -u ci-utilities/run-ci-build.py --project $CI_PROJECT_NAME --branch $CI_COMMIT_REF_NAME --platform Linux/Qt6/Shared --only-setup-environment
+  - mkdir -p /tmp/korganizer-clazy-build
+  - cd /tmp/korganizer-clazy-build
+  - cmake -DENABLE_PCH=OFF -DKF_SKIP_PO_PROCESSING=True -G Ninja -DCMAKE_INSTALL_PREFIX=$CI_PROJECT_DIR/_install -DKF6DocTools_FOUND=false $CI_PROJECT_DIR
+  - ninja -k 0
+ artifacts: null
