@@ -32,3 +32,24 @@ build_clazy:
   - cmake -DENABLE_PCH=OFF -DKF_SKIP_PO_PROCESSING=True -G Ninja -DCMAKE_INSTALL_PREFIX=$CI_PROJECT_DIR/_install -DKF6DocTools_FOUND=false $CI_PROJECT_DIR
   - ninja -k 0
  artifacts: null
+
+# Note: add WarningsAsErrors to .clang-tidy if you want to error on clang-tidy issues
+build_clangtidy:
+ extends:
+  - .ci_linux_base
+  - .suse_tumbleweed_qt6stable
+ rules:
+  # only run on merge requests
+  - if: $CI_PIPELINE_SOURCE == "merge_request_event"
+ variables:
+    CC: clang
+    CXX: clang++
+ script:
+  - git config --global --add safe.directory $CI_PROJECT_DIR
+  - python3 -u ci-utilities/run-ci-build.py --project $CI_PROJECT_NAME --branch $CI_COMMIT_REF_NAME --platform Linux/Qt6/Shared --only-setup-environment
+  - mkdir -p /tmp/$CI_PROJECT_NAME-tidy-build
+  - cd /tmp/$CI_PROJECT_NAME-tidy-build
+  - cmake -DCMAKE_CXX_CLANG_TIDY=clang-tidy -DENABLE_PCH=OFF -DKF_SKIP_PO_PROCESSING=True -G Ninja -DCMAKE_INSTALL_PREFIX=$CI_PROJECT_DIR/_install -DKF6DocTools_FOUND=false $CI_PROJECT_DIR
+  - cp "$CI_PROJECT_DIR/.clang-tidy" .
+  - ninja -k 0
+ artifacts: null

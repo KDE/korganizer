@@ -48,6 +48,13 @@ Checks: -*,
         -readability-simplify-boolean-expr,
         -readability-static-accessed-through-instance,
         -readability-use-std-min-max,
+WarningsAsErrors: bugprone-*,
+                  clang-*,
+                  google-*,
+                  misc-*,
+                  -misc-const-correctness,
+                  performance-*,
+                  readability-*,
 CheckOptions:
     - key:  bugprone-assert-side-effects.AssertMacros
       value: 'Q_ASSERT;QVERIFY;QCOMPARE;AKVERIFY'
