@@ -6248,10 +6248,11 @@ msgstr ""
 
 #: widgets/navigatorbar.cpp:57
 #, fuzzy, kde-format
-#| msgid "Scroll forward to the next month"
+#| msgctxt "@info:status"
+#| msgid "Scroll Forward"
 msgctxt "@info:tooltip"
 msgid "Scroll forward a month"
-msgstr "Přejít vpřed na následující měsíc"
+msgstr "Přejít vpřed"
 
 #: widgets/navigatorbar.cpp:59
 #, kde-format
@@ -6263,10 +6264,11 @@ msgstr ""
 
 #: widgets/navigatorbar.cpp:63
 #, fuzzy, kde-format
-#| msgid "Scroll forward to the next year"
+#| msgctxt "@info:status"
+#| msgid "Scroll Forward"
 msgctxt "@info:tooltip"
 msgid "Scroll forward a year"
-msgstr "Přejít vpřed na následující rok"
+msgstr "Přejít vpřed"
 
 #: widgets/navigatorbar.cpp:65
 #, kde-format
@@ -6299,9 +6301,3 @@ msgstr "%1"
 msgctxt "4 digit year"
 msgid "%1"
 msgstr "%1"
-
-#~ msgid "Scroll backward to the previous year"
-#~ msgstr "Přejít zpět na předchozí rok"
-
-#~ msgid "Scroll backward to the previous month"
-#~ msgstr "Přejít zpět na předchozí měsíc"
