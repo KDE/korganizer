@@ -3,6 +3,7 @@
 
   SPDX-FileCopyrightText: 2001, 2002, 2003 Cornelius Schumacher <schumacher@kde.org>
   SPDX-FileCopyrightText: 2003-2004 Reinhold Kainhofer <reinhold@kainhofer.com>
+  SPDX-FileCopyrightText: 2008-2026 Allen Winter <winter@kde.org>
 
   SPDX-FileCopyrightText: 2010 Klarälvdalens Datakonsult AB, a KDAB Group company <info@kdab.net>
   SPDX-FileContributor: Sergio Martins <sergio@kdab.com>
@@ -60,6 +61,7 @@ void DateNavigatorContainer::connectNavigatorView(KDateNavigator *v)
     connect(v, &KDateNavigator::goNext, this, &DateNavigatorContainer::goNext);
 
     connect(v, &KDateNavigator::fullWindowClicked, this, &DateNavigatorContainer::fullWindowClicked);
+    connect(v, &KDateNavigator::todayClicked, this, &DateNavigatorContainer::todayClicked);
 
     connect(v, &KDateNavigator::nextYearClicked, this, &DateNavigatorContainer::nextYearClicked);
     connect(v, &KDateNavigator::prevYearClicked, this, &DateNavigatorContainer::prevYearClicked);

@@ -3,6 +3,7 @@
 
   SPDX-FileCopyrightText: 2004 Cornelius Schumacher <schumacher@kde.org>
   SPDX-FileCopyrightText: 2004 Reinhold Kainhofer <reinhold@kainhofer.com>
+  SPDX-FileCopyrightText: 2008-2026 Allen Winter <winter@kde.org>
 
   SPDX-FileCopyrightText: 2010 Klarälvdalens Datakonsult AB, a KDAB Group company <info@kdab.net>
   SPDX-FileContributor: Sergio Martins <sergio@kdab.com>
@@ -84,6 +85,7 @@ Q_SIGNALS:
     void goNext();
 
     void fullWindowClicked();
+    void todayClicked();
 
     void nextYearClicked();
     void prevYearClicked();

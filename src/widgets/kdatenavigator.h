@@ -3,6 +3,7 @@
 
   SPDX-FileCopyrightText: 2001, 2003 Cornelius Schumacher <schumacher@kde.org>
   SPDX-FileCopyrightText: 2003-2004 Reinhold Kainhofer <reinhold@kainhofer.com>
+  SPDX-FileCopyrightText: 2006-2026 Allen Winter <winter@kde.org>
 
   SPDX-License-Identifier: GPL-2.0-or-later WITH LicenseRef-Qt-Commercial-exception-1.0
 */
@@ -84,6 +85,7 @@ Q_SIGNALS:
     void goNext();
 
     void fullWindowClicked();
+    void todayClicked();
     void nextWeekClicked();
     void prevWeekClicked();
     void nextMonthClicked();

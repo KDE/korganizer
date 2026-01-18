@@ -9,7 +9,7 @@
   SPDX-FileCopyrightText: 2000-2004 Cornelius Schumacher <schumacher@kde.org>
   SPDX-FileCopyrightText: 2003-2004 Reinhold Kainhofer <reinhold@kainhofer.com>
   SPDX-FileCopyrightText: 2005 Rafal Rzepecki <divide@users.sourceforge.net>
-  SPDX-FileCopyrightText: 2004-2025 Allen Winter <winter@kde.org>
+  SPDX-FileCopyrightText: 2004-2026 Allen Winter <winter@kde.org>
 
   SPDX-License-Identifier: GPL-2.0-or-later WITH LicenseRef-Qt-Commercial-exception-1.0
 */
@@ -208,6 +208,7 @@ CalendarView::CalendarView(QWidget *parent)
 
     // Signals emitted by mNavigatorBar
     connect(mNavigatorBar, &NavigatorBar::fullWindowClicked, this, &CalendarView::selectShowSideBar);
+    connect(mNavigatorBar, &NavigatorBar::todayClicked, mDateNavigator, &DateNavigator::selectToday);
     connect(mNavigatorBar, &NavigatorBar::prevYearClicked, mDateNavigator, &DateNavigator::selectPreviousYear);
     connect(mNavigatorBar, &NavigatorBar::nextYearClicked, mDateNavigator, &DateNavigator::selectNextYear);
     connect(mNavigatorBar, &NavigatorBar::prevWeekClicked, mDateNavigator, &DateNavigator::selectPreviousWeek);
@@ -224,6 +225,8 @@ CalendarView::CalendarView(QWidget *parent)
     // Signals emitted by mDateNavigatorContainer
     connect(mDateNavigatorContainer, &DateNavigatorContainer::weekClicked, this, &CalendarView::selectWeek);
     connect(mDateNavigatorContainer, &DateNavigatorContainer::fullWindowClicked, this, &CalendarView::selectShowSideBar);
+    connect(mDateNavigatorContainer, &DateNavigatorContainer::todayClicked, mDateNavigator, &DateNavigator::selectToday);
+
     connect(mDateNavigatorContainer, &DateNavigatorContainer::prevWeekClicked, mDateNavigator, &DateNavigator::selectPreviousWeek);
     connect(mDateNavigatorContainer, &DateNavigatorContainer::nextWeekClicked, mDateNavigator, &DateNavigator::selectNextWeek);
     connect(mDateNavigatorContainer, &DateNavigatorContainer::prevMonthClicked, mDateNavigator, &DateNavigator::selectPreviousMonth);

@@ -3,6 +3,7 @@
 
   SPDX-FileCopyrightText: 2001, 2002, 2003 Cornelius Schumacher <schumacher@kde.org>
   SPDX-FileCopyrightText: 2003-2004 Reinhold Kainhofer <reinhold@kainhofer.com>
+  SPDX-FileCopyrightText: 2006-2026 Allen Winter <winter@kde.org>
 
   SPDX-License-Identifier: GPL-2.0-or-later WITH LicenseRef-Qt-Commercial-exception-1.0
 */
@@ -33,6 +34,7 @@ KDateNavigator::KDateNavigator(QWidget *parent)
     topLayout->addWidget(mNavigatorBar, 0, 0, 1, 8);
 
     connect(mNavigatorBar, &NavigatorBar::fullWindowClicked, this, &KDateNavigator::fullWindowClicked);
+    connect(mNavigatorBar, &NavigatorBar::todayClicked, this, &KDateNavigator::todayClicked);
     connect(mNavigatorBar, &NavigatorBar::prevYearClicked, this, &KDateNavigator::prevYearClicked);
     connect(mNavigatorBar, &NavigatorBar::prevMonthClicked, this, &KDateNavigator::prevMonthClicked);
     connect(mNavigatorBar, &NavigatorBar::prevWeekClicked, this, &KDateNavigator::prevWeekClicked);

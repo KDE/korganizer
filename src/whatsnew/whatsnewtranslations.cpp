@@ -1,6 +1,6 @@
 /*
    SPDX-FileCopyrightText: 2024-2026 Laurent Montel <montel@kde.org>
-   SPDX-FileCopyrightText: 2025 Allen Winter <winter@kde.org>
+   SPDX-FileCopyrightText: 2025-2026 Allen Winter <winter@kde.org>
 
    SPDX-License-Identifier: LGPL-2.0-or-later
 */
@@ -21,6 +21,7 @@ QList<KLazyLocalizedString> WhatsNewTranslations::lastNewFeatures() const
         kli18n("Month view: use a slightly different color for drawing the day headers for days outside of the currently selected month"),
         kli18n("Month view: the navigation controls on the lower right side are removed in favor of the improved application navigator bar"),
         kli18n("Navigator bar: improved by adding week scrolling and showing/hiding the sidebar on a per-view basis"),
+        kli18n("Navigator bar: added a button to scroll the view to the current date"),
     };
 
     return info;

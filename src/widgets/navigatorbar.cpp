@@ -2,6 +2,7 @@
   This file is part of KOrganizer.
 
   SPDX-FileCopyrightText: 2003 Cornelius Schumacher <schumacher@kde.org>
+  SPDX-FileCopyrightText: 2006-2026 Allen Winter <winter@kde.org>
 
   SPDX-License-Identifier: GPL-2.0-or-later WITH LicenseRef-Qt-Commercial-exception-1.0
 */
@@ -32,6 +33,10 @@ NavigatorBar::NavigatorBar(QWidget *parent)
                                          i18nc("@info::whatsthis",
                                                "Click this button to show/hide the sidebar in the current view. "
                                                "Each view can show/hide the sidebar independently."));
+
+    mToday = createNavigationButton(QStringLiteral("go-jump-today"),
+                                    i18nc("@info:tooltip", "Scroll the view to today"),
+                                    i18nc("@info::whatsthis", "Scrolls the current view to today's date."));
 
     mPrevYear = createNavigationButton(isRTL ? QStringLiteral("arrow-right-double") : QStringLiteral("arrow-left-double"),
                                        i18nc("@info:tooltip", "Scroll backward a year"),
@@ -91,9 +96,11 @@ NavigatorBar::NavigatorBar(QWidget *parent)
     ctrlLayout->addWidget(mNextWeek);
     ctrlLayout->addWidget(mNextMonth);
     ctrlLayout->addWidget(mNextYear);
+    ctrlLayout->addWidget(mToday);
     ctrlLayout->addStretch();
 
     connect(mFullWindow, &QToolButton::clicked, this, &NavigatorBar::fullWindowClicked);
+    connect(mToday, &QToolButton::clicked, this, &NavigatorBar::todayClicked);
     connect(mPrevYear, &QToolButton::clicked, this, &NavigatorBar::prevYearClicked);
     connect(mPrevMonth, &QToolButton::clicked, this, &NavigatorBar::prevMonthClicked);
     connect(mPrevWeek, &QToolButton::clicked, this, &NavigatorBar::prevWeekClicked);

@@ -2,6 +2,7 @@
   This file is part of KOrganizer.
 
   SPDX-FileCopyrightText: 2003 Cornelius Schumacher <schumacher@kde.org>
+  SPDX-FileCopyrightText: 2006-2026 Allen Winter <winter@kde.org>
 
   SPDX-License-Identifier: GPL-2.0-or-later WITH LicenseRef-Qt-Commercial-exception-1.0
 */
@@ -34,6 +35,7 @@ public Q_SLOTS:
 
 Q_SIGNALS:
     void fullWindowClicked();
+    void todayClicked();
     void nextWeekClicked();
     void prevWeekClicked();
     void nextMonthClicked();
@@ -52,6 +54,7 @@ private:
     QDate mDate;
 
     QToolButton *mFullWindow = nullptr;
+    QToolButton *mToday = nullptr;
     QToolButton *mPrevYear = nullptr;
     QToolButton *mPrevMonth = nullptr;
     QToolButton *mPrevWeek = nullptr;

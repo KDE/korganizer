@@ -7,7 +7,7 @@
   SPDX-FileCopyrightText: 2004 Reinhold Kainhofer <reinhold@kainhofer.com>
   SPDX-FileCopyrightText: 2005 Rafal Rzepecki <divide@users.sourceforge.net>
   SPDX-FileCopyrightText: 2010-2026 Laurent Montel <montel@kde.org>
-  SPDX-FileCopyrightText: 2004-2025 Allen Winter <winter@kde.org>
+  SPDX-FileCopyrightText: 2004-2026 Allen Winter <winter@kde.org>
 
   SPDX-License-Identifier: GPL-2.0-or-later WITH LicenseRef-Qt-Commercial-exception-1.0
 */
@@ -465,7 +465,7 @@ void ActionManager::initActions()
     action->setIconText(i18nc("@action:button", "Today"));
     action->setStatusTip(i18nc("@info:status", "Scroll to Today"));
     action->setToolTip(i18nc("@info:tooltip", "Scroll the view to today"));
-    action->setWhatsThis(i18nc("@info:whatsthis", "Scrolls the current view to the today's date."));
+    action->setWhatsThis(i18nc("@info:whatsthis", "Scrolls the current view to today's date."));
     mACollection->addAction(QStringLiteral("go_today"), action);
     connect(action, &QAction::triggered, mCalendarView, &CalendarView::goToday);
 
