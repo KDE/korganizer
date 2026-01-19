@@ -58,7 +58,9 @@ repos:
   rev: v0.1.4
   hooks:
   - id: format-xml
-    args: [--self-closing=nospace,--indent=2,--write]
+    args: [--declaration=double-quotes,--self-closing=nospace,--indent=2,--write]
+    files: \.(xml|kcfg)$
+    types: []
     exclude: \.(svg)$
 #- repo: https://github.com/fsfe/reuse-tool
 #  rev: v5.0.2
