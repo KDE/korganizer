@@ -319,6 +319,12 @@
       <whatsthis>Select the to-do overdue color here.</whatsthis>
       <default>255, 100, 100</default>
     </entry>
+    <entry type="Color" key="Month Today Color" name="MonthTodayColor">
+      <label>Month view today background color</label>
+      <tooltip>Set the background color for today's date in month view</tooltip>
+      <whatsthis>In Month View, select the background color for today's date.</whatsthis>
+      <default>221, 251, 232</default>
+    </entry>
   </group>
   <!-- Colors and Fonts Page: Fonts Tab -->
   <group name="Fonts">

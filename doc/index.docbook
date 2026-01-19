@@ -2398,6 +2398,12 @@ allowing you to select the to-do overdue color.</para></listitem>
 </varlistentry>
 
 <varlistentry>
+  <term><guilabel>Month view today background color</guilabel></term>
+  <listitem><para>This button opens the <guilabel>Select Color</guilabel> dialog,
+      allowing you to select the background color for today's date in Month view.</para></listitem>
+</varlistentry>
+
+<varlistentry>
 <term><guilabel>Tags</guilabel></term>
 <listitem><para>This group allows you to assign a color to each tag. Select
 a tag in the drop down list, and press the button to open the

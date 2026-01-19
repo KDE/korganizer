@@ -89,9 +89,16 @@ KOPrefsDialogColorsAndFonts::KOPrefsDialogColorsAndFonts(QObject *parent, const 
     colorLayout->addWidget(todoOverdueColor->label(), 8, 0);
     colorLayout->addWidget(todoOverdueColor->button(), 8, 1);
 
+    // Monthview Today Color
+    Korganizer::KPrefsWidColor *monthTodayColor = addWidColor(KOPrefs::instance()->monthTodayColorItem(), colorFrame);
+    monthTodayColor->label()->setToolTip(monthTodayColor->button()->toolTip());
+    monthTodayColor->label()->setWhatsThis(monthTodayColor->button()->whatsThis());
+    colorLayout->addWidget(monthTodayColor->label(), 9, 0);
+    colorLayout->addWidget(monthTodayColor->button(), 9, 1);
+
     // categories colors
     auto categoryGroup = new QGroupBox(i18nc("@title:group", "Tags"), colorFrame);
-    colorLayout->addWidget(categoryGroup, 9, 0, 1, 2);
+    colorLayout->addWidget(categoryGroup, 10, 0, 1, 2);
 
     auto categoryLayout = new QGridLayout;
     categoryGroup->setLayout(categoryLayout);
@@ -121,7 +128,7 @@ KOPrefsDialogColorsAndFonts::KOPrefsDialogColorsAndFonts(QObject *parent, const 
 
     // resources colors
     auto resourceGroup = new QGroupBox(i18nc("@title:group", "Resources"), colorFrame);
-    colorLayout->addWidget(resourceGroup, 10, 0, 1, 2);
+    colorLayout->addWidget(resourceGroup, 11, 0, 1, 2);
 
     QBoxLayout *resourceLayout = new QHBoxLayout;
     resourceGroup->setLayout(resourceLayout);
@@ -144,7 +151,7 @@ KOPrefsDialogColorsAndFonts::KOPrefsDialogColorsAndFonts(QObject *parent, const 
     connect(mResourceButton, &KColorButton::changed, this, &KOPrefsDialogColorsAndFonts::setResourceColor);
     resourceLayout->addWidget(mResourceButton);
 
-    colorLayout->setRowStretch(11, 1);
+    colorLayout->setRowStretch(12, 1);
 
     auto fontFrame = new QWidget(widget());
     tabWidget->addTab(fontFrame, QIcon::fromTheme(QStringLiteral("preferences-desktop-font")), i18nc("@title:tab", "Fonts"));
