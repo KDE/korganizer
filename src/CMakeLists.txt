@@ -236,6 +236,7 @@ set(korganizer_core_LIB_SRCS
 )
 
 kconfig_add_kcfg_files(korganizer_core_LIB_SRCS settings/koprefs_base.kcfgc)
+set_source_files_properties(koprefs_base.cpp PROPERTIES SKIP_LINTING ON)
 
 add_library(korganizer_core ${korganizer_core_LIB_SRCS})
 generate_export_header(korganizer_core BASE_NAME korganizer_core)
