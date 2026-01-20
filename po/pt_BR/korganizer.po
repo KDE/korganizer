@@ -20,7 +20,7 @@ msgstr ""
 "Project-Id-Version: korganizer\n"
 "Report-Msgid-Bugs-To: https://bugs.kde.org\n"
 "POT-Creation-Date: 2026-01-19 00:44+0000\n"
-"PO-Revision-Date: 2026-01-02 06:17-0300\n"
+"PO-Revision-Date: 2026-01-19 07:30-0300\n"
 "Last-Translator: Marcus Gama <marcus.gama@gmail.com>\n"
 "Language-Team: Brazilian Portuguese <kde-i18n-pt_BR@kde.org>\n"
 "Language: pt_BR\n"
@@ -28,7 +28,7 @@ msgstr ""
 "Content-Type: text/plain; charset=UTF-8\n"
 "Content-Transfer-Encoding: 8bit\n"
 "Plural-Forms: nplurals=2; plural=(n > 1);\n"
-"X-Generator: Lokalize 25.12.0\n"
+"X-Generator: Lokalize 25.12.1\n"
 
 #, kde-format
 msgctxt "NAME OF TRANSLATORS"
@@ -783,12 +783,10 @@ msgid "Scroll the view to today"
 msgstr "Rolar a visualização para hoje"
 
 #: actionmanager.cpp:468
-#, fuzzy, kde-format
-#| msgctxt "@info:whatsthis"
-#| msgid "Scrolls the current view to the today's date."
+#, kde-format
 msgctxt "@info:whatsthis"
 msgid "Scrolls the current view to today's date."
-msgstr "Rola a visualização atual para a data do dia de hoje."
+msgstr "Rola a visualização atual para a data de hoje."
 
 #: actionmanager.cpp:474
 #, kde-format
@@ -6378,6 +6376,8 @@ msgstr ""
 #: whatsnew/whatsnewtranslations.cpp:24
 msgid "Navigator bar: added a button to scroll the view to the current date"
 msgstr ""
+"Barra de navegação: adicionado um botão para rolar a visualização até a data "
+"atual."
 
 #: whatsnew/whatsnewtranslations.cpp:33
 msgid ""
@@ -6672,12 +6672,10 @@ msgstr ""
 "vista. Cada vista pode mostrar/ocultar a barra lateral independentemente."
 
 #: widgets/navigatorbar.cpp:39
-#, fuzzy, kde-format
-#| msgctxt "@info:whatsthis"
-#| msgid "Scrolls the current view to the today's date."
+#, kde-format
 msgctxt "@info::whatsthis"
 msgid "Scrolls the current view to today's date."
-msgstr "Rola a visualização atual para a data do dia de hoje."
+msgstr "Rola a visualização atual para a data de hoje."
 
 #: widgets/navigatorbar.cpp:42
 #, kde-format

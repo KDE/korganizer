@@ -4,7 +4,7 @@
 # Author: Jessej
 # Author: Lliehu
 # Author: Niklas Laxström
-# SPDX-FileCopyrightText: 2009, 2011, 2012, 2013, 2016, 2017, 2018, 2019, 2020, 2021, 2022, 2023, 2024, 2025 Tommi Nieminen <translator@legisign.org>
+# SPDX-FileCopyrightText: 2009, 2011, 2012, 2013, 2016, 2017, 2018, 2019, 2020, 2021, 2022, 2023, 2024, 2025, 2026 Tommi Nieminen <translator@legisign.org>
 # Kim Enkovaara <kim.enkovaara@iki.fi>, 2003, 2006.
 # Teemu Rytilahti <teemu.rytilahti@d5k.net>, 2003, 2005.
 # Teemu Rytilahti <teemu.rytilahti@kde-fi.org>, 2003, 2008.
@@ -17,7 +17,7 @@ msgstr ""
 "Project-Id-Version: korganizer\n"
 "Report-Msgid-Bugs-To: https://bugs.kde.org\n"
 "POT-Creation-Date: 2026-01-19 00:44+0000\n"
-"PO-Revision-Date: 2025-10-15 21:17+0300\n"
+"PO-Revision-Date: 2026-01-05 17:25+0200\n"
 "Last-Translator: Tommi Nieminen <translator@legisign.org>\n"
 "Language-Team: Finnish <kde-i18n-doc@kde.org>\n"
 "Language: fi\n"
@@ -3692,7 +3692,7 @@ msgstr "Näytä valittu ilmentymä (verkko-osoitteen mukaan)"
 #: korganizer_options.h:24
 #, kde-format
 msgid "Url"
-msgstr ""
+msgstr "Verkko-osoite"
 
 #: korganizer_options.h:28
 #, kde-format
@@ -6249,18 +6249,25 @@ msgid ""
 "this behavior, uncheck the Enable reminders options in the settings "
 "Time&Date->Default Values tab"
 msgstr ""
+"Muistutukset ovat oletuksena käytössä kaikille uusille tapahtumille ja "
+"tehtäville. Tämän voi muutta poistamalla ”Käytä muistutuksia” -valinnan Aika "
+"ja päiväys -asetusten Oletusarvot-välilehdeltä"
 
 #: whatsnew/whatsnewtranslations.cpp:20
 msgid ""
 "Month view: no longer display the month year header to save vertical space "
 "and remove redundancy"
 msgstr ""
+"Kuukausinäkymä: säästä pystytilaa ja vähennä toisteisuutta olemalla "
+"näyttämällä kuukausi/vuosiotsaketta"
 
 #: whatsnew/whatsnewtranslations.cpp:21
 msgid ""
 "Month view: use a slightly different color for drawing the day headers for "
 "days outside of the currently selected month"
 msgstr ""
+"Kuukausinäkymä: piirrä päiväotsakkeet valitun kuun ulkopuolelta hieman eri "
+"värillä"
 
 #: whatsnew/whatsnewtranslations.cpp:22
 msgid ""
@@ -6448,12 +6455,9 @@ msgstr ""
 
 #. i18n()});
 #: whatsnew/whatsnewtranslations.cpp:102
-#, fuzzy, kde-format
-#| msgid ""
-#| "Incidence editor: detect and warn about creating incidences in the past"
+#, kde-format
 msgid "Incidence editor: the tags are sorted alphabetically in the tags editor"
-msgstr ""
-"Esiintymämuokkain: havaitse ja varoita luomasta esiintymiä menneisyyteen"
+msgstr "Esiintymämuokkain: luokitusmuokkaimessa luokitukset aakkostetaan"
 
 #: widgets/kdatenavigator.cpp:176
 #, kde-format

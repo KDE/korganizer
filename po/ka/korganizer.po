@@ -8,7 +8,7 @@ msgstr ""
 "Project-Id-Version: korganizer\n"
 "Report-Msgid-Bugs-To: https://bugs.kde.org\n"
 "POT-Creation-Date: 2026-01-19 00:44+0000\n"
-"PO-Revision-Date: 2026-01-02 04:55+0100\n"
+"PO-Revision-Date: 2026-01-19 11:22+0100\n"
 "Last-Translator: Temuri Doghonadze <temuri.doghonadze@gmail.com>\n"
 "Language-Team: Georgian <kde-i18n-doc@kde.org>\n"
 "Language: ka\n"
@@ -765,9 +765,7 @@ msgid "Scroll the view to today"
 msgstr "დღევანდელ დღეზე გადახვევა"
 
 #: actionmanager.cpp:468
-#, fuzzy, kde-format
-#| msgctxt "@info:whatsthis"
-#| msgid "Scrolls the current view to the today's date."
+#, kde-format
 msgctxt "@info:whatsthis"
 msgid "Scrolls the current view to today's date."
 msgstr "მიმდინარე ხედის დღევანდელ თარიღზე გადახვევა."
@@ -6316,7 +6314,7 @@ msgstr ""
 
 #: whatsnew/whatsnewtranslations.cpp:24
 msgid "Navigator bar: added a button to scroll the view to the current date"
-msgstr ""
+msgstr "ნავიგაციის ზოლი: დაემატა ღილაკი ხედის მიმდინარე თარიღამდე გადასახვევად"
 
 #: whatsnew/whatsnewtranslations.cpp:33
 msgid ""
@@ -6603,9 +6601,7 @@ msgstr ""
 "ხდება."
 
 #: widgets/navigatorbar.cpp:39
-#, fuzzy, kde-format
-#| msgctxt "@info:whatsthis"
-#| msgid "Scrolls the current view to the today's date."
+#, kde-format
 msgctxt "@info::whatsthis"
 msgid "Scrolls the current view to today's date."
 msgstr "მიმდინარე ხედის დღევანდელ თარიღზე გადახვევა."

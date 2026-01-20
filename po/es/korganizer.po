@@ -18,7 +18,7 @@ msgstr ""
 "Project-Id-Version: korganizer\n"
 "Report-Msgid-Bugs-To: https://bugs.kde.org\n"
 "POT-Creation-Date: 2026-01-19 00:44+0000\n"
-"PO-Revision-Date: 2026-01-02 16:34+0100\n"
+"PO-Revision-Date: 2026-01-19 12:12+0100\n"
 "Last-Translator: Eloy Cuadra <ecuadra@eloihr.net>\n"
 "Language-Team: Spanish <kde-l10n-es@kde.org>\n"
 "Language: es\n"
@@ -27,7 +27,7 @@ msgstr ""
 "Content-Transfer-Encoding: 8bit\n"
 "First-Translator: Boris Wesslowski <Boris@Wesslowski.com>\n"
 "Second-Translator: Pablo de Vicente <pvicentea@nexo.es>\n"
-"X-Generator: Lokalize 25.12.0\n"
+"X-Generator: Lokalize 25.12.1\n"
 "Plural-Forms: nplurals=2; plural=n != 1;\n"
 
 #, kde-format
@@ -783,9 +783,7 @@ msgid "Scroll the view to today"
 msgstr "Desplazarse por la vista hasta hoy"
 
 #: actionmanager.cpp:468
-#, fuzzy, kde-format
-#| msgctxt "@info:whatsthis"
-#| msgid "Scrolls the current view to the today's date."
+#, kde-format
 msgctxt "@info:whatsthis"
 msgid "Scrolls the current view to today's date."
 msgstr "Desplaza la vista actual hasta la fecha de hoy."
@@ -6433,6 +6431,8 @@ msgstr ""
 #: whatsnew/whatsnewtranslations.cpp:24
 msgid "Navigator bar: added a button to scroll the view to the current date"
 msgstr ""
+"Barra del navegador: se ha añadido un botón para desplazar la vista hasta la "
+"fecha actual."
 
 #: whatsnew/whatsnewtranslations.cpp:33
 msgid ""
@@ -6739,9 +6739,7 @@ msgstr ""
 "Cada vista puede mostrar u ocultar la barra lateral de forma independiente."
 
 #: widgets/navigatorbar.cpp:39
-#, fuzzy, kde-format
-#| msgctxt "@info:whatsthis"
-#| msgid "Scrolls the current view to the today's date."
+#, kde-format
 msgctxt "@info::whatsthis"
 msgid "Scrolls the current view to today's date."
 msgstr "Desplaza la vista actual hasta la fecha de hoy."

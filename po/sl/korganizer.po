@@ -1,7 +1,7 @@
 # translation of korganizer.po to Slovenian
 # Translation of korganizer.po to Slovenian
 # Copyright (C) 2001,2002, 2003, 2004, 2005, 2006 Free Software Foundation, Inc.
-# $Id: korganizer.po 1728042 2026-01-19 01:26:33Z scripty $
+# $Id: korganizer.po 1728143 2026-01-20 01:25:44Z scripty $
 # $Source$
 #
 # Roman Maurer <roman.maurer@hermes.si>, 2001.
@@ -15,7 +15,7 @@ msgstr ""
 "Project-Id-Version: korganizer\n"
 "Report-Msgid-Bugs-To: https://bugs.kde.org\n"
 "POT-Creation-Date: 2026-01-19 00:44+0000\n"
-"PO-Revision-Date: 2026-01-02 06:56+0100\n"
+"PO-Revision-Date: 2026-01-19 07:32+0100\n"
 "Last-Translator: Matjaž Jeran <matjaz.jeran@amis.net>\n"
 "Language-Team: Slovenian <lugos-slo@lugos.si>\n"
 "Language: sl\n"
@@ -776,9 +776,7 @@ msgid "Scroll the view to today"
 msgstr "Pomakni pogled na danes"
 
 #: actionmanager.cpp:468
-#, fuzzy, kde-format
-#| msgctxt "@info:whatsthis"
-#| msgid "Scrolls the current view to the today's date."
+#, kde-format
 msgctxt "@info:whatsthis"
 msgid "Scrolls the current view to today's date."
 msgstr "Pomakne trenutni pogled na današnji datum."
@@ -6354,7 +6352,7 @@ msgstr ""
 
 #: whatsnew/whatsnewtranslations.cpp:24
 msgid "Navigator bar: added a button to scroll the view to the current date"
-msgstr ""
+msgstr "Navigacijska vrstica: dodan gumb za pomik pogleda na trenutni datum"
 
 #: whatsnew/whatsnewtranslations.cpp:33
 msgid ""
@@ -6643,9 +6641,7 @@ msgstr ""
 "pogledu. Vsak pogled lahko neodvisno prikaže/skrije stransko vrstico."
 
 #: widgets/navigatorbar.cpp:39
-#, fuzzy, kde-format
-#| msgctxt "@info:whatsthis"
-#| msgid "Scrolls the current view to the today's date."
+#, kde-format
 msgctxt "@info::whatsthis"
 msgid "Scrolls the current view to today's date."
 msgstr "Pomakne trenutni pogled na današnji datum."

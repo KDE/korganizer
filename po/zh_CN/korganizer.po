@@ -740,12 +740,10 @@ msgid "Scroll the view to today"
 msgstr "跳转到今天"
 
 #: actionmanager.cpp:468
-#, fuzzy, kde-format
-#| msgctxt "@info:whatsthis"
-#| msgid "Scrolls the current view to the today's date."
+#, kde-format
 msgctxt "@info:whatsthis"
 msgid "Scrolls the current view to today's date."
-msgstr "将当前视图滚动到今天。"
+msgstr ""
 
 #: actionmanager.cpp:474
 #, kde-format
@@ -6202,12 +6200,10 @@ msgid ""
 msgstr ""
 
 #: widgets/navigatorbar.cpp:39
-#, fuzzy, kde-format
-#| msgctxt "@info:whatsthis"
-#| msgid "Scrolls the current view to the today's date."
+#, kde-format
 msgctxt "@info::whatsthis"
 msgid "Scrolls the current view to today's date."
-msgstr "将当前视图滚动到今天。"
+msgstr ""
 
 #: widgets/navigatorbar.cpp:42
 #, kde-format

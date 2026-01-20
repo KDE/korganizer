@@ -12,7 +12,7 @@ msgstr ""
 "Project-Id-Version: korganizer\n"
 "Report-Msgid-Bugs-To: https://bugs.kde.org\n"
 "POT-Creation-Date: 2026-01-19 00:44+0000\n"
-"PO-Revision-Date: 2026-01-08 12:26+0400\n"
+"PO-Revision-Date: 2026-01-19 22:03+0400\n"
 "Last-Translator: Zayed Al-Saidi <zayed.alsaidi@gmail.com>\n"
 "Language-Team: ar\n"
 "Language: ar\n"
@@ -759,12 +759,10 @@ msgid "Scroll the view to today"
 msgstr "مرّر نحو عرض اليوم"
 
 #: actionmanager.cpp:468
-#, fuzzy, kde-format
-#| msgctxt "@info:whatsthis"
-#| msgid "Scrolls the current view to the today's date."
+#, kde-format
 msgctxt "@info:whatsthis"
 msgid "Scrolls the current view to today's date."
-msgstr "تمرير العرض الحالي إلى تاريخ اليوم."
+msgstr "يمرر العرض الحالي إلى تاريخ اليوم."
 
 #: actionmanager.cpp:474
 #, kde-format
@@ -6237,7 +6235,7 @@ msgstr ""
 
 #: whatsnew/whatsnewtranslations.cpp:24
 msgid "Navigator bar: added a button to scroll the view to the current date"
-msgstr ""
+msgstr "شريط التنقل: إضافة زر للتمرير إلى التاريخ الحالي"
 
 #: whatsnew/whatsnewtranslations.cpp:33
 msgid ""
@@ -6510,12 +6508,10 @@ msgstr ""
 "إظهار/إخفاء الشريط الجانبي بشكل مستقل."
 
 #: widgets/navigatorbar.cpp:39
-#, fuzzy, kde-format
-#| msgctxt "@info:whatsthis"
-#| msgid "Scrolls the current view to the today's date."
+#, kde-format
 msgctxt "@info::whatsthis"
 msgid "Scrolls the current view to today's date."
-msgstr "تمرير العرض الحالي إلى تاريخ اليوم."
+msgstr "يمرر العرض الحالي إلى تاريخ اليوم."
 
 #: widgets/navigatorbar.cpp:42
 #, kde-format

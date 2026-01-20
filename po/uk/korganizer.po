@@ -12,7 +12,7 @@ msgstr ""
 "Project-Id-Version: korganizer\n"
 "Report-Msgid-Bugs-To: https://bugs.kde.org\n"
 "POT-Creation-Date: 2026-01-19 00:44+0000\n"
-"PO-Revision-Date: 2026-01-02 09:24+0200\n"
+"PO-Revision-Date: 2026-01-19 08:28+0200\n"
 "Last-Translator: Yuri Chornoivan <yurchor@ukr.net>\n"
 "Language-Team: Ukrainian <trans-uk@lists.fedoraproject.org>\n"
 "Language: uk\n"
@@ -777,9 +777,7 @@ msgid "Scroll the view to today"
 msgstr "Гортати перегляд до сьогоднішнього дня"
 
 #: actionmanager.cpp:468
-#, fuzzy, kde-format
-#| msgctxt "@info:whatsthis"
-#| msgid "Scrolls the current view to the today's date."
+#, kde-format
 msgctxt "@info:whatsthis"
 msgid "Scrolls the current view to today's date."
 msgstr "Гортає поточний перегляд до поточної дати."
@@ -6393,6 +6391,7 @@ msgstr ""
 #: whatsnew/whatsnewtranslations.cpp:24
 msgid "Navigator bar: added a button to scroll the view to the current date"
 msgstr ""
+"Панель навігації: додано кнопку для гортання перегляду до поточної дати"
 
 #: whatsnew/whatsnewtranslations.cpp:33
 msgid ""
@@ -6696,9 +6695,7 @@ msgstr ""
 "видимою чи невидимою незалежно."
 
 #: widgets/navigatorbar.cpp:39
-#, fuzzy, kde-format
-#| msgctxt "@info:whatsthis"
-#| msgid "Scrolls the current view to the today's date."
+#, kde-format
 msgctxt "@info::whatsthis"
 msgid "Scrolls the current view to today's date."
 msgstr "Гортає поточний перегляд до поточної дати."

@@ -4,7 +4,7 @@ msgstr ""
 "Project-Id-Version: korganizer\n"
 "Report-Msgid-Bugs-To: https://bugs.kde.org\n"
 "POT-Creation-Date: 2026-01-19 00:44+0000\n"
-"PO-Revision-Date: 2026-01-10 22:21+0100\n"
+"PO-Revision-Date: 2026-01-19 22:38+0100\n"
 "Last-Translator: Mincho Kondarev <mkondarev@yahoo.de>\n"
 "Language-Team: Bulgarian <kde-i18n-doc@kde.org>\n"
 "Language: bg\n"
@@ -763,9 +763,7 @@ msgid "Scroll the view to today"
 msgstr "Превъртете изгледа до днес"
 
 #: actionmanager.cpp:468
-#, fuzzy, kde-format
-#| msgctxt "@info:whatsthis"
-#| msgid "Scrolls the current view to the today's date."
+#, kde-format
 msgctxt "@info:whatsthis"
 msgid "Scrolls the current view to today's date."
 msgstr "Превърта текущия изглед до днешната дата."
@@ -6361,6 +6359,7 @@ msgstr ""
 #: whatsnew/whatsnewtranslations.cpp:24
 msgid "Navigator bar: added a button to scroll the view to the current date"
 msgstr ""
+"Навигационна лента: добавен е бутон за превъртане на изгледа до текущата дата"
 
 #: whatsnew/whatsnewtranslations.cpp:33
 msgid ""
@@ -6659,9 +6658,7 @@ msgstr ""
 "независимо."
 
 #: widgets/navigatorbar.cpp:39
-#, fuzzy, kde-format
-#| msgctxt "@info:whatsthis"
-#| msgid "Scrolls the current view to the today's date."
+#, kde-format
 msgctxt "@info::whatsthis"
 msgid "Scrolls the current view to today's date."
 msgstr "Превърта текущия изглед до днешната дата."
