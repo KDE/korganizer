@@ -16,7 +16,7 @@ msgid ""
 msgstr ""
 "Project-Id-Version: korganizer\n"
 "Report-Msgid-Bugs-To: https://bugs.kde.org\n"
-"POT-Creation-Date: 2026-01-19 00:44+0000\n"
+"POT-Creation-Date: 2026-01-21 00:46+0000\n"
 "PO-Revision-Date: 2024-09-20 09:25+0300\n"
 "Last-Translator: Antonis Geralis <capoiosct@gmail.com>\n"
 "Language-Team: Greek <kde-i18n-el@kde.org>\n"
@@ -3967,13 +3967,13 @@ msgctxt "@title:tab"
 msgid "Colors"
 msgstr "Χρώματα"
 
-#: prefs/koprefsdialogcolorsandfonts.cpp:93
+#: prefs/koprefsdialogcolorsandfonts.cpp:100
 #, kde-format
 msgctxt "@title:group"
 msgid "Tags"
 msgstr "Ετικέτες"
 
-#: prefs/koprefsdialogcolorsandfonts.cpp:107
+#: prefs/koprefsdialogcolorsandfonts.cpp:114
 #, kde-format
 msgctxt "@info:whatsthis"
 msgid ""
@@ -3983,20 +3983,20 @@ msgstr ""
 "Επιλέξτε την ετικέτα που επιθυμείτε να τροποποιήσετε. Μπορείτε να αλλάξετε "
 "το χρώμα της επιλεγμένης ετικέτας χρησιμοποιώντας το διπλανό κουμπί χρώματος."
 
-#: prefs/koprefsdialogcolorsandfonts.cpp:115
+#: prefs/koprefsdialogcolorsandfonts.cpp:122
 #, kde-format
 msgctxt "@info:whatsthis"
 msgid "Choose the color of the tag selected in the adjacent combo box."
 msgstr ""
 "Επιλέξτε το χρώμα της επιλεγμένης ετικέτας στο διπλανό σύνθετο πλαίσιο."
 
-#: prefs/koprefsdialogcolorsandfonts.cpp:123
+#: prefs/koprefsdialogcolorsandfonts.cpp:130
 #, kde-format
 msgctxt "@title:group"
 msgid "Resources"
 msgstr "Πόροι"
 
-#: prefs/koprefsdialogcolorsandfonts.cpp:134
+#: prefs/koprefsdialogcolorsandfonts.cpp:141
 #, kde-format
 msgctxt "@info:whatsthis"
 msgid ""
@@ -4006,7 +4006,7 @@ msgstr ""
 "Επιλέξτε εδώ το ημερολόγιο που επιθυμείτε να τροποποιήσετε. Μπορείτε να "
 "αλλάξετε το χρώμα του ημερολογίου χρησιμοποιώντας το παρακάτω κουμπί."
 
-#: prefs/koprefsdialogcolorsandfonts.cpp:142
+#: prefs/koprefsdialogcolorsandfonts.cpp:149
 #, kde-format
 msgctxt "@info:whatsthis"
 msgid ""
@@ -4015,14 +4015,14 @@ msgstr ""
 "Επιλέξτε εδώ το χρώμα του επιλεγμένου ημερολογίου χρησιμοποιώντας την "
 "παραπάνω λίστα."
 
-#: prefs/koprefsdialogcolorsandfonts.cpp:150
+#: prefs/koprefsdialogcolorsandfonts.cpp:157
 #, kde-format
 msgctxt "@title:tab"
 msgid "Fonts"
 msgstr "Γραμματοσειρές"
 
-#: prefs/koprefsdialogcolorsandfonts.cpp:162
-#: prefs/koprefsdialogcolorsandfonts.cpp:168
+#: prefs/koprefsdialogcolorsandfonts.cpp:169
+#: prefs/koprefsdialogcolorsandfonts.cpp:175
 #, kde-format
 msgctxt "@label"
 msgid "Event text"
@@ -5334,8 +5334,8 @@ msgstr ""
 #. i18n: ectx: label, entry, group (Colors)
 #. i18n: ectx: label, entry, group (Theming)
 #. i18n: ectx: label, entry, group (Theme/Month view)
-#: settings/korganizer.kcfg:287 settings/korganizer.kcfg:486
-#: settings/korganizer.kcfg:593
+#: settings/korganizer.kcfg:287 settings/korganizer.kcfg:492
+#: settings/korganizer.kcfg:599
 #, kde-format
 msgid "Holiday color"
 msgstr "Χρώμα αργίας"
@@ -5343,8 +5343,8 @@ msgstr "Χρώμα αργίας"
 #. i18n: ectx: whatsthis, entry, group (Colors)
 #. i18n: ectx: whatsthis, entry, group (Theming)
 #. i18n: ectx: whatsthis, entry, group (Theme/Month view)
-#: settings/korganizer.kcfg:288 settings/korganizer.kcfg:487
-#: settings/korganizer.kcfg:594
+#: settings/korganizer.kcfg:288 settings/korganizer.kcfg:493
+#: settings/korganizer.kcfg:600
 #, kde-format
 msgid ""
 "Select the holiday color here. The holiday color will be used for the "
@@ -5355,14 +5355,14 @@ msgstr ""
 
 #. i18n: ectx: label, entry (AgendaBgColor), group (Colors)
 #. i18n: ectx: label, entry, group (Theming)
-#: settings/korganizer.kcfg:292 settings/korganizer.kcfg:415
+#: settings/korganizer.kcfg:292 settings/korganizer.kcfg:421
 #, kde-format
 msgid "Agenda view background color"
 msgstr "Χρώμα φόντου προβολής ατζέντας"
 
 #. i18n: ectx: whatsthis, entry (AgendaBgColor), group (Colors)
 #. i18n: ectx: whatsthis, entry, group (Theming)
-#: settings/korganizer.kcfg:293 settings/korganizer.kcfg:416
+#: settings/korganizer.kcfg:293 settings/korganizer.kcfg:422
 #, kde-format
 msgid "Select the agenda view background color here."
 msgstr "Επιλέξτε εδώ το χρώμα φόντου προβολής ατζέντας."
@@ -5407,7 +5407,7 @@ msgstr ""
 
 #. i18n: ectx: label, entry, group (Colors)
 #. i18n: ectx: label, entry, group (Theme/Month view)
-#: settings/korganizer.kcfg:308 settings/korganizer.kcfg:514
+#: settings/korganizer.kcfg:308 settings/korganizer.kcfg:520
 #, kde-format
 msgid "Working hours color"
 msgstr "Χρώμα ωρών εργασίας"
@@ -5420,40 +5420,60 @@ msgstr "Επιλέξτε το χρώμα φόντου των ωρών εργασ
 
 #. i18n: ectx: label, entry (TodoDueTodayColor), group (Colors)
 #. i18n: ectx: label, entry, group (Theme/Month view)
-#: settings/korganizer.kcfg:313 settings/korganizer.kcfg:566
+#: settings/korganizer.kcfg:313 settings/korganizer.kcfg:572
 #, kde-format
 msgid "To-do due today color"
 msgstr "Χρώμα σημερινής προς υλοποίηση εργασίας"
 
 #. i18n: ectx: whatsthis, entry (TodoDueTodayColor), group (Colors)
 #. i18n: ectx: whatsthis, entry, group (Theme/Month view)
-#: settings/korganizer.kcfg:314 settings/korganizer.kcfg:567
+#: settings/korganizer.kcfg:314 settings/korganizer.kcfg:573
 #, kde-format
 msgid "Select the to-do due today color here."
 msgstr "Επιλέξτε εδώ το χρώμα σημερινής προς υλοποίηση εργασίας."
 
 #. i18n: ectx: label, entry (TodoOverdueColor), group (Colors)
 #. i18n: ectx: label, entry, group (Theme/Month view)
-#: settings/korganizer.kcfg:318 settings/korganizer.kcfg:579
+#: settings/korganizer.kcfg:318 settings/korganizer.kcfg:585
 #, kde-format
 msgid "To-do overdue color"
 msgstr "Χρώμα εκπρόθεσμης εργασίας"
 
 #. i18n: ectx: whatsthis, entry (TodoOverdueColor), group (Colors)
 #. i18n: ectx: whatsthis, entry, group (Theme/Month view)
-#: settings/korganizer.kcfg:319 settings/korganizer.kcfg:580
+#: settings/korganizer.kcfg:319 settings/korganizer.kcfg:586
 #, kde-format
 msgid "Select the to-do overdue color here."
 msgstr "Επιλέξτε εδώ το χρώμα εκπρόθεσμης εργασίας."
 
+#. i18n: ectx: label, entry (MonthTodayColor), group (Colors)
+#: settings/korganizer.kcfg:323
+#, fuzzy, kde-format
+#| msgid "Month view background color"
+msgid "Month view today background color"
+msgstr "Χρώμα φόντου προβολής μήνα"
+
+#. i18n: ectx: tooltip, entry (MonthTodayColor), group (Colors)
+#: settings/korganizer.kcfg:324
+#, fuzzy, kde-format
+#| msgid "Select the working hours background color for the Month view here."
+msgid "Set the background color for today's date in month view"
+msgstr "Επιλέξτε εδώ το χρώμα φόντου των ωρών εργασίας στην προβολή μήνα."
+
+#. i18n: ectx: whatsthis, entry (MonthTodayColor), group (Colors)
+#: settings/korganizer.kcfg:325
+#, kde-format
+msgid "In Month View, select the background color for today's date."
+msgstr ""
+
 #. i18n: ectx: label, entry, group (Fonts)
-#: settings/korganizer.kcfg:326
+#: settings/korganizer.kcfg:332
 #, kde-format
 msgid "Time bar"
 msgstr "Γραμμή χρόνου"
 
 #. i18n: ectx: whatsthis, entry, group (Fonts)
-#: settings/korganizer.kcfg:327
+#: settings/korganizer.kcfg:333
 #, kde-format
 msgid ""
 "Press this button to configure the time bar font. The time bar is the widget "
@@ -5466,13 +5486,13 @@ msgstr ""
 "επιθυμητή γραμματοσειρά."
 
 #. i18n: ectx: label, entry, group (Fonts)
-#: settings/korganizer.kcfg:330
+#: settings/korganizer.kcfg:336
 #, kde-format
 msgid "Month view"
 msgstr "Προβολή μήνα"
 
 #. i18n: ectx: whatsthis, entry, group (Fonts)
-#: settings/korganizer.kcfg:331
+#: settings/korganizer.kcfg:337
 #, kde-format
 msgid ""
 "Press this button to configure the month view font. This button will open "
@@ -5484,13 +5504,13 @@ msgstr ""
 "να επιλέξετε την επιθυμητή γραμματοσειρά για την προβολή μήνα."
 
 #. i18n: ectx: label, entry, group (Fonts)
-#: settings/korganizer.kcfg:334
+#: settings/korganizer.kcfg:340
 #, kde-format
 msgid "Agenda view"
 msgstr "Προβολή ατζέντας"
 
 #. i18n: ectx: whatsthis, entry, group (Fonts)
-#: settings/korganizer.kcfg:335
+#: settings/korganizer.kcfg:341
 #, kde-format
 msgid ""
 "Press this button to configure the agenda view font. This button will open "
@@ -5502,14 +5522,14 @@ msgstr ""
 "για να επιλέξετε την επιθυμητή γραμματοσειρά."
 
 #. i18n: ectx: label, entry, group (Fonts)
-#: settings/korganizer.kcfg:338
+#: settings/korganizer.kcfg:344
 #, fuzzy, kde-format
 #| msgid "Show current-time (Marcus Bains) line"
 msgid "Current-time (Marcus Bains) line"
 msgstr "Εμφάνιση γραμμής τρέχουσας ώρας (Marcus Bains)"
 
 #. i18n: ectx: whatsthis, entry, group (Fonts)
-#: settings/korganizer.kcfg:339
+#: settings/korganizer.kcfg:345
 #, fuzzy, kde-format
 #| msgid ""
 #| "Press this button to configure the current-time line font. This button "
@@ -5526,45 +5546,45 @@ msgstr ""
 "στην προβολή ατζέντας."
 
 #. i18n: ectx: label, entry (DefaultTodoAttachMethod), group (Hidden Options)
-#: settings/korganizer.kcfg:358
+#: settings/korganizer.kcfg:364
 #, kde-format
 msgid "Default todo attachment method"
 msgstr "Προκαθορισμένη μέθοδος επισύναψης προς υλοποίηση εργασιών"
 
 #. i18n: ectx: whatsthis, entry (DefaultTodoAttachMethod), group (Hidden Options)
-#: settings/korganizer.kcfg:359
+#: settings/korganizer.kcfg:365
 #, kde-format
 msgid "The default way of attaching dropped emails to a task"
 msgstr ""
 "Η προκαθορισμένη μέθοδος σύναψης αλληλογραφίας κατατεθειμένης σε μια εργασία"
 
 #. i18n: ectx: label, entry (DefaultTodoAttachMethod), group (Hidden Options)
-#: settings/korganizer.kcfg:362
+#: settings/korganizer.kcfg:368
 #, kde-format
 msgid "Always ask"
 msgstr "Ερώτηση πάντα"
 
 #. i18n: ectx: label, entry (DefaultTodoAttachMethod), group (Hidden Options)
-#: settings/korganizer.kcfg:365
+#: settings/korganizer.kcfg:371
 #, kde-format
 msgid "Only attach link to message"
 msgstr "Επισύναψη μόνο δεσμού στο μήνυμα"
 
 #. i18n: ectx: label, entry (DefaultTodoAttachMethod), group (Hidden Options)
-#: settings/korganizer.kcfg:368
+#: settings/korganizer.kcfg:374
 #, kde-format
 msgid "Attach complete message"
 msgstr "Επισύναψη πλήρους μηνύματος"
 
 #. i18n: ectx: label, entry, group (Theming)
 #. i18n: ectx: label, entry, group (Theme/Month view)
-#: settings/korganizer.kcfg:422 settings/korganizer.kcfg:509
+#: settings/korganizer.kcfg:428 settings/korganizer.kcfg:515
 #, kde-format
 msgid "Highlight color"
 msgstr "Χρώμα τονισμού"
 
 #. i18n: ectx: whatsthis, entry, group (Theming)
-#: settings/korganizer.kcfg:423
+#: settings/korganizer.kcfg:429
 #, kde-format
 msgid ""
 "Select the highlight color here. The highlight color will be used for "
@@ -5575,13 +5595,13 @@ msgstr ""
 "ημερομηνίας."
 
 #. i18n: ectx: label, entry, group (Theming)
-#: settings/korganizer.kcfg:491
+#: settings/korganizer.kcfg:497
 #, kde-format
 msgid "Use system color"
 msgstr "Χρήση χρώματος συστήματος"
 
 #. i18n: ectx: whatsthis, entry, group (Theming)
-#: settings/korganizer.kcfg:492
+#: settings/korganizer.kcfg:498
 #, kde-format
 msgid ""
 "Use system color instead of user defined color. If enabled will ignore all "
@@ -5591,19 +5611,19 @@ msgstr ""
 "ενεργοποιηθεί θα αγνοηθούν όλες οι άλλες ρυθμίσεις χρώματος"
 
 #. i18n: ectx: label, entry, group (Theme/Month view)
-#: settings/korganizer.kcfg:502
+#: settings/korganizer.kcfg:508
 #, kde-format
 msgid "Month view background color"
 msgstr "Χρώμα φόντου προβολής μήνα"
 
 #. i18n: ectx: whatsthis, entry, group (Theme/Month view)
-#: settings/korganizer.kcfg:503
+#: settings/korganizer.kcfg:509
 #, kde-format
 msgid "Select the Month view background color here."
 msgstr "Επιλέξτε εδώ το χρώμα φόντου της προβολής μήνα."
 
 #. i18n: ectx: whatsthis, entry, group (Theme/Month view)
-#: settings/korganizer.kcfg:510
+#: settings/korganizer.kcfg:516
 #, kde-format
 msgid ""
 "Select the highlight color here. The highlight color will be used for "
@@ -5614,19 +5634,19 @@ msgstr ""
 "ημερομηνίας."
 
 #. i18n: ectx: whatsthis, entry, group (Theme/Month view)
-#: settings/korganizer.kcfg:515
+#: settings/korganizer.kcfg:521
 #, kde-format
 msgid "Select the working hours background color for the Month view here."
 msgstr "Επιλέξτε εδώ το χρώμα φόντου των ωρών εργασίας στην προβολή μήνα."
 
 #. i18n: ectx: label, entry, group (Theme/Month view)
-#: settings/korganizer.kcfg:537
+#: settings/korganizer.kcfg:543
 #, kde-format
 msgid "Default event color"
 msgstr "Προκαθορισμένο χρώμα γεγονότος"
 
 #. i18n: ectx: whatsthis, entry, group (Theme/Month view)
-#: settings/korganizer.kcfg:538
+#: settings/korganizer.kcfg:544
 #, kde-format
 msgid ""
 "Select the default event color here. The default event color will be used "
@@ -6637,81 +6657,88 @@ msgstr ""
 
 #: whatsnew/whatsnewtranslations.cpp:23
 msgid ""
+"Month view: the background color for today's date cell can be changed. To "
+"configure the color,  set the \"Month view today background color\" in the "
+"Colors and Fonts settings"
+msgstr ""
+
+#: whatsnew/whatsnewtranslations.cpp:25
+msgid ""
 "Navigator bar: improved by adding week scrolling and showing/hiding the "
 "sidebar on a per-view basis"
 msgstr ""
 
-#: whatsnew/whatsnewtranslations.cpp:24
+#: whatsnew/whatsnewtranslations.cpp:26
 msgid "Navigator bar: added a button to scroll the view to the current date"
 msgstr ""
 
-#: whatsnew/whatsnewtranslations.cpp:33
+#: whatsnew/whatsnewtranslations.cpp:35
 msgid ""
 "Agenda view: added timelabels context menu to show/hide time labels for the "
 "system timezone on the right (or left) side as well"
 msgstr ""
 
-#: whatsnew/whatsnewtranslations.cpp:34
+#: whatsnew/whatsnewtranslations.cpp:36
 msgid "Incidence editor: detect and warn about creating incidences in the past"
 msgstr ""
 
-#: whatsnew/whatsnewtranslations.cpp:35
+#: whatsnew/whatsnewtranslations.cpp:37
 msgid "Incidence editor: add emoji support"
 msgstr ""
 
-#: whatsnew/whatsnewtranslations.cpp:44
+#: whatsnew/whatsnewtranslations.cpp:46
 #, fuzzy
 #| msgctxt "@action:button"
 #| msgid "Add as new calendar"
 msgid "Add What's New menu"
 msgstr "Προσθήκη σαν νέο ημερολόγιο"
 
-#: whatsnew/whatsnewtranslations.cpp:45
+#: whatsnew/whatsnewtranslations.cpp:47
 msgid "The current view is remembered"
 msgstr ""
 
-#: whatsnew/whatsnewtranslations.cpp:46
+#: whatsnew/whatsnewtranslations.cpp:48
 msgid "Add a Date Picker dialog available on the Go menu"
 msgstr ""
 
-#: whatsnew/whatsnewtranslations.cpp:47
+#: whatsnew/whatsnewtranslations.cpp:49
 msgid ""
 "Agenda view: consolidated the \"Day\", \"Next X Days\", \"Work Schedule\", "
 "\"Week\" time ranges into the Agenda tool button"
 msgstr ""
 
-#: whatsnew/whatsnewtranslations.cpp:48
+#: whatsnew/whatsnewtranslations.cpp:50
 msgid ""
 "Agenda view: added timelabels context menu option to toggle a 24-hour "
 "(military style) clock"
 msgstr ""
 
-#: whatsnew/whatsnewtranslations.cpp:49
+#: whatsnew/whatsnewtranslations.cpp:51
 msgid "Agenda view: added context menu to create new Event or To-do"
 msgstr ""
 
-#: whatsnew/whatsnewtranslations.cpp:50
+#: whatsnew/whatsnewtranslations.cpp:52
 msgid ""
 "To-do view: added context menu options for toggling completion and reminders"
 msgstr ""
 
-#: whatsnew/whatsnewtranslations.cpp:51
+#: whatsnew/whatsnewtranslations.cpp:53
 #, fuzzy
 #| msgid "To-do list view uses full window"
 msgid "To-do view: save/restore fullview setting"
 msgstr "Η προβολή προς υλοποίηση εργασιών χρησιμοποιεί ολόκληρο το παράθυρο"
 
-#: whatsnew/whatsnewtranslations.cpp:52
+#: whatsnew/whatsnewtranslations.cpp:54
 msgid "To-do view: save/restore flatview setting"
 msgstr ""
 
-#: whatsnew/whatsnewtranslations.cpp:53
+#: whatsnew/whatsnewtranslations.cpp:55
 msgid ""
 "Date navigator: added an option in the Configure->Views settings for hiding "
 "the week numbers"
 msgstr ""
 
-#: whatsnew/whatsnewtranslations.cpp:54
+#: whatsnew/whatsnewtranslations.cpp:56
 #, fuzzy
 #| msgid "Week numbers select a work week when in work week mode"
 msgid ""
@@ -6721,78 +6748,78 @@ msgstr ""
 "Οι αριθμοί εβδομάδας επιτρέπουν την επιλογή της εργάσιμης εβδομάδας στην "
 "λειτουργία εβδομάδα εργασίας"
 
-#: whatsnew/whatsnewtranslations.cpp:55
+#: whatsnew/whatsnewtranslations.cpp:57
 msgid "Incidence editor: remember/restore the template manager geometry"
 msgstr ""
 
-#: whatsnew/whatsnewtranslations.cpp:56
+#: whatsnew/whatsnewtranslations.cpp:58
 msgid "Incidence editor: support drag-and-drop attachments"
 msgstr ""
 
-#: whatsnew/whatsnewtranslations.cpp:57
+#: whatsnew/whatsnewtranslations.cpp:59
 msgid "The export calendar dialog remembers its last export folder location"
 msgstr ""
 
-#: whatsnew/whatsnewtranslations.cpp:58
+#: whatsnew/whatsnewtranslations.cpp:60
 msgid "The import calendar dialog remembers its last import folder location"
 msgstr ""
 
-#: whatsnew/whatsnewtranslations.cpp:59
+#: whatsnew/whatsnewtranslations.cpp:61
 #, fuzzy
 #| msgid "Get &Hot New Stuff..."
 msgid "Get Hot New Stuff removed"
 msgstr "Λήψη &νέου υλικού..."
 
-#: whatsnew/whatsnewtranslations.cpp:60
+#: whatsnew/whatsnewtranslations.cpp:62
 msgid "Add calendar file: remote calendars are always read-only"
 msgstr ""
 
-#: whatsnew/whatsnewtranslations.cpp:61
+#: whatsnew/whatsnewtranslations.cpp:63
 msgid "Add calendar file: will not permit an empty file path"
 msgstr ""
 
-#: whatsnew/whatsnewtranslations.cpp:62
+#: whatsnew/whatsnewtranslations.cpp:64
 msgid ""
 "DAV configuration: dialog allows seeing the account password when editing"
 msgstr ""
 
-#: whatsnew/whatsnewtranslations.cpp:63
+#: whatsnew/whatsnewtranslations.cpp:65
 msgid "DAV configuration: wizard shows icons for the various providers"
 msgstr ""
 
-#: whatsnew/whatsnewtranslations.cpp:64
+#: whatsnew/whatsnewtranslations.cpp:66
 msgid "DAV configuration: wizard updated list of providers"
 msgstr ""
 
-#: whatsnew/whatsnewtranslations.cpp:82
+#: whatsnew/whatsnewtranslations.cpp:84
 #, kde-format
 msgid ""
 "Semantics are changed from a \"working schedule\" concept to a \"week "
 "schedule\" concept to accommodate non-working users"
 msgstr ""
 
-#: whatsnew/whatsnewtranslations.cpp:83
+#: whatsnew/whatsnewtranslations.cpp:85
 #, kde-format
 msgid "Initial \"New Event\" start times are consistent across all the views"
 msgstr ""
 
-#: whatsnew/whatsnewtranslations.cpp:84
+#: whatsnew/whatsnewtranslations.cpp:86
 #, kde-format
 msgid "Improved default event calendar handling"
 msgstr ""
 
-#: whatsnew/whatsnewtranslations.cpp:86
+#: whatsnew/whatsnewtranslations.cpp:88
 #, kde-format
 msgid ""
 "Incidences with a long excluded dates list no longer create huge tooltips"
 msgstr ""
 
-#: whatsnew/whatsnewtranslations.cpp:87
+#: whatsnew/whatsnewtranslations.cpp:89
 #, kde-format
 msgid "Fixed the organizer email address for incidences with attendees"
 msgstr ""
 
-#: whatsnew/whatsnewtranslations.cpp:88
+#: whatsnew/whatsnewtranslations.cpp:90
 #, kde-format
 msgid ""
 "Agenda view: events without a duration are displayed as 30 long (rather than "
@@ -6800,7 +6827,7 @@ msgid ""
 msgstr ""
 
 #. i18n()});
-#: whatsnew/whatsnewtranslations.cpp:102
+#: whatsnew/whatsnewtranslations.cpp:104
 #, kde-format
 msgid "Incidence editor: the tags are sorted alphabetically in the tags editor"
 msgstr ""
