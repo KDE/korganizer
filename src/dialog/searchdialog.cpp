@@ -331,6 +331,25 @@ void SearchDialog::readConfig()
     resize(windowHandle()->size()); // workaround for QTBUG-40584
 
     m_listView->readSettings(group);
+
+    KSharedConfig::Ptr config = KSharedConfig::openConfig();
+    const KConfigGroup settings = config->group(QStringLiteral("Search"));
+    m_ui->eventsCheck->setChecked(settings.readEntry("SearchForEvents", true));
+    m_ui->journalsCheck->setChecked(settings.readEntry("SearchForJournals", false));
+    m_ui->todosCheck->setChecked(settings.readEntry("SearchForTodos", true));
+
+    m_ui->categoryCheck->setChecked(settings.readEntry("SearchInTags", false));
+    m_ui->descriptionCheck->setChecked(settings.readEntry("SearchInDescriptions", false));
+    m_ui->locationCheck->setChecked(settings.readEntry("SearchInLocations", false));
+    m_ui->summaryCheck->setChecked(settings.readEntry("SearchInSummaries", true));
+    m_ui->attendeeCheck->setChecked(settings.readEntry("SearchInAttendees", false));
+
+    m_ui->dateRangeCheckbox->setChecked(settings.readEntry("DateRangeLimited", true));
+    m_ui->startDate->setDate(settings.readEntry("DateRangeFrom", QDate::currentDate()));
+    m_ui->endDate->setDate(settings.readEntry("DateRangeTo", m_ui->startDate->date().addYears(1)));
+    m_ui->inclusiveCheck->setChecked(settings.readEntry("DateRangeExcludeEventsOutsideRange", false));
+    m_ui->includeUndatedTodos->setChecked(settings.readEntry("DateRangeIncludeAllTodosInsideRange", true));
+    m_ui->unfiltered->setChecked(settings.readEntry("DateRangeIncludeAllIncidencesMatchedByViewFilter", true));
 }
 
 void SearchDialog::writeConfig()
@@ -339,6 +358,27 @@ void SearchDialog::writeConfig()
     KWindowConfig::saveWindowSize(windowHandle(), group);
     m_listView->writeSettings(group);
     group.sync();
+
+    KSharedConfig::Ptr config = KSharedConfig::openConfig();
+    KConfigGroup settings = config->group(QStringLiteral("Search"));
+    settings.writeEntry("SearchForEvents", m_ui->eventsCheck->isChecked());
+    settings.writeEntry("SearchForJournals", m_ui->journalsCheck->isChecked());
+    settings.writeEntry("SearchForTodos", m_ui->todosCheck->isChecked());
+
+    settings.writeEntry("SearchInTags", m_ui->categoryCheck->isChecked());
+    settings.writeEntry("SearchInDescriptions", m_ui->descriptionCheck->isChecked());
+    settings.writeEntry("SearchInLocations", m_ui->locationCheck->isChecked());
+    settings.writeEntry("SearchInSummaries", m_ui->summaryCheck->isChecked());
+    settings.writeEntry("SearchInAttendees", m_ui->attendeeCheck->isChecked());
+
+    settings.writeEntry("DateRangeLimited", m_ui->dateRangeCheckbox->isChecked());
+    settings.writeEntry("DateRangeFrom", m_ui->startDate->date());
+    settings.writeEntry("DateRangeTo", m_ui->endDate->date());
+    settings.writeEntry("DateRangeExcludeEventsOutsideRange", m_ui->inclusiveCheck->isChecked());
+    settings.writeEntry("DateRangeIncludeAllTodosInsideRange", m_ui->includeUndatedTodos->isChecked());
+    settings.writeEntry("DateRangeIncludeAllIncidencesMatchedByViewFilter", m_ui->unfiltered->isChecked());
+
+    config->sync();
 }
 
 void SearchDialog::slotHelpRequested()
