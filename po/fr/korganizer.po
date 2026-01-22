@@ -25,7 +25,7 @@ msgstr ""
 "Project-Id-Version: korganizer\n"
 "Report-Msgid-Bugs-To: https://bugs.kde.org\n"
 "POT-Creation-Date: 2026-01-21 00:46+0000\n"
-"PO-Revision-Date: 2026-01-10 21:35+0100\n"
+"PO-Revision-Date: 2026-01-20 18:06+0100\n"
 "Last-Translator: Xavier Besnard <xavier.besnard@kde.org>\n"
 "Language-Team: \n"
 "Language: fr\n"
@@ -803,12 +803,10 @@ msgid "Scroll the view to today"
 msgstr "Fait défiler la vue jusqu'à aujourd'hui"
 
 #: actionmanager.cpp:468
-#, fuzzy, kde-format
-#| msgctxt "@info:whatsthis"
-#| msgid "Scrolls the current view to the today's date."
+#, kde-format
 msgctxt "@info:whatsthis"
 msgid "Scrolls the current view to today's date."
-msgstr "Fait défiler la vue actuelle jusqu'à la date d'aujourd'hui."
+msgstr "Fait défiler la vue courante jusqu'à la date d'aujourd'hui."
 
 #: actionmanager.cpp:474
 #, kde-format
@@ -6591,6 +6589,8 @@ msgstr ""
 #: whatsnew/whatsnewtranslations.cpp:26
 msgid "Navigator bar: added a button to scroll the view to the current date"
 msgstr ""
+"Barre de navigation : ajout d'un bouton pour le défilement de la vue jusqu'à "
+"la date courante"
 
 #: whatsnew/whatsnewtranslations.cpp:35
 msgid ""
@@ -6906,12 +6906,10 @@ msgstr ""
 "indépendamment."
 
 #: widgets/navigatorbar.cpp:39
-#, fuzzy, kde-format
-#| msgctxt "@info:whatsthis"
-#| msgid "Scrolls the current view to the today's date."
+#, kde-format
 msgctxt "@info::whatsthis"
 msgid "Scrolls the current view to today's date."
-msgstr "Fait défiler la vue actuelle jusqu'à la date d'aujourd'hui."
+msgstr "Fait défiler la vue courante jusqu'à la date d'aujourd'hui."
 
 #: widgets/navigatorbar.cpp:42
 #, kde-format

@@ -4,21 +4,21 @@
 #
 # Mattias Newzella <newzella@linux.nu>, 2000, 2001, 2002,2003, 2004, 2005.
 # Per Lindström <per.lindstrom@osd.privataccess.nu>, 2000.
-# SPDX-FileCopyrightText: 2004, 2005, 2006, 2007, 2008, 2009, 2010, 2024, 2025 Stefan Asserhäll <stefan.asserhall@gmail.com>
+# SPDX-FileCopyrightText: 2004, 2005, 2006, 2007, 2008, 2009, 2010, 2024, 2025, 2026 Stefan Asserhäll <stefan.asserhall@gmail.com>
 # Stefan Asserhall <stefan.asserhall@gmail.com>, 2010, 2011, 2012, 2013, 2014, 2015, 2016, 2017, 2018, 2019, 2020, 2021, 2022, 2023.
 msgid ""
 msgstr ""
 "Project-Id-Version: korganizer\n"
 "Report-Msgid-Bugs-To: https://bugs.kde.org\n"
 "POT-Creation-Date: 2026-01-21 00:46+0000\n"
-"PO-Revision-Date: 2025-11-21 01:45+0100\n"
+"PO-Revision-Date: 2026-01-21 22:05+0100\n"
 "Last-Translator: Stefan Asserhäll <stefan.asserhall@gmail.com>\n"
 "Language-Team: Swedish <kde-i18n-doc@kde.org>\n"
 "Language: sv\n"
 "MIME-Version: 1.0\n"
 "Content-Type: text/plain; charset=UTF-8\n"
 "Content-Transfer-Encoding: 8bit\n"
-"X-Generator: Lokalize 25.08.3\n"
+"X-Generator: Lokalize 25.12.1\n"
 "Plural-Forms: nplurals=2; plural=n != 1;\n"
 
 #, kde-format
@@ -49,14 +49,7 @@ msgid "A Personal Organizer"
 msgstr "En personlig planeringskalender"
 
 #: aboutdata.cpp:23
-#, fuzzy, kde-format
-#| msgctxt "@info/plain"
-#| msgid ""
-#| "Copyright © 1997–1999 Preston Brown\n"
-#| "Copyright © 2000–2004, 2007 Cornelius Schumacher\n"
-#| "Copyright © 2004–2005 Reinhold Kainhofer\n"
-#| "Copyright © 2006–2012 Allen Winter\n"
-#| "Copyright © 2012–2025 KOrganizer authors"
+#, kde-format
 msgctxt "@info/plain"
 msgid ""
 "Copyright © 1997–1999 Preston Brown\n"
@@ -69,7 +62,7 @@ msgstr ""
 "Copyright © 2000–2004, 2007 Cornelius Schumacher\n"
 "Copyright © 2004–2005 Reinhold Kainhofer\n"
 "Copyright © 2006–2012 Allen Winter\n"
-"Copyright © 2012–2025 Korganizers upphovsmän"
+"Copyright © 2012–2026 Korganizers upphovsmän"
 
 #: aboutdata.cpp:31 kontactplugin/specialdates/specialdates_plugin.cpp:43
 #, kde-format
@@ -776,9 +769,7 @@ msgid "Scroll the view to today"
 msgstr "Gå till i dag i vyn"
 
 #: actionmanager.cpp:468
-#, fuzzy, kde-format
-#| msgctxt "@info:whatsthis"
-#| msgid "Scrolls the current view to the today's date."
+#, kde-format
 msgctxt "@info:whatsthis"
 msgid "Scrolls the current view to today's date."
 msgstr "Går till dagens datum i aktuell vy."
@@ -3678,7 +3669,7 @@ msgstr "Visa angiven förekomst (enligt webbadress)"
 #: korganizer_options.h:24
 #, kde-format
 msgid "Url"
-msgstr ""
+msgstr "Webbadress"
 
 #: korganizer_options.h:28
 #, kde-format
@@ -5128,23 +5119,21 @@ msgstr "Välj färg för uppgifter som är försenade här."
 
 #. i18n: ectx: label, entry (MonthTodayColor), group (Colors)
 #: settings/korganizer.kcfg:323
-#, fuzzy, kde-format
-#| msgid "Month view background color"
+#, kde-format
 msgid "Month view today background color"
-msgstr "Bakgrundsfärg för månadsvy"
+msgstr "Bakgrundsfärg för idag i månadsvyn"
 
 #. i18n: ectx: tooltip, entry (MonthTodayColor), group (Colors)
 #: settings/korganizer.kcfg:324
-#, fuzzy, kde-format
-#| msgid "Select the working hours background color for the Month view here."
+#, kde-format
 msgid "Set the background color for today's date in month view"
-msgstr "Välj bakgrundsfärg för arbetstimmar i månadsvyn här."
+msgstr "Välj bakgrundsfärg för dagens datum i månadsvyn"
 
 #. i18n: ectx: whatsthis, entry (MonthTodayColor), group (Colors)
 #: settings/korganizer.kcfg:325
 #, kde-format
 msgid "In Month View, select the background color for today's date."
-msgstr ""
+msgstr "I månadsvyn, välj bakgrundsfärgen för dagens datum."
 
 #. i18n: ectx: label, entry, group (Fonts)
 #: settings/korganizer.kcfg:332
@@ -6264,24 +6253,33 @@ msgid ""
 "this behavior, uncheck the Enable reminders options in the settings "
 "Time&Date->Default Values tab"
 msgstr ""
+"Påminnelser är normalt aktiverade för alla nya händelser och uppgifter. För "
+"att inaktivera beteendet, avmarkera alternativen Aktivera påminnelser i "
+"inställningarna under fliken Tid och datum->Standardvärden."
 
 #: whatsnew/whatsnewtranslations.cpp:20
 msgid ""
 "Month view: no longer display the month year header to save vertical space "
 "and remove redundancy"
 msgstr ""
+"Månadsvy: visar inte längre månads- och årsrubriken för att spara vertikalt "
+"utrymme och ta bort redundans"
 
 #: whatsnew/whatsnewtranslations.cpp:21
 msgid ""
 "Month view: use a slightly different color for drawing the day headers for "
 "days outside of the currently selected month"
 msgstr ""
+"Månadsvy: använd en något annorlunda färg för att rita dagsrubrikerna för "
+"dagar utanför den valda månaden"
 
 #: whatsnew/whatsnewtranslations.cpp:22
 msgid ""
 "Month view: the navigation controls on the lower right side are removed in "
 "favor of the improved application navigator bar"
 msgstr ""
+"Månadsvy: navigeringskontrollerna längst ner till höger har tagits bort till "
+"förmån för programmets förbättrade navigeringsrad"
 
 #: whatsnew/whatsnewtranslations.cpp:23
 msgid ""
@@ -6289,16 +6287,22 @@ msgid ""
 "configure the color,  set the \"Month view today background color\" in the "
 "Colors and Fonts settings"
 msgstr ""
+"Månadsvy: bakgrundsfärgen för cellen med dagens datum kan ändras. För att "
+"ställa in färgen, ändra \"Bakgrundsfärg för idag i månadsvyn\" i "
+"inställningarna av Färger och teckensnitt."
 
 #: whatsnew/whatsnewtranslations.cpp:25
 msgid ""
 "Navigator bar: improved by adding week scrolling and showing/hiding the "
 "sidebar on a per-view basis"
 msgstr ""
+"Navigeringsrad: förbättrad genom att lägga till veckovis förflyttning och "
+"visa eller dölj sidoraden per vy."
 
 #: whatsnew/whatsnewtranslations.cpp:26
 msgid "Navigator bar: added a button to scroll the view to the current date"
 msgstr ""
+"Navigeringsrad: tillägg av en knapp för att bläddra i vyn till dagens datum"
 
 #: whatsnew/whatsnewtranslations.cpp:35
 msgid ""
@@ -6564,11 +6568,10 @@ msgid "Icons to use"
 msgstr "Ikoner att använda"
 
 #: widgets/navigatorbar.cpp:32
-#, fuzzy, kde-format
-#| msgid "Show time in month view items"
+#, kde-format
 msgctxt "@info:tooltip"
 msgid "Show/hide the sidebar in this view"
-msgstr "Visa tid i månadsvyns objekt"
+msgstr "Visa eller dölj sidoraden i den här vyn"
 
 #: widgets/navigatorbar.cpp:34
 #, kde-format
@@ -6577,28 +6580,23 @@ msgid ""
 "Click this button to show/hide the sidebar in the current view. Each view "
 "can show/hide the sidebar independently."
 msgstr ""
+"Klicka på knappen för att visa eller dölja sidoraden i den aktuella vyn. "
+"Varje vy kan visa eller dölja sidoraden oberoende av varandra."
 
 #: widgets/navigatorbar.cpp:39
-#, fuzzy, kde-format
-#| msgctxt "@info:whatsthis"
-#| msgid "Scrolls the current view to the today's date."
+#, kde-format
 msgctxt "@info::whatsthis"
 msgid "Scrolls the current view to today's date."
 msgstr "Går till dagens datum i aktuell vy."
 
 #: widgets/navigatorbar.cpp:42
-#, fuzzy, kde-format
-#| msgctxt "@info:status"
-#| msgid "Scroll Backward"
+#, kde-format
 msgctxt "@info:tooltip"
 msgid "Scroll backward a year"
-msgstr "Gå bakåt"
+msgstr "Gå bakåt ett år"
 
 #: widgets/navigatorbar.cpp:44
-#, fuzzy, kde-format
-#| msgid ""
-#| "Click this button to scroll the display to the same approximate day of "
-#| "the previous year"
+#, kde-format
 msgctxt "@info::whatsthis"
 msgid ""
 "Click this button to scroll the display to the same approximate day of the "
@@ -6608,18 +6606,13 @@ msgstr ""
 "år"
 
 #: widgets/navigatorbar.cpp:48
-#, fuzzy, kde-format
-#| msgctxt "@info:status"
-#| msgid "Scroll Backward"
+#, kde-format
 msgctxt "@info:tooltip"
 msgid "Scroll backward a month"
-msgstr "Gå bakåt"
+msgstr "Gå bakåt en månad"
 
 #: widgets/navigatorbar.cpp:50
-#, fuzzy, kde-format
-#| msgid ""
-#| "Click this button to scroll the display to the same approximate date of "
-#| "the previous month"
+#, kde-format
 msgctxt "@info::whatsthis"
 msgid ""
 "Click this button to scroll the display to the same approximate date of the "
@@ -6629,71 +6622,53 @@ msgstr ""
 "månad"
 
 #: widgets/navigatorbar.cpp:54
-#, fuzzy, kde-format
-#| msgctxt "@info:status"
-#| msgid "Scroll Backward"
+#, kde-format
 msgctxt "@info:tooltip"
 msgid "Scroll backward a week"
-msgstr "Gå bakåt"
+msgstr "Gå bakåt en vecka"
 
 #: widgets/navigatorbar.cpp:55
-#, fuzzy, kde-format
-#| msgid ""
-#| "Click this button to scroll the display to the same approximate date of "
-#| "the next month"
+#, kde-format
 msgctxt "@info::whatsthis"
 msgid "Click this button to scroll the display to back 1 week in time"
-msgstr ""
-"Klicka på knappen för att flytta visningen till ungefär samma dag nästa månad"
+msgstr "Klicka på knappen för att flytta visningen bakåt en vecka i tiden"
 
 #: widgets/navigatorbar.cpp:58
-#, fuzzy, kde-format
-#| msgid "Go forward one week"
+#, kde-format
 msgctxt "@info:tooltip"
 msgid "Scroll forward a week"
 msgstr "Gå framåt en vecka"
 
 #: widgets/navigatorbar.cpp:59
-#, fuzzy, kde-format
-#| msgid ""
-#| "Click this button to scroll the display to the same approximate day of "
-#| "the next year"
+#, kde-format
 msgctxt "@info::whatsthis"
 msgid "Click this button to scroll the display to forward 1 week in time"
-msgstr ""
-"Klicka på knappen för att flytta visningen till ungefär samma dag nästa år"
+msgstr "Klicka på knappen för att flytta visningen framåt en vecka i tiden"
 
 #: widgets/navigatorbar.cpp:62
-#, fuzzy, kde-format
-#| msgid "Scroll forward to the next month"
+#, kde-format
 msgctxt "@info:tooltip"
 msgid "Scroll forward a month"
-msgstr "Gå framåt till nästa månad"
+msgstr "Gå framåt en månad"
 
 #: widgets/navigatorbar.cpp:64
-#, fuzzy, kde-format
-#| msgid ""
-#| "Click this button to scroll the display to the same approximate date of "
-#| "the next month"
+#, kde-format
 msgctxt "@info::whatsthis"
 msgid ""
 "Click this button to scroll the display to the same approximate date of the "
 "next month"
 msgstr ""
-"Klicka på knappen för att flytta visningen till ungefär samma dag nästa månad"
+"Klicka på knappen för att flytta visningen till ungefär samma datum nästa "
+"månad"
 
 #: widgets/navigatorbar.cpp:68
-#, fuzzy, kde-format
-#| msgid "Scroll forward to the next year"
+#, kde-format
 msgctxt "@info:tooltip"
 msgid "Scroll forward a year"
-msgstr "Gå framåt till nästa år"
+msgstr "Gå framåt ett år"
 
 #: widgets/navigatorbar.cpp:70
-#, fuzzy, kde-format
-#| msgid ""
-#| "Click this button to scroll the display to the same approximate day of "
-#| "the next year"
+#, kde-format
 msgctxt "@info::whatsthis"
 msgid ""
 "Click this button to scroll the display to the same approximate day of the "

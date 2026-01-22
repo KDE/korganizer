@@ -12,7 +12,7 @@ msgstr ""
 "Project-Id-Version: korganizer\n"
 "Report-Msgid-Bugs-To: https://bugs.kde.org\n"
 "POT-Creation-Date: 2026-01-21 00:46+0000\n"
-"PO-Revision-Date: 2026-01-19 08:28+0200\n"
+"PO-Revision-Date: 2026-01-21 22:31+0200\n"
 "Last-Translator: Yuri Chornoivan <yurchor@ukr.net>\n"
 "Language-Team: Ukrainian <trans-uk@lists.fedoraproject.org>\n"
 "Language: uk\n"
@@ -5231,23 +5231,21 @@ msgstr "Виберіть тут колір для завдань, які вча�
 
 #. i18n: ectx: label, entry (MonthTodayColor), group (Colors)
 #: settings/korganizer.kcfg:323
-#, fuzzy, kde-format
-#| msgid "Month view background color"
+#, kde-format
 msgid "Month view today background color"
-msgstr "Колір тла для перегляду місяця"
+msgstr "Колір тла для поточного дня на панелі перегляду місяця"
 
 #. i18n: ectx: tooltip, entry (MonthTodayColor), group (Colors)
 #: settings/korganizer.kcfg:324
-#, fuzzy, kde-format
-#| msgid "Select the working hours background color for the Month view here."
+#, kde-format
 msgid "Set the background color for today's date in month view"
-msgstr "Виберіть тут колір тла для робочих годин в перегляді місяця."
+msgstr "Встановити колір тла для поточної дати на панелі перегляду місяця"
 
 #. i18n: ectx: whatsthis, entry (MonthTodayColor), group (Colors)
 #: settings/korganizer.kcfg:325
 #, kde-format
 msgid "In Month View, select the background color for today's date."
-msgstr ""
+msgstr "На панелі перегляду місяця вибрати колір тла для поточної дати."
 
 #. i18n: ectx: label, entry, group (Fonts)
 #: settings/korganizer.kcfg:332
@@ -6406,6 +6404,9 @@ msgid ""
 "configure the color,  set the \"Month view today background color\" in the "
 "Colors and Fonts settings"
 msgstr ""
+"Панель перегляду місяця: можна змінювати колір тла у комірці поточного дня. "
+"Щоб налаштувати колір, встановіть значення для пункту «Колір тла поточного "
+"дня на панелі перегляду місяця» у параметра кольорів і шрифтів програми."
 
 #: whatsnew/whatsnewtranslations.cpp:25
 msgid ""

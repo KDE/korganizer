@@ -3486,6 +3486,19 @@
 </varlistentry>
 
 <varlistentry>
+  <term
+><guilabel
+>Колір тла для поточного дня на панелі перегляду місяця</guilabel
+></term>
+  <listitem
+><para
+>Натискання цієї кнопки призведе до відкриття діалогового вікна <guilabel
+>Виберіть колір</guilabel
+>, за допомогою якого ви зможете обрати колір тла для поточної дати на панелі перегляду місяцями.</para
+></listitem>
+</varlistentry>
+
+<varlistentry>
 <term
 ><guilabel
 >Мітки</guilabel

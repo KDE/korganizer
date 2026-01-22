@@ -903,7 +903,7 @@
 >Se você optou por arquivar, também precisa fornecer o nome para o arquivo no campo <guilabel
 >Arquivo de Arquivamento</guilabel
 >. Se você quiser usar novamente um arquivo de arquivamento mais antigo, clique no botão <guilabel
->Janela para abrir arquivo</guilabel
+>Abrir diálogo de seleção de arquivo</guilabel
 > e descubra um arquivo existente. Ele será sobrescrito, assim certifique-se de que não precisa dos dados originais ou que possui uma cópia de segurança.</para
 ></step>
 </procedure>
@@ -3497,6 +3497,19 @@
 >Este botão abre a janela para <guilabel
 >Selecionar uma Cor</guilabel
 >, o que lhe permite selecionar a cor das tarefas cujo prazo já passou.</para
+></listitem>
+</varlistentry>
+
+<varlistentry>
+  <term
+><guilabel
+>Cor de fundo da data de hoje na visão mensal</guilabel
+></term>
+  <listitem
+><para
+>Este botão abre a janela para <guilabel
+>Selecionar uma cor</guilabel
+>, o que lhe permite selecionar a cor de fundo para a data de hoje da visão mensal.</para
 ></listitem>
 </varlistentry>
 

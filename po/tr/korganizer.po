@@ -21,7 +21,7 @@ msgstr ""
 "Project-Id-Version: kdepim-kde4\n"
 "Report-Msgid-Bugs-To: https://bugs.kde.org\n"
 "POT-Creation-Date: 2026-01-21 00:46+0000\n"
-"PO-Revision-Date: 2026-01-19 10:26+0300\n"
+"PO-Revision-Date: 2026-01-21 11:20+0300\n"
 "Last-Translator: Emir SARI <emir_sari@îcloud.com>\n"
 "Language-Team: Turkish <kde-l10n-tr@kde.org>\n"
 "Language: tr\n"
@@ -5167,23 +5167,21 @@ msgstr "Gecikmiş yapılacak işe ait rengi buradan seçin."
 
 #. i18n: ectx: label, entry (MonthTodayColor), group (Colors)
 #: settings/korganizer.kcfg:323
-#, fuzzy, kde-format
-#| msgid "Month view background color"
+#, kde-format
 msgid "Month view today background color"
-msgstr "Ay görünümü arka plan rengi"
+msgstr "Ay görünümünde bugünün arka plan rengi"
 
 #. i18n: ectx: tooltip, entry (MonthTodayColor), group (Colors)
 #: settings/korganizer.kcfg:324
-#, fuzzy, kde-format
-#| msgid "Select the working hours background color for the Month view here."
+#, kde-format
 msgid "Set the background color for today's date in month view"
-msgstr "Ay görünümündeki çalışma saatlerinin arka plan rengini seçin."
+msgstr "Ay görünümünde bugünün tarihinin arka plan rengini seç"
 
 #. i18n: ectx: whatsthis, entry (MonthTodayColor), group (Colors)
 #: settings/korganizer.kcfg:325
 #, kde-format
 msgid "In Month View, select the background color for today's date."
-msgstr ""
+msgstr "Ay görünümünde, bugünün tarihinin arka plan rengini seçin."
 
 #. i18n: ectx: label, entry, group (Fonts)
 #: settings/korganizer.kcfg:332
@@ -6338,6 +6336,9 @@ msgid ""
 "configure the color,  set the \"Month view today background color\" in the "
 "Colors and Fonts settings"
 msgstr ""
+"Ay görünümü: Bugünün tarihini gösteren hücrenin arka plan rengi artık "
+"değiştirilebiliyor. Rengi yapılandırmak için Renkler ve Yazıtipleri "
+"ayarlarında ”Ay görünümünde bugünün arka plan rengi” seçeneğini ayarlayın."
 
 #: whatsnew/whatsnewtranslations.cpp:25
 msgid ""

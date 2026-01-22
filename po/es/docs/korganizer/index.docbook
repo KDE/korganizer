@@ -3497,6 +3497,19 @@
 </varlistentry>
 
 <varlistentry>
+  <term
+><guilabel
+>Color de fondo del día actual en la vista mensual</guilabel
+></term>
+  <listitem
+><para
+>Este botón abre el diálogo <guilabel
+>Seleccionar color</guilabel
+> para permitirle seleccionar el color de fondo de la fecha actual en la vista mensual.</para
+></listitem>
+</varlistentry>
+
+<varlistentry>
 <term
 ><guilabel
 >Etiquetas</guilabel

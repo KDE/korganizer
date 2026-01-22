@@ -18,7 +18,7 @@ msgstr ""
 "Project-Id-Version: korganizer\n"
 "Report-Msgid-Bugs-To: https://bugs.kde.org\n"
 "POT-Creation-Date: 2026-01-21 00:46+0000\n"
-"PO-Revision-Date: 2026-01-19 06:56+0200\n"
+"PO-Revision-Date: 2026-01-21 08:56+0200\n"
 "Last-Translator: Yaron Shahrabani <sh.yaron@gmail.com>\n"
 "Language-Team: צוות התרגום של KDE ישראל\n"
 "Language: he\n"
@@ -5066,23 +5066,21 @@ msgstr "כאן אפשר לבחור צבע מטלה שתאריך היעד שלה 
 
 #. i18n: ectx: label, entry (MonthTodayColor), group (Colors)
 #: settings/korganizer.kcfg:323
-#, fuzzy, kde-format
-#| msgid "Month view background color"
+#, kde-format
 msgid "Month view today background color"
-msgstr "צבע רקע לתצוגת חודש"
+msgstr "צבע רקע לתצוגת היום בחודש"
 
 #. i18n: ectx: tooltip, entry (MonthTodayColor), group (Colors)
 #: settings/korganizer.kcfg:324
-#, fuzzy, kde-format
-#| msgid "Select the working hours background color for the Month view here."
+#, kde-format
 msgid "Set the background color for today's date in month view"
-msgstr "נא לבחור כאן את צבע רקע שעות העבודה לתצוגת חודש."
+msgstr "הגדרת צבע הרקע לתאריך של היום בתצוגת חודש"
 
 #. i18n: ectx: whatsthis, entry (MonthTodayColor), group (Colors)
 #: settings/korganizer.kcfg:325
 #, kde-format
 msgid "In Month View, select the background color for today's date."
-msgstr ""
+msgstr "בתצוגת חודש, לבחור את צבע הרקע לתאריך של היום."
 
 #. i18n: ectx: label, entry, group (Fonts)
 #: settings/korganizer.kcfg:332
@@ -6205,6 +6203,8 @@ msgid ""
 "configure the color,  set the \"Month view today background color\" in the "
 "Colors and Fonts settings"
 msgstr ""
+"תצוגת חודש: אפשר לשנות את צבע הרקע לתא של היום. כדי להגדיר את הצבע, יש "
+"להגדיר את „צבע רקע היום בתצוגת חודש” בהגדרות צבעים וגופנים"
 
 #: whatsnew/whatsnewtranslations.cpp:25
 msgid ""

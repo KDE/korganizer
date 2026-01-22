@@ -3439,6 +3439,19 @@
 </varlistentry>
 
 <varlistentry>
+  <term
+><guilabel
+>Color de fons d'avui de la vista mensual</guilabel
+></term>
+  <listitem
+><para
+>Aquest botó obre el diàleg <guilabel
+>Selecció de color</guilabel
+>, el qual us permetrà seleccionar el color de fons de la data d'avui a la vista mensual.</para
+></listitem>
+</varlistentry>
+
+<varlistentry>
 <term
 ><guilabel
 >Etiquetes</guilabel

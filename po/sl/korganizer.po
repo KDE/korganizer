@@ -1,7 +1,7 @@
 # translation of korganizer.po to Slovenian
 # Translation of korganizer.po to Slovenian
 # Copyright (C) 2001,2002, 2003, 2004, 2005, 2006 Free Software Foundation, Inc.
-# $Id: korganizer.po 1728211 2026-01-21 01:29:23Z scripty $
+# $Id: korganizer.po 1728266 2026-01-22 01:40:50Z scripty $
 # $Source$
 #
 # Roman Maurer <roman.maurer@hermes.si>, 2001.
@@ -15,7 +15,7 @@ msgstr ""
 "Project-Id-Version: korganizer\n"
 "Report-Msgid-Bugs-To: https://bugs.kde.org\n"
 "POT-Creation-Date: 2026-01-21 00:46+0000\n"
-"PO-Revision-Date: 2026-01-19 07:32+0100\n"
+"PO-Revision-Date: 2026-01-21 06:59+0100\n"
 "Last-Translator: Matjaž Jeran <matjaz.jeran@amis.net>\n"
 "Language-Team: Slovenian <lugos-slo@lugos.si>\n"
 "Language: sl\n"
@@ -5192,29 +5192,27 @@ msgstr "Tu izberite barvo zapadlih opravil."
 
 #. i18n: ectx: label, entry (MonthTodayColor), group (Colors)
 #: settings/korganizer.kcfg:323
-#, fuzzy, kde-format
-#| msgid "Month view background color"
+#, kde-format
 msgid "Month view today background color"
-msgstr "Barva ozadja mesečnega prikaza"
+msgstr "Barva ozadja za današnji mesečni pogled"
 
 #. i18n: ectx: tooltip, entry (MonthTodayColor), group (Colors)
 #: settings/korganizer.kcfg:324
-#, fuzzy, kde-format
-#| msgid "Select the working hours background color for the Month view here."
+#, kde-format
 msgid "Set the background color for today's date in month view"
-msgstr "Tu izberite barvo ozadja delovnih ur za mesečni prikaz."
+msgstr "Nastavi barvo ozadja za današnji datum v mesečnem pogledu"
 
 #. i18n: ectx: whatsthis, entry (MonthTodayColor), group (Colors)
 #: settings/korganizer.kcfg:325
 #, kde-format
 msgid "In Month View, select the background color for today's date."
-msgstr ""
+msgstr "V mesečnem pogledu izberi barvo ozadja za današnji datum."
 
 #. i18n: ectx: label, entry, group (Fonts)
 #: settings/korganizer.kcfg:332
 #, kde-format
 msgid "Time bar"
-msgstr "Časovni pas"
+msgstr "Časovna vrstica"
 
 #. i18n: ectx: whatsthis, entry, group (Fonts)
 #: settings/korganizer.kcfg:333
@@ -6368,6 +6366,9 @@ msgid ""
 "configure the color,  set the \"Month view today background color\" in the "
 "Colors and Fonts settings"
 msgstr ""
+"Mesečni pogled: barvo ozadja za celico z današnjim datumom je mogoče "
+"spremeniti. Če želite konfigurirati barvo, v nastavitvah Barve in pisave "
+"nastavite \"Barva ozadja današnjega mesečnega pogleda\"."
 
 #: whatsnew/whatsnewtranslations.cpp:25
 msgid ""

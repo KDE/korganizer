@@ -19,7 +19,7 @@ msgstr ""
 "Project-Id-Version: korganizer\n"
 "Report-Msgid-Bugs-To: https://bugs.kde.org\n"
 "POT-Creation-Date: 2026-01-21 00:46+0000\n"
-"PO-Revision-Date: 2026-01-19 10:52+0100\n"
+"PO-Revision-Date: 2026-01-21 11:35+0100\n"
 "Last-Translator: Freek de Kruijf <freekdekruijf@kde.nl>\n"
 "Language-Team: \n"
 "Language: nl\n"
@@ -5193,23 +5193,22 @@ msgstr ""
 
 #. i18n: ectx: label, entry (MonthTodayColor), group (Colors)
 #: settings/korganizer.kcfg:323
-#, fuzzy, kde-format
-#| msgid "Month view background color"
+#, kde-format
 msgid "Month view today background color"
-msgstr "Achtergrondkleur voor maandweergave"
+msgstr "Achtergrondkleur van vandaag voor maandweergave"
 
 #. i18n: ectx: tooltip, entry (MonthTodayColor), group (Colors)
 #: settings/korganizer.kcfg:324
-#, fuzzy, kde-format
-#| msgid "Select the working hours background color for the Month view here."
+#, kde-format
 msgid "Set the background color for today's date in month view"
-msgstr "Selecteer hier de achtergrondkleur voor werkuren in de maandweergave."
+msgstr "Zet de achtergrondkleur voor de datum van vandaag in de maandweergave"
 
 #. i18n: ectx: whatsthis, entry (MonthTodayColor), group (Colors)
 #: settings/korganizer.kcfg:325
 #, kde-format
 msgid "In Month View, select the background color for today's date."
 msgstr ""
+"In maandweergave, selecteer de achtergrondkleur voor de datum van vandaag."
 
 #. i18n: ectx: label, entry, group (Fonts)
 #: settings/korganizer.kcfg:332
@@ -6378,6 +6377,9 @@ msgid ""
 "configure the color,  set the \"Month view today background color\" in the "
 "Colors and Fonts settings"
 msgstr ""
+"Maandweergave: de achtergrondkleur voor de cel met de datum van vandaag kan "
+"gewijzigd worden. Om de kleur te wijzigen, zet de \"Achtergrondkleur van "
+"vandaag voor maandweergave\" in instellen kleuren en lettertypen"
 
 #: whatsnew/whatsnewtranslations.cpp:25
 msgid ""

@@ -3481,6 +3481,19 @@
 </varlistentry>
 
 <varlistentry>
+  <term
+><guilabel
+>Achtergrondkleur van vandaag voor maandweergave</guilabel
+></term>
+  <listitem
+><para
+>Hiermee wordt de dialoog geopend voor het <guilabel
+>kiezen van een kleur</guilabel
+>, waarin u de achtergrondkleur kunt kiezen voor de datum van vandaag in de maandweergave.</para
+></listitem>
+</varlistentry>
+
+<varlistentry>
 <term
 ><guilabel
 >Tags</guilabel

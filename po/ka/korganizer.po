@@ -8,7 +8,7 @@ msgstr ""
 "Project-Id-Version: korganizer\n"
 "Report-Msgid-Bugs-To: https://bugs.kde.org\n"
 "POT-Creation-Date: 2026-01-21 00:46+0000\n"
-"PO-Revision-Date: 2026-01-19 11:22+0100\n"
+"PO-Revision-Date: 2026-01-21 04:30+0100\n"
 "Last-Translator: Temuri Doghonadze <temuri.doghonadze@gmail.com>\n"
 "Language-Team: Georgian <kde-i18n-doc@kde.org>\n"
 "Language: ka\n"
@@ -5145,23 +5145,21 @@ msgstr "არჩიეთ გადაცილებული დაგეგ�
 
 #. i18n: ectx: label, entry (MonthTodayColor), group (Colors)
 #: settings/korganizer.kcfg:323
-#, fuzzy, kde-format
-#| msgid "Month view background color"
+#, kde-format
 msgid "Month view today background color"
-msgstr "თვის ხედის ფონის ფერი"
+msgstr "თვის ხედში დღევანდელის ფონის ფერი"
 
 #. i18n: ectx: tooltip, entry (MonthTodayColor), group (Colors)
 #: settings/korganizer.kcfg:324
-#, fuzzy, kde-format
-#| msgid "Select the working hours background color for the Month view here."
+#, kde-format
 msgid "Set the background color for today's date in month view"
-msgstr "აქ შეგიძლიათ თვის ხედისთვის სამუშაო საათების ფონის ფერი აირჩიოთ."
+msgstr "ფონის ფერის დაყენება დღევანდელი თარიღისთვის თვის ხედში"
 
 #. i18n: ectx: whatsthis, entry (MonthTodayColor), group (Colors)
 #: settings/korganizer.kcfg:325
 #, kde-format
 msgid "In Month View, select the background color for today's date."
-msgstr ""
+msgstr "თვის ხედში აირჩიეთ ფონის ფერი დღევანდელი თარიღისთვის."
 
 #. i18n: ectx: label, entry, group (Fonts)
 #: settings/korganizer.kcfg:332
@@ -6330,6 +6328,9 @@ msgid ""
 "configure the color,  set the \"Month view today background color\" in the "
 "Colors and Fonts settings"
 msgstr ""
+"თვის ხედი: დღევანდელი თარიღის უჯრედში ფონის ფერი, შეიძლება, შეიცვალოს. ფერის "
+"კონფიგურაციისთვის, დააყენეთ \"თვის ხედი დღეს ფონის ფერი\" ფერებისა და "
+"ფონტების პარამეტრებში"
 
 #: whatsnew/whatsnewtranslations.cpp:25
 msgid ""

@@ -20,7 +20,7 @@ msgstr ""
 "Project-Id-Version: korganizer\n"
 "Report-Msgid-Bugs-To: https://bugs.kde.org\n"
 "POT-Creation-Date: 2026-01-21 00:46+0000\n"
-"PO-Revision-Date: 2026-01-19 07:30-0300\n"
+"PO-Revision-Date: 2026-01-21 06:48-0300\n"
 "Last-Translator: Marcus Gama <marcus.gama@gmail.com>\n"
 "Language-Team: Brazilian Portuguese <kde-i18n-pt_BR@kde.org>\n"
 "Language: pt_BR\n"
@@ -5194,24 +5194,21 @@ msgstr "Selecione a cor das tarefas vencidas aqui."
 
 #. i18n: ectx: label, entry (MonthTodayColor), group (Colors)
 #: settings/korganizer.kcfg:323
-#, fuzzy, kde-format
-#| msgid "Month view background color"
+#, kde-format
 msgid "Month view today background color"
-msgstr "Cor de fundo da visão mensal"
+msgstr "Cor de fundo da data de hoje na visão mensal"
 
 #. i18n: ectx: tooltip, entry (MonthTodayColor), group (Colors)
 #: settings/korganizer.kcfg:324
-#, fuzzy, kde-format
-#| msgid "Select the working hours background color for the Month view here."
+#, kde-format
 msgid "Set the background color for today's date in month view"
-msgstr ""
-"Selecione aqui a cor de fundo das horas de trabalho para a visão mensal."
+msgstr "Define a cor de fundo para a data de hoje na visão mensal"
 
 #. i18n: ectx: whatsthis, entry (MonthTodayColor), group (Colors)
 #: settings/korganizer.kcfg:325
 #, kde-format
 msgid "In Month View, select the background color for today's date."
-msgstr ""
+msgstr "Na visão mensal, seleciona a cor de fundo para a data de hoje."
 
 #. i18n: ectx: label, entry, group (Fonts)
 #: settings/korganizer.kcfg:332
@@ -6392,6 +6389,9 @@ msgid ""
 "configure the color,  set the \"Month view today background color\" in the "
 "Colors and Fonts settings"
 msgstr ""
+"Visão mensal: a cor de fundo da célula correspondente à data de hoje pode "
+"ser alterada. Para configurar a cor, defina a opção \"Cor de fundo da data "
+"de hoje na visão mensal\" nas configurações de Cores e Fontes."
 
 #: whatsnew/whatsnewtranslations.cpp:25
 msgid ""
