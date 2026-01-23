@@ -24,6 +24,7 @@ QList<KLazyLocalizedString> WhatsNewTranslations::lastNewFeatures() const
                " in the Colors and Fonts settings"),
         kli18n("Navigator bar: improved by adding week scrolling and showing/hiding the sidebar on a per-view basis"),
         kli18n("Navigator bar: added a button to scroll the view to the current date"),
+        kli18n("Agenda view: events with short durations are displayed with their starting time in addition to their summary"),
         kli18n("Search: the search settings are saved/restored"),
     };
 
