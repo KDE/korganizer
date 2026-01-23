@@ -13,15 +13,15 @@ msgid ""
 msgstr ""
 "Project-Id-Version: korganizer\n"
 "Report-Msgid-Bugs-To: https://bugs.kde.org\n"
-"POT-Creation-Date: 2026-01-21 00:46+0000\n"
-"PO-Revision-Date: 2026-01-02 08:53+0100\n"
+"POT-Creation-Date: 2026-01-23 00:44+0000\n"
+"PO-Revision-Date: 2026-01-21 10:03+0100\n"
 "Last-Translator: Josep M. Ferrer <txemaq@gmail.com>\n"
 "Language-Team: Catalan <kde-i18n-ca@kde.org>\n"
 "Language: ca@valencia\n"
 "MIME-Version: 1.0\n"
 "Content-Type: text/plain; charset=UTF-8\n"
 "Content-Transfer-Encoding: 8bit\n"
-"X-Generator: Lokalize 25.12.0\n"
+"X-Generator: Lokalize 25.04.0\n"
 "Plural-Forms: nplurals=2; plural=n != 1;\n"
 "X-Accelerator-Marker: &\n"
 
@@ -782,9 +782,7 @@ msgid "Scroll the view to today"
 msgstr "Desplaça la vista fins a hui"
 
 #: actionmanager.cpp:468
-#, fuzzy, kde-format
-#| msgctxt "@info:whatsthis"
-#| msgid "Scrolls the current view to the today's date."
+#, kde-format
 msgctxt "@info:whatsthis"
 msgid "Scrolls the current view to today's date."
 msgstr "Desplaça la vista actual fins a la data d'hui."
@@ -5239,24 +5237,21 @@ msgstr "Trieu ací el color de les tasques pendents endarrerides."
 
 #. i18n: ectx: label, entry (MonthTodayColor), group (Colors)
 #: settings/korganizer.kcfg:323
-#, fuzzy, kde-format
-#| msgid "Month view background color"
+#, kde-format
 msgid "Month view today background color"
-msgstr "Color de fons de la vista mensual"
+msgstr "Color de fons d'hui de la vista mensual"
 
 #. i18n: ectx: tooltip, entry (MonthTodayColor), group (Colors)
 #: settings/korganizer.kcfg:324
-#, fuzzy, kde-format
-#| msgid "Select the working hours background color for the Month view here."
+#, kde-format
 msgid "Set the background color for today's date in month view"
-msgstr ""
-"Trieu ací el color de fons per a les hores laborables en la vista mensual."
+msgstr "Establiu el color de fons de la data d'hui en la vista mensual"
 
 #. i18n: ectx: whatsthis, entry (MonthTodayColor), group (Colors)
 #: settings/korganizer.kcfg:325
 #, kde-format
 msgid "In Month View, select the background color for today's date."
-msgstr ""
+msgstr "En la vista mensual, tria el color de fons de la data d'hui."
 
 #. i18n: ectx: label, entry, group (Fonts)
 #: settings/korganizer.kcfg:332
@@ -6443,6 +6438,9 @@ msgid ""
 "configure the color,  set the \"Month view today background color\" in the "
 "Colors and Fonts settings"
 msgstr ""
+"Vista mensual: es pot canviar el color de fons de la cel·la de la data "
+"d'hui. Per a configurar el color, establiu el «Color de fons d'hui de la "
+"vista d'hui» en la configuració de colors i lletres"
 
 #: whatsnew/whatsnewtranslations.cpp:25
 msgid ""
@@ -6455,8 +6453,14 @@ msgstr ""
 #: whatsnew/whatsnewtranslations.cpp:26
 msgid "Navigator bar: added a button to scroll the view to the current date"
 msgstr ""
+"Barra de navegació: s'ha afegit un botó per a desplaçar la vista fins a la "
+"data actual"
 
-#: whatsnew/whatsnewtranslations.cpp:35
+#: whatsnew/whatsnewtranslations.cpp:27
+msgid "Search: the search settings are saved/restored"
+msgstr ""
+
+#: whatsnew/whatsnewtranslations.cpp:36
 msgid ""
 "Agenda view: added timelabels context menu to show/hide time labels for the "
 "system timezone on the right (or left) side as well"
@@ -6465,29 +6469,29 @@ msgstr ""
 "a mostrar/ocultar les etiquetes prompte per a la zona horària del sistema a "
 "la part dreta (o esquerra)"
 
-#: whatsnew/whatsnewtranslations.cpp:36
+#: whatsnew/whatsnewtranslations.cpp:37
 msgid "Incidence editor: detect and warn about creating incidences in the past"
 msgstr ""
 "Editor d'incidències: detecta i avisa de la creació d'incidències en el "
 "passat"
 
-#: whatsnew/whatsnewtranslations.cpp:37
+#: whatsnew/whatsnewtranslations.cpp:38
 msgid "Incidence editor: add emoji support"
 msgstr "Editor d'incidències: afig la implementació d'emoji"
 
-#: whatsnew/whatsnewtranslations.cpp:46
+#: whatsnew/whatsnewtranslations.cpp:47
 msgid "Add What's New menu"
 msgstr "Afig el menú Què hi ha de nou"
 
-#: whatsnew/whatsnewtranslations.cpp:47
+#: whatsnew/whatsnewtranslations.cpp:48
 msgid "The current view is remembered"
 msgstr "Es recordarà la vista actual"
 
-#: whatsnew/whatsnewtranslations.cpp:48
+#: whatsnew/whatsnewtranslations.cpp:49
 msgid "Add a Date Picker dialog available on the Go menu"
 msgstr "Afig un diàleg selector de dates disponible en el menú Ves"
 
-#: whatsnew/whatsnewtranslations.cpp:49
+#: whatsnew/whatsnewtranslations.cpp:50
 msgid ""
 "Agenda view: consolidated the \"Day\", \"Next X Days\", \"Work Schedule\", "
 "\"Week\" time ranges into the Agenda tool button"
@@ -6495,7 +6499,7 @@ msgstr ""
 "Vista d'agenda: s'han consolidat els intervals de temps «Dia», «X dies "
 "següents», «Setmana laboral», «Setmana» al botó d'eina de l'agenda"
 
-#: whatsnew/whatsnewtranslations.cpp:50
+#: whatsnew/whatsnewtranslations.cpp:51
 msgid ""
 "Agenda view: added timelabels context menu option to toggle a 24-hour "
 "(military style) clock"
@@ -6503,29 +6507,29 @@ msgstr ""
 "Vista d'agenda: s'ha afegit l'opció de menú contextual d'etiquetes de temps "
 "per a canviar un rellotge de 24 hores (estil militar)"
 
-#: whatsnew/whatsnewtranslations.cpp:51
+#: whatsnew/whatsnewtranslations.cpp:52
 msgid "Agenda view: added context menu to create new Event or To-do"
 msgstr ""
 "Vista d'agenda: s'ha afegit el menú contextual per a crear un esdeveniment o "
 "tasca pendent nova"
 
-#: whatsnew/whatsnewtranslations.cpp:52
+#: whatsnew/whatsnewtranslations.cpp:53
 msgid ""
 "To-do view: added context menu options for toggling completion and reminders"
 msgstr ""
 "Vista de les tasques pendents: s'han afegit opcions del menú contextual per "
 "a canviar la compleció i els recordatoris"
 
-#: whatsnew/whatsnewtranslations.cpp:53
+#: whatsnew/whatsnewtranslations.cpp:54
 msgid "To-do view: save/restore fullview setting"
 msgstr ""
 "Vista de les tasques pendents: guarda/restaura l'opció de vista completa"
 
-#: whatsnew/whatsnewtranslations.cpp:54
+#: whatsnew/whatsnewtranslations.cpp:55
 msgid "To-do view: save/restore flatview setting"
 msgstr "Vista de les tasques pendents: guarda/restaura l'opció de vista plana"
 
-#: whatsnew/whatsnewtranslations.cpp:55
+#: whatsnew/whatsnewtranslations.cpp:56
 msgid ""
 "Date navigator: added an option in the Configure->Views settings for hiding "
 "the week numbers"
@@ -6533,7 +6537,7 @@ msgstr ""
 "Navegador de dates: s'ha afegit una opció dins de la configuració de "
 "Configura->Vistes per a ocultar els números de setmana"
 
-#: whatsnew/whatsnewtranslations.cpp:56
+#: whatsnew/whatsnewtranslations.cpp:57
 msgid ""
 "Date navigator: the \"Week numbers select a work week when in work week mode"
 "\" setting is true by default"
@@ -6541,56 +6545,56 @@ msgstr ""
 "Navegador de dates: l'opció «Els números de setmana seleccionen una setmana "
 "feinera en el mode de setmana laboral» és certa de manera predeterminada"
 
-#: whatsnew/whatsnewtranslations.cpp:57
+#: whatsnew/whatsnewtranslations.cpp:58
 msgid "Incidence editor: remember/restore the template manager geometry"
 msgstr ""
 "Editor d'incidències: recorda/restaura la geometria del gestor de plantilles"
 
-#: whatsnew/whatsnewtranslations.cpp:58
+#: whatsnew/whatsnewtranslations.cpp:59
 msgid "Incidence editor: support drag-and-drop attachments"
 msgstr "Editor d'incidències: permet arrossegar i deixar anar adjunts"
 
-#: whatsnew/whatsnewtranslations.cpp:59
+#: whatsnew/whatsnewtranslations.cpp:60
 msgid "The export calendar dialog remembers its last export folder location"
 msgstr ""
 "El diàleg d'exportació de calendari recorda la seua última ubicació de la "
 "carpeta d'exportació"
 
-#: whatsnew/whatsnewtranslations.cpp:60
+#: whatsnew/whatsnewtranslations.cpp:61
 msgid "The import calendar dialog remembers its last import folder location"
 msgstr ""
 "El diàleg d'importació de calendari recorda la seua última ubicació de la "
 "carpeta d'importació"
 
-#: whatsnew/whatsnewtranslations.cpp:61
+#: whatsnew/whatsnewtranslations.cpp:62
 msgid "Get Hot New Stuff removed"
 msgstr "S'ha eliminat «Obtín les novetats candents»"
 
-#: whatsnew/whatsnewtranslations.cpp:62
+#: whatsnew/whatsnewtranslations.cpp:63
 msgid "Add calendar file: remote calendars are always read-only"
 msgstr ""
 "Afegir un fitxer de calendari: els calendaris remots sempre són de només "
 "lectura"
 
-#: whatsnew/whatsnewtranslations.cpp:63
+#: whatsnew/whatsnewtranslations.cpp:64
 msgid "Add calendar file: will not permit an empty file path"
 msgstr "Afegir un fitxer de calendari: no es permet un camí buit de fitxer"
 
-#: whatsnew/whatsnewtranslations.cpp:64
+#: whatsnew/whatsnewtranslations.cpp:65
 msgid ""
 "DAV configuration: dialog allows seeing the account password when editing"
 msgstr ""
 "Configuració DAV: el diàleg permet veure la contrasenya del compte en editar"
 
-#: whatsnew/whatsnewtranslations.cpp:65
+#: whatsnew/whatsnewtranslations.cpp:66
 msgid "DAV configuration: wizard shows icons for the various providers"
 msgstr "Configuració DAV: l'assistent mostra icones de diversos proveïdors"
 
-#: whatsnew/whatsnewtranslations.cpp:66
+#: whatsnew/whatsnewtranslations.cpp:67
 msgid "DAV configuration: wizard updated list of providers"
 msgstr "Configuració DAV: llista actualitza de proveïdors de l'assistent"
 
-#: whatsnew/whatsnewtranslations.cpp:84
+#: whatsnew/whatsnewtranslations.cpp:85
 #, kde-format
 msgid ""
 "Semantics are changed from a \"working schedule\" concept to a \"week "
@@ -6599,19 +6603,19 @@ msgstr ""
 "La semàntica es canvia del concepte d'«horari laboral» al concepte d'«horari "
 "setmanal» per a admetre els usuaris no treballadors"
 
-#: whatsnew/whatsnewtranslations.cpp:85
+#: whatsnew/whatsnewtranslations.cpp:86
 #, kde-format
 msgid "Initial \"New Event\" start times are consistent across all the views"
 msgstr ""
 "Les hores inicials d'inici d'«Esdeveniment nou» són coherents en totes les "
 "vistes"
 
-#: whatsnew/whatsnewtranslations.cpp:86
+#: whatsnew/whatsnewtranslations.cpp:87
 #, kde-format
 msgid "Improved default event calendar handling"
 msgstr "Millora de la gestió del calendari predeterminat d'esdeveniments"
 
-#: whatsnew/whatsnewtranslations.cpp:88
+#: whatsnew/whatsnewtranslations.cpp:89
 #, kde-format
 msgid ""
 "Incidences with a long excluded dates list no longer create huge tooltips"
@@ -6619,14 +6623,14 @@ msgstr ""
 "Les incidències amb una llista llarga de dates excloses ja no creen consells "
 "enormes"
 
-#: whatsnew/whatsnewtranslations.cpp:89
+#: whatsnew/whatsnewtranslations.cpp:90
 #, kde-format
 msgid "Fixed the organizer email address for incidences with attendees"
 msgstr ""
 "S'ha corregit l'adreça de correu electrònic de l'organitzador per a les "
 "incidències amb els assistents"
 
-#: whatsnew/whatsnewtranslations.cpp:90
+#: whatsnew/whatsnewtranslations.cpp:91
 #, kde-format
 msgid ""
 "Agenda view: events without a duration are displayed as 30 long (rather than "
@@ -6636,7 +6640,7 @@ msgstr ""
 "de 30 minuts (en lloc de 15 minuts)"
 
 #. i18n()});
-#: whatsnew/whatsnewtranslations.cpp:104
+#: whatsnew/whatsnewtranslations.cpp:105
 #, kde-format
 msgid "Incidence editor: the tags are sorted alphabetically in the tags editor"
 msgstr ""
@@ -6751,9 +6755,7 @@ msgstr ""
 "actual. Cada vista pot mostrar/ocultar la barra lateral de forma independent."
 
 #: widgets/navigatorbar.cpp:39
-#, fuzzy, kde-format
-#| msgctxt "@info:whatsthis"
-#| msgid "Scrolls the current view to the today's date."
+#, kde-format
 msgctxt "@info::whatsthis"
 msgid "Scrolls the current view to today's date."
 msgstr "Desplaça la vista actual fins a la data d'hui."
