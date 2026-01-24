@@ -47,6 +47,7 @@ Options:
   require-passing-tests-on: [ '@all' ]
   cppcheck-arguments: '--enable=warning,performance,portability,style,unusedFunction --suppress-xml=cppcheck-suppressions.xml'
   require-cppcheck-clean: True
+  enable-lsan: True
   cppcheck-ignore-files:
     - src/autotests
     - src/activities/autotests
