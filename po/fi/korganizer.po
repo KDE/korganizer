@@ -16,7 +16,7 @@ msgid ""
 msgstr ""
 "Project-Id-Version: korganizer\n"
 "Report-Msgid-Bugs-To: https://bugs.kde.org\n"
-"POT-Creation-Date: 2026-01-23 00:44+0000\n"
+"POT-Creation-Date: 2026-01-24 00:44+0000\n"
 "PO-Revision-Date: 2026-01-05 17:25+0200\n"
 "Last-Translator: Tommi Nieminen <translator@legisign.org>\n"
 "Language-Team: Finnish <kde-i18n-doc@kde.org>\n"
@@ -6313,10 +6313,22 @@ msgid "Navigator bar: added a button to scroll the view to the current date"
 msgstr ""
 
 #: whatsnew/whatsnewtranslations.cpp:27
+#, fuzzy
+#| msgid ""
+#| "Agenda view: events without a duration are displayed as 30 long (rather "
+#| "than 15 minutes long)"
+msgid ""
+"Agenda view: events with short durations are displayed with their starting "
+"time in addition to their summary"
+msgstr ""
+"Päivyrinäkymä: kestottomat tapahtumat näytetään 30 min pituisina (15 min "
+"sijaan)"
+
+#: whatsnew/whatsnewtranslations.cpp:28
 msgid "Search: the search settings are saved/restored"
 msgstr ""
 
-#: whatsnew/whatsnewtranslations.cpp:36
+#: whatsnew/whatsnewtranslations.cpp:37
 msgid ""
 "Agenda view: added timelabels context menu to show/hide time labels for the "
 "system timezone on the right (or left) side as well"
@@ -6325,35 +6337,35 @@ msgstr ""
 "aikaselitteiden näyttämiseksi tai piilottamiseksi myös oikealta (tai "
 "vasemmalta) puolen"
 
-#: whatsnew/whatsnewtranslations.cpp:37
+#: whatsnew/whatsnewtranslations.cpp:38
 msgid "Incidence editor: detect and warn about creating incidences in the past"
 msgstr ""
 "Esiintymämuokkain: havaitse ja varoita luomasta esiintymiä menneisyyteen"
 
-#: whatsnew/whatsnewtranslations.cpp:38
+#: whatsnew/whatsnewtranslations.cpp:39
 msgid "Incidence editor: add emoji support"
 msgstr "Esiintymämuokkain: lisää hymiötuki"
 
-#: whatsnew/whatsnewtranslations.cpp:47
+#: whatsnew/whatsnewtranslations.cpp:48
 msgid "Add What's New menu"
 msgstr "Lisää Mitä uutta -valikko"
 
-#: whatsnew/whatsnewtranslations.cpp:48
+#: whatsnew/whatsnewtranslations.cpp:49
 msgid "The current view is remembered"
 msgstr "Muistetaan nykyinen näkymä"
 
-#: whatsnew/whatsnewtranslations.cpp:49
+#: whatsnew/whatsnewtranslations.cpp:50
 msgid "Add a Date Picker dialog available on the Go menu"
 msgstr "Lisää Siirry-valikosta saatavilla oleva päivämäärävalintaikkuna"
 
 # *** TARKISTA: Käännettävässä jonossa ei vaikuta ole mitään tolkkua
-#: whatsnew/whatsnewtranslations.cpp:50
+#: whatsnew/whatsnewtranslations.cpp:51
 msgid ""
 "Agenda view: consolidated the \"Day\", \"Next X Days\", \"Work Schedule\", "
 "\"Week\" time ranges into the Agenda tool button"
 msgstr "Päivyrinäkymä: "
 
-#: whatsnew/whatsnewtranslations.cpp:51
+#: whatsnew/whatsnewtranslations.cpp:52
 msgid ""
 "Agenda view: added timelabels context menu option to toggle a 24-hour "
 "(military style) clock"
@@ -6361,28 +6373,28 @@ msgstr ""
 "Päivyrinäkymä: lisätty kontekstivalikkokohdat 24-tuntisen kellon ottamiseksi "
 "käyttöön tai poistamiseksi käytöstä"
 
-#: whatsnew/whatsnewtranslations.cpp:52
+#: whatsnew/whatsnewtranslations.cpp:53
 msgid "Agenda view: added context menu to create new Event or To-do"
 msgstr ""
 "Päivyrinäkymä: lisätty kontekstivalikko uuden tapahtuman tai tehtävän "
 "luomiseksi"
 
-#: whatsnew/whatsnewtranslations.cpp:53
+#: whatsnew/whatsnewtranslations.cpp:54
 msgid ""
 "To-do view: added context menu options for toggling completion and reminders"
 msgstr ""
 "Tehtävänäkymä: lisätty kontekstivalikkokohdat täydennyksestä ja "
 "muistutuksista"
 
-#: whatsnew/whatsnewtranslations.cpp:54
+#: whatsnew/whatsnewtranslations.cpp:55
 msgid "To-do view: save/restore fullview setting"
 msgstr "Tehtävänäkymä: tallenna tai palauta koko näytön tila"
 
-#: whatsnew/whatsnewtranslations.cpp:55
+#: whatsnew/whatsnewtranslations.cpp:56
 msgid "To-do view: save/restore flatview setting"
 msgstr "Tehtävänäkymä: tallenna tai palauta lattean näkymän asetus"
 
-#: whatsnew/whatsnewtranslations.cpp:56
+#: whatsnew/whatsnewtranslations.cpp:57
 msgid ""
 "Date navigator: added an option in the Configure->Views settings for hiding "
 "the week numbers"
@@ -6390,7 +6402,7 @@ msgstr ""
 "Päivänavigointi: lisätty Asetukset→Näkymät-kohtaan asetus viikkonumeroiden "
 "piilottamiseksi"
 
-#: whatsnew/whatsnewtranslations.cpp:57
+#: whatsnew/whatsnewtranslations.cpp:58
 msgid ""
 "Date navigator: the \"Week numbers select a work week when in work week mode"
 "\" setting is true by default"
@@ -6398,50 +6410,50 @@ msgstr ""
 "Päivänavigointi: ”Viikkonumerot valitsevat työviikkotilassa työpäivät” -"
 "asetus on oletuksena voimassa"
 
-#: whatsnew/whatsnewtranslations.cpp:58
+#: whatsnew/whatsnewtranslations.cpp:59
 msgid "Incidence editor: remember/restore the template manager geometry"
 msgstr "Ilmentymämuokkain: muista tai palauta mallipohjahallinnan geometria"
 
-#: whatsnew/whatsnewtranslations.cpp:59
+#: whatsnew/whatsnewtranslations.cpp:60
 msgid "Incidence editor: support drag-and-drop attachments"
 msgstr "Ilmentymämuokkain: tuki vedä ja pudota -liitteille"
 
-#: whatsnew/whatsnewtranslations.cpp:60
+#: whatsnew/whatsnewtranslations.cpp:61
 msgid "The export calendar dialog remembers its last export folder location"
 msgstr ""
 "Kalenterin vienti-ikkuna muistaa viimeisimmän viennin kansion sijainnin"
 
-#: whatsnew/whatsnewtranslations.cpp:61
+#: whatsnew/whatsnewtranslations.cpp:62
 msgid "The import calendar dialog remembers its last import folder location"
 msgstr ""
 "Kalenterin tuonti-ikkuna muistaa viimeisimmän tuonnin kansion sijainnin"
 
-#: whatsnew/whatsnewtranslations.cpp:62
+#: whatsnew/whatsnewtranslations.cpp:63
 msgid "Get Hot New Stuff removed"
 msgstr "”Hae verkosta” poistettu"
 
-#: whatsnew/whatsnewtranslations.cpp:63
+#: whatsnew/whatsnewtranslations.cpp:64
 msgid "Add calendar file: remote calendars are always read-only"
 msgstr "Lisää kalenteritiedosto: etäkalenterit ovat aina vain luettavissa"
 
-#: whatsnew/whatsnewtranslations.cpp:64
+#: whatsnew/whatsnewtranslations.cpp:65
 msgid "Add calendar file: will not permit an empty file path"
 msgstr "Lisää kalenteritiedosto: ei salli tyhjää tiedostosijaintia"
 
-#: whatsnew/whatsnewtranslations.cpp:65
+#: whatsnew/whatsnewtranslations.cpp:66
 msgid ""
 "DAV configuration: dialog allows seeing the account password when editing"
 msgstr "DAV-asetus: ikkuna sallii nähdä tilin salasanan muokattaessa"
 
-#: whatsnew/whatsnewtranslations.cpp:66
+#: whatsnew/whatsnewtranslations.cpp:67
 msgid "DAV configuration: wizard shows icons for the various providers"
 msgstr "DAV-asetus: opastettu toiminto näyttää eri tarjoajille kuvakkeet"
 
-#: whatsnew/whatsnewtranslations.cpp:67
+#: whatsnew/whatsnewtranslations.cpp:68
 msgid "DAV configuration: wizard updated list of providers"
 msgstr "DAV-asetus: opastetun toiminnon tarjoajaluettelo on päivitetty"
 
-#: whatsnew/whatsnewtranslations.cpp:85
+#: whatsnew/whatsnewtranslations.cpp:86
 #, kde-format
 msgid ""
 "Semantics are changed from a \"working schedule\" concept to a \"week "
@@ -6450,18 +6462,18 @@ msgstr ""
 "Työssä olemattomia käyttäjiä ajatellen on siirrytty työaikataulun "
 "käsitteestä viikkoaikataulun käsitteeseen"
 
-#: whatsnew/whatsnewtranslations.cpp:86
+#: whatsnew/whatsnewtranslations.cpp:87
 #, kde-format
 msgid "Initial \"New Event\" start times are consistent across all the views"
 msgstr ""
 "Alustavat ”Uuden tapahtuman” aloitusajat ovat yhdenmukaiset eri näkymissä"
 
-#: whatsnew/whatsnewtranslations.cpp:87
+#: whatsnew/whatsnewtranslations.cpp:88
 #, kde-format
 msgid "Improved default event calendar handling"
 msgstr "Parannettu tapahtumakalenterin oletuskäsittelyä"
 
-#: whatsnew/whatsnewtranslations.cpp:89
+#: whatsnew/whatsnewtranslations.cpp:90
 #, kde-format
 msgid ""
 "Incidences with a long excluded dates list no longer create huge tooltips"
@@ -6469,13 +6481,13 @@ msgstr ""
 "Ilmentymät, joissa on paljon pois suljettua päiviä, eivät enää aiheuta "
 "valtavia työkaluvihjeitä"
 
-#: whatsnew/whatsnewtranslations.cpp:90
+#: whatsnew/whatsnewtranslations.cpp:91
 #, kde-format
 msgid "Fixed the organizer email address for incidences with attendees"
 msgstr ""
 "Korjattu järjestäjän sähköpostiosoite ilmentymissä, joilla on osallistujia"
 
-#: whatsnew/whatsnewtranslations.cpp:91
+#: whatsnew/whatsnewtranslations.cpp:92
 #, kde-format
 msgid ""
 "Agenda view: events without a duration are displayed as 30 long (rather than "
@@ -6485,7 +6497,7 @@ msgstr ""
 "sijaan)"
 
 #. i18n()});
-#: whatsnew/whatsnewtranslations.cpp:105
+#: whatsnew/whatsnewtranslations.cpp:106
 #, kde-format
 msgid "Incidence editor: the tags are sorted alphabetically in the tags editor"
 msgstr "Esiintymämuokkain: luokitusmuokkaimessa luokitukset aakkostetaan"

@@ -1,7 +1,7 @@
 # translation of korganizer.po to Slovenian
 # Translation of korganizer.po to Slovenian
 # Copyright (C) 2001,2002, 2003, 2004, 2005, 2006 Free Software Foundation, Inc.
-# $Id: korganizer.po 1728330 2026-01-23 01:27:24Z scripty $
+# $Id: korganizer.po 1728393 2026-01-24 01:27:12Z scripty $
 # $Source$
 #
 # Roman Maurer <roman.maurer@hermes.si>, 2001.
@@ -14,8 +14,8 @@ msgid ""
 msgstr ""
 "Project-Id-Version: korganizer\n"
 "Report-Msgid-Bugs-To: https://bugs.kde.org\n"
-"POT-Creation-Date: 2026-01-23 00:44+0000\n"
-"PO-Revision-Date: 2026-01-21 06:59+0100\n"
+"POT-Creation-Date: 2026-01-24 00:44+0000\n"
+"PO-Revision-Date: 2026-01-23 06:39+0100\n"
 "Last-Translator: Matjaž Jeran <matjaz.jeran@amis.net>\n"
 "Language-Team: Slovenian <lugos-slo@lugos.si>\n"
 "Language: sl\n"
@@ -6383,10 +6383,22 @@ msgid "Navigator bar: added a button to scroll the view to the current date"
 msgstr "Navigacijska vrstica: dodan gumb za pomik pogleda na trenutni datum"
 
 #: whatsnew/whatsnewtranslations.cpp:27
-msgid "Search: the search settings are saved/restored"
+#, fuzzy
+#| msgid ""
+#| "Agenda view: events without a duration are displayed as 30 long (rather "
+#| "than 15 minutes long)"
+msgid ""
+"Agenda view: events with short durations are displayed with their starting "
+"time in addition to their summary"
 msgstr ""
+"Pogled dnevnega reda: dogodki brez trajanja so prikazani kot dolgi 30 minut "
+"(namesto 15 minut)"
 
-#: whatsnew/whatsnewtranslations.cpp:36
+#: whatsnew/whatsnewtranslations.cpp:28
+msgid "Search: the search settings are saved/restored"
+msgstr "Iskanje: nastavitve iskanja so shranjene/obnovljene"
+
+#: whatsnew/whatsnewtranslations.cpp:37
 msgid ""
 "Agenda view: added timelabels context menu to show/hide time labels for the "
 "system timezone on the right (or left) side as well"
@@ -6395,29 +6407,29 @@ msgstr ""
 "skrivanje časovnih oznak za sistemski časovni pas tudi na desni (ali levi) "
 "strani"
 
-#: whatsnew/whatsnewtranslations.cpp:37
+#: whatsnew/whatsnewtranslations.cpp:38
 msgid "Incidence editor: detect and warn about creating incidences in the past"
 msgstr ""
 "Urejevalnik incidenc: zaznavanje in opozarjanje na nastanek incidenc v "
 "preteklosti"
 
-#: whatsnew/whatsnewtranslations.cpp:38
+#: whatsnew/whatsnewtranslations.cpp:39
 msgid "Incidence editor: add emoji support"
 msgstr "Urejevalnik pojavnosti: dodaj podporo za čustvenčke"
 
-#: whatsnew/whatsnewtranslations.cpp:47
+#: whatsnew/whatsnewtranslations.cpp:48
 msgid "Add What's New menu"
 msgstr "Dodaj meni Kaj je novega"
 
-#: whatsnew/whatsnewtranslations.cpp:48
+#: whatsnew/whatsnewtranslations.cpp:49
 msgid "The current view is remembered"
 msgstr "Trenutni pogled je zapomnjen"
 
-#: whatsnew/whatsnewtranslations.cpp:49
+#: whatsnew/whatsnewtranslations.cpp:50
 msgid "Add a Date Picker dialog available on the Go menu"
 msgstr "Dodaj pogovorno okno za izbiro datuma, ki je na voljo v meniju Pojdi"
 
-#: whatsnew/whatsnewtranslations.cpp:50
+#: whatsnew/whatsnewtranslations.cpp:51
 msgid ""
 "Agenda view: consolidated the \"Day\", \"Next X Days\", \"Work Schedule\", "
 "\"Week\" time ranges into the Agenda tool button"
@@ -6425,7 +6437,7 @@ msgstr ""
 "Pogled dnevnega reda: časovni razponi \"Dan\", \"Naslednjih X dn\", "
 "\"Delovni urnik\" in \"Teden\" so združeni v gumb orodja Dnevni red"
 
-#: whatsnew/whatsnewtranslations.cpp:51
+#: whatsnew/whatsnewtranslations.cpp:52
 msgid ""
 "Agenda view: added timelabels context menu option to toggle a 24-hour "
 "(military style) clock"
@@ -6433,28 +6445,28 @@ msgstr ""
 "Pogled dnevnega reda: dodana možnost kontekstnega menija časovnih oznak za "
 "preklop med 24-urnim (vojaškim) formatom časa"
 
-#: whatsnew/whatsnewtranslations.cpp:52
+#: whatsnew/whatsnewtranslations.cpp:53
 msgid "Agenda view: added context menu to create new Event or To-do"
 msgstr ""
 "Pogled dnevnega reda: dodan kontekstni meni za ustvarjanje novega dogodka "
 "ali opravila"
 
-#: whatsnew/whatsnewtranslations.cpp:53
+#: whatsnew/whatsnewtranslations.cpp:54
 msgid ""
 "To-do view: added context menu options for toggling completion and reminders"
 msgstr ""
 "Pogled opravil: dodane možnosti kontekstnega menija za preklapljanje med "
 "dokončanjem in opomniki"
 
-#: whatsnew/whatsnewtranslations.cpp:54
+#: whatsnew/whatsnewtranslations.cpp:55
 msgid "To-do view: save/restore fullview setting"
 msgstr "Pogled opravil: shranjevanje/obnovitev nastavitve celotnega pogleda"
 
-#: whatsnew/whatsnewtranslations.cpp:55
+#: whatsnew/whatsnewtranslations.cpp:56
 msgid "To-do view: save/restore flatview setting"
 msgstr "Pogled opravil: shranjevanje/obnovitev nastavitev pogleda seznama"
 
-#: whatsnew/whatsnewtranslations.cpp:56
+#: whatsnew/whatsnewtranslations.cpp:57
 msgid ""
 "Date navigator: added an option in the Configure->Views settings for hiding "
 "the week numbers"
@@ -6462,7 +6474,7 @@ msgstr ""
 "Krmar po datumih: v nastavitvah Konfiguriraj->Pogledi dodana možnost za "
 "skrivanje številk tednov"
 
-#: whatsnew/whatsnewtranslations.cpp:57
+#: whatsnew/whatsnewtranslations.cpp:58
 msgid ""
 "Date navigator: the \"Week numbers select a work week when in work week mode"
 "\" setting is true by default"
@@ -6470,53 +6482,53 @@ msgstr ""
 "Krmar po datumih: nastavitev \"Številke tednov izberejo delovni teden v "
 "načinu delovnega tedna\" je privzeto nastavljena na true"
 
-#: whatsnew/whatsnewtranslations.cpp:58
+#: whatsnew/whatsnewtranslations.cpp:59
 msgid "Incidence editor: remember/restore the template manager geometry"
 msgstr ""
 "Urejevalnik incidence: zapomni si/obnovi geometrijo upravljalnika predlog"
 
-#: whatsnew/whatsnewtranslations.cpp:59
+#: whatsnew/whatsnewtranslations.cpp:60
 msgid "Incidence editor: support drag-and-drop attachments"
 msgstr ""
 "Urejevalnik incidence: podpora za priloge z zmožnostjo »povleci in spusti«"
 
-#: whatsnew/whatsnewtranslations.cpp:60
+#: whatsnew/whatsnewtranslations.cpp:61
 msgid "The export calendar dialog remembers its last export folder location"
 msgstr ""
 "Pogovorno okno za izvoz koledarja si zapomni zadnjo lokacijo mape za izvoz"
 
-#: whatsnew/whatsnewtranslations.cpp:61
+#: whatsnew/whatsnewtranslations.cpp:62
 msgid "The import calendar dialog remembers its last import folder location"
 msgstr ""
 "Pogovorno okno za uvoz koledarja si zapomni zadnjo lokacijo mape za uvoz"
 
-#: whatsnew/whatsnewtranslations.cpp:62
+#: whatsnew/whatsnewtranslations.cpp:63
 msgid "Get Hot New Stuff removed"
 msgstr "Odstrani vroče nove stvari"
 
-#: whatsnew/whatsnewtranslations.cpp:63
+#: whatsnew/whatsnewtranslations.cpp:64
 msgid "Add calendar file: remote calendars are always read-only"
 msgstr "Dodaj datoteko koledarja: oddaljeni koledarji so vedno samo za branje"
 
-#: whatsnew/whatsnewtranslations.cpp:64
+#: whatsnew/whatsnewtranslations.cpp:65
 msgid "Add calendar file: will not permit an empty file path"
 msgstr "Dodaj datoteko koledarja: prazna pot datoteke ne bo dovoljena"
 
-#: whatsnew/whatsnewtranslations.cpp:65
+#: whatsnew/whatsnewtranslations.cpp:66
 msgid ""
 "DAV configuration: dialog allows seeing the account password when editing"
 msgstr ""
 "Konfiguracija DAV: pogovorno okno omogoča ogled gesla računa med urejanjem"
 
-#: whatsnew/whatsnewtranslations.cpp:66
+#: whatsnew/whatsnewtranslations.cpp:67
 msgid "DAV configuration: wizard shows icons for the various providers"
 msgstr "Konfiguracija DAV: čarovnik prikazuje ikone za različne ponudnike"
 
-#: whatsnew/whatsnewtranslations.cpp:67
+#: whatsnew/whatsnewtranslations.cpp:68
 msgid "DAV configuration: wizard updated list of providers"
 msgstr "Konfiguracija DAV: čarovnik je posodobil seznam ponudnikov"
 
-#: whatsnew/whatsnewtranslations.cpp:85
+#: whatsnew/whatsnewtranslations.cpp:86
 #, kde-format
 msgid ""
 "Semantics are changed from a \"working schedule\" concept to a \"week "
@@ -6525,18 +6537,18 @@ msgstr ""
 "Semantika se spremeni iz koncepta \"delovnega urnika\" v koncept "
 "\"tedenskega urnika\", da se prilagodi nedelujočim uporabnikom"
 
-#: whatsnew/whatsnewtranslations.cpp:86
+#: whatsnew/whatsnewtranslations.cpp:87
 #, kde-format
 msgid "Initial \"New Event\" start times are consistent across all the views"
 msgstr ""
 "Začetni časi začetka \"Novega dogodka\" so konsistentni v vseh pogledih"
 
-#: whatsnew/whatsnewtranslations.cpp:87
+#: whatsnew/whatsnewtranslations.cpp:88
 #, kde-format
 msgid "Improved default event calendar handling"
 msgstr "Izboljšano upravljanje privzetega koledarja dogodkov"
 
-#: whatsnew/whatsnewtranslations.cpp:89
+#: whatsnew/whatsnewtranslations.cpp:90
 #, kde-format
 msgid ""
 "Incidences with a long excluded dates list no longer create huge tooltips"
@@ -6544,13 +6556,13 @@ msgstr ""
 "Incidenti z dolgim ​​seznamom izključenih datumov ne ustvarjajo več ogromnih "
 "namigov orodij"
 
-#: whatsnew/whatsnewtranslations.cpp:90
+#: whatsnew/whatsnewtranslations.cpp:91
 #, kde-format
 msgid "Fixed the organizer email address for incidences with attendees"
 msgstr ""
 "Popravljen je bil e-poštni naslov organizatorja za incidence z udeleženci"
 
-#: whatsnew/whatsnewtranslations.cpp:91
+#: whatsnew/whatsnewtranslations.cpp:92
 #, kde-format
 msgid ""
 "Agenda view: events without a duration are displayed as 30 long (rather than "
@@ -6560,7 +6572,7 @@ msgstr ""
 "(namesto 15 minut)"
 
 #. i18n()});
-#: whatsnew/whatsnewtranslations.cpp:105
+#: whatsnew/whatsnewtranslations.cpp:106
 #, kde-format
 msgid "Incidence editor: the tags are sorted alphabetically in the tags editor"
 msgstr ""

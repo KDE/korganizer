@@ -11,7 +11,7 @@ msgid ""
 msgstr ""
 "Project-Id-Version: korganizer\n"
 "Report-Msgid-Bugs-To: https://bugs.kde.org\n"
-"POT-Creation-Date: 2026-01-23 00:44+0000\n"
+"POT-Creation-Date: 2026-01-24 00:44+0000\n"
 "PO-Revision-Date: 2026-01-19 22:03+0400\n"
 "Last-Translator: Zayed Al-Saidi <zayed.alsaidi@gmail.com>\n"
 "Language-Team: ar\n"
@@ -6265,10 +6265,22 @@ msgid "Navigator bar: added a button to scroll the view to the current date"
 msgstr "شريط التنقل: إضافة زر للتمرير إلى التاريخ الحالي"
 
 #: whatsnew/whatsnewtranslations.cpp:27
+#, fuzzy
+#| msgid ""
+#| "Agenda view: events without a duration are displayed as 30 long (rather "
+#| "than 15 minutes long)"
+msgid ""
+"Agenda view: events with short durations are displayed with their starting "
+"time in addition to their summary"
+msgstr ""
+"منظور جدول الأعمال: تُعرض الأحداث التي لا تحتوي على مدة زمنية على أنها مدتها "
+"30 دقيقة (بدلاً من 15 دقيقة)."
+
+#: whatsnew/whatsnewtranslations.cpp:28
 msgid "Search: the search settings are saved/restored"
 msgstr ""
 
-#: whatsnew/whatsnewtranslations.cpp:36
+#: whatsnew/whatsnewtranslations.cpp:37
 msgid ""
 "Agenda view: added timelabels context menu to show/hide time labels for the "
 "system timezone on the right (or left) side as well"
@@ -6276,27 +6288,27 @@ msgstr ""
 "عرض جدول الأعمال: إضافة قائمة سياق لإظهار/إخفاء التسميات الزمنية لمنطقة "
 "التوقيت للنظام على الجانب الأيمن (أو الأيسر) أيضًا."
 
-#: whatsnew/whatsnewtranslations.cpp:37
+#: whatsnew/whatsnewtranslations.cpp:38
 msgid "Incidence editor: detect and warn about creating incidences in the past"
 msgstr "محرر الحدوث: يكتشف إنشاء أحداث في الماضي وينبه عليها"
 
-#: whatsnew/whatsnewtranslations.cpp:38
+#: whatsnew/whatsnewtranslations.cpp:39
 msgid "Incidence editor: add emoji support"
 msgstr "محرر الأحداث: إضافة دعم الرموز التعبيرية"
 
-#: whatsnew/whatsnewtranslations.cpp:47
+#: whatsnew/whatsnewtranslations.cpp:48
 msgid "Add What's New menu"
 msgstr "أضِف قائمة ما الجديد"
 
-#: whatsnew/whatsnewtranslations.cpp:48
+#: whatsnew/whatsnewtranslations.cpp:49
 msgid "The current view is remembered"
 msgstr "حُفظ المنظور الحالي"
 
-#: whatsnew/whatsnewtranslations.cpp:49
+#: whatsnew/whatsnewtranslations.cpp:50
 msgid "Add a Date Picker dialog available on the Go menu"
 msgstr "أضف مربع حوار منتقي التاريخ المتاح في قائمة انتقل"
 
-#: whatsnew/whatsnewtranslations.cpp:50
+#: whatsnew/whatsnewtranslations.cpp:51
 msgid ""
 "Agenda view: consolidated the \"Day\", \"Next X Days\", \"Work Schedule\", "
 "\"Week\" time ranges into the Agenda tool button"
@@ -6304,7 +6316,7 @@ msgstr ""
 "عرض جدول الأعمال: دمج النطاقات الزمنية ”اليوم“ و”الأيام X التالية“ و”جدول "
 "العمل“ و”الأسبوع“ في زر أداة جدول الأعمال"
 
-#: whatsnew/whatsnewtranslations.cpp:51
+#: whatsnew/whatsnewtranslations.cpp:52
 msgid ""
 "Agenda view: added timelabels context menu option to toggle a 24-hour "
 "(military style) clock"
@@ -6312,24 +6324,24 @@ msgstr ""
 "عرض جدول الأعمال: إضافة خيار قائمة سياق علامات الوقت لتبديل ساعة 24 ساعة "
 "(النمط العسكري)"
 
-#: whatsnew/whatsnewtranslations.cpp:52
+#: whatsnew/whatsnewtranslations.cpp:53
 msgid "Agenda view: added context menu to create new Event or To-do"
 msgstr "عرض جدول الأعمال: إضافة قائمة سياق لإنشاء حدث أو مهمة جديدة"
 
-#: whatsnew/whatsnewtranslations.cpp:53
+#: whatsnew/whatsnewtranslations.cpp:54
 msgid ""
 "To-do view: added context menu options for toggling completion and reminders"
 msgstr "طريقة عرض المهام: إضافة خيارات قائمة السياق لتبديل الإكمال والتذكيرات"
 
-#: whatsnew/whatsnewtranslations.cpp:54
+#: whatsnew/whatsnewtranslations.cpp:55
 msgid "To-do view: save/restore fullview setting"
 msgstr "عرض المهام: حفظ/استعادة إعدادات العرض الكامل"
 
-#: whatsnew/whatsnewtranslations.cpp:55
+#: whatsnew/whatsnewtranslations.cpp:56
 msgid "To-do view: save/restore flatview setting"
 msgstr "عرض المهام: حفظ/استعادة إعدادات العرض المسطح"
 
-#: whatsnew/whatsnewtranslations.cpp:56
+#: whatsnew/whatsnewtranslations.cpp:57
 msgid ""
 "Date navigator: added an option in the Configure->Views settings for hiding "
 "the week numbers"
@@ -6337,7 +6349,7 @@ msgstr ""
 "متصفح التاريخ: إضافة خيار في إعدادات التهيئة-> إعدادات العروض لإخفاء أرقام "
 "الأسبوع"
 
-#: whatsnew/whatsnewtranslations.cpp:57
+#: whatsnew/whatsnewtranslations.cpp:58
 msgid ""
 "Date navigator: the \"Week numbers select a work week when in work week mode"
 "\" setting is true by default"
@@ -6345,48 +6357,48 @@ msgstr ""
 "متصفح التاريخ: يكون إعداد ”أرقام الأسبوع تحدد أسبوع العمل عندما تكون في وضع "
 "أسبوع العمل“ صحيحًا بشكل مبدئي"
 
-#: whatsnew/whatsnewtranslations.cpp:58
+#: whatsnew/whatsnewtranslations.cpp:59
 msgid "Incidence editor: remember/restore the template manager geometry"
 msgstr "محرر الأحداث: تذكّر/استعادة شكل مدير القالب"
 
-#: whatsnew/whatsnewtranslations.cpp:59
+#: whatsnew/whatsnewtranslations.cpp:60
 msgid "Incidence editor: support drag-and-drop attachments"
 msgstr "محرر الأحداث: دعم مرفقات السحب والإفلات"
 
-#: whatsnew/whatsnewtranslations.cpp:60
+#: whatsnew/whatsnewtranslations.cpp:61
 msgid "The export calendar dialog remembers its last export folder location"
 msgstr "يتذكر مربع تصدير التقويم موقع مجلد التصدير الأخير"
 
-#: whatsnew/whatsnewtranslations.cpp:61
+#: whatsnew/whatsnewtranslations.cpp:62
 msgid "The import calendar dialog remembers its last import folder location"
 msgstr "يتذكر مربع حوار استيراد التقويم موقع مجلد الاستيراد الأخير"
 
-#: whatsnew/whatsnewtranslations.cpp:62
+#: whatsnew/whatsnewtranslations.cpp:63
 msgid "Get Hot New Stuff removed"
 msgstr "إزالة احصل على بيانات جديدة"
 
-#: whatsnew/whatsnewtranslations.cpp:63
+#: whatsnew/whatsnewtranslations.cpp:64
 msgid "Add calendar file: remote calendars are always read-only"
 msgstr "إضافة ملف تقويم: التقويمات عن بُعد تكون دائماً للقراءة فقط"
 
-#: whatsnew/whatsnewtranslations.cpp:64
+#: whatsnew/whatsnewtranslations.cpp:65
 msgid "Add calendar file: will not permit an empty file path"
 msgstr "إضافة ملف تقويم: لن يسمح بمسار ملف فارغ"
 
-#: whatsnew/whatsnewtranslations.cpp:65
+#: whatsnew/whatsnewtranslations.cpp:66
 msgid ""
 "DAV configuration: dialog allows seeing the account password when editing"
 msgstr "ضبط DAV: يتيح مربع الحوار رؤية كلمة سر الحساب عند التحرير"
 
-#: whatsnew/whatsnewtranslations.cpp:66
+#: whatsnew/whatsnewtranslations.cpp:67
 msgid "DAV configuration: wizard shows icons for the various providers"
 msgstr "ضبط DAV: يعرض المعالج أيقونات لمختلف المزودين"
 
-#: whatsnew/whatsnewtranslations.cpp:67
+#: whatsnew/whatsnewtranslations.cpp:68
 msgid "DAV configuration: wizard updated list of providers"
 msgstr "ضبط DAV: تحديث المعالج لقائمة المزودين"
 
-#: whatsnew/whatsnewtranslations.cpp:85
+#: whatsnew/whatsnewtranslations.cpp:86
 #, kde-format
 msgid ""
 "Semantics are changed from a \"working schedule\" concept to a \"week "
@@ -6395,30 +6407,30 @@ msgstr ""
 "تغيير الدلالات من مفهوم ”جدول العمل“ إلى مفهوم ”جدول الأسبوع“ لاستيعاب "
 "المستخدمين غير العاملين"
 
-#: whatsnew/whatsnewtranslations.cpp:86
+#: whatsnew/whatsnewtranslations.cpp:87
 #, kde-format
 msgid "Initial \"New Event\" start times are consistent across all the views"
 msgstr "أوقات بدء ”الحدث الجديد“ الأولية متسقة في جميع طرق العرض"
 
-#: whatsnew/whatsnewtranslations.cpp:87
+#: whatsnew/whatsnewtranslations.cpp:88
 #, kde-format
 msgid "Improved default event calendar handling"
 msgstr "تحسين معالجة أحداث التقويم المبدئية"
 
-#: whatsnew/whatsnewtranslations.cpp:89
+#: whatsnew/whatsnewtranslations.cpp:90
 #, kde-format
 msgid ""
 "Incidences with a long excluded dates list no longer create huge tooltips"
 msgstr ""
 "لم تعد الأحداث التي تحتوي على قائمة تواريخ مستثناة طويلة تنشئ تلميحات ضخمة"
 
-#: whatsnew/whatsnewtranslations.cpp:90
+#: whatsnew/whatsnewtranslations.cpp:91
 #, kde-format
 msgid "Fixed the organizer email address for incidences with attendees"
 msgstr ""
 "إصلاح عنوان البريد الإلكتروني الخاص بالمنظم للحالات التي حدثت مع الحضور"
 
-#: whatsnew/whatsnewtranslations.cpp:91
+#: whatsnew/whatsnewtranslations.cpp:92
 #, kde-format
 msgid ""
 "Agenda view: events without a duration are displayed as 30 long (rather than "
@@ -6428,7 +6440,7 @@ msgstr ""
 "30 دقيقة (بدلاً من 15 دقيقة)."
 
 #. i18n()});
-#: whatsnew/whatsnewtranslations.cpp:105
+#: whatsnew/whatsnewtranslations.cpp:106
 #, kde-format
 msgid "Incidence editor: the tags are sorted alphabetically in the tags editor"
 msgstr "محرر الحدوث: الوسوم مرتبة أبجديًا في محرر الوسوم"
