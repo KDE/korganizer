@@ -25,6 +25,8 @@ QList<KLazyLocalizedString> WhatsNewTranslations::lastNewFeatures() const
         kli18n("Navigator bar: improved by adding week scrolling and showing/hiding the sidebar on a per-view basis"),
         kli18n("Navigator bar: added a button to scroll the view to the current date"),
         kli18n("Agenda view: events with short durations are displayed with their starting time in addition to their summary"),
+        kli18n("Agenda view: optionally show the incidence descriptions inside the agenda items. To enable this behavior, check the \"Show incidence "
+               "descriptions in agenda view items\" option in the View->Agenda View tab"),
         kli18n("Search: the search settings are saved/restored"),
     };
 

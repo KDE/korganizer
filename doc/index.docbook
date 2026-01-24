@@ -2210,6 +2210,11 @@ in Agenda view items</para></listitem>
 </varlistentry>
 
 <varlistentry>
+  <term><guilabel>Show incidence descriptions in agenda view items</guilabel></term>
+  <listitem><para>Check this box to display the incidence descriptions in agenda view items.</para></listitem>
+</varlistentry>
+
+<varlistentry>
 <term><guilabel>Show to-dos</guilabel></term>
 <listitem><para>This check box toggles the display of to-dos in the Day, Week
 and Month views in the Agenda view. If you have
