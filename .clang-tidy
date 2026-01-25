@@ -52,7 +52,6 @@ WarningsAsErrors: bugprone-*,
                   clang-*,
                   google-*,
                   misc-*,
-                  -misc-const-correctness,
                   performance-*,
                   readability-*,
 CheckOptions:
