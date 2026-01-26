@@ -15,8 +15,8 @@ msgid ""
 msgstr ""
 "Project-Id-Version: korganizer\n"
 "Report-Msgid-Bugs-To: https://bugs.kde.org\n"
-"POT-Creation-Date: 2026-01-25 00:45+0000\n"
-"PO-Revision-Date: 2026-01-21 23:46+0100\n"
+"POT-Creation-Date: 2026-01-26 00:43+0000\n"
+"PO-Revision-Date: 2026-01-25 17:23+0100\n"
 "Last-Translator: Luigi Toscano <luigi.toscano@tiscali.it>\n"
 "Language-Team: Italian <kde-i18n-it@kde.org>\n"
 "Language: it\n"
@@ -4548,29 +4548,25 @@ msgstr "Mostra icone nelle voci della vista agenda."
 
 #. i18n: ectx: label, entry (EnableAgendaItemDesc), group (Agenda View)
 #: settings/korganizer.kcfg:124
-#, fuzzy, kde-format
-#| msgid "Show icons in agenda view items"
+#, kde-format
 msgid "Show incidence descriptions in agenda view items"
-msgstr "Mostra icone le voci della vista agenda."
+msgstr "Mostra descrizioni delle occorrenze nelle voci della vista agenda"
 
 #. i18n: ectx: whatsthis, entry (EnableAgendaItemDesc), group (Agenda View)
 #: settings/korganizer.kcfg:125
-#, fuzzy, kde-format
-#| msgid ""
-#| "Check this box to display icons (alarm, recursion, etc.) in agenda view "
-#| "items."
+#, kde-format
 msgid ""
 "Check this box to display the incidence descriptions in agenda view items."
 msgstr ""
-"Marca questa casella per mostrare le icone (avvisi, ricorrenze, ecc.) nelle "
-"voci della vista agenda."
+"Marca questa casella per mostrare le descrizioni delle occorrenze nelle voci "
+"della vista agenda."
 
 #. i18n: ectx: tooltip, entry (EnableAgendaItemDesc), group (Agenda View)
 #: settings/korganizer.kcfg:126
 #, fuzzy, kde-format
-#| msgid "Display icons in agenda view items"
-msgid "Display inicidence descriptions agenda view items"
-msgstr "Mostra icone nelle voci della vista agenda."
+#| msgid "Display inicidence descriptions agenda view items"
+msgid "Display incidence descriptions agenda view items"
+msgstr "Mostra descrizioni delle occorrenze nelle voci della vista agenda."
 
 #. i18n: ectx: label, entry (ShowTodosAgendaView), group (Agenda View)
 #. i18n: ectx: label, entry (ShowTodosMonthView), group (Month View)
@@ -6452,16 +6448,12 @@ msgstr ""
 "data attuale"
 
 #: whatsnew/whatsnewtranslations.cpp:27
-#, fuzzy
-#| msgid ""
-#| "Agenda view: events without a duration are displayed as 30 long (rather "
-#| "than 15 minutes long)"
 msgid ""
 "Agenda view: events with short durations are displayed with their starting "
 "time in addition to their summary"
 msgstr ""
-"Vista agenda: gli eventi senza una durata sono mostrati come se avessero una "
-"durata di 30 minuti (invece che 15 minuti)"
+"Vista agenda: gli eventi con una durata breve sono mostrati con il "
+"rispettivo orario di inizio in aggiunta al sommario."
 
 #: whatsnew/whatsnewtranslations.cpp:28
 msgid ""
@@ -6469,10 +6461,14 @@ msgid ""
 "items. To enable this behavior, check the \"Show incidence descriptions in "
 "agenda view items\" option in the View->Agenda View tab"
 msgstr ""
+"Vista agenda: opzionalmente mostra le descrizioni delle occorrenze nelle "
+"voci dell'agenda. Per abilitare questo comportamento, selezionare l'opzione "
+"«Mostra descrizioni delle occorrenze nelle voci della vista agenda» nella "
+"scheda Visualizza->Vista agenda"
 
 #: whatsnew/whatsnewtranslations.cpp:30
 msgid "Search: the search settings are saved/restored"
-msgstr ""
+msgstr "Ricerca: le impostazioni di ricerca sono salvate/ripristinate"
 
 #: whatsnew/whatsnewtranslations.cpp:39
 msgid ""

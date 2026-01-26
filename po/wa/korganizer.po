@@ -6,7 +6,7 @@ msgid ""
 msgstr ""
 "Project-Id-Version: korganizer\n"
 "Report-Msgid-Bugs-To: https://bugs.kde.org\n"
-"POT-Creation-Date: 2026-01-25 00:45+0000\n"
+"POT-Creation-Date: 2026-01-26 00:43+0000\n"
 "PO-Revision-Date: 2013-03-24 10:49+0100\n"
 "Last-Translator: Jean Cayron <jean.cayron@base.be>\n"
 "Language-Team: Walloon <linux-wa@walon.org>\n"
@@ -4727,7 +4727,7 @@ msgstr "Mostrer el vuwe pås moes"
 #, fuzzy, kde-format
 #| msgctxt "@option:check"
 #| msgid "Show in the month view"
-msgid "Display inicidence descriptions agenda view items"
+msgid "Display incidence descriptions agenda view items"
 msgstr "Mostrer el vuwe pås moes"
 
 #. i18n: ectx: label, entry (ShowTodosAgendaView), group (Agenda View)

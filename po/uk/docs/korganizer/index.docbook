@@ -3185,6 +3185,17 @@
 </varlistentry>
 
 <varlistentry>
+  <term
+><guilabel
+>Показувати описи зустрічей для пунктів перегляду порядку денного</guilabel
+></term>
+  <listitem
+><para
+>Позначте цей пункт, щоб для елементів перегляду порядку денного було показано описи.</para
+></listitem>
+</varlistentry>
+
+<varlistentry>
 <term
 ><guilabel
 >Показати завдання</guilabel
