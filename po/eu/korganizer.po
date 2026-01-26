@@ -1,7 +1,7 @@
 # Translation for korganizer.po to Euskara/Basque (eu).
 # Copyright (C) 2003-2025 This file is copyright:
 # This file is distributed under the same license as the korganizer package.
-# SPDX-FileCopyrightText: 2023, 2024, 2025 KDE euskaratzeko proiektuaren arduraduna <xalba@ni.eus>
+# SPDX-FileCopyrightText: 2023, 2024, 2025, 2026 KDE euskaratzeko proiektuaren arduraduna <xalba@ni.eus>
 #
 # Translators:
 # Marcos  <marcos@euskalgnu.org>, 2003, 2005.
@@ -14,14 +14,14 @@ msgstr ""
 "Project-Id-Version: korganizer\n"
 "Report-Msgid-Bugs-To: https://bugs.kde.org\n"
 "POT-Creation-Date: 2025-11-17 14:41+0000\n"
-"PO-Revision-Date: 2025-12-06 20:43+0100\n"
+"PO-Revision-Date: 2026-01-25 13:57+0100\n"
 "Last-Translator: Iñigo Salvador Azurmendi <xalba@ni.eus>\n"
 "Language-Team: Basque <kde-i18n-eu@kde.org>\n"
 "Language: eu\n"
 "MIME-Version: 1.0\n"
 "Content-Type: text/plain; charset=UTF-8\n"
 "Content-Transfer-Encoding: 8bit\n"
-"X-Generator: Lokalize 25.08.3\n"
+"X-Generator: Lokalize 25.12.1\n"
 "Plural-Forms: nplurals=2; plural=(n != 1);\n"
 
 #, kde-format
@@ -5850,8 +5850,7 @@ msgstr "&Bilatu hori:"
 #, kde-format
 msgid "Search pattern. Use wildcards “*” and “?” as desired."
 msgstr ""
-"Bilaketa eredua. Erabili nahi bezala zernahitarako \"*\" eta \"?\" "
-"karaktereak."
+"Bilaketa eredua. Erabili nahi bezala zernahitarako  “*” eta “?” karaktereak."
 
 #. i18n: ectx: property (whatsThis), widget (QLineEdit, searchEdit)
 #: ui/searchdialog_base.ui:52
@@ -5863,12 +5862,12 @@ msgid ""
 "For example, the search pattern “meet*boss” matches “Meeting with boss”. The "
 "pattern “c?t” would match “cat”, “cot”, and so on."
 msgstr ""
-"Aztertu hainbat eremu, bilaketa-eredua duten ikusteko: \"bilera\" eredua "
-"\"jaurtiketa bilera\"rekin bat etorriko litzateke. Zernahitarako \"*"
-"\" (edozein karaktere-kopururekin bat dator) eta \"?\" (edozein karaktere "
-"soilekin bat dator) karaktereak onartzen dira. Adibidez, \"nagusi*bilera\" "
-"eredua \"Nagusiarekin bilera\"rekin bat dator. \"g*i\" eredua \"gai\", \"goi"
-"\"rekin bat etorriko litzateke, eta horrela."
+"Aztertu hainbat eremu, bilaketa-eredua duten ikusteko: “bilera” eredua "
+"“jaurtiketa bilera”rekin bat etorriko litzateke. Zernahitarako “*” (edozein "
+"karaktere-kopururekin bat dator) eta “?” (edozein karaktere soilekin bat "
+"dator) karaktereak onartzen dira. Adibidez, “nagusi*bilera” eredua "
+"“Nagusiarekin bilera”rekin bat dator. “g*i” eredua “gai”, “goi”rekin bat "
+"etorriko litzateke, eta horrela."
 
 #. i18n: ectx: property (text), widget (QLineEdit, searchEdit)
 #: ui/searchdialog_base.ui:55
