@@ -21,7 +21,7 @@ msgstr ""
 "Project-Id-Version: kdepim-kde4\n"
 "Report-Msgid-Bugs-To: https://bugs.kde.org\n"
 "POT-Creation-Date: 2026-01-26 00:43+0000\n"
-"PO-Revision-Date: 2026-01-23 11:36+0300\n"
+"PO-Revision-Date: 2026-01-26 17:16+0300\n"
 "Last-Translator: Emir SARI <emir_sari@îcloud.com>\n"
 "Language-Team: Turkish <kde-l10n-tr@kde.org>\n"
 "Language: tr\n"
@@ -4518,29 +4518,24 @@ msgstr "Ajanda görünümü ögelerinde simgeleri görüntüle"
 
 #. i18n: ectx: label, entry (EnableAgendaItemDesc), group (Agenda View)
 #: settings/korganizer.kcfg:124
-#, fuzzy, kde-format
-#| msgid "Show icons in agenda view items"
+#, kde-format
 msgid "Show incidence descriptions in agenda view items"
-msgstr "Ajanda görünümü ögelerinde simgeleri göster"
+msgstr "Ajanda görünümü ögelerinde olay açıklamalarını göster"
 
 #. i18n: ectx: whatsthis, entry (EnableAgendaItemDesc), group (Agenda View)
 #: settings/korganizer.kcfg:125
-#, fuzzy, kde-format
-#| msgid ""
-#| "Check this box to display icons (alarm, recursion, etc.) in agenda view "
-#| "items."
+#, kde-format
 msgid ""
 "Check this box to display the incidence descriptions in agenda view items."
 msgstr ""
-"Ay görünümü ögelerinde simgeleri (alarm, yineleme vs.) görüntülemek için bu "
-"kutuyu işaretleyin."
+"Ay görünümü ögelerinde olay açıklamalarını görüntülemek için bu kutuyu "
+"işaretleyin."
 
 #. i18n: ectx: tooltip, entry (EnableAgendaItemDesc), group (Agenda View)
 #: settings/korganizer.kcfg:126
-#, fuzzy, kde-format
-#| msgid "Display icons in agenda view items"
+#, kde-format
 msgid "Display incidence descriptions agenda view items"
-msgstr "Ajanda görünümü ögelerinde simgeleri görüntüle"
+msgstr "Ajanda görünümü ögelerinde olay açıklamalarını görüntüle"
 
 #. i18n: ectx: label, entry (ShowTodosAgendaView), group (Agenda View)
 #. i18n: ectx: label, entry (ShowTodosMonthView), group (Month View)
@@ -6379,16 +6374,12 @@ msgid "Navigator bar: added a button to scroll the view to the current date"
 msgstr "Dolaşma çubuğu: Görünümü geçerli tarihe sarmak için düğme ekle"
 
 #: whatsnew/whatsnewtranslations.cpp:27
-#, fuzzy
-#| msgid ""
-#| "Agenda view: events without a duration are displayed as 30 long (rather "
-#| "than 15 minutes long)"
 msgid ""
 "Agenda view: events with short durations are displayed with their starting "
 "time in addition to their summary"
 msgstr ""
-"Ajanda görünümü: Süresi olmayan etkinlikler 15 yerine 30 dakikalık olarak "
-"görüntülenir"
+"Ajanda görünümü: Kısa süreli etkinlikler, özetlerinin yanında başlangıç "
+"zamanıyla görüntülenir."
 
 #: whatsnew/whatsnewtranslations.cpp:28
 msgid ""
@@ -6396,6 +6387,9 @@ msgid ""
 "items. To enable this behavior, check the \"Show incidence descriptions in "
 "agenda view items\" option in the View->Agenda View tab"
 msgstr ""
+"Ajanda görünümü: Ajanda ögelerinde olay açıklamalarını göstermeye olanak "
+"tanı. Bu davranışı etkinleştirmek için Görüntü → Ajanda Görünümü sekmesinde "
+"“Ajanda görünümü ögelerinde olay açıklamalarını göster” kutusunu işaretleyin."
 
 #: whatsnew/whatsnewtranslations.cpp:30
 msgid "Search: the search settings are saved/restored"

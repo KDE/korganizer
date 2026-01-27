@@ -14,14 +14,14 @@ msgstr ""
 "Project-Id-Version: korganizer\n"
 "Report-Msgid-Bugs-To: https://bugs.kde.org\n"
 "POT-Creation-Date: 2026-01-26 00:43+0000\n"
-"PO-Revision-Date: 2026-01-24 10:03+0100\n"
+"PO-Revision-Date: 2026-01-26 10:18+0100\n"
 "Last-Translator: Josep M. Ferrer <txemaq@gmail.com>\n"
 "Language-Team: Catalan <kde-i18n-ca@kde.org>\n"
 "Language: ca@valencia\n"
 "MIME-Version: 1.0\n"
 "Content-Type: text/plain; charset=UTF-8\n"
 "Content-Transfer-Encoding: 8bit\n"
-"X-Generator: Lokalize 25.04.0\n"
+"X-Generator: Lokalize 25.12.1\n"
 "Plural-Forms: nplurals=2; plural=n != 1;\n"
 "X-Accelerator-Marker: &\n"
 
@@ -4559,29 +4559,26 @@ msgstr "Mostra les icones dels elements en la vista d'agenda"
 
 #. i18n: ectx: label, entry (EnableAgendaItemDesc), group (Agenda View)
 #: settings/korganizer.kcfg:124
-#, fuzzy, kde-format
-#| msgid "Show icons in agenda view items"
+#, kde-format
 msgid "Show incidence descriptions in agenda view items"
-msgstr "Mostra les icones dels elements en la vista d'agenda"
+msgstr ""
+"Mostra les descripcions de les incidències als elements de la vista d'agenda"
 
 #. i18n: ectx: whatsthis, entry (EnableAgendaItemDesc), group (Agenda View)
 #: settings/korganizer.kcfg:125
-#, fuzzy, kde-format
-#| msgid ""
-#| "Check this box to display icons (alarm, recursion, etc.) in agenda view "
-#| "items."
+#, kde-format
 msgid ""
 "Check this box to display the incidence descriptions in agenda view items."
 msgstr ""
-"Marqueu esta casella per a mostrar les icones (alarma, repetició, etc.) en "
-"els elements en la vista d'agenda."
+"Marqueu esta casella per a mostrar les descripcions de les incidències als "
+"elements de la vista d'agenda."
 
 #. i18n: ectx: tooltip, entry (EnableAgendaItemDesc), group (Agenda View)
 #: settings/korganizer.kcfg:126
-#, fuzzy, kde-format
-#| msgid "Display icons in agenda view items"
+#, kde-format
 msgid "Display incidence descriptions agenda view items"
-msgstr "Mostra les icones dels elements en la vista d'agenda"
+msgstr ""
+"Mostra les descripcions de les incidències als elements de la vista d'agenda"
 
 #. i18n: ectx: label, entry (ShowTodosAgendaView), group (Agenda View)
 #. i18n: ectx: label, entry (ShowTodosMonthView), group (Month View)
@@ -6496,6 +6493,10 @@ msgid ""
 "items. To enable this behavior, check the \"Show incidence descriptions in "
 "agenda view items\" option in the View->Agenda View tab"
 msgstr ""
+"Vista d'agenda: de manera opcional mostra les descripcions d'incidència dins "
+"dels elements d'agenda. Per a activar este comportament, marqueu l'opció "
+"«Mostra les descripcions de les incidències als elements de la vista "
+"d'agenda» a la pestanya Visualitza->Vista d'agenda"
 
 #: whatsnew/whatsnewtranslations.cpp:30
 msgid "Search: the search settings are saved/restored"

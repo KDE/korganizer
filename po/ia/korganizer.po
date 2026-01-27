@@ -8,7 +8,7 @@ msgstr ""
 "Project-Id-Version: \n"
 "Report-Msgid-Bugs-To: https://bugs.kde.org\n"
 "POT-Creation-Date: 2026-01-26 00:43+0000\n"
-"PO-Revision-Date: 2026-01-22 18:02+0100\n"
+"PO-Revision-Date: 2026-01-26 15:09+0100\n"
 "Last-Translator: giovanni <g.sora@tiscali.it>\n"
 "Language-Team: Interlingua <kde-i18n-doc@kde.org>\n"
 "Language: ia\n"
@@ -1812,7 +1812,7 @@ msgstr "Rende sub-activitates independente"
 #, kde-format
 msgctxt "@info/plain"
 msgid "Toggle Reminder"
-msgstr "Marca memento"
+msgstr "Marca rememoration"
 
 #: calendarview.cpp:1366
 #, kde-kuit-format
@@ -2190,12 +2190,7 @@ msgstr ""
 "<message>%1</message>"
 
 #: calendarview.cpp:2812
-#, fuzzy, kde-kuit-format
-#| msgctxt "@info"
-#| msgid ""
-#| "You created an incidence in a calendar that is currently filtered out."
-#| "<para>On the left sidebar, enable it in the calendar manager to see the "
-#| "incidence.</para>"
+#, kde-kuit-format
 msgctxt "@info"
 msgid ""
 "You created an incidence in a calendar that is currently filtered out."
@@ -2203,16 +2198,11 @@ msgid ""
 "calendar manager.</para>"
 msgstr ""
 "Tu creava un incidentia in un calendario que currentement es ignorate."
-"<para>Sur le latere sinistre del barra, habilita lo in le gerente de "
-"calendario pro vider le incidentia.</para>"
+"<para>Per vider le incidentia tosto create, pro favor, habilita su "
+"calendario in le gerente de calendario.</para>"
 
 #: calendarview.cpp:2816
-#, fuzzy, kde-kuit-format
-#| msgctxt "@info"
-#| msgid ""
-#| "You created an incidence in a calendar that is currently filtered out."
-#| "<para>You can enable it through the calendar manager (Settings->Sidebar-"
-#| ">Show Calendar Manager)</para>"
+#, kde-kuit-format
 msgctxt "@info"
 msgid ""
 "You created an incidence in a calendar that is currently filtered out."
@@ -2222,8 +2212,11 @@ msgid ""
 "interface> menu.</para>"
 msgstr ""
 "Tu creava un incidentia in un calendario que currentement es ignorate."
-"<para>Tu pote habilitar lo per le gerente de calendario pro (Preferentias-"
-">Barra lateral-> Monstra gerente de calendario)</para>"
+"<para>Per vider le incidentia tosto create, pro favor habilita su calendario "
+"in le gerente de calendario.</para><para>Le gerente de calendario es "
+"currentemente celate. Monstra le gerente per usar le menu "
+"<interface>Preferentias->Barra Lateral->Monstra Gerente de Calendario</"
+"interface>.</para>"
 
 #: collectiongeneralpage.cpp:37
 #, kde-format
@@ -2642,7 +2635,7 @@ msgstr "Marca activitate de agenda comp&letate"
 #, kde-format
 msgctxt "@action:inmenu"
 msgid "&Toggle Reminder"
-msgstr "Marca memen&to"
+msgstr "Marca rememora&tion"
 
 #: koeventpopupmenu.cpp:132
 #, kde-format
@@ -3840,7 +3833,7 @@ msgstr "Preferentias de e-posta"
 #, kde-format
 msgctxt "@title:group"
 msgid "Reminders"
-msgstr "Mementos"
+msgstr "Rememorationes"
 
 #: prefs/koprefsdialogmain.cpp:72
 #, kde-format
@@ -4537,29 +4530,24 @@ msgstr "Monstra icones in elementos de vista de agenda"
 
 #. i18n: ectx: label, entry (EnableAgendaItemDesc), group (Agenda View)
 #: settings/korganizer.kcfg:124
-#, fuzzy, kde-format
-#| msgid "Show icons in agenda view items"
+#, kde-format
 msgid "Show incidence descriptions in agenda view items"
-msgstr "Monstra icones in elementos de vista de agenda"
+msgstr "Monstra descriptiones de incidentia in elementos de vista de agenda"
 
 #. i18n: ectx: whatsthis, entry (EnableAgendaItemDesc), group (Agenda View)
 #: settings/korganizer.kcfg:125
-#, fuzzy, kde-format
-#| msgid ""
-#| "Check this box to display icons (alarm, recursion, etc.) in agenda view "
-#| "items."
+#, kde-format
 msgid ""
 "Check this box to display the incidence descriptions in agenda view items."
 msgstr ""
-"Marca iste quadrato pro monstrar icones (alarma, recursion,etc.) in "
+"Marca iste quadrato pro monstrar le descriptionmes de incidentia in "
 "elementos de vista de agenda."
 
 #. i18n: ectx: tooltip, entry (EnableAgendaItemDesc), group (Agenda View)
 #: settings/korganizer.kcfg:126
-#, fuzzy, kde-format
-#| msgid "Display icons in agenda view items"
+#, kde-format
 msgid "Display incidence descriptions agenda view items"
-msgstr "Monstra icones in elementos de vista de agenda"
+msgstr "Monstra descriptiones de incidentia in elementos de vista de agenda"
 
 #. i18n: ectx: label, entry (ShowTodosAgendaView), group (Agenda View)
 #. i18n: ectx: label, entry (ShowTodosMonthView), group (Month View)
@@ -4896,7 +4884,7 @@ msgstr "MOnstra icones in elementos de vista de mense"
 #: settings/korganizer.kcfg:215
 #, kde-format
 msgid "Show time in month view items"
-msgstr "Monstra tempore inelementos de vista de mense"
+msgstr "Monstra tempore in elementos de vista de mense"
 
 #. i18n: ectx: whatsthis, entry (ShowTimeInMonthView), group (Month View)
 #: settings/korganizer.kcfg:216
@@ -6392,24 +6380,34 @@ msgid ""
 "this behavior, uncheck the Enable reminders options in the settings "
 "Time&Date->Default Values tab"
 msgstr ""
+"Rememorationes es habilitate per definition per omne nove eventos e cosas de "
+"facer. Per dishabilitar iste comportamento, leva lemarca a optionmes de "
+"Habilita Remorationes in le scheda de preferentias de Tempore&Data->Valores "
+"Predefinite"
 
 #: whatsnew/whatsnewtranslations.cpp:20
 msgid ""
 "Month view: no longer display the month year header to save vertical space "
 "and remove redundancy"
 msgstr ""
+"Vista de mense: non plus monstra lecapite de anno de mense per salveguardar "
+"spatio vertical e remover redundantia"
 
 #: whatsnew/whatsnewtranslations.cpp:21
 msgid ""
 "Month view: use a slightly different color for drawing the day headers for "
 "days outside of the currently selected month"
 msgstr ""
+"Vista de mense: usa un color legiermente differente per designar le capites "
+"del die  per dies foradelmense seligite currentemente"
 
 #: whatsnew/whatsnewtranslations.cpp:22
 msgid ""
 "Month view: the navigation controls on the lower right side are removed in "
 "favor of the improved application navigator bar"
 msgstr ""
+"Vista de mense: le controlos de navigation sur lelatere dextere a basso es "
+"removite in favor delbarre de navigatot de application meliorate"
 
 #: whatsnew/whatsnewtranslations.cpp:23
 msgid ""
@@ -6417,28 +6415,30 @@ msgid ""
 "configure the color,  set the \"Month view today background color\" in the "
 "Colors and Fonts settings"
 msgstr ""
+"Vosta de mense: le color de fundo per le cela del data de hodie pote esser "
+"cambiate.  Per configurar le color,  assigna \"Color de Fundo de Hodie de "
+"Vista de Mense\" in le preferentias de Colores e Fonts"
 
 #: whatsnew/whatsnewtranslations.cpp:25
 msgid ""
 "Navigator bar: improved by adding week scrolling and showing/hiding the "
 "sidebar on a per-view basis"
 msgstr ""
+"Barra de Navigator: meliorate per adder rolar de septimana e monstrar/celar "
+"le barra lateral sur un base de visualisation "
 
 #: whatsnew/whatsnewtranslations.cpp:26
 msgid "Navigator bar: added a button to scroll the view to the current date"
 msgstr ""
+"Barra de Navigator: addite un button per rolar le vista al data currente"
 
 #: whatsnew/whatsnewtranslations.cpp:27
-#, fuzzy
-#| msgid ""
-#| "Agenda view: events without a duration are displayed as 30 long (rather "
-#| "than 15 minutes long)"
 msgid ""
 "Agenda view: events with short durations are displayed with their starting "
 "time in addition to their summary"
 msgstr ""
-"Vista de Agenda: eventos sin duration es monstrate como longe 30 (plus tosto "
-"que longe de 15 minutas)"
+"Vista de Agenda: eventos con duration breve es monstrate con lor tempore de "
+"initio in addition a lor summario"
 
 #: whatsnew/whatsnewtranslations.cpp:28
 msgid ""
@@ -6446,24 +6446,32 @@ msgid ""
 "items. To enable this behavior, check the \"Show incidence descriptions in "
 "agenda view items\" option in the View->Agenda View tab"
 msgstr ""
+"Vista de Agenda: monstra optionalmente le descriptiones de incidentia intra "
+"le elementos del agenda. Per habilitar iste comportamento,marca le option  "
+"\"Monstra desctiptiones de incidentia in elementos de vista de agenda\" in "
+"le scheda Vista->Vista de Agenda "
 
 #: whatsnew/whatsnewtranslations.cpp:30
 msgid "Search: the search settings are saved/restored"
-msgstr ""
+msgstr "Cerca: le preferentias de cerca es salveguardate/restabilite"
 
 #: whatsnew/whatsnewtranslations.cpp:39
 msgid ""
 "Agenda view: added timelabels context menu to show/hide time labels for the "
 "system timezone on the right (or left) side as well"
 msgstr ""
+"Vista de Agenda: addite menu de contexto de etiquettas temporal per monstrar/"
+"celar etiquettas temporal per le fuso horari de systema anque sul latere "
+"dextere (o sinistre)"
 
 #: whatsnew/whatsnewtranslations.cpp:40
 msgid "Incidence editor: detect and warn about creating incidences in the past"
 msgstr ""
+"Editor de incidentia: discoperi e avisa re crear incidentias in le passato"
 
 #: whatsnew/whatsnewtranslations.cpp:41
 msgid "Incidence editor: add emoji support"
-msgstr ""
+msgstr "Editor de incidentia: adde supportode emoji"
 
 #: whatsnew/whatsnewtranslations.cpp:50
 msgid "Add What's New menu"
@@ -6634,6 +6642,8 @@ msgstr ""
 #, kde-format
 msgid "Incidence editor: the tags are sorted alphabetically in the tags editor"
 msgstr ""
+"Editor de incidentia: le etiquettas es ordinate alphabeticamente in le "
+"editor de etiquettas"
 
 #: widgets/kdatenavigator.cpp:176
 #, kde-format
@@ -6727,11 +6737,10 @@ msgid "Icons to use"
 msgstr "Icones de usar"
 
 #: widgets/navigatorbar.cpp:32
-#, fuzzy, kde-format
-#| msgid "Show time in month view items"
+#, kde-format
 msgctxt "@info:tooltip"
 msgid "Show/hide the sidebar in this view"
-msgstr "Monstra tempore inelementos de vista de mense"
+msgstr "Monstra /cela le barra lateral in iste vista"
 
 #: widgets/navigatorbar.cpp:34
 #, kde-format
@@ -6740,6 +6749,8 @@ msgid ""
 "Click this button to show/hide the sidebar in the current view. Each view "
 "can show/hide the sidebar independently."
 msgstr ""
+"Clicca iste button permonstrar/celar le barra lateral in levista currente. "
+"Cata vista pote celar/monstrar le barra lateral independentemente."
 
 #: widgets/navigatorbar.cpp:39
 #, kde-format
@@ -6748,12 +6759,10 @@ msgid "Scrolls the current view to today's date."
 msgstr "Rola le vista curente al data de hodie."
 
 #: widgets/navigatorbar.cpp:42
-#, fuzzy, kde-format
-#| msgctxt "@info:status"
-#| msgid "Scroll Backward"
+#, kde-format
 msgctxt "@info:tooltip"
 msgid "Scroll backward a year"
-msgstr "Rola retro"
+msgstr "Rola retro un anno"
 
 #: widgets/navigatorbar.cpp:44
 #, kde-format
@@ -6766,12 +6775,10 @@ msgstr ""
 "previe"
 
 #: widgets/navigatorbar.cpp:48
-#, fuzzy, kde-format
-#| msgctxt "@info:status"
-#| msgid "Scroll Backward"
+#, kde-format
 msgctxt "@info:tooltip"
 msgid "Scroll backward a month"
-msgstr "Rola retro"
+msgstr "Rola retro un mense"
 
 #: widgets/navigatorbar.cpp:50
 #, kde-format
@@ -6784,49 +6791,36 @@ msgstr ""
 "mense previe"
 
 #: widgets/navigatorbar.cpp:54
-#, fuzzy, kde-format
-#| msgctxt "@info:status"
-#| msgid "Scroll Backward"
+#, kde-format
 msgctxt "@info:tooltip"
 msgid "Scroll backward a week"
-msgstr "Rola retro"
+msgstr "Rola retro un septimana"
 
 #: widgets/navigatorbar.cpp:55
-#, fuzzy, kde-format
-#| msgid ""
-#| "Click this button to scroll the display to the same approximate date of "
-#| "the next month"
+#, kde-format
 msgctxt "@info::whatsthis"
 msgid "Click this button to scroll the display to back 1 week in time"
 msgstr ""
-"Pulsa iste button pro rolar le monstrator al mesme approximate date  del "
-"mense proxime"
+"Pulsa iste button pro rolar le monstrator retro 1 septimana in tempore "
 
 #: widgets/navigatorbar.cpp:58
-#, fuzzy, kde-format
-#| msgctxt "@info:status"
-#| msgid "Scroll Forward"
+#, kde-format
 msgctxt "@info:tooltip"
 msgid "Scroll forward a week"
-msgstr "Rola avante"
+msgstr "Rola avante un septimana"
 
 #: widgets/navigatorbar.cpp:59
-#, fuzzy, kde-format
-#| msgid ""
-#| "Click this button to scroll the display to the same approximate day of "
-#| "the next year"
+#, kde-format
 msgctxt "@info::whatsthis"
 msgid "Click this button to scroll the display to forward 1 week in time"
 msgstr ""
-"Pulsa iste button pro rolar le monstrator al mesme approximate die  del anno "
-"proxime"
+"Pulsa iste button pro rolar le monstrator  avante un septimana in tempore"
 
 #: widgets/navigatorbar.cpp:62
-#, fuzzy, kde-format
-#| msgid "Scroll forward to the next month"
+#, kde-format
 msgctxt "@info:tooltip"
 msgid "Scroll forward a month"
-msgstr "Rola avante al proxime mense"
+msgstr "Rola avante un mense"
 
 #: widgets/navigatorbar.cpp:64
 #, kde-format
@@ -6839,11 +6833,10 @@ msgstr ""
 "mense proxime"
 
 #: widgets/navigatorbar.cpp:68
-#, fuzzy, kde-format
-#| msgid "Scroll forward to the next year"
+#, kde-format
 msgctxt "@info:tooltip"
 msgid "Scroll forward a year"
-msgstr "Rola avante al proxime anno"
+msgstr "Rola avante un anno"
 
 #: widgets/navigatorbar.cpp:70
 #, kde-format

@@ -1,7 +1,7 @@
 # translation of korganizer.po to Slovenian
 # Translation of korganizer.po to Slovenian
 # Copyright (C) 2001,2002, 2003, 2004, 2005, 2006 Free Software Foundation, Inc.
-# $Id: korganizer.po 1728488 2026-01-26 01:26:13Z scripty $
+# $Id: korganizer.po 1728553 2026-01-27 01:28:06Z scripty $
 # $Source$
 #
 # Roman Maurer <roman.maurer@hermes.si>, 2001.
@@ -15,7 +15,7 @@ msgstr ""
 "Project-Id-Version: korganizer\n"
 "Report-Msgid-Bugs-To: https://bugs.kde.org\n"
 "POT-Creation-Date: 2026-01-26 00:43+0000\n"
-"PO-Revision-Date: 2026-01-25 07:45+0100\n"
+"PO-Revision-Date: 2026-01-26 06:37+0100\n"
 "Last-Translator: Matjaž Jeran <matjaz.jeran@amis.net>\n"
 "Language-Team: Slovenian <lugos-slo@lugos.si>\n"
 "Language: sl\n"
@@ -4556,8 +4556,7 @@ msgstr ""
 
 #. i18n: ectx: tooltip, entry (EnableAgendaItemDesc), group (Agenda View)
 #: settings/korganizer.kcfg:126
-#, fuzzy, kde-format
-#| msgid "Display inicidence descriptions agenda view items"
+#, kde-format
 msgid "Display incidence descriptions agenda view items"
 msgstr "Prikaz opisov incidence elementov dnevnega reda"
 
@@ -6421,7 +6420,7 @@ msgstr ""
 "Pogled dnevnega reda: po želji prikažite opise incidence znotraj elementov "
 "dnevnega reda. Če želite omogočiti to delovanje, v zavihku Pogled->Pogled "
 "dnevnega reda označite možnost »Prikaži opise incidence v elementih pogleda "
-"dnevnega reda«."
+"dnevnega reda«"
 
 #: whatsnew/whatsnewtranslations.cpp:30
 msgid "Search: the search settings are saved/restored"

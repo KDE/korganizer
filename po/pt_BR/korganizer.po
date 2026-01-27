@@ -20,7 +20,7 @@ msgstr ""
 "Project-Id-Version: korganizer\n"
 "Report-Msgid-Bugs-To: https://bugs.kde.org\n"
 "POT-Creation-Date: 2026-01-26 00:43+0000\n"
-"PO-Revision-Date: 2026-01-23 05:32-0300\n"
+"PO-Revision-Date: 2026-01-26 14:33-0300\n"
 "Last-Translator: Marcus Gama <marcus.gama@gmail.com>\n"
 "Language-Team: Brazilian Portuguese <kde-i18n-pt_BR@kde.org>\n"
 "Language: pt_BR\n"
@@ -4538,29 +4538,24 @@ msgstr "Exibir ícones nos itens da visão de agenda"
 
 #. i18n: ectx: label, entry (EnableAgendaItemDesc), group (Agenda View)
 #: settings/korganizer.kcfg:124
-#, fuzzy, kde-format
-#| msgid "Show icons in agenda view items"
+#, kde-format
 msgid "Show incidence descriptions in agenda view items"
-msgstr "Mostrar ícones nos itens da visão de agenda"
+msgstr "Mostrar descrições de ocorrência nos itens da visão de agenda"
 
 #. i18n: ectx: whatsthis, entry (EnableAgendaItemDesc), group (Agenda View)
 #: settings/korganizer.kcfg:125
-#, fuzzy, kde-format
-#| msgid ""
-#| "Check this box to display icons (alarm, recursion, etc.) in agenda view "
-#| "items."
+#, kde-format
 msgid ""
 "Check this box to display the incidence descriptions in agenda view items."
 msgstr ""
-"Marque esta opção para exibir os ícones (alarmes, recorrências, etc.) nos "
-"itens da visão de agenda."
+"Marque esta caixa para exibir as descrições das ocorrências nos itens da "
+"visão de agenda."
 
 #. i18n: ectx: tooltip, entry (EnableAgendaItemDesc), group (Agenda View)
 #: settings/korganizer.kcfg:126
-#, fuzzy, kde-format
-#| msgid "Display icons in agenda view items"
+#, kde-format
 msgid "Display incidence descriptions agenda view items"
-msgstr "Exibir ícones nos itens da visão de agenda"
+msgstr "Exibir descrições de ocorrência nos itens da visão de agenda"
 
 #. i18n: ectx: label, entry (ShowTodosAgendaView), group (Agenda View)
 #. i18n: ectx: label, entry (ShowTodosMonthView), group (Month View)
@@ -6434,16 +6429,12 @@ msgstr ""
 "atual."
 
 #: whatsnew/whatsnewtranslations.cpp:27
-#, fuzzy
-#| msgid ""
-#| "Agenda view: events without a duration are displayed as 30 long (rather "
-#| "than 15 minutes long)"
 msgid ""
 "Agenda view: events with short durations are displayed with their starting "
 "time in addition to their summary"
 msgstr ""
-"Vista de agenda: eventos sem uma duração são exibidos como tendo 30 minutos "
-"de duração (ao invés de 15 minutos)"
+"Visão da agenda: eventos com curta duração são exibidos com seu horário de "
+"início, além de seu resumo."
 
 #: whatsnew/whatsnewtranslations.cpp:28
 msgid ""
@@ -6451,6 +6442,10 @@ msgid ""
 "items. To enable this behavior, check the \"Show incidence descriptions in "
 "agenda view items\" option in the View->Agenda View tab"
 msgstr ""
+"Visão de Agenda: opcionalmente, mostre as descrições das ocorrências dentro "
+"dos itens da agenda. Para ativar esse comportamento, marque a opção "
+"\"Mostrar descrições de ocorrências nos itens da visão de agenda\" na aba "
+"Exibir -> Visão da Agenda."
 
 #: whatsnew/whatsnewtranslations.cpp:30
 msgid "Search: the search settings are saved/restored"

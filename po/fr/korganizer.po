@@ -25,7 +25,7 @@ msgstr ""
 "Project-Id-Version: korganizer\n"
 "Report-Msgid-Bugs-To: https://bugs.kde.org\n"
 "POT-Creation-Date: 2026-01-26 00:43+0000\n"
-"PO-Revision-Date: 2026-01-24 10:23+0100\n"
+"PO-Revision-Date: 2026-01-25 10:11+0100\n"
 "Last-Translator: Xavier Besnard <xavier.besnard@kde.org>\n"
 "Language-Team: \n"
 "Language: fr\n"
@@ -6627,16 +6627,12 @@ msgstr ""
 "la date courante"
 
 #: whatsnew/whatsnewtranslations.cpp:27
-#, fuzzy
-#| msgid ""
-#| "Agenda view: events without a duration are displayed as 30 long (rather "
-#| "than 15 minutes long)"
 msgid ""
 "Agenda view: events with short durations are displayed with their starting "
 "time in addition to their summary"
 msgstr ""
-"Vue agenda : les évènements sans durée sont affichés sur 30 minutes (Au lieu "
-"de 15 minutes)"
+"Vue d'agenda : les évènements de courte durée sont affichés avec leur date "
+"de démarrage et leur résumé"
 
 #: whatsnew/whatsnewtranslations.cpp:28
 msgid ""
