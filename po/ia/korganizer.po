@@ -1,14 +1,14 @@
 # Copyright (C) YEAR This_file_is_part_of_KDE
 # This file is distributed under the same license as the PACKAGE package.
 #
-# SPDX-FileCopyrightText: 2011, 2012, 2024, 2025 g.sora <g.sora@tiscali.it>
+# SPDX-FileCopyrightText: 2011, 2012, 2024, 2025, 2026 g.sora <g.sora@tiscali.it>
 # Giovanni Sora <g.sora@tiscali.it>, 2012, 2013, 2016, 2020, 2021, 2022, 2023, 2024, 2025.
 msgid ""
 msgstr ""
 "Project-Id-Version: \n"
 "Report-Msgid-Bugs-To: https://bugs.kde.org\n"
 "POT-Creation-Date: 2025-11-17 14:41+0000\n"
-"PO-Revision-Date: 2025-09-02 17:48+0200\n"
+"PO-Revision-Date: 2026-01-26 19:10+0100\n"
 "Last-Translator: giovanni <g.sora@tiscali.it>\n"
 "Language-Team: Interlingua <kde-i18n-doc@kde.org>\n"
 "Language: ia\n"
@@ -2190,12 +2190,7 @@ msgstr ""
 "<message>%1</message>"
 
 #: calendarview.cpp:2799
-#, fuzzy, kde-kuit-format
-#| msgctxt "@info"
-#| msgid ""
-#| "You created an incidence in a calendar that is currently filtered out."
-#| "<para>On the left sidebar, enable it in the calendar manager to see the "
-#| "incidence.</para>"
+#, kde-kuit-format
 msgctxt "@info"
 msgid ""
 "You created an incidence in a calendar that is currently filtered out."
@@ -2203,16 +2198,11 @@ msgid ""
 "calendar manager.</para>"
 msgstr ""
 "Tu creava un incidentia in un calendario que currentement es ignorate."
-"<para>Sur le latere sinistre del barra, habilita lo in le gerente de "
-"calendario pro vider le incidentia.</para>"
+"<para>Per vider le incidentia tosto create, pro favor, habilita su "
+"calendario in le gerente de calendario.</para>"
 
 #: calendarview.cpp:2803
-#, fuzzy, kde-kuit-format
-#| msgctxt "@info"
-#| msgid ""
-#| "You created an incidence in a calendar that is currently filtered out."
-#| "<para>You can enable it through the calendar manager (Settings->Sidebar-"
-#| ">Show Calendar Manager)</para>"
+#, kde-kuit-format
 msgctxt "@info"
 msgid ""
 "You created an incidence in a calendar that is currently filtered out."
@@ -2222,8 +2212,11 @@ msgid ""
 "interface> menu.</para>"
 msgstr ""
 "Tu creava un incidentia in un calendario que currentement es ignorate."
-"<para>Tu pote habilitar lo per le gerente de calendario pro (Preferentias-"
-">Barra lateral-> Monstra gerente de calendario)</para>"
+"<para>Per vider le incidentia tosto create, pro favor habilita su calendario "
+"in le gerente de calendario.</para><para>Le gerente de calendario es "
+"currentemente celate. Monstra le gerente per usar le menu "
+"<interface>Preferentias->Barra Lateral->Monstra Gerente de Calendario</"
+"interface>.</para>"
 
 #: collectiongeneralpage.cpp:37
 #, kde-format
@@ -6343,14 +6336,18 @@ msgid ""
 "Agenda view: added timelabels context menu to show/hide time labels for the "
 "system timezone on the right (or left) side as well"
 msgstr ""
+"Vista de Agenda: addite menu de contexto de etiquettas temporal per monstrar/"
+"celar etiquettas temporal per le fuso horari de systema anque sul latere "
+"dextere (o sinistre)"
 
 #: whatsnew/whatsnewtranslations.cpp:19
 msgid "Incidence editor: detect and warn about creating incidences in the past"
 msgstr ""
+"Editor de incidentia: discoperi e avisa re crear incidentias in le passato"
 
 #: whatsnew/whatsnewtranslations.cpp:20
 msgid "Incidence editor: add emoji support"
-msgstr ""
+msgstr "Editor de incidentia: adde supportode emoji"
 
 #: whatsnew/whatsnewtranslations.cpp:29
 msgid "Add What's New menu"
@@ -6521,6 +6518,8 @@ msgstr ""
 #, kde-format
 msgid "Incidence editor: the tags are sorted alphabetically in the tags editor"
 msgstr ""
+"Editor de incidentia: le etiquettas es ordinate alphabeticamente in le "
+"editor de etiquettas"
 
 #: widgets/kdatenavigator.cpp:171
 #, kde-format
