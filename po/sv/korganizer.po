@@ -11,7 +11,7 @@ msgstr ""
 "Project-Id-Version: korganizer\n"
 "Report-Msgid-Bugs-To: https://bugs.kde.org\n"
 "POT-Creation-Date: 2026-01-26 00:43+0000\n"
-"PO-Revision-Date: 2026-01-21 22:05+0100\n"
+"PO-Revision-Date: 2026-01-27 18:01+0100\n"
 "Last-Translator: Stefan Asserhäll <stefan.asserhall@gmail.com>\n"
 "Language-Team: Swedish <kde-i18n-doc@kde.org>\n"
 "Language: sv\n"
@@ -4481,29 +4481,22 @@ msgstr "Visa ikoner i agendavyns objekt"
 
 #. i18n: ectx: label, entry (EnableAgendaItemDesc), group (Agenda View)
 #: settings/korganizer.kcfg:124
-#, fuzzy, kde-format
-#| msgid "Show icons in agenda view items"
+#, kde-format
 msgid "Show incidence descriptions in agenda view items"
-msgstr "Visa ikoner i agendavyns objekt"
+msgstr "Visa förekomstbeskrivningar i agendavyns objekt"
 
 #. i18n: ectx: whatsthis, entry (EnableAgendaItemDesc), group (Agenda View)
 #: settings/korganizer.kcfg:125
-#, fuzzy, kde-format
-#| msgid ""
-#| "Check this box to display icons (alarm, recursion, etc.) in agenda view "
-#| "items."
+#, kde-format
 msgid ""
 "Check this box to display the incidence descriptions in agenda view items."
-msgstr ""
-"Markera rutan för att visa ikoner (alarm, upprepning, etc.) i agendavyns "
-"objekt."
+msgstr "Markera rutan för att visa förekomstbeskrivningar i agendavyns objekt."
 
 #. i18n: ectx: tooltip, entry (EnableAgendaItemDesc), group (Agenda View)
 #: settings/korganizer.kcfg:126
-#, fuzzy, kde-format
-#| msgid "Display icons in agenda view items"
+#, kde-format
 msgid "Display incidence descriptions agenda view items"
-msgstr "Visa ikoner i agendavyns objekt"
+msgstr "Visa förekomstbeskrivningar i agendavyns objekt"
 
 #. i18n: ectx: label, entry (ShowTodosAgendaView), group (Agenda View)
 #. i18n: ectx: label, entry (ShowTodosMonthView), group (Month View)
@@ -6331,14 +6324,12 @@ msgstr ""
 "Navigeringsrad: tillägg av en knapp för att bläddra i vyn till dagens datum"
 
 #: whatsnew/whatsnewtranslations.cpp:27
-#, fuzzy
-#| msgid ""
-#| "Agenda view: events without a duration are displayed as 30 long (rather "
-#| "than 15 minutes long)"
 msgid ""
 "Agenda view: events with short durations are displayed with their starting "
 "time in addition to their summary"
-msgstr "Agendavy: händelser utan längd visas som 30 minuter (istället för 15)"
+msgstr ""
+"Agendavy: händelser med korta längder visas med starttider förutom deras "
+"sammanfattning"
 
 #: whatsnew/whatsnewtranslations.cpp:28
 msgid ""
@@ -6346,10 +6337,13 @@ msgid ""
 "items. To enable this behavior, check the \"Show incidence descriptions in "
 "agenda view items\" option in the View->Agenda View tab"
 msgstr ""
+"Agendavy: visa valfritt förekomstbeskrivningar inne i agendaobjekten. För "
+"att aktivera beteendet, markera \"Visa förekomstbeskrivningar i agendavyns "
+"objekt\" under fliken Visa -> Agendavy."
 
 #: whatsnew/whatsnewtranslations.cpp:30
 msgid "Search: the search settings are saved/restored"
-msgstr ""
+msgstr "Sök: sökinställningarna sparas och återställs"
 
 #: whatsnew/whatsnewtranslations.cpp:39
 msgid ""

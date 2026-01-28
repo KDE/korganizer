@@ -25,7 +25,7 @@ msgstr ""
 "Project-Id-Version: korganizer\n"
 "Report-Msgid-Bugs-To: https://bugs.kde.org\n"
 "POT-Creation-Date: 2026-01-26 00:43+0000\n"
-"PO-Revision-Date: 2026-01-25 10:11+0100\n"
+"PO-Revision-Date: 2026-01-26 13:47+0100\n"
 "Last-Translator: Xavier Besnard <xavier.besnard@kde.org>\n"
 "Language-Team: \n"
 "Language: fr\n"
@@ -4674,22 +4674,19 @@ msgstr "Afficher les icônes dans la vue agenda"
 # unreviewed-context
 #. i18n: ectx: label, entry (EnableAgendaItemDesc), group (Agenda View)
 #: settings/korganizer.kcfg:124
-#, fuzzy, kde-format
-#| msgid "Show icons in agenda view items"
+#, kde-format
 msgid "Show incidence descriptions in agenda view items"
-msgstr "Afficher les icônes dans la vue agenda"
+msgstr ""
+"Afficher les descriptions de récurrence pour les éléments de la vue d'agenda"
 
 #. i18n: ectx: whatsthis, entry (EnableAgendaItemDesc), group (Agenda View)
 #: settings/korganizer.kcfg:125
-#, fuzzy, kde-format
-#| msgid ""
-#| "Check this box to display icons (alarm, recursion, etc.) in agenda view "
-#| "items."
+#, kde-format
 msgid ""
 "Check this box to display the incidence descriptions in agenda view items."
 msgstr ""
-"Cochez cette case si vous souhaitez afficher les icônes (rappel, périodicité "
-"etc.) dans les cellules de la vue agenda."
+"Veuillez cocher cette case si vous souhaitez afficher les descriptions de "
+"récurrence pour les éléments de la vue d'agenda"
 
 # unreviewed-context
 #. i18n: ectx: tooltip, entry (EnableAgendaItemDesc), group (Agenda View)
@@ -6640,6 +6637,10 @@ msgid ""
 "items. To enable this behavior, check the \"Show incidence descriptions in "
 "agenda view items\" option in the View->Agenda View tab"
 msgstr ""
+"Vue d'agenda : afficher éventuellement les descriptions de récurrence dans  "
+"les éléments de l'agenda. Pour activer ce comportement, veuillez cocher "
+"l'option « Afficher les descriptions de récurrence dans les éléments de la "
+"vue d'agenda » dans l'onglet « Affichage / Vue d'agenda »"
 
 #: whatsnew/whatsnewtranslations.cpp:30
 msgid "Search: the search settings are saved/restored"
