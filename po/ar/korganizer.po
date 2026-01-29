@@ -12,7 +12,7 @@ msgstr ""
 "Project-Id-Version: korganizer\n"
 "Report-Msgid-Bugs-To: https://bugs.kde.org\n"
 "POT-Creation-Date: 2025-11-17 14:41+0000\n"
-"PO-Revision-Date: 2025-11-19 20:38+0400\n"
+"PO-Revision-Date: 2026-01-28 20:17+0400\n"
 "Last-Translator: Zayed Al-Saidi <zayed.alsaidi@gmail.com>\n"
 "Language-Team: ar\n"
 "Language: ar\n"
@@ -4467,7 +4467,7 @@ msgid ""
 "items."
 msgstr ""
 "أشّر على هذا المربّع لعرض الأيقونات (مثل المنبّهات والتكرارات وغيرها) في عناصر "
-"منظور دفتر الأعمال."
+"منظور جدول الأعمال."
 
 #. i18n: ectx: tooltip, entry (EnableAgendaItemIcons), group (Agenda View)
 #: settings/korganizer.kcfg:120
@@ -5040,7 +5040,7 @@ msgstr "اختر لونًا لاستخدامه لخط الوقت الحالي (�
 #: settings/korganizer.kcfg:299
 #, kde-format
 msgid "Use this color for the Agenda View current-time (Marcus Bains) line"
-msgstr "استخدم هذا اللون لخط الوقت الحالي (ماركوس بينز) في منظور دفتر الأعمال."
+msgstr "استخدم هذا اللون لخط الوقت الحالي (ماركوس بينز) في منظور جدول الأعمال."
 
 #. i18n: ectx: label, entry (ViewBgBusyColor), group (Colors)
 #: settings/korganizer.kcfg:303
