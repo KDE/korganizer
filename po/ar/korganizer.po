@@ -12,7 +12,7 @@ msgstr ""
 "Project-Id-Version: korganizer\n"
 "Report-Msgid-Bugs-To: https://bugs.kde.org\n"
 "POT-Creation-Date: 2026-01-26 00:43+0000\n"
-"PO-Revision-Date: 2026-01-24 11:50+0400\n"
+"PO-Revision-Date: 2026-01-28 20:17+0400\n"
 "Last-Translator: Zayed Al-Saidi <zayed.alsaidi@gmail.com>\n"
 "Language-Team: ar\n"
 "Language: ar\n"
@@ -4471,7 +4471,7 @@ msgid ""
 "items."
 msgstr ""
 "أشّر على هذا المربّع لعرض الأيقونات (مثل المنبّهات والتكرارات وغيرها) في عناصر "
-"منظور دفتر الأعمال."
+"منظور جدول الأعمال."
 
 #. i18n: ectx: tooltip, entry (EnableAgendaItemIcons), group (Agenda View)
 #: settings/korganizer.kcfg:120
@@ -4481,29 +4481,22 @@ msgstr "اعرض الأيقونات في عناصر منظور جدول الأع
 
 #. i18n: ectx: label, entry (EnableAgendaItemDesc), group (Agenda View)
 #: settings/korganizer.kcfg:124
-#, fuzzy, kde-format
-#| msgid "Show icons in agenda view items"
+#, kde-format
 msgid "Show incidence descriptions in agenda view items"
-msgstr "اعرض الأيقونات في عناصر منظور جدول الأعمال"
+msgstr "اعرض أوصاف الأحداث في عناصر عرض جدول الأعمال"
 
 #. i18n: ectx: whatsthis, entry (EnableAgendaItemDesc), group (Agenda View)
 #: settings/korganizer.kcfg:125
-#, fuzzy, kde-format
-#| msgid ""
-#| "Check this box to display icons (alarm, recursion, etc.) in agenda view "
-#| "items."
+#, kde-format
 msgid ""
 "Check this box to display the incidence descriptions in agenda view items."
-msgstr ""
-"أشّر على هذا المربّع لعرض الأيقونات (مثل المنبّهات والتكرارات وغيرها) في عناصر "
-"منظور دفتر الأعمال."
+msgstr "أشّر على هذا المربّع لعرض أوصاف الأحداث في عناصر منظور جدول الأعمال."
 
 #. i18n: ectx: tooltip, entry (EnableAgendaItemDesc), group (Agenda View)
 #: settings/korganizer.kcfg:126
-#, fuzzy, kde-format
-#| msgid "Display icons in agenda view items"
+#, kde-format
 msgid "Display incidence descriptions agenda view items"
-msgstr "اعرض الأيقونات في عناصر منظور جدول الأعمال"
+msgstr "اعرض أوصاف الأحداث في عناصر منظور جدول الأعمال"
 
 #. i18n: ectx: label, entry (ShowTodosAgendaView), group (Agenda View)
 #. i18n: ectx: label, entry (ShowTodosMonthView), group (Month View)
@@ -5070,7 +5063,7 @@ msgstr "اختر لونًا لاستخدامه لخط الوقت الحالي (�
 #: settings/korganizer.kcfg:305
 #, kde-format
 msgid "Use this color for the Agenda View current-time (Marcus Bains) line"
-msgstr "استخدم هذا اللون لخط الوقت الحالي (ماركوس بينز) في منظور دفتر الأعمال."
+msgstr "استخدم هذا اللون لخط الوقت الحالي (ماركوس بينز) في منظور جدول الأعمال."
 
 #. i18n: ectx: label, entry (ViewBgBusyColor), group (Colors)
 #: settings/korganizer.kcfg:309
@@ -6291,16 +6284,11 @@ msgid "Navigator bar: added a button to scroll the view to the current date"
 msgstr "شريط التنقل: إضافة زر للتمرير إلى التاريخ الحالي"
 
 #: whatsnew/whatsnewtranslations.cpp:27
-#, fuzzy
-#| msgid ""
-#| "Agenda view: events without a duration are displayed as 30 long (rather "
-#| "than 15 minutes long)"
 msgid ""
 "Agenda view: events with short durations are displayed with their starting "
 "time in addition to their summary"
 msgstr ""
-"منظور جدول الأعمال: تُعرض الأحداث التي لا تحتوي على مدة زمنية على أنها مدتها "
-"30 دقيقة (بدلاً من 15 دقيقة)."
+"عرض جدول الأعمال: تُعرض الأحداث قصيرة المدة مع وقت بدايتها بالإضافة إلى ملخصها"
 
 #: whatsnew/whatsnewtranslations.cpp:28
 msgid ""
@@ -6308,6 +6296,9 @@ msgid ""
 "items. To enable this behavior, check the \"Show incidence descriptions in "
 "agenda view items\" option in the View->Agenda View tab"
 msgstr ""
+"عرض جدول الأعمال: اختيارياً، اعرض أوصاف الحوادث داخل بنود جدول الأعمال. "
+"لتمكين هذا السلوك، حدد خيار ”عرض أوصاف الأحداث في بنود عرض جدول الأعمال” في "
+"لسان عرض->عرض جدول الأعمال."
 
 #: whatsnew/whatsnewtranslations.cpp:30
 msgid "Search: the search settings are saved/restored"
