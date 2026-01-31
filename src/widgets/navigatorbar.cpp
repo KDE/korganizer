@@ -38,13 +38,13 @@ NavigatorBar::NavigatorBar(QWidget *parent)
                                     i18nc("@info:tooltip", "Scroll the view to today"),
                                     i18nc("@info::whatsthis", "Scrolls the current view to today's date."));
 
-    mPrevYear = createNavigationButton(isRTL ? QStringLiteral("arrow-right-double") : QStringLiteral("arrow-left-double"),
+    mPrevYear = createNavigationButton(isRTL ? QStringLiteral("go-last") : QStringLiteral("go-first"),
                                        i18nc("@info:tooltip", "Scroll backward a year"),
                                        i18nc("@info::whatsthis",
                                              "Click this button to scroll the display to the "
                                              "same approximate day of the previous year"));
 
-    mPrevMonth = createNavigationButton(isRTL ? QStringLiteral("arrow-right") : QStringLiteral("arrow-left"),
+    mPrevMonth = createNavigationButton(isRTL ? QStringLiteral("arrow-right-double") : QStringLiteral("arrow-left-double"),
                                         i18nc("@info:tooltip", "Scroll backward a month"),
                                         i18nc("@info::whatsthis",
                                               "Click this button to scroll the display to the "
@@ -58,13 +58,13 @@ NavigatorBar::NavigatorBar(QWidget *parent)
                                        i18nc("@info:tooltip", "Scroll forward a week"),
                                        i18nc("@info::whatsthis", "Click this button to scroll the display to forward 1 week in time"));
 
-    mNextMonth = createNavigationButton(isRTL ? QStringLiteral("arrow-left") : QStringLiteral("arrow-right"),
+    mNextMonth = createNavigationButton(isRTL ? QStringLiteral("arrow-left-double") : QStringLiteral("arrow-right-double"),
                                         i18nc("@info:tooltip", "Scroll forward a month"),
                                         i18nc("@info::whatsthis",
                                               "Click this button to scroll the display to the "
                                               "same approximate date of the next month"));
 
-    mNextYear = createNavigationButton(isRTL ? QStringLiteral("arrow-left-double") : QStringLiteral("arrow-right-double"),
+    mNextYear = createNavigationButton(isRTL ? QStringLiteral("go-first") : QStringLiteral("go-last"),
                                        i18nc("@info:tooltip", "Scroll forward a year"),
                                        i18nc("@info::whatsthis",
                                              "Click this button to scroll the display to the "
