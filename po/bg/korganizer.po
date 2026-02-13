@@ -4,7 +4,7 @@ msgstr ""
 "Project-Id-Version: korganizer\n"
 "Report-Msgid-Bugs-To: https://bugs.kde.org\n"
 "POT-Creation-Date: 2026-01-26 00:43+0000\n"
-"PO-Revision-Date: 2026-01-19 22:38+0100\n"
+"PO-Revision-Date: 2026-02-12 21:23+0100\n"
 "Last-Translator: Mincho Kondarev <mkondarev@yahoo.de>\n"
 "Language-Team: Bulgarian <kde-i18n-doc@kde.org>\n"
 "Language: bg\n"
@@ -4516,29 +4516,24 @@ msgstr "Показване на икони в елементи от изглед
 
 #. i18n: ectx: label, entry (EnableAgendaItemDesc), group (Agenda View)
 #: settings/korganizer.kcfg:124
-#, fuzzy, kde-format
-#| msgid "Show icons in agenda view items"
+#, kde-format
 msgid "Show incidence descriptions in agenda view items"
-msgstr "Показване на икони в елементи от изгледа на дневен ред"
+msgstr "Показване на описание на събитие в изгледа на дневен ред"
 
 #. i18n: ectx: whatsthis, entry (EnableAgendaItemDesc), group (Agenda View)
 #: settings/korganizer.kcfg:125
-#, fuzzy, kde-format
-#| msgid ""
-#| "Check this box to display icons (alarm, recursion, etc.) in agenda view "
-#| "items."
+#, kde-format
 msgid ""
 "Check this box to display the incidence descriptions in agenda view items."
 msgstr ""
-"Поставете отметка в това квадратче, за да се показват икони (аларма, "
-"рекурсия и т.н.) в елементите от изгледа на дневния ред."
+"Поставете отметка в това квадратче, за да се описание на събитията в "
+"елементите от изгледа на дневния ред."
 
 #. i18n: ectx: tooltip, entry (EnableAgendaItemDesc), group (Agenda View)
 #: settings/korganizer.kcfg:126
-#, fuzzy, kde-format
-#| msgid "Display icons in agenda view items"
+#, kde-format
 msgid "Display incidence descriptions agenda view items"
-msgstr "Показване на икони в елементи от изгледа на дневен ред"
+msgstr "Показване на описание на събитие в изгледа на дневен ред"
 
 #. i18n: ectx: label, entry (ShowTodosAgendaView), group (Agenda View)
 #. i18n: ectx: label, entry (ShowTodosMonthView), group (Month View)
@@ -5218,23 +5213,21 @@ msgstr "Цвят на просрочените задачи в дневния р
 
 #. i18n: ectx: label, entry (MonthTodayColor), group (Colors)
 #: settings/korganizer.kcfg:329
-#, fuzzy, kde-format
-#| msgid "Month view background color"
+#, kde-format
 msgid "Month view today background color"
-msgstr "Цвят на фона на месечен изглед"
+msgstr "Цвят на фона на днешна дата в месечен изглед"
 
 #. i18n: ectx: tooltip, entry (MonthTodayColor), group (Colors)
 #: settings/korganizer.kcfg:330
-#, fuzzy, kde-format
-#| msgid "Select the working hours background color for the Month view here."
+#, kde-format
 msgid "Set the background color for today's date in month view"
-msgstr "Изберете тук цвета на фона за работното време за изгледа „Месец“."
+msgstr "Задаване на цвета на фона за днешната дата в месечен изглед"
 
 #. i18n: ectx: whatsthis, entry (MonthTodayColor), group (Colors)
 #: settings/korganizer.kcfg:331
 #, kde-format
 msgid "In Month View, select the background color for today's date."
-msgstr ""
+msgstr "В месечен изглед избиране на цвета на фона за днешната дата."
 
 #. i18n: ectx: label, entry, group (Fonts)
 #: settings/korganizer.kcfg:338
@@ -6400,6 +6393,9 @@ msgid ""
 "configure the color,  set the \"Month view today background color\" in the "
 "Colors and Fonts settings"
 msgstr ""
+"Месечен изглед: цветът на фона на клетката за днешната дата може да се "
+"променя. За да конфигурирате цвета, задайте „Цвят на фона на месечния изглед "
+"за днес“ в настройките „Цветове и шрифтове“."
 
 #: whatsnew/whatsnewtranslations.cpp:25
 msgid ""
@@ -6415,16 +6411,12 @@ msgstr ""
 "Навигационна лента: добавен е бутон за превъртане на изгледа до текущата дата"
 
 #: whatsnew/whatsnewtranslations.cpp:27
-#, fuzzy
-#| msgid ""
-#| "Agenda view: events without a duration are displayed as 30 long (rather "
-#| "than 15 minutes long)"
 msgid ""
 "Agenda view: events with short durations are displayed with their starting "
 "time in addition to their summary"
 msgstr ""
-"Изглед Дневен ред: събитията без продължителност се показват като събития с "
-"продължителност от 30 минути (вместо от 15 минути)."
+"Изглед на дневен ред: събитията с кратка продължителност се показват с "
+"началния им час, както и с обобщението им"
 
 #: whatsnew/whatsnewtranslations.cpp:28
 msgid ""
@@ -6432,10 +6424,14 @@ msgid ""
 "items. To enable this behavior, check the \"Show incidence descriptions in "
 "agenda view items\" option in the View->Agenda View tab"
 msgstr ""
+"Изглед на дневен ред: по избор показване на описанията на инцидентите в "
+"елементите от дневния ред. За да активирате това поведение, отметнете "
+"опцията „Показване на описания на инцидентите в елементите от дневния ред“ в "
+"раздела Изглед->Изглед на дневен ред"
 
 #: whatsnew/whatsnewtranslations.cpp:30
 msgid "Search: the search settings are saved/restored"
-msgstr ""
+msgstr "Търсене: настройките за търсене са запазени/възстановени"
 
 #: whatsnew/whatsnewtranslations.cpp:39
 msgid ""
