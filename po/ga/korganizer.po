@@ -31,26 +31,19 @@ msgstr "seoc@iolfree.ie,kscanne@gmail.com"
 #: kontactplugin/korganizer/korganizerplugin.cpp:42
 #: kontactplugin/korganizer/todoplugin.cpp:38
 #: kontactplugin/specialdates/specialdates_plugin.cpp:23
-#, fuzzy, kde-format
-#| msgid "KOrganizer"
+#, kde-format
 msgctxt "@info/plain"
 msgid "KOrganizer"
-msgstr "KOrganizer"
+msgstr ""
 
 #: aboutdata.cpp:20
-#, fuzzy, kde-format
-#| msgid "A Personal Organizer"
+#, kde-format
 msgctxt "@info/plain"
 msgid "A Personal Organizer"
-msgstr "Eagraí Pearsanta"
+msgstr ""
 
 #: aboutdata.cpp:23
-#, fuzzy, kde-format
-#| msgid ""
-#| "Copyright © 1997–1999 Preston Brown\n"
-#| "Copyright © 2000–2004, 2007 Cornelius Schumacher\n"
-#| "Copyright © 2004–2005 Reinhold Kainhofer\n"
-#| "Copyright © 2006–2012 Allen Winter"
+#, kde-format
 msgctxt "@info/plain"
 msgid ""
 "Copyright © 1997–1999 Preston Brown\n"
@@ -59,66 +52,54 @@ msgid ""
 "Copyright © 2006–2012 Allen Winter\n"
 "Copyright © 2012–2026 KOrganizer authors"
 msgstr ""
-"© 1997-1999 Preston Brown\n"
-"© 2000-2004,2007 Cornelius Schumacher\n"
-"© 2004-2005 Reinhold Kainhofer\n"
-"© 2006–2012 Allen Winter"
 
 #: aboutdata.cpp:31 kontactplugin/specialdates/specialdates_plugin.cpp:43
-#, fuzzy, kde-format
-#| msgid "Allen Winter"
+#, kde-format
 msgctxt "@info:credit"
 msgid "Allen Winter"
-msgstr "Allen Winter"
+msgstr ""
 
 #: aboutdata.cpp:31
-#, fuzzy, kde-format
-#| msgid "Maintainer"
+#, kde-format
 msgctxt "@info:credit"
 msgid "Maintainer"
-msgstr "Cothaitheoir"
+msgstr ""
 
 #: aboutdata.cpp:32
-#, fuzzy, kde-format
-#| msgid "Reinhold Kainhofer"
+#, kde-format
 msgctxt "@info:credit"
 msgid "Reinhold Kainhofer"
-msgstr "Reinhold Kainhofer"
+msgstr ""
 
 #: aboutdata.cpp:32 aboutdata.cpp:33
-#, fuzzy, kde-format
-#| msgid "Former Maintainer"
+#, kde-format
 msgctxt "@info:credit"
 msgid "Former Maintainer"
-msgstr "Iarchothaitheoir"
+msgstr ""
 
 #: aboutdata.cpp:33
-#, fuzzy, kde-format
-#| msgid "Cornelius Schumacher"
+#, kde-format
 msgctxt "@info:credit"
 msgid "Cornelius Schumacher"
-msgstr "Cornelius Schumacher"
+msgstr ""
 
 #: aboutdata.cpp:34
-#, fuzzy, kde-format
-#| msgid "Preston Brown"
+#, kde-format
 msgctxt "@info:credit"
 msgid "Preston Brown"
-msgstr "Preston Brown"
+msgstr ""
 
 #: aboutdata.cpp:34
-#, fuzzy, kde-format
-#| msgid "Original Author"
+#, kde-format
 msgctxt "@info:credit"
 msgid "Original Author"
-msgstr "An Chéad Údar"
+msgstr ""
 
 #: aboutdata.cpp:35
-#, fuzzy, kde-format
-#| msgid "Former Maintainer"
+#, kde-format
 msgctxt "@info:credit"
 msgid "Laurent Montel"
-msgstr "Iarchothaitheoir"
+msgstr ""
 
 #: aboutdata.cpp:35
 #, kde-format
@@ -127,11 +108,10 @@ msgid "Developer"
 msgstr ""
 
 #: aboutdata.cpp:36
-#, fuzzy, kde-format
-#| msgid "Richard Apodaca"
+#, kde-format
 msgctxt "@info:credit"
 msgid "Richard Apodaca"
-msgstr "Richard Apodaca"
+msgstr ""
 
 #: aboutdata.cpp:37
 #, kde-format
@@ -140,116 +120,100 @@ msgid "Björn Balazs"
 msgstr ""
 
 #: aboutdata.cpp:38
-#, fuzzy, kde-format
-#| msgid "Jan-Pascal van Best"
+#, kde-format
 msgctxt "@info:credit"
 msgid "Jan-Pascal van Best"
-msgstr "Jan-Pascal van Best"
+msgstr ""
 
 #: aboutdata.cpp:39
-#, fuzzy, kde-format
-#| msgid "Bertjan Broeksema"
+#, kde-format
 msgctxt "@info:credit"
 msgid "Bertjan Broeksema"
-msgstr "Bertjan Broeksema"
+msgstr ""
 
 #: aboutdata.cpp:40
-#, fuzzy, kde-format
-#| msgid "Laszlo Boloni"
+#, kde-format
 msgctxt "@info:credit"
 msgid "Laszlo Boloni"
-msgstr "Laszlo Boloni"
+msgstr ""
 
 #: aboutdata.cpp:41
-#, fuzzy, kde-format
-#| msgid "Barry Benowitz"
+#, kde-format
 msgctxt "@info:credit"
 msgid "Barry Benowitz"
-msgstr "Barry Benowitz"
+msgstr ""
 
 #: aboutdata.cpp:42
-#, fuzzy, kde-format
-#| msgid "Christopher Beard"
+#, kde-format
 msgctxt "@info:credit"
 msgid "Christopher Beard"
-msgstr "Christopher Beard"
+msgstr ""
 
 #: aboutdata.cpp:43
-#, fuzzy, kde-format
-#| msgid "Kalle Dalheimer"
+#, kde-format
 msgctxt "@info:credit"
 msgid "Kalle Dalheimer"
-msgstr "Kalle Dalheimer"
+msgstr ""
 
 #: aboutdata.cpp:44
-#, fuzzy, kde-format
-#| msgid "Ian Dawes"
+#, kde-format
 msgctxt "@info:credit"
 msgid "Ian Dawes"
-msgstr "Ian Dawes"
+msgstr ""
 
 #: aboutdata.cpp:45
-#, fuzzy, kde-format
-#| msgid "Thomas Eitzenberger"
+#, kde-format
 msgctxt "@info:credit"
 msgid "Thomas Eitzenberger"
-msgstr "Thomas Eitzenberger"
+msgstr ""
 
 #: aboutdata.cpp:46
-#, fuzzy, kde-format
-#| msgid "Neil Hart"
+#, kde-format
 msgctxt "@info:credit"
 msgid "Neil Hart"
-msgstr "Neil Hart"
+msgstr ""
 
 #: aboutdata.cpp:47
-#, fuzzy, kde-format
-#| msgid "Declan Houlihan"
+#, kde-format
 msgctxt "@info:credit"
 msgid "Declan Houlihan"
-msgstr "Declan Houlihan"
+msgstr ""
 
 #: aboutdata.cpp:48
-#, fuzzy, kde-format
-#| msgid "Hans-Jürgen Husel"
+#, kde-format
 msgctxt "@info:credit"
 msgid "Hans-Jürgen Husel"
-msgstr "Hans-Jürgen Husel"
+msgstr ""
 
 #: aboutdata.cpp:49
-#, fuzzy, kde-format
-#| msgid "Tim Jansen"
+#, kde-format
 msgctxt "@info:credit"
 msgid "Tim Jansen"
-msgstr "Tim Jansen"
+msgstr ""
 
 #: aboutdata.cpp:50
-#, fuzzy, kde-format
-#| msgid "Christian Kirsch"
+#, kde-format
 msgctxt "@info:credit"
 msgid "Christian Kirsch"
-msgstr "Christian Kirsch"
+msgstr ""
 
 #: aboutdata.cpp:51
-#, fuzzy, kde-format
-#| msgid "Tobias König"
+#, kde-format
 msgctxt "@info:credit"
 msgid "Tobias König"
-msgstr "Tobias König"
+msgstr ""
 
 #: aboutdata.cpp:52
-#, fuzzy, kde-format
-#| msgid "Martin Koller"
+#, kde-format
 msgctxt "@info:credit"
 msgid "Martin Koller"
-msgstr "Martin Koller"
+msgstr ""
 
 #: aboutdata.cpp:53
-#, fuzzy, kde-format
-#| msgid "Uwe Koloska"
+#, kde-format
 msgctxt "@info:credit"
 msgid "Uwe Koloska"
-msgstr "Uwe Koloska"
+msgstr ""
 
 #: aboutdata.cpp:54
 #, kde-format
@@ -258,39 +222,34 @@ msgid "Sergio Luis Martins"
 msgstr ""
 
 #: aboutdata.cpp:55
-#, fuzzy, kde-format
-#| msgid "Mike McQuaid"
+#, kde-format
 msgctxt "@info:credit"
 msgid "Mike McQuaid"
-msgstr "Mike McQuaid"
+msgstr ""
 
 #: aboutdata.cpp:56
-#, fuzzy, kde-format
-#| msgid "Glen Parker"
+#, kde-format
 msgctxt "@info:credit"
 msgid "Glen Parker"
-msgstr "Glen Parker"
+msgstr ""
 
 #: aboutdata.cpp:57
-#, fuzzy, kde-format
-#| msgid "Dan Pilone"
+#, kde-format
 msgctxt "@info:credit"
 msgid "Dan Pilone"
-msgstr "Dan Pilone"
+msgstr ""
 
 #: aboutdata.cpp:58
-#, fuzzy, kde-format
-#| msgid "Roman Rohr"
+#, kde-format
 msgctxt "@info:credit"
 msgid "Roman Rohr"
-msgstr "Roman Rohr"
+msgstr ""
 
 #: aboutdata.cpp:59
-#, fuzzy, kde-format
-#| msgid "Rafał Rzepecki"
+#, kde-format
 msgctxt "@info:credit"
 msgid "Rafał Rzepecki"
-msgstr "Rafał Rzepecki"
+msgstr ""
 
 #: aboutdata.cpp:59
 #, kde-format
@@ -299,74 +258,64 @@ msgid "Part of work sponsored by Google with Summer of Code 2005"
 msgstr ""
 
 #: aboutdata.cpp:60
-#, fuzzy, kde-format
-#| msgid "Don Sanders"
+#, kde-format
 msgctxt "@info:credit"
 msgid "Don Sanders"
-msgstr "Don Sanders"
+msgstr ""
 
 #: aboutdata.cpp:61
-#, fuzzy, kde-format
-#| msgid "Bram Schoenmakers"
+#, kde-format
 msgctxt "@info:credit"
 msgid "Bram Schoenmakers"
-msgstr "Bram Schoenmakers"
+msgstr ""
 
 #: aboutdata.cpp:62
-#, fuzzy, kde-format
-#| msgid "Günter Schwann"
+#, kde-format
 msgctxt "@info:credit"
 msgid "Günter Schwann"
-msgstr "Günter Schwann"
+msgstr ""
 
 #: aboutdata.cpp:63
-#, fuzzy, kde-format
-#| msgid "Herwin Jan Steehouwer"
+#, kde-format
 msgctxt "@info:credit"
 msgid "Herwin Jan Steehouwer"
-msgstr "Herwin Jan Steehouwer"
+msgstr ""
 
 #: aboutdata.cpp:64
-#, fuzzy, kde-format
-#| msgid "Mario Teijeiro"
+#, kde-format
 msgctxt "@info:credit"
 msgid "Mario Teijeiro"
-msgstr "Mario Teijeiro"
+msgstr ""
 
 #: aboutdata.cpp:65
-#, fuzzy, kde-format
-#| msgid "Nick Thompson"
+#, kde-format
 msgctxt "@info:credit"
 msgid "Nick Thompson"
-msgstr "Nick Thompson"
+msgstr ""
 
 #: aboutdata.cpp:66
-#, fuzzy, kde-format
-#| msgid "Bo Thorsen"
+#, kde-format
 msgctxt "@info:credit"
 msgid "Bo Thorsen"
-msgstr "Bo Thorsen"
+msgstr ""
 
 #: aboutdata.cpp:67
-#, fuzzy, kde-format
-#| msgid "Larry Wright"
+#, kde-format
 msgctxt "@info:credit"
 msgid "Larry Wright"
-msgstr "Larry Wright"
+msgstr ""
 
 #: aboutdata.cpp:68
-#, fuzzy, kde-format
-#| msgid "Thomas Zander"
+#, kde-format
 msgctxt "@info:credit"
 msgid "Thomas Zander"
-msgstr "Thomas Zander"
+msgstr ""
 
 #: aboutdata.cpp:69
-#, fuzzy, kde-format
-#| msgid "Fester Zigterman"
+#, kde-format
 msgctxt "@info:credit"
 msgid "Fester Zigterman"
-msgstr "Fester Zigterman"
+msgstr ""
 
 #: actionmanager.cpp:128
 #, kde-format
@@ -382,27 +331,22 @@ msgid "Hide menu bar"
 msgstr ""
 
 #: actionmanager.cpp:242
-#, fuzzy, kde-format
-#| msgctxt "@title:window"
-#| msgid "Import Calendar"
+#, kde-format
 msgctxt "@action:inmenu"
 msgid "Import &Calendar…"
-msgstr "Iompórtáil Féilire"
+msgstr ""
 
 #: actionmanager.cpp:243
-#, fuzzy, kde-format
-#| msgctxt "@title:window"
-#| msgid "Import Calendar"
+#, kde-format
 msgctxt "@info:status"
 msgid "Import a calendar"
-msgstr "Iompórtáil Féilire"
+msgstr ""
 
 #: actionmanager.cpp:244
-#, fuzzy, kde-format
-#| msgid "Import a calendar in another format"
+#, kde-format
 msgctxt "@info:tooltip"
 msgid "Import an iCalendar or vCalendar file"
-msgstr "Iompórtáil féilire i bhformáid eile"
+msgstr ""
 
 #: actionmanager.cpp:246
 #, kde-format
@@ -413,19 +357,16 @@ msgid ""
 msgstr ""
 
 #: actionmanager.cpp:254
-#, fuzzy, kde-format
-#| msgid "Export as &iCalendar..."
+#, kde-format
 msgctxt "@action:inmenu"
 msgid "Export as &iCalendar…"
-msgstr "Easpórtáil mar &iCalendar..."
+msgstr ""
 
 #: actionmanager.cpp:255
-#, fuzzy, kde-format
-#| msgctxt "@title:group"
-#| msgid "Exporting Calendar"
+#, kde-format
 msgctxt "@info:status"
 msgid "Export calendar to file"
-msgstr "Féilire á Easpórtáil"
+msgstr ""
 
 #: actionmanager.cpp:256
 #, kde-format
@@ -441,25 +382,22 @@ msgid ""
 msgstr ""
 
 #: actionmanager.cpp:263
-#, fuzzy, kde-format
-#| msgid "Archive O&ld Entries..."
+#, kde-format
 msgctxt "@action:inmenu"
 msgid "Archive O&ld Incidences…"
-msgstr "Cuir &Seaniontrálacha i gCartlann..."
+msgstr ""
 
 #: actionmanager.cpp:264
-#, fuzzy, kde-format
-#| msgid "Archive old events to a separate file"
+#, kde-format
 msgctxt "@info:status"
 msgid "Archive events and to-dos to a file"
-msgstr "Cartlannaigh seanimeachtaí i gcomhad ar leith"
+msgstr ""
 
 #: actionmanager.cpp:265
-#, fuzzy, kde-format
-#| msgid "Archive old events to a separate file"
+#, kde-format
 msgctxt "@info:tooltip"
 msgid "Archive old events and to-dos to an iCalendar file"
-msgstr "Cartlannaigh seanimeachtaí i gcomhad ar leith"
+msgstr ""
 
 #: actionmanager.cpp:267
 #, kde-format
@@ -471,25 +409,22 @@ msgid ""
 msgstr ""
 
 #: actionmanager.cpp:275
-#, fuzzy, kde-format
-#| msgid "Pur&ge Completed To-dos"
+#, kde-format
 msgctxt "@action:inmenu"
 msgid "Pur&ge Completed To-dos"
-msgstr "Pur&gaigh Tascanna Críochnaithe"
+msgstr ""
 
 #: actionmanager.cpp:276
-#, fuzzy, kde-format
-#| msgid "Pur&ge Completed To-dos"
+#, kde-format
 msgctxt "@info:status"
 msgid "Purge completed to-dos"
-msgstr "Pur&gaigh Tascanna Críochnaithe"
+msgstr ""
 
 #: actionmanager.cpp:277
-#, fuzzy, kde-format
-#| msgid "Delete all completed to-dos?"
+#, kde-format
 msgctxt "@info:tooltip"
 msgid "Remove completed to-dos from your calendar"
-msgstr "Scrios gach tasc críochnaithe?"
+msgstr ""
 
 #: actionmanager.cpp:279
 #, kde-format
@@ -501,11 +436,10 @@ msgstr ""
 
 #: actionmanager.cpp:316 actionmanager.cpp:615 actionmanager.cpp:1310
 #: actionmanager.cpp:1348
-#, fuzzy, kde-format
-#| msgid "&Delete"
+#, kde-format
 msgctxt "@action:inmenu"
 msgid "&Delete"
-msgstr "&Scrios"
+msgstr ""
 
 #: actionmanager.cpp:333
 #, kde-format
@@ -536,26 +470,22 @@ msgid ""
 msgstr ""
 
 #: actionmanager.cpp:345
-#, fuzzy, kde-format
-#| msgid "&Month"
+#, kde-format
 msgctxt "@action:inmenu"
 msgid "&Month"
-msgstr "&Mí"
+msgstr ""
 
 #: actionmanager.cpp:346
-#, fuzzy, kde-format
-#| msgctxt "@title:tab"
-#| msgid "Month View"
+#, kde-format
 msgctxt "@info:status"
 msgid "Month View"
-msgstr "Amharc Míosa"
+msgstr ""
 
 #: actionmanager.cpp:347
-#, fuzzy, kde-format
-#| msgid "&New Month View"
+#, kde-format
 msgctxt "@info:tooltip"
 msgid "Switch to the Month View"
-msgstr "Amharc &Nua Míosa"
+msgstr ""
 
 #: actionmanager.cpp:349
 #, kde-format
@@ -566,18 +496,16 @@ msgid ""
 msgstr ""
 
 #: actionmanager.cpp:355
-#, fuzzy, kde-format
-#| msgid "&Agenda"
+#, kde-format
 msgctxt "@action:inmenu"
 msgid "&Agenda"
-msgstr "&Clár Oibre"
+msgstr ""
 
 #: actionmanager.cpp:358
-#, fuzzy, kde-format
-#| msgid "&Agenda"
+#, kde-format
 msgctxt "@info:status"
 msgid "Agenda View"
-msgstr "&Clár Oibre"
+msgstr ""
 
 #: actionmanager.cpp:359
 #, kde-format
@@ -595,19 +523,16 @@ msgid ""
 msgstr ""
 
 #: actionmanager.cpp:368
-#, fuzzy, kde-format
-#| msgid "&Event List"
+#, kde-format
 msgctxt "@action:inmenu"
 msgid "&Event List"
-msgstr "Liosta &Imeachtaí"
+msgstr ""
 
 #: actionmanager.cpp:369
-#, fuzzy, kde-format
-#| msgctxt "@option:check Checkbox to display todos not hierarchical"
-#| msgid "Flat View"
+#, kde-format
 msgctxt "@info:status"
 msgid "List View"
-msgstr "Amharc Cothrom"
+msgstr ""
 
 #: actionmanager.cpp:370
 #, kde-format
@@ -624,25 +549,22 @@ msgid ""
 msgstr ""
 
 #: actionmanager.cpp:378
-#, fuzzy, kde-format
-#| msgid "&To-do List"
+#, kde-format
 msgctxt "@action:inmenu"
 msgid "&To-do List"
-msgstr "&Tascliosta"
+msgstr ""
 
 #: actionmanager.cpp:379
-#, fuzzy, kde-format
-#| msgid "To-do List"
+#, kde-format
 msgctxt "@info:status"
 msgid "To-do List View"
-msgstr "Tascliosta"
+msgstr ""
 
 #: actionmanager.cpp:380
-#, fuzzy, kde-format
-#| msgid "Title of the to-do list"
+#, kde-format
 msgctxt "@info:tooltip"
 msgid "Switch to the To-do List View"
-msgstr "Teideal an tascliosta"
+msgstr ""
 
 #: actionmanager.cpp:382
 #, kde-format
@@ -653,25 +575,22 @@ msgid ""
 msgstr ""
 
 #: actionmanager.cpp:388
-#, fuzzy, kde-format
-#| msgid "&Journal"
+#, kde-format
 msgctxt "@action:inmenu"
 msgid "&Journal"
-msgstr "&Dialann"
+msgstr ""
 
 #: actionmanager.cpp:389
-#, fuzzy, kde-format
-#| msgid "Journal"
+#, kde-format
 msgctxt "@info:status"
 msgid "Journal View"
-msgstr "Dialann"
+msgstr ""
 
 #: actionmanager.cpp:390
-#, fuzzy, kde-format
-#| msgid "Title of the journal list"
+#, kde-format
 msgctxt "@info:tooltip"
 msgid "Switch to the Journal View"
-msgstr "Teideal an liosta dialann"
+msgstr ""
 
 #: actionmanager.cpp:392
 #, kde-format
@@ -682,18 +601,16 @@ msgid ""
 msgstr ""
 
 #: actionmanager.cpp:398
-#, fuzzy, kde-format
-#| msgid "Time&line"
+#, kde-format
 msgctxt "@action:inmenu"
 msgid "Time&line"
-msgstr "Am&líne"
+msgstr ""
 
 #: actionmanager.cpp:399
-#, fuzzy, kde-format
-#| msgid "Time&line"
+#, kde-format
 msgctxt "@info:status"
 msgid "Timeline View"
-msgstr "Am&líne"
+msgstr ""
 
 #: actionmanager.cpp:400
 #, kde-format
@@ -710,18 +627,16 @@ msgid ""
 msgstr ""
 
 #: actionmanager.cpp:411
-#, fuzzy, kde-format
-#| msgid "&Refresh"
+#, kde-format
 msgctxt "@action:inmenu"
 msgid "&Refresh"
-msgstr "&Athnuaigh"
+msgstr ""
 
 #: actionmanager.cpp:412
-#, fuzzy, kde-format
-#| msgid "&Refresh"
+#, kde-format
 msgctxt "@info:status"
 msgid "Refresh"
-msgstr "&Athnuaigh"
+msgstr ""
 
 #: actionmanager.cpp:413
 #, kde-format
@@ -738,11 +653,10 @@ msgid ""
 msgstr ""
 
 #: actionmanager.cpp:424
-#, fuzzy, kde-format
-#| msgid "F&ilter"
+#, kde-format
 msgctxt "@action:inmenu"
 msgid "F&ilter"
-msgstr "&Scagaire"
+msgstr ""
 
 #: actionmanager.cpp:425
 #, kde-format
@@ -751,11 +665,10 @@ msgid "Filter incidences"
 msgstr ""
 
 #: actionmanager.cpp:426
-#, fuzzy, kde-format
-#| msgid "Exclude private incidences from the export"
+#, kde-format
 msgctxt "@info:tooltip"
 msgid "Filter incidences from the calendar"
-msgstr "Ná cuir imeachtaí príobháideacha san easpórtáil"
+msgstr ""
 
 #: actionmanager.cpp:428
 #, kde-format
@@ -790,71 +703,58 @@ msgid "Out Vertically"
 msgstr ""
 
 #: actionmanager.cpp:464
-#, fuzzy, kde-format
-#| msgctxt "@action Jump to today"
-#| msgid "To &Today"
+#, kde-format
 msgctxt "@action:inmenu Jump to today"
 msgid "To &Today"
-msgstr "&Inniu"
+msgstr ""
 
 #: actionmanager.cpp:465
-#, fuzzy, kde-format
-#| msgid "Today"
+#, kde-format
 msgctxt "@action:button"
 msgid "Today"
-msgstr "Inniu"
+msgstr ""
 
 #: actionmanager.cpp:466
-#, fuzzy, kde-format
-#| msgid "Scroll Forward"
+#, kde-format
 msgctxt "@info:status"
 msgid "Scroll to Today"
-msgstr "Scrollaigh Ar Aghaidh"
+msgstr ""
 
 #: actionmanager.cpp:467 widgets/navigatorbar.cpp:38
-#, fuzzy, kde-format
-#| msgid "Scroll Forward"
+#, kde-format
 msgctxt "@info:tooltip"
 msgid "Scroll the view to today"
-msgstr "Scrollaigh Ar Aghaidh"
+msgstr ""
 
 #: actionmanager.cpp:468
-#, fuzzy, kde-format
-#| msgctxt "@info:whatsthis"
-#| msgid "Replace the currently selected date with this date."
+#, kde-format
 msgctxt "@info:whatsthis"
 msgid "Scrolls the current view to today's date."
-msgstr "Cuir an dáta seo in ionad an dáta roghnaithe faoi láthair."
+msgstr ""
 
 #: actionmanager.cpp:474
-#, fuzzy, kde-format
-#| msgctxt "scroll backward"
-#| msgid "&Backward"
+#, kde-format
 msgctxt "@action:inmenu scroll backward"
 msgid "&Backward"
-msgstr "&Siar"
+msgstr ""
 
 #: actionmanager.cpp:476
-#, fuzzy, kde-format
-#| msgctxt "scroll backward"
-#| msgid "Back"
+#, kde-format
 msgctxt "@action:button scroll backward"
 msgid "Back"
-msgstr "Siar"
+msgstr ""
 
 #: actionmanager.cpp:477
-#, fuzzy, kde-format
-#| msgid "Scroll Backward"
+#, kde-format
 msgctxt "@info:status"
 msgid "Scroll Backward"
-msgstr "Scrollaigh Siar"
+msgstr ""
 
 #: actionmanager.cpp:478
-#, fuzzy, kde-format
-#| msgid "Scroll Backward"
+#, kde-format
 msgctxt "@info:tooltip"
 msgid "Scroll the view backward"
-msgstr "Scrollaigh Siar"
+msgstr ""
 
 #: actionmanager.cpp:480
 #, kde-format
@@ -865,34 +765,28 @@ msgid ""
 msgstr ""
 
 #: actionmanager.cpp:487
-#, fuzzy, kde-format
-#| msgctxt "scroll forward"
-#| msgid "&Forward"
+#, kde-format
 msgctxt "@action:inmenu scroll forward"
 msgid "&Forward"
-msgstr "&Ar Aghaidh"
+msgstr ""
 
 #: actionmanager.cpp:489
-#, fuzzy, kde-format
-#| msgctxt "scoll forward"
-#| msgid "Forward"
+#, kde-format
 msgctxt "@action:button scroll forward"
 msgid "Forward"
-msgstr "Ar Aghaidh"
+msgstr ""
 
 #: actionmanager.cpp:490
-#, fuzzy, kde-format
-#| msgid "Scroll Forward"
+#, kde-format
 msgctxt "@info:status"
 msgid "Scroll Forward"
-msgstr "Scrollaigh Ar Aghaidh"
+msgstr ""
 
 #: actionmanager.cpp:491
-#, fuzzy, kde-format
-#| msgid "Scroll Forward"
+#, kde-format
 msgctxt "@info:tooltip"
 msgid "Scroll the view forward"
-msgstr "Scrollaigh Ar Aghaidh"
+msgstr ""
 
 #: actionmanager.cpp:493
 #, kde-format
@@ -903,19 +797,16 @@ msgid ""
 msgstr ""
 
 #: actionmanager.cpp:499
-#, fuzzy, kde-format
-#| msgid "&Day"
+#, kde-format
 msgctxt "@action:inmenu"
 msgid "&Day"
-msgstr "&Lá"
+msgstr ""
 
 #: actionmanager.cpp:500
-#, fuzzy, kde-format
-#| msgctxt "@item:inlistbox range in days"
-#| msgid "Day"
+#, kde-format
 msgctxt "@action:inmenu agenda view show 1 day at a time"
 msgid "Day"
-msgstr "Lá"
+msgstr ""
 
 #: actionmanager.cpp:501
 #, kde-format
@@ -936,12 +827,10 @@ msgid "Select this option to show only 1 day at a time in Agenda View."
 msgstr ""
 
 #: actionmanager.cpp:510
-#, fuzzy, kde-format
-#| msgid "&Next Day"
-#| msgid_plural "&Next %1 Days"
+#, kde-format
 msgctxt "@action:inmenu agenda view show a few days at a time"
 msgid "&Next Days"
-msgstr "&Amárach"
+msgstr ""
 
 #: actionmanager.cpp:511
 #, kde-format
@@ -966,20 +855,18 @@ msgid ""
 msgstr ""
 
 #: actionmanager.cpp:522
-#, fuzzy, kde-format
-#| msgid "Schedule"
+#, kde-format
 msgctxt "@action:inmenu"
 msgid "W&eek Schedule"
-msgstr "Sceideal"
+msgstr ""
 
 #: actionmanager.cpp:523
-#, fuzzy, kde-format
-#| msgid "Schedule"
+#, kde-format
 msgctxt ""
 "@action:inmenu agenda view show the weekly schedule days only (eg. no "
 "weekends)"
 msgid "Week Schedule"
-msgstr "Sceideal"
+msgstr ""
 
 #: actionmanager.cpp:524
 #, kde-format
@@ -1008,19 +895,16 @@ msgid ""
 msgstr ""
 
 #: actionmanager.cpp:538
-#, fuzzy, kde-format
-#| msgid "&Week"
+#, kde-format
 msgctxt "@action:inmenu"
 msgid "&Week"
-msgstr "&Seachtain"
+msgstr ""
 
 #: actionmanager.cpp:539
-#, fuzzy, kde-format
-#| msgctxt "@item:inlistbox range in weeks"
-#| msgid "Week"
+#, kde-format
 msgctxt "@action:inmenu agenda view show a week at a time"
 msgid "Week"
-msgstr "Seachtain"
+msgstr ""
 
 #: actionmanager.cpp:540
 #, kde-format
@@ -1041,26 +925,22 @@ msgid "Select this option to show a week at a time in Agenda View."
 msgstr ""
 
 #: actionmanager.cpp:549
-#, fuzzy, kde-format
-#| msgctxt "@title:window"
-#| msgid "New Event"
+#, kde-format
 msgctxt "@action:inmenu"
 msgid "New E&vent…"
-msgstr "Imeacht Nua"
+msgstr ""
 
 #: actionmanager.cpp:550
-#, fuzzy, kde-format
-#| msgid "Create a new Event"
+#, kde-format
 msgctxt "@info:status"
 msgid "Create a new Event"
-msgstr "Cruthaigh Imeacht nua"
+msgstr ""
 
 #: actionmanager.cpp:551
-#, fuzzy, kde-format
-#| msgid "Create a new Event"
+#, kde-format
 msgctxt "@info:tooltip"
 msgid "Create a new Event"
-msgstr "Cruthaigh Imeacht nua"
+msgstr ""
 
 #: actionmanager.cpp:553
 #, kde-format
@@ -1071,26 +951,22 @@ msgid ""
 msgstr ""
 
 #: actionmanager.cpp:559
-#, fuzzy, kde-format
-#| msgctxt "@title:window"
-#| msgid "New To-do"
+#, kde-format
 msgctxt "@action:inmenu"
 msgid "New &To-do…"
-msgstr "Tasc Nua"
+msgstr ""
 
 #: actionmanager.cpp:560
-#, fuzzy, kde-format
-#| msgid "Create a new To-do"
+#, kde-format
 msgctxt "@info:status"
 msgid "Create a new To-do"
-msgstr "Cruthaigh Tasc nua"
+msgstr ""
 
 #: actionmanager.cpp:561
-#, fuzzy, kde-format
-#| msgid "Create a new To-do"
+#, kde-format
 msgctxt "@info:tooltip"
 msgid "Create a new To-do"
-msgstr "Cruthaigh Tasc nua"
+msgstr ""
 
 #: actionmanager.cpp:563
 #, kde-format
@@ -1101,33 +977,28 @@ msgid ""
 msgstr ""
 
 #: actionmanager.cpp:570
-#, fuzzy, kde-format
-#| msgid "New Su&b-to-do..."
+#, kde-format
 msgctxt "@action:inmenu"
 msgid "New Su&b-to-do…"
-msgstr "&Fo-Thasc Nua..."
+msgstr ""
 
 #: actionmanager.cpp:578
-#, fuzzy, kde-format
-#| msgctxt "@title:window"
-#| msgid "New Journal"
+#, kde-format
 msgctxt "@action:inmenu"
 msgid "New &Journal…"
-msgstr "Dialann Nua"
+msgstr ""
 
 #: actionmanager.cpp:579
-#, fuzzy, kde-format
-#| msgid "Create a new Journal"
+#, kde-format
 msgctxt "@info:status"
 msgid "Create a new Journal"
-msgstr "Cruthaigh Dialann nua"
+msgstr ""
 
 #: actionmanager.cpp:580
-#, fuzzy, kde-format
-#| msgid "Create a new Journal"
+#, kde-format
 msgctxt "@info:tooltip"
 msgid "Create a new Journal"
-msgstr "Cruthaigh Dialann nua"
+msgstr ""
 
 #: actionmanager.cpp:581
 #, kde-format
@@ -1142,25 +1013,22 @@ msgid "&Pick a Date"
 msgstr ""
 
 #: actionmanager.cpp:587
-#, fuzzy, kde-format
-#| msgid "Date"
+#, kde-format
 msgctxt "@action:button"
 msgid "Date"
-msgstr "Dáta"
+msgstr ""
 
 #: actionmanager.cpp:588
-#, fuzzy, kde-format
-#| msgid "Scroll Forward"
+#, kde-format
 msgctxt "@info:status"
 msgid "Scroll the view to user selected dates"
-msgstr "Scrollaigh Ar Aghaidh"
+msgstr ""
 
 #: actionmanager.cpp:589
-#, fuzzy, kde-format
-#| msgid "Scroll Forward"
+#, kde-format
 msgctxt "@info:tooltip"
 msgid "Scroll the view to user selected dates"
-msgstr "Scrollaigh Ar Aghaidh"
+msgstr ""
 
 #: actionmanager.cpp:590
 #, kde-format
@@ -1169,32 +1037,28 @@ msgid "Opens a date selection dialog for quickly navigating the view."
 msgstr ""
 
 #: actionmanager.cpp:595
-#, fuzzy, kde-format
-#| msgid "Configure View..."
+#, kde-format
 msgctxt "@action:inmenu"
 msgid "Configure View…"
-msgstr "Cumraigh Amharc..."
+msgstr ""
 
 #: actionmanager.cpp:596
-#, fuzzy, kde-format
-#| msgid "Configure"
+#, kde-format
 msgctxt "@action:button"
 msgid "Configure"
-msgstr "Cumraigh"
+msgstr ""
 
 #: actionmanager.cpp:597
-#, fuzzy, kde-format
-#| msgid "Configure the view"
+#, kde-format
 msgctxt "@info:status"
 msgid "Configure the multi-calendar view"
-msgstr "Cumraigh an t-amharc"
+msgstr ""
 
 #: actionmanager.cpp:598
-#, fuzzy, kde-format
-#| msgid "Configure the view"
+#, kde-format
 msgctxt "@info:tooltip"
 msgid "Configure the multi-calendar view"
-msgstr "Cumraigh an t-amharc"
+msgstr ""
 
 #: actionmanager.cpp:600
 #, kde-format
@@ -1207,19 +1071,17 @@ msgstr ""
 
 #: actionmanager.cpp:607 actionmanager.cpp:1304 actionmanager.cpp:1346
 #: koeventpopupmenu.cpp:42
-#, fuzzy, kde-format
-#| msgid "&Show"
+#, kde-format
 msgctxt "@action:inmenu"
 msgid "&Show"
-msgstr "&Taispeáin"
+msgstr ""
 
 #: actionmanager.cpp:611 actionmanager.cpp:1307 actionmanager.cpp:1347
 #: koeventpopupmenu.cpp:44
-#, fuzzy, kde-format
-#| msgid "&Edit"
+#, kde-format
 msgctxt "@action:inmenu"
 msgid "&Edit…"
-msgstr "&Eagar"
+msgstr ""
 
 #: actionmanager.cpp:620
 #, kde-format
@@ -1238,18 +1100,16 @@ msgid "&Publish Item Information…"
 msgstr ""
 
 #: actionmanager.cpp:639
-#, fuzzy, kde-format
-#| msgid "Abbreviations:"
+#, kde-format
 msgctxt "@action:inmenu"
 msgid "Send &Invitation to Attendees"
-msgstr "Giorrúcháin:"
+msgstr ""
 
 #: actionmanager.cpp:647
-#, fuzzy, kde-format
-#| msgid "Due date"
+#, kde-format
 msgctxt "@action:inmenu"
 msgid "Re&quest Update"
-msgstr "Spriocdháta"
+msgstr ""
 
 #: actionmanager.cpp:655
 #, kde-format
@@ -1264,88 +1124,76 @@ msgid "Send Status &Update"
 msgstr ""
 
 #: actionmanager.cpp:671
-#, fuzzy, kde-format
-#| msgid "Due date"
+#, kde-format
 msgctxt "@action:inmenu counter proposal"
 msgid "Request Chan&ge"
-msgstr "Spriocdháta"
+msgstr ""
 
 #: actionmanager.cpp:679
-#, fuzzy, kde-format
-#| msgid "Include Information"
+#, kde-format
 msgctxt "@action:inmenu"
 msgid "&Mail Free Busy Information…"
-msgstr "Cuir Eolas San Áireamh"
+msgstr ""
 
 #: actionmanager.cpp:684
-#, fuzzy, kde-format
-#| msgid "&Send as iCalendar..."
+#, kde-format
 msgctxt "@action:inmenu"
 msgid "&Send as iCalendar…"
-msgstr "&Seol mar iCalendar..."
+msgstr ""
 
 #: actionmanager.cpp:691
-#, fuzzy, kde-format
-#| msgid "Include Information"
+#, kde-format
 msgctxt "@action:inmenu"
 msgid "&Upload Free Busy Information"
-msgstr "Cuir Eolas San Áireamh"
+msgstr ""
 
 #: actionmanager.cpp:697
-#, fuzzy, kde-format
-#| msgid "&Address Book"
+#, kde-format
 msgctxt "@action:inmenu"
 msgid "&Address Book"
-msgstr "&Leabhar Seoltaí"
+msgstr ""
 
 #: actionmanager.cpp:705
-#, fuzzy, kde-format
-#| msgid "Show Date Number"
+#, kde-format
 msgctxt "@action:inmenu"
 msgid "Show Date Navigator"
-msgstr "Taispeáin Uimhir an Lae"
+msgstr ""
 
 #: actionmanager.cpp:709
-#, fuzzy, kde-format
-#| msgid "Show To-do View"
+#, kde-format
 msgctxt "@action:inmenu"
 msgid "Show To-do View"
-msgstr "Taispeáin Amharc Tascliosta"
+msgstr ""
 
 #: actionmanager.cpp:713
-#, fuzzy, kde-format
-#| msgid "Show Item Viewer"
+#, kde-format
 msgctxt "@action:inmenu"
 msgid "Show Item Viewer"
-msgstr "Taispeáin Amharcán Míreanna"
+msgstr ""
 
 #: actionmanager.cpp:729
-#, fuzzy, kde-format
-#| msgid "Export Calendar as Web Page"
+#, kde-format
 msgctxt "@action:inmenu"
 msgid "Show Calendar Manager"
-msgstr "Easpórtáil Féilire mar Leathanach Gréasáin"
+msgstr ""
 
 #: actionmanager.cpp:743
-#, fuzzy, kde-format
-#| msgid "Configure &Date && Time..."
+#, kde-format
 msgctxt "@action:inmenu"
 msgid "Configure &Date && Time…"
-msgstr "Cumraigh &Dáta agus Am..."
+msgstr ""
 
 #: actionmanager.cpp:747
-#, fuzzy, kde-format
-#| msgid "Manage C&ategories..."
+#, kde-format
 msgctxt "@action:inmenu"
 msgid "Manage View &Filters…"
-msgstr "Bainistigh C&atagóirí..."
+msgstr ""
 
 #: actionmanager.cpp:751
-#, fuzzy, kde-format
-#| msgid "Manage C&ategories..."
+#, kde-format
 msgctxt "@action:inmenu"
 msgid "Manage T&ags…"
-msgstr "Bainistigh C&atagóirí..."
+msgstr ""
 
 #: actionmanager.cpp:758
 #, kde-format
@@ -1354,11 +1202,10 @@ msgid "What's new"
 msgstr ""
 
 #: actionmanager.cpp:763
-#, fuzzy, kde-format
-#| msgid "&Configure Calendar..."
+#, kde-format
 msgctxt "@action:inmenu"
 msgid "&Configure KOrganizer…"
-msgstr "&Cumraigh Féilire..."
+msgstr ""
 
 #: actionmanager.cpp:841
 #, kde-format
@@ -1367,9 +1214,6 @@ msgid "1 incidence was imported successfully."
 msgid_plural "%1 incidences were imported successfully."
 msgstr[0] ""
 msgstr[1] ""
-msgstr[2] ""
-msgstr[3] ""
-msgstr[4] ""
 
 #: actionmanager.cpp:844
 #, kde-kuit-format
@@ -1384,32 +1228,28 @@ msgid "New calendar added successfully"
 msgstr ""
 
 #: actionmanager.cpp:858
-#, fuzzy, kde-kuit-format
-#| msgid "Could not load calendar %1."
+#, kde-kuit-format
 msgctxt "@info"
 msgid "Could not add a calendar. Error: <message>%1</message>"
-msgstr "Níorbh fhéidir féilire %1 a luchtú."
+msgstr ""
 
 #: actionmanager.cpp:915
-#, fuzzy, kde-format
-#| msgid "Selected Calendars"
+#, kde-format
 msgctxt "@title:window"
 msgid "Select Calendar File to Open"
-msgstr "Féilirí Roghnaithe"
+msgstr ""
 
 #: actionmanager.cpp:951
-#, fuzzy, kde-format
-#| msgid "Selected Calendars"
+#, kde-format
 msgctxt "@title:window"
 msgid "Select Calendar File to Import"
-msgstr "Féilirí Roghnaithe"
+msgstr ""
 
 #: actionmanager.cpp:983
-#, fuzzy, kde-kuit-format
-#| msgid "Error Occurred"
+#, kde-kuit-format
 msgctxt "@info"
 msgid "An error occurred: <message>%1 (url: %2)</message>"
-msgstr "Tharla Earráid"
+msgstr ""
 
 #: actionmanager.cpp:1002
 #, kde-kuit-format
@@ -1424,31 +1264,24 @@ msgid "Saved calendar <filename>%1</filename>"
 msgstr ""
 
 #: actionmanager.cpp:1051
-#, fuzzy, kde-kuit-format
-#| msgid "Could not load calendar %1."
+#, kde-kuit-format
 msgctxt "@info"
 msgid "Unable to save calendar to the file <filename>%1</filename>"
-msgstr "Níorbh fhéidir féilire %1 a luchtú."
+msgstr ""
 
 #: actionmanager.cpp:1052
-#, fuzzy, kde-format
-#| msgid "Error"
+#, kde-format
 msgctxt "@title:window"
 msgid "Error"
-msgstr "Earráid"
+msgstr ""
 
 #: actionmanager.cpp:1078
-#, fuzzy, kde-format
-#| msgid "&Next Day"
-#| msgid_plural "&Next %1 Days"
+#, kde-format
 msgctxt "@action:inmenu"
 msgid "&Next Day"
 msgid_plural "&Next %1 Days"
-msgstr[0] "&Amárach"
-msgstr[1] "&An dá lá seo chugainn"
-msgstr[2] "N&a %1 lá seo chugainn"
-msgstr[3] "N&a %1 lá seo chugainn"
-msgstr[4] "N&a %1 lá seo chugainn"
+msgstr[0] ""
+msgstr[1] ""
 
 #: actionmanager.cpp:1091
 #, kde-format
@@ -1457,67 +1290,58 @@ msgid "Could not start control module for date and time format."
 msgstr ""
 
 #: actionmanager.cpp:1266
-#, fuzzy, kde-format
-#| msgid "&Show Event"
+#, kde-format
 msgctxt "@action:inmenu"
 msgid "&Show Event"
-msgstr "Tai&speáin Imeacht"
+msgstr ""
 
 #: actionmanager.cpp:1269
-#, fuzzy, kde-format
-#| msgid "&Edit Event..."
+#, kde-format
 msgctxt "@action:inmenu"
 msgid "&Edit Event…"
-msgstr "Cuir Imeacht in &Eagar..."
+msgstr ""
 
 #: actionmanager.cpp:1272
-#, fuzzy, kde-format
-#| msgid "&Delete Event"
+#, kde-format
 msgctxt "@action:inmenu"
 msgid "&Delete Event"
-msgstr "&Scrios Imeacht"
+msgstr ""
 
 #: actionmanager.cpp:1280
-#, fuzzy, kde-format
-#| msgid "&Show To-do"
+#, kde-format
 msgctxt "@action:inmenu"
 msgid "&Show To-do"
-msgstr "Tai&speáin Tasc"
+msgstr ""
 
 #: actionmanager.cpp:1283
-#, fuzzy, kde-format
-#| msgid "&Edit To-do..."
+#, kde-format
 msgctxt "@action:inmenu"
 msgid "&Edit To-do…"
-msgstr "Cuir Tasc in &Eagar..."
+msgstr ""
 
 #: actionmanager.cpp:1286
-#, fuzzy, kde-format
-#| msgid "&Delete To-do"
+#, kde-format
 msgctxt "@action:inmenu"
 msgid "&Delete To-do"
-msgstr "&Scrios Tasc"
+msgstr ""
 
 #: actionmanager.cpp:1429 actionmanager.cpp:1533
-#, fuzzy, kde-format
-#| msgid "Attach &inline"
+#, kde-format
 msgctxt "@action:inmenu"
 msgid "Attach as &link"
-msgstr "Iatán &inlíne"
+msgstr ""
 
 #: actionmanager.cpp:1430 actionmanager.cpp:1534
-#, fuzzy, kde-format
-#| msgid "Attach &inline"
+#, kde-format
 msgctxt "@action:inmenu"
 msgid "Attach &inline"
-msgstr "Iatán &inlíne"
+msgstr ""
 
 #: actionmanager.cpp:1431
-#, fuzzy, kde-format
-#| msgid "Print the attachments"
+#, kde-format
 msgctxt "@action:inmenu"
 msgid "Attach inline &without attachments"
-msgstr "Priontáil na hiatáin"
+msgstr ""
 
 #: actionmanager.cpp:1433 actionmanager.cpp:1536
 #, kde-format
@@ -1532,53 +1356,46 @@ msgid "Removing attachments from an email might invalidate its signature."
 msgstr ""
 
 #: actionmanager.cpp:1472
-#, fuzzy, kde-format
-#| msgid "Remove Attachments"
+#, kde-format
 msgctxt "@title:window"
 msgid "Remove Attachments"
-msgstr "Bain Iatáin"
+msgstr ""
 
 #: actionmanager.cpp:1621
-#, fuzzy, kde-format
-#| msgid "Undo: %1"
+#, kde-format
 msgctxt "@action:inmenu"
 msgid "Undo: %1"
-msgstr "Cealaigh: %1"
+msgstr ""
 
 #: actionmanager.cpp:1624
-#, fuzzy, kde-format
-#| msgid "Undo"
+#, kde-format
 msgctxt "@action:inmenu"
 msgid "Undo"
-msgstr "Cealaigh"
+msgstr ""
 
 #: actionmanager.cpp:1634
-#, fuzzy, kde-format
-#| msgid "Redo (%1)"
+#, kde-format
 msgctxt "@action:inmenu"
 msgid "Redo: %1"
-msgstr "Athdhéan (%1)"
+msgstr ""
 
 #: actionmanager.cpp:1637
-#, fuzzy, kde-format
-#| msgid "Redo"
+#, kde-format
 msgctxt "@action:inmenu"
 msgid "Redo"
-msgstr "Athdhéan"
+msgstr ""
 
 #: actionmanager.cpp:1640
-#, fuzzy, kde-format
-#| msgid "Undo"
+#, kde-format
 msgctxt "@action:button"
 msgid "Undo"
-msgstr "Cealaigh"
+msgstr ""
 
 #: actionmanager.cpp:1651
-#, fuzzy, kde-kuit-format
-#| msgid "URL '%1' is invalid."
+#, kde-kuit-format
 msgctxt "@info"
 msgid "URL <filename>%1</filename> is invalid."
-msgstr "Tá URL '%1' neamhbhailí."
+msgstr ""
 
 #: actionmanager.cpp:1656
 #, kde-kuit-format
@@ -1598,41 +1415,34 @@ msgid "Import Calendar"
 msgstr "Iompórtáil Féilire"
 
 #: actionmanager.cpp:1665
-#, fuzzy, kde-format
-#| msgid "Merged calendar"
+#, kde-format
 msgctxt "@action:button"
 msgid "Merge into existing calendar"
-msgstr "Féilire cumasctha"
+msgstr ""
 
 #: actionmanager.cpp:1666
-#, fuzzy, kde-format
-#| msgid "Add as new calendar"
+#, kde-format
 msgctxt "@action:button"
 msgid "Add as new calendar"
-msgstr "Cuir leis mar fhéilire nua"
+msgstr ""
 
 #: akonadicollectionview.cpp:290
-#, fuzzy, kde-format
-#| msgctxt "@action:inmenu lowest priority"
-#| msgid "%1 (lowest)"
+#, kde-format
 msgctxt "@item this calendar is offline"
 msgid "%1 (Offline)"
-msgstr "%1 (is ísle)"
+msgstr ""
 
 #: akonadicollectionview.cpp:293
-#, fuzzy, kde-format
-#| msgid "Use as &Default Calendar"
+#, kde-format
 msgctxt "@item this is the default calendar"
 msgid "%1 (Default)"
-msgstr "Úsáid mar Fhéilire &Réamhshocraithe"
+msgstr ""
 
 #: akonadicollectionview.cpp:384
-#, fuzzy, kde-format
-#| msgctxt "@title:tab calendar account settings"
-#| msgid "Calendars"
+#, kde-format
 msgctxt "@info:tooltip"
 msgid "Calendar search"
-msgstr "Féilirí"
+msgstr ""
 
 #: akonadicollectionview.cpp:385
 #, kde-format
@@ -1641,12 +1451,11 @@ msgid "Start typing to search for a calendar within the collection."
 msgstr ""
 
 #: akonadicollectionview.cpp:387
-#, fuzzy, kde-format
-#| msgid "Search Calendar"
+#, kde-format
 msgctxt ""
 "@info/plain Displayed grayed-out inside the textbox, calendar to search"
 msgid "Search for calendar…"
-msgstr "Cuardaigh Féilire"
+msgstr ""
 
 #: akonadicollectionview.cpp:473 manageshowcollectionproperties.cpp:76
 #, kde-format
@@ -1661,11 +1470,10 @@ msgid "&Set Folder Color…"
 msgstr ""
 
 #: akonadicollectionview.cpp:491
-#, fuzzy, kde-format
-#| msgid "Use as &Default Calendar"
+#, kde-format
 msgctxt "@action:inmenu"
 msgid "Set as &Default Folder"
-msgstr "Úsáid mar Fhéilire &Réamhshocraithe"
+msgstr ""
 
 #: akonadicollectionview.cpp:541
 #, kde-kuit-format
@@ -1677,20 +1485,18 @@ msgid ""
 msgstr ""
 
 #: akonadicollectionview.cpp:546
-#, fuzzy, kde-kuit-format
-#| msgid "Do you really want to delete calendar %1?"
+#, kde-kuit-format
 msgctxt "@info"
 msgid ""
 "Do you really want to set <filename>%1</filename> as your default calendar "
 "folder?"
-msgstr "An bhfuil tú cinnte gur mian leat féilire %1 a scriosadh?"
+msgstr ""
 
 #: akonadicollectionview.cpp:551
-#, fuzzy, kde-format
-#| msgid "Use as &Default Calendar"
+#, kde-format
 msgctxt "@title:window"
 msgid "Replace Default Calendar?"
-msgstr "Úsáid mar Fhéilire &Réamhshocraithe"
+msgstr ""
 
 #: akonadicollectionview.cpp:555 akonadicollectionview.cpp:927
 #, kde-kuit-format
@@ -1699,11 +1505,10 @@ msgid "<filename>%1</filename> is now your default event calendar"
 msgstr ""
 
 #: akonadicollectionview.cpp:711
-#, fuzzy, kde-format
-#| msgid "Add Calendar"
+#, kde-format
 msgctxt "@title:window"
 msgid "Add Calendar"
-msgstr "Cuir Féilire Leis"
+msgstr ""
 
 #: akonadicollectionview.cpp:730
 #, kde-kuit-format
@@ -1779,11 +1584,10 @@ msgid ""
 msgstr ""
 
 #: akonadicollectionview.cpp:848 akonadicollectionview.cpp:879
-#, fuzzy, kde-format
-#| msgid "Delete Calendar"
+#, kde-format
 msgctxt "@title:window"
 msgid "Delete Calendar"
-msgstr "Scrios Féilire"
+msgstr ""
 
 #: akonadicollectionview.cpp:874
 #, kde-kuit-format
@@ -1837,18 +1641,16 @@ msgid ""
 msgstr ""
 
 #: calendarview.cpp:690
-#, fuzzy, kde-format
-#| msgid "Todo completed: %1 (%2)"
+#, kde-format
 msgctxt "@info/plain"
 msgid "Todo completed: %1 (%2)"
-msgstr "Tasc críochnaithe: %1 (%2)"
+msgstr ""
 
 #: calendarview.cpp:699
-#, fuzzy, kde-format
-#| msgid "Journal of %1"
+#, kde-format
 msgctxt "@info/plain"
 msgid "Journal of %1"
-msgstr "Dialann %1"
+msgstr ""
 
 #: calendarview.cpp:748
 #, kde-kuit-format
@@ -1883,11 +1685,10 @@ msgid "Make sub-to-dos independent"
 msgstr ""
 
 #: calendarview.cpp:1362
-#, fuzzy, kde-format
-#| msgid "&Toggle Reminder"
+#, kde-format
 msgctxt "@info/plain"
 msgid "Toggle Reminder"
-msgstr "&Scoránaigh Meabhrúchán"
+msgstr ""
 
 #: calendarview.cpp:1366
 #, kde-kuit-format
@@ -1902,12 +1703,10 @@ msgid "<message>%1</message> reminder is disabled"
 msgstr ""
 
 #: calendarview.cpp:1399 calendarview.cpp:1453
-#, fuzzy, kde-format
-#| msgctxt "@action:inmenu delete completed to-dos"
-#| msgid "Pur&ge Completed"
+#, kde-format
 msgctxt "@info/plain"
 msgid "Toggle To-do Completed"
-msgstr "Pur&gú Críochnaithe"
+msgstr ""
 
 #: calendarview.cpp:1402
 #, kde-kuit-format
@@ -1979,18 +1778,16 @@ msgstr ""
 
 #: calendarview.cpp:1629 calendarview.cpp:1642 calendarview.cpp:2303
 #: calendarview.cpp:2362 calendarview.cpp:2392
-#, fuzzy, kde-format
-#| msgid "KOrganizer Confirmation"
+#, kde-format
 msgctxt "@title:window"
 msgid "KOrganizer Confirmation"
-msgstr "Deimhniú KOrganizer"
+msgstr ""
 
 #: calendarview.cpp:1630
-#, fuzzy, kde-format
-#| msgid "Locking Failed"
+#, kde-format
 msgctxt "@action:button"
 msgid "&Dissociate"
-msgstr "Theip ar Chur Faoi Ghlas"
+msgstr ""
 
 #: calendarview.cpp:1637
 #, kde-format
@@ -2013,18 +1810,16 @@ msgid "&Also Dissociate Future Ones"
 msgstr ""
 
 #: calendarview.cpp:1662
-#, fuzzy, kde-format
-#| msgid "Delete C&urrent"
+#, kde-format
 msgctxt "@info/plain"
 msgid "Dissociate future occurrences"
-msgstr "Scrios &Ceann Reatha"
+msgstr ""
 
 #: calendarview.cpp:1664
-#, fuzzy, kde-format
-#| msgid "Delete C&urrent"
+#, kde-format
 msgctxt "@info/plain"
 msgid "Dissociate occurrence"
-msgstr "Scrios &Ceann Reatha"
+msgstr ""
 
 #: calendarview.cpp:1671
 #, kde-format
@@ -2033,56 +1828,46 @@ msgid "Dissociating the future occurrences failed."
 msgstr ""
 
 #: calendarview.cpp:1671 calendarview.cpp:1673
-#, fuzzy, kde-format
-#| msgid "Locking Failed"
+#, kde-format
 msgctxt "@title:window"
 msgid "Dissociating Failed"
-msgstr "Theip ar Chur Faoi Ghlas"
+msgstr ""
 
 #: calendarview.cpp:1673
-#, fuzzy, kde-format
-#| msgid "Locking Failed"
+#, kde-format
 msgctxt "@info"
 msgid "Dissociating the occurrence failed."
-msgstr "Theip ar Chur Faoi Ghlas"
+msgstr ""
 
 #: calendarview.cpp:1817
-#, fuzzy, kde-format
-#| msgid "KOrganizer"
+#, kde-format
 msgctxt "@title:window"
 msgid "KOrganizer"
-msgstr "KOrganizer"
+msgstr ""
 
 #: calendarview.cpp:1836
-#, fuzzy, kde-format
-#| msgctxt "@title:group"
-#| msgid "Exporting Calendar"
+#, kde-format
 msgctxt "@title:window"
 msgid "Export Calendar to File"
-msgstr "Féilire á Easpórtáil"
+msgstr ""
 
 #: calendarview.cpp:1849
-#, fuzzy, kde-kuit-format
-#| msgid "Do you want to overwrite file \"%1\"?"
+#, kde-kuit-format
 msgctxt "@info"
 msgid "Do you want to overwrite <filename>%1</filename>?"
-msgstr "An bhfuil fonn ort comhad \"%1\" a fhorscríobh?"
+msgstr ""
 
 #: calendarview.cpp:1850
-#, fuzzy, kde-format
-#| msgctxt "@title:window"
-#| msgid "Import Calendar"
+#, kde-format
 msgctxt "@title:window"
 msgid "Export Calendar"
-msgstr "Iompórtáil Féilire"
+msgstr ""
 
 #: calendarview.cpp:1864
-#, fuzzy, kde-format
-#| msgctxt "unknown status"
-#| msgid "unknown"
+#, kde-format
 msgctxt "@info save failure cause unknown"
 msgid "Reason unknown"
-msgstr "anaithnid"
+msgstr ""
 
 #: calendarview.cpp:1866
 #, kde-kuit-format
@@ -2092,11 +1877,10 @@ msgid ""
 msgstr ""
 
 #: calendarview.cpp:1975 calendarview.cpp:2020
-#, fuzzy, kde-format
-#| msgid "No filter"
+#, kde-format
 msgctxt "@info/plain"
 msgid "No filter"
-msgstr "Gan scagaire"
+msgstr ""
 
 #: calendarview.cpp:2298
 #, kde-kuit-format
@@ -2108,18 +1892,16 @@ msgid ""
 msgstr ""
 
 #: calendarview.cpp:2304
-#, fuzzy, kde-format
-#| msgid "Delete Only This"
+#, kde-format
 msgctxt "@action:button"
 msgid "Delete Only This"
-msgstr "Ná Scrios Ach An Ceann Seo"
+msgstr ""
 
 #: calendarview.cpp:2305 calendarview.cpp:2363
-#, fuzzy, kde-format
-#| msgid "Delete All"
+#, kde-format
 msgctxt "@action:button"
 msgid "Delete All"
-msgstr "Scrios Uile"
+msgstr ""
 
 #: calendarview.cpp:2337
 #, kde-kuit-format
@@ -2130,11 +1912,10 @@ msgid ""
 msgstr ""
 
 #: calendarview.cpp:2340
-#, fuzzy, kde-format
-#| msgid "Removing not possible"
+#, kde-format
 msgctxt "@title:window"
 msgid "Removing not possible"
-msgstr "Ní féidir baint"
+msgstr ""
 
 #: calendarview.cpp:2359
 #, kde-kuit-format
@@ -2145,11 +1926,10 @@ msgid ""
 msgstr ""
 
 #: calendarview.cpp:2370
-#, fuzzy, kde-format
-#| msgid "Delete C&urrent"
+#, kde-format
 msgctxt "@action:button"
 msgid "Also Delete &Future"
-msgstr "Scrios &Ceann Reatha"
+msgstr ""
 
 #: calendarview.cpp:2374
 #, kde-kuit-format
@@ -2169,25 +1949,22 @@ msgid ""
 msgstr ""
 
 #: calendarview.cpp:2393
-#, fuzzy, kde-format
-#| msgid "Delete C&urrent"
+#, kde-format
 msgctxt "@action:button"
 msgid "Delete C&urrent"
-msgstr "Scrios &Ceann Reatha"
+msgstr ""
 
 #: calendarview.cpp:2395
-#, fuzzy, kde-format
-#| msgid "Delete &All"
+#, kde-format
 msgctxt "@action:button"
 msgid "Delete &All"
-msgstr "Scrios &gach rud"
+msgstr ""
 
 #: calendarview.cpp:2426 calendarview.cpp:2433
-#, fuzzy, kde-format
-#| msgid "Delete %1"
+#, kde-format
 msgctxt "@info/plain"
 msgid "Delete \"%1\""
-msgstr "Scrios %1"
+msgstr ""
 
 #: calendarview.cpp:2465
 #, kde-format
@@ -2197,53 +1974,46 @@ msgid ""
 msgstr ""
 
 #: calendarview.cpp:2470 calendarview.cpp:2748
-#, fuzzy, kde-format
-#| msgid "Delete all completed to-dos?"
+#, kde-format
 msgctxt "@info"
 msgid "There are no completed to-dos to purge."
-msgstr "Scrios gach tasc críochnaithe?"
+msgstr ""
 
 #: calendarview.cpp:2475
-#, fuzzy, kde-format
-#| msgid "Delete all completed to-dos?"
+#, kde-format
 msgctxt "@info"
 msgid "Delete all completed to-dos from checked calendars?"
-msgstr "Scrios gach tasc críochnaithe?"
+msgstr ""
 
 #: calendarview.cpp:2476
-#, fuzzy, kde-format
-#| msgid "Purge To-dos"
+#, kde-format
 msgctxt "@title:window"
 msgid "Purge To-dos"
-msgstr "Purgaigh Tascanna"
+msgstr ""
 
 #: calendarview.cpp:2477
-#, fuzzy, kde-format
-#| msgid "Purge"
+#, kde-format
 msgctxt "@action:button"
 msgid "Purge"
-msgstr "Purgaigh"
+msgstr ""
 
 #: calendarview.cpp:2487
-#, fuzzy, kde-kuit-format
-#| msgid "<qt>Unable to create subresource <b>%1</b>.</qt>"
+#, kde-kuit-format
 msgctxt "@info"
 msgid "Unable to copy item <resource>%1</resource>."
-msgstr "<qt>Ní féidir fo-acmhainn <b>%1</b> a chruthú.</qt>"
+msgstr ""
 
 #: calendarview.cpp:2522
-#, fuzzy, kde-kuit-format
-#| msgid "<qt>Unable to create subresource <b>%1</b>.</qt>"
+#, kde-kuit-format
 msgctxt "@info"
 msgid "Unable to move item <resource>%1</resource>."
-msgstr "<qt>Ní féidir fo-acmhainn <b>%1</b> a chruthú.</qt>"
+msgstr ""
 
 #: calendarview.cpp:2740
-#, fuzzy, kde-kuit-format
-#| msgid "Hide co&mpleted to-dos"
+#, kde-kuit-format
 msgctxt "@info"
 msgid "0 completed to-dos were purged.<nl/>"
-msgstr "Folaigh ta&scanna críochnaithe"
+msgstr ""
 
 #: calendarview.cpp:2742 calendarview.cpp:2753
 #, kde-format, kde-kuit-format
@@ -2253,28 +2023,20 @@ msgid_plural ""
 "%1 to-dos were ignored because they have uncompleted or read-only children."
 msgstr[0] ""
 msgstr[1] ""
-msgstr[2] ""
-msgstr[3] ""
-msgstr[4] ""
 
 #: calendarview.cpp:2746 calendarview.cpp:2751
-#, fuzzy, kde-format
-#| msgid "Hide co&mpleted to-dos"
+#, kde-format
 msgctxt "@info"
 msgid "%1 completed to-do was purged."
 msgid_plural "%1 completed to-dos were purged."
-msgstr[0] "Folaigh ta&scanna críochnaithe"
-msgstr[1] "Folaigh ta&scanna críochnaithe"
-msgstr[2] "Folaigh ta&scanna críochnaithe"
-msgstr[3] "Folaigh ta&scanna críochnaithe"
-msgstr[4] "Folaigh ta&scanna críochnaithe"
+msgstr[0] ""
+msgstr[1] ""
 
 #: calendarview.cpp:2758
-#, fuzzy, kde-kuit-format
-#| msgid "Purging completed to-dos"
+#, kde-kuit-format
 msgctxt "@info"
 msgid "An error occurred while purging completed to-dos: <message>%1</message>"
-msgstr "Tascanna críochnaithe á bpurgú"
+msgstr ""
 
 #: calendarview.cpp:2812
 #, kde-kuit-format
@@ -2297,20 +2059,16 @@ msgid ""
 msgstr ""
 
 #: collectiongeneralpage.cpp:37
-#, fuzzy, kde-format
-#| msgctxt "general settings for html export"
-#| msgid "General"
+#, kde-format
 msgctxt "@title:tab General settings for a folder."
 msgid "General"
-msgstr "Ginearálta"
+msgstr ""
 
 #: collectiongeneralpage.cpp:45
-#, fuzzy, kde-format
-#| msgctxt "@info:tooltip"
-#| msgid "Set the start date"
+#, kde-format
 msgctxt "@info:tooltip"
 msgid "Set the folder name"
-msgstr "Socraigh an dáta tosaigh"
+msgstr ""
 
 #: collectiongeneralpage.cpp:46
 #, kde-format
@@ -2319,12 +2077,10 @@ msgid "Enter a name here to set the name of this folder."
 msgstr ""
 
 #: collectiongeneralpage.cpp:47
-#, fuzzy, kde-format
-#| msgctxt "filter name"
-#| msgid "Name:"
+#, kde-format
 msgctxt "@label:textbox Name of the folder."
 msgid "&Name:"
-msgstr "Ainm:"
+msgstr ""
 
 #: collectiongeneralpage.cpp:50
 #, kde-format
@@ -2347,20 +2103,16 @@ msgid ""
 msgstr ""
 
 #: collectiongeneralpage.cpp:58
-#, fuzzy, kde-format
-#| msgctxt "@title:group"
-#| msgid "Calendar Decorations"
+#, kde-format
 msgctxt "@option:check"
 msgid "&Use custom icon:"
-msgstr "Maisíochtaí Féilire"
+msgstr ""
 
 #: collectiongeneralpage.cpp:59
-#, fuzzy, kde-format
-#| msgctxt "@title:group"
-#| msgid "Calendar Decorations"
+#, kde-format
 msgctxt "@info:tooltip"
 msgid "Set a custom icon"
-msgstr "Maisíochtaí Féilire"
+msgstr ""
 
 #: collectiongeneralpage.cpp:60
 #, kde-format
@@ -2512,48 +2264,40 @@ msgid "Delete Filter?"
 msgstr ""
 
 #: dialog/koeventviewerdialog.cpp:32
-#, fuzzy, kde-format
-#| msgctxt "@title:tab"
-#| msgid "Month View"
+#, kde-format
 msgctxt "@title:window"
 msgid "Event Viewer"
-msgstr "Amharc Míosa"
+msgstr ""
 
 #: dialog/koeventviewerdialog.cpp:40
-#, fuzzy, kde-format
-#| msgid "Edit"
+#, kde-format
 msgctxt "@action:button"
 msgid "Edit…"
-msgstr "Eagar"
+msgstr ""
 
 #: dialog/koeventviewerdialog.cpp:41
-#, fuzzy, kde-format
-#| msgid "Show in Context"
+#, kde-format
 msgctxt "@action:button"
 msgid "Show in Context"
-msgstr "Taispeáin i gComhthéacs"
+msgstr ""
 
 #: dialog/searchdialog.cpp:40
-#, fuzzy, kde-format
-#| msgid "Print Calendar"
+#, kde-format
 msgctxt "@title:window"
 msgid "Find in Calendars"
-msgstr "Priontáil Féilire"
+msgstr ""
 
 #: dialog/searchdialog.cpp:73
-#, fuzzy, kde-format
-#| msgctxt "search in calendar"
-#| msgid "&Search"
+#, kde-format
 msgctxt "@action:button search in calendar"
 msgid "&Search"
-msgstr "&Cuardaigh"
+msgstr ""
 
 #: dialog/searchdialog.cpp:75
-#, fuzzy, kde-format
-#| msgid "Start searching"
+#, kde-format
 msgctxt "@info:tooltip"
 msgid "Start the search"
-msgstr "Tosaigh an cuardach"
+msgstr ""
 
 #: dialog/searchdialog.cpp:76
 #, kde-format
@@ -2576,11 +2320,10 @@ msgid "No items were found that match your search pattern."
 msgstr ""
 
 #: dialog/searchdialog.cpp:159
-#, fuzzy, kde-format
-#| msgid "Search Results"
+#, kde-format
 msgctxt "@title:window"
 msgid "Search Results"
-msgstr "Torthaí an Chuardaigh"
+msgstr ""
 
 #: dialog/searchdialog.cpp:174
 #, kde-format
@@ -2589,15 +2332,11 @@ msgid "%1 match"
 msgid_plural "%1 matches"
 msgstr[0] ""
 msgstr[1] ""
-msgstr[2] ""
-msgstr[3] ""
-msgstr[4] ""
 
 #: koapp.cpp:63
-#, fuzzy, kde-format
-#| msgid "Exclude private incidences from the export"
+#, kde-format
 msgid "Failed to retrieve incidence from Akonadi"
-msgstr "Ná cuir imeachtaí príobháideacha san easpórtáil"
+msgstr ""
 
 #: koapp.cpp:68
 #, kde-format
@@ -2618,25 +2357,19 @@ msgid ","
 msgstr ","
 
 #: kodaymatrix.cpp:454
-#, fuzzy, kde-format
-#| msgctxt "@title:window"
-#| msgid "New Event"
+#, kde-format
 msgid "New E&vent…"
-msgstr "Imeacht Nua"
+msgstr ""
 
 #: kodaymatrix.cpp:455
-#, fuzzy, kde-format
-#| msgctxt "@title:window"
-#| msgid "New To-do"
+#, kde-format
 msgid "New &To-do…"
-msgstr "Tasc Nua"
+msgstr ""
 
 #: kodaymatrix.cpp:456
-#, fuzzy, kde-format
-#| msgctxt "@title:window"
-#| msgid "New Journal"
+#, kde-format
 msgid "New &Journal…"
-msgstr "Dialann Nua"
+msgstr ""
 
 #: kodaymatrix.cpp:604
 #, kde-format
@@ -2659,92 +2392,76 @@ msgid "&Cancel"
 msgstr "&Cealaigh"
 
 #: koeventpopupmenu.cpp:46
-#, fuzzy, kde-format
-#| msgid "&Delete"
+#, kde-format
 msgctxt "@action:inmenu delete this incidence"
 msgid "&Delete"
-msgstr "&Scrios"
+msgstr ""
 
 #: koeventpopupmenu.cpp:50
-#, fuzzy, kde-format
-#| msgid "&Print"
+#, kde-format
 msgctxt "@action:inmenu"
 msgid "&Print…"
-msgstr "&Priontáil"
+msgstr ""
 
 #: koeventpopupmenu.cpp:52
-#, fuzzy, kde-format
-#| msgid "Print Previe&w..."
+#, kde-format
 msgctxt "@action:inmenu"
 msgid "Print Previe&w…"
-msgstr "&Réamhamharc Priontála..."
+msgstr ""
 
 #: koeventpopupmenu.cpp:73
-#, fuzzy, kde-format
-#| msgctxt "cut this event"
-#| msgid "C&ut"
+#, kde-format
 msgctxt "@action:inmenu cut this incidence"
 msgid "C&ut"
-msgstr "&Gearr"
+msgstr ""
 
 #: koeventpopupmenu.cpp:75
-#, fuzzy, kde-format
-#| msgid "&Copy"
+#, kde-format
 msgctxt "@action:inmenu copy this incidence"
 msgid "&Copy"
-msgstr "&Cóipeáil"
+msgstr ""
 
 #: koeventpopupmenu.cpp:76
-#, fuzzy, kde-format
-#| msgid "&Paste"
+#, kde-format
 msgctxt "@action:inmenu"
 msgid "&Paste"
-msgstr "&Greamaigh"
+msgstr ""
 
 #: koeventpopupmenu.cpp:84 koeventpopupmenu.cpp:104
-#, fuzzy, kde-format
-#| msgctxt "@title:window"
-#| msgid "New Event"
+#, kde-format
 msgctxt "@action:inmenu"
 msgid "New Event"
-msgstr "Imeacht Nua"
+msgstr ""
 
 #: koeventpopupmenu.cpp:89 koeventpopupmenu.cpp:101
-#, fuzzy, kde-format
-#| msgctxt "@title:window"
-#| msgid "New To-do"
+#, kde-format
 msgctxt "@action:inmenu"
 msgid "New To-do"
-msgstr "Tasc Nua"
+msgstr ""
 
 #: koeventpopupmenu.cpp:92
-#, fuzzy, kde-format
-#| msgid "Create a new To-do"
+#, kde-format
 msgctxt "@action:inmenu"
 msgid "Create To-do from Event"
-msgstr "Cruthaigh Tasc nua"
+msgstr ""
 
 #: koeventpopupmenu.cpp:109
-#, fuzzy, kde-format
-#| msgid "Create a new Event"
+#, kde-format
 msgctxt "@action:inmenu"
 msgid "Create Event from To-do"
-msgstr "Cruthaigh Imeacht nua"
+msgstr ""
 
 #: koeventpopupmenu.cpp:115
-#, fuzzy, kde-format
-#| msgctxt "@action:inmenu delete completed to-dos"
-#| msgid "Pur&ge Completed"
+#, kde-format
 msgctxt "@action:inmenu"
 msgid "Togg&le To-do Completed"
-msgstr "Pur&gú Críochnaithe"
+msgstr ""
 
 #: koeventpopupmenu.cpp:125
-#, fuzzy, kde-format
-#| msgid "&Toggle Reminder"
+#, kde-format
 msgctxt "@action:inmenu"
 msgid "&Toggle Reminder"
-msgstr "&Scoránaigh Meabhrúchán"
+msgstr ""
 
 #: koeventpopupmenu.cpp:132
 #, kde-format
@@ -2753,32 +2470,28 @@ msgid "&Dissociate From Recurrence…"
 msgstr ""
 
 #: koeventpopupmenu.cpp:140
-#, fuzzy, kde-format
-#| msgid "&Send as iCalendar..."
+#, kde-format
 msgctxt "@action:inmenu"
 msgid "Send as iCalendar…"
-msgstr "&Seol mar iCalendar..."
+msgstr ""
 
 #: koeventpopupmenu.cpp:190
-#, fuzzy, kde-format
-#| msgid "&Toggle Reminder"
+#, kde-format
 msgctxt "@action:inmenu"
 msgid "&Toggle Reminder Off"
-msgstr "&Scoránaigh Meabhrúchán"
+msgstr ""
 
 #: koeventpopupmenu.cpp:191
-#, fuzzy, kde-format
-#| msgid "&Toggle Reminder"
+#, kde-format
 msgctxt "@action:inmenu"
 msgid "&Toggle Reminder On"
-msgstr "&Scoránaigh Meabhrúchán"
+msgstr ""
 
 #. i18n: ectx: property (windowTitle), widget (QWidget, ApptSummaryConfig_Base)
 #: kontactplugin/korganizer/apptsummaryconfig_base.ui:16
-#, fuzzy, kde-format
-#| msgid "Resource Configuration"
+#, kde-format
 msgid "Event Summary Configuration"
-msgstr "Cumraíocht Acmhainní"
+msgstr ""
 
 #. i18n: ectx: property (title), widget (QGroupBox, mDaysButtonGroup)
 #: kontactplugin/korganizer/apptsummaryconfig_base.ui:22
@@ -2802,10 +2515,9 @@ msgstr ""
 #: kontactplugin/korganizer/apptsummaryconfig_base.ui:34
 #: kontactplugin/korganizer/todosummaryconfig_base.ui:34
 #: kontactplugin/specialdates/sdsummaryconfig_base.ui:34
-#, fuzzy, kde-format
-#| msgid "Today"
+#, kde-format
 msgid "&Today only"
-msgstr "Inniu"
+msgstr ""
 
 #. i18n: ectx: property (toolTip), widget (QRadioButton, mDateMonthButton)
 #: kontactplugin/korganizer/apptsummaryconfig_base.ui:44
@@ -2869,22 +2581,18 @@ msgstr ""
 #: kontactplugin/korganizer/apptsummaryconfig_base.ui:90
 #: kontactplugin/korganizer/todosummaryconfig_base.ui:93
 #: kontactplugin/specialdates/sdsummaryconfig_base.ui:90
-#, fuzzy, kde-format
-#| msgid "1 day"
-#| msgid_plural "%1 days"
+#, kde-format
 msgid "1 day"
-msgstr "Lá amháin"
+msgstr ""
 
 #. i18n: ectx: property (suffix), widget (QSpinBox, mCustomDays)
 #: kontactplugin/korganizer/apptsummaryconfig_base.ui:93
 #: kontactplugin/korganizer/todosummaryconfig_base.ui:96
 #: kontactplugin/specialdates/sdsummaryconfig_base.ui:93
-#, fuzzy, kde-format
-#| msgctxt "@label suffix in the N days spin box"
-#| msgid " days"
+#, kde-format
 msgctxt "days to show in summary"
 msgid " days"
-msgstr " lá"
+msgstr ""
 
 #. i18n: ectx: property (title), widget (QGroupBox, mShowButtonGroup)
 #: kontactplugin/korganizer/apptsummaryconfig_base.ui:130
@@ -2911,10 +2619,9 @@ msgstr ""
 #. i18n: ectx: property (text), widget (QCheckBox, mShowBirthdaysFromCalBox)
 #: kontactplugin/korganizer/apptsummaryconfig_base.ui:142
 #: kontactplugin/specialdates/sdsummaryconfig_base.ui:142
-#, fuzzy, kde-format
-#| msgid "Birthdays"
+#, kde-format
 msgid "Show &birthdays"
-msgstr "Laethanta Breithe"
+msgstr ""
 
 #. i18n: ectx: property (toolTip), widget (QCheckBox, mShowAnniversariesFromCal)
 #: kontactplugin/korganizer/apptsummaryconfig_base.ui:149
@@ -2951,45 +2658,33 @@ msgid "No upcoming events starting within the next day"
 msgid_plural "No upcoming events starting within the next %1 days"
 msgstr[0] ""
 msgstr[1] ""
-msgstr[2] ""
-msgstr[3] ""
-msgstr[4] ""
 
 #: kontactplugin/korganizer/apptsummarywidget.cpp:229
-#, fuzzy, kde-format
-#| msgctxt "incidence category: appointment"
-#| msgid "Appointment"
+#, kde-format
 msgid "&Edit Appointment…"
-msgstr "Coinne"
+msgstr ""
 
 #: kontactplugin/korganizer/apptsummarywidget.cpp:231
-#, fuzzy, kde-format
-#| msgctxt "incidence category: appointment"
-#| msgid "Appointment"
+#, kde-format
 msgid "&Delete Appointment"
-msgstr "Coinne"
+msgstr ""
 
 #: kontactplugin/korganizer/apptsummarywidget.cpp:250
-#, fuzzy, kde-format
-#| msgctxt "@title:window"
-#| msgid "Edit Event : %1"
+#, kde-format
 msgid "Edit Event: \"%1\""
-msgstr "Cuir Imeacht in Eagar: %1"
+msgstr ""
 
 #: kontactplugin/korganizer/journalplugin.cpp:27
-#, fuzzy, kde-format
-#| msgctxt "@title:window"
-#| msgid "New Journal"
+#, kde-format
 msgctxt "@action:inmenu"
 msgid "New Journal…"
-msgstr "Dialann Nua"
+msgstr ""
 
 #: kontactplugin/korganizer/journalplugin.cpp:30
-#, fuzzy, kde-format
-#| msgid "Create a new Journal"
+#, kde-format
 msgctxt "@info:status"
 msgid "Create a new journal"
-msgstr "Cruthaigh Dialann nua"
+msgstr ""
 
 #: kontactplugin/korganizer/journalplugin.cpp:35
 #, kde-format
@@ -3001,31 +2696,23 @@ msgstr ""
 #: kontactplugin/korganizer/kcmapptsummary.cpp:66
 #: kontactplugin/korganizer/kcmtodosummary.cpp:53
 #: kontactplugin/specialdates/kcmsdsummary.cpp:53
-#, fuzzy, kde-format
-#| msgid "1 day"
-#| msgid_plural "%1 days"
+#, kde-format
 msgid " day"
 msgid_plural " days"
-msgstr[0] "Lá amháin"
-msgstr[1] "%1 lá"
-msgstr[2] "%1 lá"
-msgstr[3] "%1 lá"
-msgstr[4] "%1 lá"
+msgstr[0] ""
+msgstr[1] ""
 
 #: kontactplugin/korganizer/korganizerplugin.cpp:44
-#, fuzzy, kde-format
-#| msgctxt "@title:window"
-#| msgid "New Event"
+#, kde-format
 msgctxt "@action:inmenu"
 msgid "New Event…"
-msgstr "Imeacht Nua"
+msgstr ""
 
 #: kontactplugin/korganizer/korganizerplugin.cpp:47
-#, fuzzy, kde-format
-#| msgid "Create a new Event"
+#, kde-format
 msgctxt "@info:status"
 msgid "Create a new event"
-msgstr "Cruthaigh Imeacht nua"
+msgstr ""
 
 #: kontactplugin/korganizer/korganizerplugin.cpp:51
 #, kde-format
@@ -3036,27 +2723,23 @@ msgstr ""
 
 #: kontactplugin/korganizer/korganizerplugin.cpp:146
 #: kontactplugin/korganizer/todoplugin.cpp:145
-#, fuzzy, kde-format
-#| msgctxt "incidence category"
-#| msgid "Meeting"
+#, kde-format
 msgctxt "@item"
 msgid "Meeting"
-msgstr "Cruinniú"
+msgstr ""
 
 #: kontactplugin/korganizer/korganizerplugin.cpp:160
 #: kontactplugin/korganizer/todoplugin.cpp:159
-#, fuzzy, kde-format
-#| msgid "Notes:"
+#, kde-format
 msgctxt "@item"
 msgid "Note: %1"
-msgstr "Nótaí:"
+msgstr ""
 
 #: kontactplugin/korganizer/korganizerplugin.cpp:191
-#, fuzzy, kde-format
-#| msgid "KMail"
+#, kde-format
 msgctxt "@info/plain event summary from email subject"
 msgid "Mail: %1"
-msgstr "KMail"
+msgstr ""
 
 #: kontactplugin/korganizer/korganizerplugin.cpp:193
 #, kde-kuit-format
@@ -3067,11 +2750,10 @@ msgid ""
 msgstr ""
 
 #: kontactplugin/korganizer/summaryeventinfo.cpp:136
-#, fuzzy, kde-format
-#| msgid "Today"
+#, kde-format
 msgctxt "the appointment is today"
 msgid "Today"
-msgstr "Inniu"
+msgstr ""
 
 #: kontactplugin/korganizer/summaryeventinfo.cpp:139
 #, kde-format
@@ -3082,16 +2764,11 @@ msgstr ""
 #: kontactplugin/korganizer/summaryeventinfo.cpp:171
 #: kontactplugin/korganizer/todosummarywidget.cpp:207
 #: kontactplugin/specialdates/sdsummarywidget.cpp:485
-#, fuzzy, kde-format
-#| msgid "1 day"
-#| msgid_plural "%1 days"
+#, kde-format
 msgid "in 1 day"
 msgid_plural "in %1 days"
-msgstr[0] "Lá amháin"
-msgstr[1] "%1 lá"
-msgstr[2] "%1 lá"
-msgstr[3] "%1 lá"
-msgstr[4] "%1 lá"
+msgstr[0] ""
+msgstr[1] ""
 
 #: kontactplugin/korganizer/summaryeventinfo.cpp:184
 #, kde-format
@@ -3106,22 +2783,14 @@ msgid "1 hr"
 msgid_plural "%1 hrs"
 msgstr[0] ""
 msgstr[1] ""
-msgstr[2] ""
-msgstr[3] ""
-msgstr[4] ""
 
 #: kontactplugin/korganizer/summaryeventinfo.cpp:193
-#, fuzzy, kde-format
-#| msgid "1 minute"
-#| msgid_plural "%1 minutes"
+#, kde-format
 msgctxt "use abbreviation for minute to keep the text short"
 msgid "1 min"
 msgid_plural "%1 mins"
-msgstr[0] "1 nóiméad"
-msgstr[1] "%1 nóiméad"
-msgstr[2] "%1 nóiméad"
-msgstr[3] "%1 nóiméad"
-msgstr[4] "%1 nóiméad"
+msgstr[0] ""
+msgstr[1] ""
 
 #: kontactplugin/korganizer/summaryeventinfo.cpp:200
 #: kontactplugin/specialdates/sdsummarywidget.cpp:483
@@ -3130,40 +2799,33 @@ msgid "now"
 msgstr ""
 
 #: kontactplugin/korganizer/summaryeventinfo.cpp:203
-#, fuzzy, kde-format
-#| msgid "1 day"
-#| msgid_plural "%1 days"
+#, kde-format
 msgid "all day"
-msgstr "Lá amháin"
+msgstr ""
 
 #: kontactplugin/korganizer/summaryeventinfo.cpp:243
-#, fuzzy, kde-format
-#| msgid "%1 - %2"
+#, kde-format
 msgctxt "Time from - to"
 msgid "%1 - %2"
-msgstr "%1 - %2"
+msgstr ""
 
 #: kontactplugin/korganizer/summaryeventinfo.cpp:259
-#, fuzzy, kde-format
-#| msgid "Redo (%1)"
+#, kde-format
 msgctxt "next occurrence"
 msgid "Next: %1"
-msgstr "Athdhéan (%1)"
+msgstr ""
 
 #: kontactplugin/korganizer/todoplugin.cpp:40
-#, fuzzy, kde-format
-#| msgctxt "@title:window"
-#| msgid "New To-do"
+#, kde-format
 msgctxt "@action:inmenu"
 msgid "New To-do…"
-msgstr "Tasc Nua"
+msgstr ""
 
 #: kontactplugin/korganizer/todoplugin.cpp:43
-#, fuzzy, kde-format
-#| msgid "Create a new To-do"
+#, kde-format
 msgctxt "@info:status"
 msgid "Create a new to-do"
-msgstr "Cruthaigh Tasc nua"
+msgstr ""
 
 #: kontactplugin/korganizer/todoplugin.cpp:47
 #, kde-format
@@ -3173,11 +2835,10 @@ msgid ""
 msgstr ""
 
 #: kontactplugin/korganizer/todoplugin.cpp:190
-#, fuzzy, kde-format
-#| msgid "KMail"
+#, kde-format
 msgctxt "@info/plain to-do summary from email subjuect"
 msgid "Mail: %1"
-msgstr "KMail"
+msgstr ""
 
 #: kontactplugin/korganizer/todoplugin.cpp:192
 #, kde-kuit-format
@@ -3189,17 +2850,15 @@ msgstr ""
 
 #. i18n: ectx: property (windowTitle), widget (QWidget, TodoSummaryConfig_Base)
 #: kontactplugin/korganizer/todosummaryconfig_base.ui:16
-#, fuzzy, kde-format
-#| msgid "Resource Configuration"
+#, kde-format
 msgid "To-do Summary Configuration"
-msgstr "Cumraíocht Acmhainní"
+msgstr ""
 
 #. i18n: ectx: property (title), widget (QGroupBox, mDaysGroup)
 #: kontactplugin/korganizer/todosummaryconfig_base.ui:22
-#, fuzzy, kde-format
-#| msgid "Show To-do View"
+#, kde-format
 msgid "Show To-dos Due"
-msgstr "Taispeáin Amharc Tascliosta"
+msgstr ""
 
 #. i18n: ectx: property (toolTip), widget (QRadioButton, mDateTodayButton)
 #: kontactplugin/korganizer/todosummaryconfig_base.ui:28
@@ -3263,10 +2922,9 @@ msgstr ""
 
 #. i18n: ectx: property (toolTip), widget (QCheckBox, mHideCompletedBox)
 #: kontactplugin/korganizer/todosummaryconfig_base.ui:139
-#, fuzzy, kde-format
-#| msgid "Hide co&mpleted to-dos"
+#, kde-format
 msgid "Hide completed To-dos"
-msgstr "Folaigh ta&scanna críochnaithe"
+msgstr ""
 
 #. i18n: ectx: property (whatsThis), widget (QCheckBox, mHideCompletedBox)
 #: kontactplugin/korganizer/todosummaryconfig_base.ui:142
@@ -3278,11 +2936,9 @@ msgstr ""
 
 #. i18n: ectx: property (text), widget (QCheckBox, mHideCompletedBox)
 #: kontactplugin/korganizer/todosummaryconfig_base.ui:145
-#, fuzzy, kde-format
-#| msgctxt "@title:column to-do percent completed"
-#| msgid "Completed"
+#, kde-format
 msgid "&Completed"
-msgstr "Críochnaithe"
+msgstr ""
 
 #. i18n: ectx: property (toolTip), widget (QCheckBox, mHideOpenEndedBox)
 #: kontactplugin/korganizer/todosummaryconfig_base.ui:155
@@ -3304,10 +2960,9 @@ msgstr ""
 
 #. i18n: ectx: property (toolTip), widget (QCheckBox, mHideUnstartedBox)
 #: kontactplugin/korganizer/todosummaryconfig_base.ui:171
-#, fuzzy, kde-format
-#| msgid "Hide &inactive to-dos"
+#, kde-format
 msgid "Hide unstarted To-dos"
-msgstr "Folaigh tascanna éighníomhacha"
+msgstr ""
 
 #. i18n: ectx: property (whatsThis), widget (QCheckBox, mHideUnstartedBox)
 #: kontactplugin/korganizer/todosummaryconfig_base.ui:174
@@ -3325,10 +2980,9 @@ msgstr ""
 
 #. i18n: ectx: property (toolTip), widget (QCheckBox, mHideInProgressBox)
 #: kontactplugin/korganizer/todosummaryconfig_base.ui:184
-#, fuzzy, kde-format
-#| msgid "Hide &inactive to-dos"
+#, kde-format
 msgid "Hide in-progress To-dos"
-msgstr "Folaigh tascanna éighníomhacha"
+msgstr ""
 
 #. i18n: ectx: property (whatsThis), widget (QCheckBox, mHideInProgressBox)
 #: kontactplugin/korganizer/todosummaryconfig_base.ui:187
@@ -3346,10 +3000,9 @@ msgstr ""
 
 #. i18n: ectx: property (toolTip), widget (QCheckBox, mHideOverdueBox)
 #: kontactplugin/korganizer/todosummaryconfig_base.ui:197
-#, fuzzy, kde-format
-#| msgid "Hide co&mpleted to-dos"
+#, kde-format
 msgid "Hide overdue To-dos"
-msgstr "Folaigh ta&scanna críochnaithe"
+msgstr ""
 
 #. i18n: ectx: property (whatsThis), widget (QCheckBox, mHideOverdueBox)
 #: kontactplugin/korganizer/todosummaryconfig_base.ui:203
@@ -3366,17 +3019,15 @@ msgid "Over&due (not completed and beyond due-date)"
 msgstr ""
 
 #: kontactplugin/korganizer/todosummarywidget.cpp:44
-#, fuzzy, kde-format
-#| msgid "Purge To-dos"
+#, kde-format
 msgid "Pending To-dos"
-msgstr "Purgaigh Tascanna"
+msgstr ""
 
 #: kontactplugin/korganizer/todosummarywidget.cpp:173
-#, fuzzy, kde-format
-#| msgid "Today"
+#, kde-format
 msgctxt "the to-do is due today"
 msgid "Today"
-msgstr "Inniu"
+msgstr ""
 
 #: kontactplugin/korganizer/todosummarywidget.cpp:175
 #, kde-format
@@ -3385,32 +3036,23 @@ msgid "Tomorrow"
 msgstr ""
 
 #: kontactplugin/korganizer/todosummarywidget.cpp:181
-#, fuzzy, kde-format
-#| msgctxt "@title month and year"
-#| msgid "%1 %2"
+#, kde-format
 msgctxt "1. weekday, 2. time"
 msgid "%1 %2"
-msgstr "%1 %2"
+msgstr ""
 
 #: kontactplugin/korganizer/todosummarywidget.cpp:209
-#, fuzzy, kde-format
-#| msgid "1 day"
-#| msgid_plural "%1 days"
+#, kde-format
 msgid "1 day ago"
 msgid_plural "%1 days ago"
-msgstr[0] "Lá amháin"
-msgstr[1] "%1 lá"
-msgstr[2] "%1 lá"
-msgstr[3] "%1 lá"
-msgstr[4] "%1 lá"
+msgstr[0] ""
+msgstr[1] ""
 
 #: kontactplugin/korganizer/todosummarywidget.cpp:211
-#, fuzzy, kde-format
-#| msgctxt "@label to-do due date"
-#| msgid "Due"
+#, kde-format
 msgctxt "the to-do is due"
 msgid "due"
-msgstr "Spriocdháta"
+msgstr ""
 
 #: kontactplugin/korganizer/todosummarywidget.cpp:274
 #, kde-format
@@ -3418,15 +3060,11 @@ msgid "No pending to-dos due within the next day"
 msgid_plural "No pending to-dos due within the next %1 days"
 msgstr[0] ""
 msgstr[1] ""
-msgstr[2] ""
-msgstr[3] ""
-msgstr[4] ""
 
 #: kontactplugin/korganizer/todosummarywidget.cpp:324
-#, fuzzy, kde-format
-#| msgid "&Edit To-do..."
+#, kde-format
 msgid "&Edit To-do…"
-msgstr "Cuir Tasc in &Eagar..."
+msgstr ""
 
 #: kontactplugin/korganizer/todosummarywidget.cpp:326
 #, kde-format
@@ -3434,18 +3072,14 @@ msgid "&Delete To-do"
 msgstr "&Scrios Tasc"
 
 #: kontactplugin/korganizer/todosummarywidget.cpp:332
-#, fuzzy, kde-format
-#| msgctxt "@action:inmenu delete completed to-dos"
-#| msgid "Pur&ge Completed"
+#, kde-format
 msgid "&Mark To-do Completed"
-msgstr "Pur&gú Críochnaithe"
+msgstr ""
 
 #: kontactplugin/korganizer/todosummarywidget.cpp:352
-#, fuzzy, kde-format
-#| msgctxt "@title:window"
-#| msgid "Edit To-do: %1"
+#, kde-format
 msgid "Edit To-do: \"%1\""
-msgstr "Cuir Tasc in Eagar: %1"
+msgstr ""
 
 #: kontactplugin/korganizer/todosummarywidget.cpp:372
 #, kde-format
@@ -3459,11 +3093,10 @@ msgid "overdue"
 msgstr ""
 
 #: kontactplugin/korganizer/todosummarywidget.cpp:376
-#, fuzzy, kde-format
-#| msgid "No start date"
+#, kde-format
 msgctxt "the to-do starts today"
 msgid "starts today"
-msgstr "Gan dáta tosaigh"
+msgstr ""
 
 #: kontactplugin/korganizer/todosummarywidget.cpp:380
 #, kde-format
@@ -3472,12 +3105,10 @@ msgid "not-started"
 msgstr ""
 
 #: kontactplugin/korganizer/todosummarywidget.cpp:382
-#, fuzzy, kde-format
-#| msgctxt "percent completed"
-#| msgid "co&mpleted"
+#, kde-format
 msgctxt "the to-do is completed"
 msgid "completed"
-msgstr "&críochnaithe"
+msgstr ""
 
 #: kontactplugin/korganizer/todosummarywidget.cpp:384
 #, kde-format
@@ -3486,19 +3117,16 @@ msgid "in-progress "
 msgstr ""
 
 #: kontactplugin/korganizer/todosummarywidget.cpp:389
-#, fuzzy, kde-format
-#| msgctxt "@item:intext delimiter for joining holiday names"
-#| msgid ","
+#, kde-format
 msgctxt "Separator for status like this: overdue, completed"
 msgid ","
-msgstr ","
+msgstr ""
 
 #. i18n: ectx: property (windowTitle), widget (QWidget, SDSummaryConfig_Base)
 #: kontactplugin/specialdates/sdsummaryconfig_base.ui:16
-#, fuzzy, kde-format
-#| msgid "Resource Configuration"
+#, kde-format
 msgid "Special Dates Summary Configuration"
-msgstr "Cumraíocht Acmhainní"
+msgstr ""
 
 #. i18n: ectx: property (title), widget (QGroupBox, mDaysGroup)
 #: kontactplugin/specialdates/sdsummaryconfig_base.ui:22
@@ -3570,10 +3198,9 @@ msgstr ""
 
 #. i18n: ectx: property (toolTip), widget (QCheckBox, mShowBirthdaysFromCalBox)
 #: kontactplugin/specialdates/sdsummaryconfig_base.ui:136
-#, fuzzy, kde-format
-#| msgid "Show custom calendars"
+#, kde-format
 msgid "Show birthdays from your calendar"
-msgstr "Taispeáin féilirí saincheaptha"
+msgstr ""
 
 #. i18n: ectx: property (whatsThis), widget (QCheckBox, mShowBirthdaysFromCalBox)
 #: kontactplugin/specialdates/sdsummaryconfig_base.ui:139
@@ -3601,10 +3228,9 @@ msgstr ""
 
 #. i18n: ectx: property (toolTip), widget (QCheckBox, mShowHolidaysFromCalBox)
 #: kontactplugin/specialdates/sdsummaryconfig_base.ui:168
-#, fuzzy, kde-format
-#| msgid "Show custom calendars"
+#, kde-format
 msgid "Show holidays from your calendar"
-msgstr "Taispeáin féilirí saincheaptha"
+msgstr ""
 
 #. i18n: ectx: property (whatsThis), widget (QCheckBox, mShowHolidaysFromCalBox)
 #: kontactplugin/specialdates/sdsummaryconfig_base.ui:171
@@ -3617,10 +3243,9 @@ msgstr ""
 
 #. i18n: ectx: property (text), widget (QCheckBox, mShowHolidaysFromCalBox)
 #: kontactplugin/specialdates/sdsummaryconfig_base.ui:174
-#, fuzzy, kde-format
-#| msgid "Show to-dos"
+#, kde-format
 msgid "Show &holidays"
-msgstr "Taispeáin tascanna"
+msgstr ""
 
 #. i18n: ectx: property (toolTip), widget (QCheckBox, mShowSpecialsFromCalBox)
 #: kontactplugin/specialdates/sdsummaryconfig_base.ui:184
@@ -3638,13 +3263,9 @@ msgstr ""
 
 #. i18n: ectx: property (text), widget (QCheckBox, mShowSpecialsFromCalBox)
 #: kontactplugin/specialdates/sdsummaryconfig_base.ui:190
-#, fuzzy, kde-format
-#| msgctxt ""
-#| "incidence category: examples: anniversary of historical or personal "
-#| "event; big date; remembrance, etc"
-#| msgid "Special Occasion"
+#, kde-format
 msgid "Show s&pecial occasions"
-msgstr "Ócáid Speisialta"
+msgstr ""
 
 #. i18n: ectx: property (title), widget (QGroupBox, mShowFromKABButtonGroup)
 #: kontactplugin/specialdates/sdsummaryconfig_base.ui:203
@@ -3654,11 +3275,9 @@ msgstr ""
 
 #. i18n: ectx: property (toolTip), widget (QCheckBox, mShowBirthdaysFromKABBox)
 #: kontactplugin/specialdates/sdsummaryconfig_base.ui:209
-#, fuzzy, kde-format
-#| msgctxt "@info:tooltip"
-#| msgid "Open your address book"
+#, kde-format
 msgid "Show birthdays from your address book"
-msgstr "Oscail do leabhar seoltaí"
+msgstr ""
 
 #. i18n: ectx: property (whatsThis), widget (QCheckBox, mShowBirthdaysFromKABBox)
 #: kontactplugin/specialdates/sdsummaryconfig_base.ui:212
@@ -3670,18 +3289,15 @@ msgstr ""
 
 #. i18n: ectx: property (text), widget (QCheckBox, mShowBirthdaysFromKABBox)
 #: kontactplugin/specialdates/sdsummaryconfig_base.ui:215
-#, fuzzy, kde-format
-#| msgid "Show both"
+#, kde-format
 msgid "Show birth&days"
-msgstr "Taispeáin araon"
+msgstr ""
 
 #. i18n: ectx: property (toolTip), widget (QCheckBox, mShowAnniversariesFromKABBox)
 #: kontactplugin/specialdates/sdsummaryconfig_base.ui:225
-#, fuzzy, kde-format
-#| msgctxt "@info:tooltip"
-#| msgid "Open your address book"
+#, kde-format
 msgid "Show anniversaries from your address book"
-msgstr "Oscail do leabhar seoltaí"
+msgstr ""
 
 #. i18n: ectx: property (whatsThis), widget (QCheckBox, mShowAnniversariesFromKABBox)
 #: kontactplugin/specialdates/sdsummaryconfig_base.ui:228
@@ -3703,11 +3319,10 @@ msgid "Upcoming Special Dates"
 msgstr ""
 
 #: kontactplugin/specialdates/sdsummarywidget.cpp:448
-#, fuzzy, kde-format
-#| msgid "Today"
+#, kde-format
 msgctxt "the special day is today"
 msgid "Today"
-msgstr "Inniu"
+msgstr ""
 
 #: kontactplugin/specialdates/sdsummarywidget.cpp:450
 #, kde-format
@@ -3716,11 +3331,9 @@ msgid "Tomorrow"
 msgstr ""
 
 #: kontactplugin/specialdates/sdsummarywidget.cpp:496
-#, fuzzy, kde-format
-#| msgctxt "incidence category"
-#| msgid "Birthday"
+#, kde-format
 msgid "Birthday"
-msgstr "Lá Breithe"
+msgstr ""
 
 #: kontactplugin/specialdates/sdsummarywidget.cpp:499
 #, kde-format
@@ -3738,26 +3351,16 @@ msgid "Change of Seasons"
 msgstr ""
 
 #: kontactplugin/specialdates/sdsummarywidget.cpp:508
-#, fuzzy, kde-format
-#| msgctxt ""
-#| "incidence category: examples: anniversary of historical or personal "
-#| "event; big date; remembrance, etc"
-#| msgid "Special Occasion"
+#, kde-format
 msgid "Special Occasion"
-msgstr "Ócáid Speisialta"
+msgstr ""
 
 #: kontactplugin/specialdates/sdsummarywidget.cpp:550
-#, fuzzy, kde-format
-#| msgctxt ""
-#| "@label part after NNN of 'Recur on day #NNN of the year', short version"
-#| msgid " of the year"
+#, kde-format
 msgid "one year"
 msgid_plural "%1 years"
-msgstr[0] " den bhliain"
-msgstr[1] " den bhliain"
-msgstr[2] " den bhliain"
-msgstr[3] " den bhliain"
-msgstr[4] " den bhliain"
+msgstr[0] ""
+msgstr[1] ""
 
 #: kontactplugin/specialdates/sdsummarywidget.cpp:560
 #, kde-format
@@ -3765,21 +3368,16 @@ msgid "No special dates within the next 1 day"
 msgid_plural "No special dates pending within the next %1 days"
 msgstr[0] ""
 msgstr[1] ""
-msgstr[2] ""
-msgstr[3] ""
-msgstr[4] ""
 
 #: kontactplugin/specialdates/sdsummarywidget.cpp:654
-#, fuzzy, kde-format
-#| msgid "Send email"
+#, kde-format
 msgid "Send &Mail"
-msgstr "Seol ríomhphost"
+msgstr ""
 
 #: kontactplugin/specialdates/sdsummarywidget.cpp:655
-#, fuzzy, kde-format
-#| msgid "View Columns"
+#, kde-format
 msgid "View &Contact"
-msgstr "Amharc ar Cholúin"
+msgstr ""
 
 #: kontactplugin/specialdates/sdsummarywidget.cpp:670
 #, kde-format
@@ -3787,18 +3385,16 @@ msgid "Mail to:\"%1\""
 msgstr ""
 
 #: kontactplugin/specialdates/specialdates_plugin.cpp:36
-#, fuzzy, kde-format
-#| msgid "Resource Configuration"
+#, kde-format
 msgctxt "@info/plain"
 msgid "Special Dates Summary"
-msgstr "Cumraíocht Acmhainní"
+msgstr ""
 
 #: kontactplugin/specialdates/specialdates_plugin.cpp:38
-#, fuzzy, kde-format
-#| msgid "Resource Configuration"
+#, kde-format
 msgctxt "@info/plain"
 msgid "Kontact Special Dates Summary"
-msgstr "Cumraíocht Acmhainní"
+msgstr ""
 
 #: kontactplugin/specialdates/specialdates_plugin.cpp:41
 #, kde-format
@@ -3809,18 +3405,16 @@ msgid ""
 msgstr ""
 
 #: kontactplugin/specialdates/specialdates_plugin.cpp:43
-#, fuzzy, kde-format
-#| msgid "Former Maintainer"
+#, kde-format
 msgctxt "@info:credit"
 msgid "Current Maintainer"
-msgstr "Iarchothaitheoir"
+msgstr ""
 
 #: kontactplugin/specialdates/specialdates_plugin.cpp:44
-#, fuzzy, kde-format
-#| msgid "Tobias Koenig"
+#, kde-format
 msgctxt "@info:credit"
 msgid "Tobias Koenig"
-msgstr "Tobias Koenig"
+msgstr ""
 
 #: korganizer.cpp:78 korganizer_part.cpp:58 korganizer_part.cpp:69
 #, kde-format
@@ -3850,11 +3444,10 @@ msgid "Import the specified files as separate calendars"
 msgstr ""
 
 #: korganizer_options.h:23
-#, fuzzy, kde-format
-#| msgid "Merged calendar"
+#, kde-format
 msgctxt "@info:shell"
 msgid "Merge the specified files into an existing calendar"
-msgstr "Féilire cumasctha"
+msgstr ""
 
 #: korganizer_options.h:24
 #, kde-format
@@ -3996,12 +3589,10 @@ msgid "Calendars"
 msgstr "Féilirí"
 
 #: prefs/koprefsdialogmain.cpp:88
-#, fuzzy, kde-format
-#| msgctxt "@title:group"
-#| msgid "Calendar Decorations"
+#, kde-format
 msgctxt "@title"
 msgid "Calendar Accounts"
-msgstr "Maisíochtaí Féilire"
+msgstr ""
 
 #: prefs/koprefsdialogmain.cpp:97
 #, kde-format
@@ -4010,12 +3601,10 @@ msgid "Activities"
 msgstr ""
 
 #: prefs/koprefsdialogmain.cpp:102
-#, fuzzy, kde-format
-#| msgctxt "@action:inmenu"
-#| msgid "Enable Reminders"
+#, kde-format
 msgctxt "@option:check"
 msgid "Enabled"
-msgstr "Cumasaigh Meabhrúcháin"
+msgstr ""
 
 #: prefs/koprefsdialogplugins.cpp:61
 #, kde-format
@@ -4043,11 +3632,10 @@ msgid "Calendar Decorations"
 msgstr "Maisíochtaí Féilire"
 
 #: prefs/koprefsdialogplugins.cpp:141
-#, fuzzy, kde-format
-#| msgid "Configure"
+#, kde-format
 msgctxt "@info:tooltip"
 msgid "Configure"
-msgstr "Cumraigh"
+msgstr ""
 
 #: prefs/koprefsdialogplugins.cpp:201
 #, kde-format
@@ -4080,26 +3668,22 @@ msgid "Use holiday region:"
 msgstr ""
 
 #: prefs/koprefsdialogtime.cpp:90
-#, fuzzy, kde-format
-#| msgctxt "Holday region, region language"
-#| msgid "%1 (%2)"
+#, kde-format
 msgctxt "@item:inlistbox Holiday region, region language"
 msgid "%1 (%2)"
-msgstr "%1 (%2)"
+msgstr ""
 
 #: prefs/koprefsdialogtime.cpp:99
-#, fuzzy, kde-format
-#| msgid "Use holiday region:"
+#, kde-format
 msgctxt "@item:inlistbox"
 msgid "Select Holiday Regions"
-msgstr "Úsáid réigiún laethanta saoire:"
+msgstr ""
 
 #: prefs/koprefsdialogtime.cpp:111
-#, fuzzy, kde-format
-#| msgid "Schedule"
+#, kde-format
 msgctxt "@title:group"
 msgid "Weekly Schedule"
-msgstr "Sceideal"
+msgstr ""
 
 #: prefs/koprefsdialogtime.cpp:126
 #, kde-format
@@ -4143,11 +3727,10 @@ msgid "Thursday"
 msgstr ""
 
 #: prefs/koprefsdialogtime.cpp:143
-#, fuzzy, kde-format
-#| msgid "Holiday"
+#, kde-format
 msgctxt "@item:inlistbox"
 msgid "Friday"
-msgstr "Lá Saoire"
+msgstr ""
 
 #: prefs/koprefsdialogtime.cpp:143
 #, kde-format
@@ -4273,11 +3856,10 @@ msgid "Other Options"
 msgstr "Roghanna Eile"
 
 #: prefs/kprefsdialog.cpp:177
-#, fuzzy, kde-format
-#| msgid "Change..."
+#, kde-format
 msgctxt "@action:button"
 msgid "Choose…"
-msgstr "Athraigh..."
+msgstr ""
 
 #: prefs/kprefsdialog.cpp:659
 #, kde-format
@@ -4294,18 +3876,16 @@ msgid ""
 msgstr ""
 
 #: prefs/kprefsdialog.cpp:708
-#, fuzzy, kde-format
-#| msgid "Setting Default Preferences"
+#, kde-format
 msgctxt "@title:window"
 msgid "Setting Default Preferences"
-msgstr "Sainroghanna Réamhshocraithe á Socrú"
+msgstr ""
 
 #: prefs/kprefsdialog.cpp:709
-#, fuzzy, kde-format
-#| msgid "Reset to Defaults"
+#, kde-format
 msgctxt "@action:button"
 msgid "Reset to Defaults"
-msgstr "Fill ar Réamhshocruithe"
+msgstr ""
 
 #. i18n: ectx: label, entry (Confirm), group (Save Settings)
 #: settings/korganizer.kcfg:9
@@ -4333,10 +3913,9 @@ msgstr ""
 
 #. i18n: ectx: label, entry (Destination), group (Save Settings)
 #: settings/korganizer.kcfg:18
-#, fuzzy, kde-format
-#| msgid "Title for the event calendar"
+#, kde-format
 msgid "Be added to the default calendar"
-msgstr "Teideal an fhéilire imeachtaí"
+msgstr ""
 
 #. i18n: ectx: whatsthis, entry (Destination), group (Save Settings)
 #: settings/korganizer.kcfg:19
@@ -4377,10 +3956,9 @@ msgstr ""
 
 #. i18n: ectx: label, entry (WeekStartDay), group (Time &amp; Date)
 #: settings/korganizer.kcfg:35
-#, fuzzy, kde-format
-#| msgid "No start date"
+#, kde-format
 msgid "Weekly start day:"
-msgstr "Gan dáta tosaigh"
+msgstr ""
 
 #. i18n: ectx: tooltip, entry (WeekStartDay), group (Time &amp; Date)
 #: settings/korganizer.kcfg:36
@@ -4404,10 +3982,9 @@ msgstr ""
 
 #. i18n: ectx: tooltip, entry (WorkingHoursStart), group (Time &amp; Date)
 #: settings/korganizer.kcfg:42
-#, fuzzy, kde-format
-#| msgid "Sets the title of this journal."
+#, kde-format
 msgid "Set the time you typically start your day"
-msgstr "Socraigh teideal na dialainne seo."
+msgstr ""
 
 #. i18n: ectx: whatsthis, entry (WorkingHoursStart), group (Time &amp; Date)
 #: settings/korganizer.kcfg:43
@@ -4425,10 +4002,9 @@ msgstr ""
 
 #. i18n: ectx: tooltip, entry (WorkingHoursEnd), group (Time &amp; Date)
 #: settings/korganizer.kcfg:48
-#, fuzzy, kde-format
-#| msgid "Sets the title of this journal."
+#, kde-format
 msgid "Set the time you typically end your day"
-msgstr "Socraigh teideal na dialainne seo."
+msgstr ""
 
 #. i18n: ectx: whatsthis, entry (WorkingHoursEnd), group (Time &amp; Date)
 #: settings/korganizer.kcfg:49
@@ -4565,10 +4141,9 @@ msgstr ""
 
 #. i18n: ectx: label, entry (WeekNumbersShow), group (General View)
 #: settings/korganizer.kcfg:97
-#, fuzzy, kde-format
-#| msgid "Show day number"
+#, kde-format
 msgid "Show week numbers"
-msgstr "Taispeáin uimhir an lae"
+msgstr ""
 
 #. i18n: ectx: whatsthis, entry (WeekNumbersShow), group (General View)
 #: settings/korganizer.kcfg:98
@@ -4793,10 +4368,9 @@ msgstr ""
 #. i18n: ectx: label, entry, group (Agenda View)
 #. i18n: ectx: label, entry, group (Month View)
 #: settings/korganizer.kcfg:167 settings/korganizer.kcfg:251
-#, fuzzy, kde-format
-#| msgid "Only category"
+#, kde-format
 msgid "Only tag"
-msgstr "Catagóir amháin"
+msgstr ""
 
 #. i18n: ectx: whatsthis, entry, group (Agenda View)
 #: settings/korganizer.kcfg:168
@@ -5290,10 +4864,9 @@ msgstr ""
 
 #. i18n: ectx: label, entry, group (Fonts)
 #: settings/korganizer.kcfg:350
-#, fuzzy, kde-format
-#| msgid "Current-time line"
+#, kde-format
 msgid "Current-time (Marcus Bains) line"
-msgstr "Líne ama reatha"
+msgstr ""
 
 #. i18n: ectx: whatsthis, entry, group (Fonts)
 #: settings/korganizer.kcfg:351
@@ -5351,10 +4924,9 @@ msgstr ""
 
 #. i18n: ectx: label, entry, group (Theming)
 #: settings/korganizer.kcfg:503
-#, fuzzy, kde-format
-#| msgid "&Use colors"
+#, kde-format
 msgid "Use system color"
-msgstr "Ú&sáid dathanna"
+msgstr ""
 
 #. i18n: ectx: whatsthis, entry, group (Theming)
 #: settings/korganizer.kcfg:504
@@ -5407,11 +4979,10 @@ msgstr ""
 
 #. i18n: ectx: property (placeholderText), widget (KListWidgetSearchLine, searchline)
 #: ui/filteredit_base.ui:35
-#, fuzzy, kde-format
-#| msgid "Search"
+#, kde-format
 msgctxt "Displayed grayed-out inside the textbox, verb to search"
 msgid "Search"
-msgstr "Cuardaigh"
+msgstr ""
 
 #. i18n: ectx: property (text), widget (QPushButton, mNewButton)
 #: ui/filteredit_base.ui:49
@@ -5546,11 +5117,9 @@ msgstr ""
 
 #. i18n: ectx: property (text), widget (QPushButton, mCatEditButton)
 #: ui/filteredit_base.ui:301
-#, fuzzy, kde-format
-#| msgctxt "@action:button"
-#| msgid "&Change"
+#, kde-format
 msgid "Change…"
-msgstr "&Athraigh"
+msgstr ""
 
 #. i18n: ectx: property (whatsThis), widget (QCheckBox, mHideTodosNotAssignedToMeCheck)
 #: ui/filteredit_base.ui:315
@@ -5917,10 +5486,9 @@ msgstr "Cuardaigh I"
 
 #. i18n: ectx: property (toolTip), widget (QCheckBox, categoryCheck)
 #: ui/searchdialog_base.ui:127
-#, fuzzy, kde-format
-#| msgid "Include item descriptions in your search"
+#, kde-format
 msgid "Include tags in your search."
-msgstr "Cuir &cur síos ar mhíreanna san áireamh"
+msgstr ""
 
 #. i18n: ectx: property (whatsThis), widget (QCheckBox, categoryCheck)
 #: ui/searchdialog_base.ui:130
@@ -5936,10 +5504,9 @@ msgstr ""
 
 #. i18n: ectx: property (toolTip), widget (QCheckBox, locationCheck)
 #: ui/searchdialog_base.ui:140
-#, fuzzy, kde-format
-#| msgid "Include item descriptions in your search"
+#, kde-format
 msgid "Include locations in your search."
-msgstr "Cuir &cur síos ar mhíreanna san áireamh"
+msgstr ""
 
 #. i18n: ectx: property (whatsThis), widget (QCheckBox, locationCheck)
 #: ui/searchdialog_base.ui:143
@@ -5956,10 +5523,9 @@ msgstr "Suímh"
 
 #. i18n: ectx: property (toolTip), widget (QCheckBox, descriptionCheck)
 #: ui/searchdialog_base.ui:153
-#, fuzzy, kde-format
-#| msgid "Include item descriptions in your search"
+#, kde-format
 msgid "Include descriptions in your search."
-msgstr "Cuir &cur síos ar mhíreanna san áireamh"
+msgstr ""
 
 #. i18n: ectx: property (whatsThis), widget (QCheckBox, descriptionCheck)
 #: ui/searchdialog_base.ui:156
@@ -5976,10 +5542,9 @@ msgstr ""
 
 #. i18n: ectx: property (toolTip), widget (QCheckBox, summaryCheck)
 #: ui/searchdialog_base.ui:166
-#, fuzzy, kde-format
-#| msgid "Include item descriptions in your search"
+#, kde-format
 msgid "Include summaries in your search."
-msgstr "Cuir &cur síos ar mhíreanna san áireamh"
+msgstr ""
 
 #. i18n: ectx: property (whatsThis), widget (QCheckBox, summaryCheck)
 #: ui/searchdialog_base.ui:169
@@ -5996,10 +5561,9 @@ msgstr ""
 
 #. i18n: ectx: property (toolTip), widget (QCheckBox, attendeeCheck)
 #: ui/searchdialog_base.ui:182
-#, fuzzy, kde-format
-#| msgid "Include item descriptions in your search"
+#, kde-format
 msgid "Include attendees in your search."
-msgstr "Cuir &cur síos ar mhíreanna san áireamh"
+msgstr ""
 
 #. i18n: ectx: property (whatsThis), widget (QCheckBox, attendeeCheck)
 #: ui/searchdialog_base.ui:185
@@ -6010,11 +5574,9 @@ msgstr ""
 
 #. i18n: ectx: property (text), widget (QCheckBox, attendeeCheck)
 #: ui/searchdialog_base.ui:188
-#, fuzzy, kde-format
-#| msgctxt "@title:column event attendees"
-#| msgid "Attendees"
+#, kde-format
 msgid "Attendees"
-msgstr "Rannpháirtithe"
+msgstr ""
 
 #. i18n: ectx: property (title), widget (QGroupBox, dateRangeGroup)
 #: ui/searchdialog_base.ui:198
@@ -6157,34 +5719,27 @@ msgstr ""
 
 #. i18n: ectx: property (text), widget (QPushButton, mDayBtn)
 #: views/collectionview/quickview.ui:34
-#, fuzzy, kde-format
-#| msgctxt "@item:inlistbox range in days"
-#| msgid "Day"
+#, kde-format
 msgid "Day"
-msgstr "Lá"
+msgstr ""
 
 #. i18n: ectx: property (text), widget (QPushButton, mWeekBtn)
 #: views/collectionview/quickview.ui:41
-#, fuzzy, kde-format
-#| msgctxt "@item:inlistbox range in weeks"
-#| msgid "Week"
+#, kde-format
 msgid "Week"
-msgstr "Seachtain"
+msgstr ""
 
 #. i18n: ectx: property (text), widget (QPushButton, mMothBtn)
 #: views/collectionview/quickview.ui:51
-#, fuzzy, kde-format
-#| msgctxt "@item:inlistbox range in months"
-#| msgid "Month"
+#, kde-format
 msgid "Month"
-msgstr "Mí"
+msgstr ""
 
 #. i18n: ectx: property (text), widget (QPushButton, mAgendaBtn)
 #: views/collectionview/quickview.ui:61
-#, fuzzy, kde-format
-#| msgid "&Agenda"
+#, kde-format
 msgid "Agenda"
-msgstr "&Clár Oibre"
+msgstr ""
 
 #. i18n: ectx: property (text), widget (QPushButton, mPreviousBtn)
 #: views/collectionview/quickview.ui:84
@@ -6205,18 +5760,16 @@ msgid ">"
 msgstr ""
 
 #: views/multiagendaview/multiagendaview.cpp:37
-#, fuzzy, kde-format
-#| msgid "&Agenda"
+#, kde-format
 msgctxt "@title:column"
 msgid "Agenda %1"
-msgstr "&Clár Oibre"
+msgstr ""
 
 #: views/multiagendaview/multiagendaview.cpp:352
-#, fuzzy, kde-format
-#| msgid "Configure the view"
+#, kde-format
 msgctxt "@title:window"
 msgid "Configure Side-By-Side View"
-msgstr "Cumraigh an t-amharc"
+msgstr ""
 
 #. i18n: ectx: property (text), widget (QRadioButton, useDefaultRB)
 #: views/multiagendaview/multiagendaviewconfigwidget.ui:17
@@ -6238,11 +5791,10 @@ msgstr "Líon na gcolún"
 
 #. i18n: ectx: property (text), widget (QLabel, titleLabel)
 #: views/multiagendaview/multiagendaviewconfigwidget.ui:84
-#, fuzzy, kde-format
-#| msgid "Title"
+#, kde-format
 msgctxt "Agenda title"
 msgid "Title"
-msgstr "Teideal"
+msgstr ""
 
 #. i18n: ectx: property (text), widget (QLabel, selectedCalendarsLabel)
 #: views/multiagendaview/multiagendaviewconfigwidget.ui:102
@@ -6324,10 +5876,8 @@ msgid "Incidence editor: add emoji support"
 msgstr ""
 
 #: whatsnew/whatsnewtranslations.cpp:50
-#, fuzzy
-#| msgid "Add as new calendar"
 msgid "Add What's New menu"
-msgstr "Cuir leis mar fhéilire nua"
+msgstr ""
 
 #: whatsnew/whatsnewtranslations.cpp:51
 msgid "The current view is remembered"
@@ -6461,19 +6011,16 @@ msgid "Incidence editor: the tags are sorted alphabetically in the tags editor"
 msgstr ""
 
 #: widgets/kdatenavigator.cpp:176
-#, fuzzy, kde-format
-#| msgctxt "start/end week number of line in date picker"
-#| msgid "%1/%2"
+#, kde-format
 msgctxt "@info start/end week number of line in date picker"
 msgid "%1/%2"
-msgstr "%1/%2"
+msgstr ""
 
 #: widgets/kdatenavigator.cpp:181
-#, fuzzy, kde-format
-#| msgid "Print week numbers"
+#, kde-format
 msgctxt "@info:tooltip"
 msgid "Scroll to week number %1"
-msgstr "Priontáil uimhreacha na seachtainí"
+msgstr ""
 
 #: widgets/kdatenavigator.cpp:183
 #, kde-format
@@ -6484,11 +6031,10 @@ msgid ""
 msgstr ""
 
 #: widgets/kdatenavigator.cpp:243
-#, fuzzy, kde-format
-#| msgid "%1"
+#, kde-format
 msgctxt "@info:tooltip"
 msgid "%1"
-msgstr "%1"
+msgstr ""
 
 #: widgets/kdatenavigator.cpp:244
 #, kde-format
@@ -6497,11 +6043,9 @@ msgid "A column header of the %1 dates in the month."
 msgstr ""
 
 #: widgets/kitemiconcheckcombo.cpp:16
-#, fuzzy, kde-format
-#| msgctxt "@title:group"
-#| msgid "Calendar Decorations"
+#, kde-format
 msgid "Calendar's custom icon"
-msgstr "Maisíochtaí Féilire"
+msgstr ""
 
 #: widgets/kitemiconcheckcombo.cpp:17
 #, kde-format
@@ -6524,11 +6068,10 @@ msgid "Alarm"
 msgstr "Aláraim"
 
 #: widgets/kitemiconcheckcombo.cpp:21
-#, fuzzy, kde-format
-#| msgid "Read Only"
+#, kde-format
 msgctxt "the incidence is read-only"
 msgid "Read Only"
-msgstr "Inléite Amháin"
+msgstr ""
 
 #: widgets/kitemiconcheckcombo.cpp:22
 #, kde-format
@@ -6571,19 +6114,16 @@ msgid ""
 msgstr ""
 
 #: widgets/navigatorbar.cpp:39
-#, fuzzy, kde-format
-#| msgctxt "@info:whatsthis"
-#| msgid "Replace the currently selected date with this date."
+#, kde-format
 msgctxt "@info::whatsthis"
 msgid "Scrolls the current view to today's date."
-msgstr "Cuir an dáta seo in ionad an dáta roghnaithe faoi láthair."
+msgstr ""
 
 #: widgets/navigatorbar.cpp:42
-#, fuzzy, kde-format
-#| msgid "Scroll Backward"
+#, kde-format
 msgctxt "@info:tooltip"
 msgid "Scroll backward a year"
-msgstr "Scrollaigh Siar"
+msgstr ""
 
 #: widgets/navigatorbar.cpp:44
 #, kde-format
@@ -6594,11 +6134,10 @@ msgid ""
 msgstr ""
 
 #: widgets/navigatorbar.cpp:48
-#, fuzzy, kde-format
-#| msgid "Scroll Backward"
+#, kde-format
 msgctxt "@info:tooltip"
 msgid "Scroll backward a month"
-msgstr "Scrollaigh Siar"
+msgstr ""
 
 #: widgets/navigatorbar.cpp:50
 #, kde-format
@@ -6609,11 +6148,10 @@ msgid ""
 msgstr ""
 
 #: widgets/navigatorbar.cpp:54
-#, fuzzy, kde-format
-#| msgid "Scroll Backward"
+#, kde-format
 msgctxt "@info:tooltip"
 msgid "Scroll backward a week"
-msgstr "Scrollaigh Siar"
+msgstr ""
 
 #: widgets/navigatorbar.cpp:55
 #, kde-format
@@ -6622,11 +6160,10 @@ msgid "Click this button to scroll the display to back 1 week in time"
 msgstr ""
 
 #: widgets/navigatorbar.cpp:58
-#, fuzzy, kde-format
-#| msgid "Go forward one week"
+#, kde-format
 msgctxt "@info:tooltip"
 msgid "Scroll forward a week"
-msgstr "Ar aghaidh seachtain amháin"
+msgstr ""
 
 #: widgets/navigatorbar.cpp:59
 #, kde-format
@@ -6635,11 +6172,10 @@ msgid "Click this button to scroll the display to forward 1 week in time"
 msgstr ""
 
 #: widgets/navigatorbar.cpp:62
-#, fuzzy, kde-format
-#| msgid "Go forward one month"
+#, kde-format
 msgctxt "@info:tooltip"
 msgid "Scroll forward a month"
-msgstr "Ar aghaidh mí amháin"
+msgstr ""
 
 #: widgets/navigatorbar.cpp:64
 #, kde-format
@@ -6650,11 +6186,10 @@ msgid ""
 msgstr ""
 
 #: widgets/navigatorbar.cpp:68
-#, fuzzy, kde-format
-#| msgid "Scroll Forward"
+#, kde-format
 msgctxt "@info:tooltip"
 msgid "Scroll forward a year"
-msgstr "Scrollaigh Ar Aghaidh"
+msgstr ""
 
 #: widgets/navigatorbar.cpp:70
 #, kde-format
@@ -6665,18 +6200,16 @@ msgid ""
 msgstr ""
 
 #: widgets/navigatorbar.cpp:77
-#, fuzzy, kde-format
-#| msgid "Select a month"
+#, kde-format
 msgctxt "@info:tooltip"
 msgid "Select a month"
-msgstr "Roghnaigh mí"
+msgstr ""
 
 #: widgets/navigatorbar.cpp:83
-#, fuzzy, kde-format
-#| msgid "Select a year"
+#, kde-format
 msgctxt "@info:tooltip"
 msgid "Select a year"
-msgstr "Roghnaigh bliain"
+msgstr ""
 
 #: widgets/navigatorbar.cpp:141
 #, kde-format
@@ -6689,3482 +6222,3 @@ msgstr "%1"
 msgctxt "4 digit year"
 msgid "%1"
 msgstr "%1"
-
-#, fuzzy
-#~| msgid "Show To-do View"
-#~ msgctxt "@action:inmenu"
-#~ msgid "Show To-do List in Calendar Views"
-#~ msgstr "Taispeáin Amharc Tascliosta"
-
-#, fuzzy
-#~| msgid "New Calendar"
-#~ msgctxt "@action:inmenu"
-#~ msgid "Get New Calendars…"
-#~ msgstr "Féilire Nua"
-
-#, fuzzy
-#~| msgid "Could not load calendar %1."
-#~ msgctxt "@info"
-#~ msgid "Could not load calendar <filename>%1</filename>."
-#~ msgstr "Níorbh fhéidir féilire %1 a luchtú."
-
-#~ msgid "&Show"
-#~ msgstr "&Taispeáin"
-
-#, fuzzy
-#~| msgid "&Edit"
-#~ msgid "&Edit…"
-#~ msgstr "&Eagar"
-
-#~ msgid "Saved calendar '%1'."
-#~ msgstr "Sábháladh féilire '%1'."
-
-#~ msgid "C&ancel"
-#~ msgstr "Ce&alaigh"
-
-#, fuzzy
-#~| msgctxt "@title:tab calendar account settings"
-#~| msgid "Calendars"
-#~ msgid "iCalendars (*.ics)"
-#~ msgstr "Féilirí"
-
-#~ msgid "Do you want to overwrite %1?"
-#~ msgstr "An bhfuil fonn ort %1 a fhorscríobh?"
-
-#~ msgid "KOrganizer Confirmation"
-#~ msgstr "Deimhniú KOrganizer"
-
-#, fuzzy
-#~| msgid "Configure"
-#~ msgctxt "@action"
-#~ msgid "Configure"
-#~ msgstr "Cumraigh"
-
-#~ msgid "W&ork Week"
-#~ msgstr "Seachtain &Oibre"
-
-#, fuzzy
-#~| msgid "Search For"
-#~ msgctxt "@info:tooltip"
-#~ msgid "Set search keyword"
-#~ msgstr "Déan Cuardach Ar"
-
-#, fuzzy
-#~| msgid "Search"
-#~ msgctxt ""
-#~ "@info/plain Displayed grayed-out inside the textbox, verb to search"
-#~ msgid "Search…"
-#~ msgstr "Cuardaigh"
-
-#~ msgctxt "@title:group"
-#~ msgid "Working Period"
-#~ msgstr "Tréimhse Oibre"
-
-#, fuzzy
-#~| msgid "Configure the view"
-#~ msgctxt "@info:status"
-#~ msgid "Configure the view"
-#~ msgstr "Cumraigh an t-amharc"
-
-#, fuzzy
-#~| msgid "Do you really want to delete calendar %1?"
-#~ msgctxt "@info"
-#~ msgid "Do you really want to delete calendar %1?"
-#~ msgstr "An bhfuil tú cinnte gur mian leat féilire %1 a scriosadh?"
-
-#, fuzzy
-#~| msgctxt "@title:group email settings"
-#~| msgid "Email Settings"
-#~ msgid "Groupware Settings"
-#~ msgstr "Socruithe Ríomhphoist"
-
-#, fuzzy
-#~| msgid "Show custom calendars"
-#~ msgid "Show events belonging to my calendars only"
-#~ msgstr "Taispeáin féilirí saincheaptha"
-
-#, fuzzy
-#~| msgid "Show custom calendars"
-#~ msgid "Show To-dos belonging to my calendars only"
-#~ msgstr "Taispeáin féilirí saincheaptha"
-
-#, fuzzy
-#~| msgid "&Show To-do"
-#~ msgid "Show &my To-dos only"
-#~ msgstr "Tai&speáin Tasc"
-
-#, fuzzy
-#~| msgid "Create a new Event"
-#~ msgctxt "@action:inmenu"
-#~ msgid "Create Note for Event"
-#~ msgstr "Cruthaigh Imeacht nua"
-
-#, fuzzy
-#~| msgid "Create a new To-do"
-#~ msgctxt "@action:inmenu"
-#~ msgid "Create Note for To-do"
-#~ msgstr "Cruthaigh Tasc nua"
-
-#~ msgid "Import &Calendar..."
-#~ msgstr "Iompórtáil &Féilire..."
-
-#~ msgid "New E&vent..."
-#~ msgstr "Imeac&ht Nua..."
-
-#~ msgid "New &To-do..."
-#~ msgstr "&Tasc Nua..."
-
-#~ msgid "New &Journal..."
-#~ msgstr "&Dialann Nua..."
-
-#~ msgid "&Edit..."
-#~ msgstr "&Eagar..."
-
-#, fuzzy
-#~| msgctxt ""
-#~| "@info/plain Displayed grayed-out inside the textbox, verb to search"
-#~| msgid "Search"
-#~ msgctxt ""
-#~ "@info/plain Displayed grayed-out inside the textbox, verb to search"
-#~ msgid "Search..."
-#~ msgstr "Cuardaigh"
-
-#~ msgid "Edit..."
-#~ msgstr "Eagar..."
-
-#, fuzzy
-#~| msgid "&Edit..."
-#~ msgctxt "@action:inmenu"
-#~ msgid "&Edit..."
-#~ msgstr "&Eagar..."
-
-#, fuzzy
-#~| msgid "&Print..."
-#~ msgctxt "@action:inmenu"
-#~ msgid "&Print..."
-#~ msgstr "&Priontáil..."
-
-#, fuzzy
-#~| msgid "New &Journal..."
-#~ msgctxt "@action:inmenu"
-#~ msgid "New Journal..."
-#~ msgstr "&Dialann Nua..."
-
-#, fuzzy
-#~| msgid "New E&vent..."
-#~ msgctxt "@action:inmenu"
-#~ msgid "New Event..."
-#~ msgstr "Imeac&ht Nua..."
-
-#, fuzzy
-#~| msgid "&New To-do..."
-#~ msgctxt "@action:inmenu"
-#~ msgid "New To-do..."
-#~ msgstr "Tasc &Nua..."
-
-#~ msgid "Change..."
-#~ msgstr "Athraigh..."
-
-#, fuzzy
-#~| msgid "Use holiday region:"
-#~ msgid "Use holiday regions:"
-#~ msgstr "Úsáid réigiún laethanta saoire:"
-
-#~ msgid "Text"
-#~ msgstr "Téacs"
-
-#~ msgid "Numeric Value"
-#~ msgstr "Luach Uimhriúil"
-
-#~ msgid "Boolean"
-#~ msgstr "Boole"
-
-#~ msgid "Selection"
-#~ msgstr "Roghnúchán"
-
-#~ msgid "Date & Time"
-#~ msgstr "Dáta agus Am"
-
-#~ msgid "<qt>Do you really want to delete '<b>%1</b>'?</qt>"
-#~ msgstr "<qt>An bhfuil tú cinnte gur mian leat '<b>%1</b>' a scriosadh?</qt>"
-
-#~ msgid "Import Page"
-#~ msgstr "Iompórtáil Leathanach"
-
-#, fuzzy
-#~| msgid "*.ui|Designer Files"
-#~ msgid "Designer Files"
-#~ msgstr "*.ui|Comhaid Designer"
-
-#~ msgid ""
-#~ "<qt><b>Warning:</b> Qt Designer could not be found. It is probably not "
-#~ "installed. You will only be able to import existing designer files.</qt>"
-#~ msgstr ""
-#~ "<qt><b>Rabhadh:</b> Qt Designer gan aimsiú. Is dócha nach suiteáilte é. "
-#~ "Is féidir leat comhaid designer atá ann a iompórtáil amháin.</qt>"
-
-#~ msgid "Available Pages"
-#~ msgstr "Leathanaigh Ar Fáil"
-
-#~ msgid "Preview of Selected Page"
-#~ msgstr "Réamhamharc ar an Leathanach Roghnaithe"
-
-#~ msgid "<a href=\"whatsthis:%1\">How does this work?</a>"
-#~ msgstr "<a href=\"whatsthis:%1\">Conas a oibríonn seo?</a>"
-
-#~ msgid "Delete Page"
-#~ msgstr "Scrios Leathanach"
-
-#~ msgid "Import Page..."
-#~ msgstr "Iompórtáil Leathanach..."
-
-#~ msgid "Edit with Qt Designer..."
-#~ msgstr "Cuir in Eagar le Qt Designer..."
-
-#~ msgid "Key:"
-#~ msgstr "Eochair:"
-
-#~ msgid "Type:"
-#~ msgstr "Cineál:"
-
-#~ msgid "Classname:"
-#~ msgstr "Ainm aicme:"
-
-#~ msgid "Description:"
-#~ msgstr "Cur Síos:"
-
-#~ msgid "Copying Failed"
-#~ msgstr "Theip ar Chóipeáil"
-
-#~ msgid "Moving Failed"
-#~ msgstr "Theip ar Bhogadh"
-
-#, fuzzy
-#~| msgid "%1"
-#~ msgctxt "@title:window"
-#~ msgid "%1"
-#~ msgstr "%1"
-
-#, fuzzy
-#~| msgid "KOrganizer Confirmation"
-#~ msgid "KOrganizer Configure User FeedBack"
-#~ msgstr "Deimhniú KOrganizer"
-
-#~ msgid "KCMDesignerfields"
-#~ msgstr "KCMDesignerfields"
-
-#~ msgid "Qt Designer Fields Dialog"
-#~ msgstr "Dialóg Réimsí Qt Designer"
-
-#, fuzzy
-#~| msgid "(c), 2004 Tobias Koenig"
-#~ msgid "(c) 2004 Tobias Koenig"
-#~ msgstr "©, 2004 Tobias Koenig"
-
-#~ msgctxt "@title:tab systray settings"
-#~ msgid "System Tray"
-#~ msgstr "Tráidire an Chórais"
-
-#~ msgctxt "@title:group"
-#~ msgid "Show/Hide Options"
-#~ msgstr "Taispeáin/Folaigh Roghanna"
-
-#~ msgctxt "@title:column plugin name"
-#~ msgid "Name"
-#~ msgstr "Ainm"
-
-#~ msgctxt "@action:button"
-#~ msgid "Configure &Plugin..."
-#~ msgstr "&Cumraigh an Breiseán..."
-
-#~ msgctxt "@title:group"
-#~ msgid "Other Plugins"
-#~ msgstr "Breiseáin Eile"
-
-#, fuzzy
-#~| msgid "Delete To-do"
-#~ msgid "Delete parent to-do"
-#~ msgstr "Scrios Tasc"
-
-#, fuzzy
-#~| msgid "Deleting sub-to-dos"
-#~ msgid "Delete parent to-do and sub-to-dos"
-#~ msgstr "Fo-thascanna á scriosadh"
-
-#~ msgctxt "@title:group"
-#~ msgid "Categories"
-#~ msgstr "Catagóirí"
-
-#~ msgid "Categories"
-#~ msgstr "Catagóirí"
-
-#~ msgid "Cate&gories"
-#~ msgstr "Cata&góirí"
-
-#, fuzzy
-#~| msgid "Send as iCalendar..."
-#~ msgctxt "@action:inmenu"
-#~ msgid "Email as iCalendar..."
-#~ msgstr "Seol mar iCalendar..."
-
-#, fuzzy
-#~| msgid "KMail"
-#~ msgctxt "@item"
-#~ msgid "Mail: %1"
-#~ msgstr "KMail"
-
-#, fuzzy
-#~| msgid "%1 - %2"
-#~ msgctxt "@item:inlistbox holiday region, region description"
-#~ msgid "%1 - %2"
-#~ msgstr "%1 - %2"
-
-#~ msgid "&Disable Color"
-#~ msgstr "&Díchumasaigh Dath"
-
-#~ msgid "&Previous Day"
-#~ msgstr "An Lá &Roimhe Seo"
-
-#~ msgid "&Previous Week"
-#~ msgstr "An tSeachtain &Roimhe Seo"
-
-#~ msgid "&Next Week"
-#~ msgstr "An tSeachtain Seo &Chugainn"
-
-#, fuzzy
-#~| msgid "&Cancel"
-#~ msgctxt "@action:button"
-#~ msgid "Cancel"
-#~ msgstr "&Cealaigh"
-
-#, fuzzy
-#~| msgctxt "@title:tab"
-#~| msgid "Save"
-#~ msgctxt "@action:button"
-#~ msgid "Save"
-#~ msgstr "Sábháil"
-
-#, fuzzy
-#~| msgid "&Title:"
-#~ msgid "Title:"
-#~ msgstr "&Teideal:"
-
-#, fuzzy
-#~| msgid "Text"
-#~ msgid "Text:"
-#~ msgstr "Téacs"
-
-#, fuzzy
-#~| msgid "%1 item"
-#~| msgid_plural "%1 items"
-#~ msgctxt "@label"
-#~ msgid "%1 item"
-#~ msgid_plural "%1 items"
-#~ msgstr[0] "%1 mhír"
-#~ msgstr[1] "%1 mhír"
-#~ msgstr[2] "%1 mhír"
-#~ msgstr[3] "%1 mír"
-#~ msgstr[4] "%1 mír"
-
-#~ msgctxt "copy this event"
-#~ msgid "&Copy"
-#~ msgstr "&Cóipeáil"
-
-#~ msgctxt "delete this incidence"
-#~ msgid "&Delete"
-#~ msgstr "&Scrios"
-
-#, fuzzy
-#~| msgid "Start searching"
-#~ msgid "searching..."
-#~ msgstr "Tosaigh an cuardach"
-
-#, fuzzy
-#~| msgctxt "@info:tooltip"
-#~| msgid "Location: %1"
-#~ msgctxt "Collection: name collectionId"
-#~ msgid "Collection: %1(%2)"
-#~ msgstr "Suíomh: %1"
-
-#~ msgid "Person: %1"
-#~ msgstr "Duine: %1"
-
-#~ msgctxt "No holiday region"
-#~ msgid "None"
-#~ msgstr "Neamhní"
-
-#~ msgid "&Import From UNIX Ical Tool"
-#~ msgstr "&Iompórtáil ó uirlis UNIX Ical"
-
-#~ msgid "Export as &vCalendar..."
-#~ msgstr "Easpórtáil mar &vCalendar..."
-
-#~ msgid "Proceed"
-#~ msgstr "Ar Aghaigh"
-
-#, fuzzy
-#~| msgctxt "@title:tab calendar account settings"
-#~| msgid "Calendars"
-#~ msgid "vCalendars files"
-#~ msgstr "Féilirí"
-
-#~ msgid "Keep Times"
-#~ msgstr "Coinnigh Amanna"
-
-#~ msgid "Move Times"
-#~ msgstr "Athraigh Amanna"
-
-#~ msgid "*.ics *.vcs|Calendar Files"
-#~ msgstr "*.ics *.vcs|Comhaid Fhéilire"
-
-#, fuzzy
-#~| msgctxt "@title:tab calendar account settings"
-#~| msgid "Calendars"
-#~ msgid "vCalendars (*.vcs)"
-#~ msgstr "Féilirí"
-
-#, fuzzy
-#~| msgid "Remove Template"
-#~ msgid "Remove from list"
-#~ msgstr "Bain an Teimpléad"
-
-#~ msgid "Export &Web Page..."
-#~ msgstr "Easpórtáil Leathanach &Gréasáin..."
-
-#~ msgid "Export"
-#~ msgstr "Easpórtáil"
-
-#~ msgctxt "general settings for html export"
-#~ msgid "General"
-#~ msgstr "Ginearálta"
-
-#~ msgid "View Type"
-#~ msgstr "Cineál Amhairc"
-
-#~ msgid "Destination"
-#~ msgstr "Sprioc"
-
-#~ msgid "To-dos"
-#~ msgstr "Tascanna"
-
-#~ msgid "Events"
-#~ msgstr "Imeachtaí"
-
-#, fuzzy
-#~| msgid "Show Date Number"
-#~ msgid "Show page Web"
-#~ msgstr "Taispeáin Uimhir an Lae"
-
-#~ msgctxt "@info:status"
-#~ msgid "Automatic Export: %1"
-#~ msgstr "Easpórtáil Uathoibríoch: %1"
-
-#~ msgctxt "@title:column event start time"
-#~ msgid "Start Time"
-#~ msgstr "Am Tosaithe"
-
-#~ msgctxt "@title:column event end time"
-#~ msgid "End Time"
-#~ msgstr "Am Críochnaithe"
-
-#~ msgctxt "@title:column event description"
-#~ msgid "Event"
-#~ msgstr "Imeacht"
-
-#~ msgctxt "@title:column event locatin"
-#~ msgid "Location"
-#~ msgstr "Suíomh"
-
-#~ msgctxt "@title:column event categories"
-#~ msgid "Categories"
-#~ msgstr "Catagóirí"
-
-#~ msgctxt "@title:column event attendees"
-#~ msgid "Attendees"
-#~ msgstr "Rannpháirtithe"
-
-#~ msgctxt "@title:column"
-#~ msgid "To-do"
-#~ msgstr "Tasc"
-
-#~ msgctxt "@title:column to-do priority"
-#~ msgid "Priority"
-#~ msgstr "Tosaíocht"
-
-#~ msgctxt "@title:column to-do percent completed"
-#~ msgid "Completed"
-#~ msgstr "Críochnaithe"
-
-#~ msgctxt "@title:column to-do due date"
-#~ msgid "Due Date"
-#~ msgstr "Spriocdháta"
-
-#~ msgctxt "@title:column to-do location"
-#~ msgid "Location"
-#~ msgstr "Suíomh"
-
-#~ msgctxt "@title:column to-do categories"
-#~ msgid "Categories"
-#~ msgstr "Catagóirí"
-
-#~ msgctxt "@title:column to-do attendees"
-#~ msgid "Attendees"
-#~ msgstr "Rannpháirtithe"
-
-#~ msgctxt "@title:column sub-to-dos of the parent to-do"
-#~ msgid "Sub-To-dos of: "
-#~ msgstr "Fo-Thascanna de: "
-
-#~ msgctxt "@title:column sub-to-dos of the parent to-do"
-#~ msgid "Sub-To-dos"
-#~ msgstr "Fo-Thascanna"
-
-#, fuzzy
-#~| msgctxt "@info/plain to-do percent complete"
-#~| msgid "%1 %"
-#~ msgctxt "@info to-do percent complete"
-#~ msgid "%1 %"
-#~ msgstr "%1 %"
-
-#, fuzzy
-#~| msgctxt "@info/plain"
-#~| msgid "This page was created "
-#~ msgctxt "@info"
-#~ msgid "This page was created "
-#~ msgstr "Bhí an leathanach seo cruthaithe "
-
-#~ msgctxt "@info/plain page creator email link with name"
-#~ msgid "by <link url='mailto:%1'>%2</link> "
-#~ msgstr "ag <link url='mailto:%1'>%2</link> "
-
-#~ msgctxt "@info/plain page creator email link"
-#~ msgid "by <link url='mailto:%1'>%2</link> "
-#~ msgstr "ag <link url='mailto:%1'>%2</link> "
-
-#, fuzzy
-#~| msgctxt "@info/plain page creator name only"
-#~| msgid "by %1 "
-#~ msgctxt "@info page creator name only"
-#~ msgid "by %1 "
-#~ msgstr "ag %1 "
-
-#~ msgctxt "@info/plain page credit with name and link"
-#~ msgid "with <link url='%1'>%2</link>"
-#~ msgstr "le <link url='%1'>%2</link>"
-
-#, fuzzy
-#~| msgctxt "@info/plain page credit name only"
-#~| msgid "with %1"
-#~ msgctxt "@info page credit name only"
-#~ msgid "with %1"
-#~ msgstr "le %1"
-
-#, fuzzy
-#~| msgctxt "@info/plain holiday by date and name"
-#~| msgid "%1, %2"
-#~ msgctxt "@info holiday by date and name"
-#~ msgid "%1, %2"
-#~ msgstr "%1, %2"
-
-# safer w/o accents -KPS
-#~ msgctxt "Default export file"
-#~ msgid "calendar.html"
-#~ msgstr "calendar.html"
-
-#~ msgid "Full name of the calendar owner"
-#~ msgstr "Ainm iomlán úinéir an fhéilire"
-
-#~ msgid "The full name of the calendar owner for the export"
-#~ msgstr "Ainm iomlán úinéir an fhéilire le haghaidh easpórtáil"
-
-#~ msgid "Email of the calendar owner"
-#~ msgstr "Seoladh ríomhphoist úinéir an fhéilire"
-
-#~ msgid "The email address of the calendar owner for the export"
-#~ msgstr "Seoladh ríomhphoist úinéir an fhéilire le haghaidh easpórtála"
-
-#~ msgid "Creator application"
-#~ msgstr "Feidhmchlár cruthaithe"
-
-#~ msgid "Creator application of the calendar"
-#~ msgstr "Feidhmchlár a chruthaigh an féilire"
-
-#~ msgid "Enter a creator application of the calendar, for example KOrganizer."
-#~ msgstr ""
-#~ "Cuir isteach an feidhmchlár a chruthaigh an féilire, mar shampla "
-#~ "KOrganizer."
-
-#~ msgid "Creator URL"
-#~ msgstr "URL an Chruthaitheora"
-
-#~ msgid "URL of the creator application of the calendar."
-#~ msgstr "URL an fheidhmchláir a chruthaigh an féilire."
-
-#~ msgid ""
-#~ "Enter the URL of the creator application of the calendar, for example "
-#~ "http://userbase.kde.org/KOrganizer"
-#~ msgstr ""
-#~ "Cuir isteach URL an fheidhmchláir a chruthaigh an féilire, mar shampla "
-#~ "http://userbase.kde.org/KOrganizer"
-
-#~ msgid "Page Title"
-#~ msgstr "Teideal an Leathanaigh"
-
-#~ msgid "The title of the exported page"
-#~ msgstr "Teideal an leathanaigh easpórtáilte"
-
-#~ msgid "Enter a title for the HTML page."
-#~ msgstr "Cuir isteach teideal an leathanaigh HTML."
-
-#~ msgid "Date start"
-#~ msgstr "Dáta tosaigh"
-
-#~ msgid "First day of the range to export"
-#~ msgstr "An chéad lá den raon le heaspórtáil"
-
-#~ msgid "First day of the range that shall be exported to HTML."
-#~ msgstr "An chéad lá den raon a easpórtálfar go HTML."
-
-#~ msgid "Date end"
-#~ msgstr "Dáta deiridh"
-
-#~ msgid "Last day of the range to export"
-#~ msgstr "An lá deiridh den raon le heaspórtáil"
-
-#~ msgid "Last day of the range that shall be exported to HTML."
-#~ msgstr "An lá deiridh den raon a easpórtálfar go HTML."
-
-#~ msgid "Output filename"
-#~ msgstr "Ainm aschomhaid"
-
-#~ msgid "The file name for the export"
-#~ msgstr "Ainm an chomhaid a scríobhfar an easpórtáil ann"
-
-#~ msgid "The output file name for the HTML export."
-#~ msgstr "Ainm an aschomhaid a scríobhfar an easpórtáil HTML ann."
-
-#~ msgid "Style sheet"
-#~ msgstr "Stílbhileog"
-
-#~ msgid ""
-#~ "CSS style sheet to be used by the final HTML page. This string contains "
-#~ "the actual contents of the CSS, not a path to the style sheet."
-#~ msgstr ""
-#~ "Stílbhileog a úsáidfear an leathanach deiridh HTML. Tá fíorábhar na CSS "
-#~ "sa teaghrán seo, in ionad conair go dtí an stílbhileog."
-
-#~ msgid "Exclude private items from the export"
-#~ msgstr "Ná cuir míreanna príobháideacha san easpórtáil"
-
-#~ msgid "Exclude confidential incidences from the export"
-#~ msgstr "Ná cuir imeachtaí faoi rún san easpórtáil"
-
-#~ msgid "Exclude confidential items from the export"
-#~ msgstr "Ná cuir míreanna faoi rún san easpórtáil"
-
-#~ msgid "Export events as list"
-#~ msgstr "Easpórtáil imeachtaí mar liosta"
-
-#~ msgid "Export events as a list"
-#~ msgstr "Easpórtáil imeachtaí mar liosta"
-
-#~ msgid "Export in month view"
-#~ msgstr "Easpórtáil san amharc míosa"
-
-#~ msgid "Export events in a month view"
-#~ msgstr "Easpórtáil imeachtaí in amharc míosa"
-
-#~ msgid "Export in week view"
-#~ msgstr "Easpórtáil san amharc seachtaine"
-
-#~ msgid "Export events in a week view"
-#~ msgstr "Easpórtáil imeachtaí in amharc seachtaine"
-
-#~ msgid "Title of the calendar"
-#~ msgstr "Teideal an fhéilire"
-
-#~ msgid "Export location of the events"
-#~ msgstr "Easpórtáil ionad na n-imeachtaí"
-
-#~ msgid "Include the event locations"
-#~ msgstr "Cuir suímh na n-imeachtaí san áireamh"
-
-#~ msgid "Export categories of the events"
-#~ msgstr "Easpórtáil catagóirí na n-imeachtaí"
-
-#~ msgid "Include the event categories"
-#~ msgstr "Cuir catagóirí na n-imeachtaí san áireamh"
-
-#~ msgid "Export attendees of the events"
-#~ msgstr "Easpórtáil rannpháirtithe na n-imeachtaí"
-
-#~ msgid "Include the event attendees"
-#~ msgstr "Cuir na rannpháirtí san áireamh"
-
-#~ msgid "Export to-do list"
-#~ msgstr "Easpórtáil an tascliosta"
-
-#~ msgid "Export the to-do list"
-#~ msgstr "Easpórtáil an tascliosta"
-
-#~ msgid "Title for the to-do list"
-#~ msgstr "Teideal an tascliosta"
-
-#~ msgid "Export due dates of the to-dos"
-#~ msgstr "Easpórtáil dátaí a bheidh na tascanna dlite"
-
-#~ msgid "Export location of the to-dos"
-#~ msgstr "Easpórtáil suíomh na dtascanna"
-
-#~ msgid "Export categories of the to-dos"
-#~ msgstr "Easpórtáil catagóirí na dtascanna"
-
-#~ msgid "Export attendees of the to-dos"
-#~ msgstr "Easpórtáil rannpháirtithe na dtascanna"
-
-#~ msgid "Include the to-do attendees"
-#~ msgstr "Cuir rannpháirtí an taisc san áireamh"
-
-#~ msgid "Export journals"
-#~ msgstr "Easpórtáil dialanna"
-
-#~ msgid "Journals"
-#~ msgstr "Dialanna"
-
-#~ msgid "Title for the journal list"
-#~ msgstr "Teideal an liosta dialann"
-
-#~ msgid "Title of the free/busy list"
-#~ msgstr "Teideal an liosta saor/gafa"
-
-#~ msgid "Busy times"
-#~ msgstr "Amanna gnóthacha"
-
-#~ msgid "Title for the free/busy list"
-#~ msgstr "Teideal an liosta saor/gafa"
-
-#, fuzzy
-#~| msgid "Journal"
-#~ msgctxt "@action:inmenu"
-#~ msgid "Sync Journal"
-#~ msgstr "Dialann"
-
-#, fuzzy
-#~| msgid "Search Calendar"
-#~ msgctxt "@action:inmenu"
-#~ msgid "Sync Calendar"
-#~ msgstr "Cuardaigh Féilire"
-
-#, fuzzy
-#~| msgid "To-do List"
-#~ msgctxt "@action:inmenu"
-#~ msgid "Sync To-do List"
-#~ msgstr "Tascliosta"
-
-#, fuzzy
-#~| msgid "Title for the to-do list"
-#~ msgctxt "@info:status"
-#~ msgid "Synchronize groupware to-do list"
-#~ msgstr "Teideal an tascliosta"
-
-#~ msgid "Show days to end of year"
-#~ msgstr "Taispeáin laethanta go dtí deireadh na bliana"
-
-#~ msgid "Show both"
-#~ msgstr "Taispeáin araon"
-
-#~ msgid "1 day before the end of the year"
-#~ msgid_plural "%1 days before the end of the year"
-#~ msgstr[0] "Lá amháin roimh dheireadh na bliana"
-#~ msgstr[1] "%1 lá roimh dheireadh na bliana"
-#~ msgstr[2] "%1 lá roimh dheireadh na bliana"
-#~ msgstr[3] "%1 lá roimh dheireadh na bliana"
-#~ msgstr[4] "%1 lá roimh dheireadh na bliana"
-
-#~ msgctxt "dayOfYear / daysTillEndOfYear"
-#~ msgid "%1 / %2"
-#~ msgstr "%1 / %2"
-
-#~ msgid "1 day since the beginning of the year,\n"
-#~ msgid_plural "%1 days since the beginning of the year,\n"
-#~ msgstr[0] "Lá amháin ó thús na bliana,\n"
-#~ msgstr[1] "%1 lá ó thús na bliana,\n"
-#~ msgstr[2] "%1 lá ó thús na bliana,\n"
-#~ msgstr[3] "%1 lá ó thús na bliana,\n"
-#~ msgstr[4] "%1 lá ó thús na bliana,\n"
-
-#~ msgid "1 day until the end of the year"
-#~ msgid_plural "%1 days until the end of the year"
-#~ msgstr[0] "Lá amháin go dtí deireadh na bliana"
-#~ msgstr[1] "%1 lá go dtí deireadh na bliana"
-#~ msgstr[2] "%1 lá go dtí deireadh na bliana"
-#~ msgstr[3] "%1 lá go dtí deireadh na bliana"
-#~ msgstr[4] "%1 lá go dtí deireadh na bliana"
-
-#~ msgctxt "Week weekOfYear"
-#~ msgid "Week %1"
-#~ msgstr "Seachtain %1"
-
-#~ msgid "1 week since the beginning of the year"
-#~ msgid_plural "%1 weeks since the beginning of the year"
-#~ msgstr[0] "Seachtain amháin ó thús na bliana"
-#~ msgstr[1] "%1 sheachtain ó thús na bliana"
-#~ msgstr[2] "%1 seachtaine ó thús na bliana"
-#~ msgstr[3] "%1 seachtaine ó thús na bliana"
-#~ msgstr[4] "%1 seachtain ó thús na bliana"
-
-#~ msgctxt "weekOfYear (year)"
-#~ msgid "%1 (%2)"
-#~ msgstr "%1 (%2)"
-
-#~ msgctxt "Week weekOfYear (year)"
-#~ msgid "Week %1 (%2)"
-#~ msgstr "Seachtain %1 (%2)"
-
-#~ msgid "1 week remaining"
-#~ msgid_plural "%1 weeks remaining"
-#~ msgstr[0] "Seachtain amháin fágtha"
-#~ msgstr[1] "%1 sheachtain fágtha"
-#~ msgstr[2] "%1 seachtaine fágtha"
-#~ msgstr[3] "%1 seachtaine fágtha"
-#~ msgstr[4] "%1 seachtain fágtha"
-
-#~ msgid "1 week until the end of the year"
-#~ msgid_plural "%1 weeks until the end of the year"
-#~ msgstr[0] "Seachtain amháin go dtí deireadh na bliana"
-#~ msgstr[1] "%1 sheachtain go dtí deireadh na bliana"
-#~ msgstr[2] "%1 seachtaine go dtí deireadh na bliana"
-#~ msgstr[3] "%1 seachtaine go dtí deireadh na bliana"
-#~ msgstr[4] "%1 seachtain go dtí deireadh na bliana"
-
-#~ msgctxt "weekOfYear / weeksTillEndOfYear"
-#~ msgid "%1 / %2"
-#~ msgstr "%1 / %2"
-
-#~ msgctxt ""
-#~ "n weeks since the beginning of the year\n"
-#~ "n weeks until the end of the year"
-#~ msgid ""
-#~ "%1\n"
-#~ "%2"
-#~ msgstr ""
-#~ "%1\n"
-#~ "%2"
-
-#~ msgid "Configure Holidays"
-#~ msgstr "Cumraigh Laethanta Saoire"
-
-#~ msgid "Use Israeli holidays"
-#~ msgstr "Úsáid laethanta saoire Iosraelacha"
-
-#~ msgid "Show Chol HaMoed"
-#~ msgstr "Taispeáin Chol HaMoed"
-
-#~ msgctxt ""
-#~ "Change the next two strings if emphasis is done differently in your "
-#~ "language."
-#~ msgid ""
-#~ "<qt><p align=\"center\"><i>\n"
-#~ "%1\n"
-#~ "</i></p></qt>"
-#~ msgstr ""
-#~ "<qt><p align=\"center\"><i>\n"
-#~ "%1\n"
-#~ "</i></p></qt>"
-
-#~ msgctxt ""
-#~ "These are Jewish holidays and mostly do not have translations. They may "
-#~ "have different spellings in your language; otherwise, just translate the "
-#~ "sound to your characters."
-#~ msgid "Sh. HaHodesh"
-#~ msgstr "Sh. HaHodesh"
-
-#~ msgid "Erev Pesach"
-#~ msgstr "Erev Pesach"
-
-#~ msgid "Sh. HaGadol"
-#~ msgstr "Sh. HaGadol"
-
-#~ msgid "Pesach"
-#~ msgstr "Pesach"
-
-#~ msgid "Chol Hamoed"
-#~ msgstr "Chol Hamoed"
-
-#~ msgid "Yom HaShoah"
-#~ msgstr "Yom HaShoah"
-
-#~ msgid "Yom HaAtzmaut"
-#~ msgstr "Yom HaAtzmaut"
-
-#~ msgid "Yom HaZikaron"
-#~ msgstr "Yom HaZikaron"
-
-#~ msgid "Yom Yerushalayim"
-#~ msgstr "Yom Yerushalayim"
-
-#~ msgid "Lag BaOmer"
-#~ msgstr "Lag BaOmer"
-
-#~ msgid "Erev Shavuot"
-#~ msgstr "Erev Shavuot"
-
-#~ msgid "Shavuot"
-#~ msgstr "Shavuot"
-
-#~ msgid "Tzom Tammuz"
-#~ msgstr "Tzom Tammuz"
-
-#~ msgid "Sh. Hazon"
-#~ msgstr "Sh. Hazon"
-
-#~ msgid "Sh. Nahamu"
-#~ msgstr "Sh. Nahamu"
-
-#~ msgid "Tisha B'Av"
-#~ msgstr "Tisha B'Av"
-
-#~ msgid "S'lichot"
-#~ msgstr "S'lichot"
-
-#~ msgid "Erev R.H."
-#~ msgstr "Erev R.H."
-
-#~ msgid "Rosh Hashana"
-#~ msgstr "Rosh Hashana"
-
-#~ msgid "Sh. Shuvah"
-#~ msgstr "Sh. Shuvah"
-
-#~ msgid "Tzom Gedalia"
-#~ msgstr "Tzom Gedalia"
-
-#~ msgid "Erev Y.K."
-#~ msgstr "Erev Y.K."
-
-#~ msgid "Yom Kippur"
-#~ msgstr "Yom Kippur"
-
-#~ msgid "Erev Sukkot"
-#~ msgstr "Erev Sukkot"
-
-#~ msgid "Sukkot"
-#~ msgstr "Sukkot"
-
-#~ msgid "Hoshana Rabah"
-#~ msgstr "Hoshana Rabah"
-
-#~ msgid "Shmini Atzeret"
-#~ msgstr "Shmini Atzeret"
-
-#~ msgid "Simchat Torah"
-#~ msgstr "Simchat Torah"
-
-#~ msgid "Erev Hanukah"
-#~ msgstr "Erev Hanukah"
-
-#~ msgid "Hanukah"
-#~ msgstr "Hanukah"
-
-#~ msgid "Tzom Tevet"
-#~ msgstr "Tzom Tevet"
-
-#~ msgid "Sh. Shirah"
-#~ msgstr "Sh. Shirah"
-
-#~ msgid "Tu B'Shvat"
-#~ msgstr "Tu B'Shvat"
-
-#~ msgid "Sh. Shekalim"
-#~ msgstr "Sh. Shekalim"
-
-#~ msgid "Purim Katan"
-#~ msgstr "Purim Katan"
-
-#~ msgid "Ta'anit Ester"
-#~ msgstr "Ta'anit Ester"
-
-#~ msgid "Sh. Zachor"
-#~ msgstr "Sh. Zachor"
-
-#~ msgid "Erev Purim"
-#~ msgstr "Erev Purim"
-
-#~ msgid "Purim"
-#~ msgstr "Purim"
-
-#~ msgid "Shushan Purim"
-#~ msgstr "Shushan Purim"
-
-#~ msgid "Sh. Parah"
-#~ msgstr "Sh. Parah"
-
-#~ msgid "Sh. HaHodesh"
-#~ msgstr "Sh. HaHodesh"
-
-#~ msgid " Omer"
-#~ msgstr " Omer"
-
-#~ msgctxt ""
-#~ "These are weekly readings and do not have translations. They may have "
-#~ "different spellings in your language; otherwise, just translate the sound "
-#~ "to your characters"
-#~ msgid "Bereshit"
-#~ msgstr "Bereshit"
-
-#~ msgid "Noach"
-#~ msgstr "Noach"
-
-#~ msgid "Lech L'cha"
-#~ msgstr "Lech L'cha"
-
-#~ msgid "Vayera"
-#~ msgstr "Vayera"
-
-#~ msgid "Chaye Sarah"
-#~ msgstr "Chaye Sarah"
-
-#~ msgid "Toldot"
-#~ msgstr "Toldot"
-
-#~ msgid "Vayetze"
-#~ msgstr "Vayetze"
-
-#~ msgid "Vayishlach"
-#~ msgstr "Vayishlach"
-
-#~ msgid "Vayeshev"
-#~ msgstr "Vayeshev"
-
-#~ msgid "Miketz"
-#~ msgstr "Miketz"
-
-#~ msgid "Vayigash"
-#~ msgstr "Vayigash"
-
-#~ msgid "Vayechi"
-#~ msgstr "Vayechi"
-
-#~ msgid "Shemot"
-#~ msgstr "Shemot"
-
-#~ msgid "Vaera"
-#~ msgstr "Vaera"
-
-#~ msgid "Bo"
-#~ msgstr "Bo"
-
-#~ msgid "Beshalach"
-#~ msgstr "Beshalach"
-
-#~ msgid "Yitro"
-#~ msgstr "Yitro"
-
-#~ msgid "Mishpatim"
-#~ msgstr "Mishpatim"
-
-#~ msgid "Terumah"
-#~ msgstr "Terumah"
-
-#~ msgid "Tetzaveh"
-#~ msgstr "Tetzaveh"
-
-#~ msgid "Ki Tisa"
-#~ msgstr "Ki Tisa"
-
-#~ msgid "Vayakhel"
-#~ msgstr "Vayakhel"
-
-#~ msgid "Pekudei"
-#~ msgstr "Pekudei"
-
-#~ msgid "Vayikra"
-#~ msgstr "Vayikra"
-
-#~ msgid "Tzav"
-#~ msgstr "Tzav"
-
-#~ msgid "Shemini"
-#~ msgstr "Shemini"
-
-#~ msgid "Tazria"
-#~ msgstr "Tazria"
-
-#~ msgid "Metzora"
-#~ msgstr "Metzora"
-
-#~ msgid "Acharei Mot"
-#~ msgstr "Acharei Mot"
-
-#~ msgid "Kedoshim"
-#~ msgstr "Kedoshim"
-
-#~ msgid "Emor"
-#~ msgstr "Emor"
-
-#~ msgid "Behar"
-#~ msgstr "Behar"
-
-#~ msgid "Bechukotai"
-#~ msgstr "Bechukotai"
-
-#~ msgid "Bemidbar"
-#~ msgstr "Bemidbar"
-
-#~ msgid "Naso"
-#~ msgstr "Naso"
-
-#~ msgid "Behaalotcha"
-#~ msgstr "Behaalotcha"
-
-#~ msgid "Shelach"
-#~ msgstr "Shelach"
-
-#~ msgid "Korach"
-#~ msgstr "Korach"
-
-#~ msgid "Chukat"
-#~ msgstr "Chukat"
-
-#~ msgid "Balak"
-#~ msgstr "Balak"
-
-#~ msgid "Pinchas"
-#~ msgstr "Pinchas"
-
-#~ msgid "Matot"
-#~ msgstr "Matot"
-
-#~ msgid "Masei"
-#~ msgstr "Masei"
-
-#~ msgid "Devarim"
-#~ msgstr "Devarim"
-
-#~ msgid "Vaetchanan"
-#~ msgstr "Vaetchanan"
-
-#~ msgid "Ekev"
-#~ msgstr "Ekev"
-
-#~ msgid "Reeh"
-#~ msgstr "Reeh"
-
-#~ msgid "Shoftim"
-#~ msgstr "Shoftim"
-
-#~ msgid "Ki Tetze"
-#~ msgstr "Ki Tetze"
-
-#~ msgid "Ki Tavo"
-#~ msgstr "Ki Tavo"
-
-#~ msgid "Nitzavim"
-#~ msgstr "Nitzavim"
-
-#~ msgid "Vayelech"
-#~ msgstr "Vayelech"
-
-#~ msgid "Haazinu"
-#~ msgstr "Haazinu"
-
-#~ msgid "Keep aspect ratio"
-#~ msgstr "Caomhnaigh an cóimheas treoíochta"
-
-#~ msgid "Loading..."
-#~ msgstr "Á Luchtú..."
-
-#~ msgctxt "Localized Wikipedia website"
-#~ msgid "http://en.wikipedia.org/wiki/"
-#~ msgstr "http://ga.wikipedia.org/wiki/"
-
-#~ msgctxt "Qt date format used by the localized Wikipedia"
-#~ msgid "MMMM_d"
-#~ msgstr "MMMM_d"
-
-#~ msgctxt "Qt date format used by the localized Wikipedia"
-#~ msgid "MMMM_yyyy"
-#~ msgstr "MMMM_yyyy"
-
-#~ msgid "*.ics|iCalendars"
-#~ msgstr "*.ics|iFéilirí"
-
-#~ msgid "*.vcs|vCalendars"
-#~ msgstr "*.vcs|vCalendaranna"
-
-#~ msgid "*.html|HTML Files"
-#~ msgstr "*.html|Comhaid HTML"
-
-#~ msgid "KOrgPlugins"
-#~ msgstr "KOrgPlugins"
-
-#~ msgid "Import Calendar/Event"
-#~ msgstr "Iompórtáil Féilire/Imeacht"
-
-#~ msgid "&Add as new calendar..."
-#~ msgstr "Cuir leis m&ar fhéilire nua..."
-
-#~ msgid "&Add as new calendar"
-#~ msgstr "Cuir leis m&ar fhéilire nua"
-
-#~ msgid "*.vcs *.ics|Calendar Files"
-#~ msgstr "*.vcs *.ics|Comhaid Fhéilire"
-
-#~ msgid "Select path for new calendar"
-#~ msgstr "Roghnaigh conair don fhéilire nua"
-
-#~ msgid "Set Your Status"
-#~ msgstr "Socraigh Do Stádas"
-
-#~ msgid "Set your status"
-#~ msgstr "Socraigh do stádas"
-
-#~ msgid "A&dd..."
-#~ msgstr "C&uir Leis..."
-
-#~ msgid "&Modify..."
-#~ msgstr "&Athraigh..."
-
-#~ msgid "R&emove"
-#~ msgstr "B&ain"
-
-#, fuzzy
-#~| msgid "Do you want to overwrite %1?"
-#~ msgid "Do you want to remove account '%1'?"
-#~ msgstr "An bhfuil fonn ort %1 a fhorscríobh?"
-
-#, fuzzy
-#~| msgid "Remove Attachments"
-#~ msgid "Remove account?"
-#~ msgstr "Bain Iatáin"
-
-#~ msgid "Select Addresses"
-#~ msgstr "Roghnaigh Seoltaí"
-
-#~ msgid "(EmptyName)"
-#~ msgstr "(AinmFolamh)"
-
-#~ msgid "(EmptyEmail)"
-#~ msgstr "(SeoladhFolamh)"
-
-#~ msgid "Add a new recipient"
-#~ msgstr "Cuir faighteoir nua leis"
-
-#~ msgid "&Remove"
-#~ msgstr "&Bain"
-
-#~ msgid "&Select..."
-#~ msgstr "&Roghnaigh..."
-
-#~ msgctxt "recipient name"
-#~ msgid "Name:"
-#~ msgstr "Ainm:"
-
-#~ msgctxt "recipient email"
-#~ msgid "Email:"
-#~ msgstr "Ríomhphost:"
-
-#~ msgid "The recipient's email address"
-#~ msgstr "Seoladh ríomhphoist an fhaighteora"
-
-#~ msgid "© 2007 Loïc Corbasson"
-#~ msgstr "© 2007 Loïc Corbasson"
-
-#~ msgctxt "@title:group"
-#~ msgid "Print Plugins"
-#~ msgstr "Breiseáin Phriontála"
-
-#~ msgid "Date && Time Range"
-#~ msgstr "Raon Dáta agus Ama"
-
-#~ msgid "&Start date:"
-#~ msgstr "Dáta to&saigh:"
-
-#~ msgid "&To-dos"
-#~ msgstr "&Tascanna"
-
-#~ msgid "Print Item list"
-#~ msgstr "Priontáil liosta de mhíreanna"
-
-#~ msgid ""
-#~ "<html><head><meta name=\"qrichtext\" content=\"1\" /><style type=\"text/"
-#~ "css\">\n"
-#~ "p, li { white-space: pre-wrap; }\n"
-#~ "</style></head><body style=\" font-family:'Sans Serif'; font-size:9pt; "
-#~ "font-weight:400; font-style:normal;\">\n"
-#~ "<p style=\" margin-top:0px; margin-bottom:0px; margin-left:0px; margin-"
-#~ "right:0px; -qt-block-indent:0; text-indent:0px;\"><span style=\" font-"
-#~ "weight:600;\">Print journal options:</span></p></body></html>"
-#~ msgstr ""
-#~ "<html><head><meta name=\"qrichtext\" content=\"1\" /><style type=\"text/"
-#~ "css\">\n"
-#~ "p, li { white-space: pre-wrap; }\n"
-#~ "</style></head><body style=\" font-family:'Sans Serif'; font-size:9pt; "
-#~ "font-weight:400; font-style:normal;\">\n"
-#~ "<p style=\" margin-top:0px; margin-bottom:0px; margin-left:0px; margin-"
-#~ "right:0px; -qt-block-indent:0; text-indent:0px;\"><span style=\" font-"
-#~ "weight:600;\">Roghanna priontála:</span></p></body></html>"
-
-#~ msgid "Display Options"
-#~ msgstr "Roghanna Taispeána:"
-
-#~ msgctxt "date from - to"
-#~ msgid "%1 - %2"
-#~ msgstr "%1 - %2"
-
-#~ msgctxt ""
-#~ "date from -\n"
-#~ "to"
-#~ msgid ""
-#~ "%1 -\n"
-#~ "%2"
-#~ msgstr ""
-#~ "%1 -\n"
-#~ "%2"
-
-#~ msgid "Print &year"
-#~ msgstr "Priontáil &bliain"
-
-#~ msgid "2009-01-19"
-#~ msgstr "2009-01-19"
-
-#~ msgid "Start &time:"
-#~ msgstr "Am &tosaithe:"
-
-#~ msgid "hh:mm"
-#~ msgstr "hh:mm"
-
-#~ msgid "Print Layout"
-#~ msgstr "Leagan Amach Priontála"
-
-#~ msgid "Include &descriptions"
-#~ msgstr "Cuir &cur síos san áireamh"
-
-#~ msgid "Print item descriptions"
-#~ msgstr "Priontáil cur síos ar mhíreanna"
-
-#~ msgctxt "@title general print settings"
-#~ msgid "General"
-#~ msgstr "Ginearálta"
-
-#~ msgid "Print &Footer"
-#~ msgstr "Priontáil &Buntásc"
-
-#~ msgid "Start date: "
-#~ msgstr "Dáta tosaigh: "
-
-#~ msgid "Duration: "
-#~ msgstr "Aga: "
-
-#~ msgid "1 hour "
-#~ msgid_plural "%1 hours "
-#~ msgstr[0] "1 uair "
-#~ msgstr[1] "%1 uair "
-#~ msgstr[2] "%1 huaire "
-#~ msgstr[3] "%1 n-uaire "
-#~ msgstr[4] "%1 uair "
-
-#~ msgid "1 minute "
-#~ msgid_plural "%1 minutes "
-#~ msgstr[0] "1 nóiméad "
-#~ msgstr[1] "%1 nóiméad "
-#~ msgstr[2] "%1 nóiméad "
-#~ msgstr[3] "%1 nóiméad "
-#~ msgstr[4] "%1 nóiméad "
-
-#~ msgid "No end date"
-#~ msgstr "Gan dáta críochnaithe"
-
-#~ msgid "No due date"
-#~ msgstr "Níl aon dáta dlite ann"
-
-#~ msgctxt "except for listed dates"
-#~ msgid " except"
-#~ msgstr " seachas"
-
-#~ msgid "Reminder: "
-#~ msgid_plural "%1 reminders: "
-#~ msgstr[0] "Meabhrúchán: "
-#~ msgstr[1] "%1 mheabhrúchán: "
-#~ msgstr[2] "%1 mheabhrúchán: "
-#~ msgstr[3] "%1 meabhrúchán: "
-#~ msgstr[4] "%1 meabhrúchán: "
-
-#~ msgid "1 hour"
-#~ msgid_plural "%1 hours"
-#~ msgstr[0] "1 uair"
-#~ msgstr[1] "%1 uair"
-#~ msgstr[2] "%1 huaire"
-#~ msgstr[3] "%1 n-uaire"
-#~ msgstr[4] "%1 uair"
-
-#~ msgctxt "Spacer for the joined list of categories"
-#~ msgid ", "
-#~ msgstr ", "
-
-#~ msgid "Organizer: "
-#~ msgstr "Eagraí: "
-
-#~ msgid "Location: "
-#~ msgstr "Suíomh: "
-
-#~ msgid "No Subitems"
-#~ msgstr "Gan Fomhíreanna"
-
-#~ msgid "1 Subitem:"
-#~ msgid_plural "%1 Subitems:"
-#~ msgstr[0] "1 Fomhír:"
-#~ msgstr[1] "%1 Fhomhír:"
-#~ msgstr[2] "%1 Fhomhír:"
-#~ msgstr[3] "%1 bhFomhír:"
-#~ msgstr[4] "%1 Fomhír:"
-
-#~ msgctxt "no status"
-#~ msgid "none"
-#~ msgstr "gan stádas"
-
-#~ msgctxt "subitem start date"
-#~ msgid "Start Date: %1\n"
-#~ msgstr "Dáta Tosaigh: %1\n"
-
-#~ msgctxt "subitem start time"
-#~ msgid "Start Time: %1\n"
-#~ msgstr "Am Tosaithe: %1\n"
-
-#~ msgctxt "subitem due date"
-#~ msgid "Due Date: %1\n"
-#~ msgstr "Spriocdháta: %1\n"
-
-#~ msgctxt "subitem counter"
-#~ msgid "%1: "
-#~ msgstr "%1: "
-
-#~ msgctxt "subitem Status: statusString"
-#~ msgid "Status: %1\n"
-#~ msgstr "Stádas: %1\n"
-
-#~ msgctxt "subitem Priority: N"
-#~ msgid "Priority: <numid>%1</numid>\n"
-#~ msgstr "Tosaíocht: <numid>%1</numid>\n"
-
-#~ msgctxt "subitem Secrecy: secrecyString"
-#~ msgid "Secrecy: %1\n"
-#~ msgstr "Rúndacht: %1\n"
-
-#~ msgid "No Attachments"
-#~ msgstr "Gan Iatáin"
-
-#~ msgid "1 Attachment:"
-#~ msgid_plural "%1 Attachments:"
-#~ msgstr[0] "1 Iatán:"
-#~ msgstr[1] "%1 Iatán:"
-#~ msgstr[2] "%1 Iatán:"
-#~ msgstr[3] "%1 nIatán:"
-#~ msgstr[4] "%1 Iatán:"
-
-#~ msgctxt "Spacer for list of attachments"
-#~ msgid "  "
-#~ msgstr "  "
-
-#~ msgid "No Attendees"
-#~ msgstr "Gan Rannpháirtí"
-
-#~ msgid "1 Attendee:"
-#~ msgid_plural "%1 Attendees:"
-#~ msgstr[0] "%1 Rannpháirtí:"
-#~ msgstr[1] "%1 Rannpháirtí:"
-#~ msgstr[2] "%1 Rannpháirtí:"
-#~ msgstr[3] "%1 Rannpháirtí:"
-#~ msgstr[4] "%1 Rannpháirtí:"
-
-#~ msgctxt ""
-#~ "Formatting of an attendee: 'Name (Role): Status', e.g. 'Reinhold "
-#~ "Kainhofer <reinhold@kainhofer.com> (Participant): Awaiting Response'"
-#~ msgid "%1 (%2): %3"
-#~ msgstr "%1 (%2): %3"
-
-#~ msgid "Status: %1"
-#~ msgstr "Stádas: %1"
-
-#~ msgid "Secrecy: %1"
-#~ msgstr "Rúndacht: %1"
-
-#~ msgid "Settings: "
-#~ msgstr "Socruithe: "
-
-#~ msgid "Categories: "
-#~ msgstr "Catagóirí: "
-
-#~ msgctxt "date from-to"
-#~ msgid "%1 - %2"
-#~ msgstr "%1 - %2"
-
-#~ msgctxt ""
-#~ "date from-\n"
-#~ "to"
-#~ msgid ""
-#~ "%1 -\n"
-#~ "%2"
-#~ msgstr ""
-#~ "%1 -\n"
-#~ "%2"
-
-#~ msgid "Today's Events"
-#~ msgstr "Imeachtaí an Lae Inniu"
-
-#~ msgctxt "summary, location"
-#~ msgid "%1, %2"
-#~ msgstr "%1, %2"
-
-#~ msgctxt "date from - to (week number)"
-#~ msgid "%1 - %2 (Week %3)"
-#~ msgstr "%1 - %2 (Seachtain %3)"
-
-#~ msgctxt ""
-#~ "date from -\n"
-#~ "to (week number)"
-#~ msgid ""
-#~ "%1 -\n"
-#~ "%2 (Week %3)"
-#~ msgstr ""
-#~ "%1 -\n"
-#~ "%2 (Seachtain %3)"
-
-#~ msgctxt "@option sort by title"
-#~ msgid "Title"
-#~ msgstr "Teideal"
-
-#~ msgctxt "@option sort by start date/time"
-#~ msgid "Start Date"
-#~ msgstr "Dáta Tosaigh"
-
-#~ msgctxt "@option sort by due date/time"
-#~ msgid "Due Date"
-#~ msgstr "Spriocdháta"
-
-#~ msgctxt "@option sort by priority"
-#~ msgid "Priority"
-#~ msgstr "Tosaíocht"
-
-#~ msgctxt "@option sort by percent completed"
-#~ msgid "Percent Complete"
-#~ msgstr "Céatadán Críochnaithe"
-
-#~ msgctxt "@option sort in increasing order"
-#~ msgid "Ascending"
-#~ msgstr "Ag dul suas"
-
-#~ msgctxt "@option sort in descreasing order"
-#~ msgid "Descending"
-#~ msgstr "Ag dul síos"
-
-#~ msgid "To-do list"
-#~ msgstr "Tascliosta"
-
-#~ msgid "Priority"
-#~ msgstr "Tosaíocht"
-
-#~ msgctxt "@label to-do summary"
-#~ msgid "Title"
-#~ msgstr "Teideal"
-
-#~ msgctxt "@label to-do percentage complete"
-#~ msgid "Complete"
-#~ msgstr "Críochnaithe"
-
-#~ msgid "Print da&y"
-#~ msgstr "Priontáil &la"
-
-#~ msgid "Print &week"
-#~ msgstr "Priontáil &seachtain"
-
-#~ msgid "Print mont&h"
-#~ msgstr "Priontáil &mí"
-
-#~ msgctxt "@title:window"
-#~ msgid "Printing error"
-#~ msgstr "Earráid phriontála"
-
-#~ msgctxt "@title:window"
-#~ msgid "Print"
-#~ msgstr "Priontáil"
-
-#~ msgctxt "@title:group"
-#~ msgid "Print Style"
-#~ msgstr "Stíl Phriontála"
-
-#~ msgctxt "@info:tooltip"
-#~ msgid "Set the print orientation"
-#~ msgstr "Socraigh an treoshuíomh priontála"
-
-#~ msgctxt "@item:inlistbox"
-#~ msgid "Use Printer Default"
-#~ msgstr "Úsáid Réamhshocruithe an Phrintéara"
-
-# #-#-#-#-#  tmp.OgeUn16657 (qt/kdeqt.po)  #-#-#-#-#
-# #-#-#-#-#  tmp.uDIeX16656 (playground-sysadmin/ktorrent.po)  #-#-#-#-#
-# in this context in Fiontar dict --kps
-#~ msgctxt "@item:inlistbox"
-#~ msgid "Portrait"
-#~ msgstr "Portráid"
-
-# in this context in Fiontar dict --kps
-#~ msgctxt "@item:inlistbox"
-#~ msgid "Landscape"
-#~ msgstr "Tírdhreach"
-
-#~ msgctxt "@action:button"
-#~ msgid "&Preview"
-#~ msgstr "&Réamhamharc"
-
-#~ msgid "Detai&ls (visiblility, secrecy, etc.)"
-#~ msgstr "&Mionsonraí (infheictheacht, rúndacht, srl.)"
-
-#~ msgid "&Attendees"
-#~ msgstr "R&annpháirtithe"
-
-#~ msgid "Print the attendees"
-#~ msgstr "Priontáil na rannpháirtithe"
-
-#~ msgid "&Notes, subitems"
-#~ msgstr "&Nótaí, fomhíreanna"
-
-#~ msgid "Print the notes"
-#~ msgstr "Priontáil na nótaí"
-
-#~ msgid "Attach&ments"
-#~ msgstr "Iatáin"
-
-#~ msgid "Exclude confidential items"
-#~ msgstr "Ná cuir imeachtaí faoi rún san áireamh"
-
-#~ msgid "Exclude private items"
-#~ msgstr "Ná cuir imeachtaí príobháideacha san áireamh"
-
-#~ msgid "This printing style does not have any configuration options."
-#~ msgstr "Níl aon roghanna cumraíochta ag an stíl phriontála seo."
-
-#~ msgctxt "print date: formatted-datetime"
-#~ msgid "printed: %1"
-#~ msgstr "priontáilte: %1"
-
-#~ msgctxt "starttime - endtime summary"
-#~ msgid "%1-%2 %3"
-#~ msgstr "%1-%2 %3"
-
-#~ msgctxt "starttime - endtime summary, location"
-#~ msgid "%1-%2 %3, %4"
-#~ msgstr "%1-%2 %3, %4"
-
-#~ msgctxt "weekday, shortmonthname daynumber"
-#~ msgid "%1, %2 <numid>%3</numid>"
-#~ msgstr "%1, %2 <numid>%3</numid>"
-
-#~ msgctxt "to-do summary (Due: datetime)"
-#~ msgid "%1 (Due: %2)"
-#~ msgstr "%1 (Dlite: %2)"
-
-#~ msgctxt "to-do summary (Due: date)"
-#~ msgid "%1 (Due: %2)"
-#~ msgstr "%1 (Dlite: %2)"
-
-#~ msgid "To-do: %1"
-#~ msgstr "Tasc: %1"
-
-#~ msgid "%1%"
-#~ msgstr "%1%"
-
-#~ msgctxt "Description - date"
-#~ msgid "%1 - %2"
-#~ msgstr "%1 - %2"
-
-#~ msgctxt "Date range: Month dayStart - dayEnd"
-#~ msgid "%1 %2 - %3"
-#~ msgstr "%1 %2 - %3"
-
-#~ msgctxt "Date range: monthStart dayStart - monthEnd dayEnd"
-#~ msgid "%1 %2 - %3 %4"
-#~ msgstr "%1 %2 - %3 %4"
-
-#~ msgid ""
-#~ "<html><head><meta name=\"qrichtext\" content=\"1\" /><style type=\"text/"
-#~ "css\">\n"
-#~ "p, li { white-space: pre-wrap; }\n"
-#~ "</style></head><body style=\" font-family:'Sans Serif'; font-size:9pt; "
-#~ "font-weight:400; font-style:normal;\">\n"
-#~ "<p style=\" margin-top:0px; margin-bottom:0px; margin-left:0px; margin-"
-#~ "right:0px; -qt-block-indent:0; text-indent:0px;\"><span style=\" font-"
-#~ "weight:600;\">Print to-dos options:</span></p></body></html>"
-#~ msgstr ""
-#~ "<html><head><meta name=\"qrichtext\" content=\"1\" /><style type=\"text/"
-#~ "css\">\n"
-#~ "p, li { white-space: pre-wrap; }\n"
-#~ "</style></head><body style=\" font-family:'Sans Serif'; font-size:9pt; "
-#~ "font-weight:400; font-style:normal;\">\n"
-#~ "<p style=\" margin-top:0px; margin-bottom:0px; margin-left:0px; margin-"
-#~ "right:0px; -qt-block-indent:0; text-indent:0px;\"><span style=\" font-"
-#~ "weight:600;\">Priontáil roghanna tascanna:</span></p></body></html>"
-
-#~ msgid "Name for this to-do list"
-#~ msgstr "Ainm ar an liosta tascanna"
-
-#~ msgid "To-dos to Print"
-#~ msgstr "Tascanna le Priontáil"
-
-#~ msgid "Print &all to-dos"
-#~ msgstr "Priontáil g&ach tasc"
-
-#~ msgid "Print &unfinished to-dos only"
-#~ msgstr "Priontáil tascanna &gan chríochnú amháin"
-
-#~ msgid "&Priority"
-#~ msgstr "&Tosaíocht"
-
-#~ msgid "Per&centage completed"
-#~ msgstr "&Céatadán críochnaithe"
-
-#~ msgid "Sorting Options"
-#~ msgstr "Roghanna Sórtála"
-
-#~ msgid "Sort field:"
-#~ msgstr "Réimse sórtála:"
-
-#~ msgid "Sort direction:"
-#~ msgstr "Ord sórtála:"
-
-#~ msgctxt "@title:window"
-#~ msgid "Reminders"
-#~ msgstr "Meabhrúcháin"
-
-#~ msgctxt "@action:button"
-#~ msgid "Dismiss Reminder"
-#~ msgstr "Ruaig an Meabhrúchán"
-
-#~ msgctxt "@action:button"
-#~ msgid "Dismiss All"
-#~ msgstr "Ruaig Uile"
-
-#~ msgctxt "@action:button"
-#~ msgid "Edit..."
-#~ msgstr "Eagar..."
-
-#~ msgctxt "@action:button"
-#~ msgid "Suspend"
-#~ msgstr "Cuir ar fionraí"
-
-#~ msgctxt "@title:column reminder title"
-#~ msgid "Title"
-#~ msgstr "Teideal"
-
-#~ msgctxt "@title:column happens at date/time"
-#~ msgid "Date Time"
-#~ msgstr "Dáta Am"
-
-#~ msgctxt "@label:spinbox"
-#~ msgid "Suspend &duration:"
-#~ msgstr "&Tréimhse fhionraíochta:"
-
-#~ msgctxt "@item:inlistbox suspend in terms of minutes"
-#~ msgid "minute(s)"
-#~ msgstr "nóiméad"
-
-#~ msgctxt "@item:inlistbox suspend in terms of hours"
-#~ msgid "hour(s)"
-#~ msgstr "uair"
-
-#~ msgctxt "@item:inlistbox suspend in terms of days"
-#~ msgid "day(s)"
-#~ msgstr "lá"
-
-#~ msgctxt "@item:inlistbox suspend in terms of weeks"
-#~ msgid "week(s)"
-#~ msgstr "seachtain"
-
-#~ msgctxt "@label an elipsis"
-#~ msgid "..."
-#~ msgstr "..."
-
-#~ msgctxt "@title"
-#~ msgid "Reminder"
-#~ msgstr "Meabhrúchán"
-
-#~ msgctxt "@title"
-#~ msgid "Reminder: %1"
-#~ msgstr "Meabhrúchán: %1"
-
-#~ msgctxt "@info"
-#~ msgid "Could not start KOrganizer so editing is not possible."
-#~ msgstr ""
-#~ "Níorbh fhéidir KOrganizer a thosú agus mar sin ní féidir aon rud a chur "
-#~ "in eagar."
-
-#~ msgctxt "@title:window"
-#~ msgid "KOrganizer Reminder Daemon"
-#~ msgstr "Deamhan Meabhrúchán KOrganizer"
-
-#~ msgctxt "@action:inmenu"
-#~ msgid "Suspend All Reminders"
-#~ msgstr "Cuir Gach Meabhrúchán Ar Fionraí"
-
-#~ msgctxt "@action:inmenu"
-#~ msgid "Dismiss All Reminders"
-#~ msgstr "Ruaig Gach Meabhrúchán"
-
-#~ msgctxt "@action:inmenu"
-#~ msgid "Start Reminder Daemon at Login"
-#~ msgstr "Tosaigh Deamhan Meabhrúchán ag am Logála Isteach"
-
-#~ msgctxt "@info:status"
-#~ msgid "There is 1 active reminder."
-#~ msgid_plural "There are %1 active reminders."
-#~ msgstr[0] "Tá 1 mheabhrúchán gníomhach ann."
-#~ msgstr[1] "Tá %1 mheabhrúchán gníomhach ann."
-#~ msgstr[2] "Tá %1 mheabhrúchán gníomhach ann."
-#~ msgstr[3] "Tá %1 meabhrúchán gníomhach ann."
-#~ msgstr[4] "Tá %1 meabhrúchán gníomhach ann."
-
-#~ msgctxt "@info:status"
-#~ msgid "No active reminders."
-#~ msgstr "Níl aon mheabhrúcháin gníomhacha ann."
-
-#~ msgctxt "@title:window"
-#~ msgid "Close KOrganizer Reminder Daemon"
-#~ msgstr "Dún Deamhan Meabhrúchán KOrganizer"
-
-#~ msgctxt "@action:button start the reminder daemon"
-#~ msgid "Start"
-#~ msgstr "Tosaigh"
-
-#~ msgctxt "@action:button do not start the reminder daemon"
-#~ msgid "Do Not Start"
-#~ msgstr "Ná Tosaigh"
-
-#~ msgid "(c) 2003 Cornelius Schumacher"
-#~ msgstr "© 2003 Cornelius Schumacher"
-
-#, fuzzy
-#~| msgid "Send Messages"
-#~ msgid "Free Busy Message"
-#~ msgstr "Seol Teachtaireachtaí"
-
-#~ msgid "Delete To-do"
-#~ msgstr "Scrios Tasc"
-
-#~ msgid "New calendar '%1'."
-#~ msgstr "Féilire nua '%1'."
-
-#~ msgid "Could not load calendar '%1'."
-#~ msgstr "Níorbh fhéidir féilire '%1' a luchtú."
-
-#~ msgid "Filter Applied"
-#~ msgstr "Scagaire Curtha i bhFeidhm"
-
-#~ msgid "Cut Only This"
-#~ msgstr "Gearr É Seo Amháin"
-
-#~ msgid "Cut All"
-#~ msgstr "Gearr Uile"
-
-#~ msgid "Copy Only This"
-#~ msgstr "Cóipeáil É Seo Amháin"
-
-#~ msgid "Copy All"
-#~ msgstr "Cóipeáil Uile"
-
-#~ msgid "Add %1"
-#~ msgstr "Cuir %1 Leis"
-
-#~ msgid "Edit %1"
-#~ msgstr "Cuir %1 in Eagar"
-
-#~ msgctxt "@label"
-#~ msgid "Additional email addresses:"
-#~ msgstr "Seoltaí ríomhphoist sa bhreis:"
-
-#~ msgctxt "@label"
-#~ msgid "Additional email address:"
-#~ msgstr "Seoladh ríomhphoist sa bhreis:"
-
-#~ msgctxt "@action:button add a new email address"
-#~ msgid "New"
-#~ msgstr "Nua"
-
-#~ msgctxt "@action:button"
-#~ msgid "Remove"
-#~ msgstr "Bain"
-
-#~ msgctxt "@label"
-#~ msgid "(EmptyEmail)"
-#~ msgstr "(SeoladhFolamh)"
-
-#~ msgid "Edit this journal entry"
-#~ msgstr "Cuir an iontráil dialainne seo in eagar"
-
-#~ msgid "Delete this journal entry"
-#~ msgstr "Scrios an iontráil dialainne seo"
-
-#~ msgid "Print this journal entry"
-#~ msgstr "Priontáil an iontráil dialainne seo"
-
-#~ msgid "Time Tracker"
-#~ msgstr "Lorgaire Ama"
-
-#~ msgctxt "Date from - to"
-#~ msgid "%1 - %2"
-#~ msgstr "%1 - %2"
-
-#~ msgid "No category"
-#~ msgstr "Gan chatagóir"
-
-#~ msgctxt "number of hours spent"
-#~ msgid "%1 hour"
-#~ msgid_plural "%1 hours"
-#~ msgstr[0] "aon uair"
-#~ msgstr[1] "dhá uair"
-#~ msgstr[2] "%1 huaire"
-#~ msgstr[3] "%1 n-uaire"
-#~ msgstr[4] "%1 uair"
-
-#~ msgctxt "percent of hours spent"
-#~ msgid " (%1%)"
-#~ msgstr " (%1%)"
-
-#~ msgctxt "@action:inmenu Unspecified priority"
-#~ msgid "unspecified"
-#~ msgstr "gan sonrú"
-
-#~ msgctxt "@action:inmenu highest priority"
-#~ msgid "1 (highest)"
-#~ msgstr "1 (is airde)"
-
-#~ msgctxt "@action:inmenu"
-#~ msgid "2"
-#~ msgstr "2"
-
-#~ msgctxt "@action:inmenu"
-#~ msgid "3"
-#~ msgstr "3"
-
-#~ msgctxt "@action:inmenu"
-#~ msgid "4"
-#~ msgstr "4"
-
-#~ msgctxt "@action:inmenu medium priority"
-#~ msgid "5 (medium)"
-#~ msgstr "5 (measartha)"
-
-#~ msgctxt "@action:inmenu"
-#~ msgid "6"
-#~ msgstr "6"
-
-#~ msgctxt "@action:inmenu"
-#~ msgid "7"
-#~ msgstr "7"
-
-#~ msgctxt "@action:inmenu"
-#~ msgid "8"
-#~ msgstr "8"
-
-#~ msgctxt "@action:inmenu lowest priority"
-#~ msgid "9 (lowest)"
-#~ msgstr "9 (is ísle)"
-
-#~ msgctxt "yes, recurring to-do"
-#~ msgid "Yes"
-#~ msgstr "Tá"
-
-#~ msgctxt "no, not a recurring to-do"
-#~ msgid "No"
-#~ msgstr "Níl"
-
-#~ msgctxt "delimiter for joining category names"
-#~ msgid ","
-#~ msgstr ","
-
-#~ msgid "Summary"
-#~ msgstr "Achoimre"
-
-#~ msgid "Recurs"
-#~ msgstr "Atarlaíonn"
-
-#~ msgctxt "@title:column percent complete"
-#~ msgid "Complete"
-#~ msgstr "Críochnaithe"
-
-#~ msgid "Description"
-#~ msgstr "Cur Síos"
-
-#~ msgctxt "@action:inmenu show the to-do"
-#~ msgid "&Show"
-#~ msgstr "&Taispeáin"
-
-#~ msgctxt "@action:inmenu edit the to-do"
-#~ msgid "&Edit..."
-#~ msgstr "&Eagar..."
-
-#~ msgctxt "@action:inmenu print the to-do"
-#~ msgid "&Print..."
-#~ msgstr "&Priontáil..."
-
-#~ msgctxt "@action:inmenu print preview the to-do"
-#~ msgid "Print Previe&w..."
-#~ msgstr "&Réamhamharc Priontála..."
-
-#~ msgctxt "@action:inmenu delete the to-do"
-#~ msgid "&Delete"
-#~ msgstr "&Scrios"
-
-#~ msgctxt "@action:inmenu create a new to-do"
-#~ msgid "New &To-do..."
-#~ msgstr "&Tasc Nua..."
-
-#~ msgctxt "@action:inmenu create a new sub-to-do"
-#~ msgid "New Su&b-to-do..."
-#~ msgstr "&Fo-Thasc Nua..."
-
-#~ msgctxt "@title:menu"
-#~ msgid "&Copy To"
-#~ msgstr "&Cóipeáil Go"
-
-#~ msgctxt "@title:menu"
-#~ msgid "&Move To"
-#~ msgstr "&Bog Go"
-
-#~ msgctxt "@action:inmenu unspecified priority"
-#~ msgid "unspecified"
-#~ msgstr "gan sonrú"
-
-#~ msgctxt "@action:inmenu priority value=2"
-#~ msgid "2"
-#~ msgstr "2"
-
-#~ msgctxt "@action:inmenu priority value=3"
-#~ msgid "3"
-#~ msgstr "3"
-
-#~ msgctxt "@action:inmenu priority value=4"
-#~ msgid "4"
-#~ msgstr "4"
-
-#~ msgctxt "@action:inmenu priority value=6"
-#~ msgid "6"
-#~ msgstr "6"
-
-#~ msgctxt "@action:inmenu priority value=7"
-#~ msgid "7"
-#~ msgstr "7"
-
-#~ msgctxt "@action:inmenu priority value=8"
-#~ msgid "8"
-#~ msgstr "8"
-
-#~ msgid "Click to add a new to-do"
-#~ msgstr "Cliceáil chun tasc nua a chur leis"
-
-#~ msgctxt "@info:tooltip"
-#~ msgid "Filter on these categories"
-#~ msgstr "Scag ar na catagóirí seo"
-
-#~ msgctxt "@item:inlistbox"
-#~ msgid "Select Categories"
-#~ msgstr "Roghnaigh Catagóirí"
-
-#~ msgctxt "@item:intext delimiter for joining category names"
-#~ msgid ","
-#~ msgstr ","
-
-#~ msgctxt "@item:inlistbox"
-#~ msgid "Select Priority"
-#~ msgstr "Roghnaigh Tosaíocht"
-
-#~ msgctxt "@action:inmenu priority is unspecified"
-#~ msgid "unspecified"
-#~ msgstr "gan sonrú"
-
-#~ msgctxt "@action:inmenu highest priority"
-#~ msgid "%1 (highest)"
-#~ msgstr "%1 (is airde)"
-
-#~ msgctxt "@action:inmenu medium priority"
-#~ msgid "%1 (medium)"
-#~ msgstr "%1 (measartha)"
-
-#~ msgctxt "@action:inmenu"
-#~ msgid "%1"
-#~ msgstr "%1"
-
-#~ msgctxt "priority is unspecified"
-#~ msgid "unspecified"
-#~ msgstr "gan sonrú"
-
-#~ msgctxt "highest priority"
-#~ msgid "%1 (highest)"
-#~ msgstr "%1 (is airde)"
-
-#~ msgctxt "medium priority"
-#~ msgid "%1 (medium)"
-#~ msgstr "%1 (measartha)"
-
-#~ msgctxt "lowest priority"
-#~ msgid "%1 (lowest)"
-#~ msgstr "%1 (is ísle)"
-
-#~ msgid "Events:"
-#~ msgstr "Imeachtaí:"
-
-#~ msgid "To-do:"
-#~ msgstr "Tasc:"
-
-#~ msgctxt "date, from - to"
-#~ msgid "%1, %2 - %3"
-#~ msgstr "%1, %2 - %3"
-
-#~ msgctxt "to-do due date"
-#~ msgid "  (Due: %1)"
-#~ msgstr "  (Dlite: %1)"
-
-#~ msgid "Find Events - KOrganizer"
-#~ msgstr "Aimsigh Imeachtaí - KOrganizer"
-
-#~ msgid "Opened calendar '%1'."
-#~ msgstr "Féilire oscailte '%1'."
-
-#~ msgctxt "unspecified priority"
-#~ msgid "unspecified"
-#~ msgstr "gan sonrú"
-
-#~ msgctxt "highest priority"
-#~ msgid "1 (highest)"
-#~ msgstr "1 (is airde)"
-
-#~ msgctxt "lowest priority"
-#~ msgid "9 (lowest)"
-#~ msgstr "9 (is ísle)"
-
-#~ msgctxt "@label in QuickSearchLine"
-#~ msgid "Search"
-#~ msgstr "Cuardaigh"
-
-#~ msgid "&Description"
-#~ msgstr "&Cur Síos"
-
-#~ msgid "Other Options"
-#~ msgstr "Roghanna Eile"
-
-#~ msgid "&Month View"
-#~ msgstr "Amharc &Míosa"
-
-#~ msgid "Edit Categories"
-#~ msgstr "Cuir Catagóirí in Eagar"
-
-#~ msgid "A&dd"
-#~ msgstr "C&uir Leis"
-
-#~ msgid "Add &Subcategory"
-#~ msgstr "Cuir Fochatagóir Lei&s"
-
-#~ msgid "Category list"
-#~ msgstr "Liosta catagóirí"
-
-#~ msgid "Default Category"
-#~ msgstr "Catagóir Réamhshocraithe"
-
-#~ msgid "New category"
-#~ msgstr "Catagóir nua"
-
-#~ msgid "New subcategory"
-#~ msgstr "Fochatagóir nua"
-
-#~ msgid "TestKabc"
-#~ msgstr "TestKabc"
-
-#~ msgctxt "@action:button"
-#~ msgid "&Archive"
-#~ msgstr "&Cartlannaigh"
-
-#~ msgctxt "@item:inlistbox expires in daily units"
-#~ msgid "Day(s)"
-#~ msgstr "Lá"
-
-#~ msgctxt "@item:inlistbox expiration in weekly units"
-#~ msgid "Week(s)"
-#~ msgstr "Seachtain"
-
-#~ msgctxt "@item:inlistbox expiration in monthly units"
-#~ msgid "Month(s)"
-#~ msgstr "Mí"
-
-#~ msgctxt "@label"
-#~ msgid "Archive &file:"
-#~ msgstr "Comhad &cartlainne:"
-
-#~ msgctxt "@label filter for KUrlRequester"
-#~ msgid "*.ics|iCalendar Files"
-#~ msgstr "*.ics|Comhaid iCalendar"
-
-#~ msgctxt "@option:check"
-#~ msgid "&Events"
-#~ msgstr "&Imeachtaí"
-
-#~ msgctxt "@option:check"
-#~ msgid "&To-dos"
-#~ msgstr "&Tascanna"
-
-#~ msgctxt "@option:check"
-#~ msgid "&Delete only, do not save"
-#~ msgstr "&Scrios amháin; ná sábháil"
-
-#~ msgid "Regularly archive events"
-#~ msgstr "Cuir imeachtaí i gcartlann go rialta"
-
-#~ msgid "Archive events"
-#~ msgstr "Cuir imeachtaí i gcartlann"
-
-#~ msgid "Archive to-dos"
-#~ msgstr "Cuir tascanna i gcartlann"
-
-#~ msgid "Delete old events"
-#~ msgstr "Scrios seanimeachtaí"
-
-#~ msgid "Delete Old Items"
-#~ msgstr "Scrios Seanmhíreanna"
-
-#~ msgid "Reminder"
-#~ msgstr "Meabhrúchán"
-
-#~ msgid "%2 (1 year)"
-#~ msgid_plural "%2 (%1 years)"
-#~ msgstr[0] "%2 (bliain amháin)"
-#~ msgstr[1] "%2 (%1 bhliain)"
-#~ msgstr[2] "%2 (%1 bliana)"
-#~ msgstr[3] "%2 (%1 mbliana)"
-#~ msgstr[4] "%2 (%1 bliain)"
-
-#~ msgid "Publishing"
-#~ msgstr "Foilsiú"
-
-#~ msgid "Unable to publish the item '%1'"
-#~ msgstr "Níorbh fhéidir mír '%1' a fhoilsiú"
-
-#~ msgid "Forwarding"
-#~ msgstr "Cur Ar Aghaidh"
-
-#~ msgid "Unable to forward the item '%1'"
-#~ msgstr "Níorbh fhéidir mír '%1' a chur ar aghaidh"
-
-#~ msgctxt "monthname year"
-#~ msgid "%1 %2"
-#~ msgstr "%1 %2"
-
-#~ msgctxt "'Month day' for month view cells"
-#~ msgid "%1 %2"
-#~ msgstr "%2 %1"
-
-#~ msgid "All Day"
-#~ msgstr "An Lá Ar Fad"
-
-#~ msgctxt "short_weekday date (e.g. Mon 13)"
-#~ msgid "%1 %2"
-#~ msgstr "%1 %2"
-
-#~ msgid "- %1"
-#~ msgstr "- %1"
-
-#~ msgid "Timezone:"
-#~ msgstr "Crios ama:"
-
-#~ msgid "&Add Timezones..."
-#~ msgstr "Cuir Criosanna &Ama Leis..."
-
-#~ msgid "&Remove Timezone %1"
-#~ msgstr "&Bain Crios Ama %1"
-
-#~ msgid "Timezone: %1"
-#~ msgstr "Crios ama: %1"
-
-#~ msgid "Country Code: %1"
-#~ msgstr "Cód Tíre: %1"
-
-#~ msgid "Comment:<br/>%1"
-#~ msgstr "Nóta:<br/>%1"
-
-#~ msgid "Timezone"
-#~ msgstr "Crios ama"
-
-#~ msgid "Start Time"
-#~ msgstr "Am Tosaithe"
-
-#~ msgid "End Time"
-#~ msgstr "Am Críochnaithe"
-
-#~ msgid "Mike Arthur"
-#~ msgstr "Mike Arthur"
-
-#~ msgid "WhatsThis text for FullName setting"
-#~ msgstr "Téacs 'Cad É Seo' don socrú Ainm Iomlán"
-
-#~ msgid "WhatsThis text for Email setting"
-#~ msgstr "Téacs 'Cad É Seo' don socrú Seoladh Ríomhphoist"
-
-#~ msgctxt "@title:group"
-#~ msgid "Saving Calendar"
-#~ msgstr "Féilire á Sábháil"
-
-#~ msgctxt "@title:tab general to-do settings"
-#~ msgid "&General"
-#~ msgstr "&Ginearálta"
-
-#~ msgctxt "journal title"
-#~ msgid "T&itle:"
-#~ msgstr "T&eideal:"
-
-#~ msgid "&Date:"
-#~ msgstr "&Dáta:"
-
-#~ msgid "&Time: "
-#~ msgstr "&Am: "
-
-#~ msgid "Select Cate&gories..."
-#~ msgstr "Roghnaigh C&atagóirí..."
-
-#~ msgctxt "@title general journal settings"
-#~ msgid "General"
-#~ msgstr "Ginearálta"
-
-#~ msgctxt "@label attachment contains binary data"
-#~ msgid "[Binary data]"
-#~ msgstr "[Sonraí dénártha]"
-
-#~ msgctxt "@label"
-#~ msgid "Attachment name"
-#~ msgstr "Ainm an iatáin"
-
-#~ msgctxt "@info:tooltip"
-#~ msgid "Give the attachment a name"
-#~ msgstr "Cuir ainm ar an iatán"
-
-#~ msgctxt "@label"
-#~ msgid "Type:"
-#~ msgstr "Cineál:"
-
-#~ msgctxt "@label unknown mimetype"
-#~ msgid "Unknown"
-#~ msgstr "Anaithnid"
-
-#~ msgctxt "@label"
-#~ msgid "Location:"
-#~ msgstr "Suíomh:"
-
-#~ msgctxt "@label"
-#~ msgid "Size:"
-#~ msgstr "Méid:"
-
-#~ msgctxt "@label"
-#~ msgid "Attachments:"
-#~ msgstr "Iatáin:"
-
-#~ msgctxt "@info:tooltip"
-#~ msgid "Add an attachment"
-#~ msgstr "Cuir iatán leis"
-
-#~ msgctxt "@info:tooltip"
-#~ msgid "Remove the selected attachment"
-#~ msgstr "Bain an t-iatán roghnaithe"
-
-#~ msgctxt "@action:inmenu open the attachment in a viewer"
-#~ msgid "&Open"
-#~ msgstr "&Oscail"
-
-#~ msgctxt "@action:inmenu show a dialog used to edit the attachment"
-#~ msgid "&Properties..."
-#~ msgstr "&Airíonna..."
-
-#~ msgctxt "@action:inmenu"
-#~ msgid "&Link here"
-#~ msgstr "&Nasc anseo"
-
-#~ msgctxt "@action:inmenu"
-#~ msgid "&Copy here"
-#~ msgstr "&Cóipeáil anseo"
-
-#~ msgctxt "@title"
-#~ msgid "Add Attachment"
-#~ msgstr "Cuir Iatán Leis"
-
-#~ msgctxt "@action:button"
-#~ msgid "Manage &Templates..."
-#~ msgstr "Bainistigh &Teimpléid..."
-
-#~ msgctxt "@title:tab"
-#~ msgid "Atte&ndees"
-#~ msgstr "Rann&pháirtithe"
-
-#~ msgctxt "@info"
-#~ msgid "Unable to find template '%1'."
-#~ msgstr "Ní féidir teimpléad '%1' a aimsiú."
-
-#~ msgctxt "@title:column attendee name"
-#~ msgid "Name"
-#~ msgstr "Ainm"
-
-#~ msgctxt "@title:column attendee email"
-#~ msgid "Email"
-#~ msgstr "Ríomhphost"
-
-#~ msgctxt "@title:column attendee role"
-#~ msgid "Role"
-#~ msgstr "Ról"
-
-#~ msgctxt "@title:column attendee status"
-#~ msgid "Status"
-#~ msgstr "Stádas"
-
-#~ msgctxt "@title:column attendee has RSVPed?"
-#~ msgid "RSVP"
-#~ msgstr "RSVP"
-
-#~ msgctxt "@title"
-#~ msgid "Invalid Email Address"
-#~ msgstr "Seoladh Ríomhphoist Neamhbhailí"
-
-#~ msgid "Template Name"
-#~ msgstr "Ainm an Teimpléid"
-
-#~ msgid "Please enter a name for the new template:"
-#~ msgstr "Iontráil ainm ar an teimpléad nua:"
-
-#~ msgid "Overwrite"
-#~ msgstr "Forscríobh"
-
-#~ msgid "Are you sure that you want to remove the template <b>%1</b>?"
-#~ msgstr "An bhfuil tú cinnte gur mian leat teimpléad <b>%1</b> a bhaint?"
-
-#~ msgid "Remove"
-#~ msgstr "Bain"
-
-#~ msgctxt "@label attendee's name"
-#~ msgid "Na&me:"
-#~ msgstr "Ain&m:"
-
-#~ msgctxt "@action:button new attendee"
-#~ msgid "&New"
-#~ msgstr "&Nua"
-
-#~ msgctxt "@info:tooltip"
-#~ msgid "Add an attendee"
-#~ msgstr "Cuir rannpháirtí leis"
-
-#~ msgctxt "@action:button"
-#~ msgid "&Remove"
-#~ msgstr "&Bain"
-
-#~ msgctxt "@item:inlistbox"
-#~ msgid "1st"
-#~ msgstr "1ú"
-
-#~ msgctxt "@item:inlistbox"
-#~ msgid "2nd"
-#~ msgstr "2ú"
-
-#~ msgctxt "@item:inlistbox"
-#~ msgid "3rd"
-#~ msgstr "3ú"
-
-#~ msgctxt "@item:inlistbox"
-#~ msgid "4th"
-#~ msgstr "4ú"
-
-#~ msgctxt "@item:inlistbox"
-#~ msgid "5th"
-#~ msgstr "5ú"
-
-#~ msgctxt "@label"
-#~ msgid "&Recur every"
-#~ msgstr "&Atarlaigh gach"
-
-#~ msgctxt "@label recurrence expressed in days"
-#~ msgid "day(s)"
-#~ msgstr "lá"
-
-#~ msgctxt "@label"
-#~ msgid "week(s) on:"
-#~ msgstr "seachtain ar:"
-
-#~ msgctxt "@info:tooltip"
-#~ msgid "Recur on %1"
-#~ msgstr "Atarlú ar %1"
-
-#~ msgctxt "@label"
-#~ msgid "month(s)"
-#~ msgstr "mí"
-
-#~ msgctxt "@item:inlistbox"
-#~ msgid "6th"
-#~ msgstr "6ú"
-
-#~ msgctxt "@item:inlistbox"
-#~ msgid "7th"
-#~ msgstr "7ú"
-
-#~ msgctxt "@item:inlistbox"
-#~ msgid "8th"
-#~ msgstr "8ú"
-
-#~ msgctxt "@item:inlistbox"
-#~ msgid "9th"
-#~ msgstr "9ú"
-
-#~ msgctxt "@item:inlistbox"
-#~ msgid "10th"
-#~ msgstr "10ú"
-
-#~ msgctxt "@item:inlistbox"
-#~ msgid "11th"
-#~ msgstr "11ú"
-
-#~ msgctxt "@item:inlistbox"
-#~ msgid "12th"
-#~ msgstr "12ú"
-
-#~ msgctxt "@item:inlistbox"
-#~ msgid "13th"
-#~ msgstr "13ú"
-
-#~ msgctxt "@item:inlistbox"
-#~ msgid "14th"
-#~ msgstr "14ú"
-
-#~ msgctxt "@item:inlistbox"
-#~ msgid "15th"
-#~ msgstr "15ú"
-
-#~ msgctxt "@item:inlistbox"
-#~ msgid "16th"
-#~ msgstr "16ú"
-
-#~ msgctxt "@item:inlistbox"
-#~ msgid "17th"
-#~ msgstr "17ú"
-
-#~ msgctxt "@item:inlistbox"
-#~ msgid "18th"
-#~ msgstr "18ú"
-
-#~ msgctxt "@item:inlistbox"
-#~ msgid "19th"
-#~ msgstr "19ú"
-
-#~ msgctxt "@item:inlistbox"
-#~ msgid "20th"
-#~ msgstr "20ú"
-
-#~ msgctxt "@item:inlistbox"
-#~ msgid "21st"
-#~ msgstr "21ú"
-
-#~ msgctxt "@item:inlistbox"
-#~ msgid "22nd"
-#~ msgstr "22ú"
-
-#~ msgctxt "@item:inlistbox"
-#~ msgid "23rd"
-#~ msgstr "23ú"
-
-#~ msgctxt "@item:inlistbox"
-#~ msgid "24th"
-#~ msgstr "24ú"
-
-#~ msgctxt "@item:inlistbox"
-#~ msgid "25th"
-#~ msgstr "25ú"
-
-#~ msgctxt "@item:inlistbox"
-#~ msgid "26th"
-#~ msgstr "26ú"
-
-#~ msgctxt "@item:inlistbox"
-#~ msgid "27th"
-#~ msgstr "27ú"
-
-#~ msgctxt "@item:inlistbox"
-#~ msgid "28th"
-#~ msgstr "28ú"
-
-#~ msgctxt "@item:inlistbox"
-#~ msgid "29th"
-#~ msgstr "29ú"
-
-#~ msgctxt "@item:inlistbox"
-#~ msgid "30th"
-#~ msgstr "30ú"
-
-#~ msgctxt "@item:inlistbox"
-#~ msgid "31st"
-#~ msgstr "31ú"
-
-#~ msgctxt "@label"
-#~ msgid "day"
-#~ msgstr "lá"
-
-#~ msgctxt "@label"
-#~ msgid "year(s)"
-#~ msgstr "bliain"
-
-#~ msgctxt "@label part between XXX and YYY of 'Recur on day XXX of month YYY'"
-#~ msgid " &of "
-#~ msgstr " &de "
-
-#~ msgctxt "@option:radio Part before XXX in 'Recur on NNN. WEEKDAY of MONTH'"
-#~ msgid "&On the"
-#~ msgstr "&Ar an"
-
-#~ msgctxt ""
-#~ "@label part between WEEKDAY and MONTH in 'Recur on NNN. WEEKDAY of MONTH'"
-#~ msgid " o&f "
-#~ msgstr " d&e "
-
-#~ msgctxt "@title:group"
-#~ msgid "E&xceptions"
-#~ msgstr "E&isceachtaí"
-
-#~ msgctxt "@action:button"
-#~ msgid "&Add"
-#~ msgstr "C&uir Leis"
-
-#~ msgctxt "@action:button"
-#~ msgid "&Delete"
-#~ msgstr "&Scrios"
-
-#~ msgctxt "@title:window"
-#~ msgid "Edit Exceptions"
-#~ msgstr "Cuir Eisceachtaí in Eagar"
-
-#~ msgctxt "@title:group"
-#~ msgid "Recurrence Range"
-#~ msgstr "Raon Atarlaithe"
-
-#~ msgctxt "@label"
-#~ msgid "Begin on:"
-#~ msgstr "Tosaigh ar:"
-
-#~ msgctxt "@label"
-#~ msgid "Begins on: %1"
-#~ msgstr "Tosaigh ar: %1"
-
-#~ msgctxt "@title:window"
-#~ msgid "Edit Recurrence Range"
-#~ msgstr "Cuir an Raon Atarlaithe in Eagar"
-
-#~ msgctxt "@title:group"
-#~ msgid "Recurrence Types"
-#~ msgstr "Cineálacha Atarlaithe"
-
-#~ msgctxt "@option:radio recur daily"
-#~ msgid "&Daily"
-#~ msgstr "Go &Laethúil"
-
-#~ msgctxt "@option:radio recur weekly"
-#~ msgid "&Weekly"
-#~ msgstr "Go &Seachtainiúil"
-
-#~ msgctxt "@option:radio recur monthly"
-#~ msgid "&Monthly"
-#~ msgstr "Go &Míosúil"
-
-#~ msgctxt "@option:radio recur yearly"
-#~ msgid "&Yearly"
-#~ msgstr "Go &Bliantúil"
-
-#~ msgctxt "@option:check"
-#~ msgid "&Enable recurrence"
-#~ msgstr "Cumasaigh &atarlú"
-
-#~ msgctxt "@title:group"
-#~ msgid "Recurrence Rule"
-#~ msgstr "Riail Atarlaithe"
-
-#~ msgid "Date && Time"
-#~ msgstr "Dáta agus Am"
-
-#~ msgctxt "@option:check to-do start datetime"
-#~ msgid "Sta&rt:"
-#~ msgstr "Tos&aigh:"
-
-#~ msgctxt "to-do due datetime"
-#~ msgid "&Due:"
-#~ msgstr "&Dlite:"
-
-#~ msgctxt "Percent complete"
-#~ msgid "%1 %"
-#~ msgstr "%1 %"
-
-#~ msgctxt "to-do completed"
-#~ msgid "co&mpleted"
-#~ msgstr "&críochnaithe"
-
-#~ msgid "&Priority:"
-#~ msgstr "&Tosaíocht:"
-
-#~ msgctxt "to-do start datetime"
-#~ msgid "Start: %1"
-#~ msgstr "Tosú: %1"
-
-#~ msgctxt "to-do completed on datetime"
-#~ msgid "co&mpleted on"
-#~ msgstr "&críochnaithe ar"
-
-#~ msgctxt "@info:tooltip"
-#~ msgid "Set the title"
-#~ msgstr "Socraigh an teideal"
-
-#~ msgctxt "@label event or to-do title"
-#~ msgid "T&itle:"
-#~ msgstr "Te&ideal:"
-
-#~ msgctxt "@label"
-#~ msgid "&Location:"
-#~ msgstr "&Suíomh:"
-
-#~ msgctxt "@label"
-#~ msgid "Categories:"
-#~ msgstr "Catagóirí:"
-
-#~ msgctxt "@action:button select a category"
-#~ msgid "&Select..."
-#~ msgstr "&Roghnaigh..."
-
-#~ msgctxt "@label"
-#~ msgid "Acc&ess:"
-#~ msgstr "Roc&htain:"
-
-#~ msgctxt "@info:tooltip"
-#~ msgid "Set the secrecy level"
-#~ msgstr "Socraigh an leibhéal rúndachta"
-
-#~ msgctxt "@option:check"
-#~ msgid "Rich text"
-#~ msgstr "Méith-Théacs"
-
-#~ msgctxt "@info:tooltip"
-#~ msgid "Toggle Rich Text"
-#~ msgstr "Scoránaigh Méith-Théacs"
-
-#~ msgctxt "@option:check"
-#~ msgid "&Reminder:"
-#~ msgstr "&Meabhrúchán:"
-
-#~ msgctxt "@info:tooltip"
-#~ msgid "Set a reminder"
-#~ msgstr "Socraigh meabhrúchán"
-
-#~ msgctxt "@item:inlistbox alarm expressed in minutes"
-#~ msgid "minute(s)"
-#~ msgstr "nóiméad"
-
-#~ msgctxt "@item:inlistbox alarm expressed in hours"
-#~ msgid "hour(s)"
-#~ msgstr "uair"
-
-#~ msgctxt "@item:inlistbox alarm expressed in days"
-#~ msgid "day(s)"
-#~ msgstr "lá"
-
-#~ msgctxt "@action:button advanced alarm settings"
-#~ msgid "Advanced..."
-#~ msgstr "Casta..."
-
-#~ msgctxt "@info:tooltip"
-#~ msgid "Set an advanced alarm"
-#~ msgstr "Socraigh ardmheabhrúchán"
-
-#~ msgctxt "@label"
-#~ msgid "1 reminder configured"
-#~ msgid_plural "%1 reminders configured"
-#~ msgstr[0] "Cumraíodh 1 mheabhrúchán"
-#~ msgstr[1] "Cumraíodh %1 mheabhrúchán"
-#~ msgstr[2] "Cumraíodh %1 mheabhrúchán"
-#~ msgstr[3] "Cumraíodh %1 meabhrúchán"
-#~ msgstr[4] "Cumraíodh %1 meabhrúchán"
-
-#~ msgctxt "@label"
-#~ msgid "1 advanced reminder configured"
-#~ msgstr "Cumraíodh 1 ardmheabhrúchán"
-
-#~ msgctxt "@label"
-#~ msgid "No attendees"
-#~ msgstr "Gan rannpháirtithe"
-
-#~ msgctxt "@label event start time"
-#~ msgid "&Start:"
-#~ msgstr "&Tosú:"
-
-#~ msgctxt "@info:tooltip"
-#~ msgid "Set the start time"
-#~ msgstr "Socraigh an t-am tosaithe"
-
-#~ msgctxt "@option unknown alarm type"
-#~ msgid "Unknown"
-#~ msgstr "Anaithnid"
-
-#~ msgctxt "@option run application or script"
-#~ msgid "Application/Script"
-#~ msgstr "Feidhmchlár/Script"
-
-#~ msgctxt "@option send email reminder"
-#~ msgid "Email"
-#~ msgstr "Ríomhphost"
-
-#~ msgctxt "@option play a sound"
-#~ msgid "Audio"
-#~ msgstr "Fuaim"
-
-#~ msgctxt "@item@intable alarm offset specified in days"
-#~ msgid "1 day"
-#~ msgid_plural "%1 days"
-#~ msgstr[0] "Lá amháin"
-#~ msgstr[1] "%1 lá"
-#~ msgstr[2] "%1 lá"
-#~ msgstr[3] "%1 lá"
-#~ msgstr[4] "%1 lá"
-
-#~ msgctxt "@item@intable alarm offset specified in hours"
-#~ msgid "1 hour"
-#~ msgid_plural "%1 hours"
-#~ msgstr[0] "1 uair"
-#~ msgstr[1] "%1 uair"
-#~ msgstr[2] "%1 huaire"
-#~ msgstr[3] "%1 n-uaire"
-#~ msgstr[4] "%1 uair"
-
-#~ msgctxt "@item@intable alarm offset specified in minutes"
-#~ msgid "1 minute"
-#~ msgid_plural "%1 minutes"
-#~ msgstr[0] "1 nóiméad"
-#~ msgstr[1] "%1 nóiméad"
-#~ msgstr[2] "%1 nóiméad"
-#~ msgstr[3] "%1 nóiméad"
-#~ msgstr[4] "%1 nóiméad"
-
-#~ msgctxt "@item@intable yes, the alarm repeats"
-#~ msgid "Yes"
-#~ msgstr "Tá"
-
-#~ msgctxt "@title"
-#~ msgid "Edit Reminders"
-#~ msgstr "Cuir Meabhrúcháin in Eagar"
-
-#~ msgctxt "@title:tab general event settings"
-#~ msgid "&General"
-#~ msgstr "&Ginearálta"
-
-#~ msgctxt "@title:tab"
-#~ msgid "&Attendees"
-#~ msgstr "R&annpháirtithe"
-
-#~ msgctxt "@label"
-#~ msgid "Scale: "
-#~ msgstr "Scála: "
-
-#~ msgctxt "@item:inlistbox range in hours"
-#~ msgid "Hour"
-#~ msgstr "Uair"
-
-#~ msgctxt "@action:button"
-#~ msgid "Center on Start"
-#~ msgstr "Socraigh Do Stádas"
-
-#~ msgctxt "@action:button reload freebusy data"
-#~ msgid "Reload"
-#~ msgstr "Athluchtaigh"
-
-#~ msgctxt "@title:column attendee name"
-#~ msgid "Attendee"
-#~ msgstr "Rannpháirtí"
-
-#~ msgctxt "@title:window"
-#~ msgid "Invalid Email Address"
-#~ msgstr "Seoladh Ríomhphoist Neamhbhailí"
-
-#~ msgid "Time"
-#~ msgstr "Am"
-
-#~ msgid "&Interval:"
-#~ msgstr "&Eatramh:"
-
-#~ msgctxt "@label:spinbox repeat interval expressed in minutes"
-#~ msgid " Minute(s)"
-#~ msgstr " Nóiméad"
-
-#~ msgctxt "repeat every X minutes"
-#~ msgid "every "
-#~ msgstr "gach "
-
-#~ msgid "Type"
-#~ msgstr "Cineál"
-
-#~ msgid "&Sound"
-#~ msgstr "&Fuaim"
-
-#~ msgid "Application / script"
-#~ msgstr "Feidhmchlár / script"
-
-#~ msgid "Sound &file:"
-#~ msgstr "Comhad &fuaime:"
-
-#~ msgid "&Application / Script:"
-#~ msgstr "F&eidhmchlár / Script:"
-
-#~ msgid "*.*|All files"
-#~ msgstr "*.*|Gach comhad"
-
-#~ msgid "Ar&guments:"
-#~ msgstr "Ar&góintí:"
-
-#~ msgid "&Text of the message:"
-#~ msgstr "&Téacs na teachtaireachta:"
-
-#~ msgid "D&uplicate"
-#~ msgstr "&Dúblach"
-
-#~ msgid "Offset"
-#~ msgstr "Fritháireamh"
-
-#~ msgid "Repeat"
-#~ msgstr "Arís"
-
-#~ msgid "Template Management"
-#~ msgstr "Bainisteoireacht na dTeimpléad"
-
-#~ msgid "The list of managed templates"
-#~ msgstr "An liosta de theimpléid bhainistithe"
-
-#~ msgid "&New..."
-#~ msgstr "&Nua..."
-
-#~ msgctxt "incidence category: phone call"
-#~ msgid "Phone Call"
-#~ msgstr "Glao Fóin"
-
-#~ msgctxt "incidence category"
-#~ msgid "Education"
-#~ msgstr "Oideachas"
-
-#~ msgctxt ""
-#~ "incidence category: official or unofficial observance of religious/"
-#~ "national/cultural/other significance, often accompanied by celebrations "
-#~ "or festivities"
-#~ msgid "Holiday"
-#~ msgstr "Lá Saoire"
-
-#~ msgctxt ""
-#~ "incidence category: a lengthy time away from work or school, a trip "
-#~ "abroad, or simply a pleasure trip away from home"
-#~ msgid "Vacation"
-#~ msgstr "Saoire"
-
-#~ msgctxt "incidence category"
-#~ msgid "Personal"
-#~ msgstr "Pearsanta"
-
-#~ msgctxt ""
-#~ "incidence category: typically associated with leaving home for business, "
-#~ "and not pleasure"
-#~ msgid "Travel"
-#~ msgstr "Taisteal"
-
-#~ msgctxt "incidence category"
-#~ msgid "Miscellaneous"
-#~ msgstr "Rudaí éagsúla"
-
-#~ msgid "Full &name"
-#~ msgstr "Ai&nm iomlán"
-
-#~ msgid "E&mail address"
-#~ msgstr "S&eoladh ríomhphoist"
-
-#~ msgid "Do Not Send"
-#~ msgstr "Ná Seol"
-
-#~ msgctxt "@option:radio"
-#~ msgid "&Day "
-#~ msgstr "&Lá "
-
-#~ msgctxt ""
-#~ "@option:radio Part before XXX in 'Recur on NNN. WEEKDAY of MONTH', short "
-#~ "version"
-#~ msgid "&On"
-#~ msgstr "&Ar"
-
-#~ msgctxt "@option:radio"
-#~ msgid "Day #"
-#~ msgstr "Lá #"
-
-#~ msgctxt "@item:inlistbox recur daily"
-#~ msgid "Daily"
-#~ msgstr "Go Laethúil"
-
-#~ msgctxt "@item:inlistbox recur weekly"
-#~ msgid "Weekly"
-#~ msgstr "Go Seachtainiúil"
-
-#~ msgctxt "@item:inlistbox recur monthly"
-#~ msgid "Monthly"
-#~ msgstr "Go Míosúil"
-
-#~ msgctxt "@item:inlistbox recur yearly"
-#~ msgid "Yearly"
-#~ msgstr "Go Bliantúil"
-
-#~ msgctxt "@action:button"
-#~ msgid "Recurrence Range..."
-#~ msgstr "Raon Atarlaithe..."
-
-#~ msgctxt "@action:button"
-#~ msgid "Exceptions..."
-#~ msgstr "Eisceachtaí..."
-
-#~ msgctxt "@title:column email addresses"
-#~ msgid "Email"
-#~ msgstr "Ríomhphost"
-
-#~ msgid "Invalid URL"
-#~ msgstr "URL neamhbhailí"
-
-#~ msgid "Error message: %1"
-#~ msgstr "Teachtaireacht earráide: %1"
-
-#~ msgid "Send Email"
-#~ msgstr "Seol Ríomhphost"
-
-#~ msgctxt "@title:window"
-#~ msgid "Edit Journal: %1"
-#~ msgstr "Cuir Dialann in Eagar: %1"
-
-#~ msgid "&iCalendar..."
-#~ msgstr "&iCalendar..."
-
-#~ msgid "&vCalendar..."
-#~ msgstr "&vCalendar..."
-
-#~ msgid "Could not load calendar."
-#~ msgstr "Níorbh fhéidir an fhéilire a luchtú."
-
-#~ msgid "Unable to exit. Saving still in progress."
-#~ msgstr "Ní féidir scor. Sábháil ar siúl fós."
-
-# not Sábháil Earráid.
-#~ msgid "Save Error"
-#~ msgstr "Earráid le linn Sábhála"
-
-#~ msgid "Continue Save"
-#~ msgstr "Sábháil mar sin féin"
-
-#~ msgid "Cancel Save"
-#~ msgstr "Cealaigh an Sábháil"
-
-#~ msgid "Mail Client"
-#~ msgstr "Cliant Ríomhphoist"
-
-#~ msgid "Sendmail"
-#~ msgstr "Sendmail"
-
-#~ msgid "&OK"
-#~ msgstr "&OK"
-
-#~ msgctxt "reload the resource"
-#~ msgid "Re&load"
-#~ msgstr "At&hluchtaigh"
-
-#~ msgctxt "save the resource"
-#~ msgid "&Save"
-#~ msgstr "&Sábháil"
-
-#~ msgid "Show &Info"
-#~ msgstr "Ta&ispeáin Eolas"
-
-#~ msgctxt "@title:tab general event settings"
-#~ msgid "General"
-#~ msgstr "Ginearálta"
-
-#~ msgctxt "@title:tab"
-#~ msgid "Details"
-#~ msgstr "Mionsonraí"
-
-#~ msgctxt "@title:tab"
-#~ msgid "Rec&urrence"
-#~ msgstr "&Atarlú"
-
-#~ msgctxt "@title:tab general to-do settings"
-#~ msgid "General"
-#~ msgstr "Ginearálta"
-
-#~ msgid "Active Calendar"
-#~ msgstr "Féilire Bheo"
-
-#~ msgctxt "incidence type is event"
-#~ msgid "event"
-#~ msgstr "imeacht"
-
-#~ msgctxt "incidence type is to-do/task"
-#~ msgid "task"
-#~ msgstr "tasc"
-
-#~ msgctxt "incidence type is journal"
-#~ msgid "journal entry"
-#~ msgstr "iontráil dialainne"
-
-#~ msgid "Zoom In"
-#~ msgstr "Súmáil Isteach"
-
-#~ msgid "Zoom Out"
-#~ msgstr "Súmáil Amach"
-
-#~ msgid "Decline"
-#~ msgstr "Diúltaigh"
-
-#~ msgid "Accept"
-#~ msgstr "Glac Leis"
-
-#~ msgctxt "@title:column reminder date/time"
-#~ msgid "Reminder"
-#~ msgstr "Meabhrúchán"
-
-#~ msgctxt "@action:button"
-#~ msgid "Dismiss"
-#~ msgstr "Ruaig"
-
-#~ msgctxt "@item:inlistbox alarm offset expressed in minutes"
-#~ msgid "Minutes"
-#~ msgstr "Nóiméad"
-
-#~ msgctxt "@item:inlistbox alarm offset expressed in hours"
-#~ msgid "Hours"
-#~ msgstr "Uair"
-
-#~ msgctxt "@item:inlistbox alarm offset expressed in days"
-#~ msgid "Days"
-#~ msgstr "Lá"
-
-#~ msgid "Could not upload file."
-#~ msgstr "Ní féidir an comhad a uasluchtú."
-
-#~ msgctxt "@label"
-#~ msgid "Time zone:"
-#~ msgstr "Crios ama:"
-
-#~ msgctxt "@info:whatsthis"
-#~ msgid ""
-#~ "Select your time zone from the list of locations on this drop down box. "
-#~ "If your city is not listed, select one which shares the same time zone. "
-#~ "KOrganizer will automatically adjust for daylight savings."
-#~ msgstr ""
-#~ "Roghnaigh do chrios ama ón liosta sa bhosca anuas seo. Mura bhfeiceann tú "
-#~ "do chathair, roghnaigh cathair éigin sa chrios ama céanna. Láimhseálfaidh "
-#~ "KOrganizer am coigilte sholas an lae go huathoibríoch."
-
-#~ msgctxt "@item:inlistbox unknown timezone"
-#~ msgid "Unknown"
-#~ msgstr "Anaithnid"
-
-#~ msgctxt "@item:inlistbox no timezone selected"
-#~ msgid "[No selection]"
-#~ msgstr "[Gan roghnúchán]"
-
-#~ msgid "&Journal entries"
-#~ msgstr "Iontrálacha &dialainne"
-
-#~ msgid "&Find"
-#~ msgstr "&Aimsigh"
-
-#~ msgctxt "@info"
-#~ msgid "This journal entry will be permanently deleted."
-#~ msgstr "Scriosfar an iontráil dialainne seo go brách."
-
-#~ msgctxt "@info"
-#~ msgid "This item will be permanently deleted."
-#~ msgstr "Scriosfar an mhír seo go brách."
-
-#~ msgctxt "@action:button"
-#~ msgid "Delete"
-#~ msgstr "Scrios"
-
-#~ msgid "Add Subresource"
-#~ msgstr "Cuir Fo-Acmhainn Leis"
-
-#~ msgid "Please enter a name for the new subresource"
-#~ msgstr "Iontráil ainm ar an bhfo-acmhainn nua"
-
-#~ msgid "%1 resource"
-#~ msgstr "Acmhainn %1"
-
-#~ msgid "Rename Subresource"
-#~ msgstr "Athainmnigh an Fho-Acmhainn"
-
-#~ msgid "Resource Colors"
-#~ msgstr "Dathanna Acmhainne"
-
-#~ msgid "&Add..."
-#~ msgstr "&Cuir Leis..."
-
-#~ msgctxt "@action:inmenu remove the attachment"
-#~ msgid "&Delete"
-#~ msgstr "&Scrios"
-
-#~ msgctxt "@title:group"
-#~ msgid "Color Usage"
-#~ msgstr "Úsáid Dathanna"
-
-#~ msgctxt "@option:radio"
-#~ msgid "Mail client"
-#~ msgstr "Cliant ríomhphoist"
-
-#~ msgctxt "@item:inlistbox"
-#~ msgid "1 minute"
-#~ msgstr "1 nóiméad"
-
-#~ msgctxt "@item:inlistbox"
-#~ msgid "5 minutes"
-#~ msgstr "5 nóiméad"
-
-#~ msgctxt "@item:inlistbox"
-#~ msgid "10 minutes"
-#~ msgstr "10 nóiméad"
-
-#~ msgctxt "@item:inlistbox"
-#~ msgid "15 minutes"
-#~ msgstr "15 nóiméad"
-
-#~ msgctxt "@item:inlistbox"
-#~ msgid "30 minutes"
-#~ msgstr "30 nóiméad"
-
-#~ msgctxt "@title:column reminder summary"
-#~ msgid "Summary"
-#~ msgstr "Achoimre"
-
-#~ msgid "Apply Template"
-#~ msgstr "Cuir Teimpléad i bhFeidhm"
-
-#~ msgctxt "Journal for DATE"
-#~ msgid "Journal for %1"
-#~ msgstr "Dialann %1"
-
-#~ msgctxt "@item delimiter for joining category names"
-#~ msgid ","
-#~ msgstr ","
-
-#~ msgctxt "@info delimiter for joining category names"
-#~ msgid ","
-#~ msgstr ","
-
-#~ msgctxt "addressee name"
-#~ msgid "Name"
-#~ msgstr "Ainm"
-
-#~ msgctxt "addressee email"
-#~ msgid "Email"
-#~ msgstr "Ríomhphost"
-
-#~ msgctxt "addressee name"
-#~ msgid "Name:"
-#~ msgstr "Ainm:"
-
-#~ msgid "Select &Addressee..."
-#~ msgstr "Roghnai&gh Seolaí..."
-
-#~ msgid "2008-07-14"
-#~ msgstr "2008-07-14"
-
-#~ msgctxt "@action:button"
-#~ msgid "&Add..."
-#~ msgstr "&Cuir Leis..."
-
-#~ msgid "Filter: "
-#~ msgstr "Scagaire: "
-
-#~ msgctxt "incidence category"
-#~ msgid "Holiday"
-#~ msgstr "Lá Saoire"
-
-#~ msgid "2006-09-28"
-#~ msgstr "2006-09-28"
-
-#~ msgctxt "@info alarm offset specified in days"
-#~ msgid "1 day"
-#~ msgid_plural "%1 days"
-#~ msgstr[0] "Lá amháin"
-#~ msgstr[1] "%1 lá"
-#~ msgstr[2] "%1 lá"
-#~ msgstr[3] "%1 lá"
-#~ msgstr[4] "%1 lá"
-
-#~ msgctxt "@info alarm offset specified in hours"
-#~ msgid "1 hour"
-#~ msgid_plural "%1 hours"
-#~ msgstr[0] "1 uair"
-#~ msgstr[1] "%1 uair"
-#~ msgstr[2] "%1 huaire"
-#~ msgstr[3] "%1 n-uaire"
-#~ msgstr[4] "%1 uair"
-
-#~ msgid "Calendar: %1"
-#~ msgstr "Féilire: %1"
-
-#~ msgctxt "@action:inmenu"
-#~ msgid "Reminders Enabled"
-#~ msgstr "Meabhrúcháin Arna gCumasú"
-
-#~ msgctxt "@title:window"
-#~ msgid "Reminder"
-#~ msgstr "Meabhrúchán"
-
-#~ msgctxt "@title:column reminder due date/time"
-#~ msgid "Due"
-#~ msgstr "Spriocdháta"
-
-#~ msgid "--"
-#~ msgstr "--"
-
-#~ msgid "&Templates..."
-#~ msgstr "&Teimpléid..."
-
-#~ msgid "&Remove..."
-#~ msgstr "&Bain..."
-
-#~ msgctxt "@label"
-#~ msgid "day(s)"
-#~ msgstr "lá"
-
-#~ msgid "Owner:"
-#~ msgstr "Úinéir:"
-
-#~ msgctxt "@action:button add a new attendee"
-#~ msgid "&New"
-#~ msgstr "&Nua"
-
-#~ msgctxt "@action:button remove this attendee"
-#~ msgid "&Remove"
-#~ msgstr "&Bain"
-
-#~ msgctxt "@action:button"
-#~ msgid "&Properties..."
-#~ msgstr "&Airíonna..."
-
-#~ msgctxt "@action:button"
-#~ msgid "&Show"
-#~ msgstr "&Taispeáin"
-
-#~ msgid "Role"
-#~ msgstr "Ról"
-
-#~ msgid "Status"
-#~ msgstr "Stádas"
-
-#~ msgid "RSVP"
-#~ msgstr "RSVP"
-
-#~ msgctxt "no icon, so use the html tag"
-#~ msgid "<placeholder>ul</placeholder>"
-#~ msgstr "<placeholder>ul</placeholder>"
-
-#~ msgctxt "no icon, so use the html tag"
-#~ msgid "<placeholder>ol</placeholder>"
-#~ msgstr "<placeholder>ol</placeholder>"
-
-#~ msgctxt "Example: 5 hours (80%)"
-#~ msgid "%1 hours ("
-#~ msgstr "%1 uair ("
-
-#~ msgid "<undefined>"
-#~ msgstr "<gan sainmhíniú>"
-
-#~ msgid "Owner: "
-#~ msgstr "Úinéir: "
-
-#~ msgid "Previous year"
-#~ msgstr "Anuraidh"
-
-#~ msgid "Previous month"
-#~ msgstr "An mhí roimhe seo"
-
-#~ msgid "Next month"
-#~ msgstr "An mhí seo chugainn"
-
-#~ msgid "Co-Maintainer"
-#~ msgstr "Comhchothaitheoir"
-
-#~ msgid "*.wav|Wav Files\\n*.mp3|MP3 files\\n*.*|All files"
-#~ msgstr "*.wav|Comhaid Wav\\n*.mp3|Comhaid MP3\\n*.*|Gach comhad"
-
-#~ msgid "&Title: "
-#~ msgstr "&Teideal: "
-
-#~ msgid "Ti&me: "
-#~ msgstr "A&m: "
-
-#~ msgid "S&earch:"
-#~ msgstr "C&uardaigh:"
-
-#~ msgctxt ""
-#~ "These are Jewish holidays and mostly do not have translations. They may "
-#~ "have different spellings in your language; otherwise, just translate the "
-#~ "sound to your characters"
-#~ msgid "Sh. HaHodesh"
-#~ msgstr "Sh. HaHodesh"
-
-#~ msgid "Immediately"
-#~ msgstr "Láithreach"
-
-#~ msgid "A&udio"
-#~ msgstr "F&uaim"
-
-#~ msgid "URI"
-#~ msgstr "URI"
-
-#~ msgid "MIME Type"
-#~ msgstr "Cineál MIME"
-
-#~ msgid "Project View"
-#~ msgstr "Amharc Tionscadail"
-
-#~ msgid "main task"
-#~ msgstr "príomhthasc"
-
-#~ msgid "&Project"
-#~ msgstr "&Tionscadal"
-
-#~ msgid "Exchange Plugin"
-#~ msgstr "Breiseáin Exchange"
-
-#~ msgid "Exchange server:"
-#~ msgstr "Freastalaí Exchange:"
-
-# #-#-#-#-#  tmp.XXXXK5LpVx (PACKAGE VERSION)  #-#-#-#-#
-# #-#-#-#-#  temp2.po (yudit 2.7.6)  #-#-#-#-#
-# OK as is
-#~ msgid "Port:"
-#~ msgstr "Port:"
-
-#~ msgid "User:"
-#~ msgstr "Úsáideoir:"
-
-#~ msgid "Mailbox URL:"
-#~ msgstr "URL an bhosca poist:"
-
-#~ msgid "End date:"
-#~ msgstr "Dáta deiridh:"
-
-#~ msgid "&Download..."
-#~ msgstr "Í&osluchtaigh..."
-
-#~ msgid "&Upload Event..."
-#~ msgstr "&Uasluchtaigh Imeacht..."
-
-#~ msgid "De&lete Event"
-#~ msgstr "&Scrios Imeacht"
-
-#~ msgid "&Upload"
-#~ msgstr "&Uasluchtaigh"
-
-#~ msgid "Unknown Error"
-#~ msgstr "Earráid Anaithnid"
