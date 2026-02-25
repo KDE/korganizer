@@ -62,11 +62,13 @@ QMap<QDate, QStringList> KOGlobals::holiday(const QDate &start, const QDate &end
     return holidaysByDate;
 }
 
+/* cppcheck-suppress functionStatic */
 int KOGlobals::firstDayOfWeek() const
 {
     return KOPrefs::instance()->mWeekStartDay + 1;
 }
 
+/* cppcheck-suppress functionStatic */
 int KOGlobals::getWorkWeekMask()
 {
     return KOPrefs::instance()->mWorkWeekMask;

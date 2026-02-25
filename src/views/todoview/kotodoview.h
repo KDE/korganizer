@@ -36,6 +36,7 @@ public:
         return 0;
     }
 
+    /* cppcheck-suppress functionStatic */
     void setDocumentId(const QString &)
     {
     }

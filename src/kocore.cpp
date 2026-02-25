@@ -38,6 +38,7 @@ KOCore::~KOCore()
     mSelf = nullptr;
 }
 
+/* cppcheck-suppress functionStatic */
 QList<KPluginMetaData> KOCore::availableCalendarDecorations()
 {
     return KPluginMetaData::findPlugins(QStringLiteral("pim6/korganizer"));
